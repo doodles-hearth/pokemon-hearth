@@ -2014,7 +2014,7 @@ static void DebugAction_Util_CheckROMSpace(u8 taskId)
     ScriptContext_SetupScript(Debug_CheckROMSpace);
 }
 
-static const u8 sWeatherNames[22][24] = {
+static const u8 sWeatherNames[23][24] = {
     [WEATHER_NONE]               = _("NONE"),
     [WEATHER_SUNNY_CLOUDS]       = _("SUNNY CLOUDS"),
     [WEATHER_SUNNY]              = _("SUNNY"),
@@ -2033,6 +2033,7 @@ static const u8 sWeatherNames[22][24] = {
     [WEATHER_ABNORMAL]           = _("ABNORMAL(NOT WORKING)"),
     [WEATHER_ROUTE119_CYCLE]     = _("ROUTE119 CYCLE"),
     [WEATHER_ROUTE123_CYCLE]     = _("ROUTE123 CYCLE"),
+    [WEATHER_FLYING_BIRDS]       = _("FLYING BIRDS"),
 };
 static const u8 sDebugText_WeatherNotDefined[] = _("NOT DEFINED!!!");
 static void DebugAction_Util_Weather(u8 taskId)
@@ -2071,14 +2072,14 @@ static void DebugAction_Util_Weather_SelectId(u8 taskId)
         if (JOY_NEW(DPAD_UP))
         {
             gTasks[taskId].tInput += sPowersOfTen[gTasks[taskId].tDigit];
-            if (gTasks[taskId].tInput > WEATHER_ROUTE123_CYCLE)
-                gTasks[taskId].tInput = WEATHER_ROUTE123_CYCLE;
+            if (gTasks[taskId].tInput > WEATHER_FLYING_BIRDS)
+                gTasks[taskId].tInput = WEATHER_NONE;
         }
         if (JOY_NEW(DPAD_DOWN))
         {
             gTasks[taskId].tInput -= sPowersOfTen[gTasks[taskId].tDigit];
             if (gTasks[taskId].tInput < WEATHER_NONE)
-                gTasks[taskId].tInput = WEATHER_NONE;
+                gTasks[taskId].tInput = WEATHER_FLYING_BIRDS;
         }
         if (JOY_NEW(DPAD_LEFT))
         {

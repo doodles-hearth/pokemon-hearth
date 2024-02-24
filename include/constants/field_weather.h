@@ -3,6 +3,7 @@
 
 #define MAX_RAIN_SPRITES             24
 #define NUM_CLOUD_SPRITES            3
+#define NUM_BIRD_SPRITES            1
 #define NUM_FOG_HORIZONTAL_SPRITES   20
 #define NUM_ASH_SPRITES              20
 #define NUM_FOG_DIAGONAL_SPRITES     20

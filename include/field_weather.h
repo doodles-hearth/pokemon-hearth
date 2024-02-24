@@ -13,6 +13,7 @@ enum {
     GFXTAG_SANDSTORM,
     GFXTAG_BUBBLE,
     GFXTAG_RAIN,
+    GFXTAG_BIRD,
 };
 enum {
     PALTAG_WEATHER = TAG_WEATHER_START,
@@ -30,6 +31,7 @@ struct Weather
             struct Sprite *rainSprites[MAX_RAIN_SPRITES];
             struct Sprite *snowflakeSprites[101];
             struct Sprite *cloudSprites[NUM_CLOUD_SPRITES];
+            struct Sprite *birdSprites[NUM_BIRD_SPRITES];
         } s1;
         struct
         {
@@ -70,7 +72,11 @@ struct Weather
     u8 rainSpriteVisibleDelay;
     u8 isDownpour;
     u8 rainStrength;
+    // Clouds
     u8 cloudSpritesCreated;
+    // Birds
+    u8 birdSpritesCreated;
+    u16 birdTimer;
     // Snow
     u16 snowflakeVisibleCounter;
     u16 snowflakeTimer;
@@ -176,6 +182,10 @@ void Clouds_InitVars(void);
 void Clouds_Main(void);
 void Clouds_InitAll(void);
 bool8 Clouds_Finish(void);
+void Birds_InitVars(void);
+void Birds_Main(void);
+void Birds_InitAll(void);
+bool8 Birds_Finish(void);
 void Sunny_InitVars(void);
 void Sunny_Main(void);
 void Sunny_InitAll(void);

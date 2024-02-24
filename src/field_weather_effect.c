@@ -13,12 +13,15 @@
 #include "task.h"
 #include "trig.h"
 #include "gpu_regs.h"
+#include "field_player_avatar.h"
+#include "util.h"
 
 EWRAM_DATA static u8 sCurrentAbnormalWeather = 0;
 EWRAM_DATA static u16 sUnusedWeatherRelated = 0;
 
 const u16 gCloudsWeatherPalette[] = INCBIN_U16("graphics/weather/cloud.gbapal");
 const u16 gSandstormWeatherPalette[] = INCBIN_U16("graphics/weather/sandstorm.gbapal");
+const u16 gBirdsWeatherPalette[] = INCBIN_U16("graphics/weather/bird.gbapal");
 const u8 gWeatherFogDiagonalTiles[] = INCBIN_U8("graphics/weather/fog_diagonal.4bpp");
 const u8 gWeatherFogHorizontalTiles[] = INCBIN_U8("graphics/weather/fog_horizontal.4bpp");
 const u8 gWeatherCloudTiles[] = INCBIN_U8("graphics/weather/cloud.4bpp");
@@ -28,6 +31,184 @@ const u8 gWeatherBubbleTiles[] = INCBIN_U8("graphics/weather/bubble.4bpp");
 const u8 gWeatherAshTiles[] = INCBIN_U8("graphics/weather/ash.4bpp");
 const u8 gWeatherRainTiles[] = INCBIN_U8("graphics/weather/rain.4bpp");
 const u8 gWeatherSandstormTiles[] = INCBIN_U8("graphics/weather/sandstorm.4bpp");
+const u8 gWeatherBirdTiles[] = INCBIN_U8("graphics/weather/bird.4bpp");
+
+//------------------------------------------------------------------------------
+// WEATHER_FLYING_BIRDS
+//------------------------------------------------------------------------------
+
+static void CreateBirdSprites(void);
+static void DestroyBirdSprites(void);
+static void UpdateBirdSprite(struct Sprite *);
+
+static const struct SpriteSheet sBirdSpriteSheet =
+{
+    .data = gWeatherBirdTiles,
+    .size = sizeof(gWeatherBirdTiles),
+    .tag = GFXTAG_BIRD
+};
+
+static const struct OamData sBirdSpriteOamData =
+{
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x64),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(64x64),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const union AnimCmd sBirdSpriteAnimCmd[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(64, 8),
+    ANIMCMD_FRAME(128, 8),
+    ANIMCMD_FRAME(192, 8),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sBirdSpriteAnimCmds[] =
+{
+    sBirdSpriteAnimCmd,
+};
+
+static const struct SpriteTemplate sBirdSpriteTemplate =
+{
+    .tileTag = GFXTAG_BIRD,
+    .paletteTag = PALTAG_WEATHER_2,
+    .oam = &sBirdSpriteOamData,
+    .anims = sBirdSpriteAnimCmds,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateBirdSprite,
+};
+
+void Birds_InitVars(void)
+{
+    DebugPrintfLevel(MGBA_LOG_WARN, "Birds_InitVars");
+    gWeatherPtr->targetColorMapIndex = 0;
+    gWeatherPtr->colorMapStepDelay = 20;
+    gWeatherPtr->weatherGfxLoaded = FALSE;
+    gWeatherPtr->initStep = 0;
+}
+
+void Birds_InitAll(void)
+{
+    DebugPrintfLevel(MGBA_LOG_WARN, "Birds_InitAll");
+    Birds_InitVars();
+    while (gWeatherPtr->weatherGfxLoaded == FALSE)
+        Birds_Main();
+}
+
+void Birds_Main(void)
+{
+    // DebugPrintfLevel(MGBA_LOG_WARN, "Birds_Main");
+    switch (gWeatherPtr->initStep)
+    {
+        case 0:
+            DebugPrintfLevel(MGBA_LOG_WARN, "Birds_Main 0");
+            CreateBirdSprites();
+            gWeatherPtr->initStep++;
+            break;
+        case 1:
+            DebugPrintfLevel(MGBA_LOG_WARN, "Birds_Main 1");
+            gWeatherPtr->weatherGfxLoaded = TRUE;
+            gWeatherPtr->initStep++;
+            break;
+    }
+}
+
+bool8 Birds_Finish(void)
+{
+    DebugPrintfLevel(MGBA_LOG_WARN, "Birds_Finish");
+    switch (gWeatherPtr->finishStep)
+    {
+    case 0:
+        DebugPrintfLevel(MGBA_LOG_WARN, "Birds_Finish 0");
+        gWeatherPtr->finishStep++;
+        return TRUE;
+    case 1:
+        DebugPrintfLevel(MGBA_LOG_WARN, "Birds_Finish 1");
+        DestroyBirdSprites();
+        gWeatherPtr->finishStep++;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+static void CreateBirdSprites(void)
+{
+    DebugPrintfLevel(MGBA_LOG_WARN, "WARN CreateBirdSprites");
+    u8 spriteId;
+    struct Sprite *sprite;
+
+    if (gWeatherPtr->birdSpritesCreated == TRUE)
+        return;
+
+    LoadSpriteSheet(&sBirdSpriteSheet);
+    LoadCustomWeatherSpritePalette(gBirdsWeatherPalette);
+
+    // Creating one bird flock sprite at a time, which will spawn to the right of the screen at a random
+    // Y coordinate in a 20-tile radius around the player
+    spriteId = CreateSprite(&sBirdSpriteTemplate, 0, 0, 0xFF);
+    if (spriteId != MAX_SPRITES)
+    {
+        gWeatherPtr->sprites.s1.birdSprites[0] = &gSprites[spriteId];
+        sprite = gWeatherPtr->sprites.s1.birdSprites[0];
+
+        s16 playerX, playerY;
+        PlayerGetDestCoords(&playerX, &playerY);
+        s32 x = playerX + 10;
+        s32 y = Random() % (playerY + 20 - (playerY - 20) + 1) + (playerY + 20);
+        DebugPrintfLevel(MGBA_LOG_WARN, "CreateBirdSprites random position: %d", y);
+        SetSpritePosToMapCoords(x, y, &sprite->x, &sprite->y);
+        sprite->coordOffsetEnabled = TRUE;
+    }
+    else
+    {
+        gWeatherPtr->sprites.s1.birdSprites[0] = NULL;
+    }
+
+    gWeatherPtr->birdSpritesCreated = TRUE;
+}
+
+static void DestroyBirdSprites(void)
+{
+    DebugPrintfLevel(MGBA_LOG_WARN, "DestroyBirdSprites");
+    if (!gWeatherPtr->birdSpritesCreated)
+        return;
+
+    DebugPrintfLevel(MGBA_LOG_WARN, "Doing the destroying");
+    if (gWeatherPtr->sprites.s1.birdSprites[0] != NULL) {
+        DestroySprite(gWeatherPtr->sprites.s1.birdSprites[0]);
+    }
+
+    FreeSpriteTilesByTag(GFXTAG_BIRD);
+    gWeatherPtr->birdSpritesCreated = FALSE;
+}
+
+static void UpdateBirdSprite(struct Sprite *sprite)
+{
+    DebugPrintfLevel(MGBA_LOG_WARN, "UpdateBirdSprite. sprite->data[0]=%d, x=%d", sprite->data[0], sprite->x);
+    // Move 4 pixels left every 2 frames.
+    sprite->data[0] = (sprite->data[0] + 1) & 1;
+    if (sprite->data[0])
+    {
+        sprite->x -= 4;
+    }
+
+    if (sprite->x <= 0) {
+        DebugPrintfLevel(MGBA_LOG_WARN, "DESTROY BZZZT");
+        DestroyBirdSprites();
+    }
+}
 
 //------------------------------------------------------------------------------
 // WEATHER_SUNNY_CLOUDS
@@ -183,7 +364,7 @@ static void CreateCloudSprites(void)
     LoadCustomWeatherSpritePalette(gCloudsWeatherPalette);
     for (i = 0; i < NUM_CLOUD_SPRITES; i++)
     {
-        spriteId = CreateSprite(&sCloudSpriteTemplate, 0, 0, 0xFF);
+        spriteId = CreateSprite(&sBirdSpriteTemplate, 0, 0, 0xFF);
         if (spriteId != MAX_SPRITES)
         {
             gWeatherPtr->sprites.s1.cloudSprites[i] = &gSprites[spriteId];
@@ -1363,7 +1544,9 @@ void FogHorizontal_InitAll(void)
 
 void FogHorizontal_Main(void)
 {
+    // Scroll position X = offset X - fog offset
     gWeatherPtr->fogHScrollPosX = (gSpriteCoordOffsetX - gWeatherPtr->fogHScrollOffset) & 0xFF;
+    // Every 3 frames, fog offset +1
     if (++gWeatherPtr->fogHScrollCounter > 3)
     {
         gWeatherPtr->fogHScrollCounter = 0;
@@ -2571,6 +2754,7 @@ static u8 TranslateWeatherNum(u8 weather)
     {
     case WEATHER_NONE:               return WEATHER_NONE;
     case WEATHER_SUNNY_CLOUDS:       return WEATHER_SUNNY_CLOUDS;
+    case WEATHER_FLYING_BIRDS:       return WEATHER_FLYING_BIRDS;
     case WEATHER_SUNNY:              return WEATHER_SUNNY;
     case WEATHER_RAIN:               return WEATHER_RAIN;
     case WEATHER_SNOW:               return WEATHER_SNOW;
