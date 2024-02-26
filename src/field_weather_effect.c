@@ -3,6 +3,7 @@
 #include "event_object_movement.h"
 #include "fieldmap.h"
 #include "field_weather.h"
+#include "field_camera.h"
 #include "overworld.h"
 #include "random.h"
 #include "script.h"
@@ -180,15 +181,20 @@ static void CreateBirdSprites(void)
     LoadSpriteSheet(&sBirdSpriteSheet);
     LoadCustomWeatherSpritePalette(gBirdsWeatherPalette);
 
-    // Creating a bird flock, which will spawn to the right of the screen at a random
-    // Y coordinate in a 20-tile radius around the player
-    s16 playerX, playerY;
-    PlayerGetDestCoords(&playerX, &playerY);
-    u32 standardBirdX = playerX + 10 * gWeatherPtr->birdCurrentFlockDirection;
-    u32 currentBirdY = Random() % (playerY + 20 - (playerY - 20) + 1) + (playerY - 20);
-
     u32 i;
     u32 spriteId;
+    u32 currentBirdX, currentBirdY;
+
+    // Creating a bird flock, which will spawn:
+    // X value - a random range outside the horizontal edge of the screen
+    // Y value - a random range above or below the center of the center
+    if (gWeatherPtr->birdCurrentFlockDirection == -1)
+        currentBirdX = DISPLAY_WIDTH + BIRD_X_SPAWN_DISTANCE - (s16)gTotalCameraPixelOffsetX; 
+    else
+        currentBirdX = 0 - BIRD_X_SPAWN_DISTANCE - (s16)gTotalCameraPixelOffsetX; 
+
+    currentBirdY = (DISPLAY_WIDTH / 2) + (Random() % BIRD_Y_SPAWN_RANGE * 2) - BIRD_Y_SPAWN_RANGE - (s16)gTotalCameraPixelOffsetY;
+
     struct Sprite *sprite;
     for (i = 0; i < gWeatherPtr->birdCurrentFlockSize; i++)
     {
@@ -204,24 +210,16 @@ static void CreateBirdSprites(void)
             // Flip sprite if direction = right
             sprite->hFlip = (gWeatherPtr->birdCurrentFlockDirection == 1);
 
-            // Place sprite in map
-            SetSpritePosToMapCoords(
-                playerX + MAP_OFFSET,
-                playerY + MAP_OFFSET,
-                // TODO EVA for the love of god
-                // // Random horizontal stagger
-                // standardBirdX + (Random() % (gWeatherPtr->birdCurrentFlockSize)) + MAP_OFFSET,
-                // currentBirdY + MAP_OFFSET,
-                &sprite->x,
-                &sprite->y
-            );
+            sprite->x = currentBirdX;
+            sprite->y = currentBirdY;
 
             // TODO EVA What is this line for?
-            // sprite->coordOffsetEnabled = TRUE;
+            sprite->coordOffsetEnabled = TRUE;
 
             // Each bird is placed 1 tile below the previous bird
             // TODO EVA put them in a V formation half of the time? :D
-            currentBirdY += 1;
+            currentBirdX += BIRD_X_FLOCK_RANGE;
+            currentBirdY += BIRD_Y_FLOCK_RANGE;
         }
         else
         {
@@ -256,8 +254,8 @@ static void DestroyBirdSprites(void)
 
 static void UpdateBirdSprite(struct Sprite *sprite)
 {
-    s16 playerX, playerY;
-    PlayerGetDestCoords(&playerX, &playerY);
+    bool32 offscreen;
+    
     // Move a set amount of pixels left every 2 frames.
     sprite->data[0] = (sprite->data[0] + 1) & 1;
     if (sprite->data[0])
@@ -283,18 +281,13 @@ static void UpdateBirdSprite(struct Sprite *sprite)
     // DebugPrintfLevel(MGBA_LOG_WARN, "birdX=%d, birdXPx=%d pX=%d, pXPx=%d, width=%d, dir=%d, shouldDestroy=%d", sprite->x, birdX, playerX, playerX*16, GetMapWidth(), gWeatherPtr->birdCurrentFlockDirection, (gWeatherPtr->birdCurrentFlockDirection == -1 && birdX <= 0));
 
     // The flock is destroyed when a bird reaches the edge of the map
-    if (
-        (gWeatherPtr->birdCurrentFlockDirection == 1 && sprite->x >= GetMapWidth() * 16)
-        ||
-        (gWeatherPtr->birdCurrentFlockDirection == -1 && sprite->x <= 0)
-    ) {
-        // Logs
-        if (gWeatherPtr->sprites.s1.birdSprites[0]->x == sprite->x) {
-            DebugPrintfLevel(MGBA_LOG_WARN, "MUST DESTROY");
-        }
+    if (gWeatherPtr->birdCurrentFlockDirection == -1)
+        offscreen = sprite->x + (s16)gTotalCameraPixelOffsetX < -1 * BIRD_DESTROY_PIXEL_BUFFER;
+    else
+        offscreen = sprite->x + (s16)gTotalCameraPixelOffsetX > DISPLAY_WIDTH + BIRD_DESTROY_PIXEL_BUFFER;
 
+    if (offscreen)
         DestroyBirdSprites();
-    }
 }
 
 //------------------------------------------------------------------------------

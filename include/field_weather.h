@@ -87,8 +87,8 @@ struct Weather
     u16 birdFlockSpeed;
     // Same as above, for the current flock (may vary slightly to give a more organic feel)
     u16 birdCurrentFlockSpeed;
-    // Current flock's direction (0 is left, 1 is right)
-    s16 birdCurrentFlockDirection:1;
+    // Current flock's direction (-1 is left, 1 is right)
+    s8 birdCurrentFlockDirection;
     // Approximate number of birds per flock (actual number will vary between +1 and -1)
     u16 birdFlockSize;
     // Number of birds in the current flock

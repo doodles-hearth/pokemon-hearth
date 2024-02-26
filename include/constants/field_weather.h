@@ -22,4 +22,11 @@
 #define FADE_FROM_WHITE  2
 #define FADE_TO_WHITE    3
 
+// birds weather
+#define BIRD_DESTROY_PIXEL_BUFFER       32  // how many pixels off screen to wait before destroying birds
+#define BIRD_X_SPAWN_DISTANCE           16  // how many pixels outside the edge of the screen to create sprites
+#define BIRD_Y_SPAWN_RANGE              64  // range of how many pixels above/below the center of the screen to create sprites
+#define BIRD_X_FLOCK_RANGE              8   // how many horizontal pixels apart birds in a flock should be
+#define BIRD_Y_FLOCK_RANGE              8   // how many vertical pixels apart birds in a flock should be
+
 #endif // GUARD_CONSTANTS_FIELD_WEATHER_H
