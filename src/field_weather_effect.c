@@ -55,10 +55,10 @@ static const struct OamData sBirdSpriteOamData =
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = FALSE,
     .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(64x64),
+    .shape = SPRITE_SHAPE(32x32),
     .x = 0,
     .matrixNum = 0,
-    .size = SPRITE_SIZE(64x64),
+    .size = SPRITE_SIZE(32x32),
     .tileNum = 0,
     .priority = 1,
     .paletteNum = 0,
@@ -67,10 +67,12 @@ static const struct OamData sBirdSpriteOamData =
 
 static const union AnimCmd sBirdSpriteAnimCmd[] =
 {
+    // ANIMCMD_FRAME(0, 8),
+    // ANIMCMD_FRAME(64, 8),
+    // ANIMCMD_FRAME(128, 8),
+    // ANIMCMD_FRAME(192, 8),
     ANIMCMD_FRAME(0, 8),
-    ANIMCMD_FRAME(64, 8),
-    ANIMCMD_FRAME(128, 8),
-    ANIMCMD_FRAME(192, 8),
+    ANIMCMD_FRAME(16, 8),
     ANIMCMD_JUMP(0),
 };
 
@@ -97,6 +99,11 @@ void Birds_InitVars(void)
     gWeatherPtr->colorMapStepDelay = 20;
     gWeatherPtr->weatherGfxLoaded = FALSE;
     gWeatherPtr->initStep = 0;
+    gWeatherPtr->birdTimer = 0;
+    // TODO EVA customize based on current map
+    gWeatherPtr->birdNbSecondsBetweenFlocks = 20;
+    gWeatherPtr->birdFlockSpeed = 2;
+    gWeatherPtr->birdFlockSize = 3;
 }
 
 void Birds_InitAll(void)
@@ -114,11 +121,21 @@ void Birds_Main(void)
     {
         case 0:
             DebugPrintfLevel(MGBA_LOG_WARN, "Birds_Main 0");
-            CreateBirdSprites();
-            gWeatherPtr->initStep++;
+            gWeatherPtr->birdTimer += 1;
+            // A new bird flock waits a set amount of time before spawning
+            if (gWeatherPtr->birdTimer > gWeatherPtr->birdCurrentNbSecondsBetweenFlocks * 60) {
+                DebugPrintfLevel(MGBA_LOG_WARN, "Birds_Main timer has reached the end");
+                gWeatherPtr->initStep++;
+                gWeatherPtr->birdTimer = 0;
+            }
             break;
         case 1:
             DebugPrintfLevel(MGBA_LOG_WARN, "Birds_Main 1");
+            CreateBirdSprites();
+            gWeatherPtr->initStep++;
+            break;
+        case 2:
+            DebugPrintfLevel(MGBA_LOG_WARN, "Birds_Main 2");
             gWeatherPtr->weatherGfxLoaded = TRUE;
             gWeatherPtr->initStep++;
             break;
@@ -145,35 +162,71 @@ bool8 Birds_Finish(void)
 
 static void CreateBirdSprites(void)
 {
-    DebugPrintfLevel(MGBA_LOG_WARN, "WARN CreateBirdSprites");
-    u8 spriteId;
-    struct Sprite *sprite;
+    // Adding slight variation to the parameters
+    gWeatherPtr->birdCurrentFlockDirection = -1;
+    // TODO EVA handle direction later
+    // gWeatherPtr->birdCurrentFlockDirection = (Random() % 1) ? -1 : 1;
+    gWeatherPtr->birdCurrentNbSecondsBetweenFlocks = gWeatherPtr->birdNbSecondsBetweenFlocks + ((Random() % 7) - 2);
+    gWeatherPtr->birdCurrentFlockSize = gWeatherPtr->birdFlockSize + ((Random() % 2) - 1);
+    gWeatherPtr->birdCurrentFlockSpeed = gWeatherPtr->birdFlockSpeed + ((Random() % 2) - 1);
 
-    if (gWeatherPtr->birdSpritesCreated == TRUE)
+    DebugPrintfLevel(MGBA_LOG_WARN, "CreateBirdSprites: %d birds to create", gWeatherPtr->birdCurrentFlockSize);
+
+    if (gWeatherPtr->birdSpritesCreated == TRUE) {
+        DebugPrintfLevel(MGBA_LOG_WARN, "Birds already created");
         return;
+    }
 
     LoadSpriteSheet(&sBirdSpriteSheet);
     LoadCustomWeatherSpritePalette(gBirdsWeatherPalette);
 
-    // Creating one bird flock sprite at a time, which will spawn to the right of the screen at a random
+    // Creating a bird flock, which will spawn to the right of the screen at a random
     // Y coordinate in a 20-tile radius around the player
-    spriteId = CreateSprite(&sBirdSpriteTemplate, 0, 0, 0xFF);
-    if (spriteId != MAX_SPRITES)
-    {
-        gWeatherPtr->sprites.s1.birdSprites[0] = &gSprites[spriteId];
-        sprite = gWeatherPtr->sprites.s1.birdSprites[0];
+    s16 playerX, playerY;
+    PlayerGetDestCoords(&playerX, &playerY);
+    u32 standardBirdX = playerX + 10 * gWeatherPtr->birdCurrentFlockDirection;
+    u32 currentBirdY = Random() % (playerY + 20 - (playerY - 20) + 1) + (playerY - 20);
 
-        s16 playerX, playerY;
-        PlayerGetDestCoords(&playerX, &playerY);
-        s32 x = playerX + 10;
-        s32 y = Random() % (playerY + 20 - (playerY - 20) + 1) + (playerY + 20);
-        DebugPrintfLevel(MGBA_LOG_WARN, "CreateBirdSprites random position: %d", y);
-        SetSpritePosToMapCoords(x, y, &sprite->x, &sprite->y);
-        sprite->coordOffsetEnabled = TRUE;
-    }
-    else
+    u32 i;
+    u32 spriteId;
+    struct Sprite *sprite;
+    for (i = 0; i < gWeatherPtr->birdCurrentFlockSize; i++)
     {
-        gWeatherPtr->sprites.s1.birdSprites[0] = NULL;
+        // Creating new sprite
+        spriteId = CreateSprite(&sBirdSpriteTemplate, 0, 0, 0xFF);
+        if (spriteId != MAX_SPRITES)
+        {
+            DebugPrintfLevel(MGBA_LOG_WARN, "Creating %d", i);
+
+            gWeatherPtr->sprites.s1.birdSprites[i] = &gSprites[spriteId];
+            sprite = gWeatherPtr->sprites.s1.birdSprites[i];
+
+            // Flip sprite if direction = right
+            sprite->hFlip = (gWeatherPtr->birdCurrentFlockDirection == 1);
+
+            // Place sprite in map
+            SetSpritePosToMapCoords(
+                playerX + MAP_OFFSET,
+                playerY + MAP_OFFSET,
+                // TODO EVA for the love of god
+                // // Random horizontal stagger
+                // standardBirdX + (Random() % (gWeatherPtr->birdCurrentFlockSize)) + MAP_OFFSET,
+                // currentBirdY + MAP_OFFSET,
+                &sprite->x,
+                &sprite->y
+            );
+
+            // TODO EVA What is this line for?
+            // sprite->coordOffsetEnabled = TRUE;
+
+            // Each bird is placed 1 tile below the previous bird
+            // TODO EVA put them in a V formation half of the time? :D
+            currentBirdY += 1;
+        }
+        else
+        {
+            gWeatherPtr->sprites.s1.birdSprites[i] = NULL;
+        }
     }
 
     gWeatherPtr->birdSpritesCreated = TRUE;
@@ -182,30 +235,64 @@ static void CreateBirdSprites(void)
 static void DestroyBirdSprites(void)
 {
     DebugPrintfLevel(MGBA_LOG_WARN, "DestroyBirdSprites");
+
     if (!gWeatherPtr->birdSpritesCreated)
         return;
 
-    DebugPrintfLevel(MGBA_LOG_WARN, "Doing the destroying");
-    if (gWeatherPtr->sprites.s1.birdSprites[0] != NULL) {
-        DestroySprite(gWeatherPtr->sprites.s1.birdSprites[0]);
+    DebugPrintfLevel(MGBA_LOG_WARN, "%d birds to destroy, destroying:", gWeatherPtr->birdCurrentFlockSize);
+    u32 i;
+    for (i = 0; i < gWeatherPtr->birdCurrentFlockSize; i++) {
+        if (gWeatherPtr->sprites.s1.birdSprites[i] != NULL) {
+            DebugPrintfLevel(MGBA_LOG_WARN, "Bird %d", i);
+
+            DestroySprite(gWeatherPtr->sprites.s1.birdSprites[i]);
+        }
     }
 
     FreeSpriteTilesByTag(GFXTAG_BIRD);
     gWeatherPtr->birdSpritesCreated = FALSE;
+    gWeatherPtr->initStep = 0;
 }
 
 static void UpdateBirdSprite(struct Sprite *sprite)
 {
-    DebugPrintfLevel(MGBA_LOG_WARN, "UpdateBirdSprite. sprite->data[0]=%d, x=%d", sprite->data[0], sprite->x);
-    // Move 4 pixels left every 2 frames.
+    s16 playerX, playerY;
+    PlayerGetDestCoords(&playerX, &playerY);
+    // Move a set amount of pixels left every 2 frames.
     sprite->data[0] = (sprite->data[0] + 1) & 1;
     if (sprite->data[0])
     {
-        sprite->x -= 4;
+        sprite->x += gWeatherPtr->birdCurrentFlockSpeed * 2 * gWeatherPtr->birdCurrentFlockDirection;
+
+        // Logs
+        if (gWeatherPtr->sprites.s1.birdSprites[0]->x == sprite->x) {
+            DebugPrintfLevel(
+                MGBA_LOG_WARN,
+                "birdX=%d, pX=%d, pXPx=%d",
+                sprite->x,
+                playerX,
+                playerX*16
+            );
+        }
     }
 
-    if (sprite->x <= 0) {
-        DebugPrintfLevel(MGBA_LOG_WARN, "DESTROY BZZZT");
+    // s16 playerX, playerY;
+    // PlayerGetDestCoords(&playerX, &playerY);
+    // s16 birdX, birdY;
+    // GetMapCoordsFromSpritePos(sprite->x, sprite->y, &birdX, &birdY);
+    // DebugPrintfLevel(MGBA_LOG_WARN, "birdX=%d, birdXPx=%d pX=%d, pXPx=%d, width=%d, dir=%d, shouldDestroy=%d", sprite->x, birdX, playerX, playerX*16, GetMapWidth(), gWeatherPtr->birdCurrentFlockDirection, (gWeatherPtr->birdCurrentFlockDirection == -1 && birdX <= 0));
+
+    // The flock is destroyed when a bird reaches the edge of the map
+    if (
+        (gWeatherPtr->birdCurrentFlockDirection == 1 && sprite->x >= GetMapWidth() * 16)
+        ||
+        (gWeatherPtr->birdCurrentFlockDirection == -1 && sprite->x <= 0)
+    ) {
+        // Logs
+        if (gWeatherPtr->sprites.s1.birdSprites[0]->x == sprite->x) {
+            DebugPrintfLevel(MGBA_LOG_WARN, "MUST DESTROY");
+        }
+
         DestroyBirdSprites();
     }
 }

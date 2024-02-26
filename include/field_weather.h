@@ -31,7 +31,7 @@ struct Weather
             struct Sprite *rainSprites[MAX_RAIN_SPRITES];
             struct Sprite *snowflakeSprites[101];
             struct Sprite *cloudSprites[NUM_CLOUD_SPRITES];
-            struct Sprite *birdSprites[NUM_BIRD_SPRITES];
+            struct Sprite *birdSprites[MAX_BIRD_SPRITES];
         } s1;
         struct
         {
@@ -74,9 +74,26 @@ struct Weather
     u8 rainStrength;
     // Clouds
     u8 cloudSpritesCreated;
-    // Birds
+
+    // True when the current flock has spawned
     u8 birdSpritesCreated;
+    // Keeps track of time spent after the current flock has despawned
     u16 birdTimer;
+    // Number of seconds between one flock's despawn and the next flock's spawn
+    u16 birdNbSecondsBetweenFlocks;
+    // Same as above, for the current flock (may vary slightly to give a more organic feel)
+    u16 birdCurrentNbSecondsBetweenFlocks;
+    // Flock speed (in number of pixels per frame)
+    u16 birdFlockSpeed;
+    // Same as above, for the current flock (may vary slightly to give a more organic feel)
+    u16 birdCurrentFlockSpeed;
+    // Current flock's direction (0 is left, 1 is right)
+    s16 birdCurrentFlockDirection:1;
+    // Approximate number of birds per flock (actual number will vary between +1 and -1)
+    u16 birdFlockSize;
+    // Number of birds in the current flock
+    u16 birdCurrentFlockSize;
+
     // Snow
     u16 snowflakeVisibleCounter;
     u16 snowflakeTimer;

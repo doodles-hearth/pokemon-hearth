@@ -64,6 +64,10 @@ const struct MapHeader *const GetMapHeaderFromConnection(const struct MapConnect
     return Overworld_GetMapHeaderByGroupAndId(connection->mapGroup, connection->mapNum);
 }
 
+u32 GetMapWidth(void) {
+    return gBackupMapLayout.width;
+}
+
 void InitMap(void)
 {
     InitMapLayoutData(&gMapHeader);
