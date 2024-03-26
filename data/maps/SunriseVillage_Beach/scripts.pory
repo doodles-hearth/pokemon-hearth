@@ -1,0 +1,98 @@
+mapscripts SunriseVillage_Beach_MapScripts {
+
+}
+
+const LOCALID_RIVAL = 1
+
+script SunriseVillage_Beach_EventScript_RivalSpeech {
+    lock
+	faceplayer
+	playse(SE_PIN)
+	applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(LOCALID_RIVAL, Common_Movement_Delay48)
+	waitmovement(0)
+	msgbox(format(
+		"{PLAYER}{KUN}! Ya made it!\p"
+		"Come on, sit down next to me!"
+	))
+	// TODO EVA make player move next to rival
+	closemessage
+
+	msgbox(format(
+		"Remember when we were little and we"
+		"used to fight each other to be the"
+		"first to sit on this bench?\p"
+		"Good times. Even though you always won,"
+		"hehe.\p"
+		"…"
+	))
+	closemessage
+
+	applymovement(LOCALID_RIVAL, Common_Movement_Delay48)
+	waitmovement(0)
+
+	msgbox(format(
+		"Hey, look!\p"
+		"You can see YIFU CITY very clearly"
+		"today, it's gorgeous!\p"
+		"…\p"
+		"I guess I'm feeling a little nervous"
+		"about all this.\p"
+		"The POKéMON getting restless in the"
+		"GINKO WOODS…\p"
+		"Having my own POKéMON to care for…\p"
+		"It feels like everything's about to"
+		"change, though I'm not sure how yet."
+	))
+	closemessage
+
+	applymovement(LOCALID_RIVAL, Common_Movement_Delay48)
+	waitmovement(0)
+
+	msgbox(format(
+		"Look at me rambling! I'm sure"
+		"everything is going to be just fine.\p"
+		"Are you excited to become a POKéMON"
+		"trainer?\p"
+		"Come on, it's almost time! Let's go to"
+		"Elder KABA's house!\p"
+		"Race ya there!!"
+	))
+	closemessage
+
+	// Rival runs towards the village
+	applymovement(LOCALID_RIVAL, SunriseVillage_Beach_Movement_RivalRaces)
+	waitmovement(0)
+
+	setflag(FLAG_HIDE_SUNRISE_BEACH_RIVAL)
+	setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 4)
+
+	removeobject(LOCALID_RIVAL)
+    release
+    end
+}
+
+movement SunriseVillage_Beach_Movement_RivalRaces {
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	step_end
+}

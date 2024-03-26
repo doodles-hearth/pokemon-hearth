@@ -1,0 +1,75 @@
+mapscripts WindsweptRoute_MapScripts {
+	// MAP_SCRIPT_ON_LOAD: WillSalesmanSpawn
+	// MAP_SCRIPT_ON_TRANSITION: WillSalesmanSpawn
+}
+
+// TODO EVA traveling salesman
+// script WillSalesmanSpawn{
+//     if(FLAG_DAILY_WILLSALESMANSPAWN){
+//         setflag(FLAG_HIDE_SALESMAN)          // this will make it so that the salesman will be gone when you re-enter the area, even if you haven't defeated him
+//         end
+//     }
+//     setflag(FLAG_DAILY_WILLSALESMANSPAWN)    // ensures that the script will not run when re-entering the area
+//     random(9)
+//     if(var(VAR_RESULT) <= 4){                // 50/50 chance that the salesman will spawn
+//         setflag(FLAG_HIDE_SALESMAN)
+//         end
+//     }
+//     goto(ScriptThatHandlesSalesmanSpawning)
+// }
+
+// script ScriptThatHandlesSalesmanSpawning{
+//     clearflag(FLAG_HIDE_SALESMAN)           // since we want the salesman to appear, we clear his flag
+//     // here i'll give you semi random and and slight more random ways to decide location
+//     //semi random
+//     random(4)
+//     switch(var(VAR_RESULT)){
+//         case 0:
+//             setobjectxyperm(1, 20, 5)       // in this example we assume that the salesman is ID 1
+//         case 1:
+//             setobjectxyperm(1, 8, 17)
+//         case 2:
+//             setobjectxyperm(1, 5, 3)
+//         case 3:
+//             setobjectxyperm(1, 14, 19)      // this simply randomizes his location from a few different pre-determined spots
+
+//     }
+//     // more random
+//     random(14)                              // roll 0-13
+//     copyvar(VAR_SALESMAN_X, VAR_RESULT)     // copy result to VAR_SALESMAN_X
+//     addvar(VAR_SALESMAN_X, 5)               // add 5 to make the result 5-18 instead
+//     random(10)                              // roll 0-9
+//     copyvar(VAR_SALESMAN_Y, VAR_RESULT)     // copy result to VAR_SALESMAN_Y
+//     addvar(VAR_SALESMAN_Y, 11)              // add 11 to make the result 11-20 instead
+//     setobjectxyperm(1, VAR_SALESMAN_X, VAR_SALESMAN_Y )     // the salesman's location will be x= 5 to 18, y = 11 to 20
+//     random(3)
+//     copyvar(VAR_SALESMAN, VAR_RESULT)       // we use this to determine the actual salesman script
+//     end                                     // assuming that the salesman disappears upon re-entering, you can recycle these variables on every area's salesman
+// }
+
+// script WindsweptRoute_Salesman_EventScript{                // this will be the actual script used on the npc in porymap
+//     switch(var(VAR_SALESMAN)){
+//         case 0:
+//             trainerbattle_single(TRAINER_SALESMAN_1, blah blah)
+//         case 1:
+//             trainerbattle_single(TRAINER_SALESMAN_2, blah blah)
+//         case 2:
+//             trainerbattle_single(TRAINER_SALESMAN_3, blah blah)
+//     }
+//     msgbox("That was a fun battle blah blah blah, wanna see my shop?", MSGBOX_YESNO)
+//     if(var(VAR_RESULT) == FALSE) {
+//         msgbox(format("No? Okay then."))
+//         end
+//     }
+//     pokemart(Route1Salesman)
+// }
+
+// mart SakuTown_Mart {
+// 	ITEM_POKE_BALL
+// 	ITEM_BERRY_JUICE
+// 	ITEM_PARALYZE_HEAL
+// 	ITEM_ANTIDOTE
+// 	ITEM_AWAKENING
+// 	ITEM_ESCAPE_ROPE
+// 	ITEM_REPEL
+// }

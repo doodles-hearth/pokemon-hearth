@@ -308,7 +308,7 @@ static const struct SpriteTemplate sSpriteTemplate_RecordMixLights =
     .callback = SpriteCallbackDummy,
 };
 
-// For accessing pokemon storage PC or the Hall of Fame PC
+// For accessing Pokémon storage PC or the Hall of Fame PC
 void ComputerScreenOpenEffect(u16 increment, u16 unused, u8 priority)
 {
     CreateComputerScreenEffectTask(Task_ComputerScreenOpenEffect, increment, unused, priority);
@@ -1024,7 +1024,7 @@ void DoSecretBaseGlitterMatSparkle(void)
     {
         gSprites[spriteId].coordOffsetEnabled = TRUE;
         gSprites[spriteId].oam.priority = 1;
-        gSprites[spriteId].oam.paletteNum = 5;
+        UpdateSpritePaletteByTemplate(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SPARKLE], &gSprites[spriteId]);
         gSprites[spriteId].callback = SpriteCB_GlitterMatSparkle;
         gSprites[spriteId].data[0] = 0;
     }

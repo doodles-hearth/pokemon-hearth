@@ -71,10 +71,10 @@ static const u16 sMapPopUp_Palette_Underwater[16] = INCBIN_U16("graphics/map_pop
 
 static const u8 sRegionMapSectionId_To_PopUpThemeIdMapping[] =
 {
-    [MAPSEC_LITTLEROOT_TOWN] = MAPPOPUP_THEME_WOOD,
-    [MAPSEC_OLDALE_TOWN] = MAPPOPUP_THEME_WOOD,
-    [MAPSEC_DEWFORD_TOWN] = MAPPOPUP_THEME_WOOD,
-    [MAPSEC_LAVARIDGE_TOWN] = MAPPOPUP_THEME_WOOD,
+    [MAPSEC_SUNRISE_VILLAGE] = MAPPOPUP_THEME_WOOD,
+    [MAPSEC_CHII_TOWN] = MAPPOPUP_THEME_WOOD,
+    [MAPSEC_SAKU_TOWN] = MAPPOPUP_THEME_WOOD,
+    [MAPSEC_KURA_TOWN] = MAPPOPUP_THEME_WOOD,
     [MAPSEC_FALLARBOR_TOWN] = MAPPOPUP_THEME_WOOD,
     [MAPSEC_VERDANTURF_TOWN] = MAPPOPUP_THEME_WOOD,
     [MAPSEC_PACIFIDLOG_TOWN] = MAPPOPUP_THEME_WOOD,
@@ -87,9 +87,9 @@ static const u8 sRegionMapSectionId_To_PopUpThemeIdMapping[] =
     [MAPSEC_MOSSDEEP_CITY] = MAPPOPUP_THEME_BRICK,
     [MAPSEC_SOOTOPOLIS_CITY] = MAPPOPUP_THEME_MARBLE,
     [MAPSEC_EVER_GRANDE_CITY] = MAPPOPUP_THEME_BRICK,
-    [MAPSEC_ROUTE_101] = MAPPOPUP_THEME_WOOD,
-    [MAPSEC_ROUTE_102] = MAPPOPUP_THEME_WOOD,
-    [MAPSEC_ROUTE_103] = MAPPOPUP_THEME_WOOD,
+    [MAPSEC_TRANQUIL_ROUTE] = MAPPOPUP_THEME_WOOD,
+    [MAPSEC_BEACHBOUND_ROUTE] = MAPPOPUP_THEME_WOOD,
+    [MAPSEC_WINDSWEPT_ROUTE] = MAPPOPUP_THEME_WOOD,
     [MAPSEC_ROUTE_104] = MAPPOPUP_THEME_WOOD,
     [MAPSEC_ROUTE_105] = MAPPOPUP_THEME_UNDERWATER,
     [MAPSEC_ROUTE_106] = MAPPOPUP_THEME_UNDERWATER,
@@ -317,8 +317,13 @@ void HideMapNamePopUpWindow(void)
 {
     if (FuncIsActiveTask(Task_MapNamePopUpWindow))
     {
-        ClearStdWindowAndFrame(GetMapNamePopUpWindowId(), TRUE);
-        RemoveMapNamePopUpWindow();
+    #ifdef UBFIX
+        if (GetMapNamePopUpWindowId() != WINDOW_NONE)
+    #endif // UBFIX
+        {
+            ClearStdWindowAndFrame(GetMapNamePopUpWindowId(), TRUE);
+            RemoveMapNamePopUpWindow();
+        }
         SetGpuReg_ForcedBlank(REG_OFFSET_BG0VOFS, 0);
         DestroyTask(sPopupTaskId);
     }

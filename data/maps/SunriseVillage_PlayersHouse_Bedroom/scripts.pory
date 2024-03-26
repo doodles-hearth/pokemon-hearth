@@ -1,0 +1,19 @@
+mapscripts SunriseVillage_PlayersHouse_Bedroom_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) < 1) {
+			setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 1)
+		}
+	}
+}
+
+// Big Sis calls player when he gets out of bed
+script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
+    lock
+	msgbox(format(
+		"{PLAYER}! {PLAYER}! Are you still sleeping?\p"
+		"Get up and get ready!"
+	))
+	setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 2)
+    release
+    end
+}

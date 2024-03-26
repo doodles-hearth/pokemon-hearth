@@ -21,6 +21,7 @@ POKEDEXGFXDIR := graphics/pokedex
 STARTERGFXDIR := graphics/starter_choose
 NAMINGGFXDIR := graphics/naming_screen
 SPINDAGFXDIR := graphics/pokemon/spinda/spots
+GYARADOSGFXDIR := graphics/pokemon/gyarados/spots
 
 types := normal fight flying poison ground rock bug ghost steel mystery fire water grass electric psychic ice dragon dark fairy
 contest_types := cool beauty cute smart tough
@@ -656,3 +657,12 @@ $(SPINDAGFXDIR)/spot_2.1bpp: %.1bpp: %.png
 
 $(SPINDAGFXDIR)/spot_3.1bpp: %.1bpp: %.png
 	$(GFX) $< $@ -plain -data_width 2
+
+$(GYARADOSGFXDIR)/spot_0.1bpp: %.1bpp: %.png
+	$(GFX) $< $@ -plain -data_width 4
+
+$(GYARADOSGFXDIR)/spot_1.1bpp: %.1bpp: %.png
+	$(GFX) $< $@ -plain -data_width 4
+
+$(GYARADOSGFXDIR)/spot_2.1bpp: %.1bpp: %.png
+	$(GFX) $< $@ -plain -data_width 4

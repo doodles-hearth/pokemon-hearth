@@ -1,0 +1,186 @@
+{
+  "id": "MAP_CHII_TOWN_HOUSE1",
+  "name": "ChiiTown_House1",
+  "layout": "LAYOUT_HOUSE1",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_CHII_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "x": 3,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(GROWLITHE)",
+      "x": 1,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 0,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ChiiTown_House1_EventScript_Cheater",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_CHII_TOWN",
+      "dest_warp_id": "3"
+    },
+    {
+      "x": 5,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_CHII_TOWN",
+      "dest_warp_id": "3"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 0,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_OldManTrespassing"
+    },
+    {
+      "type": "trigger",
+      "x": 1,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_OldManTrespassing"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_OldManTrespassing"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_OldManTrespassing"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_OldManTrespassing"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_OldManTrespassing"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_OldManTrespassing"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_OldManTrespassing"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_OldManTrespassing"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_GrowlitheGrrr"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_GrowlitheGrrr"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE",
+      "var_value": "0",
+      "script": "ChiiTown_House1_EventScript_OldManTrespassing"
+    }
+  ],
+  "bg_events": [
+
+  ]
+}

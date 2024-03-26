@@ -1,0 +1,10 @@
+mapscripts SakuTown_House1_MapScripts {
+	
+}
+
+script SakuTown_House1_EventScript_Tama {
+	// TODO EVA Lovers sidequest
+	lock
+	msgbox(format("Please go away. Leave me alone."))
+	release
+}

@@ -7,14 +7,14 @@ script GinkoWoods_EventScript_Toshio {
 	trainerbattle_single(
 		TRAINER_TOSHIO_1,
 		format("Our eyes met! Therefore we must battle!"),
-		format("Should have kept my mouth shut...")
+		format("Should have kept my mouth shut…")
 	)
 	// specialvar VAR_RESULT, ShouldTryRematchBattle
 	// goto_if_eq VAR_RESULT, TRUE, Route102_EventScript_CalvinRematch
 	// setvar VAR_0x8004, TRAINER_CALVIN_1
 	// specialvar VAR_RESULT, IsTrainerRegistered
 	// goto_if_eq VAR_RESULT, FALSE, Route102_EventScript_CalvinTryRegister
-	msgbox(format("Real trainers fight when they spot each other!\pAt least that's what my dad told me..."))
+	msgbox(format("Real trainers fight when they spot each other!\pAt least that's what my dad told me…"))
 	release
 	end
 }
@@ -25,7 +25,7 @@ script GinkoWoods_EventScript_Eiji {
 		format("With the help of my brand-new Pokémon, I'm catching all sort of bugs!"),
 		format("My bugs!")
 	)
-	msgbox(format("I picked a bird Pokémon because they're strong against bugs!"))
+	msgbox(format("I asked Elder Kaba for a bird Pokémon, because they're strong against bugs!"))
 	release
 	end
 }

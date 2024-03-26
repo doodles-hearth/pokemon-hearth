@@ -1,10 +1,10 @@
 #ifndef GUARD_REGIONMAPSEC_H
 #define GUARD_REGIONMAPSEC_H
 
-#define MAPSEC_LITTLEROOT_TOWN              0x00
-#define MAPSEC_OLDALE_TOWN                  0x01
-#define MAPSEC_DEWFORD_TOWN                 0x02
-#define MAPSEC_LAVARIDGE_TOWN               0x03
+#define MAPSEC_SUNRISE_VILLAGE              0x00
+#define MAPSEC_CHII_TOWN                  0x01
+#define MAPSEC_SAKU_TOWN                 0x02
+#define MAPSEC_KURA_TOWN               0x03
 #define MAPSEC_FALLARBOR_TOWN               0x04
 #define MAPSEC_VERDANTURF_TOWN              0x05
 #define MAPSEC_PACIFIDLOG_TOWN              0x06
@@ -17,9 +17,9 @@
 #define MAPSEC_MOSSDEEP_CITY                0x0D
 #define MAPSEC_SOOTOPOLIS_CITY              0x0E
 #define MAPSEC_EVER_GRANDE_CITY             0x0F
-#define MAPSEC_ROUTE_101                    0x10
-#define MAPSEC_ROUTE_102                    0x11
-#define MAPSEC_ROUTE_103                    0x12
+#define MAPSEC_TRANQUIL_ROUTE                    0x10
+#define MAPSEC_BEACHBOUND_ROUTE                    0x11
+#define MAPSEC_WINDSWEPT_ROUTE                    0x12
 #define MAPSEC_ROUTE_104                    0x13
 #define MAPSEC_ROUTE_105                    0x14
 #define MAPSEC_ROUTE_106                    0x15

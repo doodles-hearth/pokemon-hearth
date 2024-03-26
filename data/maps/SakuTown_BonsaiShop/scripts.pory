@@ -1,0 +1,73 @@
+mapscripts SakuTown_BonsaiShop_MapScripts {
+	
+}
+
+script SakuTown_BonsaiShop_Assistant {
+	lock
+	faceplayer
+
+	// Already visited shop
+	if (flag(FLAG_TALKED_TO_BONSAI_SHOP_ASSISTANT)) {
+		msgbox(format(
+			"Hi there!\p"
+			"The shop owner is currently away. She's very busy.\p"
+			"Busy with what, you ask?\p"
+			"Um, I'm actually not sure."
+		))
+	}
+	// First time visiting shop
+	else {
+		// Already met on Tranquil route
+		if (flag(FLAG_RECEIVED_WAILMER_PAIL)) {
+			msgbox(format(
+				"Hello, welcome to our bonsai shop…"
+			))
+			playse(SE_PIN)
+			applymovement(1, Common_Movement_ExclamationMark)
+			waitmovement(0)
+			applymovement(1, Common_Movement_Delay48)
+			waitmovement(0)
+			msgbox(format(
+				"Oh, but I know you! We met on Tranquil route, remember?\p"
+				"Have you used the watering can I gave you yet?\p"
+				"Oh, yes, I work here. We sell bonsai and other potted flowers!\p"
+				"I'm the owner's assistant, I manage the shop while she's away!"
+			))
+			release
+		}
+		// Very first encounter (missed her on Tranquil route)
+		else {
+			msgbox(format(
+				"Hello, welcome to our bonsai shop!I'm the owner's assistant, I manage the shop while she's away.\p"
+				"We sell bonsai and other potted flowers! Are you interested in plants?\p"
+				"Have you ever seen strange patches of soil while on your journey?\p"
+				"Those soil patches are incredibly fertile, which means any berry you plant in that soil will thrive and grow into a tree, ready to be harvested!\p"
+				"I see you're a trainer. Well, different berries have different effects when they're fed to Pokémon.\p"
+				"I love berries, hopefully you'll soon learn to love them too!\p"
+				"Here, try planting a few!"
+			))
+			closemessage
+			giveitem(ITEM_ORAN_BERRY, 3)
+			goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
+
+			msgbox(format(
+				"Oh, right, I was almost forgetting!\p"
+				"You must remember to water them regularly, or they won't grow!\p"
+				"I like you. Take this!"
+			))
+			closemessage
+			giveitem(ITEM_WAILMER_PAIL)
+			goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
+
+			msgbox(format(
+				"Isn't it cute? It's friend-shaped!\p"
+				"Don't worry about it, I have a spare one.\p"
+				"Have fun gardening!"
+			))
+
+			setflag(FLAG_TALKED_TO_BONSAI_SHOP_ASSISTANT)
+		}
+	}
+
+	release
+}

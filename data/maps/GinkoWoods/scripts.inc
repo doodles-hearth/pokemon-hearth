@@ -52,13 +52,13 @@ GinkoWoods_EventScript_Toshio_Text_0:
 
 GinkoWoods_EventScript_Toshio_Text_1:
 # 10 "data/maps/GinkoWoods/scripts.pory"
-	.string "Should have kept my mouth shut...$"
+	.string "Should have kept my mouth shut…$"
 
 GinkoWoods_EventScript_Toshio_Text_2:
 # 17 "data/maps/GinkoWoods/scripts.pory"
 	.string "Real trainers fight when they spot each\n"
 	.string "other!\p"
-	.string "At least that's what my dad told me...$"
+	.string "At least that's what my dad told me…$"
 
 GinkoWoods_EventScript_Eiji_Text_0:
 # 25 "data/maps/GinkoWoods/scripts.pory"
@@ -71,8 +71,8 @@ GinkoWoods_EventScript_Eiji_Text_1:
 
 GinkoWoods_EventScript_Eiji_Text_2:
 # 28 "data/maps/GinkoWoods/scripts.pory"
-	.string "I picked a bird Pokémon because they're\n"
-	.string "strong against bugs!$"
+	.string "I asked Elder Kaba for a bird Pokémon,\n"
+	.string "because they're strong against bugs!$"
 
 GinkoWoods_EventScript_OldMan_Text_0:
 # 36 "data/maps/GinkoWoods/scripts.pory"

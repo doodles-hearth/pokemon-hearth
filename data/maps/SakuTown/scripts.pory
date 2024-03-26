@@ -1,0 +1,144 @@
+const LOCALID_KARATEKA = 6
+const LOCALID_GUARD = 8
+
+mapscripts SakuTown_MapScripts {
+	
+}
+
+script SakuTown_EventScript_Farmer {
+	lock
+	faceplayer
+	msgbox(format(
+		"We're cultivatin' Ryss berries. Saku Village exports its berries to many towns."
+	))
+	release
+}
+
+script SakuTown_EventScript_Farmer2 {
+	lock
+	msgbox(format(
+		"Whew…\p"
+		"Working in the fields sure is tiring…"
+	))
+	release
+}
+
+script SakuTown_EventScript_Woman {
+	lock
+	faceplayer
+	msgbox(format(
+		"Those thugs in Kura Village may have their own dojo, but their town is nothing but an ugly pile of rocks!\p"
+		"They don't even have a Pokémon refuge!"
+	))
+	release
+}
+
+script SakuTown_EventScript_Karateka {
+	lock
+	faceplayer
+	msgbox(format(
+		"I let the Pokémon League borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region.\p"
+	))
+	applymovement(LOCALID_KARATEKA, Common_Movement_FaceRight)
+	waitmovement(0)
+	delay(30)
+	msgbox(format(
+		"Come on, Mama, Kuku! Daddy loves you!!\p"
+	))
+	release
+}
+
+script SakuTown_EventScript_Guard {
+	lock
+	faceplayer
+	msgbox(format(
+		"Those thugs in Kura Village may have their own dojo, but their town is nothing but an ugly pile of rocks!\p"
+		"They don't even have a Pokémon refuge!"
+	))
+	release
+}
+
+script SakuTown_EventScript_GuardSeesYou {
+	lock
+	msgbox(format("Hey!"))
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
+	applymovement(LOCALID_GUARD, Common_Movement_FaceLeft)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	waitmovement(LOCALID_GUARD)
+
+	if (flag(FLAG_TEMP_1)) {
+		msgbox(format(
+			"Are you trying to sneak in from Kura Village?\p"
+			"…Oh, you're that traveler from before. Come on in, then.\p"
+			"How was it? Awful, right? Welcome back to Saku Village!"
+		))
+	}
+	elif (!flag(FLAG_TEMP_1)) {
+		msgbox(format(
+			"Are you trying to sneak into Kura Village?\p"
+			"…Oh, you're just a traveler. Nevermind then, you can go through.\p"
+			"Though I wouldn't recommend visiting the next village, there's really nothing interesting there."
+		))
+	}
+
+	applymovement(LOCALID_GUARD, Common_Movement_FaceDown)
+
+	setvar(VAR_SAKU_KURA_VILLAGES_STATE, 1)
+
+	release
+}
+
+script SakuTown_EventScript_NorthOfGuard {
+	setflag(FLAG_TEMP_1)
+}
+
+script SakuTown_EventScript_SouthOfGuard {
+	clearflag(FLAG_TEMP_1)
+}
+
+script SakuTown_EventScript_TownSign {
+	msgbox(format("Saku Village\n“A village of tender flower petals.”"), MSGBOX_SIGN)
+}
+
+script SakuTown_EventScript_TrainerTips {
+	msgbox(format("Did you know? Saku Village is in all ways superior to Kura Village!"), MSGBOX_SIGN)
+}
+
+script SakuTown_EventScript_TrainerTips2 {
+	msgbox(format("Did you know? The folk from Kura Village are a bunch of mean jerks!"), MSGBOX_SIGN)
+}
+
+script SakuTown_EventScript_FloristSign {
+	msgbox(format("Humble Blossom\nBonsai & flower shop"), MSGBOX_SIGN)
+}
+
+script SakuTown_EventScript_Mart {
+	lock
+	faceplayer
+	message(gText_HowMayIServeYou)
+	waitmessage
+	pokemart(SakuTown_Mart)
+	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+	release
+}
+
+mart SakuTown_Mart {
+	ITEM_POKE_BALL
+	ITEM_BERRY_JUICE
+	ITEM_PARALYZE_HEAL
+	ITEM_ANTIDOTE
+	ITEM_AWAKENING
+	ITEM_ESCAPE_ROPE
+	ITEM_REPEL
+}
+
+script SakuTown_EventScript_Makuhita {
+	lock
+	faceplayer
+	waitse
+	playmoncry(SPECIES_MAKUHITA, CRY_MODE_NORMAL)
+	msgbox(format("Kuhi!"))
+	waitmoncry
+	release
+}

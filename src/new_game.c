@@ -127,7 +127,9 @@ static void ClearFrontierRecord(void)
 static void WarpToStartPositionInPlayersBedroom(void)
 {
     // SetWarpDestination(MAP_GROUP(LITTLEROOT_TOWN_MAYS_HOUSE_2F), MAP_NUM(LITTLEROOT_TOWN_MAYS_HOUSE_2F), WARP_ID_NONE, 7, 4);
-    SetWarpDestination(MAP_GROUP(CHII_TOWN), MAP_NUM(CHII_TOWN), WARP_ID_NONE, 19, 15);
+    // SetWarpDestination(MAP_GROUP(LAVARIDGE_TOWN), MAP_NUM(LAVARIDGE_TOWN), WARP_ID_NONE, 9, 10);
+    SetWarpDestination(MAP_GROUP(SILVERIDGE), MAP_NUM(SILVERIDGE), WARP_ID_NONE, 18, 24);
+    // SetWarpDestination(MAP_GROUP(CHII_TOWN), MAP_NUM(CHII_TOWN), WARP_ID_NONE, 19, 15);
     // SetWarpDestination(MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), WARP_ID_NONE, 5, 19);
     WarpIntoMap();
 }
@@ -160,6 +162,7 @@ void NewGameInitData(void)
     ResetPokedex();
     ClearFrontierRecord();
     ClearSav1();
+    ClearSav3();
     ClearAllMail();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
     gSaveBlock2Ptr->gcnLinkFlags = 0;

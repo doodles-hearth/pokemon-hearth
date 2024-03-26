@@ -48,9 +48,9 @@ Debug_CheatStart::
 	setflag FLAG_BADGE07_GET
 	setflag FLAG_BADGE08_GET
 	setflag FLAG_VISITED_LITTLEROOT_TOWN
-	setflag FLAG_VISITED_OLDALE_TOWN
-	setflag FLAG_VISITED_DEWFORD_TOWN
-	setflag FLAG_VISITED_LAVARIDGE_TOWN
+	setflag FLAG_VISITED_CHII_TOWN
+	setflag FLAG_VISITED_SAKU_TOWN
+	setflag FLAG_VISITED_KURA_TOWN
 	setflag FLAG_VISITED_FALLARBOR_TOWN
 	setflag FLAG_VISITED_VERDANTURF_TOWN
 	setflag FLAG_VISITED_PACIFIDLOG_TOWN
@@ -95,6 +95,48 @@ Debug_BoxFilledMessage::
 Debug_BoxFilledMessage_Text:
 	.string "Storage boxes filled!$"
 
+Debug_EventScript_CheckEV::
+	lockall
+	getpartysize
+	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
+	special ChoosePartyMon
+	waitstate
+	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_CheckEV_End
+	callnative Script_GetChosenMonOffensiveEV
+	msgbox Debug_EventScript_Text_OffensiveEV, MSGBOX_DEFAULT
+	callnative Script_GetChosenMonDefensiveEV
+	msgbox Debug_EventScript_Text_DefensiveEV, MSGBOX_DEFAULT
+Debug_EventScript_CheckEV_End::
+	releaseall
+	end
+
+Debug_EventScript_Text_OffensiveEV:
+	.string "ATK EV: {STR_VAR_1}, SPATK EV: {STR_VAR_2}, SPEED EV: {STR_VAR_3}$"
+
+Debug_EventScript_Text_DefensiveEV:
+	.string "HP EV: {STR_VAR_1}, DEF EV: {STR_VAR_2}, SPDEF EV: {STR_VAR_3}$"
+
+Debug_EventScript_CheckIV::
+	lockall
+	getpartysize
+	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
+	special ChoosePartyMon
+	waitstate
+	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_CheckIV_End
+	callnative Script_GetChosenMonOffensiveIV
+	msgbox Debug_EventScript_Text_OffensiveIV, MSGBOX_DEFAULT
+	callnative Script_GetChosenMonDefensiveIV
+	msgbox Debug_EventScript_Text_DefensiveIV, MSGBOX_DEFAULT
+Debug_EventScript_CheckIV_End::
+	releaseall
+	end
+
+Debug_EventScript_Text_OffensiveIV:
+	.string "ATK IV: {STR_VAR_1}, SPATK IV: {STR_VAR_2}, SPEED IV: {STR_VAR_3}$"
+
+Debug_EventScript_Text_DefensiveIV:
+	.string "HP IV: {STR_VAR_1}, DEF IV: {STR_VAR_2}, SPDEF IV: {STR_VAR_3}$"
+
 Debug_EventScript_Script_1::
 	end
 
@@ -124,6 +166,8 @@ Debug_CheckSaveBlock::
 	msgbox Debug_SaveBlock1Size, MSGBOX_DEFAULT
 	callnative CheckSaveBlock2Size
 	msgbox Debug_SaveBlock2Size, MSGBOX_DEFAULT
+	callnative CheckSaveBlock3Size
+	msgbox Debug_SaveBlock3Size, MSGBOX_DEFAULT
 	callnative CheckPokemonStorageSize
 	msgbox Debug_PokemonStorageSize, MSGBOX_DEFAULT
 	release
@@ -135,6 +179,10 @@ Debug_SaveBlock1Size::
 
 Debug_SaveBlock2Size::
 	.string "SaveBlock2 size: {STR_VAR_1}b/{STR_VAR_2}b.\n"
+	.string "Free space: {STR_VAR_3}b.$"
+
+Debug_SaveBlock3Size::
+	.string "SaveBlock3 size: {STR_VAR_1}b/{STR_VAR_2}b.\n"
 	.string "Free space: {STR_VAR_3}b.$"
 
 Debug_PokemonStorageSize::
@@ -154,7 +202,7 @@ Debug_ROMSize::
 Debug_HatchAnEgg::
 	lockall
 	getpartysize
-	goto_if_eq VAR_RESULT, 0, Debug_HatchAnEgg_NoPokemon
+	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
 	special ChoosePartyMon
 	waitstate
 	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_HatchAnEgg_End
@@ -166,8 +214,8 @@ Debug_HatchAnEgg_End::
 	releaseall
 	end
 
-Debug_HatchAnEgg_NoPokemon::
-	msgbox DebugScript_HatchAnEgg_Text_EmptyParty, MSGBOX_DEFAULT
+Debug_NoPokemon::
+	msgbox DebugScript_Text_EmptyParty, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -176,7 +224,7 @@ DebugScript_HatchAnEgg_CantForceHatch::
 	releaseall
 	end
 
-DebugScript_HatchAnEgg_Text_EmptyParty::
+DebugScript_Text_EmptyParty::
 	.string "You have no Pokémon nor Eggs.$"
 
 DebugScript_HatchAnEgg_Text_NotAnEgg::
@@ -215,6 +263,24 @@ Debug_ShowExpansionVersion::
 Debug_ExpansionVersion:
 	.string "pokeemerald-expansion {STR_VAR_1}$"
 
+Debug_BerryPestsDisabled::
+	msgbox DebugText_BerryPestsDisabled, MSGBOX_DEFAULT
+	release
+	end
+
+DebugText_BerryPestsDisabled:
+	.string "OW_BERRY_PESTS is disabled.\n"
+	.string "Unable to force pests onto berry trees.$"
+
+Debug_BerryWeedsDisabled::
+	msgbox DebugText_BerryWeedsDisabled, MSGBOX_DEFAULT
+	release
+	end
+
+DebugText_BerryWeedsDisabled:
+	.string "OW_BERRY_WEEDS is disabled.\n"
+	.string "Unable to force weeds onto berry trees.$"
+
 .endif
 
 Debug_FlagsAndVarNotSetBattleConfigMessage::
@@ -230,3 +296,152 @@ Debug_FlagsAndVarNotSetBattleConfigMessage_Text:
 	.string "usable flag and a usable var in:\l"
 	.string "'include/config/battle.h'!$"
 
+Debug_EventScript_InflictStatus1::
+	lockall
+	getpartysize
+	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Single, 0
+	dynmultipush Debug_EventScript_InflictStatus1_Text_PartyWide, 1
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Close, 2
+	dynmultistack 0, 0, FALSE, 3 FALSE, 0, NULL
+	switch VAR_RESULT
+	case 0, Debug_EventScript_InflictStatus1_Single
+	case 1, Debug_EventScript_InflictStatus1_Party
+	case 2, Debug_EventScript_InflictStatus1_Close
+Debug_EventScript_InflictStatus1_Close:
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Single:
+	special ChoosePartyMon
+	waitstate
+	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Poison, 0
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Paralysis, 1
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Sleep, 2
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Burn, 3
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Freeze, 4
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Frostbite, 5
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Close, 6
+	dynmultistack 0, 0, FALSE, 7, FALSE, 0, NULL
+	switch VAR_RESULT
+	case 0, Debug_EventScript_InflictStatus1_Single_Poison
+	case 1, Debug_EventScript_InflictStatus1_Single_Paralysis
+	case 2, Debug_EventScript_InflictStatus1_Single_Sleep
+	case 3, Debug_EventScript_InflictStatus1_Single_Burn
+	case 4, Debug_EventScript_InflictStatus1_Single_Freeze
+	case 5, Debug_EventScript_InflictStatus1_Single_Frostbite
+	case 6, Debug_EventScript_InflictStatus1_Close
+	case MULTI_B_PRESSED, Debug_EventScript_InflictStatus1_Close
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Single_Poison:
+	setstatus1 STATUS1_POISON, VAR_0x8004
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Single_Paralysis:
+	setstatus1 STATUS1_PARALYSIS, VAR_0x8004
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Single_Sleep:
+	setstatus1 STATUS1_SLEEP, VAR_0x8004
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Single_Burn:
+	setstatus1 STATUS1_BURN, VAR_0x8004
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Single_Freeze:
+	setstatus1 STATUS1_FREEZE, VAR_0x8004
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Single_Frostbite:
+	setstatus1 STATUS1_FROSTBITE, VAR_0x8004
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Party:
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Poison, 0
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Paralysis, 1
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Sleep, 2
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Burn, 3
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Freeze, 4
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Frostbite, 5
+	dynmultipush Debug_EventScript_InflictStatus1_Text_Close, 6
+	dynmultistack 0, 0, FALSE, 7, FALSE, 0, NULL
+	switch VAR_RESULT
+	case 0, Debug_EventScript_InflictStatus1_Party_Poison
+	case 1, Debug_EventScript_InflictStatus1_Party_Paralysis
+	case 2, Debug_EventScript_InflictStatus1_Party_Sleep
+	case 3, Debug_EventScript_InflictStatus1_Party_Burn
+	case 4, Debug_EventScript_InflictStatus1_Party_Freeze
+	case 5, Debug_EventScript_InflictStatus1_Party_Frostbite
+	case 6, Debug_EventScript_InflictStatus1_Close
+	case MULTI_B_PRESSED, Debug_EventScript_InflictStatus1_Close
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Party_Poison:
+	setstatus1 STATUS1_POISON, PARTY_SIZE
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Party_Paralysis:
+	setstatus1 STATUS1_PARALYSIS, PARTY_SIZE
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Party_Sleep:
+	setstatus1 STATUS1_SLEEP, PARTY_SIZE
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Party_Burn:
+	setstatus1 STATUS1_BURN, PARTY_SIZE
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Party_Freeze:
+	setstatus1 STATUS1_FREEZE, PARTY_SIZE
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Party_Frostbite:
+	setstatus1 STATUS1_FROSTBITE, PARTY_SIZE
+	releaseall
+	end
+
+Debug_EventScript_InflictStatus1_Text_Single:
+	.string "Single$"
+
+Debug_EventScript_InflictStatus1_Text_PartyWide:
+	.string "Party-wide$"
+
+Debug_EventScript_InflictStatus1_Text_Close:
+	.string "Close$"
+
+Debug_EventScript_InflictStatus1_Text_Poison:
+	.string "Poison$"
+
+Debug_EventScript_InflictStatus1_Text_Paralysis:
+	.string "Paralysis$"
+
+Debug_EventScript_InflictStatus1_Text_Sleep:
+	.string "Sleep$"
+
+Debug_EventScript_InflictStatus1_Text_Burn:
+	.string "Burn$"
+
+Debug_EventScript_InflictStatus1_Text_Freeze:
+	.string "Freeze$"
+
+Debug_EventScript_InflictStatus1_Text_Frostbite:
+	.string "Frostbite$"

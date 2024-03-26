@@ -1,0 +1,67 @@
+{
+  "id": "MAP_SUNRISE_VILLAGE_PLAYERS_HOUSE_LR",
+  "name": "SunriseVillage_PlayersHouse_LR",
+  "layout": "LAYOUT_SUNRISE_VILLAGE_PLAYERS_HOUSE_LR",
+  "music": "MUS_FALLARBOR",
+  "region_map_section": "MAPSEC_SUNRISE_VILLAGE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AROMA_LADY",
+      "x": 3,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SunriseVillage_PlayersHouse_LR_EventScript_BigSis",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_SUNRISE_VILLAGE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_SUNRISE_VILLAGE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 7,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 8,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

@@ -3,7 +3,7 @@
   "name": "BeachboundRoute",
   "layout": "LAYOUT_BEACHBOUND_ROUTE",
   "music": "MUS_ROUTE104",
-  "region_map_section": "MAPSEC_ROUTE_102",
+  "region_map_section": "MAPSEC_BEACHBOUND_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
@@ -17,6 +17,11 @@
       "map": "MAP_KURA_TOWN",
       "offset": 0,
       "direction": "left"
+    },
+    {
+      "map": "MAP_MAGURO_HARBOR",
+      "offset": 0,
+      "direction": "right"
     }
   ],
   "object_events": [

@@ -2317,7 +2317,7 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
 
 LittlerootTown_ProfessorBirchsLab_Event_DistributionCutscene_Text_0:
 # 24 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	.string "ELDER IWA: {PLAYER}, {RIVAL}, take\n"
+	.string "Elder IWA: {PLAYER}, {RIVAL}, take\n"
 	.string "one of these Pokémon.$"
 
 LittlerootTown_ProfessorBirchsLab_Event_DistributionCutscene_Text_1:

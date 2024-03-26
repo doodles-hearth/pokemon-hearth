@@ -724,6 +724,7 @@ Common_EventScript_OutOfCenterPartyHeal::
 	playfanfare MUS_HEAL
 	waitfanfare
 	special HealPlayerParty
+	callnative UpdateFollowingPokemon
 	fadescreen FADE_FROM_BLACK
 	return
 
@@ -947,6 +948,10 @@ gText_PlayerFoundOneTMHM::
 	.string "{PLAYER} found one {STR_VAR_1}\n"
 	.string "{STR_VAR_2}!$"
 
+gText_PlayerFoundTMHMs::
+	.string "{PLAYER} found {STR_VAR_3} {STR_VAR_1}\n"
+	.string "{STR_VAR_2}!$"
+
 gText_Sudowoodo_Attacked::
 	.string "The weird tree doesn't like the\n"
 	.string "WAILMER PAIL!\p"
@@ -1067,21 +1072,22 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/move_tutors.inc"
 	.include "data/scripts/trainer_hill.inc"
 	.include "data/scripts/test_signpost.inc"
+	.include "data/scripts/follower.inc"
 	.include "data/text/frontier_brain.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
-	.include "data/maps/Sunrise_Village/scripts.inc"
+	.include "data/maps/SunriseVillage/scripts.inc"
 
-	.include "data/maps/Sunrise_Village_Beach/scripts.inc"
+	.include "data/maps/SunriseVillage_Beach/scripts.inc"
 
 	.include "data/maps/GinkoWoods/scripts.inc"
 
 	.include "data/maps/ChiiTown/scripts.inc"
 
-	.include "data/maps/RouteTranquil/scripts.inc"
+	.include "data/maps/TranquilRoute/scripts.inc"
 
-	.include "data/maps/Sunrise_Village_PlayersHouse_LR/scripts.inc"
+	.include "data/maps/SunriseVillage_PlayersHouse_LR/scripts.inc"
 
 	.include "data/maps/SakuTown/scripts.inc"
 
@@ -1090,3 +1096,39 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/BeachboundRoute/scripts.inc"
 
 	.include "data/maps/MaguroHarbor/scripts.inc"
+
+	.include "data/maps/WindsweptRoute/scripts.inc"
+
+	.include "data/maps/SunriseVillage_PlayersHouse_Bedroom/scripts.inc"
+
+	.include "data/maps/SakuTown_House1/scripts.inc"
+
+	.include "data/maps/SunriseVillage_EldersHouse/scripts.inc"
+
+	.include "data/maps/SunriseVillage_EldersHouse_PrivateQuarters/scripts.inc"
+
+	.include "data/maps/SunriseVillage_RivalsHouse/scripts.inc"
+
+	.include "data/maps/SunriseVillage_House1/scripts.inc"
+
+	.include "data/maps/TranquilRoute_CutHouse/scripts.inc"
+
+	.include "data/maps/SakuTown_PokemonCenter/scripts.inc"
+
+	.include "data/maps/SakuTown_BonsaiShop/scripts.inc"
+
+	.include "data/maps/KuraTown_House1/scripts.inc"
+
+	.include "data/maps/ChiiTown_House1/scripts.inc"
+
+	.include "data/maps/Silveridge/scripts.inc"
+
+	.include "data/maps/Silveridge_House1/scripts.inc"
+
+	.include "data/maps/ChiiTown_PokemonCenter/scripts.inc"
+
+	.include "data/maps/KuraTown_House2/scripts.inc"
+
+	.include "data/maps/WindyCape/scripts.inc"
+
+	.include "data/maps/Silveridge_SculptorsHouse/scripts.inc"

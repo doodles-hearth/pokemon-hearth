@@ -1,0 +1,41 @@
+{
+  "id": "MAP_SUNRISE_VILLAGE_RIVALS_HOUSE",
+  "name": "SunriseVillage_RivalsHouse",
+  "layout": "LAYOUT_SUNRISE_VILLAGE_RIVALS_HOUSE",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_SUNRISE_VILLAGE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 4,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_SUNRISE_VILLAGE",
+      "dest_warp_id": "5"
+    },
+    {
+      "x": 5,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_SUNRISE_VILLAGE",
+      "dest_warp_id": "5"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

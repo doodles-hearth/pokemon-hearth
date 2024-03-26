@@ -35,6 +35,7 @@
 #define P_GALARIAN_FORMS                 FALSE
 #define P_HISUIAN_FORMS                  TRUE
 #define P_PALDEAN_FORMS                  FALSE
+#define P_TOKUAN_FORMS                   TRUE
 
 // Big groups of forms that aren't always desired when choosing families.
 #define P_PIKACHU_EXTRA_FORMS            FALSE
@@ -594,5 +595,11 @@
 #define P_FAMILY_MUNKIDORI               P_GEN_9_POKEMON
 #define P_FAMILY_FEZANDIPITI             P_GEN_9_POKEMON
 #define P_FAMILY_OGERPON                 P_GEN_9_POKEMON
+#define P_FAMILY_GOUGING_FIRE            P_GEN_9_POKEMON
+#define P_FAMILY_RAGING_BOLT             P_GEN_9_POKEMON
+#define P_FAMILY_IRON_BOULDER            P_GEN_9_POKEMON
+#define P_FAMILY_IRON_CROWN              P_GEN_9_POKEMON
+#define P_FAMILY_TERAPAGOS               P_GEN_9_POKEMON
+#define P_FAMILY_PECHARUNT               P_GEN_9_POKEMON
 
 #endif // GUARD_CONFIG_SPECIES_ENABLED_H

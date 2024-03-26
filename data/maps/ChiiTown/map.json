@@ -3,9 +3,9 @@
   "name": "ChiiTown",
   "layout": "LAYOUT_CHII_TOWN",
   "music": "MUS_FORTREE",
-  "region_map_section": "MAPSEC_OLDALE_TOWN",
+  "region_map_section": "MAPSEC_CHII_TOWN",
   "requires_flash": false,
-  "weather": "WEATHER_FLYING_BIRDS",
+  "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_TOWN",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -14,7 +14,7 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_ROUTE_TRANQUIL",
+      "map": "MAP_TRANQUIL_ROUTE",
       "offset": -28,
       "direction": "up"
     }
@@ -22,28 +22,41 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
-      "x": 26,
-      "y": 14,
+      "x": 23,
+      "y": 9,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
+      "script": "ChiiTown_EventScript_Mart",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TAILLOW)",
+      "x": 14,
+      "y": 16,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_range_x": 2,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_KECLEON",
-      "x": 14,
-      "y": 16,
-      "elevation": 4,
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "x": 16,
+      "y": 17,
+      "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "ChiiTown_EventScript_PlantingFlowers",
       "flag": "0"
     }
   ],
@@ -68,12 +81,33 @@
       "elevation": 0,
       "dest_map": "MAP_GINKO_WOODS",
       "dest_warp_id": "5"
+    },
+    {
+      "x": 24,
+      "y": 20,
+      "elevation": 0,
+      "dest_map": "MAP_CHII_TOWN_HOUSE1",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 13,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_CHII_TOWN_POKEMON_CENTER",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 17,
+      "y": 22,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "ChiiTown_EventScript_TownSign"
+    }
   ]
 }

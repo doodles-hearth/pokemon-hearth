@@ -1,0 +1,82 @@
+mapscripts SunriseVillage_PlayersHouse_LR_MapScripts {
+}
+
+script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
+    lock
+	playse(SE_PIN)
+	applymovement(1, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(1, Common_Movement_Delay48)
+	waitmovement(0)
+	msgbox(format(
+		"Oh, hi {PLAYER}{KUN}, you're up! Ready for the big event?\p"
+		"Are you excited? I sure hope you are, because I'm VERY EXCITED!\p"
+		"I have to head out, but I'll meet you there, okay?\p"
+		"Oh, by the way, your friend {RIVAL} left you a note.\p"
+		"Make sure you read it!"
+	))
+	closemessage
+	setflag(FLAG_BIGSIS_OUT)
+	setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 3)
+	applymovement(1, SunriseVillage_PlayersHouse_LR_Movement_BigSisExits)
+	waitmovement(0)
+	playse(SE_EXIT)
+	waitse
+	removeobject(1)
+    release
+    end
+}
+
+movement SunriseVillage_PlayersHouse_LR_Movement_BigSisExits {
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_in_place_faster_down
+	step_end
+}
+
+script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
+	lock
+	faceplayer
+	special(GetPlayerBroSisString)
+	msgbox(format(
+		"Hey {STR_VAR_1}."
+	))
+	release
+}
+
+script SunriseVillage_PlayersHouse_LR_EventScript_ReadRivalsNote {
+    lock
+	msgbox(format(
+			"“Hey {PLAYER}{KUN},\p"
+			"“I'm going down to the beach before the giveaway, meet me there if you wanna hang out.\p"
+			"“-{RIVAL}”"
+		))
+    release
+    end
+}
+
+script SunriseVillage_PlayersHouse_LR_EventScript_RunningShoesBox {
+    lock
+	msgbox(format(
+			"A parcel with a note on it.\p"
+			"“Dear {PLAYER},\p"
+			"“Here are the SWIFT GETA shoes you have ordered.\p"
+			"“Press B to run and fly like the wind!”"
+		))
+	playfanfare(MUS_OBTAIN_ITEM)
+	message(format("{PLAYER} switched shoes with the SWIFT GETA."))
+	waitfanfare
+	removeobject(2)
+	setflag(FLAG_RECEIVED_RUNNING_SHOES)
+	setflag(FLAG_SYS_B_DASH)
+	closemessage
+	delay(30)
+    release
+    end
+}

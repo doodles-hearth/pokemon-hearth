@@ -1,0 +1,36 @@
+const LOCALID_SCULPTOR = 0
+
+mapscripts Silveridge_SculptorsHouse_MapScripts {
+	
+}
+
+script Silveridge_House1_EventScript_Sculptor {
+	// TODO EVA: Silveridge town statue sidequest
+	lock
+	faceplayer
+	msgbox(format(
+		"Please do not talk to me. I am creating."
+	))
+	closemessage
+	applymovement(LOCALID_SCULPTOR, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+	delay(60)
+
+	playse(SE_PIN)
+	faceplayer
+	applymovement(LOCALID_SCULPTOR, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(LOCALID_SCULPTOR, Common_Movement_Delay48)
+	waitmovement(0)
+
+	msgbox(format(
+		"…Oh? Could it be? Another noble soul moved by the ancestral art of sculpture?\p"
+		"Am I no longer utterly alone? Oh, my heart swells up at the idea!\p"
+		"As a fellow connoisseur of sculpture, you must know how difficult it is to find a proper model, one that will stir in its beholder the most violent passions.\p"
+		"To transform a raw slab of stone into the pinnacle of beauty… That is my aspiration.\p"
+		"To satisfy this need, I must lay my eyes on a XXX.\p"
+		"I see that you are a trainer. Please bring me a XXX to help me achieve my magnum opus."
+	))
+
+	release
+}

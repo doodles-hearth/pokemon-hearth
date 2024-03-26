@@ -1,12 +1,12 @@
 mapscripts LittlerootTown_MaysHouse_2F_MapScripts {
-	MAP_SCRIPT_ON_LOAD {
-		if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) < 1) {
-			setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 1)
-		}
-	}
+	// MAP_SCRIPT_ON_LOAD {
+	// 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) < 1) {
+	// 		setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 1)
+	// 	}
+	// }
 }
 
-// Big Sis calls player when he gets out of bed
+// // Big Sis calls player when he gets out of bed
 script LittlerootTown_MaysHouse_2F_BigSisCalling {
     lock
 	msgbox(format(
@@ -18,9 +18,9 @@ script LittlerootTown_MaysHouse_2F_BigSisCalling {
     end
 }
 
-// movement LittlerootTown_MaysHouse_2F_Movement_PlayerGetOutOfBed {
-// 	delay_8
-// 	face_left
-// 	delay_16
-// 	jump_left
-// }
+movement LittlerootTown_MaysHouse_2F_Movement_PlayerGetOutOfBed {
+	delay_8
+	face_left
+	delay_16
+	jump_left
+}

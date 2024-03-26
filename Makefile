@@ -364,6 +364,11 @@ ifeq ($(DINFO),1)
 override CFLAGS += -g
 endif
 
+ifeq ($(DDEBUG),1)
+override ASFLAGS += --defsym DEBUG=1
+override CPPFLAGS += -D DEBUG=1
+endif
+
 # The dep rules have to be explicit or else missing files won't be reported.
 # As a side effect, they're evaluated immediately instead of when the rule is invoked.
 # It doesn't look like $(shell) can be deferred so there might not be a better way.
@@ -465,6 +470,10 @@ $(OBJ_DIR)/sym_common.ld: sym_common.txt $(C_OBJS) $(wildcard common_syms/*.txt)
 $(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
 	$(RAMSCRGEN) ewram_data $< ENGLISH > $@
 
+# NOTE: Depending on event_scripts.o is hacky, but we want to depend on everything event_scripts.s depends on without having to alter scaninc
+$(DATA_SRC_SUBDIR)/pokemon/teachable_learnsets.h: $(DATA_ASM_BUILDDIR)/event_scripts.o
+	python3 tools/learnset_helpers/teachable.py
+
 # NOTE: Based on C_DEP above, but without NODEP and KEEP_TEMPS handling.
 define TEST_DEP
 $1: $2 $$(shell $(SCANINC) -I include -I tools/agbcc/include -I gflib $2)
@@ -492,7 +501,7 @@ $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS) libagbsyscall
 
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
-	$(FIX) $@ -p --silent
+	$(FIX) $@ --silent
 
 agbcc: all
 

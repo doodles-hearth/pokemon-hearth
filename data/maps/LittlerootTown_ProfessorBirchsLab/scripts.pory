@@ -21,7 +21,7 @@ script LittlerootTown_ProfessorBirchsLab_Event_DistributionCutscene {
 	waitmovement(0)
 	// Elder speaks
 	msgbox(format(
-		"ELDER IWA: {PLAYER}, {RIVAL}, take one of these Pokémon."
+		"Elder IWA: {PLAYER}, {RIVAL}, take one of these Pokémon."
 	))
 	closemessage
 	// Rival is nice and lets you pick first

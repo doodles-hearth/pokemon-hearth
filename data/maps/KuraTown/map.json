@@ -3,7 +3,7 @@
   "name": "KuraTown",
   "layout": "LAYOUT_KURA_TOWN",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_DEWFORD_TOWN",
+  "region_map_section": "MAPSEC_KURA_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_TOWN",
@@ -22,18 +22,51 @@
       "map": "MAP_BEACHBOUND_ROUTE",
       "offset": 0,
       "direction": "right"
+    },
+    {
+      "map": "MAP_WINDSWEPT_ROUTE",
+      "offset": 16,
+      "direction": "up"
     }
   ],
   "object_events": [
 
   ],
   "warp_events": [
-
+    {
+      "x": 33,
+      "y": 25,
+      "elevation": 0,
+      "dest_map": "MAP_KURA_TOWN_HOUSE1",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 42,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_KURA_TOWN_HOUSE2",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 20,
+      "y": 24,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "KuraTown_EventScript_TownSign"
+    },
+    {
+      "type": "sign",
+      "x": 34,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "KuraTown_EventScript_DirectionsSign"
+    }
   ]
 }

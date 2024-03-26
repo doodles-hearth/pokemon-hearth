@@ -1,0 +1,36 @@
+mapscripts TranquilRoute_CutHouse_MapScripts {
+	
+}
+
+script TranquilRoute_CutHouse_EventScript_CutMaster {
+	lock
+	faceplayer
+	// TODO EVA Sidequest
+	if (flag(FLAG_RECEIVED_HM_CUT)) {
+		msgbox(format(
+			"Are you finding the Cut technique useful?\p"
+			"No, I still haven't trimmed my garden. I really should get to it…"
+		))
+	}
+	else {
+		msgbox(format(
+		"Hello, there. I don't get many visitors, so sit down, have some tea!\p"
+		"What? The weeds are growing all over the place in my garden?\p"
+		"Ho ho ho…\p"
+		"You're right, I have been neglecting it lately. You see, my old back isn't as strong as it used to be.\p"
+		"Here, your Pokémon can trim them using this."
+		))
+		closemessage
+
+		giveitem(ITEM_HM_CUT)
+		setflag(FLAG_RECEIVED_HM_CUT)
+		msgbox(format(
+			"This scroll contains an ancient technique created by the most talented samurai. Pokémon can learn that technique too.\p"
+			"If you have a Pokémon capable of learning this move, it will be able to cut tall grass as well as little trees that block your path.\p"
+			"In fact, now that you have read the scroll, you don't even need to teach them the actual move!"
+			"Oh, you will need at least one official dojo badge to be able to cut trees and grass, though."
+		))
+	}
+
+	release
+}

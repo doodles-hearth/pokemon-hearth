@@ -1,0 +1,39 @@
+mapscripts KuraTown_House1_MapScripts {
+	
+}
+
+script KuraTown_House1_OldWoman {
+	lock
+	faceplayer
+	msgbox(format(
+		"You look like you're tired, young one. Please rest a while."
+	))
+	call(Common_EventScript_OutOfCenterPartyHeal)
+	msgbox(format(
+		"I wish you strength on your journey."
+	))
+	release
+}
+
+script KuraTown_House1_OldWomansSon {
+	lock
+	faceplayer
+	msgbox(format(
+		"The Pokémon league organization didn't see fit to build a Pokémon refuge in our village, but those jerks over at Saku Village won't let us use theirs.\p"
+		"So my mother has to work hard to heal all the villager's Pokémon.\p"
+		"It's not fair!"
+	))
+	release
+}
+
+script KuraTown_House1_Growlithe {
+	lock
+	faceplayer
+	waitse
+	playmoncry(SPECIES_GROWLITHE, CRY_MODE_NORMAL)
+	msgbox(format(
+		"Wah!"
+	))
+	waitmoncry
+	release
+}

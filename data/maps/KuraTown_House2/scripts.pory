@@ -1,0 +1,60 @@
+const LOCALID_ASHII = 1
+
+mapscripts KuraTown_House2_MapScripts {
+	
+}
+
+script KuraTown_House2_EventScript_Ashii {
+	lock
+
+	// First encounter
+	if (var(VAR_QUEST_TAMA_ASHII_STATE) == 0) {
+		msgbox(format(
+			"*Sigh* Oh, Tama… Why must life be so complicated?"
+		))
+		closemessage
+		delay(30)
+
+		playse(SE_PIN)
+		applymovement(LOCALID_ASHII, Common_Movement_FacePlayer)
+		waitmovement(0)
+		applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
+		waitmovement(0)
+		applymovement(LOCALID_ASHII, Common_Movement_Delay48)
+		waitmovement(0)
+
+		msgbox(format(
+			"Hey, what are you doing in my house? Were you eavesdropping?\p"
+			"…It doesn't matter anyway. The boy I really like lives in Saku Village, but our two villages hate each other, so I can't see him anymore.\p"
+			"If only there was a way for him to know my feelings…"
+		))
+		closemessage
+		delay(30)
+
+		playse(SE_PIN)
+		applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
+		waitmovement(0)
+		applymovement(LOCALID_ASHII, Common_Movement_Delay48)
+		waitmovement(0)
+
+		msgbox(format(
+			"Wait, you're not from here, are you?\p"
+			"The guard won't let anyone from Kura Village enter Saku Village. But you should be fine!\p"
+			"Please, go to Saku Village and give him this. He'll know it's from me."
+		))
+
+		giveitem(ITEM_ASHIIS_SCARF)
+		goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
+		setvar(VAR_QUEST_TAMA_ASHII_STATE, 1)
+	}
+	elif (var(VAR_QUEST_TAMA_ASHII_STATE) == 1) {
+		faceplayer
+		msgbox(format(
+			"Wait, you're not from here, are you?\p"
+			"The guard won't let anyone from Kura Village enter Saku Village. But you should be fine!\p"
+			"Please, go to Saku Village and give him this. He'll know it's from me."
+		))
+	}
+
+	release
+}

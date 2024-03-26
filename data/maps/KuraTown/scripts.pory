@@ -1,0 +1,11 @@
+mapscripts KuraTown_MapScripts {
+	
+}
+
+script KuraTown_EventScript_TownSign {
+	msgbox(format("Kura Village\n“A village where the mountains meet the woods.”"), MSGBOX_SIGN)
+}
+
+script KuraTown_EventScript_DirectionsSign {
+	msgbox(format("{UP_ARROW} Silver Tunnel\nThis way for Silveridge"), MSGBOX_SIGN)
+}

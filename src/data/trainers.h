@@ -3140,6 +3140,8 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("SIDNEY"),
         .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
+        .mugshotEnabled = TRUE,
+        .mugshotColor = MUGSHOT_COLOR_PURPLE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SETUP_FIRST_TURN,
         .party = TRAINER_PARTY(sParty_Sidney),
     },
@@ -3152,6 +3154,8 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("PHOEBE"),
         .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
+        .mugshotEnabled = TRUE,
+        .mugshotColor = MUGSHOT_COLOR_GREEN,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .party = TRAINER_PARTY(sParty_Phoebe),
     },
@@ -3164,6 +3168,8 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("GLACIA"),
         .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
+        .mugshotEnabled = TRUE,
+        .mugshotColor = MUGSHOT_COLOR_PINK,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .party = TRAINER_PARTY(sParty_Glacia),
     },
@@ -3176,6 +3182,8 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("DRAKE"),
         .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_NONE, ITEM_NONE},
         .doubleBattle = FALSE,
+        .mugshotEnabled = TRUE,
+        .mugshotColor = MUGSHOT_COLOR_BLUE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .party = TRAINER_PARTY(sParty_Drake),
     },
@@ -4028,6 +4036,8 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("WALLACE"),
         .items = {ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE, ITEM_FULL_RESTORE},
         .doubleBattle = FALSE,
+        .mugshotEnabled = TRUE,
+        .mugshotColor = MUGSHOT_COLOR_YELLOW,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .party = TRAINER_PARTY(sParty_Wallace),
     },
@@ -7391,17 +7401,17 @@ const struct Trainer gTrainers[] = {
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .party = TRAINER_PARTY(sParty_Eiji),
     },
-
-    [TRAINER_LYLE] =
+    // TODO EVA UNUSED
+    [TRAINER_KAWASE] =
     {
-        .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_BUG_CATCHER,
-        .trainerName = _("LYLE"),
+        .trainerClass = TRAINER_CLASS_ARTIST,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_RICH,
+        .trainerPic = TRAINER_PIC_ARTIST,
+        .trainerName = _("Kawase"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = TRAINER_PARTY(sParty_Lyle),
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_SMART_SWITCHING | AI_FLAG_TRY_TO_FAINT,
+        .party = TRAINER_PARTY(sParty_Kawase),
     },
 
     [TRAINER_JOSE] =
@@ -7452,16 +7462,17 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_Kent),
     },
 
-    [TRAINER_JAMES_1] =
+    // TODO EVA UNUSED
+    [TRAINER_TSUYA] =
     {
-        .trainerClass = TRAINER_CLASS_BUG_CATCHER,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
-        .trainerPic = TRAINER_PIC_BUG_CATCHER,
-        .trainerName = _("JAMES"),
+        .trainerClass = TRAINER_CLASS_AROMA_LADY,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_FEMALE,
+        .trainerPic = TRAINER_PIC_AROMA_LADY,
+        .trainerName = _("Tsuya"),
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
-        .party = TRAINER_PARTY(sParty_James1),
+        .party = TRAINER_PARTY(sParty_Tsuya),
     },
 
     [TRAINER_JAMES_2] =
@@ -8354,9 +8365,9 @@ const struct Trainer gTrainers[] = {
 
     [TRAINER_KENJI] =
     {
-        .trainerClass = TRAINER_CLASS_PAINTER,
+        .trainerClass = TRAINER_CLASS_ARTIST,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_RICH,
-        .trainerPic = TRAINER_PIC_FISHERMAN, // TODO EVA
+        .trainerPic = TRAINER_PIC_ARTIST,
         .trainerName = _("KENJI"),
         .items = {},
         .doubleBattle = FALSE,

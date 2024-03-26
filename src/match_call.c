@@ -713,7 +713,7 @@ static const struct MatchCallTrainerTextInfo sMatchCallTrainers[] =
         .differentRouteMatchCallTextId = TEXT_ID(REQ_TOPIC_DIFF_ROUTE, 2),
     },
     {
-        .trainerId = TRAINER_JAMES_1,
+        .trainerId = TRAINER_TSUYA,
         .unused = 0,
         .battleTopicTextIds = BATTLE_TEXT_IDS(1),
         .generalTextId = TEXT_ID(GEN_TOPIC_PERSONAL, 56),
@@ -1460,7 +1460,11 @@ static void Task_SpinPokenavIcon(u8 taskId)
 
 static bool32 TrainerIsEligibleForRematch(int matchCallId)
 {
+#if FREE_MATCH_CALL == FALSE
     return gSaveBlock1Ptr->trainerRematches[matchCallId] > 0;
+#else
+    return FALSE;
+#endif //FREE_MATCH_CALL
 }
 
 static u16 GetRematchTrainerLocation(int matchCallId)
@@ -1689,7 +1693,7 @@ static void PopulateTrainerName(int matchCallId, u8 *destStr)
         }
     }
 
-    StringCopy(destStr, gTrainers[trainerId].trainerName);
+    StringCopy(destStr, GetTrainerNameFromId(trainerId));
 }
 
 static void PopulateMapName(int matchCallId, u8 *destStr)
@@ -1795,9 +1799,12 @@ static void PopulateSpeciesFromTrainerParty(int matchCallId, u8 *destStr)
     const u8 *speciesName;
 
     trainerId = GetLastBeatenRematchTrainerId(sMatchCallTrainers[matchCallId].trainerId);
-    party = gTrainers[trainerId].party;
-    monId = Random() % gTrainers[trainerId].partySize;
-    speciesName = GetSpeciesName(party[monId].species);
+    party = GetTrainerPartyFromId(trainerId);
+    monId = Random() % GetTrainerPartySizeFromId(trainerId);
+    if (party != NULL)
+        speciesName = GetSpeciesName(party[monId].species);
+    else
+        speciesName = GetSpeciesName(SPECIES_NONE);
 
     StringCopy(destStr, speciesName);
 }

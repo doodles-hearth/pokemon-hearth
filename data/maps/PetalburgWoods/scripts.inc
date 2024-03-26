@@ -273,49 +273,49 @@ PetalburgWoods_EventScript_Sign2::
 	end
 
 PetalburgWoods_EventScript_Lyle::
-	trainerbattle_single TRAINER_LYLE, PetalburgWoods_Text_GoBugPokemonTeam, PetalburgWoods_Text_ICouldntWin
-	msgbox PetalburgWoods_Text_ImOutOfPokeBalls, MSGBOX_AUTOCLOSE
+	// trainerbattle_single TRAINER_LYLE, PetalburgWoods_Text_GoBugPokemonTeam, PetalburgWoods_Text_ICouldntWin
+	// msgbox PetalburgWoods_Text_ImOutOfPokeBalls, MSGBOX_AUTOCLOSE
 	end
 
 PetalburgWoods_EventScript_James::
-	trainerbattle_single TRAINER_JAMES_1, PetalburgWoods_Text_InstantlyPopularWithBugPokemon, PetalburgWoods_Text_CantBePopularIfILose, PetalburgWoods_EventScript_TryRegisterJames
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, PetalburgWoods_EventScript_JamesRematch
-	setvar VAR_0x8004, TRAINER_JAMES_1
-	specialvar VAR_RESULT, IsTrainerRegistered
-	goto_if_eq VAR_RESULT, FALSE, PetalburgWoods_EventScript_TryRegisterJames2
-	msgbox PetalburgWoods_Text_PeopleRespectYou, MSGBOX_DEFAULT
-	release
+	// trainerbattle_single TRAINER_JAMES_1, PetalburgWoods_Text_InstantlyPopularWithBugPokemon, PetalburgWoods_Text_CantBePopularIfILose, PetalburgWoods_EventScript_TryRegisterJames
+	// specialvar VAR_RESULT, ShouldTryRematchBattle
+	// goto_if_eq VAR_RESULT, TRUE, PetalburgWoods_EventScript_JamesRematch
+	// setvar VAR_0x8004, TRAINER_JAMES_1
+	// specialvar VAR_RESULT, IsTrainerRegistered
+	// goto_if_eq VAR_RESULT, FALSE, PetalburgWoods_EventScript_TryRegisterJames2
+	// msgbox PetalburgWoods_Text_PeopleRespectYou, MSGBOX_DEFAULT
+	// release
 	end
 
 PetalburgWoods_EventScript_TryRegisterJames::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	goto_if_set FLAG_HAS_MATCH_CALL, PetalburgWoods_EventScript_RegisterJames
-	release
+	// special PlayerFaceTrainerAfterBattle
+	// waitmovement 0
+	// goto_if_set FLAG_HAS_MATCH_CALL, PetalburgWoods_EventScript_RegisterJames
+	// release
 	end
 
 PetalburgWoods_EventScript_RegisterJames::
-	msgbox PetalburgWoods_Text_IWantRematch1, MSGBOX_DEFAULT
-	register_matchcall TRAINER_JAMES_1
-	release
+	// msgbox PetalburgWoods_Text_IWantRematch1, MSGBOX_DEFAULT
+	// register_matchcall TRAINER_JAMES_1
+	// release
 	end
 
 PetalburgWoods_EventScript_TryRegisterJames2::
-	goto_if_set FLAG_HAS_MATCH_CALL, PetalburgWoods_EventScript_RegisterJames2
-	msgbox PetalburgWoods_Text_PeopleRespectYou, MSGBOX_DEFAULT
-	release
+	// goto_if_set FLAG_HAS_MATCH_CALL, PetalburgWoods_EventScript_RegisterJames2
+	// msgbox PetalburgWoods_Text_PeopleRespectYou, MSGBOX_DEFAULT
+	// release
 	end
 
 PetalburgWoods_EventScript_RegisterJames2::
-	msgbox PetalburgWoods_Text_IWantRematch2, MSGBOX_DEFAULT
-	register_matchcall TRAINER_JAMES_1
-	release
+	// msgbox PetalburgWoods_Text_IWantRematch2, MSGBOX_DEFAULT
+	// register_matchcall TRAINER_JAMES_1
+	// release
 	end
 
 PetalburgWoods_EventScript_JamesRematch::
-	trainerbattle_rematch TRAINER_JAMES_1, PetalburgWoods_Text_MyPokemonHaveGrown, PetalburgWoods_Text_CantBePopularIfLose
-	msgbox PetalburgWoods_Text_IveBeenTrainingHard, MSGBOX_AUTOCLOSE
+	// trainerbattle_rematch TRAINER_JAMES_1, PetalburgWoods_Text_MyPokemonHaveGrown, PetalburgWoods_Text_CantBePopularIfLose
+	// msgbox PetalburgWoods_Text_IveBeenTrainingHard, MSGBOX_AUTOCLOSE
 	end
 
 PetalburgWoods_Text_NotAOneToBeFound:

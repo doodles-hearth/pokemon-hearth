@@ -1,32 +1,32 @@
 {
   "map_sections": [
     {
-      "map_section": "MAPSEC_LITTLEROOT_TOWN",
-      "name": "LITTLEROOT TOWN",
+      "map_section": "MAPSEC_SUNRISE_VILLAGE",
+      "name": "SUNRISE VILLAGE",
       "x": 4,
       "y": 11,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_OLDALE_TOWN",
-      "name": "OLDALE TOWN",
+      "map_section": "MAPSEC_CHII_TOWN",
+      "name": "CHII TOWN",
       "x": 4,
       "y": 9,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_DEWFORD_TOWN",
-      "name": "DEWFORD TOWN",
+      "map_section": "MAPSEC_SAKU_TOWN",
+      "name": "SAKU VILLAGE",
       "x": 2,
       "y": 14,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_LAVARIDGE_TOWN",
-      "name": "LAVARIDGE TOWN",
+      "map_section": "MAPSEC_KURA_TOWN",
+      "name": "KURA VILLAGE",
       "x": 5,
       "y": 3,
       "width": 1,
@@ -129,7 +129,7 @@
       "height": 2
     },
     {
-      "map_section": "MAPSEC_ROUTE_101",
+      "map_section": "MAPSEC_TRANQUIL_ROUTE",
       "name": "ROUTE 101",
       "x": 4,
       "y": 10,
@@ -137,16 +137,16 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_102",
-      "name": "ROUTE 102",
+      "map_section": "MAPSEC_BEACHBOUND_ROUTE",
+      "name": "BEACHBOUND ROUTE",
       "x": 2,
       "y": 9,
       "width": 2,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ROUTE_103",
-      "name": "ROUTE 103",
+      "map_section": "MAPSEC_WINDSWEPT_ROUTE",
+      "name": "WINDSWEPT ROUTE",
       "x": 4,
       "y": 8,
       "width": 4,

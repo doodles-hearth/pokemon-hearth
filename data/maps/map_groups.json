@@ -1,7 +1,7 @@
 {
   "group_order": [
     "gMapGroup_TownsAndRoutes",
-    "gMapGroup_IndoorLittleroot",
+    "gMapGroup_IndoorSunriseVillage",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
     "gMapGroup_IndoorLavaridge",
@@ -33,7 +33,11 @@
     "gMapGroup_IndoorRoute113",
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
-    "gMapGroup_IndoorRoute124"
+    "gMapGroup_IndoorRoute124",
+    "gMapGroup_IndoorTranquilRoute",
+    "gMapGroup_IndoorSaku",
+    "gMapGroup_IndoorKura",
+    "gMapGroup_IndoorChii"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -93,22 +97,30 @@
     "Underwater_Route129",
     "Underwater_Route105",
     "Underwater_Route125",
-    "Sunrise_Village",
-    "Sunrise_Village_Beach",
+    "SunriseVillage",
+    "SunriseVillage_Beach",
     "ChiiTown",
-    "RouteTranquil",
+    "TranquilRoute",
     "SakuTown",
     "KuraTown",
     "BeachboundRoute",
-    "MaguroHarbor"
+    "MaguroHarbor",
+    "WindsweptRoute",
+    "SunriseVillage_PlayersHouse_Bedroom",
+    "Silveridge",
+    "WindyCape"
   ],
-  "gMapGroup_IndoorLittleroot": [
+  "gMapGroup_IndoorSunriseVillage": [
     "LittlerootTown_BrendansHouse_1F",
     "LittlerootTown_BrendansHouse_2F",
     "LittlerootTown_MaysHouse_1F",
     "LittlerootTown_MaysHouse_2F",
     "LittlerootTown_ProfessorBirchsLab",
-    "Sunrise_Village_PlayersHouse_LR"
+    "SunriseVillage_PlayersHouse_LR",
+    "SunriseVillage_EldersHouse",
+    "SunriseVillage_EldersHouse_PrivateQuarters",
+    "SunriseVillage_RivalsHouse",
+    "SunriseVillage_House1"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",
@@ -123,7 +135,8 @@
     "DewfordTown_PokemonCenter_2F",
     "DewfordTown_Gym",
     "DewfordTown_Hall",
-    "DewfordTown_House2"
+    "DewfordTown_House2",
+    "SakuTown_House1"
   ],
   "gMapGroup_IndoorLavaridge": [
     "LavaridgeTown_HerbShop",
@@ -142,7 +155,9 @@
     "FallarborTown_PokemonCenter_1F",
     "FallarborTown_PokemonCenter_2F",
     "FallarborTown_CozmosHouse",
-    "FallarborTown_MoveRelearnersHouse"
+    "FallarborTown_MoveRelearnersHouse",
+    "Silveridge_House1",
+    "Silveridge_SculptorsHouse"
   ],
   "gMapGroup_IndoorVerdanturf": [
     "VerdanturfTown_BattleTentLobby",
@@ -630,5 +645,20 @@
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"
+  ],
+  "gMapGroup_IndoorTranquilRoute": [
+    "TranquilRoute_CutHouse"
+  ],
+  "gMapGroup_IndoorSaku": [
+    "SakuTown_PokemonCenter",
+    "SakuTown_BonsaiShop"
+  ],
+  "gMapGroup_IndoorKura": [
+    "KuraTown_House1",
+    "KuraTown_House2"
+  ],
+  "gMapGroup_IndoorChii": [
+    "ChiiTown_House1",
+    "ChiiTown_PokemonCenter"
   ]
 }

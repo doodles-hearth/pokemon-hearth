@@ -21,7 +21,7 @@
 #define FLAG_TEMP_B      (TEMP_FLAGS_START + 0xB)  // Unused Flag
 #define FLAG_TEMP_C      (TEMP_FLAGS_START + 0xC)  // Unused Flag
 #define FLAG_TEMP_D      (TEMP_FLAGS_START + 0xD)  // Unused Flag
-#define FLAG_TEMP_E      (TEMP_FLAGS_START + 0xE)  // Unused Flag
+#define FLAG_TEMP_HIDE_FOLLOWER      (TEMP_FLAGS_START + 0xE)  // When set, follower pokemon won't be spawned
 #define FLAG_TEMP_F      (TEMP_FLAGS_START + 0xF)  // Unused Flag
 #define FLAG_TEMP_10     (TEMP_FLAGS_START + 0x10) // Unused Flag
 #define FLAG_TEMP_11     (TEMP_FLAGS_START + 0x11)
@@ -118,9 +118,7 @@
 #define FLAG_MOSSDEEP_GYM_SWITCH_2           0x65 //
 #define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66 //
 #define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
-
-#define FLAG_UNUSED_0x068                    0x68  // Unused Flag
-
+#define FLAG_TALKED_TO_BONSAI_SHOP_ASSISTANT 0x68
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_HM_STRENGTH            0x6A
 #define FLAG_RECEIVED_HM_ROCK_SMASH          0x6B
@@ -483,7 +481,7 @@
 #define FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE 0x1C1
 #define FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE 0x1C2
 #define FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE 0x1C3
-#define FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT 0x1C4
+#define FLAG_DEFEATED_ELECTRODE_CHII_TOWN_HOUSE 0x1C4
 #define FLAG_DEFEATED_ELECTRODE_2_AQUA_HIDEOUT 0x1C5
 #define FLAG_DEFEATED_SUDOWOODO              0x1C6
 #define FLAG_DEFEATED_MEW                    0x1C7
@@ -539,10 +537,10 @@
 
 // Hidden Items
 #define FLAG_HIDDEN_ITEMS_START                                                         0x1F4
-#define FLAG_HIDDEN_ITEM_LAVARIDGE_TOWN_ICE_HEAL             (FLAG_HIDDEN_ITEMS_START + 0x00)
-#define FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET                  (FLAG_HIDDEN_ITEMS_START + 0x01)
-#define FLAG_HIDDEN_ITEM_ROUTE_111_STARDUST                  (FLAG_HIDDEN_ITEMS_START + 0x02)
-#define FLAG_HIDDEN_ITEM_ROUTE_113_ETHER                     (FLAG_HIDDEN_ITEMS_START + 0x03)
+#define FLAG_HIDDEN_ITEM_GINKO_WOODS_POKEBALL                (FLAG_HIDDEN_ITEMS_START + 0x00)
+#define FLAG_HIDDEN_ITEM_GINKO_WOODS_TINY_MUSHROOM           (FLAG_HIDDEN_ITEMS_START + 0x01)
+#define FLAG_HIDDEN_ITEM_TRANQUIL_ROUTE_RARE_CANDY           (FLAG_HIDDEN_ITEMS_START + 0x02)
+#define FLAG_HIDDEN_ITEM_GINKO_WOODS_TINY_MUSHROOM_2         (FLAG_HIDDEN_ITEMS_START + 0x03)
 #define FLAG_HIDDEN_ITEM_ROUTE_114_CARBOS                    (FLAG_HIDDEN_ITEMS_START + 0x04)
 #define FLAG_HIDDEN_ITEM_ROUTE_119_CALCIUM                   (FLAG_HIDDEN_ITEMS_START + 0x05)
 #define FLAG_HIDDEN_ITEM_ROUTE_119_ULTRA_BALL                (FLAG_HIDDEN_ITEMS_START + 0x06)
@@ -658,7 +656,8 @@
 #define FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS  0x267 // True if all the Sunrise Village NPC's should be removed from their usual spot
 // True if the mysterious samurai on Tranquil Route has been talked to
 #define FLAG_MYSTERIOUS_SAMURAI_TRANQUIL_ROUTE  0x268
-#define FLAG_UNUSED_0x269  0x269 // Unused Flag
+// True if the Pokémon refuge presentation speech has been given
+#define FLAG_POKEMON_REFUGE_PRESENTATION  0x269
 #define FLAG_UNUSED_0x26A  0x26A // Unused Flag
 #define FLAG_UNUSED_0x26B  0x26B // Unused Flag
 #define FLAG_UNUSED_0x26C  0x26C // Unused Flag
@@ -1218,11 +1217,11 @@
 #define FLAG_ITEM_MAGMA_HIDEOUT_4F_MAX_REVIVE                       0x490
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
+#define FLAG_ITEM_GINKO_WOODS_PARALYZE_HEAL                         0x493
+#define FLAG_ITEM_GINKO_WOODS_POTION                                0x494
+#define FLAG_ITEM_GINKO_WOODS_POTION_2                              0x495
+#define FLAG_ITEM_TRANQUIL_ROUTE_POKEBALL                           0x496
 
-#define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
 #define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
 #define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
 #define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
@@ -1365,9 +1364,9 @@
 
 // Towns and Cities
 #define FLAG_VISITED_LITTLEROOT_TOWN                (SYSTEM_FLAGS + 0xF)
-#define FLAG_VISITED_OLDALE_TOWN                    (SYSTEM_FLAGS + 0x10)
-#define FLAG_VISITED_DEWFORD_TOWN                   (SYSTEM_FLAGS + 0x11)
-#define FLAG_VISITED_LAVARIDGE_TOWN                 (SYSTEM_FLAGS + 0x12)
+#define FLAG_VISITED_CHII_TOWN                    (SYSTEM_FLAGS + 0x10)
+#define FLAG_VISITED_SAKU_TOWN                   (SYSTEM_FLAGS + 0x11)
+#define FLAG_VISITED_KURA_TOWN                 (SYSTEM_FLAGS + 0x12)
 #define FLAG_VISITED_FALLARBOR_TOWN                 (SYSTEM_FLAGS + 0x13)
 #define FLAG_VISITED_VERDANTURF_TOWN                (SYSTEM_FLAGS + 0x14)
 #define FLAG_VISITED_PACIFIDLOG_TOWN                (SYSTEM_FLAGS + 0x15)
@@ -1644,6 +1643,7 @@
 #define FLAG_ENABLE_MULTI_CORRIDOR_DOOR         (SPECIAL_FLAGS_START + 0x2)
 #define FLAG_SPECIAL_FLAG_UNUSED_0x4003         (SPECIAL_FLAGS_START + 0x3) // Unused Flag
 #define FLAG_STORING_ITEMS_IN_PYRAMID_BAG       (SPECIAL_FLAGS_START + 0x4)
+#define FLAG_SAFE_FOLLOWER_MOVEMENT             (SPECIAL_FLAGS_START + 0x5) // When set, applymovement does not put the follower inside a pokeball
 // FLAG_SPECIAL_FLAG_0x4005 - 0x407F also exist and are unused
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 #define NUM_SPECIAL_FLAGS                       (SPECIAL_FLAGS_END - SPECIAL_FLAGS_START + 1)

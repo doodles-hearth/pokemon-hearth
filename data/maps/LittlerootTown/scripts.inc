@@ -1707,7 +1707,7 @@ LittlerootTown_Text_TownSign:
 # 854 "data/maps/LittlerootTown/scripts.pory"
 LittlerootTown_Text_EldersHouse:
 # 855 "data/maps/LittlerootTown/scripts.pory"
-	.string "ELDER IWA'S HOUSE$"
+	.string "Elder KABA'S HOUSE$"
 # 856 "data/maps/LittlerootTown/scripts.pory"
 
 # 857 "data/maps/LittlerootTown/scripts.pory"

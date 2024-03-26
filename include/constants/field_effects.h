@@ -35,6 +35,7 @@
 #define FLDEFF_USE_FLY                   31
 #define FLDEFF_FLY_IN                    32
 #define FLDEFF_QUESTION_MARK_ICON        33
+#define FLDEFF_EMOTE                     33 // shares a slot with FLDEFF_QUESTION_MARK_ICON
 #define FLDEFF_FEET_IN_FLOWING_WATER     34
 #define FLDEFF_BIKE_TIRE_TRACKS          35
 #define FLDEFF_SAND_DISGUISE             36
@@ -71,6 +72,9 @@
 #define FLDEFF_USE_VS_SEEKER             67
 #define FLDEFF_X_ICON                    68
 #define FLDEFF_DOUBLE_EXCL_MARK_ICON     69
+#define FLDEFF_TRACKS_SLITHER            70
+#define FLDEFF_TRACKS_SPOT               71
+#define FLDEFF_TRACKS_BUG                72
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1
@@ -109,6 +113,9 @@
 #define FLDEFFOBJ_BUBBLES               34
 #define FLDEFFOBJ_SMALL_SPARKLE         35
 #define FLDEFFOBJ_RAYQUAZA              36
+#define FLDEFFOBJ_TRACKS_SLITHER        37
+#define FLDEFFOBJ_TRACKS_SPOT           38
+#define FLDEFFOBJ_TRACKS_BUG            39
 
 #define FLDEFF_PAL_TAG_CUT_GRASS          0x1000
 #define FLDEFF_PAL_TAG_SECRET_POWER_TREE  0x1003
@@ -122,5 +129,11 @@
 #define FLDEFF_PAL_TAG_SMALL_SPARKLE      0x100F
 #define FLDEFF_PAL_TAG_HOF_MONITOR        0x1010
 #define FLDEFF_PAL_TAG_UNKNOWN            0x1011
+
+// Duplicates of event_object_movement tags
+#define FLDEFF_PAL_TAG_MAY                0x1110 // OBJ_EVENT_PAL_TAG_MAY
+#define FLDEFF_PAL_TAG_BRENDAN            0x1100 // OBJ_EVENT_PAL_TAG_BRENDAN
+#define FLDEFF_PAL_TAG_NPC_1              0x1103 // OBJ_EVENT_PAL_TAG_NPC_1
+#define FLDEFF_PAL_TAG_NPC_2              0x1104 // OBJ_EVENT_PAL_TAG_NPC_2
 
 #endif // GUARD_FIELD_EFFECT_CONSTANTS_H

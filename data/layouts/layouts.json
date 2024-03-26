@@ -585,9 +585,9 @@
       "id": "LAYOUT_HOUSE1",
       "name": "House1_Layout",
       "width": 10,
-      "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "height": 8,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
       "border_filepath": "data/layouts/House1/border.bin",
       "blockdata_filepath": "data/layouts/House1/map.bin"
     },
@@ -596,8 +596,8 @@
       "name": "House2_Layout",
       "width": 11,
       "height": 8,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
       "border_filepath": "data/layouts/House2/border.bin",
       "blockdata_filepath": "data/layouts/House2/map.bin"
     },
@@ -605,9 +605,9 @@
       "id": "LAYOUT_POKEMON_CENTER_1F",
       "name": "PokemonCenter_1F_Layout",
       "width": 14,
-      "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_PokemonCenter",
+      "height": 11,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_Refuge",
       "border_filepath": "data/layouts/PokemonCenter_1F/border.bin",
       "blockdata_filepath": "data/layouts/PokemonCenter_1F/map.bin"
     },
@@ -636,8 +636,8 @@
       "name": "House3_Layout",
       "width": 10,
       "height": 8,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
       "border_filepath": "data/layouts/House3/border.bin",
       "blockdata_filepath": "data/layouts/House3/map.bin"
     },
@@ -665,9 +665,9 @@
       "id": "LAYOUT_HOUSE4",
       "name": "House4_Layout",
       "width": 10,
-      "height": 9,
-      "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_GenericBuilding",
+      "height": 10,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
       "border_filepath": "data/layouts/House4/border.bin",
       "blockdata_filepath": "data/layouts/House4/map.bin"
     },
@@ -4413,23 +4413,23 @@
     },
     {
       "id": "LAYOUT_SUNRISE_VILLAGE",
-      "name": "Sunrise_Village_Layout",
+      "name": "SunriseVillage_Layout",
       "width": 33,
       "height": 35,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_Sunrise_Village",
-      "border_filepath": "data/layouts/Sunrise_Village/border.bin",
-      "blockdata_filepath": "data/layouts/Sunrise_Village/map.bin"
+      "secondary_tileset": "gTileset_SunriseVillage",
+      "border_filepath": "data/layouts/SunriseVillage/border.bin",
+      "blockdata_filepath": "data/layouts/SunriseVillage/map.bin"
     },
     {
       "id": "LAYOUT_SUNRISE_VILLAGE_BEACH",
-      "name": "Sunrise_Village_Beach_Layout",
+      "name": "SunriseVillage_Beach_Layout",
       "width": 26,
       "height": 35,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_Sunrise_Village",
-      "border_filepath": "data/layouts/Sunrise_Village_Beach/border.bin",
-      "blockdata_filepath": "data/layouts/Sunrise_Village_Beach/map.bin"
+      "secondary_tileset": "gTileset_SunriseVillage",
+      "border_filepath": "data/layouts/SunriseVillage_Beach/border.bin",
+      "blockdata_filepath": "data/layouts/SunriseVillage_Beach/map.bin"
     },
     {
       "id": "LAYOUT_GINKO_WOODS",
@@ -4447,35 +4447,35 @@
       "width": 38,
       "height": 30,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_Sunrise_Village",
+      "secondary_tileset": "gTileset_SunriseVillage",
       "border_filepath": "data/layouts/ChiiTown/border.bin",
       "blockdata_filepath": "data/layouts/ChiiTown/map.bin"
     },
     {
-      "id": "LAYOUT_ROUTE_TRANQUIL",
-      "name": "RouteTranquil_Layout",
+      "id": "LAYOUT_TRANQUIL_ROUTE",
+      "name": "TranquilRoute_Layout",
       "width": 70,
       "height": 80,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_Sunrise_Village",
-      "border_filepath": "data/layouts/RouteTranquil/border.bin",
-      "blockdata_filepath": "data/layouts/RouteTranquil/map.bin"
+      "secondary_tileset": "gTileset_SunriseVillage",
+      "border_filepath": "data/layouts/TranquilRoute/border.bin",
+      "blockdata_filepath": "data/layouts/TranquilRoute/map.bin"
     },
     {
       "id": "LAYOUT_SUNRISE_VILLAGE_PLAYERS_HOUSE_LR",
-      "name": "Sunrise_Village_PlayersHouse_LR_Layout",
-      "width": 12,
-      "height": 9,
-      "primary_tileset": "gTileset_InteriorGeneric",
-      "secondary_tileset": "gTileset_Sunrise_Village",
-      "border_filepath": "data/layouts/Sunrise_Village_PlayersHouse_LR/border.bin",
-      "blockdata_filepath": "data/layouts/Sunrise_Village_PlayersHouse_LR/map.bin"
+      "name": "SunriseVillage_PlayersHouse_LR_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
+      "border_filepath": "data/layouts/SunriseVillage_PlayersHouse_LR/border.bin",
+      "blockdata_filepath": "data/layouts/SunriseVillage_PlayersHouse_LR/map.bin"
     },
     {
       "id": "LAYOUT_SAKU_TOWN",
       "name": "SakuTown_Layout",
       "width": 56,
-      "height": 50,
+      "height": 52,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
       "secondary_tileset": "gTileset_SakuKura",
       "border_filepath": "data/layouts/SakuTown/border.bin",
@@ -4494,7 +4494,7 @@
     {
       "id": "LAYOUT_BEACHBOUND_ROUTE",
       "name": "BeachboundRoute_Layout",
-      "width": 80,
+      "width": 65,
       "height": 30,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
       "secondary_tileset": "gTileset_SakuKura",
@@ -4504,12 +4504,132 @@
     {
       "id": "LAYOUT_MAGURO_HARBOR",
       "name": "MaguroHarbor_Layout",
-      "width": 20,
+      "width": 40,
       "height": 30,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_SakuKura",
+      "secondary_tileset": "gTileset_Maguro",
       "border_filepath": "data/layouts/MaguroHarbor/border.bin",
       "blockdata_filepath": "data/layouts/MaguroHarbor/map.bin"
+    },
+    {
+      "id": "LAYOUT_WINDSWEPT_ROUTE",
+      "name": "WindsweptRoute_Layout",
+      "width": 60,
+      "height": 100,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Silveridge",
+      "border_filepath": "data/layouts/WindsweptRoute/border.bin",
+      "blockdata_filepath": "data/layouts/WindsweptRoute/map.bin"
+    },
+    {
+      "id": "LAYOUT_SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM",
+      "name": "SunriseVillage_PlayersHouse_Bedroom_Layout",
+      "width": 9,
+      "height": 7,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
+      "border_filepath": "data/layouts/SunriseVillage_PlayersHouse_Bedroom/border.bin",
+      "blockdata_filepath": "data/layouts/SunriseVillage_PlayersHouse_Bedroom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SAKU_TOWN_HOUSE1",
+      "name": "SakuTown_House1_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
+      "border_filepath": "data/layouts/SakuTown_House1/border.bin",
+      "blockdata_filepath": "data/layouts/SakuTown_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SUNRISE_VILLAGE_ELDERS_HOUSE",
+      "name": "SunriseVillage_EldersHouse_Layout",
+      "width": 10,
+      "height": 14,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
+      "border_filepath": "data/layouts/SunriseVillage_EldersHouse/border.bin",
+      "blockdata_filepath": "data/layouts/SunriseVillage_EldersHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_SUNRISE_VILLAGE_ELDERS_HOUSE_PRIVATE_QUARTERS",
+      "name": "SunriseVillage_EldersHouse_PrivateQuarters_Layout",
+      "width": 8,
+      "height": 8,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
+      "border_filepath": "data/layouts/SunriseVillage_EldersHouse_PrivateQuarters/border.bin",
+      "blockdata_filepath": "data/layouts/SunriseVillage_EldersHouse_PrivateQuarters/map.bin"
+    },
+    {
+      "id": "LAYOUT_SUNRISE_VILLAGE_RIVALS_HOUSE",
+      "name": "SunriseVillage_RivalsHouse_Layout",
+      "width": 11,
+      "height": 8,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
+      "border_filepath": "data/layouts/SunriseVillage_RivalsHouse/border.bin",
+      "blockdata_filepath": "data/layouts/SunriseVillage_RivalsHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_SAKU_TOWN_POKEMON_CENTER",
+      "name": "SakuTown_PokemonCenter_Layout",
+      "width": 14,
+      "height": 11,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_Refuge",
+      "border_filepath": "data/layouts/SakuTown_PokemonCenter/border.bin",
+      "blockdata_filepath": "data/layouts/SakuTown_PokemonCenter/map.bin"
+    },
+    {
+      "id": "LAYOUT_SAKU_TOWN_BONSAI_SHOP",
+      "name": "SakuTown_BonsaiShop_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
+      "border_filepath": "data/layouts/SakuTown_BonsaiShop/border.bin",
+      "blockdata_filepath": "data/layouts/SakuTown_BonsaiShop/map.bin"
+    },
+    {
+      "id": "LAYOUT_SILVERIDGE",
+      "name": "Silveridge_Layout",
+      "width": 42,
+      "height": 40,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Silveridge",
+      "border_filepath": "data/layouts/Silveridge/border.bin",
+      "blockdata_filepath": "data/layouts/Silveridge/map.bin"
+    },
+    {
+      "id": "LAYOUT_SILVERIDGE_HOUSE1",
+      "name": "Silveridge_House1_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
+      "border_filepath": "data/layouts/Silveridge_House1/border.bin",
+      "blockdata_filepath": "data/layouts/Silveridge_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_WINDY_CAPE",
+      "name": "WindyCape_Layout",
+      "width": 60,
+      "height": 40,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Silveridge",
+      "border_filepath": "data/layouts/WindyCape/border.bin",
+      "blockdata_filepath": "data/layouts/WindyCape/map.bin"
+    },
+    {
+      "id": "LAYOUT_SILVERIDGE_SCULPTORS_HOUSE",
+      "name": "Silveridge_SculptorsHouse_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_House",
+      "border_filepath": "data/layouts/Silveridge_SculptorsHouse/border.bin",
+      "blockdata_filepath": "data/layouts/Silveridge_SculptorsHouse/map.bin"
     }
   ]
 }

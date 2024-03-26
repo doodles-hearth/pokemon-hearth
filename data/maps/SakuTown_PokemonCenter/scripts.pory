@@ -1,0 +1,26 @@
+mapscripts SakuTown_PokemonCenter_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		setrespawn(HEAL_LOCATION_SAKU_TOWN)
+	end
+	}
+}
+
+script SakuTown_PokemonCenter_EventScript_Nurse {
+	setvar(VAR_0x800B, LOCALID_NURSE)
+	call(Common_EventScript_PkmnCenterNurse)
+	waitmessage
+	waitbuttonpress
+	release
+	end
+}
+
+script SakuTown_PokemonCenter_EventScript_Traveler {
+	lock
+	msgbox(format(
+		"This Pokémon refuge is brand-new, courtesy of the Pokémon League!\p"
+		"As you can see, it's still being built. Watch out for the falling bricks, ha ha, just kidding!\p"
+		"Seriously though, do watch out. We're held responsible if anything happens to you."
+	))
+	release
+	end
+}

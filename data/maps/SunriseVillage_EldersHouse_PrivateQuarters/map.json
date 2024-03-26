@@ -1,0 +1,41 @@
+{
+  "id": "MAP_SUNRISE_VILLAGE_ELDERS_HOUSE_PRIVATE_QUARTERS",
+  "name": "SunriseVillage_EldersHouse_PrivateQuarters",
+  "layout": "LAYOUT_SUNRISE_VILLAGE_ELDERS_HOUSE_PRIVATE_QUARTERS",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_SUNRISE_VILLAGE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 1,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_SUNRISE_VILLAGE_ELDERS_HOUSE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 2,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_SUNRISE_VILLAGE_ELDERS_HOUSE",
+      "dest_warp_id": "1"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

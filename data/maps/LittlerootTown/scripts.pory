@@ -852,7 +852,7 @@ LittlerootTown_Text_TownSign:
 	.string "“A village bathing in sunrays.”$"
 
 LittlerootTown_Text_EldersHouse:
-	.string "ELDER IWA'S HOUSE$"
+	.string "Elder KABA'S HOUSE$"
 
 LittlerootTown_Text_PlayersHouse:
 	.string "{PLAYER}'s HOUSE$"

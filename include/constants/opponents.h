@@ -1,6 +1,8 @@
 #ifndef GUARD_CONSTANTS_OPPONENTS_H
 #define GUARD_CONSTANTS_OPPONENTS_H
 
+#include "constants/battle_partner.h"
+
 #define TRAINER_NONE                          0
 #define TRAINER_SAWYER_1                      1
 #define TRAINER_GRUNT_AQUA_HIDEOUT_1          2
@@ -617,12 +619,12 @@
 #define TRAINER_ANDREA                      613
 #define TRAINER_CRISSY                      614
 #define TRAINER_EIJI                        615
-#define TRAINER_LYLE                        616
+#define TRAINER_KAWASE                        616
 #define TRAINER_JOSE                        617
 #define TRAINER_DOUG                        618
 #define TRAINER_GREG                        619
 #define TRAINER_KENT                        620
-#define TRAINER_JAMES_1                     621
+#define TRAINER_TSUYA                       621
 #define TRAINER_JAMES_2                     622
 #define TRAINER_JAMES_3                     623
 #define TRAINER_JAMES_4                     624
@@ -863,5 +865,6 @@
 
 #define TRAINERS_COUNT                      855
 #define MAX_TRAINERS_COUNT                  864
+#define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

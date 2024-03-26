@@ -1,0 +1,145 @@
+const LOCALID_OLD_MAN = 1
+const LOCALID_GROWLITHE = 2
+
+mapscripts ChiiTown_House1_MapScripts {
+	MAP_SCRIPT_ON_RESUME: ChiiTown_House1_OnResume
+	MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 1: ChiiTown_House1_EventScript_GrowlitheBarks
+    ]	
+}
+
+script ChiiTown_House1_EventScript_OldManTrespassing {
+	lock
+	playse(SE_PIN)
+	applymovement(LOCALID_OLD_MAN, Common_Movement_FaceDown)
+	waitmovement(0)
+	applymovement(LOCALID_OLD_MAN, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(LOCALID_OLD_MAN, Common_Movement_Delay48)
+	waitmovement(0)
+	msgbox(format(
+		"Do you often barge into people's houses uninvited without even taking off your shoes?\p"
+		"Want to break a couple of pots while you're at it?\p"
+		"Kids these days, I swear…\p"
+		"Now get out of my house."
+	))
+	applymovement(LOCALID_OLD_MAN, Common_Movement_Delay48)
+	waitmovement(0)
+	setvar(VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2)
+	warp(MAP_CHII_TOWN, 24, 21)
+	release
+}
+
+script ChiiTown_House1_EventScript_GrowlitheGrrr {
+	lock
+	applymovement(LOCALID_GROWLITHE, Common_Movement_FaceRight)
+	waitmovement(0)
+	applymovement(LOCALID_GROWLITHE, Common_Movement_Delay48)
+	waitmovement(0)
+	msgbox(format("Grrrrrrr…"))
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, ChiiTown_House1_Movement_PlayerStepsAwayFromGrowlithe)
+	waitmovement(0)
+	release
+}
+
+script ChiiTown_House1_EventScript_GrowlitheBarks {
+	lock
+	playse(SE_PIN)
+	applymovement(LOCALID_GROWLITHE, Common_Movement_FaceRight)
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+	waitmovement(0)
+	applymovement(LOCALID_GROWLITHE, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(LOCALID_GROWLITHE, Common_Movement_Delay48)
+	waitmovement(0)
+	applymovement(LOCALID_GROWLITHE, ChiiTown_House1_Movement_GrowlitheRunsUpToPlayer)
+	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
+	waitmovement(0)
+	playmoncry(SPECIES_GROWLITHE, CRY_MODE_NORMAL)
+	msgbox(format("{FIXED_CASE}BARK!\pBARKBARKBARKBARKBARK!{UNFIX_CASE}"))
+	waitmoncry
+
+	applymovement(LOCALID_OLD_MAN, ChiiTown_House1_Movement_OldManWalksUpToGrowlithe)
+	waitmovement(0)
+	applymovement(LOCALID_GROWLITHE, Common_Movement_FaceRight)
+	waitmovement(0)
+	msgbox(format("Good girl, Growlithe, good girl."))
+	closemessage
+
+	applymovement(LOCALID_OLD_MAN, Common_Movement_FaceDown)
+	waitmovement(0)
+	applymovement(LOCALID_GROWLITHE, Common_Movement_FaceDown)
+	waitmovement(0)
+	applymovement(LOCALID_OLD_MAN, Common_Movement_Delay48)
+	waitmovement(0)
+	msgbox(format("She keeps intruders out."))
+
+	applymovement(LOCALID_OLD_MAN, Common_Movement_Delay48)
+	waitmovement(0)
+
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown)
+	waitmovement(0)
+
+	setvar(VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2)
+	warp(MAP_CHII_TOWN, 24, 21)
+	release
+}
+
+script ChiiTown_House1_EventScript_Cheater {
+	lock
+	faceplayer
+	setwildbattle(SPECIES_ELECTRODE, 100)
+	waitse
+	playmoncry(SPECIES_ELECTRODE, CRY_MODE_ENCOUNTER)
+	delay(40)
+	waitmoncry
+	setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	dowildbattle
+	clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	goto_if_eq(VAR_RESULT, B_OUTCOME_WON, ChiiTown_House1_EventScript_CheaterDefeatedElectrode)
+	goto_if_eq(VAR_RESULT, B_OUTCOME_RAN, ChiiTown_House1_EventScript_CheaterDefeatedElectrode)
+	goto_if_eq(VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, ChiiTown_House1_EventScript_CheaterDefeatedElectrode)
+	setflag(FLAG_DEFEATED_ELECTRODE_CHII_TOWN_HOUSE)
+	release
+}
+
+script ChiiTown_House1_EventScript_CheaterDefeatedElectrode {
+	setflag(FLAG_DEFEATED_ELECTRODE_CHII_TOWN_HOUSE)
+	goto(Common_EventScript_RemoveStaticPokemon)
+	end
+}
+
+script ChiiTown_House1_OnResume {
+	call_if_set(FLAG_SYS_CTRL_OBJ_DELETE, ChiiTown_House1_EventScript_TryRemoveElectrode)
+	end
+}
+
+script ChiiTown_House1_EventScript_TryRemoveElectrode {
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	goto_if_ne(VAR_RESULT, B_OUTCOME_CAUGHT, Common_EventScript_NopReturn)
+	removeobject(VAR_LAST_TALKED)
+	return
+}
+
+movement ChiiTown_House1_Movement_GrowlitheRunsUpToPlayer {
+	walk_faster_right
+	walk_faster_right
+	walk_faster_up
+	walk_faster_right
+	face_down
+}
+
+movement ChiiTown_House1_Movement_OldManWalksUpToGrowlithe {
+	walk_down
+	walk_down
+	walk_down
+	face_right
+}
+
+movement ChiiTown_House1_Movement_PlayerStepsAwayFromGrowlithe {
+	walk_right
+}

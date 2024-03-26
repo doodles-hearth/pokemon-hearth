@@ -338,7 +338,7 @@ static const struct Landmark *const Landmarks_MtChimney_2[]  =
 
 static const struct LandmarkList sLandmarkLists[] =
 {
-    {MAPSEC_ROUTE_103, 2, Landmarks_Route103_2},
+    {MAPSEC_WINDSWEPT_ROUTE, 2, Landmarks_Route103_2},
     {MAPSEC_ROUTE_104, 0, Landmarks_Route104_0},
     {MAPSEC_ROUTE_104, 1, Landmarks_Route104_1},
     {MAPSEC_ROUTE_105, 0, Landmarks_Route105_0},

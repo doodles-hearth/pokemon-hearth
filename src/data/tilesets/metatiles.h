@@ -211,15 +211,30 @@ const u16 gMetatileAttributes_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/
 const u16 gMetatiles_PorytilesPrimaryTutorial[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/metatiles.bin");
 const u16 gMetatileAttributes_PorytilesPrimaryTutorial[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/metatile_attributes.bin");
 
-const u16 gMetatiles_Sunrise_Village[] = INCBIN_U16("data/tilesets/secondary/sunrise_village/metatiles.bin");
-const u16 gMetatileAttributes_Sunrise_Village[] = INCBIN_U16("data/tilesets/secondary/sunrise_village/metatile_attributes.bin");
+const u16 gMetatiles_SunriseVillage[] = INCBIN_U16("data/tilesets/secondary/sunrise_village/metatiles.bin");
+const u16 gMetatileAttributes_SunriseVillage[] = INCBIN_U16("data/tilesets/secondary/sunrise_village/metatile_attributes.bin");
 
 
 const u16 gMetatiles_GinkoWoods[] = INCBIN_U16("data/tilesets/secondary/ginko_woods/metatiles.bin");
 const u16 gMetatileAttributes_GinkoWoods[] = INCBIN_U16("data/tilesets/secondary/ginko_woods/metatile_attributes.bin");
 
-const u16 gMetatiles_InteriorGeneric[] = INCBIN_U16("data/tilesets/primary/interior_generic/metatiles.bin");
-const u16 gMetatileAttributes_InteriorGeneric[] = INCBIN_U16("data/tilesets/primary/interior_generic/metatile_attributes.bin");
-
 const u16 gMetatiles_SakuKura[] = INCBIN_U16("data/tilesets/secondary/saku_kura/metatiles.bin");
 const u16 gMetatileAttributes_SakuKura[] = INCBIN_U16("data/tilesets/secondary/saku_kura/metatile_attributes.bin");
+
+const u16 gMetatiles_SilverTunnel[] = INCBIN_U16("data/tilesets/secondary/silver_tunnel/metatiles.bin");
+const u16 gMetatileAttributes_SilverTunnel[] = INCBIN_U16("data/tilesets/secondary/silver_tunnel/metatile_attributes.bin");
+
+const u16 gMetatiles_Silveridge[] = INCBIN_U16("data/tilesets/secondary/silveridge/metatiles.bin");
+const u16 gMetatileAttributes_Silveridge[] = INCBIN_U16("data/tilesets/secondary/silveridge/metatile_attributes.bin");
+
+const u16 gMetatiles_Maguro[] = INCBIN_U16("data/tilesets/secondary/maguro/metatiles.bin");
+const u16 gMetatileAttributes_Maguro[] = INCBIN_U16("data/tilesets/secondary/maguro/metatile_attributes.bin");
+
+const u16 gMetatiles_Building_Generic[] = INCBIN_U16("data/tilesets/primary/building_generic/metatiles.bin");
+const u16 gMetatileAttributes_Building_Generic[] = INCBIN_U16("data/tilesets/primary/building_generic/metatile_attributes.bin");
+
+const u16 gMetatiles_House[] = INCBIN_U16("data/tilesets/secondary/house/metatiles.bin");
+const u16 gMetatileAttributes_House[] = INCBIN_U16("data/tilesets/secondary/house/metatile_attributes.bin");
+
+const u16 gMetatiles_Refuge[] = INCBIN_U16("data/tilesets/secondary/refuge/metatiles.bin");
+const u16 gMetatileAttributes_Refuge[] = INCBIN_U16("data/tilesets/secondary/refuge/metatile_attributes.bin");
