@@ -448,7 +448,7 @@ $(MID_SUBDIR)/mus_rg_route24.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G_rg_route24 -V086
 
 $(MID_SUBDIR)/mus_rg_teachy_tv_show.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G_rg_mt_moon -V068
+	$(MID) $< $@ -E -R$(STD_REVERB) -G_rg_follow_me -V068
 
 $(MID_SUBDIR)/mus_rg_mt_moon.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G_rg_mt_moon -V090
