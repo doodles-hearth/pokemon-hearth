@@ -840,14 +840,14 @@ static void LoadBattleBg(u8 battleBgType, u8 battleTerrain)
         LoadCompressedPalette(gBattleTerrainPalette_BuildingGym, 0x20, 0x60);
         break;
     case MAP_BATTLE_SCENE_MAGMA:
-        LZDecompressVram(gBattleTerrainTiles_Stadium, (void*)(BG_CHAR_ADDR(2)));
-        LZDecompressVram(gBattleTerrainTilemap_Stadium, (void*)(BG_SCREEN_ADDR(26)));
-        LoadCompressedPalette(gBattleTerrainPalette_StadiumMagma, 0x20, 0x60);
+        LZDecompressVram(gBattleTerrainTiles_Building, (void*)(BG_CHAR_ADDR(2)));
+        LZDecompressVram(gBattleTerrainTilemap_Building, (void*)(BG_SCREEN_ADDR(26)));
+        LoadCompressedPalette(gBattleTerrainPalette_BuildingMagma, 0x20, 0x60);
         break;
     case MAP_BATTLE_SCENE_AQUA:
-        LZDecompressVram(gBattleTerrainTiles_Stadium, (void*)(BG_CHAR_ADDR(2)));
-        LZDecompressVram(gBattleTerrainTilemap_Stadium, (void*)(BG_SCREEN_ADDR(26)));
-        LoadCompressedPalette(gBattleTerrainPalette_StadiumAqua, 0x20, 0x60);
+        LZDecompressVram(gBattleTerrainTiles_Building, (void*)(BG_CHAR_ADDR(2)));
+        LZDecompressVram(gBattleTerrainTilemap_Building, (void*)(BG_SCREEN_ADDR(26)));
+        LoadCompressedPalette(gBattleTerrainPalette_BuildingAqua, 0x20, 0x60);
         break;
     case MAP_BATTLE_SCENE_SIDNEY:
         LZDecompressVram(gBattleTerrainTiles_Stadium, (void*)(BG_CHAR_ADDR(2)));
@@ -875,9 +875,9 @@ static void LoadBattleBg(u8 battleBgType, u8 battleTerrain)
         LoadCompressedPalette(gBattleTerrainPalette_Frontier, 0x20, 0x60);
         break;
     case MAP_BATTLE_SCENE_LEADER:
-        LZDecompressVram(gBattleTerrainTiles_Building, (void*)(BG_CHAR_ADDR(2)));
-        LZDecompressVram(gBattleTerrainTilemap_Building, (void*)(BG_SCREEN_ADDR(26)));
-        LoadCompressedPalette(gBattleTerrainPalette_BuildingLeader, 0x20, 0x60);
+        LZDecompressVram(gBattleTerrainTiles_Stadium, (void*)(BG_CHAR_ADDR(2)));
+        LZDecompressVram(gBattleTerrainTilemap_Stadium, (void*)(BG_SCREEN_ADDR(26)));
+        LoadCompressedPalette(gBattleTerrainPalette_StadiumLeader, 0x20, 0x60);
         break;
     case MAP_BATTLE_SCENE_WALLACE:
         LZDecompressVram(gBattleTerrainTiles_Stadium, (void*)(BG_CHAR_ADDR(2)));
@@ -1719,7 +1719,11 @@ static void ReloadPokemonSprites(struct PokemonDebugMenu *data)
     gSprites[data->iconspriteId].oam.priority = 0;
 
     //Follower Sprite
-    data->followerspriteId = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_MON_BASE + species, SpriteCB_Follower, DEBUG_FOLLOWER_X, DEBUG_FOLLOWER_Y, 0);
+    data->followerspriteId = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_MON_BASE + species + (data->isShiny ? SPECIES_SHINY_TAG : 0),
+                                                        SpriteCB_Follower,
+                                                        DEBUG_FOLLOWER_X,
+                                                        DEBUG_FOLLOWER_Y,
+                                                        0);
     gSprites[data->followerspriteId].oam.priority = 0;
     gSprites[data->followerspriteId].anims = sAnims_Follower;
 

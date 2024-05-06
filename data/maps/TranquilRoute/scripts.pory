@@ -28,7 +28,7 @@ script TranquilRoute_EventScript_Takeshi {
 
 script TranquilRoute_EventScript_Hana {
 	trainerbattle_single(
-		TRAINER_HANA,
+		TRAINER_HIINA,
 		format("Ugh, how can Kenji paint a portrait of me if people keep walking between us?"),
 		format("Great, now my hair is all messed up.")
 	)
@@ -43,8 +43,8 @@ script TranquilRoute_EventScript_Kenji {
 		format("Such beauty! What an artistic fight this was!")
 	)
 	msgbox(format(
-		"Hana is the best subject I could dream of.\p"
-		"Hey, please don't tell her I said that."
+		"Hiina is the best subject I could dream of.\p"
+		"…Hey, please don't tell her I said that."
 	), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -103,7 +103,7 @@ script TranquilRoute_EventScript_BerryWoman {
 		msgbox(format(
 			"You can plant berries in the ground in fertile spots like this.\p"
 			"The seeds will eventually grow into a healthy berry tree, ready to be harvested!\p"
-			"I see you're a trainer. Well, different berries have different effects when they're fed to Pokémon.\p"
+			"I see you're a wielder. Well, different berries have different effects when they're fed to Pokémon.\p"
 			"I love berries, hopefully you'll soon learn to love them too!\p"
 			"Here, try planting a few!"
 		))
@@ -132,9 +132,26 @@ script TranquilRoute_EventScript_BerryWoman {
 	end
 }
 
+script TranquilRoute_EventScript_Mareep {
+	lock
+	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
+	msgbox(format("Beeeeeh…"), MSGBOX_AUTOCLOSE)
+	waitmoncry
+	release
+}
+
+script TranquilRoute_EventScript_Mareep2 {
+	lock
+	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
+	msgbox(format("Baaaaah…"), MSGBOX_AUTOCLOSE)
+	waitmoncry
+	release
+}
+
 script TranquilRoute_TrainerTips1 {
 	msgbox(format(
-		"Some Pokémon only come out come nighttime.\p"
+		"Did you know?\p"
+		"Some Pokémon only come out at night.\p"
 		"Visit the same spot at different times of day to have a chance of seeing rare Pokémon!"
 	), MSGBOX_SIGN)
 }
@@ -142,6 +159,7 @@ script TranquilRoute_TrainerTips1 {
 
 script TranquilRoute_TrainerTips2 {
 	msgbox(format(
+		"Did you know?\p"
 		"Several items can be assigned to the SELECT button from your bag."
 	), MSGBOX_SIGN)
 }
@@ -149,6 +167,6 @@ script TranquilRoute_TrainerTips2 {
 script TranquilRoute_DirectionSign {
 	msgbox(format(
 		"{UP_ARROW} Saku Village"
-		"{LEFT_ARROW} Whiteslab route"
+		"{LEFT_ARROW} Whiteslate route"
 	), MSGBOX_SIGN)
 }

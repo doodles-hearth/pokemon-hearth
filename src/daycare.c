@@ -96,11 +96,11 @@ static const u8 *const sCompatibilityMessages[] =
 
 static const u8 sJapaneseEggNickname[] = _("タマゴ"); // "tamago" ("egg" in Japanese)
 
-u8 *GetMonNickname2(struct Pokemon *mon, u8 *dest)
+u8 *GetMonNicknameVanilla(struct Pokemon *mon, u8 *dest)
 {
     u8 nickname[POKEMON_NAME_BUFFER_SIZE];
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
-    return StringCopy_Nickname(dest, nickname);
+    return StringCopyN(dest, nickname, VANILLA_POKEMON_NAME_LENGTH);
 }
 
 u8 *GetBoxMonNickname(struct BoxPokemon *mon, u8 *dest)
@@ -218,7 +218,7 @@ static void StorePokemonInDaycare(struct Pokemon *mon, struct DaycareMon *daycar
         u8 mailId;
 
         StringCopy(daycareMon->mail.otName, gSaveBlock2Ptr->playerName);
-        GetMonNickname2(mon, daycareMon->mail.monName);
+        GetMonNicknameVanilla(mon, daycareMon->mail.monName);
         StripExtCtrlCodes(daycareMon->mail.monName);
         daycareMon->mail.gameLanguage = GAME_LANGUAGE;
         daycareMon->mail.monLanguage = GetMonData(mon, MON_DATA_LANGUAGE);
@@ -418,7 +418,7 @@ static void ClearDaycareMonMail(struct DaycareMail *mail)
 
     for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++)
         mail->otName[i] = 0;
-    for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++)
+    for (i = 0; i < VANILLA_POKEMON_NAME_LENGTH + 1; i++)
         mail->monName[i] = 0;
 
     ClearMail(&mail->message);
@@ -713,10 +713,10 @@ static void InheritPokeball(struct Pokemon *egg, struct BoxPokemon *father, stru
 
 static void InheritAbility(struct Pokemon *egg, struct BoxPokemon *father, struct BoxPokemon *mother)
 {
-    u8 fatherAbility = GetBoxMonData(father, MON_DATA_ABILITY_NUM);
-    u8 motherAbility = GetBoxMonData(mother, MON_DATA_ABILITY_NUM);
-    u8 motherSpecies = GetBoxMonData(mother, MON_DATA_SPECIES);
-    u8 inheritAbility = motherAbility;
+    u16 fatherAbility = GetBoxMonData(father, MON_DATA_ABILITY_NUM);
+    u16 motherAbility = GetBoxMonData(mother, MON_DATA_ABILITY_NUM);
+    u16 motherSpecies = GetBoxMonData(mother, MON_DATA_SPECIES);
+    u16 inheritAbility = motherAbility;
 
     if (motherSpecies == SPECIES_DITTO)
     {
@@ -1054,12 +1054,15 @@ static u16 DetermineEggSpeciesAndParentSlots(struct DayCare *daycare, u8 *parent
         eggSpecies = SPECIES_PHIONE;
     else if (eggSpecies == SPECIES_SINISTEA_ANTIQUE)
         eggSpecies = SPECIES_SINISTEA_PHONY;
-    else if (GET_BASE_SPECIES_ID(eggSpecies) == SPECIES_VIVILLON)
-        eggSpecies = SPECIES_SCATTERBUG;
     else if (GET_BASE_SPECIES_ID(eggSpecies) == SPECIES_ROTOM)
         eggSpecies = SPECIES_ROTOM;
     else if (GET_BASE_SPECIES_ID(eggSpecies) == SPECIES_FURFROU)
         eggSpecies = SPECIES_FURFROU;
+    // To avoid single-stage Totem Pokémon to breed more of themselves.
+    else if (eggSpecies == SPECIES_MIMIKYU_TOTEM_DISGUISED)
+        eggSpecies = SPECIES_MIMIKYU_DISGUISED;
+    else if (eggSpecies == SPECIES_TOGEDEMARU_TOTEM)
+        eggSpecies = SPECIES_TOGEDEMARU;
 
     // Make Ditto the "mother" slot if the other daycare mon is male.
     if (species[parentSlots[1]] == SPECIES_DITTO && GetBoxMonGender(&daycare->mons[parentSlots[0]].mon) != MON_FEMALE)

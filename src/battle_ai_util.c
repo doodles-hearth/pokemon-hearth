@@ -366,7 +366,7 @@ static inline s32 LowestRollDmg(s32 dmg)
     return dmg;
 }
 
-bool32 IsDamageMoveUsable(u32 move, u32 battlerAtk, u32 battlerDef)
+bool32 IsDamageMoveUnusable(u32 move, u32 battlerAtk, u32 battlerDef)
 {
     s32 moveType;
     struct AiLogicData *aiData = AI_DATA;
@@ -410,6 +410,10 @@ bool32 IsDamageMoveUsable(u32 move, u32 battlerAtk, u32 battlerDef)
         if (moveType == TYPE_GRASS)
             return TRUE;
         break;
+    case ABILITY_EARTH_EATER:
+        if (moveType == TYPE_GROUND)
+            return TRUE;
+        break;
     }
 
     switch (gMovesInfo[move].effect)
@@ -434,6 +438,10 @@ bool32 IsDamageMoveUsable(u32 move, u32 battlerAtk, u32 battlerDef)
         if (!IS_BATTLER_OF_TYPE(battlerAtk, gMovesInfo[move].argument))
             return TRUE;
         break;
+    case EFFECT_HIT_SET_REMOVE_TERRAIN:
+	if (!(gFieldStatuses & STATUS_FIELD_TERRAIN_ANY))
+	    return TRUE;
+	break;
     }
 
     return FALSE;
@@ -444,14 +452,16 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
     s32 dmg, moveType;
     uq4_12_t effectivenessMultiplier;
     bool32 isDamageMoveUnusable = FALSE;
+    bool32 toggledDynamax = FALSE;
+    bool32 toggledTera = FALSE;
     struct AiLogicData *aiData = AI_DATA;
 
     SetBattlerData(battlerAtk);
     SetBattlerData(battlerDef);
 
+    // Temporarily enable Z-Moves for damage calcs
     if (considerZPower && IsViableZMove(battlerAtk, move))
     {
-        //temporarily enable z moves for damage calcs
         gBattleStruct->zmove.baseMoves[battlerAtk] = move;
         gBattleStruct->zmove.active = TRUE;
     }
@@ -461,6 +471,18 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
     if (gMovesInfo[move].effect == EFFECT_NATURE_POWER)
         move = GetNaturePowerMove();
 
+    // Temporarily enable other gimmicks for damage calcs if planned
+    if (AI_DATA->shouldDynamax[battlerAtk])
+    {
+        toggledDynamax = TRUE;
+        gBattleStruct->dynamax.dynamaxed[battlerAtk] = TRUE;
+    }
+    if (AI_DATA->shouldTerastal[battlerAtk])
+    {
+        toggledTera = TRUE;
+        gBattleStruct->tera.isTerastallized[GetBattlerSide(battlerAtk)] |= gBitTable[gBattlerPartyIndexes[battlerAtk]];
+    }
+
     gBattleStruct->dynamicMoveType = 0;
 
 
@@ -468,7 +490,7 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
     GET_MOVE_TYPE(move, moveType);
 
     if (gMovesInfo[move].power)
-        isDamageMoveUnusable = IsDamageMoveUsable(move, battlerAtk, battlerDef);
+        isDamageMoveUnusable = IsDamageMoveUnusable(move, battlerAtk, battlerDef);
 
     effectivenessMultiplier = CalcTypeEffectivenessMultiplier(move, moveType, battlerAtk, battlerDef, aiData->abilities[battlerDef], FALSE);
     if (gMovesInfo[move].power && !isDamageMoveUnusable)
@@ -578,6 +600,10 @@ s32 AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u8 *typeEffectivenes
     gBattleStruct->swapDamageCategory = FALSE;
     gBattleStruct->zmove.active = FALSE;
     gBattleStruct->zmove.baseMoves[battlerAtk] = MOVE_NONE;
+    if (toggledDynamax)
+        gBattleStruct->dynamax.dynamaxed[battlerAtk] = FALSE;
+    if (toggledTera)
+        gBattleStruct->tera.isTerastallized[GetBattlerSide(battlerAtk)] &= ~(gBitTable[gBattlerPartyIndexes[battlerAtk]]);
 
     return dmg;
 }
@@ -596,7 +622,6 @@ static bool32 AI_IsMoveEffectInPlus(u32 battlerAtk, u32 battlerDef, u32 move, s3
     u32 i;
     u32 abilityDef = AI_DATA->abilities[battlerDef];
     u32 abilityAtk = AI_DATA->abilities[battlerAtk];
-    GET_ADDITIONAL_EFFECTS_AND_COUNT(move, additionalEffectsCount, additionalEffects);
 
     switch (gMovesInfo[move].effect)
     {
@@ -611,12 +636,12 @@ static bool32 AI_IsMoveEffectInPlus(u32 battlerAtk, u32 battlerDef, u32 move, s3
     }
 
     // check ADDITIONAL_EFFECTS
-    for (i = 0; i < additionalEffectsCount; i++)
+    for (i = 0; i < gMovesInfo[move].numAdditionalEffects; i++)
     {
         // Consider move effects that target self
-        if (additionalEffects[i].self)
+        if (gMovesInfo[move].additionalEffects[i].self)
         {
-            switch (additionalEffects[i].moveEffect)
+            switch (gMovesInfo[move].additionalEffects[i].moveEffect)
             {
                 case MOVE_EFFECT_ATK_PLUS_1:
                     if (BattlerStatCanRise(battlerAtk, abilityAtk, STAT_ATK))
@@ -646,7 +671,7 @@ static bool32 AI_IsMoveEffectInPlus(u32 battlerAtk, u32 battlerDef, u32 move, s3
         }
         else // consider move effects that hinder the target
         {
-            switch (additionalEffects[i].moveEffect)
+            switch (gMovesInfo[move].additionalEffects[i].moveEffect)
             {
                 case MOVE_EFFECT_POISON:
                 case MOVE_EFFECT_TOXIC:
@@ -680,7 +705,7 @@ static bool32 AI_IsMoveEffectInPlus(u32 battlerAtk, u32 battlerDef, u32 move, s3
                 case MOVE_EFFECT_SP_DEF_MINUS_1:
                 case MOVE_EFFECT_ACC_MINUS_1:
                 case MOVE_EFFECT_EVS_MINUS_1:
-                    if (ShouldLowerStat(battlerDef, abilityDef, STAT_ATK + (additionalEffects[i].moveEffect - MOVE_EFFECT_ATK_MINUS_1)) && noOfHitsToKo != 1)
+                    if (ShouldLowerStat(battlerDef, abilityDef, STAT_ATK + (gMovesInfo[move].additionalEffects[i].moveEffect - MOVE_EFFECT_ATK_MINUS_1)) && noOfHitsToKo != 1)
                         return TRUE;
                     break;
                 case MOVE_EFFECT_ATK_MINUS_2:
@@ -690,7 +715,7 @@ static bool32 AI_IsMoveEffectInPlus(u32 battlerAtk, u32 battlerDef, u32 move, s3
                 case MOVE_EFFECT_SP_DEF_MINUS_2:
                 case MOVE_EFFECT_ACC_MINUS_2:
                 case MOVE_EFFECT_EVS_MINUS_2:
-                    if (ShouldLowerStat(battlerDef, abilityDef, STAT_ATK + (additionalEffects[i].moveEffect - MOVE_EFFECT_ATK_MINUS_2)) && noOfHitsToKo != 1)
+                    if (ShouldLowerStat(battlerDef, abilityDef, STAT_ATK + (gMovesInfo[move].additionalEffects[i].moveEffect - MOVE_EFFECT_ATK_MINUS_1)) && noOfHitsToKo != 1)
                         return TRUE;
                     break;
             }
@@ -721,11 +746,9 @@ static bool32 AI_IsMoveEffectInMinus(u32 battlerAtk, u32 battlerDef, u32 move, s
         break;
     default:
     {
-        GET_ADDITIONAL_EFFECTS_AND_COUNT(move, additionalEffectsCount, additionalEffects);
-
-        for (i = 0; i < additionalEffectsCount; i++)
+        for (i = 0; i < gMovesInfo[move].numAdditionalEffects; i++)
         {
-            switch (additionalEffects[i].moveEffect)
+            switch (gMovesInfo[move].additionalEffects[i].moveEffect)
             {
                 case MOVE_EFFECT_ATK_MINUS_1:
                 case MOVE_EFFECT_DEF_MINUS_1:
@@ -737,12 +760,12 @@ static bool32 AI_IsMoveEffectInMinus(u32 battlerAtk, u32 battlerDef, u32 move, s
                 case MOVE_EFFECT_DEF_SPDEF_DOWN:
                 case MOVE_EFFECT_SP_DEF_MINUS_1:
                 case MOVE_EFFECT_SP_DEF_MINUS_2:
-                    if ((additionalEffects[i].self && GetBattlerAbility(battlerAtk) != ABILITY_CONTRARY)
+                    if ((gMovesInfo[move].additionalEffects[i].self && GetBattlerAbility(battlerAtk) != ABILITY_CONTRARY)
                         || (noOfHitsToKo != 1 && abilityDef == ABILITY_CONTRARY && !IsMoldBreakerTypeAbility(abilityAtk)))
                         return TRUE;
                     break;
                 case MOVE_EFFECT_RECHARGE:
-                    return additionalEffects[i].self;
+                    return gMovesInfo[move].additionalEffects[i].self;
             }
         }
         break;
@@ -2048,6 +2071,7 @@ bool32 IsStatLoweringEffect(u32 effect)
     case EFFECT_TICKLE:
     case EFFECT_CAPTIVATE:
     case EFFECT_NOBLE_ROAR:
+    case EFFECT_MEMENTO:
         return TRUE;
     default:
         return FALSE;
@@ -3628,7 +3652,8 @@ bool32 ShouldUseZMove(u32 battlerAtk, u32 battlerDef, u32 chosenMove)
     {
         u8 effectiveness;
 
-        if (gBattleMons[battlerDef].ability == ABILITY_DISGUISE && gBattleMons[battlerDef].species == SPECIES_MIMIKYU_DISGUISED)
+        if (gBattleMons[battlerDef].ability == ABILITY_DISGUISE
+            && (gBattleMons[battlerDef].species == SPECIES_MIMIKYU_DISGUISED || gBattleMons[battlerDef].species == SPECIES_MIMIKYU_TOTEM_DISGUISED))
             return FALSE; // Don't waste a Z-Move busting disguise
         if (gBattleMons[battlerDef].ability == ABILITY_ICE_FACE && gBattleMons[battlerDef].species == SPECIES_EISCUE_ICE_FACE && IS_MOVE_PHYSICAL(chosenMove))
             return FALSE; // Don't waste a Z-Move busting Ice Face

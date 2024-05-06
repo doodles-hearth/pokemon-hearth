@@ -3,6 +3,22 @@ mapscripts WindsweptRoute_MapScripts {
 	// MAP_SCRIPT_ON_TRANSITION: WillSalesmanSpawn
 }
 
+script WindsweptRoute_EventScript_OvergrownTrees {
+	lock
+	faceplayer
+	if (flag(FLAG_CUT_TREE_SILVER_TUNNEL)) {
+		msgbox(format(
+			"Thank you for cutting down that annoying tree! We can go to Silveridge again now!"
+		))
+	} else {
+		msgbox(format(
+			"The weeds got out of control here, and some trees now block the way to Silver Tunnel…\p"
+			"Someone'll eventually have to ask for help from the old Cut master on Tranquil route…"
+		))
+	}
+	release
+}
+
 // TODO EVA traveling salesman
 // script WillSalesmanSpawn{
 //     if(FLAG_DAILY_WILLSALESMANSPAWN){

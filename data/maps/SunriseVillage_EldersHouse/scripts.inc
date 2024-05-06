@@ -1,14 +1,7 @@
 SunriseVillage_EldersHouse_MapScripts::
-# 9 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	map_script MAP_SCRIPT_ON_LOAD, SunriseVillage_EldersHouse_MapScripts_MAP_SCRIPT_ON_LOAD
 # 12 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SunriseVillage_EldersHouse_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
-
-SunriseVillage_EldersHouse_MapScripts_MAP_SCRIPT_ON_LOAD:
-# 10 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 4
-	return
 
 SunriseVillage_EldersHouse_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 # 13 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
@@ -110,63 +103,62 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter::
 	compare VAR_RESULT, YES
 	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_6
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_4:
-# 96 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+# 102 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	hidemonpic
-# 99 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_4
-# 100 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	closemessage
-# 101 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_TRAPINCH
-	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_12
 # 105 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_ARON
-	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_13
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_4
+# 106 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	closemessage
+# 108 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	switch VAR_TEMP_1
 # 109 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_SPHEAL
-	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_14
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_11:
-# 116 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	applymovement 6, Common_Movement_FaceLeft
+	case SPECIES_SPHEAL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_13
+# 113 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	case SPECIES_ARON, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_14
 # 117 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
-# 118 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	applymovement 1, Common_Movement_FaceRight
-# 119 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	waitmovement 0
-# 120 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_5
-# 121 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 122 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	message SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6
-# 123 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	waitfanfare
+	case SPECIES_TRAPINCH, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_15
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_11:
 # 124 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setflag FLAG_SYS_POKEDEX_GET
+	applymovement 6, Common_Movement_FaceLeft
+# 125 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
 # 126 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
+	applymovement 1, Common_Movement_FaceRight
 # 127 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	closemessage
-# 130 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7
-# 131 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	closemessage
-# 132 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-# 133 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	applymovement 6, SunriseVillage_EldersHouse_Movement_RivalWalksAway
-# 134 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	waitmovement 0
+# 128 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_5
+# 129 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 130 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	message SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6
+# 131 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	waitfanfare
+# 132 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	setflag FLAG_SYS_POKEDEX_GET
+# 134 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 # 135 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	removeobject 6
-# 137 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 6
+	closemessage
 # 138 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setflag FLAG_RECEIVED_STARTER
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7
 # 139 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setflag FLAG_SYS_POKEMON_GET
+	closemessage
+# 140 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 # 141 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	applymovement 6, SunriseVillage_EldersHouse_Movement_RivalWalksAway
+# 142 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	waitmovement 0
+# 143 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	removeobject 6
+# 145 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 6
+# 146 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	setflag FLAG_RECEIVED_STARTER
+# 147 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	setflag FLAG_SYS_POKEMON_GET
+# 149 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	releaseall
 	return
 
@@ -191,44 +183,25 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_6:
 	waitmessage
 # 82 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	waitfanfare
-# 83 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_TRAPINCH
-	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_19
+# 84 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	switch VAR_TEMP_1
 # 85 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_ARON
-	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_20
-# 87 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_SPHEAL
-	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_18:
-# 90 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	case SPECIES_SPHEAL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_18
+# 88 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	case SPECIES_ARON, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_19
 # 91 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	case SPECIES_TRAPINCH, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_20
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16:
+# 96 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 97 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	call Common_EventScript_GetGiftMonPartySlot
-# 92 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+# 98 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	compare VAR_RESULT, YES
-	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_25
+	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_4
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_12:
-# 102 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	applymovement 6, SunriseVillage_EldersHouse_Movement_RivalWalkUpToSpheal
-# 103 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	waitmovement 0
-# 104 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	removeobject 5
-	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_11
-
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_13:
-# 106 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	applymovement 6, SunriseVillage_EldersHouse_Movement_RivalWalkUpToTrapinch
-# 107 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	waitmovement 0
-# 108 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	removeobject 3
-	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_11
-
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_14:
 # 110 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	applymovement 6, SunriseVillage_EldersHouse_Movement_RivalWalkUpToAron
 # 111 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
@@ -237,77 +210,101 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_14:
 	removeobject 4
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_11
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_19:
-# 84 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_14:
+# 114 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	applymovement 6, SunriseVillage_EldersHouse_Movement_RivalWalkUpToTrapinch
+# 115 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	waitmovement 0
+# 116 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	removeobject 3
-	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_18
+	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_11
+
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_15:
+# 118 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	applymovement 6, SunriseVillage_EldersHouse_Movement_RivalWalkUpToSpheal
+# 119 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	waitmovement 0
+# 120 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	removeobject 5
+	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_11
+
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_18:
+# 86 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_SPHEAL
+# 87 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	removeobject 5
+	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
+
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_19:
+# 89 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	removeobject 4
+# 90 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_ARON
+	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_20:
-# 86 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	removeobject 4
-	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_18
+# 92 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	removeobject 3
+# 93 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	setvar VAR_STARTER_MON, SPECIES_TRAPINCH
+	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21:
-# 88 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	removeobject 5
-	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_18
-
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_25:
-# 93 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+# 99 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	call Common_EventScript_NameReceivedPartyMon
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_4
 
 
-# 144 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-SunriseVillage_EldersHouse_Movement_RivalWalkUpToSpheal:
-# 145 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_right
-# 146 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_up
-# 147 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	delay_16
-# 148 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	step_end
-
-# 151 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-SunriseVillage_EldersHouse_Movement_RivalWalkUpToTrapinch:
 # 152 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_left
+SunriseVillage_EldersHouse_Movement_RivalWalkUpToSpheal:
 # 153 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_up
+	walk_right
 # 154 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	delay_16
-# 155 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	step_end
-
-# 158 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-SunriseVillage_EldersHouse_Movement_RivalWalkUpToAron:
-# 159 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	walk_up
-# 160 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+# 155 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	delay_16
-# 161 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+# 156 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	step_end
 
-# 164 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-SunriseVillage_EldersHouse_Movement_RivalWalksAway:
-# 165 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_down
+# 159 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+SunriseVillage_EldersHouse_Movement_RivalWalkUpToTrapinch:
+# 160 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	walk_left
+# 161 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	walk_up
+# 162 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	delay_16
+# 163 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	step_end
+
 # 166 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_down
+SunriseVillage_EldersHouse_Movement_RivalWalkUpToAron:
 # 167 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_down
+	walk_up
 # 168 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_down
+	delay_16
 # 169 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_down
-# 170 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_down
-# 171 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_down
+	step_end
+
 # 172 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	walk_down
+SunriseVillage_EldersHouse_Movement_RivalWalksAway:
 # 173 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	walk_down
+# 174 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	walk_down
+# 175 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	walk_down
+# 176 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	walk_down
+# 177 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	walk_down
+# 178 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	walk_down
+# 179 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	walk_down
+# 180 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+	walk_down
+# 181 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	step_end
 
 SunriseVillage_EldersHouse_Event_DistributionCutscene_Text_0:
@@ -331,7 +328,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_1:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_2:
 # 76 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	.string "Take your time.$"
+	.string "Take the time you need.$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_3:
 # 80 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
@@ -339,18 +336,18 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_3:
 	.string "{STR_VAR_1}!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_4:
-# 99 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+# 105 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	.string "{RIVAL}: I'm choosing this one then!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_5:
-# 120 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+# 128 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	.string "ELDER: Great! Take these Pokédex and\n"
 	.string "go.$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6:
-# 122 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+# 130 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	.string "{PLAYER} received the Pokédex!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7:
-# 130 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
+# 138 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	.string "{RIVAL}: Catch ya later, {PLAYER}!$"

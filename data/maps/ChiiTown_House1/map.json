@@ -1,7 +1,7 @@
 {
   "id": "MAP_CHII_TOWN_HOUSE1",
   "name": "ChiiTown_House1",
-  "layout": "LAYOUT_HOUSE1",
+  "layout": "LAYOUT_HOUSE_BEIGE_HEARTH",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_CHII_TOWN",
   "requires_flash": false,

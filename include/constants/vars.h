@@ -50,7 +50,8 @@
 #define VAR_RECYCLE_GOODS                                0x4020
 #define VAR_REPEL_STEP_COUNT                             0x4021
 #define VAR_ICE_STEP_COUNT                               0x4022
-#define VAR_STARTER_MON                                  0x4023 // 0=Treecko, 1=Torchic, 2=Mudkip
+// Contains the species ID of the chosen starter
+#define VAR_STARTER_MON                                  0x4023
 #define VAR_MIRAGE_RND_H                                 0x4024
 #define VAR_MIRAGE_RND_L                                 0x4025
 #define VAR_SECRET_BASE_MAP                              0x4026
@@ -146,7 +147,10 @@
 #define VAR_ROUTE131_STATE                               0x407E // Unused Var
 #define VAR_ROUTE132_STATE                               0x407F // Unused Var
 #define VAR_ROUTE133_STATE                               0x4080 // Unused Var
-#define VAR_ROUTE134_STATE                               0x4081 // Unused Var
+// 0: Never fought him past the lvl5 elder's lab fight
+// 1: Entered the Saku Pokécenter
+// 2: Fought him in Saku Village
+#define VAR_RIVAL_ENCOUNTER_STATE                        0x4081
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
 #define VAR_UNUSED_0x4083                                0x4083 // Unused Var
 #define VAR_BIRCH_LAB_STATE                              0x4084
@@ -186,20 +190,26 @@
 #define VAR_ELITE_4_STATE                                0x409C
 // 0: Quest hasn't started
 // 1: Received Ashii's scarf
-#define VAR_QUEST_TAMA_ASHII_STATE                       0x409D
+#define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE                       0x409D
 #define VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE      0x409E
 #define VAR_MOSSDEEP_SPACE_CENTER_STATE                  0x409F
 #define VAR_SLATEPORT_HARBOR_STATE                       0x40A0
 // 0: The two villages hate each other
 // 1: Player has gone to Kura and back
 #define VAR_SAKU_KURA_VILLAGES_STATE                     0x40A1
+// 0: Quest hasn't started
+// 1: Talked to lady but not to Espeon's master
+// 2: Talked to Espeon's master but not to lady
+// 3: Told Espeon's master where his Pokémon was
+// 4: Told lady that Espeon's master was looking for it -> Espeon goes home
+// 5: Talked to Espeon's master once are reunited
+#define VAR_SAKU_KURA_QUEST_ESPEON_STATE                 0x40A8
 #define VAR_SEAFLOOR_CAVERN_STATE                        0x40A2
 #define VAR_CABLE_CAR_STATION_STATE                      0x40A3
 #define VAR_SAFARI_ZONE_STATE                            0x40A4  // 0: In or out of SZ, 1: Player exiting SZ, 2: Player entering SZ
 #define VAR_TRICK_HOUSE_BEING_WATCHED_STATE              0x40A5
 #define VAR_TRICK_HOUSE_FOUND_TRICK_MASTER               0x40A6
 #define VAR_TRICK_HOUSE_ENTRANCE_STATE                   0x40A7
-#define VAR_UNUSED_0x40A8                                0x40A8 // Unused Var
 #define VAR_CYCLING_CHALLENGE_STATE                      0x40A9
 #define VAR_SLATEPORT_MUSEUM_1F_STATE                    0x40AA
 #define VAR_TRICK_HOUSE_PUZZLE_1_STATE                   0x40AB
@@ -215,7 +225,9 @@
 #define VAR_TRICK_HOUSE_ENTER_FROM_CORRIDOR              0x40B5
 #define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2                 0x40B6 // Leftover from RS, never set
 #define VAR_SLATEPORT_FAN_CLUB_STATE                     0x40B7
-#define VAR_UNUSED_0x40B8                                0x40B8 // Unused Var
+// 0: Start
+// 1: Talked to shop assistant in shop
+#define VAR_BONSAI_SHOP_STATE                            0x40B8
 #define VAR_MT_PYRE_STATE                                0x40B9
 #define VAR_NEW_MAUVILLE_STATE                           0x40BA
 #define VAR_UNUSED_0x40BB                                0x40BB // Unused Var

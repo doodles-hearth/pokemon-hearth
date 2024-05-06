@@ -33,3 +33,23 @@ SINGLE_BATTLE_TEST("Dancer can copy Teeter Dance")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_TEETER_DANCE, opponent);
     }
 }
+
+DOUBLE_BATTLE_TEST("Dancer can copy Teeter Dance and confuse both opposing targets")
+{
+    GIVEN {
+        ASSUME(gMovesInfo[MOVE_TEETER_DANCE].danceMove == TRUE);
+        ASSUME(gItemsInfo[ITEM_LUM_BERRY].holdEffect == HOLD_EFFECT_CURE_STATUS);
+        PLAYER(SPECIES_WOBBUFFET)
+        PLAYER(SPECIES_WYNAUT) { Item(ITEM_LUM_BERRY); }
+        OPPONENT(SPECIES_ORICORIO) { Ability(ABILITY_DANCER); Item(ITEM_LUM_BERRY); }
+        OPPONENT(SPECIES_SLOWPOKE) { Ability(ABILITY_OWN_TEMPO); }
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_TEETER_DANCE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_TEETER_DANCE, playerLeft);
+        ABILITY_POPUP(opponentLeft, ABILITY_DANCER);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_TEETER_DANCE, opponentLeft);
+        MESSAGE("Wobbuffet became confused!");
+        MESSAGE("Wynaut became confused!");
+    }
+}

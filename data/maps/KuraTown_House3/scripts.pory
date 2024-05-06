@@ -1,0 +1,131 @@
+const LOCALID_LADY = 1
+const LOCALID_ESPEON = 2
+
+mapscripts KuraTown_House3_MapScripts {
+	
+}
+
+// Lady
+script KuraTown_House3_EventScript_Lady {
+	lock
+
+	// First time talking to her
+	if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0 || var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
+		faceplayer
+		msgbox(format(
+			"Hello! Ah, you came for your Pokémon!"
+		))
+		closemessage
+		delay(60)
+		msgbox(format(
+			"Sorry, I thought you were someone else.\p"
+			"See, this little one came to me a while ago. There was a thunderstorm and it looked scared and lost.\p"
+			"So I've been taking care of it while waiting for its master to show up!\p"
+			"Looks like it's feeling a lot better now. Look how shiny his fur is! Such a pretty color, too!"
+		))
+		closemessage
+
+		if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0) {
+			// Talked to lady but not to Espeon's master
+			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 1)
+			applymovement(LOCALID_LADY, Common_Movement_FaceOriginalDirection)
+		} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
+			delay(60)
+			// Espeon goes home
+			call(KuraTown_House3_EventScript_EspeonGoesHome)
+		}
+
+		applymovement(LOCALID_LADY, Common_Movement_FaceOriginalDirection)
+		// Talked to her before, but not Espeon's master
+	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
+		faceplayer
+		msgbox(format(
+			"Don't worry, kitten, we'll find your master eventually!"
+		))
+		closemessage
+
+		// Told Espeon's master where his Pokémon was
+	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 3) {
+		faceplayer
+		// Espeon goes home
+		call(KuraTown_House3_EventScript_EspeonGoesHome)
+		// Espeon went home
+	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 4) {
+		faceplayer
+		msgbox(format(
+			"Sniffle… I'm going to miss him…"
+		))
+		closemessage
+		
+		// Talked to Espeon's master once are reunited
+	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 5) {
+		faceplayer
+		msgbox(format(
+			"That little lost kitten is reunited with its master? Do they seem happy together?\p"
+			"Oh, how delightful!"
+		))
+		closemessage
+	}
+	
+	release
+}
+
+script KuraTown_House3_EventScript_EspeonGoesHome {
+		faceplayer
+		msgbox(format(
+			"What? You're saying its master is waiting for him in Saku Village?\p"
+			"… …\p"
+			"I'd rather not try going over there, folks over at Saku Village are notoriously mean…\p"
+			"But I guess… I can make an effort for this kitten here."
+		))
+		closemessage
+
+		applymovement(LOCALID_LADY, Common_Movement_FaceLeft)
+		applymovement(LOCALID_ESPEON, Common_Movement_FaceRight)
+
+		waitmovement(0)
+		msgbox(format(
+			"Good news, sweetie! You're going home!"
+		))
+		closemessage
+
+		applymovement(LOCALID_ESPEON, JumpInJoy)
+		playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
+		waitmoncry
+		delay(40)
+
+		fadescreen(FADE_TO_BLACK)
+		removeobject(LOCALID_ESPEON)
+		delay(60)
+		fadescreen(FADE_FROM_BLACK)
+		delay(40)
+
+		msgbox(format(
+			"Sniffle… I'm going to miss him…"
+		))
+		closemessage
+		
+		setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 4)
+		setflag(FLAG_SAKU_KURA_HIDE_ESPEON_LADYS_HOUSE)
+}
+
+// Espeon
+script KuraTown_House3_EventScript_Espeon {
+	lock
+	faceplayer
+	playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
+	msgbox(format(
+		"Speeee!"
+	))
+	waitmoncry
+	closemessage
+	delay(30)
+	msgbox(format(
+		"It looks happy and serene."
+	))
+	release
+}
+
+movement JumpInJoy {
+	jump_in_place_right
+}

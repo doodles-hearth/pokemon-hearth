@@ -1,5 +1,71 @@
 mapscripts KuraTown_MapScripts {
-	
+	MAP_SCRIPT_ON_LOAD {
+		// Barricading dojo
+		if (flag(FLAG_KURA_DOJO_CLOSED)) {
+			setmetatile(23, 18, METATILE_SakuKura_ClosedDojoDoor, TRUE)
+		}
+	}
+}
+
+script KuraTown_EventScript_DojoChallenger {
+	lock
+	faceplayer
+	if (flag(FLAG_KURA_DOJO_CLOSED)) {
+		msgbox(
+			format(
+				"It seems the dojo is closed again…\p"
+				"Gah, when will I get a chance to crush Hana in a fiery battle?\p"
+				"Could it be that she is scared of me?"
+			),
+			MSGBOX_DEFAULT
+		)
+	} else {
+		msgbox(
+			format(
+				"The dojo is open! I can finally defeat its leader in a fiery battle!\p"
+				"…Hm? When, you ask? In… In a minute…\p"
+				"No, go right ahead, I'm just… preparing…"
+			),
+			MSGBOX_DEFAULT
+		)
+	}
+	release
+}
+
+script KuraTown_EventScript_SingingFarmer {
+	lock
+	faceplayer
+	msgbox(
+		format(
+			"Doo doo… Just waterin' the crops… Yeah, waterin' the crops… Doo doo doo…"
+		),
+		MSGBOX_DEFAULT
+	)
+	release
+}
+
+script KuraTown_EventScript_Guard {
+	lock
+	faceplayer
+	msgbox(
+		format(
+			"Hello, young traveler. Hope you didn't have too much trouble passing the gate.\p"
+			"That Saku Village guard is such a jerk, he won't let anyone from our village cross to theirs.\p"
+			"So of course we're not gonna let any of them in ours! Hah!"
+		),
+		MSGBOX_DEFAULT
+	)
+	release
+}
+
+script SakuTown_EventScript_ClosedGymDoor {
+	// Barricading dojo
+	if (flag(FLAG_KURA_DOJO_CLOSED)) {
+		msgbox(format(
+			"“BE BACK SOON\n"
+			"- Hana”"
+		), MSGBOX_SIGN)
+	}
 }
 
 script KuraTown_EventScript_TownSign {
@@ -9,3 +75,16 @@ script KuraTown_EventScript_TownSign {
 script KuraTown_EventScript_DirectionsSign {
 	msgbox(format("{UP_ARROW} Silver Tunnel\nThis way for Silveridge"), MSGBOX_SIGN)
 }
+
+script KuraTown_EventScript_GymSign {
+	msgbox(
+		format(
+			"Kura Village Pokémon Dojo\n"
+			"Leader: Hana\p"
+			"“Strong as a maple rooted in wisdom.”"
+		),
+		MSGBOX_SIGN
+	)
+}
+
+ 

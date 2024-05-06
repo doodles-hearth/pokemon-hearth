@@ -193,6 +193,22 @@ TEST("givemon [simple]")
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_LEVEL), 100);
 }
 
+TEST("givemon [moves]")
+{
+    ZeroPlayerPartyMons();
+
+    RUN_OVERWORLD_SCRIPT(
+        givemon SPECIES_WOBBUFFET, 100, move1=MOVE_TACKLE, move2=MOVE_SPLASH, move3=MOVE_NONE, move4=MOVE_NONE;
+    );
+
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_SPECIES), SPECIES_WOBBUFFET);
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_LEVEL), 100);
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_MOVE1), MOVE_TACKLE);
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_MOVE2), MOVE_SPLASH);
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_MOVE3), MOVE_NONE);
+    EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_MOVE4), MOVE_NONE);
+}
+
 TEST("givemon [all]")
 {
     ZeroPlayerPartyMons();
@@ -290,4 +306,20 @@ TEST("givemon [vars]")
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_IS_SHINY), TRUE);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_GIGANTAMAX_FACTOR), TRUE);
     EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_TERA_TYPE), TYPE_FIRE);
+}
+
+TEST("checkteratype/setteratype work")
+{
+    CreateMon(&gPlayerParty[0], SPECIES_WOBBUFFET, 100, 0, FALSE, 0, OT_ID_PRESET, 0);
+
+    RUN_OVERWORLD_SCRIPT(
+        checkteratype 0;
+    );
+    EXPECT(VarGet(VAR_RESULT) == TYPE_PSYCHIC);
+
+    RUN_OVERWORLD_SCRIPT(
+        setteratype TYPE_FIRE, 0;
+        checkteratype 0;
+    );
+    EXPECT(VarGet(VAR_RESULT) == TYPE_FIRE);
 }

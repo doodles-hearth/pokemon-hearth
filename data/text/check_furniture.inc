@@ -25,3 +25,24 @@ Text_ShopShelf:
 Text_Blueprint:
 	.string "A blueprint of some sort?\n"
 	.string "It's too complicated!$"
+
+Text_ClayPot:
+	.string "A simple clay pot.\p"
+	.string "{PLAYER} suddenly feels an urge to\nbreak it.$"
+
+Text_Furnace:
+	.string "The fire dances in the furnace.$"
+
+Text_EmptyBasket:
+	.string "A woven basket.$"
+	
+Text_BasketRyss:
+	.string "A basket filled with Ryss berries.$"
+	
+Text_Bonsai:
+	.string "It's a bonsai.\n"
+	.string "Its shape is exquisite.$"
+	
+Text_Uumegiri:
+	.string "Those uumegiri look delicious!$"
+

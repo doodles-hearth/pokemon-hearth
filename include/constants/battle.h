@@ -167,7 +167,7 @@
 #define STATUS3_YAWN_TURN(num)          (((num) << 11) & STATUS3_YAWN)
 #define STATUS3_IMPRISONED_OTHERS       (1 << 13)
 #define STATUS3_GRUDGE                  (1 << 14)
-#define STATUS3_CANT_SCORE_A_CRIT       (1 << 15)
+#define STATUS3___UNUSED                (1 << 15)
 #define STATUS3_GASTRO_ACID             (1 << 16)
 #define STATUS3_EMBARGO                 (1 << 17)
 #define STATUS3_UNDERWATER              (1 << 18)
@@ -299,11 +299,14 @@
 #define B_WEATHER_HAIL_PERMANENT      (1 << 10)
 #define B_WEATHER_HAIL                (B_WEATHER_HAIL_TEMPORARY | B_WEATHER_HAIL_PERMANENT)
 #define B_WEATHER_STRONG_WINDS        (1 << 11)
-#define B_WEATHER_ANY                 (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_SUN | B_WEATHER_HAIL | B_WEATHER_STRONG_WINDS | B_WEATHER_SNOW)
+#define B_WEATHER_ANY                 (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_SUN | B_WEATHER_HAIL | B_WEATHER_STRONG_WINDS | B_WEATHER_SNOW | B_WEATHER_FOG)
 #define B_WEATHER_PRIMAL_ANY          (B_WEATHER_RAIN_PRIMAL | B_WEATHER_SUN_PRIMAL | B_WEATHER_STRONG_WINDS)
 #define B_WEATHER_SNOW_TEMPORARY      (1 << 12)
 #define B_WEATHER_SNOW_PERMANENT      (1 << 13)
 #define B_WEATHER_SNOW                (B_WEATHER_SNOW_TEMPORARY | B_WEATHER_SNOW_PERMANENT)
+#define B_WEATHER_FOG_TEMPORARY       (1 << 14)
+#define B_WEATHER_FOG_PERMANENT       (1 << 15)
+#define B_WEATHER_FOG                 (B_WEATHER_FOG_TEMPORARY | B_WEATHER_FOG_PERMANENT)
 
 // Battle Weather as enum
 #define ENUM_WEATHER_NONE                 0
@@ -315,6 +318,7 @@
 #define ENUM_WEATHER_RAIN_PRIMAL          6
 #define ENUM_WEATHER_STRONG_WINDS         7
 #define ENUM_WEATHER_SNOW                 8
+#define ENUM_WEATHER_FOG                  9
 
 // Move Effects
 #define MOVE_EFFECT_SLEEP               1
@@ -398,8 +402,9 @@
 #define MOVE_EFFECT_FLORAL_HEALING      77
 #define MOVE_EFFECT_SECRET_POWER        78
 #define MOVE_EFFECT_PSYCHIC_NOISE       79
+#define MOVE_EFFECT_TERA_BLAST          80
 
-#define NUM_MOVE_EFFECTS                80
+#define NUM_MOVE_EFFECTS                81
 
 #define MOVE_EFFECT_AFFECTS_USER        0x2000
 #define MOVE_EFFECT_CERTAIN             0x4000

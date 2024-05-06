@@ -127,8 +127,8 @@ enum PartyDebugMenu
     DEBUG_PARTY_MENU_ITEM_HATCH_AN_EGG,
     DEBUG_PARTY_MENU_ITEM_HEAL_PARTY,
     DEBUG_PARTY_MENU_ITEM_INFLICT_STATUS1,
-    DEBUG_PARTY_MENU_ITEM_CHECK_EV,
-    DEBUG_PARTY_MENU_ITEM_CHECK_IV,
+    DEBUG_PARTY_MENU_ITEM_CHECK_EVS,
+    DEBUG_PARTY_MENU_ITEM_CHECK_IVS,
     DEBUG_PARTY_MENU_ITEM_CLEAR_PARTY,
 };
 
@@ -392,8 +392,8 @@ static void DebugAction_Party_MoveReminder(u8 taskId);
 static void DebugAction_Party_HatchAnEgg(u8 taskId);
 static void DebugAction_Party_HealParty(u8 taskId);
 static void DebugAction_Party_InflictStatus1(u8 taskId);
-static void DebugAction_Party_CheckEV(u8 taskId);
-static void DebugAction_Party_CheckIV(u8 taskId);
+static void DebugAction_Party_CheckEVs(u8 taskId);
+static void DebugAction_Party_CheckIVs(u8 taskId);
 static void DebugAction_Party_ClearParty(u8 taskId);
 
 static void DebugAction_FlagsVars_Flags(u8 taskId);
@@ -452,8 +452,8 @@ static void DebugAction_BerryFunctions_Weeds(u8 taskId);
 extern const u8 Debug_FlagsNotSetOverworldConfigMessage[];
 extern const u8 Debug_FlagsNotSetBattleConfigMessage[];
 extern const u8 Debug_FlagsAndVarNotSetBattleConfigMessage[];
-extern const u8 Debug_EventScript_CheckEV[];
-extern const u8 Debug_EventScript_CheckIV[];
+extern const u8 Debug_EventScript_CheckEVs[];
+extern const u8 Debug_EventScript_CheckIVs[];
 extern const u8 Debug_EventScript_InflictStatus1[];
 extern const u8 Debug_EventScript_Script_1[];
 extern const u8 Debug_EventScript_Script_2[];
@@ -550,8 +550,8 @@ static const u8 sDebugText_Party_MoveReminder[] =            _("Move Reminder");
 static const u8 sDebugText_Party_HatchAnEgg[] =              _("Hatch an Egg");
 static const u8 sDebugText_Party_HealParty[] =               _("Heal party");
 static const u8 sDebugText_Party_InflictStatus1[] =          _("Inflict Status1");
-static const u8 sDebugText_Party_CheckEV[] =                 _("Check EV");
-static const u8 sDebugText_Party_CheckIV[] =                 _("Check IV");
+static const u8 sDebugText_Party_CheckEVs[] =                _("Check EVs");
+static const u8 sDebugText_Party_CheckIVs[] =                _("Check IVs");
 static const u8 sDebugText_Party_ClearParty[] =              _("Clear Party");
 // Flags/Vars Menu
 static const u8 sDebugText_FlagsVars_Flags[] =               _("Set Flag XYZ…{CLEAR_TO 110}{RIGHT_ARROW}");
@@ -748,8 +748,8 @@ static const struct ListMenuItem sDebugMenu_Items_Party[] =
     [DEBUG_PARTY_MENU_ITEM_HATCH_AN_EGG]    = {sDebugText_Party_HatchAnEgg,     DEBUG_PARTY_MENU_ITEM_HATCH_AN_EGG},
     [DEBUG_PARTY_MENU_ITEM_HEAL_PARTY]      = {sDebugText_Party_HealParty,      DEBUG_PARTY_MENU_ITEM_HEAL_PARTY},
     [DEBUG_PARTY_MENU_ITEM_INFLICT_STATUS1] = {sDebugText_Party_InflictStatus1, DEBUG_PARTY_MENU_ITEM_INFLICT_STATUS1},
-    [DEBUG_PARTY_MENU_ITEM_CHECK_EV]        = {sDebugText_Party_CheckEV,        DEBUG_PARTY_MENU_ITEM_CHECK_EV},
-    [DEBUG_PARTY_MENU_ITEM_CHECK_IV]        = {sDebugText_Party_CheckIV,        DEBUG_PARTY_MENU_ITEM_CHECK_IV},
+    [DEBUG_PARTY_MENU_ITEM_CHECK_EVS]       = {sDebugText_Party_CheckEVs,       DEBUG_PARTY_MENU_ITEM_CHECK_EVS},
+    [DEBUG_PARTY_MENU_ITEM_CHECK_IVS]       = {sDebugText_Party_CheckIVs,       DEBUG_PARTY_MENU_ITEM_CHECK_IVS},
     [DEBUG_PARTY_MENU_ITEM_CLEAR_PARTY]     = {sDebugText_Party_ClearParty,     DEBUG_PARTY_MENU_ITEM_CLEAR_PARTY},
 };
 
@@ -917,8 +917,8 @@ static void (*const sDebugMenu_Actions_Party[])(u8) =
     [DEBUG_PARTY_MENU_ITEM_HATCH_AN_EGG]    = DebugAction_Party_HatchAnEgg,
     [DEBUG_PARTY_MENU_ITEM_HEAL_PARTY]      = DebugAction_Party_HealParty,
     [DEBUG_PARTY_MENU_ITEM_INFLICT_STATUS1] = DebugAction_Party_InflictStatus1,
-    [DEBUG_PARTY_MENU_ITEM_CHECK_EV]        = DebugAction_Party_CheckEV,
-    [DEBUG_PARTY_MENU_ITEM_CHECK_IV]        = DebugAction_Party_CheckIV,
+    [DEBUG_PARTY_MENU_ITEM_CHECK_EVS]       = DebugAction_Party_CheckEVs,
+    [DEBUG_PARTY_MENU_ITEM_CHECK_IVS]       = DebugAction_Party_CheckIVs,
     [DEBUG_PARTY_MENU_ITEM_CLEAR_PARTY]     = DebugAction_Party_ClearParty,
 };
 
@@ -1344,36 +1344,16 @@ static void Debug_InitDebugBattleData(void)
         sDebugBattleData->aiFlags[i] = FALSE;
 }
 
-static void Debug_RefreshListMenu(u8 taskId)
+static void Debug_GenerateListMenuNames(u32 totalItems)
 {
-    u16 i;
     const u8 sColor_Red[] = _("{COLOR RED}");
     const u8 sColor_Green[] = _("{COLOR GREEN}");
-    u8 totalItems = 0, flagResult = 0;
+    u32 i, flagResult = 0;
     u8 const *name = NULL;
 
-    if (sDebugMenuListData->listId == 0)
-    {
-        gMultiuseListMenuTemplate = sDebugMenu_ListTemplate_FlagsVars;
-        totalItems = gMultiuseListMenuTemplate.totalItems;
-    }
-    else if (sDebugMenuListData->listId == 1 && sDebugBattleData->submenu <= 1)
-    {
-        gMultiuseListMenuTemplate = sDebugMenu_ListTemplate_Battle_1;
-        totalItems = gMultiuseListMenuTemplate.totalItems;
-    }
-    else if (sDebugMenuListData->listId == 1 && sDebugBattleData->submenu > 1)
-    {
-        gMultiuseListMenuTemplate = sDebugMenu_ListTemplate_Battle_2;
-        totalItems = 7;
-    }
-
-    // Failsafe to prevent memory corruption
-    totalItems = min(totalItems, DEBUG_MAX_MENU_ITEMS);
     // Copy item names for all entries but the last (which is Cancel)
-    for(i = 0; i < totalItems; i++)
+    for (i = 0; i < totalItems; i++)
     {
-
         if (sDebugMenuListData->listId == 1 && sDebugBattleData->submenu > 1)
         {
             u16 species;
@@ -1429,6 +1409,31 @@ static void Debug_RefreshListMenu(u8 taskId)
         sDebugMenuListData->listItems[i].name = &sDebugMenuListData->itemNames[i][0];
         sDebugMenuListData->listItems[i].id = i;
     }
+}
+
+static void Debug_RefreshListMenu(u8 taskId)
+{
+    u8 totalItems = 0;
+
+    if (sDebugMenuListData->listId == 0)
+    {
+        gMultiuseListMenuTemplate = sDebugMenu_ListTemplate_FlagsVars;
+        totalItems = gMultiuseListMenuTemplate.totalItems;
+    }
+    else if (sDebugMenuListData->listId == 1 && sDebugBattleData->submenu <= 1)
+    {
+        gMultiuseListMenuTemplate = sDebugMenu_ListTemplate_Battle_1;
+        totalItems = gMultiuseListMenuTemplate.totalItems;
+    }
+    else if (sDebugMenuListData->listId == 1 && sDebugBattleData->submenu > 1)
+    {
+        gMultiuseListMenuTemplate = sDebugMenu_ListTemplate_Battle_2;
+        totalItems = 7;
+    }
+
+    // Failsafe to prevent memory corruption
+    totalItems = min(totalItems, DEBUG_MAX_MENU_ITEMS);
+    Debug_GenerateListMenuNames(totalItems);
 
     // Set list menu data
     gMultiuseListMenuTemplate.items = sDebugMenuListData->listItems;
@@ -1595,7 +1600,8 @@ static void DebugTask_HandleMenuInput_FlagsVars(u8 taskId)
             else
             {
                 func(taskId);
-                Debug_RedrawListMenu(taskId);
+                Debug_GenerateListMenuNames(gMultiuseListMenuTemplate.totalItems);
+                RedrawListMenu(gTasks[taskId].tMenuTaskId);
             }
 
             // Remove TRUE/FALSE window for functions that haven't been assigned flags
@@ -4097,7 +4103,7 @@ static void DebugAction_PCBag_Fill_PCBoxes_Fast(u8 taskId) //Credit: Sierraffini
                 StringCopy(speciesName, GetSpeciesName(species));
                 SetBoxMonData(&boxMon, MON_DATA_NICKNAME, &speciesName);
                 SetBoxMonData(&boxMon, MON_DATA_SPECIES, &species);
-                GiveBoxMonInitialMoveset_Fast(&boxMon);
+                GiveBoxMonInitialMoveset(&boxMon);
                 gPokemonStoragePtr->boxes[boxId][boxPosition] = boxMon;
             }
         }
@@ -5091,14 +5097,14 @@ static void DebugAction_Party_InflictStatus1(u8 taskId)
     Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_InflictStatus1);
 }
 
-static void DebugAction_Party_CheckEV(u8 taskId)
+static void DebugAction_Party_CheckEVs(u8 taskId)
 {
-    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CheckEV);
+    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CheckEVs);
 }
 
-static void DebugAction_Party_CheckIV(u8 taskId)
+static void DebugAction_Party_CheckIVs(u8 taskId)
 {
-    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CheckIV);
+    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CheckIVs);
 }
 
 static void DebugAction_Party_ClearParty(u8 taskId)

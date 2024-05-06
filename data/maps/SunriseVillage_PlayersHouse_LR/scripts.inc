@@ -20,7 +20,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi::
 # 18 "data/maps/SunriseVillage_PlayersHouse_LR/scripts.pory"
 	closemessage
 # 19 "data/maps/SunriseVillage_PlayersHouse_LR/scripts.pory"
-	setflag FLAG_BIGSIS_OUT
+	setflag FLAG_HIDE_BIGSIS_HOME
 # 20 "data/maps/SunriseVillage_PlayersHouse_LR/scripts.pory"
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 3
 # 21 "data/maps/SunriseVillage_PlayersHouse_LR/scripts.pory"

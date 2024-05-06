@@ -238,3 +238,21 @@ const u16 gMetatileAttributes_House[] = INCBIN_U16("data/tilesets/secondary/hous
 
 const u16 gMetatiles_Refuge[] = INCBIN_U16("data/tilesets/secondary/refuge/metatiles.bin");
 const u16 gMetatileAttributes_Refuge[] = INCBIN_U16("data/tilesets/secondary/refuge/metatile_attributes.bin");
+
+const u16 gMetatiles_Yifu[] = INCBIN_U16("data/tilesets/secondary/yifu/metatiles.bin");
+const u16 gMetatileAttributes_Yifu[] = INCBIN_U16("data/tilesets/secondary/yifu/metatile_attributes.bin");
+
+const u16 gMetatiles_DojoKura[] = INCBIN_U16("data/tilesets/secondary/dojo_kura/metatiles.bin");
+const u16 gMetatileAttributes_DojoKura[] = INCBIN_U16("data/tilesets/secondary/dojo_kura/metatile_attributes.bin");
+
+const u16 gMetatiles_HouseGreen[] = INCBIN_U16("data/tilesets/secondary/house_green/metatiles.bin");
+const u16 gMetatileAttributes_HouseGreen[] = INCBIN_U16("data/tilesets/secondary/house_green/metatile_attributes.bin");
+
+const u16 gMetatiles_HouseBeige[] = INCBIN_U16("data/tilesets/secondary/house_beige/metatiles.bin");
+const u16 gMetatileAttributes_HouseBeige[] = INCBIN_U16("data/tilesets/secondary/house_beige/metatile_attributes.bin");
+
+const u16 gMetatiles_HouseHardwood2[] = INCBIN_U16("data/tilesets/secondary/house_hardwood_2/metatiles.bin");
+const u16 gMetatileAttributes_HouseHardwood2[] = INCBIN_U16("data/tilesets/secondary/house_hardwood_2/metatile_attributes.bin");
+
+const u16 gMetatiles_HouseStone[] = INCBIN_U16("data/tilesets/secondary/house_stone/metatiles.bin");
+const u16 gMetatileAttributes_HouseStone[] = INCBIN_U16("data/tilesets/secondary/house_stone/metatile_attributes.bin");

@@ -25,7 +25,7 @@
     },
     {
       "map": "MAP_WINDY_CAPE",
-      "offset": 19,
+      "offset": 2,
       "direction": "up"
     }
   ],
@@ -41,7 +41,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_CutTree",
-      "flag": "FLAG_TEMP_12"
+      "flag": "FLAG_CUT_TREE_SILVER_TUNNEL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
@@ -54,12 +54,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_CutTree",
-      "flag": "FLAG_TEMP_11"
+      "flag": "FLAG_CUT_TREE_SILVER_TUNNEL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
       "x": 16,
-      "y": 91,
+      "y": 92,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT",
       "movement_range_x": 0,

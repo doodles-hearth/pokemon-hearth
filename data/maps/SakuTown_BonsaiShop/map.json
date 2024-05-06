@@ -16,29 +16,68 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_AROMA_LADY",
-      "x": 0,
+      "x": 11,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SakuTown_BonsaiShop_EventScript_Assistant",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FARMER",
+      "x": 2,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SakuTown_EventScript_Man",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "x": 7,
       "y": 3,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SakuTown_BonsaiShop_Assistant",
+      "script": "SakuTown_BonsaiShop_EventScript_LittleSister",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HANA",
+      "x": 11,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SakuTown_BonsaiShop_EventScript_Owner",
+      "flag": "FLAG_HIDE_BONSAI_SHOP_OWNER"
     }
   ],
   "warp_events": [
     {
-      "x": 4,
-      "y": 7,
+      "x": 5,
+      "y": 8,
       "elevation": 0,
       "dest_map": "MAP_SAKU_TOWN",
       "dest_warp_id": "2"
     },
     {
-      "x": 5,
-      "y": 7,
+      "x": 6,
+      "y": 8,
       "elevation": 0,
       "dest_map": "MAP_SAKU_TOWN",
       "dest_warp_id": "2"
@@ -48,6 +87,101 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 1,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SakuTown_BonsaiShop_EventScript_ClayPots"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SakuTown_BonsaiShop_EventScript_WateringCan"
+    },
+    {
+      "type": "sign",
+      "x": 2,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SakuTown_BonsaiShop_EventScript_FlowerBasket"
+    },
+    {
+      "type": "sign",
+      "x": 0,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SakuTown_BonsaiShop_EventScript_ClayPots"
+    },
+    {
+      "type": "sign",
+      "x": 10,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SakuTown_BonsaiShop_EventScript_Bonsai"
+    },
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SakuTown_BonsaiShop_EventScript_Painting"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SakuTown_BonsaiShop_EventScript_Painting"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SakuTown_BonsaiShop_EventScript_FlowerBasket"
+    },
+    {
+      "type": "sign",
+      "x": 5,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SakuTown_BonsaiShop_EventScript_FlowerBasket"
+    },
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "SakuTown_BonsaiShop_EventScript_FlowerBasket"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SakuTown_BonsaiShop_EventScript_Water"
+    },
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SakuTown_BonsaiShop_EventScript_Bonsai"
+    }
   ]
 }

@@ -16,6 +16,7 @@
 #include "tv.h"
 #include "constants/rgb.h"
 #include "constants/metatile_behaviors.h"
+#include "wild_encounter.h"
 
 struct ConnectionFlags
 {
@@ -70,6 +71,7 @@ u32 GetMapWidth(void) {
 
 void InitMap(void)
 {
+    ResetChainFishingDexNavStreak();
     InitMapLayoutData(&gMapHeader);
     SetOccupiedSecretBaseEntranceMetatiles(gMapHeader.events);
     RunOnLoadMapScript();

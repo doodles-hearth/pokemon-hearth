@@ -525,10 +525,7 @@ static const u8 *ExpandPlaceholder_KunChan(void)
 
 static const u8 *ExpandPlaceholder_RivalName(void)
 {
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        return gText_ExpandedPlaceholder_May;
-    else
-        return gText_ExpandedPlaceholder_Brendan;
+    return gSaveBlock2Ptr->rivalName;
 }
 
 static const u8 *ExpandPlaceholder_Version(void)
@@ -823,7 +820,7 @@ void ConvertInternationalString(u8 *s, u8 language)
 
         i--;
 
-        while (i != (u8)-1)
+        while (i != -1)
         {
             s[i + 2] = s[i];
             i--;

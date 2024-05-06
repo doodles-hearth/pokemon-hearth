@@ -42,11 +42,16 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
+// True if the Kura dojo is closed
+#define FLAG_KURA_DOJO_CLOSED 0x20
+// True if the Espeon from Saku village has left the lady's house
+#define FLAG_SAKU_KURA_HIDE_ESPEON_LADYS_HOUSE 0x21
+// True if the Espeon from Saku village has left its master's house
+#define FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME 0x22
+// True to hide the rival in Saku village
+#define FLAG_HIDE_RIVAL_SAKU 0x23
+// True if the owner of the bonsai shop is not at the shop
+#define FLAG_HIDE_BONSAI_SHOP_OWNER 0x24
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag
 #define FLAG_UNUSED_0x027    0x27 // Unused Flag
@@ -89,7 +94,8 @@
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_UNUSED_0x04E    0x4E // Unused Flag
-#define FLAG_UNUSED_0x04F    0x4F // Unused Flag
+// True if the tree blocking the path to Silver Tunnel has been cut
+#define FLAG_CUT_TREE_SILVER_TUNNEL 0x4F
 
 // Scripts
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL  0x50
@@ -97,8 +103,8 @@
 #define FLAG_RESCUED_BIRCH                       0x52
 #define FLAG_LEGENDARIES_IN_SOOTOPOLIS           0x53
 
-#define FLAG_UNUSED_0x054                    0x54  // Unused Flag
-#define FLAG_UNUSED_0x055                    0x55  // Unused Flag
+#define FLAG_SAKU_KURA_RIVALS                0x54
+#define FLAG_SAKU_KURA_REUNITED              0x55
 
 #define FLAG_HIDE_CONTEST_POKE_BALL          0x56  // Always set after new game, object it hides is added directly
 #define FLAG_MET_RIVAL_MOM                   0x57
@@ -118,7 +124,7 @@
 #define FLAG_MOSSDEEP_GYM_SWITCH_2           0x65 //
 #define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66 //
 #define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
-#define FLAG_TALKED_TO_BONSAI_SHOP_ASSISTANT 0x68
+#define FLAG_TALKED_TO_BONSAI_SHOP_ASSISTANT 0x68 // TODO EVA: UNUSED
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_HM_STRENGTH            0x6A
 #define FLAG_RECEIVED_HM_ROCK_SMASH          0x6B
@@ -166,7 +172,7 @@
 #define FLAG_MR_BRINEY_SAILING_INTRO         0x93
 #define FLAG_DOCK_REJECTED_DEVON_GOODS       0x94
 #define FLAG_DELIVERED_DEVON_GOODS           0x95
-#define FLAG_RECEIVED_CONTEST_PASS           0x96 // Unused, leftover from R/S
+#define FLAG_RECEIVED_TM_ACROBATICS          0x96
 #define FLAG_RECEIVED_CASTFORM               0x97
 #define FLAG_RECEIVED_SUPER_ROD              0x98
 #define FLAG_RUSTBORO_NPC_TRADE_COMPLETED    0x99
@@ -182,7 +188,7 @@
 #define FLAG_SMART_PAINTING_MADE             0xA3
 #define FLAG_TOUGH_PAINTING_MADE             0xA4
 #define FLAG_RECEIVED_TM_ROCK_TOMB           0xA5
-#define FLAG_RECEIVED_TM_BULK_UP             0xA6
+#define FLAG_RECEIVED_TM_BULLDOZE             0xA6
 #define FLAG_RECEIVED_TM_SHOCK_WAVE          0xA7
 #define FLAG_RECEIVED_TM_OVERHEAT            0xA8
 #define FLAG_RECEIVED_TM_FACADE              0xA9
@@ -441,7 +447,7 @@
 #define FLAG_REMATCH_KIRA_AND_DAN            0x19C
 #define FLAG_REMATCH_WALLY                   0x19D
 #define FLAG_REMATCH_ROXANNE                 0x19E
-#define FLAG_REMATCH_BRAWLY                  0x19F
+#define FLAG_REMATCH_HANA                    0x19F
 #define FLAG_REMATCH_WATTSON                 0x1A0
 #define FLAG_REMATCH_FLANNERY                0x1A1
 #define FLAG_REMATCH_NORMAN                  0x1A2
@@ -497,7 +503,7 @@
 #define FLAG_SCOTT_GIVES_BATTLE_POINTS       0x1D1
 #define FLAG_COLLECTED_ALL_GOLD_SYMBOLS      0x1D2
 #define FLAG_ENABLE_ROXANNE_MATCH_CALL       0x1D3
-#define FLAG_ENABLE_BRAWLY_MATCH_CALL        0x1D4
+#define FLAG_ENABLE_HANA_MATCH_CALL          0x1D4
 #define FLAG_ENABLE_WATTSON_MATCH_CALL       0x1D5
 #define FLAG_ENABLE_FLANNERY_MATCH_CALL      0x1D6
 #define FLAG_ENABLE_WINONA_MATCH_CALL        0x1D7
@@ -650,7 +656,7 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_BIGSIS_OUT   0x264  // True if bigsis is not home
+#define FLAG_HIDE_BIGSIS_HOME   0x264  // True if bigsis is not home
 #define FLAG_HIDE_SUNRISE_BEACH_RIVAL 0x265 // True if talked to rival on the beach in intro sequence
 #define FLAG_RECEIVED_STARTER  0x266 // True if player has received their starter
 #define FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS  0x267 // True if all the Sunrise Village NPC's should be removed from their usual spot

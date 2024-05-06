@@ -93,6 +93,7 @@ script ChiiTown_House1_EventScript_Cheater {
 	faceplayer
 	setwildbattle(SPECIES_ELECTRODE, 100)
 	waitse
+	msgbox("Cheater!", MSGBOX_AUTOCLOSE)
 	playmoncry(SPECIES_ELECTRODE, CRY_MODE_ENCOUNTER)
 	delay(40)
 	waitmoncry

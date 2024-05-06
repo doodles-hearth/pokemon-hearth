@@ -1,0 +1,198 @@
+mapscripts KuraTown_Dojo_MapScripts {
+	
+}
+
+script KuraTown_Dojo_EventScript_Takao {
+	trainerbattle_single(
+		TRAINER_TAKAO,
+		format("Ho ho ho… It seems you have taken a wrong turn…"),
+		format("Very impressive skills!")
+	)
+	msgbox(
+		format("Not all paths lead to the master."),
+		MSGBOX_AUTOCLOSE
+	)
+	end
+}
+
+script KuraTown_Dojo_EventScript_Jocelyn {
+	trainerbattle_single(
+		TRAINER_JOCELYN,
+		format("Is the maze giving you trouble?"),
+		format("At least I didn't give you any trouble…")
+	)
+	msgbox(format(
+		"You're wondering why you can't just cut down all the trees?\p"
+		"Uhhh… It's a secret!"
+	), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script KuraTown_Dojo_EventScript_Laura {
+	trainerbattle_single(
+		TRAINER_LAURA,
+		format("No! Don't cut down that tree! It's my favorite tree!"),
+		format("Sniffle…")
+	)
+	msgbox(format("It's okay, go ahead. They're all my favorite tree anyway."), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script KuraTown_Dojo_EventScript_Brenden {
+	trainerbattle_single(
+		TRAINER_BRENDEN,
+		format("Take a deep breath! The air is so rich and flowery here!"),
+		format("A-tchoo!")
+	)
+	msgbox(format("Sniff… By zeazonal allergiez are agdig up agaid…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script KuraTown_Dojo_EventScript_Cristian {
+	trainerbattle_single(
+		TRAINER_CRISTIAN,
+		format("Did you know any tree can be bonsaified by pruning its leaves regularly?"),
+		format("You're not here because you're particularly interested in bonsai, are you?")
+	)
+	msgbox(format("I feel bad sometimes, not letting the tree grow like it wants."), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script KuraTown_Dojo_EventScript_Lilith {
+	trainerbattle_single(
+		TRAINER_LILITH,
+		format("Hana may look delicate, but she's actually way tougher than you!"),
+		format("Stop it! I'm a delicate flower!")
+	)
+	if (flag(FLAG_BADGE02_GET)) {
+		msgbox(format(
+			"I saw your fight peeking through the leaves! That was amazing!\p"
+			"I'm officially a fan!"
+		), MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox(format("I wish I could see you two fight! Good luck!"), MSGBOX_AUTOCLOSE)
+	}
+	end
+}
+
+script KuraTown_Dojo_EventScript_Hana {
+	trainerbattle_single(
+		TRAINER_HANA_1,
+		// TODO different dialogue if you already met
+		format("Welcome to my humble Dojo. I am Hana. Did you enjoy my little maze?\p"
+		"Tending to my bonsai and fighting alongside my Pokémon are my favorite pastimes. With the Dojo, I can do both!\p"
+		"A Pokémon battle can be graceful like a budding flower and strong like a windswept pine tree, all at once.\p"
+		"I want you to show me all the grace and strength you are capable of!"),
+		format("Amazing!"),
+		KuraTown_Dojo_EventScript_HanaDefeated,
+		NO_MUSIC
+	)
+	// specialvar(VAR_RESULT, ShouldTryRematchBattle)
+	// goto_if_eq(VAR_RESULT, TRUE, KuraTown_Dojo_EventScript_HanaRematch)
+	if (!flag(FLAG_RECEIVED_TM_BULLDOZE)) {
+		call(KuraTown_Dojo_EventScript_GiveBulldoze)
+	} else {
+		msgbox(
+			format(
+				"The slow-growing trees become the sturdiest. Take your time on your journey, {PLAYER}."
+			),
+			MSGBOX_DEFAULT
+		)
+	}
+	release
+	end
+}
+
+script KuraTown_Dojo_EventScript_HanaDefeated {
+	message(format(
+		"{PLAYER} received the Bonsai badge\n"
+		"from Hana."
+	))
+	waitmessage
+	call(Common_EventScript_PlayGymBadgeFanfare)
+	msgbox(
+		format(
+			"Thanks to the Bonsai badge, your Pokémon will obey you without question, even those you trade with others.\p"
+			"Here, let me also give you this."
+		),
+		MSGBOX_DEFAULT
+	)
+	setflag(FLAG_DEFEATED_DEWFORD_GYM)
+	setflag(FLAG_BADGE02_GET)
+	setvar(VAR_0x8008, 2)
+	call(Common_EventScript_SetGymTrainers)
+	call(KuraTown_Dojo_EventScript_GiveBulldoze)
+	closemessage
+	// TODO rematch
+	// delay(30)
+	// playfanfare(MUS_REGISTER_MATCH_CALL)
+	// msgbox(format("Registered Hana\nin the address log."), MSGBOX_DEFAULT)
+	// waitfanfare
+	// closemessage
+	release
+	end
+}
+
+script KuraTown_Dojo_EventScript_GiveBulldoze {
+	giveitem(ITEM_TM_BULLDOZE)
+	goto_if_eq(VAR_RESULT, 0, Common_EventScript_BagIsFull)
+	msgbox(
+		format(
+			"This scroll contains Bulldoze, a powerful ground-type move that slows down the enemy.\p"
+			"I invented that technique myself! I needed a way to soften the ground when repotting bonsai, heh heh.\p"
+		),
+		MSGBOX_DEFAULT
+	)
+	setflag(FLAG_RECEIVED_TM_BULLDOZE)
+	return
+}
+
+script KuraTown_Dojo_EventScript_Advice {
+	lock
+	faceplayer
+	if (flag(FLAG_BADGE02_GET)) {
+		msgbox(format(
+			"That was a beautiful fight! You're going to blossom into an excellent Pokémon wielder, I can just feel it!"
+		))
+	} else {
+		msgbox(format(
+			"Hello, young challenger, and welcome to the official Dojo of Kura Village!\p"
+			"Lady Hana, the Dojo master, is an expert in all things bonsai. She designed this place and grew these trees, of course!\p"
+			"She tends to favor ground-type moves, but she's got other tricks up her sleeve, too. Be on your guard!\p"
+			"Now, pay attention: only some of these pretty trees can be cut down.\p"
+			"Figure out which, and you'll reach the master!"
+		))
+	}
+	release
+}
+
+script KuraTown_Dojo_EventScript_DojoStatue {
+	lockall
+	if (flag(FLAG_BADGE02_GET)) {
+		msgbox(
+			"Dojo of Kura Village\p"
+			"Certified wielders:\n"
+			"{PLAYER}",
+			MSGBOX_DEFAULT
+		)
+	} else {
+		msgbox("Dojo of Kura Village", MSGBOX_DEFAULT)
+	}
+	releaseall
+}
+
+script KuraTown_Dojo_EventScript_KuraDojoTree_CanCut {
+	lock
+	msgbox("…Oh? This tree can be cut down!", MSGBOX_DEFAULT)
+	closemessage
+	playse(SE_M_CUT)
+	applymovement(VAR_LAST_TALKED, Movement_CutTreeDown)
+	waitse
+	waitmovement(0)
+	removeobject(VAR_LAST_TALKED)
+	release
+}
+
+script KuraTown_Dojo_EventScript_KuraDojoTree_CantCut {
+	msgbox("A gorgeous and well-nurtured tree.", MSGBOX_SIGN)
+}

@@ -6389,3 +6389,11 @@ DirectSoundWaveData_sd90_classical_whistle::
 	.align 2
 DirectSoundWaveData_sd90_enhanced_delay_shaku::
 	.incbin "sound/direct_sound_samples/sd90_enhanced_delay_shaku.bin"
+
+	.align 2
+DirectSoundWaveData_prosamples_15_dance_drums_kick::
+	.incbin "sound/direct_sound_samples/prosamples_15_dance_drums_kick.bin"
+
+	.align 2
+DirectSoundWaveData_drum_and_percussion_stick::
+	.incbin "sound/direct_sound_samples/drum_and_percussion_stick.bin"

@@ -1,7 +1,7 @@
 {
   "id": "MAP_SAKU_TOWN_HOUSE1",
   "name": "SakuTown_House1",
-  "layout": "LAYOUT_SAKU_TOWN_HOUSE1",
+  "layout": "LAYOUT_HOUSE_GREEN_HEARTH",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_SAKU_TOWN",
   "requires_flash": false,

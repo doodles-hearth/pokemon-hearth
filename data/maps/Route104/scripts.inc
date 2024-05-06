@@ -163,19 +163,19 @@ Route104_EventScript_RestoreMusic::
 	return
 
 Route104_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TREECKO, Route104_Text_MayDefeat
+	trainerbattle_no_intro TRAINER_RIVAL_SAKU_ARON, Route104_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_MayDefeated
 	end
 
 Route104_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TORCHIC, Route104_Text_MayDefeat
+	trainerbattle_no_intro TRAINER_RIVAL_SAKU_TRAPINCH, Route104_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_MayDefeated
 	end
 
 Route104_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_MUDKIP, Route104_Text_MayDefeat
+	trainerbattle_no_intro TRAINER_RIVAL_SAKU_SPHEAL, Route104_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_MayDefeated
 	end
@@ -939,10 +939,10 @@ Route104_EventScript_RematchWinston::
 	end
 
 Route104_EventScript_Cindy::
-	// trainerbattle_single TRAINER_HANA, Route104_Text_CindyIntro, Route104_Text_CindyDefeat, Route104_EventScript_TryRegisterCindyAfterBattle
+	// trainerbattle_single TRAINER_HANA_1, Route104_Text_CindyIntro, Route104_Text_CindyDefeat, Route104_EventScript_TryRegisterCindyAfterBattle
 	// specialvar VAR_RESULT, ShouldTryRematchBattle
 	// goto_if_eq VAR_RESULT, TRUE, Route104_EventScript_RematchCindy
-	// setvar VAR_0x8004, TRAINER_HANA
+	// setvar VAR_0x8004,TRAINER_HANA_1
 	// specialvar VAR_RESULT, IsTrainerRegistered
 	// goto_if_eq VAR_RESULT, FALSE, Route104_EventScript_TryRegisterCindy
 	// msgbox Route104_Text_CindyPostBattle, MSGBOX_DEFAULT
@@ -958,7 +958,7 @@ Route104_EventScript_TryRegisterCindyAfterBattle::
 
 Route104_EventScript_RegisterCindyAfterBattle::
 	msgbox Route104_Text_CindyRegister2, MSGBOX_DEFAULT
-	register_matchcall TRAINER_HANA
+	register_matchcall TRAINER_HANA_1
 	release
 	end
 
@@ -970,12 +970,12 @@ Route104_EventScript_TryRegisterCindy::
 
 Route104_EventScript_RegisterCindy::
 	msgbox Route104_Text_CindyRegister1, MSGBOX_DEFAULT
-	register_matchcall TRAINER_HANA
+	register_matchcall TRAINER_HANA_1
 	release
 	end
 
 Route104_EventScript_RematchCindy::
-	trainerbattle_rematch TRAINER_HANA, Route104_Text_CindyRematchIntro, Route104_Text_CindyRematchDefeat
+	trainerbattle_rematch TRAINER_HANA_1, Route104_Text_CindyRematchIntro, Route104_Text_CindyRematchDefeat
 	msgbox Route104_Text_CindyPostRematch, MSGBOX_AUTOCLOSE
 	end
 

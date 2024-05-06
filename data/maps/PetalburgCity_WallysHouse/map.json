@@ -1,7 +1,7 @@
 {
   "id": "MAP_PETALBURG_CITY_WALLYS_HOUSE",
   "name": "PetalburgCity_WallysHouse",
-  "layout": "LAYOUT_HOUSE2",
+  "layout": "LAYOUT_HOUSE_GREEN_TABLE",
   "music": "MUS_PETALBURG",
   "region_map_section": "MAPSEC_PETALBURG_CITY",
   "requires_flash": false,

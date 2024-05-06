@@ -935,3 +935,69 @@ const struct Tileset gTileset_Refuge =
     .metatileAttributes = gMetatileAttributes_Refuge,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Yifu =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Yifu,
+    .palettes = gTilesetPalettes_Yifu,
+    .metatiles = gMetatiles_Yifu,
+    .metatileAttributes = gMetatileAttributes_Yifu,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_DojoKura =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_DojoKura,
+    .palettes = gTilesetPalettes_DojoKura,
+    .metatiles = gMetatiles_DojoKura,
+    .metatileAttributes = gMetatileAttributes_DojoKura,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_HouseGreen =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HouseGreen,
+    .palettes = gTilesetPalettes_HouseGreen,
+    .metatiles = gMetatiles_HouseGreen,
+    .metatileAttributes = gMetatileAttributes_HouseGreen,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_HouseBeige =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HouseBeige,
+    .palettes = gTilesetPalettes_HouseBeige,
+    .metatiles = gMetatiles_HouseBeige,
+    .metatileAttributes = gMetatileAttributes_HouseBeige,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_HouseHardwood2 =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HouseHardwood2,
+    .palettes = gTilesetPalettes_HouseHardwood2,
+    .metatiles = gMetatiles_HouseHardwood2,
+    .metatileAttributes = gMetatileAttributes_HouseHardwood2,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_HouseStone =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HouseStone,
+    .palettes = gTilesetPalettes_HouseStone,
+    .metatiles = gMetatiles_HouseStone,
+    .metatileAttributes = gMetatileAttributes_HouseStone,
+    .callback = NULL,
+};

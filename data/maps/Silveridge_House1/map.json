@@ -1,7 +1,7 @@
 {
   "id": "MAP_SILVERIDGE_HOUSE1",
   "name": "Silveridge_House1",
-  "layout": "LAYOUT_SILVERIDGE_HOUSE1",
+  "layout": "LAYOUT_HOUSE_WHITE_STONE_HEARTH",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_FALLARBOR_TOWN",
   "requires_flash": false,

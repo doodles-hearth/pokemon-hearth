@@ -6159,4 +6159,14 @@ static const struct SpriteFrameImage sPicTable_TerapagosStellar[] = {
 };*/
 #endif //P_FAMILY_PECHARUNT
 
+static const struct SpriteFrameImage sPicTable_Kotora[] = {
+    overworld_ascending_frames(gObjectEventPic_Kotora, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Raitora[] = {
+    overworld_ascending_frames(gObjectEventPic_Raitora, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Gaotora[] = {
+    overworld_ascending_frames(gObjectEventPic_Gaotora, 4, 4),
+};
+
 #endif //OW_FOLLOWERS_ENABLED

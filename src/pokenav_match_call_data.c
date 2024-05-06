@@ -395,8 +395,8 @@ static const struct MatchCallStructTrainer sBrawlyMatchCallHeader =
 {
     .type = MC_TYPE_LEADER,
     .mapSec = MAPSEC_SAKU_TOWN,
-    .flag = FLAG_ENABLE_BRAWLY_MATCH_CALL,
-    .rematchTableIdx = REMATCH_BRAWLY,
+    .flag = FLAG_ENABLE_HANA_MATCH_CALL,
+    .rematchTableIdx = REMATCH_HANA,
     .desc = gText_BrawlyMatchCallDesc,
     .name = NULL,
     .textData = sBrawlyTextScripts

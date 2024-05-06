@@ -17,7 +17,7 @@
 #define OBJ_EVENT_GFX_BOY_3                       13
 #define OBJ_EVENT_GFX_GIRL_3                      14
 #define OBJ_EVENT_GFX_RICH_BOY                    15
-#define OBJ_EVENT_GFX_WOMAN_1                     16
+#define OBJ_EVENT_GFX_GARDENER                     16
 #define OBJ_EVENT_GFX_FAT_MAN                     17
 #define OBJ_EVENT_GFX_POKEFAN_F                   18
 #define OBJ_EVENT_GFX_MAN_1                       19
@@ -79,8 +79,8 @@
 #define OBJ_EVENT_GFX_LUCY                        75
 #define OBJ_EVENT_GFX_AROMA_LADY                  76
 #define OBJ_EVENT_GFX_FARMER                      77
-#define OBJ_EVENT_GFX_UNUSED_SQUIRTLE_DOLL        78
-#define OBJ_EVENT_GFX_UNUSED_WOOPER_DOLL          79
+#define OBJ_EVENT_GFX_BATTLE_GIRL                 78
+#define OBJ_EVENT_GFX_CUTTABLE_TREE_KURA_DOJO     79
 #define OBJ_EVENT_GFX_UNUSED_PIKACHU_DOLL         80
 #define OBJ_EVENT_GFX_UNUSED_PORYGON2_DOLL        81
 #define OBJ_EVENT_GFX_CUTTABLE_TREE               82
@@ -127,7 +127,7 @@
 #define OBJ_EVENT_GFX_GLACIA                     123
 #define OBJ_EVENT_GFX_DRAKE                      124
 #define OBJ_EVENT_GFX_ROXANNE                    125
-#define OBJ_EVENT_GFX_BRAWLY                     126
+#define OBJ_EVENT_GFX_HANA                       126
 #define OBJ_EVENT_GFX_WATTSON                    127
 #define OBJ_EVENT_GFX_FLANNERY                   128
 #define OBJ_EVENT_GFX_NORMAN                     129
@@ -367,7 +367,7 @@
 #define OBJ_EVENT_PAL_TAG_KYOGRE_REFLECTION       0x1117
 #define OBJ_EVENT_PAL_TAG_GROUDON                 0x1118
 #define OBJ_EVENT_PAL_TAG_GROUDON_REFLECTION      0x1119
-#define OBJ_EVENT_PAL_TAG_UNUSED                  0x111A
+#define OBJ_EVENT_PAL_TAG_CUTTABLE_TREE_KURA_DOJO 0x111A
 #define OBJ_EVENT_PAL_TAG_SUBMARINE_SHADOW        0x111B
 #define OBJ_EVENT_PAL_TAG_POOCHYENA               0x111C
 #define OBJ_EVENT_PAL_TAG_RED_LEAF                0x111D
@@ -389,6 +389,10 @@
 #define OBJ_EVENT_PAL_TAG_FARMER                  0x112D
 #define OBJ_EVENT_PAL_TAG_BUG_CATCHER             0x112E
 #define OBJ_EVENT_PAL_TAG_BOY_1                   0x112F
+#define OBJ_EVENT_PAL_TAG_MART_EMPLOYEE           0x1130
+#define OBJ_EVENT_PAL_TAG_BATTLE_GIRL             0x1131
+#define OBJ_EVENT_PAL_TAG_HANA                    0x1132
+#define OBJ_EVENT_PAL_TAG_GARDENER                0x1133
 
 #if OW_MON_POKEBALLS
 // Vanilla

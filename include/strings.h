@@ -392,6 +392,7 @@ extern const u8 gText_DefaultNameLillie[];
 extern const u8 gText_DefaultNameTerra[];
 extern const u8 gText_DefaultNameLucy[];
 extern const u8 gText_DefaultNameHalie[];
+extern const u8 gText_DefaultNameAka[];
 extern const u8 gText_DefaultNameAo[];
 
 extern const u8 gText_BirchInTrouble[];
@@ -634,6 +635,10 @@ extern const u8 gText_BigGirl[];
 extern const u8 gText_Son[];
 extern const u8 gText_Bro[];
 extern const u8 gText_Sis[];
+extern const u8 gText_Mr[];
+extern const u8 gText_Mrs[];
+extern const u8 gText_Boy[];
+extern const u8 gText_Girl[];
 extern const u8 gText_Daughter[];
 
 // Multichoice strings
@@ -1030,6 +1035,10 @@ extern const u8 gText_ThanksIllSendItHome[];
 extern const u8 gText_SpaceForVar1Full[];
 extern const u8 gText_ThrowInPremierBall[];
 extern const u8 gText_ThrowInPremierBalls[];
+extern const u8 gText_Price[];
+extern const u8 gText_InBag[];
+extern const u8 gText_ReturnToField[];
+
 extern const u8 gText_ShopBuy[];
 extern const u8 gText_ShopSell[];
 extern const u8 gText_ShopQuit[];

@@ -1,0 +1,34 @@
+mapscripts Silveridge_EldersHouse_MapScripts {
+	
+}
+
+// TODO EVA dialog
+script Silveridge_EldersHouse_EventScript_Elder {
+	lock
+	faceplayer
+
+	checkitem(ITEM_SKY_PLATE)
+	if (var(VAR_RESULT)) {
+		 msgbox(format(
+			"Go forth, my child."
+		))
+	}
+	else {
+		msgbox(format(
+			"Hello, child. I am Iwa, the elder of Silveridge. What brings you to me?\p"
+			"……………\p"
+			"Oh, I see! So Kaba sent you! Insert interesting dialog about the Pokémon attacking people here\p"
+			"……………Yes… I can see why Kaba has trusted you with coming to see me.\p"
+			"Perhaps you've seen or heard about bigger, stronger Pokémon that have gone mad; we call them the TODO EVA. They are very difficult to stop.\p"
+			"That is, unless you have this in your posession."
+		))
+		// TODO EVA tablets
+		giveitem(ITEM_SKY_PLATE)
+		msgbox(format(
+			"This is a copy of one of the very ancient Tablets of Power. It is said that to possess all the Tablets of Power grants one with absolute power over Pokémon.\p"
+			"I am entrusting this one to you. It should grant you enough power to be able to battle a TODO EVA.\p"
+			"I am convinced that by gathering these Tablets of Power, we will find the answer to why the Pokémon are attacking us.\p"
+		))
+	}
+	release
+}

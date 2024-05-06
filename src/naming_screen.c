@@ -1373,6 +1373,7 @@ static void NamingScreen_CreatePlayerIcon(void);
 static void NamingScreen_CreatePCIcon(void);
 static void NamingScreen_CreateMonIcon(void);
 static void NamingScreen_CreateWaldaDadIcon(void);
+static void NamingScreen_CreateRivalIcon(void);
 
 static void (*const sIconFunctions[])(void) =
 {
@@ -1381,6 +1382,7 @@ static void (*const sIconFunctions[])(void) =
     NamingScreen_CreatePCIcon,
     NamingScreen_CreateMonIcon,
     NamingScreen_CreateWaldaDadIcon,
+    NamingScreen_CreateRivalIcon,
 };
 
 static void CreateInputTargetIcon(void)
@@ -1429,6 +1431,17 @@ static void NamingScreen_CreateWaldaDadIcon(void)
     spriteId = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_MAN_1, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], ANIM_STD_GO_SOUTH);
+}
+
+static void NamingScreen_CreateRivalIcon(void)
+{
+    u8 rivalGfxId;
+    u8 spriteId;
+
+    rivalGfxId = GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, gSaveBlock2Ptr->playerGender ^ 1);
+    spriteId = CreateObjectGraphicsSprite(rivalGfxId, SpriteCallbackDummy, 56, 37, 0);
+    gSprites[spriteId].oam.priority = 3;
+    StartSpriteAnim(&gSprites[spriteId], 4);
 }
 
 //--------------------------------------------------
@@ -1710,10 +1723,11 @@ static void DrawNormalTextEntryBox(void)
 
 static void DrawMonTextEntryBox(void)
 {
-    u8 buffer[32];
+    u8 buffer[64];
 
-    StringCopy(buffer, GetSpeciesName(sNamingScreen->monSpecies));
-    StringAppendN(buffer, sNamingScreen->template->title, 15);
+    u8 *end = StringCopy(buffer, GetSpeciesName(sNamingScreen->monSpecies));
+    WrapFontIdToFit(buffer, end, FONT_NORMAL, 128 - 64);
+    StringAppendN(end, sNamingScreen->template->title, 15);
     FillWindowPixelBuffer(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], PIXEL_FILL(1));
     AddTextPrinterParameterized(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX], FONT_NORMAL, buffer, 8, 1, 0, 0);
     PutWindowTilemap(sNamingScreen->windows[WIN_TEXT_ENTRY_BOX]);
@@ -1726,6 +1740,7 @@ static void (*const sDrawTextEntryBoxFuncs[])(void) =
     [NAMING_SCREEN_CAUGHT_MON] = DrawMonTextEntryBox,
     [NAMING_SCREEN_NICKNAME]   = DrawMonTextEntryBox,
     [NAMING_SCREEN_WALDA]      = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_RIVAL]      = DrawNormalTextEntryBox,
 };
 
 static void DrawTextEntryBox(void)
@@ -1977,6 +1992,14 @@ static const u8 *const sNextKeyboardPageTilemaps[] =
     [KBPAGE_LETTERS_LOWER] = gNamingScreenKeyboardSymbols_Tilemap  // symbols
 };
 
+static const u8 *const gMalePresetNames[] = {
+    gText_DefaultNameAka,
+};
+
+static const u8 *const gFemalePresetNames[] = {
+    gText_DefaultNameAo,
+};
+
 // There are always 2 keyboard pages drawn, the current page and the one that will shown next if the player swaps
 // When the page swap is complete this function invisibly replaces the old page with the new next one
 static void DrawKeyboardPageOnDeck(void)
@@ -2090,6 +2113,15 @@ static void UNUSED Debug_NamingScreenNickname(void)
     DoNamingScreen(NAMING_SCREEN_NICKNAME, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_ReturnToFieldWithOpenMenu);
 }
 
+void NameRival(void)
+{
+    if (gSaveBlock2Ptr->playerGender == MALE)
+        StringCopy(gSaveBlock2Ptr->rivalName, gFemalePresetNames[0]);
+    else
+        StringCopy(gSaveBlock2Ptr->rivalName, gMalePresetNames[0]);
+    DoNamingScreen(NAMING_SCREEN_RIVAL, gSaveBlock2Ptr->rivalName, 0, 0, 0, CB2_ReturnToFieldContinueScript);
+}
+
 //--------------------------------------------------
 // Forward-declared variables
 //--------------------------------------------------
@@ -2139,6 +2171,18 @@ static const struct NamingScreenTemplate sWaldaWordsScreenTemplate =
     .title = gText_TellHimTheWords,
 };
 
+static const u8 sText_RivalsName[] = _("Rival's Name?");
+static const struct NamingScreenTemplate sRivalNamingScreenTemplate =
+{
+    .copyExistingString = FALSE,
+    .maxChars = PLAYER_NAME_LENGTH,
+    .iconFunction = 5,
+    .addGenderIcon = FALSE,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .unused = 35,
+    .title = sText_RivalsName,
+};
+
 static const struct NamingScreenTemplate *const sNamingScreenTemplates[] =
 {
     [NAMING_SCREEN_PLAYER]     = &sPlayerNamingScreenTemplate,
@@ -2146,6 +2190,7 @@ static const struct NamingScreenTemplate *const sNamingScreenTemplates[] =
     [NAMING_SCREEN_CAUGHT_MON] = &sMonNamingScreenTemplate,
     [NAMING_SCREEN_NICKNAME]   = &sMonNamingScreenTemplate,
     [NAMING_SCREEN_WALDA]      = &sWaldaWordsScreenTemplate,
+    [NAMING_SCREEN_RIVAL]      = &sRivalNamingScreenTemplate,
 };
 
 static const struct OamData sOam_8x8 =

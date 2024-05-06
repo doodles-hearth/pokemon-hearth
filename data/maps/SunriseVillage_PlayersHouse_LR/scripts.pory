@@ -16,7 +16,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 		"Make sure you read it!"
 	))
 	closemessage
-	setflag(FLAG_BIGSIS_OUT)
+	setflag(FLAG_HIDE_BIGSIS_HOME)
 	setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 3)
 	applymovement(1, SunriseVillage_PlayersHouse_LR_Movement_BigSisExits)
 	waitmovement(0)

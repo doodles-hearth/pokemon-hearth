@@ -32,8 +32,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAKUHITA)",
-      "x": 37,
-      "y": 20,
+      "x": 40,
+      "y": 19,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
       "movement_range_x": 1,
@@ -45,8 +45,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAKUHITA)",
-      "x": 42,
-      "y": 22,
+      "x": 39,
+      "y": 21,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 1,
@@ -58,8 +58,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
-      "x": 28,
-      "y": 19,
+      "x": 20,
+      "y": 28,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -71,8 +71,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-      "x": 33,
-      "y": 34,
+      "x": 27,
+      "y": 21,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 2,
@@ -84,10 +84,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
-      "x": 16,
-      "y": 40,
+      "x": 20,
+      "y": 39,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
       "movement_range_x": 2,
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -97,10 +97,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
-      "x": 35,
-      "y": 21,
+      "x": 39,
+      "y": 24,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -110,10 +110,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
-      "x": 22,
-      "y": 42,
+      "x": 23,
+      "y": 37,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_WANDER_DOWN_AND_UP",
       "movement_range_x": 2,
       "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -133,28 +133,61 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SakuTown_EventScript_Guard",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FARMER",
+      "x": 20,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SakuTown_EventScript_KuraGuard",
+      "flag": "FLAG_SAKU_KURA_RIVALS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "x": 37,
+      "y": 23,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_RIVAL_SAKU"
     }
   ],
   "warp_events": [
     {
-      "x": 30,
-      "y": 36,
+      "x": 16,
+      "y": 21,
       "elevation": 0,
       "dest_map": "MAP_SAKU_TOWN_HOUSE1",
       "dest_warp_id": "0"
     },
     {
-      "x": 40,
-      "y": 21,
+      "x": 37,
+      "y": 20,
       "elevation": 0,
       "dest_map": "MAP_SAKU_TOWN_POKEMON_CENTER",
       "dest_warp_id": "0"
     },
     {
-      "x": 18,
-      "y": 34,
+      "x": 35,
+      "y": 32,
       "elevation": 0,
       "dest_map": "MAP_SAKU_TOWN_BONSAI_SHOP",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 24,
+      "y": 19,
+      "elevation": 0,
+      "dest_map": "MAP_SAKU_TOWN_HOUSE2",
       "dest_warp_id": "0"
     }
   ],
@@ -170,48 +203,12 @@
     },
     {
       "type": "trigger",
-      "x": 16,
-      "y": 2,
-      "elevation": 0,
-      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
-      "var_value": "0",
-      "script": "SakuTown_EventScript_NorthOfGuard"
-    },
-    {
-      "type": "trigger",
       "x": 17,
-      "y": 2,
+      "y": 3,
       "elevation": 0,
       "var": "VAR_SAKU_KURA_VILLAGES_STATE",
       "var_value": "0",
-      "script": "SakuTown_EventScript_NorthOfGuard"
-    },
-    {
-      "type": "trigger",
-      "x": 15,
-      "y": 4,
-      "elevation": 0,
-      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
-      "var_value": "0",
-      "script": "SakuTown_EventScript_SouthOfGuard"
-    },
-    {
-      "type": "trigger",
-      "x": 16,
-      "y": 4,
-      "elevation": 0,
-      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
-      "var_value": "0",
-      "script": "SakuTown_EventScript_SouthOfGuard"
-    },
-    {
-      "type": "trigger",
-      "x": 17,
-      "y": 4,
-      "elevation": 0,
-      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
-      "var_value": "0",
-      "script": "SakuTown_EventScript_SouthOfGuard"
+      "script": "SakuTown_EventScript_GuardSeesYou"
     },
     {
       "type": "trigger",
@@ -219,42 +216,77 @@
       "y": 3,
       "elevation": 0,
       "var": "VAR_SAKU_KURA_VILLAGES_STATE",
-      "var_value": "0",
+      "var_value": "1",
       "script": "SakuTown_EventScript_GuardSeesYou"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 3,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
+      "var_value": "1",
+      "script": "SakuTown_EventScript_GuardSeesYou"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_RIVAL_ENCOUNTER_STATE",
+      "var_value": "0",
+      "script": "SakuTown_EventScript_RivalAtSakuWall"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_RIVAL_ENCOUNTER_STATE",
+      "var_value": "0",
+      "script": "SakuTown_EventScript_RivalAtSakuWall"
     }
   ],
   "bg_events": [
     {
       "type": "sign",
       "x": 17,
-      "y": 19,
+      "y": 12,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SakuTown_EventScript_TrainerTips"
     },
     {
       "type": "sign",
-      "x": 39,
-      "y": 28,
+      "x": 41,
+      "y": 27,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SakuTown_EventScript_TownSign"
     },
     {
       "type": "sign",
-      "x": 20,
-      "y": 34,
+      "x": 37,
+      "y": 32,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "SakuTown_EventScript_FloristSign"
     },
     {
       "type": "sign",
       "x": 14,
-      "y": 8,
+      "y": 7,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SakuTown_EventScript_TrainerTips2"
+    },
+    {
+      "type": "sign",
+      "x": 19,
+      "y": 3,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SakuTown_EventScript_BoardGame"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "id": "MAP_DEWFORD_TOWN_HOUSE2",
   "name": "DewfordTown_House2",
-  "layout": "LAYOUT_HOUSE4",
+  "layout": "LAYOUT_HOUSE_HARDWOOD_TATAMI_ZABUTON",
   "music": "MUS_DEWFORD",
   "region_map_section": "MAPSEC_SAKU_TOWN",
   "requires_flash": false,

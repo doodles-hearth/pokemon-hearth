@@ -20,7 +20,7 @@ LittlerootTown_MaysHouse_1F_EventScript_BigSisSaysHi::
 # 18 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	closemessage
 # 19 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
-	setflag FLAG_BIGSIS_OUT
+	setflag FLAG_HIDE_BIGSIS_HOME
 # 20 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 3
 # 21 "data/maps/LittlerootTown_MaysHouse_1F/scripts.pory"

@@ -20,7 +20,7 @@ TranquilRoute_EventScript_Takeshi::
 
 TranquilRoute_EventScript_Hana::
 # 30 "data/maps/TranquilRoute/scripts.pory"
-	trainerbattle_single TRAINER_HANA, TranquilRoute_EventScript_Hana_Text_0, TranquilRoute_EventScript_Hana_Text_1
+	trainerbattle_single TRAINER_HIINA, TranquilRoute_EventScript_Hana_Text_0, TranquilRoute_EventScript_Hana_Text_1
 # 35 "data/maps/TranquilRoute/scripts.pory"
 	msgbox TranquilRoute_EventScript_Hana_Text_2, MSGBOX_AUTOCLOSE
 	end
@@ -130,20 +130,48 @@ TranquilRoute_EventScript_BerryWoman_2:
 	goto TranquilRoute_EventScript_BerryWoman_1
 
 
-TranquilRoute_TrainerTips1::
+TranquilRoute_EventScript_Mareep::
 # 136 "data/maps/TranquilRoute/scripts.pory"
+	lock
+# 137 "data/maps/TranquilRoute/scripts.pory"
+	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
+# 138 "data/maps/TranquilRoute/scripts.pory"
+	msgbox TranquilRoute_EventScript_Mareep_Text_0, MSGBOX_AUTOCLOSE
+# 139 "data/maps/TranquilRoute/scripts.pory"
+	waitmoncry
+# 140 "data/maps/TranquilRoute/scripts.pory"
+	release
+	return
+
+
+TranquilRoute_EventScript_Mareep2::
+# 144 "data/maps/TranquilRoute/scripts.pory"
+	lock
+# 145 "data/maps/TranquilRoute/scripts.pory"
+	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
+# 146 "data/maps/TranquilRoute/scripts.pory"
+	msgbox TranquilRoute_EventScript_Mareep2_Text_0, MSGBOX_AUTOCLOSE
+# 147 "data/maps/TranquilRoute/scripts.pory"
+	waitmoncry
+# 148 "data/maps/TranquilRoute/scripts.pory"
+	release
+	return
+
+
+TranquilRoute_TrainerTips1::
+# 152 "data/maps/TranquilRoute/scripts.pory"
 	msgbox TranquilRoute_TrainerTips1_Text_0, MSGBOX_SIGN
 	return
 
 
 TranquilRoute_TrainerTips2::
-# 144 "data/maps/TranquilRoute/scripts.pory"
+# 161 "data/maps/TranquilRoute/scripts.pory"
 	msgbox TranquilRoute_TrainerTips2_Text_0, MSGBOX_SIGN
 	return
 
 
 TranquilRoute_DirectionSign::
-# 150 "data/maps/TranquilRoute/scripts.pory"
+# 168 "data/maps/TranquilRoute/scripts.pory"
 	msgbox TranquilRoute_DirectionSign_Text_0, MSGBOX_SIGN
 	return
 
@@ -199,9 +227,9 @@ TranquilRoute_EventScript_Kenji_Text_1:
 
 TranquilRoute_EventScript_Kenji_Text_2:
 # 46 "data/maps/TranquilRoute/scripts.pory"
-	.string "Hana is the best subject I could dream\n"
+	.string "Hiina is the best subject I could dream\n"
 	.string "of.\p"
-	.string "Hey, please don't tell her I said that.$"
+	.string "…Hey, please don't tell her I said that.$"
 
 TranquilRoute_EventScript_MysteriousSamurai_Text_0:
 # 56 "data/maps/TranquilRoute/scripts.pory"
@@ -234,7 +262,7 @@ TranquilRoute_EventScript_BerryWoman_Text_2:
 	.string "The seeds will eventually grow into a\n"
 	.string "healthy berry tree, ready to be\l"
 	.string "harvested!\p"
-	.string "I see you're a trainer. Well, different\n"
+	.string "I see you're a wielder. Well, different\n"
 	.string "berries have different effects when\l"
 	.string "they're fed to Pokémon.\p"
 	.string "I love berries, hopefully you'll soon\n"
@@ -254,19 +282,28 @@ TranquilRoute_EventScript_BerryWoman_Text_4:
 	.string "Don't worry about it, I have a spare one.\p"
 	.string "Have fun gardening!$"
 
+TranquilRoute_EventScript_Mareep_Text_0:
+# 138 "data/maps/TranquilRoute/scripts.pory"
+	.string "Beeeeeh…$"
+
+TranquilRoute_EventScript_Mareep2_Text_0:
+# 146 "data/maps/TranquilRoute/scripts.pory"
+	.string "Baaaaah…$"
+
 TranquilRoute_TrainerTips1_Text_0:
-# 137 "data/maps/TranquilRoute/scripts.pory"
-	.string "Some Pokémon only come out come\n"
-	.string "nighttime.\p"
+# 153 "data/maps/TranquilRoute/scripts.pory"
+	.string "Did you know?\p"
+	.string "Some Pokémon only come out at night.\p"
 	.string "Visit the same spot at different times\n"
 	.string "of day to have a chance of seeing rare\l"
 	.string "Pokémon!$"
 
 TranquilRoute_TrainerTips2_Text_0:
-# 145 "data/maps/TranquilRoute/scripts.pory"
+# 162 "data/maps/TranquilRoute/scripts.pory"
+	.string "Did you know?\p"
 	.string "Several items can be assigned to the\n"
 	.string "SELECT button from your bag.$"
 
 TranquilRoute_DirectionSign_Text_0:
-# 151 "data/maps/TranquilRoute/scripts.pory"
-	.string "{UP_ARROW} Saku Village {LEFT_ARROW} Whiteslab route$"
+# 169 "data/maps/TranquilRoute/scripts.pory"
+	.string "{UP_ARROW} Saku Village {LEFT_ARROW} Whiteslate route$"

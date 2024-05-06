@@ -1429,7 +1429,7 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleTvScore = 0, // TODO: Assign points
     },
 
-    [EFFECT_FREEZE_DRY] =
+    [EFFECT_SUPER_EFFECTIVE_ON_ARG] =
     {
         .battleScript = BattleScript_EffectHit,
         .battleTvScore = 0, // TODO: Assign points
@@ -2229,5 +2229,17 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleScript = BattleScript_EffectTidyUp,
         .battleTvScore = 0, // TODO: Assign points
         .encourageEncore = TRUE,
+    },
+
+    [EFFECT_TERA_BLAST] =
+    {
+        .battleScript = BattleScript_EffectPhotonGeyser,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+
+    [EFFECT_TERA_STARSTORM] =
+    {
+        .battleScript = BattleScript_EffectPhotonGeyser,
+        .battleTvScore = 0, // TODO: Assign points
     },
 };

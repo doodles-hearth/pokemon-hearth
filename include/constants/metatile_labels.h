@@ -438,6 +438,10 @@
 #define METATILE_Rustboro_Door_Gray  0x21F
 #define METATILE_Rustboro_Door_Tan   0x22F
 
+// gTileset_SakuKura
+#define METATILE_SakuKura_BoardGame       0x2F7
+#define METATILE_SakuKura_ClosedDojoDoor  0x30F
+
 // gTileset_SecretBase
 #define METATILE_SecretBase_AttractMat_BottomLeft       0x313
 #define METATILE_SecretBase_AttractMat_BottomMid        0x314

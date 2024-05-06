@@ -1,7 +1,10 @@
 mapscripts SakuTown_PokemonCenter_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_SAKU_TOWN)
-	end
+
+		if (var(VAR_RIVAL_ENCOUNTER_STATE) == 0) {
+				setvar(VAR_RIVAL_ENCOUNTER_STATE, 1)
+		}
 	}
 }
 

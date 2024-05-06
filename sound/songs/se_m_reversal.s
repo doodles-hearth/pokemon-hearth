@@ -1,6 +1,6 @@
 	.include "MPlayDef.s"
 
-	.equ	se_m_reversal_grp, voicegroup128
+	.equ	se_m_reversal_grp, voicegroup_sfx_rs_2
 	.equ	se_m_reversal_pri, 4
 	.equ	se_m_reversal_rev, reverb_set+50
 	.equ	se_m_reversal_mvl, 127

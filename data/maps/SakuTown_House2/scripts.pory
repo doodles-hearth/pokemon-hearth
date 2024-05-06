@@ -1,0 +1,190 @@
+const LOCALID_ESPEONS_MASTER = 1
+const LOCALID_ESPEON = 2
+const LOCALID_SISTER = 3
+
+mapscripts SakuTown_House2_MapScripts {
+	
+}
+
+script SakuTown_House2_EventScript_EspeonsMaster {
+	lock
+	faceplayer
+
+	// First time talking to him
+	if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0) {
+				msgbox(format(
+				"I hope Eevee comes home soon…"
+			))
+			closemessage
+			// Talked to Espeon's master but not to lady
+			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 2)
+	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
+		msgbox(format(
+			"I hope Eevee comes home soon…\p"
+			"What? Someone found my Eevee? Oh, please, can you tell them to bring it back?"
+		))
+		closemessage
+
+		// Bring him back!
+		setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 3)
+	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
+		msgbox(format(
+			"… …"
+		))
+		closemessage
+
+		// Waiting for Espeon
+	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 3) {
+		msgbox(format(
+			"Where's my Eevee?"
+		))
+		closemessage
+
+		// Espeon goes home
+	}elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 4) {
+		call(SakuTown_House2_EventScript_Reunited)
+		
+		// Talked to Espeon's master once are reunited
+	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 5) {
+		msgbox(format(
+			"How are you doing? Espeon looks happy to see you!"
+		))
+		closemessage
+	}
+	
+	release
+}
+
+script SakuTown_House2_EventScript_Reunited {
+	// Reunited at last
+	setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 5)
+	clearflag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)
+
+	msgbox(format(
+		"Where's my Eevee?"
+	))
+	closemessage
+
+	delay(30)
+	// Espeon appears
+	playse(SE_DOOR)
+	waitse
+	addobject(LOCALID_ESPEON)
+	setobjectxy(LOCALID_ESPEON, 5, 7)
+	turnobject(LOCALID_ESPEON, DIR_NORTH)
+
+	// Everyone faces down and is surprised
+	applymovement(LOCALID_ESPEONS_MASTER, Common_Movement_FaceDown)
+	applymovement(LOCALID_SISTER, Common_Movement_FaceDown)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown)
+	playse(SE_PIN)
+	applymovement(LOCALID_ESPEONS_MASTER, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_SISTER, Common_Movement_ExclamationMark)
+	delay(48)
+
+	msgbox(format(
+		"Is… Is that Eevee?"
+	))
+	closemessage
+
+	// Espeon walks up
+	switch(var(VAR_FACING)) {
+		case DIR_WEST:
+			applymovement(LOCALID_ESPEON, SakuTown_House2_Movement_EspeonWalksUpSouth)
+		case DIR_NORTH:
+		case DIR_SOUTH:
+			applymovement(LOCALID_ESPEON, SakuTown_House2_Movement_EspeonWalksUpEast)
+			turnobject(LOCALID_ESPEONS_MASTER, DIR_EAST)
+			turnobject(LOCALID_SISTER, DIR_WEST)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+	}
+
+	delay(40)
+
+	playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
+	waitmoncry
+
+	msgbox(format(
+		"It's you! It's really you! Oh, Eevee, I've missed you so much!\p"
+		"… …\p"
+		"Wait, you look a little different…"
+	))
+	closemessage
+
+	switch(var(VAR_FACING)) {
+		case DIR_WEST:
+			turnobject(LOCALID_ESPEONS_MASTER, DIR_EAST)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+		case DIR_NORTH:
+			turnobject(LOCALID_ESPEONS_MASTER, DIR_SOUTH)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+		case DIR_SOUTH:
+			turnobject(LOCALID_ESPEONS_MASTER, DIR_NORTH)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+	}
+	delay(30)
+	
+	msgbox(format(
+		"You say it was a woman from Kura Village that found him?\p"
+		"She took such good care of him!\p"
+		"His fur is so shiny and well-groomed, too…\p"
+		"… …\p"
+		"Looks like there are actually some nice people too in Kura Village…\p"
+		"… …\p"
+		"Anyway, thank you so much for helping me out. I'm so grateful.\p"
+		"Please take this."
+	))
+
+	// TODO EVA Decide on the reward
+	giveitem(ITEM_THUNDER_STONE)
+}
+
+// Espeon
+script SakuTown_House2_EventScript_Espeon {
+	lock
+	faceplayer
+	playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
+	msgbox(format(
+		"Eeeoon!"
+	))
+	waitmoncry
+	closemessage
+	release
+}
+
+// Sister
+script SakuTown_House2_EventScript_Sister {
+	lock
+	faceplayer
+	if (flag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)) {
+		msgbox(format(
+			"My brother's been feeling really down lately.\p"
+			"His precious Pokémon disappeared during the big storm we had a while ago."
+		))
+	} else {
+		msgbox(format(
+			"Thank you for your kindness! It's nice to see my brother smiling again.\p"
+			"I wish I could thank whoever took such good care of Eevee, too!"
+		))
+	}
+	closemessage
+	applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)
+	release
+}
+
+// Walks up to the east of its master
+movement SakuTown_House2_Movement_EspeonWalksUpEast {
+	walk_fast_up
+	walk_fast_right * 2
+	walk_fast_up * 2
+	face_left
+	jump_in_place_left * 2
+}
+
+// Walks up to the south of its master
+movement SakuTown_House2_Movement_EspeonWalksUpSouth {
+	walk_fast_up
+	walk_fast_right
+	walk_fast_up
+	jump_in_place_up * 2
+}

@@ -1,8 +1,148 @@
 const LOCALID_KARATEKA = 6
 const LOCALID_GUARD = 8
+const LOCALID_RIVAL = 10
 
 mapscripts SakuTown_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION {
+		call(Common_EventScript_SetupRivalGfxId)
+		// Rival challenges you outside the Pokécenter
+		if (var(VAR_RIVAL_ENCOUNTER_STATE) == 1) {
+			clearflag(FLAG_HIDE_RIVAL_SAKU)
+		}
+
+		if (flag(FLAG_SAKU_KURA_REUNITED)) {
+			// Once reunited, the guards from the two villages play a board game together
+			setmetatile(19, 3, METATILE_SakuKura_BoardGame, TRUE)
+			setobjectmovementtype(LOCALID_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
+		}
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_RIVAL_ENCOUNTER_STATE, 1: SakuTown_EventScript_Rival
+	]
+}
+
+// Rival encounter
+script SakuTown_EventScript_Rival {
+	lock
+
+	applymovement(LOCALID_RIVAL, SakuTown_Movement_WalkFastUp)
+	playse(SE_PIN)
+	applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
+	delay(48)
+
+	msgbox(format(
+		"Excuse me-\p"
+		"… …\p"
+		"Hey! {PLAYER}!! I was wondering if you'd already reached Saku Village by now.\p"
+		"Have you caught any Pokémon on your way here?\p"
+		"Me? Oh, I can show you my Pokémon alright!"
+	))
+
+	call(SakuTown_EventScript_RivalFight)
+
+	applymovement(LOCALID_RIVAL, SakuTown_Movement_WalkAway)
+	waitmovement(0)
+
+	removeobject(LOCALID_RIVAL)
+	setflag(FLAG_HIDE_RIVAL_SAKU)
+
+	setvar(VAR_RIVAL_ENCOUNTER_STATE, 2)
+
+	release
+}
+
+// Backup rival encounter in case you missed him at the Pokécenter
+script SakuTown_EventScript_RivalAtSakuWall {
+	lock
+	msgbox(format("Wait up, {PLAYER}!"), MSGBOX_AUTOCLOSE)
+
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+	getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
+
+	addobject(LOCALID_RIVAL)
+	if (var(VAR_TEMP_2) == 16) {
+		setobjectxy(LOCALID_RIVAL, 16, 10)
+	} else {
+		setobjectxy(LOCALID_RIVAL, 17, 10)
+	}
+	applymovement(LOCALID_RIVAL, SakuTown_Movement_WalkUp)
+	waitmovement(0)
+
+	msgbox(format(
+		"I was wondering if you'd already reached Saku Village by now. Looks like we almost missed each other!\p"
+		"Have you caught any Pokémon on your way here?\p"
+		"Me? Oh, I can show you my Pokémon alright!"
+	))
+
+	call(SakuTown_EventScript_RivalFight)
+
+	// Left
+	if (var(VAR_TEMP_2) == 16) {
+		applymovement(LOCALID_RIVAL, SakuTown_Movement_GoToKuraFromRight)
+		// Right
+	} else {
+		applymovement(LOCALID_RIVAL, SakuTown_Movement_GoToKuraFromLeft)
+	}
+	waitmovement(0)
+
+	removeobject(LOCALID_RIVAL)
+	setflag(FLAG_HIDE_RIVAL_SAKU)
+
+	setvar(VAR_RIVAL_ENCOUNTER_STATE, 2)
+
+	release
+}
+
+script SakuTown_EventScript_RivalFight {
+	switch(var(VAR_STARTER_MON)) {
+		case SPECIES_ARON:
+			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_ARON, SakuTown_Text_RivalDefeat)
+			break
+		case SPECIES_SPHEAL:
+			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_SPHEAL, SakuTown_Text_RivalDefeat)
+			break
+		case SPECIES_TRAPINCH:
+			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_TRAPINCH, SakuTown_Text_RivalDefeat)
+			break
+	}
+
+	msgbox(format(
+		"Okay, I… I didn't think you'd go that hard, honestly! Hahaha…\p"
+		"Clearly I underestimated you. That's alright. I won't make that mistake next time!\p"
+		"I can see your Pokémon are really growing to like you, it's great!\p"
+		"You definitely stand a chance against the Dojo that's in the next village.\p"
+		"Me? Actually, I just fought the Dojo's master and gotten a token from her!\p"
+		"You'll have to hurry up if you wanna catch up!\p"
+		"Well, it was good to see you. Until next time then.\p"
+		"I bet you I'll get to Silveridge first!"
+	))
+	closemessage
+}
+
+text SakuTown_Text_RivalDefeat {
+	format("Oh, wow, okay.")
+}
+
+movement SakuTown_Movement_GoToKuraFromLeft {
+	walk_left
+	walk_up * 5
+}
+
+movement SakuTown_Movement_GoToKuraFromRight {
+	walk_right
+	walk_up * 5
+}
+
+movement SakuTown_Movement_WalkUp {
+	walk_up * 5
+}
+
+movement SakuTown_Movement_WalkFastUp {
+	walk_fast_up
+}
+
+movement SakuTown_Movement_WalkAway {
+	walk_fast_down * 6
 }
 
 script SakuTown_EventScript_Farmer {
@@ -37,44 +177,73 @@ script SakuTown_EventScript_Karateka {
 	lock
 	faceplayer
 	msgbox(format(
-		"I let the Pokémon League borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region.\p"
+		"I let the Pokémon League borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
 	))
-	applymovement(LOCALID_KARATEKA, Common_Movement_FaceRight)
+	applymovement(LOCALID_KARATEKA, Common_Movement_FaceUp)
 	waitmovement(0)
-	delay(30)
 	msgbox(format(
-		"Come on, Mama, Kuku! Daddy loves you!!\p"
+		"Come on, Mama, Kuku! Daddy loves you!!"
 	))
+	closemessage
 	release
 }
 
 script SakuTown_EventScript_Guard {
 	lock
-	faceplayer
+	if (flag(FLAG_SAKU_KURA_REUNITED)) {
+		msgbox(format(
+			"Damn, where did that Mareep come from?!"
+		))
+	} else {
+		faceplayer
+		msgbox(format(
+			"Those thugs in Kura Village may have their own dojo, but their town is nothing but an ugly pile of rocks!\p"
+			"They don't even have a Pokémon refuge!"
+		))
+	}
+	release
+}
+
+script SakuTown_EventScript_KuraGuard {
+	lock
 	msgbox(format(
-		"Those thugs in Kura Village may have their own dojo, but their town is nothing but an ugly pile of rocks!\p"
-		"They don't even have a Pokémon refuge!"
+		"Hah, got two of your Tauros in my herd!"
 	))
 	release
 }
 
 script SakuTown_EventScript_GuardSeesYou {
 	lock
+
+	specialvar(VAR_RESULT, GetPlayerFacingDirection)
+
+	// First time going to Kura
+	if (var(VAR_SAKU_KURA_VILLAGES_STATE) == 0) {
+		call(SakuTown_EventScript_GuardStopsYou)
+		// First time coming down from Kura
+	} elif (var(VAR_SAKU_KURA_VILLAGES_STATE) == 1 && var(VAR_RESULT) == DIR_SOUTH) {
+		call(SakuTown_EventScript_GuardStopsYou)
+	}
+
+	release
+}
+
+script SakuTown_EventScript_GuardStopsYou {
+	specialvar(VAR_RESULT, GetPlayerFacingDirection)
+	applymovement(LOCALID_GUARD, Common_Movement_FaceLeft)
+	waitmovement(LOCALID_GUARD)
 	msgbox(format("Hey!"))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
-	applymovement(LOCALID_GUARD, Common_Movement_FaceLeft)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
-	waitmovement(LOCALID_GUARD)
 
-	if (flag(FLAG_TEMP_1)) {
+	if (var(VAR_RESULT) == DIR_SOUTH) {
 		msgbox(format(
 			"Are you trying to sneak in from Kura Village?\p"
-			"…Oh, you're that traveler from before. Come on in, then.\p"
+			"…Oh, you're that traveler from before. You can go through.\p"
 			"How was it? Awful, right? Welcome back to Saku Village!"
 		))
-	}
-	elif (!flag(FLAG_TEMP_1)) {
+	} else {
 		msgbox(format(
 			"Are you trying to sneak into Kura Village?\p"
 			"…Oh, you're just a traveler. Nevermind then, you can go through.\p"
@@ -84,17 +253,7 @@ script SakuTown_EventScript_GuardSeesYou {
 
 	applymovement(LOCALID_GUARD, Common_Movement_FaceDown)
 
-	setvar(VAR_SAKU_KURA_VILLAGES_STATE, 1)
-
-	release
-}
-
-script SakuTown_EventScript_NorthOfGuard {
-	setflag(FLAG_TEMP_1)
-}
-
-script SakuTown_EventScript_SouthOfGuard {
-	clearflag(FLAG_TEMP_1)
+	addvar(VAR_SAKU_KURA_VILLAGES_STATE, 1)
 }
 
 script SakuTown_EventScript_TownSign {
@@ -106,11 +265,20 @@ script SakuTown_EventScript_TrainerTips {
 }
 
 script SakuTown_EventScript_TrainerTips2 {
-	msgbox(format("Did you know? The folk from Kura Village are a bunch of mean jerks!"), MSGBOX_SIGN)
+	msgbox(format("Did you know? The folks from Kura Village are a bunch of mean jerks!"), MSGBOX_SIGN)
 }
 
 script SakuTown_EventScript_FloristSign {
 	msgbox(format("Humble Blossom\nBonsai & flower shop"), MSGBOX_SIGN)
+}
+
+script SakuTown_EventScript_BoardGame {
+	if (flag(FLAG_SAKU_KURA_REUNITED)) {
+		lock
+		msgbox(format("They're playing Tauros Herder, a popular board game!"), MSGBOX_DEFAULT)
+		closemessage
+		release
+	}
 }
 
 script SakuTown_EventScript_Mart {

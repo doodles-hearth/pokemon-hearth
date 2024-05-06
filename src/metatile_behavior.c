@@ -11,7 +11,7 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_NORMAL]                          = TILE_FLAG_UNUSED,
     [MB_TALL_GRASS]                      = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_LONG_GRASS]                      = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
-    [MB_UNUSED_05]                       = TILE_FLAG_HAS_ENCOUNTERS,
+    [MB_TEAPOT]                       = TILE_FLAG_UNUSED,
     [MB_DEEP_SAND]                       = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_SHORT_GRASS]                     = TILE_FLAG_UNUSED,
     [MB_CAVE]                            = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
@@ -36,7 +36,7 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_ICE]                             = TILE_FLAG_UNUSED,
     [MB_SAND]                            = TILE_FLAG_UNUSED,
     [MB_SEAWEED]                         = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE | TILE_FLAG_HAS_ENCOUNTERS,
-    [MB_UNUSED_23]                       = TILE_FLAG_UNUSED,
+    [MB_BONSAI]                          = TILE_FLAG_UNUSED,
     [MB_ASHGRASS]                        = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_FOOTPRINTS]                      = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_THIN_ICE]                        = TILE_FLAG_UNUSED,
@@ -66,8 +66,8 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_SLIDE_NORTH]                     = TILE_FLAG_UNUSED,
     [MB_SLIDE_SOUTH]                     = TILE_FLAG_UNUSED,
     [MB_TRICK_HOUSE_PUZZLE_8_FLOOR]      = TILE_FLAG_UNUSED,
-    [MB_UNUSED_49]                       = TILE_FLAG_UNUSED,
-    [MB_UNUSED_4A]                       = TILE_FLAG_UNUSED,
+    [MB_CHEST_OPEN]                       = TILE_FLAG_UNUSED,
+    [MB_CHEST_CLOSED]                       = TILE_FLAG_UNUSED,
     [MB_EASTWARD_CURRENT]                = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_WESTWARD_CURRENT]                = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_NORTHWARD_CURRENT]               = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
@@ -243,12 +243,9 @@ bool8 MetatileBehavior_IsEscalator(u8 metatileBehavior)
         return FALSE;
 }
 
-bool8 Unref_MetatileBehavior_IsUnused04(u8 metatileBehavior)
+bool8 Unref_MetatileBehavior_IsGong(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_UNUSED_04)
-        return TRUE;
-    else
-        return FALSE;
+    return metatileBehavior == MB_GONG;
 }
 
 bool8 MetatileBehavior_IsLadder(u8 metatileBehavior)
@@ -366,12 +363,9 @@ bool8 MetatileBehavior_IsTrickHouseSlipperyFloor(u8 metatileBehavior)
         return FALSE;
 }
 
-bool8 Unref_MetatileBehavior_IsUnused05(u8 metatileBehavior)
+bool8 Unref_MetatileBehavior_IsTeapot(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_UNUSED_05)
-        return TRUE;
-    else
-        return FALSE;
+    return metatileBehavior == MB_TEAPOT;
 }
 
 bool8 MetatileBehavior_IsWalkNorth(u8 metatileBehavior)
@@ -1304,6 +1298,14 @@ bool8 MetatileBehavior_IsBookShelf(u8 metatileBehavior)
 bool8 MetatileBehavior_IsPokeCenterBookShelf(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_POKEMON_CENTER_BOOKSHELF)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsKuraDojoTree(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_KURA_DOJO_TREE)
         return TRUE;
     else
         return FALSE;

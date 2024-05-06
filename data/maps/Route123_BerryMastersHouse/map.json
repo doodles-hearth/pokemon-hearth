@@ -1,7 +1,7 @@
 {
   "id": "MAP_ROUTE123_BERRY_MASTERS_HOUSE",
   "name": "Route123_BerryMastersHouse",
-  "layout": "LAYOUT_HOUSE2",
+  "layout": "LAYOUT_HOUSE_GREEN_TABLE",
   "music": "MUS_RUSTBORO",
   "region_map_section": "MAPSEC_ROUTE_123",
   "requires_flash": false,

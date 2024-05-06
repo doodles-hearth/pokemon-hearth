@@ -775,7 +775,7 @@
 #define ITEM_TM49 630
 #define ITEM_TM50 631
 #define ITEM_TM51 632
-#define ITEM_TM52 633
+#define ITEM_TM_ACROBATICS 633
 #define ITEM_TM53 634
 #define ITEM_TM54 635
 #define ITEM_TM55 636
@@ -1037,6 +1037,8 @@
 #define MAX_BAG_ITEM_CAPACITY         999
 #define MAX_PC_ITEM_CAPACITY          999
 #define MAX_PYRAMID_BAG_ITEM_CAPACITY  99 // Values higher than 255 require free SaveBlock2 space.
+
+#define BAG_ITEM_CAPACITY_DIGITS 2
 
 #define MAX_ITEM_DIGITS         ((MAX_BAG_ITEM_CAPACITY > 99) ? 3 : 2)
 #define MAX_PYRAMID_ITEM_DIGITS ((MAX_PYRAMID_BAG_ITEM_CAPACITY > 99) ? 3 : 2)

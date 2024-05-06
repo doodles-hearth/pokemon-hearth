@@ -113,6 +113,13 @@
       "elevation": 0,
       "dest_map": "MAP_SILVERIDGE_SCULPTORS_HOUSE",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 16,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_DYNAMIC",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
@@ -142,6 +149,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Silveridge_EventScript_TownSculptureSignTBD"
+    },
+    {
+      "type": "sign",
+      "x": 24,
+      "y": 5,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Silveridge_EventScript_EldersHouseSign"
     }
   ]
 }

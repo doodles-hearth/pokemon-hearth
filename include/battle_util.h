@@ -54,6 +54,7 @@
 #define ITEMEFFECT_ORBS                         6
 #define ITEMEFFECT_LIFEORB_SHELLBELL            7
 #define ITEMEFFECT_USE_LAST_ITEM                8 // move end effects for just the battler, not whole field
+#define ITEMEFFECT_STATS_CHANGED                9 // For White Herb and Eject Pack
 
 #define WEATHER_HAS_EFFECT ((!IsAbilityOnField(ABILITY_CLOUD_NINE) && !IsAbilityOnField(ABILITY_AIR_LOCK)))
 
@@ -164,6 +165,8 @@ u32 SetRandomTarget(u32 battler);
 u32 GetMoveTarget(u16 move, u8 setTarget);
 u8 IsMonDisobedient(void);
 u32 GetBattlerHoldEffect(u32 battler, bool32 checkNegating);
+u32 GetBattlerHoldEffectIgnoreAbility(u32 battler, bool32 checkNegating);
+u32 GetBattlerHoldEffectInternal(u32 battler, bool32 checkNegating, bool32 checkAbility);
 u32 GetBattlerHoldEffectParam(u32 battler);
 bool32 IsMoveMakingContact(u32 move, u32 battlerAtk);
 bool32 IsBattlerGrounded(u32 battler);
@@ -202,7 +205,7 @@ bool32 IsHealBlockPreventingMove(u32 battler, u32 move);
 bool32 HasEnoughHpToEatBerry(u32 battler, u32 hpFraction, u32 itemId);
 bool32 IsPartnerMonFromSameTrainer(u32 battler);
 u8 GetCategoryBasedOnStats(u32 battler);
-bool32 MoveIsAffectedBySheerForce(u16 move);
+bool32 MoveIsAffectedBySheerForce(u32 move);
 bool32 TestIfSheerForceAffected(u32 battler, u16 move);
 void TryRestoreHeldItems(void);
 bool32 CanStealItem(u32 battlerStealing, u32 battlerItem, u16 item);
@@ -248,7 +251,7 @@ bool32 AreBattlersOfOppositeGender(u32 battler1, u32 battler2);
 bool32 AreBattlersOfSameGender(u32 battler1, u32 battler2);
 u32 CalcSecondaryEffectChance(u32 battler, u32 battlerAbility, const struct AdditionalEffect *additionalEffect);
 bool32 MoveEffectIsGuaranteed(u32 battler, u32 battlerAbility, const struct AdditionalEffect *additionalEffect);
-u8 GetBattlerType(u32 battler, u8 typeIndex);
+u8 GetBattlerType(u32 battler, u8 typeIndex, bool32 ignoreTera);
 bool8 CanMonParticipateInSkyBattle(struct Pokemon *mon);
 bool8 IsMonBannedFromSkyBattles(u16 species);
 void RemoveBattlerType(u32 battler, u8 type);

@@ -117,7 +117,7 @@
 #define TRAINER_VALERIE_3                   111
 #define TRAINER_VALERIE_4                   112
 #define TRAINER_VALERIE_5                   113
-#define TRAINER_HANA                     114
+#define TRAINER_HIINA                       114
 #define TRAINER_DAPHNE                      115
 #define TRAINER_GRUNT_SPACE_CENTER_2        116
 #define TRAINER_CINDY_2                     117
@@ -269,7 +269,7 @@
 #define TRAINER_GLACIA                      263
 #define TRAINER_DRAKE                       264
 #define TRAINER_ROXANNE_1                   265
-#define TRAINER_BRAWLY_1                    266
+#define TRAINER_HANA_1                      266
 #define TRAINER_WATTSON_1                   267
 #define TRAINER_FLANNERY_1                  268
 #define TRAINER_NORMAN_1                    269
@@ -538,7 +538,7 @@
 #define TRAINER_MAY_ROUTE_103_TREECKO       532
 #define TRAINER_MAY_ROUTE_110_TREECKO       533
 #define TRAINER_MAY_ROUTE_119_TREECKO       534
-#define TRAINER_MAY_ROUTE_103_TORCHIC       535
+#define TRAINER_RIVAL_SUNRISE_TRAPINCH       535
 #define TRAINER_MAY_ROUTE_110_TORCHIC       536
 #define TRAINER_MAY_ROUTE_119_TORCHIC       537
 #define TRAINER_ISAAC_1                     538
@@ -603,7 +603,7 @@
 #define TRAINER_TABITHA_MT_CHIMNEY          597
 #define TRAINER_JONATHAN                    598
 #define TRAINER_BRENDAN_RUSTBORO_TORCHIC    599
-#define TRAINER_MAY_RUSTBORO_MUDKIP         600
+#define TRAINER_RIVAL_SAKU_SPHEAL         600
 #define TRAINER_MAXIE_MAGMA_HIDEOUT         601
 #define TRAINER_MAXIE_MT_CHIMNEY            602
 #define TRAINER_CHIKAO                       603
@@ -771,8 +771,8 @@
 #define TRAINER_MYLES                       765
 #define TRAINER_PAT                         766
 #define TRAINER_CRISTIN_1                   767
-#define TRAINER_MAY_RUSTBORO_TREECKO        768
-#define TRAINER_MAY_RUSTBORO_TORCHIC        769
+#define TRAINER_RIVAL_SAKU_ARON        768
+#define TRAINER_RIVAL_SAKU_TRAPINCH        769
 #define TRAINER_ROXANNE_2                   770
 #define TRAINER_ROXANNE_3                   771
 #define TRAINER_ROXANNE_4                   772

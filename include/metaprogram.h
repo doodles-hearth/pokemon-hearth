@@ -2,6 +2,15 @@
 #ifndef METAPROGRAM_H
 #define METAPROGRAM_H
 
+/* Check if VA_OPT_ is supported by the compiler. GCC's version should be at least 9.5*/
+#define PP_THIRD_ARG(a,b,c,...) c
+#define VA_OPT_SUPPORTED_I(...) PP_THIRD_ARG(__VA_OPT__(,),TRUE,FALSE,)
+#define VA_OPT_SUPPORTED VA_OPT_SUPPORTED_I(?)
+
+#if !VA_OPT_SUPPORTED
+#error ERROR: VA_OPT__ is not supported. Please update your gcc compiler to version 10 or higher
+#endif // VA_OPT_SUPPORTED
+
 /* Calls m0/m1/.../m8 depending on how many arguments are passed. */
 #define VARARG_8(m, ...) CAT(m, NARG_8(__VA_ARGS__))(__VA_ARGS__)
 
@@ -16,6 +25,9 @@
 /* Expands '__VA_ARGS__' and then stringizes them. */
 #define STR(...) STR_(__VA_ARGS__)
 #define STR_(...) #__VA_ARGS__
+
+/* You'll never guess what this one does */
+#define APPEND_SEMICOLON(a) a;
 
 /* Converts a string to a compound literal, essentially making it a pointer to const u8 */
 #define COMPOUND_STRING(str) (const u8[]) _(str)

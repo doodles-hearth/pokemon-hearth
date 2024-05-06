@@ -1,7 +1,7 @@
 {
   "id": "MAP_VERDANTURF_TOWN_FRIENDSHIP_RATERS_HOUSE",
   "name": "VerdanturfTown_FriendshipRatersHouse",
-  "layout": "LAYOUT_HOUSE2",
+  "layout": "LAYOUT_HOUSE_GREEN_TABLE",
   "music": "MUS_VERDANTURF",
   "region_map_section": "MAPSEC_VERDANTURF_TOWN",
   "requires_flash": false,

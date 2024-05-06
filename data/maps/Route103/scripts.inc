@@ -66,7 +66,7 @@ Route103_EventScript_StartMayBattleTreecko::
 	end
 
 Route103_EventScript_StartMayBattleTorchic::
-	trainerbattle_no_intro TRAINER_MAY_ROUTE_103_TORCHIC, Route103_Text_MayDefeated
+	trainerbattle_no_intro TRAINER_RIVAL_SUNRISE_TRAPINCH, Route103_Text_MayDefeated
 	goto Route103_EventScript_AfterMayBattle
 	end
 

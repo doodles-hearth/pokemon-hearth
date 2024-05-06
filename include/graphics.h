@@ -269,14 +269,16 @@ extern const u32 gBattleTerrainPalette_Rayquaza[];
 extern const u32 gBattleTerrainPalette_Kyogre[];
 extern const u32 gBattleTerrainPalette_Groudon[];
 extern const u32 gBattleTerrainPalette_BuildingGym[];
-extern const u32 gBattleTerrainPalette_BuildingLeader[];
-extern const u32 gBattleTerrainPalette_StadiumAqua[];
-extern const u32 gBattleTerrainPalette_StadiumMagma[];
+extern const u32 gBattleTerrainPalette_BuildingAqua[];
+extern const u32 gBattleTerrainPalette_BuildingMagma[];
 extern const u32 gBattleTerrainPalette_StadiumSidney[];
 extern const u32 gBattleTerrainPalette_StadiumPhoebe[];
 extern const u32 gBattleTerrainPalette_StadiumGlacia[];
 extern const u32 gBattleTerrainPalette_StadiumDrake[];
 extern const u32 gBattleTerrainPalette_StadiumWallace[];
+extern const u32 gBattleTerrainPalette_StadiumLeader[];
+extern const u32 gBattleTerrainTiles_Plain[];
+extern const u32 gBattleTerrainTilemap_Plain[];
 
 // Pokédex
 extern const u32 gPokedexInterface_Gfx[];
@@ -1984,7 +1986,17 @@ extern const u32 gStatusPal_Icons[];
 extern const u32 gShopMenu_Gfx[];
 extern const u32 gShopMenu_Tilemap[];
 extern const u32 gShopMenu_Pal[];
+extern const u32 gShopMenu_ScrollGfx[];
+extern const u32 gShopMenu_ScrollTilemap[];
 extern const u32 gShopMenuMoney_Gfx[];
+extern const u16 gShopMenu_CursorGfx[];
+
+// shop seller mugshots
+extern const u8 gShopMenuSellerMugshotGfx_Jerry[];
+extern const u16 gShopMenuSellerMugshotPal_Jerry[];
+
+extern const u8 gShopMenuSellerMugshotGfx_Jennie[];
+extern const u16 gShopMenuSellerMugshotPal_Jennie[];
 
 extern const u32 gBattleInterface_BallStatusBarGfx[];
 extern const u8 gBattleInterface_BallDisplayGfx[];

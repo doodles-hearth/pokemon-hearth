@@ -186,7 +186,8 @@ static const struct ListMenuTemplate sMoveRelearnerMovesListTemplate =
     .itemVerticalPadding = 0,
     .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
     .fontId = FONT_NORMAL,
-    .cursorKind = CURSOR_BLACK_ARROW
+    .cursorKind = CURSOR_BLACK_ARROW,
+    .textNarrowWidth = 68,
 };
 
 //--------------
@@ -777,7 +778,7 @@ static void MoveRelearnerLoadBattleMoveDescription(u32 chosenMove)
         return;
     }
     move = &gMovesInfo[chosenMove];
-    str = gTypeNames[move->type];
+    str = gTypesInfo[move->type].name;
     AddTextPrinterParameterized(RELEARNERWIN_DESC_BATTLE, FONT_NORMAL, str, 4, 25, TEXT_SKIP_DRAW, NULL);
 
     x = 4 + GetStringWidth(FONT_NORMAL, gText_MoveRelearnerPP, 0);

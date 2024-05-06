@@ -187,7 +187,7 @@ SunriseVillage_Event_TestGyarados::
 # 168 "data/maps/SunriseVillage/scripts.pory"
 	givemon SPECIES_SPHEAL, 100
 # 169 "data/maps/SunriseVillage/scripts.pory"
-	setwildbattle SPECIES_LEAVANNY_TOKUAN, 5
+	setwildbattle SPECIES_KOTORA, 5
 # 170 "data/maps/SunriseVillage/scripts.pory"
 	dowildbattle
 # 171 "data/maps/SunriseVillage/scripts.pory"

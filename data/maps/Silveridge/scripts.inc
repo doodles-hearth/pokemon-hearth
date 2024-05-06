@@ -26,21 +26,51 @@ Silveridge_EventScript_HousesMadeOfSilverTunnelStone::
 	return
 
 
-Silveridge_EventScript_TownSign::
+Silveridge_EventScript_MissingStatue::
 # 29 "data/maps/Silveridge/scripts.pory"
+	lock
+# 30 "data/maps/Silveridge/scripts.pory"
+	faceplayer
+# 31 "data/maps/Silveridge/scripts.pory"
+	msgbox Silveridge_EventScript_MissingStatue_Text_0
+# 37 "data/maps/Silveridge/scripts.pory"
+	release
+	return
+
+
+Silveridge_EventScript_Wildflowers::
+# 41 "data/maps/Silveridge/scripts.pory"
+	lock
+# 43 "data/maps/Silveridge/scripts.pory"
+	faceplayer
+# 44 "data/maps/Silveridge/scripts.pory"
+	msgbox Silveridge_EventScript_Wildflowers_Text_0
+# 50 "data/maps/Silveridge/scripts.pory"
+	release
+	return
+
+
+Silveridge_EventScript_TownSign::
+# 54 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_TownSign_Text_0, MSGBOX_SIGN
 	return
 
 
 Silveridge_EventScript_TownSculptureSignTBD::
-# 33 "data/maps/Silveridge/scripts.pory"
+# 58 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_TownSculptureSignTBD_Text_0, MSGBOX_SIGN
 	return
 
 
 Silveridge_EventScript_SculptorsHouseSign::
-# 37 "data/maps/Silveridge/scripts.pory"
+# 62 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_SculptorsHouseSign_Text_0, MSGBOX_SIGN
+	return
+
+
+Silveridge_EventScript_EldersHouseSign::
+# 66 "data/maps/Silveridge/scripts.pory"
+	msgbox Silveridge_EventScript_EldersHouseSign_Text_0, MSGBOX_SIGN
 	return
 
 
@@ -61,16 +91,51 @@ Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0:
 	.string "all built using the stones we got from\l"
 	.string "digging the Silver tunnel.$"
 
+Silveridge_EventScript_MissingStatue_Text_0:
+# 32 "data/maps/Silveridge/scripts.pory"
+	.string "Hello, traveler. Have you looked at this\n"
+	.string "stunning statue that makes the pride\l"
+	.string "of our town?\p"
+	.string "…Is what I would say if we had one.\p"
+	.string "There used to be a statue, but an\n"
+	.string "earthquake destroyed it long ago, so\l"
+	.string "now we're left with this empty pedestal.\p"
+	.string "There's an excentric man that lives\n"
+	.string "nearby and that calls himself “The\l"
+	.string "Sculptor”. I wish he'd make a\l"
+	.string "replacement, but he hasn't been making\l"
+	.string "anything for a while now.$"
+
+Silveridge_EventScript_Wildflowers_Text_0:
+# 45 "data/maps/Silveridge/scripts.pory"
+	.string "I loved gardening back when I lived on\n"
+	.string "Havenisle. When I first moved here, the\l"
+	.string "barren landscape made me very\l"
+	.string "homesick.\p"
+	.string "So I started planting little patches of\n"
+	.string "these native wildflowers around the\l"
+	.string "town.\p"
+	.string "I was told they symbolize eternal love.\n"
+	.string "I don't know about that, but they make\l"
+	.string "me happy! I wish I had brought some\l"
+	.string "seeds with me when I left Havenisle,\l"
+	.string "though. The flowers there are so\l"
+	.string "colorful!$"
+
 Silveridge_EventScript_TownSign_Text_0:
-# 29 "data/maps/Silveridge/scripts.pory"
+# 54 "data/maps/Silveridge/scripts.pory"
 	.string "Silveridge\n"
 	.string "“A rocky town in shades of grey.”$"
 
 Silveridge_EventScript_TownSculptureSignTBD_Text_0:
-# 33 "data/maps/Silveridge/scripts.pory"
+# 58 "data/maps/Silveridge/scripts.pory"
 	.string "“{FIXED_CASE}TO BE DETERMINED{UNFIX_CASE}”\n"
-	.string "A beautiful sculpture by {FIXED_CASE}PLACEHOLDER{UNFIX_CASE}$"
+	.string "A beautiful statue by {FIXED_CASE}PLACEHOLDER{UNFIX_CASE}$"
 
 Silveridge_EventScript_SculptorsHouseSign_Text_0:
-# 37 "data/maps/Silveridge/scripts.pory"
+# 62 "data/maps/Silveridge/scripts.pory"
 	.string "The sculptor's atelier$"
+
+Silveridge_EventScript_EldersHouseSign_Text_0:
+# 66 "data/maps/Silveridge/scripts.pory"
+	.string "Elder Iwa's house$"

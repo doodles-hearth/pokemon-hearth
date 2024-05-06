@@ -8,9 +8,9 @@ script KuraTown_House2_EventScript_Ashii {
 	lock
 
 	// First encounter
-	if (var(VAR_QUEST_TAMA_ASHII_STATE) == 0) {
+	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 0) {
 		msgbox(format(
-			"*Sigh* Oh, Tama… Why must life be so complicated?"
+			"Sigh… Oh, Tama… Why must life be so complicated?"
 		))
 		closemessage
 		delay(30)
@@ -45,9 +45,9 @@ script KuraTown_House2_EventScript_Ashii {
 
 		giveitem(ITEM_ASHIIS_SCARF)
 		goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
-		setvar(VAR_QUEST_TAMA_ASHII_STATE, 1)
+		setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
 	}
-	elif (var(VAR_QUEST_TAMA_ASHII_STATE) == 1) {
+	elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {
 		faceplayer
 		msgbox(format(
 			"Wait, you're not from here, are you?\p"

@@ -1,7 +1,7 @@
 {
   "id": "MAP_TRANQUIL_ROUTE_CUT_HOUSE",
   "name": "TranquilRoute_CutHouse",
-  "layout": "LAYOUT_HOUSE1",
+  "layout": "LAYOUT_HOUSE_BEIGE_HEARTH",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_TRANQUIL_ROUTE",
   "requires_flash": false,

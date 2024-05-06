@@ -1,19 +1,158 @@
+const LOCALID_ASSISTANT = 1
+
 mapscripts SakuTown_BonsaiShop_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION: SakuTown_EventScript_SetupNpcs
 }
 
-script SakuTown_BonsaiShop_Assistant {
+script SakuTown_EventScript_SetupNpcs {
+	// When the owner is behind the counter, her assistant wanders around
+	if (!flag(FLAG_HIDE_BONSAI_SHOP_OWNER)) {
+		setobjectmovementtype(LOCALID_ASSISTANT, MOVEMENT_TYPE_WANDER_AROUND)
+		setobjectxyperm(LOCALID_ASSISTANT, 9, 3)
+	}
+}
+
+script SakuTown_BonsaiShop_EventScript_ClayPots {
+	msgbox(format(
+		"Some clay pots, neatly stacked."
+	), MSGBOX_AUTOCLOSE)
+}
+
+script SakuTown_BonsaiShop_EventScript_Bonsai {
+	msgbox(format(
+		"It's a bonsai. It has obviously been nurtured with love."
+	), MSGBOX_AUTOCLOSE)
+}
+
+script SakuTown_BonsaiShop_EventScript_Water {
+	msgbox(format(
+		"It's filled to the brim with rainwater."
+	), MSGBOX_AUTOCLOSE)
+}
+
+script SakuTown_BonsaiShop_EventScript_FlowerBasket {
+	msgbox(format(
+		"A small basket of freshly picked flowers."
+	), MSGBOX_AUTOCLOSE)
+}
+
+script SakuTown_BonsaiShop_EventScript_WateringCan {
+	if (flag(FLAG_RECEIVED_WAILMER_PAIL)) {
+		msgbox(format(
+			"A cute Wailmer-shaped watering can. You have one exactly like it!"
+		), MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox(format(
+			"A cute Wailmer-shaped watering can."
+		), MSGBOX_AUTOCLOSE)
+	}
+}
+
+script SakuTown_BonsaiShop_EventScript_Painting {
+	msgbox(format(
+		"A dainty painting of a flower."
+	), MSGBOX_AUTOCLOSE)
+}
+
+script SakuTown_BonsaiShop_EventScript_LittleSister {
+	lock
+	faceplayer
+
+	getgamestat(GAME_STAT_PLANTED_BERRIES)
+
+	if (flag(FLAG_RECEIVED_TM_ACROBATICS)) {
+		msgbox(format(
+			"What's up, berry master?"
+			// "What's up, berry master?\p"
+			// "Didja know you've planted {VAR_RESULT} berries so far?"
+		))
+	} else {
+		special(GetPlayerMrMrsString)
+		msgbox(format(
+			"Hi there {STR_VAR_1} Grownup! Have you planted many berries on your travels?"
+		))
+
+		if (var(VAR_RESULT) < 10) {
+			msgbox(format(
+				"Hmm…\p"
+				"Your face still has “berry amateur” written all over it.\p"
+				"Come back when you're less of an embarrassment."
+			))
+			closemessage
+		} elif (var(VAR_RESULT) < 20) {
+			msgbox(format(
+				"Hmm…\p"
+				"I'd say it's less terrible than before.\p"
+				"Still not great though. You need to plant way more berries."
+			))
+			closemessage
+		} elif (var(VAR_RESULT) < 30) {
+			msgbox(format(
+				"Hmm…\p"
+				"Hey, I'm actually impressed at the berry skills I'm sensing!\p"
+				"… …"
+				"Kidding!\p"
+				"You're getting better at it though."
+			))
+			closemessage
+		} elif (var(VAR_RESULT) < 40) {
+			msgbox(format(
+				"Hmm…\p"
+				"I'd say you're almost there…\p"
+				"There's a fine line between being “almost good” at berries, and being “actually good” at berries.\p"
+				"So, you know, keep it up, or whatever."
+			))
+			closemessage
+		} elif (var(VAR_RESULT) >= 40) {
+			msgbox(format(
+				"Hmm…\p"
+				"Oh?\p"
+				"Now that's what I'm talking about!\p"
+				"Congrats, {STR_VAR_1} Grownup. By achieving berry mastery, you have earned my respect.\p"
+				"Take this!"
+			))
+			closemessage
+
+			giveitem(ITEM_TM_ACROBATICS)
+			goto_if_eq(VAR_RESULT, 0, Common_EventScript_BagIsFull)
+			msgbox(
+				format(
+					"This scroll contains the move Acrobatics.\p"
+					"Your Pokémon will strike harder if he isn't holding an item.\p"
+					"Sounds like a good match for a Pokémon holding a berry, right?\p"
+					"First eat a little snack, then mercilessly crush your opponent!"
+				)
+			)
+			closemessage
+			setflag(FLAG_RECEIVED_TM_ACROBATICS)
+		}
+	}
+
+	release
+}
+
+script SakuTown_BonsaiShop_EventScript_Assistant {
 	lock
 	faceplayer
 
 	// Already visited shop
-	if (flag(FLAG_TALKED_TO_BONSAI_SHOP_ASSISTANT)) {
-		msgbox(format(
-			"Hi there!\p"
-			"The shop owner is currently away. She's very busy.\p"
-			"Busy with what, you ask?\p"
-			"Um, I'm actually not sure."
-		))
+	if (var(VAR_BONSAI_SHOP_STATE) == 1) {
+		// Assistant is alone
+		if (flag(FLAG_HIDE_BONSAI_SHOP_OWNER)) {
+			msgbox(format(
+				"Hi, {PLAYER}!\p"
+				"The shop owner is currently away. She's very busy.\p"
+				"Busy with what, you ask?\p"
+				"Um, I'm actually not sure."
+			))
+			closemessage
+			// Owner is there too
+		} else {
+			msgbox(format(
+				"Hi, {PLAYER}! Don't mind my sister. She's not as nice as she looks!"
+			))
+			closemessage
+		}
 	}
 	// First time visiting shop
 	else {
@@ -31,18 +170,18 @@ script SakuTown_BonsaiShop_Assistant {
 				"Oh, but I know you! We met on Tranquil route, remember?\p"
 				"Have you used the watering can I gave you yet?\p"
 				"Oh, yes, I work here. We sell bonsai and other potted flowers!\p"
-				"I'm the owner's assistant, I manage the shop while she's away!"
+				"I'm the owner's assistant! I also manage the shop whenever she's away."
 			))
-			release
+			closemessage
 		}
 		// Very first encounter (missed her on Tranquil route)
 		else {
 			msgbox(format(
-				"Hello, welcome to our bonsai shop!I'm the owner's assistant, I manage the shop while she's away.\p"
+				"Hello, welcome to our bonsai shop! I'm the owner's assistant.\p"
 				"We sell bonsai and other potted flowers! Are you interested in plants?\p"
 				"Have you ever seen strange patches of soil while on your journey?\p"
 				"Those soil patches are incredibly fertile, which means any berry you plant in that soil will thrive and grow into a tree, ready to be harvested!\p"
-				"I see you're a trainer. Well, different berries have different effects when they're fed to Pokémon.\p"
+				"I see you're a wielder. Well, different berries have different effects when they're fed to Pokémon.\p"
 				"I love berries, hopefully you'll soon learn to love them too!\p"
 				"Here, try planting a few!"
 			))
@@ -64,10 +203,47 @@ script SakuTown_BonsaiShop_Assistant {
 				"Don't worry about it, I have a spare one.\p"
 				"Have fun gardening!"
 			))
-
-			setflag(FLAG_TALKED_TO_BONSAI_SHOP_ASSISTANT)
 		}
+		setvar(VAR_BONSAI_SHOP_STATE, 1)
 	}
 
+	release
+}
+
+script SakuTown_BonsaiShop_EventScript_Owner {
+	lock
+	faceplayer
+	if (flag(FLAG_BADGE02_GET)) {
+		// TODO EVA Saku/Kura rivalry quest
+		if (flag(FLAG_RECEIVED_SECRET_POWER)) {
+			msgbox(format(
+				"Hello, {PLAYER}. Can I interest you in a little greenery?"
+			))
+			// TODO EVA sell secret base stuff
+		} else {
+			msgbox(format(
+				"Hello, {PLAYER}. Can I interest you in a little greenery?\p"
+				"Hmm… It looks like you wouldn't have anywhere to put bonsai. Come back when you do."
+			))
+		}
+	} else {
+		special(GetPlayerBoyGirlString)
+		msgbox(format(
+				"Hello, young {STR_VAR_1}. Can I interest you in a little greenery?\p"
+				"Hmm… It looks like you wouldn't have anywhere to put bonsai. Come back when you do."
+			))
+	}
+	release
+}
+
+script SakuTown_EventScript_Man {
+	lock
+	faceplayer
+	msgbox(format(
+		"I'm choosing flowers for my wife.\p"
+		"I, uh… I didn't realize there'd be so many different types.\p"
+		"Guess I'll be here for a while…"
+	))
+	closemessage
 	release
 }

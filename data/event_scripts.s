@@ -579,6 +579,7 @@ gStdScripts_End::
 	.include "data/scripts/new_game.inc"
 	.include "data/scripts/hall_of_fame.inc"
 
+	.include "data/scripts/config.inc"
 	.include "data/scripts/debug.inc"
 
 EventScript_WhiteOut::
@@ -1132,3 +1133,15 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/WindyCape/scripts.inc"
 
 	.include "data/maps/Silveridge_SculptorsHouse/scripts.inc"
+
+	.include "data/maps/Silveridge_EldersHouse/scripts.inc"
+
+	.include "data/maps/WhiteslateRoute/scripts.inc"
+
+	.include "data/maps/YifuCity/scripts.inc"
+
+	.include "data/maps/KuraTown_Dojo/scripts.inc"
+
+	.include "data/maps/KuraTown_House3/scripts.inc"
+
+	.include "data/maps/SakuTown_House2/scripts.inc"

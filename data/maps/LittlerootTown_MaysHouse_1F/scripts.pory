@@ -16,7 +16,7 @@ script LittlerootTown_MaysHouse_1F_EventScript_BigSisSaysHi {
 		"Make sure you read it!"
 	))
 	closemessage
-	setflag(FLAG_BIGSIS_OUT)
+	setflag(FLAG_HIDE_BIGSIS_HOME)
 	setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 3)
 	applymovement(1, LittlerootTown_MaysHouse_1F_Movement_BigSisExits)
 	waitmovement(0)
