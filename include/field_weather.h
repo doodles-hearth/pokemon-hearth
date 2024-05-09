@@ -94,13 +94,13 @@ struct Weather
     u16 birdFlockSize;
     // Number of birds in the current flock
     u16 birdCurrentFlockSize;
-    // True if flocks are allowed to spawn in a V formation (like migratory birds)
-    u16 birdCanVFormation:1;
     // Index in the sBirdGroupsByMap array defined in field_weather_effect.c
     u16 birdSpeciesIndex;
     // True if a Pokémon's cry has already been heard in the current flock
-    // (This prevents a single flock to emit more than one cry)
+    // (This prevents a single flock from emitting more than one cry)
     u16 birdCurrentFlockHasCried:1;
+    // Species ID of the current bird
+    // u16 birdCurrentSpecies;
 
     // Snow
     u16 snowflakeVisibleCounter;
@@ -185,7 +185,7 @@ void FadeScreen(u8 mode, s8 delay);
 bool8 IsWeatherNotFadingIn(void);
 void UpdateSpritePaletteWithWeather(u8 spritePaletteIndex);
 void ApplyWeatherColorMapToPal(u8 paletteIndex);
-void LoadCustomWeatherSpritePalette(const u16 *palette);
+void LoadCustomWeatherSpritePalette(const u32 *palette);
 void ResetDroughtWeatherPaletteLoading(void);
 bool8 LoadDroughtWeatherPalettes(void);
 void DroughtStateInit(void);

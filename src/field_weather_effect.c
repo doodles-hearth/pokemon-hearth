@@ -17,13 +17,14 @@
 #include "field_player_avatar.h"
 #include "util.h"
 #include <math.h>
+#include "decompress.h"
 
 EWRAM_DATA static u8 sCurrentAbnormalWeather = 0;
 EWRAM_DATA static u16 sUnusedWeatherRelated = 0;
 
-const u16 gCloudsWeatherPalette[] = INCBIN_U16("graphics/weather/cloud.gbapal");
-const u16 gSandstormWeatherPalette[] = INCBIN_U16("graphics/weather/sandstorm.gbapal");
-const u16 gBirdsWeatherPalette[] = INCBIN_U16("graphics/weather/bird.gbapal");
+const u32 gCloudsWeatherPalette[] = INCBIN_U16("graphics/weather/cloud.gbapal");
+const u32 gSandstormWeatherPalette[] = INCBIN_U16("graphics/weather/sandstorm.gbapal");
+const u32 gBirdsWeatherPalette[] = INCBIN_U16("graphics/weather/bird.gbapal");
 const u8 gWeatherFogDiagonalTiles[] = INCBIN_U8("graphics/weather/fog_diagonal.4bpp");
 const u8 gWeatherFogHorizontalTiles[] = INCBIN_U8("graphics/weather/fog_horizontal.4bpp");
 const u8 gWeatherCloudTiles[] = INCBIN_U8("graphics/weather/cloud.4bpp");
@@ -43,13 +44,17 @@ static void CreateBirdSprites(void);
 static void DestroyBirdSprites(void);
 static void UpdateBirdSprite(struct Sprite *);
 
+// #define FOLLOWER_SPRITE_TEMPLATE(name) sSpriteTemplate_##name
+// TODO EVA this doesn't exist
+// #define FOLLOWER_SPRITE_SHEET(name) sSpriteSheet_##name
+
 #define frameOddEven data[0]
 #define speciesId data[1]
 
 static const struct SpriteSheet sBirdSpriteSheet =
 {
-    .data = gWeatherBirdTiles,
-    .size = sizeof(gWeatherBirdTiles),
+    .data = gObjectEventPic_Taillow,
+    .size = 32*32*6/2,
     .tag = GFXTAG_BIRD
 };
 
@@ -125,7 +130,7 @@ static const struct SpriteTemplate sBirdSpriteTemplate =
 
 enum BIRD_INDEX {
     BIRD_INDEX_DEFAULT,
-    BIRD_INDEX_ROUTE_TRANQUIL,
+    BIRD_INDEX_TRANQUIL_ROUTE,
 };
 
 static const u32 sBirdGroupsByMap[][3][3] =
@@ -148,13 +153,12 @@ void Birds_InitVars(void)
     gWeatherPtr->birdCurrentFlockHasCried = FALSE;
 
     u32 currentMapNum = gSaveBlock1Ptr->location.mapNum;
-    if (currentMapNum == MAP_NUM(ROUTE_TRANQUIL)) {
+    if (currentMapNum == MAP_NUM(TRANQUIL_ROUTE)) {
         DebugPrintfLevel(MGBA_LOG_WARN, "TRANQUIL ROUTE");
-        gWeatherPtr->birdSpeciesIndex = BIRD_INDEX_ROUTE_TRANQUIL;
+        gWeatherPtr->birdSpeciesIndex = BIRD_INDEX_TRANQUIL_ROUTE;
         gWeatherPtr->birdNbSecondsBetweenFlocks = 20;
         gWeatherPtr->birdFlockSpeed = 2;
         gWeatherPtr->birdFlockSize = 3;
-        gWeatherPtr->birdCanVFormation = 1;
     } else {
         // Default behavior
         DebugPrintfLevel(MGBA_LOG_WARN, "DEFAULT BEHAVIOR");
@@ -162,7 +166,6 @@ void Birds_InitVars(void)
         gWeatherPtr->birdNbSecondsBetweenFlocks = 10;
         gWeatherPtr->birdFlockSpeed = 1;
         gWeatherPtr->birdFlockSize = 10;
-        gWeatherPtr->birdCanVFormation = 1;
     }
 }
 
@@ -235,14 +238,8 @@ static void CreateBirdSprites(void)
     gWeatherPtr->birdCurrentFlockSpeed = gWeatherPtr->birdFlockSpeed + (Random() % 1);
     // TODO EVA
     // gWeatherPtr->birdCurrentSpecies = gWeatherPtr->birdSpecies[Random() % BIRD_NB_SPECIES - 1];
-
-    // ~Half of flocks of 4 birds or more will be V formations
-    // All flocks of over 7 birds or more will be V formations
-    const u32 isCurrentFlockVFormation = (
-        gWeatherPtr->birdCanVFormation
-        && gWeatherPtr->birdCurrentFlockSize >= BIRD_MIN_FLOCK_SIZE_FOR_V_FORMATION
-        && (gWeatherPtr->birdCurrentFlockSize >= BIRD_MIN_FLOCK_SIZE_FOR_MANDATORY_V_FORMATION || !(Random() % 3))
-    );
+    // gWeatherPtr->birdSpeciesIndex = sBirdGroupsByMap[MAP_NUM((gSaveBlock1Ptr->location.mapNum))][Random() % (3 - 1)];
+    gWeatherPtr->birdSpeciesIndex = Random() % (3 - 1);
 
     DebugPrintfLevel(MGBA_LOG_WARN, "CreateBirdSprites: %d birds to create. Dir=%d", gWeatherPtr->birdCurrentFlockSize, gWeatherPtr->birdCurrentFlockDirection);
 
@@ -251,8 +248,10 @@ static void CreateBirdSprites(void)
         return;
     }
 
-    LoadSpriteSheet(&sBirdSpriteSheet);
-    LoadCustomWeatherSpritePalette(gBirdsWeatherPalette);
+    // TODO EVA
+    // LoadSpriteSheet(&sBirdSpriteSheet);
+    // LoadCompressedSpriteSheet(sBirdSpriteSheet);
+    LoadCustomWeatherSpritePalette(gFollowerPalette_Abra);
 
     u32 i;
     u32 spriteId;
@@ -271,16 +270,12 @@ static void CreateBirdSprites(void)
         currentBirdX = 0 - BIRD_X_SPAWN_DISTANCE - (s16)gTotalCameraPixelOffsetX;
     }
 
-    if (isCurrentFlockVFormation)
-    {
-        currentBirdX += BIRD_X_SPAWN_DISTANCE * floor(gWeatherPtr->birdCurrentFlockSize / 2 - 1) * -gWeatherPtr->birdCurrentFlockDirection;
-    }
-
     currentBirdY = (DISPLAY_WIDTH / 2) + (Random() % BIRD_Y_SPAWN_RANGE * 2) - BIRD_Y_SPAWN_RANGE - (s16)gTotalCameraPixelOffsetY;
 
     struct Sprite *sprite;
     for (i = 0; i < gWeatherPtr->birdCurrentFlockSize; i++)
     {
+        // u32 bla = sBirdGroupsByMap[MAP_NUM((gSaveBlock1Ptr->location.mapNum))][gWeatherPtr->birdSpeciesIndex];
         // Creating new sprite
         spriteId = CreateSprite(&sBirdSpriteTemplate, 0, 0, 0xFF);
         if (spriteId != MAX_SPRITES)
@@ -307,17 +302,7 @@ static void CreateBirdSprites(void)
             sprite->coordOffsetEnabled = TRUE;
 
             // Each bird is placed below the previous one
-            // Unless the flock is a V formation, a random horizontal stagger is applied
-            if (isCurrentFlockVFormation)
-            {
-                u32 isNextBirdSecondHalf = i >= ceil(gWeatherPtr->birdCurrentFlockSize / 2);
-                currentBirdX += BIRD_X_FLOCK_RANGE_V_FORMATION * gWeatherPtr->birdCurrentFlockDirection * (isNextBirdSecondHalf ? -1 : 1);
-                DebugPrintfLevel(MGBA_LOG_WARN, "Next bird X +=%d --> %d", BIRD_X_FLOCK_RANGE_V_FORMATION * -gWeatherPtr->birdCurrentFlockDirection * (isNextBirdSecondHalf ? -1 : 1), currentBirdX);
-            }
-            else
-            {
-                currentBirdX += (Random() % (BIRD_X_FLOCK_RANGE * 2)) - BIRD_X_FLOCK_RANGE;
-            }
+            currentBirdX += (Random() % (BIRD_X_FLOCK_RANGE * 2)) - BIRD_X_FLOCK_RANGE;
             currentBirdY += BIRD_Y_FLOCK_RANGE;
         }
         else

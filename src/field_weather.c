@@ -861,7 +861,7 @@ static bool8 UNUSED IsFirstFrameOfWeatherFadeIn(void)
         return FALSE;
 }
 
-void LoadCustomWeatherSpritePalette(const u16 *palette)
+void LoadCustomWeatherSpritePalette(const u32 *palette)
 {
     LoadPalette(palette, OBJ_PLTT_ID(gWeatherPtr->weatherPicSpritePalIndex), PLTT_SIZE_4BPP);
     UpdateSpritePaletteWithWeather(gWeatherPtr->weatherPicSpritePalIndex);

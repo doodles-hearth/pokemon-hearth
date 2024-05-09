@@ -821,4 +821,9 @@ void HealPokemon(struct Pokemon *mon);
 void HealBoxPokemon(struct BoxPokemon *boxMon);
 const u8 *GetMoveName(u16 moveId);
 
+// TODO EVA bird weather tests
+extern const u32 gObjectEventPic_Taillow[];
+extern const u32 gFollowerPalette_Taillow[];
+extern const u32 gFollowerPalette_Abra[];
+
 #endif // GUARD_POKEMON_H
