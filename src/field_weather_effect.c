@@ -51,7 +51,7 @@ static void UpdateBirdSprite(struct Sprite *);
 #define frameOddEven data[0]
 #define speciesId data[1]
 
-static const struct SpriteSheet sBirdSpriteSheet =
+static const struct CompressedSpriteSheet sBirdSpriteSheet =
 {
     .data = gObjectEventPic_Taillow,
     .size = 32*32*6/2,
@@ -105,7 +105,7 @@ static const union AnimCmd sBirdSpriteSlowFlap1AnimCmd[] =
 static const union AnimCmd sBirdSpriteSlowFlap2AnimCmd[] =
 {
     ANIMCMD_FRAME(16, 16),
-    ANIMCMD_FRAME(8, 16),
+    ANIMCMD_FRAME(0, 16),
     ANIMCMD_JUMP(0),
 };
 
@@ -250,8 +250,8 @@ static void CreateBirdSprites(void)
 
     // TODO EVA
     // LoadSpriteSheet(&sBirdSpriteSheet);
-    // LoadCompressedSpriteSheet(sBirdSpriteSheet);
-    LoadCustomWeatherSpritePalette(gFollowerPalette_Abra);
+    LoadCompressedSpriteSheet(&sBirdSpriteSheet);
+    LoadCustomWeatherSpritePalette(gFollowerPalette_Taillow);
 
     u32 i;
     u32 spriteId;
