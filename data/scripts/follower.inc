@@ -9,7 +9,7 @@ gText_FollowerDefault::
 
 gText_WantsToFly::
 	.string "{STR_VAR_1} looks up at the\nsky restlessly.\pWould you like to use FLY?$"
-
+@ TODO EVA ICI follower override?
 EventScript_Follower::
 	lock
 	bufferlivemonnickname 0

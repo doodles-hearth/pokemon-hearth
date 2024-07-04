@@ -1023,3 +1023,25 @@ const struct Tileset gTileset_DojoMaguro =
     .metatileAttributes = gMetatileAttributes_DojoMaguro,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_SpindaIsland =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_SpindaIsland,
+    .palettes = gTilesetPalettes_SpindaIsland,
+    .metatiles = gMetatiles_SpindaIsland,
+    .metatileAttributes = gMetatileAttributes_SpindaIsland,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SpindaIslandSecondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SpindaIslandSecondary,
+    .palettes = gTilesetPalettes_SpindaIslandSecondary,
+    .metatiles = gMetatiles_SpindaIslandSecondary,
+    .metatileAttributes = gMetatileAttributes_SpindaIslandSecondary,
+    .callback = NULL,
+};

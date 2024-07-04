@@ -79,6 +79,10 @@
 #define MAP_YIFU_CITY                             (70 | (0 << 8))
 #define MAP_BELVEDERE_ROUTE                       (71 | (0 << 8))
 #define MAP_SOULKEEP                              (72 | (0 << 8))
+#define MAP_SPINDA_ISLAND                         (73 | (0 << 8))
+#define MAP_SPINDA_ISLAND_CLOCKWISE               (74 | (0 << 8))
+#define MAP_SPINDA_ISLAND_HOME                    (75 | (0 << 8))
+#define MAP_SPINDA_ISLAND_HOME_CLOCK1             (76 | (0 << 8))
 
 // gMapGroup_IndoorSunriseVillage
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F             (0 | (1 << 8))

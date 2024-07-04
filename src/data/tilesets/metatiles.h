@@ -262,3 +262,9 @@ const u16 gMetatileAttributes_Soulkeep[] = INCBIN_U16("data/tilesets/secondary/s
 
 const u16 gMetatiles_DojoMaguro[] = INCBIN_U16("data/tilesets/secondary/dojo_maguro/metatiles.bin");
 const u16 gMetatileAttributes_DojoMaguro[] = INCBIN_U16("data/tilesets/secondary/dojo_maguro/metatile_attributes.bin");
+
+const u16 gMetatiles_SpindaIsland[] = INCBIN_U16("data/tilesets/primary/spinda_island/metatiles.bin");
+const u16 gMetatileAttributes_SpindaIsland[] = INCBIN_U16("data/tilesets/primary/spinda_island/metatile_attributes.bin");
+
+const u16 gMetatiles_SpindaIslandSecondary[] = INCBIN_U16("data/tilesets/secondary/spinda_island_secondary/metatiles.bin");
+const u16 gMetatileAttributes_SpindaIslandSecondary[] = INCBIN_U16("data/tilesets/secondary/spinda_island_secondary/metatile_attributes.bin");

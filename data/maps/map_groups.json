@@ -112,7 +112,11 @@
     "WhiteslateRoute",
     "YifuCity",
     "BelvedereRoute",
-    "Soulkeep"
+    "Soulkeep",
+    "SpindaIsland",
+    "SpindaIslandClockwise",
+    "SpindaIsland_Home",
+    "SpindaIsland_Home_Clock1"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "LittlerootTown_BrendansHouse_1F",

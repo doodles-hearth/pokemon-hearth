@@ -397,6 +397,7 @@
 #define OBJ_EVENT_PAL_TAG_NURSE                   0x113A
 #define OBJ_EVENT_PAL_TAG_TRAVELER                0x113B
 #define OBJ_EVENT_PAL_TAG_FISHERMAN               0x113C
+#define OBJ_EVENT_PAL_TAG_SPINDA_ISLAND_NPC       0x113D
 
 #if OW_MON_POKEBALLS
 // Vanilla

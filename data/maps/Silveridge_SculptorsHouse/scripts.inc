@@ -29,11 +29,11 @@ Silveridge_House1_EventScript_Sculptor::
 	applymovement 0, Common_Movement_Delay48
 # 24 "data/maps/Silveridge_SculptorsHouse/scripts.pory"
 	waitmovement 0
-# 26 "data/maps/Silveridge_SculptorsHouse/scripts.pory"
+# 31 "data/maps/Silveridge_SculptorsHouse/scripts.pory"
 	msgbox Silveridge_House1_EventScript_Sculptor_Text_1
-# 34 "data/maps/Silveridge_SculptorsHouse/scripts.pory"
+# 39 "data/maps/Silveridge_SculptorsHouse/scripts.pory"
 	closemessage
-# 36 "data/maps/Silveridge_SculptorsHouse/scripts.pory"
+# 41 "data/maps/Silveridge_SculptorsHouse/scripts.pory"
 	release
 	return
 
@@ -44,7 +44,7 @@ Silveridge_House1_EventScript_Sculptor_Text_0:
 	.string "creating.$"
 
 Silveridge_House1_EventScript_Sculptor_Text_1:
-# 27 "data/maps/Silveridge_SculptorsHouse/scripts.pory"
+# 32 "data/maps/Silveridge_SculptorsHouse/scripts.pory"
 	.string "…Oh? Could it be? Another noble soul\n"
 	.string "moved by the ancestral art of\l"
 	.string "sculpture?\p"

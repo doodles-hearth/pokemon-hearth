@@ -1159,3 +1159,11 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/MaguroHarbor_Dojo/scripts.inc"
 
 	.include "data/maps/SakuTown_House3/scripts.inc"
+
+	.include "data/maps/SpindaIsland/scripts.inc"
+
+	.include "data/maps/SpindaIslandClockwise/scripts.inc"
+
+	.include "data/maps/SpindaIsland_Home/scripts.inc"
+
+	.include "data/maps/SpindaIsland_Home_Clock1/scripts.inc"

@@ -4680,6 +4680,46 @@
       "secondary_tileset": "gTileset_DojoMaguro",
       "border_filepath": "data/layouts/MaguroHarbor_Dojo/border.bin",
       "blockdata_filepath": "data/layouts/MaguroHarbor_Dojo/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND",
+      "name": "SpindaIsland_Layout",
+      "width": 86,
+      "height": 86,
+      "primary_tileset": "gTileset_SpindaIsland",
+      "secondary_tileset": "gTileset_SpindaIslandSecondary",
+      "border_filepath": "data/layouts/SpindaIsland/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIsland/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND_CLOCKWISE",
+      "name": "SpindaIslandClockwise_Layout",
+      "width": 86,
+      "height": 86,
+      "primary_tileset": "gTileset_SpindaIsland",
+      "secondary_tileset": "gTileset_SpindaIslandSecondary",
+      "border_filepath": "data/layouts/SpindaIslandClockwise/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIslandClockwise/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND_HOME",
+      "name": "SpindaIsland_Home_Layout",
+      "width": 25,
+      "height": 25,
+      "primary_tileset": "gTileset_SpindaIsland",
+      "secondary_tileset": "gTileset_SpindaIslandSecondary",
+      "border_filepath": "data/layouts/SpindaIsland_Home/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIsland_Home/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND_HOME_CLOCK1",
+      "name": "SpindaIsland_Home_Clock1_Layout",
+      "width": 25,
+      "height": 25,
+      "primary_tileset": "gTileset_SpindaIsland",
+      "secondary_tileset": "gTileset_SpindaIslandSecondary",
+      "border_filepath": "data/layouts/SpindaIsland_Home_Clock1/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIsland_Home_Clock1/map.bin"
     }
   ]
 }

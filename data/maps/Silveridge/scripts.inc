@@ -33,43 +33,43 @@ Silveridge_EventScript_MissingStatue::
 	faceplayer
 # 31 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_MissingStatue_Text_0
-# 37 "data/maps/Silveridge/scripts.pory"
+# 38 "data/maps/Silveridge/scripts.pory"
 	release
 	return
 
 
 Silveridge_EventScript_Wildflowers::
-# 41 "data/maps/Silveridge/scripts.pory"
+# 42 "data/maps/Silveridge/scripts.pory"
 	lock
-# 43 "data/maps/Silveridge/scripts.pory"
-	faceplayer
 # 44 "data/maps/Silveridge/scripts.pory"
+	faceplayer
+# 45 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_Wildflowers_Text_0
-# 50 "data/maps/Silveridge/scripts.pory"
+# 52 "data/maps/Silveridge/scripts.pory"
 	release
 	return
 
 
 Silveridge_EventScript_TownSign::
-# 54 "data/maps/Silveridge/scripts.pory"
+# 56 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_TownSign_Text_0, MSGBOX_SIGN
 	return
 
 
 Silveridge_EventScript_TownSculptureSignTBD::
-# 58 "data/maps/Silveridge/scripts.pory"
+# 60 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_TownSculptureSignTBD_Text_0, MSGBOX_SIGN
 	return
 
 
 Silveridge_EventScript_SculptorsHouseSign::
-# 62 "data/maps/Silveridge/scripts.pory"
+# 64 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_SculptorsHouseSign_Text_0, MSGBOX_SIGN
 	return
 
 
 Silveridge_EventScript_EldersHouseSign::
-# 66 "data/maps/Silveridge/scripts.pory"
+# 68 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_EldersHouseSign_Text_0, MSGBOX_SIGN
 	return
 
@@ -88,8 +88,9 @@ Silveridge_EventScript_LotOfRocks_Text_0:
 Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0:
 # 23 "data/maps/Silveridge/scripts.pory"
 	.string "See the houses around here? They\n"
-	.string "were all built using the stones we got\l"
-	.string "from digging the Silver tunnel.$"
+	.string "were all built using the stones\l"
+	.string "leftover from digging the Silver\l"
+	.string "tunnel.$"
 
 Silveridge_EventScript_MissingStatue_Text_0:
 # 32 "data/maps/Silveridge/scripts.pory"
@@ -97,22 +98,22 @@ Silveridge_EventScript_MissingStatue_Text_0:
 	.string "this stunning statue that makes the\l"
 	.string "pride of our town?\p"
 	.string "…Is what I would say if we had one.\p"
-	.string "There used to be a statue, but an\n"
-	.string "earthquake destroyed it long ago, so\l"
-	.string "now we're left with this empty\l"
-	.string "pedestal.\p"
+	.string "There used to be a statue, but a\n"
+	.string "quake destroyed it long ago, so now\l"
+	.string "we're left with this empty pedestal.\p"
 	.string "There's an excentric man that lives\n"
 	.string "nearby and that calls himself “The\l"
-	.string "Sculptor”. I wish he'd make a\l"
-	.string "replacement, but he hasn't been\l"
-	.string "making anything for a while now.$"
+	.string "Sculptor”.\p"
+	.string "I wish he'd make a replacement, but he\n"
+	.string "hasn't been making anything for a\l"
+	.string "while now.$"
 
 Silveridge_EventScript_Wildflowers_Text_0:
-# 45 "data/maps/Silveridge/scripts.pory"
+# 46 "data/maps/Silveridge/scripts.pory"
 	.string "I loved gardening back when I lived on\n"
-	.string "Havenisle. When I first moved here,\l"
-	.string "the barren landscape made me very\l"
-	.string "homesick.\p"
+	.string "Havenisle.\p"
+	.string "When I first moved here, the barren\n"
+	.string "landscape made me very homesick.\p"
 	.string "So I started planting little patches\n"
 	.string "of these native wildflowers around\l"
 	.string "the town.\p"
@@ -124,19 +125,19 @@ Silveridge_EventScript_Wildflowers_Text_0:
 	.string "there are so colorful!$"
 
 Silveridge_EventScript_TownSign_Text_0:
-# 54 "data/maps/Silveridge/scripts.pory"
+# 56 "data/maps/Silveridge/scripts.pory"
 	.string "Silveridge\n"
 	.string "“A rocky town in shades of grey.”$"
 
 Silveridge_EventScript_TownSculptureSignTBD_Text_0:
-# 58 "data/maps/Silveridge/scripts.pory"
+# 60 "data/maps/Silveridge/scripts.pory"
 	.string "“TO BE DETERMINED”\n"
 	.string "A beautiful statue by PLACEHOLDER$"
 
 Silveridge_EventScript_SculptorsHouseSign_Text_0:
-# 62 "data/maps/Silveridge/scripts.pory"
-	.string "The sculptor's atelier$"
+# 64 "data/maps/Silveridge/scripts.pory"
+	.string "The Sculptor's atelier$"
 
 Silveridge_EventScript_EldersHouseSign_Text_0:
-# 66 "data/maps/Silveridge/scripts.pory"
+# 68 "data/maps/Silveridge/scripts.pory"
 	.string "Elder Iwa's house$"

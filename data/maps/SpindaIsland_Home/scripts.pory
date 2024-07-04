@@ -1,0 +1,10 @@
+mapscripts SpindaIsland_Home_MapScripts {
+	
+}
+
+script SpindaIsland_Home_EventScript_HidingBoy {
+	speakername("mmmmmmmmmmmmmmmmmmmmm")
+	msgbox(format(
+		"DARN! You found me!!"
+	), MSGBOX_NPC)
+}
