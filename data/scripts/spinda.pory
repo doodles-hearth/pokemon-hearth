@@ -1,0 +1,13 @@
+
+script Spinda_SpinClockwise {
+    rotateplayerxyclockwise
+    buffernumberstring(STR_VAR_1, VAR_0x8000)
+    buffernumberstring(STR_VAR_2, VAR_0x8001)
+    msgbox("{STR_VAR_1}, {STR_VAR_2}", MSGBOX_AUTOCLOSE)
+    warpsilent(MAP_SPINDA_ISLAND_HOME_CLOCK1, VAR_0x8000, VAR_0x8001)
+}
+
+script Spinda_SpinCounterclockwise {
+    rotateplayerxycounterclockwise
+    warpsilent(MAP_SPINDA_ISLAND_HOME_CLOCK1, VAR_0x8000, VAR_0x8001)
+}

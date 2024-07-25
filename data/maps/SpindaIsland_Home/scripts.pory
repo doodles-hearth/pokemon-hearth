@@ -3,8 +3,14 @@ mapscripts SpindaIsland_Home_MapScripts {
 }
 
 script SpindaIsland_Home_EventScript_HidingBoy {
-	speakername("mmmmmmmmmmmmmmmmmmmmm")
 	msgbox(format(
-		"DARN! You found me!!"
+		"Something is blocking the way."
 	), MSGBOX_NPC)
+}
+
+script testytesto {
+	lock
+	msgbox(format("SPEEEEN"))
+	call(Spinda_SpinClockwise)
+	release
 }

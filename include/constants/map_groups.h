@@ -95,6 +95,7 @@
 #define MAP_SUNRISE_VILLAGE_ELDERS_HOUSE_PRIVATE_QUARTERS (7 | (1 << 8))
 #define MAP_SUNRISE_VILLAGE_RIVALS_HOUSE                  (8 | (1 << 8))
 #define MAP_SUNRISE_VILLAGE_HOUSE1                        (9 | (1 << 8))
+#define MAP_SPINA_ISLAND_PLAYER_HOME                      (10 | (1 << 8))
 
 // gMapGroup_IndoorOldale
 #define MAP_OLDALE_TOWN_HOUSE1            (0 | (2 << 8))

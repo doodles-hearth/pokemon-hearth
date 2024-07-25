@@ -1045,3 +1045,14 @@ const struct Tileset gTileset_SpindaIslandSecondary =
     .metatileAttributes = gMetatileAttributes_SpindaIslandSecondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_HackingCompHouse =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_HackingCompHouse,
+    .palettes = gTilesetPalettes_HackingCompHouse,
+    .metatiles = gMetatiles_HackingCompHouse,
+    .metatileAttributes = gMetatileAttributes_HackingCompHouse,
+    .callback = NULL,
+};

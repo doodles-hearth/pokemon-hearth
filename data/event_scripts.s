@@ -1079,6 +1079,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/frontier_brain.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+	.include "data/scripts/spinda.inc"
 
 	.include "data/maps/SunriseVillage/scripts.inc"
 
@@ -1167,3 +1168,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SpindaIsland_Home/scripts.inc"
 
 	.include "data/maps/SpindaIsland_Home_Clock1/scripts.inc"
+
+	.include "data/maps/SpinaIsland_PlayerHome/scripts.inc"

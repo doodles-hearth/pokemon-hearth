@@ -268,3 +268,6 @@ const u16 gMetatileAttributes_SpindaIsland[] = INCBIN_U16("data/tilesets/primary
 
 const u16 gMetatiles_SpindaIslandSecondary[] = INCBIN_U16("data/tilesets/secondary/spinda_island_secondary/metatiles.bin");
 const u16 gMetatileAttributes_SpindaIslandSecondary[] = INCBIN_U16("data/tilesets/secondary/spinda_island_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_HackingCompHouse[] = INCBIN_U16("data/tilesets/primary/hacking_comp_house/metatiles.bin");
+const u16 gMetatileAttributes_HackingCompHouse[] = INCBIN_U16("data/tilesets/primary/hacking_comp_house/metatile_attributes.bin");

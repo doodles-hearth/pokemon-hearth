@@ -1,0 +1,7 @@
+mapscripts SpinaIsland_PlayerHome_MapScripts {
+	
+}
+
+script SpinaIsland_PlayerHome_EventScript_Mom {
+	msgbox(format("I'm mom!"))
+}

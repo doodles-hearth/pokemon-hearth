@@ -329,6 +329,16 @@
 	.byte 0xe8
 	.endm
 
+	@ VAR_0x8000, VAR_0x8001
+	.macro rotateplayerxyclockwise
+	.byte 0xe9
+	.endm
+
+	@ VAR_0x8000, VAR_0x8001
+	.macro rotateplayerxycounterclockwise
+	.byte 0xea
+	.endm
+
 	@ Plays the specified sound. Only one sound may play at a time, with newer ones interrupting older ones.
 	.macro playse song:req
 	.byte 0x2f

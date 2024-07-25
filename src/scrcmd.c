@@ -712,6 +712,24 @@ bool8 ScrCmd_gettimeofday(struct ScriptContext *ctx)
     gSpecialVar_0x8000 = GetTimeOfDay();
     return FALSE;
 }
+// TODO EVA ICI
+bool8 ScrCmd_rotateplayerxyclockwise(struct ScriptContext *ctx)
+{
+    // new x = map width - y
+    gSpecialVar_0x8000 = gBackupMapLayout.height / 2 - gSaveBlock1Ptr->pos.y;
+    // new y = x
+    gSpecialVar_0x8001 = gSaveBlock1Ptr->pos.x;
+    return FALSE;
+}
+
+bool8 ScrCmd_rotateplayerxycounterclockwise(struct ScriptContext *ctx)
+{
+    // new x = y
+    gSpecialVar_0x8000 = gSaveBlock1Ptr->pos.y;
+    // new y = x
+    gSpecialVar_0x8001 = gBackupMapLayout.width / 2 - gSaveBlock1Ptr->pos.x;
+    return FALSE;
+}
 
 bool8 ScrCmd_gettime(struct ScriptContext *ctx)
 {
