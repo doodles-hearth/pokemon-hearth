@@ -116,7 +116,9 @@
     "SpindaIsland",
     "SpindaIslandClockwise",
     "SpindaIsland_Home",
-    "SpindaIsland_Home_Clock1"
+    "SpindaIsland_Home_Clock1",
+    "SpindaIsland_Home_Clock2",
+    "SpindaIsland_Home_Clock3"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "LittlerootTown_BrendansHouse_1F",
@@ -129,7 +131,8 @@
     "SunriseVillage_EldersHouse_PrivateQuarters",
     "SunriseVillage_RivalsHouse",
     "SunriseVillage_House1",
-    "SpinaIsland_PlayerHome"
+    "SpinaIsland_PlayerHome",
+    "SpindaIsland_PlayerHome_Bedroom"
   ],
   "gMapGroup_IndoorOldale": [
     "OldaleTown_House1",

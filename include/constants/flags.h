@@ -60,7 +60,7 @@
 #define FLAG_CUT_QUEST_CUT_ALL_GRASS    0x2A
 #define FLAG_CUT_QUEST_COMPLETED        0x2B
 #define FLAG_PC_EXPLAINED    0x2C
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
+#define FLAG_SPINDA_GIVEN_MON    0x2D
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
 #define FLAG_UNUSED_0x030    0x30 // Unused Flag

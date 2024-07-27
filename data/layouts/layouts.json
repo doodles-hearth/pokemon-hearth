@@ -4730,6 +4730,36 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/SpinaIsland_PlayerHome/border.bin",
       "blockdata_filepath": "data/layouts/SpinaIsland_PlayerHome/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND_PLAYER_HOME_BEDROOM",
+      "name": "SpindaIsland_PlayerHome_Bedroom_Layout",
+      "width": 8,
+      "height": 7,
+      "primary_tileset": "gTileset_HackingCompHouse",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/SpindaIsland_PlayerHome_Bedroom/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIsland_PlayerHome_Bedroom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND_HOME_CLOCK2",
+      "name": "SpindaIsland_Home_Clock2_Layout",
+      "width": 25,
+      "height": 25,
+      "primary_tileset": "gTileset_SpindaIsland",
+      "secondary_tileset": "gTileset_SpindaIslandSecondary",
+      "border_filepath": "data/layouts/SpindaIsland_Home_Clock2/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIsland_Home_Clock2/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND_HOME_CLOCK3",
+      "name": "SpindaIsland_Home_Clock3_Layout",
+      "width": 25,
+      "height": 25,
+      "primary_tileset": "gTileset_SpindaIsland",
+      "secondary_tileset": "gTileset_SpindaIslandSecondary",
+      "border_filepath": "data/layouts/SpindaIsland_Home_Clock3/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIsland_Home_Clock3/map.bin"
     }
   ]
 }

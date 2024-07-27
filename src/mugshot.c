@@ -24,10 +24,17 @@ void ClearMugshot(void);
 static const u32 sMugshotImg_Ao[] = INCBIN_U32("graphics/mugshots/ao.4bpp.lz");
 static const u16 sMugshotPal_Ao[] = INCBIN_U16("graphics/mugshots/ao.gbapal");
 
+static const u16 sMugshotPal_SpindaIslandNpc_BrownBg[] = INCBIN_U16("graphics/object_events/palettes/comp_npc_brownbg.gbapal");
+
+static const u32 sMugshotImg_Archie[] = INCBIN_U32("graphics/mugshots/archie_normal.4bpp.lz");
+static const u32 sMugshotImg_Archie_Happy[] = INCBIN_U32("graphics/mugshots/archie_happy.4bpp.lz");
+
 static const struct Mugshot sMugshots[] = {
     // ADD YOUR MUGSHOTS HERE
     // TODO EVA change XY
     [MUGSHOT_AO] = {.x = 20, .y = 4, .width = 80, .height = 80, .image = sMugshotImg_Ao, .palette = sMugshotPal_Ao},
+    [MUGSHOT_ARCHIE] = {.x = 20, .y = 4, .width = 80, .height = 80, .image = sMugshotImg_Archie, .palette = sMugshotPal_SpindaIslandNpc_BrownBg},
+    [MUGSHOT_ARCHIE_HAPPY] = {.x = 20, .y = 4, .width = 80, .height = 80, .image = sMugshotImg_Archie_Happy, .palette = sMugshotPal_SpindaIslandNpc_BrownBg},
 };
 
 

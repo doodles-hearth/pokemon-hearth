@@ -1,13 +1,85 @@
 
 script Spinda_SpinClockwise {
+    // getmapsize
+    // buffernumberstring(STR_VAR_1, VAR_0x8000)
+    // buffernumberstring(STR_VAR_2, VAR_0x8001)
+    // msgbox("Map size: ({STR_VAR_1}, {STR_VAR_2})", MSGBOX_AUTOCLOSE)
     rotateplayerxyclockwise
-    buffernumberstring(STR_VAR_1, VAR_0x8000)
-    buffernumberstring(STR_VAR_2, VAR_0x8001)
-    msgbox("{STR_VAR_1}, {STR_VAR_2}", MSGBOX_AUTOCLOSE)
-    warpsilent(MAP_SPINDA_ISLAND_HOME_CLOCK1, VAR_0x8000, VAR_0x8001)
+    setwarpnextmapclockwise()
+    // buffernumberstring(STR_VAR_1, VAR_0x8000)
+    // buffernumberstring(STR_VAR_2, VAR_0x8001)
+    // msgbox("Warping to ({STR_VAR_1}, {STR_VAR_2})", MSGBOX_AUTOCLOSE)
+    
+    warpsilent(MAP_DYNAMIC, VAR_0x8000, VAR_0x8001)
+    // warpsilent(MAP_SPINDA_ISLAND_HOME_CLOCK1, VAR_0x8000, VAR_0x8001)
+    call(Spinda_TurnPlayerClockwise)
 }
 
 script Spinda_SpinCounterclockwise {
     rotateplayerxycounterclockwise
     warpsilent(MAP_SPINDA_ISLAND_HOME_CLOCK1, VAR_0x8000, VAR_0x8001)
+    call(Spinda_TurnPlayerCounterclockwise)
+}
+
+script Spinda_TurnPlayerClockwise {
+    specialvar(VAR_RESULT, GetPlayerFacingDirection)
+    switch(var(VAR_RESULT)) {
+        case DIR_SOUTH:
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+        case DIR_WEST:
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+        case DIR_NORTH:
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+        case DIR_EAST:
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+    }
+}
+
+script Spinda_TurnPlayerCounterclockwise {
+    specialvar(VAR_RESULT, GetPlayerFacingDirection)
+    switch(var(VAR_RESULT)) {
+        case DIR_SOUTH:
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+        case DIR_EAST:
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+        case DIR_NORTH:
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+        case DIR_WEST:
+            turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+    }
+}
+
+
+script SpindaIsland_Common_CantReadSign {
+    lock
+
+    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
+	callnative(DrawMugshot)
+    speakername("Little Archie")
+    msgbox(format(
+		"Can't read the sign from here."
+    ))
+    closemessage
+	callnative(ClearMugshot)
+    
+    release
+}
+
+script SpindaIsland_Common_CantTakeStairs {
+    lock
+
+    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
+	callnative(DrawMugshot)
+    speakername("Little Archie")
+    msgbox(format(
+		"Man, if only there was a way to climb stairs when they are sideways…"
+    ))
+    closemessage
+	callnative(ClearMugshot)
+
+    speakername("God")
+    msgbox(format(
+		"“ALAS, THERE IS NOT.”"
+    ))
+    release
 }

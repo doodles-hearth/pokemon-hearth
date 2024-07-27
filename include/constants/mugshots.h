@@ -3,5 +3,10 @@
 
 //Add your mugshot constants here
 #define MUGSHOT_AO 0
+#define MUGSHOT_ARCHIE 1
+#define MUGSHOT_ARCHIE_HAPPY 2
+#define MUGSHOT_ARCHIE_SAD 3
+#define MUGSHOT_ARCHIE_SHOCK 4
+#define MUGSHOT_ARCHIE_DISGUST 5
 
 #endif

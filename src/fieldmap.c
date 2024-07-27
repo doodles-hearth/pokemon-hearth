@@ -946,3 +946,9 @@ void LoadMapTilesetPalettes(struct MapLayout const *mapLayout)
         LoadSecondaryTilesetPalette(mapLayout);
     }
 }
+
+// void Spinda_GetRotationCycleStartingMapNumForCurrentMap(struct MapLayout const *mapLayout)
+// {
+//     gMapHeader.
+//     gSaveBlock1Ptr->location.mapGroup
+// }

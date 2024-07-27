@@ -1,0 +1,13 @@
+mapscripts SpindaIsland_PlayerHome_Bedroom_MapScripts {
+	
+}
+
+script SpindaIsland_PlayerHome_Bedroom_Diary {
+	lock
+	msgbox(format(
+		"“Dear diary,\n"
+		"The ship is almost finished. It is gonna be awsome.\p"
+		"It will be even more beautifull then dad's.”"
+	))
+	release
+}

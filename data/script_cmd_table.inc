@@ -235,6 +235,7 @@ gScriptCmdTable::
 	.4byte ScrCmd_gettimeofday                      @ 0xe8
 	.4byte ScrCmd_rotateplayerxyclockwise           @ 0xe9
 	.4byte ScrCmd_rotateplayerxycounterclockwise    @ 0xea
+	.4byte ScrCmd_testeva    @ 0xeb
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

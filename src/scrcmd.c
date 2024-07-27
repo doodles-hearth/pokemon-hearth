@@ -712,11 +712,79 @@ bool8 ScrCmd_gettimeofday(struct ScriptContext *ctx)
     gSpecialVar_0x8000 = GetTimeOfDay();
     return FALSE;
 }
+
+bool8 ScrCmd_testeva(struct ScriptContext *ctx)
+{
+    // new x = map width - y
+    gSpecialVar_0x8000 = gBackupMapLayout.width - MAP_OFFSET_W;
+    // new y = x
+    gSpecialVar_0x8001 = gBackupMapLayout.height - MAP_OFFSET_H;
+    return FALSE;
+}
+
+bool8 ScrCmd_bla(struct ScriptContext *ctx)
+{
+    switch (gSaveBlock1Ptr->location.mapGroup) {
+        case 
+    }
+    return FALSE;
+}
+
+#define SPINDA_ISLAND_NB_ROTATIONS 4
+
+bool8 ScrCmd_setwarpnextmapclockwise(struct ScriptContext *ctx)
+{
+    u8 offset = VarGet(ScriptReadHalfword(ctx));
+
+    s32 mapGroup = gSaveBlock1Ptr->location.mapGroup;
+    s32 mapNum;
+    if (gSaveBlock1Ptr->location.mapNum - offset == SPINDA_ISLAND_NB_ROTATIONS - 1) {
+        mapNum = offset;
+    } else {
+        mapNum += 1;
+    }
+
+    SetWarpData(
+        &gSaveBlock1Ptr->dynamicWarp,
+        mapGroup,
+        mapNum,
+        WARP_ID_NONE,
+        (gBackupMapLayout.width - MAP_OFFSET_W - 1) - gSaveBlock1Ptr->pos.y,
+        gSaveBlock1Ptr->pos.x
+    );
+
+    return FALSE;
+}
+
+bool8 ScrCmd_setwarpnextmapcounterclockwise(struct ScriptContext *ctx)
+{
+    u8 offset = VarGet(ScriptReadHalfword(ctx));
+
+    s32 mapGroup = gSaveBlock1Ptr->location.mapGroup;
+    s32 mapNum;
+    if (gSaveBlock1Ptr->location.mapNum - offset == SPINDA_ISLAND_NB_ROTATIONS - 1) {
+        mapNum = offset;
+    } else {
+        mapNum += 1;
+    }
+
+    SetWarpData(
+        &gSaveBlock1Ptr->dynamicWarp,
+        mapGroup,
+        mapNum,
+        WARP_ID_NONE,
+        gSpecialVar_0x8000 = gSaveBlock1Ptr->pos.y,
+        gSpecialVar_0x8001 = (gBackupMapLayout.height - MAP_OFFSET_H - 1) - gSaveBlock1Ptr->pos.x
+    );
+
+    return FALSE;
+}
+
 // TODO EVA ICI
 bool8 ScrCmd_rotateplayerxyclockwise(struct ScriptContext *ctx)
 {
     // new x = map width - y
-    gSpecialVar_0x8000 = gBackupMapLayout.height / 2 - gSaveBlock1Ptr->pos.y;
+    gSpecialVar_0x8000 = (gBackupMapLayout.width - MAP_OFFSET_W - 1) - gSaveBlock1Ptr->pos.y;
     // new y = x
     gSpecialVar_0x8001 = gSaveBlock1Ptr->pos.x;
     return FALSE;
@@ -727,7 +795,7 @@ bool8 ScrCmd_rotateplayerxycounterclockwise(struct ScriptContext *ctx)
     // new x = y
     gSpecialVar_0x8000 = gSaveBlock1Ptr->pos.y;
     // new y = x
-    gSpecialVar_0x8001 = gBackupMapLayout.width / 2 - gSaveBlock1Ptr->pos.x;
+    gSpecialVar_0x8001 = (gBackupMapLayout.height - MAP_OFFSET_H - 1) - gSaveBlock1Ptr->pos.x;
     return FALSE;
 }
 

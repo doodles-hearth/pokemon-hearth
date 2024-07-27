@@ -1170,3 +1170,9 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SpindaIsland_Home_Clock1/scripts.inc"
 
 	.include "data/maps/SpinaIsland_PlayerHome/scripts.inc"
+
+	.include "data/maps/SpindaIsland_PlayerHome_Bedroom/scripts.inc"
+
+	.include "data/maps/SpindaIsland_Home_Clock2/scripts.inc"
+
+	.include "data/maps/SpindaIsland_Home_Clock3/scripts.inc"

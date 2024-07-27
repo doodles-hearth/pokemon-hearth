@@ -1,0 +1,48 @@
+{
+  "id": "MAP_SPINDA_ISLAND_PLAYER_HOME_BEDROOM",
+  "name": "SpindaIsland_PlayerHome_Bedroom",
+  "layout": "LAYOUT_SPINDA_ISLAND_PLAYER_HOME_BEDROOM",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_SUNRISE_VILLAGE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 1,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_SPINA_ISLAND_PLAYER_HOME",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 2,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_SPINA_ISLAND_PLAYER_HOME",
+      "dest_warp_id": "2"
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpindaIsland_PlayerHome_Bedroom_Diary"
+    }
+  ]
+}

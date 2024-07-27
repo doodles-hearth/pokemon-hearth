@@ -339,6 +339,21 @@
 	.byte 0xea
 	.endm
 
+	@ VAR_0x8000, VAR_0x8001
+	.macro getmapsize
+	.byte 0xeb
+	.endm
+
+	.macro setwarpnextmapclockwise offset:req
+	.byte 0xec
+	.2byte \offset
+	.endm
+
+	.macro setwarpnextmapcounterclockwise offset:req
+	.byte 0xed
+	.2byte \offset
+	.endm
+
 	@ Plays the specified sound. Only one sound may play at a time, with newer ones interrupting older ones.
 	.macro playse song:req
 	.byte 0x2f
