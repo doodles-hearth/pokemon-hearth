@@ -1,5 +1,10 @@
 mapscripts SpindaIsland_Home_Clock1_MapScripts {
-	
+	MAP_SCRIPT_ON_LOAD {
+		// Broken faucet
+		if (flag(FLAG_FAUCET_BROKE)) {
+			setmetatile(20, 8, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
+		}
+	}
 }
 
 script SpindaIsland_Home_Clock1_HidingBoy {
