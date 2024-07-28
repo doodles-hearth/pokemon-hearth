@@ -2383,7 +2383,8 @@ static void Task_DoPlayerSpinEntrance(u8 taskId)
             tSpeed -= 3;
             if (tSpeed < 4)
                 tSpeed = 4;
-            sprite->y = tCurY >> 4;
+            // sprite->y = tDestY;
+            // sprite->y = tCurY >> 4;
 
             // Check if reached dest
             if (sprite->y >= tDestY)

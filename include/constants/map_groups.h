@@ -81,10 +81,6 @@
 #define MAP_SOULKEEP                              (72 | (0 << 8))
 #define MAP_SPINDA_ISLAND                         (73 | (0 << 8))
 #define MAP_SPINDA_ISLAND_CLOCKWISE               (74 | (0 << 8))
-#define MAP_SPINDA_ISLAND_HOME                    (75 | (0 << 8))
-#define MAP_SPINDA_ISLAND_HOME_CLOCK1             (76 | (0 << 8))
-#define MAP_SPINDA_ISLAND_HOME_CLOCK2             (77 | (0 << 8))
-#define MAP_SPINDA_ISLAND_HOME_CLOCK3             (78 | (0 << 8))
 
 // gMapGroup_IndoorSunriseVillage
 #define MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F             (0 | (1 << 8))
@@ -647,6 +643,12 @@
 #define MAP_CHII_TOWN_HOUSE1         (0 | (37 << 8))
 #define MAP_CHII_TOWN_POKEMON_CENTER (1 | (37 << 8))
 
-#define MAP_GROUPS_COUNT 38
+// gMapGroup_Spinda_Home
+#define MAP_SPINDA_ISLAND_HOME        (0 | (38 << 8))
+#define MAP_SPINDA_ISLAND_HOME_CLOCK1 (1 | (38 << 8))
+#define MAP_SPINDA_ISLAND_HOME_CLOCK2 (2 | (38 << 8))
+#define MAP_SPINDA_ISLAND_HOME_CLOCK3 (3 | (38 << 8))
+
+#define MAP_GROUPS_COUNT 39
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

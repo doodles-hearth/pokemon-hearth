@@ -37,7 +37,8 @@
     "gMapGroup_IndoorTranquilRoute",
     "gMapGroup_IndoorSaku",
     "gMapGroup_IndoorKura",
-    "gMapGroup_IndoorChii"
+    "gMapGroup_IndoorChii",
+    "gMapGroup_Spinda_Home"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -114,11 +115,7 @@
     "BelvedereRoute",
     "Soulkeep",
     "SpindaIsland",
-    "SpindaIslandClockwise",
-    "SpindaIsland_Home",
-    "SpindaIsland_Home_Clock1",
-    "SpindaIsland_Home_Clock2",
-    "SpindaIsland_Home_Clock3"
+    "SpindaIslandClockwise"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "LittlerootTown_BrendansHouse_1F",
@@ -680,5 +677,11 @@
   "gMapGroup_IndoorChii": [
     "ChiiTown_House1",
     "ChiiTown_PokemonCenter"
+  ],
+  "gMapGroup_Spinda_Home": [
+    "SpindaIsland_Home",
+    "SpindaIsland_Home_Clock1",
+    "SpindaIsland_Home_Clock2",
+    "SpindaIsland_Home_Clock3"
   ]
 }

@@ -1,23 +1,19 @@
 mapscripts SpindaIsland_Home_MapScripts {
-	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-		VAR_TEMP_0, 0 {
-			if (!flag(FLAG_SPINDA_GIVEN_MON)) {
-				givemon(SPECIES_SPINDA, 20)
-				setflag(FLAG_RECEIVED_STARTER)
-				setflag(FLAG_SYS_POKEMON_GET)
-			}
-		}
-	]
+	// MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+	// 	VAR_TEMP_0, 0 {
+	// 		if (!flag(FLAG_SPINDA_GIVEN_MON)) {
+	// 			givemon(SPECIES_SPINDA, 20)
+	// 			setflag(FLAG_RECEIVED_STARTER)
+	// 			setflag(FLAG_SYS_POKEMON_GET)
+	// 		}
+	// 	}
+	// ]
 }
 
-script SpindaIsland_Home_EventScript_HidingBoy {
-	msgbox(format(
-		"Something is blocking the way."
-	), MSGBOX_NPC)
+script SpindaIsland_Home_EventScript_ArchiesHouseSign {
+	msgbox(format("The Aquas"), MSGBOX_SIGN)
 }
 
-script testytesto {
-	lock
-	call(Spinda_SpinClockwise)
-	release
+script SpindaIsland_Home_EventScript_BobsHouseSign {
+	msgbox(format("Bob"), MSGBOX_SIGN)
 }

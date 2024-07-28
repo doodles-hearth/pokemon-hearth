@@ -445,6 +445,11 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
     if (MetatileBehavior_IsTrainerHillTimer(metatileBehavior) == TRUE)
         return EventScript_TrainerHillTimer;
 
+
+
+    if (MetatileBehavior_IsWrongDirSign(metatileBehavior) == TRUE)
+        return SpindaIsland_Common_CantReadSign;
+
     elevation = position->elevation;
     if (elevation == MapGridGetElevationAt(position->x, position->y))
     {

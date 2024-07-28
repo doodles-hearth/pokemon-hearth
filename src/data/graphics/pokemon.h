@@ -8103,9 +8103,9 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 
 #if P_FAMILY_SPINDA
     const u32 gMonFrontPic_Spinda[] = INCBIN_U32("graphics/pokemon/spinda/anim_front.4bpp.lz");
-    const u32 gMonPalette_Spinda[] = INCBIN_U32("graphics/pokemon/spinda/normal.gbapal.lz");
+    const u32 gMonPalette_Spinda[] = INCBIN_U32("graphics/object_events/palettes/comp_npc_darkbg.gbapal.lz");
     const u32 gMonBackPic_Spinda[] = INCBIN_U32("graphics/pokemon/spinda/back.4bpp.lz");
-    const u32 gMonShinyPalette_Spinda[] = INCBIN_U32("graphics/pokemon/spinda/shiny.gbapal.lz");
+    const u32 gMonShinyPalette_Spinda[] = INCBIN_U32("graphics/object_events/palettes/comp_npc_darkbg.gbapal.lz");
     const u8 gMonIcon_Spinda[] = INCBIN_U8("graphics/pokemon/spinda/icon.4bpp");
 #if P_FOOTPRINTS
     const u8 gMonFootprint_Spinda[] = INCBIN_U8("graphics/pokemon/spinda/footprint.1bpp");
@@ -8113,8 +8113,8 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #if OW_FOLLOWERS_ENABLED
     const u32 gObjectEventPic_Spinda[] = INCBIN_COMP("graphics/pokemon/spinda/follower.4bpp");
 #if OW_FOLLOWERS_SHARE_PALETTE == FALSE
-    const u32 gFollowerPalette_Spinda[] = INCBIN_U32("graphics/pokemon/spinda/follow_normal.gbapal.lz");
-    const u32 gShinyFollowerPalette_Spinda[] = INCBIN_U32("graphics/pokemon/spinda/follow_shiny.gbapal.lz");
+    const u32 gFollowerPalette_Spinda[] = INCBIN_U32("graphics/object_events/palettes/comp_npc_darkbg.gbapal.lz");
+    const u32 gShinyFollowerPalette_Spinda[] = INCBIN_U32("graphics/object_events/palettes/comp_npc_darkbg.gbapal.lz");
 #endif //OW_FOLLOWERS_SHARE_PALETTE
 #endif //OW_FOLLOWERS_ENABLED
 #endif //P_FAMILY_SPINDA

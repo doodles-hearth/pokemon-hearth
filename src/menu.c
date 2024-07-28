@@ -95,7 +95,7 @@ static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
         .width = 26,
         .height = 4,
         .paletteNum = 15,
-        .baseBlock = 0x194
+        .baseBlock = 0x240
     },
     {
         .bg = 0,
@@ -104,7 +104,7 @@ static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
         .width = DLW_WIN_PLATE_SIZE,
         .height = 2,
         .paletteNum = 15,
-        .baseBlock = (0x194 - (DLW_WIN_PLATE_SIZE * 2)),
+        .baseBlock = (0x240 - (DLW_WIN_PLATE_SIZE * 2)),
     },
     DUMMY_WIN_TEMPLATE
 };

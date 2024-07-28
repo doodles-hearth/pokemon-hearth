@@ -746,6 +746,13 @@
 #define METATILE_SootopolisGym_Ice_Cracked  0x20E
 #define METATILE_SootopolisGym_Stairs       0x207
 
+// gTileset_SpindaIsland
+#define METATILE_SpindaIsland_Grass  0x001
+
+// gTileset_SpindaIslandSecondary
+#define METATILE_SpindaIslandSecondary_BrokenFaucetGround  0x288
+#define METATILE_SpindaIslandSecondary_BrokenFaucetWall    0x25E
+
 // gTileset_TrainerHill
 #define METATILE_TrainerHill_CounterDoor          0x334
 #define METATILE_TrainerHill_Door_Elevator_Lobby  0x32C
@@ -802,5 +809,8 @@
 #define METATILE_RSMossdeepGym_RedArrow_Up     0x20D
 #define METATILE_RSMossdeepGym_Switch_Down     0x239
 #define METATILE_RSMossdeepGym_Switch_Up       0x238
+#define METATILE_Spinda_BrokenFaucetGround     0x23A
+#define METATILE_Spinda_BrokenFaucetWall       0x239
+#define METATILE_Spinda_Grass                  0x23B
 
 #endif // GUARD_METATILE_LABELS_H

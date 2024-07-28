@@ -16,8 +16,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_BIG_SISTER",
-      "x": 6,
-      "y": 3,
+      "x": 8,
+      "y": 9,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -26,35 +26,80 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpinaIsland_PlayerHome_EventScript_Mom",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 6,
+      "y": 1,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpinaIsland_PlayerHome_EventScript_GetSpinda",
+      "flag": "FLAG_RECEIVED_STARTER"
     }
   ],
   "warp_events": [
     {
-      "x": 3,
-      "y": 9,
+      "x": 6,
+      "y": 14,
       "elevation": 0,
       "dest_map": "MAP_SPINDA_ISLAND_HOME",
       "dest_warp_id": "0"
     },
     {
-      "x": 4,
-      "y": 9,
+      "x": 7,
+      "y": 14,
       "elevation": 0,
       "dest_map": "MAP_SPINDA_ISLAND_HOME",
-      "dest_warp_id": "0"
-    },
-    {
-      "x": 1,
-      "y": 2,
-      "elevation": 0,
-      "dest_map": "MAP_SPINDA_ISLAND_PLAYER_HOME_BEDROOM",
       "dest_warp_id": "0"
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_SPINDA_ISLAND_INTRO_STATE",
+      "var_value": "1",
+      "script": "SpinaIsland_PlayerHome_EventScript_EnterLivingRoom"
+    }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 5,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpinaIsland_PlayerHome_EventScript_Window"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpindaIsland_PlayerHome_EventScript_Diary"
+    },
+    {
+      "type": "sign",
+      "x": 3,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpinaIsland_PlayerHome_EventScript_Window"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpinaIsland_PlayerHome_EventScript_WailmerDoll"
+    }
   ]
 }

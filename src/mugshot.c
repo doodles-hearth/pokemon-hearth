@@ -33,8 +33,8 @@ static const struct Mugshot sMugshots[] = {
     // ADD YOUR MUGSHOTS HERE
     // TODO EVA change XY
     [MUGSHOT_AO] = {.x = 20, .y = 4, .width = 80, .height = 80, .image = sMugshotImg_Ao, .palette = sMugshotPal_Ao},
-    [MUGSHOT_ARCHIE] = {.x = 20, .y = 4, .width = 80, .height = 80, .image = sMugshotImg_Archie, .palette = sMugshotPal_SpindaIslandNpc_BrownBg},
-    [MUGSHOT_ARCHIE_HAPPY] = {.x = 20, .y = 4, .width = 80, .height = 80, .image = sMugshotImg_Archie_Happy, .palette = sMugshotPal_SpindaIslandNpc_BrownBg},
+    [MUGSHOT_ARCHIE] = {.x = 20, .y = 5, .width = 80, .height = 80, .image = sMugshotImg_Archie, .palette = sMugshotPal_SpindaIslandNpc_BrownBg},
+    [MUGSHOT_ARCHIE_HAPPY] = {.x = 20, .y = 5, .width = 80, .height = 80, .image = sMugshotImg_Archie_Happy, .palette = sMugshotPal_SpindaIslandNpc_BrownBg},
 };
 
 

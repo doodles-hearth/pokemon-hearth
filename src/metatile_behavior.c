@@ -1402,3 +1402,12 @@ bool8 MetatileBehavior_IsTrainerHillTimer(u8 metatileBehavior)
     else
         return FALSE;
 }
+
+
+bool8 MetatileBehavior_IsWrongDirSign(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SIGN_WRONG_DIR)
+        return TRUE;
+    else
+        return FALSE;
+}

@@ -1,24 +1,10 @@
 
 script Spinda_SpinClockwise {
-    // getmapsize
-    // buffernumberstring(STR_VAR_1, VAR_0x8000)
-    // buffernumberstring(STR_VAR_2, VAR_0x8001)
-    // msgbox("Map size: ({STR_VAR_1}, {STR_VAR_2})", MSGBOX_AUTOCLOSE)
-    rotateplayerxyclockwise
-    setwarpnextmapclockwise()
-    // buffernumberstring(STR_VAR_1, VAR_0x8000)
-    // buffernumberstring(STR_VAR_2, VAR_0x8001)
-    // msgbox("Warping to ({STR_VAR_1}, {STR_VAR_2})", MSGBOX_AUTOCLOSE)
-    
-    warpsilent(MAP_DYNAMIC, VAR_0x8000, VAR_0x8001)
-    // warpsilent(MAP_SPINDA_ISLAND_HOME_CLOCK1, VAR_0x8000, VAR_0x8001)
-    call(Spinda_TurnPlayerClockwise)
+    setwarpnextmapclockwise
 }
 
 script Spinda_SpinCounterclockwise {
-    rotateplayerxycounterclockwise
-    warpsilent(MAP_SPINDA_ISLAND_HOME_CLOCK1, VAR_0x8000, VAR_0x8001)
-    call(Spinda_TurnPlayerCounterclockwise)
+    setwarpnextmapcounterclockwise
 }
 
 script Spinda_TurnPlayerClockwise {
@@ -79,7 +65,23 @@ script SpindaIsland_Common_CantTakeStairs {
 
     speakername("God")
     msgbox(format(
-		"“ALAS, THERE IS NOT.”"
+		"“ALAS, THERE IS NOT.\p”"
+        "“I TOTALLY WASN'T TOO LAZY TO IMPLEMENT A CERTAIN FEATURE.”"
     ))
+    release
+}
+
+script SpindaIsland_Common_HiddenObstacle {
+    lock
+
+    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
+	callnative(DrawMugshot)
+    speakername("Little Archie")
+    msgbox(format(
+		"Something's blocking the way."
+    ))
+    closemessage
+	callnative(ClearMugshot)
+
     release
 }

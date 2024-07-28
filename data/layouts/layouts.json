@@ -4724,8 +4724,8 @@
     {
       "id": "LAYOUT_SPINA_ISLAND_PLAYER_HOME",
       "name": "SpinaIsland_PlayerHome_Layout",
-      "width": 9,
-      "height": 10,
+      "width": 15,
+      "height": 15,
       "primary_tileset": "gTileset_HackingCompHouse",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/SpinaIsland_PlayerHome/border.bin",

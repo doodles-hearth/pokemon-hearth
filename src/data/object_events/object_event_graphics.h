@@ -317,6 +317,7 @@ const u32 gObjectEventPic_QuintyPlump[] = INCBIN_U32("graphics/object_events/pic
 const u16 gObjectEventPal_QuintyPlump[] = INCBIN_U16("graphics/object_events/palettes/quinty_plump.gbapal");
 const u16 gObjectEventPal_QuintyPlumpReflection[] = INCBIN_U16("graphics/object_events/palettes/quinty_plump_reflection.gbapal");
 const u16 gObjectEventPal_SpindaIslandNpc[] = INCBIN_U16("graphics/object_events/palettes/comp_npc_brownbg.gbapal");
+const u16 gObjectEventPal_SpindaIslandNpc_DarkBg[] = INCBIN_U16("graphics/object_events/palettes/comp_npc_darkbg.gbapal");
 const u32 gFieldEffectObjectPic_ShadowSmall[] = INCBIN_U32("graphics/field_effects/pics/shadow_small.4bpp");
 const u32 gFieldEffectObjectPic_ShadowMedium[] = INCBIN_U32("graphics/field_effects/pics/shadow_medium.4bpp");
 const u32 gFieldEffectObjectPic_ShadowLarge[] = INCBIN_U32("graphics/field_effects/pics/shadow_large.4bpp");

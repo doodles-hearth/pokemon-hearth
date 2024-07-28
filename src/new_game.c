@@ -93,7 +93,7 @@ static void InitPlayerTrainerId(void)
 static void SetDefaultOptions(void)
 {
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
-    gSaveBlock2Ptr->optionsWindowFrameType = 0;
+    gSaveBlock2Ptr->optionsWindowFrameType = 2;
     gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_MONO;
     gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
@@ -130,7 +130,8 @@ static void WarpToStartPositionInPlayersBedroom(void)
 {
     // TODO EVA not here goddammit
     NameRival();
-    SetWarpDestination(MAP_GROUP(SPINDA_ISLAND_HOME), MAP_NUM(SPINDA_ISLAND_HOME), WARP_ID_NONE, 6, 6);
+    SetWarpDestination(MAP_GROUP(SPINA_ISLAND_PLAYER_HOME), MAP_NUM(SPINA_ISLAND_PLAYER_HOME), WARP_ID_NONE, 6, 6);
+    // SetWarpDestination(MAP_GROUP(SPINDA_ISLAND_HOME), MAP_NUM(SPINDA_ISLAND_HOME), WARP_ID_NONE, 6, 6);
     // SetWarpDestination(MAP_GROUP(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), MAP_NUM(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), WARP_ID_NONE, 2, 4);
     // SetWarpDestination(MAP_GROUP(LAVARIDGE_TOWN), MAP_NUM(LAVARIDGE_TOWN), WARP_ID_NONE, 9, 10);
     // SetWarpDestination(MAP_GROUP(SILVERIDGE), MAP_NUM(SILVERIDGE), WARP_ID_NONE, 18, 24);

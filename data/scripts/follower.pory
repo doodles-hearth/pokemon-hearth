@@ -1,6 +1,7 @@
 script EventScript_Follower {
 	lock
-	bufferlivemonnickname(0)
+	playfirstmoncry
+	faceplayer
 	msgbox(format(
 		"Take Spinda for a spin?"
 	))
@@ -8,7 +9,7 @@ script EventScript_Follower {
 	dynmultichoice(
 		16,
 		8,
-		TRUE,
+		FALSE,
 		10,
 		0,
 		DYN_MULTICHOICE_CB_NONE,

@@ -1740,6 +1740,9 @@ extern const u32 gItemIconPalette_TwiceSpicedRadish[];
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];
 
+extern const u32 gItemIcon_BrokenFaucet[];
+extern const u32 gItemIconPalette_BrokenFaucet[];
+
 //menu graphics
 extern const u16 gMenuInfoElements1_Pal[16];
 extern const u16 gMenuInfoElements2_Pal[16];

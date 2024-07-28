@@ -14079,4 +14079,21 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
     },
+
+    
+    [ITEM_BROKEN_FAUCET] =
+    {
+        .name = _("Broken Faucet"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "The faucet I need\n"
+            "to repair to get\n"
+            "the water flowing."),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BrokenFaucet,
+        .iconPalette = gItemIconPalette_BikeVoucher,
+    },
 };

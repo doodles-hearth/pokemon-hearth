@@ -927,6 +927,42 @@ void ResetInitialPlayerAvatarState(void)
     sInitialPlayerAvatarState.transitionFlags = PLAYER_AVATAR_FLAG_ON_FOOT;
 }
 
+void SetPlayerAvatarDirectionRotateClockwise(void)
+{
+    switch(GetPlayerFacingDirection()) {
+        case DIR_SOUTH:
+            sInitialPlayerAvatarState.direction = DIR_WEST;
+            break;
+        case DIR_WEST:
+            sInitialPlayerAvatarState.direction = DIR_NORTH;
+            break;
+        case DIR_NORTH:
+            sInitialPlayerAvatarState.direction = DIR_EAST;
+            break;
+        case DIR_EAST:
+            sInitialPlayerAvatarState.direction = DIR_SOUTH;
+            break;
+    }
+}
+
+void SetPlayerAvatarDirectionRotateCounterclockwise(void)
+{
+    switch(GetPlayerFacingDirection()) {
+        case DIR_SOUTH:
+            sInitialPlayerAvatarState.direction = DIR_EAST;
+            break;
+        case DIR_WEST:
+            sInitialPlayerAvatarState.direction = DIR_NORTH;
+            break;
+        case DIR_NORTH:
+            sInitialPlayerAvatarState.direction = DIR_WEST;
+            break;
+        case DIR_EAST:
+            sInitialPlayerAvatarState.direction = DIR_SOUTH;
+            break;
+    }
+}
+
 void StoreInitialPlayerAvatarState(void)
 {
     sInitialPlayerAvatarState.direction = GetPlayerFacingDirection();

@@ -236,6 +236,9 @@ gScriptCmdTable::
 	.4byte ScrCmd_rotateplayerxyclockwise           @ 0xe9
 	.4byte ScrCmd_rotateplayerxycounterclockwise    @ 0xea
 	.4byte ScrCmd_testeva    @ 0xeb
+	.4byte ScrCmd_setwarpnextmapclockwise    @ 0xec
+	.4byte ScrCmd_setwarpnextmapcounterclockwise    @ 0xed
+	.4byte ScrCmd_hidefollower    @ 0xee
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

@@ -344,14 +344,16 @@
 	.byte 0xeb
 	.endm
 
-	.macro setwarpnextmapclockwise offset:req
+	.macro setwarpnextmapclockwise
 	.byte 0xec
-	.2byte \offset
 	.endm
 
-	.macro setwarpnextmapcounterclockwise offset:req
+	.macro setwarpnextmapcounterclockwise
 	.byte 0xed
-	.2byte \offset
+	.endm
+
+	.macro hidefollower
+	.byte 0xee
 	.endm
 
 	@ Plays the specified sound. Only one sound may play at a time, with newer ones interrupting older ones.

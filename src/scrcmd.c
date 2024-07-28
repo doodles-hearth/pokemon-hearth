@@ -722,65 +722,66 @@ bool8 ScrCmd_testeva(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_bla(struct ScriptContext *ctx)
-{
-    switch (gSaveBlock1Ptr->location.mapGroup) {
-        case 
-    }
-    return FALSE;
-}
-
 #define SPINDA_ISLAND_NB_ROTATIONS 4
 
 bool8 ScrCmd_setwarpnextmapclockwise(struct ScriptContext *ctx)
 {
-    u8 offset = VarGet(ScriptReadHalfword(ctx));
-
-    s32 mapGroup = gSaveBlock1Ptr->location.mapGroup;
     s32 mapNum;
-    if (gSaveBlock1Ptr->location.mapNum - offset == SPINDA_ISLAND_NB_ROTATIONS - 1) {
-        mapNum = offset;
+    if (gSaveBlock1Ptr->location.mapNum == SPINDA_ISLAND_NB_ROTATIONS - 1) {
+        mapNum = 0;
     } else {
-        mapNum += 1;
+        mapNum = gSaveBlock1Ptr->location.mapNum + 1;
     }
 
-    SetWarpData(
-        &gSaveBlock1Ptr->dynamicWarp,
-        mapGroup,
+    SetPlayerAvatarDirectionRotateClockwise();
+    SetWarpDestination(
+        gSaveBlock1Ptr->location.mapGroup,
         mapNum,
         WARP_ID_NONE,
         (gBackupMapLayout.width - MAP_OFFSET_W - 1) - gSaveBlock1Ptr->pos.y,
         gSaveBlock1Ptr->pos.x
     );
 
+    SetSpinStartFacingDir(GetPlayerFacingDirection());
+    DoSpinEnterWarp();
+
     return FALSE;
 }
 
 bool8 ScrCmd_setwarpnextmapcounterclockwise(struct ScriptContext *ctx)
 {
-    u8 offset = VarGet(ScriptReadHalfword(ctx));
-
-    s32 mapGroup = gSaveBlock1Ptr->location.mapGroup;
     s32 mapNum;
-    if (gSaveBlock1Ptr->location.mapNum - offset == SPINDA_ISLAND_NB_ROTATIONS - 1) {
-        mapNum = offset;
+    if (gSaveBlock1Ptr->location.mapNum == 0) {
+        mapNum = SPINDA_ISLAND_NB_ROTATIONS - 1;
     } else {
-        mapNum += 1;
+        mapNum = gSaveBlock1Ptr->location.mapNum - 1;
     }
 
-    SetWarpData(
-        &gSaveBlock1Ptr->dynamicWarp,
-        mapGroup,
+    SetPlayerAvatarDirectionRotateCounterclockwise();
+    SetWarpDestination(
+        gSaveBlock1Ptr->location.mapGroup,
         mapNum,
         WARP_ID_NONE,
         gSpecialVar_0x8000 = gSaveBlock1Ptr->pos.y,
         gSpecialVar_0x8001 = (gBackupMapLayout.height - MAP_OFFSET_H - 1) - gSaveBlock1Ptr->pos.x
     );
 
+    SetSpinStartFacingDir(GetPlayerFacingDirection());
+    DoSpinEnterWarp();
+
     return FALSE;
 }
 
-// TODO EVA ICI
+bool8 ScrCmd_hidefollower(struct ScriptContext *ctx)
+{
+    struct ObjectEvent *followerObj = GetFollowerObject();
+    if (!followerObj || followerObj->invisible)
+        return FALSE;
+    ClearObjectEventMovement(followerObj, &gSprites[followerObj->spriteId]);
+    ObjectEventSetHeldMovement(followerObj, MOVEMENT_ACTION_ENTER_POKEBALL);
+    return FALSE;
+}
+
 bool8 ScrCmd_rotateplayerxyclockwise(struct ScriptContext *ctx)
 {
     // new x = map width - y
