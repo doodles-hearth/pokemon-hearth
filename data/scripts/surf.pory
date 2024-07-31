@@ -1,0 +1,24 @@
+script EventScript_UseSurf {
+	checkpartymove(MOVE_SURF)
+	goto_if_eq(VAR_RESULT, PARTY_SIZE, EventScript_CantSurf)
+	bufferpartymonnick(STR_VAR_1, VAR_RESULT)
+	setfieldeffectargument(0, VAR_RESULT)
+	lockall
+	msgbox(gText_WantToUseSurf, MSGBOX_YESNO)
+	if (var(VAR_RESULT) != NO) {
+		msgbox(gText_PlayerUsedSurf, MSGBOX_DEFAULT)
+		dofieldeffect(FLDEFF_USE_SURF)
+	}
+	releaseall
+	end
+}
+
+script EventScript_CantSurf {
+	setvar(VAR_0x8000, MUGSHOT_ARCHIE)
+	callnative(DrawMugshot)
+    speakername("Little Archie")
+	msgbox(format("Can't swim here…\nToo many Pincurchin!"), MSGBOX_DEFAULT)
+	closemessage
+	callnative(ClearMugshot)
+	end
+}

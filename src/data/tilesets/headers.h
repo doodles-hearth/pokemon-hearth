@@ -1056,3 +1056,14 @@ const struct Tileset gTileset_HackingCompHouse =
     .metatileAttributes = gMetatileAttributes_HackingCompHouse,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_TestEvaToBeDeleted =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_TestEvaToBeDeleted,
+    .palettes = gTilesetPalettes_TestEvaToBeDeleted,
+    .metatiles = gMetatiles_TestEvaToBeDeleted,
+    .metatileAttributes = gMetatileAttributes_TestEvaToBeDeleted,
+    .callback = NULL,
+};

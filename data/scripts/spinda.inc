@@ -146,6 +146,26 @@ SpindaIsland_Common_HiddenObstacle::
 	return
 
 
+SpindaIsland_Common_CantOpenFromThisSide::
+# 90 "data/scripts/spinda.pory"
+	lock
+# 92 "data/scripts/spinda.pory"
+	setvar VAR_0x8000, MUGSHOT_ARCHIE
+# 93 "data/scripts/spinda.pory"
+	callnative DrawMugshot
+# 94 "data/scripts/spinda.pory"
+	speakername SpindaIsland_Common_CantReadSign_Text_0
+# 95 "data/scripts/spinda.pory"
+	msgbox SpindaIsland_Common_CantOpenFromThisSide_Text_0
+# 98 "data/scripts/spinda.pory"
+	closemessage
+# 99 "data/scripts/spinda.pory"
+	callnative ClearMugshot
+# 101 "data/scripts/spinda.pory"
+	release
+	return
+
+
 SpindaIsland_Common_CantReadSign_Text_0:
 # 44 "data/scripts/spinda.pory"
 	.string "Little Archie$"
@@ -172,3 +192,7 @@ SpindaIsland_Common_CantTakeStairs_Text_2:
 SpindaIsland_Common_HiddenObstacle_Text_0:
 # 81 "data/scripts/spinda.pory"
 	.string "Something's blocking the way.$"
+
+SpindaIsland_Common_CantOpenFromThisSide_Text_0:
+# 96 "data/scripts/spinda.pory"
+	.string "Can't open the door from this side.$"

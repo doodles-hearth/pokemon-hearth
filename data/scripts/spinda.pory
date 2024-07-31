@@ -85,3 +85,33 @@ script SpindaIsland_Common_HiddenObstacle {
 
     release
 }
+
+script SpindaIsland_Common_CantOpenFromThisSide {
+    lock
+
+    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
+	callnative(DrawMugshot)
+    speakername("Little Archie")
+    msgbox(format(
+		"Can't open the door from this side."
+    ))
+    closemessage
+	callnative(ClearMugshot)
+
+    release
+}
+
+script SpindaIsland_Common_CantSeeFromThisSide {
+    lock
+
+    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
+	callnative(DrawMugshot)
+    speakername("Little Archie")
+    msgbox(format(
+		"Can't see anything from this side."
+    ))
+    closemessage
+	callnative(ClearMugshot)
+
+    release
+}
