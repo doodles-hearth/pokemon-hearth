@@ -11,6 +11,7 @@
 #include "fieldmap.h"
 #include "field_control_avatar.h"
 #include "field_player_avatar.h"
+// #include "scrcmd.h"
 #include "field_poison.h"
 #include "field_screen_effect.h"
 #include "field_specials.h"
@@ -76,6 +77,9 @@ static void UpdateLetsGoEvolutionTracker(void);
 static bool8 UpdatePoisonStepCounter(void);
 #endif // OW_POISON_DAMAGE
 
+extern bool8 ScrCmd_setwarpnextmapclockwise(struct ScriptContext *ctx);
+extern bool8 ScrCmd_setwarpnextmapcounterclockwise(struct ScriptContext *ctx);
+
 void FieldClearPlayerInput(struct FieldInput *input)
 {
     input->pressedAButton = FALSE;
@@ -86,6 +90,8 @@ void FieldClearPlayerInput(struct FieldInput *input)
     input->heldDirection2 = FALSE;
     input->tookStep = FALSE;
     input->pressedBButton = FALSE;
+    input->pressedLButton = FALSE;
+    input->pressedRButton = FALSE;
     input->input_field_1_0 = FALSE;
     input->input_field_1_1 = FALSE;
     input->input_field_1_2 = FALSE;
@@ -111,6 +117,10 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
                 input->pressedAButton = TRUE;
             if (newKeys & B_BUTTON)
                 input->pressedBButton = TRUE;
+            if (newKeys & L_BUTTON)
+                input->pressedLButton = TRUE;
+            if (newKeys & R_BUTTON)
+                input->pressedRButton = TRUE;
         }
 
         if (heldKeys & (DPAD_UP | DPAD_DOWN | DPAD_LEFT | DPAD_RIGHT))
@@ -198,6 +208,16 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     {
         PlaySE(SE_WIN_OPEN);
         ShowStartMenu();
+        return TRUE;
+    }
+    if (input->pressedLButton)
+    {
+        ScrCmd_setwarpnextmapcounterclockwise(NULL);
+        return TRUE;
+    }
+    if (input->pressedRButton)
+    {
+        ScrCmd_setwarpnextmapclockwise(NULL);
         return TRUE;
     }
     if (input->pressedSelectButton)
@@ -449,6 +469,15 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 
     if (MetatileBehavior_IsWrongDirSign(metatileBehavior) == TRUE)
         return SpindaIsland_Common_CantReadSign;
+
+    if (MetatileBehavior_IsSidewaysStairs(metatileBehavior) == TRUE)
+        return SpindaIsland_Common_CantTakeStairs;
+
+    if (MetatileBehavior_IsEmptyChest(metatileBehavior) == TRUE)
+        return SpindaIsland_Common_EmptyChest;
+
+    if (MetatileBehavior_IsSeashell(metatileBehavior) == TRUE)
+        return SpindaIsland_Common_RegularSeashell;
 
     elevation = position->elevation;
     if (elevation == MapGridGetElevationAt(position->x, position->y))

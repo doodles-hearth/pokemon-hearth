@@ -166,6 +166,46 @@ SpindaIsland_Common_CantOpenFromThisSide::
 	return
 
 
+SpindaIsland_Common_CantSeeFromSide::
+# 105 "data/scripts/spinda.pory"
+	lock
+# 107 "data/scripts/spinda.pory"
+	setvar VAR_0x8000, MUGSHOT_ARCHIE
+# 108 "data/scripts/spinda.pory"
+	callnative DrawMugshot
+# 109 "data/scripts/spinda.pory"
+	speakername SpindaIsland_Common_CantReadSign_Text_0
+# 110 "data/scripts/spinda.pory"
+	msgbox SpindaIsland_Common_CantSeeFromSide_Text_0
+# 113 "data/scripts/spinda.pory"
+	closemessage
+# 114 "data/scripts/spinda.pory"
+	callnative ClearMugshot
+# 116 "data/scripts/spinda.pory"
+	release
+	return
+
+
+SpindaIsland_Common_CantSeeFromThisSide::
+# 120 "data/scripts/spinda.pory"
+	lock
+# 122 "data/scripts/spinda.pory"
+	setvar VAR_0x8000, MUGSHOT_ARCHIE
+# 123 "data/scripts/spinda.pory"
+	callnative DrawMugshot
+# 124 "data/scripts/spinda.pory"
+	speakername SpindaIsland_Common_CantReadSign_Text_0
+# 125 "data/scripts/spinda.pory"
+	msgbox SpindaIsland_Common_CantSeeFromSide_Text_0
+# 128 "data/scripts/spinda.pory"
+	closemessage
+# 129 "data/scripts/spinda.pory"
+	callnative ClearMugshot
+# 131 "data/scripts/spinda.pory"
+	release
+	return
+
+
 SpindaIsland_Common_CantReadSign_Text_0:
 # 44 "data/scripts/spinda.pory"
 	.string "Little Archie$"
@@ -185,8 +225,8 @@ SpindaIsland_Common_CantTakeStairs_Text_1:
 
 SpindaIsland_Common_CantTakeStairs_Text_2:
 # 68 "data/scripts/spinda.pory"
-	.string "“ALAS, THERE IS NOT.\p"
-	.string "” “I TOTALLY WASN'T TOO LAZY TO\n"
+	.string "“ALAS, THERE IS NOT.”\p"
+	.string "“I TOTALLY WASN'T TOO LAZY TO\n"
 	.string "IMPLEMENT A CERTAIN FEATURE.”$"
 
 SpindaIsland_Common_HiddenObstacle_Text_0:
@@ -196,3 +236,7 @@ SpindaIsland_Common_HiddenObstacle_Text_0:
 SpindaIsland_Common_CantOpenFromThisSide_Text_0:
 # 96 "data/scripts/spinda.pory"
 	.string "Can't open the door from this side.$"
+
+SpindaIsland_Common_CantSeeFromSide_Text_0:
+# 111 "data/scripts/spinda.pory"
+	.string "Can't see anything from this side.$"

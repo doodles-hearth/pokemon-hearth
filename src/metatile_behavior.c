@@ -1411,3 +1411,30 @@ bool8 MetatileBehavior_IsWrongDirSign(u8 metatileBehavior)
     else
         return FALSE;
 }
+
+
+bool8 MetatileBehavior_IsSidewaysStairs(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_STAIRS_SIDEWAYS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+
+bool8 MetatileBehavior_IsEmptyChest(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_EMPTY_CHEST)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+
+bool8 MetatileBehavior_IsSeashell(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_REGULAR_SEASHELL)
+        return TRUE;
+    else
+        return FALSE;
+}

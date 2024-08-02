@@ -17,3 +17,11 @@ script SpindaIsland_Home_EventScript_ArchiesHouseSign {
 script SpindaIsland_Home_EventScript_BobsHouseSign {
 	msgbox(format("Bob"), MSGBOX_SIGN)
 }
+
+script SpindaIsland_Home_EventScript_ICanNeverGoHome {
+	speakername("Sad man")
+	msgbox(format(
+		"Curse the architect that built my house facing the wrong direction!!\p"
+		"I can never go home!"
+	), MSGBOX_NPC)
+}

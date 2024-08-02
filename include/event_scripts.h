@@ -585,6 +585,9 @@ extern const u8 EventScript_FallDownHoleMtPyre[];
 
 
 extern const u8 SpindaIsland_Common_CantReadSign[];
+extern const u8 SpindaIsland_Common_CantTakeStairs[];
+extern const u8 SpindaIsland_Common_EmptyChest[];
+extern const u8 SpindaIsland_Common_RegularSeashell[];
 
 // Secret Base
 extern const u8 SecretBase_EventScript_PC[];

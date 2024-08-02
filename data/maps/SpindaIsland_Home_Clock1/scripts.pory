@@ -57,8 +57,8 @@ script SpindaIsland_Home_Clock1_Faucet {
 
 		delay(48)
 
-		setmetatile(20, 8, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
-		setmetatile(20, 9, METATILE_SpindaIslandSecondary_BrokenFaucetGround, FALSE)
+		setmetatile(18, 13, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
+		setmetatile(18, 14, METATILE_SpindaIslandSecondary_BrokenFaucetGround, FALSE)
 		special(DrawWholeMapView)
 
 		applymovement(OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Clock1_FaucetBreaks)
@@ -82,7 +82,7 @@ script SpindaIsland_Home_Clock1_Faucet {
 		closemessage
 		callnative(ClearMugshot)
 
-		setmetatile(20, 9, METATILE_SpindaIsland_Grass, FALSE)
+		setmetatile(18, 14, METATILE_SpindaIsland_Grass, FALSE)
 		special(DrawWholeMapView)
 		giveitem(ITEM_BROKEN_FAUCET)
 

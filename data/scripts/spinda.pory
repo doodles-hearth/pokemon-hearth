@@ -65,9 +65,37 @@ script SpindaIsland_Common_CantTakeStairs {
 
     speakername("God")
     msgbox(format(
-		"“ALAS, THERE IS NOT.\p”"
+		"“ALAS, THERE IS NOT.”\p"
         "“I TOTALLY WASN'T TOO LAZY TO IMPLEMENT A CERTAIN FEATURE.”"
     ))
+    release
+}
+
+script SpindaIsland_Common_EmptyChest {
+    lock
+
+    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
+	callnative(DrawMugshot)
+    speakername("Little Archie")
+    msgbox(format(
+		"Chest is empty."
+    ))
+    closemessage
+	callnative(ClearMugshot)
+    release
+}
+
+script SpindaIsland_Common_RegularSeashell {
+    lock
+
+    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
+	callnative(DrawMugshot)
+    speakername("Little Archie")
+    msgbox(format(
+		"A good old regular-looking seashell."
+    ))
+    closemessage
+	callnative(ClearMugshot)
     release
 }
 
@@ -101,7 +129,7 @@ script SpindaIsland_Common_CantOpenFromThisSide {
     release
 }
 
-script SpindaIsland_Common_CantSeeFromThisSide {
+script SpindaIsland_Common_CantSeeFromSide {
     lock
 
     setvar(VAR_0x8000, MUGSHOT_ARCHIE)
