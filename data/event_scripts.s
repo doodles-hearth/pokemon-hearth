@@ -56,6 +56,7 @@
 #include "constants/union_room.h"
 #include "constants/vars.h"
 #include "constants/weather.h"
+#include "constants/field_mugshots.h"
 #include "constants/mugshots.h"
 #include "constants/rtc.h"
 	.include "asm/macros.inc"
