@@ -151,5 +151,7 @@ bool8 MetatileBehavior_IsLongGrassSouthEdge(u8);
 bool8 MetatileBehavior_IsTrainerHillTimer(u8);
 bool8 MetatileBehavior_IsWrongDirSign(u8);
 bool8 MetatileBehavior_IsSidewaysStairs(u8);
+bool8 MetatileBehavior_IsEmptyChest(u8);
+bool8 MetatileBehavior_IsSeashell(u8);
 
 #endif // GUARD_METATILE_BEHAVIOR_H

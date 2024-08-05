@@ -14,11 +14,10 @@ script EventScript_UseSurf {
 }
 
 script EventScript_CantSurf {
-	setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
 	msgbox(format("Can't swim here…\nToo many Pincurchin!"), MSGBOX_DEFAULT)
 	closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 	end
 }

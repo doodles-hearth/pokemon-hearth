@@ -45,14 +45,13 @@ script SpindaIsland_PlayerHome_EventScript_Poem {
 	), MSGBOX_DEFAULT)
 	closemessage
 
-	setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
     msgbox(format(
 		"I am such a poet."
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 
 	release
 }
@@ -60,14 +59,13 @@ script SpindaIsland_PlayerHome_EventScript_Poem {
 script SpinaIsland_PlayerHome_EventScript_Window {
 	lock
 
-    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
     msgbox(format(
 		"Something's moving outside."
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
     
     release
 }
@@ -83,33 +81,27 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
 	waitmovement(0)
 
-    // setvar(VAR_0x8000, MUGSHOT_MOM)
-	// callnative(DrawMugshot)
     speakername("Mom")
     msgbox(format(
 		"Morning, little Archie!\p"
 		"You're quite the early bird today!"
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 
-	setvar(VAR_0x8000, MUGSHOT_ARCHIE_HAPPY)
-	callnative(DrawMugshot)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
     speakername("Little Archie")
     msgbox(format(
 		"That's cause today's the big day!!"
     ))
-	callnative(ClearMugshot)
-	setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+	removefieldmugshot
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 	msgbox(format(
 		"You haven't forgotten about my super secret thing, right?"
     ))
 	closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 
-	// setvar(VAR_0x8000, MUGSHOT_MOM)
-	// callnative(DrawMugshot)
     speakername("Mom")
     msgbox(format(
 		"Of course not, darling! Your super secret thing is almost finished.\p"
@@ -117,7 +109,7 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 		"But first, I sure could go for a nice, big, tall glass of icy {COLOR BLUE}WATER{COLOR DARK_GRAY}…"
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 
 	turnobject(LOCALID_MOM, DIR_NORTH)
 	delay(40)
@@ -127,8 +119,6 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 	delay(48)
 	waitmovement(0)
 
-	// setvar(VAR_0x8000, MUGSHOT_MOM)
-	// callnative(DrawMugshot)
     speakername("Mom")
     msgbox(format(
 		"Look at that, I forgot to turn the {COLOR BLUE}WATER{COLOR DARK_GRAY} back on…"
@@ -138,17 +128,16 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 		"Archie, would you be a dear and go round the house to turn the big faucet on?"
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 	turnobject(LOCALID_MOM, DIR_NORTH)
 
-	setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
     msgbox(format(
 		"Ughhhhhh, alright…"
     ))
 	closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 
 	setvar(VAR_SPINDA_ISLAND_INTRO_STATE, 2)
     
@@ -163,14 +152,13 @@ script SpinaIsland_PlayerHome_EventScript_GetSpinda {
 	setflag(FLAG_RECEIVED_STARTER)
 	// setflag(FLAG_SYS_POKEMON_GET)
 	
-	setvar(VAR_0x8000, MUGSHOT_ARCHIE_HAPPY)
-	callnative(DrawMugshot)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
     speakername("Little Archie")
     msgbox(format(
 		"I could never forget you, Spinda!"
     ))
 	setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(ClearMugshot)
+	removefieldmugshot
 
 	release
 }
@@ -178,14 +166,13 @@ script SpinaIsland_PlayerHome_EventScript_GetSpinda {
 script SpinaIsland_PlayerHome_EventScript_WailmerDoll {
 	lock
 
-    setvar(VAR_0x8000, MUGSHOT_ARCHIE_HAPPY)
-	callnative(DrawMugshot)
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
     speakername("Little Archie")
     msgbox(format(
 		"How you doing, Wailmy?"
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
     
     release
 }

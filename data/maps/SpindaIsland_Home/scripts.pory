@@ -20,8 +20,72 @@ script SpindaIsland_Home_EventScript_BobsHouseSign {
 
 script SpindaIsland_Home_EventScript_ICanNeverGoHome {
 	speakername("Sad man")
+	faceplayer
 	msgbox(format(
 		"Curse the architect that built my house facing the wrong direction!!\p"
 		"I can never go home!"
 	), MSGBOX_NPC)
+	face_original_direction
+}
+
+script SpindaIsland_Home_EventScript_Dad {
+	lock
+	faceplayer
+	if (flag(FLAG_OBTAINED_LEMONADE)) {
+		speakername("Dad")
+		msgbox(format(
+			"Don't uh, pour that lemonade I gave you on the ground or anything.\p"
+			"It'd probably kill all the grass and flowers"
+		))
+		closemessage
+	} else {
+		if (flag(FLAG_SPOKE_TO_DAD)) {
+			speakername("Dad")
+			msgbox(format(
+				"Here, have some lemonade!"
+			))
+			closemessage
+		} else {
+			speakername("Dad")
+			msgbox(format(
+				"Hiya, sonny! going adventuring today, are we?\p"
+				"Want some lemonade?"
+			))
+			closemessage
+		}
+
+		// TODO EVA comp
+		// giveitem(ITEM_SALTY_LEMONADE)
+		removefieldmugshot
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+		speakername("Little Archie")
+		msgbox(format(
+			"Now we're talkin'!! I can bring it to mom, that should do it!\p"
+			"Let's take a sip first, I am PARCHED!"
+		))
+		closemessage
+		removefieldmugshot
+
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_DISGUSTED)
+		speakername("Little Archie")
+		msgbox(format(
+			"BLEARGH!\p"
+			"Why is it… so salty?!"
+		))
+		closemessage
+
+		speakername("Dad")
+		msgbox(format(
+			"Why, because it's seawater, obviously!\p"
+			"I take it you're not a fan of my recipe?\p"
+			"You wouldn't be the only one…\p"
+			"In any case, it's nice of you to come visit me at the office, haha!\p"
+			"See you around, little Archie! Don't get into trouble!"
+		))
+		closemessage
+
+		setflag(FLAG_OBTAINED_LEMONADE)
+		setflag(FLAG_SPOKE_TO_DAD)
+	}
+	release
 }

@@ -88,9 +88,9 @@ SpindaIsland_Home_Clock1_Faucet_2:
 # 58 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	delay 48
 # 60 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	setmetatile 20, 8, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE
+	setmetatile 18, 13, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE
 # 61 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	setmetatile 20, 9, METATILE_SpindaIslandSecondary_BrokenFaucetGround, FALSE
+	setmetatile 18, 14, METATILE_SpindaIslandSecondary_BrokenFaucetGround, FALSE
 # 62 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	special DrawWholeMapView
 # 64 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
@@ -114,7 +114,7 @@ SpindaIsland_Home_Clock1_Faucet_2:
 # 83 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	callnative ClearMugshot
 # 85 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	setmetatile 20, 9, METATILE_SpindaIsland_Grass, FALSE
+	setmetatile 18, 14, METATILE_SpindaIsland_Grass, FALSE
 # 86 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	special DrawWholeMapView
 # 87 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"

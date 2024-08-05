@@ -23,7 +23,7 @@ script SunriseVillage_PlayersHouse_Bedroom_EventScript_MUGSHOT {
 		"What up dumdum?"
 	))
 	closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 	release
 }
 

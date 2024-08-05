@@ -16,14 +16,13 @@ script SpindaIsland_Home_Clock1_HidingBoy {
 		"Darnit! You found me!"
 	), MSGBOX_AUTOCLOSE)
 
-	setvar(VAR_0x8000, MUGSHOT_ARCHIE_HAPPY)
-	callnative(DrawMugshot)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
     speakername("Little Archie")
     msgbox(format(
 		"Wazzup, Timmy?"
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 
 	release
 }
@@ -32,20 +31,18 @@ script SpindaIsland_Home_Clock1_Faucet {
 	// Faucet already broke
 	if (var(VAR_SPINDA_ISLAND_INTRO_STATE) > 2) {
 		lock
-		setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-		callnative(DrawMugshot)
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 		speakername("Little Archie")
 		msgbox(format(
 			"Faucet's broken…"
 		))
 		closemessage
-		callnative(ClearMugshot)
+		removefieldmugshot
 		release
 	} elif (var(VAR_SPINDA_ISLAND_INTRO_STATE) == 2) {
 		hidefollower
 		lock
-		setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-		callnative(DrawMugshot)
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 		speakername("Little Archie")
 		msgbox(format(
 			"Alrighty, time to turn the big old faucet back on!\p"
@@ -53,7 +50,7 @@ script SpindaIsland_Home_Clock1_Faucet {
 			"… … … … …"
 		))
 		closemessage
-		callnative(ClearMugshot)
+		removefieldmugshot
 
 		delay(48)
 
@@ -70,8 +67,7 @@ script SpindaIsland_Home_Clock1_Faucet {
 		waitmovement(OBJ_EVENT_ID_PLAYER)
 		waitse
 
-		setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-		callnative(DrawMugshot)
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 		speakername("Little Archie")
 		msgbox(format(
 			"Aw, Shuckles! It broke!\p"
@@ -80,7 +76,7 @@ script SpindaIsland_Home_Clock1_Faucet {
 			"I better pocket this, too."
 		))
 		closemessage
-		callnative(ClearMugshot)
+		removefieldmugshot
 
 		setmetatile(18, 14, METATILE_SpindaIsland_Grass, FALSE)
 		special(DrawWholeMapView)

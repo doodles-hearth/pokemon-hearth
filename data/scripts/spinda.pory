@@ -39,14 +39,13 @@ script Spinda_TurnPlayerCounterclockwise {
 script SpindaIsland_Common_CantReadSign {
     lock
 
-    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
     msgbox(format(
 		"Can't read the sign from here."
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
     
     release
 }
@@ -54,14 +53,13 @@ script SpindaIsland_Common_CantReadSign {
 script SpindaIsland_Common_CantTakeStairs {
     lock
 
-    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
     msgbox(format(
 		"Man, if only there was a way to climb stairs when they are sideways…"
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 
     speakername("God")
     msgbox(format(
@@ -74,42 +72,39 @@ script SpindaIsland_Common_CantTakeStairs {
 script SpindaIsland_Common_EmptyChest {
     lock
 
-    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
     msgbox(format(
 		"Chest is empty."
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
     release
 }
 
 script SpindaIsland_Common_RegularSeashell {
     lock
 
-    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
     msgbox(format(
 		"A good old regular-looking seashell."
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
     release
 }
 
 script SpindaIsland_Common_HiddenObstacle {
     lock
 
-    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
     msgbox(format(
 		"Something's blocking the way."
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 
     release
 }
@@ -117,14 +112,13 @@ script SpindaIsland_Common_HiddenObstacle {
 script SpindaIsland_Common_CantOpenFromThisSide {
     lock
 
-    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
     msgbox(format(
 		"Can't open the door from this side."
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 
     release
 }
@@ -132,14 +126,13 @@ script SpindaIsland_Common_CantOpenFromThisSide {
 script SpindaIsland_Common_CantSeeFromSide {
     lock
 
-    setvar(VAR_0x8000, MUGSHOT_ARCHIE)
-	callnative(DrawMugshot)
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
     msgbox(format(
 		"Can't see anything from this side."
     ))
     closemessage
-	callnative(ClearMugshot)
+	removefieldmugshot
 
     release
 }
