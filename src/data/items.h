@@ -14094,6 +14094,175 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_BrokenFaucet,
-        .iconPalette = gItemIconPalette_BikeVoucher,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+    
+    [ITEM_WHITE_SEASHELL] =
+    {
+        .name = _("White Seashell"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A fully white\n"
+            "seashell.\n"
+            "Looks fully rad."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BrokenFaucet,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+    
+    [ITEM_SALTY_LEMONADE] =
+    {
+        .name = _("Salty Lemonade"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Tastes like seawater.\n"
+            "Pretty yucky, but\n"
+            "let's not tell dad."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BrokenFaucet,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+    
+    [ITEM_RUSTY_NICKEL] =
+    {
+        .name = _("Rusty Nickel"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "This means I'm\n"
+            "basically rich!"
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BrokenFaucet,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+    
+    [ITEM_NEW_FAUCET] =
+    {
+        .name = _("New Faucet"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A shiny new faucet!\n"
+            "The water shall\n"
+            "flow once again!"
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BrokenFaucet,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+    
+    [ITEM_TOY_CAMERA] =
+    {
+        .name = _("Toy Camera"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A camera. Has a\n"
+            "flash, but doesn't\n"
+            "take pictures."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BrokenFaucet,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+    
+    [ITEM_COOKING_OIL] =
+    {
+        .name = _("Cooking Oil"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Tastes probably\n"
+            "better than dad's\n"
+            "lemonade…"
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BrokenFaucet,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+    
+    [ITEM_BORROWED_PLIERS] =
+    {
+        .name = _("Borrowed Pliers"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Some brand new\n"
+            "pliers.\n"
+            "Totally not stolen."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BrokenFaucet,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+    
+    [ITEM_GRASS_BLADE] =
+    {
+        .name = _("Grass Blade"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Perfect for\n"
+            "whistling annoyingly."
+            "Pokémon. Can be sold."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BrokenFaucet,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+    
+    [ITEM_BADASS_SAIL] =
+    {
+        .name = _("Badass Sail"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "The only thing\n"
+            "missing from my\n"
+            "awesome pirate ship!"
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_BrokenFaucet,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+    
+    [ITEM_WATER_STONE] =
+    {
+        .name = _("Water Stone"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Makes some Pokémon\n"
+            "evolve, I guess?\n"
+            "I dunno."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_WaterStone
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
     },
 };

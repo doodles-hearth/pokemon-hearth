@@ -1,0 +1,112 @@
+const LOCALID_SAD_MAN = 3
+
+mapscripts SpindaIsland_Home_Clock2_MapScripts {
+	
+}
+
+script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
+	lock
+	faceplayer
+	speakername("Sad man")
+	msgbox(format(
+		"Curse the architect that built my house facing the wrong direction!!\p"
+		"I can never go home!\p"
+		"… …"
+	))
+	closemessage
+
+	applymovement(LOCALID_SAD_MAN, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManSurprise)
+
+	speakername("Sad man")
+	msgbox(format(
+		"My house! It's facing the right direction!\p"
+		"But what… how…"
+	))
+	closemessage
+
+	faceplayer
+	speakername("Sad man")
+	msgbox(format(
+		"Did… did you do something?"
+	))
+	closemessage
+	
+	dynmultichoice(
+		16,
+		6,
+		TRUE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"I didn't do anything special…",
+		"I… turned around?"
+	)
+
+	speakername("Sad man")
+	msgbox(format(
+		"Don't be modest, kid!\p"
+		"I don't know how you did it, but you saved me from a life of endless waiting and suffering!\p"
+		"Here, take this at least."
+	))
+	closemessage
+
+	// TODO EVA comp giveitem
+
+	switch(var(VAR_FACING)) {
+		case DIR_NORTH:
+			applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManEntersHome)
+		case DIR_SOUTH:
+			applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManEntersHome)
+		case DIR_WEST:
+			applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManEntersHome)
+		case DIR_EAST:
+			applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManEntersHome)
+	}
+
+	removeobject(LOCALID_SAD_MAN)
+	setflag(FLAG_HIDE_MAN_CANT_GO_HOME)
+
+	release
+}
+
+script SpindaIsland_Home_Clock2_EventScript_FindSeashell {
+	lock
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SURPRISED)
+    speakername("Little Archie")
+    msgbox(format(
+		"Woah, what's this?\p"
+		"This seashell's completely white! So cool!!"
+    ))
+	removefieldmugshot
+
+	giveitem(ITEM_WHITE_SEASHELL)
+
+	release
+}
+
+movement SpindaIsland_Home_Clock2_Movement_SadManEntersHome {
+	walk_left * 3
+	walk_up * 2
+}
+
+movement SpindaIsland_Home_Clock2_Movement_SadManEntersHomeAroundPlayer {
+	walk_up
+	walk_left * 3
+	walk_up
+}
+
+movement SpindaIsland_Home_Clock2_Movement_SadManSurprise {
+	delay_16 * 3
+	face_right
+	delay_16 * 2
+	face_down
+	delay_16 * 2
+	face_up
+	delay_16 * 2
+	face_left
+	delay_16 * 2
+	jump_in_place_left
+	delay_16 * 3
+}

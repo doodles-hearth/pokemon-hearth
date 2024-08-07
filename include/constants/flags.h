@@ -63,8 +63,8 @@
 #define FLAG_OBTAINED_LEMONADE    0x2D
 #define FLAG_SPOKE_TO_DAD    0x2F
 #define FLAG_FAUCET_BROKE    0x2E
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
+#define FLAG_HIDE_MAN_CANT_GO_HOME    0x30
+#define FLAG_FOUND_WHITE_SEASHELL    0x31
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag

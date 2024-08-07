@@ -2098,4 +2098,4 @@ const u32 gItemIcon_TwiceSpicedRadish[] = INCBIN_U32("graphics/items/icons/twice
 const u32 gItemIconPalette_TwiceSpicedRadish[] = INCBIN_U32("graphics/items/icon_palettes/twice_spiced_radish.gbapal.lz");
 
 const u32 gItemIcon_BrokenFaucet[] = INCBIN_U32("graphics/items/icons/broken_faucet.4bpp.lz");
-const u32 gItemIconPalette_BrokenFaucet[] = INCBIN_U32("graphics/object_events/palettes/comp_npc_darkbg.gbapal.lz");
+const u32 gItemIconPalette_SpindaIsland_DarkBg[] = INCBIN_U32("graphics/object_events/palettes/comp_npc_darkbg.gbapal.lz");

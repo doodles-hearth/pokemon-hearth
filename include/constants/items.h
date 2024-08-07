@@ -998,11 +998,18 @@
 #define ITEM_TWICE_SPICED_RADISH 826
 #define ITEM_POKESHI_DOLL 827
 #define ITEM_BROKEN_FAUCET 828
+#define ITEM_WHITE_SEASHELL 829
+#define ITEM_SALTY_LEMONADE 830
+#define ITEM_RUSTY_NICKEL 831
+#define ITEM_NEW_FAUCET 832
+#define ITEM_TOY_CAMERA 833
+#define ITEM_COOKING_OIL 834
+#define ITEM_BORROWED_PLIERS 835
+#define ITEM_GRASS_BLADE 836
+#define ITEM_BADASS_SAIL 837
+#define ITEM_WATER_STONE 838
 
-// HOPO BERRY
-// LEGEND PLATE
-
-#define ITEMS_COUNT 829
+#define ITEMS_COUNT 839
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

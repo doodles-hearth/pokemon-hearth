@@ -11,6 +11,7 @@
 #define EMOTE_DISGUSTED 3
 #define EMOTE_SAD 4
 #define EMOTE_ANGRY 5
-#define EMOTE_COUNT   6
+#define EMOTE_SURPRISED 6
+#define EMOTE_COUNT   7
 
 #endif // GUARD_CONSTANTS_FIELD_MUGSHOTS_H

@@ -109,6 +109,20 @@ script SpindaIsland_Common_HiddenObstacle {
     release
 }
 
+script SpindaIsland_Common_HiddenItem {
+    lock
+
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+    speakername("Little Archie")
+    msgbox(format(
+		"There's something hidden here."
+    ))
+    closemessage
+	removefieldmugshot
+
+    release
+}
+
 script SpindaIsland_Common_CantOpenFromThisSide {
     lock
 
