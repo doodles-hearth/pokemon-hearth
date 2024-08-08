@@ -1,9 +1,9 @@
 {
-  "id": "MAP_SPINA_ISLAND_PLAYER_HOME",
-  "name": "SpinaIsland_PlayerHome",
-  "layout": "LAYOUT_SPINA_ISLAND_PLAYER_HOME",
+  "id": "MAP_SPINDA_ISLAND_PLAYER_HOME_CLOCK2",
+  "name": "SpindaIsland_PlayerHome_Clock2",
+  "layout": "LAYOUT_SPINDA_ISLAND_PLAYER_HOME_CLOCK2",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_SUNRISE_VILLAGE",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -16,90 +16,77 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_BIG_SISTER",
-      "x": 10,
-      "y": 11,
+      "x": 8,
+      "y": 8,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpinaIsland_PlayerHome_EventScript_Mom",
       "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 8,
-      "y": 3,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "SpinaIsland_PlayerHome_EventScript_GetSpinda",
-      "flag": "FLAG_RECEIVED_STARTER"
     }
   ],
   "warp_events": [
     {
-      "x": 8,
-      "y": 16,
+      "x": 9,
+      "y": 2,
       "elevation": 0,
       "dest_map": "MAP_SPINDA_ISLAND_HOME",
       "dest_warp_id": "0"
     },
     {
-      "x": 9,
-      "y": 16,
+      "x": 10,
+      "y": 2,
       "elevation": 0,
-      "dest_map": "MAP_SPINDA_ISLAND_HOME",
+      "dest_map": "MAP_SPINDA_ISLAND_HOME_CLOCK2",
       "dest_warp_id": "0"
     }
   ],
   "coord_events": [
-    {
-      "type": "trigger",
-      "x": 6,
-      "y": 11,
-      "elevation": 0,
-      "var": "VAR_SPINDA_ISLAND_INTRO_STATE",
-      "var_value": "1",
-      "script": "SpinaIsland_PlayerHome_EventScript_EnterLivingRoom"
-    }
+
   ],
   "bg_events": [
     {
       "type": "sign",
-      "x": 7,
-      "y": 3,
+      "x": 12,
+      "y": 14,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SpinaIsland_PlayerHome_EventScript_Window"
+      "script": "SpinaIsland_PlayerHome_EventScript_WailmerDoll"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpinaIsland_PlayerHome_EventScript_WailmerDoll"
+    },
+    {
+      "type": "sign",
+      "x": 13,
+      "y": 13,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpinaIsland_PlayerHome_EventScript_WailmerDoll"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpinaIsland_PlayerHome_EventScript_Window_Front"
     },
     {
       "type": "sign",
       "x": 9,
-      "y": 3,
+      "y": 14,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SpindaIsland_PlayerHome_EventScript_Diary"
-    },
-    {
-      "type": "sign",
-      "x": 5,
-      "y": 5,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SpinaIsland_PlayerHome_EventScript_WailmerDoll"
-    },
-    {
-      "type": "sign",
-      "x": 6,
-      "y": 5,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SpinaIsland_PlayerHome_EventScript_WailmerDoll"
     }
   ]
 }

@@ -93,8 +93,7 @@
 #define MAP_SUNRISE_VILLAGE_ELDERS_HOUSE_PRIVATE_QUARTERS (7 | (1 << 8))
 #define MAP_SUNRISE_VILLAGE_RIVALS_HOUSE                  (8 | (1 << 8))
 #define MAP_SUNRISE_VILLAGE_HOUSE1                        (9 | (1 << 8))
-#define MAP_SPINA_ISLAND_PLAYER_HOME                      (10 | (1 << 8))
-#define MAP_SPINDA_ISLAND_PLAYER_HOME_BEDROOM             (11 | (1 << 8))
+#define MAP_SPINDA_ISLAND_PLAYER_HOME_BEDROOM             (10 | (1 << 8))
 
 // gMapGroup_IndoorOldale
 #define MAP_OLDALE_TOWN_HOUSE1            (0 | (2 << 8))
@@ -649,6 +648,22 @@
 #define MAP_SPINDA_ISLAND_HOME_CLOCK2 (2 | (38 << 8))
 #define MAP_SPINDA_ISLAND_HOME_CLOCK3 (3 | (38 << 8))
 
-#define MAP_GROUPS_COUNT 39
+// gMapGroup_Spinda_PlayerHome
+#define MAP_SPINA_ISLAND_PLAYER_HOME         (0 | (39 << 8))
+#define MAP_SPINDA_ISLAND_PLAYER_HOME_CLOCK1 (1 | (39 << 8))
+#define MAP_SPINDA_ISLAND_PLAYER_HOME_CLOCK2 (2 | (39 << 8))
+#define MAP_SPINDA_ISLAND_PLAYER_HOME_CLOCK3 (3 | (39 << 8))
+
+// gMapGroup_Spinda_ShuppetHouse
+
+// gMapGroup_Spinda_ShuppetHouse_Attic
+
+// gMapGroup_Spinda_BobsHouse
+
+// gMapGroup_Spinda_FaucetShop
+
+// gMapGroup_Spinda_PhotoShop
+
+#define MAP_GROUPS_COUNT 45
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

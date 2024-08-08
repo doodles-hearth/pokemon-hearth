@@ -14222,7 +14222,6 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Perfect for\n"
             "whistling annoyingly."
-            "Pokémon. Can be sold."
         ),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,

@@ -38,7 +38,13 @@
     "gMapGroup_IndoorSaku",
     "gMapGroup_IndoorKura",
     "gMapGroup_IndoorChii",
-    "gMapGroup_Spinda_Home"
+    "gMapGroup_Spinda_Home",
+    "gMapGroup_Spinda_PlayerHome",
+    "gMapGroup_Spinda_ShuppetHouse",
+    "gMapGroup_Spinda_ShuppetHouse_Attic",
+    "gMapGroup_Spinda_BobsHouse",
+    "gMapGroup_Spinda_FaucetShop",
+    "gMapGroup_Spinda_PhotoShop"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",
@@ -128,7 +134,6 @@
     "SunriseVillage_EldersHouse_PrivateQuarters",
     "SunriseVillage_RivalsHouse",
     "SunriseVillage_House1",
-    "SpinaIsland_PlayerHome",
     "SpindaIsland_PlayerHome_Bedroom"
   ],
   "gMapGroup_IndoorOldale": [
@@ -683,5 +688,26 @@
     "SpindaIsland_Home_Clock1",
     "SpindaIsland_Home_Clock2",
     "SpindaIsland_Home_Clock3"
+  ],
+  "gMapGroup_Spinda_PlayerHome": [
+    "SpinaIsland_PlayerHome",
+    "SpindaIsland_PlayerHome_Clock1",
+    "SpindaIsland_PlayerHome_Clock2",
+    "SpindaIsland_PlayerHome_Clock3"
+  ],
+  "gMapGroup_Spinda_ShuppetHouse": [
+
+  ],
+  "gMapGroup_Spinda_ShuppetHouse_Attic": [
+
+  ],
+  "gMapGroup_Spinda_BobsHouse": [
+
+  ],
+  "gMapGroup_Spinda_FaucetShop": [
+
+  ],
+  "gMapGroup_Spinda_PhotoShop": [
+
   ]
 }

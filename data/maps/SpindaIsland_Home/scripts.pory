@@ -1,4 +1,5 @@
 const LOCALID_POEM_GIRL = 4
+const LOCALID_DAD = 2
 
 mapscripts SpindaIsland_Home_MapScripts {
 }
@@ -24,7 +25,7 @@ script SpindaIsland_Home_EventScript_ICanNeverGoHome {
 
 script SpindaIsland_Home_EventScript_Dad {
 	lock
-	faceplayer
+	turnobject(LOCALID_DAD, DIR_SOUTH)
 	if (flag(FLAG_OBTAINED_LEMONADE)) {
 		speakername("Dad")
 		msgbox(format(
@@ -48,8 +49,8 @@ script SpindaIsland_Home_EventScript_Dad {
 			closemessage
 		}
 
-		// TODO EVA comp
 		giveitem(ITEM_SALTY_LEMONADE)
+
 		removefieldmugshot
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
 		speakername("Little Archie")
@@ -72,7 +73,7 @@ script SpindaIsland_Home_EventScript_Dad {
 		msgbox(format(
 			"Why, because it's seawater, obviously!\p"
 			"I take it you're not a fan of my recipe?\p"
-			"You wouldn't be the only one…\p"
+			"(You wouldn't be the only one…)\p"
 			"In any case, it's nice of you to come visit me at the office, haha!\p"
 			"See you around, little Archie! Don't get into trouble!"
 		))
@@ -126,174 +127,35 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 	lock
 	faceplayer
 
-	speakername("Maggie")
-	msgbox(format(
-		"Archie…\p"
-		"I want to hear a poem…\p"
-		"I want you to reveal your heart to me."
-	))
-	closemessage
+	if (flag(FLAG_POEM_GIRL)) {
+		speakername("Maggie")
+		msgbox(format(
+			"See you around, Archie…"
+		))
+		closemessage
+	} else {
+		speakername("Maggie")
+		msgbox(format(
+			"Archie…\p"
+			"I want to hear a poem…\p"
+			"I want you to reveal your heart to me."
+		))
+		closemessage
 
-	dynmultichoice(
-		0,
-		6,
-		TRUE,
-		10,
-		0,
-		DYN_MULTICHOICE_CB_NONE,
-		"Ocean waves swimming…",
-		"Roses are red…",
-		"Roses are blue…"
-	)
+		dynmultichoice(
+			0,
+			6,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Ocean waves swimming…",
+			"Roses are red…",
+			"Roses are blue…"
+		)
 
-	switch (var(VAR_RESULT)) {
-		case 0:
-			dynmultichoice(
-				0,
-				0,
-				TRUE,
-				10,
-				0,
-				DYN_MULTICHOICE_CB_NONE,
-				"From the center of the sea…",
-				"They are calling to my heart…"
-			)
-
-			switch (var(VAR_RESULT)) {
-				case 0:
-					dynmultichoice(
-						0,
-						0,
-						TRUE,
-						10,
-						0,
-						DYN_MULTICHOICE_CB_NONE,
-						"With faith to reach land.",
-						"Only to go back."
-					)
-				case 1:
-					dynmultichoice(
-						0,
-						0,
-						TRUE,
-						10,
-						0,
-						DYN_MULTICHOICE_CB_NONE,
-						"And my heart to theirs.",
-						"Yearning for a touch."
-					)
-			}
-
-			speakername("Maggie")
-			msgbox(format(
-				"That was very beautiful.\p"
-				"I'm not into haiku, though."
-			))
-			closemessage
-		case 1:
-			dynmultichoice(
-				0,
-				0,
-				TRUE,
-				10,
-				0,
-				DYN_MULTICHOICE_CB_NONE,
-				"Violets are blue…",
-				"Just like our love…"
-			)
-			switch (var(VAR_RESULT)) {
-				// Violets are blue…
-				case 0:
-					dynmultichoice(
-						0,
-						0,
-						TRUE,
-						10,
-						0,
-						DYN_MULTICHOICE_CB_NONE,
-						"The sky is pretty…",
-						"The Pincurchin are spiky…"
-					)
-
-					switch(var(VAR_RESULT)) {
-						// The sky is pretty…
-						case 0:
-							dynmultichoice(
-								0,
-								0,
-								TRUE,
-								10,
-								0,
-								DYN_MULTICHOICE_CB_NONE,
-								"And so are you.",
-								"And so are you!"
-							)
-
-							speakername("Maggie")
-							msgbox(format(
-								"Oh, that's nice.\p"
-								"You're not truly revealing your poet's heart, though."
-							))
-							closemessage
-
-						// The Pincurchin are spiky…
-						case 1:
-							dynmultichoice(
-								0,
-								0,
-								TRUE,
-								10,
-								0,
-								DYN_MULTICHOICE_CB_NONE,
-								"And so are you.",
-								"And so are you!"
-							)
-
-							speakername("Maggie")
-							msgbox(format(
-								"That's… a weird comparison.\p"
-								"I thought you were a better poet than that."
-							))
-							closemessage
-					}
-
-					// Just like our love…
-				case 1:
-					dynmultichoice(
-						0,
-						0,
-						TRUE,
-						10,
-						0,
-						DYN_MULTICHOICE_CB_NONE,
-						"Which blooms like they do.",
-						"Wait, I didn't mean to say that."
-					)
-
-					speakername("Maggie")
-					msgbox(format(
-						"Wow, Archie, uh…\p"
-						"That's not really what I meant when I said you should reveal your heart.\p"
-						"(Well, this is awkward.)\p"
-						"(Let's pretend this never happened.)"
-					))
-					closemessage
-			}
-		case 2:
-			dynmultichoice(
-				0,
-				0,
-				TRUE,
-				10,
-				0,
-				DYN_MULTICHOICE_CB_NONE,
-				"Violets are red…",
-				"Violets are blue…"
-			)
-
-			switch(var(VAR_RESULT)) {
-				// Roses are blue, violets are red
-				case 0:
+		switch (var(VAR_RESULT)) {
+			case 0:
 				dynmultichoice(
 					0,
 					0,
@@ -301,12 +163,145 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 					10,
 					0,
 					DYN_MULTICHOICE_CB_NONE,
-					"The sky isn't blue, it's purple instead.",
-					"It doesn't make sense, but it's fun to be said."
+					"From the center of the sea…",
+					"They are calling to my heart…"
 				)
 
-				// Roses are blue, violets are blue
-				case 1:
+				switch (var(VAR_RESULT)) {
+					case 0:
+						dynmultichoice(
+							0,
+							0,
+							TRUE,
+							10,
+							0,
+							DYN_MULTICHOICE_CB_NONE,
+							"With faith to reach land.",
+							"Only to go back."
+						)
+					case 1:
+						dynmultichoice(
+							0,
+							0,
+							TRUE,
+							10,
+							0,
+							DYN_MULTICHOICE_CB_NONE,
+							"And my heart to theirs.",
+							"Yearning for a touch."
+						)
+				}
+
+				speakername("Maggie")
+				msgbox(format(
+					"That was very beautiful.\p"
+					"I'm not really into haiku, though."
+				))
+				closemessage
+			case 1:
+				dynmultichoice(
+					0,
+					0,
+					TRUE,
+					10,
+					0,
+					DYN_MULTICHOICE_CB_NONE,
+					"Violets are blue…",
+					"Just like our love…"
+				)
+				switch (var(VAR_RESULT)) {
+					// Violets are blue…
+					case 0:
+						dynmultichoice(
+							0,
+							0,
+							TRUE,
+							10,
+							0,
+							DYN_MULTICHOICE_CB_NONE,
+							"The sky is pretty…",
+							"The Pincurchin are spiky…"
+						)
+
+						switch(var(VAR_RESULT)) {
+							// The sky is pretty…
+							case 0:
+								dynmultichoice(
+									0,
+									0,
+									TRUE,
+									10,
+									0,
+									DYN_MULTICHOICE_CB_NONE,
+									"And so are you.",
+									"And so are you!"
+								)
+
+								speakername("Maggie")
+								msgbox(format(
+									"Oh, that's nice.\p"
+									"You're not truly revealing your poet's heart, though."
+								))
+								closemessage
+
+							// The Pincurchin are spiky…
+							case 1:
+								dynmultichoice(
+									0,
+									0,
+									TRUE,
+									10,
+									0,
+									DYN_MULTICHOICE_CB_NONE,
+									"And so are you.",
+									"And so are you!"
+								)
+
+								speakername("Maggie")
+								msgbox(format(
+									"That's… a weird comparison.\p"
+									"I thought you were a better poet than that."
+								))
+								closemessage
+						}
+
+						// Just like our love…
+					case 1:
+						dynmultichoice(
+							0,
+							0,
+							TRUE,
+							10,
+							0,
+							DYN_MULTICHOICE_CB_NONE,
+							"Which blooms like they do.",
+							"Wait, I didn't mean to say that."
+						)
+
+						speakername("Maggie")
+						msgbox(format(
+							"Wow, Archie, uh…\p"
+							"That's not really what I meant when I said you should reveal your heart.\p"
+							"(Well, this is awkward.)\p"
+							"(Let's pretend this never happened.)"
+						))
+						closemessage
+				}
+			case 2:
+				dynmultichoice(
+					0,
+					0,
+					TRUE,
+					10,
+					0,
+					DYN_MULTICHOICE_CB_NONE,
+					"Violets are red…",
+					"Violets are blue…"
+				)
+
+				switch(var(VAR_RESULT)) {
+					// Roses are blue, violets are red
+					case 0:
 					dynmultichoice(
 						0,
 						0,
@@ -314,33 +309,63 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 						10,
 						0,
 						DYN_MULTICHOICE_CB_NONE,
-						"Orchids are blue, too.",
-						"Everything is blue because it's my favorite color."
+						"The sky isn't blue, it's purple instead.",
+						"It doesn't make sense, but it's fun to be said."
 					)
 
-					switch(var(VAR_RESULT)) {
-						case 0:
-							speakername("Maggie")
-							msgbox(format(
-								"Hmm…\p"
-								"You're not revealing your heart right now.\p"
-								"Plus, this didn't make any sense."
-							))
-							closemessage
-						case 1:
-							speakername("Maggie")
-							msgbox(format(
-								"… … … … …\p"
-								"Wow, Archie, I…\p"
-								"This was so touching…\p"
-								"Thank you for revealing your heart to me like this.\p"
-								""
-							))
-							closemessage
-					}
-			}
-	}
+					speakername("Maggie")
+					msgbox(format(
+						"Hmm…\p"
+						"You're not revealing your heart right now.\p"
+						"Plus, this didn't make any sense."
+					))
+					closemessage
 
-	applymovement(LOCALID_POEM_GIRL, Common_Movement_FaceOriginalDirection)
+					// Roses are blue, violets are blue
+					case 1:
+						dynmultichoice(
+							0,
+							0,
+							TRUE,
+							10,
+							0,
+							DYN_MULTICHOICE_CB_NONE,
+							"Orchids are blue, too.",
+							"Everything is blue because it's my favorite color."
+						)
+
+						switch(var(VAR_RESULT)) {
+							case 0:
+								speakername("Maggie")
+								msgbox(format(
+									"Hmm…\p"
+									"You're not revealing your heart right now.\p"
+									"Plus, this didn't make any sense."
+								))
+								closemessage
+							case 1:
+								speakername("Maggie")
+								msgbox(format(
+									"… … … … …\p"
+									"Wow, Archie, I…\p"
+									"This was so touching…\p"
+									"Thank you for revealing your heart to me like this.\p"
+									"Here, take this."
+								))
+								closemessage
+
+								giveitem(ITEM_GRASS_BLADE)
+
+								speakername("Maggie")
+								msgbox(format(
+									"It's a blade of grass large enough to whistle with."
+								))
+								closemessage
+
+								setflag(FLAG_POEM_GIRL)
+						}
+				}
+		}
+	}
 	release
 }

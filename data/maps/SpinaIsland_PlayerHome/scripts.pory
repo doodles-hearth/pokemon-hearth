@@ -56,6 +56,20 @@ script SpindaIsland_PlayerHome_EventScript_Poem {
 	release
 }
 
+script SpindaIsland_PlayerHome_EventScript_Poem {
+	lock
+	
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+    speakername("Little Archie")
+    msgbox(format(
+		"It's a map of the island!"
+    ))
+    closemessage
+	removefieldmugshot
+
+	release
+}
+
 script SpinaIsland_PlayerHome_EventScript_Window {
 	lock
 
@@ -63,6 +77,20 @@ script SpinaIsland_PlayerHome_EventScript_Window {
     speakername("Little Archie")
     msgbox(format(
 		"Something's moving outside."
+    ))
+    closemessage
+	removefieldmugshot
+    
+    release
+}
+
+script SpinaIsland_PlayerHome_EventScript_Window_Front {
+	lock
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+    speakername("Little Archie")
+    msgbox(format(
+		"I can see the beach!"
     ))
     closemessage
 	removefieldmugshot
