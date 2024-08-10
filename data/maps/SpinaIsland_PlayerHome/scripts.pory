@@ -162,7 +162,7 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
     speakername("Little Archie")
     msgbox(format(
-		"Ughhhhhh, alright…"
+		"Ughhhhhh, fine…"
     ))
 	closemessage
 	removefieldmugshot
