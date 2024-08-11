@@ -33,4 +33,7 @@ void InitTilesetAnim_EliteFour(void);
 void InitTilesetAnim_BattleDome(void);
 void InitTilesetAnim_BattlePyramid(void);
 
+// Custom shit
+void InitTilesetAnim_SpindaIsland(void);
+
 #endif // GUARD_TILESET_ANIMS_H

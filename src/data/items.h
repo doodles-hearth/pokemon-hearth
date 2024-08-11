@@ -14248,7 +14248,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
     },
     
-    [ITEM_WATER_STONE] =
+    [ITEM_WATER_STONE_2] =
     {
         .name = _("Water Stone"),
         .price = 0,
@@ -14262,6 +14262,5 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_WaterStone
-        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
     },
 };

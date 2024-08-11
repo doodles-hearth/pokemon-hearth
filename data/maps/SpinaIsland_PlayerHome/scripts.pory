@@ -56,7 +56,7 @@ script SpindaIsland_PlayerHome_EventScript_Poem {
 	release
 }
 
-script SpindaIsland_PlayerHome_EventScript_Poem {
+script SpindaIsland_PlayerHome_EventScript_Map {
 	lock
 	
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)

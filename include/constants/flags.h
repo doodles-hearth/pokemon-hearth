@@ -65,7 +65,7 @@
 #define FLAG_FAUCET_BROKE    0x2E
 #define FLAG_HIDE_MAN_CANT_GO_HOME    0x30
 #define FLAG_FOUND_WHITE_SEASHELL    0x31
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
+#define FLAG_POEM_GIRL    0x32
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag

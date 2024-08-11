@@ -29,25 +29,23 @@ EventScript_UseSurf_2:
 
 EventScript_CantSurf::
 # 17 "data/scripts/surf.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
 # 18 "data/scripts/surf.pory"
-	callnative DrawMugshot
-# 19 "data/scripts/surf.pory"
 	speakername EventScript_CantSurf_Text_0
-# 20 "data/scripts/surf.pory"
+# 19 "data/scripts/surf.pory"
 	msgbox EventScript_CantSurf_Text_1, MSGBOX_DEFAULT
-# 21 "data/scripts/surf.pory"
+# 20 "data/scripts/surf.pory"
 	closemessage
-# 22 "data/scripts/surf.pory"
-	callnative ClearMugshot
+# 21 "data/scripts/surf.pory"
+	removefieldmugshot
 	end
 
 
 EventScript_CantSurf_Text_0:
-# 19 "data/scripts/surf.pory"
+# 18 "data/scripts/surf.pory"
 	.string "Little Archie$"
 
 EventScript_CantSurf_Text_1:
-# 20 "data/scripts/surf.pory"
+# 19 "data/scripts/surf.pory"
 	.string "Can't swim here…\n"
 	.string "Too many Pincurchin!$"

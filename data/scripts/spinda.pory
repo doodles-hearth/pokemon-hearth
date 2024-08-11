@@ -95,20 +95,6 @@ script SpindaIsland_Common_RegularSeashell {
     release
 }
 
-script SpindaIsland_Common_HiddenObstacle {
-    lock
-
-    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
-    speakername("Little Archie")
-    msgbox(format(
-		"Something's blocking the way."
-    ))
-    closemessage
-	removefieldmugshot
-
-    release
-}
-
 script SpindaIsland_Common_HiddenItem {
     lock
 
@@ -116,6 +102,20 @@ script SpindaIsland_Common_HiddenItem {
     speakername("Little Archie")
     msgbox(format(
 		"There's something hidden here."
+    ))
+    closemessage
+	removefieldmugshot
+
+    release
+}
+
+script SpindaIsland_Common_HiddenObstacle {
+    lock
+
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+    speakername("Little Archie")
+    msgbox(format(
+		"Something's blocking the way."
     ))
     closemessage
 	removefieldmugshot

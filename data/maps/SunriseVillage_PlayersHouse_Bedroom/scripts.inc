@@ -37,7 +37,7 @@ SunriseVillage_PlayersHouse_Bedroom_EventScript_MUGSHOT::
 # 25 "data/maps/SunriseVillage_PlayersHouse_Bedroom/scripts.pory"
 	closemessage
 # 26 "data/maps/SunriseVillage_PlayersHouse_Bedroom/scripts.pory"
-	callnative ClearMugshot
+	removefieldmugshot
 # 27 "data/maps/SunriseVillage_PlayersHouse_Bedroom/scripts.pory"
 	release
 	return

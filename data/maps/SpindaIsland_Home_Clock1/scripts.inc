@@ -24,115 +24,107 @@ SpindaIsland_Home_Clock1_HidingBoy::
 # 15 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	msgbox SpindaIsland_Home_Clock1_HidingBoy_Text_1, MSGBOX_AUTOCLOSE
 # 19 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE_HAPPY
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
 # 20 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	callnative DrawMugshot
-# 21 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	speakername SpindaIsland_Home_Clock1_HidingBoy_Text_2
-# 22 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 21 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	msgbox SpindaIsland_Home_Clock1_HidingBoy_Text_3
-# 25 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 24 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	closemessage
-# 26 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	callnative ClearMugshot
-# 28 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 25 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	removefieldmugshot
+# 27 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	release
 	return
 
 
 SpindaIsland_Home_Clock1_Faucet::
-# 33 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 32 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	compare VAR_SPINDA_ISLAND_INTRO_STATE, 2
 	goto_if_gt SpindaIsland_Home_Clock1_Faucet_1
-# 44 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 42 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	compare VAR_SPINDA_ISLAND_INTRO_STATE, 2
 	goto_if_eq SpindaIsland_Home_Clock1_Faucet_2
 	return
 
 SpindaIsland_Home_Clock1_Faucet_1:
-# 34 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 33 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	lock
+# 34 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
 # 35 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
-# 36 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	callnative DrawMugshot
-# 37 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	speakername SpindaIsland_Home_Clock1_HidingBoy_Text_2
-# 38 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 36 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	msgbox SpindaIsland_Home_Clock1_Faucet_Text_0
-# 41 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 39 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	closemessage
-# 42 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	callnative ClearMugshot
-# 43 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 40 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	removefieldmugshot
+# 41 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	release
 	return
 
 SpindaIsland_Home_Clock1_Faucet_2:
-# 45 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 43 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	hidefollower
-# 46 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 44 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	lock
+# 45 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 46 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	speakername SpindaIsland_Home_Clock1_HidingBoy_Text_2
 # 47 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
-# 48 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	callnative DrawMugshot
-# 49 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	speakername SpindaIsland_Home_Clock1_HidingBoy_Text_2
-# 50 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	msgbox SpindaIsland_Home_Clock1_Faucet_Text_1
+# 52 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	closemessage
+# 53 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	removefieldmugshot
 # 55 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	closemessage
-# 56 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	callnative ClearMugshot
-# 58 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	delay 48
-# 60 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 57 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	setmetatile 18, 13, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE
-# 61 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 58 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	setmetatile 18, 14, METATILE_SpindaIslandSecondary_BrokenFaucetGround, FALSE
-# 62 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 59 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	special DrawWholeMapView
-# 64 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 61 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Clock1_FaucetBreaks
-# 66 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 63 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	playse SE_M_BRICK_BREAK
-# 70 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 67 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
-# 71 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 68 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	waitse
-# 73 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
-# 74 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	callnative DrawMugshot
-# 75 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 70 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 71 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	speakername SpindaIsland_Home_Clock1_HidingBoy_Text_2
-# 76 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 72 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	msgbox SpindaIsland_Home_Clock1_Faucet_Text_2
-# 82 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 78 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	closemessage
-# 83 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	callnative ClearMugshot
-# 85 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 79 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	removefieldmugshot
+# 81 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	setmetatile 18, 14, METATILE_SpindaIsland_Grass, FALSE
-# 86 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 82 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	special DrawWholeMapView
-# 87 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 83 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	giveitem ITEM_BROKEN_FAUCET
-# 89 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 85 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	setvar VAR_SPINDA_ISLAND_INTRO_STATE, 3
-# 90 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 86 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	setflag FLAG_FAUCET_BROKE
-# 92 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 88 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	release
 	return
 
 
-# 96 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 92 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 SpindaIsland_Home_Clock1_FaucetBreaks:
-# 97 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 93 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	lock_facing_direction
-# 98 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 94 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	player_run_down
 	step_end
 
@@ -145,26 +137,26 @@ SpindaIsland_Home_Clock1_HidingBoy_Text_1:
 	.string "Darnit! You found me!$"
 
 SpindaIsland_Home_Clock1_HidingBoy_Text_2:
-# 21 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 20 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	.string "Little Archie$"
 
 SpindaIsland_Home_Clock1_HidingBoy_Text_3:
-# 23 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 22 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	.string "Wazzup, Timmy?$"
 
 SpindaIsland_Home_Clock1_Faucet_Text_0:
-# 39 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 37 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	.string "Faucet's broken…$"
 
 SpindaIsland_Home_Clock1_Faucet_Text_1:
-# 51 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 48 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	.string "Alrighty, time to turn the big old\n"
 	.string "faucet back on!\p"
 	.string "Hnng…\p"
 	.string "… … … … …$"
 
 SpindaIsland_Home_Clock1_Faucet_Text_2:
-# 77 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 73 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	.string "Aw, Shuckles! It broke!\p"
 	.string "Mom is totally gonna kill me!!\p"
 	.string "Let's, uh, not tell her anything and\n"

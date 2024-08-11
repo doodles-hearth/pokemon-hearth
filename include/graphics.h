@@ -1742,6 +1742,7 @@ extern const u32 gItemIconPalette_ReturnToFieldArrow[];
 
 extern const u32 gItemIcon_BrokenFaucet[];
 extern const u32 gItemIconPalette_BrokenFaucet[];
+extern const u32 gItemIconPalette_SpindaIsland_DarkBg[];
 
 //menu graphics
 extern const u16 gMenuInfoElements1_Pal[16];

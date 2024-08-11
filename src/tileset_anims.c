@@ -1222,3 +1222,56 @@ static void BlendAnimPalette_BattleDome_FloorLightsNoBlend(u16 timer)
             sSecondaryTilesetAnimCallback = NULL;
     }
 }
+
+// Custom shit
+
+const u16 gTilesetAnims_SpindaIsland_FlowerRed_Frame0[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/flower_red/00.4bpp");
+const u16 gTilesetAnims_SpindaIsland_FlowerRed_Frame1[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/flower_red/01.4bpp");
+const u16 gTilesetAnims_SpindaIsland_FlowerRed_Frame2[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/flower_red/02.4bpp");
+
+const u16 gTilesetAnims_SpindaIsland_Sea_Frame0[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/sea/00.4bpp");
+const u16 gTilesetAnims_SpindaIsland_Sea_Frame1[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/sea/01.4bpp");
+const u16 gTilesetAnims_SpindaIsland_Sea_Frame2[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/sea/02.4bpp");
+
+const u16 *const gTilesetAnims_SpindaIsland_FlowerRed[] = {
+    gTilesetAnims_SpindaIsland_FlowerRed_Frame0,
+    gTilesetAnims_SpindaIsland_FlowerRed_Frame1,
+    gTilesetAnims_SpindaIsland_FlowerRed_Frame0,
+    gTilesetAnims_SpindaIsland_FlowerRed_Frame2
+};
+
+const u16 *const gTilesetAnims_SpindaIsland_Sea[] = {
+    gTilesetAnims_SpindaIsland_Sea_Frame0,
+    gTilesetAnims_SpindaIsland_Sea_Frame1,
+    gTilesetAnims_SpindaIsland_Sea_Frame2,
+    gTilesetAnims_SpindaIsland_Sea_Frame1
+};
+
+static void QueueAnimTiles_SpindaIsland_FlowerRed(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_SpindaIsland_FlowerRed);
+    AppendTilesetAnimToBuffer(gTilesetAnims_SpindaIsland_FlowerRed[i], 1, 4 * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_SpindaIsland_Sea(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_SpindaIsland_Sea);
+    AppendTilesetAnimToBuffer(gTilesetAnims_SpindaIsland_Sea[i], 5, 2 * TILE_SIZE_4BPP);
+}
+
+static void TilesetAnim_SpindaIsland(u16 timer)
+{
+    if (timer % 16 == 0) {
+        QueueAnimTiles_SpindaIsland_FlowerRed(timer / 16);
+    }
+    if (timer % 40 == 0) {
+        QueueAnimTiles_SpindaIsland_Sea(timer / 40);
+    }
+}
+
+void InitTilesetAnim_SpindaIsland(void)
+{
+    sPrimaryTilesetAnimCounter = 0;
+    sPrimaryTilesetAnimCounterMax = 256;
+    sPrimaryTilesetAnimCallback = TilesetAnim_SpindaIsland;
+}

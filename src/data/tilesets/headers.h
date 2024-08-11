@@ -1032,7 +1032,7 @@ const struct Tileset gTileset_SpindaIsland =
     .palettes = gTilesetPalettes_SpindaIsland,
     .metatiles = gMetatiles_SpindaIsland,
     .metatileAttributes = gMetatileAttributes_SpindaIsland,
-    .callback = NULL,
+    .callback = InitTilesetAnim_SpindaIsland,
 };
 
 const struct Tileset gTileset_SpindaIslandSecondary =

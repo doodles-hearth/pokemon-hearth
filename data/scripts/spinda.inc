@@ -86,185 +86,193 @@ SpindaIsland_Common_CantReadSign::
 # 40 "data/scripts/spinda.pory"
 	lock
 # 42 "data/scripts/spinda.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
 # 43 "data/scripts/spinda.pory"
-	callnative DrawMugshot
-# 44 "data/scripts/spinda.pory"
 	speakername SpindaIsland_Common_CantReadSign_Text_0
-# 45 "data/scripts/spinda.pory"
+# 44 "data/scripts/spinda.pory"
 	msgbox SpindaIsland_Common_CantReadSign_Text_1
-# 48 "data/scripts/spinda.pory"
+# 47 "data/scripts/spinda.pory"
 	closemessage
-# 49 "data/scripts/spinda.pory"
-	callnative ClearMugshot
-# 51 "data/scripts/spinda.pory"
+# 48 "data/scripts/spinda.pory"
+	removefieldmugshot
+# 50 "data/scripts/spinda.pory"
 	release
 	return
 
 
 SpindaIsland_Common_CantTakeStairs::
-# 55 "data/scripts/spinda.pory"
+# 54 "data/scripts/spinda.pory"
 	lock
+# 56 "data/scripts/spinda.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
 # 57 "data/scripts/spinda.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
-# 58 "data/scripts/spinda.pory"
-	callnative DrawMugshot
-# 59 "data/scripts/spinda.pory"
 	speakername SpindaIsland_Common_CantReadSign_Text_0
-# 60 "data/scripts/spinda.pory"
+# 58 "data/scripts/spinda.pory"
 	msgbox SpindaIsland_Common_CantTakeStairs_Text_0
-# 63 "data/scripts/spinda.pory"
+# 61 "data/scripts/spinda.pory"
 	closemessage
+# 62 "data/scripts/spinda.pory"
+	removefieldmugshot
 # 64 "data/scripts/spinda.pory"
-	callnative ClearMugshot
-# 66 "data/scripts/spinda.pory"
 	speakername SpindaIsland_Common_CantTakeStairs_Text_1
-# 67 "data/scripts/spinda.pory"
+# 65 "data/scripts/spinda.pory"
 	msgbox SpindaIsland_Common_CantTakeStairs_Text_2
-# 71 "data/scripts/spinda.pory"
+# 69 "data/scripts/spinda.pory"
 	release
 	return
 
 
 SpindaIsland_Common_EmptyChest::
-# 75 "data/scripts/spinda.pory"
+# 73 "data/scripts/spinda.pory"
 	lock
-# 77 "data/scripts/spinda.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
-# 78 "data/scripts/spinda.pory"
-	callnative DrawMugshot
-# 79 "data/scripts/spinda.pory"
+# 75 "data/scripts/spinda.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 76 "data/scripts/spinda.pory"
 	speakername SpindaIsland_Common_CantReadSign_Text_0
-# 80 "data/scripts/spinda.pory"
+# 77 "data/scripts/spinda.pory"
 	msgbox SpindaIsland_Common_EmptyChest_Text_0
-# 83 "data/scripts/spinda.pory"
+# 80 "data/scripts/spinda.pory"
 	closemessage
-# 84 "data/scripts/spinda.pory"
-	callnative ClearMugshot
-# 85 "data/scripts/spinda.pory"
+# 81 "data/scripts/spinda.pory"
+	removefieldmugshot
+# 82 "data/scripts/spinda.pory"
 	release
 	return
 
 
 SpindaIsland_Common_RegularSeashell::
-# 89 "data/scripts/spinda.pory"
+# 86 "data/scripts/spinda.pory"
 	lock
-# 91 "data/scripts/spinda.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
-# 92 "data/scripts/spinda.pory"
-	callnative DrawMugshot
-# 93 "data/scripts/spinda.pory"
+# 88 "data/scripts/spinda.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 89 "data/scripts/spinda.pory"
 	speakername SpindaIsland_Common_CantReadSign_Text_0
-# 94 "data/scripts/spinda.pory"
+# 90 "data/scripts/spinda.pory"
 	msgbox SpindaIsland_Common_RegularSeashell_Text_0
-# 97 "data/scripts/spinda.pory"
+# 93 "data/scripts/spinda.pory"
 	closemessage
-# 98 "data/scripts/spinda.pory"
-	callnative ClearMugshot
+# 94 "data/scripts/spinda.pory"
+	removefieldmugshot
+# 95 "data/scripts/spinda.pory"
+	release
+	return
+
+
+SpindaIsland_Common_HiddenItem::
 # 99 "data/scripts/spinda.pory"
+	lock
+# 101 "data/scripts/spinda.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 102 "data/scripts/spinda.pory"
+	speakername SpindaIsland_Common_CantReadSign_Text_0
+# 103 "data/scripts/spinda.pory"
+	msgbox SpindaIsland_Common_HiddenItem_Text_0
+# 106 "data/scripts/spinda.pory"
+	closemessage
+# 107 "data/scripts/spinda.pory"
+	removefieldmugshot
+# 109 "data/scripts/spinda.pory"
 	release
 	return
 
 
 SpindaIsland_Common_HiddenObstacle::
-# 103 "data/scripts/spinda.pory"
+# 113 "data/scripts/spinda.pory"
 	lock
-# 105 "data/scripts/spinda.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
-# 106 "data/scripts/spinda.pory"
-	callnative DrawMugshot
-# 107 "data/scripts/spinda.pory"
+# 115 "data/scripts/spinda.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 116 "data/scripts/spinda.pory"
 	speakername SpindaIsland_Common_CantReadSign_Text_0
-# 108 "data/scripts/spinda.pory"
+# 117 "data/scripts/spinda.pory"
 	msgbox SpindaIsland_Common_HiddenObstacle_Text_0
-# 111 "data/scripts/spinda.pory"
+# 120 "data/scripts/spinda.pory"
 	closemessage
-# 112 "data/scripts/spinda.pory"
-	callnative ClearMugshot
-# 114 "data/scripts/spinda.pory"
+# 121 "data/scripts/spinda.pory"
+	removefieldmugshot
+# 123 "data/scripts/spinda.pory"
 	release
 	return
 
 
 SpindaIsland_Common_CantOpenFromThisSide::
-# 118 "data/scripts/spinda.pory"
-	lock
-# 120 "data/scripts/spinda.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
-# 121 "data/scripts/spinda.pory"
-	callnative DrawMugshot
-# 122 "data/scripts/spinda.pory"
-	speakername SpindaIsland_Common_CantReadSign_Text_0
-# 123 "data/scripts/spinda.pory"
-	msgbox SpindaIsland_Common_CantOpenFromThisSide_Text_0
-# 126 "data/scripts/spinda.pory"
-	closemessage
 # 127 "data/scripts/spinda.pory"
-	callnative ClearMugshot
+	lock
 # 129 "data/scripts/spinda.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 130 "data/scripts/spinda.pory"
+	speakername SpindaIsland_Common_CantReadSign_Text_0
+# 131 "data/scripts/spinda.pory"
+	msgbox SpindaIsland_Common_CantOpenFromThisSide_Text_0
+# 134 "data/scripts/spinda.pory"
+	closemessage
+# 135 "data/scripts/spinda.pory"
+	removefieldmugshot
+# 137 "data/scripts/spinda.pory"
 	release
 	return
 
 
 SpindaIsland_Common_CantSeeFromSide::
-# 133 "data/scripts/spinda.pory"
-	lock
-# 135 "data/scripts/spinda.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
-# 136 "data/scripts/spinda.pory"
-	callnative DrawMugshot
-# 137 "data/scripts/spinda.pory"
-	speakername SpindaIsland_Common_CantReadSign_Text_0
-# 138 "data/scripts/spinda.pory"
-	msgbox SpindaIsland_Common_CantSeeFromSide_Text_0
 # 141 "data/scripts/spinda.pory"
-	closemessage
-# 142 "data/scripts/spinda.pory"
-	callnative ClearMugshot
+	lock
+# 143 "data/scripts/spinda.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
 # 144 "data/scripts/spinda.pory"
+	speakername SpindaIsland_Common_CantReadSign_Text_0
+# 145 "data/scripts/spinda.pory"
+	msgbox SpindaIsland_Common_CantSeeFromSide_Text_0
+# 148 "data/scripts/spinda.pory"
+	closemessage
+# 149 "data/scripts/spinda.pory"
+	removefieldmugshot
+# 151 "data/scripts/spinda.pory"
 	release
 	return
 
 
 SpindaIsland_Common_CantReadSign_Text_0:
-# 44 "data/scripts/spinda.pory"
+# 43 "data/scripts/spinda.pory"
 	.string "Little Archie$"
 
 SpindaIsland_Common_CantReadSign_Text_1:
-# 46 "data/scripts/spinda.pory"
+# 45 "data/scripts/spinda.pory"
 	.string "Can't read the sign from here.$"
 
 SpindaIsland_Common_CantTakeStairs_Text_0:
-# 61 "data/scripts/spinda.pory"
+# 59 "data/scripts/spinda.pory"
 	.string "Man, if only there was a way to climb\n"
 	.string "stairs when they are sideways…$"
 
 SpindaIsland_Common_CantTakeStairs_Text_1:
-# 66 "data/scripts/spinda.pory"
+# 64 "data/scripts/spinda.pory"
 	.string "God$"
 
 SpindaIsland_Common_CantTakeStairs_Text_2:
-# 68 "data/scripts/spinda.pory"
+# 66 "data/scripts/spinda.pory"
 	.string "“ALAS, THERE IS NOT.”\p"
 	.string "“I TOTALLY WASN'T TOO LAZY TO\n"
 	.string "IMPLEMENT A CERTAIN FEATURE.”$"
 
 SpindaIsland_Common_EmptyChest_Text_0:
-# 81 "data/scripts/spinda.pory"
+# 78 "data/scripts/spinda.pory"
 	.string "Chest is empty.$"
 
 SpindaIsland_Common_RegularSeashell_Text_0:
-# 95 "data/scripts/spinda.pory"
+# 91 "data/scripts/spinda.pory"
 	.string "A good old regular-looking seashell.$"
 
+SpindaIsland_Common_HiddenItem_Text_0:
+# 104 "data/scripts/spinda.pory"
+	.string "There's something hidden here.$"
+
 SpindaIsland_Common_HiddenObstacle_Text_0:
-# 109 "data/scripts/spinda.pory"
+# 118 "data/scripts/spinda.pory"
 	.string "Something's blocking the way.$"
 
 SpindaIsland_Common_CantOpenFromThisSide_Text_0:
-# 124 "data/scripts/spinda.pory"
+# 132 "data/scripts/spinda.pory"
 	.string "Can't open the door from this side.$"
 
 SpindaIsland_Common_CantSeeFromSide_Text_0:
-# 139 "data/scripts/spinda.pory"
+# 146 "data/scripts/spinda.pory"
 	.string "Can't see anything from this side.$"
