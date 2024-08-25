@@ -2098,4 +2098,14 @@ const u32 gItemIcon_TwiceSpicedRadish[] = INCBIN_U32("graphics/items/icons/twice
 const u32 gItemIconPalette_TwiceSpicedRadish[] = INCBIN_U32("graphics/items/icon_palettes/twice_spiced_radish.gbapal.lz");
 
 const u32 gItemIcon_BrokenFaucet[] = INCBIN_U32("graphics/items/icons/broken_faucet.4bpp.lz");
+const u32 gItemIcon_NewFaucet[] = INCBIN_U32("graphics/items/icons/new_faucet.4bpp.lz");
+const u32 gItemIcon_BadassSail[] = INCBIN_U32("graphics/items/icons/badass_sail.4bpp.lz");
+const u32 gItemIcon_CookingOil[] = INCBIN_U32("graphics/items/icons/cooking_oil.4bpp.lz");
+const u32 gItemIcon_SaltyLemonade[] = INCBIN_U32("graphics/items/icons/salty_lemonade.4bpp.lz");
+const u32 gItemIcon_WhiteSeashell[] = INCBIN_U32("graphics/items/icons/white_seashell.4bpp.lz");
+const u32 gItemIcon_RustyNickel[] = INCBIN_U32("graphics/items/icons/rusty_nickel.4bpp.lz");
+const u32 gItemIcon_ToyCamera[] = INCBIN_U32("graphics/items/icons/toy_camera.4bpp.lz");
+const u32 gItemIcon_BorrowedPliers[] = INCBIN_U32("graphics/items/icons/borrowed_pliers.4bpp.lz");
+const u32 gItemIcon_GrassBlade[] = INCBIN_U32("graphics/items/icons/grass_blade.4bpp.lz");
 const u32 gItemIconPalette_SpindaIsland_DarkBg[] = INCBIN_U32("graphics/object_events/palettes/comp_npc_darkbg.gbapal.lz");
+const u32 gItemIconPalette_SpindaIsland_BrownBg[] = INCBIN_U32("graphics/object_events/palettes/comp_npc_brownbg.gbapal.lz");

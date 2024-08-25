@@ -14,16 +14,115 @@ script SpinaIsland_PlayerHome_EventScript_Mom {
 
 	faceplayer
 
-	if (var(VAR_SPINDA_ISLAND_INTRO_STATE) >= 2) {
+	if (flag(FLAG_RECEIVED_SLOWPOKE_REWARD)) {
+		checkitem(ITEM_SALTY_LEMONADE)
+		if (var(VAR_RESULT) == TRUE && !flag(FLAG_GAVE_MOM_LEMONADE)) {
+			msgbox(format(
+				"Give mom the Salty Lemonade?"
+			))
+
+			dynmultichoice(
+				0,
+				0,
+				TRUE,
+				10,
+				0,
+				DYN_MULTICHOICE_CB_NONE,
+				"Give",
+				"Don't give"
+			)
+			closemessage
+
+			if (var(VAR_RESULT) == 0) {
+				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+				speakername("Little Archie")
+				msgbox(format(
+					"Here, mom!"
+				))
+				removefieldmugshot
+				closemessage
+
+				speakername("Mom")
+				msgbox(format(
+					"Oh, good, some fresh lemonade! I'm so thirsty!\p"
+					"Thanks, honey!"
+				))
+				closemessage
+
+				delay(10)
+				playse(SE_BALL)
+				waitse
+				playse(SE_BALL)
+				waitse
+				playse(SE_BALL)
+				waitse
+				delay(20)
+
+				playse(SE_PIN)
+				applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+				waitmovement(0)
+				delay(48)
+
+				speakername("Mom")
+				msgbox(format(
+					"What is wrong with you? This is super salty!\p"
+					"Please take this away and don't do that again."
+				))
+				closemessage
+
+				setflag(FLAG_GAVE_MOM_LEMONADE)
+			}
+
+		} else {
+			checkitem(ITEM_WATER_STONE_2)
+
+			if (var(VAR_RESULT) == TRUE) {
+				msgbox(format(
+					"Give mom the {COLOR BLUE}WATER{COLOR DARK_GRAY} stone?"
+				))
+
+				dynmultichoice(
+					0,
+					0,
+					TRUE,
+					10,
+					0,
+					DYN_MULTICHOICE_CB_NONE,
+					"Give",
+					"Don't give"
+				)
+				closemessage
+
+				if (var(VAR_RESULT) == 0) {
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+					speakername("Little Archie")
+					msgbox(format(
+						"Here, mom!"
+					))
+					removefieldmugshot
+					closemessage
+
+					speakername("Mom")
+					msgbox(format(
+						"What am I supposed to do with this? Lick it?\p"
+						"Please turn the faucet on so I can drink some actual {COLOR BLUE}WATER{COLOR DARK_GRAY}!"
+					))
+					closemessage
+				}
+			}
+		}
+	} else {
+		speakername("Mom")
 		msgbox(format(
-			"Hurry up and turn the big faucet back on!\p"
+			"Hurry up and turn the big faucet back on, please!\p"
 			"I'll give you your thing when the tap's running."
 		))
+		closemessage
+		release
 	}
-	closemessage
-
-	release
+	
 }
+
 
 script SpindaIsland_PlayerHome_EventScript_Diary {
 	lock
@@ -35,13 +134,21 @@ script SpindaIsland_PlayerHome_EventScript_Diary {
 	release
 }
 
+script SpinaIsland_PlayerHome_EventScript_SpindaManual {
+	msgbox(
+		"“Super cool trick i taught spinda:\n"
+		"using L and R makes her {COLOR RED}spin{COLOR DARK_GRAY}!\l"
+		"i love my spinda, shes so awsome”", MSGBOX_DEFAULT)
+}
+
 script SpindaIsland_PlayerHome_EventScript_Poem {
 	lock
 	msgbox(format(
 		"“A POEM BY ARCHIE\p"
 		"Roses are blue\l"
 		"Violetts are blue\l"
-		"Everything is blue because its my favorite color.”"
+		"Everything is blue\l"
+		"because its my favorite color.”"
 	), MSGBOX_DEFAULT)
 	closemessage
 
@@ -178,7 +285,6 @@ script SpinaIsland_PlayerHome_EventScript_GetSpinda {
 	removeobject(LOCALID_BALL_SPINDA)
 	givemon(SPECIES_SPINDA, 20)
 	setflag(FLAG_RECEIVED_STARTER)
-	// setflag(FLAG_SYS_POKEMON_GET)
 	
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
     speakername("Little Archie")

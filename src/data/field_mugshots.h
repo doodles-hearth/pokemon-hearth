@@ -17,43 +17,43 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_Archie_Normal,
-            .pal = sFieldMugshotPal_DarkBg,
+            .pal = sFieldMugshotPal_BrownBg,
         },
 
         [EMOTE_GRINNING] =
         {
             .gfx = sFieldMugshotGfx_Archie_Grinning,
-            .pal = sFieldMugshotPal_DarkBg,
+            .pal = sFieldMugshotPal_BrownBg,
         },
 
         [EMOTE_THINKING] =
         {
             .gfx = sFieldMugshotGfx_Archie_Normal,
-            .pal = sFieldMugshotPal_DarkBg,
+            .pal = sFieldMugshotPal_BrownBg,
         },
 
         [EMOTE_DISGUSTED] =
         {
             .gfx = sFieldMugshotGfx_Archie_Normal,
-            .pal = sFieldMugshotPal_DarkBg,
+            .pal = sFieldMugshotPal_BrownBg,
         },
 
         [EMOTE_SAD] =
         {
             .gfx = sFieldMugshotGfx_Archie_Normal,
-            .pal = sFieldMugshotPal_DarkBg,
+            .pal = sFieldMugshotPal_BrownBg,
         },
 
         [EMOTE_ANGRY] =
         {
             .gfx = sFieldMugshotGfx_Archie_Normal,
-            .pal = sFieldMugshotPal_DarkBg,
+            .pal = sFieldMugshotPal_BrownBg,
         },
 
         [EMOTE_SURPRISED] =
         {
             .gfx = sFieldMugshotGfx_Archie_Normal,
-            .pal = sFieldMugshotPal_DarkBg,
+            .pal = sFieldMugshotPal_BrownBg,
         },
     },
 };

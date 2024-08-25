@@ -2120,8 +2120,8 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #if OW_FOLLOWERS_ENABLED
     const u32 gObjectEventPic_Slowpoke[] = INCBIN_COMP("graphics/pokemon/slowpoke/follower.4bpp");
 #if OW_FOLLOWERS_SHARE_PALETTE == FALSE
-    const u32 gFollowerPalette_Slowpoke[] = INCBIN_U32("graphics/pokemon/slowpoke/follow_normal.gbapal.lz");
-    const u32 gShinyFollowerPalette_Slowpoke[] = INCBIN_U32("graphics/pokemon/slowpoke/follow_shiny.gbapal.lz");
+    // const u32 gFollowerPalette_Slowpoke[] = INCBIN_U32("graphics/pokemon/slowpoke/follow_normal.gbapal.lz");
+    // const u32 gShinyFollowerPalette_Slowpoke[] = INCBIN_U32("graphics/pokemon/slowpoke/follow_shiny.gbapal.lz");
 #endif //OW_FOLLOWERS_SHARE_PALETTE
 #endif //OW_FOLLOWERS_ENABLED
 
@@ -2136,8 +2136,8 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #if OW_FOLLOWERS_ENABLED
     const u32 gObjectEventPic_Slowbro[] = INCBIN_COMP("graphics/pokemon/slowbro/follower.4bpp");
 #if OW_FOLLOWERS_SHARE_PALETTE == FALSE
-    const u32 gFollowerPalette_Slowbro[] = INCBIN_U32("graphics/pokemon/slowbro/follow_normal.gbapal.lz");
-    const u32 gShinyFollowerPalette_Slowbro[] = INCBIN_U32("graphics/pokemon/slowbro/follow_shiny.gbapal.lz");
+    // const u32 gFollowerPalette_Slowbro[] = INCBIN_U32("graphics/pokemon/slowbro/follow_normal.gbapal.lz");
+    // const u32 gShinyFollowerPalette_Slowbro[] = INCBIN_U32("graphics/pokemon/slowbro/follow_shiny.gbapal.lz");
 #endif //OW_FOLLOWERS_SHARE_PALETTE
 #endif //OW_FOLLOWERS_ENABLED
 

@@ -66,10 +66,10 @@
 #define FLAG_HIDE_MAN_CANT_GO_HOME    0x30
 #define FLAG_FOUND_WHITE_SEASHELL    0x31
 #define FLAG_POEM_GIRL    0x32
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
+#define FLAG_SLOWPOKE_EVOLVED    0x33
+#define FLAG_RECEIVED_SLOWPOKE_REWARD    0x34
+#define FLAG_HIDE_SLOWBRO    0x35
+#define FLAG_GAVE_MOM_LEMONADE    0x36
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
 #define FLAG_UNUSED_0x039    0x39 // Unused Flag

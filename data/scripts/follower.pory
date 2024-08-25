@@ -1,31 +1,87 @@
 script EventScript_Follower {
-	lock
-	playfirstmoncry
-	faceplayer
-	msgbox(format(
-		"Take Spinda for a spin?"
-	))
+	random(3)
 
-	dynmultichoice(
-		16,
-		8,
-		FALSE,
-		10,
-		0,
-		DYN_MULTICHOICE_CB_NONE,
-		"Spin clockwise",
-		"Spin counterclockwise"
-	)
+	switch(var(VAR_RESULT)) {
+		case 0:
+			lock
+			faceplayer
+			playfirstmoncry
+			applymovement(OBJ_EVENT_ID_FOLLOWER, Spinda_emote_love)
+			waitmovement(0)
+			waitmoncry
+			msgbox(format("Spinda seems happy to have your attention!"))
+			closemessage
+			release
+		case 1:
+			lock
+			faceplayer
+			playfirstmoncry
+			applymovement(OBJ_EVENT_ID_FOLLOWER, Spinda_dizzy)
+			waitmovement(0)
+			waitmoncry
+			msgbox(format("Spinda looks dizzy!"))
+			closemessage
+			release
+		case 2:
+			lock
+			faceplayer
+			playfirstmoncry
+			applymovement(OBJ_EVENT_ID_FOLLOWER, Spinda_jump)
+			waitmoncry
+			waitmovement(0)
+			release
+		}
 
-	closemessage
+	// msgbox(format(
+	// 	"Take Spinda for a spin?"
+	// ))
 
-	if (var(VAR_RESULT) == 0) {
-		call(Spinda_SpinClockwise)
-	} elif (var(VAR_RESULT) == 1) {
-		call(Spinda_SpinCounterclockwise)
-	}
+	// dynmultichoice(
+	// 	16,
+	// 	8,
+	// 	FALSE,
+	// 	10,
+	// 	0,
+	// 	DYN_MULTICHOICE_CB_NONE,
+	// 	"Spin clockwise",
+	// 	"Spin counterclockwise"
+	// )
+
+	// closemessage
+
+	// if (var(VAR_RESULT) == 0) {
+	// 	call(Spinda_SpinClockwise)
+	// } elif (var(VAR_RESULT) == 1) {
+	// 	call(Spinda_SpinCounterclockwise)
+	// }
 
 	release
+}
+
+movement Spinda_emote_love {
+	lock_facing_direction
+	jump_in_place_down
+	unlock_facing_direction
+	emote_heart
+}
+
+movement Spinda_dizzy {
+	face_down
+	delay_16
+	face_up
+	delay_16
+	face_left
+	delay_16
+	face_down
+	delay_16
+	face_player
+	delay_16
+}
+
+movement Spinda_jump {
+	lock_facing_direction
+	jump_in_place_down
+	unlock_facing_direction
 }
 
 raw `

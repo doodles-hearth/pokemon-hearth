@@ -8732,8 +8732,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gFollowerPalette_Slowpoke,
-            gShinyFollowerPalette_Slowpoke
+            gItemIconPalette_SpindaIsland_BrownBg,
+            gItemIconPalette_SpindaIsland_BrownBg
         )
         .levelUpLearnset = sSlowpokeLevelUpLearnset,
         .teachableLearnset = sSlowpokeTeachableLearnset,
@@ -8798,8 +8798,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gFollowerPalette_Slowbro,
-            gShinyFollowerPalette_Slowbro
+            gItemIconPalette_SpindaIsland_BrownBg,
+            gItemIconPalette_SpindaIsland_BrownBg
         )
         .levelUpLearnset = sSlowbroLevelUpLearnset,
         .teachableLearnset = sSlowbroTeachableLearnset,
@@ -17500,7 +17500,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .enemyMonElevation = 11,
         .backPic = gMonBackPic_Mew,
         .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 0,
+        .backPicYOffset = -10,
         .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
         .palette = gMonPalette_Mew,
         .shinyPalette = gMonShinyPalette_Mew,

@@ -1183,3 +1183,13 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SpindaIsland_PlayerHome_Clock2/scripts.inc"
 
 	.include "data/maps/SpindaIsland_PlayerHome_Clock3/scripts.inc"
+
+	.include "data/maps/SpindaIsland_ShupperHouse/scripts.inc"
+
+	.include "data/maps/SpindaIsland_ShuppetHouse_Clock1/scripts.inc"
+
+	.include "data/maps/SpindaIsland_ShuppetHouse_Clock2/scripts.inc"
+
+	.include "data/maps/SpindaIsland_ShuppetHouse_Clock3/scripts.inc"
+
+	.include "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.inc"

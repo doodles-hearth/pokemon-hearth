@@ -1,11 +1,19 @@
 const LOCALID_POEM_GIRL = 4
 const LOCALID_DAD = 2
+const LOCALID_SLOWPOKE_MISTRESS = 6
 
 mapscripts SpindaIsland_Home_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if (flag(FLAG_SLOWPOKE_EVOLVED)) {
+			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWBRO))
+		} else {
+			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWPOKE))
+		}
+	}
 }
 
 script SpindaIsland_Home_EventScript_ArchiesHouseSign {
-	msgbox(format("The Aquas"), MSGBOX_SIGN)
+	msgbox(format("The Hoenns"), MSGBOX_SIGN)
 }
 
 script SpindaIsland_Home_EventScript_BobsHouseSign {
@@ -55,11 +63,25 @@ script SpindaIsland_Home_EventScript_Dad {
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
 		speakername("Little Archie")
 		msgbox(format(
-			"Now we're talkin'!! I can bring it to mom, that should do it!\p"
+			"Now we're talkin'!! I can bring this to mom, that should do it!\p"
 			"Let's take a sip first, I am PARCHED!"
 		))
 		closemessage
 		removefieldmugshot
+
+		delay(10)
+		playse(SE_BALL)
+		waitse
+		playse(SE_BALL)
+		waitse
+		playse(SE_BALL)
+		waitse
+		delay(20)
+
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+		waitmovement(0)
+		delay(48)
 
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_DISGUSTED)
 		speakername("Little Archie")
@@ -68,6 +90,7 @@ script SpindaIsland_Home_EventScript_Dad {
 			"Why is it… so salty?!"
 		))
 		closemessage
+		removefieldmugshot
 
 		speakername("Dad")
 		msgbox(format(
@@ -123,8 +146,24 @@ script SpindaIsland_Home_EventScript_LemonadeStandSign {
 	), MSGBOX_SIGN)
 }
 
+script SpindaIsland_Home_EventScript_MainStreetSign {
+	msgbox(format(
+		"{UP_ARROW} Main street"
+	), MSGBOX_SIGN)
+}
+
+script SpindaIsland_Home_EventScript_MadelineSign {
+	msgbox(format(
+		"Madeline"
+	), MSGBOX_SIGN)
+}
+
 script SpindaIsland_Home_EventScript_PoemGirl {
 	lock
+
+	playse(SE_M_GRASSWHISTLE)
+	waitse
+
 	faceplayer
 
 	if (flag(FLAG_POEM_GIRL)) {
@@ -144,7 +183,7 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 
 		dynmultichoice(
 			0,
-			6,
+			0,
 			TRUE,
 			10,
 			0,
@@ -310,7 +349,7 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 						0,
 						DYN_MULTICHOICE_CB_NONE,
 						"The sky isn't blue, it's purple instead.",
-						"It doesn't make sense, but it's fun to be said."
+						"Doesn't make sense, but fun to be said."
 					)
 
 					speakername("Maggie")
@@ -331,7 +370,7 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 							0,
 							DYN_MULTICHOICE_CB_NONE,
 							"Orchids are blue, too.",
-							"Everything is blue because it's my favorite color."
+							"Everything is blue…"
 						)
 
 						switch(var(VAR_RESULT)) {
@@ -344,6 +383,15 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 								))
 								closemessage
 							case 1:
+								dynmultichoice(
+									0,
+									0,
+									TRUE,
+									10,
+									0,
+									DYN_MULTICHOICE_CB_NONE,
+									"Because it's my favorite color."
+								)
 								speakername("Maggie")
 								msgbox(format(
 									"… … … … …\p"
@@ -366,6 +414,177 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 						}
 				}
 		}
+	}
+	release
+}
+
+script SpindaIsland_Home_Slowpoke {
+	lock
+	if (flag(FLAG_SLOWPOKE_EVOLVED)) {
+		faceplayer
+		playmoncry(SPECIES_SLOWBRO, CRY_MODE_NORMAL)
+		speakername("Slowbro")
+		msgbox(format(
+			"Bruh…"
+		))
+		closemessage
+
+	} else {
+		faceplayer
+		playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
+		speakername("Slowpoke")
+		msgbox(format(
+			"Slo…"
+		))
+		waitmoncry
+		closemessage
+
+		if (checkitem(ITEM_WHITE_SEASHELL) == TRUE) {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_THINKING)
+			speakername("Little Archie")
+			msgbox(format(
+				"… … …?\p"
+				"He's looking at the white seashell I found…"
+			))
+			removefieldmugshot
+
+			dynmultichoice(
+				0,
+				0,
+				TRUE,
+				10,
+				0,
+				DYN_MULTICHOICE_CB_NONE,
+				"Give the seashell",
+				"Don't give the seashell"
+			)
+			closemessage
+
+			switch(var(VAR_RESULT)) {
+				case 0:
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+					speakername("Little Archie")
+					msgbox(format(
+						"Sure, why the hell not!\p"
+						"Here you go, buddy."
+					))
+					removefieldmugshot
+
+					removeitem(ITEM_WHITE_SEASHELL)
+
+					setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWBRO))
+					removeobject(VAR_LAST_TALKED)
+					addobject(VAR_LAST_TALKED)
+					playse(SE_M_BITE)
+					applymovement(VAR_LAST_TALKED, SpindaIsland_Home_Movement_Slowpoke)
+					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+					waitmovement(VAR_LAST_TALKED)
+					waitmovement(OBJ_EVENT_ID_PLAYER)
+
+					playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
+					speakername("Slowbro")
+					msgbox(format(
+						"Bruh!!"
+					))
+					waitmoncry
+					closemessage
+					
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SURPRISED)
+					speakername("Little Archie")
+					msgbox(format(
+						"The heck?!\p"
+						"My seashell bit him!\p"
+						"Guess it was a Shellder all this time!"
+					))
+					removefieldmugshot
+					closemessage
+
+					setflag(FLAG_SLOWPOKE_EVOLVED)
+				case 1:
+					playmoncry(SPECIES_SLOWPOKE, CRY_MODE_FAINT)
+					speakername("Slowpoke")
+					msgbox(format(
+						"…Slo…\p"
+						":("
+					))
+					waitmoncry
+					closemessage
+			}
+			
+		}
+	}
+	release
+}
+
+movement SpindaIsland_Home_Movement_Slowpoke {
+	lock_facing_direction
+	jump_in_place_down
+	unlock_facing_direction
+	delay_16 * 3
+	face_up
+	delay_16
+	face_down
+	delay_16
+	face_left
+	delay_16
+	face_up
+	delay_16
+	face_original_direction
+	delay_16 * 3
+	lock_facing_direction
+	jump_in_place_down
+	jump_in_place_down
+	emote_heart
+	delay_16 * 3
+}
+
+script SpindaIsland_Home_SlowpokeMistress {
+	lock
+	faceplayer
+	if (flag(FLAG_RECEIVED_SLOWPOKE_REWARD)) {
+		speakername("Girl")
+		msgbox(format(
+			"Look at my super cool Slowbro!\p"
+			"He just looks so happy!"
+		))
+		closemessage
+	} elif (flag(FLAG_SLOWPOKE_EVOLVED)) {
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+		waitse
+		waitmovement(0)
+		delay(48)
+
+		speakername("Girl")
+		msgbox(format(
+			"By Arceus!!\p"
+			"How on earth did you convince him to evolve?!\p"
+			"…A cool-looking seashell? What are you talking about?\p"
+			"Well, thank you anyway! You can have this!\p"
+			"I no longer need it."
+		))
+		closemessage
+
+		giveitem(ITEM_WATER_STONE_2)
+
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_THINKING)
+		speakername("Little Archie")
+		msgbox(format(
+			"Hmm… A {COLOR BLUE}WATER{COLOR DARK_GRAY} Stone…\p"
+			"Maybe I could try giving this to mom?"
+		))
+		closemessage
+		removefieldmugshot
+
+		setflag(FLAG_RECEIVED_SLOWPOKE_REWARD)
+	} else {
+		speakername("Girl")
+		msgbox(format(
+			"I wish my Pokémon would evolve…\p"
+			"I keep trying to give him this Water Stone, but it just does nothing.\p"
+			"Perhaps there's another way…"
+		))
+		closemessage
 	}
 	release
 }

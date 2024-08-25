@@ -4790,6 +4790,56 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/SpindaIsland_PlayerHome_Clock3/border.bin",
       "blockdata_filepath": "data/layouts/SpindaIsland_PlayerHome_Clock3/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND_HOUSE",
+      "name": "SpindaIsland_House_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_HackingCompHouse",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/SpindaIsland_ShupperHouse/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIsland_ShupperHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND_HOUSE_CLOCK1",
+      "name": "SpindaIsland_House_Clock1_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_HackingCompHouse",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/SpindaIsland_ShuppetHouse_Clock1/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIsland_ShuppetHouse_Clock1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND_HOUSE_CLOCK2",
+      "name": "SpindaIsland_House_Clock2_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_HackingCompHouse",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/SpindaIsland_ShuppetHouse_Clock2/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIsland_ShuppetHouse_Clock2/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND_HOUSE_CLOCK3",
+      "name": "SpindaIsland_House_Clock3_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_HackingCompHouse",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/SpindaIsland_ShuppetHouse_Clock3/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIsland_ShuppetHouse_Clock3/map.bin"
+    },
+    {
+      "id": "LAYOUT_SPINDA_ISLAND_SHUPPET_HOUSE_ATTIC",
+      "name": "SpindaIsland_ShuppetHouse_Attic_Layout",
+      "width": 11,
+      "height": 11,
+      "primary_tileset": "gTileset_HackingCompHouse",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/SpindaIsland_ShuppetHouse_Attic/border.bin",
+      "blockdata_filepath": "data/layouts/SpindaIsland_ShuppetHouse_Attic/map.bin"
     }
   ]
 }

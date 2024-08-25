@@ -14094,7 +14094,7 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_BrokenFaucet,
-        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
     
     [ITEM_WHITE_SEASHELL] =
@@ -14110,8 +14110,8 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_BrokenFaucet,
-        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+        .iconPic = gItemIcon_WhiteSeashell,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
     
     [ITEM_SALTY_LEMONADE] =
@@ -14119,7 +14119,7 @@ const struct Item gItemsInfo[] =
         .name = _("Salty Lemonade"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "Tastes like seawater.\n"
+            "Tastes like salt.\n"
             "Pretty yucky, but\n"
             "let's not tell dad."
         ),
@@ -14127,8 +14127,8 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_BrokenFaucet,
-        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+        .iconPic = gItemIcon_SaltyLemonade,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
     
     [ITEM_RUSTY_NICKEL] =
@@ -14143,8 +14143,8 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_BrokenFaucet,
-        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+        .iconPic = gItemIcon_RustyNickel,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
     
     [ITEM_NEW_FAUCET] =
@@ -14160,8 +14160,8 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_BrokenFaucet,
-        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+        .iconPic = gItemIcon_NewFaucet,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
     
     [ITEM_TOY_CAMERA] =
@@ -14177,8 +14177,8 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_BrokenFaucet,
-        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+        .iconPic = gItemIcon_ToyCamera,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
     
     [ITEM_COOKING_OIL] =
@@ -14194,8 +14194,8 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_BrokenFaucet,
-        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+        .iconPic = gItemIcon_CookingOil,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
     
     [ITEM_BORROWED_PLIERS] =
@@ -14211,8 +14211,8 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_BrokenFaucet,
-        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+        .iconPic = gItemIcon_BorrowedPliers,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
     
     [ITEM_GRASS_BLADE] =
@@ -14221,14 +14221,15 @@ const struct Item gItemsInfo[] =
         .price = 0,
         .description = COMPOUND_STRING(
             "Perfect for\n"
-            "whistling annoyingly."
+            "whistling\n"
+            "annoyingly."
         ),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_BrokenFaucet,
-        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+        .iconPic = gItemIcon_GrassBlade,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
     
     [ITEM_BADASS_SAIL] =
@@ -14244,8 +14245,8 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_BrokenFaucet,
-        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+        .iconPic = gItemIcon_BadassSail,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
     
     [ITEM_WATER_STONE_2] =
@@ -14261,6 +14262,7 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_WaterStone
+        .iconPic = gItemIcon_WaterStone,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
 };

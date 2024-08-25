@@ -747,7 +747,8 @@
 #define METATILE_SootopolisGym_Stairs       0x207
 
 // gTileset_SpindaIsland
-#define METATILE_SpindaIsland_Grass  0x001
+#define METATILE_SpindaIsland_BrokenFaucetGround  0x158
+#define METATILE_SpindaIsland_Grass               0x001
 
 // gTileset_SpindaIslandSecondary
 #define METATILE_SpindaIslandSecondary_BrokenFaucetGround  0x288

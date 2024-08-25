@@ -1,7 +1,13 @@
 const LOCALID_SAD_MAN = 3
 
 mapscripts SpindaIsland_Home_Clock2_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION {
+		if (flag(FLAG_SLOWPOKE_EVOLVED)) {
+			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWBRO))
+		} else {
+			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWPOKE))
+		}
+	}
 }
 
 script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
@@ -15,9 +21,13 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 	))
 	closemessage
 
+	playse(SE_PIN)
 	applymovement(LOCALID_SAD_MAN, Common_Movement_ExclamationMark)
 	waitmovement(0)
+	delay(48)
+
 	applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManSurprise)
+	waitmovement(0)
 
 	speakername("Sad man")
 	msgbox(format(
@@ -31,7 +41,6 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 	msgbox(format(
 		"Did… did you do something?"
 	))
-	closemessage
 	
 	dynmultichoice(
 		16,
@@ -43,6 +52,7 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 		"I didn't do anything special…",
 		"I… turned around?"
 	)
+	closemessage
 
 	speakername("Sad man")
 	msgbox(format(
@@ -65,6 +75,7 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 			applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManEntersHome)
 	}
 
+	waitmovement(0)
 	removeobject(LOCALID_SAD_MAN)
 	setflag(FLAG_HIDE_MAN_CANT_GO_HOME)
 
@@ -82,8 +93,27 @@ script SpindaIsland_Home_Clock2_EventScript_FindSeashell {
 	removefieldmugshot
 
 	giveitem(ITEM_WHITE_SEASHELL)
+	setflag(FLAG_FOUND_WHITE_SEASHELL)
+	removeobject(VAR_LAST_TALKED)
 
 	release
+}
+
+script SpindaIsland_Home_Clock2_EventScript_NoteBehindFaucetSign {
+	msgbox(format(
+		"“look down”"
+	), MSGBOX_SIGN)
+}
+
+script SpindaIsland_Home_Clock2_EventScript_ExplanationSign {
+	msgbox((
+		"“This world is a little strange.\n"
+		"When an object is turned to the side,\l"
+		"you cannot interact with it.\l"
+		"It has to face {COLOR RED}you{COLOR DARK_GRAY}.\l"
+		"Not your body, but your very soul.\l"
+		"What could be called the {COLOR RED}true you{COLOR DARK_GRAY}.”"
+	), MSGBOX_SIGN)
 }
 
 movement SpindaIsland_Home_Clock2_Movement_SadManEntersHome {

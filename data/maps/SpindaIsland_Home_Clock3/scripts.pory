@@ -1,0 +1,9 @@
+mapscripts SpindaIsland_Home_Clock3_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if (flag(FLAG_SLOWPOKE_EVOLVED)) {
+			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWBRO))
+		} else {
+			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWPOKE))
+		}
+	}
+}

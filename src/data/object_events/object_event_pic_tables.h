@@ -461,6 +461,10 @@ static const struct SpriteFrameImage sPicTable_MovingBox[] = {
     obj_frame_tiles(gObjectEventPic_MovingBox),
 };
 
+static const struct SpriteFrameImage sPicTable_Seashell[] = {
+    obj_frame_tiles(gObjectEventPic_Seashell),
+};
+
 static const struct SpriteFrameImage sPicTable_CableCar[] = {
     obj_frame_tiles(gObjectEventPic_CableCar),
 };
@@ -905,7 +909,7 @@ static const struct SpriteFrameImage sPicTable_MayDecorating[] = {
 };
 
 static const struct SpriteFrameImage sPicTable_Archie[] = {
-    overworld_ascending_frames(gObjectEventPic_Archie, 2, 4),
+    overworld_ascending_frames(gObjectEventPic_Archie, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_Maxie[] = {

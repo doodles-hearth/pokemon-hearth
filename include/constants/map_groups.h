@@ -655,8 +655,13 @@
 #define MAP_SPINDA_ISLAND_PLAYER_HOME_CLOCK3 (3 | (39 << 8))
 
 // gMapGroup_Spinda_ShuppetHouse
+#define MAP_SPINDA_ISLAND_SHUPPER_HOUSE        (0 | (40 << 8))
+#define MAP_SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK1 (1 | (40 << 8))
+#define MAP_SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK2 (2 | (40 << 8))
+#define MAP_SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK3 (3 | (40 << 8))
 
 // gMapGroup_Spinda_ShuppetHouse_Attic
+#define MAP_SPINDA_ISLAND_SHUPPET_HOUSE_ATTIC (0 | (41 << 8))
 
 // gMapGroup_Spinda_BobsHouse
 

@@ -31,17 +31,10 @@
   "warp_events": [
     {
       "x": 9,
-      "y": 2,
-      "elevation": 0,
-      "dest_map": "MAP_SPINDA_ISLAND_HOME",
-      "dest_warp_id": "0"
-    },
-    {
-      "x": 10,
-      "y": 2,
+      "y": 1,
       "elevation": 0,
       "dest_map": "MAP_SPINDA_ISLAND_HOME_CLOCK2",
-      "dest_warp_id": "0"
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

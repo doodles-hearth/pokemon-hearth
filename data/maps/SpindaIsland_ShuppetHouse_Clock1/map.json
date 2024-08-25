@@ -1,0 +1,28 @@
+{
+  "id": "MAP_SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK1",
+  "name": "SpindaIsland_ShuppetHouse_Clock1",
+  "layout": "LAYOUT_SPINDA_ISLAND_HOUSE_CLOCK1",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

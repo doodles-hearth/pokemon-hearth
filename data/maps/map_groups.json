@@ -696,10 +696,13 @@
     "SpindaIsland_PlayerHome_Clock3"
   ],
   "gMapGroup_Spinda_ShuppetHouse": [
-
+    "SpindaIsland_ShupperHouse",
+    "SpindaIsland_ShuppetHouse_Clock1",
+    "SpindaIsland_ShuppetHouse_Clock2",
+    "SpindaIsland_ShuppetHouse_Clock3"
   ],
   "gMapGroup_Spinda_ShuppetHouse_Attic": [
-
+    "SpindaIsland_ShuppetHouse_Attic"
   ],
   "gMapGroup_Spinda_BobsHouse": [
 

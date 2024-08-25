@@ -1737,6 +1737,19 @@ extern const u32 gItemIconPalette_SwapSnack[];
 extern const u32 gItemIcon_TwiceSpicedRadish[];
 extern const u32 gItemIconPalette_TwiceSpicedRadish[];
 
+extern const u32 gItemIcon_BrokenFaucet[];
+extern const u32 gItemIcon_NewFaucet[];
+extern const u32 gItemIcon_BadassSail[];
+extern const u32 gItemIcon_CookingOil[];
+extern const u32 gItemIcon_SaltyLemonade[];
+extern const u32 gItemIcon_WhiteSeashell[];
+extern const u32 gItemIcon_RustyNickel[];
+extern const u32 gItemIcon_ToyCamera[];
+extern const u32 gItemIcon_BorrowedPliers[];
+extern const u32 gItemIcon_GrassBlade[];
+extern const u32 gItemIconPalette_SpindaIsland_DarkBg[];
+extern const u32 gItemIconPalette_SpindaIsland_BrownBg[];
+
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];
 

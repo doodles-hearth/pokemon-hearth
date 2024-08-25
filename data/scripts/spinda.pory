@@ -1,10 +1,14 @@
 
 script Spinda_SpinClockwise {
-    setwarpnextmapclockwise
+    if (flag(FLAG_RECEIVED_STARTER)) {
+        setwarpnextmapclockwise
+    }
 }
 
 script Spinda_SpinCounterclockwise {
-    setwarpnextmapcounterclockwise
+    if (flag(FLAG_RECEIVED_STARTER)) {
+        setwarpnextmapcounterclockwise
+    }
 }
 
 script Spinda_TurnPlayerClockwise {

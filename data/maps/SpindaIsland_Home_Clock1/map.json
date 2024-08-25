@@ -67,7 +67,7 @@
       "flag": "FLAG_HIDE_MAN_CANT_GO_HOME"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_SEASHELL",
       "x": 9,
       "y": 38,
       "elevation": 0,
@@ -91,10 +91,42 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpindaIsland_Home_EventScript_PoemGirl",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "x": 32,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_SlowpokeMistress",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VAR_0",
+      "x": 31,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_Slowpoke",
+      "flag": "0"
     }
   ],
   "warp_events": [
-
+    {
+      "x": 16,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_SPINDA_ISLAND_PLAYER_HOME_CLOCK1",
+      "dest_warp_id": "0"
+    }
   ],
   "coord_events": [
 
