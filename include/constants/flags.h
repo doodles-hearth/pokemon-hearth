@@ -70,9 +70,9 @@
 #define FLAG_RECEIVED_SLOWPOKE_REWARD    0x34
 #define FLAG_HIDE_SLOWBRO    0x35
 #define FLAG_GAVE_MOM_LEMONADE    0x36
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
+#define FLAG_CAMERA_EXPLODED    0x37
+#define FLAG_REALIZED_I_HAVE_NICKEL    0x38
+#define FLAG_HIDE_PHOTO_MAN    0x39
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag

@@ -446,7 +446,6 @@ script SpindaIsland_Home_Slowpoke {
 				"… … …?\p"
 				"He's looking at the white seashell I found…"
 			))
-			removefieldmugshot
 
 			dynmultichoice(
 				0,
@@ -459,6 +458,7 @@ script SpindaIsland_Home_Slowpoke {
 				"Don't give the seashell"
 			)
 			closemessage
+			removefieldmugshot
 
 			switch(var(VAR_RESULT)) {
 				case 0:
@@ -516,6 +516,73 @@ script SpindaIsland_Home_Slowpoke {
 	release
 }
 
+script SpindaIsland_Home_EventScript_Metapod {
+	lock
+	speakername("Metapod")
+	playmoncry(SPECIES_METAPOD, CRY_MODE_NORMAL)
+	msgbox(format(
+		"…"
+	))
+	waitmoncry
+	closemessage
+	release
+}
+
+script SpindaIsland_Home_EventScript_MetapodBoy1 {
+	lock
+	speakername("Twin 1")
+	msgbox(format(
+		"I'm SO CLOSE to winning!"
+	))
+	closemessage
+
+	faceplayer
+
+	speakername("Twin 1")
+	msgbox(format(
+		"I'm SO CLOSE to winning!"
+	))
+	closemessage
+
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	
+	speakername("Twin 1")
+	msgbox(format(
+		"Metapod, use harden!!"
+	))
+	closemessage
+
+	playse(SE_M_HARDEN)
+	waitse
+	playse(SE_M_HARDEN)
+	waitse
+	delay(48)
+	release
+}
+
+script SpindaIsland_Home_EventScript_MetapodBoy2 {
+	lock
+	faceplayer
+	speakername("Twin 1")
+	msgbox(format(
+		"Can't you see we're in the midst of a fiery battle?"
+	))
+	closemessage
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	speakername("Twin 1")
+	msgbox(format(
+		"Metapod, use harden!!"
+	))
+	closemessage
+
+	playse(SE_M_HARDEN)
+	waitse
+	playse(SE_M_HARDEN)
+	waitse
+	delay(48)
+	release
+}
+
 movement SpindaIsland_Home_Movement_Slowpoke {
 	lock_facing_direction
 	jump_in_place_down
@@ -529,11 +596,12 @@ movement SpindaIsland_Home_Movement_Slowpoke {
 	delay_16
 	face_up
 	delay_16
-	face_original_direction
+	face_player
 	delay_16 * 3
 	lock_facing_direction
 	jump_in_place_down
 	jump_in_place_down
+	unlock_facing_direction
 	emote_heart
 	delay_16 * 3
 }

@@ -18,6 +18,8 @@
 #include "constants/event_object_movement.h"
 #include "constants/field_effects.h"
 #include "constants/trainer_types.h"
+#include "data.h"
+#include "follower_helper.h"
 
 // this file's functions
 static u8 CheckTrainer(u8 objectEventId);
@@ -865,15 +867,39 @@ void TryPrepareSecondApproachingTrainer(void)
 
 u8 FldEff_ExclamationMarkIcon(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
+    // u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
 
-    if (spriteId != MAX_SPRITES)
-    {
-        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, 0);
-        UpdateSpritePaletteByTemplate(&sSpriteTemplate_ExclamationQuestionMark, &gSprites[spriteId]);
-    }
+    // if (spriteId != MAX_SPRITES)
+    // {
+    //     SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, 0);
+    //     UpdateSpritePaletteByTemplate(&sSpriteTemplate_ExclamationQuestionMark, &gSprites[spriteId]);
+    // }
 
+    // return 0;
+
+
+
+        u8 spriteId;
+    // if (gFieldEffectArguments[7] >= 0)
+    // {
+        // Use follower emotes
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
+    if (spriteId == MAX_SPRITES)
+        return 0;
+    SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE, FOLLOWER_EMOTION_SURPRISE); // Set animation based on emotion
+    UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
     return 0;
+    // }
+
+    // spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
+
+    // if (spriteId != MAX_SPRITES)
+    // {
+    //     SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, 0);
+    //     UpdateSpritePaletteByTemplate(&sSpriteTemplate_ExclamationQuestionMark, &gSprites[spriteId]);
+    // }
+
+    // return 0;
 }
 
 u8 FldEff_QuestionMarkIcon(void)

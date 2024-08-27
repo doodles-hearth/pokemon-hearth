@@ -38,7 +38,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_SPINDA_ISLAND_INTRO_STATE",
+      "var_value": "1",
+      "script": "SpinaIsland_PlayerHome_EventScript_EnterLivingRoom"
+    }
   ],
   "bg_events": [
     {

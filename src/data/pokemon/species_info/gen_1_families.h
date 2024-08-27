@@ -1104,8 +1104,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_SPOT,
-            gFollowerPalette_Metapod,
-            gShinyFollowerPalette_Metapod
+            gItemIconPalette_SpindaIsland_BrownBg,
+            gItemIconPalette_SpindaIsland_BrownBg
         )
         .tmIlliterate = TRUE,
         .levelUpLearnset = sMetapodLevelUpLearnset,

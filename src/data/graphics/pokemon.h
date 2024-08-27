@@ -298,8 +298,8 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #if OW_FOLLOWERS_ENABLED
     const u32 gObjectEventPic_Metapod[] = INCBIN_COMP("graphics/pokemon/metapod/follower.4bpp");
 #if OW_FOLLOWERS_SHARE_PALETTE == FALSE
-    const u32 gFollowerPalette_Metapod[] = INCBIN_U32("graphics/pokemon/metapod/follow_normal.gbapal.lz");
-    const u32 gShinyFollowerPalette_Metapod[] = INCBIN_U32("graphics/pokemon/metapod/follow_shiny.gbapal.lz");
+    // const u32 gFollowerPalette_Metapod[] = INCBIN_U32("graphics/pokemon/metapod/follow_normal.gbapal.lz");
+    // const u32 gShinyFollowerPalette_Metapod[] = INCBIN_U32("graphics/pokemon/metapod/follow_shiny.gbapal.lz");
 #endif //OW_FOLLOWERS_SHARE_PALETTE
 #endif //OW_FOLLOWERS_ENABLED
 

@@ -69,7 +69,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SEASHELL",
       "x": 9,
-      "y": 38,
+      "y": 37,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -117,6 +117,84 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpindaIsland_Home_Slowpoke",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "x": 21,
+      "y": 47,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_EventScript_MetapodBoy2",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(METAPOD)",
+      "x": 21,
+      "y": 48,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_EventScript_Metapod",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(METAPOD)",
+      "x": 21,
+      "y": 49,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_EventScript_Metapod",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "x": 21,
+      "y": 50,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_EventScript_MetapodBoy1",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "x": 27,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_PHOTO_MAN"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "x": 31,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_Clock1_PhotoCamera",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -147,6 +225,38 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SpindaIsland_Common_CantOpenFromThisSide"
+    },
+    {
+      "type": "sign",
+      "x": 37,
+      "y": 41,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpindaIsland_Common_CantOpenFromThisSide"
+    },
+    {
+      "type": "sign",
+      "x": 17,
+      "y": 40,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpindaIsland_Common_CantOpenFromThisSide"
+    },
+    {
+      "type": "sign",
+      "x": 27,
+      "y": 14,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpindaIsland_Home_Clock1_PhotoHouseDoor"
+    },
+    {
+      "type": "sign",
+      "x": 25,
+      "y": 14,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpindaIsland_Home_Clock1_PhotoHouseSign"
     }
   ]
 }

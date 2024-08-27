@@ -1,3 +1,5 @@
+const LOCALID_PHOTO_MAN = 14
+
 mapscripts SpindaIsland_Home_Clock1_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		if (flag(FLAG_SLOWPOKE_EVOLVED)) {
@@ -94,6 +96,279 @@ script SpindaIsland_Home_Clock1_Faucet {
 
 		release
 	}
+}
+
+script SpindaIsland_Home_Clock1_PhotoCamera {
+	lock
+
+	if (flag(FLAG_CAMERA_EXPLODED)) {
+		speakername("Little Archie")
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		msgbox(format(
+			"Nothing's left but a pile of ashes…"
+		))
+		removefieldmugshot
+		closemessage
+		return
+	}
+
+	if (var(VAR_FACING) != DIR_NORTH) {
+		speakername("Little Archie")
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		msgbox(format(
+			"I should probably face the lens if I want to take a picture of myself."
+		))
+		removefieldmugshot
+		closemessage
+	} else {
+			msgbox(format(
+				"“GET A PHOTO FOR A NICKEL!”"
+			))
+
+			speakername("Little Archie")
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
+			msgbox(format(
+				"Ugh, rattatas… Don't they know kids don't have money?"
+			))
+			removefieldmugshot
+			closemessage
+
+			if (checkitem(ITEM_RUSTY_NICKEL)) {
+				if (flag(FLAG_REALIZED_I_HAVE_NICKEL)) {
+					speakername("Little Archie")
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+					msgbox(format(
+						"I still have that nickel from earlier."
+					))
+				} else {
+					playse(SE_PIN)
+					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+					waitse
+					delay(48)
+
+					speakername("Little Archie")
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SURPRISED)
+					msgbox(format(
+						"Wait! I do have a nickel, don't I?\p"
+						"Those kids gave it to me earlier!\p"
+						"I'm basically rich!"
+					))
+				}
+
+				dynmultichoice(
+					0,
+					0,
+					TRUE,
+					10,
+					0,
+					DYN_MULTICHOICE_CB_NONE,
+					"Use nickel",
+					"Save nickel"
+				)
+
+				removefieldmugshot
+				closemessage
+				
+				if (var(VAR_RESULT) == 0) {
+					setflag(FLAG_CAMERA_EXPLODED)
+
+					speakername("Little Archie")
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+					msgbox(format(
+						"It's kinda rusty and misshapen…\p"
+						"Oh well, what's the worst that can happen?\p"
+						"A coin's a coin, right?"
+					))
+					closemessage
+					removefieldmugshot
+
+					playse(SE_VEND)
+					msgbox(format(
+						"…clunk!"
+					))
+					waitse
+					closemessage
+
+					speakername("Little Archie")
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+					msgbox(format(
+						"…Cheese!"
+					))
+					closemessage
+					removefieldmugshot
+
+					delay(48)
+
+					playse(SE_SWITCH)
+					waitse
+					playse(SE_SWITCH)
+					waitse
+					playse(SE_SWITCH)
+					waitse
+					delay(20)
+					playse(SE_FAILURE)
+					waitse
+					delay(20)
+					playse(SE_BANG)
+
+					setmetatile(31, 13, METATILE_SpindaIsland_Grass, FALSE)
+					setmetatile(31, 14, METATILE_SpindaIsland_Grass, FALSE)
+
+					applymovement(OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Clock1_Movement_ArchieJumps)
+					waitmovement(0)
+					waitse
+
+					speakername("Little Archie")
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SURPRISED)
+					msgbox(format(
+						"The hell?!\p"
+						"The camera… exploded?!"
+					))
+					closemessage
+					removefieldmugshot
+
+					playse(SE_EXIT)
+					clearflag(FLAG_HIDE_PHOTO_MAN)
+					addobject(LOCALID_PHOTO_MAN)
+					waitse
+
+					turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+					applymovement(LOCALID_PHOTO_MAN, SpindaIsland_Home_Clock1_Movement_PhotoManNotice)
+					waitmovement(LOCALID_PHOTO_MAN)
+
+					applymovement(LOCALID_PHOTO_MAN, SpindaIsland_Home_Clock1_Movement_PhotoManJump)
+					playse(SE_BIKE_HOP)
+					waitmovement(LOCALID_PHOTO_MAN)
+					waitse
+
+					speakername("Camera owner")
+					msgbox(format(
+						"What the hell did you do?\p"
+						"Why did you destroy my automatic camera?!"
+					))
+
+					dynmultichoice(
+						0,
+						0,
+						TRUE,
+						10,
+						0,
+						DYN_MULTICHOICE_CB_NONE,
+						"Where's my photograph?",
+						"It didn't like my nickel!"
+					)
+					closemessage
+
+					switch(var(VAR_RESULT)) {
+						case 0:
+							speakername("Camera owner")
+							msgbox(format(
+								"What the hell happened?\p"
+								"Why did you destroy my automatic camera?!"
+							))
+						case 1:
+					}
+
+					closemessage
+
+					speakername("Camera owner")
+					msgbox(format(
+						"… …You were just trying to have your photograph taken?\p"
+						"Hmm…\p"
+						"I guess maybe using Voltorb as electrical components wasn't such a great idea after all…\p"
+						"Alright, alright, I'm sorry about this whole exploding business.\p"
+						"Let me give you a brand-new camera as an apology."
+					))
+					closemessage
+
+					giveitem(ITEM_TOY_CAMERA)
+
+					speakername("Camera owner")
+					msgbox(format(
+						"You're welcome, kid.\p"
+						"Please uh, don't tell your parents about this, alright?"
+					))
+					closemessage
+
+					applymovement(LOCALID_PHOTO_MAN, SpindaIsland_Home_Clock1_Movement_PhotoManLeave)
+					waitmovement(0)
+					playse(SE_EXIT)
+					removeobject(LOCALID_PHOTO_MAN)
+					setflag(FLAG_HIDE_PHOTO_MAN)
+					waitse
+
+					delay(60)
+					turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+
+					speakername("Little Archie")
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+					msgbox(format(
+						"Hey, at least I got a free camera out of this!\p"
+						"…Wait a minute…"
+					))
+					removefieldmugshot
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
+					msgbox(format(
+						"Oh, man, this is just a toy! It doesn't take any pictures!"
+					))
+					removefieldmugshot
+					closemessage
+
+					playse(SE_SWITCH)
+					waitse
+					playse(SE_M_LEER)
+					fadescreenspeed(FADE_TO_WHITE, 0)
+					fadescreenspeed(FADE_FROM_WHITE, 0)
+					waitse
+
+					speakername("Little Archie")
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_BLIND)
+					msgbox(format(
+						"Ugh, the flash works though…\p"
+						"My eyes… I'm blind…"
+					))
+					removefieldmugshot
+					closemessage
+				}
+			}
+			
+			closemessage
+	}
+	
+	release
+}
+
+script SpindaIsland_Home_Clock1_PhotoHouseDoor {
+	lock
+	speakername("Little Archie")
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_THINKING)
+	msgbox(format("…I can hear tiny explosions through the door…"))
+	removefieldmugshot
+	release
+}
+
+script SpindaIsland_Home_Clock1_PhotoHouseSign {
+	msgbox(format("Louis"), MSGBOX_SIGN)
+}
+
+movement SpindaIsland_Home_Clock1_Movement_PhotoManLeave {
+	walk_left * 3
+	walk_up
+}
+
+movement SpindaIsland_Home_Clock1_Movement_PhotoManNotice {
+	walk_down
+	face_right
+	delay_16
+	walk_right * 3
+	delay_16
+}
+
+movement SpindaIsland_Home_Clock1_Movement_ArchieJumps {
+	lock_facing_direction
+	jump_in_place_up
+	unlock_facing_direction
+	emote_exclamation_mark
 }
 
 movement SpindaIsland_Home_Clock1_FaucetBreaks {

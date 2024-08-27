@@ -295,5 +295,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_RIVAL_SAKU
 	clearflag FLAG_CUT_QUEST_CUT_ALL_GRASS
 
+	setflag FLAG_HIDE_PHOTO_MAN
+
 	call EventScript_ResetAllBerries
 	end
