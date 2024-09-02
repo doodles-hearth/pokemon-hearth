@@ -212,13 +212,17 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     }
     if (input->pressedLButton)
     {
-        ScrCmd_setwarpnextmapcounterclockwise(NULL);
-        return TRUE;
+        if (FlagGet(FLAG_TOOK_SPINDA)) {
+            ScrCmd_setwarpnextmapcounterclockwise(NULL);
+            return TRUE;
+        }
     }
     if (input->pressedRButton)
     {
-        ScrCmd_setwarpnextmapclockwise(NULL);
-        return TRUE;
+        if (FlagGet(FLAG_TOOK_SPINDA)) {
+            ScrCmd_setwarpnextmapclockwise(NULL);
+            return TRUE;
+        }
     }
     if (input->pressedSelectButton)
     {

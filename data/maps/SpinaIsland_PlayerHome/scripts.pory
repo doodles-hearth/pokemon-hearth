@@ -230,7 +230,7 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 		"That's cause today's the big day!!"
     ))
 	removefieldmugshot
-	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
 	msgbox(format(
 		"You haven't forgotten about my super secret thing, right?"
     ))
@@ -266,7 +266,7 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 	removefieldmugshot
 	turnobject(LOCALID_MOM, DIR_NORTH)
 
-	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
     speakername("Little Archie")
     msgbox(format(
 		"Ughhhhhh, fine…"
@@ -286,7 +286,7 @@ script SpinaIsland_PlayerHome_EventScript_GetSpinda {
 	givemon(SPECIES_SPINDA, 20)
 	setflag(FLAG_RECEIVED_STARTER)
 	
-	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
     speakername("Little Archie")
     msgbox(format(
 		"I could never forget you, Spinda!"

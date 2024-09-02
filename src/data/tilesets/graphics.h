@@ -2052,3 +2052,22 @@ const u16 gTilesetPalettes_TestEvaToBeDeleted[][16] =
 };
 
 const u32 gTilesetTiles_TestEvaToBeDeleted[] = INCBIN_U32("data/tilesets/secondary/test_eva_to_be_deleted/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_YakAttack[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/yak_attack/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_YakAttack[] = INCBIN_U32("data/tilesets/primary/yak_attack/tiles.4bpp.lz");

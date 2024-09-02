@@ -76,11 +76,15 @@ script SpindaIsland_Home_Clock1_Faucet {
 		waitmovement(OBJ_EVENT_ID_PLAYER)
 		waitse
 
-		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SHOCKED)
 		speakername("Little Archie")
 		msgbox(format(
 			"Aw, Shuckles! It broke!\p"
-			"Mom is totally gonna kill me!!\p"
+			"Mom is totally gonna kill me!!"
+		))
+		removefieldmugshot
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		msgbox(format(
 			"Let's, uh, not tell her anything and fix this ourselves!\p"
 			"I better pocket this, too."
 		))
@@ -105,7 +109,7 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 		speakername("Little Archie")
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 		msgbox(format(
-			"Nothing's left but a pile of ashes…"
+			"Nothing left but a pile of ashes…"
 		))
 		removefieldmugshot
 		closemessage
@@ -121,18 +125,6 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 		removefieldmugshot
 		closemessage
 	} else {
-			msgbox(format(
-				"“GET A PHOTO FOR A NICKEL!”"
-			))
-
-			speakername("Little Archie")
-			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
-			msgbox(format(
-				"Ugh, rattatas… Don't they know kids don't have money?"
-			))
-			removefieldmugshot
-			closemessage
-
 			if (checkitem(ITEM_RUSTY_NICKEL)) {
 				if (flag(FLAG_REALIZED_I_HAVE_NICKEL)) {
 					speakername("Little Archie")
@@ -141,18 +133,32 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 						"I still have that nickel from earlier."
 					))
 				} else {
+					msgbox(format(
+						"“GET A PHOTO FOR A NICKEL!”"
+					))
+
+					speakername("Little Archie")
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
+					msgbox(format(
+						"Ugh, Rattatas… Don't they know kids don't have money?"
+					))
+					removefieldmugshot
+					closemessage
+
 					playse(SE_PIN)
 					applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
 					waitse
 					delay(48)
 
 					speakername("Little Archie")
-					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SURPRISED)
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
 					msgbox(format(
 						"Wait! I do have a nickel, don't I?\p"
 						"Those kids gave it to me earlier!\p"
 						"I'm basically rich!"
 					))
+
+					setflag(FLAG_REALIZED_I_HAVE_NICKEL)
 				}
 
 				dynmultichoice(
@@ -175,7 +181,11 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 					speakername("Little Archie")
 					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 					msgbox(format(
-						"It's kinda rusty and misshapen…\p"
+						"It's kinda rusty and misshapen…"
+					))
+					removefieldmugshot
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+					msgbox(format(
 						"Oh well, what's the worst that can happen?\p"
 						"A coin's a coin, right?"
 					))
@@ -243,7 +253,7 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 
 					speakername("Camera owner")
 					msgbox(format(
-						"What the hell did you do?\p"
+						"What the hell happened?\p"
 						"Why did you destroy my automatic camera?!"
 					))
 
@@ -257,18 +267,6 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 						"Where's my photograph?",
 						"It didn't like my nickel!"
 					)
-					closemessage
-
-					switch(var(VAR_RESULT)) {
-						case 0:
-							speakername("Camera owner")
-							msgbox(format(
-								"What the hell happened?\p"
-								"Why did you destroy my automatic camera?!"
-							))
-						case 1:
-					}
-
 					closemessage
 
 					speakername("Camera owner")
@@ -362,6 +360,12 @@ movement SpindaIsland_Home_Clock1_Movement_PhotoManNotice {
 	delay_16
 	walk_right * 3
 	delay_16
+}
+
+movement SpindaIsland_Home_Clock1_Movement_PhotoManJump {
+	lock_facing_direction
+	jump_in_place_down
+	unlock_facing_direction
 }
 
 movement SpindaIsland_Home_Clock1_Movement_ArchieJumps {

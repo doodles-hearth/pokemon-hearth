@@ -664,7 +664,7 @@
 #define FLAG_MYSTERIOUS_SAMURAI_TRANQUIL_ROUTE  0x268
 // True if the Pokémon refuge presentation speech has been given
 #define FLAG_POKEMON_REFUGE_PRESENTATION  0x269
-#define FLAG_UNUSED_0x26A  0x26A // Unused Flag
+#define FLAG_TOOK_SPINDA  0x26A
 #define FLAG_UNUSED_0x26B  0x26B // Unused Flag
 #define FLAG_UNUSED_0x26C  0x26C // Unused Flag
 #define FLAG_UNUSED_0x26D  0x26D // Unused Flag

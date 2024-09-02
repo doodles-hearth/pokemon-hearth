@@ -84,7 +84,7 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 
 script SpindaIsland_Home_Clock2_EventScript_FindSeashell {
 	lock
-	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SURPRISED)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
     speakername("Little Archie")
     msgbox(format(
 		"Woah, what's this?\p"

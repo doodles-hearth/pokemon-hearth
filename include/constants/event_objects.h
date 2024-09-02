@@ -53,7 +53,7 @@
 #define OBJ_EVENT_GFX_SAILOR                      49
 #define OBJ_EVENT_GFX_FISHERMAN                   50
 #define OBJ_EVENT_GFX_RUNNING_TRIATHLETE_M        51
-#define OBJ_EVENT_GFX_RUNNING_TRIATHLETE_F        52
+#define OBJ_EVENT_GFX_SWIMMER_FULL_F        52
 #define OBJ_EVENT_GFX_TUBER_F                     53
 #define OBJ_EVENT_GFX_TUBER_M                     54
 #define OBJ_EVENT_GFX_HIKER                       55
@@ -397,7 +397,7 @@
 #define OBJ_EVENT_PAL_TAG_COOK                    0x1139
 #define OBJ_EVENT_PAL_TAG_NURSE                   0x113A
 #define OBJ_EVENT_PAL_TAG_TRAVELER                0x113B
-#define OBJ_EVENT_PAL_TAG_FISHERMAN               0x113C
+#define OBJ_EVENT_PAL_TAG_SPINDA_ISLAND_NPC_DARKBG 0x113C
 #define OBJ_EVENT_PAL_TAG_SPINDA_ISLAND_NPC       0x113D
 
 #if OW_MON_POKEBALLS

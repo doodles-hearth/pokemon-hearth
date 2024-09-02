@@ -1236,7 +1236,7 @@
       "name": "Route121_SafariZoneEntrance_Layout",
       "width": 18,
       "height": 14,
-      "primary_tileset": "gTileset_Building",
+      "primary_tileset": "gTileset_YakAttack",
       "secondary_tileset": "gTileset_Shop",
       "border_filepath": "data/layouts/Route121_SafariZoneEntrance/border.bin",
       "blockdata_filepath": "data/layouts/Route121_SafariZoneEntrance/map.bin"
@@ -4840,6 +4840,56 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/SpindaIsland_ShuppetHouse_Attic/border.bin",
       "blockdata_filepath": "data/layouts/SpindaIsland_ShuppetHouse_Attic/map.bin"
+    },
+    {
+      "id": "LAYOUT_FAUCET_SHOP",
+      "name": "FaucetShop_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_HackingCompHouse",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/FaucetShop/border.bin",
+      "blockdata_filepath": "data/layouts/FaucetShop/map.bin"
+    },
+    {
+      "id": "LAYOUT_BOBS_HOUSE",
+      "name": "BobsHouse_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_HackingCompHouse",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/BobsHouse/border.bin",
+      "blockdata_filepath": "data/layouts/BobsHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_FAUCET_SHOP_CLOCK1",
+      "name": "FaucetShop_Clock1_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_HackingCompHouse",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/FaucetShop_Clock1/border.bin",
+      "blockdata_filepath": "data/layouts/FaucetShop_Clock1/map.bin"
+    },
+    {
+      "id": "LAYOUT_FAUCET_SHOP_CLOCK2",
+      "name": "FaucetShop_Clock2_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_HackingCompHouse",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/FaucetShop_Clock2/border.bin",
+      "blockdata_filepath": "data/layouts/FaucetShop_Clock2/map.bin"
+    },
+    {
+      "id": "LAYOUT_FAUCET_SHOP_CLOCK3",
+      "name": "FaucetShop_Clock3_Layout",
+      "width": 13,
+      "height": 13,
+      "primary_tileset": "gTileset_HackingCompHouse",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/FaucetShop_Clock3/border.bin",
+      "blockdata_filepath": "data/layouts/FaucetShop_Clock3/map.bin"
     }
   ]
 }

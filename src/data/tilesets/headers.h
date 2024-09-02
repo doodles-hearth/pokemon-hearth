@@ -1067,3 +1067,14 @@ const struct Tileset gTileset_TestEvaToBeDeleted =
     .metatileAttributes = gMetatileAttributes_TestEvaToBeDeleted,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_YakAttack =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_YakAttack,
+    .palettes = gTilesetPalettes_YakAttack,
+    .metatiles = gMetatiles_YakAttack,
+    .metatileAttributes = gMetatileAttributes_YakAttack,
+    .callback = NULL,
+};

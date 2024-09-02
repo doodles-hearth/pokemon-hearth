@@ -664,8 +664,13 @@
 #define MAP_SPINDA_ISLAND_SHUPPET_HOUSE_ATTIC (0 | (41 << 8))
 
 // gMapGroup_Spinda_BobsHouse
+#define MAP_BOBS_HOUSE (0 | (42 << 8))
 
 // gMapGroup_Spinda_FaucetShop
+#define MAP_FAUCET_SHOP        (0 | (43 << 8))
+#define MAP_FAUCET_SHOP_CLOCK1 (1 | (43 << 8))
+#define MAP_FAUCET_SHOP_CLOCK2 (2 | (43 << 8))
+#define MAP_FAUCET_SHOP_CLOCK3 (3 | (43 << 8))
 
 // gMapGroup_Spinda_PhotoShop
 

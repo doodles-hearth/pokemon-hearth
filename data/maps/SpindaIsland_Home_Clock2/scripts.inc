@@ -107,7 +107,7 @@ SpindaIsland_Home_Clock2_EventScript_FindSeashell::
 # 86 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	lock
 # 87 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_SURPRISED
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
 # 88 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	speakername SpindaIsland_Home_Clock2_EventScript_FindSeashell_Text_0
 # 89 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"

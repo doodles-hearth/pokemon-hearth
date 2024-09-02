@@ -705,10 +705,13 @@
     "SpindaIsland_ShuppetHouse_Attic"
   ],
   "gMapGroup_Spinda_BobsHouse": [
-
+    "BobsHouse"
   ],
   "gMapGroup_Spinda_FaucetShop": [
-
+    "FaucetShop",
+    "FaucetShop_Clock1",
+    "FaucetShop_Clock2",
+    "FaucetShop_Clock3"
   ],
   "gMapGroup_Spinda_PhotoShop": [
 

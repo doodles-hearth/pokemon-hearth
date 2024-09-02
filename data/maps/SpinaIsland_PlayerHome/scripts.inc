@@ -272,7 +272,7 @@ SpinaIsland_PlayerHome_EventScript_EnterLivingRoom::
 # 232 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
 # 233 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
 # 234 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_2
 # 237 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
@@ -316,7 +316,7 @@ SpinaIsland_PlayerHome_EventScript_EnterLivingRoom::
 # 267 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	turnobject 1, DIR_NORTH
 # 269 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_SAD
 # 270 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
 # 271 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
@@ -342,7 +342,7 @@ SpinaIsland_PlayerHome_EventScript_GetSpinda::
 # 287 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	setflag FLAG_RECEIVED_STARTER
 # 289 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
 # 290 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
 # 291 "data/maps/SpinaIsland_PlayerHome/scripts.pory"

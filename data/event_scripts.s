@@ -1193,3 +1193,13 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SpindaIsland_ShuppetHouse_Clock3/scripts.inc"
 
 	.include "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.inc"
+
+	.include "data/maps/FaucetShop/scripts.inc"
+
+	.include "data/maps/BobsHouse/scripts.inc"
+
+	.include "data/maps/FaucetShop_Clock1/scripts.inc"
+
+	.include "data/maps/FaucetShop_Clock2/scripts.inc"
+
+	.include "data/maps/FaucetShop_Clock3/scripts.inc"

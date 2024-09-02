@@ -753,6 +753,7 @@
 // gTileset_SpindaIslandSecondary
 #define METATILE_SpindaIslandSecondary_BrokenFaucetGround  0x288
 #define METATILE_SpindaIslandSecondary_BrokenFaucetWall    0x25E
+#define METATILE_SpindaIslandSecondary_FaucetWheel         0x298
 
 // gTileset_TrainerHill
 #define METATILE_TrainerHill_CounterDoor          0x334

@@ -1,6 +1,6 @@
 Spinda_SpinClockwise::
 # 3 "data/scripts/spinda.pory"
-	goto_if_set FLAG_RECEIVED_STARTER, Spinda_SpinClockwise_1
+	goto_if_set FLAG_TOOK_SPINDA, Spinda_SpinClockwise_1
 	return
 
 Spinda_SpinClockwise_1:
@@ -11,7 +11,7 @@ Spinda_SpinClockwise_1:
 
 Spinda_SpinCounterclockwise::
 # 9 "data/scripts/spinda.pory"
-	goto_if_set FLAG_RECEIVED_STARTER, Spinda_SpinCounterclockwise_1
+	goto_if_set FLAG_TOOK_SPINDA, Spinda_SpinCounterclockwise_1
 	return
 
 Spinda_SpinCounterclockwise_1:
@@ -240,6 +240,24 @@ SpindaIsland_Common_CantSeeFromSide::
 	return
 
 
+SpindaIsland_Common_CantUseFromSide::
+# 159 "data/scripts/spinda.pory"
+	lock
+# 161 "data/scripts/spinda.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 162 "data/scripts/spinda.pory"
+	speakername SpindaIsland_Common_CantReadSign_Text_0
+# 163 "data/scripts/spinda.pory"
+	msgbox SpindaIsland_Common_CantUseFromSide_Text_0
+# 166 "data/scripts/spinda.pory"
+	closemessage
+# 167 "data/scripts/spinda.pory"
+	removefieldmugshot
+# 169 "data/scripts/spinda.pory"
+	release
+	return
+
+
 SpindaIsland_Common_CantReadSign_Text_0:
 # 47 "data/scripts/spinda.pory"
 	.string "Little Archie$"
@@ -286,3 +304,7 @@ SpindaIsland_Common_CantOpenFromThisSide_Text_0:
 SpindaIsland_Common_CantSeeFromSide_Text_0:
 # 150 "data/scripts/spinda.pory"
 	.string "Can't see anything from this side.$"
+
+SpindaIsland_Common_CantUseFromSide_Text_0:
+# 164 "data/scripts/spinda.pory"
+	.string "Can't use that from this side.$"

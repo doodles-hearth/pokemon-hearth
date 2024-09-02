@@ -1,12 +1,12 @@
 
 script Spinda_SpinClockwise {
-    if (flag(FLAG_RECEIVED_STARTER)) {
+    if (flag(FLAG_TOOK_SPINDA)) {
         setwarpnextmapclockwise
     }
 }
 
 script Spinda_SpinCounterclockwise {
-    if (flag(FLAG_RECEIVED_STARTER)) {
+    if (flag(FLAG_TOOK_SPINDA)) {
         setwarpnextmapcounterclockwise
     }
 }
@@ -148,6 +148,20 @@ script SpindaIsland_Common_CantSeeFromSide {
     speakername("Little Archie")
     msgbox(format(
 		"Can't see anything from this side."
+    ))
+    closemessage
+	removefieldmugshot
+
+    release
+}
+
+script SpindaIsland_Common_CantUseFromSide {
+    lock
+
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+    speakername("Little Archie")
+    msgbox(format(
+		"Can't use that from this side."
     ))
     closemessage
 	removefieldmugshot

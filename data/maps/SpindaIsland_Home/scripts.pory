@@ -60,7 +60,7 @@ script SpindaIsland_Home_EventScript_Dad {
 		giveitem(ITEM_SALTY_LEMONADE)
 
 		removefieldmugshot
-		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
 		speakername("Little Archie")
 		msgbox(format(
 			"Now we're talkin'!! I can bring this to mom, that should do it!\p"
@@ -161,18 +161,23 @@ script SpindaIsland_Home_EventScript_MadelineSign {
 script SpindaIsland_Home_EventScript_PoemGirl {
 	lock
 
-	playse(SE_M_GRASSWHISTLE)
-	waitse
-
-	faceplayer
-
 	if (flag(FLAG_POEM_GIRL)) {
+		faceplayer
 		speakername("Maggie")
 		msgbox(format(
 			"See you around, Archie…"
 		))
 		closemessage
+
+		applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+		waitmovement(0)
+		playse(SE_M_GRASSWHISTLE)
 	} else {
+		playse(SE_M_GRASSWHISTLE)
+		waitse
+
+		faceplayer
+
 		speakername("Maggie")
 		msgbox(format(
 			"Archie…\p"
@@ -415,6 +420,28 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 				}
 		}
 	}
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+	release
+}
+
+script SpindaIsland_Home_EventScript_Sunbather {
+	lock
+	msgbox(format(
+		"Ahh, it sure feels good to be sitting in the sun surrounded by all this {COLOR BLUE}WATER{COLOR DARK_GRAY}…"
+	))
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+	waitse
+	waitmovement(0)
+	delay(48)
+	faceplayer
+	msgbox(format(
+		"Could you leave? You're blocking the sun."
+	))
+	closemessage
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
 	release
 }
 
@@ -489,12 +516,16 @@ script SpindaIsland_Home_Slowpoke {
 					waitmoncry
 					closemessage
 					
-					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SURPRISED)
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SHOCKED)
 					speakername("Little Archie")
 					msgbox(format(
 						"The heck?!\p"
-						"My seashell bit him!\p"
-						"Guess it was a Shellder all this time!"
+						"My seashell bit him!"
+					))
+					removefieldmugshot
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+					msgbox(format(
+					"Guess it was a Shellder all this time!"
 					))
 					removefieldmugshot
 					closemessage
@@ -540,7 +571,7 @@ script SpindaIsland_Home_EventScript_MetapodBoy1 {
 
 	speakername("Twin 1")
 	msgbox(format(
-		"I'm SO CLOSE to winning!"
+		"What? You're distracting me!"
 	))
 	closemessage
 
@@ -581,6 +612,32 @@ script SpindaIsland_Home_EventScript_MetapodBoy2 {
 	waitse
 	delay(48)
 	release
+}
+
+script SpindaIsland_Home_PhotoCameraWrongDir {
+	lock
+
+	if (flag(FLAG_CAMERA_EXPLODED)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Nothing left but a pile of ashes…"
+		))
+		closemessage
+		removefieldmugshot
+	} else {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Can't use that from this side."
+		))
+		closemessage
+		removefieldmugshot
+	}
+
+    
+
+    release
 }
 
 movement SpindaIsland_Home_Movement_Slowpoke {
