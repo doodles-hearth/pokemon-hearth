@@ -309,67 +309,77 @@ SpinaIsland_PlayerHome_EventScript_EnterLivingRoom::
 	turnobject 1, DIR_WEST
 # 262 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_5
-# 265 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	closemessage
 # 266 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	removefieldmugshot
-# 267 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	turnobject 1, DIR_NORTH
-# 269 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_SAD
-# 270 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 271 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_6
-# 274 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 275 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 267 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 277 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 268 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	turnobject 1, DIR_NORTH
+# 270 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_SAD
+# 271 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
+# 272 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_6
+# 275 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	closemessage
+# 276 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removefieldmugshot
+# 278 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	goto_if_unset FLAG_TOOK_SPINDA, SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_2
+SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_1:
+# 285 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	setvar VAR_SPINDA_ISLAND_INTRO_STATE, 2
-# 279 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 287 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
+SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_2:
+# 279 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_5
+# 280 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_7
+	goto SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_1
+
 
 SpinaIsland_PlayerHome_EventScript_GetSpinda::
-# 283 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	lock
-# 285 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	removeobject 2
-# 286 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	givemon SPECIES_SPINDA, 20
-# 287 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	setflag FLAG_RECEIVED_STARTER
-# 289 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
-# 290 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
 # 291 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	msgbox SpinaIsland_PlayerHome_EventScript_GetSpinda_Text_0
+	lock
+# 293 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removeobject 2
 # 294 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
+	givemon SPECIES_SPINDA, 20
 # 295 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	removefieldmugshot
+	setflag FLAG_RECEIVED_STARTER
 # 297 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
+# 298 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
+# 299 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_GetSpinda_Text_0
+# 302 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	setvar VAR_0x8000, MUGSHOT_ARCHIE
+# 303 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removefieldmugshot
+# 305 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
 
 SpinaIsland_PlayerHome_EventScript_WailmerDoll::
-# 301 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	lock
-# 303 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
-# 304 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 305 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	msgbox SpinaIsland_PlayerHome_EventScript_WailmerDoll_Text_0
-# 308 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	closemessage
 # 309 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	removefieldmugshot
+	lock
 # 311 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
+# 312 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
+# 313 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_WailmerDoll_Text_0
+# 316 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	closemessage
+# 317 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removefieldmugshot
+# 319 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
@@ -426,7 +436,7 @@ SpinaIsland_PlayerHome_EventScript_Mom_Text_10:
 # 117 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Hurry up and turn the big faucet back\n"
 	.string "on, please!\p"
-	.string "I'll give you your thing when the tap's\n"
+	.string "I'll give you your sail when the tap's\n"
 	.string "running.$"
 
 SpindaIsland_PlayerHome_EventScript_Diary_Text_0:
@@ -434,7 +444,7 @@ SpindaIsland_PlayerHome_EventScript_Diary_Text_0:
 	.string "“Dear diarry,\n"
 	.string "The ship is almost finished.\n"
 	.string "It is gonna be awsome.\p"
-	.string "It will be even more beautifull then\n"
+	.string "It will be even more beautiful then\n"
 	.string "dad's.”$"
 
 SpinaIsland_PlayerHome_EventScript_SpindaManual_Text_0:
@@ -498,16 +508,22 @@ SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_5:
 # 263 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Archie, would you be a dear and go\n"
 	.string "round the house to turn the big\l"
-	.string "faucet on?$"
+	.string "faucet on?\p"
+	.string "And then I'll give it to you, I promise!$"
 
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_6:
-# 272 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 273 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Ughhhhhh, fine…$"
 
+SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_7:
+# 281 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "Oh, and where's your Spinda? Take her\n"
+	.string "for a little walk, will you?$"
+
 SpinaIsland_PlayerHome_EventScript_GetSpinda_Text_0:
-# 292 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 300 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "I could never forget you, Spinda!$"
 
 SpinaIsland_PlayerHome_EventScript_WailmerDoll_Text_0:
-# 306 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 314 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "How you doing, Wailmy?$"

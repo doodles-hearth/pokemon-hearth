@@ -115,7 +115,7 @@ script SpinaIsland_PlayerHome_EventScript_Mom {
 		speakername("Mom")
 		msgbox(format(
 			"Hurry up and turn the big faucet back on, please!\p"
-			"I'll give you your thing when the tap's running."
+			"I'll give you your sail when the tap's running."
 		))
 		closemessage
 		release
@@ -129,7 +129,7 @@ script SpindaIsland_PlayerHome_EventScript_Diary {
 	msgbox(format(
 		"“Dear diarry,\n"
 		"The ship is almost finished.\nIt is gonna be awsome.\p"
-		"It will be even more beautifull then dad's.”"
+		"It will be even more beautiful then dad's.”"
 	))
 	release
 }
@@ -260,7 +260,8 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
     ))
 	turnobject(LOCALID_MOM, DIR_WEST)
 	msgbox(format(
-		"Archie, would you be a dear and go round the house to turn the big faucet on?"
+		"Archie, would you be a dear and go round the house to turn the big faucet on?\p"
+		"And then I'll give it to you, I promise!"
     ))
     closemessage
 	removefieldmugshot
@@ -273,6 +274,13 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
     ))
 	closemessage
 	removefieldmugshot
+
+	if (!flag(FLAG_TOOK_SPINDA)) {
+		speakername("Mom")
+		msgbox(format(
+			"Oh, and where's your Spinda? Take her for a little walk, will you?"
+		))
+	}
 
 	setvar(VAR_SPINDA_ISLAND_INTRO_STATE, 2)
     

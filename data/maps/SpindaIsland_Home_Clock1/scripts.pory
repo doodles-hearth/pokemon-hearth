@@ -1,4 +1,4 @@
-const LOCALID_PHOTO_MAN = 14
+const LOCALID_PHOTO_MAN = 13
 
 mapscripts SpindaIsland_Home_Clock1_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
@@ -202,7 +202,7 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 					speakername("Little Archie")
 					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
 					msgbox(format(
-						"…Cheese!"
+						"Cheese!"
 					))
 					closemessage
 					removefieldmugshot
@@ -219,17 +219,31 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 					playse(SE_FAILURE)
 					waitse
 					delay(20)
-					playse(SE_BANG)
+					playse(SE_M_MEGA_KICK)
+					waitse
+					playse(SE_M_EXPLOSION)
 
 					setmetatile(31, 13, METATILE_SpindaIsland_Grass, FALSE)
 					setmetatile(31, 14, METATILE_SpindaIsland_Grass, FALSE)
+					special(DrawWholeMapView)
+
+					setvar(VAR_0x8004, 1)  // vertical pan
+					setvar(VAR_0x8005, 1)  // horizontal pan
+					setvar(VAR_0x8006, 8)  // num shakes
+					setvar(VAR_0x8007, 5)  // shake delay
+					special(ShakeCamera)
 
 					applymovement(OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Clock1_Movement_ArchieJumps)
+
+					dofieldeffect(FLDEFF_EXPLOSION)
+
+					waitfieldeffect(FLDEFF_EXPLOSION)
 					waitmovement(0)
 					waitse
+					waitstate
 
 					speakername("Little Archie")
-					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SURPRISED)
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SHOCKED)
 					msgbox(format(
 						"The hell?!\p"
 						"The camera… exploded?!"
@@ -272,8 +286,15 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 					speakername("Camera owner")
 					msgbox(format(
 						"… …You were just trying to have your photograph taken?\p"
-						"Hmm…\p"
-						"I guess maybe using Voltorb as electrical components wasn't such a great idea after all…\p"
+						"Hmm…"
+					))
+					turnobject(LOCALID_PHOTO_MAN, DIR_NORTH)
+					msgbox(format(
+						"I guess maybe using Voltorb as electrical components wasn't such a great idea after all…"
+					))
+					applymovement(LOCALID_PHOTO_MAN, Common_Movement_FacePlayer)
+					waitmovement(0)
+					msgbox(format(
 						"Alright, alright, I'm sorry about this whole exploding business.\p"
 						"Let me give you a brand-new camera as an apology."
 					))
@@ -328,6 +349,18 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 					removefieldmugshot
 					closemessage
 				}
+			} else {
+				msgbox(format(
+						"“GET A PHOTO FOR A NICKEL!”"
+					))
+
+					speakername("Little Archie")
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
+					msgbox(format(
+						"Ugh, Rattatas… Don't they know kids don't have money?"
+					))
+					removefieldmugshot
+					closemessage
 			}
 			
 			closemessage
@@ -351,11 +384,10 @@ script SpindaIsland_Home_Clock1_PhotoHouseSign {
 
 movement SpindaIsland_Home_Clock1_Movement_PhotoManLeave {
 	walk_left * 3
-	walk_up
+	face_up
 }
 
 movement SpindaIsland_Home_Clock1_Movement_PhotoManNotice {
-	walk_down
 	face_right
 	delay_16
 	walk_right * 3

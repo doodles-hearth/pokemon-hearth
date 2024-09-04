@@ -713,3 +713,11 @@ script SpindaIsland_Home_SlowpokeMistress {
 	}
 	release
 }
+
+script SpindaIsland_Home_CarBoy {
+	// TODO EVA comp
+}
+
+script SpindaIsland_Home_CarGirl {
+	// TODO EVA comp
+}
