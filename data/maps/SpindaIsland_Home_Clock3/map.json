@@ -76,7 +76,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SpindaIsland_Common_HiddenItem",
+      "script": "SpindaIsland_Home_Clock2_EventScript_FindSeashell",
       "flag": "FLAG_FOUND_WHITE_SEASHELL"
     },
     {

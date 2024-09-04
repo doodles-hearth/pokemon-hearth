@@ -1,0 +1,122 @@
+mapscripts FaucetShop_MapScripts {
+	
+}
+
+script FaucetShop_EventScript_Owner {
+	lock
+	faceplayer
+
+	if (flag(FLAG_FAUCET_QUEST_STARTED)) {
+		speakername("Salesman")
+		msgbox(format(
+			"I need {COLOR RED}three screws{COLOR DARK_GRAY} and a pair of {COLOR RED}pliers{COLOR DARK_GRAY}."
+		))
+
+		// TODO EVA comp
+		// if (checkitem(ITEM_BORROWED_PLIERS) && checkitem(ITEM_SCREW))
+	} else {
+		speakername("Salesman")
+		msgbox(format(
+			"G'day, little dude! Welcome to the one and only Faucet Workshop!\p"
+			"How may I help you today?"
+		))
+
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"What is this place?",
+			"Can I have a faucet?"
+		)
+		closemessage
+
+		switch (var(VAR_RESULT)) {
+			case 0:
+				speakername("Salesman")
+				msgbox(format(
+					"We sell faucets!\p"
+					"Big faucets, small faucets, new faucets, vintage faucets, gold-plated faucets, edible faucets, explosive faucets, flying faucets, four-dimensional faucets, French faucets, hot-dog faucets…\p"
+					"We have everything your heart could desire!\p"
+					"As long as it's a faucet, of course."
+				))
+				closemessage
+			case 1:
+				speakername("Salesman")
+				msgbox(format(
+					"Now, why would a little boy like you need a faucet?\p"
+					"This is important, grownup business!\p"
+					"Why don't you go and play somewhere else, hm?"
+				))
+				closemessage
+				if (flag(FLAG_FAUCET_BROKE)) {
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+					speakername("Little Archie")
+					msgbox(format(
+						"But I broke the main faucet outside our house, and the water's out!\p"
+						"I need to repair it, or my mom's gonna be super mad at me!"
+					))
+					removefieldmugshot
+					closemessage
+
+					speakername("Salesman")
+					msgbox(format(
+						"Hmm, it broke, you say?\p"
+						"Can I take a look?"
+					))
+					closemessage
+
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+					speakername("Little Archie")
+					msgbox(format(
+						"Here it is!"
+					))
+					removefieldmugshot
+					closemessage
+
+					speakername("Salesman")
+					msgbox(format(
+						"Hmmm…\p"
+						"… … …\p"
+						"Well, this is quite the pickle!\p"
+						"This is a very old model, I can't repair it.\p"
+						"You'll need to buy a new one!"
+					))
+					closemessage
+
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
+					speakername("Little Archie")
+					msgbox(format(
+						"Oh man, I don't have any money!"
+					))
+					removefieldmugshot
+					closemessage
+
+					speakername("Salesman")
+					msgbox(format(
+						"Well… Sounds like you're a nice boy who's just made a mistake.\p"
+						"To replace this, you'll need the {COLOR RED}FAUCETOR-XX3060 SUPER 2XOC-SERIES9000{COLOR DARK_GRAY}.\p"
+						"Normally it costs a pretty penny, but what the hell, I'll give you a hefty discount!\p"
+						"(And put it on your mom's tab!)\p"
+						"To fit the new faucet to the older model's attachment, I'll need {COLOR RED}three big screws{COLOR DARK_GRAY}, and I just broke my only pair of {COLOR RED}pliers{COLOR DARK_GRAY}, so I'll need a new pair.\p"
+						"If you bring me these things, I'll fix it up for ya."
+					))
+					closemessage
+
+					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+					speakername("Little Archie")
+					msgbox(format(
+						"Oh, thank you sir!! I'll go get everything right away!"
+					))
+					removefieldmugshot
+					closemessage
+
+					setflag(FLAG_FAUCET_QUEST_STARTED)
+				}
+		}
+	}
+
+	release
+}
