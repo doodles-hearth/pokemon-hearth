@@ -8,17 +8,22 @@ mapscripts SpindaIsland_Home_Clock2_MapScripts {
 			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWPOKE))
 		}
 	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_SPINDA_ISLAND_INTRO_STATE, 2: SpindaIsland_Home_EventScript_MainQuestRecap
+    ]
 }
 
 script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 	lock
 	faceplayer
+	createfieldmugshot(MUGSHOT_MAN, EMOTE_SAD)
 	speakername("Sad man")
 	msgbox(format(
 		"Curse the architect that built my house facing the wrong direction!!\p"
 		"I can never go home!\p"
 		"… …"
 	))
+	removefieldmugshot
 	closemessage
 
 	playse(SE_PIN)
@@ -29,22 +34,25 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 	applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManSurprise)
 	waitmovement(0)
 
+	createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
 	speakername("Sad man")
 	msgbox(format(
 		"My house! It's facing the right direction!\p"
 		"But what… how…"
 	))
+	removefieldmugshot
 	closemessage
 
 	faceplayer
+	createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
 	speakername("Sad man")
 	msgbox(format(
 		"Did… did you do something?"
 	))
 	
 	dynmultichoice(
-		16,
-		6,
+		0,
+		0,
 		TRUE,
 		10,
 		0,
@@ -60,6 +68,7 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 		"I don't know how you did it, but you saved me from a life of endless waiting and suffering!\p"
 		"Here, take this at least."
 	))
+	removefieldmugshot
 	closemessage
 
 	// TODO EVA comp giveitem
@@ -72,10 +81,12 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 		case DIR_WEST:
 			applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManEntersHome)
 		case DIR_EAST:
-			applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManEntersHome)
+			applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManEntersHomeAroundPlayer)
 	}
 
 	waitmovement(0)
+	playse(SE_EXIT)
+	waitse
 	removeobject(LOCALID_SAD_MAN)
 	setflag(FLAG_HIDE_MAN_CANT_GO_HOME)
 

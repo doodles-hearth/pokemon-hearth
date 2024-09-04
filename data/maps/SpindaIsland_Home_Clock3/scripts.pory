@@ -6,4 +6,7 @@ mapscripts SpindaIsland_Home_Clock3_MapScripts {
 			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWPOKE))
 		}
 	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_SPINDA_ISLAND_INTRO_STATE, 2: SpindaIsland_Home_EventScript_MainQuestRecap
+    ]
 }

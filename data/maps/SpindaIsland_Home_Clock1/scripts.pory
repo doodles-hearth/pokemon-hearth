@@ -14,6 +14,9 @@ mapscripts SpindaIsland_Home_Clock1_MapScripts {
 			setmetatile(20, 8, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
 		}
 	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_SPINDA_ISLAND_INTRO_STATE, 2: SpindaIsland_Home_EventScript_MainQuestRecap
+    ]
 }
 
 script SpindaIsland_Home_Clock1_HidingBoy {
@@ -38,7 +41,7 @@ script SpindaIsland_Home_Clock1_HidingBoy {
 
 script SpindaIsland_Home_Clock1_Faucet {
 	// Faucet already broke
-	if (var(VAR_SPINDA_ISLAND_INTRO_STATE) > 2) {
+	if (flag(FLAG_FAUCET_BROKE)) {
 		lock
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 		speakername("Little Archie")
@@ -48,7 +51,7 @@ script SpindaIsland_Home_Clock1_Faucet {
 		closemessage
 		removefieldmugshot
 		release
-	} elif (var(VAR_SPINDA_ISLAND_INTRO_STATE) == 2) {
+	} else {
 		hidefollower
 		lock
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
@@ -95,7 +98,6 @@ script SpindaIsland_Home_Clock1_Faucet {
 		special(DrawWholeMapView)
 		giveitem(ITEM_BROKEN_FAUCET)
 
-		setvar(VAR_SPINDA_ISLAND_INTRO_STATE, 3)
 		setflag(FLAG_FAUCET_BROKE)
 
 		release

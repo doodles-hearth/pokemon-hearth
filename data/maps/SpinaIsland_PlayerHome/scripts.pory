@@ -42,11 +42,13 @@ script SpinaIsland_PlayerHome_EventScript_Mom {
 				removefieldmugshot
 				closemessage
 
+				createfieldmugshot(MUGSHOT_MOM, EMOTE_HAPPY)
 				speakername("Mom")
 				msgbox(format(
 					"Oh, good, some fresh lemonade! I'm so thirsty!\p"
 					"Thanks, honey!"
 				))
+				removefieldmugshot
 				closemessage
 
 				delay(10)
@@ -63,11 +65,13 @@ script SpinaIsland_PlayerHome_EventScript_Mom {
 				waitmovement(0)
 				delay(48)
 
+				createfieldmugshot(MUGSHOT_MOM, EMOTE_ANGRY)
 				speakername("Mom")
 				msgbox(format(
 					"What is wrong with you? This is super salty!\p"
 					"Please take this away and don't do that again."
 				))
+				removefieldmugshot
 				closemessage
 
 				setflag(FLAG_GAVE_MOM_LEMONADE)
@@ -102,21 +106,25 @@ script SpinaIsland_PlayerHome_EventScript_Mom {
 					removefieldmugshot
 					closemessage
 
+					createfieldmugshot(MUGSHOT_MOM, EMOTE_NORMAL)
 					speakername("Mom")
 					msgbox(format(
 						"What am I supposed to do with this? Lick it?\p"
 						"Please turn the faucet on so I can drink some actual {COLOR BLUE}WATER{COLOR DARK_GRAY}!"
 					))
+					removefieldmugshot
 					closemessage
 				}
 			}
 		}
 	} else {
+		createfieldmugshot(MUGSHOT_MOM, EMOTE_NORMAL)
 		speakername("Mom")
 		msgbox(format(
 			"Hurry up and turn the big faucet back on, please!\p"
 			"I'll give you your sail when the tap's running."
 		))
+		removefieldmugshot
 		closemessage
 		release
 	}
@@ -216,11 +224,13 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
 	waitmovement(0)
 
+	createfieldmugshot(MUGSHOT_MOM, EMOTE_HAPPY)
     speakername("Mom")
     msgbox(format(
 		"Morning, little Archie!\p"
 		"You're quite the early bird today!"
     ))
+	removefieldmugshot
     closemessage
 	removefieldmugshot
 
@@ -237,12 +247,14 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 	closemessage
 	removefieldmugshot
 
+	createfieldmugshot(MUGSHOT_MOM, EMOTE_NORMAL)
     speakername("Mom")
     msgbox(format(
 		"Of course not, darling! Your super secret thing is almost finished.\p"
 		"I'll give it to you as soon as I'm done.\p"
 		"But first, I sure could go for a nice, big, tall glass of icy {COLOR BLUE}WATER{COLOR DARK_GRAY}…"
     ))
+	removefieldmugshot
     closemessage
 	removefieldmugshot
 
@@ -254,17 +266,20 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 	delay(48)
 	waitmovement(0)
 
+	createfieldmugshot(MUGSHOT_MOM, EMOTE_NORMAL)
     speakername("Mom")
     msgbox(format(
 		"Look at that, I forgot to turn the {COLOR BLUE}WATER{COLOR DARK_GRAY} back on…"
     ))
 	turnobject(LOCALID_MOM, DIR_WEST)
+	removefieldmugshot
+	createfieldmugshot(MUGSHOT_MOM, EMOTE_HAPPY)
 	msgbox(format(
 		"Archie, would you be a dear and go round the house to turn the big faucet on?\p"
 		"And then I'll give it to you, I promise!"
     ))
-    closemessage
 	removefieldmugshot
+    closemessage
 	turnobject(LOCALID_MOM, DIR_NORTH)
 
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
@@ -276,10 +291,13 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 	removefieldmugshot
 
 	if (!flag(FLAG_TOOK_SPINDA)) {
+		createfieldmugshot(MUGSHOT_MOM, EMOTE_HAPPY)
 		speakername("Mom")
 		msgbox(format(
-			"Oh, and where's your Spinda? Take her for a little walk, will you?"
+			"Oh, and where's Spinda? Take her for a little walk, will you?"
 		))
+		removefieldmugshot
+		closemessage
 	}
 
 	setvar(VAR_SPINDA_ISLAND_INTRO_STATE, 2)

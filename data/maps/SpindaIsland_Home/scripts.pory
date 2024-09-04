@@ -10,6 +10,28 @@ mapscripts SpindaIsland_Home_MapScripts {
 			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWPOKE))
 		}
 	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_SPINDA_ISLAND_INTRO_STATE, 2: SpindaIsland_Home_EventScript_MainQuestRecap
+    ]
+}
+script SpindaIsland_Home_EventScript_MainQuestRecap {
+	lock
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+	speakername("Little Archie")
+	msgbox(format(
+		"Alright! The quicker mom gets her glass of {COLOR BLUE}WATER{COLOR DARK_GRAY}, the quicker Archie gets his super badass {COLOR RED}sail{COLOR DARK_GRAY}!\p"
+		"Let's get moving!"
+	))
+	closemessage
+	removefieldmugshot
+	setvar(VAR_SPINDA_ISLAND_INTRO_STATE, 3)
+	release
+}
+
+script SpindaIsland_Home_EventScript_MetapodOtherSide {
+	lock
+	setvar(VAR_METAPOD_OTHER_SIDE, 1)
+	release
 }
 
 script SpindaIsland_Home_EventScript_ArchiesHouseSign {
@@ -23,11 +45,13 @@ script SpindaIsland_Home_EventScript_BobsHouseSign {
 script SpindaIsland_Home_EventScript_ICanNeverGoHome {
 	lock
 	faceplayer
+	createfieldmugshot(MUGSHOT_MAN, EMOTE_SAD)
 	speakername("Sad man")
 	msgbox(format(
 		"Curse the architect that built my house facing the wrong direction!!\p"
 		"I can never go home!"
 	), MSGBOX_NPC)
+	removefieldmugshot
 	release
 }
 
@@ -163,10 +187,12 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 
 	if (flag(FLAG_POEM_GIRL)) {
 		faceplayer
+		createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
 		speakername("Maggie")
 		msgbox(format(
 			"See you around, Archie…"
 		))
+		removefieldmugshot
 		closemessage
 
 		applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
@@ -178,12 +204,14 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 
 		faceplayer
 
+		createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
 		speakername("Maggie")
 		msgbox(format(
 			"Archie…\p"
 			"I want to hear a poem…\p"
 			"I want you to reveal your heart to me."
 		))
+		removefieldmugshot
 		closemessage
 
 		dynmultichoice(
@@ -236,11 +264,13 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 						)
 				}
 
+				createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
 				speakername("Maggie")
 				msgbox(format(
 					"That was very beautiful.\p"
 					"I'm not really into haiku, though."
 				))
+				removefieldmugshot
 				closemessage
 			case 1:
 				dynmultichoice(
@@ -281,11 +311,13 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 									"And so are you!"
 								)
 
+								createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
 								speakername("Maggie")
 								msgbox(format(
 									"Oh, that's nice.\p"
 									"You're not truly revealing your poet's heart, though."
 								))
+								removefieldmugshot
 								closemessage
 
 							// The Pincurchin are spiky…
@@ -301,11 +333,13 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 									"And so are you!"
 								)
 
+								createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
 								speakername("Maggie")
 								msgbox(format(
 									"That's… a weird comparison.\p"
 									"I thought you were a better poet than that."
 								))
+								removefieldmugshot
 								closemessage
 						}
 
@@ -322,6 +356,7 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 							"Wait, I didn't mean to say that."
 						)
 
+						createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
 						speakername("Maggie")
 						msgbox(format(
 							"Wow, Archie, uh…\p"
@@ -329,6 +364,7 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 							"(Well, this is awkward.)\p"
 							"(Let's pretend this never happened.)"
 						))
+						removefieldmugshot
 						closemessage
 				}
 			case 2:
@@ -357,12 +393,14 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 						"Doesn't make sense, but fun to be said."
 					)
 
+					createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
 					speakername("Maggie")
 					msgbox(format(
 						"Hmm…\p"
 						"You're not revealing your heart right now.\p"
-						"Plus, this didn't make any sense."
+						"Plus, that didn't make any sense."
 					))
+					removefieldmugshot
 					closemessage
 
 					// Roses are blue, violets are blue
@@ -380,12 +418,14 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 
 						switch(var(VAR_RESULT)) {
 							case 0:
+								createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
 								speakername("Maggie")
 								msgbox(format(
 									"Hmm…\p"
 									"You're not revealing your heart right now.\p"
-									"Plus, this didn't make any sense."
+									"Plus, that didn't make any sense."
 								))
+								removefieldmugshot
 								closemessage
 							case 1:
 								dynmultichoice(
@@ -397,6 +437,7 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 									DYN_MULTICHOICE_CB_NONE,
 									"Because it's my favorite color."
 								)
+								createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
 								speakername("Maggie")
 								msgbox(format(
 									"… … … … …\p"
@@ -405,14 +446,17 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 									"Thank you for revealing your heart to me like this.\p"
 									"Here, take this."
 								))
+								removefieldmugshot
 								closemessage
 
 								giveitem(ITEM_GRASS_BLADE)
-
+								
+								createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
 								speakername("Maggie")
 								msgbox(format(
 									"It's a blade of grass large enough to whistle with."
 								))
+								removefieldmugshot
 								closemessage
 
 								setflag(FLAG_POEM_GIRL)
@@ -559,8 +603,30 @@ script SpindaIsland_Home_EventScript_Metapod {
 	release
 }
 
+script SpindaIsland_Home_EventScript_MetapodBoysFuckOff {
+	faceplayer
+	speakername("Twin 1")
+	msgbox(format(
+		"What is it?!\p"
+		"Oh, I guess we are blocking the stairs a little…\p"
+		"Fine, we'll take our epic battle somewhere else."
+	))
+	closemessage
+
+	fadescreen(FADE_TO_BLACK)
+	setflag(FLAG_HIDE_METAPOD_BATTLE)
+	special(DrawWholeMapView)
+	delay(60)
+	fadescreen(FADE_FROM_BLACK)
+	delay(40)
+	release
+}
+
 script SpindaIsland_Home_EventScript_MetapodBoy1 {
 	lock
+	if (var(VAR_METAPOD_OTHER_SIDE) == 1) {
+		goto(SpindaIsland_Home_EventScript_MetapodBoysFuckOff)
+	}
 	speakername("Twin 1")
 	msgbox(format(
 		"I'm SO CLOSE to winning!"
@@ -593,6 +659,9 @@ script SpindaIsland_Home_EventScript_MetapodBoy1 {
 
 script SpindaIsland_Home_EventScript_MetapodBoy2 {
 	lock
+	if (var(VAR_METAPOD_OTHER_SIDE) == 1) {
+		goto(SpindaIsland_Home_EventScript_MetapodBoysFuckOff)
+	}
 	faceplayer
 	speakername("Twin 1")
 	msgbox(format(
@@ -667,11 +736,13 @@ script SpindaIsland_Home_SlowpokeMistress {
 	lock
 	faceplayer
 	if (flag(FLAG_RECEIVED_SLOWPOKE_REWARD)) {
+		createfieldmugshot(MUGSHOT_LASS, EMOTE_HAPPY)
 		speakername("Girl")
 		msgbox(format(
 			"Look at my super cool Slowbro!\p"
 			"He just looks so happy!"
 		))
+		removefieldmugshot
 		closemessage
 	} elif (flag(FLAG_SLOWPOKE_EVOLVED)) {
 		playse(SE_PIN)
@@ -680,14 +751,28 @@ script SpindaIsland_Home_SlowpokeMistress {
 		waitmovement(0)
 		delay(48)
 
+		createfieldmugshot(MUGSHOT_LASS, EMOTE_SURPRISED)
 		speakername("Girl")
 		msgbox(format(
 			"By Arceus!!\p"
-			"How on earth did you convince him to evolve?!\p"
-			"…A cool-looking seashell? What are you talking about?\p"
-			"Well, thank you anyway! You can have this!\p"
+			"How on earth did you convince him to evolve?"
+		))
+		removefieldmugshot
+		createfieldmugshot(MUGSHOT_LASS, EMOTE_NORMAL)
+		msgbox(format(
+			"…A cool-looking seashell? What are you talking about?"
+		))
+		removefieldmugshot
+		createfieldmugshot(MUGSHOT_LASS, EMOTE_HAPPY)
+		msgbox(format(
+			"Well, thank you anyway! You can have this!"
+		))
+		removefieldmugshot
+		createfieldmugshot(MUGSHOT_LASS, EMOTE_NORMAL)
+		msgbox(format(
 			"I no longer need it."
 		))
+		removefieldmugshot
 		closemessage
 
 		giveitem(ITEM_WATER_STONE_2)
@@ -703,12 +788,18 @@ script SpindaIsland_Home_SlowpokeMistress {
 
 		setflag(FLAG_RECEIVED_SLOWPOKE_REWARD)
 	} else {
+		createfieldmugshot(MUGSHOT_LASS, EMOTE_SWEAT)
 		speakername("Girl")
 		msgbox(format(
-			"I wish my Pokémon would evolve…\p"
+			"I wish my Pokémon would evolve…"
+		))
+		removefieldmugshot
+		createfieldmugshot(MUGSHOT_LASS, EMOTE_NORMAL)
+		msgbox(format(
 			"I keep trying to give him this Water Stone, but it just does nothing.\p"
 			"Perhaps there's another way…"
 		))
+		removefieldmugshot
 		closemessage
 	}
 	release

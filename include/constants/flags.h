@@ -666,7 +666,7 @@
 #define FLAG_POKEMON_REFUGE_PRESENTATION  0x269
 #define FLAG_TOOK_SPINDA  0x26A
 #define FLAG_FAUCET_QUEST_STARTED  0x26B
-#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
+#define FLAG_HIDE_METAPOD_BATTLE  0x26C
 #define FLAG_UNUSED_0x26D  0x26D // Unused Flag
 #define FLAG_UNUSED_0x26E  0x26E // Unused Flag
 #define FLAG_UNUSED_0x26F  0x26F // Unused Flag

@@ -116,7 +116,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpindaIsland_Home_EventScript_MetapodBoy1",
-      "flag": "0"
+      "flag": "FLAG_HIDE_METAPOD_BATTLE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",
@@ -129,7 +129,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpindaIsland_Home_EventScript_MetapodBoy2",
-      "flag": "0"
+      "flag": "FLAG_HIDE_METAPOD_BATTLE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(METAPOD)",
@@ -142,7 +142,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpindaIsland_Home_EventScript_Metapod",
-      "flag": "0"
+      "flag": "FLAG_HIDE_METAPOD_BATTLE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(METAPOD)",
@@ -155,7 +155,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpindaIsland_Home_EventScript_Metapod",
-      "flag": "0"
+      "flag": "FLAG_HIDE_METAPOD_BATTLE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_FULL_F",
@@ -214,7 +214,24 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_METAPOD_OTHER_SIDE",
+      "var_value": "0",
+      "script": "SpindaIsland_Home_EventScript_MetapodOtherSide"
+    },
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_METAPOD_OTHER_SIDE",
+      "var_value": "0",
+      "script": "SpindaIsland_Home_EventScript_MetapodOtherSide"
+    }
   ],
   "bg_events": [
     {
