@@ -407,6 +407,9 @@ const u32 gObjectEventPic_RayquazaCutscene[] = INCBIN_U32("graphics/object_event
 const u16 gObjectEventPal_HoOh[] = INCBIN_U16("graphics/object_events/palettes/ho_oh.gbapal");
 const u16 gObjectEventPal_Lugia[] = INCBIN_U16("graphics/object_events/palettes/lugia.gbapal");
 
+const u32 gFieldEffectObjectPic_Explosion[] = INCBIN_U32("graphics/field_effects/pics/bomb2.4bpp");
+const u16 gFieldEffectObjectPaletteExplosion[] = INCBIN_U16("graphics/field_effects/palettes/bomb.gbapal");
+
 const u16 gObjectEventPal_Substitute[] = INCBIN_U16("graphics/pokemon/question_mark/follower.gbapal");
 
 const u16 gObjectEventPaletteEmotes[] = INCBIN_U16("graphics/misc/emotes.gbapal");

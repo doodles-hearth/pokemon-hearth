@@ -1336,3 +1336,38 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_Rayquaza = {
 };
 
 static const struct SpritePalette sSpritePalette_Unused = {gObjectEventPal_Npc3, FLDEFF_PAL_TAG_UNKNOWN};
+
+const struct SpritePalette gSpritePalette_ExplosionFieldEffect = {gFieldEffectObjectPaletteExplosion, FLDEFF_PAL_TAG_EXPLOSION};
+
+static const union AnimCmd sExplosionAnim[] =
+{
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_FRAME(3, 12),
+    ANIMCMD_FRAME(4, 8),
+    ANIMCMD_FRAME(5, 4),
+    ANIMCMD_END,
+};
+
+static const struct SpriteFrameImage sPicTable_Explosion[] = {
+    overworld_frame(gFieldEffectObjectPic_Explosion, 4, 4, 0),
+    overworld_frame(gFieldEffectObjectPic_Explosion, 4, 4, 1),
+    overworld_frame(gFieldEffectObjectPic_Explosion, 4, 4, 2),
+    overworld_frame(gFieldEffectObjectPic_Explosion, 4, 4, 3),
+    overworld_frame(gFieldEffectObjectPic_Explosion, 4, 4, 4),
+    overworld_frame(gFieldEffectObjectPic_Explosion, 4, 4, 5),
+};
+
+static const union AnimCmd *const sAnimTable_Explosion[] =
+{
+    sExplosionAnim,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_Explosion = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_EXPLOSION,
+    .oam = &gObjectEventBaseOam_32x32,
+    .anims = sAnimTable_Explosion,
+    .images = sPicTable_Explosion,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};

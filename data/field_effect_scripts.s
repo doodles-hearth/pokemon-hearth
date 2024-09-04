@@ -84,6 +84,10 @@ gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
 	field_eff_end
 
+gFieldEffectScript_Explosion::
+	field_eff_loadfadedpal_callnative gSpritePalette_ExplosionFieldEffect, FldEff_Explosion
+	field_eff_end
+
 gFieldEffectScript_UseCutOnTallGrass::
 	field_eff_callnative FldEff_UseCutOnGrass
 	field_eff_end
