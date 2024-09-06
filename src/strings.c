@@ -288,7 +288,7 @@ const u8 gText_ItemsPocket[] = _("ITEMS");
 const u8 gText_PokeBallsPocket[] = _("POKé BALLS");
 const u8 gText_TMHMPocket[] = _("TMs & HMs");
 const u8 gText_BerriesPocket[] = _("BERRIES");
-const u8 gText_KeyItemsPocket[] = _("KEY ITEMS");
+const u8 gText_KeyItemsPocket[] = _("MY STUFF");
 
 const u8 *const gPocketNamesStringsTable[] =
 {
@@ -717,7 +717,7 @@ const u8 gText_Cute2[] = _("CUTE");
 const u8 gText_Smart2[] = _("SMART");
 const u8 gText_Tough2[] = _("TOUGH");
 const u8 gText_Items[] = _("ITEMS");
-const u8 gText_Key_Items[] = _("KEY ITEMS");
+const u8 gText_Key_Items[] = _("MY STUFF");
 const u8 gText_Poke_Balls[] = _("POKé BALLS");
 const u8 gText_TMs_Hms[] = _("TMs & HMs");
 const u8 gText_Berries2[] = _("BERRIES");

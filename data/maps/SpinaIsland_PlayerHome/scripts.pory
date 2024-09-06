@@ -11,7 +11,6 @@ mapscripts SpinaIsland_PlayerHome_MapScripts {
 
 script SpinaIsland_PlayerHome_EventScript_Mom {
 	lock
-
 	faceplayer
 
 	if (flag(FLAG_RECEIVED_SLOWPOKE_REWARD)) {
@@ -126,9 +125,12 @@ script SpinaIsland_PlayerHome_EventScript_Mom {
 		))
 		removefieldmugshot
 		closemessage
-		release
 	}
+
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
 	
+	release
 }
 
 
@@ -146,7 +148,9 @@ script SpinaIsland_PlayerHome_EventScript_SpindaManual {
 	msgbox(
 		"“Super cool trick i taught spinda:\n"
 		"using L and R makes her {COLOR RED}spin{COLOR DARK_GRAY}!\l"
-		"i love my spinda, shes so awsome”", MSGBOX_DEFAULT)
+		"i love my spinda, shes so awsome”",
+	MSGBOX_SIGN
+	)
 }
 
 script SpindaIsland_PlayerHome_EventScript_Poem {

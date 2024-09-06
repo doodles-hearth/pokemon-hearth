@@ -594,7 +594,7 @@ extern const u8 EventScript_SelectWithoutRegisteredItem[];
 
 void ResetBagScrollPositions(void)
 {
-    gBagPosition.pocket = ITEMS_POCKET;
+    gBagPosition.pocket = KEYITEMS_POCKET;
     memset(gBagPosition.cursorPosition, 0, sizeof(gBagPosition.cursorPosition));
     memset(gBagPosition.scrollPosition, 0, sizeof(gBagPosition.scrollPosition));
 }
@@ -1095,17 +1095,17 @@ void BagDestroyPocketScrollArrowPair(void)
 
 static void CreatePocketSwitchArrowPair(void)
 {
-    if (gBagMenu->pocketSwitchDisabled != TRUE && gBagMenu->pocketSwitchArrowsTask == TASK_NONE)
-        gBagMenu->pocketSwitchArrowsTask = AddScrollIndicatorArrowPair(&sBagScrollArrowsTemplate, &gBagPosition.pocketSwitchArrowPos);
+    // if (gBagMenu->pocketSwitchDisabled != TRUE && gBagMenu->pocketSwitchArrowsTask == TASK_NONE)
+    //     gBagMenu->pocketSwitchArrowsTask = AddScrollIndicatorArrowPair(&sBagScrollArrowsTemplate, &gBagPosition.pocketSwitchArrowPos);
 }
 
 static void DestroyPocketSwitchArrowPair(void)
 {
-    if (gBagMenu->pocketSwitchArrowsTask != TASK_NONE)
-    {
-        RemoveScrollIndicatorArrowPair(gBagMenu->pocketSwitchArrowsTask);
-        gBagMenu->pocketSwitchArrowsTask = TASK_NONE;
-    }
+    // if (gBagMenu->pocketSwitchArrowsTask != TASK_NONE)
+    // {
+    //     RemoveScrollIndicatorArrowPair(gBagMenu->pocketSwitchArrowsTask);
+    //     gBagMenu->pocketSwitchArrowsTask = TASK_NONE;
+    // }
 }
 
 static void FreeBagMenu(void)
@@ -1367,20 +1367,20 @@ static void ReturnToItemList(u8 taskId)
 
 static u8 GetSwitchBagPocketDirection(void)
 {
-    u8 LRKeys;
-    if (gBagMenu->pocketSwitchDisabled)
-        return SWITCH_POCKET_NONE;
-    LRKeys = GetLRKeysPressed();
-    if (JOY_NEW(DPAD_LEFT) || LRKeys == MENU_L_PRESSED)
-    {
-        PlaySE(SE_SELECT);
-        return SWITCH_POCKET_LEFT;
-    }
-    if (JOY_NEW(DPAD_RIGHT) || LRKeys == MENU_R_PRESSED)
-    {
-        PlaySE(SE_SELECT);
-        return SWITCH_POCKET_RIGHT;
-    }
+    // u8 LRKeys;
+    // if (gBagMenu->pocketSwitchDisabled)
+    //     return SWITCH_POCKET_NONE;
+    // LRKeys = GetLRKeysPressed();
+    // if (JOY_NEW(DPAD_LEFT) || LRKeys == MENU_L_PRESSED)
+    // {
+    //     PlaySE(SE_SELECT);
+    //     return SWITCH_POCKET_LEFT;
+    // }
+    // if (JOY_NEW(DPAD_RIGHT) || LRKeys == MENU_R_PRESSED)
+    // {
+    //     PlaySE(SE_SELECT);
+    //     return SWITCH_POCKET_RIGHT;
+    // }
     return SWITCH_POCKET_NONE;
 }
 
@@ -1490,11 +1490,11 @@ static void DrawItemListBgRow(u8 y)
 
 static void DrawPocketIndicatorSquare(u8 x, bool8 isCurrentPocket)
 {
-    if (!isCurrentPocket)
-        FillBgTilemapBufferRect_Palette0(2, 0x1017, x + 5, 3, 1, 1);
-    else
-        FillBgTilemapBufferRect_Palette0(2, 0x102B, x + 5, 3, 1, 1);
-    ScheduleBgCopyTilemapToVram(2);
+    // if (!isCurrentPocket)
+    //     FillBgTilemapBufferRect_Palette0(2, 0x1017, x + 5, 3, 1, 1);
+    // else
+    //     FillBgTilemapBufferRect_Palette0(2, 0x102B, x + 5, 3, 1, 1);
+    // ScheduleBgCopyTilemapToVram(2);
 }
 
 static bool8 CanSwapItems(void)
