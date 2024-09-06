@@ -1,6 +1,5 @@
-const LOCALID_POEM_GIRL = 4
-const LOCALID_DAD = 2
-const LOCALID_SLOWPOKE_MISTRESS = 6
+const LOCALID_DAD = 3
+const LOCALID_SAD_MAN = 2
 
 mapscripts SpindaIsland_Home_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
@@ -19,7 +18,7 @@ script SpindaIsland_Home_EventScript_MainQuestRecap {
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
 	speakername("Little Archie")
 	msgbox(format(
-		"Alright! The quicker mom gets her glass of {COLOR BLUE}WATER{COLOR DARK_GRAY}, the quicker Archie gets his super badass {COLOR RED}sail{COLOR DARK_GRAY}!\p"
+		"Alright! The quicker mom gets her glass of {COLOR BLUE}WATER{COLOR DARK_GRAY}, the quicker Archie gets his super badass pirate {COLOR RED}sail{COLOR DARK_GRAY}!\p"
 		"Let's get moving!"
 	))
 	closemessage
@@ -40,6 +39,116 @@ script SpindaIsland_Home_EventScript_ArchiesHouseSign {
 
 script SpindaIsland_Home_EventScript_BobsHouseSign {
 	msgbox(format("Bob"), MSGBOX_SIGN)
+}
+
+script SpindaIsland_Home_EventScript_SadManHome_Back {
+	lock
+	if (!flag(FLAG_HIDE_MAN_CANT_GO_HOME)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Door's locked."
+		))
+		removefieldmugshot
+		closemessage
+	} else {
+		if (flag(FLAG_RECEIVED_RUSTY_BOLT)) {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			speakername("Little Archie")
+			msgbox(format(
+				"I guess I should leave him alone now."
+			))
+			removefieldmugshot
+			closemessage
+		} else {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			speakername("Little Archie")
+			msgbox(format(
+				"Hello? Are you there?"
+			))
+			removefieldmugshot
+			closemessage
+
+			speakername("Stingy man")
+			msgbox(format(
+				"…\p"
+				"My GOD you're annoying."
+			))
+			removefieldmugshot
+
+			playse(SE_EXIT)
+
+			clearflag(FLAG_HIDE_MAN_CANT_GO_HOME)
+			setobjectxyperm(LOCALID_SAD_MAN, 42, 24)
+			addobject(LOCALID_SAD_MAN)
+			applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Movement_SadManExitsHouse)
+			applymovement(OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Movement_PlayerMakesWay)
+			waitmovement(0)
+			waitmovement(LOCALID_SAD_MAN)
+			waitse
+			delay(48)
+			createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
+			speakername("Stingy man")
+			msgbox(format(
+				"Here's your reward. I hope you're happy."
+			))
+			removefieldmugshot
+			closemessage
+			giveitem(ITEM_RUSTY_BOLT)
+			setflag(FLAG_RECEIVED_RUSTY_BOLT)
+			applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Movement_SadManReEntersHouse)
+			waitmovement(0)
+			playse(SE_EXIT)
+			removeobject(LOCALID_SAD_MAN)
+			setflag(FLAG_HIDE_MAN_CANT_GO_HOME)
+			waitse
+
+			delay(48)
+
+			if (flag(FLAG_FAUCET_QUEST_STARTED)) {
+				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+				speakername("Little Archie")
+				msgbox(format(
+					"An old and rusty bolt? What am I supposed to do with this?"
+				))
+				removefieldmugshot
+				closemessage
+
+				delay(48)
+
+				playse(SE_PIN)
+				applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+				waitmovement(0)
+				delay(48)
+				waitse
+
+				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+				speakername("Little Archie")
+				msgbox(format(
+					"A {COLOR RED}bolt{COLOR DARK_GRAY}! Of course! Lucky me!\p"
+					"I'm one step closer to getting that sweet sweet faucet replacement!!"
+				))
+				removefieldmugshot
+				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+				msgbox(format(
+					"(Did I really say that? Is this how being a grownup feels like?)"
+				))
+				removefieldmugshot
+				closemessage
+			} else {
+				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+				speakername("Little Archie")
+				msgbox(format(
+					"A bolt?\p"
+					"It's all rusty…\p"
+					"Guess it'll join my useless trash collection!"
+				))
+				removefieldmugshot
+				closemessage
+			}
+		}
+	}
+	release
 }
 
 script SpindaIsland_Home_EventScript_ICanNeverGoHome {
@@ -471,18 +580,23 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 
 script SpindaIsland_Home_EventScript_Sunbather {
 	lock
+	createfieldmugshot(MUGSHOT_SUNBATHER, EMOTE_NORMAL)
+	speakername("Sunbather")
 	msgbox(format(
-		"Ahh, it sure feels good to be sitting in the sun surrounded by all this {COLOR BLUE}WATER{COLOR DARK_GRAY}…"
+		"Ahh, it sure feels good to be sitting in the sun surrounded by all this {COLOR BLUE}WATER{COLOR DARK_GRAY}…\p"
+		"…"
 	))
-	playse(SE_PIN)
-	applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
-	waitse
-	waitmovement(0)
+	removefieldmugshot
+	closemessage
 	delay(48)
 	faceplayer
+
+	createfieldmugshot(MUGSHOT_SUNBATHER, EMOTE_PENSIVE)
+	speakername("Sunbather")
 	msgbox(format(
 		"Could you leave? You're blocking the sun."
 	))
+	removefieldmugshot
 	closemessage
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
@@ -707,6 +821,22 @@ script SpindaIsland_Home_PhotoCameraWrongDir {
     
 
     release
+}
+
+movement SpindaIsland_Home_Movement_SadManExitsHouse {
+	walk_down
+}
+
+movement SpindaIsland_Home_Movement_SadManReEntersHouse {
+	face_up
+	delay_16
+	delay_16
+}
+
+movement SpindaIsland_Home_Movement_PlayerMakesWay {
+	lock_facing_direction
+	walk_down
+	unlock_facing_direction
 }
 
 movement SpindaIsland_Home_Movement_Slowpoke {

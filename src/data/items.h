@@ -14265,4 +14265,55 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_WaterStone,
         .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
+    
+    [ITEM_TOUGH_BOLT] =
+    {
+        .name = _("Tough Bolt"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A strong,\n"
+            "trustworthy bolt.\n"
+            "Kinda like me."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_ToughBolt,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
+    },
+
+    [ITEM_PRECIOUS_BOLT] =
+    {
+        .name = _("Precious Bolt"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A dainty,\n"
+            "shiny bolt.\n"
+            "Just like me."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_PreciousBolt,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+
+    [ITEM_RUSTY_BOLT] =
+    {
+        .name = _("Rusty Bolt"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A rugged,\n"
+            "seasoned bolt.\n"
+            "Like me."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_RustyBolt,
+        .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
+    },
 };

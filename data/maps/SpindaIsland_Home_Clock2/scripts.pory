@@ -13,6 +13,44 @@ mapscripts SpindaIsland_Home_Clock2_MapScripts {
     ]
 }
 
+script SpindaIsland_Home_Clock2_EventScript_SadManHome_Front {
+	lock
+	if (!flag(FLAG_HIDE_MAN_CANT_GO_HOME)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Door's locked."
+		))
+		removefieldmugshot
+		closemessage
+	} else {
+		if (checkitem(ITEM_RUSTY_BOLT)) {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			speakername("Little Archie")
+			msgbox(format(
+				"I guess I should leave him alone now."
+			))
+			removefieldmugshot
+			closemessage
+		} else {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			speakername("Little Archie")
+			msgbox(format(
+				"Mister? Can you hear me?"
+			))
+			removefieldmugshot
+			closemessage
+
+			speakername("Stingy man")
+			msgbox(format(
+				"Go away!"
+			))
+			removefieldmugshot
+		}
+	}
+	release
+}
+
 script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 	lock
 	faceplayer
@@ -35,7 +73,7 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 	waitmovement(0)
 
 	createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
-	speakername("Sad man")
+	speakername("Fulfilled man")
 	msgbox(format(
 		"My house! It's facing the right direction!\p"
 		"But what… how…"
@@ -45,7 +83,7 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 
 	faceplayer
 	createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
-	speakername("Sad man")
+	speakername("Fulfilled man")
 	msgbox(format(
 		"Did… did you do something?"
 	))
@@ -62,16 +100,65 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 	)
 	closemessage
 
-	speakername("Sad man")
+	speakername("Fulfilled man")
 	msgbox(format(
 		"Don't be modest, kid!\p"
 		"I don't know how you did it, but you saved me from a life of endless waiting and suffering!\p"
-		"Here, take this at least."
+		"I can finally go home.\p"
+		"Well, goodbye."
 	))
 	removefieldmugshot
 	closemessage
 
-	// TODO EVA comp giveitem
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+	speakername("Little Archie")
+	msgbox(format(
+		"…"
+	))
+	removefieldmugshot
+	closemessage
+
+	createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
+	speakername("Fulfilled man")
+	msgbox(format(
+		"… …"
+	))
+	removefieldmugshot
+	closemessage
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+	speakername("Little Archie")
+	msgbox(format(
+		"… … …"
+	))
+	removefieldmugshot
+	closemessage
+
+	createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
+	speakername("Fulfilled man")
+	msgbox(format(
+		"… … … …\p"
+		"… … …{PAUSE 20}What?"
+	))
+	removefieldmugshot
+	closemessage
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+	speakername("Little Archie")
+	msgbox(format(
+		"Well… Don't I get a reward or something?"
+	))
+	removefieldmugshot
+	closemessage
+
+	createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
+	speakername("Stingy man")
+	msgbox(format(
+		"No. I don't owe you anything.\p"
+		"Don't follow me."
+	))
+	removefieldmugshot
+	closemessage
 
 	switch(var(VAR_FACING)) {
 		case DIR_NORTH:
@@ -83,12 +170,25 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 		case DIR_EAST:
 			applymovement(LOCALID_SAD_MAN, SpindaIsland_Home_Clock2_Movement_SadManEntersHomeAroundPlayer)
 	}
-
 	waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+	waitmovement(0)
+
 	playse(SE_EXIT)
 	waitse
 	removeobject(LOCALID_SAD_MAN)
 	setflag(FLAG_HIDE_MAN_CANT_GO_HOME)
+
+	delay(48)
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"He's probably just in shock.\p"
+		"I'm sure I can make him change his mind."
+	))
+	removefieldmugshot
+	closemessage
 
 	release
 }

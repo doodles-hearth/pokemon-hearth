@@ -23,266 +23,457 @@ SpindaIsland_Home_Clock2_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
-SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome::
+SpindaIsland_Home_Clock2_EventScript_SadManHome_Front::
 # 17 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	lock
 # 18 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	faceplayer
-# 19 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	createfieldmugshot MUGSHOT_MAN, EMOTE_SAD
-# 20 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	speakername SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_0
-# 21 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_1
-# 26 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	removefieldmugshot
-# 27 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	closemessage
-# 29 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	playse SE_PIN
-# 30 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	applymovement 3, Common_Movement_ExclamationMark
-# 31 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	waitmovement 0
-# 32 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	delay 48
-# 34 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	applymovement 3, SpindaIsland_Home_Clock2_Movement_SadManSurprise
-# 35 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	waitmovement 0
+	goto_if_unset FLAG_HIDE_MAN_CANT_GO_HOME, SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_2
+	checkitem ITEM_RUSTY_BOLT
+# 0 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_5
+# 36 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
 # 37 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	createfieldmugshot MUGSHOT_MAN, EMOTE_NORMAL
+	speakername SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_0
 # 38 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	speakername SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_0
-# 39 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_2
-# 43 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_3
+# 41 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	removefieldmugshot
+# 42 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
 # 44 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	closemessage
-# 46 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	faceplayer
-# 47 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	createfieldmugshot MUGSHOT_MAN, EMOTE_NORMAL
+	speakername SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_4
+# 45 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_5
 # 48 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	speakername SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_0
-# 49 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_3
-# 53 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_4, SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_5
-# 63 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	closemessage
-# 65 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	speakername SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_0
-# 66 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_6
-# 71 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	removefieldmugshot
-# 72 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_1:
+# 51 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	release
+	return
+
+SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_2:
+# 19 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 20 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_0
+# 21 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_1
+# 24 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 25 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	closemessage
+	goto SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_1
+
+SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_5:
+# 28 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 29 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_0
+# 30 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_2
+# 33 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 34 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+	goto SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_1
+
+
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome::
+# 55 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	lock
+# 56 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	faceplayer
+# 57 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_MAN, EMOTE_SAD
+# 58 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_0
+# 59 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_1
+# 64 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 65 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+# 67 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	playse SE_PIN
+# 68 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	applymovement 3, Common_Movement_ExclamationMark
+# 69 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	waitmovement 0
+# 70 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	delay 48
+# 72 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	applymovement 3, SpindaIsland_Home_Clock2_Movement_SadManSurprise
+# 73 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	waitmovement 0
+# 75 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_MAN, EMOTE_NORMAL
 # 76 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	switch VAR_FACING
+	speakername SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_2
 # 77 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	case DIR_NORTH, SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_3
-# 79 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	case DIR_SOUTH, SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_4
+	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_3
 # 81 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 82 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+# 84 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	faceplayer
+# 85 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_MAN, EMOTE_NORMAL
+# 86 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_2
+# 87 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_4
+# 91 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_5, SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_6
+# 101 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+# 103 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_2
+# 104 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_7
+# 110 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 111 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+# 113 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
+# 114 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_0
+# 115 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_8
+# 118 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 119 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+# 121 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_MAN, EMOTE_NORMAL
+# 122 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_2
+# 123 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_9
+# 126 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 127 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+# 129 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
+# 130 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_0
+# 131 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_10
+# 134 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 135 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+# 137 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_MAN, EMOTE_NORMAL
+# 138 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_2
+# 139 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_11
+# 143 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 144 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+# 146 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
+# 147 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_0
+# 148 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_12
+# 151 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 152 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+# 154 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_MAN, EMOTE_NORMAL
+# 155 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_4
+# 156 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_13
+# 160 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 161 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+# 163 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	switch VAR_FACING
+# 164 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	case DIR_NORTH, SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_3
+# 166 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	case DIR_SOUTH, SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_4
+# 168 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	case DIR_WEST, SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_5
-# 83 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 170 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	case DIR_EAST, SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_6
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_1:
-# 87 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 173 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	waitmovement 0
-# 88 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 174 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+# 175 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	waitmovement 0
+# 177 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	playse SE_EXIT
-# 89 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 178 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	waitse
-# 90 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 179 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	removeobject 3
-# 91 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 180 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	setflag FLAG_HIDE_MAN_CANT_GO_HOME
-# 93 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 182 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	delay 48
+# 184 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 185 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_0
+# 186 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_14
+# 190 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	removefieldmugshot
+# 191 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	closemessage
+# 193 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	release
 	return
 
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_3:
-# 78 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 165 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	applymovement 3, SpindaIsland_Home_Clock2_Movement_SadManEntersHome
 	goto SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_1
 
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_4:
-# 80 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 167 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	applymovement 3, SpindaIsland_Home_Clock2_Movement_SadManEntersHome
 	goto SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_1
 
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_5:
-# 82 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 169 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	applymovement 3, SpindaIsland_Home_Clock2_Movement_SadManEntersHome
 	goto SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_1
 
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_6:
-# 84 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 171 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	applymovement 3, SpindaIsland_Home_Clock2_Movement_SadManEntersHomeAroundPlayer
 	goto SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_1
 
 
 SpindaIsland_Home_Clock2_EventScript_FindSeashell::
-# 97 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 197 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	lock
-# 98 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 198 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
-# 99 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	speakername SpindaIsland_Home_Clock2_EventScript_FindSeashell_Text_0
-# 100 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	msgbox SpindaIsland_Home_Clock2_EventScript_FindSeashell_Text_1
-# 104 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 199 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	speakername SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_0
+# 200 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	msgbox SpindaIsland_Home_Clock2_EventScript_FindSeashell_Text_0
+# 204 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	removefieldmugshot
-# 106 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 206 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	giveitem ITEM_WHITE_SEASHELL
-# 107 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 207 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	setflag FLAG_FOUND_WHITE_SEASHELL
-# 108 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 208 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	removeobject VAR_LAST_TALKED
-# 110 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 210 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	release
 	return
 
 
 SpindaIsland_Home_Clock2_EventScript_NoteBehindFaucetSign::
-# 114 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 214 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	msgbox SpindaIsland_Home_Clock2_EventScript_NoteBehindFaucetSign_Text_0, MSGBOX_SIGN
 	return
 
 
 SpindaIsland_Home_Clock2_EventScript_ExplanationSign::
-# 120 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 220 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	msgbox SpindaIsland_Home_Clock2_EventScript_ExplanationSign_Text_0, MSGBOX_SIGN
 	return
 
 
-# 130 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 230 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 SpindaIsland_Home_Clock2_Movement_SadManEntersHome:
-# 131 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 231 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	walk_left
-# 131 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 231 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	walk_left
-# 131 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 231 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	walk_left
-# 132 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 232 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	walk_up
-# 132 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 232 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	walk_up
 	step_end
 
-# 135 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 235 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 SpindaIsland_Home_Clock2_Movement_SadManEntersHomeAroundPlayer:
-# 136 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 236 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	walk_up
-# 137 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 237 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	walk_left
-# 137 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 237 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	walk_left
-# 137 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 237 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	walk_left
-# 138 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 238 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	walk_up
 	step_end
 
-# 141 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 241 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 SpindaIsland_Home_Clock2_Movement_SadManSurprise:
-# 142 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 242 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 142 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 242 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 142 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 242 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 143 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 243 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	face_right
-# 144 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 244 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 144 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 244 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 145 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 245 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	face_down
-# 146 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 246 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 146 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 246 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 147 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 247 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	face_up
-# 148 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 248 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 148 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 248 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 149 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 249 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	face_left
-# 150 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 250 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 150 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 250 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 151 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 251 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	jump_in_place_left
-# 152 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 252 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 152 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 252 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
-# 152 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 252 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay_16
 	step_end
+
+SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_0:
+# 20 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "Little Archie$"
+
+SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_1:
+# 22 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "Door's locked.$"
+
+SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_2:
+# 31 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "I guess I should leave him alone now.$"
+
+SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_3:
+# 39 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "Mister? Can you hear me?$"
+
+SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_4:
+# 44 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "Stingy man$"
+
+SpindaIsland_Home_Clock2_EventScript_SadManHome_Front_Text_5:
+# 46 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "Go away!$"
 
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_0:
-# 20 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 58 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	.string "Sad man$"
 
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_1:
-# 22 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 60 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	.string "Curse the architect that built my\n"
 	.string "house facing the wrong direction!!\p"
 	.string "I can never go home!\p"
 	.string "… …$"
 
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_2:
-# 40 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 76 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "Fulfilled man$"
+
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_3:
+# 78 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	.string "My house! It's facing the right\n"
 	.string "direction!\p"
 	.string "But what… how…$"
 
-SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_3:
-# 50 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_4:
+# 88 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	.string "Did… did you do something?$"
 
-SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_4:
-# 60 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_5:
+# 98 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	.string "I didn't do anything special…$"
 
-SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_5:
-# 61 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_6:
+# 99 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	.string "I… turned around?$"
 
-SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_6:
-# 67 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_7:
+# 105 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	.string "Don't be modest, kid!\p"
 	.string "I don't know how you did it, but you\n"
 	.string "saved me from a life of endless\l"
 	.string "waiting and suffering!\p"
-	.string "Here, take this at least.$"
+	.string "I can finally go home.\p"
+	.string "Well, goodbye.$"
+
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_8:
+# 116 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "…$"
+
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_9:
+# 124 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "… …$"
+
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_10:
+# 132 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "… … …$"
+
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_11:
+# 140 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "… … … …\p"
+	.string "… … …{PAUSE 20}What?$"
+
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_12:
+# 149 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "Well… Don't I get a reward or\n"
+	.string "something?$"
+
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_13:
+# 157 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "No. I don't owe you anything.\p"
+	.string "Don't follow me.$"
+
+SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_Text_14:
+# 187 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+	.string "He's probably just in shock.\p"
+	.string "I'm sure I can make him change his\n"
+	.string "mind.$"
 
 SpindaIsland_Home_Clock2_EventScript_FindSeashell_Text_0:
-# 99 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	.string "Little Archie$"
-
-SpindaIsland_Home_Clock2_EventScript_FindSeashell_Text_1:
-# 101 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 201 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	.string "Woah, what's this?\p"
 	.string "This seashell's completely white! So\n"
 	.string "cool!!$"
 
 SpindaIsland_Home_Clock2_EventScript_NoteBehindFaucetSign_Text_0:
-# 115 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 215 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	.string "“look down”$"
 
 SpindaIsland_Home_Clock2_EventScript_ExplanationSign_Text_0:
-# 121 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
+# 221 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	.string "“This world is a little strange.\n"
 	.string "When an object is turned to the side,\l"
 	.string "you cannot interact with it.\l"

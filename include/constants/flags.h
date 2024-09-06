@@ -667,7 +667,7 @@
 #define FLAG_TOOK_SPINDA  0x26A
 #define FLAG_FAUCET_QUEST_STARTED  0x26B
 #define FLAG_HIDE_METAPOD_BATTLE  0x26C
-#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
+#define FLAG_RECEIVED_RUSTY_BOLT  0x26D
 #define FLAG_UNUSED_0x26E  0x26E // Unused Flag
 #define FLAG_UNUSED_0x26F  0x26F // Unused Flag
 #define FLAG_UNUSED_0x270  0x270 // Unused Flag

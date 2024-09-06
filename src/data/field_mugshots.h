@@ -23,6 +23,9 @@ static const u32 sFieldMugshotGfx_LittleBoy_Normal[] = INCBIN_U32("graphics/fiel
 static const u32 sFieldMugshotGfx_LittleGirl_Normal[] = INCBIN_U32("graphics/field_mugshots/littlegirl/normal.4bpp.lz");
 static const u32 sFieldMugshotGfx_LittleGirl_Pensive[] = INCBIN_U32("graphics/field_mugshots/littlegirl/pensive.4bpp.lz");
 
+static const u32 sFieldMugshotGfx_Sunbather_Normal[] = INCBIN_U32("graphics/field_mugshots/sunbather/normal.4bpp.lz");
+static const u32 sFieldMugshotGfx_Sunbather_Pensive[] = INCBIN_U32("graphics/field_mugshots/sunbather/pensive.4bpp.lz");
+
 static const u16 sFieldMugshotPal_DarkBg[] = INCBIN_U16("graphics/object_events/palettes/comp_npc_darkbg.gbapal");
 static const u16 sFieldMugshotPal_BrownBg[] = INCBIN_U16("graphics/object_events/palettes/comp_npc_brownbg.gbapal");
 
@@ -182,6 +185,20 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_LittleGirl_Pensive,
             .pal = sFieldMugshotPal_BrownBg,
+        },
+    },
+    [MUGSHOT_SUNBATHER] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_Sunbather_Normal,
+            .pal = sFieldMugshotPal_DarkBg,
+        },
+
+        [EMOTE_PENSIVE] =
+        {
+            .gfx = sFieldMugshotGfx_Sunbather_Pensive,
+            .pal = sFieldMugshotPal_DarkBg,
         },
     },
 };
