@@ -67,7 +67,7 @@ script SpindaIsland_Home_Clock1_Faucet {
 		delay(48)
 
 		setmetatile(18, 13, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
-		setmetatile(18, 14, METATILE_SpindaIslandSecondary_BrokenFaucetGround, FALSE)
+		setmetatile(18, 14, METATILE_SpindaIsland_BrokenFaucetGround, FALSE)
 		special(DrawWholeMapView)
 
 		applymovement(OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Clock1_FaucetBreaks)

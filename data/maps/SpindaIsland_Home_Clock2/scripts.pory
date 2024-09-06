@@ -227,6 +227,60 @@ script SpindaIsland_Home_Clock2_EventScript_ExplanationSign {
 	), MSGBOX_SIGN)
 }
 
+script SpindaIsland_Home_EventScript_StealWheel {
+	lock
+	if (flag(FLAG_FAUCET_QUEST_STARTED) && !flag(FLAG_FOUND_TOUGH_BOLT)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Just a regular wheel."
+		))
+		removefieldmugshot
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+		msgbox(format(
+			"Wait, it's stuck to the car with bolts!\p"
+			"If I could just take one…"
+		))
+		removefieldmugshot
+
+		if (checkitem(ITEM_BORROWED_PLIERS)) {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			msgbox(format(
+				"Here, let me just…"
+			))
+			removefieldmugshot
+			closemessage
+			
+			playse(SE_CLICK)
+			waitse
+			playse(SE_CLICK)
+			waitse
+
+			delay(48)
+
+			giveitem(ITEM_TOUGH_BOLT)
+			setflag(FLAG_STOLE_CAR_BOLT)
+			call(SpindaIsland_Common_CheckGotAllItemsForNewFaucet)
+		} else {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			msgbox(format(
+				"I'd need some pliers to get it out."
+			))
+			removefieldmugshot
+			closemessage
+		}
+	} else {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Just a regular wheel."
+		))
+		removefieldmugshot
+		closemessage
+	}
+	release
+}
+
 movement SpindaIsland_Home_Clock2_Movement_SadManEntersHome {
 	walk_left * 3
 	walk_up * 2

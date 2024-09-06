@@ -2424,3 +2424,35 @@ static u8 TrySpinPlayerForWarp(struct ObjectEvent *object, s16 *delayTimer)
     *delayTimer = 0;
     return sSpinDirections[object->facingDirection];
 }
+
+// helper function
+static u16 GetMetatileIdAtSpecificMapWithCoords(s16 x, s16 y, const struct MapLayout *mapLayout)
+{
+    // Ensure the coordinates are within the bounds of the map
+    if (x >= 0 && x < mapLayout->width && y >= 0 && y < mapLayout->height)
+    {
+        // Calculate the index in the map array and retrieve the metatile ID
+        return mapLayout->map[y * mapLayout->width + x] & MAPGRID_METATILE_ID_MASK;
+    }
+
+    return FALSE; // Fail through
+}
+
+static u32 GetMetatileIdAtSpecificMap(s16 x, s16 y, u16 mapLayoutId)
+{
+    // TODO EVA
+    u32 metatileId = 1; // = GetMetatileIdAtMapCoords(GetMapLayout(mapLayoutId));
+    return metatileId;
+}
+
+static bool8 IsMetatileIdImpassable(s32 metatileId)
+{
+    u16 behaviour = GetMetatileAttributesById(metatileId) & METATILE_ATTR_BEHAVIOR_MASK;
+    if (MetatileBehavior_IsSouthBlocked(behaviour)
+     || MetatileBehavior_IsNorthBlocked(behaviour)
+     || MetatileBehavior_IsWestBlocked(behaviour)
+     || MetatileBehavior_IsEastBlocked(behaviour))
+        return TRUE;
+    else
+        return FALSE;
+}

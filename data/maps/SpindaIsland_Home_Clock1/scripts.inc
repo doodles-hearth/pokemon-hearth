@@ -81,7 +81,7 @@ SpindaIsland_Home_Clock1_Faucet::
 # 69 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	setmetatile 18, 13, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE
 # 70 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	setmetatile 18, 14, METATILE_SpindaIslandSecondary_BrokenFaucetGround, FALSE
+	setmetatile 18, 14, METATILE_SpindaIsland_BrokenFaucetGround, FALSE
 # 71 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	special DrawWholeMapView
 # 73 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"

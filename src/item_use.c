@@ -65,7 +65,10 @@ static void ItemUseOnFieldCB_Itemfinder(u8);
 static void ItemUseOnFieldCB_Berry(u8);
 static void ItemUseOnFieldCB_WailmerPailBerry(u8);
 static void ItemUseOnFieldCB_WailmerPailSudowoodo(u8);
+static void ItemUseOnFieldCB_ToyCamera(u8);
+static void ItemUseOnFieldCB_BrokenFaucetWheel(u8);
 static bool8 TryToWaterSudowoodo(void);
+static bool8 TryToReplaceWheel(void);
 static void BootUpSoundTMHM(u8);
 static void Task_ShowTMHMContainedMessage(u8);
 static void UseTMHMYesNo(u8);
@@ -250,6 +253,12 @@ void ItemUseOutOfBattle_Bike(u8 taskId)
         else
             DisplayDadsAdviceCannotUseItemMessage(taskId, tUsingRegisteredKeyItem);
     }
+}
+
+void ItemUseOutOfBattle_ToyCamera(u8 taskId)
+{
+    sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCamera;
+    SetUpItemUseOnFieldCallback(taskId);
 }
 
 static void ItemUseOnFieldCB_Bike(u8 taskId)
@@ -764,6 +773,19 @@ void ItemUseOutOfBattle_WailmerPail(u8 taskId)
     }
 }
 
+void ItemUseOutOfBattle_BrokenFaucet(u8 taskId)
+{
+    if (TryToReplaceWheel() == TRUE)
+    {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_BrokenFaucetWheel;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else
+    {
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+    }
+}
+
 static void ItemUseOnFieldCB_WailmerPailBerry(u8 taskId)
 {
     LockPlayerFieldControls();
@@ -785,10 +807,39 @@ static bool8 TryToWaterSudowoodo(void)
         return TRUE;
 }
 
+static bool8 TryToReplaceWheel(void)
+{
+    // TODO EVA
+    s16 x, y;
+    u8 elevation;
+    u8 objId;
+    GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+    elevation = PlayerGetElevation();
+    objId = GetObjectEventIdByPosition(x, y, elevation);
+    if (objId == OBJECT_EVENTS_COUNT || gObjectEvents[objId].graphicsId != OBJ_EVENT_GFX_SUDOWOODO)
+        return FALSE;
+    else
+        return TRUE;
+}
+
 static void ItemUseOnFieldCB_WailmerPailSudowoodo(u8 taskId)
 {
     LockPlayerFieldControls();
     ScriptContext_SetupScript(BattleFrontier_OutsideEast_EventScript_WaterSudowoodo);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_ToyCamera(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_Common_UseToyCamera);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_BrokenFaucetWheel(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet);
     DestroyTask(taskId);
 }
 

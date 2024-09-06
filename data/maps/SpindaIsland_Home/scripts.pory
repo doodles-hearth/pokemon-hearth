@@ -1,5 +1,6 @@
 const LOCALID_DAD = 3
 const LOCALID_SAD_MAN = 2
+const LOCALID_CAR_GIRL = 15
 
 mapscripts SpindaIsland_Home_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
@@ -135,6 +136,8 @@ script SpindaIsland_Home_EventScript_SadManHome_Back {
 				))
 				removefieldmugshot
 				closemessage
+
+				call(SpindaIsland_Common_CheckGotAllItemsForNewFaucet)
 			} else {
 				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 				speakername("Little Archie")
@@ -719,7 +722,7 @@ script SpindaIsland_Home_EventScript_Metapod {
 
 script SpindaIsland_Home_EventScript_MetapodBoysFuckOff {
 	faceplayer
-	speakername("Twin 1")
+	speakername("Twin")
 	msgbox(format(
 		"What is it?!\p"
 		"Oh, I guess we are blocking the stairs a little…\p"
@@ -741,7 +744,7 @@ script SpindaIsland_Home_EventScript_MetapodBoy1 {
 	if (var(VAR_METAPOD_OTHER_SIDE) == 1) {
 		goto(SpindaIsland_Home_EventScript_MetapodBoysFuckOff)
 	}
-	speakername("Twin 1")
+	speakername("Twin")
 	msgbox(format(
 		"I'm SO CLOSE to winning!"
 	))
@@ -749,7 +752,7 @@ script SpindaIsland_Home_EventScript_MetapodBoy1 {
 
 	faceplayer
 
-	speakername("Twin 1")
+	speakername("Twin")
 	msgbox(format(
 		"What? You're distracting me!"
 	))
@@ -757,7 +760,7 @@ script SpindaIsland_Home_EventScript_MetapodBoy1 {
 
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	
-	speakername("Twin 1")
+	speakername("Twin")
 	msgbox(format(
 		"Metapod, use harden!!"
 	))
@@ -777,13 +780,13 @@ script SpindaIsland_Home_EventScript_MetapodBoy2 {
 		goto(SpindaIsland_Home_EventScript_MetapodBoysFuckOff)
 	}
 	faceplayer
-	speakername("Twin 1")
+	speakername("Twin")
 	msgbox(format(
 		"Can't you see we're in the midst of a fiery battle?"
 	))
 	closemessage
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
-	speakername("Twin 1")
+	speakername("Twin")
 	msgbox(format(
 		"Metapod, use harden!!"
 	))
@@ -817,10 +820,15 @@ script SpindaIsland_Home_PhotoCameraWrongDir {
 		closemessage
 		removefieldmugshot
 	}
-
-    
-
     release
+}
+
+script SpindaIsland_Home_EventScript_FaucetShopSign {
+	msgbox(format(
+		"“FAUCET WORKSHOP\n"
+		"For all your faucet needs!\l"
+		"WE ARE OPEN!!”"
+	), MSGBOX_SIGN)
 }
 
 movement SpindaIsland_Home_Movement_SadManExitsHouse {
@@ -936,9 +944,202 @@ script SpindaIsland_Home_SlowpokeMistress {
 }
 
 script SpindaIsland_Home_CarBoy {
-	// TODO EVA comp
+	lock
+	faceplayer
+	createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_NORMAL)
+	speakername("Rudy")
+	msgbox(format(
+		"Vrrrbbbbbmmmmmmm!!!!!"
+	))
+	removefieldmugshot
+	closemessage
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+	release
 }
 
 script SpindaIsland_Home_CarGirl {
-	// TODO EVA comp
+	lock
+	if (flag(FLAG_RECEIVED_NICKEL)) {
+		faceplayer
+		createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_NORMAL)
+		speakername("Katie")
+		msgbox(format(
+			"Thanks a bunch!"
+		))
+		removefieldmugshot
+		closemessage
+		
+	} elif (flag(FLAG_REPLACED_WHEEL)) {
+		faceplayer
+		createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_NORMAL)
+		speakername("Katie")
+		msgbox(format(
+			"Oh!\p"
+			"You've got this super cool {COLOR RED}metal wheel{COLOR DARK_GRAY}…\p"
+			"And you're just giving it to us?\p"
+			"You're the best, Archie!!\p"
+			"We don't have much, but please take this.\p"
+			"It's my lucky coin! I hope it'll be lucky for you, too!"
+		))
+		removefieldmugshot
+		closemessage
+
+		giveitem(ITEM_RUSTY_NICKEL)
+		setflag(FLAG_RECEIVED_NICKEL)
+	} elif (flag(FLAG_LOOKING_FOR_WHEEL_REPLACEMENT)) {
+		faceplayer
+		createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
+		speakername("Katie")
+		msgbox(format(
+			"Now what could we use as a wheel…"
+		))
+		removefieldmugshot
+		closemessage
+	} else {
+		faceplayer
+		createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_NORMAL)
+		speakername("Katie")
+		msgbox(format(
+			"Hey Archie!\p"
+			"As you can see we're almost done with our monster car.\p"
+			"We're just missing one last wheel!\p"
+			"We don't really need it to be an actual wheel, either.\p"
+			"Anything round and spinny would do!"
+		))
+		removefieldmugshot
+		closemessage
+
+		setflag(FLAG_LOOKING_FOR_WHEEL_REPLACEMENT)
+	}
+
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+	
+	release
+}
+
+script SpindaIsland_Home_EventScript_MissingWheel {
+	lock
+	if (flag(FLAG_REPLACED_WHEEL)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+		speakername("Little Archie")
+		msgbox(format(
+			"A shiny new wheel!"
+		))
+		removefieldmugshot
+		closemessage
+	} else {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"A wheel is missing.\p"
+			"I'm sure I could find a replacement."
+		))
+		removefieldmugshot
+		closemessage
+	}
+	release
+}
+
+script SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet {
+	lock
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"What if…"
+	))
+	removefieldmugshot
+	closemessage
+
+	delay(48)
+
+	playse(SE_CLICK)
+	setmetatile(27, 50, METATILE_SpindaIslandSecondary_FaucetWheel, TRUE)
+	special(DrawWholeMapView)
+	waitse
+
+	delay(48)
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+	speakername("Little Archie")
+	msgbox(format(
+		"Fits perfectly! There ya go!"
+	))
+	removefieldmugshot
+	closemessage
+
+	release
+}
+
+script SpindaIsland_Home_EventScript_SurveyedWheel {
+	lock
+	if (flag(FLAG_FAUCET_QUEST_STARTED) && !flag(FLAG_FOUND_TOUGH_BOLT)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Just a regular wheel."
+		))
+		removefieldmugshot
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+		msgbox(format(
+			"Wait, it's stuck to the car with bolts!\p"
+			"If I could just take one…"
+		))
+		removefieldmugshot
+
+		if (checkitem(ITEM_BORROWED_PLIERS)) {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			msgbox(format(
+				"Here, let me just…"
+			))
+			removefieldmugshot
+			closemessage
+
+			turnobject(LOCALID_CAR_GIRL, DIR_EAST)
+			createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_NORMAL)
+			speakername("Katie")
+			msgbox(format(
+				"Whatcha doing, Archie?"
+			))
+			removefieldmugshot
+			closemessage
+
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+			speakername("Little Archie")
+			msgbox(format(
+				"Ah, uh, nothing!"
+			))
+			removefieldmugshot
+			closemessage
+
+			turnobject(LOCALID_CAR_GIRL, DIR_NORTH)
+			delay(48)
+
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			speakername("Little Archie")
+			msgbox(format(
+				"(Darn, can't do this right under her nose.)"
+			))
+			removefieldmugshot
+			closemessage
+		} else {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			msgbox(format(
+				"I'd need some pliers to get it out."
+			))
+			removefieldmugshot
+			closemessage
+		}
+	} else {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Just a regular wheel."
+		))
+		removefieldmugshot
+		closemessage
+	}
+	release
 }

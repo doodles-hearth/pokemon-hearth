@@ -168,3 +168,29 @@ script SpindaIsland_Common_CantUseFromSide {
 
     release
 }
+
+script SpindaIsland_Common_UseToyCamera {
+    lock
+
+    playse(SE_SWITCH)
+    waitse
+    playse(SE_M_LEER)
+    fadescreenspeed(FADE_TO_WHITE, 0)
+    fadescreenspeed(FADE_FROM_WHITE, 0)
+    waitse
+
+    release
+}
+
+script SpindaIsland_Common_CheckGotAllItemsForNewFaucet {
+    if (checkitem(ITEM_TOUGH_BOLT) && checkitem(ITEM_PRECIOUS_BOLT) && checkitem(ITEM_RUSTY_BOLT) && checkitem(ITEM_BORROWED_PLIERS)) {
+        createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+        speakername("Little Archie")
+        msgbox(format(
+            "This means I have everything the faucet shop owner needs!!\p"
+            "Let's go get that faucet replacement!"
+        ))
+        closemessage
+        removefieldmugshot
+    }
+}

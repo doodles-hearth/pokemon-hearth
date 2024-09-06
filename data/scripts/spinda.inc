@@ -258,6 +258,68 @@ SpindaIsland_Common_CantUseFromSide::
 	return
 
 
+SpindaIsland_Common_UseToyCamera::
+# 173 "data/scripts/spinda.pory"
+	lock
+# 175 "data/scripts/spinda.pory"
+	playse SE_SWITCH
+# 176 "data/scripts/spinda.pory"
+	waitse
+# 177 "data/scripts/spinda.pory"
+	playse SE_M_LEER
+# 178 "data/scripts/spinda.pory"
+	fadescreenspeed FADE_TO_WHITE, 0
+# 179 "data/scripts/spinda.pory"
+	fadescreenspeed FADE_FROM_WHITE, 0
+# 180 "data/scripts/spinda.pory"
+	waitse
+# 182 "data/scripts/spinda.pory"
+	release
+	return
+
+
+SpindaIsland_Common_CheckGotAllItemsForNewFaucet::
+	checkitem ITEM_TOUGH_BOLT
+# 0 "data/scripts/spinda.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne SpindaIsland_Common_CheckGotAllItemsForNewFaucet_3
+	return
+
+SpindaIsland_Common_CheckGotAllItemsForNewFaucet_1:
+# 187 "data/scripts/spinda.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
+# 188 "data/scripts/spinda.pory"
+	speakername SpindaIsland_Common_CantReadSign_Text_0
+# 189 "data/scripts/spinda.pory"
+	msgbox SpindaIsland_Common_CheckGotAllItemsForNewFaucet_Text_0
+# 193 "data/scripts/spinda.pory"
+	closemessage
+# 194 "data/scripts/spinda.pory"
+	removefieldmugshot
+	return
+
+SpindaIsland_Common_CheckGotAllItemsForNewFaucet_2:
+	checkitem ITEM_RUSTY_BOLT
+# 0 "data/scripts/spinda.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne SpindaIsland_Common_CheckGotAllItemsForNewFaucet_6
+	return
+
+SpindaIsland_Common_CheckGotAllItemsForNewFaucet_3:
+	checkitem ITEM_PRECIOUS_BOLT
+# 0 "data/scripts/spinda.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne SpindaIsland_Common_CheckGotAllItemsForNewFaucet_2
+	return
+
+SpindaIsland_Common_CheckGotAllItemsForNewFaucet_6:
+	checkitem ITEM_BORROWED_PLIERS
+# 0 "data/scripts/spinda.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne SpindaIsland_Common_CheckGotAllItemsForNewFaucet_1
+	return
+
+
 SpindaIsland_Common_CantReadSign_Text_0:
 # 47 "data/scripts/spinda.pory"
 	.string "Little Archie$"
@@ -308,3 +370,10 @@ SpindaIsland_Common_CantSeeFromSide_Text_0:
 SpindaIsland_Common_CantUseFromSide_Text_0:
 # 164 "data/scripts/spinda.pory"
 	.string "Can't use that from this side.$"
+
+SpindaIsland_Common_CheckGotAllItemsForNewFaucet_Text_0:
+# 190 "data/scripts/spinda.pory"
+	.string "This means I have everything the\n"
+	.string "faucet shop owner needs!!\p"
+	.string "Let's go get that faucet\n"
+	.string "replacement!$"
