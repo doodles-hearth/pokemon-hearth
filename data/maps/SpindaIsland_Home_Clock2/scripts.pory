@@ -11,6 +11,12 @@ mapscripts SpindaIsland_Home_Clock2_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_SPINDA_ISLAND_INTRO_STATE, 2: SpindaIsland_Home_EventScript_MainQuestRecap
     ]
+	MAP_SCRIPT_ON_LOAD {
+		if (flag(FLAG_CAMERA_EXPLODED)) {
+			setmetatile(45, 30, METATILE_SpindaIslandSecondary_HouseBottomLeftCorner, TRUE)
+			setmetatile(45, 31, METATILE_SpindaIsland_Grass, FALSE)
+		}
+	}
 }
 
 script SpindaIsland_Home_Clock2_EventScript_SadManHome_Front {

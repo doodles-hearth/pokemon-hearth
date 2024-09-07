@@ -15,6 +15,11 @@ mapscripts SpindaIsland_Home_MapScripts {
 		if (flag(FLAG_REPLACED_WHEEL)) {
 			setmetatile(27, 50, METATILE_SpindaIslandSecondary_FaucetWheel, TRUE)
 		}
+
+		if (flag(FLAG_CAMERA_EXPLODED)) {
+			setmetatile(14, 27, METATILE_SpindaIsland_Grass, FALSE)
+			setmetatile(14, 28, METATILE_SpindaIslandSecondary_RoofProfileTopRightCorner, FALSE)
+		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_SPINDA_ISLAND_INTRO_STATE, 2: SpindaIsland_Home_EventScript_MainQuestRecap
@@ -692,6 +697,7 @@ script SpindaIsland_Home_Slowpoke {
 						"Here you go, buddy."
 					))
 					removefieldmugshot
+					closemessage
 
 					removeitem(ITEM_WHITE_SEASHELL)
 
@@ -797,6 +803,7 @@ script SpindaIsland_Home_EventScript_MetapodBoysFuckOff_Bussin {
 		"Yikes, we lowkey do be blockin the stairs rn no cap…\p"
 		"Aight word word, we gon vibe somewhere else."
 	))
+	removefieldmugshot
 	closemessage
 
 	fadescreen(FADE_TO_BLACK)

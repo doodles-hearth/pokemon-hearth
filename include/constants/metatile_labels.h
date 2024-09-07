@@ -751,9 +751,12 @@
 #define METATILE_SpindaIsland_Grass               0x001
 
 // gTileset_SpindaIslandSecondary
-#define METATILE_SpindaIslandSecondary_BrokenFaucetGround  0x288
-#define METATILE_SpindaIslandSecondary_BrokenFaucetWall    0x25E
-#define METATILE_SpindaIslandSecondary_FaucetWheel         0x298
+#define METATILE_SpindaIslandSecondary_BrokenFaucetGround         0x288
+#define METATILE_SpindaIslandSecondary_BrokenFaucetWall           0x25E
+#define METATILE_SpindaIslandSecondary_FaucetWheel                0x298
+#define METATILE_SpindaIslandSecondary_HouseBottomLeftCorner      0x258
+#define METATILE_SpindaIslandSecondary_PathBottom                 0x281
+#define METATILE_SpindaIslandSecondary_RoofProfileTopRightCorner  0x232
 
 // gTileset_TrainerHill
 #define METATILE_TrainerHill_CounterDoor          0x334

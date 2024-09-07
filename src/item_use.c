@@ -811,11 +811,12 @@ static bool8 TryToReplaceWheel(void)
 {
     s16 x, y;
     GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+    DebugPrintfLevel(MGBA_LOG_WARN, "%d, %d", x, y);
     if (
         gSaveBlock1Ptr->location.mapNum == MAP_NUM(SPINDA_ISLAND_HOME)
         && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SPINDA_ISLAND_HOME)
         && FlagGet(FLAG_LOOKING_FOR_WHEEL_REPLACEMENT)
-        // && x == 27 && y == 50
+        && x == (27 + MAP_OFFSET) && y == (50 + MAP_OFFSET)
      ) {
         return TRUE;
      }
