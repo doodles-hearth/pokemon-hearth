@@ -809,17 +809,17 @@ static bool8 TryToWaterSudowoodo(void)
 
 static bool8 TryToReplaceWheel(void)
 {
-    // TODO EVA
     s16 x, y;
-    u8 elevation;
-    u8 objId;
     GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
-    elevation = PlayerGetElevation();
-    objId = GetObjectEventIdByPosition(x, y, elevation);
-    if (objId == OBJECT_EVENTS_COUNT || gObjectEvents[objId].graphicsId != OBJ_EVENT_GFX_SUDOWOODO)
-        return FALSE;
-    else
+    if (
+        gSaveBlock1Ptr->location.mapNum == MAP_NUM(SPINDA_ISLAND_HOME)
+        && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SPINDA_ISLAND_HOME)
+        && FlagGet(FLAG_LOOKING_FOR_WHEEL_REPLACEMENT)
+        // && x == 27 && y == 50
+     ) {
         return TRUE;
+     }
+     return FALSE;
 }
 
 static void ItemUseOnFieldCB_WailmerPailSudowoodo(u8 taskId)

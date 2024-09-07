@@ -1,4 +1,4 @@
-const LOCALID_SAD_MAN = 3
+const LOCALID_SAD_MAN = 7
 
 mapscripts SpindaIsland_Home_Clock2_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {

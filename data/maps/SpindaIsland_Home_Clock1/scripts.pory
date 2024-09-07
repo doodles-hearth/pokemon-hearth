@@ -7,17 +7,13 @@ mapscripts SpindaIsland_Home_Clock1_MapScripts {
 		} else {
 			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWPOKE))
 		}
-
+	}
+	MAP_SCRIPT_ON_LOAD {
+		// Broken faucet
 		if (flag(FLAG_FAUCET_BROKE)) {
-			setmetatile(20, 8, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
+			setmetatile(18, 13, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
 		}
 	}
-	// MAP_SCRIPT_ON_LOAD {
-	// 	// Broken faucet
-	// 	if (flag(FLAG_FAUCET_BROKE)) {
-	// 		setmetatile(20, 8, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
-	// 	}
-	// }
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_SPINDA_ISLAND_INTRO_STATE, 2: SpindaIsland_Home_EventScript_MainQuestRecap
     ]
@@ -44,9 +40,9 @@ script SpindaIsland_Home_Clock1_HidingBoy {
 }
 
 script SpindaIsland_Home_Clock1_Faucet {
+	lock
 	// Faucet already broke
 	if (flag(FLAG_FAUCET_BROKE)) {
-		lock
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 		speakername("Little Archie")
 		msgbox(format(
@@ -57,7 +53,8 @@ script SpindaIsland_Home_Clock1_Faucet {
 		release
 	} else {
 		hidefollower
-		lock
+		setflag(FLAG_TEMP_HIDE_FOLLOWER)
+		callnative(UpdateFollowingPokemon)
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 		speakername("Little Archie")
 		msgbox(format(
@@ -100,6 +97,8 @@ script SpindaIsland_Home_Clock1_Faucet {
 		giveitem(ITEM_BROKEN_FAUCET)
 
 		setflag(FLAG_FAUCET_BROKE)
+		clearflag(FLAG_TEMP_HIDE_FOLLOWER)
+		callnative(UpdateFollowingPokemon)
 
 		release
 	}

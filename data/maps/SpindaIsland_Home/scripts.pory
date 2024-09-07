@@ -1,5 +1,5 @@
-const LOCALID_DAD = 3
-const LOCALID_SAD_MAN = 2
+const LOCALID_DAD = 7
+const LOCALID_SAD_MAN = 6
 const LOCALID_CAR_GIRL = 15
 
 mapscripts SpindaIsland_Home_MapScripts {
@@ -8,6 +8,12 @@ mapscripts SpindaIsland_Home_MapScripts {
 			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWBRO))
 		} else {
 			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWPOKE))
+		}
+	}
+	MAP_SCRIPT_ON_LOAD {
+		// Faucet wheel
+		if (flag(FLAG_REPLACED_WHEEL)) {
+			setmetatile(27, 50, METATILE_SpindaIslandSecondary_FaucetWheel, TRUE)
 		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
@@ -690,6 +696,8 @@ script SpindaIsland_Home_Slowpoke {
 					removeitem(ITEM_WHITE_SEASHELL)
 
 					setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWBRO))
+					playmoncry(SPECIES_SHELLDER, CRY_MODE_NORMAL)
+					waitmoncry
 					removeobject(VAR_LAST_TALKED)
 					addobject(VAR_LAST_TALKED)
 					playse(SE_M_BITE)
@@ -766,7 +774,10 @@ script SpindaIsland_Home_EventScript_MetapodBoysFuckOff {
 
 	fadescreen(FADE_TO_BLACK)
 	setflag(FLAG_HIDE_METAPOD_BATTLE)
-	special(DrawWholeMapView)
+	removeobject(1)
+	removeobject(2)
+	removeobject(3)
+	removeobject(4)
 	delay(60)
 	fadescreen(FADE_FROM_BLACK)
 	delay(40)
@@ -783,21 +794,24 @@ script SpindaIsland_Home_EventScript_MetapodBoysFuckOff_Bussin {
 
 	createfieldmugshot(MUGSHOT_TWIN, EMOTE_NORMAL)
 	msgbox(format(
-		"Ayo, we lowkey do be blockin the stairs no cap…\p"
-		"Aight word word, we gon go vibin somewhere else."
+		"Yikes, we lowkey do be blockin the stairs rn no cap…\p"
+		"Aight word word, we gon vibe somewhere else."
 	))
 	closemessage
 
 	fadescreen(FADE_TO_BLACK)
 	setflag(FLAG_HIDE_METAPOD_BATTLE)
-	special(DrawWholeMapView)
+	removeobject(1)
+	removeobject(2)
+	removeobject(3)
+	removeobject(4)
 	delay(60)
 	fadescreen(FADE_FROM_BLACK)
 	delay(40)
 	release
 }
 
-script SpindaIsland_Home_EventScript_MetapodBoy1 {
+script SpindaIsland_Home_EventScript_MetapodBoy {
 	lock
 	if (var(VAR_METAPOD_OTHER_SIDE) == 1) {
 		goto(SpindaIsland_Home_EventScript_MetapodBoysFuckOff)
@@ -817,14 +831,17 @@ script SpindaIsland_Home_EventScript_MetapodBoy1 {
 	msgbox(format(
 		"Can't you see we're in the midst of a fiery battle?"
 	))
+	removefieldmugshot
 	closemessage
 
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	
+	createfieldmugshot(MUGSHOT_TWIN, EMOTE_ANGRY)
 	speakername("Twin")
 	msgbox(format(
 		"Metapod, use harden!!"
 	))
+	removefieldmugshot
 	closemessage
 
 	playse(SE_M_HARDEN)
@@ -835,7 +852,7 @@ script SpindaIsland_Home_EventScript_MetapodBoy1 {
 	release
 }
 
-script SpindaIsland_Home_EventScript_MetapodBoy2 {
+script SpindaIsland_Home_EventScript_MetapodBoy_Bussin {
 	lock
 	if (var(VAR_METAPOD_OTHER_SIDE) == 1) {
 		goto(SpindaIsland_Home_EventScript_MetapodBoysFuckOff_Bussin)
@@ -853,8 +870,9 @@ script SpindaIsland_Home_EventScript_MetapodBoy2 {
 	createfieldmugshot(MUGSHOT_TWIN, EMOTE_FINGER)
 	speakername("Twin")
 	msgbox(format(
-		"Can't you see we finna catch some real heat rn bro? Sheesh!"
+		"Can't you see we tryna catch some real heat rn bro? Sheesh!"
 	))
+	removefieldmugshot
 	closemessage
 
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
@@ -864,6 +882,7 @@ script SpindaIsland_Home_EventScript_MetapodBoy2 {
 	msgbox(format(
 		"Metapod, keep hittin that mid boi with harden, chief!!"
 	))
+	removefieldmugshot
 	closemessage
 
 	playse(SE_M_HARDEN)
@@ -1081,6 +1100,7 @@ script SpindaIsland_Home_EventScript_Machoke {
 	msgbox(format(
 		"Hmmm…"
 	))
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	closemessage
 	release
 }
@@ -1187,32 +1207,45 @@ script SpindaIsland_Home_EventScript_MissingWheel {
 script SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet {
 	lock
 
-	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
-	speakername("Little Archie")
-	msgbox(format(
-		"What if…"
-	))
-	removefieldmugshot
-	closemessage
+	if (flag(FLAG_FAUCET_QUEST_STARTED)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"What if…"
+		))
+		removefieldmugshot
+		closemessage
 
-	delay(48)
+		delay(48)
 
-	playse(SE_CLICK)
-	setmetatile(27, 50, METATILE_SpindaIslandSecondary_FaucetWheel, TRUE)
-	special(DrawWholeMapView)
-	waitse
+		playse(SE_CLICK)
+		setmetatile(27, 50, METATILE_SpindaIslandSecondary_FaucetWheel, TRUE)
+		special(DrawWholeMapView)
+		waitse
 
-	delay(48)
+		delay(48)
 
-	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
-	speakername("Little Archie")
-	msgbox(format(
-		"Fits perfectly! There ya go!"
-	))
-	removefieldmugshot
-	closemessage
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+		speakername("Little Archie")
+		msgbox(format(
+			"Fits perfectly! There ya go!"
+		))
+		removefieldmugshot
+		closemessage
 
-	release
+		removeitem(ITEM_BROKEN_FAUCET)
+		setflag(FLAG_REPLACED_WHEEL)
+
+		release
+	} else {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"This'd be perfect, but I need to repair it!"
+		))
+		removefieldmugshot
+		closemessage
+	}
 }
 
 script SpindaIsland_Home_EventScript_SurveyedWheel {

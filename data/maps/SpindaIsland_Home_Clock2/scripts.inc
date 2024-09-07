@@ -98,13 +98,13 @@ SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome::
 # 67 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	playse SE_PIN
 # 68 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	applymovement 3, Common_Movement_ExclamationMark
+	applymovement 7, Common_Movement_ExclamationMark
 # 69 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	waitmovement 0
 # 70 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	delay 48
 # 72 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	applymovement 3, SpindaIsland_Home_Clock2_Movement_SadManSurprise
+	applymovement 7, SpindaIsland_Home_Clock2_Movement_SadManSurprise
 # 73 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	waitmovement 0
 # 75 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
@@ -219,7 +219,7 @@ SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_1:
 # 178 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	waitse
 # 179 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	removeobject 3
+	removeobject 7
 # 180 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	setflag FLAG_HIDE_MAN_CANT_GO_HOME
 # 182 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
@@ -240,22 +240,22 @@ SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_1:
 
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_3:
 # 165 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	applymovement 3, SpindaIsland_Home_Clock2_Movement_SadManEntersHome
+	applymovement 7, SpindaIsland_Home_Clock2_Movement_SadManEntersHome
 	goto SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_1
 
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_4:
 # 167 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	applymovement 3, SpindaIsland_Home_Clock2_Movement_SadManEntersHome
+	applymovement 7, SpindaIsland_Home_Clock2_Movement_SadManEntersHome
 	goto SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_1
 
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_5:
 # 169 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	applymovement 3, SpindaIsland_Home_Clock2_Movement_SadManEntersHome
+	applymovement 7, SpindaIsland_Home_Clock2_Movement_SadManEntersHome
 	goto SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_1
 
 SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_6:
 # 171 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	applymovement 3, SpindaIsland_Home_Clock2_Movement_SadManEntersHomeAroundPlayer
+	applymovement 7, SpindaIsland_Home_Clock2_Movement_SadManEntersHomeAroundPlayer
 	goto SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome_1
 
 

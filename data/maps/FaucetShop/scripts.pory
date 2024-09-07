@@ -10,13 +10,58 @@ script FaucetShop_EventScript_Owner {
 		createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
 		speakername("Salesman")
 		msgbox(format(
-			"I need {COLOR RED}three screws{COLOR DARK_GRAY} and a pair of {COLOR RED}pliers{COLOR DARK_GRAY}."
+			"I need {COLOR RED}three bolts{COLOR DARK_GRAY} and a pair of {COLOR RED}pliers{COLOR DARK_GRAY}."
 		))
 		removefieldmugshot
 		closemessage
 
-		// TODO EVA comp
-		// if (checkitem(ITEM_BORROWED_PLIERS) && checkitem(ITEM_SCREW))
+		if (checkitem(ITEM_TOUGH_BOLT) && checkitem(ITEM_PRECIOUS_BOLT) && checkitem(ITEM_RUSTY_BOLT) && checkitem(ITEM_BORROWED_PLIERS)) {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+			speakername("Little Archie")
+			msgbox(format(
+				"Here's all the stuff you asked for!"
+			))
+			removefieldmugshot
+			closemessage
+
+			removeitem(ITEM_TOUGH_BOLT)
+			removeitem(ITEM_PRECIOUS_BOLT)
+			removeitem(ITEM_RUSTY_BOLT)
+			removeitem(ITEM_BORROWED_PLIERS)
+
+			createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
+			speakername("Salesman")
+			msgbox(format(
+				"Great! Let me just…"
+			))
+			removefieldmugshot
+			closemessage
+
+			playse(SE_SWITCH)
+			waitse
+			playse(SE_SWITCH)
+			waitse
+
+			createfieldmugshot(MUGSHOT_MAN, EMOTE_GRINNING)
+			speakername("Salesman")
+			msgbox(format(
+				"Here it is! A brand-new plug'n'play {COLOR RED}faucet{COLOR DARK_GRAY}!"
+			))
+			removefieldmugshot
+			closemessage
+
+			giveitem(ITEM_NEW_FAUCET)
+
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+			speakername("Little Archie")
+			msgbox(format(
+				"Thanks so much, mister!!"
+			))
+			removefieldmugshot
+			closemessage
+
+			setflag(FLAG_FAUCET_QUEST_FINISHED)
+		}
 	} else {
 		speakername("Salesman")
 		createfieldmugshot(MUGSHOT_MAN, EMOTE_GRINNING)
@@ -123,7 +168,7 @@ script FaucetShop_EventScript_Owner {
 					removefieldmugshot
 					createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
 					msgbox(format(
-						"To fit the new faucet to the older model's attachment, I'll need {COLOR RED}three big screws{COLOR DARK_GRAY}, and I just broke my only pair of {COLOR RED}pliers{COLOR DARK_GRAY}, so I'll need a new pair.\p"
+						"To fit the new faucet to the older model's attachment, I'll need {COLOR RED}three big bolts{COLOR DARK_GRAY}, and I just broke my only pair of {COLOR RED}pliers{COLOR DARK_GRAY}, so I'll need a new pair.\p"
 						"If you bring me these things, I'll fix it up for ya."
 					))
 					removefieldmugshot
