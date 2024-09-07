@@ -7,17 +7,21 @@ script FaucetShop_EventScript_Owner {
 	faceplayer
 
 	if (flag(FLAG_FAUCET_QUEST_STARTED)) {
+		createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
 		speakername("Salesman")
 		msgbox(format(
 			"I need {COLOR RED}three screws{COLOR DARK_GRAY} and a pair of {COLOR RED}pliers{COLOR DARK_GRAY}."
 		))
+		removefieldmugshot
+		closemessage
 
 		// TODO EVA comp
 		// if (checkitem(ITEM_BORROWED_PLIERS) && checkitem(ITEM_SCREW))
 	} else {
 		speakername("Salesman")
+		createfieldmugshot(MUGSHOT_MAN, EMOTE_GRINNING)
 		msgbox(format(
-			"G'day, little dude! Welcome to the one and only Faucet Workshop!\p"
+			"Good morning, my friend! Welcome to the one and only Faucet Workshop!\p"
 			"How may I help you today?"
 		))
 
@@ -32,9 +36,11 @@ script FaucetShop_EventScript_Owner {
 			"Can I have a faucet?"
 		)
 		closemessage
+		removefieldmugshot
 
 		switch (var(VAR_RESULT)) {
 			case 0:
+				createfieldmugshot(MUGSHOT_MAN, EMOTE_GRINNING)
 				speakername("Salesman")
 				msgbox(format(
 					"We sell faucets!\p"
@@ -42,14 +48,17 @@ script FaucetShop_EventScript_Owner {
 					"We have everything your heart could desire!\p"
 					"As long as it's a faucet, of course."
 				))
+				removefieldmugshot
 				closemessage
 			case 1:
+				createfieldmugshot(MUGSHOT_MAN, EMOTE_GRINNING)
 				speakername("Salesman")
 				msgbox(format(
 					"Now, why would a little boy like you need a faucet?\p"
 					"This is important, grownup business!\p"
 					"Why don't you go and play somewhere else, hm?"
 				))
+				removefieldmugshot
 				closemessage
 				if (flag(FLAG_FAUCET_BROKE)) {
 					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
@@ -61,11 +70,13 @@ script FaucetShop_EventScript_Owner {
 					removefieldmugshot
 					closemessage
 
+					createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
 					speakername("Salesman")
 					msgbox(format(
 						"Hmm, it broke, you say?\p"
 						"Can I take a look?"
 					))
+					removefieldmugshot
 					closemessage
 
 					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
@@ -76,6 +87,7 @@ script FaucetShop_EventScript_Owner {
 					removefieldmugshot
 					closemessage
 
+					createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
 					speakername("Salesman")
 					msgbox(format(
 						"Hmmm…\p"
@@ -84,6 +96,7 @@ script FaucetShop_EventScript_Owner {
 						"This is a very old model, I can't repair it.\p"
 						"You'll need to buy a new one!"
 					))
+					removefieldmugshot
 					closemessage
 
 					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
@@ -94,15 +107,26 @@ script FaucetShop_EventScript_Owner {
 					removefieldmugshot
 					closemessage
 
+					createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
 					speakername("Salesman")
 					msgbox(format(
+						"… … …\p"
 						"Well… Sounds like you're a nice boy who's just made a mistake.\p"
-						"To replace this, you'll need the {COLOR RED}FAUCETOR-XX3060 SUPER 2XOC-SERIES9000{COLOR DARK_GRAY}.\p"
+						"To replace this, you'll need the {COLOR RED}FAUCETOR-XX3060 SUPER 2XOC-SERIES9000{COLOR DARK_GRAY}."
+					))
+					removefieldmugshot
+					createfieldmugshot(MUGSHOT_MAN, EMOTE_GRINNING)
+					msgbox(format(
 						"Normally it costs a pretty penny, but what the hell, I'll give you a hefty discount!\p"
-						"(And put it on your mom's tab!)\p"
+						"(And put it on your mom's tab!)"
+					))
+					removefieldmugshot
+					createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
+					msgbox(format(
 						"To fit the new faucet to the older model's attachment, I'll need {COLOR RED}three big screws{COLOR DARK_GRAY}, and I just broke my only pair of {COLOR RED}pliers{COLOR DARK_GRAY}, so I'll need a new pair.\p"
 						"If you bring me these things, I'll fix it up for ya."
 					))
+					removefieldmugshot
 					closemessage
 
 					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
@@ -119,4 +143,48 @@ script FaucetShop_EventScript_Owner {
 	}
 
 	release
+}
+
+script FaucetShop_EventScript_Note {
+	msgbox(format(
+		"The three pillars of our business:\n"
+		"I. Sell faucets\l"
+		"II. Aim for greatness\l"
+		"III. But mainly, sell faucets"
+	), MSGBOX_SIGN)
+}
+
+script FaucetShop_EventScript_Faucet_LooksLikeMine {
+	lock
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"A round, spinny faucet.\n"
+		"Looks just like the one that broke!"
+	))
+	removefieldmugshot
+	release
+}
+
+script FaucetShop_EventScript_Faucet_Gold {
+	lock
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+	speakername("Little Archie")
+	msgbox(format(
+		"Woah! This one is gold!"
+	))
+	removefieldmugshot
+	release
+}
+
+script FaucetShop_EventScript_Faucet_Regular {
+	lock
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"A metal faucet.\n"
+		"Looks good."
+	))
+	removefieldmugshot
+		release
 }

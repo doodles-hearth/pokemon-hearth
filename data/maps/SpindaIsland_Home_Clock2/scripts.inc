@@ -370,7 +370,7 @@ SpindaIsland_Home_EventScript_StealWheel_7:
 # 261 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	giveitem ITEM_TOUGH_BOLT
 # 262 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
-	setflag FLAG_STOLE_CAR_BOLT
+	setflag FLAG_FOUND_TOUGH_BOLT
 # 263 "data/maps/SpindaIsland_Home_Clock2/scripts.pory"
 	call SpindaIsland_Common_CheckGotAllItemsForNewFaucet
 	goto SpindaIsland_Home_EventScript_StealWheel_1

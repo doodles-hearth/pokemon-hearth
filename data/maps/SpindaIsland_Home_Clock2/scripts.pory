@@ -259,7 +259,7 @@ script SpindaIsland_Home_EventScript_StealWheel {
 			delay(48)
 
 			giveitem(ITEM_TOUGH_BOLT)
-			setflag(FLAG_STOLE_CAR_BOLT)
+			setflag(FLAG_FOUND_TOUGH_BOLT)
 			call(SpindaIsland_Common_CheckGotAllItemsForNewFaucet)
 		} else {
 			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)

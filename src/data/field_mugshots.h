@@ -17,6 +17,7 @@ static const u32 sFieldMugshotGfx_Lass_Surprised[] = INCBIN_U32("graphics/field_
 
 static const u32 sFieldMugshotGfx_Man_Normal[] = INCBIN_U32("graphics/field_mugshots/man/normal.4bpp.lz");
 static const u32 sFieldMugshotGfx_Man_Sad[] = INCBIN_U32("graphics/field_mugshots/man/sad.4bpp.lz");
+static const u32 sFieldMugshotGfx_Man_Grinning[] = INCBIN_U32("graphics/field_mugshots/man/grinning.4bpp.lz");
 
 static const u32 sFieldMugshotGfx_LittleBoy_Normal[] = INCBIN_U32("graphics/field_mugshots/littleboy/normal.4bpp.lz");
 
@@ -25,6 +26,15 @@ static const u32 sFieldMugshotGfx_LittleGirl_Pensive[] = INCBIN_U32("graphics/fi
 
 static const u32 sFieldMugshotGfx_Sunbather_Normal[] = INCBIN_U32("graphics/field_mugshots/sunbather/normal.4bpp.lz");
 static const u32 sFieldMugshotGfx_Sunbather_Pensive[] = INCBIN_U32("graphics/field_mugshots/sunbather/pensive.4bpp.lz");
+
+static const u32 sFieldMugshotGfx_Dad_Normal[] = INCBIN_U32("graphics/field_mugshots/dad/normal.4bpp.lz");
+static const u32 sFieldMugshotGfx_Dad_Embarrassed[] = INCBIN_U32("graphics/field_mugshots/dad/embarrassed.4bpp.lz");
+static const u32 sFieldMugshotGfx_Dad_Grinning[] = INCBIN_U32("graphics/field_mugshots/dad/grinning.4bpp.lz");
+static const u32 sFieldMugshotGfx_Dad_Happy[] = INCBIN_U32("graphics/field_mugshots/dad/happy.4bpp.lz");
+
+static const u32 sFieldMugshotGfx_Twin_Normal[] = INCBIN_U32("graphics/field_mugshots/twin/normal.4bpp.lz");
+static const u32 sFieldMugshotGfx_Twin_Angry[] = INCBIN_U32("graphics/field_mugshots/twin/angry.4bpp.lz");
+static const u32 sFieldMugshotGfx_Twin_Finger[] = INCBIN_U32("graphics/field_mugshots/twin/finger.4bpp.lz");
 
 static const u16 sFieldMugshotPal_DarkBg[] = INCBIN_U16("graphics/object_events/palettes/comp_npc_darkbg.gbapal");
 static const u16 sFieldMugshotPal_BrownBg[] = INCBIN_U16("graphics/object_events/palettes/comp_npc_brownbg.gbapal");
@@ -164,6 +174,12 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
             .gfx = sFieldMugshotGfx_Man_Sad,
             .pal = sFieldMugshotPal_BrownBg,
         },
+
+        [EMOTE_GRINNING] =
+        {
+            .gfx = sFieldMugshotGfx_Man_Grinning,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
     },
     [MUGSHOT_LITTLE_BOY] =
     {
@@ -199,6 +215,52 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_Sunbather_Pensive,
             .pal = sFieldMugshotPal_DarkBg,
+        },
+    },
+    [MUGSHOT_DAD] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_Dad_Normal,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
+
+        [EMOTE_EMBARRASSED] =
+        {
+            .gfx = sFieldMugshotGfx_Dad_Embarrassed,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
+
+        [EMOTE_GRINNING] =
+        {
+            .gfx = sFieldMugshotGfx_Dad_Grinning,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
+
+        [EMOTE_HAPPY] =
+        {
+            .gfx = sFieldMugshotGfx_Dad_Happy,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
+    },
+    [MUGSHOT_TWIN] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_Twin_Normal,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
+
+        [EMOTE_FINGER] =
+        {
+            .gfx = sFieldMugshotGfx_Twin_Finger,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
+
+        [EMOTE_ANGRY] =
+        {
+            .gfx = sFieldMugshotGfx_Twin_Angry,
+            .pal = sFieldMugshotPal_BrownBg,
         },
     },
 };

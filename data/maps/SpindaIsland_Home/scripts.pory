@@ -171,25 +171,31 @@ script SpindaIsland_Home_EventScript_Dad {
 	lock
 	turnobject(LOCALID_DAD, DIR_SOUTH)
 	if (flag(FLAG_OBTAINED_LEMONADE)) {
+		createfieldmugshot(MUGSHOT_DAD, EMOTE_EMBARRASSED)
 		speakername("Dad")
 		msgbox(format(
 			"Don't uh, pour that lemonade I gave you on the ground or anything.\p"
 			"It'd probably kill all the grass and flowers."
 		))
+		removefieldmugshot
 		closemessage
 	} else {
 		if (flag(FLAG_SPOKE_TO_DAD)) {
+			createfieldmugshot(MUGSHOT_DAD, EMOTE_HAPPY)
 			speakername("Dad")
 			msgbox(format(
 				"Here, have some lemonade!"
 			))
+			removefieldmugshot
 			closemessage
 		} else {
+			createfieldmugshot(MUGSHOT_DAD, EMOTE_HAPPY)
 			speakername("Dad")
 			msgbox(format(
 				"Hiya, sonny! going adventuring today, are we?\p"
 				"Want some lemonade?"
 			))
+			removefieldmugshot
 			closemessage
 		}
 
@@ -215,8 +221,9 @@ script SpindaIsland_Home_EventScript_Dad {
 		delay(20)
 
 		playse(SE_PIN)
-		applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
 		waitmovement(0)
+		waitse
 		delay(48)
 
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_DISGUSTED)
@@ -228,14 +235,28 @@ script SpindaIsland_Home_EventScript_Dad {
 		closemessage
 		removefieldmugshot
 
+		createfieldmugshot(MUGSHOT_DAD, EMOTE_GRINNING)
 		speakername("Dad")
 		msgbox(format(
-			"Why, because it's seawater, obviously!\p"
-			"I take it you're not a fan of my recipe?\p"
-			"(You wouldn't be the only one…)\p"
+			"Why, because it's seawater, obviously!"
+		))
+		removefieldmugshot
+		createfieldmugshot(MUGSHOT_DAD, EMOTE_HAPPY)
+		msgbox(format(
+			"I take it you're not a fan of my recipe?"
+		))
+		removefieldmugshot
+		createfieldmugshot(MUGSHOT_DAD, EMOTE_EMBARRASSED)
+		msgbox(format(
+			"(You wouldn't be the only one…)"
+		))
+		removefieldmugshot
+		createfieldmugshot(MUGSHOT_DAD, EMOTE_HAPPY)
+		msgbox(format(
 			"In any case, it's nice of you to come visit me at the office, haha!\p"
 			"See you around, little Archie! Don't get into trouble!"
 		))
+		removefieldmugshot
 		closemessage
 
 		setflag(FLAG_OBTAINED_LEMONADE)
@@ -248,26 +269,32 @@ script SpindaIsland_Home_EventScript_Dad_FromSide {
 	lock
 	faceplayer
 	if (flag(FLAG_OBTAINED_LEMONADE)) {
+		createfieldmugshot(MUGSHOT_DAD, EMOTE_EMBARRASSED)
 		speakername("Dad")
 		msgbox(format(
 			"Don't uh, pour that lemonade I gave you on the ground or anything.\p"
 			"It'd probably kill all the grass and flowers."
 		))
+		removefieldmugshot
 		closemessage
 	} else {
 		if (flag(FLAG_SPOKE_TO_DAD)) {
+			createfieldmugshot(MUGSHOT_DAD, EMOTE_NORMAL)
 			speakername("Dad")
 			msgbox(format(
 				"Come round to the front of the lemonade stand!"
 			))
+			removefieldmugshot
 			closemessage
 		} else {
+			createfieldmugshot(MUGSHOT_DAD, EMOTE_HAPPY)
 			speakername("Dad")
 			msgbox(format(
 				"Hiya, sonny! going adventuring today, are we?\p"
 				"Want some lemonade?\p"
 				"Come round to the front of the lemonade stand!"
 			))
+			removefieldmugshot
 			closemessage
 		}
 		setflag(FLAG_SPOKE_TO_DAD)
@@ -566,7 +593,8 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 								createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE)
 								speakername("Maggie")
 								msgbox(format(
-									"It's a blade of grass large enough to whistle with."
+									"It's a blade of grass large enough to whistle with.\p"
+									"Just don't listen to it too attentively, you might get sleepy."
 								))
 								removefieldmugshot
 								closemessage
@@ -615,6 +643,7 @@ script SpindaIsland_Home_Slowpoke {
 		msgbox(format(
 			"Bruh…"
 		))
+		waitmoncry
 		closemessage
 
 	} else {
@@ -722,11 +751,40 @@ script SpindaIsland_Home_EventScript_Metapod {
 
 script SpindaIsland_Home_EventScript_MetapodBoysFuckOff {
 	faceplayer
+	createfieldmugshot(MUGSHOT_TWIN, EMOTE_ANGRY)
 	speakername("Twin")
 	msgbox(format(
-		"What is it?!\p"
+		"What is it?!"
+	))
+
+	createfieldmugshot(MUGSHOT_TWIN, EMOTE_NORMAL)
+	msgbox(format(
 		"Oh, I guess we are blocking the stairs a little…\p"
 		"Fine, we'll take our epic battle somewhere else."
+	))
+	closemessage
+
+	fadescreen(FADE_TO_BLACK)
+	setflag(FLAG_HIDE_METAPOD_BATTLE)
+	special(DrawWholeMapView)
+	delay(60)
+	fadescreen(FADE_FROM_BLACK)
+	delay(40)
+	release
+}
+
+script SpindaIsland_Home_EventScript_MetapodBoysFuckOff_Bussin {
+	faceplayer
+	createfieldmugshot(MUGSHOT_TWIN, EMOTE_ANGRY)
+	speakername("Twin")
+	msgbox(format(
+		"On god why you gotta bust my balls like that fr?!"
+	))
+
+	createfieldmugshot(MUGSHOT_TWIN, EMOTE_NORMAL)
+	msgbox(format(
+		"Ayo, we lowkey do be blockin the stairs no cap…\p"
+		"Aight word word, we gon go vibin somewhere else."
 	))
 	closemessage
 
@@ -744,17 +802,20 @@ script SpindaIsland_Home_EventScript_MetapodBoy1 {
 	if (var(VAR_METAPOD_OTHER_SIDE) == 1) {
 		goto(SpindaIsland_Home_EventScript_MetapodBoysFuckOff)
 	}
+	createfieldmugshot(MUGSHOT_TWIN, EMOTE_ANGRY)
 	speakername("Twin")
 	msgbox(format(
-		"I'm SO CLOSE to winning!"
+		"I'm SO CLOSE to tasting that sweet, sweet victory!"
 	))
+	removefieldmugshot
 	closemessage
 
 	faceplayer
 
+	createfieldmugshot(MUGSHOT_TWIN, EMOTE_FINGER)
 	speakername("Twin")
 	msgbox(format(
-		"What? You're distracting me!"
+		"Can't you see we're in the midst of a fiery battle?"
 	))
 	closemessage
 
@@ -777,18 +838,31 @@ script SpindaIsland_Home_EventScript_MetapodBoy1 {
 script SpindaIsland_Home_EventScript_MetapodBoy2 {
 	lock
 	if (var(VAR_METAPOD_OTHER_SIDE) == 1) {
-		goto(SpindaIsland_Home_EventScript_MetapodBoysFuckOff)
+		goto(SpindaIsland_Home_EventScript_MetapodBoysFuckOff_Bussin)
 	}
-	faceplayer
+	createfieldmugshot(MUGSHOT_TWIN, EMOTE_ANGRY)
 	speakername("Twin")
 	msgbox(format(
-		"Can't you see we're in the midst of a fiery battle?"
+		"I'm deadass SO CLOSE to catchin that bussin drip fr!"
 	))
 	closemessage
-	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	removefieldmugshot
+
+	faceplayer
+
+	createfieldmugshot(MUGSHOT_TWIN, EMOTE_FINGER)
 	speakername("Twin")
 	msgbox(format(
-		"Metapod, use harden!!"
+		"Can't you see we finna catch some real heat rn bro? Sheesh!"
+	))
+	closemessage
+
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+
+	createfieldmugshot(MUGSHOT_TWIN, EMOTE_ANGRY)
+	speakername("Twin")
+	msgbox(format(
+		"Metapod, keep hittin that mid boi with harden, chief!!"
 	))
 	closemessage
 
@@ -943,10 +1017,78 @@ script SpindaIsland_Home_SlowpokeMistress {
 	release
 }
 
+script SpindaIsland_Home_EventScript_Juan {
+	lock
+	faceplayer
+	createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
+	speakername("Juan")
+	if (flag(FLAG_TALKED_TO_JUAN_ABOUT_PUBES)) {
+		msgbox(format(
+			"Hey, wanna hear more interesting facts about Pokémon?"
+		))
+
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Nope",
+			"No thanks"
+		)
+
+		createfieldmugshot(MUGSHOT_MAN, EMOTE_GRINNING)
+		msgbox(format(
+			"Bummer! Come back whenever, I have plenty!"
+		))
+
+		removefieldmugshot
+		closemessage
+	} else {
+		msgbox(format(
+			"I'm just taking my friend Machoke for a stroll!\p"
+			"You know, I've always wondered where the cute little thong and belt come from.\p"
+			"My Machoke was already wearing it when I caught him!\p"
+			"Do they have like a Machoke thong shop somewhere and all the Machoke go there to get their thong?\p"
+			"Is there a Machoke censor who travels across all lands, putting thongs on wild Machoke?\p"
+			"Do they actually just grow their own thong naturally?\p"
+			"Is it… {PAUSE 20}Is it their…\p"
+			"… … …\p"
+			"… …It is, isn't it?"
+		))
+		createfieldmugshot(MUGSHOT_MAN, EMOTE_SURPRISED)
+		msgbox(format(
+			"Oh boy, what a finding! I need to write this discovery down in my PokéDex!!"
+		))
+		removefieldmugshot
+		closemessage
+		setflag(FLAG_TALKED_TO_JUAN_ABOUT_PUBES)
+	}
+	
+	release
+}
+
+script SpindaIsland_Home_EventScript_Machoke {
+	lock
+	faceplayer
+	playmoncry(SPECIES_MACHOKE, CRY_MODE_NORMAL)
+	if (flag(FLAG_TALKED_TO_JUAN_ABOUT_PUBES)) {
+		speakername("Sexy Machoke")
+	} else {
+		speakername("Machoke")
+	}
+	msgbox(format(
+		"Hmmm…"
+	))
+	closemessage
+	release
+}
+
 script SpindaIsland_Home_CarBoy {
 	lock
 	faceplayer
-	createfieldmugshot(MUGSHOT_LITTLE_GIRL, EMOTE_NORMAL)
+	createfieldmugshot(MUGSHOT_LITTLE_BOY, EMOTE_NORMAL)
 	speakername("Rudy")
 	msgbox(format(
 		"Vrrrbbbbbmmmmmmm!!!!!"

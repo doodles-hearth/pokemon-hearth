@@ -7,13 +7,17 @@ mapscripts SpindaIsland_Home_Clock1_MapScripts {
 		} else {
 			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(SLOWPOKE))
 		}
-	}
-	MAP_SCRIPT_ON_LOAD {
-		// Broken faucet
+
 		if (flag(FLAG_FAUCET_BROKE)) {
 			setmetatile(20, 8, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
 		}
 	}
+	// MAP_SCRIPT_ON_LOAD {
+	// 	// Broken faucet
+	// 	if (flag(FLAG_FAUCET_BROKE)) {
+	// 		setmetatile(20, 8, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
+	// 	}
+	// }
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_SPINDA_ISLAND_INTRO_STATE, 2: SpindaIsland_Home_EventScript_MainQuestRecap
     ]
@@ -73,9 +77,6 @@ script SpindaIsland_Home_Clock1_Faucet {
 		applymovement(OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Clock1_FaucetBreaks)
 
 		playse(SE_M_BRICK_BREAK)
-		// playse(SE_UNLOCK)
-		// playse(SE_BANG)
-		// playse(SE_ICE_BREAK)
 		waitmovement(OBJ_EVENT_ID_PLAYER)
 		waitse
 

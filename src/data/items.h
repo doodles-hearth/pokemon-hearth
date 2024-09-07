@@ -14087,7 +14087,7 @@ const struct Item gItemsInfo[] =
         .price = 0,
         .description = COMPOUND_STRING(
             "The faucet I need\n"
-            "to repair to get\n"
+            "to replace to get\n"
             "the water flowing."),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
