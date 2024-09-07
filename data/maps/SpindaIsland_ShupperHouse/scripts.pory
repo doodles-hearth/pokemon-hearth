@@ -1,0 +1,40 @@
+mapscripts SpindaIsland_ShupperHouse_MapScripts {
+	
+}
+
+script SpindaIsland_ShupperHouse_Shuppet {
+	lock
+	playmoncry(SPECIES_SHUPPET, CRY_MODE_NORMAL)
+	msgbox(format("Kekhekhehehe…"))
+	waitmoncry
+	closemessage
+	release
+}
+
+script SpindaIsland_ShupperHouse_ChaseShuppets {
+	lock
+
+    playse(SE_SWITCH)
+    waitse
+    playse(SE_M_LEER)
+    fadescreenspeed(FADE_TO_WHITE, 0)
+    fadescreenspeed(FADE_FROM_WHITE, 0)
+    waitse
+
+	applymovement(1, Common_Movement_ExclamationMark)
+	playmoncry(SPECIES_SHUPPET, CRY_MODE_NORMAL)
+	waitmoncry
+	applymovement(2, Common_Movement_ExclamationMark)
+	playmoncry(SPECIES_SHUPPET, CRY_MODE_NORMAL)
+	waitmoncry
+	waitmovement(0)
+
+	removeobject(1)
+	delay(20)
+	removeobject(2)
+	delay(20)
+
+	setflag(FLAG_HIDE_SHUPPETS)
+
+    release
+}

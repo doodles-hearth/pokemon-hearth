@@ -4835,7 +4835,7 @@
       "id": "LAYOUT_SPINDA_ISLAND_SHUPPET_HOUSE_ATTIC",
       "name": "SpindaIsland_ShuppetHouse_Attic_Layout",
       "width": 11,
-      "height": 11,
+      "height": 10,
       "primary_tileset": "gTileset_HackingCompHouse",
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/SpindaIsland_ShuppetHouse_Attic/border.bin",

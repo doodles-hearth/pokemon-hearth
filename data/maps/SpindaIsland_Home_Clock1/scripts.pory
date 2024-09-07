@@ -28,6 +28,8 @@ script SpindaIsland_Home_Clock1_HidingBoy {
 	lock
 
 	faceplayer
+
+	createfieldmugshot(MUGSHOT_LITTLE_BOY, EMOTE_NORMAL)
 	speakername("Timmy")
 	msgbox(format(
 		"Darnit! You found me!"
@@ -273,6 +275,7 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 					waitmovement(LOCALID_PHOTO_MAN)
 					waitse
 
+					createfieldmugshot(MUGSHOT_MAN, EMOTE_SAD)
 					speakername("Camera owner")
 					msgbox(format(
 						"What the hell happened?\p"
@@ -289,14 +292,16 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 						"Where's my photograph?",
 						"It didn't like my nickel!"
 					)
+					removefieldmugshot
 					closemessage
 
+					createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
 					speakername("Camera owner")
 					msgbox(format(
 						"… …You were just trying to have your photograph taken?\p"
 						"Hmm…"
 					))
-					turnobject(LOCALID_PHOTO_MAN, DIR_NORTH)
+					turnobject(LOCALID_PHOTO_MAN, DIR_WEST)
 					msgbox(format(
 						"I guess maybe using Voltorb as electrical components wasn't such a great idea after all…"
 					))
@@ -307,9 +312,11 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 						"Let me give you a brand-new camera as an apology."
 					))
 					closemessage
+					removefieldmugshot
 
 					giveitem(ITEM_TOY_CAMERA)
 
+					createfieldmugshot(MUGSHOT_MAN, EMOTE_NORMAL)
 					speakername("Camera owner")
 					msgbox(format(
 						"You're welcome, kid.\p"
@@ -333,7 +340,6 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 						"Hey, at least I got a free camera out of this!\p"
 						"…Wait a minute…"
 					))
-					removefieldmugshot
 					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
 					msgbox(format(
 						"Oh, man, this is just a toy! It doesn't take any pictures!"
@@ -418,4 +424,66 @@ movement SpindaIsland_Home_Clock1_Movement_ArchieJumps {
 movement SpindaIsland_Home_Clock1_FaucetBreaks {
 	lock_facing_direction
 	player_run_down
+}
+
+script SpindaIsland_Home_Clock1_EventScript_OldWoman {
+	lock
+	if (flag(FLAG_HIDE_SHUPPETS)) {
+		faceplayer
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_NORMAL)
+		speakername("Old woman")
+		msgbox(format(
+			"Oh, I'm too scared to go back inside…"
+		))
+		removefieldmugshot
+		closemessage
+
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+		speakername("Little Archie")
+		msgbox(format(
+			"Don't worry granny! There were some Shuppet in your attic, but I chased them away!"
+		))
+		removefieldmugshot
+		closemessage
+
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_NORMAL)
+		speakername("Old woman")
+		msgbox(format(
+			"Shuppet, you say?"
+		))
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_HAPPY)
+		msgbox(format(
+			"How adorable of you to help out a poor old lady…\p"
+			"Please take this, for your trouble!"
+		))
+		removefieldmugshot
+		closemessage
+
+		// TODO EVA COMP giveitem
+
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_HAPPY)
+		msgbox(format(
+			"Have a good day, child."
+		))
+		removefieldmugshot
+		closemessage
+
+		applymovement(VAR_LAST_TALKED, Common_Movement_FaceRight)
+		waitmovement(0)
+		removeobject(VAR_LAST_TALKED)
+		playse(SE_EXIT)
+		waitse
+		setflag(FLAG_HIDE_OLD_WOMAN)
+	} else {
+		faceplayer
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_NORMAL)
+		speakername("Old woman")
+		msgbox(format(
+			"I think my house is haunted. There's something living in my attic.\p"
+			"I don't know what to do…"
+		))
+		removefieldmugshot
+		closemessage
+	}
+	release
 }

@@ -16,3 +16,77 @@ mapscripts SpindaIsland_Home_Clock3_MapScripts {
 		}
 	}
 }
+
+script SpindaIsland_Home_Clock3_EventScript_OldWoman {
+	lock
+	faceplayer
+	if (!flag(FLAG_SHUPPET_QUEST_STARTED)) {
+		faceplayer
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_NORMAL)
+		speakername("Old woman")
+		msgbox(format(
+			"I think my house is haunted. There's something living in my attic.\p"
+			"I don't know what to do…"
+		))
+		removefieldmugshot
+		closemessage
+		setflag(FLAG_SHUPPET_QUEST_STARTED)
+	} elif (!flag(FLAG_HIDE_SHUPPETS)) {
+		faceplayer
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_NORMAL)
+		speakername("Old woman")
+		msgbox(format(
+			"Oh, I'm too scared to go back inside…"
+		))
+		removefieldmugshot
+		closemessage
+	}
+
+	if (flag(FLAG_HIDE_SHUPPETS)) {
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_NORMAL)
+		speakername("Old woman")
+		msgbox(format(
+			"Oh, I'm too scared to go back inside…"
+		))
+		removefieldmugshot
+		closemessage
+
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+		speakername("Little Archie")
+		msgbox(format(
+			"Don't worry granny! There were some Shuppet in your attic, but I chased them away!"
+		))
+		removefieldmugshot
+		closemessage
+
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_NORMAL)
+		speakername("Old woman")
+		msgbox(format(
+			"Shuppet, you say?"
+		))
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_HAPPY)
+		msgbox(format(
+			"How adorable of you to help out a poor old lady…\p"
+			"Please take this, for your trouble!"
+		))
+		removefieldmugshot
+		closemessage
+
+		// TODO EVA COMP giveitem
+
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_HAPPY)
+		msgbox(format(
+			"Have a good day, child."
+		))
+		removefieldmugshot
+		closemessage
+
+		applymovement(VAR_LAST_TALKED, Common_Movement_FaceLeft)
+		waitmovement(0)
+		removeobject(VAR_LAST_TALKED)
+		playse(SE_EXIT)
+		waitse
+		setflag(FLAG_HIDE_OLD_WOMAN)
+	}
+	release
+}

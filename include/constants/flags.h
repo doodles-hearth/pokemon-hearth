@@ -674,9 +674,9 @@
 #define FLAG_LOOKING_FOR_WHEEL_REPLACEMENT  0x271
 #define FLAG_FOUND_TOUGH_BOLT  0x272
 #define FLAG_FAUCET_QUEST_FINISHED  0x273
-#define FLAG_UNUSED_0x274  0x274 // Unused Flag
-#define FLAG_UNUSED_0x275  0x275 // Unused Flag
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
+#define FLAG_SHUPPET_QUEST_STARTED  0x274
+#define FLAG_HIDE_OLD_WOMAN  0x275
+#define FLAG_HIDE_SHUPPETS  0x276
 #define FLAG_UNUSED_0x277  0x277 // Unused Flag
 #define FLAG_UNUSED_0x278  0x278 // Unused Flag
 #define FLAG_UNUSED_0x279  0x279 // Unused Flag

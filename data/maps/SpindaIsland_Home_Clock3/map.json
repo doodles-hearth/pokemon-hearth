@@ -227,13 +227,39 @@
       "x": 19,
       "y": 34,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpindaIsland_Home_EventScript_Juan",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL_BLACK",
+      "x": 32,
+      "y": 24,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_EventScript_Lisa",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
+      "x": 43,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_Clock3_EventScript_OldWoman",
+      "flag": "FLAG_HIDE_OLD_WOMAN"
     }
   ],
   "warp_events": [
@@ -249,6 +275,13 @@
       "y": 31,
       "elevation": 0,
       "dest_map": "MAP_FAUCET_SHOP_CLOCK3",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 39,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK1",
       "dest_warp_id": "0"
     }
   ],

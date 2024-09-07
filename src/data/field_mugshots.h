@@ -5,6 +5,7 @@ static const u32 sFieldMugshotGfx_Archie_Disgusted[] = INCBIN_U32("graphics/fiel
 static const u32 sFieldMugshotGfx_Archie_Embarrassed[] = INCBIN_U32("graphics/field_mugshots/archie/embarrassed.4bpp.lz");
 static const u32 sFieldMugshotGfx_Archie_Excited[] = INCBIN_U32("graphics/field_mugshots/archie/excited.4bpp.lz");
 static const u32 sFieldMugshotGfx_Archie_Sad[] = INCBIN_U32("graphics/field_mugshots/archie/sad.4bpp.lz");
+static const u32 sFieldMugshotGfx_Archie_Blind[] = INCBIN_U32("graphics/field_mugshots/archie/blind.4bpp.lz");
 
 static const u32 sFieldMugshotGfx_Mom_Normal[] = INCBIN_U32("graphics/field_mugshots/mom/normal.4bpp.lz");
 static const u32 sFieldMugshotGfx_Mom_Happy[] = INCBIN_U32("graphics/field_mugshots/mom/happy.4bpp.lz");
@@ -18,8 +19,11 @@ static const u32 sFieldMugshotGfx_Lass_Surprised[] = INCBIN_U32("graphics/field_
 static const u32 sFieldMugshotGfx_Man_Normal[] = INCBIN_U32("graphics/field_mugshots/man/normal.4bpp.lz");
 static const u32 sFieldMugshotGfx_Man_Sad[] = INCBIN_U32("graphics/field_mugshots/man/sad.4bpp.lz");
 static const u32 sFieldMugshotGfx_Man_Grinning[] = INCBIN_U32("graphics/field_mugshots/man/grinning.4bpp.lz");
+static const u32 sFieldMugshotGfx_Man_Surprised[] = INCBIN_U32("graphics/field_mugshots/man/surprised.4bpp.lz");
 
 static const u32 sFieldMugshotGfx_LittleBoy_Normal[] = INCBIN_U32("graphics/field_mugshots/littleboy/normal.4bpp.lz");
+
+static const u32 sFieldMugshotGfx_LittleGirlBlack_Normal[] = INCBIN_U32("graphics/field_mugshots/littlegirlblack/normal.4bpp.lz");
 
 static const u32 sFieldMugshotGfx_LittleGirl_Normal[] = INCBIN_U32("graphics/field_mugshots/littlegirl/normal.4bpp.lz");
 static const u32 sFieldMugshotGfx_LittleGirl_Pensive[] = INCBIN_U32("graphics/field_mugshots/littlegirl/pensive.4bpp.lz");
@@ -35,6 +39,9 @@ static const u32 sFieldMugshotGfx_Dad_Happy[] = INCBIN_U32("graphics/field_mugsh
 static const u32 sFieldMugshotGfx_Twin_Normal[] = INCBIN_U32("graphics/field_mugshots/twin/normal.4bpp.lz");
 static const u32 sFieldMugshotGfx_Twin_Angry[] = INCBIN_U32("graphics/field_mugshots/twin/angry.4bpp.lz");
 static const u32 sFieldMugshotGfx_Twin_Finger[] = INCBIN_U32("graphics/field_mugshots/twin/finger.4bpp.lz");
+
+static const u32 sFieldMugshotGfx_Grandma_Normal[] = INCBIN_U32("graphics/field_mugshots/grandma/normal.4bpp.lz");
+static const u32 sFieldMugshotGfx_Grandma_Happy[] = INCBIN_U32("graphics/field_mugshots/grandma/happy.4bpp.lz");
 
 static const u16 sFieldMugshotPal_DarkBg[] = INCBIN_U16("graphics/object_events/palettes/comp_npc_darkbg.gbapal");
 static const u16 sFieldMugshotPal_BrownBg[] = INCBIN_U16("graphics/object_events/palettes/comp_npc_brownbg.gbapal");
@@ -99,7 +106,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
 
         [EMOTE_BLIND] =
         {
-            .gfx = sFieldMugshotGfx_Archie_Normal,
+            .gfx = sFieldMugshotGfx_Archie_Blind,
             .pal = sFieldMugshotPal_BrownBg,
         },
 
@@ -180,6 +187,12 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
             .gfx = sFieldMugshotGfx_Man_Grinning,
             .pal = sFieldMugshotPal_BrownBg,
         },
+
+        [EMOTE_SURPRISED] =
+        {
+            .gfx = sFieldMugshotGfx_Man_Surprised,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
     },
     [MUGSHOT_LITTLE_BOY] =
     {
@@ -187,6 +200,14 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_LittleBoy_Normal,
             .pal = sFieldMugshotPal_BrownBg,
+        },
+    },
+    [MUGSHOT_LITTLE_GIRL_BLACK] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_LittleGirlBlack_Normal,
+            .pal = sFieldMugshotPal_DarkBg,
         },
     },
     [MUGSHOT_LITTLE_GIRL] =
@@ -260,6 +281,19 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_ANGRY] =
         {
             .gfx = sFieldMugshotGfx_Twin_Angry,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
+    },
+    [MUGSHOT_GRANDMA] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_Grandma_Normal,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
+        [EMOTE_HAPPY] =
+        {
+            .gfx = sFieldMugshotGfx_Grandma_Happy,
             .pal = sFieldMugshotPal_BrownBg,
         },
     },

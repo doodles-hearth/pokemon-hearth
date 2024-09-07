@@ -66,6 +66,7 @@ static void ItemUseOnFieldCB_Berry(u8);
 static void ItemUseOnFieldCB_WailmerPailBerry(u8);
 static void ItemUseOnFieldCB_WailmerPailSudowoodo(u8);
 static void ItemUseOnFieldCB_ToyCamera(u8);
+static void ItemUseOnFieldCB_ToyCameraWithShuppet(u8);
 static void ItemUseOnFieldCB_BrokenFaucetWheel(u8);
 static bool8 TryToWaterSudowoodo(void);
 static bool8 TryToReplaceWheel(void);
@@ -257,7 +258,19 @@ void ItemUseOutOfBattle_Bike(u8 taskId)
 
 void ItemUseOutOfBattle_ToyCamera(u8 taskId)
 {
-    sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCamera;
+    if (
+        (gSaveBlock1Ptr->location.mapNum == MAP_NUM(SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK1)
+        && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK1))
+        || (gSaveBlock1Ptr->location.mapNum == MAP_NUM(SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK2)
+        && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK2))
+        || (gSaveBlock1Ptr->location.mapNum == MAP_NUM(SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK3)
+        && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK3))
+        
+    ) {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCameraWithShuppet;
+    } else {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCamera;
+    }
     SetUpItemUseOnFieldCallback(taskId);
 }
 
@@ -834,6 +847,13 @@ static void ItemUseOnFieldCB_ToyCamera(u8 taskId)
 {
     LockPlayerFieldControls();
     ScriptContext_SetupScript(SpindaIsland_Common_UseToyCamera);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_ToyCameraWithShuppet(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_ShupperHouse_ChaseShuppets);
     DestroyTask(taskId);
 }
 

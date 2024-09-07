@@ -7553,8 +7553,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gFollowerPalette_Machoke,
-            gShinyFollowerPalette_Machoke
+            gItemIconPalette_SpindaIsland_BrownBg,
+            gItemIconPalette_SpindaIsland_BrownBg
         )
         .levelUpLearnset = sMachokeLevelUpLearnset,
         .teachableLearnset = sMachokeTeachableLearnset,

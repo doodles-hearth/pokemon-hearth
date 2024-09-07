@@ -1085,7 +1085,7 @@ script SpindaIsland_Home_EventScript_Juan {
 		))
 		createfieldmugshot(MUGSHOT_MAN, EMOTE_SURPRISED)
 		msgbox(format(
-			"Oh boy, what a finding! I need to write this discovery down in my PokéDex!!"
+			"Oh boy, what a find! I need to write this discovery down in my PokéDex!!"
 		))
 		removefieldmugshot
 		closemessage
@@ -1110,6 +1110,103 @@ script SpindaIsland_Home_EventScript_Machoke {
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	closemessage
 	release
+}
+
+script SpindaIsland_Home_EventScript_Lisa {
+	lock
+	faceplayer
+	createfieldmugshot(MUGSHOT_LITTLE_GIRL_BLACK, EMOTE_NORMAL)
+	speakername("Lisa")
+	msgbox(format(
+		"Hey Archie! Heard you were building a sick pirate ship!"
+	))
+	removefieldmugshot
+	closemessage
+	release
+}
+
+script SpindaIsland_Home_EventScript_OldWoman {
+	lock
+	if (flag(FLAG_HIDE_SHUPPETS)) {
+		faceplayer
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_NORMAL)
+		speakername("Old woman")
+		msgbox(format(
+			"Oh, I'm too scared to go back inside…"
+		))
+		removefieldmugshot
+		closemessage
+
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+		speakername("Little Archie")
+		msgbox(format(
+			"Don't worry granny! There were some Shuppet in your attic, but I chased them away!"
+		))
+		removefieldmugshot
+		closemessage
+
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_NORMAL)
+		speakername("Old woman")
+		msgbox(format(
+			"Shuppet, you say?"
+		))
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_HAPPY)
+		msgbox(format(
+			"How adorable of you to help out a poor old lady…\p"
+			"Please take this, for your trouble!"
+		))
+		removefieldmugshot
+		closemessage
+
+		// TODO EVA COMP giveitem
+
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_HAPPY)
+		msgbox(format(
+			"Have a good day, child."
+		))
+		removefieldmugshot
+		closemessage
+
+		applymovement(VAR_LAST_TALKED, SpindaIsland_Home_Movement_GrandmaEntersHome)
+		waitmovement(0)
+		removeobject(VAR_LAST_TALKED)
+		playse(SE_EXIT)
+		waitse
+		setflag(FLAG_HIDE_OLD_WOMAN)
+	} else {
+		faceplayer
+		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_NORMAL)
+		speakername("Old woman")
+		msgbox(format(
+			"I think my house is haunted. There's something living in my attic.\p"
+			"I don't know what to do…"
+		))
+		removefieldmugshot
+		closemessage
+	}
+	release
+}
+
+movement SpindaIsland_Home_Movement_GrandmaEntersHome {
+	face_up
+}
+
+script SpindaIsland_Home_EventScript_Boat {
+	// TODO EVA comp
+}
+
+script SpindaIsland_Home_EventScript_OldWomansDoor {
+	lock
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+    speakername("Little Archie")
+    msgbox(format(
+		"I'm glad I was able to help!"
+    ))
+    closemessage
+	removefieldmugshot
+    
+    release
 }
 
 script SpindaIsland_Home_CarBoy {
@@ -1324,4 +1421,56 @@ script SpindaIsland_Home_EventScript_SurveyedWheel {
 		closemessage
 	}
 	release
+}
+
+script SpindaIsland_Home_EventScript_Raft {
+	lock
+	if (checkitem(ITEM_BADASS_SAIL)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+		speakername("Little Archie")
+		msgbox(format(
+			"At last! I can finally set sail!!"
+		))
+		removefieldmugshot
+		closemessage
+		
+		playse(SE_FU_ZAKU)
+		turnobject(VAR_LAST_TALKED, DIR_SOUTH)
+		waitse
+
+		delay(48)
+
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+		speakername("Little Archie")
+		msgbox(format(
+			"And voilà!"
+		))
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		msgbox(format(
+			"Goodbye, Spinda Island…\p"
+			"Hello, adventure!"
+		))
+		removefieldmugshot
+		closemessage
+
+		applymovement(OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Movement_PlayerEntersRaft)
+		waitmovement(0)
+
+
+	} else {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"My super-awesome pirate ship!\p"
+			"Only thing missing is the sail."
+		))
+		removefieldmugshot
+		closemessage
+	}
+	release
+}
+
+movement SpindaIsland_Home_Movement_PlayerEntersRaft {
+	walk_down
+	set_invisible
 }

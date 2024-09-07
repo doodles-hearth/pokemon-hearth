@@ -24,8 +24,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SpindaIsland_Home_EventScript_MetapodBoy",
-      "flag": "FLAG_HIDE_METAPOD_BATTLE"
+      "script": "SpindaIsland_Home_EventScript_Boat",
+      "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(METAPOD)",
@@ -253,7 +253,7 @@
       "x": 25,
       "y": 19,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -273,6 +273,45 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpindaIsland_Home_EventScript_Machoke",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SMOL_BOAT",
+      "x": 15,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_EventScript_Raft",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL_BLACK",
+      "x": 35,
+      "y": 32,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_EventScript_Lisa",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
+      "x": 40,
+      "y": 43,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_EventScript_OldWoman",
+      "flag": "FLAG_HIDE_OLD_WOMAN"
     }
   ],
   "warp_events": [
@@ -281,13 +320,6 @@
       "y": 42,
       "elevation": 0,
       "dest_map": "MAP_SPINA_ISLAND_PLAYER_HOME",
-      "dest_warp_id": "0"
-    },
-    {
-      "x": 40,
-      "y": 42,
-      "elevation": 0,
-      "dest_map": "MAP_SPINDA_ISLAND_SHUPPER_HOUSE",
       "dest_warp_id": "0"
     },
     {
@@ -303,6 +335,13 @@
       "elevation": 0,
       "dest_map": "MAP_FAUCET_SHOP",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 40,
+      "y": 38,
+      "elevation": 0,
+      "dest_map": "MAP_SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK2",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [
@@ -397,6 +436,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SpindaIsland_Home_EventScript_FaucetShopSign"
+    },
+    {
+      "type": "sign",
+      "x": 40,
+      "y": 42,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SpindaIsland_Home_EventScript_OldWomansDoor"
     }
   ]
 }

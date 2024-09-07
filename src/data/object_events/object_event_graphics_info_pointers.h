@@ -11,6 +11,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LittleBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LittleGirl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_LittleGirlBlack;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SmolBoat;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Boy3;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Girl3;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RichBoy;
@@ -265,6 +267,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_GIRL_2] =                   &gObjectEventGraphicsInfo_Girl2,
     [OBJ_EVENT_GFX_LITTLE_BOY] =               &gObjectEventGraphicsInfo_LittleBoy,
     [OBJ_EVENT_GFX_LITTLE_GIRL] =              &gObjectEventGraphicsInfo_LittleGirl,
+    [OBJ_EVENT_GFX_LITTLE_GIRL_BLACK] =              &gObjectEventGraphicsInfo_LittleGirlBlack,
+    [OBJ_EVENT_GFX_SMOL_BOAT] =              &gObjectEventGraphicsInfo_SmolBoat,
     [OBJ_EVENT_GFX_BOY_3] =                    &gObjectEventGraphicsInfo_Boy3,
     [OBJ_EVENT_GFX_GIRL_3] =                   &gObjectEventGraphicsInfo_Girl3,
     [OBJ_EVENT_GFX_RICH_BOY] =                 &gObjectEventGraphicsInfo_RichBoy,

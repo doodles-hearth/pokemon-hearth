@@ -1395,307 +1395,507 @@ SpindaIsland_Home_EventScript_Machoke_2:
 	goto SpindaIsland_Home_EventScript_Machoke_1
 
 
-SpindaIsland_Home_CarBoy::
+SpindaIsland_Home_EventScript_Lisa::
 # 1116 "data/maps/SpindaIsland_Home/scripts.pory"
 	lock
 # 1117 "data/maps/SpindaIsland_Home/scripts.pory"
 	faceplayer
 # 1118 "data/maps/SpindaIsland_Home/scripts.pory"
-	createfieldmugshot MUGSHOT_LITTLE_BOY, EMOTE_NORMAL
+	createfieldmugshot MUGSHOT_LITTLE_GIRL_BLACK, EMOTE_NORMAL
 # 1119 "data/maps/SpindaIsland_Home/scripts.pory"
-	speakername SpindaIsland_Home_CarBoy_Text_0
+	speakername SpindaIsland_Home_EventScript_Lisa_Text_0
 # 1120 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_CarBoy_Text_1
+	msgbox SpindaIsland_Home_EventScript_Lisa_Text_1
 # 1123 "data/maps/SpindaIsland_Home/scripts.pory"
 	removefieldmugshot
 # 1124 "data/maps/SpindaIsland_Home/scripts.pory"
 	closemessage
 # 1125 "data/maps/SpindaIsland_Home/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 1126 "data/maps/SpindaIsland_Home/scripts.pory"
+	release
+	return
+
+
+SpindaIsland_Home_EventScript_OldWoman::
+# 1129 "data/maps/SpindaIsland_Home/scripts.pory"
+	lock
+# 1130 "data/maps/SpindaIsland_Home/scripts.pory"
+	goto_if_set FLAG_HIDE_SHUPPETS, SpindaIsland_Home_EventScript_OldWoman_2
+# 1177 "data/maps/SpindaIsland_Home/scripts.pory"
+	faceplayer
+# 1178 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_NORMAL
+# 1179 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_OldWoman_Text_0
+# 1180 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_OldWoman_Text_6
+# 1184 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1185 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+SpindaIsland_Home_EventScript_OldWoman_1:
+# 1187 "data/maps/SpindaIsland_Home/scripts.pory"
+	release
+	return
+
+SpindaIsland_Home_EventScript_OldWoman_2:
+# 1131 "data/maps/SpindaIsland_Home/scripts.pory"
+	faceplayer
+# 1132 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_NORMAL
+# 1133 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_OldWoman_Text_0
+# 1134 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_OldWoman_Text_1
+# 1137 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1138 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1140 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
+# 1141 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
+# 1142 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_OldWoman_Text_2
+# 1145 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1146 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1148 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_NORMAL
+# 1149 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_OldWoman_Text_0
+# 1150 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_OldWoman_Text_3
+# 1153 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_HAPPY
+# 1154 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_OldWoman_Text_4
+# 1158 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1159 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1163 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_HAPPY
+# 1164 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_OldWoman_Text_5
+# 1167 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1168 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1170 "data/maps/SpindaIsland_Home/scripts.pory"
+	applymovement VAR_LAST_TALKED, SpindaIsland_Home_Movement_GrandmaEntersHome
+# 1171 "data/maps/SpindaIsland_Home/scripts.pory"
 	waitmovement 0
-# 1127 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1172 "data/maps/SpindaIsland_Home/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 1173 "data/maps/SpindaIsland_Home/scripts.pory"
+	playse SE_EXIT
+# 1174 "data/maps/SpindaIsland_Home/scripts.pory"
+	waitse
+# 1175 "data/maps/SpindaIsland_Home/scripts.pory"
+	setflag FLAG_HIDE_OLD_WOMAN
+	goto SpindaIsland_Home_EventScript_OldWoman_1
+
+
+# 1190 "data/maps/SpindaIsland_Home/scripts.pory"
+SpindaIsland_Home_Movement_GrandmaEntersHome:
+# 1191 "data/maps/SpindaIsland_Home/scripts.pory"
+	face_up
+	step_end
+
+SpindaIsland_Home_EventScript_Boat::
+	return
+
+
+SpindaIsland_Home_EventScript_OldWomansDoor::
+# 1199 "data/maps/SpindaIsland_Home/scripts.pory"
+	lock
+# 1201 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 1202 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
+# 1203 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_OldWomansDoor_Text_0
+# 1206 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1207 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1209 "data/maps/SpindaIsland_Home/scripts.pory"
+	release
+	return
+
+
+SpindaIsland_Home_CarBoy::
+# 1213 "data/maps/SpindaIsland_Home/scripts.pory"
+	lock
+# 1214 "data/maps/SpindaIsland_Home/scripts.pory"
+	faceplayer
+# 1215 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_LITTLE_BOY, EMOTE_NORMAL
+# 1216 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_CarBoy_Text_0
+# 1217 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_CarBoy_Text_1
+# 1220 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1221 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1222 "data/maps/SpindaIsland_Home/scripts.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+# 1223 "data/maps/SpindaIsland_Home/scripts.pory"
+	waitmovement 0
+# 1224 "data/maps/SpindaIsland_Home/scripts.pory"
 	release
 	return
 
 
 SpindaIsland_Home_CarGirl::
-# 1131 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1228 "data/maps/SpindaIsland_Home/scripts.pory"
 	lock
-# 1132 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1229 "data/maps/SpindaIsland_Home/scripts.pory"
 	goto_if_set FLAG_RECEIVED_NICKEL, SpindaIsland_Home_CarGirl_2
-# 1142 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1239 "data/maps/SpindaIsland_Home/scripts.pory"
 	goto_if_set FLAG_REPLACED_WHEEL, SpindaIsland_Home_CarGirl_3
-# 1159 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1256 "data/maps/SpindaIsland_Home/scripts.pory"
 	goto_if_set FLAG_LOOKING_FOR_WHEEL_REPLACEMENT, SpindaIsland_Home_CarGirl_4
-# 1169 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1266 "data/maps/SpindaIsland_Home/scripts.pory"
 	faceplayer
-# 1170 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1267 "data/maps/SpindaIsland_Home/scripts.pory"
 	createfieldmugshot MUGSHOT_LITTLE_GIRL, EMOTE_NORMAL
-# 1171 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1268 "data/maps/SpindaIsland_Home/scripts.pory"
 	speakername SpindaIsland_Home_CarGirl_Text_0
-# 1172 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1269 "data/maps/SpindaIsland_Home/scripts.pory"
 	msgbox SpindaIsland_Home_CarGirl_Text_4
-# 1179 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1276 "data/maps/SpindaIsland_Home/scripts.pory"
 	removefieldmugshot
-# 1180 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1277 "data/maps/SpindaIsland_Home/scripts.pory"
 	closemessage
-# 1182 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1279 "data/maps/SpindaIsland_Home/scripts.pory"
 	setflag FLAG_LOOKING_FOR_WHEEL_REPLACEMENT
 SpindaIsland_Home_CarGirl_1:
-# 1185 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1282 "data/maps/SpindaIsland_Home/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 1186 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1283 "data/maps/SpindaIsland_Home/scripts.pory"
 	waitmovement 0
-# 1188 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1285 "data/maps/SpindaIsland_Home/scripts.pory"
 	release
 	return
 
 SpindaIsland_Home_CarGirl_2:
-# 1133 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1230 "data/maps/SpindaIsland_Home/scripts.pory"
 	faceplayer
-# 1134 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1231 "data/maps/SpindaIsland_Home/scripts.pory"
 	createfieldmugshot MUGSHOT_LITTLE_GIRL, EMOTE_NORMAL
-# 1135 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1232 "data/maps/SpindaIsland_Home/scripts.pory"
 	speakername SpindaIsland_Home_CarGirl_Text_0
-# 1136 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1233 "data/maps/SpindaIsland_Home/scripts.pory"
 	msgbox SpindaIsland_Home_CarGirl_Text_1
-# 1139 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1236 "data/maps/SpindaIsland_Home/scripts.pory"
 	removefieldmugshot
-# 1140 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1237 "data/maps/SpindaIsland_Home/scripts.pory"
 	closemessage
 	goto SpindaIsland_Home_CarGirl_1
 
 SpindaIsland_Home_CarGirl_3:
-# 1143 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1240 "data/maps/SpindaIsland_Home/scripts.pory"
 	faceplayer
-# 1144 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1241 "data/maps/SpindaIsland_Home/scripts.pory"
 	createfieldmugshot MUGSHOT_LITTLE_GIRL, EMOTE_NORMAL
-# 1145 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1242 "data/maps/SpindaIsland_Home/scripts.pory"
 	speakername SpindaIsland_Home_CarGirl_Text_0
-# 1146 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1243 "data/maps/SpindaIsland_Home/scripts.pory"
 	msgbox SpindaIsland_Home_CarGirl_Text_2
-# 1154 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1251 "data/maps/SpindaIsland_Home/scripts.pory"
 	removefieldmugshot
-# 1155 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1252 "data/maps/SpindaIsland_Home/scripts.pory"
 	closemessage
-# 1157 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1254 "data/maps/SpindaIsland_Home/scripts.pory"
 	giveitem ITEM_RUSTY_NICKEL
-# 1158 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1255 "data/maps/SpindaIsland_Home/scripts.pory"
 	setflag FLAG_RECEIVED_NICKEL
 	goto SpindaIsland_Home_CarGirl_1
 
 SpindaIsland_Home_CarGirl_4:
-# 1160 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1257 "data/maps/SpindaIsland_Home/scripts.pory"
 	faceplayer
-# 1161 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1258 "data/maps/SpindaIsland_Home/scripts.pory"
 	createfieldmugshot MUGSHOT_LITTLE_GIRL, EMOTE_PENSIVE
-# 1162 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1259 "data/maps/SpindaIsland_Home/scripts.pory"
 	speakername SpindaIsland_Home_CarGirl_Text_0
-# 1163 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1260 "data/maps/SpindaIsland_Home/scripts.pory"
 	msgbox SpindaIsland_Home_CarGirl_Text_3
-# 1166 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1263 "data/maps/SpindaIsland_Home/scripts.pory"
 	removefieldmugshot
-# 1167 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1264 "data/maps/SpindaIsland_Home/scripts.pory"
 	closemessage
 	goto SpindaIsland_Home_CarGirl_1
 
 
 SpindaIsland_Home_EventScript_MissingWheel::
-# 1192 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1289 "data/maps/SpindaIsland_Home/scripts.pory"
 	lock
-# 1193 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1290 "data/maps/SpindaIsland_Home/scripts.pory"
 	goto_if_set FLAG_REPLACED_WHEEL, SpindaIsland_Home_EventScript_MissingWheel_2
-# 1202 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1299 "data/maps/SpindaIsland_Home/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 1203 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1300 "data/maps/SpindaIsland_Home/scripts.pory"
 	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
-# 1204 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1301 "data/maps/SpindaIsland_Home/scripts.pory"
 	msgbox SpindaIsland_Home_EventScript_MissingWheel_Text_1
-# 1208 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1305 "data/maps/SpindaIsland_Home/scripts.pory"
 	removefieldmugshot
-# 1209 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1306 "data/maps/SpindaIsland_Home/scripts.pory"
 	closemessage
 SpindaIsland_Home_EventScript_MissingWheel_1:
-# 1211 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1308 "data/maps/SpindaIsland_Home/scripts.pory"
 	release
 	return
 
 SpindaIsland_Home_EventScript_MissingWheel_2:
-# 1194 "data/maps/SpindaIsland_Home/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
-# 1195 "data/maps/SpindaIsland_Home/scripts.pory"
-	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
-# 1196 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_MissingWheel_Text_0
-# 1199 "data/maps/SpindaIsland_Home/scripts.pory"
-	removefieldmugshot
-# 1200 "data/maps/SpindaIsland_Home/scripts.pory"
-	closemessage
-	goto SpindaIsland_Home_EventScript_MissingWheel_1
-
-
-SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet::
-# 1215 "data/maps/SpindaIsland_Home/scripts.pory"
-	lock
-# 1217 "data/maps/SpindaIsland_Home/scripts.pory"
-	goto_if_set FLAG_FAUCET_QUEST_STARTED, SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_1
-# 1248 "data/maps/SpindaIsland_Home/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 1249 "data/maps/SpindaIsland_Home/scripts.pory"
-	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
-# 1250 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_Text_2
-# 1253 "data/maps/SpindaIsland_Home/scripts.pory"
-	removefieldmugshot
-# 1254 "data/maps/SpindaIsland_Home/scripts.pory"
-	closemessage
-	return
-
-SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_1:
-# 1218 "data/maps/SpindaIsland_Home/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 1219 "data/maps/SpindaIsland_Home/scripts.pory"
-	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
-# 1220 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_Text_0
-# 1223 "data/maps/SpindaIsland_Home/scripts.pory"
-	removefieldmugshot
-# 1224 "data/maps/SpindaIsland_Home/scripts.pory"
-	closemessage
-# 1226 "data/maps/SpindaIsland_Home/scripts.pory"
-	delay 48
-# 1228 "data/maps/SpindaIsland_Home/scripts.pory"
-	playse SE_CLICK
-# 1229 "data/maps/SpindaIsland_Home/scripts.pory"
-	setmetatile 27, 50, METATILE_SpindaIslandSecondary_FaucetWheel, TRUE
-# 1230 "data/maps/SpindaIsland_Home/scripts.pory"
-	special DrawWholeMapView
-# 1231 "data/maps/SpindaIsland_Home/scripts.pory"
-	waitse
-# 1233 "data/maps/SpindaIsland_Home/scripts.pory"
-	delay 48
-# 1235 "data/maps/SpindaIsland_Home/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
-# 1236 "data/maps/SpindaIsland_Home/scripts.pory"
-	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
-# 1237 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_Text_1
-# 1240 "data/maps/SpindaIsland_Home/scripts.pory"
-	removefieldmugshot
-# 1241 "data/maps/SpindaIsland_Home/scripts.pory"
-	closemessage
-# 1243 "data/maps/SpindaIsland_Home/scripts.pory"
-	removeitem ITEM_BROKEN_FAUCET
-# 1244 "data/maps/SpindaIsland_Home/scripts.pory"
-	setflag FLAG_REPLACED_WHEEL
-# 1246 "data/maps/SpindaIsland_Home/scripts.pory"
-	release
-	return
-
-
-SpindaIsland_Home_EventScript_SurveyedWheel::
-# 1259 "data/maps/SpindaIsland_Home/scripts.pory"
-	lock
-# 1260 "data/maps/SpindaIsland_Home/scripts.pory"
-	goto_if_set FLAG_FAUCET_QUEST_STARTED, SpindaIsland_Home_EventScript_SurveyedWheel_4
-SpindaIsland_Home_EventScript_SurveyedWheel_3:
-# 1318 "data/maps/SpindaIsland_Home/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 1319 "data/maps/SpindaIsland_Home/scripts.pory"
-	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
-# 1320 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_0
-# 1323 "data/maps/SpindaIsland_Home/scripts.pory"
-	removefieldmugshot
-# 1324 "data/maps/SpindaIsland_Home/scripts.pory"
-	closemessage
-SpindaIsland_Home_EventScript_SurveyedWheel_1:
-# 1326 "data/maps/SpindaIsland_Home/scripts.pory"
-	release
-	return
-
-SpindaIsland_Home_EventScript_SurveyedWheel_2:
-# 1261 "data/maps/SpindaIsland_Home/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 1262 "data/maps/SpindaIsland_Home/scripts.pory"
-	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
-# 1263 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_0
-# 1266 "data/maps/SpindaIsland_Home/scripts.pory"
-	removefieldmugshot
-# 1267 "data/maps/SpindaIsland_Home/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
-# 1268 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_1
-# 1272 "data/maps/SpindaIsland_Home/scripts.pory"
-	removefieldmugshot
-	checkitem ITEM_BORROWED_PLIERS
-# 0 "data/maps/SpindaIsland_Home/scripts.pory"
-	compare VAR_RESULT, 0
-	goto_if_ne SpindaIsland_Home_EventScript_SurveyedWheel_7
-# 1310 "data/maps/SpindaIsland_Home/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 1311 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_6
-# 1314 "data/maps/SpindaIsland_Home/scripts.pory"
-	removefieldmugshot
-# 1315 "data/maps/SpindaIsland_Home/scripts.pory"
-	closemessage
-	goto SpindaIsland_Home_EventScript_SurveyedWheel_1
-
-SpindaIsland_Home_EventScript_SurveyedWheel_4:
-# 1260 "data/maps/SpindaIsland_Home/scripts.pory"
-	goto_if_unset FLAG_FOUND_TOUGH_BOLT, SpindaIsland_Home_EventScript_SurveyedWheel_2
-	goto SpindaIsland_Home_EventScript_SurveyedWheel_3
-
-SpindaIsland_Home_EventScript_SurveyedWheel_7:
-# 1275 "data/maps/SpindaIsland_Home/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 1276 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_2
-# 1279 "data/maps/SpindaIsland_Home/scripts.pory"
-	removefieldmugshot
-# 1280 "data/maps/SpindaIsland_Home/scripts.pory"
-	closemessage
-# 1282 "data/maps/SpindaIsland_Home/scripts.pory"
-	turnobject 15, DIR_EAST
-# 1283 "data/maps/SpindaIsland_Home/scripts.pory"
-	createfieldmugshot MUGSHOT_LITTLE_GIRL, EMOTE_NORMAL
-# 1284 "data/maps/SpindaIsland_Home/scripts.pory"
-	speakername SpindaIsland_Home_CarGirl_Text_0
-# 1285 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_3
-# 1288 "data/maps/SpindaIsland_Home/scripts.pory"
-	removefieldmugshot
-# 1289 "data/maps/SpindaIsland_Home/scripts.pory"
-	closemessage
 # 1291 "data/maps/SpindaIsland_Home/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
 # 1292 "data/maps/SpindaIsland_Home/scripts.pory"
 	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
 # 1293 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_4
+	msgbox SpindaIsland_Home_EventScript_MissingWheel_Text_0
 # 1296 "data/maps/SpindaIsland_Home/scripts.pory"
 	removefieldmugshot
 # 1297 "data/maps/SpindaIsland_Home/scripts.pory"
 	closemessage
-# 1299 "data/maps/SpindaIsland_Home/scripts.pory"
-	turnobject 15, DIR_NORTH
-# 1300 "data/maps/SpindaIsland_Home/scripts.pory"
-	delay 48
-# 1302 "data/maps/SpindaIsland_Home/scripts.pory"
+	goto SpindaIsland_Home_EventScript_MissingWheel_1
+
+
+SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet::
+# 1312 "data/maps/SpindaIsland_Home/scripts.pory"
+	lock
+# 1314 "data/maps/SpindaIsland_Home/scripts.pory"
+	goto_if_set FLAG_FAUCET_QUEST_STARTED, SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_1
+# 1345 "data/maps/SpindaIsland_Home/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 1303 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1346 "data/maps/SpindaIsland_Home/scripts.pory"
 	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
-# 1304 "data/maps/SpindaIsland_Home/scripts.pory"
-	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_5
-# 1307 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1347 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_Text_2
+# 1350 "data/maps/SpindaIsland_Home/scripts.pory"
 	removefieldmugshot
-# 1308 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1351 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+	return
+
+SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_1:
+# 1315 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 1316 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
+# 1317 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_Text_0
+# 1320 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1321 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1323 "data/maps/SpindaIsland_Home/scripts.pory"
+	delay 48
+# 1325 "data/maps/SpindaIsland_Home/scripts.pory"
+	playse SE_CLICK
+# 1326 "data/maps/SpindaIsland_Home/scripts.pory"
+	setmetatile 27, 50, METATILE_SpindaIslandSecondary_FaucetWheel, TRUE
+# 1327 "data/maps/SpindaIsland_Home/scripts.pory"
+	special DrawWholeMapView
+# 1328 "data/maps/SpindaIsland_Home/scripts.pory"
+	waitse
+# 1330 "data/maps/SpindaIsland_Home/scripts.pory"
+	delay 48
+# 1332 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
+# 1333 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
+# 1334 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_Text_1
+# 1337 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1338 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1340 "data/maps/SpindaIsland_Home/scripts.pory"
+	removeitem ITEM_BROKEN_FAUCET
+# 1341 "data/maps/SpindaIsland_Home/scripts.pory"
+	setflag FLAG_REPLACED_WHEEL
+# 1343 "data/maps/SpindaIsland_Home/scripts.pory"
+	release
+	return
+
+
+SpindaIsland_Home_EventScript_SurveyedWheel::
+# 1356 "data/maps/SpindaIsland_Home/scripts.pory"
+	lock
+# 1357 "data/maps/SpindaIsland_Home/scripts.pory"
+	goto_if_set FLAG_FAUCET_QUEST_STARTED, SpindaIsland_Home_EventScript_SurveyedWheel_4
+SpindaIsland_Home_EventScript_SurveyedWheel_3:
+# 1415 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 1416 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
+# 1417 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_0
+# 1420 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1421 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+SpindaIsland_Home_EventScript_SurveyedWheel_1:
+# 1423 "data/maps/SpindaIsland_Home/scripts.pory"
+	release
+	return
+
+SpindaIsland_Home_EventScript_SurveyedWheel_2:
+# 1358 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 1359 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
+# 1360 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_0
+# 1363 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1364 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
+# 1365 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_1
+# 1369 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+	checkitem ITEM_BORROWED_PLIERS
+# 0 "data/maps/SpindaIsland_Home/scripts.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne SpindaIsland_Home_EventScript_SurveyedWheel_7
+# 1407 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 1408 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_6
+# 1411 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1412 "data/maps/SpindaIsland_Home/scripts.pory"
 	closemessage
 	goto SpindaIsland_Home_EventScript_SurveyedWheel_1
 
+SpindaIsland_Home_EventScript_SurveyedWheel_4:
+# 1357 "data/maps/SpindaIsland_Home/scripts.pory"
+	goto_if_unset FLAG_FOUND_TOUGH_BOLT, SpindaIsland_Home_EventScript_SurveyedWheel_2
+	goto SpindaIsland_Home_EventScript_SurveyedWheel_3
+
+SpindaIsland_Home_EventScript_SurveyedWheel_7:
+# 1372 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 1373 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_2
+# 1376 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1377 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1379 "data/maps/SpindaIsland_Home/scripts.pory"
+	turnobject 15, DIR_EAST
+# 1380 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_LITTLE_GIRL, EMOTE_NORMAL
+# 1381 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_CarGirl_Text_0
+# 1382 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_3
+# 1385 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1386 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1388 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
+# 1389 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
+# 1390 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_4
+# 1393 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1394 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1396 "data/maps/SpindaIsland_Home/scripts.pory"
+	turnobject 15, DIR_NORTH
+# 1397 "data/maps/SpindaIsland_Home/scripts.pory"
+	delay 48
+# 1399 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 1400 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
+# 1401 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_SurveyedWheel_Text_5
+# 1404 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1405 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+	goto SpindaIsland_Home_EventScript_SurveyedWheel_1
+
+
+SpindaIsland_Home_EventScript_Raft::
+# 1427 "data/maps/SpindaIsland_Home/scripts.pory"
+	lock
+	checkitem ITEM_BADASS_SAIL
+# 0 "data/maps/SpindaIsland_Home/scripts.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne SpindaIsland_Home_EventScript_Raft_2
+# 1461 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 1462 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
+# 1463 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_Raft_Text_3
+# 1467 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1468 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+SpindaIsland_Home_EventScript_Raft_1:
+# 1470 "data/maps/SpindaIsland_Home/scripts.pory"
+	release
+	return
+
+SpindaIsland_Home_EventScript_Raft_2:
+# 1429 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
+# 1430 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
+# 1431 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_Raft_Text_0
+# 1434 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1435 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1437 "data/maps/SpindaIsland_Home/scripts.pory"
+	playse SE_FU_ZAKU
+# 1438 "data/maps/SpindaIsland_Home/scripts.pory"
+	turnobject VAR_LAST_TALKED, DIR_SOUTH
+# 1439 "data/maps/SpindaIsland_Home/scripts.pory"
+	waitse
+# 1441 "data/maps/SpindaIsland_Home/scripts.pory"
+	delay 48
+# 1443 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
+# 1444 "data/maps/SpindaIsland_Home/scripts.pory"
+	speakername SpindaIsland_Home_EventScript_MainQuestRecap_Text_0
+# 1445 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_Raft_Text_1
+# 1448 "data/maps/SpindaIsland_Home/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 1449 "data/maps/SpindaIsland_Home/scripts.pory"
+	msgbox SpindaIsland_Home_EventScript_Raft_Text_2
+# 1453 "data/maps/SpindaIsland_Home/scripts.pory"
+	removefieldmugshot
+# 1454 "data/maps/SpindaIsland_Home/scripts.pory"
+	closemessage
+# 1456 "data/maps/SpindaIsland_Home/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Movement_PlayerEntersRaft
+# 1457 "data/maps/SpindaIsland_Home/scripts.pory"
+	waitmovement 0
+	goto SpindaIsland_Home_EventScript_Raft_1
+
+
+# 1473 "data/maps/SpindaIsland_Home/scripts.pory"
+SpindaIsland_Home_Movement_PlayerEntersRaft:
+# 1474 "data/maps/SpindaIsland_Home/scripts.pory"
+	walk_down
+# 1475 "data/maps/SpindaIsland_Home/scripts.pory"
+	set_invisible
+	step_end
 
 SpindaIsland_Home_EventScript_MainQuestRecap_Text_0:
 # 31 "data/maps/SpindaIsland_Home/scripts.pory"
@@ -2243,7 +2443,7 @@ SpindaIsland_Home_EventScript_Juan_Text_5:
 
 SpindaIsland_Home_EventScript_Juan_Text_6:
 # 1088 "data/maps/SpindaIsland_Home/scripts.pory"
-	.string "Oh boy, what a finding! I need to write\n"
+	.string "Oh boy, what a find! I need to write\n"
 	.string "this discovery down in my PokéDex!!$"
 
 SpindaIsland_Home_EventScript_Machoke_Text_0:
@@ -2258,24 +2458,71 @@ SpindaIsland_Home_EventScript_Machoke_Text_2:
 # 1108 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Hmmm…$"
 
-SpindaIsland_Home_CarBoy_Text_0:
+SpindaIsland_Home_EventScript_Lisa_Text_0:
 # 1119 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "Lisa$"
+
+SpindaIsland_Home_EventScript_Lisa_Text_1:
+# 1121 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "Hey Archie! Heard you were building a\n"
+	.string "sick pirate ship!$"
+
+SpindaIsland_Home_EventScript_OldWoman_Text_0:
+# 1133 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "Old woman$"
+
+SpindaIsland_Home_EventScript_OldWoman_Text_1:
+# 1135 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "Oh, I'm too scared to go back inside…$"
+
+SpindaIsland_Home_EventScript_OldWoman_Text_2:
+# 1143 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "Don't worry granny! There were some\n"
+	.string "Shuppet in your attic, but I chased\l"
+	.string "them away!$"
+
+SpindaIsland_Home_EventScript_OldWoman_Text_3:
+# 1151 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "Shuppet, you say?$"
+
+SpindaIsland_Home_EventScript_OldWoman_Text_4:
+# 1155 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "How adorable of you to help out a poor\n"
+	.string "old lady…\p"
+	.string "Please take this, for your trouble!$"
+
+SpindaIsland_Home_EventScript_OldWoman_Text_5:
+# 1165 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "Have a good day, child.$"
+
+SpindaIsland_Home_EventScript_OldWoman_Text_6:
+# 1181 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "I think my house is haunted. There's\n"
+	.string "something living in my attic.\p"
+	.string "I don't know what to do…$"
+
+SpindaIsland_Home_EventScript_OldWomansDoor_Text_0:
+# 1204 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "I'm glad I was able to help!$"
+
+SpindaIsland_Home_CarBoy_Text_0:
+# 1216 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Rudy$"
 
 SpindaIsland_Home_CarBoy_Text_1:
-# 1121 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1218 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Vrrrbbbbbmmmmmmm!!!!!$"
 
 SpindaIsland_Home_CarGirl_Text_0:
-# 1135 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1232 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Katie$"
 
 SpindaIsland_Home_CarGirl_Text_1:
-# 1137 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1234 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Thanks a bunch!$"
 
 SpindaIsland_Home_CarGirl_Text_2:
-# 1147 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1244 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Oh!\p"
 	.string "You've got this super cool {COLOR RED}metal\n"
 	.string "wheel{COLOR DARK_GRAY}…\p"
@@ -2287,11 +2534,11 @@ SpindaIsland_Home_CarGirl_Text_2:
 	.string "lucky for you, too!$"
 
 SpindaIsland_Home_CarGirl_Text_3:
-# 1164 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1261 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Now what could we use as a wheel…$"
 
 SpindaIsland_Home_CarGirl_Text_4:
-# 1173 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1270 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Hey Archie!\p"
 	.string "As you can see we're almost done with\n"
 	.string "our monster car.\p"
@@ -2301,53 +2548,71 @@ SpindaIsland_Home_CarGirl_Text_4:
 	.string "Anything round and spinny would do!$"
 
 SpindaIsland_Home_EventScript_MissingWheel_Text_0:
-# 1197 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1294 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "A shiny new wheel!$"
 
 SpindaIsland_Home_EventScript_MissingWheel_Text_1:
-# 1205 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1302 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "A wheel is missing.\p"
 	.string "I'm sure I could find a replacement.$"
 
 SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_Text_0:
-# 1221 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1318 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "What if…$"
 
 SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_Text_1:
-# 1238 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1335 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Fits perfectly! There ya go!$"
 
 SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet_Text_2:
-# 1251 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1348 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "This'd be perfect, but I need to\n"
 	.string "repair it!$"
 
 SpindaIsland_Home_EventScript_SurveyedWheel_Text_0:
-# 1264 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1361 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Just a regular wheel.$"
 
 SpindaIsland_Home_EventScript_SurveyedWheel_Text_1:
-# 1269 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1366 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Wait, it's stuck to the car with bolts!\p"
 	.string "If I could just take one…$"
 
 SpindaIsland_Home_EventScript_SurveyedWheel_Text_2:
-# 1277 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1374 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Here, let me just…$"
 
 SpindaIsland_Home_EventScript_SurveyedWheel_Text_3:
-# 1286 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1383 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Whatcha doing, Archie?$"
 
 SpindaIsland_Home_EventScript_SurveyedWheel_Text_4:
-# 1294 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1391 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "Ah, uh, nothing!$"
 
 SpindaIsland_Home_EventScript_SurveyedWheel_Text_5:
-# 1305 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1402 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "(Darn, can't do this right under her\n"
 	.string "nose.)$"
 
 SpindaIsland_Home_EventScript_SurveyedWheel_Text_6:
-# 1312 "data/maps/SpindaIsland_Home/scripts.pory"
+# 1409 "data/maps/SpindaIsland_Home/scripts.pory"
 	.string "I'd need some pliers to get it out.$"
+
+SpindaIsland_Home_EventScript_Raft_Text_0:
+# 1432 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "At last! I can finally set sail!!$"
+
+SpindaIsland_Home_EventScript_Raft_Text_1:
+# 1446 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "And voilà!$"
+
+SpindaIsland_Home_EventScript_Raft_Text_2:
+# 1450 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "Goodbye, Spinda Island…\p"
+	.string "Hello, adventure!$"
+
+SpindaIsland_Home_EventScript_Raft_Text_3:
+# 1464 "data/maps/SpindaIsland_Home/scripts.pory"
+	.string "My super-awesome pirate ship!\p"
+	.string "Only thing missing is the sail.$"
