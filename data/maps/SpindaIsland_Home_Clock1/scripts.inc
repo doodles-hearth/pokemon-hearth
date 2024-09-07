@@ -574,82 +574,107 @@ SpindaIsland_Home_Clock1_EventScript_OldWoman::
 # 430 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	lock
 # 431 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	goto_if_set FLAG_HIDE_SHUPPETS, SpindaIsland_Home_Clock1_EventScript_OldWoman_2
-# 478 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	faceplayer
-# 479 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_NORMAL
-# 480 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	speakername SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_0
-# 481 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_6
-# 485 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	removefieldmugshot
-# 486 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	closemessage
+# 432 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	goto_if_unset FLAG_SHUPPET_QUEST_STARTED, SpindaIsland_Home_Clock1_EventScript_OldWoman_2
+# 443 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	goto_if_unset FLAG_HIDE_SHUPPETS, SpindaIsland_Home_Clock1_EventScript_OldWoman_3
 SpindaIsland_Home_Clock1_EventScript_OldWoman_1:
-# 488 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 454 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	goto_if_set FLAG_HIDE_SHUPPETS, SpindaIsland_Home_Clock1_EventScript_OldWoman_7
+SpindaIsland_Home_Clock1_EventScript_OldWoman_6:
+# 500 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	release
 	return
 
 SpindaIsland_Home_Clock1_EventScript_OldWoman_2:
-# 432 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	faceplayer
 # 433 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_NORMAL
+	faceplayer
 # 434 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	speakername SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_0
-# 435 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_1
-# 438 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	removefieldmugshot
-# 439 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	closemessage
-# 441 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
-# 442 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	speakername SpindaIsland_Home_Clock1_HidingBoy_Text_2
-# 443 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_2
-# 446 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	removefieldmugshot
-# 447 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	closemessage
-# 449 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_NORMAL
-# 450 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 435 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	speakername SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_0
-# 451 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_3
-# 454 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_HAPPY
-# 455 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_4
-# 459 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 436 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_1
+# 440 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	removefieldmugshot
-# 460 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 441 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	closemessage
+# 442 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	setflag FLAG_SHUPPET_QUEST_STARTED
+	goto SpindaIsland_Home_Clock1_EventScript_OldWoman_1
+
+SpindaIsland_Home_Clock1_EventScript_OldWoman_3:
+# 444 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	faceplayer
+# 445 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_NORMAL
+# 446 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	speakername SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_0
+# 447 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_2
+# 450 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	removefieldmugshot
+# 451 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	closemessage
+	goto SpindaIsland_Home_Clock1_EventScript_OldWoman_1
+
+SpindaIsland_Home_Clock1_EventScript_OldWoman_7:
+# 455 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_NORMAL
+# 456 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	speakername SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_0
+# 457 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_2
+# 460 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	removefieldmugshot
+# 461 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	closemessage
+# 463 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
 # 464 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_HAPPY
+	speakername SpindaIsland_Home_Clock1_HidingBoy_Text_2
 # 465 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_5
+	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_3
 # 468 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	removefieldmugshot
 # 469 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	closemessage
 # 471 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceRight
+	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_NORMAL
 # 472 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	waitmovement 0
+	speakername SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_0
 # 473 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	removeobject VAR_LAST_TALKED
-# 474 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	playse SE_EXIT
-# 475 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	waitse
+	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_4
 # 476 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_HAPPY
+# 477 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_5
+# 481 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	removefieldmugshot
+# 482 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	closemessage
+# 486 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_HAPPY
+# 487 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_6
+# 490 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	removefieldmugshot
+# 491 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	closemessage
+# 493 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceRight
+# 494 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	waitmovement 0
+# 495 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 496 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	playse SE_EXIT
+# 497 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	waitse
+# 498 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	setflag FLAG_HIDE_OLD_WOMAN
-	goto SpindaIsland_Home_Clock1_EventScript_OldWoman_1
+	goto SpindaIsland_Home_Clock1_EventScript_OldWoman_6
 
 
 SpindaIsland_Home_Clock1_HidingBoy_Text_0:
@@ -818,35 +843,35 @@ SpindaIsland_Home_Clock1_PhotoHouseSign_Text_0:
 	.string "Louis$"
 
 SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_0:
-# 434 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 435 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	.string "Old woman$"
 
 SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_1:
-# 436 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	.string "Oh, I'm too scared to go back inside…$"
+# 437 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	.string "I think my house is haunted. There's\n"
+	.string "something living in my attic.\p"
+	.string "I don't know what to do…$"
 
 SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_2:
-# 444 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 448 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	.string "Oh, I'm too scared to go back inside…$"
+
+SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_3:
+# 466 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	.string "Don't worry granny! There were some\n"
 	.string "Shuppet in your attic, but I chased\l"
 	.string "them away!$"
 
-SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_3:
-# 452 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_4:
+# 474 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	.string "Shuppet, you say?$"
 
-SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_4:
-# 456 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_5:
+# 478 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	.string "How adorable of you to help out a poor\n"
 	.string "old lady…\p"
 	.string "Please take this, for your trouble!$"
 
-SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_5:
-# 466 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	.string "Have a good day, child.$"
-
 SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_6:
-# 482 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	.string "I think my house is haunted. There's\n"
-	.string "something living in my attic.\p"
-	.string "I don't know what to do…$"
+# 488 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	.string "Have a good day, child.$"

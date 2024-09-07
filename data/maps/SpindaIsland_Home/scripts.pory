@@ -1125,7 +1125,7 @@ script SpindaIsland_Home_EventScript_Lisa {
 	release
 }
 
-script SpindaIsland_Home_Clock3_EventScript_OldWoman {
+script SpindaIsland_Home_EventScript_OldWoman {
 	lock
 	faceplayer
 	if (!flag(FLAG_SHUPPET_QUEST_STARTED)) {
@@ -1468,7 +1468,11 @@ script SpindaIsland_Home_EventScript_Raft {
 		applymovement(OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Movement_PlayerEntersRaft)
 		waitmovement(0)
 
-
+		special(SpawnCameraObject)
+		applymovement(VAR_LAST_TALKED, SpindaIsland_Home_Movement_RaftGoesToIsland)
+		applymovement(OBJ_EVENT_ID_CAMERA, SpindaIsland_Home_Movement_RaftGoesToIsland)
+		delay(100)
+		warpsilent(MAP_SPINDA_ISLAND_SHUPPET_HOUSE_ATTIC, 5, 0)
 	} else {
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 		speakername("Little Archie")
@@ -1480,6 +1484,13 @@ script SpindaIsland_Home_EventScript_Raft {
 		closemessage
 	}
 	release
+}
+
+movement SpindaIsland_Home_Movement_RaftGoesToIsland {
+	face_left
+	lock_facing_direction
+	lock_anim
+	walk_down * 7
 }
 
 movement SpindaIsland_Home_Movement_PlayerEntersRaft {

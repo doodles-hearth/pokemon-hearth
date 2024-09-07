@@ -1,0 +1,71 @@
+const LOCALID_WAILMER = 1
+const LCOALID_BOAT = 2
+
+mapscripts SpindaIsland_ShuppetHouse_Attic_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_TEMP_0, 0: MyScript
+	]
+}
+
+script MyScript {
+	setvar(VAR_TEMP_0, 1)
+
+	applymovement(OBJ_EVENT_ID_PLAYER, HidePlayer)
+	waitmovement(0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_PLAYER, LandHoMotherfuckers)
+	applymovement(LCOALID_BOAT, LandHoMotherfuckers)
+	applymovement(OBJ_EVENT_ID_CAMERA, LandHoMotherfuckers)
+	waitmovement(0)
+	special(RemoveCameraObject)
+	
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerAppears)
+	waitmovement(0)
+
+	playmoncry(SPECIES_WAILMER, CRY_MODE_NORMAL)
+	applymovement(LOCALID_WAILMER, WailmerAppears)
+	delay(20)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+	delay(20)
+	applymovement(OBJ_EVENT_ID_PLAYER, PlayerWalksToWailmer)
+	waitmovement(0)
+	waitmovement(LOCALID_WAILMER)
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"Hello, big friend.\p"
+		"Good to see you.\p"
+		"It's nice and quiet here, isn't it?\p"
+		"…"
+	))
+	removefieldmugshot
+}
+
+movement PlayerAppears {
+	set_visible
+	walk_down * 3
+	delay_16 * 4
+}
+
+movement HidePlayer {
+	set_invisible
+}
+
+movement WailmerAppears {
+	walk_slow_left * 6
+}
+
+movement PlayerWalksToWailmer {
+	walk_slow_right * 3
+}
+
+movement LandHoMotherfuckers {
+	lock_anim
+	lock_facing_direction
+	walk_down * 7
+	walk_slow_down * 4
+	unlock_anim
+	unlock_facing_direction
+	face_down
+}

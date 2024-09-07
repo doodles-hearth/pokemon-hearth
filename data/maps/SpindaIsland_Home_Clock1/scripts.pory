@@ -426,7 +426,7 @@ movement SpindaIsland_Home_Clock1_FaucetBreaks {
 	player_run_down
 }
 
-script SpindaIsland_Home_Clock3_EventScript_OldWoman {
+script SpindaIsland_Home_Clock1_EventScript_OldWoman {
 	lock
 	faceplayer
 	if (!flag(FLAG_SHUPPET_QUEST_STARTED)) {

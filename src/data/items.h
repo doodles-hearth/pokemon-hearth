@@ -14239,7 +14239,7 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "The only thing\n"
             "missing from my\n"
-            "awesome pirate ship!"
+            "lit pirate ship!"
         ),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,

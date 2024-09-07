@@ -13,55 +13,138 @@ SpindaIsland_ShupperHouse_Shuppet::
 	waitmoncry
 # 10 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	closemessage
-# 11 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+# 12 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	goto_if_set FLAG_SHUPPET_QUEST_STARTED, SpindaIsland_ShupperHouse_Shuppet_3
+SpindaIsland_ShupperHouse_Shuppet_1:
+# 26 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	release
 	return
+
+SpindaIsland_ShupperHouse_Shuppet_2:
+# 13 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 14 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	speakername SpindaIsland_ShupperHouse_Shuppet_Text_1
+# 15 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	msgbox SpindaIsland_ShupperHouse_Shuppet_Text_2
+# 20 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	closemessage
+# 21 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	removefieldmugshot
+# 23 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	setflag FLAG_TEMP_2
+	goto SpindaIsland_ShupperHouse_Shuppet_1
+
+SpindaIsland_ShupperHouse_Shuppet_3:
+# 12 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	goto_if_unset FLAG_TEMP_2, SpindaIsland_ShupperHouse_Shuppet_2
+	goto SpindaIsland_ShupperHouse_Shuppet_1
 
 
 SpindaIsland_ShupperHouse_ChaseShuppets::
-# 15 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	lock
-# 17 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	playse SE_SWITCH
-# 18 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	waitse
-# 19 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	playse SE_M_LEER
-# 20 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	fadescreenspeed FADE_TO_WHITE, 0
-# 21 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	fadescreenspeed FADE_FROM_WHITE, 0
-# 22 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	waitse
-# 24 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	applymovement 1, Common_Movement_ExclamationMark
-# 25 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	playmoncry SPECIES_SHUPPET, CRY_MODE_NORMAL
-# 26 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	waitmoncry
-# 27 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	applymovement 2, Common_Movement_ExclamationMark
-# 28 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	playmoncry SPECIES_SHUPPET, CRY_MODE_NORMAL
-# 29 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	waitmoncry
 # 30 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	waitmovement 0
+	lock
 # 32 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	removeobject 1
+	playse SE_SWITCH
 # 33 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	delay 20
+	waitse
 # 34 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	removeobject 2
+	playse SE_M_LEER
 # 35 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	delay 20
+	fadescreenspeed FADE_TO_WHITE, 0
+# 36 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	fadescreenspeed FADE_FROM_WHITE, 0
 # 37 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	setflag FLAG_HIDE_SHUPPETS
+	waitse
 # 39 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	applymovement 1, Common_Movement_ExclamationMark
+# 40 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	playmoncry SPECIES_SHUPPET, CRY_MODE_NORMAL
+# 41 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	waitmoncry
+# 42 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	applymovement 2, Common_Movement_ExclamationMark
+# 43 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	playmoncry SPECIES_SHUPPET, CRY_MODE_NORMAL
+# 44 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	waitmoncry
+# 45 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	waitmovement 0
+# 47 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	removeobject 1
+# 48 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	delay 20
+# 49 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	removeobject 2
+# 50 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	delay 20
+# 52 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
+# 53 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	speakername SpindaIsland_ShupperHouse_Shuppet_Text_1
+# 54 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	msgbox SpindaIsland_ShupperHouse_ChaseShuppets_Text_0
+# 57 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	closemessage
+# 58 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	removefieldmugshot
+# 60 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	setflag FLAG_HIDE_SHUPPETS
+# 62 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	release
 	return
+
+
+SpindaIsland_ShupperHouse_Blinds::
+# 66 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	lock
+# 68 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 69 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	speakername SpindaIsland_ShupperHouse_Shuppet_Text_1
+# 70 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	goto_if_set FLAG_HIDE_SHUPPETS, SpindaIsland_ShupperHouse_Blinds_2
+# 75 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	msgbox SpindaIsland_ShupperHouse_Blinds_Text_1
+SpindaIsland_ShupperHouse_Blinds_1:
+# 79 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	closemessage
+# 80 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	removefieldmugshot
+# 82 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	release
+	return
+
+SpindaIsland_ShupperHouse_Blinds_2:
+# 71 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	msgbox SpindaIsland_ShupperHouse_Blinds_Text_0
+	goto SpindaIsland_ShupperHouse_Blinds_1
 
 
 SpindaIsland_ShupperHouse_Shuppet_Text_0:
 # 8 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	.string "Kekhekhehehe…$"
+
+SpindaIsland_ShupperHouse_Shuppet_Text_1:
+# 14 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	.string "Little Archie$"
+
+SpindaIsland_ShupperHouse_Shuppet_Text_2:
+# 16 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	.string "That's what the old lady must have\n"
+	.string "been hearing!\p"
+	.string "Maybe if I spook them, they'll go\n"
+	.string "away?\p"
+	.string "What are ghosts afraid of?$"
+
+SpindaIsland_ShupperHouse_ChaseShuppets_Text_0:
+# 55 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	.string "This takes care of that!$"
+
+SpindaIsland_ShupperHouse_Blinds_Text_0:
+# 72 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	.string "No need to open them now.$"
+
+SpindaIsland_ShupperHouse_Blinds_Text_1:
+# 76 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	.string "The blinds are shut. They won't budge.$"
