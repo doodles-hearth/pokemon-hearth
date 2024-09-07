@@ -8,6 +8,21 @@ script SpindaIsland_ShupperHouse_Shuppet {
 	msgbox(format("Kekhekhehehe…"))
 	waitmoncry
 	closemessage
+
+	if (flag(FLAG_SHUPPET_QUEST_STARTED) && !flag(FLAG_TEMP_2)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"That's what the old lady must have been hearing!\p"
+			"Maybe if I spook them, they'll go away?\p"
+			"What are ghosts afraid of?"
+		))
+		closemessage
+		removefieldmugshot
+
+		setflag(FLAG_TEMP_2)
+	}
+
 	release
 }
 
@@ -34,7 +49,35 @@ script SpindaIsland_ShupperHouse_ChaseShuppets {
 	removeobject(2)
 	delay(20)
 
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+	speakername("Little Archie")
+	msgbox(format(
+		"This takes care of that!"
+	))
+	closemessage
+	removefieldmugshot
+
 	setflag(FLAG_HIDE_SHUPPETS)
 
+    release
+}
+
+script SpindaIsland_ShupperHouse_Blinds {
+	lock
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+    speakername("Little Archie")
+	if (flag(FLAG_HIDE_SHUPPETS)) {
+		msgbox(format(
+			"No need to open them now."
+    	))
+	} else {
+		msgbox(format(
+			"The blinds are shut. They won't budge."
+		))
+	}
+    closemessage
+	removefieldmugshot
+    
     release
 }
