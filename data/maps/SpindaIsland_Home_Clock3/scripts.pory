@@ -14,6 +14,9 @@ mapscripts SpindaIsland_Home_Clock3_MapScripts {
 			setmetatile(28, 44, METATILE_SpindaIslandSecondary_PathBottom, FALSE)
 			setmetatile(28, 45, METATILE_SpindaIsland_Grass, FALSE)
 		}
+		if (flag(FLAG_OPENED_CHEST)) {
+			setmetatile(27, 6, METATILE_SpindaIsland_EmptyChestSide, TRUE)
+		}
 	}
 }
 

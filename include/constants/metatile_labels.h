@@ -748,6 +748,9 @@
 
 // gTileset_SpindaIsland
 #define METATILE_SpindaIsland_BrokenFaucetGround  0x158
+#define METATILE_SpindaIsland_EmptyChest          0x15F
+#define METATILE_SpindaIsland_EmptyChestBack      0x167
+#define METATILE_SpindaIsland_EmptyChestSide      0x16F
 #define METATILE_SpindaIsland_Grass               0x001
 
 // gTileset_SpindaIslandSecondary

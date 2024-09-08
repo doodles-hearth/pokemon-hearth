@@ -21,6 +21,10 @@ mapscripts SpindaIsland_Home_MapScripts {
 			setmetatile(14, 27, METATILE_SpindaIsland_Grass, FALSE)
 			setmetatile(14, 28, METATILE_SpindaIslandSecondary_RoofProfileTopRightCorner, FALSE)
 		}
+
+		if (flag(FLAG_OPENED_CHEST)) {
+			setmetatile(53, 27, METATILE_SpindaIsland_EmptyChest, TRUE)
+		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_SPINDA_ISLAND_INTRO_STATE, 2: SpindaIsland_Home_EventScript_MainQuestRecap
@@ -101,7 +105,11 @@ script SpindaIsland_Home_EventScript_MetapodOtherSide {
 }
 
 script SpindaIsland_Home_EventScript_ArchiesHouseSign {
-	msgbox(format("The Hoenns"), MSGBOX_SIGN)
+	lock
+	callnative(StartCredits)
+	// TODO EVA 
+	release
+	// msgbox(format("The Hoenns"), MSGBOX_SIGN)
 }
 
 script SpindaIsland_Home_EventScript_BobsHouseSign {
@@ -1258,10 +1266,6 @@ script SpindaIsland_Home_EventScript_OldWoman {
 	release
 }
 
-script SpindaIsland_Home_EventScript_Boat {
-	// TODO EVA comp
-}
-
 script SpindaIsland_Home_EventScript_OldWomansDoor {
 	lock
 
@@ -1274,6 +1278,62 @@ script SpindaIsland_Home_EventScript_OldWomansDoor {
 	removefieldmugshot
     
     release
+}
+
+script SpindaIsland_Home_EventScript_Chest {
+	lock
+	if (flag(FLAG_OPENED_CHEST)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Already opened it!"
+		))
+		closemessage
+		removefieldmugshot
+	} else {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+		speakername("Little Archie")
+		msgbox(format(
+			"Woah, a treasure chest?!\p"
+			"Wonder who put it here!"
+		))
+		closemessage
+		removefieldmugshot
+
+		setmetatile(53, 27, METATILE_SpindaIsland_EmptyChest, TRUE)
+		special(DrawWholeMapView)
+
+		setflag(FLAG_OPENED_CHEST)
+		giveitem(ITEM_PRECIOUS_BOLT)
+
+		if (flag(FLAG_FAUCET_QUEST_STARTED)) {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+			speakername("Little Archie")
+			msgbox(format(
+				"A {COLOR RED}bolt{COLOR DARK_GRAY}!!\p"
+				"And it's gold, too!\p"
+				"How lucky!"
+			))
+			closemessage
+			removefieldmugshot
+
+			call(SpindaIsland_Common_CheckGotAllItemsForNewFaucet)
+		} else {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+			speakername("Little Archie")
+			msgbox(format(
+				"A gold coin?!"
+			))
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			msgbox(format(
+				"Ah, no, it's a {COLOR RED}bolt{COLOR DARK_GRAY}.\p"
+				"Weird, I wonder who put it here."
+			))
+			closemessage
+			removefieldmugshot
+		}
+	}
+	release
 }
 
 script SpindaIsland_Home_CarBoy {

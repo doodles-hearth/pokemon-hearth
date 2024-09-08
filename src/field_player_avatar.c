@@ -2426,33 +2426,57 @@ static u8 TrySpinPlayerForWarp(struct ObjectEvent *object, s16 *delayTimer)
 }
 
 // helper function
-static u16 GetMetatileIdAtSpecificMapWithCoords(s16 x, s16 y, const struct MapLayout *mapLayout)
-{
-    // Ensure the coordinates are within the bounds of the map
-    if (x >= 0 && x < mapLayout->width && y >= 0 && y < mapLayout->height)
-    {
-        // Calculate the index in the map array and retrieve the metatile ID
-        return mapLayout->map[y * mapLayout->width + x] & MAPGRID_METATILE_ID_MASK;
-    }
+// static u16 GetMetatileIdAtSpecificMapWithCoords(s16 x, s16 y, const struct MapLayout *mapLayout)
+// {
+//     // Ensure the coordinates are within the bounds of the map
+//     if (x >= 0 && x < mapLayout->width && y >= 0 && y < mapLayout->height)
+//     {
+//         // Calculate the index in the map array and retrieve the metatile ID
+//         return mapLayout->map[y * mapLayout->width + x] & MAPGRID_METATILE_ID_MASK;
+//     }
 
-    return FALSE; // Fail through
-}
+//     return FALSE; // Fail through
+// }
 
-static u32 GetMetatileIdAtSpecificMap(s16 x, s16 y, u16 mapLayoutId)
-{
-    // TODO EVA
-    u32 metatileId = 1; // = GetMetatileIdAtMapCoords(GetMapLayout(mapLayoutId));
-    return metatileId;
-}
+// static u32 GetMetatileIdAtSpecificMap(s16 x, s16 y, u16 mapLayoutId)
+// {
+//     // TODO EVA
+//     u32 metatileId = GetMetatileIdAtSpecificMapWithCoords(x, y, GetMapLayout(mapLayoutId));
+//     return metatileId;
+// }
 
-static bool8 IsMetatileIdImpassable(s32 metatileId)
-{
-    u16 behaviour = GetMetatileAttributesById(metatileId) & METATILE_ATTR_BEHAVIOR_MASK;
-    if (MetatileBehavior_IsSouthBlocked(behaviour)
-     || MetatileBehavior_IsNorthBlocked(behaviour)
-     || MetatileBehavior_IsWestBlocked(behaviour)
-     || MetatileBehavior_IsEastBlocked(behaviour))
-        return TRUE;
-    else
-        return FALSE;
-}
+// static bool8 IsMetatileIdImpassable(s32 metatileId)
+// {
+//     u16 behaviour = GetMetatileAttributesById(metatileId) & METATILE_ATTR_BEHAVIOR_MASK;
+//     if (MetatileBehavior_IsSouthBlocked(behaviour)
+//      || MetatileBehavior_IsNorthBlocked(behaviour)
+//      || MetatileBehavior_IsWestBlocked(behaviour)
+//      || MetatileBehavior_IsEastBlocked(behaviour))
+//         return TRUE;
+//     else
+//         return FALSE;
+// }
+
+// bool8 IsClockwiseSpinImpassable()
+// {
+//     s32 mapNum;
+//     if (gSaveBlock1Ptr->location.mapNum == 0) {
+//         mapNum = 4 - 1;
+//     } else {
+//         mapNum = gSaveBlock1Ptr->location.mapNum - 1;
+//     }
+
+//     SetWarpDestination(
+//         gSaveBlock1Ptr->location.mapGroup,
+//         mapNum,
+//         WARP_ID_NONE,
+//         gSpecialVar_0x8000 = gSaveBlock1Ptr->pos.y,
+//         gSpecialVar_0x8001 = (gBackupMapLayout.height - MAP_OFFSET_H - 1) - gSaveBlock1Ptr->pos.x
+//     );
+
+//     SetSpinStartFacingDir(GetPlayerFacingDirection());
+//     DoSpinEnterWarp();
+
+//     return FALSE;
+//     return IsMetatileIdImpassable(GetMetatileIdAtSpecificMapWithCoords(x, y, mapLayout));
+// }

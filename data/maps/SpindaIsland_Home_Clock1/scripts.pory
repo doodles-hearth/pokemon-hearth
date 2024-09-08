@@ -10,15 +10,19 @@ mapscripts SpindaIsland_Home_Clock1_MapScripts {
 	}
 	MAP_SCRIPT_ON_LOAD {
 		// Broken faucet
-		if (flag(FLAG_FAUCET_BROKE)) {
-			setmetatile(18, 13, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
-		} elif (flag(FLAG_REPAIRED_FAUCET)) {
+		if (flag(FLAG_REPAIRED_FAUCET)) {
 			setmetatile(18, 13, METATILE_SpindaIslandSecondary_NewFaucetWall, TRUE)
+		} elif (flag(FLAG_FAUCET_BROKE)) {
+			setmetatile(18, 13, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
 		}
 
 		if (flag(FLAG_CAMERA_EXPLODED)) {
 			setmetatile(31, 13, METATILE_SpindaIsland_Grass, FALSE)
 			setmetatile(31, 14, METATILE_SpindaIsland_Grass, FALSE)
+		}
+
+		if (flag(FLAG_OPENED_CHEST)) {
+			setmetatile(32, 53, METATILE_SpindaIsland_EmptyChestSide, TRUE)
 		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [

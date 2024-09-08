@@ -23,6 +23,7 @@ script MyScript {
 	waitmovement(0)
 
 	playmoncry(SPECIES_WAILMER, CRY_MODE_NORMAL)
+	addobject(1)
 	applymovement(LOCALID_WAILMER, WailmerAppears)
 	delay(20)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
@@ -36,17 +37,35 @@ script MyScript {
 	msgbox(format(
 		"Hello, big friend.\p"
 		"Good to see you.\p"
-		"It's nice and quiet here, isn't it?\p"
+		"It's nice and quiet here, isn't it?"
+	))
+	removefieldmugshot
+	closemessage
+
+	applymovement(LOCALID_WAILMER, WailmerJumps)
+	playmoncry(SPECIES_WAILMER, CRY_MODE_NORMAL)
+	waitmoncry
+
+	delay(48)
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+	speakername("Little Archie")
+	msgbox(format(
 		"…"
 	))
 	removefieldmugshot
+	closemessage
 
 	delay(180)
 
 	fadescreenspeed(FADE_TO_BLACK, 16)
-	delay(100)
+	delay(200)
 	callnative(StartCredits)
 	end
+}
+
+movement WailmerJumps {
+	jump_in_place_left
 }
 
 movement PlayerAppears {
@@ -60,7 +79,7 @@ movement HidePlayer {
 }
 
 movement WailmerAppears {
-	walk_slow_left * 6
+	walk_left * 6
 }
 
 movement PlayerWalksToWailmer {

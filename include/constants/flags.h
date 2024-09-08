@@ -83,7 +83,7 @@
 #define FLAG_PICKED_UP_PLIERS    0x41 // Unused Flag
 #define FLAG_REPAIRED_FAUCET    0x42 // Unused Flag
 #define FLAG_GAVE_MOM_WATER_STONE    0x43 // Unused Flag
-#define FLAG_UNUSED_0x044    0x44 // Unused Flag
+#define FLAG_OPENED_CHEST    0x44 // Unused Flag
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
 #define FLAG_UNUSED_0x047    0x47 // Unused Flag
