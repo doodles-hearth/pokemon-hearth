@@ -1,6 +1,7 @@
 const LOCALID_DAD = 7
 const LOCALID_SAD_MAN = 6
 const LOCALID_CAR_GIRL = 15
+const LOCAL_RAFT = 21
 
 mapscripts SpindaIsland_Home_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
@@ -23,8 +24,62 @@ mapscripts SpindaIsland_Home_MapScripts {
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_SPINDA_ISLAND_INTRO_STATE, 2: SpindaIsland_Home_EventScript_MainQuestRecap
+        VAR_REPAIRED_FAUCET, 2: SpindaIsland_Home_EventScript_GoToSail
     ]
 }
+
+script SpindaIsland_Home_EventScript_GoToSail {
+	lock
+	setvar(VAR_REPAIRED_FAUCET, 3)
+	applymovement(OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Movement_GoToSail)
+	waitmovement(0)
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+	speakername("Little Archie")
+	msgbox(format(
+		"At last! I can finally set sail!!"
+	))
+	removefieldmugshot
+	closemessage
+	
+	playse(SE_FU_ZAKU)
+	turnobject(LOCAL_RAFT, DIR_SOUTH)
+	removeitem(ITEM_BADASS_SAIL)
+	waitse
+
+	delay(48)
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+	speakername("Little Archie")
+	msgbox(format(
+		"And voilà!"
+	))
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	msgbox(format(
+		"Goodbye, Spinda Island…\p"
+		"Hello, adventure!"
+	))
+	removefieldmugshot
+	closemessage
+
+	applymovement(OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Movement_PlayerEntersRaft)
+	waitmovement(0)
+
+	special(SpawnCameraObject)
+	applymovement(VAR_LAST_TALKED, SpindaIsland_Home_Movement_RaftGoesToIsland)
+	applymovement(OBJ_EVENT_ID_CAMERA, SpindaIsland_Home_Movement_RaftGoesToIsland)
+	delay(100)
+	warpsilent(MAP_SPINDA_ISLAND_SHUPPET_HOUSE_ATTIC, 5, 0)
+
+	release
+}
+
+movement SpindaIsland_Home_Movement_GoToSail {
+	walk_fast_down * 5
+	walk_fast_right * 5
+	walk_fast_down * 3
+}
+
 script SpindaIsland_Home_EventScript_MainQuestRecap {
 	lock
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
@@ -50,7 +105,11 @@ script SpindaIsland_Home_EventScript_ArchiesHouseSign {
 }
 
 script SpindaIsland_Home_EventScript_BobsHouseSign {
-	msgbox(format("Bob"), MSGBOX_SIGN)
+	msgbox(format("Mindy"), MSGBOX_SIGN)
+}
+
+script SpindaIsland_Home_EventScript_CynthiasHouseSign {
+	msgbox(format("Cynthia"), MSGBOX_SIGN)
 }
 
 script SpindaIsland_Home_EventScript_SadManHome_Back {
@@ -179,7 +238,7 @@ script SpindaIsland_Home_EventScript_ICanNeverGoHome {
 }
 
 script SpindaIsland_Home_EventScript_Dad {
-	lock
+	lockall
 	turnobject(LOCALID_DAD, DIR_SOUTH)
 	if (flag(FLAG_OBTAINED_LEMONADE)) {
 		createfieldmugshot(MUGSHOT_DAD, EMOTE_EMBARRASSED)
@@ -273,7 +332,7 @@ script SpindaIsland_Home_EventScript_Dad {
 		setflag(FLAG_OBTAINED_LEMONADE)
 		setflag(FLAG_SPOKE_TO_DAD)
 	}
-	release
+	releaseall
 }
 
 script SpindaIsland_Home_EventScript_Dad_FromSide {
@@ -328,7 +387,7 @@ script SpindaIsland_Home_EventScript_MainStreetSign {
 
 script SpindaIsland_Home_EventScript_MadelineSign {
 	msgbox(format(
-		"Madeline"
+		"Bertha"
 	), MSGBOX_SIGN)
 }
 
@@ -712,7 +771,7 @@ script SpindaIsland_Home_Slowpoke {
 					waitmovement(VAR_LAST_TALKED)
 					waitmovement(OBJ_EVENT_ID_PLAYER)
 
-					playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
+					playmoncry(SPECIES_SLOWBRO, CRY_MODE_NORMAL)
 					speakername("Slowbro")
 					msgbox(format(
 						"Bruh!!"
@@ -902,24 +961,13 @@ script SpindaIsland_Home_EventScript_MetapodBoy_Bussin {
 
 script SpindaIsland_Home_PhotoCameraWrongDir {
 	lock
-
-	if (flag(FLAG_CAMERA_EXPLODED)) {
-		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
-		speakername("Little Archie")
-		msgbox(format(
-			"Nothing left but a pile of ashes…"
-		))
-		closemessage
-		removefieldmugshot
-	} else {
-		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
-		speakername("Little Archie")
-		msgbox(format(
-			"Can't use that from this side."
-		))
-		closemessage
-		removefieldmugshot
-	}
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"Can't use that from this side."
+	))
+	closemessage
+	removefieldmugshot
     release
 }
 
@@ -1034,7 +1082,7 @@ script SpindaIsland_Home_SlowpokeMistress {
 		removefieldmugshot
 		createfieldmugshot(MUGSHOT_LASS, EMOTE_NORMAL)
 		msgbox(format(
-			"I keep trying to give him this Water Stone, but it just does nothing.\p"
+			"I keep trying to give him this {COLOR BLUE}WATER{COLOR DARK_GRAY} Stone, but it just does nothing.\p"
 			"Perhaps there's another way…"
 		))
 		removefieldmugshot
@@ -1175,12 +1223,13 @@ script SpindaIsland_Home_EventScript_OldWoman {
 		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_HAPPY)
 		msgbox(format(
 			"How adorable of you to help out a poor old lady…\p"
-			"Please take this, for your trouble!"
+			"How can I repay you?\p"
+			"You look like you're hungry… Let me fix you a little snack!"
 		))
 		removefieldmugshot
 		closemessage
-
-		// TODO EVA COMP giveitem
+		
+		giveitem(ITEM_PB_AND_J)
 
 		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_HAPPY)
 		msgbox(format(
@@ -1195,6 +1244,17 @@ script SpindaIsland_Home_EventScript_OldWoman {
 		playse(SE_EXIT)
 		waitse
 		setflag(FLAG_HIDE_OLD_WOMAN)
+
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Cool! Lemme pack this up for later.\p"
+			"Let's hope it doesn't taste like old people or something."
+		))
+		removefieldmugshot
+		closemessage
+
+		call(SpindaIsland_Common_CheckGotAllItemsForNewFaucet)
 	}
 	release
 }
@@ -1437,52 +1497,14 @@ script SpindaIsland_Home_EventScript_SurveyedWheel {
 
 script SpindaIsland_Home_EventScript_Raft {
 	lock
-	if (checkitem(ITEM_BADASS_SAIL)) {
-		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
-		speakername("Little Archie")
-		msgbox(format(
-			"At last! I can finally set sail!!"
-		))
-		removefieldmugshot
-		closemessage
-		
-		playse(SE_FU_ZAKU)
-		turnobject(VAR_LAST_TALKED, DIR_SOUTH)
-		waitse
-
-		delay(48)
-
-		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
-		speakername("Little Archie")
-		msgbox(format(
-			"And voilà!"
-		))
-		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
-		msgbox(format(
-			"Goodbye, Spinda Island…\p"
-			"Hello, adventure!"
-		))
-		removefieldmugshot
-		closemessage
-
-		applymovement(OBJ_EVENT_ID_PLAYER, SpindaIsland_Home_Movement_PlayerEntersRaft)
-		waitmovement(0)
-
-		special(SpawnCameraObject)
-		applymovement(VAR_LAST_TALKED, SpindaIsland_Home_Movement_RaftGoesToIsland)
-		applymovement(OBJ_EVENT_ID_CAMERA, SpindaIsland_Home_Movement_RaftGoesToIsland)
-		delay(100)
-		warpsilent(MAP_SPINDA_ISLAND_SHUPPET_HOUSE_ATTIC, 5, 0)
-	} else {
-		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
-		speakername("Little Archie")
-		msgbox(format(
-			"My super-awesome pirate ship!\p"
-			"Only thing missing is the sail."
-		))
-		removefieldmugshot
-		closemessage
-	}
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"My super-awesome pirate ship!\p"
+		"Only thing missing is the sail."
+	))
+	removefieldmugshot
+	closemessage
 	release
 }
 
@@ -1561,6 +1583,24 @@ script SpindaIsland_Home_EventScript_SaltDish {
 	removefieldmugshot
 	closemessage
 
+	release
+}
+
+script SpindaIsland_Home_EventScript_FeedZiggy {
+	lock
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	if (flag(FLAG_FAUCET_QUEST_STARTED)) {
+		msgbox(format(
+			"Good idea, except I need this sandwich for the faucet salesman!"
+		))
+	} else {
+		msgbox(format(
+			"I'd be afraid of this one biting off my hand!"
+		))
+	}
+	removefieldmugshot
+	closemessage
 	release
 }
 
@@ -1701,36 +1741,37 @@ script SpindaIsland_Home_EventScript_Pliers {
 				msgbox(format(
 					"These must be the {COLOR RED}pliers{COLOR DARK_GRAY} the faucet salesman was talking about!"
 				))
+
+				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+				msgbox(format(
+					"You're gonna give them to me, right little Ziggy?"
+				))
+				removefieldmugshot
+				closemessage
+
+				playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_ENCOUNTER)
+				speakername("Rabid Zigzagoon")
+				msgbox(format(
+					"GRRRRRRRR…"
+				))
+				waitmoncry
+				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+				speakername("Little Archie")
+				msgbox(format(
+					"Nope, not gonna risk a hand just to get these!"
+				))
+				removefieldmugshot
+				closemessage
+
+				setflag(FLAG_SAW_PLIERS)
 			} else {
 				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 				speakername("Little Archie")
 				msgbox(format(
-					"Is this… a pair of {COLOR RED}pliers{COLOR DARK_GRAY}?"
+					"Is this… a pair of {COLOR RED}pliers{COLOR DARK_GRAY}?\p"
+					"I wonder what a Zigzagoon would use these for."
 				))
 			}
-
-			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
-			msgbox(format(
-				"You're gonna give them to me, right little Ziggy?"
-			))
-			removefieldmugshot
-			closemessage
-
-			playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_ENCOUNTER)
-			speakername("Rabid Zigzagoon")
-			msgbox(format(
-				"GRRRRRRRR…"
-			))
-			waitmoncry
-			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
-			speakername("Little Archie")
-			msgbox(format(
-				"Nope, not gonna risk a hand just to get these!"
-			))
-			removefieldmugshot
-			closemessage
-
-			setflag(FLAG_SAW_PLIERS)
 		}
 	}
 	
@@ -1783,6 +1824,40 @@ script SpindaIsland_Home_EventScript_UseGrassBlade {
 	waitse
 	release
 }
+
+script SpindaIsland_Home_EventScript_BobsDoor {
+	lock
+	speakername("Mindy")
+	msgbox(format(
+		"Hey Archie! Wanna come in for a Pokémon trade?"
+	))
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"Can't today, I'm busy!"
+	))
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
+	msgbox(format(
+		"(Never again.)"
+	))
+	removefieldmugshot
+	closemessage
+	release
+}
+
+script SpindaIsland_Home_EventScript_CynthiasDoor {
+	lock
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"I ain't going in there unprepared.\p"
+		"Or at all."
+	))
+	removefieldmugshot
+	closemessage
+	release
+}
+
 
 movement SpindaIsland_Home_Movement_RaftGoesToIsland {
 	face_left

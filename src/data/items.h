@@ -14289,7 +14289,7 @@ const struct Item gItemsInfo[] =
         .price = 0,
         .description = COMPOUND_STRING(
             "A dainty,\n"
-            "shiny bolt.\n"
+            "handsome bolt.\n"
             "Just like me."
         ),
         .importance = 1,
@@ -14297,6 +14297,23 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_PreciousBolt,
+        .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
+    },
+
+    [ITEM_PB_AND_J] =
+    {
+        .name = _("PB&J"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Delicious!\n"
+            "And healthy,\n"
+            "probably!"
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_PBJ,
+        .iconPic = gItemIcon_Pbnj,
         .iconPalette = gItemIconPalette_SpindaIsland_DarkBg,
     },
 

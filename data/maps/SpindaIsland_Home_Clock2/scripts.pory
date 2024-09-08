@@ -199,6 +199,10 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 	release
 }
 
+script SpindaIsland_Home_Clock2_SadMansHomeSign {
+	msgbox(format("Marcus"), MSGBOX_SIGN)
+}
+
 script SpindaIsland_Home_Clock2_EventScript_FindSeashell {
 	lock
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
@@ -289,13 +293,14 @@ script SpindaIsland_Home_EventScript_StealWheel {
 
 movement SpindaIsland_Home_Clock2_Movement_SadManEntersHome {
 	walk_left * 3
-	walk_up * 2
+	walk_up
+	face_up
 }
 
 movement SpindaIsland_Home_Clock2_Movement_SadManEntersHomeAroundPlayer {
 	walk_up
 	walk_left * 3
-	walk_up
+	face_up
 }
 
 movement SpindaIsland_Home_Clock2_Movement_SadManSurprise {

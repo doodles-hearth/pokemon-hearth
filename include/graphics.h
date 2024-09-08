@@ -1749,6 +1749,7 @@ extern const u32 gItemIcon_BorrowedPliers[];
 extern const u32 gItemIcon_GrassBlade[];
 extern const u32 gItemIcon_ToughBolt[];
 extern const u32 gItemIcon_PreciousBolt[];
+extern const u32 gItemIcon_Pbnj[];
 extern const u32 gItemIcon_RustyBolt[];
 extern const u32 gItemIconPalette_SpindaIsland_DarkBg[];
 extern const u32 gItemIconPalette_SpindaIsland_BrownBg[];

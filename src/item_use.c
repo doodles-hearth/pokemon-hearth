@@ -67,6 +67,7 @@ static void ItemUseOnFieldCB_WailmerPailBerry(u8);
 static void ItemUseOnFieldCB_WailmerPailSudowoodo(u8);
 static void ItemUseOnFieldCB_ToyCamera(u8);
 static void ItemUseOnFieldCB_SaltyLemonade(u8);
+static void ItemUseOnFieldCB_PBJ(u8);
 static void ItemUseOnFieldCB_GrassBlade(u8);
 static void ItemUseOnFieldCB_GrassBladeWithZiggy(u8);
 static void ItemUseOnFieldCB_ToyCameraWithShuppet(u8);
@@ -74,6 +75,7 @@ static void ItemUseOnFieldCB_BrokenFaucetWheel(u8);
 static bool8 TryToWaterSudowoodo(void);
 static bool8 TryToSaltDish(void);
 static bool8 TryToSleepZiggy(void);
+static bool8 TryToFeedZiggy(void);
 static bool8 TryToReplaceWheel(void);
 static void BootUpSoundTMHM(u8);
 static void Task_ShowTMHMContainedMessage(u8);
@@ -284,6 +286,19 @@ void ItemUseOutOfBattle_SaltyLemonade(u8 taskId)
     if (TryToSaltDish() == TRUE)
     {
         sItemUseOnFieldCB = ItemUseOnFieldCB_SaltyLemonade;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else
+    {
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+    }
+}
+
+void ItemUseOutOfBattle_PBJ(u8 taskId)
+{
+    if (TryToFeedZiggy() == TRUE)
+    {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_PBJ;
         SetUpItemUseOnFieldCallback(taskId);
     }
     else
@@ -887,6 +902,23 @@ static bool8 TryToSleepZiggy(void)
         return FALSE;
 }
 
+static bool8 TryToFeedZiggy(void)
+{
+    s16 x, y;
+    u8 elevation;
+    u8 objId;
+    GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+    elevation = PlayerGetElevation();
+    objId = GetObjectEventIdByPosition(x, y, elevation);
+    if (
+        objId != OBJECT_EVENTS_COUNT
+        && gObjectEvents[objId].graphicsId == OBJ_EVENT_GFX_SPECIES(ZIGZAGOON)
+    )
+        return TRUE;
+    else
+        return FALSE;
+}
+
 static bool8 TryToReplaceWheel(void)
 {
     s16 x, y;
@@ -921,6 +953,13 @@ static void ItemUseOnFieldCB_SaltyLemonade(u8 taskId)
 {
     LockPlayerFieldControls();
     ScriptContext_SetupScript(SpindaIsland_Home_EventScript_SaltDish);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_PBJ(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_Home_EventScript_FeedZiggy);
     DestroyTask(taskId);
 }
 

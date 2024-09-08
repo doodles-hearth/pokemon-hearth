@@ -755,6 +755,7 @@
 #define METATILE_SpindaIslandSecondary_BrokenFaucetWall           0x25E
 #define METATILE_SpindaIslandSecondary_FaucetWheel                0x298
 #define METATILE_SpindaIslandSecondary_HouseBottomLeftCorner      0x258
+#define METATILE_SpindaIslandSecondary_NewFaucetWall              0x257
 #define METATILE_SpindaIslandSecondary_PathBottom                 0x281
 #define METATILE_SpindaIslandSecondary_RoofProfileTopRightCorner  0x232
 

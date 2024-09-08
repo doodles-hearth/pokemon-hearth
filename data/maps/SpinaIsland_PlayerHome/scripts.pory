@@ -1,5 +1,4 @@
 const LOCALID_MOM = 1
-const LOCALID_BALL_SPINDA = 2
 
 mapscripts SpinaIsland_PlayerHome_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
@@ -7,15 +6,116 @@ mapscripts SpinaIsland_PlayerHome_MapScripts {
 			setvar(VAR_SPINDA_ISLAND_INTRO_STATE, 1)
 		}
 	}
+
+	MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_REPAIRED_FAUCET, 1: SpinaIsland_PlayerHome_EventScript_FixedFaucet
+    ]
+}
+
+script SpinaIsland_PlayerHome_EventScript_FixedFaucet {
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, SpinaIsland_PlayerHome_Movement_ArchieWalksUp)
+	waitmovement(0)
+	setvar(VAR_REPAIRED_FAUCET, 2)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+	speakername("Little Archie")
+	msgbox(format(
+		"MOM! MOM!"
+	))
+	removefieldmugshot
+	closemessage
+
+	turnobject(LOCALID_MOM, DIR_SOUTH)
+
+	applymovement(OBJ_EVENT_ID_PLAYER, SpinaIsland_PlayerHome_Movement_ArchieWalksUpToMom)
+	waitmovement(0)
+
+	turnobject(LOCALID_MOM, DIR_WEST)
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+	speakername("Little Archie")
+	msgbox(format(
+		"Open the tap!! The {COLOR BLUE}WATER{COLOR DARK_GRAY}'s running!!!"
+	))
+	createfieldmugshot(MUGSHOT_MOM, EMOTE_HAPPY)
+	speakername("Mom")
+	msgbox(format(
+		"Sure, honey! Thank you!\p"
+		"(You sure took your sweet time!)"
+	))
+	removefieldmugshot
+	closemessage
+
+	turnobject(LOCALID_MOM, DIR_NORTH)
+	delay(48)
+	createfieldmugshot(MUGSHOT_MOM, EMOTE_NORMAL)
+	speakername("Mom")
+	msgbox(format(
+		"… … …\p"
+		"Aahhhhhhh, finally…"
+	))
+	removefieldmugshot
+	closemessage
+
+	delay(20)
+	turnobject(LOCALID_MOM, DIR_WEST)
+
+	createfieldmugshot(MUGSHOT_MOM, EMOTE_HAPPY)
+	speakername("Mom")
+	msgbox(format(
+		"Alright, Archie, as promised, here's the {COLOR RED}sail{COLOR DARK_GRAY} I've sewn for you!"
+	))
+	removefieldmugshot
+	closemessage
+
+	giveitem(ITEM_BADASS_SAIL)
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+	speakername("Little Archie")
+	msgbox(format(
+		"Yay!!! It looks so COOL!\p"
+		"Thanks mom kaybye!!!!"
+	))
+	removefieldmugshot
+	closemessage
+
+	applymovement(OBJ_EVENT_ID_PLAYER, SpinaIsland_PlayerHome_Movement_ArchieWalksUpToMom)
+	waitmovement(0)
+
+	warp(MAP_SPINDA_ISLAND_HOME, 10, 43)
+
+	release
+}
+
+movement SpinaIsland_PlayerHome_Movement_ArchieWalksUp {
+	walk_up
+}
+
+movement SpinaIsland_PlayerHome_Movement_ArchieExits {
+	walk_faster_left * 2
+	walk_faster_down * 4
+	walk_faster_right * 2
+	walk_faster_down
+}
+
+movement SpinaIsland_PlayerHome_Movement_ArchieWalksUpToMom {
+	walk_left * 2
+	walk_up * 4
+	walk_right * 2
 }
 
 script SpinaIsland_PlayerHome_EventScript_Mom {
 	lock
 	faceplayer
 
-	if (flag(FLAG_RECEIVED_SLOWPOKE_REWARD)) {
-		checkitem(ITEM_SALTY_LEMONADE)
-		if (var(VAR_RESULT) == TRUE && !flag(FLAG_GAVE_MOM_LEMONADE)) {
+	if (flag(FLAG_REPAIRED_FAUCET)) {
+		createfieldmugshot(MUGSHOT_MOM, EMOTE_HAPPY)
+		msgbox(format(
+			"Have fun, sweetie! Don't drown, please!"
+		))
+		removefieldmugshot
+		closemessage
+	} elif (checkitem(ITEM_SALTY_LEMONADE) && !flag(FLAG_GAVE_MOM_LEMONADE)) {
 			msgbox(format(
 				"Give mom the Salty Lemonade?"
 			))
@@ -74,54 +174,59 @@ script SpinaIsland_PlayerHome_EventScript_Mom {
 				closemessage
 
 				setflag(FLAG_GAVE_MOM_LEMONADE)
-			}
+		} elif (checkitem(ITEM_WATER_STONE_2) == TRUE && !flag(FLAG_GAVE_MOM_WATER_STONE)) {
+			msgbox(format(
+				"Give mom the {COLOR BLUE}WATER{COLOR DARK_GRAY} stone?"
+			))
 
-		} else {
-			checkitem(ITEM_WATER_STONE_2)
+			dynmultichoice(
+				0,
+				0,
+				TRUE,
+				10,
+				0,
+				DYN_MULTICHOICE_CB_NONE,
+				"Give",
+				"Don't give"
+			)
+			closemessage
 
-			if (var(VAR_RESULT) == TRUE) {
+			if (var(VAR_RESULT) == 0) {
+				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+				speakername("Little Archie")
 				msgbox(format(
-					"Give mom the {COLOR BLUE}WATER{COLOR DARK_GRAY} stone?"
+					"Here, mom!"
 				))
-
-				dynmultichoice(
-					0,
-					0,
-					TRUE,
-					10,
-					0,
-					DYN_MULTICHOICE_CB_NONE,
-					"Give",
-					"Don't give"
-				)
+				removefieldmugshot
 				closemessage
 
-				if (var(VAR_RESULT) == 0) {
-					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
-					speakername("Little Archie")
-					msgbox(format(
-						"Here, mom!"
-					))
-					removefieldmugshot
-					closemessage
+				createfieldmugshot(MUGSHOT_MOM, EMOTE_NORMAL)
+				speakername("Mom")
+				msgbox(format(
+					"What am I supposed to do with this? Lick it?\p"
+					"Please turn the faucet on so I can drink some actual {COLOR BLUE}WATER{COLOR DARK_GRAY}!"
+				))
+				removefieldmugshot
+				closemessage
 
-					createfieldmugshot(MUGSHOT_MOM, EMOTE_NORMAL)
-					speakername("Mom")
-					msgbox(format(
-						"What am I supposed to do with this? Lick it?\p"
-						"Please turn the faucet on so I can drink some actual {COLOR BLUE}WATER{COLOR DARK_GRAY}!"
-					))
-					removefieldmugshot
-					closemessage
-				}
+				setflag(FLAG_GAVE_MOM_WATER_STONE)
 			}
+		} else {
+			createfieldmugshot(MUGSHOT_MOM, EMOTE_NORMAL)
+			speakername("Mom")
+			msgbox(format(
+				"Hurry up and turn the big faucet back on, please!\p"
+				"I'll give you your {COLOR RED}sail{COLOR DARK_GRAY} when the tap's running."
+			))
+			removefieldmugshot
+			closemessage	
 		}
 	} else {
 		createfieldmugshot(MUGSHOT_MOM, EMOTE_NORMAL)
 		speakername("Mom")
 		msgbox(format(
 			"Hurry up and turn the big faucet back on, please!\p"
-			"I'll give you your sail when the tap's running."
+			"I'll give you your {COLOR RED}sail{COLOR DARK_GRAY} when the tap's running."
 		))
 		removefieldmugshot
 		closemessage
@@ -312,7 +417,7 @@ script SpinaIsland_PlayerHome_EventScript_EnterLivingRoom {
 script SpinaIsland_PlayerHome_EventScript_GetSpinda {
 	lock
 
-	removeobject(LOCALID_BALL_SPINDA)
+	removeobject(VAR_LAST_TALKED)
 	givemon(SPECIES_SPINDA, 20)
 	setflag(FLAG_RECEIVED_STARTER)
 	
@@ -321,7 +426,6 @@ script SpinaIsland_PlayerHome_EventScript_GetSpinda {
     msgbox(format(
 		"I could never forget you, Spinda!"
     ))
-	setvar(VAR_0x8000, MUGSHOT_ARCHIE)
 	removefieldmugshot
 
 	release

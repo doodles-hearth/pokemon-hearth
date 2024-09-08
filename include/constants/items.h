@@ -1011,8 +1011,9 @@
 #define ITEM_TOUGH_BOLT 839
 #define ITEM_PRECIOUS_BOLT 840
 #define ITEM_RUSTY_BOLT 841
+#define ITEM_PB_AND_J 842
 
-#define ITEMS_COUNT 842
+#define ITEMS_COUNT 843
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

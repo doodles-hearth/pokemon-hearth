@@ -1,487 +1,691 @@
 SpinaIsland_PlayerHome_MapScripts::
-# 5 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 4 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	map_script MAP_SCRIPT_ON_LOAD, SpinaIsland_PlayerHome_MapScripts_MAP_SCRIPT_ON_LOAD
+# 10 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SpinaIsland_PlayerHome_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 SpinaIsland_PlayerHome_MapScripts_MAP_SCRIPT_ON_LOAD:
-# 6 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 5 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	compare VAR_SPINDA_ISLAND_INTRO_STATE, 1
 	goto_if_lt SpinaIsland_PlayerHome_MapScripts_MAP_SCRIPT_ON_LOAD_1
 	return
 
 SpinaIsland_PlayerHome_MapScripts_MAP_SCRIPT_ON_LOAD_1:
-# 7 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 6 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	setvar VAR_SPINDA_ISLAND_INTRO_STATE, 1
 	return
 
+SpinaIsland_PlayerHome_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+# 11 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	map_script_2 VAR_REPAIRED_FAUCET, 1, SpinaIsland_PlayerHome_EventScript_FixedFaucet
+	.2byte 0
+
+
+SpinaIsland_PlayerHome_EventScript_FixedFaucet::
+# 16 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	lock
+# 17 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, SpinaIsland_PlayerHome_Movement_ArchieWalksUp
+# 18 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	waitmovement 0
+# 19 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	setvar VAR_REPAIRED_FAUCET, 2
+# 20 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
+# 21 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 22 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_1
+# 25 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removefieldmugshot
+# 26 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	closemessage
+# 28 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	turnobject 1, DIR_SOUTH
+# 30 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, SpinaIsland_PlayerHome_Movement_ArchieWalksUpToMom
+# 31 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	waitmovement 0
+# 33 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	turnobject 1, DIR_WEST
+# 35 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
+# 36 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 37 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_2
+# 40 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	createfieldmugshot MUGSHOT_MOM, EMOTE_HAPPY
+# 41 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 42 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_4
+# 46 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removefieldmugshot
+# 47 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	closemessage
+# 49 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	turnobject 1, DIR_NORTH
+# 50 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	delay 48
+# 51 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	createfieldmugshot MUGSHOT_MOM, EMOTE_NORMAL
+# 52 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 53 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_5
+# 57 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removefieldmugshot
+# 58 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	closemessage
+# 60 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	delay 20
+# 61 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	turnobject 1, DIR_WEST
+# 63 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	createfieldmugshot MUGSHOT_MOM, EMOTE_HAPPY
+# 64 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 65 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_6
+# 68 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removefieldmugshot
+# 69 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	closemessage
+# 71 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	giveitem ITEM_BADASS_SAIL
+# 73 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
+# 74 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 75 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_7
+# 79 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removefieldmugshot
+# 80 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	closemessage
+# 82 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	applymovement OBJ_EVENT_ID_PLAYER, SpinaIsland_PlayerHome_Movement_ArchieWalksUpToMom
+# 83 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	waitmovement 0
+# 85 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	warp MAP_SPINDA_ISLAND_HOME, 10, 43
+# 87 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	release
+	return
+
+
+# 90 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+SpinaIsland_PlayerHome_Movement_ArchieWalksUp:
+# 91 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_up
+	step_end
+
+# 94 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+SpinaIsland_PlayerHome_Movement_ArchieExits:
+# 95 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_faster_left
+# 95 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_faster_left
+# 96 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_faster_down
+# 96 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_faster_down
+# 96 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_faster_down
+# 96 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_faster_down
+# 97 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_faster_right
+# 97 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_faster_right
+# 98 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_faster_down
+	step_end
+
+# 101 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+SpinaIsland_PlayerHome_Movement_ArchieWalksUpToMom:
+# 102 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_left
+# 102 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_left
+# 103 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_up
+# 103 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_up
+# 103 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_up
+# 103 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_up
+# 104 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_right
+# 104 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	walk_right
+	step_end
 
 SpinaIsland_PlayerHome_EventScript_Mom::
-# 13 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 108 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	lock
-# 14 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 109 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	faceplayer
-# 16 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	goto_if_set FLAG_RECEIVED_SLOWPOKE_REWARD, SpinaIsland_PlayerHome_EventScript_Mom_2
-# 120 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 111 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	goto_if_set FLAG_REPAIRED_FAUCET, SpinaIsland_PlayerHome_EventScript_Mom_2
+	checkitem ITEM_SALTY_LEMONADE
+# 0 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne SpinaIsland_PlayerHome_EventScript_Mom_5
+SpinaIsland_PlayerHome_EventScript_Mom_4:
+# 225 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_MOM, EMOTE_NORMAL
-# 121 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_5
-# 122 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_10
-# 126 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 226 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 227 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_9
+# 231 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 127 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 232 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
 SpinaIsland_PlayerHome_EventScript_Mom_1:
-# 130 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 235 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 131 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 236 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	waitmovement 0
-# 133 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 238 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
 SpinaIsland_PlayerHome_EventScript_Mom_2:
-# 17 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	checkitem ITEM_SALTY_LEMONADE
-# 18 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	compare VAR_RESULT, TRUE
-	goto_if_eq SpinaIsland_PlayerHome_EventScript_Mom_7
-SpinaIsland_PlayerHome_EventScript_Mom_6:
-# 80 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 112 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	createfieldmugshot MUGSHOT_MOM, EMOTE_HAPPY
+# 113 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_0
+# 116 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removefieldmugshot
+# 117 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	closemessage
+	goto SpinaIsland_PlayerHome_EventScript_Mom_1
+
+SpinaIsland_PlayerHome_EventScript_Mom_3:
+# 119 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_1
+# 123 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SpinaIsland_PlayerHome_EventScript_Mom_Text_2, SpinaIsland_PlayerHome_EventScript_Mom_Text_3
+# 133 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	closemessage
+# 135 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	compare VAR_RESULT, 0
+	goto_if_eq SpinaIsland_PlayerHome_EventScript_Mom_9
 	checkitem ITEM_WATER_STONE_2
-# 82 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 0 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq SpinaIsland_PlayerHome_EventScript_Mom_12
+SpinaIsland_PlayerHome_EventScript_Mom_11:
+# 215 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	createfieldmugshot MUGSHOT_MOM, EMOTE_NORMAL
+# 216 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 217 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_9
+# 221 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removefieldmugshot
+# 222 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	closemessage
 	goto SpinaIsland_PlayerHome_EventScript_Mom_1
 
 SpinaIsland_PlayerHome_EventScript_Mom_5:
-# 19 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_0
-# 23 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SpinaIsland_PlayerHome_EventScript_Mom_Text_1, SpinaIsland_PlayerHome_EventScript_Mom_Text_2
-# 33 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	closemessage
-# 35 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	compare VAR_RESULT, 0
-	goto_if_eq SpinaIsland_PlayerHome_EventScript_Mom_10
-	goto SpinaIsland_PlayerHome_EventScript_Mom_1
+# 118 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	goto_if_unset FLAG_GAVE_MOM_LEMONADE, SpinaIsland_PlayerHome_EventScript_Mom_3
+	goto SpinaIsland_PlayerHome_EventScript_Mom_4
 
-SpinaIsland_PlayerHome_EventScript_Mom_7:
-# 18 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	goto_if_unset FLAG_GAVE_MOM_LEMONADE, SpinaIsland_PlayerHome_EventScript_Mom_5
-	goto SpinaIsland_PlayerHome_EventScript_Mom_6
-
-SpinaIsland_PlayerHome_EventScript_Mom_10:
-# 36 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+SpinaIsland_PlayerHome_EventScript_Mom_9:
+# 136 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
-# 37 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 38 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 137 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 138 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_4
-# 41 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 141 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 42 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 142 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 44 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 144 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_MOM, EMOTE_HAPPY
-# 45 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_5
-# 46 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_6
-# 50 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 145 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 146 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_5
+# 150 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 51 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 151 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 53 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 153 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	delay 10
-# 54 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 154 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	playse SE_BALL
-# 55 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 155 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	waitse
-# 56 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 156 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	playse SE_BALL
-# 57 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 157 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	waitse
-# 58 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 158 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	playse SE_BALL
-# 59 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 159 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	waitse
-# 60 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 160 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	delay 20
-# 62 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 162 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	playse SE_PIN
-# 63 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 163 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
-# 64 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 164 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	waitmovement 0
-# 65 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 165 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	delay 48
-# 67 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 167 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_MOM, EMOTE_ANGRY
-# 68 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_5
-# 69 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_7
-# 73 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 168 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 169 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_6
+# 173 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 74 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 174 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 76 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 176 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	setflag FLAG_GAVE_MOM_LEMONADE
 	goto SpinaIsland_PlayerHome_EventScript_Mom_1
 
-SpinaIsland_PlayerHome_EventScript_Mom_12:
-# 83 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_8
-# 87 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SpinaIsland_PlayerHome_EventScript_Mom_Text_1, SpinaIsland_PlayerHome_EventScript_Mom_Text_2
-# 97 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+SpinaIsland_PlayerHome_EventScript_Mom_10:
+# 178 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_7
+# 182 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SpinaIsland_PlayerHome_EventScript_Mom_Text_2, SpinaIsland_PlayerHome_EventScript_Mom_Text_3
+# 192 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 99 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 194 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	compare VAR_RESULT, 0
-	goto_if_eq SpinaIsland_PlayerHome_EventScript_Mom_14
+	goto_if_eq SpinaIsland_PlayerHome_EventScript_Mom_16
 	goto SpinaIsland_PlayerHome_EventScript_Mom_1
 
-SpinaIsland_PlayerHome_EventScript_Mom_14:
-# 100 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+SpinaIsland_PlayerHome_EventScript_Mom_12:
+# 177 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	goto_if_unset FLAG_GAVE_MOM_WATER_STONE, SpinaIsland_PlayerHome_EventScript_Mom_10
+	goto SpinaIsland_PlayerHome_EventScript_Mom_11
+
+SpinaIsland_PlayerHome_EventScript_Mom_16:
+# 195 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
-# 101 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 102 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 196 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 197 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_4
-# 105 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 200 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 106 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 201 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 108 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 203 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_MOM, EMOTE_NORMAL
-# 109 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_5
-# 110 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_9
-# 114 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 204 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 205 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	msgbox SpinaIsland_PlayerHome_EventScript_Mom_Text_8
+# 209 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 115 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 210 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
+# 212 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	setflag FLAG_GAVE_MOM_WATER_STONE
 	goto SpinaIsland_PlayerHome_EventScript_Mom_1
 
 
 SpindaIsland_PlayerHome_EventScript_Diary::
-# 138 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 243 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	lock
-# 139 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 244 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpindaIsland_PlayerHome_EventScript_Diary_Text_0
-# 144 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 249 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
 
 SpinaIsland_PlayerHome_EventScript_SpindaManual::
-# 148 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 253 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_SpindaManual_Text_0, MSGBOX_SIGN
 	return
 
 
 SpindaIsland_PlayerHome_EventScript_Poem::
-# 157 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 262 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	lock
-# 158 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 263 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpindaIsland_PlayerHome_EventScript_Poem_Text_0, MSGBOX_DEFAULT
-# 165 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 270 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 167 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 272 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 168 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 169 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 273 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 274 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpindaIsland_PlayerHome_EventScript_Poem_Text_1
-# 172 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 277 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 173 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 278 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 175 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 280 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
 
 SpindaIsland_PlayerHome_EventScript_Map::
-# 179 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 284 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	lock
-# 181 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 286 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 182 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 183 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 287 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 288 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpindaIsland_PlayerHome_EventScript_Map_Text_0
-# 186 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 291 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 187 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 292 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 189 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 294 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
 
 SpinaIsland_PlayerHome_EventScript_Window::
-# 193 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 298 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	lock
-# 195 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 300 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 196 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 197 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 301 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 302 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_Window_Text_0
-# 200 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 305 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 201 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 306 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 203 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 308 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
 
 SpinaIsland_PlayerHome_EventScript_Window_Front::
-# 207 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 312 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	lock
-# 209 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 314 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 210 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 211 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 315 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 316 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_Window_Front_Text_0
-# 214 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 319 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 215 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 320 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 217 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 322 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
 
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom::
-# 221 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 326 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	lock
-# 223 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 328 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	playse SE_PIN
-# 224 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 329 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	applymovement 1, Common_Movement_ExclamationMark
-# 225 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 330 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	waitmovement 0
-# 226 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 331 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	delay 48
-# 227 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 332 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	applymovement 1, Common_Movement_WalkInPlaceFasterLeft
-# 228 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 333 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
-# 229 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 334 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	waitmovement 0
-# 231 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 336 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_MOM, EMOTE_HAPPY
-# 232 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_5
-# 233 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 337 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 338 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_0
-# 237 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 342 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 238 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 343 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 239 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 344 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 241 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 346 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
-# 242 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 243 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 347 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 348 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_1
-# 246 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 351 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 247 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 352 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
-# 248 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 353 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_2
-# 251 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 356 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 252 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 357 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 254 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 359 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_MOM, EMOTE_NORMAL
-# 255 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_5
-# 256 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 360 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 361 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_3
-# 261 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 366 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 262 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 367 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 263 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 368 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 265 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 370 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	turnobject 1, DIR_NORTH
-# 266 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 371 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	delay 40
-# 267 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 372 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	playse SE_PIN
-# 268 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 373 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	applymovement 1, Common_Movement_ExclamationMark
-# 269 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 374 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	waitmovement 0
-# 270 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 375 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	delay 48
-# 271 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 376 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	waitmovement 0
-# 273 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 378 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_MOM, EMOTE_NORMAL
-# 274 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_5
-# 275 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 379 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 380 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_4
-# 278 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 383 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	turnobject 1, DIR_WEST
-# 279 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 384 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 280 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 385 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_MOM, EMOTE_HAPPY
-# 281 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 386 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_5
-# 285 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 390 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 286 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 391 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 287 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 392 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	turnobject 1, DIR_NORTH
-# 289 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 394 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_SAD
-# 290 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 291 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 395 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 396 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_6
-# 294 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 399 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 295 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 400 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 297 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 402 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	goto_if_unset FLAG_TOOK_SPINDA, SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_2
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_1:
-# 307 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 412 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	setvar VAR_SPINDA_ISLAND_INTRO_STATE, 2
-# 309 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 414 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_2:
-# 298 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 403 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_MOM, EMOTE_HAPPY
-# 299 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_5
-# 300 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 404 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3
+# 405 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_7
-# 303 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 408 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 304 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 409 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
 	goto SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_1
 
 
 SpinaIsland_PlayerHome_EventScript_GetSpinda::
-# 313 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 418 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	lock
-# 315 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	removeobject 2
-# 316 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 420 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	removeobject VAR_LAST_TALKED
+# 421 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	givemon SPECIES_SPINDA, 20
-# 317 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 422 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	setflag FLAG_RECEIVED_STARTER
-# 319 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 424 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
-# 320 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 321 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 425 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 426 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_GetSpinda_Text_0
-# 324 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	setvar VAR_0x8000, MUGSHOT_ARCHIE
-# 325 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 429 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 327 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 431 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
 
 SpinaIsland_PlayerHome_EventScript_WailmerDoll::
-# 331 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 435 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	lock
-# 333 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 437 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
-# 334 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	speakername SpinaIsland_PlayerHome_EventScript_Mom_Text_3
-# 335 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 438 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	speakername SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0
+# 439 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	msgbox SpinaIsland_PlayerHome_EventScript_WailmerDoll_Text_0
-# 338 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 442 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
-# 339 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 443 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	removefieldmugshot
-# 341 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 445 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	release
 	return
 
 
-SpinaIsland_PlayerHome_EventScript_Mom_Text_0:
-# 20 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	.string "Give mom the Salty Lemonade?$"
-
-SpinaIsland_PlayerHome_EventScript_Mom_Text_1:
-# 30 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	.string "Give$"
-
-SpinaIsland_PlayerHome_EventScript_Mom_Text_2:
-# 31 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	.string "Don't give$"
-
-SpinaIsland_PlayerHome_EventScript_Mom_Text_3:
-# 37 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_0:
+# 21 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Little Archie$"
 
+SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_1:
+# 23 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "MOM! MOM!$"
+
+SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_2:
+# 38 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "Open the tap!! The {COLOR BLUE}WATER{COLOR DARK_GRAY}'s running!!!$"
+
+SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_3:
+# 41 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "Mom$"
+
+SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_4:
+# 43 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "Sure, honey! Thank you!\p"
+	.string "(You sure took your sweet time!)$"
+
+SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_5:
+# 54 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "… … …\p"
+	.string "Aahhhhhhh, finally…$"
+
+SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_6:
+# 66 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "Alright, Archie, as promised, here's\n"
+	.string "the {COLOR RED}sail{COLOR DARK_GRAY} I've sewn for you!$"
+
+SpinaIsland_PlayerHome_EventScript_FixedFaucet_Text_7:
+# 76 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "Yay!!! It looks so COOL!\p"
+	.string "Thanks mom kaybye!!!!$"
+
+SpinaIsland_PlayerHome_EventScript_Mom_Text_0:
+# 114 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "Have fun, sweetie! Don't drown,\n"
+	.string "please!$"
+
+SpinaIsland_PlayerHome_EventScript_Mom_Text_1:
+# 120 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "Give mom the Salty Lemonade?$"
+
+SpinaIsland_PlayerHome_EventScript_Mom_Text_2:
+# 130 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "Give$"
+
+SpinaIsland_PlayerHome_EventScript_Mom_Text_3:
+# 131 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+	.string "Don't give$"
+
 SpinaIsland_PlayerHome_EventScript_Mom_Text_4:
-# 39 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 139 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Here, mom!$"
 
 SpinaIsland_PlayerHome_EventScript_Mom_Text_5:
-# 45 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	.string "Mom$"
-
-SpinaIsland_PlayerHome_EventScript_Mom_Text_6:
-# 47 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 147 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Oh, good, some fresh lemonade! I'm so\n"
 	.string "thirsty!\p"
 	.string "Thanks, honey!$"
 
-SpinaIsland_PlayerHome_EventScript_Mom_Text_7:
-# 70 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+SpinaIsland_PlayerHome_EventScript_Mom_Text_6:
+# 170 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "What is wrong with you? This is super\n"
 	.string "salty!\p"
 	.string "Please take this away and don't do\n"
 	.string "that again.$"
 
-SpinaIsland_PlayerHome_EventScript_Mom_Text_8:
-# 84 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+SpinaIsland_PlayerHome_EventScript_Mom_Text_7:
+# 179 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Give mom the {COLOR BLUE}WATER{COLOR DARK_GRAY} stone?$"
 
-SpinaIsland_PlayerHome_EventScript_Mom_Text_9:
-# 111 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+SpinaIsland_PlayerHome_EventScript_Mom_Text_8:
+# 206 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "What am I supposed to do with this?\n"
 	.string "Lick it?\p"
 	.string "Please turn the faucet on so I can\n"
 	.string "drink some actual {COLOR BLUE}WATER{COLOR DARK_GRAY}!$"
 
-SpinaIsland_PlayerHome_EventScript_Mom_Text_10:
-# 123 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+SpinaIsland_PlayerHome_EventScript_Mom_Text_9:
+# 218 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Hurry up and turn the big faucet back\n"
 	.string "on, please!\p"
-	.string "I'll give you your sail when the tap's\n"
+	.string "I'll give you your {COLOR RED}sail{COLOR DARK_GRAY} when the tap's\n"
 	.string "running.$"
 
 SpindaIsland_PlayerHome_EventScript_Diary_Text_0:
-# 140 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 245 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "“Dear diarry,\n"
 	.string "The ship is almost finished.\n"
 	.string "It is gonna be awsome.\p"
@@ -489,13 +693,13 @@ SpindaIsland_PlayerHome_EventScript_Diary_Text_0:
 	.string "dad's.”$"
 
 SpinaIsland_PlayerHome_EventScript_SpindaManual_Text_0:
-# 149 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 254 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "“Super cool trick i taught spinda:\n"
 	.string "using L and R makes her {COLOR RED}spin{COLOR DARK_GRAY}!\l"
 	.string "i love my spinda, shes so awsome”$"
 
 SpindaIsland_PlayerHome_EventScript_Poem_Text_0:
-# 159 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 264 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "“A POEM BY ARCHIE\p"
 	.string "Roses are blue\l"
 	.string "Violetts are blue\l"
@@ -503,37 +707,37 @@ SpindaIsland_PlayerHome_EventScript_Poem_Text_0:
 	.string "because its my favorite color.”$"
 
 SpindaIsland_PlayerHome_EventScript_Poem_Text_1:
-# 170 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 275 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "I am such a poet.$"
 
 SpindaIsland_PlayerHome_EventScript_Map_Text_0:
-# 184 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 289 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "It's a map of the island!$"
 
 SpinaIsland_PlayerHome_EventScript_Window_Text_0:
-# 198 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 303 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Something's moving outside.$"
 
 SpinaIsland_PlayerHome_EventScript_Window_Front_Text_0:
-# 212 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 317 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "I can see the beach!$"
 
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_0:
-# 234 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 339 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Morning, little Archie!\p"
 	.string "You're quite the early bird today!$"
 
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_1:
-# 244 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 349 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "That's cause today's the big day!!$"
 
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_2:
-# 249 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 354 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "You haven't forgotten about my super\n"
 	.string "secret thing, right?$"
 
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_3:
-# 257 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 362 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Of course not, darling! Your super\n"
 	.string "secret thing is almost finished.\p"
 	.string "I'll give it to you as soon as I'm done.\p"
@@ -541,30 +745,30 @@ SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_3:
 	.string "big, tall glass of icy {COLOR BLUE}WATER{COLOR DARK_GRAY}…$"
 
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_4:
-# 276 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 381 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Look at that, I forgot to turn the\n"
 	.string "{COLOR BLUE}WATER{COLOR DARK_GRAY} back on…$"
 
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_5:
-# 282 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 387 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Archie, would you be a dear and go\n"
 	.string "round the house to turn the big\l"
 	.string "faucet on?\p"
 	.string "And then I'll give it to you, I promise!$"
 
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_6:
-# 292 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 397 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Ughhhhhh, fine…$"
 
 SpinaIsland_PlayerHome_EventScript_EnterLivingRoom_Text_7:
-# 301 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 406 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "Oh, and where's Spinda? Take her for a\n"
 	.string "little walk, will you?$"
 
 SpinaIsland_PlayerHome_EventScript_GetSpinda_Text_0:
-# 322 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 427 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "I could never forget you, Spinda!$"
 
 SpinaIsland_PlayerHome_EventScript_WailmerDoll_Text_0:
-# 336 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
+# 440 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	.string "How you doing, Wailmy?$"

@@ -350,9 +350,10 @@ static const struct SpriteTemplate sSpriteTemplate_StarterCircle =
 // .text
 u16 GetStarterPokemon(u16 chosenStarterId)
 {
-    if (chosenStarterId > STARTER_MON_COUNT)
-        chosenStarterId = 0;
-    return sStarterMon[chosenStarterId];
+    // if (chosenStarterId > STARTER_MON_COUNT)
+        // chosenStarterId = 0;
+    return SPECIES_SPINDA;
+    // return sStarterMon[chosenStarterId];
 }
 
 static void VblankCB_StarterChoose(void)

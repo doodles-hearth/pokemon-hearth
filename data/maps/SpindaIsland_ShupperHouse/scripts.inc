@@ -77,7 +77,7 @@ SpindaIsland_ShupperHouse_ChaseShuppets::
 # 49 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	removeobject 2
 # 50 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	delay 20
+	delay 60
 # 52 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_GRINNING
 # 53 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"

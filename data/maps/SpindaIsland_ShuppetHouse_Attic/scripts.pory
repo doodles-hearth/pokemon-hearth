@@ -40,6 +40,13 @@ script MyScript {
 		"…"
 	))
 	removefieldmugshot
+
+	delay(180)
+
+	fadescreenspeed(FADE_TO_BLACK, 16)
+	delay(100)
+	callnative(StartCredits)
+	end
 }
 
 movement PlayerAppears {

@@ -4,6 +4,7 @@
 void ItemUseOutOfBattle_Mail(u8);
 void ItemUseOutOfBattle_Bike(u8);
 void ItemUseOutOfBattle_ToyCamera(u8);
+void ItemUseOutOfBattle_PBJ(u8);
 void ItemUseOutOfBattle_SaltyLemonade(u8);
 void ItemUseOutOfBattle_GrassBlade(u8);
 void ItemUseOutOfBattle_Rod(u8);

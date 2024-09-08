@@ -47,7 +47,7 @@ script SpindaIsland_ShupperHouse_ChaseShuppets {
 	removeobject(1)
 	delay(20)
 	removeobject(2)
-	delay(20)
+	delay(60)
 
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
 	speakername("Little Archie")

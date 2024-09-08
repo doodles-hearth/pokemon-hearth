@@ -90,3 +90,31 @@ script SpindaIsland_Home_Clock3_EventScript_OldWoman {
 	}
 	release
 }
+
+script SpindaIsland_Home_Clock3_EventScript_EmptyHouseSign {
+	lock
+	msgbox(format(
+		"   "
+    ))
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+    msgbox(format(
+		"… …\p"
+		"A blank sign?"
+    ))
+	removefieldmugshot
+	closemessage
+	release
+}
+
+script SpindaIsland_Home_Clock3_EventScript_EmptyHouseDoor {
+	lock
+	speakername("God")
+    msgbox(format(
+		"“YEAH, DON'T BOTHER.”\p"
+        "“I CREATED A CRAPTON OF HOUSES AND DIDN'T HAVE TIME TO FILL THEM ALL UP.\p"
+        "“SORRY ABOUT THAT, HOPE YOU'RE HAVING FUN AND ALL.”"
+    ))
+	release
+}

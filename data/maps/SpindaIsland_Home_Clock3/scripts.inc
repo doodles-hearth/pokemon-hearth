@@ -144,6 +144,38 @@ SpindaIsland_Home_Clock3_EventScript_OldWoman_7:
 	goto SpindaIsland_Home_Clock3_EventScript_OldWoman_6
 
 
+SpindaIsland_Home_Clock3_EventScript_EmptyHouseSign::
+# 95 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	lock
+# 96 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	msgbox SpindaIsland_Home_Clock3_EventScript_EmptyHouseSign_Text_0
+# 100 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 101 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	speakername SpindaIsland_Home_Clock3_EventScript_OldWoman_Text_3
+# 102 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	msgbox SpindaIsland_Home_Clock3_EventScript_EmptyHouseSign_Text_1
+# 106 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	removefieldmugshot
+# 107 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	closemessage
+# 108 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	release
+	return
+
+
+SpindaIsland_Home_Clock3_EventScript_EmptyHouseDoor::
+# 112 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	lock
+# 113 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	speakername SpindaIsland_Home_Clock3_EventScript_EmptyHouseDoor_Text_0
+# 114 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	msgbox SpindaIsland_Home_Clock3_EventScript_EmptyHouseDoor_Text_1
+# 119 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	release
+	return
+
+
 SpindaIsland_Home_Clock3_EventScript_OldWoman_Text_0:
 # 26 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
 	.string "Old woman$"
@@ -181,3 +213,24 @@ SpindaIsland_Home_Clock3_EventScript_OldWoman_Text_6:
 SpindaIsland_Home_Clock3_EventScript_OldWoman_Text_7:
 # 79 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
 	.string "Have a good day, child.$"
+
+SpindaIsland_Home_Clock3_EventScript_EmptyHouseSign_Text_0:
+# 97 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	.string "$"
+
+SpindaIsland_Home_Clock3_EventScript_EmptyHouseSign_Text_1:
+# 103 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	.string "… …\p"
+	.string "A blank sign?$"
+
+SpindaIsland_Home_Clock3_EventScript_EmptyHouseDoor_Text_0:
+# 113 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	.string "God$"
+
+SpindaIsland_Home_Clock3_EventScript_EmptyHouseDoor_Text_1:
+# 115 "data/maps/SpindaIsland_Home_Clock3/scripts.pory"
+	.string "“YEAH, DON'T BOTHER.”\p"
+	.string "“I CREATED A CRAPTON OF HOUSES AND\n"
+	.string "DIDN'T HAVE TIME TO FILL THEM ALL UP.\p"
+	.string "“SORRY ABOUT THAT, HOPE YOU'RE\n"
+	.string "HAVING FUN AND ALL.”$"

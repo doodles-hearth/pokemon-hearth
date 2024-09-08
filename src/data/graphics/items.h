@@ -2110,5 +2110,6 @@ const u32 gItemIcon_GrassBlade[] = INCBIN_U32("graphics/items/icons/grass_blade.
 const u32 gItemIcon_ToughBolt[] = INCBIN_U32("graphics/items/icons/tough_screw.4bpp.lz");
 const u32 gItemIcon_PreciousBolt[] = INCBIN_U32("graphics/items/icons/golden_screw.4bpp.lz");
 const u32 gItemIcon_RustyBolt[] = INCBIN_U32("graphics/items/icons/rusty_screw.4bpp.lz");
+const u32 gItemIcon_Pbnj[] = INCBIN_U32("graphics/items/icons/pbnj.4bpp.lz");
 const u32 gItemIconPalette_SpindaIsland_DarkBg[] = INCBIN_U32("graphics/object_events/palettes/comp_npc_darkbg.gbapal.lz");
 const u32 gItemIconPalette_SpindaIsland_BrownBg[] = INCBIN_U32("graphics/object_events/palettes/comp_npc_brownbg.gbapal.lz");

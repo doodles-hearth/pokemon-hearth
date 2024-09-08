@@ -70,6 +70,7 @@ script SpindaIsland_Common_CantTakeStairs {
 		"“ALAS, THERE IS NOT.”\p"
         "“I TOTALLY WASN'T TOO LAZY TO IMPLEMENT A CERTAIN FEATURE.”"
     ))
+    closemessage
     release
 }
 
@@ -169,6 +170,20 @@ script SpindaIsland_Common_CantUseFromSide {
     release
 }
 
+script SpindaIsland_Common_CantEnterFromSide {
+    lock
+
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+    speakername("Little Archie")
+    msgbox(format(
+		"Can't enter from this side."
+    ))
+    closemessage
+	removefieldmugshot
+
+    release
+}
+
 script SpindaIsland_Common_UseToyCamera {
     lock
 
@@ -183,11 +198,11 @@ script SpindaIsland_Common_UseToyCamera {
 }
 
 script SpindaIsland_Common_CheckGotAllItemsForNewFaucet {
-    if (flag(FLAG_FAUCET_QUEST_STARTED) && checkitem(ITEM_TOUGH_BOLT) && checkitem(ITEM_PRECIOUS_BOLT) && checkitem(ITEM_RUSTY_BOLT) && checkitem(ITEM_BORROWED_PLIERS) && checkitem(ITEM_COOKING_OIL)) {
+    if (flag(FLAG_FAUCET_QUEST_STARTED) && checkitem(ITEM_TOUGH_BOLT) && checkitem(ITEM_PRECIOUS_BOLT) && checkitem(ITEM_RUSTY_BOLT) && checkitem(ITEM_BORROWED_PLIERS) && checkitem(ITEM_COOKING_OIL) && checkitem(ITEM_PB_AND_J)) {
         createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
         speakername("Little Archie")
         msgbox(format(
-            "This means I have everything the faucet shop owner needs!!\p"
+            "Wait, this means I have everything the faucet shop owner needs!!\p"
             "Let's go get that faucet replacement!"
         ))
         closemessage

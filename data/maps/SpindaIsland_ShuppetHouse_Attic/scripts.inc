@@ -56,94 +56,102 @@ MyScript::
 	msgbox MyScript_Text_1
 # 42 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	removefieldmugshot
-	return
-
-
-# 45 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-PlayerAppears:
+# 44 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	delay 180
 # 46 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	fadescreenspeed FADE_TO_BLACK, 16
+# 47 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	delay 100
+# 48 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	callnative StartCredits
+	end
+
+
+# 52 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+PlayerAppears:
+# 53 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	set_visible
-# 47 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 54 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	walk_down
-# 47 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 54 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	walk_down
-# 47 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 54 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	walk_down
-# 48 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 55 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	delay_16
-# 48 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 55 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	delay_16
-# 48 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 55 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	delay_16
-# 48 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 55 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	delay_16
 	step_end
 
-# 51 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 58 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 HidePlayer:
-# 52 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 59 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	set_invisible
 	step_end
 
-# 55 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 62 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 WailmerAppears:
-# 56 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_left
-# 56 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_left
-# 56 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_left
-# 56 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_left
-# 56 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_left
-# 56 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_left
-	step_end
-
-# 59 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-PlayerWalksToWailmer:
-# 60 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_right
-# 60 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_right
-# 60 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_right
-	step_end
-
 # 63 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-LandHoMotherfuckers:
-# 64 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	lock_anim
-# 65 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	lock_facing_direction
+	walk_slow_left
+# 63 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_slow_left
+# 63 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_slow_left
+# 63 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_slow_left
+# 63 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_slow_left
+# 63 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_slow_left
+	step_end
+
 # 66 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_down
-# 66 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_down
-# 66 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_down
-# 66 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_down
-# 66 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_down
-# 66 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_down
-# 66 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_down
+PlayerWalksToWailmer:
 # 67 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_down
+	walk_slow_right
 # 67 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_down
+	walk_slow_right
 # 67 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_down
-# 67 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_down
-# 68 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	unlock_anim
-# 69 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	unlock_facing_direction
+	walk_slow_right
+	step_end
+
 # 70 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+LandHoMotherfuckers:
+# 71 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	lock_anim
+# 72 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	lock_facing_direction
+# 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_down
+# 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_down
+# 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_down
+# 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_down
+# 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_down
+# 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_down
+# 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_down
+# 74 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_slow_down
+# 74 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_slow_down
+# 74 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_slow_down
+# 74 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_slow_down
+# 75 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	unlock_anim
+# 76 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	unlock_facing_direction
+# 77 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	face_down
 	step_end
 

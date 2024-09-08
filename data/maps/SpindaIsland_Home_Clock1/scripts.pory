@@ -12,6 +12,8 @@ mapscripts SpindaIsland_Home_Clock1_MapScripts {
 		// Broken faucet
 		if (flag(FLAG_FAUCET_BROKE)) {
 			setmetatile(18, 13, METATILE_SpindaIslandSecondary_BrokenFaucetWall, TRUE)
+		} elif (flag(FLAG_REPAIRED_FAUCET)) {
+			setmetatile(18, 13, METATILE_SpindaIslandSecondary_NewFaucetWall, TRUE)
 		}
 
 		if (flag(FLAG_CAMERA_EXPLODED)) {
@@ -50,14 +52,74 @@ script SpindaIsland_Home_Clock1_Faucet {
 	lock
 	// Faucet already broke
 	if (flag(FLAG_FAUCET_BROKE)) {
-		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
-		speakername("Little Archie")
-		msgbox(format(
-			"Faucet's broken…"
-		))
-		closemessage
-		removefieldmugshot
-		release
+		if (flag(FLAG_REPAIRED_FAUCET)) {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+			speakername("Little Archie")
+			msgbox(format(
+				"Looks even nicer in blue!"
+			))
+			closemessage
+			removefieldmugshot
+		} elif (flag(FLAG_FAUCET_QUEST_FINISHED)) {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			speakername("Little Archie")
+			msgbox(format(
+				"Just need to plug the new faucet in…"
+			))
+			closemessage
+			removefieldmugshot
+
+			removeitem(ITEM_NEW_FAUCET)
+
+			delay(48)
+
+			playse(SE_CLICK)
+			setmetatile(18, 13, METATILE_SpindaIslandSecondary_NewFaucetWall, TRUE)
+			special(DrawWholeMapView)
+			waitse
+
+			delay(48)
+
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+			speakername("Little Archie")
+			msgbox(format(
+				"Amazing! Now to turn the water back on…"
+			))
+			closemessage
+			removefieldmugshot
+
+			playse(SE_CLICK)
+			waitse
+			delay(20)
+			playse(SE_CLICK)
+			waitse
+			delay(20)
+			playse(SE_CLICK)
+			waitse
+			delay(40)
+
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+			speakername("Little Archie")
+			msgbox(format(
+				"All done!! Let's go see mom!"
+			))
+			closemessage
+			removefieldmugshot
+
+			setflag(FLAG_REPAIRED_FAUCET)
+			setvar(VAR_REPAIRED_FAUCET, 1)
+
+			release
+		} else {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			speakername("Little Archie")
+			msgbox(format(
+				"Faucet's broken…"
+			))
+			closemessage
+			removefieldmugshot
+			release
+		}
 	} else {
 		hidefollower
 		setflag(FLAG_TEMP_HIDE_FOLLOWER)
@@ -322,6 +384,7 @@ script SpindaIsland_Home_Clock1_PhotoCamera {
 						"You're welcome, kid.\p"
 						"Please uh, don't tell your parents about this, alright?"
 					))
+					removefieldmugshot
 					closemessage
 
 					applymovement(LOCALID_PHOTO_MAN, SpindaIsland_Home_Clock1_Movement_PhotoManLeave)
