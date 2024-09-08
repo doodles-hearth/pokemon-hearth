@@ -2,7 +2,7 @@
   "id": "MAP_SPINA_ISLAND_PLAYER_HOME",
   "name": "SpinaIsland_PlayerHome",
   "layout": "LAYOUT_SPINA_ISLAND_PLAYER_HOME",
-  "music": "MUS_DUMMY",
+  "music": "MUS_OCEANIC_MUSEUM",
   "region_map_section": "MAPSEC_SUNRISE_VILLAGE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

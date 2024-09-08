@@ -623,6 +623,9 @@ extern const u8 BerryTree_EventScript_ItemUsePlantBerry[];
 extern const u8 BerryTree_EventScript_ItemUseWailmerPail[];
 extern const u8 BattleFrontier_OutsideEast_EventScript_WaterSudowoodo[];
 extern const u8 SpindaIsland_Common_UseToyCamera[];
+extern const u8 SpindaIsland_Home_EventScript_SaltDish[];
+extern const u8 SpindaIsland_Home_EventScript_UseGrassBlade[];
+extern const u8 SpindaIsland_Home_EventScript_UseGrassBladeWithZiggy[];
 extern const u8 SpindaIsland_ShupperHouse_ChaseShuppets[];
 extern const u8 SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet[];
 

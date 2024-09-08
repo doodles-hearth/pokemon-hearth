@@ -2,7 +2,7 @@
   "id": "MAP_SPINDA_ISLAND_HOME_CLOCK1",
   "name": "SpindaIsland_Home_Clock1",
   "layout": "LAYOUT_SPINDA_ISLAND_HOME_CLOCK1",
-  "music": "MUS_DUMMY",
+  "music": "MUS_RG_SEVII_45",
   "region_map_section": "MAPSEC_SUNRISE_VILLAGE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -286,6 +286,58 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpindaIsland_Home_Clock1_EventScript_OldWoman",
       "flag": "FLAG_HIDE_OLD_WOMAN"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_COOK",
+      "x": 43,
+      "y": 16,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_EventScript_Cook",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY_3",
+      "x": 43,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_EventScript_Pot",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZIGZAGOON)",
+      "x": 32,
+      "y": 49,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Common_HiddenObstacle",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PLIERS",
+      "x": 32,
+      "y": 48,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SpindaIsland_Home_EventScript_Pliers",
+      "flag": "FLAG_PICKED_UP_PLIERS"
     }
   ],
   "warp_events": [

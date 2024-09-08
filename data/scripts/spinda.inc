@@ -279,10 +279,8 @@ SpindaIsland_Common_UseToyCamera::
 
 
 SpindaIsland_Common_CheckGotAllItemsForNewFaucet::
-	checkitem ITEM_TOUGH_BOLT
-# 0 "data/scripts/spinda.pory"
-	compare VAR_RESULT, 0
-	goto_if_ne SpindaIsland_Common_CheckGotAllItemsForNewFaucet_3
+# 186 "data/scripts/spinda.pory"
+	goto_if_set FLAG_FAUCET_QUEST_STARTED, SpindaIsland_Common_CheckGotAllItemsForNewFaucet_3
 	return
 
 SpindaIsland_Common_CheckGotAllItemsForNewFaucet_1:
@@ -299,14 +297,14 @@ SpindaIsland_Common_CheckGotAllItemsForNewFaucet_1:
 	return
 
 SpindaIsland_Common_CheckGotAllItemsForNewFaucet_2:
-	checkitem ITEM_RUSTY_BOLT
+	checkitem ITEM_PRECIOUS_BOLT
 # 0 "data/scripts/spinda.pory"
 	compare VAR_RESULT, 0
-	goto_if_ne SpindaIsland_Common_CheckGotAllItemsForNewFaucet_6
+	goto_if_ne SpindaIsland_Common_CheckGotAllItemsForNewFaucet_7
 	return
 
 SpindaIsland_Common_CheckGotAllItemsForNewFaucet_3:
-	checkitem ITEM_PRECIOUS_BOLT
+	checkitem ITEM_TOUGH_BOLT
 # 0 "data/scripts/spinda.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne SpindaIsland_Common_CheckGotAllItemsForNewFaucet_2
@@ -314,6 +312,20 @@ SpindaIsland_Common_CheckGotAllItemsForNewFaucet_3:
 
 SpindaIsland_Common_CheckGotAllItemsForNewFaucet_6:
 	checkitem ITEM_BORROWED_PLIERS
+# 0 "data/scripts/spinda.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne SpindaIsland_Common_CheckGotAllItemsForNewFaucet_10
+	return
+
+SpindaIsland_Common_CheckGotAllItemsForNewFaucet_7:
+	checkitem ITEM_RUSTY_BOLT
+# 0 "data/scripts/spinda.pory"
+	compare VAR_RESULT, 0
+	goto_if_ne SpindaIsland_Common_CheckGotAllItemsForNewFaucet_6
+	return
+
+SpindaIsland_Common_CheckGotAllItemsForNewFaucet_10:
+	checkitem ITEM_COOKING_OIL
 # 0 "data/scripts/spinda.pory"
 	compare VAR_RESULT, 0
 	goto_if_ne SpindaIsland_Common_CheckGotAllItemsForNewFaucet_1

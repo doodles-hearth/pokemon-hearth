@@ -473,6 +473,10 @@ static const struct SpriteFrameImage sPicTable_Seashell[] = {
     obj_frame_tiles(gObjectEventPic_Seashell),
 };
 
+static const struct SpriteFrameImage sPicTable_Pliers[] = {
+    obj_frame_tiles(gObjectEventPic_Pliers),
+};
+
 static const struct SpriteFrameImage sPicTable_CableCar[] = {
     obj_frame_tiles(gObjectEventPic_CableCar),
 };

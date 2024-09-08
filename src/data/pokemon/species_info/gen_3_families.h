@@ -958,8 +958,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gFollowerPalette_Zigzagoon,
-            gShinyFollowerPalette_Zigzagoon
+            gItemIconPalette_SpindaIsland_BrownBg,
+            gItemIconPalette_SpindaIsland_BrownBg
         )
         .levelUpLearnset = sZigzagoonLevelUpLearnset,
         .teachableLearnset = sZigzagoonTeachableLearnset,
@@ -5593,8 +5593,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_SPOT,
-            gFollowerPalette_Wailmer,
-            gShinyFollowerPalette_Wailmer
+            gItemIconPalette_SpindaIsland_BrownBg,
+            gItemIconPalette_SpindaIsland_BrownBg
         )
         .levelUpLearnset = sWailmerLevelUpLearnset,
         .teachableLearnset = sWailmerTeachableLearnset,

@@ -2,7 +2,7 @@
   "id": "MAP_SPINDA_ISLAND_SHUPPET_HOUSE_CLOCK3",
   "name": "SpindaIsland_ShuppetHouse_Clock3",
   "layout": "LAYOUT_SPINDA_ISLAND_HOUSE_CLOCK3",
-  "music": "MUS_DUMMY",
+  "music": "MUS_PETALBURG_WOODS",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

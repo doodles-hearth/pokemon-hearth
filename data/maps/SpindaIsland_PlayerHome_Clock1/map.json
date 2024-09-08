@@ -2,7 +2,7 @@
   "id": "MAP_SPINDA_ISLAND_PLAYER_HOME_CLOCK1",
   "name": "SpindaIsland_PlayerHome_Clock1",
   "layout": "LAYOUT_SPINDA_ISLAND_PLAYER_HOME_CLOCK1",
-  "music": "MUS_DUMMY",
+  "music": "MUS_OCEANIC_MUSEUM",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

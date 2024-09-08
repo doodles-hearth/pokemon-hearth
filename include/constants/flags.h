@@ -73,14 +73,14 @@
 #define FLAG_CAMERA_EXPLODED    0x37
 #define FLAG_REALIZED_I_HAVE_NICKEL    0x38
 #define FLAG_HIDE_PHOTO_MAN    0x39
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
-#define FLAG_UNUSED_0x03C    0x3C // Unused Flag
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
-#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
-#define FLAG_UNUSED_0x03F    0x3F // Unused Flag
-#define FLAG_UNUSED_0x040    0x40 // Unused Flag
-#define FLAG_UNUSED_0x041    0x41 // Unused Flag
+#define FLAG_SALTED_DISH    0x3A
+#define FLAG_GOT_OIL    0x3B // Unused Flag
+#define FLAG_COOK_SAD    0x3C // Unused Flag
+#define FLAG_TASTED_DISH    0x3D // Unused Flag
+#define FLAG_HIDE_PLIERS    0x3E // Unused Flag
+#define FLAG_SAW_PLIERS    0x3F // Unused Flag
+#define FLAG_ZIGGY_ASLEEP    0x40 // Unused Flag
+#define FLAG_PICKED_UP_PLIERS    0x41 // Unused Flag
 #define FLAG_UNUSED_0x042    0x42 // Unused Flag
 #define FLAG_UNUSED_0x043    0x43 // Unused Flag
 #define FLAG_UNUSED_0x044    0x44 // Unused Flag

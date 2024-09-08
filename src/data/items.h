@@ -14125,8 +14125,8 @@ const struct Item gItemsInfo[] =
         ),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_SaltyLemonade,
         .iconPic = gItemIcon_SaltyLemonade,
         .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },
@@ -14200,12 +14200,12 @@ const struct Item gItemsInfo[] =
     
     [ITEM_BORROWED_PLIERS] =
     {
-        .name = _("Borrowed Pliers"),
+        .name = _("Wet Pliers"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "Some brand new\n"
-            "pliers.\n"
-            "Totally not stolen."
+            "Is it Zigzagoon\n"
+            "drool?\n"
+            "Or is it pee?"
         ),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
@@ -14220,14 +14220,14 @@ const struct Item gItemsInfo[] =
         .name = _("Grass Blade"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "Perfect for\n"
-            "whistling\n"
-            "annoyingly."
+            "Whistling makes\n"
+            "you sleepy!\n"
+            "Zzz…"
         ),
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_GrassBlade,
         .iconPic = gItemIcon_GrassBlade,
         .iconPalette = gItemIconPalette_SpindaIsland_BrownBg,
     },

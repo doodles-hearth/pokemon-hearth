@@ -2,7 +2,7 @@
   "id": "MAP_FAUCET_SHOP_CLOCK3",
   "name": "FaucetShop_Clock3",
   "layout": "LAYOUT_FAUCET_SHOP_CLOCK3",
-  "music": "MUS_DUMMY",
+  "music": "MUS_POKE_MART",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

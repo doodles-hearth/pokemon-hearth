@@ -43,6 +43,9 @@ static const u32 sFieldMugshotGfx_Twin_Finger[] = INCBIN_U32("graphics/field_mug
 static const u32 sFieldMugshotGfx_Grandma_Normal[] = INCBIN_U32("graphics/field_mugshots/grandma/normal.4bpp.lz");
 static const u32 sFieldMugshotGfx_Grandma_Happy[] = INCBIN_U32("graphics/field_mugshots/grandma/happy.4bpp.lz");
 
+static const u32 sFieldMugshotGfx_Cook_Normal[] = INCBIN_U32("graphics/field_mugshots/cook/normal.4bpp.lz");
+static const u32 sFieldMugshotGfx_Cook_Sad[] = INCBIN_U32("graphics/field_mugshots/cook/sad.4bpp.lz");
+
 static const u16 sFieldMugshotPal_DarkBg[] = INCBIN_U16("graphics/object_events/palettes/comp_npc_darkbg.gbapal");
 static const u16 sFieldMugshotPal_BrownBg[] = INCBIN_U16("graphics/object_events/palettes/comp_npc_brownbg.gbapal");
 
@@ -294,6 +297,20 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_HAPPY] =
         {
             .gfx = sFieldMugshotGfx_Grandma_Happy,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
+    },
+    [MUGSHOT_COOK] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_Cook_Normal,
+            .pal = sFieldMugshotPal_BrownBg,
+        },
+
+        [EMOTE_SAD] =
+        {
+            .gfx = sFieldMugshotGfx_Cook_Sad,
             .pal = sFieldMugshotPal_BrownBg,
         },
     },

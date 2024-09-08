@@ -66,9 +66,14 @@ static void ItemUseOnFieldCB_Berry(u8);
 static void ItemUseOnFieldCB_WailmerPailBerry(u8);
 static void ItemUseOnFieldCB_WailmerPailSudowoodo(u8);
 static void ItemUseOnFieldCB_ToyCamera(u8);
+static void ItemUseOnFieldCB_SaltyLemonade(u8);
+static void ItemUseOnFieldCB_GrassBlade(u8);
+static void ItemUseOnFieldCB_GrassBladeWithZiggy(u8);
 static void ItemUseOnFieldCB_ToyCameraWithShuppet(u8);
 static void ItemUseOnFieldCB_BrokenFaucetWheel(u8);
 static bool8 TryToWaterSudowoodo(void);
+static bool8 TryToSaltDish(void);
+static bool8 TryToSleepZiggy(void);
 static bool8 TryToReplaceWheel(void);
 static void BootUpSoundTMHM(u8);
 static void Task_ShowTMHMContainedMessage(u8);
@@ -272,6 +277,32 @@ void ItemUseOutOfBattle_ToyCamera(u8 taskId)
         sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCamera;
     }
     SetUpItemUseOnFieldCallback(taskId);
+}
+
+void ItemUseOutOfBattle_SaltyLemonade(u8 taskId)
+{
+    if (TryToSaltDish() == TRUE)
+    {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_SaltyLemonade;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else
+    {
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+    }
+}
+
+void ItemUseOutOfBattle_GrassBlade(u8 taskId)
+{
+    if (TryToSleepZiggy() == TRUE)
+    {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_GrassBladeWithZiggy;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else
+    {
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+    }
 }
 
 static void ItemUseOnFieldCB_Bike(u8 taskId)
@@ -820,6 +851,42 @@ static bool8 TryToWaterSudowoodo(void)
         return TRUE;
 }
 
+static bool8 TryToSaltDish(void)
+{
+    s16 x, y;
+    u8 elevation;
+    u8 objId;
+    GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+    elevation = PlayerGetElevation();
+    objId = GetObjectEventIdByPosition(x, y, elevation);
+    if (
+        objId != OBJECT_EVENTS_COUNT && gObjectEvents[objId].graphicsId == OBJ_EVENT_GFX_LITTLE_BOY_3
+        && (FlagGet(FLAG_COOK_SAD) || FlagGet(FLAG_TASTED_DISH))
+        )
+        return TRUE;
+    else
+        return FALSE;
+}
+
+static bool8 TryToSleepZiggy(void)
+{
+    s16 x, y;
+    u8 elevation;
+    u8 objId;
+    GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+    elevation = PlayerGetElevation();
+    objId = GetObjectEventIdByPosition(x, y, elevation);
+    if (
+        objId != OBJECT_EVENTS_COUNT
+        && gObjectEvents[objId].graphicsId == OBJ_EVENT_GFX_SPECIES(ZIGZAGOON)
+        && FlagGet(FLAG_SAW_PLIERS)
+        && !FlagGet(FLAG_ZIGGY_ASLEEP)
+    )
+        return TRUE;
+    else
+        return FALSE;
+}
+
 static bool8 TryToReplaceWheel(void)
 {
     s16 x, y;
@@ -847,6 +914,27 @@ static void ItemUseOnFieldCB_ToyCamera(u8 taskId)
 {
     LockPlayerFieldControls();
     ScriptContext_SetupScript(SpindaIsland_Common_UseToyCamera);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_SaltyLemonade(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_Home_EventScript_SaltDish);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_GrassBlade(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_Home_EventScript_UseGrassBlade);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_GrassBladeWithZiggy(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_Home_EventScript_UseGrassBladeWithZiggy);
     DestroyTask(taskId);
 }
 

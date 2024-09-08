@@ -1486,6 +1486,304 @@ script SpindaIsland_Home_EventScript_Raft {
 	release
 }
 
+script SpindaIsland_Home_EventScript_ThisIsConvenient {
+	lock
+
+	if (flag(FLAG_FAUCET_BROKE)) {
+		turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+		delay(20)
+
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Well, this is eerily convenient!"
+		))
+		removefieldmugshot
+		closemessage
+
+		setvar(VAR_PASSED_IN_FRONT_OF_FAUCET_SHOP, 1)
+	}
+	
+	release
+}
+
+script SpindaIsland_Home_EventScript_Pot {
+	lock
+	if (flag(FLAG_SALTED_DISH)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+		speakername("Little Archie")
+		msgbox(format(
+			"Much better!"
+		))
+		removefieldmugshot
+		closemessage
+	} else {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Slurp…"
+		))
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_DISGUSTED)
+		msgbox(format(
+			"Ugh, it's tasteless…\p"
+			"Have people never heard of salt?"
+		))
+		removefieldmugshot
+		closemessage
+	}
+	release
+}
+
+script SpindaIsland_Home_EventScript_SaltDish {
+	lock
+	removeitem(ITEM_SALTY_LEMONADE)
+	setflag(FLAG_SALTED_DISH)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"Needs some salt, so maybe…"
+	))
+	removefieldmugshot
+	closemessage
+
+	playse(SE_M_POISON_POWDER)
+	waitse
+	playse(SE_M_POISON_POWDER)
+	waitse
+	playse(SE_M_POISON_POWDER)
+	waitse
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+	speakername("Little Archie")
+	msgbox(format(
+		"There, fixed, probably!"
+	))
+	removefieldmugshot
+	closemessage
+
+	release
+}
+
+script SpindaIsland_Home_EventScript_Cook {
+	lock
+	faceplayer
+
+	if (flag(FLAG_GOT_OIL)) {
+		createfieldmugshot(MUGSHOT_COOK, EMOTE_NORMAL)
+		speakername("Cook")
+		msgbox(format(
+			"Thank you again.\p"
+			"You will become a great chef when you grow up, I can feel it!"
+		))
+		removefieldmugshot
+		closemessage
+
+	} elif (flag(FLAG_SALTED_DISH)) {
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Can you try your dish now?"
+		))
+		removefieldmugshot
+		closemessage
+
+		createfieldmugshot(MUGSHOT_COOK, EMOTE_SAD)
+		speakername("Cook")
+		msgbox(format(
+			"It's not like it's gotten any tastier on its own, but sure."
+		))
+		removefieldmugshot
+		closemessage
+
+		// turnobject(VAR_LAST_TALKED, DIR_WEST)
+		delay(20)
+
+		createfieldmugshot(MUGSHOT_COOK, EMOTE_SAD)
+		speakername("Cook")
+		msgbox(format(
+			"Slurp…"
+		))
+		removefieldmugshot
+		closemessage
+
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+		waitmovement(0)
+		waitse
+		delay(48)
+
+		createfieldmugshot(MUGSHOT_COOK, EMOTE_NORMAL)
+		speakername("Cook")
+		msgbox(format(
+			"Oh, wow! It's… It's remarkable!!\p"
+			"What arcane sorcery…\p"
+			"What? You added some lemonade in the pot?\p"
+			"Who would have thought!!\p"
+			"I don't have much to thank you, but here is a bottle of my finest cooking oil!"
+		))
+		removefieldmugshot
+		closemessage
+
+		setflag(FLAG_COOK_SAD)
+		setflag(FLAG_GOT_OIL)
+		giveitem(ITEM_COOKING_OIL)
+
+		call(SpindaIsland_Common_CheckGotAllItemsForNewFaucet)
+	} else {
+		createfieldmugshot(MUGSHOT_COOK, EMOTE_SAD)
+		speakername("Cook")
+		msgbox(format(
+			"I am distraught.\p"
+			"My dish isn't turning out how I wanted at all…\p"
+			"How can I make it less… flavorless?\p"
+			"Is there any hope at all?"
+		))
+		removefieldmugshot
+		closemessage
+
+		setflag(FLAG_COOK_SAD)
+	}
+	
+	release
+}
+
+script SpindaIsland_Home_EventScript_Zigzagoon {
+	lock
+	if (flag(FLAG_ZIGGY_ASLEEP)) {
+		playse(SE_M_SNORE)
+		speakername("Sleepy Zigzagoon")
+		msgbox(format(
+			"ZzzzzZzZz…"
+		))
+		waitse
+		closemessage
+	} else {
+		playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_ENCOUNTER)
+		speakername("Rabid Zigzagoon")
+		msgbox(format(
+			"GRRRRRRRR…"
+		))
+		waitmoncry
+		closemessage
+	}
+	release
+}
+
+script SpindaIsland_Home_EventScript_Pliers {
+	lock
+	if (flag(FLAG_ZIGGY_ASLEEP)) {
+		removeobject(VAR_LAST_TALKED)
+		giveitem(ITEM_BORROWED_PLIERS)
+		setflag(FLAG_PICKED_UP_PLIERS)
+
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_DISGUSTED)
+		speakername("Little Archie")
+		msgbox(format(
+			"Yuck, the Zigzagoon drooled all over them!\p"
+			"At least I hope it's drool…"
+		))
+		removefieldmugshot
+		closemessage
+	} else {
+		if (flag(FLAG_SAW_PLIERS)) {
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			speakername("Little Archie")
+			msgbox(format(
+				"Can't get to those {COLOR RED}pliers{COLOR DARK_GRAY} with that Zigzagoon guarding them…\p"
+				"If only there was a way to distract or incapacitate it…"
+			))
+			removefieldmugshot
+			closemessage
+		} else {
+			if (flag(FLAG_FAUCET_QUEST_STARTED)) {
+				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+				speakername("Little Archie")
+				msgbox(format(
+					"These must be the {COLOR RED}pliers{COLOR DARK_GRAY} the faucet salesman was talking about!"
+				))
+			} else {
+				createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+				speakername("Little Archie")
+				msgbox(format(
+					"Is this… a pair of {COLOR RED}pliers{COLOR DARK_GRAY}?"
+				))
+			}
+
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+			msgbox(format(
+				"You're gonna give them to me, right little Ziggy?"
+			))
+			removefieldmugshot
+			closemessage
+
+			playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_ENCOUNTER)
+			speakername("Rabid Zigzagoon")
+			msgbox(format(
+				"GRRRRRRRR…"
+			))
+			waitmoncry
+			createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+			speakername("Little Archie")
+			msgbox(format(
+				"Nope, not gonna risk a hand just to get these!"
+			))
+			removefieldmugshot
+			closemessage
+
+			setflag(FLAG_SAW_PLIERS)
+		}
+	}
+	
+	release
+}
+
+script SpindaIsland_Home_EventScript_UseGrassBladeWithZiggy {
+	lock
+	playse(SE_M_GRASSWHISTLE)
+	waitse
+	
+	playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_ENCOUNTER)
+	speakername("Rabid Zigzagoon")
+	msgbox(format(
+		"GRRRRRRRR!!"
+	))
+	waitmoncry
+	closemessage
+
+	delay(30)
+
+	playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_FAINT)
+	speakername("Sleepy Zigzagoon")
+	msgbox(format(
+		"…GrrrzzZZzzzzZz…"
+	))
+	waitmoncry
+	playse(SE_M_SNORE)
+	msgbox(format(
+		"ZzzzZzZzzZZzzz…"
+	))
+	waitse
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+	speakername("Little Archie")
+	msgbox(format(
+		"Awesome! It fell asleep!\p"
+		"Let's get those {COLOR RED}pliers{COLOR DARK_GRAY}!"
+	))
+	removefieldmugshot
+	closemessage
+
+	setflag(FLAG_ZIGGY_ASLEEP)
+	release
+}
+
+script SpindaIsland_Home_EventScript_UseGrassBlade {
+	lock
+	playse(SE_M_GRASSWHISTLE)
+	waitse
+	release
+}
+
 movement SpindaIsland_Home_Movement_RaftGoesToIsland {
 	face_left
 	lock_facing_direction
