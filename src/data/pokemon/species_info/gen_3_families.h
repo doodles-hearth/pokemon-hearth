@@ -958,8 +958,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            gItemIconPalette_SpindaIsland_BrownBg,
-            gItemIconPalette_SpindaIsland_BrownBg
+            gItemIconPalette_SpindaIsland_DarkBg,
+            gItemIconPalette_SpindaIsland_DarkBg
         )
         .levelUpLearnset = sZigzagoonLevelUpLearnset,
         .teachableLearnset = sZigzagoonTeachableLearnset,

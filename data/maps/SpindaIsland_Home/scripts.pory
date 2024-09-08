@@ -66,7 +66,7 @@ script SpindaIsland_Home_EventScript_GoToSail {
 	waitmovement(0)
 
 	special(SpawnCameraObject)
-	applymovement(VAR_LAST_TALKED, SpindaIsland_Home_Movement_RaftGoesToIsland)
+	applymovement(LOCAL_RAFT, SpindaIsland_Home_Movement_RaftGoesToIsland)
 	applymovement(OBJ_EVENT_ID_CAMERA, SpindaIsland_Home_Movement_RaftGoesToIsland)
 	delay(100)
 	warpsilent(MAP_SPINDA_ISLAND_SHUPPET_HOUSE_ATTIC, 5, 0)
@@ -1238,8 +1238,7 @@ script SpindaIsland_Home_EventScript_OldWoman {
 		removefieldmugshot
 		closemessage
 
-		applymovement(VAR_LAST_TALKED, SpindaIsland_Home_Movement_GrandmaEntersHome)
-		waitmovement(0)
+		turnobject(VAR_LAST_TALKED, DIR_NORTH)
 		removeobject(VAR_LAST_TALKED)
 		playse(SE_EXIT)
 		waitse
@@ -1257,10 +1256,6 @@ script SpindaIsland_Home_EventScript_OldWoman {
 		call(SpindaIsland_Common_CheckGotAllItemsForNewFaucet)
 	}
 	release
-}
-
-movement SpindaIsland_Home_Movement_GrandmaEntersHome {
-	face_up
 }
 
 script SpindaIsland_Home_EventScript_Boat {

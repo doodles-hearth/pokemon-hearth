@@ -106,7 +106,7 @@ SpinaIsland_PlayerHome_EventScript_FixedFaucet::
 # 80 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	closemessage
 # 82 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
-	applymovement OBJ_EVENT_ID_PLAYER, SpinaIsland_PlayerHome_Movement_ArchieWalksUpToMom
+	applymovement OBJ_EVENT_ID_PLAYER, SpinaIsland_PlayerHome_Movement_ArchieExits
 # 83 "data/maps/SpinaIsland_PlayerHome/scripts.pory"
 	waitmovement 0
 # 85 "data/maps/SpinaIsland_PlayerHome/scripts.pory"

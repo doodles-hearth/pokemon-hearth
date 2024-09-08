@@ -539,12 +539,13 @@ script SpindaIsland_Home_Clock1_EventScript_OldWoman {
 		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_HAPPY)
 		msgbox(format(
 			"How adorable of you to help out a poor old lady…\p"
-			"Please take this, for your trouble!"
+			"How can I repay you?\p"
+			"You look like you're hungry… Let me fix you a little snack!"
 		))
 		removefieldmugshot
 		closemessage
-
-		// TODO EVA COMP giveitem
+		
+		giveitem(ITEM_PB_AND_J)
 
 		createfieldmugshot(MUGSHOT_GRANDMA, EMOTE_HAPPY)
 		msgbox(format(
@@ -553,12 +554,22 @@ script SpindaIsland_Home_Clock1_EventScript_OldWoman {
 		removefieldmugshot
 		closemessage
 
-		applymovement(VAR_LAST_TALKED, Common_Movement_FaceRight)
-		waitmovement(0)
+		turnobject(VAR_LAST_TALKED, DIR_EAST)
 		removeobject(VAR_LAST_TALKED)
 		playse(SE_EXIT)
 		waitse
 		setflag(FLAG_HIDE_OLD_WOMAN)
+
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		speakername("Little Archie")
+		msgbox(format(
+			"Cool! Lemme pack this up for later.\p"
+			"Let's hope it doesn't taste like old people or something."
+		))
+		removefieldmugshot
+		closemessage
+
+		call(SpindaIsland_Common_CheckGotAllItemsForNewFaucet)
 	}
 	release
 }

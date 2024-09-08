@@ -139,19 +139,19 @@ LandHoMotherfuckers:
 	walk_down
 # 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	walk_down
+# 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_down
+# 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_down
+# 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_down
+# 73 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+	walk_down
 # 74 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_down
-# 74 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_down
-# 74 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_down
-# 74 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
-	walk_slow_down
-# 75 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	unlock_anim
-# 76 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 75 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	unlock_facing_direction
-# 77 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
+# 76 "data/maps/SpindaIsland_ShuppetHouse_Attic/scripts.pory"
 	face_down
 	step_end
 

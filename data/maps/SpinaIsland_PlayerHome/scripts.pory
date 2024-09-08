@@ -79,7 +79,7 @@ script SpinaIsland_PlayerHome_EventScript_FixedFaucet {
 	removefieldmugshot
 	closemessage
 
-	applymovement(OBJ_EVENT_ID_PLAYER, SpinaIsland_PlayerHome_Movement_ArchieWalksUpToMom)
+	applymovement(OBJ_EVENT_ID_PLAYER, SpinaIsland_PlayerHome_Movement_ArchieExits)
 	waitmovement(0)
 
 	warp(MAP_SPINDA_ISLAND_HOME, 10, 43)

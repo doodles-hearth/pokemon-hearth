@@ -680,7 +680,7 @@ SpindaIsland_Home_Clock1_EventScript_OldWoman_1:
 # 517 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	goto_if_set FLAG_HIDE_SHUPPETS, SpindaIsland_Home_Clock1_EventScript_OldWoman_7
 SpindaIsland_Home_Clock1_EventScript_OldWoman_6:
-# 563 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 574 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	release
 	return
 
@@ -747,22 +747,22 @@ SpindaIsland_Home_Clock1_EventScript_OldWoman_7:
 	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_HAPPY
 # 540 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_5
-# 544 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	removefieldmugshot
 # 545 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	closemessage
-# 549 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_HAPPY
-# 550 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_6
-# 553 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	removefieldmugshot
-# 554 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 546 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	closemessage
-# 556 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	applymovement VAR_LAST_TALKED, Common_Movement_FaceRight
+# 548 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	giveitem ITEM_PB_AND_J
+# 550 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	createfieldmugshot MUGSHOT_GRANDMA, EMOTE_HAPPY
+# 551 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_6
+# 554 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	removefieldmugshot
+# 555 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	closemessage
 # 557 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
-	waitmovement 0
+	turnobject VAR_LAST_TALKED, DIR_EAST
 # 558 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	removeobject VAR_LAST_TALKED
 # 559 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
@@ -771,6 +771,18 @@ SpindaIsland_Home_Clock1_EventScript_OldWoman_7:
 	waitse
 # 561 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	setflag FLAG_HIDE_OLD_WOMAN
+# 563 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 564 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	speakername SpindaIsland_Home_Clock1_HidingBoy_Text_2
+# 565 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	msgbox SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_7
+# 569 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	removefieldmugshot
+# 570 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	closemessage
+# 572 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	call SpindaIsland_Common_CheckGotAllItemsForNewFaucet
 	goto SpindaIsland_Home_Clock1_EventScript_OldWoman_6
 
 
@@ -984,8 +996,16 @@ SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_5:
 # 541 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	.string "How adorable of you to help out a poor\n"
 	.string "old lady…\p"
-	.string "Please take this, for your trouble!$"
+	.string "How can I repay you?\p"
+	.string "You look like you're hungry… Let me\n"
+	.string "fix you a little snack!$"
 
 SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_6:
-# 551 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+# 552 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
 	.string "Have a good day, child.$"
+
+SpindaIsland_Home_Clock1_EventScript_OldWoman_Text_7:
+# 566 "data/maps/SpindaIsland_Home_Clock1/scripts.pory"
+	.string "Cool! Lemme pack this up for later.\p"
+	.string "Let's hope it doesn't taste like old\n"
+	.string "people or something.$"

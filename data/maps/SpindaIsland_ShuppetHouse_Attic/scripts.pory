@@ -70,8 +70,7 @@ movement PlayerWalksToWailmer {
 movement LandHoMotherfuckers {
 	lock_anim
 	lock_facing_direction
-	walk_down * 7
-	walk_slow_down * 4
+	walk_down * 11
 	unlock_anim
 	unlock_facing_direction
 	face_down
