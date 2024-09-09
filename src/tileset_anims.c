@@ -1229,9 +1229,9 @@ const u16 gTilesetAnims_SpindaIsland_FlowerRed_Frame0[] = INCBIN_U16("data/tiles
 const u16 gTilesetAnims_SpindaIsland_FlowerRed_Frame1[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/flower_red/01.4bpp");
 const u16 gTilesetAnims_SpindaIsland_FlowerRed_Frame2[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/flower_red/02.4bpp");
 
-const u16 gTilesetAnims_SpindaIsland_DandelionWhite_Frame0[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/dandelion_white/00.4bpp");
-const u16 gTilesetAnims_SpindaIsland_DandelionWhite_Frame1[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/dandelion_white/01.4bpp");
-const u16 gTilesetAnims_SpindaIsland_DandelionWhite_Frame2[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/dandelion_white/02.4bpp");
+// const u16 gTilesetAnims_SpindaIsland_DandelionWhite_Frame0[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/dandelion_white/00.4bpp");
+// const u16 gTilesetAnims_SpindaIsland_DandelionWhite_Frame1[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/dandelion_white/01.4bpp");
+// const u16 gTilesetAnims_SpindaIsland_DandelionWhite_Frame2[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/dandelion_white/02.4bpp");
 
 // const u16 gTilesetAnims_SpindaIsland_DandelionYellow_Frame0[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/dandelion_yellow/00.4bpp");
 // const u16 gTilesetAnims_SpindaIsland_DandelionYellow_Frame1[] = INCBIN_U16("data/tilesets/primary/spinda_island/anim/dandelion_yellow/01.4bpp");
@@ -1248,12 +1248,12 @@ const u16 *const gTilesetAnims_SpindaIsland_FlowerRed[] = {
     gTilesetAnims_SpindaIsland_FlowerRed_Frame2
 };
 
-const u16 *const gTilesetAnims_SpindaIsland_DandelionWhite[] = {
-    gTilesetAnims_SpindaIsland_DandelionWhite_Frame0,
-    gTilesetAnims_SpindaIsland_DandelionWhite_Frame1,
-    gTilesetAnims_SpindaIsland_DandelionWhite_Frame0,
-    gTilesetAnims_SpindaIsland_DandelionWhite_Frame2
-};
+// const u16 *const gTilesetAnims_SpindaIsland_DandelionWhite[] = {
+//     gTilesetAnims_SpindaIsland_DandelionWhite_Frame0,
+//     gTilesetAnims_SpindaIsland_DandelionWhite_Frame1,
+//     gTilesetAnims_SpindaIsland_DandelionWhite_Frame0,
+//     gTilesetAnims_SpindaIsland_DandelionWhite_Frame2
+// };
 
 // const u16 *const gTilesetAnims_SpindaIsland_DandelionYellow[] = {
 //     gTilesetAnims_SpindaIsland_DandelionYellow_Frame0,
@@ -1275,11 +1275,11 @@ static void QueueAnimTiles_SpindaIsland_FlowerRed(u16 timer)
     AppendTilesetAnimToBuffer(gTilesetAnims_SpindaIsland_FlowerRed[i], 1, 4 * TILE_SIZE_4BPP);
 }
 
-static void QueueAnimTiles_SpindaIsland_DandelionWhite(u16 timer)
-{
-    u16 i = timer % ARRAY_COUNT(gTilesetAnims_SpindaIsland_DandelionWhite);
-    AppendTilesetAnimToBuffer(gTilesetAnims_SpindaIsland_DandelionWhite[i], 1, 4 * TILE_SIZE_4BPP);
-}
+// static void QueueAnimTiles_SpindaIsland_DandelionWhite(u16 timer)
+// {
+//     u16 i = timer % ARRAY_COUNT(gTilesetAnims_SpindaIsland_DandelionWhite);
+//     AppendTilesetAnimToBuffer(gTilesetAnims_SpindaIsland_DandelionWhite[i], 1, 4 * TILE_SIZE_4BPP);
+// }
 
 // static void QueueAnimTiles_SpindaIsland_DandelionYellow(u16 timer)
 // {
@@ -1297,7 +1297,7 @@ static void TilesetAnim_SpindaIsland(u16 timer)
 {
     if (timer % 16 == 0) {
         QueueAnimTiles_SpindaIsland_FlowerRed(timer / 16);
-        QueueAnimTiles_SpindaIsland_DandelionWhite(timer / 16);
+        // QueueAnimTiles_SpindaIsland_DandelionWhite(timer / 16);
         // QueueAnimTiles_SpindaIsland_DandelionYellow(timer / 16);
     }
     if (timer % 40 == 0) {

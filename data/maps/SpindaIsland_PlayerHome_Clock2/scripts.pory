@@ -1,3 +1,97 @@
 mapscripts SpindaIsland_PlayerHome_Clock2_MapScripts {
 	
 }
+
+script SpinaIsland_PlayerHome_Clock2_EventScript_EnterLivingRoom {
+	lock
+
+	playse(SE_PIN)
+	applymovement(LOCALID_MOM, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	delay(48)
+	applymovement(LOCALID_MOM, Common_Movement_WalkInPlaceFasterRight)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+	waitmovement(0)
+
+	createfieldmugshot(MUGSHOT_MOM, EMOTE_HAPPY)
+    speakername("Mom")
+    msgbox(format(
+		"Morning, little Archie!\p"
+		"You're quite the early bird today!"
+    ))
+	removefieldmugshot
+    closemessage
+	removefieldmugshot
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+    speakername("Little Archie")
+    msgbox(format(
+		"That's cause today's the big day!!"
+    ))
+	removefieldmugshot
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
+	msgbox(format(
+		"You haven't forgotten about my super secret thing, right?"
+    ))
+	closemessage
+	removefieldmugshot
+
+	createfieldmugshot(MUGSHOT_MOM, EMOTE_NORMAL)
+    speakername("Mom")
+    msgbox(format(
+		"Of course not, darling! Your super secret thing is almost finished.\p"
+		"I'll give it to you as soon as I'm done.\p"
+		"But first, I sure could go for a nice, big, tall glass of icy {COLOR BLUE}WATER{COLOR DARK_GRAY}…"
+    ))
+	removefieldmugshot
+    closemessage
+	removefieldmugshot
+
+	turnobject(LOCALID_MOM, DIR_SOUTH)
+	delay(40)
+	playse(SE_PIN)
+	applymovement(LOCALID_MOM, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	delay(48)
+	waitmovement(0)
+
+	createfieldmugshot(MUGSHOT_MOM, EMOTE_NORMAL)
+    speakername("Mom")
+    msgbox(format(
+		"Look at that, I forgot to turn the {COLOR BLUE}WATER{COLOR DARK_GRAY} back on…"
+    ))
+	turnobject(LOCALID_MOM, DIR_EAST)
+	removefieldmugshot
+	createfieldmugshot(MUGSHOT_MOM, EMOTE_HAPPY)
+	msgbox(format(
+		"Archie, would you be a dear and go round the house to turn the big faucet on?\p"
+		"And then I'll give it to you, I promise!"
+    ))
+	removefieldmugshot
+    closemessage
+
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_SAD)
+    speakername("Little Archie")
+    msgbox(format(
+		"Ughhhhhh, fine…"
+    ))
+	closemessage
+	removefieldmugshot
+
+	if (!flag(FLAG_TOOK_SPINDA)) {
+		createfieldmugshot(MUGSHOT_MOM, EMOTE_HAPPY)
+		speakername("Mom")
+		msgbox(format(
+			"Oh, and where's Spinda? Take her for a little walk, will you?"
+		))
+		removefieldmugshot
+		closemessage
+	}
+
+    turnobject(LOCALID_MOM, DIR_SOUTH)
+
+	setvar(VAR_SPINDA_ISLAND_INTRO_STATE, 2)
+    
+    release
+}

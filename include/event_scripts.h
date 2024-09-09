@@ -628,6 +628,7 @@ extern const u8 SpindaIsland_Home_EventScript_FeedZiggy[];
 extern const u8 SpindaIsland_Home_EventScript_UseGrassBlade[];
 extern const u8 SpindaIsland_Home_EventScript_UseGrassBladeWithZiggy[];
 extern const u8 SpindaIsland_ShupperHouse_ChaseShuppets[];
+extern const u8 SpindaIsland_TryToBlindZiggy[];
 extern const u8 SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet[];
 
 extern const u8 EventScript_SelectWithoutRegisteredItem[];

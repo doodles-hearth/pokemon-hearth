@@ -71,6 +71,7 @@ static void ItemUseOnFieldCB_PBJ(u8);
 static void ItemUseOnFieldCB_GrassBlade(u8);
 static void ItemUseOnFieldCB_GrassBladeWithZiggy(u8);
 static void ItemUseOnFieldCB_ToyCameraWithShuppet(u8);
+static void ItemUseOnFieldCB_ToyCameraWithZiggy(u8);
 static void ItemUseOnFieldCB_BrokenFaucetWheel(u8);
 static bool8 TryToWaterSudowoodo(void);
 static bool8 TryToSaltDish(void);
@@ -275,6 +276,8 @@ void ItemUseOutOfBattle_ToyCamera(u8 taskId)
         
     ) {
         sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCameraWithShuppet;
+    } else if (TryToSleepZiggy()) {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCameraWithZiggy;
     } else {
         sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCamera;
     }
@@ -913,6 +916,8 @@ static bool8 TryToFeedZiggy(void)
     if (
         objId != OBJECT_EVENTS_COUNT
         && gObjectEvents[objId].graphicsId == OBJ_EVENT_GFX_SPECIES(ZIGZAGOON)
+        && FlagGet(FLAG_SAW_PLIERS)
+        && !FlagGet(FLAG_ZIGGY_ASLEEP)
     )
         return TRUE;
     else
@@ -981,6 +986,13 @@ static void ItemUseOnFieldCB_ToyCameraWithShuppet(u8 taskId)
 {
     LockPlayerFieldControls();
     ScriptContext_SetupScript(SpindaIsland_ShupperHouse_ChaseShuppets);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_ToyCameraWithZiggy(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_TryToBlindZiggy);
     DestroyTask(taskId);
 }
 

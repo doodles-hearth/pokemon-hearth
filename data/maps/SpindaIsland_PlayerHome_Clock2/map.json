@@ -45,7 +45,7 @@
       "elevation": 0,
       "var": "VAR_SPINDA_ISLAND_INTRO_STATE",
       "var_value": "1",
-      "script": "SpinaIsland_PlayerHome_EventScript_EnterLivingRoom"
+      "script": "SpinaIsland_PlayerHome_Clock2_EventScript_EnterLivingRoom"
     }
   ],
   "bg_events": [

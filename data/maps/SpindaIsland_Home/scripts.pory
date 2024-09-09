@@ -105,11 +105,31 @@ script SpindaIsland_Home_EventScript_MetapodOtherSide {
 }
 
 script SpindaIsland_Home_EventScript_ArchiesHouseSign {
-	lock
-	callnative(StartCredits)
+	// lock
+	// callnative(StartCredits)
+	msgbox(format("The Hoenns"), MSGBOX_SIGN)
 	// TODO EVA 
+	// release
+}
+
+script SpindaIsland_TryToBlindZiggy {
+	lock
+	playse(SE_SWITCH)
+    waitse
+    playse(SE_M_LEER)
+    fadescreenspeed(FADE_TO_WHITE, 0)
+    fadescreenspeed(FADE_FROM_WHITE, 0)
+    waitse
+	delay(30)
+
+	speakername("Rabid Zigzagoon")
+	msgbox(format("GrrrRRRRRHHH!!!!"))
+	speakername("Little Archie")
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	msgbox(format("He looks even angrier now!"))
+	removefieldmugshot
+	closemessage
 	release
-	// msgbox(format("The Hoenns"), MSGBOX_SIGN)
 }
 
 script SpindaIsland_Home_EventScript_BobsHouseSign {
