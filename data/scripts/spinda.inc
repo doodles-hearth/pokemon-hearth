@@ -359,6 +359,32 @@ SpindaIsland_Common_CheckGotAllItemsForNewFaucet_11:
 	return
 
 
+SpindaIsland_Common_GiveWaterStoneToSpinda::
+# 214 "data/scripts/spinda.pory"
+	lock
+# 215 "data/scripts/spinda.pory"
+	playmoncry SPECIES_SPINDA, CRY_MODE_NORMAL
+# 216 "data/scripts/spinda.pory"
+	speakername SpindaIsland_Common_GiveWaterStoneToSpinda_Text_0
+# 217 "data/scripts/spinda.pory"
+	msgbox SpindaIsland_Common_GiveWaterStoneToSpinda_Text_1
+# 220 "data/scripts/spinda.pory"
+	waitmoncry
+# 222 "data/scripts/spinda.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 223 "data/scripts/spinda.pory"
+	speakername SpindaIsland_Common_CantReadSign_Text_0
+# 224 "data/scripts/spinda.pory"
+	msgbox SpindaIsland_Common_GiveWaterStoneToSpinda_Text_2
+# 227 "data/scripts/spinda.pory"
+	closemessage
+# 228 "data/scripts/spinda.pory"
+	removefieldmugshot
+# 229 "data/scripts/spinda.pory"
+	release
+	return
+
+
 SpindaIsland_Common_CantReadSign_Text_0:
 # 47 "data/scripts/spinda.pory"
 	.string "Little Archie$"
@@ -420,3 +446,16 @@ SpindaIsland_Common_CheckGotAllItemsForNewFaucet_Text_0:
 	.string "the faucet shop owner needs!!\p"
 	.string "Let's go get that faucet\n"
 	.string "replacement!$"
+
+SpindaIsland_Common_GiveWaterStoneToSpinda_Text_0:
+# 216 "data/scripts/spinda.pory"
+	.string "Spinda$"
+
+SpindaIsland_Common_GiveWaterStoneToSpinda_Text_1:
+# 218 "data/scripts/spinda.pory"
+	.string "?$"
+
+SpindaIsland_Common_GiveWaterStoneToSpinda_Text_2:
+# 225 "data/scripts/spinda.pory"
+	.string "You're right Spinda, what am I even\n"
+	.string "doing?$"

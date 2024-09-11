@@ -88,10 +88,30 @@ script SpindaIsland_Home_EventScript_MainQuestRecap {
 	lock
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_EXCITED)
 	speakername("Little Archie")
-	msgbox(format(
-		"Alright! The quicker mom gets her glass of {COLOR BLUE}WATER{COLOR DARK_GRAY}, the quicker Archie gets his super badass pirate {COLOR RED}sail{COLOR DARK_GRAY}!\p"
-		"Let's get moving!"
-	))
+	if (flag(FLAG_TOOK_SPINDA)) {
+		if (flag(FLAG_READ_SPINDA_INSTRUCTIONS)) {
+			msgbox(format(
+				"Alright! The quicker mom gets her glass of {COLOR BLUE}WATER{COLOR DARK_GRAY}, the quicker Archie gets his super badass pirate {COLOR RED}sail{COLOR DARK_GRAY}!\p"
+				"Let's get moving!"
+			))
+		} else {
+			msgbox(format(
+				"Alright! The quicker mom gets her glass of {COLOR BLUE}WATER{COLOR DARK_GRAY}, the quicker Archie gets his super badass pirate {COLOR RED}sail{COLOR DARK_GRAY}!\p"
+				"It's the perfect occasion for Spinda and I to practice her new trick with L and R!\p"
+				"Let's get moving!"
+			))
+		}
+	} else {
+		msgbox(format(
+			"Alright! The quicker mom gets her glass of {COLOR BLUE}WATER{COLOR DARK_GRAY}, the quicker Archie gets his super badass pirate {COLOR RED}sail{COLOR DARK_GRAY}!"
+		))
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+		msgbox(format(
+			"Ah, shoot, I forgot to take Spinda's Pokéball!\p"
+			"I should take her for a walk so we can practice her new trick with L and R!"
+		))
+	}
+	
 	closemessage
 	removefieldmugshot
 	setvar(VAR_SPINDA_ISLAND_INTRO_STATE, 3)
@@ -122,8 +142,10 @@ script SpindaIsland_TryToBlindZiggy {
     waitse
 	delay(30)
 
+	playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_ENCOUNTER)
 	speakername("Rabid Zigzagoon")
 	msgbox(format("GrrrRRRRRHHH!!!!"))
+	waitmoncry
 	speakername("Little Archie")
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 	msgbox(format("He looks even angrier now!"))
@@ -709,15 +731,59 @@ script SpindaIsland_Home_EventScript_PoemGirl {
 
 script SpindaIsland_Home_EventScript_Sunbather {
 	lock
-	createfieldmugshot(MUGSHOT_SUNBATHER, EMOTE_NORMAL)
-	speakername("Sunbather")
-	msgbox(format(
-		"Ahh, it sure feels good to be sitting in the sun surrounded by all this {COLOR BLUE}WATER{COLOR DARK_GRAY}…\p"
-		"…"
-	))
-	removefieldmugshot
-	closemessage
-	delay(48)
+	call(SpindaIsland_Home_Sunbather)
+	switch(var(VAR_FACING)) {
+		case DIR_NORTH:
+			setflag(FLAG_TALKED_TO_SUNBATHER)
+		case DIR_SOUTH:
+			setflag(FLAG_TALKED_TO_SUNBATHER_CLOCK1)
+		case DIR_WEST:
+			setflag(FLAG_TALKED_TO_SUNBATHER_CLOCK2)
+		case DIR_EAST:
+			setflag(FLAG_TALKED_TO_SUNBATHER_CLOCK3)
+	}
+	call(SpindaIsland_Home_CheckSunbatherFlags)
+	release
+}
+
+script SpindaIsland_Home_CheckSunbatherFlags {
+	if (
+		flag(FLAG_TALKED_TO_SUNBATHER)
+		&& flag(FLAG_TALKED_TO_SUNBATHER_CLOCK1)
+		&& flag(FLAG_TALKED_TO_SUNBATHER_CLOCK2)
+		&& flag(FLAG_TALKED_TO_SUNBATHER_CLOCK3)
+
+		&& !flag(FLAG_SUNBATHER_ALL_DIR)
+	) {
+		setflag(FLAG_SUNBATHER_ALL_DIR)
+		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_THINKING)
+		speakername("Little Archie")
+		msgbox(format(
+			"(How am I blocking the sun from all four directions at once…?)"
+		))
+		removefieldmugshot
+		closemessage
+	}
+}
+
+script SpindaIsland_Home_Sunbather {
+	if (
+		!flag(FLAG_TALKED_TO_SUNBATHER)
+		&& !flag(FLAG_TALKED_TO_SUNBATHER_CLOCK1)
+		&& !flag(FLAG_TALKED_TO_SUNBATHER_CLOCK2)
+		&& !flag(FLAG_TALKED_TO_SUNBATHER_CLOCK3)
+	) {
+		createfieldmugshot(MUGSHOT_SUNBATHER, EMOTE_NORMAL)
+		speakername("Sunbather")
+		msgbox(format(
+			"Ahh, it sure feels good to be sitting in the sun surrounded by all this {COLOR BLUE}WATER{COLOR DARK_GRAY}…\p"
+			"…"
+		))
+		removefieldmugshot
+		closemessage
+		delay(48)
+	}
+	
 	faceplayer
 
 	createfieldmugshot(MUGSHOT_SUNBATHER, EMOTE_PENSIVE)
@@ -729,6 +795,21 @@ script SpindaIsland_Home_EventScript_Sunbather {
 	closemessage
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
+}
+
+script SpindaIsland_Home_EventScript_HearTheSea {
+    lock
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_THINKING)
+	speakername("Little Archie")
+	msgbox(format(
+		"… … … …"
+	))
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
+	msgbox(format(
+		"I can hear the sea!"
+	))
+	removefieldmugshot
+	closemessage
 	release
 }
 
@@ -816,7 +897,7 @@ script SpindaIsland_Home_Slowpoke {
 					removefieldmugshot
 					createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 					msgbox(format(
-					"Guess it was a Shellder all this time!"
+						"Guess it was a Shellder all this time!"
 					))
 					removefieldmugshot
 					closemessage
@@ -1069,7 +1150,7 @@ script SpindaIsland_Home_SlowpokeMistress {
 		speakername("Girl")
 		msgbox(format(
 			"By Arceus!!\p"
-			"How on earth did you convince him to evolve?"
+			"How on earth did you convince my Slowpoke to evolve?"
 		))
 		removefieldmugshot
 		createfieldmugshot(MUGSHOT_LASS, EMOTE_NORMAL)
@@ -1095,14 +1176,16 @@ script SpindaIsland_Home_SlowpokeMistress {
 		speakername("Little Archie")
 		msgbox(format(
 			"Hmm… A {COLOR BLUE}WATER{COLOR DARK_GRAY} Stone…\p"
-			"Maybe I could try giving this to mom?"
+			"There's {COLOR BLUE}WATER{COLOR DARK_GRAY} in the name!\p"
+			"Maybe I could try giving this to mom?\p"
+			"(Flawless logic.)"
 		))
 		closemessage
 		removefieldmugshot
 
 		setflag(FLAG_RECEIVED_SLOWPOKE_REWARD)
 	} else {
-		createfieldmugshot(MUGSHOT_LASS, EMOTE_SWEAT)
+		createfieldmugshot(MUGSHOT_LASS, EMOTE_SWEAT)	
 		speakername("Girl")
 		msgbox(format(
 			"I wish my Pokémon would evolve…"
@@ -1194,7 +1277,8 @@ script SpindaIsland_Home_EventScript_Lisa {
 	createfieldmugshot(MUGSHOT_LITTLE_GIRL_BLACK, EMOTE_NORMAL)
 	speakername("Lisa")
 	msgbox(format(
-		"Hey Archie! Heard you were building a sick pirate ship!"
+		"Hey Archie! Cool Spinda!\p"
+		"Heard you were building a sick pirate ship!"
 	))
 	removefieldmugshot
 	closemessage
@@ -1362,6 +1446,7 @@ script SpindaIsland_Home_CarBoy {
 	createfieldmugshot(MUGSHOT_LITTLE_BOY, EMOTE_NORMAL)
 	speakername("Rudy")
 	msgbox(format(
+		"MY role is to TIGHTEN the bolts on EACH AND EVERY WHEEL!!\p"
 		"Vrrrbbbbbmmmmmmm!!!!!"
 	))
 	removefieldmugshot
@@ -1893,6 +1978,21 @@ script SpindaIsland_Home_EventScript_UseGrassBladeWithZiggy {
 	release
 }
 
+script SpindaIsland_Home_EventScript_UseGrassBladeWithMetapodBattle {
+	lock
+	playse(SE_M_GRASSWHISTLE)
+	waitse
+	delay(48)
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"They're too focused on their battle to even listen!"
+	))
+	removefieldmugshot
+	closemessage
+	release
+}
+
 script SpindaIsland_Home_EventScript_UseGrassBlade {
 	lock
 	playse(SE_M_GRASSWHISTLE)
@@ -1930,6 +2030,47 @@ script SpindaIsland_Home_EventScript_CynthiasDoor {
 	))
 	removefieldmugshot
 	closemessage
+	release
+}
+
+script SpindaIsland_Home_EventScript_GiveWaterStoneToSlowbro {
+	lock
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"He's already evolved!"
+	))
+	removefieldmugshot
+	closemessage
+	release
+}
+
+script SpindaIsland_TryToPhotographSunbather {
+	lock
+	createfieldmugshot(MUGSHOT_SUNBATHER, EMOTE_PENSIVE)
+	speakername("Sunbather")
+	msgbox(format(
+		"Are you kidding me?\p"
+		"Stop taking pictures, you little creep!"
+	))
+	removefieldmugshot
+	closemessage
+	release
+}
+
+script SpindaIsland_TryToPhotographMetapod {
+	call(SpindaIsland_Common_UseToyCamera)
+
+	lock
+
+	createfieldmugshot(MUGSHOT_TWIN, EMOTE_ANGRY)
+	speakername("Twin")
+	msgbox(format(
+		"Go away!!"
+	))
+	removefieldmugshot
+	closemessage
+
 	release
 }
 

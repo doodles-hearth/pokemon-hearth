@@ -32,12 +32,12 @@ SpindaIsland_ShupperHouse_Shuppet_2:
 # 21 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	removefieldmugshot
 # 23 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	setflag FLAG_TEMP_2
+	setflag FLAG_SAW_SHUPPETS
 	goto SpindaIsland_ShupperHouse_Shuppet_1
 
 SpindaIsland_ShupperHouse_Shuppet_3:
 # 12 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	goto_if_unset FLAG_TEMP_2, SpindaIsland_ShupperHouse_Shuppet_2
+	goto_if_unset FLAG_SAW_SHUPPETS, SpindaIsland_ShupperHouse_Shuppet_2
 	goto SpindaIsland_ShupperHouse_Shuppet_1
 
 
@@ -95,28 +95,60 @@ SpindaIsland_ShupperHouse_ChaseShuppets::
 	return
 
 
-SpindaIsland_ShupperHouse_Blinds::
+SpindaIsland_ShupperHouse_FlashShuppetWrongDir::
 # 66 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	lock
 # 68 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+	playse SE_SWITCH
 # 69 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	speakername SpindaIsland_ShupperHouse_Shuppet_Text_1
+	waitse
 # 70 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	goto_if_set FLAG_HIDE_SHUPPETS, SpindaIsland_ShupperHouse_Blinds_2
+	playse SE_M_LEER
+# 71 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	fadescreenspeed FADE_TO_WHITE, 0
+# 72 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	fadescreenspeed FADE_FROM_WHITE, 0
+# 73 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	waitse
 # 75 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	delay 48
+# 77 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 78 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	speakername SpindaIsland_ShupperHouse_Shuppet_Text_1
+# 79 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	msgbox SpindaIsland_ShupperHouse_FlashShuppetWrongDir_Text_0
+# 83 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	closemessage
+# 84 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	removefieldmugshot
+# 86 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	release
+	return
+
+
+SpindaIsland_ShupperHouse_Blinds::
+# 90 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	lock
+# 92 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 93 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	speakername SpindaIsland_ShupperHouse_Shuppet_Text_1
+# 94 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	goto_if_set FLAG_HIDE_SHUPPETS, SpindaIsland_ShupperHouse_Blinds_2
+# 100 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	msgbox SpindaIsland_ShupperHouse_Blinds_Text_1
 SpindaIsland_ShupperHouse_Blinds_1:
-# 79 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+# 104 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	closemessage
-# 80 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+# 105 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	removefieldmugshot
-# 82 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+# 107 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	release
 	return
 
 SpindaIsland_ShupperHouse_Blinds_2:
-# 71 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+# 95 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	msgbox SpindaIsland_ShupperHouse_Blinds_Text_0
 	goto SpindaIsland_ShupperHouse_Blinds_1
 
@@ -141,10 +173,16 @@ SpindaIsland_ShupperHouse_ChaseShuppets_Text_0:
 # 55 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	.string "This takes care of that!$"
 
+SpindaIsland_ShupperHouse_FlashShuppetWrongDir_Text_0:
+# 80 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	.string "Nothing happened.\p"
+	.string "That screen probably protects them.$"
+
 SpindaIsland_ShupperHouse_Blinds_Text_0:
-# 72 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
-	.string "No need to open them now.$"
+# 96 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+	.string "No need to open them now.\p"
+	.string "The Shuppet already left!$"
 
 SpindaIsland_ShupperHouse_Blinds_Text_1:
-# 76 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
+# 101 "data/maps/SpindaIsland_ShupperHouse/scripts.pory"
 	.string "The blinds are shut. They won't budge.$"

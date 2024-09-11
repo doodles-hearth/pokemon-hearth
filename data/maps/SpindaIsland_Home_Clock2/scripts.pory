@@ -202,6 +202,20 @@ script SpindaIsland_Home_Clock2_EventScript_ICanNeverGoHome_GoHome {
 	release
 }
 
+script SpindaIsland_Home_Clock2_EventScript_SadManHomeWindow {
+	lock
+	if (flag(FLAG_HIDE_MAN_CANT_GO_HOME) && !flag(FLAG_RECEIVED_RUSTY_BOLT)) {
+		speakername("Stingy man")
+		msgbox(format(
+			"What…\p"
+			"Are you kidding? I said go away!"
+		))
+		closemessage
+	}
+	
+	release
+}
+
 script SpindaIsland_Home_Clock2_SadMansHomeSign {
 	msgbox(format("Marcus"), MSGBOX_SIGN)
 }

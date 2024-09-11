@@ -379,8 +379,8 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 23,
-      "y": 49,
+      "x": 28,
+      "y": 53,
       "elevation": 0,
       "var": "VAR_METAPOD_OTHER_SIDE",
       "var_value": "0",
@@ -388,8 +388,8 @@
     },
     {
       "type": "trigger",
-      "x": 23,
-      "y": 50,
+      "x": 28,
+      "y": 54,
       "elevation": 0,
       "var": "VAR_METAPOD_OTHER_SIDE",
       "var_value": "0",

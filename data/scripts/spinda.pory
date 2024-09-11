@@ -209,3 +209,22 @@ script SpindaIsland_Common_CheckGotAllItemsForNewFaucet {
         removefieldmugshot
     }
 }
+
+script SpindaIsland_Common_GiveWaterStoneToSpinda {
+    lock
+    playmoncry(SPECIES_SPINDA, CRY_MODE_NORMAL)
+    speakername("Spinda")
+    msgbox(format(
+        "?"
+    ))
+    waitmoncry
+
+    createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+    speakername("Little Archie")
+    msgbox(format(
+        "You're right Spinda, what am I even doing?"
+    ))
+    closemessage
+    removefieldmugshot
+    release
+}

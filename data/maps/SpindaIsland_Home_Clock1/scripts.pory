@@ -32,22 +32,25 @@ mapscripts SpindaIsland_Home_Clock1_MapScripts {
 
 script SpindaIsland_Home_Clock1_HidingBoy {
 	lock
-
 	faceplayer
 
-	createfieldmugshot(MUGSHOT_LITTLE_BOY, EMOTE_NORMAL)
-	speakername("Timmy")
-	msgbox(format(
-		"Darnit! You found me!"
-	), MSGBOX_AUTOCLOSE)
-
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
-    speakername("Little Archie")
-    msgbox(format(
+	speakername("Little Archie")
+	msgbox(format(
 		"Wazzup, Timmy?"
-    ))
-    closemessage
+	))
+	closemessage
 	removefieldmugshot
+
+	if (!flag(FLAG_TIMMY)) {
+		setflag(FLAG_TIMMY)
+		createfieldmugshot(MUGSHOT_LITTLE_BOY, EMOTE_NORMAL)
+		speakername("Timmy")
+		msgbox(format(
+			"Darnit! You found me!\p"
+			"Didn't expect you to spin around like this!"
+		), MSGBOX_AUTOCLOSE)
+	}
 
 	release
 }

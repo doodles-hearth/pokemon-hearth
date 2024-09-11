@@ -624,12 +624,20 @@ extern const u8 BerryTree_EventScript_ItemUseWailmerPail[];
 extern const u8 BattleFrontier_OutsideEast_EventScript_WaterSudowoodo[];
 extern const u8 SpindaIsland_Common_UseToyCamera[];
 extern const u8 SpindaIsland_Home_EventScript_SaltDish[];
+extern const u8 SpindaIsland_PlayerHome_EventScript_GiveWaterStoneToMom[];
+extern const u8 SpindaIsland_Home_EventScript_GiveWaterStoneToSlowbro[];
+extern const u8 SpindaIsland_Common_GiveWaterStoneToSpinda[];
 extern const u8 SpindaIsland_Home_EventScript_FeedZiggy[];
 extern const u8 SpindaIsland_Home_EventScript_UseGrassBlade[];
 extern const u8 SpindaIsland_Home_EventScript_UseGrassBladeWithZiggy[];
+extern const u8 SpindaIsland_Home_EventScript_UseGrassBladeWithMetapodBattle[];
 extern const u8 SpindaIsland_ShupperHouse_ChaseShuppets[];
+extern const u8 SpindaIsland_ShupperHouse_FlashShuppetWrongDir[];
 extern const u8 SpindaIsland_TryToBlindZiggy[];
+extern const u8 SpindaIsland_TryToPhotographSunbather[];
+extern const u8 SpindaIsland_TryToPhotographMetapod[];
 extern const u8 SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet[];
+extern const u8 SpindaIsland_Home_EventScript_HearTheSea[];
 
 extern const u8 EventScript_SelectWithoutRegisteredItem[];
 

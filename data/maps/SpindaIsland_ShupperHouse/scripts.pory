@@ -9,7 +9,7 @@ script SpindaIsland_ShupperHouse_Shuppet {
 	waitmoncry
 	closemessage
 
-	if (flag(FLAG_SHUPPET_QUEST_STARTED) && !flag(FLAG_TEMP_2)) {
+	if (flag(FLAG_SHUPPET_QUEST_STARTED) && !flag(FLAG_SAW_SHUPPETS)) {
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 		speakername("Little Archie")
 		msgbox(format(
@@ -20,7 +20,7 @@ script SpindaIsland_ShupperHouse_Shuppet {
 		closemessage
 		removefieldmugshot
 
-		setflag(FLAG_TEMP_2)
+		setflag(FLAG_SAW_SHUPPETS)
 	}
 
 	release
@@ -62,6 +62,30 @@ script SpindaIsland_ShupperHouse_ChaseShuppets {
     release
 }
 
+script SpindaIsland_ShupperHouse_FlashShuppetWrongDir {
+	lock
+
+    playse(SE_SWITCH)
+    waitse
+    playse(SE_M_LEER)
+    fadescreenspeed(FADE_TO_WHITE, 0)
+    fadescreenspeed(FADE_FROM_WHITE, 0)
+    waitse
+
+	delay(48)
+
+	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
+	speakername("Little Archie")
+	msgbox(format(
+		"Nothing happened.\p"
+		"That screen probably protects them."
+	))
+	closemessage
+	removefieldmugshot
+
+    release
+}
+
 script SpindaIsland_ShupperHouse_Blinds {
 	lock
 
@@ -69,7 +93,8 @@ script SpindaIsland_ShupperHouse_Blinds {
     speakername("Little Archie")
 	if (flag(FLAG_HIDE_SHUPPETS)) {
 		msgbox(format(
-			"No need to open them now."
+			"No need to open them now.\p"
+			"The Shuppet already left!"
     	))
 	} else {
 		msgbox(format(

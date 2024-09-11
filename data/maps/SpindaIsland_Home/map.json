@@ -369,7 +369,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SpindaIsland_Home_EventScript_Pliers",
-      "flag": "FLAG_HIDE_PLIERS"
+      "flag": "FLAG_PICKED_UP_PLIERS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
@@ -418,8 +418,8 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 49,
-      "y": 36,
+      "x": 53,
+      "y": 31,
       "elevation": 0,
       "var": "VAR_METAPOD_OTHER_SIDE",
       "var_value": "0",
@@ -427,8 +427,8 @@
     },
     {
       "type": "trigger",
-      "x": 50,
-      "y": 36,
+      "x": 54,
+      "y": 31,
       "elevation": 0,
       "var": "VAR_METAPOD_OTHER_SIDE",
       "var_value": "0",

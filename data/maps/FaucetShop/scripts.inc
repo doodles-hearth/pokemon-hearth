@@ -304,42 +304,50 @@ FaucetShop_EventScript_Faucet_LooksLikeMine::
 # 235 "data/maps/FaucetShop/scripts.pory"
 	speakername FaucetShop_EventScript_Owner_Text_3
 # 236 "data/maps/FaucetShop/scripts.pory"
-	msgbox FaucetShop_EventScript_Faucet_LooksLikeMine_Text_0
-# 240 "data/maps/FaucetShop/scripts.pory"
+	goto_if_set FLAG_FAUCET_BROKE, FaucetShop_EventScript_Faucet_LooksLikeMine_2
+# 242 "data/maps/FaucetShop/scripts.pory"
+	msgbox FaucetShop_EventScript_Faucet_LooksLikeMine_Text_1
+FaucetShop_EventScript_Faucet_LooksLikeMine_1:
+# 247 "data/maps/FaucetShop/scripts.pory"
 	removefieldmugshot
-# 241 "data/maps/FaucetShop/scripts.pory"
+# 248 "data/maps/FaucetShop/scripts.pory"
 	release
 	return
 
+FaucetShop_EventScript_Faucet_LooksLikeMine_2:
+# 237 "data/maps/FaucetShop/scripts.pory"
+	msgbox FaucetShop_EventScript_Faucet_LooksLikeMine_Text_0
+	goto FaucetShop_EventScript_Faucet_LooksLikeMine_1
+
 
 FaucetShop_EventScript_Faucet_Gold::
-# 245 "data/maps/FaucetShop/scripts.pory"
-	lock
-# 246 "data/maps/FaucetShop/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
-# 247 "data/maps/FaucetShop/scripts.pory"
-	speakername FaucetShop_EventScript_Owner_Text_3
-# 248 "data/maps/FaucetShop/scripts.pory"
-	msgbox FaucetShop_EventScript_Faucet_Gold_Text_0
-# 251 "data/maps/FaucetShop/scripts.pory"
-	removefieldmugshot
 # 252 "data/maps/FaucetShop/scripts.pory"
+	lock
+# 253 "data/maps/FaucetShop/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_EXCITED
+# 254 "data/maps/FaucetShop/scripts.pory"
+	speakername FaucetShop_EventScript_Owner_Text_3
+# 255 "data/maps/FaucetShop/scripts.pory"
+	msgbox FaucetShop_EventScript_Faucet_Gold_Text_0
+# 258 "data/maps/FaucetShop/scripts.pory"
+	removefieldmugshot
+# 259 "data/maps/FaucetShop/scripts.pory"
 	release
 	return
 
 
 FaucetShop_EventScript_Faucet_Regular::
-# 256 "data/maps/FaucetShop/scripts.pory"
-	lock
-# 257 "data/maps/FaucetShop/scripts.pory"
-	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
-# 258 "data/maps/FaucetShop/scripts.pory"
-	speakername FaucetShop_EventScript_Owner_Text_3
-# 259 "data/maps/FaucetShop/scripts.pory"
-	msgbox FaucetShop_EventScript_Faucet_Regular_Text_0
 # 263 "data/maps/FaucetShop/scripts.pory"
-	removefieldmugshot
+	lock
 # 264 "data/maps/FaucetShop/scripts.pory"
+	createfieldmugshot MUGSHOT_ARCHIE, EMOTE_NORMAL
+# 265 "data/maps/FaucetShop/scripts.pory"
+	speakername FaucetShop_EventScript_Owner_Text_3
+# 266 "data/maps/FaucetShop/scripts.pory"
+	msgbox FaucetShop_EventScript_Faucet_Regular_Text_0
+# 270 "data/maps/FaucetShop/scripts.pory"
+	removefieldmugshot
+# 271 "data/maps/FaucetShop/scripts.pory"
 	release
 	return
 
@@ -493,15 +501,20 @@ FaucetShop_EventScript_Note_Text_0:
 	.string "III. But mainly, sell faucets$"
 
 FaucetShop_EventScript_Faucet_LooksLikeMine_Text_0:
-# 237 "data/maps/FaucetShop/scripts.pory"
+# 238 "data/maps/FaucetShop/scripts.pory"
 	.string "A round, spinny faucet.\n"
 	.string "Looks just like the one that broke!$"
 
+FaucetShop_EventScript_Faucet_LooksLikeMine_Text_1:
+# 243 "data/maps/FaucetShop/scripts.pory"
+	.string "A round, spinny faucet.\n"
+	.string "Looks just like the one at home!$"
+
 FaucetShop_EventScript_Faucet_Gold_Text_0:
-# 249 "data/maps/FaucetShop/scripts.pory"
+# 256 "data/maps/FaucetShop/scripts.pory"
 	.string "Woah! This one is gold!$"
 
 FaucetShop_EventScript_Faucet_Regular_Text_0:
-# 260 "data/maps/FaucetShop/scripts.pory"
+# 267 "data/maps/FaucetShop/scripts.pory"
 	.string "A metal faucet.\n"
 	.string "Looks good.$"

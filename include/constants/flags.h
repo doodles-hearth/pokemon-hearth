@@ -77,7 +77,7 @@
 #define FLAG_GOT_OIL    0x3B // Unused Flag
 #define FLAG_COOK_SAD    0x3C // Unused Flag
 #define FLAG_TASTED_DISH    0x3D // Unused Flag
-#define FLAG_HIDE_PLIERS    0x3E // Unused Flag
+#define FLAG_HIDE_PLIERSXXXX    0x3E // Unused Flag
 #define FLAG_SAW_PLIERS    0x3F // Unused Flag
 #define FLAG_ZIGGY_ASLEEP    0x40 // Unused Flag
 #define FLAG_PICKED_UP_PLIERS    0x41 // Unused Flag
@@ -677,14 +677,14 @@
 #define FLAG_SHUPPET_QUEST_STARTED  0x274
 #define FLAG_HIDE_OLD_WOMAN  0x275
 #define FLAG_HIDE_SHUPPETS  0x276
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
-#define FLAG_UNUSED_0x278  0x278 // Unused Flag
-#define FLAG_UNUSED_0x279  0x279 // Unused Flag
-#define FLAG_UNUSED_0x27A  0x27A // Unused Flag
-#define FLAG_UNUSED_0x27B  0x27B // Unused Flag
-#define FLAG_UNUSED_0x27C  0x27C // Unused Flag
-#define FLAG_UNUSED_0x27D  0x27D // Unused Flag
-#define FLAG_UNUSED_0x27E  0x27E // Unused Flag
+#define FLAG_SAW_SHUPPETS  0x277 // Unused Flag
+#define FLAG_TALKED_TO_SUNBATHER  0x278 // Unused Flag
+#define FLAG_TALKED_TO_SUNBATHER_CLOCK1  0x279 // Unused Flag
+#define FLAG_TALKED_TO_SUNBATHER_CLOCK2  0x27A // Unused Flag
+#define FLAG_TALKED_TO_SUNBATHER_CLOCK3  0x27B // Unused Flag
+#define FLAG_SUNBATHER_ALL_DIR  0x27E // Unused Flag
+#define FLAG_READ_SPINDA_INSTRUCTIONS  0x27C // Unused Flag
+#define FLAG_TIMMY  0x27D // Unused Flag
 #define FLAG_UNUSED_0x27F  0x27F // Unused Flag
 #define FLAG_UNUSED_0x280  0x280 // Unused Flag
 #define FLAG_UNUSED_0x281  0x281 // Unused Flag

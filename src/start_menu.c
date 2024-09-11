@@ -285,37 +285,37 @@ static void BuildStartMenuActions(void)
 {
     sNumStartMenuActions = 0;
 
-    if (IsOverworldLinkActive() == TRUE)
-    {
-        BuildLinkModeStartMenu();
-    }
-    else if (InUnionRoom() == TRUE)
-    {
-        BuildUnionRoomStartMenu();
-    }
-    else if (GetSafariZoneFlag() == TRUE)
-    {
-        BuildSafariZoneStartMenu();
-    }
-    else if (InBattlePike())
-    {
-        BuildBattlePikeStartMenu();
-    }
-    else if (InBattlePyramid())
-    {
-        BuildBattlePyramidStartMenu();
-    }
-    else if (InMultiPartnerRoom())
-    {
-        BuildMultiPartnerRoomStartMenu();
-    }
+    // if (IsOverworldLinkActive() == TRUE)
+    // {
+    //     BuildLinkModeStartMenu();
+    // }
+    // else if (InUnionRoom() == TRUE)
+    // {
+    //     BuildUnionRoomStartMenu();
+    // }
+    // else if (GetSafariZoneFlag() == TRUE)
+    // {
+    //     BuildSafariZoneStartMenu();
+    // }
+    // else if (InBattlePike())
+    // {
+    //     BuildBattlePikeStartMenu();
+    // }
+    // else if (InBattlePyramid())
+    // {
+    //     BuildBattlePyramidStartMenu();
+    // }
+    // else if (InMultiPartnerRoom())
+    // {
+    //     BuildMultiPartnerRoomStartMenu();
+    // }
+    // else
+    // {
+    if (DEBUG_OVERWORLD_MENU == TRUE && DEBUG_OVERWORLD_IN_MENU == TRUE)
+        BuildDebugStartMenu();
     else
-    {
-        if (DEBUG_OVERWORLD_MENU == TRUE && DEBUG_OVERWORLD_IN_MENU == TRUE)
-            BuildDebugStartMenu();
-        else
-            BuildNormalStartMenu();
-    }
+        BuildNormalStartMenu();
+    // }
 }
 
 static void AddStartMenuAction(u8 action)
@@ -325,26 +325,26 @@ static void AddStartMenuAction(u8 action)
 
 static void BuildNormalStartMenu(void)
 {
-    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
-    {
-        AddStartMenuAction(MENU_ACTION_POKEDEX);
-    }
-    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
-    {
-        AddStartMenuAction(MENU_ACTION_POKEMON);
-    }
+    // if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+    // {
+    //     AddStartMenuAction(MENU_ACTION_POKEDEX);
+    // }
+    // if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
+    // {
+    //     AddStartMenuAction(MENU_ACTION_POKEMON);
+    // }
 
     AddStartMenuAction(MENU_ACTION_BAG);
 
-    if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
-    {
-        AddStartMenuAction(MENU_ACTION_POKENAV);
-    }
+    // if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
+    // {
+    //     AddStartMenuAction(MENU_ACTION_POKENAV);
+    // }
 
-    AddStartMenuAction(MENU_ACTION_PLAYER);
+    // AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
-    AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
+    // AddStartMenuAction(MENU_ACTION_OPTION);
+    // AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildDebugStartMenu(void)

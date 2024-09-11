@@ -1,5 +1,18 @@
+const LOCALID_MOM = 1
+
 mapscripts SpindaIsland_PlayerHome_Clock2_MapScripts {
 	
+}
+
+script SpinaIsland_PlayerHome_EventScript_SorryForBugs {
+	lock
+	speakername("God")
+	msgbox(format(
+		"“THIS IS A MESSAGE FROM GOD:\p"
+        "SORRY FOR THE BUGS. I TRIED.”"
+    ))
+    closemessage
+	release
 }
 
 script SpinaIsland_PlayerHome_Clock2_EventScript_EnterLivingRoom {

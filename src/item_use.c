@@ -68,15 +68,24 @@ static void ItemUseOnFieldCB_WailmerPailSudowoodo(u8);
 static void ItemUseOnFieldCB_ToyCamera(u8);
 static void ItemUseOnFieldCB_SaltyLemonade(u8);
 static void ItemUseOnFieldCB_PBJ(u8);
+static void ItemUseOnFieldCB_WaterStone2_Mom(u8);
+static void ItemUseOnFieldCB_WaterStone2_Slowbro(u8);
+static void ItemUseOnFieldCB_WaterStone2_Spinda(u8);
 static void ItemUseOnFieldCB_GrassBlade(u8);
 static void ItemUseOnFieldCB_GrassBladeWithZiggy(u8);
+static void ItemUseOnFieldCB_GrassBladeWithMetapodBattle(u8);
 static void ItemUseOnFieldCB_ToyCameraWithShuppet(u8);
+static void ItemUseOnFieldCB_ToyCameraWithShuppetWrongDir(u8);
 static void ItemUseOnFieldCB_ToyCameraWithZiggy(u8);
+static void ItemUseOnFieldCB_ToyCameraWithSunbather(u8);
+static void ItemUseOnFieldCB_ToyCameraWithMetapod(u8);
 static void ItemUseOnFieldCB_BrokenFaucetWheel(u8);
+static void ItemUseOnFieldCB_HearTheSea(u8);
 static bool8 TryToWaterSudowoodo(void);
 static bool8 TryToSaltDish(void);
 static bool8 TryToSleepZiggy(void);
 static bool8 TryToFeedZiggy(void);
+static bool8 TryToGiveObjectEvent(u32 objectEventId);
 static bool8 TryToReplaceWheel(void);
 static void BootUpSoundTMHM(u8);
 static void Task_ShowTMHMContainedMessage(u8);
@@ -276,9 +285,32 @@ void ItemUseOutOfBattle_ToyCamera(u8 taskId)
         
     ) {
         sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCameraWithShuppet;
-    } else if (TryToSleepZiggy()) {
+    } else if((gSaveBlock1Ptr->location.mapNum == MAP_NUM(SPINDA_ISLAND_SHUPPER_HOUSE)
+        && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SPINDA_ISLAND_SHUPPER_HOUSE))) {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCameraWithShuppetWrongDir;
+    }
+     else if (
+        TryToSleepZiggy()
+        && (gSaveBlock1Ptr->location.mapNum != MAP_NUM(SPINDA_ISLAND_HOME_CLOCK1)
+        || gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(SPINDA_ISLAND_HOME_CLOCK1))
+        && (gSaveBlock1Ptr->location.mapNum != MAP_NUM(SPINDA_ISLAND_HOME_CLOCK2)
+        || gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(SPINDA_ISLAND_HOME_CLOCK2))
+    ) {
         sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCameraWithZiggy;
-    } else {
+    } else if (
+        TryToGiveObjectEvent(OBJ_EVENT_GFX_SWIMMER_FULL_F)
+    && (gSaveBlock1Ptr->location.mapNum != MAP_NUM(SPINDA_ISLAND_HOME_CLOCK3)
+        || gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(SPINDA_ISLAND_HOME_CLOCK3))
+        && (gSaveBlock1Ptr->location.mapNum != MAP_NUM(SPINDA_ISLAND_HOME_CLOCK2)
+        || gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(SPINDA_ISLAND_HOME_CLOCK2))
+        ) {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCameraWithSunbather;
+    } else if(
+        TryToGiveObjectEvent(OBJ_EVENT_GFX_SPECIES(METAPOD) || TryToGiveObjectEvent(OBJ_EVENT_GFX_BOY_1))
+    ) {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCameraWithMetapod;
+    }
+    else {
         sItemUseOnFieldCB = ItemUseOnFieldCB_ToyCamera;
     }
     SetUpItemUseOnFieldCallback(taskId);
@@ -289,6 +321,27 @@ void ItemUseOutOfBattle_SaltyLemonade(u8 taskId)
     if (TryToSaltDish() == TRUE)
     {
         sItemUseOnFieldCB = ItemUseOnFieldCB_SaltyLemonade;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else
+    {
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+    }
+}
+
+void ItemUseOutOfBattle_WaterStone2(u8 taskId)
+{
+    if (TryToGiveObjectEvent(OBJ_EVENT_GFX_BIG_SISTER))
+    {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_WaterStone2_Mom;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else if (TryToGiveObjectEvent(OBJ_EVENT_GFX_SPECIES(SLOWBRO))) {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_WaterStone2_Slowbro;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else if (TryToGiveObjectEvent(OBJ_EVENT_GFX_SPECIES(SPINDA))) {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_WaterStone2_Spinda;
         SetUpItemUseOnFieldCallback(taskId);
     }
     else
@@ -315,6 +368,12 @@ void ItemUseOutOfBattle_GrassBlade(u8 taskId)
     if (TryToSleepZiggy() == TRUE)
     {
         sItemUseOnFieldCB = ItemUseOnFieldCB_GrassBladeWithZiggy;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else if (
+         TryToGiveObjectEvent(OBJ_EVENT_GFX_SPECIES(METAPOD) || TryToGiveObjectEvent(OBJ_EVENT_GFX_BOY_1))
+    ) {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_GrassBladeWithMetapodBattle;
         SetUpItemUseOnFieldCallback(taskId);
     }
     else
@@ -848,6 +907,12 @@ void ItemUseOutOfBattle_BrokenFaucet(u8 taskId)
     }
 }
 
+void ItemUseOutOfBattle_WhiteSeashell(u8 taskId)
+{
+    sItemUseOnFieldCB = ItemUseOnFieldCB_HearTheSea;
+    SetUpItemUseOnFieldCallback(taskId);
+}
+
 static void ItemUseOnFieldCB_WailmerPailBerry(u8 taskId)
 {
     LockPlayerFieldControls();
@@ -880,6 +945,22 @@ static bool8 TryToSaltDish(void)
     if (
         objId != OBJECT_EVENTS_COUNT && gObjectEvents[objId].graphicsId == OBJ_EVENT_GFX_LITTLE_BOY_3
         && (FlagGet(FLAG_COOK_SAD) || FlagGet(FLAG_TASTED_DISH))
+        )
+        return TRUE;
+    else
+        return FALSE;
+}
+
+static bool8 TryToGiveObjectEvent(u32 objectEventId)
+{
+    s16 x, y;
+    u8 elevation;
+    u8 objId;
+    GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+    elevation = PlayerGetElevation();
+    objId = GetObjectEventIdByPosition(x, y, elevation);
+    if (
+        objId != OBJECT_EVENTS_COUNT && gObjectEvents[objId].graphicsId == objectEventId
         )
         return TRUE;
     else
@@ -961,6 +1042,27 @@ static void ItemUseOnFieldCB_SaltyLemonade(u8 taskId)
     DestroyTask(taskId);
 }
 
+static void ItemUseOnFieldCB_WaterStone2_Mom(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_PlayerHome_EventScript_GiveWaterStoneToMom);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_WaterStone2_Slowbro(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_Home_EventScript_GiveWaterStoneToSlowbro);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_WaterStone2_Spinda(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_Common_GiveWaterStoneToSpinda);
+    DestroyTask(taskId);
+}
+
 static void ItemUseOnFieldCB_PBJ(u8 taskId)
 {
     LockPlayerFieldControls();
@@ -982,10 +1084,24 @@ static void ItemUseOnFieldCB_GrassBladeWithZiggy(u8 taskId)
     DestroyTask(taskId);
 }
 
+static void ItemUseOnFieldCB_GrassBladeWithMetapodBattle(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_Home_EventScript_UseGrassBladeWithMetapodBattle);
+    DestroyTask(taskId);
+}
+
 static void ItemUseOnFieldCB_ToyCameraWithShuppet(u8 taskId)
 {
     LockPlayerFieldControls();
     ScriptContext_SetupScript(SpindaIsland_ShupperHouse_ChaseShuppets);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_ToyCameraWithShuppetWrongDir(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_ShupperHouse_FlashShuppetWrongDir);
     DestroyTask(taskId);
 }
 
@@ -996,10 +1112,31 @@ static void ItemUseOnFieldCB_ToyCameraWithZiggy(u8 taskId)
     DestroyTask(taskId);
 }
 
+static void ItemUseOnFieldCB_ToyCameraWithSunbather(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_TryToPhotographSunbather);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_ToyCameraWithMetapod(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_TryToPhotographMetapod);
+    DestroyTask(taskId);
+}
+
 static void ItemUseOnFieldCB_BrokenFaucetWheel(u8 taskId)
 {
     LockPlayerFieldControls();
     ScriptContext_SetupScript(SpindaIsland_Home_EventScript_ReplaceWheelWithBrokenFaucet);
+    DestroyTask(taskId);
+}
+
+static void ItemUseOnFieldCB_HearTheSea(u8 taskId)
+{
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(SpindaIsland_Home_EventScript_HearTheSea);
     DestroyTask(taskId);
 }
 

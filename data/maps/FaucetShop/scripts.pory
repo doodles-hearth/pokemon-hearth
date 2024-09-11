@@ -233,10 +233,17 @@ script FaucetShop_EventScript_Faucet_LooksLikeMine {
 	lock
 	createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_NORMAL)
 	speakername("Little Archie")
-	msgbox(format(
-		"A round, spinny faucet.\n"
-		"Looks just like the one that broke!"
-	))
+	if (flag(FLAG_FAUCET_BROKE)) {
+		msgbox(format(
+			"A round, spinny faucet.\n"
+			"Looks just like the one that broke!"
+		))
+	} else {
+		msgbox(format(
+			"A round, spinny faucet.\n"
+			"Looks just like the one at home!"
+		))
+	}
 	removefieldmugshot
 	release
 }
