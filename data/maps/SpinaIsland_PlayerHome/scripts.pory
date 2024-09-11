@@ -117,8 +117,9 @@ script SpinaIsland_PlayerHome_EventScript_Mom {
 		}
 
 		if (checkitem(ITEM_WATER_STONE_2) && !flag(FLAG_GAVE_MOM_WATER_STONE)) {
-			dynmultipush("Give the {COLOR BLUE}WATER{COLOR DARK_GRAY} Stone", 0)
+			dynmultipush("Give the {COLOR BLUE}WATER{COLOR DARK_GRAY} Stone", 1)
 		}
+		dynmultipush("Do nothing", 3)
 		createfieldmugshot(MUGSHOT_ARCHIE, EMOTE_GRINNING)
 		speakername("Little Archie")
 		msgbox(format(
