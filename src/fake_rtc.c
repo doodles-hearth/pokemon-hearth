@@ -102,3 +102,12 @@ void Script_ToggleFakeRtc(void)
 {
     FlagToggle(OW_FLAG_PAUSE_TIME);
 }
+
+void Script_FakeRtcAddTime(struct ScriptContext *ctx)
+{
+    u16 * hours = GetVarPointer(ScriptReadHalfword(ctx));
+    u16 * minutes = GetVarPointer(ScriptReadHalfword(ctx));
+    u16 * seconds = GetVarPointer(ScriptReadHalfword(ctx));
+
+    FakeRtc_AdvanceTimeBy(hours, minutes, seconds);
+}

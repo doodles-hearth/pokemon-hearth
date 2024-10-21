@@ -2352,6 +2352,13 @@
 	callnative Script_ToggleFakeRtc
 	.endm
 
+	.macro fakertcaddtime hours:req, minutes:req, seconds:req
+	callnative Script_FakeRtcAddTime
+	.2byte \hours
+	.2byte \minutes
+	.2byte \seconds
+	.endm
+
 	@ ============================ @
 	@ ITEM DESCRIPTION HEADER MACROS
 	@ Used with OW_SHOW_ITEM_DESCRIPTIONS config
