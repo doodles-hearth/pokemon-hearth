@@ -1374,6 +1374,7 @@ static void NamingScreen_CreatePCIcon(void);
 static void NamingScreen_CreateMonIcon(void);
 static void NamingScreen_CreateWaldaDadIcon(void);
 static void NamingScreen_CreateRivalIcon(void);
+static void NamingScreen_CreateQuestionMarkIcon(void);
 
 static void (*const sIconFunctions[])(void) =
 {
@@ -1383,6 +1384,7 @@ static void (*const sIconFunctions[])(void) =
     NamingScreen_CreateMonIcon,
     NamingScreen_CreateWaldaDadIcon,
     NamingScreen_CreateRivalIcon,
+    NamingScreen_CreateQuestionMarkIcon,
 };
 
 static void CreateInputTargetIcon(void)
@@ -1442,6 +1444,15 @@ static void NamingScreen_CreateRivalIcon(void)
     spriteId = CreateObjectGraphicsSprite(rivalGfxId, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
     StartSpriteAnim(&gSprites[spriteId], 4);
+}
+
+static void NamingScreen_CreateQuestionMarkIcon(void)
+{
+    u8 spriteId;
+
+    LoadMonIconPalettes();
+    spriteId = CreateMonIcon(SPECIES_NONE, SpriteCallbackDummy, 56, 40, 0, 0);
+    gSprites[spriteId].oam.priority = 3;
 }
 
 //--------------------------------------------------
@@ -1758,6 +1769,7 @@ static void (*const sDrawTextEntryBoxFuncs[])(void) =
     [NAMING_SCREEN_NICKNAME]   = DrawMonTextEntryBox,
     [NAMING_SCREEN_WALDA]      = DrawNormalTextEntryBox,
     [NAMING_SCREEN_RIVAL]      = DrawNormalTextEntryBox,
+    [NAMING_SCREEN_DEX_RIDDLE] = DrawNormalTextEntryBox,
 };
 
 static void DrawTextEntryBox(void)
@@ -2177,6 +2189,18 @@ static const struct NamingScreenTemplate sWaldaWordsScreenTemplate =
     .title = gText_TellHimTheWords,
 };
 
+static const u8 sText_DexRiddle[] = _("   Which species?");
+static const struct NamingScreenTemplate sDexRiddleScreenTemplate = 
+{
+    .copyExistingString = FALSE,
+    .maxChars = POKEMON_NAME_LENGTH,
+    .iconFunction = 6,
+    .addGenderIcon = FALSE,
+    .initialPage = KBPAGE_LETTERS_UPPER,
+    .unused = 35,
+    .title = sText_DexRiddle,
+};
+
 static const u8 sText_RivalsName[] = _("Rival's Name?");
 static const struct NamingScreenTemplate sRivalNamingScreenTemplate =
 {
@@ -2197,6 +2221,7 @@ static const struct NamingScreenTemplate *const sNamingScreenTemplates[] =
     [NAMING_SCREEN_NICKNAME]   = &sMonNamingScreenTemplate,
     [NAMING_SCREEN_WALDA]      = &sWaldaWordsScreenTemplate,
     [NAMING_SCREEN_RIVAL]      = &sRivalNamingScreenTemplate,
+    [NAMING_SCREEN_DEX_RIDDLE] = &sDexRiddleScreenTemplate,
 };
 
 static const struct OamData sOam_8x8 =

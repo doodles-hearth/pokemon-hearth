@@ -561,3 +561,5 @@ gSpecials::
 	def_special UseBlankMessageToCancelPokemonPic
 	def_special IsMonSeen
 	def_special AssignRandomMonCryVars
+	def_special EnterDexRiddleGuess
+	def_special GetDexRiddleFeedback

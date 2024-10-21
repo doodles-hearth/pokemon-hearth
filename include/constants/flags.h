@@ -1577,8 +1577,8 @@
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
 #define FLAG_DAILY_SHUCKLE_BERRY_JUICE (DAILY_FLAGS_START + 0x3)
 #define FLAG_MON_CRY_NPC_GIVE_ITEM                  (DAILY_FLAGS_START + 0x4)
-#define FLAG_UNUSED_0x925                           (DAILY_FLAGS_START + 0x5)  // Unused Flag
-#define FLAG_UNUSED_0x926                           (DAILY_FLAGS_START + 0x6)  // Unused Flag
+#define FLAG_DEX_RIDDLE_NPC                         (DAILY_FLAGS_START + 0x5)
+#define FLAG_DEX_RIDDLE_NPC_GIVE_ITEM               (DAILY_FLAGS_START + 0x6)
 #define FLAG_UNUSED_0x927                           (DAILY_FLAGS_START + 0x7)  // Unused Flag
 #define FLAG_UNUSED_0x928                           (DAILY_FLAGS_START + 0x8)  // Unused Flag
 #define FLAG_UNUSED_0x929                           (DAILY_FLAGS_START + 0x9)  // Unused Flag

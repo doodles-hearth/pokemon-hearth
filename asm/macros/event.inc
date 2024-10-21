@@ -988,6 +988,11 @@
 	.4byte \text
 	.endm
 
+	@ Displays a random mon's dex entry in a message box
+	.macro randomdexmessage
+	callnative ScrCmd_randomdexmessage
+	.endm
+
 	@ Formatting for the braille window, to be put at the start of a pointer used by braillemessage.
 	@ These are from RS and are ignored in Emerald (see ScrCmd_braillemessage, and comment above)
 	.macro brailleformat winLeft:req, winTop:req, winRight:req, winBottom:req, textLeft:req, textTop:req
@@ -1802,6 +1807,11 @@
 	.byte 0xda
 	.endm
 
+	@ Destroys the window created by randomdexmessage.
+	.macro closerandomdexmessage
+	callnative ScrCmd_closerandomdexmessage
+	.endm
+
 	@ Prints and draws the message all at once rather than character by character.
 	@ Does not wait for player input to continue.
 	.macro messageinstant text:req
@@ -2102,6 +2112,13 @@
 	braillemessage \text
 	waitbuttonpress
 	closebraillemessage
+	.endm
+
+	@ Prints a random dex message, waits for an A or B press, then closes the message.
+	.macro randomdexmsgbox
+	randomdexmessage
+	waitbuttonpress
+	closerandomdexmessage
 	.endm
 
 	@ Creates a Pokémon with the modernFatefulEncounter bit set for an encounter

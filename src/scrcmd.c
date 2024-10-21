@@ -66,6 +66,7 @@ static EWRAM_DATA u16 sMovingNpcMapNum = 0;
 static EWRAM_DATA u16 sFieldEffectScriptId = 0;
 
 static u8 sBrailleWindowId;
+static u8 sRandomDexWindowId;
 static bool8 sIsScriptedWildDouble;
 
 extern const SpecialFunc gSpecials[];
@@ -73,6 +74,7 @@ extern const u8 *gStdScripts[];
 extern const u8 *gStdScripts_End[];
 
 static void CloseBrailleWindow(void);
+static void CloseRandomDexWindow(void);
 static void DynamicMultichoiceSortList(struct ListMenuItem *items, u32 count);
 
 // This is defined in here so the optimizer can't see its value when compiling
@@ -1708,6 +1710,39 @@ bool8 ScrCmd_closebraillemessage(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_randomdexmessage(struct ScriptContext *ctx)
+{
+    u16 species = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
+    struct WindowTemplate winTemplate;
+
+    do
+    {
+        species = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
+
+    } while (DoesStringContainMonName(GetSpeciesPokedexDescription(species), GetSpeciesName(species)) != -1);
+    
+    const u8 *speciesName = GetSpeciesName(species);
+    const u8 *randomDexDesc = GetSpeciesPokedexDescription(species);
+    StringCopy(gStringVar1, speciesName);
+
+    StringExpandPlaceholders(gStringVar4, randomDexDesc);
+    winTemplate = CreateWindowTemplate(0, 1, 5, 28, 9, 0xF, 0x1);
+    sRandomDexWindowId = AddWindow(&winTemplate);
+    LoadUserWindowBorderGfx(sRandomDexWindowId, 0x214, BG_PLTT_ID(14));
+    DrawStdWindowFrame(sRandomDexWindowId, FALSE);
+    PutWindowTilemap(sRandomDexWindowId);
+    FillWindowPixelBuffer(sRandomDexWindowId, PIXEL_FILL(1));
+    AddTextPrinterParameterized(sRandomDexWindowId, FONT_SHORT, gStringVar4, 1, 6, TEXT_SKIP_DRAW, NULL);
+    CopyWindowToVram(sRandomDexWindowId, COPYWIN_FULL);
+    return FALSE;
+}
+
+bool8 ScrCmd_closerandomdexmessage(struct ScriptContext *ctx)
+{
+    CloseRandomDexWindow();
+    return FALSE;
+}
+
 bool8 ScrCmd_vmessage(struct ScriptContext *ctx)
 {
     u32 msg = ScriptReadWord(ctx);
@@ -2483,6 +2518,12 @@ static void CloseBrailleWindow(void)
 {
     ClearStdWindowAndFrame(sBrailleWindowId, TRUE);
     RemoveWindow(sBrailleWindowId);
+}
+
+static void CloseRandomDexWindow(void)
+{
+    ClearStdWindowAndFrame(sRandomDexWindowId, TRUE);
+    RemoveWindow(sRandomDexWindowId);
 }
 
 bool8 ScrCmd_buffertrainerclassname(struct ScriptContext *ctx)

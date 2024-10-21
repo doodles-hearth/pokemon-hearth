@@ -3,6 +3,10 @@
 #include "text.h"
 #include "strings.h"
 #include "union_room_chat.h"
+#include "malloc.h"
+#include "characters.h"
+
+static u8 ToLowerCaseChar(u8 c);
 
 EWRAM_DATA u8 gStringVar1[0x100] = {0};
 EWRAM_DATA u8 gStringVar2[0x100] = {0};
@@ -25,6 +29,35 @@ static const s32 sPowersOfTen[] =
       10000000,
      100000000,
     1000000000,
+};
+
+static const u8 sToLowerCaseMap[255] = {
+    [CHAR_A] = CHAR_a,
+    [CHAR_B] = CHAR_b,
+    [CHAR_C] = CHAR_c,
+    [CHAR_D] = CHAR_d,
+    [CHAR_E] = CHAR_e,
+    [CHAR_F] = CHAR_f,
+    [CHAR_G] = CHAR_g,
+    [CHAR_H] = CHAR_h,
+    [CHAR_I] = CHAR_i,
+    [CHAR_J] = CHAR_j,
+    [CHAR_K] = CHAR_k,
+    [CHAR_L] = CHAR_l,
+    [CHAR_M] = CHAR_m,
+    [CHAR_N] = CHAR_n,
+    [CHAR_O] = CHAR_o,
+    [CHAR_P] = CHAR_p,
+    [CHAR_Q] = CHAR_q,
+    [CHAR_R] = CHAR_r,
+    [CHAR_S] = CHAR_s,
+    [CHAR_T] = CHAR_t,
+    [CHAR_U] = CHAR_u,
+    [CHAR_V] = CHAR_v,
+    [CHAR_W] = CHAR_w,
+    [CHAR_X] = CHAR_x,
+    [CHAR_Y] = CHAR_y,
+    [CHAR_Z] = CHAR_z,
 };
 
 u8 *StringCopy_Nickname(u8 *dest, const u8 *src)
@@ -801,33 +834,33 @@ s32 DoesStringContainMonName(const u8 *string, const u8 *monName)
     u32 wordLength = 0;
     u32 index = 0;
     u32 wordStartIndex = 0;
-    bool8 capturingWord = false;
+    bool8 capturingWord = FALSE;
 
     while (*string != EOS) 
     {
-        if (*string == CHAR_SPACE || *string == CHAR_PERIOD) 
+        if (*string == CHAR_SPACE || *string == CHAR_PERIOD || *string == CHAR_SGL_QUOTE_RIGHT)
         {
             // Check if the current character is a space or a period. If we've captured a word, compare it.
             if (capturingWord) 
             {
-                wordBuffer[wordLength + 1] = EOS; // Null-terminate the buffer to make it a valid string
+                wordBuffer[wordLength] = EOS; // Null-terminate the buffer to make it a valid string
 
                 if (StringCompareWithoutExtCtrlCodes(wordBuffer, monName) == 0)
                     return wordStartIndex;
 
                 wordLength = 0;
-                capturingWord = false;
+                capturingWord = FALSE;
             }
         } 
         else 
         {
             // Check if the character is a capital letter to start capturing
-            if (*string >= FIRST_CAPITAL && *string <= LAST_CAPITAL) 
+            if (*string >= CHAR_A && *string <= CHAR_Z) 
             {
                 if (!capturingWord) 
                 {
                     wordStartIndex = index; // Track the position of the word start
-                    capturingWord = true;
+                    capturingWord = TRUE;
                     wordLength = 0;
                 }
             }
@@ -848,4 +881,29 @@ s32 DoesStringContainMonName(const u8 *string, const u8 *monName)
     }
 
     return -1; // No match found
+}
+
+static u8 ToLowerCaseChar(u8 c)
+{
+    return (sToLowerCaseMap[c]) ? sToLowerCaseMap[c] : c;
+}
+
+u8 *ToLowerCase(const u8 *input) 
+{
+    u8 *buffer = Alloc(StringLength(input) + 1);
+    if (!buffer)
+        return NULL; // Allocation failed
+
+    u8 *start = buffer;  // Save the start of the output buffer
+
+    while (*input != EOS) 
+    {
+        *buffer = ToLowerCaseChar(*input);
+        input++;
+        buffer++;
+    }
+
+    *buffer = EOS;  // Null-terminate the string
+
+    return start;  // Return the start of the buffer
 }

@@ -153,3 +153,46 @@ script TranquilRoute_CutHouse_EventScript_RandomCryGuy {
 	release
 	end
 }
+
+
+
+script TranquilRoute_CutHouse_EventScript_RandomDexGuy {
+	lock
+	faceplayer
+	if(flag(FLAG_DEX_RIDDLE_NPC_GIVE_ITEM))
+	{
+		msgbox("you already got it right\ncome back tomorrow dingus")
+		release
+		end
+	}
+
+	if(flag(FLAG_DEX_RIDDLE_NPC))
+	{
+		msgbox("you guessed wrong\ncome back tomorrow dingus")
+		release
+		end
+	}
+
+	msgbox("alright dingus, ima give you a dex\ndescription, you give me the mon\pand remember, you only get to see\nthis once because im lazy")
+	closemessage
+	randomdexmsgbox
+	msgbox("now whomst was that about")
+	special(EnterDexRiddleGuess)
+	waitstate
+	special(GetDexRiddleFeedback)
+
+	if(var(VAR_RESULT) == 1)
+	{
+		msgbox("correct dingus, here take this")
+		giveitem(ITEM_MEWTWONITE_Y)
+		setflag(FLAG_DEX_RIDDLE_NPC_GIVE_ITEM)
+		msgbox("come back tomorrow")
+	}
+	else
+	{
+		msgbox("wrong dingus, try again tomorrow")
+	}
+	setflag(FLAG_DEX_RIDDLE_NPC)
+	release
+	end
+}
