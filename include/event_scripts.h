@@ -692,4 +692,7 @@ extern const u8 EventScript_TooDark[];
 extern const u8 EventScript_MovedTooFast[];
 
 
+// Custom scripts
+extern const u8 EventScript_WalkAwayFromCampfire[];
+
 #endif // GUARD_EVENT_SCRIPTS_H

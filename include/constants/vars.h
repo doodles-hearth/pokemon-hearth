@@ -20,7 +20,6 @@
 #define VAR_TEMP_B                 (TEMP_VARS_START + 0xB)
 #define VAR_TEMP_C                 (TEMP_VARS_START + 0xC)
 #define VAR_TEMP_D                 (TEMP_VARS_START + 0xD)
-// Careful: E and F are used with campfires
 #define VAR_TEMP_E                 (TEMP_VARS_START + 0xE)
 #define VAR_TEMP_F                 (TEMP_VARS_START + 0xF)
 #define TEMP_VARS_END              VAR_TEMP_F
@@ -40,6 +39,7 @@
 #define VAR_OBJ_GFX_ID_7           0x4017
 #define VAR_OBJ_GFX_ID_8           0x4018
 #define VAR_OBJ_GFX_ID_9           0x4019
+// These are used for displaying the 6 party mons at campfires!
 #define VAR_OBJ_GFX_ID_A           0x401A
 #define VAR_OBJ_GFX_ID_B           0x401B
 #define VAR_OBJ_GFX_ID_C           0x401C
@@ -383,8 +383,8 @@
 #define VAR_ROXANNE_CALL_STEP_COUNTER                    0x40F4
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
-#define VAR_UNUSED_0x40F7                                0x40F7 // Unused Var
-#define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
+#define VAR_CAMPFIRE_X                                   0x40F7
+#define VAR_CAMPFIRE_Y                                   0x40F8
 #define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
 #define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
 #define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
