@@ -587,9 +587,20 @@ static bool8 TryStartStepBasedScript(struct MapPosition *position, u16 metatileB
     return FALSE;
 }
 
+static bool8 MovedTooFarFromCampfire(u16 x, u16 y) {
+    u32 campX = VarGet(VAR_CAMPFIRE_X);
+    u32 campY = VarGet(VAR_CAMPFIRE_Y);
+    return x > campX + 3 || x < campX - 3 || y > campY + 3 || y < campY - 3;
+}
+
 static bool8 TryStartCoordEventScript(struct MapPosition *position)
 {
     const u8 *script = GetCoordEventScriptAtPosition(&gMapHeader, position->x - MAP_OFFSET, position->y - MAP_OFFSET, position->elevation);
+
+    if (!FlagGet(FLAG_HIDE_CAMPFIRE_PARTY_MON_1) && MovedTooFarFromCampfire(position->x - MAP_OFFSET, position->y - MAP_OFFSET))
+    {
+        script = EventScript_WalkAwayFromCampfire;
+    }
 
     if (script == NULL)
         return FALSE;

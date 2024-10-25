@@ -61,13 +61,13 @@
 #define FLAG_CUT_QUEST_COMPLETED        0x2B
 #define FLAG_PC_EXPLAINED    0x2C
 #define FLAG_PAUSE_TIME    0x2D
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
+#define FLAG_UNUSED_0x02E                0x2E
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_1   0x2F
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_2   0x30
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_3   0x31
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_4   0x32
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_5   0x33
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_6   0x34
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag

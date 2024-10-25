@@ -2369,11 +2369,12 @@
 	callnative Script_ToggleFakeRtc
 	.endm
 
-	.macro fakertcaddtime hours:req, minutes:req, seconds:req
-	callnative Script_FakeRtcAddTime
-	.2byte \hours
-	.2byte \minutes
-	.2byte \seconds
+	.macro campfire
+	callnative Script_Campfire
+	.endm
+
+	.macro leavecampfire
+	callnative Script_LeaveCampfire
 	.endm
 
 	@ ============================ @
