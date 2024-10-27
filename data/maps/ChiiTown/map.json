@@ -20,7 +20,7 @@
     },
     {
       "map": "MAP_GINKO_WOODS",
-      "offset": -24,
+      "offset": 6,
       "direction": "down"
     }
   ],
@@ -52,7 +52,7 @@
       "flag": "FLAG_TEMP_1"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "graphics_id": "OBJ_EVENT_GFX_TWIN_F",
       "x": 16,
       "y": 17,
       "elevation": 0,
