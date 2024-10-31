@@ -265,3 +265,6 @@ const u16 gMetatileAttributes_DojoMaguro[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_Saberside[] = INCBIN_U16("data/tilesets/secondary/saberside/metatiles.bin");
 const u16 gMetatileAttributes_Saberside[] = INCBIN_U16("data/tilesets/secondary/saberside/metatile_attributes.bin");
+
+const u16 gMetatiles_UumeForest[] = INCBIN_U16("data/tilesets/secondary/uume_forest/metatiles.bin");
+const u16 gMetatileAttributes_UumeForest[] = INCBIN_U16("data/tilesets/secondary/uume_forest/metatile_attributes.bin");
