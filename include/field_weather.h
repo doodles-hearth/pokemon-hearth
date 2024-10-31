@@ -13,6 +13,8 @@ enum {
     GFXTAG_SANDSTORM,
     GFXTAG_BUBBLE,
     GFXTAG_RAIN,
+    GFXTAG_CHERRY_BLOSSOM0,
+    GFXTAG_CHERRY_BLOSSOM1,
 };
 enum {
     PALTAG_WEATHER = TAG_WEATHER_START,
@@ -132,6 +134,13 @@ struct Weather
     u8 droughtUnused[9];
     u8 loadDroughtPalsIndex;
     u8 loadDroughtPalsOffset;
+    // Cherry Blossom
+    u32 cherryBlossomSpriteCount;
+    u32 cherryBlossomSpritesLoaded;
+    u32 cherryBlossomFallSpeed;
+    bool32 arePetalsFallen;
+    bool32 cleanupPetals;
+    s16 cherryBlossomWaveAmplitude;
 };
 
 // field_weather.c
@@ -221,6 +230,10 @@ void Bubbles_InitVars(void);
 void Bubbles_Main(void);
 void Bubbles_InitAll(void);
 bool8 Bubbles_Finish(void);
+void CherryBlossom_InitVars(void);
+void CherryBlossom_InitAll(void);
+void CherryBlossom_Main(void);
+bool8 CherryBlossom_Finish(void);
 
 u8 GetSavedWeather(void);
 void SetSavedWeather(u32 weather);

@@ -3,6 +3,7 @@
 #include "event_object_movement.h"
 #include "fieldmap.h"
 #include "field_weather.h"
+#include "field_camera.h"
 #include "overworld.h"
 #include "random.h"
 #include "script.h"
@@ -19,6 +20,7 @@ EWRAM_DATA static u16 sUnusedWeatherRelated = 0;
 
 const u16 gCloudsWeatherPalette[] = INCBIN_U16("graphics/weather/cloud.gbapal");
 const u16 gSandstormWeatherPalette[] = INCBIN_U16("graphics/weather/sandstorm.gbapal");
+const u16 gCherryBlossomWeatherPalette[] = INCBIN_U16("graphics/weather/cherry_blossom.gbapal");
 const u8 gWeatherFogDiagonalTiles[] = INCBIN_U8("graphics/weather/fog_diagonal.4bpp");
 const u8 gWeatherFogHorizontalTiles[] = INCBIN_U8("graphics/weather/fog_horizontal.4bpp");
 const u8 gWeatherCloudTiles[] = INCBIN_U8("graphics/weather/cloud.4bpp");
@@ -28,6 +30,8 @@ const u8 gWeatherBubbleTiles[] = INCBIN_U8("graphics/weather/bubble.4bpp");
 const u8 gWeatherAshTiles[] = INCBIN_U8("graphics/weather/ash.4bpp");
 const u8 gWeatherRainTiles[] = INCBIN_U8("graphics/weather/rain.4bpp");
 const u8 gWeatherSandstormTiles[] = INCBIN_U8("graphics/weather/sandstorm.4bpp");
+const u8 gWeatherCherryBlossom0Tiles[] = INCBIN_U8("graphics/weather/cherry_blossom0.4bpp");
+const u8 gWeatherCherryBlossom1Tiles[] = INCBIN_U8("graphics/weather/cherry_blossom1.4bpp");
 
 //------------------------------------------------------------------------------
 // WEATHER_SUNNY_CLOUDS
@@ -2405,6 +2409,254 @@ static void UpdateBubbleSprite(struct Sprite *sprite)
 #undef tScrollXDir
 #undef tCounter
 
+
+// CHERRY-BLOSSOM-WEATHER
+#define MAX_CHERRY_BLOSSOM_SPRITES 64
+#define FRAME_SKIP                 2
+
+#define tYSpeed data[0]
+#define tYFallSteps data[1]
+#define tWaveIdx data[2]        // Unused for now
+#define tWaveAmplitude data[3]  // Unused for now
+#define tStartingPixelX data[4] // Unused for now
+
+
+static u32 random(u32 amount) {
+  return (Random() % amount);
+}
+
+static bool8 CreateCherryBlossomSprite(void);
+
+static const struct OamData sCherryBlossomSpriteOamData = {
+    .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_NORMAL,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(8x8),
+    .x = 0,
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(8x8),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const void UpdateCherryBlossomSprite(struct Sprite *sprite) {
+    // If anybody wants some coded and buggy wave movement of the petals while they are falling,
+    // remove the comments here and comment out this line `sprite->x = sprite->x - 1;`
+    /*
+        s16 x;
+        // Makes sure that the sine idx loops back to 0.
+        if (sprite->tWaveIdx == 256)
+            sprite->tWaveIdx = 0;
+
+        sprite->tWaveIdx += 4;
+
+        //x = Sin(sprite->tWaveIdx, ++sprite->tWaveAmplitude);
+        //sprite->x = ((s32)x + sprite->tStartingPixelX);
+    */
+    
+    // Bugfix when `(FRAME_SKIP - gWeatherPtr->cherryBlossomFallSpeed)` is VERY BIG (Integer underflow)
+    if (gWeatherPtr->cherryBlossomFallSpeed > FRAME_SKIP) 
+        gWeatherPtr->cherryBlossomFallSpeed = 2;
+    
+    if (sprite->tYFallSteps == (FRAME_SKIP - gWeatherPtr->cherryBlossomFallSpeed)) {
+        sprite->y += sprite->tYSpeed;  
+        sprite->y2 = gSpriteCoordOffsetY;
+        sprite->tYFallSteps = 0;
+    } else {
+        sprite->tYFallSteps++;
+        sprite->y2 = gSpriteCoordOffsetY;
+    }
+
+
+    sprite->x = sprite->x - 1;
+    sprite->x2 = gSpriteCoordOffsetX;
+
+    // TODO: Make the fade out of the weather work: 
+    //
+    //       When the the petals fall out of the screen, they dont wrap back but get invisible
+    //       until all are invisible, then every sprite gets destroyed and the rest of the cleanup is initiated.
+    //
+    //if (gWeatherPtr->cleanupPetals == TRUE && sprite->y > abs(gSpriteCoordOffsetY) + DISPLAY_HEIGHT) {
+    //    sprite->invisible = TRUE;
+    //}
+
+
+    /* NOTE FOR DEVS: You may think "Wtf? Why does the if statement do that?!"
+    
+        That is because I sacrificed too many of my neurons to make the petals
+        wrap back to the right of the screen while the player is moving along the X-Axis.
+     
+        With the help of my bro `Lil'DebugPrintf`, I was able to figure out 
+        what `gSpriteCoordOffsetX` and `gTotalCameraPixelOffsetX` do and how they behave
+        if the player move:
+    
+            DebugPrintf("CamOfs: %d, SpriteCoordOfs: %d", gTotalCameraPixelOffsetX, gSpriteCoordOffsetX);
+
+        Keep in mind that I set x2 and y2 alongside just x and y:
+
+            sprite->x2 = gSpriteCoordOffsetX;
+            sprite->y2 = gSpriteCoordOffsetY;
+    */
+    if (sprite->x < gSpriteCoordOffsetX - gSpriteCoordOffsetX*2) {
+        if (gWeatherPtr->cleanupPetals == TRUE) { // Cleanup
+            sprite->invisible = TRUE;
+        } else {
+            sprite->x = DISPLAY_WIDTH - gTotalCameraPixelOffsetX; // Normal movement
+        }
+    }
+}
+
+static const struct SpriteTemplate sCherryBlossom0SpriteTemplate =
+{
+    .tileTag = GFXTAG_CHERRY_BLOSSOM0,
+    .paletteTag = PALTAG_WEATHER,
+    .oam = &sCherryBlossomSpriteOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateCherryBlossomSprite,
+};
+
+static const struct SpriteTemplate sCherryBlossom1SpriteTemplate =
+{
+    .tileTag = GFXTAG_CHERRY_BLOSSOM1,
+    .paletteTag = PALTAG_WEATHER,
+    .oam = &sCherryBlossomSpriteOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateCherryBlossomSprite,
+};
+
+static const struct SpriteSheet sCherryBlossom0SpriteSheet =
+{
+    .data = gWeatherCherryBlossom0Tiles,
+    .size = sizeof(gWeatherCherryBlossom0Tiles),
+    .tag = GFXTAG_CHERRY_BLOSSOM0,
+};
+
+static const struct SpriteSheet sCherryBlossom1SpriteSheet =
+{
+    .data = gWeatherCherryBlossom1Tiles,
+    .size = sizeof(gWeatherCherryBlossom1Tiles),
+    .tag = GFXTAG_CHERRY_BLOSSOM1,
+};
+
+void CherryBlossom_InitVars(void) {
+    // WEATHER CONFIG!
+    gWeatherPtr->cherryBlossomSpriteCount = 32;
+    gWeatherPtr->cherryBlossomFallSpeed = 2;
+
+    gWeatherPtr->initStep = 0;
+    gWeatherPtr->weatherGfxLoaded = FALSE;
+    gWeatherPtr->targetColorMapIndex = 3;
+    gWeatherPtr->colorMapStepDelay = 20;
+    gWeatherPtr->weatherPicSpritePalIndex = 0;
+    gWeatherPtr->cherryBlossomSpritesLoaded = 0;
+    gWeatherPtr->cleanupPetals = FALSE;
+
+    //gWeatherPtr->cherryBlossomWaveAmplitude = 16; // Unused for now
+}
+
+void CherryBlossom_InitAll(void)
+{
+    CherryBlossom_InitVars();
+    while (!gWeatherPtr->weatherGfxLoaded)
+        CherryBlossom_Main();
+}
+
+void CherryBlossom_Main(void)
+{
+    switch (gWeatherPtr->initStep) {
+        case 0:
+            LoadSpriteSheet(&sCherryBlossom0SpriteSheet);
+            LoadSpriteSheet(&sCherryBlossom1SpriteSheet);
+            LoadCustomWeatherSpritePalette(gCherryBlossomWeatherPalette);
+            gWeatherPtr->initStep++;
+            break;
+        case 1:
+            if (!CreateCherryBlossomSprite()) {
+                gWeatherPtr->weatherGfxLoaded = TRUE;
+                gWeatherPtr->initStep++;
+            }
+            break;
+    }
+}
+
+static void DestroyCherryBlossomSprites(void) {
+
+    FreeSpriteTilesByTag(GFXTAG_CHERRY_BLOSSOM0);
+    FreeSpriteTilesByTag(GFXTAG_CHERRY_BLOSSOM1);
+}
+
+// TODO: Finish weather exit function
+bool8 CherryBlossom_Finish(void)
+{
+    switch (gWeatherPtr->finishStep)
+    {
+    case 0:
+            gWeatherPtr->cleanupPetals = TRUE;
+            //DestroyCherryBlossomSprites();
+            //gWeatherPtr->finishStep++;
+    case 1:
+        if (!UpdateVisibleRainSprites())
+        {
+            DestroyRainSprites();
+            gWeatherPtr->finishStep++;
+            return FALSE;
+        }
+        return TRUE;
+    }
+    return FALSE; // false = done
+}
+
+static bool8 CreateCherryBlossomSprite(void) {
+    s32 x, y, whichLeave, amplitude, sIdx;
+
+    if (gWeatherPtr->cherryBlossomSpriteCount > MAX_CHERRY_BLOSSOM_SPRITES)
+        return TRUE;
+
+    if (gWeatherPtr->cherryBlossomSpritesLoaded < gWeatherPtr->cherryBlossomSpriteCount) {
+        x = random(280)-20;
+        y = random(160);
+        whichLeave = random(2);
+        if (whichLeave == 0) {
+            sIdx = CreateSprite(&sCherryBlossom0SpriteTemplate, x, y, 1);
+        } else {
+            sIdx = CreateSprite(&sCherryBlossom1SpriteTemplate, x, y, 0);
+        }
+
+        // This handles fall speed control
+        if (gWeatherPtr->cherryBlossomFallSpeed <= 2) {
+            gSprites[sIdx].tYSpeed = 1 + random(2);
+        } else {
+            gSprites[sIdx].tYSpeed = 2 + random(gWeatherPtr->cherryBlossomFallSpeed);
+        }
+        gSprites[sIdx].tYFallSteps = 0;
+
+        // Everything thats unused for now
+        amplitude = gWeatherPtr->cherryBlossomWaveAmplitude/2 + random(gWeatherPtr->cherryBlossomWaveAmplitude); // Unused for now
+        gSprites[sIdx].tStartingPixelX = x;         // Unused for now
+        gSprites[sIdx].tWaveAmplitude = amplitude;  // Unused for now
+        gSprites[sIdx].tWaveIdx = 0;                // Unused for now
+
+        gWeatherPtr->cherryBlossomSpritesLoaded++;
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+#undef tYSpeed 
+#undef tYFallSteps 
+#undef tWaveIdx        // Unused for now
+#undef tWaveAmplitude  // Unused for now
+#undef tStartingPixelX // Unused for now
+
 //------------------------------------------------------------------------------
 
 static void UNUSED UnusedSetCurrentAbnormalWeather(u32 weather, u32 unknown)
@@ -2588,6 +2840,7 @@ static u8 TranslateWeatherNum(u8 weather)
     case WEATHER_ABNORMAL:           return WEATHER_ABNORMAL;
     case WEATHER_ROUTE119_CYCLE:     return sWeatherCycleRoute119[gSaveBlock1Ptr->weatherCycleStage];
     case WEATHER_ROUTE123_CYCLE:     return sWeatherCycleRoute123[gSaveBlock1Ptr->weatherCycleStage];
+    case WEATHER_CHERRY_BLOSSOM:     return WEATHER_CHERRY_BLOSSOM;
     default:                         return WEATHER_NONE;
     }
 }
