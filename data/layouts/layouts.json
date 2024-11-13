@@ -5014,8 +5014,8 @@
     {
       "id": "LAYOUT_UUME_FOREST",
       "name": "UumeForest_Layout",
-      "width": 80,
-      "height": 80,
+      "width": 60,
+      "height": 60,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
       "secondary_tileset": "gTileset_UumeForest",
       "border_filepath": "data/layouts/UumeForest/border.bin",
