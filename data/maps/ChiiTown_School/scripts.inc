@@ -219,11 +219,11 @@ ChiiTown_School_EventScript_BoardLegend_Text_0:
 	.string "A detailed print depicts\n"
 	.string "an old legend.\p"
 	.string "“A very long time ago, the Volcano\n"
-	.string "erupted terribly.\l"
+	.string "erupted terribly.\p"
 	.string "Four awakened Treasures fought\n"
 	.string "the fiery Pokémon that lived\l"
-	.string "inside it. At last, the four Treasures\l"
-	.string "and\n"
+	.string "inside it.\p"
+	.string "At last, the four Treasures and\n"
 	.string "the fiery Pokémon slumbered again.”$"
 
 ChiiTown_School_EventScript_Board_Text_0:
