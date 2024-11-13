@@ -83,6 +83,7 @@ u8 ItemId_GetSecondaryId(u16 itemId);
 u32 ItemId_GetFlingPower(u32 itemId);
 u32 GetItemStatus1Mask(u16 itemId);
 u32 GetItemStatus2Mask(u16 itemId);
+bool8 GetSetItemObtained(u16 item, u8 caseId);
 
 /* Expands to:
  * enum
