@@ -485,14 +485,15 @@ static void SetLimitedShopItemsForSale(u16 shopId)
     u16 i = 0;
     sMartInfo.itemCount = 0;
 
+    // Read items until ITEM_NONE / LIMITED_SHOP_MAX_ITEMS is reached
     while (i < LIMITED_SHOP_MAX_ITEMS && gLimitedShops[shopId][i].item != ITEM_NONE)
     {
-        sMartInfo.itemList[sMartInfo.itemCount] = gLimitedShops[shopId][i].item;
-        sMartInfo.itemQuantity[sMartInfo.itemCount] = gLimitedShops[shopId][i].quantity;
+        sMartInfo.itemList[i] = gLimitedShops[shopId][i].item;
+        sMartInfo.itemQuantity[i] = gLimitedShops[shopId][i].quantity;
         sMartInfo.itemCount++;
         i++;
     }
-    sMartInfo.itemCount++;
+    sMartInfo.itemCount++; // for ITEM_NONE
 }
 
 static void SetShopId(u8 shopId)
@@ -1471,6 +1472,7 @@ static void BuyMenuTryMakePurchase(u8 taskId)
     {
         if (AddBagItem(tItemId, tItemCount) == TRUE)
         {
+            GetSetItemObtained(sShopData->currentItemId, FLAG_SET_ITEM_OBTAINED);
             SetAmountOfItemBought(gMartInfo.shopId, gShopDataPtr->selectedRow + gShopDataPtr->scrollOffset, tItemCount);
             BuyMenuDisplayMessage(taskId, gText_HereYouGoThankYou, BuyMenuSubtractMoney);
             RecordItemPurchase(taskId);
