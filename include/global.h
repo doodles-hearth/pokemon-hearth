@@ -19,7 +19,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/items.h"
 #include "config/save.h"
-#include "shop_limited.h"
+#include "config/limited_shop.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
