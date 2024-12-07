@@ -329,6 +329,7 @@ static void BestowItem(u32 battlerAtk, u32 battlerDef);
 static bool8 IsFinalStrikeEffect(u32 moveEffect);
 static void TryUpdateRoundTurnOrder(void);
 static bool32 ChangeOrderTargetAfterAttacker(void);
+static bool32 SetTargetToNextPursuiter(u32 battlerDef);
 void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBattler);
 static void RemoveAllWeather(void);
 static void RemoveAllTerrains(void);
@@ -508,7 +509,7 @@ static void Cmd_settypetorandomresistance(void);
 static void Cmd_setalwayshitflag(void);
 static void Cmd_copymovepermanently(void);
 static void Cmd_trychoosesleeptalkmove(void);
-static void Cmd_setdestinybond(void);
+static void Cmd_trysetdestinybond(void);
 static void Cmd_trysetdestinybondtohappen(void);
 static void Cmd_settailwind(void);
 static void Cmd_tryspiteppreduce(void);
@@ -767,7 +768,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_setalwayshitflag,                        //0xA7
     Cmd_copymovepermanently,                     //0xA8
     Cmd_trychoosesleeptalkmove,                  //0xA9
-    Cmd_setdestinybond,                          //0xAA
+    Cmd_trysetdestinybond,                       //0xAA
     Cmd_trysetdestinybondtohappen,               //0xAB
     Cmd_settailwind,                             //0xAC
     Cmd_tryspiteppreduce,                        //0xAD
@@ -1484,6 +1485,10 @@ static bool32 AccuracyCalcHelper(u32 move, u32 battler)
     else if (gStatuses3[battler] & STATUS3_TELEKINESIS
           && !(gStatuses3[battler] & STATUS3_SEMI_INVULNERABLE)
           && gMovesInfo[move].effect != EFFECT_OHKO)
+    {
+        effect = TRUE;
+    }
+    else if (gBattleStruct->pursuitTarget & (1u << battler))
     {
         effect = TRUE;
     }
@@ -6947,6 +6952,32 @@ static void Cmd_moveend(void)
                 }
             }
 
+            gBattleScripting.moveendState++;
+            break;
+        case MOVEEND_PURSUIT_NEXT_ACTION:
+            if (gBattleStruct->pursuitTarget & (1u << gBattlerTarget))
+            {
+                u32 storedTarget = gBattlerTarget;
+                if (SetTargetToNextPursuiter(gBattlerTarget))
+                {
+                    ChangeOrderTargetAfterAttacker();
+                    *(gBattleStruct->moveTarget + gBattlerTarget) = storedTarget;
+                    gBattlerTarget = storedTarget;
+                }
+                else if (IsBattlerAlive(gBattlerTarget))
+                {
+                    gBattlerAttacker = gBattlerTarget;
+                    if (gBattleStruct->pursuitSwitchByMove)
+                        gBattlescriptCurrInstr = BattleScript_MoveSwitchOpenPartyScreen;
+                    else
+                        gBattlescriptCurrInstr = BattleScript_DoSwitchOut;
+                    *(gBattleStruct->monToSwitchIntoId + gBattlerTarget) = gBattleStruct->pursuitStoredSwitch;
+                    gBattleStruct->pursuitTarget = 0;
+                    gBattleStruct->pursuitSwitchByMove = FALSE;
+                    gBattleStruct->pursuitStoredSwitch = 0;
+                    effect = TRUE;
+                }
+            }
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_COUNT:
@@ -13446,12 +13477,18 @@ static void Cmd_trychoosesleeptalkmove(void)
     }
 }
 
-static void Cmd_setdestinybond(void)
+static void Cmd_trysetdestinybond(void)
 {
-    CMD_ARGS();
-
-    gBattleMons[gBattlerAttacker].status2 |= STATUS2_DESTINY_BOND;
-    gBattlescriptCurrInstr = cmd->nextInstr;
+    CMD_ARGS(const u8 *failInstr);
+    if (DoesDestinyBondFail(gBattlerAttacker))
+    {
+        gBattlescriptCurrInstr = cmd->failInstr;
+    }
+    else
+    {
+        gBattleMons[gBattlerAttacker].status2 |= STATUS2_DESTINY_BOND;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
 }
 
 static void TrySetDestinyBondToHappen(void)
@@ -13961,45 +13998,44 @@ static void Cmd_magnitudedamagecalculation(void)
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
+static bool32 SetTargetToNextPursuiter(u32 battlerDef)
+{
+    u32 i;
+    for (i = gCurrentTurnActionNumber + 1; i < gBattlersCount; i++)
+    {
+        u32 battler = gBattlerByTurnOrder[i];
+        if (gChosenActionByBattler[battler] == B_ACTION_USE_MOVE
+        && gMovesInfo[gChosenMoveByBattler[battler]].effect == EFFECT_PURSUIT
+        && IsBattlerAlive(battlerDef)
+        && IsBattlerAlive(battler)
+        && GetBattlerSide(battler) != GetBattlerSide(battlerDef)
+        && (B_PURSUIT_TARGET >= GEN_4 || *(gBattleStruct->moveTarget + battler) == battlerDef)
+        && !IsGimmickSelected(battler, GIMMICK_Z_MOVE)
+        && !IsGimmickSelected(battler, GIMMICK_DYNAMAX)
+        && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
+        {
+            gBattlerTarget = battler;
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 static void Cmd_jumpifnopursuitswitchdmg(void)
 {
     CMD_ARGS(const u8 *jumpInstr);
 
-    if (gMultiHitCounter == 1)
-    {
-        if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
-            gBattlerTarget = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
-        else
-            gBattlerTarget = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
-    }
-    else
-    {
-        if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
-            gBattlerTarget = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
-        else
-            gBattlerTarget = GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT);
-    }
+    u32 savedTarget = gBattlerTarget;
 
-    if (gChosenActionByBattler[gBattlerTarget] == B_ACTION_USE_MOVE
-        && gBattlerAttacker == *(gBattleStruct->moveTarget + gBattlerTarget)
-        && !(gBattleMons[gBattlerTarget].status1 & (STATUS1_SLEEP | STATUS1_FREEZE))
-        && gBattleMons[gBattlerAttacker].hp
-        && !gDisableStructs[gBattlerTarget].truantCounter
-        && gMovesInfo[gChosenMoveByBattler[gBattlerTarget]].effect == EFFECT_PURSUIT)
+    if (SetTargetToNextPursuiter(gBattlerAttacker))
     {
-        s32 i;
-
-        for (i = 0; i < gBattlersCount; i++)
-        {
-            if (gBattlerByTurnOrder[i] == gBattlerTarget)
-                gActionsByTurnOrder[i] = B_ACTION_TRY_FINISH;
-        }
-
-        gCurrentMove = gChosenMove = gChosenMoveByBattler[gBattlerTarget];
-        gCurrMovePos = gChosenMovePos = *(gBattleStruct->chosenMovePositions + gBattlerTarget);
+        ChangeOrderTargetAfterAttacker();
+        gBattleStruct->pursuitTarget = 1u << gBattlerAttacker;
+        gBattleStruct->pursuitSwitchByMove = gActionsByTurnOrder[gCurrentTurnActionNumber] == B_ACTION_USE_MOVE;
+        gBattleStruct->pursuitStoredSwitch = gBattleStruct->monToSwitchIntoId[gBattlerAttacker];
+        *(gBattleStruct->moveTarget + gBattlerTarget) = gBattlerAttacker;
+        gBattlerTarget = savedTarget;
         gBattlescriptCurrInstr = cmd->nextInstr;
-        gBattleScripting.animTurn = 1;
-        gHitMarker &= ~HITMARKER_ATTACKSTRING_PRINTED;
     }
     else
     {
