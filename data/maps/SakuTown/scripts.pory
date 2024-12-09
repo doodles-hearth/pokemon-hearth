@@ -7,7 +7,6 @@ const LOCALID_KUKU = 2
 mapscripts SakuTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		call(Common_EventScript_SetupRivalGfxId)
-
 		if (flag(FLAG_SAKU_KURA_REUNITED)) {
 			// Once reunited, the guards from the two villages play a board game together
 			setmetatile(19, 2, METATILE_SakuKura_BoardGame, TRUE)

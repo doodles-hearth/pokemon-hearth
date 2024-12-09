@@ -48,10 +48,6 @@
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
-#include "rtc.h"
-#include "fake_rtc.h"
-
-extern u8 WaitingMenu[];
 
 // Menu actions
 enum
@@ -70,7 +66,6 @@ enum
     MENU_ACTION_RETIRE_FRONTIER,
     MENU_ACTION_PYRAMID_BAG,
     MENU_ACTION_DEBUG,
-    MENU_ACTION_WAITING_MENU
 };
 
 // Save status
@@ -98,7 +93,6 @@ EWRAM_DATA static u8 (*sSaveDialogCallback)(void) = NULL;
 EWRAM_DATA static u8 sSaveDialogTimer = 0;
 EWRAM_DATA static bool8 sSavingComplete = FALSE;
 EWRAM_DATA static u8 sSaveInfoWindowId = 0;
-EWRAM_DATA static u8 sCurrentTimeWindowId = 0;
 
 // Menu action callbacks
 static bool8 StartMenuPokedexCallback(void);
@@ -114,7 +108,6 @@ static bool8 StartMenuLinkModePlayerNameCallback(void);
 static bool8 StartMenuBattlePyramidRetireCallback(void);
 static bool8 StartMenuBattlePyramidBagCallback(void);
 static bool8 StartMenuDebugCallback(void);
-static bool8 WaitingMenuCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
@@ -202,7 +195,6 @@ static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
 };
 
 static const u8 sText_MenuDebug[] = _("DEBUG");
-static const u8 sText_WaitingMenu[] = _("WAIT");
 
 static const struct MenuAction sStartMenuItems[] =
 {
@@ -220,7 +212,6 @@ static const struct MenuAction sStartMenuItems[] =
     [MENU_ACTION_RETIRE_FRONTIER] = {gText_MenuRetire,  {.u8_void = StartMenuBattlePyramidRetireCallback}},
     [MENU_ACTION_PYRAMID_BAG]     = {gText_MenuBag,     {.u8_void = StartMenuBattlePyramidBagCallback}},
     [MENU_ACTION_DEBUG]           = {sText_MenuDebug,   {.u8_void = StartMenuDebugCallback}},
-    [MENU_ACTION_WAITING_MENU]    = {sText_WaitingMenu, {.u8_void = WaitingMenuCallback}}
 };
 
 static const struct BgTemplate sBgTemplates_LinkBattleSave[] =
@@ -253,21 +244,11 @@ static const struct WindowTemplate sWindowTemplates_LinkBattleSave[] =
 static const struct WindowTemplate sSaveInfoWindowTemplate = {
     .bg = 0,
     .tilemapLeft = 1,
-    .tilemapTop = 5,
+    .tilemapTop = 1,
     .width = 14,
     .height = 10,
     .paletteNum = 15,
     .baseBlock = 8
-};
-
-static const struct WindowTemplate sCurrentTimeWindowTemplate = {
-    .bg = 0, 
-    .tilemapLeft = 1, 
-    .tilemapTop = 1, 
-    .width = 9,
-    .height = 6,
-    .paletteNum = 15,
-    .baseBlock = 0x30
 };
 
 // Local functions
@@ -305,7 +286,6 @@ static void RemoveSaveInfoWindow(void);
 static void HideStartMenuWindow(void);
 static void HideStartMenuDebug(void);
 static void ShowTimeWindow(void);
-static void UpdateClockDisplay(void);
 
 void SetDexPokemonPokenavFlags(void) // unused
 {
@@ -390,7 +370,6 @@ static void BuildDebugStartMenu(void)
     AddStartMenuAction(MENU_ACTION_BAG);
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
-    AddStartMenuAction(MENU_ACTION_WAITING_MENU);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
@@ -494,6 +473,24 @@ static void ShowPyramidFloorWindow(void)
 // If you want to shorten the dates to Sat., Sun., etc., change this to 70
 #define CLOCK_WINDOW_WIDTH 104
 
+const u8 gText_Saturday[] = _("Saturday,");
+const u8 gText_Sunday[] = _("Sunday,");
+const u8 gText_Monday[] = _("Monday,");
+const u8 gText_Tuesday[] = _("Tuesday,");
+const u8 gText_Wednesday[] = _("Wednesday,");
+const u8 gText_Thursday[] = _("Thursday,");
+const u8 gText_Friday[] = _("Friday,");
+
+const u8 *const gDayNameStringsTable[7] = {
+    gText_Saturday,
+    gText_Sunday,
+    gText_Monday,
+    gText_Tuesday,
+    gText_Wednesday,
+    gText_Thursday,
+    gText_Friday,
+};
+
 static void ShowTimeWindow(void)
 {
     const u8 *suffix;
@@ -508,15 +505,15 @@ static void ShowTimeWindow(void)
     PutWindowTilemap(sStartClockWindowId);
     DrawStdWindowFrame(sStartClockWindowId, FALSE);
 
-    if (GetHour() < 12)
+    if (gLocalTime.hours < 12)
     {
-        if (GetHour() == 0)
+        if (gLocalTime.hours == 0)
             convertedHours = 12;
         else
-            convertedHours = GetHour();
+            convertedHours = gLocalTime.hours;
         suffix = gText_AM;
     }
-    else if (GetHour() == 12)
+    else if (gLocalTime.hours == 12)
     {
         convertedHours = 12;
         if (suffix == gText_AM);
@@ -524,18 +521,18 @@ static void ShowTimeWindow(void)
     }
     else
     {
-        convertedHours = GetHour() - 12;
+        convertedHours = gLocalTime.hours - 12;
         suffix = gText_PM;
     }
 
-    StringExpandPlaceholders(gStringVar4, gDayNameStringsTable[GetDayOfWeek()]);
+    StringExpandPlaceholders(gStringVar4, gDayNameStringsTable[(gLocalTime.days % 7)]);
     // StringExpandPlaceholders(gStringVar4, gText_ContinueMenuTime); // prints "time" word, from version before weekday was added and leaving it here in case anyone would prefer to use it
     AddTextPrinterParameterized(sStartClockWindowId, 1, gStringVar4, 0, 1, 0xFF, NULL); 
 
     ptr = ConvertIntToDecimalStringN(gStringVar4, convertedHours, STR_CONV_MODE_LEFT_ALIGN, 3);
     *ptr = 0xF0;
 
-    ConvertIntToDecimalStringN(ptr + 1, GetMinute(), STR_CONV_MODE_LEADING_ZEROS, 2);
+    ConvertIntToDecimalStringN(ptr + 1, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
     AddTextPrinterParameterized(sStartClockWindowId, 1, gStringVar4, GetStringRightAlignXOffset(1, suffix, CLOCK_WINDOW_WIDTH) - (CLOCK_WINDOW_WIDTH - GetStringRightAlignXOffset(1, gStringVar4, CLOCK_WINDOW_WIDTH) + 3), 1, 0xFF, NULL); // print time
 
     AddTextPrinterParameterized(sStartClockWindowId, 1, suffix, GetStringRightAlignXOffset(1, suffix, CLOCK_WINDOW_WIDTH), 1, 0xFF, NULL); // print am/pm
@@ -611,7 +608,6 @@ static bool32 InitStartMenuStep(void)
         sInitStartMenuData[0]++;
         break;
     case 3:
-        ShowTimeWindow();
         if (GetSafariZoneFlag())
             ShowSafariBallsWindow();
         else if (InBattlePyramid())
@@ -710,7 +706,6 @@ void ShowStartMenu(void)
 
 static bool8 HandleStartMenuInput(void)
 {
-    UpdateClockDisplay();
     if (JOY_NEW(DPAD_UP))
     {
         PlaySE(SE_SELECT);
@@ -738,8 +733,7 @@ static bool8 HandleStartMenuInput(void)
             && gMenuCallback != StartMenuExitCallback
             && gMenuCallback != StartMenuDebugCallback
             && gMenuCallback != StartMenuSafariZoneRetireCallback
-            && gMenuCallback != StartMenuBattlePyramidRetireCallback
-            && gMenuCallback != WaitingMenuCallback)
+            && gMenuCallback != StartMenuBattlePyramidRetireCallback)
         {
            FadeScreen(FADE_TO_BLACK, 0);
         }
@@ -757,55 +751,6 @@ static bool8 HandleStartMenuInput(void)
     RemoveExtraStartMenuWindows();
     ShowTimeWindow();
     return FALSE;
-}
-
-void UpdateClockDisplay(void)
-{
-    u8 timeInHours;
-    if (!FlagGet(FLAG_TEMP_5))
-        return;
-    RtcCalcLocalTime();
-    if (GetHour() < 12)
-    {
-        if (GetHour() == 0)
-            timeInHours = 12;
-        else
-            timeInHours = GetHour();
-    }
-    else if (GetHour() == 12)
-    {
-        timeInHours = 12;
-    }
-    else
-    {
-        timeInHours = GetHour() - 12;
-    }
-    ConvertIntToDecimalStringN(gStringVar1, timeInHours, STR_CONV_MODE_LEADING_ZEROS, 2);
-    ConvertIntToDecimalStringN(gStringVar2, GetMinute(), STR_CONV_MODE_LEADING_ZEROS, 2);
-    if (GetSecond() % 2)
-    {
-        if (GetHour() < 12)
-            StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAM);
-        else
-            StringExpandPlaceholders(gStringVar4, gText_CurrentTimePM);
-    }
-    else
-    {
-        if (GetHour() < 12)
-            StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAMOff);
-        else
-            StringExpandPlaceholders(gStringVar4, gText_CurrentTimePMOff);
-    }
-
-    AddTextPrinterParameterized(sCurrentTimeWindowId, 1, gStringVar4, 0, 1, 0xFF, NULL);
-    StringCopy(gStringVar4, gDayNameStringsTable[GetDayOfWeek()]);    
-    AddTextPrinterParameterized(sCurrentTimeWindowId, 1, gStringVar4, 0, 16, 0xFF, NULL);
-    StringCopy(gStringVar1, gMonthNameStringsTable[GetMonth()]);
-    ConvertIntToDecimalStringN(gStringVar2, GetDay(), STR_CONV_MODE_RIGHT_ALIGN, 2);
-    ConvertIntToDecimalStringN(gStringVar3, GetYear(), STR_CONV_MODE_LEFT_ALIGN, 4);
-    StringExpandPlaceholders(gStringVar4, gText_Date);
-    AddTextPrinterParameterized(sCurrentTimeWindowId, 1, gStringVar4, 0, 32, 0xFF, NULL);
-    CopyWindowToVram(sCurrentTimeWindowId, 2);
 }
 
 static bool8 StartMenuPokedexCallback(void)
@@ -948,15 +893,6 @@ static bool8 StartMenuSafariZoneRetireCallback(void)
     RemoveExtraStartMenuWindows();
     HideStartMenu();
     SafariZoneRetirePrompt();
-
-    return TRUE;
-}
-
-static bool8 WaitingMenuCallback(void)
-{
-    RemoveExtraStartMenuWindows();
-    HideStartMenu();
-    ScriptContext_SetupScript(WaitingMenu);
 
     return TRUE;
 }

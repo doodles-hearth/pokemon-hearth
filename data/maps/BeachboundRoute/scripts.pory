@@ -11,7 +11,7 @@ const LOCALID_MUGGED_WOMAN = 22
 
 mapscripts BeachboundRoute_MapScripts {
 		MAP_SCRIPT_ON_LOAD {
-        call(BeachboundRoute_NPCSchedule)
+        call(BeachboundRoute_EventScript_TimeBasedEvents)
     }
 }
 

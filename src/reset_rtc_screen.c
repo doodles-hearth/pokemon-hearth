@@ -693,8 +693,6 @@ static void Task_ResetRtcScreen(u8 taskId)
                 DestroyTask(tSubTaskId);
                 RtcReset();
                 RtcCalcLocalTimeOffset(
-                    gLocalTime.years,
-                    gLocalTime.months,
                     gLocalTime.days,
                     gLocalTime.hours,
                     gLocalTime.minutes,

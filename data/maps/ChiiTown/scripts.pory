@@ -2,22 +2,11 @@ const FLAG_TAILLOW_1 = FLAG_TEMP_1
 const FLAG_TAILLOW_2 = FLAG_TEMP_2
 const FLAG_FLETCHLING_1 = FLAG_TEMP_3
 const FLAG_FLETCHLING_2 = FLAG_TEMP_4
-
 const VAR_HOUR_OF_DAY = VAR_0x8000
-
-const VAR_DAY = VAR_0x8000
-const VAR_MONTH = VAR_0x8001
-const VAR_YEAR = VAR_0x8002
-
-const CHII_TOWN_LITTLE_GIRL = 3
-const CHII_TOWN_LITTLE_GIRL_FLAG = FLAG_TEMP_5
-const CHII_TOWN_MOM = 11
-const CHII_TOWN_MOM_FLAG = FLAG_TEMP_6
 
 mapscripts ChiiTown_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
         call(ChiiTown_EventScript_SpawnBirds)
-		call(ChiiTown_NPCSchedules)
     }
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2: ChiiTown_EventScript_SetTrespassVar

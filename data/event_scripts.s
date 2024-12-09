@@ -1155,9 +1155,8 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/follower.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
-	.include "data/scripts/time_menu.inc"
 
-	.include "data/scripts/schedule/routes.inc"
+	.include "data/scripts/days/sunday.inc"
 
 	.include "data/maps/SunriseVillage/scripts.inc"
 
@@ -1166,17 +1165,14 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/GinkoWoods/scripts.inc"
 
 	.include "data/maps/ChiiTown/scripts.inc"
-	.include "data/scripts/schedule/chii_town.inc"
 
 	.include "data/maps/TranquilRoute/scripts.inc"
 
 	.include "data/maps/SunriseVillage_PlayersHouse_LR/scripts.inc"
 
 	.include "data/maps/SakuTown/scripts.inc"
-	.include "data/scripts/schedule/saku_village.inc"
 
 	.include "data/maps/KuraTown/scripts.inc"
-	.include "data/scripts/schedule/kura_village.inc"
 
 	.include "data/maps/BeachboundRoute/scripts.inc"
 

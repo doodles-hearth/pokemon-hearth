@@ -17,22 +17,22 @@ struct Time gLocalTime;
 
 // const rom
 
-static const struct SiiRtcInfo sRtcDummy = {0, MONTH_ONE, 1}; // 2000 Jan 1
+static const struct SiiRtcInfo sRtcDummy = {0, MONTH_JAN, 1}; // 2000 Jan 1
 
 static const s32 sNumDaysInMonths[MONTH_COUNT] =
 {
-    [MONTH_ONE - 1] = 31,
-    [MONTH_TWO - 1] = 28,
-    [MONTH_THREE - 1] = 31,
-    [MONTH_FOUR - 1] = 30,
-    [MONTH_FIVE - 1] = 31,
-    [MONTH_SIX - 1] = 30,
-    [MONTH_SEVEN - 1] = 31,
-    [MONTH_EIGHT - 1] = 31,
-    [MONTH_NINE - 1] = 30,
-    [MONTH_TEN - 1] = 31,
-    [MONTH_ELEVEN - 1] = 30,
-    [MONTH_TWELVE - 1] = 31,
+    [MONTH_JAN - 1] = 31,
+    [MONTH_FEB - 1] = 28,
+    [MONTH_MAR - 1] = 31,
+    [MONTH_APR - 1] = 30,
+    [MONTH_MAY - 1] = 31,
+    [MONTH_JUN - 1] = 30,
+    [MONTH_JUL - 1] = 31,
+    [MONTH_AUG - 1] = 31,
+    [MONTH_SEP - 1] = 30,
+    [MONTH_OCT - 1] = 31,
+    [MONTH_NOV - 1] = 30,
+    [MONTH_DEC - 1] = 31,
 };
 
 void RtcDisableInterrupts(void)
@@ -73,47 +73,32 @@ u16 ConvertDateToDayCount(u8 year, u8 month, u8 day)
     s32 i;
     u16 dayCount = 0;
 
-    
-    if(OW_USE_FAKE_RTC)
+    for (i = year - 1; i >= 0; i--)
     {
-        dayCount = year * MONTHS_PER_YEAR * DAYS_PER_MONTH + month * DAYS_PER_MONTH + day;
+        dayCount += 365;
 
-        return dayCount;
-    }
-
-    else{
-        for (i = year - 1; i >= 0; i--)
-        {
-            dayCount += 365;
-
-            if (IsLeapYear(i) == TRUE)
-                dayCount++;
-        }
-
-        for (i = 0; i < month - 1; i++)
-            dayCount += sNumDaysInMonths[i];
-
-        if (month > MONTH_TWO && IsLeapYear(year) == TRUE)
+        if (IsLeapYear(i) == TRUE)
             dayCount++;
-
-        dayCount += day;
-
-        return dayCount;
     }
+
+    for (i = 0; i < month - 1; i++)
+        dayCount += sNumDaysInMonths[i];
+
+    if (month > MONTH_FEB && IsLeapYear(year) == TRUE)
+        dayCount++;
+
+    dayCount += day;
+
+    return dayCount;
 }
-
-#ifdef OW_USE_FAKE_RTC
-
-u16 RtcGetYearCount(struct SiiRtcInfo *rtc)
-{
-   return rtc->day;
-}
-
-#endif
 
 u16 RtcGetDayCount(struct SiiRtcInfo *rtc)
 {
     u8 year, month, day;
+
+    if (OW_USE_FAKE_RTC)
+        return rtc->day;
+
     year = ConvertBcdToBinary(rtc->year);
     month = ConvertBcdToBinary(rtc->month);
     day = ConvertBcdToBinary(rtc->day);
@@ -213,7 +198,7 @@ u16 RtcCheckInfo(struct SiiRtcInfo *rtc)
     if (value == 0xFF)
         errorFlags |= RTC_ERR_INVALID_DAY;
 
-    if (month == MONTH_TWO)
+    if (month == MONTH_FEB)
     {
         if (value > IsLeapYear(year) + sNumDaysInMonths[month - 1])
             errorFlags |= RTC_ERR_INVALID_DAY;
@@ -244,6 +229,12 @@ u16 RtcCheckInfo(struct SiiRtcInfo *rtc)
 
 void RtcReset(void)
 {
+    if (OW_USE_FAKE_RTC)
+    {
+        memset(FakeRtc_GetCurrentTime(), 0, sizeof(struct Time));
+        return;
+    }
+
     RtcDisableInterrupts();
     SiiRtcReset();
     RtcRestoreInterrupts();
@@ -301,9 +292,6 @@ void RtcCalcTimeDifference(struct SiiRtcInfo *rtc, struct Time *result, struct T
     result->minutes = ConvertBcdToBinary(rtc->minute) - t->minutes;
     result->hours = ConvertBcdToBinary(rtc->hour) - t->hours;
     result->days = days - t->days;
-    result->dayOfWeek = ConvertBcdToBinary(rtc->dayOfWeek) - t->dayOfWeek;
-    result->months = ConvertBcdToBinary(rtc->month) - t->months;
-    result->years = ConvertBcdToBinary(rtc->year) - t->years;
 
     if (result->seconds < 0)
     {
@@ -321,26 +309,7 @@ void RtcCalcTimeDifference(struct SiiRtcInfo *rtc, struct Time *result, struct T
     {
         result->hours += HOURS_PER_DAY;
         --result->days;
-        --result->dayOfWeek;
     }
-
-    if (result->dayOfWeek < 0)
-    {
-        result->dayOfWeek += DAYS_PER_WEEK;
-    }
-
-    if (result->days < 1)
-    {
-        result->days += DAYS_PER_MONTH;
-        --result->months;
-    }
-
-    if (result->months < 1)
-    {
-        result->months += MONTHS_PER_YEAR;
-        --result->years;
-    }
-    
 }
 
 void RtcCalcLocalTime(void)
@@ -359,34 +328,23 @@ bool8 IsBetweenHours(s32 hours, s32 begin, s32 end)
 
 u8 GetTimeOfDay(void)
 {
-    u32 hour = GetHour();
-
-    if (IsBetweenHours(hour, DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END))
-        return TIME_DEAD_NIGHT;
-    else if (IsBetweenHours(hour, EARLY_HOUR_BEGIN, EARLY_HOUR_END))
-        return TIME_EARLY;
-    else if (IsBetweenHours(hour, MORNING_HOUR_BEGIN, MORNING_HOUR_END))
+    RtcCalcLocalTime();
+    if (IsBetweenHours(gLocalTime.hours, MORNING_HOUR_BEGIN, MORNING_HOUR_END))
         return TIME_MORNING;
-    else if (IsBetweenHours(hour, LUNCHTIME_HOUR_BEGIN, LUNCHTIME_HOUR_END))
-        return TIME_LUNCHTIME;
-    else if (IsBetweenHours(hour, AFTERNOON_HOUR_BEGIN, AFTERNOON_HOUR_END))
-        return TIME_AFTERNOON;
-    else if (IsBetweenHours(hour, EVENING_HOUR_BEGIN, EVENING_HOUR_END))
+    else if (IsBetweenHours(gLocalTime.hours, EVENING_HOUR_BEGIN, EVENING_HOUR_END))
         return TIME_EVENING;
-    else if (IsBetweenHours(hour, NIGHT_HOUR_BEGIN, NIGHT_HOUR_END))
+    else if (IsBetweenHours(gLocalTime.hours, NIGHT_HOUR_BEGIN, NIGHT_HOUR_END))
         return TIME_NIGHT;
-    return 0;
+    return TIME_DAY;
 }
 
-void RtcInitLocalTimeOffset(s32 years, s32 months, s32 days, s32 hours, s32 minutes, s32 seconds)
+void RtcInitLocalTimeOffset(s32 hour, s32 minute)
 {
-    RtcCalcLocalTimeOffset(0, 0, 0, hours, minutes, 0);
+    RtcCalcLocalTimeOffset(0, hour, minute, 0);
 }
 
-void RtcCalcLocalTimeOffset(s32 years, s32 months, s32 days, s32 hours, s32 minutes, s32 seconds)
+void RtcCalcLocalTimeOffset(s32 days, s32 hours, s32 minutes, s32 seconds)
 {
-    gLocalTime.years = years;
-    gLocalTime.months = months;
     gLocalTime.days = days;
     gLocalTime.hours = hours;
     gLocalTime.minutes = minutes;
@@ -401,8 +359,6 @@ void CalcTimeDifference(struct Time *result, struct Time *t1, struct Time *t2)
     result->minutes = t2->minutes - t1->minutes;
     result->hours = t2->hours - t1->hours;
     result->days = t2->days - t1->days;
-    result->months = t2->months - t1->months;
-    result->years = t2->years - t1->years;
 
     if (result->seconds < 0)
     {
@@ -420,28 +376,6 @@ void CalcTimeDifference(struct Time *result, struct Time *t1, struct Time *t2)
     {
         result->hours += HOURS_PER_DAY;
         --result->days;
-        --result->dayOfWeek;
-    }
-
-    if (result->dayOfWeek < 0)
-    {
-        result->dayOfWeek += DAYS_PER_WEEK;
-    }
-    
-    if (result->days < 1)
-    {
-        result->days += DAYS_PER_MONTH;
-        --result->months;
-    }
-
-    if (result->months < 1)
-    {
-        result->months += MONTHS_PER_YEAR;
-        --result->years;
-    }
-    if (result->years < 1)
-    {
-        result->years = 1;
     }
 }
 
@@ -484,49 +418,4 @@ void FormatDecimalTimeWithoutSeconds(u8 *txtPtr, s8 hour, s8 minute, bool32 is24
 
     *txtPtr++ = EOS;
     *txtPtr = EOS;
-}
-
-u8 GetDay(void)
-{
-    RtcGetInfo(&sRtc);
-
-    return ConvertBcdToBinary(sRtc.day);
-}
-
-
-u8 GetMonth(void)
-{
-    RtcGetInfo(&sRtc);
-
-    return ConvertBcdToBinary(sRtc.month);
-}
-
-u8 GetYear(void)
-{
-    RtcGetInfo(&sRtc);
-
-    return ConvertBcdToBinary(sRtc.year);
-}
-u8 GetHour(void)
-{
-    RtcGetInfo(&sRtc);
-    return ConvertBcdToBinary(sRtc.hour);
-}
-
-u8 GetMinute(void)
-{
-    RtcGetInfo(&sRtc);
-    return ConvertBcdToBinary(sRtc.minute);
-}
-
-u8 GetSecond(void)
-{
-    RtcGetInfo(&sRtc);
-    return ConvertBcdToBinary(sRtc.second);
-}
-
-u8 GetDayOfWeek(void)
-{
-    RtcGetInfo(&sRtc);
-    return ConvertBcdToBinary(sRtc.dayOfWeek);
 }

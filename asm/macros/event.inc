@@ -324,11 +324,6 @@
 	.byte 0x2e
 	.endm
 
-	@ Sets the values of variables VAR_0x8000, VAR_0x8001, and VAR_0x8002 to the current day, months, and year.
-	.macro getdate
-	callnative ScrCmd_getdate
-	.endm
-
 	@ Sets the value of variable VAR_0x8000 to the current time of day (TIME_MORNING, TIME_DAY, TIME_EVENING, TIME_NIGHT).
 	.macro gettimeofday
 	.byte 0xe8
@@ -1912,9 +1907,9 @@
 	.2byte \initialSelected
 	.byte \callbacks
 	.byte (.Ldynmultichoice_\@_2 - .Ldynmultichoice_\@_1) / 4
-	.Ldynmultichoice_\@_1:
+.Ldynmultichoice_\@_1:
 	.4byte \argv
-	.Ldynmultichoice_\@_2:
+.Ldynmultichoice_\@_2:
 	.endm
 
 	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made.
@@ -1932,91 +1927,6 @@
 
 	.macro dynmultistack left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req
 	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, \shouldSort, \initialSelected, \callbacks, NULL
-	.endm
-
-	@ Fake RTC macros
-
-	@ Use to advance time by a specific amount. 
-	.macro addtime years:req, months:req, days:req, hours:req, minutes:req, seconds:req
-	callnative RtcCmd_addtime
-	.4byte \years
-	.4byte \months
-	.4byte \days 
-	.4byte \hours
-	.4byte \minutes
-	.4byte \seconds
-	.endm
-
-	@ Sets the time to a specific year, date, and time.
-	.macro settime years:req, months:req, days:req, hours:req, minutes:req, seconds:req
-	callnative RtcCmd_settime
-	.4byte \years
-	.4byte \months
-	.4byte \days 
-	.4byte \hours
-	.4byte \minutes
-	.4byte \seconds
-	.endm
-
-	@ Specific Time Unit macros
-	@ Adds a number of years to the current time.
-	.macro addyear years:req
-	callnative RtcCmd_addyear
-	.4byte \years
-	.endm
-
-	@ Adds a number of months to the current time.
-	.macro addmonth months:req
-	callnative RtcCmd_addmonth
-	.4byte \months
-	.endm
-
-	@ Adds a number of days to the current time.
-	.macro addday days:req
-	callnative RtcCmd_addday
-	.4byte \days
-	.endm
-
-	@ Adds a number of hours to the current time.
-	.macro addhour hours:req
-	callnative RtcCmd_addhour
-	.4byte \hours
-	.endm
-
-	@ Adds a number of minutes to the current time.
-	.macro addminute minutes:req
-	callnative RtcCmd_addminute
-	.4byte \minutes
-	.endm
-
-	@ Sets the time to the specified number of years.
-	.macro setyear years:req
-	callnative RtcCmd_setyear
-	.4byte \years
-	.endm
-
-	@ Sets the time to the specified number of months.
-	.macro setmonth months:req
-	callnative RtcCmd_setmonth
-	.4byte \months
-	.endm
-
-	@ Sets the time to the specified number of days.
-	.macro setday days:req
-	callnative RtcCmd_setday
-	.4byte \days
-	.endm
-
-	@ Sets the time to the specified number of hours.
-	.macro sethour hours:req
-	callnative RtcCmd_sethour
-	.4byte \hours
-	.endm
-
-	@ Sets the time to the specified number of minutes.
-	.macro setminute minutes:req
-	callnative RtcCmd_setminute
-	.4byte \minutes
 	.endm
 
 @ Supplementary
@@ -2476,6 +2386,13 @@
 	callnative Script_ToggleFakeRtc
 	.endm
 
+	.macro advancefakertcby hours:req, minutes:req, seconds:req
+	callnative Script_AdvanceTimeBy
+	.2byte \hours
+	.2byte \minutes
+	.2byte \seconds
+	.endm
+
 	@ ============================ @
 	@ ITEM DESCRIPTION HEADER MACROS
 	@ Used with OW_SHOW_ITEM_DESCRIPTIONS config
@@ -2497,4 +2414,3 @@
 	callnative ScrCmd_travellingmerchant
 	waitstate
 	.endm
-	

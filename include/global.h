@@ -195,12 +195,9 @@ struct UCoords32
 struct Time
 {
     /*0x00*/ s16 days;
-    /*0x02*/  s8 hours;
-    /*0x03*/  s8 minutes;
-    /*0x04*/  s8 seconds;
-    /*0x05*/  s8 dayOfWeek;
-    /*0x06*/  s8 months;
-    /*0x07*/ s16 years; 
+    /*0x02*/ s8 hours;
+    /*0x03*/ s8 minutes;
+    /*0x04*/ s8 seconds;
 };
 
 #define DAY_SUNDAY          0
@@ -224,7 +221,7 @@ struct Time
 #define    MONTH_TEN           10
 #define    MONTH_ELEVEN        11
 #define    MONTH_TWELVE        12
-#define    MONTH_COUNT      MONTH_TWELVE
+#define    MONTH_COUNT         MONTH_DEC
 
 
 struct SaveBlock3
@@ -1067,7 +1064,6 @@ struct SaveBlock1
 #if FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1 == FALSE
     /*0x988*/ u8 filler1[0x34]; // Previously Dex Flags, feel free to remove.
 #endif //FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1
-    /*0x989*/ u8 initialVBlank;
     /*0x9BC*/ u16 berryBlenderRecords[3];
     /*0x9C2*/ u8 unused_9C2[6];
 #if FREE_MATCH_CALL == FALSE

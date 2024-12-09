@@ -17,7 +17,6 @@
 #include "event_object_lock.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
-#include "fake_rtc.h"
 #include "field_message_box.h"
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
@@ -38,6 +37,7 @@
 #include "overworld.h"
 #include "rotating_tile_puzzle.h"
 #include "rtc.h"
+#include "fake_rtc.h"
 #include "script.h"
 #include "script_menu.h"
 #include "script_movement.h"
@@ -45,7 +45,6 @@
 #include "shop.h"
 #include "slot_machine.h"
 #include "sound.h"
-#include "strings.h"
 #include "string_util.h"
 #include "text.h"
 #include "text_window.h"
@@ -55,8 +54,6 @@
 #include "list_menu.h"
 #include "malloc.h"
 #include "constants/event_objects.h"
-
-#include "gba/gba.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);
@@ -704,7 +701,7 @@ bool8 ScrCmd_initclock(struct ScriptContext *ctx)
     u8 hour = VarGet(ScriptReadHalfword(ctx));
     u8 minute = VarGet(ScriptReadHalfword(ctx));
 
-    RtcInitLocalTimeOffset(1, 1, 1, hour, minute, 0);
+    RtcInitLocalTimeOffset(hour, minute);
     return FALSE;
 }
 
@@ -717,7 +714,6 @@ bool8 ScrCmd_dotimebasedevents(struct ScriptContext *ctx)
 bool8 ScrCmd_gettimeofday(struct ScriptContext *ctx)
 {
     gSpecialVar_0x8000 = GetTimeOfDay();
-    MgbaPrintf(MGBA_LOG_WARN, "Time: %u", VarGet(gSpecialVar_0x8000));
     return FALSE;
 }
 
@@ -728,22 +724,8 @@ bool8 ScrCmd_gettime(struct ScriptContext *ctx)
     gSpecialVar_0x8001 = time->minutes;
     gSpecialVar_0x8002 = time->seconds;
 
-    StringCopy(gStringVar1, gMonthNameStringsTable[time->months]);
     ConvertIntToDecimalStringN(gStringVar2, time->days, STR_CONV_MODE_LEADING_ZEROS, 2);
-    ConvertIntToDecimalStringN(gStringVar3, time->years, STR_CONV_MODE_RIGHT_ALIGN, 2);
-    return FALSE;
-}
 
-bool8 ScrCmd_getdate(struct ScriptContext *ctx)
-{
-    struct Time *time = FakeRtc_GetCurrentTime();
-    gSpecialVar_0x8000 = time->years;
-    gSpecialVar_0x8001 = time->months;
-    gSpecialVar_0x8002 = time->days;
-
-    StringCopy(gStringVar1, gMonthNameStringsTable[time->months]);
-    ConvertIntToDecimalStringN(gStringVar2, time->days, STR_CONV_MODE_LEADING_ZEROS, 2);
-    ConvertIntToDecimalStringN(gStringVar3, time->years, STR_CONV_MODE_RIGHT_ALIGN, 2);
     return FALSE;
 }
 

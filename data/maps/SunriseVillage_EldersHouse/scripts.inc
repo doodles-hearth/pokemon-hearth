@@ -1111,7 +1111,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
 	.string "themselves as a means of protection!\p"
 	.string "There were very few experienced\n"
 	.string "Pokémon wielders in Toku until now.\l"
-	.string "This is about change.\p"
+	.string "This is about to change.\p"
 	.string "With a trained Pokémon by your side,\n"
 	.string "you'll be able to defend yourselves\l"
 	.string "on your own.\p"
@@ -1201,7 +1201,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10:
 # 392 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	.string "I call this the “Pokédex”.\n"
+	.string "I call this the “PokéDex”.\n"
 	.string "It is an encyclopedia containing\l"
 	.string "vital information about Pokémon\l"
 	.string "from the whole region!\p"

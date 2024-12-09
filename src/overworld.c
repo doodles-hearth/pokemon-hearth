@@ -45,7 +45,6 @@
 #include "roamer.h"
 #include "rotating_gate.h"
 #include "rtc.h"
-#include "fake_rtc.h"
 #include "safari_zone.h"
 #include "save.h"
 #include "save_location.h"
