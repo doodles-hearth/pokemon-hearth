@@ -35,11 +35,13 @@ jobs:
       - name: ROM
         env:
           COMPARE: 0
+          SKIP_PORY: 1
         run: make -j${nproc} -O all
 
       - name: Test
         env:
           TEST: 1
+          SKIP_PORY: 1
         run: |
           make -j${nproc} -O pokeemerald-test.elf
           make -j${nproc} check

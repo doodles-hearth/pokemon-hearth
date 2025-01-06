@@ -42,6 +42,7 @@ TEST         ?= 0
 ANALYZE      ?= 0
 UNUSED_ERROR ?= 0
 DEBUG        ?= 0
+SKIP_PORY    ?= 0
 
 ifeq (check,$(MAKECMDGOALS))
   TEST := 1
@@ -49,6 +50,10 @@ endif
 
 ifeq (debug,$(MAKECMDGOALS))
   DEBUG := 1
+endif
+
+ifeq (skippory,$(MAKECMDGOALS))
+  SKIP_PORY := 1
 endif
 
 CPP := $(PREFIX)cpp
@@ -312,7 +317,11 @@ $(CRY_SUBDIR)/uncomp_%.bin: $(CRY_SUBDIR)/uncomp_%.aif ; $(AIF) $< $@
 $(CRY_SUBDIR)/%.bin: $(CRY_SUBDIR)/%.aif ; $(AIF) $< $@ --compress
 sound/%.bin: sound/%.aif ; $(AIF) $< $@
 # data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -fc tools/poryscript/font_config.json -l 198
+
+ifneq ($(SKIP_PORY),1)
 data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -fc tools/poryscript/font_config.json -l 198 -cc tools/poryscript/command_config.json
+endif
+
 
 COMPETITIVE_PARTY_SYNTAX := $(shell PATH="$(PATH)"; echo 'COMPETITIVE_PARTY_SYNTAX' | $(CPP) $(CPPFLAGS) -imacros include/global.h | tail -n1)
 ifeq ($(COMPETITIVE_PARTY_SYNTAX),1)
