@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(gMovesInfo[MOVE_CURSE].effect == EFFECT_CURSE);
+    ASSUME(GetMoveEffect(MOVE_CURSE) == EFFECT_CURSE);
 }
 
 SINGLE_BATTLE_TEST("Curse lowers Speed, raises Attack, and raises Defense when used by non-Ghost-types")
@@ -67,3 +67,5 @@ SINGLE_BATTLE_TEST("Curse applies to the opponent if user is afflicted by Trick-
         HP_BAR(opponent, damage: opponentMaxHP / 4);
     }
 }
+
+TO_DO_BATTLE_TEST("Baton Pass passes Cursed status");

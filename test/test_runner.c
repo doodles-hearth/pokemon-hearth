@@ -10,7 +10,7 @@
 #include "test_runner.h"
 #include "test/test.h"
 
-#define TIMEOUT_SECONDS 55
+#define TIMEOUT_SECONDS 60
 
 void CB2_TestRunner(void);
 
@@ -276,7 +276,7 @@ top:
             {
                 if (gTasks[i].isActive)
                 {
-                    Test_MgbaPrintf("%p: task not freed", gTasks[i].func);
+                    Test_MgbaPrintf(":L%s:%d - %p: task not freed", gTestRunnerState.test->filename, SourceLine(0), gTasks[i].func);
                     gTestRunnerState.result = TEST_RESULT_FAIL;
                 }
             }
@@ -356,9 +356,14 @@ top:
             if (gTestRunnerState.result == TEST_RESULT_PASS)
             {
                 if (gTestRunnerState.result != gTestRunnerState.expectedResult)
+                {
+                    Test_MgbaPrintf(":L%s:%d", gTestRunnerState.test->filename, SourceLine(0));
                     Test_MgbaPrintf(":U%s%s\e[0m", color, result);
+                }
                 else
+                {
                     Test_MgbaPrintf(":P%s%s\e[0m", color, result);
+                }
             }
             else if (gTestRunnerState.result == TEST_RESULT_ASSUMPTION_FAIL)
                 Test_MgbaPrintf(":A%s%s\e[0m", color, result);

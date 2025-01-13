@@ -1,4 +1,5 @@
 #include "global.h"
+#include "move.h"
 #include "random.h"
 #include "constants/moves.h"
 #include "contest.h"
@@ -60,7 +61,7 @@ static s16 RoundUp(s16);
 bool8 AreMovesContestCombo(u16 lastMove, u16 nextMove)
 {
     int i;
-    u8 lastMoveComboStarterId = gMovesInfo[lastMove].contestComboStarterId;
+    u8 lastMoveComboStarterId = GetMoveContestComboStarter(lastMove);
 
     if (lastMoveComboStarterId == 0)
     {
@@ -70,7 +71,7 @@ bool8 AreMovesContestCombo(u16 lastMove, u16 nextMove)
     {
         for (i = 0; i < MAX_COMBO_MOVES; i++)
         {
-            if (lastMoveComboStarterId == gMovesInfo[nextMove].contestComboMoves[i])
+            if (lastMoveComboStarterId == GetMoveContestComboMoves(nextMove, i))
                 return TRUE;
         }
         return FALSE;
@@ -315,7 +316,7 @@ static void ContestEffect_JamsOthersButMissOneTurn(void)
 static void ContestEffect_StartleMonsSameTypeAppeal(void)
 {
     u16 move = eContestantStatus[eContestAppealResults.contestant].currMove;
-    JamByMoveCategory(gMovesInfo[move].contestCategory);
+    JamByMoveCategory(GetMoveContestCategory(move));
     SetContestantEffectStringID(eContestAppealResults.contestant, CONTEST_STRING_ATTEMPT_STARTLE);
 }
 
@@ -428,7 +429,7 @@ static void ContestEffect_MakeFollowingMonsNervous(void)
     for (i = 0; i < CONTESTANT_COUNT; i++)
     {
         if (eContestantStatus[i].hasJudgesAttention && IsContestantAllowedToCombo(i))
-            oddsMod[i] = gMovesInfo[eContestantStatus[i].prevMove].contestComboStarterId == 0 ? 0 : 10;
+            oddsMod[i] = GetMoveContestComboStarter(eContestantStatus[i].prevMove) == 0 ? 0 : 10;
         else
             oddsMod[i] = 0;
         oddsMod[i] -= (eContestantStatus[i].condition / 10) * 10;
@@ -524,7 +525,7 @@ static void ContestEffect_BetterIfFirst(void)
     if (gContestantTurnOrder[eContestAppealResults.contestant] == 0)
     {
         u16 move = eContestantStatus[eContestAppealResults.contestant].currMove;
-        eContestantStatus[eContestAppealResults.contestant].appeal += 2 * gContestEffects[gMovesInfo[move].contestEffect].appeal;
+        eContestantStatus[eContestAppealResults.contestant].appeal += 2 * gContestEffects[GetMoveContestEffect(move)].appeal;
         SetContestantEffectStringID(eContestAppealResults.contestant, CONTEST_STRING_HUSTLE_STANDOUT);
     }
 }
@@ -535,7 +536,7 @@ static void ContestEffect_BetterIfLast(void)
     if (gContestantTurnOrder[eContestAppealResults.contestant] == 3)
     {
         u16 move = eContestantStatus[eContestAppealResults.contestant].currMove;
-        eContestantStatus[eContestAppealResults.contestant].appeal += 2 * gContestEffects[gMovesInfo[move].contestEffect].appeal;
+        eContestantStatus[eContestAppealResults.contestant].appeal += 2 * gContestEffects[GetMoveContestEffect(move)].appeal;
         SetContestantEffectStringID(eContestAppealResults.contestant, CONTEST_STRING_WORK_HARD_UNNOTICED);
     }
 }
@@ -671,9 +672,9 @@ static void ContestEffect_BetterIfSameType(void)
     }
 
     move = eContestantStatus[eContestAppealResults.contestant].currMove;
-    if (gMovesInfo[move].contestCategory == gMovesInfo[eContestantStatus[j].currMove].contestCategory)
+    if (GetMoveContestCategory(move) == GetMoveContestCategory(eContestantStatus[j].currMove))
     {
-        eContestantStatus[eContestAppealResults.contestant].appeal += gContestEffects[gMovesInfo[move].contestEffect].appeal * 2;
+        eContestantStatus[eContestAppealResults.contestant].appeal += gContestEffects[GetMoveContestEffect(move)].appeal * 2;
         SetContestantEffectStringID(eContestAppealResults.contestant, CONTEST_STRING_SAME_TYPE_GOOD);
     }
 }
@@ -689,9 +690,9 @@ static void ContestEffect_BetterIfDiffType(void)
         for (i = 0; i < CONTESTANT_COUNT; i++)
         {
             if (eContestAppealResults.turnOrder[eContestAppealResults.contestant] - 1 == eContestAppealResults.turnOrder[i] &&
-                gMovesInfo[move].contestCategory != gMovesInfo[eContestantStatus[i].currMove].contestCategory)
+                GetMoveContestCategory(move) != GetMoveContestCategory(eContestantStatus[i].currMove))
             {
-                eContestantStatus[eContestAppealResults.contestant].appeal += gContestEffects[gMovesInfo[move].contestEffect].appeal * 2;
+                eContestantStatus[eContestAppealResults.contestant].appeal += gContestEffects[GetMoveContestEffect(move)].appeal * 2;
                 SetContestantEffectStringID(eContestAppealResults.contestant, CONTEST_STRING_DIFF_TYPE_GOOD);
                 break;
             }
@@ -871,7 +872,9 @@ static void ContestEffect_ScrambleNextTurnOrder(void)
                         break;
                     }
                     else
+                    {
                         rval--;
+                    }
                 }
             }
         }
@@ -889,7 +892,7 @@ static void ContestEffect_ScrambleNextTurnOrder(void)
 // An appeal that excites the audience in any CONTEST.
 static void ContestEffect_ExciteAudienceInAnyContest(void)
 {
-    if (gMovesInfo[eContestantStatus[eContestAppealResults.contestant].currMove].contestCategory != gSpecialVar_ContestCategory)
+    if (GetMoveContestCategory(eContestantStatus[eContestAppealResults.contestant].currMove) != gSpecialVar_ContestCategory)
     {
         eContestantStatus[eContestAppealResults.contestant].overrideCategoryExcitementMod = TRUE;
     }
@@ -911,7 +914,9 @@ static void ContestEffect_BadlyStartleMonsWithGoodAppeals(void)
                 eContestAppealResults.jam = RoundUp(eContestAppealResults.jam);
             }
             else
+            {
                 eContestAppealResults.jam = 10;
+            }
             eContestAppealResults.jamQueue[0] = i;
             eContestAppealResults.jamQueue[1] = CONTESTANT_NONE;
             if (WasAtLeastOneOpponentJammed())
@@ -976,7 +981,7 @@ static void JamByMoveCategory(u8 category)
     {
         if (eContestAppealResults.turnOrder[eContestAppealResults.contestant] > eContestAppealResults.turnOrder[i])
         {
-            if (category == gMovesInfo[eContestantStatus[i].currMove].contestCategory)
+            if (category == GetMoveContestCategory(eContestantStatus[i].currMove))
                 eContestAppealResults.jam = 40;
             else
                 eContestAppealResults.jam = 10;
@@ -1074,7 +1079,9 @@ static s16 RoundTowardsZero(s16 score)
             score -= 10 - absScore;
     }
     else
+    {
         score -= absScore;
+    }
     return score;
 }
 

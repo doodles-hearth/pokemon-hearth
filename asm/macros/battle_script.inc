@@ -478,9 +478,10 @@
 	.byte \battler
 	.endm
 
-	.macro switchinanim battler:req, dontClearSubstitute:req
+	.macro switchinanim battler:req, dontClearTransform:req, dontClearSubstitute:req
 	.byte 0x4e
 	.byte \battler
+	.byte \dontClearTransform
 	.byte \dontClearSubstitute
 	.endm
 
@@ -1426,11 +1427,6 @@
 	callnative BS_TryRevertWeatherForm
 	.endm
 
-	.macro applysaltcure battler:req
-	callnative BS_ApplySaltCure
-	.byte \battler
-	.endm
-
 	.macro trysetoctolock battler:req, failInstr:req
 	callnative BS_TrySetOctolock
 	.byte \battler
@@ -1525,8 +1521,8 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro jumpifargument argument:req, jumpInstr:req
-	callnative BS_JumpIfArgument
+	.macro jumpifmovepropertyargument argument:req, jumpInstr:req
+	callnative BS_JumpIfMovePropertyArgument
 	.byte \argument
 	.4byte \jumpInstr
 	.endm
@@ -2242,11 +2238,6 @@
 	.4byte \jumpInstr
 	.endm
 
-	.macro eeriespellppreduce failInstr:req
-	various BS_TARGET, VARIOUS_EERIE_SPELL_PP_REDUCE
-	.4byte \failInstr
-	.endm
-
 	.macro jumpifteamhealthy battler:req, jumpInstr:req
 	various \battler, VARIOUS_JUMP_IF_TEAM_HEALTHY
 	.4byte \jumpInstr
@@ -2347,11 +2338,11 @@
 	.endm
 
 	.macro swapsidestatuses
-	various BS_ATTACKER, VARIOUS_SWAP_SIDE_STATUSES
+	callnative BS_CourtChangeSwapSideStatuses
 	.endm
 
 	.macro swapstats stat:req
-	various BS_ATTACKER, VARIOUS_SWAP_STATS
+	callnative BS_SwapStats
 	.byte \stat
 	.endm
 

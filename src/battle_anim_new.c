@@ -4380,6 +4380,29 @@ const struct SpriteTemplate gSpriteTemplate_FlipTurnBack = {
     .callback = AnimAbsorptionOrb
 };
 
+// U-Turn
+const struct SpriteTemplate gUTurnBallSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_SMALL_BUBBLES,
+    .paletteTag = ANIM_TAG_RAZOR_LEAF,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gAffineAnims_ShadowBall,
+    .callback = AnimShadowBall,
+};
+
+const struct SpriteTemplate gUTurnBallBackSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_SMALL_BUBBLES,
+    .paletteTag = ANIM_TAG_RAZOR_LEAF,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gAffineAnims_ShadowBall,
+    .callback = AnimAbsorptionOrb,
+};
+
 // wicked blow
 static const union AffineAnimCmd sSpriteAffineAnim_DrainPunchFist[] = {
     AFFINEANIMCMD_FRAME(256, 256, 0, 1), //Double sprite size
@@ -9244,19 +9267,19 @@ void AnimTask_DynamaxGrowth(u8 taskId) // from CFRU
 
 void AnimTask_GetWeatherToSet(u8 taskId)
 {
-    switch (gMovesInfo[gCurrentMove].argument)
+    switch (GetMoveMaxEffect(gCurrentMove))
     {
         case MAX_EFFECT_SUN:
-            gBattleAnimArgs[ARG_RET_ID] = 1;
+            gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_SUN;
             break;
         case MAX_EFFECT_RAIN:
-            gBattleAnimArgs[ARG_RET_ID] = 2;
+            gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_RAIN;
             break;
         case MAX_EFFECT_SANDSTORM:
-            gBattleAnimArgs[ARG_RET_ID] = 3;
+            gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_SANDSTORM;
             break;
         case MAX_EFFECT_HAIL:
-            gBattleAnimArgs[ARG_RET_ID] = 4;
+            gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_HAIL;
             break;
     }
     DestroyAnimVisualTask(taskId);
