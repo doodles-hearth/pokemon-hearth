@@ -61,6 +61,7 @@ extern bool8 (*gFieldCallback2)(void);
 extern u8 gLocalLinkPlayerId;
 extern u8 gFieldLinkPlayerCount;
 extern bool8 gExitStairsMovementDisabled;
+extern bool8 gSkipShowMonAnim;
 extern u8 gTimeOfDay;
 extern u16 gTimeUpdateCounter;
 
