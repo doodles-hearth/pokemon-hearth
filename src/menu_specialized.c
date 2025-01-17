@@ -940,7 +940,7 @@ static u8 *GetConditionMenuMonString(u8 *dst, u16 boxId, u16 monId)
         level = GetLevelFromBoxMonExp(boxMon);
     }
 
-    if ((species == SPECIES_NIDORAN_F || species == SPECIES_NIDORAN_M) && !StringCompare(dst, GetSpeciesName(species)))
+    if ((species == SPECIES_NIDORAN_F || species == SPECIES_NIDORAN) && !StringCompare(dst, GetSpeciesName(species)))
         gender = MON_GENDERLESS;
 
     for (str = dst; *str != EOS; str++)

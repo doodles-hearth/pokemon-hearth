@@ -4155,7 +4155,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .teachableLearnset = sNidoqueenTeachableLearnset,
     },
 
-    [SPECIES_NIDORAN_M] =
+    [SPECIES_NIDORAN] =
     {
         .baseHP        = 46,
         .baseAttack    = 57,
@@ -4167,7 +4167,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .catchRate = 235,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 55 : 60,
         .evYield_Attack = 1,
-        .genderRatio = MON_MALE,
+        .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
@@ -4178,17 +4178,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .abilities = { ABILITY_POISON_POINT, ABILITY_NONE, ABILITY_HUSTLE },
     #endif
         .bodyColor = BODY_COLOR_PURPLE,
-        .speciesName = _("Nidoran♂"),
+        .speciesName = _("Nidoran"),
         .cryId = CRY_NIDORAN_M,
         .natDexNum = NATIONAL_DEX_NIDORAN_M,
         .categoryName = _("Poison Pin"),
         .height = 5,
         .weight = 90,
         .description = COMPOUND_STRING(
-            "The male Nidoran has developed muscles\n"
-            "that freely move its ears in any direction.\n"
-            "Even the slightest sound does not escape\n"
-            "this Pokémon's notice."),
+            "Male and female individuals of this species\n"
+            "are built differently: the blue female's\n"
+            "barbs are more toxic, while the purple male\n"
+            "has bigger, finer ears."),
         .pokemonScale = 511,
         .pokemonOffset = 20,
         .trainerScale = 256,
@@ -4206,6 +4206,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .shinyPalette = gMonShinyPalette_NidoranM,
         .iconSprite = gMonIcon_NidoranM,
         .iconPalIndex = 2,
+#if P_GENDER_DIFFERENCES
+        .frontPicFemale = gMonFrontPic_NidoranF,
+        .backPicFemale = gMonBackPic_NidoranF,
+        .frontPicSizeFemale = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(32, 40) : MON_COORDS_SIZE(40, 40),
+        .backPicSizeFemale = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(40, 40) : MON_COORDS_SIZE(48, 40),
+        .paletteFemale = gMonPalette_NidoranF,
+    #if P_CUSTOM_GENDER_DIFF_ICONS == TRUE
+        .iconSpriteFemale = gMonIcon_NidoranF,
+        .iconPalIndexFemale = P_GBA_STYLE_SPECIES_ICONS ? 2 : 0,
+    #endif
+#endif //P_GENDER_DIFFERENCES
         SHADOW(1, 0, SHADOW_SIZE_S)
         FOOTPRINT(NidoranM)
         OVERWORLD(
@@ -4216,10 +4227,18 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gOverworldPalette_NidoranM,
             gShinyOverworldPalette_NidoranM
         )
+        OVERWORLD_FEMALE(
+            sPicTable_NidoranF,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            gOverworldPalette_NidoranF,
+            gShinyOverworldPalette_NidoranF
+        )
         .levelUpLearnset = sNidoranMLevelUpLearnset,
         .teachableLearnset = sNidoranMTeachableLearnset,
         .eggMoveLearnset = sNidoranMEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_NIDORINO}),
+        .evolutions = EVOLUTION({EVO_LEVEL_FEMALE, 16, SPECIES_NIDORINA}, {EVO_LEVEL_MALE, 16, SPECIES_NIDORINO}),
     },
 
     [SPECIES_NIDORINO] =

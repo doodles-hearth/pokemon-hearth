@@ -38,7 +38,7 @@
 #define SPECIES_NIDORAN_F                               29
 #define SPECIES_NIDORINA                                30
 #define SPECIES_NIDOQUEEN                               31
-#define SPECIES_NIDORAN_M                               32
+#define SPECIES_NIDORAN                                 32
 #define SPECIES_NIDORINO                                33
 #define SPECIES_NIDOKING                                34
 #define SPECIES_CLEFAIRY                                35
