@@ -382,7 +382,7 @@ SunriseVillage_Event_TestGyarados::
 # 279 "data/maps/SunriseVillage/scripts.pory"
 	lock
 # 280 "data/maps/SunriseVillage/scripts.pory"
-	givemon SPECIES_SPHEAL, 100
+	givemon SPECIES_SNIVY, 100
 # 281 "data/maps/SunriseVillage/scripts.pory"
 	setwildbattle SPECIES_KOTORA, 5
 # 282 "data/maps/SunriseVillage/scripts.pory"

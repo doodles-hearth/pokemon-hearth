@@ -61,11 +61,11 @@ SakuTown_EventScript_RivalAtSakuWall_1:
 # 50 "data/maps/SakuTown/scripts.pory"
 	switch VAR_STARTER_MON
 # 51 "data/maps/SakuTown/scripts.pory"
-	case SPECIES_ARON, SakuTown_EventScript_RivalAtSakuWall_7
+	case SPECIES_FROAKIE, SakuTown_EventScript_RivalAtSakuWall_7
 # 53 "data/maps/SakuTown/scripts.pory"
-	case SPECIES_SPHEAL, SakuTown_EventScript_RivalAtSakuWall_8
+	case SPECIES_SNIVY, SakuTown_EventScript_RivalAtSakuWall_8
 # 55 "data/maps/SakuTown/scripts.pory"
-	case SPECIES_TRAPINCH, SakuTown_EventScript_RivalAtSakuWall_9
+	case SPECIES_CYNDAQUIL, SakuTown_EventScript_RivalAtSakuWall_9
 SakuTown_EventScript_RivalAtSakuWall_5:
 # 59 "data/maps/SakuTown/scripts.pory"
 	speakername SakuTown_EventScript_RivalAtSakuWall_Text_2

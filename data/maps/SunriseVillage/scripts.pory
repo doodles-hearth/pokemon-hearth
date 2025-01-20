@@ -277,7 +277,7 @@ script SunriseVillage_Event_Kirlia {
 // TODO EVA remove
 script SunriseVillage_Event_TestGyarados {
     lock
-    givemon(SPECIES_SPHEAL, 100)
+    givemon(SPECIES_SNIVY, 100)
     setwildbattle(SPECIES_KOTORA, 5)
     dowildbattle
     release

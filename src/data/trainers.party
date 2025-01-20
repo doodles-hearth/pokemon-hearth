@@ -94,18 +94,203 @@ Geodude
 Level: 21
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_SCRUB_1 ===
+Name: SCRUB1
+Class: Bug Catcher
+Pic: Bug Catcher
 Gender: Male
-Music: Aqua
+Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Poochyena
-Level: 32
+Sewaddle Tokuan
+Level: 4
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- String Shot
+
+=== TRAINER_TOSHIO_1 ===
+Name: TOSHIO
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Taillow
+Level: 3
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Peck
+- Growl
+
+Kotora
+Level: 4
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Tail Whip
+- Thunder Shock
+
+=== TRAINER_EIJI ===
+Name: EIJI
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Joltik
+Level: 3
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Absorb
+- Fury Cutter
+
+Joltik
+Level: 3
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Absorb
+- Fury Cutter
+
+Sewaddle Tokuan
+Level: 3
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- String Shot
+
+
+=== TRAINER_CHIKAO ===
+Name: CHIKAO
+Class: School Kid
+Pic: School Kid M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Lotad
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Growl
+- Astonish
+- Absorb
+- Water Gun
+
+Sewaddle Tokuan
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- String Shot
+
+Meowth
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Growl
+- Fake Out
+- Feint
+
+=== TRAINER_TAKESHI ===
+Name: TAKESHI
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer
+
+Nickit
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Quick Attack
+- Beat Up
+- Tail Whip
+
+Seedot
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Absorb
+- Harden
+- Astonish
+
+=== TRAINER_KODOMO ===
+Name: Kodomo
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Hoothoot
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Growl
+- Peck
+- Focus Energy
+
+Hoothoot
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Growl
+- Peck
+- Tackle
+- Echoed Voice
+
+Kricketot
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Growl
+- Struggle Bug
+
+=== TRAINER_KENJI ===
+Name: KENJI
+Class: Artist
+Pic: Artist
+Gender: Male
+Music: Rich
+Double Battle: No
+AI: Basic Trainer
+
+Nidoran (M)
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Leer
+- Poison Sting
+- Peck
+
+Inkay
+Level: 8
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Hypnosis
+- Peck
+- Wrap
+
+=== TRAINER_HIINA ===
+Name: Hiina
+Class: Aroma Lady
+Pic: Aroma Lady
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Nidoran (F)
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Leer
+- Poison Sting
+- Scratch
+
+Ponyta
+Level: 8
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Growl
+- Tail Whip
+- Ember
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_2 ===
 Name: GRUNT
@@ -2113,18 +2298,6 @@ Grumpig
 Level: 42
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-=== TRAINER_HIINA ===
-Name: Hiina
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Check Bad Move
-
-Vulpix
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAPHNE ===
 Name: DAPHNE
@@ -5921,31 +6094,6 @@ Hariyama
 Level: 39
 IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 
-=== TRAINER_TOSHIO_1 ===
-Name: TOSHIO
-Class: Youngster
-Pic: Youngster
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Check Bad Move
-
-Nidoran F
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_TAKESHI ===
-Name: TAKESHI
-Class: Ninja Boy
-Pic: Ninja Boy
-Gender: Male
-Music: Suspicious
-Double Battle: No
-AI: Check Bad Move / Try To Faint
-
-Nickit
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_IZUMI ===
 Name: Izumi
@@ -9304,22 +9452,6 @@ Nuzleaf
 Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_KODOMO ===
-Name: Kodomo
-Class: Youngster
-Pic: Youngster
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Check Bad Move
-
-Zangoose
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Seviper
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TABITHA_MOSSDEEP ===
 Name: TABITHA
@@ -9634,11 +9766,9 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Spheal
+Snivy
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Pound
-- Growl
 
 === TRAINER_RIVAL_FIRST_BATTLE_ARON ===
 Name: Natsuki
@@ -9649,11 +9779,9 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Trapinch
+Cyndaquil
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Astonish
-- Growl
 
 === TRAINER_RIVAL_FIRST_BATTLE_SPHEAL ===
 Name: Natsuki
@@ -9664,7 +9792,7 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Aron
+Froakie
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
@@ -11009,22 +11137,6 @@ Camerupt
 Level: 25
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-=== TRAINER_CHIKAO ===
-Name: CHIKAO
-Class: School Kid
-Pic: School Kid M
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Check Bad Move
-
-Sewaddle Tokuan
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Lotad
-Level: 2
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MUSASHI_1 ===
 Name: Musashi
@@ -11213,26 +11325,6 @@ Wailmer
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_EIJI ===
-Name: EIJI
-Class: Bug Catcher
-Pic: Bug Catcher
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Check Bad Move
-
-Taillow
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Joltik
-Level: 2
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Sewaddle Tokuan
-Level: 2
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_KAWASE ===
 Name: Kawase
@@ -12910,22 +13002,6 @@ Zigzagoon @ Nugget
 Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_KENJI ===
-Name: KENJI
-Class: Artist
-Pic: Artist
-Gender: Male
-Music: Rich
-Double Battle: No
-AI: Check Bad Move
-
-Smeargle
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Inkay
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HAILEY ===
 Name: HAILEY

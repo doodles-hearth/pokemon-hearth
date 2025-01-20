@@ -67,7 +67,7 @@ LittlerootTown_ProfessorBirchsLab_Event_Pokeball_Starter_Trapinch::
 # 49 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	lockall
 # 50 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	setvar VAR_TEMP_1, SPECIES_TRAPINCH
+	setvar VAR_TEMP_1, SPECIES_CYNDAQUIL
 # 51 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	call LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter
 	return
@@ -77,7 +77,7 @@ LittlerootTown_ProfessorBirchsLab_Event_Pokeball_Starter_Aron::
 # 55 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	lockall
 # 56 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	setvar VAR_TEMP_1, SPECIES_ARON
+	setvar VAR_TEMP_1, SPECIES_FROAKIE
 # 57 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	call LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter
 	return
@@ -87,7 +87,7 @@ LittlerootTown_ProfessorBirchsLab_Event_Pokeball_Starter_Spheal::
 # 61 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	lockall
 # 62 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	setvar VAR_TEMP_1, SPECIES_SPHEAL
+	setvar VAR_TEMP_1, SPECIES_SNIVY
 # 63 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	call LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter
 	return
@@ -119,13 +119,13 @@ LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_4:
 # 102 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	closemessage
 # 103 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_TRAPINCH
+	compare VAR_TEMP_1, SPECIES_CYNDAQUIL
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_12
 # 107 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_ARON
+	compare VAR_TEMP_1, SPECIES_FROAKIE
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_13
 # 111 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_SPHEAL
+	compare VAR_TEMP_1, SPECIES_SNIVY
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_14
 LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_11:
 # 118 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
@@ -196,13 +196,13 @@ LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_6:
 # 84 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
 	waitfanfare
 # 85 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_TRAPINCH
+	compare VAR_TEMP_1, SPECIES_CYNDAQUIL
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_19
 # 87 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_ARON
+	compare VAR_TEMP_1, SPECIES_FROAKIE
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_20
 # 89 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"
-	compare VAR_TEMP_1, SPECIES_SPHEAL
+	compare VAR_TEMP_1, SPECIES_SNIVY
 	goto_if_eq LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_21
 LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_18:
 # 92 "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.pory"

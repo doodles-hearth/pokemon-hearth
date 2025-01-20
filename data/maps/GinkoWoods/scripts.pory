@@ -4,6 +4,18 @@ mapscripts GinkoWoods_MapScripts {
 
 }
 
+script GinkoWoods_EventScript_ScrubNumberOne {
+	trainerbattle_single(
+		TRAINER_SCRUB_1 ,
+		format("I am a scrub bug catcher whose sole purpose is to get stomped!"),
+		format("I got stomped!")
+	)
+	speakername("Scrub")
+	msgbox(format("If you lost to me you should uninstall!"))
+	release
+	end
+}
+
 script GinkoWoods_EventScript_Toshio {
 	// TODO rematch
 	trainerbattle_single(

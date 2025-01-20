@@ -71,7 +71,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 # 73 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	addobject 6
 # 74 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	playmoncry SPECIES_ARON, CRY_MODE_NORMAL
+	playmoncry SPECIES_FROAKIE, CRY_MODE_NORMAL
 # 75 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	delay 30
 # 77 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
@@ -87,7 +87,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 # 82 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	addobject 7
 # 83 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	playmoncry SPECIES_SPHEAL, CRY_MODE_NORMAL
+	playmoncry SPECIES_SNIVY, CRY_MODE_NORMAL
 # 84 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	delay 30
 # 86 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
@@ -103,7 +103,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 # 91 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	addobject 8
 # 92 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	playmoncry SPECIES_TRAPINCH, CRY_MODE_NORMAL
+	playmoncry SPECIES_CYNDAQUIL, CRY_MODE_NORMAL
 # 93 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	delay 30
 # 95 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
@@ -293,7 +293,7 @@ SunriseVillage_EldersHouse_Event_Pokeball_Starter_Trapinch::
 # 207 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	lock
 # 208 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setvar VAR_TEMP_1, SPECIES_TRAPINCH
+	setvar VAR_TEMP_1, SPECIES_CYNDAQUIL
 # 209 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	call SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter
 # 210 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
@@ -305,7 +305,7 @@ SunriseVillage_EldersHouse_Event_Pokeball_Starter_Aron::
 # 214 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	lock
 # 215 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setvar VAR_TEMP_1, SPECIES_ARON
+	setvar VAR_TEMP_1, SPECIES_FROAKIE
 # 216 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	call SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter
 # 217 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
@@ -317,7 +317,7 @@ SunriseVillage_EldersHouse_Event_Pokeball_Starter_Spheal::
 # 221 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	lock
 # 222 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setvar VAR_TEMP_1, SPECIES_SPHEAL
+	setvar VAR_TEMP_1, SPECIES_SNIVY
 # 223 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	call SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter
 # 224 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
@@ -337,11 +337,11 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter::
 # 238 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	switch VAR_TEMP_1
 # 239 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_SPHEAL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_6
+	case SPECIES_SNIVY, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_6
 # 241 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_ARON, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_7
+	case SPECIES_FROAKIE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_7
 # 243 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_TRAPINCH, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_8
+	case SPECIES_CYNDAQUIL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_8
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_4:
 # 246 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	compare VAR_RESULT, NO
@@ -364,11 +364,11 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_9:
 # 296 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	switch VAR_STARTER_MON
 # 297 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_SPHEAL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_18
+	case SPECIES_SNIVY, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_18
 # 304 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_ARON, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_19
+	case SPECIES_FROAKIE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_19
 # 313 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_TRAPINCH, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_20
+	case SPECIES_CYNDAQUIL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_20
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16:
 # 324 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -385,11 +385,11 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16:
 # 335 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	switch VAR_STARTER_MON
 # 336 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_SPHEAL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_28
+	case SPECIES_SNIVY, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_28
 # 343 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_ARON, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_29
+	case SPECIES_FROAKIE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_29
 # 350 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_TRAPINCH, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_30
+	case SPECIES_CYNDAQUIL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_30
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 # 360 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
@@ -528,11 +528,11 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_11:
 # 253 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	switch VAR_TEMP_1
 # 254 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_SPHEAL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_23
+	case SPECIES_SNIVY, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_23
 # 256 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_ARON, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_24
+	case SPECIES_FROAKIE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_24
 # 258 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_TRAPINCH, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_25
+	case SPECIES_CYNDAQUIL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_25
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21:
 # 261 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	playfanfare MUS_OBTAIN_ITEM
@@ -545,11 +545,11 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21:
 # 266 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	switch VAR_TEMP_1
 # 267 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_SPHEAL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_44
+	case SPECIES_SNIVY, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_44
 # 271 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_ARON, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_45
+	case SPECIES_FROAKIE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_45
 # 275 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_TRAPINCH, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_46
+	case SPECIES_CYNDAQUIL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_46
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_42:
 # 281 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
@@ -594,17 +594,17 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_20:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_23:
 # 255 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	givemon SPECIES_SPHEAL, 5, ITEM_ORAN_BERRY, move1 = MOVE_FLIPPER_SPLASH, move2 = MOVE_TAIL_WHIP, move3 = MOVE_NONE, move4 = MOVE_NONE
+	givemon SPECIES_SNIVY, 5, ITEM_ORAN_BERRY, move1 = MOVE_FLIPPER_SPLASH, move2 = MOVE_TAIL_WHIP, move3 = MOVE_NONE, move4 = MOVE_NONE
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_24:
 # 257 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	givemon SPECIES_ARON, 5, ITEM_ORAN_BERRY, move1 = MOVE_TACKLE, move2 = MOVE_HARDEN, move3 = MOVE_NONE, move4 = MOVE_NONE
+	givemon SPECIES_FROAKIE, 5, ITEM_ORAN_BERRY, move1 = MOVE_TACKLE, move2 = MOVE_HARDEN, move3 = MOVE_NONE, move4 = MOVE_NONE
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_25:
 # 259 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	givemon SPECIES_TRAPINCH, 5, ITEM_ORAN_BERRY, move1 = MOVE_MUD_SLAP, move2 = MOVE_SAND_ATTACK, move3 = MOVE_NONE, move4 = MOVE_NONE
+	givemon SPECIES_CYNDAQUIL, 5, ITEM_ORAN_BERRY, move1 = MOVE_MUD_SLAP, move2 = MOVE_SAND_ATTACK, move3 = MOVE_NONE, move4 = MOVE_NONE
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_28:
@@ -694,7 +694,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_41:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_44:
 # 268 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_SPHEAL
+	setvar VAR_STARTER_MON, SPECIES_SNIVY
 # 269 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	removeobject 7
 # 270 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
@@ -707,7 +707,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_45:
 # 273 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	removeobject 3
 # 274 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_ARON
+	setvar VAR_STARTER_MON, SPECIES_FROAKIE
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_42
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_46:
@@ -716,7 +716,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_46:
 # 277 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	removeobject 5
 # 278 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	setvar VAR_STARTER_MON, SPECIES_TRAPINCH
+	setvar VAR_STARTER_MON, SPECIES_CYNDAQUIL
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_42
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_48:
@@ -822,11 +822,11 @@ SunriseVillage_EldersHouse_EventScript_RivalBattle::
 # 529 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	switch VAR_STARTER_MON
 # 530 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_SPHEAL, SunriseVillage_EldersHouse_EventScript_RivalBattle_3
+	case SPECIES_SNIVY, SunriseVillage_EldersHouse_EventScript_RivalBattle_3
 # 532 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_ARON, SunriseVillage_EldersHouse_EventScript_RivalBattle_4
+	case SPECIES_FROAKIE, SunriseVillage_EldersHouse_EventScript_RivalBattle_4
 # 534 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
-	case SPECIES_TRAPINCH, SunriseVillage_EldersHouse_EventScript_RivalBattle_5
+	case SPECIES_CYNDAQUIL, SunriseVillage_EldersHouse_EventScript_RivalBattle_5
 SunriseVillage_EldersHouse_EventScript_RivalBattle_1:
 # 538 "data/maps/SunriseVillage_EldersHouse/scripts.pory"
 	goto SunriseVillage_EldersHouse_EventScript_PostBattle

@@ -47,19 +47,19 @@ movement LittlerootTown_ProfessorBirchsLab_Movement_PlayerWalkUpToElder {
 
 script LittlerootTown_ProfessorBirchsLab_Event_Pokeball_Starter_Trapinch {
 	lockall
-	setvar(VAR_TEMP_1, SPECIES_TRAPINCH)
+	setvar(VAR_TEMP_1, SPECIES_CYNDAQUIL)
 	call(LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter)
 }
 
 script LittlerootTown_ProfessorBirchsLab_Event_Pokeball_Starter_Aron {
 	lockall
-	setvar(VAR_TEMP_1, SPECIES_ARON)
+	setvar(VAR_TEMP_1, SPECIES_FROAKIE)
 	call(LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter)
 }
 
 script LittlerootTown_ProfessorBirchsLab_Event_Pokeball_Starter_Spheal {
 	lockall
-	setvar(VAR_TEMP_1, SPECIES_SPHEAL)
+	setvar(VAR_TEMP_1, SPECIES_SNIVY)
 	call(LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter)
 }
 
@@ -82,11 +82,11 @@ script LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter {
 		message(format("{PLAYER} received the Pokémon {STR_VAR_1}!"))
 		waitmessage
 		waitfanfare
-		if (var(VAR_TEMP_1) == SPECIES_TRAPINCH) {
+		if (var(VAR_TEMP_1) == SPECIES_CYNDAQUIL) {
 			removeobject(LOCALID_BALL_TRAPINCH)
-		} elif (var(VAR_TEMP_1) == SPECIES_ARON) {
+		} elif (var(VAR_TEMP_1) == SPECIES_FROAKIE) {
 			removeobject(LOCALID_BALL_ARON)
-		} elif (var(VAR_TEMP_1) == SPECIES_SPHEAL) {
+		} elif (var(VAR_TEMP_1) == SPECIES_SNIVY) {
 			removeobject(LOCALID_BALL_SPHEAL)
 		}
 		msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
@@ -100,15 +100,15 @@ script LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter {
 	// Rival walks up to his Pokémon
 	msgbox(format("Natsuki: I'm choosing this one then!"))
 	closemessage
-	if (var(VAR_TEMP_1) == SPECIES_TRAPINCH) {
+	if (var(VAR_TEMP_1) == SPECIES_CYNDAQUIL) {
 		applymovement(LOCALID_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_RivalWalkUpToSpheal)
 		waitmovement(0)
 		removeobject(LOCALID_BALL_SPHEAL)
-	} elif (var(VAR_TEMP_1) == SPECIES_ARON) {
+	} elif (var(VAR_TEMP_1) == SPECIES_FROAKIE) {
 		applymovement(LOCALID_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_RivalWalkUpToTrapinch)
 		waitmovement(0)
 		removeobject(LOCALID_BALL_TRAPINCH)
-	} elif (var(VAR_TEMP_1) == SPECIES_SPHEAL) {
+	} elif (var(VAR_TEMP_1) == SPECIES_SNIVY) {
 		applymovement(LOCALID_RIVAL, LittlerootTown_ProfessorBirchsLab_Movement_RivalWalkUpToAron)
 		waitmovement(0)
 		removeobject(LOCALID_BALL_ARON)

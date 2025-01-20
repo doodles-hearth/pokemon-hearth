@@ -71,7 +71,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	waitse
 	removeobject(LOCALID_BALL_ARON)
 	addobject(LOCALID_ARON)
-	playmoncry(SPECIES_ARON, CRY_MODE_NORMAL)
+	playmoncry(SPECIES_FROAKIE, CRY_MODE_NORMAL)
 	delay(30)
 
 	applymovement(LOCALID_ELDER, SunriseVillage_EldersHouse_Movement_ElderOpensSecondBall)
@@ -80,7 +80,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	waitse
 	removeobject(LOCALID_BALL_SPHEAL)
 	addobject(LOCALID_SPHEAL)
-	playmoncry(SPECIES_SPHEAL, CRY_MODE_NORMAL)
+	playmoncry(SPECIES_SNIVY, CRY_MODE_NORMAL)
 	delay(30)
 
 	applymovement(LOCALID_ELDER, SunriseVillage_EldersHouse_Movement_ElderOpensThirdBall)
@@ -89,7 +89,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	waitse
 	removeobject(LOCALID_BALL_TRAPINCH)
 	addobject(LOCALID_TRAPINCH)
-	playmoncry(SPECIES_TRAPINCH, CRY_MODE_NORMAL)
+	playmoncry(SPECIES_CYNDAQUIL, CRY_MODE_NORMAL)
 	delay(30)
 
 	applymovement(LOCALID_ELDER, SunriseVillage_EldersHouse_Movement_ElderReturnsToInitialPos)
@@ -205,21 +205,21 @@ movement SunriseVillage_EldersHouse_Movement_ElderTurnsToThink {
 
 script SunriseVillage_EldersHouse_Event_Pokeball_Starter_Trapinch {
 	lock
-	setvar(VAR_TEMP_1, SPECIES_TRAPINCH)
+	setvar(VAR_TEMP_1, SPECIES_CYNDAQUIL)
 	call(SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter)
 	release
 }
 
 script SunriseVillage_EldersHouse_Event_Pokeball_Starter_Aron {
 	lock
-	setvar(VAR_TEMP_1, SPECIES_ARON)
+	setvar(VAR_TEMP_1, SPECIES_FROAKIE)
 	call(SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter)
 	release
 }
 
 script SunriseVillage_EldersHouse_Event_Pokeball_Starter_Spheal {
 	lock
-	setvar(VAR_TEMP_1, SPECIES_SPHEAL)
+	setvar(VAR_TEMP_1, SPECIES_SNIVY)
 	call(SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter)
 	release
 }
@@ -236,11 +236,11 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	showmonpic(VAR_TEMP_1, 10, 3)
 	bufferspeciesname(STR_VAR_1, VAR_TEMP_1)
 	switch(var(VAR_TEMP_1)) {
-		case SPECIES_SPHEAL:
+		case SPECIES_SNIVY:
 			msgbox(format("Do you choose {STR_VAR_1},\nsoul of the crashing sea waves?"), MSGBOX_YESNO)
-		case SPECIES_ARON:
+		case SPECIES_FROAKIE:
 			msgbox(format("Do you choose {STR_VAR_1},\nnoble warrior of iron?"), MSGBOX_YESNO)
-		case SPECIES_TRAPINCH:
+		case SPECIES_CYNDAQUIL:
 			msgbox(format("Do you choose {STR_VAR_1},\nswift dancer of sandstorms?"), MSGBOX_YESNO)
 	}
 	if (var(VAR_RESULT) == NO || var(VAR_RESULT) == MULTI_B_PRESSED) {
@@ -251,12 +251,12 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		return
 	} elif (var(VAR_RESULT) == YES) {
 		switch(var(VAR_TEMP_1)) {
-			case SPECIES_SPHEAL:
-				givemon(SPECIES_SPHEAL, 5, ITEM_ORAN_BERRY, move1=MOVE_FLIPPER_SPLASH, move2=MOVE_TAIL_WHIP, move3=MOVE_NONE, move4=MOVE_NONE)
-			case SPECIES_ARON:
-				givemon(SPECIES_ARON, 5, ITEM_ORAN_BERRY, move1=MOVE_TACKLE, move2=MOVE_HARDEN, move3=MOVE_NONE, move4=MOVE_NONE)
-			case SPECIES_TRAPINCH:
-				givemon(SPECIES_TRAPINCH, 5, ITEM_ORAN_BERRY, move1=MOVE_MUD_SLAP, move2=MOVE_SAND_ATTACK, move3=MOVE_NONE, move4=MOVE_NONE)
+			case SPECIES_SNIVY:
+				givemon(SPECIES_SNIVY, 5, ITEM_ORAN_BERRY, move1=MOVE_FLIPPER_SPLASH, move2=MOVE_TAIL_WHIP, move3=MOVE_NONE, move4=MOVE_NONE)
+			case SPECIES_FROAKIE:
+				givemon(SPECIES_FROAKIE, 5, ITEM_ORAN_BERRY, move1=MOVE_TACKLE, move2=MOVE_HARDEN, move3=MOVE_NONE, move4=MOVE_NONE)
+			case SPECIES_CYNDAQUIL:
+				givemon(SPECIES_CYNDAQUIL, 5, ITEM_ORAN_BERRY, move1=MOVE_MUD_SLAP, move2=MOVE_SAND_ATTACK, move3=MOVE_NONE, move4=MOVE_NONE)
 		}
 		playfanfare(MUS_OBTAIN_ITEM)
 		message(format("{PLAYER} received the Pokémon {STR_VAR_1}!"))
@@ -264,18 +264,18 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		waitfanfare
 
 		switch(var(VAR_TEMP_1)) {
-			case SPECIES_SPHEAL:
-				setvar(VAR_STARTER_MON, SPECIES_SPHEAL)
+			case SPECIES_SNIVY:
+				setvar(VAR_STARTER_MON, SPECIES_SNIVY)
 				removeobject(LOCALID_SPHEAL)
 				removeobject(LOCALID_BALL_SPHEAL)
-			case SPECIES_ARON:
+			case SPECIES_FROAKIE:
 				removeobject(LOCALID_ARON)
 				removeobject(LOCALID_BALL_ARON)
-				setvar(VAR_STARTER_MON, SPECIES_ARON)
-			case SPECIES_TRAPINCH:
+				setvar(VAR_STARTER_MON, SPECIES_FROAKIE)
+			case SPECIES_CYNDAQUIL:
 				removeobject(LOCALID_TRAPINCH)
 				removeobject(LOCALID_BALL_TRAPINCH)
-				setvar(VAR_STARTER_MON, SPECIES_TRAPINCH)
+				setvar(VAR_STARTER_MON, SPECIES_CYNDAQUIL)
 		}
 
 		msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
@@ -294,14 +294,14 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	// Put the player back in their initial spot
 	switch(var(VAR_STARTER_MON)) {
-		case SPECIES_SPHEAL:
+		case SPECIES_SNIVY:
 			switch(var(VAR_FACING)) {
 				case DIR_SOUTH:
 					applymovement(OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Movement_PlayerGoesBackAfterPickingSphealFromTop)
 				case DIR_NORTH:
 					applymovement(OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Movement_PlayerGoesBackAfterPickingSphealFromBottom)
 			}
-		case SPECIES_ARON:
+		case SPECIES_FROAKIE:
 			switch(var(VAR_FACING)) {
 				case DIR_SOUTH:
 					applymovement(OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Movement_PlayerGoesBackAfterPickingAronFromTop)
@@ -310,7 +310,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 				case DIR_EAST:
 					applymovement(OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Movement_PlayerGoesBackAfterPickingAronFromLeft)
 			}
-		case SPECIES_TRAPINCH:
+		case SPECIES_CYNDAQUIL:
 			switch(var(VAR_FACING)) {
 				case DIR_SOUTH:
 					applymovement(OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Movement_PlayerGoesBackAfterPickingTrapinchFromTop)
@@ -333,21 +333,21 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	closemessage
 
 	switch(var(VAR_STARTER_MON)) {
-		case SPECIES_SPHEAL:
+		case SPECIES_SNIVY:
 			applymovement(LOCALID_RIVAL, SunriseVillage_EldersHouse_Movement_RivalWalkUpToAron)
 			waitmovement(0)
 			removeobject(LOCALID_ARON)
 			removeobject(LOCALID_BALL_ARON)
 			applymovement(LOCALID_RIVAL, SunriseVillage_EldersHouse_Movement_RivalWalkAwayFromAron)
 			waitmovement(0)
-		case SPECIES_ARON:
+		case SPECIES_FROAKIE:
 			applymovement(LOCALID_RIVAL, SunriseVillage_EldersHouse_Movement_RivalWalkUpToTrapinch)
 			waitmovement(0)
 			removeobject(LOCALID_TRAPINCH)
 			removeobject(LOCALID_BALL_TRAPINCH)
 			applymovement(LOCALID_RIVAL, SunriseVillage_EldersHouse_Movement_RivalWalkAwayFromTrapinch)
 			waitmovement(0)
-		case SPECIES_TRAPINCH:
+		case SPECIES_CYNDAQUIL:
 			applymovement(LOCALID_RIVAL, SunriseVillage_EldersHouse_Movement_RivalWalkUpToSpheal)
 			waitmovement(0)
 			removeobject(LOCALID_SPHEAL)
@@ -527,11 +527,11 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 
 script SunriseVillage_EldersHouse_EventScript_RivalBattle {
 	switch(var(VAR_STARTER_MON)) {
-		case SPECIES_SPHEAL:
+		case SPECIES_SNIVY:
 			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_SPHEAL, format("Looks like I lost!"))
-		case SPECIES_ARON:
+		case SPECIES_FROAKIE:
 			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_ARON, format("Looks like I lost!"))
-		case SPECIES_TRAPINCH:
+		case SPECIES_CYNDAQUIL:
 			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_TRAPINCH, format("Looks like I lost!"))
 	}
 
