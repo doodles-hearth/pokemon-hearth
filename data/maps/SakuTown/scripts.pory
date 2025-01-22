@@ -49,11 +49,11 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	// Fight
 	switch(var(VAR_STARTER_MON)) {
 		case SPECIES_ARON:
-			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_ARON, SakuTown_Text_RivalDefeat)
+			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_SNIVY, SakuTown_Text_RivalDefeat)
 		case SPECIES_SPHEAL:
-			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_SPHEAL, SakuTown_Text_RivalDefeat)
+			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_FROAKIE, SakuTown_Text_RivalDefeat)
 		case SPECIES_TRAPINCH:
-			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_TRAPINCH, SakuTown_Text_RivalDefeat)
+			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_CYNDAQUIL, SakuTown_Text_RivalDefeat)
 	}
 
 	speakername("Natsuki")

@@ -883,19 +883,19 @@ RustboroCity_EventScript_RestoreBgm::
 	return
 
 RustboroCity_EventScript_BattleMayTreecko::
-	trainerbattle_no_intro TRAINER_RIVAL_SAKU_ARON, RustboroCity_Text_MayDefeat
+	trainerbattle_no_intro TRAINER_RIVAL_SAKU_SNIVY, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
 RustboroCity_EventScript_BattleMayTorchic::
-	trainerbattle_no_intro TRAINER_RIVAL_SAKU_TRAPINCH, RustboroCity_Text_MayDefeat
+	trainerbattle_no_intro TRAINER_RIVAL_SAKU_CYNDAQUIL, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
 
 RustboroCity_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_RIVAL_SAKU_SPHEAL, RustboroCity_Text_MayDefeat
+	trainerbattle_no_intro TRAINER_RIVAL_SAKU_FROAKIE, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_MayBrineyHint
 	end

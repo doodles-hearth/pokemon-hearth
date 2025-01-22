@@ -98,17 +98,17 @@ SakuTown_EventScript_RivalAtSakuWall_2:
 
 SakuTown_EventScript_RivalAtSakuWall_7:
 # 52 "data/maps/SakuTown/scripts.pory"
-	trainerbattle_no_intro TRAINER_RIVAL_SAKU_ARON, SakuTown_Text_RivalDefeat
+	trainerbattle_no_intro TRAINER_RIVAL_SAKU_SNIVY, SakuTown_Text_RivalDefeat
 	goto SakuTown_EventScript_RivalAtSakuWall_5
 
 SakuTown_EventScript_RivalAtSakuWall_8:
 # 54 "data/maps/SakuTown/scripts.pory"
-	trainerbattle_no_intro TRAINER_RIVAL_SAKU_SPHEAL, SakuTown_Text_RivalDefeat
+	trainerbattle_no_intro TRAINER_RIVAL_SAKU_FROAKIE, SakuTown_Text_RivalDefeat
 	goto SakuTown_EventScript_RivalAtSakuWall_5
 
 SakuTown_EventScript_RivalAtSakuWall_9:
 # 56 "data/maps/SakuTown/scripts.pory"
-	trainerbattle_no_intro TRAINER_RIVAL_SAKU_TRAPINCH, SakuTown_Text_RivalDefeat
+	trainerbattle_no_intro TRAINER_RIVAL_SAKU_CYNDAQUIL, SakuTown_Text_RivalDefeat
 	goto SakuTown_EventScript_RivalAtSakuWall_5
 
 SakuTown_EventScript_RivalAtSakuWall_11:

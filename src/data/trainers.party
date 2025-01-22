@@ -9776,7 +9776,7 @@ Marshtomp
 Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-=== TRAINER_RIVAL_FIRST_BATTLE_TRAPINCH ===
+=== TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL ===
 Name: Natsuki
 Class: Rival
 Pic: Natsuki
@@ -9789,7 +9789,7 @@ Snivy
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_RIVAL_FIRST_BATTLE_ARON ===
+=== TRAINER_RIVAL_FIRST_BATTLE_SNIVY ===
 Name: Natsuki
 Class: Rival
 Pic: Natsuki
@@ -9802,7 +9802,7 @@ Cyndaquil
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_RIVAL_FIRST_BATTLE_SPHEAL ===
+=== TRAINER_RIVAL_FIRST_BATTLE_FROAKIE ===
 Name: Natsuki
 Class: Rival
 Pic: Natsuki
@@ -11095,7 +11095,7 @@ Mudkip
 Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-=== TRAINER_RIVAL_SAKU_SPHEAL ===
+=== TRAINER_RIVAL_SAKU_FROAKIE ===
 Name: {B_RIVAL_NAME}
 Class: Rival
 Pic: May
@@ -11108,7 +11108,7 @@ Kotora
 Level: 6
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
-Aron
+Snivy
 Level: 9
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
@@ -14143,7 +14143,7 @@ Vigoroth
 Level: 29
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_RIVAL_SAKU_ARON ===
+=== TRAINER_RIVAL_SAKU_SNIVY ===
 Name: {B_RIVAL_NAME}
 Class: Rival
 Pic: May
@@ -14160,7 +14160,7 @@ Trapinch
 Level: 9
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-=== TRAINER_RIVAL_SAKU_TRAPINCH ===
+=== TRAINER_RIVAL_SAKU_CYNDAQUIL ===
 Name: {B_RIVAL_NAME}
 Class: Rival
 Pic: May
@@ -14173,7 +14173,7 @@ Numel
 Level: 6
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
-Spheal
+Froakie
 Level: 9
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 

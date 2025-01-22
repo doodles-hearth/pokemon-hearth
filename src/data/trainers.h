@@ -24405,7 +24405,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9779
-    [DIFFICULTY_NORMAL][TRAINER_RIVAL_FIRST_BATTLE_TRAPINCH] =
+    [DIFFICULTY_NORMAL][TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL] =
     {
 #line 9780
         .trainerName = _("Natsuki"),
@@ -24437,7 +24437,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9792
-    [DIFFICULTY_NORMAL][TRAINER_RIVAL_FIRST_BATTLE_ARON] =
+    [DIFFICULTY_NORMAL][TRAINER_RIVAL_FIRST_BATTLE_SNIVY] =
     {
 #line 9793
         .trainerName = _("Natsuki"),
@@ -24469,7 +24469,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 9805
-    [DIFFICULTY_NORMAL][TRAINER_RIVAL_FIRST_BATTLE_SPHEAL] =
+    [DIFFICULTY_NORMAL][TRAINER_RIVAL_FIRST_BATTLE_FROAKIE] =
     {
 #line 9806
         .trainerName = _("Natsuki"),
@@ -27804,7 +27804,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 11098
-    [DIFFICULTY_NORMAL][TRAINER_RIVAL_SAKU_SPHEAL] =
+    [DIFFICULTY_NORMAL][TRAINER_RIVAL_SAKU_FROAKIE] =
     {
 #line 11099
         .trainerName = _("{B_RIVAL_NAME}"),
@@ -35481,7 +35481,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 14146
-    [DIFFICULTY_NORMAL][TRAINER_RIVAL_SAKU_ARON] =
+    [DIFFICULTY_NORMAL][TRAINER_RIVAL_SAKU_SNIVY] =
     {
 #line 14147
         .trainerName = _("{B_RIVAL_NAME}"),
@@ -35526,7 +35526,7 @@ F_TRAINER_FEMALE |
         },
     },
 #line 14163
-    [DIFFICULTY_NORMAL][TRAINER_RIVAL_SAKU_TRAPINCH] =
+    [DIFFICULTY_NORMAL][TRAINER_RIVAL_SAKU_CYNDAQUIL] =
     {
 #line 14164
         .trainerName = _("{B_RIVAL_NAME}"),
