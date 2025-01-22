@@ -80,7 +80,7 @@ struct __attribute__((packed, aligned(4))) ObjectEventTemplate
              u16 visEarlyMorning:1;
              u16 visMorning:1;
              u16 visLunchtime:1;
-             u16 visAfternoon:1;
+             u16 visNoontime:1;
              u16 visEvening:1;
              u16 visNight:1;
              u16 unused:1; // Requires modification of areAnyVisibilityFlagsSet to use

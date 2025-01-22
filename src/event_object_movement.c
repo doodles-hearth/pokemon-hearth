@@ -1828,7 +1828,7 @@ static void TrySpawnObjectEventTemplateBasedOnSchedule(const struct ObjectEventT
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_NOONTIME:
-      if (objectEventTemplate->visAfternoon)
+      if (objectEventTemplate->visNoontime)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_EVENING:
