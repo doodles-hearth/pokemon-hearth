@@ -4278,6 +4278,11 @@ static void DebugAction_Give_DayCareEgg(u8 taskId)
 // *******************************
 // Actions TimeMenu
 
+void PrintTheTime(void)
+{
+    MgbaPrintf(MGBA_LOG_WARN, "Time with gLocalTime: %u", gLocalTime.hours);
+}
+
 static void DebugAction_TimeSkip_Dead_Night(u8 taskId)
 {
     FakeRtc_ForwardTimeTo(0, 0, 0);
