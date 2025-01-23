@@ -32,21 +32,21 @@ SakuTown_EventScript_RivalAtSakuWall::
 	goto_if_eq SakuTown_EventScript_RivalAtSakuWall_2
 	setobjectxy 10, 17, 10
 SakuTown_EventScript_RivalAtSakuWall_1:
-	applymovement 10, SakuTown_Movement_WalkUp
+	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_0
 	waitmovement 0
 	speakername SakuTown_EventScript_RivalAtSakuWall_Text_2
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_3
 	switch VAR_STARTER_MON
-	case SPECIES_ARON, SakuTown_EventScript_RivalAtSakuWall_7
-	case SPECIES_SPHEAL, SakuTown_EventScript_RivalAtSakuWall_8
-	case SPECIES_TRAPINCH, SakuTown_EventScript_RivalAtSakuWall_9
+	case SPECIES_SNIVY, SakuTown_EventScript_RivalAtSakuWall_7
+	case SPECIES_FROAKIE, SakuTown_EventScript_RivalAtSakuWall_8
+	case SPECIES_CYNDAQUIL, SakuTown_EventScript_RivalAtSakuWall_9
 SakuTown_EventScript_RivalAtSakuWall_5:
 	speakername SakuTown_EventScript_RivalAtSakuWall_Text_2
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_4
 	closemessage
 	compare VAR_TEMP_2, 16
 	goto_if_eq SakuTown_EventScript_RivalAtSakuWall_11
-	applymovement 10, SakuTown_Movement_GoToKuraFromLeft
+	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_2
 SakuTown_EventScript_RivalAtSakuWall_10:
 	waitmovement 0
 	removeobject 10
@@ -72,58 +72,9 @@ SakuTown_EventScript_RivalAtSakuWall_9:
 	goto SakuTown_EventScript_RivalAtSakuWall_5
 
 SakuTown_EventScript_RivalAtSakuWall_11:
-	applymovement 10, SakuTown_Movement_GoToKuraFromRight
+	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_1
 	goto SakuTown_EventScript_RivalAtSakuWall_10
 
-
-blabla::
-	lock
-	setvar VAR_RIVAL_ENCOUNTER_STATE, 0
-	gettime
-	buffernumberstring STR_VAR_1, VAR_0x8000
-	msgbox blabla_Text_0
-	release
-	return
-
-
-SakuTown_Movement_GoToKuraFromLeft:
-	walk_faster_left
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	step_end
-
-SakuTown_Movement_GoToKuraFromRight:
-	walk_faster_right
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	step_end
-
-SakuTown_Movement_WalkUp:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	step_end
-
-SakuTown_Movement_WalkFastUp:
-	walk_fast_up
-	step_end
-
-SakuTown_Movement_WalkAway:
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
-	step_end
 
 SakuTown_EventScript_Farmer::
 	lock
@@ -157,7 +108,7 @@ SakuTown_EventScript_Karateka::
 	speakername SakuTown_EventScript_Karateka_Text_0
 	msgbox SakuTown_EventScript_Karateka_Text_1
 	closemessage
-	applymovement 6, Common_Movement_FaceUp
+	applymovement 6, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	speakername SakuTown_EventScript_Karateka_Text_0
 	msgbox SakuTown_EventScript_Karateka_Text_2
@@ -329,6 +280,32 @@ SakuTown_EventScript_Makuhita::
 	return
 
 
+SakuTown_EventScript_RivalAtSakuWall_Movement_0:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+SakuTown_EventScript_RivalAtSakuWall_Movement_1:
+	walk_faster_right
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	step_end
+
+SakuTown_EventScript_RivalAtSakuWall_Movement_2:
+	walk_faster_left
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	walk_faster_up
+	step_end
+
 SakuTown_EventScript_Karateka_Movement_0:
 	jump_in_place_down
 	step_end
@@ -370,10 +347,7 @@ SakuTown_EventScript_RivalAtSakuWall_Text_4:
 	.string "Well, it was good to see you. Until\n"
 	.string "next time then.\p"
 	.string "I bet you I'll get to Silveridge first!\p"
-	.string "Race ya there!!!$"
-
-blabla_Text_0:
-	.string "{STR_VAR_1}$"
+	.string "See you later, Feraligatr!$"
 
 SakuTown_EventScript_Farmer_Text_0:
 	.string "Farmer$"
@@ -401,7 +375,7 @@ SakuTown_EventScript_Karateka_Text_0:
 	.string "Man$"
 
 SakuTown_EventScript_Karateka_Text_1:
-	.string "I let the Pokémon League borrow my\n"
+	.string "I let the Pokémon Council borrow my\n"
 	.string "super-strong Pokémon to help build\l"
 	.string "the new Pokémon refuges throughout\l"
 	.string "the region.$"

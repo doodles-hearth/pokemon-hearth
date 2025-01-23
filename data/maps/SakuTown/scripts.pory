@@ -36,7 +36,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	} else {
 		setobjectxy(LOCALID_RIVAL, 17, 10)
 	}
-	applymovement(LOCALID_RIVAL, SakuTown_Movement_WalkUp)
+	applymovement(LOCALID_RIVAL, moves(walk_up * 5))
 	waitmovement(0)
 
 	speakername("Natsuki")
@@ -48,11 +48,11 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	// Fight
 	switch(var(VAR_STARTER_MON)) {
-		case SPECIES_ARON:
+		case SPECIES_SNIVY:
 			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_SNIVY, SakuTown_Text_RivalDefeat)
-		case SPECIES_SPHEAL:
+		case SPECIES_FROAKIE:
 			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_FROAKIE, SakuTown_Text_RivalDefeat)
-		case SPECIES_TRAPINCH:
+		case SPECIES_CYNDAQUIL:
 			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_CYNDAQUIL, SakuTown_Text_RivalDefeat)
 	}
 
@@ -67,16 +67,16 @@ script SakuTown_EventScript_RivalAtSakuWall {
 		"You'll have to hurry up if you wanna catch up!\p"
 		"Well, it was good to see you. Until next time then.\p"
 		"I bet you I'll get to Silveridge first!\p"
-		"Race ya there!!!"
+		"See you later, Feraligatr!"
 	))
 	closemessage
 
 	// Left
 	if (var(VAR_TEMP_2) == 16) {
-		applymovement(LOCALID_RIVAL, SakuTown_Movement_GoToKuraFromRight)
+		applymovement(LOCALID_RIVAL, moves(walk_faster_right, walk_faster_up * 5))
 		// Right
 	} else {
-		applymovement(LOCALID_RIVAL, SakuTown_Movement_GoToKuraFromLeft)
+		applymovement(LOCALID_RIVAL, moves(walk_faster_left, walk_faster_up * 5))
 	}
 	waitmovement(0)
 
@@ -88,40 +88,8 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	release
 }
 
-// TODO EVAA
-script blabla {
-	lock
-	setvar(VAR_RIVAL_ENCOUNTER_STATE, 0)
-	gettime
-	buffernumberstring(STR_VAR_1, VAR_0x8000)
-	msgbox("{STR_VAR_1}")
-	release
-}
-
 text SakuTown_Text_RivalDefeat {
 	format("Oh, wow, okay.")
-}
-
-movement SakuTown_Movement_GoToKuraFromLeft {
-	walk_faster_left
-	walk_faster_up * 5
-}
-
-movement SakuTown_Movement_GoToKuraFromRight {
-	walk_faster_right
-	walk_faster_up * 5
-}
-
-movement SakuTown_Movement_WalkUp {
-	walk_up * 5
-}
-
-movement SakuTown_Movement_WalkFastUp {
-	walk_fast_up
-}
-
-movement SakuTown_Movement_WalkAway {
-	walk_fast_down * 6
 }
 
 script SakuTown_EventScript_Farmer {
@@ -160,10 +128,10 @@ script SakuTown_EventScript_Karateka {
 	faceplayer
 	speakername("Man")
 	msgbox(format(
-		"I let the Pokémon League borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
+		"I let the Pokémon Council borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
 	))
 	closemessage
-	applymovement(LOCALID_KARATEKA, Common_Movement_FaceUp)
+	applymovement(LOCALID_KARATEKA, Common_Movement_WalkInPlaceFasterUp)
 	waitmovement(0)
 	speakername("Man")
 	msgbox(format(
@@ -171,6 +139,7 @@ script SakuTown_EventScript_Karateka {
 	))
 	closemessage
 
+	// TODO EVA this crashes the game
 	applymovement(LOCALID_MAMA, Common_Movement_FaceDown)
 	applymovement(LOCALID_KUKU, Common_Movement_FaceDown)
 	waitmovement(LOCALID_MAMA)

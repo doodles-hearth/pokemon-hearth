@@ -324,7 +324,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Hoppip
-Level: 9
+Level: 11
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fairy Wind
 - Absorb
@@ -464,11 +464,18 @@ Double Battle: No
 AI: Basic Trainer
 
 Zubat
-Level: 9
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Astonish
 - Absorb
 - Supersonic
+
+Poochyena
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Roar
+- Tackle
 
 === TRAINER_GRUNT_BEACHBOUND_ROUTE_2 ===
 Name: Grunt
@@ -480,11 +487,19 @@ Double Battle: No
 AI: Basic Trainer
 
 Zubat
-Level: 9
+Level: 11
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Astonish
 - Absorb
 - Supersonic
+
+Houndour
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Smog
+- Ember
+- Bite
+- Howl
 
 === TRAINER_MARCEL ===
 Name: MARCEL
@@ -6153,9 +6168,27 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Goldeen
+Lotad
+Level: 13
+- Mega Drain
+- Whirlpool
+- Rain Dance
+- Leech Seed
+
+Feebas @ Leftovers
 Level: 12
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Dive
+- Icy Wind
+- Protect
+
+Surskit
+Level: 13
+Ability: Swift Swim
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- String Shot
+- Pounce
+- Nature Power
+
 
 === TRAINER_REN ===
 Name: Ren
@@ -6166,13 +6199,12 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Lotad
-Level: 10
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
-
-Surskit
-Level: 10
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Psyduck
+Level: 13
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Confusion
+- Disable
+- Confuse Ray
 
 === TRAINER_ADMIN_CROBAT_HIDEOUT_1 ===
 Name: Grunt
@@ -9785,9 +9817,11 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Snivy
+Froakie
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Pound
+- Growl
 
 === TRAINER_RIVAL_FIRST_BATTLE_SNIVY ===
 Name: Natsuki
@@ -9801,6 +9835,8 @@ AI: Basic Trainer
 Cyndaquil
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Leer
 
 === TRAINER_RIVAL_FIRST_BATTLE_FROAKIE ===
 Name: Natsuki
@@ -9811,11 +9847,11 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Froakie
+Snivy
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
-- Harden
+- Leer
 
 === TRAINER_MAY_ROUTE_110_MUDKIP ===
 Name: {B_RIVAL_NAME}
@@ -10672,13 +10708,20 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Magikarp
-Level: 10
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Goldeen
+Level: 12
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Nature Power
+- Peck
+- Fury Attack
 
-Lotad
-Level: 10
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Barboach
+Level: 13
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+- Mud Shot
+- Nature Power
+- Rock Tomb
+- Flail
 
 === TRAINER_BRENDEN ===
 Name: BRENDEN
@@ -11096,21 +11139,27 @@ Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_RIVAL_SAKU_FROAKIE ===
-Name: {B_RIVAL_NAME}
+Name: Natsuki
 Class: Rival
-Pic: May
-Gender: Female
-Music: Female
+Pic: Natsuki
+Gender: Male
+Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Force Setup First Turn
+AI: Smart Trainer
 
 Kotora
-Level: 6
+Level: 10
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Thunder Shock
+- Roar
+- Bite
 
 Snivy
-Level: 9
+Level: 12
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Mega Drain
+- Wrap
+- Growth
 
 === TRAINER_MAXIE_MAGMA_HIDEOUT ===
 Name: MAXIE
@@ -14144,38 +14193,50 @@ Level: 29
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_RIVAL_SAKU_SNIVY ===
-Name: {B_RIVAL_NAME}
+Name: Natsuki
 Class: Rival
-Pic: May
-Gender: Female
-Music: Female
+Pic: Natsuki
+Gender: Male
+Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Growlithe
-Level: 6
+Taillow
+Level: 10
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Wing Attack
+- Agility
+- Roost
 
-Trapinch
-Level: 9
+Cyndaquil
+Level: 12
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Fire Spin
+- Defense Curl
+- Swift
 
 === TRAINER_RIVAL_SAKU_CYNDAQUIL ===
-Name: {B_RIVAL_NAME}
+Name: Natsuki
 Class: Rival
-Pic: May
-Gender: Female
-Music: Female
+Pic: Natsuki
+Gender: Male
+Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Numel
-Level: 6
+Mareep
+Level: 10
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Cotton Spore
+- Electroweb
+- Confuse Ray
 
 Froakie
-Level: 9
+Level: 12
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Water Gun
+- Quick Attack
+- Lick
 
 === TRAINER_ROXANNE_2 ===
 Name: ROXANNE

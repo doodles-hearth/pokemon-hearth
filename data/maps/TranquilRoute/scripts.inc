@@ -497,7 +497,7 @@ TranquilRoute_EventScript_GrassCutscene_Movement_1:
 	step_end
 
 TranquilRoute_EventScript_WhiteslateRoadblock_Movement_0:
-	walk_left
+	walk_right
 	step_end
 
 TranquilRoute_EventScript_CrobatShadows_Camera_Movement_0:

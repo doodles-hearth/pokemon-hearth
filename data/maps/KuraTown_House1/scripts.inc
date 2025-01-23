@@ -1,5 +1,10 @@
 KuraTown_House1_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, KuraTown_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+KuraTown_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setrespawn HEAL_LOCATION_KURA_TOWN
+	return
 
 
 KuraTown_House1_OldWoman::

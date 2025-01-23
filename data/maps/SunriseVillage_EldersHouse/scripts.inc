@@ -304,15 +304,15 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_20:
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_23:
-	givemon SPECIES_FROAKIE, 5, ITEM_ORAN_BERRY
+	givemon SPECIES_FROAKIE, 5, ITEM_ORAN_BERRY, move1 = MOVE_POUND, move2 = MOVE_GROWL, move3 = MOVE_NONE, move4 = MOVE_NONE
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_24:
-	givemon SPECIES_SNIVY, 5, ITEM_ORAN_BERRY
+	givemon SPECIES_SNIVY, 5, ITEM_ORAN_BERRY, move1 = MOVE_TACKLE, move2 = MOVE_LEER, move3 = MOVE_NONE, move4 = MOVE_NONE
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_25:
-	givemon SPECIES_CYNDAQUIL, 5, ITEM_ORAN_BERRY
+	givemon SPECIES_CYNDAQUIL, 5, ITEM_ORAN_BERRY, move1 = MOVE_TACKLE, move2 = MOVE_LEER, move3 = MOVE_NONE, move4 = MOVE_NONE
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_28:

@@ -1,0 +1,14 @@
+mapscripts MaguroHarbor_Refuge_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		setrespawn(HEAL_LOCATION_MAGURO_HARBOR)
+	}
+}
+
+script MaguroHarbor_Refuge_EventScript_Nurse {
+	setvar(VAR_0x800B, LOCALID_NURSE)
+	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
+	waitmessage
+	waitbuttonpress
+	release
+	end
+}

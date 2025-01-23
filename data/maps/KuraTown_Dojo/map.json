@@ -238,13 +238,6 @@
   ],
   "warp_events": [
     {
-      "x": 4,
-      "y": 19,
-      "elevation": 0,
-      "dest_map": "MAP_KURA_TOWN",
-      "dest_warp_id": "2"
-    },
-    {
       "x": 5,
       "y": 19,
       "elevation": 0,

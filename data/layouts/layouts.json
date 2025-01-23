@@ -5561,7 +5561,7 @@
       "id": "LAYOUT_KURA_TOWN_DOJO",
       "name": "KuraTown_Dojo_Layout",
       "width": 11,
-      "height": 20,
+      "height": 21,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",

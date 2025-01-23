@@ -201,10 +201,11 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_4:
 	.string "everyone's alright.$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_0:
-	.string "My Pokémon is the daintiest there is!$"
+	.string "My Pokémon are the daintiest there\n"
+	.string "is!$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_1:
-	.string "My poor Goldeen!$"
+	.string "My poor Feebas!$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_2:
 	.string "You'll go far. I can tell.$"

@@ -117,8 +117,8 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 script MaguroHarbor_Dojo_EventScript_Izumi {
 	trainerbattle_single(
 		TRAINER_IZUMI,
-		format("My Pokémon is the daintiest there is!"),
-		format("My poor Goldeen!")
+		format("My Pokémon are the daintiest there is!"),
+		format("My poor Feebas!")
 	)
 	msgbox(format(
 		"You'll go far. I can tell."

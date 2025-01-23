@@ -280,7 +280,7 @@ script TranquilRoute_EventScript_WhiteslateRoadblock {
 	msgbox(format("Sorry, you can't go through. The road ahead is blocked."))
 	closemessage
 
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right))
 	waitmovement(0)
 
 	release

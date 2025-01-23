@@ -1,5 +1,7 @@
 mapscripts KuraTown_House1_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION {
+		setrespawn(HEAL_LOCATION_KURA_TOWN)
+	}
 }
 
 script KuraTown_House1_OldWoman {
