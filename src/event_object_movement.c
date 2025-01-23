@@ -1812,31 +1812,31 @@ static void TrySpawnObjectEventTemplateBasedOnSchedule(const struct ObjectEventT
   switch(timeOfDay)
   {
     case TIME_DEAD_NIGHT:
-      if (objectEventTemplate->visDeadNight)
+      if (objectEventTemplate->timeVisibility.bits.deadnight)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_EARLY_MORNING:
-      if (objectEventTemplate->visEarlyMorning)
+      if (objectEventTemplate->timeVisibility.bits.earlymorning)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_MORNING:
-      if (objectEventTemplate->visMorning)
+      if (objectEventTemplate->timeVisibility.bits.morning)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_LUNCHTIME:
-      if (objectEventTemplate->visLunchtime)
+      if (objectEventTemplate->timeVisibility.bits.lunchtime)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_NOONTIME:
-      if (objectEventTemplate->visNoontime)
+      if (objectEventTemplate->timeVisibility.bits.noontime)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_EVENING:
-      if (objectEventTemplate->visEvening)
+      if (objectEventTemplate->timeVisibility.bits.evening)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_NIGHT:
-      if (objectEventTemplate->visNight)
+      if (objectEventTemplate->timeVisibility.bits.night)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
   }
@@ -2684,15 +2684,6 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
                         gFollowerBasicMessages[emotion].script);
 }
 
-#define VISIBILITY_FLAGS_MASK 0xFF00
-
-// Since visibility fields are packed into the field beginning with movementRangeX, 
-// we check that field against a specific mask (only check the last 8 bits).
-static inline bool32 areAnyTimeVisibilityFieldsSet(const struct ObjectEventTemplate* objectEvent) 
-{
-    return (objectEvent->movementRangeX & VISIBILITY_FLAGS_MASK) != 0;
-}
-
 void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
 {
     u8 i;
@@ -2725,7 +2716,7 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
 
             if (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX)
             {
-                if (areAnyTimeVisibilityFieldsSet(template))
+                if (template->timeVisibility.raw)
                     TrySpawnObjectEventTemplateBasedOnSchedule(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY, timeOfDay);
                 else
                     TrySpawnObjectEventTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
