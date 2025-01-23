@@ -75,21 +75,21 @@ struct __attribute__((packed, aligned(4))) ObjectEventTemplate
     /*0x08*/ u8 elevation;
     /*0x09*/ u8 movementType;
     /*0x0A*/ u16 movementRangeX:4;
-    /*0x0C*/ u16 movementRangeY:4;
-    /*0x0E*/ u16 visDeadNight:1;
-    /*0x10*/ u16 visEarlyMorning:1;
-    /*0x12*/ u16 visMorning:1;
-    /*0x14*/ u16 visLunchtime:1;
-    /*0x16*/ u16 visNoontime:1;
-    /*0x18*/ u16 visEvening:1;
-    /*0x20*/ u16 visNight:1;
-    /*0x22*/ u16 unused:1; // Requires modification of areAnyVisibilityFlagsSet to use
-    /*0x24*/ u16 trainerType;
-    /*0x26*/ u16 trainerRange_berryTreeId;
-    /*0x27*/ const u8 *script;
-    /*0x28*/ u16 flagId;
-    /*0x2A*/ u16 filler;
-}; // size = 0x27
+             u16 movementRangeY:4;
+    /*0x0B*/ u16 visDeadNight:1;
+             u16 visEarlyMorning:1;
+             u16 visMorning:1;
+             u16 visLunchtime:1;
+             u16 visNoontime:1;
+             u16 visEvening:1;
+             u16 visNight:1;
+             u16 unused:1; // Requires modification of areAnyVisibilityFlagsSet to use
+    /*0x0C*/ u16 trainerType;
+    /*0x0E*/ u16 trainerRange_berryTreeId;
+    /*0x10*/ const u8 *script;
+    /*0x14*/ u16 flagId;
+    /*0x16*/ u16 filler;
+}; // size = 0x18
 
 struct WarpEvent
 {
