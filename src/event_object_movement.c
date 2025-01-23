@@ -2684,11 +2684,13 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
                         gFollowerBasicMessages[emotion].script);
 }
 
+#define VISIBILITY_FLAGS_MASK 0xFF00
+
 // Since visibility fields are packed into the field beginning with movementRangeX, 
 // we check that field against a specific mask (only check the last 8 bits).
 static inline bool32 areAnyTimeVisibilityFieldsSet(const struct ObjectEventTemplate* objectEvent) 
 {
-    return (objectEvent->movementRangeX & 0xFF) != 0;
+    return (objectEvent->movementRangeX & VISIBILITY_FLAGS_MASK) != 0;
 }
 
 void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)

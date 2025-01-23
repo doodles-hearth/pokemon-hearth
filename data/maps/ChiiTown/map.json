@@ -37,12 +37,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_EventScript_Mart",
       "flag": "0",
-      "EarlyMorning": true,
-      "Evening": true,
-      "Lunchtime": true,
-      "Morning": true,
-      "Nighttime": true,
-      "Noontime": true
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "nighttime": true,
+      "noontime": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(TAILLOW)",
@@ -69,7 +69,7 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_EventScript_PlantingFlowers",
       "flag": "0",
-      "Lunchtime": false
+      "lunchtime": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
@@ -135,8 +135,8 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_EventScript_Shopper",
       "flag": "0",
-      "Lunchtime": true,
-      "Noontime": true
+      "lunchtime": true,
+      "noontime": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(KECLEON)",
@@ -176,8 +176,8 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_EventScript_WatchfulMom",
       "flag": "0",
-      "Morning": true,
-      "Noontime": true
+      "morning": true,
+      "noontime": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
@@ -204,7 +204,7 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_EventScript_AlsoPlantingFlowers",
       "flag": "0",
-      "Lunchtime": true
+      "lunchtime": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN_F",
@@ -218,7 +218,7 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_EventScript_EatingBerries",
       "flag": "0",
-      "Lunchtime": true
+      "lunchtime": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TWIN_M",
@@ -232,7 +232,7 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_EventScript_BerryEnthusiast",
       "flag": "0",
-      "Lunchtime": true
+      "lunchtime": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
@@ -246,7 +246,7 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_EventScript_WatchingTheChildren",
       "flag": "0",
-      "Lunchtime": true
+      "lunchtime": true
     }
   ],
   "warp_events": [
