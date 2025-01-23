@@ -1812,31 +1812,31 @@ static void TrySpawnObjectEventTemplateBasedOnSchedule(const struct ObjectEventT
   switch(timeOfDay)
   {
     case TIME_DEAD_NIGHT:
-      if (objectEventTemplate->timeVisibility.deadnight)
+      if (objectEventTemplate->timeVisibility & TIME_DEAD_NIGHT_FLAG)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_EARLY_MORNING:
-      if (objectEventTemplate->timeVisibility.earlymorning)
+      if (objectEventTemplate->timeVisibility & TIME_EARLY_MORNING_FLAG)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_MORNING:
-      if (objectEventTemplate->timeVisibility.morning)
+      if (objectEventTemplate->timeVisibility & TIME_MORNING_FLAG)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_LUNCHTIME:
-      if (objectEventTemplate->timeVisibility.lunchtime)
+      if (objectEventTemplate->timeVisibility & TIME_LUNCHTIME_FLAG)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_NOONTIME:
-      if (objectEventTemplate->timeVisibility.noontime)
+      if (objectEventTemplate->timeVisibility & TIME_NOONTIME_FLAG)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_EVENING:
-      if (objectEventTemplate->timeVisibility.evening)
+      if (objectEventTemplate->timeVisibility & TIME_EVENING_FLAG)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
     case TIME_NIGHT:
-      if (objectEventTemplate->timeVisibility.night)
+      if (objectEventTemplate->timeVisibility & TIME_NIGHT_FLAG)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
   }
@@ -2716,7 +2716,7 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
 
             if (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX)
             {
-                if (template->timeVisibility.isUsed)
+                if (template->timeVisibility != 0)
                     TrySpawnObjectEventTemplateBasedOnSchedule(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY, timeOfDay);
                 else
                     TrySpawnObjectEventTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);

@@ -76,18 +76,7 @@ struct __attribute__((packed, aligned(4))) ObjectEventTemplate
     /*0x09*/ u8 movementType;
     /*0x0A*/ u8 movementRangeX:4;
              u8 movementRangeY:4;
-
-    /*0x0B*/ struct {
-                u8 deadnight:1;
-                u8 earlymorning:1;
-                u8 morning:1;
-                u8 lunchtime:1;
-                u8 noontime:1;
-                u8 evening:1;
-                u8 night:1;
-                u8 isUsed:1; // Requires modification of areAnyTimeVisibilityFieldsSet to use
-             } timeVisibility;
-
+    /*0x0B*/ u8 timeVisibility;
     /*0x0C*/ u16 trainerType;
     /*0x0E*/ u16 trainerRange_berryTreeId;
     /*0x10*/ const u8 *script;

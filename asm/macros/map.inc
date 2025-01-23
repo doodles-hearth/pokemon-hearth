@@ -31,11 +31,7 @@
 		.error "movementRangeX has a bitfield of 4 bytes, so values over 15 will overflow. Use a custom script for item balls that should give the player more than 15 items."
 	.endif
 	.byte ((\y_radius << 4) | \x_radius)
-	.if (\night | \evening | \noontime | \lunchtime | \morning | \earlymorning | \deadnight) > 0
-    .byte ((1 << 7) | (\night << 6) | (\evening << 5) | (\noontime << 4) | (\lunchtime << 3) | (\morning << 2) | (\earlymorning << 1) | (\deadnight << 0))
-	.else
-    .byte ((0 << 7) | (\night << 6) | (\evening << 5) | (\noontime << 4) | (\lunchtime << 3) | (\morning << 2) | (\earlymorning << 1) | (\deadnight << 0))
-	.endif
+    .byte ((\night << 6) | (\evening << 5) | (\noontime << 4) | (\lunchtime << 3) | (\morning << 2) | (\earlymorning << 1) | (\deadnight << 0))
 	.2byte \trainer_type
 	.2byte \sight_radius_tree_etc
 	.4byte \script
