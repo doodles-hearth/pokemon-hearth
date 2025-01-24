@@ -17,6 +17,14 @@
 
 #define RTC_ERR_FLAG_MASK      0x0FF0
 
+#define TIME_NOONTIME_FLAG      (1 << 0)
+#define TIME_DEAD_NIGHT_FLAG    (1 << 1)
+#define TIME_EARLY_MORNING_FLAG (1 << 2)
+#define TIME_EVENING_FLAG       (1 << 3)
+#define TIME_LUNCHTIME_FLAG     (1 << 4)
+#define TIME_MORNING_FLAG       (1 << 5)
+#define TIME_NIGHT_FLAG         (1 << 6)
+
 #define DEAD_NIGHT_HOUR_BEGIN 0
 #define DEAD_NIGHT_HOUR_END   5
 
