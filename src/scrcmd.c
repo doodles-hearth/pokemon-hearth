@@ -899,20 +899,13 @@ bool8 ScrCmd_gettimeofday(struct ScriptContext *ctx)
 
 bool8 ScrCmd_gettime(struct ScriptContext *ctx)
 {
-    // TODO RUBY incoming changes were:
-    // Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
-    // RtcCalcLocalTime();
-    // gSpecialVar_0x8000 = gLocalTime.hours;
-    // gSpecialVar_0x8001 = gLocalTime.minutes;
-    // gSpecialVar_0x8002 = gLocalTime.seconds;
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+    RtcCalcLocalTime();
+    gSpecialVar_0x8000 = gLocalTime.hours;
+    gSpecialVar_0x8001 = gLocalTime.minutes;
+    gSpecialVar_0x8002 = gLocalTime.seconds;
 
-    struct SiiRtcInfo *time = FakeRtc_GetCurrentTime();
-    gSpecialVar_0x8000 = time->hour;
-    gSpecialVar_0x8001 = time->minute;
-    gSpecialVar_0x8002 = time->second;
-
-    ConvertIntToDecimalStringN(gStringVar2, time->day, STR_CONV_MODE_LEADING_ZEROS, 2);
-
+    PrintTimesIntoMgbaPrintf();
     return FALSE;
 }
 

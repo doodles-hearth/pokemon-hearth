@@ -1,14 +1,11 @@
 ChiiTown_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, ChiiTown_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_LOAD, ChiiTown_MapScripts_MAP_SCRIPT_ON_LOAD
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, ChiiTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
-ChiiTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	return
-
 ChiiTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call ChiiTown_EventScript_SpawnBirds
+	call ChiiTown_DrawMetatiles
 	return
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -18,7 +15,7 @@ ChiiTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 ChiiTown_DrawMetatiles::
 	gettimeofday
-	switch VAR_0x8000
+	switch VAR_RESULT
 	case TIME_DEAD_NIGHT, ChiiTown_DrawMetatiles_2
 	case TIME_EARLY_MORNING, ChiiTown_DrawMetatiles_3
 	case TIME_MORNING, ChiiTown_DrawMetatiles_3
@@ -92,7 +89,7 @@ ChiiTown_EventScript_SpawnBirds_14:
 ChiiTown_EventScript_WatchfulMom::
 	gettimeofday
 	speakername ChiiTown_EventScript_WatchfulMom_Text_0
-	switch VAR_0x8000
+	switch VAR_RESULT
 	case TIME_MORNING, ChiiTown_EventScript_WatchfulMom_3
 	case TIME_NOONTIME, ChiiTown_EventScript_WatchfulMom_4
 ChiiTown_EventScript_WatchfulMom_1:

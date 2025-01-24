@@ -4,12 +4,9 @@ const FLAG_FLETCHLING_1 = FLAG_TEMP_3
 const FLAG_FLETCHLING_2 = FLAG_TEMP_4
 
 mapscripts ChiiTown_MapScripts {
-	MAP_SCRIPT_ON_TRANSITION {
-		//call(ChiiTown_NPCSchedules)
-	}
 	MAP_SCRIPT_ON_LOAD {
         call(ChiiTown_EventScript_SpawnBirds)
-		//call(ChiiTown_DrawMetatiles)
+		call(ChiiTown_DrawMetatiles)
     }
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2: ChiiTown_EventScript_SetTrespassVar
@@ -67,7 +64,7 @@ script ChiiTown_EventScript_SpawnBirds {
 script ChiiTown_EventScript_WatchfulMom{
 	gettimeofday
 	speakername("Woman")
-	switch(var(VAR_0x8000)){
+	switch(var(VAR_RESULT)){
 		case TIME_MORNING:
 			msgbox(format(
 				"I'm dropping off my children to school.\p"
