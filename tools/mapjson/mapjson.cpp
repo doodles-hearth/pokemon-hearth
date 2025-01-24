@@ -81,7 +81,7 @@ string json_to_string(const Json &data, const string &field = "", bool silent = 
                 output = value.bool_value() ? "TRUE" : "FALSE";
             break;
         case Json::Type::NUL:
-            output = "";
+                output = boolToInt ? "0" : "";
             break;
         default:{
             if (!silent) {
