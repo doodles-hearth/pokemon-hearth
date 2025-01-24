@@ -338,7 +338,7 @@
 	.byte SCR_OP_GETTIME
 	.endm
 
-	@ Sets the value of variable VAR_0x8000 to the current time of day (TIME_DEAD_NIGHT, TIME_EARLY_MORNING, TIME_MORNING, TIME_LUNCHTIME, TIME_NOONTIME, TIME_EVENING, TIME_NIGHT).
+	@ Sets the value of variable VAR_0x8000 to the current time of day (TIME_DEAD_NIGHT, TIME_EARLY_MORNING, TIME_MORNING, TIME_LUNCHTIME, TIME_AFTERNOON, TIME_EVENING, TIME_NIGHT).
 	.macro gettimeofday
 	.byte 0xe8
 	.endm

@@ -20,7 +20,7 @@ ChiiTown_DrawMetatiles::
 	case TIME_EARLY_MORNING, ChiiTown_DrawMetatiles_3
 	case TIME_MORNING, ChiiTown_DrawMetatiles_3
 	case TIME_LUNCHTIME, ChiiTown_DrawMetatiles_3
-	case TIME_NOONTIME, ChiiTown_DrawMetatiles_3
+	case TIME_AFTERNOON, ChiiTown_DrawMetatiles_3
 	case TIME_EVENING, ChiiTown_DrawMetatiles_3
 	case TIME_NIGHT, ChiiTown_DrawMetatiles_3
 ChiiTown_DrawMetatiles_3:
@@ -91,7 +91,7 @@ ChiiTown_EventScript_WatchfulMom::
 	speakername ChiiTown_EventScript_WatchfulMom_Text_0
 	switch VAR_RESULT
 	case TIME_MORNING, ChiiTown_EventScript_WatchfulMom_3
-	case TIME_NOONTIME, ChiiTown_EventScript_WatchfulMom_4
+	case TIME_AFTERNOON, ChiiTown_EventScript_WatchfulMom_4
 ChiiTown_EventScript_WatchfulMom_1:
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0

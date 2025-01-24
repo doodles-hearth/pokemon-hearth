@@ -22,7 +22,7 @@ script ChiiTown_DrawMetatiles{
         case TIME_EARLY_MORNING:
         case TIME_MORNING:
         case TIME_LUNCHTIME:
-        case TIME_NOONTIME:
+        case TIME_AFTERNOON:
         case TIME_EVENING:
         case TIME_NIGHT:
         default:
@@ -70,7 +70,7 @@ script ChiiTown_EventScript_WatchfulMom{
 				"I'm dropping off my children to school.\p"
 				"With all the recent Pokémon attacks, I will not let them leave my sight!"
 			), MSGBOX_NPC)	
-		case TIME_NOONTIME:
+		case TIME_AFTERNOON:
 			msgbox(format(
 				"I'm waiting to pick up my children after school.\p"
 				"With all the recent Pokémon attacks, I will not let them leave my sight!"

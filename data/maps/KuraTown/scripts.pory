@@ -19,7 +19,7 @@ mapscripts KuraTown_MapScripts {
 				case TIME_EARLY_MORNING:
 				case TIME_MORNING:
 				case TIME_LUNCHTIME:
-				case TIME_NOONTIME:
+				case TIME_AFTERNOON:
 				case TIME_EVENING:
 				case TIME_NIGHT:
 				default:
@@ -75,7 +75,7 @@ script KuraTown_EventScript_DojoChallenger {
 	lock
 	faceplayer
 	if (flag(FLAG_KURA_DOJO_CLOSED)) {
-		speakername("Gym Challenger")
+		speakername("Dojo Challenger")
 		msgbox(
 			format(
 				"Looks like the dojo is closed again…\p"
@@ -84,7 +84,7 @@ script KuraTown_EventScript_DojoChallenger {
 			)
 		)
 	} else {
-		speakername("Cowardly Challenger")
+		speakername("Scared Challenger")
 		msgbox(
 			format(
 				"The dojo is open! I can finally defeat its leader in a fiery battle!\p"

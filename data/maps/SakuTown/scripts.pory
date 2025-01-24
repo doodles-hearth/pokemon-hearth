@@ -24,7 +24,7 @@ mapscripts SakuTown_MapScripts {
 			case TIME_EARLY_MORNING:
 			case TIME_MORNING:
 			case TIME_LUNCHTIME:
-			case TIME_NOONTIME:
+			case TIME_AFTERNOON:
 			case TIME_EVENING:
 			case TIME_NIGHT:
 			default:

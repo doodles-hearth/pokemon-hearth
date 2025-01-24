@@ -1827,7 +1827,7 @@ static void TrySpawnObjectEventTemplateBasedOnSchedule(const struct ObjectEventT
       if (objectEventTemplate->timeVisibility & TIME_LUNCHTIME_FLAG)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;
-    case TIME_NOONTIME:
+    case TIME_AFTERNOON:
       if (objectEventTemplate->timeVisibility & TIME_NOONTIME_FLAG)
         TrySpawnObjectEventTemplate(objectEventTemplate, mapNum, mapGroup, cameraX, cameraY);
       break;

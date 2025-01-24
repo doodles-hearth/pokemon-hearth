@@ -20,7 +20,7 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	case TIME_EARLY_MORNING, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
 	case TIME_MORNING, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
 	case TIME_LUNCHTIME, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
-	case TIME_NOONTIME, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
+	case TIME_AFTERNOON, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
 	case TIME_EVENING, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
 	case TIME_NIGHT, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3:
