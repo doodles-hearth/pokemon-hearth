@@ -43,6 +43,25 @@ ChiiTown_NPCSchedules_8:
 	return
 
 
+ChiiTown_DrawMetatiles::
+	switch VAR_0x8000
+	case TIME_DEAD_NIGHT, ChiiTown_DrawMetatiles_2
+	case TIME_EARLY_MORNING, ChiiTown_DrawMetatiles_3
+	case TIME_MORNING, ChiiTown_DrawMetatiles_3
+	case TIME_LUNCHTIME, ChiiTown_DrawMetatiles_3
+	case TIME_NOONTIME, ChiiTown_DrawMetatiles_3
+	case TIME_EVENING, ChiiTown_DrawMetatiles_3
+	case TIME_NIGHT, ChiiTown_DrawMetatiles_3
+
+ChiiTown_DrawMetatiles_3:
+	end
+
+ChiiTown_DrawMetatiles_2:
+	setmetatile 14, 6, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE
+	setmetatile 24, 20, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE
+	return
+
+
 ChiiTown_DeadNightSchedules:
 	return
 
