@@ -49,8 +49,7 @@
 #define FLAG_SAKU_KURA_HIDE_ESPEON_LADYS_HOUSE 0x21
 // True if the Espeon from Saku village has left its master's house
 #define FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME 0x22
-// True to hide the rival in Saku village
-#define FLAG_HIDE_RIVAL_SAKU 0x23
+#define FLAG_UNUSED_0x23 0x23 // UNUSED
 // True if the owner of the bonsai shop is not at the shop
 #define FLAG_HIDE_BONSAI_SHOP_OWNER 0x24
 #define FLAG_HIDE_LOST_MAREEP_1 0x25

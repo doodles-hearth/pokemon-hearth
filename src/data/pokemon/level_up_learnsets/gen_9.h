@@ -15035,9 +15035,11 @@ static const struct LevelUpMove sDelphoxLevelUpLearnset[] = {
 static const struct LevelUpMove sFroakieLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_POUND),
     LEVEL_UP_MOVE( 1, MOVE_GROWL),
-    LEVEL_UP_MOVE( 5, MOVE_WATER_GUN),
+    LEVEL_UP_MOVE( 7, MOVE_BUBBLE),
+    // LEVEL_UP_MOVE( 5, MOVE_WATER_GUN),
     LEVEL_UP_MOVE( 8, MOVE_QUICK_ATTACK),
     LEVEL_UP_MOVE(10, MOVE_LICK),
+    LEVEL_UP_MOVE( 11, MOVE_BUBBLE),
     LEVEL_UP_MOVE(14, MOVE_WATER_PULSE),
     LEVEL_UP_MOVE(18, MOVE_SMOKESCREEN),
     LEVEL_UP_MOVE(21, MOVE_ROUND),

@@ -285,7 +285,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Scratch
 
 Ponyta
-Level: 7
+Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - Growl
@@ -11147,19 +11147,20 @@ Music: Male
 Double Battle: No
 AI: Smart Trainer
 
-Kotora
+Growlithe
 Level: 10
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-- Thunder Shock
-- Roar
 - Bite
+- Roar
+- Ember
 
 Snivy
 Level: 12
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Mega Drain
+- Absorb
 - Wrap
 - Growth
+- Vine Whip
 
 === TRAINER_MAXIE_MAGMA_HIDEOUT ===
 Name: MAXIE
@@ -14201,12 +14202,13 @@ Music: Male
 Double Battle: No
 AI: Smart Trainer
 
-Taillow
+Wooper
 Level: 10
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-- Wing Attack
-- Agility
-- Roost
+- Water Gun
+- Mud Shot
+- Tail Whip
+- Slam
 
 Cyndaquil
 Level: 12
@@ -14224,17 +14226,18 @@ Music: Male
 Double Battle: No
 AI: Smart Trainer
 
-Mareep
+Shroomish
 Level: 10
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-- Cotton Spore
-- Electroweb
-- Confuse Ray
+- Leech Seed
+- Absorb
+- Stun Spore
+- Tackle
 
 Froakie
 Level: 12
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Water Gun
+- Bubble
 - Quick Attack
 - Lick
 

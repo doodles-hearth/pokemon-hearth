@@ -14,6 +14,7 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:
+	setflag FLAG_TEMP_1
 	return
 
 
@@ -24,7 +25,7 @@ SakuTown_EventScript_RivalAtSakuWall::
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
-	clearflag FLAG_HIDE_RIVAL_SAKU
+	clearflag FLAG_TEMP_1
 	addobject 10
 	compare VAR_TEMP_2, 16
 	goto_if_eq SakuTown_EventScript_RivalAtSakuWall_2
@@ -48,7 +49,7 @@ SakuTown_EventScript_RivalAtSakuWall_5:
 SakuTown_EventScript_RivalAtSakuWall_10:
 	waitmovement 0
 	removeobject 10
-	setflag FLAG_HIDE_RIVAL_SAKU
+	setflag FLAG_TEMP_1
 	setvar VAR_RIVAL_ENCOUNTER_STATE, 1
 	release
 	return
