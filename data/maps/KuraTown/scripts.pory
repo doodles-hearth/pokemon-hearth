@@ -75,7 +75,7 @@ script KuraTown_EventScript_DojoChallenger {
 	lock
 	faceplayer
 	if (flag(FLAG_KURA_DOJO_CLOSED)) {
-		speakername("Dojo Challenger")
+		speakername("Bold Man")
 		msgbox(
 			format(
 				"Looks like the dojo is closed again…\p"
@@ -84,7 +84,7 @@ script KuraTown_EventScript_DojoChallenger {
 			)
 		)
 	} else {
-		speakername("Scared Challenger")
+		speakername("Cowardly Man")
 		msgbox(
 			format(
 				"The dojo is open! I can finally defeat its leader in a fiery battle!\p"
