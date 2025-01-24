@@ -485,6 +485,37 @@ script BeachboundRoute_EventScript_Mugging {
 	waitmovement(0)
 }
 
+// TODO change items, and make them limited quantity
+mart BeachboundRoute_Mart_Merchant {
+	ITEM_BERRY_JUICE
+	ITEM_PARALYZE_HEAL
+	ITEM_ANTIDOTE
+	ITEM_TM_ROCK_TOMB
+	ITEM_ESCAPE_ROPE
+	ITEM_FISHCAKE
+}
+
+script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
+	lock
+	faceplayer
+	speakername("Okada")
+	msgbox(format(
+		"Oh, hello again! {PLAYER}, was it?\p"
+		"I'm in the area for a while to gather some resources.\p"
+		"Can I interest you in some rare goods?"
+	), MSGBOX_YESNO)
+	closemessage
+
+	if (var(VAR_RESULT) == YES) {
+		pokemart(BeachboundRoute_Mart_Merchant)
+		speakername("Okada")
+		msgbox("Thanks for your business! Now where did I put that scroll again…", MSGBOX_DEFAULT)
+		closemessage
+	}
+
+	release
+}
+
 script BeachboundRoute_EventScript_SeeDecay {
 	lockall
 	

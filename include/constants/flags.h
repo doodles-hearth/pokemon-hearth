@@ -72,7 +72,7 @@
 #define FLAG_OBTAINED_EVERSTONE 0x33
 #define FLAG_OBTAINED_CHOICE_SCARF 0x34
 #define FLAG_OBTAINED_DESTINY_KNOT 0x35
-#define FLAG_UNUSED_0x036    0x36 // Unused Flag
+#define FLAG_HIDE_GUARD_SUNRISE_VILLAGE    0x36
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
 #define FLAG_UNUSED_0x039    0x39 // Unused Flag
@@ -674,8 +674,8 @@
 #define FLAG_CROBAT_PASSWORD_CORRECT 0x26C
 #define FLAG_CLEARED_CROBAT_HIDEOUT 0x26D
 #define FLAG_CROBAT_HIDEOUT_SEEN_BY_GRUNT 0x26E
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
+// True if the player met the merchant in beachbound route
+#define FLAG_MET_TRAVELING_MERCHANT_2ND_TIME  0x26F
 #define FLAG_UNUSED_0x271  0x271 // Unused Flag
 #define FLAG_UNUSED_0x272  0x272 // Unused Flag
 #define FLAG_UNUSED_0x273  0x273 // Unused Flag

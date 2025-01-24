@@ -269,8 +269,8 @@
     },
     {
       "type": "hidden_item",
-      "x": 31,
-      "y": 41,
+      "x": 18,
+      "y": 24,
       "elevation": 0,
       "item": "ITEM_POKE_BALL",
       "flag": "FLAG_HIDDEN_ITEM_GINKO_WOODS_POKEBALL"
