@@ -5,7 +5,6 @@ ChiiTown_MapScripts::
 	.byte 0
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call ChiiTown_NPCSchedules
 	return
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_LOAD:

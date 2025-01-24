@@ -5,7 +5,7 @@ const FLAG_FLETCHLING_2 = FLAG_TEMP_4
 
 mapscripts ChiiTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		call(ChiiTown_NPCSchedules)
+		//call(ChiiTown_NPCSchedules)
 	}
 	MAP_SCRIPT_ON_LOAD {
         call(ChiiTown_EventScript_SpawnBirds)
