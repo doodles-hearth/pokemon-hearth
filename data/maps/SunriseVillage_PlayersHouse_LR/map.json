@@ -25,7 +25,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SunriseVillage_PlayersHouse_LR_EventScript_BigSis",
-      "flag": "FLAG_HIDE_BIGSIS_HOME"
+      "flag": "FLAG_HIDE_BIGSIS_HOME",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(EEVEE)",
@@ -38,7 +45,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SunriseVillage_PlayersHouse_LR_EventScript_Eevee",
-      "flag": "FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS"
+      "flag": "FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
