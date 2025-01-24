@@ -5,15 +5,32 @@ const FLAG_FLETCHLING_2 = FLAG_TEMP_4
 
 mapscripts ChiiTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		call(ChiiTown_NPCSchedules)
+		//call(ChiiTown_NPCSchedules)
 	}
 	MAP_SCRIPT_ON_LOAD {
         call(ChiiTown_EventScript_SpawnBirds)
-		call(ChiiTown_DrawMetatiles)
+		//call(ChiiTown_DrawMetatiles)
     }
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2: ChiiTown_EventScript_SetTrespassVar
     ]
+}
+
+script ChiiTown_DrawMetatiles{ 
+    gettimeofday
+	switch(var(VAR_RESULT)){
+        case TIME_DEAD_NIGHT:
+            setmetatile(14, 6, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE)
+            setmetatile(24, 20, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE)
+        case TIME_EARLY_MORNING:
+        case TIME_MORNING:
+        case TIME_LUNCHTIME:
+        case TIME_NOONTIME:
+        case TIME_EVENING:
+        case TIME_NIGHT:
+        default:
+            end
+    }
 }
 
 script ChiiTown_EventScript_SpawnBirds {

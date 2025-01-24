@@ -4,7 +4,6 @@ SakuTown_MapScripts::
 	.byte 0
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call SakuVillage_NPCSchedules
 	call Common_EventScript_SetupRivalGfxId
 	goto_if_set FLAG_SAKU_KURA_REUNITED, SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	return
@@ -15,7 +14,6 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:
-	call SakuVillage_DrawMetatiles
 	return
 
 

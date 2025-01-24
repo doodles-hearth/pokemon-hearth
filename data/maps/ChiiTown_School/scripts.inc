@@ -3,7 +3,6 @@ ChiiTown_School_MapScripts::
 	.byte 0
 
 ChiiTown_School_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call ChiiTownSchool_NPCSchedules
 	return
 
 

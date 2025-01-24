@@ -893,7 +893,7 @@ bool8 ScrCmd_dotimebasedevents(struct ScriptContext *ctx)
 
 bool8 ScrCmd_gettimeofday(struct ScriptContext *ctx)
 {
-    gSpecialVar_0x8000 = GetTimeOfDay();
+    gSpecialVar_Result = GetTimeOfDay();
     return FALSE;
 }
 
@@ -922,19 +922,19 @@ bool8 ScrCmd_getweekday(struct ScriptContext *ctx)
     switch (rtc->dayOfWeek)
     {
     case WEEKDAY_SUN:
-        gSpecialVar_0x8000 = WEEKDAY_SUN;
+        gSpecialVar_Result = WEEKDAY_SUN;
     case WEEKDAY_MON:
-        gSpecialVar_0x8000 = WEEKDAY_MON;
+        gSpecialVar_Result = WEEKDAY_MON;
     case WEEKDAY_TUE:
-        gSpecialVar_0x8000 = WEEKDAY_TUE;
+        gSpecialVar_Result = WEEKDAY_TUE;
     case WEEKDAY_WED:
-        gSpecialVar_0x8000 = WEEKDAY_WED;
+        gSpecialVar_Result = WEEKDAY_WED;
     case WEEKDAY_THU:
-        gSpecialVar_0x8000 = WEEKDAY_THU;
+        gSpecialVar_Result = WEEKDAY_THU;
     case WEEKDAY_FRI:
-        gSpecialVar_0x8000 = WEEKDAY_FRI;
+        gSpecialVar_Result = WEEKDAY_FRI;
     case WEEKDAY_SAT:
-        gSpecialVar_0x8000 = WEEKDAY_SAT;
+        gSpecialVar_Result = WEEKDAY_SAT;
     } 
     return FALSE;
 }

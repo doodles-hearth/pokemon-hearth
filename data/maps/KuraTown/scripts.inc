@@ -1,22 +1,15 @@
 KuraTown_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_LOAD, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, KuraTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
-KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call KuraVillage_NPCSchedules
-	return
-
 KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD:
-	goto_if_set FLAG_KURA_DOJO_CLOSED, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_2
-KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_1:
-	call KuraVillage_DrawMetatiles
+	goto_if_set FLAG_KURA_DOJO_CLOSED, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_1
 	return
 
-KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_2:
+KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_1:
 	setmetatile 40, 16, METATILE_SakuKura_ClosedDojoDoor, TRUE
-	goto KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_1
+	return
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0

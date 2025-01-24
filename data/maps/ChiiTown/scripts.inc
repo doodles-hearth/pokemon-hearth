@@ -5,17 +5,34 @@ ChiiTown_MapScripts::
 	.byte 0
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	call ChiiTown_NPCSchedules
 	return
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call ChiiTown_EventScript_SpawnBirds
-	call ChiiTown_DrawMetatiles
 	return
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2, ChiiTown_EventScript_SetTrespassVar
 	.2byte 0
+
+
+ChiiTown_DrawMetatiles::
+	gettimeofday
+	switch VAR_0x8000
+	case TIME_DEAD_NIGHT, ChiiTown_DrawMetatiles_2
+	case TIME_EARLY_MORNING, ChiiTown_DrawMetatiles_3
+	case TIME_MORNING, ChiiTown_DrawMetatiles_3
+	case TIME_LUNCHTIME, ChiiTown_DrawMetatiles_3
+	case TIME_NOONTIME, ChiiTown_DrawMetatiles_3
+	case TIME_EVENING, ChiiTown_DrawMetatiles_3
+	case TIME_NIGHT, ChiiTown_DrawMetatiles_3
+ChiiTown_DrawMetatiles_3:
+	end
+
+ChiiTown_DrawMetatiles_2:
+	setmetatile 14, 6, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE
+	setmetatile 24, 20, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE
+	return
 
 
 ChiiTown_EventScript_SpawnBirds::
