@@ -1,9 +1,6 @@
 const LOCALID_GUARD = 2
 
 mapscripts KuraTown_MapScripts {
-	MAP_SCRIPT_ON_TRANSITION{
-		call(KuraVillage_NPCSchedules)
-	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
 		// VAR_SAKU_KURA_VILLAGES_STATE, 1: KuraTown_EventScript_GuardStopsYou
 	]
