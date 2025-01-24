@@ -20,7 +20,7 @@
 	.endm
 
 	@ Defines an object event template for map data, to be used by a normal object. Mirrors the struct layout of ObjectEventTemplate in include/global.fieldmap.h
-	.macro object_event index:req, gfx:req, x:req, y:req, elevation:req, movement_type:req, x_radius:req, y_radius:req, trainer_type:req, sight_radius_tree_etc:req, script:req, event_flag:req, afternoon=0, deadnight=0, earlymorning=0, evening=0, lunchtime=0, morning=0, night=0
+	.macro object_event index:req, gfx:req, x:req, y:req, elevation:req, movement_type:req, x_radius:req, y_radius:req, trainer_type:req, sight_radius_tree_etc:req, script:req, event_flag:req, afternoon:req, deadnight:req, earlymorning:req, evening:req, lunchtime:req, morning:req, night=req
 	.byte \index
 	.2byte \gfx
 	.byte OBJ_KIND_NORMAL
@@ -33,13 +33,13 @@
 	.endif
 	.byte ((\y_radius << 4) | \x_radius)
     .set time_visibility, 0
-	.ifnb \afternoon; .set time_visibility, time_visibility | (1 << 0); .endif
-	.ifnb \deadnight; .set time_visibility, time_visibility | (1 << 1); .endif
-	.ifnb \earlymorning; .set time_visibility, time_visibility | (1 << 2); .endif
-	.ifnb \evening; .set time_visibility, time_visibility | (1 << 3); .endif
-	.ifnb \lunchtime; .set time_visibility, time_visibility | (1 << 4); .endif
-	.ifnb \morning; .set time_visibility, time_visibility | (1 << 5); .endif
-	.ifnb \night; .set time_visibility, time_visibility | (1 << 6); .endif
+	.if \afternoon; .set time_visibility, time_visibility | (1 << 0); .endif
+	.if \deadnight; .set time_visibility, time_visibility | (1 << 1); .endif
+	.if \earlymorning; .set time_visibility, time_visibility | (1 << 2); .endif
+	.if \evening; .set time_visibility, time_visibility | (1 << 3); .endif
+	.if \lunchtime; .set time_visibility, time_visibility | (1 << 4); .endif
+	.if \morning; .set time_visibility, time_visibility | (1 << 5); .endif
+	.if \night; .set time_visibility, time_visibility | (1 << 6); .endif
 	.byte time_visibility
 	.2byte \trainer_type
 	.2byte \sight_radius_tree_etc
