@@ -431,6 +431,28 @@ extern const u32 gItemIconPalette_HyperPotion[];
 extern const u32 gItemIcon_LargePotion[];
 extern const u32 gItemIconPalette_MaxPotion[];
 extern const u32 gItemIconPalette_FullRestore[];
+
+extern const u32 gItemIcon_Ointment[];
+extern const u32 gItemIconPalette_Ointment[];
+extern const u32 gItemIcon_SuperOintment[];
+extern const u32 gItemIconPalette_SuperOintment[];
+extern const u32 gItemIcon_HyperOintment[];
+extern const u32 gItemIconPalette_HyperOintment[];
+extern const u32 gItemIcon_MaxOintment[];
+extern const u32 gItemIconPalette_MaxOintment[];
+extern const u32 gItemIcon_SacredOintment[];
+extern const u32 gItemIconPalette_SacredOintment[];
+extern const u32 gItemIcon_Uumegiri[];
+extern const u32 gItemIconPalette_Uumegiri[];
+extern const u32 gItemIcon_SuperGiri[];
+extern const u32 gItemIconPalette_SuperGiri[];
+extern const u32 gItemIcon_HyperGiri[];
+extern const u32 gItemIconPalette_HyperGiri[];
+extern const u32 gItemIcon_MaxGiri[];
+extern const u32 gItemIconPalette_MaxGiri[];
+extern const u32 gItemIcon_SacredGiri[];
+extern const u32 gItemIconPalette_SacredGiri[];
+
 extern const u32 gItemIcon_Revive[];
 extern const u32 gItemIconPalette_Revive[];
 extern const u32 gItemIcon_MaxRevive[];

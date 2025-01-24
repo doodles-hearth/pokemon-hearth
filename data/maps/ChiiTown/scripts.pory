@@ -67,7 +67,7 @@ script ChiiTown_EventScript_SpawnBirds {
 script ChiiTown_EventScript_WatchfulMom{
 	gettimeofday
 	speakername("Woman")
-	switch(var(VAR_0x8000)){
+	switch(var(VAR_RESULT)){
 		case TIME_MORNING:
 			msgbox(format(
 				"I'm dropping off my children to school.\p"

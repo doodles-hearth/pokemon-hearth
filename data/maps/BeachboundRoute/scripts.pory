@@ -487,7 +487,8 @@ script BeachboundRoute_EventScript_Mugging {
 
 // TODO change items, and make them limited quantity
 mart BeachboundRoute_Mart_Merchant {
-	ITEM_BERRY_JUICE
+	ITEM_POTION
+	ITEM_UUMEGIRI
 	ITEM_PARALYZE_HEAL
 	ITEM_ANTIDOTE
 	ITEM_TM_ROCK_TOMB

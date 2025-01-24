@@ -93,6 +93,28 @@ const u32 gItemIconPalette_CherishBall[] = INCBIN_U32("graphics/items/icon_palet
 const u32 gItemIcon_Potion[] = INCBIN_U32("graphics/items/icons/potion.4bpp.lz");
 const u32 gItemIconPalette_Potion[] = INCBIN_U32("graphics/items/icon_palettes/potion.gbapal.lz");
 
+const u32 gItemIcon_Ointment[] = INCBIN_U32("graphics/items/icons/ointment.4bpp.lz");
+const u32 gItemIconPalette_Ointment[] = INCBIN_U32("graphics/items/icons/ointment.gbapal.lz");
+const u32 gItemIcon_SuperOintment[] = INCBIN_U32("graphics/items/icons/ointment.4bpp.lz");
+const u32 gItemIconPalette_SuperOintment[] = INCBIN_U32("graphics/items/icons/ointment.gbapal.lz");
+const u32 gItemIcon_HyperOintment[] = INCBIN_U32("graphics/items/icons/ointment.4bpp.lz");
+const u32 gItemIconPalette_HyperOintment[] = INCBIN_U32("graphics/items/icons/ointment.gbapal.lz");
+const u32 gItemIcon_MaxOintment[] = INCBIN_U32("graphics/items/icons/ointment.4bpp.lz");
+const u32 gItemIconPalette_MaxOintment[] = INCBIN_U32("graphics/items/icons/ointment.gbapal.lz");
+const u32 gItemIcon_SacredOintment[] = INCBIN_U32("graphics/items/icons/ointment.4bpp.lz");
+const u32 gItemIconPalette_SacredOintment[] = INCBIN_U32("graphics/items/icons/ointment.gbapal.lz");
+
+const u32 gItemIcon_Uumegiri[] = INCBIN_U32("graphics/items/icons/ointment.4bpp.lz");
+const u32 gItemIconPalette_Uumegiri[] = INCBIN_U32("graphics/items/icons/ointment.gbapal.lz");
+const u32 gItemIcon_SuperGiri[] = INCBIN_U32("graphics/items/icons/ointment.4bpp.lz");
+const u32 gItemIconPalette_SuperGiri[] = INCBIN_U32("graphics/items/icons/ointment.gbapal.lz");
+const u32 gItemIcon_HyperGiri[] = INCBIN_U32("graphics/items/icons/ointment.4bpp.lz");
+const u32 gItemIconPalette_HyperGiri[] = INCBIN_U32("graphics/items/icons/ointment.gbapal.lz");
+const u32 gItemIcon_MaxGiri[] = INCBIN_U32("graphics/items/icons/ointment.4bpp.lz");
+const u32 gItemIconPalette_MaxGiri[] = INCBIN_U32("graphics/items/icons/ointment.gbapal.lz");
+const u32 gItemIcon_SacredGiri[] = INCBIN_U32("graphics/items/icons/ointment.4bpp.lz");
+const u32 gItemIconPalette_SacredGiri[] = INCBIN_U32("graphics/items/icons/ointment.gbapal.lz");
+
 const u32 gItemIconPalette_SuperPotion[] = INCBIN_U32("graphics/items/icon_palettes/super_potion.gbapal.lz");
 
 const u32 gItemIconPalette_HyperPotion[] = INCBIN_U32("graphics/items/icon_palettes/hyper_potion.gbapal.lz");

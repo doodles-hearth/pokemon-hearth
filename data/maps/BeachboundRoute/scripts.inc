@@ -11,10 +11,10 @@ BeachboundRoute_EventScript_TimeBasedEvents::
 	setflag FLAG_TEMP_6
 	setflag FLAG_TEMP_7
 	gettimeofday
-	compare VAR_0x8000, TIME_NIGHT
+	compare VAR_RESULT, TIME_NIGHT
 	goto_if_ne BeachboundRoute_EventScript_TimeBasedEvents_2
 BeachboundRoute_EventScript_TimeBasedEvents_1:
-	compare VAR_0x8000, TIME_NIGHT
+	compare VAR_RESULT, TIME_NIGHT
 	goto_if_ne BeachboundRoute_EventScript_TimeBasedEvents_5
 	return
 
@@ -27,7 +27,7 @@ BeachboundRoute_EventScript_TimeBasedEvents_4:
 	return
 
 BeachboundRoute_EventScript_TimeBasedEvents_5:
-	compare VAR_0x8000, TIME_EVENING
+	compare VAR_RESULT, TIME_EVENING
 	goto_if_ne BeachboundRoute_EventScript_TimeBasedEvents_4
 	return
 
@@ -355,6 +355,37 @@ BeachboundRoute_EventScript_Mugging_8:
 BeachboundRoute_EventScript_Mugging_9:
 	msgbox BeachboundRoute_EventScript_Mugging_Text_9
 	goto BeachboundRoute_EventScript_Mugging_5
+
+
+	.align 2
+BeachboundRoute_Mart_Merchant:
+	.2byte ITEM_POTION
+	.2byte ITEM_UUMEGIRI
+	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_TM_ROCK_TOMB
+	.2byte ITEM_ESCAPE_ROPE
+	.2byte ITEM_FISHCAKE
+	.2byte ITEM_NONE
+
+BeachboundRoute_EventScript_TravelingMerchantSecondTime::
+	lock
+	faceplayer
+	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
+	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1, MSGBOX_YESNO
+	closemessage
+	compare VAR_RESULT, YES
+	goto_if_eq BeachboundRoute_EventScript_TravelingMerchantSecondTime_2
+BeachboundRoute_EventScript_TravelingMerchantSecondTime_1:
+	release
+	return
+
+BeachboundRoute_EventScript_TravelingMerchantSecondTime_2:
+	pokemart BeachboundRoute_Mart_Merchant
+	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
+	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2, MSGBOX_DEFAULT
+	closemessage
+	goto BeachboundRoute_EventScript_TravelingMerchantSecondTime_1
 
 
 BeachboundRoute_EventScript_SeeDecay::
@@ -760,3 +791,16 @@ BeachboundRoute_EventScript_Mugging_Text_29:
 	.string "{PLAYER}?\p"
 	.string "I'll be sure to tell everyone what a\n"
 	.string "hero you are!$"
+
+BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0:
+	.string "Okada$"
+
+BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1:
+	.string "Oh, hello again! {PLAYER}, was it?\p"
+	.string "I'm in the area for a while to gather\n"
+	.string "some resources.\p"
+	.string "Can I interest you in some rare\n"
+	.string "goods?$"
+
+BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2:
+	.string "Thanks for your business! Now where did I put that scroll again…$"

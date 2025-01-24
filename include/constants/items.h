@@ -1001,11 +1001,16 @@
 
 // Items
 #define ITEM_FISHCAKE 829
+#define ITEM_UUMEGIRI 832
+#define ITEM_SUPERGIRI 833
+#define ITEM_HYPERGIRI 834
+#define ITEM_MAXGIRI 835
+#define ITEM_SACREDGIRI 836
 // Key items
 #define ITEM_REFUGE_ROOM_KEY 830
 #define ITEM_ENTEI_STATUETTE 831
 
-#define ITEMS_COUNT 832
+#define ITEMS_COUNT 837
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations
