@@ -1,35 +1,5 @@
 BeachboundRoute_MapScripts::
-	map_script MAP_SCRIPT_ON_LOAD, BeachboundRoute_MapScripts_MAP_SCRIPT_ON_LOAD
 	.byte 0
-
-BeachboundRoute_MapScripts_MAP_SCRIPT_ON_LOAD:
-	call BeachboundRoute_EventScript_TimeBasedEvents
-	return
-
-
-BeachboundRoute_EventScript_TimeBasedEvents::
-	setflag FLAG_TEMP_6
-	setflag FLAG_TEMP_7
-	gettimeofday
-	compare VAR_0x8000, TIME_NIGHT
-	goto_if_ne BeachboundRoute_EventScript_TimeBasedEvents_2
-BeachboundRoute_EventScript_TimeBasedEvents_1:
-	compare VAR_0x8000, TIME_NIGHT
-	goto_if_ne BeachboundRoute_EventScript_TimeBasedEvents_5
-	return
-
-BeachboundRoute_EventScript_TimeBasedEvents_2:
-	clearflag FLAG_TEMP_6
-	goto BeachboundRoute_EventScript_TimeBasedEvents_1
-
-BeachboundRoute_EventScript_TimeBasedEvents_4:
-	clearflag FLAG_TEMP_7
-	return
-
-BeachboundRoute_EventScript_TimeBasedEvents_5:
-	compare VAR_0x8000, TIME_EVENING
-	goto_if_ne BeachboundRoute_EventScript_TimeBasedEvents_4
-	return
 
 
 BeachboundRoute_EventScript_RunningBoy::
@@ -45,8 +15,10 @@ BeachboundRoute_EventScript_RunningGirl::
 
 
 BeachboundRoute_EventScript_AnnoyedGirl::
+	gettimeofday
 	speakername BeachboundRoute_EventScript_AnnoyedGirl_Text_0
-	goto_if_set FLAG_TEMP_7, BeachboundRoute_EventScript_AnnoyedGirl_1
+	compare VAR_RESULT, TIME_EVENING
+	goto_if_eq BeachboundRoute_EventScript_AnnoyedGirl_1
 	msgbox BeachboundRoute_EventScript_AnnoyedGirl_Text_2, MSGBOX_NPC
 	return
 
