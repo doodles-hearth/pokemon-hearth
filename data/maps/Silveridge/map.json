@@ -31,7 +31,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_LotOfRocks",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -44,7 +51,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_HousesMadeOfSilverTunnelStone",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -57,7 +71,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",
@@ -70,7 +91,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_Wildflowers",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY)",
@@ -83,7 +111,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_2",
@@ -96,7 +131,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_MissingStatue",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [

@@ -25,7 +25,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "SootopolisCity_Gym_B1F_EventScript_Andrea",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
@@ -38,7 +45,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "SootopolisCity_Gym_B1F_EventScript_Connie",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -51,7 +65,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "SootopolisCity_Gym_B1F_EventScript_Brianna",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
@@ -64,7 +85,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "5",
       "script": "SootopolisCity_Gym_B1F_EventScript_Bridget",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
@@ -77,7 +105,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "SootopolisCity_Gym_B1F_EventScript_Tiffany",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
@@ -90,7 +125,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "SootopolisCity_Gym_B1F_EventScript_Bethany",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
@@ -103,7 +145,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "SootopolisCity_Gym_B1F_EventScript_Crissy",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
@@ -116,7 +165,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "SootopolisCity_Gym_B1F_EventScript_Olivia",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -129,7 +185,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "SootopolisCity_Gym_B1F_EventScript_Daphne",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
@@ -142,7 +205,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "SootopolisCity_Gym_B1F_EventScript_Annika",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [

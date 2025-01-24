@@ -46,7 +46,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "KuraTown_EventScript_Farmer",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_1",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
@@ -59,7 +66,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "KuraTown_EventScript_Guard",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_1",
@@ -72,7 +86,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "KuraTown_EventScript_DojoChallenger",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SCYTHER)",
@@ -85,7 +106,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "KuraTown_EventScript_Scyther",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_1",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SCYTHER)",
@@ -98,7 +126,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "KuraTown_EventScript_Scyther",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_1",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
@@ -111,7 +146,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "KuraTown_EventScript_FarmerScyther",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_1",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
@@ -124,7 +166,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "KuraTown_EventScript_Farmer",
-      "flag": "FLAG_TEMP_2"
+      "flag": "FLAG_TEMP_2",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
@@ -137,7 +186,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "KuraTown_EventScript_Farmer",
-      "flag": "FLAG_TEMP_2"
+      "flag": "FLAG_TEMP_2",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [

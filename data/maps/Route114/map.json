@@ -36,7 +36,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "BERRY_TREE_ROUTE_114_PERSIM_2",
       "script": "BerryTreeScript",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
@@ -49,7 +56,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "BERRY_TREE_ROUTE_114_PERSIM_3",
       "script": "BerryTreeScript",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
@@ -62,7 +76,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "6",
       "script": "Route114_EventScript_Lenny",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
@@ -75,7 +96,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "Route114_EventScript_Lucas",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CAMPER",
@@ -88,7 +116,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route114_EventScript_Shane",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
@@ -101,7 +136,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route114_EventScript_Nancy",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MANIAC",
@@ -114,7 +156,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route114_EventScript_Steve",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
@@ -127,7 +176,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "BERRY_TREE_ROUTE_114_PERSIM_1",
       "script": "BerryTreeScript",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -140,7 +196,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_RARE_CANDY",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_114_RARE_CANDY"
+      "flag": "FLAG_ITEM_ROUTE_114_RARE_CANDY",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -153,7 +216,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_PROTEIN",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_114_PROTEIN"
+      "flag": "FLAG_ITEM_ROUTE_114_PROTEIN",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
@@ -166,7 +236,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_11"
+      "flag": "FLAG_TEMP_11",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
@@ -179,7 +256,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route114_EventScript_RoarGentleman",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POOCHYENA",
@@ -192,7 +276,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route114_EventScript_Poochyena",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_4",
@@ -205,7 +296,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route114_EventScript_Man",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
@@ -218,7 +316,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route114_EventScript_Nolan",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
@@ -231,7 +336,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route114_EventScript_Claude",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
@@ -244,7 +356,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route114_EventScript_Bernie",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
@@ -257,7 +376,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_12"
+      "flag": "FLAG_TEMP_12",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
@@ -270,7 +396,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_13"
+      "flag": "FLAG_TEMP_13",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
@@ -283,7 +416,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_14"
+      "flag": "FLAG_TEMP_14",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
@@ -296,7 +436,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_15"
+      "flag": "FLAG_TEMP_15",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
@@ -309,7 +456,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "Route114_EventScript_Ivy",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
@@ -322,7 +476,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "Route114_EventScript_Tyra",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
@@ -335,7 +496,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route114_EventScript_Charlotte",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
@@ -348,7 +516,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "Route114_EventScript_Angelina",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -361,7 +536,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_ENERGY_POWDER",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_114_ENERGY_POWDER"
+      "flag": "FLAG_ITEM_ROUTE_114_ENERGY_POWDER",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
@@ -374,7 +556,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "Route114_EventScript_Kai",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [

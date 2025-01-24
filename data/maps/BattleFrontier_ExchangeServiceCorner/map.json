@@ -25,7 +25,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BattleFrontier_ExchangeServiceCorner_EventScript_DecorClerk1",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_RICH_BOY",
@@ -38,7 +45,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BattleFrontier_ExchangeServiceCorner_EventScript_RichBoy",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
@@ -51,7 +65,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BattleFrontier_ExchangeServiceCorner_EventScript_PokefanF",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SAILOR",
@@ -64,7 +85,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BattleFrontier_ExchangeServiceCorner_EventScript_Sailor",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
@@ -77,7 +105,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BattleFrontier_ExchangeServiceCorner_EventScript_Man",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VALET",
@@ -90,7 +125,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BattleFrontier_ExchangeServiceCorner_EventScript_DecorClerk2",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VALET",
@@ -103,7 +145,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BattleFrontier_ExchangeServiceCorner_EventScript_VitaminClerk",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VALET",
@@ -116,7 +165,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BattleFrontier_ExchangeServiceCorner_EventScript_HoldItemClerk",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
@@ -129,7 +185,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BattleFrontier_ExchangeServiceCorner_EventScript_Girl",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [

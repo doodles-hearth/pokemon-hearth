@@ -130,7 +130,7 @@
     },
     {
       "map_section": "MAPSEC_TRANQUIL_ROUTE",
-      "name": "ROUTE 101",
+      "name": "Tranquil Route",
       "x": 4,
       "y": 10,
       "width": 1,
@@ -138,7 +138,7 @@
     },
     {
       "map_section": "MAPSEC_BEACHBOUND_ROUTE",
-      "name": "BEACHBOUND ROUTE",
+      "name": "Beachbound Route",
       "x": 2,
       "y": 9,
       "width": 2,
@@ -146,7 +146,7 @@
     },
     {
       "map_section": "MAPSEC_WINDSWEPT_ROUTE",
-      "name": "WINDSWEPT ROUTE",
+      "name": "Windswept Route",
       "x": 4,
       "y": 8,
       "width": 4,

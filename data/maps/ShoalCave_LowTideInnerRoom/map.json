@@ -25,7 +25,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_RARE_CANDY",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_SHOAL_CAVE_INNER_ROOM_RARE_CANDY"
+      "flag": "FLAG_ITEM_SHOAL_CAVE_INNER_ROOM_RARE_CANDY",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [

@@ -1,12 +1,12 @@
 mapscripts ChiiTown_School_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION{
-		call(ChiiTownSchool_NPCSchedules)
+		//call(ChiiTownSchool_NPCSchedules)
 	}
 }
 
 script ChiiTown_School_EventScript_Teacher {
 	gettimeofday
-	switch(var(VAR_0x8000)){
+	switch(var(VAR_RESULT)){
 		case TIME_EARLY_MORNING:
 			goto(ChiiTown_School_EventScript_PreparingDay)
 		case TIME_MORNING:

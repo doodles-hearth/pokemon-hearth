@@ -25,7 +25,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "7",
       "script": "MagmaHideout_2F_2R_EventScript_Grunt8",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
+      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
@@ -38,7 +45,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
       "script": "MagmaHideout_2F_2R_EventScript_Grunt7",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
+      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -51,7 +65,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_MAX_ELIXIR",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_MAX_ELIXIR"
+      "flag": "FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_MAX_ELIXIR",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
@@ -64,7 +85,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "MagmaHideout_2F_2R_EventScript_Grunt6",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
+      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
@@ -77,7 +105,14 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "MagmaHideout_2F_2R_EventScript_Grunt15",
-      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
+      "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -90,7 +125,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_FULL_RESTORE",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_FULL_RESTORE"
+      "flag": "FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_FULL_RESTORE",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
