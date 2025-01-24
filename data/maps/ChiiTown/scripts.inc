@@ -9,7 +9,6 @@ ChiiTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call ChiiTown_EventScript_SpawnBirds
-	call ChiiTown_DrawMetatiles
 	return
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

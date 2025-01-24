@@ -9,7 +9,7 @@ mapscripts KuraTown_MapScripts {
 		if (flag(FLAG_KURA_DOJO_CLOSED)) {
 			setmetatile(40, 16, METATILE_SakuKura_ClosedDojoDoor, TRUE)
 		}
-		call(KuraVillage_DrawMetatiles)
+		//call(KuraVillage_DrawMetatiles)
 	}
 }
 

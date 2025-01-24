@@ -1,6 +1,6 @@
 mapscripts ChiiTown_School_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION{
-		call(ChiiTownSchool_NPCSchedules)
+		//call(ChiiTownSchool_NPCSchedules)
 	}
 }
 

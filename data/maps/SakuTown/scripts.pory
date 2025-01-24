@@ -14,7 +14,7 @@ mapscripts SakuTown_MapScripts {
 		}
 	}
 	MAP_SCRIPT_ON_LOAD {
-		call(SakuVillage_DrawMetatiles)
+		//call(SakuVillage_DrawMetatiles)
 	}
 }
 
