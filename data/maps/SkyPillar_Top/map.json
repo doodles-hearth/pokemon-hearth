@@ -25,7 +25,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA"
+      "flag": "FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_RAYQUAZA_STILL",
@@ -38,7 +45,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SkyPillar_Top_EventScript_Rayquaza",
-      "flag": "FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL"
+      "flag": "FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [

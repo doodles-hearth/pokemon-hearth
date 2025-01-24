@@ -2712,7 +2712,7 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
             s16 npcY = template->y + MAP_OFFSET;
 
             if (FlagGet(template->flagId))
-                break;
+                continue;
 
             if (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX)
             {
