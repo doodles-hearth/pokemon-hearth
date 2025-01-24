@@ -13668,7 +13668,8 @@ static const struct LevelUpMove sAlomomolaLevelUpLearnset[] = {
 static const struct LevelUpMove sJoltikLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_ABSORB),
     LEVEL_UP_MOVE( 1, MOVE_FURY_CUTTER),
-    LEVEL_UP_MOVE( 4, MOVE_ELECTROWEB),
+    // Replaced electroweb here
+    LEVEL_UP_MOVE( 4, MOVE_THUNDER_SHOCK),
     LEVEL_UP_MOVE( 8, MOVE_BUG_BITE),
     LEVEL_UP_MOVE(12, MOVE_STRING_SHOT),
     LEVEL_UP_MOVE(16, MOVE_THUNDER_WAVE),
