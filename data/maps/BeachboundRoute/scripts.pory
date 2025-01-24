@@ -19,11 +19,11 @@ script BeachboundRoute_EventScript_TimeBasedEvents {
 	setflag(FLAG_HIDE_KIDS)
 
 	gettimeofday
-	if (var(VAR_0x8000) != TIME_NIGHT) {
+	if (var(VAR_RESULT) != TIME_NIGHT) {
 		clearflag(FLAG_HIDE_SHEPHERD)
 	}
 
-	if (var(VAR_0x8000) != TIME_NIGHT && var(VAR_0x8000) != TIME_EVENING) {
+	if (var(VAR_RESULT) != TIME_NIGHT && var(VAR_RESULT) != TIME_EVENING) {
 		clearflag(FLAG_HIDE_KIDS)
 	}
 }

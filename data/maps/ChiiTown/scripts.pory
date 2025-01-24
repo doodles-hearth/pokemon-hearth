@@ -18,7 +18,7 @@ mapscripts ChiiTown_MapScripts {
 
 script ChiiTown_DrawMetatiles{ 
     gettimeofday
-	switch(var(VAR_0x8000)){
+	switch(var(VAR_RESULT)){
         case TIME_DEAD_NIGHT:
             setmetatile(14, 6, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE)
             setmetatile(24, 20, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE)
