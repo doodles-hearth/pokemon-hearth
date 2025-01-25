@@ -6693,16 +6693,21 @@ static void TrySwapWishBattlerIds(u32 battlerAtk, u32 battlerPartner)
     u32 oppSide = GetBattlerSide(BATTLE_OPPOSITE(battlerAtk));
 
     // if used future sight on opposing side, properly track who used it
-    if (gSideStatuses[oppSide] & SIDE_STATUS_FUTUREATTACK) {
-        for (i = 0; i < gBattlersCount; i++) {
+    if (gSideStatuses[oppSide] & SIDE_STATUS_FUTUREATTACK)
+    {
+        for (i = 0; i < gBattlersCount; i++)
+        {
             if (IsAlly(i,battlerAtk))
                 continue;   // only on opposing side
-            if (gWishFutureKnock.futureSightBattlerIndex[i] == battlerAtk) {
+            if (gWishFutureKnock.futureSightBattlerIndex[i] == battlerAtk)
+            {
                 // if target was attacked with future sight from us, now they'll be the partner slot
                 gWishFutureKnock.futureSightBattlerIndex[i] = battlerPartner;
                 gWishFutureKnock.futureSightPartyIndex[i] = gBattlerPartyIndexes[battlerPartner];
                 break;
-            } else if (gWishFutureKnock.futureSightBattlerIndex[i] == battlerPartner) {
+            }
+            else if (gWishFutureKnock.futureSightBattlerIndex[i] == battlerPartner)
+            {
                 gWishFutureKnock.futureSightBattlerIndex[i] = battlerAtk;
                 gWishFutureKnock.futureSightPartyIndex[i] = gBattlerPartyIndexes[battlerAtk];
                 break;
@@ -6711,10 +6716,9 @@ static void TrySwapWishBattlerIds(u32 battlerAtk, u32 battlerPartner)
     }
 
     // swap wish party indices
-    if (gWishFutureKnock.wishCounter[battlerAtk] > 0
-            || gWishFutureKnock.wishCounter[battlerPartner] > 0) {
+    if (gWishFutureKnock.wishCounter[battlerAtk] > gBattleTurnCounter
+     || gWishFutureKnock.wishCounter[battlerPartner] > gBattleTurnCounter)
         SWAP(gWishFutureKnock.wishPartyId[battlerAtk], gWishFutureKnock.wishPartyId[battlerPartner], temp);
-    }
 }
 
 static void AnimTask_AllySwitchDataSwap(u8 taskId)

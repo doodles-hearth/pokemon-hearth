@@ -238,49 +238,49 @@ struct SpecialStatus
 
 struct SideTimer
 {
-    u8 reflectTimer;
+    u16 reflectTimer;
     u8 reflectBattlerId;
-    u8 lightscreenTimer;
+    u16 lightscreenTimer;
     u8 lightscreenBattlerId;
-    u8 mistTimer;
+    u16 mistTimer;
     u8 mistBattlerId;
-    u8 safeguardTimer;
+    u16 safeguardTimer;
     u8 safeguardBattlerId;
-    u8 spikesAmount;
-    u8 toxicSpikesAmount;
-    u8 stealthRockAmount;
-    u8 stickyWebAmount;
+    u16 spikesAmount; // debug menu complains. might be better to solve there instead if possible
+    u16 toxicSpikesAmount;
+    u16 stealthRockAmount;
+    u16 stickyWebAmount;
     u8 stickyWebBattlerId;
     u8 stickyWebBattlerSide; // Used for Court Change
-    u8 auroraVeilTimer;
+    u16 auroraVeilTimer;
     u8 auroraVeilBattlerId;
-    u8 tailwindTimer;
+    u16 tailwindTimer;
     u8 tailwindBattlerId;
-    u8 luckyChantTimer;
+    u16 luckyChantTimer;
     u8 luckyChantBattlerId;
-    u8 steelsurgeAmount;
+    u16 steelsurgeAmount;
     // Timers below this point are not swapped by Court Change
-    u8 followmeTimer;
+    u16 followmeTimer;
     u8 followmeTarget:3;
     u8 followmePowder:1; // Rage powder, does not affect grass type pokemon.
-    u8 retaliateTimer;
-    u8 damageNonTypesTimer;
+    u16 retaliateTimer;
+    u16 damageNonTypesTimer;
     u8 damageNonTypesType;
-    u8 rainbowTimer;
-    u8 seaOfFireTimer;
-    u8 swampTimer;
+    u16 rainbowTimer;
+    u16 seaOfFireTimer;
+    u16 swampTimer;
 };
 
 struct FieldTimer
 {
-    u8 mudSportTimer;
-    u8 waterSportTimer;
-    u8 wonderRoomTimer;
-    u8 magicRoomTimer;
-    u8 trickRoomTimer;
-    u8 terrainTimer;
-    u8 gravityTimer;
-    u8 fairyLockTimer;
+    u16 mudSportTimer;
+    u16 waterSportTimer;
+    u16 wonderRoomTimer;
+    u16 magicRoomTimer;
+    u16 trickRoomTimer;
+    u16 terrainTimer;
+    u16 gravityTimer;
+    u16 fairyLockTimer;
 };
 
 struct WishFutureKnock
@@ -289,7 +289,7 @@ struct WishFutureKnock
     u8 futureSightBattlerIndex[MAX_BATTLERS_COUNT];
     u8 futureSightPartyIndex[MAX_BATTLERS_COUNT];
     u16 futureSightMove[MAX_BATTLERS_COUNT];
-    u8 wishCounter[MAX_BATTLERS_COUNT];
+    u16 wishCounter[MAX_BATTLERS_COUNT];
     u8 wishPartyId[MAX_BATTLERS_COUNT];
     u8 weatherDuration;
     u8 knockedOffMons[NUM_BATTLE_SIDES]; // Each battler is represented by a bit.
@@ -1169,6 +1169,7 @@ extern u16 gBattleMovePower;
 extern u16 gMoveToLearn;
 extern u32 gFieldStatuses;
 extern struct FieldTimer gFieldTimers;
+extern u16 gBattleTurnCounter;
 extern u8 gBattlerAbility;
 extern struct QueuedStatBoost gQueuedStatBoosts[MAX_BATTLERS_COUNT];
 
