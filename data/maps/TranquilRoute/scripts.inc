@@ -294,39 +294,23 @@ TranquilRoute_EventScript_BerryWoman_2:
 TranquilRoute_EventScript_Mareep::
 	lock
 	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
-	ismonseen SPECIES_MAREEP
-	compare VAR_RESULT, 0
-	goto_if_ne TranquilRoute_EventScript_Mareep_2
-	speakername TranquilRoute_EventScript_Mareep_Text_1
-TranquilRoute_EventScript_Mareep_1:
-	msgbox TranquilRoute_EventScript_Mareep_Text_2
+	setspeakertomonname SPECIES_MAREEP
+	msgbox TranquilRoute_EventScript_Mareep_Text_0
 	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	return
-
-TranquilRoute_EventScript_Mareep_2:
-	speakername TranquilRoute_EventScript_Mareep_Text_0
-	goto TranquilRoute_EventScript_Mareep_1
 
 
 TranquilRoute_EventScript_Mareep2::
 	lock
 	playmoncry SPECIES_MAREEP, CRY_MODE_WEAK
-	ismonseen SPECIES_MAREEP
-	compare VAR_RESULT, 0
-	goto_if_ne TranquilRoute_EventScript_Mareep2_2
-	speakername TranquilRoute_EventScript_Mareep_Text_1
-TranquilRoute_EventScript_Mareep2_1:
+	setspeakertomonname SPECIES_MAREEP
 	msgbox TranquilRoute_EventScript_Mareep2_Text_0
 	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	return
-
-TranquilRoute_EventScript_Mareep2_2:
-	speakername TranquilRoute_EventScript_Mareep_Text_0
-	goto TranquilRoute_EventScript_Mareep2_1
 
 
 TranquilRoute_TrainerTips1::
@@ -756,12 +740,6 @@ TranquilRoute_EventScript_BerryWoman_Text_5:
 	.string "Have fun gardening!$"
 
 TranquilRoute_EventScript_Mareep_Text_0:
-	.string "Mareep$"
-
-TranquilRoute_EventScript_Mareep_Text_1:
-	.string "Static sheep$"
-
-TranquilRoute_EventScript_Mareep_Text_2:
 	.string "Beeeeeh…$"
 
 TranquilRoute_EventScript_Mareep2_Text_0:

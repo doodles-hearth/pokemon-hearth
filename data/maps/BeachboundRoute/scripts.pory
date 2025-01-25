@@ -51,12 +51,7 @@ script BeachboundRoute_EventScript_AnnoyedBoy {
 script BeachboundRoute_EventScript_Hoppip {
 	lock
     faceplayer
-    ismonseen(SPECIES_HOPPIP)
-    if (var(VAR_RESULT)) {
-        speakername("Hoppip")
-    } else {
-        speakername("Leafy cat")
-    }
+    setspeakertomonname(SPECIES_HOPPIP)
     msgbox(format(
         "Pip!"
     ))
@@ -70,12 +65,7 @@ script BeachboundRoute_EventScript_Hoppip {
 script BeachboundRoute_EventScript_Wooloo {
 	lock
     faceplayer
-    ismonseen(SPECIES_WOOLOO)
-    if (var(VAR_RESULT)) {
-        speakername("Wooloo")
-    } else {
-        speakername("Wool ball")
-    }
+	setspeakertomonname(SPECIES_WOOLOO)
     msgbox(format(
         "Bah…"
     ))

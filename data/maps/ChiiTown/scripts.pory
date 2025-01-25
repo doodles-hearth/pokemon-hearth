@@ -94,12 +94,7 @@ script ChiiTown_EventScript_Kecleon {
 	lock
 	faceplayer
 	playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
-	ismonseen(SPECIES_KECLEON)
-    if (var(VAR_RESULT)) {
-        speakername("Kecleon")
-    } else {
-        speakername("Weird lizard")
-    }
+	setspeakertomonname(SPECIES_KECLEON)
 	msgbox(format("Kleeeeh!"))
 	waitmoncry
 	closemessage

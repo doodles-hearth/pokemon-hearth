@@ -110,20 +110,12 @@ SunriseVillage_PlayersHouse_LR_EventScript_Eevee::
 	faceplayer
 	waitse
 	playmoncry SPECIES_EEVEE, CRY_MODE_NORMAL
-	ismonseen SPECIES_EEVEE
-	compare VAR_RESULT, 0
-	goto_if_ne SunriseVillage_PlayersHouse_LR_EventScript_Eevee_2
-	speakername SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_1
-SunriseVillage_PlayersHouse_LR_EventScript_Eevee_1:
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_2
+	setspeakertomonname SPECIES_EEVEE
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_0
 	playmoncry SPECIES_EEVEE, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	return
-
-SunriseVillage_PlayersHouse_LR_EventScript_Eevee_2:
-	speakername SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_0
-	goto SunriseVillage_PlayersHouse_LR_EventScript_Eevee_1
 
 
 SunriseVillage_PlayersHouse_LR_EventScript_RivalsNote::
@@ -206,12 +198,6 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_7:
 	.string "{STR_VAR_1}.$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_0:
-	.string "Eevee$"
-
-SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_1:
-	.string "Fluffy fox$"
-
-SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_2:
 	.string "Eee!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_RivalsNote_Text_0:

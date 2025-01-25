@@ -222,12 +222,7 @@ script SunriseVillage_Event_OldWoman {
 script SunriseVillage_Event_Happiny {
     lock
     faceplayer
-    ismonseen(SPECIES_HAPPINY)
-    if (var(VAR_RESULT)) {
-        speakername("Happiny")
-    } else {
-        speakername("Noisy egg")
-    }
+    setspeakertomonname(SPECIES_HAPPINY)
     msgbox(format(
         "Happi!"
     ))
@@ -243,12 +238,7 @@ script SunriseVillage_Event_Munchlax {
     faceplayer
     waitse
     playmoncry(SPECIES_MUNCHLAX, CRY_MODE_NORMAL)
-    ismonseen(SPECIES_MUNCHLAX)
-    if (var(VAR_RESULT)) {
-        speakername("Munchlax")
-    } else {
-        speakername("Big nom")
-    }
+    setspeakertomonname(SPECIES_MUNCHLAX)
     msgbox(format(
         "Munch munch munch…"
     ))
@@ -261,12 +251,7 @@ script SunriseVillage_Event_Munchlax {
 script SunriseVillage_Event_Kirlia {
     lock
     faceplayer
-    ismonseen(SPECIES_KIRLIA)
-    if (var(VAR_RESULT)) {
-        speakername("Kirlia")
-    } else {
-        speakername("Posh dancer")
-    }
+    setspeakertomonname(SPECIES_KIRLIA)
     msgbox(format(
         "…"
     ))

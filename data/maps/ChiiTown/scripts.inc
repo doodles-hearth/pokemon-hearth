@@ -118,20 +118,12 @@ ChiiTown_EventScript_Kecleon::
 	lock
 	faceplayer
 	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL
-	ismonseen SPECIES_KECLEON
-	compare VAR_RESULT, 0
-	goto_if_ne ChiiTown_EventScript_Kecleon_2
-	speakername ChiiTown_EventScript_Kecleon_Text_1
-ChiiTown_EventScript_Kecleon_1:
-	msgbox ChiiTown_EventScript_Kecleon_Text_2
+	setspeakertomonname SPECIES_KECLEON
+	msgbox ChiiTown_EventScript_Kecleon_Text_0
 	waitmoncry
 	closemessage
 	release
 	return
-
-ChiiTown_EventScript_Kecleon_2:
-	speakername ChiiTown_EventScript_Kecleon_Text_0
-	goto ChiiTown_EventScript_Kecleon_1
 
 
 ChiiTown_EventScript_PlantingFlowers::
@@ -259,12 +251,6 @@ ChiiTown_EventScript_Shopper_Text_0:
 	.string "battle.$"
 
 ChiiTown_EventScript_Kecleon_Text_0:
-	.string "Kecleon$"
-
-ChiiTown_EventScript_Kecleon_Text_1:
-	.string "Weird lizard$"
-
-ChiiTown_EventScript_Kecleon_Text_2:
 	.string "Kleeeeh!$"
 
 ChiiTown_EventScript_PlantingFlowers_Text_0:

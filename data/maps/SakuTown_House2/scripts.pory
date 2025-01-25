@@ -199,12 +199,7 @@ script SakuTown_House2_EventScript_Espeon {
 	lock
 	faceplayer
 	playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
-    ismonseen(SPECIES_ESPEON)
-    if (var(VAR_RESULT)) {
-        speakername("Espeon")
-    } else {
-        speakername("Purple fox")
-    }
+    setspeakertomonname(SPECIES_ESPEON)
 	msgbox(format(
 		"Eeeoon!"
 	))

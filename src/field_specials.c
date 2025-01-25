@@ -4442,8 +4442,16 @@ void GetDexRiddleFeedback(void)
 
 static const u8 *const sSpeciesToHiddenName[NUM_SPECIES] =
 {
-    [SPECIES_SPHEAL] = COMPOUND_STRING("Icy ball"),
-    [SPECIES_TREECKO] = COMPOUND_STRING("Grass gecko"),
+    [SPECIES_HOPPIP] = COMPOUND_STRING("Leafy cat"),
+    [SPECIES_KECLEON] = COMPOUND_STRING("Weird lizard"),
+    [SPECIES_SNORUNT] = COMPOUND_STRING("Frozen dumpling"),
+    [SPECIES_ESPEON] = COMPOUND_STRING("Purple fox"),
+    [SPECIES_HAPPINY] = COMPOUND_STRING("Noisy egg"),
+    [SPECIES_MUNCHLAX] = COMPOUND_STRING("Chunky bearcub"),
+    [SPECIES_KIRLIA] = COMPOUND_STRING("Graceful dancer"),
+    [SPECIES_EEVEE] = COMPOUND_STRING("Fluffy fox"),
+    [SPECIES_MAREEP] = COMPOUND_STRING("Static sheep"),
+    [SPECIES_WOOLOO] = COMPOUND_STRING("Wooly ball"),
 };
 
 void SetSpeakerToMonName(struct ScriptContext *ctx)
