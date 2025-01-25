@@ -1,6 +1,10 @@
 #ifndef GUARD_CONFIG_POKEMON_H
 #define GUARD_CONFIG_POKEMON_H
 
+// Hearth setting
+#define P_UNKNOWN_MON_NAMES         TRUE // When true, dexNamed flags are used to track whether the player knows a mon's name
+                                         // If they do not know the name, an 'unknown name' will be used.
+
 // Species data settings
 #define P_UPDATED_TYPES             GEN_LATEST  // Since Gen 6, several Pokémon were changed to be partially or fully Fairy type.
 #define P_UPDATED_STATS             GEN_LATEST  // Since Gen 6, Pokémon stats are updated with each passing generation.
