@@ -2188,6 +2188,7 @@
 	special IsMonSeen
 	.endm
 
+	@ Sets the speakername as a Pokémon; if the Pokémon has not been caught yet, it will show as their alternate name
 	.macro setspeakertomonname species:req
 	callnative SetSpeakerToMonName
 	.2byte \species

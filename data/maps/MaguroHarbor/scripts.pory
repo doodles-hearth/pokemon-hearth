@@ -1,15 +1,12 @@
-const FLAG_HIDE_NONSELLINGMERCHANTS = FLAG_TEMP_1
-const FLAG_HIDE_SELLINGMERCHANTS = FLAG_TEMP_2
+const FLAG_HIDE_MERCHANTS = FLAG_TEMP_1
 
 mapscripts MaguroHarbor_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		setflag(FLAG_HIDE_NONSELLINGMERCHANTS)
-		setflag(FLAG_HIDE_SELLINGMERCHANTS)
+		setflag(FLAG_HIDE_MERCHANTS)
 
 		getweekday
 		if(var(VAR_RESULT) == 0 || var(VAR_RESULT) == 3 || var(VAR_RESULT) == 6) {
-			clearflag(FLAG_HIDE_NONSELLINGMERCHANTS)
-			clearflag(FLAG_HIDE_SELLINGMERCHANTS)
+			clearflag(FLAG_HIDE_MERCHANTS)
 		}
 		
 	}
@@ -33,6 +30,35 @@ script MaguroHarbor_EventScript_LovestruckGirl {
 }
 
 script MaguroHarbor_EventScript_FishcakeSalesman {
+		gettimeofday
+	switch(var(VAR_RESULT)) {
+		case TIME_EARLY_MORNING:
+			goto(MaguroHarbor_EventScript_FishcakeSalesmanSettingUp)
+		case TIME_MORNING:
+		case TIME_LUNCHTIME:
+		case TIME_AFTERNOON:
+		case TIME_EVENING:
+			goto(MaguroHarbor_EventScript_FishcakeSalesmanSelling)
+		case TIME_NIGHT:
+			call(StringVarSetter)
+			goto(MaguroHarbor_EventScript_FishcakeSalesmanClosingUp)
+	}
+}
+
+script MaguroHarbor_EventScript_FishcakeSalesmanSettingUp {
+	lock
+	faceplayer
+	
+	speakername("Old woman")
+	msgbox(format(
+		"Oh I'm so sorry, dearie. We haven't opened yet. Come back later!"
+	), MSGBOX_DEFAULT)
+
+	closemessage
+	release
+}
+
+script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 	lock
 	faceplayer
 	
@@ -48,7 +74,56 @@ script MaguroHarbor_EventScript_FishcakeSalesman {
 	release
 }
 
+script MaguroHarbor_EventScript_FishcakeSalesmanClosingUp {
+	lock
+	faceplayer
+	
+	speakername("Old woman")
+	msgbox(format(
+		"Oh my! I'm sorry but we've closed shop now, dearie. We'll be open again {STR_VAR_1}"
+	), MSGBOX_DEFAULT)
+
+	closemessage
+	release
+}
+
 script MaguroHarbor_EventScript_FishPokemonSalesman {
+		gettimeofday
+	switch(var(VAR_RESULT)) {
+		case TIME_EARLY_MORNING:
+			goto(MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp)
+		case TIME_MORNING:
+		case TIME_LUNCHTIME:
+		case TIME_AFTERNOON:
+		case TIME_EVENING:
+			goto(MaguroHarbor_EventScript_FishPokemonSalesmanSelling)
+		case TIME_NIGHT:
+			checkplayergender
+			if(var(VAR_RESULT) == 0){
+				bufferstring(STR_VAR_2, "laddie")
+			}
+			else {
+				bufferstring(STR_VAR_2, "lassie")
+			}
+			call(StringVarSetter)
+			goto(MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp)
+	}
+}
+
+script MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp {
+	lock
+	faceplayer
+	
+	speakername("Salesman")
+	msgbox(format(
+		"Aye! We're not open yet. Come back later for the fresh catch of the day."
+	), MSGBOX_DEFAULT)
+
+	closemessage
+	release
+}
+
+script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 	lock
 	faceplayer
 	speakername("Salesman")
@@ -56,6 +131,17 @@ script MaguroHarbor_EventScript_FishPokemonSalesman {
 		"Fresh fish! Come get yer fish!"
 	), MSGBOX_DEFAULT)
 	// TODO EVA fish mons
+	closemessage
+	release
+}
+
+script MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp {
+	lock
+	faceplayer
+	
+	speakername("Salesman")
+	msgbox("Ah! You're a bit too late {STR_VAR_2}. We're\nclosed for th' day. We'll be open again\l{STR_VAR_1}.", MSGBOX_DEFAULT)
+
 	closemessage
 	release
 }
@@ -145,6 +231,23 @@ script MaguroHarbor_EventScript_Man {
 }
 
 script MaguroHarbor_EventScript_Mart {
+	gettimeofday
+	switch(var(VAR_RESULT)) {
+		case TIME_EARLY_MORNING:
+			goto(MaguroHarbor_EventScript_MartSettingUp)
+		case TIME_MORNING:
+		case TIME_LUNCHTIME:
+		case TIME_AFTERNOON:
+		case TIME_EVENING:
+			goto(MaguroHarbor_EventScript_MartSelling)
+		case TIME_NIGHT:
+			call(StringVarSetter)
+			goto(MaguroHarbor_EventScript_MartClosingUp)
+		
+	}
+}
+
+script MaguroHarbor_EventScript_MartSelling {
 	lock
 	faceplayer
 	speakername("Clerk")
@@ -153,6 +256,39 @@ script MaguroHarbor_EventScript_Mart {
 	pokemart(MaguroHarbor_Mart)
 	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
 	release
+}
+
+script MaguroHarbor_EventScript_MartSettingUp {
+	lock
+	faceplayer
+	speakername("Clerk")
+	msgbox(format("Oh, uh, the shop isn't open yet. Come back later."), MSGBOX_DEFAULT)
+	waitmessage
+	release
+}
+
+script MaguroHarbor_EventScript_MartClosingUp {
+	lock
+	faceplayer
+	speakername("Clerk")
+	msgbox(format("The shop's closed for today. Come back {STR_VAR_1}."), MSGBOX_DEFAULT)
+	waitmessage
+	release
+}
+
+script(local) StringVarSetter {
+	getweekday
+	switch(var(VAR_RESULT)) {
+		case WEEKDAY_WED:
+			bufferstring(STR_VAR_1, "on Saturday")
+			return
+		case WEEKDAY_SAT:
+			bufferstring(STR_VAR_1, "tomorrow")
+			return
+		case WEEKDAY_SUN:
+			bufferstring(STR_VAR_1, "on Wednesday")
+			return
+	}
 }
 
 mart MaguroHarbor_Mart {

@@ -4,7 +4,6 @@ MaguroHarbor_MapScripts::
 
 MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
 	getweekday
 	compare VAR_RESULT, 0
 	goto_if_eq MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
@@ -16,7 +15,6 @@ MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	clearflag FLAG_TEMP_1
-	clearflag FLAG_TEMP_2
 	return
 
 
@@ -35,21 +33,120 @@ MaguroHarbor_EventScript_LovestruckGirl::
 
 
 MaguroHarbor_EventScript_FishcakeSalesman::
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_EARLY_MORNING, MaguroHarbor_EventScript_FishcakeSalesman_2
+	case TIME_MORNING, MaguroHarbor_EventScript_FishcakeSalesman_3
+	case TIME_LUNCHTIME, MaguroHarbor_EventScript_FishcakeSalesman_3
+	case TIME_AFTERNOON, MaguroHarbor_EventScript_FishcakeSalesman_3
+	case TIME_EVENING, MaguroHarbor_EventScript_FishcakeSalesman_3
+	case TIME_NIGHT, MaguroHarbor_EventScript_FishcakeSalesman_4
+	return
+
+MaguroHarbor_EventScript_FishcakeSalesman_2:
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSettingUp
+	return
+
+MaguroHarbor_EventScript_FishcakeSalesman_3:
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling
+	return
+
+MaguroHarbor_EventScript_FishcakeSalesman_4:
+	call StringVarSetter
+	goto MaguroHarbor_EventScript_FishcakeSalesmanClosingUp
+	return
+
+
+MaguroHarbor_EventScript_FishcakeSalesmanSettingUp::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_FishcakeSalesman_Text_0
-	msgbox MaguroHarbor_EventScript_FishcakeSalesman_Text_1, MSGBOX_DEFAULT
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_1, MSGBOX_DEFAULT
+	closemessage
+	release
+	return
+
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0, MSGBOX_DEFAULT
 	giveitem ITEM_FISHCAKE
 	closemessage
 	release
 	return
 
 
-MaguroHarbor_EventScript_FishPokemonSalesman::
+MaguroHarbor_EventScript_FishcakeSalesmanClosingUp::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_FishPokemonSalesman_Text_0
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesman_Text_1, MSGBOX_DEFAULT
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0, MSGBOX_DEFAULT
+	closemessage
+	release
+	return
+
+
+MaguroHarbor_EventScript_FishPokemonSalesman::
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_EARLY_MORNING, MaguroHarbor_EventScript_FishPokemonSalesman_2
+	case TIME_MORNING, MaguroHarbor_EventScript_FishPokemonSalesman_3
+	case TIME_LUNCHTIME, MaguroHarbor_EventScript_FishPokemonSalesman_3
+	case TIME_AFTERNOON, MaguroHarbor_EventScript_FishPokemonSalesman_3
+	case TIME_EVENING, MaguroHarbor_EventScript_FishPokemonSalesman_3
+	case TIME_NIGHT, MaguroHarbor_EventScript_FishPokemonSalesman_4
+	return
+
+MaguroHarbor_EventScript_FishPokemonSalesman_2:
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp
+	return
+
+MaguroHarbor_EventScript_FishPokemonSalesman_3:
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling
+	return
+
+MaguroHarbor_EventScript_FishPokemonSalesman_4:
+	checkplayergender
+	compare VAR_RESULT, 0
+	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesman_6
+	bufferstring STR_VAR_2, MaguroHarbor_EventScript_FishPokemonSalesman_Text_1
+MaguroHarbor_EventScript_FishPokemonSalesman_5:
+	call StringVarSetter
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp
+	return
+
+MaguroHarbor_EventScript_FishPokemonSalesman_6:
+	bufferstring STR_VAR_2, MaguroHarbor_EventScript_FishPokemonSalesman_Text_0
+	goto MaguroHarbor_EventScript_FishPokemonSalesman_5
+
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1, MSGBOX_DEFAULT
+	closemessage
+	release
+	return
+
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0, MSGBOX_DEFAULT
+	closemessage
+	release
+	return
+
+
+MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp_Text_0, MSGBOX_DEFAULT
 	closemessage
 	release
 	return
@@ -122,14 +219,80 @@ MaguroHarbor_EventScript_Man::
 
 
 MaguroHarbor_EventScript_Mart::
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_EARLY_MORNING, MaguroHarbor_EventScript_Mart_2
+	case TIME_MORNING, MaguroHarbor_EventScript_Mart_3
+	case TIME_LUNCHTIME, MaguroHarbor_EventScript_Mart_3
+	case TIME_AFTERNOON, MaguroHarbor_EventScript_Mart_3
+	case TIME_EVENING, MaguroHarbor_EventScript_Mart_3
+	case TIME_NIGHT, MaguroHarbor_EventScript_Mart_4
+	return
+
+MaguroHarbor_EventScript_Mart_2:
+	goto MaguroHarbor_EventScript_MartSettingUp
+	return
+
+MaguroHarbor_EventScript_Mart_3:
+	goto MaguroHarbor_EventScript_MartSelling
+	return
+
+MaguroHarbor_EventScript_Mart_4:
+	call StringVarSetter
+	goto MaguroHarbor_EventScript_MartClosingUp
+	return
+
+
+MaguroHarbor_EventScript_MartSelling::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_Mart_Text_0
+	speakername MaguroHarbor_EventScript_MartSelling_Text_0
 	message gText_HowMayIServeYou
 	waitmessage
 	pokemart MaguroHarbor_Mart
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
+	return
+
+
+MaguroHarbor_EventScript_MartSettingUp::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_MartSelling_Text_0
+	msgbox MaguroHarbor_EventScript_MartSettingUp_Text_0, MSGBOX_DEFAULT
+	waitmessage
+	release
+	return
+
+
+MaguroHarbor_EventScript_MartClosingUp::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_MartSelling_Text_0
+	msgbox MaguroHarbor_EventScript_MartClosingUp_Text_0, MSGBOX_DEFAULT
+	waitmessage
+	release
+	return
+
+
+StringVarSetter:
+	getweekday
+	switch VAR_RESULT
+	case WEEKDAY_WED, StringVarSetter_2
+	case WEEKDAY_SAT, StringVarSetter_3
+	case WEEKDAY_SUN, StringVarSetter_4
+	return
+
+StringVarSetter_2:
+	bufferstring STR_VAR_1, StringVarSetter_Text_0
+	return
+
+StringVarSetter_3:
+	bufferstring STR_VAR_1, StringVarSetter_Text_1
+	return
+
+StringVarSetter_4:
+	bufferstring STR_VAR_1, StringVarSetter_Text_2
 	return
 
 
@@ -157,18 +320,40 @@ MaguroHarbor_EventScript_LovestruckGirl_Text_1:
 	.string "love, and yet I already want tomorrow\l"
 	.string "to come just so I see him again…$"
 
-MaguroHarbor_EventScript_FishcakeSalesman_Text_0:
+MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0:
 	.string "Old woman$"
 
-MaguroHarbor_EventScript_FishcakeSalesman_Text_1:
+MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_1:
+	.string "Oh I'm so sorry, dearie. We haven't\n"
+	.string "opened yet. Come back later!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0:
 	.string "Hello dear, want to try a fishcake?\p"
 	.string "They're the town's specialty!$"
 
+MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0:
+	.string "Oh my! I'm sorry but we've closed shop\n"
+	.string "now, dearie. We'll be open again\l"
+	.string "{STR_VAR_1}$"
+
 MaguroHarbor_EventScript_FishPokemonSalesman_Text_0:
-	.string "Salesman$"
+	.string "laddie$"
 
 MaguroHarbor_EventScript_FishPokemonSalesman_Text_1:
+	.string "lassie$"
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0:
+	.string "Salesman$"
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1:
+	.string "Aye! We're not open yet. Come back\n"
+	.string "later for the fresh catch of the day.$"
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0:
 	.string "Fresh fish! Come get yer fish!$"
+
+MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp_Text_0:
+	.string "Ah! You're a bit too late {STR_VAR_2}. We're\nclosed for th' day. We'll be open again\l{STR_VAR_1}.$"
 
 MaguroHarbor_EventScript_FishermanInBoat_Text_0:
 	.string "Fisherman$"
@@ -219,5 +404,22 @@ MaguroHarbor_EventScript_Man_Text_1:
 	.string "I wish I swam as gracefully as the\n"
 	.string "Dojo's Magikarp…$"
 
-MaguroHarbor_EventScript_Mart_Text_0:
+MaguroHarbor_EventScript_MartSelling_Text_0:
 	.string "Clerk$"
+
+MaguroHarbor_EventScript_MartSettingUp_Text_0:
+	.string "Oh, uh, the shop isn't open yet. Come\n"
+	.string "back later.$"
+
+MaguroHarbor_EventScript_MartClosingUp_Text_0:
+	.string "The shop's closed for today. Come\n"
+	.string "back {STR_VAR_1}.$"
+
+StringVarSetter_Text_0:
+	.string "on Saturday$"
+
+StringVarSetter_Text_1:
+	.string "tomorrow$"
+
+StringVarSetter_Text_2:
+	.string "on Wednesday$"
