@@ -3715,6 +3715,15 @@ const u8 *GetSpeciesName(u16 species)
     return gSpeciesInfo[species].speciesName;
 }
 
+const u8 *GetSpeciesSillyName(u16 species)
+{
+    // TODO ZATSU
+    species = SanitizeSpeciesId(species);
+    if (gSpeciesInfo[species].speciesName[0] == 0)
+        return gSpeciesInfo[SPECIES_NONE].speciesName;
+    return gSpeciesInfo[species].speciesName;
+}
+
 const u8 *GetSpeciesCategory(u16 species)
 {
     species = SanitizeSpeciesId(species);

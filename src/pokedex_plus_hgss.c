@@ -364,6 +364,7 @@ struct PokedexListItem
 {
     u16 dexNum;
     u16 seen:1;
+    u16 named:1;
     u16 owned:1;
 };
 
@@ -499,7 +500,7 @@ static void FreeWindowAndBgBuffers(void);
 static void CreatePokedexList(u8, u8);
 static void CreateMonDexNum(u16, u8, u8, u16);
 static void CreateCaughtBall(u16, u8, u8, u16);
-static u8 CreateMonName(u16, u8, u8);
+static u8 CreateMonName(u16, u8, u8, u16);
 static void ClearMonListEntry(u8 x, u8 y, u16 unused);
 static void CreateMonSpritesAtPos(u16, u16);
 static bool8 UpdateDexListScroll(u8, u8, u8);
@@ -2099,10 +2100,12 @@ static void ResetPokedexView(struct PokedexView *pokedexView)
     {
         pokedexView->pokedexList[i].dexNum = 0xFFFF;
         pokedexView->pokedexList[i].seen = FALSE;
+        pokedexView->pokedexList[i].named = FALSE;
         pokedexView->pokedexList[i].owned = FALSE;
     }
     pokedexView->pokedexList[NATIONAL_DEX_COUNT].dexNum = 0;
     pokedexView->pokedexList[NATIONAL_DEX_COUNT].seen = FALSE;
+    pokedexView->pokedexList[NATIONAL_DEX_COUNT].named = FALSE;
     pokedexView->pokedexList[NATIONAL_DEX_COUNT].owned = FALSE;
     pokedexView->pokemonListCount = 0;
     pokedexView->selectedPokemon = 0;
@@ -2534,6 +2537,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
                 temp_dexNum = HoennToNationalOrder(i + 1);
                 sPokedexView->pokedexList[i].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[i].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
+                sPokedexView->pokedexList[i].named = GetSetPokedexFlag(temp_dexNum, FLAG_GET_NAMED);
                 sPokedexView->pokedexList[i].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
                 if (sPokedexView->pokedexList[i].seen)
                     sPokedexView->pokemonListCount = i + 1;
@@ -2551,6 +2555,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
                 {
                     sPokedexView->pokedexList[r5].dexNum = temp_dexNum;
                     sPokedexView->pokedexList[r5].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
+                    sPokedexView->pokedexList[r5].named = GetSetPokedexFlag(temp_dexNum, FLAG_GET_NAMED);
                     sPokedexView->pokedexList[r5].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
                     if (sPokedexView->pokedexList[r5].seen)
                         sPokedexView->pokemonListCount = r5 + 1;
@@ -2568,6 +2573,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
+                sPokedexView->pokedexList[sPokedexView->pokemonListCount].named = TRUE;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
                 sPokedexView->pokemonListCount++;
             }
@@ -2582,6 +2588,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
+                sPokedexView->pokedexList[sPokedexView->pokemonListCount].named = TRUE;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
                 sPokedexView->pokemonListCount++;
             }
@@ -2596,6 +2603,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
+                sPokedexView->pokedexList[sPokedexView->pokemonListCount].named = TRUE;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
                 sPokedexView->pokemonListCount++;
             }
@@ -2610,6 +2618,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
+                sPokedexView->pokedexList[sPokedexView->pokemonListCount].named = TRUE;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
                 sPokedexView->pokemonListCount++;
             }
@@ -2624,6 +2633,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
+                sPokedexView->pokedexList[sPokedexView->pokemonListCount].named = TRUE;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
                 sPokedexView->pokemonListCount++;
             }
@@ -2635,6 +2645,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
     {
         sPokedexView->pokedexList[i].dexNum = 0xFFFF;
         sPokedexView->pokedexList[i].seen = FALSE;
+        sPokedexView->pokedexList[i].named = FALSE;
         sPokedexView->pokedexList[i].owned = FALSE;
     }
 }
@@ -2685,13 +2696,13 @@ static void CreateMonListEntry(u8 position, u16 b, u16 ignored)
                 {
                     CreateMonDexNum(entryNum, MON_LIST_X+1, i * 2, ignored);
                     CreateCaughtBall(sPokedexView->pokedexList[entryNum].owned, MON_LIST_X, i * 2, ignored);
-                    CreateMonName(sPokedexView->pokedexList[entryNum].dexNum, MON_LIST_X + 5, i * 2);
+                    CreateMonName(sPokedexView->pokedexList[entryNum].dexNum, MON_LIST_X + 5, i * 2, sPokedexView->pokedexList[entryNum].named);
                 }
                 else
                 {
                     CreateMonDexNum(entryNum, MON_LIST_X+1, i * 2, ignored);
                     CreateCaughtBall(FALSE, MON_LIST_X, i * 2, ignored);
-                    CreateMonName(0, MON_LIST_X + 5, i * 2);
+                    CreateMonName(0, MON_LIST_X + 5, i * 2, 0);
                 }
             }
             entryNum++;
@@ -2710,13 +2721,13 @@ static void CreateMonListEntry(u8 position, u16 b, u16 ignored)
             {
                 CreateMonDexNum(entryNum, MON_LIST_X+1, sPokedexView->listVOffset * 2, ignored);
                 CreateCaughtBall(sPokedexView->pokedexList[entryNum].owned, MON_LIST_X, sPokedexView->listVOffset * 2, ignored);
-                CreateMonName(sPokedexView->pokedexList[entryNum].dexNum, MON_LIST_X + 5, sPokedexView->listVOffset * 2);
+                CreateMonName(sPokedexView->pokedexList[entryNum].dexNum, MON_LIST_X + 5, sPokedexView->listVOffset * 2, sPokedexView->pokedexList[entryNum].named);
             }
             else
             {
                 CreateMonDexNum(entryNum, MON_LIST_X+1, sPokedexView->listVOffset * 2, ignored);
                 CreateCaughtBall(FALSE, MON_LIST_X, sPokedexView->listVOffset * 2, ignored);
-                CreateMonName(0, MON_LIST_X + 5, sPokedexView->listVOffset * 2);
+                CreateMonName(0, MON_LIST_X + 5, sPokedexView->listVOffset * 2, 0);
             }
         }
         break;
@@ -2734,13 +2745,13 @@ static void CreateMonListEntry(u8 position, u16 b, u16 ignored)
             {
                 CreateMonDexNum(entryNum, MON_LIST_X+1, vOffset * 2, ignored);
                 CreateCaughtBall(sPokedexView->pokedexList[entryNum].owned, MON_LIST_X, vOffset * 2, ignored);
-                CreateMonName(sPokedexView->pokedexList[entryNum].dexNum, MON_LIST_X + 5, vOffset * 2);
+                CreateMonName(sPokedexView->pokedexList[entryNum].dexNum, MON_LIST_X + 5, vOffset * 2, sPokedexView->pokedexList[entryNum].named);
             }
             else
             {
                 CreateMonDexNum(entryNum, MON_LIST_X+1, vOffset * 2, ignored);
                 CreateCaughtBall(FALSE, MON_LIST_X, vOffset * 2, ignored);
-                CreateMonName(0, MON_LIST_X + 5, vOffset * 2);
+                CreateMonName(0, MON_LIST_X + 5, vOffset * 2, 0);
             }
         }
         break;
@@ -2777,13 +2788,18 @@ static void CreateCaughtBall(bool16 owned, u8 x, u8 y, u16 unused)
         FillWindowPixelRect(0, PIXEL_FILL(0), x * 6, y * 8, 8, 16);
 }
 
-static u8 CreateMonName(u16 num, u8 left, u8 top)
+static u8 CreateMonName(u16 num, u8 left, u8 top, u16 knowsName)
 {
     const u8 *str;
 
     num = NationalPokedexNumToSpecies(num);
     if (num)
-        str = GetSpeciesName(num);
+    {
+        if (knowsName)
+            str = GetSpeciesName(num);
+        else
+            str = GetSpeciesSillyName(num);
+    }
     else
         str = sText_TenDashes;
     PrintMonDexNumAndName_2(0, FONT_NARROW, str, left, top);
@@ -6161,6 +6177,7 @@ static void Task_HandleEvolutionScreenInput(u8 taskId)
                 
             sPokedexListItem->dexNum = dexNum;
             sPokedexListItem->seen   = GetSetPokedexFlag(dexNum, FLAG_GET_SEEN);
+            sPokedexListItem->named  = GetSetPokedexFlag(dexNum, FLAG_GET_NAMED);
             sPokedexListItem->owned  = GetSetPokedexFlag(dexNum, FLAG_GET_CAUGHT);
 
                 if (GetSpeciesFormTable(targetSpecies) != NULL)
