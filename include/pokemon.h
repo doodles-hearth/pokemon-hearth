@@ -118,7 +118,7 @@ enum {
     MON_DATA_EVOLUTION_TRACKER,
 };
 
-enum
+enum SpeciesNameCheck
 {
     DO_NAME_CHECK,
     SKIP_NAME_CHECK
@@ -713,7 +713,7 @@ u8 GetSecretBaseTrainerPicIndex(void);
 u8 GetSecretBaseTrainerClass(void);
 bool8 IsPlayerPartyAndPokemonStorageFull(void);
 bool8 IsPokemonStorageFull(void);
-const u8 *GetSpeciesName(u16 species, u8 namedCheck);
+const u8 *GetSpeciesName(u16 species, enum SpeciesNameCheck nameCheck);
 const u8 *GetSpeciesSillyName(u16 species);
 const u8 *GetSpeciesCategory(u16 species);
 const u8 *GetSpeciesPokedexDescription(u16 species);

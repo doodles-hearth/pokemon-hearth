@@ -3707,12 +3707,12 @@ bool8 IsPokemonStorageFull(void)
     return TRUE;
 }
 
-const u8 *GetSpeciesName(u16 species, u8 namedCheck)
+const u8 *GetSpeciesName(u16 species, enum SpeciesNameCheck nameCheck)
 {
     species = SanitizeSpeciesId(species);
     if (gSpeciesInfo[species].speciesName[0] == 0)
         return gSpeciesInfo[SPECIES_NONE].speciesName;
-    if (P_UNKNOWN_MON_NAMES == TRUE && namedCheck == DO_NAME_CHECK
+    if (P_UNKNOWN_MON_NAMES == TRUE && nameCheck == DO_NAME_CHECK
      && !GetSetPokedexFlag(species, FLAG_GET_NAMED))
         return gSpeciesInfo[species].unknownName;
     return gSpeciesInfo[species].speciesName;
