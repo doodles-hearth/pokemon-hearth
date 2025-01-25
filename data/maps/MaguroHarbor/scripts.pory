@@ -1,5 +1,18 @@
+const FLAG_HIDE_NONSELLINGMERCHANTS = FLAG_TEMP_1
+const FLAG_HIDE_SELLINGMERCHANTS = FLAG_TEMP_2
+
 mapscripts MaguroHarbor_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_HIDE_NONSELLINGMERCHANTS)
+		setflag(FLAG_HIDE_SELLINGMERCHANTS)
+
+		getweekday
+		if(var(VAR_RESULT) == 0 || var(VAR_RESULT) == 3 || var(VAR_RESULT) == 6) {
+			clearflag(FLAG_HIDE_NONSELLINGMERCHANTS)
+			clearflag(FLAG_HIDE_SELLINGMERCHANTS)
+		}
+		
+	}
 }
 
 script MaguroHarbor_EventScript_TownSign {

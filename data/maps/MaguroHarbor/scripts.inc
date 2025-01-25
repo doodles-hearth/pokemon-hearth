@@ -1,5 +1,23 @@
 MaguroHarbor_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_TEMP_1
+	setflag FLAG_TEMP_2
+	getweekday
+	compare VAR_RESULT, 0
+	goto_if_eq MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	compare VAR_RESULT, 3
+	goto_if_eq MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	compare VAR_RESULT, 6
+	goto_if_eq MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	return
+
+MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	clearflag FLAG_TEMP_1
+	clearflag FLAG_TEMP_2
+	return
 
 
 MaguroHarbor_EventScript_TownSign::

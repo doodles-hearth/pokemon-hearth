@@ -915,19 +915,27 @@ bool8 ScrCmd_getweekday(struct ScriptContext *ctx)
     {
     case WEEKDAY_SUN:
         gSpecialVar_Result = WEEKDAY_SUN;
+        break;
     case WEEKDAY_MON:
         gSpecialVar_Result = WEEKDAY_MON;
+        break;
     case WEEKDAY_TUE:
         gSpecialVar_Result = WEEKDAY_TUE;
+        break;
     case WEEKDAY_WED:
         gSpecialVar_Result = WEEKDAY_WED;
+        break;
     case WEEKDAY_THU:
         gSpecialVar_Result = WEEKDAY_THU;
+        break;
     case WEEKDAY_FRI:
         gSpecialVar_Result = WEEKDAY_FRI;
+        break;
     case WEEKDAY_SAT:
         gSpecialVar_Result = WEEKDAY_SAT;
+        break;
     } 
+    MgbaPrintf(MGBA_LOG_WARN, "%u", VarGet(gSpecialVar_Result));
     return FALSE;
 }
 
