@@ -490,7 +490,7 @@ static void AddSearchWindowText(u16 species, u8 proximity, u8 searchLevel, bool8
     }
     else
     {
-        StringCopy(gStringVar1, GetSpeciesName(species));
+        StringCopy(gStringVar1, GetSpeciesName(species, SKIP_NAME_CHECK));
         AddTextPrinterParameterized3(sDexNavSearchDataPtr->windowId, 0, WINDOW_COL_0, 0, sSearchFontColor, TEXT_SKIP_DRAW, gStringVar1);
     }
 
@@ -2117,7 +2117,7 @@ static void PrintCurrentSpeciesInfo(void)
     if (species == SPECIES_NONE)
         AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SPECIES_INFO_Y, sFontColor_Black, 0, sText_DexNav_NoInfo);
     else
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SPECIES_INFO_Y, sFontColor_Black, 0, GetSpeciesName(species));
+        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, SPECIES_INFO_Y, sFontColor_Black, 0, GetSpeciesName(species, SKIP_NAME_CHECK));
     
     //type icon(s)
     type1 = gSpeciesInfo[species].types[0];
@@ -2191,7 +2191,7 @@ static void PrintSearchableSpecies(u16 species)
     }
     else
     {
-        StringCopy(gStringVar1, GetSpeciesName(species));
+        StringCopy(gStringVar1, GetSpeciesName(species, SKIP_NAME_CHECK));
         StringExpandPlaceholders(gStringVar4, sText_DexNav_SearchForRegisteredSpecies);
         AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 0, 0, sFontColor_White, TEXT_SKIP_DRAW, gStringVar4);
     }

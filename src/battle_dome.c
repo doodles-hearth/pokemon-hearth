@@ -4252,11 +4252,11 @@ static void DisplayTrainerInfoOnCard(u8 flags, u8 trainerTourneyId)
     {
         textPrinter.currentY = sSpeciesNameTextYCoords[i];
         if (trainerId == TRAINER_PLAYER)
-            textPrinter.currentChar = GetSpeciesName(DOME_MONS[trainerTourneyId][i]);
+            textPrinter.currentChar = GetSpeciesName(DOME_MONS[trainerTourneyId][i], SKIP_NAME_CHECK);
         else if (trainerId == TRAINER_FRONTIER_BRAIN)
-            textPrinter.currentChar = GetSpeciesName(DOME_MONS[trainerTourneyId][i]);
+            textPrinter.currentChar = GetSpeciesName(DOME_MONS[trainerTourneyId][i], SKIP_NAME_CHECK);
         else
-            textPrinter.currentChar = GetSpeciesName(gFacilityTrainerMons[DOME_MONS[trainerTourneyId][i]].species);
+            textPrinter.currentChar = GetSpeciesName(gFacilityTrainerMons[DOME_MONS[trainerTourneyId][i]].species, SKIP_NAME_CHECK);
         textPrinter.fontId = GetFontIdToFit(textPrinter.currentChar, FONT_SHORT, 0, 60);
 
         textPrinter.windowId = WIN_TRAINER_MON1_NAME + i + windowId;
