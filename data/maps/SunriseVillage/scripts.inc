@@ -236,7 +236,7 @@ SunriseVillage_Event_Munchlax_2:
 SunriseVillage_Event_Kirlia::
 	lock
 	faceplayer
-	ismonseen SPECIES_MUNCHLAX
+	ismonseen SPECIES_KIRLIA
 	compare VAR_RESULT, 0
 	goto_if_ne SunriseVillage_Event_Kirlia_2
 	speakername SunriseVillage_Event_Kirlia_Text_1

@@ -368,6 +368,7 @@ script TranquilRoute_EventScript_Mareep {
         speakername("Static sheep")
     }
 	msgbox(format("Beeeeeh…"))
+	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
 	waitmoncry
 	release
 }
@@ -382,6 +383,7 @@ script TranquilRoute_EventScript_Mareep2 {
         speakername("Static sheep")
     }
 	msgbox(format("Baaaaah…"))
+	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
 	waitmoncry
 	release
 }

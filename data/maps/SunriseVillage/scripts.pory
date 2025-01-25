@@ -261,7 +261,7 @@ script SunriseVillage_Event_Munchlax {
 script SunriseVillage_Event_Kirlia {
     lock
     faceplayer
-    ismonseen(SPECIES_MUNCHLAX)
+    ismonseen(SPECIES_KIRLIA)
     if (var(VAR_RESULT)) {
         speakername("Kirlia")
     } else {

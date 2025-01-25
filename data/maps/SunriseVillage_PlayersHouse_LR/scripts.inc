@@ -116,6 +116,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_Eevee::
 	speakername SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_1
 SunriseVillage_PlayersHouse_LR_EventScript_Eevee_1:
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_2
+	playmoncry SPECIES_EEVEE, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	return

@@ -79,6 +79,7 @@ script BeachboundRoute_EventScript_Wooloo {
     msgbox(format(
         "Bah…"
     ))
+	//speakernamemon(SPECIES_WOOLOO, "Wool ball", "Wooloo", "Bah…")
     playmoncry(SPECIES_WOOLOO, CRY_MODE_NORMAL)
     waitmoncry
     release

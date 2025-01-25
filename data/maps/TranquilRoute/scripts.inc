@@ -300,6 +300,7 @@ TranquilRoute_EventScript_Mareep::
 	speakername TranquilRoute_EventScript_Mareep_Text_1
 TranquilRoute_EventScript_Mareep_1:
 	msgbox TranquilRoute_EventScript_Mareep_Text_2
+	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	return
@@ -318,6 +319,7 @@ TranquilRoute_EventScript_Mareep2::
 	speakername TranquilRoute_EventScript_Mareep_Text_1
 TranquilRoute_EventScript_Mareep2_1:
 	msgbox TranquilRoute_EventScript_Mareep2_Text_0
+	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	return

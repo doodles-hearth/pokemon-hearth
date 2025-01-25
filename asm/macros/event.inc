@@ -2652,3 +2652,14 @@
 	callnative ScrCmd_travellingmerchant
 	waitstate
 	.endm
+
+	@ Shows different speakernames for whether you've seen the Pokémon or not.
+	@ .macro speakernamemon monname:req, hiddenname:req, realname:req, mondialogue:req
+	@ ismonseen \monname
+	@ .if
+	@ 	speakername \hiddenname
+	@ .else
+	@ 	speakername \realname
+	@ .endif
+	@ msgbox \mondialogue, MSGBOX_DEFAULT
+	@ .endm
