@@ -2401,14 +2401,14 @@ static void GetBattlerNick(u32 battler, u8 *dst)
     if (illusionMon != NULL)
         mon = illusionMon;
 
+    GetMonData(mon, MON_DATA_NICKNAME, dst);
+    StringGet_Nickname(dst);
+
     if (GetBattlerSide(battler) != B_SIDE_PLAYER)
     {
-        StringCopy(dst, GetSpeciesName(GetMonData(mon, MON_DATA_SPECIES), DO_NAME_CHECK));
-    }
-    else
-    {
-        GetMonData(mon, MON_DATA_NICKNAME, dst);
-        StringGet_Nickname(dst);
+        u16 species = GetMonData(mon, MON_DATA_SPECIES);
+        if(StringCompareWithoutExtCtrlCodes(dst, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
+            StringCopy(dst, GetSpeciesName(species, DO_NAME_CHECK));
     }
 }
 

@@ -1721,15 +1721,16 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 
     StringCopy(gDisplayedStringBattle, gText_HealthboxNickname);
 
+    GetMonData(mon, MON_DATA_NICKNAME, nickname);
+    StringGet_Nickname(nickname);
+
     if (GetBattlerSide(gSprites[healthboxSpriteId].hMain_Battler) != B_SIDE_PLAYER)
     {
-        StringCopy(nickname, GetSpeciesName(GetMonData(mon, MON_DATA_SPECIES), DO_NAME_CHECK));
+        u16 species = GetMonData(mon, MON_DATA_SPECIES);
+        if (StringCompareWithoutExtCtrlCodes(nickname, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
+            StringCopy(nickname, GetSpeciesName(species, DO_NAME_CHECK));
     }
-    else
-    {
-        GetMonData(mon, MON_DATA_NICKNAME, nickname);
-        StringGet_Nickname(nickname);
-    }
+
     ptr = StringAppend(gDisplayedStringBattle, nickname);
 
     gender = GetMonGender(mon);
@@ -2541,7 +2542,8 @@ static void PrintBattlerOnAbilityPopUp(u8 battlerId, u8 spriteId1, u8 spriteId2)
     u8 monName[POKEMON_NAME_LENGTH + 3] = {0};
     u8* nick = gBattleMons[battlerId].nickname; // This needs to be updated for Illusion support
 
-    if ((gBattlerPositions[battlerId] & BIT_SIDE) != B_SIDE_PLAYER)
+    if ((gBattlerPositions[battlerId] & BIT_SIDE) != B_SIDE_PLAYER
+     && StringCompareWithoutExtCtrlCodes(nick, GetSpeciesName(gBattleMons[battlerId].species, SKIP_NAME_CHECK)) == 0)
         StringCopy(nick, GetSpeciesName(gBattleMons[battlerId].species, DO_NAME_CHECK));
 
     for (i = 0; i < POKEMON_NAME_LENGTH; ++i)
