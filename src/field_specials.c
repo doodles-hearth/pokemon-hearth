@@ -4448,12 +4448,6 @@ void DestroySelectedPartyMon(void) {
     ZeroMonData(&gPlayerParty[monId]);
 }
 
-static const u8 *const sSpeciesToHiddenName[NUM_SPECIES] =
-{
-    [SPECIES_NONE] = COMPOUND_STRING("La Creatura"),
-    [SPECIES_TREECKO] = COMPOUND_STRING("Trek"),
-};
-
 void SetSpeakerToMonName(struct ScriptContext *ctx)
 {
     u16 species = gSpecialVar_0x8004 = ScriptReadHalfword(ctx);
