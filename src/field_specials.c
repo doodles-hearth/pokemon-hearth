@@ -4440,6 +4440,33 @@ void GetDexRiddleFeedback(void)
     }
 }
 
+static const u8 *const sSpeciesToHiddenName[NUM_SPECIES] =
+{
+    [SPECIES_SPHEAL] = COMPOUND_STRING("Icy ball"),
+    [SPECIES_TREECKO] = COMPOUND_STRING("Grass gecko"),
+};
+
+void SetSpeakerToMonName(struct ScriptContext *ctx)
+{
+    u32 species = gSpecialVar_0x8004 = ScriptReadHalfword(ctx);
+    IsMonSeen();
+
+    const u8 *name = sSpeciesToHiddenName[SPECIES_NONE];
+    if (gSpecialVar_Result) // is seen
+    {
+        name = GetSpeciesName(species);
+    }
+    else
+    {
+        if (sSpeciesToHiddenName[species] != NULL)
+        {
+            name = sSpeciesToHiddenName[species];
+        }
+    }
+
+    SetSpeakerName(name);
+}
+
 /**
  * Obliterates from existence the Pokémon the player previously selected via the select screen.
  */

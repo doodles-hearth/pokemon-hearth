@@ -133,8 +133,18 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
+	setspeakertomonname SPECIES_SPHEAL
+	msgbox text1
+	setspeakertomonname SPECIES_TREECKO
+	msgbox text2
 	release
 	end
+
+text1:
+.string "a$"
+
+text2:
+.string "b$"
 
 Debug_EventScript_Script_2::
 	release
