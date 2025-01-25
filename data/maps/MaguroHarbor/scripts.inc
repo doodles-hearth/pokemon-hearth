@@ -7,6 +7,15 @@ MaguroHarbor_EventScript_TownSign::
 	return
 
 
+MaguroHarbor_EventScript_LovestruckGirl::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_LovestruckGirl_Text_0
+	msgbox MaguroHarbor_EventScript_LovestruckGirl_Text_1, MSGBOX_DEFAULT
+	release
+	return
+
+
 MaguroHarbor_EventScript_FishcakeSalesman::
 	lock
 	faceplayer
@@ -121,6 +130,14 @@ MaguroHarbor_EventScript_TownSign_Text_0:
 	.string "Maguro Harbor\n"
 	.string "“A town that lives hand in hand with\l"
 	.string "the sea.”$"
+
+MaguroHarbor_EventScript_LovestruckGirl_Text_0:
+	.string "Lovestruck Girl$"
+
+MaguroHarbor_EventScript_LovestruckGirl_Text_1:
+	.string "It's only been an hour since I saw my\n"
+	.string "love, and yet I already want tomorrow\l"
+	.string "to come just so I see him again…$"
 
 MaguroHarbor_EventScript_FishcakeSalesman_Text_0:
 	.string "Old woman$"

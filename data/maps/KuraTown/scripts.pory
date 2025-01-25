@@ -160,6 +160,19 @@ script SakuTown_EventScript_ClosedGymDoor {
 	}
 }
 
+script KuraTown_EventScript_LovestruckGuy{
+	lock
+	faceplayer
+	speakername("Lovestruck Guy")
+	msgbox(
+		format(
+			"I just got back home after spending time with my love, and yet I already want the day to pass by and let me see her again…"
+		),
+		MSGBOX_DEFAULT
+	)
+	release
+}
+
 script KuraTown_EventScript_TownSign {
 	msgbox(format("Kura Village\n“A village where the mountains meet the woods.”"), MSGBOX_SIGN)
 }

@@ -140,6 +140,15 @@ SakuTown_EventScript_ClosedGymDoor_1:
 	return
 
 
+KuraTown_EventScript_LovestruckGuy::
+	lock
+	faceplayer
+	speakername KuraTown_EventScript_LovestruckGuy_Text_0
+	msgbox KuraTown_EventScript_LovestruckGuy_Text_1, MSGBOX_DEFAULT
+	release
+	return
+
+
 KuraTown_EventScript_TownSign::
 	msgbox KuraTown_EventScript_TownSign_Text_0, MSGBOX_SIGN
 	return
@@ -229,6 +238,15 @@ KuraTown_EventScript_Guard_Text_0:
 SakuTown_EventScript_ClosedGymDoor_Text_0:
 	.string "“BE BACK SOON\n"
 	.string "- Hana”$"
+
+KuraTown_EventScript_LovestruckGuy_Text_0:
+	.string "Lovestruck Guy$"
+
+KuraTown_EventScript_LovestruckGuy_Text_1:
+	.string "I just got back home after spending\n"
+	.string "time with my love, and yet I already\l"
+	.string "want the day to pass by and let me\l"
+	.string "see her again…$"
 
 KuraTown_EventScript_TownSign_Text_0:
 	.string "Kura Village\n"

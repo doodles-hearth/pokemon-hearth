@@ -55,11 +55,20 @@ BeachboundRoute_EventScript_Hoppip_2:
 BeachboundRoute_EventScript_Wooloo::
 	lock
 	faceplayer
-	speakernamemon SPECIES_WOOLOO, BeachboundRoute_EventScript_Wooloo_Text_0, BeachboundRoute_EventScript_Wooloo_Text_1, BeachboundRoute_EventScript_Wooloo_Text_2
+	ismonseen SPECIES_WOOLOO
+	compare VAR_RESULT, 0
+	goto_if_ne BeachboundRoute_EventScript_Wooloo_2
+	speakername BeachboundRoute_EventScript_Wooloo_Text_1
+BeachboundRoute_EventScript_Wooloo_1:
+	msgbox BeachboundRoute_EventScript_Wooloo_Text_2
 	playmoncry SPECIES_WOOLOO, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	end
+
+BeachboundRoute_EventScript_Wooloo_2:
+	speakername BeachboundRoute_EventScript_Wooloo_Text_0
+	goto BeachboundRoute_EventScript_Wooloo_1
 
 
 BeachboundRoute_EventScript_Shepherd::
@@ -510,10 +519,10 @@ BeachboundRoute_EventScript_Hoppip_Text_2:
 	.string "Pip!$"
 
 BeachboundRoute_EventScript_Wooloo_Text_0:
-	.string "Wool ball$"
+	.string "Wooloo$"
 
 BeachboundRoute_EventScript_Wooloo_Text_1:
-	.string "Wooloo$"
+	.string "Wool ball$"
 
 BeachboundRoute_EventScript_Wooloo_Text_2:
 	.string "Bah…$"

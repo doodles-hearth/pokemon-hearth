@@ -6,6 +6,19 @@ script MaguroHarbor_EventScript_TownSign {
 	msgbox(format("Maguro Harbor\n“A town that lives hand in hand with the sea.”"), MSGBOX_SIGN)
 }
 
+script MaguroHarbor_EventScript_LovestruckGirl {
+	lock
+	faceplayer
+	speakername("Lovestruck Girl")
+	msgbox(
+		format(
+			"It's only been an hour since I saw my love, and yet I already want tomorrow to come just so I see him again…"
+		),
+		MSGBOX_DEFAULT
+	)
+	release
+}
+
 script MaguroHarbor_EventScript_FishcakeSalesman {
 	lock
 	faceplayer
