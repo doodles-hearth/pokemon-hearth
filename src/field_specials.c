@@ -4447,3 +4447,20 @@ void DestroySelectedPartyMon(void) {
     u8 monId = GetCursorSelectionMonId();
     ZeroMonData(&gPlayerParty[monId]);
 }
+
+static const u8 *const sSpeciesToHiddenName[NUM_SPECIES] =
+{
+    [SPECIES_NONE] = COMPOUND_STRING("La Creatura"),
+    [SPECIES_TREECKO] = COMPOUND_STRING("Trek"),
+};
+
+void SetSpeakerToMonName(struct ScriptContext *ctx)
+{
+    u16 species = gSpecialVar_0x8004 = ScriptReadHalfword(ctx);
+    bool8 isNamed = GetSetPokedexFlag(species, FLAG_GET_NAMED);
+    const u8 *name = sSpeciesToHiddenName[SPECIES_NONE];
+
+    name = isNamed ? gSpeciesInfo[species].speciesName : gSpeciesInfo[species].unknownName;
+
+    SetSpeakerName(name);
+}
