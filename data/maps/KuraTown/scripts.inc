@@ -179,7 +179,7 @@ KuraTown_EventScript_GuardStopsYou_Text_2:
 	.string "sure why you'd want to.$"
 
 KuraTown_EventScript_DojoChallenger_Text_0:
-	.string "Dojo Challenger$"
+	.string "Bold Man$"
 
 KuraTown_EventScript_DojoChallenger_Text_1:
 	.string "Looks like the dojo is closed again…\p"
@@ -188,7 +188,7 @@ KuraTown_EventScript_DojoChallenger_Text_1:
 	.string "Could it be that she is scared of me?$"
 
 KuraTown_EventScript_DojoChallenger_Text_2:
-	.string "Scared Challenger$"
+	.string "Cowardly Man$"
 
 KuraTown_EventScript_DojoChallenger_Text_3:
 	.string "The dojo is open! I can finally defeat\n"
