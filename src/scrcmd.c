@@ -899,19 +899,11 @@ bool8 ScrCmd_gettimeofday(struct ScriptContext *ctx)
 
 bool8 ScrCmd_gettime(struct ScriptContext *ctx)
 {
-    // TODO RUBY incoming changes were:
-    // Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
-    // RtcCalcLocalTime();
-    // gSpecialVar_0x8000 = gLocalTime.hours;
-    // gSpecialVar_0x8001 = gLocalTime.minutes;
-    // gSpecialVar_0x8002 = gLocalTime.seconds;
-
-    struct SiiRtcInfo *time = FakeRtc_GetCurrentTime();
-    gSpecialVar_0x8000 = time->hour;
-    gSpecialVar_0x8001 = time->minute;
-    gSpecialVar_0x8002 = time->second;
-
-    ConvertIntToDecimalStringN(gStringVar2, time->day, STR_CONV_MODE_LEADING_ZEROS, 2);
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+    RtcCalcLocalTime();
+    gSpecialVar_0x8000 = gLocalTime.hours;
+    gSpecialVar_0x8001 = gLocalTime.minutes;
+    gSpecialVar_0x8002 = gLocalTime.seconds;
 
     return FALSE;
 }
@@ -923,19 +915,27 @@ bool8 ScrCmd_getweekday(struct ScriptContext *ctx)
     {
     case WEEKDAY_SUN:
         gSpecialVar_Result = WEEKDAY_SUN;
+        break;
     case WEEKDAY_MON:
         gSpecialVar_Result = WEEKDAY_MON;
+        break;
     case WEEKDAY_TUE:
         gSpecialVar_Result = WEEKDAY_TUE;
+        break;
     case WEEKDAY_WED:
         gSpecialVar_Result = WEEKDAY_WED;
+        break;
     case WEEKDAY_THU:
         gSpecialVar_Result = WEEKDAY_THU;
+        break;
     case WEEKDAY_FRI:
         gSpecialVar_Result = WEEKDAY_FRI;
+        break;
     case WEEKDAY_SAT:
         gSpecialVar_Result = WEEKDAY_SAT;
+        break;
     } 
+    MgbaPrintf(MGBA_LOG_WARN, "%u", VarGet(gSpecialVar_Result));
     return FALSE;
 }
 
@@ -2082,7 +2082,7 @@ bool8 ScrCmd_randomdexmessage(struct ScriptContext *ctx)
     u16 species = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
     struct WindowTemplate winTemplate;
     
-    const u8 *speciesName = GetSpeciesName(species);
+    const u8 *speciesName = GetSpeciesName(species, SKIP_NAME_CHECK);
     const u8 *randomDexDesc = GetSpeciesPokedexDescription(species);
     StringCopy(gStringVar1, speciesName);
 
@@ -2127,7 +2127,7 @@ bool8 ScrCmd_bufferspeciesname(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1);
 
-    StringCopy(sScriptStringVars[stringVarIndex], GetSpeciesName(species));
+    StringCopy(sScriptStringVars[stringVarIndex], GetSpeciesName(species, SKIP_NAME_CHECK));
     return FALSE;
 }
 
@@ -2168,7 +2168,7 @@ bool8 ScrCmd_bufferleadmonspeciesname(struct ScriptContext *ctx)
     u8 *dest = sScriptStringVars[stringVarIndex];
     u8 partyIndex = GetLeadMonIndex();
     u32 species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES, NULL);
-    StringCopy(dest, GetSpeciesName(species));
+    StringCopy(dest, GetSpeciesName(species, SKIP_NAME_CHECK));
     return FALSE;
 }
 

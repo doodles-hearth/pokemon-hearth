@@ -113,20 +113,12 @@ ChiiTown_PokemonCenter_EventScript_Snorunt::
 	lock
 	faceplayer
 	playmoncry SPECIES_SNORUNT, CRY_MODE_NORMAL
-	ismonseen SPECIES_SNORUNT
-	compare VAR_RESULT, 0
-	goto_if_ne ChiiTown_PokemonCenter_EventScript_Snorunt_2
-	speakername ChiiTown_PokemonCenter_EventScript_Snorunt_Text_1
-ChiiTown_PokemonCenter_EventScript_Snorunt_1:
-	msgbox ChiiTown_PokemonCenter_EventScript_Snorunt_Text_2
+	setspeakertomonname SPECIES_SNORUNT
+	msgbox ChiiTown_PokemonCenter_EventScript_Snorunt_Text_0
 	waitmoncry
 	closemessage
 	release
 	end
-
-ChiiTown_PokemonCenter_EventScript_Snorunt_2:
-	speakername ChiiTown_PokemonCenter_EventScript_Snorunt_Text_0
-	goto ChiiTown_PokemonCenter_EventScript_Snorunt_1
 
 
 ChiiTown_PokemonCenter_EventScript_NeedMarket::
@@ -264,12 +256,6 @@ ChiiTown_PokemonCenter_EventScript_IveComeALongWay_Text_1:
 	.string "while.$"
 
 ChiiTown_PokemonCenter_EventScript_Snorunt_Text_0:
-	.string "Snorunt$"
-
-ChiiTown_PokemonCenter_EventScript_Snorunt_Text_1:
-	.string "Cold dumpling$"
-
-ChiiTown_PokemonCenter_EventScript_Snorunt_Text_2:
 	.string "Glaglaglaglagla!$"
 
 ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_0:

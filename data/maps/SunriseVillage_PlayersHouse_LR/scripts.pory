@@ -144,13 +144,9 @@ script SunriseVillage_PlayersHouse_LR_EventScript_Eevee {
 	faceplayer
 	waitse
 	playmoncry(SPECIES_EEVEE, CRY_MODE_NORMAL)
-	ismonseen(SPECIES_EEVEE)
-    if (var(VAR_RESULT)) {
-        speakername("Eevee")
-    } else {
-        speakername("Fluffy fox")
-    }
+	setspeakertomonname(SPECIES_EEVEE)
 	msgbox(format("Eee!"))
+	playmoncry(SPECIES_EEVEE, CRY_MODE_NORMAL)
 	waitmoncry
 	release
 }

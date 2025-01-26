@@ -127,12 +127,7 @@ script ChiiTown_PokemonCenter_EventScript_Snorunt {
 	lock
 	faceplayer
 	playmoncry(SPECIES_SNORUNT, CRY_MODE_NORMAL)
-	ismonseen(SPECIES_SNORUNT)
-    if (var(VAR_RESULT)) {
-        speakername("Snorunt")
-    } else {
-        speakername("Cold dumpling")
-    }
+	setspeakertomonname(SPECIES_SNORUNT)
 	msgbox(format(
 		"Glaglaglaglagla!"
 	))

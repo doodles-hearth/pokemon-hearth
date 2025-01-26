@@ -197,20 +197,12 @@ SunriseVillage_Event_OldWoman::
 SunriseVillage_Event_Happiny::
 	lock
 	faceplayer
-	ismonseen SPECIES_HAPPINY
-	compare VAR_RESULT, 0
-	goto_if_ne SunriseVillage_Event_Happiny_2
-	speakername SunriseVillage_Event_Happiny_Text_1
-SunriseVillage_Event_Happiny_1:
-	msgbox SunriseVillage_Event_Happiny_Text_2
+	setspeakertomonname SPECIES_HAPPINY
+	msgbox SunriseVillage_Event_Happiny_Text_0
 	playmoncry SPECIES_HAPPINY, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	end
-
-SunriseVillage_Event_Happiny_2:
-	speakername SunriseVillage_Event_Happiny_Text_0
-	goto SunriseVillage_Event_Happiny_1
 
 
 SunriseVillage_Event_Munchlax::
@@ -218,36 +210,20 @@ SunriseVillage_Event_Munchlax::
 	faceplayer
 	waitse
 	playmoncry SPECIES_MUNCHLAX, CRY_MODE_NORMAL
-	ismonseen SPECIES_MUNCHLAX
-	compare VAR_RESULT, 0
-	goto_if_ne SunriseVillage_Event_Munchlax_2
-	speakername SunriseVillage_Event_Munchlax_Text_1
-SunriseVillage_Event_Munchlax_1:
-	msgbox SunriseVillage_Event_Munchlax_Text_2
+	setspeakertomonname SPECIES_MUNCHLAX
+	msgbox SunriseVillage_Event_Munchlax_Text_0
 	waitmoncry
 	release
 	end
-
-SunriseVillage_Event_Munchlax_2:
-	speakername SunriseVillage_Event_Munchlax_Text_0
-	goto SunriseVillage_Event_Munchlax_1
 
 
 SunriseVillage_Event_Kirlia::
 	lock
 	faceplayer
-	ismonseen SPECIES_MUNCHLAX
-	compare VAR_RESULT, 0
-	goto_if_ne SunriseVillage_Event_Kirlia_2
-	speakername SunriseVillage_Event_Kirlia_Text_1
-SunriseVillage_Event_Kirlia_1:
-	msgbox SunriseVillage_Event_Kirlia_Text_2
+	setspeakertomonname SPECIES_KIRLIA
+	msgbox SunriseVillage_Event_Kirlia_Text_0
 	release
 	end
-
-SunriseVillage_Event_Kirlia_2:
-	speakername SunriseVillage_Event_Kirlia_Text_0
-	goto SunriseVillage_Event_Kirlia_1
 
 
 SunriseVillage_Event_TestGyarados::
@@ -364,30 +340,12 @@ SunriseVillage_Event_OldWoman_Text_0:
 	.string "I'm tired of waiting!$"
 
 SunriseVillage_Event_Happiny_Text_0:
-	.string "Happiny$"
-
-SunriseVillage_Event_Happiny_Text_1:
-	.string "Noisy egg$"
-
-SunriseVillage_Event_Happiny_Text_2:
 	.string "Happi!$"
 
 SunriseVillage_Event_Munchlax_Text_0:
-	.string "Munchlax$"
-
-SunriseVillage_Event_Munchlax_Text_1:
-	.string "Big nom$"
-
-SunriseVillage_Event_Munchlax_Text_2:
 	.string "Munch munch munch…$"
 
 SunriseVillage_Event_Kirlia_Text_0:
-	.string "Kirlia$"
-
-SunriseVillage_Event_Kirlia_Text_1:
-	.string "Posh dancer$"
-
-SunriseVillage_Event_Kirlia_Text_2:
 	.string "…$"
 
 SunriseVillage_Event_TownSign_Text_0:

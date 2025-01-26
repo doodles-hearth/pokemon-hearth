@@ -1341,7 +1341,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     SetBoxMonData(boxMon, MON_DATA_CHECKSUM, &checksum);
     EncryptBoxMon(boxMon);
     SetBoxMonData(boxMon, MON_DATA_IS_SHINY, &isShiny);
-    StringCopy(speciesName, GetSpeciesName(species));
+    StringCopy(speciesName, GetSpeciesName(species, SKIP_NAME_CHECK));
     SetBoxMonData(boxMon, MON_DATA_NICKNAME, speciesName);
     SetBoxMonData(boxMon, MON_DATA_LANGUAGE, &gGameLanguage);
     SetBoxMonData(boxMon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
@@ -3707,11 +3707,14 @@ bool8 IsPokemonStorageFull(void)
     return TRUE;
 }
 
-const u8 *GetSpeciesName(u16 species)
+const u8 *GetSpeciesName(u16 species, enum SpeciesNameCheck nameCheck)
 {
     species = SanitizeSpeciesId(species);
     if (gSpeciesInfo[species].speciesName[0] == 0)
         return gSpeciesInfo[SPECIES_NONE].speciesName;
+    if (P_UNKNOWN_MON_NAMES == TRUE && nameCheck == DO_NAME_CHECK
+     && !GetSetPokedexFlag(species, FLAG_GET_NAMED))
+        return gSpeciesInfo[species].unknownName;
     return gSpeciesInfo[species].speciesName;
 }
 
@@ -5308,8 +5311,8 @@ void EvolutionRenameMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies)
     u8 language;
     GetMonData(mon, MON_DATA_NICKNAME, gStringVar1);
     language = GetMonData(mon, MON_DATA_LANGUAGE, &language);
-    if (language == GAME_LANGUAGE && !StringCompare(GetSpeciesName(oldSpecies), gStringVar1))
-        SetMonData(mon, MON_DATA_NICKNAME, GetSpeciesName(newSpecies));
+    if (language == GAME_LANGUAGE && !StringCompare(GetSpeciesName(oldSpecies, SKIP_NAME_CHECK), gStringVar1))
+        SetMonData(mon, MON_DATA_NICKNAME, GetSpeciesName(newSpecies, SKIP_NAME_CHECK));
 }
 
 // The below two functions determine which side of a multi battle the trainer battles on

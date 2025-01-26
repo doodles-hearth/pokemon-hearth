@@ -1,14 +1,11 @@
 ChiiTown_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, ChiiTown_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_LOAD, ChiiTown_MapScripts_MAP_SCRIPT_ON_LOAD
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, ChiiTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
-ChiiTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	return
-
 ChiiTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call ChiiTown_EventScript_SpawnBirds
+	call ChiiTown_DrawMetatiles
 	return
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -23,7 +20,7 @@ ChiiTown_DrawMetatiles::
 	case TIME_EARLY_MORNING, ChiiTown_DrawMetatiles_3
 	case TIME_MORNING, ChiiTown_DrawMetatiles_3
 	case TIME_LUNCHTIME, ChiiTown_DrawMetatiles_3
-	case TIME_NOONTIME, ChiiTown_DrawMetatiles_3
+	case TIME_AFTERNOON, ChiiTown_DrawMetatiles_3
 	case TIME_EVENING, ChiiTown_DrawMetatiles_3
 	case TIME_NIGHT, ChiiTown_DrawMetatiles_3
 ChiiTown_DrawMetatiles_3:
@@ -94,7 +91,7 @@ ChiiTown_EventScript_WatchfulMom::
 	speakername ChiiTown_EventScript_WatchfulMom_Text_0
 	switch VAR_RESULT
 	case TIME_MORNING, ChiiTown_EventScript_WatchfulMom_3
-	case TIME_NOONTIME, ChiiTown_EventScript_WatchfulMom_4
+	case TIME_AFTERNOON, ChiiTown_EventScript_WatchfulMom_4
 ChiiTown_EventScript_WatchfulMom_1:
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -121,20 +118,12 @@ ChiiTown_EventScript_Kecleon::
 	lock
 	faceplayer
 	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL
-	ismonseen SPECIES_KECLEON
-	compare VAR_RESULT, 0
-	goto_if_ne ChiiTown_EventScript_Kecleon_2
-	speakername ChiiTown_EventScript_Kecleon_Text_1
-ChiiTown_EventScript_Kecleon_1:
-	msgbox ChiiTown_EventScript_Kecleon_Text_2
+	setspeakertomonname SPECIES_KECLEON
+	msgbox ChiiTown_EventScript_Kecleon_Text_0
 	waitmoncry
 	closemessage
 	release
 	return
-
-ChiiTown_EventScript_Kecleon_2:
-	speakername ChiiTown_EventScript_Kecleon_Text_0
-	goto ChiiTown_EventScript_Kecleon_1
 
 
 ChiiTown_EventScript_PlantingFlowers::
@@ -262,12 +251,6 @@ ChiiTown_EventScript_Shopper_Text_0:
 	.string "battle.$"
 
 ChiiTown_EventScript_Kecleon_Text_0:
-	.string "Kecleon$"
-
-ChiiTown_EventScript_Kecleon_Text_1:
-	.string "Weird lizard$"
-
-ChiiTown_EventScript_Kecleon_Text_2:
 	.string "Kleeeeh!$"
 
 ChiiTown_EventScript_PlantingFlowers_Text_0:

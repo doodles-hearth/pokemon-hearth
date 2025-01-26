@@ -4,12 +4,9 @@ const FLAG_FLETCHLING_1 = FLAG_TEMP_3
 const FLAG_FLETCHLING_2 = FLAG_TEMP_4
 
 mapscripts ChiiTown_MapScripts {
-	MAP_SCRIPT_ON_TRANSITION {
-		//call(ChiiTown_NPCSchedules)
-	}
 	MAP_SCRIPT_ON_LOAD {
         call(ChiiTown_EventScript_SpawnBirds)
-		//call(ChiiTown_DrawMetatiles)
+		call(ChiiTown_DrawMetatiles)
     }
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2: ChiiTown_EventScript_SetTrespassVar
@@ -25,7 +22,7 @@ script ChiiTown_DrawMetatiles{
         case TIME_EARLY_MORNING:
         case TIME_MORNING:
         case TIME_LUNCHTIME:
-        case TIME_NOONTIME:
+        case TIME_AFTERNOON:
         case TIME_EVENING:
         case TIME_NIGHT:
         default:
@@ -73,7 +70,7 @@ script ChiiTown_EventScript_WatchfulMom{
 				"I'm dropping off my children to school.\p"
 				"With all the recent Pokémon attacks, I will not let them leave my sight!"
 			), MSGBOX_NPC)	
-		case TIME_NOONTIME:
+		case TIME_AFTERNOON:
 			msgbox(format(
 				"I'm waiting to pick up my children after school.\p"
 				"With all the recent Pokémon attacks, I will not let them leave my sight!"
@@ -97,12 +94,7 @@ script ChiiTown_EventScript_Kecleon {
 	lock
 	faceplayer
 	playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
-	ismonseen(SPECIES_KECLEON)
-    if (var(VAR_RESULT)) {
-        speakername("Kecleon")
-    } else {
-        speakername("Weird lizard")
-    }
+	setspeakertomonname(SPECIES_KECLEON)
 	msgbox(format("Kleeeeh!"))
 	waitmoncry
 	closemessage

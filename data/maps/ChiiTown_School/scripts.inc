@@ -8,7 +8,7 @@ ChiiTown_School_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 ChiiTown_School_EventScript_Teacher::
 	gettimeofday
-	switch VAR_0x8000
+	switch VAR_RESULT
 	case TIME_EARLY_MORNING, ChiiTown_School_EventScript_Teacher_2
 	case TIME_MORNING, ChiiTown_School_EventScript_Teacher_3
 	case TIME_EVENING, ChiiTown_School_EventScript_Teacher_4

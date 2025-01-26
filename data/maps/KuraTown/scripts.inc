@@ -4,10 +4,28 @@ KuraTown_MapScripts::
 	.byte 0
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD:
-	goto_if_set FLAG_KURA_DOJO_CLOSED, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_1
-	return
-
+	goto_if_set FLAG_KURA_DOJO_CLOSED, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_2
 KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_1:
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_DEAD_NIGHT, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_5
+	case TIME_EARLY_MORNING, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_6
+	case TIME_MORNING, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_6
+	case TIME_LUNCHTIME, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_6
+	case TIME_AFTERNOON, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_6
+	case TIME_EVENING, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_6
+	case TIME_NIGHT, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_6
+KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_6:
+	end
+
+KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_2:
+	setmetatile 40, 16, METATILE_SakuKura_ClosedDojoDoor, TRUE
+	goto KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_1
+
+KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_5:
+	setmetatile 18, 7, METATILE_SakuKura_Door, TRUE
+	setmetatile 34, 25, METATILE_SakuKura_Door, TRUE
+	setmetatile 43, 23, METATILE_SakuKura_Door, TRUE
 	setmetatile 40, 16, METATILE_SakuKura_ClosedDojoDoor, TRUE
 	return
 
@@ -62,14 +80,16 @@ KuraTown_EventScript_DojoChallenger::
 	lock
 	faceplayer
 	goto_if_set FLAG_KURA_DOJO_CLOSED, KuraTown_EventScript_DojoChallenger_2
-	msgbox KuraTown_EventScript_DojoChallenger_Text_1
+	speakername KuraTown_EventScript_DojoChallenger_Text_2
+	msgbox KuraTown_EventScript_DojoChallenger_Text_3
 KuraTown_EventScript_DojoChallenger_1:
 	closemessage
 	release
 	return
 
 KuraTown_EventScript_DojoChallenger_2:
-	msgbox KuraTown_EventScript_DojoChallenger_Text_0
+	speakername KuraTown_EventScript_DojoChallenger_Text_0
+	msgbox KuraTown_EventScript_DojoChallenger_Text_1
 	goto KuraTown_EventScript_DojoChallenger_1
 
 
@@ -120,6 +140,15 @@ SakuTown_EventScript_ClosedGymDoor_1:
 	return
 
 
+KuraTown_EventScript_LovestruckGuy::
+	lock
+	faceplayer
+	speakername KuraTown_EventScript_LovestruckGuy_Text_0
+	msgbox KuraTown_EventScript_LovestruckGuy_Text_1, MSGBOX_DEFAULT
+	release
+	return
+
+
 KuraTown_EventScript_TownSign::
 	msgbox KuraTown_EventScript_TownSign_Text_0, MSGBOX_SIGN
 	return
@@ -159,12 +188,18 @@ KuraTown_EventScript_GuardStopsYou_Text_2:
 	.string "sure why you'd want to.$"
 
 KuraTown_EventScript_DojoChallenger_Text_0:
+	.string "Bold Man$"
+
+KuraTown_EventScript_DojoChallenger_Text_1:
 	.string "Looks like the dojo is closed again…\p"
 	.string "Gah, when will I get a chance to crush\n"
 	.string "Hana in a fiery battle?\p"
 	.string "Could it be that she is scared of me?$"
 
-KuraTown_EventScript_DojoChallenger_Text_1:
+KuraTown_EventScript_DojoChallenger_Text_2:
+	.string "Cowardly Man$"
+
+KuraTown_EventScript_DojoChallenger_Text_3:
 	.string "The dojo is open! I can finally defeat\n"
 	.string "its leader in a fiery battle!\p"
 	.string "…Hm? When, you ask?\p"
@@ -203,6 +238,15 @@ KuraTown_EventScript_Guard_Text_0:
 SakuTown_EventScript_ClosedGymDoor_Text_0:
 	.string "“BE BACK SOON\n"
 	.string "- Hana”$"
+
+KuraTown_EventScript_LovestruckGuy_Text_0:
+	.string "Lovestruck Guy$"
+
+KuraTown_EventScript_LovestruckGuy_Text_1:
+	.string "I just got back home after spending\n"
+	.string "time with my love, and yet I already\l"
+	.string "want the day to pass by and let me\l"
+	.string "see her again…$"
 
 KuraTown_EventScript_TownSign_Text_0:
 	.string "Kura Village\n"

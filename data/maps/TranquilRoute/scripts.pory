@@ -361,13 +361,9 @@ script TranquilRoute_EventScript_BerryWoman {
 script TranquilRoute_EventScript_Mareep {
 	lock
 	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
-	ismonseen(SPECIES_MAREEP)
-	if (var(VAR_RESULT)) {
-        speakername("Mareep")
-    } else {
-        speakername("Static sheep")
-    }
+	setspeakertomonname(SPECIES_MAREEP)
 	msgbox(format("Beeeeeh…"))
+	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
 	waitmoncry
 	release
 }
@@ -375,13 +371,9 @@ script TranquilRoute_EventScript_Mareep {
 script TranquilRoute_EventScript_Mareep2 {
 	lock
 	playmoncry(SPECIES_MAREEP, CRY_MODE_WEAK)
-	ismonseen(SPECIES_MAREEP)
-    if (var(VAR_RESULT)) {
-        speakername("Mareep")
-    } else {
-        speakername("Static sheep")
-    }
+	setspeakertomonname(SPECIES_MAREEP)
 	msgbox(format("Baaaaah…"))
+	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
 	waitmoncry
 	release
 }

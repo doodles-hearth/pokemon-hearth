@@ -1783,7 +1783,7 @@ static void PopulateSpeciesFromTrainerLocation(int matchCallId, u8 *destStr)
 
             if (numSpecies)
             {
-                StringCopy(destStr, GetSpeciesName(species[Random() % numSpecies]));
+                StringCopy(destStr, GetSpeciesName(species[Random() % numSpecies], SKIP_NAME_CHECK));
                 return;
             }
         }
@@ -1803,9 +1803,9 @@ static void PopulateSpeciesFromTrainerParty(int matchCallId, u8 *destStr)
     party = GetTrainerPartyFromId(trainerId);
     monId = Random() % GetTrainerPartySizeFromId(trainerId);
     if (party != NULL)
-        speciesName = GetSpeciesName(party[monId].species);
+        speciesName = GetSpeciesName(party[monId].species, SKIP_NAME_CHECK);
     else
-        speciesName = GetSpeciesName(SPECIES_NONE);
+        speciesName = GetSpeciesName(SPECIES_NONE, SKIP_NAME_CHECK);
 
     StringCopy(destStr, speciesName);
 }
