@@ -14,23 +14,7 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:
-	gettimeofday
-	switch VAR_RESULT
-	case TIME_DEAD_NIGHT, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_2
-	case TIME_EARLY_MORNING, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
-	case TIME_MORNING, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
-	case TIME_LUNCHTIME, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
-	case TIME_AFTERNOON, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
-	case TIME_EVENING, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
-	case TIME_NIGHT, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
-SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3:
-	end
-
-SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_2:
-	setmetatile 35, 31, METATILE_SakuKura_Door, TRUE
-	setmetatile 22, 18, METATILE_SakuKura_Door, TRUE
-	setmetatile 16, 20, METATILE_SakuKura_Door, TRUE
-	setmetatile 18, 33, METATILE_SakuKura_Door, TRUE
+	setflag FLAG_TEMP_1
 	return
 
 
@@ -41,7 +25,7 @@ SakuTown_EventScript_RivalAtSakuWall::
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
-	clearflag FLAG_HIDE_RIVAL_SAKU
+	clearflag FLAG_TEMP_1
 	addobject 10
 	compare VAR_TEMP_2, 16
 	goto_if_eq SakuTown_EventScript_RivalAtSakuWall_2
@@ -65,7 +49,7 @@ SakuTown_EventScript_RivalAtSakuWall_5:
 SakuTown_EventScript_RivalAtSakuWall_10:
 	waitmovement 0
 	removeobject 10
-	setflag FLAG_HIDE_RIVAL_SAKU
+	setflag FLAG_TEMP_1
 	setvar VAR_RIVAL_ENCOUNTER_STATE, 1
 	release
 	return

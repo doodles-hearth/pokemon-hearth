@@ -88,6 +88,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 	bufferspeciesname STR_VAR_2, VAR_STARTER_MON
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2
 	closemessage
+	giveitem ITEM_POTION, 5
 	giveitem ITEM_POKE_BALL, 5
 	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3
@@ -102,6 +103,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5
 	closemessage
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
+	setflag FLAG_HIDE_GUARD_SUNRISE_VILLAGE
 	goto SunriseVillage_PlayersHouse_LR_EventScript_BigSis_1
 
 
@@ -166,8 +168,9 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2:
 	.string "So you're going on a journey…\p"
 	.string "That's great! I'm proud of you,\n"
 	.string "{PLAYER}.\p"
-	.string "Take some of these Poké Balls for\n"
-	.string "your trip, in case you find any good\l"
+	.string "Here, take some medicine for your\n"
+	.string "{STR_VAR_2} and some of these\l"
+	.string "Poké Balls, in case you find any good\l"
 	.string "Pokémon!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3:

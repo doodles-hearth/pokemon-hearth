@@ -13668,7 +13668,8 @@ static const struct LevelUpMove sAlomomolaLevelUpLearnset[] = {
 static const struct LevelUpMove sJoltikLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_ABSORB),
     LEVEL_UP_MOVE( 1, MOVE_FURY_CUTTER),
-    LEVEL_UP_MOVE( 4, MOVE_ELECTROWEB),
+    // Replaced electroweb here
+    LEVEL_UP_MOVE( 4, MOVE_THUNDER_SHOCK),
     LEVEL_UP_MOVE( 8, MOVE_BUG_BITE),
     LEVEL_UP_MOVE(12, MOVE_STRING_SHOT),
     LEVEL_UP_MOVE(16, MOVE_THUNDER_WAVE),
@@ -15034,9 +15035,11 @@ static const struct LevelUpMove sDelphoxLevelUpLearnset[] = {
 static const struct LevelUpMove sFroakieLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_POUND),
     LEVEL_UP_MOVE( 1, MOVE_GROWL),
-    LEVEL_UP_MOVE( 5, MOVE_WATER_GUN),
+    LEVEL_UP_MOVE( 7, MOVE_BUBBLE),
+    // LEVEL_UP_MOVE( 5, MOVE_WATER_GUN),
     LEVEL_UP_MOVE( 8, MOVE_QUICK_ATTACK),
     LEVEL_UP_MOVE(10, MOVE_LICK),
+    LEVEL_UP_MOVE( 11, MOVE_BUBBLE),
     LEVEL_UP_MOVE(14, MOVE_WATER_PULSE),
     LEVEL_UP_MOVE(18, MOVE_SMOKESCREEN),
     LEVEL_UP_MOVE(21, MOVE_ROUND),

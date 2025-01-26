@@ -367,14 +367,14 @@ SINGLE_BATTLE_TEST("(DYNAMAX) Dynamaxed Pokemon are immune to Torment")
 SINGLE_BATTLE_TEST("(DYNAMAX) Dynamaxed Pokemon are not immune to Knock Off")
 {
     GIVEN {
-        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_POTION); }
+        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_ORAN_BERRY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(player, MOVE_TACKLE, gimmick: GIMMICK_DYNAMAX); MOVE(opponent, MOVE_KNOCK_OFF); }
     } SCENE {
         MESSAGE("Wobbuffet used Max Strike!");
         MESSAGE("The opposing Wobbuffet used Knock Off!");
-        MESSAGE("The opposing Wobbuffet knocked off Wobbuffet's Potion!");
+        MESSAGE("The opposing Wobbuffet knocked off Wobbuffet's Oran Berry!");
     } THEN {
         EXPECT_EQ(player->item, ITEM_NONE);
     }

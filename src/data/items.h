@@ -623,106 +623,191 @@ const struct Item gItemsInfo[] =
 
 // Medicine
 
-    [ITEM_POTION] =
+    [ITEM_UUMEGIRI] =
     {
-        .name = _("Potion"),
-        .price = (I_PRICE >= GEN_7) ? 200 : 300,
+        .name = _("Ointment"),
+        .price = 100,
         .holdEffectParam = 20,
         .description = COMPOUND_STRING(
-            "Restores the HP of\n"
-            "a Pokémon by\n"
-            "20 points."),
+            "Out of battle,\n"
+            "gives 20 HP back\n"
+            "to a Pokémon."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_Potion,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Ointment,
+        .iconPalette = gItemIconPalette_Ointment,
+    },
+
+    [ITEM_SUPERGIRI] =
+    {
+        .name = _("Super Ointment"),
+        .price = 500,
+        .holdEffectParam = 60,
+        .description = COMPOUND_STRING(
+            "Out of battle,\n"
+            "gives 60 HP back\n"
+            "to a Pokémon."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_SuperPotion,
+        .flingPower = 30,
+        .iconPic = gItemIcon_SuperOintment,
+        .iconPalette = gItemIconPalette_SuperOintment,
+    },
+
+    [ITEM_HYPERGIRI] =
+    {
+        .name = _("Hyper Ointment"),
+        .price = 800,
+        .holdEffectParam = 120,
+        .description = COMPOUND_STRING(
+            "Out of battle,\n"
+            "gives 120 HP back\n"
+            "to a Pokémon."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_HyperPotion,
+        .flingPower = 30,
+        .iconPic = gItemIcon_HyperOintment,
+        .iconPalette = gItemIconPalette_HyperOintment,
+    },
+
+    [ITEM_MAXGIRI] =
+    {
+        .name = _("Max Ointment"),
+        .price = 1500,
+        .holdEffectParam = 255,
+        .description = COMPOUND_STRING(
+            "Out of battle,\n"
+            "gives all HP back\n"
+            "to a Pokémon."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_MaxPotion,
+        .flingPower = 30,
+        .iconPic = gItemIcon_MaxOintment,
+        .iconPalette = gItemIconPalette_MaxOintment,
+    },
+
+    [ITEM_SACREDGIRI] =
+    {
+        .name = _("Sacred Ointment"),
+        .price = 2000,
+        .holdEffectParam = 255,
+        .description = COMPOUND_STRING(
+            "Out of battle,\n"
+            "heals a Pokémon\n"
+            "completely."
+            ),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_FullRestore,
+        .flingPower = 30,
+        .iconPic = gItemIcon_SacredOintment,
+        .iconPalette = gItemIconPalette_SacredOintment,
+    },
+
+    // Off and in battle heal
+    [ITEM_POTION] =
+    {
+        .name = _("Uumegiri"),
+        .price = 100,
+        .holdEffectParam = 20,
+        .description = COMPOUND_STRING(
+            "Gives 20 HP\n"
+            "back to\n"
+            "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
         .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .effect = gItemEffect_Potion,
         .flingPower = 30,
-        .iconPic = gItemIcon_Potion,
-        .iconPalette = gItemIconPalette_Potion,
+        .iconPic = gItemIcon_Uumegiri,
+        .iconPalette = gItemIconPalette_Uumegiri,
     },
 
     [ITEM_SUPER_POTION] =
     {
-        .name = _("Super Potion"),
-        .price = 700,
+        .name = _("Supergiri"),
+        .price = 500,
         .holdEffectParam = 60,
         .description = COMPOUND_STRING(
-            "Restores the HP of\n"
-            "a Pokémon by\n"
-        #if I_HEALTH_RECOVERY >= GEN_7
-            "60 points."),
-        #else
-            "50 points."),
-        #endif
+            "Gives 60 HP\n"
+            "back to\n"
+            "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
         .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .effect = gItemEffect_SuperPotion,
         .flingPower = 30,
-        .iconPic = gItemIcon_Potion,
-        .iconPalette = gItemIconPalette_SuperPotion,
+        .iconPic = gItemIcon_SuperGiri,
+        .iconPalette = gItemIconPalette_SuperGiri,
     },
 
     [ITEM_HYPER_POTION] =
     {
-        .name = _("Hyper Potion"),
-        .price = (I_PRICE >= GEN_2 && I_PRICE <= GEN_6) ? 1200 : 1500,
+        .name = _("Hypergiri"),
+        .price = 800,
         .holdEffectParam = 120,
         .description = COMPOUND_STRING(
-            "Restores the HP of\n"
-            "a Pokémon by\n"
-        #if I_HEALTH_RECOVERY >= GEN_7
-            "120 points."),
-        #else
-            "200 points."),
-        #endif
+            "Gives 120 HP\n"
+            "back to\n"
+            "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
         .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .effect = gItemEffect_HyperPotion,
         .flingPower = 30,
-        .iconPic = gItemIcon_Potion,
-        .iconPalette = gItemIconPalette_HyperPotion,
+        .iconPic = gItemIcon_HyperGiri,
+        .iconPalette = gItemIconPalette_HyperGiri,
     },
 
     [ITEM_MAX_POTION] =
     {
-        .name = _("Max Potion"),
-        .price = 2500,
+        .name = _("Maxgiri"),
+        .price = 1500,
         .holdEffectParam = 255,
         .description = COMPOUND_STRING(
-            "Fully restores the\n"
-            "HP of a Pokémon."),
+            "Fully restores\n"
+            "the HP of\n"
+            "a Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
         .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .effect = gItemEffect_MaxPotion,
         .flingPower = 30,
-        .iconPic = gItemIcon_LargePotion,
-        .iconPalette = gItemIconPalette_MaxPotion,
+        .iconPic = gItemIcon_MaxGiri,
+        .iconPalette = gItemIconPalette_MaxGiri,
     },
 
     [ITEM_FULL_RESTORE] =
     {
-        .name = _("Full Restore"),
-        .price = 3000,
+        .name = _("Sacredgiri"),
+        .price = 2000,
         .holdEffectParam = 255,
         .description = COMPOUND_STRING(
-            "Fully restores the\n"
-            "HP and status of a\n"
-            "Pokémon."),
+            "heals a Pokémon\n"
+            "completely."
+            ),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
         .battleUsage = EFFECT_ITEM_HEAL_AND_CURE_STATUS,
         .effect = gItemEffect_FullRestore,
         .flingPower = 30,
-        .iconPic = gItemIcon_LargePotion,
-        .iconPalette = gItemIconPalette_FullRestore,
+        .iconPic = gItemIcon_SacredGiri,
+        .iconPalette = gItemIconPalette_SacredGiri,
     },
 
     [ITEM_REVIVE] =

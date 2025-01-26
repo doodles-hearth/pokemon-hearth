@@ -3,6 +3,7 @@ const LOCALID_GUARD = 8
 const LOCALID_RIVAL = 10
 const LOCALID_MAMA = 1
 const LOCALID_KUKU = 2
+const FLAG_HIDE_NATSUKI = FLAG_TEMP_1
 
 mapscripts SakuTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
@@ -14,6 +15,7 @@ mapscripts SakuTown_MapScripts {
 		}
 	}
 	MAP_SCRIPT_ON_LOAD {
+		setflag(FLAG_HIDE_NATSUKI)
     	gettimeofday
 		switch(var(VAR_RESULT)){
 			case TIME_DEAD_NIGHT:
@@ -43,7 +45,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
 
-	clearflag(FLAG_HIDE_RIVAL_SAKU)
+	clearflag(FLAG_HIDE_NATSUKI)
 	addobject(LOCALID_RIVAL)
 	if (var(VAR_TEMP_2) == 16) {
 		setobjectxy(LOCALID_RIVAL, 16, 10)
@@ -95,7 +97,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	waitmovement(0)
 
 	removeobject(LOCALID_RIVAL)
-	setflag(FLAG_HIDE_RIVAL_SAKU)
+	setflag(FLAG_HIDE_NATSUKI)
 
 	setvar(VAR_RIVAL_ENCOUNTER_STATE, 1)
 

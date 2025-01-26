@@ -257,7 +257,7 @@
   ],
   "warp_events": [
     {
-      "x": 6,
+      "x": 5,
       "y": 10,
       "elevation": 0,
       "dest_map": "MAP_CHII_TOWN",
