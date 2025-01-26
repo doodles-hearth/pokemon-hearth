@@ -4440,41 +4440,6 @@ void GetDexRiddleFeedback(void)
     }
 }
 
-static const u8 *const sSpeciesToHiddenName[NUM_SPECIES] =
-{
-    [SPECIES_HOPPIP] = COMPOUND_STRING("Leafy cat"),
-    [SPECIES_KECLEON] = COMPOUND_STRING("Weird lizard"),
-    [SPECIES_SNORUNT] = COMPOUND_STRING("Frozen dumpling"),
-    [SPECIES_ESPEON] = COMPOUND_STRING("Purple fox"),
-    [SPECIES_HAPPINY] = COMPOUND_STRING("Noisy egg"),
-    [SPECIES_MUNCHLAX] = COMPOUND_STRING("Chunky bearcub"),
-    [SPECIES_KIRLIA] = COMPOUND_STRING("Graceful dancer"),
-    [SPECIES_EEVEE] = COMPOUND_STRING("Fluffy fox"),
-    [SPECIES_MAREEP] = COMPOUND_STRING("Static sheep"),
-    [SPECIES_WOOLOO] = COMPOUND_STRING("Wooly ball"),
-};
-
-void SetSpeakerToMonName(struct ScriptContext *ctx)
-{
-    u32 species = gSpecialVar_0x8004 = ScriptReadHalfword(ctx);
-    IsMonSeen();
-
-    const u8 *name = sSpeciesToHiddenName[SPECIES_NONE];
-    if (gSpecialVar_Result) // is seen
-    {
-        name = GetSpeciesName(species);
-    }
-    else
-    {
-        if (sSpeciesToHiddenName[species] != NULL)
-        {
-            name = sSpeciesToHiddenName[species];
-        }
-    }
-
-    SetSpeakerName(name);
-}
-
 /**
  * Obliterates from existence the Pokémon the player previously selected via the select screen.
  */
