@@ -623,7 +623,7 @@ const struct Item gItemsInfo[] =
 
 // Medicine
 
-    [ITEM_POTION] =
+    [ITEM_UUMEGIRI] =
     {
         .name = _("Ointment"),
         .price = 100,
@@ -641,7 +641,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_Ointment,
     },
 
-    [ITEM_SUPER_POTION] =
+    [ITEM_SUPERGIRI] =
     {
         .name = _("Super Ointment"),
         .price = 500,
@@ -659,7 +659,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_SuperOintment,
     },
 
-    [ITEM_HYPER_POTION] =
+    [ITEM_HYPERGIRI] =
     {
         .name = _("Hyper Ointment"),
         .price = 800,
@@ -677,7 +677,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_HyperOintment,
     },
 
-    [ITEM_MAX_POTION] =
+    [ITEM_MAXGIRI] =
     {
         .name = _("Max Ointment"),
         .price = 1500,
@@ -695,7 +695,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_MaxOintment,
     },
 
-    [ITEM_FULL_RESTORE] =
+    [ITEM_SACREDGIRI] =
     {
         .name = _("Sacred Ointment"),
         .price = 2000,
@@ -715,7 +715,7 @@ const struct Item gItemsInfo[] =
     },
 
     // Off and in battle heal
-    [ITEM_UUMEGIRI] =
+    [ITEM_POTION] =
     {
         .name = _("Uumegiri"),
         .price = 100,
@@ -734,7 +734,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_Uumegiri,
     },
 
-    [ITEM_SUPERGIRI] =
+    [ITEM_SUPER_POTION] =
     {
         .name = _("Supergiri"),
         .price = 500,
@@ -753,7 +753,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_SuperGiri,
     },
 
-    [ITEM_HYPERGIRI] =
+    [ITEM_HYPER_POTION] =
     {
         .name = _("Hypergiri"),
         .price = 800,
@@ -772,7 +772,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_HyperGiri,
     },
 
-    [ITEM_MAXGIRI] =
+    [ITEM_MAX_POTION] =
     {
         .name = _("Maxgiri"),
         .price = 1500,
@@ -791,7 +791,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_MaxGiri,
     },
 
-    [ITEM_SACREDGIRI] =
+    [ITEM_FULL_RESTORE] =
     {
         .name = _("Sacredgiri"),
         .price = 2000,
