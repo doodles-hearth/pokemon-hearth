@@ -364,6 +364,7 @@ struct PokedexListItem
 {
     u16 dexNum;
     u16 seen:1;
+    u16 named:1;
     u16 owned:1;
 };
 
@@ -2099,10 +2100,12 @@ static void ResetPokedexView(struct PokedexView *pokedexView)
     {
         pokedexView->pokedexList[i].dexNum = 0xFFFF;
         pokedexView->pokedexList[i].seen = FALSE;
+        pokedexView->pokedexList[i].named = FALSE;
         pokedexView->pokedexList[i].owned = FALSE;
     }
     pokedexView->pokedexList[NATIONAL_DEX_COUNT].dexNum = 0;
     pokedexView->pokedexList[NATIONAL_DEX_COUNT].seen = FALSE;
+    pokedexView->pokedexList[NATIONAL_DEX_COUNT].named = FALSE;
     pokedexView->pokedexList[NATIONAL_DEX_COUNT].owned = FALSE;
     pokedexView->pokemonListCount = 0;
     pokedexView->selectedPokemon = 0;
@@ -2534,6 +2537,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
                 temp_dexNum = HoennToNationalOrder(i + 1);
                 sPokedexView->pokedexList[i].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[i].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
+                sPokedexView->pokedexList[i].named = GetSetPokedexFlag(temp_dexNum, FLAG_GET_NAMED);
                 sPokedexView->pokedexList[i].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
                 if (sPokedexView->pokedexList[i].seen)
                     sPokedexView->pokemonListCount = i + 1;
@@ -2551,6 +2555,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
                 {
                     sPokedexView->pokedexList[r5].dexNum = temp_dexNum;
                     sPokedexView->pokedexList[r5].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
+                    sPokedexView->pokedexList[r5].named = GetSetPokedexFlag(temp_dexNum, FLAG_GET_NAMED);
                     sPokedexView->pokedexList[r5].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
                     if (sPokedexView->pokedexList[r5].seen)
                         sPokedexView->pokemonListCount = r5 + 1;
@@ -2568,6 +2573,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
+                sPokedexView->pokedexList[sPokedexView->pokemonListCount].named = TRUE;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
                 sPokedexView->pokemonListCount++;
             }
@@ -2582,6 +2588,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
+                sPokedexView->pokedexList[sPokedexView->pokemonListCount].named = TRUE;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
                 sPokedexView->pokemonListCount++;
             }
@@ -2596,6 +2603,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
+                sPokedexView->pokedexList[sPokedexView->pokemonListCount].named = TRUE;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
                 sPokedexView->pokemonListCount++;
             }
@@ -2610,6 +2618,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
+                sPokedexView->pokedexList[sPokedexView->pokemonListCount].named = TRUE;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
                 sPokedexView->pokemonListCount++;
             }
@@ -2624,6 +2633,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             {
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].seen = TRUE;
+                sPokedexView->pokedexList[sPokedexView->pokemonListCount].named = TRUE;
                 sPokedexView->pokedexList[sPokedexView->pokemonListCount].owned = TRUE;
                 sPokedexView->pokemonListCount++;
             }
@@ -2635,6 +2645,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
     {
         sPokedexView->pokedexList[i].dexNum = 0xFFFF;
         sPokedexView->pokedexList[i].seen = FALSE;
+        sPokedexView->pokedexList[i].named = FALSE;
         sPokedexView->pokedexList[i].owned = FALSE;
     }
 }
@@ -2783,7 +2794,7 @@ static u8 CreateMonName(u16 num, u8 left, u8 top)
 
     num = NationalPokedexNumToSpecies(num);
     if (num)
-        str = GetSpeciesName(num);
+        str = GetSpeciesName(num, DO_NAME_CHECK);
     else
         str = sText_TenDashes;
     PrintMonDexNumAndName_2(0, FONT_NARROW, str, left, top);
@@ -4411,7 +4422,7 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
     PrintInfoScreenTextWhite(str, 123, 17);
     species = NationalPokedexNumToSpeciesHGSS(num);
     if (species)
-        name = GetSpeciesName(species);
+        name = GetSpeciesName(species, DO_NAME_CHECK);
     else
         name = sText_TenDashes;
     PrintInfoScreenTextWhite(name, 139 + (6 * digitCount), 17);
@@ -4496,8 +4507,8 @@ static u8 PrintCryScreenSpeciesName(u8 windowId, u16 num, u8 left, u8 top)
     switch (num)
     {
     default:
-        for (i = 0; GetSpeciesName(num)[i] != EOS && i < POKEMON_NAME_LENGTH; i++)
-            str[i] = GetSpeciesName(num)[i];
+        for (i = 0; GetSpeciesName(num, DO_NAME_CHECK)[i] != EOS && i < POKEMON_NAME_LENGTH; i++)
+            str[i] = GetSpeciesName(num, DO_NAME_CHECK)[i];
         break;
     case 0:
         for (i = 0; i < 5; i++)
@@ -5337,7 +5348,7 @@ static void PrintStatsScreen_NameGender(u8 taskId, u32 num, u32 value)
     u8 gender_x, gender_y;
 
     //Name
-    PrintStatsScreenTextSmall(WIN_STATS_NAME_GENDER, GetSpeciesName(species), base_x, base_y);
+    PrintStatsScreenTextSmall(WIN_STATS_NAME_GENDER, GetSpeciesName(species, DO_NAME_CHECK), base_x, base_y);
 
     //Number
     if (value == 0)
@@ -6161,6 +6172,7 @@ static void Task_HandleEvolutionScreenInput(u8 taskId)
                 
             sPokedexListItem->dexNum = dexNum;
             sPokedexListItem->seen   = GetSetPokedexFlag(dexNum, FLAG_GET_SEEN);
+            sPokedexListItem->named  = GetSetPokedexFlag(dexNum, FLAG_GET_NAMED);
             sPokedexListItem->owned  = GetSetPokedexFlag(dexNum, FLAG_GET_CAUGHT);
 
                 if (GetSpeciesFormTable(targetSpecies) != NULL)
@@ -6213,7 +6225,7 @@ static void HandleTargetSpeciesPrintText(u32 targetSpecies, u32 base_x, u32 base
     bool32 seen = GetSetPokedexFlag(SpeciesToNationalPokedexNum(targetSpecies), FLAG_GET_SEEN);
 
     if (seen || !HGSS_HIDE_UNSEEN_EVOLUTION_NAMES)
-        StringCopy(gStringVar3, GetSpeciesName(targetSpecies)); //evolution mon name
+        StringCopy(gStringVar3, GetSpeciesName(targetSpecies, DO_NAME_CHECK)); //evolution mon name
     else
         StringCopy(gStringVar3, gText_ThreeQuestionMarks); //show questionmarks instead of name
     StringExpandPlaceholders(gStringVar3, sText_EVO_Name); //evolution mon name
@@ -6247,7 +6259,7 @@ static void HandlePreEvolutionSpeciesPrint(u8 taskId, u16 preSpecies, u16 specie
 {
     bool8 seen = GetSetPokedexFlag(SpeciesToNationalPokedexNum(preSpecies), FLAG_GET_SEEN);
 
-    StringCopy(gStringVar1, GetSpeciesName(species)); //evolution mon name
+    StringCopy(gStringVar1, GetSpeciesName(species, DO_NAME_CHECK)); //evolution mon name
 
     if (sPokedexView->sEvoScreenData.isMega)
         StringExpandPlaceholders(gStringVar3, sText_EVO_PreEvo_PE_Mega);
@@ -6255,7 +6267,7 @@ static void HandlePreEvolutionSpeciesPrint(u8 taskId, u16 preSpecies, u16 specie
     {
 
         if (seen || !HGSS_HIDE_UNSEEN_EVOLUTION_NAMES)
-            StringCopy(gStringVar2, GetSpeciesName(preSpecies)); //evolution mon name
+            StringCopy(gStringVar2, GetSpeciesName(preSpecies, DO_NAME_CHECK)); //evolution mon name
         else
             StringCopy(gStringVar2, gText_ThreeQuestionMarks); //show questionmarks instead of name
 
@@ -6405,7 +6417,7 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
     if (sPokedexView->sEvoScreenData.isMega)
         return;
 
-    StringCopy(gStringVar1, GetSpeciesName(species));
+    StringCopy(gStringVar1, GetSpeciesName(species, DO_NAME_CHECK));
 
     //If there are no evolutions print text and return
     if (evolutions == NULL)
@@ -6569,14 +6581,14 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
             StringExpandPlaceholders(gStringVar4, sText_EVO_LEVEL_RAIN );
             break;
         case EVO_SPECIFIC_MON_IN_PARTY:
-            StringCopy(gStringVar2, GetSpeciesName(evolutions[i].param)); //mon name
+            StringCopy(gStringVar2, GetSpeciesName(evolutions[i].param, DO_NAME_CHECK)); //mon name
             StringExpandPlaceholders(gStringVar4, sText_EVO_SPECIFIC_MON_IN_PARTY );
             break;
         case EVO_LEVEL_DARK_TYPE_MON_IN_PARTY:
             StringExpandPlaceholders(gStringVar4, sText_EVO_LEVEL_DARK_TYPE_MON_IN_PARTY );
             break;
         case EVO_TRADE_SPECIFIC_MON:
-            StringCopy(gStringVar2, GetSpeciesName(evolutions[i].param)); //mon name
+            StringCopy(gStringVar2, GetSpeciesName(evolutions[i].param, DO_NAME_CHECK)); //mon name
             StringExpandPlaceholders(gStringVar4, sText_EVO_TRADE_SPECIFIC_MON );
             break;
         case EVO_SPECIFIC_MAP:
@@ -6645,7 +6657,7 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
          case EVO_DEFEAT_THREE_WITH_ITEM:
             item = evolutions[i].param;
             CopyItemName(item, gStringVar2);
-            StringCopy(gStringVar3, GetSpeciesName(species));
+            StringCopy(gStringVar3, GetSpeciesName(species, DO_NAME_CHECK));
             StringExpandPlaceholders(gStringVar4, sText_EVO_DEFEAT_THREE_WITH_ITEM);
             break;
         case EVO_OVERWORLD_STEPS:
@@ -6938,7 +6950,7 @@ static void PrintForms(u8 taskId, u16 species)
     if (GetFormSpeciesId(species, 0) == SPECIES_UNOWN)
         y_offset_icons = 8;
 
-    StringCopy(gStringVar1, GetSpeciesName(species));
+    StringCopy(gStringVar1, GetSpeciesName(species, DO_NAME_CHECK));
 
     for (i=0; i < 30; i++)
     {
@@ -7641,7 +7653,7 @@ static int DoPokedexSearch(u8 dexMode, u8 order, u8 abcGroup, u8 bodyColor, u8 t
             u8 firstLetter;
 
             species = NationalPokedexNumToSpecies(sPokedexView->pokedexList[i].dexNum);
-            firstLetter = GetSpeciesName(species)[0];
+            firstLetter = GetSpeciesName(species, DO_NAME_CHECK)[0];
             if (LETTER_IN_RANGE_UPPER(firstLetter, abcGroup) || LETTER_IN_RANGE_LOWER(firstLetter, abcGroup))
             {
                 sPokedexView->pokedexList[resultsCount] = sPokedexView->pokedexList[i];

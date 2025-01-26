@@ -340,7 +340,7 @@
 
 	@ Sets the value of variable VAR_0x8000 to the current time of day (TIME_DEAD_NIGHT, TIME_EARLY_MORNING, TIME_MORNING, TIME_LUNCHTIME, TIME_AFTERNOON, TIME_EVENING, TIME_NIGHT).
 	.macro gettimeofday
-	.byte 0xe8
+	.byte SCR_OP_GET_TIME_OF_DAY
 	.endm
 
 	@ Sets the value of variable VAR_0x8000 to the current day of the week.
@@ -809,7 +809,7 @@
 	@ Starts a double battle with the player against two trainers
 	@ Takes two trainers and defeat text for each
 	.macro trainerbattle_two_trainers trainer_a:req, lose_text_a:req, trainer_b:req, lose_text_b:req
-	.byte 0x5c
+	.byte SCR_OP_TRAINERBATTLE
 	.byte TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO
 	.2byte \trainer_a
 	.4byte \lose_text_a
@@ -999,7 +999,7 @@
 
 	@ Displays a box containing the front sprite for the specified Pokemon species.
 	.macro showmonpic species:req, x:req, y:req, shiny=FALSE
-	.byte 0x75
+	.byte SCR_OP_SHOWMONPIC
 	.2byte \species
 	.byte \x
 	.byte \y
@@ -1706,7 +1706,7 @@
 
 	@ Gets the current value of the given game stat. See include/constants/game_stat.h
 	.macro getgamestat stat:req
-	.byte 0xe6
+	.byte SCR_OP_GET_GAME_STAT
 	.byte \stat
 	.endm
 
@@ -1924,9 +1924,14 @@
 
 	@ Sets the text of the name box in the next-shown message box.
 	.macro speakername text:req
-	.byte 0xe5
+	.byte SCR_OP_SET_SPEAKER
 	.4byte \text
 	.endm
+
+    .macro setspeakertomonname species:req
+    callnative SetSpeakerToMonName
+    .2byte \species
+    .endm
 
 	.macro _dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req argv:vararg
 	.byte SCR_OP_DYNMULTICHOICE
@@ -2358,7 +2363,7 @@
 
 	@ Writes the dex description of the given Pokemon species to the specified buffer.
 	.macro bufferspeciesdexdesc stringVarId:req, species:req
-	.byte 0xe7
+	.byte SCR_OP_NUFFER_SPECIES_DEX_DESC
 	stringvar \stringVarId
 	.2byte \species
 	.endm
@@ -2532,6 +2537,13 @@
 	.endm
 
 	@ Returns the state of the Pokedex Caught Flag to VAR_RESULT for the Pokemon with speciesId
+	.macro getnamedmon species:req
+	callnative Scrcmd_getsetpokedexflag, request_effects=1
+	.2byte \species
+	.2byte FLAG_GET_NAMED
+	.endm
+
+	@ Returns the state of the Pokedex Caught Flag to VAR_RESULT for the Pokemon with speciesId
 	.macro getcaughtmon species:req
 	callnative Scrcmd_getsetpokedexflag, request_effects=1
 	.2byte \species
@@ -2544,6 +2556,13 @@
 	.2byte \species
 	.2byte FLAG_SET_SEEN
 	.endm
+
+    @ Sets the Pokedex Named Flag for the Pokemon with speciesId
+    .macro setnamedmon species:req
+    callnative Scrcmd_getsetpokdexflag, request_effects=1
+    .2byte \species
+    .2byte FLAG_SET_NAMED
+    .endm
 
 	@ Sets the Pokedex Caught Flag for the Pokemon with speciesId
 	.macro setcaughtmon species:req

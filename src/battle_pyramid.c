@@ -1476,7 +1476,7 @@ void GenerateBattlePyramidWildMon(void)
 
     // Set species, name
     SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &species);
-    StringCopy(name, GetSpeciesName(species));
+    StringCopy(name, GetSpeciesName(species, SKIP_NAME_CHECK));
     SetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, &name);
 
     // set level
@@ -1578,7 +1578,7 @@ void GenerateBattlePyramidWildMon(void)
 
     id = GetMonData(&gEnemyParty[0], MON_DATA_SPECIES, NULL) - 1;
     SetMonData(&gEnemyParty[0], MON_DATA_SPECIES, &wildMons[id].species);
-    StringCopy(name, GetSpeciesName(wildMons[id].species));
+    StringCopy(name, GetSpeciesName(wildMons[id].species, SKIP_NAME_CHECK));
     SetMonData(&gEnemyParty[0], MON_DATA_NICKNAME, &name);
     if (lvl != FRONTIER_LVL_50)
     {

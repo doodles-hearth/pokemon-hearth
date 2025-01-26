@@ -1578,7 +1578,7 @@ static void Debug_GenerateListMenuNames(u32 totalItems)
             else if (GetMonData(&gEnemyParty[i], MON_DATA_SANITY_HAS_SPECIES))
             {
                 species = GetMonData(&gEnemyParty[i], MON_DATA_SPECIES);
-                StringCopy(gStringVar1, GetSpeciesName(species));
+                StringCopy(gStringVar1, GetSpeciesName(species, SKIP_NAME_CHECK));
                 StringCopy(&sDebugMenuListData->itemNames[i][0], gStringVar1);
             }
             else
@@ -3306,7 +3306,7 @@ static void DebugAction_Give_PokemonSimple(u8 taskId)
     // Display initial Pokémon
     StringCopy(gStringVar2, gText_DigitIndicator[0]);
     ConvertIntToDecimalStringN(gStringVar3, sDebugMonData->species, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
-    u8 *end = StringCopy(gStringVar1, GetSpeciesName(sDebugMonData->species));
+    u8 *end = StringCopy(gStringVar1, GetSpeciesName(sDebugMonData->species, SKIP_NAME_CHECK));
     WrapFontIdToFit(gStringVar1, end, DEBUG_MENU_FONT, WindowWidthPx(windowId));
     StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
     StringExpandPlaceholders(gStringVar4, sDebugText_PokemonID);
@@ -3347,7 +3347,7 @@ static void DebugAction_Give_PokemonComplex(u8 taskId)
     // Display initial Pokémon
     StringCopy(gStringVar2, gText_DigitIndicator[0]);
     ConvertIntToDecimalStringN(gStringVar3, sDebugMonData->species, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
-    u8 *end = StringCopy(gStringVar1, GetSpeciesName(sDebugMonData->species));
+    u8 *end = StringCopy(gStringVar1, GetSpeciesName(sDebugMonData->species, SKIP_NAME_CHECK));
     WrapFontIdToFit(gStringVar1, end, DEBUG_MENU_FONT, WindowWidthPx(windowId));
     StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
     StringExpandPlaceholders(gStringVar4, sDebugText_PokemonID);
@@ -3374,7 +3374,7 @@ static void DebugAction_Give_Pokemon_SelectId(u8 taskId)
         Debug_HandleInput_Numeric(taskId, 1, NUM_SPECIES - 1, DEBUG_NUMBER_DIGITS_ITEMS);
 
         StringCopy(gStringVar2, gText_DigitIndicator[gTasks[taskId].tDigit]);
-        u8 *end = StringCopy(gStringVar1, GetSpeciesName(gTasks[taskId].tInput)); //CopyItemName(gTasks[taskId].tInput, gStringVar1);
+        u8 *end = StringCopy(gStringVar1, GetSpeciesName(gTasks[taskId].tInput, SKIP_NAME_CHECK)); //CopyItemName(gTasks[taskId].tInput, gStringVar1);
         WrapFontIdToFit(gStringVar1, end, DEBUG_MENU_FONT, WindowWidthPx(gTasks[taskId].tSubWindowId));
         StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
         ConvertIntToDecimalStringN(gStringVar3, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);
@@ -4437,7 +4437,7 @@ static void DebugAction_PCBag_Fill_PCBoxes_Fast(u8 taskId) //Credit: Sierraffini
         {
             if (!GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_HAS_SPECIES))
             {
-                StringCopy(speciesName, GetSpeciesName(species));
+                StringCopy(speciesName, GetSpeciesName(species, SKIP_NAME_CHECK));
                 SetBoxMonData(&boxMon, MON_DATA_NICKNAME, &speciesName);
                 SetBoxMonData(&boxMon, MON_DATA_SPECIES, &species);
                 GiveBoxMonInitialMoveset(&boxMon);

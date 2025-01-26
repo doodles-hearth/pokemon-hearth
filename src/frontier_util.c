@@ -1958,7 +1958,7 @@ static void AppendCaughtBannedMonSpeciesName(u16 species, u8 count, s32 numBanne
         else
             StringAppend(gStringVar1, gText_LineBreak);
     }
-    StringAppend(gStringVar1, GetSpeciesName(species));
+    StringAppend(gStringVar1, GetSpeciesName(species, SKIP_NAME_CHECK));
 }
 
 static void AppendIfValid(u16 species, u16 heldItem, u16 hp, u8 lvlMode, u8 monLevel, u16 *speciesArray, u16 *itemsArray, u8 *count)
