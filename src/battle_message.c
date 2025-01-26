@@ -2400,8 +2400,16 @@ static void GetBattlerNick(u32 battler, u8 *dst)
 
     if (illusionMon != NULL)
         mon = illusionMon;
+
     GetMonData(mon, MON_DATA_NICKNAME, dst);
     StringGet_Nickname(dst);
+
+    if (GetBattlerSide(battler) != B_SIDE_PLAYER)
+    {
+        u16 species = GetMonData(mon, MON_DATA_SPECIES);
+        if(StringCompareWithoutExtCtrlCodes(dst, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
+            StringCopy(dst, GetSpeciesName(species, DO_NAME_CHECK));
+    }
 }
 
 #define HANDLE_NICKNAME_STRING_CASE(battler)                            \
@@ -3266,7 +3274,7 @@ void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
             srcID += 2;
             break;
         case B_BUFF_SPECIES: // species name
-            StringCopy(dst, GetSpeciesName(T1_READ_16(&src[srcID + 1])));
+            StringCopy(dst, GetSpeciesName(T1_READ_16(&src[srcID + 1]), DO_NAME_CHECK));
             srcID += 3;
             break;
         case B_BUFF_MON_NICK: // poke nick without prefix
