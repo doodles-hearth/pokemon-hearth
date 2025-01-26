@@ -14,7 +14,22 @@ mapscripts SakuTown_MapScripts {
 		}
 	}
 	MAP_SCRIPT_ON_LOAD {
-		//call(SakuVillage_DrawMetatiles)
+    	gettimeofday
+		switch(var(VAR_RESULT)){
+			case TIME_DEAD_NIGHT:
+				setmetatile(35, 31, METATILE_SakuKura_Door, TRUE)
+				setmetatile(22, 18, METATILE_SakuKura_Door, TRUE)
+				setmetatile(16, 20, METATILE_SakuKura_Door, TRUE)
+				setmetatile(18, 33, METATILE_SakuKura_Door, TRUE)
+			case TIME_EARLY_MORNING:
+			case TIME_MORNING:
+			case TIME_LUNCHTIME:
+			case TIME_AFTERNOON:
+			case TIME_EVENING:
+			case TIME_NIGHT:
+			default:
+				end
+    	}
 	}
 }
 

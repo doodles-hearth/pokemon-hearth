@@ -338,7 +338,7 @@
 	.byte SCR_OP_GETTIME
 	.endm
 
-	@ Sets the value of variable VAR_0x8000 to the current time of day (TIME_DEAD_NIGHT, TIME_EARLY_MORNING, TIME_MORNING, TIME_LUNCHTIME, TIME_NOONTIME, TIME_EVENING, TIME_NIGHT).
+	@ Sets the value of variable VAR_0x8000 to the current time of day (TIME_DEAD_NIGHT, TIME_EARLY_MORNING, TIME_MORNING, TIME_LUNCHTIME, TIME_AFTERNOON, TIME_EVENING, TIME_NIGHT).
 	.macro gettimeofday
 	.byte SCR_OP_GET_TIME_OF_DAY
 	.endm
@@ -2671,3 +2671,14 @@
 	callnative ScrCmd_travellingmerchant
 	waitstate
 	.endm
+
+	@ Shows different speakernames for whether you've seen the Pokémon or not.
+	@ .macro speakernamemon monname:req, hiddenname:req, realname:req, mondialogue:req
+	@ ismonseen \monname
+	@ .if
+	@ 	speakername \hiddenname
+	@ .else
+	@ 	speakername \realname
+	@ .endif
+	@ msgbox \mondialogue, MSGBOX_DEFAULT
+	@ .endm

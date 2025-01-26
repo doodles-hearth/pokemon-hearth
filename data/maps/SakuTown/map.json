@@ -42,12 +42,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SakuTown_EventScript_Makuhita",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -62,12 +62,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SakuTown_EventScript_Makuhita",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -82,13 +82,13 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SakuTown_EventScript_Mart",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
@@ -102,12 +102,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SakuTown_EventScript_Woman",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
       "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -122,12 +122,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SakuTown_EventScript_Farmer",
       "flag": "FLAG_TEMP_1",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": false,
       "lunchtime": false,
-      "morning": false,
+      "morning": true,
       "night": false
     },
     {
@@ -142,12 +142,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SakuTown_EventScript_Karateka",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -162,12 +162,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SakuTown_EventScript_Farmer2",
       "flag": "FLAG_TEMP_1",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": false,
       "lunchtime": false,
-      "morning": false,
+      "morning": true,
       "night": false
     },
     {
@@ -306,7 +306,7 @@
       "deadnight": false,
       "earlymorning": false,
       "evening": false,
-      "lunchtime": false,
+      "lunchtime": true,
       "morning": false,
       "night": false
     },
@@ -326,7 +326,7 @@
       "deadnight": false,
       "earlymorning": false,
       "evening": false,
-      "lunchtime": false,
+      "lunchtime": true,
       "morning": false,
       "night": false
     }

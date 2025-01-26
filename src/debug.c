@@ -119,8 +119,8 @@ enum TimeSkipTimeOfDay
     DEBUG_TIME_SKIP_MENU_ITEM_DEAD_NIGHT,
     DEBUG_TIME_SKIP_MENU_ITEM_EARLY_MORNING,
     DEBUG_TIME_SKIP_MENU_ITEM_MORNING,
+    DEBUG_TIME_SKIP_MENU_ITEM_LUNCHTIME,
     DEBUG_TIME_SKIP_MENU_ITEM_AFTERNOON,
-    DEBUG_TIME_SKIP_MENU_ITEM_NOONTIME,
     DEBUG_TIME_SKIP_MENU_ITEM_EVENING,
     DEBUG_TIME_SKIP_MENU_ITEM_NIGHT,
 };
@@ -424,7 +424,7 @@ static void DebugAction_TimeSkip_Dead_Night(u8 taskId);
 static void DebugAction_TimeSkip_EarlyMorning(u8 taskId);
 static void DebugAction_TimeSkip_Morning(u8 taskId);
 static void DebugAction_TimeSkip_Lunchtime(u8 taskId);
-static void DebugAction_TimeSkip_Noontime(u8 taskId);
+static void DebugAction_TimeSkip_Afternoon(u8 taskId);
 static void DebugAction_TimeSkip_Evening(u8 taskId);
 static void DebugAction_TimeSkip_Night(u8 taskId);
 
@@ -613,7 +613,7 @@ static const u8 sDebugText_TimeSkip_DeadNight[] = _("Dead Night");
 static const u8 sDebugText_TimeSkip_EarlyMorning[] = _("Early Morning");
 static const u8 sDebugText_TimeSkip_Morning[] = _("Morning");
 static const u8 sDebugText_TimeSkip_Lunchtime[] = _("Lunchtime");
-static const u8 sDebugText_TimeSkip_Noontime[] = _("Noontime");
+static const u8 sDebugText_TimeSkip_Afternoon[] = _("Afternoon");
 static const u8 sDebugText_TimeSkip_Evening[] = _("Evening");
 static const u8 sDebugText_TimeSkip_Night[] = _("Night");
 
@@ -834,8 +834,8 @@ static const struct ListMenuItem sDebugMenu_Items_TimeSkip_TimesOfDay[] =
     [DEBUG_TIME_SKIP_MENU_ITEM_DEAD_NIGHT] = {sDebugText_TimeSkip_DeadNight, DEBUG_TIME_SKIP_MENU_ITEM_DEAD_NIGHT},
     [DEBUG_TIME_SKIP_MENU_ITEM_EARLY_MORNING] = {sDebugText_TimeSkip_EarlyMorning, DEBUG_TIME_SKIP_MENU_ITEM_EARLY_MORNING},
     [DEBUG_TIME_SKIP_MENU_ITEM_MORNING] = {sDebugText_TimeSkip_Morning, DEBUG_TIME_SKIP_MENU_ITEM_MORNING},
-    [DEBUG_TIME_SKIP_MENU_ITEM_AFTERNOON] = {sDebugText_TimeSkip_Lunchtime, DEBUG_TIME_SKIP_MENU_ITEM_AFTERNOON},
-    [DEBUG_TIME_SKIP_MENU_ITEM_NOONTIME] = {sDebugText_TimeSkip_Noontime, DEBUG_TIME_SKIP_MENU_ITEM_NOONTIME},
+    [DEBUG_TIME_SKIP_MENU_ITEM_LUNCHTIME] = {sDebugText_TimeSkip_Lunchtime, DEBUG_TIME_SKIP_MENU_ITEM_LUNCHTIME},
+    [DEBUG_TIME_SKIP_MENU_ITEM_AFTERNOON] = {sDebugText_TimeSkip_Afternoon, DEBUG_TIME_SKIP_MENU_ITEM_AFTERNOON},
     [DEBUG_TIME_SKIP_MENU_ITEM_EVENING] = {sDebugText_TimeSkip_Evening, DEBUG_TIME_SKIP_MENU_ITEM_EVENING},
     [DEBUG_TIME_SKIP_MENU_ITEM_NIGHT] = {sDebugText_TimeSkip_Night, DEBUG_TIME_SKIP_MENU_ITEM_NIGHT},
 };
@@ -1126,8 +1126,8 @@ static void (*const sDebugMenu_Actions_TimeMenu_TimesOfDay[])(u8) =
     [DEBUG_TIME_SKIP_MENU_ITEM_DEAD_NIGHT] = DebugAction_TimeSkip_Dead_Night,
     [DEBUG_TIME_SKIP_MENU_ITEM_EARLY_MORNING] = DebugAction_TimeSkip_EarlyMorning,
     [DEBUG_TIME_SKIP_MENU_ITEM_MORNING] = DebugAction_TimeSkip_Morning,
-    [DEBUG_TIME_SKIP_MENU_ITEM_AFTERNOON] = DebugAction_TimeSkip_Lunchtime,
-    [DEBUG_TIME_SKIP_MENU_ITEM_NOONTIME] = DebugAction_TimeSkip_Noontime,
+    [DEBUG_TIME_SKIP_MENU_ITEM_LUNCHTIME] = DebugAction_TimeSkip_Lunchtime,
+    [DEBUG_TIME_SKIP_MENU_ITEM_AFTERNOON] = DebugAction_TimeSkip_Afternoon,
     [DEBUG_TIME_SKIP_MENU_ITEM_EVENING] = DebugAction_TimeSkip_Evening,
     [DEBUG_TIME_SKIP_MENU_ITEM_NIGHT] = DebugAction_TimeSkip_Night,
 };
@@ -4311,7 +4311,7 @@ static void DebugAction_TimeSkip_Lunchtime(u8 taskId)
     SilentWarpForTime();
 }
 
-static void DebugAction_TimeSkip_Noontime(u8 taskId)
+static void DebugAction_TimeSkip_Afternoon(u8 taskId)
 {
     FakeRtc_ForwardTimeTo(14, 0, 0);
     Debug_DestroyMenu_Full(taskId);

@@ -9,23 +9,6 @@ const LOCALID_GRUNT_BOSS = 24
 const LOCALID_MUGGED_WOMAN = 22
 
 mapscripts BeachboundRoute_MapScripts {
-		MAP_SCRIPT_ON_LOAD {
-        call(BeachboundRoute_EventScript_TimeBasedEvents)
-    }
-}
-
-script BeachboundRoute_EventScript_TimeBasedEvents {
-	setflag(FLAG_HIDE_SHEPHERD)
-	setflag(FLAG_HIDE_KIDS)
-
-	gettimeofday
-	if (var(VAR_RESULT) != TIME_NIGHT) {
-		clearflag(FLAG_HIDE_SHEPHERD)
-	}
-
-	if (var(VAR_RESULT) != TIME_NIGHT && var(VAR_RESULT) != TIME_EVENING) {
-		clearflag(FLAG_HIDE_KIDS)
-	}
 }
 
 script BeachboundRoute_EventScript_RunningBoy {
@@ -44,8 +27,9 @@ script BeachboundRoute_EventScript_RunningGirl {
 }
 
 script BeachboundRoute_EventScript_AnnoyedGirl {
+	gettimeofday
 	speakername("Annoyed girl")
-	if (flag(FLAG_HIDE_KIDS)) {
+	if (var(VAR_RESULT) == TIME_EVENING) {
 		msgbox(format(
 			"Hum… Could you maybe, like, leave?"
 		), MSGBOX_NPC)
@@ -67,12 +51,7 @@ script BeachboundRoute_EventScript_AnnoyedBoy {
 script BeachboundRoute_EventScript_Hoppip {
 	lock
     faceplayer
-    ismonseen(SPECIES_HOPPIP)
-    if (var(VAR_RESULT)) {
-        speakername("Hoppip")
-    } else {
-        speakername("Leafy cat")
-    }
+    setspeakertomonname(SPECIES_HOPPIP)
     msgbox(format(
         "Pip!"
     ))
@@ -86,16 +65,11 @@ script BeachboundRoute_EventScript_Hoppip {
 script BeachboundRoute_EventScript_Wooloo {
 	lock
     faceplayer
-    ismonseen(SPECIES_WOOLOO)
-    if (var(VAR_RESULT)) {
-        speakername("Wooloo")
-    } else {
-        speakername("Wool ball")
-    }
+	setspeakertomonname(SPECIES_WOOLOO)
     msgbox(format(
         "Bah…"
     ))
-    playmoncry(SPECIES_WOOLOO, CRY_MODE_NORMAL)
+	playmoncry(SPECIES_WOOLOO, CRY_MODE_NORMAL)
     waitmoncry
     release
     end

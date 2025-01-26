@@ -181,20 +181,12 @@ SakuTown_House2_EventScript_Espeon::
 	lock
 	faceplayer
 	playmoncry SPECIES_ESPEON, CRY_MODE_NORMAL
-	ismonseen SPECIES_ESPEON
-	compare VAR_RESULT, 0
-	goto_if_ne SakuTown_House2_EventScript_Espeon_2
-	speakername SakuTown_House2_EventScript_Espeon_Text_1
-SakuTown_House2_EventScript_Espeon_1:
-	msgbox SakuTown_House2_EventScript_Espeon_Text_2
+	setspeakertomonname SPECIES_ESPEON
+	msgbox SakuTown_House2_EventScript_Espeon_Text_0
 	waitmoncry
 	closemessage
 	release
 	return
-
-SakuTown_House2_EventScript_Espeon_2:
-	speakername SakuTown_House2_EventScript_Espeon_Text_0
-	goto SakuTown_House2_EventScript_Espeon_1
 
 
 SakuTown_House2_EventScript_Sister::
@@ -296,12 +288,6 @@ SakuTown_House2_EventScript_GiveEvoStone_Text_3:
 	.string "The yellow rock$"
 
 SakuTown_House2_EventScript_Espeon_Text_0:
-	.string "Espeon$"
-
-SakuTown_House2_EventScript_Espeon_Text_1:
-	.string "Purple fox$"
-
-SakuTown_House2_EventScript_Espeon_Text_2:
 	.string "Eeeoon!$"
 
 SakuTown_House2_EventScript_Sister_Text_0:

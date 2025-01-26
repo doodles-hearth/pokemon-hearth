@@ -9,7 +9,22 @@ mapscripts KuraTown_MapScripts {
 		if (flag(FLAG_KURA_DOJO_CLOSED)) {
 			setmetatile(40, 16, METATILE_SakuKura_ClosedDojoDoor, TRUE)
 		}
-		//call(KuraVillage_DrawMetatiles)
+		    gettimeofday
+			switch(var(VAR_RESULT)){
+				case TIME_DEAD_NIGHT:
+					setmetatile(18, 7, METATILE_SakuKura_Door, TRUE)
+					setmetatile(34, 25, METATILE_SakuKura_Door, TRUE)
+					setmetatile(43, 23, METATILE_SakuKura_Door, TRUE)
+					setmetatile(40, 16, METATILE_SakuKura_ClosedDojoDoor, TRUE)
+				case TIME_EARLY_MORNING:
+				case TIME_MORNING:
+				case TIME_LUNCHTIME:
+				case TIME_AFTERNOON:
+				case TIME_EVENING:
+				case TIME_NIGHT:
+				default:
+					end
+    	}
 	}
 }
 
@@ -60,6 +75,7 @@ script KuraTown_EventScript_DojoChallenger {
 	lock
 	faceplayer
 	if (flag(FLAG_KURA_DOJO_CLOSED)) {
+		speakername("Bold Man")
 		msgbox(
 			format(
 				"Looks like the dojo is closed again…\p"
@@ -68,6 +84,7 @@ script KuraTown_EventScript_DojoChallenger {
 			)
 		)
 	} else {
+		speakername("Cowardly Man")
 		msgbox(
 			format(
 				"The dojo is open! I can finally defeat its leader in a fiery battle!\p"
@@ -141,6 +158,19 @@ script SakuTown_EventScript_ClosedGymDoor {
 			"- Hana”"
 		), MSGBOX_SIGN)
 	}
+}
+
+script KuraTown_EventScript_LovestruckGuy{
+	lock
+	faceplayer
+	speakername("Lovestruck Guy")
+	msgbox(
+		format(
+			"I just got back home after spending time with my love, and yet I already want the day to pass by and let me see her again…"
+		),
+		MSGBOX_DEFAULT
+	)
+	release
 }
 
 script KuraTown_EventScript_TownSign {
