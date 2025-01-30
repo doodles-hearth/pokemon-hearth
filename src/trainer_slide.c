@@ -59,14 +59,14 @@ static const u8* const sTrainerSlides[DIFFICULTY_COUNT][TRAINERS_COUNT][TRAINER_
     },
 };
 
-static const u8* const sFrontierTrainerSlides[DIFFICULTY_COUNT][TRAINERS_COUNT][TRAINER_SLIDE_COUNT] =
+static const u8* const sFrontierTrainerSlides[DIFFICULTY_COUNT][FRONTIER_TRAINERS_COUNT][TRAINER_SLIDE_COUNT] =
 {
     [DIFFICULTY_NORMAL] =
     {
     },
 };
 
-static const u8* const sTestTrainerSlides[DIFFICULTY_COUNT][FRONTIER_TRAINERS_COUNT][TRAINER_SLIDE_COUNT] =
+static const u8* const sTestTrainerSlides[DIFFICULTY_COUNT][TRAINERS_COUNT][TRAINER_SLIDE_COUNT] =
 {
 #include "../test/battle/trainer_slides.h"
 };
@@ -107,24 +107,36 @@ static u32 GetEnemyMonCount(u32 firstId, u32 lastId, bool32 onlyAlive)
     return count;
 }
 
-static bool32 DoesTrainerHaveSlideMessage(enum DifficultyLevel difficulty, u32 trainerId, u32 slideId)
+static const u8* const *GetTrainerSlideArray(enum DifficultyLevel difficulty, u32 trainerId, u32 slideId)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-        return (sFrontierTrainerSlides[difficulty][trainerId][slideId] != NULL);
+        return sFrontierTrainerSlides[difficulty][trainerId];
     else if (TESTING)
-        return (sTestTrainerSlides[difficulty][trainerId][slideId] != NULL);
+        return sTestTrainerSlides[difficulty][trainerId];
     else
-        return (sTrainerSlides[difficulty][trainerId][slideId] != NULL);
+        return sTrainerSlides[difficulty][trainerId];
+}
+
+static bool32 DoesTrainerHaveSlideMessage(enum DifficultyLevel difficulty, u32 trainerId, u32 slideId)
+{
+    const u8* const *trainerSlides = GetTrainerSlideArray(difficulty, trainerId, slideId);
+    const u8* const *trainerSlidesNormal = GetTrainerSlideArray(DIFFICULTY_NORMAL, trainerId, slideId);
+
+    if (trainerSlides[slideId] == NULL)
+        return (trainerSlidesNormal[slideId] != NULL);
+    else
+        return TRUE;
 }
 
 void SetTrainerSlideMessage(enum DifficultyLevel difficulty, u32 trainerId, u32 slideId)
 {
-    if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-        gBattleStruct->trainerSlideMsg = sFrontierTrainerSlides[difficulty][trainerId][slideId];
-    else if (TESTING)
-        gBattleStruct->trainerSlideMsg = sTestTrainerSlides[difficulty][trainerId][slideId];
+    const u8* const *trainerSlides = GetTrainerSlideArray(difficulty, trainerId, slideId);
+    const u8* const *trainerSlidesNormal = GetTrainerSlideArray(DIFFICULTY_NORMAL, trainerId, slideId);
+
+    if (trainerSlides[slideId] != NULL)
+        gBattleStruct->trainerSlideMsg = trainerSlides[slideId];
     else
-        gBattleStruct->trainerSlideMsg = sTrainerSlides[difficulty][trainerId][slideId];
+        gBattleStruct->trainerSlideMsg = trainerSlidesNormal[slideId];
 }
 
 static bool32 ShouldRunTrainerSlidePlayerLandsFirstCriticalHit(enum TrainerSlideType slideId)
@@ -204,21 +216,21 @@ static void SetTrainerSlideParamters(u32 battler, u32* firstId, u32* lastId, u32
         {
             *firstId = MULTI_PARTY_SIZE;
             *lastId = PARTY_SIZE;
-            *trainerId = SanitizeTrainerId(gTrainerBattleOpponent_B);
+            *trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentB);
             *retValue = TRAINER_SLIDE_TARGET_TRAINER_B;
         }
         else
         {
             *firstId = 0;
             *lastId = MULTI_PARTY_SIZE;
-            *trainerId = SanitizeTrainerId(gTrainerBattleOpponent_A);
+            *trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
         }
     }
     else
     {
         *firstId = 0;
         *lastId = PARTY_SIZE;
-        *trainerId = SanitizeTrainerId(gTrainerBattleOpponent_A);
+        *trainerId = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
     }
 }
 
@@ -232,7 +244,7 @@ enum TrainerSlideTargets ShouldDoTrainerSlide(u32 battler, enum TrainerSlideType
         return TRAINER_SLIDE_TARGET_NONE;
 
     SetTrainerSlideParamters(battler, &firstId, &lastId, &trainerId, &retValue);
-    enum DifficultyLevel difficulty = GetTrainerDifficultyLevel(trainerId);
+    enum DifficultyLevel difficulty = GetCurrentDifficultyLevel();
 
     gBattleScripting.battler = battler;
 
@@ -300,7 +312,7 @@ static bool32 IsSlideInitalizedOrPlayed(enum TrainerSlideType slideId)
     return FALSE;
 }
 
-void TryInitalizeFirstSTABMoveTrainerSlide(u32 battlerDef, u32 battlerAtk, u32 moveType)
+void TryInitializeFirstSTABMoveTrainerSlide(u32 battlerDef, u32 battlerAtk, u32 moveType)
 {
     enum TrainerSlideType slideId = TRAINER_SLIDE_PLAYER_LANDS_FIRST_STAB_MOVE;
 
@@ -316,7 +328,7 @@ void TryInitalizeFirstSTABMoveTrainerSlide(u32 battlerDef, u32 battlerAtk, u32 m
     InitalizeTrainerSlide(slideId);
 }
 
-void TryInitalizeTrainerSlidePlayerLandsFirstCriticalHit(u32 target)
+void TryInitializeTrainerSlidePlayerLandsFirstCriticalHit(u32 target)
 {
     enum TrainerSlideType slideId = TRAINER_SLIDE_PLAYER_LANDS_FIRST_CRITICAL_HIT;
 
@@ -329,7 +341,7 @@ void TryInitalizeTrainerSlidePlayerLandsFirstCriticalHit(u32 target)
     InitalizeTrainerSlide(slideId);
 }
 
-void TryInitalizeTrainerSlideEnemyLandsFirstCriticalHit(u32 target)
+void TryInitializeTrainerSlideEnemyLandsFirstCriticalHit(u32 target)
 {
     enum TrainerSlideType slideId = TRAINER_SLIDE_ENEMY_LANDS_FIRST_CRITICAL_HIT;
 
@@ -342,7 +354,7 @@ void TryInitalizeTrainerSlideEnemyLandsFirstCriticalHit(u32 target)
     InitalizeTrainerSlide(slideId);
 }
 
-void TryInitalizeTrainerSlidePlayerLandsFirstSuperEffectiveHit(u32 target)
+void TryInitializeTrainerSlidePlayerLandsFirstSuperEffectiveHit(u32 target)
 {
     enum TrainerSlideType slideId = TRAINER_SLIDE_PLAYER_LANDS_FIRST_SUPER_EFFECTIVE_HIT;
 
@@ -355,7 +367,7 @@ void TryInitalizeTrainerSlidePlayerLandsFirstSuperEffectiveHit(u32 target)
     InitalizeTrainerSlide(slideId);
 }
 
-void TryInitalizeTrainerSlideEnemyMonUnaffected(u32 target)
+void TryInitializeTrainerSlideEnemyMonUnaffected(u32 target)
 {
     enum TrainerSlideType slideId = TRAINER_SLIDE_ENEMY_MON_UNAFFECTED;
 
