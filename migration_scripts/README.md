@@ -17,6 +17,27 @@ python3 migration_scripts/*.py ; #run the migration script
 
 `*` will need to be replaced with the name of the appropriate script.
 
+## 1.10.x to 1.11.x+
+
+### Battle Frontier Trainers
+
+* Filepath [`migration_scripts/1.11/consolidate_contest_opponent_filters.py`](1.11/consolidate_contest_opponent_filters.py)
+* Introduced in [Consolidated contest opponent filters into gContestOpponents #6119](https://github.com/rh-hideout/pokeemerald-expansion/pull/6119)
+
+Moves the contest opponent filters in src/data/contest_opponents.h from gPostgameContestOpponentFilter to gContestOpponents
+
+#### [src/data/contest_opponents.h](../src/data/contest_opponents.h)
+```diff
+const struct ContestPokemon gContestOpponents[] =
+{
+    [CONTEST_OPPONENT_JIMMY] = {
++       .filter = CONTEST_FILTER_NONE,
+...
+- const u8 gPostgameContestOpponentFilter[] =
+- {
+-     [CONTEST_OPPONENT_JIMMY] = CONTEST_FILTER_NONE,
+```
+
 ## 1.8.x to 1.9.x+
 
 ### Battle Anim Moves

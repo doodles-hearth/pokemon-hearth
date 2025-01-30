@@ -24186,7 +24186,7 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #endif //P_FAMILY_ARCTOVISH
 
 #if P_FAMILY_DURALUDON
-    const u32 gMonFrontPic_Duraludon[] = INCBIN_U32("graphics/pokemon/duraludon/front.4bpp.lz");
+    const u32 gMonFrontPic_Duraludon[] = INCBIN_U32("graphics/pokemon/duraludon/anim_front.4bpp.lz");
     const u32 gMonPalette_Duraludon[] = INCBIN_U32("graphics/pokemon/duraludon/normal.gbapal.lz");
     const u32 gMonBackPic_Duraludon[] = INCBIN_U32("graphics/pokemon/duraludon/back.4bpp.lz");
     const u32 gMonShinyPalette_Duraludon[] = INCBIN_U32("graphics/pokemon/duraludon/shiny.gbapal.lz");

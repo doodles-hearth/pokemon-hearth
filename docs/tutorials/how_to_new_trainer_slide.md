@@ -70,11 +70,11 @@ If your new Trainer Slide needs to check for beforen initalized, a function is d
 
 ```diff
 void SetTrainerSlideMessage(enum DifficultyLevel, u32, u32);
-void TryInitalizeFirstSTABMoveTrainerSlide(u32, u32, u32);
-void TryInitalizeTrainerSlidePlayerLandsFirstCriticalHit(u32);
-+ void TryInitalizeTrainerSlideEnemyLandsFirstCriticalHit(u32);
-void TryInitalizeTrainerSlidePlayerLandsFirstSuperEffectiveHit(u32);
-void TryInitalizeTrainerSlideEnemyMonUnaffected(u32);
+void TryInitializeFirstSTABMoveTrainerSlide(u32, u32, u32);
+void TryInitializeTrainerSlidePlayerLandsFirstCriticalHit(u32);
++ void TryInitializeTrainerSlideEnemyLandsFirstCriticalHit(u32);
+void TryInitializeTrainerSlidePlayerLandsFirstSuperEffectiveHit(u32);
+void TryInitializeTrainerSlideEnemyMonUnaffected(u32);
 bool32 IsTrainerSlideInitialized(enum TrainerSlideType);
 ```
 ### `src/trainer_slide.c`
@@ -111,7 +111,7 @@ The function that determines if a Slide should play has different function for m
      InitalizeTrainerSlide(slideId);
  }
  
-+void TryInitalizeTrainerSlideEnemyLandsFirstCriticalHit(u32 target)
++void TryInitializeTrainerSlideEnemyLandsFirstCriticalHit(u32 target)
 +{
 +    enum TrainerSlideType slideId = TRAINER_SLIDE_ENEMY_LANDS_FIRST_CRITICAL_HIT;
 +
@@ -150,13 +150,13 @@ In `BattleTurnPassed`, most Trainer Slides are checked to see if they should run
          {
              PrepareStringBattle(STRINGID_CRITICALHIT, gBattlerAttacker);
  
-+            TryInitalizeTrainerSlideEnemyLandsFirstCriticalHit(gBattlerTarget);
-             TryInitalizeTrainerSlidePlayerLandsFirstCriticalHit(gBattlerTarget);
++            TryInitializeTrainerSlideEnemyLandsFirstCriticalHit(gBattlerTarget);
+             TryInitializeTrainerSlidePlayerLandsFirstCriticalHit(gBattlerTarget);
  
              gBattleCommunication[MSG_DISPLAY] = 1;
 ```
 
-The actual usage of `TryInitalizeTrainerSlideEnemyLandsFirstCriticalHit` is added and is checked whenever a critical hit is scored.
+The actual usage of `TryInitializeTrainerSlideEnemyLandsFirstCriticalHit` is added and is checked whenever a critical hit is scored.
 
 ### `test/battle/trainer_slides.c`
 ```diff
