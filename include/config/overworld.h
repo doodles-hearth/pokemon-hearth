@@ -66,6 +66,7 @@
 #define OW_FOLLOWERS_ALLOWED_SPECIES (0)
 #define OW_FOLLOWERS_ALLOWED_MET_LVL (0)
 #define OW_FOLLOWERS_ALLOWED_MET_LOC (0)
+#define OW_BATTLE_ONLY_FORMS           TRUE       // If TRUE, loads overworld sprites for battle-only forms like Mega Evos. Requires OW_POKEMON_OBJECT_EVENTS.
 
 // Out-of-battle Ability effects
 #define OW_SYNCHRONIZE_NATURE       GEN_LATEST // In Gen8+, if a Pokémon with Synchronize leads the party, wild Pokémon will always have their same Nature as opposed to the 50% chance in previous games. Gift Pokémon excluded.
