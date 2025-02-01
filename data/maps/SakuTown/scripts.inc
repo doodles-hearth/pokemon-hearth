@@ -15,6 +15,23 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	setflag FLAG_TEMP_1
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_DEAD_NIGHT, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_2
+	case TIME_EARLY_MORNING, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
+	case TIME_MORNING, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
+	case TIME_LUNCHTIME, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
+	case TIME_AFTERNOON, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
+	case TIME_EVENING, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
+	case TIME_NIGHT, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
+SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3:
+	end
+
+SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_2:
+	setmetatile 35, 31, METATILE_SakuKura_Door, TRUE
+	setmetatile 22, 18, METATILE_SakuKura_Door, TRUE
+	setmetatile 16, 20, METATILE_SakuKura_Door, TRUE
+	setmetatile 18, 33, METATILE_SakuKura_Door, TRUE
 	return
 
 

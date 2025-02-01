@@ -461,13 +461,11 @@ script BeachboundRoute_EventScript_Mugging {
 
 // TODO change items, and make them limited quantity
 mart BeachboundRoute_Mart_Merchant {
-	ITEM_POTION
+	ITEM_OINTMENT
 	ITEM_UUMEGIRI
 	ITEM_PARALYZE_HEAL
 	ITEM_ANTIDOTE
 	ITEM_TM_ROCK_TOMB
-	ITEM_ESCAPE_ROPE
-	ITEM_FISHCAKE
 }
 
 script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
@@ -481,12 +479,10 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 	), MSGBOX_YESNO)
 	closemessage
 
-	if (var(VAR_RESULT) == YES) {
-		pokemart(BeachboundRoute_Mart_Merchant)
-		speakername("Okada")
-		msgbox("Thanks for your business! Now where did I put that scroll again…", MSGBOX_DEFAULT)
-		closemessage
-	}
+	pokemart(BeachboundRoute_Mart_Merchant)
+	speakername("Okada")
+	msgbox("Thanks for your business! Now where did I put that scroll again…", MSGBOX_DEFAULT)
+	closemessage
 
 	release
 }

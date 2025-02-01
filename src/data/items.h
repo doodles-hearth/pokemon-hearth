@@ -623,7 +623,7 @@ const struct Item gItemsInfo[] =
 
 // Medicine
 
-    [ITEM_UUMEGIRI] =
+    [ITEM_OINTMENT] =
     {
         .name = _("Ointment"),
         .price = 100,
@@ -641,7 +641,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_Ointment,
     },
 
-    [ITEM_SUPERGIRI] =
+    [ITEM_SUPER_OINTMENT] =
     {
         .name = _("Super Ointment"),
         .price = 500,
@@ -659,7 +659,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_SuperOintment,
     },
 
-    [ITEM_HYPERGIRI] =
+    [ITEM_HYPER_OINTMENT] =
     {
         .name = _("Hyper Ointment"),
         .price = 800,
@@ -677,7 +677,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_HyperOintment,
     },
 
-    [ITEM_MAXGIRI] =
+    [ITEM_MAX_OINTMENT] =
     {
         .name = _("Max Ointment"),
         .price = 1500,
@@ -695,7 +695,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_MaxOintment,
     },
 
-    [ITEM_SACREDGIRI] =
+    [ITEM_SACRED_OINTMENT] =
     {
         .name = _("Sacred Ointment"),
         .price = 2000,
@@ -715,7 +715,7 @@ const struct Item gItemsInfo[] =
     },
 
     // Off and in battle heal
-    [ITEM_POTION] =
+    [ITEM_UUMEGIRI] =
     {
         .name = _("Uumegiri"),
         .price = 100,
@@ -734,7 +734,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_Uumegiri,
     },
 
-    [ITEM_SUPER_POTION] =
+    [ITEM_SUPERGIRI] =
     {
         .name = _("Supergiri"),
         .price = 500,
@@ -753,7 +753,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_SuperGiri,
     },
 
-    [ITEM_HYPER_POTION] =
+    [ITEM_HYPERGIRI] =
     {
         .name = _("Hypergiri"),
         .price = 800,
@@ -772,7 +772,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_HyperGiri,
     },
 
-    [ITEM_MAX_POTION] =
+    [ITEM_MAXGIRI] =
     {
         .name = _("Maxgiri"),
         .price = 1500,
@@ -791,7 +791,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_MaxGiri,
     },
 
-    [ITEM_FULL_RESTORE] =
+    [ITEM_SACREDGIRI] =
     {
         .name = _("Sacredgiri"),
         .price = 2000,
@@ -808,6 +808,108 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_SacredGiri,
         .iconPalette = gItemIconPalette_SacredGiri,
+    },
+    
+    [ITEM_POTION] =
+    {
+        .name = _("Potion"),
+        .price = (I_PRICE >= GEN_7) ? 200 : 300,
+        .holdEffectParam = 20,
+        .description = COMPOUND_STRING(
+            "Restores the HP of\n"
+            "a Pokémon by\n"
+            "20 points."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
+        .effect = gItemEffect_Potion,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Potion,
+        .iconPalette = gItemIconPalette_Potion,
+    },
+
+    [ITEM_SUPER_POTION] =
+    {
+        .name = _("Super Potion"),
+        .price = 700,
+        .holdEffectParam = 60,
+        .description = COMPOUND_STRING(
+            "Restores the HP of\n"
+            "a Pokémon by\n"
+        #if I_HEALTH_RECOVERY >= GEN_7
+            "60 points."),
+        #else
+            "50 points."),
+        #endif
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
+        .effect = gItemEffect_SuperPotion,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Potion,
+        .iconPalette = gItemIconPalette_SuperPotion,
+    },
+
+    [ITEM_HYPER_POTION] =
+    {
+        .name = _("Hyper Potion"),
+        .price = (I_PRICE >= GEN_2 && I_PRICE <= GEN_6) ? 1200 : 1500,
+        .holdEffectParam = 120,
+        .description = COMPOUND_STRING(
+            "Restores the HP of\n"
+            "a Pokémon by\n"
+        #if I_HEALTH_RECOVERY >= GEN_7
+            "120 points."),
+        #else
+            "200 points."),
+        #endif
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
+        .effect = gItemEffect_HyperPotion,
+        .flingPower = 30,
+        .iconPic = gItemIcon_Potion,
+        .iconPalette = gItemIconPalette_HyperPotion,
+    },
+
+    [ITEM_MAX_POTION] =
+    {
+        .name = _("Max Potion"),
+        .price = 2500,
+        .holdEffectParam = 255,
+        .description = COMPOUND_STRING(
+            "Fully restores the\n"
+            "HP of a Pokémon."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
+        .effect = gItemEffect_MaxPotion,
+        .flingPower = 30,
+        .iconPic = gItemIcon_LargePotion,
+        .iconPalette = gItemIconPalette_MaxPotion,
+    },
+
+    [ITEM_FULL_RESTORE] =
+    {
+        .name = _("Full Restore"),
+        .price = 3000,
+        .holdEffectParam = 255,
+        .description = COMPOUND_STRING(
+            "Fully restores the\n"
+            "HP and status of a\n"
+            "Pokémon."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_HEAL_AND_CURE_STATUS,
+        .effect = gItemEffect_FullRestore,
+        .flingPower = 30,
+        .iconPic = gItemIcon_LargePotion,
+        .iconPalette = gItemIconPalette_FullRestore,
     },
 
     [ITEM_REVIVE] =

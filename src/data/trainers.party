@@ -245,7 +245,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Struggle Bug
 
 === TRAINER_KENJI ===
-Name: KENJI
+Name: Kenji
 Class: Artist
 Pic: Artist
 Gender: Male
@@ -264,7 +264,6 @@ Inkay
 Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
-- Hypnosis
 - Peck
 - Wrap
 
@@ -5030,15 +5029,29 @@ Gender: Female
 Music: Female
 Items: Potion / Potion
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Lotad
-Level: 15
+Surskit
+Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Nature Power
+- String Shot
+- Pounce
 
-Feebas @ Oran Berry
-Level: 15
+Barboach @ Oran Berry
+Level: 14
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Mud Bomb
+- Rock Tomb
+- Flail
+
+Lombre
+Level: 16
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Nature Power
+- Mega Drain
+- Icy Wind
+- Fake Out
 
 === TRAINER_HANA_1 ===
 Name: Hana
@@ -6170,7 +6183,7 @@ AI: Check Bad Move
 
 Lotad
 Level: 13
-- Mega Drain
+- Absorb
 - Whirlpool
 - Rain Dance
 - Leech Seed
@@ -6181,14 +6194,11 @@ Level: 12
 - Icy Wind
 - Protect
 
-Surskit
-Level: 13
-Ability: Swift Swim
-IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
-- String Shot
-- Pounce
+Goldeen
+Level: 12
 - Nature Power
-
+- Peck
+- Fury Attack
 
 === TRAINER_REN ===
 Name: Ren
@@ -6201,10 +6211,10 @@ AI: Check Bad Move
 
 Psyduck
 Level: 13
-IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 - Confusion
 - Disable
 - Confuse Ray
+- Water Spout
 
 === TRAINER_ADMIN_CROBAT_HIDEOUT_1 ===
 Name: Grunt
@@ -10708,20 +10718,16 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Goldeen
+Magikarp
 Level: 12
-IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
-- Nature Power
-- Peck
-- Fury Attack
+- Bounce
+- Splash
 
-Barboach
-Level: 13
-IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
-- Mud Shot
-- Nature Power
-- Rock Tomb
-- Flail
+Surskit
+Level: 12
+- String Shot
+- Quick Attack
+- Bubble
 
 === TRAINER_BRENDEN ===
 Name: BRENDEN
