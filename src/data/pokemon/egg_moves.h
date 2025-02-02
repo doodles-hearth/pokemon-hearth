@@ -508,6 +508,27 @@ static const u16 sPsyduckEggMoveLearnset[] = {
     MOVE_CLEAR_SMOG,
     MOVE_UNAVAILABLE,
 };
+
+#if P_TOKUAN_FORMS
+static const u16 sPsyduckTokuanEggMoveLearnset[] = {
+    MOVE_HYPNOSIS,
+    MOVE_PSYBEAM,
+    MOVE_FORESIGHT,
+    MOVE_FUTURE_SIGHT,
+    MOVE_CROSS_CHOP,
+    MOVE_REFRESH,
+    MOVE_CONFUSE_RAY,
+    MOVE_YAWN,
+    MOVE_MUD_BOMB,
+    MOVE_ENCORE,
+    MOVE_SECRET_POWER,
+    MOVE_SLEEP_TALK,
+    MOVE_SYNCHRONOISE,
+    MOVE_SIMPLE_BEAM,
+    MOVE_CLEAR_SMOG,
+    MOVE_UNAVAILABLE,
+};
+#endif //P_TOKUAN_FORMS
 #endif //P_FAMILY_PSYDUCK
 
 #if P_FAMILY_MANKEY
