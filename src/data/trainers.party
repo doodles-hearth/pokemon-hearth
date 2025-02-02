@@ -490,12 +490,11 @@ Level: 11
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Astonish
 - Absorb
-- Supersonic
+- Leech Life
 
 Houndour
 Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Smog
 - Ember
 - Bite
 - Howl
@@ -6188,11 +6187,11 @@ Level: 13
 - Rain Dance
 - Leech Seed
 
-Feebas @ Leftovers
+Feebas
 Level: 12
-- Dive
-- Icy Wind
-- Protect
+- Rain Dance
+- Water Gun
+- Flail
 
 Goldeen
 Level: 12
@@ -6213,8 +6212,7 @@ Psyduck
 Level: 13
 - Confusion
 - Disable
-- Confuse Ray
-- Water Spout
+- Bite
 
 === TRAINER_ADMIN_CROBAT_HIDEOUT_1 ===
 Name: Grunt

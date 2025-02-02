@@ -262,9 +262,9 @@ ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_0:
 	.string "Woman$"
 
 ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_1:
-	.string "Berries, potions… Oh, right, I should\n"
-	.string "get a few more Poké Balls from the\l"
-	.string "town market!$"
+	.string "Berries, ointments… Oh, right, I\n"
+	.string "should get a few more Poké Balls from\l"
+	.string "the town market!$"
 
 ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_0:
 	.string "Talkative man$"

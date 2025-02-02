@@ -816,14 +816,15 @@ void DrawMainBattleBackground(void)
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
         {
             u32 trainerClass = GetTrainerClassFromId(gTrainerBattleOpponent_A);
-            if (trainerClass == TRAINER_CLASS_DOJO_MASTER)
-            {                
-                LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
-                LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
-                LoadCompressedPalette(gBattleTerrainPalette_StadiumLeader, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-                return;
-            }
-            else if (trainerClass == TRAINER_CLASS_CHAMPION)
+            // if (trainerClass == TRAINER_CLASS_DOJO_MASTER)
+            // {                
+            //     LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
+            //     LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
+            //     LoadCompressedPalette(gBattleTerrainPalette_StadiumLeader, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+            //     return;
+            // }
+            // else
+            if (trainerClass == TRAINER_CLASS_CHAMPION)
             {
                 LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
                 LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
@@ -1217,13 +1218,14 @@ void DrawBattleEntryBackground(void)
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
         {
             u32 trainerClass = GetTrainerClassFromId(gTrainerBattleOpponent_A);
-            if (trainerClass == TRAINER_CLASS_DOJO_MASTER)
-            {
-                LZDecompressVram(gBattleTerrainAnimTiles_Building, (void *)(BG_CHAR_ADDR(1)));
-                LZDecompressVram(gBattleTerrainAnimTilemap_Building, (void *)(BG_SCREEN_ADDR(28)));
-                return;
-            }
-            else if (trainerClass == TRAINER_CLASS_CHAMPION)
+            // if (trainerClass == TRAINER_CLASS_DOJO_MASTER)
+            // {
+            //     LZDecompressVram(gBattleTerrainAnimTiles_Building, (void *)(BG_CHAR_ADDR(1)));
+            //     LZDecompressVram(gBattleTerrainAnimTilemap_Building, (void *)(BG_SCREEN_ADDR(28)));
+            //     return;
+            // }
+            // else
+            if (trainerClass == TRAINER_CLASS_CHAMPION)
             {
                 LZDecompressVram(gBattleTerrainAnimTiles_Building, (void *)(BG_CHAR_ADDR(1)));
                 LZDecompressVram(gBattleTerrainAnimTilemap_Building, (void *)(BG_SCREEN_ADDR(28)));
@@ -1282,12 +1284,13 @@ bool8 LoadChosenBattleElement(u8 caseId)
             if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
             {
                 u32 trainerClass = GetTrainerClassFromId(gTrainerBattleOpponent_A);
-                if (trainerClass == TRAINER_CLASS_DOJO_MASTER)
-                {
-                    LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
-                    break;
-                }
-                else if (trainerClass == TRAINER_CLASS_CHAMPION)
+                // if (trainerClass == TRAINER_CLASS_DOJO_MASTER)
+                // {
+                //     LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
+                //     break;
+                // }
+                // else
+                if (trainerClass == TRAINER_CLASS_CHAMPION)
                 {
                     LZDecompressVram(gBattleTerrainTiles_Stadium, (void *)(BG_CHAR_ADDR(2)));
                     break;
@@ -1344,12 +1347,13 @@ bool8 LoadChosenBattleElement(u8 caseId)
             if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
             {
                 u32 trainerClass = GetTrainerClassFromId(gTrainerBattleOpponent_A);
-                if (trainerClass == TRAINER_CLASS_DOJO_MASTER)
-                {
-                    LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
-                    break;
-                }
-                else if (trainerClass == TRAINER_CLASS_CHAMPION)
+                // if (trainerClass == TRAINER_CLASS_DOJO_MASTER)
+                // {
+                //     LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
+                //     break;
+                // }
+                // else
+                if (trainerClass == TRAINER_CLASS_CHAMPION)
                 {
                     LZDecompressVram(gBattleTerrainTilemap_Stadium, (void *)(BG_SCREEN_ADDR(26)));
                     break;
@@ -1406,12 +1410,13 @@ bool8 LoadChosenBattleElement(u8 caseId)
             if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
             {
                 u32 trainerClass = GetTrainerClassFromId(gTrainerBattleOpponent_A);
-                if (trainerClass == TRAINER_CLASS_DOJO_MASTER)
-                {
-                    LoadCompressedPalette(gBattleTerrainPalette_StadiumLeader, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
-                    break;
-                }
-                else if (trainerClass == TRAINER_CLASS_CHAMPION)
+                // if (trainerClass == TRAINER_CLASS_DOJO_MASTER)
+                // {
+                //     LoadCompressedPalette(gBattleTerrainPalette_StadiumLeader, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
+                //     break;
+                // }
+                // else
+                if (trainerClass == TRAINER_CLASS_CHAMPION)
                 {
                     LoadCompressedPalette(gBattleTerrainPalette_StadiumWallace, BG_PLTT_ID(2), 3 * PLTT_SIZE_4BPP);
                     break;

@@ -476,8 +476,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 		"Oh, hello again! {PLAYER}, was it?\p"
 		"I'm in the area for a while to gather some resources.\p"
 		"Can I interest you in some rare goods?"
-	), MSGBOX_YESNO)
-	closemessage
+	))
 
 	pokemart(BeachboundRoute_Mart_Merchant)
 	speakername("Okada")
