@@ -79,14 +79,15 @@ MaguroHarbor_Dojo_EventScript_Mizu::
 MaguroHarbor_Dojo_EventScript_Advice::
 	lock
 	faceplayer
+	speakername MaguroHarbor_Dojo_EventScript_Advice_Text_0
 	goto_if_set FLAG_BADGE01_GET, MaguroHarbor_Dojo_EventScript_Advice_2
-	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_1
+	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_2
 MaguroHarbor_Dojo_EventScript_Advice_1:
 	release
 	return
 
 MaguroHarbor_Dojo_EventScript_Advice_2:
-	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_0
+	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_1
 	goto MaguroHarbor_Dojo_EventScript_Advice_1
 
 
@@ -230,9 +231,12 @@ MaguroHarbor_Dojo_EventScript_Mizu_Text_2:
 	.string "need peace and quiet to thrive.$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_0:
-	.string "You swept me away with that battle!$"
+	.string "Man$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_1:
+	.string "You swept me away with that battle!$"
+
+MaguroHarbor_Dojo_EventScript_Advice_Text_2:
 	.string "Hello, young challenger! Are you going\n"
 	.string "to be fighting for your first Token?\p"
 	.string "Welcome to the Koi Pond Dojo!\p"

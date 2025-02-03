@@ -203,7 +203,7 @@ ChiiTown_EventScript_Mart::
 	.align 2
 ChiiTown_Mart:
 	.2byte ITEM_POKE_BALL
-	.2byte ITEM_BERRY_JUICE
+	.2byte ITEM_OINTMENT
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_AWAKENING

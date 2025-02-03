@@ -6,10 +6,10 @@ script SunriseVillage_EldersHouse_PrivateQuarters_EventScript_Meowth {
 	lock
     faceplayer
     waitse
-    playmoncry(SPECIES_MEOWTH, CRY_MODE_NORMAL)
-    speakername("Meowth")
+    playmoncry(SPECIES_GALVANTULA, CRY_MODE_NORMAL)
+    setspeakertomonname(SPECIES_GALVANTULA)
     msgbox(format(
-        "Fss!"
+        "FSSS!"
     ))
     waitmoncry
     release

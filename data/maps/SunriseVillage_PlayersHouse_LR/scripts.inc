@@ -88,7 +88,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 	bufferspeciesname STR_VAR_2, VAR_STARTER_MON
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2
 	closemessage
-	giveitem ITEM_POTION, 5
+	giveitem ITEM_OINTMENT, 5
 	giveitem ITEM_POKE_BALL, 5
 	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3

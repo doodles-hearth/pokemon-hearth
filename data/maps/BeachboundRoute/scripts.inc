@@ -315,33 +315,24 @@ BeachboundRoute_EventScript_Mugging_9:
 
 	.align 2
 BeachboundRoute_Mart_Merchant:
-	.2byte ITEM_POTION
+	.2byte ITEM_OINTMENT
 	.2byte ITEM_UUMEGIRI
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_TM_ROCK_TOMB
-	.2byte ITEM_ESCAPE_ROPE
-	.2byte ITEM_FISHCAKE
 	.2byte ITEM_NONE
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime::
 	lock
 	faceplayer
 	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
-	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1, MSGBOX_YESNO
-	closemessage
-	compare VAR_RESULT, YES
-	goto_if_eq BeachboundRoute_EventScript_TravelingMerchantSecondTime_2
-BeachboundRoute_EventScript_TravelingMerchantSecondTime_1:
-	release
-	return
-
-BeachboundRoute_EventScript_TravelingMerchantSecondTime_2:
+	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1
 	pokemart BeachboundRoute_Mart_Merchant
 	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
 	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2, MSGBOX_DEFAULT
 	closemessage
-	goto BeachboundRoute_EventScript_TravelingMerchantSecondTime_1
+	release
+	return
 
 
 BeachboundRoute_EventScript_SeeDecay::

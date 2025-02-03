@@ -60,6 +60,7 @@ script GinkoWoods_EventScript_Bean {
 	lock
 	faceplayer
 
+	speakername("Odd girl")
 	msgbox(format(
 		"Hello!"
 	))
@@ -69,6 +70,7 @@ script GinkoWoods_EventScript_Bean {
 
 	turnobject(LOCALID_BEAN, DIR_EAST)
 
+	speakername("Odd girl")
 	msgbox(format(
 		"I just noticed there are some neat tracks in the dirt here."
 	))
@@ -78,6 +80,7 @@ script GinkoWoods_EventScript_Bean {
 	
 	delay(48)
 
+	speakername("Odd girl")
 	msgbox(format(
 		"It looks like a small mammal's footprints, see?\p"
 		"Studying Pokémon tracks is so fascinating. One can find out about a Pokémon's nesting place, their hunting habits, at what time they sleep, what they eat… Interesting, isn't it?\p"
@@ -97,6 +100,7 @@ script GinkoWoods_EventScript_Bean {
 
 	delay(48)
 
+	speakername("Odd girl")
 	msgbox(format(
 		"…And that's all that is currently known about Joltik's habitat during the winter.\p"
 		"Neat, isn't it?"
@@ -114,6 +118,7 @@ script GinkoWoods_EventScript_Bean {
 		"I was just passing through…"
 	)
 	closemessage
+	speakername("Hariko")
 
 	switch(var(VAR_RESULT)) {
 		case 0:

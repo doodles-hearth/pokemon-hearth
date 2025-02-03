@@ -486,6 +486,7 @@ SunriseVillage_EldersHouse_EventScript_Joltik::
 	faceplayer
 	waitse
 	playmoncry SPECIES_JOLTIK, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_JOLTIK
 	msgbox SunriseVillage_EldersHouse_EventScript_Joltik_Text_0
 	waitmoncry
 	release

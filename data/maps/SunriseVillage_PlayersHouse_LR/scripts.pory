@@ -88,7 +88,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		))
 		closemessage
 
-		giveitem(ITEM_POTION, 5)
+		giveitem(ITEM_OINTMENT, 5)
 		giveitem(ITEM_POKE_BALL, 5)
 
 		speakername("Big sis")

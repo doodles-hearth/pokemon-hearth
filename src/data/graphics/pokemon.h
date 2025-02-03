@@ -2258,6 +2258,20 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gShinyOverworldPalette_Golduck[] = INCBIN_U32("graphics/pokemon/golduck/overworld_shiny.gbapal.lz");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
+
+#if P_TOKUAN_FORMS
+    const u32 gMonFrontPic_PsyduckTokuan[] = INCBIN_U32("graphics/pokemon/psyduck/tokuan/anim_front.4bpp.lz");
+    const u32 gMonPalette_PsyduckTokuan[] = INCBIN_U32("graphics/pokemon/psyduck/tokuan/normal.gbapal.lz");
+    const u32 gMonBackPic_PsyduckTokuan[] = INCBIN_U32("graphics/pokemon/psyduck/tokuan/back.4bpp.lz");
+    const u32 gMonShinyPalette_PsyduckTokuan[] = INCBIN_U32("graphics/pokemon/psyduck/tokuan/shiny.gbapal.lz");
+    const u8 gMonIcon_PsyduckTokuan[] = INCBIN_U8("graphics/pokemon/psyduck/tokuan/icon.4bpp");
+#if P_FOOTPRINTS
+    const u8 gMonFootprint_PsyduckTokuan[] = INCBIN_U8("graphics/pokemon/psyduck/tokuan/footprint.1bpp");
+#endif //P_FOOTPRINTS
+#if OW_POKEMON_OBJECT_EVENTS
+    const u32 gObjectEventPic_PsyduckTokuan[] = INCBIN_COMP("graphics/pokemon/psyduck/tokuan/overworld.4bpp");
+#endif //OW_POKEMON_OBJECT_EVENTS
+#endif //P_TOKUAN_FORMS
 #endif //P_FAMILY_PSYDUCK
 
 #if P_FAMILY_MANKEY

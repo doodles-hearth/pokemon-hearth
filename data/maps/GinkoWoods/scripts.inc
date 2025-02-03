@@ -38,24 +38,29 @@ GinkoWoods_EventScript_OldMan::
 GinkoWoods_EventScript_Bean::
 	lock
 	faceplayer
-	msgbox GinkoWoods_EventScript_Bean_Text_0
+	speakername GinkoWoods_EventScript_Bean_Text_0
+	msgbox GinkoWoods_EventScript_Bean_Text_1
 	closemessage
 	delay 48
 	turnobject 7, DIR_EAST
-	msgbox GinkoWoods_EventScript_Bean_Text_1
+	speakername GinkoWoods_EventScript_Bean_Text_0
+	msgbox GinkoWoods_EventScript_Bean_Text_2
 	closemessage
 	turnobject 7, DIR_SOUTH
 	delay 48
-	msgbox GinkoWoods_EventScript_Bean_Text_2
+	speakername GinkoWoods_EventScript_Bean_Text_0
+	msgbox GinkoWoods_EventScript_Bean_Text_3
 	closemessage
 	fadescreen FADE_TO_BLACK
 	addtime 0, 1, 30
 	delay 60
 	fadescreen FADE_FROM_BLACK
 	delay 48
-	msgbox GinkoWoods_EventScript_Bean_Text_3
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, GinkoWoods_EventScript_Bean_Text_4, GinkoWoods_EventScript_Bean_Text_5, GinkoWoods_EventScript_Bean_Text_6
+	speakername GinkoWoods_EventScript_Bean_Text_0
+	msgbox GinkoWoods_EventScript_Bean_Text_4
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, GinkoWoods_EventScript_Bean_Text_5, GinkoWoods_EventScript_Bean_Text_6, GinkoWoods_EventScript_Bean_Text_7
 	closemessage
+	speakername GinkoWoods_EventScript_Bean_Text_8
 	switch VAR_RESULT
 	case 0, GinkoWoods_EventScript_Bean_3
 	case 1, GinkoWoods_EventScript_Bean_4
@@ -70,15 +75,15 @@ GinkoWoods_EventScript_Bean_1:
 	return
 
 GinkoWoods_EventScript_Bean_3:
-	msgbox GinkoWoods_EventScript_Bean_Text_7
+	msgbox GinkoWoods_EventScript_Bean_Text_9
 	goto GinkoWoods_EventScript_Bean_1
 
 GinkoWoods_EventScript_Bean_4:
-	msgbox GinkoWoods_EventScript_Bean_Text_8
+	msgbox GinkoWoods_EventScript_Bean_Text_10
 	goto GinkoWoods_EventScript_Bean_1
 
 GinkoWoods_EventScript_Bean_5:
-	msgbox GinkoWoods_EventScript_Bean_Text_9
+	msgbox GinkoWoods_EventScript_Bean_Text_11
 	goto GinkoWoods_EventScript_Bean_1
 
 
@@ -176,13 +181,16 @@ GinkoWoods_EventScript_OldMan_Text_1:
 	.string "Pokémon here.$"
 
 GinkoWoods_EventScript_Bean_Text_0:
-	.string "Hello!$"
+	.string "Odd girl$"
 
 GinkoWoods_EventScript_Bean_Text_1:
+	.string "Hello!$"
+
+GinkoWoods_EventScript_Bean_Text_2:
 	.string "I just noticed there are some neat\n"
 	.string "tracks in the dirt here.$"
 
-GinkoWoods_EventScript_Bean_Text_2:
+GinkoWoods_EventScript_Bean_Text_3:
 	.string "It looks like a small mammal's\n"
 	.string "footprints, see?\p"
 	.string "Studying Pokémon tracks is so\n"
@@ -211,22 +219,25 @@ GinkoWoods_EventScript_Bean_Text_2:
 	.string "your way here that blah, blah blah\l"
 	.string "blah blah, blah blah…$"
 
-GinkoWoods_EventScript_Bean_Text_3:
+GinkoWoods_EventScript_Bean_Text_4:
 	.string "…And that's all that is currently\n"
 	.string "known about Joltik's habitat during\l"
 	.string "the winter.\p"
 	.string "Neat, isn't it?$"
 
-GinkoWoods_EventScript_Bean_Text_4:
+GinkoWoods_EventScript_Bean_Text_5:
 	.string "… …Yes?$"
 
-GinkoWoods_EventScript_Bean_Text_5:
+GinkoWoods_EventScript_Bean_Text_6:
 	.string "Do I know you?$"
 
-GinkoWoods_EventScript_Bean_Text_6:
+GinkoWoods_EventScript_Bean_Text_7:
 	.string "I was just passing through…$"
 
-GinkoWoods_EventScript_Bean_Text_7:
+GinkoWoods_EventScript_Bean_Text_8:
+	.string "Hariko$"
+
+GinkoWoods_EventScript_Bean_Text_9:
 	.string "Right! I am glad you share my interest\n"
 	.string "in Pokémon habitat.\p"
 	.string "I am Hariko. And what is your name?\p"
@@ -234,7 +245,7 @@ GinkoWoods_EventScript_Bean_Text_7:
 	.string "with you. I will see you around, then.\p"
 	.string "Okay, bye!$"
 
-GinkoWoods_EventScript_Bean_Text_8:
+GinkoWoods_EventScript_Bean_Text_10:
 	.string "Right! I haven't introduced myself\n"
 	.string "yet.\p"
 	.string "I am Hariko. And what is your name?\p"
@@ -242,7 +253,7 @@ GinkoWoods_EventScript_Bean_Text_8:
 	.string "with you. I will see you around, then.\p"
 	.string "Okay, bye!$"
 
-GinkoWoods_EventScript_Bean_Text_9:
+GinkoWoods_EventScript_Bean_Text_11:
 	.string "…Oh. I am blocking your path. I see.\p"
 	.string "I guess I got carried away, have I\n"
 	.string "not? That… tends to happen.\p"

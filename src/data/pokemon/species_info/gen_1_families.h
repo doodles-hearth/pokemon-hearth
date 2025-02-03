@@ -7439,6 +7439,77 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sGolduckLevelUpLearnset,
         .teachableLearnset = sGolduckTeachableLearnset,
     },
+
+    [SPECIES_PSYDUCK_TOKUAN] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 52,
+        .baseDefense   = 48,
+        .baseSpeed     = 55,
+        .baseSpAttack  = 65,
+        .baseSpDefense = 50,
+        .types = MON_TYPES(TYPE_WATER, TYPE_PSYCHIC),
+        .catchRate = 190,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 64 : 80,
+        .evYield_SpAttack = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_MONSTER),
+        .abilities = { ABILITY_DAMP, ABILITY_CLOUD_NINE, ABILITY_SWIFT_SWIM },
+        .bodyColor = BODY_COLOR_GREEN,
+        .speciesName = _("Psyduck"),
+        .unknownName = _("Worried Duck"),
+        .cryId = CRY_PSYDUCK,
+        .natDexNum = NATIONAL_DEX_PSYDUCK_TOKUAN,
+        .categoryName = _("Kappa"),
+        .height = 8,
+        .weight = 199,
+        .description = COMPOUND_STRING(
+            "It dies if the water on the hollow part\n"
+            "of its head spills out. However, the\n"
+            "hole is too small to contain it all, so\n"
+            "it is held aloft by psychic powers."),
+        .pokemonScale = 369,
+        .pokemonOffset = 15,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_PsyduckTokuan,
+        .frontPicSize = MON_COORDS_SIZE(40, 48),
+        .frontPicYOffset = 11,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 20),
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 20),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_V_JUMPS_H_JUMPS,
+        .backPic = gMonBackPic_PsyduckTokuan,
+        .backPicSize = MON_COORDS_SIZE(48, 48),
+        .backPicYOffset = 9,
+        .backAnimId = BACK_ANIM_H_SLIDE,
+        .palette = gMonPalette_PsyduckTokuan,
+        .shinyPalette = gMonShinyPalette_PsyduckTokuan,
+        .iconSprite = gMonIcon_PsyduckTokuan,
+        .iconPalIndex = 0,
+        SHADOW(1, 2, SHADOW_SIZE_M)
+        FOOTPRINT(PsyduckTokuan)
+        OVERWORLD(
+            gObjectEventPic_PsyduckTokuan,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gMonPalette_PsyduckTokuan,
+            gMonShinyPalette_PsyduckTokuan
+        )
+        .levelUpLearnset = sPsyduckTokuanLevelUpLearnset,
+        .teachableLearnset = sPsyduckTokuanTeachableLearnset,
+        .eggMoveLearnset = sPsyduckTokuanEggMoveLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 33, SPECIES_GOLDUCK}),
+    },
 #endif //P_FAMILY_PSYDUCK
 
 #if P_FAMILY_MANKEY
