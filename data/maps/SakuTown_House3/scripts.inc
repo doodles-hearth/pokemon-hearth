@@ -64,8 +64,8 @@ SakuTown_House3_EventScript_TradeMe::
 	setflag FLAG_FORTREE_NPC_TRADE_COMPLETED
 	clearflag FLAG_TEMP_1
 	removeobject 3
-	addobject 4
 	waitstate
+	addobject 4
 	bufferspeciesname STR_VAR_1, VAR_0x8009
 	msgbox SakuTown_House3_EventScript_TradeMe_Text_5, MSGBOX_DEFAULT
 	closemessage
