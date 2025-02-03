@@ -1868,7 +1868,7 @@ static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *sprite)
     sprite->data[0] = y;
 }
 
-static u8 NewGameBirchSpeech_CreateLotadSprite(u8 x, u8 y)
+UNUSED static u8 NewGameBirchSpeech_CreateLotadSprite(u8 x, u8 y)
 {
     return CreateMonPicSprite_Affine(SPECIES_JOLTIK, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
 }
@@ -1876,7 +1876,7 @@ static u8 NewGameBirchSpeech_CreateLotadSprite(u8 x, u8 y)
 static void AddBirchSpeechObjects(u8 taskId)
 {
     // u8 birchSpriteId;
-    u8 joltikSpriteId;
+    // u8 joltikSpriteId;
     // u8 brendanSpriteId;
     // u8 maySpriteId;
 
