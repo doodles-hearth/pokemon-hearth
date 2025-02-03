@@ -15375,7 +15375,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 6211
-            .species = SPECIES_PSYDUCK,
+            .species = SPECIES_PSYDUCK_TOKUAN,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6213
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),

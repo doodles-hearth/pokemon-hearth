@@ -14330,12 +14330,13 @@ const struct Item gItemsInfo[] =
     [ITEM_REFUGE_ROOM_KEY] =
     {
         .name = _("Room Key"),
-        .price = 500,
+        .price = 0,
         .description = COMPOUND_STRING(
             "A key to a room\n"
             "at the Yifu City\n"
             "refuge."
         ),
+        .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -14346,12 +14347,13 @@ const struct Item gItemsInfo[] =
     [ITEM_ENTEI_STATUETTE] =
     {
         .name = _("Entei Statuette"),
-        .price = 500,
+        .price = 0,
         .description = COMPOUND_STRING(
             "A statuette made\n"
             "from volcanic rock.\n"
             "It depicts Entei."
         ),
+        .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,

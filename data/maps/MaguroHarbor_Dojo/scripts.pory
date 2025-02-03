@@ -151,6 +151,7 @@ script MaguroHarbor_Dojo_EventScript_Mizu {
 script MaguroHarbor_Dojo_EventScript_Advice {
 	lock
 	faceplayer
+	speakername("Man")
 	if (flag(FLAG_BADGE01_GET)) {
 		msgbox(format(
 			"You swept me away with that battle!"

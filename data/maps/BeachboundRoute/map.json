@@ -873,6 +873,15 @@
       "var": "VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE",
       "var_value": "3",
       "script": "BeachboundRoute_EventScript_WhereAreYouGoing"
+    },
+    {
+      "type": "trigger",
+      "x": 67,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE",
+      "var_value": "1",
+      "script": "BeachboundRoute_EventScript_SomeoneCallingForHelp"
     }
   ],
   "bg_events": [
