@@ -1,35 +1,6 @@
 BeachboundRoute_MapScripts::
 	.byte 0
 
-BeachboundRoute_MapScripts_MAP_SCRIPT_ON_LOAD:
-	call BeachboundRoute_EventScript_TimeBasedEvents
-	return
-
-
-BeachboundRoute_EventScript_TimeBasedEvents::
-	setflag FLAG_TEMP_6
-	setflag FLAG_TEMP_7
-	gettimeofday
-	compare VAR_RESULT, TIME_NIGHT
-	goto_if_ne BeachboundRoute_EventScript_TimeBasedEvents_2
-BeachboundRoute_EventScript_TimeBasedEvents_1:
-	compare VAR_RESULT, TIME_NIGHT
-	goto_if_ne BeachboundRoute_EventScript_TimeBasedEvents_5
-	return
-
-BeachboundRoute_EventScript_TimeBasedEvents_2:
-	clearflag FLAG_TEMP_6
-	goto BeachboundRoute_EventScript_TimeBasedEvents_1
-
-BeachboundRoute_EventScript_TimeBasedEvents_4:
-	clearflag FLAG_TEMP_7
-	return
-
-BeachboundRoute_EventScript_TimeBasedEvents_5:
-	compare VAR_RESULT, TIME_EVENING
-	goto_if_ne BeachboundRoute_EventScript_TimeBasedEvents_4
-	return
-
 
 BeachboundRoute_EventScript_RunningBoy::
 	speakername BeachboundRoute_EventScript_RunningBoy_Text_0

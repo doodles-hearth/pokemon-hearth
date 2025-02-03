@@ -1594,3 +1594,11 @@ static bool8 StartMenuDexNavCallback(void)
     CreateTask(Task_OpenDexNavFromStartMenu, 0);
     return TRUE;
 }
+
+void Script_ForceSaveGame(struct ScriptContext *ctx)
+{
+    SaveGame();
+    ShowSaveInfoWindow();
+    gMenuCallback = SaveCallback;
+    sSaveDialogCallback = SaveSavingMessageCallback;
+}

@@ -573,3 +573,5 @@ gSpecials::
 	def_special EnterDexRiddleGuess
 	def_special GetDexRiddleFeedback
 	def_special DestroySelectedPartyMon
+	def_special EnterCode
+	def_special GetCodeFeedback

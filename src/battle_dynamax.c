@@ -646,9 +646,9 @@ void BS_SetMaxMoveEffect(void)
                 gFieldStatuses &= ~STATUS_FIELD_TERRAIN_ANY;
                 gFieldStatuses |= statusFlag;
                 if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_TERRAIN_EXTENDER)
-                    gFieldTimers.terrainTimer = 8;
+                    gFieldTimers.terrainTimer = gBattleTurnCounter + 8;
                 else
-                    gFieldTimers.terrainTimer = 5;
+                    gFieldTimers.terrainTimer = gBattleTurnCounter + 5;
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
                 gBattlescriptCurrInstr = BattleScript_EffectSetTerrain;
                 effect++;
@@ -665,7 +665,7 @@ void BS_SetMaxMoveEffect(void)
             {
                 u32 moveType = GetMoveType(gCurrentMove);
                 gSideStatuses[side] |= SIDE_STATUS_DAMAGE_NON_TYPES;
-                gSideTimers[side].damageNonTypesTimer = 5; // damage is dealt for 4 turns, ends on 5th
+                gSideTimers[side].damageNonTypesTimer = gBattleTurnCounter + 5; // damage is dealt for 4 turns, ends on 5th
                 gSideTimers[side].damageNonTypesType = moveType;
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
                 ChooseDamageNonTypesString(moveType);
@@ -708,9 +708,9 @@ void BS_SetMaxMoveEffect(void)
             {
                 gSideStatuses[GetBattlerSide(gBattlerAttacker)] |= SIDE_STATUS_AURORA_VEIL;
                 if (GetBattlerHoldEffect(gBattlerAttacker, TRUE) == HOLD_EFFECT_LIGHT_CLAY)
-                    gSideTimers[GetBattlerSide(gBattlerAttacker)].auroraVeilTimer = 8;
+                    gSideTimers[GetBattlerSide(gBattlerAttacker)].auroraVeilTimer = gBattleTurnCounter + 8;
                 else
-                    gSideTimers[GetBattlerSide(gBattlerAttacker)].auroraVeilTimer = 5;
+                    gSideTimers[GetBattlerSide(gBattlerAttacker)].auroraVeilTimer = gBattleTurnCounter + 5;
                 gSideTimers[GetBattlerSide(gBattlerAttacker)].auroraVeilBattlerId = gBattlerAttacker;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SET_SAFEGUARD;
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
@@ -722,7 +722,7 @@ void BS_SetMaxMoveEffect(void)
             if (!(gFieldStatuses & STATUS_FIELD_GRAVITY))
             {
                 gFieldStatuses |= STATUS_FIELD_GRAVITY;
-                gFieldTimers.gravityTimer = 5;
+                gFieldTimers.gravityTimer = gBattleTurnCounter + 5;
                 BattleScriptPush(gBattlescriptCurrInstr + 1);
                 gBattlescriptCurrInstr = BattleScript_EffectGravitySuccess;
                 effect++;
