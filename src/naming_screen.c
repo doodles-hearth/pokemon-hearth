@@ -1454,6 +1454,7 @@ static void NamingScreen_CreateQuestionMarkIcon(void)
 
     LoadMonIconPalettes();
     spriteId = CreateMonIcon(SPECIES_NONE, SpriteCallbackDummy, 56, 40, 0, 0);
+    gSprites[spriteId].oam.priority = 3;
 }
 
 static void NamingScreen_CreateCodeIcon(void)

@@ -92,7 +92,7 @@
                                                    //RTC_CUSTOM's default value is 1, making it a 1:1 ratio. You can edit this in fake_rtc.c
 
 // Lighting
-#define OW_SHADOW_INTENSITY             4          // Ranges from 0 to 16, where 0 is fully transparent and 16 is black.
+#define OW_SHADOW_INTENSITY             0          // Ranges from 0 to 16, where 0 is fully transparent and 16 is black.
 #define OW_OBJECT_SUBPRIORITY           148        // The higher the value, the farther back compared to other sprites. Shadows should be behind object events.
 
 // Overworld flags
