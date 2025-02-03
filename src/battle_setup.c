@@ -1001,8 +1001,8 @@ void SetMapVarsToTrainerB(void)
         gSpecialVar_LastTalked = TRAINER_BATTLE_PARAM.objEventLocalIdB;
         gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(TRAINER_BATTLE_PARAM.objEventLocalIdB, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
     }
-    if (gTrainerBattleOpponent_A != 0) {
-        gSpeakerName = GetTrainerNameFromId(gTrainerBattleOpponent_A);
+    if (TRAINER_BATTLE_PARAM.objEventLocalIdA != 0) {
+        gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.objEventLocalIdA);
     }
 }
 
@@ -1258,8 +1258,8 @@ static void HandleBattleVariantEndParty(void)
 
 static bool8 BattleHasNoWhiteout()
 {
-    if (gTrainerBattleMode == TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT || 
-        gTrainerBattleMode == TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT)
+    if (TRAINER_BATTLE_PARAM.objEventLocalIdA == TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT || 
+        TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT)
         return TRUE;
     else
         return FALSE;
@@ -1456,11 +1456,11 @@ static const u8 *ReturnEmptyStringIfNull(const u8 *string)
 static const u8 *GetIntroSpeechOfApproachingTrainer(void)
 {
     if (gApproachingTrainerId == 0) {
-        gSpeakerName = GetTrainerNameFromId(gTrainerBattleOpponent_A);
+        gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.objEventLocalIdA);
         return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextA);
     }
     else {
-        gSpeakerName = GetTrainerNameFromId(gTrainerBattleOpponent_B);
+        gSpeakerName = GetTrainerNameFromId(TRAINER_BATTLE_PARAM.objEventLocalIdB);
         return ReturnEmptyStringIfNull(TRAINER_BATTLE_PARAM.introTextB);
     }
 }

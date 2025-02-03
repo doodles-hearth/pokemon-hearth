@@ -666,7 +666,7 @@ static const struct ListMenuItem sDebugMenu_Items_TimeSkip_Weekdays[] =
     [DEBUG_TIME_SKIP_MENU_THURSDAY] = {COMPOUND_STRING("Thursday"), DEBUG_TIME_SKIP_MENU_THURSDAY},
     [DEBUG_TIME_SKIP_MENU_FRIDAY] = {COMPOUND_STRING("Friday"), DEBUG_TIME_SKIP_MENU_FRIDAY},
     [DEBUG_TIME_SKIP_MENU_SATURDAY] = {COMPOUND_STRING("Saturday"), DEBUG_TIME_SKIP_MENU_SATURDAY},
-}
+};
 
 static const struct ListMenuItem sDebugMenu_Items_PCBag[] =
 {
@@ -1276,10 +1276,10 @@ static void DebugAction_DestroyExtraWindow(u8 taskId)
 
 static const u16 sLocationFlags[] =
 {
-    FLAG_VISITED_LITTLEROOT_TOWN,
-    FLAG_VISITED_OLDALE_TOWN,
-    FLAG_VISITED_DEWFORD_TOWN,
-    FLAG_VISITED_LAVARIDGE_TOWN,
+    FLAG_VISITED_SUNRISE_VILLAGE,
+    FLAG_VISITED_CHII_TOWN,
+    FLAG_VISITED_SAKU_TOWN,
+    FLAG_VISITED_KURA_TOWN,
     FLAG_VISITED_FALLARBOR_TOWN,
     FLAG_VISITED_VERDANTURF_TOWN,
     FLAG_VISITED_PACIFIDLOG_TOWN,
@@ -2962,7 +2962,7 @@ static void ResetMonDataStruct(struct DebugMonData *sDebugMonData)
 static void Debug_Display_SpeciesInfo(u32 species, u32 digit, u8 windowId)
 {
     StringCopy(gStringVar2, gText_DigitIndicator[digit]);
-    u8 *end = StringCopy(gStringVar1, GetSpeciesName(species));
+    u8 *end = StringCopy(gStringVar1, GetSpeciesName(species, SKIP_NAME_CHECK));
     WrapFontIdToFit(gStringVar1, end, DEBUG_MENU_FONT, WindowWidthPx(windowId));
     StringCopyPadded(gStringVar1, gStringVar1, CHAR_SPACE, 15);
     ConvertIntToDecimalStringN(gStringVar3, species, STR_CONV_MODE_LEADING_ZEROS, DEBUG_NUMBER_DIGITS_ITEMS);

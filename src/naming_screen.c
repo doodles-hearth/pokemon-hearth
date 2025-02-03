@@ -2225,7 +2225,6 @@ static const struct NamingScreenTemplate sCodeScreenTemplate =
     .addGenderIcon = FALSE,
     .initialPage = KBPAGE_LETTERS_UPPER,
     .unused = 35,
-    .title = sText_RivalsName,
     .title = sText_EnterCode,
 };
 
