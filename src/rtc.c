@@ -5,6 +5,7 @@
 #include "strings.h"
 #include "text.h"
 #include "fake_rtc.h"
+#include "overworld.h"
 
 // iwram bss
 static u16 sErrorStatus;
@@ -339,6 +340,8 @@ u8 GetTimeOfDay(void)
     else if (IsBetweenHours(gLocalTime.hours, NIGHTTIME_HOUR_BEGIN, NIGHTTIME_HOUR_END))
         return TIME_NIGHT;
     return TIME_EARLY_MORNING;
+    // UpdateTimeOfDay();
+    // return gTimeOfDay;
 }
 
 void RtcInitLocalTimeOffset(s32 hour, s32 minute)

@@ -704,65 +704,31 @@
 	.byte \direction
 	.endm
 
+	NULL = 0
+	OBJ_ID_NONE = 0
+
 	@ Configures the arguments for a trainer battle, then jumps to the appropriate script in scripts/trainer_battle.inc
-	.macro trainerbattle type:req, trainer:req, local_id:req, pointer1:req, pointer2, pointer3, pointer4
+	.macro trainerbattle type:req localIdA:req, trainer_a:req, intro_text_a:req, lose_text_a:req, event_script_a:req, localIdB:req, trainer_b:req, intro_text_b:req, lose_text_b:req, event_script_b:req, victory_text:req, cannot_battle:req, isDouble:req, playMusicA:req, playMusicB:req, isRematch:req
 	.byte SCR_OP_TRAINERBATTLE
-	.byte \type
-	.2byte \trainer
-	.2byte \local_id
-	.if \type == TRAINER_BATTLE_SINGLE
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-	.elseif \type == TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-		.4byte \pointer3 @ event script
-	.elseif \type == TRAINER_BATTLE_CONTINUE_SCRIPT
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-		.4byte \pointer3 @ event script
-	.elseif \type == TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT
-		.4byte \pointer1 @ text
-	.elseif \type == TRAINER_BATTLE_DOUBLE
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-		.4byte \pointer3 @ text
-	.elseif \type == TRAINER_BATTLE_REMATCH
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-	.elseif \type == TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-		.4byte \pointer3 @ text
-		.4byte \pointer4 @ event script
-	.elseif \type == TRAINER_BATTLE_REMATCH_DOUBLE
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-		.4byte \pointer3 @ text
-	.elseif \type == TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-		.4byte \pointer3 @ text
-		.4byte \pointer4 @ event script
-	.elseif \type == TRAINER_BATTLE_PYRAMID
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-	.elseif \type == TRAINER_BATTLE_SET_TRAINER_A
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-	.elseif \type == TRAINER_BATTLE_SET_TRAINER_B
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-	.elseif \type == TRAINER_BATTLE_HILL
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-	.elseif \type == TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT
-		.4byte \pointer1 @ text
-		.4byte \pointer2 @ text
-		.4byte \pointer3 @ event script
-	.elseif \type == TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT
-		.4byte \pointer1 @ text
-	.endif
+	.set trainerbattle_flags, 0
+	.ifgt \isDouble; .set trainerbattle_flags, trainerbattle_flags | (1 << 0); .endif
+	.ifgt \isRematch; .set trainerbattle_flags, trainerbattle_flags | (1 << 1); .endif
+	.ifgt \playMusicA; .set trainerbattle_flags, trainerbattle_flags | (1 << 2); .endif
+	.ifgt \playMusicB; .set trainerBattle_flags, trainerbattle_flags | (1 << 3); .endif
+	.ifgt \type; .set trainerbattle_flags, trainerbattle_flags | (\type << 4); .endif
+	.byte trainerbattle_flags
+	.byte \localIdA             @ objEventLocalIdA
+	.2byte \trainer_a           @ opponentA
+	.4byte \intro_text_a        @ introTextA
+	.4byte \lose_text_a         @ defeatTextA
+	.4byte \event_script_a      @ retAddrA
+	.byte  \localIdB            @ objEventLocalIdB
+	.2byte \trainer_b           @ opponentB
+	.4byte \intro_text_b        @ introTextB
+	.4byte \lose_text_b         @ defeatTextB
+	.4byte \event_script_b      @ retAddrB
+	.4byte \victory_text        @ victoryText
+	.4byte \cannot_battle       @ cannotBattle
 	.endm
 
 	NO_MUSIC = FALSE
@@ -771,11 +737,11 @@
 	@ When used with an event script, you can also pass in an optional flag to disable music
 	.macro trainerbattle_single trainer:req, intro_text:req, lose_text:req, event_script=FALSE, music=TRUE
 	.if \event_script == FALSE
-	trainerbattle TRAINER_BATTLE_SINGLE, \trainer, 0, \intro_text, \lose_text
+	trainerbattle TRAINER_BATTLE_SINGLE, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, NULL, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	.elseif \music == TRUE
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, \trainer, 0, \intro_text, \lose_text, \event_script
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, \event_script, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	.else
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, \trainer, 0, \intro_text, \lose_text, \event_script
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, \event_script, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	.endif
 	.endm
 
@@ -783,49 +749,44 @@
 	@ and an optional event script. When used with an event script you can pass in an optional flag to disable music
 	.macro trainerbattle_double trainer:req, intro_text:req, lose_text:req, not_enough_pkmn_text:req, event_script=FALSE, music=TRUE
 	.if \event_script == FALSE
-	trainerbattle TRAINER_BATTLE_DOUBLE, \trainer, 0, \intro_text, \lose_text, \not_enough_pkmn_text
+	trainerbattle TRAINER_BATTLE_DOUBLE, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, NULL, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, \not_enough_pkmn_text, TRUE, TRUE, FALSE, FALSE
 	.elseif \music == TRUE
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE, \trainer, 0, \intro_text, \lose_text, \not_enough_pkmn_text, \event_script
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, \event_script, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, \not_enough_pkmn_text, TRUE, TRUE, FALSE, FALSE
 	.else
-	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC, \trainer, 0, \intro_text, \lose_text, \not_enough_pkmn_text, \event_script
+	trainerbattle TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, \event_script, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, \not_enough_pkmn_text, TRUE, FALSE, FALSE, FALSE
 	.endif
 	.endm
 
 	@ Starts a rematch battle. Takes a trainer, intro text and loss text
 	.macro trainerbattle_rematch trainer:req, intro_text:req, lose_text:req
-	trainerbattle TRAINER_BATTLE_REMATCH, \trainer, 0, \intro_text, \lose_text
+	trainerbattle TRAINER_BATTLE_REMATCH, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, NULL, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, TRUE
 	.endm
 
 	@ Starts a rematch double battle. Takes a trainer, intro text, loss text, and text for when you have too few pokemon
 	.macro trainerbattle_rematch_double trainer:req, intro_text:req, lose_text:req, not_enough_pkmn_text:req
-	trainerbattle TRAINER_BATTLE_REMATCH_DOUBLE, \trainer, 0, \intro_text, \lose_text, \not_enough_pkmn_text
+	trainerbattle TRAINER_BATTLE_REMATCH_DOUBLE, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, NULL, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, \not_enough_pkmn_text, FALSE, TRUE, FALSE, TRUE
 	.endm
 
 	@ Starts a trainer battle, skipping intro text. Takes a trainer and loss text
 	.macro trainerbattle_no_intro trainer:req, lose_text:req
-	trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, \trainer, 0, \lose_text
+	trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, OBJ_ID_NONE, \trainer, NULL, \lose_text, NULL, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	.endm
 
 	@ Starts a double battle with the player against two trainers
 	@ Takes two trainers and defeat text for each
 	.macro trainerbattle_two_trainers trainer_a:req, lose_text_a:req, trainer_b:req, lose_text_b:req
-	.byte SCR_OP_TRAINERBATTLE
-	.byte TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO
-	.2byte \trainer_a
-	.4byte \lose_text_a
-	.2byte \trainer_b
-	.4byte \lose_text_b
+	trainerbattle TRAINER_BATTLE_TWO_TRAINERS_NO_INTRO, OBJ_ID_NONE, \trainer_a, NULL, \lose_text_a, NULL, OBJ_ID_NONE, \trainer_b, NULL, \lose_text_b, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	.endm
 
 	@ Starts a single trainer battle. Takes a trainer, intro text, loss text, and an event script which continues after the battle,regardless of the result.
 	@ When used with an event script, you can also pass in an optional flag to disable music
     .macro trainerbattle_no_whiteout_continue_script trainer:req, intro_text:req, lose_text:req, event_script:req
-    trainerbattle TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT, \trainer, 0, \intro_text, \lose_text, \event_script
+    trainerbattle TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT, OBJ_ID_NONE, \trainer, \intro_text, \lose_text, \event_script, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	.endm
 
 	@ Starts a trainer battle, skipping intro text. Takes a trainer and loss text. Does not warp the player to last heal location if they lose. 
 	.macro trainerbattle_no_intro_no_whiteout trainer:req, lose_text:req
-	trainerbattle TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT, \trainer, 0, \lose_text
+	trainerbattle TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT, OBJ_ID_NONE, \trainer, NULL, \lose_text, NULL, OBJ_ID_NONE, TRAINER_NONE, NULL, NULL, NULL, NULL, NULL, FALSE, TRUE, FALSE, FALSE
 	.endm
 
 	@ Starts a trainer battle using the battle information stored in RAM (usually by the scripts in trainer_battle.inc, which
@@ -1867,11 +1828,14 @@
 	.4byte \text
 	.endm
 
-	@ Equivalent to fadescreen but copies gPlttBufferUnfaded to gDecompressionBuffer on the fade out
-	@ and the reverse on the fade in, in effect saving gPlttBufferUnfaded to restore it.
-	.macro fadescreenswapbuffers mode:req
+	@ Equivalent to fadescreen but uses a hardware fade and darken/lighten blend modes,
+	@ to avoid modifying palettes at all.
+	@ Useful for fade-out/fade-in without leaving the overworld or entering a new scene.
+	@ If nowait set, doesn't wait for the fade to complete
+	.macro fadescreenswapbuffers mode:req, nowait=0
 	.byte SCR_OP_FADESCREENSWAPBUFFERS
 	.byte \mode
+	.byte \nowait
 	.endm
 
 	@ Buffers the specified trainer's class name to the given string var.
@@ -2605,6 +2569,11 @@
 	callnative Script_SetDifficulty, requests_effects=1
 	.byte \difficulty
 	.endm
+    
+	.macro forcesave
+	callnative Script_ForceSaveGame
+	waitstate
+	.endm
 
 	@ Makes the trainer unable to see the player if executed.
 	@ This is a no-op if the player interacts with the trainer.
@@ -2672,13 +2641,10 @@
 	waitstate
 	.endm
 
-	@ Shows different speakernames for whether you've seen the Pokémon or not.
-	@ .macro speakernamemon monname:req, hiddenname:req, realname:req, mondialogue:req
-	@ ismonseen \monname
-	@ .if
-	@ 	speakername \hiddenname
-	@ .else
-	@ 	speakername \realname
-	@ .endif
-	@ msgbox \mondialogue, MSGBOX_DEFAULT
-	@ .endm
+	@ hide any follower pokemon if present,
+	@ putting them into their pokeball;
+	@ by default waits for their movement to finish
+	.macro hidefollower wait=1
+	callnative ScrFunc_hidefollower
+	.2byte \wait
+	.endm

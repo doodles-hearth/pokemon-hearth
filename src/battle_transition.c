@@ -1355,6 +1355,7 @@ static void InitPatternWeaveTransition(struct Task *task)
     sTransitionData->WIN0V = DISPLAY_HEIGHT;
     sTransitionData->BLDCNT = BLDCNT_TGT1_BG0 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_ALL;
     sTransitionData->BLDALPHA = BLDALPHA_BLEND(task->tBlendTarget2, task->tBlendTarget1);
+    UpdateShadowColor(RGB_GRAY);
 
     for (i = 0; i < DISPLAY_HEIGHT; i++)
         gScanlineEffectRegBuffers[1][i] = DISPLAY_WIDTH;
@@ -2260,7 +2261,7 @@ static bool8 Mugshot_SetGfx(struct Task *task)
     s16 i, j;
     u16 *tilemap, *tileset;
     const u16 *mugshotsMap = sMugshotsTilemap;
-    u8 mugshotColor = GetTrainerMugshotColorFromId(gTrainerBattleOpponent_A);
+    u8 mugshotColor = GetTrainerMugshotColorFromId(TRAINER_BATTLE_PARAM.opponentA);
 
     GetBg0TilesDst(&tilemap, &tileset);
     CpuSet(sEliteFour_Tileset, tileset, 0xF0);
@@ -2519,20 +2520,20 @@ static void Mugshots_CreateTrainerPics(struct Task *task)
 {
     struct Sprite *opponentSprite, *playerSprite;
 
-    u8 trainerPicId = GetTrainerPicFromId(gTrainerBattleOpponent_A);
+    u8 trainerPicId = GetTrainerPicFromId(TRAINER_BATTLE_PARAM.opponentA);
     s16 opponentRotationScales = 0;
 
     gReservedSpritePaletteCount = 10;
     task->tOpponentSpriteId = CreateTrainerSprite(trainerPicId,
                                                   gTrainerSprites[trainerPicId].mugshotCoords.x - 32,
                                                   gTrainerSprites[trainerPicId].mugshotCoords.y + 42,
-                                                  0, gDecompressionBuffer);
+                                                  0, NULL);
     gReservedSpritePaletteCount = 12;
 
     task->tPlayerSpriteId = CreateTrainerSprite(PlayerGenderToFrontTrainerPicId(gSaveBlock2Ptr->playerGender),
                                                 DISPLAY_WIDTH + 32,
                                                 106,
-                                                0, gDecompressionBuffer);
+                                                0, NULL);
 
     opponentSprite = &gSprites[task->tOpponentSpriteId];
     playerSprite = &gSprites[task->tPlayerSpriteId];
@@ -3885,6 +3886,8 @@ static void VBlankCB_AngledWipes(void)
 #define tFadeFromGrayIncrement data[5]
 #define tDelayTimer            data[6]
 #define tBlend                 data[7]
+#define tBldCntSaved           data[8]
+#define tShadowColor           data[9]
 
 static void CreateIntroTask(s16 fadeToGrayDelay, s16 fadeFromGrayDelay, s16 numFades, s16 fadeToGrayIncrement, s16 fadeFromGrayIncrement)
 {
@@ -3912,17 +3915,28 @@ void Task_BattleTransition_Intro(u8 taskId)
 
 static bool8 TransitionIntro_FadeToGray(struct Task *task)
 {
+    u8 paletteNum = IndexOfSpritePaletteTag(TAG_WEATHER_START);
+    u16 index = OBJ_PLTT_ID(paletteNum) + SHADOW_COLOR_INDEX;
     if (task->tDelayTimer == 0 || --task->tDelayTimer == 0)
     {
         task->tDelayTimer = task->tFadeToGrayDelay;
         task->tBlend += task->tFadeToGrayIncrement;
         if (task->tBlend > 16)
             task->tBlend = 16;
+        if (paletteNum < 16)
+            task->tShadowColor = gPlttBufferFaded[index];
         BlendPalettes(PALETTES_ALL, task->tBlend, RGB(11, 11, 11));
+        if (paletteNum < 16)
+            gPlttBufferFaded[index] = task->tShadowColor;
     }
     if (task->tBlend >= 16)
     {
         // Fade to gray complete, start fade back
+        // Save BLDCNT and turn off targets temporarily
+        task->tBldCntSaved = GetGpuReg(REG_OFFSET_BLDCNT);
+        SetGpuReg(REG_OFFSET_BLDCNT, task->tBldCntSaved & ~BLDCNT_TGT2_BG_ALL);
+        if (paletteNum < 16)
+            gPlttBufferFaded[index] = RGB(11, 11, 11);
         task->tState++;
         task->tDelayTimer = task->tFadeFromGrayDelay;
     }
@@ -3933,11 +3947,19 @@ static bool8 TransitionIntro_FadeFromGray(struct Task *task)
 {
     if (task->tDelayTimer == 0 || --task->tDelayTimer == 0)
     {
+        u8 paletteNum = IndexOfSpritePaletteTag(TAG_WEATHER_START);
         task->tDelayTimer = task->tFadeFromGrayDelay;
         task->tBlend -= task->tFadeFromGrayIncrement;
         if (task->tBlend < 0)
             task->tBlend = 0;
         BlendPalettes(PALETTES_ALL, task->tBlend, RGB(11, 11, 11));
+        // Restore BLDCNT
+        SetGpuReg(REG_OFFSET_BLDCNT, task->tBldCntSaved);
+        if (paletteNum < 16)
+        {
+            u16 index = OBJ_PLTT_ID(paletteNum) + SHADOW_COLOR_INDEX;
+            gPlttBufferFaded[index] = task->tShadowColor;
+        }
     }
     if (task->tBlend == 0)
     {
@@ -4230,6 +4252,7 @@ static bool8 FrontierLogoWave_Init(struct Task *task)
     LZ77UnCompVram(sFrontierLogo_Tileset, tileset);
     LoadPalette(sFrontierLogo_Palette, BG_PLTT_ID(15), sizeof(sFrontierLogo_Palette));
     sTransitionData->cameraY = 0;
+    UpdateShadowColor(RGB_GRAY);
 
     task->tState++;
     return FALSE;
