@@ -35,7 +35,12 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 		"Make sure you read it!"
 	))
 	closemessage
-	applymovement(LOCALID_BIGSIS, SunriseVillage_PlayersHouse_LR_Movement_BigSisExits)
+	applymovement(LOCALID_BIGSIS, moves(
+		walk_down * 2
+		walk_right * 2
+		walk_down * 2
+		step_end
+	))
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	waitmovement(0)
 	playse(SE_EXIT)
@@ -47,13 +52,6 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 
     release
     end
-}
-
-movement SunriseVillage_PlayersHouse_LR_Movement_BigSisExits {
-	walk_down * 2
-	walk_right
-	walk_down * 2
-	step_end
 }
 
 script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {

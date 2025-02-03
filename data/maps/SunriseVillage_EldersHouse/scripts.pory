@@ -475,11 +475,11 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 script SunriseVillage_EldersHouse_EventScript_RivalBattle {
 	switch(var(VAR_STARTER_MON)) {
 		case SPECIES_FROAKIE:
-			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_FROAKIE, format("Looks like I lost!"))
+			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_FROAKIE, format("Looks like I lost!"))
 		case SPECIES_SNIVY:
-			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_SNIVY, format("Looks like I lost!"))
+			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_SNIVY, format("Looks like I lost!"))
 		case SPECIES_CYNDAQUIL:
-			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL, format("Looks like I lost!"))
+			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL, format("Looks like I lost!"))
 	}
 
 	goto(SunriseVillage_EldersHouse_EventScript_PostBattle)
