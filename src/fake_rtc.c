@@ -7,8 +7,6 @@
 #include "event_data.h"
 #include "script.h"
 
-void Script_ResumeFakeRtc(void);
-void Script_PauseFakeRtc(void);
 static void FakeRtc_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2);
 
 void FakeRtc_Reset(void)
@@ -42,7 +40,7 @@ void FakeRtc_TickTimeForward(void)
     if (!OW_USE_FAKE_RTC)
         return;
 
-    if (FlagGet(OW_FLAG_PAUSE_TIME))
+    if (FlagGet(FLAG_PAUSE_FAKERTC))
         return;
 
     FakeRtc_AdvanceTimeBy(0, 0, 0, FakeRtc_GetSecondsRatio());
@@ -180,88 +178,27 @@ u32 FakeRtc_GetSecondsRatio(void)
                                                   1;
 }
 
-STATIC_ASSERT((OW_FLAG_PAUSE_TIME == 0 || OW_USE_FAKE_RTC == TRUE), FakeRtcMustBeTrueToPauseTime);
+STATIC_ASSERT((FLAG_PAUSE_FAKERTC == 0 || OW_USE_FAKE_RTC == TRUE), FakeRtcMustBeTrueToPauseTime);
 
 void Script_PauseFakeRtc(void)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
-    FlagSet(OW_FLAG_PAUSE_TIME);
+    FlagSet(FLAG_PAUSE_FAKERTC);
 }
 
 void Script_ResumeFakeRtc(void)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
-    FlagClear(OW_FLAG_PAUSE_TIME);
+    FlagClear(FLAG_PAUSE_FAKERTC);
 }
 
 void Script_ToggleFakeRtc(void)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
-    FlagToggle(OW_FLAG_PAUSE_TIME);
-}
-
-bool8 ScrCmd_addtime(struct ScriptContext *ctx)
-{
-    u32 days = ScriptReadWord(ctx);
-    u32 hours = ScriptReadWord(ctx);
-    u32 minutes = ScriptReadWord(ctx);
-
-    FakeRtc_AdvanceTimeBy(days, hours, minutes, 0);
-
-    return FALSE;
-}
-
-bool8 ScrCmd_adddays(struct ScriptContext *ctx)
-{
-    u32 days = ScriptReadWord(ctx);
-
-    FakeRtc_AdvanceTimeBy(days, 0, 0, 0);
-
-    return FALSE;
-}
-
-bool8 ScrCmd_addhours(struct ScriptContext *ctx)
-{
-    u32 hours = ScriptReadWord(ctx);
-
-    FakeRtc_AdvanceTimeBy(0, hours, 0, 0);
-
-    return FALSE;
-}
-
-bool8 ScrCmd_addminutes(struct ScriptContext *ctx)
-{
-    u32 minutes = ScriptReadWord(ctx);
-
-    FakeRtc_AdvanceTimeBy(0, 0, minutes, 0);
-
-    return FALSE;
-}
-
-bool8 ScrCmd_fwdtime(struct ScriptContext *ctx)
-{
-    u32 hours = ScriptReadWord(ctx);
-    u32 minutes = ScriptReadWord(ctx);
-
-    FakeRtc_ForwardTimeTo(hours, minutes, 0);
-
-    return FALSE;
-}
-
-bool8 ScrCmd_fwdweekday(struct ScriptContext *ctx)
-{
-    
-    struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
-    
-    u32 weekdayTarget = ScriptReadWord(ctx);
-    u32 weekdayCurrent = rtc->dayOfWeek;
-    u32 daysToAdd;
-    daysToAdd = ((weekdayTarget - weekdayCurrent) + 7) % 7;
-    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
-    return FALSE;
+    FlagToggle(FLAG_PAUSE_FAKERTC);
 }
 
 void PrintTimesIntoMgbaPrintf(void)

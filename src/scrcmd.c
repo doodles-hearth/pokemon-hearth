@@ -3272,3 +3272,64 @@ bool8 ScrFunc_hidefollower(struct ScriptContext *ctx)
     // execute next script command with no delay
     return TRUE;
 }
+
+bool8 ScrCmd_addtime(struct ScriptContext *ctx)
+{
+    u32 days = ScriptReadWord(ctx);
+    u32 hours = ScriptReadWord(ctx);
+    u32 minutes = ScriptReadWord(ctx);
+
+    FakeRtc_AdvanceTimeBy(days, hours, minutes, 0);
+
+    return FALSE;
+}
+
+bool8 ScrCmd_adddays(struct ScriptContext *ctx)
+{
+    u32 days = ScriptReadWord(ctx);
+
+    FakeRtc_AdvanceTimeBy(days, 0, 0, 0);
+
+    return FALSE;
+}
+
+bool8 ScrCmd_addhours(struct ScriptContext *ctx)
+{
+    u32 hours = ScriptReadWord(ctx);
+
+    FakeRtc_AdvanceTimeBy(0, hours, 0, 0);
+
+    return FALSE;
+}
+
+bool8 ScrCmd_addminutes(struct ScriptContext *ctx)
+{
+    u32 minutes = ScriptReadWord(ctx);
+
+    FakeRtc_AdvanceTimeBy(0, 0, minutes, 0);
+
+    return FALSE;
+}
+
+bool8 ScrCmd_fwdtime(struct ScriptContext *ctx)
+{
+    u32 hours = ScriptReadWord(ctx);
+    u32 minutes = ScriptReadWord(ctx);
+
+    FakeRtc_ForwardTimeTo(hours, minutes, 0);
+
+    return FALSE;
+}
+
+bool8 ScrCmd_fwdweekday(struct ScriptContext *ctx)
+{
+    
+    struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
+    
+    u32 weekdayTarget = ScriptReadWord(ctx);
+    u32 weekdayCurrent = rtc->dayOfWeek;
+    u32 daysToAdd;
+    daysToAdd = ((weekdayTarget - weekdayCurrent) + 7) % 7;
+    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
+    return FALSE;
+}

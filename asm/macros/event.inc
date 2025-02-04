@@ -2375,17 +2375,17 @@
 	@        FAKE RTC MACROS       @
 	@ ============================ @
 
-	@ When OW_USE_FAKE_RTC and OW_FLAG_PAUSE_TIME is assigned, this macro will stop the flow of time.
+	@ When OW_USE_FAKE_RTC and FLAG_PAUSE_FAKERTC is assigned, this macro will stop the flow of time.
 	.macro pausefakertc
 	callnative Script_PauseFakeRtc, requests_effects=1
 	.endm
 
-	@ When OW_USE_FAKE_RTC and OW_FLAG_PAUSE_TIME is assigned, this macro will resume the flow of time.
+	@ When OW_USE_FAKE_RTC and FLAG_PAUSE_FAKERTC is assigned, this macro will resume the flow of time.
 	.macro resumefakertc
 	callnative Script_ResumeFakeRtc, requests_effects=1
 	.endm
 
-	@ When OW_USE_FAKE_RTC and OW_FLAG_PAUSE_TIME is assigned, this macro will resume the flow of time if paused, and stop the flow of time otherwise.
+	@ When OW_USE_FAKE_RTC and FLAG_PAUSE_FAKERTC is assigned, this macro will resume the flow of time if paused, and stop the flow of time otherwise.
 	.macro togglefakertc
 	callnative Script_ToggleFakeRtc, requests_effects=1
 	.endm

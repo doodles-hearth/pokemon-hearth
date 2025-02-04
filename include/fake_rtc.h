@@ -12,5 +12,11 @@ u32 FakeRtc_GetSecondsRatio(void);
 void FakeRtc_SetNewGameDay(void);
 void FakeRtc_ForwardTimeTo(u32 hour, u32 minute, u32 second);
 void PrintTimesIntoMgbaPrintf(void);
+void Script_ResumeFakeRtc(void);
+void Script_PauseFakeRtc(void);
+void Script_ToggleFakeRtc(void);
+
+#define DURATION_WILD_BATTLE_MINUTES 10
+#define DURATION_TRAINER_BATTLE_MINUTES 30
 
 #endif // GUARD_FAKE_RTC_UTIL_H

@@ -31,7 +31,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi::
 	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_1
 	closemessage
-	applymovement 1, SunriseVillage_PlayersHouse_LR_Movement_BigSisExits
+	applymovement 1, SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Movement_0
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	waitmovement 0
 	playse SE_EXIT
@@ -42,14 +42,6 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi::
 	release
 	end
 
-
-SunriseVillage_PlayersHouse_LR_Movement_BigSisExits:
-	walk_down
-	walk_down
-	walk_right
-	walk_down
-	walk_down
-	step_end
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis::
 	lock
@@ -127,6 +119,15 @@ SunriseVillage_PlayersHouse_LR_EventScript_RivalsNote::
 	release
 	end
 
+
+SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Movement_0:
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	step_end
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0:
 	.string "Big sis$"
