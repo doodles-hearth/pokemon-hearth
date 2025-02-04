@@ -1273,7 +1273,8 @@ static bool8 BattleHasNoWhiteout()
 static void CB2_EndTrainerBattle(void)
 {
     HandleBattleVariantEndParty();
-
+    FakeRtc_AdvanceTimeBy(0, 0, 30, 0);
+    FlagClear(FLAG_PAUSE_FAKERTC);
     if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_SECRET_BASE)
     {
         DowngradeBadPoison();
