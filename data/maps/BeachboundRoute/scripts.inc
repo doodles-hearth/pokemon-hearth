@@ -70,7 +70,7 @@ BeachboundRoute_EventScript_Karu::
 
 BeachboundRoute_EventScript_Karu_PostBattle::
 	setflag FLAG_TEMP_5
-	removeobject 10
+	removeobject 7
 	return
 
 
@@ -161,25 +161,25 @@ BeachboundRoute_EventScript_Mugging_Center::
 BeachboundRoute_EventScript_Mugging::
 	compare VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 3
 	goto_if_lt BeachboundRoute_EventScript_Mugging_2
-	turnobject 24, DIR_SOUTH
+	turnobject 19, DIR_SOUTH
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_16
 BeachboundRoute_EventScript_Mugging_1:
-	applymovement 24, BeachboundRoute_EventScript_Mugging_Movement_0
-	applymovement 23, BeachboundRoute_EventScript_Mugging_Movement_1
-	applymovement 26, BeachboundRoute_EventScript_Mugging_Movement_1
-	waitmovement 24
-	waitmovement 23
-	waitmovement 26
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_0
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_1
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_1
+	waitmovement 19
+	waitmovement 18
+	waitmovement 21
 	trainerbattle_two_trainers TRAINER_GRUNT_BEACHBOUND_ROUTE_1, BeachboundRoute_EventScript_Mugging_Text_17, TRAINER_GRUNT_BEACHBOUND_ROUTE_2, BeachboundRoute_EventScript_Mugging_Text_18
 	setvar VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 4
-	applymovement 23, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 23
+	applymovement 18, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 18
 	speakername BeachboundRoute_EventScript_Mugging_Text_19
 	msgbox BeachboundRoute_EventScript_Mugging_Text_20
 	closemessage
-	applymovement 26, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 26
+	applymovement 21, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 21
 	speakername BeachboundRoute_EventScript_Mugging_Text_19
 	msgbox BeachboundRoute_EventScript_Mugging_Text_21
 	closemessage
@@ -187,53 +187,53 @@ BeachboundRoute_EventScript_Mugging_1:
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_22
 	closemessage
-	applymovement 25, Common_Movement_WalkInPlaceFasterDown
+	applymovement 20, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	speakername BeachboundRoute_EventScript_Mugging_Text_10
 	msgbox BeachboundRoute_EventScript_Mugging_Text_23
 	closemessage
 	delay 24
-	applymovement 24, BeachboundRoute_EventScript_Mugging_Movement_2
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_2
 	waitmovement 0
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_24
 	closemessage
 	delay 48
-	applymovement 24, BeachboundRoute_EventScript_Mugging_Movement_3
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_3
 	waitmovement 0
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_25
 	closemessage
-	turnobject 24, DIR_NORTH
+	turnobject 19, DIR_NORTH
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_26
 	closemessage
-	applymovement 23, BeachboundRoute_EventScript_Mugging_Movement_4
-	applymovement 26, BeachboundRoute_EventScript_Mugging_Movement_4
-	waitmovement 23
-	waitmovement 26
-	applymovement 23, BeachboundRoute_EventScript_Mugging_Movement_5
-	applymovement 26, BeachboundRoute_EventScript_Mugging_Movement_5
-	applymovement 25, BeachboundRoute_EventScript_Mugging_Movement_5
-	waitmovement 23
-	waitmovement 26
-	waitmovement 25
-	applymovement 24, BeachboundRoute_EventScript_Mugging_Movement_6
-	applymovement 23, BeachboundRoute_EventScript_Mugging_Movement_7
-	applymovement 26, BeachboundRoute_EventScript_Mugging_Movement_8
-	applymovement 25, BeachboundRoute_EventScript_Mugging_Movement_9
-	waitmovement 24
-	waitmovement 23
-	waitmovement 26
-	waitmovement 25
-	removeobject 24
-	removeobject 23
-	removeobject 26
-	removeobject 25
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_4
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_4
+	waitmovement 18
+	waitmovement 21
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_5
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_5
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_5
+	waitmovement 18
+	waitmovement 21
+	waitmovement 20
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_6
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_7
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_8
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_9
+	waitmovement 19
+	waitmovement 18
+	waitmovement 21
+	waitmovement 20
+	removeobject 19
+	removeobject 18
+	removeobject 21
+	removeobject 20
 	setflag FLAG_HIDE_CROBAT_SHADOWS_BEACHBOUND_RT
 	delay 60
-	applymovement 22, BeachboundRoute_EventScript_Mugging_Movement_10
-	waitmovement 22
+	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_10
+	waitmovement 17
 	speakername BeachboundRoute_EventScript_Mugging_Text_27
 	msgbox BeachboundRoute_EventScript_Mugging_Text_28
 	closemessage
@@ -242,38 +242,38 @@ BeachboundRoute_EventScript_Mugging_1:
 	msgbox BeachboundRoute_EventScript_Mugging_Text_29
 	closemessage
 	addvar VAR_PLAYER_REPUTATION, 1
-	applymovement 22, BeachboundRoute_EventScript_Mugging_Movement_11
-	waitmovement 22
+	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_11
+	waitmovement 17
 	waitmovement 0
 	return
 
 BeachboundRoute_EventScript_Mugging_2:
 	setvar VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 3
-	applymovement 23, Common_Movement_WalkInPlaceFasterUp
+	applymovement 18, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	speakername BeachboundRoute_EventScript_Mugging_Text_0
 	msgbox BeachboundRoute_EventScript_Mugging_Text_1
 	closemessage
-	applymovement 26, Common_Movement_WalkInPlaceFasterUp
+	applymovement 21, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	speakername BeachboundRoute_EventScript_Mugging_Text_0
 	msgbox BeachboundRoute_EventScript_Mugging_Text_2
 	closemessage
 	delay 40
-	turnobject 24, DIR_SOUTH
+	turnobject 19, DIR_SOUTH
 	playse SE_PIN
-	applymovement 24, Common_Movement_ExclamationMark
+	applymovement 19, Common_Movement_ExclamationMark
 	waitmovement 0
 	waitse
 	delay 48
 	speakername BeachboundRoute_EventScript_Mugging_Text_0
 	msgbox BeachboundRoute_EventScript_Mugging_Text_3
-	applymovement 23, Common_Movement_FaceDown
-	applymovement 26, Common_Movement_FaceDown
-	applymovement 25, Common_Movement_FaceDown
-	waitmovement 23
-	waitmovement 26
-	waitmovement 25
+	applymovement 18, Common_Movement_FaceDown
+	applymovement 21, Common_Movement_FaceDown
+	applymovement 20, Common_Movement_FaceDown
+	waitmovement 18
+	waitmovement 21
+	waitmovement 20
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, BeachboundRoute_EventScript_Mugging_Text_4, BeachboundRoute_EventScript_Mugging_Text_5, BeachboundRoute_EventScript_Mugging_Text_6
 	closemessage
 	speakername BeachboundRoute_EventScript_Mugging_Text_0
@@ -283,17 +283,17 @@ BeachboundRoute_EventScript_Mugging_2:
 	case 2, BeachboundRoute_EventScript_Mugging_9
 BeachboundRoute_EventScript_Mugging_5:
 	closemessage
-	applymovement 25, Common_Movement_WalkInPlaceFasterDown
+	applymovement 20, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	speakername BeachboundRoute_EventScript_Mugging_Text_10
 	msgbox BeachboundRoute_EventScript_Mugging_Text_11
 	closemessage
-	turnobject 24, DIR_NORTH
+	turnobject 19, DIR_NORTH
 	delay 40
 	speakername BeachboundRoute_EventScript_Mugging_Text_12
 	msgbox BeachboundRoute_EventScript_Mugging_Text_13
 	closemessage
-	turnobject 24, DIR_SOUTH
+	turnobject 19, DIR_SOUTH
 	delay 24
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_15
