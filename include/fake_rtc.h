@@ -16,4 +16,7 @@ void Script_ResumeFakeRtc(void);
 void Script_PauseFakeRtc(void);
 void Script_ToggleFakeRtc(void);
 
+#define DURATION_WILD_BATTLE_MINUTES 10
+#define DURATION_TRAINER_BATTLE_MINUTES 30
+
 #endif // GUARD_FAKE_RTC_UTIL_H

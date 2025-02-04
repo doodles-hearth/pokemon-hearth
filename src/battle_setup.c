@@ -574,7 +574,7 @@ static void DowngradeBadPoison(void)
 
 static void CB2_EndWildBattle(void)
 {
-    FakeRtc_AdvanceTimeBy(0, 0, 10, 0);
+    FakeRtc_AdvanceTimeBy(0, 0, DURATION_WILD_BATTLE_MINUTES, 0);
     FlagClear(FLAG_PAUSE_FAKERTC);
     
     CpuFill16(0, (void *)(BG_PLTT), BG_PLTT_SIZE);
@@ -594,9 +594,9 @@ static void CB2_EndWildBattle(void)
 
 static void CB2_EndScriptedWildBattle(void)
 {
-    FakeRtc_AdvanceTimeBy(0, 0, 10, 0);
+    FakeRtc_AdvanceTimeBy(0, 0, DURATION_WILD_BATTLE_MINUTES, 0);
     FlagClear(FLAG_PAUSE_FAKERTC);
-    
+
     CpuFill16(0, (void *)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
 
@@ -1280,7 +1280,7 @@ static bool8 BattleHasNoWhiteout()
 static void CB2_EndTrainerBattle(void)
 {
     HandleBattleVariantEndParty();
-    FakeRtc_AdvanceTimeBy(0, 0, 30, 0);
+    FakeRtc_AdvanceTimeBy(0, 0, DURATION_TRAINER_BATTLE_MINUTES, 0);
     FlagClear(FLAG_PAUSE_FAKERTC);
     if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_SECRET_BASE)
     {
