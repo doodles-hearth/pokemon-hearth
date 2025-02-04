@@ -13,13 +13,13 @@ Std_RegisteredInMatchCall::
 EventScript_TryGetTrainerScript::
 	special ShouldTryGetTrainerScript
 	goto_if_eq VAR_RESULT, TRUE, EventScript_GotoTrainerScript
-	clearflag OW_FLAG_PAUSE_TIME
+	clearflag FLAG_PAUSE_FAKERTC
 	releaseall
 	end
 
 EventScript_GotoTrainerScript::
 	gotobeatenscript
-	clearflag OW_FLAG_PAUSE_TIME
+	clearflag FLAG_PAUSE_FAKERTC
 	releaseall
 	end
 
