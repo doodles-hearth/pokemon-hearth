@@ -324,6 +324,7 @@ void BattleSetup_StartBattlePikeWildBattle(void)
 
 static void DoStandardWildBattle(bool32 isDouble)
 {
+    FlagSet(FLAG_PAUSE_FAKERTC);
     LockPlayerFieldControls();
     FreezeObjectEvents();
     StopPlayerAvatar();
@@ -573,6 +574,9 @@ static void DowngradeBadPoison(void)
 
 static void CB2_EndWildBattle(void)
 {
+    FakeRtc_AdvanceTimeBy(0, 0, 10, 0);
+    FlagClear(FLAG_PAUSE_FAKERTC);
+    
     CpuFill16(0, (void *)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
 
@@ -590,6 +594,9 @@ static void CB2_EndWildBattle(void)
 
 static void CB2_EndScriptedWildBattle(void)
 {
+    FakeRtc_AdvanceTimeBy(0, 0, 10, 0);
+    FlagClear(FLAG_PAUSE_FAKERTC);
+    
     CpuFill16(0, (void *)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
 
