@@ -9,6 +9,7 @@
 #include "script.h"
 #include "event_data.h"
 #include "metatile_behavior.h"
+#include "fake_rtc.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
 #include "random.h"
@@ -1012,6 +1013,7 @@ void SetMapVarsToTrainerB(void)
 // expects parameters have been loaded correctly with TrainerBattleLoadArgs
 const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 {
+    FlagSet(FLAG_PAUSE_FAKERTC);
     switch (TRAINER_BATTLE_PARAM.mode)
     {
     case TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT:
