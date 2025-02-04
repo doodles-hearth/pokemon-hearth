@@ -1699,8 +1699,7 @@ static bool8 IsInvalidPartyMenuActionType(u8 partyMenuType)
          || partyMenuType == PARTY_ACTION_SOFTBOILED
          || partyMenuType == PARTY_ACTION_CHOOSE_AND_CLOSE
          || partyMenuType == PARTY_ACTION_MOVE_TUTOR
-         || partyMenuType == PARTY_ACTION_MINIGAME
-         || partyMenuType == PARTY_ACTION_REUSABLE_ITEM);
+         || partyMenuType == PARTY_ACTION_MINIGAME);
 }
 
 static u16 PartyMenuButtonHandler(s8 *slotPtr)
