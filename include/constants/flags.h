@@ -72,7 +72,7 @@
 #define FLAG_OBTAINED_CHOICE_SCARF 0x34
 #define FLAG_OBTAINED_DESTINY_KNOT 0x35
 #define FLAG_HIDE_GUARD_SUNRISE_VILLAGE    0x36
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
+#define FLAG_PAUSE_FAKERTC   0x37 // Pause Fake RTC
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
 #define FLAG_UNUSED_0x039    0x39 // Unused Flag
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
