@@ -2417,7 +2417,25 @@ static void GetBattlerNick(u32 battler, u8 *dst)
     {
         u16 species = GetMonData(mon, MON_DATA_SPECIES);
         if(StringCompareWithoutExtCtrlCodes(dst, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
+        {
             StringCopy(dst, GetSpeciesName(species, DO_NAME_CHECK));
+        }
+        else
+        {
+            const u8 *speciesName = GetSpeciesName(species, DO_NAME_CHECK);
+            u32 dstIndex = 0;
+            while (dst[dstIndex] != EOS)
+                dstIndex++;
+            dst[dstIndex++] = CHAR_SPACE;
+            dst[dstIndex++] = CHAR_t;
+            dst[dstIndex++] = CHAR_h;
+            dst[dstIndex++] = CHAR_e;
+            dst[dstIndex++] = CHAR_SPACE;
+            u32 currChar = 0;
+            while (speciesName[currChar] != EOS)
+                dst[dstIndex++] = speciesName[currChar++];
+            dst[dstIndex++] = EOS;
+        }
     }
 }
 
