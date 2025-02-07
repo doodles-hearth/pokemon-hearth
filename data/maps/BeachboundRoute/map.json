@@ -122,12 +122,12 @@
       "trainer_sight_or_berry_tree_id": "5",
       "script": "BeachboundRoute_EventScript_Kin",
       "flag": "0",
-      "afternoon": true,
+      "afternoon": false,
       "deadnight": false,
-      "earlymorning": true,
+      "earlymorning": false,
       "evening": false,
-      "lunchtime": true,
-      "morning": true,
+      "lunchtime": false,
+      "morning": false,
       "night": false
     },
     {

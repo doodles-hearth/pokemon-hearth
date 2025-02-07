@@ -207,8 +207,6 @@ ChiiTown_Mart:
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_AWAKENING
-	.2byte ITEM_ESCAPE_ROPE
-	.2byte ITEM_REPEL
 	.2byte ITEM_NONE
 
 ChiiTown_EventScript_Samurai::

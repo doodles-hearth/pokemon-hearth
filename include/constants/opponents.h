@@ -608,7 +608,7 @@
 #define TRAINER_MAXIE_MT_CHIMNEY            602
 #define TRAINER_CHIKAO                       603
 #define TRAINER_MUSASHI_1                     604
-#define TRAINER_JANICE                      605
+#define TRAINER_MINORI                      605
 #define TRAINER_VIVI                        606
 #define TRAINER_HALEY_2                     607
 #define TRAINER_HALEY_3                     608
@@ -697,7 +697,7 @@
 #define TRAINER_LILA_AND_ROY_5              691
 #define TRAINER_LISA_AND_RAY                692
 #define TRAINER_CHRIS                       693
-#define TRAINER_DAWSON                      694
+#define TRAINER_KAITO                      694
 #define TRAINER_SARAH                       695
 #define TRAINER_KENJI                      696
 #define TRAINER_HAILEY                      697

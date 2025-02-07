@@ -3,8 +3,9 @@ MaguroHarbor_Dojo_MapScripts::
 
 
 MaguroHarbor_Dojo_EventScript_Koishi::
-	trainerbattle_single TRAINER_KOISHI_1, MaguroHarbor_Dojo_EventScript_Koishi_Text_0, MaguroHarbor_Dojo_EventScript_Koishi_Text_1, MaguroHarbor_Dojo_EventScript_KoishiDefeated, NO_MUSIC
-	msgbox MaguroHarbor_Dojo_EventScript_Koishi_Text_2
+	speakername MaguroHarbor_Dojo_EventScript_Koishi_Text_0
+	trainerbattle_single TRAINER_KOISHI_1, MaguroHarbor_Dojo_EventScript_Koishi_Text_1, MaguroHarbor_Dojo_EventScript_Koishi_Text_2, MaguroHarbor_Dojo_EventScript_KoishiDefeated, NO_MUSIC
+	msgbox MaguroHarbor_Dojo_EventScript_Koishi_Text_3
 	end
 
 
@@ -12,8 +13,10 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated::
 	message MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
+	speakername MaguroHarbor_Dojo_EventScript_Koishi_Text_0
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1, MSGBOX_DEFAULT
 	giveitem ITEM_TM_WATER_PULSE
+	speakername MaguroHarbor_Dojo_EventScript_Koishi_Text_0
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_BADGE01_GET
@@ -39,8 +42,8 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitmovement 4
 	delay 60
-	speakername MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_3
-	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_4
+	speakername MaguroHarbor_Dojo_EventScript_Koishi_Text_0
+	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_3
 	closemessage
 	specialvar VAR_RESULT, GetPlayerFacingDirection
 	compare VAR_RESULT, DIR_WEST
@@ -145,6 +148,9 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Movement_1:
 	step_end
 
 MaguroHarbor_Dojo_EventScript_Koishi_Text_0:
+	.string "Koishi$"
+
+MaguroHarbor_Dojo_EventScript_Koishi_Text_1:
 	.string "Welcome to Maguro's Koi Pond Dojo, one\n"
 	.string "of the eight Dojos officially\l"
 	.string "appointed by the Toku Council.\p"
@@ -162,10 +168,10 @@ MaguroHarbor_Dojo_EventScript_Koishi_Text_0:
 	.string "weakness.\p"
 	.string "Now… Shall we battle?$"
 
-MaguroHarbor_Dojo_EventScript_Koishi_Text_1:
+MaguroHarbor_Dojo_EventScript_Koishi_Text_2:
 	.string "I see…$"
 
-MaguroHarbor_Dojo_EventScript_Koishi_Text_2:
+MaguroHarbor_Dojo_EventScript_Koishi_Text_3:
 	.string "You shall achieve great things. I hope\n"
 	.string "we meet again.$"
 
@@ -194,9 +200,6 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2:
 	.string "Good luck, {PLAYER}.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_3:
-	.string "Koishi$"
-
-MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_4:
 	.string "That… That was a big one!…\p"
 	.string "I'm going outside to make sure\n"
 	.string "everyone's alright.$"

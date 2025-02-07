@@ -269,8 +269,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HIINA ===
 Name: Hiina
-Class: Aroma Lady
-Pic: Aroma Lady
+Class: Beauty
+Pic: Beauty
 Gender: Female
 Music: Female
 Double Battle: No
@@ -5026,30 +5026,29 @@ Class: Dojo Master
 Pic: Leader Koishi
 Gender: Female
 Music: Female
-Items: Potion / Potion
+Items: Uumegiri
 Double Battle: No
 AI: Smart Trainer
 
-Surskit
-Level: 14
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Surskit @ Oran Berry
+Level: 12
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Nature Power
 - String Shot
 - Pounce
 
-Barboach @ Oran Berry
-Level: 14
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Barboach
+Level: 12
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Mud Bomb
-- Rock Tomb
+- Nature Power
 - Flail
 
 Lombre
-Level: 16
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Level: 14
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Nature Power
 - Mega Drain
-- Icy Wind
 - Fake Out
 
 === TRAINER_HANA_1 ===
@@ -11228,18 +11227,21 @@ Shroomish
 Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_JANICE ===
-Name: JANICE
-Class: Lass
-Pic: Lass
+=== TRAINER_MINORI ===
+Name: Minori
+Class: School Kid
+Pic: School Kid F
 Gender: Female
 Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Marill
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Deerling Summer
+Level: 5
+- Sand Attack
+- Growl
+- Tackle
+- Camouflage
 
 === TRAINER_VIVI ===
 Name: VIVI
@@ -13040,22 +13042,19 @@ Carvanha
 Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DAWSON ===
-Name: DAWSON
-Class: Rich Boy
-Pic: Rich Boy
+=== TRAINER_KAITO ===
+Name: Kaito
+Class: School Kid
+Pic: School Kid M
 Gender: Male
-Music: Rich
+Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Zigzagoon @ Nugget
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Poochyena
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Deerling Summer
+Level: 5
+- Leech Seed
+- Bullet Seed
 
 === TRAINER_SARAH ===
 Name: SARAH

@@ -5,6 +5,7 @@ mapscripts MaguroHarbor_Dojo_MapScripts {
 }
 
 script MaguroHarbor_Dojo_EventScript_Koishi {
+	speakername("Koishi")
 	trainerbattle_single(
 		TRAINER_KOISHI_1,
 		format(
@@ -33,6 +34,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	))
 	waitmessage
 	call(Common_EventScript_PlayGymBadgeFanfare)
+	speakername("Koishi")
 	msgbox(
 		format(
 			"I applaud your skill. You are still a child, yet you obviously have a natural aptitude for battle.\p"
@@ -44,6 +46,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	
 	giveitem(ITEM_TM_WATER_PULSE)
 
+	speakername("Koishi")
 	msgbox(
 		format(
 			"This scroll contains Water Pulse, a water-type move that can confuse your foes.\p"

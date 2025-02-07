@@ -185,8 +185,6 @@ mart ChiiTown_Mart {
 	ITEM_PARALYZE_HEAL
 	ITEM_ANTIDOTE
 	ITEM_AWAKENING
-	ITEM_ESCAPE_ROPE
-	ITEM_REPEL
 }
 
 script ChiiTown_EventScript_Samurai {

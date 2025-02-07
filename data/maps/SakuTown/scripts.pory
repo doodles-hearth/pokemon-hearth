@@ -297,12 +297,10 @@ script SakuTown_EventScript_Mart {
 
 mart SakuTown_Mart {
 	ITEM_POKE_BALL
-	ITEM_BERRY_JUICE
+	ITEM_OINTMENT
 	ITEM_PARALYZE_HEAL
 	ITEM_ANTIDOTE
 	ITEM_AWAKENING
-	ITEM_ESCAPE_ROPE
-	ITEM_REPEL
 }
 
 script SakuTown_EventScript_Makuhita {

@@ -1,3 +1,6 @@
+const LOCALID_BEAN = 4
+const LOCALID_SLOWPOKE = 5
+
 mapscripts MaguroHarbor_Refuge_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_MAGURO_HARBOR)
@@ -11,4 +14,82 @@ script MaguroHarbor_Refuge_EventScript_Nurse {
 	waitbuttonpress
 	release
 	end
+}
+
+script MaguroHarbor_Refuge_EventScript_Hariko {
+	lock
+	faceplayer
+	speakername("Hariko")
+	msgbox(format(
+		"Oh, hello there, {PLAYER}.\nFancy meeting you here, as they say.\p"
+		"I assume you are here to challenge the Maguro Harbor Dojo?\p"
+		"Me? I am not particularly interested in becoming a great wielder.\p"
+		"I travel to learn as much as I can about Pokémon!\p"
+		"You've not met my companion yet, have you? Meet Bean!"
+	))
+	closemessage
+
+	applymovement(LOCALID_BEAN, moves(walk_in_place_fast_left))
+	waitmovement(LOCALID_BEAN)
+	delay(60)
+	playse(SE_LEDGE)
+	applymovement(LOCALID_SLOWPOKE, moves(jump_in_place_down))
+	waitmovement(LOCALID_SLOWPOKE)
+	playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
+
+	speakername("Bean")
+	msgbox(format(
+		"Hurr…"
+	))
+	closemessage
+
+	applymovement(LOCALID_BEAN, moves(walk_in_place_fast_down))
+	waitmovement(LOCALID_BEAN)
+
+	speakername("Hariko")
+	msgbox(format(
+		"Bean is a little slow, but he is happy to meet you!\p"
+		"He may not look like a fighter, but he enjoys battles, too. Would you like to have a friendly battle, Bean against one of your Pokémon?"
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		TRUE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Yes!",
+		"Maybe later."
+	)
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			// TODO
+		case 1:
+			speakername("Hariko")
+			msgbox(format(
+				"No problem. I will be here a while before I continue my journey."
+			))
+			closemessage
+	}
+
+	setflag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)
+	release
+}
+
+script MaguroHarbor_Refuge_EventScript_Slowpoke {
+	lock
+	faceplayer
+	playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
+	if (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
+		speakername("Bean")
+	} else {
+		setspeakertomonname(SPECIES_SLOWPOKE)
+	}
+	msgbox(format("Duh…"))
+	waitmoncry
+	closemessage
+	release
 }

@@ -187,26 +187,31 @@ BeachboundRoute_EventScript_Mugging_1:
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_22
 	closemessage
-	applymovement 20, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	speakername BeachboundRoute_EventScript_Mugging_Text_10
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_2
+	waitmovement 19
+	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_23
 	closemessage
-	delay 24
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_2
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_2
 	waitmovement 0
-	speakername BeachboundRoute_EventScript_Mugging_Text_14
+	speakername BeachboundRoute_EventScript_Mugging_Text_10
 	msgbox BeachboundRoute_EventScript_Mugging_Text_24
 	closemessage
-	delay 48
+	delay 24
 	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_3
 	waitmovement 0
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_25
 	closemessage
-	turnobject 19, DIR_NORTH
+	delay 48
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_2
+	waitmovement 0
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_26
+	closemessage
+	turnobject 19, DIR_NORTH
+	speakername BeachboundRoute_EventScript_Mugging_Text_14
+	msgbox BeachboundRoute_EventScript_Mugging_Text_27
 	closemessage
 	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_4
 	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_4
@@ -234,12 +239,12 @@ BeachboundRoute_EventScript_Mugging_1:
 	delay 60
 	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_10
 	waitmovement 17
-	speakername BeachboundRoute_EventScript_Mugging_Text_27
-	msgbox BeachboundRoute_EventScript_Mugging_Text_28
+	speakername BeachboundRoute_EventScript_Mugging_Text_28
+	msgbox BeachboundRoute_EventScript_Mugging_Text_29
 	closemessage
 	giveitem ITEM_WHITE_HERB
-	speakername BeachboundRoute_EventScript_Mugging_Text_27
-	msgbox BeachboundRoute_EventScript_Mugging_Text_29
+	speakername BeachboundRoute_EventScript_Mugging_Text_28
+	msgbox BeachboundRoute_EventScript_Mugging_Text_30
 	closemessage
 	addvar VAR_PLAYER_REPUTATION, 1
 	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_11
@@ -329,7 +334,7 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime::
 	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1
 	pokemart BeachboundRoute_Mart_Merchant
 	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
-	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2, MSGBOX_DEFAULT
+	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2
 	closemessage
 	release
 	return
@@ -369,11 +374,11 @@ BeachboundRoute_EventScript_Mugging_Movement_1:
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_2:
-	face_up
+	walk_in_place_fast_down
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_3:
-	face_right
+	face_up
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_4:
@@ -691,37 +696,39 @@ BeachboundRoute_EventScript_Mugging_Text_21:
 BeachboundRoute_EventScript_Mugging_Text_22:
 	.string "Ya gotta be kiddin' me…\p"
 	.string "Can't even do no regular muggin' in\n"
-	.string "peace anymore!\p"
+	.string "peace anymore!$"
+
+BeachboundRoute_EventScript_Mugging_Text_23:
 	.string "Well, I ain't gonna stoop to fighting\n"
 	.string "ya myself!$"
 
-BeachboundRoute_EventScript_Mugging_Text_23:
+BeachboundRoute_EventScript_Mugging_Text_24:
 	.string "Boss, what's a stoop?$"
 
-BeachboundRoute_EventScript_Mugging_Text_24:
+BeachboundRoute_EventScript_Mugging_Text_25:
 	.string "For the love of god, Kevin…$"
 
-BeachboundRoute_EventScript_Mugging_Text_25:
+BeachboundRoute_EventScript_Mugging_Text_26:
 	.string "Movin' on! You've not seen the last of\n"
 	.string "us, ya annoying brat!\p"
 	.string "Ya better steer clear of the Crobat\n"
 	.string "Shadows from now on!\p"
 	.string "Let's move it, boys!$"
 
-BeachboundRoute_EventScript_Mugging_Text_26:
+BeachboundRoute_EventScript_Mugging_Text_27:
 	.string "ZUBATS, ALIGN!!$"
 
-BeachboundRoute_EventScript_Mugging_Text_27:
+BeachboundRoute_EventScript_Mugging_Text_28:
 	.string "Woman$"
 
-BeachboundRoute_EventScript_Mugging_Text_28:
+BeachboundRoute_EventScript_Mugging_Text_29:
 	.string "Thank you so much for helping me!\p"
 	.string "Those ruffians were about to steal my\n"
 	.string "Pokémon!\p"
 	.string "I don't have much to offer you as a\n"
 	.string "thanks, but please take this!$"
 
-BeachboundRoute_EventScript_Mugging_Text_29:
+BeachboundRoute_EventScript_Mugging_Text_30:
 	.string "What's your name?\n"
 	.string "{PLAYER}?\p"
 	.string "I'll be sure to tell everyone what a\n"
@@ -738,4 +745,5 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1:
 	.string "goods?$"
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2:
-	.string "Thanks for your business! Now where did I put that scroll again…$"
+	.string "Thanks for your business! Now where\n"
+	.string "did I put that scroll again…$"

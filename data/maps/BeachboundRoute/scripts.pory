@@ -355,12 +355,20 @@ script BeachboundRoute_EventScript_Mugging {
 	speakername("Crobat Boss")
 	msgbox(format(
 		"Ya gotta be kiddin' me…\p"
-		"Can't even do no regular muggin' in peace anymore!\p"
+		"Can't even do no regular muggin' in peace anymore!"
+	))
+	closemessage
+
+	applymovement(LOCALID_GRUNT_BOSS, moves(walk_in_place_fast_down))
+	waitmovement(LOCALID_GRUNT_BOSS)
+
+	speakername("Crobat Boss")
+	msgbox(format(
 		"Well, I ain't gonna stoop to fighting ya myself!"
 	))
 	closemessage
 
-	applymovement(LOCALID_GRUNT_3, Common_Movement_WalkInPlaceFasterDown)
+	applymovement(LOCALID_GRUNT_3, moves(walk_in_place_fast_down))
 	waitmovement(0)
 	speakername("Crobat Shadow")
 	msgbox(format(
@@ -381,7 +389,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	delay(48)
 
-	applymovement(LOCALID_GRUNT_BOSS, moves(face_right))
+	applymovement(LOCALID_GRUNT_BOSS, moves(walk_in_place_fast_down))
 	waitmovement(0)
 	
 	speakername("Crobat Boss")
@@ -478,7 +486,9 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 
 	pokemart(BeachboundRoute_Mart_Merchant)
 	speakername("Okada")
-	msgbox("Thanks for your business! Now where did I put that scroll again…", MSGBOX_DEFAULT)
+	msgbox(format(
+		"Thanks for your business! Now where did I put that scroll again…"
+	))
 	closemessage
 
 	release
