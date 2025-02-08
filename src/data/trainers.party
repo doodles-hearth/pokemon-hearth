@@ -162,19 +162,18 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_CHIKAO ===
 Name: CHIKAO
 Class: School Kid
-Pic: School Kid M
+Pic: School Kid M Orange
 Gender: Male
 Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Lotad
+Deerling
 Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Growl
-- Astonish
+- Tail Whip
+- Double Kick
 - Absorb
-- Water Gun
 
 Sewaddle Tokuan
 Level: 5
@@ -13056,24 +13055,23 @@ Level: 5
 - Leech Seed
 - Bullet Seed
 
-=== TRAINER_SARAH ===
-Name: SARAH
-Class: Lady
-Pic: Lady
+=== TRAINER_HARIKO_MAGURO ===
+Name: Hariko
+Class: Rival
+Pic: Bean
 Gender: Female
 Music: Female
-Items: Full Restore
+Items: Uumegiri
 Double Battle: No
-AI: Check Bad Move
+AI: Smart Trainer
 
-Lotad
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Zigzagoon @ Nugget
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
+Bean (Slowpoke) (M)
+Level: 14
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+-Yawn
+-Protect
+-Water Pulse
+-Confusion
 
 === TRAINER_HAILEY ===
 Name: HAILEY

@@ -74,7 +74,7 @@
 #define FLAG_HIDE_GUARD_SUNRISE_VILLAGE    0x36
 #define FLAG_PAUSE_FAKERTC   0x37 // Pause Fake RTC
 #define FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE 0x38
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
+#define FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE      0x39
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag
@@ -675,7 +675,7 @@
 #define FLAG_CROBAT_HIDEOUT_SEEN_BY_GRUNT 0x26E
 // True if the player met the merchant in beachbound route
 #define FLAG_MET_TRAVELING_MERCHANT_2ND_TIME  0x26F
-#define FLAG_UNUSED_0x271  0x271 // Unused Flag
+#define FLAG_BEAT_CHII_TOWN_KIDS  0x271
 #define FLAG_UNUSED_0x272  0x272 // Unused Flag
 #define FLAG_UNUSED_0x273  0x273 // Unused Flag
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag

@@ -173,6 +173,7 @@ gSpecials::
 	def_special GetPlayerBroSisString
 	def_special GetPlayerBrotherSisterString
 	def_special GetPlayerMrMrsString
+	def_special GetPlayerMisterLadyString
 	def_special SetHiddenItemFlag
 	def_special CableCarWarp
 	def_special CableCar

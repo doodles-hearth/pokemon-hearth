@@ -2,6 +2,8 @@ const FLAG_TAILLOW_1 = FLAG_TEMP_1
 const FLAG_TAILLOW_2 = FLAG_TEMP_2
 const FLAG_FLETCHLING_1 = FLAG_TEMP_3
 const FLAG_FLETCHLING_2 = FLAG_TEMP_4
+const LOCALID_BATTLING_GIRL = 15
+const LOCALID_BATTLING_BOY = 16
 
 mapscripts ChiiTown_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
@@ -138,17 +140,32 @@ script ChiiTown_EventScript_EatingBerries {
 		"But how are we supposed to get them if we aren't big and strong yet?"
 	), MSGBOX_DEFAULT)
 	closemessage
-	checkitem(520, 1)
-	if(var(VAR_RESULT) == TRUE){
+
+	if(checkitem(ITEM_ORAN_BERRY, 1)){
 		msgbox(format(
 			"Give the girl an Oran Berry?"
-		), MSGBOX_YESNO)
-		if(var(VAR_RESULT) == YES){
-			removeitem(520, 1)
+		))
+
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Give",
+			"Don't give"
+		)
+
+		if(var(VAR_RESULT) == 0){
+			removeitem(ITEM_ORAN_BERRY)
 			speakername("Twin girl")
 			msgbox(format(
 				"Oh my gosh, thank you!"
 			), MSGBOX_DEFAULT)
+			closemessage
+
+			addvar(VAR_PLAYER_REPUTATION, 1)
 		}
 	}
 	closemessage
@@ -158,13 +175,146 @@ script ChiiTown_EventScript_EatingBerries {
 }
 
 script ChiiTown_EventScript_BerryEnthusiast {
+	lock
+	faceplayer
 	speakername("Twin boy")
 	msgbox(format(
 		"I've been eating berries just like Sensei said, but I haven't grown yet.\p"
 		"I don't care though. They're delicious!"
-	), MSGBOX_NPC)
+	))
+	closemessage
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
+	release
+}
+
+script ChiiTown_EventScript_BattlingGirl {
+	lock
+	faceplayer
+
+	if (flag(FLAG_BEAT_CHII_TOWN_KIDS)) {
+		speakername("Little girl")
+		msgbox(format(
+			"Wow, {STR_VAR_1}! You're super strong!!"
+		))
+		closemessage
+	} else {
+			
+		// From bottom
+		if (var(VAR_FACING) == DIR_NORTH) {
+			applymovement(LOCALID_BATTLING_BOY, moves(face_down))
+			// From left
+		} else {
+			applymovement(LOCALID_BATTLING_BOY, moves(face_left))
+		}
+		waitmovement(0)
+		
+		special(GetPlayerMrMrsString)
+		speakername("Little girl")
+		msgbox(format(
+			"Hey {STR_VAR_1}! We've been studying Pokémon battles in class. Wanna fight with us?"
+		))
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Sure!",
+			"I don't want to."
+		)
+		closemessage
+
+		if(var(VAR_RESULT) == 0) {
+			trainerbattle_two_trainers(
+				TRAINER_MINORI,
+				format("Whaaaat?!"),
+				TRAINER_KAITO,
+				format("Well I never learned about THAT!")
+			)
+
+			speakername("Little girl")
+			msgbox(format(
+				"Wow, {STR_VAR_1}! You're super strong!!"
+			))
+			closemessage
+
+			// TODO EVA reward?
+		} else {
+			speakername("Little girl")
+			msgbox(format(
+				"Ughhhh, older kids are so boooring!"
+			))
+			closemessage
+		}
+
+		applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+		applymovement(LOCALID_BATTLING_BOY, moves(face_left))
+		waitmovement(0)
+	}
+	release
+}
+
+script ChiiTown_EventScript_BattlingBoy {
+	lock
+	faceplayer
+
+	if (flag(FLAG_BEAT_CHII_TOWN_KIDS)) {
+		speakername("Little boy")
+		msgbox(format(
+			"Wow, {STR_VAR_1}! Can you be our sensei?"
+		))
+		closemessage
+	} else {
+		applymovement(LOCALID_BATTLING_GIRL, moves(face_down))
+		waitmovement(0)
+		
+		special(GetPlayerMrMrsString)
+		speakername("Little boy")
+		msgbox(format(
+			"Hello {STR_VAR_1}! We're top of our class! That means we're strong! Wanna battle us?"
+		))
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Sure!",
+			"I don't want to."
+		)
+		closemessage
+
+		if(var(VAR_RESULT) == 0) {
+			trainerbattle_two_trainers(
+				TRAINER_MINORI,
+				format("Whaaaat?!"),
+				TRAINER_KAITO,
+				format("Well I never learned about THAT!")
+			)
+
+			speakername("Little boy")
+			msgbox(format(
+				"Wow, {STR_VAR_1}! Can you be our sensei?"
+			))
+			closemessage
+
+			// TODO EVA reward?
+		} else {
+			speakername("Little boy")
+			msgbox(format(
+				"Fine! Go do grownup stuff!"
+			))
+			closemessage
+		}
+
+		applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+		applymovement(LOCALID_BATTLING_GIRL, moves(face_right))
+		waitmovement(0)
+	}
+	release
 }
 
 script ChiiTown_EventScript_Mart {
@@ -182,9 +332,9 @@ script ChiiTown_EventScript_Mart {
 mart ChiiTown_Mart {
 	ITEM_POKE_BALL
 	ITEM_OINTMENT
-	ITEM_PARALYZE_HEAL
-	ITEM_ANTIDOTE
-	ITEM_AWAKENING
+	ITEM_CHERI_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_CHESTO_BERRY
 }
 
 script ChiiTown_EventScript_Samurai {

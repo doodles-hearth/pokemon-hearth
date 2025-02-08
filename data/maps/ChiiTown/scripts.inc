@@ -156,9 +156,9 @@ ChiiTown_EventScript_EatingBerries::
 	speakername ChiiTown_EventScript_EatingBerries_Text_0
 	msgbox ChiiTown_EventScript_EatingBerries_Text_1, MSGBOX_DEFAULT
 	closemessage
-	checkitem 520, 1
-	compare VAR_RESULT, TRUE
-	goto_if_eq ChiiTown_EventScript_EatingBerries_2
+	checkitem ITEM_ORAN_BERRY, 1
+	compare VAR_RESULT, 0
+	goto_if_ne ChiiTown_EventScript_EatingBerries_2
 ChiiTown_EventScript_EatingBerries_1:
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -167,24 +167,114 @@ ChiiTown_EventScript_EatingBerries_1:
 	return
 
 ChiiTown_EventScript_EatingBerries_2:
-	msgbox ChiiTown_EventScript_EatingBerries_Text_2, MSGBOX_YESNO
-	compare VAR_RESULT, YES
+	msgbox ChiiTown_EventScript_EatingBerries_Text_2
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, ChiiTown_EventScript_EatingBerries_Text_3, ChiiTown_EventScript_EatingBerries_Text_4
+	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_EatingBerries_4
 	goto ChiiTown_EventScript_EatingBerries_1
 
 ChiiTown_EventScript_EatingBerries_4:
-	removeitem 520, 1
+	removeitem ITEM_ORAN_BERRY
 	speakername ChiiTown_EventScript_EatingBerries_Text_0
-	msgbox ChiiTown_EventScript_EatingBerries_Text_3, MSGBOX_DEFAULT
+	msgbox ChiiTown_EventScript_EatingBerries_Text_5, MSGBOX_DEFAULT
+	closemessage
+	addvar VAR_PLAYER_REPUTATION, 1
 	goto ChiiTown_EventScript_EatingBerries_1
 
 
 ChiiTown_EventScript_BerryEnthusiast::
+	lock
+	faceplayer
 	speakername ChiiTown_EventScript_BerryEnthusiast_Text_0
-	msgbox ChiiTown_EventScript_BerryEnthusiast_Text_1, MSGBOX_NPC
+	msgbox ChiiTown_EventScript_BerryEnthusiast_Text_1
+	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
+	release
 	return
+
+
+ChiiTown_EventScript_BattlingGirl::
+	lock
+	faceplayer
+	goto_if_set FLAG_BEAT_CHII_TOWN_KIDS, ChiiTown_EventScript_BattlingGirl_2
+	compare VAR_FACING, DIR_NORTH
+	goto_if_eq ChiiTown_EventScript_BattlingGirl_6
+	applymovement 16, ChiiTown_EventScript_BattlingGirl_Movement_1
+ChiiTown_EventScript_BattlingGirl_5:
+	waitmovement 0
+	special GetPlayerMrMrsString
+	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingGirl_Text_1
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq ChiiTown_EventScript_BattlingGirl_10
+	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingGirl_Text_6
+	closemessage
+ChiiTown_EventScript_BattlingGirl_9:
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement 16, ChiiTown_EventScript_BattlingGirl_Movement_1
+	waitmovement 0
+ChiiTown_EventScript_BattlingGirl_1:
+	release
+	return
+
+ChiiTown_EventScript_BattlingGirl_2:
+	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingGirl_Text_0
+	closemessage
+	goto ChiiTown_EventScript_BattlingGirl_1
+
+ChiiTown_EventScript_BattlingGirl_6:
+	applymovement 16, ChiiTown_EventScript_BattlingGirl_Movement_0
+	goto ChiiTown_EventScript_BattlingGirl_5
+
+ChiiTown_EventScript_BattlingGirl_10:
+	trainerbattle_two_trainers TRAINER_MINORI, ChiiTown_EventScript_BattlingGirl_Text_4, TRAINER_KAITO, ChiiTown_EventScript_BattlingGirl_Text_5
+	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingGirl_Text_0
+	closemessage
+	goto ChiiTown_EventScript_BattlingGirl_9
+
+
+ChiiTown_EventScript_BattlingBoy::
+	lock
+	faceplayer
+	goto_if_set FLAG_BEAT_CHII_TOWN_KIDS, ChiiTown_EventScript_BattlingBoy_2
+	applymovement 15, ChiiTown_EventScript_BattlingGirl_Movement_0
+	waitmovement 0
+	special GetPlayerMrMrsString
+	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingBoy_Text_1
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq ChiiTown_EventScript_BattlingBoy_6
+	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingBoy_Text_2
+	closemessage
+ChiiTown_EventScript_BattlingBoy_5:
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement 15, ChiiTown_EventScript_BattlingBoy_Movement_0
+	waitmovement 0
+ChiiTown_EventScript_BattlingBoy_1:
+	release
+	return
+
+ChiiTown_EventScript_BattlingBoy_2:
+	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingBoy_Text_0
+	closemessage
+	goto ChiiTown_EventScript_BattlingBoy_1
+
+ChiiTown_EventScript_BattlingBoy_6:
+	trainerbattle_two_trainers TRAINER_MINORI, ChiiTown_EventScript_BattlingGirl_Text_4, TRAINER_KAITO, ChiiTown_EventScript_BattlingGirl_Text_5
+	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingBoy_Text_0
+	closemessage
+	goto ChiiTown_EventScript_BattlingBoy_5
 
 
 ChiiTown_EventScript_Mart::
@@ -204,9 +294,9 @@ ChiiTown_EventScript_Mart::
 ChiiTown_Mart:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_OINTMENT
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_AWAKENING
+	.2byte ITEM_CHERI_BERRY
+	.2byte ITEM_PECHA_BERRY
+	.2byte ITEM_CHESTO_BERRY
 	.2byte ITEM_NONE
 
 ChiiTown_EventScript_Samurai::
@@ -224,6 +314,18 @@ ChiiTown_EventScript_SetTrespassVar::
 	setvar VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 1
 	return
 
+
+ChiiTown_EventScript_BattlingGirl_Movement_0:
+	face_down
+	step_end
+
+ChiiTown_EventScript_BattlingGirl_Movement_1:
+	face_left
+	step_end
+
+ChiiTown_EventScript_BattlingBoy_Movement_0:
+	face_right
+	step_end
 
 ChiiTown_EventScript_WatchfulMom_Text_0:
 	.string "Woman$"
@@ -287,6 +389,12 @@ ChiiTown_EventScript_EatingBerries_Text_2:
 	.string "Give the girl an Oran Berry?$"
 
 ChiiTown_EventScript_EatingBerries_Text_3:
+	.string "Give$"
+
+ChiiTown_EventScript_EatingBerries_Text_4:
+	.string "Don't give$"
+
+ChiiTown_EventScript_EatingBerries_Text_5:
 	.string "Oh my gosh, thank you!$"
 
 ChiiTown_EventScript_BerryEnthusiast_Text_0:
@@ -297,6 +405,42 @@ ChiiTown_EventScript_BerryEnthusiast_Text_1:
 	.string "Sensei said, but I haven't grown yet.\p"
 	.string "I don't care though. They're\n"
 	.string "delicious!$"
+
+ChiiTown_EventScript_BattlingGirl_Text_0:
+	.string "Wow, {STR_VAR_1}! You're super\n"
+	.string "strong!!$"
+
+ChiiTown_EventScript_BattlingGirl_Text_1:
+	.string "Hey {STR_VAR_1}! We've been\n"
+	.string "studying Pokémon battles in class.\l"
+	.string "Wanna fight with us?$"
+
+ChiiTown_EventScript_BattlingGirl_Text_2:
+	.string "Sure!$"
+
+ChiiTown_EventScript_BattlingGirl_Text_3:
+	.string "I don't want to.$"
+
+ChiiTown_EventScript_BattlingGirl_Text_4:
+	.string "Whaaaat?!$"
+
+ChiiTown_EventScript_BattlingGirl_Text_5:
+	.string "Well I never learned about THAT!$"
+
+ChiiTown_EventScript_BattlingGirl_Text_6:
+	.string "Ughhhh, older kids are so boooring!$"
+
+ChiiTown_EventScript_BattlingBoy_Text_0:
+	.string "Wow, {STR_VAR_1}! Can you be our\n"
+	.string "sensei?$"
+
+ChiiTown_EventScript_BattlingBoy_Text_1:
+	.string "Hello {STR_VAR_1}! We're top of our\n"
+	.string "class! That means we're strong! Wanna\l"
+	.string "battle us?$"
+
+ChiiTown_EventScript_BattlingBoy_Text_2:
+	.string "Fine! Go do grownup stuff!$"
 
 ChiiTown_EventScript_Mart_Text_0:
 	.string "Saleswoman$"

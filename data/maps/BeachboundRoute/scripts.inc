@@ -322,8 +322,9 @@ BeachboundRoute_EventScript_Mugging_9:
 BeachboundRoute_Mart_Merchant:
 	.2byte ITEM_OINTMENT
 	.2byte ITEM_UUMEGIRI
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_CHERI_BERRY
+	.2byte ITEM_PECHA_BERRY
+	.2byte ITEM_CHESTO_BERRY
 	.2byte ITEM_TM_ROCK_TOMB
 	.2byte ITEM_NONE
 

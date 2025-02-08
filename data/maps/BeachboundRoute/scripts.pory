@@ -469,8 +469,9 @@ script BeachboundRoute_EventScript_Mugging {
 mart BeachboundRoute_Mart_Merchant {
 	ITEM_OINTMENT
 	ITEM_UUMEGIRI
-	ITEM_PARALYZE_HEAL
-	ITEM_ANTIDOTE
+	ITEM_CHERI_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_CHESTO_BERRY
 	ITEM_TM_ROCK_TOMB
 }
 

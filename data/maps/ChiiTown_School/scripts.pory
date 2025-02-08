@@ -22,7 +22,7 @@ script ChiiTown_School_EventScript_PreparingDay {
 
 	speakername("Sensei")
 	msgbox(format(
-		"Um… The school isn't open yet, I'm afraid. However, you may come back later with your little brother or sister if you'd like!"
+		"Um… The school isn't open yet, I'm afraid. Come back later with your little brother or sister!"
 	))
 	closemessage
 

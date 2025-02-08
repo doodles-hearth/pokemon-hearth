@@ -178,9 +178,8 @@ ChiiTown_School_EventScript_PreparingDay_Text_0:
 
 ChiiTown_School_EventScript_PreparingDay_Text_1:
 	.string "Um… The school isn't open yet, I'm\n"
-	.string "afraid. However, you may come back\l"
-	.string "later with your little brother or\l"
-	.string "sister if you'd like!$"
+	.string "afraid. Come back later with your\l"
+	.string "little brother or sister!$"
 
 ChiiTown_School_EventScript_Teaching_Text_0:
 	.string "Um… Aren't you a little old for\n"

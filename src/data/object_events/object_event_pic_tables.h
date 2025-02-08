@@ -222,7 +222,11 @@ static const struct SpriteFrameImage sPicTable_PsychicM[] = {
 };
 
 static const struct SpriteFrameImage sPicTable_SchoolKidM[] = {
-    overworld_ascending_frames(gObjectEventPic_SchoolKidM, 2, 4),
+    overworld_ascending_frames(gObjectEventPic_SchoolKidM, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_SchoolKidF[] = {
+    overworld_ascending_frames(gObjectEventPic_SchoolKidF, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_Maniac[] = {

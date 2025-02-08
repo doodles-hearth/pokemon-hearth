@@ -698,7 +698,7 @@
 #define TRAINER_LISA_AND_RAY                692
 #define TRAINER_CHRIS                       693
 #define TRAINER_KAITO                      694
-#define TRAINER_SARAH                       695
+#define TRAINER_HARIKO_MAGURO                       695
 #define TRAINER_KENJI                      696
 #define TRAINER_HAILEY                      697
 #define TRAINER_CHANDLER                    698

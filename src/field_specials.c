@@ -980,6 +980,14 @@ void GetPlayerMrMrsString(void)
         StringCopy(gStringVar1, gText_Mrs);
 }
 
+void GetPlayerMisterLadyString(void)
+{
+    if (gSaveBlock2Ptr->playerGender == MALE)
+        StringCopy(gStringVar1, gText_Mr);
+    else
+        StringCopy(gStringVar1, gText_Lady);
+}
+
 u8 GetBattleOutcome(void)
 {
     return gBattleOutcome;

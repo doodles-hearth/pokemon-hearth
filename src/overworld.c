@@ -1559,7 +1559,26 @@ const struct BlendSettings gTimeOfDayBlend[] =
 #define TIME_BLEND_WEIGHT(begin, end) (DEFAULT_WEIGHT - (DEFAULT_WEIGHT * ((hours - begin) * MINUTES_PER_HOUR + minutes) / ((end - begin) * MINUTES_PER_HOUR)))
 
 #define MORNING_HOUR_MIDDLE (MORNING_HOUR_BEGIN + ((MORNING_HOUR_END - MORNING_HOUR_BEGIN) / 2))
+// #define DEAD_NIGHT_HOUR_BEGIN 0
+// #define DEAD_NIGHT_HOUR_END   5
 
+// #define EARLY_MORNING_HOUR_BEGIN 5
+// #define EARLY_MORNING_HOUR_END   8
+
+// #define MORNING_HOUR_BEGIN 8
+// #define MORNING_HOUR_END   12
+
+// #define LUNCHTIME_HOUR_BEGIN 12
+// #define LUNCHTIME_HOUR_END   14
+
+// #define NOONTIME_HOUR_BEGIN 14
+// #define NOONTIME_HOUR_END   18
+
+// #define EVENING_HOUR_BEGIN 18
+// #define EVENING_HOUR_END   22
+
+// #define NIGHTTIME_HOUR_BEGIN 22
+// #define NIGHTTIME_HOUR_END   0
 void UpdateTimeOfDay(void)
 {
     s32 hours, minutes;

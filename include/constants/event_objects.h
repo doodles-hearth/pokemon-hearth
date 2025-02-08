@@ -261,11 +261,14 @@
 #define OBJ_EVENT_GFX_BREEDER_F                  257
 #define OBJ_EVENT_GFX_BREEDER_M                  258
 #define OBJ_EVENT_GFX_LIGHT_SPRITE               259
+#define OBJ_EVENT_GFX_SCHOOL_KID_F               260
+#define OBJ_EVENT_GFX_SCHOOL_KID_M_ORANGE        261
+#define OBJ_EVENT_GFX_SCHOOL_KID_F_ORANGE        262
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        260
+#define NUM_OBJ_EVENT_GFX                        263
 
 
 // These are dynamic object gfx ids.
@@ -491,6 +494,8 @@
 #define OBJ_EVENT_PAL_TAG_HEX_MANIAC 0x116D
 #define OBJ_EVENT_PAL_TAG_BREEDER_M 0x116E
 #define OBJ_EVENT_PAL_TAG_BREEDER_F 0x116F
+#define OBJ_EVENT_PAL_TAG_SCHOOL_KID_GREEN 0x1170
+#define OBJ_EVENT_PAL_TAG_SCHOOL_KID_ORANGE 0x1171
 
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611

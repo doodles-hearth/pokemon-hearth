@@ -525,6 +525,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_HexManiac,             OBJ_EVENT_PAL_TAG_HEX_MANIAC},
     {gObjectEventPal_PokemonBreederM,       OBJ_EVENT_PAL_TAG_BREEDER_M},
     {gObjectEventPal_PokemonBreederF,       OBJ_EVENT_PAL_TAG_BREEDER_F},
+    {gObjectEventPal_SchoolKidGreen,        OBJ_EVENT_PAL_TAG_SCHOOL_KID_GREEN},
+    {gObjectEventPal_SchoolKidOrange,       OBJ_EVENT_PAL_TAG_SCHOOL_KID_ORANGE},
     {gObjectEventPal_TravelingMerchant,     OBJ_EVENT_PAL_TAG_TRAVELING_MERCHANT},
     {gObjectEventPal_OnsenF,                OBJ_EVENT_PAL_TAG_ONSEN},
     {gObjectEventPal_BugCatcher,            OBJ_EVENT_PAL_TAG_BUG_CATCHER},

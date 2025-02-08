@@ -298,9 +298,9 @@ script SakuTown_EventScript_Mart {
 mart SakuTown_Mart {
 	ITEM_POKE_BALL
 	ITEM_OINTMENT
-	ITEM_PARALYZE_HEAL
-	ITEM_ANTIDOTE
-	ITEM_AWAKENING
+	ITEM_CHERI_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_CHESTO_BERRY
 }
 
 script SakuTown_EventScript_Makuhita {

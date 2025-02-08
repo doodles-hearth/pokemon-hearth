@@ -277,9 +277,9 @@ SakuTown_EventScript_Mart::
 SakuTown_Mart:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_OINTMENT
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_AWAKENING
+	.2byte ITEM_CHERI_BERRY
+	.2byte ITEM_PECHA_BERRY
+	.2byte ITEM_CHESTO_BERRY
 	.2byte ITEM_NONE
 
 SakuTown_EventScript_Makuhita::

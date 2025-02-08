@@ -2517,7 +2517,7 @@
 
     @ Sets the Pokedex Named Flag for the Pokemon with speciesId
     .macro setnamedmon species:req
-    callnative Scrcmd_getsetpokdexflag, request_effects=1
+    callnative Scrcmd_getsetpokedexflag, request_effects=1
     .2byte \species
     .2byte FLAG_SET_NAMED
     .endm

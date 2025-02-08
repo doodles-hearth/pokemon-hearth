@@ -16,7 +16,6 @@ SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_LOAD_1:
 
 SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll::
 	lock
-	pausefakertc
 	msgbox SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll_Text_0
 	release
 	return
