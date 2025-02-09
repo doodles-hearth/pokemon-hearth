@@ -402,12 +402,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TranquilRoute_EventScript_CutMaster",
       "flag": "FLAG_TEMP_1",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {

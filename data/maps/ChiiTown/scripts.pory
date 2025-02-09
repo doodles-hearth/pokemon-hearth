@@ -7,7 +7,6 @@ const LOCALID_BATTLING_BOY = 16
 
 mapscripts ChiiTown_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
-        call(ChiiTown_EventScript_SpawnBirds)
 		call(ChiiTown_DrawMetatiles)
     }
 	MAP_SCRIPT_ON_FRAME_TABLE [
@@ -15,12 +14,12 @@ mapscripts ChiiTown_MapScripts {
     ]
 }
 
-script ChiiTown_DrawMetatiles{ 
+script ChiiTown_DrawMetatiles{
     gettimeofday
 	switch(var(VAR_RESULT)){
         case TIME_DEAD_NIGHT:
-            setmetatile(14, 6, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE)
-            setmetatile(24, 20, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE)
+            setmetatile(14, 5, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE)
+            setmetatile(14, 6, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE)
         case TIME_EARLY_MORNING:
         case TIME_MORNING:
         case TIME_LUNCHTIME:
@@ -30,37 +29,6 @@ script ChiiTown_DrawMetatiles{
         default:
             end
     }
-}
-
-script ChiiTown_EventScript_SpawnBirds {
-	// Random birds on roofs
-	// Taillow
-	setflag(FLAG_TAILLOW_1)
-	setflag(FLAG_TAILLOW_2)
-	// Fletchling
-	setflag(FLAG_FLETCHLING_1)
-	setflag(FLAG_FLETCHLING_2)
-
-	gettime
-	// Morning
-	if (var(VAR_0x8000) >= 5 && var(VAR_0x8000) <= 8) {
-		random(2)
-		switch(var(VAR_RESULT)) {
-			case 0:
-				clearflag(FLAG_TAILLOW_1)
-			case 1:
-				clearflag(FLAG_TAILLOW_2)
-		}
-	// Day
-	} elif (var(VAR_0x8000) >= 9 && var(VAR_0x8000) <= 17) {
-		random(2)
-		switch(var(VAR_RESULT)) {
-			case 0:
-				clearflag(FLAG_FLETCHLING_1)
-			case 1:
-				clearflag(FLAG_FLETCHLING_2)
-		}
-	}
 }
 
 script ChiiTown_EventScript_WatchfulMom{
@@ -76,6 +44,10 @@ script ChiiTown_EventScript_WatchfulMom{
 			msgbox(format(
 				"I'm waiting to pick up my children after school.\p"
 				"With all the recent Pokémon attacks, I will not let them leave my sight!"
+			), MSGBOX_NPC)
+		default:
+			msgbox(format(
+				"Phew… Being a full-time mom is exhausting…"
 			), MSGBOX_NPC)
 	}
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
@@ -195,7 +167,8 @@ script ChiiTown_EventScript_BattlingGirl {
 	if (flag(FLAG_BEAT_CHII_TOWN_KIDS)) {
 		speakername("Little girl")
 		msgbox(format(
-			"Wow, {STR_VAR_1}! You're super strong!!"
+			"Wow, {STR_VAR_1}! You're super strong!!\p"
+			"I'll have to train Snuggles a whole lot more!"
 		))
 		closemessage
 	} else {
@@ -233,10 +206,13 @@ script ChiiTown_EventScript_BattlingGirl {
 				TRAINER_KAITO,
 				format("Well I never learned about THAT!")
 			)
+			setflag(FLAG_BEAT_CHII_TOWN_KIDS)
 
+			special(GetPlayerMrMrsString)
 			speakername("Little girl")
 			msgbox(format(
-				"Wow, {STR_VAR_1}! You're super strong!!"
+				"Wow, {STR_VAR_1}! You're super strong!!\p"
+				"I'll have to train Snuggles a whole lot more!"
 			))
 			closemessage
 
@@ -263,7 +239,8 @@ script ChiiTown_EventScript_BattlingBoy {
 	if (flag(FLAG_BEAT_CHII_TOWN_KIDS)) {
 		speakername("Little boy")
 		msgbox(format(
-			"Wow, {STR_VAR_1}! Can you be our sensei?"
+			"Wow, {STR_VAR_1}! Can you be our sensei?\p"
+			"That way, Destroyer will be invincible!"
 		))
 		closemessage
 	} else {
@@ -294,10 +271,13 @@ script ChiiTown_EventScript_BattlingBoy {
 				TRAINER_KAITO,
 				format("Well I never learned about THAT!")
 			)
+			setflag(FLAG_BEAT_CHII_TOWN_KIDS)
 
+			special(GetPlayerMrMrsString)
 			speakername("Little boy")
 			msgbox(format(
-				"Wow, {STR_VAR_1}! Can you be our sensei?"
+				"Wow, {STR_VAR_1}! Can you be our sensei?\p"
+				"That way, Destroyer will be invincible!"
 			))
 			closemessage
 

@@ -452,6 +452,8 @@
 
 // gTileset_PorytilesPrimaryTutorial
 #define METATILE_PorytilesPrimaryTutorial_CaveEntrance            0x073
+#define METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom        0x0C6
+#define METATILE_PorytilesPrimaryTutorial_ClosedDoorTop           0x0BE
 #define METATILE_PorytilesPrimaryTutorial_DoorPlaceholder         0x0F1
 #define METATILE_PorytilesPrimaryTutorial_Grass                   0x000
 #define METATILE_PorytilesPrimaryTutorial_Grass2                  0x001
@@ -464,9 +466,11 @@
 #define METATILE_Rustboro_Door_Tan   0x22F
 
 // gTileset_SakuKura
-#define METATILE_SakuKura_BoardGame       0x2F7
-#define METATILE_SakuKura_ClosedDojoDoor  0x30F
-#define METATILE_SakuKura_Door            0x2C6
+#define METATILE_SakuKura_BoardGame         0x2F7
+#define METATILE_SakuKura_ClosedDojoDoor    0x30F
+#define METATILE_SakuKura_ClosedDoorBottom  0x32C
+#define METATILE_SakuKura_ClosedDoorTop     0x324
+#define METATILE_SakuKura_Door              0x2C6
 
 // gTileset_SecretBase
 #define METATILE_SecretBase_AttractMat_BottomLeft       0x313

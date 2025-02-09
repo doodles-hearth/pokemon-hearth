@@ -110,7 +110,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - String Shot
 
 === TRAINER_TOSHIO_1 ===
-Name: TOSHIO
+Name: Toshio
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -132,7 +132,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Thunder Shock
 
 === TRAINER_EIJI ===
-Name: EIJI
+Name: Eiji
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -160,7 +160,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 
 === TRAINER_CHIKAO ===
-Name: CHIKAO
+Name: Chikao
 Class: School Kid
 Pic: School Kid M Orange
 Gender: Male
@@ -189,7 +189,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Feint
 
 === TRAINER_TAKESHI ===
-Name: TAKESHI
+Name: Takeshi
 Class: Ninja Boy
 Pic: Ninja Boy
 Gender: Male
@@ -337,8 +337,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Focus Energy
 - Quick Attack
 
-=== TRAINER_SCRUB_2 ===
-Name: Scrubby
+=== TRAINER_KOUTA ===
+Name: Kouta
 Class: Youngster
 Pic: Youngster
 Gender: Male
@@ -354,31 +354,49 @@ IVs: 0 HP / 0 Atk / 0 Def / 15 SpA / 0 SpD / 15 Spe
 - Thunder Shock
 - Cotton Spore
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_MASATO ===
+Name: Masato
+Class: Bug Catcher
+Pic: Bug Catcher
 Gender: Male
-Music: Aqua
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Prefer Status Moves
+
+Kricketot (M)
+Level: 11
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bug Bite
+- Struggle Bug
+- Sing
+
+Kricketot (M)
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fury Cutter
+- Sing
+
+=== TRAINER_KOUGA ===
+Name: Kouga
+Class: Monk
+Pic: Monk
+Gender: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Zubat
-Level: 32
+Bronzor
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Confusion
+- Hypnosis
+- Iron Defense
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Carvanha
-Level: 32
+Bronzor
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Confuse Ray
+- Confusion
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_1 ===
 Name: GRUNT
@@ -11235,7 +11253,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Deerling Summer
+Snuggles (Deerling Summer)
 Level: 5
 - Sand Attack
 - Growl
@@ -13050,7 +13068,7 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Deerling Summer
+Destroyer (Deerling Spring)
 Level: 5
 - Leech Seed
 - Bullet Seed

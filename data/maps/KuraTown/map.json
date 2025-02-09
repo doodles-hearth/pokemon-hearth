@@ -377,19 +377,19 @@
     },
     {
       "type": "sign",
-      "x": 40,
-      "y": 16,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "SakuTown_EventScript_ClosedGymDoor"
-    },
-    {
-      "type": "sign",
       "x": 16,
       "y": 27,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "KuraTown_EventScript_TrainerTips"
+    },
+    {
+      "type": "sign",
+      "x": 40,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SakuTown_EventScript_ClosedGymDoor"
     }
   ]
 }

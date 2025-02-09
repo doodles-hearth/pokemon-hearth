@@ -81,10 +81,18 @@ BeachboundRoute_EventScript_Kin::
 	end
 
 
-BeachboundRoute_EventScript_Scrub2::
-	trainerbattle_single TRAINER_SCRUB_2, BeachboundRoute_EventScript_Scrub2_Text_0, BeachboundRoute_EventScript_Scrub2_Text_1
-	speakername BeachboundRoute_EventScript_Scrub2_Text_2
-	msgbox BeachboundRoute_EventScript_Scrub2_Text_3
+BeachboundRoute_EventScript_Kouta::
+	trainerbattle_single TRAINER_KOUTA, BeachboundRoute_EventScript_Kouta_Text_0, BeachboundRoute_EventScript_Kouta_Text_1
+	speakername BeachboundRoute_EventScript_Kouta_Text_2
+	msgbox BeachboundRoute_EventScript_Kouta_Text_3
+	release
+	end
+
+
+BeachboundRoute_EventScript_Masato::
+	trainerbattle_single TRAINER_MASATO, BeachboundRoute_EventScript_Masato_Text_0, BeachboundRoute_EventScript_Masato_Text_1
+	speakername BeachboundRoute_EventScript_Masato_Text_2
+	msgbox BeachboundRoute_EventScript_Masato_Text_3
 	release
 	end
 
@@ -322,6 +330,7 @@ BeachboundRoute_EventScript_Mugging_9:
 BeachboundRoute_Mart_Merchant:
 	.2byte ITEM_OINTMENT
 	.2byte ITEM_UUMEGIRI
+	.2byte ITEM_FISHCAKE
 	.2byte ITEM_CHERI_BERRY
 	.2byte ITEM_PECHA_BERRY
 	.2byte ITEM_CHESTO_BERRY
@@ -562,19 +571,32 @@ BeachboundRoute_EventScript_Kin_Text_3:
 	.string "You really don't look strong at all,\n"
 	.string "and yet…$"
 
-BeachboundRoute_EventScript_Scrub2_Text_0:
-	.string "I am a scrub youngster whose sole\n"
-	.string "purpose is to get stomped!$"
+BeachboundRoute_EventScript_Kouta_Text_0:
+	.string "Look at how soft my Pokémon is!$"
 
-BeachboundRoute_EventScript_Scrub2_Text_1:
-	.string "I got stomped!$"
+BeachboundRoute_EventScript_Kouta_Text_1:
+	.string "Maybe I'm the one who's soft…$"
 
-BeachboundRoute_EventScript_Scrub2_Text_2:
-	.string "Scrub2$"
+BeachboundRoute_EventScript_Kouta_Text_2:
+	.string "Kouta$"
 
-BeachboundRoute_EventScript_Scrub2_Text_3:
-	.string "If you lost to me you should\n"
-	.string "uninstall!$"
+BeachboundRoute_EventScript_Kouta_Text_3:
+	.string "When I pet my Mareep, I can hear the\n"
+	.string "static crackle!$"
+
+BeachboundRoute_EventScript_Masato_Text_0:
+	.string "Let my Pokémon sing for you!$"
+
+BeachboundRoute_EventScript_Masato_Text_1:
+	.string "Okay, rude.$"
+
+BeachboundRoute_EventScript_Masato_Text_2:
+	.string "Masato$"
+
+BeachboundRoute_EventScript_Masato_Text_3:
+	.string "I hope one day my Kricketot evolves!\n"
+	.string "I wonder what delightful melody he'll\l"
+	.string "be able to sing then…$"
 
 BeachboundRoute_EventScript_SomeoneCallingForHelp_Text_0:
 	.string "???$"

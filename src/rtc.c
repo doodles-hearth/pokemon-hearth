@@ -333,7 +333,7 @@ u8 GetTimeOfDay(void)
         return TIME_MORNING;
     else if (IsBetweenHours(gLocalTime.hours, LUNCHTIME_HOUR_BEGIN, LUNCHTIME_HOUR_END))
         return TIME_LUNCHTIME;
-    else if (IsBetweenHours(gLocalTime.hours, NOONTIME_HOUR_BEGIN, NOONTIME_HOUR_END))
+    else if (IsBetweenHours(gLocalTime.hours, AFTERNOON_HOUR_BEGIN, AFTERNOON_HOUR_END))
         return TIME_AFTERNOON;
     else if (IsBetweenHours(gLocalTime.hours, EVENING_HOUR_BEGIN, EVENING_HOUR_END))
         return TIME_EVENING;

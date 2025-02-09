@@ -109,15 +109,30 @@ script BeachboundRoute_EventScript_Kin {
 	end
 }
 
-script BeachboundRoute_EventScript_Scrub2 {
-	// TODO EVA dialogue
+script BeachboundRoute_EventScript_Kouta {
 	trainerbattle_single(
-		TRAINER_SCRUB_2 ,
-		format("I am a scrub youngster whose sole purpose is to get stomped!"),
-		format("I got stomped!")
+		TRAINER_KOUTA ,
+		format("Look at how soft my Pokémon is!"),
+		format("Maybe I'm the one who's soft…")
 	)
-	speakername("Scrub2")
-	msgbox(format("If you lost to me you should uninstall!"))
+	speakername("Kouta")
+	// TODO EVA
+	// setnamedmon(SPECIES_MAREEP)
+	msgbox(format("When I pet my Mareep, I can hear the static crackle!"))
+	release
+	end
+}
+
+script BeachboundRoute_EventScript_Masato {
+	trainerbattle_single(
+		TRAINER_MASATO ,
+		format("Let my Pokémon sing for you!"),
+		format("Okay, rude.")
+	)
+	// TODO EVA
+	// setnamedmon(SPECIES_MAREEP)
+	speakername("Masato")
+	msgbox(format("I hope one day my Kricketot evolves! I wonder what delightful melody he'll be able to sing then…"))
 	release
 	end
 }
@@ -469,6 +484,7 @@ script BeachboundRoute_EventScript_Mugging {
 mart BeachboundRoute_Mart_Merchant {
 	ITEM_OINTMENT
 	ITEM_UUMEGIRI
+	ITEM_FISHCAKE
 	ITEM_CHERI_BERRY
 	ITEM_PECHA_BERRY
 	ITEM_CHESTO_BERRY

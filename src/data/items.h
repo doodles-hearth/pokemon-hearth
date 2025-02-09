@@ -14360,4 +14360,21 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_EnteiStatuette,
         .iconPalette = gItemIconPalette_EnteiStatuette,
     },
+
+    [ITEM_SLOWPOKE_TAIL] =
+    {
+        .name = _("Slowpoke Tail"),
+        .price = 9800,
+        .description = COMPOUND_STRING(
+            "A very tasty tail\n"
+            "of something.\n"
+            "Sells for a high\n"
+            "price."
+        ),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SlowpokeTail,
+        .iconPalette = gItemIconPalette_SlowpokeTail,
+    },
 };

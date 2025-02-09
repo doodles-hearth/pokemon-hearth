@@ -1014,8 +1014,9 @@
 // Key items
 #define ITEM_REFUGE_ROOM_KEY 830
 #define ITEM_ENTEI_STATUETTE 831
+#define ITEM_SLOWPOKE_TAIL   842
 
-#define ITEMS_COUNT 842
+#define ITEMS_COUNT 843
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

@@ -69,37 +69,28 @@ TranquilRoute_EventScript_GrassCutscene::
 
 TranquilRoute_EventScript_SetupCutGrassCutscene::
 	goto_if_unset FLAG_CUT_QUEST_COMPLETED, TranquilRoute_EventScript_SetupCutGrassCutscene_1
-	gettime
-	compare VAR_0x8000, 7
-	goto_if_lt TranquilRoute_EventScript_SetupCutGrassCutscene_7
-	compare VAR_0x8000, 19
-	goto_if_gt TranquilRoute_EventScript_SetupCutGrassCutscene_7
 	return
 
 TranquilRoute_EventScript_SetupCutGrassCutscene_1:
-	goto_if_set FLAG_CUT_QUEST_CUT_ALL_GRASS, TranquilRoute_EventScript_SetupCutGrassCutscene_4
+	goto_if_set FLAG_CUT_QUEST_CUT_ALL_GRASS, TranquilRoute_EventScript_SetupCutGrassCutscene_3
 	setflag FLAG_TEMP_1
 	return
 
-TranquilRoute_EventScript_SetupCutGrassCutscene_4:
+TranquilRoute_EventScript_SetupCutGrassCutscene_3:
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
 	compare VAR_TEMP_2, 53
-	goto_if_eq TranquilRoute_EventScript_SetupCutGrassCutscene_12
+	goto_if_eq TranquilRoute_EventScript_SetupCutGrassCutscene_7
 	return
 
-TranquilRoute_EventScript_SetupCutGrassCutscene_7:
-	setflag FLAG_TEMP_1
-	return
-
-TranquilRoute_EventScript_SetupCutGrassCutscene_11:
+TranquilRoute_EventScript_SetupCutGrassCutscene_6:
 	setobjectmovementtype 22, MOVEMENT_TYPE_FACE_LEFT
 	setobjectxyperm 22, 52, 33
 	setvar VAR_TEMP_0, 1
 	return
 
-TranquilRoute_EventScript_SetupCutGrassCutscene_12:
+TranquilRoute_EventScript_SetupCutGrassCutscene_7:
 	compare VAR_TEMP_3, 33
-	goto_if_eq TranquilRoute_EventScript_SetupCutGrassCutscene_11
+	goto_if_eq TranquilRoute_EventScript_SetupCutGrassCutscene_6
 	return
 
 
@@ -747,8 +738,7 @@ TranquilRoute_EventScript_Mareep2_Text_0:
 
 TranquilRoute_TrainerTips1_Text_0:
 	.string "Did you know?\p"
-	.string "Some Pokémon only come out in the\n"
-	.string "morning, in the evening, or at night.\p"
+	.string "Some Pokémon only come out at night.\p"
 	.string "Visit the same spot at different\n"
 	.string "times of day to have a chance of\l"
 	.string "seeing rare Pokémon!$"

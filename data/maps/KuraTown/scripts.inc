@@ -23,10 +23,10 @@ KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_2:
 	goto KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_1
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_5:
+	setmetatile 18, 6, METATILE_SakuKura_ClosedDoorTop, TRUE
 	setmetatile 18, 7, METATILE_SakuKura_Door, TRUE
-	setmetatile 34, 25, METATILE_SakuKura_Door, TRUE
-	setmetatile 43, 23, METATILE_SakuKura_Door, TRUE
-	setmetatile 40, 16, METATILE_SakuKura_ClosedDojoDoor, TRUE
+	setmetatile 43, 22, METATILE_SakuKura_ClosedDoorTop, TRUE
+	setmetatile 43, 23, METATILE_SakuKura_ClosedDoorBottom, TRUE
 	return
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -34,7 +34,7 @@ KuraTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 KuraTown_EventScript_GuardStopsYou::
-	lock
+	lockall
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 14
 	goto_if_le KuraTown_EventScript_GuardStopsYou_2
@@ -51,7 +51,7 @@ KuraTown_EventScript_GuardStopsYou_1:
 	compare VAR_SAKU_KURA_VILLAGES_STATE, 2
 	goto_if_eq KuraTown_EventScript_GuardStopsYou_7
 KuraTown_EventScript_GuardStopsYou_5:
-	release
+	releaseall
 	return
 
 KuraTown_EventScript_GuardStopsYou_2:
@@ -217,8 +217,9 @@ KuraTown_EventScript_Farmer_Text_1:
 	.string "But who needs a reas'n, right?$"
 
 KuraTown_EventScript_FarmerScyther_Text_0:
-	.string "Our Scyther harvest the crops once\n"
-	.string "they've grown.$"
+	.string "We started taming Scyther recently\n"
+	.string "to help us with harvestin' the crops.\l"
+	.string "They've been a tremendous help!$"
 
 KuraTown_EventScript_Scyther_Text_0:
 	.string "Scyther$"

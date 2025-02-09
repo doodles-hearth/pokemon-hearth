@@ -4,7 +4,6 @@ ChiiTown_MapScripts::
 	.byte 0
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_LOAD:
-	call ChiiTown_EventScript_SpawnBirds
 	call ChiiTown_DrawMetatiles
 	return
 
@@ -27,62 +26,8 @@ ChiiTown_DrawMetatiles_3:
 	end
 
 ChiiTown_DrawMetatiles_2:
-	setmetatile 14, 6, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE
-	setmetatile 24, 20, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE
-	return
-
-
-ChiiTown_EventScript_SpawnBirds::
-	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_3
-	setflag FLAG_TEMP_4
-	gettime
-	compare VAR_0x8000, 5
-	goto_if_ge ChiiTown_EventScript_SpawnBirds_6
-ChiiTown_EventScript_SpawnBirds_4:
-	compare VAR_0x8000, 9
-	goto_if_ge ChiiTown_EventScript_SpawnBirds_3
-	return
-
-ChiiTown_EventScript_SpawnBirds_1:
-	random 2
-	switch VAR_RESULT
-	case 0, ChiiTown_EventScript_SpawnBirds_10
-	case 1, ChiiTown_EventScript_SpawnBirds_11
-	return
-
-ChiiTown_EventScript_SpawnBirds_2:
-	random 2
-	switch VAR_RESULT
-	case 0, ChiiTown_EventScript_SpawnBirds_13
-	case 1, ChiiTown_EventScript_SpawnBirds_14
-	return
-
-ChiiTown_EventScript_SpawnBirds_3:
-	compare VAR_0x8000, 17
-	goto_if_le ChiiTown_EventScript_SpawnBirds_2
-	return
-
-ChiiTown_EventScript_SpawnBirds_6:
-	compare VAR_0x8000, 8
-	goto_if_le ChiiTown_EventScript_SpawnBirds_1
-	goto ChiiTown_EventScript_SpawnBirds_4
-
-ChiiTown_EventScript_SpawnBirds_10:
-	clearflag FLAG_TEMP_1
-	return
-
-ChiiTown_EventScript_SpawnBirds_11:
-	clearflag FLAG_TEMP_2
-	return
-
-ChiiTown_EventScript_SpawnBirds_13:
-	clearflag FLAG_TEMP_3
-	return
-
-ChiiTown_EventScript_SpawnBirds_14:
-	clearflag FLAG_TEMP_4
+	setmetatile 14, 5, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE
+	setmetatile 14, 6, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
 	return
 
 
@@ -92,6 +37,7 @@ ChiiTown_EventScript_WatchfulMom::
 	switch VAR_RESULT
 	case TIME_MORNING, ChiiTown_EventScript_WatchfulMom_3
 	case TIME_AFTERNOON, ChiiTown_EventScript_WatchfulMom_4
+	msgbox ChiiTown_EventScript_WatchfulMom_Text_3, MSGBOX_NPC
 ChiiTown_EventScript_WatchfulMom_1:
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -233,6 +179,8 @@ ChiiTown_EventScript_BattlingGirl_6:
 
 ChiiTown_EventScript_BattlingGirl_10:
 	trainerbattle_two_trainers TRAINER_MINORI, ChiiTown_EventScript_BattlingGirl_Text_4, TRAINER_KAITO, ChiiTown_EventScript_BattlingGirl_Text_5
+	setflag FLAG_BEAT_CHII_TOWN_KIDS
+	special GetPlayerMrMrsString
 	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
 	msgbox ChiiTown_EventScript_BattlingGirl_Text_0
 	closemessage
@@ -271,6 +219,8 @@ ChiiTown_EventScript_BattlingBoy_2:
 
 ChiiTown_EventScript_BattlingBoy_6:
 	trainerbattle_two_trainers TRAINER_MINORI, ChiiTown_EventScript_BattlingGirl_Text_4, TRAINER_KAITO, ChiiTown_EventScript_BattlingGirl_Text_5
+	setflag FLAG_BEAT_CHII_TOWN_KIDS
+	special GetPlayerMrMrsString
 	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
 	msgbox ChiiTown_EventScript_BattlingBoy_Text_0
 	closemessage
@@ -342,6 +292,10 @@ ChiiTown_EventScript_WatchfulMom_Text_2:
 	.string "With all the recent Pokémon attacks,\n"
 	.string "I will not let them leave my sight!$"
 
+ChiiTown_EventScript_WatchfulMom_Text_3:
+	.string "Phew… Being a full-time mom is\n"
+	.string "exhausting…$"
+
 ChiiTown_EventScript_Shopper_Text_0:
 	.string "The lady who keeps the town's market\n"
 	.string "has started selling Pokémon medicine\l"
@@ -408,7 +362,9 @@ ChiiTown_EventScript_BerryEnthusiast_Text_1:
 
 ChiiTown_EventScript_BattlingGirl_Text_0:
 	.string "Wow, {STR_VAR_1}! You're super\n"
-	.string "strong!!$"
+	.string "strong!!\p"
+	.string "I'll have to train Snuggles a whole lot\n"
+	.string "more!$"
 
 ChiiTown_EventScript_BattlingGirl_Text_1:
 	.string "Hey {STR_VAR_1}! We've been\n"
@@ -432,7 +388,8 @@ ChiiTown_EventScript_BattlingGirl_Text_6:
 
 ChiiTown_EventScript_BattlingBoy_Text_0:
 	.string "Wow, {STR_VAR_1}! Can you be our\n"
-	.string "sensei?$"
+	.string "sensei?\p"
+	.string "That way, Destroyer will be invincible!$"
 
 ChiiTown_EventScript_BattlingBoy_Text_1:
 	.string "Hello {STR_VAR_1}! We're top of our\n"
