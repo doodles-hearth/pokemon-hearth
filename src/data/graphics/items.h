@@ -2127,3 +2127,6 @@ const u32 gItemIconPalette_Fishcake[] = INCBIN_U32("graphics/items/icons/fishcak
 
 const u32 gItemIcon_EnteiStatuette[] = INCBIN_U32("graphics/items/icons/entei_statuette.4bpp.lz");
 const u32 gItemIconPalette_EnteiStatuette[] = INCBIN_U32("graphics/items/icons/entei_statuette.gbapal.lz");
+
+const u32 gItemIcon_SlowpokeTail[] = INCBIN_U32("graphics/items/icons/slowpoke_tail.4bpp.lz");
+const u32 gItemIconPalette_SlowpokeTail[] = INCBIN_U32("graphics/items/icons/slowpoke_tail.gbapal.lz");

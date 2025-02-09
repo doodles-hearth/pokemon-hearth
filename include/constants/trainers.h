@@ -122,7 +122,9 @@
 #define TRAINER_PIC_ZUBAT_GRUNT_M         104
 #define TRAINER_PIC_ZUBAT_GRUNT_F         105
 #define TRAINER_PIC_CROBAT_BOSS           106
-#define TRAINER_PIC_COUNT                 107
+#define TRAINER_PIC_SCHOOL_KID_M_ORANGE   107
+#define TRAINER_PIC_SCHOOL_KID_F_ORANGE   108
+#define TRAINER_PIC_COUNT                 109
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0

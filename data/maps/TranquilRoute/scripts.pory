@@ -105,11 +105,6 @@ script TranquilRoute_EventScript_SetupCutGrassCutscene {
 		} else {
 			setflag(FLAG_HIDE_CUT_MASTER)
 		}
-	} else {
-		gettime
-		if (var(VAR_HOUR_OF_DAY) < 7 || var(VAR_HOUR_OF_DAY) > 19) {
-			setflag(FLAG_HIDE_CUT_MASTER)
-		}
 	}
 }
 
@@ -381,7 +376,7 @@ script TranquilRoute_EventScript_Mareep2 {
 script TranquilRoute_TrainerTips1 {
 	msgbox(format(
 		"Did you know?\p"
-		"Some Pokémon only come out in the morning, in the evening, or at night.\p"
+		"Some Pokémon only come out at night.\p"
 		"Visit the same spot at different times of day to have a chance of seeing rare Pokémon!"
 	), MSGBOX_SIGN)
 }

@@ -15,25 +15,20 @@ Common_EventScript_PkmnCenterNurse_CutTheBullshit::
 	setvar VAR_0x8004, 0
 	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_0
 	closemessage
-	goto EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit
+	incrementgamestat GAME_STAT_USED_POKECENTER
+	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
+	goto_if_unset FLAG_POKERUS_EXPLAINED, Common_EventScript_PkmnCenterNurse_CutTheBullshit_2
+Common_EventScript_PkmnCenterNurse_CutTheBullshit_1:
+	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_1
+	closemessage
+	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_2
+	closemessage
 	release
 	end
 
-
-EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit::
-	incrementgamestat GAME_STAT_USED_POKECENTER
-	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
-	goto_if_unset FLAG_POKERUS_EXPLAINED, EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit_2
-EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit_1:
-	msgbox EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit_Text_0
-	closemessage
-	msgbox EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit_Text_1
-	closemessage
-	end
-
-EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit_2:
+Common_EventScript_PkmnCenterNurse_CutTheBullshit_2:
 	call EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit
-	goto EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit_1
+	goto Common_EventScript_PkmnCenterNurse_CutTheBullshit_1
 
 
 EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit::
@@ -191,11 +186,11 @@ Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_0:
 	.string "Welcome to the refuge!\p"
 	.string "Let me heal your Pokémon.$"
 
-EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit_Text_0:
+Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_1:
 	.string "Your Pokémon are all healed and\n"
 	.string "rested.$"
 
-EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit_Text_1:
+Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_2:
 	.string "Please come again!$"
 
 EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit_Text_0:

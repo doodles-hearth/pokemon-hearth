@@ -14,12 +14,7 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 	setvar(VAR_0x8004, 0)
 	msgbox(format("Welcome to the refuge!\pLet me heal your Pokémon."))
 	closemessage
-	goto(EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit)
-	release
-	end
-}
-
-script EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit {
+	
 	incrementgamestat(GAME_STAT_USED_POKECENTER)
 	call(EventScript_PkmnCenterNurse_TakeAndHealPkmn)
 	if (!flag(FLAG_POKERUS_EXPLAINED)) {
@@ -33,6 +28,7 @@ script EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit {
 	msgbox(format("Please come again!"))
 	closemessage
 
+	release
 	end
 }
 

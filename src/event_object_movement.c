@@ -525,6 +525,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_HexManiac,             OBJ_EVENT_PAL_TAG_HEX_MANIAC},
     {gObjectEventPal_PokemonBreederM,       OBJ_EVENT_PAL_TAG_BREEDER_M},
     {gObjectEventPal_PokemonBreederF,       OBJ_EVENT_PAL_TAG_BREEDER_F},
+    {gObjectEventPal_SchoolKidGreen,        OBJ_EVENT_PAL_TAG_SCHOOL_KID_GREEN},
+    {gObjectEventPal_SchoolKidOrange,       OBJ_EVENT_PAL_TAG_SCHOOL_KID_ORANGE},
     {gObjectEventPal_TravelingMerchant,     OBJ_EVENT_PAL_TAG_TRAVELING_MERCHANT},
     {gObjectEventPal_OnsenF,                OBJ_EVENT_PAL_TAG_ONSEN},
     {gObjectEventPal_BugCatcher,            OBJ_EVENT_PAL_TAG_BUG_CATCHER},
@@ -2752,7 +2754,7 @@ void UpdateLightSprite(struct Sprite *sprite)
         return;
     }
 
-    if (gTimeOfDay != TIME_NIGHT)
+    if (gTimeOfDay != TIME_NIGHT && gTimeOfDay != TIME_EVENING)
     {
         sprite->invisible = TRUE;
         return;
@@ -2774,12 +2776,6 @@ void UpdateLightSprite(struct Sprite *sprite)
             sprite->invisible = FALSE;
             if (GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) == OBJ_EVENT_PAL_TAG_LIGHT_2)
                 LoadSpritePaletteInSlot(&sObjectEventSpritePalettes[FindObjectEventPaletteIndexByTag(OBJ_EVENT_PAL_TAG_LIGHT)], sprite->oam.paletteNum);
-        }
-        else if ((sprite->invisible = gTimeUpdateCounter & 1))
-        {
-            Weather_SetBlendCoeffs(12, BASE_SHADOW_INTENSITY);
-            if (GetSpritePaletteTagByPaletteNum(sprite->oam.paletteNum) == OBJ_EVENT_PAL_TAG_LIGHT)
-                LoadSpritePaletteInSlot(&sObjectEventSpritePalettes[FindObjectEventPaletteIndexByTag(OBJ_EVENT_PAL_TAG_LIGHT_2)], sprite->oam.paletteNum);
         }
         break;
     case LIGHT_TYPE_PKMN_CENTER_SIGN:

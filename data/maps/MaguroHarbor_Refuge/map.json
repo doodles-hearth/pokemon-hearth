@@ -73,6 +73,32 @@
       "lunchtime": false,
       "morning": false,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BEAN",
+      "x": 11,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MaguroHarbor_Refuge_EventScript_Hariko",
+      "flag": "FLAG_BADGE01_GET"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SLOWPOKE)",
+      "x": 10,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MaguroHarbor_Refuge_EventScript_Slowpoke",
+      "flag": "FLAG_BADGE01_GET"
     }
   ],
   "warp_events": [

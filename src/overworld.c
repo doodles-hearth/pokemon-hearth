@@ -1546,13 +1546,10 @@ void CB1_Overworld(void)
 
 const struct BlendSettings gTimeOfDayBlend[] =
 {
-    [TIME_EARLY_MORNING] = {.coeff = 4,  .blendColor = 0xA8B0E0,   .isTint = TRUE},
-    [TIME_MORNING] = {.coeff = 4,  .blendColor = 0xA8B0E0,   .isTint = TRUE},
-    [TIME_LUNCHTIME]     = {.coeff = 0,  .blendColor = 0,          .isTint = FALSE},
-    [TIME_AFTERNOON]     = {.coeff = 0,  .blendColor = 0,          .isTint = FALSE},
-    [TIME_EVENING] = {.coeff = 4,  .blendColor = 0xA8B0E0,   .isTint = TRUE},
-    [TIME_NIGHT]   = {.coeff = 10, .blendColor = TINT_NIGHT, .isTint = TRUE},
-    [TIME_DEAD_NIGHT]   = {.coeff = 10, .blendColor = TINT_NIGHT, .isTint = TRUE},
+    [TIME_MORNING]   = {.coeff = 4,  .blendColor = 0xA8B0E0,   .isTint = TRUE},
+    [TIME_LUNCHTIME] = {.coeff = 0,  .blendColor = 0,          .isTint = FALSE},
+    [TIME_EVENING]   = {.coeff = 4,  .blendColor = 0xA8B0E0,   .isTint = TRUE},
+    [TIME_NIGHT]     = {.coeff = 10, .blendColor = TINT_NIGHT, .isTint = TRUE},
 };
 
 #define DEFAULT_WEIGHT 256
@@ -1567,19 +1564,20 @@ void UpdateTimeOfDay(void)
     hours = sHoursOverride ? sHoursOverride : gLocalTime.hours;
     minutes = sHoursOverride ? 0 : gLocalTime.minutes;
 
-    if (IsBetweenHours(hours, EARLY_MORNING_HOUR_BEGIN, MORNING_HOUR_MIDDLE)) // night->morning
+    if (IsBetweenHours(hours, DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END)) // night->morning
     {
         gTimeBlend.startBlend = gTimeOfDayBlend[TIME_NIGHT];
-        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_EARLY_MORNING];
-        gTimeBlend.weight = TIME_BLEND_WEIGHT(EARLY_MORNING_HOUR_BEGIN, MORNING_HOUR_MIDDLE);
+        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_MORNING];
+        gTimeBlend.weight = TIME_BLEND_WEIGHT(DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END);
         gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2;
-        gTimeOfDay = TIME_EARLY_MORNING;
+        gTimeOfDay = TIME_NIGHT;
     }
-    else if (IsBetweenHours(hours, MORNING_HOUR_MIDDLE, MORNING_HOUR_END)) // morning->day
+    else if (IsBetweenHours(hours, EARLY_MORNING_HOUR_BEGIN, EARLY_MORNING_HOUR_END)) // morning->dayy
     {
         gTimeBlend.startBlend = gTimeOfDayBlend[TIME_MORNING];
         gTimeBlend.endBlend = gTimeOfDayBlend[TIME_LUNCHTIME];
-        gTimeBlend.weight = TIME_BLEND_WEIGHT(MORNING_HOUR_MIDDLE, MORNING_HOUR_END);
+
+        gTimeBlend.weight = TIME_BLEND_WEIGHT(EARLY_MORNING_HOUR_BEGIN, EARLY_MORNING_HOUR_END);
         gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
         gTimeOfDay = TIME_MORNING;
     }
@@ -1594,7 +1592,7 @@ void UpdateTimeOfDay(void)
     else if (IsBetweenHours(hours, NIGHTTIME_HOUR_BEGIN, NIGHTTIME_HOUR_BEGIN + 1)) // evening->night
     {
         gTimeBlend.startBlend = gTimeOfDayBlend[TIME_EVENING];
-        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_DEAD_NIGHT];
+        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
         gTimeBlend.weight = TIME_BLEND_WEIGHT(NIGHTTIME_HOUR_BEGIN, NIGHTTIME_HOUR_BEGIN + 1);
         gTimeBlend.altWeight = gTimeBlend.weight / 2;
         gTimeOfDay = TIME_NIGHT;
@@ -1604,13 +1602,13 @@ void UpdateTimeOfDay(void)
         gTimeBlend.weight = DEFAULT_WEIGHT;
         gTimeBlend.altWeight = 0;
         gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
-        gTimeOfDay = TIME_DEAD_NIGHT;
+        gTimeOfDay = TIME_NIGHT;
     }
     else // day
     {
         gTimeBlend.weight = gTimeBlend.altWeight = DEFAULT_WEIGHT;
-        gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend[TIME_AFTERNOON];
-        gTimeOfDay = TIME_AFTERNOON;
+        gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend [TIME_LUNCHTIME];
+        gTimeOfDay = TIME_LUNCHTIME;
     }
 }
 

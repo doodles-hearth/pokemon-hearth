@@ -61,29 +61,93 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSettingUp {
 script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 	lock
 	faceplayer
-	
-	speakername("Old woman")
-	msgbox(format(
-		"Hello dear, want to try a fishcake?\p"
-		"They're the town's specialty!"
-	), MSGBOX_DEFAULT)
-	
-	giveitem(ITEM_FISHCAKE)
+	if (flag(FLAG_DAILY_FISHCAKE)) {
+		speakername("Old woman")
+		msgbox(format(
+			"Come back tomorrow if you'd like another fishcake!"
+		), MSGBOX_DEFAULT)
+	} else {
+		speakername("Old woman")
+		msgbox(format(
+			"Hello dear, want to try a fishcake?\p"
+			"They're the town's specialty! Only ¥500!"
+		), MSGBOX_DEFAULT)
 
-	closemessage
+		showmoneybox(18, 0)
+
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"One please!",
+			"No, thanks.",
+			"Fishcakes?"
+		)
+		closemessage
+
+		switch(var(VAR_RESULT)) {
+			case 0:
+				if (checkmoney(500)) {
+					removemoney(500)
+					updatemoneybox
+
+					speakername("Old woman")
+					msgbox(format(
+						"One fishcake, coming right up!"
+					))
+					closemessage
+					hidemoneybox
+
+					giveitem(ITEM_FISHCAKE)
+				} else {
+					speakername("Old woman")
+					msgbox(format(
+						"Oh dear! It appears you're a little short on pocket money."
+					))
+					closemessage
+					hidemoneybox
+				}
+			case 1:
+				hidemoneybox
+			case 2:
+				hidemoneybox
+				speakername("Old woman")
+				msgbox(format(
+					"What's in the Fishcakes, you ask?\p"
+					"Uhh… Cake!"
+				))
+				closemessage
+		}
+	}
 	release
 }
 
 script MaguroHarbor_EventScript_FishcakeSalesmanClosingUp {
 	lock
 	faceplayer
-	
-	speakername("Old woman")
-	msgbox(format(
-		"Oh my! I'm sorry but we've closed shop now, dearie. We'll be open again {STR_VAR_1}"
-	), MSGBOX_DEFAULT)
 
-	closemessage
+	if (flag(FLAG_DAILY_FISHCAKE)) {
+		speakername("Old woman")
+		msgbox(format(
+			"I'm sorry but we've closed shop now, dearie. We'll be open again {STR_VAR_1}!"
+		), MSGBOX_DEFAULT)
+		closemessage
+	} else {
+		speakername("Old woman")
+		msgbox(format(
+			"Oh my! I'm sorry but we've closed shop now, dearie. We'll be open again {STR_VAR_1}!\p"
+			"Did you want to buy one of my Fishcakes?\p"
+			"Here, you can have the leftovers from today!"
+		), MSGBOX_DEFAULT)
+		closemessage
+
+		giveitem(ITEM_FISHCAKE)
+		setflag(FLAG_DAILY_FISHCAKE)
+	}
+	
 	release
 }
 
@@ -293,10 +357,8 @@ script(local) StringVarSetter {
 
 mart MaguroHarbor_Mart {
 	ITEM_POKE_BALL
-	ITEM_BERRY_JUICE
-	ITEM_PARALYZE_HEAL
-	ITEM_ANTIDOTE
-	ITEM_AWAKENING
-	ITEM_ESCAPE_ROPE
-	ITEM_REPEL
+	ITEM_OINTMENT
+	ITEM_CHERI_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_CHESTO_BERRY
 }

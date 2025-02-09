@@ -145,10 +145,10 @@ const u32 gTrainerFrontPic_LeaderJuan[] = INCBIN_U32("graphics/trainers/front_pi
 const u32 gTrainerPalette_LeaderJuan[] = INCBIN_U32("graphics/trainers/front_pics/leader_juan.gbapal.lz");
 
 const u32 gTrainerFrontPic_SchoolKidM[] = INCBIN_U32("graphics/trainers/front_pics/school_kid_m.4bpp.lz");
-const u32 gTrainerPalette_SchoolKidM[] = INCBIN_U32("graphics/trainers/front_pics/school_kid_m.gbapal.lz");
+const u32 gTrainerPalette_SchoolKid_Green[] = INCBIN_U32("graphics/trainers/front_pics/school_kid_f.gbapal.lz");
 
 const u32 gTrainerFrontPic_SchoolKidF[] = INCBIN_U32("graphics/trainers/front_pics/school_kid_f.4bpp.lz");
-const u32 gTrainerPalette_SchoolKidF[] = INCBIN_U32("graphics/trainers/front_pics/school_kid_f.gbapal.lz");
+const u32 gTrainerPalette_SchoolKid_Orange[] = INCBIN_U32("graphics/trainers/front_pics/school_kid_m.gbapal.lz");
 
 const u32 gTrainerFrontPic_SrAndJr[] = INCBIN_U32("graphics/trainers/front_pics/sr_and_jr.4bpp.lz");
 const u32 gTrainerPalette_SrAndJr[] = INCBIN_U32("graphics/trainers/front_pics/sr_and_jr.gbapal.lz");
@@ -397,8 +397,10 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_LEADER_WINONA, gTrainerFrontPic_LeaderWinona, gTrainerPalette_LeaderWinona),
     TRAINER_SPRITE(TRAINER_PIC_LEADER_TATE_AND_LIZA, gTrainerFrontPic_LeaderTateAndLiza, gTrainerPalette_LeaderTateAndLiza),
     TRAINER_SPRITE(TRAINER_PIC_LEADER_JUAN, gTrainerFrontPic_LeaderJuan, gTrainerPalette_LeaderJuan),
-    TRAINER_SPRITE(TRAINER_PIC_SCHOOL_KID_M, gTrainerFrontPic_SchoolKidM, gTrainerPalette_SchoolKidM),
-    TRAINER_SPRITE(TRAINER_PIC_SCHOOL_KID_F, gTrainerFrontPic_SchoolKidF, gTrainerPalette_SchoolKidF),
+    TRAINER_SPRITE(TRAINER_PIC_SCHOOL_KID_M, gTrainerFrontPic_SchoolKidM, gTrainerPalette_SchoolKid_Green),
+    TRAINER_SPRITE(TRAINER_PIC_SCHOOL_KID_F, gTrainerFrontPic_SchoolKidF, gTrainerPalette_SchoolKid_Green),
+    TRAINER_SPRITE(TRAINER_PIC_SCHOOL_KID_M_ORANGE, gTrainerFrontPic_SchoolKidM, gTrainerPalette_SchoolKid_Orange),
+    TRAINER_SPRITE(TRAINER_PIC_SCHOOL_KID_F_ORANGE, gTrainerFrontPic_SchoolKidF, gTrainerPalette_SchoolKid_Orange),
     TRAINER_SPRITE(TRAINER_PIC_SR_AND_JR, gTrainerFrontPic_SrAndJr, gTrainerPalette_SrAndJr),
     TRAINER_SPRITE(TRAINER_PIC_POKEFAN_M, gTrainerFrontPic_PokefanM, gTrainerPalette_PokefanM),
     TRAINER_SPRITE(TRAINER_PIC_POKEFAN_F, gTrainerFrontPic_PokefanF, gTrainerPalette_PokefanF),

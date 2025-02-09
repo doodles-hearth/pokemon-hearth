@@ -31,7 +31,7 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M_ORANGE",
       "x": 18,
       "y": 57,
       "elevation": 0,
@@ -171,7 +171,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_AROMA_LADY",
+      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
       "x": 18,
       "y": 20,
       "elevation": 0,
@@ -402,12 +402,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TranquilRoute_EventScript_CutMaster",
       "flag": "FLAG_TEMP_1",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {

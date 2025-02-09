@@ -4,15 +4,16 @@ mapscripts GinkoWoods_MapScripts {
 
 }
 
-script GinkoWoods_EventScript_Scrub1 {
-	// TODO EVA dialogue
+script GinkoWoods_EventScript_Toshiki {
 	trainerbattle_single(
-		TRAINER_SCRUB_1 ,
-		format("I am a scrub bug catcher whose sole purpose is to get stomped!"),
-		format("I got stomped!")
+		TRAINER_TOSHIKI ,
+		format("These bugs are electrifying!"),
+		format("Ouch! How did you do that?")
 	)
-	speakername("Scrub")
-	msgbox(format("If you lost to me you should uninstall!"))
+	speakername("Toshiki")
+	msgbox(format("Isn't Sewaddle cute, all wrapped up in its leaf?"))
+	closemessage
+	// TODO EVA setnamedmon(SPECIES_SEWADDLE)
 	release
 	end
 }

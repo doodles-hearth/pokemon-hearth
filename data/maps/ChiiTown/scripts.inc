@@ -4,7 +4,6 @@ ChiiTown_MapScripts::
 	.byte 0
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_LOAD:
-	call ChiiTown_EventScript_SpawnBirds
 	call ChiiTown_DrawMetatiles
 	return
 
@@ -27,62 +26,8 @@ ChiiTown_DrawMetatiles_3:
 	end
 
 ChiiTown_DrawMetatiles_2:
-	setmetatile 14, 6, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE
-	setmetatile 24, 20, METATILE_PorytilesPrimaryTutorial_DoorPlaceholder, TRUE
-	return
-
-
-ChiiTown_EventScript_SpawnBirds::
-	setflag FLAG_TEMP_1
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_3
-	setflag FLAG_TEMP_4
-	gettime
-	compare VAR_0x8000, 5
-	goto_if_ge ChiiTown_EventScript_SpawnBirds_6
-ChiiTown_EventScript_SpawnBirds_4:
-	compare VAR_0x8000, 9
-	goto_if_ge ChiiTown_EventScript_SpawnBirds_3
-	return
-
-ChiiTown_EventScript_SpawnBirds_1:
-	random 2
-	switch VAR_RESULT
-	case 0, ChiiTown_EventScript_SpawnBirds_10
-	case 1, ChiiTown_EventScript_SpawnBirds_11
-	return
-
-ChiiTown_EventScript_SpawnBirds_2:
-	random 2
-	switch VAR_RESULT
-	case 0, ChiiTown_EventScript_SpawnBirds_13
-	case 1, ChiiTown_EventScript_SpawnBirds_14
-	return
-
-ChiiTown_EventScript_SpawnBirds_3:
-	compare VAR_0x8000, 17
-	goto_if_le ChiiTown_EventScript_SpawnBirds_2
-	return
-
-ChiiTown_EventScript_SpawnBirds_6:
-	compare VAR_0x8000, 8
-	goto_if_le ChiiTown_EventScript_SpawnBirds_1
-	goto ChiiTown_EventScript_SpawnBirds_4
-
-ChiiTown_EventScript_SpawnBirds_10:
-	clearflag FLAG_TEMP_1
-	return
-
-ChiiTown_EventScript_SpawnBirds_11:
-	clearflag FLAG_TEMP_2
-	return
-
-ChiiTown_EventScript_SpawnBirds_13:
-	clearflag FLAG_TEMP_3
-	return
-
-ChiiTown_EventScript_SpawnBirds_14:
-	clearflag FLAG_TEMP_4
+	setmetatile 14, 5, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE
+	setmetatile 14, 6, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
 	return
 
 
@@ -92,6 +37,7 @@ ChiiTown_EventScript_WatchfulMom::
 	switch VAR_RESULT
 	case TIME_MORNING, ChiiTown_EventScript_WatchfulMom_3
 	case TIME_AFTERNOON, ChiiTown_EventScript_WatchfulMom_4
+	msgbox ChiiTown_EventScript_WatchfulMom_Text_3, MSGBOX_NPC
 ChiiTown_EventScript_WatchfulMom_1:
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -156,9 +102,9 @@ ChiiTown_EventScript_EatingBerries::
 	speakername ChiiTown_EventScript_EatingBerries_Text_0
 	msgbox ChiiTown_EventScript_EatingBerries_Text_1, MSGBOX_DEFAULT
 	closemessage
-	checkitem 520, 1
-	compare VAR_RESULT, TRUE
-	goto_if_eq ChiiTown_EventScript_EatingBerries_2
+	checkitem ITEM_ORAN_BERRY, 1
+	compare VAR_RESULT, 0
+	goto_if_ne ChiiTown_EventScript_EatingBerries_2
 ChiiTown_EventScript_EatingBerries_1:
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -167,24 +113,118 @@ ChiiTown_EventScript_EatingBerries_1:
 	return
 
 ChiiTown_EventScript_EatingBerries_2:
-	msgbox ChiiTown_EventScript_EatingBerries_Text_2, MSGBOX_YESNO
-	compare VAR_RESULT, YES
+	msgbox ChiiTown_EventScript_EatingBerries_Text_2
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, ChiiTown_EventScript_EatingBerries_Text_3, ChiiTown_EventScript_EatingBerries_Text_4
+	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_EatingBerries_4
 	goto ChiiTown_EventScript_EatingBerries_1
 
 ChiiTown_EventScript_EatingBerries_4:
-	removeitem 520, 1
+	removeitem ITEM_ORAN_BERRY
 	speakername ChiiTown_EventScript_EatingBerries_Text_0
-	msgbox ChiiTown_EventScript_EatingBerries_Text_3, MSGBOX_DEFAULT
+	msgbox ChiiTown_EventScript_EatingBerries_Text_5, MSGBOX_DEFAULT
+	closemessage
+	addvar VAR_PLAYER_REPUTATION, 1
 	goto ChiiTown_EventScript_EatingBerries_1
 
 
 ChiiTown_EventScript_BerryEnthusiast::
+	lock
+	faceplayer
 	speakername ChiiTown_EventScript_BerryEnthusiast_Text_0
-	msgbox ChiiTown_EventScript_BerryEnthusiast_Text_1, MSGBOX_NPC
+	msgbox ChiiTown_EventScript_BerryEnthusiast_Text_1
+	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
+	release
 	return
+
+
+ChiiTown_EventScript_BattlingGirl::
+	lock
+	faceplayer
+	goto_if_set FLAG_BEAT_CHII_TOWN_KIDS, ChiiTown_EventScript_BattlingGirl_2
+	compare VAR_FACING, DIR_NORTH
+	goto_if_eq ChiiTown_EventScript_BattlingGirl_6
+	applymovement 16, ChiiTown_EventScript_BattlingGirl_Movement_1
+ChiiTown_EventScript_BattlingGirl_5:
+	waitmovement 0
+	special GetPlayerMrMrsString
+	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingGirl_Text_1
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq ChiiTown_EventScript_BattlingGirl_10
+	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingGirl_Text_6
+	closemessage
+ChiiTown_EventScript_BattlingGirl_9:
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement 16, ChiiTown_EventScript_BattlingGirl_Movement_1
+	waitmovement 0
+ChiiTown_EventScript_BattlingGirl_1:
+	release
+	return
+
+ChiiTown_EventScript_BattlingGirl_2:
+	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingGirl_Text_0
+	closemessage
+	goto ChiiTown_EventScript_BattlingGirl_1
+
+ChiiTown_EventScript_BattlingGirl_6:
+	applymovement 16, ChiiTown_EventScript_BattlingGirl_Movement_0
+	goto ChiiTown_EventScript_BattlingGirl_5
+
+ChiiTown_EventScript_BattlingGirl_10:
+	trainerbattle_two_trainers TRAINER_MINORI, ChiiTown_EventScript_BattlingGirl_Text_4, TRAINER_KAITO, ChiiTown_EventScript_BattlingGirl_Text_5
+	setflag FLAG_BEAT_CHII_TOWN_KIDS
+	special GetPlayerMrMrsString
+	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingGirl_Text_0
+	closemessage
+	goto ChiiTown_EventScript_BattlingGirl_9
+
+
+ChiiTown_EventScript_BattlingBoy::
+	lock
+	faceplayer
+	goto_if_set FLAG_BEAT_CHII_TOWN_KIDS, ChiiTown_EventScript_BattlingBoy_2
+	applymovement 15, ChiiTown_EventScript_BattlingGirl_Movement_0
+	waitmovement 0
+	special GetPlayerMrMrsString
+	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingBoy_Text_1
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq ChiiTown_EventScript_BattlingBoy_6
+	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingBoy_Text_2
+	closemessage
+ChiiTown_EventScript_BattlingBoy_5:
+	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
+	applymovement 15, ChiiTown_EventScript_BattlingBoy_Movement_0
+	waitmovement 0
+ChiiTown_EventScript_BattlingBoy_1:
+	release
+	return
+
+ChiiTown_EventScript_BattlingBoy_2:
+	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingBoy_Text_0
+	closemessage
+	goto ChiiTown_EventScript_BattlingBoy_1
+
+ChiiTown_EventScript_BattlingBoy_6:
+	trainerbattle_two_trainers TRAINER_MINORI, ChiiTown_EventScript_BattlingGirl_Text_4, TRAINER_KAITO, ChiiTown_EventScript_BattlingGirl_Text_5
+	setflag FLAG_BEAT_CHII_TOWN_KIDS
+	special GetPlayerMrMrsString
+	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	msgbox ChiiTown_EventScript_BattlingBoy_Text_0
+	closemessage
+	goto ChiiTown_EventScript_BattlingBoy_5
 
 
 ChiiTown_EventScript_Mart::
@@ -204,11 +244,9 @@ ChiiTown_EventScript_Mart::
 ChiiTown_Mart:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_OINTMENT
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_AWAKENING
-	.2byte ITEM_ESCAPE_ROPE
-	.2byte ITEM_REPEL
+	.2byte ITEM_CHERI_BERRY
+	.2byte ITEM_PECHA_BERRY
+	.2byte ITEM_CHESTO_BERRY
 	.2byte ITEM_NONE
 
 ChiiTown_EventScript_Samurai::
@@ -227,6 +265,18 @@ ChiiTown_EventScript_SetTrespassVar::
 	return
 
 
+ChiiTown_EventScript_BattlingGirl_Movement_0:
+	face_down
+	step_end
+
+ChiiTown_EventScript_BattlingGirl_Movement_1:
+	face_left
+	step_end
+
+ChiiTown_EventScript_BattlingBoy_Movement_0:
+	face_right
+	step_end
+
 ChiiTown_EventScript_WatchfulMom_Text_0:
 	.string "Woman$"
 
@@ -241,6 +291,10 @@ ChiiTown_EventScript_WatchfulMom_Text_2:
 	.string "after school.\p"
 	.string "With all the recent Pokémon attacks,\n"
 	.string "I will not let them leave my sight!$"
+
+ChiiTown_EventScript_WatchfulMom_Text_3:
+	.string "Phew… Being a full-time mom is\n"
+	.string "exhausting…$"
 
 ChiiTown_EventScript_Shopper_Text_0:
 	.string "The lady who keeps the town's market\n"
@@ -289,6 +343,12 @@ ChiiTown_EventScript_EatingBerries_Text_2:
 	.string "Give the girl an Oran Berry?$"
 
 ChiiTown_EventScript_EatingBerries_Text_3:
+	.string "Give$"
+
+ChiiTown_EventScript_EatingBerries_Text_4:
+	.string "Don't give$"
+
+ChiiTown_EventScript_EatingBerries_Text_5:
 	.string "Oh my gosh, thank you!$"
 
 ChiiTown_EventScript_BerryEnthusiast_Text_0:
@@ -299,6 +359,45 @@ ChiiTown_EventScript_BerryEnthusiast_Text_1:
 	.string "Sensei said, but I haven't grown yet.\p"
 	.string "I don't care though. They're\n"
 	.string "delicious!$"
+
+ChiiTown_EventScript_BattlingGirl_Text_0:
+	.string "Wow, {STR_VAR_1}! You're super\n"
+	.string "strong!!\p"
+	.string "I'll have to train Snuggles a whole lot\n"
+	.string "more!$"
+
+ChiiTown_EventScript_BattlingGirl_Text_1:
+	.string "Hey {STR_VAR_1}! We've been\n"
+	.string "studying Pokémon battles in class.\l"
+	.string "Wanna fight with us?$"
+
+ChiiTown_EventScript_BattlingGirl_Text_2:
+	.string "Sure!$"
+
+ChiiTown_EventScript_BattlingGirl_Text_3:
+	.string "I don't want to.$"
+
+ChiiTown_EventScript_BattlingGirl_Text_4:
+	.string "Whaaaat?!$"
+
+ChiiTown_EventScript_BattlingGirl_Text_5:
+	.string "Well I never learned about THAT!$"
+
+ChiiTown_EventScript_BattlingGirl_Text_6:
+	.string "Ughhhh, older kids are so boooring!$"
+
+ChiiTown_EventScript_BattlingBoy_Text_0:
+	.string "Wow, {STR_VAR_1}! Can you be our\n"
+	.string "sensei?\p"
+	.string "That way, Destroyer will be invincible!$"
+
+ChiiTown_EventScript_BattlingBoy_Text_1:
+	.string "Hello {STR_VAR_1}! We're top of our\n"
+	.string "class! That means we're strong! Wanna\l"
+	.string "battle us?$"
+
+ChiiTown_EventScript_BattlingBoy_Text_2:
+	.string "Fine! Go do grownup stuff!$"
 
 ChiiTown_EventScript_Mart_Text_0:
 	.string "Saleswoman$"

@@ -5,6 +5,7 @@ mapscripts MaguroHarbor_Dojo_MapScripts {
 }
 
 script MaguroHarbor_Dojo_EventScript_Koishi {
+	speakername("Koishi")
 	trainerbattle_single(
 		TRAINER_KOISHI_1,
 		format(
@@ -33,6 +34,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	))
 	waitmessage
 	call(Common_EventScript_PlayGymBadgeFanfare)
+	speakername("Koishi")
 	msgbox(
 		format(
 			"I applaud your skill. You are still a child, yet you obviously have a natural aptitude for battle.\p"
@@ -44,6 +46,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	
 	giveitem(ITEM_TM_WATER_PULSE)
 
+	speakername("Koishi")
 	msgbox(
 		format(
 			"This scroll contains Water Pulse, a water-type move that can confuse your foes.\p"
@@ -100,9 +103,9 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 
 	specialvar(VAR_RESULT, GetPlayerFacingDirection)
 	if (var(VAR_RESULT) == DIR_WEST) {
-		applymovement(LOCALID_LEADER, moves(walk_down, walk_right * 3, walk_down * 5, walk_left * 5, walk_down * 3))
+		applymovement(LOCALID_LEADER, moves(walk_fast_down, walk_fast_right * 3, walk_fast_down * 5, walk_fast_left * 5, walk_fast_down * 3))
 	} else {
-		applymovement(LOCALID_LEADER, moves(walk_right * 3, walk_down * 6, walk_left * 5, walk_down * 3))
+		applymovement(LOCALID_LEADER, moves(walk_fast_right * 3, walk_fast_down * 6, walk_fast_left * 5, walk_fast_down * 3))
 	}
 	waitmovement(LOCALID_LEADER)
 	removeobject(LOCALID_LEADER)
@@ -174,7 +177,7 @@ script MaguroHarbor_Dojo_EventScript_DojoStatue {
 		msgbox(
 			"Dojo of Maguro Harbor\p"
 			"Certified wielders:\n"
-			"Natsuki,"
+			"Natsuki,\l"
 			"{PLAYER}",
 			MSGBOX_SIGN
 		)
