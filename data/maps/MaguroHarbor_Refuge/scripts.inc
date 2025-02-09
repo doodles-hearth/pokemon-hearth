@@ -69,6 +69,10 @@ MaguroHarbor_Refuge_BattleHariko_1:
 
 MaguroHarbor_Refuge_BattleHariko_3:
 	trainerbattle_no_intro TRAINER_HARIKO_MAGURO, MaguroHarbor_Refuge_BattleHariko_Text_2
+	setflag FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE
+	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	msgbox MaguroHarbor_Refuge_BattleHariko_Text_3
+	closemessage
 	goto MaguroHarbor_Refuge_BattleHariko_1
 
 MaguroHarbor_Refuge_BattleHariko_4:

@@ -177,13 +177,13 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_EventScript_Kecleon",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -366,24 +366,30 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TAILLOW)",
-      "x": 24,
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 12,
       "y": 18,
-      "elevation": 4,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 2,
-      "movement_range_y": 1,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0",
-      "afternoon": true,
-      "deadnight": false,
-      "earlymorning": true,
-      "evening": false,
-      "lunchtime": true,
-      "morning": true,
-      "night": false
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 14,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
