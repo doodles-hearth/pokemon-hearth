@@ -398,44 +398,68 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Confuse Ray
 - Confusion
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_KENTO ===
+Name: Kento
+Class: Hiker
+Pic: Hiker
 Gender: Male
-Music: Aqua
+Music: Hiker
+Double Battle: No
+AI: Smart Trainer
+
+Makuhita
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Focus Energy
+- Force Palm
+- Rock Smash
+
+=== TRAINER_SHUYA ===
+Name: Shuya
+Class: Hiker
+Pic: Hiker
+Gender: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Poochyena
-Level: 36
+Nacli
+Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Rock Throw
+- Mud Shot
+- Rock Polish
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Makuhita
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Rock Smash
+- Fake Out
+- Arm Thrust
+- Endure
+
+=== TRAINER_TAMA ===
+Name: Tama
+Class: Gentleman /* Gem Maniac */
+Pic: Gentleman
 Gender: Male
-Music: Aqua
+Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Smart Trainer
 
-Carvanha
-Level: 36
+Glimmet
+Level: 17
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Rock Polish
+- Stealth Rock
+- Acid Spray
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Zubat
-Level: 36
+Sableye
+Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Night Shade
+- Astonish
+- Fury Swipes
 
 === TRAINER_GABRIELLE_1 ===
 Name: GABRIELLE
@@ -516,23 +540,30 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bite
 - Howl
 
-=== TRAINER_MARCEL ===
-Name: MARCEL
-Class: Cooltrainer
-Pic: Cooltrainer M
+=== TRAINER_IKUTO ===
+Name: Ikuto
+Class: Hiker
+Pic: Hiker
 Gender: Male
-Music: Cool
-Items: Hyper Potion
+Music: Hiker
+Items: Uumegiri
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Manectric
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Aron
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Headbutt
+- Metal Claw
+- Rock Tomb
 
-Shiftry
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Onix
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Curse
+- Rock Throw
+- Stealth Rock
+- Bind
 
 === TRAINER_ALBERTO ===
 Name: ALBERTO
@@ -5045,7 +5076,7 @@ Gender: Female
 Music: Female
 Items: Uumegiri
 Double Battle: No
-AI: Smart Trainer
+AI: Smart Trainer / Ace Pokemon
 
 Surskit @ Oran Berry
 Level: 12

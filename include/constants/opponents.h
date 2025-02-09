@@ -9,12 +9,12 @@
 #define TRAINER_KOUTA                         3
 #define TRAINER_MASATO          4
 #define TRAINER_KOUGA          5
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_1       6
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_2       7
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_3       8
+#define TRAINER_KENTO       6
+#define TRAINER_SHUYA       7
+#define TRAINER_TAMA       8
 #define TRAINER_GABRIELLE_1                   9
 #define TRAINER_GRUNT_BEACHBOUND_ROUTE_1     10
-#define TRAINER_MARCEL                       11
+#define TRAINER_IKUTO                       11
 #define TRAINER_ALBERTO                      12
 #define TRAINER_ED                           13
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_4      14
