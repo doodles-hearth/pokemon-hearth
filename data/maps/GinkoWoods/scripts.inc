@@ -2,10 +2,11 @@ GinkoWoods_MapScripts::
 	.byte 0
 
 
-GinkoWoods_EventScript_Scrub1::
-	trainerbattle_single TRAINER_SCRUB_1, GinkoWoods_EventScript_Scrub1_Text_0, GinkoWoods_EventScript_Scrub1_Text_1
-	speakername GinkoWoods_EventScript_Scrub1_Text_2
-	msgbox GinkoWoods_EventScript_Scrub1_Text_3
+GinkoWoods_EventScript_Toshiki::
+	trainerbattle_single TRAINER_TOSHIKI, GinkoWoods_EventScript_Toshiki_Text_0, GinkoWoods_EventScript_Toshiki_Text_1
+	speakername GinkoWoods_EventScript_Toshiki_Text_2
+	msgbox GinkoWoods_EventScript_Toshiki_Text_3
+	closemessage
 	release
 	end
 
@@ -128,19 +129,18 @@ GinkoWoods_EventScript_TrainerTips2::
 	return
 
 
-GinkoWoods_EventScript_Scrub1_Text_0:
-	.string "I am a scrub bug catcher whose sole\n"
-	.string "purpose is to get stomped!$"
+GinkoWoods_EventScript_Toshiki_Text_0:
+	.string "These bugs are electrifying!$"
 
-GinkoWoods_EventScript_Scrub1_Text_1:
-	.string "I got stomped!$"
+GinkoWoods_EventScript_Toshiki_Text_1:
+	.string "Ouch! How did you do that?$"
 
-GinkoWoods_EventScript_Scrub1_Text_2:
-	.string "Scrub$"
+GinkoWoods_EventScript_Toshiki_Text_2:
+	.string "Toshiki$"
 
-GinkoWoods_EventScript_Scrub1_Text_3:
-	.string "If you lost to me you should\n"
-	.string "uninstall!$"
+GinkoWoods_EventScript_Toshiki_Text_3:
+	.string "Isn't Sewaddle cute, all wrapped up in\n"
+	.string "its leaf?$"
 
 GinkoWoods_EventScript_Toshio_Text_0:
 	.string "Our eyes met! Therefore we must\n"

@@ -108,43 +108,43 @@ MaguroHarbor_Dojo_EventScript_DojoStatue_2:
 
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Movement_0:
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
 	step_end
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Movement_1:
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_down
-	walk_down
-	walk_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
 	step_end
 
 MaguroHarbor_Dojo_EventScript_Koishi_Text_0:
@@ -255,7 +255,7 @@ MaguroHarbor_Dojo_EventScript_Advice_Text_2:
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_0:
 	.string "Dojo of Maguro Harbor\p"
 	.string "Certified wielders:\n"
-	.string "Natsuki,"
+	.string "Natsuki,\l"
 	.string "{PLAYER}$"
 
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_1:

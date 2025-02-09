@@ -70,22 +70,75 @@ MaguroHarbor_EventScript_FishcakeSalesmanSettingUp::
 MaguroHarbor_EventScript_FishcakeSalesmanSelling::
 	lock
 	faceplayer
+	goto_if_set FLAG_DAILY_FISHCAKE, MaguroHarbor_EventScript_FishcakeSalesmanSelling_2
 	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
-	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0, MSGBOX_DEFAULT
-	giveitem ITEM_FISHCAKE
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_1, MSGBOX_DEFAULT
+	showmoneybox 18, 0
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_3, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_4
 	closemessage
+	switch VAR_RESULT
+	case 0, MaguroHarbor_EventScript_FishcakeSalesmanSelling_6
+	case 1, MaguroHarbor_EventScript_FishcakeSalesmanSelling_7
+	case 2, MaguroHarbor_EventScript_FishcakeSalesmanSelling_8
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_1:
 	release
 	return
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_2:
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0, MSGBOX_DEFAULT
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_6:
+	checkmoney 500
+	compare VAR_RESULT, 0
+	goto_if_ne MaguroHarbor_EventScript_FishcakeSalesmanSelling_9
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_6
+	closemessage
+	hidemoneybox
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_7:
+	hidemoneybox
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_8:
+	hidemoneybox
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7
+	closemessage
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_9:
+	removemoney 500
+	updatemoneybox
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_5
+	closemessage
+	hidemoneybox
+	giveitem ITEM_FISHCAKE
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
 
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp::
 	lock
 	faceplayer
+	goto_if_set FLAG_DAILY_FISHCAKE, MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_2
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_1, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_FISHCAKE
+	setflag FLAG_DAILY_FISHCAKE
+MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_1:
+	release
+	return
+
+MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_2:
 	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
 	msgbox MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0, MSGBOX_DEFAULT
 	closemessage
-	release
-	return
+	goto MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_1
 
 
 MaguroHarbor_EventScript_FishPokemonSalesman::
@@ -299,12 +352,10 @@ StringVarSetter_4:
 	.align 2
 MaguroHarbor_Mart:
 	.2byte ITEM_POKE_BALL
-	.2byte ITEM_BERRY_JUICE
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_AWAKENING
-	.2byte ITEM_ESCAPE_ROPE
-	.2byte ITEM_REPEL
+	.2byte ITEM_OINTMENT
+	.2byte ITEM_CHERI_BERRY
+	.2byte ITEM_PECHA_BERRY
+	.2byte ITEM_CHESTO_BERRY
 	.2byte ITEM_NONE
 
 MaguroHarbor_EventScript_TownSign_Text_0:
@@ -328,13 +379,47 @@ MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_1:
 	.string "opened yet. Come back later!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0:
+	.string "Come back tomorrow if you'd like\n"
+	.string "another fishcake!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_1:
 	.string "Hello dear, want to try a fishcake?\p"
-	.string "They're the town's specialty!$"
+	.string "They're the town's specialty! Only\n"
+	.string "¥500!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2:
+	.string "One please!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_3:
+	.string "No, thanks.$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_4:
+	.string "Fishcakes?$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_5:
+	.string "One fishcake, coming right up!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_6:
+	.string "Oh dear! It appears you're a little\n"
+	.string "short on pocket money.$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7:
+	.string "What's in the Fishcakes, you ask?\p"
+	.string "Uhh… Cake!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0:
+	.string "I'm sorry but we've closed shop now,\n"
+	.string "dearie. We'll be open again\l"
+	.string "{STR_VAR_1}!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_1:
 	.string "Oh my! I'm sorry but we've closed shop\n"
 	.string "now, dearie. We'll be open again\l"
-	.string "{STR_VAR_1}$"
+	.string "{STR_VAR_1}!\p"
+	.string "Did you want to buy one of my\n"
+	.string "Fishcakes?\p"
+	.string "Here, you can have the leftovers from\n"
+	.string "today!$"
 
 MaguroHarbor_EventScript_FishPokemonSalesman_Text_0:
 	.string "laddie$"

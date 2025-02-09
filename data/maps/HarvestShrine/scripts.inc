@@ -4,6 +4,7 @@ HarvestShrine_MapScripts::
 
 HarvestShrine_EventScript_MonkBronzong::
 	lock
+	faceplayer
 	speakername HarvestShrine_EventScript_MonkBronzong_Text_0
 	msgbox HarvestShrine_EventScript_MonkBronzong_Text_1
 	closemessage

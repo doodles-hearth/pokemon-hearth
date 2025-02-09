@@ -58,10 +58,10 @@
         },
     },
 #line 97
-    [DIFFICULTY_NORMAL][TRAINER_SCRUB_1] =
+    [DIFFICULTY_NORMAL][TRAINER_TOSHIKI] =
     {
 #line 98
-        .trainerName = _("SCRUB1"),
+        .trainerName = _("Toshiki"),
 #line 99
         .trainerClass = TRAINER_CLASS_BUG_CATCHER,
 #line 100
@@ -35737,7 +35737,7 @@ F_TRAINER_FEMALE |
 #line 14250
             .iv = TRAINER_PARTY_IVS(3, 3, 3, 3, 3, 3),
 #line 14249
-            .lvl = 10,
+            .lvl = 11,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
@@ -35755,7 +35755,7 @@ F_TRAINER_FEMALE |
 #line 14258
             .iv = TRAINER_PARTY_IVS(6, 6, 6, 6, 6, 6),
 #line 14257
-            .lvl = 12,
+            .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {

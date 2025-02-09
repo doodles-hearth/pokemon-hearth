@@ -94,8 +94,8 @@ Geodude
 Level: 21
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_SCRUB_1 ===
-Name: SCRUB1
+=== TRAINER_TOSHIKI ===
+Name: Toshiki
 Class: Bug Catcher
 Pic: Bug Catcher
 Gender: Male
@@ -14246,7 +14246,7 @@ Double Battle: No
 AI: Smart Trainer
 
 Shroomish
-Level: 10
+Level: 11
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Leech Seed
 - Absorb
@@ -14254,7 +14254,7 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Tackle
 
 Froakie
-Level: 12
+Level: 13
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Bubble
 - Quick Attack

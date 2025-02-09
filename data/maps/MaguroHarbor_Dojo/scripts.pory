@@ -103,9 +103,9 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 
 	specialvar(VAR_RESULT, GetPlayerFacingDirection)
 	if (var(VAR_RESULT) == DIR_WEST) {
-		applymovement(LOCALID_LEADER, moves(walk_down, walk_right * 3, walk_down * 5, walk_left * 5, walk_down * 3))
+		applymovement(LOCALID_LEADER, moves(walk_fast_down, walk_fast_right * 3, walk_fast_down * 5, walk_fast_left * 5, walk_fast_down * 3))
 	} else {
-		applymovement(LOCALID_LEADER, moves(walk_right * 3, walk_down * 6, walk_left * 5, walk_down * 3))
+		applymovement(LOCALID_LEADER, moves(walk_fast_right * 3, walk_fast_down * 6, walk_fast_left * 5, walk_fast_down * 3))
 	}
 	waitmovement(LOCALID_LEADER)
 	removeobject(LOCALID_LEADER)
@@ -177,7 +177,7 @@ script MaguroHarbor_Dojo_EventScript_DojoStatue {
 		msgbox(
 			"Dojo of Maguro Harbor\p"
 			"Certified wielders:\n"
-			"Natsuki,"
+			"Natsuki,\l"
 			"{PLAYER}",
 			MSGBOX_SIGN
 		)

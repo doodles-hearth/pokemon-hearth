@@ -1582,8 +1582,8 @@
 #define FLAG_DAILY_SHUCKLE_BERRY_JUICE              (DAILY_FLAGS_START + 0x3)
 #define FLAG_DAILY_MON_CRY_RIDDLE                   (DAILY_FLAGS_START + 0x4)
 #define FLAG_DAILY_MON_DEX_RIDDLE                   (DAILY_FLAGS_START + 0x5)
-#define FLAG_UNUSED_0x926                           (DAILY_FLAGS_START + 0x6)
-#define FLAG_UNUSED_0x927                           (DAILY_FLAGS_START + 0x7)  // Unused Flag
+#define FLAG_DAILY_MON_SILHOUETTE_RIDDLE            (DAILY_FLAGS_START + 0x6)
+#define FLAG_DAILY_FISHCAKE                         (DAILY_FLAGS_START + 0x7)
 #define FLAG_UNUSED_0x928                           (DAILY_FLAGS_START + 0x8)  // Unused Flag
 #define FLAG_UNUSED_0x929                           (DAILY_FLAGS_START + 0x9)  // Unused Flag
 #define FLAG_DAILY_PICKED_LOTO_TICKET               (DAILY_FLAGS_START + 0xA)

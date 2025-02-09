@@ -4,6 +4,7 @@ mapscripts HarvestShrine_MapScripts {
 
 script HarvestShrine_EventScript_MonkBronzong {
 	lock
+	faceplayer
 	speakername("Monk")
 	// TODO EVA
 	// setmonnamed setmonseen setmondescribed

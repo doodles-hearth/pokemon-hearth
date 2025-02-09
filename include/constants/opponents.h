@@ -5,7 +5,7 @@
 
 #define TRAINER_NONE                          0
 #define TRAINER_SAWYER_1                      1
-#define TRAINER_SCRUB_1                       2
+#define TRAINER_TOSHIKI                       2
 #define TRAINER_KOUTA                         3
 #define TRAINER_MASATO          4
 #define TRAINER_KOUGA          5

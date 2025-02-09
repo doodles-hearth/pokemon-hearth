@@ -718,7 +718,7 @@ const struct Item gItemsInfo[] =
     [ITEM_UUMEGIRI] =
     {
         .name = _("Uumegiri"),
-        .price = 100,
+        .price = 500,
         .holdEffectParam = 20,
         .description = COMPOUND_STRING(
             "Gives 20 HP\n"
@@ -737,7 +737,7 @@ const struct Item gItemsInfo[] =
     [ITEM_SUPERGIRI] =
     {
         .name = _("Supergiri"),
-        .price = 500,
+        .price = 800,
         .holdEffectParam = 60,
         .description = COMPOUND_STRING(
             "Gives 60 HP\n"
@@ -756,7 +756,7 @@ const struct Item gItemsInfo[] =
     [ITEM_HYPERGIRI] =
     {
         .name = _("Hypergiri"),
-        .price = 800,
+        .price = 1500,
         .holdEffectParam = 120,
         .description = COMPOUND_STRING(
             "Gives 120 HP\n"
@@ -775,7 +775,7 @@ const struct Item gItemsInfo[] =
     [ITEM_MAXGIRI] =
     {
         .name = _("Maxgiri"),
-        .price = 1500,
+        .price = 2500,
         .holdEffectParam = 255,
         .description = COMPOUND_STRING(
             "Fully restores\n"
@@ -794,7 +794,7 @@ const struct Item gItemsInfo[] =
     [ITEM_SACREDGIRI] =
     {
         .name = _("Sacredgiri"),
-        .price = 2000,
+        .price = 3500,
         .holdEffectParam = 255,
         .description = COMPOUND_STRING(
             "heals a Pokémon\n"
