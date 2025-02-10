@@ -90,6 +90,7 @@ enum
 {
     MUGSHOT_JERRY, // OBJ_EVENT_GFX_MART_EMPLOYEE
     MUGSHOT_JENNIE, // OBJ_EVENT_GFX_WOMAN_3
+    MUGSHOT_OKADA,
     MUGSHOT_COUNT,
 };
 
@@ -427,6 +428,7 @@ static const struct SpriteTemplate sCursor_SpriteTemplate = {
 static const struct SellerMugshot sSellerMugshots[] = {
     // both are same thing btw, is just one is shortened with macro and others are pure
     MUGSHOT(JERRY, MART_EMPLOYEE, Jerry),
+    MUGSHOT(OKADA, TRAVELING_MERCHANT, Okada),
     {{.gfxId=OBJ_EVENT_GFX_WOMAN_3}, .gfx=gShopMenuSellerMugshotGfx_Jennie, .pal=gShopMenuSellerMugshotPal_Jennie},
 };
 
@@ -738,10 +740,10 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
     BuyMenuPrint(WIN_ITEM_DESCRIPTION, description, 4, 0, TEXT_SKIP_DRAW, COLORID_BLACK, TRUE);
 }
 
-static void SetAmountOfItemBought(u8 storeId, u16 itemPos, u8 amountBought)
+static void SetAmountOfItemBought(u8 storeId, u16 itemPos, s16 * amountBought)
 {
-    if (amountBought > LIMITED_SHOP_MAX_ITEM_QUANTITY)
-        amountBought = LIMITED_SHOP_MAX_ITEM_QUANTITY;
+    if (* amountBought > LIMITED_SHOP_MAX_ITEM_QUANTITY)
+        * amountBought = LIMITED_SHOP_MAX_ITEM_QUANTITY;
 
     // Calculate the index in limitedShopVars and 4-bit position
     u16 index = (storeId * LIMITED_SHOP_MAX_ITEMS + itemPos) / 2;
@@ -749,7 +751,7 @@ static void SetAmountOfItemBought(u8 storeId, u16 itemPos, u8 amountBought)
 
     // Clear the relevant 4 bits and then set the new 4-bit value
     gSaveBlock2Ptr->limitedShopVars[index] &= ~(0xF << bitOffset);
-    gSaveBlock2Ptr->limitedShopVars[index] |= (amountBought & 0xF) << bitOffset;
+    gSaveBlock2Ptr->limitedShopVars[index] |= (* amountBought & 0xF) << bitOffset;
 }
 
 u8 GetAmountOfItemBought(u8 storeId, u16 itemPos)
@@ -1048,7 +1050,7 @@ static void SetupSellerMugshot(void)
 
     if (gSpecialVar_LastTalked == 0) // failsafe
     {
-        LoadSellerMugshot(gShopMenuSellerMugshotGfx_Jerry, gShopMenuSellerMugshotPal_Jerry);
+        LoadSellerMugshot(gShopMenuSellerMugshotGfx_Jennie, gShopMenuSellerMugshotPal_Jennie);
         return;
     }
 
@@ -1537,7 +1539,7 @@ static void BuyMenuTryMakePurchase(u8 taskId)
         if (AddBagItem(sShopData->currentItemId, tItemCount) == TRUE)
         {
             GetSetItemObtained(sShopData->currentItemId, FLAG_SET_ITEM_OBTAINED);
-            SetAmountOfItemBought(sMartInfo.shopId, sShopData->selectedRow + sShopData->scrollOffset, tItemCount);
+            SetAmountOfItemBought(sMartInfo.shopId, sShopData->selectedRow + sShopData->scrollOffset, &tItemCount);
             BuyMenuDisplayMessage(taskId, gText_HereYouGoThankYou, BuyMenuSubtractMoney);
             RecordItemPurchase(taskId);
         }
