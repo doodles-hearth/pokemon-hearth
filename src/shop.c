@@ -740,20 +740,6 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
     BuyMenuPrint(WIN_ITEM_DESCRIPTION, description, 4, 0, TEXT_SKIP_DRAW, COLORID_BLACK, TRUE);
 }
 
-static void SetAmountOfItemBought(u8 storeId, u16 itemPos, s16 * amountBought)
-{
-    if (* amountBought > LIMITED_SHOP_MAX_ITEM_QUANTITY)
-        * amountBought = LIMITED_SHOP_MAX_ITEM_QUANTITY;
-
-    // Calculate the index in limitedShopVars and 4-bit position
-    u16 index = (storeId * LIMITED_SHOP_MAX_ITEMS + itemPos) / 2;
-    u8 bitOffset = (itemPos % 2) * 4;
-
-    // Clear the relevant 4 bits and then set the new 4-bit value
-    gSaveBlock2Ptr->limitedShopVars[index] &= ~(0xF << bitOffset);
-    gSaveBlock2Ptr->limitedShopVars[index] |= (* amountBought & 0xF) << bitOffset;
-}
-
 u8 GetAmountOfItemBought(u8 storeId, u16 itemPos)
 {
     // Calculate the index in limitedShopVars and 4-bit position
@@ -762,6 +748,29 @@ u8 GetAmountOfItemBought(u8 storeId, u16 itemPos)
 
     // Extract and return the 4-bit value
     return (gSaveBlock2Ptr->limitedShopVars[index] >> bitOffset) & 0xF;
+}
+
+static void SetAmountOfItemBought(u8 storeId, u16 itemPos, s16 *amountBought)
+{
+    // Calculate the index in limitedShopVars and 4-bit position
+    u16 index = (storeId * LIMITED_SHOP_MAX_ITEMS + itemPos) / 2;
+    u8 bitOffset = (itemPos % 2) * 4;
+
+    // Retrieve the current amount bought
+    u8 currentAmount = GetAmountOfItemBought(storeId, itemPos);
+
+    // Add the new amount
+    u8 newAmount = currentAmount + *amountBought;
+    
+    // Cap the value to LIMITED_SHOP_MAX_ITEM_QUANTITY
+    if (newAmount > LIMITED_SHOP_MAX_ITEM_QUANTITY)
+        newAmount = LIMITED_SHOP_MAX_ITEM_QUANTITY;
+
+    // Clear the relevant 4 bits and then set the new 4-bit value
+    gSaveBlock2Ptr->limitedShopVars[index] &= ~(0xF << bitOffset);
+    gSaveBlock2Ptr->limitedShopVars[index] |= (newAmount & 0xF) << bitOffset;
+
+    *amountBought = newAmount;
 }
 
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y, u8 itemPos)
@@ -1157,7 +1166,7 @@ static void BuyMenuInitWindows(void)
         u16 quantity = CountTotalItemQuantityInBag(item);
 
         if (sMartInfo.itemQuantity[0] != 0 // Indicates the item is unlimited
-             && GetAmountOfItemBought(sMartInfo.shopId, 0) == sMartInfo.itemQuantity[0])
+             && GetAmountOfItemBought(sMartInfo.shopId, 0) >= sMartInfo.itemQuantity[0])
             BuyMenuPrint(WIN_MULTI, gText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, gText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
         else
             PrintMoneyLocal(WIN_MULTI, 2*8, price, 84, COLORID_BLACK, FALSE);
@@ -1285,7 +1294,7 @@ static void UpdateItemData(void)
             u16 quantity = CountTotalItemQuantityInBag(item);
 
             if (sMartInfo.itemQuantity[i] != 0 // Indicates the item is unlimited
-                && GetAmountOfItemBought(sMartInfo.shopId, i) == sMartInfo.itemQuantity[i])
+                && GetAmountOfItemBought(sMartInfo.shopId, i) >= sMartInfo.itemQuantity[i])
                 BuyMenuPrint(WIN_MULTI, gText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, gText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
             else
                 PrintMoneyLocal(WIN_MULTI, 2*8, BuyMenuGetItemPrice(i), 84, COLORID_BLACK, FALSE);
@@ -1345,7 +1354,7 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
         u32 i = GridMenu_SelectedIndex(sShopData->gridItems);
 
         if (sMartInfo.itemQuantity[i] != 0 // Indicates the item is unlimited
-             && GetAmountOfItemBought(sMartInfo.shopId, i) == sMartInfo.itemQuantity[i])
+             && GetAmountOfItemBought(sMartInfo.shopId, i) >= sMartInfo.itemQuantity[i])
         {
             PlaySE(SE_BOO);
             gTasks[taskId].data[0] = 70;
