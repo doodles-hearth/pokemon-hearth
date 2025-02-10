@@ -1259,7 +1259,7 @@ static void UpdateItemData(void)
         const u8 *desc = BuyMenuGetItemDesc(i);
         BuyMenuPrint(WIN_MULTI, BuyMenuGetItemName(i), 0, 0, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
 
-        if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
+        if (sMartInfo.martType == MART_TYPE_NORMAL)
         {
             u16 quantity = CountTotalItemQuantityInBag(item);
             if (ItemId_GetPocket(item) == POCKET_TM_HM && item != ITEM_NONE)
@@ -1271,6 +1271,19 @@ static void UpdateItemData(void)
             }
 
             if (ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
+                BuyMenuPrint(WIN_MULTI, gText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, gText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
+            else
+                PrintMoneyLocal(WIN_MULTI, 2*8, BuyMenuGetItemPrice(i), 84, COLORID_BLACK, FALSE);
+
+            ConvertIntToDecimalStringN(gStringVar3, quantity, STR_CONV_MODE_RIGHT_ALIGN, 4);
+            BuyMenuPrint(WIN_MULTI, gStringVar3, GetStringRightAlignXOffset(FONT_SMALL, gStringVar3, 80), 4*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
+        }
+        else if (sMartInfo.martType == MART_TYPE_LIMITED)
+        {
+            u16 quantity = CountTotalItemQuantityInBag(item);
+
+            if (sMartInfo.itemQuantity[i] != 0 // Indicates the item is unlimited
+                && GetAmountOfItemBought(sMartInfo.shopId, i) == sMartInfo.itemQuantity[i])
                 BuyMenuPrint(WIN_MULTI, gText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, gText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
             else
                 PrintMoneyLocal(WIN_MULTI, 2*8, BuyMenuGetItemPrice(i), 84, COLORID_BLACK, FALSE);
@@ -1324,6 +1337,20 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
         sShopData->totalCost = gDecorations[sShopData->currentItemId].price;
 
     FillWindowPixelBuffer(WIN_ITEM_DESCRIPTION, PIXEL_FILL(0));
+
+    if (sMartInfo.martType == MART_TYPE_LIMITED)
+    {
+        u32 i = GridMenu_SelectedIndex(sShopData->gridItems);
+
+        if (sMartInfo.itemQuantity[i] != 0 // Indicates the item is unlimited
+             && GetAmountOfItemBought(sMartInfo.shopId, i) == sMartInfo.itemQuantity[i])
+        {
+            PlaySE(SE_BOO);
+            gTasks[taskId].data[0] = 70;
+            BuyMenuDisplayMessage(taskId, gText_ThatItemIsSoldOut, Task_WaitMessage);
+            return;
+        }
+    }
 
     if (sMartInfo.martType != MART_TYPE_DECOR || sMartInfo.martType != MART_TYPE_DECOR2)
     {
@@ -1434,6 +1461,14 @@ static void Task_BuyHowManyDialogueInit(u8 taskId)
         sShopData->maxQuantity = MAX_BAG_ITEM_CAPACITY;
     else
         sShopData->maxQuantity = maxQuantity;
+
+    if (sMartInfo.martType == MART_TYPE_LIMITED)
+    {
+        u32 i = GridMenu_SelectedIndex(sShopData->gridItems);
+
+        if (sMartInfo.itemQuantity[i] != 0) // Indicates the item is unlimited
+            sShopData->maxQuantity = sMartInfo.itemQuantity[i];
+    }
 
     gTasks[taskId].func = Task_BuyHowManyDialogueHandleInput;
 }
