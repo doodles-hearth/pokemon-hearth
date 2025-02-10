@@ -752,15 +752,16 @@ u8 GetAmountOfItemBought(u8 storeId, u16 itemPos)
 
 static void SetAmountOfItemBought(u8 storeId, u16 itemPos, s16 *amountBought)
 {
+    // Cap the value to LIMITED_SHOP_MAX_ITEM_QUANTITY
+    if (*amountBought > LIMITED_SHOP_MAX_ITEM_QUANTITY)
+        *amountBought = LIMITED_SHOP_MAX_ITEM_QUANTITY;
+
     // Calculate the index in limitedShopVars and 4-bit position
     u16 index = (storeId * LIMITED_SHOP_MAX_ITEMS + itemPos) / 2;
     u8 bitOffset = (itemPos % 2) * 4;
 
-    // Retrieve the current amount bought
-    u8 currentAmount = GetAmountOfItemBought(storeId, itemPos);
-
-    // Add the new amount
-    u8 newAmount = currentAmount + *amountBought;
+    // Add the purchased amount to the existing amount bought
+    u8 newAmount = GetAmountOfItemBought(storeId, itemPos) + *amountBought;
     
     // Cap the value to LIMITED_SHOP_MAX_ITEM_QUANTITY
     if (newAmount > LIMITED_SHOP_MAX_ITEM_QUANTITY)
@@ -769,8 +770,14 @@ static void SetAmountOfItemBought(u8 storeId, u16 itemPos, s16 *amountBought)
     // Clear the relevant 4 bits and then set the new 4-bit value
     gSaveBlock2Ptr->limitedShopVars[index] &= ~(0xF << bitOffset);
     gSaveBlock2Ptr->limitedShopVars[index] |= (newAmount & 0xF) << bitOffset;
+}
 
-    *amountBought = newAmount;
+static inline bool32 LimitedItemSoldOut(u8 itemPos)
+{
+    if (sMartInfo.itemQuantity[itemPos] != 0 // Indicates the item is unlimited
+     && GetAmountOfItemBought(sMartInfo.shopId, itemPos) >= sMartInfo.itemQuantity[itemPos])
+        return TRUE;
+    return FALSE;
 }
 
 static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y, u8 itemPos)
@@ -779,41 +786,34 @@ static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y, u8 itemPos)
 
     if (itemId != LIST_CANCEL)
     {
-        if (sMartInfo.martType == MART_TYPE_NORMAL)
+        switch (sMartInfo.martType)
         {
+        case MART_TYPE_LIMITED:
+            if (LimitedItemSoldOut(itemPos))
+            {
+                StringCopy(gStringVar1, gText_SoldOut);
+                StringExpandPlaceholders(gStringVar4, gText_StrVar1);
+                break;
+            }
+            // else fall through intentionally
+        case MART_TYPE_NORMAL:
             ConvertIntToDecimalStringN(
                 gStringVar1,
                 ItemId_GetPrice(itemId) >> IsPokeNewsActive(POKENEWS_SLATEPORT),
                 STR_CONV_MODE_LEFT_ALIGN,
                 MAX_MONEY_DIGITS);
             StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
-        }
-        else if (sMartInfo.martType == MART_TYPE_LIMITED)
-        {
-            if (sMartInfo.itemQuantity[itemPos] != 0 // 0 Indicates the item is unlimited
-             && GetAmountOfItemBought(sMartInfo.shopId, itemPos) >= sMartInfo.itemQuantity[itemPos])
-            {
-                StringCopy(gStringVar1, gText_SoldOut);
-                StringExpandPlaceholders(gStringVar4, gText_StrVar1);
-            }
-            else
-            {
-                ConvertIntToDecimalStringN(
-                    gStringVar1,
-                    ItemId_GetPrice(itemId) >> IsPokeNewsActive(POKENEWS_SLATEPORT),
-                    STR_CONV_MODE_LEFT_ALIGN,
-                    MAX_MONEY_DIGITS);
-                StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
-            }
-        }
-        else
-        {
+            break;
+        case MART_TYPE_DECOR:
+        case MART_TYPE_DECOR2:
+        default:
             ConvertIntToDecimalStringN(
                 gStringVar1,
                 gDecorations[itemId].price,
                 STR_CONV_MODE_LEFT_ALIGN,
                 MAX_MONEY_DIGITS);
             StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
+            break;
         }
 
         x = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 120);
@@ -1140,7 +1140,7 @@ static void BuyMenuInitWindows(void)
     BuyMenuPrint(WIN_MULTI, gText_Price, 0, 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
     BuyMenuPrint(WIN_MULTI, gText_InBag, 0, 4*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
 
-    if (sMartInfo.martType == MART_TYPE_NORMAL)
+    if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
     {
         u32 item = sMartInfo.itemList[0];
         u16 quantity = CountTotalItemQuantityInBag(item);
@@ -1152,21 +1152,8 @@ static void BuyMenuInitWindows(void)
             BuyMenuPrint(WIN_MULTI, move, GetStringRightAlignXOffset(FONT_SMALL, move, 80), 0, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
         }
 
-        if (ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
-            BuyMenuPrint(WIN_MULTI, gText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, gText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
-        else
-            PrintMoneyLocal(WIN_MULTI, 2*8, price, 84, COLORID_BLACK, FALSE);
-
-        ConvertIntToDecimalStringN(gStringVar3, quantity, STR_CONV_MODE_RIGHT_ALIGN, 4);
-        BuyMenuPrint(WIN_MULTI, gStringVar3, GetStringRightAlignXOffset(FONT_SMALL, gStringVar3, 80), 4*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
-    }
-    else if (sMartInfo.martType == MART_TYPE_LIMITED)
-    {
-        u32 item = sMartInfo.itemList[0];
-        u16 quantity = CountTotalItemQuantityInBag(item);
-
-        if (sMartInfo.itemQuantity[0] != 0 // Indicates the item is unlimited
-             && GetAmountOfItemBought(sMartInfo.shopId, 0) >= sMartInfo.itemQuantity[0])
+        if ((ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1))) ||
+         (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(0)))
             BuyMenuPrint(WIN_MULTI, gText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, gText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
         else
             PrintMoneyLocal(WIN_MULTI, 2*8, price, 84, COLORID_BLACK, FALSE);
@@ -1270,7 +1257,7 @@ static void UpdateItemData(void)
         const u8 *desc = BuyMenuGetItemDesc(i);
         BuyMenuPrint(WIN_MULTI, BuyMenuGetItemName(i), 0, 0, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
 
-        if (sMartInfo.martType == MART_TYPE_NORMAL)
+        if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
         {
             u16 quantity = CountTotalItemQuantityInBag(item);
             if (ItemId_GetPocket(item) == POCKET_TM_HM && item != ITEM_NONE)
@@ -1281,20 +1268,8 @@ static void UpdateItemData(void)
                 BuyMenuPrint(WIN_MULTI, move, GetStringRightAlignXOffset(FONT_SMALL, move, 80), 0, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
             }
 
-            if (ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
-                BuyMenuPrint(WIN_MULTI, gText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, gText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
-            else
-                PrintMoneyLocal(WIN_MULTI, 2*8, BuyMenuGetItemPrice(i), 84, COLORID_BLACK, FALSE);
-
-            ConvertIntToDecimalStringN(gStringVar3, quantity, STR_CONV_MODE_RIGHT_ALIGN, 4);
-            BuyMenuPrint(WIN_MULTI, gStringVar3, GetStringRightAlignXOffset(FONT_SMALL, gStringVar3, 80), 4*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
-        }
-        else if (sMartInfo.martType == MART_TYPE_LIMITED)
-        {
-            u16 quantity = CountTotalItemQuantityInBag(item);
-
-            if (sMartInfo.itemQuantity[i] != 0 // Indicates the item is unlimited
-                && GetAmountOfItemBought(sMartInfo.shopId, i) >= sMartInfo.itemQuantity[i])
+            if ((ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1))) ||
+             (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(i)))
                 BuyMenuPrint(WIN_MULTI, gText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, gText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
             else
                 PrintMoneyLocal(WIN_MULTI, 2*8, BuyMenuGetItemPrice(i), 84, COLORID_BLACK, FALSE);
@@ -1349,18 +1324,12 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
 
     FillWindowPixelBuffer(WIN_ITEM_DESCRIPTION, PIXEL_FILL(0));
 
-    if (sMartInfo.martType == MART_TYPE_LIMITED)
+    if (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(GridMenu_SelectedIndex(sShopData->gridItems)))
     {
-        u32 i = GridMenu_SelectedIndex(sShopData->gridItems);
-
-        if (sMartInfo.itemQuantity[i] != 0 // Indicates the item is unlimited
-             && GetAmountOfItemBought(sMartInfo.shopId, i) >= sMartInfo.itemQuantity[i])
-        {
-            PlaySE(SE_BOO);
-            gTasks[taskId].data[0] = 70;
-            BuyMenuDisplayMessage(taskId, gText_ThatItemIsSoldOut, Task_WaitMessage);
-            return;
-        }
+        PlaySE(SE_BOO);
+        gTasks[taskId].data[0] = 70;
+        BuyMenuDisplayMessage(taskId, gText_ThatItemIsSoldOut, Task_WaitMessage);
+        return;
     }
 
     if (sMartInfo.martType != MART_TYPE_DECOR || sMartInfo.martType != MART_TYPE_DECOR2)
@@ -1456,29 +1425,30 @@ static void Task_BuyHowManyDialogueInit(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    u16 maxQuantity;
-
     tItemCount = 1;
     BuyMenuPrintItemQuantityAndPrice(taskId);
     ScheduleBgCopyTilemapToVram(0);
 
-    // Avoid division by zero in-case something costs 0 pokedollars.
-    if (sShopData->totalCost == 0)
-        maxQuantity = MAX_BAG_ITEM_CAPACITY;
-    else
-        maxQuantity = GetMoney(&gSaveBlock1Ptr->money) / sShopData->totalCost;
+    // Avoid division by zero if the item costs 0 Pokédollars.
+    u32 maxQuantity = (sShopData->totalCost == 0) 
+        ? MAX_BAG_ITEM_CAPACITY 
+        : GetMoney(&gSaveBlock1Ptr->money) / sShopData->totalCost;
 
-    if (maxQuantity > MAX_BAG_ITEM_CAPACITY)
-        sShopData->maxQuantity = MAX_BAG_ITEM_CAPACITY;
-    else
-        sShopData->maxQuantity = maxQuantity;
+    sShopData->maxQuantity = (maxQuantity > MAX_BAG_ITEM_CAPACITY) 
+        ? MAX_BAG_ITEM_CAPACITY 
+        : maxQuantity;
 
     if (sMartInfo.martType == MART_TYPE_LIMITED)
     {
         u32 i = GridMenu_SelectedIndex(sShopData->gridItems);
 
-        if (sMartInfo.itemQuantity[i] != 0) // Indicates the item is unlimited
-            sShopData->maxQuantity = sMartInfo.itemQuantity[i];
+        // Limit purchasable items to remaining stock quantity.
+        if (sMartInfo.itemQuantity[i] != 0)
+        {
+            u32 remainingStock = sMartInfo.itemQuantity[i] - GetAmountOfItemBought(sMartInfo.shopId, i);
+            if (remainingStock < sShopData->maxQuantity)
+                sShopData->maxQuantity = remainingStock;
+        }
     }
 
     gTasks[taskId].func = Task_BuyHowManyDialogueHandleInput;
