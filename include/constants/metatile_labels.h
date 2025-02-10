@@ -315,6 +315,9 @@
 #define METATILE_LilycoveMuseum_Painting4_Left   0x262
 #define METATILE_LilycoveMuseum_Painting4_Right  0x263
 
+// gTileset_Maguro
+#define METATILE_Maguro_MaguroClosedWindows  0x266
+
 // gTileset_Mauville
 #define METATILE_Mauville_DeepSand_BottomMid  0x259
 #define METATILE_Mauville_DeepSand_Center     0x251

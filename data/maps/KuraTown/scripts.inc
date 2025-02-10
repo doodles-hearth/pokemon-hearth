@@ -24,7 +24,7 @@ KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_2:
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_5:
 	setmetatile 18, 6, METATILE_SakuKura_ClosedDoorTop, TRUE
-	setmetatile 18, 7, METATILE_SakuKura_Door, TRUE
+	setmetatile 18, 7, METATILE_SakuKura_ClosedDoorBottom, TRUE
 	setmetatile 43, 22, METATILE_SakuKura_ClosedDoorTop, TRUE
 	setmetatile 43, 23, METATILE_SakuKura_ClosedDoorBottom, TRUE
 	return
