@@ -20,6 +20,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/items.h"
 #include "config/save.h"
+#include "config/limited_shop.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -125,6 +126,11 @@
 #define NUM_DEX_FLAG_BYTES ROUND_BITS_TO_BYTES(POKEMON_SLOTS_NUMBER)
 #define NUM_FLAG_BYTES ROUND_BITS_TO_BYTES(FLAGS_COUNT)
 #define NUM_TRENDY_SAYING_BYTES ROUND_BITS_TO_BYTES(NUM_TRENDY_SAYINGS)
+
+#define LIMITED_SHOP_BITS (LIMITED_SHOP_COUNT * LIMITED_SHOP_MAX_ITEMS * BITS_PER_ITEM)
+#define LIMITED_SHOP_VAR_COUNT ROUND_BITS_TO_BYTES(LIMITED_SHOP_BITS)
+
+#define LIMITED_SHOP_MAX_ITEM_QUANTITY ((1 << BITS_PER_ITEM) - 1)
 
 // This produces an error at compile-time if expr is zero.
 // It looks like file.c:line: size of array `id' is negative
@@ -592,6 +598,7 @@ struct SaveBlock2
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
     /*0xF2C*/ u8 rivalName[PLAYER_NAME_LENGTH + 1];
+    /*?????*/ u8 limitedShopVars[LIMITED_SHOP_VAR_COUNT];
 
 #define QUEST_FLAGS_COUNT ROUND_BITS_TO_BYTES(QUEST_COUNT)
 #define SUB_FLAGS_COUNT ROUND_BITS_TO_BYTES(SUB_QUEST_COUNT)

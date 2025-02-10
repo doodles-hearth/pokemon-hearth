@@ -2611,10 +2611,19 @@ bool8 ScrCmd_dowildbattle(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
+    u16 shopId = ScriptReadHalfword(ctx);
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
-    CreatePokemartMenu(ptr);
+    if(!shopId)
+    {
+        CreatePokemartMenu(ptr);
+    }
+    else
+    {
+        CreateLimitedShopMenu(shopId);
+    }
+
     ScriptContext_Stop();
     return TRUE;
 }

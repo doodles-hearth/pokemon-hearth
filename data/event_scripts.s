@@ -37,6 +37,7 @@
 #include "constants/heal_locations.h"
 #include "constants/layouts.h"
 #include "constants/lilycove_lady.h"
+#include "constants/limited_shop.h"
 #include "constants/map_scripts.h"
 #include "constants/maps.h"
 #include "constants/mauville_old_man.h"

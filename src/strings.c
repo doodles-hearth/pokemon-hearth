@@ -273,6 +273,7 @@ const u8 gText_ThankYouIllSendItHome[] = _("Thank you!\nI'll send it to\nyour ho
 const u8 gText_ThanksIllSendItHome[] = _("Thanks!\nI'll send it to your\nPC at home.");
 const u8 gText_YouDontHaveMoney[] = _("You don't have\nenough money.{PAUSE_UNTIL_PRESS}");
 const u8 gText_NoMoreRoomForThis[] = _("You have no more\nroom for this\nitem.{PAUSE_UNTIL_PRESS}");
+const u8 gText_SorryWereOutOfThis[] = _("I'm very sorry, we're out of\nthis item.{PAUSE_UNTIL_PRESS}");
 const u8 gText_SpaceForVar1Full[] = _("The space for\n{STR_VAR_1}\nis full.{PAUSE_UNTIL_PRESS}");
 const u8 gText_AnythingElseICanHelp[] = _("Is there anything else I can help\nyou with?");
 const u8 gText_CanIHelpWithAnythingElse[] = _("Can I help you with anything else?");
