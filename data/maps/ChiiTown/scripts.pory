@@ -2,74 +2,73 @@ const FLAG_TAILLOW_1 = FLAG_TEMP_1
 const FLAG_TAILLOW_2 = FLAG_TEMP_2
 const FLAG_FLETCHLING_1 = FLAG_TEMP_3
 const FLAG_FLETCHLING_2 = FLAG_TEMP_4
-const VAR_HOUR_OF_DAY = VAR_0x8000
+const LOCALID_BATTLING_GIRL = 15
+const LOCALID_BATTLING_BOY = 16
 
 mapscripts ChiiTown_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
-        call(ChiiTown_EventScript_SpawnBirds)
+		call(ChiiTown_DrawMetatiles)
     }
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2: ChiiTown_EventScript_SetTrespassVar
     ]
 }
 
-script ChiiTown_EventScript_MomWaiting {
-	speakername("Woman")
-	msgbox(format(
-		"I'm waiting to pick up my children after school.\p"
-		"With all the recent Pokémon attacks, I will not let them leave my sight!"
-	), MSGBOX_NPC)
+script ChiiTown_DrawMetatiles{
+    gettimeofday
+	switch(var(VAR_RESULT)){
+        case TIME_DEAD_NIGHT:
+            setmetatile(14, 5, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE)
+            setmetatile(14, 6, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE)
+        case TIME_EARLY_MORNING:
+        case TIME_MORNING:
+        case TIME_LUNCHTIME:
+        case TIME_AFTERNOON:
+        case TIME_EVENING:
+        case TIME_NIGHT:
+        default:
+            end
+    }
 }
 
-script ChiiTown_EventScript_SpawnBirds {
-	// Random birds on roofs
-	// Taillow
-	setflag(FLAG_TAILLOW_1)
-	setflag(FLAG_TAILLOW_2)
-	// Fletchling
-	setflag(FLAG_FLETCHLING_1)
-	setflag(FLAG_FLETCHLING_2)
-
-	gettime
-	// Morning
-	if (var(VAR_HOUR_OF_DAY) >= 5 && var(VAR_HOUR_OF_DAY) <= 8) {
-		random(2)
-		switch(var(VAR_RESULT)) {
-			case 0:
-				clearflag(FLAG_TAILLOW_1)
-			case 1:
-				clearflag(FLAG_TAILLOW_2)
-		}
-		// Day
-	} elif (var(VAR_HOUR_OF_DAY) >= 9 && var(VAR_HOUR_OF_DAY) <= 17) {
-		random(2)
-		switch(var(VAR_RESULT)) {
-			case 0:
-				clearflag(FLAG_FLETCHLING_1)
-			case 1:
-				clearflag(FLAG_FLETCHLING_2)
-		}
+script ChiiTown_EventScript_WatchfulMom{
+	gettimeofday
+	speakername("Woman")
+	switch(var(VAR_RESULT)){
+		case TIME_MORNING:
+			msgbox(format(
+				"I'm dropping off my children to school.\p"
+				"With all the recent Pokémon attacks, I will not let them leave my sight!"
+			), MSGBOX_NPC)	
+		case TIME_AFTERNOON:
+			msgbox(format(
+				"I'm waiting to pick up my children after school.\p"
+				"With all the recent Pokémon attacks, I will not let them leave my sight!"
+			), MSGBOX_NPC)
+		default:
+			msgbox(format(
+				"Phew… Being a full-time mom is exhausting…"
+			), MSGBOX_NPC)
 	}
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
 }
 
 script ChiiTown_EventScript_Shopper {
 	speakername("Woman")
 	msgbox(format(
-		"The lady who keeps the town's market has started selling Pokémon medicine and Pokéballs!\p"
+		"The lady who keeps the town's market has started selling Pokémon medicine and Poké Balls!\p"
 		"Be careful, though: the ointments she sells can't be used in the middle of a battle."
 	), MSGBOX_NPC)
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
 }
 
 script ChiiTown_EventScript_Kecleon {
 	lock
 	faceplayer
 	playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
-	ismonseen(SPECIES_KECLEON)
-    if (var(VAR_RESULT)) {
-        speakername("Kecleon")
-    } else {
-        speakername("Weird lizard")
-    }
+	setspeakertomonname(SPECIES_KECLEON)
 	msgbox(format("Kleeeeh!"))
 	waitmoncry
 	closemessage
@@ -81,6 +80,221 @@ script ChiiTown_EventScript_PlantingFlowers {
 	msgbox(format(
 		"I'm planting flowers so that the wild Pokémon become happy again!"
 	), MSGBOX_NPC)
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+}
+
+script ChiiTown_EventScript_AlsoPlantingFlowers {
+	speakername("Little boy")
+	msgbox(format(
+		"She's making me plant flowers so that the wild Pokémon become happy again.\p"
+		"I'm not though…"
+	), MSGBOX_NPC)
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+}
+
+script ChiiTown_EventScript_WatchingTheChildren {
+	speakername("Sensei")
+	msgbox(format(
+		"To make sure the children's energy isn't pent up too much, I bring them out for recess."
+	), MSGBOX_NPC)
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+}
+
+script ChiiTown_EventScript_EatingBerries {
+	lock
+	faceplayer
+	speakername("Twin girl")
+	msgbox(format(
+		"Sensei said that we should eat berries to grow big and strong!\p"
+		"But how are we supposed to get them if we aren't big and strong yet?"
+	), MSGBOX_DEFAULT)
+	closemessage
+
+	if(checkitem(ITEM_ORAN_BERRY, 1)){
+		msgbox(format(
+			"Give the girl an Oran Berry?"
+		))
+
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Give",
+			"Don't give"
+		)
+
+		if(var(VAR_RESULT) == 0){
+			removeitem(ITEM_ORAN_BERRY)
+			speakername("Twin girl")
+			msgbox(format(
+				"Oh my gosh, thank you!"
+			), MSGBOX_DEFAULT)
+			closemessage
+
+			addvar(VAR_PLAYER_REPUTATION, 1)
+		}
+	}
+	closemessage
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+	release
+}
+
+script ChiiTown_EventScript_BerryEnthusiast {
+	lock
+	faceplayer
+	speakername("Twin boy")
+	msgbox(format(
+		"I've been eating berries just like Sensei said, but I haven't grown yet.\p"
+		"I don't care though. They're delicious!"
+	))
+	closemessage
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+	release
+}
+
+script ChiiTown_EventScript_BattlingGirl {
+	lock
+	faceplayer
+
+	if (flag(FLAG_BEAT_CHII_TOWN_KIDS)) {
+		speakername("Little girl")
+		msgbox(format(
+			"Wow, {STR_VAR_1}! You're super strong!!\p"
+			"I'll have to train Snuggles a whole lot more!"
+		))
+		closemessage
+	} else {
+			
+		// From bottom
+		if (var(VAR_FACING) == DIR_NORTH) {
+			applymovement(LOCALID_BATTLING_BOY, moves(face_down))
+			// From left
+		} else {
+			applymovement(LOCALID_BATTLING_BOY, moves(face_left))
+		}
+		waitmovement(0)
+		
+		special(GetPlayerMrMrsString)
+		speakername("Little girl")
+		msgbox(format(
+			"Hey {STR_VAR_1}! We've been studying Pokémon battles in class. Wanna fight with us?"
+		))
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Sure!",
+			"I don't want to."
+		)
+		closemessage
+
+		if(var(VAR_RESULT) == 0) {
+			trainerbattle_two_trainers(
+				TRAINER_MINORI,
+				format("Whaaaat?!"),
+				TRAINER_KAITO,
+				format("Well I never learned about THAT!")
+			)
+			setflag(FLAG_BEAT_CHII_TOWN_KIDS)
+
+			special(GetPlayerMrMrsString)
+			speakername("Little girl")
+			msgbox(format(
+				"Wow, {STR_VAR_1}! You're super strong!!\p"
+				"I'll have to train Snuggles a whole lot more!"
+			))
+			closemessage
+
+			// TODO EVA reward?
+		} else {
+			speakername("Little girl")
+			msgbox(format(
+				"Ughhhh, older kids are so boooring!"
+			))
+			closemessage
+		}
+
+		applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+		applymovement(LOCALID_BATTLING_BOY, moves(face_left))
+		waitmovement(0)
+	}
+	release
+}
+
+script ChiiTown_EventScript_BattlingBoy {
+	lock
+	faceplayer
+
+	if (flag(FLAG_BEAT_CHII_TOWN_KIDS)) {
+		speakername("Little boy")
+		msgbox(format(
+			"Wow, {STR_VAR_1}! Can you be our sensei?\p"
+			"That way, Destroyer will be invincible!"
+		))
+		closemessage
+	} else {
+		applymovement(LOCALID_BATTLING_GIRL, moves(face_down))
+		waitmovement(0)
+		
+		special(GetPlayerMrMrsString)
+		speakername("Little boy")
+		msgbox(format(
+			"Hello {STR_VAR_1}! We're top of our class! That means we're strong! Wanna battle us?"
+		))
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Sure!",
+			"I don't want to."
+		)
+		closemessage
+
+		if(var(VAR_RESULT) == 0) {
+			trainerbattle_two_trainers(
+				TRAINER_MINORI,
+				format("Whaaaat?!"),
+				TRAINER_KAITO,
+				format("Well I never learned about THAT!")
+			)
+			setflag(FLAG_BEAT_CHII_TOWN_KIDS)
+
+			special(GetPlayerMrMrsString)
+			speakername("Little boy")
+			msgbox(format(
+				"Wow, {STR_VAR_1}! Can you be our sensei?\p"
+				"That way, Destroyer will be invincible!"
+			))
+			closemessage
+
+			// TODO EVA reward?
+		} else {
+			speakername("Little boy")
+			msgbox(format(
+				"Fine! Go do grownup stuff!"
+			))
+			closemessage
+		}
+
+		applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+		applymovement(LOCALID_BATTLING_GIRL, moves(face_right))
+		waitmovement(0)
+	}
+	release
 }
 
 script ChiiTown_EventScript_Mart {
@@ -97,12 +311,10 @@ script ChiiTown_EventScript_Mart {
 
 mart ChiiTown_Mart {
 	ITEM_POKE_BALL
-	ITEM_BERRY_JUICE
-	ITEM_PARALYZE_HEAL
-	ITEM_ANTIDOTE
-	ITEM_AWAKENING
-	ITEM_ESCAPE_ROPE
-	ITEM_REPEL
+	ITEM_OINTMENT
+	ITEM_CHERI_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_CHESTO_BERRY
 }
 
 script ChiiTown_EventScript_Samurai {

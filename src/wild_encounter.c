@@ -187,7 +187,7 @@ static void FeebasSeedRng(u16 seed)
 }
 
 // LAND_WILD_COUNT
-static u8 ChooseWildMonIndex_Land(void)
+u8 ChooseWildMonIndex_Land(void)
 {
     u8 wildMonIndex = 0;
     bool8 swap = FALSE;
@@ -228,7 +228,7 @@ static u8 ChooseWildMonIndex_Land(void)
 }
 
 // ROCK_WILD_COUNT / WATER_WILD_COUNT
-static u8 ChooseWildMonIndex_WaterRock(void)
+u8 ChooseWildMonIndex_WaterRock(void)
 {
     u8 wildMonIndex = 0;
     bool8 swap = FALSE;
@@ -355,7 +355,7 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIn
     }
 }
 
-static u16 GetCurrentMapWildMonHeaderId(void)
+u16 GetCurrentMapWildMonHeaderId(void)
 {
     u16 i;
 
@@ -365,38 +365,30 @@ static u16 GetCurrentMapWildMonHeaderId(void)
         if (wildHeader->mapGroup == MAP_GROUP(UNDEFINED))
             break;
 
-        if (gWildMonHeaders[i].mapGroup == gSaveBlock1Ptr->location.mapGroup &&
-            gWildMonHeaders[i].mapNum == gSaveBlock1Ptr->location.mapNum)
+        // Found wild mon headers for the current map
+        if (
+            gWildMonHeaders[i].mapGroup == gSaveBlock1Ptr->location.mapGroup &&
+            gWildMonHeaders[i].mapNum == gSaveBlock1Ptr->location.mapNum
+        )
         {
             RtcCalcLocalTime();
             if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(ALTERING_CAVE) &&
                 gSaveBlock1Ptr->location.mapNum != MAP_NUM(ALTERING_CAVE))
             {
-                if (gLocalTime.hours >= 6 && gLocalTime.hours <= 8)
+                if (gLocalTime.hours >= EARLY_MORNING_HOUR_BEGIN && gLocalTime.hours < AFTERNOON_HOUR_END)
                 {
-                    i += 0; // Morning
+                    i += 0; // Day
                 }
-                else if (gLocalTime.hours >= 9 && gLocalTime.hours <= 17 &&
+                else if ((gLocalTime.hours >= EVENING_HOUR_BEGIN || gLocalTime.hours < DEAD_NIGHT_HOUR_END) &&
                          gWildMonHeaders[i + 1].mapGroup == gSaveBlock1Ptr->location.mapGroup &&
                          gWildMonHeaders[i + 1].mapNum == gSaveBlock1Ptr->location.mapNum)
                 {
-                    i += 1; // Day
+                    i += 1; // Night
                 }
-                else if (gLocalTime.hours >= 18 && gLocalTime.hours <= 20 &&
-                         gWildMonHeaders[i + 2].mapGroup == gSaveBlock1Ptr->location.mapGroup &&
-                         gWildMonHeaders[i + 2].mapNum == gSaveBlock1Ptr->location.mapNum)
-                {
-                    i += 2; // Evening
-                }
-                else if (gWildMonHeaders[i + 3].mapGroup == gSaveBlock1Ptr->location.mapGroup &&
-                         gWildMonHeaders[i + 3].mapNum == gSaveBlock1Ptr->location.mapNum)
-                {
-                    i += 3; // Night
-                }
-            }
-
-            if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ALTERING_CAVE) &&
-                gSaveBlock1Ptr->location.mapNum == MAP_NUM(ALTERING_CAVE))
+            } else if (
+                gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ALTERING_CAVE) &&
+                gSaveBlock1Ptr->location.mapNum == MAP_NUM(ALTERING_CAVE)
+            )
             {
                 u16 alteringCaveId = VarGet(VAR_ALTERING_CAVE_WILD_SET);
                 if (alteringCaveId >= NUM_ALTERING_CAVE_TABLES)
@@ -445,7 +437,7 @@ u8 PickWildMonNature(void)
     return Random() % NUM_NATURES;
 }
 
-static void CreateWildMon(u16 species, u8 level)
+void CreateWildMon(u16 species, u8 level)
 {
     bool32 checkCuteCharm = TRUE;
 
@@ -1161,4 +1153,25 @@ bool8 StandardWildEncounter_Debug(void)
 
     DoStandardWildBattle_Debug();
     return TRUE;
+}
+
+u8 ChooseHiddenMonIndex(void)
+{
+    #ifdef ENCOUNTER_CHANCE_HIDDEN_MONS_TOTAL
+        u8 rand = Random() % ENCOUNTER_CHANCE_HIDDEN_MONS_TOTAL;
+
+        if (rand < ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_0)
+            return 0;
+        else if (rand >= ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_0 && rand < ENCOUNTER_CHANCE_HIDDEN_MONS_SLOT_1)
+            return 1;
+        else
+            return 2;
+    #else
+        return 0xFF;
+    #endif
+}
+
+bool32 MapHasNoEncounterData(void)
+{
+    return (GetCurrentMapWildMonHeaderId() == HEADER_NONE);
 }

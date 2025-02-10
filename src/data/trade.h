@@ -1003,7 +1003,7 @@ static const struct InGameTrade sIngameTrades[] =
     [INGAME_TRADE_PSYDUCK] =
     {
         .nickname = _("Bread"),
-        .species = SPECIES_PSYDUCK,
+        .species = SPECIES_PSYDUCK_TOKUAN,
         .ivs = {4, 4, 4, 5, 5, 4},
         .abilityNum = 0,
         .otId = 73996,

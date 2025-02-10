@@ -1129,4 +1129,16 @@
 #undef P_FAMILY_PECHARUNT
 #define P_FAMILY_PECHARUNT               TRUE
 
+// Configs
+#undef P_UNKNOWN_MON_NAMES
+#define P_UNKNOWN_MON_NAMES     FALSE
+
+// Vars
+#undef B_VAR_DIFFICULTY
+#define B_VAR_DIFFICULTY     VAR_UNUSED_0x40FF
+
+// Flags
+#undef B_FLAG_SLEEP_CLAUSE
+#define B_FLAG_SLEEP_CLAUSE              FLAG_SPECIAL_FLAG_UNUSED_0x4003
+
 #endif // GUARD_CONFIG_TEST_H

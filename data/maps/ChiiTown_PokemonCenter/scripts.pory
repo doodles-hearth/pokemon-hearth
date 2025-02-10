@@ -127,12 +127,7 @@ script ChiiTown_PokemonCenter_EventScript_Snorunt {
 	lock
 	faceplayer
 	playmoncry(SPECIES_SNORUNT, CRY_MODE_NORMAL)
-	ismonseen(SPECIES_SNORUNT)
-    if (var(VAR_RESULT)) {
-        speakername("Snorunt")
-    } else {
-        speakername("Cold dumpling")
-    }
+	setspeakertomonname(SPECIES_SNORUNT)
 	msgbox(format(
 		"Glaglaglaglagla!"
 	))
@@ -147,7 +142,7 @@ script ChiiTown_PokemonCenter_EventScript_NeedMarket {
 	faceplayer
 	speakername("Woman")
 	msgbox(format(
-		"Berries, potions… Oh, right, I should get a few more Pokéballs from the town market!"
+		"Berries, ointments… Oh, right, I should get a few more Poké Balls from the town market!"
 	))
 	closemessage
 	release

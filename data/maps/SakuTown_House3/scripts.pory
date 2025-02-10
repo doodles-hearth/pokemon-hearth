@@ -88,9 +88,10 @@ script SakuTown_House3_EventScript_TradeMe {
                     setflag(FLAG_FORTREE_NPC_TRADE_COMPLETED)
                     clearflag(FLAG_HIDE_HOOTHOOT)
                     removeobject(LOCALID_PSYDUCK)
-                    addobject(LOCALID_HOOTHOOT)
 
                     waitstate
+
+                    addobject(LOCALID_HOOTHOOT)
 
                     bufferspeciesname(STR_VAR_1, VAR_0x8009)
                     msgbox(format(

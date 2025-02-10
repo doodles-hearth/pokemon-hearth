@@ -4,7 +4,7 @@
 SINGLE_BATTLE_TEST("Storm Drain absorbs Water-type moves and increases the Sp. Attack [Gen5+]")
 {
     GIVEN {
-        ASSUME(gMovesInfo[MOVE_WATER_GUN].type == TYPE_WATER);
+        ASSUME(GetMoveType(MOVE_WATER_GUN) == TYPE_WATER);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_GASTRODON_EAST) { Ability(ABILITY_STORM_DRAIN); }
     } WHEN {
@@ -17,12 +17,12 @@ SINGLE_BATTLE_TEST("Storm Drain absorbs Water-type moves and increases the Sp. A
             };
             ABILITY_POPUP(opponent, ABILITY_STORM_DRAIN);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Foe Gastrodon's Sp. Atk rose!");
+            MESSAGE("The opposing Gastrodon's Sp. Atk rose!");
         } else {
             NONE_OF {
                 ABILITY_POPUP(opponent, ABILITY_STORM_DRAIN);
                 ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-                MESSAGE("Foe Gastrodon's Sp. Atk rose!");
+                MESSAGE("The opposing Gastrodon's Sp. Atk rose!");
             };
             ANIMATION(ANIM_TYPE_MOVE, MOVE_WATER_GUN, player);
             HP_BAR(opponent);
@@ -34,7 +34,7 @@ SINGLE_BATTLE_TEST("Storm Drain absorbs Water-type moves and increases the Sp. A
 DOUBLE_BATTLE_TEST("Storm Drain forces single-target Water-type moves to target the Pokémon with this Ability.")
 {
     GIVEN {
-        ASSUME(gMovesInfo[MOVE_WATER_GUN].type == TYPE_WATER);
+        ASSUME(GetMoveType(MOVE_WATER_GUN) == TYPE_WATER);
         PLAYER(SPECIES_WOBBUFFET);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_GASTRODON_EAST) { Ability(ABILITY_STORM_DRAIN); }
@@ -54,10 +54,10 @@ DOUBLE_BATTLE_TEST("Storm Drain forces single-target Water-type moves to target 
             };
             ABILITY_POPUP(opponentLeft, ABILITY_STORM_DRAIN);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Foe Gastrodon's Sp. Atk rose!");
+            MESSAGE("The opposing Gastrodon's Sp. Atk rose!");
             ABILITY_POPUP(opponentLeft, ABILITY_STORM_DRAIN);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Foe Gastrodon's Sp. Atk rose!");
+            MESSAGE("The opposing Gastrodon's Sp. Atk rose!");
         } else {
             NONE_OF {
                 HP_BAR(opponentRight);

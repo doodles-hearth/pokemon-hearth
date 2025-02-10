@@ -1,3 +1,968 @@
+const LOCALID_GEISHA_1 = 1
+const LOCALID_GEISHA_2 = 2
+const LOCALID_GEISHA_3 = 3
+
+const LOCALID_GEISHA_4 = 4
+const LOCALID_GEISHA_5 = 5
+const LOCALID_GEISHA_6 = 6
+
+const LOCALID_GEISHA_7 = 7
+const LOCALID_GEISHA_8 = 8
+const LOCALID_GEISHA_9 = 9
+const LOCALID_GEISHA_10 = 10
+
+
 mapscripts YifuCity_Dojo_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		if (var(VAR_YIFU_DOJO_STATE) >= 1) {
+			call(YifuCity_Dojo_SetDoor1Metatiles)
+		}
+		if (var(VAR_YIFU_DOJO_STATE) >= 2) {
+			call(YifuCity_Dojo_SetDoor2Metatiles)
+		}
+		if (var(VAR_YIFU_DOJO_STATE) >= 3) {
+			call(YifuCity_Dojo_SetDoor3Metatiles)
+		}
+	}
+    MAP_SCRIPT_ON_TRANSITION: YifuCity_Dojo_SetupNpcs
+}
+
+script YifuCity_Dojo_SetupNpcs {
+    if (var(VAR_YIFU_DOJO_STATE) >= 1) {
+        setobjectxyperm(LOCALID_GEISHA_2, 15, 33)
+        setobjectxyperm(LOCALID_GEISHA_3, 18, 33)
+        removeobject(LOCALID_GEISHA_1)
+    }
+    if (var(VAR_YIFU_DOJO_STATE) >= 2) {
+        setobjectxyperm(LOCALID_GEISHA_4, 42, 33)
+        setobjectxyperm(LOCALID_GEISHA_6, 45, 33)
+    }
+    if (var(VAR_YIFU_DOJO_STATE) >= 3) {
+        setobjectxyperm(LOCALID_GEISHA_4, 42, 33)
+        setobjectxyperm(LOCALID_GEISHA_6, 45, 33)
+    }
+}
+
+script YifuCity_Dojo_EventScript_Dance2_FromUp {
+    lock
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 5, face_up, delay_16))
+    waitmovement(0)
+    goto(YifuCity_Dojo_EventScript_Dance2)
+}
+
+script YifuCity_Dojo_EventScript_Dance2_FromDown {
+    lock
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 5, walk_up, delay_16))
+    waitmovement(0)
+    goto(YifuCity_Dojo_EventScript_Dance2)
+}
+
+script YifuCity_Dojo_EventScript_Dance3_FromUp {
+    lock
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 6, walk_up, delay_16))
+    waitmovement(0)
+    goto(YifuCity_Dojo_EventScript_Dance3)
+}
+
+script YifuCity_Dojo_EventScript_Dance3_FromDown {
+    lock
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 6, walk_up * 2, delay_16))
+    waitmovement(0)
+    goto(YifuCity_Dojo_EventScript_Dance3)
+}
+
+script YifuCity_Dojo_EventScript_Dance1_FromUp {
+    lock
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 5, face_up, delay_16))
+    waitmovement(0)
+    goto(YifuCity_Dojo_EventScript_Dance1)
+}
+
+script YifuCity_Dojo_EventScript_Dance1_FromDown {
+    lock
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right * 5, walk_up, delay_16))
+    waitmovement(0)
+    goto(YifuCity_Dojo_EventScript_Dance1)
+}
+
+script YifuCity_Dojo_EventScript_Dance1 {
+    speakername("Kimono girls")
+    msgbox(format(
+        "Welcome to the Yifu City Dojo. Here you will have the pleasure to watch three different dances, at the end of which you will be asked a different question.\p"
+        "The first dance will soon commence!\l"
+        "The real Miss Yutaka, the Dojo Master, is among us.\p"
+        "She is the one on the left. If you haven't lost track of her by the end of our dance, we shall let you through.\p"
+        "If you guess wrong, you shall have to battle us.\p"
+        "Are you ready?"
+    ))
+    closemessage
+
+    special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2, delay_16 * 2))
+	waitmovement(0)
+
+    call(YifuCity_Dojo_Dance1)
+
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2, delay_16 * 2))
+	waitmovement(0)
+    special(RemoveCameraObject)
+
+    speakername("Kimono girls")
+    msgbox(format(
+        "Well? Can you remember which one is the real Yutaka?"
+    ))
+
+    dynmultichoice(
+        0,
+        0,
+        TRUE,
+        10,
+        0,
+        DYN_MULTICHOICE_CB_NONE,
+        "The left one.",
+        "The middle one.",
+        "The right one."
+    )
+    closemessage
+
+    // TODO EVA the dancers' real appearance is revealed
+
+    call(YifuCity_Dojo_Dance1_Jump)
+
+    if (var(VAR_RESULT) == 1) {
+
+        speakername("Kimono girls")
+        msgbox(format(
+            "You are correct!\p"
+            "Very well. You may proceed to the next room."
+        ))
+        closemessage
+
+        setvar(VAR_YIFU_DOJO_STATE, 1)
+
+        call(YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor)
+    } else {
+        speakername("Kimono girls")
+        msgbox(format(
+            "You are incorrect!\p"
+            "We shall face you in battle before you proceed."
+        ))
+        closemessage
+
+        call(YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle)
+
+        trainerbattle_two_trainers(
+            TRAINER_AKARI,
+            format("Oh!"),
+            TRAINER_YUKA,
+            format("I see.")
+        )
+
+        setvar(VAR_YIFU_DOJO_STATE, 1)
+
+        speakername("Kimono girls")
+        msgbox(format(
+            "Very well! You may now proceed."
+        ))
+        closemessage
+
+        // They walk up to the door
+        applymovement(LOCALID_GEISHA_2, moves(
+            walk_down
+            walk_right * 7
+            walk_up
+            face_right
+        ))
+        applymovement(LOCALID_GEISHA_3, moves(
+            walk_right * 8
+            face_left
+        ))
+
+        // Camera follows
+        special(SpawnCameraObject)
+        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
+
+        waitmovement(LOCALID_GEISHA_2)
+        waitmovement(LOCALID_GEISHA_3)
+	    waitmovement(OBJ_EVENT_ID_CAMERA)
+    }
+
+    delay(32)
+
+    // Door appears
+    call(YifuCity_Dojo_SetDoor1Metatiles)
+
+    call(YifuCity_Dojo_DoorAppears_Screenshake)
+
+    applymovement(LOCALID_GEISHA_2, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(LOCALID_GEISHA_3, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(LOCALID_GEISHA_2)
+    waitmovement(LOCALID_GEISHA_3)
+    waitse
+
+    delay(32)
+    
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left * 4))
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    special(RemoveCameraObject)
+
+    release
+}
+
+script YifuCity_Dojo_EventScript_Dance2 {
+    speakername("Kimono girls")
+    msgbox(format(
+        "Are you ready for a second dance? Follow each of our moves…"
+    ))
+    closemessage
+
+    special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2, delay_16 * 2))
+	waitmovement(0)
+
+    call(YifuCity_Dojo_Dance2)
+
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2, delay_16 * 2))
+	waitmovement(0)
+    special(RemoveCameraObject)
+
+    speakername("Kimono girls")
+    msgbox(format(
+        "Do you remember where the dancer on the right was placed originally?"
+    ))
+
+    dynmultichoice(
+        0,
+        0,
+        TRUE,
+        10,
+        0,
+        DYN_MULTICHOICE_CB_NONE,
+        "She was on the left.",
+        "She was in the middle.",
+        "She was on the right."
+    )
+    closemessage
+
+    // TODO EVA the dancers' real appearance is revealed
+
+    call(YifuCity_Dojo_Dance2_Jump)
+
+    if (var(VAR_RESULT) == 0) {
+
+        speakername("Kimono girls")
+        msgbox(format(
+            "You are correct!\p"
+            "Very well. You may proceed to the next room."
+        ))
+        closemessage
+
+        setvar(VAR_YIFU_DOJO_STATE, 2)
+
+        call(YifuCity_Dojo_Dance2_GeishasGoDirectlyToDoor)
+    } else {
+        speakername("Kimono girls")
+        msgbox(format(
+            "You are incorrect!\p"
+            "We shall face you in battle before you proceed."
+        ))
+        closemessage
+
+        call(YifuCity_Dojo_Dance2_GeishasSurroundPlayerToBattle)
+
+        trainerbattle_two_trainers(
+            TRAINER_KARIN,
+            format("I liked the dancing part better…"),
+            TRAINER_MIIKA,
+            format("Oh, well.")
+        )
+
+        setvar(VAR_YIFU_DOJO_STATE, 2)
+
+        speakername("Kimono girls")
+        msgbox(format(
+            "Very well! You may now proceed."
+        ))
+        closemessage
+
+        // They walk up to the door
+        applymovement(LOCALID_GEISHA_4, moves(
+            walk_down
+            walk_right * 7
+            walk_up
+            face_right
+        ))
+        applymovement(LOCALID_GEISHA_6, moves(
+            walk_right * 8
+            face_left
+        ))
+
+        // Camera follows
+        special(SpawnCameraObject)
+        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
+
+        waitmovement(LOCALID_GEISHA_4)
+        waitmovement(LOCALID_GEISHA_6)
+	    waitmovement(OBJ_EVENT_ID_CAMERA)
+    }
+
+    delay(32)
+
+    // Door appears
+    call(YifuCity_Dojo_SetDoor2Metatiles)
+
+    call(YifuCity_Dojo_DoorAppears_Screenshake)
+
+    applymovement(LOCALID_GEISHA_4, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(LOCALID_GEISHA_6, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(LOCALID_GEISHA_4)
+    waitmovement(LOCALID_GEISHA_6)
+    waitse
+
+    delay(32)
+    
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left * 4))
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    special(RemoveCameraObject)
+
+    release
+}
+
+script YifuCity_Dojo_EventScript_Dance3 {
+    speakername("Kimono girls")
+    msgbox(format(
+        "Let the third dance begin! Pay close attention…"
+    ))
+    closemessage
+
+    special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2, delay_16 * 2))
+	waitmovement(0)
+
+    call(YifuCity_Dojo_Dance3)
+
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2, delay_16 * 2))
+	waitmovement(0)
+    special(RemoveCameraObject)
+
+    speakername("Kimono girls")
+    msgbox(format(
+        "Can you tell us how many jumps there were in this dance?"
+    ))
+
+    dynmultichoice(
+        0,
+        0,
+        TRUE,
+        10,
+        0,
+        DYN_MULTICHOICE_CB_NONE,
+        "Eight.",
+        "Ten.",
+        "Twelve."
+    )
+    closemessage
+
+    call(YifuCity_Dojo_Dance3_Jump)
+
+    if (var(VAR_RESULT) == 0) {
+
+        speakername("Kimono girls")
+        msgbox(format(
+            "You are correct!\p"
+            "Very well. You may proceed to the last room."
+        ))
+        closemessage
+
+        setvar(VAR_YIFU_DOJO_STATE, 3)
+
+        call(YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor)
+    } else {
+        speakername("Kimono girls")
+        msgbox(format(
+            "You are incorrect!\p"
+            "We shall face you in battle before you proceed."
+        ))
+        closemessage
+
+        call(YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle)
+
+        trainerbattle_two_trainers(
+            TRAINER_NANAMI,
+            format("Pant… Hey, let me catch my breath!"),
+            TRAINER_KANAE,
+            format("You didn't see me trip over my own foot, did you?")
+        )
+
+        setvar(VAR_YIFU_DOJO_STATE, 3)
+
+        speakername("Kimono girls")
+        msgbox(format(
+            "Very well! You may now proceed."
+        ))
+        closemessage
+
+        // They walk up to the door
+        applymovement(LOCALID_GEISHA_7, moves(walk_up, face_right))
+        applymovement(LOCALID_GEISHA_9, moves(walk_up, face_left))
+        playse(SE_LEDGE)
+        applymovement(LOCALID_GEISHA_8, moves(
+            jump_2_up,
+            delay_16,
+            walk_right,
+            walk_up,
+            face_left
+        ))
+        applymovement(LOCALID_GEISHA_10, moves(
+            jump_2_up,
+            delay_16,
+            walk_up,
+            face_right
+        ))
+
+        // Camera follows
+        special(SpawnCameraObject)
+        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
+
+        waitmovement(LOCALID_GEISHA_10)
+	    waitmovement(OBJ_EVENT_ID_CAMERA)
+    }
+
+    delay(32)
+
+    // Door appears
+    call(YifuCity_Dojo_SetDoor3Metatiles)
+
+    call(YifuCity_Dojo_DoorAppears_Screenshake)
+
+    applymovement(LOCALID_GEISHA_4, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(LOCALID_GEISHA_6, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(LOCALID_GEISHA_4)
+    waitmovement(LOCALID_GEISHA_6)
+    waitse
+
+    delay(32)
+    
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    special(RemoveCameraObject)
+
+    release
+}
+
+script YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle {
+    applymovement(LOCALID_GEISHA_1, Common_Movement_TeleportAway)
+    applymovement(LOCALID_GEISHA_2, moves(walk_down))
+    applymovement(LOCALID_GEISHA_3, moves(walk_down))
+    waitmovement(LOCALID_GEISHA_2)
+    waitmovement(LOCALID_GEISHA_3)
+
+    playse(SE_LEDGE)
+
+    applymovement(LOCALID_GEISHA_2, moves(jump_2_down, delay_16, walk_right))
+    applymovement(LOCALID_GEISHA_3, moves(jump_2_down, delay_16, walk_left))
+    waitmovement(LOCALID_GEISHA_2)
+    waitmovement(LOCALID_GEISHA_3)
+}
+
+script YifuCity_Dojo_Dance2_GeishasSurroundPlayerToBattle {
+    applymovement(LOCALID_GEISHA_4, moves(walk_down))
+    applymovement(LOCALID_GEISHA_6, moves(walk_down))
+    waitmovement(LOCALID_GEISHA_4)
+    waitmovement(LOCALID_GEISHA_6)
+
+    playse(SE_LEDGE)
+
+    applymovement(LOCALID_GEISHA_4, moves(jump_2_down, delay_16, walk_right))
+    applymovement(LOCALID_GEISHA_6, moves(jump_2_down, delay_16, walk_left))
+    waitmovement(LOCALID_GEISHA_4)
+    waitmovement(LOCALID_GEISHA_6)
+}
+
+script YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle {
+    applymovement(LOCALID_GEISHA_7, moves(walk_right * 2, face_down))
+    applymovement(LOCALID_GEISHA_8, moves(walk_down))
+    applymovement(LOCALID_GEISHA_9, moves(walk_down))
+    applymovement(LOCALID_GEISHA_10, moves(walk_left * 2, face_down))
+    waitmovement(LOCALID_GEISHA_7)
+    waitmovement(LOCALID_GEISHA_8)
+    waitmovement(LOCALID_GEISHA_9)
+    waitmovement(LOCALID_GEISHA_10)
+
+    playse(SE_LEDGE)
+
+    applymovement(LOCALID_GEISHA_8, moves(jump_2_down, delay_16, face_right))
+    applymovement(LOCALID_GEISHA_9, moves(jump_2_down, delay_16, walk_left))
+    waitmovement(LOCALID_GEISHA_8)
+    waitmovement(LOCALID_GEISHA_9)
+}
+
+script YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor {
+    applymovement(LOCALID_GEISHA_1, Common_Movement_TeleportAway)
+    applymovement(LOCALID_GEISHA_2, moves(walk_down))
+    applymovement(LOCALID_GEISHA_3, moves(walk_down))
+    waitmovement(LOCALID_GEISHA_2)
+    waitmovement(LOCALID_GEISHA_3)
+
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
+
+    playse(SE_LEDGE)
+    applymovement(LOCALID_GEISHA_2, moves(jump_2_down, delay_16, walk_down, walk_right * 8, walk_up, face_right))
+    applymovement(LOCALID_GEISHA_3, moves(jump_2_down, delay_16, walk_right * 7, face_left))
+    waitmovement(LOCALID_GEISHA_2)
+    waitmovement(LOCALID_GEISHA_3)
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    waitse
+}
+
+script YifuCity_Dojo_Dance2_GeishasGoDirectlyToDoor {
+    applymovement(LOCALID_GEISHA_4, moves(walk_down))
+    applymovement(LOCALID_GEISHA_6, moves(walk_down))
+    waitmovement(LOCALID_GEISHA_4)
+    waitmovement(LOCALID_GEISHA_6)
+
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
+
+    playse(SE_LEDGE)
+    applymovement(LOCALID_GEISHA_4, moves(jump_2_down, delay_16, walk_down, walk_right * 8, walk_up, face_right))
+    applymovement(LOCALID_GEISHA_6, moves(jump_2_down, delay_16, walk_right * 7, face_left))
+    waitmovement(LOCALID_GEISHA_4)
+    waitmovement(LOCALID_GEISHA_6)
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    waitse
+}
+
+script YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor {
+    applymovement(LOCALID_GEISHA_8, moves(walk_up, face_right))
+    applymovement(LOCALID_GEISHA_9, moves(walk_up, face_left))
+    applymovement(LOCALID_GEISHA_7, moves(walk_right * 2))
+    applymovement(LOCALID_GEISHA_10, moves(walk_left * 2))
+    waitmovement(LOCALID_GEISHA_7)
+    waitmovement(LOCALID_GEISHA_8)
+    waitmovement(LOCALID_GEISHA_9)
+    waitmovement(LOCALID_GEISHA_10)
+
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
+    waitmovement(OBJ_EVENT_ID_CAMERA)
+    waitse
+}
+
+script YifuCity_Dojo_DoorAppears_Screenshake {
+    setvar(VAR_0x8004, 1)  // vertical pan
+    setvar(VAR_0x8005, 1)  // horizontal pan
+    setvar(VAR_0x8006, 2)  // num shakes
+    setvar(VAR_0x8007, 4)  // shake delay
+    special(ShakeCamera)
+    playse(SE_UNLOCK)
+}
+
+script YifuCity_Dojo_SetDoor1Metatiles {
+    setmetatile(16, 31, METATILE_DojoYifu_DoorTopLeft, TRUE)
+    setmetatile(17, 31, METATILE_DojoYifu_DoorTopRight, TRUE)
+    setmetatile(16, 32, METATILE_DojoYifu_DoorBottomLeft, TRUE)
+    setmetatile(17, 32, METATILE_DojoYifu_DoorBottomRight, TRUE)
+    special(DrawWholeMapView)
+}
+
+script YifuCity_Dojo_SetDoor2Metatiles {
+    setmetatile(43, 31, METATILE_DojoYifu_DoorTopLeft, TRUE)
+    setmetatile(44, 31, METATILE_DojoYifu_DoorTopRight, TRUE)
+    setmetatile(43, 32, METATILE_DojoYifu_DoorBottomLeft, TRUE)
+    setmetatile(44, 32, METATILE_DojoYifu_DoorBottomRight, TRUE)
+    special(DrawWholeMapView)
+}
+
+script YifuCity_Dojo_SetDoor3Metatiles {
+    setmetatile(22, 13, METATILE_DojoYifu_PassageTopLeft, TRUE)
+    setmetatile(25, 13, METATILE_DojoYifu_PassageTopRight, TRUE)
+    setmetatile(22, 14, METATILE_DojoYifu_PassageBottomLeft, TRUE)
+    setmetatile(25, 14, METATILE_DojoYifu_PassageBottomRight, TRUE)
+
+    setmetatile(23, 10, METATILE_DojoYifu_WoodFloorDark, FALSE)
+    setmetatile(24, 10, METATILE_DojoYifu_WoodFloor, FALSE)
+    setmetatile(23, 11, METATILE_DojoYifu_WoodFloorDark, FALSE)
+    setmetatile(24, 11, METATILE_DojoYifu_WoodFloor, FALSE)
+    setmetatile(23, 12, METATILE_DojoYifu_WoodFloorDark, FALSE)
+    setmetatile(24, 12, METATILE_DojoYifu_WoodFloor, FALSE)
+    setmetatile(23, 13, METATILE_DojoYifu_WoodFloorDark, FALSE)
+    setmetatile(23, 14, METATILE_DojoYifu_WoodFloorDark, FALSE)
+    setmetatile(24, 13, METATILE_DojoYifu_WoodFloor, FALSE)
+    setmetatile(24, 14, METATILE_DojoYifu_WoodFloor, FALSE)
+    setmetatile(24, 15, METATILE_DojoYifu_WoodFloor, FALSE)
+
+    setmetatile(23, 18, METATILE_DojoYifu_Stairs, FALSE)
+    setmetatile(24, 18, METATILE_DojoYifu_Stairs, FALSE)
+
+    special(DrawWholeMapView)
+}
+
+script YifuCity_Dojo_Dance1_Jump {
+    playse(SE_BANG)
+    applymovement(LOCALID_GEISHA_1, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_GEISHA_2, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_GEISHA_3, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    waitmovement(LOCALID_GEISHA_1)
+    waitmovement(LOCALID_GEISHA_2)
+    waitmovement(LOCALID_GEISHA_3)
+    waitse
+
+    delay(16)
+}
+
+script YifuCity_Dojo_Dance2_Jump {
+    playse(SE_BANG)
+    applymovement(LOCALID_GEISHA_4, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_GEISHA_5, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_GEISHA_6, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    waitmovement(LOCALID_GEISHA_4)
+    waitmovement(LOCALID_GEISHA_5)
+    waitmovement(LOCALID_GEISHA_6)
+    waitse
+
+    delay(16)
+}
+
+script YifuCity_Dojo_Dance3_Jump {
+    playse(SE_BANG)
+    applymovement(LOCALID_GEISHA_7, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_GEISHA_8, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_GEISHA_9, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_GEISHA_10, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    waitmovement(LOCALID_GEISHA_7)
+    waitmovement(LOCALID_GEISHA_8)
+    waitmovement(LOCALID_GEISHA_9)
+    waitmovement(LOCALID_GEISHA_10)
+    waitse
+
+    delay(16)
+}
+
+movement YifuCity_Dojo_Movement_JumpInPlaceDown {
+    jump_in_place_down
+}
+
+script YifuCity_Dojo_Dance1 {
+    applymovement(
+        LOCALID_GEISHA_1,
+        // Start left, end mid
+        moves( // 13
+            walk_down,
+            walk_right * 4
+            walk_up,
+            walk_left,
+            jump_2_left,
+            walk_left,
+            walk_down,
+            walk_right * 2,
+            walk_up
+            face_down
+        )
+    )
+    applymovement(
+        LOCALID_GEISHA_2,
+        // Start mid, end left
+        moves(
+            walk_left * 2,
+            walk_down,
+            walk_right * 4
+            walk_up,
+            walk_left * 4,
+            face_down
+        ) // 12
+    )
+    applymovement(
+        LOCALID_GEISHA_3,
+        moves( // 13
+            walk_up,
+            walk_left * 4
+            walk_down,
+            walk_right * 2
+            walk_down,
+            walk_right * 2,
+            walk_up,
+            face_down
+        )
+    )
+
+    waitmovement(LOCALID_GEISHA_1)
+    waitmovement(LOCALID_GEISHA_2)
+    waitmovement(LOCALID_GEISHA_3)
+}
+
+script YifuCity_Dojo_Dance2 {
+    // TODO EVA dance
+
+    // applymovement(
+    //     LOCALID_GEISHA_4,
+    //     moves(
+    //         walk_right,
+
+    //         jump_right,
+    //         jump_left,
+    //         jump_right,
+    //         jump_left
+    //     )
+    // )
+    // applymovement(
+    //     LOCALID_GEISHA_5,
+    //     moves(
+    //         delay_16,
+
+    //         jump_left,
+    //         jump_right,
+    //         jump_left,
+    //         jump_right
+    //     )
+    // )
+    // applymovement(
+    //     LOCALID_GEISHA_6,
+    //     moves(
+    //         walk_left
+    //     )
+    // )
+
+    // waitmovement(LOCALID_GEISHA_4)
+    // waitmovement(LOCALID_GEISHA_5)
+    // waitmovement(LOCALID_GEISHA_6)
+}
+
+script YifuCity_Dojo_Dance3 {
+    // TODO EVA dance
+}
+
+script YifuCity_Dojo_EventScript_Advice {
+    lock
+	faceplayer
+	if (flag(FLAG_BADGE03_GET)) {
+		msgbox(format(
+			"Such grace! Such swiftness! I am wowed!\p"
+            "{PLAYER}… That's a name to be remembered!"
+		))
+	} else {
+		msgbox(format(
+            "Hello, young challenger, and welcome to the Dance Hall Dojo! Think you've got what it takes to see through the dancer's intoxicating moves?\p"
+            "Watch out though, Master Yutaka can be as critical as she is beautiful.\l"
+            "She probably won't appreciate you walking around her Dojo with your clothes looking like… this…\l"
+            "Uh, nevermind my babbling! Go get 'em, champ!"
+		))
+	}
+	release
+}
+
+script YifuCity_Dojo_EventScript_DojoStatue {
+	lockall
+	if (flag(FLAG_BADGE03_GET)) {
+		msgbox(
+			"Dojo of Yifu City\p"
+			"Certified wielders:\n"
+            "Hariko,\l"
+			"Natsuki,\l"
+			"{PLAYER}",
+			MSGBOX_SIGN
+		)
+	} else {
+		msgbox(
+			"Dojo of Kura Village\p"
+			"Certified wielders:\n"
+            "Hariko,\l"
+			"Natsuki",
+			MSGBOX_SIGN
+		)
+	}
+	releaseall
+}
+
+script YifuCity_Dojo_EventScript_Akari {
+    trainerbattle_single(
+		TRAINER_AKARI,
+		format("You still wish to fight? Very well!"),
+		format("Oh!")
+	)
+	speakername("Akari")
+	msgbox(format("You are very graceful. Are you sure you're not a dancer?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script YifuCity_Dojo_EventScript_Yuka {
+    trainerbattle_single(
+		TRAINER_YUKA,
+		format("You have a good eye! Let's see if that applies to Pokémon, as well!"),
+		format("You have many talents, I see!")
+	)
+	speakername("Yuka")
+	msgbox(format("The next dance should be more of a challenge."), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script YifuCity_Dojo_EventScript_Nanami {
+    trainerbattle_single(
+		TRAINER_NANAMI,
+		format("Pant… I'm impressed… Pant… This last dance was… intense!"),
+		format("Pant… Hey, let me catch my breath!")
+	)
+	speakername("Nanami")
+	msgbox(format("I really need to exercise more…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script YifuCity_Dojo_EventScript_Kanae {
+    trainerbattle_single(
+		TRAINER_KANAE,
+		format("You didn't see me trip over my own foot, did you?"),
+        format("My dance wasn't perfect! I deserve this!")
+	)
+	speakername("Kanae")
+	msgbox(format("Next time my dance will be perfect, you'll see!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script YifuCity_Dojo_EventScript_Karin {
+    trainerbattle_single(
+		TRAINER_KARIN,
+		format("Oh good! A battle! I was getting bored."),
+        format("I am regretting this…")
+	)
+	speakername("Karin")
+	msgbox(format("Miss Yutaka holds us to the highest standards, both in battle and onstage!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script YifuCity_Dojo_EventScript_Miika {
+    trainerbattle_single(
+		TRAINER_MIIKA,
+		format("Please admire my brand-new designer kimono!"),
+        format("You don't look impressed at all!")
+	)
+	speakername("Miika")
+	msgbox(format("Working here has its perks. We get the finest silk clothes for free!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script YifuCity_Dojo_EventScript_Dancer {
+    lock
+    faceplayer
+    speakername("Kimono girl")
+    msgbox(format(
+        "I have no Pokémon! I'm only a dancer."
+    ))
+    release
+}
+
+script YifuCity_Dojo_EventScript_Dancer2 {
+    lock
+    faceplayer
+    speakername("Kimono girl")
+    msgbox(format(
+        "Come back to watch us dance sometimes!"
+    ))
+    release
+}
+
+script YifuCity_Dojo_EventScript_ImpossibleDancer {
+    lock
+    faceplayer
+    speakername("Kimono girl")
+    msgbox(format(
+        "Hey! How did you get up here?!"
+    ))
+    release
+}
+
+script YifuCity_Dojo_EventScript_Yutaka {
+    lock
+    faceplayer
+    speakername("Yutaka")
+    msgbox(format(
+        "Well done! Welcome to Yifu City's Doj-"
+    ))
+
+    applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+    playse(SE_PIN)
+    waitmovement(0)
+    waitse
+    delay(48)
+
+	trainerbattle_single(
+		TRAINER_YUTAKA_1,
+		format(
+            "Excuse me, what is this?\p"
+            "Is there a reason for the\n"
+            "accoutrement you're donning?\l"
+            "A carnival, perhaps?\l"
+            "Or have you lost a bet?\p"
+            "Or do you simply lack a basic\n"
+            "sense of style to such an\l"
+            "extreme degree?\p"
+            "Here you are, parading around\n"
+            "in your peasant's clothes…\p"
+            "(…Yutaka, you must not let this\n"
+            "offend you so!\l"
+            "You are stronger than that!)\p"
+            "Ahem… Let us move on…\l"
+            "You shall be fighting my exquisite\l"
+            "assortment of Pokémon,\l"
+            "in the hopes of obtaining\l"
+            "an official Token from me.\p"
+            "Please try not to be too\n"
+            "overwhelmed by my strength and,\l"
+            "most of all, by my impeccable\l"
+            "sense of fashion.\p"
+            "Let this battle begin!"
+		),
+		format("How dare you!"),
+		YifuCity_Dojo_EventScript_YutakaDefeated,
+		NO_MUSIC
+	)
+	// specialvar(VAR_RESULT, ShouldTryRematchBattle)
+	// goto_if_eq(VAR_RESULT, TRUE, MaguroHarbor_Dojo_EventScript_KoishiRematch)
+	msgbox(format(
+		"You shall achieve great things. I hope we meet again."
+	))
+
+    release
+	end
+}
+
+script YifuCity_Dojo_EventScript_YutakaDefeated {
+	message(format(
+		"{PLAYER} received the Silk Token from Yutaka."
+	))
+	waitmessage
+	call(Common_EventScript_PlayGymBadgeFanfare)
+	msgbox(
+		format(
+            "I am outrée! Your techniques are rough and vulgar, yet…\l"
+            "The victory is yours… That is undeniable.\p"
+			"I guess what you lack in aesthetic values, you compensate in strength.\p"
+			"With the Token I just gave you, your Pokémon will obey you without question, even those you trade with others.\p"
+			"Do accept this, as well."
+		),
+		MSGBOX_DEFAULT
+	)
 	
+    // TODO EVA change the TM: X-scissor? Cotton guard? Petal Dance? Flatter?
+	giveitem(ITEM_TM_DOUBLE_TEAM)
+
+	msgbox(
+		format(
+			"This scroll contains something something something.\p"
+			"And, uh… We should go clothes-shopping together sometime."
+            "I cannot bear to see your image suffer so."
+		),
+		MSGBOX_DEFAULT
+	)
+	closemessage
+
+	setflag(FLAG_BADGE03_GET)
+	setvar(VAR_0x8008, 3)
+	call(Common_EventScript_SetGymTrainers)
+	addvar(VAR_PLAYER_REPUTATION, 5)
+
+	// TODO rematch
+
+	release
+	end
 }

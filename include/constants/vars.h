@@ -4,7 +4,7 @@
 #define VARS_START 0x4000
 
 // temporary vars
-// The first 0x10 vars are are temporary--they are cleared every time a map is loaded.
+// The first 0x10 vars are temporary--they are cleared every time a map is loaded.
 #define TEMP_VARS_START            0x4000
 #define VAR_TEMP_0                 (TEMP_VARS_START + 0x0)
 #define VAR_TEMP_1                 (TEMP_VARS_START + 0x1)
@@ -114,8 +114,10 @@
 #define VAR_DECAY_BEACHBOUND_ROUTE                       0x4052
 #define VAR_LAVARIDGE_TOWN_STATE                         0x4053
 #define VAR_CURRENT_SECRET_BASE                          0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
-#define VAR_VERDANTURF_TOWN_STATE                        0x4055 // Unused Var
-#define VAR_PACIFIDLOG_TOWN_STATE                        0x4056 // Unused Var
+// 0: start
+// 1: Seen dance 1
+#define VAR_YIFU_DOJO_STATE                              0x4055
+#define VAR_EGG_SPECIES_GIVEN_TO_EGG_GIRL                0x4056
 #define VAR_PETALBURG_CITY_STATE                         0x4057
 #define VAR_SLATEPORT_CITY_STATE                         0x4058
 #define VAR_MAUVILLE_CITY_STATE                          0x4059 // Unused Var
@@ -178,7 +180,11 @@
 #define VAR_CONTEST_TYPE                                 0x4088
 #define VAR_SECRET_BASE_INITIALIZED                      0x4089
 #define VAR_CONTEST_PRIZE_PICKUP                         0x408A
-#define VAR_UNUSED_0x408B                                0x408B // Unused Var
+// 0: Beginning
+// 1: Seen by grunt when entering hideout
+// 3: Jumped by 4 grunts at once, beat them
+// 4: Beat the Golbat admins
+#define VAR_CROBAT_HIDEOUT_STATE                         0x408B
 #define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN              0x408C
 #define VAR_LITTLEROOT_RIVAL_STATE                       0x408D
 #define VAR_BOARD_BRINEY_BOAT_STATE                      0x408E
@@ -349,7 +355,7 @@
 #define VAR_MON_BOX_ID                0x8012
 #define VAR_MON_BOX_POS               0x8013
 #define VAR_UNUSED_0x8014             0x8014
-#define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of gTrainerBattleOpponent_A
+#define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of TRAINER_BATTLE_PARAM.opponentA
 
 #define SPECIAL_VARS_END              0x8015
 

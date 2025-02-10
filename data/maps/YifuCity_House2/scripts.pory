@@ -23,7 +23,7 @@ script YifuCity_House2_Seamstress {
 	))
 	closemessage
 
-	applymovement(LOCALID_TAROUNTULA, moves(jump_in_place_right, walk_right * 2, walk_up, walk_right * 2, delay_16, jump_in_place_up, delay_16, walk_left * 2, walk_down, walk_left * 2))
+	applymovement(LOCALID_TAROUNTULA, moves(jump_in_place_right, walk_right * 2, walk_up, walk_right * 2, face_up, delay_16, jump_in_place_up, delay_16, walk_left * 2, walk_down, walk_left * 2))
 	waitmovement(0)
 
 	release
@@ -62,7 +62,7 @@ script YifuCity_House2_Tarountula {
 	waitmoncry
 	closemessage
 
-	if (flag(FLAG_OBTAINED_DESTINY_KNOT)) {
+	if (!flag(FLAG_OBTAINED_DESTINY_KNOT)) {
 		applymovement(LOCALID_TAROUNTULA, moves(lock_facing_direction, jump_in_place_down, unlock_facing_direction))
 		waitmovement(0)
 

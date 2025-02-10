@@ -44,11 +44,14 @@
 #include "berry_powder.h"
 #include "mystery_gift.h"
 #include "union_room_chat.h"
+#include "constants/map_groups.h"
+#include "quests.h"
 #include "constants/items.h"
 #include "tx_registered_items_menu.h"
 #include "naming_screen.h"
 #include "clock.h"
 #include "fake_rtc.h"
+#include "difficulty.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -56,6 +59,7 @@ static void ClearFrontierRecord(void);
 static void WarpToStartPositionInPlayersBedroom(void);
 static void ResetMiniGamesRecords(void);
 static void ResetItemFlags(void);
+static void ResetDexNav(void);
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
 EWRAM_DATA bool8 gEnableContestDebugging = FALSE;
@@ -134,11 +138,12 @@ static void WarpToStartPositionInPlayersBedroom(void)
     // TODO EVA not here goddammit
     NameRival();
     // The correct one
-    // SetWarpDestination(MAP_GROUP(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), MAP_NUM(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), WARP_ID_NONE, 2, 4);
+    // SetWarpDestination(MAP_GROUP(YIFU_CITY_DOJO), MAP_NUM(YIFU_CITY_DOJO), WARP_ID_NONE, 4, 45);
+    SetWarpDestination(MAP_GROUP(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), MAP_NUM(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), WARP_ID_NONE, 2, 4);
     // SetWarpDestination(MAP_GROUP(LAVARIDGE_TOWN), MAP_NUM(LAVARIDGE_TOWN), WARP_ID_NONE, 9, 10);
     // SetWarpDestination(MAP_GROUP(SILVERIDGE), MAP_NUM(SILVERIDGE), WARP_ID_NONE, 18, 24);
     // SetWarpDestination(MAP_GROUP(WINDY_CAPE2), MAP_NUM(WINDY_CAPE2), WARP_ID_NONE, 16, 60);
-    SetWarpDestination(MAP_GROUP(CHII_TOWN), MAP_NUM(CHII_TOWN), WARP_ID_NONE, 19, 15);
+    // SetWarpDestination(MAP_GROUP(CHII_TOWN), MAP_NUM(CHII_TOWN), WARP_ID_NONE, 19, 15);
     // SetWarpDestination(MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), WARP_ID_NONE, 5, 19);
     // SetWarpDestination(MAP_GROUP(KURA_TOWN), MAP_NUM(KURA_TOWN), WARP_ID_NONE, 5, 19);
     // SetWarpDestination(MAP_GROUP(SAKU_TOWN), MAP_NUM(SAKU_TOWN), WARP_ID_NONE, 24, 21);
@@ -165,7 +170,7 @@ void ResetMenuAndMonGlobals(void)
 void NewGameInitData(void)
 {
     if (gSaveFileStatus == SAVE_STATUS_EMPTY || gSaveFileStatus == SAVE_STATUS_CORRUPT)
-        RtcReset();
+        RtcReset();      
 
     gDifferentSaveFile = TRUE;
     gSaveBlock2Ptr->encryptionKey = 0;
@@ -220,11 +225,15 @@ void NewGameInitData(void)
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
     ResetContestLinkResults();
+    SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
     ResetItemFlags();
+    ResetDexNav();
 
     // Custom
-    FakeRtc_ManuallySetTime(0, 8, 0, 0);
+    FakeRtc_ForwardTimeTo(12, 0, 0);
+    FakeRtc_SetNewGameDay();
     InitTimeBasedEvents();
+    QuestMenu_ResetMenuSaveData();
 }
 
 static void ResetMiniGamesRecords(void)
@@ -240,4 +249,12 @@ static void ResetItemFlags(void)
 #if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME
     memset(&gSaveBlock3Ptr->itemFlags, 0, sizeof(gSaveBlock3Ptr->itemFlags));
 #endif
+}
+
+static void ResetDexNav(void)
+{
+#if USE_DEXNAV_SEARCH_LEVELS == TRUE
+    memset(gSaveBlock3Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock3Ptr->dexNavSearchLevels));
+#endif
+    gSaveBlock3Ptr->dexNavChain = 0;
 }

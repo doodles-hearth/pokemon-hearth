@@ -1,0 +1,28 @@
+mapscripts YifuCity_House1_1F_MapScripts {
+	
+}
+
+script YifuCity_House1_1F_EventScript_Dad {
+	lock
+	faceplayer
+	speakername("Man")
+	msgbox(format(
+		"Our kids are constantly yelling and running and bickering…\p"
+		"I can't ever get anything done!"
+	))
+	closemessage
+	release	
+}
+
+script YifuCity_House1_1F_EventScript_Mom {
+	lock
+	faceplayer
+	speakername("Woman")
+	msgbox(format(
+		"I bought the children two different dolls at the festival in Hanabi City…\p"
+		"But now they're fighting over who has which!\p"
+		"I should have gotten two identical dolls…"
+	))
+	closemessage
+	release	
+}

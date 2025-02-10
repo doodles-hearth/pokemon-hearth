@@ -4,8 +4,8 @@
 ASSUMPTIONS
 {
     ASSUME(gItemsInfo[ITEM_SALAC_BERRY].holdEffect == HOLD_EFFECT_SPEED_UP);
-    ASSUME(gMovesInfo[MOVE_DRAGON_RAGE].effect == EFFECT_FIXED_DAMAGE_ARG);
-    ASSUME(gMovesInfo[MOVE_DRAGON_RAGE].argument == 40);
+    ASSUME(GetMoveEffect(MOVE_DRAGON_RAGE) == EFFECT_FIXED_DAMAGE_ARG);
+    ASSUME(GetMoveFixedDamage(MOVE_DRAGON_RAGE) == 40);
 }
 
 SINGLE_BATTLE_TEST("Salac Berry raises the holder's Speed by one stage when HP drops to 1/4 or below")
@@ -81,9 +81,9 @@ DOUBLE_BATTLE_TEST("Salac Berry does not miss timing miss timing")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
         MESSAGE("A sea of fire enveloped the opposing team!");
-        MESSAGE("The opposing Foe Wynaut was hurt by the sea of fire!");
+        MESSAGE("The opposing Wynaut was hurt by the sea of fire!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponentLeft);
-        MESSAGE("Using Salac Berry, the Speed of Foe Wynaut rose!");
-        MESSAGE("The opposing Foe Wobbuffet was hurt by the sea of fire!");
+        MESSAGE("Using Salac Berry, the Speed of the opposing Wynaut rose!");
+        MESSAGE("The opposing Wobbuffet was hurt by the sea of fire!");
     }
 }

@@ -45,7 +45,7 @@
 #define MAPSEC_OPEN_SEA_LEAGUE              0x29
 #define MAPSEC_OPEN_SEA_ICY                 0x2A
 #define MAPSEC_SABERSIDE_CHANNEL            0x2B
-#define MAPSEC_ROUTE_129                    0x2C
+#define MAPSEC_CROBAT_HIDEOUT                    0x2C
 #define MAPSEC_ROUTE_130                    0x2D
 #define MAPSEC_ROUTE_131                    0x2E
 #define MAPSEC_ROUTE_132                    0x2F

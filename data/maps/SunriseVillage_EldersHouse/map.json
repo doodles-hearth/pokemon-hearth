@@ -25,7 +25,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SunriseVillage_EldersHouse_Event_Elder",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NATSUKI",
@@ -38,7 +45,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SunriseVillage_EldersHouse_EventScript_Natsuki",
-      "flag": "FLAG_RECEIVED_STARTER"
+      "flag": "FLAG_RECEIVED_STARTER",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -50,8 +64,15 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Aron",
-      "flag": "FLAG_TEMP_2"
+      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Snivy",
+      "flag": "FLAG_TEMP_2",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -63,8 +84,15 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Spheal",
-      "flag": "FLAG_TEMP_2"
+      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Froakie",
+      "flag": "FLAG_TEMP_2",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -76,11 +104,18 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Trapinch",
-      "flag": "FLAG_TEMP_2"
+      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Cyndaquil",
+      "flag": "FLAG_TEMP_2",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(ARON)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SNIVY)",
       "x": 5,
       "y": 4,
       "elevation": 0,
@@ -89,11 +124,18 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Aron",
-      "flag": "FLAG_TEMP_1"
+      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Snivy",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SPHEAL)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(FROAKIE)",
       "x": 6,
       "y": 4,
       "elevation": 0,
@@ -102,11 +144,18 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Spheal",
-      "flag": "FLAG_TEMP_1"
+      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Froakie",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TRAPINCH)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CYNDAQUIL)",
       "x": 7,
       "y": 4,
       "elevation": 0,
@@ -115,8 +164,15 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Trapinch",
-      "flag": "FLAG_TEMP_1"
+      "script": "SunriseVillage_EldersHouse_Event_Pokeball_Starter_Cyndaquil",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(JOLTIK)",
@@ -129,7 +185,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SunriseVillage_EldersHouse_EventScript_Joltik",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [

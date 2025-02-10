@@ -122,8 +122,8 @@ static EWRAM_DATA u8 sPokeBallRotation = 0;
 static EWRAM_DATA struct PokedexListItem *sPokedexListItem = NULL;
 
 // This is written to, but never read.
-u8 gUnusedPokedexU8;
-void (*gPokedexVBlankCB)(void);
+COMMON_DATA u8 gUnusedPokedexU8 = 0;
+COMMON_DATA void (*gPokedexVBlankCB)(void) = NULL;
 
 struct SearchOptionText
 {
@@ -2416,7 +2416,9 @@ static void CreateMonListEntry(u8 position, u16 b, u16 ignored)
         if (vOffset >= LIST_SCROLL_STEP)
             vOffset -= LIST_SCROLL_STEP;
         if (entryNum < 0 || entryNum >= NATIONAL_DEX_COUNT || sPokedexView->pokedexList[entryNum].dexNum == 0xFFFF)
+        {
             ClearMonListEntry(17, vOffset * 2, ignored);
+        }
         else
         {
             ClearMonListEntry(17, vOffset * 2, ignored);
@@ -2473,7 +2475,7 @@ static u8 CreateMonName(u16 num, u8 left, u8 top)
 
     num = NationalPokedexNumToSpecies(num);
     if (num)
-        str = GetSpeciesName(num);
+        str = GetSpeciesName(num, DO_NAME_CHECK);
     else
         str = sText_TenDashes;
     PrintMonName(0, FONT_NARROW, str, left, top);
@@ -2711,7 +2713,9 @@ static bool8 TryDoInfoScreenScroll(void)
         }
 
         if (sPokedexView->selectedPokemon == selectedPokemon)
+        {
             return FALSE;
+        }
         else
         {
             sPokedexView->selectedPokemon = selectedPokemon;
@@ -2734,7 +2738,9 @@ static bool8 TryDoInfoScreenScroll(void)
         }
 
         if (sPokedexView->selectedPokemon == selectedPokemon)
+        {
             return FALSE;
+        }
         else
         {
             sPokedexView->selectedPokemon = selectedPokemon;
@@ -4169,7 +4175,7 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
     PrintInfoScreenText(str, 0x60, 0x19);
     species = NationalPokedexNumToSpecies(num);
     if (species)
-        name = GetSpeciesName(species);
+        name = GetSpeciesName(species, DO_NAME_CHECK);
     else
         name = sText_TenDashes2;
     PrintInfoScreenText(name, 114 + (6 * digitCount), 0x19);
@@ -4492,6 +4498,9 @@ s8 GetSetPokedexFlag(u16 nationalDexNo, u8 caseID)
     case FLAG_GET_SEEN:
         retVal = ((gSaveBlock1Ptr->dexSeen[index] & mask) != 0);
         break;
+    case FLAG_GET_NAMED:
+         retVal = ((gSaveBlock1Ptr->dexNamed[index] & mask) != 0);
+        break;
     case FLAG_GET_CAUGHT:
          retVal = ((gSaveBlock1Ptr->dexCaught[index] & mask) != 0);
         break;
@@ -4500,6 +4509,9 @@ s8 GetSetPokedexFlag(u16 nationalDexNo, u8 caseID)
         break;
     case FLAG_SET_CAUGHT:
         gSaveBlock1Ptr->dexCaught[index] |= mask;
+        // Catching a mon should also give it's name. Intentionally fall through.
+    case FLAG_SET_NAMED:
+        gSaveBlock1Ptr->dexNamed[index] |= mask;
         break;
     }
 
@@ -4542,7 +4554,7 @@ u16 GetHoennPokedexCount(u8 caseID)
     u16 count = 0;
     u16 i;
 
-    for (i = 0; i < HOENN_DEX_COUNT; i++)
+    for (i = 0; i < HOENN_DEX_COUNT - 1; i++)
     {
         switch (caseID)
         {
@@ -4585,7 +4597,7 @@ bool16 HasAllHoennMons(void)
 {
     u32 i, j;
 
-    for (i = 0; i < HOENN_DEX_COUNT; i++)
+    for (i = 0; i < HOENN_DEX_COUNT - 1; i++)
     {
         j = HoennToNationalOrder(i + 1);
         if (!(gSpeciesInfo[j].isMythical && !gSpeciesInfo[j].dexForceRequired) && !GetSetPokedexFlag(j, FLAG_GET_CAUGHT))
@@ -4692,8 +4704,8 @@ static u8 PrintCryScreenSpeciesName(u8 windowId, u16 num, u8 left, u8 top)
     switch (num)
     {
     default:
-        for (i = 0; GetSpeciesName(num)[i] != EOS && i < POKEMON_NAME_LENGTH; i++)
-            str[i] = GetSpeciesName(num)[i];
+        for (i = 0; GetSpeciesName(num, DO_NAME_CHECK)[i] != EOS && i < POKEMON_NAME_LENGTH; i++)
+            str[i] = GetSpeciesName(num, DO_NAME_CHECK)[i];
         WrapFontIdToFit(str, str + i, FONT_NORMAL, 60);
         break;
     case 0:
@@ -4925,7 +4937,7 @@ static int DoPokedexSearch(u8 dexMode, u8 order, u8 abcGroup, u8 bodyColor, u8 t
             u8 firstLetter;
 
             species = NationalPokedexNumToSpecies(sPokedexView->pokedexList[i].dexNum);
-            firstLetter = GetSpeciesName(species)[0];
+            firstLetter = GetSpeciesName(species, DO_NAME_CHECK)[0];
             if (LETTER_IN_RANGE_UPPER(firstLetter, abcGroup) || LETTER_IN_RANGE_LOWER(firstLetter, abcGroup))
             {
                 sPokedexView->pokedexList[resultsCount] = sPokedexView->pokedexList[i];

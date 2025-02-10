@@ -25,19 +25,19 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_House2_EventScript_Woman",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
     {
       "x": 4,
-      "y": 7,
-      "elevation": 0,
-      "dest_map": "MAP_SILVERIDGE",
-      "dest_warp_id": "5"
-    },
-    {
-      "x": 5,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_SILVERIDGE",

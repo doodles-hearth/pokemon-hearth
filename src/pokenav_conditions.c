@@ -334,7 +334,7 @@ u8 *CopyStringLeftAlignedToConditionData(u8 *dst, const u8 *src, s16 n)
 
 static u8 *CopyConditionMonNameGender(u8 *str, u16 listId, bool8 skipPadding)
 {
-    u16 boxId, monId, gender, species, level, lvlDigits;
+    u16 boxId, monId, gender, level, lvlDigits;
     struct BoxPokemon *boxMon;
     u8 *txtPtr, *str_;
     struct PokenavMonList *monListPtr = GetSubstructPtr(POKENAV_SUBSTRUCT_MON_LIST);
@@ -352,7 +352,7 @@ static u8 *CopyConditionMonNameGender(u8 *str, u16 listId, bool8 skipPadding)
 
     GetBoxOrPartyMonData(boxId, monId, MON_DATA_NICKNAME, str);
     StringGet_Nickname(str);
-    species = GetBoxOrPartyMonData(boxId, monId, MON_DATA_SPECIES, NULL);
+
     if (boxId == TOTAL_BOXES_COUNT)
     {
         level = GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL);
@@ -364,9 +364,6 @@ static u8 *CopyConditionMonNameGender(u8 *str, u16 listId, bool8 skipPadding)
         gender = GetBoxMonGender(boxMon);
         level = GetLevelFromBoxMonExp(boxMon);
     }
-
-    if ((species == SPECIES_NIDORAN_F || species == SPECIES_NIDORAN_M) && !StringCompare(str, GetSpeciesName(species)))
-        gender = MON_GENDERLESS;
 
     str_ = str; // For some reason, a variable is needed to match.
     while (*str_ != EOS)

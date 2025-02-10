@@ -118,7 +118,13 @@
 #define TRAINER_PIC_NATSUKI               100
 #define TRAINER_PIC_MONK                  101
 #define TRAINER_PIC_COOK                  102
-#define TRAINER_PIC_COUNT                 103
+#define TRAINER_PIC_KIMONO_GIRL           103
+#define TRAINER_PIC_ZUBAT_GRUNT_M         104
+#define TRAINER_PIC_ZUBAT_GRUNT_F         105
+#define TRAINER_PIC_CROBAT_BOSS           106
+#define TRAINER_PIC_SCHOOL_KID_M_ORANGE   107
+#define TRAINER_PIC_SCHOOL_KID_F_ORANGE   108
+#define TRAINER_PIC_COUNT                 109
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -370,7 +376,8 @@
 #define TRAINER_CLASS_SHAMISEN 0x48
 #define TRAINER_CLASS_MONK 0x49
 #define TRAINER_CLASS_COOK 0x4A
-#define TRAINER_CLASS_COUNT          0x4B
+#define TRAINER_CLASS_KIMONO_GIRL 0x4B
+#define TRAINER_CLASS_COUNT          0x4C
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

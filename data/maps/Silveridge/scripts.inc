@@ -1,81 +1,89 @@
 Silveridge_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, Silveridge_MapScripts_MAP_SCRIPT_ON_LOAD
 	.byte 0
+
+Silveridge_MapScripts_MAP_SCRIPT_ON_LOAD:
+	call Silveridge_DrawMetatiles
+	return
+
+
+Silveridge_DrawMetatiles::
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_DEAD_NIGHT, Silveridge_DrawMetatiles_2
+	case TIME_EARLY_MORNING, Silveridge_DrawMetatiles_3
+	case TIME_MORNING, Silveridge_DrawMetatiles_3
+	case TIME_LUNCHTIME, Silveridge_DrawMetatiles_3
+	case TIME_AFTERNOON, Silveridge_DrawMetatiles_3
+	case TIME_EVENING, Silveridge_DrawMetatiles_3
+	case TIME_NIGHT, Silveridge_DrawMetatiles_3
+Silveridge_DrawMetatiles_3:
+	end
+
+Silveridge_DrawMetatiles_2:
+	setmetatile 12, 10, METATILE_Silveridge_SilveridgeDoor, TRUE
+	setmetatile 18, 18, METATILE_Silveridge_SilveridgeDoor, TRUE
+	setmetatile 23, 6, METATILE_Silveridge_SilveridgeDoor, TRUE
+	setmetatile 24, 6, METATILE_Silveridge_SilveridgeDoor, TRUE
+	setmetatile 34, 6, METATILE_Silveridge_SilveridgeDoor, TRUE
+	setmetatile 20, 26, METATILE_Silveridge_SilveridgeDoor, TRUE
+	setmetatile 28, 26, METATILE_Silveridge_SilveridgeDoor, TRUE
+	return
 
 
 Silveridge_EventScript_LotOfRocks::
-# 6 "data/maps/Silveridge/scripts.pory"
 	lock
-# 7 "data/maps/Silveridge/scripts.pory"
 	faceplayer
-# 8 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_LotOfRocks_Text_0
-# 16 "data/maps/Silveridge/scripts.pory"
 	release
 	return
 
 
 Silveridge_EventScript_HousesMadeOfSilverTunnelStone::
-# 20 "data/maps/Silveridge/scripts.pory"
 	lock
-# 21 "data/maps/Silveridge/scripts.pory"
 	faceplayer
-# 22 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0
-# 25 "data/maps/Silveridge/scripts.pory"
 	release
 	return
 
 
 Silveridge_EventScript_MissingStatue::
-# 29 "data/maps/Silveridge/scripts.pory"
 	lock
-# 30 "data/maps/Silveridge/scripts.pory"
 	faceplayer
-# 31 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_MissingStatue_Text_0
-# 38 "data/maps/Silveridge/scripts.pory"
 	release
 	return
 
 
 Silveridge_EventScript_Wildflowers::
-# 42 "data/maps/Silveridge/scripts.pory"
 	lock
-# 44 "data/maps/Silveridge/scripts.pory"
 	faceplayer
-# 45 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_Wildflowers_Text_0
-# 52 "data/maps/Silveridge/scripts.pory"
 	release
 	return
 
 
 Silveridge_EventScript_TownSign::
-# 56 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_TownSign_Text_0, MSGBOX_SIGN
 	return
 
 
 Silveridge_EventScript_TownSculptureSignTBD::
-# 60 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_TownSculptureSignTBD_Text_0, MSGBOX_SIGN
 	return
 
 
 Silveridge_EventScript_SculptorsHouseSign::
-# 64 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_SculptorsHouseSign_Text_0, MSGBOX_SIGN
 	return
 
 
 Silveridge_EventScript_EldersHouseSign::
-# 68 "data/maps/Silveridge/scripts.pory"
 	msgbox Silveridge_EventScript_EldersHouseSign_Text_0, MSGBOX_SIGN
 	return
 
 
 Silveridge_EventScript_LotOfRocks_Text_0:
-# 9 "data/maps/Silveridge/scripts.pory"
 	.string "We don't have a lot of natural\n"
 	.string "resources here in Silveridge.\p"
 	.string "We don't have a lot of wood…\p"
@@ -86,14 +94,12 @@ Silveridge_EventScript_LotOfRocks_Text_0:
 	.string "rocks. We have a LOT of rocks.$"
 
 Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0:
-# 23 "data/maps/Silveridge/scripts.pory"
 	.string "See the houses around here? They\n"
 	.string "were all built using the stones\l"
 	.string "leftover from digging the Silver\l"
 	.string "tunnel.$"
 
 Silveridge_EventScript_MissingStatue_Text_0:
-# 32 "data/maps/Silveridge/scripts.pory"
 	.string "Hello, traveler. Have you looked at\n"
 	.string "this stunning statue that makes the\l"
 	.string "pride of our town?\p"
@@ -109,7 +115,6 @@ Silveridge_EventScript_MissingStatue_Text_0:
 	.string "while now.$"
 
 Silveridge_EventScript_Wildflowers_Text_0:
-# 46 "data/maps/Silveridge/scripts.pory"
 	.string "I loved gardening back when I lived on\n"
 	.string "Havenisle.\p"
 	.string "When I first moved here, the barren\n"
@@ -125,19 +130,15 @@ Silveridge_EventScript_Wildflowers_Text_0:
 	.string "there are so colorful!$"
 
 Silveridge_EventScript_TownSign_Text_0:
-# 56 "data/maps/Silveridge/scripts.pory"
 	.string "Silveridge\n"
 	.string "“A rocky town in shades of grey.”$"
 
 Silveridge_EventScript_TownSculptureSignTBD_Text_0:
-# 60 "data/maps/Silveridge/scripts.pory"
 	.string "“TO BE DETERMINED”\n"
 	.string "A beautiful statue by PLACEHOLDER$"
 
 Silveridge_EventScript_SculptorsHouseSign_Text_0:
-# 64 "data/maps/Silveridge/scripts.pory"
 	.string "The Sculptor's atelier$"
 
 Silveridge_EventScript_EldersHouseSign_Text_0:
-# 68 "data/maps/Silveridge/scripts.pory"
 	.string "Elder Iwa's house$"

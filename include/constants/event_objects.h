@@ -253,11 +253,22 @@
 #define OBJ_EVENT_GFX_MONK                       249
 #define OBJ_EVENT_GFX_SAMURAI                    250
 #define OBJ_EVENT_GFX_ELDER2                     251
+#define OBJ_EVENT_GFX_KIMONO_GIRL                252
+#define OBJ_EVENT_GFX_WOMAN_1                    253
+#define OBJ_EVENT_GFX_COOLTRAINER                254
+#define OBJ_EVENT_GFX_CROBAT_SHADOWS_BOSS        255
+#define OBJ_EVENT_GFX_CROBAT_SHADOWS_KEVIN       256
+#define OBJ_EVENT_GFX_BREEDER_F                  257
+#define OBJ_EVENT_GFX_BREEDER_M                  258
+#define OBJ_EVENT_GFX_LIGHT_SPRITE               259
+#define OBJ_EVENT_GFX_SCHOOL_KID_F               260
+#define OBJ_EVENT_GFX_SCHOOL_KID_M_ORANGE        261
+#define OBJ_EVENT_GFX_SCHOOL_KID_F_ORANGE        262
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        252
+#define NUM_OBJ_EVENT_GFX                        263
 
 
 // These are dynamic object gfx ids.
@@ -312,12 +323,19 @@
 #define TRACKS_SPOT       4
 #define TRACKS_BUG        5
 
+#define LIGHT_TYPE_BALL             0
+#define LIGHT_TYPE_PKMN_CENTER_SIGN 1
+#define LIGHT_TYPE_POKE_MART_SIGN   2
+
 #define FIRST_DECORATION_SPRITE_GFX OBJ_EVENT_GFX_PICHU_DOLL
 
 #define OBJ_KIND_NORMAL 0
 #define OBJ_KIND_CLONE  255 // Exclusive to FRLG
 
 // Special object event local ids
+// Used for link player OWs in CreateLinkPlayerSprite
+#define OBJ_EVENT_ID_DYNAMIC_BASE 0xF0
+
 #define OBJ_EVENT_ID_PLAYER 0xFF
 #define OBJ_EVENT_ID_CAMERA 0x7F
 #define OBJ_EVENT_ID_FOLLOWER 0xFE
@@ -394,7 +412,7 @@
 #define OBJ_EVENT_PAL_TAG_OLD_MAN                 0x1126
 #define OBJ_EVENT_PAL_TAG_KOISHI                  0x1127
 #define OBJ_EVENT_PAL_TAG_VALET                   0x1128
-#define OBJ_EVENT_PAL_TAG_FAT_MAN                 0x1129
+#define OBJ_EVENT_PAL_TAG_NPC_PINK_GREEN          0x1129
 #define OBJ_EVENT_PAL_TAG_ARTIST                  0x112A
 #define OBJ_EVENT_PAL_TAG_NINJA_BOY               0x112B
 #define OBJ_EVENT_PAL_TAG_UNUSED                  0x112C
@@ -432,6 +450,7 @@
 #define OBJ_EVENT_PAL_TAG_MONK                    0x114C
 #define OBJ_EVENT_PAL_TAG_SAMURAI                 0x114D
 #define OBJ_EVENT_PAL_TAG_YUTAKA                  0x114E
+#define OBJ_EVENT_PAL_TAG_KIMONO_GIRL             0x114F
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla
@@ -468,9 +487,22 @@
 // Gen VIII
 #define OBJ_EVENT_PAL_TAG_BALL_STRANGE            0x116A
 #endif //OW_FOLLOWERS_POKEBALLS
+
+// More custom Hearth palettes
+#define OBJ_EVENT_PAL_TAG_NPC_ELECTRIC_BLUE_ORANGE 0x116B
+#define OBJ_EVENT_PAL_TAG_YOUNGSTER  0x116C
+#define OBJ_EVENT_PAL_TAG_HEX_MANIAC 0x116D
+#define OBJ_EVENT_PAL_TAG_BREEDER_M 0x116E
+#define OBJ_EVENT_PAL_TAG_BREEDER_F 0x116F
+#define OBJ_EVENT_PAL_TAG_SCHOOL_KID_GREEN 0x1170
+#define OBJ_EVENT_PAL_TAG_SCHOOL_KID_ORANGE 0x1171
+
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
-#define OBJ_EVENT_PAL_TAG_EMOTES                  0x8002
+#define OBJ_EVENT_PAL_TAG_LIGHT                   0x8001
+#define OBJ_EVENT_PAL_TAG_LIGHT_2                 0x8002
+#define OBJ_EVENT_PAL_TAG_EMOTES                  0x8003
+#define OBJ_EVENT_PAL_TAG_NEON_LIGHT              0x8004
 // Not a real OW palette tag; used for the white flash applied to followers
 #define OBJ_EVENT_PAL_TAG_WHITE                   (OBJ_EVENT_PAL_TAG_NONE - 1)
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF

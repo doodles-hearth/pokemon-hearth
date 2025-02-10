@@ -356,7 +356,7 @@ const struct SpriteTemplate gSkyAttackBirdSpriteTemplate =
     .callback = AnimSkyAttackBird,
 };
 
-// same as AnimEllipticalGust but centered on targets
+// same as AnimEllipticalGust but centered on targets in a double battle
 static void AnimEllipticalGustCentered(struct Sprite *sprite)
 {
     if (IsDoubleBattle())

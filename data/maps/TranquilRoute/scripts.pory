@@ -105,11 +105,6 @@ script TranquilRoute_EventScript_SetupCutGrassCutscene {
 		} else {
 			setflag(FLAG_HIDE_CUT_MASTER)
 		}
-	} else {
-		gettime
-		if (var(VAR_HOUR_OF_DAY) < 7 || var(VAR_HOUR_OF_DAY) > 19) {
-			setflag(FLAG_HIDE_CUT_MASTER)
-		}
 	}
 }
 
@@ -212,6 +207,20 @@ script TranquilRoute_EventScript_Chikao {
 	end
 }
 
+script TranquilRoute_EventScript_Kodomo {
+	trainerbattle_single(
+		TRAINER_KODOMO,
+		format("Ha! Are you trying to avoid the tall grass?"),
+		format("Go back to the grass, you animal!")
+	)
+	speakername("Kodomo")
+	msgbox(format(
+		"I should look for stronger Pokémon in the tall grass, but I'm a little scared of getting jumped by surprise!"
+	))
+	closemessage
+	end
+}
+
 script TranquilRoute_EventScript_Takeshi {
 	trainerbattle_single(
 		TRAINER_TAKESHI,
@@ -266,7 +275,7 @@ script TranquilRoute_EventScript_WhiteslateRoadblock {
 	msgbox(format("Sorry, you can't go through. The road ahead is blocked."))
 	closemessage
 
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right))
 	waitmovement(0)
 
 	release
@@ -347,13 +356,9 @@ script TranquilRoute_EventScript_BerryWoman {
 script TranquilRoute_EventScript_Mareep {
 	lock
 	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
-	ismonseen(SPECIES_MAREEP)
-	if (var(VAR_RESULT)) {
-        speakername("Mareep")
-    } else {
-        speakername("Static sheep")
-    }
+	setspeakertomonname(SPECIES_MAREEP)
 	msgbox(format("Beeeeeh…"))
+	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
 	waitmoncry
 	release
 }
@@ -361,13 +366,9 @@ script TranquilRoute_EventScript_Mareep {
 script TranquilRoute_EventScript_Mareep2 {
 	lock
 	playmoncry(SPECIES_MAREEP, CRY_MODE_WEAK)
-	ismonseen(SPECIES_MAREEP)
-    if (var(VAR_RESULT)) {
-        speakername("Mareep")
-    } else {
-        speakername("Static sheep")
-    }
+	setspeakertomonname(SPECIES_MAREEP)
 	msgbox(format("Baaaaah…"))
+	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
 	waitmoncry
 	release
 }
@@ -375,7 +376,7 @@ script TranquilRoute_EventScript_Mareep2 {
 script TranquilRoute_TrainerTips1 {
 	msgbox(format(
 		"Did you know?\p"
-		"Some Pokémon only come out in the morning, in the evening, or at night.\p"
+		"Some Pokémon only come out at night.\p"
 		"Visit the same spot at different times of day to have a chance of seeing rare Pokémon!"
 	), MSGBOX_SIGN)
 }

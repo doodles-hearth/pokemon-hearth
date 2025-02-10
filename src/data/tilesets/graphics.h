@@ -2147,3 +2147,41 @@ const u16 gTilesetPalettes_House_Marble[][16] =
 };
 
 const u32 gTilesetTiles_House_Marble[] = INCBIN_U32("data/tilesets/secondary/house_marble/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_DojoYifu[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/dojo_yifu/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_DojoYifu[] = INCBIN_U32("data/tilesets/secondary/dojo_yifu/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_CrobatHideout[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/crobat_hideout/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_CrobatHideout[] = INCBIN_U32("data/tilesets/secondary/crobat_hideout/tiles.4bpp.lz");

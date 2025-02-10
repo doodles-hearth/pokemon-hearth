@@ -6,7 +6,7 @@
 #include "window.h"
 #include "decompress.h"
 #include "text.h"
-#include "characters.h"
+#include "constants/characters.h"
 #include "string_util.h"
 #include "palette.h"
 #include "palette_util.h"

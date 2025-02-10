@@ -1,4 +1,15 @@
+const LOCALID_GRUNT_PASSWORD_TOP = 9
+const LOCALID_GRUNT_PASSWORD_BOTTOM = 10
+const LOCALID_GRUNT_PASSWORD_ZUBAT = 11
+const FLAG_IS_MON_SENT_TO_PC = FLAG_TEMP_1
+
 mapscripts YifuCity_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_CROBAT_HIDEOUT_STATE, 3: YifuCity_EscapedCrobatHideoutWithSamurai
+    ]
+}
+
+script YifuCity_EscapedCrobatHideoutWithSamurai {
 	
 }
 
@@ -12,4 +23,467 @@ script YifuCity_EventScript_StoleMyMon {
 	))
 	closemessage
 	release
+}
+
+script YifuCity_EventScript_IDontFeelSafe {
+	lock
+	faceplayer
+	speakername("Woman")
+	msgbox(format(
+		"I don't feel safe with those Crobat weirdos creeping around the city…\p"
+		"I can't imagine how much worse it'd be were it not for the patrolling Samurai!"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_Samurai {
+	lock
+	faceplayer
+	speakername("Samurai")
+	msgbox(format(
+		"The Crobat Shadows' reign of terror will cease!"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_Samurai2 {
+	lock
+	faceplayer
+	speakername("Samurai")
+	msgbox(format(
+		"Please be vigilant! Should you witness any suspicious situation, report it immediately!"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_ShinySeller {
+	lock
+	faceplayer
+	speakername("Shady man")
+	msgbox(format(
+		"Hey, uh… Wanna buy this Pokémon 'ere?\n'Parently it's super rare or somethin', but I don't really need it, so…"
+	))
+
+	showmonpic(SPECIES_CATERPIE, 10, 3, TRUE)
+	playmoncry(SPECIES_CATERPIE, CRY_MODE_NORMAL)
+	waitmoncry
+
+	waitbuttonpress
+	hidemonpic
+	
+	speakername("Shady man")
+	msgbox(format(
+		"So whaddyasay?\n"
+		"It's yours for only ¥10000."
+	))
+
+	goto(YifuCity_ShinySellerChoice)
+
+	release
+}
+
+script YifuCity_ShinySellerChoice {
+	showmoneybox(18, 0)
+
+	dynmultichoice(
+		0,
+		0,
+		TRUE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"I'll buy it!",
+		"No, thanks.",
+		"Are you a criminal?"
+	)
+
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			if (checkmoney(10000)) {
+				speakername("Shady man")
+				msgbox(format(
+					"Alright yeah, gimme the cash."
+				))
+
+				setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CATERPIE)
+				givemon(SPECIES_CATERPIE, 5, isShiny=FALSE)
+
+				if (var(VAR_RESULT) == MON_CANT_GIVE) {
+					goto(Common_EventScript_NoMoreRoomForPokemon)
+				}
+
+				removemoney(10000)
+				updatemoneybox
+
+				closemessage
+
+				playfanfare(MUS_OBTAIN_ITEM)
+				message(format("{PLAYER} received the Pokémon Caterpie!"))
+				waitmessage
+				waitfanfare
+
+				hidemoneybox
+
+				bufferspeciesname(STR_VAR_1, SPECIES_CATERPIE)
+				if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY) {
+					msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
+					if (var(VAR_RESULT) != NO) {
+						call(Common_EventScript_GetGiftMonPartySlot)
+						call(Common_EventScript_NameReceivedPartyMon)
+					}
+				} elif (var(VAR_RESULT) == MON_GIVEN_TO_PC) {
+					msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
+					if (var(VAR_RESULT) != NO) {
+						call(Common_EventScript_NameReceivedBoxMon)
+					}
+					setflag(FLAG_IS_MON_SENT_TO_PC)
+				}
+
+				speakername("Shady man")
+				msgbox(format(
+					"Heheheehe… I'm rich! Finally rich!"
+				))
+				closemessage
+
+				if (var(VAR_FACING) == DIR_EAST) {
+					applymovement(VAR_LAST_TALKED, moves(walk_faster_down, walk_faster_left * 8, walk_faster_up * 11))
+				} else {
+					applymovement(VAR_LAST_TALKED, moves(walk_faster_left * 8, walk_faster_up * 10))
+				}
+				delay(24)
+				applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+				waitmovement(VAR_LAST_TALKED)
+				removeobject(VAR_LAST_TALKED)
+
+				delay(48)
+				applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown)
+				waitmovement(0)
+
+				msgbox(format(
+					"… … … … … …\n… … … … … …"
+				))
+				closemessage
+
+				playse(SE_PIN)
+				applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+				waitmovement(0)
+				waitse
+				delay(48)
+
+				showmonpic(SPECIES_CATERPIE, 10, 3, TRUE)
+				playmoncry(SPECIES_CATERPIE, CRY_MODE_NORMAL)
+				waitmoncry
+
+				msgbox(format(
+					"Some gold paint came off the Caterpie…"
+				))
+
+				playse(SE_M_MIST)
+				hidemonpic
+				showmonpic(SPECIES_CATERPIE, 10, 3)
+				waitse
+				
+				waitbuttonpress
+				closemessage
+				hidemonpic
+
+				if (flag(FLAG_IS_MON_SENT_TO_PC)) {
+					call(Common_EventScript_TransferredToPC)
+				}
+
+				setflag(FLAG_BOUGHT_FAKE_SHINY)
+
+			} else {
+				speakername("Shady man")
+				msgbox(format(
+					"You, uh… You don't got enough cash, kid."
+				))
+				closemessage
+			}
+		case 1:
+			hidemoneybox
+			speakername("Shady man")
+			msgbox(format(
+				"Then why are ya botherin' me? Scram, kid!"
+			))
+			closemessage
+		case 2:
+			hidemoneybox
+			speakername("Shady man")
+			msgbox(format(
+				"What? No! Why would ya even say that? Do I not look respectable to ya?\p"
+				"So uh… You gonna buy it or not?"
+			))
+			goto(YifuCity_ShinySellerChoice)
+	}
+
+	hidemoneybox
+	release
+}
+
+script YifuCity_Trigger_CrobatGruntsScram {
+	lockall
+
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
+	waitmovement(0)
+
+	speakername("Shady man")
+	msgbox(format(
+		"I tell ya man, damn password keeps changin'…"
+	))
+	closemessage
+
+	playse(SE_PIN)
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_ExclamationMark)
+	delay(16)
+	playse(SE_PIN)
+	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	waitse
+	delay(48)
+	turnobject(LOCALID_GRUNT_PASSWORD_TOP, DIR_WEST)
+	turnobject(LOCALID_GRUNT_PASSWORD_BOTTOM, DIR_WEST)
+	delay(48)
+
+	playse(SE_LEDGE)
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(jump_in_place_left))
+	waitmovement(0)
+	waitse
+
+	speakername("Shady man")
+	msgbox(format(
+		"Are ya kiddin' me? Lookaddis eavesdroppin' moron!\p"
+		"Want a taste of this?"
+	))
+	closemessage
+
+	playse(SE_BALL_OPEN)
+	addobject(LOCALID_GRUNT_PASSWORD_ZUBAT)
+	playmoncry(SPECIES_ZUBAT, CRY_MODE_NORMAL)
+	applymovement(
+		LOCALID_GRUNT_PASSWORD_ZUBAT,
+		moves(
+			exit_pokeball,
+			face_left,
+			lock_anim,
+			lock_facing_direction,
+			walk_faster_left,
+			walk_faster_right
+			unlock_anim,
+			unlock_facing_direction
+		)
+	)
+	waitmoncry
+	waitse
+	waitmovement(0)
+
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, walk_left * 2, unlock_facing_direction))
+	waitmovement(0)
+
+	speakername("Shady man")
+	msgbox(format(
+		"Yeah, that's right, hightail it outta here!"
+	))
+	closemessage
+
+	delay(24)
+	addobject(LOCALID_GRUNT_PASSWORD_ZUBAT)
+	applymovement(LOCALID_GRUNT_PASSWORD_ZUBAT, moves(enter_pokeball))
+	waitmovement(0)
+
+	turnobject(LOCALID_GRUNT_PASSWORD_TOP, DIR_SOUTH)
+	turnobject(LOCALID_GRUNT_PASSWORD_BOTTOM, DIR_NORTH)
+
+	releaseall
+}
+
+script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
+	lockall
+
+	speakername("???")
+	msgbox(format(
+		"I tell ya man, damn password keeps changin'…"
+	))
+	closemessage
+
+	delay(24)
+	
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
+	waitmovement(0)
+	delay(48)
+
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
+	waitmovement(0)
+
+	speakername("Shady man")
+	msgbox(format(
+		"Last time, I got it wrong and he didn' let me through!\p"
+		"Like, brother, why I gotta tell ya some password for ya to let me in, we wen' to school together!"
+	))
+	closemessage
+
+	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
+	waitmovement(0)
+
+	speakername("Shady man")
+	msgbox(format(
+		"Wait, ya didn't go to school though, didja?"
+	))
+	closemessage
+
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
+	waitmovement(0)
+
+	speakername("Shady man")
+	msgbox(format(
+		"Who cares! It's a figger of speech! What's the newest password anyway?"
+	))
+	closemessage
+
+	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
+	waitmovement(0)
+
+	speakername("Shady man")
+	msgbox(format(
+		"It's uh…\nSomethin' with Crobat…\l"
+		"“{COLOR RED}Crobat is{COLOR DARK_GRAY}”… Uh…"
+	))
+
+	playse(SE_LEDGE)
+	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(jump_in_place_up))
+	speakername("Shady man")
+	msgbox(format(
+		"Aw man! I forgot it too!"
+	))
+	waitmovement(0)
+	waitse
+	closemessage
+
+	playse(SE_LEDGE)
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(jump_in_place_down))
+	speakername("Shady man")
+	msgbox(format(
+		"Ya idjet! How're we gunna get back in now??\p"
+		"Now we gotta find another Zubat an' hope he's got enough brains to remember the full sent'nce!\p"
+		"C'mon, lessgo!"
+	))
+	waitmovement(0)
+	waitse
+	closemessage
+
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(walk_left * 10))
+	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(walk_up, walk_left * 9))
+	waitmovement(0)
+
+	removeobject(LOCALID_GRUNT_PASSWORD_TOP)
+	removeobject(LOCALID_GRUNT_PASSWORD_BOTTOM)
+	setflag(FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF)
+
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
+	waitmovement(0)
+	special(RemoveCameraObject)
+
+	releaseall
+}
+
+script YifuCity_EventScript_HearEcho {
+	lock
+	faceplayer
+	speakername("Boy")
+	msgbox(format(
+		"There's a ghost haunting the sewers!\n"
+		"I swear I heard a voice calling when I was walking along the canal!"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_Trigger_CrobatGruntStuckInHole {
+	lockall
+
+	if (flag(FLAG_GOT_CROBAT_PASSWORD_SECOND_HALF)) {
+		speakername("???")
+
+		random(5)
+		switch(var(VAR_RESULT)) {
+		case 0:
+			msgbox(format(
+				"Yawn… I'm bored…"
+			))
+		case 1:
+			msgbox(format(
+				"Sure hope there ain't no Sharpedo in here…"
+			))
+		case 2:
+			msgbox(format(
+				"Echo! … … …\n… … …{FONT_SMALL}echo{FONT_NORMAL}…\p"
+				"Hehe…\p"
+				"…Sigh…"
+			))
+		case 3:
+			msgbox(format(
+				"Echo! … … …\n… … …{FONT_SMALL}echo{FONT_NORMAL}…\p"
+				"Hehe…\p"
+				"…Sigh…"
+			))
+		case 4:
+			msgbox(format(
+				"“{COLOR RED}Crime is awesome{COLOR DARK_GRAY}”!\nHmm…\p"
+				"“{COLOR RED}Stealing is awesome{COLOR DARK_GRAY}”?\nNah… That's not it."
+			))
+		}
+
+		closemessage
+
+	} else {
+		speakername("???")
+		msgbox(format(
+			"Heyyy!! Help!"
+		))
+		closemessage
+
+		delay(24)
+
+		applymovement(OBJ_EVENT_ID_PLAYER, moves(face_left, delay_16, face_up, delay_16, face_down, delay_16, face_right, delay_16, face_up, delay_16 * 3))
+		waitmovement(0)
+
+		delay(24)
+
+		playse(SE_PIN)
+		applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark, face_down))
+		speakername("???")
+		msgbox(format(
+			"I fell down the canal! I'm stuck down 'ere!\p"
+			"Damn me, couldn't remember the first half of the damn password…\l"
+			"“Something something… {COLOR RED}is awesome{COLOR DARK_GRAY}”! But what?!\l"
+			"And why'd I think it was a good idea to try gettin' in through the canal?\l"
+			"This is a dead end!"
+		))
+		waitmovement(0)
+		waitse
+		closemessage
+
+		setflag(FLAG_GOT_CROBAT_PASSWORD_SECOND_HALF)
+	}
+
+	releaseall
+}
+
+script YifuCity_EventScript_Surskit {
+	lock
+    faceplayer
+	speakername("Surskit")
+    msgbox(format(
+        "Sksksksk…"
+    ))
+    playmoncry(SPECIES_SURSKIT, CRY_MODE_NORMAL)
+    waitmoncry
+    release
+    end
 }

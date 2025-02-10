@@ -3,6 +3,7 @@ const LOCALID_GUARD = 8
 const LOCALID_RIVAL = 10
 const LOCALID_MAMA = 1
 const LOCALID_KUKU = 2
+const FLAG_HIDE_NATSUKI = FLAG_TEMP_1
 
 mapscripts SakuTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
@@ -12,6 +13,28 @@ mapscripts SakuTown_MapScripts {
 			setmetatile(19, 2, METATILE_SakuKura_BoardGame, TRUE)
 			setobjectmovementtype(LOCALID_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
 		}
+	}
+	MAP_SCRIPT_ON_LOAD {
+		setflag(FLAG_HIDE_NATSUKI)
+    	gettimeofday
+		switch(var(VAR_RESULT)){
+			case TIME_DEAD_NIGHT:
+				setmetatile(35, 31, METATILE_SakuKura_ClosedDoorBottom, TRUE)
+				setmetatile(22, 17, METATILE_SakuKura_ClosedDoorTop, TRUE)
+				setmetatile(22, 18, METATILE_SakuKura_ClosedDoorBottom, TRUE)
+				setmetatile(16, 19, METATILE_SakuKura_ClosedDoorTop, TRUE)
+				setmetatile(16, 20, METATILE_SakuKura_ClosedDoorBottom, TRUE)
+				setmetatile(18, 32, METATILE_SakuKura_ClosedDoorTop, TRUE)
+				setmetatile(18, 33, METATILE_SakuKura_ClosedDoorBottom, TRUE)
+			case TIME_EARLY_MORNING:
+			case TIME_MORNING:
+			case TIME_LUNCHTIME:
+			case TIME_AFTERNOON:
+			case TIME_EVENING:
+			case TIME_NIGHT:
+			default:
+				end
+    	}
 	}
 }
 
@@ -25,14 +48,14 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
 
-	clearflag(FLAG_HIDE_RIVAL_SAKU)
+	clearflag(FLAG_HIDE_NATSUKI)
 	addobject(LOCALID_RIVAL)
 	if (var(VAR_TEMP_2) == 16) {
 		setobjectxy(LOCALID_RIVAL, 16, 10)
 	} else {
 		setobjectxy(LOCALID_RIVAL, 17, 10)
 	}
-	applymovement(LOCALID_RIVAL, SakuTown_Movement_WalkUp)
+	applymovement(LOCALID_RIVAL, moves(walk_up * 5))
 	waitmovement(0)
 
 	speakername("Natsuki")
@@ -44,12 +67,12 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	// Fight
 	switch(var(VAR_STARTER_MON)) {
-		case SPECIES_ARON:
-			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_ARON, SakuTown_Text_RivalDefeat)
-		case SPECIES_SPHEAL:
-			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_SPHEAL, SakuTown_Text_RivalDefeat)
-		case SPECIES_TRAPINCH:
-			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_TRAPINCH, SakuTown_Text_RivalDefeat)
+		case SPECIES_SNIVY:
+			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_SNIVY, SakuTown_Text_RivalDefeat)
+		case SPECIES_FROAKIE:
+			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_FROAKIE, SakuTown_Text_RivalDefeat)
+		case SPECIES_CYNDAQUIL:
+			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_CYNDAQUIL, SakuTown_Text_RivalDefeat)
 	}
 
 	speakername("Natsuki")
@@ -63,61 +86,29 @@ script SakuTown_EventScript_RivalAtSakuWall {
 		"You'll have to hurry up if you wanna catch up!\p"
 		"Well, it was good to see you. Until next time then.\p"
 		"I bet you I'll get to Silveridge first!\p"
-		"Race ya there!!!"
+		"See you later, Feraligatr!"
 	))
 	closemessage
 
 	// Left
 	if (var(VAR_TEMP_2) == 16) {
-		applymovement(LOCALID_RIVAL, SakuTown_Movement_GoToKuraFromRight)
+		applymovement(LOCALID_RIVAL, moves(walk_faster_right, walk_faster_up * 5))
 		// Right
 	} else {
-		applymovement(LOCALID_RIVAL, SakuTown_Movement_GoToKuraFromLeft)
+		applymovement(LOCALID_RIVAL, moves(walk_faster_left, walk_faster_up * 5))
 	}
 	waitmovement(0)
 
 	removeobject(LOCALID_RIVAL)
-	setflag(FLAG_HIDE_RIVAL_SAKU)
+	setflag(FLAG_HIDE_NATSUKI)
 
 	setvar(VAR_RIVAL_ENCOUNTER_STATE, 1)
 
 	release
 }
 
-// TODO EVAA
-script blabla {
-	lock
-	setvar(VAR_RIVAL_ENCOUNTER_STATE, 0)
-	gettime
-	buffernumberstring(STR_VAR_1, VAR_0x8000)
-	msgbox("{STR_VAR_1}")
-	release
-}
-
 text SakuTown_Text_RivalDefeat {
 	format("Oh, wow, okay.")
-}
-
-movement SakuTown_Movement_GoToKuraFromLeft {
-	walk_faster_left
-	walk_faster_up * 5
-}
-
-movement SakuTown_Movement_GoToKuraFromRight {
-	walk_faster_right
-	walk_faster_up * 5
-}
-
-movement SakuTown_Movement_WalkUp {
-	walk_up * 5
-}
-
-movement SakuTown_Movement_WalkFastUp {
-	walk_fast_up
-}
-
-movement SakuTown_Movement_WalkAway {
-	walk_fast_down * 6
 }
 
 script SakuTown_EventScript_Farmer {
@@ -156,10 +147,10 @@ script SakuTown_EventScript_Karateka {
 	faceplayer
 	speakername("Man")
 	msgbox(format(
-		"I let the Pokémon League borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
+		"I let the Pokémon Council borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
 	))
 	closemessage
-	applymovement(LOCALID_KARATEKA, Common_Movement_FaceUp)
+	applymovement(LOCALID_KARATEKA, Common_Movement_WalkInPlaceFasterUp)
 	waitmovement(0)
 	speakername("Man")
 	msgbox(format(
@@ -167,6 +158,7 @@ script SakuTown_EventScript_Karateka {
 	))
 	closemessage
 
+	// TODO EVA this crashes the game
 	applymovement(LOCALID_MAMA, Common_Movement_FaceDown)
 	applymovement(LOCALID_KUKU, Common_Movement_FaceDown)
 	waitmovement(LOCALID_MAMA)
@@ -308,12 +300,10 @@ script SakuTown_EventScript_Mart {
 
 mart SakuTown_Mart {
 	ITEM_POKE_BALL
-	ITEM_BERRY_JUICE
-	ITEM_PARALYZE_HEAL
-	ITEM_ANTIDOTE
-	ITEM_AWAKENING
-	ITEM_ESCAPE_ROPE
-	ITEM_REPEL
+	ITEM_OINTMENT
+	ITEM_CHERI_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_CHESTO_BERRY
 }
 
 script SakuTown_EventScript_Makuhita {

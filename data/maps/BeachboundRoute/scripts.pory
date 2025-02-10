@@ -1,32 +1,12 @@
 const FLAG_HIDE_HOPPIP = FLAG_TEMP_5
-const FLAG_HIDE_SHEPHERD = FLAG_TEMP_6
-const FLAG_HIDE_KIDS = FLAG_TEMP_7
-const VAR_TIME_OF_DAY = VAR_0x8000
-const LOCALID_HOPPIP = 10
-const LOCALID_GRUNT_1 = 23
-const LOCALID_GRUNT_2 = 26
-const LOCALID_GRUNT_3 = 25
-const LOCALID_GRUNT_BOSS = 24
-const LOCALID_MUGGED_WOMAN = 22
+const LOCALID_HOPPIP = 7
+const LOCALID_GRUNT_1 = 18
+const LOCALID_GRUNT_2 = 21
+const LOCALID_GRUNT_3 = 20
+const LOCALID_GRUNT_BOSS = 19
+const LOCALID_MUGGED_WOMAN = 17
 
 mapscripts BeachboundRoute_MapScripts {
-		MAP_SCRIPT_ON_LOAD {
-        call(BeachboundRoute_EventScript_TimeBasedEvents)
-    }
-}
-
-script BeachboundRoute_EventScript_TimeBasedEvents {
-	setflag(FLAG_HIDE_SHEPHERD)
-	setflag(FLAG_HIDE_KIDS)
-
-	gettimeofday
-	if (var(VAR_TIME_OF_DAY) != TIME_NIGHT) {
-		clearflag(FLAG_HIDE_SHEPHERD)
-	}
-
-	if (var(VAR_TIME_OF_DAY) != TIME_NIGHT && var(VAR_TIME_OF_DAY) != TIME_EVENING) {
-		clearflag(FLAG_HIDE_KIDS)
-	}
 }
 
 script BeachboundRoute_EventScript_RunningBoy {
@@ -45,8 +25,9 @@ script BeachboundRoute_EventScript_RunningGirl {
 }
 
 script BeachboundRoute_EventScript_AnnoyedGirl {
+	gettimeofday
 	speakername("Annoyed girl")
-	if (flag(FLAG_HIDE_KIDS)) {
+	if (var(VAR_RESULT) == TIME_EVENING) {
 		msgbox(format(
 			"Hum… Could you maybe, like, leave?"
 		), MSGBOX_NPC)
@@ -68,12 +49,7 @@ script BeachboundRoute_EventScript_AnnoyedBoy {
 script BeachboundRoute_EventScript_Hoppip {
 	lock
     faceplayer
-    ismonseen(SPECIES_HOPPIP)
-    if (var(VAR_RESULT)) {
-        speakername("Hoppip")
-    } else {
-        speakername("Leafy cat")
-    }
+    setspeakertomonname(SPECIES_HOPPIP)
     msgbox(format(
         "Pip!"
     ))
@@ -87,16 +63,11 @@ script BeachboundRoute_EventScript_Hoppip {
 script BeachboundRoute_EventScript_Wooloo {
 	lock
     faceplayer
-    ismonseen(SPECIES_WOOLOO)
-    if (var(VAR_RESULT)) {
-        speakername("Wooloo")
-    } else {
-        speakername("Wool ball")
-    }
+	setspeakertomonname(SPECIES_WOOLOO)
     msgbox(format(
         "Bah…"
     ))
-    playmoncry(SPECIES_WOOLOO, CRY_MODE_NORMAL)
+	playmoncry(SPECIES_WOOLOO, CRY_MODE_NORMAL)
     waitmoncry
     release
     end
@@ -135,6 +106,34 @@ script BeachboundRoute_EventScript_Kin {
 	)
 	speakername("Kin")
 	msgbox(format("You really don't look strong at all, and yet…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script BeachboundRoute_EventScript_Kouta {
+	trainerbattle_single(
+		TRAINER_KOUTA ,
+		format("Look at how soft my Pokémon is!"),
+		format("Maybe I'm the one who's soft…")
+	)
+	speakername("Kouta")
+	// TODO EVA
+	// setnamedmon(SPECIES_MAREEP)
+	msgbox(format("When I pet my Mareep, I can hear the static crackle!"))
+	release
+	end
+}
+
+script BeachboundRoute_EventScript_Masato {
+	trainerbattle_single(
+		TRAINER_MASATO ,
+		format("Let my Pokémon sing for you!"),
+		format("Okay, rude.")
+	)
+	// TODO EVA
+	// setnamedmon(SPECIES_MAREEP)
+	speakername("Masato")
+	msgbox(format("I hope one day my Kricketot evolves! I wonder what delightful melody he'll be able to sing then…"))
+	release
 	end
 }
 
@@ -341,7 +340,6 @@ script BeachboundRoute_EventScript_Mugging {
 	waitmovement(LOCALID_GRUNT_1)
 	waitmovement(LOCALID_GRUNT_2)
 
-	// TODO EVA Samurai joins for a 2v2
 	trainerbattle_two_trainers(
 		TRAINER_GRUNT_BEACHBOUND_ROUTE_1,
 		format("Aw, man!"),
@@ -372,12 +370,20 @@ script BeachboundRoute_EventScript_Mugging {
 	speakername("Crobat Boss")
 	msgbox(format(
 		"Ya gotta be kiddin' me…\p"
-		"Can't even do no regular muggin' in peace anymore!\p"
+		"Can't even do no regular muggin' in peace anymore!"
+	))
+	closemessage
+
+	applymovement(LOCALID_GRUNT_BOSS, moves(walk_in_place_fast_down))
+	waitmovement(LOCALID_GRUNT_BOSS)
+
+	speakername("Crobat Boss")
+	msgbox(format(
 		"Well, I ain't gonna stoop to fighting ya myself!"
 	))
 	closemessage
 
-	applymovement(LOCALID_GRUNT_3, Common_Movement_WalkInPlaceFasterDown)
+	applymovement(LOCALID_GRUNT_3, moves(walk_in_place_fast_down))
 	waitmovement(0)
 	speakername("Crobat Shadow")
 	msgbox(format(
@@ -398,7 +404,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	delay(48)
 
-	applymovement(LOCALID_GRUNT_BOSS, moves(face_right))
+	applymovement(LOCALID_GRUNT_BOSS, moves(walk_in_place_fast_down))
 	waitmovement(0)
 	
 	speakername("Crobat Boss")
@@ -472,6 +478,37 @@ script BeachboundRoute_EventScript_Mugging {
 	applymovement(LOCALID_MUGGED_WOMAN, moves(walk_left, walk_down * 5, walk_left * 9))
 	waitmovement(LOCALID_MUGGED_WOMAN)
 	waitmovement(0)
+}
+
+// TODO change items, and make them limited quantity
+mart BeachboundRoute_Mart_Merchant {
+	ITEM_OINTMENT
+	ITEM_UUMEGIRI
+	ITEM_FISHCAKE
+	ITEM_CHERI_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_CHESTO_BERRY
+	ITEM_TM_ROCK_TOMB
+}
+
+script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
+	lock
+	faceplayer
+	speakername("Okada")
+	msgbox(format(
+		"Oh, hello again! {PLAYER}, was it?\p"
+		"I'm in the area for a while to gather some resources.\p"
+		"Can I interest you in some rare goods?"
+	))
+
+	pokemart(BeachboundRoute_Mart_Merchant)
+	speakername("Okada")
+	msgbox(format(
+		"Thanks for your business! Now where did I put that scroll again…"
+	))
+	closemessage
+
+	release
 }
 
 script BeachboundRoute_EventScript_SeeDecay {

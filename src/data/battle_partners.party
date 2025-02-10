@@ -5,39 +5,39 @@ Pic: Brendan
 Gender: Male
 Music: Male
 
-=== PARTNER_STEVEN ===
-Name: STEVEN
+=== PARTNER_SAMURAI ===
+Name: Samurai
 Class: Rival
 Pic: Steven
 Gender: Male
 Music: Male
 
-Metang
+Pawniard
 Brave Nature
-Level: 42
+Level: 25
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Atk / 252 Def / 6 SpA
-- Light Screen
-- Psychic
-- Reflect
 - Metal Claw
+- Torment
+- Scary Face
+- Metal Sound
 
 Skarmory
 Impish Nature
-Level: 43
+Level: 25
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 HP / 6 SpA / 252 SpD
-- Toxic
-- Aerial Ace
-- Protect
 - Steel Wing
+- Iron Defense
+- Agility
+- Air Cutter
 
-Aggron
+Jangmo-o
 Adamant Nature
-Level: 44
+Level: 25
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 EVs: 252 Atk / 252 SpA / 6 SpD
-- Thunder
-- Protect
-- Solar Beam
-- Dragon Claw
+- Dragon Tail
+- Iron Defense
+- Work Up
+- Screech

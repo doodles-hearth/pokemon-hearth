@@ -35,7 +35,12 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 		"Make sure you read it!"
 	))
 	closemessage
-	applymovement(LOCALID_BIGSIS, SunriseVillage_PlayersHouse_LR_Movement_BigSisExits)
+	applymovement(LOCALID_BIGSIS, moves(
+		walk_down * 2
+		walk_right * 2
+		walk_down * 2
+		step_end
+	))
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	waitmovement(0)
 	playse(SE_EXIT)
@@ -47,13 +52,6 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 
     release
     end
-}
-
-movement SunriseVillage_PlayersHouse_LR_Movement_BigSisExits {
-	walk_down * 2
-	walk_right
-	walk_down * 2
-	step_end
 }
 
 script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
@@ -84,10 +82,11 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 			"… … … … … …\n… … … … … …\p"
 			"So you're going on a journey…\p"
 			"That's great! I'm proud of you, {PLAYER}.\p"
-			"Take some of these Pokéballs for your trip, in case you find any good Pokémon!"
+			"Here, take some medicine for your {STR_VAR_2} and some of these Poké Balls, in case you find any good Pokémon!"
 		))
 		closemessage
 
+		giveitem(ITEM_OINTMENT, 5)
 		giveitem(ITEM_POKE_BALL, 5)
 
 		speakername("Big sis")
@@ -98,15 +97,27 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 
 		giveitem(ITEM_TOWN_MAP)
 
+		speakername("Big sis")
+		msgbox(format(
+			"I think that was all…\n"
+			"Ah, one last thing! Take my good luck statuette with you.\p"
+			"I like the tradition, so indulge me, alright? Please? Everyone carries one!"
+		))
+		closemessage
+
+		giveitem(ITEM_ENTEI_STATUETTE)
+
 		special(GetPlayerBrotherSisterString)
 		speakername("Big sis")
 		msgbox(format(
 			"Alrighty! You all set? Have a safe journey, little {STR_VAR_1}.\p"
-			"Come say hi sometimes though, will you?"
+			"Maybe I'll see you around!\p"
+			"Come back home sometimes though, will you?"
 		))
 		closemessage
 
 		setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 8)
+		setflag(FLAG_HIDE_GUARD_SUNRISE_VILLAGE)
 
 		// Default
 	} else {
@@ -131,13 +142,9 @@ script SunriseVillage_PlayersHouse_LR_EventScript_Eevee {
 	faceplayer
 	waitse
 	playmoncry(SPECIES_EEVEE, CRY_MODE_NORMAL)
-	ismonseen(SPECIES_EEVEE)
-    if (var(VAR_RESULT)) {
-        speakername("Eevee")
-    } else {
-        speakername("Fluffy fox")
-    }
+	setspeakertomonname(SPECIES_EEVEE)
 	msgbox(format("Eee!"))
+	playmoncry(SPECIES_EEVEE, CRY_MODE_NORMAL)
 	waitmoncry
 	release
 }

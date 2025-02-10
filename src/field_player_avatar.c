@@ -146,8 +146,9 @@ static bool32 Fishing_EndNoMon(struct Task *);
 static void AlignFishingAnimationFrames(void);
 static bool32 DoesFishingMinigameAllowCancel(void);
 static bool32 Fishing_DoesFirstMonInPartyHaveSuctionCupsOrStickyHold(void);
-static bool32 Fishing_RollForBite(bool32);
-static u32 CalculateFishingBiteOdds(bool32);
+static bool32 Fishing_RollForBite(u32, bool32);
+static u32 CalculateFishingBiteOdds(u32, bool32);
+static u32 CalculateFishingFollowerBoost(void);
 static u32 CalculateFishingProximityBoost(u32 odds);
 static void GetCoordinatesAroundBobber(s16[], s16[][AXIS_COUNT], u32);
 static u32 CountQualifyingTiles(s16[][AXIS_COUNT], s16 player[], u8 facingDirection, struct ObjectEvent *objectEvent, bool32 isTileLand[]);
@@ -664,11 +665,20 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
             return;
         }
     }
-
+    
+    gPlayerAvatar.creeping = FALSE;
     if (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
     {
-        // same speed as running
-        PlayerWalkFast(direction);
+        if (FlagGet(DN_FLAG_SEARCHING) && (heldKeys & A_BUTTON))
+        {
+            gPlayerAvatar.creeping = TRUE;
+            PlayerWalkSlow(direction);
+        }
+        else
+        {
+            // speed 2 is fast, same speed as running
+            PlayerWalkFast(direction);
+        }
         return;
     }
 
@@ -683,6 +693,11 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
 
         gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
         return;
+    }
+    else if (FlagGet(DN_FLAG_SEARCHING) && (heldKeys & A_BUTTON))
+    {
+        gPlayerAvatar.creeping = TRUE;
+        PlayerWalkSlow(direction);
     }
     else
     {
@@ -1222,6 +1237,8 @@ u8 player_get_pos_including_state_based_drift(s16 *x, s16 *y)
 
 u8 GetPlayerFacingDirection(void)
 {
+    Script_RequestEffects(SCREFF_V1);
+
     return gObjectEvents[gPlayerAvatar.objectEventId].facingDirection;
 }
 
@@ -1731,7 +1748,20 @@ static void Task_WaitStopSurfing(u8 taskId)
 
 #define FISHING_PROXIMITY_BOOST 4
 #define FISHING_STICKY_BOOST    36
-#define FISHING_DEFAULT_ODDS    50
+
+#if I_FISHING_BITE_ODDS >= GEN_4
+    #define FISHING_OLD_ROD_ODDS 75
+    #define FISHING_GOOD_ROD_ODDS 50
+    #define FISHING_SUPER_ROD_ODDS 25
+#elif I_FISHING_BITE_ODDS >= GEN_3
+    #define FISHING_OLD_ROD_ODDS 50
+    #define FISHING_GOOD_ROD_ODDS 50
+    #define FISHING_SUPER_ROD_ODDS 50
+#else
+    #define FISHING_OLD_ROD_ODDS 0
+    #define FISHING_GOOD_ROD_ODDS 33
+    #define FISHING_SUPER_ROD_ODDS 50
+#endif
 
 enum
 {
@@ -1908,10 +1938,10 @@ static bool32 Fishing_CheckForBite(struct Task *task)
     firstMonHasSuctionOrSticky = Fishing_DoesFirstMonInPartyHaveSuctionCupsOrStickyHold();
 
     if(firstMonHasSuctionOrSticky)
-        bite = Fishing_RollForBite(firstMonHasSuctionOrSticky);
+        bite = Fishing_RollForBite(task->tFishingRod, firstMonHasSuctionOrSticky);
 
     if (!bite)
-        bite = Fishing_RollForBite(FALSE);
+        bite = Fishing_RollForBite(task->tFishingRod, FALSE);
 
     if (!bite)
         task->tStep = FISHING_NOT_EVEN_NIBBLE;
@@ -2133,20 +2163,56 @@ static bool32 Fishing_DoesFirstMonInPartyHaveSuctionCupsOrStickyHold(void)
     return (ability == ABILITY_SUCTION_CUPS || ability == ABILITY_STICKY_HOLD);
 }
 
-static bool32 Fishing_RollForBite(bool32 isStickyHold)
+static bool32 Fishing_RollForBite(u32 rod, bool32 isStickyHold)
 {
-    return ((Random() % 100) > CalculateFishingBiteOdds(isStickyHold));
+    return ((Random() % 100) > CalculateFishingBiteOdds(rod, isStickyHold));
 }
 
-static u32 CalculateFishingBiteOdds(bool32 isStickyHold)
+static u32 CalculateFishingBiteOdds(u32 rod, bool32 isStickyHold)
 {
-    u32 odds = FISHING_DEFAULT_ODDS;
+    u32 odds;
+
+    if (rod == OLD_ROD)
+        odds = FISHING_OLD_ROD_ODDS;
+    if (rod == GOOD_ROD)
+        odds = FISHING_GOOD_ROD_ODDS;
+    if (rod == SUPER_ROD)
+        odds = FISHING_SUPER_ROD_ODDS;
+
+    odds -= CalculateFishingFollowerBoost();
 
     if (isStickyHold)
-        odds -= FISHING_STICKY_BOOST;
+    {
+        if (I_FISHING_STICKY_BOOST >= GEN_4)
+            odds -= (100 - odds);
+        else
+            odds -= FISHING_STICKY_BOOST;
+    }
 
     odds -= CalculateFishingProximityBoost(odds);
+
     return odds;
+}
+
+static u32 CalculateFishingFollowerBoost()
+{
+    u32 friendship;
+    struct Pokemon *mon = GetFirstLiveMon();
+
+    if (!I_FISHING_FOLLOWER_BOOST || !mon)
+        return 0;
+
+    friendship = GetMonData(mon, MON_DATA_FRIENDSHIP);
+    if (friendship >= 250)
+        return 50;
+    else if (friendship >= 200)
+        return 40;
+    else if (friendship >= 150)
+        return 30;
+    else if (friendship >= 100)
+        return 20;
+    else
+        return 0;
 }
 
 static u32 CalculateFishingProximityBoost(u32 odds)

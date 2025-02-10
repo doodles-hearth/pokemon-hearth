@@ -1,9 +1,12 @@
 #include "constants/abilities.h"
 #include "species_info/shared_dex_text.h"
+#include "species_info/shared_front_pic_anims.h"
 
 // Macros for ease of use.
 
 #define EVOLUTION(...) (const struct Evolution[]) { __VA_ARGS__, { EVOLUTIONS_END }, }
+
+#define ANIM_FRAMES(...) (const union AnimCmd *const[]) { sAnim_GeneralFrame0, (const union AnimCmd[]) { __VA_ARGS__ ANIMCMD_END, }, }
 
 #if P_FOOTPRINTS
 #define FOOTPRINT(sprite) .footprint = gMonFootprint_## sprite,
@@ -11,7 +14,7 @@
 #define FOOTPRINT(sprite)
 #endif
 
-#if B_ENEMY_MON_SHADOW_STYLE >= GEN_4
+#if B_ENEMY_MON_SHADOW_STYLE >= GEN_4 && P_GBA_STYLE_SPECIES_GFX == FALSE
 #define SHADOW(x, y, size)  .enemyShadowXOffset = x, .enemyShadowYOffset = y, .enemyShadowSize = size,
 #define NO_SHADOW           .suppressEnemyShadow = TRUE,
 #else
@@ -30,81 +33,53 @@
 #define OVERWORLD_PAL(...)                                  \
     .overworldPalette = DEFAULT(NULL, __VA_ARGS__),         \
     .overworldShinyPalette = DEFAULT_2(NULL, __VA_ARGS__),
+#if P_GENDER_DIFFERENCES
 #define OVERWORLD_PAL_FEMALE(...)                                 \
     .overworldPaletteFemale = DEFAULT(NULL, __VA_ARGS__),         \
     .overworldShinyPaletteFemale = DEFAULT_2(NULL, __VA_ARGS__),
+#else
+#define OVERWORLD_PAL_FEMALE(...)
+#endif //P_GENDER_DIFFERENCES
 #else
 #define OVERWORLD_PAL(...)
 #define OVERWORLD_PAL_FEMALE(...)
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
 
-#define OVERWORLD(picTable, _size, shadow, _tracks, ...)                                    \
-.overworldData = {                                                                          \
-    .tileTag = TAG_NONE,                                                                    \
-    .paletteTag = OBJ_EVENT_PAL_TAG_DYNAMIC,                                                \
-    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,                                         \
-    .size = (_size == SIZE_32x32 ? 512 : 2048),                                             \
-    .width = (_size == SIZE_32x32 ? 32 : 64),                                               \
-    .height = (_size == SIZE_32x32 ? 32 : 64),                                              \
-    .paletteSlot = PALSLOT_NPC_1,                                                           \
-    .shadowSize = shadow,                                                                   \
-    .inanimate = FALSE,                                                                     \
-    .compressed = COMP,                                                                     \
-    .tracks = _tracks,                                                                      \
-    .oam = (_size == SIZE_32x32 ? &gObjectEventBaseOam_32x32 : &gObjectEventBaseOam_64x64), \
-    .subspriteTables = (_size == SIZE_32x32 ? sOamTables_32x32 : sOamTables_64x64),         \
-    .anims = sAnimTable_Following,                                                          \
-    .images = picTable,                                                                     \
-    .affineAnims = gDummySpriteAffineAnimTable,                                             \
-},                                                                                          \
+#define OVERWORLD_DATA(objEventPic, _size, shadow, _tracks, _anims)                                                                     \
+{                                                                                                                                       \
+    .tileTag = TAG_NONE,                                                                                                                \
+    .paletteTag = OBJ_EVENT_PAL_TAG_DYNAMIC,                                                                                            \
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,                                                                                     \
+    .size = (_size == SIZE_32x32 ? 512 : 2048),                                                                                         \
+    .width = (_size == SIZE_32x32 ? 32 : 64),                                                                                           \
+    .height = (_size == SIZE_32x32 ? 32 : 64),                                                                                          \
+    .paletteSlot = PALSLOT_NPC_1,                                                                                                       \
+    .shadowSize = shadow,                                                                                                               \
+    .inanimate = FALSE,                                                                                                                 \
+    .compressed = COMP,                                                                                                                 \
+    .tracks = _tracks,                                                                                                                  \
+    .oam = (_size == SIZE_32x32 ? &gObjectEventBaseOam_32x32 : &gObjectEventBaseOam_64x64),                                             \
+    .subspriteTables = (_size == SIZE_32x32 ? sOamTables_32x32 : sOamTables_64x64),                                                     \
+    .anims = _anims,                                                                                                                    \
+    .images = (const struct SpriteFrameImage[]) { overworld_ascending_frames(objEventPic, SIZE_32x32 ? 4 : 8, SIZE_32x32 ? 4 : 8), },   \
+    .affineAnims = gDummySpriteAffineAnimTable,                                                                                         \
+}
+
+#define OVERWORLD(objEventPic, _size, shadow, _tracks, _anims, ...)                                 \
+    .overworldData = OVERWORLD_DATA(objEventPic, _size, shadow, _tracks, _anims),                   \
     OVERWORLD_PAL(__VA_ARGS__)
 
-#define OVERWORLD_SET_ANIM(picTable, _size, shadow, _tracks, _anims, ...)                   \
-.overworldData = {                                                                          \
-    .tileTag = TAG_NONE,                                                                    \
-    .paletteTag = OBJ_EVENT_PAL_TAG_DYNAMIC,                                                \
-    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,                                         \
-    .size = (_size == SIZE_32x32 ? 512 : 2048),                                             \
-    .width = (_size == SIZE_32x32 ? 32 : 64),                                               \
-    .height = (_size == SIZE_32x32 ? 32 : 64),                                              \
-    .paletteSlot = PALSLOT_NPC_1,                                                           \
-    .shadowSize = shadow,                                                                   \
-    .inanimate = FALSE,                                                                     \
-    .compressed = COMP,                                                                     \
-    .tracks = _tracks,                                                                      \
-    .oam = (_size == SIZE_32x32 ? &gObjectEventBaseOam_32x32 : &gObjectEventBaseOam_64x64), \
-    .subspriteTables = (_size == SIZE_32x32 ? sOamTables_32x32 : sOamTables_64x64),         \
-    .anims = _anims,                                                                        \
-    .images = picTable,                                                                     \
-    .affineAnims = gDummySpriteAffineAnimTable,                                             \
-},                                                                                          \
-    OVERWORLD_PAL(__VA_ARGS__)
-
-#define OVERWORLD_FEMALE(picTable, _size, shadow, _tracks, ...)                             \
-.overworldDataFemale = {                                                                    \
-    .tileTag = TAG_NONE,                                                                    \
-    .paletteTag = OBJ_EVENT_PAL_TAG_DYNAMIC,                                                \
-    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,                                         \
-    .size = (_size == SIZE_32x32 ? 512 : 2048),                                             \
-    .width = (_size == SIZE_32x32 ? 32 : 64),                                               \
-    .height = (_size == SIZE_32x32 ? 32 : 64),                                              \
-    .paletteSlot = PALSLOT_NPC_1,                                                           \
-    .shadowSize = shadow,                                                                   \
-    .inanimate = FALSE,                                                                     \
-    .compressed = COMP,                                                                     \
-    .tracks = _tracks,                                                                      \
-    .oam = (_size == SIZE_32x32 ? &gObjectEventBaseOam_32x32 : &gObjectEventBaseOam_64x64), \
-    .subspriteTables = (_size == SIZE_32x32 ? sOamTables_32x32 : sOamTables_64x64),         \
-    .anims = sAnimTable_Following,                                                          \
-    .images = picTable,                                                                     \
-    .affineAnims = gDummySpriteAffineAnimTable,                                             \
-},                                                                                          \
+#if P_GENDER_DIFFERENCES
+#define OVERWORLD_FEMALE(objEventPic, _size, shadow, _tracks, _anims, ...)                          \
+    .overworldDataFemale = OVERWORLD_DATA(objEventPic, _size, shadow, _tracks, _anims),             \
     OVERWORLD_PAL_FEMALE(__VA_ARGS__)
+#else
+#define OVERWORLD_FEMALE(...)
+#endif //P_GENDER_DIFFERENCES
 
 #else
-#define OVERWORLD(picTable, _size, shadow, _tracks, ...)
-#define OVERWORLD_SET_ANIM(picTable, _size, shadow, _tracks, _anims, ...)
-#define OVERWORLD_FEMALE(picTable, _size, shadow, _tracks, ...)
+#define OVERWORLD(...)
+#define OVERWORLD_FEMALE(...)
 #define OVERWORLD_PAL(...)
 #define OVERWORLD_PAL_FEMALE(...)
 #endif //OW_POKEMON_OBJECT_EVENTS
@@ -124,6 +99,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_NONE] =
     {
         .speciesName = _("??????????"),
+        .unknownName = _("??????????"),
         .cryId = CRY_NONE,
         .natDexNum = NATIONAL_DEX_NONE,
         .categoryName = _("Unknown"),
@@ -137,7 +113,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(40, 40),
         .frontPicYOffset = 12,
-        .frontAnimFrames = sAnims_None,
+        .frontAnimFrames = sAnims_TwoFramePlaceHolder,
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(40, 40),
@@ -164,7 +140,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             .oam = &gObjectEventBaseOam_32x32,
             .subspriteTables = sOamTables_32x32,
             .anims = sAnimTable_Following,
-            .images = sPicTable_Substitute,
+            .images = (const struct SpriteFrameImage[]) { overworld_ascending_frames(gObjectEventPic_Substitute, 4, 4), },
             .affineAnims = gDummySpriteAffineAnimTable,
         },
     #endif
@@ -219,6 +195,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = { ABILITY_RIVALRY, ABILITY_INTIMIDATE, ABILITY_GUTS },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Kotora"),
+        .unknownName = _("??????????"),
         .cryId = CRY_JOLTIK,
         .natDexNum = NATIONAL_DEX_KOTORA,
         .categoryName = _("Tiny Tiger"),
@@ -237,7 +214,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .frontPic = gMonFrontPic_Kotora,
         .frontPicSize = MON_COORDS_SIZE(48, 40),
         .frontPicYOffset = 6,
-        .frontAnimFrames = sAnims_Kotora,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_Kotora,
         .backPicSize = MON_COORDS_SIZE(64, 48),
@@ -248,7 +225,14 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .iconPalIndex = 0,
         .iconSprite = gMonIcon_Kotora,
         FOOTPRINT(Shinx)
-        OVERWORLD(sPicTable_Kotora, SIZE_32x32, SHADOW_SIZE_M, TRACKS_FOOT, gFollowerPalette_Kotora, gShinyFollowerPalette_Kotora)
+        OVERWORLD(
+            gObjectEventPic_Kotora,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gFollowerPalette_Kotora,
+            gShinyFollowerPalette_Kotora)
         .levelUpLearnset = sKotoraLevelUpLearnset,
         .teachableLearnset = sKotoraTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 15, SPECIES_RAITORA}),
@@ -274,6 +258,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = { ABILITY_RIVALRY, ABILITY_INTIMIDATE, ABILITY_GUTS },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Raitora"),
+        .unknownName = _("??????????"),
         .cryId = CRY_LUXIO,
         .natDexNum = NATIONAL_DEX_RAITORA,
         .categoryName = _("Static"),
@@ -292,7 +277,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .frontPic = gMonFrontPic_Raitora,
         .frontPicSize = MON_COORDS_SIZE(48, 48),
         .frontPicYOffset = 10,
-        .frontAnimFrames = sAnims_Raitora,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_H_STRETCH,
         .backPic = gMonBackPic_Raitora,
         .backPicSize = MON_COORDS_SIZE(48, 48),
@@ -303,7 +288,14 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .iconPalIndex = 0,
         .iconSprite = gMonIcon_Raitora,
         FOOTPRINT(Luxio)
-        OVERWORLD(sPicTable_Raitora, SIZE_32x32, SHADOW_SIZE_M, TRACKS_FOOT, gFollowerPalette_Raitora, gShinyFollowerPalette_Raitora)
+        OVERWORLD(
+            gObjectEventPic_Raitora,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gFollowerPalette_Raitora,
+            gShinyFollowerPalette_Raitora)
         .levelUpLearnset = sRaitoraLevelUpLearnset,
         .teachableLearnset = sRaitoraTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_GAOTORA}),
@@ -335,6 +327,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = { ABILITY_RIVALRY, ABILITY_INTIMIDATE, ABILITY_GUTS },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Gaotora"),
+        .unknownName = _("??????????"),
         .cryId = CRY_LUXRAY,
         .natDexNum = NATIONAL_DEX_GAOTORA,
         .categoryName = _("Thunder"),
@@ -355,7 +348,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .frontPic = gMonFrontPic_Gaotora,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 10,
-        .frontAnimFrames = sAnims_Gaotora,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_GLOW_YELLOW,
         .backPic = gMonBackPic_Gaotora,
         .backPicSize = MON_COORDS_SIZE(64, 64),
@@ -366,7 +359,14 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .iconPalIndex = 0,
         .iconSprite = gMonIcon_Gaotora,
         FOOTPRINT(Luxio)
-        OVERWORLD(sPicTable_Gaotora, SIZE_32x32, SHADOW_SIZE_M, TRACKS_FOOT, gFollowerPalette_Gaotora, gShinyFollowerPalette_Gaotora)
+        OVERWORLD(
+            gObjectEventPic_Gaotora,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gFollowerPalette_Gaotora,
+            gShinyFollowerPalette_Gaotora)
         .levelUpLearnset = sGaotoraLevelUpLearnset,
         .teachableLearnset = sGaotoraTeachableLearnset
     },
@@ -394,6 +394,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .abilities = { ABILITY_NONE, ABILITY_CURSED_BODY, ABILITY_DAMP },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("??????????"),
+        .unknownName = _("??????????"),
         .cryId = CRY_NONE,
         .natDexNum = NATIONAL_DEX_NONE,
         .categoryName = _("Unknown"),
@@ -410,25 +411,27 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_CircledQuestionMark,
         .frontPicSize = MON_COORDS_SIZE(64, 64),
-        //.frontPicFemale = gMonFrontPic_CircledQuestionMark,
-        //.frontPicSizeFemale = MON_COORDS_SIZE(64, 64),
         .frontPicYOffset = 0,
         .frontAnimFrames = sAnims_None,
         //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_CircledQuestionMark,
         .backPicSize = MON_COORDS_SIZE(64, 64),
-        //.backPicFemale = gMonBackPic_CircledQuestionMarkF,
-        //.backPicSizeFemale = MON_COORDS_SIZE(64, 64),
         .backPicYOffset = 7,
+#if P_GENDER_DIFFERENCES
+        .frontPicFemale = gMonFrontPic_CircledQuestionMark,
+        .frontPicSizeFemale = MON_COORDS_SIZE(64, 64),
+        .backPicFemale = gMonBackPic_CircledQuestionMarkF,
+        .backPicSizeFemale = MON_COORDS_SIZE(64, 64),
+        .paletteFemale = gMonPalette_CircledQuestionMarkF,
+        .shinyPaletteFemale = gMonShinyPalette_CircledQuestionMarkF,
+        .iconSpriteFemale = gMonIcon_QuestionMarkF,
+        .iconPalIndexFemale = 1,
+#endif //P_GENDER_DIFFERENCES
         .backAnimId = BACK_ANIM_NONE,
         .palette = gMonPalette_CircledQuestionMark,
         .shinyPalette = gMonShinyPalette_CircledQuestionMark,
-        //.paletteFemale = gMonPalette_CircledQuestionMarkF,
-        .shinyPaletteFemale = gMonShinyPalette_CircledQuestionMarkF,
         .iconSprite = gMonIcon_QuestionMark,
         .iconPalIndex = 0,
-        //.iconSpriteFemale = gMonIcon_QuestionMarkF,
-        //.iconPalIndexFemale = 1,
         FOOTPRINT(QuestionMark)
         .levelUpLearnset = sNoneLevelUpLearnset,
         .teachableLearnset = sNoneTeachableLearnset,

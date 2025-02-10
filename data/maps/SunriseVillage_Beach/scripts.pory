@@ -194,7 +194,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Oh Shuckles, the distribution's\nalready started!\p"
+		"Aw Shuckles, the distribution's\nalready started!\p"
 		"Let's go, {PLAYER}!!"
 	))
 	closemessage

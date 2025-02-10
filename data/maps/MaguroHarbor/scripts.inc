@@ -1,240 +1,492 @@
 MaguroHarbor_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, MaguroHarbor_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_TRANSITION, MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+MaguroHarbor_MapScripts_MAP_SCRIPT_ON_LOAD:
+	call MaguroHarbor_DrawMetatiles
+	return
+
+MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_TEMP_1
+	getweekday
+	compare VAR_RESULT, 0
+	goto_if_eq MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	compare VAR_RESULT, 3
+	goto_if_eq MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	compare VAR_RESULT, 6
+	goto_if_eq MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	return
+
+MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	clearflag FLAG_TEMP_1
+	return
+
+
+MaguroHarbor_DrawMetatiles::
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_DEAD_NIGHT, MaguroHarbor_DrawMetatiles_2
+	case TIME_EARLY_MORNING, MaguroHarbor_DrawMetatiles_3
+	case TIME_MORNING, MaguroHarbor_DrawMetatiles_3
+	case TIME_LUNCHTIME, MaguroHarbor_DrawMetatiles_3
+	case TIME_AFTERNOON, MaguroHarbor_DrawMetatiles_3
+	case TIME_EVENING, MaguroHarbor_DrawMetatiles_3
+	case TIME_NIGHT, MaguroHarbor_DrawMetatiles_3
+MaguroHarbor_DrawMetatiles_3:
+	end
+
+MaguroHarbor_DrawMetatiles_2:
+	setmetatile 18, 13, METATILE_Maguro_MaguroClosedWindows, TRUE
+	setmetatile 35, 20, METATILE_Maguro_MaguroClosedWindows, TRUE
+	setmetatile 37, 19, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE
+	setmetatile 37, 20, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
+	setmetatile 20, 12, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE
+	setmetatile 20, 13, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
+	setmetatile 32, 12, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
+	return
 
 
 MaguroHarbor_EventScript_TownSign::
-# 6 "data/maps/MaguroHarbor/scripts.pory"
 	msgbox MaguroHarbor_EventScript_TownSign_Text_0, MSGBOX_SIGN
 	return
 
 
-MaguroHarbor_EventScript_FishcakeSalesman::
-# 10 "data/maps/MaguroHarbor/scripts.pory"
+MaguroHarbor_EventScript_LovestruckGirl::
 	lock
-# 11 "data/maps/MaguroHarbor/scripts.pory"
 	faceplayer
-# 13 "data/maps/MaguroHarbor/scripts.pory"
-	speakername MaguroHarbor_EventScript_FishcakeSalesman_Text_0
-# 14 "data/maps/MaguroHarbor/scripts.pory"
-	msgbox MaguroHarbor_EventScript_FishcakeSalesman_Text_1, MSGBOX_DEFAULT
-# 19 "data/maps/MaguroHarbor/scripts.pory"
-	giveitem ITEM_FISHCAKE
-# 21 "data/maps/MaguroHarbor/scripts.pory"
-	closemessage
-# 22 "data/maps/MaguroHarbor/scripts.pory"
+	speakername MaguroHarbor_EventScript_LovestruckGirl_Text_0
+	msgbox MaguroHarbor_EventScript_LovestruckGirl_Text_1, MSGBOX_DEFAULT
 	release
 	return
 
 
-MaguroHarbor_EventScript_FishPokemonSalesman::
-# 26 "data/maps/MaguroHarbor/scripts.pory"
+MaguroHarbor_EventScript_FishcakeSalesman::
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_EARLY_MORNING, MaguroHarbor_EventScript_FishcakeSalesman_2
+	case TIME_MORNING, MaguroHarbor_EventScript_FishcakeSalesman_3
+	case TIME_LUNCHTIME, MaguroHarbor_EventScript_FishcakeSalesman_3
+	case TIME_AFTERNOON, MaguroHarbor_EventScript_FishcakeSalesman_3
+	case TIME_EVENING, MaguroHarbor_EventScript_FishcakeSalesman_3
+	case TIME_NIGHT, MaguroHarbor_EventScript_FishcakeSalesman_4
+	return
+
+MaguroHarbor_EventScript_FishcakeSalesman_2:
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSettingUp
+	return
+
+MaguroHarbor_EventScript_FishcakeSalesman_3:
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling
+	return
+
+MaguroHarbor_EventScript_FishcakeSalesman_4:
+	call StringVarSetter
+	goto MaguroHarbor_EventScript_FishcakeSalesmanClosingUp
+	return
+
+
+MaguroHarbor_EventScript_FishcakeSalesmanSettingUp::
 	lock
-# 27 "data/maps/MaguroHarbor/scripts.pory"
 	faceplayer
-# 28 "data/maps/MaguroHarbor/scripts.pory"
-	speakername MaguroHarbor_EventScript_FishPokemonSalesman_Text_0
-# 29 "data/maps/MaguroHarbor/scripts.pory"
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesman_Text_1, MSGBOX_DEFAULT
-# 33 "data/maps/MaguroHarbor/scripts.pory"
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_1, MSGBOX_DEFAULT
 	closemessage
-# 34 "data/maps/MaguroHarbor/scripts.pory"
+	release
+	return
+
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling::
+	lock
+	faceplayer
+	goto_if_set FLAG_DAILY_FISHCAKE, MaguroHarbor_EventScript_FishcakeSalesmanSelling_2
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_1, MSGBOX_DEFAULT
+	showmoneybox 18, 0
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_3, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_4
+	closemessage
+	switch VAR_RESULT
+	case 0, MaguroHarbor_EventScript_FishcakeSalesmanSelling_6
+	case 1, MaguroHarbor_EventScript_FishcakeSalesmanSelling_7
+	case 2, MaguroHarbor_EventScript_FishcakeSalesmanSelling_8
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_1:
+	release
+	return
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_2:
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0, MSGBOX_DEFAULT
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_6:
+	checkmoney 500
+	compare VAR_RESULT, 0
+	goto_if_ne MaguroHarbor_EventScript_FishcakeSalesmanSelling_9
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_6
+	closemessage
+	hidemoneybox
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_7:
+	hidemoneybox
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_8:
+	hidemoneybox
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7
+	closemessage
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_9:
+	removemoney 500
+	updatemoneybox
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_5
+	closemessage
+	hidemoneybox
+	giveitem ITEM_FISHCAKE
+	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
+
+
+MaguroHarbor_EventScript_FishcakeSalesmanClosingUp::
+	lock
+	faceplayer
+	goto_if_set FLAG_DAILY_FISHCAKE, MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_2
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_1, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_FISHCAKE
+	setflag FLAG_DAILY_FISHCAKE
+MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_1:
+	release
+	return
+
+MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_2:
+	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0, MSGBOX_DEFAULT
+	closemessage
+	goto MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_1
+
+
+MaguroHarbor_EventScript_FishPokemonSalesman::
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_EARLY_MORNING, MaguroHarbor_EventScript_FishPokemonSalesman_2
+	case TIME_MORNING, MaguroHarbor_EventScript_FishPokemonSalesman_3
+	case TIME_LUNCHTIME, MaguroHarbor_EventScript_FishPokemonSalesman_3
+	case TIME_AFTERNOON, MaguroHarbor_EventScript_FishPokemonSalesman_3
+	case TIME_EVENING, MaguroHarbor_EventScript_FishPokemonSalesman_3
+	case TIME_NIGHT, MaguroHarbor_EventScript_FishPokemonSalesman_4
+	return
+
+MaguroHarbor_EventScript_FishPokemonSalesman_2:
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp
+	return
+
+MaguroHarbor_EventScript_FishPokemonSalesman_3:
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling
+	return
+
+MaguroHarbor_EventScript_FishPokemonSalesman_4:
+	checkplayergender
+	compare VAR_RESULT, 0
+	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesman_6
+	bufferstring STR_VAR_2, MaguroHarbor_EventScript_FishPokemonSalesman_Text_1
+MaguroHarbor_EventScript_FishPokemonSalesman_5:
+	call StringVarSetter
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp
+	return
+
+MaguroHarbor_EventScript_FishPokemonSalesman_6:
+	bufferstring STR_VAR_2, MaguroHarbor_EventScript_FishPokemonSalesman_Text_0
+	goto MaguroHarbor_EventScript_FishPokemonSalesman_5
+
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1, MSGBOX_DEFAULT
+	closemessage
+	release
+	return
+
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0, MSGBOX_DEFAULT
+	closemessage
+	release
+	return
+
+
+MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp_Text_0, MSGBOX_DEFAULT
+	closemessage
 	release
 	return
 
 
 MaguroHarbor_EventScript_FishermanInBoat::
-# 38 "data/maps/MaguroHarbor/scripts.pory"
 	lock
-# 39 "data/maps/MaguroHarbor/scripts.pory"
 	faceplayer
-# 40 "data/maps/MaguroHarbor/scripts.pory"
 	speakername MaguroHarbor_EventScript_FishermanInBoat_Text_0
-# 41 "data/maps/MaguroHarbor/scripts.pory"
 	msgbox MaguroHarbor_EventScript_FishermanInBoat_Text_1, MSGBOX_DEFAULT
-# 44 "data/maps/MaguroHarbor/scripts.pory"
 	closemessage
-# 45 "data/maps/MaguroHarbor/scripts.pory"
 	release
 	return
 
 
 MaguroHarbor_EventScript_Cramorant::
-# 49 "data/maps/MaguroHarbor/scripts.pory"
 	lock
-# 50 "data/maps/MaguroHarbor/scripts.pory"
 	faceplayer
-# 51 "data/maps/MaguroHarbor/scripts.pory"
 	playmoncry SPECIES_CRAMORANT, CRY_MODE_NORMAL
-# 52 "data/maps/MaguroHarbor/scripts.pory"
 	speakername MaguroHarbor_EventScript_Cramorant_Text_0
-# 53 "data/maps/MaguroHarbor/scripts.pory"
 	msgbox MaguroHarbor_EventScript_Cramorant_Text_1, MSGBOX_DEFAULT
-# 56 "data/maps/MaguroHarbor/scripts.pory"
 	closemessage
-# 57 "data/maps/MaguroHarbor/scripts.pory"
 	release
 	return
 
 
 MaguroHarbor_EventScript_FishermanOldRod::
-# 61 "data/maps/MaguroHarbor/scripts.pory"
 	lock
-# 62 "data/maps/MaguroHarbor/scripts.pory"
 	faceplayer
-# 63 "data/maps/MaguroHarbor/scripts.pory"
 	goto_if_set FLAG_RECEIVED_OLD_ROD, MaguroHarbor_EventScript_FishermanOldRod_2
-# 76 "data/maps/MaguroHarbor/scripts.pory"
 	speakername MaguroHarbor_EventScript_FishermanInBoat_Text_0
-# 77 "data/maps/MaguroHarbor/scripts.pory"
 	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_1
-# 85 "data/maps/MaguroHarbor/scripts.pory"
 	closemessage
-# 87 "data/maps/MaguroHarbor/scripts.pory"
 	giveitem ITEM_OLD_ROD
-# 88 "data/maps/MaguroHarbor/scripts.pory"
 	setflag FLAG_RECEIVED_OLD_ROD
-# 90 "data/maps/MaguroHarbor/scripts.pory"
 	speakername MaguroHarbor_EventScript_FishermanInBoat_Text_0
 	checkplayergender
-# 0 "data/maps/MaguroHarbor/scripts.pory"
 	compare VAR_RESULT, MALE
 	goto_if_eq MaguroHarbor_EventScript_FishermanOldRod_5
-# 97 "data/maps/MaguroHarbor/scripts.pory"
 	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_3
 MaguroHarbor_EventScript_FishermanOldRod_4:
-# 102 "data/maps/MaguroHarbor/scripts.pory"
 	closemessage
-# 104 "data/maps/MaguroHarbor/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 105 "data/maps/MaguroHarbor/scripts.pory"
 	waitmovement 0
-# 107 "data/maps/MaguroHarbor/scripts.pory"
 	release
 	return
 
 MaguroHarbor_EventScript_FishermanOldRod_2:
-# 64 "data/maps/MaguroHarbor/scripts.pory"
 	speakername MaguroHarbor_EventScript_FishermanInBoat_Text_0
-# 65 "data/maps/MaguroHarbor/scripts.pory"
 	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_0
-# 68 "data/maps/MaguroHarbor/scripts.pory"
 	closemessage
-# 70 "data/maps/MaguroHarbor/scripts.pory"
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
-# 71 "data/maps/MaguroHarbor/scripts.pory"
 	waitmovement 0
-# 72 "data/maps/MaguroHarbor/scripts.pory"
 	release
 	end
 
 MaguroHarbor_EventScript_FishermanOldRod_5:
-# 92 "data/maps/MaguroHarbor/scripts.pory"
 	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_2
 	goto MaguroHarbor_EventScript_FishermanOldRod_4
 
 
 MaguroHarbor_EventScript_Man::
-# 111 "data/maps/MaguroHarbor/scripts.pory"
 	lock
-# 112 "data/maps/MaguroHarbor/scripts.pory"
 	faceplayer
-# 113 "data/maps/MaguroHarbor/scripts.pory"
 	speakername MaguroHarbor_EventScript_Man_Text_0
-# 114 "data/maps/MaguroHarbor/scripts.pory"
 	msgbox MaguroHarbor_EventScript_Man_Text_1
-# 117 "data/maps/MaguroHarbor/scripts.pory"
 	closemessage
-# 118 "data/maps/MaguroHarbor/scripts.pory"
 	release
 	return
 
 
 MaguroHarbor_EventScript_Mart::
-# 122 "data/maps/MaguroHarbor/scripts.pory"
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_EARLY_MORNING, MaguroHarbor_EventScript_Mart_2
+	case TIME_MORNING, MaguroHarbor_EventScript_Mart_3
+	case TIME_LUNCHTIME, MaguroHarbor_EventScript_Mart_3
+	case TIME_AFTERNOON, MaguroHarbor_EventScript_Mart_3
+	case TIME_EVENING, MaguroHarbor_EventScript_Mart_3
+	case TIME_NIGHT, MaguroHarbor_EventScript_Mart_4
+	return
+
+MaguroHarbor_EventScript_Mart_2:
+	goto MaguroHarbor_EventScript_MartSettingUp
+	return
+
+MaguroHarbor_EventScript_Mart_3:
+	goto MaguroHarbor_EventScript_MartSelling
+	return
+
+MaguroHarbor_EventScript_Mart_4:
+	call StringVarSetter
+	goto MaguroHarbor_EventScript_MartClosingUp
+	return
+
+
+MaguroHarbor_EventScript_MartSelling::
 	lock
-# 123 "data/maps/MaguroHarbor/scripts.pory"
 	faceplayer
-# 124 "data/maps/MaguroHarbor/scripts.pory"
-	speakername MaguroHarbor_EventScript_Mart_Text_0
-# 125 "data/maps/MaguroHarbor/scripts.pory"
+	speakername MaguroHarbor_EventScript_MartSelling_Text_0
 	message gText_HowMayIServeYou
-# 126 "data/maps/MaguroHarbor/scripts.pory"
 	waitmessage
-# 127 "data/maps/MaguroHarbor/scripts.pory"
 	pokemart MaguroHarbor_Mart
-# 128 "data/maps/MaguroHarbor/scripts.pory"
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-# 129 "data/maps/MaguroHarbor/scripts.pory"
 	release
 	return
 
 
+MaguroHarbor_EventScript_MartSettingUp::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_MartSelling_Text_0
+	msgbox MaguroHarbor_EventScript_MartSettingUp_Text_0, MSGBOX_DEFAULT
+	waitmessage
+	release
+	return
+
+
+MaguroHarbor_EventScript_MartClosingUp::
+	lock
+	faceplayer
+	speakername MaguroHarbor_EventScript_MartSelling_Text_0
+	msgbox MaguroHarbor_EventScript_MartClosingUp_Text_0, MSGBOX_DEFAULT
+	waitmessage
+	release
+	return
+
+
+StringVarSetter:
+	getweekday
+	switch VAR_RESULT
+	case WEEKDAY_WED, StringVarSetter_2
+	case WEEKDAY_SAT, StringVarSetter_3
+	case WEEKDAY_SUN, StringVarSetter_4
+	return
+
+StringVarSetter_2:
+	bufferstring STR_VAR_1, StringVarSetter_Text_0
+	return
+
+StringVarSetter_3:
+	bufferstring STR_VAR_1, StringVarSetter_Text_1
+	return
+
+StringVarSetter_4:
+	bufferstring STR_VAR_1, StringVarSetter_Text_2
+	return
+
+
 	.align 2
-# 132 "data/maps/MaguroHarbor/scripts.pory"
 MaguroHarbor_Mart:
-# 133 "data/maps/MaguroHarbor/scripts.pory"
 	.2byte ITEM_POKE_BALL
-# 134 "data/maps/MaguroHarbor/scripts.pory"
-	.2byte ITEM_BERRY_JUICE
-# 135 "data/maps/MaguroHarbor/scripts.pory"
-	.2byte ITEM_PARALYZE_HEAL
-# 136 "data/maps/MaguroHarbor/scripts.pory"
-	.2byte ITEM_ANTIDOTE
-# 137 "data/maps/MaguroHarbor/scripts.pory"
-	.2byte ITEM_AWAKENING
-# 138 "data/maps/MaguroHarbor/scripts.pory"
-	.2byte ITEM_ESCAPE_ROPE
-# 139 "data/maps/MaguroHarbor/scripts.pory"
-	.2byte ITEM_REPEL
+	.2byte ITEM_OINTMENT
+	.2byte ITEM_CHERI_BERRY
+	.2byte ITEM_PECHA_BERRY
+	.2byte ITEM_CHESTO_BERRY
 	.2byte ITEM_NONE
 
 MaguroHarbor_EventScript_TownSign_Text_0:
-# 6 "data/maps/MaguroHarbor/scripts.pory"
 	.string "Maguro Harbor\n"
 	.string "“A town that lives hand in hand with\l"
 	.string "the sea.”$"
 
-MaguroHarbor_EventScript_FishcakeSalesman_Text_0:
-# 13 "data/maps/MaguroHarbor/scripts.pory"
+MaguroHarbor_EventScript_LovestruckGirl_Text_0:
+	.string "Lovestruck Girl$"
+
+MaguroHarbor_EventScript_LovestruckGirl_Text_1:
+	.string "It's only been an hour since I saw my\n"
+	.string "love, and yet I already want tomorrow\l"
+	.string "to come just so I see him again…$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0:
 	.string "Old woman$"
 
-MaguroHarbor_EventScript_FishcakeSalesman_Text_1:
-# 15 "data/maps/MaguroHarbor/scripts.pory"
+MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_1:
+	.string "Oh I'm so sorry, dearie. We haven't\n"
+	.string "opened yet. Come back later!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0:
+	.string "Come back tomorrow if you'd like\n"
+	.string "another fishcake!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_1:
 	.string "Hello dear, want to try a fishcake?\p"
-	.string "They're the town's specialty!$"
+	.string "They're the town's specialty! Only\n"
+	.string "¥500!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2:
+	.string "One please!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_3:
+	.string "No, thanks.$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_4:
+	.string "Fishcakes?$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_5:
+	.string "One fishcake, coming right up!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_6:
+	.string "Oh dear! It appears you're a little\n"
+	.string "short on pocket money.$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7:
+	.string "What's in the Fishcakes, you ask?\p"
+	.string "Uhh… Cake!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0:
+	.string "I'm sorry but we've closed shop now,\n"
+	.string "dearie. We'll be open again\l"
+	.string "{STR_VAR_1}!$"
+
+MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_1:
+	.string "Oh my! I'm sorry but we've closed shop\n"
+	.string "now, dearie. We'll be open again\l"
+	.string "{STR_VAR_1}!\p"
+	.string "Did you want to buy one of my\n"
+	.string "Fishcakes?\p"
+	.string "Here, you can have the leftovers from\n"
+	.string "today!$"
 
 MaguroHarbor_EventScript_FishPokemonSalesman_Text_0:
-# 28 "data/maps/MaguroHarbor/scripts.pory"
-	.string "Salesman$"
+	.string "laddie$"
 
 MaguroHarbor_EventScript_FishPokemonSalesman_Text_1:
-# 30 "data/maps/MaguroHarbor/scripts.pory"
+	.string "lassie$"
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0:
+	.string "Salesman$"
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1:
+	.string "Aye! We're not open yet. Come back\n"
+	.string "later for the fresh catch of the day.$"
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0:
 	.string "Fresh fish! Come get yer fish!$"
 
+MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp_Text_0:
+	.string "Ah! You're a bit too late {STR_VAR_2}. We're\nclosed for th' day. We'll be open again\l{STR_VAR_1}.$"
+
 MaguroHarbor_EventScript_FishermanInBoat_Text_0:
-# 40 "data/maps/MaguroHarbor/scripts.pory"
 	.string "Fisherman$"
 
 MaguroHarbor_EventScript_FishermanInBoat_Text_1:
-# 42 "data/maps/MaguroHarbor/scripts.pory"
 	.string "I'm letting my fishing partner\n"
 	.string "Cramorant rest for a while.$"
 
 MaguroHarbor_EventScript_Cramorant_Text_0:
-# 52 "data/maps/MaguroHarbor/scripts.pory"
 	.string "Cramorant$"
 
 MaguroHarbor_EventScript_Cramorant_Text_1:
-# 54 "data/maps/MaguroHarbor/scripts.pory"
 	.string "Craaah!$"
 
 MaguroHarbor_EventScript_FishermanOldRod_Text_0:
-# 66 "data/maps/MaguroHarbor/scripts.pory"
 	.string "Heyo, wee fisherm'n! Hope ye be\n"
 	.string "enjoyin' yer fishing rod!$"
 
 MaguroHarbor_EventScript_FishermanOldRod_Text_1:
-# 78 "data/maps/MaguroHarbor/scripts.pory"
 	.string "Shush, ye fool child! You're scarin'\n"
 	.string "tha wee fishes!\p"
 	.string "… … … …\p"
@@ -248,28 +500,40 @@ MaguroHarbor_EventScript_FishermanOldRod_Text_1:
 	.string "But I can give ye this ol' rud o' mine!$"
 
 MaguroHarbor_EventScript_FishermanOldRod_Text_2:
-# 93 "data/maps/MaguroHarbor/scripts.pory"
 	.string "It be a wee bit used, but I reckon it\n"
 	.string "will serve ye mighty fine!\p"
 	.string "Farewell, lad! May ye become a great\n"
 	.string "fisherm'n!$"
 
 MaguroHarbor_EventScript_FishermanOldRod_Text_3:
-# 98 "data/maps/MaguroHarbor/scripts.pory"
 	.string "It be a wee bit used, but I reckon it\n"
 	.string "will serve ye mighty fine!\p"
 	.string "Farewell, lass! May ye become a great\n"
 	.string "fisherm'n!$"
 
 MaguroHarbor_EventScript_Man_Text_0:
-# 113 "data/maps/MaguroHarbor/scripts.pory"
 	.string "Man$"
 
 MaguroHarbor_EventScript_Man_Text_1:
-# 115 "data/maps/MaguroHarbor/scripts.pory"
 	.string "I wish I swam as gracefully as the\n"
 	.string "Dojo's Magikarp…$"
 
-MaguroHarbor_EventScript_Mart_Text_0:
-# 124 "data/maps/MaguroHarbor/scripts.pory"
+MaguroHarbor_EventScript_MartSelling_Text_0:
 	.string "Clerk$"
+
+MaguroHarbor_EventScript_MartSettingUp_Text_0:
+	.string "Oh, uh, the shop isn't open yet. Come\n"
+	.string "back later.$"
+
+MaguroHarbor_EventScript_MartClosingUp_Text_0:
+	.string "The shop's closed for today. Come\n"
+	.string "back {STR_VAR_1}.$"
+
+StringVarSetter_Text_0:
+	.string "on Saturday$"
+
+StringVarSetter_Text_1:
+	.string "tomorrow$"
+
+StringVarSetter_Text_2:
+	.string "on Wednesday$"

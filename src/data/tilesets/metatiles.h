@@ -289,3 +289,9 @@ const u16 gMetatileAttributes_Gate[] = INCBIN_U16("data/tilesets/secondary/gate/
 
 const u16 gMetatiles_House_Marble[] = INCBIN_U16("data/tilesets/secondary/house_marble/metatiles.bin");
 const u16 gMetatileAttributes_House_Marble[] = INCBIN_U16("data/tilesets/secondary/house_marble/metatile_attributes.bin");
+
+const u16 gMetatiles_DojoYifu[] = INCBIN_U16("data/tilesets/secondary/dojo_yifu/metatiles.bin");
+const u16 gMetatileAttributes_DojoYifu[] = INCBIN_U16("data/tilesets/secondary/dojo_yifu/metatile_attributes.bin");
+
+const u16 gMetatiles_CrobatHideout[] = INCBIN_U16("data/tilesets/secondary/crobat_hideout/metatiles.bin");
+const u16 gMetatileAttributes_CrobatHideout[] = INCBIN_U16("data/tilesets/secondary/crobat_hideout/metatile_attributes.bin");

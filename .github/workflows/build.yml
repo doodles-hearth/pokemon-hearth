@@ -28,9 +28,23 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y build-essential libpng-dev libelf-dev
-        # build-essential, git, and libpng-dev are already installed
+        # build-essential and git are already installed
         # gcc-arm-none-eabi is only needed for the modern build
         # as an alternative to dkP
+
+      - name: Poryscript Download
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: 'huderlem/poryscript'
+          latest: true
+          fileName: 'poryscript-linux.zip'
+          extract: true
+          out-file-path: 'tools'
+
+      - name: Poryscript Install
+        run: |
+          sudo mv tools/poryscript-linux tools/poryscript
+          sudo chmod +x tools/poryscript/poryscript
 
       - name: ROM
         env:
@@ -41,5 +55,4 @@ jobs:
         env:
           TEST: 1
         run: |
-          make -j${nproc} -O pokeemerald-test.elf
           make -j${nproc} check

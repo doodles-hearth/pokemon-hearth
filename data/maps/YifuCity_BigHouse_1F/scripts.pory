@@ -1,0 +1,24 @@
+mapscripts YifuCity_BigHouse_1F_MapScripts {
+	
+}
+
+script YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight {
+	lock
+	faceplayer
+	speakername("Girl")
+	msgbox(format(
+		"I stopped going out at night.\nThose fishy Crobat people roam the streets, speaking in hush tones…"
+	))
+	release
+}
+
+script YifuCity_BigHouse_1F_EventScript_Man {
+	lock
+	faceplayer
+	speakername("Guy")
+	msgbox(format(
+		"Did you know? The Samurai aren't actually affiliated with the Elder council of Toku. That's a common misconception!\p"
+		"They're their own organization, which mostly deals in protecting the population and fighting crime."
+	))
+	release
+}

@@ -1,0 +1,32 @@
+script TravelingMerchant_EventScript_Keke {
+	lock
+	faceplayer
+
+	playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
+
+	if (flag(FLAG_MET_TRAVELING_MERCHANT)) {
+		speakername("Keke")
+	} else {
+		speakername("Kecleon")
+	}
+
+	switch(random(3)) {
+		case 0:
+			msgbox(format(
+				"Keckecke!"
+			))
+		case 1:
+			msgbox(format(
+				"Klehhh!"
+			))
+		case 2:
+			msgbox(format(
+				"…"
+			))
+	}
+
+	waitmoncry
+	closemessage
+
+	release
+}

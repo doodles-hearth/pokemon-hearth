@@ -18,7 +18,7 @@ SINGLE_BATTLE_TEST("Immunity prevents Poison Sting poison")
 SINGLE_BATTLE_TEST("Immunity prevents Toxic bad poison")
 {
     GIVEN {
-        ASSUME(gMovesInfo[MOVE_TOXIC].effect == EFFECT_TOXIC);
+        ASSUME(GetMoveEffect(MOVE_TOXIC) == EFFECT_TOXIC);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_SNORLAX) { Ability(ABILITY_IMMUNITY); }
     } WHEN {
@@ -26,7 +26,7 @@ SINGLE_BATTLE_TEST("Immunity prevents Toxic bad poison")
     } SCENE {
         MESSAGE("Wobbuffet used Toxic!");
         ABILITY_POPUP(opponent, ABILITY_IMMUNITY);
-        MESSAGE("Foe Snorlax's Immunity prevents poisoning!");
+        MESSAGE("The opposing Snorlax's Immunity prevents poisoning!");
         NOT STATUS_ICON(opponent, poison: TRUE);
     }
 }
@@ -34,7 +34,7 @@ SINGLE_BATTLE_TEST("Immunity prevents Toxic bad poison")
 SINGLE_BATTLE_TEST("Immunity prevents Toxic Spikes poison")
 {
     GIVEN {
-        ASSUME(gMovesInfo[MOVE_TOXIC_SPIKES].effect == EFFECT_TOXIC_SPIKES);
+        ASSUME(GetMoveEffect(MOVE_TOXIC_SPIKES) == EFFECT_TOXIC_SPIKES);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_SNORLAX) { Ability(ABILITY_IMMUNITY); }

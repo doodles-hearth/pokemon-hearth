@@ -15,7 +15,7 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M",
       "x": 7,
       "y": 5,
       "elevation": 0,
@@ -25,10 +25,17 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_School_EventScript_ChildPokemonInsideVolcano",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_2",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": true,
+      "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_F",
       "x": 7,
       "y": 8,
       "elevation": 0,
@@ -38,10 +45,17 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_School_EventScript_ChildTellsStory",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_1",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": true,
+      "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TWIN_F",
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_F",
       "x": 4,
       "y": 5,
       "elevation": 0,
@@ -51,12 +65,19 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_School_EventScript_ChildAlreadyKnowLegend",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_2",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": true,
+      "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TWIN_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_F_ORANGE",
       "x": 6,
-      "y": 7,
+      "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -64,10 +85,17 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_School_EventScript_IsThePokemonWakingUp",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_1",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": true,
+      "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M_ORANGE",
       "x": 6,
       "y": 10,
       "elevation": 0,
@@ -77,10 +105,17 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_School_EventScript_ChildImBored",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_1",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": true,
+      "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TWIN_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M_ORANGE",
       "x": 3,
       "y": 10,
       "elevation": 0,
@@ -90,7 +125,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_School_EventScript_ChildWiseGlasses",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_1",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
@@ -103,10 +145,17 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_School_EventScript_Teacher",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_3",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": false,
+      "morning": true,
+      "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_F",
       "x": 5,
       "y": 7,
       "elevation": 0,
@@ -116,19 +165,19 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_School_EventScript_ChildLikeSensei",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_TEMP_2",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": true,
+      "night": false
     }
   ],
   "warp_events": [
     {
       "x": 5,
-      "y": 13,
-      "elevation": 0,
-      "dest_map": "MAP_CHII_TOWN",
-      "dest_warp_id": "5"
-    },
-    {
-      "x": 6,
       "y": 13,
       "elevation": 0,
       "dest_map": "MAP_CHII_TOWN",

@@ -19,6 +19,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gardener;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FatMan;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokefanF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Man1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Woman1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Woman2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_AromaLady;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ExpertM;
@@ -39,6 +40,9 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Youngster;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BugCatcher;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PsychicM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SchoolKidM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SchoolKidF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SchoolKidM_Orange;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SchoolKidF_Orange;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Maniac;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HexManiac;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RayquazaStill;
@@ -48,6 +52,10 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlackBelt;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Beauty;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scientist1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lass;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokemonBreederF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokemonBreederM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CoolTrainer;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KimonoGirl;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Monk;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gentleman;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sailor;
@@ -130,6 +138,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaMember
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaMemberF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsGruntM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsGruntF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsBoss;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsKevin;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Samurai;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sidney;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Phoebe;
@@ -252,6 +262,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_HoOh;
 // Begin pokemon event objects
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokeBall;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Follower;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BallLight;
 
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bard;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hipster;
@@ -283,6 +294,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_FAT_MAN] =                  &gObjectEventGraphicsInfo_FatMan,
     [OBJ_EVENT_GFX_POKEFAN_F] =                &gObjectEventGraphicsInfo_PokefanF,
     [OBJ_EVENT_GFX_MAN_1] =                    &gObjectEventGraphicsInfo_Man1,
+    [OBJ_EVENT_GFX_WOMAN_1] =                  &gObjectEventGraphicsInfo_Woman1,
     [OBJ_EVENT_GFX_WOMAN_2] =                  &gObjectEventGraphicsInfo_Woman2,
     [OBJ_EVENT_GFX_AROMA_LADY] =               &gObjectEventGraphicsInfo_AromaLady,
     [OBJ_EVENT_GFX_SHAMISEN_BLUE] =            &gObjectEventGraphicsInfo_Shamisen_Blue,
@@ -307,6 +319,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BUG_CATCHER] =              &gObjectEventGraphicsInfo_BugCatcher,
     [OBJ_EVENT_GFX_PSYCHIC_M] =                &gObjectEventGraphicsInfo_PsychicM,
     [OBJ_EVENT_GFX_SCHOOL_KID_M] =             &gObjectEventGraphicsInfo_SchoolKidM,
+    [OBJ_EVENT_GFX_SCHOOL_KID_F] =             &gObjectEventGraphicsInfo_SchoolKidF,
+    [OBJ_EVENT_GFX_SCHOOL_KID_M_ORANGE] =      &gObjectEventGraphicsInfo_SchoolKidM_Orange,
+    [OBJ_EVENT_GFX_SCHOOL_KID_F_ORANGE] =      &gObjectEventGraphicsInfo_SchoolKidF_Orange,
     [OBJ_EVENT_GFX_MANIAC] =                   &gObjectEventGraphicsInfo_Maniac,
     [OBJ_EVENT_GFX_HEX_MANIAC] =               &gObjectEventGraphicsInfo_HexManiac,
     [OBJ_EVENT_GFX_RAYQUAZA_STILL] =           &gObjectEventGraphicsInfo_RayquazaStill,
@@ -316,6 +331,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BEAUTY] =                   &gObjectEventGraphicsInfo_Beauty,
     [OBJ_EVENT_GFX_SCIENTIST_1] =              &gObjectEventGraphicsInfo_Scientist1,
     [OBJ_EVENT_GFX_LASS] =                     &gObjectEventGraphicsInfo_Lass,
+    [OBJ_EVENT_GFX_BREEDER_F] =                &gObjectEventGraphicsInfo_PokemonBreederF,
+    [OBJ_EVENT_GFX_BREEDER_M] =                &gObjectEventGraphicsInfo_PokemonBreederM,
+    [OBJ_EVENT_GFX_COOLTRAINER] =              &gObjectEventGraphicsInfo_CoolTrainer,
+    [OBJ_EVENT_GFX_KIMONO_GIRL] =              &gObjectEventGraphicsInfo_KimonoGirl,
     [OBJ_EVENT_GFX_MONK] =                     &gObjectEventGraphicsInfo_Monk,
     [OBJ_EVENT_GFX_GENTLEMAN] =                &gObjectEventGraphicsInfo_Gentleman,
     [OBJ_EVENT_GFX_SAILOR] =                   &gObjectEventGraphicsInfo_Sailor,
@@ -396,6 +415,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MAGMA_MEMBER_F] =           &gObjectEventGraphicsInfo_MagmaMemberF,
     [OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M] =   &gObjectEventGraphicsInfo_CrobatShadowsGruntM,
     [OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_F] =   &gObjectEventGraphicsInfo_CrobatShadowsGruntF,
+    [OBJ_EVENT_GFX_CROBAT_SHADOWS_BOSS] =   &gObjectEventGraphicsInfo_CrobatShadowsBoss,
+    [OBJ_EVENT_GFX_CROBAT_SHADOWS_KEVIN] =   &gObjectEventGraphicsInfo_CrobatShadowsKevin,
     [OBJ_EVENT_GFX_SAMURAI] =           &gObjectEventGraphicsInfo_Samurai,
     [OBJ_EVENT_GFX_SIDNEY] =                   &gObjectEventGraphicsInfo_Sidney,
     [OBJ_EVENT_GFX_PHOEBE] =                   &gObjectEventGraphicsInfo_Phoebe,
@@ -514,6 +535,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_HOOH] =                     &gObjectEventGraphicsInfo_HoOh,
     [OBJ_EVENT_GFX_POKE_BALL] =                &gObjectEventGraphicsInfo_PokeBall,
     [OBJ_EVENT_GFX_OW_MON] =                   &gObjectEventGraphicsInfo_Follower,
+    [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

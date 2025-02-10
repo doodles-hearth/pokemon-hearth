@@ -1,8 +1,38 @@
 mapscripts ChiiTown_School_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION{
+		//call(ChiiTownSchool_NPCSchedules)
+	}
 }
 
 script ChiiTown_School_EventScript_Teacher {
+	gettimeofday
+	switch(var(VAR_RESULT)){
+		case TIME_EARLY_MORNING:
+			goto(ChiiTown_School_EventScript_PreparingDay)
+		case TIME_MORNING:
+			goto(ChiiTown_School_EventScript_Teaching)
+		case TIME_EVENING:
+			goto(ChiiTown_School_EventScript_EndingDay)
+	}
+}
+
+script ChiiTown_School_EventScript_PreparingDay {
+	lock
+	faceplayer
+
+	speakername("Sensei")
+	msgbox(format(
+		"Um… The school isn't open yet, I'm afraid. Come back later with your little brother or sister!"
+	))
+	closemessage
+
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+	release
+}
+
+
+script ChiiTown_School_EventScript_Teaching {
 	lock
 	faceplayer
 
@@ -11,6 +41,21 @@ script ChiiTown_School_EventScript_Teacher {
 		"Um… Aren't you a little old for\nthis class?\p"
 		"It's alright, you can stay!\p"
 		"Today we're doing some creative\nwriting about the Toku legends."
+	))
+	closemessage
+
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+	release
+}
+
+script ChiiTown_School_EventScript_EndingDay {
+	lock
+	faceplayer
+
+	speakername("Sensei")
+	msgbox(format(
+		"Oh! I'm afraid classes are done for the day. You'll have to come back tomorrow."
 	))
 	closemessage
 

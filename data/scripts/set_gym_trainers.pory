@@ -2,7 +2,7 @@ script Common_EventScript_SetGymTrainers {
 	switch(var(VAR_0x8008)) {
 		case 1: call(KoiPond_Dojo_SetGymTrainers)
 		case 2: call(Bonsai_Dojo_SetGymTrainers)
-		case 3: call(MauvilleCity_Gym_SetGymTrainers)
+		case 3: call(YifuCity_Dojo_SetGymTrainers)
 		case 4: call(LavaridgeTown_Gym_SetGymTrainers)
 		case 5: call(PetalburgCity_Gym_SetGymTrainers)
 		case 6: call(FortreeCity_Gym_SetGymTrainers)
@@ -28,12 +28,12 @@ script Bonsai_Dojo_SetGymTrainers {
 	return
 }
 
-script MauvilleCity_Gym_SetGymTrainers {
-	settrainerflag(TRAINER_KIRK)
-	settrainerflag(TRAINER_SHAWN)
-	settrainerflag(TRAINER_BEN)
-	settrainerflag(TRAINER_VIVIAN)
-	settrainerflag(TRAINER_ANGELO)
+script YifuCity_Dojo_SetGymTrainers {
+	settrainerflag(TRAINER_AKARI)
+	settrainerflag(TRAINER_YUKA)
+	settrainerflag(TRAINER_KANAE)
+	settrainerflag(TRAINER_NANAMI)
+	settrainerflag(TRAINER_MIIKA)
 	return
 }
 

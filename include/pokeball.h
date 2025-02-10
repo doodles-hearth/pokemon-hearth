@@ -1,38 +1,40 @@
 #ifndef GUARD_POKEBALL_H
 #define GUARD_POKEBALL_H
 
-enum
+enum PokeBall
 {
-    BALL_POKE,
-    BALL_GREAT,
-    BALL_ULTRA,
-    BALL_MASTER,
-    BALL_PREMIER,
-    BALL_HEAL,
-    BALL_NET,
-    BALL_NEST,
-    BALL_DIVE,
-    BALL_DUSK,
-    BALL_TIMER,
-    BALL_QUICK,
-    BALL_REPEAT,
-    BALL_LUXURY,
-    BALL_LEVEL,
-    BALL_LURE,
-    BALL_MOON,
-    BALL_FRIEND,
-    BALL_LOVE,
-    BALL_FAST,
-    BALL_HEAVY,
-    BALL_DREAM,
-    BALL_SAFARI,
-    BALL_SPORT,
-    BALL_PARK,
-    //BALL_BEAST,
-    BALL_CHERISH,
-    BALL_LIGHT,
+    BALL_STRANGE = 0,
+    BALL_POKE = 1,
+    BALL_GREAT = 2,
+    BALL_ULTRA = 3,
+    BALL_MASTER = 4,
+    BALL_PREMIER = 5,
+    BALL_HEAL = 6,
+    BALL_NET = 7,
+    BALL_NEST = 8,
+    BALL_DIVE = 9,
+    BALL_DUSK = 10,
+    BALL_TIMER = 11,
+    BALL_QUICK = 12,
+    BALL_REPEAT = 13,
+    BALL_LUXURY = 14,
+    BALL_LEVEL = 15,
+    BALL_LURE = 16,
+    BALL_MOON = 17,
+    BALL_FRIEND = 18,
+    BALL_LOVE = 19,
+    BALL_FAST = 20,
+    BALL_HEAVY = 21,
+    BALL_DREAM = 22,
+    BALL_SAFARI = 23,
+    BALL_SPORT = 24,
+    BALL_PARK = 25,
+    BALL_BEAST = 26,
+    BALL_CHERISH = 27,
+    BALL_LIGHT = 28,
     POKEBALL_COUNT,
-    BALL_KABA, // ah yes, srs: this is for kaba's speech and not for anything else
+    // ah yes, srs: this is for kaba's speech and not for anything else
+    BALL_KABA = 30,
 };
 
 enum {
@@ -58,6 +60,7 @@ void StartHealthboxSlideIn(u8 battler);
 void DoHitAnimHealthboxEffect(u8 battler);
 void LoadBallGfx(u8 ballId);
 void FreeBallGfx(u8 ballId);
+enum PokeBall ItemIdToBallId(u32 ballItem);
 
 // kaba's speech
 u8 CreateIntroPokeballSprite(u8 monSpriteId, u8 monPalNum, u8 x, u8 y, u8 oamPriority, u8 subPriority, u8 delay, u32 fadePalettes);

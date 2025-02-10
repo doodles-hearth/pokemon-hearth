@@ -31,7 +31,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_LotOfRocks",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -40,11 +47,18 @@
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 2,
-      "movement_range_y": 1,
+      "movement_range_y": 2,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_HousesMadeOfSilverTunnelStone",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -57,7 +71,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_1",
@@ -70,7 +91,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_Wildflowers",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY)",
@@ -83,7 +111,14 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_2",
@@ -96,6 +131,39 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_MissingStatue",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 29,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
+      "x": 31,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
       "flag": "0"
     }
   ],

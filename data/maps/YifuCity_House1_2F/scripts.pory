@@ -1,0 +1,66 @@
+mapscripts YifuCity_House1_2F_MapScripts {
+	
+}
+
+script YifuCity_House1_2F_EventScript_ChildGiveDoll {
+	lock
+	if (flag(FLAG_RECEIVED_DOLL_FROM_CHILD)) {
+		faceplayer
+		speakername("Little boy")
+		msgbox(format(
+			"Keep your mouth shut about it!"
+		))
+		closemessage
+	} else {
+		if (flag(FLAG_RECEIVED_SECRET_POWER)) {
+			faceplayer
+			speakername("Little boy")
+			msgbox(format(
+				"Quick, take this!"
+			))
+			closemessage
+			
+			// TODO EVA change the type of doll
+			givedecoration(DECOR_LOTAD_DOLL)
+
+			speakername("Little boy")
+			msgbox(format(
+				"Tell no one! I was never here!"
+			))
+			closemessage
+		} else {
+			speakername("Little boy")
+			msgbox(format(
+				"Quit following me around!!"
+			))
+			closemessage
+		}
+	}
+	
+	release	
+}
+
+
+script YifuCity_House1_2F_EventScript_ChildStolenDoll {
+	lock
+	faceplayer
+	speakername("Little girl")
+	msgbox(format(
+		"My brother is meaaannnn!\nHe won't give me my doll back!!"
+	))
+	closemessage
+	release	
+}
+
+script YifuCity_House1_2F_EventScript_Vulpix {
+	lock
+	faceplayer
+	playmoncry(SPECIES_VULPIX, CRY_MODE_NORMAL)
+	speakername("Vulpix")
+	msgbox(format(
+		"Yap!"
+	))
+	waitmoncry
+	closemessage
+	release
+}

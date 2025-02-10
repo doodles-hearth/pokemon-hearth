@@ -112,9 +112,9 @@ static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
 
 static const u16 sStarterMon[STARTER_MON_COUNT] =
 {
-    SPECIES_TRAPINCH,
-    SPECIES_ARON,
-    SPECIES_SPHEAL,
+    SPECIES_CYNDAQUIL,
+    SPECIES_SNIVY,
+    SPECIES_FROAKIE,
 };
 
 static const struct BgTemplate sBgTemplates[3] =
@@ -577,7 +577,7 @@ static void CreateStarterPokemonLabel(u8 selection)
 
     u16 species = GetStarterPokemon(selection);
     CopyMonCategoryText(species, categoryText);
-    speciesName = GetSpeciesName(species);
+    speciesName = GetSpeciesName(species, SKIP_NAME_CHECK);
 
     winTemplate = sWindowTemplate_StarterLabel;
     winTemplate.tilemapLeft = sStarterLabelCoords[selection][0];

@@ -4,7 +4,7 @@
 ASSUMPTIONS
 {
     ASSUME(gItemsInfo[ITEM_PROTECTIVE_PADS].holdEffect == HOLD_EFFECT_PROTECTIVE_PADS);
-    ASSUME(gMovesInfo[MOVE_TACKLE].makesContact == TRUE);
+    ASSUME(MoveMakesContact(MOVE_TACKLE) == TRUE);
 }
 
 SINGLE_BATTLE_TEST("Protective Pads protected moves still make direct contact", s16 damage)
@@ -69,7 +69,7 @@ SINGLE_BATTLE_TEST("Protective Pads protects from Rocly Helmet Damage")
         HP_BAR(opponent);
         NONE_OF {
             HP_BAR(player);
-            MESSAGE("Wobbuffet was hurt by Foe Wobbuffet's Rocky Helmet!");
+            MESSAGE("Wobbuffet was hurt by the opposing Wobbuffet's Rocky Helmet!");
         }
     }
 }

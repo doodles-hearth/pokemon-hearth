@@ -75,9 +75,9 @@ struct ApprenticeQuestionData
 };
 
 // IWRAM common
-struct ApprenticePartyMovesData *gApprenticePartyMovesData;
-struct ApprenticeQuestionData *gApprenticeQuestionData;
-void (*gApprenticeFunc)(void);
+COMMON_DATA struct ApprenticePartyMovesData *gApprenticePartyMovesData = NULL;
+COMMON_DATA struct ApprenticeQuestionData *gApprenticeQuestionData = NULL;
+COMMON_DATA void (*gApprenticeFunc)(void) = NULL;
 
 // This file's functions.
 static u16 GetRandomAlternateMove(u8 monId);
@@ -570,7 +570,7 @@ static void CreateApprenticeMenu(u8 menu)
 
             speciesTableId = APPRENTICE_SPECIES_ID(i);
             species =  gApprentices[PLAYER_APPRENTICE.id].species[speciesTableId];
-            strings[i] = GetSpeciesName(species);
+            strings[i] = GetSpeciesName(species, SKIP_NAME_CHECK);
         }
         break;
     case APPRENTICE_ASK_2SPECIES:
@@ -578,8 +578,8 @@ static void CreateApprenticeMenu(u8 menu)
         top = 8;
         if (PLAYER_APPRENTICE.questionsAnswered >= NUM_WHICH_MON_QUESTIONS)
             return;
-        strings[1] = GetSpeciesName(gApprenticeQuestionData->altSpeciesId);
-        strings[0] = GetSpeciesName(gApprenticeQuestionData->speciesId);
+        strings[1] = GetSpeciesName(gApprenticeQuestionData->altSpeciesId, SKIP_NAME_CHECK);
+        strings[0] = GetSpeciesName(gApprenticeQuestionData->speciesId, SKIP_NAME_CHECK);
         break;
     case APPRENTICE_ASK_MOVES:
         left = 17;
@@ -1032,13 +1032,13 @@ static void ApprenticeBufferString(void)
     switch (gSpecialVar_0x8006)
     {
     case APPRENTICE_BUFF_SPECIES1:
-        StringCopy(stringDst, GetSpeciesName(gApprenticeQuestionData->speciesId));
+        StringCopy(stringDst, GetSpeciesName(gApprenticeQuestionData->speciesId, SKIP_NAME_CHECK));
         break;
     case APPRENTICE_BUFF_SPECIES2:
-        StringCopy(stringDst, GetSpeciesName(gApprenticeQuestionData->altSpeciesId));
+        StringCopy(stringDst, GetSpeciesName(gApprenticeQuestionData->altSpeciesId, SKIP_NAME_CHECK));
         break;
     case APPRENTICE_BUFF_SPECIES3:
-        StringCopy(stringDst, GetSpeciesName(gApprenticeQuestionData->speciesId));
+        StringCopy(stringDst, GetSpeciesName(gApprenticeQuestionData->speciesId, SKIP_NAME_CHECK));
         break;
     case APPRENTICE_BUFF_MOVE1:
         StringCopy(stringDst, GetMoveName(gApprenticeQuestionData->moveId1));
@@ -1065,7 +1065,7 @@ static void ApprenticeBufferString(void)
         break;
     case APPRENTICE_BUFF_LEAD_MON_SPECIES:
         speciesArrayId = APPRENTICE_SPECIES_ID(PLAYER_APPRENTICE.leadMonId);
-        StringCopy(stringDst, GetSpeciesName(gApprentices[PLAYER_APPRENTICE.id].species[speciesArrayId]));
+        StringCopy(stringDst, GetSpeciesName(gApprentices[PLAYER_APPRENTICE.id].species[speciesArrayId], SKIP_NAME_CHECK));
         break;
     }
 }

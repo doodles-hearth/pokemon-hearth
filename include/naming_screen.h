@@ -11,7 +11,10 @@ enum {
     NAMING_SCREEN_WALDA,
     NAMING_SCREEN_RIVAL,
     NAMING_SCREEN_DEX_RIDDLE,
+    NAMING_SCREEN_CODE,
 };
+
+extern void BattleMainCB2(void);
 
 void DoNamingScreen(u8 templateNum, u8 *destBuffer, u16 monSpecies, u16 monGender, u32 monPersonality, MainCallback returnCallback);
 

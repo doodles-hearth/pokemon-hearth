@@ -235,7 +235,6 @@ extern const union AffineAnimCmd *const gAffineAnims_SpinningBone[];
 
 // battle_anim_throw.c
 void TryShinyAnimation(u8 battler, struct Pokemon *mon);
-u8 ItemIdToBallId(u16 itemId);
 u8 AnimateBallOpenParticles(u8 x, u8 y, u8 priority, u8 subpriority, u8 ballId);
 u8 LaunchBallFadeMonTask(bool8 unFadeLater, u8 spritePalNum, u32 selectedPalettes, u8 ballId);
 bool32 IsCriticalCapture(void);
@@ -268,6 +267,7 @@ void AnimConversion(struct Sprite *sprite);
 void AnimCuttingSlice(struct Sprite *sprite);
 void AnimThoughtBubble(struct Sprite *sprite);
 void AnimTranslateLinearSingleSineWave(struct Sprite *sprite);
+void AnimTeraStarstormStars(struct Sprite *sprite);
 void AnimGrantingStars(struct Sprite *sprite);
 void AnimFollowMeFinger(struct Sprite *sprite);
 extern const union AnimCmd *const gRazorLeafParticleAnimTable[];
@@ -346,7 +346,6 @@ extern const union AnimCmd *const gAnims_WaterPulseBubble[];
 
 // battle_anim_flying.c
 void DestroyAnimSpriteAfterTimer(struct Sprite *sprite);
-void sub_810E2C8(struct Sprite *sprite);
 void AnimAirWaveCrescent(struct Sprite *sprite);
 void AnimFlyBallUp(struct Sprite *sprite);
 void AnimFlyBallAttack(struct Sprite *sprite);
@@ -466,6 +465,7 @@ void AnimElectricPuff(struct Sprite *sprite);
 void AnimSparkElectricityFlashing(struct Sprite *sprite);
 void AnimGrowingShockWaveOrb(struct Sprite *sprite);
 void AnimElectricity(struct Sprite *);
+void AnimTask_VoltSwitch(struct Sprite* sprite);
 extern const union AffineAnimCmd *const gAffineAnims_GrowingElectricOrb[];
 extern const union AffineAnimCmd *const gAffineAnims_FlashingSpark[];
 extern const union AnimCmd *const gAnims_ThunderboltOrb[];

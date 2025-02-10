@@ -61,8 +61,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 		"Good morning, {STR_VAR_1}! There's a room available for ¥500, if you need a place to spend the night!"
 	))
 
-	// TODO eva check box position
-	showmoneybox(10, 0)
+	showmoneybox(18, 0)
 
 	if (checkmoney(500)) {
 		dynmultichoice(

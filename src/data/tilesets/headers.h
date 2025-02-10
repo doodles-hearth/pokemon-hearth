@@ -1,3 +1,17 @@
+#include "fieldmap.h"
+
+// Whether a palette has a night version, located at ((x + 9) % 16).pal
+#define SWAP_PAL(x) ((x) < NUM_PALS_IN_PRIMARY ? 1 << (x) : 1 << ((x) - NUM_PALS_IN_PRIMARY))
+
+// NOTE: Instead of using LIGHT_PAL, 
+// consider taking a look at the .pla files
+// to mark colors as lights, instead.
+// The old method *should* still work, however.
+// Check docs/tutorials/dns.md for details.
+
+// Whether a palette has lights the color indices to blend are stored in the palette's color 0
+#define LIGHT_PAL(x) ((x) < NUM_PALS_IN_PRIMARY ? 1 << (x) : 1 << ((x) - NUM_PALS_IN_PRIMARY))
+
 const struct Tileset gTileset_General =
 {
     .isCompressed = TRUE,
@@ -1120,5 +1134,27 @@ const struct Tileset gTileset_House_Marble =
     .palettes = gTilesetPalettes_House_Marble,
     .metatiles = gMetatiles_House_Marble,
     .metatileAttributes = gMetatileAttributes_House_Marble,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_DojoYifu =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_DojoYifu,
+    .palettes = gTilesetPalettes_DojoYifu,
+    .metatiles = gMetatiles_DojoYifu,
+    .metatileAttributes = gMetatileAttributes_DojoYifu,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_CrobatHideout =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CrobatHideout,
+    .palettes = gTilesetPalettes_CrobatHideout,
+    .metatiles = gMetatiles_CrobatHideout,
+    .metatileAttributes = gMetatileAttributes_CrobatHideout,
     .callback = NULL,
 };

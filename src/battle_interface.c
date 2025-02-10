@@ -1712,7 +1712,7 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 {
     u8 nickname[POKEMON_NAME_LENGTH + 1];
     void *ptr;
-    u32 windowId, spriteTileNum, species;
+    u32 windowId, spriteTileNum;
     u8 *windowTileData;
     u8 gender;
     struct Pokemon *illusionMon = GetIllusionMonPtr(gSprites[healthboxSpriteId].hMain_Battler);
@@ -1720,15 +1720,20 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
         mon = illusionMon;
 
     StringCopy(gDisplayedStringBattle, gText_HealthboxNickname);
+
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
     StringGet_Nickname(nickname);
+
+    if (GetBattlerSide(gSprites[healthboxSpriteId].hMain_Battler) != B_SIDE_PLAYER)
+    {
+        u16 species = GetMonData(mon, MON_DATA_SPECIES);
+        if (StringCompareWithoutExtCtrlCodes(nickname, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
+            StringCopy(nickname, GetSpeciesName(species, DO_NAME_CHECK));
+    }
+
     ptr = StringAppend(gDisplayedStringBattle, nickname);
 
     gender = GetMonGender(mon);
-    species = GetMonData(mon, MON_DATA_SPECIES);
-
-    if ((species == SPECIES_NIDORAN_F || species == SPECIES_NIDORAN_M) && StringCompare(nickname, GetSpeciesName(species)) == 0)
-        gender = 100;
 
     switch (gender)
     {
@@ -2537,6 +2542,10 @@ static void PrintBattlerOnAbilityPopUp(u8 battlerId, u8 spriteId1, u8 spriteId2)
     u8 monName[POKEMON_NAME_LENGTH + 3] = {0};
     u8* nick = gBattleMons[battlerId].nickname; // This needs to be updated for Illusion support
 
+    if ((gBattlerPositions[battlerId] & BIT_SIDE) != B_SIDE_PLAYER
+     && StringCompareWithoutExtCtrlCodes(nick, GetSpeciesName(gBattleMons[battlerId].species, SKIP_NAME_CHECK)) == 0)
+        StringCopy(nick, GetSpeciesName(gBattleMons[battlerId].species, DO_NAME_CHECK));
+
     for (i = 0; i < POKEMON_NAME_LENGTH; ++i)
     {
         monName[i] = nick[i];
@@ -2695,6 +2704,17 @@ static void RestoreOverwrittenPixels(u8 *tiles)
     Free(buffer);
 }
 
+static inline bool32 IsAnyAbilityPopUpActive(void)
+{
+    for (u32 battler = 0; battler < gBattlersCount; battler++)
+    {
+        if (gBattleStruct->battlerState[battler].activeAbilityPopUps)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
 void CreateAbilityPopUp(u8 battlerId, u32 ability, bool32 isDoubleBattle)
 {
     const s16 (*coords)[2];
@@ -2713,12 +2733,13 @@ void CreateAbilityPopUp(u8 battlerId, u32 ability, bool32 isDoubleBattle)
             return;
     }
 
-    if (!gBattleStruct->activeAbilityPopUps)
+    if (!IsAnyAbilityPopUpActive())
     {
         LoadSpriteSheet(&sSpriteSheet_AbilityPopUp);
         LoadSpritePalette(&sSpritePalette_AbilityPopUp);
     }
-    gBattleStruct->activeAbilityPopUps |= 1u << battlerId;
+
+    gBattleStruct->battlerState[battlerId].activeAbilityPopUps = TRUE;
     battlerPosition = GetBattlerPosition(battlerId);
 
     if (isDoubleBattle)
@@ -2809,7 +2830,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
                 ||(sprite->tRightToLeft && (sprite->x -= 4) <= sprite->tOriginalX - ABILITY_POP_UP_POS_X_SLIDE)
                )
             {
-                gBattleStruct->activeAbilityPopUps &= ~(1u << sprite->tBattlerId);
+                gBattleStruct->battlerState[sprite->tBattlerId].activeAbilityPopUps = FALSE;
                 DestroySprite(sprite);
             }
         }
@@ -2823,7 +2844,7 @@ static void SpriteCb_AbilityPopUp(struct Sprite *sprite)
 
 void DestroyAbilityPopUp(u8 battlerId)
 {
-    if (gBattleStruct->activeAbilityPopUps & (1u << battlerId))
+    if (gBattleStruct->battlerState[battlerId].activeAbilityPopUps)
     {
         gSprites[gBattleStruct->abilityPopUpSpriteIds[battlerId][0]].tFrames = 0;
         gSprites[gBattleStruct->abilityPopUpSpriteIds[battlerId][1]].tFrames = 0;
@@ -2835,7 +2856,7 @@ static void Task_FreeAbilityPopUpGfx(u8 taskId)
 {
     if (!gSprites[gTasks[taskId].tSpriteId1].inUse
         && !gSprites[gTasks[taskId].tSpriteId2].inUse
-        && !gBattleStruct->activeAbilityPopUps)
+        && !IsAnyAbilityPopUpActive())
     {
         FreeSpriteTilesByTag(ABILITY_POP_UP_TAG);
         FreeSpritePaletteByTag(ABILITY_POP_UP_TAG);

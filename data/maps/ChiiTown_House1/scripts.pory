@@ -139,7 +139,7 @@ movement ChiiTown_House1_Movement_GrowlitheRunsUpToPlayer {
 	walk_faster_right
 	walk_faster_right
 	walk_faster_up
-	walk_faster_right
+	walk_faster_right * 2
 	face_down
 }
 
@@ -147,7 +147,7 @@ movement ChiiTown_House1_Movement_OldManWalksUpToGrowlithe {
 	walk_down
 	walk_down
 	walk_down
-	face_right
+	walk_right
 }
 
 movement ChiiTown_House1_Movement_PlayerStepsAwayFromGrowlithe {

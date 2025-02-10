@@ -94,61 +94,309 @@ Geodude
 Level: 21
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_TOSHIKI ===
+Name: Toshiki
+Class: Bug Catcher
+Pic: Bug Catcher
 Gender: Male
-Music: Aqua
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Sewaddle Tokuan
+Level: 4
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- String Shot
+
+=== TRAINER_TOSHIO_1 ===
+Name: Toshio
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Taillow
+Level: 3
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Peck
+- Growl
+
+Kotora
+Level: 4
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Tail Whip
+- Thunder Shock
+
+=== TRAINER_EIJI ===
+Name: Eiji
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Joltik
+Level: 3
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Absorb
+- Fury Cutter
+
+Joltik
+Level: 3
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Absorb
+- Fury Cutter
+
+Sewaddle Tokuan
+Level: 3
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- String Shot
+
+
+=== TRAINER_CHIKAO ===
+Name: Chikao
+Class: School Kid
+Pic: School Kid M Orange
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Deerling
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tail Whip
+- Double Kick
+- Absorb
+
+Sewaddle Tokuan
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- String Shot
+
+Meowth
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Growl
+- Fake Out
+- Feint
+
+=== TRAINER_TAKESHI ===
+Name: Takeshi
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Basic Trainer
+
+Nickit
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Quick Attack
+- Beat Up
+- Tail Whip
+
+Seedot
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Absorb
+- Harden
+- Astonish
+
+=== TRAINER_KODOMO ===
+Name: Kodomo
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Hoothoot
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Growl
+- Peck
+- Focus Energy
+
+Hoothoot
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Growl
+- Peck
+- Tackle
+- Echoed Voice
+
+Kricketot
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Growl
+- Struggle Bug
+
+=== TRAINER_KENJI ===
+Name: Kenji
+Class: Artist
+Pic: Artist
+Gender: Male
+Music: Rich
+Double Battle: No
+AI: Basic Trainer
+
+Nidoran (M)
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Leer
+- Poison Sting
+- Peck
+
+Inkay
+Level: 8
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Peck
+- Wrap
+
+=== TRAINER_HIINA ===
+Name: Hiina
+Class: Beauty
+Pic: Beauty
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Nidoran (F)
+Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Leer
+- Poison Sting
+- Scratch
+
+Ponyta
+Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Growl
+- Tail Whip
+- Ember
+
+=== TRAINER_KIN_1 ===
+Name: Kin
+Class: Battle Girl
+Pic: Battle Girl
+Gender: Female
+Music: Intense
+Double Battle: No
+AI: Basic Trainer
+
+Meditite @ Focus Sash
+Level: 10
+IVs: 0 HP / 31 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Focus Punch
+
+Makuhita
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Focus Energy
+- Sand Attack
+- Arm Thrust
+- Fake Out
+
+=== TRAINER_KARU ===
+Name: Karu
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Poochyena
-Level: 32
+Hoppip
+Level: 11
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fairy Wind
+- Absorb
+- Tackle
+- Tail Whip
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Taillow
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Growl
+- Peck
+- Focus Energy
+- Quick Attack
+
+=== TRAINER_KOUTA ===
+Name: Kouta
+Class: Youngster
+Pic: Youngster
 Gender: Male
-Music: Aqua
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Mareep
+Level: 11
+IVs: 0 HP / 0 Atk / 0 Def / 15 SpA / 0 SpD / 15 Spe
+- Tackle
+- Thunder Wave
+- Thunder Shock
+- Cotton Spore
+
+=== TRAINER_MASATO ===
+Name: Masato
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Check Bad Move / Prefer Status Moves
+
+Kricketot (M)
+Level: 11
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bug Bite
+- Struggle Bug
+- Sing
+
+Kricketot (M)
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fury Cutter
+- Sing
+
+=== TRAINER_KOUGA ===
+Name: Kouga
+Class: Monk
+Pic: Monk
+Gender: Male
+Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Zubat
-Level: 31
+Bronzor
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Confusion
+- Hypnosis
+- Iron Defense
 
-Carvanha
-Level: 31
+Bronzor
+Level: 12
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_AQUA_HIDEOUT_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Zubat
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_AQUA_HIDEOUT_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Carvanha
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Confuse Ray
+- Confusion
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_1 ===
 Name: GRUNT
@@ -225,15 +473,48 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_GRUNT_BEACHBOUND_ROUTE_1 ===
 Name: Grunt
 Class: Zubat
-Pic: Aqua Grunt M
+Pic: Zubat Grunt M
 Gender: Male
 Music: Aqua
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
 Zubat
-Level: 9
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Astonish
+- Absorb
+- Supersonic
+
+Poochyena
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bite
+- Roar
+- Tackle
+
+=== TRAINER_GRUNT_BEACHBOUND_ROUTE_2 ===
+Name: Grunt
+Class: Zubat
+Pic: Zubat Grunt M
+Gender: Male
+Music: Aqua
+Double Battle: No
+AI: Basic Trainer
+
+Zubat
+Level: 11
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Astonish
+- Absorb
+- Leech Life
+
+Houndour
+Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Ember
+- Bite
+- Howl
 
 === TRAINER_MARCEL ===
 Name: MARCEL
@@ -2113,18 +2394,6 @@ Grumpig
 Level: 42
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-=== TRAINER_HIINA ===
-Name: Hiina
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Check Bad Move
-
-Vulpix
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAPHNE ===
 Name: DAPHNE
@@ -2516,24 +2785,7 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 - Glare
 - Crunch
 
-=== TRAINER_KIN_1 ===
-Name: Kin
-Class: Battle Girl
-Pic: Battle Girl
-Gender: Female
-Music: Intense
-Items: Super Potion
-Double Battle: No
-AI: Basic Trainer
 
-Meditite @ Focus Sash
-Level: 10
-IVs: 3 HP / 3 Atk / 30 Def / 3 SpA / 3 SpD / 6 Spe
-- Focus Punch
-
-Makuhita
-Level: 10
-IVs: 3 HP / 3 Atk / 30 Def / 3 SpA / 3 SpD / 3 Spe
 
 === TRAINER_MOLLIE ===
 Name: MOLLIE
@@ -3358,29 +3610,22 @@ Hariyama
 Level: 32
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_KIRK ===
-Name: KIRK
-Class: Guitarist
-Pic: Guitarist
-Gender: Male
-Music: Intense
+=== TRAINER_AKARI ===
+Name: Akari
+Class: Kimono Girl
+Pic: Kimono Girl
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Electrike
+Bounsweet
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Quick Attack
-- Thunder Wave
-- Spark
-- Leer
 
-Voltorb
+Skiploom
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Charge
-- Shock Wave
-- Screech
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_7 ===
 Name: GRUNT
@@ -3412,20 +3657,20 @@ Carvanha
 Level: 32
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_SHAWN ===
-Name: SHAWN
-Class: Guitarist
-Pic: Guitarist
-Gender: Male
-Music: Intense
+=== TRAINER_KANAE ===
+Name: Kanae
+Class: Kimono Girl
+Pic: Kimono Girl
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Voltorb
+Bounsweet
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Magnemite
+Bounsweet
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -3989,21 +4234,21 @@ Surskit
 Level: 27
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DEREK ===
-Name: DEREK
-Class: Bug Maniac
-Pic: Bug Maniac
-Gender: Male
-Music: Suspicious
+=== TRAINER_KARIN ===
+Name: Karin
+Class: Kimono Girl
+Pic: Kimono Girl
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Dustox
-Level: 16
+Bounsweet
+Level: 17
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-Beautifly
-Level: 16
+Bounsweet
+Level: 17
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_JEFFREY_2 ===
@@ -4798,17 +5043,30 @@ Class: Dojo Master
 Pic: Leader Koishi
 Gender: Female
 Music: Female
-Items: Potion / Potion
+Items: Uumegiri
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Lotad
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Surskit @ Oran Berry
+Level: 12
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Nature Power
+- String Shot
+- Pounce
 
-Feebas @ Oran Berry
-Level: 15
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Barboach
+Level: 12
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Mud Bomb
+- Nature Power
+- Flail
+
+Lombre
+Level: 14
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Nature Power
+- Mega Drain
+- Fake Out
 
 === TRAINER_HANA_1 ===
 Name: Hana
@@ -5928,31 +6186,6 @@ Hariyama
 Level: 39
 IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 
-=== TRAINER_TOSHIO_1 ===
-Name: TOSHIO
-Class: Bug Catcher
-Pic: Bug Catcher
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Check Bad Move
-
-Nidoran F
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_TAKESHI ===
-Name: TAKESHI
-Class: Ninja Boy
-Pic: Ninja Boy
-Gender: Male
-Music: Suspicious
-Double Battle: No
-AI: Check Bad Move / Try To Faint
-
-Nickit
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_IZUMI ===
 Name: Izumi
@@ -5963,9 +6196,24 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
+Lotad
+Level: 13
+- Absorb
+- Whirlpool
+- Rain Dance
+- Leech Seed
+
+Feebas
+Level: 12
+- Rain Dance
+- Water Gun
+- Flail
+
 Goldeen
 Level: 12
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Nature Power
+- Peck
+- Fury Attack
 
 === TRAINER_REN ===
 Name: Ren
@@ -5976,51 +6224,40 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Lotad
-Level: 10
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+Psyduck Tokuan
+Level: 13
+- Confusion
+- Disable
+- Bite
 
-Surskit
-Level: 10
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
-
-=== TRAINER_JOEY ===
-Name: JOEY
-Class: Youngster
-Pic: Youngster
+=== TRAINER_ADMIN_CROBAT_HIDEOUT_1 ===
+Name: Grunt
+Class: Zubat
+Pic: Zubat Grunt M
 Gender: Male
-Music: Male
+Music: Aqua
+Double Battle: No
+AI: Try To Faint
+
+Golbat
+Level: 20
+
+=== TRAINER_NANAMI ===
+Name: Nanami
+Class: Kimono Girl
+Pic: Kimono Girl
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Machop
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_BEN ===
-Name: BEN
-Class: Youngster
-Pic: Youngster
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Check Bad Move
-
-Zigzagoon
+Bounsweet
 Level: 17
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Headbutt
-- Sand Attack
-- Growl
-- Thunderbolt
 
-Gulpin
+Bounsweet
 Level: 17
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-- Amnesia
-- Sludge
-- Yawn
-- Pound
 
 === TRAINER_QUINCY ===
 Name: QUINCY
@@ -6189,23 +6426,6 @@ Zigzagoon
 Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_KARU ===
-Name: Karu
-Class: Lass
-Pic: Lass
-Gender: Female
-Music: Female
-Double Battle: No
-AI: Check Bad Move
-
-Hoppip
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Taillow
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
 === TRAINER_TIMMY ===
 Name: TIMMY
 Class: Youngster
@@ -6301,19 +6521,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Magikarp
 Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_BEACHBOUND_ROUTE_2 ===
-Name: Grunt
-Class: Zubat
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
-
-Zubat
-Level: 9
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_CLAUDE ===
@@ -9320,22 +9527,6 @@ Nuzleaf
 Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_HECTOR ===
-Name: HECTOR
-Class: Collector
-Pic: Collector
-Gender: Male
-Music: Suspicious
-Double Battle: No
-AI: Check Bad Move
-
-Zangoose
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Seviper
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TABITHA_MOSSDEEP ===
 Name: TABITHA
@@ -9641,7 +9832,7 @@ Marshtomp
 Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-=== TRAINER_RIVAL_FIRST_BATTLE_TRAPINCH ===
+=== TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL ===
 Name: Natsuki
 Class: Rival
 Pic: Natsuki
@@ -9650,13 +9841,13 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Spheal
+Froakie
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Pound
 - Growl
 
-=== TRAINER_RIVAL_FIRST_BATTLE_ARON ===
+=== TRAINER_RIVAL_FIRST_BATTLE_SNIVY ===
 Name: Natsuki
 Class: Rival
 Pic: Natsuki
@@ -9665,26 +9856,26 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Trapinch
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Astonish
-- Growl
-
-=== TRAINER_RIVAL_FIRST_BATTLE_SPHEAL ===
-Name: Natsuki
-Class: Rival
-Pic: Natsuki
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Basic Trainer
-
-Aron
+Cyndaquil
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
-- Harden
+- Leer
+
+=== TRAINER_RIVAL_FIRST_BATTLE_FROAKIE ===
+Name: Natsuki
+Class: Rival
+Pic: Natsuki
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Snivy
+Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Tackle
+- Leer
 
 === TRAINER_MAY_ROUTE_110_MUDKIP ===
 Name: {B_RIVAL_NAME}
@@ -10542,12 +10733,15 @@ Double Battle: No
 AI: Check Bad Move
 
 Magikarp
-Level: 10
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Level: 12
+- Bounce
+- Splash
 
-Lotad
-Level: 10
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Surskit
+Level: 12
+- String Shot
+- Quick Attack
+- Bubble
 
 === TRAINER_BRENDEN ===
 Name: BRENDEN
@@ -10964,22 +11158,29 @@ Mudkip
 Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-=== TRAINER_RIVAL_SAKU_SPHEAL ===
-Name: {B_RIVAL_NAME}
+=== TRAINER_RIVAL_SAKU_FROAKIE ===
+Name: Natsuki
 Class: Rival
-Pic: May
-Gender: Female
-Music: Female
+Pic: Natsuki
+Gender: Male
+Music: Male
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Force Setup First Turn
+AI: Smart Trainer
 
-Kotora
-Level: 6
+Growlithe
+Level: 10
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Bite
+- Roar
+- Ember
 
-Aron
-Level: 9
+Snivy
+Level: 12
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Absorb
+- Wrap
+- Growth
+- Vine Whip
 
 === TRAINER_MAXIE_MAGMA_HIDEOUT ===
 Name: MAXIE
@@ -11025,22 +11226,6 @@ Camerupt
 Level: 25
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-=== TRAINER_CHIKAO ===
-Name: CHIKAO
-Class: School Kid
-Pic: School Kid M
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Check Bad Move
-
-Sewaddle Tokuan
-Level: 3
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Lotad
-Level: 2
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MUSASHI_1 ===
 Name: Musashi
@@ -11059,18 +11244,21 @@ Shroomish
 Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_JANICE ===
-Name: JANICE
-Class: Lass
-Pic: Lass
+=== TRAINER_MINORI ===
+Name: Minori
+Class: School Kid
+Pic: School Kid F
 Gender: Female
 Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Marill
-Level: 9
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Snuggles (Deerling Summer)
+Level: 5
+- Sand Attack
+- Growl
+- Tackle
+- Camouflage
 
 === TRAINER_VIVI ===
 Name: VIVI
@@ -11229,26 +11417,6 @@ Wailmer
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_EIJI ===
-Name: EIJI
-Class: Bug Catcher
-Pic: Bug Catcher
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Check Bad Move
-
-Taillow
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Joltik
-Level: 2
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Sewaddle Tokuan
-Level: 2
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_KAWASE ===
 Name: Kawase
@@ -11263,22 +11431,17 @@ Smeargle
 Level: 8
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_JOSE ===
-Name: JOSE
-Class: Bug Catcher
-Pic: Bug Catcher
+=== TRAINER_GRUNT_CROBAT_HIDEOUT_6 ===
+Name: Grunt
+Class: Zubat
+Pic: Zubat Grunt M
 Gender: Male
-Music: Male
+Music: Aqua
 Double Battle: No
 AI: Check Bad Move
 
-Wurmple
-Level: 8
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Nincada
-Level: 8
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Zubat
+Level: 18
 
 === TRAINER_DOUG ===
 Name: DOUG
@@ -11509,14 +11672,17 @@ Graveler
 Level: 22
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CLARK ===
-Name: CLARK
-Class: Hiker
-Pic: Hiker
+=== TRAINER_ADMIN_CROBAT_HIDEOUT_2 ===
+Name: Grunt
+Class: Zubat
+Pic: Zubat Grunt F
 Gender: Male
-Music: Hiker
+Music: Aqua
 Double Battle: No
-AI: Check Bad Move
+AI: Try To Faint
+
+Golbat
+Level: 20
 
 Geodude
 Level: 8
@@ -11846,30 +12012,22 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Feint Attack
 - Bind
 
-=== TRAINER_VIVIAN ===
-Name: VIVIAN
-Class: Battle Girl
-Pic: Battle Girl
+=== TRAINER_YUKA ===
+Name: Yuka
+Class: Kimono Girl
+Pic: Kimono Girl
 Gender: Female
-Music: Intense
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Meditite
+Bounsweet
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Bide
-- Detect
-- Confusion
-- Thunder Punch
 
-Meditite
+Bounsweet
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Thunder Punch
-- Detect
-- Confusion
-- Meditate
 
 === TRAINER_DANIELLE ===
 Name: DANIELLE
@@ -12901,57 +13059,37 @@ Carvanha
 Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DAWSON ===
-Name: DAWSON
-Class: Rich Boy
-Pic: Rich Boy
+=== TRAINER_KAITO ===
+Name: Kaito
+Class: School Kid
+Pic: School Kid M
 Gender: Male
-Music: Rich
+Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Zigzagoon @ Nugget
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Destroyer (Deerling Spring)
+Level: 5
+- Leech Seed
+- Bullet Seed
 
-Poochyena
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_SARAH ===
-Name: SARAH
-Class: Lady
-Pic: Lady
+=== TRAINER_HARIKO_MAGURO ===
+Name: Hariko
+Class: Rival
+Pic: Bean
 Gender: Female
 Music: Female
-Items: Full Restore
+Items: Uumegiri
 Double Battle: No
-AI: Check Bad Move
+AI: Smart Trainer
 
-Lotad
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Zigzagoon @ Nugget
-Level: 8
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_KENJI ===
-Name: KENJI
-Class: Artist
-Pic: Artist
-Gender: Male
-Music: Rich
-Double Battle: No
-AI: Check Bad Move
-
-Smeargle
-Level: 5
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Inkay
-Level: 4
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Bean (Slowpoke) (M)
+Level: 14
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+-Yawn
+-Protect
+-Water Pulse
+-Confusion
 
 === TRAINER_HAILEY ===
 Name: HAILEY
@@ -13738,29 +13876,25 @@ Roselia
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_KYRA ===
-Name: KYRA
-Class: Triathlete
-Pic: Running Triathlete F
-Gender: Female
-Music: Female
+=== TRAINER_GRUNT_CROBAT_HIDEOUT_2 ===
+Name: Grunt
+Class: Zubat
+Pic: Zubat Grunt M
+Gender: Male
+Music: Aqua
 Double Battle: No
 AI: Check Bad Move
 
-Doduo
-Level: 26
+Zubat
+Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Dodrio
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_JAIDEN ===
-Name: JAIDEN
-Class: Ninja Boy
-Pic: Ninja Boy
+=== TRAINER_GRUNT_CROBAT_HIDEOUT_3 ===
+Name: Grunt
+Class: Zubat
+Pic: Zubat Grunt M
 Gender: Male
-Music: Suspicious
+Music: Aqua
 Double Battle: No
 AI: Check Bad Move
 
@@ -13772,54 +13906,40 @@ Gulpin
 Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_ALIX ===
-Name: ALIX
-Class: Psychic
-Pic: Psychic F
+=== TRAINER_GRUNT_CROBAT_HIDEOUT_4 ===
+Name: Grunt
+Class: Zubat
+Pic: Zubat Grunt F
 Gender: Female
-Music: Intense
+Music: Aqua
 Double Battle: No
 AI: Check Bad Move
 
-Kadabra
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Kirlia
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_HELENE ===
-Name: HELENE
-Class: Battle Girl
-Pic: Battle Girl
-Gender: Female
-Music: Intense
-Double Battle: No
-AI: Check Bad Move
-
-Meditite
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Makuhita
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_MARLENE ===
-Name: MARLENE
-Class: Psychic
-Pic: Psychic F
-Gender: Female
-Music: Intense
-Double Battle: No
-AI: Check Bad Move
-
-Meditite
+Zubat
 Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Spoink
+=== TRAINER_GRUNT_CROBAT_HIDEOUT_5 ===
+Name: Grunt
+Class: Zubat
+Pic: Zubat Grunt M
+Gender: Male
+Music: Aqua
+Double Battle: No
+AI: Check Bad Move
+
+Zubat
+Level: 18
+
+=== TRAINER_GRUNT_CROBAT_HIDEOUT_1 ===
+Name: Grunt
+Class: Zubat
+Pic: Zubat Grunt F
+Gender: Female
+Music: Aqua
+Double Battle: No
+AI: Check Bad Move
+
+Zubat
 Level: 18
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -14092,39 +14212,53 @@ Vigoroth
 Level: 29
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_RIVAL_SAKU_ARON ===
-Name: {B_RIVAL_NAME}
+=== TRAINER_RIVAL_SAKU_SNIVY ===
+Name: Natsuki
 Class: Rival
-Pic: May
-Gender: Female
-Music: Female
+Pic: Natsuki
+Gender: Male
+Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Growlithe
-Level: 6
+Wooper
+Level: 10
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Water Gun
+- Mud Shot
+- Tail Whip
+- Slam
 
-Trapinch
-Level: 9
+Cyndaquil
+Level: 12
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Fire Spin
+- Defense Curl
+- Swift
 
-=== TRAINER_RIVAL_SAKU_TRAPINCH ===
-Name: {B_RIVAL_NAME}
+=== TRAINER_RIVAL_SAKU_CYNDAQUIL ===
+Name: Natsuki
 Class: Rival
-Pic: May
-Gender: Female
-Music: Female
+Pic: Natsuki
+Gender: Male
+Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Smart Trainer
 
-Numel
-Level: 6
+Shroomish
+Level: 11
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Leech Seed
+- Absorb
+- Stun Spore
+- Tackle
 
-Spheal
-Level: 9
+Froakie
+Level: 13
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+- Bubble
+- Quick Attack
+- Lick
 
 === TRAINER_ROXANNE_2 ===
 Name: ROXANNE
@@ -15790,28 +15924,22 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ice Beam
 - Rest
 
-=== TRAINER_ANGELO ===
-Name: ANGELO
-Class: Bug Maniac
-Pic: Bug Maniac
-Gender: Male
-Music: Suspicious
+=== TRAINER_MIIKA ===
+Name: Miika
+Class: Kimono Girl
+Pic: Kimono Girl
+Gender: Female
+Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Illumise
+Bounsweet
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Shock Wave
-- Quick Attack
-- Charm
 
 Volbeat
 Level: 17
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Shock Wave
-- Quick Attack
-- Confuse Ray
 
 === TRAINER_DARIUS ===
 Name: DARIUS

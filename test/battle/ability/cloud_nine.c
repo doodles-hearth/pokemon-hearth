@@ -7,7 +7,7 @@ SINGLE_BATTLE_TEST("Cloud Nine/Air Lock prevent basic weather effects, but witho
     PARAMETRIZE { species = SPECIES_PSYDUCK;  ability = ABILITY_CLOUD_NINE; }
     PARAMETRIZE { species = SPECIES_RAYQUAZA; ability = ABILITY_AIR_LOCK; }
     GIVEN {
-        ASSUME(gMovesInfo[MOVE_SANDSTORM].effect == EFFECT_SANDSTORM);
+        ASSUME(GetMoveEffect(MOVE_SANDSTORM) == EFFECT_SANDSTORM);
         PLAYER(species) { Ability(ability); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -15,16 +15,16 @@ SINGLE_BATTLE_TEST("Cloud Nine/Air Lock prevent basic weather effects, but witho
         TURN {}
     } SCENE {
         ABILITY_POPUP(player, ability);
-        MESSAGE("The effects of weather disappeared.");
-        MESSAGE("Foe Wobbuffet used Sandstorm!");
-        MESSAGE("The sandstorm rages.");
+        MESSAGE("The effects of the weather disappeared.");
+        MESSAGE("The opposing Wobbuffet used Sandstorm!");
+        MESSAGE("The sandstorm is raging.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SANDSTORM_CONTINUES);
         NONE_OF {
             HP_BAR(player);
             HP_BAR(opponent);
-            MESSAGE("Foe Wobbuffet is buffeted by the sandstorm!");
+            MESSAGE("The opposing Wobbuffet is buffeted by the sandstorm!");
         }
-        MESSAGE("The sandstorm rages.");
+        MESSAGE("The sandstorm is raging.");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SANDSTORM_CONTINUES);
     }
 }

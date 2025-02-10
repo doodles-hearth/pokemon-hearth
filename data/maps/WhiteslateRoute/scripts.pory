@@ -1,3 +1,6 @@
+const LOCALID_SECRET_BASE_MAN = 7
+const LOCALID_SECRET_BASE_POKEMON = 8
+
 mapscripts WhiteslateRoute_MapScripts {
 	
 }
@@ -27,4 +30,178 @@ script WhiteslateRoute_EventScript_Shuckle {
 		setflag(FLAG_DAILY_SHUCKLE_BERRY_JUICE)
 	}
 	release
+}
+
+script WhiteslateRoute_Trigger_SecretBase {
+	lockall
+	speakername("Man")
+	msgbox(format(
+		"Hehe… Looks like the perfect spot!"
+	))
+	closemessage
+
+	applymovement(LOCALID_SECRET_BASE_MAN, moves(walk_right, face_left))
+	waitmovement(LOCALID_SECRET_BASE_MAN)
+
+	delay(24)
+	
+	playse(SE_BALL_OPEN)
+	applymovement(LOCALID_SECRET_BASE_POKEMON, moves(exit_pokeball, face_up))
+	waitmovement(LOCALID_SECRET_BASE_POKEMON)
+	waitse
+	playmoncry(SPECIES_GROVYLE, CRY_MODE_NORMAL)
+	applymovement(LOCALID_SECRET_BASE_POKEMON, moves(
+		jump_in_place_up,
+		delay_16 * 2
+	))
+	waitmovement(LOCALID_SECRET_BASE_POKEMON)
+
+	playse(SE_M_ROCK_THROW)
+	
+	applymovement(LOCALID_SECRET_BASE_POKEMON, moves(
+		lock_anim,
+		lock_facing_direction,
+		walk_faster_up,
+		walk_faster_down,
+		unlock_anim,
+		unlock_facing_direction
+	))
+	waitmovement(LOCALID_SECRET_BASE_POKEMON)
+	setmetatile(26, 34, METATILE_PorytilesPrimaryTutorial_CaveEntrance, TRUE)
+	special(DrawWholeMapView)
+	waitse
+
+	speakername("Man")
+	msgbox(format(
+		"Good job, Grovyle!"
+	))
+	closemessage
+
+	playmoncry(SPECIES_GROVYLE, CRY_MODE_NORMAL)
+	applymovement(LOCALID_SECRET_BASE_POKEMON, moves(
+		jump_in_place_right,
+		delay_16 * 2,
+		enter_pokeball
+	))
+	waitmovement(LOCALID_SECRET_BASE_POKEMON)
+	playse(SE_BALL_OPEN)
+	waitmoncry
+	waitse
+
+	delay(24)
+
+	playse(SE_PIN)
+	applymovement(LOCALID_SECRET_BASE_MAN, moves(face_down, emote_exclamation_mark))
+	waitmovement(LOCALID_SECRET_BASE_MAN)
+	waitse
+	delay(48)
+
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+	switch(var(VAR_TEMP_0)) {
+		case 25:
+			applymovement(LOCALID_SECRET_BASE_MAN, moves(walk_down * 3, walk_left))
+			waitmovement(LOCALID_SECRET_BASE_MAN)
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+		case 26:
+			applymovement(LOCALID_SECRET_BASE_MAN, moves(walk_down * 2, walk_left, face_down))
+			waitmovement(LOCALID_SECRET_BASE_MAN)
+		case 27:
+			applymovement(LOCALID_SECRET_BASE_MAN, moves(walk_down * 2))
+			waitmovement(LOCALID_SECRET_BASE_MAN)
+	}
+
+	speakername("Man")
+	msgbox(format(
+		"Oh, man! You were here this whole time! My secret base is no longer secret!"
+	))
+	
+	dynmultichoice(
+		0,
+		0,
+		TRUE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"What were you doing?",
+		"Sorry for interrupting!",
+		"Are you a criminal?"
+	)
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			speakername("Man")
+			msgbox(format(
+				"Alright, you seem interested, so I'll let you in on the secret!\p"
+				"I taught my Grovyle a secret technique to open passages to hidden natural caves!\p"
+				"Not only that! Trees with low-hanging vines, bushes…"
+				"That kind of place is perfect to build a secret base!\p"
+				"I wrote this technique down just in case. Here, now you can teach your Pokémon too!"
+			))
+		case 1:
+			speakername("Man")
+			msgbox(format(
+				"Ah, it's alright. You look like you're a good kid. I'm sure you have what it takes to become a secret base master. I'll let you in on the secret!\p"
+				"I taught my Grovyle a secret technique to open passages to hidden natural caves!\p"
+				"Not only that! Trees with low-hanging vines, bushes…"
+				"That kind of place is perfect to build a secret base!\p"
+				"I wrote this technique down just in case. Here, now you can teach your Pokémon too!"
+			))
+		case 2:
+			speakername("Man")
+			msgbox(format(
+				"Of course not, this is perfectly legal! You know what? I'll let you in on the secret!\p"
+				"I taught my Grovyle a secret technique to open passages to hidden natural caves!\p"
+				"Not only that! Trees with low-hanging vines, bushes…"
+				"That kind of place is perfect to build a secret base!\p"
+				"I wrote this technique down just in case. Here, now you can teach your Pokémon too!"
+			))
+	}
+	closemessage
+
+	giveitem(ITEM_TM_SECRET_POWER)
+
+	speakername("Man")
+	msgbox(format(
+		"I'll keep looking for the perfect secret base spot! Maybe I'll see you around!"
+	))
+	closemessage
+
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+
+	switch(var(VAR_TEMP_0)) {
+		case 25:
+			applymovement(LOCALID_SECRET_BASE_MAN, moves(walk_up * 3))
+			waitmovement(LOCALID_SECRET_BASE_MAN)
+		case 26:
+			applymovement(LOCALID_SECRET_BASE_MAN, moves(walk_up * 2))
+			waitmovement(LOCALID_SECRET_BASE_MAN)
+		case 27:
+			applymovement(LOCALID_SECRET_BASE_MAN, moves(walk_left, walk_up * 2))
+			waitmovement(LOCALID_SECRET_BASE_MAN)
+	}
+
+	playse(SE_M_ROCK_THROW)
+	setmetatile(26, 34, METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntrance, TRUE)
+	special(DrawWholeMapView)
+	waitse
+
+	switch(var(VAR_TEMP_0)) {
+		case 25:
+			applymovement(LOCALID_SECRET_BASE_MAN, moves(walk_down * 10))
+			waitmovement(LOCALID_SECRET_BASE_MAN)
+		case 26:
+			applymovement(LOCALID_SECRET_BASE_MAN, moves(walk_down * 2, walk_left, walk_down * 8))
+			waitmovement(LOCALID_SECRET_BASE_MAN)
+		case 27:
+			applymovement(LOCALID_SECRET_BASE_MAN, moves(walk_down * 10))
+			waitmovement(LOCALID_SECRET_BASE_MAN)
+	}
+	removeobject(LOCALID_SECRET_BASE_MAN)
+	removeobject(LOCALID_SECRET_BASE_POKEMON)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+
+	setflag(FLAG_RECEIVED_SECRET_POWER)
+
+	releaseall
 }

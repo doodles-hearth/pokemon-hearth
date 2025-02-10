@@ -46,7 +46,7 @@ porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/decay/ ./deca
 
 # Buildings
 echo "BUILDING GENERIC"
-porytiles compile-primary -Wall -o ../../data/tilesets/primary/building-generic/ ./building-generic/ ../../include/constants/metatile_behaviors.h
+porytiles compile-primary -Wall -o ../../data/tilesets/primary/building_generic/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 echo "HOUSES"
 porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/house_beige/ ./house-beige/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/house_stone/ ./house-stone/ ./building-generic/ ../../include/constants/metatile_behaviors.h
@@ -57,6 +57,7 @@ porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/house_marble/
 echo "DOJOS"
 porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/dojo_maguro/ ./dojo-maguro/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/dojo_kura/ ./dojo-kura/ ./building-generic/ ../../include/constants/metatile_behaviors.h
+porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/dojo_yifu/ ./dojo-yifu/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 # Refuge
 echo "REFUGE"
 porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/refuge/ ./refuge-shop/ ./building-generic/ ../../include/constants/metatile_behaviors.h
@@ -66,3 +67,6 @@ porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/school/ ./sch
 # Gate
 echo "GATE"
 porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/gate/ ./gate/ ./building-generic/ ../../include/constants/metatile_behaviors.h
+# Crobat hideout
+echo "CROBAT HIDEOUT"
+porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/crobat_hideout/ ./crobat-hideout/ ./building-generic/ ../../include/constants/metatile_behaviors.h

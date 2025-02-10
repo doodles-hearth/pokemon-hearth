@@ -256,7 +256,6 @@ static const u16 sBirchSpeechBgPals[][16] = {
 static const u32 sBirchSpeechShadowGfx[] = INCBIN_U32("graphics/birch_speech/shadow.4bpp.lz");
 static const u32 sBirchSpeechBgMap[] = INCBIN_U32("graphics/birch_speech/map.bin.lz");
 static const u16 sBirchSpeechBgGradientPal[] = INCBIN_U16("graphics/birch_speech/bg2.gbapal");
-static const u16 sBirchSpeechPlatformBlackPal[] = {RGB_BLACK, RGB_BLACK, RGB_BLACK, RGB_BLACK, RGB_BLACK, RGB_BLACK, RGB_BLACK, RGB_BLACK};
 
 static const u8 gText_SaveFileCorrupted[] = _("The save file is corrupted. The\nprevious save file will be loaded.");
 static const u8 gText_SaveFileErased[] = _("The save file has been erased\ndue to corruption or damage.");
@@ -1273,7 +1272,7 @@ UNUSED static void Task_NewGameBirchSpeech_Init(u8 taskId)
     LZ77UnCompVram(sBirchSpeechShadowGfx, (void *)VRAM);
     LZ77UnCompVram(sBirchSpeechBgMap, (void *)(BG_SCREEN_ADDR(7)));
     LoadPalette(sBirchSpeechBgPals, BG_PLTT_ID(0), 2 * PLTT_SIZE_4BPP);
-    LoadPalette(sBirchSpeechPlatformBlackPal, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(8));
+    LoadPalette(&sBirchSpeechBgGradientPal[8], BG_PLTT_ID(0) + 1, PLTT_SIZEOF(8));
     ScanlineEffect_Stop();
     ResetSpriteData();
     FreeAllSpritePalettes();
@@ -1869,7 +1868,7 @@ static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *sprite)
     sprite->data[0] = y;
 }
 
-static u8 NewGameBirchSpeech_CreateLotadSprite(u8 x, u8 y)
+UNUSED static u8 NewGameBirchSpeech_CreateLotadSprite(u8 x, u8 y)
 {
     return CreateMonPicSprite_Affine(SPECIES_JOLTIK, FALSE, 0, MON_PIC_AFFINE_FRONT, x, y, 14, TAG_NONE);
 }
@@ -1877,7 +1876,7 @@ static u8 NewGameBirchSpeech_CreateLotadSprite(u8 x, u8 y)
 static void AddBirchSpeechObjects(u8 taskId)
 {
     // u8 birchSpriteId;
-    u8 joltikSpriteId;
+    // u8 joltikSpriteId;
     // u8 brendanSpriteId;
     // u8 maySpriteId;
 
@@ -1886,17 +1885,17 @@ static void AddBirchSpeechObjects(u8 taskId)
     // gSprites[birchSpriteId].oam.priority = 0;
     // gSprites[birchSpriteId].invisible = TRUE;
     // gTasks[taskId].tBirchSpriteId = birchSpriteId;
-    joltikSpriteId = NewGameBirchSpeech_CreateLotadSprite(100, 0x4B);
-    gSprites[joltikSpriteId].callback = SpriteCB_Null;
-    gSprites[joltikSpriteId].oam.priority = 0;
-    gSprites[joltikSpriteId].invisible = TRUE;
-    gTasks[taskId].tLotadSpriteId = joltikSpriteId;
-    // brendanSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN), 120, 60, 0, &gDecompressionBuffer[0]);
+    // lotadSpriteId = NewGameBirchSpeech_CreateLotadSprite(100, 0x4B);
+    // gSprites[lotadSpriteId].callback = SpriteCB_Null;
+    // gSprites[lotadSpriteId].oam.priority = 0;
+    // gSprites[lotadSpriteId].invisible = TRUE;
+    // gTasks[taskId].tLotadSpriteId = lotadSpriteId;
+    // brendanSpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN), 120, 60, 0, NULL);
     // gSprites[brendanSpriteId].callback = SpriteCB_Null;
     // gSprites[brendanSpriteId].invisible = TRUE;
     // gSprites[brendanSpriteId].oam.priority = 0;
     // gTasks[taskId].tBrendanSpriteId = brendanSpriteId;
-    // maySpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_MAY), 120, 60, 0, &gDecompressionBuffer[TRAINER_PIC_SIZE]);
+    // maySpriteId = CreateTrainerSprite(FacilityClassToPicIndex(FACILITY_CLASS_MAY), 120, 60, 0, NULL);
     // gSprites[maySpriteId].callback = SpriteCB_Null;
     // gSprites[maySpriteId].invisible = TRUE;
     // gSprites[maySpriteId].oam.priority = 0;

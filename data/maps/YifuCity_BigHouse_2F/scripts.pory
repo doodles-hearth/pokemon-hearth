@@ -1,0 +1,17 @@
+mapscripts YifuCity_BigHouse_2F_MapScripts {
+	
+}
+
+script YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon {
+	lock
+	faceplayer
+	speakername("Old man")
+	msgbox(format(
+		"I was told I needed to raise a Pokémon of my own. No sir!\p"
+		"Back in my day, we didn't need no Pokémon!\l"
+		"A fire Pokémon burned my hand, a good many years ago…\l"
+		"Now I'm scared! I don't want anything to do with them!"
+	))
+	// TODO EVA givemon quest
+	release
+}

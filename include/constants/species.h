@@ -38,7 +38,7 @@
 #define SPECIES_NIDORAN_F                               29
 #define SPECIES_NIDORINA                                30
 #define SPECIES_NIDOQUEEN                               31
-#define SPECIES_NIDORAN_M                               32
+#define SPECIES_NIDORAN                                 32
 #define SPECIES_NIDORINO                                33
 #define SPECIES_NIDOKING                                34
 #define SPECIES_CLEFAIRY                                35
@@ -1088,7 +1088,7 @@
 #define SPECIES_PIKACHU_UNOVA                           1018
 #define SPECIES_PIKACHU_KALOS                           1019
 #define SPECIES_PIKACHU_ALOLA                           1020
-#define SPECIES_PIKACHU_PARTNER_CAP                     1021
+#define SPECIES_PIKACHU_PARTNER                         1021
 #define SPECIES_PIKACHU_WORLD                           1022
 #define SPECIES_PICHU_SPIKY_EARED                       1023
 #define SPECIES_UNOWN_B                                 1024
@@ -1214,15 +1214,15 @@
 #define SPECIES_FLORGES_ORANGE                          1143
 #define SPECIES_FLORGES_BLUE                            1144
 #define SPECIES_FLORGES_WHITE                           1145
-#define SPECIES_FURFROU_HEART_TRIM                      1146
-#define SPECIES_FURFROU_STAR_TRIM                       1147
-#define SPECIES_FURFROU_DIAMOND_TRIM                    1148
-#define SPECIES_FURFROU_DEBUTANTE_TRIM                  1149
-#define SPECIES_FURFROU_MATRON_TRIM                     1150
-#define SPECIES_FURFROU_DANDY_TRIM                      1151
-#define SPECIES_FURFROU_LA_REINE_TRIM                   1152
-#define SPECIES_FURFROU_KABUKI_TRIM                     1153
-#define SPECIES_FURFROU_PHARAOH_TRIM                    1154
+#define SPECIES_FURFROU_HEART                           1146
+#define SPECIES_FURFROU_STAR                            1147
+#define SPECIES_FURFROU_DIAMOND                         1148
+#define SPECIES_FURFROU_DEBUTANTE                       1149
+#define SPECIES_FURFROU_MATRON                          1150
+#define SPECIES_FURFROU_DANDY                           1151
+#define SPECIES_FURFROU_LA_REINE                        1152
+#define SPECIES_FURFROU_KABUKI                          1153
+#define SPECIES_FURFROU_PHARAOH                         1154
 #define SPECIES_MEOWSTIC_F                              1155
 #define SPECIES_AEGISLASH_BLADE                         1156
 #define SPECIES_PUMPKABOO_SMALL                         1157
@@ -1644,8 +1644,9 @@
 #define SPECIES_SEWADDLE_TOKUAN 1527
 #define SPECIES_SWADLOON_TOKUAN 1528
 #define SPECIES_LEAVANNY_TOKUAN 1529
+#define SPECIES_PSYDUCK_TOKUAN  1530
 
-#define SPECIES_EGG (SPECIES_LEAVANNY_TOKUAN + 1)
+#define SPECIES_EGG (SPECIES_PSYDUCK_TOKUAN + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

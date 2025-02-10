@@ -1,0 +1,158 @@
+mapscripts YifuCity_House3_MapScripts {
+	
+}
+
+script YifuCity_House3_EggGirlsMom {
+	lock
+	faceplayer
+	speakername("Woman")
+	// TODO EVA: tuesday -> daycare
+	msgbox(format(
+		"I help out at the Pokémon daycare west of Windycape on tuesdays. Sometimes they'll let me bring back an egg for my daughter!"
+	))
+	release
+}
+
+script YifuCity_House3_EventScript_Togepi {
+	lock
+	faceplayer
+	speakername("Togepi")
+	msgbox(format(
+        "Preee!"
+    ))
+    playmoncry(SPECIES_TOGEPI, CRY_MODE_NORMAL)
+    waitmoncry
+    release
+    end
+}
+
+script YifuCity_House3_EventScript_EggGirl {
+	lock
+	faceplayer
+
+	if (var(VAR_EGG_SPECIES_GIVEN_TO_EGG_GIRL) != SPECIES_NONE) {
+		call(YifuCity_House3_NotTradedYet)
+	} else {
+		// TODO Make egg hatch after a while (nb steps? badge?)
+		speakername("Little girl")
+		msgbox(format(
+			"Can't wait for my egg to hatch!"
+		))
+	}
+	release
+}
+
+script YifuCity_House3_NotTradedYet {
+	speakername("Little girl")
+	special(GetPlayerSirMissString)
+	msgbox(format(
+		"Hello {STR_VAR_1}! Do you like eggs?"
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		TRUE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Yes!",
+		"Yes, they're delicious!",
+		"Not really.",
+		"Eggs?"
+	)
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			speakername("Little girl")
+			msgbox(format(
+				"Really?! Me too!! Pokémon eggs are so cool!\l"
+				"I love not knowing what will jump out of the egg!\p"
+				"Wanna trade me a mystery egg for a mystery egg?\l"
+				"That way we'll both have a surprise!"
+			))
+		case 1:
+			speakername("Little girl")
+			msgbox(format(
+				"WHAT? Ewww, gross! I don't mean EATING them!\p"
+				"I just love waiting for a Pokémon to jump of of its egg, especially when I have no idea what it's gonna be!\p"
+				"Wanna trade me a mystery egg for a mystery egg?\l"
+				"That way we'll both have a surprise!"
+			))
+		case 2:
+			speakername("Little girl")
+			msgbox(format(
+				"Oh… Alright…"
+			))
+			release
+			end
+		case 3:
+			speakername("Little girl")
+			msgbox(format(
+				"Eggs! Pokémon eggs!"
+				"I just love waiting for a Pokémon to jump of of its egg, especially when I have no idea what it's gonna be!\p"
+				"Wanna trade me a mystery egg for a mystery egg?\l"
+				"That way we'll both have a surprise!"
+			))
+	}
+
+	dynmultichoice(
+		0,
+		0,
+		TRUE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Sure!",
+		"No."
+	)
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			call(YifuCity_House3_TradeEgg)
+		case 1:
+			speakername("Little girl")
+			msgbox(format(
+				"Oh… Alright…"
+			))
+	}
+
+	release
+}
+
+script YifuCity_House3_TradeEgg {
+	special(ChoosePartyMon)
+	waitstate
+	if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+		speakername("Little girl")
+		msgbox(format("Have you changed your mind?"))
+		closemessage
+	} else {
+		special(IsSelectedMonEgg)
+		if (var(VAR_RESULT)) {
+			specialvar(VAR_EGG_SPECIES_GIVEN_TO_EGG_GIRL, ScriptGetPartyMonSpeciesEvenIfEgg)
+			special(DestroySelectedPartyMon)
+			// TODO EVA random egg from pool
+			// randomelement(SPECIES_TREECKO, SPECIES_TORCHIC, SPECIES_MUDKIP)
+			// giveegg(VAR_RESULT)
+			giveegg(SPECIES_WYNAUT)
+			playfanfare(MUS_OBTAIN_ITEM)
+			message(format("{PLAYER} received the mysterious egg!"))
+			waitmessage
+			waitfanfare
+
+			speakername("Little girl")
+			msgbox(format(
+				"Yay!!! I can't wait for my egg to hatch!\p"
+				"Aren't you wondering what you're gonna get?"
+			))
+			closemessage
+		} else {
+			speakername("Little girl")
+			msgbox(format("That's not an egg, you silly!"))
+			closemessage
+		}
+	}
+}

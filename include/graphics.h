@@ -7,6 +7,8 @@ extern const u32 gMessageBox_Gfx[];
 extern const u16 gMessageBox_Pal[];
 
 // pokeballs
+extern const u32 gBallGfx_Strange[];
+extern const u32 gBallPal_Strange[];
 extern const u32 gBallGfx_Poke[];
 extern const u32 gBallPal_Poke[];
 extern const u32 gBallGfx_Great[];
@@ -367,6 +369,8 @@ extern const u32 gRaySceneChasesAway_Light_Gfx[];
 extern const u32 gRaySceneChasesAway_Ring_Gfx[];
 
 // Poké Balls
+extern const u32 gItemIcon_StrangeBall[];
+extern const u32 gItemIconPalette_StrangeBall[];
 extern const u32 gItemIcon_PokeBall[];
 extern const u32 gItemIconPalette_PokeBall[];
 extern const u32 gItemIcon_GreatBall[];
@@ -427,6 +431,28 @@ extern const u32 gItemIconPalette_HyperPotion[];
 extern const u32 gItemIcon_LargePotion[];
 extern const u32 gItemIconPalette_MaxPotion[];
 extern const u32 gItemIconPalette_FullRestore[];
+
+extern const u32 gItemIcon_Ointment[];
+extern const u32 gItemIconPalette_Ointment[];
+extern const u32 gItemIcon_SuperOintment[];
+extern const u32 gItemIconPalette_SuperOintment[];
+extern const u32 gItemIcon_HyperOintment[];
+extern const u32 gItemIconPalette_HyperOintment[];
+extern const u32 gItemIcon_MaxOintment[];
+extern const u32 gItemIconPalette_MaxOintment[];
+extern const u32 gItemIcon_SacredOintment[];
+extern const u32 gItemIconPalette_SacredOintment[];
+extern const u32 gItemIcon_Uumegiri[];
+extern const u32 gItemIconPalette_Uumegiri[];
+extern const u32 gItemIcon_SuperGiri[];
+extern const u32 gItemIconPalette_SuperGiri[];
+extern const u32 gItemIcon_HyperGiri[];
+extern const u32 gItemIconPalette_HyperGiri[];
+extern const u32 gItemIcon_MaxGiri[];
+extern const u32 gItemIconPalette_MaxGiri[];
+extern const u32 gItemIcon_SacredGiri[];
+extern const u32 gItemIconPalette_SacredGiri[];
+
 extern const u32 gItemIcon_Revive[];
 extern const u32 gItemIconPalette_Revive[];
 extern const u32 gItemIcon_MaxRevive[];
@@ -1746,6 +1772,10 @@ extern const u32 gItemIconPalette_TwiceSpicedRadish[];
 // Custom Hearth items
 extern const u32 gItemIcon_Fishcake[];
 extern const u32 gItemIconPalette_Fishcake[];
+extern const u32 gItemIcon_EnteiStatuette[];
+extern const u32 gItemIconPalette_EnteiStatuette[];
+extern const u32 gItemIcon_SlowpokeTail[];
+extern const u32 gItemIconPalette_SlowpokeTail[];
 
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];
@@ -2909,6 +2939,10 @@ extern const u32 gBattleAnimSpritePal_IvyCudgelGrass[];
 extern const u32 gBattleAnimSpritePal_IvyCudgelFire[];
 extern const u32 gBattleAnimSpritePal_IvyCudgelRock[];
 extern const u32 gBattleAnimSpritePal_IvyCudgelWater[];
+extern const u32 gBattleAnimSpriteGfx_PinkVioletOrb[];
+extern const u32 gBattleAnimSpritePal_PinkVioletOrb[];
+extern const u32 gBattleAnimSpriteGfx_TeraStarstormBeam[];
+extern const u32 gBattleAnimSpritePal_TeraStarstormBeam[];
 
 extern const u32 gBattleAnimBgImage_Dark[];
 extern const u32 gBattleAnimBgImage_Ghost[];

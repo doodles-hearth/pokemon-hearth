@@ -73,7 +73,7 @@ script SunriseVillage_Event_GuardForest {
                 "No? Thought so. Go see her before you run off, you ungrateful sibling!"
             ))
             closemessage
-            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
             waitmovement(0)
         } else {
             turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
@@ -81,7 +81,7 @@ script SunriseVillage_Event_GuardForest {
                 "Hey, kid, a friend of yours was looking for you."
             ))
             closemessage
-            applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown)
+            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
             waitmovement(0)
         }
     }
@@ -100,7 +100,7 @@ script SunriseVillage_Event_GuardForest {
             "Or, you know, if I were me."
         ))
         closemessage
-        applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown)
+        applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
         waitmovement(0)
     }
     release
@@ -180,7 +180,7 @@ script SunriseVillage_Event_Woman {
     lockall
     speakername("Neighbour")
     msgbox(format(
-        "I can see the Pokéballs from here… I've never seen so many in my life!"
+        "I can see the Poké Balls from here… I've never seen so many in my life!"
     ))
     releaseall
     end
@@ -222,12 +222,7 @@ script SunriseVillage_Event_OldWoman {
 script SunriseVillage_Event_Happiny {
     lock
     faceplayer
-    ismonseen(SPECIES_HAPPINY)
-    if (var(VAR_RESULT)) {
-        speakername("Happiny")
-    } else {
-        speakername("Noisy egg")
-    }
+    setspeakertomonname(SPECIES_HAPPINY)
     msgbox(format(
         "Happi!"
     ))
@@ -243,12 +238,7 @@ script SunriseVillage_Event_Munchlax {
     faceplayer
     waitse
     playmoncry(SPECIES_MUNCHLAX, CRY_MODE_NORMAL)
-    ismonseen(SPECIES_MUNCHLAX)
-    if (var(VAR_RESULT)) {
-        speakername("Munchlax")
-    } else {
-        speakername("Big nom")
-    }
+    setspeakertomonname(SPECIES_MUNCHLAX)
     msgbox(format(
         "Munch munch munch…"
     ))
@@ -261,12 +251,7 @@ script SunriseVillage_Event_Munchlax {
 script SunriseVillage_Event_Kirlia {
     lock
     faceplayer
-    ismonseen(SPECIES_MUNCHLAX)
-    if (var(VAR_RESULT)) {
-        speakername("Kirlia")
-    } else {
-        speakername("Posh dancer")
-    }
+    setspeakertomonname(SPECIES_KIRLIA)
     msgbox(format(
         "…"
     ))

@@ -1,5 +1,16 @@
+const LOCALID_CROBAT_GUARD = 4
+const FLAG_CROBAT_PASSWORD_FIRST_HALF_CORRECT = FLAG_TEMP_1
+const FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT = FLAG_TEMP_2
+
 mapscripts YifuCity_CrobatShop_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION: YifuCity_CrobatShop_SetupNpcs
+}
+
+script YifuCity_CrobatShop_SetupNpcs {
+	if (flag(FLAG_CROBAT_PASSWORD_CORRECT)) {
+		setobjectmovementtype(LOCALID_CROBAT_GUARD, MOVEMENT_TYPE_FACE_LEFT)
+		setobjectxyperm(LOCALID_CROBAT_GUARD, 7, 4)
+	}
 }
 
 script YifuCity_CrobatShop_Cashier {
@@ -10,5 +21,162 @@ script YifuCity_CrobatShop_Cashier {
 		"G'day uh, welcome to the ye olde Crobat Shoppe!\p"
 		"TODO EVA"
 	))
+	closemessage
+	release
+}
+
+script YifuCity_CrobatShop_Guard {
+	lock
+	faceplayer
+	if (flag(FLAG_CROBAT_PASSWORD_CORRECT)) {
+		speakername("Shady man")
+		msgbox(format(
+			"Standin' guard is boring… Yawn…"
+		))
+		release
+		end
+	}
+
+	applymovement(VAR_LAST_TALKED, moves(lock_facing_direction, walk_in_place_faster_left, unlock_facing_direction))
+	speakername("Shady man")
+	msgbox(format(
+		"Password?"
+	))
+
+	if (!flag(FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF) || !flag(FLAG_GOT_CROBAT_PASSWORD_SECOND_HALF)) {
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Uh…",
+			"Ehm…",
+			"Well…"
+		)
+		closemessage
+
+		delay(24)
+
+		applymovement(VAR_LAST_TALKED, moves(lock_facing_direction, walk_in_place_faster_left))
+
+		speakername("Shady man")
+		msgbox(format(
+			"That ain't the password! Scram!"
+		))
+		waitmovement(0)
+		closemessage
+
+		if (var(VAR_FACING) == DIR_NORTH) {
+			applymovement(VAR_LAST_TALKED, moves(walk_left, lock_facing_direction, walk_right, unlock_facing_direction))
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, lock_anim, jump_2_left, unlock_facing_direction, unlock_anim))
+		} else {
+			applymovement(VAR_LAST_TALKED, moves(walk_left, lock_facing_direction, walk_right, unlock_facing_direction))
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, lock_anim, jump_2_left, unlock_facing_direction, unlock_anim))
+		}
+
+		waitmovement(VAR_LAST_TALKED)
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+		release
+	} else {
+		if (flag(FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF)) {
+			dynmultichoice(
+				0,
+				0,
+				TRUE,
+				10,
+				0,
+				DYN_MULTICHOICE_CB_NONE,
+				"Noivern…",
+				"Crobat…",
+				"Swoobat…"
+			)
+			closemessage
+
+			if (var(VAR_RESULT) == 1) {
+				setflag(FLAG_CROBAT_PASSWORD_FIRST_HALF_CORRECT)
+			}
+
+			dynmultichoice(
+				0,
+				0,
+				TRUE,
+				10,
+				0,
+				DYN_MULTICHOICE_CB_NONE,
+				"…is awesome!",
+				"…is amazing!",
+				"…is legendary!"
+			)
+
+			if (var(VAR_RESULT) == 0) {
+				setflag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT)
+			}
+
+			delay(24)
+
+			if (flag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT) && flag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT)) {
+				speakername("Shady man")
+				msgbox(format(
+					"Hmmm… Ya don't look like the typical Zubat…\p"
+					"… … … …\n… …Alright, ya can go through.\l"
+					"Next time wear the damn uniform though, will ya?"
+				))
+				closemessage
+
+				setflag(FLAG_CROBAT_PASSWORD_CORRECT)
+
+				if (var(VAR_FACING) == DIR_NORTH) {
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left, face_right))
+				}
+
+				applymovement(VAR_LAST_TALKED, moves(walk_down, face_left))
+				waitmovement(0)
+
+			} else {
+				speakername("Shady man")
+				msgbox(format(
+					"That ain't the password! Scram!"
+				))
+				closemessage
+			}
+		}
+	}
+
+	release
+}
+
+script YifuCity_CrobatShop_Customer1 {
+	lock
+	faceplayer
+	speakername("Customer")
+	msgbox(format(
+		"This place is amazing!\nHow is everything so cheap?!"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_CrobatShop_Customer2 {
+	lock
+	faceplayer
+	speakername("Customer")
+	msgbox(format(
+		"These Ultra Balls looks… different, somehow…"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_CrobatShop_EventScript_Samurai {
+	lock
+	faceplayer
+	speakername("Samurai")
+	msgbox(format(
+		"Shhh, don't look at me!\nSomeone tipped me off that the Crobat Shadows' band of misfits has a secret hideout right under the city!\p"
+		"I'm trying to know more by standing around and listening!"
+	))
+	closemessage
 	release
 }
