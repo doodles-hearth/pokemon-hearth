@@ -42,13 +42,6 @@
       "elevation": 0,
       "dest_map": "MAP_SILVERIDGE",
       "dest_warp_id": "5"
-    },
-    {
-      "x": 5,
-      "y": 7,
-      "elevation": 0,
-      "dest_map": "MAP_SILVERIDGE",
-      "dest_warp_id": "5"
     }
   ],
   "coord_events": [

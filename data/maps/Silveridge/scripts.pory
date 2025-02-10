@@ -1,5 +1,29 @@
 mapscripts Silveridge_MapScripts {
-	
+	MAP_SCRIPT_ON_LOAD {
+		call(Silveridge_DrawMetatiles)
+	}
+}
+
+script Silveridge_DrawMetatiles{
+    gettimeofday
+	switch(var(VAR_RESULT)){
+        case TIME_DEAD_NIGHT:
+            setmetatile(12, 10, METATILE_Silveridge_SilveridgeDoor, TRUE)
+			setmetatile(18, 18, METATILE_Silveridge_SilveridgeDoor, TRUE)
+			setmetatile(23, 6, METATILE_Silveridge_SilveridgeDoor, TRUE)
+			setmetatile(24, 6, METATILE_Silveridge_SilveridgeDoor, TRUE)
+			setmetatile(34, 6, METATILE_Silveridge_SilveridgeDoor, TRUE)
+			setmetatile(20, 26, METATILE_Silveridge_SilveridgeDoor, TRUE)
+			setmetatile(28, 26, METATILE_Silveridge_SilveridgeDoor, TRUE)
+        case TIME_EARLY_MORNING:
+        case TIME_MORNING:
+        case TIME_LUNCHTIME:
+        case TIME_AFTERNOON:
+        case TIME_EVENING:
+        case TIME_NIGHT:
+        default:
+            end
+    }
 }
 
 script Silveridge_EventScript_LotOfRocks {
