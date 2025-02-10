@@ -754,6 +754,9 @@
 #define METATILE_Shop_Laptop2_Flash   0x260
 #define METATILE_Shop_Laptop2_Normal  0x2A5
 
+// gTileset_Silveridge
+#define METATILE_Silveridge_SilveridgeDoor  0x244
+
 // gTileset_Slateport
 #define METATILE_Slateport_Door             0x2DC
 #define METATILE_Slateport_Door_BattleTent  0x393

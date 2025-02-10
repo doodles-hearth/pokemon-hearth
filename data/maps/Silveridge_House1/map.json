@@ -29,10 +29,10 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
+      "evening": true,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
@@ -69,10 +69,10 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
+      "evening": true,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
