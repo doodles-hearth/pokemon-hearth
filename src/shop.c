@@ -1539,7 +1539,7 @@ static void BuyMenuTryMakePurchase(u8 taskId)
         if (AddBagItem(sShopData->currentItemId, tItemCount) == TRUE)
         {
             GetSetItemObtained(sShopData->currentItemId, FLAG_SET_ITEM_OBTAINED);
-            SetAmountOfItemBought(sMartInfo.shopId, sShopData->selectedRow + sShopData->scrollOffset, &tItemCount);
+            SetAmountOfItemBought(sMartInfo.shopId, GridMenu_SelectedIndex(sShopData->gridItems), &tItemCount);
             BuyMenuDisplayMessage(taskId, gText_HereYouGoThankYou, BuyMenuSubtractMoney);
             RecordItemPurchase(taskId);
         }
