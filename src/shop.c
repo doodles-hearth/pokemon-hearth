@@ -348,7 +348,7 @@ static const struct WindowTemplate sShopBuyMenuWindowTemplates[] =
         .tilemapLeft = 22,
         .tilemapTop = 14,
         .width = 8,
-        .height = 2,
+        .height = 6,
         .paletteNum = 15,
         .baseBlock = 0x018E,
     },
@@ -1638,11 +1638,11 @@ static void BuyMenuPrintItemQuantityAndPrice(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    FillWindowPixelBuffer(WIN_QUANTITY_PRICE, PIXEL_FILL(1));
-    PrintMoneyAmount(WIN_QUANTITY_PRICE, CalculateMoneyTextHorizontalPosition(sShopData->totalCost), 1, sShopData->totalCost, TEXT_SKIP_DRAW);
+    FillWindowPixelBuffer(WIN_QUANTITY_PRICE, PIXEL_FILL(0));
+    PrintMoneyLocal(WIN_QUANTITY_PRICE, 13, sShopData->totalCost, 56, COLORID_BLACK, FALSE);
     ConvertIntToDecimalStringN(gStringVar1, tItemCount, STR_CONV_MODE_LEADING_ZEROS, MAX_ITEM_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_xVar1);
-    BuyMenuPrint(WIN_QUANTITY_PRICE, gStringVar4, 0, 1, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
+    BuyMenuPrint(WIN_QUANTITY_PRICE, gStringVar4, 29, 3, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
     CopyWindowToVram(WIN_QUANTITY_PRICE, COPYWIN_FULL);
 }
 
