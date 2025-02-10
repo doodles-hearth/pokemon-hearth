@@ -60,6 +60,7 @@
 #include "constants/weather.h"
 #include "constants/mugshots.h"
 #include "constants/rtc.h"
+#include "constants/quests.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "constants/constants.inc"
