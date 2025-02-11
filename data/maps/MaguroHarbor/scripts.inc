@@ -1,6 +1,11 @@
 MaguroHarbor_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, MaguroHarbor_MapScripts_MAP_SCRIPT_ON_LOAD
 	map_script MAP_SCRIPT_ON_TRANSITION, MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+MaguroHarbor_MapScripts_MAP_SCRIPT_ON_LOAD:
+	call MaguroHarbor_DrawMetatiles
+	return
 
 MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	setflag FLAG_TEMP_1
@@ -15,6 +20,30 @@ MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	clearflag FLAG_TEMP_1
+	return
+
+
+MaguroHarbor_DrawMetatiles::
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_DEAD_NIGHT, MaguroHarbor_DrawMetatiles_2
+	case TIME_EARLY_MORNING, MaguroHarbor_DrawMetatiles_3
+	case TIME_MORNING, MaguroHarbor_DrawMetatiles_3
+	case TIME_LUNCHTIME, MaguroHarbor_DrawMetatiles_3
+	case TIME_AFTERNOON, MaguroHarbor_DrawMetatiles_3
+	case TIME_EVENING, MaguroHarbor_DrawMetatiles_3
+	case TIME_NIGHT, MaguroHarbor_DrawMetatiles_3
+MaguroHarbor_DrawMetatiles_3:
+	end
+
+MaguroHarbor_DrawMetatiles_2:
+	setmetatile 18, 13, METATILE_Maguro_MaguroClosedWindows, TRUE
+	setmetatile 35, 20, METATILE_Maguro_MaguroClosedWindows, TRUE
+	setmetatile 37, 19, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE
+	setmetatile 37, 20, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
+	setmetatile 20, 12, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE
+	setmetatile 20, 13, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
+	setmetatile 32, 12, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
 	return
 
 

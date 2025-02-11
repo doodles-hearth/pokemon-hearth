@@ -32,13 +32,13 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_LotOfRocks",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
@@ -52,13 +52,13 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_HousesMadeOfSilverTunnelStone",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -92,13 +92,13 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_Wildflowers",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PIDGEY)",
@@ -132,13 +132,13 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Silveridge_EventScript_MissingStatue",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",

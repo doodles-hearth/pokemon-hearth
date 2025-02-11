@@ -45,6 +45,7 @@
 #include "mystery_gift.h"
 #include "union_room_chat.h"
 #include "constants/map_groups.h"
+#include "quests.h"
 #include "constants/items.h"
 #include "tx_registered_items_menu.h"
 #include "naming_screen.h"
@@ -232,6 +233,7 @@ void NewGameInitData(void)
     FakeRtc_ForwardTimeTo(12, 0, 0);
     FakeRtc_SetNewGameDay();
     InitTimeBasedEvents();
+    QuestMenu_ResetMenuSaveData();
 }
 
 static void ResetMiniGamesRecords(void)

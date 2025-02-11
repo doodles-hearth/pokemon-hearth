@@ -28,10 +28,13 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3:
 	end
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_2:
-	setmetatile 35, 31, METATILE_SakuKura_Door, TRUE
-	setmetatile 22, 18, METATILE_SakuKura_Door, TRUE
-	setmetatile 16, 20, METATILE_SakuKura_Door, TRUE
-	setmetatile 18, 33, METATILE_SakuKura_Door, TRUE
+	setmetatile 35, 31, METATILE_SakuKura_ClosedDoorBottom, TRUE
+	setmetatile 22, 17, METATILE_SakuKura_ClosedDoorTop, TRUE
+	setmetatile 22, 18, METATILE_SakuKura_ClosedDoorBottom, TRUE
+	setmetatile 16, 19, METATILE_SakuKura_ClosedDoorTop, TRUE
+	setmetatile 16, 20, METATILE_SakuKura_ClosedDoorBottom, TRUE
+	setmetatile 18, 32, METATILE_SakuKura_ClosedDoorTop, TRUE
+	setmetatile 18, 33, METATILE_SakuKura_ClosedDoorBottom, TRUE
 	return
 
 
