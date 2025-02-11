@@ -4,6 +4,7 @@
 extern struct ItemSlot gMartPurchaseHistory[3];
 
 void CreatePokemartMenu(const u16 *);
+void CreateLimitedShopMenu(u8 shopId);
 void CreateTravellingMerchantMenu(void);
 void CreateDecorationShop1Menu(const u16 *);
 void CreateDecorationShop2Menu(const u16 *);

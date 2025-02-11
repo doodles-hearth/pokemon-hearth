@@ -2043,6 +2043,9 @@ extern const u16 gShopMenuSellerMugshotPal_Jerry[];
 extern const u8 gShopMenuSellerMugshotGfx_Jennie[];
 extern const u16 gShopMenuSellerMugshotPal_Jennie[];
 
+extern const u8 gShopMenuSellerMugshotGfx_Okada[];
+extern const u16 gShopMenuSellerMugshotPal_Okada[];
+
 extern const u32 gBattleInterface_BallStatusBarGfx[];
 extern const u8 gBattleInterface_BallDisplayGfx[];
 extern const u16 gBattleInterface_BallStatusBarPal[];

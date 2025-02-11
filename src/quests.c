@@ -156,7 +156,7 @@ static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType);
 static void ResetSpriteState(void);
 static void QuestMenu_DestroySprite(u8 idx);
 
-static void GenerateStateAndPrint(u8 windowId, u32 itemId, u8 y);
+static void GenerateStateAndPrint(u8 windowId, u32 itemId, u8 y, u8 itemPos);
 static u8 GenerateSubquestState(u8 questId);
 static u8 GenerateQuestState(u8 questId);
 static void PrintQuestState(u8 windowId, u8 y, u8 colorIndex);
@@ -2241,8 +2241,7 @@ static void QuestMenu_DestroySprite(u8 idx)
 		}
 	}
 }
-static void GenerateStateAndPrint(u8 windowId, u32 questId,
-                                  u8 y)
+static void GenerateStateAndPrint(u8 windowId, u32 questId, u8 y, u8 itemPos)
 {
 	u8 colorIndex;
 

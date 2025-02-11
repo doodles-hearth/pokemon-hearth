@@ -1733,6 +1733,9 @@ const u16 gShopMenuSellerMugshotPal_Jerry[] = INCBIN_U16("graphics/shop/mugshots
 const u8 gShopMenuSellerMugshotGfx_Jennie[] = INCBIN_U8("graphics/shop/mugshots/jennie.4bpp");
 const u16 gShopMenuSellerMugshotPal_Jennie[] = INCBIN_U16("graphics/shop/mugshots/jennie.gbapal");
 
+const u8 gShopMenuSellerMugshotGfx_Okada[] = INCBIN_U8("graphics/shop/mugshots/okada.4bpp");
+const u16 gShopMenuSellerMugshotPal_Okada[] = INCBIN_U16("graphics/shop/mugshots/okada.gbapal");
+
 // Pokeblock
 
 const u32 gMenuPokeblock_Gfx[] = INCBIN_U32("graphics/pokeblock/menu.4bpp.lz");

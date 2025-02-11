@@ -43,6 +43,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/event_objects.h"
+#include "config/limited_shop.h"
 
 #define TAG_SCROLL_ARROW   2100
 #define TAG_ITEM_ICON_BASE 9110 // immune to time blending
@@ -79,6 +80,7 @@ enum {
 
 enum {
     MART_TYPE_NORMAL,
+    MART_TYPE_LIMITED,
     MART_TYPE_DECOR,
     MART_TYPE_DECOR2,
 };
@@ -88,6 +90,7 @@ enum
 {
     MUGSHOT_JERRY, // OBJ_EVENT_GFX_MART_EMPLOYEE
     MUGSHOT_JENNIE, // OBJ_EVENT_GFX_WOMAN_3
+    MUGSHOT_OKADA,
     MUGSHOT_COUNT,
 };
 
@@ -96,9 +99,11 @@ struct MartInfo
     void (*callback)(void);
     const struct MenuAction *menuActions;
     const u16 *itemList;
+    const u8 *itemQuantity;
     u16 itemCount;
     u8 windowId;
     u8 martType;
+    u8 shopId;
 };
 
 struct ShopData
@@ -136,6 +141,9 @@ static EWRAM_DATA u8 sPurchaseHistoryId = 0;
 EWRAM_DATA struct ItemSlot gMartPurchaseHistory[SMARTSHOPPER_NUM_ITEMS] = {0};
 static EWRAM_DATA u16 sTravellingMerchantInventory[14] = {};
 
+static EWRAM_DATA u16 tempItemList[LIMITED_SHOP_MAX_ITEMS];
+static EWRAM_DATA u8 tempItemQuantity[LIMITED_SHOP_MAX_ITEMS];
+
 static void Task_ShopMenu(u8 taskId);
 static void Task_HandleShopMenuQuit(u8 taskId);
 static void CB2_InitBuyMenu(void);
@@ -166,11 +174,12 @@ static void Task_BuyHowManyDialogueHandleInput(u8 taskId);
 static void BuyMenuSubtractMoney(u8 taskId);
 static void RecordItemPurchase(u8 taskId);
 static void Task_ReturnToItemListAfterItemPurchase(u8 taskId);
+static void Task_ReturnToItemListAfterLimitedShopPurchase(u8 taskId);
 static void Task_ReturnToItemListAfterDecorationPurchase(u8 taskId);
 static void Task_HandleShopMenuBuy(u8 taskId);
 static void Task_HandleShopMenuSell(u8 taskId);
 static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, struct ListMenu *list);
-static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y);
+static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y, u8 itemPos);
 static void PrintMoneyLocal(u8 windowId, u8 y, u32 amount, u8 width, u8 colorIdx, bool32 copy);
 static void UpdateItemData(void);
 static void Task_ReturnToItemListWaitMsg(u8 taskId);
@@ -339,7 +348,7 @@ static const struct WindowTemplate sShopBuyMenuWindowTemplates[] =
         .tilemapLeft = 22,
         .tilemapTop = 14,
         .width = 8,
-        .height = 2,
+        .height = 6,
         .paletteNum = 15,
         .baseBlock = 0x018E,
     },
@@ -419,6 +428,7 @@ static const struct SpriteTemplate sCursor_SpriteTemplate = {
 static const struct SellerMugshot sSellerMugshots[] = {
     // both are same thing btw, is just one is shortened with macro and others are pure
     MUGSHOT(JERRY, MART_EMPLOYEE, Jerry),
+    MUGSHOT(OKADA, TRAVELING_MERCHANT, Okada),
     {{.gfxId=OBJ_EVENT_GFX_WOMAN_3}, .gfx=gShopMenuSellerMugshotGfx_Jennie, .pal=gShopMenuSellerMugshotPal_Jennie},
 };
 
@@ -430,7 +440,7 @@ static u8 CreateShopMenu(u8 martType)
     DebugPrintf("lastTalked: %d", gSpecialVar_LastTalked);
     sMartInfo.martType = martType;
 
-    if (martType == MART_TYPE_NORMAL)
+    if (martType == MART_TYPE_NORMAL || martType == MART_TYPE_LIMITED)
     {
         struct WindowTemplate winTemplate = sShopMenuWindowTemplates[WIN_BUY_SELL_QUIT];
         winTemplate.width = GetMaxWidthInMenuTable(sShopMenuActions_BuySellQuit, ARRAY_COUNT(sShopMenuActions_BuySellQuit));
@@ -464,7 +474,6 @@ static void SetShopMenuCallback(void (* callback)(void))
 static void SetShopItemsForSale(const u16 *items)
 {
     u16 i = 0;
-
     sMartInfo.itemList = items;
     sMartInfo.itemCount = 0;
 
@@ -475,6 +484,35 @@ static void SetShopItemsForSale(const u16 *items)
         i++;
     }
     sMartInfo.itemCount++; // for ITEM_NONE / DECOR_NONE
+}
+
+#include "data/limited_shop.h"
+
+static void SetLimitedShopItemsForSale(u16 shopId)
+{
+    u16 i = 0;
+
+    // Populate temporary writable buffers
+    while (i < LIMITED_SHOP_MAX_ITEMS && gLimitedShops[shopId][i].item != ITEM_NONE)
+    {
+        tempItemList[i] = gLimitedShops[shopId][i].item;
+        tempItemQuantity[i] = gLimitedShops[shopId][i].quantity;
+        i++;
+    }
+
+    // Add ITEM_NONE marker at the end
+    tempItemList[i] = ITEM_NONE;
+    tempItemQuantity[i] = 0;
+
+    // Redirect sMartInfo pointers to the temporary buffers
+    sMartInfo.itemList = tempItemList;
+    sMartInfo.itemQuantity = tempItemQuantity;
+    sMartInfo.itemCount = i + 1;
+}
+
+static void SetShopId(u8 shopId)
+{
+    sMartInfo.shopId = shopId;
 }
 
 static void Task_ShopMenu(u8 taskId)
@@ -670,7 +708,7 @@ UNUSED static void BuyMenuBuildListMenuTemplate(void)
 
 static void BuyMenuSetListEntry(struct ListMenuItem *menuItem, u16 item, u8 *name)
 {
-    if (sMartInfo.martType == MART_TYPE_NORMAL)
+    if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
         CopyItemName(item, name);
     else
         StringCopy(name, gDecorations[item].name);
@@ -688,7 +726,7 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
     sShopData->iconSlot ^= 1;
     if (item != LIST_CANCEL)
     {
-        if (sMartInfo.martType == MART_TYPE_NORMAL)
+        if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
             description = ItemId_GetDescription(item);
         else
             description = gDecorations[item].description;
@@ -702,30 +740,82 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
     BuyMenuPrint(WIN_ITEM_DESCRIPTION, description, 4, 0, TEXT_SKIP_DRAW, COLORID_BLACK, TRUE);
 }
 
-static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y)
+u8 GetAmountOfItemBought(u8 storeId, u16 itemPos)
+{
+    // Calculate the index in limitedShopVars and 4-bit position
+    u16 index = (storeId * LIMITED_SHOP_MAX_ITEMS + itemPos) / 2;
+    u8 bitOffset = (itemPos % 2) * 4;
+
+    // Extract and return the 4-bit value
+    return (gSaveBlock2Ptr->limitedShopVars[index] >> bitOffset) & 0xF;
+}
+
+static void SetAmountOfItemBought(u8 storeId, u16 itemPos, s16 *amountBought)
+{
+    // Cap the value to LIMITED_SHOP_MAX_ITEM_QUANTITY
+    if (*amountBought > LIMITED_SHOP_MAX_ITEM_QUANTITY)
+        *amountBought = LIMITED_SHOP_MAX_ITEM_QUANTITY;
+
+    // Calculate the index in limitedShopVars and 4-bit position
+    u16 index = (storeId * LIMITED_SHOP_MAX_ITEMS + itemPos) / 2;
+    u8 bitOffset = (itemPos % 2) * 4;
+
+    // Add the purchased amount to the existing amount bought
+    u8 newAmount = GetAmountOfItemBought(storeId, itemPos) + *amountBought;
+    
+    // Cap the value to LIMITED_SHOP_MAX_ITEM_QUANTITY
+    if (newAmount > LIMITED_SHOP_MAX_ITEM_QUANTITY)
+        newAmount = LIMITED_SHOP_MAX_ITEM_QUANTITY;
+
+    // Clear the relevant 4 bits and then set the new 4-bit value
+    gSaveBlock2Ptr->limitedShopVars[index] &= ~(0xF << bitOffset);
+    gSaveBlock2Ptr->limitedShopVars[index] |= (newAmount & 0xF) << bitOffset;
+}
+
+static inline bool32 LimitedItemSoldOut(u8 itemPos)
+{
+    if (sMartInfo.itemQuantity[itemPos] != 0 // Indicates the item is unlimited
+     && GetAmountOfItemBought(sMartInfo.shopId, itemPos) >= sMartInfo.itemQuantity[itemPos])
+        return TRUE;
+    return FALSE;
+}
+
+static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y, u8 itemPos)
 {
     u8 x;
 
     if (itemId != LIST_CANCEL)
     {
-        if (sMartInfo.martType == MART_TYPE_NORMAL)
+        switch (sMartInfo.martType)
         {
+        case MART_TYPE_LIMITED:
+            if (LimitedItemSoldOut(itemPos))
+            {
+                StringCopy(gStringVar1, gText_SoldOut);
+                StringExpandPlaceholders(gStringVar4, gText_StrVar1);
+                break;
+            }
+            // else fall through intentionally
+        case MART_TYPE_NORMAL:
             ConvertIntToDecimalStringN(
                 gStringVar1,
                 ItemId_GetPrice(itemId) >> IsPokeNewsActive(POKENEWS_SLATEPORT),
                 STR_CONV_MODE_LEFT_ALIGN,
                 MAX_MONEY_DIGITS);
-        }
-        else
-        {
+            StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
+            break;
+        case MART_TYPE_DECOR:
+        case MART_TYPE_DECOR2:
+        default:
             ConvertIntToDecimalStringN(
                 gStringVar1,
                 gDecorations[itemId].price,
                 STR_CONV_MODE_LEFT_ALIGN,
                 MAX_MONEY_DIGITS);
+            StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
+            break;
         }
 
-        StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
         x = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 120);
         AddTextPrinterParameterized4(windowId, FONT_NARROW, x, y, 0, 0, sShopBuyMenuTextColors[COLORID_BLACK], TEXT_SKIP_DRAW, gStringVar4);
     }
@@ -763,7 +853,7 @@ UNUSED static void BuyMenuAddItemIcon(u16 item, u8 iconSlot)
     if (*spriteIdPtr != SPRITE_NONE)
         return;
 
-    if (sMartInfo.martType == MART_TYPE_NORMAL || item == ITEM_LIST_END)
+    if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED || item == ITEM_LIST_END)
     {
         spriteId = AddItemIconSprite(iconSlot + TAG_ITEM_ICON_BASE, iconSlot + TAG_ITEM_ICON_BASE, item);
         if (spriteId != MAX_SPRITES)
@@ -787,7 +877,7 @@ static void ForEachCB_PopulateItemIcons(u32 idx, u32 col, u32 row)
     if (i >= sMartInfo.itemCount)
         return;
 
-    if (sMartInfo.martType == MART_TYPE_NORMAL)
+    if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
     {
         if (sMartInfo.itemList[i] == ITEM_NONE)
             sShopData->gridItems->iconSpriteIds[idx] = AddItemIconSprite(GFXTAG_ITEM + idx, PALTAG_ITEM + idx, ITEM_LIST_END);
@@ -924,7 +1014,7 @@ static inline void SpawnWindow(u8 winId)
 
 static inline const u8 *BuyMenuGetItemName(u32 id)
 {
-    if (sMartInfo.martType == MART_TYPE_NORMAL)
+    if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
         return ItemId_GetName(sMartInfo.itemList[id]);
     else
         return gDecorations[sMartInfo.itemList[id]].name;
@@ -932,7 +1022,7 @@ static inline const u8 *BuyMenuGetItemName(u32 id)
 
 static inline const u8 *BuyMenuGetItemDesc(u32 id)
 {
-    if (sMartInfo.martType == MART_TYPE_NORMAL)
+    if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
         return ItemId_GetDescription(sMartInfo.itemList[id]);
     else
         return gDecorations[sMartInfo.itemList[id]].description;
@@ -940,7 +1030,7 @@ static inline const u8 *BuyMenuGetItemDesc(u32 id)
 
 static inline u32 BuyMenuGetItemPrice(u32 id)
 {
-    if (sMartInfo.martType == MART_TYPE_NORMAL)
+    if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
         return ItemId_GetPrice(sMartInfo.itemList[id]);
     else
         return gDecorations[sMartInfo.itemList[id]].price;
@@ -969,7 +1059,7 @@ static void SetupSellerMugshot(void)
 
     if (gSpecialVar_LastTalked == 0) // failsafe
     {
-        LoadSellerMugshot(gShopMenuSellerMugshotGfx_Jerry, gShopMenuSellerMugshotPal_Jerry);
+        LoadSellerMugshot(gShopMenuSellerMugshotGfx_Jennie, gShopMenuSellerMugshotPal_Jennie);
         return;
     }
 
@@ -1047,11 +1137,10 @@ static void BuyMenuInitWindows(void)
     SpawnWindow(WIN_ITEM_DESCRIPTION);
 
     BuyMenuPrint(WIN_MULTI, name, 0, 0, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
-    // TODO EVA ICI
     BuyMenuPrint(WIN_MULTI, gText_Price, 0, 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
     BuyMenuPrint(WIN_MULTI, gText_InBag, 0, 4*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
 
-    if (sMartInfo.martType == MART_TYPE_NORMAL)
+    if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
     {
         u32 item = sMartInfo.itemList[0];
         u16 quantity = CountTotalItemQuantityInBag(item);
@@ -1063,7 +1152,8 @@ static void BuyMenuInitWindows(void)
             BuyMenuPrint(WIN_MULTI, move, GetStringRightAlignXOffset(FONT_SMALL, move, 80), 0, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
         }
 
-        if (ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
+        if ((ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1))) ||
+         (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(0)))
             BuyMenuPrint(WIN_MULTI, gText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, gText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
         else
             PrintMoneyLocal(WIN_MULTI, 2*8, price, 84, COLORID_BLACK, FALSE);
@@ -1154,7 +1244,7 @@ static void UpdateItemData(void)
         FillWindowPixelRect(WIN_MULTI, PIXEL_FILL(0), 0, 0, 84, 16);
         BuyMenuPrint(WIN_MULTI, gText_ReturnToField, 0, 0, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
         BuyMenuPrint(WIN_MULTI, strip, GetStringRightAlignXOffset(FONT_SMALL, strip, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
-        if (sMartInfo.martType == MART_TYPE_NORMAL)
+        if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
             BuyMenuPrint(WIN_MULTI, strip, GetStringRightAlignXOffset(FONT_SMALL, strip, 80), 4*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
 
         FillWindowPixelBuffer(WIN_ITEM_DESCRIPTION, PIXEL_FILL(0));
@@ -1167,7 +1257,7 @@ static void UpdateItemData(void)
         const u8 *desc = BuyMenuGetItemDesc(i);
         BuyMenuPrint(WIN_MULTI, BuyMenuGetItemName(i), 0, 0, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
 
-        if (sMartInfo.martType == MART_TYPE_NORMAL)
+        if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
         {
             u16 quantity = CountTotalItemQuantityInBag(item);
             if (ItemId_GetPocket(item) == POCKET_TM_HM && item != ITEM_NONE)
@@ -1178,7 +1268,8 @@ static void UpdateItemData(void)
                 BuyMenuPrint(WIN_MULTI, move, GetStringRightAlignXOffset(FONT_SMALL, move, 80), 0, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
             }
 
-            if (ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
+            if ((ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1))) ||
+             (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(i)))
                 BuyMenuPrint(WIN_MULTI, gText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, gText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
             else
                 PrintMoneyLocal(WIN_MULTI, 2*8, BuyMenuGetItemPrice(i), 84, COLORID_BLACK, FALSE);
@@ -1226,12 +1317,20 @@ static void BuyMenuDisplayMessage(u8 taskId, const u8 *str, TaskFunc nextFunc)
 static void Task_BuyMenuTryBuyingItem(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    if (sMartInfo.martType == MART_TYPE_NORMAL)
+    if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
         sShopData->totalCost = (ItemId_GetPrice(sShopData->currentItemId) >> IsPokeNewsActive(POKENEWS_SLATEPORT));
     else
         sShopData->totalCost = gDecorations[sShopData->currentItemId].price;
 
     FillWindowPixelBuffer(WIN_ITEM_DESCRIPTION, PIXEL_FILL(0));
+
+    if (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(GridMenu_SelectedIndex(sShopData->gridItems)))
+    {
+        PlaySE(SE_BOO);
+        gTasks[taskId].data[0] = 70;
+        BuyMenuDisplayMessage(taskId, gText_ThatItemIsSoldOut, Task_WaitMessage);
+        return;
+    }
 
     if (sMartInfo.martType != MART_TYPE_DECOR || sMartInfo.martType != MART_TYPE_DECOR2)
     {
@@ -1252,8 +1351,8 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
     }
     else
     {
-        PlaySE(SE_SELECT);
-        if (sMartInfo.martType == MART_TYPE_NORMAL)
+        PlaySE(SE_SELECT); // TODO EVA ICI
+        if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
         {
             CopyItemName(sShopData->currentItemId, gStringVar1);
             if (ItemId_GetImportance(sShopData->currentItemId))
@@ -1326,22 +1425,31 @@ static void Task_BuyHowManyDialogueInit(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    u16 maxQuantity;
-
     tItemCount = 1;
     BuyMenuPrintItemQuantityAndPrice(taskId);
     ScheduleBgCopyTilemapToVram(0);
 
-    // Avoid division by zero in-case something costs 0 pokedollars.
-    if (sShopData->totalCost == 0)
-        maxQuantity = MAX_BAG_ITEM_CAPACITY;
-    else
-        maxQuantity = GetMoney(&gSaveBlock1Ptr->money) / sShopData->totalCost;
+    // Avoid division by zero if the item costs 0 Pokédollars.
+    u32 maxQuantity = (sShopData->totalCost == 0) 
+        ? MAX_BAG_ITEM_CAPACITY 
+        : GetMoney(&gSaveBlock1Ptr->money) / sShopData->totalCost;
 
-    if (maxQuantity > MAX_BAG_ITEM_CAPACITY)
-        sShopData->maxQuantity = MAX_BAG_ITEM_CAPACITY;
-    else
-        sShopData->maxQuantity = maxQuantity;
+    sShopData->maxQuantity = (maxQuantity > MAX_BAG_ITEM_CAPACITY) 
+        ? MAX_BAG_ITEM_CAPACITY 
+        : maxQuantity;
+
+    if (sMartInfo.martType == MART_TYPE_LIMITED)
+    {
+        u32 i = GridMenu_SelectedIndex(sShopData->gridItems);
+
+        // Limit purchasable items to remaining stock quantity.
+        if (sMartInfo.itemQuantity[i] != 0)
+        {
+            u32 remainingStock = sMartInfo.itemQuantity[i] - GetAmountOfItemBought(sMartInfo.shopId, i);
+            if (remainingStock < sShopData->maxQuantity)
+                sShopData->maxQuantity = remainingStock;
+        }
+    }
 
     gTasks[taskId].func = Task_BuyHowManyDialogueHandleInput;
 }
@@ -1405,6 +1513,20 @@ static void BuyMenuTryMakePurchase(u8 taskId)
             BuyMenuDisplayMessage(taskId, gText_NoMoreRoomForThis, Task_ReturnToItemListWaitMsg);
         }
     }
+    else if (sMartInfo.martType == MART_TYPE_LIMITED)
+    {
+        if (AddBagItem(sShopData->currentItemId, tItemCount) == TRUE)
+        {
+            GetSetItemObtained(sShopData->currentItemId, FLAG_SET_ITEM_OBTAINED);
+            SetAmountOfItemBought(sMartInfo.shopId, GridMenu_SelectedIndex(sShopData->gridItems), &tItemCount);
+            BuyMenuDisplayMessage(taskId, gText_HereYouGoThankYou, BuyMenuSubtractMoney);
+            RecordItemPurchase(taskId);
+        }
+        else
+        {
+            BuyMenuDisplayMessage(taskId, gText_NoMoreRoomForThis, BuyMenuReturnToItemList);
+        }
+    }
     else
     {
         if (DecorationAdd(sShopData->currentItemId))
@@ -1432,6 +1554,8 @@ static void BuyMenuSubtractMoney(u8 taskId)
 
     if (sMartInfo.martType == MART_TYPE_NORMAL)
         gTasks[taskId].func = Task_ReturnToItemListAfterItemPurchase;
+    else if (sMartInfo.martType == MART_TYPE_LIMITED)
+        gTasks[taskId].func = Task_ReturnToItemListAfterLimitedShopPurchase;
     else
         gTasks[taskId].func = Task_ReturnToItemListAfterDecorationPurchase;
 }
@@ -1483,6 +1607,18 @@ static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
     }
 }
 
+static void Task_ReturnToItemListAfterLimitedShopPurchase(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    if (gMain.newKeys & (A_BUTTON | B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        RedrawListMenu(tListTaskId);
+        BuyMenuReturnToItemList(taskId);
+    }
+}
+
 static void Task_ReturnToItemListAfterDecorationPurchase(u8 taskId)
 {
     if (JOY_NEW(A_BUTTON | B_BUTTON))
@@ -1502,11 +1638,11 @@ static void BuyMenuPrintItemQuantityAndPrice(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    FillWindowPixelBuffer(WIN_QUANTITY_PRICE, PIXEL_FILL(1));
-    PrintMoneyAmount(WIN_QUANTITY_PRICE, CalculateMoneyTextHorizontalPosition(sShopData->totalCost), 1, sShopData->totalCost, TEXT_SKIP_DRAW);
+    FillWindowPixelBuffer(WIN_QUANTITY_PRICE, PIXEL_FILL(0));
+    PrintMoneyLocal(WIN_QUANTITY_PRICE, 13, sShopData->totalCost, 56, COLORID_BLACK, FALSE);
     ConvertIntToDecimalStringN(gStringVar1, tItemCount, STR_CONV_MODE_LEADING_ZEROS, MAX_ITEM_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_xVar1);
-    BuyMenuPrint(WIN_QUANTITY_PRICE, gStringVar4, 0, 1, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
+    BuyMenuPrint(WIN_QUANTITY_PRICE, gStringVar4, 29, 3, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
     CopyWindowToVram(WIN_QUANTITY_PRICE, COPYWIN_FULL);
 }
 
@@ -1561,6 +1697,16 @@ void CreatePokemartMenu(const u16 *itemsForSale)
 {
     CreateShopMenu(MART_TYPE_NORMAL);
     SetShopItemsForSale(itemsForSale);
+    SetShopId(0);
+    ClearItemPurchases();
+    SetShopMenuCallback(ScriptContext_Enable);
+}
+
+void CreateLimitedShopMenu(u8 shopId)
+{
+    CreateShopMenu(MART_TYPE_LIMITED);
+    SetLimitedShopItemsForSale(shopId);
+    SetShopId(shopId);
     ClearItemPurchases();
     SetShopMenuCallback(ScriptContext_Enable);
 }

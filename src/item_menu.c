@@ -197,7 +197,7 @@ static void InitPocketScrollPositions(void);
 static u8 CreateBagInputHandlerTask(u8);
 static void DrawItemListBgRow(u8);
 static void BagMenu_MoveCursorCallback(s32, bool8, struct ListMenu *);
-static void BagMenu_ItemPrintCallback(u8, u32, u8);
+void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 a, u8 listPos);
 static void ItemMenu_UseOutOfBattle(u8);
 static void ItemMenu_Toss(u8);
 static void ItemMenu_Register(u8);
@@ -1004,7 +1004,7 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
     }
 }
 
-static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
+void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y, u8 listPos)
 {
     u16 itemId;
     u16 itemQuantity;
