@@ -3,16 +3,16 @@ SilverTunnel_2F_MapScripts::
 
 
 SilverTunnel_2F_EventScript_Trainer1::
-	trainerbattle_single TRAINER_DUMMY, SilverTunnel_2F_EventScript_Trainer1_Text_0, SilverTunnel_2F_EventScript_Trainer1_Text_1, BeachboundRoute_EventScript_Karu_PostBattle
+	trainerbattle_single TRAINER_TAMA, SilverTunnel_2F_EventScript_Trainer1_Text_0, SilverTunnel_2F_EventScript_Trainer1_Text_1
 	speakername SilverTunnel_2F_EventScript_Trainer1_Text_2
 	msgbox SilverTunnel_2F_EventScript_Trainer1_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 SilverTunnel_2F_EventScript_Trainer2::
-	trainerbattle_single TRAINER_DUMMY, SilverTunnel_2F_EventScript_Trainer1_Text_0, SilverTunnel_2F_EventScript_Trainer1_Text_1, BeachboundRoute_EventScript_Karu_PostBattle
-	speakername SilverTunnel_2F_EventScript_Trainer1_Text_2
-	msgbox SilverTunnel_2F_EventScript_Trainer1_Text_3, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_DUMMY, SilverTunnel_2F_EventScript_Trainer2_Text_0, SilverTunnel_2F_EventScript_Trainer2_Text_1, BeachboundRoute_EventScript_Karu_PostBattle
+	speakername SilverTunnel_2F_EventScript_Trainer2_Text_2
+	msgbox SilverTunnel_2F_EventScript_Trainer2_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
@@ -48,15 +48,30 @@ SilverTunnel_2F_EventScript_Miner_Movement_0:
 	step_end
 
 SilverTunnel_2F_EventScript_Trainer1_Text_0:
-	.string "Let's fight$"
+	.string "The lack of precious gemstones here\n"
+	.string "is disappointing!$"
 
 SilverTunnel_2F_EventScript_Trainer1_Text_1:
-	.string "Oh no I lost$"
+	.string "You shine like a diamond!$"
 
 SilverTunnel_2F_EventScript_Trainer1_Text_2:
-	.string "TODO$"
+	.string "Tama$"
 
 SilverTunnel_2F_EventScript_Trainer1_Text_3:
+	.string "I came here all the way from Saberside\n"
+	.string "Town looking for precious gemstones.\p"
+	.string "But there's only regular rocks here…$"
+
+SilverTunnel_2F_EventScript_Trainer2_Text_0:
+	.string "Let's fight$"
+
+SilverTunnel_2F_EventScript_Trainer2_Text_1:
+	.string "Oh no I lost$"
+
+SilverTunnel_2F_EventScript_Trainer2_Text_2:
+	.string "TODO$"
+
+SilverTunnel_2F_EventScript_Trainer2_Text_3:
 	.string "Now I'm sad$"
 
 SilverTunnel_2F_EventScript_Sandslash_Text_0:

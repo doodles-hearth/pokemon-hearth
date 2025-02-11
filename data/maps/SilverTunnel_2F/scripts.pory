@@ -6,13 +6,13 @@ mapscripts SilverTunnel_2F_MapScripts {
 
 script SilverTunnel_2F_EventScript_Trainer1 {
 	trainerbattle_single(
-		TRAINER_DUMMY,
-		format("Let's fight"),
-		format("Oh no I lost"),
-		BeachboundRoute_EventScript_Karu_PostBattle
+		TRAINER_TAMA,
+		format("The lack of precious gemstones here is disappointing!"),
+		format("You shine like a diamond!")
 	)
-	speakername("TODO")
-	msgbox(format("Now I'm sad"), MSGBOX_AUTOCLOSE)
+	speakername("Tama")
+	msgbox(format("I came here all the way from Saberside Town looking for precious gemstones.\p"
+	"But there's only regular rocks here…"), MSGBOX_AUTOCLOSE)
 	end
 }
 

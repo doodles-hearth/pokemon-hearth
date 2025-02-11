@@ -2,27 +2,28 @@ mapscripts SilverTunnel_1F_MapScripts {
 	
 }
 
-script SilverTunnel_1F_EventScript_Trainer1 {
+script SilverTunnel_1F_EventScript_Kento {
 	trainerbattle_single(
-		TRAINER_DUMMY,
-		format("Let's fight"),
-		format("Oh no I lost"),
-		BeachboundRoute_EventScript_Karu_PostBattle
+		TRAINER_KENTO,
+		format("You ain't no miner, are ya?"),
+		format("How am I gonna get any work done now?")
 	)
-	speakername("TODO")
-	msgbox(format("Now I'm sad"), MSGBOX_AUTOCLOSE)
+	// TODO EVA setnamedmon
+	speakername("Kento")
+	msgbox(format("My Makuhita breaks rocks for me!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script SilverTunnel_1F_EventScript_Trainer2 {
 	trainerbattle_single(
-		TRAINER_DUMMY,
-		format("Let's fight"),
-		format("Oh no I lost"),
+		TRAINER_SHUYA,
+		format("D'ya know how tough we miners are?"),
+		format("I gotta say, yer not bad either!"),
 		BeachboundRoute_EventScript_Karu_PostBattle
 	)
-	speakername("TODO")
-	msgbox(format("Now I'm sad"), MSGBOX_AUTOCLOSE)
+	// TODO EVA setnamedmon
+	speakername("Shuya")
+	msgbox(format("Sometimes we armwrestle with our Makuhita just for kicks!"), MSGBOX_AUTOCLOSE)
 	end
 }
 

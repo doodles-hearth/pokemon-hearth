@@ -326,17 +326,6 @@ BeachboundRoute_EventScript_Mugging_9:
 	goto BeachboundRoute_EventScript_Mugging_5
 
 
-	.align 2
-BeachboundRoute_Mart_Merchant:
-	.2byte ITEM_OINTMENT
-	.2byte ITEM_UUMEGIRI
-	.2byte ITEM_FISHCAKE
-	.2byte ITEM_CHERI_BERRY
-	.2byte ITEM_PECHA_BERRY
-	.2byte ITEM_CHESTO_BERRY
-	.2byte ITEM_TM_ROCK_TOMB
-	.2byte ITEM_NONE
-
 BeachboundRoute_EventScript_TravelingMerchantSecondTime::
 	lock
 	faceplayer

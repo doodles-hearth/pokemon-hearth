@@ -11198,7 +11198,7 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Stops the foe from\n"
             "moving with rocks.\n"
-            "May lower Speed."),
+            "Lowers Speed."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
