@@ -15,7 +15,7 @@ const struct LimitedShopItems gLimitedShops[LIMITED_SHOP_COUNT][LIMITED_SHOP_MAX
         {ITEM_GREAT_BALL, 5},
         {ITEM_OINTMENT, 0},
         {ITEM_UUMEGIRI, 2},
-        {ITEM_TM_ROCK_TOMB, 1},
+        {ITEM_TM_AERIAL_ACE, 1},
     },
     [LIMITED_SHOP_2] = 
     {

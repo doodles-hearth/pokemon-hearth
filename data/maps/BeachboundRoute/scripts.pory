@@ -480,17 +480,6 @@ script BeachboundRoute_EventScript_Mugging {
 	waitmovement(0)
 }
 
-// TODO change items, and make them limited quantity
-mart BeachboundRoute_Mart_Merchant {
-	ITEM_OINTMENT
-	ITEM_UUMEGIRI
-	ITEM_FISHCAKE
-	ITEM_CHERI_BERRY
-	ITEM_PECHA_BERRY
-	ITEM_CHESTO_BERRY
-	ITEM_TM_ROCK_TOMB
-}
-
 script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 	lock
 	faceplayer

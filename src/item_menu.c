@@ -956,20 +956,8 @@ static void GetItemName(u8 *dest, u16 itemId)
     switch (gBagPosition.pocket)
     {
     case TMHM_POCKET:
-        end = StringCopy(gStringVar2, GetMoveName(ItemIdToBattleMoveId(itemId)));
-        PrependFontIdToFit(gStringVar2, end, FONT_NARROW, 61);
-        if (itemId >= ITEM_HM01)
-        {
-            // Get HM number
-            ConvertIntToDecimalStringN(gStringVar1, itemId - ITEM_HM01 + 1, STR_CONV_MODE_LEADING_ZEROS, 1);
-            StringExpandPlaceholders(dest, gText_NumberItem_HM);
-        }
-        else
-        {
-            // Get TM number
-            ConvertIntToDecimalStringN(gStringVar1, itemId - ITEM_TM01 + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
-            StringExpandPlaceholders(dest, gText_NumberItem_TMBerry);
-        }
+        end = StringCopy(dest, GetMoveName(ItemIdToBattleMoveId(itemId)));
+        PrependFontIdToFit(dest, end, FONT_NARROW, 88);
         break;
     case BERRIES_POCKET:
         ConvertIntToDecimalStringN(gStringVar1, itemId - FIRST_BERRY_INDEX + 1, STR_CONV_MODE_LEADING_ZEROS, 2);
@@ -2040,8 +2028,17 @@ static void PrintThereIsNoPokemon(u8 taskId)
 
 static void PrintItemCantBeHeld(u8 taskId)
 {
-    CopyItemName(gSpecialVar_ItemId, gStringVar1);
-    StringExpandPlaceholders(gStringVar4, gText_Var1CantBeHeld);
+    switch (gBagPosition.pocket)
+    {
+        case TMHM_POCKET:
+            StringCopy(gStringVar4, gText_ScrollsCantBeHeld);
+            break;
+        default:
+            CopyItemName(gSpecialVar_ItemId, gStringVar1);
+            StringExpandPlaceholders(gStringVar4, gText_Var1CantBeHeld);
+            break;
+    }
+    
     DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, HandleErrorMessage);
 }
 

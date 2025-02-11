@@ -1728,46 +1728,28 @@ const u32 gItemIcon_MarangaBerry[] = INCBIN_U32("graphics/items/icons/maranga_be
 const u32 gItemIconPalette_MarangaBerry[] = INCBIN_U32("graphics/items/icon_palettes/maranga_berry.gbapal.lz");
 
 // TMs/HMs
-
-const u32 gItemIcon_TM[] = INCBIN_U32("graphics/items/icons/tm.4bpp.lz");
-
 const u32 gItemIcon_HM[] = INCBIN_U32("graphics/items/icons/hm.4bpp.lz");
 
-const u32 gItemIconPalette_NormalTMHM[] = INCBIN_U32("graphics/items/icon_palettes/normal_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_FireTMHM[] = INCBIN_U32("graphics/items/icon_palettes/fire_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_WaterTMHM[] = INCBIN_U32("graphics/items/icon_palettes/water_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_ElectricTMHM[] = INCBIN_U32("graphics/items/icon_palettes/electric_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_GrassTMHM[] = INCBIN_U32("graphics/items/icon_palettes/grass_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_IceTMHM[] = INCBIN_U32("graphics/items/icon_palettes/ice_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_FightingTMHM[] = INCBIN_U32("graphics/items/icon_palettes/fighting_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_PoisonTMHM[] = INCBIN_U32("graphics/items/icon_palettes/poison_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_GroundTMHM[] = INCBIN_U32("graphics/items/icon_palettes/ground_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_FlyingTMHM[] = INCBIN_U32("graphics/items/icon_palettes/flying_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_PsychicTMHM[] = INCBIN_U32("graphics/items/icon_palettes/psychic_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_BugTMHM[] = INCBIN_U32("graphics/items/icon_palettes/bug_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_RockTMHM[] = INCBIN_U32("graphics/items/icon_palettes/rock_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_GhostTMHM[] = INCBIN_U32("graphics/items/icon_palettes/ghost_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_DragonTMHM[] = INCBIN_U32("graphics/items/icon_palettes/dragon_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_DarkTMHM[] = INCBIN_U32("graphics/items/icon_palettes/dark_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_SteelTMHM[] = INCBIN_U32("graphics/items/icon_palettes/steel_tm_hm.gbapal.lz");
-
-const u32 gItemIconPalette_FairyTMHM[] = INCBIN_U32("graphics/items/icon_palettes/fairy_tm_hm.gbapal.lz");
+// Hearth scrolls
+const u32 gItemIcon_Scroll[] = INCBIN_U32("graphics/items/icons/scrolls/water.4bpp.lz");
+const u32 gItemIconPalette_NormalScroll[] = INCBIN_U32("graphics/items/icons/scrolls/normal.gbapal.lz");
+const u32 gItemIconPalette_FireScroll[] = INCBIN_U32("graphics/items/icons/scrolls/fire.gbapal.lz");
+const u32 gItemIconPalette_WaterScroll[] = INCBIN_U32("graphics/items/icons/scrolls/water.gbapal.lz");
+const u32 gItemIconPalette_ElectricScroll[] = INCBIN_U32("graphics/items/icons/scrolls/electric.gbapal.lz");
+const u32 gItemIconPalette_GrassScroll[] = INCBIN_U32("graphics/items/icons/scrolls/grass.gbapal.lz");
+const u32 gItemIconPalette_IceScroll[] = INCBIN_U32("graphics/items/icons/scrolls/ice.gbapal.lz");
+const u32 gItemIconPalette_FightingScroll[] = INCBIN_U32("graphics/items/icons/scrolls/fighting.gbapal.lz");
+const u32 gItemIconPalette_PoisonScroll[] = INCBIN_U32("graphics/items/icons/scrolls/poison.gbapal.lz");
+const u32 gItemIconPalette_GroundScroll[] = INCBIN_U32("graphics/items/icons/scrolls/ground.gbapal.lz");
+const u32 gItemIconPalette_FlyingScroll[] = INCBIN_U32("graphics/items/icons/scrolls/flying.gbapal.lz");
+const u32 gItemIconPalette_PsychicScroll[] = INCBIN_U32("graphics/items/icons/scrolls/psychic.gbapal.lz");
+const u32 gItemIconPalette_BugScroll[] = INCBIN_U32("graphics/items/icons/scrolls/bug.gbapal.lz");
+const u32 gItemIconPalette_RockScroll[] = INCBIN_U32("graphics/items/icons/scrolls/rock.gbapal.lz");
+const u32 gItemIconPalette_GhostScroll[] = INCBIN_U32("graphics/items/icons/scrolls/ghost.gbapal.lz");
+const u32 gItemIconPalette_DragonScroll[] = INCBIN_U32("graphics/items/icons/scrolls/dragon.gbapal.lz");
+const u32 gItemIconPalette_DarkScroll[] = INCBIN_U32("graphics/items/icons/scrolls/dark.gbapal.lz");
+const u32 gItemIconPalette_SteelScroll[] = INCBIN_U32("graphics/items/icons/scrolls/steel.gbapal.lz");
+const u32 gItemIconPalette_FairyScroll[] = INCBIN_U32("graphics/items/icons/scrolls/fairy.gbapal.lz");
 
 // Charms
 
