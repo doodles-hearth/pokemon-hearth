@@ -247,7 +247,7 @@ const struct Item gItemsInfo[] =
         .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = BALL_PREMIER,
         .iconPic = gItemIcon_PremierBall,
-        .iconPalette = gItemIconPalette_LuxuryBall,
+        .iconPalette = gItemIconPalette_PremierBall,
     },
 
     [ITEM_HEAL_BALL] =
@@ -343,7 +343,7 @@ const struct Item gItemsInfo[] =
         .battleUsage = EFFECT_ITEM_THROW_BALL,
         .secondaryId = BALL_TIMER,
         .iconPic = gItemIcon_TimerBall,
-        .iconPalette = gItemIconPalette_RepeatBall,
+        .iconPalette = gItemIconPalette_TimerBall,
     },
 
     [ITEM_QUICK_BALL] =
