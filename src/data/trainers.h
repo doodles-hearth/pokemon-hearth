@@ -12546,7 +12546,7 @@ F_TRAINER_FEMALE |
 #line 5083
             .iv = TRAINER_PARTY_IVS(15, 15, 15, 15, 15, 15),
 #line 5082
-            .lvl = 12,
+            .lvl = 13,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
