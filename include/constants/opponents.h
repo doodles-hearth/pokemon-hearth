@@ -14,9 +14,9 @@
 #define TRAINER_TAMA       8
 #define TRAINER_GABRIELLE_1                   9
 #define TRAINER_GRUNT_BEACHBOUND_ROUTE_1     10
-#define TRAINER_IKUTO                       11
-#define TRAINER_ALBERTO                      12
-#define TRAINER_ED                           13
+#define TRAINER_IKUTO                        11
+#define TRAINER_KANSAKU                      12 // UNUSED!!!
+#define TRAINER_SHAMISEN                     13
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_4      14
 #define TRAINER_DECLAN                       15
 #define TRAINER_GRUNT_RUSTURF_TUNNEL         16

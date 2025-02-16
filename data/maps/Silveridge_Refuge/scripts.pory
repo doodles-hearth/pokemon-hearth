@@ -17,3 +17,56 @@ script Silveridge_Refuge_EventScript_Firebringer {
 		"Tomorrow I'll be back up there, catching some more of 'em."
 	), MSGBOX_NPC)
 }
+
+script Silveridge_Refuge_EventScript_Artist {
+	speakername("Artist")
+	msgbox(format(
+		"Listening to the musician's sweet song inspires me so!"
+	), MSGBOX_NPC)
+}
+
+script Silveridge_Refuge_EventScript_Kricketune {
+	setspeakertomonname(SPECIES_KRICKETUNE)
+	playmoncry(SPECIES_KRICKETUNE, CRY_MODE_NORMAL)
+	msgbox(format(
+		"Delelelele…"
+	))
+	closemessage
+}
+
+script Silveridge_Refuge_EventScript_Shamisen {
+	lock
+	faceplayer
+
+	if (flag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)) {
+		speakername("Shamisen player")
+		msgbox(format(
+			"Are you resting here for the night as well?"
+		))
+		closemessage
+	} else {
+		special(GetPlayerBoyGirlString)
+		speakername("Shamisen player")
+		msgbox(format(
+			"Good evening to you, {STR_VAR_1}.\p"
+			"Are you here to listen to my music?\p"
+			"Or are you here to battle?"
+		))
+		closemessage
+
+		trainerbattle_no_intro(TRAINER_SHAMISEN, format("Such fun!"))
+
+		speakername("Shamisen player")
+		msgbox(format(
+			"That was just the thing I needed to pass the time."
+		))
+		closemessage
+
+		// TODO EVA reward?
+
+		setflag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)
+	}
+
+	release
+	end
+}

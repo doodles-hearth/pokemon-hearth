@@ -14,7 +14,7 @@ script SilverTunnel_1F_EventScript_Kento {
 	end
 }
 
-script SilverTunnel_1F_EventScript_Trainer2 {
+script SilverTunnel_1F_EventScript_Shuya {
 	trainerbattle_single(
 		TRAINER_SHUYA,
 		format("D'ya know how tough we miners are?"),
@@ -25,6 +25,14 @@ script SilverTunnel_1F_EventScript_Trainer2 {
 	speakername("Shuya")
 	msgbox(format("Sometimes we armwrestle with our Makuhita just for kicks!"), MSGBOX_AUTOCLOSE)
 	end
+}
+
+script SilverTunnel_1F_EventScript_Nerd {
+	speakername("Man")
+	msgbox(format(
+		"Ugh…\p"
+		"I forgot to bring my fighting Pokémon, so I got whooped by those miners' rock Pokémon…"
+	), MSGBOX_NPC)
 }
 
 script SilverTunnel_1F_TrainerTips {

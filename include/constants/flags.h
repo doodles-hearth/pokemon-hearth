@@ -1584,7 +1584,7 @@
 #define FLAG_DAILY_MON_DEX_RIDDLE                   (DAILY_FLAGS_START + 0x5)
 #define FLAG_DAILY_MON_SILHOUETTE_RIDDLE            (DAILY_FLAGS_START + 0x6)
 #define FLAG_DAILY_FISHCAKE                         (DAILY_FLAGS_START + 0x7)
-#define FLAG_UNUSED_0x928                           (DAILY_FLAGS_START + 0x8)  // Unused Flag
+#define FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER    (DAILY_FLAGS_START + 0x8)
 #define FLAG_UNUSED_0x929                           (DAILY_FLAGS_START + 0x9)  // Unused Flag
 #define FLAG_DAILY_PICKED_LOTO_TICKET               (DAILY_FLAGS_START + 0xA)
 #define FLAG_DAILY_ROUTE_114_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xB)

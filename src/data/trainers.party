@@ -443,16 +443,16 @@ Name: Tama
 Class: Gentleman /* Gem Maniac */
 Pic: Gentleman
 Gender: Male
-Music: Male
-Double Battle: No
+Music: Rich
+Double Battle: Yes
 AI: Smart Trainer
 
-Glimmet
+Carbink
 Level: 17
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Rock Polish
-- Stealth Rock
-- Acid Spray
+- Sharpen
+- Rock Throw
+- Smack Down
 
 Sableye
 Level: 16
@@ -542,13 +542,13 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_IKUTO ===
 Name: Ikuto
-Class: Hiker
+Class: Miner
 Pic: Hiker
 Gender: Male
 Music: Hiker
 Items: Uumegiri
 Double Battle: No
-AI: Smart Trainer
+AI: Basic Trainer
 
 Aron
 Level: 16
@@ -557,7 +557,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Metal Claw
 - Rock Tomb
 
-Onix
+Onix (F)
 Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Curse
@@ -565,14 +565,14 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stealth Rock
 - Bind
 
-=== TRAINER_ALBERTO ===
-Name: ALBERTO
-Class: Bird Keeper
-Pic: Bird Keeper
+=== TRAINER_KANSAKU ===
+Name: Kansaku
+Class: Miner
+Pic: Hiker
 Gender: Male
-Music: Cool
+Music: Hiker
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
 Pelipper
 Level: 30
@@ -582,22 +582,26 @@ Xatu
 Level: 30
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_ED ===
-Name: ED
-Class: Collector
-Pic: Collector
-Gender: Male
-Music: Suspicious
+=== TRAINER_SHAMISEN ===
+Name: Kyoku
+Class: Blind Singer
+Pic: Shamisen
+Gender: Female
+Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Check Bad Move / Prefer Status Moves
 
-Zangoose
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Kricketune
+Level: 17
+- Sing
+- Fury Cutter
+- Bide
 
-Seviper
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Growlithe
+Level: 16
+- Fire Fang
+- Odor Sleuth
+- Bite
 
 === TRAINER_GRUNT_SEAFLOOR_CAVERN_4 ===
 Name: GRUNT
