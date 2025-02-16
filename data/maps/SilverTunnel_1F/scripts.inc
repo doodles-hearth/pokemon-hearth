@@ -9,11 +9,17 @@ SilverTunnel_1F_EventScript_Kento::
 	end
 
 
-SilverTunnel_1F_EventScript_Trainer2::
-	trainerbattle_single TRAINER_SHUYA, SilverTunnel_1F_EventScript_Trainer2_Text_0, SilverTunnel_1F_EventScript_Trainer2_Text_1, BeachboundRoute_EventScript_Karu_PostBattle
-	speakername SilverTunnel_1F_EventScript_Trainer2_Text_2
-	msgbox SilverTunnel_1F_EventScript_Trainer2_Text_3, MSGBOX_AUTOCLOSE
+SilverTunnel_1F_EventScript_Shuya::
+	trainerbattle_single TRAINER_SHUYA, SilverTunnel_1F_EventScript_Shuya_Text_0, SilverTunnel_1F_EventScript_Shuya_Text_1, BeachboundRoute_EventScript_Karu_PostBattle
+	speakername SilverTunnel_1F_EventScript_Shuya_Text_2
+	msgbox SilverTunnel_1F_EventScript_Shuya_Text_3, MSGBOX_AUTOCLOSE
 	end
+
+
+SilverTunnel_1F_EventScript_Nerd::
+	speakername SilverTunnel_1F_EventScript_Nerd_Text_0
+	msgbox SilverTunnel_1F_EventScript_Nerd_Text_1, MSGBOX_NPC
+	return
 
 
 SilverTunnel_1F_TrainerTips::
@@ -33,18 +39,27 @@ SilverTunnel_1F_EventScript_Kento_Text_2:
 SilverTunnel_1F_EventScript_Kento_Text_3:
 	.string "My Makuhita breaks rocks for me!$"
 
-SilverTunnel_1F_EventScript_Trainer2_Text_0:
+SilverTunnel_1F_EventScript_Shuya_Text_0:
 	.string "D'ya know how tough we miners are?$"
 
-SilverTunnel_1F_EventScript_Trainer2_Text_1:
+SilverTunnel_1F_EventScript_Shuya_Text_1:
 	.string "I gotta say, yer not bad either!$"
 
-SilverTunnel_1F_EventScript_Trainer2_Text_2:
+SilverTunnel_1F_EventScript_Shuya_Text_2:
 	.string "Shuya$"
 
-SilverTunnel_1F_EventScript_Trainer2_Text_3:
+SilverTunnel_1F_EventScript_Shuya_Text_3:
 	.string "Sometimes we armwrestle with our\n"
 	.string "Makuhita just for kicks!$"
+
+SilverTunnel_1F_EventScript_Nerd_Text_0:
+	.string "Man$"
+
+SilverTunnel_1F_EventScript_Nerd_Text_1:
+	.string "Ugh…\p"
+	.string "I forgot to bring my fighting\n"
+	.string "Pokémon, so I got whooped by those\l"
+	.string "miners' rock Pokémon…$"
 
 SilverTunnel_1F_TrainerTips_Text_0:
 	.string "Warning!\p"

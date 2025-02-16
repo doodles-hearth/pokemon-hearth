@@ -182,7 +182,7 @@
 #define TRAINER_TONY_3                      176
 #define TRAINER_TONY_4                      177
 #define TRAINER_TONY_5                      178
-#define TRAINER_TAKAO                       179
+#define TRAINER_MATSU                       179
 #define TRAINER_HITOSHI                     180
 #define TRAINER_KIYO                        181
 #define TRAINER_KOICHI                      182
@@ -428,8 +428,8 @@
 #define TRAINER_LAO_3                       422
 #define TRAINER_LAO_4                       423
 #define TRAINER_LAO_5                       424
-#define TRAINER_JOCELYN                     425
-#define TRAINER_LAURA                       426
+#define TRAINER_KIKU                        425
+#define TRAINER_AYAME                       426
 #define TRAINER_MAKOTO_1                     427
 #define TRAINER_CORA                        428
 #define TRAINER_PAULA                       429
@@ -575,9 +575,9 @@
 #define TRAINER_GRUNT_MT_PYRE_4             569
 #define TRAINER_GRUNT_JAGGED_PASS           570
 #define TRAINER_MIZU                        571
-#define TRAINER_BRENDEN                     572
-#define TRAINER_LILITH                      573
-#define TRAINER_CRISTIAN                    574
+#define TRAINER_TSUBAKI                     572
+#define TRAINER_SUMIRE                      573
+#define TRAINER_AJISAI                      574
 #define TRAINER_SYLVIA                      575
 #define TRAINER_LEONARDO                    576
 #define TRAINER_ATHENA                      577

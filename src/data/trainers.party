@@ -405,7 +405,7 @@ Pic: Hiker
 Gender: Male
 Music: Hiker
 Double Battle: No
-AI: Smart Trainer
+AI: Smartish Trainer
 
 Makuhita
 Level: 15
@@ -445,7 +445,7 @@ Pic: Gentleman
 Gender: Male
 Music: Rich
 Double Battle: Yes
-AI: Smart Trainer
+AI: Smartish Trainer
 
 Carbink
 Level: 17
@@ -584,7 +584,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_SHAMISEN ===
 Name: Kyoku
-Class: Blind Singer
+Class: Shamisen
 Pic: Shamisen
 Gender: Female
 Music: Female
@@ -3453,18 +3453,28 @@ Sharpedo
 Level: 39
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-=== TRAINER_TAKAO ===
-Name: TAKAO
-Class: Expert
-Pic: Expert M
+=== TRAINER_MATSU ===
+Name: Matsu
+Class: Gentleman
+Pic: Gentleman
 Gender: Male
-Music: Intense
+Music: Rich
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Budew
-Level: 13
+Fomantis
+Level: 17
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Growth
+- Sunny Day
+- Razor Leaf
+
+Bonsly
+Level: 18
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Fake Tears
+- Mimic
+- Rock Throw
 
 === TRAINER_HITOSHI ===
 Name: HITOSHI
@@ -5080,7 +5090,7 @@ Gender: Female
 Music: Female
 Items: Uumegiri
 Double Battle: No
-AI: Smart Trainer / Ace Pokemon
+AI: Smartish Trainer / Ace Pokemon
 
 Surskit @ Oran Berry
 Level: 13
@@ -5107,35 +5117,42 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Name: Hana
 Class: Dojo Master
 Pic: Leader Hana
-Gender: Male
+Gender: Female
 Music: Female
 Items: Super Potion / Super Potion
 Double Battle: No
-AI: Check Bad Move / Try To Faint / Check Viability / Smart Switching / Smart Mon Choices
+AI: Smartish Trainer / Ace Pokemon
 
-Diglett
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Dig
-- Thief
-- Swagger
-- Protect
+Fomantis
+Level: 19
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Fury Cutter
+- Razor Leaf
+- Synthesis
+- Sunny Day
+
+Squirtle
+Level: 20
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Water Sport
+- Rain Dance
+- Bubble Beam
+- Bite
 
 Sudowoodo @ Soft Sand
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Copycat
-- Rock Throw
-- Mud Slap
-- Sandstorm
+Level: 19
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Feint Attack
+- Low Kick
+- Rock Tomb
 
 Grotle @ Sitrus Berry
 Level: 18
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Bulldoze
+- Mega Drain
 - Leech Seed
-- Absorb
-- Protect
+- Bite
+- Sunny Day
 
 === TRAINER_YUTAKA_1 ===
 Name: Yutaka
@@ -8048,31 +8065,51 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 - Tackle
 - Sludge
 
-=== TRAINER_JOCELYN ===
-Name: JOCELYN
-Class: Battle Girl
-Pic: Battle Girl
+=== TRAINER_KIKU ===
+Name: Kiku
+Class: Aroma Lady
+Pic: Aroma Lady
 Gender: Female
-Music: Intense
+Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Diglett
-Level: 15
+Budew
+Level: 17
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Stun Spore
+- Mega Drain
+- Leech Seed
 
-=== TRAINER_LAURA ===
-Name: LAURA
-Class: Battle Girl
-Pic: Battle Girl
+Cherubi
+Level: 17
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Sunny Day
+- Magical Leaf
+
+=== TRAINER_AYAME ===
+Name: Ayame
+Class: Gardener
+Pic: Gardener
 Gender: Female
-Music: Intense
+Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Meditite
-Level: 13
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Nuzleaf
+Level: 18
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Growth
+- Fake Out
+- Razor Leaf
+- Sunny Day
+
+Wooper
+Level: 18
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Mud Sport
+- Water Gun
+- Slam
 
 === TRAINER_MAKOTO_1 ===
 Name: Makoto
@@ -10778,44 +10815,63 @@ Level: 12
 - Quick Attack
 - Bubble
 
-=== TRAINER_BRENDEN ===
-Name: BRENDEN
-Class: Sailor
-Pic: Sailor
-Gender: Male
-Music: Male
-Double Battle: No
-AI: Check Bad Move
-
-Machop
-Level: 13
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_LILITH ===
-Name: LILITH
-Class: Battle Girl
-Pic: Battle Girl
+=== TRAINER_TSUBAKI ===
+Name: Tsubaki
+Class: Lass
+Pic: Lass
 Gender: Female
-Music: Intense
+Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Meditite
-Level: 13
+Cherrim
+Level: 18
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Sunny Day
+- Magical Leaf
+- Morning Sun
+
+Skiploom
+Level: 19
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+Ability: Chlorophyll
+- Synthesis
+- Poison Powder
+- Bullet Seed
+- Headbutt
+
+=== TRAINER_SUMIRE ===
+Name: Sumire
+Class: Gardener
+Pic: Gardener
+Gender: Female
+Music: Female
+Double Battle: No
+AI: Basic Trainer
+
+Cherrim
+Level: 19
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Sunny Day
+- Magical Leaf
+- Swift
 
-=== TRAINER_CRISTIAN ===
-Name: CRISTIAN
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
+=== TRAINER_AJISAI ===
+Name: Ajisai
+Class: Gardener
+Pic: Gardener
+Gender: Female
+Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Makuhita
-Level: 13
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Castform
+Level: 19
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Rain Dance
+- Headbutt
+- Water Pulse
+- Ember
 
 === TRAINER_SYLVIA ===
 Name: SYLVIA
@@ -11200,7 +11256,7 @@ Pic: Natsuki
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Smart Trainer
+AI: Smartish Trainer
 
 Growlithe
 Level: 10
@@ -13116,7 +13172,7 @@ Gender: Female
 Music: Female
 Items: Uumegiri
 Double Battle: No
-AI: Smart Trainer
+AI: Smartish Trainer
 
 Bean (Slowpoke) (M)
 Level: 14
@@ -14254,7 +14310,7 @@ Pic: Natsuki
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Smart Trainer
+AI: Smartish Trainer
 
 Wooper
 Level: 10
@@ -14278,7 +14334,7 @@ Pic: Natsuki
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Smart Trainer
+AI: Smartish Trainer
 
 Shroomish
 Level: 11

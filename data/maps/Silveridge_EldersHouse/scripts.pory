@@ -10,6 +10,7 @@ mapscripts Silveridge_EldersHouse_MapScripts {
 
 script Silveridge_EldersHouse_EventScript_Conversation {
 	lock
+	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 5)
 
 	applymovement(LOCALID_OLD_MAN, Common_Movement_WalkInPlaceFasterRight)
 	waitmovement(0)
@@ -58,10 +59,12 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	delay(48)
 	applymovement(LOCALID_OLD_WOMAN, moves(walk_down * 2))
 	applymovement(LOCALID_OLD_MAN, moves(walk_right, walk_down * 3))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(delay_16, lock_facing_direction, walk_left, unlock_facing_direction))
 	waitmovement(LOCALID_OLD_WOMAN)
 	removeobject(LOCALID_OLD_WOMAN)
 	playse(SE_EXIT)
 	waitmovement(LOCALID_OLD_MAN)
+	removeobject(LOCALID_OLD_MAN)
 	playse(SE_EXIT)
 	waitse
 
@@ -69,7 +72,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	delay(48)
 
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 2, walk_right, face_up))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right, walk_up * 2))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
 	speakername("Elder Iwa")
