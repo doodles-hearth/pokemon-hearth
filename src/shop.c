@@ -1351,7 +1351,7 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
     }
     else
     {
-        PlaySE(SE_SELECT); // TODO EVA ICI
+        PlaySE(SE_SELECT);
         if (sMartInfo.martType == MART_TYPE_NORMAL || sMartInfo.martType == MART_TYPE_LIMITED)
         {
             CopyItemName(sShopData->currentItemId, gStringVar1);
