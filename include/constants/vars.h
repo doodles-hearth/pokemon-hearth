@@ -97,26 +97,26 @@
 #define VAR_POKELOT_RND2                                 0x404C
 #define VAR_POKELOT_PRIZE_PLACE                          0x404D
 /*
-VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE States
-// 0: Never met
-// 1: Seen them on Tranquil Route
-// 2: Heard the lady being mugged on Beachbound Route
-// 3: Fought them at least once on Beachbound Route
-// 4: Won against them on Beachbound Route
+    VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE States
+    // 0: Never met
+    // 1: Seen them on Tranquil Route
+    // 2: Heard the lady being mugged on Beachbound Route
+    // 3: Fought them at least once on Beachbound Route
+    // 4: Won against them on Beachbound Route
 */
 #define VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE 0x404E
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
 #define VAR_LITTLEROOT_TOWN_STATE                        0x4050
 #define VAR_OLDALE_TOWN_STATE                            0x4051
 /*
-VAR_DECAY_BEACHBOUND_ROUTE States
+    VAR_DECAY_BEACHBOUND_ROUTE States
 
-// 0: No decay
-// 1: Decay
-// 2: Seen the decay once
-// 3: "be careful!"
-// 4: Talked to Hariko about decay
-// 5: Delivered letter to elder in Silveridge
+    // 0: No decay
+    // 1: Decay
+    // 2: Seen the decay once
+    // 3: "be careful!"
+    // 4: Talked to Hariko about decay
+    // 5: Delivered letter to elder in Silveridge
 */
 #define VAR_DECAY_BEACHBOUND_ROUTE                       0x4052
 #define VAR_LAVARIDGE_TOWN_STATE                         0x4053
@@ -171,10 +171,10 @@ VAR_DECAY_BEACHBOUND_ROUTE States
 #define VAR_ROUTE132_STATE                               0x407F // Unused Var
 #define VAR_ROUTE133_STATE                               0x4080 // Unused Var
 /*
-VAR_RIVAL_ENCOUNTER_STATEs
+    VAR_RIVAL_ENCOUNTER_STATEs
 
-// 0: Never fought him past the lvl5 elder's lab fight
-// 1: Fought him in Saku Village
+    // 0: Never fought him past the lvl5 elder's lab fight
+    // 1: Fought him in Saku Village
 */
 #define VAR_RIVAL_ENCOUNTER_STATE                        0x4081
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
@@ -234,9 +234,9 @@ VAR_RIVAL_ENCOUNTER_STATEs
 #define VAR_LILYCOVE_CONTEST_LOBBY_STATE                 0x4099
 #define VAR_RUSTURF_TUNNEL_STATE                         0x409A
 /*
-VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATEs
-// 0: Player hasn't trespassed yet
-// 1: Player has trespassed once, so the old man's dog now attacks you as soon as you enter the house
+    VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATEs
+    // 0: Player hasn't trespassed yet
+    // 1: Player has trespassed once, so the old man's dog now attacks you as soon as you enter the house
 */
 
 #define VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE             0x409B
