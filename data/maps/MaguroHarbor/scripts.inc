@@ -519,7 +519,7 @@ MaguroHarbor_EventScript_Man_Text_1:
 	.string "Dojo's Magikarp…$"
 
 MaguroHarbor_EventScript_MartSelling_Text_0:
-	.string "Clerk$"
+	.string "Saleswoman$"
 
 MaguroHarbor_EventScript_MartSettingUp_Text_0:
 	.string "Oh, uh, the shop isn't open yet. Come\n"

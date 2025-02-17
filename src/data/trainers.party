@@ -438,13 +438,13 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Arm Thrust
 - Endure
 
-=== TRAINER_TAMA ===
+=== TRAINER_GRUNT_SEAFLOOR_CAVERN_3 ===
 Name: Tama
 Class: Gentleman /* Gem Maniac */
 Pic: Gentleman
 Gender: Male
 Music: Rich
-Double Battle: Yes
+Double Battle: No
 AI: Smartish Trainer
 
 Carbink
@@ -870,22 +870,28 @@ Hariyama
 Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_SHELLY_WEATHER_INSTITUTE ===
-Name: SHELLY
-Class: Aqua Admin
-Pic: Aqua Admin F
-Gender: Female
-Music: Aqua
-Double Battle: No
-AI: Basic Trainer
+=== TRAINER_TAMA ===
+Name: Tama
+Class: Gentleman /* Gem Maniac */
+Pic: Gentleman
+Gender: Male
+Music: Rich
+Double Battle: Yes
+AI: Smartish Trainer
 
-Carvanha
-Level: 28
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Carbink
+Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Sharpen
+- Rock Throw
+- Smack Down
 
-Mightyena
-Level: 28
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+Sableye
+Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Night Shade
+- Astonish
+- Fury Swipes
 
 === TRAINER_SHELLY_SEAFLOOR_CAVERN ===
 Name: SHELLY

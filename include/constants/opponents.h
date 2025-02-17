@@ -11,7 +11,7 @@
 #define TRAINER_KOUGA          5
 #define TRAINER_KENTO       6
 #define TRAINER_SHUYA       7
-#define TRAINER_TAMA       8
+#define TRAINER_GRUNT_SEAFLOOR_CAVERN_3       8
 #define TRAINER_GABRIELLE_1                   9
 #define TRAINER_GRUNT_BEACHBOUND_ROUTE_1     10
 #define TRAINER_IKUTO                        11
@@ -35,7 +35,7 @@
 #define TRAINER_FREDRICK                     29
 #define TRAINER_MATT                         30
 #define TRAINER_ZANDER                       31
-#define TRAINER_SHELLY_WEATHER_INSTITUTE     32
+#define TRAINER_TAMA     32
 #define TRAINER_SHELLY_SEAFLOOR_CAVERN       33
 #define TRAINER_ARCHIE                       34
 #define TRAINER_LEAH                         35
