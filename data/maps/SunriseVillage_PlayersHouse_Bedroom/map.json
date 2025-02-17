@@ -62,9 +62,33 @@
       "var": "VAR_SUNRISE_VILLAGE_INTRO_STATE",
       "var_value": "1",
       "script": "SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 3,
+      "elevation": 0,
+      "var": "VAR_SUNRISE_VILLAGE_INTRO_STATE",
+      "var_value": "1",
+      "script": "SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling"
     }
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 6,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SunriseVillage_PlayersHouse_Bedroom_PlayersChest"
+    },
+    {
+      "type": "sign",
+      "x": 7,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SunriseVillage_PlayersHouse_Bedroom_PlayersChest"
+    }
   ]
 }

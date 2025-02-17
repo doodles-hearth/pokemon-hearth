@@ -195,6 +195,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	setflag FLAG_SYS_POKEDEX_GET
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	closemessage
+	startquest QUEST_POKEDEX
 	delay 20
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9
@@ -440,6 +441,7 @@ SunriseVillage_EldersHouse_EventScript_PostBattle_5:
 	delay 16
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
 	resumefakertc
+	updatequest QUEST_HEARTH_MAIN_CAMPAIGN, VAR_MAIN_CAMPAIGN_QUEST
 	release
 	return
 

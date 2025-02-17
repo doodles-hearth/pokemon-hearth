@@ -84,3 +84,25 @@ script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
     release
     end
 }
+
+script SunriseVillage_PlayersHouse_Bedroom_PlayersChest {
+	if(flag(FLAG_SYS_QUEST_MENU_GET) == FALSE){
+	msgbox(format(
+		"It's your chest full of items.\nYou should probably just bring these though."
+	), MSGBOX_SIGN)
+	waitmessage
+	giveitem(ITEM_OINTMENT, 5)
+	msgbox(format("You also fished your journal from the bottom! It might come in handy."), MSGBOX_DEFAULT)
+	setflag(FLAG_SYS_QUEST_MENU_GET)
+	questmenu(QUEST_MENU_SET_ACTIVE, QUEST_HEARTH_MAIN_CAMPAIGN)
+	closemessage
+	} else {
+		playfanfare(MUS_OBTAIN_ITEM)
+		msgbox(format(
+			"You got the lint from the bottom of the chest!"
+		), MSGBOX_SIGN)
+		waitfanfare
+		waitmessage
+		closemessage
+	}
+}

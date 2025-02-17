@@ -82,11 +82,10 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 			"… … … … … …\n… … … … … …\p"
 			"So you're going on a journey…\p"
 			"That's great! I'm proud of you, {PLAYER}.\p"
-			"Here, take some medicine for your {STR_VAR_2} and some of these Poké Balls, in case you find any good Pokémon!"
+			"Here, take some of these Poké Balls, in case you find any good Pokémon!"
 		))
 		closemessage
 
-		giveitem(ITEM_OINTMENT, 5)
 		giveitem(ITEM_POKE_BALL, 5)
 
 		speakername("Big sis")

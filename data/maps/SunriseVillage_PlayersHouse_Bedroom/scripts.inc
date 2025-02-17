@@ -51,6 +51,26 @@ SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_2:
 	goto SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_1
 
 
+SunriseVillage_PlayersHouse_Bedroom_PlayersChest::
+	goto_if_unset FLAG_SYS_QUEST_MENU_GET, SunriseVillage_PlayersHouse_Bedroom_PlayersChest_1
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox SunriseVillage_PlayersHouse_Bedroom_PlayersChest_Text_2, MSGBOX_SIGN
+	waitfanfare
+	waitmessage
+	closemessage
+	return
+
+SunriseVillage_PlayersHouse_Bedroom_PlayersChest_1:
+	msgbox SunriseVillage_PlayersHouse_Bedroom_PlayersChest_Text_0, MSGBOX_SIGN
+	waitmessage
+	giveitem ITEM_OINTMENT, 5
+	msgbox SunriseVillage_PlayersHouse_Bedroom_PlayersChest_Text_1, MSGBOX_DEFAULT
+	setflag FLAG_SYS_QUEST_MENU_GET
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_HEARTH_MAIN_CAMPAIGN
+	closemessage
+	return
+
+
 SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll_Text_0:
 	.string "A very fluffy Wooloo doll. It's made of\n"
 	.string "real Wooloo wool!$"
@@ -88,3 +108,16 @@ SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_9:
 	.string "No need to yell, I can hear you just\n"
 	.string "fine!\p"
 	.string "Now get up and get ready!$"
+
+SunriseVillage_PlayersHouse_Bedroom_PlayersChest_Text_0:
+	.string "It's your chest full of items.\n"
+	.string "You should probably just bring these\l"
+	.string "though.$"
+
+SunriseVillage_PlayersHouse_Bedroom_PlayersChest_Text_1:
+	.string "You also fished your journal from the\n"
+	.string "bottom! It might come in handy.$"
+
+SunriseVillage_PlayersHouse_Bedroom_PlayersChest_Text_2:
+	.string "You got the lint from the bottom of\n"
+	.string "the chest!$"

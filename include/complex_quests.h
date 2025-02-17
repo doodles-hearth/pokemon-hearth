@@ -37,7 +37,7 @@
 #include "event_object_movement.h"
 #include "pokemon_icon.h"
 
-/////////////////////////////////////////////
+//////////////////////////////////////////////
 /////////////BEGIN STRING EXTERNS/////////////
 
 //Descriptions
@@ -56,13 +56,13 @@ extern const u8 gText_MainCampaignMap_3[];
 
 extern const u8 *const gTable_MainCampaignMaps[];
 
-/////////////END STRING EXTERNS/////////////
-////////////////////////////////////////////
+//////////////END STRING EXTERNS//////////////
+//////////////////////////////////////////////
 
 ////////////////////////////////////////
 ///////////BEGIN QUEST ARRAYS///////////
 
-//Hearts Quest Arrays
+//Main Campaign Arrays
 const u8 *const gTable_MainCampaignDescs[3] = {
     gText_MainCampaignDesc_1,
     gText_MainCampaignDesc_2,
@@ -76,18 +76,18 @@ const u8 *const gTable_MainCampaignMaps[3] = {
 };
 
 static const u16 MainCampaignSprites[3]={
-	SPECIES_ENTEI,
 	OBJ_EVENT_GFX_KABA,
+    OBJ_EVENT_GFX_ELDER2,
 	OBJ_EVENT_GFX_NATSUKI,
 };
 
 static const u8 MainCampaignSpriteTypes[3]={
-	PKMN,
+	OBJECT,
 	OBJECT,
 	OBJECT,
 };
 
-/////////END QUEST ARRAYS/////////
-//////////////////////////////////
+////////////END QUEST ARRAYS////////////
+////////////////////////////////////////
 
 #endif
