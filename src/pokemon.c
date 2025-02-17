@@ -3711,7 +3711,7 @@ const u8 *GetSpeciesName(u16 species, enum SpeciesNameCheck nameCheck)
     if (gSpeciesInfo[species].speciesName[0] == 0)
         return gSpeciesInfo[SPECIES_NONE].speciesName;
     if (P_UNKNOWN_MON_NAMES == TRUE && nameCheck == DO_NAME_CHECK
-     && !GetSetPokedexFlag(species, FLAG_GET_NAMED))
+     && GetSetPokedexFlag(species, FLAG_GET_NAMED) == FALSE)
         return gSpeciesInfo[species].unknownName;
     return gSpeciesInfo[species].speciesName;
 }

@@ -1531,6 +1531,7 @@ void ResetPokedex(void)
     for (i = 0; i < NUM_DEX_FLAG_BYTES; i++)
     {
         gSaveBlock1Ptr->dexCaught[i] = 0;
+        gSaveBlock1Ptr->dexNamed[i] = 0;
         gSaveBlock1Ptr->dexSeen[i] = 0;
     }
 }
@@ -4483,7 +4484,7 @@ static u8* ConvertMeasurementToMetricString(u32 num, u32* index)
     return string;
 }
 
-s8 GetSetPokedexFlag(u16 nationalDexNo, u8 caseID)
+s8 GetSetPokedexFlag(u16 nationalDexNo, enum PokedexFlag caseID)
 {
     u32 index, bit, mask;
     s8 retVal = 0;
@@ -4498,11 +4499,11 @@ s8 GetSetPokedexFlag(u16 nationalDexNo, u8 caseID)
     case FLAG_GET_SEEN:
         retVal = ((gSaveBlock1Ptr->dexSeen[index] & mask) != 0);
         break;
-    case FLAG_GET_NAMED:
-         retVal = ((gSaveBlock1Ptr->dexNamed[index] & mask) != 0);
-        break;
     case FLAG_GET_CAUGHT:
          retVal = ((gSaveBlock1Ptr->dexCaught[index] & mask) != 0);
+        break;
+    case FLAG_GET_NAMED:
+        retVal = ((gSaveBlock1Ptr->dexNamed[index] & mask) != 0);
         break;
     case FLAG_SET_SEEN:
         gSaveBlock1Ptr->dexSeen[index] |= mask;

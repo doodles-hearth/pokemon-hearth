@@ -1455,14 +1455,14 @@ enum
     DEX_MODE_NATIONAL
 };
 
-enum
+enum PokedexFlag
 {
     FLAG_GET_SEEN,
-    FLAG_GET_NAMED,
     FLAG_GET_CAUGHT,
+    FLAG_GET_NAMED,
     FLAG_SET_SEEN,
+    FLAG_SET_CAUGHT,
     FLAG_SET_NAMED,
-    FLAG_SET_CAUGHT
 };
 
 #endif // GUARD_CONSTANTS_POKEDEX_H
