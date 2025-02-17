@@ -40,7 +40,7 @@ void FakeRtc_TickTimeForward(void)
     if (!OW_USE_FAKE_RTC)
         return;
 
-    if (FlagGet(FLAG_PAUSE_FAKERTC))
+    if (FlagGet(FLAG_PAUSE_FAKERTC) || gSaveBlock2Ptr->pauseTimeForBattle)
         return;
 
     FakeRtc_AdvanceTimeBy(0, 0, 0, FakeRtc_GetSecondsRatio());
