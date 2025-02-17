@@ -1379,7 +1379,7 @@ static const u16 sNidoqueenTeachableLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
-static const u16 sNidoranMTeachableLearnset[] = {
+static const u16 sNidoranTeachableLearnset[] = {
     MOVE_ATTRACT,
     MOVE_BLIZZARD,
     MOVE_CUT,
