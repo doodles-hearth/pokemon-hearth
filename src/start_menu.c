@@ -366,7 +366,7 @@ static void BuildNormalStartMenu(void)
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
     
-    if (FlagGet(FLAG_SYS_QUEST_MENU_GET))
+    if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_QUEST_MENU);
     
     AddStartMenuAction(MENU_ACTION_SAVE);
@@ -384,6 +384,8 @@ static void BuildDebugStartMenu(void)
     AddStartMenuAction(MENU_ACTION_BAG);
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
+    if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
+        AddStartMenuAction(MENU_ACTION_QUEST_MENU);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);

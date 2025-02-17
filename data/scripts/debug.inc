@@ -142,10 +142,13 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
+	setflag FLAG_SYS_QUEST_MENU_GET
+	startquest HEARTH_MAIN_CAMPAIGN
 	release
 	end
 
 Debug_EventScript_Script_3::
+	updatequest HEARTH_MAIN_CAMPAIGN VAR_MAIN_CAMPAIGN_QUEST
 	release
 	end
 
