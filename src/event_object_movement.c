@@ -1930,7 +1930,7 @@ static u32 LoadDynamicFollowerPaletteFromGraphicsId(u16 graphicsId, struct Sprit
 }
 
 // Like LoadObjectEventPalette, but overwrites the palette tag that is loaded
-static u8 LoadObjectEventPaletteWithTag(u16 paletteTag, u16 overTag)
+UNUSED static u8 LoadObjectEventPaletteWithTag(u16 paletteTag, u16 overTag)
 {
     u32 i = FindObjectEventPaletteIndexByTag(paletteTag);
     struct SpritePalette spritePalette;
@@ -7888,7 +7888,11 @@ bool8 MovementAction_ExitPokeball_Step1(struct ObjectEvent *objectEvent, struct 
     }
     return FALSE;
 }
+
+bool8 MovementAction_EnterPokeball_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
     u32 direction = objectEvent->facingDirection;
+    StartSpriteAnimInDirection(objectEvent, sprite, direction, GetMoveDirectionFasterAnimNum(direction));
     sprite->sDuration = 16;
     // If mon's right-facing sprite is h-flipped, we need to use a different affine anim
     if (direction == DIR_EAST && sprite->anims[ANIM_STD_FACE_EAST]->frame.hFlip)
