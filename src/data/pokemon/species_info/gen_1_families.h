@@ -4411,7 +4411,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #endif
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Nidorina"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Barb rabbit"),
         .cryId = CRY_NIDORINA,
         .natDexNum = NATIONAL_DEX_NIDORINA,
         .categoryName = _("Poison Pin"),
@@ -4490,7 +4490,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #endif
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Nidoqueen"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Titan Rabbit"),
         .cryId = CRY_NIDOQUEEN,
         .natDexNum = NATIONAL_DEX_NIDOQUEEN,
         .categoryName = _("Drill"),
@@ -4560,7 +4560,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #endif
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Nidoran"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Spiky Rabbit"),
         .cryId = CRY_NIDORAN_M,
         .natDexNum = NATIONAL_DEX_NIDORAN_M,
         .categoryName = _("Poison Pin"),
@@ -4654,7 +4654,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #endif
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Nidorino"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Horn Rabbit"),
         .cryId = CRY_NIDORINO,
         .natDexNum = NATIONAL_DEX_NIDORINO,
         .categoryName = _("Poison Pin"),
@@ -4734,7 +4734,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #endif
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Nidoking"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Titan Rabbit"),
         .cryId = CRY_NIDOKING,
         .natDexNum = NATIONAL_DEX_NIDOKING,
         .categoryName = _("Drill"),
