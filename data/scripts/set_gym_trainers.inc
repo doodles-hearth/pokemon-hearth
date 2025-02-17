@@ -51,12 +51,12 @@ KoiPond_Dojo_SetGymTrainers::
 
 
 Bonsai_Dojo_SetGymTrainers::
-	settrainerflag TRAINER_TAKAO
-	settrainerflag TRAINER_JOCELYN
-	settrainerflag TRAINER_LAURA
-	settrainerflag TRAINER_BRENDEN
-	settrainerflag TRAINER_CRISTIAN
-	settrainerflag TRAINER_LILITH
+	settrainerflag TRAINER_MATSU
+	settrainerflag TRAINER_KIKU
+	settrainerflag TRAINER_AYAME
+	settrainerflag TRAINER_TSUBAKI
+	settrainerflag TRAINER_AJISAI
+	settrainerflag TRAINER_SUMIRE
 	return
 
 

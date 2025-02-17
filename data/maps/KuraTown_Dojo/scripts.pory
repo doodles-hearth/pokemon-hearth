@@ -13,12 +13,14 @@ mapscripts KuraTown_Dojo_MapScripts {
 	}
 }
 
-script KuraTown_Dojo_EventScript_Takao {
+script KuraTown_Dojo_EventScript_Matsu {
 	trainerbattle_single(
-		TRAINER_TAKAO,
+		TRAINER_MATSU,
 		format("Ho ho ho… It seems you have taken a wrong turn…"),
 		format("Very impressive skills!")
 	)
+
+	speakername("Matsu")
 	msgbox(
 		format("Not all paths lead to the master."),
 		MSGBOX_AUTOCLOSE
@@ -26,12 +28,14 @@ script KuraTown_Dojo_EventScript_Takao {
 	end
 }
 
-script KuraTown_Dojo_EventScript_Jocelyn {
+script KuraTown_Dojo_EventScript_Kiku {
 	trainerbattle_single(
-		TRAINER_JOCELYN,
+		TRAINER_KIKU,
 		format("Is the maze giving you trouble?"),
 		format("At least I didn't give you any trouble…")
 	)
+
+	speakername("Kiku")
 	msgbox(format(
 		"You're wondering why you can't just cut down all the trees?\p"
 		"Uhhh… It's a secret!"
@@ -41,7 +45,7 @@ script KuraTown_Dojo_EventScript_Jocelyn {
 
 script KuraTown_Dojo_EventScript_Laura {
 	trainerbattle_single(
-		TRAINER_LAURA,
+		TRAINER_AYAME,
 		format("No! Don't cut down that tree! It's my favorite tree!"),
 		format("Sniffle…")
 	)
@@ -51,17 +55,19 @@ script KuraTown_Dojo_EventScript_Laura {
 
 script KuraTown_Dojo_EventScript_Brenden {
 	trainerbattle_single(
-		TRAINER_BRENDEN,
+		TRAINER_TSUBAKI,
 		format("Take a deep breath! The air is so rich and flowery here!"),
 		format("A-tchoo!")
 	)
+
+	speakername("Tsubaki")
 	msgbox(format("Sniff… By zeazonal allergiez are agdig up agaid…"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script KuraTown_Dojo_EventScript_Cristian {
 	trainerbattle_single(
-		TRAINER_CRISTIAN,
+		TRAINER_AJISAI,
 		format("Did you know any tree can be bonsaified by pruning its leaves regularly?"),
 		format("You're not here because you're particularly interested in bonsai, are you?")
 	)
@@ -71,10 +77,12 @@ script KuraTown_Dojo_EventScript_Cristian {
 
 script KuraTown_Dojo_EventScript_Lilith {
 	trainerbattle_single(
-		TRAINER_LILITH,
+		TRAINER_SUMIRE,
 		format("Hana may look frail, but she's actually way tougher than you!"),
 		format("Stop it! I'm a delicate flower!")
 	)
+
+	speakername("Sumire")
 	if (flag(FLAG_BADGE02_GET)) {
 		msgbox(format(
 			"I saw your fight peeking through the leaves! That was amazing!\p"

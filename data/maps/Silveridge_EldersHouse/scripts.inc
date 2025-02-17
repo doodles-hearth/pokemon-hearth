@@ -9,6 +9,7 @@ Silveridge_EldersHouse_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 Silveridge_EldersHouse_EventScript_Conversation::
 	lock
+	setvar VAR_DECAY_BEACHBOUND_ROUTE, 5
 	applymovement 2, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_0
@@ -39,21 +40,23 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	delay 48
 	applymovement 3, Silveridge_EldersHouse_EventScript_Conversation_Movement_0
 	applymovement 2, Silveridge_EldersHouse_EventScript_Conversation_Movement_1
+	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_2
 	waitmovement 3
 	removeobject 3
 	playse SE_EXIT
 	waitmovement 2
+	removeobject 2
 	playse SE_EXIT
 	waitse
 	setflag FLAG_GAVE_LETTER_ELDER_SILVERIDGE
 	delay 48
-	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_2
+	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_3
 	waitmovement OBJ_EVENT_ID_PLAYER
 	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
 	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_7
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, Silveridge_EldersHouse_EventScript_Conversation_Text_8
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_3
+	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_4
 	waitmovement OBJ_EVENT_ID_PLAYER
 	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
 	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_9
@@ -86,13 +89,19 @@ Silveridge_EldersHouse_EventScript_Conversation_Movement_1:
 	step_end
 
 Silveridge_EldersHouse_EventScript_Conversation_Movement_2:
-	walk_up
-	walk_up
-	walk_right
-	face_up
+	delay_16
+	lock_facing_direction
+	walk_left
+	unlock_facing_direction
 	step_end
 
 Silveridge_EldersHouse_EventScript_Conversation_Movement_3:
+	walk_right
+	walk_up
+	walk_up
+	step_end
+
+Silveridge_EldersHouse_EventScript_Conversation_Movement_4:
 	walk_up
 	delay_16
 	walk_down

@@ -263,6 +263,9 @@ const u32 gTrainerPalette_MagmaLeaderMaxie[] = INCBIN_U32("graphics/trainers/fro
 const u32 gTrainerFrontPic_Lass[] = INCBIN_U32("graphics/trainers/front_pics/lass.4bpp.lz");
 const u32 gTrainerPalette_Lass[] = INCBIN_U32("graphics/trainers/front_pics/lass.gbapal.lz");
 
+const u32 gTrainerFrontPic_Gardener[] = INCBIN_U32("graphics/trainers/front_pics/gardener.4bpp.lz");
+const u32 gTrainerPalette_Gardener[] = INCBIN_U32("graphics/trainers/front_pics/gardener.gbapal.lz");
+
 const u32 gTrainerFrontPic_ZubatGruntM[] = INCBIN_U32("graphics/trainers/front_pics/crobat_shadows/zubat_m.4bpp.lz");
 const u32 gTrainerFrontPic_ZubatGruntF[] = INCBIN_U32("graphics/trainers/front_pics/crobat_shadows/zubat_f.4bpp.lz");
 const u32 gTrainerPalette_Zubat[] = INCBIN_U32("graphics/trainers/front_pics/crobat_shadows/zubat_m.gbapal.lz");
@@ -459,6 +462,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_LEAF, gTrainerFrontPic_Leaf, gTrainerPalette_Leaf),
     TRAINER_SPRITE(TRAINER_PIC_RS_BRENDAN, gTrainerFrontPic_RubySapphireBrendan, gTrainerPalette_RubySapphireBrendan),
     TRAINER_SPRITE(TRAINER_PIC_RS_MAY, gTrainerFrontPic_RubySapphireMay, gTrainerPalette_RubySapphireMay),
+    TRAINER_SPRITE(TRAINER_PIC_GARDENER, gTrainerFrontPic_Gardener, gTrainerPalette_Gardener),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =

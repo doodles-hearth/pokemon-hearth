@@ -494,11 +494,12 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_SitrusBerryTree,       OBJ_EVENT_PAL_TAG_BERRY_TREE_SITRUS},
     {gObjectEventPal_PechaBerryTree,        OBJ_EVENT_PAL_TAG_BERRY_TREE_PECHA},
     {gObjectEventPal_RawstBerryTree,        OBJ_EVENT_PAL_TAG_BERRY_TREE_RAWST},
+    {gObjectEventPal_PersimBerryTree,       OBJ_EVENT_PAL_TAG_BERRY_TREE_PERSIM},
+    {gObjectEventPal_LeppaBerryTree,        OBJ_EVENT_PAL_TAG_BERRY_TREE_LEPPA},
     {gObjectEventPal_AromaLady,             OBJ_EVENT_PAL_TAG_AROMA_LADY},
     {gObjectEventPal_Shamisen_Blue,         OBJ_EVENT_PAL_TAG_SHAMISEN_BLUE},
     {gObjectEventPal_Shamisen_Green,        OBJ_EVENT_PAL_TAG_SHAMISEN_GREEN},
     {gObjectEventPal_Shamisen_Red,          OBJ_EVENT_PAL_TAG_SHAMISEN_RED},
-    // Reusing trainer palette for ow
     {gObjectEventPal_Lass,                  OBJ_EVENT_PAL_TAG_LASS},
     {gObjectEventPal_KimonoGirl,            OBJ_EVENT_PAL_TAG_KIMONO_GIRL},
     {gObjectEventPal_Monk,                  OBJ_EVENT_PAL_TAG_MONK},

@@ -17,45 +17,49 @@ KuraTown_Dojo_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	return
 
 
-KuraTown_Dojo_EventScript_Takao::
-	trainerbattle_single TRAINER_TAKAO, KuraTown_Dojo_EventScript_Takao_Text_0, KuraTown_Dojo_EventScript_Takao_Text_1
-	msgbox KuraTown_Dojo_EventScript_Takao_Text_2, MSGBOX_AUTOCLOSE
+KuraTown_Dojo_EventScript_Matsu::
+	trainerbattle_single TRAINER_MATSU, KuraTown_Dojo_EventScript_Matsu_Text_0, KuraTown_Dojo_EventScript_Matsu_Text_1
+	speakername KuraTown_Dojo_EventScript_Matsu_Text_2
+	msgbox KuraTown_Dojo_EventScript_Matsu_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
-KuraTown_Dojo_EventScript_Jocelyn::
-	trainerbattle_single TRAINER_JOCELYN, KuraTown_Dojo_EventScript_Jocelyn_Text_0, KuraTown_Dojo_EventScript_Jocelyn_Text_1
-	msgbox KuraTown_Dojo_EventScript_Jocelyn_Text_2, MSGBOX_AUTOCLOSE
+KuraTown_Dojo_EventScript_Kiku::
+	trainerbattle_single TRAINER_KIKU, KuraTown_Dojo_EventScript_Kiku_Text_0, KuraTown_Dojo_EventScript_Kiku_Text_1
+	speakername KuraTown_Dojo_EventScript_Kiku_Text_2
+	msgbox KuraTown_Dojo_EventScript_Kiku_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 KuraTown_Dojo_EventScript_Laura::
-	trainerbattle_single TRAINER_LAURA, KuraTown_Dojo_EventScript_Laura_Text_0, KuraTown_Dojo_EventScript_Laura_Text_1
+	trainerbattle_single TRAINER_AYAME, KuraTown_Dojo_EventScript_Laura_Text_0, KuraTown_Dojo_EventScript_Laura_Text_1
 	msgbox KuraTown_Dojo_EventScript_Laura_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 KuraTown_Dojo_EventScript_Brenden::
-	trainerbattle_single TRAINER_BRENDEN, KuraTown_Dojo_EventScript_Brenden_Text_0, KuraTown_Dojo_EventScript_Brenden_Text_1
-	msgbox KuraTown_Dojo_EventScript_Brenden_Text_2, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_TSUBAKI, KuraTown_Dojo_EventScript_Brenden_Text_0, KuraTown_Dojo_EventScript_Brenden_Text_1
+	speakername KuraTown_Dojo_EventScript_Brenden_Text_2
+	msgbox KuraTown_Dojo_EventScript_Brenden_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 KuraTown_Dojo_EventScript_Cristian::
-	trainerbattle_single TRAINER_CRISTIAN, KuraTown_Dojo_EventScript_Cristian_Text_0, KuraTown_Dojo_EventScript_Cristian_Text_1
+	trainerbattle_single TRAINER_AJISAI, KuraTown_Dojo_EventScript_Cristian_Text_0, KuraTown_Dojo_EventScript_Cristian_Text_1
 	msgbox KuraTown_Dojo_EventScript_Cristian_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 KuraTown_Dojo_EventScript_Lilith::
-	trainerbattle_single TRAINER_LILITH, KuraTown_Dojo_EventScript_Lilith_Text_0, KuraTown_Dojo_EventScript_Lilith_Text_1
+	trainerbattle_single TRAINER_SUMIRE, KuraTown_Dojo_EventScript_Lilith_Text_0, KuraTown_Dojo_EventScript_Lilith_Text_1
+	speakername KuraTown_Dojo_EventScript_Lilith_Text_2
 	goto_if_set FLAG_BADGE02_GET, KuraTown_Dojo_EventScript_Lilith_2
-	msgbox KuraTown_Dojo_EventScript_Lilith_Text_3, MSGBOX_AUTOCLOSE
+	msgbox KuraTown_Dojo_EventScript_Lilith_Text_4, MSGBOX_AUTOCLOSE
 KuraTown_Dojo_EventScript_Lilith_1:
 	end
 
 KuraTown_Dojo_EventScript_Lilith_2:
-	msgbox KuraTown_Dojo_EventScript_Lilith_Text_2
+	msgbox KuraTown_Dojo_EventScript_Lilith_Text_3
 	closemessage
 	addvar VAR_PLAYER_REPUTATION, 1
 	goto KuraTown_Dojo_EventScript_Lilith_1
@@ -160,24 +164,30 @@ KuraTown_Dojo_EventScript_KuraDojoTree_CantCut::
 	return
 
 
-KuraTown_Dojo_EventScript_Takao_Text_0:
+KuraTown_Dojo_EventScript_Matsu_Text_0:
 	.string "Ho ho ho… It seems you have taken a\n"
 	.string "wrong turn…$"
 
-KuraTown_Dojo_EventScript_Takao_Text_1:
+KuraTown_Dojo_EventScript_Matsu_Text_1:
 	.string "Very impressive skills!$"
 
-KuraTown_Dojo_EventScript_Takao_Text_2:
+KuraTown_Dojo_EventScript_Matsu_Text_2:
+	.string "Matsu$"
+
+KuraTown_Dojo_EventScript_Matsu_Text_3:
 	.string "Not all paths lead to the master.$"
 
-KuraTown_Dojo_EventScript_Jocelyn_Text_0:
+KuraTown_Dojo_EventScript_Kiku_Text_0:
 	.string "Is the maze giving you trouble?$"
 
-KuraTown_Dojo_EventScript_Jocelyn_Text_1:
+KuraTown_Dojo_EventScript_Kiku_Text_1:
 	.string "At least I didn't give you any\n"
 	.string "trouble…$"
 
-KuraTown_Dojo_EventScript_Jocelyn_Text_2:
+KuraTown_Dojo_EventScript_Kiku_Text_2:
+	.string "Kiku$"
+
+KuraTown_Dojo_EventScript_Kiku_Text_3:
 	.string "You're wondering why you can't just\n"
 	.string "cut down all the trees?\p"
 	.string "Uhhh… It's a secret!$"
@@ -201,6 +211,9 @@ KuraTown_Dojo_EventScript_Brenden_Text_1:
 	.string "A-tchoo!$"
 
 KuraTown_Dojo_EventScript_Brenden_Text_2:
+	.string "Tsubaki$"
+
+KuraTown_Dojo_EventScript_Brenden_Text_3:
 	.string "Sniff… By zeazonal allergiez are\n"
 	.string "agdig up agaid…$"
 
@@ -226,11 +239,14 @@ KuraTown_Dojo_EventScript_Lilith_Text_1:
 	.string "Stop it! I'm a delicate flower!$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_2:
+	.string "Sumire$"
+
+KuraTown_Dojo_EventScript_Lilith_Text_3:
 	.string "I saw your fight peeking through the\n"
 	.string "leaves! That was amazing!\p"
 	.string "I'm officially a fan!$"
 
-KuraTown_Dojo_EventScript_Lilith_Text_3:
+KuraTown_Dojo_EventScript_Lilith_Text_4:
 	.string "I wish I could see you two fight! Good\n"
 	.string "luck!$"
 

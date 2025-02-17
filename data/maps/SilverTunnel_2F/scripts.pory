@@ -5,26 +5,29 @@ mapscripts SilverTunnel_2F_MapScripts {
 }
 
 script SilverTunnel_2F_EventScript_Trainer1 {
-	trainerbattle_single(
+	trainerbattle_double(
 		TRAINER_TAMA,
 		format("The lack of precious gemstones here is disappointing!"),
-		format("You shine like a diamond!")
+		format("You shine like a diamond!"),
+		format("My two Pokémon like to fight side by side. Come back with at least two Pokémon.")
 	)
 	speakername("Tama")
-	msgbox(format("I came here all the way from Saberside Town looking for precious gemstones.\p"
-	"But there's only regular rocks here…"), MSGBOX_AUTOCLOSE)
+	msgbox(format(
+		"I came here all the way from Saberside Town looking for precious gemstones.\p"
+		"But there's only sad, grey rocks here…"
+	), MSGBOX_AUTOCLOSE)
 	end
 }
 
-script SilverTunnel_2F_EventScript_Trainer2 {
+script SilverTunnel_2F_EventScript_Kansaku {
 	trainerbattle_single(
-		TRAINER_DUMMY,
-		format("Let's fight"),
-		format("Oh no I lost"),
-		BeachboundRoute_EventScript_Karu_PostBattle
+		TRAINER_IKUTO,
+		format("You scared me! I'll break your head!"),
+		format("What a headache!")
 	)
-	speakername("TODO")
-	msgbox(format("Now I'm sad"), MSGBOX_AUTOCLOSE)
+	speakername("Ikuto")
+	// TODO EVA setnamedmon
+	msgbox(format("Onix is the best! Sure, she causes cave-ins sometimes, but that's not important!"), MSGBOX_AUTOCLOSE)
 	end
 }
 

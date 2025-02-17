@@ -11,12 +11,12 @@
 #define TRAINER_KOUGA          5
 #define TRAINER_KENTO       6
 #define TRAINER_SHUYA       7
-#define TRAINER_TAMA       8
+#define TRAINER_GRUNT_SEAFLOOR_CAVERN_3       8
 #define TRAINER_GABRIELLE_1                   9
 #define TRAINER_GRUNT_BEACHBOUND_ROUTE_1     10
-#define TRAINER_IKUTO                       11
-#define TRAINER_ALBERTO                      12
-#define TRAINER_ED                           13
+#define TRAINER_IKUTO                        11
+#define TRAINER_KANSAKU                      12 // UNUSED!!!
+#define TRAINER_SHAMISEN                     13
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_4      14
 #define TRAINER_DECLAN                       15
 #define TRAINER_GRUNT_RUSTURF_TUNNEL         16
@@ -35,7 +35,7 @@
 #define TRAINER_FREDRICK                     29
 #define TRAINER_MATT                         30
 #define TRAINER_ZANDER                       31
-#define TRAINER_SHELLY_WEATHER_INSTITUTE     32
+#define TRAINER_TAMA     32
 #define TRAINER_SHELLY_SEAFLOOR_CAVERN       33
 #define TRAINER_ARCHIE                       34
 #define TRAINER_LEAH                         35
@@ -182,7 +182,7 @@
 #define TRAINER_TONY_3                      176
 #define TRAINER_TONY_4                      177
 #define TRAINER_TONY_5                      178
-#define TRAINER_TAKAO                       179
+#define TRAINER_MATSU                       179
 #define TRAINER_HITOSHI                     180
 #define TRAINER_KIYO                        181
 #define TRAINER_KOICHI                      182
@@ -428,8 +428,8 @@
 #define TRAINER_LAO_3                       422
 #define TRAINER_LAO_4                       423
 #define TRAINER_LAO_5                       424
-#define TRAINER_JOCELYN                     425
-#define TRAINER_LAURA                       426
+#define TRAINER_KIKU                        425
+#define TRAINER_AYAME                       426
 #define TRAINER_MAKOTO_1                     427
 #define TRAINER_CORA                        428
 #define TRAINER_PAULA                       429
@@ -575,9 +575,9 @@
 #define TRAINER_GRUNT_MT_PYRE_4             569
 #define TRAINER_GRUNT_JAGGED_PASS           570
 #define TRAINER_MIZU                        571
-#define TRAINER_BRENDEN                     572
-#define TRAINER_LILITH                      573
-#define TRAINER_CRISTIAN                    574
+#define TRAINER_TSUBAKI                     572
+#define TRAINER_SUMIRE                      573
+#define TRAINER_AJISAI                      574
 #define TRAINER_SYLVIA                      575
 #define TRAINER_LEONARDO                    576
 #define TRAINER_ATHENA                      577

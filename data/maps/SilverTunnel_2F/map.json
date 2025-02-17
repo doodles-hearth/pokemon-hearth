@@ -35,7 +35,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
       "x": 20,
       "y": 18,
       "elevation": 0,
@@ -64,7 +64,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
-      "script": "SilverTunnel_2F_EventScript_Trainer2",
+      "script": "SilverTunnel_2F_EventScript_Kansaku",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,
@@ -113,6 +113,26 @@
       "lunchtime": true,
       "morning": true,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 7,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_NONE",
+      "script": "Common_EventScript_FindItem",
+      "flag": "NULL",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
@@ -131,7 +151,7 @@
       "dest_warp_id": "2"
     },
     {
-      "x": 1,
+      "x": 2,
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_WINDSWEPT_ROUTE",

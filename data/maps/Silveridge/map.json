@@ -33,8 +33,8 @@
       "script": "Silveridge_EventScript_LotOfRocks",
       "flag": "0",
       "afternoon": true,
-      "deadnight": false,
-      "earlymorning": false,
+      "deadnight": true,
+      "earlymorning": true,
       "evening": true,
       "lunchtime": true,
       "morning": true,
@@ -114,10 +114,10 @@
       "flag": "0",
       "afternoon": false,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": false,
       "lunchtime": false,
-      "morning": false,
+      "morning": true,
       "night": false
     },
     {
