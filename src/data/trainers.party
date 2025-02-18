@@ -893,44 +893,50 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Astonish
 - Fury Swipes
 
-=== TRAINER_SHELLY_SEAFLOOR_CAVERN ===
-Name: SHELLY
-Class: Aqua Admin
-Pic: Aqua Admin F
+=== TRAINER_YORU ===
+Name: Yoru
+Class: Hex Maniac
+Pic: Hex Maniac
 Gender: Female
-Music: Aqua
+Music: Suspicious
 Double Battle: No
 AI: Basic Trainer
 
-Sharpedo
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Shuppet
+Level: 17
+- Will O Wisp
+- Knock Off
+- Night Shade
+- Spite
 
-Mightyena
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Misdreavus
+Level: 18
+- Psywave
+- Astonish
+- Mean Look
 
-=== TRAINER_ARCHIE ===
-Name: ARCHIE
-Class: Aqua Leader
-Pic: Aqua Leader Archie
+=== TRAINER_ROKU ===
+Name: Roku
+Class: Miner
+Pic: Hiker
 Gender: Male
-Music: Aqua
-Items: Super Potion / Super Potion
+Music: Hiker
 Double Battle: No
 AI: Basic Trainer
 
-Mightyena
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Diglett
+Level: 18
+- Dig
+- Astonish
+- Magnitude
+- Growl
 
-Crobat
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Sharpedo
-Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Munchlax
+Level: 17
+- Lick
+- Rest
+- Amnesia
+- Tackle
 
 === TRAINER_LEAH ===
 Name: LEAH

@@ -115,8 +115,8 @@ KuraTown_EventScript_Scyther::
 	lock
 	faceplayer
 	playmoncry SPECIES_SCYTHER, CRY_MODE_NORMAL
-	speakername KuraTown_EventScript_Scyther_Text_0
-	msgbox KuraTown_EventScript_Scyther_Text_1
+	setspeakertomonname SPECIES_SCYTHER
+	msgbox KuraTown_EventScript_Scyther_Text_0
 	waitmoncry
 	closemessage
 	release
@@ -222,9 +222,6 @@ KuraTown_EventScript_FarmerScyther_Text_0:
 	.string "They've been a tremendous help!$"
 
 KuraTown_EventScript_Scyther_Text_0:
-	.string "Scyther$"
-
-KuraTown_EventScript_Scyther_Text_1:
 	.string "Gyooo!$"
 
 KuraTown_EventScript_Guard_Text_0:

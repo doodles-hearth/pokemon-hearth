@@ -84,6 +84,7 @@ BeachboundRoute_EventScript_Kin::
 BeachboundRoute_EventScript_Kouta::
 	trainerbattle_single TRAINER_KOUTA, BeachboundRoute_EventScript_Kouta_Text_0, BeachboundRoute_EventScript_Kouta_Text_1
 	speakername BeachboundRoute_EventScript_Kouta_Text_2
+	setnamedmon SPECIES_MAREEP
 	msgbox BeachboundRoute_EventScript_Kouta_Text_3
 	release
 	end
@@ -91,6 +92,7 @@ BeachboundRoute_EventScript_Kouta::
 
 BeachboundRoute_EventScript_Masato::
 	trainerbattle_single TRAINER_MASATO, BeachboundRoute_EventScript_Masato_Text_0, BeachboundRoute_EventScript_Masato_Text_1
+	setnamedmon SPECIES_KRICKETOT
 	speakername BeachboundRoute_EventScript_Masato_Text_2
 	msgbox BeachboundRoute_EventScript_Masato_Text_3
 	release

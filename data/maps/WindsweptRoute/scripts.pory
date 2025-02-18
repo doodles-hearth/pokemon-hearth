@@ -64,6 +64,17 @@ script WindsweptRoute_EventScript_Fisherman_ShortRod {
 	release
 }
 
+script WindsweptRoute_EventScript_Roku {
+	trainerbattle_single(
+		TRAINER_ROKU,
+		format("Uh, I was just taking a short break, okay?"),
+		format("I mistook you for the boss…")
+	)
+	speakername("Roku")
+	msgbox(format("Please don't tell my colleagues I've been slacking off…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
 script WindsweptRoute_EventScript_Trainer4 {
 	trainerbattle_single(
 		TRAINER_MUSASHI_1,

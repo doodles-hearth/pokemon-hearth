@@ -25,6 +25,8 @@ MaguroHarbor_Refuge_EventScript_Hariko_1:
 	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
 	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_3
 	closemessage
+	setseenmon SPECIES_SLOWPOKE
+	setnamedmon SPECIES_SLOWPOKE
 	setflag FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE
 	applymovement 4, MaguroHarbor_Refuge_EventScript_Hariko_Movement_0
 	waitmovement 4

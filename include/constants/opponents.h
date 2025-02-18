@@ -36,8 +36,8 @@
 #define TRAINER_MATT                         30
 #define TRAINER_ZANDER                       31
 #define TRAINER_TAMA     32
-#define TRAINER_SHELLY_SEAFLOOR_CAVERN       33
-#define TRAINER_ARCHIE                       34
+#define TRAINER_YORU       33
+#define TRAINER_ROKU                         34
 #define TRAINER_LEAH                         35
 #define TRAINER_DAISY                        36
 #define TRAINER_ROSE_1                       37

@@ -116,8 +116,7 @@ script BeachboundRoute_EventScript_Kouta {
 		format("Maybe I'm the one who's soft…")
 	)
 	speakername("Kouta")
-	// TODO EVA
-	// setnamedmon(SPECIES_MAREEP)
+	setnamedmon(SPECIES_MAREEP)
 	msgbox(format("When I pet my Mareep, I can hear the static crackle!"))
 	release
 	end
@@ -129,8 +128,7 @@ script BeachboundRoute_EventScript_Masato {
 		format("Let my Pokémon sing for you!"),
 		format("Okay, rude.")
 	)
-	// TODO EVA
-	// setnamedmon(SPECIES_MAREEP)
+	setnamedmon(SPECIES_KRICKETOT)
 	speakername("Masato")
 	msgbox(format("I hope one day my Kricketot evolves! I wonder what delightful melody he'll be able to sing then…"))
 	release
