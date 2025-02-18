@@ -129,7 +129,7 @@ script KuraTown_EventScript_Scyther {
 	lock
 	faceplayer
 	playmoncry(SPECIES_SCYTHER, CRY_MODE_NORMAL)
-	speakername("Scyther")
+	setspeakertomonname(SPECIES_SCYTHER)
 	msgbox(format("Gyooo!"))
 	waitmoncry
 	closemessage
