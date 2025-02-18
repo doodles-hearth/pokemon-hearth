@@ -96,26 +96,36 @@
 #define VAR_POKELOT_RND1                                 0x404B
 #define VAR_POKELOT_RND2                                 0x404C
 #define VAR_POKELOT_PRIZE_PLACE                          0x404D
-// 0: Never met
-// 1: Seen them on Tranquil Route
-// 2: Heard the lady being mugged on Beachbound Route
-// 3: Fought them at least once on Beachbound Route
-// 4: Won against them on Beachbound Route
+/*
+    VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE States
+    // 0: Never met
+    // 1: Seen them on Tranquil Route
+    // 2: Heard the lady being mugged on Beachbound Route
+    // 3: Fought them at least once on Beachbound Route
+    // 4: Won against them on Beachbound Route
+*/
 #define VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE 0x404E
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
 #define VAR_LITTLEROOT_TOWN_STATE                        0x4050
 #define VAR_OLDALE_TOWN_STATE                            0x4051
-// 0: No decay
-// 1: Decay
-// 2: Seen the decay once
-// 3: "be careful!"
-// 4: Talked to Hariko about decay
-// 5: Delivered letter to elder in Silveridge
+/*
+    VAR_DECAY_BEACHBOUND_ROUTE States
+
+    // 0: No decay
+    // 1: Decay
+    // 2: Seen the decay once
+    // 3: "be careful!"
+    // 4: Talked to Hariko about decay
+    // 5: Delivered letter to elder in Silveridge
+*/
 #define VAR_DECAY_BEACHBOUND_ROUTE                       0x4052
 #define VAR_LAVARIDGE_TOWN_STATE                         0x4053
 #define VAR_CURRENT_SECRET_BASE                          0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
-// 0: start
-// 1: Seen dance 1
+/*
+    VAR_YIFU_DOJO_STATEs
+    // 0: start
+    // 1: Seen dance 1
+*/
 #define VAR_YIFU_DOJO_STATE                              0x4055
 #define VAR_EGG_SPECIES_GIVEN_TO_EGG_GIRL                0x4056
 #define VAR_PETALBURG_CITY_STATE                         0x4057
@@ -160,19 +170,26 @@
 #define VAR_ROUTE131_STATE                               0x407E // Unused Var
 #define VAR_ROUTE132_STATE                               0x407F // Unused Var
 #define VAR_ROUTE133_STATE                               0x4080 // Unused Var
-// 0: Never fought him past the lvl5 elder's lab fight
-// 1: Fought him in Saku Village
+/*
+    VAR_RIVAL_ENCOUNTER_STATEs
+
+    // 0: Never fought him past the lvl5 elder's lab fight
+    // 1: Fought him in Saku Village
+*/
 #define VAR_RIVAL_ENCOUNTER_STATE                        0x4081
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
-// 0: Beginning
-// 1: Talked to the mareep person
-// 2: Found one mareep
-// 3: Found two mareep
-// 4: Found three mareep
-// 5: Found four mareep
-// 6: Found the five mareep
-// 7: End
-#define VAR_QUEST_MAREEP_STATE 0x4083
+/*
+    VAR_QUEST_MAREEP_STATEs
+    // 0: Beginning
+    // 1: Talked to the mareep person
+    // 2: Found one mareep
+    // 3: Found two mareep
+    // 4: Found three mareep
+    // 5: Found four mareep
+    // 6: Found the five mareep
+    // 7: End
+*/
+#define VAR_QUEST_MAREEP_STATE                           0x4083
 #define VAR_BIRCH_LAB_STATE                              0x4084
 #define VAR_PETALBURG_GYM_STATE                          0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman
 #define VAR_CONTEST_HALL_STATE                           0x4086
@@ -180,26 +197,32 @@
 #define VAR_CONTEST_TYPE                                 0x4088
 #define VAR_SECRET_BASE_INITIALIZED                      0x4089
 #define VAR_CONTEST_PRIZE_PICKUP                         0x408A
-// 0: Beginning
-// 1: Seen by grunt when entering hideout
-// 3: Jumped by 4 grunts at once, beat them
-// 4: Beat the Golbat admins
+/*
+    VAR_CROBAT_HIDEOUT_STATEs
+    // 0: Beginning
+    // 1: Seen by grunt when entering hideout
+    // 3: Jumped by 4 grunts at once, beat them
+    // 4: Beat the Golbat admins
+*/
 #define VAR_CROBAT_HIDEOUT_STATE                         0x408B
 #define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN              0x408C
 #define VAR_LITTLEROOT_RIVAL_STATE                       0x408D
 #define VAR_BOARD_BRINEY_BOAT_STATE                      0x408E
 #define VAR_DEVON_CORP_3F_STATE                          0x408F
 #define VAR_BRINEY_HOUSE_STATE                           0x4090
-// 0: Beginning
-// 1: Player has spawned in bedroom
-// 2: Big sis has called
-// 3: Big sis has talked to player upon arrival
-// 4: Player has talked to rival on beach before
-//    getting their Pokémon
-// 5: Listened to Elder's speech, Pokémon not chosen yet
-// 6: Got Pokémon and Pokédex
-// 7: Battled rival with your brand new Pokémon
-// 8: Talked to your sister with your new Pokémon
+/*
+    VAR_SUNRISE_VILLAGE_INTRO_STATEs
+    // 0: Beginning
+    // 1: Player has spawned in bedroom
+    // 2: Big sis has called
+    // 3: Big sis has talked to player upon arrival
+    // 4: Player has talked to rival on beach before
+    //    getting their Pokémon
+    // 5: Listened to Elder's speech, Pokémon not chosen yet
+    // 6: Got Pokémon and Pokédex
+    // 7: Battled rival with your brand new Pokémon
+    // 8: Talked to your sister with your new Pokémon
+*/
 #define VAR_SUNRISE_VILLAGE_INTRO_STATE                  0x4091
 #define VAR_LITTLEROOT_INTRO_STATE                       0x4092
 #define VAR_MAUVILLE_GYM_STATE                           0x4093
@@ -210,27 +233,39 @@
 #define VAR_PETALBURG_WOODS_STATE                        0x4098
 #define VAR_LILYCOVE_CONTEST_LOBBY_STATE                 0x4099
 #define VAR_RUSTURF_TUNNEL_STATE                         0x409A
-// 0: Player hasn't trespassed yet
-// 1: Player has trespassed once, so the old man's dog now attacks you as soon as you enter the house
+/*
+    VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATEs
+    // 0: Player hasn't trespassed yet
+    // 1: Player has trespassed once, so the old man's dog now attacks you as soon as you enter the house
+*/
+
 #define VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE             0x409B
 #define VAR_ELITE_4_STATE                                0x409C
-// 0: Quest hasn't started
-// 1: Received Ashii's scarf
+/*
+    // 0: Quest hasn't started
+    // 1: Received Ashii's scarf
+*/
 #define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE                       0x409D
 #define VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE      0x409E
 #define VAR_MOSSDEEP_SPACE_CENTER_STATE                  0x409F
 #define VAR_SLATEPORT_HARBOR_STATE                       0x40A0
-// 0: The two villages hate each other
-// 1: Player has been spotted by the Saku guard
-// 2: Player has been spotted by the Kura guard
-// 3: Player has come back from Kura and has been stopped by Saku guard again
+/*
+    VAR_SAKU_KURA_VILLAGES_STATEs
+    // 0: The two villages hate each other
+    // 1: Player has been spotted by the Saku guard
+    // 2: Player has been spotted by the Kura guard
+    // 3: Player has come back from Kura and has been stopped by Saku guard again
+*/
 #define VAR_SAKU_KURA_VILLAGES_STATE                     0x40A1
-// 0: Quest hasn't started
-// 1: Talked to lady but not to Espeon's master
-// 2: Talked to Espeon's master but not to lady
-// 3: Told Espeon's master where his Pokémon was
-// 4: Told lady that Espeon's master was looking for it -> Espeon goes home
-// 5: Talked to Espeon's master once are reunited
+/*
+    VAR_SAKU_KURA_QUEST_ESPEON_STATEs
+    // 0: Quest hasn't started
+    // 1: Talked to lady but not to Espeon's master
+    // 2: Talked to Espeon's master but not to lady
+    // 3: Told Espeon's master where his Pokémon was
+    // 4: Told lady that Espeon's master was looking for it -> Espeon goes home
+    // 5: Talked to Espeon's master once are reunited
+*/
 #define VAR_SAKU_KURA_QUEST_ESPEON_STATE                 0x40A8
 #define VAR_SEAFLOOR_CAVERN_STATE                        0x40A2
 #define VAR_CABLE_CAR_STATION_STATE                      0x40A3
@@ -253,8 +288,11 @@
 #define VAR_TRICK_HOUSE_ENTER_FROM_CORRIDOR              0x40B5
 #define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2                 0x40B6 // Leftover from RS, never set
 #define VAR_SLATEPORT_FAN_CLUB_STATE                     0x40B7
-// 0: Start
-// 1: Talked to shop assistant in shop
+/*
+    VAR_BONSAI_SHOP_STATEs
+    // 0: Start
+    // 1: Talked to shop assistant in shop
+*/
 #define VAR_BONSAI_SHOP_STATE                            0x40B8
 #define VAR_MT_PYRE_STATE                                0x40B9
 #define VAR_NEW_MAUVILLE_STATE                           0x40BA

@@ -7287,14 +7287,11 @@ static u8 GetPartyLayoutFromBattleType(void)
 
 void OpenPartyMenuInBattle(u8 partyAction)
 {
-    u8 partyMessage;
-
     if (partyAction == PARTY_ACTION_SEND_MON_TO_BOX)
-        partyMessage = PARTY_MSG_CHOOSE_MON_FOR_BOX;
+        InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), partyAction, FALSE, PARTY_MSG_CHOOSE_MON_FOR_BOX, Task_HandleChooseMonInput, ReshowBlankBattleScreenAfterMenu);
     else
-        partyMessage = PARTY_MSG_CHOOSE_MON;
-    
-    InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), partyAction, FALSE, partyMessage, Task_HandleChooseMonInput, CB2_SetUpReshowBattleScreenAfterMenu);
+        InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), partyAction, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_SetUpReshowBattleScreenAfterMenu);
+
     ReshowBattleScreenDummy();
     UpdatePartyToBattleOrder();
 }
