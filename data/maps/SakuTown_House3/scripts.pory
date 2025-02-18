@@ -15,7 +15,7 @@ script SakuTown_House3_EventScript_SetUpPokemon {
 script SakuTown_House3_EventScript_Psyduck {
     lock
     faceplayer
-    speakername("Psyduck")
+    setspeakertomonname(SPECIES_PSYDUCK)
     msgbox(format(
         "Psaïaïaï…"
     ))
@@ -28,7 +28,7 @@ script SakuTown_House3_EventScript_Psyduck {
 script SakuTown_House3_EventScript_Hoothoot {
     lock
     faceplayer
-    speakername("Hoothoot")
+    setspeakertomonname(SPECIES_HOOTHOOT)
     msgbox(format(
         "Hooo…"
     ))

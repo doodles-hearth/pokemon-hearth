@@ -311,7 +311,7 @@ script SakuTown_EventScript_Makuhita {
 	faceplayer
 	waitse
 	playmoncry(SPECIES_MAKUHITA, CRY_MODE_NORMAL)
-	speakername("Makuhita")
+	setspeakertomonname(SPECIES_MAKUHITA)
 	msgbox(format("Kuhi!"))
 	waitmoncry
 	release
