@@ -4624,9 +4624,9 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gOverworldPalette_NidoranF,
             gShinyOverworldPalette_NidoranF
         )
-        .levelUpLearnset = sNidoranMLevelUpLearnset,
-        .teachableLearnset = sNidoranMTeachableLearnset,
-        .eggMoveLearnset = sNidoranMEggMoveLearnset,
+        .levelUpLearnset = sNidoranLevelUpLearnset,
+        .teachableLearnset = sNidoranTeachableLearnset,
+        .eggMoveLearnset = sNidoranEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL_FEMALE, 16, SPECIES_NIDORINA}, {EVO_LEVEL_MALE, 16, SPECIES_NIDORINO}),
     },
 

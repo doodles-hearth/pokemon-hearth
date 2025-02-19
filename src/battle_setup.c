@@ -324,7 +324,6 @@ void BattleSetup_StartBattlePikeWildBattle(void)
 
 static void DoStandardWildBattle(bool32 isDouble)
 {
-    FlagSet(FLAG_PAUSE_FAKERTC);
     LockPlayerFieldControls();
     FreezeObjectEvents();
     StopPlayerAvatar();
@@ -575,7 +574,6 @@ static void DowngradeBadPoison(void)
 static void CB2_EndWildBattle(void)
 {
     FakeRtc_AdvanceTimeBy(0, 0, DURATION_WILD_BATTLE_MINUTES, 0);
-    FlagClear(FLAG_PAUSE_FAKERTC);
     
     CpuFill16(0, (void *)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
@@ -595,7 +593,6 @@ static void CB2_EndWildBattle(void)
 static void CB2_EndScriptedWildBattle(void)
 {
     FakeRtc_AdvanceTimeBy(0, 0, DURATION_WILD_BATTLE_MINUTES, 0);
-    FlagClear(FLAG_PAUSE_FAKERTC);
 
     CpuFill16(0, (void *)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
@@ -1020,7 +1017,6 @@ void SetMapVarsToTrainerB(void)
 // expects parameters have been loaded correctly with TrainerBattleLoadArgs
 const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 {
-    FlagSet(FLAG_PAUSE_FAKERTC);
     switch (TRAINER_BATTLE_PARAM.mode)
     {
     case TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT:
@@ -1281,7 +1277,6 @@ static void CB2_EndTrainerBattle(void)
 {
     HandleBattleVariantEndParty();
     FakeRtc_AdvanceTimeBy(0, 0, DURATION_TRAINER_BATTLE_MINUTES, 0);
-    FlagClear(FLAG_PAUSE_FAKERTC);
     if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_SECRET_BASE)
     {
         DowngradeBadPoison();

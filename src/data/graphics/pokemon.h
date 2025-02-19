@@ -26786,6 +26786,7 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_PECHARUNT
 
+#if P_FAMILY_KOTORA
     const u32 gMonFrontPic_Egg[] = INCBIN_U32("graphics/pokemon/egg/anim_front.4bpp.lz");
     const u32 gMonPalette_Egg[] = INCBIN_U32("graphics/pokemon/egg/normal.gbapal.lz");
     const u8 gMonIcon_Egg[] = INCBIN_U8("graphics/pokemon/egg/icon.4bpp");
@@ -26822,5 +26823,7 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 
     const u32 gFollowerPalette_Gaotora[] = INCBIN_U32("graphics/pokemon/gaotora/follow_normal.gbapal.lz");
     const u32 gShinyFollowerPalette_Gaotora[] = INCBIN_U32("graphics/pokemon/gaotora/follow_shiny.gbapal.lz");
+#endif // P_FAMILY_KOTORA
+
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //OW_POKEMON_OBJECT_EVENTS

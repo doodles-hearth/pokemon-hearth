@@ -174,7 +174,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     },
 
     /* You may add any custom species below this point based on the following structure: */
-
+#if P_FAMILY_KOTORA
     [SPECIES_KOTORA] =
     {
         .baseHP        = 45,
@@ -370,6 +370,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .levelUpLearnset = sGaotoraLevelUpLearnset,
         .teachableLearnset = sGaotoraTeachableLearnset
     },
+#endif // P_FAMILY_KOTORA
 
     /*
     [SPECIES_NONE] =

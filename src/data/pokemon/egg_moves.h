@@ -229,7 +229,7 @@ static const u16 sNidoranFEggMoveLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
-static const u16 sNidoranMEggMoveLearnset[] = {
+static const u16 sNidoranEggMoveLearnset[] = {
     MOVE_COUNTER,
     MOVE_DISABLE,
     MOVE_SUPERSONIC,

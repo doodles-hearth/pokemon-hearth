@@ -467,3 +467,8 @@ void ClearPokemonCrySongs(void)
 {
     CpuFill16(0, gPokemonCrySongs, MAX_POKEMON_CRIES * sizeof(struct PokemonCrySong));
 }
+
+bool32 InBattle(void)
+{
+    return gMain.inBattle;
+}

@@ -3204,7 +3204,7 @@ bool8 Scrcmd_getsetpokedexflag(struct ScriptContext *ctx)
     u32 speciesId = SpeciesToNationalPokedexNum(VarGet(ScriptReadHalfword(ctx)));
     u32 desiredFlag = VarGet(ScriptReadHalfword(ctx));
 
-    if (desiredFlag == FLAG_SET_CAUGHT || desiredFlag == FLAG_SET_SEEN)
+    if (desiredFlag == FLAG_SET_CAUGHT || desiredFlag == FLAG_SET_SEEN || desiredFlag == FLAG_SET_NAMED)
         Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
     else
         Script_RequestEffects(SCREFF_V1);
