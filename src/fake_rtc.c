@@ -7,6 +7,8 @@
 #include "event_data.h"
 #include "script.h"
 
+extern bool32 InBattle(void);
+
 static void FakeRtc_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2);
 
 void FakeRtc_Reset(void)
@@ -40,7 +42,7 @@ void FakeRtc_TickTimeForward(void)
     if (!OW_USE_FAKE_RTC)
         return;
 
-    if (FlagGet(FLAG_PAUSE_FAKERTC))
+    if (FlagGet(FLAG_PAUSE_FAKERTC) || InBattle())
         return;
 
     FakeRtc_AdvanceTimeBy(0, 0, 0, FakeRtc_GetSecondsRatio());

@@ -1379,7 +1379,7 @@ static const u16 sNidoqueenTeachableLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
-static const u16 sNidoranMTeachableLearnset[] = {
+static const u16 sNidoranTeachableLearnset[] = {
     MOVE_ATTRACT,
     MOVE_BLIZZARD,
     MOVE_CUT,
@@ -36264,6 +36264,7 @@ static const u16 sPecharuntTeachableLearnset[] = {
 };
 #endif //P_FAMILY_PECHARUNT
 
+#if P_FAMILY_KOTORA
 static const u16 sKotoraTeachableLearnset[] = {
     MOVE_ATTRACT,
     MOVE_DOUBLE_TEAM,
@@ -36355,3 +36356,4 @@ static const u16 sGaotoraTeachableLearnset[] = {
     MOVE_THUNDER_WAVE,
     MOVE_UNAVAILABLE,
 };
+#endif // P_FAMILY_KOTORA

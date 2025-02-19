@@ -111,6 +111,7 @@ static void ClearPokedexFlags(void)
 {
     gUnusedPokedexU8 = 0;
     memset(&gSaveBlock1Ptr->dexCaught, 0, sizeof(gSaveBlock1Ptr->dexCaught));
+    memset(&gSaveBlock1Ptr->dexNamed, 0, sizeof(gSaveBlock1Ptr->dexNamed));
     memset(&gSaveBlock1Ptr->dexSeen, 0, sizeof(gSaveBlock1Ptr->dexSeen));
 }
 

@@ -719,7 +719,7 @@ static const struct LevelUpMove sNidoqueenLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 
-static const struct LevelUpMove sNidoranMLevelUpLearnset[] = {
+static const struct LevelUpMove sNidoranLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_LEER),
     LEVEL_UP_MOVE( 1, MOVE_POISON_STING),
     LEVEL_UP_MOVE( 5, MOVE_PECK),
@@ -22314,6 +22314,7 @@ static const struct LevelUpMove sPecharuntLevelUpLearnset[] = {
 };
 #endif //P_FAMILY_PECHARUNT
 
+#if P_FAMILY_KOTORA
 static const struct LevelUpMove sKotoraLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
     LEVEL_UP_MOVE( 1, MOVE_TAIL_WHIP),
@@ -22368,3 +22369,4 @@ static const struct LevelUpMove sGaotoraLevelUpLearnset[] = {
     LEVEL_UP_MOVE(80, MOVE_WILD_CHARGE),
     LEVEL_UP_END
 };
+#endif // P_FAMILY_KOTORA

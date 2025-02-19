@@ -523,7 +523,7 @@ static const struct LevelUpMove sNidoqueenLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 
-static const struct LevelUpMove sNidoranMLevelUpLearnset[] = {
+static const struct LevelUpMove sNidoranLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_LEER),
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
     LEVEL_UP_MOVE( 8, MOVE_HORN_ATTACK),
