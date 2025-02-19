@@ -16,7 +16,14 @@ mapscripts TranquilRoute_MapScripts {
 		call(TranquilRoute_EventScript_CheckCutGrass)
 		call(TranquilRoute_EventScript_SpawnBirds)
 	}
-	MAP_SCRIPT_ON_TRANSITION: TranquilRoute_EventScript_SetupCutGrassCutscene
+	MAP_SCRIPT_ON_TRANSITION {
+		call(TranquilRoute_EventScript_SetupCutGrassCutscene)
+
+		// Remove roadblock to Whiteslate Route
+		if (flag(FLAG_BADGE02_GET)) {
+			setvar(VAR_TEMP_1, 1)
+		}
+	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
 		VAR_DO_CUT_MASTER_CUTSCENE, 1: TranquilRoute_EventScript_GrassCutscene
 	]
@@ -285,11 +292,7 @@ script TranquilRoute_EventScript_Shellos {
 	lock
 	faceplayer
 	playmoncry(SPECIES_SHELLOS, CRY_MODE_NORMAL)
-    if (var(VAR_RESULT)) {
-        speakername("Shellos")
-    } else {
-        speakername("Slug")
-    }
+    setspeakertomonname(SPECIES_SHELLOS)
 	msgbox(format(
 		"Clelel!"
 	))
@@ -543,14 +546,14 @@ script TranquilRoute_TrainerTips2 {
 script TranquilRoute_DirectionSign {
 	if (flag(FLAG_SAKU_KURA_REUNITED)) {
 		msgbox(format(
-			"{LEFT_ARROW} Whiteslate route\n"
-			"{UP_ARROW} Sakura Village\p"
+			"{UP_ARROW} Sakura Village\n"
+			"{LEFT_ARROW} Whiteslate route\p"
 			"It looks like the sign has been written over recently…"
 		), MSGBOX_SIGN)
 	} else {
 		msgbox(format(
-			"{LEFT_ARROW} Whiteslate route\n"
-			"{UP_ARROW} Saku and Kura Villages"
+			"{UP_ARROW} Saku and Kura Villages\n"
+			"{LEFT_ARROW} Whiteslate route"
 		), MSGBOX_SIGN)
 	}
 }

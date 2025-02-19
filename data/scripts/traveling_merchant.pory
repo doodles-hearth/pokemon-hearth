@@ -7,7 +7,7 @@ script TravelingMerchant_EventScript_Keke {
 	if (flag(FLAG_MET_TRAVELING_MERCHANT)) {
 		speakername("Keke")
 	} else {
-		speakername("Kecleon")
+		setspeakertomonname(SPECIES_KECLEON)
 	}
 
 	switch(random(3)) {

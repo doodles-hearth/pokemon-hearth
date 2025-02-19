@@ -38,10 +38,10 @@
 #define TRAINER_TAMA     32
 #define TRAINER_YORU       33
 #define TRAINER_ROKU                         34
-#define TRAINER_LEAH                         35
-#define TRAINER_DAISY                        36
+#define TRAINER_ITSUMI                       35
+#define TRAINER_RYOSUKE                      36
 #define TRAINER_ROSE_1                       37
-#define TRAINER_FELIX                        38
+#define TRAINER_RIKU                         38
 #define TRAINER_VIOLET                       39
 #define TRAINER_ROSE_2                       40
 #define TRAINER_ROSE_3                       41

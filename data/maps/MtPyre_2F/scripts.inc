@@ -33,7 +33,7 @@ MtPyre_2F_EventScript_Dez::
 	end
 
 MtPyre_2F_EventScript_Leah::
-	trainerbattle_single TRAINER_LEAH, MtPyre_2F_Text_LeahIntro, MtPyre_2F_Text_LeahDefeat
+	trainerbattle_single TRAINER_DUMMY, MtPyre_2F_Text_LeahIntro, MtPyre_2F_Text_LeahDefeat
 	msgbox MtPyre_2F_Text_LeahPostBattle, MSGBOX_AUTOCLOSE
 	end
 

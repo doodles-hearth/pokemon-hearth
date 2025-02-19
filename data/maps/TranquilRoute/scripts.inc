@@ -1,12 +1,21 @@
 TranquilRoute_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, TranquilRoute_MapScripts_MAP_SCRIPT_ON_LOAD
-	map_script MAP_SCRIPT_ON_TRANSITION, TranquilRoute_EventScript_SetupCutGrassCutscene
+	map_script MAP_SCRIPT_ON_TRANSITION, TranquilRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, TranquilRoute_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 TranquilRoute_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call TranquilRoute_EventScript_CheckCutGrass
 	call TranquilRoute_EventScript_SpawnBirds
+	return
+
+TranquilRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call TranquilRoute_EventScript_SetupCutGrassCutscene
+	goto_if_set FLAG_BADGE02_GET, TranquilRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	return
+
+TranquilRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setvar VAR_TEMP_1, 1
 	return
 
 TranquilRoute_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -230,19 +239,12 @@ TranquilRoute_EventScript_Shellos::
 	lock
 	faceplayer
 	playmoncry SPECIES_SHELLOS, CRY_MODE_NORMAL
-	compare VAR_RESULT, 0
-	goto_if_ne TranquilRoute_EventScript_Shellos_2
-	speakername TranquilRoute_EventScript_Shellos_Text_1
-TranquilRoute_EventScript_Shellos_1:
-	msgbox TranquilRoute_EventScript_Shellos_Text_2
+	setspeakertomonname SPECIES_SHELLOS
+	msgbox TranquilRoute_EventScript_Shellos_Text_0
 	waitmoncry
 	closemessage
 	release
 	end
-
-TranquilRoute_EventScript_Shellos_2:
-	speakername TranquilRoute_EventScript_Shellos_Text_0
-	goto TranquilRoute_EventScript_Shellos_1
 
 
 TranquilRoute_EventScript_BerryWoman::
@@ -688,12 +690,6 @@ TranquilRoute_EventScript_WhiteslateRoadblock_Text_1:
 	.string "ahead is blocked.$"
 
 TranquilRoute_EventScript_Shellos_Text_0:
-	.string "Shellos$"
-
-TranquilRoute_EventScript_Shellos_Text_1:
-	.string "Slug$"
-
-TranquilRoute_EventScript_Shellos_Text_2:
 	.string "Clelel!$"
 
 TranquilRoute_EventScript_BerryWoman_Text_0:
@@ -800,11 +796,11 @@ TranquilRoute_TrainerTips2_Text_0:
 	.string "Set the lead Pokémon with {SELECT_BUTTON}.$"
 
 TranquilRoute_DirectionSign_Text_0:
-	.string "{LEFT_ARROW} Whiteslate route\n"
-	.string "{UP_ARROW} Sakura Village\p"
+	.string "{UP_ARROW} Sakura Village\n"
+	.string "{LEFT_ARROW} Whiteslate route\p"
 	.string "It looks like the sign has been\n"
 	.string "written over recently…$"
 
 TranquilRoute_DirectionSign_Text_1:
-	.string "{LEFT_ARROW} Whiteslate route\n"
-	.string "{UP_ARROW} Saku and Kura Villages$"
+	.string "{UP_ARROW} Saku and Kura Villages\n"
+	.string "{LEFT_ARROW} Whiteslate route$"

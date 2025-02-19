@@ -2,6 +2,27 @@ WhiteslateRoute_MapScripts::
 	.byte 0
 
 
+WhiteslateRoute_EventScript_Itsumi::
+	trainerbattle_single TRAINER_ITSUMI, WhiteslateRoute_EventScript_Itsumi_Text_0, WhiteslateRoute_EventScript_Itsumi_Text_1
+	speakername WhiteslateRoute_EventScript_Itsumi_Text_2
+	msgbox WhiteslateRoute_EventScript_Itsumi_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
+WhiteslateRoute_EventScript_Ryosuke::
+	trainerbattle_single TRAINER_RYOSUKE, WhiteslateRoute_EventScript_Ryosuke_Text_0, WhiteslateRoute_EventScript_Ryosuke_Text_1
+	speakername WhiteslateRoute_EventScript_Ryosuke_Text_2
+	msgbox WhiteslateRoute_EventScript_Ryosuke_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
+WhiteslateRoute_EventScript_Riku::
+	trainerbattle_single TRAINER_RIKU, WhiteslateRoute_EventScript_Riku_Text_0, WhiteslateRoute_EventScript_Ryosuke_Text_1
+	speakername WhiteslateRoute_EventScript_Ryosuke_Text_2
+	msgbox WhiteslateRoute_EventScript_Ryosuke_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
 WhiteslateRoute_EventScript_Shuckle::
 	lock
 	faceplayer
@@ -264,6 +285,39 @@ WhiteslateRoute_Trigger_SecretBase_Movement_13:
 	walk_down
 	walk_down
 	step_end
+
+WhiteslateRoute_EventScript_Itsumi_Text_0:
+	.string "Do you nurture your Pokémon with\n"
+	.string "love?$"
+
+WhiteslateRoute_EventScript_Itsumi_Text_1:
+	.string "Oh, you do!$"
+
+WhiteslateRoute_EventScript_Itsumi_Text_2:
+	.string "Itsumi$"
+
+WhiteslateRoute_EventScript_Itsumi_Text_3:
+	.string "I am glad we met! Your Pokémon seem\n"
+	.string "so happy.$"
+
+WhiteslateRoute_EventScript_Ryosuke_Text_0:
+	.string "I massage my Pokémon after each\n"
+	.string "battle!$"
+
+WhiteslateRoute_EventScript_Ryosuke_Text_1:
+	.string "Can somebody give me a massage?$"
+
+WhiteslateRoute_EventScript_Ryosuke_Text_2:
+	.string "Ryosuke$"
+
+WhiteslateRoute_EventScript_Ryosuke_Text_3:
+	.string "I heard there was a very talented\n"
+	.string "masseur in Saberside Town! I want to\l"
+	.string "see for myself!$"
+
+WhiteslateRoute_EventScript_Riku_Text_0:
+	.string "BOO!!\n"
+	.string "… … …Are you surprised?$"
 
 WhiteslateRoute_EventScript_Shuckle_Text_0:
 	.string "Cklckl!$"

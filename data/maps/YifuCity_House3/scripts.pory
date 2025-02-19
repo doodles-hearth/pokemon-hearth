@@ -30,7 +30,7 @@ script YifuCity_House3_EventScript_EggGirl {
 	lock
 	faceplayer
 
-	if (var(VAR_EGG_SPECIES_GIVEN_TO_EGG_GIRL) != SPECIES_NONE) {
+	if (var(VAR_EGG_SPECIES_GIVEN_TO_EGG_GIRL) == SPECIES_NONE) {
 		call(YifuCity_House3_NotTradedYet)
 	} else {
 		// TODO Make egg hatch after a while (nb steps? badge?)

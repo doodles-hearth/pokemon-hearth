@@ -26,12 +26,15 @@ script Silveridge_Refuge_EventScript_Artist {
 }
 
 script Silveridge_Refuge_EventScript_Kricketune {
+	lock
+	faceplayer
 	setspeakertomonname(SPECIES_KRICKETUNE)
 	playmoncry(SPECIES_KRICKETUNE, CRY_MODE_NORMAL)
 	msgbox(format(
 		"Delelelele…"
 	))
 	closemessage
+	release
 }
 
 script Silveridge_Refuge_EventScript_Shamisen {

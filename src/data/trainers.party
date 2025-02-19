@@ -186,7 +186,7 @@ Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Growl
 - Fake Out
-- Feint
+- Tackle
 
 === TRAINER_TAKESHI ===
 Name: Takeshi
@@ -900,20 +900,20 @@ Pic: Hex Maniac
 Gender: Female
 Music: Suspicious
 Double Battle: No
-AI: Basic Trainer
+AI: Check Bad Move
 
 Shuppet
-Level: 17
+Level: 15
 - Will O Wisp
-- Knock Off
-- Night Shade
+- Shadow Sneak
 - Spite
 
 Misdreavus
-Level: 18
-- Psywave
+Level: 15
+- Growl
 - Astonish
 - Mean Look
+- Confusion
 
 === TRAINER_ROKU ===
 Name: Roku
@@ -938,35 +938,47 @@ Level: 17
 - Amnesia
 - Tackle
 
-=== TRAINER_LEAH ===
-Name: LEAH
-Class: Hex Maniac
-Pic: Hex Maniac
-Gender: Female
-Music: Suspicious
-Double Battle: No
-AI: Check Bad Move
-
-Spoink
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_DAISY ===
-Name: DAISY
-Class: Aroma Lady
-Pic: Aroma Lady
+=== TRAINER_ITSUMI ===
+Name: Itsumi
+Class: Pkmn Breeder
+Pic: Pokemon Breeder F
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
+
+Nidorino
+Level: 19
+- Poison Sting
+- Fury Attack
+- Helping Hand
+
+Vulpix
+Level: 18
+- Baby Doll Eyes
+- Fire Spin
+- Feint Attack
+
+=== TRAINER_RYOSUKE ===
+Name: Ryosuke
+Class: Pkmn Breeder
+Pic: Pokemon Breeder M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
 
 Shroomish
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 17
+- Mega Drain
+- Stun Spore
+- Headbutt
 
-Roselia
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Happiny
+Level: 20
+- Sweet Kiss
+- Double Slap
+- Refresh
 
 === TRAINER_ROSE_1 ===
 Name: ROSE
@@ -989,26 +1001,32 @@ Roselia
 Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_FELIX ===
-Name: FELIX
-Class: Cooltrainer
-Pic: Cooltrainer M
+=== TRAINER_RIKU ===
+Name: Riku
+Class: Ninja Boy
+Pic: Ninja Boy
 Gender: Male
-Music: Cool
-Items: Full Restore
+Music: Suspicious
 Double Battle: No
 AI: Basic Trainer
 
-Medicham
-Level: 43
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Psychic
+Poochyena
+Level: 19
+- Odor Sleuth
+- Swagger
+- Howl
 
-Claydol
-Level: 43
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Skill Swap
-- Earthquake
+Nickit
+Level: 17
+- Thief
+- Beat Up
+- Tail Whip
+
+Thievul
+Level: 20
+- Thief
+- Hone Claws
+- Snarl
 
 === TRAINER_VIOLET ===
 Name: VIOLET

@@ -26,7 +26,7 @@ YifuCity_House3_EventScript_EggGirl::
 	lock
 	faceplayer
 	compare VAR_EGG_SPECIES_GIVEN_TO_EGG_GIRL, SPECIES_NONE
-	goto_if_ne YifuCity_House3_EventScript_EggGirl_2
+	goto_if_eq YifuCity_House3_EventScript_EggGirl_2
 	speakername YifuCity_House3_EventScript_EggGirl_Text_0
 	msgbox YifuCity_House3_EventScript_EggGirl_Text_1
 YifuCity_House3_EventScript_EggGirl_1:

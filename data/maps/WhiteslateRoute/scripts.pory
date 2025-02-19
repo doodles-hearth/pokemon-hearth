@@ -5,6 +5,40 @@ mapscripts WhiteslateRoute_MapScripts {
 	
 }
 
+script WhiteslateRoute_EventScript_Itsumi {
+	trainerbattle_single(
+		TRAINER_ITSUMI,
+		format("Do you nurture your Pokémon with love?"),
+		format("Oh, you do!")
+	)
+	speakername("Itsumi")
+	msgbox(format("I am glad we met! Your Pokémon seem so happy."), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script WhiteslateRoute_EventScript_Ryosuke {
+	trainerbattle_single(
+		TRAINER_RYOSUKE,
+		format("I massage my Pokémon after each battle!"),
+		format("Can somebody give me a massage?")
+	)
+	speakername("Ryosuke")
+	// TODO EVA
+	msgbox(format("I heard there was a very talented masseur in Saberside Town! I want to see for myself!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script WhiteslateRoute_EventScript_Riku {
+	trainerbattle_single(
+		TRAINER_RIKU,
+		format("BOO!!\n… … …Are you surprised?"),
+		format("Can somebody give me a massage?")
+	)
+	speakername("Ryosuke")
+	msgbox(format("I heard there was a very talented masseur in Saberside Town! I want to see for myself!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
 script WhiteslateRoute_EventScript_Shuckle {
 	lock
 	faceplayer
