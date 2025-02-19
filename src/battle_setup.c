@@ -324,7 +324,6 @@ void BattleSetup_StartBattlePikeWildBattle(void)
 
 static void DoStandardWildBattle(bool32 isDouble)
 {
-    gSaveBlock2Ptr->pauseTimeForBattle = TRUE;
     LockPlayerFieldControls();
     FreezeObjectEvents();
     StopPlayerAvatar();
@@ -575,7 +574,6 @@ static void DowngradeBadPoison(void)
 static void CB2_EndWildBattle(void)
 {
     FakeRtc_AdvanceTimeBy(0, 0, DURATION_WILD_BATTLE_MINUTES, 0);
-    gSaveBlock2Ptr->pauseTimeForBattle = FALSE;
     
     CpuFill16(0, (void *)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
@@ -595,7 +593,6 @@ static void CB2_EndWildBattle(void)
 static void CB2_EndScriptedWildBattle(void)
 {
     FakeRtc_AdvanceTimeBy(0, 0, DURATION_WILD_BATTLE_MINUTES, 0);
-    gSaveBlock2Ptr->pauseTimeForBattle = FALSE;
 
     CpuFill16(0, (void *)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
@@ -1020,7 +1017,6 @@ void SetMapVarsToTrainerB(void)
 // expects parameters have been loaded correctly with TrainerBattleLoadArgs
 const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
 {
-    gSaveBlock2Ptr->pauseTimeForBattle = TRUE;
     switch (TRAINER_BATTLE_PARAM.mode)
     {
     case TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT:
@@ -1370,7 +1366,6 @@ const u8 *BattleSetup_GetScriptAddrAfterBattle(void)
 
 const u8 *BattleSetup_GetTrainerPostBattleScript(void)
 {
-    gSaveBlock2Ptr->pauseTimeForBattle = FALSE;
     if (sShouldCheckTrainerBScript)
     {
         sShouldCheckTrainerBScript = FALSE;
