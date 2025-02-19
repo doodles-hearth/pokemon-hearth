@@ -1128,6 +1128,8 @@
 #define P_FAMILY_TERAPAGOS               TRUE
 #undef P_FAMILY_PECHARUNT
 #define P_FAMILY_PECHARUNT               TRUE
+#undef P_FAMILY_KOTORA
+#define P_FAMILY_KOTORA                  TRUE
 
 // Configs
 #undef P_UNKNOWN_MON_NAMES
