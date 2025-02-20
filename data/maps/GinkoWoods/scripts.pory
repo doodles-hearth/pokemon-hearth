@@ -13,7 +13,7 @@ script GinkoWoods_EventScript_Toshiki {
 	speakername("Toshiki")
 	msgbox(format("Isn't Sewaddle cute, all wrapped up in its leaf?"))
 	closemessage
-	// TODO EVA setnamedmon(SPECIES_SEWADDLE)
+	setnamedmon(SPECIES_SEWADDLE)
 	release
 	end
 }

@@ -79,7 +79,6 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_TracksSlither             @ FLDEFF_TRACKS_SLITHER
 	.4byte gFieldEffectScript_TracksBug                 @ FLDEFF_TRACKS_BUG
 	.4byte gFieldEffectScript_TracksSpot                @ FLDEFF_TRACKS_SPOT
-	.4byte gFieldEffectScript_TallGrassGinko            @ FLDEFF_TALL_GRASS_GINKO
 	.4byte gFieldEffectScript_CaveDust                  @ FLDEFF_CAVE_DUST
     
 gFieldEffectScript_ExclamationMarkIcon1::
@@ -99,11 +98,7 @@ gFieldEffectScript_Shadow::
 	field_eff_end
 
 gFieldEffectScript_TallGrass::
-	field_eff_loadfadedpal_callnative gSpritePalette_TallGrass, FldEff_TallGrass
-	field_eff_end
-
-gFieldEffectScript_TallGrassGinko::
-	field_eff_loadfadedpal_callnative gSpritePalette_TallGrass, FldEff_TallGrass
+	field_eff_loadfadedpal_callnative_TallGrass gSpritePalette_TallGrass, FldEff_TallGrass
 	field_eff_end
 
 gFieldEffectScript_Ripple::
@@ -139,7 +134,7 @@ gFieldEffectScript_JumpTallGrass::
 	field_eff_end
 
 gFieldEffectScript_SandFootprints::
-	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_SandFootprints
+	field_eff_loadfadedpal_callnative_Footprints gSpritePalette_Footprints, FldEff_SandFootprints
 	field_eff_end
 
 gFieldEffectScript_JumpBigSplash::

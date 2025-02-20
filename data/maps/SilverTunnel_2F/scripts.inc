@@ -12,6 +12,7 @@ SilverTunnel_2F_EventScript_Trainer1::
 SilverTunnel_2F_EventScript_Kansaku::
 	trainerbattle_single TRAINER_IKUTO, SilverTunnel_2F_EventScript_Kansaku_Text_0, SilverTunnel_2F_EventScript_Kansaku_Text_1
 	speakername SilverTunnel_2F_EventScript_Kansaku_Text_2
+	setnamedmon SPECIES_ONIX
 	msgbox SilverTunnel_2F_EventScript_Kansaku_Text_3, MSGBOX_AUTOCLOSE
 	end
 

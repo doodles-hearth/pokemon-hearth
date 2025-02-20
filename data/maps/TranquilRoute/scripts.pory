@@ -16,7 +16,14 @@ mapscripts TranquilRoute_MapScripts {
 		call(TranquilRoute_EventScript_CheckCutGrass)
 		call(TranquilRoute_EventScript_SpawnBirds)
 	}
-	MAP_SCRIPT_ON_TRANSITION: TranquilRoute_EventScript_SetupCutGrassCutscene
+	MAP_SCRIPT_ON_TRANSITION {
+		call(TranquilRoute_EventScript_SetupCutGrassCutscene)
+
+		// Remove roadblock to Whiteslate Route
+		if (flag(FLAG_BADGE02_GET)) {
+			setvar(VAR_TEMP_1, 1)
+		}
+	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
 		VAR_DO_CUT_MASTER_CUTSCENE, 1: TranquilRoute_EventScript_GrassCutscene
 	]
@@ -53,7 +60,7 @@ script TranquilRoute_EventScript_GrassCutscene {
 
 	delay(16)
 
-	applymovement(LOCALID_CUT_MASTER, TranquilRoute_CutMasterWalkLeft)
+	applymovement(LOCALID_CUT_MASTER, moves(walk_left * 2))
 	waitmovement(0)
 	delay(24)
 	speakername("Cut master")
@@ -62,7 +69,7 @@ script TranquilRoute_EventScript_GrassCutscene {
 	))
 	closemessage
 
-	applymovement(LOCALID_CUT_MASTER, TranquilRoute_CutMasterWalkRight)
+	applymovement(LOCALID_CUT_MASTER, moves(walk_right * 3))
 	waitmovement(0)
 	delay(24)
 	delay(24)
@@ -72,7 +79,7 @@ script TranquilRoute_EventScript_GrassCutscene {
 	))
 	closemessage
 
-	applymovement(LOCALID_CUT_MASTER, TranquilRoute_CutMasterWalkBackToPlayer)
+	applymovement(LOCALID_CUT_MASTER, moves(walk_left, walk_in_place_faster_down))
 	waitmovement(0)
 	delay(48)
 	speakername("Cut master")
@@ -285,11 +292,7 @@ script TranquilRoute_EventScript_Shellos {
 	lock
 	faceplayer
 	playmoncry(SPECIES_SHELLOS, CRY_MODE_NORMAL)
-    if (var(VAR_RESULT)) {
-        speakername("Shellos")
-    } else {
-        speakername("Slug")
-    }
+    setspeakertomonname(SPECIES_SHELLOS)
 	msgbox(format(
 		"Clelel!"
 	))
@@ -512,21 +515,6 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	release
 }
 
-script TranquilRoute_EventScript_Kecleon {
-	lock
-	faceplayer
-
-	playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
-	speakername("Kecleon")
-	msgbox(format(
-		"Keckecke!"
-	))
-	waitmoncry
-	closemessage
-
-	release
-}
-
 script TranquilRoute_TrainerTips2 {
 	msgbox(format(
 		"Did you know?\p"
@@ -543,27 +531,14 @@ script TranquilRoute_TrainerTips2 {
 script TranquilRoute_DirectionSign {
 	if (flag(FLAG_SAKU_KURA_REUNITED)) {
 		msgbox(format(
-			"{LEFT_ARROW} Whiteslate route\n"
-			"{UP_ARROW} Sakura Village\p"
+			"{UP_ARROW} Sakura Village\n"
+			"{LEFT_ARROW} Whiteslate route\p"
 			"It looks like the sign has been written over recently…"
 		), MSGBOX_SIGN)
 	} else {
 		msgbox(format(
-			"{LEFT_ARROW} Whiteslate route\n"
-			"{UP_ARROW} Saku and Kura Villages"
+			"{UP_ARROW} Saku and Kura Villages\n"
+			"{LEFT_ARROW} Whiteslate route"
 		), MSGBOX_SIGN)
 	}
-}
-
-movement TranquilRoute_CutMasterWalkLeft {
-	walk_left * 2
-}
-
-movement TranquilRoute_CutMasterWalkRight {
-	walk_right * 3
-}
-
-movement TranquilRoute_CutMasterWalkBackToPlayer {
-	walk_left
-	walk_in_place_faster_down
 }

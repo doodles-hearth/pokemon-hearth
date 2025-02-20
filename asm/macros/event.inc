@@ -2503,7 +2503,7 @@
 
 	@ Returns the state of the Pokedex Caught Flag to VAR_RESULT for the Pokemon with speciesId
 	.macro getnamedmon species:req
-	callnative Scrcmd_getsetpokedexflag, request_effects=1
+	callnative Scrcmd_getsetpokedexflag, requests_effects=1
 	.2byte \species
 	.2byte FLAG_GET_NAMED
 	.endm
@@ -2524,7 +2524,7 @@
 
     @ Sets the Pokedex Named Flag for the Pokemon with speciesId
     .macro setnamedmon species:req
-    callnative Scrcmd_getsetpokedexflag, request_effects=1
+    callnative Scrcmd_getsetpokedexflag, requests_effects=1
     .2byte \species
     .2byte FLAG_SET_NAMED
     .endm

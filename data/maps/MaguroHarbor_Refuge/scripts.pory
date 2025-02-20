@@ -48,8 +48,8 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 	))
 	closemessage
 
-	// setseenmon(SPECIES_SLOWPOKE)
-	// setnamedmon(SPECIES_SLOWPOKE)
+	setseenmon(SPECIES_SLOWPOKE)
+	setnamedmon(SPECIES_SLOWPOKE)
 	setflag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)
 
 	applymovement(LOCALID_BEAN, moves(walk_in_place_fast_left))

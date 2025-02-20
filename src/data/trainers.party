@@ -186,7 +186,7 @@ Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Growl
 - Fake Out
-- Feint
+- Tackle
 
 === TRAINER_TAKESHI ===
 Name: Takeshi
@@ -893,47 +893,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Astonish
 - Fury Swipes
 
-=== TRAINER_SHELLY_SEAFLOOR_CAVERN ===
-Name: SHELLY
-Class: Aqua Admin
-Pic: Aqua Admin F
-Gender: Female
-Music: Aqua
-Double Battle: No
-AI: Basic Trainer
-
-Sharpedo
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Mightyena
-Level: 37
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_ARCHIE ===
-Name: ARCHIE
-Class: Aqua Leader
-Pic: Aqua Leader Archie
-Gender: Male
-Music: Aqua
-Items: Super Potion / Super Potion
-Double Battle: No
-AI: Basic Trainer
-
-Mightyena
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Crobat
-Level: 41
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Sharpedo
-Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-=== TRAINER_LEAH ===
-Name: LEAH
+=== TRAINER_YORU ===
+Name: Yoru
 Class: Hex Maniac
 Pic: Hex Maniac
 Gender: Female
@@ -941,26 +902,83 @@ Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Spoink
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Shuppet
+Level: 15
+- Will O Wisp
+- Shadow Sneak
+- Spite
 
-=== TRAINER_DAISY ===
-Name: DAISY
-Class: Aroma Lady
-Pic: Aroma Lady
+Misdreavus
+Level: 15
+- Growl
+- Astonish
+- Mean Look
+- Confusion
+
+=== TRAINER_ROKU ===
+Name: Roku
+Class: Miner
+Pic: Hiker
+Gender: Male
+Music: Hiker
+Double Battle: No
+AI: Basic Trainer
+
+Diglett
+Level: 18
+- Dig
+- Astonish
+- Magnitude
+- Growl
+
+Munchlax
+Level: 17
+- Lick
+- Rest
+- Amnesia
+- Tackle
+
+=== TRAINER_ITSUMI ===
+Name: Itsumi
+Class: Pkmn Breeder
+Pic: Pokemon Breeder F
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
+
+Nidorino
+Level: 19
+- Poison Sting
+- Fury Attack
+- Helping Hand
+
+Vulpix
+Level: 18
+- Baby Doll Eyes
+- Fire Spin
+- Feint Attack
+
+=== TRAINER_RYOSUKE ===
+Name: Ryosuke
+Class: Pkmn Breeder
+Pic: Pokemon Breeder M
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
 
 Shroomish
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 17
+- Mega Drain
+- Stun Spore
+- Headbutt
 
-Roselia
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Happiny
+Level: 20
+- Sweet Kiss
+- Double Slap
+- Refresh
 
 === TRAINER_ROSE_1 ===
 Name: ROSE
@@ -983,26 +1001,32 @@ Roselia
 Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_FELIX ===
-Name: FELIX
-Class: Cooltrainer
-Pic: Cooltrainer M
+=== TRAINER_RIKU ===
+Name: Riku
+Class: Ninja Boy
+Pic: Ninja Boy
 Gender: Male
-Music: Cool
-Items: Full Restore
+Music: Suspicious
 Double Battle: No
 AI: Basic Trainer
 
-Medicham
-Level: 43
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Psychic
+Poochyena
+Level: 19
+- Odor Sleuth
+- Swagger
+- Howl
 
-Claydol
-Level: 43
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Skill Swap
-- Earthquake
+Nickit
+Level: 17
+- Thief
+- Beat Up
+- Tail Whip
+
+Thievul
+Level: 20
+- Thief
+- Hone Claws
+- Snarl
 
 === TRAINER_VIOLET ===
 Name: VIOLET

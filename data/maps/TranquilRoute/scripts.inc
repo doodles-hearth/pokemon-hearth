@@ -1,12 +1,21 @@
 TranquilRoute_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, TranquilRoute_MapScripts_MAP_SCRIPT_ON_LOAD
-	map_script MAP_SCRIPT_ON_TRANSITION, TranquilRoute_EventScript_SetupCutGrassCutscene
+	map_script MAP_SCRIPT_ON_TRANSITION, TranquilRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, TranquilRoute_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 TranquilRoute_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call TranquilRoute_EventScript_CheckCutGrass
 	call TranquilRoute_EventScript_SpawnBirds
+	return
+
+TranquilRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call TranquilRoute_EventScript_SetupCutGrassCutscene
+	goto_if_set FLAG_BADGE02_GET, TranquilRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	return
+
+TranquilRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setvar VAR_TEMP_1, 1
 	return
 
 TranquilRoute_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -42,20 +51,20 @@ TranquilRoute_EventScript_GrassCutscene::
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_1
 	closemessage
 	delay 16
-	applymovement 22, TranquilRoute_CutMasterWalkLeft
+	applymovement 22, TranquilRoute_EventScript_GrassCutscene_Movement_2
 	waitmovement 0
 	delay 24
 	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_2
 	closemessage
-	applymovement 22, TranquilRoute_CutMasterWalkRight
+	applymovement 22, TranquilRoute_EventScript_GrassCutscene_Movement_3
 	waitmovement 0
 	delay 24
 	delay 24
 	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_3
 	closemessage
-	applymovement 22, TranquilRoute_CutMasterWalkBackToPlayer
+	applymovement 22, TranquilRoute_EventScript_GrassCutscene_Movement_4
 	waitmovement 0
 	delay 48
 	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
@@ -230,19 +239,12 @@ TranquilRoute_EventScript_Shellos::
 	lock
 	faceplayer
 	playmoncry SPECIES_SHELLOS, CRY_MODE_NORMAL
-	compare VAR_RESULT, 0
-	goto_if_ne TranquilRoute_EventScript_Shellos_2
-	speakername TranquilRoute_EventScript_Shellos_Text_1
-TranquilRoute_EventScript_Shellos_1:
-	msgbox TranquilRoute_EventScript_Shellos_Text_2
+	setspeakertomonname SPECIES_SHELLOS
+	msgbox TranquilRoute_EventScript_Shellos_Text_0
 	waitmoncry
 	closemessage
 	release
 	end
-
-TranquilRoute_EventScript_Shellos_2:
-	speakername TranquilRoute_EventScript_Shellos_Text_0
-	goto TranquilRoute_EventScript_Shellos_1
 
 
 TranquilRoute_EventScript_BerryWoman::
@@ -407,18 +409,6 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_2:
 	goto TranquilRoute_EventScript_TravelingMerchantFirstTime_1
 
 
-TranquilRoute_EventScript_Kecleon::
-	lock
-	faceplayer
-	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL
-	speakername TranquilRoute_EventScript_Kecleon_Text_0
-	msgbox TranquilRoute_EventScript_Kecleon_Text_1
-	waitmoncry
-	closemessage
-	release
-	return
-
-
 TranquilRoute_TrainerTips2::
 	msgbox TranquilRoute_TrainerTips2_Text_0, MSGBOX_SIGN
 	return
@@ -433,22 +423,6 @@ TranquilRoute_DirectionSign_1:
 	msgbox TranquilRoute_DirectionSign_Text_0, MSGBOX_SIGN
 	return
 
-
-TranquilRoute_CutMasterWalkLeft:
-	walk_left
-	walk_left
-	step_end
-
-TranquilRoute_CutMasterWalkRight:
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-TranquilRoute_CutMasterWalkBackToPlayer:
-	walk_left
-	walk_in_place_faster_down
-	step_end
 
 TranquilRoute_EventScript_GrassCutscene_Movement_0:
 	walk_left
@@ -471,6 +445,22 @@ TranquilRoute_EventScript_GrassCutscene_Movement_1:
 	walk_left
 	walk_up
 	walk_up
+	step_end
+
+TranquilRoute_EventScript_GrassCutscene_Movement_2:
+	walk_left
+	walk_left
+	step_end
+
+TranquilRoute_EventScript_GrassCutscene_Movement_3:
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+TranquilRoute_EventScript_GrassCutscene_Movement_4:
+	walk_left
+	walk_in_place_faster_down
 	step_end
 
 TranquilRoute_EventScript_WhiteslateRoadblock_Movement_0:
@@ -688,12 +678,6 @@ TranquilRoute_EventScript_WhiteslateRoadblock_Text_1:
 	.string "ahead is blocked.$"
 
 TranquilRoute_EventScript_Shellos_Text_0:
-	.string "Shellos$"
-
-TranquilRoute_EventScript_Shellos_Text_1:
-	.string "Slug$"
-
-TranquilRoute_EventScript_Shellos_Text_2:
 	.string "Clelel!$"
 
 TranquilRoute_EventScript_BerryWoman_Text_0:
@@ -787,12 +771,6 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_2:
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_3:
 	.string "Come on, Keke.$"
 
-TranquilRoute_EventScript_Kecleon_Text_0:
-	.string "Kecleon$"
-
-TranquilRoute_EventScript_Kecleon_Text_1:
-	.string "Keckecke!$"
-
 TranquilRoute_TrainerTips2_Text_0:
 	.string "Did you know?\p"
 	.string "You can swap the Pokémon in your\n"
@@ -800,11 +778,11 @@ TranquilRoute_TrainerTips2_Text_0:
 	.string "Set the lead Pokémon with {SELECT_BUTTON}.$"
 
 TranquilRoute_DirectionSign_Text_0:
-	.string "{LEFT_ARROW} Whiteslate route\n"
-	.string "{UP_ARROW} Sakura Village\p"
+	.string "{UP_ARROW} Sakura Village\n"
+	.string "{LEFT_ARROW} Whiteslate route\p"
 	.string "It looks like the sign has been\n"
 	.string "written over recently…$"
 
 TranquilRoute_DirectionSign_Text_1:
-	.string "{LEFT_ARROW} Whiteslate route\n"
-	.string "{UP_ARROW} Saku and Kura Villages$"
+	.string "{UP_ARROW} Saku and Kura Villages\n"
+	.string "{LEFT_ARROW} Whiteslate route$"

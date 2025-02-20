@@ -26,7 +26,7 @@ script SilverTunnel_2F_EventScript_Kansaku {
 		format("What a headache!")
 	)
 	speakername("Ikuto")
-	// TODO EVA setnamedmon
+	setnamedmon(SPECIES_ONIX)
 	msgbox(format("Onix is the best! Sure, she causes cave-ins sometimes, but that's not important!"), MSGBOX_AUTOCLOSE)
 	end
 }

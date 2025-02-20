@@ -8,7 +8,7 @@ script SilverTunnel_1F_EventScript_Kento {
 		format("You ain't no miner, are ya?"),
 		format("How am I gonna get any work done now?")
 	)
-	// TODO EVA setnamedmon
+	setnamedmon(SPECIES_MAKUHITA)
 	speakername("Kento")
 	msgbox(format("My Makuhita breaks rocks for me!"), MSGBOX_AUTOCLOSE)
 	end
@@ -18,12 +18,25 @@ script SilverTunnel_1F_EventScript_Shuya {
 	trainerbattle_single(
 		TRAINER_SHUYA,
 		format("D'ya know how tough we miners are?"),
-		format("I gotta say, yer not bad either!"),
-		BeachboundRoute_EventScript_Karu_PostBattle
+		format("I gotta say, yer not bad either!")
 	)
-	// TODO EVA setnamedmon
+	setnamedmon(SPECIES_MAKUHITA)
 	speakername("Shuya")
 	msgbox(format("Sometimes we armwrestle with our Makuhita just for kicks!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script SilverTunnel_1F_EventScript_Yoru {
+	trainerbattle_single(
+		TRAINER_YORU,
+		format("This place sucks!"),
+		format("This battle sucked as well!")
+	)
+	speakername("Yoru")
+	msgbox(format(
+		"I thought caves were spooky places with lots of Ghost Pokémon…\p"
+		"All I see are dumb rocks and bats!"
+	), MSGBOX_AUTOCLOSE)
 	end
 }
 

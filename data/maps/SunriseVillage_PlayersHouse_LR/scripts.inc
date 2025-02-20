@@ -103,10 +103,10 @@ SunriseVillage_PlayersHouse_LR_EventScript_Eevee::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_EEVEE, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_EEVEE
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_0
 	playmoncry SPECIES_EEVEE, CRY_MODE_NORMAL
+	setseenmon SPECIES_EEVEE
 	waitmoncry
 	release
 	return

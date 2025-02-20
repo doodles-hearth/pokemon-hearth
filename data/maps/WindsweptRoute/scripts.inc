@@ -47,6 +47,13 @@ WindsweptRoute_EventScript_Fisherman_ShortRod::
 	return
 
 
+WindsweptRoute_EventScript_Roku::
+	trainerbattle_single TRAINER_ROKU, WindsweptRoute_EventScript_Roku_Text_0, WindsweptRoute_EventScript_Roku_Text_1
+	speakername WindsweptRoute_EventScript_Roku_Text_2
+	msgbox WindsweptRoute_EventScript_Roku_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
 WindsweptRoute_EventScript_Trainer4::
 	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer1_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
 	speakername WindsweptRoute_EventScript_Trainer1_Text_2
@@ -137,3 +144,17 @@ WindsweptRoute_EventScript_Fisherman_ShortRod_Text_1:
 	.string "Little does he realize that I, with my\n"
 	.string "much shorter rod, catch only the\l"
 	.string "highest-jumping fish!$"
+
+WindsweptRoute_EventScript_Roku_Text_0:
+	.string "Uh, I was just taking a short break,\n"
+	.string "okay?$"
+
+WindsweptRoute_EventScript_Roku_Text_1:
+	.string "I mistook you for the boss…$"
+
+WindsweptRoute_EventScript_Roku_Text_2:
+	.string "Roku$"
+
+WindsweptRoute_EventScript_Roku_Text_3:
+	.string "Please don't tell my colleagues I've\n"
+	.string "been slacking off…$"

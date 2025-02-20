@@ -290,8 +290,8 @@ SakuTown_EventScript_Makuhita::
 	faceplayer
 	waitse
 	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
-	speakername SakuTown_EventScript_Makuhita_Text_0
-	msgbox SakuTown_EventScript_Makuhita_Text_1
+	setspeakertomonname SPECIES_MAKUHITA
+	msgbox SakuTown_EventScript_Makuhita_Text_0
 	waitmoncry
 	release
 	return
@@ -462,9 +462,6 @@ SakuTown_EventScript_Mart_Text_0:
 	.string "Saleswoman$"
 
 SakuTown_EventScript_Makuhita_Text_0:
-	.string "Makuhita$"
-
-SakuTown_EventScript_Makuhita_Text_1:
 	.string "Kuhi!$"
 
 SakuTown_Text_RivalDefeat::

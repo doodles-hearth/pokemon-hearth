@@ -2,6 +2,27 @@ WhiteslateRoute_MapScripts::
 	.byte 0
 
 
+WhiteslateRoute_EventScript_Itsumi::
+	trainerbattle_single TRAINER_ITSUMI, WhiteslateRoute_EventScript_Itsumi_Text_0, WhiteslateRoute_EventScript_Itsumi_Text_1
+	speakername WhiteslateRoute_EventScript_Itsumi_Text_2
+	msgbox WhiteslateRoute_EventScript_Itsumi_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
+WhiteslateRoute_EventScript_Ryosuke::
+	trainerbattle_single TRAINER_RYOSUKE, WhiteslateRoute_EventScript_Ryosuke_Text_0, WhiteslateRoute_EventScript_Ryosuke_Text_1
+	speakername WhiteslateRoute_EventScript_Ryosuke_Text_2
+	msgbox WhiteslateRoute_EventScript_Ryosuke_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
+WhiteslateRoute_EventScript_Riku::
+	trainerbattle_single TRAINER_RIKU, WhiteslateRoute_EventScript_Riku_Text_0, WhiteslateRoute_EventScript_Riku_Text_1
+	speakername WhiteslateRoute_EventScript_Riku_Text_2
+	msgbox WhiteslateRoute_EventScript_Riku_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
 WhiteslateRoute_EventScript_Shuckle::
 	lock
 	faceplayer
@@ -265,6 +286,49 @@ WhiteslateRoute_Trigger_SecretBase_Movement_13:
 	walk_down
 	step_end
 
+WhiteslateRoute_EventScript_Itsumi_Text_0:
+	.string "Do you nurture your Pokémon with\n"
+	.string "love?$"
+
+WhiteslateRoute_EventScript_Itsumi_Text_1:
+	.string "Oh, you do!$"
+
+WhiteslateRoute_EventScript_Itsumi_Text_2:
+	.string "Itsumi$"
+
+WhiteslateRoute_EventScript_Itsumi_Text_3:
+	.string "I am glad we met! Your Pokémon seem\n"
+	.string "so happy.$"
+
+WhiteslateRoute_EventScript_Ryosuke_Text_0:
+	.string "I massage my Pokémon after each\n"
+	.string "battle!$"
+
+WhiteslateRoute_EventScript_Ryosuke_Text_1:
+	.string "Can somebody give me a massage?$"
+
+WhiteslateRoute_EventScript_Ryosuke_Text_2:
+	.string "Ryosuke$"
+
+WhiteslateRoute_EventScript_Ryosuke_Text_3:
+	.string "I heard there was a very talented\n"
+	.string "masseur in Saberside Town.\p"
+	.string "I want to see for myself!$"
+
+WhiteslateRoute_EventScript_Riku_Text_0:
+	.string "BOO!!\n"
+	.string "… … …Are you surprised?$"
+
+WhiteslateRoute_EventScript_Riku_Text_1:
+	.string "My loyal Pokémon!$"
+
+WhiteslateRoute_EventScript_Riku_Text_2:
+	.string "Riku$"
+
+WhiteslateRoute_EventScript_Riku_Text_3:
+	.string "I have to work on my element of\n"
+	.string "surprise.$"
+
 WhiteslateRoute_EventScript_Shuckle_Text_0:
 	.string "Cklckl!$"
 
@@ -281,8 +345,9 @@ WhiteslateRoute_Trigger_SecretBase_Text_2:
 	.string "Good job, Grovyle!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_3:
-	.string "Oh, man! You were here this whole time!\n"
-	.string "My secret base is no longer secret!$"
+	.string "Oh, man! You were here this whole\n"
+	.string "time? My secret base is no longer\l"
+	.string "secret!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_4:
 	.string "What were you doing?$"
@@ -300,8 +365,8 @@ WhiteslateRoute_Trigger_SecretBase_Text_7:
 	.string "technique to open passages to hidden\l"
 	.string "natural caves!\p"
 	.string "Not only that! Trees with low-hanging\n"
-	.string "vines, bushes… That kind of place is\l"
-	.string "perfect to build a secret base!\p"
+	.string "vines, bushes… Those kinds of places\l"
+	.string "are perfect to build a secret base!\p"
 	.string "I wrote this technique down just in\n"
 	.string "case. Here, now you can teach your\l"
 	.string "Pokémon too!$"

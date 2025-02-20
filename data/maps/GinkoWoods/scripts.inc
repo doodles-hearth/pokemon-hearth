@@ -7,6 +7,7 @@ GinkoWoods_EventScript_Toshiki::
 	speakername GinkoWoods_EventScript_Toshiki_Text_2
 	msgbox GinkoWoods_EventScript_Toshiki_Text_3
 	closemessage
+	setnamedmon SPECIES_SEWADDLE
 	release
 	end
 
