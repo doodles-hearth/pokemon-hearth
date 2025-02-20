@@ -560,7 +560,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "TranquilRoute_EventScript_Kecleon",
+      "script": "TravelingMerchant_EventScript_Keke",
       "flag": "FLAG_MET_TRAVELING_MERCHANT",
       "afternoon": false,
       "deadnight": false,

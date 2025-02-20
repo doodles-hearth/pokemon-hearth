@@ -51,20 +51,20 @@ TranquilRoute_EventScript_GrassCutscene::
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_1
 	closemessage
 	delay 16
-	applymovement 22, TranquilRoute_CutMasterWalkLeft
+	applymovement 22, TranquilRoute_EventScript_GrassCutscene_Movement_2
 	waitmovement 0
 	delay 24
 	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_2
 	closemessage
-	applymovement 22, TranquilRoute_CutMasterWalkRight
+	applymovement 22, TranquilRoute_EventScript_GrassCutscene_Movement_3
 	waitmovement 0
 	delay 24
 	delay 24
 	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_3
 	closemessage
-	applymovement 22, TranquilRoute_CutMasterWalkBackToPlayer
+	applymovement 22, TranquilRoute_EventScript_GrassCutscene_Movement_4
 	waitmovement 0
 	delay 48
 	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
@@ -409,18 +409,6 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_2:
 	goto TranquilRoute_EventScript_TravelingMerchantFirstTime_1
 
 
-TranquilRoute_EventScript_Kecleon::
-	lock
-	faceplayer
-	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL
-	speakername TranquilRoute_EventScript_Kecleon_Text_0
-	msgbox TranquilRoute_EventScript_Kecleon_Text_1
-	waitmoncry
-	closemessage
-	release
-	return
-
-
 TranquilRoute_TrainerTips2::
 	msgbox TranquilRoute_TrainerTips2_Text_0, MSGBOX_SIGN
 	return
@@ -435,22 +423,6 @@ TranquilRoute_DirectionSign_1:
 	msgbox TranquilRoute_DirectionSign_Text_0, MSGBOX_SIGN
 	return
 
-
-TranquilRoute_CutMasterWalkLeft:
-	walk_left
-	walk_left
-	step_end
-
-TranquilRoute_CutMasterWalkRight:
-	walk_right
-	walk_right
-	walk_right
-	step_end
-
-TranquilRoute_CutMasterWalkBackToPlayer:
-	walk_left
-	walk_in_place_faster_down
-	step_end
 
 TranquilRoute_EventScript_GrassCutscene_Movement_0:
 	walk_left
@@ -473,6 +445,22 @@ TranquilRoute_EventScript_GrassCutscene_Movement_1:
 	walk_left
 	walk_up
 	walk_up
+	step_end
+
+TranquilRoute_EventScript_GrassCutscene_Movement_2:
+	walk_left
+	walk_left
+	step_end
+
+TranquilRoute_EventScript_GrassCutscene_Movement_3:
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+TranquilRoute_EventScript_GrassCutscene_Movement_4:
+	walk_left
+	walk_in_place_faster_down
 	step_end
 
 TranquilRoute_EventScript_WhiteslateRoadblock_Movement_0:
@@ -782,12 +770,6 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_2:
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_3:
 	.string "Come on, Keke.$"
-
-TranquilRoute_EventScript_Kecleon_Text_0:
-	.string "Kecleon$"
-
-TranquilRoute_EventScript_Kecleon_Text_1:
-	.string "Keckecke!$"
 
 TranquilRoute_TrainerTips2_Text_0:
 	.string "Did you know?\p"

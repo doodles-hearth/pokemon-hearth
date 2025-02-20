@@ -24,7 +24,7 @@ script WhiteslateRoute_EventScript_Ryosuke {
 	)
 	speakername("Ryosuke")
 	// TODO EVA
-	msgbox(format("I heard there was a very talented masseur in Saberside Town! I want to see for myself!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("I heard there was a very talented masseur in Saberside Town.\pI want to see for myself!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -32,10 +32,10 @@ script WhiteslateRoute_EventScript_Riku {
 	trainerbattle_single(
 		TRAINER_RIKU,
 		format("BOO!!\n… … …Are you surprised?"),
-		format("Can somebody give me a massage?")
+		format("My loyal Pokémon!")
 	)
-	speakername("Ryosuke")
-	msgbox(format("I heard there was a very talented masseur in Saberside Town! I want to see for myself!"), MSGBOX_AUTOCLOSE)
+	speakername("Riku")
+	msgbox(format("I have to work on my element of surprise."), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -146,7 +146,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 
 	speakername("Man")
 	msgbox(format(
-		"Oh, man! You were here this whole time! My secret base is no longer secret!"
+		"Oh, man! You were here this whole time? My secret base is no longer secret!"
 	))
 	
 	dynmultichoice(
@@ -169,7 +169,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 				"Alright, you seem interested, so I'll let you in on the secret!\p"
 				"I taught my Grovyle a secret technique to open passages to hidden natural caves!\p"
 				"Not only that! Trees with low-hanging vines, bushes…"
-				"That kind of place is perfect to build a secret base!\p"
+				"Those kinds of places are perfect to build a secret base!\p"
 				"I wrote this technique down just in case. Here, now you can teach your Pokémon too!"
 			))
 		case 1:
