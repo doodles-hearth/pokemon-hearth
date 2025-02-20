@@ -1,14 +1,18 @@
 const struct SpritePalette gSpritePalette_GeneralFieldEffect0 = {gFieldEffectObjectPalette0, FLDEFF_PAL_TAG_GENERAL_0};
-const struct SpritePalette gSpritePalette_HearthGeneralFieldEffect0 = {gFieldEffectObjectHearthPalette0, FLDEFF_PAL_TAG_HEARTH_GENERAL_0};
 const struct SpritePalette gSpritePalette_GeneralFieldEffect1 = {gFieldEffectObjectPalette1, FLDEFF_PAL_TAG_GENERAL_1};
 
-
-// Adding new palettes for footprint sprites
+// These have to be in order according to the corresponding enum in field_effects.h
 const struct SpritePalette gSpritePalette_Footprints[] = 
 {
     {gFieldEffectObjectHearthPalette0, FLDEFF_PAL_TAG_HEARTH_GENERAL_0}, //default pal
     // In this case the palettes are identical
     {gFieldEffectObjectHearthPalette0, FLDEFF_PAL_TAG_HEARTH_GENERAL_0},
+};
+
+const struct SpritePalette gSpritePalette_TallGrass[] = 
+{
+    {gFieldEffectObjectHearthPalette0, FLDEFF_PAL_TAG_HEARTH_GENERAL_0}, //default pal
+    {gFieldEffectObjectGinkoPalette, FLDEFF_PAL_TAG_GINKO_WOODS},
 };
 
 static const union AnimCmd sAnim_Shadow[] =
@@ -141,17 +145,29 @@ static const union AnimCmd *const sAnimTable_TallGrass[] =
     sAnim_TallGrass,
 };
 
-const struct SpritePalette gSpritePalette_TallGrass = {gFieldEffectPal_TallGrass, FLDEFF_PAL_TAG_TALL_GRASS};
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass = {
     .tileTag = TAG_NONE,
-    .paletteTag = FLDEFF_PAL_TAG_TALL_GRASS,
+    .paletteTag = FLDEFF_PAL_TAG_HEARTH_GENERAL_0,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_TallGrass,
     .images = sPicTable_TallGrass,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = UpdateTallGrassFieldEffect,
 };
+
+// Ginko wood grass
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrassGinko = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_GINKO_WOODS,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_TallGrass,
+    .images = sPicTable_TallGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateTallGrassFieldEffect,
+};
+
 
 static const struct SpriteFrameImage sPicTable_Ripple[] = {
     overworld_frame(gFieldEffectObjectPic_Ripple, 2, 2, 0),

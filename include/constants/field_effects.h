@@ -123,6 +123,7 @@
 #define FLDEFFOBJ_CAVE_TRACKS_SPOT      43
 #define FLDEFFOBJ_CAVE_TRACKS_BUG       44
 #define FLDEFFOBJ_CAVE_BIKE_TIRE_TRACKS 45
+#define FLDEFFOBJ_TALL_GRASS_GINKO      45
 
 #define FLDEFF_PAL_TAG_CUT_GRASS          0x1000
 #define FLDEFF_PAL_TAG_SECRET_POWER_TREE  0x1003
@@ -141,6 +142,8 @@
 // Similar to FLDEFF_PAL_TAG_GENERAL_X, we're going to phase out
 // FLDEFF_PAL_TAG_GENERAL_X little by little to avoid breaking stuff
 #define FLDEFF_PAL_TAG_HEARTH_GENERAL_0   0x1014
+#define FLDEFF_PAL_TAG_GINKO_WOODS        0x1015
+
 #define FLDEFF_PAL_TAG_FIELD_MOVE_MON     0x8400
 
 // tile tags, for field effects that may have many copies on screen at once
@@ -149,11 +152,17 @@
 #define FLDEFF_TILE_TAG_SHADOW_LARGE        0x1402
 #define FLDEFF_TILE_TAG_SHADOW_EXTRA_LARGE  0x1403
 
-// sand defines for dynamic palettes
+// Defines for dynamic field effect palettes
 enum {
     REGULAR_SAND,
     CAVE_SAND,
     SAND_COUNT
+};
+
+enum {
+    TALL_GRASS,
+    TALL_GRASS_GINKO,
+    TALL_GRASS_COUNT
 };
 
 #endif // GUARD_FIELD_EFFECT_CONSTANTS_H

@@ -52,3 +52,9 @@
 	.4byte \palette_address
 	.4byte \function_address
 	.endm
+
+	.macro field_eff_loadfadedpal_callnative_TallGrass palette_address:req, function_address:req
+	.byte 9
+	.4byte \palette_address
+	.4byte \function_address
+	.endm

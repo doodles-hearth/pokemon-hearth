@@ -292,7 +292,8 @@ bool8 (*const gFieldEffectScriptFuncs[])(u8 **, u32 *) =
     FieldEffectCmd_loadgfx_callnative,
     FieldEffectCmd_loadtiles_callnative,
     FieldEffectCmd_loadfadedpal_callnative,
-    FieldEffectCmd_loadfadedpal_callnative_Footprints
+    FieldEffectCmd_loadfadedpal_callnative_Footprints,
+    FieldEffectCmd_loadfadedpal_callnative_TallGrass
 };
 
 static const struct OamData sOam_64x64 =
@@ -778,6 +779,14 @@ bool8 FieldEffectCmd_loadfadedpal_callnative_Footprints(u8 **script, u32 *val)
 {
     (*script)++;
     FieldEffectScript_LoadFadedPalette_Footprints(script);
+    FieldEffectScript_CallNative(script, val);
+    return TRUE;
+}
+
+bool8 FieldEffectCmd_loadfadedpal_callnative_TallGrass(u8 **script, u32 *val)
+{
+    (*script)++;
+    FieldEffectScript_LoadFadedPalette_TallGrass(script);
     FieldEffectScript_CallNative(script, val);
     return TRUE;
 }
@@ -4066,7 +4075,7 @@ void FieldEffectScript_LoadFadedPalette_Footprints(u8 **script)
     int palId = 0;
     struct SpritePalette *palettes = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
     // Dynamically change footprint subsprites based on tileset
-    DebugPrintf("pals - current map secondary tileset = %d", GetSecondaryTilesetIdCurrentMap());
+    DebugPrintf("FOOT pals - current map secondary tileset = %d", GetSecondaryTilesetIdCurrentMap());
     switch (GetSecondaryTilesetIdCurrentMap())
     {
         case TILESET_SILVER_TUNNEL:
@@ -4076,7 +4085,31 @@ void FieldEffectScript_LoadFadedPalette_Footprints(u8 **script)
             palId = REGULAR_SAND;
             break;
     }
-    DebugPrintf("palId = %d", palId);
+    DebugPrintf("FOOT palId = %d", palId);
+    LoadSpritePalette(&palettes[palId]);
+    UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palettes[palId].tag), FALSE);
+    (*script) += 4;
+}
+
+
+void FieldEffectScript_LoadFadedPalette_TallGrass(u8 **script)
+{
+    int palId = 0;
+    struct SpritePalette *palettes = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
+    // Dynamically change footprint subsprites based on tileset
+    DebugPrintf("GRASS pals - current map secondary tileset = %d", GetSecondaryTilesetIdCurrentMap());
+    switch (GetSecondaryTilesetIdCurrentMap())
+    {
+        case TILESET_GINKO_WOODS:
+            DebugPrintf("Ginko grass pal");
+            palId = TALL_GRASS_GINKO;
+            break;
+        default:
+            DebugPrintf("Default grass pal");
+            palId = TALL_GRASS;
+            break;
+    }
+    DebugPrintf("GRASS palId = %d", palId);
     LoadSpritePalette(&palettes[palId]);
     UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palettes[palId].tag), FALSE);
     (*script) += 4;

@@ -18,6 +18,8 @@ u16 GetSecondaryTilesetIdCurrentMap(void)
 {
     if (gMapHeader.mapLayout->secondaryTileset == &gTileset_SilverTunnel)
         return TILESET_SILVER_TUNNEL;
+    if (gMapHeader.mapLayout->secondaryTileset == &gTileset_GinkoWoods)
+        return TILESET_GINKO_WOODS;
     else
         return TILESET_SECONDARY_VANILLA;
 }

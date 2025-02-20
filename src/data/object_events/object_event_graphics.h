@@ -381,7 +381,13 @@ const u32 gFieldEffectObjectPic_Ash[] = INCBIN_U32("graphics/field_effects/pics/
 const u32 gFieldEffectObjectPic_Arrow[] = INCBIN_U32("graphics/field_effects/pics/arrow.4bpp");
 const u16 gFieldEffectObjectPalette0[] = INCBIN_U16("graphics/field_effects/palettes/general_0.gbapal");
 const u16 gFieldEffectObjectPalette1[] = INCBIN_U16("graphics/field_effects/palettes/general_1.gbapal");
+// 0: Transparency
+// 1-2: sand
+// 3-4: greys
+// 5-11: foliage
+// 12-15: free real estate
 const u16 gFieldEffectObjectHearthPalette0[] = INCBIN_U16("graphics/field_effects/palettes/hearth_general_pal.gbapal");
+const u16 gFieldEffectObjectGinkoPalette[] = INCBIN_U16("graphics/field_effects/palettes/ginko_woods.gbapal");
 const u32 gFieldEffectObjectPic_GroundImpactDust[] = INCBIN_U32("graphics/field_effects/pics/ground_impact_dust.4bpp");
 const u32 gFieldEffectObjectPic_JumpTallGrass[] = INCBIN_U32("graphics/field_effects/pics/jump_tall_grass.4bpp");
 const u32 gUnusedGrass3[] = INCBIN_U32("graphics/field_effects/pics/unused_grass_3.4bpp");
