@@ -1,5 +1,15 @@
 const struct SpritePalette gSpritePalette_GeneralFieldEffect0 = {gFieldEffectObjectPalette0, FLDEFF_PAL_TAG_GENERAL_0};
+const struct SpritePalette gSpritePalette_HearthGeneralFieldEffect0 = {gFieldEffectObjectHearthPalette0, FLDEFF_PAL_TAG_HEARTH_GENERAL_0};
 const struct SpritePalette gSpritePalette_GeneralFieldEffect1 = {gFieldEffectObjectPalette1, FLDEFF_PAL_TAG_GENERAL_1};
+
+
+// Adding new palettes for footprint sprites
+const struct SpritePalette gSpritePalette_Footprints[] = 
+{
+    {gFieldEffectObjectHearthPalette0, FLDEFF_PAL_TAG_HEARTH_GENERAL_0}, //default pal
+    // In this case the palettes are identical
+    {gFieldEffectObjectHearthPalette0, FLDEFF_PAL_TAG_HEARTH_GENERAL_0},
+};
 
 static const union AnimCmd sAnim_Shadow[] =
 {
@@ -417,7 +427,7 @@ static const union AnimCmd *const sAnimTable_SandFootprints[] =
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_SandFootprints = {
     .tileTag = TAG_NONE,
-    .paletteTag = FLDEFF_PAL_TAG_GENERAL_0,
+    .paletteTag = FLDEFF_PAL_TAG_HEARTH_GENERAL_0,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_SandFootprints,
     .images = sPicTable_SandFootprints,
@@ -599,6 +609,94 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_SlitherTracks = {
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = UpdateFootprintsTireTracksFieldEffect,
 };
+
+// CAVE FOOTPRINTS FOR FEET AND PAWS AND BIKES AND SHIT
+
+static const struct SpriteFrameImage sPicTable_CaveFootprints[] = {
+    overworld_frame(gFieldEffectObjectPic_CaveFootprints, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_CaveFootprints, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_CaveFootprints, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_CaveFootprints, 2, 2, 3),
+    overworld_frame(gFieldEffectObjectPic_CaveFootprints, 2, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_CaveBugTracks[] = {
+    overworld_frame(gFieldEffectObjectPic_CaveBugTracks, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_CaveBugTracks, 2, 2, 1),
+};
+
+static const struct SpriteFrameImage sPicTable_CaveSpotTracks[] = {
+    overworld_frame(gFieldEffectObjectPic_CaveSpotTracks, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_CaveSpotTracks, 2, 2, 1),
+};
+
+static const struct SpriteFrameImage sPicTable_CaveBikeTireTracks[] = {
+    overworld_frame(gFieldEffectObjectPic_CaveBikeTireTracks, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_CaveBikeTireTracks, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_CaveBikeTireTracks, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_CaveBikeTireTracks, 2, 2, 3),
+};
+
+
+static const struct SpriteFrameImage sPicTable_CaveSlitherTracks[] = {
+    overworld_frame(gFieldEffectObjectPic_CaveSlitherTracks, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_CaveSlitherTracks, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_CaveSlitherTracks, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_CaveSlitherTracks, 2, 2, 3),
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_CaveFootprints = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_HEARTH_GENERAL_0,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_SandFootprints,
+    .images = sPicTable_CaveFootprints,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateFootprintsTireTracksFieldEffect,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_CaveBugTracks = {
+    .tileTag = 0xFFFF,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_0,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_DeepSandFootprints,
+    .images = sPicTable_CaveBugTracks,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateFootprintsTireTracksFieldEffect,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_CaveSpotTracks = {
+    .tileTag = 0xFFFF,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_0,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_DeepSandFootprints,
+    .images = sPicTable_CaveSpotTracks,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateFootprintsTireTracksFieldEffect,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_CaveBikeTireTracks = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_0,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_BikeTireTracks,
+    .images = sPicTable_CaveBikeTireTracks,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateFootprintsTireTracksFieldEffect,
+};
+
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_CaveSlitherTracks = {
+    .tileTag = 0xFFFF,
+    .paletteTag = FLDEFF_PAL_TAG_GENERAL_0,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_BikeTireTracks,
+    .images = sPicTable_CaveSlitherTracks,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateFootprintsTireTracksFieldEffect,
+};
+
+// END OF CAVE FOOTPRINTS FOR FEET AND PAWS AND BIKES AND SHIT
 
 static const struct SpriteFrameImage sPicTable_JumpBigSplash[] = {
     overworld_frame(gFieldEffectObjectPic_JumpBigSplash, 2, 2, 0),

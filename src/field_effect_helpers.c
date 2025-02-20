@@ -15,6 +15,8 @@
 #include "constants/field_effects.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "script.h"
+#include "tilesets.h"
 
 #define OBJ_EVENT_PAL_TAG_NONE 0x11FF // duplicate of define in event_object_movement.c
 #define PAL_TAG_REFLECTION_OFFSET 0x2000 // reflection tag value is paletteTag + 0x2000
@@ -686,9 +688,22 @@ void UpdateShortGrassFieldEffect(struct Sprite *sprite)
 u32 FldEff_SandFootprints(void)
 {
     u8 spriteId;
+    s16 x = gFieldEffectArguments[0];
+    s16 y = gFieldEffectArguments[1];
+    s16 subpriority = gFieldEffectArguments[2];
+    SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
 
-    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SAND_FOOTPRINTS], gFieldEffectArguments[0], gFieldEffectArguments[1], gFieldEffectArguments[2]);
+    DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap());
+    switch (GetSecondaryTilesetIdCurrentMap())
+    {
+        case TILESET_SILVER_TUNNEL:
+            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_CAVE_FOOTPRINTS], x, y, subpriority);
+            break;
+        default:
+            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SAND_FOOTPRINTS], x, y, subpriority);
+            break;
+    }
+
     if (spriteId != MAX_SPRITES)
     {
         struct Sprite *sprite = &gSprites[spriteId];
@@ -722,8 +737,21 @@ u32 FldEff_TracksBug(void)
     u8 spriteId;
     struct Sprite *sprite;
 
-    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TRACKS_BUG], gFieldEffectArguments[0], gFieldEffectArguments[1], gFieldEffectArguments[2]);
+    s16 x = gFieldEffectArguments[0];
+    s16 y = gFieldEffectArguments[1];
+    s16 subpriority = gFieldEffectArguments[2];
+    SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
+
+    DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap());
+    switch (GetSecondaryTilesetIdCurrentMap())
+    {
+        case TILESET_SILVER_TUNNEL:
+            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_CAVE_TRACKS_BUG], x, y, subpriority);
+            break;
+        default:
+            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TRACKS_BUG], x, y, subpriority);
+            break;
+    }
     if (spriteId != MAX_SPRITES)
     {
         sprite = &gSprites[spriteId];
@@ -740,8 +768,22 @@ u32 FldEff_TracksSpot(void)
     u8 spriteId;
     struct Sprite *sprite;
 
-    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TRACKS_SPOT], gFieldEffectArguments[0], gFieldEffectArguments[1], gFieldEffectArguments[2]);
+    s16 x = gFieldEffectArguments[0];
+    s16 y = gFieldEffectArguments[1];
+    s16 subpriority = gFieldEffectArguments[2];
+    SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
+
+    DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap());
+    switch (GetSecondaryTilesetIdCurrentMap())
+    {
+        case TILESET_SILVER_TUNNEL:
+            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_CAVE_TRACKS_SPOT], x, y, subpriority);
+            break;
+        default:
+            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TRACKS_SPOT], x, y, subpriority);
+            break;
+    }
+
     if (spriteId != MAX_SPRITES)
     {
         sprite = &gSprites[spriteId];
@@ -757,8 +799,22 @@ u32 FldEff_BikeTireTracks(void)
 {
     u8 spriteId;
 
-    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIKE_TIRE_TRACKS], gFieldEffectArguments[0], gFieldEffectArguments[1], gFieldEffectArguments[2]);
+    s16 x = gFieldEffectArguments[0];
+    s16 y = gFieldEffectArguments[1];
+    s16 subpriority = gFieldEffectArguments[2];
+    SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
+
+    DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap());
+    switch (GetSecondaryTilesetIdCurrentMap())
+    {
+        case TILESET_SILVER_TUNNEL:
+            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_CAVE_BIKE_TIRE_TRACKS], x, y, subpriority);
+            break;
+        default:
+            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIKE_TIRE_TRACKS], x, y, subpriority);
+            break;
+    }
+
     if (spriteId != MAX_SPRITES)
     {
         struct Sprite *sprite = &gSprites[spriteId];
@@ -775,8 +831,22 @@ u32 FldEff_TracksSlither(void)
     u8 spriteId;
     struct Sprite *sprite;
 
-    SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TRACKS_SLITHER], gFieldEffectArguments[0], gFieldEffectArguments[1], gFieldEffectArguments[2]);
+    s16 x = gFieldEffectArguments[0];
+    s16 y = gFieldEffectArguments[1];
+    s16 subpriority = gFieldEffectArguments[2];
+    SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
+
+    DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap());
+    switch (GetSecondaryTilesetIdCurrentMap())
+    {
+        case TILESET_SILVER_TUNNEL:
+            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_CAVE_TRACKS_SLITHER], x, y, subpriority);
+            break;
+        default:
+            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TRACKS_SLITHER], x, y, subpriority);
+            break;
+    }
+
     if (spriteId != MAX_SPRITES)
     {
         sprite = &gSprites[spriteId];

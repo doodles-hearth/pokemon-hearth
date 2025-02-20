@@ -118,6 +118,11 @@
 #define FLDEFFOBJ_TRACKS_SPOT           38
 #define FLDEFFOBJ_TRACKS_BUG            39
 #define FLDEFFOBJ_CAVE_DUST             40
+#define FLDEFFOBJ_CAVE_FOOTPRINTS       41
+#define FLDEFFOBJ_CAVE_TRACKS_SLITHER   42
+#define FLDEFFOBJ_CAVE_TRACKS_SPOT      43
+#define FLDEFFOBJ_CAVE_TRACKS_BUG       44
+#define FLDEFFOBJ_CAVE_BIKE_TIRE_TRACKS 45
 
 #define FLDEFF_PAL_TAG_CUT_GRASS          0x1000
 #define FLDEFF_PAL_TAG_SECRET_POWER_TREE  0x1003
@@ -133,6 +138,9 @@
 #define FLDEFF_PAL_TAG_TALL_GRASS         0x1011
 #define FLDEFF_PAL_TAG_UNKNOWN            0x1012
 #define FLDEFF_PAL_TAG_CAVE_DUST          0x1013
+// Similar to FLDEFF_PAL_TAG_GENERAL_X, we're going to phase out
+// FLDEFF_PAL_TAG_GENERAL_X little by little to avoid breaking stuff
+#define FLDEFF_PAL_TAG_HEARTH_GENERAL_0   0x1014
 #define FLDEFF_PAL_TAG_FIELD_MOVE_MON     0x8400
 
 // tile tags, for field effects that may have many copies on screen at once
@@ -140,5 +148,12 @@
 #define FLDEFF_TILE_TAG_SHADOW_MEDIUM       0x1401
 #define FLDEFF_TILE_TAG_SHADOW_LARGE        0x1402
 #define FLDEFF_TILE_TAG_SHADOW_EXTRA_LARGE  0x1403
+
+// sand defines for dynamic palettes
+enum {
+    REGULAR_SAND,
+    CAVE_SAND,
+    SAND_COUNT
+};
 
 #endif // GUARD_FIELD_EFFECT_CONSTANTS_H

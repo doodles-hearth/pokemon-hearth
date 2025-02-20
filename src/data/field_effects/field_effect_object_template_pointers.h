@@ -10,6 +10,10 @@ extern const struct SpriteTemplate gFieldEffectObjectTemplate_Arrow;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_GroundImpactDust;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpTallGrass;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_SandFootprints;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_CaveFootprints;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_CaveSlitherTracks;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_CaveSpotTracks;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_CaveBugTracks;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpBigSplash;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_Splash;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpSmallSplash;
@@ -83,4 +87,8 @@ const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_TRACKS_SPOT]           = &gFieldEffectObjectTemplate_SpotTracks,
     [FLDEFFOBJ_TRACKS_BUG]            = &gFieldEffectObjectTemplate_BugTracks,
     [FLDEFFOBJ_CAVE_DUST]             = &gFieldEffectObjectTemplate_CaveDust,
+    [FLDEFFOBJ_CAVE_FOOTPRINTS]       = &gFieldEffectObjectTemplate_CaveFootprints,
+    [FLDEFFOBJ_CAVE_TRACKS_SLITHER]   = &gFieldEffectObjectTemplate_CaveSlitherTracks,
+    [FLDEFFOBJ_CAVE_TRACKS_SPOT]      = &gFieldEffectObjectTemplate_CaveSpotTracks,
+    [FLDEFFOBJ_CAVE_TRACKS_BUG]       = &gFieldEffectObjectTemplate_CaveBugTracks,
 };

@@ -752,6 +752,9 @@ $(FLDEFFGFXDIR)/sand_disguise_placeholder.4bpp: %.4bpp: %.png
 $(FLDEFFGFXDIR)/sand_footprints.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
+$(FLDEFFGFXDIR)/cave_footprints.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
 $(FLDEFFGFXDIR)/short_grass.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 

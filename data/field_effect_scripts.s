@@ -139,7 +139,7 @@ gFieldEffectScript_JumpTallGrass::
 	field_eff_end
 
 gFieldEffectScript_SandFootprints::
-	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_SandFootprints
+	field_eff_loadfadedpal_callnative_Footprints gSpritePalette_Footprints, FldEff_SandFootprints
 	field_eff_end
 
 gFieldEffectScript_JumpBigSplash::

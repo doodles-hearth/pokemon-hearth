@@ -46,3 +46,9 @@
 	.byte  \color_map_type
 	.4byte \function_address
 	.endm
+
+	.macro field_eff_loadfadedpal_callnative_Footprints palette_address:req, function_address:req
+	.byte 8
+	.4byte \palette_address
+	.4byte \function_address
+	.endm

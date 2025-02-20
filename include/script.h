@@ -61,6 +61,8 @@ const u8 *GetRamScript(u8 objectId, const u8 *script);
 bool32 ValidateSavedRamScript(void);
 u8 *GetSavedRamScriptIfValid(void);
 void InitRamScript_NoObjectEvent(u8 *script, u16 scriptSize);
+u16 GetPrimaryTilesetIdCurrentMap(void);
+u16 GetSecondaryTilesetIdCurrentMap(void);
 
 // srccmd.h
 void SetMovingNpcId(u16 npcId);
