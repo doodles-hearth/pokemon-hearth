@@ -141,7 +141,7 @@
 #define FLDEFF_PAL_TAG_CAVE_DUST          0x1013
 // Similar to FLDEFF_PAL_TAG_GENERAL_X, we're going to phase out
 // FLDEFF_PAL_TAG_GENERAL_X little by little to avoid breaking stuff
-#define FLDEFF_PAL_TAG_HEARTH_GENERAL_0   0x1014
+#define FLDEFF_PAL_TAG_HEARTH_FOLIAGE   0x1014
 #define FLDEFF_PAL_TAG_GINKO_WOODS        0x1015
 
 #define FLDEFF_PAL_TAG_FIELD_MOVE_MON     0x8400

@@ -37,7 +37,6 @@
 #include "recorded_battle.h"
 #include "rtc.h"
 #include "sound.h"
-#include "sprite.h"
 #include "string_util.h"
 #include "strings.h"
 #include "task.h"
@@ -861,6 +860,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 #include "data/pokemon/form_species_tables.h"
 #include "data/pokemon/form_change_tables.h"
 #include "data/pokemon/form_change_table_pointers.h"
+#include "data/object_events/object_event_pic_tables_followers.h"
 
 #include "data/pokemon/species_info.h"
 
@@ -3710,9 +3710,19 @@ const u8 *GetSpeciesName(u16 species, enum SpeciesNameCheck nameCheck)
     species = SanitizeSpeciesId(species);
     if (gSpeciesInfo[species].speciesName[0] == 0)
         return gSpeciesInfo[SPECIES_NONE].speciesName;
-    if (P_UNKNOWN_MON_NAMES == TRUE && nameCheck == DO_NAME_CHECK
-     && GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_NAMED) == FALSE)
+
+#if TESTING
+    DebugPrintf("WE ARE TESTING", gAnimMoveIndex);
+    return gSpeciesInfo[species].speciesName;
+#endif
+    DebugPrintf("WE ARE NOT TESTING", gAnimMoveIndex);
+    if (
+        P_UNKNOWN_MON_NAMES == TRUE
+        && nameCheck == DO_NAME_CHECK
+        && GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_NAMED) == FALSE
+    ) {
         return gSpeciesInfo[species].unknownName;
+    }
     return gSpeciesInfo[species].speciesName;
 }
 
@@ -6306,15 +6316,8 @@ const u8 *GetTrainerPartnerName(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     {
-        if (gPartnerTrainerId == TRAINER_PARTNER(PARTNER_SAMURAI))
-        {
-            return GetTrainerNameFromId(PARTNER_SAMURAI);
-        }
-        else
-        {
-            GetFrontierTrainerName(gStringVar1, gPartnerTrainerId);
-            return gStringVar1;
-        }
+        GetFrontierTrainerName(gStringVar1, gPartnerTrainerId);
+        return gStringVar1;
     }
     else
     {

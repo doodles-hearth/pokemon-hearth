@@ -1668,23 +1668,10 @@ static void SpriteCB_HitAnimHealthoxEffect(struct Sprite *sprite)
 
 void LoadBallGfx(u8 ballId)
 {
-    u16 var;
-
     if (GetSpriteTileStartByTag(gBallSpriteSheets[ballId].tag) == 0xFFFF)
     {
         LoadCompressedSpriteSheetUsingHeap(&gBallSpriteSheets[ballId]);
         LoadCompressedSpritePaletteUsingHeap(&gBallSpritePalettes[ballId]);
-    }
-
-    switch (ballId)
-    {
-    case BALL_POKE ... BALL_MASTER:
-    case BALL_NET ... BALL_NEST:
-    case BALL_REPEAT:
-    case BALL_SAFARI:
-        var = GetSpriteTileStartByTag(gBallSpriteSheets[ballId].tag);
-        LZDecompressVram(gOpenPokeballGfx, (void *)(OBJ_VRAM0 + 0x100 + var * 32));
-        break;
     }
 }
 

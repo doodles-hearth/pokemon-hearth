@@ -679,7 +679,7 @@
       "y": 57,
       "elevation": 3,
       "item": "ITEM_CARBOS",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_114_CARBOS"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "secret_base",

@@ -45,7 +45,7 @@
 #define OVERWORLD_PAL_FEMALE(...)
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
 
-#define OVERWORLD_DATA(objEventPic, _size, shadow, _tracks, _anims)                                                                     \
+#define OVERWORLD_DATA(picTable, _size, shadow, _tracks, _anims)                                                                     \
 {                                                                                                                                       \
     .tileTag = TAG_NONE,                                                                                                                \
     .paletteTag = OBJ_EVENT_PAL_TAG_DYNAMIC,                                                                                            \
@@ -61,7 +61,7 @@
     .oam = (_size == SIZE_32x32 ? &gObjectEventBaseOam_32x32 : &gObjectEventBaseOam_64x64),                                             \
     .subspriteTables = (_size == SIZE_32x32 ? sOamTables_32x32 : sOamTables_64x64),                                                     \
     .anims = _anims,                                                                                                                    \
-    .images = (const struct SpriteFrameImage[]) { overworld_ascending_frames(objEventPic, SIZE_32x32 ? 4 : 8, SIZE_32x32 ? 4 : 8), },   \
+    .images = picTable,                                                                                                                 \
     .affineAnims = gDummySpriteAffineAnimTable,                                                                                         \
 }
 
@@ -140,7 +140,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             .oam = &gObjectEventBaseOam_32x32,
             .subspriteTables = sOamTables_32x32,
             .anims = sAnimTable_Following,
-            .images = (const struct SpriteFrameImage[]) { overworld_ascending_frames(gObjectEventPic_Substitute, 4, 4), },
+            .images = sPicTable_Substitute,
             .affineAnims = gDummySpriteAffineAnimTable,
         },
     #endif
@@ -226,7 +226,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .iconSprite = gMonIcon_Kotora,
         FOOTPRINT(Shinx)
         OVERWORLD(
-            gObjectEventPic_Kotora,
+            sPicTable_Kotora,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
@@ -289,7 +289,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .iconSprite = gMonIcon_Raitora,
         FOOTPRINT(Luxio)
         OVERWORLD(
-            gObjectEventPic_Raitora,
+            sPicTable_Raitora,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
@@ -360,7 +360,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .iconSprite = gMonIcon_Gaotora,
         FOOTPRINT(Luxio)
         OVERWORLD(
-            gObjectEventPic_Gaotora,
+            sPicTable_Gaotora,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,

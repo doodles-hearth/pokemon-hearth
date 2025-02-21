@@ -39,10 +39,76 @@ script WhiteslateRoute_EventScript_Riku {
 	end
 }
 
+script WhiteslateRoute_EventScript_Tomomi {
+	trainerbattle_single(
+		TRAINER_TOMOMI,
+		format("Attack, my loyal servants!"),
+		format("Retreat! Retreat!")
+	)
+	speakername("Tomomi")
+	msgbox(format("Deer Pokémon are my very favorite. Such strength! Such elegance!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script WhiteslateRoute_EventScript_Yono {
+	trainerbattle_single(
+		TRAINER_YONO,
+		format("Huff… Puff… I walk several hours everyday!"),
+		format("Let an old woman catch her breath!…")
+	)
+	speakername("Yono")
+	msgbox(format("Walking is good for the joints. It keeps me young!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script WhiteslateRoute_EventScript_Sumi {
+	trainerbattle_single(
+		TRAINER_SUMI,
+		format("Excuse me… What's with that white hand on your shoulder?"),
+		format("Heeeeeee!")
+	)
+	speakername("Sumi")
+	msgbox(format("You don't scare easily, do you?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script WhiteslateRoute_EventScript_Tomiko {
+	trainerbattle_single(
+		TRAINER_TOMIKO,
+		format("Weird Pokémon are my favorite!"),
+		format("I don't care if they're not the strongest!")
+	)
+
+	setspeakertomonname(SPECIES_SPINDA)
+	speakername("Tomiko")
+	msgbox(format("I love Spinda. Doesn't it look silly and adorable?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script WhiteslateRoute_EventScript_Utaro {
+	trainerbattle_single(
+		TRAINER_UTARO,
+		format("I love cool Pokémon!"),
+		format("At least I lost with style!")
+	)
+	setspeakertomonname(SPECIES_SEVIPER)
+	speakername("Utaro")
+	msgbox(format("Seviper is so darn cool! I mean, it's got a sword on its tail!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script WhiteslateRoute_EventScript_ShuckleGirl {
+	setnamedmon(SPECIES_SHUCKLE)
+	speakername("Woman")
+	msgbox(format("This Shuckle lives around here. I feed him fresh berries every morning!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
 script WhiteslateRoute_EventScript_Shuckle {
 	lock
 	faceplayer
-	waitse
+	setseenmon(SPECIES_SHUCKLE)
+	setspeakertomonname(SPECIES_SHUCKLE)
 	playmoncry(SPECIES_SHUCKLE, CRY_MODE_NORMAL)
 	msgbox(format(
 		"Cklckl!"
@@ -55,7 +121,7 @@ script WhiteslateRoute_EventScript_Shuckle {
 		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48)
 		waitmovement(0)
 		msgbox(format(
-			"…Oh? Shuckle is giving you something."
+			"…Oh? The Pokémon is giving you something."
 		))
 		closemessage
 

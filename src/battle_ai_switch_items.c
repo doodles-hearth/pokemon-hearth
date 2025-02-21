@@ -908,14 +908,8 @@ static bool32 CanMonSurviveHazardSwitchin(u32 battler)
             for (j = 0; j < MAX_MON_MOVES; j++)
             {
                 aiMove = GetMonData(&party[i], MON_DATA_MOVE1 + j, NULL);
-                u32 aiEffect = GetMoveEffect(aiMove);
-                if (aiEffect == EFFECT_RAPID_SPIN
-                 || (B_DEFOG_EFFECT_CLEARING >= GEN_6 && aiEffect == EFFECT_DEFOG)
-                 || aiEffect == EFFECT_TIDY_UP)
-                {
-                    // Have a mon that can clear the hazards, so switching out is okay
+                if (IsHazardClearingMove(aiMove)) // Have a mon that can clear the hazards, so switching out is okay
                     return TRUE;
-                }
             }
         }
         // Faints to hazards and party can't clear them, don't switch out

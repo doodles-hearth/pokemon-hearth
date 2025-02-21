@@ -44,7 +44,7 @@
 #define SHOULD_SWITCH_REGENERATOR_STATS_RAISED_PERCENTAGE           20
 
 // AI held item-based move scoring
-#define BLUNDER_POLICY_ACCURACY_THRESHOLD                     75 // Moves with accuracy equal below this value are prioritized when holding Blunder Policy  
+#define LOW_ACCURACY_THRESHOLD                                  75 // Moves with accuracy equal OR below this value are considered low accuracy 
 
 // AI prediction chances
 #define PREDICT_SWITCH_CHANCE                                   50

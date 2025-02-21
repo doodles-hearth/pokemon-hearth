@@ -106,7 +106,7 @@ struct MoveInfo
     bool32 sketchBanned:1;
     //Other
     bool32 validApprenticeMove:1;
-    u32 padding:18;
+    u32 padding:3;
     // end of word
 
     union {

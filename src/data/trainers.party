@@ -1028,22 +1028,34 @@ Level: 20
 - Hone Claws
 - Snarl
 
-=== TRAINER_VIOLET ===
-Name: VIOLET
-Class: Aroma Lady
-Pic: Aroma Lady
+=== TRAINER_TOMOMI ===
+Name: Tomomi
+Class: Beauty
+Pic: Beauty
 Gender: Female
 Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Roselia
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Deerling Spring
+Level: 17
+- Sand Attack
+- Double Kick
+- Camouflage
+- Mega Drain
 
-Gloom
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Deerling Autumn
+Level: 18
+- Leech Seed
+- Feint Attack
+- Aromatherapy
+
+Stantler
+Level: 19
+- Stomp
+- Astonish
+- Sand Attack
+- Leer
 
 === TRAINER_ROSE_2 ===
 Name: ROSE
@@ -1142,63 +1154,49 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Sand Attack
 - Poison Sting
 
-=== TRAINER_CHIP ===
-Name: CHIP
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
+=== TRAINER_YONO ===
+Name: Yono
+Class: Old Lady
+Pic: Expert F
+Gender: Female
+Music: Rich
 Double Battle: No
 AI: Check Bad Move
 
-Baltoy
-Level: 27
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Psybeam
-- Self Destruct
-- Sandstorm
-- Ancient Power
+Poltchageist
+Level: 20
+- Life Dew
+- Astonish
+- Foul Play
+- Mega Drain
 
-Sandshrew
-Level: 27
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
+Sudowoodo
+Level: 20
+- Low Kick
+- Mimic
+- Rock Throw
 
-Sandslash
-Level: 27
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
-
-=== TRAINER_FOSTER ===
-Name: FOSTER
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
+=== TRAINER_SUMI ===
+Name: Sumi
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Sandshrew
-Level: 25
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
+Gastly
+Level: 21
+- Mean Look
+- Night Shade
+- Curse
+- Hex
 
-Sandslash
-Level: 25
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
+Litwick
+Level: 20
+- Will O Wisp
+- Fire Spin
+- Smog
 
 === TRAINER_DUSTY_2 ===
 Name: DUSTY
@@ -1395,31 +1393,49 @@ Azurill
 Level: 12
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
-=== TRAINER_AUSTINA ===
-Name: AUSTINA
-Class: Tuber F
-Pic: Tuber F
+=== TRAINER_TOMIKO ===
+Name: Tomiko
+Class: Lass
+Pic: Lass
 Gender: Female
-Music: Girl
+Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Marill
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Drowzee
+Level: 21
+- Poison Gas
+- Meditate
+- Confusion
+- Disable
 
-=== TRAINER_GWEN ===
-Name: GWEN
-Class: Tuber F
-Pic: Tuber F
-Gender: Female
-Music: Girl
+Spinda
+Level: 22
+- Feint Attack
+- Dizzy Punch
+- Copycat
+
+=== TRAINER_UTARO ===
+Name: Utaro
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Marill
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Zangoose
+Level: 20
+- Pursuit
+- Fury Cutter
+- Hone Claws
+
+Seviper
+Level: 19
+- Bite
+- Poison Tail
+- Wrap
+- Screech
 
 === TRAINER_LOLA_2 ===
 Name: LOLA
