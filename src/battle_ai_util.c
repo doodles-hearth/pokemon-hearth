@@ -533,6 +533,20 @@ static inline s32 SetFixedMoveBasePower(u32 battlerAtk, u32 move)
     return fixedBasePower;
 }
 
+static inline void AI_StoreBattlerTypes(u32 battlerAtk, u32 *types)
+{
+    types[0] = gBattleMons[battlerAtk].types[0];
+    types[1] = gBattleMons[battlerAtk].types[1];
+    types[2] = gBattleMons[battlerAtk].types[2];
+}
+
+static inline void AI_RestoreBattlerTypes(u32 battlerAtk, u32 *types)
+{
+    gBattleMons[battlerAtk].types[0] = types[0];
+    gBattleMons[battlerAtk].types[1] = types[1];
+    gBattleMons[battlerAtk].types[2] = types[2];
+}
+
 static inline void CalcDynamicMoveDamage(struct DamageCalculationData *damageCalcData, s32 *expectedDamage, s32 *minimumDamage, u32 holdEffectAtk, u32 abilityAtk)
 {
     u32 move = damageCalcData->move;
@@ -658,6 +672,9 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
     {
         s32 critChanceIndex, fixedBasePower;
 
+        u32 types[3];
+        AI_StoreBattlerTypes(battlerAtk, types);
+
         ProteanTryChangeType(battlerAtk, aiData->abilities[battlerAtk], move, moveType);
         fixedBasePower = SetFixedMoveBasePower(battlerAtk, move);
 
@@ -735,6 +752,8 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
                                   aiData->holdEffects[battlerAtk],
                                   aiData->abilities[battlerAtk]);
         }
+
+        AI_RestoreBattlerTypes(battlerAtk, types);
     }
     else
     {
@@ -1068,8 +1087,15 @@ s32 AI_WhoStrikesFirst(u32 battlerAI, u32 battler, u32 moveConsidered)
     u32 abilityAI = AI_DATA->abilities[battlerAI];
     u32 abilityPlayer = AI_DATA->abilities[battler];
 
-    if (GetBattleMovePriority(battlerAI, moveConsidered) > 0)
+    u32 predictedMove = AI_DATA->lastUsedMove[battler]; // TODO update for move prediction
+
+    s8 aiPriority = GetBattleMovePriority(battlerAI, moveConsidered);
+    s8 playerPriority = GetBattleMovePriority(battler, predictedMove);
+
+    if (aiPriority > playerPriority)
         return AI_IS_FASTER;
+    else if (aiPriority < playerPriority)
+        return AI_IS_SLOWER;
 
     speedBattlerAI = GetBattlerTotalSpeedStatArgs(battlerAI, abilityAI, holdEffectAI);
     speedBattler   = GetBattlerTotalSpeedStatArgs(battler, abilityPlayer, holdEffectPlayer);
@@ -1445,8 +1471,10 @@ bool32 IsConfusionMoveEffect(u32 moveEffect)
     }
 }
 
-bool32 IsHazardMoveEffect(u32 moveEffect)
+bool32 IsHazardMove(u32 move)
 {
+    // Hazard setting moves like Stealth Rock, Spikes, etc.
+    u32 i, moveEffect = gMovesInfo[move].effect;
     switch (moveEffect)
     {
     case EFFECT_SPIKES:
@@ -1454,9 +1482,48 @@ bool32 IsHazardMoveEffect(u32 moveEffect)
     case EFFECT_STICKY_WEB:
     case EFFECT_STEALTH_ROCK:
         return TRUE;
-    default:
-        return FALSE;
     }
+
+    u32 additionalEffectCount = GetMoveAdditionalEffectCount(move);
+    for (i = 0; i < additionalEffectCount; i++)
+    {
+        const struct AdditionalEffect *additionalEffect = GetMoveAdditionalEffectById(move, i);
+        switch (additionalEffect->moveEffect)
+        {
+        case MOVE_EFFECT_STEELSURGE:
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+bool32 IsHazardClearingMove(u32 move)
+{
+    // Hazard clearing effects like Rapid Spin, Tidy Up, etc.
+    u32 i, moveEffect = gMovesInfo[move].effect;
+    switch (moveEffect)
+    {
+    case EFFECT_RAPID_SPIN:
+    case EFFECT_TIDY_UP:
+        return TRUE;
+    case EFFECT_DEFOG:
+        if (B_DEFOG_EFFECT_CLEARING >= GEN_6)
+            return TRUE;
+        break;
+    }
+
+    u32 additionalEffectCount = GetMoveAdditionalEffectCount(move);
+    for (i = 0; i < additionalEffectCount; i++)
+    {
+        const struct AdditionalEffect *additionalEffect = GetMoveAdditionalEffectById(move, i);
+        switch (additionalEffect->moveEffect)
+        {
+        case MOVE_EFFECT_DEFOG:
+            return TRUE;
+        }
+    }
+
+    return FALSE;
 }
 
 bool32 IsMoveRedirectionPrevented(u32 battlerAtk, u32 move, u32 atkAbility)
@@ -2931,7 +2998,7 @@ bool32 IsBattlerIncapacitated(u32 battler, u32 ability)
     if ((gBattleMons[battler].status1 & STATUS1_FREEZE) && !HasThawingMove(battler))
         return TRUE;    // if battler has thawing move we assume they will definitely use it, and thus being frozen should be neglected
 
-    if (gBattleMons[battler].status1 & STATUS1_SLEEP)
+    if (gBattleMons[battler].status1 & STATUS1_SLEEP && !HasMoveEffect(battler, EFFECT_SLEEP_TALK))
         return TRUE;
 
     if (gBattleMons[battler].status2 & STATUS2_RECHARGE || (ability == ABILITY_TRUANT && gDisableStructs[battler].truantCounter != 0))
@@ -3687,6 +3754,20 @@ static const u16 sRecycleEncouragedItems[] =
     ITEM_CUSTAP_BERRY,
     ITEM_MENTAL_HERB,
     ITEM_FOCUS_SASH,
+    ITEM_SALAC_BERRY,
+    ITEM_LIECHI_BERRY,
+    ITEM_AGUAV_BERRY,
+    ITEM_FIGY_BERRY,
+    ITEM_IAPAPA_BERRY,
+    ITEM_MAGO_BERRY,
+    ITEM_WIKI_BERRY,
+    ITEM_MENTAL_HERB,
+    ITEM_POWER_HERB,
+    ITEM_BERRY_JUICE,
+    ITEM_WEAKNESS_POLICY,
+    ITEM_BLUNDER_POLICY,
+    ITEM_KEE_BERRY,
+    ITEM_MARANGA_BERRY,
     // TODO expand this
 };
 
@@ -4065,6 +4146,7 @@ bool32 AI_ShouldCopyStatChanges(u32 battlerAtk, u32 battlerDef)
             case STAT_SPATK:
                 return (HasMoveWithCategory(battlerAtk, DAMAGE_CATEGORY_SPECIAL));
             case STAT_ACC:
+                return (HasLowAccuracyMove(battlerAtk, battlerDef));
             case STAT_EVASION:
             case STAT_SPEED:
                 return TRUE;
@@ -4084,7 +4166,10 @@ bool32 AI_ShouldSetUpHazards(u32 battlerAtk, u32 battlerDef, struct AiLogicData 
     if (aiData->abilities[battlerDef] == ABILITY_MAGIC_BOUNCE
      || CountUsablePartyMons(battlerDef) == 0
      || HasMoveEffect(battlerDef, EFFECT_RAPID_SPIN)
-     || HasMoveEffect(battlerDef, EFFECT_DEFOG))
+     || HasMoveEffect(battlerDef, EFFECT_TIDY_UP)
+     || HasMoveEffect(battlerDef, EFFECT_DEFOG)
+     || HasMoveWithAdditionalEffect(battlerDef, MOVE_EFFECT_DEFOG)
+     || HasMoveEffect(battlerDef, EFFECT_MAGIC_COAT))
         return FALSE;
 
     return TRUE;
@@ -4184,4 +4269,15 @@ void IncreaseSubstituteMoveScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *
 
     if (AI_DATA->hpPercents[battlerAtk] > 70)
         ADJUST_SCORE_PTR(WEAK_EFFECT);
+}
+
+bool32 HasLowAccuracyMove(u32 battlerAtk, u32 battlerDef)
+{
+    int i;
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (AI_DATA->moveAccuracy[battlerAtk][battlerDef][i] <= LOW_ACCURACY_THRESHOLD)
+            return TRUE;
+    }
+    return FALSE;
 }

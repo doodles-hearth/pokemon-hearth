@@ -127,7 +127,7 @@ bool32 IsAromaVeilProtectedEffect(u32 moveEffect);
 bool32 IsNonVolatileStatusMoveEffect(u32 moveEffect);
 bool32 IsMoveRedirectionPrevented(u32 battlerAtk, u32 move, u32 atkAbility);
 bool32 IsMoveEncouragedToHit(u32 battlerAtk, u32 battlerDef, u32 move);
-bool32 IsHazardMoveEffect(u32 moveEffect);
+bool32 IsHazardMove(u32 move);
 bool32 IsTwoTurnNotSemiInvulnerableMove(u32 battlerAtk, u32 move);
 void ProtectChecks(u32 battlerAtk, u32 battlerDef, u32 move, u32 predictedMove, s32 *score);
 bool32 ShouldSetSandstorm(u32 battler, u32 ability, u32 holdEffect);
@@ -154,6 +154,7 @@ bool32 HasSubstituteIgnoringMove(u32 battler);
 bool32 HasHighCritRatioMove(u32 battler);
 bool32 HasMagicCoatAffectedMove(u32 battler);
 bool32 HasSnatchAffectedMove(u32 battler);
+bool32 IsHazardClearingMove(u32 move);
 
 // status checks
 bool32 AI_CanGetFrostbite(u32 battler, u32 ability);
@@ -217,5 +218,6 @@ void IncreaseTidyUpScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
 bool32 AI_ShouldSpicyExtract(u32 battlerAtk, u32 battlerAtkPartner, u32 move, struct AiLogicData *aiData);
 void IncreaseSubstituteMoveScore(u32 battlerAtk, u32 battlerDef, u32 move, s32 *score);
 bool32 IsBattlerPredictedToSwitch(u32 battler);
+bool32 HasLowAccuracyMove(u32 battlerAtk, u32 battlerDef);
 
 #endif //GUARD_BATTLE_AI_UTIL_H
