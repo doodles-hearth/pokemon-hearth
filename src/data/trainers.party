@@ -1054,7 +1054,7 @@ Stantler
 Level: 19
 - Stomp
 - Astonish
-- Me First
+- Sand Attack
 - Leer
 
 === TRAINER_ROSE_2 ===
@@ -1424,13 +1424,6 @@ Music: Male
 Double Battle: No
 AI: Check Bad Move
 
-Heracross
-Level: 22
-- Horn Attack
-- Endure
-- Arm Thrust
-- Leer
-
 Zangoose
 Level: 20
 - Pursuit
@@ -1438,7 +1431,7 @@ Level: 20
 - Hone Claws
 
 Seviper
-Level: 21
+Level: 19
 - Bite
 - Poison Tail
 - Wrap

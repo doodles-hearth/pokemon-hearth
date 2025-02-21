@@ -3710,9 +3710,19 @@ const u8 *GetSpeciesName(u16 species, enum SpeciesNameCheck nameCheck)
     species = SanitizeSpeciesId(species);
     if (gSpeciesInfo[species].speciesName[0] == 0)
         return gSpeciesInfo[SPECIES_NONE].speciesName;
-    if (P_UNKNOWN_MON_NAMES == TRUE && nameCheck == DO_NAME_CHECK
-     && GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_NAMED) == FALSE)
+
+#if TESTING
+    DebugPrintf("WE ARE TESTING", gAnimMoveIndex);
+    return gSpeciesInfo[species].speciesName;
+#endif
+    DebugPrintf("WE ARE NOT TESTING", gAnimMoveIndex);
+    if (
+        P_UNKNOWN_MON_NAMES == TRUE
+        && nameCheck == DO_NAME_CHECK
+        && GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_NAMED) == FALSE
+    ) {
         return gSpeciesInfo[species].unknownName;
+    }
     return gSpeciesInfo[species].speciesName;
 }
 

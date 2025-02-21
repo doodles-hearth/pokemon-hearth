@@ -7203,8 +7203,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = TRUE,
-        .speciesName = _("Drunk Rabbit"),
-        .unknownName = _("Dance Spots"),
+        .speciesName = _("Spinda"),
+        .unknownName = _("Drunk Rabbit"),
         .cryId = CRY_SPINDA,
         .natDexNum = NATIONAL_DEX_SPINDA,
         .categoryName = _("Spot Panda"),
