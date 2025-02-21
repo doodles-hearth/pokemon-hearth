@@ -26,7 +26,7 @@ Route105_OnFrame:
 	.2byte 0
 
 Route105_EventScript_Foster::
-	trainerbattle_single TRAINER_FOSTER, Route105_Text_FosterIntro, Route105_Text_FosterDefeated
+	trainerbattle_single TRAINER_DUMMY, Route105_Text_FosterIntro, Route105_Text_FosterDefeated
 	msgbox Route105_Text_FosterPostBattle, MSGBOX_AUTOCLOSE
 	end
 

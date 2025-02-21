@@ -4,14 +4,14 @@ const struct SpritePalette gSpritePalette_GeneralFieldEffect1 = {gFieldEffectObj
 // These have to be in order according to the corresponding enum in field_effects.h
 const struct SpritePalette gSpritePalette_Footprints[] = 
 {
-    {gFieldEffectObjectHearthPalette0, FLDEFF_PAL_TAG_HEARTH_GENERAL_0}, //default pal
+    {gObjectEventPal_HearthOwFoliage, FLDEFF_PAL_TAG_HEARTH_FOLIAGE}, //default pal
     // In this case the palettes are identical
-    {gFieldEffectObjectHearthPalette0, FLDEFF_PAL_TAG_HEARTH_GENERAL_0},
+    {gObjectEventPal_HearthOwFoliage, FLDEFF_PAL_TAG_HEARTH_FOLIAGE},
 };
 
 const struct SpritePalette gSpritePalette_TallGrass[] = 
 {
-    {gFieldEffectObjectHearthPalette0, FLDEFF_PAL_TAG_HEARTH_GENERAL_0}, //default pal
+    {gObjectEventPal_HearthOwFoliage, FLDEFF_PAL_TAG_HEARTH_FOLIAGE}, //default pal
     {gFieldEffectObjectGinkoPalette, FLDEFF_PAL_TAG_GINKO_WOODS},
 };
 
@@ -148,7 +148,7 @@ static const union AnimCmd *const sAnimTable_TallGrass[] =
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass = {
     .tileTag = TAG_NONE,
-    .paletteTag = FLDEFF_PAL_TAG_HEARTH_GENERAL_0,
+    .paletteTag = FLDEFF_PAL_TAG_HEARTH_FOLIAGE,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_TallGrass,
     .images = sPicTable_TallGrass,
@@ -443,7 +443,7 @@ static const union AnimCmd *const sAnimTable_SandFootprints[] =
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_SandFootprints = {
     .tileTag = TAG_NONE,
-    .paletteTag = FLDEFF_PAL_TAG_HEARTH_GENERAL_0,
+    .paletteTag = FLDEFF_PAL_TAG_HEARTH_FOLIAGE,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_SandFootprints,
     .images = sPicTable_SandFootprints,
@@ -663,7 +663,7 @@ static const struct SpriteFrameImage sPicTable_CaveSlitherTracks[] = {
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_CaveFootprints = {
     .tileTag = TAG_NONE,
-    .paletteTag = FLDEFF_PAL_TAG_HEARTH_GENERAL_0,
+    .paletteTag = FLDEFF_PAL_TAG_HEARTH_FOLIAGE,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_SandFootprints,
     .images = sPicTable_CaveFootprints,

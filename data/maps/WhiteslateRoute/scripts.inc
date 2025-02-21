@@ -23,10 +23,55 @@ WhiteslateRoute_EventScript_Riku::
 	end
 
 
+WhiteslateRoute_EventScript_Tomomi::
+	trainerbattle_single TRAINER_TOMOMI, WhiteslateRoute_EventScript_Tomomi_Text_0, WhiteslateRoute_EventScript_Tomomi_Text_1
+	speakername WhiteslateRoute_EventScript_Tomomi_Text_2
+	msgbox WhiteslateRoute_EventScript_Tomomi_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
+WhiteslateRoute_EventScript_Yono::
+	trainerbattle_single TRAINER_YONO, WhiteslateRoute_EventScript_Yono_Text_0, WhiteslateRoute_EventScript_Yono_Text_1
+	speakername WhiteslateRoute_EventScript_Yono_Text_2
+	msgbox WhiteslateRoute_EventScript_Yono_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
+WhiteslateRoute_EventScript_Sumi::
+	trainerbattle_single TRAINER_SUMI, WhiteslateRoute_EventScript_Sumi_Text_0, WhiteslateRoute_EventScript_Sumi_Text_1
+	speakername WhiteslateRoute_EventScript_Sumi_Text_2
+	msgbox WhiteslateRoute_EventScript_Sumi_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
+WhiteslateRoute_EventScript_Tomiko::
+	trainerbattle_single TRAINER_TOMIKO, WhiteslateRoute_EventScript_Tomiko_Text_0, WhiteslateRoute_EventScript_Tomiko_Text_1
+	setspeakertomonname SPECIES_SPINDA
+	speakername WhiteslateRoute_EventScript_Tomiko_Text_2
+	msgbox WhiteslateRoute_EventScript_Tomiko_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
+WhiteslateRoute_EventScript_Utaro::
+	trainerbattle_single TRAINER_UTARO, WhiteslateRoute_EventScript_Utaro_Text_0, WhiteslateRoute_EventScript_Utaro_Text_1
+	setspeakertomonname SPECIES_SEVIPER
+	speakername WhiteslateRoute_EventScript_Utaro_Text_2
+	msgbox WhiteslateRoute_EventScript_Utaro_Text_3, MSGBOX_AUTOCLOSE
+	end
+
+
+WhiteslateRoute_EventScript_ShuckleGirl::
+	setnamedmon SPECIES_SHUCKLE
+	speakername WhiteslateRoute_EventScript_ShuckleGirl_Text_0
+	msgbox WhiteslateRoute_EventScript_ShuckleGirl_Text_1, MSGBOX_AUTOCLOSE
+	end
+
+
 WhiteslateRoute_EventScript_Shuckle::
 	lock
 	faceplayer
-	waitse
+	setseenmon SPECIES_SHUCKLE
+	setspeakertomonname SPECIES_SHUCKLE
 	playmoncry SPECIES_SHUCKLE, CRY_MODE_NORMAL
 	msgbox WhiteslateRoute_EventScript_Shuckle_Text_0
 	waitmoncry
@@ -329,11 +374,86 @@ WhiteslateRoute_EventScript_Riku_Text_3:
 	.string "I have to work on my element of\n"
 	.string "surprise.$"
 
+WhiteslateRoute_EventScript_Tomomi_Text_0:
+	.string "Attack, my loyal servants!$"
+
+WhiteslateRoute_EventScript_Tomomi_Text_1:
+	.string "Retreat! Retreat!$"
+
+WhiteslateRoute_EventScript_Tomomi_Text_2:
+	.string "Tomomi$"
+
+WhiteslateRoute_EventScript_Tomomi_Text_3:
+	.string "Deer Pokémon are my very favorite.\n"
+	.string "Such strength! Such elegance!$"
+
+WhiteslateRoute_EventScript_Yono_Text_0:
+	.string "Huff… Puff… I walk several hours\n"
+	.string "everyday!$"
+
+WhiteslateRoute_EventScript_Yono_Text_1:
+	.string "Let an old woman catch her breath!…$"
+
+WhiteslateRoute_EventScript_Yono_Text_2:
+	.string "Yono$"
+
+WhiteslateRoute_EventScript_Yono_Text_3:
+	.string "Walking is good for the joints. It\n"
+	.string "keeps me young!$"
+
+WhiteslateRoute_EventScript_Sumi_Text_0:
+	.string "Excuse me… What's with that white\n"
+	.string "hand on your shoulder?$"
+
+WhiteslateRoute_EventScript_Sumi_Text_1:
+	.string "Heeeeeee!$"
+
+WhiteslateRoute_EventScript_Sumi_Text_2:
+	.string "Sumi$"
+
+WhiteslateRoute_EventScript_Sumi_Text_3:
+	.string "You don't scare easily, do you?$"
+
+WhiteslateRoute_EventScript_Tomiko_Text_0:
+	.string "Weird Pokémon are my favorite!$"
+
+WhiteslateRoute_EventScript_Tomiko_Text_1:
+	.string "I don't care if they're not the\n"
+	.string "strongest!$"
+
+WhiteslateRoute_EventScript_Tomiko_Text_2:
+	.string "Tomiko$"
+
+WhiteslateRoute_EventScript_Tomiko_Text_3:
+	.string "I love Spinda. Doesn't it look silly\n"
+	.string "and adorable?$"
+
+WhiteslateRoute_EventScript_Utaro_Text_0:
+	.string "I love cool Pokémon!$"
+
+WhiteslateRoute_EventScript_Utaro_Text_1:
+	.string "At least I lost with style!$"
+
+WhiteslateRoute_EventScript_Utaro_Text_2:
+	.string "Utaro$"
+
+WhiteslateRoute_EventScript_Utaro_Text_3:
+	.string "Seviper is so darn cool! I mean, it's\n"
+	.string "got a sword on its tail!$"
+
+WhiteslateRoute_EventScript_ShuckleGirl_Text_0:
+	.string "Woman$"
+
+WhiteslateRoute_EventScript_ShuckleGirl_Text_1:
+	.string "This Shuckle lives around here. I feed\n"
+	.string "him fresh berries every morning!$"
+
 WhiteslateRoute_EventScript_Shuckle_Text_0:
 	.string "Cklckl!$"
 
 WhiteslateRoute_EventScript_Shuckle_Text_1:
-	.string "…Oh? Shuckle is giving you something.$"
+	.string "…Oh? The Pokémon is giving you\n"
+	.string "something.$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_0:
 	.string "Man$"

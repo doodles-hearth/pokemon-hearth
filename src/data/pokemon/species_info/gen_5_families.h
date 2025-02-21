@@ -9923,7 +9923,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .bodyColor = BODY_COLOR_WHITE,
         .noFlip = TRUE,
         .speciesName = _("Litwick"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Spook Candle"),
         .cryId = CRY_LITWICK,
         .natDexNum = NATIONAL_DEX_LITWICK,
         .categoryName = _("Candle"),
@@ -9997,7 +9997,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     #endif
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Lampent"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Creepy Lamp"),
         .cryId = CRY_LAMPENT,
         .natDexNum = NATIONAL_DEX_LAMPENT,
         .categoryName = _("Lamp"),
@@ -10071,7 +10071,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     #endif
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Chandelure"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Chandelier"),
         .cryId = CRY_CHANDELURE,
         .natDexNum = NATIONAL_DEX_CHANDELURE,
         .categoryName = _("Luring"),

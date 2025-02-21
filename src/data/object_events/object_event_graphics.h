@@ -289,6 +289,22 @@ const u32 gObjectEventPic_CuttableTreeKuraDojo[] = INCBIN_U32("graphics/object_e
 const u16 gObjectEventPal_CuttableTreeKuraDojo[] = INCBIN_U16("graphics/object_events/palettes/cuttable_tree_kura_dojo.gbapal");
 const u32 gObjectEventPic_BreakableRock[] = INCBIN_U32("graphics/object_events/pics/misc/breakable_rock.4bpp");
 const u32 gObjectEventPic_PushableBoulder[] = INCBIN_U32("graphics/object_events/pics/misc/pushable_boulder.4bpp");
+const u32 gObjectEventPic_ItemBall[] = INCBIN_U32("graphics/object_events/pics/misc/item_ball.4bpp");
+// 0: Transparency
+// 1-2: sand
+// 3-4: greys
+// 5-11: foliage
+// 12: bark grey
+// 13: darkest green
+// 14-15: free real estate
+const u16 gObjectEventPal_HearthOwFoliage[] = INCBIN_U16("graphics/object_events/palettes/hearth_ow_foliage.gbapal");
+// 0: Transparency
+// 1-3: Reds
+// 4-8: Browns
+// 9-11: Greys & black
+// 12: Beige
+// 13: Darkest green
+const u16 gObjectEventPal_HearthOwItem[] = INCBIN_U16("graphics/object_events/palettes/hearth_ow_item.gbapal");
 const u32 gObjectEventPic_MrBrineysBoat[] = INCBIN_U32("graphics/object_events/pics/misc/mr_brineys_boat.4bpp");
 const u32 gObjectEventPic_Fossil[] = INCBIN_U32("graphics/object_events/pics/misc/fossil.4bpp");
 const u32 gObjectEventPic_SubmarineShadow[] = INCBIN_U32("graphics/object_events/pics/misc/submarine_shadow.4bpp");
@@ -381,12 +397,6 @@ const u32 gFieldEffectObjectPic_Ash[] = INCBIN_U32("graphics/field_effects/pics/
 const u32 gFieldEffectObjectPic_Arrow[] = INCBIN_U32("graphics/field_effects/pics/arrow.4bpp");
 const u16 gFieldEffectObjectPalette0[] = INCBIN_U16("graphics/field_effects/palettes/general_0.gbapal");
 const u16 gFieldEffectObjectPalette1[] = INCBIN_U16("graphics/field_effects/palettes/general_1.gbapal");
-// 0: Transparency
-// 1-2: sand
-// 3-4: greys
-// 5-11: foliage
-// 12-15: free real estate
-const u16 gFieldEffectObjectHearthPalette0[] = INCBIN_U16("graphics/field_effects/palettes/hearth_general_pal.gbapal");
 const u16 gFieldEffectObjectGinkoPalette[] = INCBIN_U16("graphics/field_effects/palettes/ginko_woods.gbapal");
 const u32 gFieldEffectObjectPic_GroundImpactDust[] = INCBIN_U32("graphics/field_effects/pics/ground_impact_dust.4bpp");
 const u32 gFieldEffectObjectPic_JumpTallGrass[] = INCBIN_U32("graphics/field_effects/pics/jump_tall_grass.4bpp");
