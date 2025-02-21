@@ -472,6 +472,11 @@ static const struct SpriteFrameImage sPicTable_Psyduck[] = {
 static const struct SpriteFrameImage sPicTable_Golduck[] = {
     overworld_ascending_frames(gObjectEventPic_Golduck, 4, 4),
 };
+#if P_TOKUAN_FORMS
+static const struct SpriteFrameImage sPicTable_PsyduckTokuan[] = {
+    overworld_ascending_frames(gObjectEventPic_PsyduckTokuan, 4, 4),
+};
+#endif //P_TOKUAN_FORMS
 #endif //P_FAMILY_PSYDUCK
 
 #if P_FAMILY_MANKEY
@@ -3822,6 +3827,17 @@ static const struct SpriteFrameImage sPicTable_Swadloon[] = {
 static const struct SpriteFrameImage sPicTable_Leavanny[] = {
     overworld_ascending_frames(gObjectEventPic_Leavanny, 4, 4),
 };
+#if P_TOKUAN_FORMS
+static const struct SpriteFrameImage sPicTable_SewaddleTokuan[] = {
+    overworld_ascending_frames(gObjectEventPic_SewaddleTokuan, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_SwadloonTokuan[] = {
+    overworld_ascending_frames(gObjectEventPic_SwadloonTokuan, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_LeavannyTokuan[] = {
+    overworld_ascending_frames(gObjectEventPic_LeavannyTokuan, 4, 4),
+};
+#endif //P_TOKUAN_FORMS
 #endif //P_FAMILY_SEWADDLE
 
 #if P_FAMILY_VENIPEDE
@@ -6626,6 +6642,18 @@ static const struct SpriteFrameImage sPicTable_TerapagosTerastal[] = {
 #if P_FAMILY_PECHARUNT
 static const struct SpriteFrameImage sPicTable_Pecharunt[] = {
     overworld_ascending_frames(gObjectEventPic_Pecharunt, 4, 4),
+};
+#endif //P_FAMILY_PECHARUNT
+
+#if P_FAMILY_KOTORA
+static const struct SpriteFrameImage sPicTable_Kotora[] = {
+    overworld_ascending_frames(gObjectEventPic_Kotora, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Gaotora[] = {
+    overworld_ascending_frames(gObjectEventPic_Gaotora, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Raitora[] = {
+    overworld_ascending_frames(gObjectEventPic_Raitora, 4, 4),
 };
 #endif //P_FAMILY_PECHARUNT
 

@@ -4616,7 +4616,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gShinyOverworldPalette_NidoranM
         )
         OVERWORLD_FEMALE(
-            gObjectEventPic_NidoranF,
+            sPicTable_NidoranF,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
@@ -7497,7 +7497,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         SHADOW(1, 2, SHADOW_SIZE_M)
         FOOTPRINT(PsyduckTokuan)
         OVERWORLD(
-            gObjectEventPic_PsyduckTokuan,
+            sPicTable_PsyduckTokuan,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,

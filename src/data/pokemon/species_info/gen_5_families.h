@@ -3758,7 +3758,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconSprite = gMonIcon_SewaddleTokuan,
         FOOTPRINT(Sewaddle)
         OVERWORLD(
-            gObjectEventPic_SewaddleTokuan,
+            sPicTable_SewaddleTokuan,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
@@ -3827,7 +3827,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconSprite = gMonIcon_SwadloonTokuan,
         FOOTPRINT(Swadloon)
         OVERWORLD(
-            gObjectEventPic_SwadloonTokuan,
+            sPicTable_SwadloonTokuan,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
@@ -3902,7 +3902,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconSprite = gMonIcon_LeavannyTokuan,
         FOOTPRINT(Leavanny)
         OVERWORLD(
-            gObjectEventPic_LeavannyTokuan,
+            sPicTable_LeavannyTokuan,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,

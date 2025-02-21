@@ -226,7 +226,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .iconSprite = gMonIcon_Kotora,
         FOOTPRINT(Shinx)
         OVERWORLD(
-            gObjectEventPic_Kotora,
+            sPicTable_Kotora,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
@@ -289,7 +289,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .iconSprite = gMonIcon_Raitora,
         FOOTPRINT(Luxio)
         OVERWORLD(
-            gObjectEventPic_Raitora,
+            sPicTable_Raitora,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
@@ -360,7 +360,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .iconSprite = gMonIcon_Gaotora,
         FOOTPRINT(Luxio)
         OVERWORLD(
-            gObjectEventPic_Gaotora,
+            sPicTable_Gaotora,
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
