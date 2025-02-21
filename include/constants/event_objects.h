@@ -264,11 +264,12 @@
 #define OBJ_EVENT_GFX_SCHOOL_KID_F               260
 #define OBJ_EVENT_GFX_SCHOOL_KID_M_ORANGE        261
 #define OBJ_EVENT_GFX_SCHOOL_KID_F_ORANGE        262
+#define OBJ_EVENT_GFX_MAREEP_DOLL                263
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        263
+#define NUM_OBJ_EVENT_GFX                        264
 
 
 // These are dynamic object gfx ids.
@@ -504,6 +505,9 @@
 #define OBJ_EVENT_PAL_TAG_BERRY_TREE_LEPPA 0x1173
 #define OBJ_EVENT_PAL_TAG_OW_ITEM 0x1174
 #define OBJ_EVENT_PAL_TAG_OW_FOLIAGE 0x1175
+// Blues, yellows, browns, dark gray, reds
+// 4 remaining free slots
+#define OBJ_EVENT_PAL_TAG_DECORATIONS_MAREEP 0x1176
 
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611

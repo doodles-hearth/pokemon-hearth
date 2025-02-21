@@ -5429,7 +5429,7 @@
       "id": "LAYOUT_SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM",
       "name": "SunriseVillage_PlayersHouse_Bedroom_Layout",
       "width": 9,
-      "height": 8,
+      "height": 10,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",

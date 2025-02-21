@@ -11,8 +11,9 @@ mapscripts SunriseVillage_PlayersHouse_Bedroom_MapScripts {
 
 script SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll {
 	lock
+	setnamedmon(SPECIES_MAREEP)
 	msgbox(format(
-		"A very fluffy Wooloo doll. It's made of real Wooloo wool!"
+		"“100% real Mareep wool”!"
 	))
 	release
 }

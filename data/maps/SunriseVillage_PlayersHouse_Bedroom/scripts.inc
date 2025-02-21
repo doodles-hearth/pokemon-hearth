@@ -16,6 +16,7 @@ SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_LOAD_1:
 
 SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll::
 	lock
+	setnamedmon SPECIES_MAREEP
 	msgbox SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll_Text_0
 	release
 	return
@@ -52,8 +53,7 @@ SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_2:
 
 
 SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll_Text_0:
-	.string "A very fluffy Wooloo doll. It's made of\n"
-	.string "real Wooloo wool!$"
+	.string "“100% real Mareep wool”!$"
 
 SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_0:
 	.string "Big sis$"

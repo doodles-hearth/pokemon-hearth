@@ -178,6 +178,8 @@ extern const u32 gDecorIcon_RegiceDoll[];
 extern const u32 gDecorIconPalette_RegiceDoll[];
 extern const u32 gDecorIcon_RegisteelDoll[];
 extern const u32 gDecorIconPalette_RegisteelDoll[];
+extern const u32 gDecorIcon_MareepDoll[];
+extern const u32 gDecorIconPalette_MareepDoll[];
 
 extern const u32 gWallClock_Gfx[];
 extern const u16 gWallClockMale_Pal[];

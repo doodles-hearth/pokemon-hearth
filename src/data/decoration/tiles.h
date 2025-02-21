@@ -641,3 +641,7 @@ const u16 DecorGfx_REGICE_DOLL[] = {
 const u16 DecorGfx_REGISTEEL_DOLL[] = {
     OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL
 };
+
+const u16 DecorGfx_MAREEP_DOLL[] = {
+    OBJ_EVENT_GFX_MAREEP_DOLL
+};

@@ -1450,5 +1450,17 @@ const struct Decoration gDecorations[] =
         .price = 10000,
         .description = DecorDesc_REGISTEEL_DOLL,
         .tiles = DecorGfx_REGISTEEL_DOLL,
+    },
+
+    [DECOR_MAREEP_DOLL] =
+    {
+        .id = DECOR_MAREEP_DOLL,
+        .name = _("Mareep Doll"),
+        .permission = DECORPERM_SPRITE,
+        .shape = DECORSHAPE_1x1,
+        .category = DECORCAT_DOLL,
+        .price = 3000,
+        .description = DecorDesc_MAREEP_DOLL,
+        .tiles = DecorGfx_MAREEP_DOLL,
     }
 };
