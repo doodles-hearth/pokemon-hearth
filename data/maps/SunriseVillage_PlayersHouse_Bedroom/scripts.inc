@@ -1,5 +1,6 @@
 SunriseVillage_PlayersHouse_Bedroom_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_TRANSITION, SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
 
 SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -11,6 +12,10 @@ SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_LOAD_1:
 	setrespawn HEAL_LOCATION_SUNRISE_VILLAGE
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 1
 	pausefakertc
+	return
+
+SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call SecretBase_EventScript_SetDecorationFlags
 	return
 
 
@@ -50,6 +55,18 @@ SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_2:
 	delay 30
 	msgbox SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_5
 	goto SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_1
+
+
+SunriseVillage_EventScript_PlayerPc::
+	lockall
+	special BedroomPC
+	waitstate
+	return
+
+
+SunriseVillage_TurnOffPlayerPC::
+	releaseall
+	return
 
 
 SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll_Text_0:

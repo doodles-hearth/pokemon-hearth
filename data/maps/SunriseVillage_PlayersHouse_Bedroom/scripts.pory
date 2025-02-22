@@ -7,6 +7,9 @@ mapscripts SunriseVillage_PlayersHouse_Bedroom_MapScripts {
 			pausefakertc
 		}
 	}
+	MAP_SCRIPT_ON_TRANSITION {
+		call(SecretBase_EventScript_SetDecorationFlags)
+	}
 }
 
 script SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll {
@@ -84,4 +87,14 @@ script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
 	setflag(FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS)
     release
     end
+}
+
+script SunriseVillage_EventScript_PlayerPc {
+	lockall
+	special(BedroomPC)
+	waitstate
+}
+
+script SunriseVillage_TurnOffPlayerPC {
+	releaseall
 }
