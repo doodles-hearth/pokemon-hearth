@@ -105,3 +105,16 @@ SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_9:
 	.string "No need to yell, I can hear you just\n"
 	.string "fine!\p"
 	.string "Now get up and get ready!$"
+
+SunriseVillage_PlayersHouse_Bedroom_PlayersChest_Text_0:
+	.string "It's your chest full of items.\n"
+	.string "You should probably just bring these\l"
+	.string "though.$"
+
+SunriseVillage_PlayersHouse_Bedroom_PlayersChest_Text_1:
+	.string "You also fished your journal from the\n"
+	.string "bottom! It might come in handy.$"
+
+SunriseVillage_PlayersHouse_Bedroom_PlayersChest_Text_2:
+	.string "You got the lint from the bottom of\n"
+	.string "the chest!$"

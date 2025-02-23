@@ -1375,10 +1375,11 @@ const u8 gText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the box,\nbec
 const u8 gText_QuestAnnounce[] = _("The quest '{STR_VAR_1}'\nis now {STR_VAR_2}.");
 const u8 gText_QuestComplete[] =_("complete");
 const u8 gText_QuestActive[] =_("active");
+const u8 gText_QuestUpdate[] = _("You jotted down changes to your quest,\n“{STR_VAR_1}”");
 
 //names
-const u8 gText_SideQuestName_1[] = _("Side Quest 1");
-const u8 gText_SideQuestName_2[] = _("Side Quest 2");
+const u8 gText_SideQuestName_1[] = _("Heart of the Hearth");
+const u8 gText_SideQuestName_2[] = _("The Toku Pokédex");
 const u8 gText_SideQuestName_3[] = _("Side Quest 3");
 const u8 gText_SideQuestName_4[] = _("Side Quest 4");
 const u8 gText_SideQuestName_5[] = _("Side Quest 5");
@@ -1409,6 +1410,12 @@ const u8 gText_SideQuestName_29[] = _("Side Quest 29");
 const u8 gText_SideQuestName_30[] = _("Side Quest 30");
 
 //descriptions
+//complex
+const u8 gText_MainCampaignDesc_1[] = _("Go see Elder Kaba and become\n a weilder!");
+const u8 gText_MainCampaignDesc_2[] = _("Deliver Elder Kaba's letter to\n Elder Iwa in Silveridge!");
+const u8 gText_MainCampaignDesc_3[] = _("Description 1");
+
+//generic
 const u8 gText_SideQuestDesc_1[] = _("Description 1");
 const u8 gText_SideQuestDesc_2[] = _("Description 2");
 const u8 gText_SideQuestDesc_3[] = _("Description 3");
@@ -1472,9 +1479,16 @@ const u8 gText_SideQuestDoneDesc_28[] = _("Completed Quest 28");
 const u8 gText_SideQuestDoneDesc_29[] = _("Completed Quest 29");
 const u8 gText_SideQuestDoneDesc_30[] = _("Completed Quest 30");
 
-//map
-const u8 gText_SideQuestMap1[] = _("Map 1");
-const u8 gText_SideQuestMap2[] = _("Map 2");
+//maps
+
+//complex quests
+const u8 gText_MainCampaignMap_1[] = _("Elder Kaba's House");
+const u8 gText_MainCampaignMap_2[] = _("Silveridge");
+const u8 gText_MainCampaignMap_3[] = _("Map 1");
+
+//generic maps
+const u8 gText_SideQuestMap1[] = _("Map 1"); // Unused; kept to keep stuff from breaking
+const u8 gText_SideQuestMap2[] = _("Toku Region");
 const u8 gText_SideQuestMap3[] = _("Map 3");
 const u8 gText_SideQuestMap4[] = _("Map 4");
 const u8 gText_SideQuestMap5[] = _("Map 5");
@@ -1505,66 +1519,13 @@ const u8 gText_SideQuestMap29[] = _("Map 29");
 const u8 gText_SideQuestMap30[] = _("Map 30");
 
 //subquests
-const u8 gText_SubQuest1_Name1[] = _("Part 1");
-const u8 gText_SubQuest1_Name2[] = _("Part 2");
-const u8 gText_SubQuest1_Name3[] = _("Part 3");
-const u8 gText_SubQuest1_Name4[] = _("Part 4");
-const u8 gText_SubQuest1_Name5[] = _("Part 5");
-const u8 gText_SubQuest1_Name6[] = _("Part 6");
-const u8 gText_SubQuest1_Name7[] = _("Part 7");
-const u8 gText_SubQuest1_Name8[] = _("Part 8");
-const u8 gText_SubQuest1_Name9[] = _("Part 9");
-const u8 gText_SubQuest1_Name10[] = _("Part 10");
 
-const u8 gText_SubQuest2_Name1[] = _("Part 1");
-const u8 gText_SubQuest2_Name2[] = _("Part 2");
-const u8 gText_SubQuest2_Name3[] = _("Part 3");
+const u8 gText_SubQuest2_Name1[] = _("See all Pokémon");
+const u8 gText_SubQuest2_Name2[] = _("Catch all Pokémon");
+const u8 gText_SubQuest2_Name3[] = _("Describe all Pokémon");
 const u8 gText_SubQuest2_Name4[] = _("Part 4");
-const u8 gText_SubQuest2_Name5[] = _("Part 5");
-const u8 gText_SubQuest2_Name6[] = _("Part 6");
-const u8 gText_SubQuest2_Name7[] = _("Part 7");
-const u8 gText_SubQuest2_Name8[] = _("Part 8");
-const u8 gText_SubQuest2_Name9[] = _("Part 9");
-const u8 gText_SubQuest2_Name10[] = _("Part 10");
-const u8 gText_SubQuest2_Name11[] = _("Part 11");
-const u8 gText_SubQuest2_Name12[] = _("Part 12");
-const u8 gText_SubQuest2_Name13[] = _("Part 13");
-const u8 gText_SubQuest2_Name14[] = _("Part 14");
-const u8 gText_SubQuest2_Name15[] = _("Part 15");
-const u8 gText_SubQuest2_Name16[] = _("Part 16");
-const u8 gText_SubQuest2_Name17[] = _("Part 17");
-const u8 gText_SubQuest2_Name18[] = _("Part 18");
-const u8 gText_SubQuest2_Name19[] = _("Part 19");
-const u8 gText_SubQuest2_Name20[] = _("Part 20");
-
-const u8 gText_SubQuest1_Desc1[] = _("Description Sub 1");
-const u8 gText_SubQuest1_Desc2[] = _("Description Sub 2");
-const u8 gText_SubQuest1_Desc3[] = _("Description Sub 3");
-const u8 gText_SubQuest1_Desc4[] = _("Description Sub 4");
-const u8 gText_SubQuest1_Desc5[] = _("Description Sub 5");
-const u8 gText_SubQuest1_Desc6[] = _("Description Sub 6");
-const u8 gText_SubQuest1_Desc7[] = _("Description Sub 7");
-const u8 gText_SubQuest1_Desc8[] = _("Description Sub 8");
-const u8 gText_SubQuest1_Desc9[] = _("Description Sub 9");
-const u8 gText_SubQuest1_Desc10[] = _("Description Sub 10");
 
 const u8 gText_SubQuest2_Desc1[] = _("Description Sub 1");
 const u8 gText_SubQuest2_Desc2[] = _("Description Sub 2");
 const u8 gText_SubQuest2_Desc3[] = _("Description Sub 3");
 const u8 gText_SubQuest2_Desc4[] = _("Description Sub 4");
-const u8 gText_SubQuest2_Desc5[] = _("Description Sub 5");
-const u8 gText_SubQuest2_Desc6[] = _("Description Sub 6");
-const u8 gText_SubQuest2_Desc7[] = _("Description Sub 7");
-const u8 gText_SubQuest2_Desc8[] = _("Description Sub 8");
-const u8 gText_SubQuest2_Desc9[] = _("Description Sub 9");
-const u8 gText_SubQuest2_Desc10[] = _("Description Sub 10");
-const u8 gText_SubQuest2_Desc11[] = _("Description Sub 11");
-const u8 gText_SubQuest2_Desc12[] = _("Description Sub 12");
-const u8 gText_SubQuest2_Desc13[] = _("Description Sub 13");
-const u8 gText_SubQuest2_Desc14[] = _("Description Sub 14");
-const u8 gText_SubQuest2_Desc15[] = _("Description Sub 15");
-const u8 gText_SubQuest2_Desc16[] = _("Description Sub 16");
-const u8 gText_SubQuest2_Desc17[] = _("Description Sub 17");
-const u8 gText_SubQuest2_Desc18[] = _("Description Sub 18");
-const u8 gText_SubQuest2_Desc19[] = _("Description Sub 19");
-const u8 gText_SubQuest2_Desc20[] = _("Description Sub 20");

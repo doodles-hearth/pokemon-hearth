@@ -2705,7 +2705,18 @@
 	waitfanfare
 	.endm
 
-.macro goto_if_quest_inactive quest:req, dest:req
+	@ Updates the complex quest's variable to give it its next state.
+	.macro updatequest quest:req, questvar:req
+	addvar \questvar, 1
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
+	bufferstring 1 gText_QuestUpdate
+	playse SE_PIN
+	msgbox gText_QuestUpdate, MSGBOX_SIGN
+	waitse
+	openquestmenu
+	.endm
+
+	.macro goto_if_quest_inactive quest:req, dest:req
 	questmenu QUEST_MENU_CHECK_INACTIVE \quest
 	goto_if_eq VAR_RESULT, TRUE, \dest
 	.endm

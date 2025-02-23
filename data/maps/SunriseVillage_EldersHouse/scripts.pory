@@ -331,6 +331,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	// TODO EVA why does this exist
 	setflag(FLAG_RECEIVED_POKEDEX_FROM_BIRCH)
 	closemessage
+	startquest(QUEST_POKEDEX)
 
 	delay(20)
 
@@ -474,8 +475,8 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 	setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 7)
 
 	// Time starts ticking!
-	resumefakertc
-
+	resumefakertc //macro kept for redundancy + safeguarding + reference
+	updatequest(QUEST_HEARTH_MAIN_CAMPAIGN, VAR_MAIN_CAMPAIGN_QUEST)
 	release
 }
 
