@@ -384,8 +384,128 @@ YifuCity_EventScript_Surskit::
 
 YifuCity_Trigger_Lockdown::
 	lockall
+	goto_if_set FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_Lockdown_2
+	applymovement 33, YifuCity_Trigger_Lockdown_Movement_9
+	waitmovement 0
+	special GetPlayerSirMissString
+	speakername YifuCity_EventScript_Samurai_Text_0
+	msgbox YifuCity_Trigger_Lockdown_Text_5
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_10
+	waitmovement OBJ_EVENT_ID_PLAYER
+YifuCity_Trigger_Lockdown_1:
 	releaseall
 	return
+
+YifuCity_Trigger_Lockdown_2:
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	msgbox YifuCity_Trigger_Lockdown_Text_0
+	delay 48
+	waitmovement 0
+	waitse
+	closemessage
+	getplayerxy VAR_TEMP_2, VAR_TEMP_3
+	clearflag FLAG_HIDE_LOCKDOWN_SAMURAI
+	setobjectxy 33, 13, 39
+	addobject 33
+	applymovement 33, YifuCity_Trigger_Lockdown_Movement_0
+	switch VAR_TEMP_3
+	case 36, YifuCity_Trigger_Lockdown_7
+	case 37, YifuCity_Trigger_Lockdown_8
+	case 38, YifuCity_Trigger_Lockdown_9
+	case 40, YifuCity_Trigger_Lockdown_10
+	case 41, YifuCity_Trigger_Lockdown_11
+	case 42, YifuCity_Trigger_Lockdown_12
+	case 43, YifuCity_Trigger_Lockdown_13
+YifuCity_Trigger_Lockdown_5:
+	waitmovement 33
+	waitmovement OBJ_EVENT_ID_PLAYER
+	special GetPlayerSirMissString
+	speakername YifuCity_EventScript_Samurai_Text_0
+	msgbox YifuCity_Trigger_Lockdown_Text_1
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Trigger_Lockdown_Text_2, YifuCity_Trigger_Lockdown_Text_3
+	closemessage
+	speakername YifuCity_EventScript_Samurai_Text_0
+	msgbox YifuCity_Trigger_Lockdown_Text_4
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_8
+	waitmovement OBJ_EVENT_ID_PLAYER
+	goto YifuCity_Trigger_Lockdown_1
+
+YifuCity_Trigger_Lockdown_7:
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_1
+	goto YifuCity_Trigger_Lockdown_5
+
+YifuCity_Trigger_Lockdown_8:
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_2
+	goto YifuCity_Trigger_Lockdown_5
+
+YifuCity_Trigger_Lockdown_9:
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_3
+	goto YifuCity_Trigger_Lockdown_5
+
+YifuCity_Trigger_Lockdown_10:
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_4
+	goto YifuCity_Trigger_Lockdown_5
+
+YifuCity_Trigger_Lockdown_11:
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_5
+	goto YifuCity_Trigger_Lockdown_5
+
+YifuCity_Trigger_Lockdown_12:
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_6
+	goto YifuCity_Trigger_Lockdown_5
+
+YifuCity_Trigger_Lockdown_13:
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_7
+	goto YifuCity_Trigger_Lockdown_5
+
+
+YifuCity_Trigger_CantGoThruNorth::
+	lockall
+	applymovement 34, YifuCity_Trigger_CantGoThruNorth_Movement_0
+	waitmovement 0
+	special GetPlayerSirMissString
+	speakername YifuCity_EventScript_Samurai_Text_0
+	msgbox YifuCity_Trigger_Lockdown_Text_5
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_CantGoThruNorth_Movement_1
+	waitmovement OBJ_EVENT_ID_PLAYER
+	releaseall
+	return
+
+
+YifuCity_Trigger_HarikoCriminals::
+	lockall
+	playse SE_PIN
+	getplayerxy VAR_TEMP_2, VAR_TEMP_3
+	switch VAR_TEMP_2
+	case 38, YifuCity_Trigger_HarikoCriminals_3
+	case 39, YifuCity_Trigger_HarikoCriminals_4
+	case 40, YifuCity_Trigger_HarikoCriminals_5
+YifuCity_Trigger_HarikoCriminals_1:
+	waitmovement 0
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	msgbox YifuCity_Trigger_HarikoCriminals_Text_1
+	applymovement 35, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_3
+	waitmovement 35
+	removeobject 35
+	setflag FLAG_HIDE_HARIKO_YIFU_CITY
+	releaseall
+	return
+
+YifuCity_Trigger_HarikoCriminals_3:
+	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_0
+	goto YifuCity_Trigger_HarikoCriminals_1
+
+YifuCity_Trigger_HarikoCriminals_4:
+	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_1
+	goto YifuCity_Trigger_HarikoCriminals_1
+
+YifuCity_Trigger_HarikoCriminals_5:
+	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_2
+	goto YifuCity_Trigger_HarikoCriminals_1
 
 
 YifuCity_ShinySellerChoice_Movement_0:
@@ -522,6 +642,121 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Movement_0:
 YifuCity_Trigger_CrobatGruntStuckInHole_Movement_1:
 	emote_exclamation_mark
 	face_down
+	step_end
+
+YifuCity_Trigger_Lockdown_Movement_0:
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	step_end
+
+YifuCity_Trigger_Lockdown_Movement_1:
+	walk_down
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+YifuCity_Trigger_Lockdown_Movement_2:
+	walk_down
+	walk_down
+	face_left
+	step_end
+
+YifuCity_Trigger_Lockdown_Movement_3:
+	walk_down
+	face_left
+	step_end
+
+YifuCity_Trigger_Lockdown_Movement_4:
+	walk_up
+	face_left
+	step_end
+
+YifuCity_Trigger_Lockdown_Movement_5:
+	walk_up
+	walk_up
+	face_left
+	step_end
+
+YifuCity_Trigger_Lockdown_Movement_6:
+	walk_up
+	walk_up
+	walk_up
+	face_left
+	step_end
+
+YifuCity_Trigger_Lockdown_Movement_7:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	face_left
+	step_end
+
+YifuCity_Trigger_Lockdown_Movement_8:
+	lock_facing_direction
+	walk_right
+	unlock_facing_direction
+	step_end
+
+YifuCity_Trigger_Lockdown_Movement_9:
+	walk_in_place_fast_right
+	step_end
+
+YifuCity_Trigger_Lockdown_Movement_10:
+	walk_right
+	step_end
+
+YifuCity_Trigger_CantGoThruNorth_Movement_0:
+	walk_in_place_fast_down
+	step_end
+
+YifuCity_Trigger_CantGoThruNorth_Movement_1:
+	walk_down
+	step_end
+
+YifuCity_Trigger_HarikoCriminals_Movement_0:
+	face_right
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+	walk_right
+	walk_right
+	face_up
+	step_end
+
+YifuCity_Trigger_HarikoCriminals_Movement_1:
+	face_right
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+	walk_right
+	walk_right
+	walk_right
+	face_up
+	step_end
+
+YifuCity_Trigger_HarikoCriminals_Movement_2:
+	face_right
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	face_up
 	step_end
 
 YifuCity_EventScript_StoleMyMon_Text_0:
@@ -701,3 +936,45 @@ YifuCity_EventScript_Surskit_Text_0:
 
 YifuCity_EventScript_Surskit_Text_1:
 	.string "Sksksksk…$"
+
+YifuCity_Trigger_Lockdown_Text_0:
+	.string "ATTENTION! ATTENTION!\p"
+	.string "THE CITY IS NOW UNDER LOCKDOWN!$"
+
+YifuCity_Trigger_Lockdown_Text_1:
+	.string "I'm sorry, {STR_VAR_1}, all exits\n"
+	.string "are temporarily blocked. You are\l"
+	.string "asked to remain inside the city until\l"
+	.string "further notice.$"
+
+YifuCity_Trigger_Lockdown_Text_2:
+	.string "Why?$"
+
+YifuCity_Trigger_Lockdown_Text_3:
+	.string "What's happening?$"
+
+YifuCity_Trigger_Lockdown_Text_4:
+	.string "We Samurai are in the middle of an\n"
+	.string "investigation on an illegally running\l"
+	.string "shop!\p"
+	.string "We cannot risk this operation to go\n"
+	.string "awry, so we've locked down the\l"
+	.string "premises for the time being!\p"
+	.string "Please remain calm, I'm sure\n"
+	.string "everything will be over before you\l"
+	.string "know it.$"
+
+YifuCity_Trigger_Lockdown_Text_5:
+	.string "I'm sorry, {STR_VAR_1}, all exits\n"
+	.string "are temporarily blocked. Nobody in or\l"
+	.string "out.\p"
+	.string "You are asked to remain inside the\n"
+	.string "city until further notice.$"
+
+YifuCity_Trigger_HarikoCriminals_Text_0:
+	.string "Hariko$"
+
+YifuCity_Trigger_HarikoCriminals_Text_1:
+	.string "Hey {PLAYER}, a bunch of people got\n"
+	.string "their Pokémon stolen, this is\l"
+	.string "placeholder text!$"

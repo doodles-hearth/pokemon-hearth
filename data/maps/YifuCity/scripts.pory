@@ -505,7 +505,7 @@ script YifuCity_Trigger_Lockdown {
 			"THE CITY IS NOW UNDER LOCKDOWN!"
 		))
 		delay(48)
-		waitmovement
+		waitmovement(0)
 		waitse
 		closemessage
 
@@ -609,11 +609,11 @@ script YifuCity_Trigger_HarikoCriminals {
 	getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
 	switch(var(VAR_TEMP_2)) {
 		case 38:
-			applymovement(LOCALID_HARIKO, moves(face_right, emote_exclamation_mark, delay_46, walk_right * 2, face_up))
+			applymovement(LOCALID_HARIKO, moves(face_right, emote_exclamation_mark, delay_16 * 3, walk_right * 2, face_up))
 		case 39:
-			applymovement(LOCALID_HARIKO, moves(face_right, emote_exclamation_mark, delay_46, walk_right * 3, face_up))
+			applymovement(LOCALID_HARIKO, moves(face_right, emote_exclamation_mark, delay_16 * 3, walk_right * 3, face_up))
 		case 40:
-			applymovement(LOCALID_HARIKO, moves(face_right, emote_exclamation_mark, delay_46, walk_right * 4, face_up))
+			applymovement(LOCALID_HARIKO, moves(face_right, emote_exclamation_mark, delay_16 * 3, walk_right * 4, face_up))
 	}
 	waitmovement(0)
 

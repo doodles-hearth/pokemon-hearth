@@ -169,6 +169,7 @@ ChiiTown_EventScript_BattlingGirl_1:
 	return
 
 ChiiTown_EventScript_BattlingGirl_2:
+	special GetPlayerMrMrsString
 	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
 	msgbox ChiiTown_EventScript_BattlingGirl_Text_0
 	closemessage
@@ -213,6 +214,7 @@ ChiiTown_EventScript_BattlingBoy_1:
 	return
 
 ChiiTown_EventScript_BattlingBoy_2:
+	special GetPlayerMrMrsString
 	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
 	msgbox ChiiTown_EventScript_BattlingBoy_Text_0
 	closemessage
