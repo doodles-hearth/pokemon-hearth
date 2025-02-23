@@ -299,6 +299,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME
 	setflag FLAG_HIDE_BONSAI_SHOP_OWNER
 	setflag FLAG_HIDE_LOCKDOWN_SAMURAI
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_HEARTH_MAIN_CAMPAIGN
 
 	call EventScript_ResetAllBerries
 	end

@@ -292,6 +292,7 @@ const u16 gObjectEventPal_CuttableTreeKuraDojo[] = INCBIN_U16("graphics/object_e
 const u32 gObjectEventPic_BreakableRock[] = INCBIN_U32("graphics/object_events/pics/misc/breakable_rock.4bpp");
 const u32 gObjectEventPic_PushableBoulder[] = INCBIN_U32("graphics/object_events/pics/misc/pushable_boulder.4bpp");
 const u32 gObjectEventPic_ItemBall[] = INCBIN_U32("graphics/object_events/pics/misc/item_ball.4bpp");
+const u32 gObjectEventPic_Lunchbox[] = INCBIN_U32("graphics/object_events/pics/misc/lunchbox.4bpp");
 // 0: Transparency
 // 1-2: sand
 // 3-4: greys

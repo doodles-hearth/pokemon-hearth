@@ -1,3 +1,5 @@
+const LOCALID_BAG = 13
+
 mapscripts SunriseVillage_PlayersHouse_Bedroom_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) < 1) {
@@ -89,17 +91,22 @@ script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
     end
 }
 
-script SunriseVillage_PlayersHouse_Bedroom_PlayersChest {
-	if(flag(FLAG_SYS_QUEST_MENU_GET) == FALSE){
+script SunriseVillage_PlayersHouse_Bedroom_Stuff {
+	if(!flag(FLAG_SYS_QUEST_MENU_GET)) {
 	msgbox(format(
-		"It's your chest full of items.\nYou should probably just bring these though."
+		"It's the Pokémon medicine your sister got for you."
 	), MSGBOX_SIGN)
 	waitmessage
+
 	giveitem(ITEM_OINTMENT, 5)
-	msgbox(format("You also fished your journal from the bottom! It might come in handy."), MSGBOX_DEFAULT)
-	setflag(FLAG_SYS_QUEST_MENU_GET)
-	questmenu(QUEST_MENU_SET_ACTIVE, QUEST_HEARTH_MAIN_CAMPAIGN)
+
+	msgbox(format("There is also your journal inside! It might come in handy."), MSGBOX_DEFAULT)
 	closemessage
+
+	setflag(FLAG_SYS_QUEST_MENU_GET)
+
+	removeobject(LOCALID_BAG)
+	
 	} else {
 		playfanfare(MUS_OBTAIN_ITEM)
 		msgbox(format(
@@ -111,7 +118,6 @@ script SunriseVillage_PlayersHouse_Bedroom_PlayersChest {
 	}
 }
 
-// TODO EVA
 script SunriseVillage_EventScript_PlayerPc {
 	lockall
 	special(BedroomPC)
