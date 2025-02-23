@@ -56,6 +56,7 @@ YifuCity_EventScript_ShinySeller::
 	faceplayer
 	speakername YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_EventScript_ShinySeller_Text_1
+	setseenmon SPECIES_CATERPIE
 	showmonpic SPECIES_CATERPIE, 10, 3, TRUE
 	playmoncry SPECIES_CATERPIE, CRY_MODE_NORMAL
 	waitmoncry
@@ -227,6 +228,7 @@ YifuCity_Trigger_CrobatGruntsScram::
 	playse SE_BALL_OPEN
 	addobject 11
 	playmoncry SPECIES_ZUBAT, CRY_MODE_NORMAL
+	setseenmon SPECIES_ZUBAT
 	applymovement 11, YifuCity_Trigger_CrobatGruntsScram_Movement_1
 	waitmoncry
 	waitse
@@ -373,10 +375,17 @@ YifuCity_EventScript_Surskit::
 	faceplayer
 	speakername YifuCity_EventScript_Surskit_Text_0
 	msgbox YifuCity_EventScript_Surskit_Text_1
+	setseenmon SPECIES_SURSKIT
 	playmoncry SPECIES_SURSKIT, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	end
+
+
+YifuCity_Trigger_Lockdown::
+	lockall
+	releaseall
+	return
 
 
 YifuCity_ShinySellerChoice_Movement_0:

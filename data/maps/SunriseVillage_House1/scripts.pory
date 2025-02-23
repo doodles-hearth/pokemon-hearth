@@ -2,11 +2,13 @@ mapscripts SunriseVillage_House1_MapScripts {
 }
 
 script SunriseVillage_House1_EventScript_Kirlia {
-    speakername("Kirlia")
+    setseenmon(SPECIES_KIRLIA)
+    setspeakertomonname(SPECIES_KIRLIA)
     msgbox(format("…"), MSGBOX_NPC)
 }
 
 script SunriseVillage_House1_EventScript_OldWoman {
+    setnamedmon(SPECIES_KIRLIA)
     speakername("Neighbour")
     msgbox(format("Kirlia here is quite the silent type. I'm fine with that."), MSGBOX_NPC)
 }
@@ -24,7 +26,7 @@ script SunriseVillage_House1_EventScript_LittleGirl {
 script SunriseVillage_House1_EventScript_Zigzagoon {
     lock
     faceplayer
-    waitse
+    setseenmon(SPECIES_ZIGZAGOON)
     playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_NORMAL)
     speakername("Ziggy")
     msgbox(format(

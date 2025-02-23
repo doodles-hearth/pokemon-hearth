@@ -29,6 +29,12 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_0
 	waitmovement 0
 	applymovement 1, Common_Movement_WalkInPlaceFasterDown
+	setseenmon SPECIES_CYNDAQUIL
+	setnamedmon SPECIES_CYNDAQUIL
+	setseenmon SPECIES_SNIVY
+	setnamedmon SPECIES_SNIVY
+	setseenmon SPECIES_FROAKIE
+	setnamedmon SPECIES_FROAKIE
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
 	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1
 	closemessage
@@ -484,7 +490,7 @@ SunriseVillage_EldersHouse_EventScript_RivalBattle_5:
 SunriseVillage_EldersHouse_EventScript_Joltik::
 	lock
 	faceplayer
-	waitse
+	setseenmon SPECIES_JOLTIK
 	playmoncry SPECIES_JOLTIK, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_JOLTIK
 	msgbox SunriseVillage_EldersHouse_EventScript_Joltik_Text_0

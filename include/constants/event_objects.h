@@ -456,6 +456,7 @@
 #define OBJ_EVENT_PAL_TAG_SAMURAI                 0x114D
 #define OBJ_EVENT_PAL_TAG_YUTAKA                  0x114E
 #define OBJ_EVENT_PAL_TAG_KIMONO_GIRL             0x114F
+#define OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS_BOSS     0x1150
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

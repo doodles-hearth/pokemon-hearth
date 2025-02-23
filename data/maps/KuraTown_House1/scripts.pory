@@ -30,7 +30,7 @@ script KuraTown_House1_OldWomansSon {
 script KuraTown_House1_Growlithe {
 	lock
 	faceplayer
-	waitse
+	setseenmon(SPECIES_GROWLITHE)
 	playmoncry(SPECIES_GROWLITHE, CRY_MODE_NORMAL)
 	msgbox(format(
 		"Wah!"

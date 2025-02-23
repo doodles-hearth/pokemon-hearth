@@ -62,17 +62,20 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 
 	if (flag(FLAG_RECEIVED_TM_ACROBATICS)) {
 		buffernumberstring(STR_VAR_2, VAR_RESULT)
+		speakername("Little Girl")
 		msgbox(format(
 			"What's up, berry master?\p"
 			"Didja know you've planted {STR_VAR_2} berries so far?"
 		))
 	} else {
 		special(GetPlayerMrMrsString)
+		speakername("Little Girl")
 		msgbox(format(
 			"Hi there {STR_VAR_1} Grownup!\pHave you planted many berries on your travels?"
 		))
 
 		if (var(VAR_RESULT) < 10) {
+			speakername("Little Girl")
 			msgbox(format(
 				"Hmm…\p"
 				"Your face still has “berry amateur” written all over it.\p"
@@ -80,6 +83,7 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 			))
 			closemessage
 		} elif (var(VAR_RESULT) < 20) {
+			speakername("Little Girl")
 			msgbox(format(
 				"Hmm…\p"
 				"I'd say it's less terrible than before.\p"
@@ -87,6 +91,7 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 			))
 			closemessage
 		} elif (var(VAR_RESULT) < 30) {
+			speakername("Little Girl")
 			msgbox(format(
 				"Hmm…\p"
 				"Hey, I'm actually impressed at the berry skills I'm sensing!\p"
@@ -96,6 +101,7 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 			))
 			closemessage
 		} elif (var(VAR_RESULT) < 40) {
+			speakername("Little Girl")
 			msgbox(format(
 				"Hmm…\p"
 				"I'd say you're almost there…\p"
@@ -104,6 +110,7 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 			))
 			closemessage
 		} elif (var(VAR_RESULT) >= 40) {
+			speakername("Little Girl")
 			msgbox(format(
 				"Hmm…\p"
 				"Oh?\p"
@@ -115,11 +122,12 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 
 			giveitem(ITEM_TM_ACROBATICS)
 			goto_if_eq(VAR_RESULT, 0, Common_EventScript_BagIsFull)
+			speakername("Little Girl")
 			msgbox(
 				format(
 					"This scroll contains Acrobatics.\p"
 					"Your Pokémon will strike harder if he isn't holding an item.\p"
-					"Sounds like a good match for a Pokémon holding a berry, right?\p"
+					"Good match for a Pokémon holding a berry, right?\p"
 					"First eat a little snack, then mercilessly crush your opponent!"
 				)
 			)
@@ -139,6 +147,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 	if (var(VAR_BONSAI_SHOP_STATE) == 1) {
 		// Assistant is alone
 		if (flag(FLAG_HIDE_BONSAI_SHOP_OWNER)) {
+			speakername("Woman")
 			msgbox(format(
 				"Hi, {PLAYER}!\p"
 				"The shop owner is currently away. She's very busy.\p"
@@ -148,6 +157,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 			closemessage
 			// Owner is there too
 		} else {
+			speakername("Woman")
 			msgbox(format(
 				"Hi, {PLAYER}! Don't mind my sister. She's not as nice as she looks!"
 			))
@@ -158,6 +168,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 	else {
 		// Already met on Tranquil route
 		if (flag(FLAG_RECEIVED_WAILMER_PAIL)) {
+			speakername("Woman")
 			msgbox(format(
 				"Hello, welcome to our bonsai shop…"
 			))
@@ -166,6 +177,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 			waitmovement(0)
 			applymovement(1, Common_Movement_Delay48)
 			waitmovement(0)
+			speakername("Woman")
 			msgbox(format(
 				"Oh, but I know you! We met on Tranquil route, remember?\p"
 				"Have you used the watering can I gave you yet?\p"
@@ -176,6 +188,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 		}
 		// Very first encounter (missed her on Tranquil route)
 		else {
+			speakername("Woman")
 			msgbox(format(
 				"Hello, welcome to our bonsai shop! I'm the owner's assistant.\p"
 				"We sell bonsai and other potted flowers! Are you interested in plants?\p"
@@ -189,6 +202,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 			giveitem(ITEM_ORAN_BERRY, 3)
 			goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
 
+			speakername("Woman")
 			msgbox(format(
 				"Oh, right, I was almost forgetting!\p"
 				"You must remember to water them regularly, or they won't grow!\p"
@@ -198,6 +212,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 			giveitem(ITEM_WAILMER_PAIL)
 			goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
 
+			speakername("Woman")
 			msgbox(format(
 				"Isn't it cute? It's friend-shaped!\p"
 				"Don't worry about it, I have a spare one.\p"
@@ -217,12 +232,18 @@ script SakuTown_BonsaiShop_EventScript_Owner {
 	if (flag(FLAG_BADGE02_GET)) {
 		// TODO EVA Saku/Kura rivalry quest
 		if (flag(FLAG_RECEIVED_SECRET_POWER)) {
+			speakername("Hana")
 			msgbox(format(
 				"Hello, {PLAYER}. Can I interest you in a little greenery?"
 			))
 			closemessage
-			// TODO EVA sell secret base stuff
+			
+			pokemartdecoration(BonsaiShop)
+
+			speakername("Hana")
+			msgbox("Thank you for your business!", MSGBOX_DEFAULT)
 		} else {
+			speakername("Hana")
 			msgbox(format(
 				"Hello, {PLAYER}. Can I interest you in a little greenery?\p"
 				"Hmm… It looks like you wouldn't have anywhere to put bonsai. Come back when you do."
@@ -231,6 +252,7 @@ script SakuTown_BonsaiShop_EventScript_Owner {
 		}
 	} else {
 		special(GetPlayerBoyGirlString)
+		speakername("Shop Owner")
 		msgbox(format(
 			"Hello, young {STR_VAR_1}. Can I interest you in a little greenery?\p"
 			"Hmm… It looks like you wouldn't have anywhere to put bonsai. Come back when you do."
@@ -240,9 +262,16 @@ script SakuTown_BonsaiShop_EventScript_Owner {
 	release
 }
 
+mart BonsaiShop {
+	DECOR_RED_PLANT
+	DECOR_BIG_PLANT
+	DECOR_GORGEOUS_PLANT
+}
+
 script SakuTown_EventScript_Man {
 	lock
 	faceplayer
+	speakername("Customer")
 	msgbox(format(
 		"I'm choosing flowers for my wife.\p"
 		"I, uh… I didn't realize there'd be so many different types.\p"

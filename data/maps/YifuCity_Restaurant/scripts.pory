@@ -1,0 +1,45 @@
+mapscripts YifuCity_Restaurant_MapScripts {
+
+}
+
+script YifuCity_Restaurant_EventScript_UninspiredChef {
+	lock
+	speakername("Cook")
+	msgbox(format(
+		"Hmm… No, that's not it…"
+	))
+	closemessage
+
+	delay(48)
+
+	faceplayer
+	speakername("Cook")
+	msgbox(format(
+		"You don't happen to be a culinary connoisseur, do you?\p"
+		"What kids nowadays refer to as a “foodie”?\p"
+		"You see, cooking used to be my passion. But lately I've been feeling… uninspired!\p"
+		"It's a tragedy! I desperately seek fresh, bold new recipes!\p"
+		"Say, if you come across interesting recipes during your travels… Would you mind coming back here and tell me about them?\p"
+		"I'll make it worth your while!"
+	))
+	closemessage
+
+	// TODO EVA RUBY: link this to the quest system
+	// Recipe ideas:
+	// - Fishcakes (Maguro)
+	// - Steamed Slowpoke tail
+	// - Berries in Shiftry leaves
+	// - Salted Uume berry
+	// - Mifan Cakes (Hanabi City)
+
+	release
+}
+
+script YifuCity_Restaurant_EventScript_RunningChef {
+	lock
+	speakername("Cook")
+	faceplayer
+	msgbox(format(
+		"Huff… Huff…\nI wish my colleague would stop whining and get back to helping me…"
+	))
+}

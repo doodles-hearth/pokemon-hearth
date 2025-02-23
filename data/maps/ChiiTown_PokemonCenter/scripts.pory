@@ -126,6 +126,7 @@ script ChiiTown_PokemonCenter_EventScript_IveComeALongWay {
 script ChiiTown_PokemonCenter_EventScript_Snorunt {
 	lock
 	faceplayer
+	setseenmon(SPECIES_SNORUNT)
 	playmoncry(SPECIES_SNORUNT, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_SNORUNT)
 	msgbox(format(
@@ -157,9 +158,11 @@ script ChiiTown_PokemonCenter_EventScript_RefugePresentation {
 		"Isn't it amazing? This is one of the many brand-new Pokémon refuges that the Pokémon league council has decided to build in towns across all Toku!\p"
 		"With traveling alone becoming more dangerous, many people are now training a Pokémon of their own for protection.\p"
 		"Towns were starting to be in dire need of proper healing and rest spots for Pokémon.\p"
-		"Oh, sorry, I'll get out of your hair now. Talk to the nurse whenever you want her to heal your Pokémon!"
+		"Oh, sorry, I'll get out of your hair now. Talk to the nurse and her Chansey whenever you want her to heal your Pokémon!"
 	))
 	closemessage
+
+	setnamedmon(SPECIES_CHANSEY)
 
 	switch(var(VAR_FACING)) {
 		case DIR_NORTH:

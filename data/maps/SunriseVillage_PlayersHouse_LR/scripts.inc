@@ -102,7 +102,6 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 SunriseVillage_PlayersHouse_LR_EventScript_Eevee::
 	lock
 	faceplayer
-	waitse
 	setspeakertomonname SPECIES_EEVEE
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_0
 	playmoncry SPECIES_EEVEE, CRY_MODE_NORMAL

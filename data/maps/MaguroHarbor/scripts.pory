@@ -250,6 +250,7 @@ script MaguroHarbor_EventScript_FishermanInBoat {
 script MaguroHarbor_EventScript_Cramorant {
 	lock
 	faceplayer
+	setseenmon(SPECIES_CRAMORANT)
 	playmoncry(SPECIES_CRAMORANT, CRY_MODE_NORMAL)
 	speakername("Cramorant")
 	msgbox(format(

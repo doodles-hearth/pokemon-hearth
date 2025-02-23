@@ -176,7 +176,7 @@ SunriseVillage_Beach_Movement_RivalSurprisedByQuake:
 SunriseVillage_Beach_EventScript_Corsola::
 	lock
 	faceplayer
-	waitse
+	setseenmon SPECIES_CORSOLA
 	playmoncry SPECIES_CORSOLA, CRY_MODE_NORMAL
 	msgbox SunriseVillage_Beach_EventScript_Corsola_Text_0
 	waitmoncry
@@ -187,7 +187,7 @@ SunriseVillage_Beach_EventScript_Corsola::
 SunriseVillage_Beach_EventScript_Corsola2::
 	lock
 	faceplayer
-	waitse
+	setseenmon SPECIES_CORSOLA
 	playmoncry SPECIES_CORSOLA, CRY_MODE_WEAK
 	msgbox SunriseVillage_Beach_EventScript_Corsola2_Text_0
 	waitmoncry

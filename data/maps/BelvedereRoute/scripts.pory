@@ -35,6 +35,7 @@ mapscripts BelvedereRoute_MapScripts {
 script BelvedereRoute_EventScript_FindMareep {
 	lock
 	faceplayer
+	setseenmon(SPECIES_MAREEP)
 	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
 	msgbox(format("Bêêêêêh!"))
 	closemessage

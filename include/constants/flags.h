@@ -676,8 +676,8 @@
 // True if the player met the merchant in beachbound route
 #define FLAG_MET_TRAVELING_MERCHANT_2ND_TIME  0x26F
 #define FLAG_BEAT_CHII_TOWN_KIDS  0x271
-#define FLAG_UNUSED_0x272  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
+#define FLAG_HIDE_LOCKDOWN_SAMURAI 0x272
+#define FLAG_HIDE_HARIKO_YIFU_CITY  0x273
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag
 #define FLAG_UNUSED_0x275  0x275 // Unused Flag
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag

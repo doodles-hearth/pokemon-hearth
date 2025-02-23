@@ -15,6 +15,7 @@ SakuTown_House3_EventScript_SetUpPokemon_1:
 SakuTown_House3_EventScript_Psyduck::
 	lock
 	faceplayer
+	setseenmon SPECIES_PSYDUCK_TOKUAN
 	setspeakertomonname SPECIES_PSYDUCK
 	msgbox SakuTown_House3_EventScript_Psyduck_Text_0
 	playmoncry SPECIES_PSYDUCK, CRY_MODE_NORMAL

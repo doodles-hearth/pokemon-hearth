@@ -197,6 +197,7 @@ SunriseVillage_Event_OldWoman::
 SunriseVillage_Event_Happiny::
 	lock
 	faceplayer
+	setseenmon SPECIES_HAPPINY
 	setspeakertomonname SPECIES_HAPPINY
 	msgbox SunriseVillage_Event_Happiny_Text_0
 	playmoncry SPECIES_HAPPINY, CRY_MODE_NORMAL
@@ -208,7 +209,7 @@ SunriseVillage_Event_Happiny::
 SunriseVillage_Event_Munchlax::
 	lock
 	faceplayer
-	waitse
+	setseenmon SPECIES_MUNCHLAX
 	playmoncry SPECIES_MUNCHLAX, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_MUNCHLAX
 	msgbox SunriseVillage_Event_Munchlax_Text_0

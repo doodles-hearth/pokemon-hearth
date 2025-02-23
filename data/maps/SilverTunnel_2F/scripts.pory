@@ -34,6 +34,7 @@ script SilverTunnel_2F_EventScript_Kansaku {
 script SilverTunnel_2F_EventScript_Sandslash {
     lock
     faceplayer
+	setseenmon(SPECIES_SANDSLASH)
     playmoncry(SPECIES_SANDSLASH, CRY_MODE_NORMAL)
     speakername("Sandslash")
     msgbox(format(
@@ -53,6 +54,7 @@ script SilverTunnel_2F_EventScript_Miner {
     ))
     closemessage
 	turnobject(VAR_LAST_TALKED, DIR_EAST)
+	setseenmon(SPECIES_SANDSLASH)
 	playmoncry(SPECIES_SANDSLASH, CRY_MODE_NORMAL)
 	applymovement(LOCALID_SANDSLASH, moves(jump_in_place_right))
 	waitmoncry

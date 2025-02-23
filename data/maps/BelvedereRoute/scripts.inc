@@ -42,6 +42,7 @@ BelvedereRoute_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE_0_13:
 BelvedereRoute_EventScript_FindMareep::
 	lock
 	faceplayer
+	setseenmon SPECIES_MAREEP
 	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
 	msgbox BelvedereRoute_EventScript_FindMareep_Text_0
 	closemessage

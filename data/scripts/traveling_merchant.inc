@@ -1,6 +1,7 @@
 TravelingMerchant_EventScript_Keke::
 	lock
 	faceplayer
+	setseenmon SPECIES_KECLEON
 	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL
 	goto_if_set FLAG_MET_TRAVELING_MERCHANT, TravelingMerchant_EventScript_Keke_2
 	setspeakertomonname SPECIES_KECLEON

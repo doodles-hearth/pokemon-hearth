@@ -55,6 +55,7 @@ script YifuCity_House1_2F_EventScript_ChildStolenDoll {
 script YifuCity_House1_2F_EventScript_Vulpix {
 	lock
 	faceplayer
+	setseenmon(SPECIES_VULPIX)
 	playmoncry(SPECIES_VULPIX, CRY_MODE_NORMAL)
 	speakername("Vulpix")
 	msgbox(format(

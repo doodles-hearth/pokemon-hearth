@@ -2717,7 +2717,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsGrunt
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsBoss = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS,
+    .paletteTag = OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS_BOSS,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,

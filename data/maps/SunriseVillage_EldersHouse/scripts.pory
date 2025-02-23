@@ -31,6 +31,13 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	waitmovement(0)
 	applymovement(LOCALID_ELDER, Common_Movement_WalkInPlaceFasterDown)
 
+	setseenmon(SPECIES_CYNDAQUIL)
+	setnamedmon(SPECIES_CYNDAQUIL)
+	setseenmon(SPECIES_SNIVY)
+	setnamedmon(SPECIES_SNIVY)
+	setseenmon(SPECIES_FROAKIE)
+	setnamedmon(SPECIES_FROAKIE)
+
 	// Elder speaks
 	speakername("Elder Kaba")
 	msgbox((
@@ -488,7 +495,7 @@ script SunriseVillage_EldersHouse_EventScript_RivalBattle {
 script SunriseVillage_EldersHouse_EventScript_Joltik {
 	lock
     faceplayer
-    waitse
+	setseenmon(SPECIES_JOLTIK)
     playmoncry(SPECIES_JOLTIK, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_JOLTIK)
     msgbox(format(

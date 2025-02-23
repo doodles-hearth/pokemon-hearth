@@ -63,6 +63,7 @@ ChiiTown_EventScript_Shopper::
 ChiiTown_EventScript_Kecleon::
 	lock
 	faceplayer
+	setseenmon SPECIES_KECLEON
 	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_KECLEON
 	msgbox ChiiTown_EventScript_Kecleon_Text_0

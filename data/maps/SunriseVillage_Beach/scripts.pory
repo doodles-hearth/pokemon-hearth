@@ -250,7 +250,7 @@ movement SunriseVillage_Beach_Movement_RivalSurprisedByQuake {
 script SunriseVillage_Beach_EventScript_Corsola {
 	lock
     faceplayer
-    waitse
+	setseenmon(SPECIES_CORSOLA)
     playmoncry(SPECIES_CORSOLA, CRY_MODE_NORMAL)
     msgbox(format(
         "Krr!"
@@ -263,7 +263,7 @@ script SunriseVillage_Beach_EventScript_Corsola {
 script SunriseVillage_Beach_EventScript_Corsola2 {
 	lock
     faceplayer
-    waitse
+	setseenmon(SPECIES_CORSOLA)
     playmoncry(SPECIES_CORSOLA, CRY_MODE_WEAK)
     msgbox(format(
         "Laaa!"

@@ -41,9 +41,10 @@ YifuCity_House2_Model_2:
 YifuCity_House2_Tarountula::
 	lock
 	faceplayer
+	setseenmon SPECIES_TAROUNTULA
 	playmoncry SPECIES_TAROUNTULA, CRY_MODE_NORMAL
-	speakername YifuCity_House2_Tarountula_Text_0
-	msgbox YifuCity_House2_Tarountula_Text_1
+	setspeakertomonname SPECIES_TAROUNTULA
+	msgbox YifuCity_House2_Tarountula_Text_0
 	waitmoncry
 	closemessage
 	goto_if_unset FLAG_OBTAINED_DESTINY_KNOT, YifuCity_House2_Tarountula_2
@@ -112,7 +113,4 @@ YifuCity_House2_Model_Text_2:
 	.string "already have this color!$"
 
 YifuCity_House2_Tarountula_Text_0:
-	.string "Tarountula$"
-
-YifuCity_House2_Tarountula_Text_1:
 	.string "Thshh!$"

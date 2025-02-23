@@ -41,6 +41,7 @@ script ChiiTown_House1_EventScript_GrowlitheGrrr {
 	speakername("Growlithe")
 	msgbox(format("Grrrrrrr…"))
 	closemessage
+	setseenmon(SPECIES_GROWLITHE)
 	applymovement(OBJ_EVENT_ID_PLAYER, ChiiTown_House1_Movement_PlayerStepsAwayFromGrowlithe)
 	waitmovement(0)
 	release
@@ -90,6 +91,8 @@ script ChiiTown_House1_EventScript_GrowlitheBarks {
 
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown)
 	waitmovement(0)
+
+	setseenmon(SPECIES_GROWLITHE)
 
 	setvar(VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2)
 	warp(MAP_CHII_TOWN, 24, 21)

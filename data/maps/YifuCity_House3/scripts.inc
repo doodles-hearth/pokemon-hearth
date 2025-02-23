@@ -14,8 +14,9 @@ YifuCity_House3_EggGirlsMom::
 YifuCity_House3_EventScript_Togepi::
 	lock
 	faceplayer
-	speakername YifuCity_House3_EventScript_Togepi_Text_0
-	msgbox YifuCity_House3_EventScript_Togepi_Text_1
+	setseenmon SPECIES_TOGEPI
+	setspeakertomonname SPECIES_TOGEPI
+	msgbox YifuCity_House3_EventScript_Togepi_Text_0
 	playmoncry SPECIES_TOGEPI, CRY_MODE_NORMAL
 	waitmoncry
 	release
@@ -133,9 +134,6 @@ YifuCity_House3_EggGirlsMom_Text_1:
 	.string "egg for my daughter!$"
 
 YifuCity_House3_EventScript_Togepi_Text_0:
-	.string "Togepi$"
-
-YifuCity_House3_EventScript_Togepi_Text_1:
 	.string "Preee!$"
 
 YifuCity_House3_EventScript_EggGirl_Text_0:

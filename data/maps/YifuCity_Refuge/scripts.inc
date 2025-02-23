@@ -20,6 +20,7 @@ YifuCity_Refuge_EventScript_FakeNurse::
 
 YifuCity_Refuge_EventScript_Woobat::
 	lock
+	setseenmon SPECIES_WOOBAT
 	playmoncry SPECIES_WOOBAT, CRY_MODE_NORMAL
 	speakername YifuCity_Refuge_EventScript_Woobat_Text_0
 	msgbox YifuCity_Refuge_EventScript_Woobat_Text_1
@@ -90,6 +91,25 @@ YifuCity_Refuge_EventScript_ListenToShamisen::
 
 
 YifuCity_Refuge_EventScript_Traveler::
+	lock
+	faceplayer
+	speakername YifuCity_Refuge_EventScript_Traveler_Text_0
+	msgbox YifuCity_Refuge_EventScript_Traveler_Text_1
+	closemessage
+	release
+	end
+
+
+YifuCity_Refuge_EventScript_Bisharp::
+	lock
+	faceplayer
+	setseenmon SPECIES_BISHARP
+	playmoncry SPECIES_BISHARP, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_BISHARP
+	msgbox YifuCity_Refuge_EventScript_Bisharp_Text_0
+	waitmoncry
+	closemessage
+	release
 	return
 
 
@@ -150,3 +170,14 @@ YifuCity_Refuge_EventScript_HotelValet_Text_8:
 	.string "Oh my, it appears you don't have\n"
 	.string "enough money…\p"
 	.string "I'm sorry!$"
+
+YifuCity_Refuge_EventScript_Traveler_Text_0:
+	.string "Traveler$"
+
+YifuCity_Refuge_EventScript_Traveler_Text_1:
+	.string "I come from a place high up in the\n"
+	.string "mountains, where the Pokémon are as\l"
+	.string "tough as the rocky landscape.$"
+
+YifuCity_Refuge_EventScript_Bisharp_Text_0:
+	.string "Kshhh.$"

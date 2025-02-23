@@ -94,6 +94,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 		closemessage
 
 		applymovement(LOCALID_ESPEON, JumpInJoy)
+		setseenmon(SPECIES_ESPEON)
 		playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
 		waitmoncry
 		delay(40)
@@ -117,6 +118,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 script KuraTown_House3_EventScript_Espeon {
 	lock
 	faceplayer
+	setseenmon(SPECIES_ESPEON)
 	playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
 	msgbox(format(
 		"Speeee!"

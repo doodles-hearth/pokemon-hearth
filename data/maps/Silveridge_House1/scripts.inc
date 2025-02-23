@@ -27,6 +27,7 @@ Silveridge_House1_EventScript_FirebringerFangirl::
 Silveridge_House1_EventScript_Sandslash::
 	lock
 	faceplayer
+	setseenmon SPECIES_SANDSLASH
 	playmoncry SPECIES_SANDSLASH, CRY_MODE_NORMAL
 	speakername Silveridge_House1_EventScript_Sandslash_Text_0
 	msgbox Silveridge_House1_EventScript_Sandslash_Text_1

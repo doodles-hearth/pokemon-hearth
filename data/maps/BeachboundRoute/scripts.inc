@@ -36,6 +36,7 @@ BeachboundRoute_EventScript_AnnoyedBoy::
 BeachboundRoute_EventScript_Hoppip::
 	lock
 	faceplayer
+	setseenmon SPECIES_HOPPIP
 	setspeakertomonname SPECIES_HOPPIP
 	msgbox BeachboundRoute_EventScript_Hoppip_Text_0
 	playmoncry SPECIES_HOPPIP, CRY_MODE_NORMAL
@@ -47,6 +48,7 @@ BeachboundRoute_EventScript_Hoppip::
 BeachboundRoute_EventScript_Wooloo::
 	lock
 	faceplayer
+	setseenmon SPECIES_WOOLOO
 	setspeakertomonname SPECIES_WOOLOO
 	msgbox BeachboundRoute_EventScript_Wooloo_Text_0
 	playmoncry SPECIES_WOOLOO, CRY_MODE_NORMAL

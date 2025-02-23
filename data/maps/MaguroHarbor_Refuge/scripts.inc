@@ -87,6 +87,7 @@ MaguroHarbor_Refuge_BattleHariko_4:
 MaguroHarbor_Refuge_EventScript_Slowpoke::
 	lock
 	faceplayer
+	setseenmon SPECIES_SLOWPOKE
 	playmoncry SPECIES_SLOWPOKE, CRY_MODE_NORMAL
 	goto_if_set FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE, MaguroHarbor_Refuge_EventScript_Slowpoke_2
 	setspeakertomonname SPECIES_SLOWPOKE

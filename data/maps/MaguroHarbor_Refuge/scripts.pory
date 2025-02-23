@@ -121,6 +121,7 @@ script MaguroHarbor_Refuge_BattleHariko {
 script MaguroHarbor_Refuge_EventScript_Slowpoke {
 	lock
 	faceplayer
+	setseenmon(SPECIES_SLOWPOKE)
 	playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
 	if (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
 		speakername("Bean")

@@ -27,7 +27,7 @@ KuraTown_House1_OldWomansSon::
 KuraTown_House1_Growlithe::
 	lock
 	faceplayer
-	waitse
+	setseenmon SPECIES_GROWLITHE
 	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
 	msgbox KuraTown_House1_Growlithe_Text_0
 	waitmoncry

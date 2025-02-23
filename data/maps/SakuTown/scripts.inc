@@ -145,6 +145,7 @@ SakuTown_EventScript_Karateka::
 	applymovement 2, SakuTown_EventScript_Karateka_Movement_0
 	waitmovement 2
 	waitmoncry
+	setseenmon SPECIES_MAKUHITA
 	release
 	return
 
@@ -289,6 +290,7 @@ SakuTown_EventScript_Makuhita::
 	lock
 	faceplayer
 	waitse
+	setseenmon SPECIES_MAKUHITA
 	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_MAKUHITA
 	msgbox SakuTown_EventScript_Makuhita_Text_0
