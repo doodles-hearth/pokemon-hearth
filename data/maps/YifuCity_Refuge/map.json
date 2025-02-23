@@ -176,8 +176,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
-      "x": 5,
-      "y": 8,
+      "x": 33,
+      "y": 16,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 3,
