@@ -1402,6 +1402,7 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 	// 2 : rewarded
 	// 3 : completed
 	// 4 : favorited
+	DebugPrintf("Quest %d", caseId);
 
 	switch (caseId)
 	{
@@ -1412,6 +1413,7 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 		case FLAG_GET_ACTIVE:
 		case FLAG_SET_ACTIVE:
 		case FLAG_REMOVE_ACTIVE:
+			DebugPrintf("set active");
 			bit += 1;
 			break;
 		case FLAG_GET_REWARD:
@@ -1468,6 +1470,7 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 		case FLAG_GET_ACTIVE:
 			return gSaveBlock2Ptr->questData[index] & mask;
 		case FLAG_SET_ACTIVE:
+			DebugPrintf("set active!");
 			gSaveBlock2Ptr->questData[index] |= mask;
 			return 1;
 		case FLAG_REMOVE_ACTIVE:

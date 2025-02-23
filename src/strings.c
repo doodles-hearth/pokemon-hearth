@@ -1077,18 +1077,18 @@ const u8 gText_TimeColon2[] = _("Time:"); // Unused
 const u8 gText_GameTime[] = _("Game time"); // Unused
 const u8 gText_RTCTime[] = _("RTC time"); // Unused
 const u8 gText_UpdatedTime[] = _("Updated time"); // Unused
-const u8 gText_MenuPokedex[] = _("POKéDEX");
-const u8 gText_MenuPokemon[] = _("POKéMON");
-const u8 gText_MenuBag[] = _("BAG");
-const u8 gText_MenuPokenav[] = _("POKéNAV");
+const u8 gText_MenuPokedex[] = _("PokéDex");
+const u8 gText_MenuPokemon[] = _("Pokémon");
+const u8 gText_MenuBag[] = _("Bag");
+const u8 gText_MenuPokenav[] = _("PokéNav");
 const u8 gText_MenuPlayer[] = _("{PLAYER}");
-const u8 gText_MenuSave[] = _("SAVE");
-const u8 gText_MenuOption[] = _("OPTION");
-const u8 gText_MenuExit[] = _("EXIT");
-const u8 gText_MenuRetire[] = _("RETIRE");
-const u8 gText_MenuRest[] = _("REST");
-const u8 gText_MenuDexNav[] = _("DEXNAV");
-const u8 gText_SafariBallStock[] = _("SAFARI BALLS\nStock: {STR_VAR_1}");
+const u8 gText_MenuSave[] = _("Save");
+const u8 gText_MenuOption[] = _("Option");
+const u8 gText_MenuExit[] = _("Exit");
+const u8 gText_MenuRetire[] = _("Retire");
+const u8 gText_MenuRest[] = _("Rest");
+const u8 gText_MenuDexNav[] = _("DexNav");
+const u8 gText_SafariBallStock[] = _("Safari Balls\nStock: {STR_VAR_1}");
 const u8 gText_BattlePyramidFloor[] = _("Battle Pyramid\n{STR_VAR_1}");
 const u8 gText_Floor1[] = _("Floor 1");
 const u8 gText_Floor2[] = _("Floor 2");
@@ -1411,7 +1411,7 @@ const u8 gText_SideQuestName_30[] = _("Side Quest 30");
 
 //descriptions
 //complex
-const u8 gText_MainCampaignDesc_1[] = _("Go see Elder Kaba and become\n a weilder!");
+const u8 gText_MainCampaignDesc_1[] = _("Go see Elder Kaba and become\n a Pokémon wielder!");
 const u8 gText_MainCampaignDesc_2[] = _("Deliver Elder Kaba's letter to\n Elder Iwa in Silveridge!");
 const u8 gText_MainCampaignDesc_3[] = _("Description 1");
 

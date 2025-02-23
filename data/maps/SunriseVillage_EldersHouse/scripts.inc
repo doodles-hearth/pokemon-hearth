@@ -448,6 +448,7 @@ SunriseVillage_EldersHouse_EventScript_PostBattle_5:
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
 	resumefakertc
 	updatequest QUEST_HEARTH_MAIN_CAMPAIGN, VAR_MAIN_CAMPAIGN_QUEST
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_POKEDEX
 	release
 	return
 
