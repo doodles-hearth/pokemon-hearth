@@ -18,10 +18,20 @@ YifuCity_CrobatShop_Cashier::
 	faceplayer
 	speakername YifuCity_CrobatShop_Cashier_Text_0
 	msgbox YifuCity_CrobatShop_Cashier_Text_1
+	waitmessage
+	pokemart Crobat_Mart
+	speakername YifuCity_CrobatShop_Cashier_Text_0
+	msgbox YifuCity_CrobatShop_Cashier_Text_2
 	closemessage
 	release
 	return
 
+
+	.align 2
+Crobat_Mart:
+	.2byte ITEM_ULTRA_BALL_KNOCKOFF
+	.2byte ITEM_SLOWPOKE_TAIL
+	.2byte ITEM_NONE
 
 YifuCity_CrobatShop_Guard::
 	lock
@@ -54,8 +64,8 @@ YifuCity_CrobatShop_Guard_5:
 	closemessage
 	compare VAR_FACING, DIR_NORTH
 	goto_if_eq YifuCity_CrobatShop_Guard_11
-	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_2
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_3
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_4
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_5
 YifuCity_CrobatShop_Guard_10:
 	waitmovement VAR_LAST_TALKED
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -101,7 +111,7 @@ YifuCity_CrobatShop_Guard_22:
 	compare VAR_FACING, DIR_NORTH
 	goto_if_eq YifuCity_CrobatShop_Guard_28
 YifuCity_CrobatShop_Guard_27:
-	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_5
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_7
 	waitmovement 0
 	goto YifuCity_CrobatShop_Guard_4
 
@@ -110,7 +120,7 @@ YifuCity_CrobatShop_Guard_24:
 	goto YifuCity_CrobatShop_Guard_23
 
 YifuCity_CrobatShop_Guard_28:
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_4
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_6
 	goto YifuCity_CrobatShop_Guard_27
 
 
@@ -156,13 +166,28 @@ YifuCity_CrobatShop_Guard_Movement_1:
 	step_end
 
 YifuCity_CrobatShop_Guard_Movement_2:
+	walk_down
+	lock_facing_direction
+	walk_up
+	unlock_facing_direction
+	step_end
+
+YifuCity_CrobatShop_Guard_Movement_3:
+	lock_facing_direction
+	lock_anim
+	jump_2_down
+	unlock_facing_direction
+	unlock_anim
+	step_end
+
+YifuCity_CrobatShop_Guard_Movement_4:
 	walk_left
 	lock_facing_direction
 	walk_right
 	unlock_facing_direction
 	step_end
 
-YifuCity_CrobatShop_Guard_Movement_3:
+YifuCity_CrobatShop_Guard_Movement_5:
 	lock_facing_direction
 	lock_anim
 	jump_2_left
@@ -170,23 +195,31 @@ YifuCity_CrobatShop_Guard_Movement_3:
 	unlock_anim
 	step_end
 
-YifuCity_CrobatShop_Guard_Movement_4:
+YifuCity_CrobatShop_Guard_Movement_6:
 	walk_left
 	face_right
 	step_end
 
-YifuCity_CrobatShop_Guard_Movement_5:
+YifuCity_CrobatShop_Guard_Movement_7:
 	walk_down
 	face_left
 	step_end
 
 YifuCity_CrobatShop_Cashier_Text_0:
-	.string "Cashier$"
+	.string "Salesman$"
 
 YifuCity_CrobatShop_Cashier_Text_1:
 	.string "G'day uh, welcome to the ye olde\n"
 	.string "Crobat Shoppe!\p"
-	.string "TODO EVA$"
+	.string "Have a lookee at our totally legal\n"
+	.string "tchotchquees and memoralibia!$"
+
+YifuCity_CrobatShop_Cashier_Text_2:
+	.string "We thank thee fer yer business! Tell\n"
+	.string "yer friends!\p"
+	.string "{FONT_SMALL}Unless yer friends are the police!{FONT_NORMAL}\p"
+	.string "Wut's that? I said nothin', ya must be\n"
+	.string "hearin' things!$"
 
 YifuCity_CrobatShop_Guard_Text_0:
 	.string "Shady man$"
@@ -243,7 +276,7 @@ YifuCity_CrobatShop_Customer1_Text_1:
 	.string "How is everything so cheap?!$"
 
 YifuCity_CrobatShop_Customer2_Text_0:
-	.string "These Ultra Balls looks… different,\n"
+	.string "These Ultra Balls look… different,\n"
 	.string "somehow…$"
 
 YifuCity_CrobatShop_EventScript_Samurai_Text_0:

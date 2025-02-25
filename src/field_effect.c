@@ -607,14 +607,15 @@ static void (*const sPokeballGlowEffectFuncs[])(struct Sprite *) =
     PokeballGlowEffect_Idle
 };
 
+// TODO EVA HERE
 static const struct Coords16 sPokeballCoordOffsets[PARTY_SIZE] =
 {
     {.x = 0, .y = 0},
-    {.x = 6, .y = 0},
+    {.x = 4, .y = 0},
+    {.x = 8, .y = 0},
     {.x = 0, .y = 4},
-    {.x = 6, .y = 4},
-    {.x = 0, .y = 8},
-    {.x = 6, .y = 8}
+    {.x = 4, .y = 4},
+    {.x = 8, .y = 4}
 };
 
 static const u8 sPokeballGlowReds[]   = {16, 12, 8, 0};
@@ -1059,7 +1060,7 @@ bool8 FldEff_PokecenterHeal(void)
 
     nPokemon = (OW_IGNORE_EGGS_ON_HEAL <= GEN_3) ? CalculatePlayerPartyCount() : CountPartyNonEggMons();
     task = &gTasks[CreateTask(Task_PokecenterHeal, 0xff)];
-    task->tNumMons = nPokemon;
+    task->tNumMons = nPokemon; // TODO EVA pokecenter animation here
     task->tFirstBallX = 93;
     task->tFirstBallY = 36;
     task->tMonitorX = 124;

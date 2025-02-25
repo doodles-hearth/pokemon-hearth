@@ -16,13 +16,28 @@ script YifuCity_CrobatShop_SetupNpcs {
 script YifuCity_CrobatShop_Cashier {
 	lock
 	faceplayer
-	speakername("Cashier")
+	speakername("Salesman")
 	msgbox(format(
 		"G'day uh, welcome to the ye olde Crobat Shoppe!\p"
-		"TODO EVA"
+		"Have a lookee at our totally legal tchotchquees and memoralibia!"
+	))
+	waitmessage
+
+	pokemart(Crobat_Mart)
+
+	speakername("Salesman")
+	msgbox(format(
+		"We thank thee fer yer business! Tell yer friends!\p"
+		"{FONT_SMALL}Unless yer friends are the police!{FONT_NORMAL}\p"
+		"Wut's that? I said nothin', ya must be hearin' things!"
 	))
 	closemessage
 	release
+}
+
+mart Crobat_Mart {
+	ITEM_ULTRA_BALL_KNOCKOFF
+	ITEM_SLOWPOKE_TAIL
 }
 
 script YifuCity_CrobatShop_Guard {
@@ -69,8 +84,8 @@ script YifuCity_CrobatShop_Guard {
 		closemessage
 
 		if (var(VAR_FACING) == DIR_NORTH) {
-			applymovement(VAR_LAST_TALKED, moves(walk_left, lock_facing_direction, walk_right, unlock_facing_direction))
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, lock_anim, jump_2_left, unlock_facing_direction, unlock_anim))
+			applymovement(VAR_LAST_TALKED, moves(walk_down, lock_facing_direction, walk_up, unlock_facing_direction))
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, lock_anim, jump_2_down, unlock_facing_direction, unlock_anim))
 		} else {
 			applymovement(VAR_LAST_TALKED, moves(walk_left, lock_facing_direction, walk_right, unlock_facing_direction))
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, lock_anim, jump_2_left, unlock_facing_direction, unlock_anim))
@@ -163,7 +178,7 @@ script YifuCity_CrobatShop_Customer2 {
 	faceplayer
 	speakername("Customer")
 	msgbox(format(
-		"These Ultra Balls looks… different, somehow…"
+		"These Ultra Balls look… different, somehow…"
 	))
 	closemessage
 	release
