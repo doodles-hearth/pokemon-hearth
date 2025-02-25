@@ -999,8 +999,9 @@
 
 // Custom hearth items
 
-// Items
 #define ITEM_FISHCAKE 829
+#define ITEM_REFUGE_ROOM_KEY 830
+#define ITEM_ENTEI_STATUETTE 831
 #define ITEM_UUMEGIRI 832
 #define ITEM_SUPERGIRI 833
 #define ITEM_HYPERGIRI 834
@@ -1011,12 +1012,10 @@
 #define ITEM_HYPER_OINTMENT 839
 #define ITEM_MAX_OINTMENT 840
 #define ITEM_SACRED_OINTMENT 841
-// Key items
-#define ITEM_REFUGE_ROOM_KEY 830
-#define ITEM_ENTEI_STATUETTE 831
 #define ITEM_SLOWPOKE_TAIL   842
+#define ITEM_ULTRA_BALL_KNOCKOFF 843
 
-#define ITEMS_COUNT 843
+#define ITEMS_COUNT 844
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

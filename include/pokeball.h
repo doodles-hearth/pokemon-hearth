@@ -32,6 +32,7 @@ enum PokeBall
     BALL_BEAST = 26,
     BALL_CHERISH = 27,
     BALL_LIGHT = 28,
+    BALL_ULTRA_KNOCKOFF = 29,
     POKEBALL_COUNT,
     // ah yes, srs: this is for kaba's speech and not for anything else
     BALL_KABA = 30,

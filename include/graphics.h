@@ -378,6 +378,7 @@ extern const u32 gItemIconPalette_PokeBall[];
 extern const u32 gItemIcon_GreatBall[];
 extern const u32 gItemIconPalette_GreatBall[];
 extern const u32 gItemIcon_UltraBall[];
+extern const u32 gItemIcon_UltraBallKnockoff[];
 extern const u32 gItemIconPalette_UltraBall[];
 extern const u32 gItemIcon_MasterBall[];
 extern const u32 gItemIconPalette_MasterBall[];
