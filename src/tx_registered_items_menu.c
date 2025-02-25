@@ -77,7 +77,7 @@ static void TxRegItemsMenu_AllocateStruct(void);
 static u8 TxRegItemsMenu_InitWindow(void);
 static void TxRegItemsMenu_RefreshListMenu(void);
 static void TxRegItemsMenu_MoveCursor(s32 id, bool8 b, struct ListMenu *thisMenu);
-static void TxRegItemsMenu_PrintFunc(u8 windowId, u32 id, u8 yOffset, u8 listPos);
+static void TxRegItemsMenu_PrintFunc(u8 windowId, u32 id, u8 yOffset);
 static void TxRegItemsMenu_PrintItemIcon(u16 itemId);
 static void TxRegItemsMenu_DoItemSwap(u8 taskId, bool8 a);
 static void TxRegItemsMenu_StartScrollIndicator(void);
@@ -394,7 +394,7 @@ static void TxRegItemsMenu_MoveCursor(s32 id, bool8 b, struct ListMenu *thisMenu
     }
 }
 
-static void TxRegItemsMenu_PrintFunc(u8 windowId, u32 id, u8 yOffset, u8 listPos)
+static void TxRegItemsMenu_PrintFunc(u8 windowId, u32 id, u8 yOffset)
 {
     if (id != -2)
     {

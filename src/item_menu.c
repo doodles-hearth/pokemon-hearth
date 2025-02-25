@@ -51,6 +51,7 @@
 #include "window.h"
 #include "apprentice.h"
 #include "battle_pike.h"
+#include "new_shop.h"
 #include "constants/items.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -197,7 +198,7 @@ static void InitPocketScrollPositions(void);
 static u8 CreateBagInputHandlerTask(u8);
 static void DrawItemListBgRow(u8);
 static void BagMenu_MoveCursorCallback(s32, bool8, struct ListMenu *);
-void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 a, u8 listPos);
+void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 a);
 static void ItemMenu_UseOutOfBattle(u8);
 static void ItemMenu_Toss(u8);
 static void ItemMenu_Register(u8);
@@ -640,7 +641,11 @@ void ChooseBerryForMachine(void (*exitCallback)(void))
 
 void CB2_GoToSellMenu(void)
 {
+    #ifdef MUDSKIP_SHOP_UI
+    GoToBagMenu(ITEMMENULOCATION_SHOP, POCKETS_COUNT, CB2_ExitSellNewShopMenu);
+    #else
     GoToBagMenu(ITEMMENULOCATION_SHOP, POCKETS_COUNT, CB2_ExitSellMenu);
+    #endif // MUDSKIP_SHOP_UI
 }
 
 void CB2_GoToItemDepositMenu(void)
@@ -992,7 +997,7 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
     }
 }
 
-void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y, u8 listPos)
+void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
 {
     u16 itemId;
     u16 itemQuantity;
