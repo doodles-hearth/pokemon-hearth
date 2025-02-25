@@ -258,7 +258,7 @@ static const u32 sUnusedBirchBeauty[] = INCBIN_U32("graphics/birch_speech/unused
 static const u16 sNewGameBirch_Pal[16] = INCBIN_U16("graphics/birch_speech/birch.gbapal");
 
 static const u32 sPokeballGlow_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokeball_glow.4bpp");
-static const u16 sPokeballGlow_Pal[16] = INCBIN_U16("graphics/field_effects/palettes/pokeball_glow.gbapal");
+static const u16 sPokeballGlow_Pal[16] = INCBIN_U16("graphics/field_effects/pics/pokeball_glow.gbapal");
 static const u32 sPokecenterMonitor0_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/0.4bpp");
 static const u32 sPokecenterMonitor1_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/1.4bpp");
 static const u32 sHofMonitorBig_Gfx[] = INCBIN_U32("graphics/field_effects/pics/hof_monitor_big.4bpp");
@@ -607,7 +607,6 @@ static void (*const sPokeballGlowEffectFuncs[])(struct Sprite *) =
     PokeballGlowEffect_Idle
 };
 
-// TODO EVA HERE
 static const struct Coords16 sPokeballCoordOffsets[PARTY_SIZE] =
 {
     {.x = 0, .y = 0},
@@ -1060,9 +1059,9 @@ bool8 FldEff_PokecenterHeal(void)
 
     nPokemon = (OW_IGNORE_EGGS_ON_HEAL <= GEN_3) ? CalculatePlayerPartyCount() : CountPartyNonEggMons();
     task = &gTasks[CreateTask(Task_PokecenterHeal, 0xff)];
-    task->tNumMons = nPokemon; // TODO EVA pokecenter animation here
-    task->tFirstBallX = 93;
-    task->tFirstBallY = 36;
+    task->tNumMons = nPokemon;
+    task->tFirstBallX = 148;
+    task->tFirstBallY = 38;
     task->tMonitorX = 124;
     task->tMonitorY = 24;
     return FALSE;
@@ -1079,7 +1078,7 @@ static void PokecenterHealEffect_Init(struct Task *task)
 {
     task->tState++;
     task->tBallSpriteId = CreateGlowingPokeballsEffect(task->tNumMons, task->tFirstBallX, task->tFirstBallY, TRUE);
-    task->tMonitorSpriteId = CreatePokecenterMonitorSprite(task->tMonitorX, task->tMonitorY);
+    // task->tMonitorSpriteId = CreatePokecenterMonitorSprite(task->tMonitorX, task->tMonitorY);
 }
 
 static void PokecenterHealEffect_WaitForBallPlacement(struct Task *task)
