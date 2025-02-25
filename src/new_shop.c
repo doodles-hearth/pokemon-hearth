@@ -41,6 +41,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/event_objects.h"
+#include "move.h"
 
 #ifdef MUDSKIP_SHOP_UI
 // #include "outfit_menu.h" // uncomment this out if you have my outfit system
