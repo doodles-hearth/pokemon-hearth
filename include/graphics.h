@@ -2037,20 +2037,7 @@ extern const u32 gCategoryIcons_Gfx[];
 extern const u32 gShopMenu_Gfx[];
 extern const u32 gShopMenu_Tilemap[];
 extern const u32 gShopMenu_Pal[];
-extern const u32 gShopMenu_ScrollGfx[];
-extern const u32 gShopMenu_ScrollTilemap[];
 extern const u32 gShopMenuMoney_Gfx[];
-extern const u16 gShopMenu_CursorGfx[];
-
-// shop seller mugshots
-extern const u8 gShopMenuSellerMugshotGfx_Jerry[];
-extern const u16 gShopMenuSellerMugshotPal_Jerry[];
-
-extern const u8 gShopMenuSellerMugshotGfx_Jennie[];
-extern const u16 gShopMenuSellerMugshotPal_Jennie[];
-
-extern const u8 gShopMenuSellerMugshotGfx_Okada[];
-extern const u16 gShopMenuSellerMugshotPal_Okada[];
 
 extern const u32 gBattleInterface_BallStatusBarGfx[];
 extern const u8 gBattleInterface_BallDisplayGfx[];

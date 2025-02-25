@@ -490,7 +490,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 		"Can I interest you in some rare goods?"
 	))
 
-	limitedpokemart(LIMITED_SHOP_1)
+	// limitedpokemart(LIMITED_SHOP_1)
 	speakername("Okada")
 	msgbox(format(
 		"Thanks for your business! Now where did I put that scroll again…"
