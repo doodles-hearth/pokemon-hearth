@@ -603,6 +603,7 @@ struct SaveBlock2
 #define SUB_FLAGS_COUNT ROUND_BITS_TO_BYTES(SUB_QUEST_COUNT)
 #define QUEST_STATES 5 //Number of different quest states tracked in the saveblock
 
+    u8 limitedShopVars[LIMITED_SHOP_VAR_COUNT];
     u8 questData[QUEST_FLAGS_COUNT * QUEST_STATES];
     u8 subQuests[SUB_FLAGS_COUNT];
 }; 

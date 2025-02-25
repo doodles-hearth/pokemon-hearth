@@ -8,7 +8,7 @@ struct LimitedShopItems
     const u16 quantity;
 };
 
-const struct LimitedShopItems gLimitedShops[LIMITED_SHOP_COUNT][LIMITED_SHOP_MAX_ITEMS] =
+const struct LimitedShopItems gLimitedShops[LIMITED_SHOP_COUNT][LIMITED_SHOP_MAX_ITEMS + 1] =
 {
     [LIMITED_SHOP_1] = 
     {
@@ -16,6 +16,7 @@ const struct LimitedShopItems gLimitedShops[LIMITED_SHOP_COUNT][LIMITED_SHOP_MAX
         {ITEM_OINTMENT, 0},
         {ITEM_UUMEGIRI, 2},
         {ITEM_TM_AERIAL_ACE, 1},
+        {ITEM_NONE, 0},
     },
     [LIMITED_SHOP_2] = 
     {
@@ -27,5 +28,6 @@ const struct LimitedShopItems gLimitedShops[LIMITED_SHOP_COUNT][LIMITED_SHOP_MAX
         {ITEM_REVIVE, 5},
         {ITEM_REPEL, 15},
         {ITEM_SUPER_REPEL, 10},
+        {ITEM_NONE, 0},
     },
 };
