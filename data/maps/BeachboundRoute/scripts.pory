@@ -491,6 +491,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 	))
 
 	// limitedpokemart(LIMITED_SHOP_1)
+	pokemart(ChiiTown_bla)
 	speakername("Okada")
 	msgbox(format(
 		"Thanks for your business! Now where did I put that scroll again…"
@@ -499,6 +500,15 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 
 	release
 }
+
+mart ChiiTown_bla {
+	ITEM_POKE_BALL
+	ITEM_OINTMENT
+	ITEM_CHERI_BERRY
+	ITEM_PECHA_BERRY
+	ITEM_CHESTO_BERRY
+}
+
 
 script BeachboundRoute_EventScript_SeeDecay {
 	lockall
