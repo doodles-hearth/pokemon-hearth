@@ -2,7 +2,8 @@
 #define GUARD_NEW_SHOP_H
 
 #ifdef MUDSKIP_SHOP_UI
-void NewShop_CreatePokemartMenu(const u16 *);
+void NewShop_CreatePokemartMenu(const u16 *, bool16 useVariablePrices);
+void NewShop_CreateLimitedShopMenu(u8 shopId);
 void NewShop_CreateDecorationShop1Menu(const u16 *);
 void NewShop_CreateDecorationShop2Menu(const u16 *);
 void CB2_ExitSellNewShopMenu(void);
