@@ -335,12 +335,22 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime::
 	faceplayer
 	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
 	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1
+	pokemart ChiiTown_bla
 	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
 	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2
 	closemessage
 	release
 	return
 
+
+	.align 2
+ChiiTown_bla:
+	.2byte ITEM_POKE_BALL
+	.2byte ITEM_OINTMENT
+	.2byte ITEM_CHERI_BERRY
+	.2byte ITEM_PECHA_BERRY
+	.2byte ITEM_CHESTO_BERRY
+	.2byte ITEM_NONE
 
 BeachboundRoute_EventScript_SeeDecay::
 	lockall
