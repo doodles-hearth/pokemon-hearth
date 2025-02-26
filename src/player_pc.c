@@ -174,7 +174,7 @@ static void ItemStorage_DrawItemIcon(u16);
 static void ItemStorage_PrintDescription(s32);
 static void ItemStorage_EraseMainMenu(u8);
 static void ItemStorage_MoveCursor(s32, bool8, struct ListMenu *);
-static void ItemStorage_PrintMenuItem(u8, u32, u8, u8);
+static void ItemStorage_PrintMenuItem(u8, u32, u8);
 
 static EWRAM_DATA const u8 *sTopMenuOptionOrder = NULL;
 static EWRAM_DATA u8 sTopMenuNumOptions = 0;
@@ -193,24 +193,24 @@ static const u8 sText_TooImportantToToss[] = _("That's much too\nimportant to to
 
 static const u8 *const sItemStorage_OptionDescriptions[] =
 {
-    [MENU_WITHDRAW] = COMPOUND_STRING("Take out items from the PC."),
-    [MENU_DEPOSIT]  = COMPOUND_STRING("Store items in the PC."),
-    [MENU_TOSS]     = COMPOUND_STRING("Throw away items stored in the PC."),
+    [MENU_WITHDRAW] = COMPOUND_STRING("Take out items from the chest."),
+    [MENU_DEPOSIT]  = COMPOUND_STRING("Store items in the chest."),
+    [MENU_TOSS]     = COMPOUND_STRING("Throw away items stored in the chest."),
     [MENU_EXIT]     = gText_GoBackPrevMenu,
 };
 
 static const struct MenuAction sPlayerPCMenuActions[] =
 {
-    [MENU_ITEMSTORAGE] = { COMPOUND_STRING("ITEM STORAGE"), {PlayerPC_ItemStorage} },
-    [MENU_MAILBOX]     = { sText_Mailbox,                   {PlayerPC_Mailbox} },
-    [MENU_DECORATION]  = { COMPOUND_STRING("DECORATION"),   {PlayerPC_Decoration} },
-    [MENU_TURNOFF]     = { COMPOUND_STRING("TURN OFF"),     {PlayerPC_TurnOff} }
+    [MENU_ITEMSTORAGE] = { COMPOUND_STRING("Item Storage"), {PlayerPC_ItemStorage} },
+    // [MENU_MAILBOX]     = { sText_Mailbox,                   {PlayerPC_Mailbox} },
+    [MENU_DECORATION]  = { COMPOUND_STRING("Decoration"),   {PlayerPC_Decoration} },
+    [MENU_TURNOFF]     = { COMPOUND_STRING("Close chest"),     {PlayerPC_TurnOff} }
 };
 
 static const u8 sBedroomPC_OptionOrder[] =
 {
     MENU_ITEMSTORAGE,
-    MENU_MAILBOX,
+    // MENU_MAILBOX,
     MENU_DECORATION,
     MENU_TURNOFF
 };
@@ -219,7 +219,7 @@ static const u8 sBedroomPC_OptionOrder[] =
 static const u8 sPlayerPC_OptionOrder[] =
 {
     MENU_ITEMSTORAGE,
-    MENU_MAILBOX,
+    // MENU_MAILBOX,
     MENU_TURNOFF
 };
 #define NUM_PLAYER_PC_OPTIONS ARRAY_COUNT(sPlayerPC_OptionOrder)
@@ -234,7 +234,6 @@ static const struct MenuAction sItemStorage_MenuActions[] =
 
 static const u16 sNewGamePCItems[][2] =
 {
-    { ITEM_POTION, 1 },
     { ITEM_NONE, 0 }
 };
 
@@ -427,7 +426,7 @@ static void PlayerPCProcessMenuInput(u8 taskId)
     s8 inputOptionId;
 
     data = gTasks[taskId].data;
-    if (sTopMenuNumOptions > 3)
+    if (sTopMenuNumOptions > 2)
         inputOptionId = Menu_ProcessInput();
     else
         inputOptionId = Menu_ProcessInputNoWrap();
@@ -465,7 +464,7 @@ static void PlayerPC_ItemStorage(u8 taskId)
     gTasks[taskId].func = ItemStorageMenuProcessInput;
 }
 
-static void PlayerPC_Mailbox(u8 taskId)
+UNUSED static void PlayerPC_Mailbox(u8 taskId)
 {
     gPlayerPCItemPageInfo.count = GetMailboxMailCount();
 
@@ -502,13 +501,10 @@ static void PlayerPC_Decoration(u8 taskId)
 
 static void PlayerPC_TurnOff(u8 taskId)
 {
+    DebugPrintf("Closing");
     if (sTopMenuNumOptions == NUM_BEDROOM_PC_OPTIONS) // Flimsy way to determine if Bedroom PC is in use
     {
-        if (gSaveBlock2Ptr->playerGender == MALE)
-            ScriptContext_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC);
-        else {
-            // ScriptContext_SetupScript(LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC);
-        }
+        ScriptContext_SetupScript(SunriseVillage_TurnOffPlayerPC);
     }
     else
     {
@@ -1042,7 +1038,7 @@ static void ItemStorage_MoveCursor(s32 id, bool8 onInit, struct ListMenu *list)
     }
 }
 
-static void ItemStorage_PrintMenuItem(u8 windowId, u32 id, u8 yOffset, u8 itemPos)
+static void ItemStorage_PrintMenuItem(u8 windowId, u32 id, u8 yOffset)
 {
     if (id != LIST_CANCEL)
     {

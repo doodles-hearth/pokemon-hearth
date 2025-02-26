@@ -37,6 +37,7 @@ ChiiTown_House1_EventScript_GrowlitheGrrr::
 	speakername ChiiTown_House1_EventScript_GrowlitheGrrr_Text_0
 	msgbox ChiiTown_House1_EventScript_GrowlitheGrrr_Text_1
 	closemessage
+	setseenmon SPECIES_GROWLITHE
 	applymovement OBJ_EVENT_ID_PLAYER, ChiiTown_House1_Movement_PlayerStepsAwayFromGrowlithe
 	waitmovement 0
 	release
@@ -83,6 +84,7 @@ ChiiTown_House1_EventScript_GrowlitheBarks::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
 	waitmovement 0
+	setseenmon SPECIES_GROWLITHE
 	setvar VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2
 	warp MAP_CHII_TOWN, 24, 21
 	waitstate

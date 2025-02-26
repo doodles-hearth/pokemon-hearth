@@ -56,8 +56,9 @@ script YifuCity_House2_Model {
 script YifuCity_House2_Tarountula {
 	lock
 	faceplayer
+	setseenmon(SPECIES_TAROUNTULA)
 	playmoncry(SPECIES_TAROUNTULA, CRY_MODE_NORMAL)
-	speakername("Tarountula")
+	setspeakertomonname(SPECIES_TAROUNTULA)
 	msgbox(format("Thshh!"))
 	waitmoncry
 	closemessage

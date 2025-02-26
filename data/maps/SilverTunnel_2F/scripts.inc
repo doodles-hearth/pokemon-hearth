@@ -20,6 +20,7 @@ SilverTunnel_2F_EventScript_Kansaku::
 SilverTunnel_2F_EventScript_Sandslash::
 	lock
 	faceplayer
+	setseenmon SPECIES_SANDSLASH
 	playmoncry SPECIES_SANDSLASH, CRY_MODE_NORMAL
 	speakername SilverTunnel_2F_EventScript_Sandslash_Text_0
 	msgbox SilverTunnel_2F_EventScript_Sandslash_Text_1
@@ -36,6 +37,7 @@ SilverTunnel_2F_EventScript_Miner::
 	msgbox SilverTunnel_2F_EventScript_Miner_Text_1
 	closemessage
 	turnobject VAR_LAST_TALKED, DIR_EAST
+	setseenmon SPECIES_SANDSLASH
 	playmoncry SPECIES_SANDSLASH, CRY_MODE_NORMAL
 	applymovement 5, SilverTunnel_2F_EventScript_Miner_Movement_0
 	waitmoncry

@@ -112,6 +112,7 @@ ChiiTown_PokemonCenter_EventScript_IveComeALongWay::
 ChiiTown_PokemonCenter_EventScript_Snorunt::
 	lock
 	faceplayer
+	setseenmon SPECIES_SNORUNT
 	playmoncry SPECIES_SNORUNT, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_SNORUNT
 	msgbox ChiiTown_PokemonCenter_EventScript_Snorunt_Text_0
@@ -137,6 +138,7 @@ ChiiTown_PokemonCenter_EventScript_RefugePresentation::
 	speakername ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_0
 	msgbox ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_1
 	closemessage
+	setnamedmon SPECIES_CHANSEY
 	switch VAR_FACING
 	case DIR_NORTH, ChiiTown_PokemonCenter_EventScript_RefugePresentation_3
 	case DIR_WEST, ChiiTown_PokemonCenter_EventScript_RefugePresentation_4
@@ -283,5 +285,6 @@ ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_1:
 	.string "of proper healing and rest spots for\l"
 	.string "Pokémon.\p"
 	.string "Oh, sorry, I'll get out of your hair\n"
-	.string "now. Talk to the nurse whenever you\l"
-	.string "want her to heal your Pokémon!$"
+	.string "now. Talk to the nurse and her\l"
+	.string "Chansey whenever you want her to\l"
+	.string "heal your Pokémon!$"

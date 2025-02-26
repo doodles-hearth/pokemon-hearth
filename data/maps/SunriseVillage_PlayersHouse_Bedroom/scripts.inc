@@ -1,5 +1,6 @@
 SunriseVillage_PlayersHouse_Bedroom_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_TRANSITION, SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
 
 SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -13,9 +14,14 @@ SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_LOAD_1:
 	pausefakertc
 	return
 
+SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	call SecretBase_EventScript_SetDecorationFlags
+	return
+
 
 SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll::
 	lock
+	setnamedmon SPECIES_MAREEP
 	msgbox SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll_Text_0
 	release
 	return
@@ -51,9 +57,40 @@ SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_2:
 	goto SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_1
 
 
+SunriseVillage_PlayersHouse_Bedroom_Stuff::
+	goto_if_unset FLAG_SYS_QUEST_MENU_GET, SunriseVillage_PlayersHouse_Bedroom_Stuff_1
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_2, MSGBOX_SIGN
+	waitfanfare
+	waitmessage
+	closemessage
+	return
+
+SunriseVillage_PlayersHouse_Bedroom_Stuff_1:
+	msgbox SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_0, MSGBOX_SIGN
+	waitmessage
+	giveitem ITEM_OINTMENT, 5
+	msgbox SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_1, MSGBOX_DEFAULT
+	closemessage
+	setflag FLAG_SYS_QUEST_MENU_GET
+	removeobject 13
+	return
+
+
+SunriseVillage_EventScript_PlayerPc::
+	lockall
+	special BedroomPC
+	waitstate
+	return
+
+
+SunriseVillage_TurnOffPlayerPC::
+	releaseall
+	return
+
+
 SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll_Text_0:
-	.string "A very fluffy Wooloo doll. It's made of\n"
-	.string "real Wooloo wool!$"
+	.string "“100% real Mareep wool”!$"
 
 SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_0:
 	.string "Big sis$"
@@ -88,3 +125,15 @@ SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_9:
 	.string "No need to yell, I can hear you just\n"
 	.string "fine!\p"
 	.string "Now get up and get ready!$"
+
+SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_0:
+	.string "It's the Pokémon medicine your sister\n"
+	.string "got for you.$"
+
+SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_1:
+	.string "There is also your journal inside! It\n"
+	.string "might come in handy.$"
+
+SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_2:
+	.string "You got the lint from the bottom of\n"
+	.string "the chest!$"

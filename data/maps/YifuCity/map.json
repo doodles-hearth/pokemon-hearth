@@ -152,7 +152,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
-      "x": 39,
+      "x": 33,
       "y": 16,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
@@ -536,6 +536,66 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
+      "x": 3,
+      "y": 39,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 8,
+      "movement_range_y": 6,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
+      "x": 39,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 8,
+      "movement_range_y": 6,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BEAN",
+      "x": 36,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 8,
+      "movement_range_y": 6,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_HARIKO_YIFU_CITY",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
@@ -719,6 +779,132 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "YifuCity_Trigger_CrobatGruntStuckInHole"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 36,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_Lockdown"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 37,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_Lockdown"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 38,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_Lockdown"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 39,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_Lockdown"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 40,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_Lockdown"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 41,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_Lockdown"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 42,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_Lockdown"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 43,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_Lockdown"
+    },
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 6,
+      "elevation": 0,
+      "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_CantGoThruNorth"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 6,
+      "elevation": 0,
+      "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_CantGoThruNorth"
+    },
+    {
+      "type": "trigger",
+      "x": 40,
+      "y": 6,
+      "elevation": 0,
+      "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_CantGoThruNorth"
+    },
+    {
+      "type": "trigger",
+      "x": 38,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_HarikoCriminals"
+    },
+    {
+      "type": "trigger",
+      "x": 40,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_HarikoCriminals"
+    },
+    {
+      "type": "trigger",
+      "x": 39,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_HarikoCriminals"
     }
   ],
   "bg_events": [

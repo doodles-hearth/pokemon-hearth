@@ -1,3 +1,5 @@
+const LOCALID_BAG = 13
+
 mapscripts SunriseVillage_PlayersHouse_Bedroom_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) < 1) {
@@ -7,12 +9,16 @@ mapscripts SunriseVillage_PlayersHouse_Bedroom_MapScripts {
 			pausefakertc
 		}
 	}
+	MAP_SCRIPT_ON_TRANSITION {
+		call(SecretBase_EventScript_SetDecorationFlags)
+	}
 }
 
 script SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll {
 	lock
+	setnamedmon(SPECIES_MAREEP)
 	msgbox(format(
-		"A very fluffy Wooloo doll. It's made of real Wooloo wool!"
+		"“100% real Mareep wool”!"
 	))
 	release
 }
@@ -83,4 +89,41 @@ script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
 	setflag(FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS)
     release
     end
+}
+
+script SunriseVillage_PlayersHouse_Bedroom_Stuff {
+	if(!flag(FLAG_SYS_QUEST_MENU_GET)) {
+	msgbox(format(
+		"It's the Pokémon medicine your sister got for you."
+	), MSGBOX_SIGN)
+	waitmessage
+
+	giveitem(ITEM_OINTMENT, 5)
+
+	msgbox(format("There is also your journal inside! It might come in handy."), MSGBOX_DEFAULT)
+	closemessage
+
+	setflag(FLAG_SYS_QUEST_MENU_GET)
+
+	removeobject(LOCALID_BAG)
+	
+	} else {
+		playfanfare(MUS_OBTAIN_ITEM)
+		msgbox(format(
+			"You got the lint from the bottom of the chest!"
+		), MSGBOX_SIGN)
+		waitfanfare
+		waitmessage
+		closemessage
+	}
+}
+
+script SunriseVillage_EventScript_PlayerPc {
+	lockall
+	special(BedroomPC)
+	waitstate
+}
+
+script SunriseVillage_TurnOffPlayerPC {
+	releaseall
 }

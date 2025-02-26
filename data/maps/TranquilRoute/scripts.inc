@@ -238,6 +238,7 @@ TranquilRoute_EventScript_WhiteslateRoadblock::
 TranquilRoute_EventScript_Shellos::
 	lock
 	faceplayer
+	setseenmon SPECIES_SHELLOS
 	playmoncry SPECIES_SHELLOS, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_SHELLOS
 	msgbox TranquilRoute_EventScript_Shellos_Text_0
@@ -286,10 +287,10 @@ TranquilRoute_EventScript_BerryWoman_2:
 
 TranquilRoute_EventScript_Mareep::
 	lock
+	setseenmon SPECIES_MAREEP
 	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_MAREEP
 	msgbox TranquilRoute_EventScript_Mareep_Text_0
-	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	return
@@ -297,10 +298,10 @@ TranquilRoute_EventScript_Mareep::
 
 TranquilRoute_EventScript_Mareep2::
 	lock
+	setseenmon SPECIES_MAREEP
 	playmoncry SPECIES_MAREEP, CRY_MODE_WEAK
 	setspeakertomonname SPECIES_MAREEP
 	msgbox TranquilRoute_EventScript_Mareep2_Text_0
-	playmoncry SPECIES_MAREEP, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	return

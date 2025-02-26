@@ -242,7 +242,7 @@ static u8 UNUSED MailboxMenu_GetWindowId(u8 windowIdx)
     return sMailboxWindowIds[windowIdx];
 }
 
-static void MailboxMenu_ItemPrintFunc(u8 windowId, u32 itemId, u8 y, u8 listPos)
+static void MailboxMenu_ItemPrintFunc(u8 windowId, u32 itemId, u8 y)
 {
     u8 buffer[30];
     u16 length;

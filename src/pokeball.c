@@ -113,6 +113,7 @@ const struct CompressedSpriteSheet gBallSpriteSheets[] =
     // [BALL_BEAST]   = {gBallGfx_Beast,   384, GFX_TAG_BEAST_BALL},
     [BALL_CHERISH] = {gBallGfx_Cherish, 384, GFX_TAG_CHERISH_BALL},
     [BALL_LIGHT]   = {gBallGfx_Heavy,   384, GFX_TAG_HEAVY_BALL}, // TODO: ITEM_LIGHT_POKE_BALL (Light ball)
+    [BALL_ULTRA_KNOCKOFF]    = {gBallGfx_Ultra,   384, GFX_TAG_ULTRA_BALL},
     [BALL_KABA]    = {sBallGfx_Kaba,   1536, GFX_TAG_KABA_BALL},
 };
 
@@ -148,6 +149,7 @@ const struct CompressedSpritePalette gBallSpritePalettes[] =
     [BALL_CHERISH] = {gBallPal_Cherish, GFX_TAG_CHERISH_BALL},
     [BALL_LIGHT]   = {gBallPal_Heavy,   GFX_TAG_HEAVY_BALL}, // TODO: ITEM_LIGHT_POKE_BALL (Light ball)
     [BALL_KABA]    = {sBallPal_Kaba,    GFX_TAG_KABA_BALL},
+    [BALL_ULTRA_KNOCKOFF]   = {gBallPal_Ultra,   GFX_TAG_ULTRA_BALL},
 };
 
 static const struct OamData sBallOamData =
@@ -340,6 +342,16 @@ const struct SpriteTemplate gBallSpriteTemplates[] =
         .callback = SpriteCB_BallThrow,
     },
     [BALL_ULTRA] =
+    {
+        .tileTag = GFX_TAG_ULTRA_BALL,
+        .paletteTag = GFX_TAG_ULTRA_BALL,
+        .oam = &sBallOamData,
+        .anims = sBallAnimSequences,
+        .images = NULL,
+        .affineAnims = sAffineAnim_BallRotate,
+        .callback = SpriteCB_BallThrow,
+    },
+    [BALL_ULTRA_KNOCKOFF] =
     {
         .tileTag = GFX_TAG_ULTRA_BALL,
         .paletteTag = GFX_TAG_ULTRA_BALL,

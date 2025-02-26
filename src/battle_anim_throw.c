@@ -188,6 +188,7 @@ static const struct CompressedSpriteSheet sBallParticleSpriteSheets[] =
     //[BALL_BEAST]    = {gBattleAnimSpriteGfx_Particles,      0x100, TAG_PARTICLES_BEASTBALL},
     [BALL_CHERISH]  = {gBattleAnimSpriteGfx_Particles2,     0x100, TAG_PARTICLES_CHERISHBALL},
     [BALL_LIGHT]    = {gBattleAnimSpriteGfx_Particles2,     0x100, TAG_PARTICLES_HEAVYBALL}, // TODO: ITEM_LIGHT_POKE_BALL (Light ball)
+    [BALL_ULTRA_KNOCKOFF] = {gBattleAnimSpriteGfx_Particles,      0x100, TAG_PARTICLES_POKEBALL},
 };
 
 static const struct CompressedSpritePalette sBallParticlePalettes[] =
@@ -221,6 +222,7 @@ static const struct CompressedSpritePalette sBallParticlePalettes[] =
     // [BALL_BEAST]    = {gBattleAnimSpritePal_CircleImpact,   TAG_PARTICLES_BEASTBALL},
     [BALL_CHERISH]  = {gBattleAnimSpritePal_Particles2,     TAG_PARTICLES_CHERISHBALL},
     [BALL_LIGHT]    = {gBattleAnimSpritePal_Particles2,     TAG_PARTICLES_HEAVYBALL}, // TODO: ITEM_LIGHT_POKE_BALL (Light ball)
+    [BALL_ULTRA_KNOCKOFF] = {gBattleAnimSpritePal_CircleImpact,   TAG_PARTICLES_POKEBALL},
 };
 
 static const union AnimCmd sAnim_RegularBall[] =
@@ -306,6 +308,7 @@ static const u8 sBallParticleAnimNums[POKEBALL_COUNT] =
     // [BALL_BEAST]   = 5,
     [BALL_CHERISH] = 0,
     [BALL_LIGHT]   = 0, // (Might not actually be) TODO: ITEM_LIGHT_POKE_BALL (Light ball)
+    [BALL_ULTRA_KNOCKOFF]   = 0,
 };
 
 static const TaskFunc sBallParticleAnimationFuncs[POKEBALL_COUNT] =
@@ -340,6 +343,7 @@ static const TaskFunc sBallParticleAnimationFuncs[POKEBALL_COUNT] =
     // [BALL_BEAST]   = UltraBallOpenParticleAnimation,
     [BALL_CHERISH] = MasterBallOpenParticleAnimation,
     [BALL_LIGHT]   = GreatBallOpenParticleAnimation, // (Might not actually be) TODO: ITEM_LIGHT_POKE_BALL (Light ball)
+    [BALL_ULTRA_KNOCKOFF]    = PokeBallOpenParticleAnimation,
 };
 
 static const struct SpriteTemplate sBallParticleSpriteTemplates[POKEBALL_COUNT] =
@@ -605,6 +609,15 @@ static const struct SpriteTemplate sBallParticleSpriteTemplates[POKEBALL_COUNT] 
         .affineAnims = gDummySpriteAffineAnimTable,
         .callback = SpriteCallbackDummy,
     },
+    [BALL_ULTRA_KNOCKOFF] = {
+        .tileTag = TAG_PARTICLES_POKEBALL,
+        .paletteTag = TAG_PARTICLES_POKEBALL,
+        .oam = &gOamData_AffineOff_ObjNormal_8x8,
+        .anims = sAnims_BallParticles,
+        .images = NULL,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCallbackDummy,
+    },
 };
 
 const u16 gBallOpenFadeColors[] =
@@ -639,6 +652,7 @@ const u16 gBallOpenFadeColors[] =
     // [BALL_BEAST] = RGB(31, 31, 15),
     [BALL_CHERISH] = RGB(25, 4, 3),
     [BALL_LIGHT] = RGB(7, 11, 20), // TODO: ITEM_LIGHT_POKE_BALL (Light ball)
+    [BALL_ULTRA_KNOCKOFF] = RGB(31, 22, 30),
 };
 
 const struct SpriteTemplate gPokeblockSpriteTemplate =

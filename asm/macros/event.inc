@@ -1233,16 +1233,17 @@
 
 	@ Opens the Pokemart system, offering the specified products for sale.
 	@ Products should be a list of .2byte item values preceded by an .align 2
-	.macro pokemart products:req, shopid=0
+	.macro pokemart products:req, shopId=0, useVariablePrices=FALSE
 	.byte SCR_OP_POKEMART
 	.4byte \products
-	.2byte \shopid
+	.2byte \shopId
+	.2byte \useVariablePrices
 	.endm
 
 	@ Opens a limited Pokemart using the shopid as the first argument.
 	@ Just another useful way to open the limited mart.
-	.macro limitedpokemart shopid:req
-	pokemart 0, \shopid
+	.macro limitedpokemart shopid:req, useVariablePrices=FALSE
+	pokemart 0, \shopid, \useVariablePrices
 	.endm
 
 	@ Used as the endpoint for a Pokemart item list
@@ -2705,7 +2706,18 @@
 	waitfanfare
 	.endm
 
-.macro goto_if_quest_inactive quest:req, dest:req
+	@ Updates the complex quest's variable to give it its next state.
+	.macro updatequest quest:req, questvar:req
+	addvar \questvar, 1
+	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
+	bufferstring 1 gText_QuestUpdate
+	playse SE_PIN
+	msgbox gText_QuestUpdate, MSGBOX_SIGN
+	waitse
+	openquestmenu
+	.endm
+
+	.macro goto_if_quest_inactive quest:req, dest:req
 	questmenu QUEST_MENU_CHECK_INACTIVE \quest
 	goto_if_eq VAR_RESULT, TRUE, \dest
 	.endm

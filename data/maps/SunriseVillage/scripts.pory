@@ -222,6 +222,7 @@ script SunriseVillage_Event_OldWoman {
 script SunriseVillage_Event_Happiny {
     lock
     faceplayer
+    setseenmon(SPECIES_HAPPINY)
     setspeakertomonname(SPECIES_HAPPINY)
     msgbox(format(
         "Happi!"
@@ -236,7 +237,7 @@ script SunriseVillage_Event_Happiny {
 script SunriseVillage_Event_Munchlax {
     lock
     faceplayer
-    waitse
+    setseenmon(SPECIES_MUNCHLAX)
     playmoncry(SPECIES_MUNCHLAX, CRY_MODE_NORMAL)
     setspeakertomonname(SPECIES_MUNCHLAX)
     msgbox(format(

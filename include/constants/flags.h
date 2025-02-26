@@ -676,8 +676,8 @@
 // True if the player met the merchant in beachbound route
 #define FLAG_MET_TRAVELING_MERCHANT_2ND_TIME  0x26F
 #define FLAG_BEAT_CHII_TOWN_KIDS  0x271
-#define FLAG_UNUSED_0x272  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
+#define FLAG_HIDE_LOCKDOWN_SAMURAI 0x272
+#define FLAG_HIDE_HARIKO_YIFU_CITY  0x273
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag
 #define FLAG_UNUSED_0x275  0x275 // Unused Flag
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag
@@ -1374,9 +1374,9 @@
 
 // Towns and Cities
 #define FLAG_VISITED_SUNRISE_VILLAGE                (SYSTEM_FLAGS + 0xF)
-#define FLAG_VISITED_CHII_TOWN                    (SYSTEM_FLAGS + 0x10)
-#define FLAG_VISITED_SAKU_TOWN                   (SYSTEM_FLAGS + 0x11)
-#define FLAG_VISITED_KURA_TOWN                 (SYSTEM_FLAGS + 0x12)
+#define FLAG_VISITED_CHII_TOWN                      (SYSTEM_FLAGS + 0x10)
+#define FLAG_VISITED_SAKU_TOWN                      (SYSTEM_FLAGS + 0x11)
+#define FLAG_VISITED_KURA_TOWN                      (SYSTEM_FLAGS + 0x12)
 #define FLAG_VISITED_FALLARBOR_TOWN                 (SYSTEM_FLAGS + 0x13)
 #define FLAG_VISITED_VERDANTURF_TOWN                (SYSTEM_FLAGS + 0x14)
 #define FLAG_VISITED_PACIFIDLOG_TOWN                (SYSTEM_FLAGS + 0x15)

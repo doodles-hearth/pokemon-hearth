@@ -60,7 +60,6 @@ static void WarpToStartPositionInPlayersBedroom(void);
 static void ResetMiniGamesRecords(void);
 static void ResetItemFlags(void);
 static void ResetDexNav(void);
-static void ResetLimitedShops(void);
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
 EWRAM_DATA bool8 gEnableContestDebugging = FALSE;
@@ -141,7 +140,7 @@ static void WarpToStartPositionInPlayersBedroom(void)
     NameRival();
     // The correct one
     // SetWarpDestination(MAP_GROUP(YIFU_CITY_DOJO), MAP_NUM(YIFU_CITY_DOJO), WARP_ID_NONE, 4, 45);
-    SetWarpDestination(MAP_GROUP(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), MAP_NUM(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), WARP_ID_NONE, 2, 4);
+    SetWarpDestination(MAP_GROUP(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), MAP_NUM(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), WARP_ID_NONE, 2, 5);
     // SetWarpDestination(MAP_GROUP(LAVARIDGE_TOWN), MAP_NUM(LAVARIDGE_TOWN), WARP_ID_NONE, 9, 10);
     // SetWarpDestination(MAP_GROUP(SILVERIDGE), MAP_NUM(SILVERIDGE), WARP_ID_NONE, 18, 24);
     // SetWarpDestination(MAP_GROUP(WINDY_CAPE2), MAP_NUM(WINDY_CAPE2), WARP_ID_NONE, 16, 60);
@@ -230,13 +229,13 @@ void NewGameInitData(void)
     SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
     ResetItemFlags();
     ResetDexNav();
-    ResetLimitedShops();
 
     // Custom
     FakeRtc_ForwardTimeTo(12, 0, 0);
     FakeRtc_SetNewGameDay();
     InitTimeBasedEvents();
     QuestMenu_ResetMenuSaveData();
+    QuestMenu_GetSetQuestState(QUEST_HEARTH_MAIN_CAMPAIGN, FLAG_SET_ACTIVE);
 }
 
 static void ResetMiniGamesRecords(void)
@@ -260,9 +259,4 @@ static void ResetDexNav(void)
     memset(gSaveBlock3Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock3Ptr->dexNavSearchLevels));
 #endif
     gSaveBlock3Ptr->dexNavChain = 0;
-}
-
-static void ResetLimitedShops(void)
-{
-    memset(gSaveBlock2Ptr->limitedShopVars, 0, sizeof(gSaveBlock2Ptr->limitedShopVars));
 }

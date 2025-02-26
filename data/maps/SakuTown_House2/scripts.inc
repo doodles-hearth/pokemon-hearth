@@ -98,6 +98,7 @@ SakuTown_House2_EventScript_Reunited::
 	case DIR_SOUTH, SakuTown_House2_EventScript_Reunited_5
 SakuTown_House2_EventScript_Reunited_1:
 	delay 40
+	setseenmon SPECIES_ESPEON
 	playmoncry SPECIES_ESPEON, CRY_MODE_NORMAL
 	waitmoncry
 	speakername SakuTown_House2_EventScript_EspeonsMaster_Text_0
@@ -180,6 +181,7 @@ SakuTown_House2_EventScript_GiveEvoStone_5:
 SakuTown_House2_EventScript_Espeon::
 	lock
 	faceplayer
+	setseenmon SPECIES_ESPEON
 	playmoncry SPECIES_ESPEON, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_ESPEON
 	msgbox SakuTown_House2_EventScript_Espeon_Text_0

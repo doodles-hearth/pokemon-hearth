@@ -31,6 +31,7 @@ script Silveridge_House1_EventScript_FirebringerFangirl {
 script Silveridge_House1_EventScript_Sandslash {
     lock
     faceplayer
+    setseenmon(SPECIES_SANDSLASH)
     playmoncry(SPECIES_SANDSLASH, CRY_MODE_NORMAL)
     speakername("Sandslash")
     msgbox(format(

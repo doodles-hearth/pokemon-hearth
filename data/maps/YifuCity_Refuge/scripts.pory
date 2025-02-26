@@ -27,6 +27,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 
 script YifuCity_Refuge_EventScript_Woobat {
 	lock
+	setseenmon(SPECIES_WOOBAT)
 	playmoncry(SPECIES_WOOBAT, CRY_MODE_NORMAL)
 	speakername("Chansey?")
 	msgbox("Rrrrr!")
@@ -133,5 +134,41 @@ script YifuCity_Refuge_EventScript_ListenToShamisen {
 }
 
 script YifuCity_Refuge_EventScript_Traveler {
-	
+	lock
+	faceplayer
+	speakername("Traveler")
+	msgbox(format(
+		"I come from a place high up in the mountains, where the Pokémon are as tough as the rocky landscape.\p"
+		"My Pawniard hones its saberlike claws on the hardest stones to keep them sharp."
+	))
+	closemessage
+
+	setnamedmon(SPECIES_PAWNIARD)
+	// TODO EVA setdescribedmon(SPECIES_PAWNIARD)
+	release
+	end
+}
+
+script YifuCity_Refuge_EventScript_Bisharp {
+	lock
+	faceplayer
+	setseenmon(SPECIES_PAWNIARD)
+	playmoncry(SPECIES_PAWNIARD, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_PAWNIARD)
+	msgbox(format("Kshhh."))
+	waitmoncry
+	closemessage
+	release
+}
+
+script YifuCity_Refuge_EventScript_Samurai {
+	lock
+	faceplayer
+	speakername("Samurai")
+	msgbox(format(
+		"The Crobat Shadows must be operating from somewhere… But where?"
+	))
+	closemessage
+	release
+	end
 }

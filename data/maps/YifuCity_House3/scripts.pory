@@ -16,7 +16,8 @@ script YifuCity_House3_EggGirlsMom {
 script YifuCity_House3_EventScript_Togepi {
 	lock
 	faceplayer
-	speakername("Togepi")
+	setseenmon(SPECIES_TOGEPI)
+	setspeakertomonname(SPECIES_TOGEPI)
 	msgbox(format(
         "Preee!"
     ))

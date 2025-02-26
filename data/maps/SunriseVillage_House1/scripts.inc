@@ -3,12 +3,14 @@ SunriseVillage_House1_MapScripts::
 
 
 SunriseVillage_House1_EventScript_Kirlia::
-	speakername SunriseVillage_House1_EventScript_Kirlia_Text_0
-	msgbox SunriseVillage_House1_EventScript_Kirlia_Text_1, MSGBOX_NPC
+	setseenmon SPECIES_KIRLIA
+	setspeakertomonname SPECIES_KIRLIA
+	msgbox SunriseVillage_House1_EventScript_Kirlia_Text_0, MSGBOX_NPC
 	return
 
 
 SunriseVillage_House1_EventScript_OldWoman::
+	setnamedmon SPECIES_KIRLIA
 	speakername SunriseVillage_House1_EventScript_OldWoman_Text_0
 	msgbox SunriseVillage_House1_EventScript_OldWoman_Text_1, MSGBOX_NPC
 	return
@@ -29,7 +31,7 @@ SunriseVillage_House1_EventScript_LittleGirl::
 SunriseVillage_House1_EventScript_Zigzagoon::
 	lock
 	faceplayer
-	waitse
+	setseenmon SPECIES_ZIGZAGOON
 	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
 	speakername SunriseVillage_House1_EventScript_Zigzagoon_Text_0
 	msgbox SunriseVillage_House1_EventScript_Zigzagoon_Text_1
@@ -39,9 +41,6 @@ SunriseVillage_House1_EventScript_Zigzagoon::
 
 
 SunriseVillage_House1_EventScript_Kirlia_Text_0:
-	.string "Kirlia$"
-
-SunriseVillage_House1_EventScript_Kirlia_Text_1:
 	.string "…$"
 
 SunriseVillage_House1_EventScript_OldWoman_Text_0:

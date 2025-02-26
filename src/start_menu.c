@@ -203,9 +203,9 @@ static const struct WindowTemplate sWindowTemplate_PyramidPeak = {
     .baseBlock = 0x8
 };
 
-static const u8 sText_MenuDebug[] = _("DEBUG");
+static const u8 sText_MenuDebug[] = _("Debug");
 
-static const u8 sText_QuestMenu[] = _("QUESTS");
+static const u8 sText_QuestMenu[] = _("Journal");
 static const struct MenuAction sStartMenuItems[] =
 {
     [MENU_ACTION_POKEDEX]         = {gText_MenuPokedex, {.u8_void = StartMenuPokedexCallback}},
@@ -366,7 +366,7 @@ static void BuildNormalStartMenu(void)
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
     
-    if (FlagGet(FLAG_SYS_QUEST_MENU_GET))
+    if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_QUEST_MENU);
     
     AddStartMenuAction(MENU_ACTION_SAVE);
@@ -384,6 +384,8 @@ static void BuildDebugStartMenu(void)
     AddStartMenuAction(MENU_ACTION_BAG);
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
+    if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
+        AddStartMenuAction(MENU_ACTION_QUEST_MENU);
     AddStartMenuAction(MENU_ACTION_PLAYER);
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);

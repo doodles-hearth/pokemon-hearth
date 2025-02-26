@@ -29,6 +29,12 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_0
 	waitmovement 0
 	applymovement 1, Common_Movement_WalkInPlaceFasterDown
+	setseenmon SPECIES_CYNDAQUIL
+	setnamedmon SPECIES_CYNDAQUIL
+	setseenmon SPECIES_SNIVY
+	setnamedmon SPECIES_SNIVY
+	setseenmon SPECIES_FROAKIE
+	setnamedmon SPECIES_FROAKIE
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
 	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1
 	closemessage
@@ -195,6 +201,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	setflag FLAG_SYS_POKEDEX_GET
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	closemessage
+	startquest QUEST_POKEDEX
 	delay 20
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9
@@ -440,6 +447,8 @@ SunriseVillage_EldersHouse_EventScript_PostBattle_5:
 	delay 16
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
 	resumefakertc
+	updatequest QUEST_HEARTH_MAIN_CAMPAIGN, VAR_MAIN_CAMPAIGN_QUEST
+	questmenu QUEST_MENU_SET_ACTIVE, QUEST_POKEDEX
 	release
 	return
 
@@ -484,7 +493,7 @@ SunriseVillage_EldersHouse_EventScript_RivalBattle_5:
 SunriseVillage_EldersHouse_EventScript_Joltik::
 	lock
 	faceplayer
-	waitse
+	setseenmon SPECIES_JOLTIK
 	playmoncry SPECIES_JOLTIK, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_JOLTIK
 	msgbox SunriseVillage_EldersHouse_EventScript_Joltik_Text_0

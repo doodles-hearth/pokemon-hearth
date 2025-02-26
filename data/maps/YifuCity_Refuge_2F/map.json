@@ -47,12 +47,12 @@
       "script": "YifuCity_Refuge_2F_TravelingMerchant",
       "flag": "0",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
-      "evening": false,
+      "evening": true,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",

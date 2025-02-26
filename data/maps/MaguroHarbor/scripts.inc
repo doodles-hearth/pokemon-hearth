@@ -247,6 +247,7 @@ MaguroHarbor_EventScript_FishermanInBoat::
 MaguroHarbor_EventScript_Cramorant::
 	lock
 	faceplayer
+	setseenmon SPECIES_CRAMORANT
 	playmoncry SPECIES_CRAMORANT, CRY_MODE_NORMAL
 	speakername MaguroHarbor_EventScript_Cramorant_Text_0
 	msgbox MaguroHarbor_EventScript_Cramorant_Text_1, MSGBOX_DEFAULT

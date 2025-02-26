@@ -512,6 +512,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Bean,                  OBJ_EVENT_PAL_TAG_BEAN},
     {gObjectEventPal_Natsuki,               OBJ_EVENT_PAL_TAG_NATSUKI},
     {gObjectEventPal_CrobatShadowsZubat,    OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS},
+    {gObjectEventPal_CrobatShadowsCrobat,   OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS_BOSS},
     {gObjectEventPal_Samurai,               OBJ_EVENT_PAL_TAG_SAMURAI},
     {gObjectEventPal_OldMan,                OBJ_EVENT_PAL_TAG_OLD_MAN},
     {gObjectEventPal_Cook,                  OBJ_EVENT_PAL_TAG_COOK},
@@ -572,6 +573,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
     {gObjectEventPal_CuttableTreeKuraDojo,  OBJ_EVENT_PAL_TAG_CUTTABLE_TREE_KURA_DOJO},
+    {gObjectEventPal_MareepDoll,            OBJ_EVENT_PAL_TAG_DECORATIONS_MAREEP},
 #if OW_FOLLOWERS_POKEBALLS
     {gObjectEventPal_MasterBall,            OBJ_EVENT_PAL_TAG_BALL_MASTER},
     {gObjectEventPal_UltraBall,             OBJ_EVENT_PAL_TAG_BALL_ULTRA},

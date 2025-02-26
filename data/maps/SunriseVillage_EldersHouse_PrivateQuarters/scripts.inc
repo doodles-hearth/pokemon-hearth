@@ -6,6 +6,7 @@ SunriseVillage_EldersHouse_PrivateQuarters_EventScript_Meowth::
 	lock
 	faceplayer
 	waitse
+	setseenmon SPECIES_GALVANTULA
 	playmoncry SPECIES_GALVANTULA, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_GALVANTULA
 	msgbox SunriseVillage_EldersHouse_PrivateQuarters_EventScript_Meowth_Text_0

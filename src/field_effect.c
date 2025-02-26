@@ -258,7 +258,7 @@ static const u32 sUnusedBirchBeauty[] = INCBIN_U32("graphics/birch_speech/unused
 static const u16 sNewGameBirch_Pal[16] = INCBIN_U16("graphics/birch_speech/birch.gbapal");
 
 static const u32 sPokeballGlow_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokeball_glow.4bpp");
-static const u16 sPokeballGlow_Pal[16] = INCBIN_U16("graphics/field_effects/palettes/pokeball_glow.gbapal");
+static const u16 sPokeballGlow_Pal[16] = INCBIN_U16("graphics/field_effects/pics/pokeball_glow.gbapal");
 static const u32 sPokecenterMonitor0_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/0.4bpp");
 static const u32 sPokecenterMonitor1_Gfx[] = INCBIN_U32("graphics/field_effects/pics/pokecenter_monitor/1.4bpp");
 static const u32 sHofMonitorBig_Gfx[] = INCBIN_U32("graphics/field_effects/pics/hof_monitor_big.4bpp");
@@ -610,11 +610,11 @@ static void (*const sPokeballGlowEffectFuncs[])(struct Sprite *) =
 static const struct Coords16 sPokeballCoordOffsets[PARTY_SIZE] =
 {
     {.x = 0, .y = 0},
-    {.x = 6, .y = 0},
+    {.x = 4, .y = 0},
+    {.x = 8, .y = 0},
     {.x = 0, .y = 4},
-    {.x = 6, .y = 4},
-    {.x = 0, .y = 8},
-    {.x = 6, .y = 8}
+    {.x = 4, .y = 4},
+    {.x = 8, .y = 4}
 };
 
 static const u8 sPokeballGlowReds[]   = {16, 12, 8, 0};
@@ -1060,8 +1060,8 @@ bool8 FldEff_PokecenterHeal(void)
     nPokemon = (OW_IGNORE_EGGS_ON_HEAL <= GEN_3) ? CalculatePlayerPartyCount() : CountPartyNonEggMons();
     task = &gTasks[CreateTask(Task_PokecenterHeal, 0xff)];
     task->tNumMons = nPokemon;
-    task->tFirstBallX = 93;
-    task->tFirstBallY = 36;
+    task->tFirstBallX = 148;
+    task->tFirstBallY = 38;
     task->tMonitorX = 124;
     task->tMonitorY = 24;
     return FALSE;
@@ -1322,7 +1322,7 @@ static void SpriteCB_PokecenterMonitor(struct Sprite *sprite)
     if (sprite->data[0] != 0)
     {
         sprite->data[0] = 0;
-        sprite->invisible = FALSE;
+        // sprite->invisible = FALSE;
         StartSpriteAnim(sprite, 1);
     }
     if (sprite->animEnded)

@@ -15,8 +15,8 @@
 #define QUEST_MENU_BUFFER_QUEST_NAME    10   //buffers a quest name to gStringVar1
 
 // quest number defines
-#define QUEST_1          0
-#define QUEST_2          1
+#define QUEST_HEARTH_MAIN_CAMPAIGN          0
+#define QUEST_POKEDEX          1
 #define QUEST_3          2
 #define QUEST_4          3
 #define QUEST_5          4
@@ -78,9 +78,8 @@
 #define SUB_QUEST_29        28
 #define SUB_QUEST_30        29
 
-#define QUEST_1_SUB_COUNT 10
-#define QUEST_2_SUB_COUNT 20
-#define SUB_QUEST_COUNT (QUEST_1_SUB_COUNT + QUEST_2_SUB_COUNT)
+#define QUEST_2_SUB_COUNT 4
+#define SUB_QUEST_COUNT (QUEST_2_SUB_COUNT)
 
 #define QUEST_ARRAY_COUNT (SUB_QUEST_COUNT > QUEST_COUNT ? SUB_QUEST_COUNT : QUEST_COUNT)
 #endif // GUARD_CONSTANTS_QUESTS_H

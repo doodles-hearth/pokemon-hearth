@@ -80,7 +80,6 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 	bufferspeciesname STR_VAR_2, VAR_STARTER_MON
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2
 	closemessage
-	giveitem ITEM_OINTMENT, 5
 	giveitem ITEM_POKE_BALL, 5
 	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3
@@ -102,7 +101,6 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 SunriseVillage_PlayersHouse_LR_EventScript_Eevee::
 	lock
 	faceplayer
-	waitse
 	setspeakertomonname SPECIES_EEVEE
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_0
 	playmoncry SPECIES_EEVEE, CRY_MODE_NORMAL
@@ -169,10 +167,8 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2:
 	.string "So you're going on a journey…\p"
 	.string "That's great! I'm proud of you,\n"
 	.string "{PLAYER}.\p"
-	.string "Here, take some medicine for your\n"
-	.string "{STR_VAR_2} and some of these\l"
-	.string "Poké Balls, in case you find any good\l"
-	.string "Pokémon!$"
+	.string "Here, take some of these Poké Balls,\n"
+	.string "in case you find any good Pokémon!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3:
 	.string "Oh, and I'm sure you're going to get\n"

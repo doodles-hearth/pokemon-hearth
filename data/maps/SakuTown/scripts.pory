@@ -175,6 +175,8 @@ script SakuTown_EventScript_Karateka {
 	waitmovement(LOCALID_KUKU)
 	waitmoncry
 
+	setseenmon(SPECIES_MAKUHITA)
+
 	release
 }
 
@@ -310,6 +312,7 @@ script SakuTown_EventScript_Makuhita {
 	lock
 	faceplayer
 	waitse
+	setseenmon(SPECIES_MAKUHITA)
 	playmoncry(SPECIES_MAKUHITA, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_MAKUHITA)
 	msgbox(format("Kuhi!"))

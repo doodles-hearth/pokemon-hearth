@@ -34,6 +34,8 @@
 #include "event_object_movement.h"
 #include "pokemon_icon.h"
 
+#include "complex_quests.h"
+
 #include "random.h"
 
 #define tPageItems      data[4]
@@ -143,6 +145,8 @@ static void PrintQuestLocation(s32 questId);
 static void GenerateQuestFlavorText(s32 questId);
 static void UpdateQuestFlavorText(s32 questId);
 static void PrintQuestFlavorText(s32 questId);
+static const u8 *GetQuestDesc(s32 questId);
+static const u8 *GetQuestLocation(s32 questId);
 
 static bool8 IsQuestUnlocked(s32 questId);
 static bool8 IsQuestActiveState(s32 questId);
@@ -155,8 +159,10 @@ static void DetermineSpriteType(s32 questId);
 static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType);
 static void ResetSpriteState(void);
 static void QuestMenu_DestroySprite(u8 idx);
+static u16 GetSpriteId_Complex(s32 questId);
+static u8 GetSpriteType_Complex(s32 questId);
 
-static void GenerateStateAndPrint(u8 windowId, u32 itemId, u8 y, u8 itemPos);
+static void GenerateStateAndPrint(u8 windowId, u32 itemId, u8 y);
 static u8 GenerateSubquestState(u8 questId);
 static u8 GenerateQuestState(u8 questId);
 static void PrintQuestState(u8 windowId, u8 y, u8 colorIndex);
@@ -243,113 +249,11 @@ static const u8 sText_AZ[] = _(" A-Z");
 
 //Declaration of subquest structures. Edits to subquests are made here.
 #define sub_quest(i, n, d, m, s, st, t) {.id = i, .name = n, .desc = d, .map = m, .sprite = s, .spritetype = st, .type = t}
-static const struct SubQuest sSubQuests1[QUEST_1_SUB_COUNT] =
-{
-	sub_quest(
-	      0,
-	      gText_SubQuest1_Name1,
-	      gText_SubQuest1_Desc1,
-	      gText_SideQuestMap1,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      1,
-	      gText_SubQuest1_Name2,
-	      gText_SubQuest1_Desc2,
-	      gText_SideQuestMap2,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      2,
-	      gText_SubQuest1_Name3,
-	      gText_SubQuest1_Desc3,
-	      gText_SideQuestMap3,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      3,
-	      gText_SubQuest1_Name4,
-	      gText_SubQuest1_Desc4,
-	      gText_SideQuestMap4,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      4,
-	      gText_SubQuest1_Name5,
-	      gText_SubQuest1_Desc5,
-	      gText_SideQuestMap5,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      5,
-	      gText_SubQuest1_Name6,
-	      gText_SubQuest1_Desc6,
-	      gText_SideQuestMap6,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      6,
-	      gText_SubQuest1_Name7,
-	      gText_SubQuest1_Desc7,
-	      gText_SideQuestMap7,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      7,
-	      gText_SubQuest1_Name8,
-	      gText_SubQuest1_Desc8,
-	      gText_SideQuestMap8,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      8,
-	      gText_SubQuest1_Name9,
-	      gText_SubQuest1_Desc9,
-	      gText_SideQuestMap9,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      9,
-	      gText_SubQuest1_Name10,
-	      gText_SubQuest1_Desc10,
-	      gText_SideQuestMap10,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-};
 
 static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 {
 	sub_quest(
-	      10,
+	      0,
 	      gText_SubQuest2_Name1,
 	      gText_SubQuest2_Desc1,
 	      gText_SideQuestMap1,
@@ -359,7 +263,7 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	),
 
 	sub_quest(
-	      11,
+	      1,
 	      gText_SubQuest2_Name2,
 	      gText_SubQuest2_Desc2,
 	      gText_SideQuestMap2,
@@ -369,7 +273,7 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	),
 
 	sub_quest(
-	      12,
+	      2,
 	      gText_SubQuest2_Name3,
 	      gText_SubQuest2_Desc3,
 	      gText_SideQuestMap3,
@@ -379,171 +283,10 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	),
 
 	sub_quest(
-	      13,
+	      3,
 	      gText_SubQuest2_Name4,
 	      gText_SubQuest2_Desc4,
 	      gText_SideQuestMap4,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      14,
-	      gText_SubQuest2_Name5,
-	      gText_SubQuest2_Desc5,
-	      gText_SideQuestMap5,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      15,
-	      gText_SubQuest2_Name6,
-	      gText_SubQuest2_Desc6,
-	      gText_SideQuestMap6,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      16,
-	      gText_SubQuest2_Name7,
-	      gText_SubQuest2_Desc7,
-	      gText_SideQuestMap7,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      17,
-	      gText_SubQuest2_Name8,
-	      gText_SubQuest2_Desc8,
-	      gText_SideQuestMap8,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      18,
-	      gText_SubQuest2_Name9,
-	      gText_SubQuest2_Desc9,
-	      gText_SideQuestMap9,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      19,
-	      gText_SubQuest2_Name10,
-	      gText_SubQuest2_Desc10,
-	      gText_SideQuestMap10,
-	      SPECIES_HO_OH,
-	      PKMN,
-	      sText_Caught
-
-	),
-
-	sub_quest(
-	      20,
-	      gText_SubQuest2_Name11,
-	      gText_SubQuest2_Desc11,
-	      gText_SideQuestMap11,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      21,
-	      gText_SubQuest2_Name12,
-	      gText_SubQuest2_Desc12,
-	      gText_SideQuestMap12,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      22,
-	      gText_SubQuest2_Name13,
-	      gText_SubQuest2_Desc13,
-	      gText_SideQuestMap13,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      23,
-	      gText_SubQuest2_Name14,
-	      gText_SubQuest2_Desc14,
-	      gText_SideQuestMap14,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      24,
-	      gText_SubQuest2_Name15,
-	      gText_SubQuest2_Desc15,
-	      gText_SideQuestMap15,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      25,
-	      gText_SubQuest2_Name16,
-	      gText_SubQuest2_Desc16,
-	      gText_SideQuestMap16,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      26,
-	      gText_SubQuest2_Name17,
-	      gText_SubQuest2_Desc17,
-	      gText_SideQuestMap17,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      27,
-	      gText_SubQuest2_Name18,
-	      gText_SubQuest2_Desc18,
-	      gText_SideQuestMap18,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      28,
-	      gText_SubQuest2_Name19,
-	      gText_SubQuest2_Desc19,
-	      gText_SideQuestMap19,
-	      OBJ_EVENT_GFX_WALLY,
-	      OBJECT,
-	      sText_Found
-	),
-
-	sub_quest(
-	      29,
-	      gText_SubQuest2_Name20,
-	      gText_SubQuest2_Desc20,
-	      gText_SideQuestMap20,
 	      OBJ_EVENT_GFX_WALLY,
 	      OBJECT,
 	      sText_Found
@@ -578,8 +321,8 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	      gText_SideQuestMap2,
 	      OBJ_EVENT_GFX_WALLY,
 	      OBJECT,
-	      sSubQuests1,
-	      QUEST_1_SUB_COUNT
+	      sSubQuests2,
+	      QUEST_2_SUB_COUNT
 	),
 	side_quest(
 	      gText_SideQuestName_3,
@@ -588,8 +331,8 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	      gText_SideQuestMap3,
 	      OBJ_EVENT_GFX_WALLY,
 	      OBJECT,
-	      sSubQuests2,
-	      QUEST_2_SUB_COUNT
+	      NULL,
+	      0
 	),
 	side_quest(
 	      gText_SideQuestName_4,
@@ -1659,6 +1402,7 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 	// 2 : rewarded
 	// 3 : completed
 	// 4 : favorited
+	DebugPrintf("Quest %d", caseId);
 
 	switch (caseId)
 	{
@@ -1669,6 +1413,7 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 		case FLAG_GET_ACTIVE:
 		case FLAG_SET_ACTIVE:
 		case FLAG_REMOVE_ACTIVE:
+			DebugPrintf("set active");
 			bit += 1;
 			break;
 		case FLAG_GET_REWARD:
@@ -1725,6 +1470,7 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 		case FLAG_GET_ACTIVE:
 			return gSaveBlock2Ptr->questData[index] & mask;
 		case FLAG_SET_ACTIVE:
+			DebugPrintf("set active!");
 			gSaveBlock2Ptr->questData[index] |= mask;
 			return 1;
 		case FLAG_REMOVE_ACTIVE:
@@ -2005,7 +1751,7 @@ void GenerateQuestLocation(s32 questId)
 {
 	if (!IsSubquestMode())
 	{
-		StringCopy(gStringVar2, sSideQuests[questId].map);
+		StringCopy(gStringVar2, GetQuestLocation(questId));
 	}
 	else
 	{
@@ -2059,7 +1805,7 @@ void GenerateQuestFlavorText(s32 questId)
 }
 void UpdateQuestFlavorText(s32 questId)
 {
-	StringCopy(gStringVar1, sSideQuests[questId].desc);
+	StringExpandPlaceholders(gStringVar1, GetQuestDesc(questId));
 }
 void PrintQuestFlavorText(s32 questId)
 {
@@ -2147,8 +1893,8 @@ void DetermineSpriteType(s32 questId)
 
 	if (IsSubquestMode() == FALSE)
 	{
-		spriteId = sSideQuests[questId].sprite;
-		spriteType = sSideQuests[questId].spritetype;
+		spriteId = GetSpriteId_Complex(questId);
+		spriteType = GetSpriteType_Complex(questId);
 
 		QuestMenu_CreateSprite(spriteId, sStateDataPtr->spriteIconSlot,
 		                       spriteType);
@@ -2241,7 +1987,7 @@ static void QuestMenu_DestroySprite(u8 idx)
 		}
 	}
 }
-static void GenerateStateAndPrint(u8 windowId, u32 questId, u8 y, u8 itemPos)
+static void GenerateStateAndPrint(u8 windowId, u32 questId, u8 y)
 {
 	u8 colorIndex;
 
@@ -2805,4 +2551,46 @@ void QuestMenu_ResetMenuSaveData(void)
 	       sizeof(gSaveBlock2Ptr->questData));
 	memset(&gSaveBlock2Ptr->subQuests, 0,
 	       sizeof(gSaveBlock2Ptr->subQuests));
+}
+
+static const u8 *GetQuestLocation(s32 questId)
+{
+    switch (questId) {
+        case QUEST_HEARTH_MAIN_CAMPAIGN:
+            return gTable_MainCampaignMaps[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
+        default:
+            return sSideQuests[questId].map;
+    }
+}
+
+static const u8 *GetQuestDesc(s32 questId)
+{
+    switch (questId) {
+        case QUEST_HEARTH_MAIN_CAMPAIGN:
+            return gTable_MainCampaignDescs[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
+        default:
+            return sSideQuests[questId].desc;
+    }
+}
+
+static u16 GetSpriteId_Complex(s32 questId)
+{
+	switch (questId)
+    {
+		case QUEST_HEARTH_MAIN_CAMPAIGN:
+		    return MainCampaignSprites[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
+		default:
+		    return sSideQuests[questId].sprite;
+	} 
+}
+
+static u8 GetSpriteType_Complex(s32 questId)
+{
+	switch (questId)
+    {
+		case QUEST_HEARTH_MAIN_CAMPAIGN:
+		    return MainCampaignSpriteTypes[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
+		default:
+		    return sSideQuests[questId].spritetype;
+	} 
 }

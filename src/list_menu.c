@@ -413,9 +413,6 @@ s32 ListMenu_ProcessInput(u8 listTaskId)
 {
     struct ListMenu *list = (void *) gTasks[listTaskId].data;
 
-    s32 currentPosition = list->scrollOffset + list->selectedRow;
-    u8 lastPositon = list->template.totalItems - 1;
-
     if (JOY_NEW(A_BUTTON))
     {
         return list->template.items[list->scrollOffset + list->selectedRow].id;
@@ -426,20 +423,12 @@ s32 ListMenu_ProcessInput(u8 listTaskId)
     }
     else if (JOY_REPEAT(DPAD_UP))
     {
-        if (currentPosition == 0)
-            ListMenuChangeSelection(list,TRUE,lastPositon,TRUE);
-        else
-            ListMenuChangeSelection(list, TRUE, 1, FALSE);
-
+        ListMenuChangeSelection(list, TRUE, 1, FALSE);
         return LIST_NOTHING_CHOSEN;
     }
     else if (JOY_REPEAT(DPAD_DOWN))
     {
-        if (currentPosition == lastPositon)
-            ListMenuChangeSelection(list,TRUE,lastPositon, FALSE);
-        else
-            ListMenuChangeSelection(list, TRUE, 1, TRUE);
-
+        ListMenuChangeSelection(list, TRUE, 1, TRUE);
         return LIST_NOTHING_CHOSEN;
     }
     else // try to move by one window scroll
@@ -656,7 +645,7 @@ static void ListMenuPrintEntries(struct ListMenu *list, u16 startIndex, u16 yOff
 
         y = (yOffset + i) * yMultiplier + list->template.upText_Y;
         if (list->template.itemPrintFunc != NULL)
-            list->template.itemPrintFunc(list->template.windowId, list->template.items[startIndex].id, y, startIndex);
+            list->template.itemPrintFunc(list->template.windowId, list->template.items[startIndex].id, y);
 
         ListMenuPrint(list, list->template.items[startIndex].name, x, y);
         startIndex++;

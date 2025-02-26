@@ -16,7 +16,8 @@ const u32 gItemIcon_GreatBall[] = INCBIN_U32("graphics/items/icons/great_ball.4b
 const u32 gItemIconPalette_GreatBall[] = INCBIN_U32("graphics/items/icons/great_ball.gbapal.lz");
 
 const u32 gItemIcon_UltraBall[] = INCBIN_U32("graphics/items/icons/ultra_ball.4bpp.lz");
-const u32 gItemIconPalette_UltraBall[] = INCBIN_U32("graphics/items/icons/ultra_ball.gbapal.lz");
+const u32 gItemIcon_UltraBallKnockoff[] = INCBIN_U32("graphics/items/icons/ultra_ball_knockoff.4bpp.lz");
+const u32 gItemIconPalette_UltraBall[] = INCBIN_U32("graphics/items/icons/ultra_ball_knockoff.gbapal.lz");
 
 const u32 gItemIcon_MasterBall[] = INCBIN_U32("graphics/items/icons/master_ball.4bpp.lz");
 const u32 gItemIconPalette_MasterBall[] = INCBIN_U32("graphics/items/icons/master_ball.gbapal.lz");
@@ -1835,7 +1836,7 @@ const u32 gItemIcon_DowsingMachine[] = INCBIN_U32("graphics/items/icons/dowsing_
 const u32 gItemIconPalette_DowsingMachine[] = INCBIN_U32("graphics/items/icon_palettes/dowsing_machine.gbapal.lz");
 
 const u32 gItemIcon_TownMap[] = INCBIN_U32("graphics/items/icons/town_map.4bpp.lz");
-const u32 gItemIconPalette_TownMap[] = INCBIN_U32("graphics/items/icon_palettes/town_map.gbapal.lz");
+const u32 gItemIconPalette_TownMap[] = INCBIN_U32("graphics/items/icons/town_map.gbapal.lz");
 
 const u32 gItemIcon_VsSeeker[] = INCBIN_U32("graphics/items/icons/vs_seeker.4bpp.lz");
 const u32 gItemIconPalette_VsSeeker[] = INCBIN_U32("graphics/items/icon_palettes/vs_seeker.gbapal.lz");

@@ -291,6 +291,7 @@ script TranquilRoute_EventScript_WhiteslateRoadblock {
 script TranquilRoute_EventScript_Shellos {
 	lock
 	faceplayer
+	setseenmon(SPECIES_SHELLOS)
 	playmoncry(SPECIES_SHELLOS, CRY_MODE_NORMAL)
     setspeakertomonname(SPECIES_SHELLOS)
 	msgbox(format(
@@ -358,20 +359,20 @@ script TranquilRoute_EventScript_BerryWoman {
 
 script TranquilRoute_EventScript_Mareep {
 	lock
+	setseenmon(SPECIES_MAREEP)
 	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_MAREEP)
 	msgbox(format("Beeeeeh…"))
-	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
 	waitmoncry
 	release
 }
 
 script TranquilRoute_EventScript_Mareep2 {
 	lock
+	setseenmon(SPECIES_MAREEP)
 	playmoncry(SPECIES_MAREEP, CRY_MODE_WEAK)
 	setspeakertomonname(SPECIES_MAREEP)
 	msgbox(format("Baaaaah…"))
-	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
 	waitmoncry
 	release
 }

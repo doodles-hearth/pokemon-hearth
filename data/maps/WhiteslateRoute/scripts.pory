@@ -156,6 +156,8 @@ script WhiteslateRoute_Trigger_SecretBase {
 	))
 	waitmovement(LOCALID_SECRET_BASE_POKEMON)
 
+	setseenmon(SPECIES_GROVYLE)
+
 	playse(SE_M_ROCK_THROW)
 	
 	applymovement(LOCALID_SECRET_BASE_POKEMON, moves(

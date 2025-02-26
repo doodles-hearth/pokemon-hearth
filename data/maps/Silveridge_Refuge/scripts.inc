@@ -23,6 +23,7 @@ Silveridge_Refuge_EventScript_Artist::
 Silveridge_Refuge_EventScript_Kricketune::
 	lock
 	faceplayer
+	setseenmon SPECIES_KRICKETUNE
 	setspeakertomonname SPECIES_KRICKETUNE
 	playmoncry SPECIES_KRICKETUNE, CRY_MODE_NORMAL
 	msgbox Silveridge_Refuge_EventScript_Kricketune_Text_0

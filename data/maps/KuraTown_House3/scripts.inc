@@ -83,6 +83,7 @@ KuraTown_House3_EventScript_EspeonGoesHome::
 	msgbox KuraTown_House3_EventScript_EspeonGoesHome_Text_1
 	closemessage
 	applymovement 2, JumpInJoy
+	setseenmon SPECIES_ESPEON
 	playmoncry SPECIES_ESPEON, CRY_MODE_NORMAL
 	waitmoncry
 	delay 40
@@ -101,6 +102,7 @@ KuraTown_House3_EventScript_EspeonGoesHome::
 KuraTown_House3_EventScript_Espeon::
 	lock
 	faceplayer
+	setseenmon SPECIES_ESPEON
 	playmoncry SPECIES_ESPEON, CRY_MODE_NORMAL
 	msgbox KuraTown_House3_EventScript_Espeon_Text_0
 	waitmoncry

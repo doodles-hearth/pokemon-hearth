@@ -85,7 +85,8 @@ script SunriseVillage_RivalsHouse_EventScript_Man {
 }
 
 script SunriseVillage_RivalsHouse_EventScript_Meowth {
-	speakername("Meowth")
+	setseenmon(SPECIES_MEOWTH)
+	setspeakertomonname(SPECIES_MEOWTH)
     msgbox(format(
         "Purrr…"
     ), MSGBOX_NPC)
@@ -94,9 +95,9 @@ script SunriseVillage_RivalsHouse_EventScript_Meowth {
 script SunriseVillage_RivalsHouse_EventScript_Meowth2 {
     lock
     faceplayer
-    waitse
+    setseenmon(SPECIES_MEOWTH)
     playmoncry(SPECIES_MEOWTH, CRY_MODE_NORMAL)
-	speakername("Meowth")
+	setspeakertomonname(SPECIES_MEOWTH)
     msgbox(format(
         "Meow!"
     ))

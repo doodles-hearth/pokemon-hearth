@@ -72,17 +72,18 @@ SunriseVillage_RivalsHouse_EventScript_Man_2:
 
 
 SunriseVillage_RivalsHouse_EventScript_Meowth::
-	speakername SunriseVillage_RivalsHouse_EventScript_Meowth_Text_0
-	msgbox SunriseVillage_RivalsHouse_EventScript_Meowth_Text_1, MSGBOX_NPC
+	setseenmon SPECIES_MEOWTH
+	setspeakertomonname SPECIES_MEOWTH
+	msgbox SunriseVillage_RivalsHouse_EventScript_Meowth_Text_0, MSGBOX_NPC
 	return
 
 
 SunriseVillage_RivalsHouse_EventScript_Meowth2::
 	lock
 	faceplayer
-	waitse
+	setseenmon SPECIES_MEOWTH
 	playmoncry SPECIES_MEOWTH, CRY_MODE_NORMAL
-	speakername SunriseVillage_RivalsHouse_EventScript_Meowth_Text_0
+	setspeakertomonname SPECIES_MEOWTH
 	msgbox SunriseVillage_RivalsHouse_EventScript_Meowth2_Text_0
 	waitmoncry
 	release
@@ -137,9 +138,6 @@ SunriseVillage_RivalsHouse_EventScript_Man_Text_2:
 	.string "bet?$"
 
 SunriseVillage_RivalsHouse_EventScript_Meowth_Text_0:
-	.string "Meowth$"
-
-SunriseVillage_RivalsHouse_EventScript_Meowth_Text_1:
 	.string "Purrr…$"
 
 SunriseVillage_RivalsHouse_EventScript_Meowth2_Text_0:

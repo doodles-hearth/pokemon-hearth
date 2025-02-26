@@ -114,6 +114,7 @@ KuraTown_EventScript_FarmerScyther::
 KuraTown_EventScript_Scyther::
 	lock
 	faceplayer
+	setseenmon SPECIES_SCYTHER
 	playmoncry SPECIES_SCYTHER, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_SCYTHER
 	msgbox KuraTown_EventScript_Scyther_Text_0

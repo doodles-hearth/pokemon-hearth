@@ -1,0 +1,29 @@
+mapscripts YifuCity_BigHouse_3F_MapScripts {
+
+}
+
+script YifuCity_BigHouse_3F_EventScript_TradingActOfLove {
+	lock
+	faceplayer
+	speakername("Woman")
+	msgbox(format(
+		"Trading Pokémon has long been seen as an act of true love and trust between wielders.\p"
+		"Now that I've become a wielder, I can't wait to find my soulmate so she can trade me all her rare Pokémon!"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_BigHouse_3F_EventScript_Butterfree {
+	lock
+    faceplayer
+	setseenmon(SPECIES_BUTTERFREE)
+    setspeakertomonname(SPECIES_BUTTERFREE)
+    msgbox(format(
+        "E-e-e-eee!"
+    ))
+    playmoncry(SPECIES_BUTTERFREE, CRY_MODE_NORMAL)
+    waitmoncry
+    release
+    end
+}

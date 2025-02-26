@@ -45,6 +45,7 @@ YifuCity_House1_2F_EventScript_ChildStolenDoll::
 YifuCity_House1_2F_EventScript_Vulpix::
 	lock
 	faceplayer
+	setseenmon SPECIES_VULPIX
 	playmoncry SPECIES_VULPIX, CRY_MODE_NORMAL
 	speakername YifuCity_House1_2F_EventScript_Vulpix_Text_0
 	msgbox YifuCity_House1_2F_EventScript_Vulpix_Text_1
