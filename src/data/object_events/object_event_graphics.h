@@ -195,6 +195,7 @@ const u32 gObjectEventPic_AquaMemberF[] = INCBIN_U32("graphics/object_events/pic
 const u32 gObjectEventPic_MagmaMemberM[] = INCBIN_U32("graphics/object_events/pics/people/team_magma/magma_member_m.4bpp");
 const u32 gObjectEventPic_MagmaMemberF[] = INCBIN_U32("graphics/object_events/pics/people/team_magma/magma_member_f.4bpp");
 const u32 gObjectEventPic_CrobatShadowsGruntM[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/zubat_m.4bpp");
+const u32 gObjectEventPic_CrobatShadowsGruntMAlign[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/zubat_m_align.4bpp");
 const u32 gObjectEventPic_CrobatShadowsGruntF[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/zubat_f.4bpp");
 const u32 gObjectEventPic_CrobatShadowsBoss[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/crobat.4bpp");
 const u32 gObjectEventPic_CrobatShadowsKevin[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/kevin.4bpp");

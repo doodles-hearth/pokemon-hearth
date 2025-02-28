@@ -27335,7 +27335,7 @@ F_TRAINER_FEMALE |
 #line 10909
 F_TRAINER_FEMALE | 
 #line 10910
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_RICH,
 #line 10911
         .doubleBattle = FALSE,
 #line 10912
