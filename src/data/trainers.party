@@ -1157,7 +1157,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 === TRAINER_YONO ===
 Name: Yono
 Class: Old Lady
-Pic: Expert F
+Pic: Old Lady
 Gender: Female
 Music: Rich
 Double Battle: No
@@ -10904,10 +10904,10 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_AJISAI ===
 Name: Ajisai
-Class: Gardener
-Pic: Gardener
+Class: Old Lady
+Pic: Old Lady
 Gender: Female
-Music: Female
+Music: Rick
 Double Battle: No
 AI: Basic Trainer
 
