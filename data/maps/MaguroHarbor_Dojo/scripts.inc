@@ -15,7 +15,7 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated::
 	call Common_EventScript_PlayGymBadgeFanfare
 	speakername MaguroHarbor_Dojo_EventScript_Koishi_Text_0
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1, MSGBOX_DEFAULT
-	giveitem ITEM_TM_WATER_PULSE
+	giveitem ITEM_TM_NATURE_POWER
 	speakername MaguroHarbor_Dojo_EventScript_Koishi_Text_0
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2, MSGBOX_DEFAULT
 	closemessage
@@ -190,9 +190,9 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1:
 	.string "I am also supposed to give you this.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2:
-	.string "This scroll contains Water Pulse, a\n"
-	.string "water-type move that can confuse\l"
-	.string "your foes.\p"
+	.string "This scroll contains Nature Power, a\n"
+	.string "move that changes depending on the\l"
+	.string "terrain your Pokémon is standing on.\p"
 	.string "Going through the Toku Council's\n"
 	.string "challenge is no easy undertaking, but\l"
 	.string "I can feel your spirit overflowing\l"

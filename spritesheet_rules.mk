@@ -2960,13 +2960,13 @@ $(POKEMONGFXDIR)/swadloon/overworld.4bpp: %.4bpp: %.png
 $(POKEMONGFXDIR)/leavanny/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
-$(POKEMONGFXDIR)/sewaddle/tokuan/follower.4bpp: %.4bpp: %.png
+$(POKEMONGFXDIR)/sewaddle/tokuan/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
-$(POKEMONGFXDIR)/swadloon/tokuan/follower.4bpp: %.4bpp: %.png
+$(POKEMONGFXDIR)/swadloon/tokuan/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
-$(POKEMONGFXDIR)/leavanny/tokuan/follower.4bpp: %.4bpp: %.png
+$(POKEMONGFXDIR)/leavanny/tokuan/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(POKEMONGFXDIR)/venipede/overworld.4bpp: %.4bpp: %.png

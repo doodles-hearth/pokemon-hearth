@@ -343,15 +343,6 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime::
 	return
 
 
-	.align 2
-ChiiTown_bla:
-	.2byte ITEM_POKE_BALL
-	.2byte ITEM_OINTMENT
-	.2byte ITEM_CHERI_BERRY
-	.2byte ITEM_PECHA_BERRY
-	.2byte ITEM_CHESTO_BERRY
-	.2byte ITEM_NONE
-
 BeachboundRoute_EventScript_SeeDecay::
 	lockall
 	playse SE_PIN
