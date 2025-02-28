@@ -1,8 +1,9 @@
 Common_EventScript_PkmnCenterNurse_Chansey::
 	lock
+	setseenmon SPECIES_CHANSEY
 	playmoncry SPECIES_CHANSEY, CRY_MODE_NORMAL
-	speakername Common_EventScript_PkmnCenterNurse_Chansey_Text_0
-	msgbox Common_EventScript_PkmnCenterNurse_Chansey_Text_1
+	setspeakertomonname SPECIES_CHANSEY
+	msgbox Common_EventScript_PkmnCenterNurse_Chansey_Text_0
 	waitse
 	closemessage
 	release
@@ -177,9 +178,6 @@ Movement_PkmnCenterNurse_Turn:
 	step_end
 
 Common_EventScript_PkmnCenterNurse_Chansey_Text_0:
-	.string "Chansey$"
-
-Common_EventScript_PkmnCenterNurse_Chansey_Text_1:
 	.string "Sey!$"
 
 Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_0:

@@ -58,7 +58,8 @@ script ChiiTown_EventScript_Shopper {
 	speakername("Woman")
 	msgbox(format(
 		"The lady who keeps the town's market has started selling Pokémon medicine and Poké Balls!\p"
-		"Be careful, though: the ointments she sells can't be used in the middle of a battle."
+		"Be careful, though: the ointments she sells can't be used in the middle of a battle.\p"
+		"They are super cheap though, so don't be afraid to use them so you don't always have to run to the nearest refuge!"
 	), MSGBOX_NPC)
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
@@ -315,9 +316,9 @@ script ChiiTown_EventScript_Mart {
 mart ChiiTown_Mart {
 	ITEM_POKE_BALL
 	ITEM_OINTMENT
-	ITEM_CHERI_BERRY
-	ITEM_PECHA_BERRY
-	ITEM_CHESTO_BERRY
+	ITEM_PARALYZE_HEAL
+	ITEM_ANTIDOTE
+	ITEM_AWAKENING
 }
 
 script ChiiTown_EventScript_Samurai {

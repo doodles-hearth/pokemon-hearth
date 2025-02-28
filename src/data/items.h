@@ -16,9 +16,9 @@
 
 // Shared Item Description entries
 
-static const u8 sFullHealDesc[]       = _("Heals all the\n"
-                                          "status problems of\n"
-                                          "one Pokémon.");
+static const u8 sFullHealDesc[]       = _("Out of battle,\n"
+                                          "Heals all\n"
+                                          "status problems.");
 
 static const u8 sPokeDollDesc[]       = _("Use to flee from\n"
                                           "any battle with\n"
@@ -671,7 +671,7 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
         .effect = gItemEffect_SuperPotion,
         .flingPower = 30,
-        .iconPic = gItemIcon_SuperOintment,
+        .iconPic = gItemIcon_Ointment,
         .iconPalette = gItemIconPalette_SuperOintment,
     },
 
@@ -689,7 +689,7 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
         .effect = gItemEffect_HyperPotion,
         .flingPower = 30,
-        .iconPic = gItemIcon_HyperOintment,
+        .iconPic = gItemIcon_Ointment,
         .iconPalette = gItemIconPalette_HyperOintment,
     },
 
@@ -726,7 +726,7 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
         .effect = gItemEffect_FullRestore,
         .flingPower = 30,
-        .iconPic = gItemIcon_SacredOintment,
+        .iconPic = gItemIcon_MaxOintment,
         .iconPalette = gItemIconPalette_SacredOintment,
     },
 
@@ -1138,31 +1138,33 @@ const struct Item gItemsInfo[] =
     [ITEM_ANTIDOTE] =
     {
         .name = _("Antidote"),
-        .price = (I_PRICE >= GEN_7) ? 200 : 100,
+        .price = I_ITEM_PRICES_HEARTH ? 50 : ((I_PRICE >= GEN_7) ? 200 : 100),
         .description = COMPOUND_STRING(
-            "Heals a poisoned\n"
+            "Out of battle,\n"
+            "heals a poisoned\n"
             "Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = EFFECT_ITEM_CURE_STATUS,
+        // .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .effect = gItemEffect_Antidote,
         .flingPower = 30,
-        .iconPic = gItemIcon_Antidote,
+        .iconPic = gItemIcon_StatusHeal,
         .iconPalette = gItemIconPalette_Antidote,
     },
 
     [ITEM_PARALYZE_HEAL] =
     {
         .name = _("Paralyze Heal"),
-        .price = (I_PRICE == GEN_7) ? 300 : 200,
+        .price = I_ITEM_PRICES_HEARTH ? 50 : ((I_PRICE == GEN_7) ? 300 : 200),
         .description = COMPOUND_STRING(
-            "Heals a paralyzed\n"
+            "Out of battle,\n"
+            "heals a paralyzed\n"
             "Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = EFFECT_ITEM_CURE_STATUS,
+        // .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .effect = gItemEffect_ParalyzeHeal,
         .flingPower = 30,
         .iconPic = gItemIcon_StatusHeal,
@@ -1172,14 +1174,15 @@ const struct Item gItemsInfo[] =
     [ITEM_BURN_HEAL] =
     {
         .name = _("Burn Heal"),
-        .price = (I_PRICE == GEN_7) ? 300 : ((I_PRICE <= GEN_7) ? 250 : 200),
+        .price = I_ITEM_PRICES_HEARTH ? 50 : ((I_PRICE == GEN_7) ? 300 : ((I_PRICE <= GEN_7) ? 250 : 200)),
         .description = COMPOUND_STRING(
-            "Heals Pokémon\n"
+            "Out of battle,\n"
+            "heals a Pokémon\n"
             "of a burn."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = EFFECT_ITEM_CURE_STATUS,
+        // .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .effect = gItemEffect_BurnHeal,
         .flingPower = 30,
         .iconPic = gItemIcon_StatusHeal,
@@ -1189,14 +1192,15 @@ const struct Item gItemsInfo[] =
     [ITEM_ICE_HEAL] =
     {
         .name = _("Ice Heal"),
-        .price = (I_PRICE == GEN_7) ? 100 : ((I_PRICE <= GEN_7) ? 250 : 200),
+        .price = I_ITEM_PRICES_HEARTH ? 50 : ((I_PRICE == GEN_7) ? 100 : ((I_PRICE <= GEN_7) ? 250 : 200)),
         .description = COMPOUND_STRING(
-            "Defrosts a frozen\n"
+            "Out of battle,\n"
+            "defrosts a frozen\n"
             "Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = EFFECT_ITEM_CURE_STATUS,
+        // .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .effect = gItemEffect_IceHeal,
         .flingPower = 30,
         .iconPic = gItemIcon_StatusHeal,
@@ -1206,14 +1210,15 @@ const struct Item gItemsInfo[] =
     [ITEM_AWAKENING] =
     {
         .name = _("Awakening"),
-        .price = (I_PRICE >= GEN_2 && I_PRICE <= GEN_6) ? 250 : ((I_PRICE == GEN_7) ? 100 : 200),
+        .price = I_ITEM_PRICES_HEARTH ? 50 : ((I_PRICE >= GEN_2 && I_PRICE <= GEN_6) ? 250 : ((I_PRICE == GEN_7) ? 100 : 200)),
         .description = COMPOUND_STRING(
-            "Awakens a sleeping\n"
+            "Out of battle,\n"
+            "awakens a sleeping\n"
             "Pokémon."),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = EFFECT_ITEM_CURE_STATUS,
+        // .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .effect = gItemEffect_Awakening,
         .flingPower = 30,
         .iconPic = gItemIcon_StatusHeal,
@@ -1223,12 +1228,12 @@ const struct Item gItemsInfo[] =
     [ITEM_FULL_HEAL] =
     {
         .name = _("Full Heal"),
-        .price = (I_PRICE >= GEN_7) ? 400 : 600,
+        .price = I_ITEM_PRICES_HEARTH ? 150 : ((I_PRICE >= GEN_7) ? 400 : 600),
         .description = sFullHealDesc,
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = EFFECT_ITEM_CURE_STATUS,
+        // .battleUsage = EFFECT_ITEM_CURE_STATUS,
         .effect = gItemEffect_FullHeal,
         .flingPower = 30,
         .iconPic = gItemIcon_FullHeal,
@@ -2476,7 +2481,8 @@ const struct Item gItemsInfo[] =
             .importance = 1,
             .pocket = POCKET_KEY_ITEMS,
         #else
-            .price = (I_PRICE >= GEN_7) ? 1000 : 550,
+            .price = 550,
+            // .price = (I_PRICE >= GEN_7) ? 1000 : 550,
             .pocket = POCKET_ITEMS,
         #endif
         .type = ITEM_USE_FIELD,
@@ -13177,8 +13183,8 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .iconPic = gItemIcon_SilkScarf,
-        .iconPalette = gItemIconPalette_SilkScarf,
+        .iconPic = gItemIcon_AshiisScarf,
+        .iconPalette = gItemIconPalette_AshiisScarf,
     },
 
     [ITEM_TEA] =

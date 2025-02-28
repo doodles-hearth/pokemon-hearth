@@ -309,7 +309,7 @@ MaguroHarbor_EventScript_Mart::
 	case TIME_LUNCHTIME, MaguroHarbor_EventScript_Mart_3
 	case TIME_AFTERNOON, MaguroHarbor_EventScript_Mart_3
 	case TIME_EVENING, MaguroHarbor_EventScript_Mart_3
-	case TIME_NIGHT, MaguroHarbor_EventScript_Mart_4
+	case TIME_NIGHT, MaguroHarbor_EventScript_Mart_3
 	return
 
 MaguroHarbor_EventScript_Mart_2:
@@ -318,11 +318,6 @@ MaguroHarbor_EventScript_Mart_2:
 
 MaguroHarbor_EventScript_Mart_3:
 	goto MaguroHarbor_EventScript_MartSelling
-	return
-
-MaguroHarbor_EventScript_Mart_4:
-	call StringVarSetter
-	goto MaguroHarbor_EventScript_MartClosingUp
 	return
 
 
@@ -383,9 +378,12 @@ StringVarSetter_4:
 MaguroHarbor_Mart:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_OINTMENT
-	.2byte ITEM_CHERI_BERRY
-	.2byte ITEM_PECHA_BERRY
-	.2byte ITEM_CHESTO_BERRY
+	.2byte ITEM_SUPER_OINTMENT
+	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_BURN_HEAL
+	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_NONE
 
 MaguroHarbor_EventScript_TownSign_Text_0:

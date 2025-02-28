@@ -2554,7 +2554,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Wingull"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Small Gull"),
         .cryId = CRY_WINGULL,
         .natDexNum = NATIONAL_DEX_WINGULL,
         .categoryName = _("Seagull"),
@@ -2636,7 +2636,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Pelipper"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Gulp Bird"),
         .cryId = CRY_PELIPPER,
         .natDexNum = NATIONAL_DEX_PELIPPER,
         .categoryName = _("Water Bird"),

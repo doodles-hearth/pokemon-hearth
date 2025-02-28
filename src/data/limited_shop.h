@@ -13,7 +13,7 @@ const struct LimitedShopItems gLimitedShops[LIMITED_SHOP_COUNT][LIMITED_SHOP_MAX
     [LIMITED_SHOP_1] = 
     {
         {ITEM_GREAT_BALL, 5},
-        {ITEM_OINTMENT, 0},
+        {ITEM_SUPER_OINTMENT, 5},
         {ITEM_UUMEGIRI, 2},
         {ITEM_TM_AERIAL_ACE, 1},
         {ITEM_NONE, 0},

@@ -102,6 +102,26 @@ KuraTown_EventScript_Farmer::
 	return
 
 
+KuraTown_EventScript_SilkScarf::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_SILK_SCARF, KuraTown_EventScript_SilkScarf_2
+	speakername KuraTown_EventScript_SilkScarf_Text_0
+	msgbox KuraTown_EventScript_SilkScarf_Text_2
+	closemessage
+	giveitem ITEM_SILK_SCARF
+	setflag FLAG_RECEIVED_SILK_SCARF
+KuraTown_EventScript_SilkScarf_1:
+	release
+	return
+
+KuraTown_EventScript_SilkScarf_2:
+	speakername KuraTown_EventScript_SilkScarf_Text_0
+	msgbox KuraTown_EventScript_SilkScarf_Text_1
+	closemessage
+	goto KuraTown_EventScript_SilkScarf_1
+
+
 KuraTown_EventScript_FarmerScyther::
 	lock
 	faceplayer
@@ -216,6 +236,27 @@ KuraTown_EventScript_Farmer_Text_1:
 	.string "y'ask?\p"
 	.string "To be honest, I don't quite rememb'r.\n"
 	.string "But who needs a reas'n, right?$"
+
+KuraTown_EventScript_SilkScarf_Text_0:
+	.string "Girl$"
+
+KuraTown_EventScript_SilkScarf_Text_1:
+	.string "Sigh… Now I'm scarfless…\p"
+	.string "Well, at least I'm not committing any\n"
+	.string "more crimes against fashion…$"
+
+KuraTown_EventScript_SilkScarf_Text_2:
+	.string "Hey, you! Yes, you! I need some\n"
+	.string "super-urgent fashion advice!\p"
+	.string "I bought myself this scarf in Yifu\n"
+	.string "City… But now I'm worried the white\l"
+	.string "clashes with my complexion!\p"
+	.string "Is it awful? Does my skin look grey?\p"
+	.string "Oh gosh, it does, doesn't it? I knew\n"
+	.string "it! I have to get rid of it right this\l"
+	.string "moment!\p"
+	.string "Take it! Take it! I can't even look at\n"
+	.string "it!$"
 
 KuraTown_EventScript_FarmerScyther_Text_0:
 	.string "We started taming Scyther recently\n"

@@ -42,12 +42,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -122,12 +122,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_EventScript_IDontFeelSafe",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -183,12 +183,12 @@
       "script": "YifuCity_EventScript_ShinySeller",
       "flag": "FLAG_BOUGHT_FAKE_SHINY",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
       "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
@@ -203,12 +203,12 @@
       "script": "NULL",
       "flag": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
       "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
@@ -223,12 +223,12 @@
       "script": "NULL",
       "flag": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
       "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZUBAT)",
@@ -737,15 +737,6 @@
     },
     {
       "type": "trigger",
-      "x": 56,
-      "y": 10,
-      "elevation": 0,
-      "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
-      "var_value": "0",
-      "script": "YifuCity_Trigger_CrobatGruntsScram"
-    },
-    {
-      "type": "trigger",
       "x": 60,
       "y": 18,
       "elevation": 0,
@@ -905,6 +896,15 @@
       "var": "VAR_TEMP_0",
       "var_value": "0",
       "script": "YifuCity_Trigger_HarikoCriminals"
+    },
+    {
+      "type": "trigger",
+      "x": 56,
+      "y": 10,
+      "elevation": 0,
+      "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_CrobatGruntsScram"
     }
   ],
   "bg_events": [

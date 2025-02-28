@@ -19,10 +19,11 @@ script Silveridge_House1_EventScript_FirebringerFangirl {
     msgbox(format(
         "This place gets pretty cold, especially when the winds blow strong into the valley.\p"
         "I don't know what we would do without those brave Firebringers.\p"
-        "They carry live Slugma on their back all the way down Mt Kazan! I could never!\p"
+        "They bring us live Slugma, carrying them on their back all the way down Mt Kazan! I could never!\p"
         "Sigh… I hope a handsome Firebringer notices me one day…"
     ))
     closemessage
+    setnamedmon(SPECIES_SLUGMA)
     applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
     waitmovement(0)
     release
@@ -68,6 +69,8 @@ script Silveridge_House1_EventScript_Man {
             "My helper Sandslash is already fully grown, so I don't need it."
         ))
         closemessage
+
+        setnamedmon(SPECIES_SANDSLASH)
     }
     release
 }

@@ -247,9 +247,9 @@ ChiiTown_EventScript_Mart::
 ChiiTown_Mart:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_OINTMENT
-	.2byte ITEM_CHERI_BERRY
-	.2byte ITEM_PECHA_BERRY
-	.2byte ITEM_CHESTO_BERRY
+	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_AWAKENING
 	.2byte ITEM_NONE
 
 ChiiTown_EventScript_Samurai::
@@ -305,7 +305,11 @@ ChiiTown_EventScript_Shopper_Text_0:
 	.string "and Poké Balls!\p"
 	.string "Be careful, though: the ointments she\n"
 	.string "sells can't be used in the middle of a\l"
-	.string "battle.$"
+	.string "battle.\p"
+	.string "They are super cheap though, so don't\n"
+	.string "be afraid to use them so you don't\l"
+	.string "always have to run to the nearest\l"
+	.string "refuge!$"
 
 ChiiTown_EventScript_Kecleon_Text_0:
 	.string "Kleeeeh!$"

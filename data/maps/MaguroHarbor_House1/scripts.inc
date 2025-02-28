@@ -16,7 +16,7 @@ MaguroHarbor_House1_EventScript_PokedexRiddler::
 	special GetDexRiddleFeedback
 	compare VAR_RESULT, 1
 	goto_if_eq MaguroHarbor_House1_EventScript_PokedexRiddler_5
-	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_5
+	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4
 MaguroHarbor_House1_EventScript_PokedexRiddler_4:
 	setflag FLAG_DAILY_MON_DEX_RIDDLE
 	release
@@ -31,8 +31,7 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_2:
 MaguroHarbor_House1_EventScript_PokedexRiddler_5:
 	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_3
 	closemessage
-	giveitem ITEM_ORAN_BERRY
-	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4
+	setflag FLAG_DAILY_MON_DEX_RIDDLE_WON
 	goto MaguroHarbor_House1_EventScript_PokedexRiddler_4
 
 
@@ -47,7 +46,7 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_Text_1:
 	.string "I know a whole lot about Pokémon…\n"
 	.string "Wanna play a game?\p"
 	.string "If you can guess what Pokémon I'm\n"
-	.string "talking about, I'll share my knowledge\l"
+	.string "describing, I'll share my knowledge\l"
 	.string "with you.\p"
 	.string "Hehe… Think you can solve my riddle?\n"
 	.string "Ahem…$"
@@ -62,15 +61,12 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_Text_3:
 	.string "feel the rush of pure knowledge\l"
 	.string "that's coursing through your veins?\p"
 	.string "Your Pokémon… They will gain more\n"
-	.string "experience for a while.\p"
+	.string "experience today.\p"
 	.string "Knowledge is power, after all, hehe…\p"
 	.string "Come back another time for another\n"
 	.string "riddle…$"
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4:
-	.string "come back tomorrow$"
-
-MaguroHarbor_House1_EventScript_PokedexRiddler_Text_5:
 	.string "Wrong, wrong, WRONG!\n"
 	.string "You are wrong!\p"
 	.string "I'm honestly disappointed.\p"

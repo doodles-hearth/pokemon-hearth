@@ -18,6 +18,7 @@ Silveridge_House1_EventScript_FirebringerFangirl::
 	speakername Silveridge_House1_EventScript_FirebringerFangirl_Text_0
 	msgbox Silveridge_House1_EventScript_FirebringerFangirl_Text_1
 	closemessage
+	setnamedmon SPECIES_SLUGMA
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	release
@@ -49,6 +50,7 @@ Silveridge_House1_EventScript_Man::
 	speakername Silveridge_House1_EventScript_Man_Text_0
 	msgbox Silveridge_House1_EventScript_Man_Text_3
 	closemessage
+	setnamedmon SPECIES_SANDSLASH
 Silveridge_House1_EventScript_Man_1:
 	release
 	return
@@ -75,9 +77,9 @@ Silveridge_House1_EventScript_FirebringerFangirl_Text_1:
 	.string "into the valley.\p"
 	.string "I don't know what we would do without\n"
 	.string "those brave Firebringers.\p"
-	.string "They carry live Slugma on their back\n"
-	.string "all the way down Mt Kazan! I could\l"
-	.string "never!\p"
+	.string "They bring us live Slugma, carrying\n"
+	.string "them on their back all the way down Mt\l"
+	.string "Kazan! I could never!\p"
 	.string "Sigh… I hope a handsome Firebringer\n"
 	.string "notices me one day…$"
 

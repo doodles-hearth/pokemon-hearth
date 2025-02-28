@@ -1,7 +1,8 @@
 script Common_EventScript_PkmnCenterNurse_Chansey {
 	lock
+	setseenmon(SPECIES_CHANSEY)
 	playmoncry(SPECIES_CHANSEY, CRY_MODE_NORMAL)
-	speakername("Chansey")
+	setspeakertomonname(SPECIES_CHANSEY)
 	msgbox("Sey!")
 	waitse
 	closemessage
