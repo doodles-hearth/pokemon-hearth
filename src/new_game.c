@@ -60,6 +60,7 @@ static void WarpToStartPositionInPlayersBedroom(void);
 static void ResetMiniGamesRecords(void);
 static void ResetItemFlags(void);
 static void ResetDexNav(void);
+static void ResetLimitedShops(void);
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
 EWRAM_DATA bool8 gEnableContestDebugging = FALSE;
@@ -236,6 +237,7 @@ void NewGameInitData(void)
     InitTimeBasedEvents();
     QuestMenu_ResetMenuSaveData();
     QuestMenu_GetSetQuestState(QUEST_HEARTH_MAIN_CAMPAIGN, FLAG_SET_ACTIVE);
+    ResetLimitedShops();
 }
 
 static void ResetMiniGamesRecords(void)
@@ -259,4 +261,9 @@ static void ResetDexNav(void)
     memset(gSaveBlock3Ptr->dexNavSearchLevels, 0, sizeof(gSaveBlock3Ptr->dexNavSearchLevels));
 #endif
     gSaveBlock3Ptr->dexNavChain = 0;
+}
+
+static void ResetLimitedShops(void)
+{
+    memset(gSaveBlock2Ptr->limitedShopVars, 0, sizeof(gSaveBlock2Ptr->limitedShopVars));
 }

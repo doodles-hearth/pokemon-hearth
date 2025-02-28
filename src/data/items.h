@@ -225,7 +225,7 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "A better Ball with\n"
             "a higher catch rate\n"
-            "than a Great Ball."),
+            "than a Grate Ball."),
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_BAG_MENU,
         .battleUsage = EFFECT_ITEM_THROW_BALL,
@@ -11419,16 +11419,20 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_ACROBATICS,
     },
 
-    [ITEM_TM53] =
+    [ITEM_TM_NATURE_POWER] =
     {
         .name = _("TM53"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "The type of attack\n"
+            "varies depending\n"
+            "on the location."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_NATURE_POWER,
     },
 
     [ITEM_TM54] =
@@ -14383,9 +14387,7 @@ const struct Item gItemsInfo[] =
         .price = 9800,
         .description = COMPOUND_STRING(
             "A very tasty tail\n"
-            "of something.\n"
-            "Sells for a high\n"
-            "price."
+            "of something."
         ),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,

@@ -44,12 +44,12 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 		MSGBOX_DEFAULT
 	)
 	
-	giveitem(ITEM_TM_WATER_PULSE)
+	giveitem(ITEM_TM_NATURE_POWER)
 
 	speakername("Koishi")
 	msgbox(
 		format(
-			"This scroll contains Water Pulse, a water-type move that can confuse your foes.\p"
+			"This scroll contains Nature Power, a move that changes depending on the terrain your Pokémon is standing on.\p"
 			"Going through the Toku Council's challenge is no easy undertaking, but I can feel your spirit overflowing with determination.\p"
 			"Good luck, {PLAYER}."
 		),
