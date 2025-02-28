@@ -14383,9 +14383,7 @@ const struct Item gItemsInfo[] =
         .price = 9800,
         .description = COMPOUND_STRING(
             "A very tasty tail\n"
-            "of something.\n"
-            "Sells for a high\n"
-            "price."
+            "of something."
         ),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,

@@ -94,6 +94,7 @@ enum
     SELLER_NONE,
     SELLER_MART_FEMALE, // OBJ_EVENT_GFX_MART_EMPLOYEE
     SELLER_OKADA, // OBJ_EVENT_GFX_TRAVELING_MERCHANT
+    SELLER_ZUBAT, // OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M
     SELLER_COUNT,
 };
 
@@ -191,6 +192,14 @@ const u32 sNewShopMenu_SellerScrollPal_Okada[] = INCBIN_U32("graphics/new_shop/s
 const u32 sNewShopMenu_SellerScrollMap_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.bin.lz");
 const u16 sNewShopMenu_SellerCursorGfx_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/cursor.4bpp");
 const u32 sNewShopMenu_SellerCursorPal_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/cursor.gbapal.lz");
+
+const u8 sNewShopMenu_SellerMugshotGfx_Zubat[] = INCBIN_U8("graphics/new_shop/sellers/zubat/mugshot.4bpp");
+const u16 sNewShopMenu_SellerMugshotPal_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/mugshot.gbapal");
+const u32 sNewShopMenu_SellerScrollGfx_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.4bpp.lz");
+const u32 sNewShopMenu_SellerScrollPal_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.gbapal.lz");
+const u32 sNewShopMenu_SellerScrollMap_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.bin.lz");
+const u16 sNewShopMenu_SellerCursorGfx_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/cursor.4bpp");
+const u32 sNewShopMenu_SellerCursorPal_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/cursor.gbapal.lz");
 
 static void Task_ShopMenu(u8 taskId);
 static void Task_HandleShopMenuQuit(u8 taskId);
@@ -441,6 +450,19 @@ static const struct Seller sSellers[] = {
         .scrollMap = sNewShopMenu_SellerScrollMap_Okada,
         .cursorGfx = sNewShopMenu_SellerCursorGfx_Okada,
         .cursorPal = sNewShopMenu_SellerCursorPal_Okada,
+    },
+    [SELLER_ZUBAT] = {
+        { .gfxId = OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M },
+        .mugshotGfx = sNewShopMenu_SellerMugshotGfx_Zubat,
+        .mugshotPal = sNewShopMenu_SellerMugshotPal_Zubat,
+        .menuGfx = sNewShopMenu_SellerMenuGfx_MartFemale,
+        .menuPal = sNewShopMenu_SellerMenuPal_MartFemale,
+        .menuMap = sNewShopMenu_SellerMenuMap_MartFemale,
+        .scrollGfx = sNewShopMenu_SellerScrollGfx_Zubat,
+        .scrollPal = sNewShopMenu_SellerScrollPal_Zubat,
+        .scrollMap = sNewShopMenu_SellerScrollMap_Zubat,
+        .cursorGfx = sNewShopMenu_SellerCursorGfx_Zubat,
+        .cursorPal = sNewShopMenu_SellerCursorPal_Zubat,
     },
 };
 
