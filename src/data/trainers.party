@@ -543,7 +543,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_IKUTO ===
 Name: Ikuto
 Class: Miner
-Pic: Hiker
+Pic: Miner
 Gender: Male
 Music: Hiker
 Items: Uumegiri
@@ -568,7 +568,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_KANSAKU ===
 Name: Kansaku
 Class: Miner
-Pic: Hiker
+Pic: Miner
 Gender: Male
 Music: Hiker
 Double Battle: No
@@ -918,7 +918,7 @@ Level: 15
 === TRAINER_ROKU ===
 Name: Roku
 Class: Miner
-Pic: Hiker
+Pic: Miner
 Gender: Male
 Music: Hiker
 Double Battle: No
@@ -9646,26 +9646,19 @@ Level: 14
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 
-=== TRAINER_TABITHA_MOSSDEEP ===
-Name: TABITHA
-Class: Magma Admin
-Pic: Magma Admin
-Gender: Male
+=== TRAINER_GOLBAT_ADMIN_2 ===
+Name: Admin
+Class: Golbat
+Pic: Golbat Admin M
 Music: Magma
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Camerupt
-Level: 36
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Mightyena
-Level: 38
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Golbat
-Level: 40
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Houndoom
+Level: 24
+- Fire Fang
+- Smog
+- Howl
 
 === TRAINER_EDWIN_2 ===
 Name: EDWIN
@@ -11575,10 +11568,19 @@ Pic: Zubat Grunt M
 Gender: Male
 Music: Aqua
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
+
+Woobat (M)
+Level: 23
+- Heart Stamp
+- Attract
+- Wing Attack
 
 Zubat
-Level: 18
+Level: 23
+- Swift
+- Bite
+- Confuse Ray
 
 === TRAINER_DOUG ===
 Name: DOUG
@@ -13774,26 +13776,26 @@ Camerupt
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_MAXIE_MOSSDEEP ===
-Name: MAXIE
-Class: Magma Leader
-Pic: Magma Leader Maxie
-Gender: Male
+=== TRAINER_GOLBAT_ADMIN_1 ===
+Name: Admin
+Class: Golbat
+Pic: Golbat Admin F
 Music: Magma
 Double Battle: No
 AI: Basic Trainer
 
-Mightyena
-Level: 42
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Golbat
+Level: 23
+- Confuse Ray
+- Air Cutter
+- Poison Fang
 
-Crobat
-Level: 43
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Camerupt
-Level: 44
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Swoobat
+Level: 24
+- Amnesia
+- Attract
+- Assurance
+- Heart Stamp
 
 === TRAINER_PETE ===
 Name: PETE
@@ -14022,9 +14024,18 @@ Music: Aqua
 Double Battle: No
 AI: Check Bad Move
 
-Zubat
-Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Woobat (F)
+Level: 20
+- Heart Stamp
+- Odor Sleuth
+- Attract
+- Gust
+
+Nickit
+Level: 21
+- Nasty Plot
+- Assurance
+- Quick Attack
 
 === TRAINER_GRUNT_CROBAT_HIDEOUT_3 ===
 Name: Grunt
@@ -14032,16 +14043,20 @@ Class: Zubat
 Pic: Zubat Grunt M
 Gender: Male
 Music: Aqua
-Double Battle: No
-AI: Check Bad Move
+Double Battle: Yes
+AI: Basic Trainer
 
-Ninjask
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Mightyena
+Level: 22
+- Bite
+- Swagger
+- Howl
 
-Gulpin
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Thievul
+Level: 21
+- Thief
+- Nasty Plot
+- Snarl
 
 === TRAINER_GRUNT_CROBAT_HIDEOUT_4 ===
 Name: Grunt
@@ -14050,10 +14065,19 @@ Pic: Zubat Grunt F
 Gender: Female
 Music: Aqua
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zubat
-Level: 18
+Woobat
+Level: 22
+- Wing Attack
+- Assurance
+- Imprison
+
+Houndour
+Level: 22
+- Ember
+- Smog
+- Howl
 
 === TRAINER_GRUNT_CROBAT_HIDEOUT_5 ===
 Name: Grunt
@@ -14064,8 +14088,11 @@ Music: Aqua
 Double Battle: No
 AI: Check Bad Move
 
-Zubat
-Level: 18
+Golbat
+Level: 21
+- Mean Look
+- Air Cutter
+- Astonish
 
 === TRAINER_GRUNT_CROBAT_HIDEOUT_1 ===
 Name: Grunt
@@ -14074,11 +14101,19 @@ Pic: Zubat Grunt F
 Gender: Female
 Music: Aqua
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
 Zubat
 Level: 18
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Astonish
+- Wing Attack
+- Screech
+
+Golbat
+Level: 21
+- Air Cutter
+- Supersonic
+- Bite
 
 === TRAINER_DEVAN ===
 Name: DEVAN

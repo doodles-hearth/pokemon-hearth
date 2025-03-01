@@ -243,12 +243,12 @@
       "script": "NULL",
       "flag": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
       "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SURSKIT)",
@@ -667,7 +667,7 @@
       "y": 12,
       "elevation": 0,
       "dest_map": "MAP_YIFU_CITY_BIG_HOUSE_1F",
-      "dest_warp_id": "1"
+      "dest_warp_id": "0"
     },
     {
       "x": 37,
@@ -875,7 +875,7 @@
       "x": 38,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "FLAG_HIDE_HARIKO_YIFU_CITY",
       "var_value": "0",
       "script": "YifuCity_Trigger_HarikoCriminals"
     },
@@ -884,7 +884,7 @@
       "x": 40,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "FLAG_HIDE_HARIKO_YIFU_CITY",
       "var_value": "0",
       "script": "YifuCity_Trigger_HarikoCriminals"
     },
@@ -893,7 +893,7 @@
       "x": 39,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "FLAG_HIDE_HARIKO_YIFU_CITY",
       "var_value": "0",
       "script": "YifuCity_Trigger_HarikoCriminals"
     },

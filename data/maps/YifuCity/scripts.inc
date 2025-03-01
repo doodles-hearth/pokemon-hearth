@@ -202,6 +202,12 @@ YifuCity_ShinySellerChoice_27:
 
 YifuCity_Trigger_CrobatGruntsScram::
 	lockall
+	goto_if_unset FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_CrobatGruntsScram_2
+YifuCity_Trigger_CrobatGruntsScram_1:
+	releaseall
+	return
+
+YifuCity_Trigger_CrobatGruntsScram_2:
 	applymovement 9, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	speakername YifuCity_EventScript_ShinySeller_Text_0
@@ -244,12 +250,17 @@ YifuCity_Trigger_CrobatGruntsScram::
 	waitmovement 0
 	turnobject 9, DIR_SOUTH
 	turnobject 10, DIR_NORTH
-	releaseall
-	return
+	goto YifuCity_Trigger_CrobatGruntsScram_1
 
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	lockall
+	goto_if_unset FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_CrobatGruntsEavesdropPassword_2
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_1:
+	releaseall
+	return
+
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_2:
 	speakername YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsScram_Text_0
 	closemessage
@@ -300,8 +311,7 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_5
 	waitmovement 0
 	special RemoveCameraObject
-	releaseall
-	return
+	goto YifuCity_Trigger_CrobatGruntsEavesdropPassword_1
 
 
 YifuCity_EventScript_HearEcho::
@@ -343,8 +353,8 @@ YifuCity_Trigger_CrobatGruntStuckInHole_2:
 	case 0, YifuCity_Trigger_CrobatGruntStuckInHole_7
 	case 1, YifuCity_Trigger_CrobatGruntStuckInHole_8
 	case 2, YifuCity_Trigger_CrobatGruntStuckInHole_9
-	case 3, YifuCity_Trigger_CrobatGruntStuckInHole_10
-	case 4, YifuCity_Trigger_CrobatGruntStuckInHole_11
+	case 3, YifuCity_Trigger_CrobatGruntStuckInHole_9
+	case 4, YifuCity_Trigger_CrobatGruntStuckInHole_10
 YifuCity_Trigger_CrobatGruntStuckInHole_5:
 	closemessage
 	goto YifuCity_Trigger_CrobatGruntStuckInHole_1
@@ -362,10 +372,6 @@ YifuCity_Trigger_CrobatGruntStuckInHole_9:
 	goto YifuCity_Trigger_CrobatGruntStuckInHole_5
 
 YifuCity_Trigger_CrobatGruntStuckInHole_10:
-	msgbox YifuCity_Trigger_CrobatGruntStuckInHole_Text_2
-	goto YifuCity_Trigger_CrobatGruntStuckInHole_5
-
-YifuCity_Trigger_CrobatGruntStuckInHole_11:
 	msgbox YifuCity_Trigger_CrobatGruntStuckInHole_Text_3
 	goto YifuCity_Trigger_CrobatGruntStuckInHole_5
 
@@ -407,7 +413,7 @@ YifuCity_Trigger_Lockdown_2:
 	closemessage
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
 	clearflag FLAG_HIDE_LOCKDOWN_SAMURAI
-	setobjectxy 33, 13, 39
+	setobjectxyperm 33, 13, 39
 	addobject 33
 	applymovement 33, YifuCity_Trigger_Lockdown_Movement_0
 	switch VAR_TEMP_3
@@ -645,16 +651,17 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Movement_1:
 	step_end
 
 YifuCity_Trigger_Lockdown_Movement_0:
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_in_place_fast_right
 	step_end
 
 YifuCity_Trigger_Lockdown_Movement_1:
@@ -929,7 +936,7 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Text_5:
 	.string "But what?!\l"
 	.string "And why'd I think it was a good idea to\l"
 	.string "try gettin' in through the canal?\l"
-	.string "This is a dead end!$"
+	.string "I can't swim! It's a dead end!$"
 
 YifuCity_EventScript_Surskit_Text_0:
 	.string "Surskit$"

@@ -564,9 +564,9 @@ script CrobatHideout_1F_LetsFight2v2 {
 		goto(CrobatHideout_1F_LetsFight2v2)
 	} else {
 		multi_2_vs_2(
-			TRAINER_MAXIE_MOSSDEEP,
+			TRAINER_GOLBAT_ADMIN_1,
 			format("H-how'd that happen?!"),
-			TRAINER_TABITHA_MOSSDEEP,
+			TRAINER_GOLBAT_ADMIN_2,
 			format("Ugh, that's humiliatin'…"),
 			PARTNER_SAMURAI
 		)
