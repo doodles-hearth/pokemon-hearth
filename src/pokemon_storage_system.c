@@ -35,6 +35,7 @@
 #include "text.h"
 #include "text_window.h"
 #include "trig.h"
+#include "util.h"
 #include "walda_phrase.h"
 #include "window.h"
 #include "constants/form_change_types.h"
@@ -529,6 +530,7 @@ struct PokemonStorageSystemData
     u8 ALIGNED(4) itemIconBuffer[0x800];
     u8 wallpaperBgTilemapBuffer[0x1000];
     u8 displayMenuTilemapBuffer[0x800];
+    bool8 displayMonIsShiny;
 };
 
 static u32 sItemIconGfxBuffer[98];
@@ -3980,6 +3982,7 @@ static void LoadDisplayMonGfx(u16 species, u32 pid)
         LZ77UnCompWram(sStorage->displayMonPalette, sStorage->displayMonPalBuffer);
         CpuCopy32(sStorage->tileBuffer, sStorage->displayMonTilePtr, MON_PIC_SIZE);
         LoadPalette(sStorage->displayMonPalBuffer, sStorage->displayMonPalOffset, PLTT_SIZE_4BPP);
+        MakePaletteUnique(sStorage->displayMonPalOffset, species, pid, sStorage->displayMonIsShiny);
         sStorage->displayMonSprite->invisible = FALSE;
     }
     else
@@ -6949,6 +6952,7 @@ static void SetDisplayMonData(void *pokemon, u8 mode)
             sStorage->displayMonPalette = GetMonFrontSpritePal(mon);
             gender = GetMonGender(mon);
             sStorage->displayMonItemId = GetMonData(mon, MON_DATA_HELD_ITEM);
+            sStorage->displayMonIsShiny = IsMonShiny(mon);
         }
     }
     else if (mode == MODE_BOX)
@@ -6974,6 +6978,7 @@ static void SetDisplayMonData(void *pokemon, u8 mode)
             sStorage->displayMonPalette = GetMonSpritePalFromSpeciesAndPersonality(sStorage->displayMonSpecies, isShiny, sStorage->displayMonPersonality);
             gender = GetGenderFromSpeciesAndPersonality(sStorage->displayMonSpecies, sStorage->displayMonPersonality);
             sStorage->displayMonItemId = GetBoxMonData(boxMon, MON_DATA_HELD_ITEM);
+            sStorage->displayMonIsShiny = GetBoxMonData(boxMon, MON_DATA_IS_SHINY);
         }
     }
     else

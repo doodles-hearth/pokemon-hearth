@@ -2,6 +2,7 @@
 #include "sprite.h"
 #include "main.h"
 #include "palette.h"
+#include "util.h"
 
 #define MAX_SPRITE_COPY_REQUESTS 64
 
@@ -1607,6 +1608,26 @@ u8 LoadSpritePaletteInSlot(const struct SpritePalette *palette, u8 paletteNum)
 void DoLoadSpritePalette(const u16 *src, u16 paletteOffset)
 {
     LoadPaletteFast(src, OBJ_PLTT_OFFSET + paletteOffset, PLTT_SIZE_4BPP);
+}
+
+#define PAL_TAG_UNIQUE_PAL 0xFFFF
+
+u8 LoadUniqueSpritePalette(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny)
+{
+    u8 index = IndexOfSpritePaletteTag(PAL_TAG_UNIQUE_PAL);
+
+    if (index == 0xFF)
+    {
+        return 0xFF;
+    }
+    else
+    {
+        sSpritePaletteTags[index] = palette->tag;
+        DoLoadSpritePalette(palette->data, PLTT_ID(index));
+        MakePaletteUnique(OBJ_PLTT_ID(index), species, personality, isShiny);
+        CpuCopy32(gPlttBufferFaded + OBJ_PLTT_ID(index), gPlttBufferUnfaded + OBJ_PLTT_ID(index), 32);
+        return index;
+    }
 }
 
 u32 AllocSpritePalette(u16 tag)
