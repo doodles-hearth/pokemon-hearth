@@ -57,7 +57,7 @@ script YifuCity_House1_2F_EventScript_Vulpix {
 	faceplayer
 	setseenmon(SPECIES_VULPIX)
 	playmoncry(SPECIES_VULPIX, CRY_MODE_NORMAL)
-	speakername("Vulpix")
+	setspeakertomonname(SPECIES_VULPIX)
 	msgbox(format(
 		"Yap!"
 	))

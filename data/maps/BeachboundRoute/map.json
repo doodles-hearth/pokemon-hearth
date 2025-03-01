@@ -910,7 +910,7 @@
       "x": 23,
       "y": 23,
       "elevation": 3,
-      "item": "ITEM_POTION",
+      "item": "ITEM_SUPER_OINTMENT",
       "flag": "FLAG_HIDDEN_ITEM_BEACHBOUND_ROUTE_POTION"
     },
     {
