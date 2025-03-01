@@ -207,7 +207,8 @@ const u32 sNewShopMenu_DefaultMenuPal[] = INCBIN_U32("graphics/new_shop/menu.gba
 const u32 sNewShopMenu_DefaultMenuTilemap[] = INCBIN_U32("graphics/new_shop/menu.bin.lz");
 const u32 sNewShopMenu_DefaultScrollGfx[] = INCBIN_U32("graphics/new_shop/scroll.4bpp.lz");
 const u32 sNewShopMenu_DefaultScrollTilemap[] = INCBIN_U32("graphics/new_shop/scroll.bin.lz");
-const u16 sNewShopMenu_DefaultCursorGfx[] = INCBIN_U16("graphics/new_shop/cursor.4bpp"); // uses the menu palette
+const u16 sNewShopMenu_DefaultCursorGfx[] = INCBIN_U16("graphics/new_shop/cursor.4bpp");
+const u32 sNewShopMenu_DefaultCursorPal[] = INCBIN_U16("graphics/new_shop/cursor.gbapal.lz");
 
 const u8 sNewShopMenu_SellerMugshotGfx_MartFemale[] = INCBIN_U8("graphics/new_shop/sellers/female/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/mugshot.gbapal");
@@ -429,7 +430,7 @@ static const struct SpriteSheet sDefaultCursor_SpriteSheet = {
 };
 
 static const struct CompressedSpritePalette sDefaultCursor_SpritePalette = {
-    .data = sNewShopMenu_DefaultMenuPal,
+    .data = sNewShopMenu_DefaultCursorPal,
     .tag = PALTAG_CURSOR,
 };
 
@@ -467,15 +468,15 @@ static const struct Seller sSellers[] = {
         { .gfxId = OBJ_EVENT_GFX_MART_EMPLOYEE },
         .mugshotGfx = sNewShopMenu_SellerMugshotGfx_MartFemale,
         .mugshotPal = sNewShopMenu_SellerMugshotPal_MartFemale,
-        .menuGfx = sNewShopMenu_SellerMenuGfx_MartFemale,
-        .menuPal = sNewShopMenu_SellerMenuPal_MartFemale,
-        .menuMap = sNewShopMenu_SellerMenuMap_MartFemale,
-        .menuTileOffset = 0x46,
-        .scrollGfx = sNewShopMenu_SellerScrollGfx_MartFemale,
-        .scrollPal = sNewShopMenu_SellerScrollPal_MartFemale,
-        .scrollMap = sNewShopMenu_SellerScrollMap_MartFemale,
-        .cursorGfx = sNewShopMenu_SellerCursorGfx_MartFemale,
-        .cursorPal = sNewShopMenu_SellerCursorPal_MartFemale,
+        // .menuGfx = sNewShopMenu_SellerMenuGfx_MartFemale,
+        // .menuPal = sNewShopMenu_SellerMenuPal_MartFemale,
+        // .menuMap = sNewShopMenu_SellerMenuMap_MartFemale,
+        // .menuTileOffset = 0x46,
+        // .scrollGfx = sNewShopMenu_SellerScrollGfx_MartFemale,
+        // .scrollPal = sNewShopMenu_SellerScrollPal_MartFemale,
+        // .scrollMap = sNewShopMenu_SellerScrollMap_MartFemale,
+        // .cursorGfx = sNewShopMenu_SellerCursorGfx_MartFemale,
+        // .cursorPal = sNewShopMenu_SellerCursorPal_MartFemale,
         .message = {
             [SELLER_MSG_RETURN_TO_FIELD]   = gText_AnythingElseICanHelp,
             [SELLER_MSG_BUY_PROMPT]        = sText_YouWantedVar1ThatllBeVar2,
@@ -501,19 +502,43 @@ static const struct Seller sSellers[] = {
         .scrollMap = sNewShopMenu_SellerScrollMap_Okada,
         .cursorGfx = sNewShopMenu_SellerCursorGfx_Okada,
         .cursorPal = sNewShopMenu_SellerCursorPal_Okada,
+        .message = {
+            [SELLER_MSG_RETURN_TO_FIELD]   = gText_AnythingElseICanHelp,
+            [SELLER_MSG_BUY_PROMPT]        = sText_YouWantedVar1ThatllBeVar2,
+            [SELLER_MSG_BUY_PROMPT_PLURAL] = sText_Var1CertainlyHowMany,
+            [SELLER_MSG_BUY_CONFIRM]       = sText_Var1AndYouWantedVar2,
+            [SELLER_MSG_BUY_SUCCESS]       = sText_HereYouGoThankYou,
+            [SELLER_MSG_BUY_FAIL_NO_SPACE] = sText_NoMoreRoomForThis,
+            [SELLER_MSG_BUY_FAIL_NO_MONEY] = sText_YouDontHaveMoney,
+            [SELLER_MSG_BUY_FAIL_SOLD_OUT] = sText_ThatItemIsSoldOut,
+            [SELLER_MGS_BUY_PREMIER_BONUS] = sText_ThrowInPremierBall,
+            [SELLER_MSG_BUY_PREMIER_BONUS_PLURAL] = sText_ThrowInPremierBalls,
+        },
     },
     [SELLER_ZUBAT] = {
         { .gfxId = OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M },
         .mugshotGfx = sNewShopMenu_SellerMugshotGfx_Zubat,
         .mugshotPal = sNewShopMenu_SellerMugshotPal_Zubat,
-        .menuGfx = sNewShopMenu_SellerMenuGfx_MartFemale,
-        .menuPal = sNewShopMenu_SellerMenuPal_MartFemale,
-        .menuMap = sNewShopMenu_SellerMenuMap_MartFemale,
+        // .menuGfx = sNewShopMenu_DefaultMenuGfx,
+        // .menuPal = sNewShopMenu_DefaultMenuPal,
+        // .menuMap = sNewShopMenu_DefaultMenuTilemap,
         .scrollGfx = sNewShopMenu_SellerScrollGfx_Zubat,
         .scrollPal = sNewShopMenu_SellerScrollPal_Zubat,
         .scrollMap = sNewShopMenu_SellerScrollMap_Zubat,
         .cursorGfx = sNewShopMenu_SellerCursorGfx_Zubat,
         .cursorPal = sNewShopMenu_SellerCursorPal_Zubat,
+        .message = {
+            [SELLER_MSG_RETURN_TO_FIELD]   = gText_AnythingElseICanHelp,
+            [SELLER_MSG_BUY_PROMPT]        = sText_YouWantedVar1ThatllBeVar2,
+            [SELLER_MSG_BUY_PROMPT_PLURAL] = sText_Var1CertainlyHowMany,
+            [SELLER_MSG_BUY_CONFIRM]       = sText_Var1AndYouWantedVar2,
+            [SELLER_MSG_BUY_SUCCESS]       = sText_HereYouGoThankYou,
+            [SELLER_MSG_BUY_FAIL_NO_SPACE] = sText_NoMoreRoomForThis,
+            [SELLER_MSG_BUY_FAIL_NO_MONEY] = sText_YouDontHaveMoney,
+            [SELLER_MSG_BUY_FAIL_SOLD_OUT] = sText_ThatItemIsSoldOut,
+            [SELLER_MGS_BUY_PREMIER_BONUS] = sText_ThrowInPremierBall,
+            [SELLER_MSG_BUY_PREMIER_BONUS_PLURAL] = sText_ThrowInPremierBalls,
+        },
     },
 };
 
@@ -719,10 +744,10 @@ static const void *Shop_GetSellerGraphics(enum Seller_GraphicsIds gfxId)
     switch (gfxId)
     {
     case SELLER_GFX_MUGSHOT_GFX:
-        return seller->mugshotGfx != NULL ? seller->mugshotGfx : sNewShopMenu_SellerMugshotGfx_Jerry;
+        return seller->mugshotGfx != NULL ? seller->mugshotGfx : sNewShopMenu_SellerMugshotGfx_MartFemale;
         break;
     case SELLER_GFX_MUGSHOT_PAL:
-        return seller->mugshotPal != NULL ? seller->mugshotPal : sNewShopMenu_SellerMugshotPal_Jerry;
+        return seller->mugshotPal != NULL ? seller->mugshotPal : sNewShopMenu_SellerMugshotPal_MartFemale;
         break;
 
     case SELLER_GFX_MENU_GFX:
@@ -1123,7 +1148,7 @@ static void BuyMenuDecompressBgGraphics(void)
         LoadCompressedPalette(sNewShopMenu_DefaultMenuPal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
         return;
     }
-    DecompressAndCopyTileDataToVram(2, Shop_GetSellerGraphics(SELLER_GFX_MENU_GFX), 0, sSellers[i].menuTileOffset != ? sSellers[i].menuTileOffset : DEFAULT_MENU_TILE_OFFSET, 0);
+    DecompressAndCopyTileDataToVram(2, Shop_GetSellerGraphics(SELLER_GFX_MENU_GFX), 0, sSellers[i].menuTileOffset != DEFAULT_MENU_TILE_OFFSET ? sSellers[i].menuTileOffset : DEFAULT_MENU_TILE_OFFSET, 0);
     DecompressAndCopyTileDataToVram(2, Shop_GetSellerGraphics(SELLER_GFX_SCROLL_GFX), 0, 0, 0);
 
     LZDecompressWram(Shop_GetSellerGraphics(SELLER_GFX_MENU_MAP), sShopData->tilemapBuffers[0]);
