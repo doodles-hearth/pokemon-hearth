@@ -206,6 +206,7 @@ const u32 sNewShopMenu_DefaultMenuGfx[] = INCBIN_U32("graphics/new_shop/menu.4bp
 const u32 sNewShopMenu_DefaultMenuPal[] = INCBIN_U32("graphics/new_shop/menu.gbapal.lz");
 const u32 sNewShopMenu_DefaultMenuTilemap[] = INCBIN_U32("graphics/new_shop/menu.bin.lz");
 const u32 sNewShopMenu_DefaultScrollGfx[] = INCBIN_U32("graphics/new_shop/scroll.4bpp.lz");
+const u32 sNewShopMenu_DefaultScrollPal[] = INCBIN_U32("graphics/new_shop/scroll.gbapal.lz");
 const u32 sNewShopMenu_DefaultScrollTilemap[] = INCBIN_U32("graphics/new_shop/scroll.bin.lz");
 const u16 sNewShopMenu_DefaultCursorGfx[] = INCBIN_U16("graphics/new_shop/cursor.4bpp");
 const u32 sNewShopMenu_DefaultCursorPal[] = INCBIN_U16("graphics/new_shop/cursor.gbapal.lz");
@@ -468,9 +469,9 @@ static const struct Seller sSellers[] = {
         { .gfxId = OBJ_EVENT_GFX_MART_EMPLOYEE },
         .mugshotGfx = sNewShopMenu_SellerMugshotGfx_MartFemale,
         .mugshotPal = sNewShopMenu_SellerMugshotPal_MartFemale,
-        // .menuGfx = sNewShopMenu_SellerMenuGfx_MartFemale,
-        // .menuPal = sNewShopMenu_SellerMenuPal_MartFemale,
-        // .menuMap = sNewShopMenu_SellerMenuMap_MartFemale,
+        .menuGfx = sNewShopMenu_SellerMenuGfx_MartFemale,
+        .menuPal = sNewShopMenu_SellerMenuPal_MartFemale,
+        .menuMap = sNewShopMenu_SellerMenuMap_MartFemale,
         // .menuTileOffset = 0x46,
         // .scrollGfx = sNewShopMenu_SellerScrollGfx_MartFemale,
         // .scrollPal = sNewShopMenu_SellerScrollPal_MartFemale,
@@ -764,7 +765,7 @@ static const void *Shop_GetSellerGraphics(enum Seller_GraphicsIds gfxId)
         return seller->scrollGfx != NULL ? seller->scrollGfx : sNewShopMenu_DefaultScrollGfx;
         break;
     case SELLER_GFX_SCROLL_PAL:
-        return seller->scrollPal != NULL ? seller->scrollPal : sNewShopMenu_DefaultMenuPal;
+        return seller->scrollPal != NULL ? seller->scrollPal : sNewShopMenu_DefaultScrollPal;
         break;
     case SELLER_GFX_SCROLL_MAP:
         return seller->scrollMap != NULL ? seller->scrollMap : sNewShopMenu_DefaultScrollTilemap;
@@ -774,7 +775,7 @@ static const void *Shop_GetSellerGraphics(enum Seller_GraphicsIds gfxId)
         return seller->cursorGfx != NULL ? seller->cursorGfx : sNewShopMenu_DefaultCursorGfx;
         break;
     case SELLER_GFX_CURSOR_PAL:
-        return seller->cursorPal != NULL ? seller->cursorPal : sNewShopMenu_DefaultMenuPal;
+        return seller->cursorPal != NULL ? seller->cursorPal : sNewShopMenu_DefaultScrollPal;
         break;
 
     }
