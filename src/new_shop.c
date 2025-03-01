@@ -98,6 +98,38 @@ enum
     SELLER_COUNT,
 };
 
+enum Seller_MessageIds
+{
+    SELLER_MSG_RETURN_TO_FIELD = 0,
+    SELLER_MSG_BUY_PROMPT,
+    SELLER_MSG_BUY_PROMPT_PLURAL,
+    SELLER_MSG_BUY_CONFIRM,
+    SELLER_MSG_BUY_SUCCESS,
+    SELLER_MSG_BUY_FAIL_NO_SPACE,
+    SELLER_MSG_BUY_FAIL_NO_MONEY,
+    SELLER_MSG_BUY_FAIL_SOLD_OUT,
+    SELLER_MGS_BUY_PREMIER_BONUS,
+    SELLER_MSG_BUY_PREMIER_BONUS_PLURAL,
+    SELLER_MSG_COUNT,
+};
+
+enum Seller_GraphicsIds
+{
+    SELLER_GFX_MUGSHOT_GFX = 0,
+    SELLER_GFX_MUGSHOT_PAL,
+
+    SELLER_GFX_MENU_GFX,
+    SELLER_GFX_MENU_PAL,
+    SELLER_GFX_MENU_MAP,
+
+    SELLER_GFX_SCROLL_GFX,
+    SELLER_GFX_SCROLL_PAL,
+    SELLER_GFX_SCROLL_MAP,
+
+    SELLER_GFX_CURSOR_GFX,
+    SELLER_GFX_CURSOR_PAL,
+};
+
 struct MartInfo
 {
     void (*callback)(void);
@@ -132,30 +164,36 @@ struct Seller
     } id;
     const u8 *mugshotGfx;
     const u16 *mugshotPal;
+
+    u32 menuTileOffset;
     const u32 *menuGfx;
     const u32 *menuPal;
     const u32 *menuMap;
+
     const u32 *scrollGfx;
     const u32 *scrollPal;
     const u32 *scrollMap;
+
     const u16 *cursorGfx;
     const u32 *cursorPal;
+
+    const u8 *message[SELLER_MSG_COUNT];
 };
 
 static EWRAM_DATA struct MartInfo sMartInfo = {0};
 static EWRAM_DATA struct ShopData *sShopData = NULL;
 static EWRAM_DATA u8 sPurchaseHistoryId = 0;
 
-const u8 sText_ThatItemIsSoldOut[] = _("I'm sorry, but\nthat item is\nsold out.");
 const u8 sText_SoldOut[] = _("SOLD OUT");
 const u8 sText_Price[] = _("PRICE");
 const u8 sText_InBag[] = _("IN BAG");
 const u8 sText_ReturnToField[] = _("Return to Field");
+
+const u8 sText_ThatItemIsSoldOut[] = _("I'm sorry, but\nthat item is\nsold out.");
 const u8 sText_Var1CertainlyHowMany[] = _("{STR_VAR_1}?\nCertainly. How\nmany?");
-const u8 sText_Var1CertainlyHowMany2[] = _("{STR_VAR_1}?\nCertainly. How\nmany?");
 const u8 sText_Var1AndYouWantedVar2[] = _("So you wanted\n{STR_VAR_2} {STR_VAR_1}?\nThat'll be ¥{STR_VAR_3}.");
-const u8 sText_Var1IsItThatllBeVar2[] = _("{STR_VAR_1}, is it?\nThat'll be ¥{STR_VAR_2}.\nDo you want it?");
 const u8 sText_YouWantedVar1ThatllBeVar2[] = _("You wanted the\n{STR_VAR_1}?\nThat'll be ¥{STR_VAR_2}.");
+const u8 sText_HereYouGoThankYou[] = _("Here you go!\nThank you very much.");
 const u8 sText_ThankYouIllSendItHome[] = _("Thank you!\nI'll send it to\nyour home PC.");
 const u8 sText_ThanksIllSendItHome[] = _("Thanks!\nI'll send it to your\nPC at home.");
 const u8 sText_YouDontHaveMoney[] = _("You don't have\nenough money.");
@@ -432,11 +470,24 @@ static const struct Seller sSellers[] = {
         .menuGfx = sNewShopMenu_SellerMenuGfx_MartFemale,
         .menuPal = sNewShopMenu_SellerMenuPal_MartFemale,
         .menuMap = sNewShopMenu_SellerMenuMap_MartFemale,
+        .menuTileOffset = 0x46,
         .scrollGfx = sNewShopMenu_SellerScrollGfx_MartFemale,
         .scrollPal = sNewShopMenu_SellerScrollPal_MartFemale,
         .scrollMap = sNewShopMenu_SellerScrollMap_MartFemale,
         .cursorGfx = sNewShopMenu_SellerCursorGfx_MartFemale,
         .cursorPal = sNewShopMenu_SellerCursorPal_MartFemale,
+        .message = {
+            [SELLER_MSG_RETURN_TO_FIELD]   = gText_AnythingElseICanHelp,
+            [SELLER_MSG_BUY_PROMPT]        = sText_YouWantedVar1ThatllBeVar2,
+            [SELLER_MSG_BUY_PROMPT_PLURAL] = sText_Var1CertainlyHowMany,
+            [SELLER_MSG_BUY_CONFIRM]       = sText_Var1AndYouWantedVar2,
+            [SELLER_MSG_BUY_SUCCESS]       = sText_HereYouGoThankYou,
+            [SELLER_MSG_BUY_FAIL_NO_SPACE] = sText_NoMoreRoomForThis,
+            [SELLER_MSG_BUY_FAIL_NO_MONEY] = sText_YouDontHaveMoney,
+            [SELLER_MSG_BUY_FAIL_SOLD_OUT] = sText_ThatItemIsSoldOut,
+            [SELLER_MGS_BUY_PREMIER_BONUS] = sText_ThrowInPremierBall,
+            [SELLER_MSG_BUY_PREMIER_BONUS_PLURAL] = sText_ThrowInPremierBalls,
+        },
     },
     [SELLER_OKADA] = {
         { .gfxId = OBJ_EVENT_GFX_TRAVELING_MERCHANT },
@@ -618,6 +669,94 @@ static void SetShopId(u8 shopId)
     sMartInfo.shopId = shopId;
 }
 
+void SetShopSellerId(void)
+{
+    u32 i;
+    u32 objId = GetObjectEventIdByLocalIdAndMap(gSpecialVar_LastTalked,
+                                                    gSaveBlock1Ptr->location.mapNum,
+                                                    gSaveBlock1Ptr->location.mapGroup);
+    u32 gfxId = gObjectEvents[objId].graphicsId;
+
+    if (gSpecialVar_LastTalked == 0) // failsafe
+    {
+        sShopData->sellerId = SELLER_NONE;
+        return;
+    }
+
+    if (gfxId >= OBJ_EVENT_GFX_VAR_0 && gfxId <= OBJ_EVENT_GFX_VAR_F)
+    {
+        gfxId = VarGetObjectEventGraphicsId(gfxId);
+    }
+
+    // loop over all of the sellers
+    for (i = SELLER_NONE; i < SELLER_COUNT; i++)
+    {
+        if (gfxId == sSellers[i].id.gfxId)
+        {
+            sShopData->sellerId = i;
+            break;
+        }
+    }
+}
+
+static inline const u8 *Shop_GetSellerMessage(enum Seller_MessageIds msgId)
+{
+    u32 sellerId = sShopData->sellerId;
+
+    if (sSellers[sellerId].message[msgId] == NULL)
+    {
+        sellerId = SELLER_NONE + 1;
+    }
+
+    return sSellers[sellerId].message[msgId];
+}
+
+static const void *Shop_GetSellerGraphics(enum Seller_GraphicsIds gfxId)
+{
+    u32 sellerId = sShopData->sellerId;
+    const struct Seller *seller = &sSellers[sellerId];
+
+    switch (gfxId)
+    {
+    case SELLER_GFX_MUGSHOT_GFX:
+        return seller->mugshotGfx != NULL ? seller->mugshotGfx : sNewShopMenu_SellerMugshotGfx_Jerry;
+        break;
+    case SELLER_GFX_MUGSHOT_PAL:
+        return seller->mugshotPal != NULL ? seller->mugshotPal : sNewShopMenu_SellerMugshotPal_Jerry;
+        break;
+
+    case SELLER_GFX_MENU_GFX:
+        return seller->menuGfx != NULL ? seller->menuGfx : sNewShopMenu_DefaultMenuGfx;
+        break;
+    case SELLER_GFX_MENU_PAL:
+        return seller->menuPal != NULL ? seller->menuPal : sNewShopMenu_DefaultMenuPal;
+        break;
+    case SELLER_GFX_MENU_MAP:
+        return seller->menuMap != NULL ? seller->menuMap : sNewShopMenu_DefaultMenuTilemap;
+        break;
+
+    case SELLER_GFX_SCROLL_GFX:
+        return seller->scrollGfx != NULL ? seller->scrollGfx : sNewShopMenu_DefaultScrollGfx;
+        break;
+    case SELLER_GFX_SCROLL_PAL:
+        return seller->scrollPal != NULL ? seller->scrollPal : sNewShopMenu_DefaultMenuPal;
+        break;
+    case SELLER_GFX_SCROLL_MAP:
+        return seller->scrollMap != NULL ? seller->scrollMap : sNewShopMenu_DefaultScrollTilemap;
+        break;
+
+    case SELLER_GFX_CURSOR_GFX:
+        return seller->cursorGfx != NULL ? seller->cursorGfx : sNewShopMenu_DefaultCursorGfx;
+        break;
+    case SELLER_GFX_CURSOR_PAL:
+        return seller->cursorPal != NULL ? seller->cursorPal : sNewShopMenu_DefaultMenuPal;
+        break;
+
+    }
+
+    return NULL;
+}
+
 static void Task_ShopMenu(u8 taskId)
 {
     s8 inputCode = Menu_ProcessInputNoWrap();
@@ -695,10 +834,7 @@ static void Task_ReturnToShopMenu(u8 taskId)
 {
     if (IsWeatherNotFadingIn() == TRUE)
     {
-        if (sMartInfo.martType == MART_TYPE_DECOR2)
-            DisplayItemMessageOnField(taskId, gText_CanIHelpWithAnythingElse, ShowShopMenuAfterExitingBuyOrSellMenu);
-        else
-            DisplayItemMessageOnField(taskId, gText_AnythingElseICanHelp, ShowShopMenuAfterExitingBuyOrSellMenu);
+        DisplayItemMessageOnField(taskId, Shop_GetSellerMessage(SELLER_MSG_RETURN_TO_FIELD), ShowShopMenuAfterExitingBuyOrSellMenu);
     }
 }
 
@@ -737,7 +873,7 @@ static void CB2_InitBuyMenu(void)
     switch (gMain.state)
     {
     case 0:
-        DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000)
+        DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000);
         ResetVramOamAndBgCntRegs();
         SetVBlankHBlankCallbacksToNull();
         CpuFastFill(0, (void *)OAM, OAM_SIZE);
@@ -750,6 +886,7 @@ static void CB2_InitBuyMenu(void)
         ClearScheduledBgCopiesToVram();
         sShopData = AllocZeroed(sizeof(struct ShopData));
         InitShopItemsForSale();
+        SetShopSellerId();
         BuyMenuInitBgs();
         BuyMenuInitGrid();
         BuyMenuInitWindows();
@@ -972,12 +1109,13 @@ static void BuyMenuInitBgs(void)
     ShowBg(3);
 }
 
+#define DEFAULT_MENU_TILE_OFFSET 0x46
 static void BuyMenuDecompressBgGraphics(void)
 {
     u32 i = sShopData->sellerId;
     if (gSpecialVar_LastTalked == 0 || i == SELLER_NONE)
     {
-        DecompressAndCopyTileDataToVram(2, sNewShopMenu_DefaultMenuGfx, 0, 0x46, 0);
+        DecompressAndCopyTileDataToVram(2, sNewShopMenu_DefaultMenuGfx, 0, DEFAULT_MENU_TILE_OFFSET, 0);
         DecompressAndCopyTileDataToVram(2, sNewShopMenu_DefaultScrollGfx, 0, 0, 0);
         LZDecompressWram(sNewShopMenu_DefaultMenuTilemap, sShopData->tilemapBuffers[0]);
         LZDecompressWram(sNewShopMenu_DefaultScrollTilemap, sShopData->tilemapBuffers[1]);
@@ -985,29 +1123,14 @@ static void BuyMenuDecompressBgGraphics(void)
         LoadCompressedPalette(sNewShopMenu_DefaultMenuPal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
         return;
     }
-    DecompressAndCopyTileDataToVram(2, sSellers[i].menuGfx ?
-                                        sSellers[i].menuGfx :
-                                        sNewShopMenu_DefaultMenuGfx, 0, 0x46, 0);
+    DecompressAndCopyTileDataToVram(2, Shop_GetSellerGraphics(SELLER_GFX_MENU_GFX), 0, sSellers[i].menuTileOffset != ? sSellers[i].menuTileOffset : DEFAULT_MENU_TILE_OFFSET, 0);
+    DecompressAndCopyTileDataToVram(2, Shop_GetSellerGraphics(SELLER_GFX_SCROLL_GFX), 0, 0, 0);
 
-    DecompressAndCopyTileDataToVram(2, sSellers[i].scrollGfx ?
-                                        sSellers[i].scrollGfx :
-                                        sNewShopMenu_DefaultScrollGfx, 0, 0, 0);
+    LZDecompressWram(Shop_GetSellerGraphics(SELLER_GFX_MENU_MAP), sShopData->tilemapBuffers[0]);
+    LZDecompressWram(Shop_GetSellerGraphics(SELLER_GFX_SCROLL_MAP), sShopData->tilemapBuffers[1]);
 
-    LZDecompressWram(sSellers[i].menuMap ?
-                        sSellers[i].menuMap :
-                        sNewShopMenu_DefaultMenuTilemap, sShopData->tilemapBuffers[0]);
-
-    LZDecompressWram(sSellers[i].scrollMap ?
-                        sSellers[i].scrollMap :
-                        sNewShopMenu_DefaultScrollTilemap, sShopData->tilemapBuffers[1]);
-
-    LoadCompressedPalette(sSellers[i].menuPal ?
-                        sSellers[i].menuPal :
-                        sNewShopMenu_DefaultMenuPal, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
-
-    LoadCompressedPalette(sSellers[i].scrollPal ?
-                        sSellers[i].scrollPal :
-                        sNewShopMenu_DefaultMenuPal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
+    LoadCompressedPalette(Shop_GetSellerGraphics(SELLER_GFX_MENU_PAL), BG_PLTT_ID(0), PLTT_SIZE_4BPP);
+    LoadCompressedPalette(Shop_GetSellerGraphics(SELLER_GFX_SCROLL_PAL), BG_PLTT_ID(1), PLTT_SIZE_4BPP);
 }
 
 static inline void SpawnWindow(u8 winId)
@@ -1073,45 +1196,6 @@ static void LoadSellerMugshot(const u8 *gfx, const u16 *pal)
     LoadPalette(pal, BG_PLTT_ID(2), PLTT_SIZE_4BPP);
     PutWindowTilemap(WIN_MUGSHOT);
     CopyWindowToVram(WIN_MUGSHOT, COPYWIN_FULL);
-}
-
-static void SetupSellerMugshot(void)
-{
-    u32 i;
-    u32 objId = GetObjectEventIdByLocalIdAndMap(gSpecialVar_LastTalked,
-                                                    gSaveBlock1Ptr->location.mapNum,
-                                                    gSaveBlock1Ptr->location.mapGroup);
-    u32 gfxId = gObjectEvents[objId].graphicsId;
-
-    if (gfxId >= OBJ_EVENT_GFX_VAR_0 && gfxId <= OBJ_EVENT_GFX_VAR_F)
-    {
-        gfxId = VarGetObjectEventGraphicsId(gfxId);
-    }
-
-    if (gSpecialVar_LastTalked == 0) // failsafe
-    {
-        LoadSellerMugshot(sNewShopMenu_SellerMugshotGfx_MartFemale, sNewShopMenu_SellerMugshotPal_MartFemale);
-        sShopData->sellerId = SELLER_NONE;
-        return;
-    }
-
-    // loop over all of the sellers
-    for (i = SELLER_NONE; i < SELLER_COUNT; i++)
-    {
-        if (gfxId == sSellers[i].id.gfxId)
-        {
-            if (sSellers[i].mugshotGfx != NULL || sSellers[i].mugshotPal != NULL)
-            {
-                LoadSellerMugshot(sSellers[i].mugshotGfx, sSellers[i].mugshotPal);
-            }
-            else
-            {
-                LoadSellerMugshot(sNewShopMenu_SellerMugshotGfx_MartFemale, sNewShopMenu_SellerMugshotPal_MartFemale);
-            }
-            sShopData->sellerId = i;
-            return;
-        }
-    }
 }
 
 // credit to Vexx on PRET Discord
@@ -1215,19 +1299,19 @@ static void BuyMenuInitWindows(void)
     FillWindowPixelBuffer(WIN_ITEM_DESCRIPTION, PIXEL_FILL(0));
     FormatTextByWidth(gStringVar2, 80, FONT_SMALL, desc, 0);
     BuyMenuPrint(WIN_ITEM_DESCRIPTION, gStringVar2, 4, 0, TEXT_SKIP_DRAW, COLORID_BLACK, TRUE);
-    SetupSellerMugshot();
+    LoadSellerMugshot(Shop_GetSellerGraphics(SELLER_GFX_MUGSHOT_GFX), Shop_GetSellerGraphics(SELLER_GFX_MUGSHOT_PAL));
 }
 
 static bool32 LoadSellerCursor(void)
 {
     u32 i = sShopData->sellerId;
     struct SpriteSheet gfx = {
-        .data = sSellers[i].cursorGfx ? sSellers[i].cursorGfx : sNewShopMenu_DefaultCursorGfx,
+        .data = Shop_GetSellerGraphics(SELLER_GFX_CURSOR_GFX),
         .size = 64*64*2,
         .tag = GFXTAG_CURSOR,
     };
     struct CompressedSpritePalette pal = {
-        .data = sSellers[i].cursorPal ? sSellers[i].cursorPal : sNewShopMenu_DefaultMenuPal,
+        .data = Shop_GetSellerGraphics(SELLER_GFX_CURSOR_PAL),
         .tag = PALTAG_CURSOR
     };
 
@@ -1393,6 +1477,7 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
     u32 cost = BuyMenuGetItemPrice(GridMenu_SelectedIndex(sShopData->gridItems));
+    const u8 *str;
     if (sMartInfo.martType < MART_TYPE_DECOR)
         sShopData->totalCost = (cost >> IsPokeNewsActive(POKENEWS_SLATEPORT));
     else
@@ -1415,7 +1500,8 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
         if (ItemId_GetImportance(sShopData->currentItemId) && (CheckBagHasItem(sShopData->currentItemId, 1) || CheckPCHasItem(sShopData->currentItemId, 1)))
         {
             PlaySE(SE_BOO);
-            BuyMenuDisplayMessage(taskId, sText_ThatItemIsSoldOut, Task_ReturnToItemListWaitMsg);
+            str = Shop_GetSellerMessage(SELLER_MSG_BUY_FAIL_SOLD_OUT);
+            BuyMenuDisplayMessage(taskId, str, Task_ReturnToItemListWaitMsg);
             return;
         }
     }
@@ -1423,10 +1509,12 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
     if (!IsEnoughMoney(&gSaveBlock1Ptr->money, sShopData->totalCost))
     {
         PlaySE(SE_BOO);
-        BuyMenuDisplayMessage(taskId, sText_YouDontHaveMoney, Task_ReturnToItemListWaitMsg);
+        str = Shop_GetSellerMessage(SELLER_MSG_BUY_FAIL_NO_MONEY);
+        BuyMenuDisplayMessage(taskId, str, Task_ReturnToItemListWaitMsg);
     }
     else
     {
+        str = Shop_GetSellerMessage(SELLER_MSG_BUY_PROMPT);
         PlaySE(SE_SELECT);
         switch (sMartInfo.martType)
         {
@@ -1439,26 +1527,19 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
                     ConvertIntToDecimalStringN(gStringVar2, sShopData->totalCost, STR_CONV_MODE_LEFT_ALIGN, 6);
                     tItemCount = 1;
                     sShopData->totalCost = (price >> IsPokeNewsActive(POKENEWS_SLATEPORT)) * tItemCount;
-                    BuyMenuDisplayMessage(taskId, sText_YouWantedVar1ThatllBeVar2, BuyMenuConfirmPurchase);
-                }
-                else if (ItemId_GetPocket(sShopData->currentItemId) == POCKET_TM_HM)
-                {
-                    BuyMenuDisplayMessage(taskId, sText_Var1CertainlyHowMany2, Task_BuyHowManyDialogueInit);
+                    BuyMenuDisplayMessage(taskId, str, BuyMenuConfirmPurchase);
                 }
                 else
                 {
-                    BuyMenuDisplayMessage(taskId, sText_Var1CertainlyHowMany, Task_BuyHowManyDialogueInit);
+                    str = Shop_GetSellerMessage(SELLER_MSG_BUY_PROMPT_PLURAL);
+                    BuyMenuDisplayMessage(taskId, str, Task_BuyHowManyDialogueInit);
                 }
                 break;
             }
             case MART_TYPE_DECOR ... MART_TYPE_DECOR2:
             {
-                const u8 *str = sText_Var1IsItThatllBeVar2;
                 StringCopy(gStringVar1, gDecorations[sShopData->currentItemId].name);
                 ConvertIntToDecimalStringN(gStringVar2, sShopData->totalCost, STR_CONV_MODE_LEFT_ALIGN, 6);
-                if (sMartInfo.martType == MART_TYPE_DECOR2)
-                    str = sText_YouWantedVar1ThatllBeVar2;
-
                 BuyMenuDisplayMessage(taskId, str, BuyMenuConfirmPurchase);
                 break;
             }
@@ -1467,7 +1548,7 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
             {
                 BufferOutfitStrings(gStringVar1, sShopData->currentItemId, OUTFIT_BUFFER_NAME);
                 ConvertIntToDecimalStringN(gStringVar2, sShopData->totalCost, STR_CONV_MODE_LEFT_ALIGN, 6);
-                StringExpandPlaceholders(gStringVar4, gText_YouWantedVar1OutfitThatllBeVar2);
+                StringExpandPlaceholders(gStringVar4, str);
                 BuyMenuDisplayMessage(taskId, gStringVar4, BuyMenuConfirmPurchase);
                 break;
             }
@@ -1564,7 +1645,7 @@ static void Task_BuyHowManyDialogueHandleInput(u8 taskId)
             else
                 CopyItemName(sShopData->currentItemId, gStringVar1);
 
-            BuyMenuDisplayMessage(taskId, sText_Var1AndYouWantedVar2, BuyMenuConfirmPurchase);
+            BuyMenuDisplayMessage(taskId, Shop_GetSellerMessage(SELLER_MSG_BUY_CONFIRM), BuyMenuConfirmPurchase);
         }
         else if (JOY_NEW(B_BUTTON))
         {
@@ -1590,16 +1671,22 @@ static void BuyMenuTryMakePurchase(u8 taskId)
     {
         default:
         {
+            const u8 *str;
             if (AddBagItem(sShopData->currentItemId, tItemCount) == TRUE)
             {
                 if (sMartInfo.martType == MART_TYPE_LIMITED)
+                {
                     SetAmountOfItemBought(sMartInfo.shopId, GridMenu_SelectedIndex(sShopData->gridItems), &tItemCount);
-                BuyMenuDisplayMessage(taskId, gText_HereYouGoThankYou, BuyMenuSubtractMoney);
+                }
+
+                str = Shop_GetSellerMessage(SELLER_MSG_BUY_SUCCESS);
+                BuyMenuDisplayMessage(taskId, str, BuyMenuSubtractMoney);
                 RecordItemPurchase(taskId);
             }
             else
             {
-                BuyMenuDisplayMessage(taskId, sText_NoMoreRoomForThis, Task_ReturnToItemListWaitMsg);
+                str = Shop_GetSellerMessage(SELLER_MSG_BUY_FAIL_NO_SPACE);
+                BuyMenuDisplayMessage(taskId, str, Task_ReturnToItemListWaitMsg);
             }
             break;
         }
@@ -1704,10 +1791,11 @@ static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
             AddBagItem(ITEM_PREMIER_BALL, premierBallsToAdd);
             if (premierBallsToAdd > 0)
             {
+                const u8 *str = Shop_GetSellerMessage(premierBallsToAdd >= 2 ? SELLER_MSG_BUY_PREMIER_BONUS_PLURAL : SELLER_MGS_BUY_PREMIER_BONUS);
                 PlaySE(SE_SELECT);
                 FillWindowPixelBuffer(WIN_ITEM_DESCRIPTION, PIXEL_FILL(0));
                 ConvertIntToDecimalStringN(gStringVar1, premierBallsToAdd, STR_CONV_MODE_LEFT_ALIGN, MAX_ITEM_DIGITS);
-                StringExpandPlaceholders(gStringVar2, (premierBallsToAdd >= 2 ? sText_ThrowInPremierBalls : sText_ThrowInPremierBall));
+                StringExpandPlaceholders(gStringVar2, str);
                 BuyMenuPrint(WIN_ITEM_DESCRIPTION, gStringVar2, 4, 0, TEXT_SKIP_DRAW, COLORID_BLACK, TRUE);
             }
 
