@@ -397,7 +397,7 @@ YifuCity_Trigger_Lockdown::
 	speakername YifuCity_EventScript_Samurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_5
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_10
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_8
 	waitmovement OBJ_EVENT_ID_PLAYER
 YifuCity_Trigger_Lockdown_1:
 	releaseall
@@ -407,10 +407,10 @@ YifuCity_Trigger_Lockdown_2:
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	msgbox YifuCity_Trigger_Lockdown_Text_0
+	closemessage
 	delay 48
 	waitmovement 0
 	waitse
-	closemessage
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
 	clearflag FLAG_HIDE_LOCKDOWN_SAMURAI
 	setobjectxyperm 33, 13, 39
@@ -709,17 +709,11 @@ YifuCity_Trigger_Lockdown_Movement_7:
 	step_end
 
 YifuCity_Trigger_Lockdown_Movement_8:
-	lock_facing_direction
 	walk_right
-	unlock_facing_direction
 	step_end
 
 YifuCity_Trigger_Lockdown_Movement_9:
 	walk_in_place_fast_right
-	step_end
-
-YifuCity_Trigger_Lockdown_Movement_10:
-	walk_right
 	step_end
 
 YifuCity_Trigger_CantGoThruNorth_Movement_0:
