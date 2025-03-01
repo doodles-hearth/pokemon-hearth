@@ -444,6 +444,14 @@
       "elevation": 0,
       "item": "ITEM_LEFTOVERS",
       "flag": "FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_LEFTOVERS"
+    },
+    {
+      "type": "hidden_item",
+      "x": 8,
+      "y": 53,
+      "elevation": 0,
+      "item": "ITEM_NONE",
+      "flag": "FLAG_TEMP_1"
     }
   ]
 }

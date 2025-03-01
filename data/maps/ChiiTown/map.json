@@ -162,7 +162,7 @@
       "earlymorning": false,
       "evening": false,
       "lunchtime": true,
-      "morning": false,
+      "morning": true,
       "night": false
     },
     {

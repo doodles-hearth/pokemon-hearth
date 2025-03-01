@@ -357,3 +357,21 @@ bool8 LoadCompressedSpritePaletteUsingHeap(const struct CompressedSpritePalette 
     Free(buffer);
     return FALSE;
 }
+
+u32 LoadCompressedUniqueSpritePalette(const struct CompressedSpritePalette *src, u16 species, u32 personality, bool8 isShiny)
+{
+    return LoadCompressedUniqueSpritePaletteWithTag(src->data, src->tag, species, personality, isShiny);
+}
+
+u32 LoadCompressedUniqueSpritePaletteWithTag(const u32 *pal, u16 tag, u16 species, u32 personality, bool8 isShiny)
+{
+    u32 index;
+    struct SpritePalette dest;
+    void *buffer = malloc_and_decompress(pal, NULL);
+
+    dest.data = buffer;
+    dest.tag = tag;
+    index = LoadUniqueSpritePalette(&dest, species, personality, isShiny);
+    Free(buffer);
+    return index;
+}
