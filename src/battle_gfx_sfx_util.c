@@ -661,6 +661,11 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, u32 battler)
     LoadPalette(buffer, BG_PLTT_ID(8) + BG_PLTT_ID(battler), PLTT_SIZE_4BPP);
     Free(buffer);
 
+    MakePaletteUnique(paletteOffset, species, personalityValue, IsMonShiny(mon));
+    CpuCopy32(gPlttBufferFaded + paletteOffset, gPlttBufferUnfaded + paletteOffset, 32);
+    MakePaletteUnique(0x80 + battler * 16, species, personalityValue, IsMonShiny(mon));
+    CpuCopy32(gPlttBufferFaded + 0x80 + battler * 16, gPlttBufferUnfaded + 0x80 + battler * 16, 32);
+    
     // transform's pink color
     if (gBattleSpritesDataPtr->battlerData[battler].transformSpecies != SPECIES_NONE)
     {
@@ -980,6 +985,9 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, bool32 megaEvo, bo
     void *buffer = malloc_and_decompress(lzPaletteData, NULL);
     LoadPalette(buffer, paletteOffset, PLTT_SIZE_4BPP);
     Free(buffer);
+    
+    MakePaletteUnique(paletteOffset, targetSpecies, personalityValue, isShiny);
+    CpuCopy32(gPlttBufferFaded + paletteOffset, gPlttBufferUnfaded + paletteOffset, 32);
 
     if (!megaEvo)
     {

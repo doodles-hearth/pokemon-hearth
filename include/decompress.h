@@ -28,4 +28,8 @@ void LoadSpecialPokePic(void *dest, s32 species, u32 personality, bool8 isFrontP
 
 u32 GetDecompressedDataSize(const u32 *ptr);
 
+u8 LoadUniqueSpritePalette(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny);
+u32 LoadCompressedUniqueSpritePalette(const struct CompressedSpritePalette *src, u16 species, u32 personality, bool8 isShiny);
+u32 LoadCompressedUniqueSpritePaletteWithTag(const u32 *pal, u16 tag, u16 species, u32 personality, bool8 isShiny);
+
 #endif // GUARD_DECOMPRESS_H
