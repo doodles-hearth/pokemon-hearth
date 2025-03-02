@@ -266,9 +266,16 @@ const u32 gTrainerPalette_Lass[] = INCBIN_U32("graphics/trainers/front_pics/lass
 const u32 gTrainerFrontPic_Gardener[] = INCBIN_U32("graphics/trainers/front_pics/gardener.4bpp.lz");
 const u32 gTrainerPalette_Gardener[] = INCBIN_U32("graphics/trainers/front_pics/gardener.gbapal.lz");
 
+const u32 gTrainerFrontPic_Miner[] = INCBIN_U32("graphics/trainers/front_pics/miner.4bpp.lz");
+const u32 gTrainerPalette_Miner[] = INCBIN_U32("graphics/trainers/front_pics/miner.gbapal.lz");
+
 const u32 gTrainerFrontPic_ZubatGruntM[] = INCBIN_U32("graphics/trainers/front_pics/crobat_shadows/zubat_m.4bpp.lz");
 const u32 gTrainerFrontPic_ZubatGruntF[] = INCBIN_U32("graphics/trainers/front_pics/crobat_shadows/zubat_f.4bpp.lz");
 const u32 gTrainerPalette_Zubat[] = INCBIN_U32("graphics/trainers/front_pics/crobat_shadows/zubat_m.gbapal.lz");
+
+const u32 gTrainerFrontPic_GolbatAdminM[] = INCBIN_U32("graphics/trainers/front_pics/crobat_shadows/golbat_m.4bpp.lz");
+const u32 gTrainerFrontPic_GolbatAdminF[] = INCBIN_U32("graphics/trainers/front_pics/crobat_shadows/golbat_f.4bpp.lz");
+const u32 gTrainerPalette_GolbatAdmin[] = INCBIN_U32("graphics/trainers/front_pics/crobat_shadows/golbat_m.gbapal.lz");
 
 const u32 gTrainerFrontPic_CrobatBoss[] = INCBIN_U32("graphics/trainers/front_pics/crobat_shadows/crobat.4bpp.lz");
 const u32 gTrainerPalette_Crobat[] = INCBIN_U32("graphics/trainers/front_pics/crobat_shadows/crobat.gbapal.lz");
@@ -448,6 +455,8 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_ZUBAT_GRUNT_M, gTrainerFrontPic_ZubatGruntM, gTrainerPalette_Zubat),
     TRAINER_SPRITE(TRAINER_PIC_ZUBAT_GRUNT_F, gTrainerFrontPic_ZubatGruntF, gTrainerPalette_Zubat),
     TRAINER_SPRITE(TRAINER_PIC_CROBAT_BOSS, gTrainerFrontPic_CrobatBoss, gTrainerPalette_Crobat),
+    TRAINER_SPRITE(TRAINER_PIC_GOLBAT_ADMIN_M, gTrainerFrontPic_GolbatAdminM, gTrainerPalette_GolbatAdmin),
+    TRAINER_SPRITE(TRAINER_PIC_GOLBAT_ADMIN_F, gTrainerFrontPic_GolbatAdminF, gTrainerPalette_GolbatAdmin),
     TRAINER_SPRITE(TRAINER_PIC_KIMONO_GIRL, gTrainerFrontPic_KimonoGirl, gTrainerPalette_KimonoGirl),
     TRAINER_SPRITE(TRAINER_PIC_MONK, gTrainerFrontPic_Monk, gTrainerPalette_Monk),
     TRAINER_SPRITE(TRAINER_PIC_OLD_LADY, gTrainerFrontPic_OldLady, gTrainerPalette_OldLady),
@@ -467,6 +476,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_RS_BRENDAN, gTrainerFrontPic_RubySapphireBrendan, gTrainerPalette_RubySapphireBrendan),
     TRAINER_SPRITE(TRAINER_PIC_RS_MAY, gTrainerFrontPic_RubySapphireMay, gTrainerPalette_RubySapphireMay),
     TRAINER_SPRITE(TRAINER_PIC_GARDENER, gTrainerFrontPic_Gardener, gTrainerPalette_Gardener),
+    TRAINER_SPRITE(TRAINER_PIC_MINER, gTrainerFrontPic_Miner, gTrainerPalette_Miner),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =

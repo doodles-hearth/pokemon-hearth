@@ -42,12 +42,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -122,12 +122,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_EventScript_IDontFeelSafe",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -183,12 +183,12 @@
       "script": "YifuCity_EventScript_ShinySeller",
       "flag": "FLAG_BOUGHT_FAKE_SHINY",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
       "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
@@ -203,12 +203,12 @@
       "script": "NULL",
       "flag": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
       "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
@@ -223,12 +223,12 @@
       "script": "NULL",
       "flag": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
       "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZUBAT)",
@@ -243,12 +243,12 @@
       "script": "NULL",
       "flag": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
       "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SURSKIT)",
@@ -596,6 +596,46 @@
       "lunchtime": false,
       "morning": false,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "x": 32,
+      "y": 40,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 3,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "YifuCity_EventScript_LostMyDoll",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFFA)",
+      "x": 33,
+      "y": 40,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 3,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "YifuCity_EventScript_Cleffa",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
     }
   ],
   "warp_events": [
@@ -667,7 +707,7 @@
       "y": 12,
       "elevation": 0,
       "dest_map": "MAP_YIFU_CITY_BIG_HOUSE_1F",
-      "dest_warp_id": "1"
+      "dest_warp_id": "0"
     },
     {
       "x": 37,
@@ -730,15 +770,6 @@
       "type": "trigger",
       "x": 56,
       "y": 11,
-      "elevation": 0,
-      "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
-      "var_value": "0",
-      "script": "YifuCity_Trigger_CrobatGruntsScram"
-    },
-    {
-      "type": "trigger",
-      "x": 56,
-      "y": 10,
       "elevation": 0,
       "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "var_value": "0",
@@ -884,7 +915,7 @@
       "x": 38,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "FLAG_HIDE_HARIKO_YIFU_CITY",
       "var_value": "0",
       "script": "YifuCity_Trigger_HarikoCriminals"
     },
@@ -893,7 +924,7 @@
       "x": 40,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "FLAG_HIDE_HARIKO_YIFU_CITY",
       "var_value": "0",
       "script": "YifuCity_Trigger_HarikoCriminals"
     },
@@ -902,9 +933,18 @@
       "x": 39,
       "y": 13,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "FLAG_HIDE_HARIKO_YIFU_CITY",
       "var_value": "0",
       "script": "YifuCity_Trigger_HarikoCriminals"
+    },
+    {
+      "type": "trigger",
+      "x": 56,
+      "y": 10,
+      "elevation": 0,
+      "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
+      "var_value": "0",
+      "script": "YifuCity_Trigger_CrobatGruntsScram"
     }
   ],
   "bg_events": [
@@ -913,8 +953,8 @@
       "x": 24,
       "y": 41,
       "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
+      "item": "ITEM_POKE_DOLL",
+      "flag": "FLAG_HIDDEN_ITEM_YIFU_CITY_POKE_DOLL"
     }
   ]
 }

@@ -303,9 +303,10 @@ script SakuTown_EventScript_Mart {
 mart SakuTown_Mart {
 	ITEM_POKE_BALL
 	ITEM_OINTMENT
-	ITEM_CHERI_BERRY
-	ITEM_PECHA_BERRY
-	ITEM_CHESTO_BERRY
+	ITEM_PARALYZE_HEAL
+	ITEM_ANTIDOTE
+	ITEM_AWAKENING
+	ITEM_BURN_HEAL
 }
 
 script SakuTown_EventScript_Makuhita {
@@ -316,6 +317,30 @@ script SakuTown_EventScript_Makuhita {
 	playmoncry(SPECIES_MAKUHITA, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_MAKUHITA)
 	msgbox(format("Kuhi!"))
+	waitmoncry
+	release
+}
+
+script SakuTown_EventScript_MonHues {
+	lock
+	faceplayer
+	speakername("Man")
+	msgbox(format(
+		"Have you ever paid close attention to the fur and feather colors of the wild Pokémon?\p"
+		"They may all look the same at first… But each one has its own totally unique colors!\p"
+		"Doesn't noticing that make your heart sing?"
+	))
+	closemessage
+	release
+}
+
+script SakuTown_EventScript_Cherrim {
+	lock
+	faceplayer
+	setseenmon(SPECIES_CHERRIM)
+	playmoncry(SPECIES_CHERRIM, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_CHERRIM)
+	msgbox(format("Weee!"))
 	waitmoncry
 	release
 }

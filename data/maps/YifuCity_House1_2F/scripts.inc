@@ -47,8 +47,8 @@ YifuCity_House1_2F_EventScript_Vulpix::
 	faceplayer
 	setseenmon SPECIES_VULPIX
 	playmoncry SPECIES_VULPIX, CRY_MODE_NORMAL
-	speakername YifuCity_House1_2F_EventScript_Vulpix_Text_0
-	msgbox YifuCity_House1_2F_EventScript_Vulpix_Text_1
+	setspeakertomonname SPECIES_VULPIX
+	msgbox YifuCity_House1_2F_EventScript_Vulpix_Text_0
 	waitmoncry
 	closemessage
 	release
@@ -78,7 +78,4 @@ YifuCity_House1_2F_EventScript_ChildStolenDoll_Text_1:
 	.string "He won't give me my doll back!!$"
 
 YifuCity_House1_2F_EventScript_Vulpix_Text_0:
-	.string "Vulpix$"
-
-YifuCity_House1_2F_EventScript_Vulpix_Text_1:
 	.string "Yap!$"

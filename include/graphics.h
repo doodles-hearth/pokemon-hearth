@@ -439,13 +439,10 @@ extern const u32 gItemIconPalette_FullRestore[];
 
 extern const u32 gItemIcon_Ointment[];
 extern const u32 gItemIconPalette_Ointment[];
-extern const u32 gItemIcon_SuperOintment[];
 extern const u32 gItemIconPalette_SuperOintment[];
-extern const u32 gItemIcon_HyperOintment[];
 extern const u32 gItemIconPalette_HyperOintment[];
 extern const u32 gItemIcon_MaxOintment[];
 extern const u32 gItemIconPalette_MaxOintment[];
-extern const u32 gItemIcon_SacredOintment[];
 extern const u32 gItemIconPalette_SacredOintment[];
 extern const u32 gItemIcon_Uumegiri[];
 extern const u32 gItemIconPalette_Uumegiri[];

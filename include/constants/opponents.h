@@ -517,7 +517,7 @@
 #define TRAINER_CONOR                       511
 #define TRAINER_EDWIN_1                     512
 #define TRAINER_KODOMO                      513
-#define TRAINER_TABITHA_MOSSDEEP            514
+#define TRAINER_GOLBAT_ADMIN_2              514
 #define TRAINER_EDWIN_2                     515
 #define TRAINER_EDWIN_3                     516
 #define TRAINER_EDWIN_4                     517
@@ -737,7 +737,7 @@
 #define TRAINER_GRUNT_MAGMA_HIDEOUT_16      731
 #define TRAINER_TABITHA_MAGMA_HIDEOUT       732
 #define TRAINER_DARCY                       733
-#define TRAINER_MAXIE_MOSSDEEP              734
+#define TRAINER_GOLBAT_ADMIN_1              734
 #define TRAINER_PETE                        735
 #define TRAINER_ISABELLE                    736
 #define TRAINER_ANDRES_1                    737

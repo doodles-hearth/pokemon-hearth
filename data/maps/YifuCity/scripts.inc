@@ -21,6 +21,28 @@ YifuCity_EventScript_StoleMyMon::
 	return
 
 
+YifuCity_EventScript_LostMyDoll::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_LostMyDoll_Text_0
+	msgbox YifuCity_EventScript_LostMyDoll_Text_1
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_Cleffa::
+	lock
+	faceplayer
+	setspeakertomonname SPECIES_CLEFFA
+	msgbox YifuCity_EventScript_Cleffa_Text_0
+	setseenmon SPECIES_CLEFFA
+	playmoncry SPECIES_CLEFFA, CRY_MODE_NORMAL
+	waitmoncry
+	release
+	end
+
+
 YifuCity_EventScript_IDontFeelSafe::
 	lock
 	faceplayer
@@ -202,6 +224,12 @@ YifuCity_ShinySellerChoice_27:
 
 YifuCity_Trigger_CrobatGruntsScram::
 	lockall
+	goto_if_set FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_CrobatGruntsScram_2
+YifuCity_Trigger_CrobatGruntsScram_1:
+	releaseall
+	return
+
+YifuCity_Trigger_CrobatGruntsScram_2:
 	applymovement 9, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	speakername YifuCity_EventScript_ShinySeller_Text_0
@@ -244,12 +272,17 @@ YifuCity_Trigger_CrobatGruntsScram::
 	waitmovement 0
 	turnobject 9, DIR_SOUTH
 	turnobject 10, DIR_NORTH
-	releaseall
-	return
+	goto YifuCity_Trigger_CrobatGruntsScram_1
 
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	lockall
+	goto_if_unset FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_CrobatGruntsEavesdropPassword_2
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_1:
+	releaseall
+	return
+
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_2:
 	speakername YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsScram_Text_0
 	closemessage
@@ -300,8 +333,7 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_5
 	waitmovement 0
 	special RemoveCameraObject
-	releaseall
-	return
+	goto YifuCity_Trigger_CrobatGruntsEavesdropPassword_1
 
 
 YifuCity_EventScript_HearEcho::
@@ -343,8 +375,8 @@ YifuCity_Trigger_CrobatGruntStuckInHole_2:
 	case 0, YifuCity_Trigger_CrobatGruntStuckInHole_7
 	case 1, YifuCity_Trigger_CrobatGruntStuckInHole_8
 	case 2, YifuCity_Trigger_CrobatGruntStuckInHole_9
-	case 3, YifuCity_Trigger_CrobatGruntStuckInHole_10
-	case 4, YifuCity_Trigger_CrobatGruntStuckInHole_11
+	case 3, YifuCity_Trigger_CrobatGruntStuckInHole_9
+	case 4, YifuCity_Trigger_CrobatGruntStuckInHole_10
 YifuCity_Trigger_CrobatGruntStuckInHole_5:
 	closemessage
 	goto YifuCity_Trigger_CrobatGruntStuckInHole_1
@@ -354,6 +386,7 @@ YifuCity_Trigger_CrobatGruntStuckInHole_7:
 	goto YifuCity_Trigger_CrobatGruntStuckInHole_5
 
 YifuCity_Trigger_CrobatGruntStuckInHole_8:
+	setnamedmon SPECIES_SHARPEDO
 	msgbox YifuCity_Trigger_CrobatGruntStuckInHole_Text_1
 	goto YifuCity_Trigger_CrobatGruntStuckInHole_5
 
@@ -362,10 +395,6 @@ YifuCity_Trigger_CrobatGruntStuckInHole_9:
 	goto YifuCity_Trigger_CrobatGruntStuckInHole_5
 
 YifuCity_Trigger_CrobatGruntStuckInHole_10:
-	msgbox YifuCity_Trigger_CrobatGruntStuckInHole_Text_2
-	goto YifuCity_Trigger_CrobatGruntStuckInHole_5
-
-YifuCity_Trigger_CrobatGruntStuckInHole_11:
 	msgbox YifuCity_Trigger_CrobatGruntStuckInHole_Text_3
 	goto YifuCity_Trigger_CrobatGruntStuckInHole_5
 
@@ -373,8 +402,8 @@ YifuCity_Trigger_CrobatGruntStuckInHole_11:
 YifuCity_EventScript_Surskit::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_Surskit_Text_0
-	msgbox YifuCity_EventScript_Surskit_Text_1
+	setspeakertomonname SPECIES_SURSKIT
+	msgbox YifuCity_EventScript_Surskit_Text_0
 	setseenmon SPECIES_SURSKIT
 	playmoncry SPECIES_SURSKIT, CRY_MODE_NORMAL
 	waitmoncry
@@ -391,7 +420,7 @@ YifuCity_Trigger_Lockdown::
 	speakername YifuCity_EventScript_Samurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_5
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_10
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_8
 	waitmovement OBJ_EVENT_ID_PLAYER
 YifuCity_Trigger_Lockdown_1:
 	releaseall
@@ -401,13 +430,13 @@ YifuCity_Trigger_Lockdown_2:
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	msgbox YifuCity_Trigger_Lockdown_Text_0
+	closemessage
 	delay 48
 	waitmovement 0
 	waitse
-	closemessage
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
 	clearflag FLAG_HIDE_LOCKDOWN_SAMURAI
-	setobjectxy 33, 13, 39
+	setobjectxyperm 33, 13, 39
 	addobject 33
 	applymovement 33, YifuCity_Trigger_Lockdown_Movement_0
 	switch VAR_TEMP_3
@@ -645,16 +674,17 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Movement_1:
 	step_end
 
 YifuCity_Trigger_Lockdown_Movement_0:
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
-	walk_faster_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_fast_left
+	walk_in_place_fast_right
 	step_end
 
 YifuCity_Trigger_Lockdown_Movement_1:
@@ -702,17 +732,11 @@ YifuCity_Trigger_Lockdown_Movement_7:
 	step_end
 
 YifuCity_Trigger_Lockdown_Movement_8:
-	lock_facing_direction
 	walk_right
-	unlock_facing_direction
 	step_end
 
 YifuCity_Trigger_Lockdown_Movement_9:
 	walk_in_place_fast_right
-	step_end
-
-YifuCity_Trigger_Lockdown_Movement_10:
-	walk_right
 	step_end
 
 YifuCity_Trigger_CantGoThruNorth_Movement_0:
@@ -768,6 +792,16 @@ YifuCity_EventScript_StoleMyMon_Text_1:
 	.string "Pidgey…\p"
 	.string "Each day, Pokémon never cease to\n"
 	.string "amaze me!$"
+
+YifuCity_EventScript_LostMyDoll_Text_0:
+	.string "Little Girl$"
+
+YifuCity_EventScript_LostMyDoll_Text_1:
+	.string "I lost my doll while I was busy\n"
+	.string "playing!$"
+
+YifuCity_EventScript_Cleffa_Text_0:
+	.string "Faa!$"
 
 YifuCity_EventScript_IDontFeelSafe_Text_0:
 	.string "Woman$"
@@ -839,7 +873,7 @@ YifuCity_ShinySellerChoice_Text_9:
 	.string "kid!$"
 
 YifuCity_ShinySellerChoice_Text_10:
-	.string "What? No! Why would ya even say that?\n"
+	.string "What? No! Why woudja even say that?\n"
 	.string "Do I not look respectable to ya?\p"
 	.string "So uh… You gonna buy it or not?$"
 
@@ -929,12 +963,9 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Text_5:
 	.string "But what?!\l"
 	.string "And why'd I think it was a good idea to\l"
 	.string "try gettin' in through the canal?\l"
-	.string "This is a dead end!$"
+	.string "I can't swim! It's a dead end!$"
 
 YifuCity_EventScript_Surskit_Text_0:
-	.string "Surskit$"
-
-YifuCity_EventScript_Surskit_Text_1:
 	.string "Sksksksk…$"
 
 YifuCity_Trigger_Lockdown_Text_0:

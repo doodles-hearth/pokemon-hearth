@@ -62,7 +62,8 @@
     "Shogunate",
     "ScenicRouteSaberside",
     "WindyCape2",
-    "YifuCity"
+    "YifuCity",
+    "FlowergrassPlateau"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "LittlerootTown_BrendansHouse_1F",
@@ -140,7 +141,8 @@
     "SilverTunnel_1F",
     "SilverTunnel_2F",
     "UumeForest",
-    "CrobatHideout_1F"
+    "CrobatHideout_1F",
+    "SilverTunnel_3F"
   ],
   "gMapGroup_VanillaMaps1": [
     "PetalburgCity",

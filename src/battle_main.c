@@ -368,6 +368,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_ARTIST] = { _("Artist") },
     [TRAINER_CLASS_ZUBAT] = { _("Zubat"), 10, ITEM_DUSK_BALL },
     [TRAINER_CLASS_CROBAT_SHADOW_LEADER] = { _("Crobat Boss"), 20, ITEM_DUSK_BALL },
+    [TRAINER_CLASS_GOLBAT] = { _("Golbat"), 20, ITEM_DUSK_BALL },
     [TRAINER_CLASS_TRAVELING_MERCHANT] = { _("Merchant") },
     [TRAINER_CLASS_ONSEN_F] = { _("Onsen Girl") },
     [TRAINER_CLASS_ONSEN_M] = { _("Onsen Guy") },

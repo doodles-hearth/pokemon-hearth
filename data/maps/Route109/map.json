@@ -216,7 +216,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_PP_UP",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_109_PP_UP",
+      "flag": "FLAG_DUMMY",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -565,7 +565,7 @@
       "y": 20,
       "elevation": 3,
       "item": "ITEM_ETHER",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_ETHER"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",

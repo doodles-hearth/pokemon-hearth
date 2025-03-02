@@ -98,14 +98,11 @@ const u32 gItemIconPalette_Potion[] = INCBIN_U32("graphics/items/icon_palettes/p
 
 const u32 gItemIcon_Ointment[] = INCBIN_U32("graphics/items/icons/ointment.4bpp.lz");
 const u32 gItemIconPalette_Ointment[] = INCBIN_U32("graphics/items/icons/ointment.gbapal.lz");
-const u32 gItemIcon_SuperOintment[] = INCBIN_U32("graphics/items/icons/super_ointment.4bpp.lz");
-const u32 gItemIconPalette_SuperOintment[] = INCBIN_U32("graphics/items/icons/super_ointment.gbapal.lz");
-const u32 gItemIcon_HyperOintment[] = INCBIN_U32("graphics/items/icons/hyper_ointment.4bpp.lz");
-const u32 gItemIconPalette_HyperOintment[] = INCBIN_U32("graphics/items/icons/hyper_ointment.gbapal.lz");
+const u32 gItemIconPalette_SuperOintment[] = INCBIN_U32("graphics/items/icon_palettes/super_ointment.gbapal.lz");
+const u32 gItemIconPalette_HyperOintment[] = INCBIN_U32("graphics/items/icon_palettes/hyper_ointment.gbapal.lz");
 const u32 gItemIcon_MaxOintment[] = INCBIN_U32("graphics/items/icons/max_ointment.4bpp.lz");
-const u32 gItemIconPalette_MaxOintment[] = INCBIN_U32("graphics/items/icons/max_ointment.gbapal.lz");
-const u32 gItemIcon_SacredOintment[] = INCBIN_U32("graphics/items/icons/sacred_ointment.4bpp.lz");
-const u32 gItemIconPalette_SacredOintment[] = INCBIN_U32("graphics/items/icons/sacred_ointment.gbapal.lz");
+const u32 gItemIconPalette_MaxOintment[] = INCBIN_U32("graphics/items/icon_palettes/max_ointment.gbapal.lz");
+const u32 gItemIconPalette_SacredOintment[] = INCBIN_U32("graphics/items/icon_palettes/sacred_ointment.gbapal.lz");
 
 const u32 gItemIcon_Uumegiri[] = INCBIN_U32("graphics/items/icons/uumegiri.4bpp.lz");
 const u32 gItemIconPalette_Uumegiri[] = INCBIN_U32("graphics/items/icons/uumegiri.gbapal.lz");
@@ -122,10 +119,9 @@ const u32 gItemIconPalette_SuperPotion[] = INCBIN_U32("graphics/items/icon_palet
 
 const u32 gItemIconPalette_HyperPotion[] = INCBIN_U32("graphics/items/icon_palettes/hyper_potion.gbapal.lz");
 
-const u32 gItemIcon_LargePotion[] = INCBIN_U32("graphics/items/icons/large_potion.4bpp.lz");
-const u32 gItemIconPalette_MaxPotion[] = INCBIN_U32("graphics/items/icon_palettes/max_potion.gbapal.lz");
-
-const u32 gItemIconPalette_FullRestore[] = INCBIN_U32("graphics/items/icon_palettes/full_restore.gbapal.lz");
+const u32 gItemIcon_LargePotion[] = INCBIN_U32("graphics/items/icons/max_ointment.4bpp.lz");
+const u32 gItemIconPalette_MaxPotion[] = INCBIN_U32("graphics/items/icons/max_ointment.gbapal.lz");
+const u32 gItemIconPalette_FullRestore[] = INCBIN_U32("graphics/items/icon_palettes/sacred_ointment.gbapal.lz");
 
 const u32 gItemIcon_Revive[] = INCBIN_U32("graphics/items/icons/revive.4bpp.lz");
 const u32 gItemIconPalette_Revive[] = INCBIN_U32("graphics/items/icon_palettes/revive.gbapal.lz");
@@ -155,20 +151,15 @@ const u32 gItemIconPalette_HealPowder[] = INCBIN_U32("graphics/items/icon_palett
 const u32 gItemIcon_RevivalHerb[] = INCBIN_U32("graphics/items/icons/revival_herb.4bpp.lz");
 const u32 gItemIconPalette_RevivalHerb[] = INCBIN_U32("graphics/items/icon_palettes/revival_herb.gbapal.lz");
 
-const u32 gItemIcon_Antidote[] = INCBIN_U32("graphics/items/icons/antidote.4bpp.lz");
-const u32 gItemIconPalette_Antidote[] = INCBIN_U32("graphics/items/icon_palettes/antidote.gbapal.lz");
-
 const u32 gItemIcon_StatusHeal[] = INCBIN_U32("graphics/items/icons/status_heal.4bpp.lz");
+const u32 gItemIconPalette_Antidote[] = INCBIN_U32("graphics/items/icon_palettes/antidote.gbapal.lz");
 const u32 gItemIconPalette_ParalyzeHeal[] = INCBIN_U32("graphics/items/icon_palettes/paralyze_heal.gbapal.lz");
-
 const u32 gItemIconPalette_BurnHeal[] = INCBIN_U32("graphics/items/icon_palettes/burn_heal.gbapal.lz");
-
 const u32 gItemIconPalette_IceHeal[] = INCBIN_U32("graphics/items/icon_palettes/ice_heal.gbapal.lz");
-
 const u32 gItemIconPalette_Awakening[] = INCBIN_U32("graphics/items/icon_palettes/awakening.gbapal.lz");
 
 const u32 gItemIcon_FullHeal[] = INCBIN_U32("graphics/items/icons/full_heal.4bpp.lz");
-const u32 gItemIconPalette_FullHeal[] = INCBIN_U32("graphics/items/icon_palettes/full_heal.gbapal.lz");
+const u32 gItemIconPalette_FullHeal[] = INCBIN_U32("graphics/items/icons/full_heal.gbapal.lz");
 
 const u32 gItemIcon_Ether[] = INCBIN_U32("graphics/items/icons/ether.4bpp.lz");
 const u32 gItemIconPalette_Ether[] = INCBIN_U32("graphics/items/icon_palettes/ether.gbapal.lz");
@@ -322,7 +313,7 @@ const u32 gItemIconPalette_SuperLure[] = INCBIN_U32("graphics/items/icon_palette
 const u32 gItemIconPalette_MaxLure[] = INCBIN_U32("graphics/items/icon_palettes/max_lure.gbapal.lz");
 
 const u32 gItemIcon_EscapeRope[] = INCBIN_U32("graphics/items/icons/escape_rope.4bpp.lz");
-const u32 gItemIconPalette_EscapeRope[] = INCBIN_U32("graphics/items/icon_palettes/escape_rope.gbapal.lz");
+const u32 gItemIconPalette_EscapeRope[] = INCBIN_U32("graphics/items/icons/escape_rope.gbapal.lz");
 
 // X Items
 
@@ -1252,7 +1243,7 @@ const u32 gItemIconPalette_PowerAnklet[] = INCBIN_U32("graphics/items/icon_palet
 // Type-boosting Held Items
 
 const u32 gItemIcon_SilkScarf[] = INCBIN_U32("graphics/items/icons/silk_scarf.4bpp.lz");
-const u32 gItemIconPalette_SilkScarf[] = INCBIN_U32("graphics/items/icon_palettes/silk_scarf.gbapal.lz");
+const u32 gItemIconPalette_SilkScarf[] = INCBIN_U32("graphics/items/icons/silk_scarf.gbapal.lz");
 
 const u32 gItemIcon_Charcoal[] = INCBIN_U32("graphics/items/icons/charcoal.4bpp.lz");
 const u32 gItemIconPalette_Charcoal[] = INCBIN_U32("graphics/items/icon_palettes/charcoal.gbapal.lz");
@@ -1276,7 +1267,7 @@ const u32 gItemIcon_PoisonBarb[] = INCBIN_U32("graphics/items/icons/poison_barb.
 const u32 gItemIconPalette_PoisonBarb[] = INCBIN_U32("graphics/items/icon_palettes/poison_barb.gbapal.lz");
 
 const u32 gItemIcon_SoftSand[] = INCBIN_U32("graphics/items/icons/soft_sand.4bpp.lz");
-const u32 gItemIconPalette_SoftSand[] = INCBIN_U32("graphics/items/icon_palettes/soft_sand.gbapal.lz");
+const u32 gItemIconPalette_SoftSand[] = INCBIN_U32("graphics/items/icons/soft_sand.gbapal.lz");
 
 const u32 gItemIcon_SharpBeak[] = INCBIN_U32("graphics/items/icons/sharp_beak.4bpp.lz");
 const u32 gItemIconPalette_SharpBeak[] = INCBIN_U32("graphics/items/icon_palettes/sharp_beak.gbapal.lz");
@@ -1414,7 +1405,7 @@ const u32 gItemIcon_MuscleBand[] = INCBIN_U32("graphics/items/icons/muscle_band.
 const u32 gItemIconPalette_MuscleBand[] = INCBIN_U32("graphics/items/icon_palettes/muscle_band.gbapal.lz");
 
 const u32 gItemIcon_WiseGlasses[] = INCBIN_U32("graphics/items/icons/wise_glasses.4bpp.lz");
-const u32 gItemIconPalette_WiseGlasses[] = INCBIN_U32("graphics/items/icon_palettes/wise_glasses.gbapal.lz");
+const u32 gItemIconPalette_WiseGlasses[] = INCBIN_U32("graphics/items/icons/wise_glasses.gbapal.lz");
 
 const u32 gItemIcon_ExpertBelt[] = INCBIN_U32("graphics/items/icons/expert_belt.4bpp.lz");
 const u32 gItemIconPalette_ExpertBelt[] = INCBIN_U32("graphics/items/icon_palettes/expert_belt.gbapal.lz");
@@ -1955,10 +1946,10 @@ const u32 gItemIcon_TriPass[] = INCBIN_U32("graphics/items/icons/tri_pass.4bpp.l
 const u32 gItemIconPalette_TriPass[] = INCBIN_U32("graphics/items/icon_palettes/tri_pass.gbapal.lz");
 
 const u32 gItemIcon_AshiisScarf[] = INCBIN_U32("graphics/items/icons/ashiis_scarf.4bpp.lz");
-const u32 gItemIconPalette_AshiisScarf[] = INCBIN_U32("graphics/items/icon_palettes/ashiis_scarf.gbapal.lz");
+const u32 gItemIconPalette_AshiisScarf[] = INCBIN_U32("graphics/items/icons/ashiis_scarf.gbapal.lz");
 
 const u32 gItemIcon_Tea[] = INCBIN_U32("graphics/items/icons/tea.4bpp.lz");
-const u32 gItemIconPalette_Tea[] = INCBIN_U32("graphics/items/icon_palettes/tea.gbapal.lz");
+const u32 gItemIconPalette_Tea[] = INCBIN_U32("graphics/items/icons/tea.gbapal.lz");
 
 const u32 gItemIcon_Gem[] = INCBIN_U32("graphics/items/icons/gem.4bpp.lz");
 const u32 gItemIconPalette_Ruby[] = INCBIN_U32("graphics/items/icon_palettes/ruby.gbapal.lz");

@@ -1088,7 +1088,7 @@
       "y": 1,
       "elevation": 3,
       "item": "ITEM_SUPER_REPEL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_123_SUPER_REPEL"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "sign",

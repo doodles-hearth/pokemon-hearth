@@ -394,6 +394,26 @@
       "lunchtime": false,
       "morning": false,
       "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 33,
+      "y": 88,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_TM_ROCK_TOMB",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_HM_ROCK_TOMB",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
@@ -444,6 +464,22 @@
       "elevation": 0,
       "item": "ITEM_LEFTOVERS",
       "flag": "FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_LEFTOVERS"
+    },
+    {
+      "type": "hidden_item",
+      "x": 8,
+      "y": 53,
+      "elevation": 0,
+      "item": "ITEM_ZINC",
+      "flag": "FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_ZINC"
+    },
+    {
+      "type": "hidden_item",
+      "x": 12,
+      "y": 48,
+      "elevation": 0,
+      "item": "ITEM_LUM_BERRY",
+      "flag": "FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_LUM_BERRY"
     }
   ]
 }

@@ -29,8 +29,11 @@ YifuCity_CrobatShop_Cashier::
 
 	.align 2
 Crobat_Mart:
+	.2byte ITEM_OINTMENT
+	.2byte ITEM_SUPER_OINTMENT
 	.2byte ITEM_ULTRA_BALL_KNOCKOFF
 	.2byte ITEM_SLOWPOKE_TAIL
+	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_NONE
 
 YifuCity_CrobatShop_Guard::

@@ -330,11 +330,8 @@ script MaguroHarbor_EventScript_Mart {
 		case TIME_LUNCHTIME:
 		case TIME_AFTERNOON:
 		case TIME_EVENING:
-			goto(MaguroHarbor_EventScript_MartSelling)
 		case TIME_NIGHT:
-			call(StringVarSetter)
-			goto(MaguroHarbor_EventScript_MartClosingUp)
-		
+			goto(MaguroHarbor_EventScript_MartSelling)
 	}
 }
 
@@ -385,7 +382,10 @@ script(local) StringVarSetter {
 mart MaguroHarbor_Mart {
 	ITEM_POKE_BALL
 	ITEM_OINTMENT
-	ITEM_CHERI_BERRY
-	ITEM_PECHA_BERRY
-	ITEM_CHESTO_BERRY
+	ITEM_SUPER_OINTMENT
+	ITEM_PARALYZE_HEAL
+	ITEM_ANTIDOTE
+	ITEM_AWAKENING
+	ITEM_BURN_HEAL
+	ITEM_ESCAPE_ROPE
 }

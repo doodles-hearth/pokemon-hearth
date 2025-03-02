@@ -123,9 +123,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_SOFT_SAND",
       "script": "Common_EventScript_FindItem",
-      "flag": "NULL",
+      "flag": "FLAG_RECEIVED_SOFT_SAND",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -156,12 +156,34 @@
       "elevation": 0,
       "dest_map": "MAP_WINDSWEPT_ROUTE",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 38,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_SILVER_TUNNEL_3F",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
 
   ],
   "bg_events": [
-
+    {
+      "type": "hidden_item",
+      "x": 24,
+      "y": 5,
+      "elevation": 0,
+      "item": "ITEM_MOON_STONE",
+      "flag": "FLAG_HIDDEN_ITEM_SILVER_TUNNEL_MOON_STONE"
+    },
+    {
+      "type": "hidden_item",
+      "x": 32,
+      "y": 23,
+      "elevation": 0,
+      "item": "ITEM_FRESH_WATER",
+      "flag": "FLAG_HIDDEN_ITEM_SILVER_TUNNEL_FRESH_WATER"
+    }
   ]
 }

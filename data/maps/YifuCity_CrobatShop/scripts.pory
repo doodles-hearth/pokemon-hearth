@@ -36,8 +36,11 @@ script YifuCity_CrobatShop_Cashier {
 }
 
 mart Crobat_Mart {
+	ITEM_OINTMENT
+	ITEM_SUPER_OINTMENT
 	ITEM_ULTRA_BALL_KNOCKOFF
 	ITEM_SLOWPOKE_TAIL
+	ITEM_ESCAPE_ROPE
 }
 
 script YifuCity_CrobatShop_Guard {

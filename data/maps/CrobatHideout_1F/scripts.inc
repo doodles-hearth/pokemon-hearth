@@ -341,7 +341,7 @@ CrobatHideout_1F_LetsFight2v2::
 	waitstate
 	compare VAR_RESULT, 0
 	goto_if_eq CrobatHideout_1F_LetsFight2v2_2
-	multi_2_vs_2 TRAINER_MAXIE_MOSSDEEP, CrobatHideout_1F_LetsFight2v2_Text_1, TRAINER_TABITHA_MOSSDEEP, CrobatHideout_1F_LetsFight2v2_Text_2, PARTNER_SAMURAI
+	multi_2_vs_2 TRAINER_GOLBAT_ADMIN_1, CrobatHideout_1F_LetsFight2v2_Text_1, TRAINER_GOLBAT_ADMIN_2, CrobatHideout_1F_LetsFight2v2_Text_2, PARTNER_SAMURAI
 	compare VAR_RESULT, 0
 	goto_if_ne CrobatHideout_1F_LetsFight2v2_5
 	fadescreen FADE_TO_BLACK

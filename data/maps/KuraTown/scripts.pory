@@ -112,6 +112,39 @@ script KuraTown_EventScript_Farmer {
 	release
 }
 
+script KuraTown_EventScript_SilkScarf {
+	lock
+	faceplayer
+	if (flag(FLAG_RECEIVED_SILK_SCARF)) {
+		speakername("Girl")
+		msgbox(
+			format(
+				"Sigh… Now I'm scarfless…\p"
+				"Well, at least I'm not committing any more crimes against fashion…"
+			)
+		)
+		closemessage
+	} else {
+		speakername("Girl")
+		msgbox(
+			format(
+				"Hey, you! Yes, you! I need some super-urgent fashion advice!\p"
+				"I bought myself this scarf in Yifu City… But now I'm worried the white clashes with my complexion!\p"
+				"Is it awful? Does my skin look grey?\p"
+				"Oh gosh, it does, doesn't it? I knew it! I have to get rid of it right this moment!\p"
+				"Take it! Take it! I can't even look at it!"
+			)
+		)
+		closemessage
+
+		giveitem(ITEM_SILK_SCARF)
+		setflag(FLAG_RECEIVED_SILK_SCARF)
+	}
+	
+
+	release
+}
+
 script KuraTown_EventScript_FarmerScyther {
 	lock
 	faceplayer

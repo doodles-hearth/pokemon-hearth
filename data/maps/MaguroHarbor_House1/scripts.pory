@@ -20,7 +20,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 		"Hehe… Hullo, kid…\nPeople call me the Pokémon Nerd.\p"
 		"(Not sure why…)\p"
 		"I know a whole lot about Pokémon… Wanna play a game?\p"
-		"If you can guess what Pokémon I'm talking about, I'll share my knowledge with you.\p"
+		"If you can guess what Pokémon I'm describing, I'll share my knowledge with you.\p"
 		"Hehe… Think you can solve my riddle? Ahem…"
 	))
 	closemessage
@@ -40,15 +40,13 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 			"Woah, you… You solved my riddle!\p"
 			"Could you… be a true Pokémon Nerd?\p"
 			"You have bested me today. Can you feel the rush of pure knowledge that's coursing through your veins?\p"
-			"Your Pokémon… They will gain more experience for a while.\p"
+			"Your Pokémon… They will gain more experience today.\p"
 			"Knowledge is power, after all, hehe…\p"
 			"Come back another time for another riddle…"
 		))
 		closemessage
 
-		// TODO EVA reward
-		giveitem(ITEM_ORAN_BERRY)
-		msgbox("come back tomorrow")
+		setflag(FLAG_DAILY_MON_DEX_RIDDLE_WON)
 	}
 	else
 	{

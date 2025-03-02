@@ -281,9 +281,10 @@ SakuTown_EventScript_Mart::
 SakuTown_Mart:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_OINTMENT
-	.2byte ITEM_CHERI_BERRY
-	.2byte ITEM_PECHA_BERRY
-	.2byte ITEM_CHESTO_BERRY
+	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_NONE
 
 SakuTown_EventScript_Makuhita::
@@ -294,6 +295,28 @@ SakuTown_EventScript_Makuhita::
 	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_MAKUHITA
 	msgbox SakuTown_EventScript_Makuhita_Text_0
+	waitmoncry
+	release
+	return
+
+
+SakuTown_EventScript_MonHues::
+	lock
+	faceplayer
+	speakername SakuTown_EventScript_Karateka_Text_0
+	msgbox SakuTown_EventScript_MonHues_Text_0
+	closemessage
+	release
+	return
+
+
+SakuTown_EventScript_Cherrim::
+	lock
+	faceplayer
+	setseenmon SPECIES_CHERRIM
+	playmoncry SPECIES_CHERRIM, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_CHERRIM
+	msgbox SakuTown_EventScript_Cherrim_Text_0
 	waitmoncry
 	release
 	return
@@ -465,6 +488,19 @@ SakuTown_EventScript_Mart_Text_0:
 
 SakuTown_EventScript_Makuhita_Text_0:
 	.string "Kuhi!$"
+
+SakuTown_EventScript_MonHues_Text_0:
+	.string "Have you ever paid close attention to\n"
+	.string "the fur and feather colors of the wild\l"
+	.string "Pokémon?\p"
+	.string "They may all look the same at first…\n"
+	.string "But each one has its own totally\l"
+	.string "unique colors!\p"
+	.string "Doesn't noticing that make your heart\n"
+	.string "sing?$"
+
+SakuTown_EventScript_Cherrim_Text_0:
+	.string "Weee!$"
 
 SakuTown_Text_RivalDefeat::
 	.string "Oh, wow, okay.$"
