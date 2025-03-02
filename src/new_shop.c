@@ -141,6 +141,7 @@ struct MartInfo
     u16 itemCount;
     u8 windowId;
     u8 martType;
+    u16 sellerId;
     u8 shopId;
 };
 
@@ -153,7 +154,6 @@ struct ShopData
     u8 cursorSpriteId;
     u16 currentItemId;
     struct GridMenu *gridItems;
-    u16 sellerId;
 };
 
 struct Seller
@@ -692,7 +692,7 @@ void SetShopSellerId(void)
 
     if (gSpecialVar_LastTalked == 0) // failsafe
     {
-        sShopData->sellerId = SELLER_NONE;
+        sMartInfo.sellerId = SELLER_NONE;
         return;
     }
 
@@ -706,7 +706,7 @@ void SetShopSellerId(void)
     {
         if (gfxId == sSellers[i].id.gfxId)
         {
-            sShopData->sellerId = i;
+            sMartInfo.sellerId = i;
             break;
         }
     }
@@ -714,7 +714,7 @@ void SetShopSellerId(void)
 
 static inline const u8 *Shop_GetSellerMessage(enum Seller_MessageIds msgId)
 {
-    u32 sellerId = sShopData->sellerId;
+    u32 sellerId = sMartInfo.sellerId;
 
     if (sSellers[sellerId].message[msgId] == NULL)
     {
@@ -726,7 +726,7 @@ static inline const u8 *Shop_GetSellerMessage(enum Seller_MessageIds msgId)
 
 static const void *Shop_GetSellerGraphics(enum Seller_GraphicsIds gfxId)
 {
-    u32 sellerId = sShopData->sellerId;
+    u32 sellerId = sMartInfo.sellerId;
     const struct Seller *seller = &sSellers[sellerId];
 
     switch (gfxId)
@@ -1125,7 +1125,7 @@ static void BuyMenuInitBgs(void)
 #define DEFAULT_MENU_TILE_OFFSET 0x46
 static void BuyMenuDecompressBgGraphics(void)
 {
-    u32 i = sShopData->sellerId;
+    u32 i = sMartInfo.sellerId;
     if (gSpecialVar_LastTalked == 0 || i == SELLER_NONE)
     {
         DecompressAndCopyTileDataToVram(2, sNewShopMenu_DefaultMenuGfx, 0, DEFAULT_MENU_TILE_OFFSET, 0);
@@ -1136,7 +1136,7 @@ static void BuyMenuDecompressBgGraphics(void)
         LoadCompressedPalette(sNewShopMenu_DefaultMenuPal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
         return;
     }
-    DecompressAndCopyTileDataToVram(2, Shop_GetSellerGraphics(SELLER_GFX_MENU_GFX), 0, sSellers[i].menuTileOffset != DEFAULT_MENU_TILE_OFFSET ? sSellers[i].menuTileOffset : DEFAULT_MENU_TILE_OFFSET, 0);
+    DecompressAndCopyTileDataToVram(2, Shop_GetSellerGraphics(SELLER_GFX_MENU_GFX), 0, sSellers[i].menuTileOffset != 0 ? sSellers[i].menuTileOffset : DEFAULT_MENU_TILE_OFFSET, 0);
     DecompressAndCopyTileDataToVram(2, Shop_GetSellerGraphics(SELLER_GFX_SCROLL_GFX), 0, 0, 0);
 
     LZDecompressWram(Shop_GetSellerGraphics(SELLER_GFX_MENU_MAP), sShopData->tilemapBuffers[0]);
@@ -1317,7 +1317,7 @@ static void BuyMenuInitWindows(void)
 
 static bool32 LoadSellerCursor(void)
 {
-    u32 i = sShopData->sellerId;
+    u32 i = sMartInfo.sellerId;
     struct SpriteSheet gfx = {
         .data = Shop_GetSellerGraphics(SELLER_GFX_CURSOR_GFX),
         .size = 64*64*2,
