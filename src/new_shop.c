@@ -199,8 +199,8 @@ const u8 sText_ThanksIllSendItHome[] = _("Thanks!\nI'll send it to your\nPC at h
 const u8 sText_YouDontHaveMoney[] = _("You don't have\nenough money.");
 const u8 sText_NoMoreRoomForThis[] = _("You have no more\nroom for this\nitem.");
 const u8 sText_SpaceForVar1Full[] = _("The space for\n{STR_VAR_1}\nis full.");
-const u8 sText_ThrowInPremierBall[] = _("I'll throw in\na PREMIER BALL,\ntoo.");
-const u8 sText_ThrowInPremierBalls[] = _("I'll throw in\n{STR_VAR_1} PREMIER BALLS,\ntoo.");
+const u8 sText_ThrowInPremierBall[] = _("Here's also\na promotional\nPremier Ball!");
+const u8 sText_ThrowInPremierBalls[] = _("Here's also\n{STR_VAR_1} promotional\nPremier Balls!");
 
 const u32 sNewShopMenu_DefaultMenuGfx[] = INCBIN_U32("graphics/new_shop/menu.4bpp.lz");
 const u32 sNewShopMenu_DefaultMenuPal[] = INCBIN_U32("graphics/new_shop/menu.gbapal.lz");
@@ -213,9 +213,6 @@ const u32 sNewShopMenu_DefaultCursorPal[] = INCBIN_U16("graphics/new_shop/cursor
 
 const u8 sNewShopMenu_SellerMugshotGfx_MartFemale[] = INCBIN_U8("graphics/new_shop/sellers/female/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/mugshot.gbapal");
-const u32 sNewShopMenu_SellerMenuGfx_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/menu.4bpp.lz");
-const u32 sNewShopMenu_SellerMenuPal_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/menu.gbapal.lz");
-const u32 sNewShopMenu_SellerMenuMap_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/menu.bin.lz");
 const u32 sNewShopMenu_SellerScrollGfx_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.4bpp.lz");
 const u32 sNewShopMenu_SellerScrollPal_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.gbapal.lz");
 const u32 sNewShopMenu_SellerScrollMap_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.bin.lz");
@@ -224,9 +221,6 @@ const u32 sNewShopMenu_SellerCursorPal_MartFemale[] = INCBIN_U32("graphics/new_s
 
 const u8 sNewShopMenu_SellerMugshotGfx_Okada[] = INCBIN_U8("graphics/new_shop/sellers/okada/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/mugshot.gbapal");
-const u32 sNewShopMenu_SellerMenuGfx_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/menu.4bpp.lz");
-const u32 sNewShopMenu_SellerMenuPal_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/menu.gbapal.lz");
-const u32 sNewShopMenu_SellerMenuMap_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/menu.bin.lz");
 const u32 sNewShopMenu_SellerScrollGfx_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.4bpp.lz");
 const u32 sNewShopMenu_SellerScrollPal_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.gbapal.lz");
 const u32 sNewShopMenu_SellerScrollMap_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.bin.lz");
@@ -494,16 +488,16 @@ static const struct Seller sSellers[] = {
         .cursorGfx = sNewShopMenu_SellerCursorGfx_Okada,
         .cursorPal = sNewShopMenu_SellerCursorPal_Okada,
         .message = {
-            [SELLER_MSG_RETURN_TO_FIELD]   = gText_AnythingElseICanHelp,
+            [SELLER_MSG_RETURN_TO_FIELD]   = COMPOUND_STRING("Alrighty! Anything else?"),
             [SELLER_MSG_BUY_PROMPT]        = sText_YouWantedVar1ThatllBeVar2,
-            [SELLER_MSG_BUY_PROMPT_PLURAL] = sText_Var1CertainlyHowMany,
+            [SELLER_MSG_BUY_PROMPT_PLURAL] = COMPOUND_STRING("{STR_VAR_1}?\nSure! How\nmany?"),
             [SELLER_MSG_BUY_CONFIRM]       = sText_Var1AndYouWantedVar2,
-            [SELLER_MSG_BUY_SUCCESS]       = sText_HereYouGoThankYou,
+            [SELLER_MSG_BUY_SUCCESS]       = COMPOUND_STRING("Here you go!\nPlease enjoy."),
             [SELLER_MSG_BUY_FAIL_NO_SPACE] = sText_NoMoreRoomForThis,
-            [SELLER_MSG_BUY_FAIL_NO_MONEY] = sText_YouDontHaveMoney,
-            [SELLER_MSG_BUY_FAIL_SOLD_OUT] = sText_ThatItemIsSoldOut,
-            [SELLER_MGS_BUY_PREMIER_BONUS] = sText_ThrowInPremierBall,
-            [SELLER_MSG_BUY_PREMIER_BONUS_PLURAL] = sText_ThrowInPremierBalls,
+            [SELLER_MSG_BUY_FAIL_NO_MONEY] = COMPOUND_STRING("Woops! You're\nshort on\nmoney!"),
+            [SELLER_MSG_BUY_FAIL_SOLD_OUT] = COMPOUND_STRING("Sorry, I have\nnone left!"),
+            [SELLER_MGS_BUY_PREMIER_BONUS] = COMPOUND_STRING("I'll throw in\na Premier Ball,\ntoo."),
+            [SELLER_MSG_BUY_PREMIER_BONUS_PLURAL] = COMPOUND_STRING("I'll throw in\n{STR_VAR_1} Premier Balls,\ntoo."),
         },
     },
     [SELLER_ZUBAT] = {
@@ -516,16 +510,15 @@ static const struct Seller sSellers[] = {
         .cursorGfx = sNewShopMenu_SellerCursorGfx_Zubat,
         .cursorPal = sNewShopMenu_SellerCursorPal_Zubat,
         .message = {
-            [SELLER_MSG_RETURN_TO_FIELD]   = gText_AnythingElseICanHelp,
-            [SELLER_MSG_BUY_PROMPT]        = sText_YouWantedVar1ThatllBeVar2,
-            [SELLER_MSG_BUY_PROMPT_PLURAL] = sText_Var1CertainlyHowMany,
-            [SELLER_MSG_BUY_CONFIRM]       = sText_Var1AndYouWantedVar2,
-            [SELLER_MSG_BUY_SUCCESS]       = sText_HereYouGoThankYou,
+            [SELLER_MSG_RETURN_TO_FIELD]   = COMPOUND_STRING("Got thee more money to spend?"),
+            [SELLER_MSG_BUY_PROMPT]        = COMPOUND_STRING("{STR_VAR_1}?\nThat'll be only\n¥{STR_VAR_2}!"),
+            [SELLER_MSG_BUY_PROMPT_PLURAL] = COMPOUND_STRING("How many\nd'ya want?"),
+            [SELLER_MSG_BUY_CONFIRM]       = COMPOUND_STRING("So you wanted\n{STR_VAR_2} {STR_VAR_1}?\nGimme ¥{STR_VAR_3}."),
+            [SELLER_MSG_BUY_SUCCESS]       = COMPOUND_STRING("Heck yeah.\nNo refunds!"),
             [SELLER_MSG_BUY_FAIL_NO_SPACE] = sText_NoMoreRoomForThis,
-            [SELLER_MSG_BUY_FAIL_NO_MONEY] = sText_YouDontHaveMoney,
-            [SELLER_MSG_BUY_FAIL_SOLD_OUT] = sText_ThatItemIsSoldOut,
-            [SELLER_MGS_BUY_PREMIER_BONUS] = sText_ThrowInPremierBall,
-            [SELLER_MSG_BUY_PREMIER_BONUS_PLURAL] = sText_ThrowInPremierBalls,
+            [SELLER_MSG_BUY_FAIL_NO_MONEY] = COMPOUND_STRING("Where's the\ncash,\nscrub?"),
+            [SELLER_MGS_BUY_PREMIER_BONUS] = COMPOUND_STRING("I'll throw in\na Premier Ball,\ntoo."),
+            [SELLER_MSG_BUY_PREMIER_BONUS_PLURAL] = COMPOUND_STRING("I'll throw in\n{STR_VAR_1} Premier Balls,\ntoo."),
         },
     },
 };

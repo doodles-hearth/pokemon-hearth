@@ -21,6 +21,28 @@ YifuCity_EventScript_StoleMyMon::
 	return
 
 
+YifuCity_EventScript_LostMyDoll::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_LostMyDoll_Text_0
+	msgbox YifuCity_EventScript_LostMyDoll_Text_1
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_Cleffa::
+	lock
+	faceplayer
+	setspeakertomonname SPECIES_CLEFFA
+	msgbox YifuCity_EventScript_Cleffa_Text_0
+	setseenmon SPECIES_CLEFFA
+	playmoncry SPECIES_CLEFFA, CRY_MODE_NORMAL
+	waitmoncry
+	release
+	end
+
+
 YifuCity_EventScript_IDontFeelSafe::
 	lock
 	faceplayer
@@ -202,7 +224,7 @@ YifuCity_ShinySellerChoice_27:
 
 YifuCity_Trigger_CrobatGruntsScram::
 	lockall
-	goto_if_unset FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_CrobatGruntsScram_2
+	goto_if_set FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_CrobatGruntsScram_2
 YifuCity_Trigger_CrobatGruntsScram_1:
 	releaseall
 	return
@@ -364,6 +386,7 @@ YifuCity_Trigger_CrobatGruntStuckInHole_7:
 	goto YifuCity_Trigger_CrobatGruntStuckInHole_5
 
 YifuCity_Trigger_CrobatGruntStuckInHole_8:
+	setnamedmon SPECIES_SHARPEDO
 	msgbox YifuCity_Trigger_CrobatGruntStuckInHole_Text_1
 	goto YifuCity_Trigger_CrobatGruntStuckInHole_5
 
@@ -379,8 +402,8 @@ YifuCity_Trigger_CrobatGruntStuckInHole_10:
 YifuCity_EventScript_Surskit::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_Surskit_Text_0
-	msgbox YifuCity_EventScript_Surskit_Text_1
+	setspeakertomonname SPECIES_SURSKIT
+	msgbox YifuCity_EventScript_Surskit_Text_0
 	setseenmon SPECIES_SURSKIT
 	playmoncry SPECIES_SURSKIT, CRY_MODE_NORMAL
 	waitmoncry
@@ -770,6 +793,16 @@ YifuCity_EventScript_StoleMyMon_Text_1:
 	.string "Each day, Pokémon never cease to\n"
 	.string "amaze me!$"
 
+YifuCity_EventScript_LostMyDoll_Text_0:
+	.string "Little Girl$"
+
+YifuCity_EventScript_LostMyDoll_Text_1:
+	.string "I lost my doll while I was busy\n"
+	.string "playing!$"
+
+YifuCity_EventScript_Cleffa_Text_0:
+	.string "Faa!$"
+
 YifuCity_EventScript_IDontFeelSafe_Text_0:
 	.string "Woman$"
 
@@ -840,7 +873,7 @@ YifuCity_ShinySellerChoice_Text_9:
 	.string "kid!$"
 
 YifuCity_ShinySellerChoice_Text_10:
-	.string "What? No! Why would ya even say that?\n"
+	.string "What? No! Why woudja even say that?\n"
 	.string "Do I not look respectable to ya?\p"
 	.string "So uh… You gonna buy it or not?$"
 
@@ -933,9 +966,6 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Text_5:
 	.string "I can't swim! It's a dead end!$"
 
 YifuCity_EventScript_Surskit_Text_0:
-	.string "Surskit$"
-
-YifuCity_EventScript_Surskit_Text_1:
 	.string "Sksksksk…$"
 
 YifuCity_Trigger_Lockdown_Text_0:
