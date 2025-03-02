@@ -731,6 +731,14 @@
       "elevation": 0,
       "item": "ITEM_RARE_CANDY",
       "flag": "FLAG_HIDDEN_ITEM_TRANQUIL_ROUTE_RARE_CANDY"
+    },
+    {
+      "type": "hidden_item",
+      "x": 23,
+      "y": 8,
+      "elevation": 0,
+      "item": "ITEM_REVIVAL_HERB",
+      "flag": "FLAG_HIDDEN_ITEM_TRANQUIL_ROUTE_REVIVAL_HERB"
     }
   ]
 }

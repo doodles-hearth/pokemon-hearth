@@ -441,7 +441,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_PP_UP",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_BEACHBOUND_ROUTE_POKE_BALL",
+      "flag": "FLAG_DUMMY",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -827,7 +827,7 @@
       "y": 6,
       "elevation": 3,
       "item": "ITEM_SUPER_POTION",
-      "flag": "FLAG_HIDDEN_ITEM_BEACHBOUND_ROUTE_SUPER_POTION"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",
@@ -835,7 +835,7 @@
       "y": 9,
       "elevation": 3,
       "item": "ITEM_POKE_BALL",
-      "flag": "FLAG_HIDDEN_ITEM_BEACHBOUND_ROUTE_REPEL"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",
@@ -843,7 +843,7 @@
       "y": 55,
       "elevation": 3,
       "item": "ITEM_POTION",
-      "flag": "FLAG_HIDDEN_ITEM_BEACHBOUND_ROUTE_POTION"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",
@@ -851,7 +851,7 @@
       "y": 72,
       "elevation": 3,
       "item": "ITEM_ANTIDOTE",
-      "flag": "FLAG_HIDDEN_ITEM_BEACHBOUND_ROUTE_RARE_CANDY"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",
@@ -859,7 +859,7 @@
       "y": 64,
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
-      "flag": "FLAG_HIDDEN_ITEM_BEACHBOUND_ROUTE_ETHER"
+      "flag": "FLAG_DUMMY"
     }
   ]
 }

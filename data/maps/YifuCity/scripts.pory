@@ -28,6 +28,31 @@ script YifuCity_EventScript_StoleMyMon {
 	release
 }
 
+script YifuCity_EventScript_LostMyDoll {
+	lock
+	faceplayer
+	speakername("Little Girl")
+	msgbox(format(
+		"I lost my doll while I was busy playing!"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_Cleffa {
+	lock
+    faceplayer
+	setspeakertomonname(SPECIES_CLEFFA)
+    msgbox(format(
+        "Faa!"
+    ))
+	setseenmon(SPECIES_CLEFFA)
+    playmoncry(SPECIES_CLEFFA, CRY_MODE_NORMAL)
+    waitmoncry
+    release
+    end
+}
+
 script YifuCity_EventScript_IDontFeelSafe {
 	lock
 	faceplayer
@@ -220,7 +245,7 @@ script YifuCity_ShinySellerChoice {
 			hidemoneybox
 			speakername("Shady man")
 			msgbox(format(
-				"What? No! Why would ya even say that? Do I not look respectable to ya?\p"
+				"What? No! Why woudja even say that? Do I not look respectable to ya?\p"
 				"So uh… You gonna buy it or not?"
 			))
 			goto(YifuCity_ShinySellerChoice)
@@ -232,7 +257,7 @@ script YifuCity_ShinySellerChoice {
 
 script YifuCity_Trigger_CrobatGruntsScram {
 	lockall
-	if (!flag(FLAG_HIDE_LOCKDOWN_SAMURAI)) {
+	if (flag(FLAG_HIDE_LOCKDOWN_SAMURAI)) {
 		applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
 		waitmovement(0)
 
@@ -425,6 +450,7 @@ script YifuCity_Trigger_CrobatGruntStuckInHole {
 				"Yawn… I'm bored…"
 			))
 		case 1:
+			setnamedmon(SPECIES_SHARPEDO)
 			msgbox(format(
 				"Sure hope there ain't no Sharpedo in here…"
 			))
@@ -481,7 +507,7 @@ script YifuCity_Trigger_CrobatGruntStuckInHole {
 script YifuCity_EventScript_Surskit {
 	lock
     faceplayer
-	speakername("Surskit")
+	setspeakertomonname(SPECIES_SURSKIT)
     msgbox(format(
         "Sksksksk…"
     ))

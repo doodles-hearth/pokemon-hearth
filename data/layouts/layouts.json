@@ -5620,7 +5620,7 @@
     {
       "id": "LAYOUT_SILVER_TUNNEL_1F",
       "name": "SilverTunnel_1F_Layout",
-      "width": 30,
+      "width": 31,
       "height": 30,
       "border_width": 2,
       "border_height": 2,
@@ -5632,7 +5632,7 @@
     {
       "id": "LAYOUT_SILVER_TUNNEL_2F",
       "name": "SilverTunnel_2F_Layout",
-      "width": 30,
+      "width": 44,
       "height": 30,
       "border_width": 2,
       "border_height": 2,
@@ -6054,8 +6054,8 @@
       "name": "YifuCity_Layout",
       "width": 70,
       "height": 75,
-      "border_width": 1,
-      "border_height": 1,
+      "border_width": 2,
+      "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
       "secondary_tileset": "gTileset_Yifu",
       "border_filepath": "data/layouts/YifuCity/border.bin",
@@ -6288,6 +6288,30 @@
       "secondary_tileset": "gTileset_CrobatHideout",
       "border_filepath": "data/layouts/CrobatHideout_1F/border.bin",
       "blockdata_filepath": "data/layouts/CrobatHideout_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_FLOWERGRASS_PLATEAU",
+      "name": "FlowergrassPlateau_Layout",
+      "width": 43,
+      "height": 36,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Silveridge",
+      "border_filepath": "data/layouts/FlowergrassPlateau/border.bin",
+      "blockdata_filepath": "data/layouts/FlowergrassPlateau/map.bin"
+    },
+    {
+      "id": "LAYOUT_SILVER_TUNNEL_3F",
+      "name": "SilverTunnel_3F_Layout",
+      "width": 10,
+      "height": 12,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_SilverTunnel",
+      "border_filepath": "data/layouts/SilverTunnel_3F/border.bin",
+      "blockdata_filepath": "data/layouts/SilverTunnel_3F/map.bin"
     }
   ]
 }

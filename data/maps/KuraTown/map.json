@@ -410,6 +410,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SakuTown_EventScript_ClosedGymDoor"
+    },
+    {
+      "type": "hidden_item",
+      "x": 9,
+      "y": 20,
+      "elevation": 0,
+      "item": "ITEM_REVIVAL_HERB",
+      "flag": "FLAG_HIDDEN_ITEM_KURA_VILLAGE_REVIVAL_HERB"
     }
   ]
 }

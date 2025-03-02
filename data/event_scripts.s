@@ -1363,3 +1363,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/CrobatHideout_1F/scripts.inc"
 	
 	.include "data/scripts/dexnav.inc"
+
+	.include "data/maps/FlowergrassPlateau/scripts.inc"
+
+	.include "data/maps/SilverTunnel_3F/scripts.inc"

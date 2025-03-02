@@ -116,7 +116,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_PROTEIN",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_106_PROTEIN",
+      "flag": "FLAG_DUMMY",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -145,7 +145,7 @@
       "y": 11,
       "elevation": 3,
       "item": "ITEM_POKE_BALL",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE_106_POKE_BALL"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",

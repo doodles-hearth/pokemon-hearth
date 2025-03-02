@@ -302,6 +302,7 @@ SakuTown_EventScript_Makuhita::
 
 SakuTown_EventScript_MonHues::
 	lock
+	faceplayer
 	speakername SakuTown_EventScript_Karateka_Text_0
 	msgbox SakuTown_EventScript_MonHues_Text_0
 	closemessage
