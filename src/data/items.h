@@ -2492,6 +2492,29 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_EscapeRope,
     },
 
+    [ITEM_ESCAPE_ROPE_KNOCKOFF] =
+    {
+        .name = _("Excape Rope"),
+        .description = COMPOUND_STRING(
+            "Escape from a\n"
+            "cave or dungeon.\n"
+            "Gently used."),
+        #if I_KEY_ESCAPE_ROPE >= GEN_8
+            .price = 0,
+            .importance = 1,
+            .pocket = POCKET_KEY_ITEMS,
+        #else
+            .price = 550,
+            // .price = (I_PRICE >= GEN_7) ? 1000 : 550,
+            .pocket = POCKET_ITEMS,
+        #endif
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_EscapeRopeKnockoff,
+        .flingPower = 30,
+        .iconPic = gItemIcon_EscapeRopeKnockoff,
+        .iconPalette = gItemIconPalette_EscapeRope,
+    },
+
 // X Items
 
     [ITEM_X_ATTACK] =
