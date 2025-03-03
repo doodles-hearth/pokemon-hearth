@@ -1247,6 +1247,9 @@ const u16 gTilesetAnims_PorytilesPrimaryTutorial_Waterfall_Frame1[] = INCBIN_U16
 const u16 gTilesetAnims_PorytilesPrimaryTutorial_Waterfall_Frame2[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/anim/waterfall/02.4bpp");
 const u16 gTilesetAnims_PorytilesPrimaryTutorial_Waterfall_Frame3[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/anim/waterfall/03.4bpp");
 
+const u16 gTilesetAnims_PorytilesPrimaryTutorial_Pond_Frame0[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/anim/pond/00.4bpp");
+const u16 gTilesetAnims_PorytilesPrimaryTutorial_Pond_Frame1[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/anim/pond/01.4bpp");
+
 const u16 *const gTilesetAnims_PorytilesPrimaryTutorial_Sea[] = {
     gTilesetAnims_PorytilesPrimaryTutorial_Sea_Frame0,
     gTilesetAnims_PorytilesPrimaryTutorial_Sea_Frame1,
@@ -1279,14 +1282,21 @@ const u16 *const gTilesetAnims_PorytilesPrimaryTutorial_Waterfall[] = {
     gTilesetAnims_PorytilesPrimaryTutorial_Waterfall_Frame3,
 };
 
+const u16 *const gTilesetAnims_PorytilesPrimaryTutorial_Pond[] = {
+    gTilesetAnims_PorytilesPrimaryTutorial_Pond_Frame0,
+    gTilesetAnims_PorytilesPrimaryTutorial_Pond_Frame1,
+};
+
 #define NB_TILES_FLOWER_DANDELION_WHITE 4
 #define NB_TILES_FLOWER_DANDELION_YELLOW 4
+#define NB_TILES_POND 11
 #define NB_TILES_SEA 40
 #define NB_TILES_WATERFALL 6
 
 #define STARTING_TILE_FLOWER_DANDELION_WHITE 1
 #define STARTING_TILE_FLOWER_DANDELION_YELLOW (STARTING_TILE_FLOWER_DANDELION_WHITE + NB_TILES_FLOWER_DANDELION_WHITE)
-#define STARTING_TILE_SEA (STARTING_TILE_FLOWER_DANDELION_YELLOW + NB_TILES_FLOWER_DANDELION_YELLOW)
+#define STARTING_TILE_POND (STARTING_TILE_FLOWER_DANDELION_YELLOW + NB_TILES_FLOWER_DANDELION_YELLOW)
+#define STARTING_TILE_SEA (STARTING_TILE_POND + NB_TILES_POND)
 #define STARTING_TILE_WATERFALL (STARTING_TILE_SEA + NB_TILES_SEA)
 
 static void QueueAnimTiles_ExteriorGeneric_FlowerDandelionWhite(u16 timer)
@@ -1313,6 +1323,12 @@ static void QueueAnimTiles_ExteriorGeneric_Waterfall(u16 timer)
     AppendTilesetAnimToBuffer(gTilesetAnims_PorytilesPrimaryTutorial_Waterfall[i], STARTING_TILE_WATERFALL, NB_TILES_WATERFALL * TILE_SIZE_4BPP);
 }
 
+static void QueueAnimTiles_ExteriorGeneric_Pond(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_PorytilesPrimaryTutorial_Pond);
+    AppendTilesetAnimToBuffer(gTilesetAnims_PorytilesPrimaryTutorial_Pond[i], STARTING_TILE_POND, NB_TILES_POND * TILE_SIZE_4BPP);
+}
+
 static void TilesetAnim_ExteriorGeneric(u16 timer)
 {
     if (timer % 16 == 0) {
@@ -1324,6 +1340,7 @@ static void TilesetAnim_ExteriorGeneric(u16 timer)
     }
     if (timer % 32 == 0) {
         QueueAnimTiles_ExteriorGeneric_Waterfall(timer / 32);
+        QueueAnimTiles_ExteriorGeneric_Pond(timer / 32);
     }
 }
 
