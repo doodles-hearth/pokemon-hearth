@@ -257,78 +257,76 @@ script YifuCity_ShinySellerChoice {
 
 script YifuCity_Trigger_CrobatGruntsScram {
 	lockall
-	if (flag(FLAG_HIDE_LOCKDOWN_SAMURAI)) {
-		applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
-		waitmovement(0)
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
+	waitmovement(0)
 
-		speakername("Shady man")
-		msgbox(format(
-			"I tell ya man, damn password keeps changin'…"
-		))
-		closemessage
+	speakername("Shady man")
+	msgbox(format(
+		"I tell ya man, damn password keeps changin'…"
+	))
+	closemessage
 
-		playse(SE_PIN)
-		applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_ExclamationMark)
-		delay(16)
-		playse(SE_PIN)
-		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_ExclamationMark)
-		waitmovement(0)
-		waitse
-		delay(48)
-		turnobject(LOCALID_GRUNT_PASSWORD_TOP, DIR_WEST)
-		turnobject(LOCALID_GRUNT_PASSWORD_BOTTOM, DIR_WEST)
-		delay(48)
+	playse(SE_PIN)
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_ExclamationMark)
+	delay(16)
+	playse(SE_PIN)
+	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	waitse
+	delay(48)
+	turnobject(LOCALID_GRUNT_PASSWORD_TOP, DIR_WEST)
+	turnobject(LOCALID_GRUNT_PASSWORD_BOTTOM, DIR_WEST)
+	delay(48)
 
-		playse(SE_LEDGE)
-		applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(jump_in_place_left))
-		waitmovement(0)
-		waitse
+	playse(SE_LEDGE)
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(jump_in_place_left))
+	waitmovement(0)
+	waitse
 
-		speakername("Shady man")
-		msgbox(format(
-			"Are ya kiddin' me? Lookaddis eavesdroppin' moron!\p"
-			"Want a taste of this?"
-		))
-		closemessage
+	speakername("Shady man")
+	msgbox(format(
+		"Are ya kiddin' me? Lookaddis eavesdroppin' moron!\p"
+		"Want a taste of this?"
+	))
+	closemessage
 
-		playse(SE_BALL_OPEN)
-		addobject(LOCALID_GRUNT_PASSWORD_ZUBAT)
-		playmoncry(SPECIES_ZUBAT, CRY_MODE_NORMAL)
-		setseenmon(SPECIES_ZUBAT)
-		applymovement(
-			LOCALID_GRUNT_PASSWORD_ZUBAT,
-			moves(
-				exit_pokeball,
-				face_left,
-				lock_anim,
-				lock_facing_direction,
-				walk_faster_left,
-				walk_faster_right
-				unlock_anim,
-				unlock_facing_direction
-			)
+	playse(SE_BALL_OPEN)
+	addobject(LOCALID_GRUNT_PASSWORD_ZUBAT)
+	playmoncry(SPECIES_ZUBAT, CRY_MODE_NORMAL)
+	setseenmon(SPECIES_ZUBAT)
+	applymovement(
+		LOCALID_GRUNT_PASSWORD_ZUBAT,
+		moves(
+			exit_pokeball,
+			face_left,
+			lock_anim,
+			lock_facing_direction,
+			walk_faster_left,
+			walk_faster_right
+			unlock_anim,
+			unlock_facing_direction
 		)
-		waitmoncry
-		waitse
-		waitmovement(0)
+	)
+	waitmoncry
+	waitse
+	waitmovement(0)
 
-		applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, walk_left * 2, unlock_facing_direction))
-		waitmovement(0)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, walk_left * 2, unlock_facing_direction))
+	waitmovement(0)
 
-		speakername("Shady man")
-		msgbox(format(
-			"Yeah, that's right, hightail it outta here!"
-		))
-		closemessage
+	speakername("Shady man")
+	msgbox(format(
+		"Yeah, that's right, hightail it outta here!"
+	))
+	closemessage
 
-		delay(24)
-		addobject(LOCALID_GRUNT_PASSWORD_ZUBAT)
-		applymovement(LOCALID_GRUNT_PASSWORD_ZUBAT, moves(enter_pokeball))
-		waitmovement(0)
+	delay(24)
+	addobject(LOCALID_GRUNT_PASSWORD_ZUBAT)
+	applymovement(LOCALID_GRUNT_PASSWORD_ZUBAT, moves(enter_pokeball))
+	waitmovement(0)
 
-		turnobject(LOCALID_GRUNT_PASSWORD_TOP, DIR_SOUTH)
-		turnobject(LOCALID_GRUNT_PASSWORD_BOTTOM, DIR_NORTH)
-	}
+	turnobject(LOCALID_GRUNT_PASSWORD_TOP, DIR_SOUTH)
+	turnobject(LOCALID_GRUNT_PASSWORD_BOTTOM, DIR_NORTH)
 
 	releaseall
 }
@@ -336,91 +334,90 @@ script YifuCity_Trigger_CrobatGruntsScram {
 script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 	lockall
 
-	if (!flag(FLAG_HIDE_LOCKDOWN_SAMURAI)) {
-		speakername("???")
-		msgbox(format(
-			"I tell ya man, damn password keeps changin'…"
-		))
-		closemessage
+	speakername("???")
+	msgbox(format(
+		"I tell ya man, damn password keeps changin'…"
+	))
+	closemessage
 
-		delay(24)
-		
-		special(SpawnCameraObject)
-		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
-		waitmovement(0)
-		delay(48)
+	delay(24)
+	
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
+	waitmovement(0)
+	delay(48)
 
-		applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
-		waitmovement(0)
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
+	waitmovement(0)
 
-		speakername("Shady man")
-		msgbox(format(
-			"Last time, I got it wrong and he didn' let me through!\p"
-			"Like, brother, why I gotta tell ya some password for ya to let me in, we wen' to school together!"
-		))
-		closemessage
+	speakername("Shady man")
+	msgbox(format(
+		"Last time, I got it wrong and he didn' let me through!\p"
+		"Like, brother, why I gotta tell ya some password for ya to let me in, we wen' to school together!"
+	))
+	closemessage
 
-		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
-		waitmovement(0)
+	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
+	waitmovement(0)
 
-		speakername("Shady man")
-		msgbox(format(
-			"Wait, ya didn't go to school though, didja?"
-		))
-		closemessage
+	speakername("Shady man")
+	msgbox(format(
+		"Wait, ya didn't go to school though, didja?"
+	))
+	closemessage
 
-		applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
-		waitmovement(0)
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
+	waitmovement(0)
 
-		speakername("Shady man")
-		msgbox(format(
-			"Who cares! It's a figger of speech! What's the newest password anyway?"
-		))
-		closemessage
+	speakername("Shady man")
+	msgbox(format(
+		"Who cares! It's a figger of speech! What's the newest password anyway?"
+	))
+	closemessage
 
-		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
-		waitmovement(0)
+	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
+	waitmovement(0)
 
-		speakername("Shady man")
-		msgbox(format(
-			"It's uh…\nSomethin' with Crobat…\l"
-			"“{COLOR RED}Crobat is{COLOR DARK_GRAY}”… Uh…"
-		))
+	speakername("Shady man")
+	msgbox(format(
+		"It's uh…\nSomethin' with Crobat…\l"
+		"“{COLOR RED}Crobat is{COLOR DARK_GRAY}”… Uh…"
+	))
 
-		playse(SE_LEDGE)
-		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(jump_in_place_up))
-		speakername("Shady man")
-		msgbox(format(
-			"Aw man! I forgot it too!"
-		))
-		waitmovement(0)
-		waitse
-		closemessage
+	playse(SE_LEDGE)
+	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(jump_in_place_up))
+	speakername("Shady man")
+	msgbox(format(
+		"Aw man! I forgot it too!"
+	))
+	waitmovement(0)
+	waitse
+	closemessage
 
-		playse(SE_LEDGE)
-		applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(jump_in_place_down))
-		speakername("Shady man")
-		msgbox(format(
-			"Ya idjet! How're we gunna get back in now??\p"
-			"Now we gotta find another Zubat an' hope he's got enough brains to remember the full sent'nce!\p"
-			"C'mon, lessgo!"
-		))
-		waitmovement(0)
-		waitse
-		closemessage
+	playse(SE_LEDGE)
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(jump_in_place_down))
+	speakername("Shady man")
+	msgbox(format(
+		"Ya idjet! How're we gunna get back in now??\p"
+		"Now we gotta find another Zubat an' hope he's got enough brains to remember the full sent'nce!\p"
+		"C'mon, lessgo!"
+	))
+	waitmovement(0)
+	waitse
+	closemessage
 
-		applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(walk_left * 10))
-		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(walk_up, walk_left * 9))
-		waitmovement(0)
+	applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(walk_left * 10))
+	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(walk_up, walk_left * 9))
+	waitmovement(0)
 
-		removeobject(LOCALID_GRUNT_PASSWORD_TOP)
-		removeobject(LOCALID_GRUNT_PASSWORD_BOTTOM)
-		setflag(FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF)
+	removeobject(LOCALID_GRUNT_PASSWORD_TOP)
+	removeobject(LOCALID_GRUNT_PASSWORD_BOTTOM)
+	removeobject(LOCALID_GRUNT_PASSWORD_ZUBAT)
+	setflag(FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF)
 
-		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
-		waitmovement(0)
-		special(RemoveCameraObject)
-	}
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
+	waitmovement(0)
+	special(RemoveCameraObject)
 
 	releaseall
 }

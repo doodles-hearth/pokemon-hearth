@@ -212,7 +212,7 @@ YifuCity_CrobatShop_Cashier_Text_0:
 	.string "Salesman$"
 
 YifuCity_CrobatShop_Cashier_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}G'day uh, welcome to the ye olde\n"
+	.string "G'day uh, welcome to the ye olde\n"
 	.string "Crobat Shoppe!\p"
 	.string "Have a lookee at our totally legal\n"
 	.string "tchotchquees and memoralibia!$"
