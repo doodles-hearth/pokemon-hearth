@@ -914,7 +914,7 @@ const struct Tileset gTileset_Maguro =
     .palettes = gTilesetPalettes_Maguro,
     .metatiles = gMetatiles_Maguro,
     .metatileAttributes = gMetatileAttributes_Maguro,
-    .callback = NULL,
+    .callback = InitTilesetAnim_Maguro,
 };
 
 const struct Tileset gTileset_Building_Generic =
@@ -925,7 +925,7 @@ const struct Tileset gTileset_Building_Generic =
     .palettes = gTilesetPalettes_Building_Generic,
     .metatiles = gMetatiles_Building_Generic,
     .metatileAttributes = gMetatileAttributes_Building_Generic,
-    .callback = NULL,
+    .callback = InitTilesetAnim_Building_Generic,
 };
 
 const struct Tileset gTileset_House =

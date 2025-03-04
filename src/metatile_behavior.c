@@ -1341,6 +1341,11 @@ bool8 MetatileBehavior_IsKuraDojoTree(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsClayFurnace(u8 metatileBehavior)
+{
+    return (metatileBehavior == MB_CLAY_FURNACE);
+}
+
 bool8 MetatileBehavior_IsVase(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_VASE)

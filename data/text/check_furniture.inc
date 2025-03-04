@@ -30,7 +30,7 @@ Text_ClayPot:
 	.string "A simple clay pot.\p"
 	.string "{PLAYER} suddenly feels an urge to\nbreak it.$"
 
-Text_Furnace:
+Text_ClayFurnace:
 	.string "The fire dances in the furnace.\p"
 	.string "…Hey, there's a Slugma in here!$"
 

@@ -14,6 +14,10 @@ EventScript_Vase::
 	msgbox Text_Vase, MSGBOX_SIGN
 	end
 
+EventScript_ClayFurnace::
+	msgbox Text_ClayFurnace, MSGBOX_SIGN
+	end
+
 EventScript_EmptyTrashCan::
 	msgbox Text_EmptyTrashCan, MSGBOX_SIGN
 	end

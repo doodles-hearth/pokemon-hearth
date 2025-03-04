@@ -1402,3 +1402,113 @@ void InitTilesetAnim_SakuKura(void)
     sSecondaryTilesetAnimCounterMax = 256;
     sSecondaryTilesetAnimCallback = TilesetAnim_SakuKura;
 }
+
+// MAGURO
+
+#define STARTING_TILE_FISH 0x200
+#define NB_TILES_FISH 12
+
+const u16 gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame0[] = INCBIN_U16("data/tilesets/secondary/maguro/anim/fish/00.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame1[] = INCBIN_U16("data/tilesets/secondary/maguro/anim/fish/01.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame2[] = INCBIN_U16("data/tilesets/secondary/maguro/anim/fish/02.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame3[] = INCBIN_U16("data/tilesets/secondary/maguro/anim/fish/03.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame4[] = INCBIN_U16("data/tilesets/secondary/maguro/anim/fish/04.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame5[] = INCBIN_U16("data/tilesets/secondary/maguro/anim/fish/05.4bpp");
+
+const u16 *const gTilesetAnims_Maguro_Fish[] = {
+    gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame0,
+    gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame1,
+    gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame2,
+    gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame3,
+    gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame4,
+    gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame5
+};
+
+static void QueueAnimTiles_Maguro_Fish(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Maguro_Fish);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Maguro_Fish[i], STARTING_TILE_FISH, NB_TILES_FISH * TILE_SIZE_4BPP);
+}
+
+static void TilesetAnim_Maguro(u16 timer)
+{
+    if (timer % 16 == 0) {
+        QueueAnimTiles_Maguro_Fish(timer / 16);
+    }
+}
+
+void InitTilesetAnim_Maguro(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 256;
+    sSecondaryTilesetAnimCallback = TilesetAnim_Maguro;
+}
+
+// BUILDING
+
+#define STARTING_TILE_FURNACE 1
+#define STARTING_TILE_HEARTH (STARTING_TILE_FURNACE + NB_TILES_FURNACE)
+#define STARTING_TILE_HANGING_TEAPOT (STARTING_TILE_HEARTH + NB_TILES_HEARTH)
+#define NB_TILES_FURNACE 2
+#define NB_TILES_HEARTH 4
+#define NB_TILES_HANGING_TEAPOT 1
+
+const u16 gTilesetAnims_gTilesetAnims_Building_Generic_Furnace_Frame0[] = INCBIN_U16("data/tilesets/primary/building_generic/anim/furnace/00.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Building_Generic_Furnace_Frame1[] = INCBIN_U16("data/tilesets/primary/building_generic/anim/furnace/01.4bpp");
+
+const u16 gTilesetAnims_gTilesetAnims_Building_Generic_Hearth_Frame0[] = INCBIN_U16("data/tilesets/primary/building_generic/anim/hearth/00.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Building_Generic_Hearth_Frame1[] = INCBIN_U16("data/tilesets/primary/building_generic/anim/hearth/01.4bpp");
+
+const u16 gTilesetAnims_gTilesetAnims_Building_Generic_HangingTeapot_Frame0[] = INCBIN_U16("data/tilesets/primary/building_generic/anim/hanging_teapot/00.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Building_Generic_HangingTeapot_Frame1[] = INCBIN_U16("data/tilesets/primary/building_generic/anim/hanging_teapot/01.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Building_Generic_HangingTeapot_Frame2[] = INCBIN_U16("data/tilesets/primary/building_generic/anim/hanging_teapot/02.4bpp");
+
+const u16 *const gTilesetAnims_Building_Generic_Furnace[] = {
+    gTilesetAnims_gTilesetAnims_Building_Generic_Furnace_Frame0,
+    gTilesetAnims_gTilesetAnims_Building_Generic_Furnace_Frame1,
+};
+
+const u16 *const gTilesetAnims_Building_Generic_Hearth[] = {
+    gTilesetAnims_gTilesetAnims_Building_Generic_Hearth_Frame0,
+    gTilesetAnims_gTilesetAnims_Building_Generic_Hearth_Frame1,
+};
+
+const u16 *const gTilesetAnims_Building_Generic_HangingTeapot[] = {
+    gTilesetAnims_gTilesetAnims_Building_Generic_HangingTeapot_Frame0,
+    gTilesetAnims_gTilesetAnims_Building_Generic_HangingTeapot_Frame1,
+    gTilesetAnims_gTilesetAnims_Building_Generic_HangingTeapot_Frame2,
+};
+
+static void QueueAnimTiles_Building_Generic_Furnace(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Building_Generic_Furnace);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Building_Generic_Furnace[i], STARTING_TILE_FURNACE, NB_TILES_FURNACE * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_Building_Generic_Hearth(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Building_Generic_Hearth);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Building_Generic_Hearth[i], STARTING_TILE_HEARTH, NB_TILES_HEARTH * TILE_SIZE_4BPP);
+}
+
+static void QueueAnimTiles_Building_Generic_HangingTeapot(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Building_Generic_HangingTeapot);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Building_Generic_HangingTeapot[i], STARTING_TILE_HANGING_TEAPOT, NB_TILES_HANGING_TEAPOT * TILE_SIZE_4BPP);
+}
+
+static void TilesetAnim_Building_Generic(u16 timer)
+{
+    if (timer % 16 == 0) {
+        QueueAnimTiles_Building_Generic_Furnace(timer / 16);
+        QueueAnimTiles_Building_Generic_Hearth(timer / 16);
+        QueueAnimTiles_Building_Generic_HangingTeapot(timer / 16);
+    }
+}
+
+void InitTilesetAnim_Building_Generic(void)
+{
+    sPrimaryTilesetAnimCounter = 0;
+    sPrimaryTilesetAnimCounterMax = 256;
+    sPrimaryTilesetAnimCallback = TilesetAnim_Building_Generic;
+}
