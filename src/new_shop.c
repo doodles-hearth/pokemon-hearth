@@ -37,6 +37,7 @@
 #include "event_data.h"
 #include "constants/decorations.h"
 #include "constants/items.h"
+#include "constants/limited_shop.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -589,6 +590,25 @@ static void SetShopItemsForSale(const u16 *items)
 
 #include "data/limited_shop.h"
 
+static void SetTravellingMerchantShopItemsForSale(void)
+{
+    u16 i = 0, j = 0;
+    sMartInfo.itemCount = 0;
+
+    while (i < LIMITED_SHOP_MAX_ITEMS && gTravellingMerchantLocation[gMapHeader.mapLayoutId][i].item)
+    {
+        sMartInfo.itemCount++;
+        i++;
+    }
+
+    while (j < LIMITED_SHOP_MAX_ITEMS && gTravellingMerchantProgression[GetNumBadgesObtained()][j].item)
+    {
+        sMartInfo.itemCount++;
+        j++;
+    }
+    sMartInfo.itemCount++;
+}
+
 static void SetLimitedShopItemsForSale(u16 shopId)
 {
     u16 i = 0;
@@ -604,7 +624,7 @@ static void SetLimitedShopItemsForSale(u16 shopId)
 
 static void InitShopItemsForSale(void)
 {
-    u32 i = 0;
+    u32 i = 0, j = 0;
     u16 *itemList;
     u16 *itemPriceList;
     u16 *itemQuantity;
@@ -619,13 +639,36 @@ static void InitShopItemsForSale(void)
 
     if (sMartInfo.martType == MART_TYPE_LIMITED)
     {
-        while (gLimitedShops[sMartInfo.shopId][i].item)
+        if (sMartInfo.shopId == TRAVELLING_MERCHANT_SHOP)
         {
-            *itemList = gLimitedShops[sMartInfo.shopId][i].item;
-            *itemQuantity = gLimitedShops[sMartInfo.shopId][i].quantity;
-            itemList++;
-            itemQuantity++;
-            i++;
+            while (gTravellingMerchantLocation[gMapHeader.mapLayoutId][i].item)
+            {
+                *itemList = gTravellingMerchantLocation[gMapHeader.mapLayoutId][i].item;
+                *itemQuantity = gTravellingMerchantLocation[gMapHeader.mapLayoutId][i].quantity;
+                itemList++;
+                itemQuantity++;
+                i++;
+            }
+
+            while (gTravellingMerchantProgression[GetNumBadgesObtained()][j].item)
+            {
+                *itemList = gTravellingMerchantProgression[GetNumBadgesObtained()][j].item;
+                *itemQuantity = gTravellingMerchantProgression[GetNumBadgesObtained()][j].quantity;
+                itemList++;
+                itemQuantity++;
+                j++;
+            }
+        }
+        else
+        {
+            while (gLimitedShops[sMartInfo.shopId][i].item)
+            {
+                *itemList = gLimitedShops[sMartInfo.shopId][i].item;
+                *itemQuantity = gLimitedShops[sMartInfo.shopId][i].quantity;
+                itemList++;
+                itemQuantity++;
+                i++;
+            }
         }
     }
     else
@@ -930,8 +973,12 @@ static void BuyMenuFreeMemory(void)
     FreeAllWindowBuffers();
 }
 
-u8 GetAmountOfItemBought(u8 storeId, u16 itemPos)
+static u8 GetAmountOfItemBought(u8 storeId, u16 itemPos)
 {
+    // Travelling merchant uses first table
+    if (storeId == TRAVELLING_MERCHANT_SHOP)
+        storeId = 0;
+
     // Calculate the index in limitedShopVars and 4-bit position
     u16 index = (storeId * LIMITED_SHOP_MAX_ITEMS + itemPos) / 2;
     u8 bitOffset = (itemPos % 2) * 4;
@@ -940,18 +987,22 @@ u8 GetAmountOfItemBought(u8 storeId, u16 itemPos)
     return (gSaveBlock2Ptr->limitedShopVars[index] >> bitOffset) & 0xF;
 }
 
-static void SetAmountOfItemBought(u8 storeId, u16 itemPos, s16 *amountBought)
+static void SetAmountOfItemBought(u8 storeId, u16 itemPos, s16 amountBought)
 {
+    // Travelling merchant uses first table
+    if (storeId == TRAVELLING_MERCHANT_SHOP)
+        storeId = 0;
+
     // Cap the value to LIMITED_SHOP_MAX_ITEM_QUANTITY
-    if (*amountBought > LIMITED_SHOP_MAX_ITEM_QUANTITY)
-        *amountBought = LIMITED_SHOP_MAX_ITEM_QUANTITY;
+    if (amountBought > LIMITED_SHOP_MAX_ITEM_QUANTITY)
+        amountBought = LIMITED_SHOP_MAX_ITEM_QUANTITY;
 
     // Calculate the index in limitedShopVars and 4-bit position
     u16 index = (storeId * LIMITED_SHOP_MAX_ITEMS + itemPos) / 2;
     u8 bitOffset = (itemPos % 2) * 4;
 
     // Add the purchased amount to the existing amount bought
-    u8 newAmount = GetAmountOfItemBought(storeId, itemPos) + *amountBought;
+    u8 newAmount = GetAmountOfItemBought(storeId, itemPos) + amountBought;
 
     // Cap the value to LIMITED_SHOP_MAX_ITEM_QUANTITY
     if (newAmount > LIMITED_SHOP_MAX_ITEM_QUANTITY)
@@ -960,6 +1011,14 @@ static void SetAmountOfItemBought(u8 storeId, u16 itemPos, s16 *amountBought)
     // Clear the relevant 4 bits and then set the new 4-bit value
     gSaveBlock2Ptr->limitedShopVars[index] &= ~(0xF << bitOffset);
     gSaveBlock2Ptr->limitedShopVars[index] |= (newAmount & 0xF) << bitOffset;
+}
+
+void ResetTravellingMerchantItemStock(void)
+{
+    for (u16 i = 0; i < LIMITED_SHOP_MAX_ITEMS; i++)
+    {
+        SetAmountOfItemBought(TRAVELLING_MERCHANT_SHOP, i, 0);
+    }
 }
 
 static inline bool32 LimitedItemSoldOut(u8 itemPos)
@@ -1682,7 +1741,7 @@ static void BuyMenuTryMakePurchase(u8 taskId)
             {
                 if (sMartInfo.martType == MART_TYPE_LIMITED)
                 {
-                    SetAmountOfItemBought(sMartInfo.shopId, GridMenu_SelectedIndex(sShopData->gridItems), &tItemCount);
+                    SetAmountOfItemBought(sMartInfo.shopId, GridMenu_SelectedIndex(sShopData->gridItems), tItemCount);
                 }
 
                 str = Shop_GetSellerMessage(SELLER_MSG_BUY_SUCCESS);
@@ -1893,7 +1952,10 @@ void NewShop_CreatePokemartMenu(const u16 *itemsForSale, bool16 useVariablePrice
 void NewShop_CreateLimitedShopMenu(u8 shopId)
 {
     CreateShopMenu(MART_TYPE_LIMITED);
-    SetLimitedShopItemsForSale(shopId);
+    if (shopId == TRAVELLING_MERCHANT_SHOP)
+        SetTravellingMerchantShopItemsForSale();
+    else
+        SetLimitedShopItemsForSale(shopId);
     SetShopId(shopId);
     ClearItemPurchases();
     SetShopMenuCallback(ScriptContext_Enable);

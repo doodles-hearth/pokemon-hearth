@@ -136,7 +136,7 @@ Debug_EventScript_Script_1::
 	lock
 	message gText_HowMayIServeYou
 	waitmessage
-	limitedpokemart LIMITED_SHOP_1
+	limitedpokemart TRAVELLING_MERCHANT_SHOP
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end

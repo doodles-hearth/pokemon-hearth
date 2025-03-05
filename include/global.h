@@ -14,6 +14,7 @@
 #include "constants/species.h"
 #include "constants/pokedex.h"
 #include "constants/berry.h"
+#include "constants/limited_shop.h"
 #include "constants/maps.h"
 #include "constants/pokemon.h"
 #include "constants/easy_chat.h"
