@@ -27,6 +27,7 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "config/save.h"
+#include "constants/limited_shop.h"
 #include "config/limited_shop.h"
 
 // Prevent cross-jump optimization.
