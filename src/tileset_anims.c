@@ -1444,6 +1444,42 @@ void InitTilesetAnim_Maguro(void)
     sSecondaryTilesetAnimCallback = TilesetAnim_Maguro;
 }
 
+// YIFU
+
+#define STARTING_TILE_CHIME 0x200
+#define NB_TILES_CHIME 4
+
+const u16 gTilesetAnims_gTilesetAnims_Yifu_Chime_Frame0[] = INCBIN_U16("data/tilesets/secondary/yifu/anim/chime/00.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Yifu_Chime_Frame1[] = INCBIN_U16("data/tilesets/secondary/yifu/anim/chime/01.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Yifu_Chime_Frame2[] = INCBIN_U16("data/tilesets/secondary/yifu/anim/chime/02.4bpp");
+
+const u16 *const gTilesetAnims_Yifu_Chime[] = {
+    gTilesetAnims_gTilesetAnims_Yifu_Chime_Frame0,
+    gTilesetAnims_gTilesetAnims_Yifu_Chime_Frame1,
+    gTilesetAnims_gTilesetAnims_Yifu_Chime_Frame2,
+    gTilesetAnims_gTilesetAnims_Yifu_Chime_Frame1
+};
+
+static void QueueAnimTiles_Yifu_Chime(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Yifu_Chime);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Yifu_Chime[i], STARTING_TILE_CHIME, NB_TILES_CHIME * TILE_SIZE_4BPP);
+}
+
+static void TilesetAnim_Yifu(u16 timer)
+{
+    if (timer % 32 == 0) {
+        QueueAnimTiles_Yifu_Chime(timer / 32);
+    }
+}
+
+void InitTilesetAnim_Yifu(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 256;
+    sSecondaryTilesetAnimCallback = TilesetAnim_Yifu;
+}
+
 // BUILDING
 
 #define STARTING_TILE_FURNACE 1

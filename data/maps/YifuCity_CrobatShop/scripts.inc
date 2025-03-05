@@ -91,11 +91,13 @@ YifuCity_CrobatShop_Guard_16:
 	goto_if_eq YifuCity_CrobatShop_Guard_20
 YifuCity_CrobatShop_Guard_19:
 	delay 24
-	goto_if_set FLAG_TEMP_2, YifuCity_CrobatShop_Guard_24
+	goto_if_set FLAG_TEMP_1, YifuCity_CrobatShop_Guard_24
 YifuCity_CrobatShop_Guard_23:
 	speakername YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_6
 	closemessage
+	clearflag FLAG_TEMP_1
+	clearflag FLAG_TEMP_2
 	goto YifuCity_CrobatShop_Guard_4
 
 YifuCity_CrobatShop_Guard_17:

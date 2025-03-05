@@ -958,7 +958,7 @@ const struct Tileset gTileset_Yifu =
     .palettes = gTilesetPalettes_Yifu,
     .metatiles = gMetatiles_Yifu,
     .metatileAttributes = gMetatileAttributes_Yifu,
-    .callback = NULL,
+    .callback = InitTilesetAnim_Yifu,
 };
 
 const struct Tileset gTileset_DojoKura =

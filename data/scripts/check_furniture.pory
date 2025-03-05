@@ -1,14 +1,13 @@
-EventScript_ClayFurnace::
-	msgbox EventScript_ClayFurnace_Text_0
+script EventScript_ClayFurnace {
+	msgbox(format("The fire dances in the furnace."))
 	closemessage
-	playmoncry SPECIES_SLUGMA, CRY_MODE_NORMAL
-	msgbox EventScript_ClayFurnace_Text_1
+	playmoncry(SPECIES_SLUGMA, CRY_MODE_NORMAL)
+	msgbox(format("…Hey, there's a Slugma in here!"))
 	waitmoncry
 	closemessage
-	return
+}
 
-
-
+raw `
 EventScript_PictureBookShelf::
 	msgbox Text_PictureBookShelf, MSGBOX_SIGN
 	end
@@ -36,9 +35,4 @@ EventScript_ShopShelf::
 EventScript_Blueprint::
 	msgbox Text_Blueprint, MSGBOX_SIGN
 	end
-
-EventScript_ClayFurnace_Text_0:
-	.string "The fire dances in the furnace.$"
-
-EventScript_ClayFurnace_Text_1:
-	.string "…Hey, there's a Slugma in here!$"
+`

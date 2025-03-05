@@ -134,7 +134,7 @@ script YifuCity_CrobatShop_Guard {
 
 			delay(24)
 
-			if (flag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT) && flag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT)) {
+			if (flag(FLAG_CROBAT_PASSWORD_FIRST_HALF_CORRECT) && flag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT)) {
 				speakername("Shady man")
 				msgbox(format(
 					"Hmmm… Ya don't look like the typical Zubat…\p"
@@ -158,6 +158,9 @@ script YifuCity_CrobatShop_Guard {
 					"That ain't the password! Scram!"
 				))
 				closemessage
+
+				clearflag(FLAG_CROBAT_PASSWORD_FIRST_HALF_CORRECT)
+				clearflag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT)
 			}
 		}
 	}
