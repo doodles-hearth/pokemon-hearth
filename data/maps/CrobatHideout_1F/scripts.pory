@@ -23,7 +23,9 @@ const FLAG_HIDE_FIRST_GRUNT = FLAG_TEMP_5
 
 mapscripts CrobatHideout_1F_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		setflag(FLAG_HIDE_FIRST_GRUNT)
+		if (flag(FLAG_CROBAT_HIDEOUT_SEEN_BY_GRUNT)) {
+			setflag(FLAG_HIDE_FIRST_GRUNT)
+		}
 		setflag(FLAG_HIDE_GOLBAT_ADMINS)
 		setflag(FLAG_HIDE_SAMURAI)
 		setflag(FLAG_HIDE_4V1_GRUNTS)

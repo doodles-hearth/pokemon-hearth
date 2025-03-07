@@ -201,8 +201,8 @@
     VAR_CROBAT_HIDEOUT_STATEs
     // 0: Beginning
     // 1: Seen by grunt when entering hideout
-    // 3: Jumped by 4 grunts at once, beat them
-    // 4: Beat the Golbat admins
+    // 2: Jumped by 4 grunts at once, beat them
+    // 3: Beat the Golbat admins
 */
 #define VAR_CROBAT_HIDEOUT_STATE                         0x408B
 #define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN              0x408C
