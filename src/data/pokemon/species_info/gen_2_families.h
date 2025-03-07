@@ -2495,9 +2495,81 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sBonslyLevelUpLearnset,
         .teachableLearnset = sBonslyTeachableLearnset,
         .eggMoveLearnset = sBonslyEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_MOVE, MOVE_MIMIC, SPECIES_SUDOWOODO}),
+        .evolutions = EVOLUTION({EVO_MOVE, MOVE_MIMIC, SPECIES_SUDOWOODO}, {EVO_FRIENDSHIP_MOVE_TYPE, TYPE_GRASS, SPECIES_HONESTREE}),
     },
 #endif //P_GEN_4_CROSS_EVOS
+
+    [SPECIES_HONESTREE] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 80,
+        .baseDefense   = 95,
+        .baseSpeed     = 10,
+        .baseSpAttack  = 10,
+        .baseSpDefense = 45,
+        .types = MON_TYPES(TYPE_ROCK, TYPE_GRASS),
+        .catchRate = 255,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 58 : 68,
+        .evYield_Defense = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_STURDY, ABILITY_ROCK_HEAD, ABILITY_RATTLED },
+        .bodyColor = BODY_COLOR_BROWN,
+        .speciesName = _("Honestree"),
+        .unknownName = _("Happy Pot"),
+        .cryId = CRY_SUDOWOODO,
+        .natDexNum = NATIONAL_DEX_HONESTREE,
+        .categoryName = _("Real Bonsai"),
+        .height = 7,
+        .weight = 160,
+        .description = COMPOUND_STRING(
+            "Very rarely, a Bonsly manages to\n"
+            "wish itself into a real tree.\n"
+            "Honestree is regarded as a symbol of\n"
+            "overcoming fate through sheer will."),
+            // "Bonsly prefers an arid atmosphere.\n"
+            // "In order to adjust the level of fluids\n"
+            // "in its body, it exudes water from its eyes.\n"
+            // "This makes it appear to be crying."),
+        .pokemonScale = 500,
+        .pokemonOffset = 13,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPicSize = MON_COORDS_SIZE(32, 48),
+        .frontPic = gMonFrontPic_Honestree,
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 1),
+        ),
+        .frontAnimId = ANIM_SHRINK_GROW_VIBRATE,
+        .backPic = gMonBackPic_Honestree,
+        .backPicSize = MON_COORDS_SIZE(40, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        .palette = gMonPalette_Honestree,
+        .shinyPalette = gMonShinyPalette_Honestree,
+        .iconSprite = gMonIcon_Honestree,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
+        SHADOW(5, 10, SHADOW_SIZE_M)
+        FOOTPRINT(Honestree)
+        OVERWORLD(
+            sPicTable_Honestree,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gMonPalette_Honestree,
+            gMonShinyPalette_Honestree
+        )
+        .levelUpLearnset = sHonestreeLevelUpLearnset,
+        .teachableLearnset = sHonestreeTeachableLearnset,
+        .eggMoveLearnset = sHonestreeEggMoveLearnset,
+    },
 
     [SPECIES_SUDOWOODO] =
     {

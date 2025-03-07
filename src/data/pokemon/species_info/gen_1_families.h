@@ -7579,24 +7579,22 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_PsyduckTokuan,
         .frontPicSize = MON_COORDS_SIZE(40, 48),
-        .frontPicYOffset = 11,
+        .frontPicYOffset = 5,
         .frontAnimFrames = ANIM_FRAMES(
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
-            ANIMCMD_FRAME(1, 20),
-            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 50),
+            ANIMCMD_FRAME(0, 1),
         ),
-        .frontAnimId = ANIM_V_JUMPS_H_JUMPS,
+        .frontAnimId = ANIM_GROW_VIBRATE,
         .backPic = gMonBackPic_PsyduckTokuan,
         .backPicSize = MON_COORDS_SIZE(48, 48),
         .backPicYOffset = 9,
-        .backAnimId = BACK_ANIM_H_SLIDE,
+        .backAnimId = BACK_ANIM_H_SPRING,
         .palette = gMonPalette_PsyduckTokuan,
         .shinyPalette = gMonShinyPalette_PsyduckTokuan,
         .iconSprite = gMonIcon_PsyduckTokuan,
         .iconPalIndex = 0,
-        SHADOW(1, 2, SHADOW_SIZE_M)
+        SHADOW(1, 5, SHADOW_SIZE_S)
         FOOTPRINT(PsyduckTokuan)
         OVERWORLD(
             sPicTable_PsyduckTokuan,
@@ -7610,7 +7608,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sPsyduckTokuanLevelUpLearnset,
         .teachableLearnset = sPsyduckTokuanTeachableLearnset,
         .eggMoveLearnset = sPsyduckTokuanEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 33, SPECIES_GOLDUCK}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_DUSK_STONE, SPECIES_GOLDUCK_TOKUAN})
     },
 #endif //P_FAMILY_PSYDUCK
 

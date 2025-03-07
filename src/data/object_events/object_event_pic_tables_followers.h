@@ -1534,6 +1534,9 @@ static const struct SpriteFrameImage sPicTable_Bonsly[] = {
 static const struct SpriteFrameImage sPicTable_Sudowoodo[] = {
     overworld_ascending_frames(gObjectEventPic_Sudowoodo, 4, 4),
 };
+static const struct SpriteFrameImage sPicTable_Honestree[] = {
+    overworld_ascending_frames(gObjectEventPic_Honestree, 4, 4),
+};
 #if P_GENDER_DIFFERENCES
 static const struct SpriteFrameImage sPicTable_SudowoodoF[] = {
     overworld_ascending_frames(gObjectEventPic_SudowoodoF, 4, 4),

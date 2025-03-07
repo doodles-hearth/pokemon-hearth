@@ -1763,6 +1763,22 @@ static const u16 sSudowoodoEggMoveLearnset[] = {
     MOVE_ENDURE,
     MOVE_UNAVAILABLE,
 };
+static const u16 sHonestreeEggMoveLearnset[] = {
+    MOVE_HEADBUTT,
+    MOVE_HARDEN,
+    MOVE_DEFENSE_CURL,
+    MOVE_ROLLOUT,
+    MOVE_SAND_TOMB,
+    MOVE_STEALTH_ROCK,
+    MOVE_CURSE,
+    MOVE_ENDURE,
+    MOVE_LEECH_SEED,
+    MOVE_LEAF_STORM,
+    MOVE_MAGICAL_LEAF,
+    MOVE_SYNTHESIS,
+    MOVE_NATURAL_GIFT,
+    MOVE_UNAVAILABLE,
+};
 #endif //P_FAMILY_SUDOWOODO
 
 #if P_FAMILY_HOPPIP

@@ -2588,6 +2588,9 @@ $(POKEMONGFXDIR)/bronzong/overworld.4bpp: %.4bpp: %.png
 $(POKEMONGFXDIR)/bonsly/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(POKEMONGFXDIR)/honestree/overworld.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(POKEMONGFXDIR)/mime_jr/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
