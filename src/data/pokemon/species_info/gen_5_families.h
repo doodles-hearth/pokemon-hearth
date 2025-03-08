@@ -3952,6 +3952,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .iconPalIndex = 1,
         .iconSprite = gMonIcon_LeavannyTokuan,
         FOOTPRINT(Leavanny)
+        SHADOW(2, 14, SHADOW_SIZE_S)
         OVERWORLD(
             sPicTable_LeavannyTokuan,
             SIZE_32x32,

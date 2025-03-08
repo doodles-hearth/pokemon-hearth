@@ -472,6 +472,9 @@ static const struct SpriteFrameImage sPicTable_Psyduck[] = {
 static const struct SpriteFrameImage sPicTable_Golduck[] = {
     overworld_ascending_frames(gObjectEventPic_Golduck, 4, 4),
 };
+static const struct SpriteFrameImage sPicTable_GolduckTokuan[] = {
+    overworld_ascending_frames(gObjectEventPic_GolduckTokuan, 4, 4),
+};
 #if P_TOKUAN_FORMS
 static const struct SpriteFrameImage sPicTable_PsyduckTokuan[] = {
     overworld_ascending_frames(gObjectEventPic_PsyduckTokuan, 4, 4),
@@ -1533,6 +1536,9 @@ static const struct SpriteFrameImage sPicTable_Bonsly[] = {
 #endif //P_GEN_4_CROSS_EVOS
 static const struct SpriteFrameImage sPicTable_Sudowoodo[] = {
     overworld_ascending_frames(gObjectEventPic_Sudowoodo, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_Honestree[] = {
+    overworld_ascending_frames(gObjectEventPic_Honestree, 4, 4),
 };
 #if P_GENDER_DIFFERENCES
 static const struct SpriteFrameImage sPicTable_SudowoodoF[] = {

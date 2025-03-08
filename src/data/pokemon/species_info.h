@@ -216,17 +216,22 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .frontPic = gMonFrontPic_Kotora,
         .frontPicSize = MON_COORDS_SIZE(48, 40),
         .frontPicYOffset = 6,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_Kotora,
         .backPicSize = MON_COORDS_SIZE(64, 48),
         .backPicYOffset = 15,
-        .backAnimId = BACK_ANIM_JOLT_RIGHT,
+        .backAnimId = BACK_ANIM_SHAKE_FLASH_YELLOW,
         .palette = gMonPalette_Kotora,
         .shinyPalette = gMonShinyPalette_Kotora,
         .iconPalIndex = 0,
         .iconSprite = gMonIcon_Kotora,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 12),
+            ANIMCMD_FRAME(1, 45),
+            ANIMCMD_FRAME(0, 15),
+         ),
         FOOTPRINT(Shinx)
+        SHADOW(-5, 7, SHADOW_SIZE_S)
         OVERWORLD(
             sPicTable_Kotora,
             SIZE_32x32,

@@ -580,6 +580,7 @@ extern const u32 gItemIconPalette_Lure[];
 extern const u32 gItemIconPalette_SuperLure[];
 extern const u32 gItemIconPalette_MaxLure[];
 extern const u32 gItemIcon_EscapeRope[];
+extern const u32 gItemIcon_EscapeRopeKnockoff[];
 extern const u32 gItemIconPalette_EscapeRope[];
 // X Items
 extern const u32 gItemIcon_BattleStatItem[];

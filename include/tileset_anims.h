@@ -35,6 +35,9 @@ void InitTilesetAnim_BattlePyramid(void);
 
 // Custom shit
 void InitTilesetAnim_ExteriorGeneric(void);
+void InitTilesetAnim_Building_Generic(void);
 void InitTilesetAnim_SakuKura(void);
+void InitTilesetAnim_Maguro(void);
+void InitTilesetAnim_Yifu(void);
 
 #endif // GUARD_TILESET_ANIMS_H

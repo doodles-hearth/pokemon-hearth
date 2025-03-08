@@ -4,11 +4,16 @@ CrobatHideout_1F_MapScripts::
 	.byte 0
 
 CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	setflag FLAG_TEMP_5
+	goto_if_set FLAG_CROBAT_HIDEOUT_SEEN_BY_GRUNT, CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_4
 	return
+
+CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	setflag FLAG_TEMP_5
+	goto CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 
 CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_CROBAT_HIDEOUT_STATE, 0, CrobatHideout_1F_SeenByGrunt

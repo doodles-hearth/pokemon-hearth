@@ -32,8 +32,8 @@ Crobat_Mart:
 	.2byte ITEM_OINTMENT
 	.2byte ITEM_SUPER_OINTMENT
 	.2byte ITEM_ULTRA_BALL_KNOCKOFF
+	.2byte ITEM_ESCAPE_ROPE_KNOCKOFF
 	.2byte ITEM_SLOWPOKE_TAIL
-	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_NONE
 
 YifuCity_CrobatShop_Guard::
@@ -91,11 +91,23 @@ YifuCity_CrobatShop_Guard_16:
 	goto_if_eq YifuCity_CrobatShop_Guard_20
 YifuCity_CrobatShop_Guard_19:
 	delay 24
-	goto_if_set FLAG_TEMP_2, YifuCity_CrobatShop_Guard_24
+	goto_if_set FLAG_TEMP_1, YifuCity_CrobatShop_Guard_24
 YifuCity_CrobatShop_Guard_23:
+	delay 24
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_1
 	speakername YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_6
+	waitmovement 0
 	closemessage
+	compare VAR_FACING, DIR_NORTH
+	goto_if_eq YifuCity_CrobatShop_Guard_31
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_4
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_5
+YifuCity_CrobatShop_Guard_30:
+	waitmovement VAR_LAST_TALKED
+	waitmovement OBJ_EVENT_ID_PLAYER
+	clearflag FLAG_TEMP_1
+	clearflag FLAG_TEMP_2
 	goto YifuCity_CrobatShop_Guard_4
 
 YifuCity_CrobatShop_Guard_17:
@@ -125,6 +137,11 @@ YifuCity_CrobatShop_Guard_24:
 YifuCity_CrobatShop_Guard_28:
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_6
 	goto YifuCity_CrobatShop_Guard_27
+
+YifuCity_CrobatShop_Guard_31:
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_2
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_3
+	goto YifuCity_CrobatShop_Guard_30
 
 
 YifuCity_CrobatShop_Customer1::

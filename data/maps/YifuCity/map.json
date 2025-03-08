@@ -746,7 +746,14 @@
       "elevation": 0,
       "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "var_value": "0",
-      "script": "YifuCity_Trigger_CrobatGruntsScram"
+      "script": "YifuCity_Trigger_CrobatGruntsScram",
+      "afternoon": false,
+      "deadnight": true,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": true
     },
     {
       "type": "trigger",
@@ -755,7 +762,14 @@
       "elevation": 0,
       "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "var_value": "0",
-      "script": "YifuCity_Trigger_CrobatGruntsScram"
+      "script": "YifuCity_Trigger_CrobatGruntsScram",
+      "afternoon": false,
+      "deadnight": true,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": true
     },
     {
       "type": "trigger",
@@ -764,7 +778,14 @@
       "elevation": 0,
       "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "var_value": "0",
-      "script": "YifuCity_Trigger_CrobatGruntsScram"
+      "script": "YifuCity_Trigger_CrobatGruntsScram",
+      "afternoon": false,
+      "deadnight": true,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": true
     },
     {
       "type": "trigger",
@@ -773,7 +794,14 @@
       "elevation": 0,
       "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "var_value": "0",
-      "script": "YifuCity_Trigger_CrobatGruntsScram"
+      "script": "YifuCity_Trigger_CrobatGruntsScram",
+      "afternoon": false,
+      "deadnight": true,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": true
     },
     {
       "type": "trigger",
@@ -782,7 +810,14 @@
       "elevation": 0,
       "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "var_value": "0",
-      "script": "YifuCity_Trigger_CrobatGruntsEavesdropPassword"
+      "script": "YifuCity_Trigger_CrobatGruntsEavesdropPassword",
+      "afternoon": false,
+      "deadnight": true,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": true
     },
     {
       "type": "trigger",
@@ -791,7 +826,14 @@
       "elevation": 0,
       "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "var_value": "0",
-      "script": "YifuCity_Trigger_CrobatGruntsEavesdropPassword"
+      "script": "YifuCity_Trigger_CrobatGruntsEavesdropPassword",
+      "afternoon": false,
+      "deadnight": true,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": true
     },
     {
       "type": "trigger",
@@ -886,7 +928,7 @@
     {
       "type": "trigger",
       "x": 38,
-      "y": 6,
+      "y": 7,
       "elevation": 0,
       "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
       "var_value": "0",
@@ -895,7 +937,7 @@
     {
       "type": "trigger",
       "x": 39,
-      "y": 6,
+      "y": 7,
       "elevation": 0,
       "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
       "var_value": "0",
@@ -904,7 +946,7 @@
     {
       "type": "trigger",
       "x": 40,
-      "y": 6,
+      "y": 7,
       "elevation": 0,
       "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
       "var_value": "0",
@@ -944,7 +986,14 @@
       "elevation": 0,
       "var": "FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF",
       "var_value": "0",
-      "script": "YifuCity_Trigger_CrobatGruntsScram"
+      "script": "YifuCity_Trigger_CrobatGruntsScram",
+      "afternoon": false,
+      "deadnight": true,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": true
     }
   ],
   "bg_events": [

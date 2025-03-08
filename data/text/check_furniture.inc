@@ -16,11 +16,11 @@ Text_Vase:
 	.string "But, it was empty.$"
 
 Text_EmptyTrashCan:
-	.string "It's empty.$"
+	.string "It's fortunately empty.$"
 
 Text_ShopShelf:
 	.string "The shelves brim with all sorts of\n"
-	.string "POKéMON merchandise.$"
+	.string "Pokémon items.$"
 
 Text_Blueprint:
 	.string "A blueprint of some sort?\n"
@@ -29,10 +29,6 @@ Text_Blueprint:
 Text_ClayPot:
 	.string "A simple clay pot.\p"
 	.string "{PLAYER} suddenly feels an urge to\nbreak it.$"
-
-Text_Furnace:
-	.string "The fire dances in the furnace.\p"
-	.string "…Hey, there's a Slugma in here!$"
 
 Text_EmptyBasket:
 	.string "A woven basket.$"

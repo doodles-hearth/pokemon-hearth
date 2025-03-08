@@ -1052,6 +1052,29 @@ void Task_UseDigEscapeRopeOnField(u8 taskId)
     DestroyTask(taskId);
 }
 
+static void ItemUseOnFieldCB_EscapeRopeKnockoff(u8 taskId)
+{
+    if (I_KEY_ESCAPE_ROPE < GEN_8)
+        RemoveBagItem(gSpecialVar_ItemId, 1);
+
+    CopyItemName(gSpecialVar_ItemId, gStringVar2);
+
+    if (Random() % 3 != 1)
+    {
+        Overworld_ResetStateAfterDigEscRope();
+        StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2);
+        gTasks[taskId].data[0] = 0;
+        DisplayItemMessageOnField(taskId, gStringVar4, Task_UseDigEscapeRopeOnField);
+    }
+    // Breaks randomly
+    else
+    {
+        StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2ButItBroke);
+        gTasks[taskId].data[0] = 0;
+        DisplayItemMessageOnField(taskId, gStringVar4, Task_CloseCantUseKeyItemMessage);
+    }
+}
+
 static void ItemUseOnFieldCB_EscapeRope(u8 taskId)
 {
     Overworld_ResetStateAfterDigEscRope();
@@ -1077,6 +1100,19 @@ void ItemUseOutOfBattle_EscapeRope(u8 taskId)
     if (CanUseDigOrEscapeRopeOnCurMap() == TRUE)
     {
         sItemUseOnFieldCB = ItemUseOnFieldCB_EscapeRope;
+        SetUpItemUseOnFieldCallback(taskId);
+    }
+    else
+    {
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+    }
+}
+
+void ItemUseOutOfBattle_EscapeRopeKnockoff(u8 taskId)
+{
+    if (CanUseDigOrEscapeRopeOnCurMap() == TRUE)
+    {
+        sItemUseOnFieldCB = ItemUseOnFieldCB_EscapeRopeKnockoff;
         SetUpItemUseOnFieldCallback(taskId);
     }
     else

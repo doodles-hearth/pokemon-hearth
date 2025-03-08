@@ -224,12 +224,6 @@ YifuCity_ShinySellerChoice_27:
 
 YifuCity_Trigger_CrobatGruntsScram::
 	lockall
-	goto_if_set FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_CrobatGruntsScram_2
-YifuCity_Trigger_CrobatGruntsScram_1:
-	releaseall
-	return
-
-YifuCity_Trigger_CrobatGruntsScram_2:
 	applymovement 9, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	speakername YifuCity_EventScript_ShinySeller_Text_0
@@ -272,17 +266,12 @@ YifuCity_Trigger_CrobatGruntsScram_2:
 	waitmovement 0
 	turnobject 9, DIR_SOUTH
 	turnobject 10, DIR_NORTH
-	goto YifuCity_Trigger_CrobatGruntsScram_1
+	releaseall
+	return
 
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	lockall
-	goto_if_unset FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_CrobatGruntsEavesdropPassword_2
-YifuCity_Trigger_CrobatGruntsEavesdropPassword_1:
-	releaseall
-	return
-
-YifuCity_Trigger_CrobatGruntsEavesdropPassword_2:
 	speakername YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsScram_Text_0
 	closemessage
@@ -329,11 +318,13 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword_2:
 	waitmovement 0
 	removeobject 9
 	removeobject 10
+	removeobject 11
 	setflag FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_5
 	waitmovement 0
 	special RemoveCameraObject
-	goto YifuCity_Trigger_CrobatGruntsEavesdropPassword_1
+	releaseall
+	return
 
 
 YifuCity_EventScript_HearEcho::

@@ -410,8 +410,8 @@
       "x": 32,
       "y": 50,
       "elevation": 0,
-      "var": "FLAG_CLEARED_CROBAT_HIDEOUT",
-      "var_value": "0",
+      "var": "VAR_CROBAT_HIDEOUT_STATE",
+      "var_value": "1",
       "script": "NULL"
     },
     {
@@ -419,8 +419,8 @@
       "x": 31,
       "y": 50,
       "elevation": 0,
-      "var": "FLAG_CLEARED_CROBAT_HIDEOUT",
-      "var_value": "0",
+      "var": "VAR_CROBAT_HIDEOUT_STATE",
+      "var_value": "1",
       "script": "NULL"
     }
   ],

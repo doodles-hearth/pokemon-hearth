@@ -39,8 +39,8 @@ mart Crobat_Mart {
 	ITEM_OINTMENT
 	ITEM_SUPER_OINTMENT
 	ITEM_ULTRA_BALL_KNOCKOFF
+	ITEM_ESCAPE_ROPE_KNOCKOFF
 	ITEM_SLOWPOKE_TAIL
-	ITEM_ESCAPE_ROPE
 }
 
 script YifuCity_CrobatShop_Guard {
@@ -134,7 +134,7 @@ script YifuCity_CrobatShop_Guard {
 
 			delay(24)
 
-			if (flag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT) && flag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT)) {
+			if (flag(FLAG_CROBAT_PASSWORD_FIRST_HALF_CORRECT) && flag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT)) {
 				speakername("Shady man")
 				msgbox(format(
 					"Hmmm… Ya don't look like the typical Zubat…\p"
@@ -153,11 +153,30 @@ script YifuCity_CrobatShop_Guard {
 				waitmovement(0)
 
 			} else {
+				delay(24)
+
+				applymovement(VAR_LAST_TALKED, moves(lock_facing_direction, walk_in_place_faster_left))
+
 				speakername("Shady man")
 				msgbox(format(
 					"That ain't the password! Scram!"
 				))
+				waitmovement(0)
 				closemessage
+
+				if (var(VAR_FACING) == DIR_NORTH) {
+					applymovement(VAR_LAST_TALKED, moves(walk_down, lock_facing_direction, walk_up, unlock_facing_direction))
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, lock_anim, jump_2_down, unlock_facing_direction, unlock_anim))
+				} else {
+					applymovement(VAR_LAST_TALKED, moves(walk_left, lock_facing_direction, walk_right, unlock_facing_direction))
+					applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, lock_anim, jump_2_left, unlock_facing_direction, unlock_anim))
+				}
+
+				waitmovement(VAR_LAST_TALKED)
+				waitmovement(OBJ_EVENT_ID_PLAYER)
+
+				clearflag(FLAG_CROBAT_PASSWORD_FIRST_HALF_CORRECT)
+				clearflag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT)
 			}
 		}
 	}

@@ -562,6 +562,7 @@ extern const u8 EventScript_BookShelf[];
 extern const u8 EventScript_PokemonCenterBookShelf[];
 extern const u8 KuraTown_Dojo_EventScript_KuraDojoTree_CantCut[];
 extern const u8 EventScript_Vase[];
+extern const u8 EventScript_ClayFurnace[];
 extern const u8 EventScript_EmptyTrashCan[];
 extern const u8 EventScript_ShopShelf[];
 extern const u8 EventScript_Blueprint[];
