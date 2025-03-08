@@ -1911,7 +1911,6 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .baseSpDefense = 128,
         .expYield = 243,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .unknownName = _("??????????"),
         .cryId = CRY_FLOETTE_ETERNAL,
         .description = COMPOUND_STRING(
             "The flower it's holding can no\n"
