@@ -4047,6 +4047,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .bodyColor = BODY_COLOR_BLACK,                                                                  \
         .noFlip = _noFlip,                                                                              \
         .speciesName = _("Unown"),                                                                      \
+        .unknownName = _("Odd Symbol"),                                                                 \
         .cryId = CRY_UNOWN,                                                                             \
         .natDexNum = NATIONAL_DEX_UNOWN,                                                                \
         .categoryName = _("Symbol"),                                                                    \

@@ -4922,6 +4922,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
     {                                                                                           \
         ALCREMIE_MISC_INFO(color),                                                              \
         .speciesName = _("Alcremie"),                                                           \
+        .unknownName = _("??????????"),                                                         \
         .cryId = CRY_ALCREMIE,                                                                  \
         .natDexNum = NATIONAL_DEX_ALCREMIE,                                                     \
         .categoryName = _("Cream"),                                                             \

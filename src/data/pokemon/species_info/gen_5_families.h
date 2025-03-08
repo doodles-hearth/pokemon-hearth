@@ -13934,6 +13934,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .abilities = { ABILITY_DOWNLOAD, ABILITY_NONE, ABILITY_NONE },              \
         .bodyColor = BODY_COLOR_PURPLE,                                             \
         .speciesName = _("Genesect"),                                               \
+        .unknownName = _("??????????"),                                             \
         .cryId = CRY_GENESECT,                                                      \
         .natDexNum = NATIONAL_DEX_GENESECT,                                         \
         .categoryName = _("Paleozoic"),                                             \

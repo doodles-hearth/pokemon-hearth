@@ -7738,6 +7738,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .abilities = { ability, ABILITY_NONE },                                                                         \
         .bodyColor = color,                                                                                             \
         .speciesName = _("Ogerpon"),                                                                                    \
+        .unknownName = _("??????????"),                                                                                 \
         .cryId = CRY_OGERPON,                                                                                           \
         .natDexNum = NATIONAL_DEX_OGERPON,                                                                              \
         .categoryName = _("Mask"),                                                                                      \
