@@ -472,6 +472,9 @@ static const struct SpriteFrameImage sPicTable_Psyduck[] = {
 static const struct SpriteFrameImage sPicTable_Golduck[] = {
     overworld_ascending_frames(gObjectEventPic_Golduck, 4, 4),
 };
+static const struct SpriteFrameImage sPicTable_GolduckTokuan[] = {
+    overworld_ascending_frames(gObjectEventPic_GolduckTokuan, 4, 4),
+};
 #if P_TOKUAN_FORMS
 static const struct SpriteFrameImage sPicTable_PsyduckTokuan[] = {
     overworld_ascending_frames(gObjectEventPic_PsyduckTokuan, 4, 4),

@@ -7610,6 +7610,77 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .eggMoveLearnset = sPsyduckTokuanEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_DUSK_STONE, SPECIES_GOLDUCK_TOKUAN})
     },
+
+    [SPECIES_GOLDUCK_TOKUAN] =
+    {
+        .baseHP        = 80,
+        .baseAttack    = 82,
+        .baseDefense   = 78,
+        .baseSpeed     = 85,
+        .baseSpAttack  = 95,
+        .baseSpDefense = 80,
+        .types = MON_TYPES(TYPE_WATER, TYPE_DARK),
+        .catchRate = 75,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 175 : 174,
+        .evYield_SpAttack = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FIELD),
+        .abilities = { ABILITY_DAMP, ABILITY_CLOUD_NINE, ABILITY_SWIFT_SWIM },
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Golduck"),
+        .unknownName = _("Mean Duck"),
+        .cryId = CRY_GOLDUCK,
+        .natDexNum = NATIONAL_DEX_GOLDUCK_TOKUAN,
+        .categoryName = _("Kappa"),
+        .height = 17,
+        .weight = 766,
+        .description = COMPOUND_STRING(
+            "Its heart has been corrupted by\n"
+            "darkness. It stalks river banks,\n"
+            "looking for berries, or children,\n"
+            "to eat."),
+        .pokemonScale = 256,
+        .pokemonOffset = 1,
+        .trainerScale = 273,
+        .trainerOffset = 1,
+        .frontPic = gMonFrontPic_GolduckTokuan,
+        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 64) : MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 2 : 4,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 20),
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 20),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_CIRCULAR_VIBRATE,
+        .backPic = gMonBackPic_GolduckTokuan,
+        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_SHRINK_GROW_VIBRATE,
+        .palette = gMonPalette_GolduckTokuan,
+        .shinyPalette = gMonShinyPalette_GolduckTokuan,
+        .iconSprite = gMonIcon_GolduckTokuan,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(1, 6, SHADOW_SIZE_M)
+        FOOTPRINT(Golduck)
+        OVERWORLD(
+            sPicTable_GolduckTokuan,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gMonPalette_GolduckTokuan,
+            gMonShinyPalette_GolduckTokuan
+        )
+        // TODO EVA
+        .levelUpLearnset = sGolduckLevelUpLearnset,
+        .teachableLearnset = sGolduckTeachableLearnset,
+    },
 #endif //P_FAMILY_PSYDUCK
 
 #if P_FAMILY_MANKEY
