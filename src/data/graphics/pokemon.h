@@ -6829,6 +6829,18 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gShinyOverworldPalette_Noctowl[] = INCBIN_U32("graphics/pokemon/noctowl/overworld_shiny.gbapal.lz");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
+
+    const u32 gMonFrontPic_Shadowl[] = INCBIN_U32("graphics/pokemon/shadowl/anim_front.4bpp.lz");
+    const u32 gMonPalette_Shadowl[] = INCBIN_U32("graphics/pokemon/shadowl/anim_front.gbapal.lz");
+    const u32 gMonBackPic_Shadowl[] = INCBIN_U32("graphics/pokemon/shadowl/back.4bpp.lz");
+    const u32 gMonShinyPalette_Shadowl[] = INCBIN_U32("graphics/pokemon/shadowl/shiny.gbapal.lz");
+    const u8 gMonIcon_Shadowl[] = INCBIN_U8("graphics/pokemon/shadowl/icon.4bpp");
+#if P_FOOTPRINTS
+    const u8 gMonFootprint_Shadowl[] = INCBIN_U8("graphics/pokemon/shadowl/footprint.1bpp");
+#endif //P_FOOTPRINTS
+#if OW_POKEMON_OBJECT_EVENTS
+    const u32 gObjectEventPic_Shadowl[] = INCBIN_COMP("graphics/pokemon/shadowl/overworld.4bpp");
+#endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_HOOTHOOT
 
 #if P_FAMILY_LEDYBA

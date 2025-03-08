@@ -958,7 +958,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sHoothootLevelUpLearnset,
         .teachableLearnset = sHoothootTeachableLearnset,
         .eggMoveLearnset = sHoothootEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_NOCTOWL}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_NOCTOWL}, {EVO_ITEM, ITEM_DUSK_STONE, SPECIES_SHADOWL}),
     },
 
     [SPECIES_NOCTOWL] =
@@ -1030,6 +1030,75 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
             gOverworldPalette_Noctowl,
             gShinyOverworldPalette_Noctowl
         )
+        .levelUpLearnset = sNoctowlLevelUpLearnset,
+        .teachableLearnset = sNoctowlTeachableLearnset,
+    },
+
+    [SPECIES_SHADOWL] =
+    {
+        .baseHP        = 100,
+        .baseAttack    = 50,
+        .baseDefense   = 50,
+        .baseSpeed     = 70,
+        .baseSpAttack  = P_UPDATED_STATS >= GEN_7 ? 86 : 76,
+        .baseSpDefense = 96,
+        .types = MON_TYPES(TYPE_DARK, TYPE_FLYING),
+        .catchRate = 90,
+        .expYield = 158,
+        .evYield_HP = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
+        .abilities = { ABILITY_INSOMNIA, ABILITY_KEEN_EYE, ABILITY_TINTED_LENS },
+        .bodyColor = BODY_COLOR_BROWN,
+        .speciesName = _("Shadowl"),
+        .unknownName = _("Dark Owl"),
+        .cryId = CRY_NOCTOWL,
+        .natDexNum = NATIONAL_DEX_SHADOWL,
+        .categoryName = _("Owl"),
+        .height = 16,
+        .weight = 408,
+        .description = COMPOUND_STRING(
+            // TODO EVA
+            "It unfailingly catches prey in darkness.\n"
+            "Noctowl owe their success to superior\n"
+            "vision that allows them to see in minimal\n"
+            "light, and to their supple and silent wings."),
+        .pokemonScale = 270,
+        .pokemonOffset = 3,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Shadowl,
+        .frontPicSize = MON_COORDS_SIZE(40, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 20),
+        ),
+        .frontAnimId = ANIM_FRONT_FLIP,
+        .backPic = gMonBackPic_Shadowl,
+        .backPicSize = MON_COORDS_SIZE(48, 64),
+        .backPicYOffset = 3,
+        .backAnimId = BACK_ANIM_H_VIBRATE,
+        .palette = gMonPalette_Shadowl,
+        .shinyPalette = gMonShinyPalette_Shadowl,
+        .iconSprite = gMonIcon_Shadowl,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-1, 9, SHADOW_SIZE_M)
+        FOOTPRINT(Shadowl)
+        OVERWORLD(
+            sPicTable_Shadowl,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            sAnimTable_Following,
+            gMonPalette_Shadowl,
+            gMonShinyPalette_Shadowl
+        )
+        // TODO EVA
         .levelUpLearnset = sNoctowlLevelUpLearnset,
         .teachableLearnset = sNoctowlTeachableLearnset,
     },

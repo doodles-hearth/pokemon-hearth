@@ -1430,6 +1430,9 @@ static const struct SpriteFrameImage sPicTable_Hoothoot[] = {
 static const struct SpriteFrameImage sPicTable_Noctowl[] = {
     overworld_ascending_frames(gObjectEventPic_Noctowl, 4, 4),
 };
+static const struct SpriteFrameImage sPicTable_Shadowl[] = {
+    overworld_ascending_frames(gObjectEventPic_Shadowl, 4, 4),
+};
 #endif //P_FAMILY_HOOTHOOT
 
 #if P_FAMILY_LEDYBA
