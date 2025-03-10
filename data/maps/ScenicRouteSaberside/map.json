@@ -15,12 +15,12 @@
   "connections": [
     {
       "map": "MAP_SABERSIDE_TOWN",
-      "offset": -5,
+      "offset": -3,
       "direction": "left"
     },
     {
       "map": "MAP_SCENIC_ROUTE",
-      "offset": 30,
+      "offset": 36,
       "direction": "up"
     }
   ],
