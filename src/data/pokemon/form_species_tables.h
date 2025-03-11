@@ -1881,6 +1881,13 @@ static const u16 sToxtricityFormSpeciesIdTable[] = {
 #endif
     FORM_SPECIES_END,
 };
+#if P_TOKUAN_FORMS
+static const u16 sToxikyuFormSpeciesIdTable[] = {
+    SPECIES_TOXIKYU_AMPED,
+    SPECIES_TOXIKYU_LOW_KEY,
+    FORM_SPECIES_END,
+};
+#endif //P_TOKUAN_FORMS
 #endif //P_FAMILY_TOXEL
 
 #if P_FAMILY_SIZZLIPEDE

@@ -5744,6 +5744,17 @@ static const struct SpriteFrameImage sPicTable_ToxtricityAmped[] = {
 static const struct SpriteFrameImage sPicTable_ToxtricityLowKey[] = {
     overworld_ascending_frames(gObjectEventPic_ToxtricityLowKey, 4, 4),
 };
+#if P_TOKUAN_FORMS
+static const struct SpriteFrameImage sPicTable_ToxelTokuan[] = {
+    overworld_ascending_frames(gObjectEventPic_ToxelTokuan, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_ToxikyuAmped[] = {
+    overworld_ascending_frames(gObjectEventPic_ToxikyuAmped, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_ToxikyuLowKey[] = {
+    overworld_ascending_frames(gObjectEventPic_ToxikyuLowKey, 4, 4),
+};
+#endif //P_TOKUAN_FORMS
 #if P_GIGANTAMAX_FORMS
 /*static const struct SpriteFrameImage sPicTable_ToxtricityGmax[] = {
     overworld_ascending_frames(gObjectEventPic_ToxtricityGmax, 4, 4),
