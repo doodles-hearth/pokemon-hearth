@@ -590,6 +590,30 @@ static const struct SpriteFrameImage sPicTable_CrobatShadowsGruntF[] = {
     overworld_frame(gObjectEventPic_CrobatShadowsGruntF, 4, 4, 12),
 };
 
+static const struct SpriteFrameImage sPicTable_CrobatShadowsAdminM[] = {
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminM, 4, 4, 0),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminM, 4, 4, 1),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminM, 4, 4, 2),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminM, 4, 4, 3),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminM, 4, 4, 4),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminM, 4, 4, 5),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminM, 4, 4, 6),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminM, 4, 4, 7),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminM, 4, 4, 8),
+};
+
+static const struct SpriteFrameImage sPicTable_CrobatShadowsAdminF[] = {
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminF, 4, 4, 0),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminF, 4, 4, 1),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminF, 4, 4, 2),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminF, 4, 4, 3),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminF, 4, 4, 4),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminF, 4, 4, 5),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminF, 4, 4, 6),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminF, 4, 4, 7),
+    overworld_frame(gObjectEventPic_CrobatShadowsAdminF, 4, 4, 8),
+};
+
 static const struct SpriteFrameImage sPicTable_CrobatShadowsBoss[] = {
     overworld_frame(gObjectEventPic_CrobatShadowsBoss, 4, 4, 0),
     overworld_frame(gObjectEventPic_CrobatShadowsBoss, 4, 4, 1),

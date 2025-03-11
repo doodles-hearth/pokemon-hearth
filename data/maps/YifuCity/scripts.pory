@@ -13,7 +13,9 @@ mapscripts YifuCity_MapScripts {
 }
 
 script YifuCity_EscapedCrobatHideoutWithSamurai {
-	
+	lockall
+	// TODO EVA
+	releaseall
 }
 
 script YifuCity_EventScript_StoleMyMon {

@@ -35,7 +35,7 @@
         .encounterMusic_gender =
 #line 13
             TRAINER_ENCOUNTER_MUSIC_MALE,
-        .partySize = 3,
+        .partySize = 2,
         .party = (const struct TrainerMon[])
         {
             {
@@ -61,40 +61,19 @@
             },
             {
 #line 25
-            .species = SPECIES_SKARMORY,
+            .species = SPECIES_JANGMO_O,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 29
-            .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 6, 252),
+            .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 252, 6),
 #line 28
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 27
             .lvl = 25,
 #line 26
-            .nature = NATURE_IMPISH,
-            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
-            .moves = {
-#line 30
-                MOVE_STEEL_WING,
-                MOVE_IRON_DEFENSE,
-                MOVE_AGILITY,
-                MOVE_AIR_CUTTER,
-            },
-            },
-            {
-#line 35
-            .species = SPECIES_JANGMO_O,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 39
-            .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 252, 6),
-#line 38
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 37
-            .lvl = 25,
-#line 36
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 40
+#line 30
                 MOVE_DRAGON_TAIL,
                 MOVE_IRON_DEFENSE,
                 MOVE_WORK_UP,
