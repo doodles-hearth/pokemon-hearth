@@ -140,6 +140,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaMember
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MagmaMemberF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsGruntM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsGruntF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsAdminM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsAdminF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsBoss;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsKevin;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Samurai;
@@ -419,6 +421,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MAGMA_MEMBER_F] =           &gObjectEventGraphicsInfo_MagmaMemberF,
     [OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M] =   &gObjectEventGraphicsInfo_CrobatShadowsGruntM,
     [OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_F] =   &gObjectEventGraphicsInfo_CrobatShadowsGruntF,
+    [OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_M] =   &gObjectEventGraphicsInfo_CrobatShadowsAdminM,
+    [OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_F] =   &gObjectEventGraphicsInfo_CrobatShadowsAdminF,
     [OBJ_EVENT_GFX_CROBAT_SHADOWS_BOSS] =   &gObjectEventGraphicsInfo_CrobatShadowsBoss,
     [OBJ_EVENT_GFX_CROBAT_SHADOWS_KEVIN] =   &gObjectEventGraphicsInfo_CrobatShadowsKevin,
     [OBJ_EVENT_GFX_SAMURAI] =           &gObjectEventGraphicsInfo_Samurai,

@@ -11,11 +11,11 @@
 #define TRAINER_KOUGA          5
 #define TRAINER_KENTO       6
 #define TRAINER_SHUYA       7
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_3       8
+#define TRAINER_GRUNT_CROBAT_HIDEOUT_7       8
 #define TRAINER_GABRIELLE_1                   9
 #define TRAINER_GRUNT_BEACHBOUND_ROUTE_1     10
 #define TRAINER_IKUTO                        11
-#define TRAINER_KANSAKU                      12 // UNUSED!!!
+#define TRAINER_GRUNT_CROBAT_HIDEOUT_8       12
 #define TRAINER_SHAMISEN                     13
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_4      14
 #define TRAINER_DECLAN                       15

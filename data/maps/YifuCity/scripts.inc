@@ -8,6 +8,9 @@ YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 YifuCity_EscapedCrobatHideoutWithSamurai::
+	lockall
+	setvar VAR_CROBAT_HIDEOUT_STATE, 4
+	releaseall
 	return
 
 

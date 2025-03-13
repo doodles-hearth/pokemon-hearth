@@ -266,11 +266,13 @@
 #define OBJ_EVENT_GFX_SCHOOL_KID_F_ORANGE        262
 #define OBJ_EVENT_GFX_MAREEP_DOLL                263
 #define OBJ_EVENT_GFX_LUNCHBOX                   264
+#define OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_M     265
+#define OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_F     266
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        265
+#define NUM_OBJ_EVENT_GFX                        267
 
 
 // These are dynamic object gfx ids.

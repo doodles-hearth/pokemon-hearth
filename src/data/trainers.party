@@ -438,28 +438,20 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Arm Thrust
 - Endure
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_3 ===
-Name: Tama
-Class: Gentleman /* Gem Maniac */
-Pic: Gentleman
+=== TRAINER_GRUNT_CROBAT_HIDEOUT_7 ===
+Name: Grunt
+Class: Zubat
+Pic: Zubat Grunt M
 Gender: Male
-Music: Rich
+Music: Aqua
 Double Battle: No
-AI: Smartish Trainer
+AI: Basic Trainer
 
-Carbink
-Level: 17
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Sharpen
-- Rock Throw
-- Smack Down
-
-Sableye
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Night Shade
-- Astonish
-- Fury Swipes
+Houndour
+Level: 23
+- Beat Up
+- Odor Sleuth
+- Bite
 
 === TRAINER_GABRIELLE_1 ===
 Name: GABRIELLE
@@ -565,22 +557,20 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stealth Rock
 - Bind
 
-=== TRAINER_KANSAKU ===
-Name: Kansaku
-Class: Miner
-Pic: Miner
-Gender: Male
-Music: Hiker
+=== TRAINER_GRUNT_CROBAT_HIDEOUT_8 ===
+Name: Grunt
+Class: Zubat
+Pic: Zubat Grunt F
+Gender: Female
+Music: Aqua
 Double Battle: No
 AI: Basic Trainer
 
-Pelipper
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Xatu
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Mightyena
+Level: 23
+- Scary Face
+- Snarl
+- Assurance
 
 === TRAINER_SHAMISEN ===
 Name: Kyoku
@@ -9650,7 +9640,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: Admin
 Class: Golbat
 Pic: Golbat Admin M
-Music: Magma
+Music: Aqua
 Double Battle: No
 AI: Basic Trainer
 
@@ -13780,7 +13770,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Name: Admin
 Class: Golbat
 Pic: Golbat Admin F
-Music: Magma
+Music: Aqua
 Double Battle: No
 AI: Basic Trainer
 

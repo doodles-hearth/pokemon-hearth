@@ -156,6 +156,7 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(BONSLY),
     HOENN_TO_NATIONAL(SUDOWOODO),
     HOENN_TO_NATIONAL(HONESTREE),
+    HOENN_TO_NATIONAL(SHADOWL),
     HOENN_TO_NATIONAL(TEDDIURSA),
     HOENN_TO_NATIONAL(URSARING),
     HOENN_TO_NATIONAL(SHROOMISH),
@@ -448,8 +449,6 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(DRAMPA),
     HOENN_TO_NATIONAL(CASTFORM),
     HOENN_TO_NATIONAL(ORICORIO),
-    HOENN_TO_NATIONAL(TOXEL),
-    HOENN_TO_NATIONAL(TOXTRICITY),
     HOENN_TO_NATIONAL(PORYGON),
     HOENN_TO_NATIONAL(KARTANA),
     HOENN_TO_NATIONAL(CHINGLING),
@@ -471,6 +470,8 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(LUGIA),
     HOENN_TO_NATIONAL(ENTEI),
     HOENN_TO_NATIONAL(UNOWN),
+    HOENN_TO_NATIONAL(TOXEL_TOKUAN),
+    HOENN_TO_NATIONAL(TOXIKYU),
 };
 
 const struct SpindaSpot gSpindaSpotGraphics[] =
@@ -1030,6 +1031,15 @@ static const struct SpriteTemplate sTrainerBackSpriteTemplates[] =
         .oam = &gOamData_BattleSpritePlayerSide,
         .anims = NULL,
         .images = gTrainerBackPicTable_Steven,
+        .affineAnims = gAffineAnims_BattleSpritePlayerSide,
+        .callback = SpriteCB_BattleSpriteStartSlideLeft,
+    },
+    [TRAINER_BACK_PIC_SAMURAI] = {
+        .tileTag = TAG_NONE,
+        .paletteTag = 0,
+        .oam = &gOamData_BattleSpritePlayerSide,
+        .anims = NULL,
+        .images = gTrainerBackPicTable_Samurai,
         .affineAnims = gAffineAnims_BattleSpritePlayerSide,
         .callback = SpriteCB_BattleSpriteStartSlideLeft,
     },

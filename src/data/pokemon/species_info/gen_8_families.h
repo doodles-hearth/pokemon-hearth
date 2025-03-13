@@ -3709,6 +3709,218 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .formChangeTable = sToxtricityAmpedFormChangeTable,
     },
 #endif //P_GIGANTAMAX_FORMS
+
+#if P_TOKUAN_FORMS
+[SPECIES_TOXEL_TOKUAN] =
+    {
+        .baseHP        = 40,
+        .baseAttack    = 38,
+        .baseDefense   = 35,
+        .baseSpeed     = 40,
+        .baseSpAttack  = 54,
+        .baseSpDefense = 35,
+        .types = MON_TYPES(TYPE_NORMAL, TYPE_POISON),
+        .catchRate = 75,
+        .expYield = 48,
+        .evYield_SpAttack = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 25,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_RATTLED, ABILITY_KLUTZ },
+        .bodyColor = BODY_COLOR_PURPLE,
+        .speciesName = _("Toxel"),
+        .unknownName = _("Hum Baby"),
+        .cryId = CRY_TOXEL,
+        .natDexNum = NATIONAL_DEX_TOXEL_TOKUAN,
+        .categoryName = _("Baby"),
+        .height = 4,
+        .weight = 110,
+        .description = COMPOUND_STRING(
+            "Despite its slightly venomous skin and its\n"
+            "frequent tantrums, Toxel is loved by most\n"
+            "people thanks to its soothing song-like\n"
+            "cry."),
+        .pokemonScale = 491,
+        .pokemonOffset = 12,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_ToxelTokuan,
+        .frontPicSize = MON_COORDS_SIZE(40, 48),
+        .frontPicYOffset = 8,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 30),
+            ANIMCMD_FRAME(0, 1),
+        ),
+        .frontAnimId = ANIM_SHRINK_GROW_VIBRATE,
+        .backPic = gMonBackPic_ToxelTokuan,
+        .backPicSize = MON_COORDS_SIZE(48, 56),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_SHRINK_GROW_VIBRATE,
+        .palette = gMonPalette_ToxelTokuan,
+        .shinyPalette = gMonShinyPalette_ToxelTokuan,
+        .iconSprite = gMonIcon_ToxelTokuan,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_FAST,
+        SHADOW(-2, 2, SHADOW_SIZE_M)
+        FOOTPRINT(Toxel)
+        OVERWORLD(
+            sPicTable_ToxelTokuan,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gMonPalette_ToxelTokuan,
+            gMonShinyPalette_ToxelTokuan
+        )
+        // TODO EVA give him something tantrum-related! + uproar obviously
+        .levelUpLearnset = sToxelLevelUpLearnset,
+        .teachableLearnset = sToxelTeachableLearnset,
+        .eggMoveLearnset = sToxelEggMoveLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL_NATURE_AMPED, 30, SPECIES_TOXIKYU_AMPED},
+                                {EVO_LEVEL_NATURE_LOW_KEY, 30, SPECIES_TOXIKYU_LOW_KEY}),
+    },
+
+[SPECIES_TOXIKYU_LOW_KEY] =
+    {
+        .baseHP        = 75,
+        .baseAttack    = 98,
+        .baseDefense   = 70,
+        .baseSpeed     = 75,
+        .baseSpAttack  = 114,
+        .baseSpDefense = 70,
+        .types = MON_TYPES(TYPE_GHOST, TYPE_POISON),
+        .catchRate = 45,
+        .expYield = 176,
+        .evYield_SpAttack = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 25,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_HUMAN_LIKE),
+        .abilities = { ABILITY_PUNK_ROCK, ABILITY_MINUS, ABILITY_TECHNICIAN },
+        .bodyColor = BODY_COLOR_PURPLE,
+        .speciesName = _("Toxikyu"),
+        .unknownName = _("Song Ghost"),
+        .cryId = CRY_TOXTRICITY_LOW_KEY,
+        .natDexNum = NATIONAL_DEX_TOXIKYU,
+        .categoryName = _("Shamisen"),
+        .height = 16,
+        .weight = 400,
+        .description = COMPOUND_STRING(
+            "Toxikyu is a kind creature despite his\n"
+            "gaunt appearance. Running a hand through\n"
+            "its mane lets out a deep hum that stirs\n"
+            "melancholy in those who hear it."),
+        .pokemonScale = 259,
+        .pokemonOffset = 1,
+        .trainerScale = 296,
+        .trainerOffset = 1,
+        .frontPic = gMonFrontPic_ToxikyuLowKey,
+        .frontPicSize = MON_COORDS_SIZE(48, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 1),
+        ),
+        .frontAnimId = ANIM_H_STRETCH_FAR_SLOW,
+        .backPic = gMonBackPic_ToxikyuLowKey,
+        .backPicSize = MON_COORDS_SIZE(48, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_H_VIBRATE,
+        .palette = gMonPalette_ToxikyuLowKey,
+        .shinyPalette = gMonShinyPalette_ToxikyuLowKey,
+        .iconSprite = gMonIcon_ToxikyuLowKey,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(1, 12, SHADOW_SIZE_M)
+        FOOTPRINT(Toxtricity)
+        OVERWORLD(
+            sPicTable_ToxikyuLowKey,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gMonPalette_ToxikyuLowKey,
+            gMonShinyPalette_ToxikyuLowKey
+        )
+        .levelUpLearnset = sToxikyuLowKeyLevelUpLearnset,
+        .teachableLearnset = sToxikyuLowKeyTeachableLearnset,
+        .formSpeciesIdTable = sToxikyuFormSpeciesIdTable,
+    },
+
+    [SPECIES_TOXIKYU_AMPED] =
+    {
+        .baseHP        = 75,
+        .baseAttack    = 98,
+        .baseDefense   = 70,
+        .baseSpeed     = 75,
+        .baseSpAttack  = 114,
+        .baseSpDefense = 70,
+        .types = MON_TYPES(TYPE_GHOST, TYPE_POISON),
+        .catchRate = 45,
+        .expYield = 176,
+        .evYield_SpAttack = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 25,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_HUMAN_LIKE),
+        .abilities = { ABILITY_PUNK_ROCK, ABILITY_PLUS, ABILITY_TECHNICIAN },
+        .bodyColor = BODY_COLOR_PURPLE,
+        .speciesName = _("Toxikyu"),
+        .unknownName = _("Song Ghost"),
+        .cryId = CRY_TOXTRICITY_AMPED,
+        .natDexNum = NATIONAL_DEX_TOXIKYU,
+        .categoryName = _("Shamisen"),
+        .height = 16,
+        .weight = 400,
+        .description = COMPOUND_STRING(
+            "It claws at the string-like organs on its\n"
+            "chest to produce loud, painful sounds.\n"
+            "Its soothing presence and resemblance\n"
+            "with a shamisen are loved by musicians."),
+        .pokemonScale = 259,
+        .pokemonOffset = 1,
+        .trainerScale = 296,
+        .trainerOffset = 1,
+        .frontPic = gMonFrontPic_ToxikyuAmped,
+        .frontPicSize = MON_COORDS_SIZE(48, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 1),
+        ),
+        .frontAnimId = ANIM_H_STRETCH_FAR_SLOW,
+        .backPic = gMonBackPic_ToxikyuAmped,
+        .backPicSize = MON_COORDS_SIZE(56, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_H_VIBRATE,
+        .palette = gMonPalette_ToxikyuAmped,
+        .shinyPalette = gMonShinyPalette_ToxikyuAmped,
+        .iconSprite = gMonIcon_ToxikyuAmped,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-4, 14, SHADOW_SIZE_M)
+        FOOTPRINT(Toxtricity)
+        OVERWORLD(
+            sPicTable_ToxikyuAmped,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gMonPalette_ToxikyuAmped,
+            gMonShinyPalette_ToxikyuAmped
+        )
+        .levelUpLearnset = sToxikyuAmpedLevelUpLearnset,
+        .teachableLearnset = sToxikyuAmpedTeachableLearnset,
+        .formSpeciesIdTable = sToxikyuFormSpeciesIdTable,
+    },
+
+#endif
+
 #endif //P_FAMILY_TOXEL
 
 #if P_FAMILY_SIZZLIPEDE
@@ -4922,6 +5134,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
     {                                                                                           \
         ALCREMIE_MISC_INFO(color),                                                              \
         .speciesName = _("Alcremie"),                                                           \
+        .unknownName = _("??????????"),                                                         \
         .cryId = CRY_ALCREMIE,                                                                  \
         .natDexNum = NATIONAL_DEX_ALCREMIE,                                                     \
         .categoryName = _("Cream"),                                                             \
