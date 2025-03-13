@@ -3880,8 +3880,8 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .description = COMPOUND_STRING(
             "It claws at the string-like organs on its\n"
             "chest to produce loud, painful sounds.\n"
-            "Its soothing presence and resemblance with\n"
-            "a shamisen are loved by musicians."),
+            "Its soothing presence and resemblance\n"
+            "with a shamisen are loved by musicians."),
         .pokemonScale = 259,
         .pokemonOffset = 1,
         .trainerScale = 296,
