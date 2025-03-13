@@ -179,7 +179,7 @@
       "x": 34,
       "y": 42,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -255,7 +255,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_M",
       "x": 31,
       "y": 49,
       "elevation": 0,
@@ -375,7 +375,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_F",
       "x": 32,
       "y": 49,
       "elevation": 0,

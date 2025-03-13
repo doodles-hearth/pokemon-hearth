@@ -15,6 +15,7 @@ mapscripts YifuCity_MapScripts {
 script YifuCity_EscapedCrobatHideoutWithSamurai {
 	lockall
 	// TODO EVA
+	setvar(VAR_CROBAT_HIDEOUT_STATE, 4)
 	releaseall
 }
 

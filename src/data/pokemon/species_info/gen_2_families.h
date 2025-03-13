@@ -2589,7 +2589,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Honestree"),
         .unknownName = _("Happy Pot"),
-        .cryId = CRY_SUDOWOODO,
+        .cryId = CRY_AMPHAROS,
         .natDexNum = NATIONAL_DEX_HONESTREE,
         .categoryName = _("Real Bonsai"),
         .height = 7,
@@ -2599,10 +2599,6 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
             "wish itself into a real tree.\n"
             "Honestree is regarded as a symbol of\n"
             "overcoming fate through sheer will."),
-            // "Bonsly prefers an arid atmosphere.\n"
-            // "In order to adjust the level of fluids\n"
-            // "in its body, it exudes water from its eyes.\n"
-            // "This makes it appear to be crying."),
         .pokemonScale = 500,
         .pokemonOffset = 13,
         .trainerScale = 256,

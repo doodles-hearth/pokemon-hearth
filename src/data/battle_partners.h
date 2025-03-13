@@ -24,10 +24,10 @@
         },
     },
 #line 8
-    [DIFFICULTY_NORMAL][PARTNER_SAMURAI] =
+    [DIFFICULTY_NORMAL][PARTNER_STEVEN] =
     {
 #line 9
-        .trainerName = _("Samurai"),
+        .trainerName = _("STEVEN"),
 #line 10
         .trainerClass = TRAINER_CLASS_RIVAL,
 #line 11
@@ -35,24 +35,105 @@
         .encounterMusic_gender =
 #line 13
             TRAINER_ENCOUNTER_MUSIC_MALE,
-        .partySize = 2,
+        .partySize = 3,
         .party = (const struct TrainerMon[])
         {
             {
 #line 15
-            .species = SPECIES_PAWNIARD,
+            .species = SPECIES_METANG,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 19
             .ev = TRAINER_PARTY_EVS(0, 252, 252, 0, 6, 0),
 #line 18
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 17
-            .lvl = 25,
+            .lvl = 42,
 #line 16
             .nature = NATURE_BRAVE,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 20
+                MOVE_LIGHT_SCREEN,
+                MOVE_PSYCHIC,
+                MOVE_REFLECT,
+                MOVE_METAL_CLAW,
+            },
+            },
+            {
+#line 25
+            .species = SPECIES_SKARMORY,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 29
+            .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 6, 252),
+#line 28
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 27
+            .lvl = 43,
+#line 26
+            .nature = NATURE_IMPISH,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 30
+                MOVE_TOXIC,
+                MOVE_AERIAL_ACE,
+                MOVE_PROTECT,
+                MOVE_STEEL_WING,
+            },
+            },
+            {
+#line 35
+            .species = SPECIES_AGGRON,
+            .gender = TRAINER_MON_RANDOM_GENDER,
+#line 39
+            .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 252, 6),
+#line 38
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 37
+            .lvl = 44,
+#line 36
+            .nature = NATURE_ADAMANT,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 40
+                MOVE_THUNDER,
+                MOVE_PROTECT,
+                MOVE_SOLAR_BEAM,
+                MOVE_DRAGON_CLAW,
+            },
+            },
+        },
+    },
+#line 45
+    [DIFFICULTY_NORMAL][PARTNER_SAMURAI] =
+    {
+#line 46
+        .trainerName = _("Samurai"),
+#line 47
+        .trainerClass = TRAINER_CLASS_RIVAL,
+#line 48
+        .trainerPic = TRAINER_BACK_PIC_SAMURAI,
+        .encounterMusic_gender =
+#line 50
+            TRAINER_ENCOUNTER_MUSIC_AQUA,
+        .partySize = 2,
+        .party = (const struct TrainerMon[])
+        {
+            {
+#line 52
+            .species = SPECIES_PAWNIARD,
+#line 52
+            .gender = TRAINER_MON_MALE,
+#line 56
+            .ev = TRAINER_PARTY_EVS(0, 252, 252, 0, 6, 0),
+#line 55
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+#line 54
+            .lvl = 25,
+#line 53
+            .nature = NATURE_BRAVE,
+            .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 57
                 MOVE_METAL_CLAW,
                 MOVE_TORMENT,
                 MOVE_SCARY_FACE,
@@ -60,20 +141,21 @@
             },
             },
             {
-#line 25
+#line 62
             .species = SPECIES_JANGMO_O,
-            .gender = TRAINER_MON_RANDOM_GENDER,
-#line 29
+#line 62
+            .gender = TRAINER_MON_FEMALE,
+#line 66
             .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 252, 6),
-#line 28
+#line 65
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-#line 27
+#line 64
             .lvl = 25,
-#line 26
+#line 63
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 30
+#line 67
                 MOVE_DRAGON_TAIL,
                 MOVE_IRON_DEFENSE,
                 MOVE_WORK_UP,

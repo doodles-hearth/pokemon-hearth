@@ -24084,7 +24084,7 @@ F_TRAINER_FEMALE |
         .trainerPic = TRAINER_PIC_GOLBAT_ADMIN_M,
         .encounterMusic_gender =
 #line 9643
-            TRAINER_ENCOUNTER_MUSIC_MAGMA,
+            TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 9644
         .doubleBattle = FALSE,
 #line 9645
@@ -34520,7 +34520,7 @@ F_TRAINER_FEMALE |
         .trainerPic = TRAINER_PIC_GOLBAT_ADMIN_F,
         .encounterMusic_gender =
 #line 13773
-            TRAINER_ENCOUNTER_MUSIC_MAGMA,
+            TRAINER_ENCOUNTER_MUSIC_AQUA,
 #line 13774
         .doubleBattle = FALSE,
 #line 13775
