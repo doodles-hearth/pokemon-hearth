@@ -208,5 +208,6 @@ void StopFieldMessage(void)
 
 void SetSpeakerName(const u8* name)
 {
+    DebugPrintf("Setting name %S", name);
     gSpeakerName = name;
 }

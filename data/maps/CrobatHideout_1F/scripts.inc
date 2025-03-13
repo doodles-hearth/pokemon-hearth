@@ -264,6 +264,7 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_2
 	closemessage
 	delay 48
+	playse SE_LEDGE
 	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_3
 	speakername CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_1
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_3
@@ -299,6 +300,7 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	speakername CrobatHideout_1F_EventScript_Samurai_Text_0
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_8
 	closemessage
+	playse SE_LEDGE
 	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_3
 	speakername CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_1
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_9
@@ -308,6 +310,7 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	applymovement 13, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_7
 	applymovement 19, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_7
 	waitmovement 0
+	playse SE_PIN
 	applymovement 14, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_8
 	applymovement OBJ_EVENT_ID_PLAYER, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	waitmovement 14
@@ -331,6 +334,7 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	speakername CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_1
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_13
 	closemessage
+	playse SE_LEDGE
 	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_3
 	speakername CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_1
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_14
@@ -417,11 +421,13 @@ CrobatHideout_1F_LetsFight2v2_2:
 	goto CrobatHideout_1F_LetsFight2v2_1
 
 CrobatHideout_1F_LetsFight2v2_5:
+	playse SE_LEDGE
 	applymovement 19, CrobatHideout_1F_LetsFight2v2_Movement_0
 	waitmovement 0
 	speakername CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_16
 	msgbox CrobatHideout_1F_LetsFight2v2_Text_3
 	closemessage
+	playse SE_LEDGE
 	applymovement 13, CrobatHideout_1F_LetsFight2v2_Movement_1
 	waitmovement 0
 	speakername CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_16
@@ -442,6 +448,9 @@ CrobatHideout_1F_LetsFight2v2_5:
 	delay 80
 	fadescreen FADE_FROM_WHITE
 	delay 48
+	applymovement 14, CrobatHideout_1F_BattleSamuraiBackToBack_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, CrobatHideout_1F_PlayerGets4V1d_Movement_1
+	waitmovement 0
 	speakername CrobatHideout_1F_EventScript_Samurai_Text_0
 	msgbox CrobatHideout_1F_LetsFight2v2_Text_6
 	closemessage

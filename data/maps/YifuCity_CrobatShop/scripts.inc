@@ -245,7 +245,8 @@ YifuCity_CrobatShop_Guard_Text_0:
 	.string "Shady man$"
 
 YifuCity_CrobatShop_Guard_Text_1:
-	.string "Standin' guard is boring… Yawn…$"
+	.string "{SPEAKER_NAME SPEAKER_NATSUKI}I am a dude\p"
+	.string "{SPEAKER_NAME SPEAKER_HARIKO}I am now a hot babe$"
 
 YifuCity_CrobatShop_Guard_Text_2:
 	.string "Password?$"

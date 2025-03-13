@@ -1,6 +1,16 @@
 YifuCity_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	compare VAR_CROBAT_HIDEOUT_STATE, 3
+	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	return
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setflag FLAG_TEMP_2
+	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_CROBAT_HIDEOUT_STATE, 3, YifuCity_EscapedCrobatHideoutWithSamurai
@@ -10,6 +20,8 @@ YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 YifuCity_EscapedCrobatHideoutWithSamurai::
 	lockall
 	setvar VAR_CROBAT_HIDEOUT_STATE, 4
+	applymovement 38, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
 	releaseall
 	return
 
@@ -408,7 +420,7 @@ YifuCity_EventScript_Surskit::
 YifuCity_Trigger_Lockdown::
 	lockall
 	goto_if_set FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_Lockdown_2
-	applymovement 33, YifuCity_Trigger_Lockdown_Movement_9
+	applymovement 33, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement 0
 	special GetPlayerSirMissString
 	speakername YifuCity_EventScript_Samurai_Text_0
@@ -530,6 +542,14 @@ YifuCity_Trigger_HarikoCriminals_5:
 	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_2
 	goto YifuCity_Trigger_HarikoCriminals_1
 
+
+YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0:
+	walk_in_place_fast_right
+	step_end
+
+YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1:
+	walk_in_place_fast_left
+	step_end
 
 YifuCity_ShinySellerChoice_Movement_0:
 	walk_faster_down
@@ -727,10 +747,6 @@ YifuCity_Trigger_Lockdown_Movement_7:
 
 YifuCity_Trigger_Lockdown_Movement_8:
 	walk_right
-	step_end
-
-YifuCity_Trigger_Lockdown_Movement_9:
-	walk_in_place_fast_right
 	step_end
 
 YifuCity_Trigger_CantGoThruNorth_Movement_0:

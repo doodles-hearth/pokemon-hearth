@@ -49,7 +49,9 @@ script YifuCity_CrobatShop_Guard {
 	if (flag(FLAG_CROBAT_PASSWORD_CORRECT)) {
 		speakername("Shady man")
 		msgbox(format(
-			"Standin' guard is boring… Yawn…"
+			"{SPEAKER_NAME SPEAKER_NATSUKI}I am a dude\p"
+			"{SPEAKER_NAME SPEAKER_HARIKO}I am now a hot babe"
+			// "Standin' guard is boring… Yawn…"
 		))
 		release
 		end
