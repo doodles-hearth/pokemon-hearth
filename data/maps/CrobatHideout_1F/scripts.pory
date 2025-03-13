@@ -425,7 +425,9 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	))
 	closemessage
 
-	applymovement(LOCALID_CROBAT_BOSS, moves(delay_16 * 3, jump_in_place_down))
+	delay(48)
+	playse(SE_LEDGE)
+	applymovement(LOCALID_CROBAT_BOSS, moves(jump_in_place_down))
 
 	speakername("Crobat Boss")
 	msgbox(format(
@@ -465,8 +467,8 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	closemessage
 
 	playse(SE_PIN)
-	applymovement(LOCALID_GRUNT_REUNION_ROOM_LEFT, moves(emote_exclamation_mark, delay_16 * 2, face_right, delay_16 * 2, face_right, delay_16 * 2))
-	applymovement(LOCALID_GRUNT_REUNION_ROOM_TOP, moves(emote_exclamation_mark, delay_16 * 2, face_left, delay_16 * 2, face_right, delay_16 * 2))
+	applymovement(LOCALID_GRUNT_REUNION_ROOM_LEFT, moves(emote_exclamation_mark, delay_16 * 2, face_right, delay_16 * 2, face_right, delay_16 * 3))
+	applymovement(LOCALID_GRUNT_REUNION_ROOM_TOP, moves(emote_exclamation_mark, delay_16 * 2, face_left, delay_16 * 2, face_right, delay_16 * 3))
 	waitmovement(0)
 
 	speakername("Crobat Boss")
@@ -488,6 +490,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	))
 	closemessage
 
+	playse(SE_LEDGE)
 	applymovement(LOCALID_CROBAT_BOSS, moves(jump_in_place_down))
 
 	speakername("Crobat Boss")
@@ -504,6 +507,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	applymovement(LOCALID_GOLBAT_RIGHT, moves(walk_up * 2))
 	waitmovement(0)
 
+	playse(SE_PIN)
 	applymovement(LOCALID_SAMURAI, moves(emote_exclamation_mark, face_down, delay_16 * 3))
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
 	waitmovement(LOCALID_SAMURAI)
@@ -542,7 +546,9 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	))
 	closemessage
 
-	// TODO EVA boss cape animation
+
+	playse(SE_LEDGE)
+	applymovement(LOCALID_CROBAT_BOSS, moves(jump_in_place_down))
 
 	speakername("Crobat Boss")
 	msgbox(format(
@@ -550,10 +556,11 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	))
 	closemessage
 
+	// TODO EVA boss cape animation
 	applymovement(LOCALID_GRUNT_REUNION_ROOM_TOP, moves(walk_right * 2, face_down))
 	applymovement(LOCALID_GRUNT_REUNION_ROOM_LEFT, moves(walk_right * 2, face_down))
-	applymovement(LOCALID_4V1_GRUNT_3, moves(walk_up * 2, walk_up * 3, face_down))
-	applymovement(LOCALID_4V1_GRUNT_4, moves(walk_right * 2, face_down))
+	applymovement(LOCALID_4V1_GRUNT_3, moves(walk_up * 3, walk_right * 2, face_down))
+	applymovement(LOCALID_4V1_GRUNT_4, moves(walk_right * 2, walk_up * 3, face_down))
 	applymovement(LOCALID_KEVIN, moves(face_down))
 	waitmovement(LOCALID_GRUNT_REUNION_ROOM_TOP)
 	waitmovement(LOCALID_GRUNT_REUNION_ROOM_LEFT)
@@ -561,7 +568,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	waitmovement(LOCALID_4V1_GRUNT_4)
 	delay(48)
 	playse(SE_PIN)
-	applymovement(LOCALID_KEVIN, moves(emote_exclamation_mark, delay_16 * 3, walk_fast_right * 2, walk_fast_up * 2, face_down, delay_16 * 3))
+	applymovement(LOCALID_KEVIN, moves(face_up, emote_exclamation_mark, delay_16 * 3, walk_fast_right * 2, walk_fast_up * 2, face_down, delay_16 * 3))
 	waitmovement(0)
 
 	applymovement(LOCALID_GRUNT_REUNION_ROOM_TOP, moves(zubats_align, delay_16 * 2))
@@ -642,6 +649,7 @@ script CrobatHideout_1F_LetsFight2v2 {
 			PARTNER_SAMURAI
 		)
 		if (var(VAR_RESULT)) {
+			playse(SE_LEDGE)
 			applymovement(LOCALID_GOLBAT_RIGHT, moves(jump_in_place_left))
 			waitmovement(0)
 			speakername("Golbat Admin")
@@ -650,6 +658,7 @@ script CrobatHideout_1F_LetsFight2v2 {
 			))
 			closemessage
 
+			playse(SE_LEDGE)
 			applymovement(LOCALID_GOLBAT_LEFT, moves(jump_in_place_right))
 			waitmovement(0)
 			speakername("Golbat Admin")
@@ -678,6 +687,9 @@ script CrobatHideout_1F_LetsFight2v2 {
 			fadescreen(FADE_FROM_WHITE)
 			delay(48)
 
+			applymovement(LOCALID_SAMURAI, moves(walk_in_place_fast_left))
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
+			waitmovement(0)
 			speakername("Samurai")
 			msgbox(format(
 				"Cough… Let's get out of here!"

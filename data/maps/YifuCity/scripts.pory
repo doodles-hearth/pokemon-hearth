@@ -2,11 +2,18 @@ const LOCALID_GRUNT_PASSWORD_TOP = 9
 const LOCALID_GRUNT_PASSWORD_BOTTOM = 10
 const LOCALID_GRUNT_PASSWORD_ZUBAT = 11
 const FLAG_IS_MON_SENT_TO_PC = FLAG_TEMP_1
+const FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP = FLAG_TEMP_2
+const LOCALID_SAMURAI_HIDEOUT = 38
 const LOCALID_LOCKDOWN_SAMURAI = 33
 const LOCALID_LOCKDOWN_SAMURAI_NORTH = 34
 const LOCALID_HARIKO = 35
 
 mapscripts YifuCity_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_CROBAT_HIDEOUT_STATE) != 3) {
+			setflag(FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP)
+		}
+	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CROBAT_HIDEOUT_STATE, 3: YifuCity_EscapedCrobatHideoutWithSamurai
     ]
@@ -16,6 +23,8 @@ script YifuCity_EscapedCrobatHideoutWithSamurai {
 	lockall
 	// TODO EVA
 	setvar(VAR_CROBAT_HIDEOUT_STATE, 4)
+	applymovement(LOCALID_SAMURAI_HIDEOUT, moves(walk_in_place_fast_right))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 	releaseall
 }
 
