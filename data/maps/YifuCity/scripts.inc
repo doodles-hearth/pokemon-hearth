@@ -70,11 +70,17 @@ YifuCity_EventScript_Cleffa::
 YifuCity_EventScript_IDontFeelSafe::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_IDontFeelSafe_Text_0
+	speakername YifuCity_EventScript_StoleMyMon_Text_0
+	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_IDontFeelSafe_2
 	msgbox YifuCity_EventScript_IDontFeelSafe_Text_1
+YifuCity_EventScript_IDontFeelSafe_1:
 	closemessage
 	release
 	return
+
+YifuCity_EventScript_IDontFeelSafe_2:
+	msgbox YifuCity_EventScript_IDontFeelSafe_Text_0
+	goto YifuCity_EventScript_IDontFeelSafe_1
 
 
 YifuCity_EventScript_Samurai::
@@ -112,11 +118,57 @@ YifuCity_EventScript_RobberyVictim::
 	lock
 	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement 0
-	speakername YifuCity_EventScript_IDontFeelSafe_Text_0
-	msgbox YifuCity_EventScript_RobberyVictim_Text_0
+	speakername YifuCity_EventScript_RobberyVictim_Text_0
+	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_RobberyVictim_2
+	msgbox YifuCity_EventScript_RobberyVictim_Text_7
+YifuCity_EventScript_RobberyVictim_1:
 	closemessage
 	release
 	return
+
+YifuCity_EventScript_RobberyVictim_2:
+	faceplayer
+	msgbox YifuCity_EventScript_RobberyVictim_Text_1
+	checkitem ITEM_STOLEN_MONS
+	compare VAR_RESULT, 0
+	goto_if_ne YifuCity_EventScript_RobberyVictim_5
+	goto YifuCity_EventScript_RobberyVictim_1
+
+YifuCity_EventScript_RobberyVictim_5:
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_EventScript_RobberyVictim_Text_2, YifuCity_EventScript_RobberyVictim_Text_3
+	closemessage
+	switch VAR_RESULT
+	case 0, YifuCity_EventScript_RobberyVictim_8
+	case 1, YifuCity_EventScript_RobberyVictim_9
+	goto YifuCity_EventScript_RobberyVictim_1
+
+YifuCity_EventScript_RobberyVictim_8:
+	playfanfare MUS_OBTAIN_TMHM
+	message YifuCity_EventScript_RobberyVictim_Text_4
+	waitmessage
+	waitfanfare
+	removeitem ITEM_STOLEN_MONS
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, YifuCity_EventScript_RobberyVictim_Movement_0
+	waitmovement 0
+	waitse
+	speakername YifuCity_EventScript_RobberyVictim_Text_0
+	msgbox YifuCity_EventScript_RobberyVictim_Text_5
+	closemessage
+	giveitem ITEM_TM_CALM_MIND
+	setflag FLAG_RECEIVED_TM_CALM_MIND
+	addvar VAR_PLAYER_REPUTATION, 1
+	fadescreen FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	delay 48
+	fadescreen FADE_FROM_BLACK
+	goto YifuCity_EventScript_RobberyVictim_1
+
+YifuCity_EventScript_RobberyVictim_9:
+	speakername YifuCity_EventScript_RobberyVictim_Text_0
+	msgbox YifuCity_EventScript_RobberyVictim_Text_6
+	closemessage
+	goto YifuCity_EventScript_RobberyVictim_1
 
 
 YifuCity_EventScript_ShinySeller::
@@ -448,6 +500,11 @@ YifuCity_EventScript_Surskit::
 	end
 
 
+YifuCity_EventScript_CrobatShopSign::
+	msgbox YifuCity_EventScript_CrobatShopSign_Text_0, MSGBOX_SIGN
+	return
+
+
 YifuCity_Trigger_Lockdown::
 	lockall
 	goto_if_set FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_Lockdown_2
@@ -580,6 +637,13 @@ YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0:
 
 YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1:
 	walk_in_place_fast_left
+	step_end
+
+YifuCity_EventScript_RobberyVictim_Movement_0:
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 YifuCity_ShinySellerChoice_Movement_0:
@@ -851,7 +915,10 @@ YifuCity_EventScript_Cleffa_Text_0:
 	.string "Faa!$"
 
 YifuCity_EventScript_IDontFeelSafe_Text_0:
-	.string "Woman$"
+	.string "I heard a young wielder made those\n"
+	.string "weird Crobat dudes go away!\p"
+	.string "They must be a very brave young\n"
+	.string "person.$"
 
 YifuCity_EventScript_IDontFeelSafe_Text_1:
 	.string "I don't feel safe with those Crobat\n"
@@ -874,6 +941,36 @@ YifuCity_EventScript_SamuraiTalkToRobberyVictim_Text_0:
 	.string "thiefs looked like?$"
 
 YifuCity_EventScript_RobberyVictim_Text_0:
+	.string "Woman$"
+
+YifuCity_EventScript_RobberyVictim_Text_1:
+	.string "You and the Samurai scared those\n"
+	.string "crooks off? That's good…\p"
+	.string "Although I wonder where my stolen\n"
+	.string "Pokémon can be…$"
+
+YifuCity_EventScript_RobberyVictim_Text_2:
+	.string "Here are your Pokémon!$"
+
+YifuCity_EventScript_RobberyVictim_Text_3:
+	.string "…$"
+
+YifuCity_EventScript_RobberyVictim_Text_4:
+	.string "{PLAYER} returned the stolen\n"
+	.string "Pokémon to their rightful owner.$"
+
+YifuCity_EventScript_RobberyVictim_Text_5:
+	.string "Oh my! You even got my precious\n"
+	.string "Pokémon back!\p"
+	.string "You're a true hero, you know\n"
+	.string "that?\p"
+	.string "I'm finally at peace again! Here,\n"
+	.string "take this, as a thanks!$"
+
+YifuCity_EventScript_RobberyVictim_Text_6:
+	.string "Sigh… I hope they're okay…$"
+
+YifuCity_EventScript_RobberyVictim_Text_7:
 	.string "A couple of crooks threatened me\n"
 	.string "and stole all my Pokémon, right in\l"
 	.string "front of the Refuge!\p"
@@ -1026,6 +1123,12 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Text_5:
 
 YifuCity_EventScript_Surskit_Text_0:
 	.string "Sksksksk…$"
+
+YifuCity_EventScript_CrobatShopSign_Text_0:
+	.string "The sign has been written over.\p"
+	.string "“Crobat Shop\n"
+	.string "Come peruse our totally legal\l"
+	.string "stuff!”$"
 
 YifuCity_Trigger_Lockdown_Text_0:
 	.string "ATTENTION! ATTENTION!\p"

@@ -688,7 +688,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_EventScript_RobberyVictim",
-      "flag": "0",
+      "flag": "FLAG_RECEIVED_TM_CALM_MIND",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,

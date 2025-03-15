@@ -32,7 +32,8 @@ script YifuCity_EscapedCrobatHideoutWithSamurai {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 
 	speakername("Samurai")
-	msgbox("Well, well… They slipped through our fingers, but they fled the city!")
+	msgbox(format("Well, well… They slipped through our fingers, but they fled the city!"))
+	// TODO EVA 
 	releaseall
 }
 
@@ -76,11 +77,19 @@ script YifuCity_EventScript_Cleffa {
 script YifuCity_EventScript_IDontFeelSafe {
 	lock
 	faceplayer
-	speakername("Woman")
-	msgbox(format(
-		"I don't feel safe with those Crobat weirdos creeping around the city…\p"
-		"I can't imagine how much worse it'd be were it not for the patrolling Samurai!"
-	))
+	speakername("Man")
+
+	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+		msgbox(format(
+			"I heard a young wielder made those weird Crobat dudes go away!\p"
+			"They must be a very brave young person."
+		))
+	} else {
+		msgbox(format(
+			"I don't feel safe with those Crobat weirdos creeping around the city…\p"
+			"I can't imagine how much worse it'd be were it not for the patrolling Samurai!"
+		))
+	}
 	closemessage
 	release
 }
@@ -121,13 +130,75 @@ script YifuCity_EventScript_SamuraiTalkToRobberyVictim {
 
 script YifuCity_EventScript_RobberyVictim {
 	lock
-	applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right))
-	waitmovement(0)
+	
 	speakername("Woman")
-	msgbox(format(
-		"A couple of crooks threatened me and stole all my Pokémon, right in front of the Refuge!\p"
-		"Oh, what am I ever going to do…?"
-	))
+	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+		faceplayer
+		msgbox(format(
+			"You and the Samurai scared those crooks off? That's good…\p"
+			"Although I wonder where my stolen Pokémon can be…"
+		))
+
+		if (checkitem(ITEM_STOLEN_MONS)) {
+			dynmultichoice(
+				0,
+				0,
+				TRUE,
+				10,
+				0,
+				DYN_MULTICHOICE_CB_NONE,
+				"Here are your Pokémon!",
+				"…"
+			)
+			closemessage
+
+			switch(var(VAR_RESULT)) {
+				case 0:
+					playfanfare(MUS_OBTAIN_TMHM)
+					message(format("{PLAYER} returned the stolen Pokémon to their rightful owner."))
+					waitmessage
+					waitfanfare
+					removeitem(ITEM_STOLEN_MONS)
+
+					playse(SE_PIN)
+					applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 3))
+					waitmovement(0)
+					waitse
+					speakername("Woman")
+					msgbox(format(
+						"Oh my! You even got my precious Pokémon back!\p"
+						"You're a true hero, you know that?\p"
+						"I'm finally at peace again! Here, take this, as a thanks!"
+					))
+					closemessage
+
+					giveitem(ITEM_TM_CALM_MIND)
+					waitmessage
+					setflag(FLAG_RECEIVED_TM_CALM_MIND)
+					addvar(VAR_PLAYER_REPUTATION, 1)
+
+					fadescreen(FADE_TO_BLACK)
+					removeobject(VAR_LAST_TALKED)
+					delay(48)
+					fadescreen(FADE_FROM_BLACK)
+					// TODO EVA put her somewhere in the city hanging out with her mons
+				case 1:
+					speakername("Woman")
+					msgbox(format(
+						"Sigh… I hope they're okay…"
+					))
+					closemessage
+			}
+		}
+	} else {
+		applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right))
+		waitmovement(0)
+		msgbox(format(
+			"A couple of crooks threatened me and stole all my Pokémon, right in front of the Refuge!\p"
+			"Oh, what am I ever going to do…?"
+		))
+	}
+	
 	closemessage
 	release
 }
@@ -193,6 +264,7 @@ script YifuCity_ShinySellerChoice {
 
 				removemoney(10000)
 				updatemoneybox
+				playse(SE_SHOP)
 
 				closemessage
 
@@ -558,6 +630,14 @@ script YifuCity_EventScript_Surskit {
     waitmoncry
     release
     end
+}
+
+script YifuCity_EventScript_CrobatShopSign {
+    msgbox(format(
+        "The sign has been written over.\p"
+		"“Crobat Shop\n"
+		"Come peruse our totally legal stuff!”"
+    ), MSGBOX_SIGN)
 }
 
 script YifuCity_Trigger_Lockdown {

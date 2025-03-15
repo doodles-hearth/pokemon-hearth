@@ -1,0 +1,13 @@
+mapscripts YifuCity_Onsen_MapScripts {
+
+}
+
+script YifuCity_Onsen_EventScript_Owner {
+	lock
+	faceplayer
+	speakername("Owner")
+	msgbox(format(
+		"The hot springs are closed for the moment."
+	))
+	release
+}

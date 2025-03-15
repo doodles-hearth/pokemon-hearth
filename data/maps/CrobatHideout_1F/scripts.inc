@@ -584,6 +584,7 @@ CrobatHideout_1F_LetsFight2v2_5:
 	msgbox CrobatHideout_1F_LetsFight2v2_Text_6
 	closemessage
 	setvar VAR_CROBAT_HIDEOUT_STATE, 3
+	setflag FLAG_CLEARED_CROBAT_HIDEOUT
 	warp MAP_YIFU_CITY, 33, 13
 	goto CrobatHideout_1F_LetsFight2v2_1
 
@@ -1137,17 +1138,20 @@ CrobatHideout_1F_SeenByGrunt_Text_5:
 	.string "Samurai or somethin', do ya?$"
 
 CrobatHideout_1F_SeenByGrunt_Text_6:
-	.string "Oh, right, 'course, the new recruit!\p"
+	.string "Oh, right, 'course, the new\n"
+	.string "recruit!\p"
 	.string "(Why am I never in the loop?…)\p"
 	.string "Wait… Where's yer uniform?$"
 
 CrobatHideout_1F_SeenByGrunt_Text_7:
 	.string "Duh, what dum' question is that?\p"
 	.string "…Wait…\n"
-	.string "You're not a Crobat Shadow, are ya?$"
+	.string "You're not a Crobat Shadow, are\l"
+	.string "ya?$"
 
 CrobatHideout_1F_SeenByGrunt_Text_8:
-	.string "Ah, crappers! Hideout's compromised!\p"
+	.string "Ah, crappers! Hideout's\n"
+	.string "compromised!\p"
 	.string "We've got an intruder!\n"
 	.string "BOSS!! BOOOSSSS!!!$"
 
@@ -1170,25 +1174,27 @@ CrobatHideout_1F_EventScript_GruntPaintingPokeballs_Text_1:
 	.string "Alright alright, ya got me!$"
 
 CrobatHideout_1F_EventScript_GruntPaintingPokeballs_Text_2:
-	.string "I'm sure this is all super legal, but\n"
-	.string "dontcha dare say a thing!$"
+	.string "I'm sure this is all super legal,\n"
+	.string "but dontcha dare say a thing!$"
 
 CrobatHideout_1F_EventScript_GruntLaundryRoom_Text_0:
-	.string "Yer not here to help with the laundry,\n"
-	.string "are ya?$"
+	.string "Yer not here to help with the\n"
+	.string "laundry, are ya?$"
 
 CrobatHideout_1F_EventScript_GruntLaundryRoom_Text_1:
 	.string "Hung me out to dry…$"
 
 CrobatHideout_1F_EventScript_GruntLaundryRoom_Text_2:
-	.string "I always end up on laundry duty, even\n"
-	.string "when it's someone else's turn…$"
+	.string "I always end up on laundry duty,\n"
+	.string "even when it's someone else's turn…$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGirl_Text_0:
-	.string "Where d'ya think yer goin', cutie pie?$"
+	.string "Where d'ya think yer goin', cutie\n"
+	.string "pie?$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGirl_Text_1:
-	.string "Fine, go where ya want then, sheesh!$"
+	.string "Fine, go where ya want then,\n"
+	.string "sheesh!$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGirl_Text_2:
 	.string "Yer laughin' now, but our boss is\n"
@@ -1202,20 +1208,20 @@ CrobatHideout_1F_EventScript_GruntDoubleGuy_Text_1:
 	.string "Kids these days, I swear!$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGuy_Text_2:
-	.string "We ain't gon' take this invasion of our\n"
-	.string "privacy lyin' down!$"
+	.string "We ain't gon' take this invasion of\n"
+	.string "our privacy lyin' down!$"
 
 CrobatHideout_1F_EventScript_GruntNearReunionRoom_Text_0:
-	.string "This is our super secret hideout! Yer\n"
-	.string "not wanted 'ere!$"
+	.string "This is our super secret hideout!\n"
+	.string "Yer not wanted 'ere!$"
 
 CrobatHideout_1F_EventScript_GruntNearReunionRoom_Text_1:
 	.string "Yer ruinin' everythin'!$"
 
 CrobatHideout_1F_EventScript_GruntNearReunionRoom_Text_2:
 	.string "Our boss takes good care of us!\n"
-	.string "Everythin' was fine an' dandy 'til you\l"
-	.string "showed up!$"
+	.string "Everythin' was fine an' dandy 'til\l"
+	.string "you showed up!$"
 
 CrobatHideout_1F_EventScript_Samurai_Text_0:
 	.string "Samurai$"
@@ -1223,9 +1229,9 @@ CrobatHideout_1F_EventScript_Samurai_Text_0:
 CrobatHideout_1F_EventScript_Samurai_Text_1:
 	.string "Quiet! The leader of the Crobat\n"
 	.string "Shadows is in the next room!\p"
-	.string "You're a trainer, yes? You have a wild\n"
-	.string "look in your eyes… Like you're itching\l"
-	.string "for a fight!\p"
+	.string "You're a trainer, yes? You have a\n"
+	.string "wild look in your eyes… Like\l"
+	.string "you're itching for a fight!\p"
 	.string "Shall we join forces for the\n"
 	.string "inevitable confrontation?$"
 
@@ -1244,29 +1250,29 @@ CrobatHideout_1F_EventScript_MessPoster_Text_0:
 	.string "1. DO clean up after yourself!\l"
 	.string "2. DO NOT steal food from other\l"
 	.string "grunts!\l"
-	.string "3. But more importantly, DO NOT let\l"
-	.string "your food be stolen!\l"
+	.string "3. But more importantly, DO NOT\l"
+	.string "let your food be stolen!\l"
 	.string "4. Seriously though, next one who\l"
-	.string "leaves a mess, I WILL bite them in\l"
-	.string "their sleep.\l"
+	.string "leaves a mess, I WILL bite them\l"
+	.string "in their sleep.\l"
 	.string "- The Boss”$"
 
 CrobatHideout_1F_EventScript_FirstPoster_Text_0:
-	.string "“Welcome to the Super Secret Crobat\n"
-	.string "Hideout!\l"
-	.string "Keep it down, we don't want to attract\l"
-	.string "attention. - The Boss”$"
+	.string "“Welcome to the Super Secret\n"
+	.string "Crobat Hideout!\l"
+	.string "Keep it down, we don't want to\l"
+	.string "attract attention. - The Boss”$"
 
 CrobatHideout_1F_EventScript_Pots_Text_0:
-	.string "An assortment of mismatched pots and\n"
-	.string "pans.$"
+	.string "An assortment of mismatched pots\n"
+	.string "and pans.$"
 
 CrobatHideout_1F_EventScript_EmptyBowl_Text_0:
 	.string "An empty bowl.$"
 
 CrobatHideout_1F_EventScript_EmptyBowlLeftover_Text_0:
-	.string "A bowl containing some leftover Mifan\n"
-	.string "Berry soup.$"
+	.string "A bowl containing some leftover\n"
+	.string "Mifan Berry soup.$"
 
 CrobatHideout_1F_EventScript_WantedPosterMustache_Text_0:
 	.string "“WANTED: Crobat Shadows Grunt\n"
@@ -1291,7 +1297,8 @@ CrobatHideout_1F_EventScript_WantedPosterBoss_Text_0:
 	.string "There are various messages\n"
 	.string "scribbled on the poster:\l"
 	.string "“Happy birthday boss”,\l"
-	.string "“U are worthe 999 999¥ in our harts”,\l"
+	.string "“U are worthe 999 999¥ in our\l"
+	.string "harts”,\l"
 	.string "“Gogettem boss”…\l"
 	.string "… … …\l"
 	.string "It's time to go.$"
@@ -1301,8 +1308,8 @@ CrobatHideout_1F_EventScript_PosterFeedPoochyena_Text_0:
 
 CrobatHideout_1F_EventScript_PosterReunionRoom_Text_0:
 	.string "“BELIEVE IN YOURSELF\n"
-	.string "Be the kind of criminal you want to\l"
-	.string "be!”\p"
+	.string "Be the kind of criminal you want\l"
+	.string "to be!”\p"
 	.string "There is a doodle of a Woobat in a\n"
 	.string "corner.$"
 
@@ -1324,26 +1331,26 @@ CrobatHideout_1F_Trigger_4V1_Text_2:
 	.string "Excuse me!$"
 
 CrobatHideout_1F_SamuraiOffersHelp_Text_0:
-	.string "You sure are elusive! I finally caught\n"
-	.string "up with your trail!\p"
-	.string "Good work finding the Crobat Shadows'\n"
-	.string "lair, we'd been on the lookout for a\l"
-	.string "while!$"
+	.string "You sure are elusive! I finally\n"
+	.string "caught up with your trail!\p"
+	.string "Good work finding the Crobat\n"
+	.string "Shadows' lair, we'd been on the\l"
+	.string "lookout for a while!$"
 
 CrobatHideout_1F_SamuraiOffersHelp_Text_1:
-	.string "Oh, you were in the midst of getting\n"
-	.string "attacked by these four delinquents,\l"
-	.string "were you not?\p"
+	.string "Oh, you were in the midst of\n"
+	.string "getting attacked by these four\l"
+	.string "delinquents, were you not?\p"
 	.string "Let me help!\n"
 	.string "I can handle two at a time!$"
 
 CrobatHideout_1F_SamuraiOffersHelp_Text_2:
-	.string "Hey, no fair! This was s'posed to be a\n"
-	.string "four on one situation!$"
+	.string "Hey, no fair! This was s'posed to\n"
+	.string "be a four on one situation!$"
 
 CrobatHideout_1F_BattleSamuraiBackToBack_Text_0:
-	.string "Ayayaya! Jus' wait til the Boss hears\n"
-	.string "of this!$"
+	.string "Ayayaya! Jus' wait til the Boss\n"
+	.string "hears of this!$"
 
 CrobatHideout_1F_BattleSamuraiBackToBack_Text_1:
 	.string "Nicely done!\n"
@@ -1367,18 +1374,19 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_2:
 	.string "Yeah - I can see that, Kevin…\p"
 	.string "As always, thank you for your\n"
 	.string "precious input!\p"
-	.string "Did one man and a puny lil' brat jus'\n"
-	.string "wipe through our whole squad like it\l"
-	.string "was nothin'? Is that what happened?$"
+	.string "Did one man and a puny lil' brat\n"
+	.string "jus' wipe through our whole squad\l"
+	.string "like it was nothin'? Is that what\l"
+	.string "happened?$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_3:
 	.string "Wait a second… I know this kid!\p"
-	.string "Yer the annoyin' brat that ruined us a\n"
-	.string "good muggin' back in Beachbound\l"
+	.string "Yer the annoyin' brat that ruined us\n"
+	.string "a good muggin' back in Beachbound\l"
 	.string "Route!\p"
-	.string "What the hell, kid? Why're ya always\n"
-	.string "all up in our business? D'ya think yer\l"
-	.string "the law or somethin'?$"
+	.string "What the hell, kid? Why're ya\n"
+	.string "always all up in our business?\l"
+	.string "D'ya think yer the law or somethin'?$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_4:
 	.string "I make the law here!\n"
@@ -1391,8 +1399,8 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_5:
 	.string "never get m-$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_6:
-	.string "Wait, a robbery? Which one of ya goons\n"
-	.string "did this?$"
+	.string "Wait, a robbery? Which one of ya\n"
+	.string "goons did this?$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_7:
 	.string "Well bravaw! You've jus' blown our\n"
@@ -1403,9 +1411,10 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_7:
 	.string "We can't deal with this much heat!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_8:
-	.string "Cut the chatter, you lowlife crook!\p"
-	.string "Your reign of terror has been going on\n"
-	.string "for too long!\p"
+	.string "Cut the chatter, you lowlife\n"
+	.string "crook!\p"
+	.string "Your reign of terror has been going\n"
+	.string "on for too long!\p"
 	.string "You are under arrest, I said!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_9:
@@ -1424,8 +1433,9 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_12:
 	.string "Yes boss!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_13:
-	.string "No fancy Samurai and no lil' privileged\n"
-	.string "scrub are ever gonna stop us!\p"
+	.string "No fancy Samurai and no lil'\n"
+	.string "privileged scrub are ever gonna\l"
+	.string "stop us!\p"
 	.string "We're the Crobat Shadows, and we're\n"
 	.string "always one step ahead of ya!\p"
 	.string "Kid… Careful who ya team up with.$"

@@ -24,6 +24,7 @@ script Common_EventScript_PcGuy {
 		msgbox(format(
 			"Pant… pant… Thanks for using our Pokémon pasture service!"
 		))
+		closemessage
 	} else {
 		setflag(FLAG_PC_EXPLAINED)
 		// TODO EVA do this only if we actually stored mons
@@ -32,6 +33,7 @@ script Common_EventScript_PcGuy {
 			"Alright, I'll just carry them over to the pasture!\p"
 			"Just a minute!"
 		))
+		closemessage
 
 		fadescreen(FADE_TO_BLACK)
 		delay(120)
@@ -43,6 +45,7 @@ script Common_EventScript_PcGuy {
 			"Whew, the pasture is a liiiittle far from here! Pant…\p"
 			"Come… pant… Come again!"
 		))
+		closemessage
 	}
 
 	release

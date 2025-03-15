@@ -23,6 +23,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 				"Yep, uh, good as new, probably!\p"
 				"Ya know the drill, 500¥ please!"
 			))
+			playse(SE_SHOP)
 			removemoney(500)
 			updatemoneybox
 
@@ -73,6 +74,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 					msgbox(format(
 						"No whinin'! Fork over the cash before I call security!"
 					))
+					playse(SE_SHOP)
 					removemoney(500)
 					updatemoneybox
 
@@ -100,6 +102,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 						"I mean, yeah, you better!"
 					))
 
+					playse(SE_SHOP)
 					removemoney(500)
 					updatemoneybox
 
@@ -181,6 +184,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 				msgbox(format(
 					"For sure. That'll be ¥500!"
 				))
+				playse(SE_SHOP)
 				removemoney(500)
 				updatemoneybox
 
