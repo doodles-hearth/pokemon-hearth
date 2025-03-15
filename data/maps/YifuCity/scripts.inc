@@ -1,6 +1,23 @@
 YifuCity_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	compare VAR_CROBAT_HIDEOUT_STATE, 3
+	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	compare VAR_CROBAT_HIDEOUT_STATE, 4
+	goto_if_ge YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	return
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	setflag FLAG_TEMP_2
+	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	setflag FLAG_TEMP_2
+	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_CROBAT_HIDEOUT_STATE, 3, YifuCity_EscapedCrobatHideoutWithSamurai
@@ -10,6 +27,8 @@ YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 YifuCity_EscapedCrobatHideoutWithSamurai::
 	lockall
 	setvar VAR_CROBAT_HIDEOUT_STATE, 4
+	applymovement 38, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
 	releaseall
 	return
 
@@ -71,6 +90,28 @@ YifuCity_EventScript_Samurai2::
 	faceplayer
 	speakername YifuCity_EventScript_Samurai_Text_0
 	msgbox YifuCity_EventScript_Samurai2_Text_0
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_SamuraiTalkToRobberyVictim::
+	lock
+	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	waitmovement 0
+	speakername YifuCity_EventScript_Samurai_Text_0
+	msgbox YifuCity_EventScript_SamuraiTalkToRobberyVictim_Text_0
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_RobberyVictim::
+	lock
+	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	waitmovement 0
+	speakername YifuCity_EventScript_IDontFeelSafe_Text_0
+	msgbox YifuCity_EventScript_RobberyVictim_Text_0
 	closemessage
 	release
 	return
@@ -408,7 +449,7 @@ YifuCity_EventScript_Surskit::
 YifuCity_Trigger_Lockdown::
 	lockall
 	goto_if_set FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_Lockdown_2
-	applymovement 33, YifuCity_Trigger_Lockdown_Movement_9
+	applymovement 33, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement 0
 	special GetPlayerSirMissString
 	speakername YifuCity_EventScript_Samurai_Text_0
@@ -530,6 +571,14 @@ YifuCity_Trigger_HarikoCriminals_5:
 	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_2
 	goto YifuCity_Trigger_HarikoCriminals_1
 
+
+YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0:
+	walk_in_place_fast_right
+	step_end
+
+YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1:
+	walk_in_place_fast_left
+	step_end
 
 YifuCity_ShinySellerChoice_Movement_0:
 	walk_faster_down
@@ -729,10 +778,6 @@ YifuCity_Trigger_Lockdown_Movement_8:
 	walk_right
 	step_end
 
-YifuCity_Trigger_Lockdown_Movement_9:
-	walk_in_place_fast_right
-	step_end
-
 YifuCity_Trigger_CantGoThruNorth_Movement_0:
 	walk_in_place_fast_down
 	step_end
@@ -818,6 +863,16 @@ YifuCity_EventScript_Samurai2_Text_0:
 	.string "Please be vigilant! Should you\n"
 	.string "witness any suspicious situation,\l"
 	.string "report it immediately!$"
+
+YifuCity_EventScript_SamuraiTalkToRobberyVictim_Text_0:
+	.string "Ma'am, can you describe what the\n"
+	.string "thiefs looked like?$"
+
+YifuCity_EventScript_RobberyVictim_Text_0:
+	.string "A couple of crooks threatened me and\n"
+	.string "stole all my Pokémon, right in front of\l"
+	.string "the Refuge!\p"
+	.string "Oh, what am I ever going to do…?$"
 
 YifuCity_EventScript_ShinySeller_Text_0:
 	.string "Shady man$"

@@ -13304,6 +13304,140 @@
                 "species": "SPECIES_SEAKING"
               }
             ]
+          },
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 13,
+                "max_level": 15,
+                "species": "SPECIES_PIDGEY"
+              },
+              {
+                "min_level": 13,
+                "max_level": 16,
+                "species": "SPECIES_DROWZEE"
+              },
+              {
+                "min_level": 16,
+                "max_level": 17,
+                "species": "SPECIES_FLETCHINDER"
+              },
+              {
+                "min_level": 13,
+                "max_level": 16,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 13,
+                "max_level": 16,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 13,
+                "max_level": 16,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 16,
+                "max_level": 19,
+                "species": "SPECIES_PIDGEOTTO"
+              },
+              {
+                "min_level": 19,
+                "max_level": 21,
+                "species": "SPECIES_LINOONE"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_ABRA"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_ABRA"
+              },
+              {
+                "min_level": 15,
+                "max_level": 17,
+                "species": "SPECIES_ABRA"
+              },
+              {
+                "min_level": 15,
+                "max_level": 17,
+                "species": "SPECIES_ABRA"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_YIFU_CITY",
+          "base_label": "gYifuCityNight",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 13,
+                "max_level": 15,
+                "species": "SPECIES_HOOTHOOT"
+              },
+              {
+                "min_level": 13,
+                "max_level": 16,
+                "species": "SPECIES_DROWZEE"
+              },
+              {
+                "min_level": 16,
+                "max_level": 17,
+                "species": "SPECIES_NOCTOWL"
+              },
+              {
+                "min_level": 13,
+                "max_level": 16,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 13,
+                "max_level": 16,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 19,
+                "max_level": 21,
+                "species": "SPECIES_LINOONE"
+              },
+              {
+                "min_level": 16,
+                "max_level": 19,
+                "species": "SPECIES_POLTCHAGEIST"
+              },
+              {
+                "min_level": 16,
+                "max_level": 19,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 18,
+                "max_level": 20,
+                "species": "SPECIES_POLTCHAGEIST"
+              },
+              {
+                "min_level": 12,
+                "max_level": 15,
+                "species": "SPECIES_ABRA"
+              },
+              {
+                "min_level": 15,
+                "max_level": 17,
+                "species": "SPECIES_ABRA"
+              },
+              {
+                "min_level": 15,
+                "max_level": 17,
+                "species": "SPECIES_ABRA"
+              }
+            ]
           }
         }
       ]

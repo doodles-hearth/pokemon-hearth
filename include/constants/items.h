@@ -1015,8 +1015,9 @@
 #define ITEM_SLOWPOKE_TAIL   842
 #define ITEM_ULTRA_BALL_KNOCKOFF 843
 #define ITEM_ESCAPE_ROPE_KNOCKOFF 844
+#define ITEM_STOLEN_MONS 845
 
-#define ITEMS_COUNT 845
+#define ITEMS_COUNT 846
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

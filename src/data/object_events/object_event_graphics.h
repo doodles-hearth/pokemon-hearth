@@ -200,6 +200,7 @@ const u32 gObjectEventPic_CrobatShadowsGruntF[] = INCBIN_U32("graphics/object_ev
 const u32 gObjectEventPic_CrobatShadowsAdminM[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/golbat_m.4bpp");
 const u32 gObjectEventPic_CrobatShadowsAdminF[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/golbat_f.4bpp");
 const u32 gObjectEventPic_CrobatShadowsBoss[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/crobat.4bpp");
+const u32 gObjectEventPic_CrobatShadowsBossCape[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/crobat_cape.4bpp");
 const u32 gObjectEventPic_CrobatShadowsKevin[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/kevin.4bpp");
 const u16 gObjectEventPal_CrobatShadowsGolbat[] = INCBIN_U16("graphics/trainers/front_pics/crobat_shadows/golbat_m.gbapal");
 const u16 gObjectEventPal_CrobatShadowsCrobat[] = INCBIN_U16("graphics/trainers/front_pics/crobat_shadows/crobat.gbapal");

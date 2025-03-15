@@ -2767,7 +2767,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsBoss 
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_32x32,
     .subspriteTables = sOamTables_32x32,
-    .anims = sAnimTable_CrobatShadow,
+    .anims = sAnimTable_CrobatShadowBoss,
     .images = sPicTable_CrobatShadowsBoss,
     .affineAnims = gDummySpriteAffineAnimTable,
 };

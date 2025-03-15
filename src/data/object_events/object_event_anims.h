@@ -1088,6 +1088,15 @@ static const union AnimCmd sAnim_ZubatsAlign[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_CrobatCape[] =
+{
+    ANIMCMD_FRAME(9, 12),
+    ANIMCMD_FRAME(10, 6),
+    ANIMCMD_FRAME(11, 6),
+    ANIMCMD_FRAME(12, 60),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd sAnim_RockBreak[] =
 {
     ANIMCMD_FRAME(0, 8),
@@ -1681,6 +1690,30 @@ static const union AnimCmd *const sAnimTable_CrobatShadow[] = {
     [ANIM_ZUBATS_ALIGN] = sAnim_ZubatsAlign,
 };
 
+static const union AnimCmd *const sAnimTable_CrobatShadowBoss[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_FaceSouth,
+    [ANIM_STD_FACE_NORTH] = sAnim_FaceNorth,
+    [ANIM_STD_FACE_WEST] = sAnim_FaceWest,
+    [ANIM_STD_FACE_EAST] = sAnim_FaceEast,
+    [ANIM_STD_GO_SOUTH] = sAnim_GoSouth,
+    [ANIM_STD_GO_NORTH] = sAnim_GoNorth,
+    [ANIM_STD_GO_WEST] = sAnim_GoWest,
+    [ANIM_STD_GO_EAST] = sAnim_GoEast,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_GoFastSouth,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_GoFastNorth,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_GoFastWest,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_GoFastEast,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_GoFasterSouth,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_GoFasterNorth,
+    [ANIM_STD_GO_FASTER_WEST]  = sAnim_GoFasterWest,
+    [ANIM_STD_GO_FASTER_EAST]  = sAnim_GoFasterEast,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_GoFastestSouth,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_GoFastestNorth,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_GoFastestWest,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_GoFastestEast,
+    [ANIM_CROBAT_CAPE] = sAnim_CrobatCape,
+};
+
 static const union AnimCmd *const sAnimTable_FieldMove[] = {
     [ANIM_FIELD_MOVE] = sAnim_FieldMove,
 };
@@ -1765,6 +1798,10 @@ static const struct StepAnimTable sStepAnimTables[] = {
     },
     {
         .anims = sAnimTable_CrobatShadow,
+        .animPos = {1, 3, 0, 2},
+    },
+    {
+        .anims = sAnimTable_CrobatShadowBoss,
         .animPos = {1, 3, 0, 2},
     },
     {},

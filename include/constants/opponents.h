@@ -325,7 +325,7 @@
 #define TRAINER_TAKESHI                     319
 #define TRAINER_IZUMI                       320
 #define TRAINER_REN                         321
-#define TRAINER_ADMIN_CROBAT_HIDEOUT_1      322
+#define TRAINER_ADMIN_CROBAT_HIDEOUT_1      322 // UNUSED!
 #define TRAINER_NANAMI                      323
 #define TRAINER_QUINCY                      324
 #define TRAINER_KATELYNN                    325
@@ -634,7 +634,7 @@
 #define TRAINER_LENNY                       628
 #define TRAINER_LUCAS_1                     629
 #define TRAINER_ALAN                        630
-#define TRAINER_ADMIN_CROBAT_HIDEOUT_2      631
+#define TRAINER_ADMIN_CROBAT_HIDEOUT_2      631 // UNUSED!
 #define TRAINER_ERIC                        632
 #define TRAINER_LUCAS_2                     633
 #define TRAINER_MIKE_1                      634

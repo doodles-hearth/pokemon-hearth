@@ -6280,8 +6280,8 @@
     {
       "id": "LAYOUT_CROBAT_HIDEOUT_1F",
       "name": "CrobatHideout_1F_Layout",
-      "width": 70,
-      "height": 60,
+      "width": 65,
+      "height": 49,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",
