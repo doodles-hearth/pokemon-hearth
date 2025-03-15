@@ -2,7 +2,7 @@
   "id": "MAP_BEACHBOUND_ROUTE_DECAY",
   "name": "Beachbound_Route_Decay",
   "layout": "LAYOUT_BEACHBOUND_ROUTE_DECAY",
-  "music": "MUS_DUMMY",
+  "music": "MUS_ABANDONED_SHIP",
   "region_map_section": "MAPSEC_BEACHBOUND_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

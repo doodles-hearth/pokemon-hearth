@@ -2,7 +2,7 @@
   "id": "MAP_SAKU_TOWN_POKEMON_CENTER",
   "name": "SakuTown_PokemonCenter",
   "layout": "LAYOUT_SAKU_TOWN_POKEMON_CENTER",
-  "music": "MUS_DUMMY",
+  "music": "MUS_RG_POKE_CENTER",
   "region_map_section": "MAPSEC_SAKU_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -16,8 +16,8 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_NURSE",
-      "x": 6,
-      "y": 5,
+      "x": 5,
+      "y": 2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -37,7 +37,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_1",
       "x": 4,
-      "y": 7,
+      "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -56,7 +56,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
-      "x": 12,
+      "x": 9,
       "y": 7,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -76,7 +76,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
-      "x": 12,
+      "x": 9,
       "y": 9,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -96,7 +96,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
-      "x": 13,
+      "x": 10,
       "y": 7,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -116,7 +116,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
-      "x": 13,
+      "x": 10,
       "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -133,12 +133,32 @@
       "lunchtime": false,
       "morning": false,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "x": 1,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_PcGuy",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
     {
-      "x": 6,
-      "y": 9,
+      "x": 5,
+      "y": 10,
       "elevation": 0,
       "dest_map": "MAP_SAKU_TOWN",
       "dest_warp_id": "1"

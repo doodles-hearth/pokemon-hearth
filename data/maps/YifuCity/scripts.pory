@@ -1,12 +1,25 @@
 const LOCALID_GRUNT_PASSWORD_TOP = 9
 const LOCALID_GRUNT_PASSWORD_BOTTOM = 10
 const LOCALID_GRUNT_PASSWORD_ZUBAT = 11
+
 const FLAG_IS_MON_SENT_TO_PC = FLAG_TEMP_1
+const FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP = FLAG_TEMP_2
+const FLAG_HIDE_ROBBERY_VICTIM = FLAG_TEMP_3
+
+const LOCALID_SAMURAI_HIDEOUT = 38
 const LOCALID_LOCKDOWN_SAMURAI = 33
 const LOCALID_LOCKDOWN_SAMURAI_NORTH = 34
 const LOCALID_HARIKO = 35
 
 mapscripts YifuCity_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_CROBAT_HIDEOUT_STATE) != 3) {
+			setflag(FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP)
+		}
+		if (var(VAR_CROBAT_HIDEOUT_STATE) >= 4) {
+			setflag(FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP)
+		}
+	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CROBAT_HIDEOUT_STATE, 3: YifuCity_EscapedCrobatHideoutWithSamurai
     ]
@@ -14,8 +27,13 @@ mapscripts YifuCity_MapScripts {
 
 script YifuCity_EscapedCrobatHideoutWithSamurai {
 	lockall
-	// TODO EVA
 	setvar(VAR_CROBAT_HIDEOUT_STATE, 4)
+	applymovement(LOCALID_SAMURAI_HIDEOUT, moves(walk_in_place_fast_right))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
+
+	speakername("Samurai")
+	msgbox(format("Well, well… They slipped through our fingers, but they fled the city!"))
+	// TODO EVA 
 	releaseall
 }
 
@@ -59,11 +77,19 @@ script YifuCity_EventScript_Cleffa {
 script YifuCity_EventScript_IDontFeelSafe {
 	lock
 	faceplayer
-	speakername("Woman")
-	msgbox(format(
-		"I don't feel safe with those Crobat weirdos creeping around the city…\p"
-		"I can't imagine how much worse it'd be were it not for the patrolling Samurai!"
-	))
+	speakername("Man")
+
+	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+		msgbox(format(
+			"I heard a young wielder made those weird Crobat dudes go away!\p"
+			"They must be a very brave young person."
+		))
+	} else {
+		msgbox(format(
+			"I don't feel safe with those Crobat weirdos creeping around the city…\p"
+			"I can't imagine how much worse it'd be were it not for the patrolling Samurai!"
+		))
+	}
 	closemessage
 	release
 }
@@ -90,6 +116,93 @@ script YifuCity_EventScript_Samurai2 {
 	release
 }
 
+script YifuCity_EventScript_SamuraiTalkToRobberyVictim {
+	lock
+	applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_left))
+	waitmovement(0)
+	speakername("Samurai")
+	msgbox(format(
+		"Ma'am, can you describe what the thiefs looked like?"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_RobberyVictim {
+	lock
+	
+	speakername("Woman")
+	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+		faceplayer
+		msgbox(format(
+			"You and the Samurai scared those crooks off? That's good…\p"
+			"Although I wonder where my stolen Pokémon can be…"
+		))
+
+		if (checkitem(ITEM_STOLEN_MONS)) {
+			dynmultichoice(
+				0,
+				0,
+				TRUE,
+				10,
+				0,
+				DYN_MULTICHOICE_CB_NONE,
+				"Here are your Pokémon!",
+				"…"
+			)
+			closemessage
+
+			switch(var(VAR_RESULT)) {
+				case 0:
+					playfanfare(MUS_OBTAIN_TMHM)
+					message(format("{PLAYER} returned the stolen Pokémon to their rightful owner."))
+					waitmessage
+					waitfanfare
+					removeitem(ITEM_STOLEN_MONS)
+
+					playse(SE_PIN)
+					applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 3))
+					waitmovement(0)
+					waitse
+					speakername("Woman")
+					msgbox(format(
+						"Oh my! You even got my precious Pokémon back!\p"
+						"You're a true hero, you know that?\p"
+						"I'm finally at peace again! Here, take this, as a thanks!"
+					))
+					closemessage
+
+					giveitem(ITEM_TM_CALM_MIND)
+					waitmessage
+					setflag(FLAG_RECEIVED_TM_CALM_MIND)
+					addvar(VAR_PLAYER_REPUTATION, 1)
+
+					fadescreen(FADE_TO_BLACK)
+					removeobject(VAR_LAST_TALKED)
+					delay(48)
+					fadescreen(FADE_FROM_BLACK)
+					// TODO EVA put her somewhere in the city hanging out with her mons
+				case 1:
+					speakername("Woman")
+					msgbox(format(
+						"Sigh… I hope they're okay…"
+					))
+					closemessage
+			}
+		}
+	} else {
+		applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right))
+		waitmovement(0)
+		msgbox(format(
+			"A couple of crooks threatened me and stole all my Pokémon, right in front of the Refuge!\p"
+			"Oh, what am I ever going to do…?"
+		))
+	}
+	
+	closemessage
+	release
+}
+
 script YifuCity_EventScript_ShinySeller {
 	lock
 	faceplayer
@@ -109,7 +222,7 @@ script YifuCity_EventScript_ShinySeller {
 	speakername("Shady man")
 	msgbox(format(
 		"So whaddyasay?\n"
-		"It's yours for only ¥10000."
+		"It's yours for only 10 000¥."
 	))
 
 	goto(YifuCity_ShinySellerChoice)
@@ -151,6 +264,7 @@ script YifuCity_ShinySellerChoice {
 
 				removemoney(10000)
 				updatemoneybox
+				playse(SE_SHOP)
 
 				closemessage
 
@@ -430,7 +544,7 @@ script YifuCity_EventScript_HearEcho {
 	faceplayer
 	speakername("Boy")
 	msgbox(format(
-		"There's a ghost haunting the sewers!\n"
+		"There's a ghost haunting the sewers!\p"
 		"I swear I heard a voice calling when I was walking along the canal!"
 	))
 	closemessage
@@ -518,6 +632,14 @@ script YifuCity_EventScript_Surskit {
     end
 }
 
+script YifuCity_EventScript_CrobatShopSign {
+    msgbox(format(
+        "The sign has been written over.\p"
+		"“Crobat Shop\n"
+		"Come peruse our totally legal stuff!”"
+    ), MSGBOX_SIGN)
+}
+
 script YifuCity_Trigger_Lockdown {
 	lockall
 	// TODO EVA don't use the flag here you moron
@@ -581,7 +703,8 @@ script YifuCity_Trigger_Lockdown {
 
 		speakername("Samurai")
 		msgbox(format(
-			"We Samurai are in the middle of an investigation on an illegally running shop!\p"
+			"A robbery has taken place near the Pokémon Refuge!\p"
+			"We Samurai are on the cusp of cracking down on the infamous Crobat Shadows!\p"
 			"We cannot risk this operation to go awry, so we've locked down the premises for the time being!\p"
 			"Please remain calm, I'm sure everything will be over before you know it."
 		))
@@ -641,10 +764,12 @@ script YifuCity_Trigger_HarikoCriminals {
 	}
 	waitmovement(0)
 
-	// TODO EVA dialogue
 	speakername("Hariko")
 	msgbox(format(
-		"Hey {PLAYER}, a bunch of people got their Pokémon stolen, this is placeholder text!"
+		"Hello, {PLAYER}.\nAre you well, since last time?\p"
+		"Did you hear?\nThere was a robbery right here in Yifu City! Some people's Pokémon were stolen!\p"
+		"I heard there was a second decaying area west of here.\lI was planning on going there, but a Samurai was blocking the way, so I am waiting here.\p"
+		"I am going for a stroll now. Let us have lunch together before you leave!"
 	))
 
 	applymovement(LOCALID_HARIKO, moves(walk_left * 10))

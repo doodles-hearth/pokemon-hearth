@@ -107,7 +107,7 @@
       "y": 77,
       "elevation": 3,
       "item": "ITEM_BLUE_SHARD",
-      "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_BLUE_SHARD"
+      "flag": "FLAG_DUMMY"
     }
   ]
 }

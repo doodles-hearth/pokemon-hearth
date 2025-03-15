@@ -624,10 +624,12 @@ static const struct SpriteFrameImage sPicTable_CrobatShadowsBoss[] = {
     overworld_frame(gObjectEventPic_CrobatShadowsBoss, 4, 4, 6),
     overworld_frame(gObjectEventPic_CrobatShadowsBoss, 4, 4, 7),
     overworld_frame(gObjectEventPic_CrobatShadowsBoss, 4, 4, 8),
-    overworld_frame(gObjectEventPic_CrobatShadowsBoss, 4, 4, 9),
-    overworld_frame(gObjectEventPic_CrobatShadowsBoss, 4, 4, 10),
-    overworld_frame(gObjectEventPic_CrobatShadowsBoss, 4, 4, 11),
-    overworld_frame(gObjectEventPic_CrobatShadowsBoss, 4, 4, 12),
+    
+
+    overworld_frame(gObjectEventPic_CrobatShadowsBossCape, 4, 4, 0),
+    overworld_frame(gObjectEventPic_CrobatShadowsBossCape, 4, 4, 1),
+    overworld_frame(gObjectEventPic_CrobatShadowsBossCape, 4, 4, 2),
+    overworld_frame(gObjectEventPic_CrobatShadowsBossCape, 4, 4, 3),
 };
 
 static const struct SpriteFrameImage sPicTable_CrobatShadowsKevin[] = {

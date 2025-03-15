@@ -2,7 +2,7 @@
   "id": "MAP_KURA_TOWN_HOUSE3",
   "name": "KuraTown_House3",
   "layout": "LAYOUT_HOUSE_GREEN_HEARTH",
-  "music": "MUS_RG_TEACHY_TV_SHOW",
+  "music": "MUS_HH_SUNRISE",
   "region_map_section": "MAPSEC_KURA_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

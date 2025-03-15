@@ -2,7 +2,7 @@
   "id": "MAP_CROBAT_HIDEOUT_1F",
   "name": "CrobatHideout_1F",
   "layout": "LAYOUT_CROBAT_HIDEOUT_1F",
-  "music": "MUS_DUMMY",
+  "music": "MUS_AQUA_MAGMA_HIDEOUT",
   "region_map_section": "MAPSEC_CROBAT_HIDEOUT",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -17,7 +17,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_F",
       "x": 7,
-      "y": 14,
+      "y": 12,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -37,7 +37,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 3,
-      "y": 6,
+      "y": 7,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -57,7 +57,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 14,
-      "y": 6,
+      "y": 4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -76,8 +76,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_F",
-      "x": 28,
-      "y": 25,
+      "x": 29,
+      "y": 27,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -96,8 +96,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
-      "x": 58,
-      "y": 30,
+      "x": 59,
+      "y": 27,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -117,7 +117,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 32,
-      "y": 43,
+      "y": 37,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -137,7 +137,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_KEVIN",
       "x": 34,
-      "y": 45,
+      "y": 39,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
       "movement_range_x": 0,
@@ -157,7 +157,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_F",
       "x": 31,
-      "y": 43,
+      "y": 37,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
       "movement_range_x": 0,
@@ -177,7 +177,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_BOSS",
       "x": 34,
-      "y": 42,
+      "y": 36,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -196,8 +196,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
-      "x": 51,
-      "y": 9,
+      "x": 44,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -216,8 +216,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
-      "x": 25,
-      "y": 25,
+      "x": 24,
+      "y": 27,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -237,7 +237,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 43,
-      "y": 48,
+      "y": 40,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -257,7 +257,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_M",
       "x": 31,
-      "y": 49,
+      "y": 43,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -277,7 +277,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 42,
-      "y": 50,
+      "y": 44,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 8,
@@ -297,7 +297,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 22,
-      "y": 50,
+      "y": 44,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -317,7 +317,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_F",
       "x": 22,
-      "y": 51,
+      "y": 45,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -337,7 +337,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 41,
-      "y": 50,
+      "y": 44,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -357,7 +357,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 41,
-      "y": 51,
+      "y": 45,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -377,7 +377,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_F",
       "x": 32,
-      "y": 49,
+      "y": 43,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -393,12 +393,168 @@
       "lunchtime": false,
       "morning": false,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "x": 29,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CrobatHideout_1F_EventScript_Pots",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "x": 30,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CrobatHideout_1F_EventScript_Pots",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "x": 31,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CrobatHideout_1F_EventScript_Pots",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "x": 32,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CrobatHideout_1F_EventScript_Pots",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "x": 31,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CrobatHideout_1F_EventScript_EmptyBowl",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "x": 30,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CrobatHideout_1F_EventScript_EmptyBowlLeftover",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(POOCHYENA)",
+      "x": 55,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(POOCHYENA)",
+      "x": 56,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(POOCHYENA)",
+      "x": 57,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 55,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_STOLEN_MONS",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_STOLEN_MONS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 48,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_TM_WATER_PULSE",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_TM_WATER_PULSE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NICKIT)",
+      "x": 10,
+      "y": 24,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CrobatHideout_1F_EventScript_Nickit",
+      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT"
     }
   ],
   "warp_events": [
     {
       "x": 3,
-      "y": 2,
+      "y": 3,
       "elevation": 0,
       "dest_map": "MAP_YIFU_CITY_CROBAT_SHOP",
       "dest_warp_id": "1"
@@ -408,30 +564,188 @@
     {
       "type": "trigger",
       "x": 32,
-      "y": 50,
+      "y": 44,
       "elevation": 0,
       "var": "VAR_CROBAT_HIDEOUT_STATE",
       "var_value": "1",
-      "script": "CrobatHideout_1F_Trigger_4V1_Left"
+      "script": "CrobatHideout_1F_Trigger_4V1_FromRight"
     },
     {
       "type": "trigger",
       "x": 31,
-      "y": 50,
+      "y": 44,
       "elevation": 0,
       "var": "VAR_CROBAT_HIDEOUT_STATE",
       "var_value": "1",
-      "script": "CrobatHideout_1F_Trigger_4V1_Left"
+      "script": "CrobatHideout_1F_Trigger_4V1_FromLeft"
+    },
+    {
+      "type": "trigger",
+      "x": 55,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_CROBAT_HIDEOUT_STATE",
+      "var_value": "2",
+      "script": "CrobatHideout_1F_Trigger_Poochyena"
+    },
+    {
+      "type": "trigger",
+      "x": 56,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_CROBAT_HIDEOUT_STATE",
+      "var_value": "1",
+      "script": "CrobatHideout_1F_Trigger_Poochyena"
+    },
+    {
+      "type": "trigger",
+      "x": 57,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_CROBAT_HIDEOUT_STATE",
+      "var_value": "1",
+      "script": "CrobatHideout_1F_Trigger_Poochyena"
+    },
+    {
+      "type": "trigger",
+      "x": 55,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_CROBAT_HIDEOUT_STATE",
+      "var_value": "1",
+      "script": "CrobatHideout_1F_Trigger_Poochyena"
+    },
+    {
+      "type": "trigger",
+      "x": 56,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_CROBAT_HIDEOUT_STATE",
+      "var_value": "2",
+      "script": "CrobatHideout_1F_Trigger_Poochyena"
+    },
+    {
+      "type": "trigger",
+      "x": 57,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_CROBAT_HIDEOUT_STATE",
+      "var_value": "2",
+      "script": "CrobatHideout_1F_Trigger_Poochyena"
     }
   ],
   "bg_events": [
     {
       "type": "sign",
-      "x": 52,
-      "y": 5,
+      "x": 47,
+      "y": 4,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "CrobatHideout_1F_EventScript_LaundrySchedule"
+    },
+    {
+      "type": "sign",
+      "x": 28,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CrobatHideout_1F_EventScript_MessPoster"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CrobatHideout_1F_EventScript_FirstPoster"
+    },
+    {
+      "type": "hidden_item",
+      "x": 28,
+      "y": 9,
+      "elevation": 0,
+      "item": "ITEM_SUPERGIRI",
+      "flag": "FLAG_HIDDEN_ITEM_CROBAT_HIDEOUT_SUPERGIRI"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 22,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CrobatHideout_1F_EventScript_WantedPosterNose"
+    },
+    {
+      "type": "sign",
+      "x": 9,
+      "y": 22,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CrobatHideout_1F_EventScript_WantedPosterHanddrawn"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 22,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CrobatHideout_1F_EventScript_WantedPosterMustache"
+    },
+    {
+      "type": "sign",
+      "x": 14,
+      "y": 22,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CrobatHideout_1F_EventScript_WantedPosterBoss"
+    },
+    {
+      "type": "sign",
+      "x": 4,
+      "y": 2,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CrobatHideout_1F_EventScript_PosterFeedPoochyena"
+    },
+    {
+      "type": "sign",
+      "x": 33,
+      "y": 21,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CrobatHideout_1F_EventScript_PosterFeedPoochyena"
+    },
+    {
+      "type": "hidden_item",
+      "x": 18,
+      "y": 2,
+      "elevation": 0,
+      "item": "ITEM_ULTRA_BALL_KNOCKOFF",
+      "flag": "FLAG_HIDDEN_ITEM_CROBAT_HIDEOUT_ULTRO_BALL"
+    },
+    {
+      "type": "sign",
+      "x": 33,
+      "y": 35,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CrobatHideout_1F_EventScript_Plan"
+    },
+    {
+      "type": "sign",
+      "x": 34,
+      "y": 35,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CrobatHideout_1F_EventScript_Plan"
+    },
+    {
+      "type": "sign",
+      "x": 29,
+      "y": 35,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CrobatHideout_1F_EventScript_PosterReunionRoom"
     }
   ]
 }

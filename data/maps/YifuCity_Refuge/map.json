@@ -2,7 +2,7 @@
   "id": "MAP_YIFU_CITY_REFUGE",
   "name": "YifuCity_Refuge",
   "layout": "LAYOUT_YIFU_CITY_REFUGE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_RG_POKE_CENTER",
   "region_map_section": "MAPSEC_YIFU_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -99,7 +99,7 @@
       "x": 2,
       "y": 6,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -217,7 +217,7 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 11,
+      "x": 12,
       "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
@@ -225,7 +225,7 @@
     },
     {
       "type": "sign",
-      "x": 10,
+      "x": 11,
       "y": 1,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",

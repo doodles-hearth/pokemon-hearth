@@ -2,7 +2,7 @@
   "id": "MAP_SILVERIDGE_ELDERS_HOUSE",
   "name": "Silveridge_EldersHouse",
   "layout": "LAYOUT_SILVERIDGE_ELDERS_HOUSE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_RG_PEWTER",
   "region_map_section": "MAPSEC_SILVERIDGE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

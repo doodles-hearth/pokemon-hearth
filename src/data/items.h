@@ -13260,6 +13260,22 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_Sapphire,
     },
 
+    [ITEM_STOLEN_MONS] =
+    {
+        .name = _("Stolen Pokémon"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "The Pokémon\n"
+            "stolen by the\n"
+            "Crobat Shadows!"),
+        .importance = 2,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_Parcel,
+        .iconPalette = gItemIconPalette_Parcel,
+    },
+
     [ITEM_ABILITY_SHIELD] =
     {
         .name = _("Ability Shield"),

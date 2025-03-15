@@ -2,7 +2,7 @@
   "id": "MAP_SCENIC_ROUTE",
   "name": "ScenicRoute",
   "layout": "LAYOUT_SCENIC_ROUTE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_ROUTE120",
   "region_map_section": "MAPSEC_SCENIC_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

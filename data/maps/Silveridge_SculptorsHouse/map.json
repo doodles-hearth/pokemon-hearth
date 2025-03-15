@@ -2,7 +2,7 @@
   "id": "MAP_SILVERIDGE_SCULPTORS_HOUSE",
   "name": "Silveridge_SculptorsHouse",
   "layout": "LAYOUT_SILVERIDGE_SCULPTORS_HOUSE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_RG_PEWTER",
   "region_map_section": "MAPSEC_SILVERIDGE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

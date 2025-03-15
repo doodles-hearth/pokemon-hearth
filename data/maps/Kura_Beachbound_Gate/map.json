@@ -2,7 +2,7 @@
   "id": "MAP_KURA_BEACHBOUND_GATE",
   "name": "Kura_Beachbound_Gate",
   "layout": "LAYOUT_KURA_BEACHBOUND_GATE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_ROUTE104",
   "region_map_section": "MAPSEC_BEACHBOUND_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

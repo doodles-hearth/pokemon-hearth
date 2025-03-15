@@ -2,7 +2,7 @@
   "id": "MAP_YIFU_CITY_REFUGE_2F",
   "name": "YifuCity_Refuge_2F",
   "layout": "LAYOUT_YIFU_CITY_REFUGE_2F",
-  "music": "MUS_DUMMY",
+  "music": "MUS_RG_POKE_CENTER",
   "region_map_section": "MAPSEC_YIFU_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

@@ -11,24 +11,29 @@ script Common_EventScript_PcGuy {
 			"Have you ever thought, “Darn, I wish I could catch this seventh Pokémon, but I only have room for six?”\p"
 			"Today's your lucky day!\p"
 			"I've been appointed by the Toku council to store wielders' Pokémon for them while they travel around.\p"
-			"We bring your Pokémon to a ranch where they live happily while waiting for you to get them back!\p"
-			"So if you ever want to store or retrieve your Pokémon, come talk to me!"
+			"We bring your Pokémon to a pasture where they live happily while waiting for you to get them back!\p"
+			"So if you ever want to send or retrieve your Pokémon, come talk to me!"
 		))
 	}
-	call(EventScript_AccessPokemonStorage)
+
+	// call(EventScript_AccessPokemonStorage)
 	special(ShowPokemonStorageSystemPC)
 	waitstate
+
 	if (flag(FLAG_PC_EXPLAINED)) {
 		msgbox(format(
-			"Pant… pant… Thanks for using our Pokémon storage!"
+			"Pant… pant… Thanks for using our Pokémon pasture service!"
 		))
+		closemessage
 	} else {
-		// TODO EVA finish this
+		setflag(FLAG_PC_EXPLAINED)
+		// TODO EVA do this only if we actually stored mons
 		msgbox(format(
 			"Oh, you want to store these Pokémon?\p"
-			"Alright, I'll just carry them over to the ranch!\p"
+			"Alright, I'll just carry them over to the pasture!\p"
 			"Just a minute!"
 		))
+		closemessage
 
 		fadescreen(FADE_TO_BLACK)
 		delay(120)
@@ -37,11 +42,10 @@ script Common_EventScript_PcGuy {
 		msgbox(format(
 			"PANT… PANT…\p"
 			"Your… pant… Pokémon… pant… are all set!\p"
-			"Whew, the ranch is a little far from here! Pant…\p"
+			"Whew, the pasture is a liiiittle far from here! Pant…\p"
 			"Come… pant… Come again!"
 		))
-
-		setflag(FLAG_PC_EXPLAINED)
+		closemessage
 	}
 
 	release
@@ -83,13 +87,14 @@ EventScript_AccessPlayersPC::
 	end
 
 EventScript_AccessPokemonStorage::
-	playse SE_PC_LOGIN
-	call_if_unset FLAG_SYS_PC_LANETTE, EventScript_AccessSomeonesPC
-	call_if_set FLAG_SYS_PC_LANETTE, EventScript_AccessLanettesPC
-	msgbox gText_StorageSystemOpened, MSGBOX_DEFAULT
+	@ playse SE_PC_LOGIN
+	@ call_if_unset FLAG_SYS_PC_LANETTE, EventScript_AccessSomeonesPC
+	@ call_if_set FLAG_SYS_PC_LANETTE, EventScript_AccessLanettesPC
+	@ msgbox gText_StorageSystemOpened, MSGBOX_DEFAULT
 	special ShowPokemonStorageSystemPC
 	waitstate
-	goto EventScript_PCMainMenu
+	@ goto EventScript_PCMainMenu
+	releaseall
 	end
 
 EventScript_AccessSomeonesPC::

@@ -1116,7 +1116,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Zigzagoon"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Tiny Raccoon"),
         .cryId = CRY_ZIGZAGOON,
         .natDexNum = NATIONAL_DEX_ZIGZAGOON,
         .categoryName = _("Tiny Raccoon"),
@@ -1195,7 +1195,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Linoone"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Long Raccoon"),
         .cryId = CRY_LINOONE,
         .natDexNum = NATIONAL_DEX_LINOONE,
         .categoryName = _("Rushing"),

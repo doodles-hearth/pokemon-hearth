@@ -5476,8 +5476,8 @@
     {
       "id": "LAYOUT_SAKU_TOWN_POKEMON_CENTER",
       "name": "SakuTown_PokemonCenter_Layout",
-      "width": 14,
-      "height": 11,
+      "width": 12,
+      "height": 12,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",
@@ -6280,8 +6280,8 @@
     {
       "id": "LAYOUT_CROBAT_HIDEOUT_1F",
       "name": "CrobatHideout_1F_Layout",
-      "width": 70,
-      "height": 60,
+      "width": 65,
+      "height": 49,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",

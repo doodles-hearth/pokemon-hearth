@@ -560,8 +560,8 @@
 #define FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_LUM_BERRY          (FLAG_HIDDEN_ITEMS_START + 0x09)
 #define FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_ZINC               (FLAG_HIDDEN_ITEMS_START + 0x0A)
 #define FLAG_HIDDEN_ITEM_YIFU_CITY_POKE_DOLL                 (FLAG_HIDDEN_ITEMS_START + 0x0B)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_126_BLUE_SHARD           (FLAG_HIDDEN_ITEMS_START + 0x0C)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_124_HEART_SCALE_1        (FLAG_HIDDEN_ITEMS_START + 0x0D)
+#define FLAG_HIDDEN_ITEM_CROBAT_HIDEOUT_SUPERGIRI            (FLAG_HIDDEN_ITEMS_START + 0x0C)
+#define FLAG_HIDDEN_ITEM_CROBAT_HIDEOUT_ULTRO_BALL           (FLAG_HIDDEN_ITEMS_START + 0x0D)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_126_HEART_SCALE          (FLAG_HIDDEN_ITEMS_START + 0x0E)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_126_ULTRA_BALL           (FLAG_HIDDEN_ITEMS_START + 0x0F)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_126_STARDUST             (FLAG_HIDDEN_ITEMS_START + 0x10)
@@ -678,7 +678,7 @@
 #define FLAG_BEAT_CHII_TOWN_KIDS  0x271
 #define FLAG_HIDE_LOCKDOWN_SAMURAI 0x272
 #define FLAG_HIDE_HARIKO_YIFU_CITY  0x273
-#define FLAG_UNUSED_0x274  0x274 // Unused Flag
+#define FLAG_GOT_SCAMMED_YIFU_REFUGE 0x274
 #define FLAG_UNUSED_0x275  0x275 // Unused Flag
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag
 #define FLAG_UNUSED_0x277  0x277 // Unused Flag
@@ -1064,8 +1064,8 @@
 #define FLAG_ITEM_SILVER_TUNNEL_ITEM_MAX_ETHER                      0x3ED
 #define FLAG_ITEM_BIG_ROOT                                          0x3EE
 #define FLAG_ITEM_HM_ROCK_TOMB                                      0x3EF
-#define FLAG_ITEM_ROUTE_111_TM_SANDSTORM                            0x3F0
-#define FLAG_ITEM_ROUTE_111_STARDUST                                0x3F1
+#define FLAG_ITEM_TM_WATER_PULSE                                    0x3F0
+#define FLAG_ITEM_STOLEN_MONS                                       0x3F1
 #define FLAG_ITEM_ROUTE_111_HP_UP                                   0x3F2
 #define FLAG_ITEM_ROUTE_112_NUGGET                                  0x3F3
 #define FLAG_ITEM_ROUTE_113_MAX_ETHER                               0x3F4

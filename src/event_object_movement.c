@@ -8690,6 +8690,12 @@ bool8 MovementAction_ZubatsAlign_Step0(struct ObjectEvent *objectEvent, struct S
     return FALSE;
 }
 
+bool8 MovementAction_CrobatCape_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    StartSpriteAnimInDirection(objectEvent, sprite, DIR_SOUTH, ANIM_CROBAT_CAPE);
+    return FALSE;
+}
+
 bool8 MovementAction_EnableJumpLandingGroundEffect_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     objectEvent->disableJumpLandingGroundEffect = FALSE;
