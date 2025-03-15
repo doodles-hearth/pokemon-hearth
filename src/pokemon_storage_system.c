@@ -3862,7 +3862,7 @@ static void InitPalettesAndSprites(void)
     SetGpuReg(REG_OFFSET_BG1CNT, BGCNT_PRIORITY(1) | BGCNT_CHARBASE(1) | BGCNT_16COLOR | BGCNT_SCREENBASE(30));
     CreateDisplayMonSprite();
     CreateMarkingComboSprite();
-    CreateWaveformSprites();
+    // CreateWaveformSprites();
     RefreshDisplayMonData();
 }
 
@@ -3876,7 +3876,7 @@ static void CreateMarkingComboSprite(void)
     sStorage->markingComboTilesPtr = (void *) OBJ_VRAM0 + 32 * GetSpriteTileStartByTag(GFXTAG_MARKING_COMBO);
 }
 
-static void CreateWaveformSprites(void)
+UNUSED static void CreateWaveformSprites(void)
 {
     u16 i;
     struct SpriteSheet sheet = sSpriteSheet_Waveform;

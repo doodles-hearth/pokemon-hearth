@@ -472,7 +472,7 @@ script YifuCity_EventScript_HearEcho {
 	faceplayer
 	speakername("Boy")
 	msgbox(format(
-		"There's a ghost haunting the sewers!\n"
+		"There's a ghost haunting the sewers!\p"
 		"I swear I heard a voice calling when I was walking along the canal!"
 	))
 	closemessage

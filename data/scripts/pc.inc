@@ -117,28 +117,28 @@ Common_EventScript_PcGuy_Text_1:
 	.string "council to store wielders' Pokémon\l"
 	.string "for them while they travel\l"
 	.string "around.\p"
-	.string "We bring your Pokémon to a ranch\n"
+	.string "We bring your Pokémon to a pasture\n"
 	.string "where they live happily while\l"
 	.string "waiting for you to get them back!\p"
-	.string "So if you ever want to store or\n"
+	.string "So if you ever want to send or\n"
 	.string "retrieve your Pokémon, come talk\l"
 	.string "to me!$"
 
 Common_EventScript_PcGuy_Text_2:
 	.string "Pant… pant… Thanks for using our\n"
-	.string "Pokémon storage!$"
+	.string "Pokémon pasture service!$"
 
 Common_EventScript_PcGuy_Text_3:
 	.string "Oh, you want to store these\n"
 	.string "Pokémon?\p"
 	.string "Alright, I'll just carry them over\n"
-	.string "to the ranch!\p"
+	.string "to the pasture!\p"
 	.string "Just a minute!$"
 
 Common_EventScript_PcGuy_Text_4:
 	.string "PANT… PANT…\p"
 	.string "Your… pant… Pokémon… pant… are all\n"
 	.string "set!\p"
-	.string "Whew, the ranch is a little far\n"
+	.string "Whew, the pasture is a liiiittle far\n"
 	.string "from here! Pant…\p"
 	.string "Come… pant… Come again!$"

@@ -986,8 +986,8 @@ YifuCity_EventScript_HearEcho_Text_0:
 
 YifuCity_EventScript_HearEcho_Text_1:
 	.string "There's a ghost haunting the\n"
-	.string "sewers!\n"
-	.string "I swear I heard a voice calling\l"
+	.string "sewers!\p"
+	.string "I swear I heard a voice calling\n"
 	.string "when I was walking along the canal!$"
 
 YifuCity_Trigger_CrobatGruntStuckInHole_Text_0:
