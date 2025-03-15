@@ -14,15 +14,113 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 	incrementgamestat(GAME_STAT_USED_POKECENTER)
 	call(EventScript_PkmnCenterNurse_TakeAndHealPkmn)
 
-	// TODO EVA: swap one pokémon
-	
-	speakername("Nurse")
-	msgbox(format(
-		"Yep, uh, good as new, probably!\p"
-		"C'magain, or whatever."
-	))
+	if(flag(FLAG_GOT_SCAMMED_YIFU_REFUGE)) {
+		showmoneybox(18, 0)
+
+		if (checkmoney(500)) {
+			speakername("Nurse")
+			msgbox(format(
+				"Yep, uh, good as new, probably!\p"
+				"Ya know the drill, 500¥ please!"
+			))
+			removemoney(500)
+			updatemoneybox
+
+			speakername("Nurse")
+				msgbox(format(
+					"C'magain, or whatever."
+				))
+		} else {
+			speakername("Nurse")
+			msgbox(format(
+				"Yep, uh, good as new, probably!\p"
+				"Ya know the drill, 500¥ please!\p"
+				"… … …\n… … …What? Yer THAT poor?\p"
+				"I feel almost bad for ya, buddy…\p"
+				"I guess, uh… I guess we're good then, don' worry 'bout it.\p"
+				"Now make like a Treecko 'n leave!"
+			))
+		}
+		// First time getting scammed
+	} else {
+		setflag(FLAG_GOT_SCAMMED_YIFU_REFUGE)
+		speakername("Nurse")
+		msgbox(format(
+			"Yep, uh, good as new, probably!\p"
+			"By the way, that'll be 500¥, wow, so cheap!"
+		))
+
+		showmoneybox(18, 0)
+
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"What?!",
+			"No way!",
+			"Okay, I guess…"
+		)
+		closemessage
+
+		switch(var(VAR_RESULT)) {
+			case 0:
+			case 1:
+				if (checkmoney(500)) {
+					speakername("Nurse")
+					msgbox(format(
+						"No whinin'! Fork over the cash before I call security!"
+					))
+					removemoney(500)
+					updatemoneybox
+
+					speakername("Nurse")
+					msgbox(format(
+						"C'magain, or whatever."
+					))
+				} else {
+					speakername("Nurse")
+					msgbox(format(
+						"No whinin'! Fork over the cash before I call security!\p"
+						"… … …\n… … …What? Yer THAT poor?\p"
+						"I feel almost bad for ya, buddy…\p"
+						"I guess, uh… I guess we're good then, don' worry 'bout it.\p"
+						"Now make like a Treecko 'n leave!"
+					))
+				}
+				
+			case 2:
+				if (checkmoney(500)) {
+					speakername("Nurse")
+					msgbox(format(
+						"…Really? Jus' like that?\p"
+						"(Wow, this one's really dumb, huh?)\p"
+						"I mean, yeah, you better!"
+					))
+
+					removemoney(500)
+					updatemoneybox
+
+					speakername("Nurse")
+					msgbox(format(
+						"C'magain, or whatever."
+					))
+				} else {
+					speakername("Nurse")
+					msgbox(format(
+						"…Really? Jus' like that?\p"
+						"(Wow, this one's really dumb, huh?)\p"
+						"… … …\n… … …What? Ya don't have 'nuff cash?!\p"
+						"I can't believe it! I've been had!\p"
+						"Get outta here, ya scammer!"
+					))
+				}
+		}
+	}
+	hidemoneybox
 	closemessage
-	end
 }
 
 script YifuCity_Refuge_EventScript_Woobat {
@@ -59,7 +157,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 	speakername("Valet")
 	msgbox(format(
 		// TODO EVA time of day
-		"Good morning, {STR_VAR_1}! There's a room available for ¥500, if you need a place to spend the night!"
+		"Good morning, {STR_VAR_1}! There's a room available for 500¥, if you need a place to spend the night!"
 	))
 
 	showmoneybox(18, 0)

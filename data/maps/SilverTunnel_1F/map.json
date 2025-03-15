@@ -2,7 +2,7 @@
   "id": "MAP_SILVER_TUNNEL_1F",
   "name": "SilverTunnel_1F",
   "layout": "LAYOUT_SILVER_TUNNEL_1F",
-  "music": "MUS_DUMMY",
+  "music": "MUS_GSC_PEWTER",
   "region_map_section": "MAPSEC_SILVER_TUNNEL",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

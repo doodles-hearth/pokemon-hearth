@@ -151,7 +151,7 @@ script YifuCity_EventScript_ShinySeller {
 	speakername("Shady man")
 	msgbox(format(
 		"So whaddyasay?\n"
-		"It's yours for only ¥10000."
+		"It's yours for only 10 000¥."
 	))
 
 	goto(YifuCity_ShinySellerChoice)

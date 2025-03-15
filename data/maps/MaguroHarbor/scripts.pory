@@ -96,7 +96,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 		speakername("Old woman")
 		msgbox(format(
 			"Hello dear, want to try a fishcake?\p"
-			"They're the town's specialty! Only ¥500!"
+			"They're the town's specialty! Only 500¥!"
 		), MSGBOX_DEFAULT)
 
 		showmoneybox(18, 0)

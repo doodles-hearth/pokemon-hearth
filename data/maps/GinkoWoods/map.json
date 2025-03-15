@@ -2,7 +2,7 @@
   "id": "MAP_GINKO_WOODS",
   "name": "GinkoWoods",
   "layout": "LAYOUT_GINKO_WOODS",
-  "music": "MUS_PETALBURG_WOODS",
+  "music": "MUS_RG_VIRIDIAN_FOREST",
   "region_map_section": "MAPSEC_GINKO_WOODS",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

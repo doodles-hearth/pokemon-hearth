@@ -2,7 +2,7 @@
   "id": "MAP_SAKU_TOWN",
   "name": "SakuTown",
   "layout": "LAYOUT_SAKU_TOWN",
-  "music": "MUS_DUMMY",
+  "music": "MUS_HH_SUNRISE",
   "region_map_section": "MAPSEC_SAKU_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

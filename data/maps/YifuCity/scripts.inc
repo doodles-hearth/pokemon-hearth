@@ -29,6 +29,8 @@ YifuCity_EscapedCrobatHideoutWithSamurai::
 	setvar VAR_CROBAT_HIDEOUT_STATE, 4
 	applymovement 38, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
+	msgbox YifuCity_EscapedCrobatHideoutWithSamurai_Text_1
 	releaseall
 	return
 
@@ -78,8 +80,8 @@ YifuCity_EventScript_IDontFeelSafe::
 YifuCity_EventScript_Samurai::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_Samurai_Text_0
-	msgbox YifuCity_EventScript_Samurai_Text_1
+	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
+	msgbox YifuCity_EventScript_Samurai_Text_0
 	closemessage
 	release
 	return
@@ -88,7 +90,7 @@ YifuCity_EventScript_Samurai::
 YifuCity_EventScript_Samurai2::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_Samurai_Text_0
+	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_EventScript_Samurai2_Text_0
 	closemessage
 	release
@@ -99,7 +101,7 @@ YifuCity_EventScript_SamuraiTalkToRobberyVictim::
 	lock
 	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
 	waitmovement 0
-	speakername YifuCity_EventScript_Samurai_Text_0
+	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_EventScript_SamuraiTalkToRobberyVictim_Text_0
 	closemessage
 	release
@@ -452,7 +454,7 @@ YifuCity_Trigger_Lockdown::
 	applymovement 33, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement 0
 	special GetPlayerSirMissString
-	speakername YifuCity_EventScript_Samurai_Text_0
+	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_5
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_8
@@ -486,11 +488,11 @@ YifuCity_Trigger_Lockdown_5:
 	waitmovement 33
 	waitmovement OBJ_EVENT_ID_PLAYER
 	special GetPlayerSirMissString
-	speakername YifuCity_EventScript_Samurai_Text_0
+	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_1
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Trigger_Lockdown_Text_2, YifuCity_Trigger_Lockdown_Text_3
 	closemessage
-	speakername YifuCity_EventScript_Samurai_Text_0
+	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_4
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_8
@@ -531,7 +533,7 @@ YifuCity_Trigger_CantGoThruNorth::
 	applymovement 34, YifuCity_Trigger_CantGoThruNorth_Movement_0
 	waitmovement 0
 	special GetPlayerSirMissString
-	speakername YifuCity_EventScript_Samurai_Text_0
+	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_5
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_CantGoThruNorth_Movement_1
@@ -822,13 +824,19 @@ YifuCity_Trigger_HarikoCriminals_Movement_2:
 	face_up
 	step_end
 
+YifuCity_EscapedCrobatHideoutWithSamurai_Text_0:
+	.string "Samurai$"
+
+YifuCity_EscapedCrobatHideoutWithSamurai_Text_1:
+	.string "Well, well… They slipped through our fingers, but they fled the city!$"
+
 YifuCity_EventScript_StoleMyMon_Text_0:
 	.string "Man$"
 
 YifuCity_EventScript_StoleMyMon_Text_1:
-	.string "When I got my Shiftry back from the\n"
-	.string "nurse, it had somehow changed into a\l"
-	.string "Pidgey…\p"
+	.string "When I got my Shiftry back from\n"
+	.string "the nurse, it had somehow changed\l"
+	.string "into a Pidgey…\p"
 	.string "Each day, Pokémon never cease to\n"
 	.string "amaze me!$"
 
@@ -848,14 +856,11 @@ YifuCity_EventScript_IDontFeelSafe_Text_0:
 YifuCity_EventScript_IDontFeelSafe_Text_1:
 	.string "I don't feel safe with those Crobat\n"
 	.string "weirdos creeping around the city…\p"
-	.string "I can't imagine how much worse it'd be\n"
-	.string "were it not for the patrolling\l"
+	.string "I can't imagine how much worse it'd\n"
+	.string "be were it not for the patrolling\l"
 	.string "Samurai!$"
 
 YifuCity_EventScript_Samurai_Text_0:
-	.string "Samurai$"
-
-YifuCity_EventScript_Samurai_Text_1:
 	.string "The Crobat Shadows' reign of terror\n"
 	.string "will cease!$"
 
@@ -869,22 +874,24 @@ YifuCity_EventScript_SamuraiTalkToRobberyVictim_Text_0:
 	.string "thiefs looked like?$"
 
 YifuCity_EventScript_RobberyVictim_Text_0:
-	.string "A couple of crooks threatened me and\n"
-	.string "stole all my Pokémon, right in front of\l"
-	.string "the Refuge!\p"
+	.string "A couple of crooks threatened me\n"
+	.string "and stole all my Pokémon, right in\l"
+	.string "front of the Refuge!\p"
 	.string "Oh, what am I ever going to do…?$"
 
 YifuCity_EventScript_ShinySeller_Text_0:
 	.string "Shady man$"
 
 YifuCity_EventScript_ShinySeller_Text_1:
-	.string "Hey, uh… Wanna buy this Pokémon 'ere?\n"
-	.string "'Parently it's super rare or somethin',\l"
-	.string "but I don't really need it, so…$"
+	.string "Hey, uh… Wanna buy this Pokémon\n"
+	.string "'ere?\n"
+	.string "'Parently it's super rare or\l"
+	.string "somethin', but I don't really need\l"
+	.string "it, so…$"
 
 YifuCity_EventScript_ShinySeller_Text_2:
 	.string "So whaddyasay?\n"
-	.string "It's yours for only ¥10000.$"
+	.string "It's yours for only 10 000¥.$"
 
 YifuCity_ShinySellerChoice_Text_0:
 	.string "I'll buy it!$"
@@ -914,16 +921,17 @@ YifuCity_ShinySellerChoice_Text_7:
 	.string "Caterpie…$"
 
 YifuCity_ShinySellerChoice_Text_8:
-	.string "You, uh… You don't got enough cash,\n"
-	.string "kid.$"
+	.string "You, uh… You don't got enough\n"
+	.string "cash, kid.$"
 
 YifuCity_ShinySellerChoice_Text_9:
-	.string "Then why are ya botherin' me? Scram,\n"
-	.string "kid!$"
+	.string "Then why are ya botherin' me?\n"
+	.string "Scram, kid!$"
 
 YifuCity_ShinySellerChoice_Text_10:
-	.string "What? No! Why woudja even say that?\n"
-	.string "Do I not look respectable to ya?\p"
+	.string "What? No! Why woudja even say\n"
+	.string "that? Do I not look respectable\l"
+	.string "to ya?\p"
 	.string "So uh… You gonna buy it or not?$"
 
 YifuCity_Trigger_CrobatGruntsScram_Text_0:
@@ -936,22 +944,22 @@ YifuCity_Trigger_CrobatGruntsScram_Text_1:
 	.string "Want a taste of this?$"
 
 YifuCity_Trigger_CrobatGruntsScram_Text_2:
-	.string "Yeah, that's right, hightail it outta\n"
-	.string "here!$"
+	.string "Yeah, that's right, hightail it\n"
+	.string "outta here!$"
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0:
 	.string "???$"
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_1:
-	.string "Last time, I got it wrong and he didn'\n"
-	.string "let me through!\p"
+	.string "Last time, I got it wrong and he\n"
+	.string "didn' let me through!\p"
 	.string "Like, brother, why I gotta tell ya\n"
-	.string "some password for ya to let me in, we\l"
-	.string "wen' to school together!$"
+	.string "some password for ya to let me\l"
+	.string "in, we wen' to school together!$"
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_2:
-	.string "Wait, ya didn't go to school though,\n"
-	.string "didja?$"
+	.string "Wait, ya didn't go to school\n"
+	.string "though, didja?$"
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_3:
 	.string "Who cares! It's a figger of speech!\n"
@@ -966,8 +974,8 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_5:
 	.string "Aw man! I forgot it too!$"
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_6:
-	.string "Ya idjet! How're we gunna get back in\n"
-	.string "now??\p"
+	.string "Ya idjet! How're we gunna get back\n"
+	.string "in now??\p"
 	.string "Now we gotta find another Zubat an'\n"
 	.string "hope he's got enough brains to\l"
 	.string "remember the full sent'nce!\p"
@@ -977,16 +985,17 @@ YifuCity_EventScript_HearEcho_Text_0:
 	.string "Boy$"
 
 YifuCity_EventScript_HearEcho_Text_1:
-	.string "There's a ghost haunting the sewers!\n"
-	.string "I swear I heard a voice calling when I\l"
-	.string "was walking along the canal!$"
+	.string "There's a ghost haunting the\n"
+	.string "sewers!\n"
+	.string "I swear I heard a voice calling\l"
+	.string "when I was walking along the canal!$"
 
 YifuCity_Trigger_CrobatGruntStuckInHole_Text_0:
 	.string "Yawn… I'm bored…$"
 
 YifuCity_Trigger_CrobatGruntStuckInHole_Text_1:
-	.string "Sure hope there ain't no Sharpedo in\n"
-	.string "here…$"
+	.string "Sure hope there ain't no Sharpedo\n"
+	.string "in here…$"
 
 YifuCity_Trigger_CrobatGruntStuckInHole_Text_2:
 	.string "Echo! … … …\n"
@@ -1004,14 +1013,15 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Text_4:
 	.string "Heyyy!! Help!$"
 
 YifuCity_Trigger_CrobatGruntStuckInHole_Text_5:
-	.string "I fell down the canal! I'm stuck down\n"
-	.string "'ere!\p"
-	.string "Damn me, couldn't remember the first\n"
-	.string "half of the damn password…\l"
-	.string "“Something something… {COLOR RED}is awesome{COLOR DARK_GRAY}”!\l"
-	.string "But what?!\l"
-	.string "And why'd I think it was a good idea to\l"
-	.string "try gettin' in through the canal?\l"
+	.string "I fell down the canal! I'm stuck\n"
+	.string "down 'ere!\p"
+	.string "Damn me, couldn't remember the\n"
+	.string "first half of the damn password…\l"
+	.string "“Something something… {COLOR RED}is\l"
+	.string "awesome{COLOR DARK_GRAY}”! But what?!\l"
+	.string "And why'd I think it was a good\l"
+	.string "idea to try gettin' in through the\l"
+	.string "canal?\l"
 	.string "I can't swim! It's a dead end!$"
 
 YifuCity_EventScript_Surskit_Text_0:
@@ -1024,8 +1034,8 @@ YifuCity_Trigger_Lockdown_Text_0:
 YifuCity_Trigger_Lockdown_Text_1:
 	.string "I'm sorry, {STR_VAR_1}, all exits\n"
 	.string "are temporarily blocked. You are\l"
-	.string "asked to remain inside the city until\l"
-	.string "further notice.$"
+	.string "asked to remain inside the city\l"
+	.string "until further notice.$"
 
 YifuCity_Trigger_Lockdown_Text_2:
 	.string "Why?$"
@@ -1034,20 +1044,22 @@ YifuCity_Trigger_Lockdown_Text_3:
 	.string "What's happening?$"
 
 YifuCity_Trigger_Lockdown_Text_4:
-	.string "We Samurai are in the middle of an\n"
-	.string "investigation on an illegally running\l"
-	.string "shop!\p"
+	.string "A robbery has taken place near the\n"
+	.string "Pokémon Refuge!\p"
+	.string "We Samurai are on the cusp of\n"
+	.string "cracking down on the infamous\l"
+	.string "Crobat Shadows!\p"
 	.string "We cannot risk this operation to go\n"
 	.string "awry, so we've locked down the\l"
 	.string "premises for the time being!\p"
 	.string "Please remain calm, I'm sure\n"
-	.string "everything will be over before you\l"
-	.string "know it.$"
+	.string "everything will be over before\l"
+	.string "you know it.$"
 
 YifuCity_Trigger_Lockdown_Text_5:
 	.string "I'm sorry, {STR_VAR_1}, all exits\n"
-	.string "are temporarily blocked. Nobody in or\l"
-	.string "out.\p"
+	.string "are temporarily blocked. Nobody\l"
+	.string "in or out.\p"
 	.string "You are asked to remain inside the\n"
 	.string "city until further notice.$"
 
@@ -1055,6 +1067,17 @@ YifuCity_Trigger_HarikoCriminals_Text_0:
 	.string "Hariko$"
 
 YifuCity_Trigger_HarikoCriminals_Text_1:
-	.string "Hey {PLAYER}, a bunch of people got\n"
-	.string "their Pokémon stolen, this is\l"
-	.string "placeholder text!$"
+	.string "Hello, {PLAYER}.\n"
+	.string "Are you well, since last time?\p"
+	.string "Did you hear?\n"
+	.string "There was a robbery right here in\l"
+	.string "Yifu City! Some people's Pokémon\l"
+	.string "were stolen!\p"
+	.string "I heard there was a second\n"
+	.string "decaying area west of here.\l"
+	.string "I was planning on going there,\l"
+	.string "but a Samurai was blocking the\l"
+	.string "way, so I am waiting here.\p"
+	.string "I am going for a stroll now. Let us\n"
+	.string "have lunch together before you\l"
+	.string "leave!$"

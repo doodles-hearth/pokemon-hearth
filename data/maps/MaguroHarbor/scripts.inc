@@ -388,16 +388,17 @@ MaguroHarbor_Mart:
 
 MaguroHarbor_EventScript_TownSign_Text_0:
 	.string "Maguro Harbor\n"
-	.string "“A town that lives hand in hand with\l"
-	.string "the sea.”$"
+	.string "“A town that lives hand in hand\l"
+	.string "with the sea.”$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_0:
 	.string "Lovestruck Girl$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_1:
-	.string "It's only been an hour since I saw my\n"
-	.string "love, and yet I already want tomorrow\l"
-	.string "to come just so I see him again…$"
+	.string "It's only been an hour since I saw\n"
+	.string "my love, and yet I already want\l"
+	.string "tomorrow to come just so I see\l"
+	.string "him again…$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0:
 	.string "Old woman$"
@@ -411,9 +412,10 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0:
 	.string "another fishcake!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_1:
-	.string "Hello dear, want to try a fishcake?\p"
+	.string "Hello dear, want to try a\n"
+	.string "fishcake?\p"
 	.string "They're the town's specialty! Only\n"
-	.string "¥500!$"
+	.string "500¥!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2:
 	.string "One please!$"
@@ -436,18 +438,18 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7:
 	.string "Uhh… Cake!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0:
-	.string "I'm sorry but we've closed shop now,\n"
-	.string "dearie. We'll be open again\l"
+	.string "I'm sorry but we've closed shop\n"
+	.string "now, dearie. We'll be open again\l"
 	.string "{STR_VAR_1}!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_1:
-	.string "Oh my! I'm sorry but we've closed shop\n"
-	.string "now, dearie. We'll be open again\l"
-	.string "{STR_VAR_1}!\p"
+	.string "Oh my! I'm sorry but we've closed\n"
+	.string "shop now, dearie. We'll be open\l"
+	.string "again {STR_VAR_1}!\p"
 	.string "Did you want to buy one of my\n"
 	.string "Fishcakes?\p"
-	.string "Here, you can have the leftovers from\n"
-	.string "today!$"
+	.string "Here, you can have the leftovers\n"
+	.string "from today!$"
 
 MaguroHarbor_EventScript_FishPokemonSalesman_Text_0:
 	.string "laddie$"
@@ -460,7 +462,8 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0:
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1:
 	.string "Aye! We're not open yet. Come back\n"
-	.string "later for the fresh catch of the day.$"
+	.string "later for the fresh catch of the\l"
+	.string "day.$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0:
 	.string "Fresh fish! Come get yer fish!$"
@@ -492,23 +495,24 @@ MaguroHarbor_EventScript_FishermanOldRod_Text_1:
 	.string "Yer eyes… They be sparklin' with\n"
 	.string "passion… Are ye by any chance an\l"
 	.string "aspirin' fisherm'n?\p"
-	.string "Ye are! I can feel it! I can see ye be\n"
-	.string "dyin' to try it fer yerself!\p"
+	.string "Ye are! I can feel it! I can see\n"
+	.string "ye be dyin' to try it fer yerself!\p"
 	.string "Now, I can't be givin' ye me loyal\n"
 	.string "Cramorant here…\p"
-	.string "But I can give ye this ol' rud o' mine!$"
+	.string "But I can give ye this ol' rud o'\n"
+	.string "mine!$"
 
 MaguroHarbor_EventScript_FishermanOldRod_Text_2:
-	.string "It be a wee bit used, but I reckon it\n"
-	.string "will serve ye mighty fine!\p"
-	.string "Farewell, lad! May ye become a great\n"
-	.string "fisherm'n!$"
+	.string "It be a wee bit used, but I reckon\n"
+	.string "it will serve ye mighty fine!\p"
+	.string "Farewell, lad! May ye become a\n"
+	.string "great fisherm'n!$"
 
 MaguroHarbor_EventScript_FishermanOldRod_Text_3:
-	.string "It be a wee bit used, but I reckon it\n"
-	.string "will serve ye mighty fine!\p"
-	.string "Farewell, lass! May ye become a great\n"
-	.string "fisherm'n!$"
+	.string "It be a wee bit used, but I reckon\n"
+	.string "it will serve ye mighty fine!\p"
+	.string "Farewell, lass! May ye become a\n"
+	.string "great fisherm'n!$"
 
 MaguroHarbor_EventScript_Man_Text_0:
 	.string "Man$"
@@ -521,8 +525,8 @@ MaguroHarbor_EventScript_MartSelling_Text_0:
 	.string "Saleswoman$"
 
 MaguroHarbor_EventScript_MartSettingUp_Text_0:
-	.string "Oh, uh, the shop isn't open yet. Come\n"
-	.string "back later.$"
+	.string "Oh, uh, the shop isn't open yet.\n"
+	.string "Come back later.$"
 
 MaguroHarbor_EventScript_MartClosingUp_Text_0:
 	.string "The shop's closed for today. Come\n"

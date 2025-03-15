@@ -2,7 +2,7 @@
   "id": "MAP_YIFU_CITY_DOJO",
   "name": "YifuCity_Dojo",
   "layout": "LAYOUT_YIFU_CITY_DOJO",
-  "music": "MUS_DUMMY",
+  "music": "MUS_B_PALACE",
   "region_map_section": "MAPSEC_YIFU_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

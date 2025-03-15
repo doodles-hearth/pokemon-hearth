@@ -2,7 +2,7 @@
   "id": "MAP_BEACHBOUND_MAGURO_GATE",
   "name": "Beachbound_Maguro_Gate",
   "layout": "LAYOUT_BEACHBOUND_MAGURO_GATE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_ROUTE104",
   "region_map_section": "MAPSEC_BEACHBOUND_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

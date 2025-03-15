@@ -104,6 +104,35 @@ script WhiteslateRoute_EventScript_ShuckleGirl {
 	end
 }
 
+script WhiteslateRoute_EventScript_Deerling {
+	lock
+	faceplayer
+	setseenmon(SPECIES_DEERLING)
+	setspeakertomonname(SPECIES_DEERLING)
+	playmoncry(SPECIES_DEERLING, CRY_MODE_NORMAL)
+	applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 3))
+	waitmoncry
+	waitmovement(0)
+	
+	applymovement(VAR_LAST_TALKED, moves(jump_2_right * 6))
+	playse(SE_LEDGE)
+	delay(32)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_right))
+	playse(SE_LEDGE)
+	delay(32)
+	playse(SE_LEDGE)
+	delay(32)
+	playse(SE_LEDGE)
+	delay(32)
+	playse(SE_LEDGE)
+	delay(32)
+	playse(SE_LEDGE)
+
+	waitmovement(VAR_LAST_TALKED)
+
+	release
+}
+
 script WhiteslateRoute_EventScript_Shuckle {
 	lock
 	faceplayer

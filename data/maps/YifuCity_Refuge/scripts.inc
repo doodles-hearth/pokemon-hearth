@@ -12,10 +12,73 @@ YifuCity_Refuge_EventScript_FakeNurse::
 	closemessage
 	incrementgamestat GAME_STAT_USED_POKECENTER
 	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
+	goto_if_set FLAG_GOT_SCAMMED_YIFU_REFUGE, YifuCity_Refuge_EventScript_FakeNurse_2
+	setflag FLAG_GOT_SCAMMED_YIFU_REFUGE
+	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_5
+	showmoneybox 18, 0
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Refuge_EventScript_FakeNurse_Text_6, YifuCity_Refuge_EventScript_FakeNurse_Text_7, YifuCity_Refuge_EventScript_FakeNurse_Text_8
+	closemessage
+	switch VAR_RESULT
+	case 0, YifuCity_Refuge_EventScript_FakeNurse_9
+	case 1, YifuCity_Refuge_EventScript_FakeNurse_9
+	case 2, YifuCity_Refuge_EventScript_FakeNurse_10
+YifuCity_Refuge_EventScript_FakeNurse_1:
+	hidemoneybox
+	closemessage
+	return
+
+YifuCity_Refuge_EventScript_FakeNurse_2:
+	showmoneybox 18, 0
+	checkmoney 500
+	compare VAR_RESULT, 0
+	goto_if_ne YifuCity_Refuge_EventScript_FakeNurse_5
+	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_4
+	goto YifuCity_Refuge_EventScript_FakeNurse_1
+
+YifuCity_Refuge_EventScript_FakeNurse_5:
 	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_2
-	closemessage
-	end
+	removemoney 500
+	updatemoneybox
+	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_3
+	goto YifuCity_Refuge_EventScript_FakeNurse_1
+
+YifuCity_Refuge_EventScript_FakeNurse_9:
+	checkmoney 500
+	compare VAR_RESULT, 0
+	goto_if_ne YifuCity_Refuge_EventScript_FakeNurse_11
+	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_10
+	goto YifuCity_Refuge_EventScript_FakeNurse_1
+
+YifuCity_Refuge_EventScript_FakeNurse_10:
+	checkmoney 500
+	compare VAR_RESULT, 0
+	goto_if_ne YifuCity_Refuge_EventScript_FakeNurse_14
+	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_12
+	goto YifuCity_Refuge_EventScript_FakeNurse_1
+
+YifuCity_Refuge_EventScript_FakeNurse_11:
+	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_9
+	removemoney 500
+	updatemoneybox
+	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_3
+	goto YifuCity_Refuge_EventScript_FakeNurse_1
+
+YifuCity_Refuge_EventScript_FakeNurse_14:
+	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_11
+	removemoney 500
+	updatemoneybox
+	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_3
+	goto YifuCity_Refuge_EventScript_FakeNurse_1
 
 
 YifuCity_Refuge_EventScript_Woobat::
@@ -133,7 +196,65 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_1:
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_2:
 	.string "Yep, uh, good as new, probably!\p"
+	.string "Ya know the drill, 500¥ please!$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_3:
 	.string "C'magain, or whatever.$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_4:
+	.string "Yep, uh, good as new, probably!\p"
+	.string "Ya know the drill, 500¥ please!\p"
+	.string "… … …\n"
+	.string "… … …What? Yer THAT poor?\p"
+	.string "I feel almost bad for ya, buddy…\p"
+	.string "I guess, uh… I guess we're good\n"
+	.string "then, don' worry 'bout it.\p"
+	.string "Now make like a Treecko 'n leave!$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_5:
+	.string "Yep, uh, good as new, probably!\p"
+	.string "By the way, that'll be 500¥, wow,\n"
+	.string "so cheap!$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_6:
+	.string "What?!$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_7:
+	.string "No way!$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_8:
+	.string "Okay, I guess…$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_9:
+	.string "No whinin'! Fork over the cash\n"
+	.string "before I call security!$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_10:
+	.string "No whinin'! Fork over the cash\n"
+	.string "before I call security!\p"
+	.string "… … …\n"
+	.string "… … …What? Yer THAT poor?\p"
+	.string "I feel almost bad for ya, buddy…\p"
+	.string "I guess, uh… I guess we're good\n"
+	.string "then, don' worry 'bout it.\p"
+	.string "Now make like a Treecko 'n leave!$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_11:
+	.string "…Really? Jus' like that?\p"
+	.string "(Wow, this one's really dumb,\n"
+	.string "huh?)\p"
+	.string "I mean, yeah, you better!$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_12:
+	.string "…Really? Jus' like that?\p"
+	.string "(Wow, this one's really dumb,\n"
+	.string "huh?)\p"
+	.string "… … …\n"
+	.string "… … …What? Ya don't have 'nuff\l"
+	.string "cash?!\p"
+	.string "I can't believe it! I've been\n"
+	.string "had!\p"
+	.string "Get outta here, ya scammer!$"
 
 YifuCity_Refuge_EventScript_Woobat_Text_0:
 	.string "Chansey?$"
@@ -146,16 +267,17 @@ YifuCity_Refuge_EventScript_Shamisen_Text_0:
 
 YifuCity_Refuge_EventScript_Shamisen_Text_1:
 	.string "Good evening, traveler.\p"
-	.string "I hope my song will soothe your spirit,\n"
-	.string "should it be troubled.$"
+	.string "I hope my song will soothe your\n"
+	.string "spirit, should it be troubled.$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_0:
 	.string "Valet$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_1:
-	.string "Good morning, {STR_VAR_1}! There's\n"
-	.string "a room available for ¥500, if you need\l"
-	.string "a place to spend the night!$"
+	.string "Good morning, {STR_VAR_1}!\n"
+	.string "There's a room available for\l"
+	.string "500¥, if you need a place to\l"
+	.string "spend the night!$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_2:
 	.string "One room, please.$"
@@ -168,8 +290,8 @@ YifuCity_Refuge_EventScript_HotelValet_Text_4:
 
 YifuCity_Refuge_EventScript_HotelValet_Text_5:
 	.string "Your room is the first one down the\n"
-	.string "corridor! We hope you have a pleasant\l"
-	.string "stay!$"
+	.string "corridor! We hope you have a\l"
+	.string "pleasant stay!$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_6:
 	.string "Have a nice day!$"
@@ -187,11 +309,11 @@ YifuCity_Refuge_EventScript_Traveler_Text_0:
 
 YifuCity_Refuge_EventScript_Traveler_Text_1:
 	.string "I come from a place high up in the\n"
-	.string "mountains, where the Pokémon are as\l"
-	.string "tough as the rocky landscape.\p"
-	.string "My Pawniard hones its saberlike claws\n"
-	.string "on the hardest stones to keep them\l"
-	.string "sharp.$"
+	.string "mountains, where the Pokémon are\l"
+	.string "as tough as the rocky landscape.\p"
+	.string "My Pawniard hones its saberlike\n"
+	.string "claws on the hardest stones to\l"
+	.string "keep them sharp.$"
 
 YifuCity_Refuge_EventScript_Bisharp_Text_0:
 	.string "Kshhh.$"
@@ -200,5 +322,6 @@ YifuCity_Refuge_EventScript_Samurai_Text_0:
 	.string "Samurai$"
 
 YifuCity_Refuge_EventScript_Samurai_Text_1:
-	.string "The Crobat Shadows must be operating\n"
-	.string "from somewhere… But where?$"
+	.string "The Crobat Shadows must be\n"
+	.string "operating from somewhere… But\l"
+	.string "where?$"

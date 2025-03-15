@@ -2,7 +2,7 @@
   "id": "MAP_WINDY_CAPE2",
   "name": "WindyCape2",
   "layout": "LAYOUT_WINDY_CAPE2",
-  "music": "MUS_DUMMY",
+  "music": "MUS_SAILING",
   "region_map_section": "MAPSEC_WINDYCAPE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

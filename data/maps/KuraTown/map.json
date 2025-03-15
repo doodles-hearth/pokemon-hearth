@@ -2,7 +2,7 @@
   "id": "MAP_KURA_TOWN",
   "name": "KuraTown",
   "layout": "LAYOUT_KURA_TOWN",
-  "music": "MUS_DUMMY",
+  "music": "MUS_HH_SUNRISE",
   "region_map_section": "MAPSEC_KURA_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

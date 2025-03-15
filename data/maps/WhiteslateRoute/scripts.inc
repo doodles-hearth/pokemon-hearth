@@ -67,6 +67,33 @@ WhiteslateRoute_EventScript_ShuckleGirl::
 	end
 
 
+WhiteslateRoute_EventScript_Deerling::
+	lock
+	faceplayer
+	setseenmon SPECIES_DEERLING
+	setspeakertomonname SPECIES_DEERLING
+	playmoncry SPECIES_DEERLING, CRY_MODE_NORMAL
+	applymovement VAR_LAST_TALKED, WhiteslateRoute_EventScript_Deerling_Movement_0
+	waitmoncry
+	waitmovement 0
+	applymovement VAR_LAST_TALKED, WhiteslateRoute_EventScript_Deerling_Movement_1
+	playse SE_LEDGE
+	delay 32
+	applymovement OBJ_EVENT_ID_PLAYER, WhiteslateRoute_EventScript_Deerling_Movement_2
+	playse SE_LEDGE
+	delay 32
+	playse SE_LEDGE
+	delay 32
+	playse SE_LEDGE
+	delay 32
+	playse SE_LEDGE
+	delay 32
+	playse SE_LEDGE
+	waitmovement VAR_LAST_TALKED
+	release
+	return
+
+
 WhiteslateRoute_EventScript_Shuckle::
 	lock
 	faceplayer
@@ -232,6 +259,26 @@ WhiteslateRoute_Trigger_SecretBase_20:
 	goto WhiteslateRoute_Trigger_SecretBase_16
 
 
+WhiteslateRoute_EventScript_Deerling_Movement_0:
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
+WhiteslateRoute_EventScript_Deerling_Movement_1:
+	jump_2_right
+	jump_2_right
+	jump_2_right
+	jump_2_right
+	jump_2_right
+	jump_2_right
+	step_end
+
+WhiteslateRoute_EventScript_Deerling_Movement_2:
+	face_right
+	step_end
+
 WhiteslateRoute_Trigger_SecretBase_Movement_0:
 	walk_right
 	face_left
@@ -343,8 +390,8 @@ WhiteslateRoute_EventScript_Itsumi_Text_2:
 	.string "Itsumi$"
 
 WhiteslateRoute_EventScript_Itsumi_Text_3:
-	.string "I am glad we met! Your Pokémon seem\n"
-	.string "so happy.$"
+	.string "I am glad we met! Your Pokémon\n"
+	.string "seem so happy.$"
 
 WhiteslateRoute_EventScript_Ryosuke_Text_0:
 	.string "I massage my Pokémon after each\n"
@@ -393,7 +440,8 @@ WhiteslateRoute_EventScript_Yono_Text_0:
 	.string "everyday!$"
 
 WhiteslateRoute_EventScript_Yono_Text_1:
-	.string "Let an old woman catch her breath!…$"
+	.string "Let an old woman catch her\n"
+	.string "breath!…$"
 
 WhiteslateRoute_EventScript_Yono_Text_2:
 	.string "Yono$"
@@ -439,15 +487,16 @@ WhiteslateRoute_EventScript_Utaro_Text_2:
 	.string "Utaro$"
 
 WhiteslateRoute_EventScript_Utaro_Text_3:
-	.string "Seviper is so darn cool! I mean, it's\n"
-	.string "got a sword on its tail!$"
+	.string "Seviper is so darn cool! I mean,\n"
+	.string "it's got a sword on its tail!$"
 
 WhiteslateRoute_EventScript_ShuckleGirl_Text_0:
 	.string "Woman$"
 
 WhiteslateRoute_EventScript_ShuckleGirl_Text_1:
-	.string "This Shuckle lives around here. I feed\n"
-	.string "him fresh berries every morning!$"
+	.string "This Shuckle lives around here. I\n"
+	.string "feed him fresh berries every\l"
+	.string "morning!$"
 
 WhiteslateRoute_EventScript_Shuckle_Text_0:
 	.string "Cklckl!$"
@@ -480,48 +529,52 @@ WhiteslateRoute_Trigger_SecretBase_Text_6:
 	.string "Are you a criminal?$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_7:
-	.string "Alright, you seem interested, so I'll\n"
-	.string "let you in on the secret!\p"
+	.string "Alright, you seem interested, so\n"
+	.string "I'll let you in on the secret!\p"
 	.string "I taught my Grovyle a secret\n"
-	.string "technique to open passages to hidden\l"
-	.string "natural caves!\p"
-	.string "Not only that! Trees with low-hanging\n"
-	.string "vines, bushes… Those kinds of places\l"
-	.string "are perfect to build a secret base!\p"
+	.string "technique to open passages to\l"
+	.string "hidden natural caves!\p"
+	.string "Not only that! Trees with\n"
+	.string "low-hanging vines, bushes… Those\l"
+	.string "kinds of places are perfect to\l"
+	.string "build a secret base!\p"
 	.string "I wrote this technique down just in\n"
-	.string "case. Here, now you can teach your\l"
-	.string "Pokémon too!$"
+	.string "case. Here, now you can teach\l"
+	.string "your Pokémon too!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_8:
-	.string "Ah, it's alright. You look like you're a\n"
-	.string "good kid. I'm sure you have what it\l"
-	.string "takes to become a secret base\l"
-	.string "master. I'll let you in on the secret!\p"
+	.string "Ah, it's alright. You look like\n"
+	.string "you're a good kid. I'm sure you\l"
+	.string "have what it takes to become a\l"
+	.string "secret base master. I'll let you\l"
+	.string "in on the secret!\p"
 	.string "I taught my Grovyle a secret\n"
-	.string "technique to open passages to hidden\l"
-	.string "natural caves!\p"
-	.string "Not only that! Trees with low-hanging\n"
-	.string "vines, bushes… That kind of place is\l"
-	.string "perfect to build a secret base!\p"
+	.string "technique to open passages to\l"
+	.string "hidden natural caves!\p"
+	.string "Not only that! Trees with\n"
+	.string "low-hanging vines, bushes… That\l"
+	.string "kind of place is perfect to build\l"
+	.string "a secret base!\p"
 	.string "I wrote this technique down just in\n"
-	.string "case. Here, now you can teach your\l"
-	.string "Pokémon too!$"
+	.string "case. Here, now you can teach\l"
+	.string "your Pokémon too!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_9:
 	.string "Of course not, this is perfectly\n"
-	.string "legal! You know what? I'll let you in\l"
-	.string "on the secret!\p"
+	.string "legal! You know what? I'll let\l"
+	.string "you in on the secret!\p"
 	.string "I taught my Grovyle a secret\n"
-	.string "technique to open passages to hidden\l"
-	.string "natural caves!\p"
-	.string "Not only that! Trees with low-hanging\n"
-	.string "vines, bushes… That kind of place is\l"
-	.string "perfect to build a secret base!\p"
+	.string "technique to open passages to\l"
+	.string "hidden natural caves!\p"
+	.string "Not only that! Trees with\n"
+	.string "low-hanging vines, bushes… That\l"
+	.string "kind of place is perfect to build\l"
+	.string "a secret base!\p"
 	.string "I wrote this technique down just in\n"
-	.string "case. Here, now you can teach your\l"
-	.string "Pokémon too!$"
+	.string "case. Here, now you can teach\l"
+	.string "your Pokémon too!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_10:
 	.string "I'll keep looking for the perfect\n"
-	.string "secret base spot! Maybe I'll see you\l"
-	.string "around!$"
+	.string "secret base spot! Maybe I'll see\l"
+	.string "you around!$"

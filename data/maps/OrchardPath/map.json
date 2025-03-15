@@ -2,7 +2,7 @@
   "id": "MAP_ORCHARD_PATH",
   "name": "OrchardPath",
   "layout": "LAYOUT_ORCHARD_PATH",
-  "music": "MUS_DUMMY",
+  "music": "MUS_RG_SEVII_ROUTE",
   "region_map_section": "MAPSEC_ORCHARD_PATH",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
