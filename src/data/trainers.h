@@ -9129,7 +9129,7 @@ F_TRAINER_FEMALE |
 #line 3705
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3704
-            .lvl = 17,
+            .lvl = 24,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -9140,7 +9140,7 @@ F_TRAINER_FEMALE |
 #line 3709
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),
 #line 3708
-            .lvl = 17,
+            .lvl = 25,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             },
@@ -30509,7 +30509,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 12153
-            .species = SPECIES_BOUNSWEET,
+            .species = SPECIES_STEENEE,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 12155
             .iv = TRAINER_PARTY_IVS(12, 12, 12, 12, 12, 12),

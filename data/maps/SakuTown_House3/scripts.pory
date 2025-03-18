@@ -108,6 +108,7 @@ script SakuTown_House3_EventScript_TradeMe {
 
 script SakuTown_House3_EventScript_Man {
     lock
+    faceplayer
     speakername("Man")
     if (flag(FLAG_FORTREE_NPC_TRADE_COMPLETED)) {
         msgbox(format(

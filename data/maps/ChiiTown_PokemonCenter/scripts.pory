@@ -190,3 +190,17 @@ movement ChiiTown_PokemonCenter_Movement_LeaveWhenFromBottom {
 movement ChiiTown_PokemonCenter_Movement_Leave {
 	walk_down * 6
 }
+
+script ChiiTown_PokemonCenter_EventScript_MakeNamesUp {
+	lock
+	faceplayer
+	speakername("Little Boy")
+	msgbox(format(
+		"You know what happens if I see a Pokémon and I don't know its name?\p"
+		"I just make it right up! I don't care about any silly “real” names!\p"
+		"And neither should you! Be free of the diktat of naming accuracy!"
+	))
+	closemessage
+	release
+	end
+}

@@ -325,7 +325,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	waitmovement(0)
 
 	playfanfare(MUS_OBTAIN_ITEM)
-	message(format("{PLAYER} received the Pokédex!"))
+	message(format("{PLAYER} received the PokéDex!"))
 	waitfanfare
 	setflag(FLAG_SYS_POKEDEX_GET)
 	// TODO EVA why does this exist
@@ -371,8 +371,8 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	speakername("Natsuki")
 	msgbox(format("{PLAYER}… Are you ready?"))
 	dynmultichoice(
-		16,
-		6,
+		0,
+		0,
 		TRUE,
 		10,
 		0,

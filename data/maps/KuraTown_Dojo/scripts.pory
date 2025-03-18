@@ -212,7 +212,7 @@ script KuraTown_Dojo_EventScript_DojoStatue {
 		msgbox(
 			"Dojo of Kura Village\p"
 			"Certified wielders:\n"
-			"Natsuki,"
+			"Natsuki,\l"
 			"{PLAYER}",
 			MSGBOX_SIGN
 		)

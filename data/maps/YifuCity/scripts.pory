@@ -779,3 +779,52 @@ script YifuCity_Trigger_HarikoCriminals {
 	setflag(FLAG_HIDE_HARIKO_YIFU_CITY)
 	releaseall
 }
+
+script YifuCity_EventScript_DojoSign {
+	msgbox(
+		format(
+			"Yifu City Pokémon Dojo\n"
+			"Leader: Yutaka\p"
+			"“The poetry in the rustling of a kimono.”"
+		),
+		MSGBOX_SIGN
+	)
+}
+
+script YifuCity_EventScript_NameRaterSign {
+	msgbox(format(
+		"“What's In A Name\nHumble name judge”"
+	), MSGBOX_SIGN)
+}
+
+script YifuCity_EventScript_HotSpringsSign {
+	msgbox(format(
+		"“Torkoal Tubs\nYifu City Hot Springs”"
+	), MSGBOX_SIGN)
+}
+
+script YifuCity_EventScript_CrobatShopSign {
+	msgbox(format(
+		"“Crobat Shop\nOnly legal stuff\lNothing to see here”"
+	), MSGBOX_SIGN)
+}
+
+script YifuCity_EventScript_RestaurantSign {
+	msgbox(format(
+		"“The Golden Drampa\nHotpot & Restaurant”"
+	), MSGBOX_SIGN)
+}
+
+script YifuCity_EventScript_ClothingShopSign {
+	msgbox(format(
+		"“Leavanny Silk\n"
+		"Fashionable and affordable clothes”"
+	), MSGBOX_SIGN)
+}
+
+script YifuCity_EventScript_DecorationShopSign {
+	msgbox(format(
+		"“Woodworker\n"
+		"We sell tables and chairs, mostly”"
+	), MSGBOX_SIGN)
+}

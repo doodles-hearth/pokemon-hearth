@@ -250,6 +250,7 @@ ChiiTown_Mart:
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_AWAKENING
+	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_NONE
 
 ChiiTown_EventScript_Samurai::
@@ -260,6 +261,11 @@ ChiiTown_EventScript_Samurai::
 
 ChiiTown_EventScript_TownSign::
 	msgbox ChiiTown_EventScript_TownSign_Text_0, MSGBOX_SIGN
+	return
+
+
+ChiiTown_EventScript_SchoolSign::
+	msgbox ChiiTown_EventScript_SchoolSign_Text_0, MSGBOX_SIGN
 	return
 
 
@@ -286,30 +292,32 @@ ChiiTown_EventScript_WatchfulMom_Text_0:
 ChiiTown_EventScript_WatchfulMom_Text_1:
 	.string "I'm dropping off my children to\n"
 	.string "school.\p"
-	.string "With all the recent Pokémon attacks,\n"
-	.string "I will not let them leave my sight!$"
+	.string "With all the recent Pokémon\n"
+	.string "attacks, I will not let them\l"
+	.string "leave my sight!$"
 
 ChiiTown_EventScript_WatchfulMom_Text_2:
 	.string "I'm waiting to pick up my children\n"
 	.string "after school.\p"
-	.string "With all the recent Pokémon attacks,\n"
-	.string "I will not let them leave my sight!$"
+	.string "With all the recent Pokémon\n"
+	.string "attacks, I will not let them\l"
+	.string "leave my sight!$"
 
 ChiiTown_EventScript_WatchfulMom_Text_3:
 	.string "Phew… Being a full-time mom is\n"
 	.string "exhausting…$"
 
 ChiiTown_EventScript_Shopper_Text_0:
-	.string "The lady who keeps the town's market\n"
-	.string "has started selling Pokémon medicine\l"
-	.string "and Poké Balls!\p"
-	.string "Be careful, though: the ointments she\n"
-	.string "sells can't be used in the middle of a\l"
-	.string "battle.\p"
-	.string "They are super cheap though, so don't\n"
-	.string "be afraid to use them so you don't\l"
-	.string "always have to run to the nearest\l"
-	.string "refuge!$"
+	.string "The lady who keeps the town's\n"
+	.string "market has started selling Pokémon\l"
+	.string "medicine and Poké Balls!\p"
+	.string "Be careful, though: the ointments\n"
+	.string "she sells can't be used in the\l"
+	.string "middle of a battle.\p"
+	.string "They are super cheap though, so\n"
+	.string "don't be afraid to use them so\l"
+	.string "you don't always have to run to\l"
+	.string "the nearest refuge!$"
 
 ChiiTown_EventScript_Kecleon_Text_0:
 	.string "Kleeeeh!$"
@@ -318,15 +326,16 @@ ChiiTown_EventScript_PlantingFlowers_Text_0:
 	.string "Little girl$"
 
 ChiiTown_EventScript_PlantingFlowers_Text_1:
-	.string "I'm planting flowers so that the wild\n"
-	.string "Pokémon become happy again!$"
+	.string "I'm planting flowers so that the\n"
+	.string "wild Pokémon become happy again!$"
 
 ChiiTown_EventScript_AlsoPlantingFlowers_Text_0:
 	.string "Little boy$"
 
 ChiiTown_EventScript_AlsoPlantingFlowers_Text_1:
-	.string "She's making me plant flowers so that\n"
-	.string "the wild Pokémon become happy again.\p"
+	.string "She's making me plant flowers so\n"
+	.string "that the wild Pokémon become\l"
+	.string "happy again.\p"
 	.string "I'm not though…$"
 
 ChiiTown_EventScript_WatchingTheChildren_Text_0:
@@ -334,8 +343,8 @@ ChiiTown_EventScript_WatchingTheChildren_Text_0:
 
 ChiiTown_EventScript_WatchingTheChildren_Text_1:
 	.string "To make sure the children's energy\n"
-	.string "isn't pent up too much, I bring them\l"
-	.string "out for recess.$"
+	.string "isn't pent up too much, I bring\l"
+	.string "them out for recess.$"
 
 ChiiTown_EventScript_EatingBerries_Text_0:
 	.string "Twin girl$"
@@ -343,8 +352,9 @@ ChiiTown_EventScript_EatingBerries_Text_0:
 ChiiTown_EventScript_EatingBerries_Text_1:
 	.string "Sensei said that we should eat\n"
 	.string "berries to grow big and strong!\p"
-	.string "But how are we supposed to get them\n"
-	.string "if we aren't big and strong yet?$"
+	.string "But how are we supposed to get\n"
+	.string "them if we aren't big and strong\l"
+	.string "yet?$"
 
 ChiiTown_EventScript_EatingBerries_Text_2:
 	.string "Give the girl an Oran Berry?$"
@@ -363,15 +373,16 @@ ChiiTown_EventScript_BerryEnthusiast_Text_0:
 
 ChiiTown_EventScript_BerryEnthusiast_Text_1:
 	.string "I've been eating berries just like\n"
-	.string "Sensei said, but I haven't grown yet.\p"
+	.string "Sensei said, but I haven't grown\l"
+	.string "yet.\p"
 	.string "I don't care though. They're\n"
 	.string "delicious!$"
 
 ChiiTown_EventScript_BattlingGirl_Text_0:
 	.string "Wow, {STR_VAR_1}! You're super\n"
 	.string "strong!!\p"
-	.string "I'll have to train Snuggles a whole lot\n"
-	.string "more!$"
+	.string "I'll have to train Snuggles a whole\n"
+	.string "lot more!$"
 
 ChiiTown_EventScript_BattlingGirl_Text_1:
 	.string "Hey {STR_VAR_1}! We've been\n"
@@ -394,14 +405,15 @@ ChiiTown_EventScript_BattlingGirl_Text_6:
 	.string "Ughhhh, older kids are so boooring!$"
 
 ChiiTown_EventScript_BattlingBoy_Text_0:
-	.string "Wow, {STR_VAR_1}! Can you be our\n"
-	.string "sensei?\p"
-	.string "That way, Destroyer will be invincible!$"
+	.string "Wow, {STR_VAR_1}! Can you be\n"
+	.string "our sensei?\p"
+	.string "That way, Destroyer will be\n"
+	.string "invincible!$"
 
 ChiiTown_EventScript_BattlingBoy_Text_1:
-	.string "Hello {STR_VAR_1}! We're top of our\n"
-	.string "class! That means we're strong! Wanna\l"
-	.string "battle us?$"
+	.string "Hello {STR_VAR_1}! We're top of\n"
+	.string "our class! That means we're\l"
+	.string "strong! Wanna battle us?$"
 
 ChiiTown_EventScript_BattlingBoy_Text_2:
 	.string "Fine! Go do grownup stuff!$"
@@ -410,19 +422,22 @@ ChiiTown_EventScript_Mart_Text_0:
 	.string "Saleswoman$"
 
 ChiiTown_EventScript_Mart_Text_1:
-	.string "Welcome to Chii Town's market! How may\n"
-	.string "I help you?$"
+	.string "Welcome to Chii Town's market! How\n"
+	.string "may I help you?$"
 
 ChiiTown_EventScript_Samurai_Text_0:
 	.string "Samurai$"
 
 ChiiTown_EventScript_Samurai_Text_1:
 	.string "There's been reports of some shady\n"
-	.string "men dressed in blue loitering around\l"
-	.string "the area.\p"
+	.string "men dressed in blue loitering\l"
+	.string "around the area.\p"
 	.string "Be careful when traveling!$"
 
 ChiiTown_EventScript_TownSign_Text_0:
 	.string "Chii Town\n"
-	.string "“The smallest town, with the biggest\l"
-	.string "heart.”$"
+	.string "“The smallest town, with the\l"
+	.string "biggest heart.”$"
+
+ChiiTown_EventScript_SchoolSign_Text_0:
+	.string "“Little Deerling elementary school”$"

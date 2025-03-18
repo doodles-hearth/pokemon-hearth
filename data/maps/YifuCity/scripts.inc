@@ -116,10 +116,10 @@ YifuCity_EventScript_SamuraiTalkToRobberyVictim::
 
 YifuCity_EventScript_RobberyVictim::
 	lock
-	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
-	waitmovement 0
 	speakername YifuCity_EventScript_RobberyVictim_Text_0
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_RobberyVictim_2
+	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	waitmovement 0
 	msgbox YifuCity_EventScript_RobberyVictim_Text_7
 YifuCity_EventScript_RobberyVictim_1:
 	closemessage
@@ -156,6 +156,7 @@ YifuCity_EventScript_RobberyVictim_8:
 	msgbox YifuCity_EventScript_RobberyVictim_Text_5
 	closemessage
 	giveitem ITEM_TM_CALM_MIND
+	waitmessage
 	setflag FLAG_RECEIVED_TM_CALM_MIND
 	addvar VAR_PLAYER_REPUTATION, 1
 	fadescreen FADE_TO_BLACK
@@ -235,6 +236,7 @@ YifuCity_ShinySellerChoice_6:
 YifuCity_ShinySellerChoice_9:
 	removemoney 10000
 	updatemoneybox
+	playse SE_SHOP
 	closemessage
 	playfanfare MUS_OBTAIN_ITEM
 	message YifuCity_ShinySellerChoice_Text_4
@@ -892,7 +894,9 @@ YifuCity_EscapedCrobatHideoutWithSamurai_Text_0:
 	.string "Samurai$"
 
 YifuCity_EscapedCrobatHideoutWithSamurai_Text_1:
-	.string "Well, well… They slipped through our fingers, but they fled the city!$"
+	.string "Well, well… They slipped through\n"
+	.string "our fingers, but they fled the\l"
+	.string "city!$"
 
 YifuCity_EventScript_StoleMyMon_Text_0:
 	.string "Man$"

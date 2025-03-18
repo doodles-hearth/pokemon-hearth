@@ -18,7 +18,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 	msgbox(format(
 		"Hehe… Hullo, kid…\nPeople call me the Pokémon Nerd.\p"
-		"(Not sure why…)\p"
+		"(They're just jealous…)\p"
 		"I know a whole lot about Pokémon… Wanna play a game?\p"
 		"If you can guess what Pokémon I'm describing, I'll share my knowledge with you.\p"
 		"Hehe… Think you can solve my riddle? Ahem…"

@@ -3722,10 +3722,8 @@ const u8 *GetSpeciesName(u16 species, enum SpeciesNameCheck nameCheck)
         return gSpeciesInfo[SPECIES_NONE].speciesName;
 
 #if TESTING
-    DebugPrintf("WE ARE TESTING", gAnimMoveIndex);
     return gSpeciesInfo[species].speciesName;
 #endif
-    DebugPrintf("WE ARE NOT TESTING", gAnimMoveIndex);
     if (
         P_UNKNOWN_MON_NAMES == TRUE
         && nameCheck == DO_NAME_CHECK

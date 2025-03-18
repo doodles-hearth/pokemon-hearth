@@ -2,7 +2,13 @@ script EventScript_ClayFurnace {
 	msgbox(format("The fire dances in the furnace."))
 	closemessage
 	playmoncry(SPECIES_SLUGMA, CRY_MODE_NORMAL)
-	msgbox(format("…Hey, there's a Slugma in here!"))
+	getnamedmon(SPECIES_SLUGMA)
+	if (var(VAR_RESULT)) {
+		msgbox(format("…Hey, there's a Slugma in here!"))
+	} else {
+		msgbox(format("…Hey, there's a Pokémon in here!"))
+	}
+	setseenmon(SPECIES_SLUGMA)
 	waitmoncry
 	closemessage
 }

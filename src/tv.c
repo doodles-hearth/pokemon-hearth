@@ -3257,6 +3257,12 @@ bool8 TryPutNameRaterShowOnTheAir(void)
     return TRUE;
 }
 
+bool8 WasNicknameChanged(void)
+{
+    GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar1);
+    return StringCompare(gStringVar3, gStringVar1);
+}
+
 void ChangePokemonNickname(void)
 {
     void ChangePokemonNickname_CB(void);
