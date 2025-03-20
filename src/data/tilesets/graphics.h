@@ -2185,3 +2185,22 @@ const u16 gTilesetPalettes_CrobatHideout[][16] =
 };
 
 const u32 gTilesetTiles_CrobatHideout[] = INCBIN_U32("data/tilesets/secondary/crobat_hideout/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Grassflower[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/grassflower/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Grassflower[] = INCBIN_U32("data/tilesets/secondary/grassflower/tiles.4bpp.lz");

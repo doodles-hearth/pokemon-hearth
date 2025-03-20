@@ -1066,7 +1066,7 @@
 #define FLAG_ITEM_HM_ROCK_TOMB                                      0x3EF
 #define FLAG_ITEM_TM_WATER_PULSE                                    0x3F0
 #define FLAG_ITEM_STOLEN_MONS                                       0x3F1
-#define FLAG_ITEM_ROUTE_111_HP_UP                                   0x3F2
+#define FLAG_ITEM_GRASSFLOWER_PLATEAU_MAX_OINTMENT                  0x3F2
 #define FLAG_ITEM_ROUTE_112_NUGGET                                  0x3F3
 #define FLAG_ITEM_ROUTE_113_MAX_ETHER                               0x3F4
 #define FLAG_ITEM_ROUTE_113_SUPER_REPEL                             0x3F5

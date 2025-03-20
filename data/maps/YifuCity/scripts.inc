@@ -502,11 +502,6 @@ YifuCity_EventScript_Surskit::
 	end
 
 
-YifuCity_EventScript_CrobatShopSign::
-	msgbox YifuCity_EventScript_CrobatShopSign_Text_0, MSGBOX_SIGN
-	return
-
-
 YifuCity_Trigger_Lockdown::
 	lockall
 	goto_if_set FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_Lockdown_2
@@ -631,6 +626,41 @@ YifuCity_Trigger_HarikoCriminals_4:
 YifuCity_Trigger_HarikoCriminals_5:
 	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_2
 	goto YifuCity_Trigger_HarikoCriminals_1
+
+
+YifuCity_EventScript_DojoSign::
+	msgbox YifuCity_EventScript_DojoSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_NameRaterSign::
+	msgbox YifuCity_EventScript_NameRaterSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_HotSpringsSign::
+	msgbox YifuCity_EventScript_HotSpringsSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_CrobatShopSign::
+	msgbox YifuCity_EventScript_CrobatShopSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_RestaurantSign::
+	msgbox YifuCity_EventScript_RestaurantSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_ClothingShopSign::
+	msgbox YifuCity_EventScript_ClothingShopSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_DecorationShopSign::
+	msgbox YifuCity_EventScript_DecorationShopSign_Text_0, MSGBOX_SIGN
+	return
 
 
 YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0:
@@ -1128,12 +1158,6 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Text_5:
 YifuCity_EventScript_Surskit_Text_0:
 	.string "Sksksksk…$"
 
-YifuCity_EventScript_CrobatShopSign_Text_0:
-	.string "The sign has been written over.\p"
-	.string "“Crobat Shop\n"
-	.string "Come peruse our totally legal\l"
-	.string "stuff!”$"
-
 YifuCity_Trigger_Lockdown_Text_0:
 	.string "ATTENTION! ATTENTION!\p"
 	.string "THE CITY IS NOW UNDER LOCKDOWN!$"
@@ -1188,3 +1212,34 @@ YifuCity_Trigger_HarikoCriminals_Text_1:
 	.string "I am going for a stroll now. Let us\n"
 	.string "have lunch together before you\l"
 	.string "leave!$"
+
+YifuCity_EventScript_DojoSign_Text_0:
+	.string "Yifu City Pokémon Dojo\n"
+	.string "Leader: Yutaka\p"
+	.string "“The poetry in the rustling of a\n"
+	.string "kimono.”$"
+
+YifuCity_EventScript_NameRaterSign_Text_0:
+	.string "“What's In A Name\n"
+	.string "Humble name judge”$"
+
+YifuCity_EventScript_HotSpringsSign_Text_0:
+	.string "“Torkoal Tubs\n"
+	.string "Yifu City Hot Springs”$"
+
+YifuCity_EventScript_CrobatShopSign_Text_0:
+	.string "“Crobat Shop\n"
+	.string "Only legal stuff\l"
+	.string "Nothing to see here”$"
+
+YifuCity_EventScript_RestaurantSign_Text_0:
+	.string "“The Golden Drampa\n"
+	.string "Hotpot & Restaurant”$"
+
+YifuCity_EventScript_ClothingShopSign_Text_0:
+	.string "“Leavanny Silk\n"
+	.string "Fashionable and affordable clothes”$"
+
+YifuCity_EventScript_DecorationShopSign_Text_0:
+	.string "“Woodworker\n"
+	.string "We sell tables and chairs, mostly”$"

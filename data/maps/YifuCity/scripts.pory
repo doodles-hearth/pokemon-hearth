@@ -632,14 +632,6 @@ script YifuCity_EventScript_Surskit {
     end
 }
 
-script YifuCity_EventScript_CrobatShopSign {
-    msgbox(format(
-        "The sign has been written over.\p"
-		"“Crobat Shop\n"
-		"Come peruse our totally legal stuff!”"
-    ), MSGBOX_SIGN)
-}
-
 script YifuCity_Trigger_Lockdown {
 	lockall
 	// TODO EVA don't use the flag here you moron

@@ -1158,3 +1158,14 @@ const struct Tileset gTileset_CrobatHideout =
     .metatileAttributes = gMetatileAttributes_CrobatHideout,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Grassflower =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Grassflower,
+    .palettes = gTilesetPalettes_Grassflower,
+    .metatiles = gMetatiles_Grassflower,
+    .metatileAttributes = gMetatileAttributes_Grassflower,
+    .callback = NULL,
+};

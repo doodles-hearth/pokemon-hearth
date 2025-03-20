@@ -295,3 +295,6 @@ const u16 gMetatileAttributes_DojoYifu[] = INCBIN_U16("data/tilesets/secondary/d
 
 const u16 gMetatiles_CrobatHideout[] = INCBIN_U16("data/tilesets/secondary/crobat_hideout/metatiles.bin");
 const u16 gMetatileAttributes_CrobatHideout[] = INCBIN_U16("data/tilesets/secondary/crobat_hideout/metatile_attributes.bin");
+
+const u16 gMetatiles_Grassflower[] = INCBIN_U16("data/tilesets/secondary/grassflower/metatiles.bin");
+const u16 gMetatileAttributes_Grassflower[] = INCBIN_U16("data/tilesets/secondary/grassflower/metatile_attributes.bin");

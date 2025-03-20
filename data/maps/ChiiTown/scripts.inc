@@ -13,19 +13,60 @@ ChiiTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 
 ChiiTown_DrawMetatiles::
+	goto_if_set FLAG_BADGE01_GET, ChiiTown_DrawMetatiles_2
+ChiiTown_DrawMetatiles_1:
+	goto_if_set FLAG_BADGE03_GET, ChiiTown_DrawMetatiles_5
+ChiiTown_DrawMetatiles_4:
+	goto_if_set FLAG_BADGE04_GET, ChiiTown_DrawMetatiles_8
+ChiiTown_DrawMetatiles_7:
+	goto_if_set FLAG_BADGE05_GET, ChiiTown_DrawMetatiles_11
+ChiiTown_DrawMetatiles_10:
+	goto_if_set FLAG_BADGE06_GET, ChiiTown_DrawMetatiles_14
+ChiiTown_DrawMetatiles_13:
+	goto_if_set FLAG_BADGE08_GET, ChiiTown_DrawMetatiles_17
+ChiiTown_DrawMetatiles_16:
 	gettimeofday
 	switch VAR_RESULT
-	case TIME_DEAD_NIGHT, ChiiTown_DrawMetatiles_2
-	case TIME_EARLY_MORNING, ChiiTown_DrawMetatiles_3
-	case TIME_MORNING, ChiiTown_DrawMetatiles_3
-	case TIME_LUNCHTIME, ChiiTown_DrawMetatiles_3
-	case TIME_AFTERNOON, ChiiTown_DrawMetatiles_3
-	case TIME_EVENING, ChiiTown_DrawMetatiles_3
-	case TIME_NIGHT, ChiiTown_DrawMetatiles_3
-ChiiTown_DrawMetatiles_3:
+	case TIME_DEAD_NIGHT, ChiiTown_DrawMetatiles_20
+	case TIME_EARLY_MORNING, ChiiTown_DrawMetatiles_21
+	case TIME_MORNING, ChiiTown_DrawMetatiles_21
+	case TIME_LUNCHTIME, ChiiTown_DrawMetatiles_21
+	case TIME_AFTERNOON, ChiiTown_DrawMetatiles_21
+	case TIME_EVENING, ChiiTown_DrawMetatiles_21
+	case TIME_NIGHT, ChiiTown_DrawMetatiles_21
+ChiiTown_DrawMetatiles_21:
 	end
 
 ChiiTown_DrawMetatiles_2:
+	setmetatile 17, 18, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 17, 19, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	goto ChiiTown_DrawMetatiles_1
+
+ChiiTown_DrawMetatiles_5:
+	setmetatile 16, 16, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	goto ChiiTown_DrawMetatiles_4
+
+ChiiTown_DrawMetatiles_8:
+	setmetatile 11, 20, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 15, 22, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	goto ChiiTown_DrawMetatiles_7
+
+ChiiTown_DrawMetatiles_11:
+	setmetatile 16, 22, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	goto ChiiTown_DrawMetatiles_10
+
+ChiiTown_DrawMetatiles_14:
+	setmetatile 18, 23, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 17, 16, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	goto ChiiTown_DrawMetatiles_13
+
+ChiiTown_DrawMetatiles_17:
+	setmetatile 10, 21, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 16, 19, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 21, 23, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	goto ChiiTown_DrawMetatiles_16
+
+ChiiTown_DrawMetatiles_20:
 	setmetatile 14, 5, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE
 	setmetatile 14, 6, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
 	return

@@ -6292,12 +6292,12 @@
     {
       "id": "LAYOUT_FLOWERGRASS_PLATEAU",
       "name": "FlowergrassPlateau_Layout",
-      "width": 43,
-      "height": 36,
+      "width": 44,
+      "height": 38,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_Silveridge",
+      "secondary_tileset": "gTileset_Grassflower",
       "border_filepath": "data/layouts/FlowergrassPlateau/border.bin",
       "blockdata_filepath": "data/layouts/FlowergrassPlateau/map.bin"
     },

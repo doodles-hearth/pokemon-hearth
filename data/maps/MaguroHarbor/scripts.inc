@@ -37,18 +37,24 @@ MaguroHarbor_DrawMetatiles_3:
 	end
 
 MaguroHarbor_DrawMetatiles_2:
-	setmetatile 18, 13, METATILE_Maguro_MaguroClosedWindows, TRUE
-	setmetatile 35, 20, METATILE_Maguro_MaguroClosedWindows, TRUE
-	setmetatile 37, 19, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE
-	setmetatile 37, 20, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
-	setmetatile 20, 12, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE
-	setmetatile 20, 13, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
-	setmetatile 32, 12, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
+	setmetatile 30, 23, METATILE_Maguro_MaguroClosedWindows, TRUE
+	setmetatile 32, 22, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE
+	setmetatile 32, 23, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE
 	return
 
 
 MaguroHarbor_EventScript_TownSign::
 	msgbox MaguroHarbor_EventScript_TownSign_Text_0, MSGBOX_SIGN
+	return
+
+
+MaguroHarbor_EventScript_DojoSign::
+	msgbox MaguroHarbor_EventScript_DojoSign_Text_0, MSGBOX_SIGN
+	return
+
+
+MaguroHarbor_EventScript_PokemonNerdSign::
+	msgbox MaguroHarbor_EventScript_PokemonNerdSign_Text_0, MSGBOX_SIGN
 	return
 
 
@@ -228,7 +234,7 @@ MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp::
 	lock
 	faceplayer
 	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp_Text_0, MSGBOX_DEFAULT
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp_Text_0
 	closemessage
 	release
 	return
@@ -391,14 +397,23 @@ MaguroHarbor_EventScript_TownSign_Text_0:
 	.string "“A town that lives hand in hand\l"
 	.string "with the sea.”$"
 
+MaguroHarbor_EventScript_DojoSign_Text_0:
+	.string "Maguro Harbor Pokémon Dojo\n"
+	.string "Leader: Koishi\l"
+	.string "“Smooth as a still pond,\l"
+	.string "passionate as a storm!”$"
+
+MaguroHarbor_EventScript_PokemonNerdSign_Text_0:
+	.string "“Pokémon Nerd”$"
+
 MaguroHarbor_EventScript_LovestruckGirl_Text_0:
 	.string "Lovestruck Girl$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_1:
 	.string "It's only been an hour since I saw\n"
 	.string "my love, and yet I already want\l"
-	.string "tomorrow to come just so I see\l"
-	.string "him again…$"
+	.string "tomorrow to come just so I can\l"
+	.string "see him again…$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0:
 	.string "Old woman$"
@@ -439,13 +454,14 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7:
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0:
 	.string "I'm sorry but we've closed shop\n"
-	.string "now, dearie. We'll be open again\l"
-	.string "{STR_VAR_1}!$"
+	.string "now, dearie.\p"
+	.string "We'll be open again {STR_VAR_1}!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_1:
 	.string "Oh my! I'm sorry but we've closed\n"
-	.string "shop now, dearie. We'll be open\l"
-	.string "again {STR_VAR_1}!\p"
+	.string "shop now, dearie.\p"
+	.string "We'll be open again\n"
+	.string "{STR_VAR_1}!\p"
 	.string "Did you want to buy one of my\n"
 	.string "Fishcakes?\p"
 	.string "Here, you can have the leftovers\n"
@@ -469,7 +485,8 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0:
 	.string "Fresh fish! Come get yer fish!$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp_Text_0:
-	.string "Ah! You're a bit too late {STR_VAR_2}. We're\nclosed for th' day. We'll be open again\l{STR_VAR_1}.$"
+	.string "Ah! You're a bit too late {STR_VAR_2}. We're\nclosed for th' day.\p"
+	.string "We'll be open again\l{STR_VAR_1}.$"
 
 MaguroHarbor_EventScript_FishermanInBoat_Text_0:
 	.string "Fisherman$"
