@@ -11380,26 +11380,20 @@ Level: 5
 - Tackle
 - Camouflage
 
-=== TRAINER_VIVI ===
-Name: VIVI
-Class: Gardener
+=== TRAINER_JUNKO ===
+Name: Junko
+Class: Lass
 Pic: Lass
 Gender: Female
 Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Marill
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Shroomish
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Numel
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Munchlax (M)
+Level: 23
+- Stockpile
+- Swallow
+- Body Slam
 
 === TRAINER_HALEY_2 ===
 Name: HALEY
@@ -11473,18 +11467,27 @@ Breloom
 Level: 34
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-=== TRAINER_SALLY ===
-Name: SALLY
-Class: Lass
-Pic: Lass
+=== TRAINER_MAMI ===
+Name: Mami
+Class: Hex Maniac
+Pic: Hex Maniac
 Gender: Female
-Music: Female
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Oddish
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Misdreavus
+Level: 23
+- Spite
+- Hex
+- Psywave
+
+Misdreavus
+Level: 23
+- Confuse Ray
+- Mean Look
+- Astonish
+- Hex
 
 === TRAINER_ROBIN ===
 Name: ROBIN

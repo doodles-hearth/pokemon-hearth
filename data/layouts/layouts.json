@@ -5886,7 +5886,7 @@
       "name": "PuddlePath_Layout",
       "width": 50,
       "height": 90,
-      "border_width": 2,
+      "border_width": 6,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
       "secondary_tileset": "gTileset_OpenSea",

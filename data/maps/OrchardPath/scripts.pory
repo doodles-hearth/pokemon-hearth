@@ -1,0 +1,36 @@
+mapscripts OrchardPath_MapScripts {
+
+}
+
+script OrchardPath_EventScript_UumeForestSoulkeepSign {
+	msgbox(format(
+		"{UP_ARROW} Uume Forest\n"
+		"{LEFT_ARROW} Soulkeep"
+	), MSGBOX_SIGN)
+}
+
+script OrchardPath_EventScript_GuardHouseSign {
+	msgbox(format(
+		"Guard House"
+	), MSGBOX_SIGN)
+}
+
+script OrchardPath_EventScript_Junko {
+	trainerbattle_single(
+		TRAINER_JUNKO,
+		format("I'm gathering ripe Berries to feed my Pokémon!"),
+		format("He ought to eat more Berries…")
+	)
+	speakername("Junko")
+	msgbox(format("My Pokémon is insatiable!\nI need to scour my local Library for more Berry recipes!"), MSGBOX_AUTOCLOSE)
+}
+
+script OrchardPath_EventScript_Mami {
+	trainerbattle_single(
+		TRAINER_MAMI,
+		format("Hehehehe… This place is haunted at night! Are you scared?"),
+		format("H-how could my ghosts lose to a mere mortal?")
+	)
+	speakername("Mami")
+	msgbox(format("I wanted to catch some more ghosts at the Graveyard, but…\lIt's a little TOO scary…"), MSGBOX_AUTOCLOSE)
+}

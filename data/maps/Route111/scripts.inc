@@ -89,7 +89,7 @@ Route111_EventScript_SetWinstratesNotDefeated::
 	setflag FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
 	cleartrainerflag TRAINER_VICTOR
 	cleartrainerflag TRAINER_VICTORIA
-	cleartrainerflag TRAINER_VIVI
+	cleartrainerflag TRAINER_DUMMY
 	end
 
 Route111_EventScript_SetLayoutNoMirageTower::
@@ -312,7 +312,7 @@ Route111_EventScript_BattleWinstrates::
 	waitmovement 0
 	call Route111_EventScript_CloseWinstrateDoor
 	msgbox Route111_Text_ViviIntro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_VIVI, Route111_Text_ViviDefeat
+	trainerbattle_no_intro TRAINER_DUMMY, Route111_Text_ViviDefeat
 	applymovement LOCALID_VIVI, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	call Route111_EventScript_OpenWinstrateDoor

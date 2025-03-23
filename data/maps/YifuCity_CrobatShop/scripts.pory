@@ -1,8 +1,10 @@
 const LOCALID_CROBAT_GUARD = 4
 const FLAG_CROBAT_PASSWORD_FIRST_HALF_CORRECT = FLAG_TEMP_1
 const FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT = FLAG_TEMP_2
+const FLAG_HIDE_SHOPKEEPER = FLAG_TEMP_3
 
 mapscripts YifuCity_CrobatShop_MapScripts {
+	
 	MAP_SCRIPT_ON_TRANSITION: YifuCity_CrobatShop_SetupNpcs
 }
 
@@ -10,6 +12,10 @@ script YifuCity_CrobatShop_SetupNpcs {
 	if (flag(FLAG_CROBAT_PASSWORD_CORRECT)) {
 		setobjectmovementtype(LOCALID_CROBAT_GUARD, MOVEMENT_TYPE_FACE_LEFT)
 		setobjectxyperm(LOCALID_CROBAT_GUARD, 7, 4)
+	}
+
+	if (var(VAR_CROBAT_HIDEOUT_STATE) < 4) {
+		setflag(FLAG_HIDE_SHOPKEEPER)
 	}
 }
 
@@ -193,9 +199,16 @@ script YifuCity_CrobatShop_Customer1 {
 	lock
 	faceplayer
 	speakername("Customer")
-	msgbox(format(
-		"This place is amazing!\nHow is everything so cheap?!"
-	))
+	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+		msgbox(format(
+			"Woah! So I was buying illegal items? That's wild!"
+		))
+	} else {
+		msgbox(format(
+			"This place is amazing!\nHow is everything so cheap?!"
+		))
+	}
+	
 	closemessage
 	release
 }
@@ -204,9 +217,15 @@ script YifuCity_CrobatShop_Customer2 {
 	lock
 	faceplayer
 	speakername("Customer")
-	msgbox(format(
-		"These Ultra Balls look… different, somehow…"
-	))
+	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+		msgbox(format(
+			"I knew it! I knew this shop was shady!"
+		))
+	} else {
+		msgbox(format(
+			"These Ultra Balls look… different, somehow…"
+		))
+	}
 	closemessage
 	release
 }

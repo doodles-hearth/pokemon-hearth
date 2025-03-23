@@ -1069,9 +1069,9 @@
 #define FLAG_ITEM_GRASSFLOWER_PLATEAU_MAX_OINTMENT                  0x3F2
 #define FLAG_ITEM_WHITESLATE_ROUTE_CARBOS                           0x3F3
 #define FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_MAX_ETHER                 0x3F4
-#define FLAG_ITEM_ROUTE_113_SUPER_REPEL                             0x3F5
-#define FLAG_ITEM_ROUTE_114_RARE_CANDY                              0x3F6
-#define FLAG_ITEM_ROUTE_114_PROTEIN                                 0x3F7
+#define FLAG_ITEM_CROBAT_HIDEOUT_NUGGET                             0x3F5
+#define FLAG_ITEM_CROBAT_HIDEOUT_RARE_CANDY                         0x3F6
+#define FLAG_CROBAT_HIDEOUT_PEARL                                   0x3F7
 #define FLAG_ITEM_ROUTE_115_SUPER_POTION                            0x3F8
 #define FLAG_ITEM_ROUTE_115_TM_FOCUS_PUNCH                          0x3F9
 #define FLAG_ITEM_ROUTE_115_IRON                                    0x3FA

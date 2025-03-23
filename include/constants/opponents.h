@@ -609,7 +609,7 @@
 #define TRAINER_CHIKAO                       603
 #define TRAINER_MUSASHI_1                     604
 #define TRAINER_MINORI                      605
-#define TRAINER_VIVI                        606
+#define TRAINER_JUNKO                       606
 #define TRAINER_HALEY_2                     607
 #define TRAINER_HALEY_3                     608
 #define TRAINER_HALEY_4                     609
