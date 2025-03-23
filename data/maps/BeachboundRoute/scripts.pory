@@ -153,6 +153,7 @@ script BeachboundRoute_EventScript_SomeoneCallingForHelp {
 
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
 	setvar(VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 2)
+	setflag(FLAG_HIDE_CROBAT_SHADOWS_SAKU_POKECENTER_GRUNTS)
 
 	release
 }

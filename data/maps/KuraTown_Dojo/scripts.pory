@@ -97,6 +97,7 @@ script KuraTown_Dojo_EventScript_Lilith {
 }
 
 script KuraTown_Dojo_EventScript_Hana {
+	speakername("Hana")
 	trainerbattle_single(
 		TRAINER_HANA_1,
 		// TODO different dialogue if you already met
@@ -106,13 +107,14 @@ script KuraTown_Dojo_EventScript_Hana {
 			"A Pokémon battle can be graceful like a budding flower, strong like the deepest roots, powerful like a windswept pine tree, all at once.\p"
 			"I want you to show me all the grace, strength and power you are capable of!"
 		),
-		format("Amazing."),
+		format("Ho ho ho…"),
 		KuraTown_Dojo_EventScript_HanaDefeated,
 		NO_MUSIC
 	)
 	// specialvar(VAR_RESULT, ShouldTryRematchBattle)
 	// goto_if_eq(VAR_RESULT, TRUE, KuraTown_Dojo_EventScript_HanaRematch)
 
+	speakername("Hana")
 	msgbox(
 		format(
 			"The slow-growing tree becomes the sturdiest. Take your time on your journey, {PLAYER}."
@@ -131,6 +133,7 @@ script KuraTown_Dojo_EventScript_HanaDefeated {
 	))
 	waitmessage
 	call(Common_EventScript_PlayGymBadgeFanfare)
+	speakername("Hana")
 	msgbox(
 		format(
 			// TODO EVA boost atk?
@@ -159,10 +162,11 @@ script KuraTown_Dojo_EventScript_HanaDefeated {
 script KuraTown_Dojo_EventScript_GiveBulldoze {
 	giveitem(ITEM_TM_BULLDOZE)
 	goto_if_eq(VAR_RESULT, 0, Common_EventScript_BagIsFull)
+	speakername("Hana")
 	msgbox(
 		format(
 			"This scroll contains Bulldoze, a powerful ground-type move that slows down the enemy.\p"
-			"I invented that technique myself! I needed a way to soften the ground when repotting bonsai, heh heh.\p"
+			"I invented that technique myself! I needed a way to soften the ground when repotting bonsai, heh heh."
 		),
 		MSGBOX_DEFAULT
 	)
@@ -173,19 +177,22 @@ script KuraTown_Dojo_EventScript_Advice {
 	lock
 	faceplayer
 	if (flag(FLAG_BADGE02_GET)) {
+		speakername("Man")
 		msgbox(format(
 			"That was a beautiful fight! You're going to blossom into an excellent Pokémon wielder, I can just feel it!"
 		))
 	} else {
+		speakername("Man")
 		if (flag(FLAG_RECEIVED_HM_CUT) && flag(FLAG_BADGE01_GET)) {
 			msgbox(format(
 				"Hello, young challenger, and welcome to the official Dojo of Kura Village!\p"
-				"Lady Hana, the Dojo master, is an expert in all things bonsai. She designed this place and grew these trees, of course!\p"
-				"She tends to favor ground-type moves, but she's got other tricks up her sleeve, too. Be on your guard!\p"
+				"Lady Hana, the Dojo Master, is an expert in all things bonsai. She designed this place and grew these trees, of course!\p"
+				"She tends to favor grass-type Pokémon, but she's got other tricks up her sleeve, too. Be on your guard!\p"
 				"Now, pay attention: only some of these pretty trees can be cut down.\p"
-				"Figure out which, and you'll reach the master!"
+				"Figure out which, and you'll reach the Master!"
 			))
 		} else {
+			speakername("Man")
 			if (flag(FLAG_BADGE01_GET)) {
 				msgbox(format(
 					"Hello, young challenger, and welcome to the official Dojo of Kura Village!\p"
@@ -193,6 +200,7 @@ script KuraTown_Dojo_EventScript_Advice {
 					"You should come back once you've figured out a way to cut them!"
 				))
 			} else {
+				speakername("Man")
 				msgbox(format(
 					"Hello, young challenger, and welcome to the official Dojo of Kura Village!\p"
 					"All these trees are blocking your way, aren't they?\p"

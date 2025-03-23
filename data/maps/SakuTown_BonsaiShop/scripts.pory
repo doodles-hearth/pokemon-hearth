@@ -54,6 +54,36 @@ script SakuTown_BonsaiShop_EventScript_Painting {
 	), MSGBOX_AUTOCLOSE)
 }
 
+script SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry {
+	lock
+	faceplayer
+	dotimebasedevents
+	if (flag(FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY)) {
+		speakername("Little girl")
+		msgbox(format("Go plant the berry I gave you!"))
+		closemessage
+	} else {
+		speakername("Little girl")
+		msgbox(format(
+			"Have you met my twin sister?\nVery “Type A”, right?\p"
+			"You should try beating her at her own game!\p"
+			"Here, start by planting this!"
+		))
+		closemessage
+		random(8)
+		addvar(VAR_RESULT, FIRST_BERRY_INDEX)
+		giveitem(VAR_RESULT)
+		setflag(FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY)
+
+		speakername("Little girl")
+		msgbox(format(
+			"Go for them berries!\nEyes on the prize!"
+		))
+		closemessage
+	}
+	release
+}
+
 script SakuTown_BonsaiShop_EventScript_LittleSister {
 	lock
 	faceplayer
@@ -159,7 +189,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 		} else {
 			speakername("Woman")
 			msgbox(format(
-				"Hi, {PLAYER}! Don't mind my sister. She's not as nice as she looks!"
+				"Hi, {PLAYER}! Don't mind my sisters. They're quite the handful!"
 			))
 			closemessage
 		}

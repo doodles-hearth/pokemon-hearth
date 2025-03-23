@@ -66,8 +66,10 @@ KuraTown_Dojo_EventScript_Lilith_2:
 
 
 KuraTown_Dojo_EventScript_Hana::
-	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_0, KuraTown_Dojo_EventScript_Hana_Text_1, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
-	msgbox KuraTown_Dojo_EventScript_Hana_Text_2, MSGBOX_DEFAULT
+	speakername KuraTown_Dojo_EventScript_Hana_Text_0
+	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_1, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
+	speakername KuraTown_Dojo_EventScript_Hana_Text_0
+	msgbox KuraTown_Dojo_EventScript_Hana_Text_3, MSGBOX_DEFAULT
 	release
 	end
 
@@ -76,6 +78,7 @@ KuraTown_Dojo_EventScript_HanaDefeated::
 	message KuraTown_Dojo_EventScript_HanaDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
+	speakername KuraTown_Dojo_EventScript_Hana_Text_0
 	msgbox KuraTown_Dojo_EventScript_HanaDefeated_Text_1, MSGBOX_DEFAULT
 	setflag FLAG_BADGE02_GET
 	setvar VAR_0x8008, 2
@@ -89,6 +92,7 @@ KuraTown_Dojo_EventScript_HanaDefeated::
 KuraTown_Dojo_EventScript_GiveBulldoze::
 	giveitem ITEM_TM_BULLDOZE
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+	speakername KuraTown_Dojo_EventScript_Hana_Text_0
 	msgbox KuraTown_Dojo_EventScript_GiveBulldoze_Text_0, MSGBOX_DEFAULT
 	return
 
@@ -97,20 +101,24 @@ KuraTown_Dojo_EventScript_Advice::
 	lock
 	faceplayer
 	goto_if_set FLAG_BADGE02_GET, KuraTown_Dojo_EventScript_Advice_2
+	speakername KuraTown_Dojo_EventScript_Advice_Text_0
 	goto_if_set FLAG_RECEIVED_HM_CUT, KuraTown_Dojo_EventScript_Advice_7
 KuraTown_Dojo_EventScript_Advice_6:
+	speakername KuraTown_Dojo_EventScript_Advice_Text_0
 	goto_if_set FLAG_BADGE01_GET, KuraTown_Dojo_EventScript_Advice_10
-	msgbox KuraTown_Dojo_EventScript_Advice_Text_3
+	speakername KuraTown_Dojo_EventScript_Advice_Text_0
+	msgbox KuraTown_Dojo_EventScript_Advice_Text_4
 KuraTown_Dojo_EventScript_Advice_1:
 	release
 	return
 
 KuraTown_Dojo_EventScript_Advice_2:
-	msgbox KuraTown_Dojo_EventScript_Advice_Text_0
+	speakername KuraTown_Dojo_EventScript_Advice_Text_0
+	msgbox KuraTown_Dojo_EventScript_Advice_Text_1
 	goto KuraTown_Dojo_EventScript_Advice_1
 
 KuraTown_Dojo_EventScript_Advice_5:
-	msgbox KuraTown_Dojo_EventScript_Advice_Text_1
+	msgbox KuraTown_Dojo_EventScript_Advice_Text_2
 	goto KuraTown_Dojo_EventScript_Advice_1
 
 KuraTown_Dojo_EventScript_Advice_7:
@@ -118,7 +126,7 @@ KuraTown_Dojo_EventScript_Advice_7:
 	goto KuraTown_Dojo_EventScript_Advice_6
 
 KuraTown_Dojo_EventScript_Advice_10:
-	msgbox KuraTown_Dojo_EventScript_Advice_Text_2
+	msgbox KuraTown_Dojo_EventScript_Advice_Text_3
 	goto KuraTown_Dojo_EventScript_Advice_1
 
 
@@ -251,6 +259,9 @@ KuraTown_Dojo_EventScript_Lilith_Text_4:
 	.string "Good luck!$"
 
 KuraTown_Dojo_EventScript_Hana_Text_0:
+	.string "Hana$"
+
+KuraTown_Dojo_EventScript_Hana_Text_1:
 	.string "Welcome to my humble Dojo. I am\n"
 	.string "Hana. Did you enjoy my little\l"
 	.string "maze?\p"
@@ -267,10 +278,10 @@ KuraTown_Dojo_EventScript_Hana_Text_0:
 	.string "grace, strength and power you are\l"
 	.string "capable of!$"
 
-KuraTown_Dojo_EventScript_Hana_Text_1:
-	.string "Amazing.$"
-
 KuraTown_Dojo_EventScript_Hana_Text_2:
+	.string "Ho ho ho…$"
+
+KuraTown_Dojo_EventScript_Hana_Text_3:
 	.string "The slow-growing tree becomes the\n"
 	.string "sturdiest. Take your time on your\l"
 	.string "journey, {PLAYER}.$"
@@ -301,34 +312,36 @@ KuraTown_Dojo_EventScript_GiveBulldoze_Text_0:
 	.string "I invented that technique myself! I\n"
 	.string "needed a way to soften the\l"
 	.string "ground when repotting bonsai, heh\l"
-	.string "heh.\p"
-	.string "$"
+	.string "heh.$"
 
 KuraTown_Dojo_EventScript_Advice_Text_0:
+	.string "Man$"
+
+KuraTown_Dojo_EventScript_Advice_Text_1:
 	.string "That was a beautiful fight! You're\n"
 	.string "going to blossom into an excellent\l"
 	.string "Pokémon wielder, I can just feel\l"
 	.string "it!$"
 
-KuraTown_Dojo_EventScript_Advice_Text_1:
+KuraTown_Dojo_EventScript_Advice_Text_2:
 	.string "Hello, young challenger, and\n"
 	.string "welcome to the official Dojo of\l"
 	.string "Kura Village!\p"
-	.string "Lady Hana, the Dojo master, is an\n"
+	.string "Lady Hana, the Dojo Master, is an\n"
 	.string "expert in all things bonsai. She\l"
 	.string "designed this place and grew\l"
 	.string "these trees, of course!\p"
-	.string "She tends to favor ground-type\n"
-	.string "moves, but she's got other tricks\l"
-	.string "up her sleeve, too. Be on your\l"
-	.string "guard!\p"
+	.string "She tends to favor grass-type\n"
+	.string "Pokémon, but she's got other\l"
+	.string "tricks up her sleeve, too. Be on\l"
+	.string "your guard!\p"
 	.string "Now, pay attention: only some of\n"
 	.string "these pretty trees can be cut\l"
 	.string "down.\p"
 	.string "Figure out which, and you'll reach\n"
-	.string "the master!$"
+	.string "the Master!$"
 
-KuraTown_Dojo_EventScript_Advice_Text_2:
+KuraTown_Dojo_EventScript_Advice_Text_3:
 	.string "Hello, young challenger, and\n"
 	.string "welcome to the official Dojo of\l"
 	.string "Kura Village!\p"
@@ -337,7 +350,7 @@ KuraTown_Dojo_EventScript_Advice_Text_2:
 	.string "You should come back once you've\n"
 	.string "figured out a way to cut them!$"
 
-KuraTown_Dojo_EventScript_Advice_Text_3:
+KuraTown_Dojo_EventScript_Advice_Text_4:
 	.string "Hello, young challenger, and\n"
 	.string "welcome to the official Dojo of\l"
 	.string "Kura Village!\p"

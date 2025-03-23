@@ -16,8 +16,9 @@ mapscripts YifuCity_MapScripts {
 		if (var(VAR_CROBAT_HIDEOUT_STATE) != 3) {
 			setflag(FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP)
 		}
-		if (var(VAR_CROBAT_HIDEOUT_STATE) >= 4) {
-			setflag(FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP)
+
+		if (var(VAR_CROBAT_HIDEOUT_STATE) != 1 || var(VAR_CROBAT_HIDEOUT_STATE) != 4) {
+			setflag(FLAG_HIDE_HARIKO_YIFU_CITY)
 		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
@@ -32,8 +33,20 @@ script YifuCity_EscapedCrobatHideoutWithSamurai {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 
 	speakername("Samurai")
-	msgbox(format("Well, well… They slipped through our fingers, but they fled the city!"))
-	// TODO EVA 
+	msgbox(format(
+		"Well, well…\nThey slipped through our fingers,\lbut they finally left the city!\p"
+		"Their hideout is now useless!\p"
+		"Thank you for giving the Samurai a hand.\lThis operation was a success!\p"
+		"You might be young, but you wouldn't make a half bad Samurai yourself,\lyou know…\p"
+		"Ha ha ha ha!\p"
+		"I have to go report to my superiors.\p"
+		"{PLAYER}!\nI am sure we will meet again!"
+	))
+	closemessage
+
+	applymovement(LOCALID_SAMURAI_HIDEOUT, moves(walk_down, walk_left * 7))
+	waitmovement(LOCALID_SAMURAI_HIDEOUT)
+
 	releaseall
 }
 
@@ -458,6 +471,8 @@ script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 	closemessage
 
 	delay(24)
+
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
 	
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
@@ -761,8 +776,9 @@ script YifuCity_Trigger_HarikoCriminals {
 		"Hello, {PLAYER}.\nAre you well, since last time?\p"
 		"Did you hear?\nThere was a robbery right here in Yifu City! Some people's Pokémon were stolen!\p"
 		"I heard there was a second decaying area west of here.\lI was planning on going there, but a Samurai was blocking the way, so I am waiting here.\p"
-		"I am going for a stroll now. Let us have lunch together before you leave!"
+		"I am going for a stroll now. Let us have lunch together before you leave. Yes? Good."
 	))
+	closemessage
 
 	applymovement(LOCALID_HARIKO, moves(walk_left * 10))
 	waitmovement(LOCALID_HARIKO)
@@ -781,6 +797,21 @@ script YifuCity_EventScript_DojoSign {
 		),
 		MSGBOX_SIGN
 	)
+}
+
+script YifuCity_EventScript_Fisherman {
+	lock
+	faceplayer
+	speakername("Fisherman")
+	msgbox(format(
+		"Hm? No, I'm not fishing.\p"
+		"I'm just watching the tiny whirlpools that Pokémon make in the shallow water.\p"
+		"Would you like your Pokémon to make whirlpools too?\p"
+		"I could teach them the way of the Whirlpool!"
+	))
+	closemessage
+	release
+	end
 }
 
 script YifuCity_EventScript_NameRaterSign {

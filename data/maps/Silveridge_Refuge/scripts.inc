@@ -27,6 +27,7 @@ Silveridge_Refuge_EventScript_Kricketune::
 	setspeakertomonname SPECIES_KRICKETUNE
 	playmoncry SPECIES_KRICKETUNE, CRY_MODE_NORMAL
 	msgbox Silveridge_Refuge_EventScript_Kricketune_Text_0
+	waitmoncry
 	closemessage
 	release
 	return
@@ -69,8 +70,8 @@ Silveridge_Refuge_EventScript_Firebringer_Text_0:
 
 Silveridge_Refuge_EventScript_Firebringer_Text_1:
 	.string "I'm bringin' down some Slugma today,\n"
-	.string "freshly caught on Burnfoot Pass this\l"
-	.string "mornin'.\p"
+	.string "freshly caught on Burnfoot Pass\l"
+	.string "this mornin'.\p"
 	.string "Tomorrow I'll be back up there,\n"
 	.string "catching some more of 'em.$"
 
@@ -88,17 +89,19 @@ Silveridge_Refuge_EventScript_Shamisen_Text_0:
 	.string "Shamisen player$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_1:
-	.string "Are you resting here for the night as\n"
-	.string "well?$"
+	.string "Are you resting here for the night\n"
+	.string "as well?$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_2:
-	.string "Good evening to you, {STR_VAR_1}.\p"
-	.string "Are you here to listen to my music?\p"
+	.string "Good evening to you,\n"
+	.string "{STR_VAR_1}.\p"
+	.string "Are you here to listen to my\n"
+	.string "music?\p"
 	.string "Or are you here to battle?$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_3:
 	.string "Such fun!$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_4:
-	.string "That was just the thing I needed to\n"
-	.string "pass the time.$"
+	.string "That was just the thing I needed\n"
+	.string "to pass the time.$"

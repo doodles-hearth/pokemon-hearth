@@ -118,6 +118,7 @@ YifuCity_Refuge_EventScript_HotelValet::
 	goto_if_ne YifuCity_Refuge_EventScript_HotelValet_2
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Refuge_EventScript_HotelValet_Text_7
 	closemessage
+	hidemoneybox
 	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_8
 	closemessage
@@ -142,11 +143,13 @@ YifuCity_Refuge_EventScript_HotelValet_6:
 	closemessage
 	giveitem ITEM_REFUGE_ROOM_KEY
 	hidemoneybox
+	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_5
 	closemessage
 	goto YifuCity_Refuge_EventScript_HotelValet_1
 
 YifuCity_Refuge_EventScript_HotelValet_7:
+	hidemoneybox
 	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_6
 	closemessage
@@ -278,10 +281,10 @@ YifuCity_Refuge_EventScript_HotelValet_Text_0:
 	.string "Valet$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_1:
-	.string "Good morning, {STR_VAR_1}!\n"
-	.string "There's a room available for\l"
-	.string "500¥, if you need a place to\l"
-	.string "spend the night!$"
+	.string "Good day, {STR_VAR_1}! There's\n"
+	.string "a room available for 500¥, if\l"
+	.string "you need a place to spend the\l"
+	.string "night!$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_2:
 	.string "One room, please.$"

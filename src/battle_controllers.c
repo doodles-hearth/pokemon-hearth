@@ -2577,7 +2577,8 @@ void BtlController_HandleTrainerSlideBack(u32 battler, s16 data0, bool32 startAn
 
 void BtlController_HandleFaintAnimation(u32 battler)
 {
-    SetHealthboxSpriteInvisible(gHealthboxSpriteIds[battler]);
+    // TODO: fix Nico's KO anim feature
+    // SetHealthboxSpriteInvisible(gHealthboxSpriteIds[battler]);
     if (gBattleSpritesDataPtr->healthBoxesData[battler].animationState == 0)
     {
         if (gBattleSpritesDataPtr->battlerData[battler].behindSubstitute)
@@ -2608,30 +2609,31 @@ void BtlController_HandleFaintAnimation(u32 battler)
             // The player's sprite is removed in Controller_FaintPlayerMon. Controller_FaintOpponentMon only removes the healthbox once the sprite is removed by SpriteCB_FaintOpponentMon.
         }
     }
-    if(GetBattlerSide(battler) == B_SIDE_PLAYER)
-    {
-        LaunchAnimationTaskForFrontSprite(&gSprites[gBattlerSpriteIds[BATTLE_OPPOSITE(battler)]], gSpeciesInfo[gBattleMons[BATTLE_OPPOSITE(battler)].species].frontAnimId);
-        PlayCry_Normal(gBattleMons[BATTLE_OPPOSITE(battler)].species, CRY_PRIORITY_NORMAL);
-        if (HasTwoFramesAnimation(gBattleMons[BATTLE_OPPOSITE(battler)].species))
-            StartSpriteAnim(&gSprites[gBattlerSpriteIds[BATTLE_OPPOSITE(battler)]], 1);
-        if(gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-        {
-            LaunchAnimationTaskForFrontSprite(&gSprites[gBattlerSpriteIds[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]], gSpeciesInfo[gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species].frontAnimId);
-            PlayCry_Normal(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species, CRY_PRIORITY_NORMAL);
-            if (HasTwoFramesAnimation(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species))
-                StartSpriteAnim(&gSprites[gBattlerSpriteIds[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]], 1);
-        }
-    }
-    else if(GetBattlerSide(battler) == B_SIDE_OPPONENT)
-    {
-        LaunchAnimationTaskForBackSprite(&gSprites[gBattlerSpriteIds[BATTLE_OPPOSITE(battler)]], GetSpeciesBackAnimSet(gBattleMons[BATTLE_OPPOSITE(battler)].species));
-        PlayCry_Normal(gBattleMons[BATTLE_OPPOSITE(battler)].species, CRY_PRIORITY_NORMAL);
-        if(gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-        {
-            LaunchAnimationTaskForBackSprite(&gSprites[gBattlerSpriteIds[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]], GetSpeciesBackAnimSet(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species));
-            PlayCry_Normal(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species, CRY_PRIORITY_NORMAL);
-        }
-    }
+    // TODO: fix Nico's KO anim feature
+    // if(GetBattlerSide(battler) == B_SIDE_PLAYER)
+    // {
+    //     LaunchAnimationTaskForFrontSprite(&gSprites[gBattlerSpriteIds[BATTLE_OPPOSITE(battler)]], gSpeciesInfo[gBattleMons[BATTLE_OPPOSITE(battler)].species].frontAnimId);
+    //     PlayCry_Normal(gBattleMons[BATTLE_OPPOSITE(battler)].species, CRY_PRIORITY_NORMAL);
+    //     if (HasTwoFramesAnimation(gBattleMons[BATTLE_OPPOSITE(battler)].species))
+    //         StartSpriteAnim(&gSprites[gBattlerSpriteIds[BATTLE_OPPOSITE(battler)]], 1);
+    //     if(gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+    //     {
+    //         LaunchAnimationTaskForFrontSprite(&gSprites[gBattlerSpriteIds[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]], gSpeciesInfo[gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species].frontAnimId);
+    //         PlayCry_Normal(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species, CRY_PRIORITY_NORMAL);
+    //         if (HasTwoFramesAnimation(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species))
+    //             StartSpriteAnim(&gSprites[gBattlerSpriteIds[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]], 1);
+    //     }
+    // }
+    // else if(GetBattlerSide(battler) == B_SIDE_OPPONENT)
+    // {
+    //     LaunchAnimationTaskForBackSprite(&gSprites[gBattlerSpriteIds[BATTLE_OPPOSITE(battler)]], GetSpeciesBackAnimSet(gBattleMons[BATTLE_OPPOSITE(battler)].species));
+    //     PlayCry_Normal(gBattleMons[BATTLE_OPPOSITE(battler)].species, CRY_PRIORITY_NORMAL);
+    //     if(gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+    //     {
+    //         LaunchAnimationTaskForBackSprite(&gSprites[gBattlerSpriteIds[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]], GetSpeciesBackAnimSet(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species));
+    //         PlayCry_Normal(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species, CRY_PRIORITY_NORMAL);
+    //     }
+    // }
 }
 
 #undef sSpeedX

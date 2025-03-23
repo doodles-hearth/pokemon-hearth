@@ -39,6 +39,13 @@
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 69,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [

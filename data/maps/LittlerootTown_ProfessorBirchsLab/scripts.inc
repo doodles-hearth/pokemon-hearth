@@ -1199,11 +1199,12 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchEnjoysRivalsHelpToo:
 @ .string "… … … … … Click!$"
 
 LittlerootTown_ProfessorBirchsLab_Event_DistributionCutscene_Text_0:
-	.string "Elder IWA: {PLAYER}, Natsuki, take\n"
-	.string "one of these Pokémon.$"
+	.string "Elder IWA: {PLAYER}, Natsuki,\n"
+	.string "take one of these Pokémon.$"
 
 LittlerootTown_ProfessorBirchsLab_Event_DistributionCutscene_Text_1:
-	.string "Natsuki: C'mon {PLAYER}, pick yours!$"
+	.string "Natsuki: C'mon {PLAYER}, pick\n"
+	.string "yours!$"
 
 LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_Text_0:
 	.string "You already got a Pokémon. Better\n"
@@ -1223,11 +1224,12 @@ LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_Text_4:
 	.string "Natsuki: I'm choosing this one then!$"
 
 LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_Text_5:
-	.string "ELDER: Great! Take these Pokédex and\n"
-	.string "go.$"
+	.string "ELDER: Great! Take these Pokédex\n"
+	.string "and go.$"
 
 LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_Text_6:
 	.string "{PLAYER} received the Pokédex!$"
 
 LittlerootTown_ProfessorBirchsLab_Event_Common_Pokeball_Starter_Text_7:
-	.string "Natsuki: Catch ya later, {PLAYER}!$"
+	.string "Natsuki: Catch ya later,\n"
+	.string "{PLAYER}!$"

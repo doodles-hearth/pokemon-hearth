@@ -804,9 +804,9 @@ F_TRAINER_FEMALE |
 #line 402
         .trainerName = _("Kento"),
 #line 403
-        .trainerClass = TRAINER_CLASS_HIKER,
+        .trainerClass = TRAINER_CLASS_MINER,
 #line 404
-        .trainerPic = TRAINER_PIC_HIKER,
+        .trainerPic = TRAINER_PIC_MINER,
         .encounterMusic_gender =
 #line 406
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -842,9 +842,9 @@ F_TRAINER_FEMALE |
 #line 418
         .trainerName = _("Shuya"),
 #line 419
-        .trainerClass = TRAINER_CLASS_HIKER,
+        .trainerClass = TRAINER_CLASS_MINER,
 #line 420
-        .trainerPic = TRAINER_PIC_HIKER,
+        .trainerPic = TRAINER_PIC_MINER,
         .encounterMusic_gender =
 #line 422
             TRAINER_ENCOUNTER_MUSIC_HIKER,
@@ -3338,7 +3338,7 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 1404
                 MOVE_FEINT_ATTACK,
-                MOVE_DIZZY_PUNCH,
+                MOVE_PSYBEAM,
                 MOVE_COPYCAT,
             },
             },
@@ -24099,14 +24099,14 @@ F_TRAINER_FEMALE |
 #line 9649
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 9648
-            .lvl = 24,
+            .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 9649
                 MOVE_FIRE_FANG,
                 MOVE_SMOG,
-                MOVE_HOWL,
+                MOVE_ODOR_SLEUTH,
             },
             },
         },
@@ -27321,7 +27321,7 @@ F_TRAINER_FEMALE |
 #line 10900
                 MOVE_RAIN_DANCE,
                 MOVE_HEADBUTT,
-                MOVE_WATER_PULSE,
+                MOVE_WATER_GUN,
                 MOVE_EMBER,
             },
             },
@@ -34540,9 +34540,9 @@ F_TRAINER_FEMALE |
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 13779
-                MOVE_CONFUSE_RAY,
-                MOVE_AIR_CUTTER,
-                MOVE_POISON_FANG,
+                MOVE_WING_ATTACK,
+                MOVE_BITE,
+                MOVE_ASTONISH,
             },
             },
             {
@@ -34552,15 +34552,15 @@ F_TRAINER_FEMALE |
 #line 13785
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 13784
-            .lvl = 24,
+            .lvl = 23,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 13785
                 MOVE_AMNESIA,
                 MOVE_ATTRACT,
-                MOVE_ASSURANCE,
                 MOVE_HEART_STAMP,
+                MOVE_CONFUSION,
             },
             },
         },

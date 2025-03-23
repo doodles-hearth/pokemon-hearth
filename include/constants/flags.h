@@ -474,7 +474,7 @@
 #define FLAG_SHOWN_AURORA_TICKET             0x1AF
 #define FLAG_SHOWN_OLD_SEA_MAP               0x1B0
 #define FLAG_MOVE_TUTOR_TAUGHT_SWAGGER       0x1B1
-#define FLAG_MOVE_TUTOR_TAUGHT_ROLLOUT       0x1B2
+#define FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL       0x1B2
 #define FLAG_MOVE_TUTOR_TAUGHT_FURY_CUTTER   0x1B3
 #define FLAG_MOVE_TUTOR_TAUGHT_MIMIC         0x1B4
 #define FLAG_MOVE_TUTOR_TAUGHT_METRONOME     0x1B5
@@ -1067,8 +1067,8 @@
 #define FLAG_ITEM_TM_WATER_PULSE                                    0x3F0
 #define FLAG_ITEM_STOLEN_MONS                                       0x3F1
 #define FLAG_ITEM_GRASSFLOWER_PLATEAU_MAX_OINTMENT                  0x3F2
-#define FLAG_ITEM_ROUTE_112_NUGGET                                  0x3F3
-#define FLAG_ITEM_ROUTE_113_MAX_ETHER                               0x3F4
+#define FLAG_ITEM_WHITESLATE_ROUTE_CARBOS                           0x3F3
+#define FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_MAX_ETHER                 0x3F4
 #define FLAG_ITEM_ROUTE_113_SUPER_REPEL                             0x3F5
 #define FLAG_ITEM_ROUTE_114_RARE_CANDY                              0x3F6
 #define FLAG_ITEM_ROUTE_114_PROTEIN                                 0x3F7

@@ -409,7 +409,7 @@ WhiteslateRoute_EventScript_Ryosuke_Text_3:
 	.string "I want to see for myself!$"
 
 WhiteslateRoute_EventScript_Riku_Text_0:
-	.string "BOO!!\n"
+	.string "BOO!!\p"
 	.string "… … …Are you surprised?$"
 
 WhiteslateRoute_EventScript_Riku_Text_1:

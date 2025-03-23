@@ -311,10 +311,11 @@ CrobatHideout_1F_SamuraiOffersHelp::
 
 
 CrobatHideout_1F_BattleSamuraiBackToBack::
+	trainerbattle_two_trainers TRAINER_GRUNT_CROBAT_HIDEOUT_7, CrobatHideout_1F_BattleSamuraiBackToBack_Text_0, TRAINER_GRUNT_CROBAT_HIDEOUT_8, CrobatHideout_1F_BattleSamuraiBackToBack_Text_1
 	applymovement 15, CrobatHideout_1F_Trigger_4V1_Movement_1
 	waitmovement 15
 	speakername CrobatHideout_1F_SeenByGrunt_Text_0
-	msgbox CrobatHideout_1F_BattleSamuraiBackToBack_Text_0
+	msgbox CrobatHideout_1F_BattleSamuraiBackToBack_Text_2
 	closemessage
 	applymovement 15, CrobatHideout_1F_Trigger_4V1_Movement_3
 	applymovement 16, CrobatHideout_1F_BattleSamuraiBackToBack_Movement_0
@@ -326,7 +327,7 @@ CrobatHideout_1F_BattleSamuraiBackToBack::
 	applymovement 14, CrobatHideout_1F_BattleSamuraiBackToBack_Movement_3
 	applymovement OBJ_EVENT_ID_PLAYER, CrobatHideout_1F_Trigger_4V1_Movement_1
 	speakername CrobatHideout_1F_EventScript_Samurai_Text_0
-	msgbox CrobatHideout_1F_BattleSamuraiBackToBack_Text_1
+	msgbox CrobatHideout_1F_BattleSamuraiBackToBack_Text_3
 	closemessage
 	fadescreen FADE_TO_BLACK
 	playfanfare MUS_HEAL
@@ -335,7 +336,7 @@ CrobatHideout_1F_BattleSamuraiBackToBack::
 	callnative UpdateFollowingPokemon
 	fadescreen FADE_FROM_BLACK
 	speakername CrobatHideout_1F_EventScript_Samurai_Text_0
-	msgbox CrobatHideout_1F_BattleSamuraiBackToBack_Text_2
+	msgbox CrobatHideout_1F_BattleSamuraiBackToBack_Text_4
 	closemessage
 	setvar VAR_CROBAT_HIDEOUT_STATE, 2
 	return
@@ -614,16 +615,13 @@ CrobatHideout_1F_Trigger_Poochyena::
 	playmoncry SPECIES_POOCHYENA, CRY_MODE_ENCOUNTER
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitmovement 28
-	setobjectxyperm 26, 55, 14
-	setobjectxyperm 27, 56, 14
-	setobjectxyperm 28, 57, 14
-	removeobject 26
-	removeobject 27
-	removeobject 28
+	setobjectxy 26, 55, 14
+	setobjectxy 27, 56, 14
+	setobjectxy 28, 57, 14
+	turnobject 26, DIR_SOUTH
+	turnobject 27, DIR_SOUTH
+	turnobject 28, DIR_SOUTH
 	delay 1
-	addobject 26
-	addobject 27
-	addobject 28
 	releaseall
 	return
 
@@ -1261,7 +1259,8 @@ CrobatHideout_1F_EventScript_FirstPoster_Text_0:
 	.string "“Welcome to the Super Secret\n"
 	.string "Crobat Hideout!\l"
 	.string "Keep it down, we don't want to\l"
-	.string "attract attention. - The Boss”$"
+	.string "attract attention.\l"
+	.string "- The Boss”$"
 
 CrobatHideout_1F_EventScript_Pots_Text_0:
 	.string "An assortment of mismatched pots\n"
@@ -1349,10 +1348,16 @@ CrobatHideout_1F_SamuraiOffersHelp_Text_2:
 	.string "be a four on one situation!$"
 
 CrobatHideout_1F_BattleSamuraiBackToBack_Text_0:
+	.string "No more!$"
+
+CrobatHideout_1F_BattleSamuraiBackToBack_Text_1:
+	.string "Please let me live!$"
+
+CrobatHideout_1F_BattleSamuraiBackToBack_Text_2:
 	.string "Ayayaya! Jus' wait til the Boss\n"
 	.string "hears of this!$"
 
-CrobatHideout_1F_BattleSamuraiBackToBack_Text_1:
+CrobatHideout_1F_BattleSamuraiBackToBack_Text_3:
 	.string "Nicely done!\n"
 	.string "What is your name, child?\p"
 	.string "… … …{PLAYER}!\n"
@@ -1361,7 +1366,7 @@ CrobatHideout_1F_BattleSamuraiBackToBack_Text_1:
 	.string "But first, let me heal your\l"
 	.string "companions!$"
 
-CrobatHideout_1F_BattleSamuraiBackToBack_Text_2:
+CrobatHideout_1F_BattleSamuraiBackToBack_Text_4:
 	.string "Right! Follow me, {PLAYER}!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_0:

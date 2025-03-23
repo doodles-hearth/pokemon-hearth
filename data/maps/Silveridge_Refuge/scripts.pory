@@ -34,6 +34,7 @@ script Silveridge_Refuge_EventScript_Kricketune {
 	msgbox(format(
 		"Delelelele…"
 	))
+	waitmoncry
 	closemessage
 	release
 }

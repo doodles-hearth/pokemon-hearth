@@ -400,8 +400,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_KENTO ===
 Name: Kento
-Class: Hiker
-Pic: Hiker
+Class: Miner
+Pic: Miner
 Gender: Male
 Music: Hiker
 Double Battle: No
@@ -416,8 +416,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_SHUYA ===
 Name: Shuya
-Class: Hiker
-Pic: Hiker
+Class: Miner
+Pic: Miner
 Gender: Male
 Music: Hiker
 Double Battle: No
@@ -1402,7 +1402,7 @@ Level: 21
 Spinda
 Level: 22
 - Feint Attack
-- Dizzy Punch
+- Psybeam
 - Copycat
 
 === TRAINER_UTARO ===
@@ -9645,10 +9645,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Houndoom
-Level: 24
+Level: 23
 - Fire Fang
 - Smog
-- Howl
+- Odor Sleuth
 
 === TRAINER_EDWIN_2 ===
 Name: EDWIN
@@ -10899,7 +10899,7 @@ Level: 19
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Rain Dance
 - Headbutt
-- Water Pulse
+- Water Gun
 - Ember
 
 === TRAINER_SYLVIA ===
@@ -13776,16 +13776,16 @@ AI: Basic Trainer
 
 Golbat
 Level: 23
-- Confuse Ray
-- Air Cutter
-- Poison Fang
+- Wing Attack
+- Bite
+- Astonish
 
 Swoobat
-Level: 24
+Level: 23
 - Amnesia
 - Attract
-- Assurance
 - Heart Stamp
+- Confusion
 
 === TRAINER_PETE ===
 Name: PETE

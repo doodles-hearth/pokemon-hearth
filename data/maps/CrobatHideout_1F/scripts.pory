@@ -247,7 +247,7 @@ script CrobatHideout_1F_EventScript_MessPoster {
 script CrobatHideout_1F_EventScript_FirstPoster {
     msgbox(format(
 		"“Welcome to the Super Secret Crobat Hideout!\l"
-		"Keep it down, we don't want to attract attention."
+		"Keep it down, we don't want to attract attention.\l"
 		"- The Boss”"
 	), MSGBOX_SIGN)
 }
@@ -483,12 +483,12 @@ script CrobatHideout_1F_SamuraiOffersHelp {
 }
 
 script CrobatHideout_1F_BattleSamuraiBackToBack {
-	// trainerbattle_two_trainers(
-	// 	TRAINER_GRUNT_CROBAT_HIDEOUT_7,
-	// 	format("No more!"),
-	// 	TRAINER_GRUNT_CROBAT_HIDEOUT_8,
-	// 	format("Please let me live!")
-	// )
+	trainerbattle_two_trainers(
+		TRAINER_GRUNT_CROBAT_HIDEOUT_7,
+		format("No more!"),
+		TRAINER_GRUNT_CROBAT_HIDEOUT_8,
+		format("Please let me live!")
+	)
 
 	applymovement(LOCALID_4V1_GRUNT_1, moves(walk_in_place_fast_right))
 	waitmovement(LOCALID_4V1_GRUNT_1)
@@ -919,16 +919,13 @@ script CrobatHideout_1F_Trigger_Poochyena {
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	waitmovement(LOCALID_POOCHYENA_RIGHT)
 
-	setobjectxyperm(LOCALID_POOCHYENA_LEFT, 55, 14)
-	setobjectxyperm(LOCALID_POOCHYENA_MIDDLE, 56, 14)
-	setobjectxyperm(LOCALID_POOCHYENA_RIGHT, 57, 14)
-	removeobject(LOCALID_POOCHYENA_LEFT)
-	removeobject(LOCALID_POOCHYENA_MIDDLE)
-	removeobject(LOCALID_POOCHYENA_RIGHT)
+	setobjectxy(LOCALID_POOCHYENA_LEFT, 55, 14)
+	setobjectxy(LOCALID_POOCHYENA_MIDDLE, 56, 14)
+	setobjectxy(LOCALID_POOCHYENA_RIGHT, 57, 14)
+	turnobject(LOCALID_POOCHYENA_LEFT, DIR_SOUTH)
+	turnobject(LOCALID_POOCHYENA_MIDDLE, DIR_SOUTH)
+	turnobject(LOCALID_POOCHYENA_RIGHT, DIR_SOUTH)
 	delay(1)
-	addobject(LOCALID_POOCHYENA_LEFT)
-	addobject(LOCALID_POOCHYENA_MIDDLE)
-	addobject(LOCALID_POOCHYENA_RIGHT)
 
 	releaseall
 }

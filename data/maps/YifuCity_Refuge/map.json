@@ -115,24 +115,24 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TRAVELER",
+      "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 12,
-      "y": 3,
+      "y": 7,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "YifuCity_Refuge_EventScript_ListenToShamisen",
-      "flag": "0",
+      "script": "YifuCity_Refuge_EventScript_Samurai",
+      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": true,
+      "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": true
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TRAVELER",

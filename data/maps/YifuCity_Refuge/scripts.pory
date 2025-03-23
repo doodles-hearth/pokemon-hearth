@@ -160,7 +160,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 	speakername("Valet")
 	msgbox(format(
 		// TODO EVA time of day
-		"Good morning, {STR_VAR_1}! There's a room available for 500¥, if you need a place to spend the night!"
+		"Good day, {STR_VAR_1}! There's a room available for 500¥, if you need a place to spend the night!"
 	))
 
 	showmoneybox(18, 0)
@@ -194,6 +194,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 
 				hidemoneybox
 
+				speakername("Valet")
 				msgbox(format(
 					"Your room is the first one down the corridor! We hope you have a pleasant stay!"
 				))
@@ -201,6 +202,8 @@ script YifuCity_Refuge_EventScript_HotelValet {
 
 
 			case 1:
+				hidemoneybox
+
 				speakername("Valet")
 				msgbox(format(
 					"Have a nice day!"
@@ -219,6 +222,8 @@ script YifuCity_Refuge_EventScript_HotelValet {
 			"I'm poor…"
 		)
 		closemessage
+
+		hidemoneybox
 
 		speakername("Valet")
 		msgbox(format(

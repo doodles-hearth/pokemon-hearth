@@ -36,7 +36,7 @@ SilverTunnel_2F_EventScript_Miner::
 	speakername SilverTunnel_2F_EventScript_Miner_Text_0
 	msgbox SilverTunnel_2F_EventScript_Miner_Text_1
 	closemessage
-	turnobject VAR_LAST_TALKED, DIR_EAST
+	turnobject VAR_LAST_TALKED, DIR_WEST
 	setseenmon SPECIES_SANDSLASH
 	playmoncry SPECIES_SANDSLASH, CRY_MODE_NORMAL
 	applymovement 5, SilverTunnel_2F_EventScript_Miner_Movement_0
@@ -58,20 +58,23 @@ SilverTunnel_2F_EventScript_Trainer1_Text_1:
 	.string "You shine like a diamond!$"
 
 SilverTunnel_2F_EventScript_Trainer1_Text_2:
-	.string "My two Pokémon like to fight side by\n"
-	.string "side. Come back with at least two\l"
-	.string "Pokémon.$"
+	.string "My two Pokémon like to fight side\n"
+	.string "by side. Come back with at least\l"
+	.string "two Pokémon.$"
 
 SilverTunnel_2F_EventScript_Trainer1_Text_3:
 	.string "Tama$"
 
 SilverTunnel_2F_EventScript_Trainer1_Text_4:
-	.string "I came here all the way from Saberside\n"
-	.string "Town looking for precious gemstones.\p"
-	.string "But there's only sad, grey rocks here…$"
+	.string "I came here all the way from\n"
+	.string "Saberside Town looking for\l"
+	.string "precious gemstones.\p"
+	.string "But there's only sad, grey rocks\n"
+	.string "here…$"
 
 SilverTunnel_2F_EventScript_Kansaku_Text_0:
-	.string "You scared me! I'll break your head!$"
+	.string "You scared me! I'll break your\n"
+	.string "head!$"
 
 SilverTunnel_2F_EventScript_Kansaku_Text_1:
 	.string "What a headache!$"
@@ -94,5 +97,5 @@ SilverTunnel_2F_EventScript_Miner_Text_0:
 	.string "Miner$"
 
 SilverTunnel_2F_EventScript_Miner_Text_1:
-	.string "We're here mining all day, everyday!\n"
-	.string "Ain't that right, Sandy?$"
+	.string "We're here mining all day,\n"
+	.string "everyday! Ain't that right, Sandy?$"

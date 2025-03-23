@@ -156,10 +156,10 @@ ChiiTown_House1_EventScript_OldManTrespassing_Text_0:
 
 ChiiTown_House1_EventScript_OldManTrespassing_Text_1:
 	.string "Do you often barge into people's\n"
-	.string "houses uninvited without even taking\l"
-	.string "off your shoes?\p"
-	.string "Want to break a couple of pots while\n"
-	.string "you're at it?\p"
+	.string "houses uninvited without even\l"
+	.string "taking off your shoes?\p"
+	.string "Want to break a couple of pots\n"
+	.string "while you're at it?\p"
 	.string "Kids these days, I swear…\p"
 	.string "Now get out of my house.$"
 

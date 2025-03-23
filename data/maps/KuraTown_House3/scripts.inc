@@ -118,19 +118,22 @@ JumpInJoy:
 	step_end
 
 KuraTown_House3_EventScript_Lady_Text_0:
-	.string "Hello! Ah, you came for your Pokémon!$"
+	.string "Hello! Ah, you came for your\n"
+	.string "Pokémon!$"
 
 KuraTown_House3_EventScript_Lady_Text_1:
 	.string "Sorry, I thought you were someone\n"
 	.string "else.\p"
-	.string "See, this little one came to me a while\n"
-	.string "ago. There was a thunderstorm and it\l"
-	.string "looked scared and lost.\p"
-	.string "So I've been taking care of it while\n"
-	.string "waiting for its master to show up!\p"
+	.string "See, this little one came to me a\n"
+	.string "while ago. There was a\l"
+	.string "thunderstorm and it looked scared\l"
+	.string "and lost.\p"
+	.string "So I've been taking care of it\n"
+	.string "while waiting for its master to\l"
+	.string "show up!\p"
 	.string "Looks like it's feeling a lot better\n"
-	.string "now. Look how shiny his fur is! Such a\l"
-	.string "pretty color, too!$"
+	.string "now. Look how shiny his fur is!\l"
+	.string "Such a pretty color, too!$"
 
 KuraTown_House3_EventScript_Lady_Text_2:
 	.string "Don't worry, kitten, we'll find your\n"
@@ -141,22 +144,23 @@ KuraTown_House3_EventScript_Lady_Text_3:
 
 KuraTown_House3_EventScript_Lady_Text_4:
 	.string "That little lost kitten is reunited\n"
-	.string "with its master? Do they seem happy\l"
-	.string "together?\p"
+	.string "with its master? Do they seem\l"
+	.string "happy together?\p"
 	.string "Oh, how delightful!$"
 
 KuraTown_House3_EventScript_EspeonGoesHome_Text_0:
 	.string "What? You're saying its master is\n"
 	.string "waiting for him in Saku Village?\p"
 	.string "… …\p"
-	.string "I'd rather not try going over there,\n"
-	.string "folks over at Saku Village are\l"
-	.string "notoriously mean…\p"
-	.string "But I guess… I can make an effort for\n"
-	.string "this kitten here.$"
+	.string "I'd rather not try going over\n"
+	.string "there, folks over at Saku Village\l"
+	.string "are notoriously mean…\p"
+	.string "But I guess… I can make an effort\n"
+	.string "for this kitten here.$"
 
 KuraTown_House3_EventScript_EspeonGoesHome_Text_1:
-	.string "Good news, sweetie! You're going home!$"
+	.string "Good news, sweetie! You're going\n"
+	.string "home!$"
 
 KuraTown_House3_EventScript_Espeon_Text_0:
 	.string "Speeee!$"

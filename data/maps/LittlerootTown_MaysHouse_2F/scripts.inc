@@ -19,6 +19,6 @@ LittlerootTown_MaysHouse_2F_Movement_PlayerGetOutOfBed:
 	step_end
 
 LittlerootTown_MaysHouse_2F_BigSisCalling_Text_0:
-	.string "{PLAYER}! {PLAYER}! Are you still\n"
-	.string "sleeping?\p"
+	.string "{PLAYER}! {PLAYER}! Are you\n"
+	.string "still sleeping?\p"
 	.string "Get up and get ready!$"

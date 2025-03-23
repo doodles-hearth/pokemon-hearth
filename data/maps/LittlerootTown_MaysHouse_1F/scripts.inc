@@ -66,12 +66,12 @@ LittlerootTown_MaysHouse_1F_EventScript_RunningShoesBox::
 
 
 LittlerootTown_MaysHouse_1F_EventScript_BigSisSaysHi_Text_0:
-	.string "Oh, hi {PLAYER}{KUN}, you're up! Ready for\n"
-	.string "the big event?\p"
-	.string "Are you excited? I sure hope you are,\n"
-	.string "because I'm VERY EXCITED!\p"
-	.string "I have to head out, but I'll meet you\n"
-	.string "there, okay?\p"
+	.string "Oh, hi {PLAYER}{KUN}, you're up! Ready\n"
+	.string "for the big event?\p"
+	.string "Are you excited? I sure hope you\n"
+	.string "are, because I'm VERY EXCITED!\p"
+	.string "I have to head out, but I'll meet\n"
+	.string "you there, okay?\p"
 	.string "Oh, by the way, your friend Natsuki\n"
 	.string "left you a note.\p"
 	.string "Make sure you read it!$"
@@ -81,17 +81,18 @@ LittlerootTown_MaysHouse_1F_EventScript_BigSis_Text_0:
 
 LittlerootTown_MaysHouse_1F_EventScript_ReadRivalsNote_Text_0:
 	.string "“Hey {PLAYER}{KUN},\p"
-	.string "“I'm going down to the beach before\n"
-	.string "the giveaway, meet me there if you\l"
-	.string "wanna hang out.\p"
+	.string "“I'm going down to the beach\n"
+	.string "before the giveaway, meet me\l"
+	.string "there if you wanna hang out.\p"
 	.string "“-Natsuki”$"
 
 LittlerootTown_MaysHouse_1F_EventScript_RunningShoesBox_Text_0:
 	.string "A box with a note on it.\p"
 	.string "“Dear {PLAYER},\p"
-	.string "“Here are the SWIFT GETA shoes you\n"
-	.string "have ordered.\p"
-	.string "“Press B to run and fly like the wind!”$"
+	.string "“Here are the SWIFT GETA shoes\n"
+	.string "you have ordered.\p"
+	.string "“Press B to run and fly like the\n"
+	.string "wind!”$"
 
 LittlerootTown_MaysHouse_1F_EventScript_RunningShoesBox_Text_1:
 	.string "{PLAYER} switched shoes with the\n"
