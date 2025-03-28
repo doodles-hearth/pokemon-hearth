@@ -492,7 +492,7 @@ SakuTown_EventScript_BoardGame_Text_0:
 	.string "popular board game!$"
 
 SakuTown_EventScript_Mart_Text_0:
-	.string "Saleswoman$"
+	.string "Shopkeeper$"
 
 SakuTown_EventScript_Makuhita_Text_0:
 	.string "Kuhi!$"

@@ -1,0 +1,26 @@
+mapscripts Soulkeep_HouseDoll_MapScripts {
+
+}
+
+script Soulkeep_HouseDoll_EventScript_Mom {
+	lock
+	faceplayer
+	speakername("Woman")
+	msgbox(format(
+		"Our little girl has such a wild imagination!"
+	))
+	closemessage
+	release
+}
+
+script Soulkeep_HouseDoll_EventScript_Dad {
+	lock
+	faceplayer
+	speakername("Man")
+	msgbox(format(
+		"Our daughter's been having very vivid nightmares lately.\p"
+		"It must be this town's awful atmosphere…"
+	))
+	closemessage
+	release
+}

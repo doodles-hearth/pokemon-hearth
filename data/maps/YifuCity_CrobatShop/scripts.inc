@@ -4,12 +4,19 @@ YifuCity_CrobatShop_MapScripts::
 
 
 YifuCity_CrobatShop_SetupNpcs::
-	goto_if_set FLAG_CROBAT_PASSWORD_CORRECT, YifuCity_CrobatShop_SetupNpcs_1
+	goto_if_set FLAG_CROBAT_PASSWORD_CORRECT, YifuCity_CrobatShop_SetupNpcs_2
+YifuCity_CrobatShop_SetupNpcs_1:
+	compare VAR_CROBAT_HIDEOUT_STATE, 4
+	goto_if_lt YifuCity_CrobatShop_SetupNpcs_4
 	return
 
-YifuCity_CrobatShop_SetupNpcs_1:
+YifuCity_CrobatShop_SetupNpcs_2:
 	setobjectmovementtype 4, MOVEMENT_TYPE_FACE_LEFT
 	setobjectxyperm 4, 7, 4
+	goto YifuCity_CrobatShop_SetupNpcs_1
+
+YifuCity_CrobatShop_SetupNpcs_4:
+	setflag FLAG_TEMP_3
 	return
 
 
@@ -27,6 +34,30 @@ YifuCity_CrobatShop_Cashier::
 	return
 
 
+YifuCity_CrobatShop_CashierLegit::
+	lock
+	faceplayer
+	speakername YifuCity_CrobatShop_Cashier_Text_0
+	msgbox YifuCity_CrobatShop_CashierLegit_Text_0
+	waitmessage
+	pokemart Legit_Mart
+	speakername YifuCity_CrobatShop_Cashier_Text_0
+	msgbox YifuCity_CrobatShop_CashierLegit_Text_1
+	closemessage
+	release
+	return
+
+
+YifuCity_CrobatShop_CashierLegitTM::
+	lock
+	faceplayer
+	speakername YifuCity_CrobatShop_Cashier_Text_0
+	msgbox YifuCity_CrobatShop_CashierLegitTM_Text_0
+	closemessage
+	release
+	return
+
+
 	.align 2
 Crobat_Mart:
 	.2byte ITEM_OINTMENT
@@ -34,6 +65,15 @@ Crobat_Mart:
 	.2byte ITEM_ULTRA_BALL_KNOCKOFF
 	.2byte ITEM_ESCAPE_ROPE_KNOCKOFF
 	.2byte ITEM_SLOWPOKE_TAIL
+	.2byte ITEM_NONE
+
+	.align 2
+Legit_Mart:
+	.2byte ITEM_OINTMENT
+	.2byte ITEM_SUPER_OINTMENT
+	.2byte ITEM_POKE_BALL
+	.2byte ITEM_GREAT_BALL
+	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_NONE
 
 YifuCity_CrobatShop_Guard::
@@ -156,20 +196,32 @@ YifuCity_CrobatShop_Customer1::
 	lock
 	faceplayer
 	speakername YifuCity_CrobatShop_Customer1_Text_0
-	msgbox YifuCity_CrobatShop_Customer1_Text_1
+	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_CrobatShop_Customer1_2
+	msgbox YifuCity_CrobatShop_Customer1_Text_2
+YifuCity_CrobatShop_Customer1_1:
 	closemessage
 	release
 	return
+
+YifuCity_CrobatShop_Customer1_2:
+	msgbox YifuCity_CrobatShop_Customer1_Text_1
+	goto YifuCity_CrobatShop_Customer1_1
 
 
 YifuCity_CrobatShop_Customer2::
 	lock
 	faceplayer
 	speakername YifuCity_CrobatShop_Customer1_Text_0
-	msgbox YifuCity_CrobatShop_Customer2_Text_0
+	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_CrobatShop_Customer2_2
+	msgbox YifuCity_CrobatShop_Customer2_Text_1
+YifuCity_CrobatShop_Customer2_1:
 	closemessage
 	release
 	return
+
+YifuCity_CrobatShop_Customer2_2:
+	msgbox YifuCity_CrobatShop_Customer2_Text_0
+	goto YifuCity_CrobatShop_Customer2_1
 
 
 YifuCity_CrobatShop_EventScript_Samurai::
@@ -237,7 +289,7 @@ YifuCity_CrobatShop_Guard_Movement_8:
 	step_end
 
 YifuCity_CrobatShop_Cashier_Text_0:
-	.string "Salesman$"
+	.string "Shopkeeper$"
 
 YifuCity_CrobatShop_Cashier_Text_1:
 	.string "G'day uh, welcome to the ye olde\n"
@@ -251,6 +303,19 @@ YifuCity_CrobatShop_Cashier_Text_2:
 	.string "{FONT_SMALL}Unless yer friends are the police!{FONT_NORMAL}\p"
 	.string "Wut's that? I said nothin', ya must\n"
 	.string "be hearin' things!$"
+
+YifuCity_CrobatShop_CashierLegit_Text_0:
+	.string "Hello there! Welcome to the Yifu\n"
+	.string "City shop!$"
+
+YifuCity_CrobatShop_CashierLegit_Text_1:
+	.string "We hope you'll come again! Have a\n"
+	.string "good day!$"
+
+YifuCity_CrobatShop_CashierLegitTM_Text_0:
+	.string "Hi! I'm prepping up here, but come\n"
+	.string "back soon for some excusive new\l"
+	.string "items!$"
 
 YifuCity_CrobatShop_Guard_Text_0:
 	.string "Shady man$"
@@ -303,10 +368,18 @@ YifuCity_CrobatShop_Customer1_Text_0:
 	.string "Customer$"
 
 YifuCity_CrobatShop_Customer1_Text_1:
+	.string "Woah! So I was buying illegal\n"
+	.string "items? That's wild!$"
+
+YifuCity_CrobatShop_Customer1_Text_2:
 	.string "This place is amazing!\n"
 	.string "How is everything so cheap?!$"
 
 YifuCity_CrobatShop_Customer2_Text_0:
+	.string "I knew it! I knew this shop was\n"
+	.string "shady!$"
+
+YifuCity_CrobatShop_Customer2_Text_1:
 	.string "These Ultra Balls look… different,\n"
 	.string "somehow…$"
 

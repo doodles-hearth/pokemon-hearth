@@ -606,9 +606,11 @@ YifuCity_Dojo_EventScript_YutakaDefeated::
 	message YifuCity_Dojo_EventScript_YutakaDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
+	speakername YifuCity_Dojo_EventScript_Yutaka_Text_0
 	msgbox YifuCity_Dojo_EventScript_YutakaDefeated_Text_1, MSGBOX_DEFAULT
-	giveitem ITEM_TM_DOUBLE_TEAM
-	msgbox YifuCity_Dojo_EventScript_YutakaDefeated_Text_2, MSGBOX_DEFAULT
+	giveitem ITEM_TM_X_SCISSOR
+	speakername YifuCity_Dojo_EventScript_Yutaka_Text_0
+	msgbox YifuCity_Dojo_EventScript_YutakaDefeated_Text_2
 	closemessage
 	setflag FLAG_BADGE03_GET
 	setvar VAR_0x8008, 3
@@ -880,13 +882,13 @@ YifuCity_Dojo_EventScript_Dance1_Text_1:
 	.string "to watch three different dances,\l"
 	.string "at the end of which you will be\l"
 	.string "asked a different question.\p"
-	.string "The first dance will soon commence!\l"
+	.string "The first dance will soon commence!\n"
 	.string "The real Miss Yutaka, the Dojo\l"
 	.string "Master, is among us.\p"
-	.string "She is the one on the left. If you\n"
-	.string "haven't lost track of her by the\l"
-	.string "end of our dance, we shall let\l"
-	.string "you through.\p"
+	.string "She is the one on the left.\n"
+	.string "If you haven't lost track of her\l"
+	.string "by the end of our dance, we\l"
+	.string "shall let you through.\p"
 	.string "If you guess wrong, you shall have\n"
 	.string "to battle us.\p"
 	.string "Are you ready?$"
@@ -992,21 +994,19 @@ YifuCity_Dojo_EventScript_Advice_Text_1:
 	.string "beautiful.\l"
 	.string "She probably won't appreciate you\l"
 	.string "walking around her Dojo with your\l"
-	.string "clothes looking like… this…\l"
-	.string "Uh, nevermind my babbling! Go get\l"
+	.string "clothes looking like… this…\p"
+	.string "Uh, nevermind my babbling! Go get\n"
 	.string "'em, champ!$"
 
 YifuCity_Dojo_EventScript_DojoStatue_Text_0:
 	.string "Dojo of Yifu City\p"
 	.string "Certified wielders:\n"
-	.string "Hariko,\l"
 	.string "Natsuki,\l"
 	.string "{PLAYER}$"
 
 YifuCity_Dojo_EventScript_DojoStatue_Text_1:
 	.string "Dojo of Kura Village\p"
 	.string "Certified wielders:\n"
-	.string "Hariko,\l"
 	.string "Natsuki$"
 
 YifuCity_Dojo_EventScript_Akari_Text_0:
@@ -1080,8 +1080,9 @@ YifuCity_Dojo_EventScript_Miika_Text_2:
 	.string "Miika$"
 
 YifuCity_Dojo_EventScript_Miika_Text_3:
-	.string "Working here has its perks. We get\n"
-	.string "the finest silk clothes for free!$"
+	.string "Working here has its perks.\n"
+	.string "We get the finest silk clothes for\l"
+	.string "free!$"
 
 YifuCity_Dojo_EventScript_Dancer_Text_0:
 	.string "Kimono girl$"
@@ -1118,7 +1119,7 @@ YifuCity_Dojo_EventScript_Yutaka_Text_2:
 	.string "(…Yutaka, you must not let this\n"
 	.string "offend you so!\l"
 	.string "You are stronger than that!)\p"
-	.string "Ahem… Let us move on…\l"
+	.string "Ahem… Let us move on…\n"
 	.string "You shall be fighting my exquisite\l"
 	.string "assortment of Pokémon,\l"
 	.string "in the hopes of obtaining\l"
@@ -1143,21 +1144,20 @@ YifuCity_Dojo_EventScript_YutakaDefeated_Text_0:
 YifuCity_Dojo_EventScript_YutakaDefeated_Text_1:
 	.string "I am outrée! Your techniques are\n"
 	.string "rough and vulgar, yet…\l"
-	.string "The victory is yours… That is\l"
-	.string "undeniable.\p"
+	.string "Victory is yours…\n"
+	.string "That is undeniable.\p"
 	.string "I guess what you lack in aesthetic\n"
 	.string "values, you compensate in\l"
 	.string "strength.\p"
-	.string "With the Token I just gave you,\n"
-	.string "your Pokémon will obey you\l"
-	.string "without question, even those you\l"
-	.string "trade with others.\p"
 	.string "Do accept this, as well.$"
 
 YifuCity_Dojo_EventScript_YutakaDefeated_Text_2:
-	.string "This scroll contains something\n"
-	.string "something something.\p"
-	.string "And, uh… We should go\n"
+	.string "This scroll contains my famous\n"
+	.string "X-Scissor technique.\p"
+	.string "I perfected it back when I worked\n"
+	.string "as a seamstress.\p"
+	.string "About that, uh… We should go\n"
 	.string "clothes-shopping together\l"
-	.string "sometime. I cannot bear to see\l"
-	.string "your image suffer so.$"
+	.string "sometime.\p"
+	.string "I cannot bear to see your image\n"
+	.string "suffer so.$"

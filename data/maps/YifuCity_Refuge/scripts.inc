@@ -1,5 +1,24 @@
 YifuCity_Refuge_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setrespawn HEAL_LOCATION_YIFU_CITY
+	goto_if_unset FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	return
+
+YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setflag FLAG_TEMP_1
+	return
+
+
+YifuCity_Refuge_EventScript_Nurse::
+	setvar VAR_0x800B, 10
+	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
+	waitmessage
+	waitbuttonpress
+	release
+	end
 
 
 YifuCity_Refuge_EventScript_FakeNurse::

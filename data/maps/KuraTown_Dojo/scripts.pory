@@ -160,13 +160,12 @@ script KuraTown_Dojo_EventScript_HanaDefeated {
 }
 
 script KuraTown_Dojo_EventScript_GiveBulldoze {
-	giveitem(ITEM_TM_BULLDOZE)
+	giveitem(ITEM_TM_WEATHER_BALL)
 	goto_if_eq(VAR_RESULT, 0, Common_EventScript_BagIsFull)
 	speakername("Hana")
 	msgbox(
 		format(
-			"This scroll contains Bulldoze, a powerful ground-type move that slows down the enemy.\p"
-			"I invented that technique myself! I needed a way to soften the ground when repotting bonsai, heh heh."
+			"This scroll contains Weather Ball. Just like a tree, this technique is as strong as it is weather-dependent."
 		),
 		MSGBOX_DEFAULT
 	)

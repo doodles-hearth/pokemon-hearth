@@ -95,6 +95,7 @@ enum
     SELLER_MART_FEMALE, // OBJ_EVENT_GFX_MART_EMPLOYEE
     SELLER_OKADA, // OBJ_EVENT_GFX_TRAVELING_MERCHANT
     SELLER_ZUBAT, // OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M
+    SELLER_INCENSE, // OBJ_EVENT_GFX_INCENSE_SHOP_KEEPER
     SELLER_COUNT,
 };
 
@@ -234,6 +235,14 @@ const u32 sNewShopMenu_SellerScrollPal_Zubat[] = INCBIN_U32("graphics/new_shop/s
 const u32 sNewShopMenu_SellerScrollMap_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.bin.lz");
 const u16 sNewShopMenu_SellerCursorGfx_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/cursor.4bpp");
 const u32 sNewShopMenu_SellerCursorPal_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/cursor.gbapal.lz");
+
+const u8 sNewShopMenu_SellerMugshotGfx_Incense[] = INCBIN_U8("graphics/new_shop/sellers/incense/mugshot.4bpp");
+const u16 sNewShopMenu_SellerMugshotPal_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/mugshot.gbapal");
+const u32 sNewShopMenu_SellerScrollGfx_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.4bpp.lz");
+const u32 sNewShopMenu_SellerScrollPal_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.gbapal.lz");
+const u32 sNewShopMenu_SellerScrollMap_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.bin.lz");
+const u16 sNewShopMenu_SellerCursorGfx_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/cursor.4bpp");
+const u32 sNewShopMenu_SellerCursorPal_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/cursor.gbapal.lz");
 
 static void Task_ShopMenu(u8 taskId);
 static void Task_HandleShopMenuQuit(u8 taskId);
@@ -515,10 +524,31 @@ static const struct Seller sSellers[] = {
             [SELLER_MSG_BUY_PROMPT_PLURAL] = COMPOUND_STRING("How many\nd'ya want?"),
             [SELLER_MSG_BUY_CONFIRM]       = COMPOUND_STRING("So you wanted\n{STR_VAR_2} {STR_VAR_1}?\nGimme ¥{STR_VAR_3}."),
             [SELLER_MSG_BUY_SUCCESS]       = COMPOUND_STRING("Heck yeah.\nNo refunds!"),
-            [SELLER_MSG_BUY_FAIL_NO_SPACE] = sText_NoMoreRoomForThis,
+            [SELLER_MSG_BUY_FAIL_NO_SPACE] = COMPOUND_STRING("Yer outta space,\nbuddy!"),
             [SELLER_MSG_BUY_FAIL_NO_MONEY] = COMPOUND_STRING("Where's the\ncash,\nscrub?"),
             [SELLER_MGS_BUY_PREMIER_BONUS] = COMPOUND_STRING("I'll throw in\na Premier Ball,\ntoo."),
             [SELLER_MSG_BUY_PREMIER_BONUS_PLURAL] = COMPOUND_STRING("I'll throw in\n{STR_VAR_1} Premier Balls,\ntoo."),
+        },
+    },
+    [SELLER_INCENSE] = {
+        { .gfxId = OBJ_EVENT_GFX_INCENSE_SHOP_KEEPER },
+        .mugshotGfx = sNewShopMenu_SellerMugshotGfx_Incense,
+        .mugshotPal = sNewShopMenu_SellerMugshotPal_Incense,
+        .scrollGfx = sNewShopMenu_SellerScrollGfx_Incense,
+        .scrollPal = sNewShopMenu_SellerScrollPal_Incense,
+        .scrollMap = sNewShopMenu_SellerScrollMap_Incense,
+        .cursorGfx = sNewShopMenu_SellerCursorGfx_Incense,
+        .cursorPal = sNewShopMenu_SellerCursorPal_Incense,
+        .message = {
+            [SELLER_MSG_RETURN_TO_FIELD]   = COMPOUND_STRING("Yawn… Anything else?"),
+            [SELLER_MSG_BUY_PROMPT]        = COMPOUND_STRING("{STR_VAR_1}?\nSure, uh…\n¥{STR_VAR_2}…"),
+            [SELLER_MSG_BUY_PROMPT_PLURAL] = COMPOUND_STRING("How many of these?"),
+            [SELLER_MSG_BUY_CONFIRM]       = COMPOUND_STRING("{STR_VAR_2} {STR_VAR_1},\nright? That's…\n¥{STR_VAR_3}."),
+            [SELLER_MSG_BUY_SUCCESS]       = COMPOUND_STRING("Cool…\nYawn…"),
+            [SELLER_MSG_BUY_FAIL_NO_SPACE] = COMPOUND_STRING("You have no more\nroom…"),
+            [SELLER_MSG_BUY_FAIL_NO_MONEY] = COMPOUND_STRING("You're out\nof money…"),
+            [SELLER_MGS_BUY_PREMIER_BONUS] = sText_ThrowInPremierBall,
+            [SELLER_MSG_BUY_PREMIER_BONUS_PLURAL] = sText_ThrowInPremierBalls,
         },
     },
 };

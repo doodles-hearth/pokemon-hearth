@@ -268,11 +268,12 @@
 #define OBJ_EVENT_GFX_LUNCHBOX                   264
 #define OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_M     265
 #define OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_F     266
+#define OBJ_EVENT_GFX_INCENSE_SHOP_KEEPER        267
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        267
+#define NUM_OBJ_EVENT_GFX                        268
 
 
 // These are dynamic object gfx ids.
@@ -512,6 +513,7 @@
 // Blues, yellows, browns, dark gray, reds
 // 4 remaining free slots
 #define OBJ_EVENT_PAL_TAG_DECORATIONS_MAREEP 0x1176
+#define OBJ_EVENT_PAL_TAG_INCENSE_SELLER 0x1177
 
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611

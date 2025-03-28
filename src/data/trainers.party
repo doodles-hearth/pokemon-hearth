@@ -3747,13 +3747,27 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Bounsweet
-Level: 17
+Skiploom
+Level: 26
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Mega Drain
+- Acrobatics
+- Stun Spore
+- Fairy Wind
 
-Bounsweet
-Level: 17
+Kirlia
+Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Lucky Chant
+- Magical Leaf
+- Confusion
+
+Oricorio Sensu
+Level: 24
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Baton Pass
+- Double Slap
+- Feather Dance
 
 === TRAINER_FERNANDO_1 ===
 Name: FERNANDO
@@ -4324,13 +4338,13 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Bounsweet
-Level: 17
+Steenee
+Level: 25
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Bounsweet
-Level: 17
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Rapid Spin
+- Sweet Scent
+- Magical Leaf
+- Teeter Dance
 
 === TRAINER_JEFFREY_2 ===
 Name: JEFFREY
@@ -5196,41 +5210,41 @@ Class: Dojo Master
 Pic: Leader Yutaka
 Gender: Female
 Music: Female
-Items: Super Potion / Super Potion
-Double Battle: No
-AI: Basic Trainer
+Items: Supergiri
+Double Battle: Yes
+AI: Basic Trainer / Ace Pokemon
 
-Voltorb
-Level: 20
+Oricorio Sensu
+Level: 23
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Rollout
-- Spark
-- Self Destruct
-- Shock Wave
+- Wing Attack
+- Feather Dance
+- Mirror Move
+- Twister
 
-Electrike
-Level: 20
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Shock Wave
-- Leer
-- Quick Attack
-- Howl
-
-Magneton
-Level: 22
-IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
-- Supersonic
-- Shock Wave
-- Thunder Wave
-- Sonic Boom
-
-Manectric @ Sitrus Berry
+Leavanny Tokuan
 Level: 24
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Quick Attack
-- Thunder Wave
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- String Shot
 - Shock Wave
-- Howl
+- X-Scissor
+- Fury Cutter
+
+Kirlia
+Level: 23
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Disarming Voice
+- Double Team
+- Heal Pulse
+- Confusion
+
+Tsareena
+Level: 25
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Stomp
+- Teeter Dance
+- Sweet Scent
+- Magical Leaf
 
 === TRAINER_FLANNERY_1 ===
 Name: FLANNERY
@@ -6339,13 +6353,20 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Bounsweet
-Level: 17
+Steenee
+Level: 25
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Play Nice
+- Magical Leaf
+- Rapid Spin
 
-Bounsweet
-Level: 17
+Swadloon Tokuan
+Level: 25
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- String Shot
+- Struggle Bug
+- Helping Hand
+- Electroweb
 
 === TRAINER_QUINCY ===
 Name: QUINCY
@@ -12153,12 +12174,12 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Steenee
-Level: 17
+Bounsweet
+Level: 22
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Bounsweet
-Level: 17
+Steenee
+Level: 24
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DANIELLE ===
@@ -16098,13 +16119,19 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Bounsweet
-Level: 17
+Oricorio Sensu
+Level: 24
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Double Slap
+- Feather Dance
+- Helping Hand
+- Air Cutter
 
-Volbeat
-Level: 17
+Kirlia
+Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Disarming Voice
+- Draining Kiss
 
 === TRAINER_DARIUS ===
 Name: DARIUS

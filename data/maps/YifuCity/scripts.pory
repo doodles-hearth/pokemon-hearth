@@ -221,7 +221,8 @@ script YifuCity_EventScript_ShinySeller {
 	faceplayer
 	speakername("Shady man")
 	msgbox(format(
-		"Hey, uh… Wanna buy this Pokémon 'ere?\n'Parently it's super rare or somethin', but I don't really need it, so…"
+		"Hey, uh… Wanna buy this Pokémon 'ere?\p"
+		"'Parently it's super rare or somethin', but I don't really need it, so…"
 	))
 
 	setseenmon(SPECIES_CATERPIE)

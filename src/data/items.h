@@ -11416,20 +11416,20 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_OVERHEAT,
     },
 
-    [ITEM_TM_BULLDOZE] =
+    [ITEM_TM_WEATHER_BALL] =
     {
         .name = _("TM51"),
         .price = 3000,
         .description = COMPOUND_STRING(
-            "Tramples target\n"
-            "into the ground.\n"
-            "Also Lowers Speed."
+            "The move's type\n"
+            "and power change\n"
+            "with the weather."
         ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_BULLDOZE,
+        .secondaryId = MOVE_WEATHER_BALL,
     },
 
     [ITEM_TM_ACROBATICS] =
@@ -11464,16 +11464,20 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_NATURE_POWER,
     },
 
-    [ITEM_TM54] =
+    [ITEM_TM_X_SCISSOR] =
     {
         .name = _("TM54"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Slashes the foe\n"
+            "with crossed\n"
+            "scythes or claws."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_X_SCISSOR,
     },
 
     [ITEM_TM55] =

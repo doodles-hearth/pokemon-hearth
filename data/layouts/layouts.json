@@ -5586,7 +5586,7 @@
       "name": "Soulkeep_Layout",
       "width": 42,
       "height": 44,
-      "border_width": 2,
+      "border_width": 6,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
       "secondary_tileset": "gTileset_Soulkeep",
@@ -5693,8 +5693,8 @@
       "id": "LAYOUT_SOULKEEP_GRAVEYARD",
       "name": "SoulkeepGraveyard_Layout",
       "width": 34,
-      "height": 20,
-      "border_width": 2,
+      "height": 22,
+      "border_width": 6,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
       "secondary_tileset": "gTileset_Soulkeep",
@@ -6312,6 +6312,54 @@
       "secondary_tileset": "gTileset_SilverTunnel",
       "border_filepath": "data/layouts/SilverTunnel_3F/border.bin",
       "blockdata_filepath": "data/layouts/SilverTunnel_3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_INCENSE_SHOP",
+      "name": "IncenseShop_Layout",
+      "width": 9,
+      "height": 11,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseSoulkeep",
+      "border_filepath": "data/layouts/IncenseShop/border.bin",
+      "blockdata_filepath": "data/layouts/IncenseShop/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOULKEEP_HOUSE_DOLL",
+      "name": "Soulkeep_HouseDoll_Layout",
+      "width": 9,
+      "height": 10,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseSoulkeep",
+      "border_filepath": "data/layouts/Soulkeep_HouseDoll/border.bin",
+      "blockdata_filepath": "data/layouts/Soulkeep_HouseDoll/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOULKEEP_HOUSE_DOLL_BEDROOM",
+      "name": "Soulkeep_HouseDollBedroom_Layout",
+      "width": 8,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseGreen",
+      "border_filepath": "data/layouts/Soulkeep_HouseDollBedroom/border.bin",
+      "blockdata_filepath": "data/layouts/Soulkeep_HouseDollBedroom/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOULKEEP_HOUSE1",
+      "name": "Soulkeep_House1_Layout",
+      "width": 9,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseSoulkeep",
+      "border_filepath": "data/layouts/Soulkeep_House1/border.bin",
+      "blockdata_filepath": "data/layouts/Soulkeep_House1/map.bin"
     }
   ]
 }

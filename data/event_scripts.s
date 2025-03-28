@@ -1367,3 +1367,13 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/FlowergrassPlateau/scripts.inc"
 
 	.include "data/maps/SilverTunnel_3F/scripts.inc"
+
+	.include "data/maps/IncenseShop/scripts.inc"
+
+	.include "data/maps/Soulkeep_HouseDoll/scripts.inc"
+
+	.include "data/maps/Soulkeep_Refuge/scripts.inc"
+
+	.include "data/maps/Soulkeep_HouseDollBedroom/scripts.inc"
+
+	.include "data/maps/Soulkeep_House1/scripts.inc"

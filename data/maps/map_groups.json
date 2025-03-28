@@ -10,6 +10,7 @@
     "gMapGroup_IndoorMaguro",
     "gMapGroup_IndoorSilveridge",
     "gMapGroup_IndoorYifu",
+    "gMapGroup_IndoorSoulkeep",
     "gMapGroup_Dungeons",
     "gMapGroup_VanillaMaps1",
     "gMapGroup_VanillaMaps2",
@@ -135,6 +136,13 @@
     "YifuCity_Refuge_2F",
     "YifuCity_Refuge_2F_Rooms",
     "YifuCity_Restaurant"
+  ],
+  "gMapGroup_IndoorSoulkeep": [
+    "IncenseShop",
+    "Soulkeep_HouseDoll",
+    "Soulkeep_Refuge",
+    "Soulkeep_HouseDollBedroom",
+    "Soulkeep_House1"
   ],
   "gMapGroup_Dungeons": [
     "GinkoWoods",

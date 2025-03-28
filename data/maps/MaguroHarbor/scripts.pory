@@ -352,7 +352,7 @@ script MaguroHarbor_EventScript_Mart {
 script MaguroHarbor_EventScript_MartSelling {
 	lock
 	faceplayer
-	speakername("Saleswoman")
+	speakername("Shopkeeper")
 	message(gText_HowMayIServeYou)
 	waitmessage
 	pokemart(MaguroHarbor_Mart)
@@ -363,7 +363,7 @@ script MaguroHarbor_EventScript_MartSelling {
 script MaguroHarbor_EventScript_MartSettingUp {
 	lock
 	faceplayer
-	speakername("Saleswoman")
+	speakername("Shopkeeper")
 	msgbox(format("Oh, uh, the shop isn't open yet. Come back later."), MSGBOX_DEFAULT)
 	waitmessage
 	release
@@ -372,7 +372,7 @@ script MaguroHarbor_EventScript_MartSettingUp {
 script MaguroHarbor_EventScript_MartClosingUp {
 	lock
 	faceplayer
-	speakername("Saleswoman")
+	speakername("Shopkeeper")
 	msgbox(format("The shop's closed for today. Come back {STR_VAR_1}."), MSGBOX_DEFAULT)
 	waitmessage
 	release

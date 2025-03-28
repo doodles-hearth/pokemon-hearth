@@ -22,7 +22,7 @@ script YifuCity_CrobatShop_SetupNpcs {
 script YifuCity_CrobatShop_Cashier {
 	lock
 	faceplayer
-	speakername("Salesman")
+	speakername("Shopkeeper")
 	msgbox(format(
 		"G'day uh, welcome to the ye olde Crobat Shoppe!\p"
 		"Have a lookee at our totally legal tchotchquees and memoralibia!"
@@ -31,12 +31,50 @@ script YifuCity_CrobatShop_Cashier {
 
 	pokemart(Crobat_Mart)
 
-	speakername("Salesman")
+	speakername("Shopkeeper")
 	msgbox(format(
 		"We thank thee fer yer business! Tell yer friends!\p"
 		"{FONT_SMALL}Unless yer friends are the police!{FONT_NORMAL}\p"
 		"Wut's that? I said nothin', ya must be hearin' things!"
 	))
+	closemessage
+	release
+}
+
+script YifuCity_CrobatShop_CashierLegit {
+	lock
+	faceplayer
+	speakername("Shopkeeper")
+	msgbox(format(
+		"Hello there! Welcome to the Yifu City shop!"
+	))
+	waitmessage
+
+	pokemart(Legit_Mart)
+
+	speakername("Shopkeeper")
+	msgbox(format(
+		"We hope you'll come again! Have a good day!"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_CrobatShop_CashierLegitTM {
+	lock
+	faceplayer
+	speakername("Shopkeeper")
+	msgbox(format(
+		"Hi! I'm prepping up here, but come back soon for some excusive new items!"
+	))
+	// waitmessage
+
+	// pokemart(Legit_Mart)
+
+	// speakername("Shopkeeper")
+	// msgbox(format(
+		// "We hope you'll come again! Have a good day!"
+	// ))
 	closemessage
 	release
 }
@@ -48,6 +86,23 @@ mart Crobat_Mart {
 	ITEM_ESCAPE_ROPE_KNOCKOFF
 	ITEM_SLOWPOKE_TAIL
 }
+
+mart Legit_Mart {
+	ITEM_OINTMENT
+	ITEM_SUPER_OINTMENT
+	ITEM_POKE_BALL
+	ITEM_GREAT_BALL
+	ITEM_ESCAPE_ROPE
+}
+
+// mart Legit_Mart_TM {
+// 	ITEM_OINTMENT
+// 	ITEM_SUPER_OINTMENT
+// 	ITEM_POKE_BALL
+// 	ITEM_GREAT_BALL
+// 	ITEM_ESCAPE_ROPE
+// 	ITEM_TM
+// }
 
 script YifuCity_CrobatShop_Guard {
 	lock

@@ -291,11 +291,11 @@ script SakuTown_EventScript_BoardGame {
 script SakuTown_EventScript_Mart {
 	lock
 	faceplayer
-	speakername("Saleswoman")
+	speakername("Shopkeeper")
 	message(gText_HowMayIServeYou)
 	waitmessage
 	pokemart(SakuTown_Mart)
-	speakername("Saleswoman")
+	speakername("Shopkeeper")
 	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
 	release
 }

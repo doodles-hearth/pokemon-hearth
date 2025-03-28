@@ -460,7 +460,7 @@ ChiiTown_EventScript_BattlingBoy_Text_2:
 	.string "Fine! Go do grownup stuff!$"
 
 ChiiTown_EventScript_Mart_Text_0:
-	.string "Saleswoman$"
+	.string "Shopkeeper$"
 
 ChiiTown_EventScript_Mart_Text_1:
 	.string "Welcome to Chii Town's market! How\n"

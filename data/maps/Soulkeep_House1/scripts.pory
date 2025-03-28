@@ -1,0 +1,68 @@
+mapscripts Soulkeep_House1_MapScripts {
+
+}
+
+script Soulkeep_House1_EventScript_Girl {
+	lock
+	faceplayer
+	speakername("Girl")
+	msgbox(format(
+		"Were… Were you outside just now?\p"
+		"Oh, I'm too scared to leave…\nThose ghost Pokémon do bad things to people…"
+	))
+	closemessage
+	release
+}
+
+script Soulkeep_House1_EventScript_EnGarde {
+	lock
+	faceplayer
+	speakername("Farmer")
+	msgbox(format(
+		"En garde, puny ghosts!!\n… … … …\p"
+		"What? I'm practicing!"
+	))
+	closemessage
+	release
+}
+
+script Soulkeep_House1_EventScript_Farmer {
+	lock
+	faceplayer
+	speakername("Farmer")
+	msgbox(format(
+		"Our crops are being neglected…\p"
+		"None dare till the field and turn their back on the ghosts!"
+	))
+	closemessage
+	release
+}
+
+script Soulkeep_House1_EventScript_LittleGirl {
+	lock
+	faceplayer
+	speakername("Little Girl")
+	setnamedmon(SPECIES_FENNEKIN)
+	// TODO EVA setdescribedmon
+	msgbox(format(
+		"Nothing bad can happen to us so long as Fennekin keeps us safe!\p"
+		"I feed him lots of twigs for him to keep us warm!"
+	))
+	closemessage
+	release
+}
+
+script Soulkeep_House1_EventScript_Fennekin {
+	lock
+    faceplayer
+	setseenmon(SPECIES_FENNEKIN)
+	setspeakertomonname(SPECIES_FENNEKIN)
+    msgbox(format(
+        "Growr…"
+    ))
+	playmoncry(SPECIES_FENNEKIN, CRY_MODE_NORMAL)
+    waitmoncry
+	closemessage
+    release
+    end
+}

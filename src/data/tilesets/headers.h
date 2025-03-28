@@ -1169,3 +1169,14 @@ const struct Tileset gTileset_Grassflower =
     .metatileAttributes = gMetatileAttributes_Grassflower,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_HouseSoulkeep =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HouseSoulkeep,
+    .palettes = gTilesetPalettes_HouseSoulkeep,
+    .metatiles = gMetatiles_HouseSoulkeep,
+    .metatileAttributes = gMetatileAttributes_HouseSoulkeep,
+    .callback = NULL,
+};

@@ -1060,8 +1060,8 @@ YifuCity_EventScript_ShinySeller_Text_0:
 
 YifuCity_EventScript_ShinySeller_Text_1:
 	.string "Hey, uh… Wanna buy this Pokémon\n"
-	.string "'ere?\n"
-	.string "'Parently it's super rare or\l"
+	.string "'ere?\p"
+	.string "'Parently it's super rare or\n"
 	.string "somethin', but I don't really need\l"
 	.string "it, so…$"
 

@@ -90,7 +90,7 @@ KuraTown_Dojo_EventScript_HanaDefeated::
 
 
 KuraTown_Dojo_EventScript_GiveBulldoze::
-	giveitem ITEM_TM_BULLDOZE
+	giveitem ITEM_TM_WEATHER_BALL
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
 	speakername KuraTown_Dojo_EventScript_Hana_Text_0
 	msgbox KuraTown_Dojo_EventScript_GiveBulldoze_Text_0, MSGBOX_DEFAULT
@@ -306,13 +306,10 @@ KuraTown_Dojo_EventScript_HanaDefeated_Text_1:
 	.string "Here, let me also give you this.$"
 
 KuraTown_Dojo_EventScript_GiveBulldoze_Text_0:
-	.string "This scroll contains Bulldoze, a\n"
-	.string "powerful ground-type move that\l"
-	.string "slows down the enemy.\p"
-	.string "I invented that technique myself! I\n"
-	.string "needed a way to soften the\l"
-	.string "ground when repotting bonsai, heh\l"
-	.string "heh.$"
+	.string "This scroll contains Weather Ball.\n"
+	.string "Just like a tree, this technique\l"
+	.string "is as strong as it is\l"
+	.string "weather-dependent.$"
 
 KuraTown_Dojo_EventScript_Advice_Text_0:
 	.string "Man$"

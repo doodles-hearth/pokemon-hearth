@@ -586,6 +586,7 @@ CrobatHideout_1F_LetsFight2v2_5:
 	closemessage
 	setvar VAR_CROBAT_HIDEOUT_STATE, 3
 	setflag FLAG_CLEARED_CROBAT_HIDEOUT
+	setflag FLAG_BOUGHT_FAKE_SHINY
 	warp MAP_YIFU_CITY, 33, 13
 	goto CrobatHideout_1F_LetsFight2v2_1
 

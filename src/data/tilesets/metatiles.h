@@ -298,3 +298,6 @@ const u16 gMetatileAttributes_CrobatHideout[] = INCBIN_U16("data/tilesets/second
 
 const u16 gMetatiles_Grassflower[] = INCBIN_U16("data/tilesets/secondary/grassflower/metatiles.bin");
 const u16 gMetatileAttributes_Grassflower[] = INCBIN_U16("data/tilesets/secondary/grassflower/metatile_attributes.bin");
+
+const u16 gMetatiles_HouseSoulkeep[] = INCBIN_U16("data/tilesets/secondary/house_soulkeep/metatiles.bin");
+const u16 gMetatileAttributes_HouseSoulkeep[] = INCBIN_U16("data/tilesets/secondary/house_soulkeep/metatile_attributes.bin");

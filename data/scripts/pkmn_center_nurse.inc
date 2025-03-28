@@ -10,6 +10,18 @@ Common_EventScript_PkmnCenterNurse_Chansey::
 	return
 
 
+Common_EventScript_PkmnCenterNurse_Blissey::
+	lock
+	setseenmon SPECIES_BLISSEY
+	playmoncry SPECIES_BLISSEY, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_BLISSEY
+	msgbox Common_EventScript_PkmnCenterNurse_Chansey_Text_0
+	waitse
+	closemessage
+	release
+	return
+
+
 Common_EventScript_PkmnCenterNurse_CutTheBullshit::
 	lock
 	faceplayer
