@@ -169,10 +169,10 @@ BelvedereRoute_EventScript_FindMareep_Text_0:
 	.string "Bêêêêêh!$"
 
 BelvedereRoute_EventScript_Rancher_Text_0:
-	.string "Hey, you didn't happen to see a Mareep\n"
-	.string "on your way here, did you? I'm\l"
-	.string "desperate… All my Mareep escaped my\l"
-	.string "ranch!\p"
+	.string "Hey, you didn't happen to see a\n"
+	.string "Mareep on your way here, did\l"
+	.string "you? I'm desperate… All my\l"
+	.string "Mareep escaped my ranch!\p"
 	.string "You look like you're at least a\n"
 	.string "semi-capable person…\p"
 	.string "Would you mind helping me get them\n"
@@ -181,8 +181,8 @@ BelvedereRoute_EventScript_Rancher_Text_0:
 BelvedereRoute_EventScript_Rancher_Text_1:
 	.string "Thank you so much!\p"
 	.string "There are five Mareep in total.\p"
-	.string "Hopefully they should all be not too\n"
-	.string "far from the ranch…$"
+	.string "Hopefully they should all be not\n"
+	.string "too far from the ranch…$"
 
 BelvedereRoute_EventScript_Rancher_Text_2:
 	.string "Now that's not very nice…$"
@@ -210,5 +210,5 @@ BelvedereRoute_EventScript_Rancher_Text_8:
 	.string "appreciation.$"
 
 BelvedereRoute_EventScript_Wool_Text_0:
-	.string "If you bring me enough wool, I'll knit\n"
-	.string "you a nice warm cloak.$"
+	.string "If you bring me enough wool, I'll\n"
+	.string "knit you a nice warm cloak.$"

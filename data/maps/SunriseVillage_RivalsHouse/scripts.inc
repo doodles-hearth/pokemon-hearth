@@ -102,7 +102,8 @@ SunriseVillage_RivalsHouse_EventScript_Woman_Text_1:
 SunriseVillage_RivalsHouse_EventScript_Woman_Text_2:
 	.string "Good morning, {PLAYER}!\n"
 	.string "Today's the big day, huh?\p"
-	.string "Break a leg! Don't talk to strangers!$"
+	.string "Break a leg! Don't talk to\n"
+	.string "strangers!$"
 
 SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_0:
 	.string "Natsuki$"
@@ -117,9 +118,11 @@ SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_2:
 	.string "Spare pair of underwear, check…$"
 
 SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_3:
-	.string "Oh, hey, {PLAYER}. I'm just sorting\n"
+	.string "Oh, hey, {PLAYER}. I'm just\n"
+	.string "sorting\n"
 	.string "out my stuff for the journey.\p"
-	.string "I'm traveling as light as possible!\p"
+	.string "I'm traveling as light as\n"
+	.string "possible!\p"
 	.string "See you around, yeah?$"
 
 SunriseVillage_RivalsHouse_EventScript_Man_Text_0:
@@ -133,9 +136,9 @@ SunriseVillage_RivalsHouse_EventScript_Man_Text_1:
 	.string "I'm sure she misses you.$"
 
 SunriseVillage_RivalsHouse_EventScript_Man_Text_2:
-	.string "Hello, {PLAYER}! How are you doing?\n"
-	.string "Off to some trouble with Natsuki, I\l"
-	.string "bet?$"
+	.string "Hello, {PLAYER}! How are you\n"
+	.string "doing? Off to some trouble with\l"
+	.string "Natsuki, I bet?$"
 
 SunriseVillage_RivalsHouse_EventScript_Meowth_Text_0:
 	.string "Purrr…$"

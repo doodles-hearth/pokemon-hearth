@@ -28,7 +28,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 		))
 		closemessage
 	}
-	elif (flag(FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE)) {
+	elif (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
 		speakername("Hariko")
 		msgbox(format(
 			"Hello again, {PLAYER}. So, do you want to battle?"
@@ -36,47 +36,47 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 		closemessage
 
 		goto(MaguroHarbor_Refuge_BattleHariko)
+	} else {
+		speakername("Hariko")
+		msgbox(format(
+			"Oh, hello there, {PLAYER}.\nFancy meeting you here, as they say.\p"
+			"I assume you are here to challenge the Maguro Harbor Dojo?\p"
+			"Me? I am not particularly interested in becoming a great wielder.\p"
+			"I travel to learn as much as I can about Pokémon!\p"
+			"You've not met my companion yet, have you? Meet my Slowpoke, Bean!"
+		))
+		closemessage
+
+		setseenmon(SPECIES_SLOWPOKE)
+		setnamedmon(SPECIES_SLOWPOKE)
+		setflag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)
+
+		applymovement(LOCALID_BEAN, moves(walk_in_place_fast_left))
+		waitmovement(LOCALID_BEAN)
+		delay(60)
+		playse(SE_LEDGE)
+		applymovement(LOCALID_SLOWPOKE, moves(jump_in_place_down))
+		waitmovement(LOCALID_SLOWPOKE)
+		playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
+
+		speakername("Bean")
+		msgbox(format(
+			"Hurr…"
+		))
+		closemessage
+
+		applymovement(LOCALID_BEAN, moves(walk_in_place_fast_down))
+		waitmovement(LOCALID_BEAN)
+
+		speakername("Hariko")
+		msgbox(format(
+			"Bean is a little slow, but he is happy to meet you!\p"
+			"He may not look like a fighter, but he enjoys a good battle, too."
+			"Would you like to have a friendly bout, Bean against one of your Pokémon?"
+		))
+
+		goto(MaguroHarbor_Refuge_BattleHariko)
 	}
-
-	speakername("Hariko")
-	msgbox(format(
-		"Oh, hello there, {PLAYER}.\nFancy meeting you here, as they say.\p"
-		"I assume you are here to challenge the Maguro Harbor Dojo?\p"
-		"Me? I am not particularly interested in becoming a great wielder.\p"
-		"I travel to learn as much as I can about Pokémon!\p"
-		"You've not met my companion yet, have you? Meet my Slowpoke, Bean!"
-	))
-	closemessage
-
-	setseenmon(SPECIES_SLOWPOKE)
-	setnamedmon(SPECIES_SLOWPOKE)
-	setflag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)
-
-	applymovement(LOCALID_BEAN, moves(walk_in_place_fast_left))
-	waitmovement(LOCALID_BEAN)
-	delay(60)
-	playse(SE_LEDGE)
-	applymovement(LOCALID_SLOWPOKE, moves(jump_in_place_down))
-	waitmovement(LOCALID_SLOWPOKE)
-	playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
-
-	speakername("Bean")
-	msgbox(format(
-		"Hurr…"
-	))
-	closemessage
-
-	applymovement(LOCALID_BEAN, moves(walk_in_place_fast_down))
-	waitmovement(LOCALID_BEAN)
-
-	speakername("Hariko")
-	msgbox(format(
-		"Bean is a little slow, but he is happy to meet you!\p"
-		"He may not look like a fighter, but he enjoys a good battle, too."
-		"Would you like to have a friendly bout, Bean against one of your Pokémon?"
-	))
-
-	goto(MaguroHarbor_Refuge_BattleHariko)
 }
 
 script MaguroHarbor_Refuge_BattleHariko {
@@ -104,7 +104,8 @@ script MaguroHarbor_Refuge_BattleHariko {
 
 			speakername("Hariko")
 			msgbox(format(
-				"No problem. I will be here a while before I continue my journey."
+				"We lost, but Bean tells me he had fun!\nI am glad.\p"
+				"Everyday we learn something new about Pokémon, be it through battling or observation."
 			))
 			closemessage
 		case 1:

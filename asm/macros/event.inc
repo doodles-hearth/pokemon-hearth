@@ -2159,7 +2159,6 @@
 	.4byte \func
 	.endm
 
-	@ Creates a Pokémon with the modernFatefulEncounter bit set for an encounter
 	.macro ismonseen species:req
 	setvar VAR_0x8004, \species
 	special IsMonSeen

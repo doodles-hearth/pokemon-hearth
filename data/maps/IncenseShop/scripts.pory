@@ -1,0 +1,167 @@
+mapscripts IncenseShop_MapScripts {
+
+}
+
+script IncenseShop_EventScript_Drowzee {
+	lock
+	faceplayer
+	setseenmon(SPECIES_DROWZEE)
+	setspeakertomonname(SPECIES_DROWZEE)
+	playmoncry(SPECIES_DROWZEE, CRY_MODE_NORMAL)
+	msgbox(format("Hrmmm…"))
+	waitmoncry
+	closemessage
+	release
+}
+
+script IncenseShop_EventScript_BlueIncense {
+	lock
+	msgbox(format("An incense that smells like salt and sun-baked seaweed."))
+	closemessage
+	release
+}
+
+script IncenseShop_EventScript_GreenIncense {
+	lock
+	msgbox(format("An incense that smells like ripe Berries and roses."))
+	closemessage
+	release
+}
+
+script IncenseShop_EventScript_RedIncense {
+	lock
+	msgbox(format("An incense that smells like smoked maple and charcoal."))
+	closemessage
+	release
+}
+
+script IncenseShop_EventScript_PurpleIncense {
+	lock
+	msgbox(format("An incense that smells like myrrh and hot oil."))
+	closemessage
+	release
+}
+
+script IncenseShop_EventScript_Shopkeeper {
+	lock
+
+	if (flag(FLAG_TALKED_TO_INCENSE_SHOP_KEEPER)) {
+		speakername("Shopkeeper")
+		msgbox(format(
+			"… … … … … …\n… … … ZzzZz…"
+		))
+		closemessage
+
+		delay(30)
+		faceplayer
+
+		msgbox(format(
+			"… … …I'm awake! I'm awake!\p"
+			"{FONT_SMALL}Yawn{FONT_NORMAL}… Welcome to the Incense Shop…"
+		))
+		closemessage
+
+		call(IncenseShop_EventScript_OpenMart)
+	} else {
+		speakername("Shopkeeper")
+		msgbox(format(
+			"… … … … … …\n… … … … … …"
+		))
+
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Excuse me!",
+			"Hello?",
+			"… … …"
+		)
+		closemessage
+
+		switch(var(VAR_RESULT)) {
+			case 0:
+			case 1:
+				speakername("Shopkeeper")
+				msgbox(format(
+					"… … … … … …\n… … … … … …\p"
+					"… … …ZzzZZz…\p"
+					"… … … … … …\n… … … Huh?"
+				))
+				closemessage
+
+				faceplayer
+				delay(30)
+
+				speakername("Shopkeeper")
+				msgbox(format(
+					"…Oh, yes hello, welcome…\n{FONT_SMALL}Yawn{FONT_NORMAL}… …to the Incense Shop…\p"
+					"I'm sorry, the Incense in the air\nmakes me a little sleepy…\p"
+					"We sell a variety of Incenses each with its unique effects…\p"
+					"Feel free to {FONT_SMALL}-yawn-{FONT_NORMAL} peruse…"
+				))
+				closemessage
+
+				setflag(FLAG_TALKED_TO_INCENSE_SHOP_KEEPER)
+
+				call(IncenseShop_EventScript_OpenMart)
+		}
+	}
+	
+	release
+}
+
+script IncenseShop_EventScript_OpenMart {
+	if (flag(FLAG_BADGE06_GET)) {
+		pokemart(IncenseShop_Mart_4)
+	} elif (flag(FLAG_BADGE05_GET)) {
+		pokemart(IncenseShop_Mart_3)
+	} elif (flag(FLAG_BADGE04_GET)) {
+		pokemart(IncenseShop_Mart_2)
+	} else {
+		pokemart(IncenseShop_Mart_1)
+	}
+
+	speakername("Shopkeeper")
+	msgbox(format(
+		"Please come again…\p"
+		"… … … … … …\n… … … … … …\p"
+		"…ZzzZZzzzZZZZzzZZZz…"
+	), MSGBOX_DEFAULT)
+}
+
+mart IncenseShop_Mart_1 {
+	ITEM_ROSE_INCENSE
+	ITEM_SEA_INCENSE
+	ITEM_ROCK_INCENSE
+}
+
+mart IncenseShop_Mart_2 {
+	ITEM_ROSE_INCENSE
+	ITEM_SEA_INCENSE
+	ITEM_ROCK_INCENSE
+	ITEM_PURE_INCENSE
+	ITEM_LUCK_INCENSE
+}
+
+mart IncenseShop_Mart_3 {
+	ITEM_ROSE_INCENSE
+	ITEM_SEA_INCENSE
+	ITEM_ROCK_INCENSE
+	ITEM_PURE_INCENSE
+	ITEM_LUCK_INCENSE
+	ITEM_ODD_INCENSE
+}
+
+mart IncenseShop_Mart_4 {
+	ITEM_ROSE_INCENSE
+	ITEM_SEA_INCENSE
+	ITEM_ROCK_INCENSE
+	ITEM_PURE_INCENSE
+	ITEM_LUCK_INCENSE
+	ITEM_ODD_INCENSE
+	ITEM_LAX_INCENSE
+	ITEM_FULL_INCENSE
+}

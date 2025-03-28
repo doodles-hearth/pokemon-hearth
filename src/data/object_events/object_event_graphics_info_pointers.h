@@ -93,6 +93,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Natsuki;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TravelingMerchant;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OnsenF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BattleGirl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_IncenseSeller;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedSquirtleDoll;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CuttableTreeKuraDojo;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Traveler;
@@ -305,6 +306,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SHAMISEN_BLUE] =            &gObjectEventGraphicsInfo_Shamisen_Blue,
     [OBJ_EVENT_GFX_SHAMISEN_GREEN] =           &gObjectEventGraphicsInfo_Shamisen_Green,
     [OBJ_EVENT_GFX_SHAMISEN_RED] =             &gObjectEventGraphicsInfo_Shamisen_Red,
+    [OBJ_EVENT_GFX_INCENSE_SHOP_KEEPER] =      &gObjectEventGraphicsInfo_IncenseSeller,
     [OBJ_EVENT_GFX_BATTLE_GIRL] =              &gObjectEventGraphicsInfo_BattleGirl,
     [OBJ_EVENT_GFX_EXPERT_M] =                 &gObjectEventGraphicsInfo_ExpertM,
     [OBJ_EVENT_GFX_EXPERT_F] =                 &gObjectEventGraphicsInfo_ExpertF,

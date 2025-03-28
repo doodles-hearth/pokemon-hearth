@@ -609,12 +609,12 @@
 #define TRAINER_CHIKAO                       603
 #define TRAINER_MUSASHI_1                     604
 #define TRAINER_MINORI                      605
-#define TRAINER_VIVI                        606
+#define TRAINER_JUNKO                       606
 #define TRAINER_HALEY_2                     607
 #define TRAINER_HALEY_3                     608
 #define TRAINER_HALEY_4                     609
 #define TRAINER_HALEY_5                     610
-#define TRAINER_SALLY                       611
+#define TRAINER_MAMI                        611
 #define TRAINER_ROBIN                       612
 #define TRAINER_ANDREA                      613
 #define TRAINER_CRISSY                      614

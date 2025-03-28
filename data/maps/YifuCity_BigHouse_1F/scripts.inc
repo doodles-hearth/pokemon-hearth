@@ -25,8 +25,8 @@ YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight_Text_0:
 
 YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight_Text_1:
 	.string "I stopped going out at night.\n"
-	.string "Those fishy Crobat people roam the\l"
-	.string "streets, speaking in hush tones…$"
+	.string "Those fishy Crobat people roam\l"
+	.string "the streets, speaking in hush tones…$"
 
 YifuCity_BigHouse_1F_EventScript_Man_Text_0:
 	.string "Guy$"
@@ -36,6 +36,6 @@ YifuCity_BigHouse_1F_EventScript_Man_Text_1:
 	.string "actually affiliated with the Elder\l"
 	.string "council of Toku. That's a common\l"
 	.string "misconception!\p"
-	.string "They're their own organization, which\n"
-	.string "mostly deals in protecting the\l"
-	.string "population and fighting crime.$"
+	.string "They're their own organization,\n"
+	.string "which mostly deals in protecting\l"
+	.string "the population and fighting crime.$"

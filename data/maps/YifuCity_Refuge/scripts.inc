@@ -1,5 +1,24 @@
 YifuCity_Refuge_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setrespawn HEAL_LOCATION_YIFU_CITY
+	goto_if_unset FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	return
+
+YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setflag FLAG_TEMP_1
+	return
+
+
+YifuCity_Refuge_EventScript_Nurse::
+	setvar VAR_0x800B, 10
+	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
+	waitmessage
+	waitbuttonpress
+	release
+	end
 
 
 YifuCity_Refuge_EventScript_FakeNurse::
@@ -40,6 +59,7 @@ YifuCity_Refuge_EventScript_FakeNurse_2:
 YifuCity_Refuge_EventScript_FakeNurse_5:
 	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_2
+	playse SE_SHOP
 	removemoney 500
 	updatemoneybox
 	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
@@ -65,6 +85,7 @@ YifuCity_Refuge_EventScript_FakeNurse_10:
 YifuCity_Refuge_EventScript_FakeNurse_11:
 	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_9
+	playse SE_SHOP
 	removemoney 500
 	updatemoneybox
 	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
@@ -74,6 +95,7 @@ YifuCity_Refuge_EventScript_FakeNurse_11:
 YifuCity_Refuge_EventScript_FakeNurse_14:
 	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_11
+	playse SE_SHOP
 	removemoney 500
 	updatemoneybox
 	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
@@ -115,6 +137,7 @@ YifuCity_Refuge_EventScript_HotelValet::
 	goto_if_ne YifuCity_Refuge_EventScript_HotelValet_2
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Refuge_EventScript_HotelValet_Text_7
 	closemessage
+	hidemoneybox
 	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_8
 	closemessage
@@ -133,16 +156,19 @@ YifuCity_Refuge_EventScript_HotelValet_2:
 YifuCity_Refuge_EventScript_HotelValet_6:
 	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_4
+	playse SE_SHOP
 	removemoney 500
 	updatemoneybox
 	closemessage
 	giveitem ITEM_REFUGE_ROOM_KEY
 	hidemoneybox
+	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_5
 	closemessage
 	goto YifuCity_Refuge_EventScript_HotelValet_1
 
 YifuCity_Refuge_EventScript_HotelValet_7:
+	hidemoneybox
 	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_6
 	closemessage
@@ -274,10 +300,10 @@ YifuCity_Refuge_EventScript_HotelValet_Text_0:
 	.string "Valet$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_1:
-	.string "Good morning, {STR_VAR_1}!\n"
-	.string "There's a room available for\l"
-	.string "500¥, if you need a place to\l"
-	.string "spend the night!$"
+	.string "Good day, {STR_VAR_1}! There's\n"
+	.string "a room available for 500¥, if\l"
+	.string "you need a place to spend the\l"
+	.string "night!$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_2:
 	.string "One room, please.$"

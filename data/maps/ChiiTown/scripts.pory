@@ -15,6 +15,31 @@ mapscripts ChiiTown_MapScripts {
 }
 
 script ChiiTown_DrawMetatiles{
+	// Plant more flowers the more badges you have
+	if (flag(FLAG_BADGE01_GET)) {
+		setmetatile(17, 18, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		setmetatile(17, 19, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+	}
+	if (flag(FLAG_BADGE03_GET)) {
+		setmetatile(16, 16, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+	}
+	if (flag(FLAG_BADGE04_GET)) {
+		setmetatile(11, 20, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		setmetatile(15, 22, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+	}
+	if (flag(FLAG_BADGE05_GET)) {
+		setmetatile(16, 22, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+	}
+	if (flag(FLAG_BADGE06_GET)) {
+		setmetatile(18, 23, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		setmetatile(17, 16, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+	}
+	if (flag(FLAG_BADGE08_GET)) {
+		setmetatile(10, 21, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		setmetatile(16, 19, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		setmetatile(21, 23, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+	}
+
     gettimeofday
 	switch(var(VAR_RESULT)){
         case TIME_DEAD_NIGHT:
@@ -304,11 +329,11 @@ script ChiiTown_EventScript_BattlingBoy {
 script ChiiTown_EventScript_Mart {
 	lock
 	faceplayer
-	speakername("Saleswoman")
+	speakername("Shopkeeper")
 	message(format("Welcome to Chii Town's market! How may I help you?"))
 	waitmessage
 	pokemart(ChiiTown_Mart)
-	speakername("Saleswoman")
+	speakername("Shopkeeper")
 	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
 	release
 }
@@ -319,6 +344,7 @@ mart ChiiTown_Mart {
 	ITEM_PARALYZE_HEAL
 	ITEM_ANTIDOTE
 	ITEM_AWAKENING
+	ITEM_BURN_HEAL
 }
 
 script ChiiTown_EventScript_Samurai {
@@ -330,6 +356,12 @@ script ChiiTown_EventScript_Samurai {
 
 script ChiiTown_EventScript_TownSign {
 	msgbox(format("Chii Town\n“The smallest town, with the biggest heart.”"), MSGBOX_SIGN)
+}
+
+script ChiiTown_EventScript_SchoolSign {
+	msgbox(format(
+		"“Little Deerling elementary school”"
+	), MSGBOX_SIGN)
 }
 
 script ChiiTown_EventScript_SetTrespassVar {

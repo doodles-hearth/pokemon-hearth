@@ -53,7 +53,7 @@ script SilverTunnel_2F_EventScript_Miner {
         "We're here mining all day, everyday! Ain't that right, Sandy?"
     ))
     closemessage
-	turnobject(VAR_LAST_TALKED, DIR_EAST)
+	turnobject(VAR_LAST_TALKED, DIR_WEST)
 	setseenmon(SPECIES_SANDSLASH)
 	playmoncry(SPECIES_SANDSLASH, CRY_MODE_NORMAL)
 	applymovement(LOCALID_SANDSLASH, moves(jump_in_place_right))

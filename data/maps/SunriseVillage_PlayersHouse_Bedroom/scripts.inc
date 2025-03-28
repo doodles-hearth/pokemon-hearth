@@ -109,7 +109,8 @@ SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_4:
 	.string "…$"
 
 SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_5:
-	.string "Very funny! Now get up and get ready!$"
+	.string "Very funny! Now get up and get\n"
+	.string "ready!$"
 
 SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_6:
 	.string "… … … … … …\p"
@@ -122,17 +123,17 @@ SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_8:
 	.string "COMIIIIIIIIIIING!!!$"
 
 SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_9:
-	.string "No need to yell, I can hear you just\n"
-	.string "fine!\p"
+	.string "No need to yell, I can hear you\n"
+	.string "just fine!\p"
 	.string "Now get up and get ready!$"
 
 SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_0:
-	.string "It's the Pokémon medicine your sister\n"
-	.string "got for you.$"
+	.string "It's the Pokémon medicine your\n"
+	.string "sister got for you.$"
 
 SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_1:
-	.string "There is also your journal inside! It\n"
-	.string "might come in handy.$"
+	.string "There is also your journal inside!\n"
+	.string "It might come in handy.$"
 
 SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_2:
 	.string "You got the lint from the bottom of\n"

@@ -142,6 +142,7 @@ gSpecials::
 	def_special GetLotadSizeRecordInfo
 	def_special CompareLotadSize
 	def_special TryPutNameRaterShowOnTheAir
+	def_special WasNicknameChanged
 	def_special BufferMonNickname
 	def_special IsMonOTIDNotPlayers
 	def_special BufferTrendyPhraseString

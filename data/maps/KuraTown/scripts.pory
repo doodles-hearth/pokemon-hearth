@@ -224,7 +224,7 @@ script KuraTown_EventScript_GymSign {
 		format(
 			"Kura Village Pokémon Dojo\n"
 			"Leader: Hana\p"
-			"“Strong as a maple rooted in wisdom.”"
+			"“Resilient as a maple rooted in wisdom.”"
 		),
 		MSGBOX_SIGN
 	)

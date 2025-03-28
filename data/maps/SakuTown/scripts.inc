@@ -328,6 +328,7 @@ SakuTown_EventScript_RivalAtSakuWall_Movement_0:
 	walk_up
 	walk_up
 	walk_up
+	walk_up
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Movement_1:
@@ -363,32 +364,35 @@ SakuTown_EventScript_RivalAtSakuWall_Text_2:
 
 SakuTown_EventScript_RivalAtSakuWall_Text_3:
 	.string "I was wondering if you'd already\n"
-	.string "reached Saku Village by now. Looks\l"
-	.string "like we almost missed each other!\p"
-	.string "Have you caught any Pokémon on your\n"
-	.string "way here?\p"
+	.string "reached Saku Village by now.\l"
+	.string "Looks like we almost missed each\l"
+	.string "other!\p"
+	.string "Have you caught any Pokémon on\n"
+	.string "your way here?\p"
 	.string "Me? Oh, I can show you my Pokémon\n"
 	.string "alright!$"
 
 SakuTown_EventScript_RivalAtSakuWall_Text_4:
-	.string "Okay, I… I didn't think you'd go that\n"
-	.string "hard, honestly!\p"
+	.string "Okay, I… I didn't think you'd go\n"
+	.string "that hard, honestly!\p"
 	.string "Hahaha…\p"
-	.string "Clearly I underestimated you. That's\n"
-	.string "alright. I won't make that mistake\l"
-	.string "next time!\p"
+	.string "Clearly I underestimated you.\n"
+	.string "That's alright. I won't make that\l"
+	.string "mistake next time!\p"
 	.string "I can see your Pokémon are really\n"
 	.string "growing to like you, it's great!\p"
-	.string "You definitely stand a chance\n"
-	.string "against the Dojo that's in the next\l"
-	.string "village.\p"
-	.string "Me? Actually, I just fought the Dojo's\n"
-	.string "master and got a token from her!\p"
-	.string "You'll have to hurry up if you wanna\n"
+	.string "You might just stand a chance\n"
+	.string "against the Dojo that's in the\l"
+	.string "next village.\p"
+	.string "Me? Actually, I just fought the\n"
+	.string "Dojo's master and got an official\l"
+	.string "Token from her!\p"
+	.string "You'll have to hurry if you wanna\n"
 	.string "catch up!\p"
 	.string "Well, it was good to see you. Until\n"
 	.string "next time then.\p"
-	.string "I bet you I'll get to Silveridge first!\p"
+	.string "I bet you I'll get to Silveridge\n"
+	.string "first!\p"
 	.string "See you later, Feraligatr!$"
 
 SakuTown_EventScript_Farmer_Text_0:
@@ -396,8 +400,8 @@ SakuTown_EventScript_Farmer_Text_0:
 
 SakuTown_EventScript_Farmer_Text_1:
 	.string "We're cultivatin' Mifan berries. Saku\n"
-	.string "Village exports its berries to many\l"
-	.string "towns.$"
+	.string "Village exports its berries to\l"
+	.string "many towns.$"
 
 SakuTown_EventScript_Farmer2_Text_0:
 	.string "Whew…\p"
@@ -407,9 +411,10 @@ SakuTown_EventScript_Woman_Text_0:
 	.string "Woman$"
 
 SakuTown_EventScript_Woman_Text_1:
-	.string "Those thugs in Kura Village may have\n"
-	.string "their own Dojo, but their town is\l"
-	.string "nothing but an ugly pile of rocks!\p"
+	.string "Those thugs in Kura Village may\n"
+	.string "have their own Dojo, but their\l"
+	.string "town is nothing but an ugly pile\l"
+	.string "of rocks!\p"
 	.string "They don't even have a Pokémon\n"
 	.string "refuge!$"
 
@@ -417,13 +422,14 @@ SakuTown_EventScript_Karateka_Text_0:
 	.string "Man$"
 
 SakuTown_EventScript_Karateka_Text_1:
-	.string "I let the Pokémon Council borrow my\n"
-	.string "super-strong Pokémon to help build\l"
-	.string "the new Pokémon refuges throughout\l"
-	.string "the region.$"
+	.string "I let the Pokémon Council borrow\n"
+	.string "my super-strong Pokémon to help\l"
+	.string "build the new Pokémon refuges\l"
+	.string "throughout the region.$"
 
 SakuTown_EventScript_Karateka_Text_2:
-	.string "Come on, Mama, Kuku! Daddy loves you!!$"
+	.string "Come on, Mama, Kuku! Daddy loves\n"
+	.string "you!!$"
 
 SakuTown_EventScript_Guard_Text_0:
 	.string "Guard$"
@@ -434,8 +440,8 @@ SakuTown_EventScript_Guard_Text_1:
 
 SakuTown_EventScript_Guard_Text_2:
 	.string "One can never be too careful.\p"
-	.string "The safety of the whole village rests\n"
-	.string "on my shoulders.$"
+	.string "The safety of the whole village\n"
+	.string "rests on my shoulders.$"
 
 SakuTown_EventScript_KuraGuard_Text_0:
 	.string "Hah, got two of your Tauros in my\n"
@@ -445,30 +451,32 @@ SakuTown_EventScript_GuardStopsYou_Text_0:
 	.string "Hey!$"
 
 SakuTown_EventScript_GuardStopsYou_Text_1:
-	.string "Are you trying to sneak in from Kura\n"
-	.string "Village?\p"
-	.string "…Oh, you're that traveler from before.\n"
-	.string "You can go through.\p"
-	.string "How was it? Awful, right? Welcome back\n"
-	.string "to Saku Village!$"
+	.string "Are you trying to sneak in from\n"
+	.string "Kura Village?\p"
+	.string "…Oh, you're that traveler from\n"
+	.string "before. You can go through.\p"
+	.string "How was it? Awful, right? Welcome\n"
+	.string "back to Saku Village!$"
 
 SakuTown_EventScript_GuardStopsYou_Text_2:
 	.string "Are you trying to sneak into Kura\n"
 	.string "Village?\p"
-	.string "…Oh, you're just a traveler. Nevermind\n"
-	.string "then, you can go through.\p"
-	.string "Though I wouldn't recommend visiting\n"
-	.string "the next village, there's really\l"
-	.string "nothing interesting there.$"
+	.string "…Oh, you're just a traveler.\n"
+	.string "Nevermind then, you can go\l"
+	.string "through.\p"
+	.string "Though I wouldn't recommend\n"
+	.string "visiting the next village, there's\l"
+	.string "really nothing interesting there.$"
 
 SakuTown_EventScript_TownSign_Text_0:
 	.string "Saku Village\n"
-	.string "“A village of tender flower petals.”$"
+	.string "“A village of tender flower\l"
+	.string "petals.”$"
 
 SakuTown_EventScript_TrainerTips_Text_0:
 	.string "Did you know?\p"
-	.string "Saku Village is in all ways superior to\n"
-	.string "Kura Village!$"
+	.string "Saku Village is in all ways superior\n"
+	.string "to Kura Village!$"
 
 SakuTown_EventScript_TrainerTips2_Text_0:
 	.string "Did you know?\p"
@@ -484,20 +492,20 @@ SakuTown_EventScript_BoardGame_Text_0:
 	.string "popular board game!$"
 
 SakuTown_EventScript_Mart_Text_0:
-	.string "Saleswoman$"
+	.string "Shopkeeper$"
 
 SakuTown_EventScript_Makuhita_Text_0:
 	.string "Kuhi!$"
 
 SakuTown_EventScript_MonHues_Text_0:
-	.string "Have you ever paid close attention to\n"
-	.string "the fur and feather colors of the wild\l"
-	.string "Pokémon?\p"
-	.string "They may all look the same at first…\n"
-	.string "But each one has its own totally\l"
-	.string "unique colors!\p"
-	.string "Doesn't noticing that make your heart\n"
-	.string "sing?$"
+	.string "Have you ever paid close attention\n"
+	.string "to the fur and feather colors of\l"
+	.string "the wild Pokémon?\p"
+	.string "They may all look the same at\n"
+	.string "first… But each one has its own\l"
+	.string "totally unique colors!\p"
+	.string "Doesn't noticing that make your\n"
+	.string "heart sing?$"
 
 SakuTown_EventScript_Cherrim_Text_0:
 	.string "Weee!$"

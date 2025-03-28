@@ -16,8 +16,9 @@ mapscripts YifuCity_MapScripts {
 		if (var(VAR_CROBAT_HIDEOUT_STATE) != 3) {
 			setflag(FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP)
 		}
-		if (var(VAR_CROBAT_HIDEOUT_STATE) >= 4) {
-			setflag(FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP)
+
+		if (var(VAR_CROBAT_HIDEOUT_STATE) != 1 || var(VAR_CROBAT_HIDEOUT_STATE) != 4) {
+			setflag(FLAG_HIDE_HARIKO_YIFU_CITY)
 		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
@@ -32,8 +33,20 @@ script YifuCity_EscapedCrobatHideoutWithSamurai {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 
 	speakername("Samurai")
-	msgbox(format("Well, well… They slipped through our fingers, but they fled the city!"))
-	// TODO EVA 
+	msgbox(format(
+		"Well, well…\nThey slipped through our fingers,\lbut they finally left the city!\p"
+		"Their hideout is now useless!\p"
+		"Thank you for giving the Samurai a hand.\lThis operation was a success!\p"
+		"You might be young, but you wouldn't make a half bad Samurai yourself,\lyou know…\p"
+		"Ha ha ha ha!\p"
+		"I have to go report to my superiors.\p"
+		"{PLAYER}!\nI am sure we will meet again!"
+	))
+	closemessage
+
+	applymovement(LOCALID_SAMURAI_HIDEOUT, moves(walk_down, walk_left * 7))
+	waitmovement(LOCALID_SAMURAI_HIDEOUT)
+
 	releaseall
 }
 
@@ -208,7 +221,8 @@ script YifuCity_EventScript_ShinySeller {
 	faceplayer
 	speakername("Shady man")
 	msgbox(format(
-		"Hey, uh… Wanna buy this Pokémon 'ere?\n'Parently it's super rare or somethin', but I don't really need it, so…"
+		"Hey, uh… Wanna buy this Pokémon 'ere?\p"
+		"'Parently it's super rare or somethin', but I don't really need it, so…"
 	))
 
 	setseenmon(SPECIES_CATERPIE)
@@ -458,6 +472,8 @@ script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 	closemessage
 
 	delay(24)
+
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
 	
 	special(SpawnCameraObject)
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
@@ -632,14 +648,6 @@ script YifuCity_EventScript_Surskit {
     end
 }
 
-script YifuCity_EventScript_CrobatShopSign {
-    msgbox(format(
-        "The sign has been written over.\p"
-		"“Crobat Shop\n"
-		"Come peruse our totally legal stuff!”"
-    ), MSGBOX_SIGN)
-}
-
 script YifuCity_Trigger_Lockdown {
 	lockall
 	// TODO EVA don't use the flag here you moron
@@ -769,8 +777,9 @@ script YifuCity_Trigger_HarikoCriminals {
 		"Hello, {PLAYER}.\nAre you well, since last time?\p"
 		"Did you hear?\nThere was a robbery right here in Yifu City! Some people's Pokémon were stolen!\p"
 		"I heard there was a second decaying area west of here.\lI was planning on going there, but a Samurai was blocking the way, so I am waiting here.\p"
-		"I am going for a stroll now. Let us have lunch together before you leave!"
+		"I am going for a stroll now. Let us have lunch together before you leave. Yes? Good."
 	))
+	closemessage
 
 	applymovement(LOCALID_HARIKO, moves(walk_left * 10))
 	waitmovement(LOCALID_HARIKO)
@@ -778,4 +787,68 @@ script YifuCity_Trigger_HarikoCriminals {
 	removeobject(LOCALID_HARIKO)
 	setflag(FLAG_HIDE_HARIKO_YIFU_CITY)
 	releaseall
+}
+
+script YifuCity_EventScript_DojoSign {
+	msgbox(
+		format(
+			"Yifu City Pokémon Dojo\n"
+			"Leader: Yutaka\p"
+			"“The poetry in the rustling of a kimono.”"
+		),
+		MSGBOX_SIGN
+	)
+}
+
+script YifuCity_EventScript_Fisherman {
+	lock
+	faceplayer
+	speakername("Fisherman")
+	msgbox(format(
+		"Hm? No, I'm not fishing.\p"
+		"I'm just watching the tiny whirlpools that Pokémon make in the shallow water.\p"
+		"Would you like your Pokémon to make whirlpools too?\p"
+		"I could teach them the way of the Whirlpool!"
+	))
+	closemessage
+	release
+	end
+}
+
+script YifuCity_EventScript_NameRaterSign {
+	msgbox(format(
+		"“What's In A Name\nHumble name judge”"
+	), MSGBOX_SIGN)
+}
+
+script YifuCity_EventScript_HotSpringsSign {
+	msgbox(format(
+		"“Torkoal Tubs\nYifu City Hot Springs”"
+	), MSGBOX_SIGN)
+}
+
+script YifuCity_EventScript_CrobatShopSign {
+	msgbox(format(
+		"“Crobat Shop\nOnly legal stuff\lNothing to see here”"
+	), MSGBOX_SIGN)
+}
+
+script YifuCity_EventScript_RestaurantSign {
+	msgbox(format(
+		"“The Golden Drampa\nHotpot & Restaurant”"
+	), MSGBOX_SIGN)
+}
+
+script YifuCity_EventScript_ClothingShopSign {
+	msgbox(format(
+		"“Leavanny Silk\n"
+		"Fashionable and affordable clothes”"
+	), MSGBOX_SIGN)
+}
+
+script YifuCity_EventScript_DecorationShopSign {
+	msgbox(format(
+		"“Woodworker\n"
+		"We sell tables and chairs, mostly”"
+	), MSGBOX_SIGN)
 }

@@ -55,7 +55,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	} else {
 		setobjectxy(LOCALID_RIVAL, 17, 10)
 	}
-	applymovement(LOCALID_RIVAL, moves(walk_up * 5))
+	applymovement(LOCALID_RIVAL, moves(walk_up * 6))
 	waitmovement(0)
 
 	speakername("Natsuki")
@@ -81,9 +81,9 @@ script SakuTown_EventScript_RivalAtSakuWall {
 		"Hahaha…\p"
 		"Clearly I underestimated you. That's alright. I won't make that mistake next time!\p"
 		"I can see your Pokémon are really growing to like you, it's great!\p"
-		"You definitely stand a chance against the Dojo that's in the next village.\p"
-		"Me? Actually, I just fought the Dojo's master and got a token from her!\p"
-		"You'll have to hurry up if you wanna catch up!\p"
+		"You might just stand a chance against the Dojo that's in the next village.\p"
+		"Me? Actually, I just fought the Dojo's master and got an official Token from her!\p"
+		"You'll have to hurry if you wanna catch up!\p"
 		"Well, it was good to see you. Until next time then.\p"
 		"I bet you I'll get to Silveridge first!\p"
 		"See you later, Feraligatr!"
@@ -291,11 +291,11 @@ script SakuTown_EventScript_BoardGame {
 script SakuTown_EventScript_Mart {
 	lock
 	faceplayer
-	speakername("Saleswoman")
+	speakername("Shopkeeper")
 	message(gText_HowMayIServeYou)
 	waitmessage
 	pokemart(SakuTown_Mart)
-	speakername("Saleswoman")
+	speakername("Shopkeeper")
 	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
 	release
 }

@@ -222,7 +222,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	waitmovement 2
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13
-	dynmultichoice 16, 6, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15
 	compare VAR_RESULT, 0
 	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_48
 	applymovement 2, Common_Movement_WalkInPlaceFasterUp
@@ -673,16 +673,22 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1:
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
 	.string "Which is why!\p"
 	.string "The Toku council has decided that,\n"
-	.string "for the time being, the best way to\l"
+	.string "for the time being, the best way\l"
+	.string "to\l"
 	.string "handle this is to use the Pokémon\l"
-	.string "themselves as a means of protection!\p"
+	.string "themselves as a means of\l"
+	.string "protection!\p"
 	.string "There were very few experienced\n"
-	.string "Pokémon wielders in Toku until now.\l"
+	.string "Pokémon wielders in Toku until\l"
+	.string "now.\l"
 	.string "This is about to change.\p"
-	.string "With a trained Pokémon by your side,\n"
-	.string "you'll be able to defend yourselves\l"
+	.string "With a trained Pokémon by your\n"
+	.string "side,\n"
+	.string "you'll be able to defend\l"
+	.string "yourselves\l"
 	.string "on your own.\p"
-	.string "Without further ado, please carefully\n"
+	.string "Without further ado, please\n"
+	.string "carefully\n"
 	.string "choose your new companion!$"
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3:
@@ -696,7 +702,8 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5:
 	.string "I don't mind being second pick.$"
 
 SunriseVillage_EldersHouse_Event_Elder_Text_0:
-	.string "How is your Pokémon adventure going?$"
+	.string "How is your Pokémon adventure\n"
+	.string "going?$"
 
 SunriseVillage_EldersHouse_Event_Elder_Text_1:
 	.string "Choose your new partner wisely.\n"
@@ -732,7 +739,8 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6:
 	.string "Alright. I'm taking this one!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7:
-	.string "Now that you have your own Pokémon,\n"
+	.string "Now that you have your own\n"
+	.string "Pokémon,\n"
 	.string "you two are officially\l"
 	.string "Pokémon wielders!\p"
 	.string "The more wielders there are,\n"
@@ -745,7 +753,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7:
 	.string "I wanted to ask you.$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_8:
-	.string "{PLAYER} received the Pokédex!$"
+	.string "{PLAYER} received the PokéDex!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9:
 	.string "What's this? A book?$"
@@ -757,9 +765,11 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10:
 	.string "from the whole region!\p"
 	.string "Except it's, well, empty.\n"
 	.string "That's where you come in!\p"
-	.string "Explore Toku and fill its pages with\n"
+	.string "Explore Toku and fill its pages\n"
+	.string "with\n"
 	.string "your findings!\p"
-	.string "You can start by going all the way to\n"
+	.string "You can start by going all the way\n"
+	.string "to\n"
 	.string "Silveridge, north of here in the\l"
 	.string "mountains.\p"
 	.string "Another Elder lives there and,\n"
@@ -795,7 +805,8 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_19:
 	.string "{PLAYER}!\n"
-	.string "Let's see what our brand-new Pokémon\l"
+	.string "Let's see what our brand-new\l"
+	.string "Pokémon\l"
 	.string "are capable of!\p"
 	.string "I request an official Pokémon\n"
 	.string "wielder battle!$"
@@ -805,21 +816,25 @@ SunriseVillage_EldersHouse_EventScript_Natsuki_Text_0:
 
 SunriseVillage_EldersHouse_EventScript_PostBattle_Text_0:
 	.string "Oh, man!\n"
-	.string "That was the most fun I've ever had!\p"
+	.string "That was the most fun I've ever\l"
+	.string "had!\p"
 	.string "{PLAYER}!\n"
 	.string "We're now officially rivals!\p"
 	.string "I went easy on you this time, but\n"
 	.string "next time… You'll see!\p"
-	.string "I'm going home to pack some things.\p"
+	.string "I'm going home to pack some\n"
+	.string "things.\p"
 	.string "See ya later, Feraligatr.$"
 
 SunriseVillage_EldersHouse_EventScript_PostBattle_Text_1:
 	.string "Oh, man!\n"
-	.string "That was the most fun I've ever had!\p"
+	.string "That was the most fun I've ever\l"
+	.string "had!\p"
 	.string "{PLAYER}!\n"
 	.string "We're now officially rivals!\p"
 	.string "You better work hard to keep up!\p"
-	.string "I'm going home to pack some things.\p"
+	.string "I'm going home to pack some\n"
+	.string "things.\p"
 	.string "See ya later, Feraligatr.$"
 
 SunriseVillage_EldersHouse_EventScript_RivalBattle_Text_0:

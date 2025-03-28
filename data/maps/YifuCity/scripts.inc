@@ -7,8 +7,10 @@ YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	compare VAR_CROBAT_HIDEOUT_STATE, 3
 	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	compare VAR_CROBAT_HIDEOUT_STATE, 1
+	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 	compare VAR_CROBAT_HIDEOUT_STATE, 4
-	goto_if_ge YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
@@ -16,7 +18,7 @@ YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
-	setflag FLAG_TEMP_2
+	setflag FLAG_HIDE_HARIKO_YIFU_CITY
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -31,6 +33,9 @@ YifuCity_EscapedCrobatHideoutWithSamurai::
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
 	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_EscapedCrobatHideoutWithSamurai_Text_1
+	closemessage
+	applymovement 38, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_2
+	waitmovement 38
 	releaseall
 	return
 
@@ -116,10 +121,10 @@ YifuCity_EventScript_SamuraiTalkToRobberyVictim::
 
 YifuCity_EventScript_RobberyVictim::
 	lock
-	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
-	waitmovement 0
 	speakername YifuCity_EventScript_RobberyVictim_Text_0
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_RobberyVictim_2
+	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	waitmovement 0
 	msgbox YifuCity_EventScript_RobberyVictim_Text_7
 YifuCity_EventScript_RobberyVictim_1:
 	closemessage
@@ -156,6 +161,7 @@ YifuCity_EventScript_RobberyVictim_8:
 	msgbox YifuCity_EventScript_RobberyVictim_Text_5
 	closemessage
 	giveitem ITEM_TM_CALM_MIND
+	waitmessage
 	setflag FLAG_RECEIVED_TM_CALM_MIND
 	addvar VAR_PLAYER_REPUTATION, 1
 	fadescreen FADE_TO_BLACK
@@ -235,6 +241,7 @@ YifuCity_ShinySellerChoice_6:
 YifuCity_ShinySellerChoice_9:
 	removemoney 10000
 	updatemoneybox
+	playse SE_SHOP
 	closemessage
 	playfanfare MUS_OBTAIN_ITEM
 	message YifuCity_ShinySellerChoice_Text_4
@@ -374,8 +381,9 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	msgbox YifuCity_Trigger_CrobatGruntsScram_Text_0
 	closemessage
 	delay 24
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
+	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_1
 	waitmovement 0
 	delay 48
 	applymovement 9, Common_Movement_WalkInPlaceFasterDown
@@ -398,27 +406,27 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	speakername YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_4
 	playse SE_LEDGE
-	applymovement 10, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_1
+	applymovement 10, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_2
 	speakername YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_5
 	waitmovement 0
 	waitse
 	closemessage
 	playse SE_LEDGE
-	applymovement 9, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_2
+	applymovement 9, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_3
 	speakername YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_6
 	waitmovement 0
 	waitse
 	closemessage
-	applymovement 9, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_3
-	applymovement 10, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_4
+	applymovement 9, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_4
+	applymovement 10, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_5
 	waitmovement 0
 	removeobject 9
 	removeobject 10
 	removeobject 11
 	setflag FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF
-	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_5
+	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_6
 	waitmovement 0
 	special RemoveCameraObject
 	releaseall
@@ -498,11 +506,6 @@ YifuCity_EventScript_Surskit::
 	waitmoncry
 	release
 	end
-
-
-YifuCity_EventScript_CrobatShopSign::
-	msgbox YifuCity_EventScript_CrobatShopSign_Text_0, MSGBOX_SIGN
-	return
 
 
 YifuCity_Trigger_Lockdown::
@@ -611,7 +614,8 @@ YifuCity_Trigger_HarikoCriminals_1:
 	waitmovement 0
 	speakername YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox YifuCity_Trigger_HarikoCriminals_Text_1
-	applymovement 35, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_3
+	closemessage
+	applymovement 35, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_4
 	waitmovement 35
 	removeobject 35
 	setflag FLAG_HIDE_HARIKO_YIFU_CITY
@@ -631,12 +635,68 @@ YifuCity_Trigger_HarikoCriminals_5:
 	goto YifuCity_Trigger_HarikoCriminals_1
 
 
+YifuCity_EventScript_DojoSign::
+	msgbox YifuCity_EventScript_DojoSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_Fisherman::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_Fisherman_Text_0
+	msgbox YifuCity_EventScript_Fisherman_Text_1
+	closemessage
+	release
+	end
+
+
+YifuCity_EventScript_NameRaterSign::
+	msgbox YifuCity_EventScript_NameRaterSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_HotSpringsSign::
+	msgbox YifuCity_EventScript_HotSpringsSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_CrobatShopSign::
+	msgbox YifuCity_EventScript_CrobatShopSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_RestaurantSign::
+	msgbox YifuCity_EventScript_RestaurantSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_ClothingShopSign::
+	msgbox YifuCity_EventScript_ClothingShopSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_DecorationShopSign::
+	msgbox YifuCity_EventScript_DecorationShopSign_Text_0, MSGBOX_SIGN
+	return
+
+
 YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0:
 	walk_in_place_fast_right
 	step_end
 
 YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1:
 	walk_in_place_fast_left
+	step_end
+
+YifuCity_EscapedCrobatHideoutWithSamurai_Movement_2:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 YifuCity_EventScript_RobberyVictim_Movement_0:
@@ -717,34 +777,25 @@ YifuCity_Trigger_CrobatGruntsScram_Movement_3:
 	step_end
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0:
-	walk_up
-	walk_up
-	walk_up
+	walk_in_place_fast_up
 	step_end
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_1:
-	jump_in_place_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_2:
-	jump_in_place_down
+	jump_in_place_up
 	step_end
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_3:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
+	jump_in_place_down
 	step_end
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_4:
-	walk_up
+	walk_left
 	walk_left
 	walk_left
 	walk_left
@@ -757,6 +808,19 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_4:
 	step_end
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_5:
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_6:
 	walk_down
 	walk_down
 	walk_down
@@ -892,7 +956,22 @@ YifuCity_EscapedCrobatHideoutWithSamurai_Text_0:
 	.string "Samurai$"
 
 YifuCity_EscapedCrobatHideoutWithSamurai_Text_1:
-	.string "Well, well… They slipped through our fingers, but they fled the city!$"
+	.string "Well, well…\n"
+	.string "They slipped through our fingers,\l"
+	.string "but they finally left the city!\p"
+	.string "Their hideout is now useless!\p"
+	.string "Thank you for giving the Samurai a\n"
+	.string "hand.\l"
+	.string "This operation was a success!\p"
+	.string "You might be young, but you\n"
+	.string "wouldn't make a half bad Samurai\l"
+	.string "yourself,\l"
+	.string "you know…\p"
+	.string "Ha ha ha ha!\p"
+	.string "I have to go report to my\n"
+	.string "superiors.\p"
+	.string "{PLAYER}!\n"
+	.string "I am sure we will meet again!$"
 
 YifuCity_EventScript_StoleMyMon_Text_0:
 	.string "Man$"
@@ -981,8 +1060,8 @@ YifuCity_EventScript_ShinySeller_Text_0:
 
 YifuCity_EventScript_ShinySeller_Text_1:
 	.string "Hey, uh… Wanna buy this Pokémon\n"
-	.string "'ere?\n"
-	.string "'Parently it's super rare or\l"
+	.string "'ere?\p"
+	.string "'Parently it's super rare or\n"
 	.string "somethin', but I don't really need\l"
 	.string "it, so…$"
 
@@ -1124,12 +1203,6 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Text_5:
 YifuCity_EventScript_Surskit_Text_0:
 	.string "Sksksksk…$"
 
-YifuCity_EventScript_CrobatShopSign_Text_0:
-	.string "The sign has been written over.\p"
-	.string "“Crobat Shop\n"
-	.string "Come peruse our totally legal\l"
-	.string "stuff!”$"
-
 YifuCity_Trigger_Lockdown_Text_0:
 	.string "ATTENTION! ATTENTION!\p"
 	.string "THE CITY IS NOW UNDER LOCKDOWN!$"
@@ -1183,4 +1256,48 @@ YifuCity_Trigger_HarikoCriminals_Text_1:
 	.string "way, so I am waiting here.\p"
 	.string "I am going for a stroll now. Let us\n"
 	.string "have lunch together before you\l"
-	.string "leave!$"
+	.string "leave. Yes? Good.$"
+
+YifuCity_EventScript_DojoSign_Text_0:
+	.string "Yifu City Pokémon Dojo\n"
+	.string "Leader: Yutaka\p"
+	.string "“The poetry in the rustling of a\n"
+	.string "kimono.”$"
+
+YifuCity_EventScript_Fisherman_Text_0:
+	.string "Fisherman$"
+
+YifuCity_EventScript_Fisherman_Text_1:
+	.string "Hm? No, I'm not fishing.\p"
+	.string "I'm just watching the tiny\n"
+	.string "whirlpools that Pokémon make in\l"
+	.string "the shallow water.\p"
+	.string "Would you like your Pokémon to\n"
+	.string "make whirlpools too?\p"
+	.string "I could teach them the way of the\n"
+	.string "Whirlpool!$"
+
+YifuCity_EventScript_NameRaterSign_Text_0:
+	.string "“What's In A Name\n"
+	.string "Humble name judge”$"
+
+YifuCity_EventScript_HotSpringsSign_Text_0:
+	.string "“Torkoal Tubs\n"
+	.string "Yifu City Hot Springs”$"
+
+YifuCity_EventScript_CrobatShopSign_Text_0:
+	.string "“Crobat Shop\n"
+	.string "Only legal stuff\l"
+	.string "Nothing to see here”$"
+
+YifuCity_EventScript_RestaurantSign_Text_0:
+	.string "“The Golden Drampa\n"
+	.string "Hotpot & Restaurant”$"
+
+YifuCity_EventScript_ClothingShopSign_Text_0:
+	.string "“Leavanny Silk\n"
+	.string "Fashionable and affordable clothes”$"
+
+YifuCity_EventScript_DecorationShopSign_Text_0:
+	.string "“Woodworker\n"
+	.string "We sell tables and chairs, mostly”$"

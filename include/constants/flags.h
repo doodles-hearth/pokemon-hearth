@@ -474,7 +474,7 @@
 #define FLAG_SHOWN_AURORA_TICKET             0x1AF
 #define FLAG_SHOWN_OLD_SEA_MAP               0x1B0
 #define FLAG_MOVE_TUTOR_TAUGHT_SWAGGER       0x1B1
-#define FLAG_MOVE_TUTOR_TAUGHT_ROLLOUT       0x1B2
+#define FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL       0x1B2
 #define FLAG_MOVE_TUTOR_TAUGHT_FURY_CUTTER   0x1B3
 #define FLAG_MOVE_TUTOR_TAUGHT_MIMIC         0x1B4
 #define FLAG_MOVE_TUTOR_TAUGHT_METRONOME     0x1B5
@@ -679,7 +679,7 @@
 #define FLAG_HIDE_LOCKDOWN_SAMURAI 0x272
 #define FLAG_HIDE_HARIKO_YIFU_CITY  0x273
 #define FLAG_GOT_SCAMMED_YIFU_REFUGE 0x274
-#define FLAG_UNUSED_0x275  0x275 // Unused Flag
+#define FLAG_TALKED_TO_INCENSE_SHOP_KEEPER 0x275
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag
 #define FLAG_UNUSED_0x277  0x277 // Unused Flag
 #define FLAG_UNUSED_0x278  0x278 // Unused Flag
@@ -1066,12 +1066,12 @@
 #define FLAG_ITEM_HM_ROCK_TOMB                                      0x3EF
 #define FLAG_ITEM_TM_WATER_PULSE                                    0x3F0
 #define FLAG_ITEM_STOLEN_MONS                                       0x3F1
-#define FLAG_ITEM_ROUTE_111_HP_UP                                   0x3F2
-#define FLAG_ITEM_ROUTE_112_NUGGET                                  0x3F3
-#define FLAG_ITEM_ROUTE_113_MAX_ETHER                               0x3F4
-#define FLAG_ITEM_ROUTE_113_SUPER_REPEL                             0x3F5
-#define FLAG_ITEM_ROUTE_114_RARE_CANDY                              0x3F6
-#define FLAG_ITEM_ROUTE_114_PROTEIN                                 0x3F7
+#define FLAG_ITEM_GRASSFLOWER_PLATEAU_MAX_OINTMENT                  0x3F2
+#define FLAG_ITEM_WHITESLATE_ROUTE_CARBOS                           0x3F3
+#define FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_MAX_ETHER                 0x3F4
+#define FLAG_ITEM_CROBAT_HIDEOUT_NUGGET                             0x3F5
+#define FLAG_ITEM_CROBAT_HIDEOUT_RARE_CANDY                         0x3F6
+#define FLAG_CROBAT_HIDEOUT_PEARL                                   0x3F7
 #define FLAG_ITEM_ROUTE_115_SUPER_POTION                            0x3F8
 #define FLAG_ITEM_ROUTE_115_TM_FOCUS_PUNCH                          0x3F9
 #define FLAG_ITEM_ROUTE_115_IRON                                    0x3FA

@@ -400,8 +400,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_KENTO ===
 Name: Kento
-Class: Hiker
-Pic: Hiker
+Class: Miner
+Pic: Miner
 Gender: Male
 Music: Hiker
 Double Battle: No
@@ -416,8 +416,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_SHUYA ===
 Name: Shuya
-Class: Hiker
-Pic: Hiker
+Class: Miner
+Pic: Miner
 Gender: Male
 Music: Hiker
 Double Battle: No
@@ -1402,7 +1402,7 @@ Level: 21
 Spinda
 Level: 22
 - Feint Attack
-- Dizzy Punch
+- Psybeam
 - Copycat
 
 === TRAINER_UTARO ===
@@ -3701,11 +3701,11 @@ Double Battle: No
 AI: Check Bad Move
 
 Bounsweet
-Level: 17
+Level: 24
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Skiploom
-Level: 17
+Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_7 ===
@@ -3747,13 +3747,27 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Bounsweet
-Level: 17
+Skiploom
+Level: 26
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Mega Drain
+- Acrobatics
+- Stun Spore
+- Fairy Wind
 
-Bounsweet
-Level: 17
+Kirlia
+Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Lucky Chant
+- Magical Leaf
+- Confusion
+
+Oricorio Sensu
+Level: 24
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Baton Pass
+- Double Slap
+- Feather Dance
 
 === TRAINER_FERNANDO_1 ===
 Name: FERNANDO
@@ -4324,13 +4338,13 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Bounsweet
-Level: 17
+Steenee
+Level: 25
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
-
-Bounsweet
-Level: 17
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Rapid Spin
+- Sweet Scent
+- Magical Leaf
+- Teeter Dance
 
 === TRAINER_JEFFREY_2 ===
 Name: JEFFREY
@@ -5196,41 +5210,41 @@ Class: Dojo Master
 Pic: Leader Yutaka
 Gender: Female
 Music: Female
-Items: Super Potion / Super Potion
-Double Battle: No
-AI: Basic Trainer
+Items: Supergiri
+Double Battle: Yes
+AI: Basic Trainer / Ace Pokemon
 
-Voltorb
-Level: 20
+Oricorio Sensu
+Level: 23
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Rollout
-- Spark
-- Self Destruct
-- Shock Wave
+- Wing Attack
+- Feather Dance
+- Mirror Move
+- Twister
 
-Electrike
-Level: 20
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
-- Shock Wave
-- Leer
-- Quick Attack
-- Howl
-
-Magneton
-Level: 22
-IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
-- Supersonic
-- Shock Wave
-- Thunder Wave
-- Sonic Boom
-
-Manectric @ Sitrus Berry
+Leavanny Tokuan
 Level: 24
-IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Quick Attack
-- Thunder Wave
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- String Shot
 - Shock Wave
-- Howl
+- X-Scissor
+- Fury Cutter
+
+Kirlia
+Level: 23
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Disarming Voice
+- Double Team
+- Heal Pulse
+- Confusion
+
+Tsareena
+Level: 25
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Stomp
+- Teeter Dance
+- Sweet Scent
+- Magical Leaf
 
 === TRAINER_FLANNERY_1 ===
 Name: FLANNERY
@@ -6339,13 +6353,20 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Bounsweet
-Level: 17
+Steenee
+Level: 25
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- Play Nice
+- Magical Leaf
+- Rapid Spin
 
-Bounsweet
-Level: 17
+Swadloon Tokuan
+Level: 25
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+- String Shot
+- Struggle Bug
+- Helping Hand
+- Electroweb
 
 === TRAINER_QUINCY ===
 Name: QUINCY
@@ -9645,10 +9666,10 @@ Double Battle: No
 AI: Basic Trainer
 
 Houndoom
-Level: 24
+Level: 23
 - Fire Fang
 - Smog
-- Howl
+- Odor Sleuth
 
 === TRAINER_EDWIN_2 ===
 Name: EDWIN
@@ -10899,7 +10920,7 @@ Level: 19
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Rain Dance
 - Headbutt
-- Water Pulse
+- Water Gun
 - Ember
 
 === TRAINER_SYLVIA ===
@@ -11380,26 +11401,20 @@ Level: 5
 - Tackle
 - Camouflage
 
-=== TRAINER_VIVI ===
-Name: VIVI
-Class: Gardener
+=== TRAINER_JUNKO ===
+Name: Junko
+Class: Lass
 Pic: Lass
 Gender: Female
 Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Marill
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Shroomish
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Numel
-Level: 15
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Munchlax (M)
+Level: 23
+- Stockpile
+- Swallow
+- Body Slam
 
 === TRAINER_HALEY_2 ===
 Name: HALEY
@@ -11473,18 +11488,27 @@ Breloom
 Level: 34
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-=== TRAINER_SALLY ===
-Name: SALLY
-Class: Lass
-Pic: Lass
+=== TRAINER_MAMI ===
+Name: Mami
+Class: Hex Maniac
+Pic: Hex Maniac
 Gender: Female
-Music: Female
+Music: Suspicious
 Double Battle: No
 AI: Check Bad Move
 
-Oddish
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Misdreavus
+Level: 23
+- Spite
+- Hex
+- Psywave
+
+Misdreavus
+Level: 23
+- Confuse Ray
+- Mean Look
+- Astonish
+- Hex
 
 === TRAINER_ROBIN ===
 Name: ROBIN
@@ -12151,11 +12175,11 @@ Double Battle: No
 AI: Check Bad Move
 
 Bounsweet
-Level: 17
+Level: 22
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Bounsweet
-Level: 17
+Steenee
+Level: 24
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_DANIELLE ===
@@ -13776,16 +13800,16 @@ AI: Basic Trainer
 
 Golbat
 Level: 23
-- Confuse Ray
-- Air Cutter
-- Poison Fang
+- Wing Attack
+- Bite
+- Astonish
 
 Swoobat
-Level: 24
+Level: 23
 - Amnesia
 - Attract
-- Assurance
 - Heart Stamp
+- Confusion
 
 === TRAINER_PETE ===
 Name: PETE
@@ -16095,13 +16119,19 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Bounsweet
-Level: 17
+Oricorio Sensu
+Level: 24
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Double Slap
+- Feather Dance
+- Helping Hand
+- Air Cutter
 
-Volbeat
-Level: 17
+Kirlia
+Level: 25
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Disarming Voice
+- Draining Kiss
 
 === TRAINER_DARIUS ===
 Name: DARIUS

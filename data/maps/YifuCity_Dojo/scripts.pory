@@ -89,9 +89,8 @@ script YifuCity_Dojo_EventScript_Dance1 {
     speakername("Kimono girls")
     msgbox(format(
         "Welcome to the Yifu City Dojo. Here you will have the pleasure to watch three different dances, at the end of which you will be asked a different question.\p"
-        "The first dance will soon commence!\l"
-        "The real Miss Yutaka, the Dojo Master, is among us.\p"
-        "She is the one on the left. If you haven't lost track of her by the end of our dance, we shall let you through.\p"
+        "The first dance will soon commence! The real Miss Yutaka, the Dojo Master, is among us.\p"
+        "She is the one on the left.\nIf you haven't lost track of her by the end of our dance, we shall let you through.\p"
         "If you guess wrong, you shall have to battle us.\p"
         "Are you ready?"
     ))
@@ -745,7 +744,7 @@ script YifuCity_Dojo_EventScript_Advice {
 		msgbox(format(
             "Hello, young challenger, and welcome to the Dance Hall Dojo! Think you've got what it takes to see through the dancer's intoxicating moves?\p"
             "Watch out though, Master Yutaka can be as critical as she is beautiful.\l"
-            "She probably won't appreciate you walking around her Dojo with your clothes looking like… this…\l"
+            "She probably won't appreciate you walking around her Dojo with your clothes looking like… this…\p"
             "Uh, nevermind my babbling! Go get 'em, champ!"
 		))
 	}
@@ -758,7 +757,6 @@ script YifuCity_Dojo_EventScript_DojoStatue {
 		msgbox(
 			"Dojo of Yifu City\p"
 			"Certified wielders:\n"
-            "Hariko,\l"
 			"Natsuki,\l"
 			"{PLAYER}",
 			MSGBOX_SIGN
@@ -767,7 +765,6 @@ script YifuCity_Dojo_EventScript_DojoStatue {
 		msgbox(
 			"Dojo of Kura Village\p"
 			"Certified wielders:\n"
-            "Hariko,\l"
 			"Natsuki",
 			MSGBOX_SIGN
 		)
@@ -837,7 +834,7 @@ script YifuCity_Dojo_EventScript_Miika {
         format("You don't look impressed at all!")
 	)
 	speakername("Miika")
-	msgbox(format("Working here has its perks. We get the finest silk clothes for free!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("Working here has its perks.\nWe get the finest silk clothes for free!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -901,9 +898,8 @@ script YifuCity_Dojo_EventScript_Yutaka {
             "(…Yutaka, you must not let this\n"
             "offend you so!\l"
             "You are stronger than that!)\p"
-            "Ahem… Let us move on…\l"
-            "You shall be fighting my exquisite\l"
-            "assortment of Pokémon,\l"
+            "Ahem… Let us move on…\n"
+            "You shall be fighting my exquisite assortment of Pokémon,\l"
             "in the hopes of obtaining\l"
             "an official Token from me.\p"
             "Please try not to be too\n"
@@ -932,27 +928,28 @@ script YifuCity_Dojo_EventScript_YutakaDefeated {
 	))
 	waitmessage
 	call(Common_EventScript_PlayGymBadgeFanfare)
+
+    speakername("Yutaka")
 	msgbox(
 		format(
             "I am outrée! Your techniques are rough and vulgar, yet…\l"
-            "The victory is yours… That is undeniable.\p"
+            "Victory is yours…\nThat is undeniable.\p"
 			"I guess what you lack in aesthetic values, you compensate in strength.\p"
-			"With the Token I just gave you, your Pokémon will obey you without question, even those you trade with others.\p"
 			"Do accept this, as well."
 		),
 		MSGBOX_DEFAULT
 	)
 	
-    // TODO EVA change the TM: X-scissor? Cotton guard? Petal Dance? Flatter?
-	giveitem(ITEM_TM_DOUBLE_TEAM)
+	giveitem(ITEM_TM_X_SCISSOR)
 
+    speakername("Yutaka")
 	msgbox(
 		format(
-			"This scroll contains something something something.\p"
-			"And, uh… We should go clothes-shopping together sometime."
+			"This scroll contains my famous X-Scissor technique.\p"
+            "I perfected it back when I worked as a seamstress.\p"
+			"About that, uh… We should go clothes-shopping together sometime.\p"
             "I cannot bear to see your image suffer so."
-		),
-		MSGBOX_DEFAULT
+		)
 	)
 	closemessage
 

@@ -52,9 +52,10 @@
     F(SKILL_SWAP) \
     F(SNATCH) \
     F(OVERHEAT) \
-    F(BULLDOZE) \
+    F(WEATHER_BALL) \
     F(ACROBATICS) \
-    F(NATURE_POWER)
+    F(NATURE_POWER) \
+    F(X_SCISSOR)
 
 #define FOREACH_HM(F) \
     F(CUT) \

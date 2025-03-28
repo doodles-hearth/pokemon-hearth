@@ -606,9 +606,11 @@ YifuCity_Dojo_EventScript_YutakaDefeated::
 	message YifuCity_Dojo_EventScript_YutakaDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
+	speakername YifuCity_Dojo_EventScript_Yutaka_Text_0
 	msgbox YifuCity_Dojo_EventScript_YutakaDefeated_Text_1, MSGBOX_DEFAULT
-	giveitem ITEM_TM_DOUBLE_TEAM
-	msgbox YifuCity_Dojo_EventScript_YutakaDefeated_Text_2, MSGBOX_DEFAULT
+	giveitem ITEM_TM_X_SCISSOR
+	speakername YifuCity_Dojo_EventScript_Yutaka_Text_0
+	msgbox YifuCity_Dojo_EventScript_YutakaDefeated_Text_2
 	closemessage
 	setflag FLAG_BADGE03_GET
 	setvar VAR_0x8008, 3
@@ -875,25 +877,25 @@ YifuCity_Dojo_EventScript_Dance1_Text_0:
 	.string "Kimono girls$"
 
 YifuCity_Dojo_EventScript_Dance1_Text_1:
-	.string "Welcome to the Yifu City Dojo. Here\n"
-	.string "you will have the pleasure to watch\l"
-	.string "three different dances, at the end of\l"
-	.string "which you will be asked a different\l"
-	.string "question.\p"
-	.string "The first dance will soon commence!\l"
-	.string "The real Miss Yutaka, the Dojo Master,\l"
-	.string "is among us.\p"
-	.string "She is the one on the left. If you\n"
-	.string "haven't lost track of her by the end\l"
-	.string "of our dance, we shall let you\l"
-	.string "through.\p"
-	.string "If you guess wrong, you shall have to\n"
-	.string "battle us.\p"
+	.string "Welcome to the Yifu City Dojo.\n"
+	.string "Here you will have the pleasure\l"
+	.string "to watch three different dances,\l"
+	.string "at the end of which you will be\l"
+	.string "asked a different question.\p"
+	.string "The first dance will soon commence!\n"
+	.string "The real Miss Yutaka, the Dojo\l"
+	.string "Master, is among us.\p"
+	.string "She is the one on the left.\n"
+	.string "If you haven't lost track of her\l"
+	.string "by the end of our dance, we\l"
+	.string "shall let you through.\p"
+	.string "If you guess wrong, you shall have\n"
+	.string "to battle us.\p"
 	.string "Are you ready?$"
 
 YifuCity_Dojo_EventScript_Dance1_Text_2:
-	.string "Well? Can you remember which one is\n"
-	.string "the real Yutaka?$"
+	.string "Well? Can you remember which one\n"
+	.string "is the real Yutaka?$"
 
 YifuCity_Dojo_EventScript_Dance1_Text_3:
 	.string "The left one.$"
@@ -906,13 +908,13 @@ YifuCity_Dojo_EventScript_Dance1_Text_5:
 
 YifuCity_Dojo_EventScript_Dance1_Text_6:
 	.string "You are correct!\p"
-	.string "Very well. You may proceed to the next\n"
-	.string "room.$"
+	.string "Very well. You may proceed to the\n"
+	.string "next room.$"
 
 YifuCity_Dojo_EventScript_Dance1_Text_7:
 	.string "You are incorrect!\p"
-	.string "We shall face you in battle before you\n"
-	.string "proceed.$"
+	.string "We shall face you in battle before\n"
+	.string "you proceed.$"
 
 YifuCity_Dojo_EventScript_Dance1_Text_8:
 	.string "Oh!$"
@@ -928,8 +930,8 @@ YifuCity_Dojo_EventScript_Dance2_Text_0:
 	.string "Follow each of our moves…$"
 
 YifuCity_Dojo_EventScript_Dance2_Text_1:
-	.string "Do you remember where the dancer on\n"
-	.string "the right was placed originally?$"
+	.string "Do you remember where the dancer\n"
+	.string "on the right was placed originally?$"
 
 YifuCity_Dojo_EventScript_Dance2_Text_2:
 	.string "She was on the left.$"
@@ -947,12 +949,12 @@ YifuCity_Dojo_EventScript_Dance2_Text_6:
 	.string "Oh, well.$"
 
 YifuCity_Dojo_EventScript_Dance3_Text_0:
-	.string "Let the third dance begin! Pay close\n"
-	.string "attention…$"
+	.string "Let the third dance begin! Pay\n"
+	.string "close attention…$"
 
 YifuCity_Dojo_EventScript_Dance3_Text_1:
-	.string "Can you tell us how many jumps there\n"
-	.string "were in this dance?$"
+	.string "Can you tell us how many jumps\n"
+	.string "there were in this dance?$"
 
 YifuCity_Dojo_EventScript_Dance3_Text_2:
 	.string "Eight.$"
@@ -965,8 +967,8 @@ YifuCity_Dojo_EventScript_Dance3_Text_4:
 
 YifuCity_Dojo_EventScript_Dance3_Text_5:
 	.string "You are correct!\p"
-	.string "Very well. You may proceed to the last\n"
-	.string "room.$"
+	.string "Very well. You may proceed to the\n"
+	.string "last room.$"
 
 YifuCity_Dojo_EventScript_Dance3_Text_6:
 	.string "Pant… Hey, let me catch my breath!$"
@@ -982,29 +984,29 @@ YifuCity_Dojo_EventScript_Advice_Text_0:
 	.string "remembered!$"
 
 YifuCity_Dojo_EventScript_Advice_Text_1:
-	.string "Hello, young challenger, and welcome\n"
-	.string "to the Dance Hall Dojo! Think you've\l"
-	.string "got what it takes to see through the\l"
-	.string "dancer's intoxicating moves?\p"
-	.string "Watch out though, Master Yutaka can\n"
-	.string "be as critical as she is beautiful.\l"
+	.string "Hello, young challenger, and\n"
+	.string "welcome to the Dance Hall Dojo!\l"
+	.string "Think you've got what it takes to\l"
+	.string "see through the dancer's\l"
+	.string "intoxicating moves?\p"
+	.string "Watch out though, Master Yutaka\n"
+	.string "can be as critical as she is\l"
+	.string "beautiful.\l"
 	.string "She probably won't appreciate you\l"
 	.string "walking around her Dojo with your\l"
-	.string "clothes looking like… this…\l"
-	.string "Uh, nevermind my babbling! Go get 'em,\l"
-	.string "champ!$"
+	.string "clothes looking like… this…\p"
+	.string "Uh, nevermind my babbling! Go get\n"
+	.string "'em, champ!$"
 
 YifuCity_Dojo_EventScript_DojoStatue_Text_0:
 	.string "Dojo of Yifu City\p"
 	.string "Certified wielders:\n"
-	.string "Hariko,\l"
 	.string "Natsuki,\l"
 	.string "{PLAYER}$"
 
 YifuCity_Dojo_EventScript_DojoStatue_Text_1:
 	.string "Dojo of Kura Village\p"
 	.string "Certified wielders:\n"
-	.string "Hariko,\l"
 	.string "Natsuki$"
 
 YifuCity_Dojo_EventScript_Akari_Text_0:
@@ -1014,12 +1016,12 @@ YifuCity_Dojo_EventScript_Akari_Text_1:
 	.string "Akari$"
 
 YifuCity_Dojo_EventScript_Akari_Text_2:
-	.string "You are very graceful. Are you sure\n"
-	.string "you're not a dancer?$"
+	.string "You are very graceful. Are you\n"
+	.string "sure you're not a dancer?$"
 
 YifuCity_Dojo_EventScript_Yuka_Text_0:
-	.string "You have a good eye! Let's see if that\n"
-	.string "applies to Pokémon, as well!$"
+	.string "You have a good eye! Let's see if\n"
+	.string "that applies to Pokémon, as well!$"
 
 YifuCity_Dojo_EventScript_Yuka_Text_1:
 	.string "You have many talents, I see!$"
@@ -1078,14 +1080,16 @@ YifuCity_Dojo_EventScript_Miika_Text_2:
 	.string "Miika$"
 
 YifuCity_Dojo_EventScript_Miika_Text_3:
-	.string "Working here has its perks. We get the\n"
-	.string "finest silk clothes for free!$"
+	.string "Working here has its perks.\n"
+	.string "We get the finest silk clothes for\l"
+	.string "free!$"
 
 YifuCity_Dojo_EventScript_Dancer_Text_0:
 	.string "Kimono girl$"
 
 YifuCity_Dojo_EventScript_Dancer_Text_1:
-	.string "I have no Pokémon! I'm only a dancer.$"
+	.string "I have no Pokémon! I'm only a\n"
+	.string "dancer.$"
 
 YifuCity_Dojo_EventScript_Dancer2_Text_0:
 	.string "Come back to watch us dance\n"
@@ -1098,7 +1102,8 @@ YifuCity_Dojo_EventScript_Yutaka_Text_0:
 	.string "Yutaka$"
 
 YifuCity_Dojo_EventScript_Yutaka_Text_1:
-	.string "Well done! Welcome to Yifu City's Doj-$"
+	.string "Well done! Welcome to Yifu City's\n"
+	.string "Doj-$"
 
 YifuCity_Dojo_EventScript_Yutaka_Text_2:
 	.string "Excuse me, what is this?\p"
@@ -1114,7 +1119,7 @@ YifuCity_Dojo_EventScript_Yutaka_Text_2:
 	.string "(…Yutaka, you must not let this\n"
 	.string "offend you so!\l"
 	.string "You are stronger than that!)\p"
-	.string "Ahem… Let us move on…\l"
+	.string "Ahem… Let us move on…\n"
 	.string "You shall be fighting my exquisite\l"
 	.string "assortment of Pokémon,\l"
 	.string "in the hopes of obtaining\l"
@@ -1129,8 +1134,8 @@ YifuCity_Dojo_EventScript_Yutaka_Text_3:
 	.string "How dare you!$"
 
 YifuCity_Dojo_EventScript_Yutaka_Text_4:
-	.string "You shall achieve great things. I hope\n"
-	.string "we meet again.$"
+	.string "You shall achieve great things. I\n"
+	.string "hope we meet again.$"
 
 YifuCity_Dojo_EventScript_YutakaDefeated_Text_0:
 	.string "{PLAYER} received the Silk Token\n"
@@ -1139,20 +1144,20 @@ YifuCity_Dojo_EventScript_YutakaDefeated_Text_0:
 YifuCity_Dojo_EventScript_YutakaDefeated_Text_1:
 	.string "I am outrée! Your techniques are\n"
 	.string "rough and vulgar, yet…\l"
-	.string "The victory is yours… That is\l"
-	.string "undeniable.\p"
+	.string "Victory is yours…\n"
+	.string "That is undeniable.\p"
 	.string "I guess what you lack in aesthetic\n"
-	.string "values, you compensate in strength.\p"
-	.string "With the Token I just gave you, your\n"
-	.string "Pokémon will obey you without\l"
-	.string "question, even those you trade with\l"
-	.string "others.\p"
+	.string "values, you compensate in\l"
+	.string "strength.\p"
 	.string "Do accept this, as well.$"
 
 YifuCity_Dojo_EventScript_YutakaDefeated_Text_2:
-	.string "This scroll contains something\n"
-	.string "something something.\p"
-	.string "And, uh… We should go\n"
-	.string "clothes-shopping together sometime.\l"
-	.string "I cannot bear to see your image\l"
+	.string "This scroll contains my famous\n"
+	.string "X-Scissor technique.\p"
+	.string "I perfected it back when I worked\n"
+	.string "as a seamstress.\p"
+	.string "About that, uh… We should go\n"
+	.string "clothes-shopping together\l"
+	.string "sometime.\p"
+	.string "I cannot bear to see your image\n"
 	.string "suffer so.$"

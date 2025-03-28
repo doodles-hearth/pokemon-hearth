@@ -1,0 +1,30 @@
+mapscripts SoulkeepGraveyard_MapScripts {
+
+}
+
+script SoulkeepGraveyard_EventScript_Guard {
+	lock
+    faceplayer
+	speakername("Man")
+	msgbox(format(
+		"Oooh boy, you scared me!\p"
+		"I'm s-standing guard f-for today…"
+	))
+	closemessage
+	release
+    end
+}
+
+script SoulkeepGraveyard_EventScript_Banette {
+	lock
+    faceplayer
+	setspeakertomonname(SPECIES_BANETTE)
+	playmoncry(SPECIES_BANETTE, CRY_MODE_NORMAL)
+	msgbox(format(
+		"…"
+	))
+	waitmoncry
+	closemessage
+	release
+    end
+}

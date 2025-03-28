@@ -40,6 +40,9 @@ porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/yifu/ ./yifu/
 # Maguro
 echo "MAGURO HARBOR"
 porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/maguro ./maguro ./exterior-generic ../../include/constants/metatile_behaviors.h
+# Grassflower
+echo "GRASSFLOWER PLATEAU"
+porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/grassflower/ ./grassflower/ ./exterior-generic ../../include/constants/metatile_behaviors.h
 # Decay
 echo "DECAY"
 porytiles compile-secondary -Wall -o ../../data/tilesets/secondary/decay/ ./decay/ ./exterior-generic ../../include/constants/metatile_behaviors.h

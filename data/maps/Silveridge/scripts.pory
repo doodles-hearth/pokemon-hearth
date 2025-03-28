@@ -66,6 +66,7 @@ script Silveridge_EventScript_Wildflowers {
 	lock
 	// TODO Havenisle flowers sidequest
 	faceplayer
+	speakername("Boy")
 	msgbox(format(
 		"I loved gardening back when I lived on Havenisle.\p"
 		"When I first moved here, the barren landscape made me very homesick.\p"

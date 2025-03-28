@@ -31,7 +31,7 @@ script WhiteslateRoute_EventScript_Ryosuke {
 script WhiteslateRoute_EventScript_Riku {
 	trainerbattle_single(
 		TRAINER_RIKU,
-		format("BOO!!\n… … …Are you surprised?"),
+		format("BOO!!\p… … …Are you surprised?"),
 		format("My loyal Pokémon!")
 	)
 	speakername("Riku")

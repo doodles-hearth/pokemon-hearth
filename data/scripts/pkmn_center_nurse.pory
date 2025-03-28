@@ -9,6 +9,17 @@ script Common_EventScript_PkmnCenterNurse_Chansey {
 	release
 }
 
+script Common_EventScript_PkmnCenterNurse_Blissey {
+	lock
+	setseenmon(SPECIES_BLISSEY)
+	playmoncry(SPECIES_BLISSEY, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_BLISSEY)
+	msgbox("Sey!")
+	waitse
+	closemessage
+	release
+}
+
 script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 	lock
 	faceplayer

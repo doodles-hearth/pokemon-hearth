@@ -1,0 +1,76 @@
+mapscripts YifuCity_House4_MapScripts {
+
+}
+
+script YifuCity_House4_EventScript_NameRater {
+	lock
+	faceplayer
+	msgbox(format(
+		"Names are the mirror of the soul!\p"
+		"{FONT_SMALL}Or was that the eyes? Bah…{FONT_NORMAL}\p"
+		"I have been told I have a way\nwith names.\lYoung wielder…\lWould you like me\lto counsel you on the naming of\lyour Pokémon?"
+	), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		msgbox(format(
+			"Which Pokémon should receive my attention?"
+		))
+		special(ChoosePartyMon)
+		waitstate
+		if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+			specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+			if (var(VAR_RESULT) == SPECIES_EGG) {
+				msgbox(format(
+					"Bah! An Egg is yet unborn…\nIts name yet unchosen!"
+				))
+			} else {
+				special(BufferMonNickname)
+				special(IsMonOTIDNotPlayers)
+				if (var(VAR_RESULT)) {
+					msgbox(format(
+						"This creature… It was named by someone else, was it not?\p"
+						"I couldn't ever strip this Pokémon from its original name, no no!"
+					))
+				} else {
+					specialvar(VAR_RESULT, MonOTNameNotPlayer)
+					special(BufferMonNickname)
+					if (var(VAR_RESULT)) {
+						msgbox(format(
+							"This creature… It was named by someone else, was it not?\p"
+							"I couldn't ever strip this Pokémon from its original name, no no!"
+						))
+					} else {
+						msgbox(format(
+							"{STR_VAR_1}…\nI see what you were going for…\p"
+							"{FONT_SMALL}Yikes…{FONT_NORMAL}"
+							"I don't see this Pokémon's soul in this name…\p"
+							"Are you inspired to bestow a new name on it?\p"
+							"Go ahead! Speak from your heart!"
+						))
+						call(Common_EventScript_NameReceivedPartyMon)
+						special(BufferMonNickname)
+						specialvar(VAR_RESULT, WasNicknameChanged)
+						if (var(VAR_RESULT)) {
+							msgbox(format(
+								"{STR_VAR_1}… I see…\nThis name rings with truth!\p"
+								"Look… Your Pokémon seems happy about its new name!\p"
+								"Goodbye! May wisdom guide your steps!\p"
+								"{FONT_SMALL}Bah! I should ask money for this…{FONT_NORMAL}"
+							))
+						} else {
+							msgbox(format(
+								"This new name… It sounds a little like its old name…\p"
+								"{FONT_SMALL}Wait, what was the old name again?{FONT_NORMAL}\p"
+								"Bah… You're confusing me!"
+							))
+						}
+					}
+				}
+			}
+		}
+	} else {
+		msgbox(format(
+			"Nevermind, then."
+		))
+	}
+	release
+}

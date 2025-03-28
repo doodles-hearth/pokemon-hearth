@@ -1,0 +1,30 @@
+const LOCALID_DOLL = 2
+
+mapscripts Soulkeep_HouseDollBedroom_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if (random(3) == 0) {
+			setobjectxyperm(LOCALID_DOLL, 5, 4)
+		}
+	}
+}
+
+script Soulkeep_HouseDollBedroom_EventScript_Girl {
+	lock
+	faceplayer
+	speakername("Little Girl")
+	msgbox(format(
+		"My doll moves when I sleep!"
+	))
+	closemessage
+	release
+}
+
+script Soulkeep_HouseDollBedroom_EventScript_Doll {
+	lock
+	msgbox(format(
+		"A rather uncanny doll.\p"
+		"…The way it seems to look at you creeps you out."
+	))
+	closemessage
+	release
+}

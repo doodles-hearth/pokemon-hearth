@@ -284,7 +284,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "BERRY_TREE_BEACHBOUND_ROUTE_SOIL_1",
+      "trainer_sight_or_berry_tree_id": "BERRY_TREE_WHITESLATE_ROUTE_SOIL_1",
       "script": "BerryTreeScript",
       "flag": "0",
       "afternoon": false,
@@ -304,7 +304,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "BERRY_TREE_BEACHBOUND_ROUTE_LEPPA_2",
+      "trainer_sight_or_berry_tree_id": "BERRY_TREE_WHITESLATE_ROUTE_LEPPA_2",
       "script": "BerryTreeScript",
       "flag": "0",
       "afternoon": false,
@@ -324,7 +324,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "BERRY_TREE_BEACHBOUND_ROUTE_LEPPA_3",
+      "trainer_sight_or_berry_tree_id": "BERRY_TREE_WHITESLATE_ROUTE_LEPPA_3",
       "script": "BerryTreeScript",
       "flag": "0",
       "afternoon": false,
@@ -344,7 +344,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "BERRY_TREE_BEACHBOUND_ROUTE_SOIL_4",
+      "trainer_sight_or_berry_tree_id": "BERRY_TREE_WHITESLATE_ROUTE_SOIL_4",
       "script": "BerryTreeScript",
       "flag": "0",
       "afternoon": false,
@@ -434,6 +434,26 @@
       "lunchtime": false,
       "morning": true,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 10,
+      "y": 63,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_CARBOS",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_WHITESLATE_ROUTE_CARBOS",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
@@ -500,6 +520,14 @@
       "elevation": 0,
       "item": "ITEM_LUM_BERRY",
       "flag": "FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_LUM_BERRY"
+    },
+    {
+      "type": "hidden_item",
+      "x": 30,
+      "y": 73,
+      "elevation": 0,
+      "item": "ITEM_MAX_ETHER",
+      "flag": "FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_MAX_ETHER"
     }
   ]
 }

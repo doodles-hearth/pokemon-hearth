@@ -135,29 +135,28 @@
             .moves = {
 #line 57
                 MOVE_METAL_CLAW,
-                MOVE_TORMENT,
+                MOVE_FAINT_ATTACK,
                 MOVE_SCARY_FACE,
-                MOVE_METAL_SOUND,
             },
             },
             {
-#line 62
+#line 61
             .species = SPECIES_JANGMO_O,
-#line 62
+#line 61
             .gender = TRAINER_MON_FEMALE,
-#line 66
-            .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 252, 6),
 #line 65
-            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+            .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 252, 6),
 #line 64
-            .lvl = 25,
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 63
+            .lvl = 25,
+#line 62
             .nature = NATURE_ADAMANT,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
-#line 67
+#line 66
                 MOVE_DRAGON_TAIL,
-                MOVE_IRON_DEFENSE,
+                MOVE_HEADBUTT,
                 MOVE_WORK_UP,
                 MOVE_SCREECH,
             },

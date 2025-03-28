@@ -22,7 +22,7 @@ Route110_TrickHousePuzzle1_EventScript_FoundScroll::
 	end
 
 Route110_TrickHousePuzzle1_EventScript_Sally::
-	trainerbattle_single TRAINER_SALLY, Route110_TrickHousePuzzle1_Text_SallyIntro, Route110_TrickHousePuzzle1_Text_SallyDefeat
+	trainerbattle_single TRAINER_DUMMY, Route110_TrickHousePuzzle1_Text_SallyIntro, Route110_TrickHousePuzzle1_Text_SallyDefeat
 	msgbox Route110_TrickHousePuzzle1_Text_SallyPostBattle, MSGBOX_AUTOCLOSE
 	end
 

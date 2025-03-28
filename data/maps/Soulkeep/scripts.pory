@@ -1,0 +1,122 @@
+mapscripts Soulkeep_MapScripts {
+
+}
+
+script Soulkeep_EventScript_TownSign {
+	msgbox(format("Soulkeep\n“A town where souls are laid to rest.”"), MSGBOX_SIGN)
+}
+
+script Soulkeep_EventScript_IncenseShopSign {
+	msgbox(format("“Incense Shop”"), MSGBOX_SIGN)
+}
+
+script Soulkeep_EventScript_GraveyardSign {
+	msgbox(format(
+		"“{UP_ARROW} Graveyard\n"
+		"Please be respectful.”"
+	), MSGBOX_SIGN)
+}
+
+script Soulkeep_EventScript_Man {
+	lock
+	faceplayer
+	speakername("Man")
+	msgbox(format(
+		"Can you believe this place used to be a quaint little farmers' town?\p"
+		"Ever since the ghosts have started roaming the streets, the townsfolk are afraid of leaving their homes.\p"
+		"I wish something could be done…"
+	))
+	closemessage
+	release
+}
+
+script Soulkeep_EventScript_Misdreavus {
+	lock
+	faceplayer
+	setseenmon(SPECIES_MISDREAVUS)
+	playmoncry(SPECIES_MISDREAVUS, CRY_MODE_FAINT)
+	if (random(30) == 4) {
+		msgbox(format(
+			"G i v e  u s\p"
+			"y o u r  s o u l"
+		))
+		closemessage
+	}
+
+	random(5)
+	setstatus1(STATUS1_FREEZE, VAR_RESULT)
+
+	waitmoncry
+
+	release
+}
+
+script Soulkeep_EventScript_Lampent {
+	lock
+	faceplayer
+	setseenmon(SPECIES_LAMPENT)
+	playmoncry(SPECIES_LAMPENT, CRY_MODE_FAINT)
+
+	if (random(30) == 4) {
+		msgbox(format(
+			"G i v e  u s\p"
+			"y o u r  s o u l"
+		))
+		closemessage
+	}
+
+	random(5)
+	setstatus1(STATUS1_BURN, VAR_RESULT)
+
+	waitmoncry
+
+	release
+}
+
+script Soulkeep_EventScript_Gastly {
+	lock
+	faceplayer
+	setseenmon(SPECIES_GASTLY)
+	playmoncry(SPECIES_GASTLY, CRY_MODE_FAINT)
+
+	if (random(30) == 4) {
+		msgbox(format(
+			"G i v e  u s\p"
+			"y o u r  s o u l"
+		))
+		closemessage
+	}
+
+	random(5)
+	setstatus1(STATUS1_SLEEP, VAR_RESULT)
+
+	waitmoncry
+
+	release
+}
+
+script Soulkeep_EventScript_Mart {
+	lock
+	faceplayer
+	speakername("Shopkeeper")
+	message(format("Welcome to Soulkeep's market, traveler!\pAre you looking to buy?"))
+	waitmessage
+	pokemart(Soulkeep_Mart)
+	speakername("Shopkeeper")
+	msgbox(format("Do come again!"), MSGBOX_DEFAULT)
+	release
+}
+
+mart Soulkeep_Mart {
+	ITEM_POKE_BALL
+	ITEM_GREAT_BALL
+	ITEM_OINTMENT
+	ITEM_SUPER_OINTMENT
+	ITEM_REVIVAL_HERB
+	ITEM_PARALYZE_HEAL
+	ITEM_ANTIDOTE
+	ITEM_AWAKENING
+	ITEM_BURN_HEAL
+	ITEM_ICE_HEAL
+	ITEM_ESCAPE_ROPE
+}

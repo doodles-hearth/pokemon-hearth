@@ -9,10 +9,12 @@ Common_EventScript_PcGuy_1:
 	goto_if_set FLAG_PC_EXPLAINED, Common_EventScript_PcGuy_6
 	setflag FLAG_PC_EXPLAINED
 	msgbox Common_EventScript_PcGuy_Text_3
+	closemessage
 	fadescreen FADE_TO_BLACK
 	delay 120
 	fadescreen FADE_FROM_BLACK
 	msgbox Common_EventScript_PcGuy_Text_4
+	closemessage
 Common_EventScript_PcGuy_5:
 	release
 	end
@@ -23,6 +25,7 @@ Common_EventScript_PcGuy_2:
 
 Common_EventScript_PcGuy_6:
 	msgbox Common_EventScript_PcGuy_Text_2
+	closemessage
 	goto Common_EventScript_PcGuy_5
 
 
