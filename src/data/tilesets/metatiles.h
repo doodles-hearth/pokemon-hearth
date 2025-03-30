@@ -301,3 +301,6 @@ const u16 gMetatileAttributes_Grassflower[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_HouseSoulkeep[] = INCBIN_U16("data/tilesets/secondary/house_soulkeep/metatiles.bin");
 const u16 gMetatileAttributes_HouseSoulkeep[] = INCBIN_U16("data/tilesets/secondary/house_soulkeep/metatile_attributes.bin");
+
+const u16 gMetatiles_SecretBaseHearth[] = INCBIN_U16("data/tilesets/primary/secret_base_hearth/metatiles.bin");
+const u16 gMetatileAttributes_SecretBaseHearth[] = INCBIN_U16("data/tilesets/primary/secret_base_hearth/metatile_attributes.bin");

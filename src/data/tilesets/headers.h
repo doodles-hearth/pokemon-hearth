@@ -1180,3 +1180,14 @@ const struct Tileset gTileset_HouseSoulkeep =
     .metatileAttributes = gMetatileAttributes_HouseSoulkeep,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_SecretBaseHearth =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_SecretBaseHearth,
+    .palettes = gTilesetPalettes_SecretBaseHearth,
+    .metatiles = gMetatiles_SecretBaseHearth,
+    .metatileAttributes = gMetatileAttributes_SecretBaseHearth,
+    .callback = NULL,
+};

@@ -192,7 +192,7 @@ script YifuCity_EventScript_RobberyVictim {
 
 					fadescreen(FADE_TO_BLACK)
 					removeobject(VAR_LAST_TALKED)
-					delay(48)
+					delay(60)
 					fadescreen(FADE_FROM_BLACK)
 					// TODO EVA put her somewhere in the city hanging out with her mons
 				case 1:
@@ -800,17 +800,16 @@ script YifuCity_EventScript_DojoSign {
 	)
 }
 
-script YifuCity_EventScript_Fisherman {
+script YifuCity_EventScript_GirlLookingAtSunriseVillage {
 	lock
 	faceplayer
-	speakername("Fisherman")
+	speakername("Little Girl")
 	msgbox(format(
-		"Hm? No, I'm not fishing.\p"
-		"I'm just watching the tiny whirlpools that Pokémon make in the shallow water.\p"
-		"Would you like your Pokémon to make whirlpools too?\p"
-		"I could teach them the way of the Whirlpool!"
+		"If I squint hard enough, I'm sure I can see my friend on Sunrise Beach!"
 	))
 	closemessage
+	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
+	waitmovement(0)
 	release
 	end
 }
@@ -828,9 +827,15 @@ script YifuCity_EventScript_HotSpringsSign {
 }
 
 script YifuCity_EventScript_CrobatShopSign {
-	msgbox(format(
-		"“Crobat Shop\nOnly legal stuff\lNothing to see here”"
-	), MSGBOX_SIGN)
+	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+		msgbox(format(
+			"“Yifu City Shop\nUseful items and scrolls!”"
+		), MSGBOX_SIGN)
+	} else {
+		msgbox(format(
+			"“Crobat Shop\nOnly legal stuff\lNothing to see here”"
+		), MSGBOX_SIGN)
+	}
 }
 
 script YifuCity_EventScript_RestaurantSign {

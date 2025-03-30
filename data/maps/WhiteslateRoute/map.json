@@ -528,6 +528,13 @@
       "elevation": 0,
       "item": "ITEM_MAX_ETHER",
       "flag": "FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_MAX_ETHER"
+    },
+    {
+      "type": "secret_base",
+      "x": 26,
+      "y": 34,
+      "elevation": 0,
+      "secret_base_id": "SECRET_BASE_BROWN_CAVE1_3"
     }
   ]
 }

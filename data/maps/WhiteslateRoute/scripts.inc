@@ -73,23 +73,9 @@ WhiteslateRoute_EventScript_Deerling::
 	setseenmon SPECIES_DEERLING
 	setspeakertomonname SPECIES_DEERLING
 	playmoncry SPECIES_DEERLING, CRY_MODE_NORMAL
-	applymovement VAR_LAST_TALKED, WhiteslateRoute_EventScript_Deerling_Movement_0
+	msgbox WhiteslateRoute_EventScript_Deerling_Text_0
 	waitmoncry
-	waitmovement 0
-	applymovement VAR_LAST_TALKED, WhiteslateRoute_EventScript_Deerling_Movement_1
-	playse SE_LEDGE
-	delay 32
-	applymovement OBJ_EVENT_ID_PLAYER, WhiteslateRoute_EventScript_Deerling_Movement_2
-	playse SE_LEDGE
-	delay 32
-	playse SE_LEDGE
-	delay 32
-	playse SE_LEDGE
-	delay 32
-	playse SE_LEDGE
-	delay 32
-	playse SE_LEDGE
-	waitmovement VAR_LAST_TALKED
+	closemessage
 	release
 	return
 
@@ -258,26 +244,6 @@ WhiteslateRoute_Trigger_SecretBase_20:
 	waitmovement 7
 	goto WhiteslateRoute_Trigger_SecretBase_16
 
-
-WhiteslateRoute_EventScript_Deerling_Movement_0:
-	emote_exclamation_mark
-	delay_16
-	delay_16
-	delay_16
-	step_end
-
-WhiteslateRoute_EventScript_Deerling_Movement_1:
-	jump_2_right
-	jump_2_right
-	jump_2_right
-	jump_2_right
-	jump_2_right
-	jump_2_right
-	step_end
-
-WhiteslateRoute_EventScript_Deerling_Movement_2:
-	face_right
-	step_end
 
 WhiteslateRoute_Trigger_SecretBase_Movement_0:
 	walk_right
@@ -497,6 +463,9 @@ WhiteslateRoute_EventScript_ShuckleGirl_Text_1:
 	.string "This Shuckle lives around here. I\n"
 	.string "feed him fresh berries every\l"
 	.string "morning!$"
+
+WhiteslateRoute_EventScript_Deerling_Text_0:
+	.string "Uhnn!$"
 
 WhiteslateRoute_EventScript_Shuckle_Text_0:
 	.string "Cklckl!$"

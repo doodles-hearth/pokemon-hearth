@@ -1135,6 +1135,24 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_RevivalHerb,
     },
 
+    [ITEM_REVIVAL_BALM] =
+    {
+        .name = _("Revival Balm"),
+        .price = 1400,
+        .description = COMPOUND_STRING(
+            "A bitter herb\n"
+            "that revives a\n"
+            "fainted Pokémon."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_REVIVE,
+        .effect = gItemEffect_RevivalBalm,
+        .flingPower = 30,
+        .iconPic = gItemIcon_RevivalBalm,
+        .iconPalette = gItemIconPalette_RevivalHerb,
+    },
+
     [ITEM_ANTIDOTE] =
     {
         .name = _("Antidote"),
