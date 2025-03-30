@@ -1191,3 +1191,14 @@ const struct Tileset gTileset_SecretBaseHearth =
     .metatileAttributes = gMetatileAttributes_SecretBaseHearth,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_SecretBaseHearthBrownCave =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SecretBaseHearthBrownCave,
+    .palettes = gTilesetPalettes_SecretBaseHearthBrownCave,
+    .metatiles = gMetatiles_SecretBaseHearthBrownCave,
+    .metatileAttributes = gMetatileAttributes_SecretBaseHearthBrownCave,
+    .callback = NULL,
+};

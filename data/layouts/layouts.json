@@ -2360,8 +2360,8 @@
       "height": 9,
       "border_width": 2,
       "border_height": 2,
-      "primary_tileset": "gTileset_SecretBaseHearth",
-      "secondary_tileset": "gTileset_SecretBaseBrownCave",
+      "primary_tileset": "gTileset_SecretBase",
+      "secondary_tileset": "gTileset_SecretBaseRedCave",
       "border_filepath": "data/layouts/SecretBase_RedCave1/border.bin",
       "blockdata_filepath": "data/layouts/SecretBase_RedCave1/map.bin"
     },
@@ -2372,8 +2372,8 @@
       "height": 9,
       "border_width": 2,
       "border_height": 2,
-      "primary_tileset": "gTileset_SecretBase",
-      "secondary_tileset": "gTileset_SecretBaseBrownCave",
+      "primary_tileset": "gTileset_SecretBaseHearth",
+      "secondary_tileset": "gTileset_SecretBaseHearthBrownCave",
       "border_filepath": "data/layouts/SecretBase_BrownCave1/border.bin",
       "blockdata_filepath": "data/layouts/SecretBase_BrownCave1/map.bin"
     },

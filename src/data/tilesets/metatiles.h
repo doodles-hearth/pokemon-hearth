@@ -304,3 +304,6 @@ const u16 gMetatileAttributes_HouseSoulkeep[] = INCBIN_U16("data/tilesets/second
 
 const u16 gMetatiles_SecretBaseHearth[] = INCBIN_U16("data/tilesets/primary/secret_base_hearth/metatiles.bin");
 const u16 gMetatileAttributes_SecretBaseHearth[] = INCBIN_U16("data/tilesets/primary/secret_base_hearth/metatile_attributes.bin");
+
+const u16 gMetatiles_SecretBaseHearthBrownCave[] = INCBIN_U16("data/tilesets/secondary/secret_base_hearth_brown_cave/metatiles.bin");
+const u16 gMetatileAttributes_SecretBaseHearthBrownCave[] = INCBIN_U16("data/tilesets/secondary/secret_base_hearth_brown_cave/metatile_attributes.bin");

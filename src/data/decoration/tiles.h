@@ -1,7 +1,8 @@
 #define DECOR_TILE(name) (METATILE_SecretBase_##name - NUM_TILES_IN_PRIMARY)
+#define DECOR_TILE_HEARTH(name) (METATILE_SecretBaseHearth_##name - NUM_TILES_IN_PRIMARY)
 
 const u16 DecorGfx_SMALL_DESK[] = {
-    DECOR_TILE(SmallDesk)
+    DECOR_TILE_HEARTH(SmallDesk)
 };
 
 const u16 DecorGfx_POKEMON_DESK[] = {
@@ -18,21 +19,21 @@ const u16 DecorGfx_HEAVY_DESK[] = {
 };
 
 const u16 DecorGfx_RAGGED_DESK[] = {
-    DECOR_TILE(RaggedDesk_TopLeft),
-    DECOR_TILE(RaggedDesk_TopMid),
-    DECOR_TILE(RaggedDesk_TopRight),
-    DECOR_TILE(RaggedDesk_BottomLeft),
-    DECOR_TILE(RaggedDesk_BottomMid),
-    DECOR_TILE(RaggedDesk_BottomRight)
+    DECOR_TILE_HEARTH(RaggedDesk_TopLeft),
+    DECOR_TILE_HEARTH(RaggedDesk_TopMid),
+    DECOR_TILE_HEARTH(RaggedDesk_TopRight),
+    DECOR_TILE_HEARTH(RaggedDesk_BottomLeft),
+    DECOR_TILE_HEARTH(RaggedDesk_BottomMid),
+    DECOR_TILE_HEARTH(RaggedDesk_BottomRight)
 };
 
 const u16 DecorGfx_COMFORT_DESK[] = {
-    DECOR_TILE(ComfortDesk_TopLeft),
-    DECOR_TILE(ComfortDesk_TopMid),
-    DECOR_TILE(ComfortDesk_TopRight),
-    DECOR_TILE(ComfortDesk_BottomLeft),
-    DECOR_TILE(ComfortDesk_BottomMid),
-    DECOR_TILE(ComfortDesk_BottomRight)
+    DECOR_TILE_HEARTH(ComfortDesk_TopLeft),
+    DECOR_TILE_HEARTH(ComfortDesk_TopMid),
+    DECOR_TILE_HEARTH(ComfortDesk_TopRight),
+    DECOR_TILE_HEARTH(ComfortDesk_BottomLeft),
+    DECOR_TILE_HEARTH(ComfortDesk_BottomMid),
+    DECOR_TILE_HEARTH(ComfortDesk_BottomRight)
 };
 
 const u16 DecorGfx_PRETTY_DESK[] = {
@@ -60,15 +61,15 @@ const u16 DecorGfx_BRICK_DESK[] = {
 };
 
 const u16 DecorGfx_CAMP_DESK[] = {
-    DECOR_TILE(CampDesk_TopLeft),
-    DECOR_TILE(CampDesk_TopMid),
-    DECOR_TILE(CampDesk_TopRight),
-    DECOR_TILE(CampDesk_MidLeft),
-    DECOR_TILE(CampDesk_Center),
-    DECOR_TILE(CampDesk_MidRight),
-    DECOR_TILE(CampDesk_BottomLeft),
-    DECOR_TILE(CampDesk_BottomMid),
-    DECOR_TILE(CampDesk_BottomRight)
+    DECOR_TILE_HEARTH(CampDesk_TopLeft),
+    DECOR_TILE_HEARTH(CampDesk_TopMid),
+    DECOR_TILE_HEARTH(CampDesk_TopRight),
+    DECOR_TILE_HEARTH(CampDesk_MidLeft),
+    DECOR_TILE_HEARTH(CampDesk_Center),
+    DECOR_TILE_HEARTH(CampDesk_MidRight),
+    DECOR_TILE_HEARTH(CampDesk_BottomLeft),
+    DECOR_TILE_HEARTH(CampDesk_BottomMid),
+    DECOR_TILE_HEARTH(CampDesk_BottomRight)
 };
 
 const u16 DecorGfx_HARD_DESK[] = {
@@ -100,7 +101,7 @@ const u16 DecorGfx_PRETTY_CHAIR[] = {
 };
 
 const u16 DecorGfx_COMFORT_CHAIR[] = {
-    DECOR_TILE(ComfortChair)
+    DECOR_TILE_HEARTH(ComfortChair)
 };
 
 const u16 DecorGfx_RAGGED_CHAIR[] = {
@@ -112,7 +113,7 @@ const u16 DecorGfx_BRICK_CHAIR[] = {
 };
 
 const u16 DecorGfx_CAMP_CHAIR[] = {
-    DECOR_TILE(CampChair)
+    DECOR_TILE_HEARTH(CampChair)
 };
 
 const u16 DecorGfx_HARD_CHAIR[] = {
@@ -302,47 +303,47 @@ const u16 DecorGfx_SPIN_MAT[] = {
 };
 
 const u16 DecorGfx_C_LOW_NOTE_MAT[] = {
-    DECOR_TILE(NoteMat_C_Low)
+    DECOR_TILE_HEARTH(NoteMat_C_Low)
 };
 
 const u16 DecorGfx_D_NOTE_MAT[] = {
-    DECOR_TILE(NoteMat_D)
+    DECOR_TILE_HEARTH(NoteMat_D)
 };
 
 const u16 DecorGfx_E_NOTE_MAT[] = {
-    DECOR_TILE(NoteMat_E)
+    DECOR_TILE_HEARTH(NoteMat_E)
 };
 
 const u16 DecorGfx_F_NOTE_MAT[] = {
-    DECOR_TILE(NoteMat_F)
+    DECOR_TILE_HEARTH(NoteMat_F)
 };
 
 const u16 DecorGfx_G_NOTE_MAT[] = {
-    DECOR_TILE(NoteMat_G)
+    DECOR_TILE_HEARTH(NoteMat_G)
 };
 
 const u16 DecorGfx_A_NOTE_MAT[] = {
-    DECOR_TILE(NoteMat_A)
+    DECOR_TILE_HEARTH(NoteMat_A)
 };
 
 const u16 DecorGfx_B_NOTE_MAT[] = {
-    DECOR_TILE(NoteMat_B)
+    DECOR_TILE_HEARTH(NoteMat_B)
 };
 
 const u16 DecorGfx_C_HIGH_NOTE_MAT[] = {
-    DECOR_TILE(NoteMat_C_High)
+    DECOR_TILE_HEARTH(NoteMat_C_High)
 };
 
 const u16 DecorGfx_SURF_MAT[] = {
-    DECOR_TILE(SurfMat_TopLeft),
-    DECOR_TILE(SurfMat_TopMid),
-    DECOR_TILE(SurfMat_TopRight),
-    DECOR_TILE(SurfMat_MidLeft),
-    DECOR_TILE(SurfMat_Center),
-    DECOR_TILE(SurfMat_MidRight),
-    DECOR_TILE(SurfMat_BottomLeft),
-    DECOR_TILE(SurfMat_BottomMid),
-    DECOR_TILE(SurfMat_BottomRight)
+    DECOR_TILE_HEARTH(SurfMat_TopLeft),
+    DECOR_TILE_HEARTH(SurfMat_TopMid),
+    DECOR_TILE_HEARTH(SurfMat_TopRight),
+    DECOR_TILE_HEARTH(SurfMat_MidLeft),
+    DECOR_TILE_HEARTH(SurfMat_Center),
+    DECOR_TILE_HEARTH(SurfMat_MidRight),
+    DECOR_TILE_HEARTH(SurfMat_BottomLeft),
+    DECOR_TILE_HEARTH(SurfMat_BottomMid),
+    DECOR_TILE_HEARTH(SurfMat_BottomRight)
 };
 
 const u16 DecorGfx_THUNDER_MAT[] = {
@@ -358,63 +359,63 @@ const u16 DecorGfx_THUNDER_MAT[] = {
 };
 
 const u16 DecorGfx_FIRE_BLAST_MAT[] = {
-    DECOR_TILE(FireBlastMat_TopLeft),
-    DECOR_TILE(FireBlastMat_TopMid),
-    DECOR_TILE(FireBlastMat_TopRight),
-    DECOR_TILE(FireBlastMat_MidLeft),
-    DECOR_TILE(FireBlastMat_Center),
-    DECOR_TILE(FireBlastMat_MidRight),
-    DECOR_TILE(FireBlastMat_BottomLeft),
-    DECOR_TILE(FireBlastMat_BottomMid),
-    DECOR_TILE(FireBlastMat_BottomRight)
+    DECOR_TILE_HEARTH(FireBlastMat_TopLeft),
+    DECOR_TILE_HEARTH(FireBlastMat_TopMid),
+    DECOR_TILE_HEARTH(FireBlastMat_TopRight),
+    DECOR_TILE_HEARTH(FireBlastMat_MidLeft),
+    DECOR_TILE_HEARTH(FireBlastMat_Center),
+    DECOR_TILE_HEARTH(FireBlastMat_MidRight),
+    DECOR_TILE_HEARTH(FireBlastMat_BottomLeft),
+    DECOR_TILE_HEARTH(FireBlastMat_BottomMid),
+    DECOR_TILE_HEARTH(FireBlastMat_BottomRight)
 };
 
 const u16 DecorGfx_POWDER_SNOW_MAT[] = {
-    DECOR_TILE(PowderSnowMat_TopLeft),
-    DECOR_TILE(PowderSnowMat_TopMid),
-    DECOR_TILE(PowderSnowMat_TopRight),
-    DECOR_TILE(PowderSnowMat_MidLeft),
-    DECOR_TILE(PowderSnowMat_Center),
-    DECOR_TILE(PowderSnowMat_MidRight),
-    DECOR_TILE(PowderSnowMat_BottomLeft),
-    DECOR_TILE(PowderSnowMat_BottomMid),
-    DECOR_TILE(PowderSnowMat_BottomRight)
+    DECOR_TILE_HEARTH(PowderSnowMat_TopLeft),
+    DECOR_TILE_HEARTH(PowderSnowMat_TopMid),
+    DECOR_TILE_HEARTH(PowderSnowMat_TopRight),
+    DECOR_TILE_HEARTH(PowderSnowMat_MidLeft),
+    DECOR_TILE_HEARTH(PowderSnowMat_Center),
+    DECOR_TILE_HEARTH(PowderSnowMat_MidRight),
+    DECOR_TILE_HEARTH(PowderSnowMat_BottomLeft),
+    DECOR_TILE_HEARTH(PowderSnowMat_BottomMid),
+    DECOR_TILE_HEARTH(PowderSnowMat_BottomRight)
 };
 
 const u16 DecorGfx_ATTRACT_MAT[] = {
-    DECOR_TILE(AttractMat_TopLeft),
-    DECOR_TILE(AttractMat_TopMid),
-    DECOR_TILE(AttractMat_TopRight),
-    DECOR_TILE(AttractMat_MidLeft),
-    DECOR_TILE(AttractMat_Center),
-    DECOR_TILE(AttractMat_MidRight),
-    DECOR_TILE(AttractMat_BottomLeft),
-    DECOR_TILE(AttractMat_BottomMid),
-    DECOR_TILE(AttractMat_BottomRight)
+    DECOR_TILE_HEARTH(AttractMat_TopLeft),
+    DECOR_TILE_HEARTH(AttractMat_TopMid),
+    DECOR_TILE_HEARTH(AttractMat_TopRight),
+    DECOR_TILE_HEARTH(AttractMat_MidLeft),
+    DECOR_TILE_HEARTH(AttractMat_Center),
+    DECOR_TILE_HEARTH(AttractMat_MidRight),
+    DECOR_TILE_HEARTH(AttractMat_BottomLeft),
+    DECOR_TILE_HEARTH(AttractMat_BottomMid),
+    DECOR_TILE_HEARTH(AttractMat_BottomRight)
 };
 
 const u16 DecorGfx_FISSURE_MAT[] = {
-    DECOR_TILE(FissureMat_TopLeft),
-    DECOR_TILE(FissureMat_TopMid),
-    DECOR_TILE(FissureMat_TopRight),
-    DECOR_TILE(FissureMat_MidLeft),
-    DECOR_TILE(FissureMat_Center),
-    DECOR_TILE(FissureMat_MidRight),
-    DECOR_TILE(FissureMat_BottomLeft),
-    DECOR_TILE(FissureMat_BottomMid),
-    DECOR_TILE(FissureMat_BottomRight)
+    DECOR_TILE_HEARTH(FissureMat_TopLeft),
+    DECOR_TILE_HEARTH(FissureMat_TopMid),
+    DECOR_TILE_HEARTH(FissureMat_TopRight),
+    DECOR_TILE_HEARTH(FissureMat_MidLeft),
+    DECOR_TILE_HEARTH(FissureMat_Center),
+    DECOR_TILE_HEARTH(FissureMat_MidRight),
+    DECOR_TILE_HEARTH(FissureMat_BottomLeft),
+    DECOR_TILE_HEARTH(FissureMat_BottomMid),
+    DECOR_TILE_HEARTH(FissureMat_BottomRight)
 };
 
 const u16 DecorGfx_SPIKES_MAT[] = {
-    DECOR_TILE(SpikesMat_TopLeft),
-    DECOR_TILE(SpikesMat_TopMid),
-    DECOR_TILE(SpikesMat_TopRight),
-    DECOR_TILE(SpikesMat_MidLeft),
-    DECOR_TILE(SpikesMat_Center),
-    DECOR_TILE(SpikesMat_MidRight),
-    DECOR_TILE(SpikesMat_BottomLeft),
-    DECOR_TILE(SpikesMat_BottomMid),
-    DECOR_TILE(SpikesMat_BottomRight)
+    DECOR_TILE_HEARTH(SpikesMat_TopLeft),
+    DECOR_TILE_HEARTH(SpikesMat_TopMid),
+    DECOR_TILE_HEARTH(SpikesMat_TopRight),
+    DECOR_TILE_HEARTH(SpikesMat_MidLeft),
+    DECOR_TILE_HEARTH(SpikesMat_Center),
+    DECOR_TILE_HEARTH(SpikesMat_MidRight),
+    DECOR_TILE_HEARTH(SpikesMat_BottomLeft),
+    DECOR_TILE_HEARTH(SpikesMat_BottomMid),
+    DECOR_TILE_HEARTH(SpikesMat_BottomRight)
 };
 
 const u16 DecorGfx_BALL_POSTER[] = {
