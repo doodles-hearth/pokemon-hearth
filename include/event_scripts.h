@@ -590,6 +590,7 @@ extern const u8 EventScript_FallDownHoleMtPyre[];
 
 // Secret Base
 extern const u8 SecretBase_EventScript_PC[];
+extern const u8 SecretBase_EventScript_Chest[];
 extern const u8 SecretBase_EventScript_RecordMixingPC[];
 extern const u8 SecretBase_EventScript_PCCancel[];
 extern const u8 SecretBase_EventScript_ShowRegisterMenu[];

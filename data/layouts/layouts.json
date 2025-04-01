@@ -2444,8 +2444,8 @@
       "height": 9,
       "border_width": 2,
       "border_height": 2,
-      "primary_tileset": "gTileset_SecretBase",
-      "secondary_tileset": "gTileset_SecretBaseBrownCave",
+      "primary_tileset": "gTileset_SecretBaseHearth",
+      "secondary_tileset": "gTileset_SecretBaseHearthBrownCave",
       "border_filepath": "data/layouts/SecretBase_BrownCave2/border.bin",
       "blockdata_filepath": "data/layouts/SecretBase_BrownCave2/map.bin"
     },
