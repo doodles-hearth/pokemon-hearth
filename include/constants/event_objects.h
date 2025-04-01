@@ -460,7 +460,6 @@
 #define OBJ_EVENT_PAL_TAG_SAMURAI                 0x114D
 #define OBJ_EVENT_PAL_TAG_YUTAKA                  0x114E
 #define OBJ_EVENT_PAL_TAG_KIMONO_GIRL             0x114F
-#define OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS_BOSS     0x1150
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla
@@ -514,6 +513,8 @@
 // 4 remaining free slots
 #define OBJ_EVENT_PAL_TAG_DECORATIONS_MAREEP 0x1176
 #define OBJ_EVENT_PAL_TAG_INCENSE_SELLER 0x1177
+#define OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS_BOSS 0x1178
+#define OBJ_EVENT_PAL_TAG_BLACK_BELT 0x1179
 
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
