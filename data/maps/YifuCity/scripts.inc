@@ -1280,30 +1280,31 @@ YifuCity_EventScript_GirlLookingAtSunriseVillage_Text_0:
 	.string "can see my friend on Sunrise Beach!$"
 
 YifuCity_EventScript_NameRaterSign_Text_0:
-	.string "“What's In A Name\n"
-	.string "Humble name judge”$"
+	.string "What's In A Name\n"
+	.string "“Humble name judge”$"
 
 YifuCity_EventScript_HotSpringsSign_Text_0:
-	.string "“Torkoal Tubs\n"
-	.string "Yifu City Hot Springs”$"
+	.string "Torkoal Tubs\n"
+	.string "“The Yifu City Hot Springs”$"
 
 YifuCity_EventScript_CrobatShopSign_Text_0:
-	.string "“Yifu City Shop\n"
-	.string "Useful items and scrolls!”$"
+	.string "Yifu City Shop\n"
+	.string "“Useful items and scrolls!”$"
 
 YifuCity_EventScript_CrobatShopSign_Text_1:
-	.string "“Crobat Shop\n"
-	.string "Only legal stuff\l"
+	.string "Crobat Shop\n"
+	.string "“Only legal stuff\l"
 	.string "Nothing to see here”$"
 
 YifuCity_EventScript_RestaurantSign_Text_0:
-	.string "“The Golden Drampa\n"
-	.string "Hotpot & Restaurant”$"
+	.string "The Golden Drampa\n"
+	.string "“Hotpot & Restaurant”$"
 
 YifuCity_EventScript_ClothingShopSign_Text_0:
-	.string "“Leavanny Silk\n"
-	.string "Fashionable and affordable clothes”$"
+	.string "Leavanny Silk\n"
+	.string "“Fashionable and affordable\l"
+	.string "clothes!”$"
 
 YifuCity_EventScript_DecorationShopSign_Text_0:
-	.string "“Woodworker\n"
-	.string "We sell tables and chairs, mostly”$"
+	.string "Woodworker\n"
+	.string "“We sell tables and chairs, mostly”$"

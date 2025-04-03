@@ -96,7 +96,8 @@ script SakuTown_House3_EventScript_TradeMe {
 
                     bufferspeciesname(STR_VAR_1, VAR_0x8009)
                     msgbox(format(
-                        "Yeahhh!! I have a {STR_VAR_1} now!\nTake good care of Bread for me, okay?"
+                        "Yeahhh!! I have a {STR_VAR_1} now!\p"
+                        "Take good care of Bread for me, okay?"
                     ), MSGBOX_DEFAULT)
                     closemessage
                 }

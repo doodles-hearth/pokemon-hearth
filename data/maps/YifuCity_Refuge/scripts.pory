@@ -303,7 +303,7 @@ script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 	faceplayer
 	speakername("Man")
 	msgbox(format(
-		"Ugh… this city's Dojo is all girls, so I thought it was going to be super easy…\p"
+		"Arrgh… this city's Dojo is all girls, so I thought it was going to be super easy…\p"
 		"I got obliterated…"
 	))
 	closemessage

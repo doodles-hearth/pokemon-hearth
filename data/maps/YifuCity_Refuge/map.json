@@ -245,7 +245,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_Refuge_EventScript_GotTrashedByDojo",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "flag": "0",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,

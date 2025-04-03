@@ -213,6 +213,16 @@ YifuCity_Refuge_EventScript_Samurai::
 	end
 
 
+YifuCity_Refuge_EventScript_GotTrashedByDojo::
+	lock
+	faceplayer
+	speakername YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_0
+	msgbox YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_1
+	closemessage
+	release
+	end
+
+
 YifuCity_Refuge_EventScript_FakeNurse_Text_0:
 	.string "Nurse$"
 
@@ -351,3 +361,12 @@ YifuCity_Refuge_EventScript_Samurai_Text_1:
 	.string "The Crobat Shadows must be\n"
 	.string "operating from somewhere… But\l"
 	.string "where?$"
+
+YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_0:
+	.string "Man$"
+
+YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_1:
+	.string "Ugh… this city's Dojo is all girls,\n"
+	.string "so I thought it was going to be\l"
+	.string "super easy…\p"
+	.string "I got obliterated…$"

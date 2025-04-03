@@ -145,8 +145,8 @@ SakuTown_House3_EventScript_TradeMe_Text_4:
 
 SakuTown_House3_EventScript_TradeMe_Text_5:
 	.string "Yeahhh!! I have a {STR_VAR_1}\n"
-	.string "now!\n"
-	.string "Take good care of Bread for me,\l"
+	.string "now!\p"
+	.string "Take good care of Bread for me,\n"
 	.string "okay?$"
 
 SakuTown_House3_EventScript_Man_Text_0:

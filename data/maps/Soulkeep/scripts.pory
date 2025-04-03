@@ -7,13 +7,13 @@ script Soulkeep_EventScript_TownSign {
 }
 
 script Soulkeep_EventScript_IncenseShopSign {
-	msgbox(format("“Incense Shop”"), MSGBOX_SIGN)
+	msgbox(format("Incense Shop"), MSGBOX_SIGN)
 }
 
 script Soulkeep_EventScript_GraveyardSign {
 	msgbox(format(
-		"“{UP_ARROW} Graveyard\n"
-		"Please be respectful.”"
+		"{UP_ARROW} Graveyard\n"
+		"“Please be respectful.”"
 	), MSGBOX_SIGN)
 }
 

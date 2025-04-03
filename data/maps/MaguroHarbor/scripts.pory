@@ -41,13 +41,13 @@ script MaguroHarbor_EventScript_TownSign {
 script MaguroHarbor_EventScript_DojoSign {
 	msgbox(format(
 		"Maguro Harbor Pokémon Dojo\nLeader: Koishi\l"
-		"“Smooth as a still pond,\lpassionate as a storm!”"
+		"“Calm as a still pond,\lpassionate as a storm!”"
 		), MSGBOX_SIGN)
 }
 
 script MaguroHarbor_EventScript_PokemonNerdSign {
 	msgbox(format(
-		"“Pokémon Nerd”"
+		"Pokémon Nerd"
 		), MSGBOX_SIGN)
 }
 

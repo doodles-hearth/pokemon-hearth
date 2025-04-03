@@ -816,44 +816,44 @@ script YifuCity_EventScript_GirlLookingAtSunriseVillage {
 
 script YifuCity_EventScript_NameRaterSign {
 	msgbox(format(
-		"“What's In A Name\nHumble name judge”"
+		"What's In A Name\n“Humble name judge”"
 	), MSGBOX_SIGN)
 }
 
 script YifuCity_EventScript_HotSpringsSign {
 	msgbox(format(
-		"“Torkoal Tubs\nYifu City Hot Springs”"
+		"Torkoal Tubs\n“The Yifu City Hot Springs”"
 	), MSGBOX_SIGN)
 }
 
 script YifuCity_EventScript_CrobatShopSign {
 	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 		msgbox(format(
-			"“Yifu City Shop\nUseful items and scrolls!”"
+			"Yifu City Shop\n“Useful items and scrolls!”"
 		), MSGBOX_SIGN)
 	} else {
 		msgbox(format(
-			"“Crobat Shop\nOnly legal stuff\lNothing to see here”"
+			"Crobat Shop\n“Only legal stuff\lNothing to see here”"
 		), MSGBOX_SIGN)
 	}
 }
 
 script YifuCity_EventScript_RestaurantSign {
 	msgbox(format(
-		"“The Golden Drampa\nHotpot & Restaurant”"
+		"The Golden Drampa\n“Hotpot & Restaurant”"
 	), MSGBOX_SIGN)
 }
 
 script YifuCity_EventScript_ClothingShopSign {
 	msgbox(format(
-		"“Leavanny Silk\n"
-		"Fashionable and affordable clothes”"
+		"Leavanny Silk\n"
+		"“Fashionable and affordable clothes!”"
 	), MSGBOX_SIGN)
 }
 
 script YifuCity_EventScript_DecorationShopSign {
 	msgbox(format(
-		"“Woodworker\n"
-		"We sell tables and chairs, mostly”"
+		"Woodworker\n"
+		"“We sell tables and chairs, mostly”"
 	), MSGBOX_SIGN)
 }

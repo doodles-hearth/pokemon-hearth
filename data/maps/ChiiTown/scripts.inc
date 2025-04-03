@@ -502,4 +502,4 @@ ChiiTown_EventScript_TownSign_Text_0:
 	.string "biggest heart.”$"
 
 ChiiTown_EventScript_SchoolSign_Text_0:
-	.string "“Little Deerling elementary school”$"
+	.string "Little Deerling elementary school$"

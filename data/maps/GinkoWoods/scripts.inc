@@ -108,6 +108,7 @@ GinkoWoods_EventScript_Tracks::
 	delay 48
 	applymovement 7, Common_Movement_WalkInPlaceFasterRight
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	speakername GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Tracks_Text_0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, GinkoWoods_Movement_PlayerWalkDown

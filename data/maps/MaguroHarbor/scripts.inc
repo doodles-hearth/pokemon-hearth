@@ -400,11 +400,11 @@ MaguroHarbor_EventScript_TownSign_Text_0:
 MaguroHarbor_EventScript_DojoSign_Text_0:
 	.string "Maguro Harbor Pokémon Dojo\n"
 	.string "Leader: Koishi\l"
-	.string "“Smooth as a still pond,\l"
+	.string "“Calm as a still pond,\l"
 	.string "passionate as a storm!”$"
 
 MaguroHarbor_EventScript_PokemonNerdSign_Text_0:
-	.string "“Pokémon Nerd”$"
+	.string "Pokémon Nerd$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_0:
 	.string "Lovestruck Girl$"

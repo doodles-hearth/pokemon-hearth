@@ -376,7 +376,7 @@ script ChiiTown_EventScript_TownSign {
 
 script ChiiTown_EventScript_SchoolSign {
 	msgbox(format(
-		"“Little Deerling elementary school”"
+		"Little Deerling elementary school"
 	), MSGBOX_SIGN)
 }
 
