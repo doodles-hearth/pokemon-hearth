@@ -171,7 +171,7 @@ $(OBJEVENTGFXDIR)/people/boy_1.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/farmer.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/martial_artist_f.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/kungfu_gal.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/boy_2.4bpp: %.4bpp: %.png

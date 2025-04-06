@@ -6360,6 +6360,18 @@
       "secondary_tileset": "gTileset_HouseSoulkeep",
       "border_filepath": "data/layouts/Soulkeep_House1/border.bin",
       "blockdata_filepath": "data/layouts/Soulkeep_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ORCHARD_PATH_GUARD_HOUSE",
+      "name": "OrchardPath_GuardHouse_Layout",
+      "width": 9,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseSoulkeep",
+      "border_filepath": "data/layouts/OrchardPath_GuardHouse/border.bin",
+      "blockdata_filepath": "data/layouts/OrchardPath_GuardHouse/map.bin"
     }
   ]
 }

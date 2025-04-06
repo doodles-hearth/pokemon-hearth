@@ -366,7 +366,7 @@ YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_0:
 	.string "Man$"
 
 YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_1:
-	.string "Ugh… this city's Dojo is all girls,\n"
+	.string "Arrgh… this city's Dojo is all girls,\n"
 	.string "so I thought it was going to be\l"
 	.string "super easy…\p"
 	.string "I got obliterated…$"

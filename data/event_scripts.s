@@ -1377,3 +1377,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Soulkeep_HouseDollBedroom/scripts.inc"
 
 	.include "data/maps/Soulkeep_House1/scripts.inc"
+
+	.include "data/maps/OrchardPath_GuardHouse/scripts.inc"
