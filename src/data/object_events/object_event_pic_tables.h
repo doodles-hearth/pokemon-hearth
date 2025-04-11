@@ -66,7 +66,7 @@ static const struct SpriteFrameImage sPicTable_Girl1[] = {
 };
 
 static const struct SpriteFrameImage sPicTable_Boy2[] = {
-    overworld_ascending_frames(gObjectEventPic_Boy2, 2, 4),
+    overworld_ascending_frames(gObjectEventPic_Boy2, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_Girl2[] = {
