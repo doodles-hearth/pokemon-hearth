@@ -1202,3 +1202,14 @@ const struct Tileset gTileset_SecretBaseHearthBrownCave =
     .metatileAttributes = gMetatileAttributes_SecretBaseHearthBrownCave,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Shogunate =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Shogunate,
+    .palettes = gTilesetPalettes_Shogunate,
+    .metatiles = gMetatiles_Shogunate,
+    .metatileAttributes = gMetatileAttributes_Shogunate,
+    .callback = NULL,
+};

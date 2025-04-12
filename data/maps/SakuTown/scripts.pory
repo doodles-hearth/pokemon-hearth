@@ -303,6 +303,7 @@ mart SakuTown_Mart {
 	ITEM_ANTIDOTE
 	ITEM_AWAKENING
 	ITEM_BURN_HEAL
+	ITEM_ESCAPE_ROPE
 }
 
 script SakuTown_EventScript_Makuhita {

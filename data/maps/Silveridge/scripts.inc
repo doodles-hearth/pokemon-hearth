@@ -64,6 +64,30 @@ Silveridge_EventScript_Wildflowers::
 	return
 
 
+Silveridge_EventScript_Mart::
+	lock
+	faceplayer
+	speakername Silveridge_EventScript_Mart_Text_0
+	message Silveridge_EventScript_Mart_Text_1
+	waitmessage
+	pokemart Silveridge_Mart
+	speakername Silveridge_EventScript_Mart_Text_0
+	msgbox Silveridge_EventScript_Mart_Text_2, MSGBOX_DEFAULT
+	release
+	return
+
+
+	.align 2
+Silveridge_Mart:
+	.2byte ITEM_POKE_BALL
+	.2byte ITEM_OINTMENT
+	.2byte ITEM_REVIVAL_BALM
+	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_BURN_HEAL
+	.2byte ITEM_NONE
+
 Silveridge_EventScript_TownSign::
 	msgbox Silveridge_EventScript_TownSign_Text_0, MSGBOX_SIGN
 	return
@@ -101,39 +125,48 @@ Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0:
 	.string "tunnel.$"
 
 Silveridge_EventScript_MissingStatue_Text_0:
-	.string "Hello, traveler. Have you looked\n"
-	.string "at this stunning statue that makes\l"
-	.string "the pride of our town?\p"
-	.string "…Is what I would say if we had\n"
-	.string "one.\p"
+	.string "Hello, traveler. Have you looked at\n"
+	.string "this stunning statue that makes the\l"
+	.string "pride of our town?\p"
+	.string "…Is what I would say if we had one.\p"
 	.string "There used to be a statue, but a\n"
-	.string "quake destroyed it long ago, so\l"
-	.string "now we're left with this empty\l"
-	.string "pedestal.\p"
+	.string "quake destroyed it long ago, so now\l"
+	.string "we're left with this empty pedestal.\p"
 	.string "There's an excentric man that lives\n"
-	.string "nearby and that calls himself\l"
-	.string "“The Sculptor”.\p"
-	.string "I wish he'd make a replacement, but\n"
-	.string "he hasn't been making anything for\l"
-	.string "a while now.$"
+	.string "nearby and that calls himself “The\l"
+	.string "Sculptor”.\p"
+	.string "I wish he'd make a replacement, but he\n"
+	.string "hasn't been making anything for a\l"
+	.string "while now.$"
 
 Silveridge_EventScript_Wildflowers_Text_0:
 	.string "Boy$"
 
 Silveridge_EventScript_Wildflowers_Text_1:
-	.string "I loved gardening back when I\n"
-	.string "lived on Havenisle.\p"
+	.string "I loved gardening back when I lived on\n"
+	.string "Havenisle.\p"
 	.string "When I first moved here, the barren\n"
 	.string "landscape made me very homesick.\p"
 	.string "So I started planting little patches\n"
 	.string "of these native wildflowers around\l"
 	.string "the town.\p"
 	.string "I was told they symbolize eternal\n"
-	.string "love. I don't know about that,\l"
-	.string "but they make me happy! I wish I\l"
-	.string "had brought some seeds with me\l"
-	.string "when I left Havenisle, though.\l"
-	.string "The flowers there are so colorful!$"
+	.string "love. I don't know about that, but\l"
+	.string "they make me happy! I wish I had\l"
+	.string "brought some seeds with me when I\l"
+	.string "left Havenisle, though. The flowers\l"
+	.string "there are so colorful!$"
+
+Silveridge_EventScript_Mart_Text_0:
+	.string "Shopkeeper$"
+
+Silveridge_EventScript_Mart_Text_1:
+	.string "Welcome to Silveridge's market!\n"
+	.string "Sorry, we're fresh out of rocks!$"
+
+Silveridge_EventScript_Mart_Text_2:
+	.string "I hope you found what you were\n"
+	.string "looking for!$"
 
 Silveridge_EventScript_TownSign_Text_0:
 	.string "Silveridge\n"

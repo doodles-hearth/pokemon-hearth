@@ -27,6 +27,16 @@
       "map": "MAP_YIFU_CITY",
       "offset": -18,
       "direction": "right"
+    },
+    {
+      "map": "MAP_SHOGUNATE",
+      "offset": 15,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_SHOGUNATE",
+      "offset": 68,
+      "direction": "up"
     }
   ],
   "object_events": [
@@ -177,25 +187,46 @@
   ],
   "warp_events": [
     {
-      "x": 67,
+      "x": 58,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
       "dest_warp_id": "0"
     },
     {
-      "x": 68,
+      "x": 59,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
       "dest_warp_id": "1"
     },
     {
-      "x": 69,
+      "x": 60,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 82,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_SHOGUNATE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 83,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_SHOGUNATE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 84,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_SHOGUNATE",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
@@ -212,7 +243,7 @@
     },
     {
       "type": "sign",
-      "x": 62,
+      "x": 57,
       "y": 12,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",

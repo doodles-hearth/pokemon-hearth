@@ -281,6 +281,7 @@ SakuTown_Mart:
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_AWAKENING
 	.2byte ITEM_BURN_HEAL
+	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_NONE
 
 SakuTown_EventScript_Makuhita::

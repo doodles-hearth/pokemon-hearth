@@ -11498,16 +11498,20 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_X_SCISSOR,
     },
 
-    [ITEM_TM55] =
+    [ITEM_TM_ANCIENT_POWER] =
     {
         .name = _("TM55"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Throws rocks at\n"
+            "the foe. May\n"
+            "raise all stats."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_ANCIENT_POWER,
     },
 
     [ITEM_TM56] =

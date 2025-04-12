@@ -30,7 +30,7 @@ script WindsweptRoute_EventScript_Trainer1 {
 	end
 }
 
-script WindsweptRoute_EventScript_Trainer2 {
+script WindsweptRoute_EventScript_Itamae {
 	trainerbattle_single(
 		TRAINER_ITAMAE,
 		format("I'm scouring this salty grass for the tastiest ingredients!"),

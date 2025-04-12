@@ -48,13 +48,6 @@
 
   ],
   "bg_events": [
-    {
-      "type": "hidden_item",
-      "x": 9,
-      "y": 6,
-      "elevation": 0,
-      "item": "ITEM_HARD_STONE",
-      "flag": "FLAG_TEMP_1"
-    }
+
   ]
 }

@@ -255,7 +255,15 @@ script YifuCity_Refuge_EventScript_HotelValet {
 }
 
 script YifuCity_Refuge_EventScript_ListenToShamisen {
-	
+	lock
+	faceplayer
+	speakername("Boy")
+	msgbox(format(
+		"Whew… I've walked all day…\nI am spent!"
+	))
+	closemessage
+	release
+	end
 }
 
 script YifuCity_Refuge_EventScript_Traveler {
