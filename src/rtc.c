@@ -1,4 +1,6 @@
 #include "global.h"
+#include "battle_pike.h"
+#include "battle_pyramid.h"
 #include "rtc.h"
 #include "constants/rtc.h"
 #include "string_util.h"
@@ -324,7 +326,7 @@ bool8 IsBetweenHours(s32 hours, s32 begin, s32 end)
         return hours >= begin && hours < end;
 }
 
-u8 GetTimeOfDay(void)
+enum TimeOfDay GetTimeOfDay(void)
 {
     RtcCalcLocalTime();
     if (IsBetweenHours(gLocalTime.hours, DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END))
@@ -342,6 +344,11 @@ u8 GetTimeOfDay(void)
     return TIME_EARLY_MORNING;
     // UpdateTimeOfDay();
     // return gTimeOfDay;
+}
+
+enum TimeOfDay GetTimeOfDayForDex(void)
+{
+    return OW_TIME_OF_DAY_ENCOUNTERS ? GetTimeOfDay() : OW_TIME_OF_DAY_DEFAULT;
 }
 
 void RtcInitLocalTimeOffset(s32 hour, s32 minute)
@@ -424,4 +431,14 @@ void FormatDecimalTimeWithoutSeconds(u8 *txtPtr, s8 hour, s8 minute, bool32 is24
 
     *txtPtr++ = EOS;
     *txtPtr = EOS;
+}
+
+enum TimeOfDay TryIncrementTimeOfDay(enum TimeOfDay timeOfDay)
+{
+    return timeOfDay == TIME_NIGHT ? TIME_MORNING : timeOfDay + 1;
+}
+
+enum TimeOfDay TryDecrementTimeOfDay(enum TimeOfDay timeOfDay)
+{
+    return timeOfDay == TIME_MORNING ? TIME_NIGHT : timeOfDay - 1;
 }
