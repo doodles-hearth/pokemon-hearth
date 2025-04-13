@@ -131,29 +131,27 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0:
 	.string "Big sis$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_1:
-	.string "Oh, {PLAYER}, you're up! Ready\n"
-	.string "for the big event?\p"
-	.string "Are you excited? I sure hope you\n"
-	.string "are, because I'm VERY EXCITED!\p"
-	.string "I have to head out! Don't be late,\n"
-	.string "I know you, little\l"
-	.string "{STR_VAR_1}!\p"
-	.string "By the way, your friend Natsuki\n"
-	.string "left you a note.\p"
+	.string "Oh, {PLAYER}, you're up! Ready for\n"
+	.string "the big event?\p"
+	.string "Are you excited? I sure hope you are,\n"
+	.string "because I'm VERY EXCITED!\p"
+	.string "I have to head out! Don't be late, I\n"
+	.string "know you, little {STR_VAR_1}!\p"
+	.string "By the way, your friend Natsuki left\n"
+	.string "you a note.\p"
 	.string "Make sure you read it!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_0:
-	.string "What are you still doing here?\n"
-	.string "You're late for the distribution!\p"
+	.string "What are you still doing here? You're\n"
+	.string "late for the distribution!\p"
 	.string "Go to Kaba's house right now!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_1:
 	.string "Hey little {STR_VAR_1}! See how\n"
 	.string "cute my new Pokémon is?\p"
 	.string "By the way, I heard Natsuki was\n"
-	.string "waiting for you at Elder Kaba's\l"
-	.string "house. You should probably go\l"
-	.string "see them.$"
+	.string "waiting for you at Elder Kaba's house.\l"
+	.string "You should probably go see them.$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2:
 	.string "Hey little {STR_VAR_1}! See how\n"
@@ -161,27 +159,25 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2:
 	.string "Oh, who is that lovely little thing\n"
 	.string "with you?\p"
 	.string "{STR_VAR_2}, huh?\p"
-	.string "Looks like it already likes you a\n"
-	.string "lot! You're going to make a great\l"
-	.string "wielder, I know it!\p"
+	.string "Looks like it already likes you a lot!\n"
+	.string "You're going to make a great wielder, I\l"
+	.string "know it!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "So you're going on a journey…\p"
 	.string "That's great! I'm proud of you,\n"
 	.string "{PLAYER}.\p"
-	.string "Here, take some of these Poké\n"
-	.string "Balls, in case you find any good\l"
-	.string "Pokémon!$"
+	.string "Here, take some of these Poké Balls,\n"
+	.string "in case you find any good Pokémon!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3:
-	.string "Oh, and I'm sure you're going to\n"
-	.string "get lost, so I'll lend you my map\l"
-	.string "of Toku!$"
+	.string "Oh, and I'm sure you're going to get\n"
+	.string "lost, so I'll lend you my map of Toku!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_4:
 	.string "I think that was all…\n"
-	.string "Ah, one last thing! Take my good\l"
-	.string "luck statuette with you.\p"
+	.string "Ah, one last thing! Take my good luck\l"
+	.string "statuette with you.\p"
 	.string "I like the tradition, so indulge me,\n"
 	.string "alright? Please? Everyone carries\l"
 	.string "one!$"
@@ -190,8 +186,8 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5:
 	.string "Alrighty! You all set? Have a safe\n"
 	.string "journey, little {STR_VAR_1}.\p"
 	.string "Maybe I'll see you around!\p"
-	.string "Come back home sometimes though,\n"
-	.string "will you?$"
+	.string "Come back home sometimes though, will\n"
+	.string "you?$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_6:
 	.string "Hey {PLAYER}! How's it going?\p"
@@ -206,7 +202,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_0:
 
 SunriseVillage_PlayersHouse_LR_EventScript_RivalsNote_Text_0:
 	.string "“Hey {PLAYER},\n"
-	.string "I'm going down to the beach\l"
-	.string "before the giveaway, meet me\l"
-	.string "there if you wanna hang out.\p"
+	.string "I'm going down to the beach before\l"
+	.string "the giveaway, meet me there if you\l"
+	.string "wanna hang out.\p"
 	.string "-Natsuki”$"

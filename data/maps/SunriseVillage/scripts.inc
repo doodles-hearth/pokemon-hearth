@@ -265,8 +265,7 @@ SunriseVillage_Event_FatGuy_Text_0:
 
 SunriseVillage_Event_FatGuy_Text_1:
 	.string "My new Pokémon is so cute, I don't\n"
-	.string "feel like leaving it in its\l"
-	.string "Pokéball!$"
+	.string "feel like leaving it in its Pokéball!$"
 
 SunriseVillage_Event_FatGuy_Text_2:
 	.string "Someone managed to fit entire\n"
@@ -274,23 +273,21 @@ SunriseVillage_Event_FatGuy_Text_2:
 	.string "The power of science is staggering!$"
 
 SunriseVillage_Event_GuardForest_Text_0:
-	.string "Oh, I see you received a\n"
-	.string "Pokémon!\p"
-	.string "You'll probably be able to manage\n"
-	.string "the woods on your own, then.\p"
+	.string "Oh, I see you received a Pokémon!\p"
+	.string "You'll probably be able to manage the\n"
+	.string "woods on your own, then.\p"
 	.string "Be careful!$"
 
 SunriseVillage_Event_GuardForest_Text_1:
-	.string "Hey, kid, heard you were going off\n"
-	.string "on an adventure!\p"
+	.string "Hey, kid, heard you were going off on\n"
+	.string "an adventure!\p"
 	.string "Did you say bye to your sister?\p"
-	.string "No? Thought so. Go see her before\n"
-	.string "you run off, you ungrateful\l"
-	.string "sibling!$"
+	.string "No? Thought so. Go see her before you\n"
+	.string "run off, you ungrateful sibling!$"
 
 SunriseVillage_Event_GuardForest_Text_2:
-	.string "Hey, kid, a friend of yours was\n"
-	.string "looking for you.$"
+	.string "Hey, kid, a friend of yours was looking\n"
+	.string "for you.$"
 
 SunriseVillage_Event_GuardForest_Text_3:
 	.string "Stop right there, kid!$"
@@ -298,12 +295,10 @@ SunriseVillage_Event_GuardForest_Text_3:
 SunriseVillage_Event_GuardForest_Text_4:
 	.string "Wild POKéMON have been lashing out\n"
 	.string "recently.\p"
-	.string "I know you're used to walking\n"
-	.string "around on your own, but the\l"
-	.string "woods have become a dangerous\l"
-	.string "place lately!\p"
-	.string "I wouldn't go alone if I were\n"
-	.string "you.\p"
+	.string "I know you're used to walking around\n"
+	.string "on your own, but the woods have\l"
+	.string "become a dangerous place lately!\p"
+	.string "I wouldn't go alone if I were you.\p"
 	.string "Or, you know, if I were me.$"
 
 SunriseVillage_Event_GuardForest_Interact_Text_0:
@@ -329,13 +324,12 @@ SunriseVillage_Event_Boy_Text_1:
 
 SunriseVillage_Event_Boy_Text_2:
 	.string "Hey {PLAYER}{KUN}!\p"
-	.string "So, d'you think we'll get to choose\n"
-	.string "the one we want?$"
+	.string "So, d'you think we'll get to choose the\n"
+	.string "one we want?$"
 
 SunriseVillage_Event_Woman_Text_0:
-	.string "I can see the Poké Balls from\n"
-	.string "here… I've never seen so many in\l"
-	.string "my life!$"
+	.string "I can see the Poké Balls from here…\n"
+	.string "I've never seen so many in my life!$"
 
 SunriseVillage_Event_Farmer_Text_0:
 	.string "I've been waiting for hours!$"

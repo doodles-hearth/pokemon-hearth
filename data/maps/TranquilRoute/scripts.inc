@@ -581,20 +581,18 @@ TranquilRoute_EventScript_GrassCutscene_Text_3:
 	.string "garden…$"
 
 TranquilRoute_EventScript_GrassCutscene_Text_4:
-	.string "I cannot thank you enough for\n"
-	.string "this.\p"
+	.string "I cannot thank you enough for this.\p"
 	.string "I shall tend to my garden again,\n"
 	.string "thanks to you.$"
 
 TranquilRoute_EventScript_CutMaster_Text_0:
-	.string "I'm enjoying tending my garden\n"
-	.string "again.\p"
-	.string "I like watching it slowly blossom\n"
-	.string "into something beautiful.$"
+	.string "I'm enjoying tending my garden again.\p"
+	.string "I like watching it slowly blossom into\n"
+	.string "something beautiful.$"
 
 TranquilRoute_EventScript_Chikao_Text_0:
-	.string "I've been studying Pokémon at\n"
-	.string "school! I can't lose!$"
+	.string "I've been studying Pokémon at school!\n"
+	.string "I can't lose!$"
 
 TranquilRoute_EventScript_Chikao_Text_1:
 	.string "I should have listened in class…$"
@@ -609,8 +607,8 @@ TranquilRoute_EventScript_Chikao_Text_3:
 	.string "complicated to explain.$"
 
 TranquilRoute_EventScript_Kodomo_Text_0:
-	.string "Ha! Are you trying to avoid the\n"
-	.string "tall grass?$"
+	.string "Ha! Are you trying to avoid the tall\n"
+	.string "grass?$"
 
 TranquilRoute_EventScript_Kodomo_Text_1:
 	.string "Go back to the grass, you animal!$"
@@ -619,14 +617,13 @@ TranquilRoute_EventScript_Kodomo_Text_2:
 	.string "Kodomo$"
 
 TranquilRoute_EventScript_Kodomo_Text_3:
-	.string "I should look for stronger Pokémon\n"
-	.string "in the tall grass, but I'm a\l"
-	.string "little scared of getting jumped\l"
-	.string "by surprise!$"
+	.string "I should look for stronger Pokémon in\n"
+	.string "the tall grass, but I'm a little scared\l"
+	.string "of getting jumped by surprise!$"
 
 TranquilRoute_EventScript_Takeshi_Text_0:
-	.string "Stay right there! I'll defeat you\n"
-	.string "with my ninja skills!$"
+	.string "Stay right there! I'll defeat you with\n"
+	.string "my ninja skills!$"
 
 TranquilRoute_EventScript_Takeshi_Text_1:
 	.string "I had the sun in my eyes!$"
@@ -638,13 +635,11 @@ TranquilRoute_EventScript_Takeshi_Text_3:
 	.string "I must hone my ninja skills!$"
 
 TranquilRoute_EventScript_Hana_Text_0:
-	.string "Ugh, how can Kenji paint a portrait\n"
-	.string "of me if people keep walking\l"
-	.string "between us?$"
+	.string "Ugh, how can Kenji paint a portrait of\n"
+	.string "me if people keep walking between us?$"
 
 TranquilRoute_EventScript_Hana_Text_1:
-	.string "Great, now my hair is all messed\n"
-	.string "up.$"
+	.string "Great, now my hair is all messed up.$"
 
 TranquilRoute_EventScript_Hana_Text_2:
 	.string "Hiina$"
@@ -654,8 +649,7 @@ TranquilRoute_EventScript_Hana_Text_3:
 	.string "feel very lucky.$"
 
 TranquilRoute_EventScript_Kenji_Text_0:
-	.string "You're interrupting my creative\n"
-	.string "flow!!$"
+	.string "You're interrupting my creative flow!!$"
 
 TranquilRoute_EventScript_Kenji_Text_1:
 	.string "Such beauty! What an artistic fight\n"
@@ -667,23 +661,22 @@ TranquilRoute_EventScript_Kenji_Text_2:
 TranquilRoute_EventScript_Kenji_Text_3:
 	.string "Hiina is the best subject I could\n"
 	.string "dream of.\p"
-	.string "…Hey, uh, please don't tell her I\n"
-	.string "said that.$"
+	.string "…Hey, uh, please don't tell her I said\n"
+	.string "that.$"
 
 TranquilRoute_EventScript_Girl_Text_0:
 	.string "Girl$"
 
 TranquilRoute_EventScript_Girl_Text_1:
 	.string "What? Oh, I don't fight.\p"
-	.string "My Pokémon and I are just\n"
-	.string "strolling.$"
+	.string "My Pokémon and I are just strolling.$"
 
 TranquilRoute_EventScript_WhiteslateRoadblock_Text_0:
 	.string "Samurai$"
 
 TranquilRoute_EventScript_WhiteslateRoadblock_Text_1:
-	.string "Sorry, you can't go through. The\n"
-	.string "road ahead is blocked.$"
+	.string "Sorry, you can't go through. The road\n"
+	.string "ahead is blocked.$"
 
 TranquilRoute_EventScript_Shellos_Text_0:
 	.string "Clelel!$"
@@ -698,30 +691,28 @@ TranquilRoute_EventScript_BerryWoman_Text_2:
 	.string "Hi, young one! See this?$"
 
 TranquilRoute_EventScript_BerryWoman_Text_3:
-	.string "You can plant berries in the ground\n"
-	.string "in fertile spots like this.\p"
-	.string "The seeds will eventually grow into\n"
-	.string "a healthy berry tree, ready to\l"
-	.string "be harvested!\p"
-	.string "I see you're a wielder. Well,\n"
-	.string "different berries have different\l"
-	.string "effects when they're fed to\l"
-	.string "Pokémon.\p"
-	.string "I love berries, hopefully you'll\n"
-	.string "soon learn to love them too!\p"
+	.string "You can plant berries in the ground in\n"
+	.string "fertile spots like this.\p"
+	.string "The seeds will eventually grow into a\n"
+	.string "healthy berry tree, ready to be\l"
+	.string "harvested!\p"
+	.string "I see you're a wielder. Well, different\n"
+	.string "berries have different effects when\l"
+	.string "they're fed to Pokémon.\p"
+	.string "I love berries, hopefully you'll soon\n"
+	.string "learn to love them too!\p"
 	.string "Here, try planting a few!$"
 
 TranquilRoute_EventScript_BerryWoman_Text_4:
-	.string "Oh, right, I was almost\n"
-	.string "forgetting!\p"
+	.string "Oh, right, I was almost forgetting!\p"
 	.string "You must remember to water them\n"
 	.string "regularly, or they won't grow!\p"
 	.string "I like you. Take this!$"
 
 TranquilRoute_EventScript_BerryWoman_Text_5:
 	.string "Isn't it cute? It's friend-shaped!\p"
-	.string "Don't worry about it, I have a\n"
-	.string "spare one.\p"
+	.string "Don't worry about it, I have a spare\n"
+	.string "one.\p"
 	.string "Have fun gardening!$"
 
 TranquilRoute_EventScript_Mareep_Text_0:
@@ -732,8 +723,7 @@ TranquilRoute_EventScript_Mareep2_Text_0:
 
 TranquilRoute_TrainerTips1_Text_0:
 	.string "Did you know?\p"
-	.string "Some Pokémon only come out at\n"
-	.string "night.\p"
+	.string "Some Pokémon only come out at night.\p"
 	.string "Visit the same spot at different\n"
 	.string "times of day to have a chance of\l"
 	.string "seeing rare Pokémon!$"
@@ -757,27 +747,25 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0:
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_1:
 	.string "Mumble mumble… Should restock on\n"
-	.string "ointment… Damn, where did I put\l"
-	.string "my purse?…$"
+	.string "ointment… Damn, where did I put my\l"
+	.string "purse?…$"
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_2:
-	.string "Oh, hello! Sorry, shop's closed at\n"
-	.string "the moment!\p"
-	.string "… …Oh, sorry, we haven't met, have\n"
-	.string "we? I'm not good with faces…\p"
-	.string "I'm Okada, the traveling merchant!\n"
-	.string "I travel through all of Toku on\l"
-	.string "foot, selling useful goods and\l"
-	.string "rare finds!\p"
+	.string "Oh, hello! Sorry, shop's closed at the\n"
+	.string "moment!\p"
+	.string "… …Oh, sorry, we haven't met, have we?\n"
+	.string "I'm not good with faces…\p"
+	.string "I'm Okada, the traveling merchant! I\n"
+	.string "travel through all of Toku on foot,\l"
+	.string "selling useful goods and rare finds!\p"
 	.string "I'm sold out on, well, pretty much\n"
 	.string "everything right now… But you're\l"
-	.string "definitely going to see me\l"
-	.string "around!\p"
+	.string "definitely going to see me around!\p"
 	.string "What's your name? {PLAYER}? It's\n"
-	.string "nice to meet you, {PLAYER}! I\l"
-	.string "see you're a young wielder, eh?\l"
-	.string "Maybe we can even have a\l"
-	.string "friendly battle next time!\p"
+	.string "nice to meet you, {PLAYER}! I see\l"
+	.string "you're a young wielder, eh? Maybe we\l"
+	.string "can even have a friendly battle next\l"
+	.string "time!\p"
 	.string "Now if you'll excuse me, I'm running\n"
 	.string "late! See you around, {PLAYER}!$"
 

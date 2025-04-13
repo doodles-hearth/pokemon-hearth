@@ -36,21 +36,20 @@ KuraTown_House1_Growlithe::
 
 
 KuraTown_House1_OldWoman_Text_0:
-	.string "You look like you're tired, young\n"
-	.string "one. Please rest a while.$"
+	.string "You look like you're tired, young one.\n"
+	.string "Please rest a while.$"
 
 KuraTown_House1_OldWoman_Text_1:
-	.string "I wish you strength on your\n"
-	.string "journey.$"
+	.string "I wish you strength on your journey.$"
 
 KuraTown_House1_OldWomansSon_Text_0:
 	.string "The Pokémon league organization\n"
 	.string "didn't see fit to build a Pokémon\l"
-	.string "refuge in our village, but those\l"
-	.string "jerks over at Saku Village won't\l"
-	.string "let us use theirs.\p"
-	.string "So my mother has to work hard to\n"
-	.string "heal all the villager's Pokémon.\p"
+	.string "refuge in our village, but those jerks\l"
+	.string "over at Saku Village won't let us use\l"
+	.string "theirs.\p"
+	.string "So my mother has to work hard to heal\n"
+	.string "all the villager's Pokémon.\p"
 	.string "It's not fair!$"
 
 KuraTown_House1_Growlithe_Text_0:

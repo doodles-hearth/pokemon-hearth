@@ -91,8 +91,7 @@ EventScript_PkmnCenterNurse_IllTakeYourPkmn2::
 	return
 
 EventScript_PkmnCenterNurse_TakeAndHealPkmn::
-	hidefollower 0
-	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Turn
+	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Turn @ Changed from Common_Movement_WalkInPlaceFasterLeft to force the follower to enter their Poké Ball
 	waitmovement 0
 	dofieldeffect FLDEFF_POKECENTER_HEAL
 .if OW_UNION_DISABLE_CHECK == FALSE && OW_FLAG_MOVE_UNION_ROOM_CHECK != 0
@@ -209,9 +208,8 @@ EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit_Text_0:
 	.string "I think your Pokémon is under some\n"
 	.string "sort of spell.\p"
 	.string "I'm pretty good at feeling this kind\n"
-	.string "of thing. I have seen this\l"
-	.string "before.\p"
+	.string "of thing. I have seen this before.\p"
 	.string "I'm not sure what it is, but I have\n"
-	.string "seen the Pokémon that had this\l"
-	.string "aura around them grow\l"
-	.string "exceptionally well for a while.$"
+	.string "seen the Pokémon that had this aura\l"
+	.string "around them grow exceptionally well\l"
+	.string "for a while.$"

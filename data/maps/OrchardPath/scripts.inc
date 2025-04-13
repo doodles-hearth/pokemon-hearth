@@ -27,15 +27,16 @@ OrchardPath_EventScript_Mami::
 
 
 OrchardPath_EventScript_UumeForestSoulkeepSign_Text_0:
-	.string "{UP_ARROW} Uume Forest\n"
+	.string "{UP_ARROW} Samurai Palace\n"
+	.string "{LEFT_ARROW}{UP_ARROW} Uume Forest\l"
 	.string "{LEFT_ARROW} Soulkeep$"
 
 OrchardPath_EventScript_GuardHouseSign_Text_0:
 	.string "Guard House$"
 
 OrchardPath_EventScript_Junko_Text_0:
-	.string "I'm gathering ripe Berries to feed\n"
-	.string "my Pokémon!$"
+	.string "I'm gathering ripe Berries to feed my\n"
+	.string "Pokémon!$"
 
 OrchardPath_EventScript_Junko_Text_1:
 	.string "He ought to eat more Berries…$"
@@ -45,16 +46,16 @@ OrchardPath_EventScript_Junko_Text_2:
 
 OrchardPath_EventScript_Junko_Text_3:
 	.string "My Pokémon is insatiable!\n"
-	.string "I need to scour my local Library\l"
-	.string "for more Berry recipes!$"
+	.string "I need to scour my local Library for\l"
+	.string "more Berry recipes!$"
 
 OrchardPath_EventScript_Mami_Text_0:
 	.string "Hehehehe… This place is haunted at\n"
 	.string "night! Are you scared?$"
 
 OrchardPath_EventScript_Mami_Text_1:
-	.string "H-how could my ghosts lose to a\n"
-	.string "mere mortal?$"
+	.string "H-how could my ghosts lose to a mere\n"
+	.string "mortal?$"
 
 OrchardPath_EventScript_Mami_Text_2:
 	.string "Mami$"

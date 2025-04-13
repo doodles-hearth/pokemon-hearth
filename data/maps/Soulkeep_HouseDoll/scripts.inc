@@ -33,7 +33,7 @@ Soulkeep_HouseDoll_EventScript_Dad_Text_0:
 	.string "Man$"
 
 Soulkeep_HouseDoll_EventScript_Dad_Text_1:
-	.string "Our daughter's been having very\n"
-	.string "vivid nightmares lately.\p"
+	.string "Our daughter's been having very vivid\n"
+	.string "nightmares lately.\p"
 	.string "It must be this town's awful\n"
 	.string "atmosphere…$"

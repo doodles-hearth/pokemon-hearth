@@ -106,36 +106,33 @@ EventScript_AccessPokemonBoxLink::
 	end
 
 Common_EventScript_PcGuy_Text_0:
-	.string "Need me to carry some Pokémon\n"
-	.string "around for you? Sure thing!$"
+	.string "Need me to carry some Pokémon around\n"
+	.string "for you? Sure thing!$"
 
 Common_EventScript_PcGuy_Text_1:
 	.string "Hey there, Pokémon wielder!\p"
-	.string "Have you ever thought, “Darn, I\n"
-	.string "wish I could catch this seventh\l"
-	.string "Pokémon, but I only have room\l"
-	.string "for six?”\p"
+	.string "Have you ever thought, “Darn, I wish I\n"
+	.string "could catch this seventh Pokémon,\l"
+	.string "but I only have room for six?”\p"
 	.string "Today's your lucky day!\p"
 	.string "I've been appointed by the Toku\n"
 	.string "council to store wielders' Pokémon\l"
-	.string "for them while they travel\l"
-	.string "around.\p"
+	.string "for them while they travel around.\p"
 	.string "We bring your Pokémon to a pasture\n"
-	.string "where they live happily while\l"
-	.string "waiting for you to get them back!\p"
+	.string "where they live happily while waiting\l"
+	.string "for you to get them back!\p"
 	.string "So if you ever want to send or\n"
-	.string "retrieve your Pokémon, come talk\l"
-	.string "to me!$"
+	.string "retrieve your Pokémon, come talk to\l"
+	.string "me!$"
 
 Common_EventScript_PcGuy_Text_2:
 	.string "Pant… pant… Thanks for using our\n"
 	.string "Pokémon pasture service!$"
 
 Common_EventScript_PcGuy_Text_3:
-	.string "Oh, you want to store these\n"
-	.string "Pokémon?\p"
-	.string "Alright, I'll just carry them over\n"
-	.string "to the pasture!\p"
+	.string "Oh, you want to store these Pokémon?\p"
+	.string "Alright, I'll just carry them over to\n"
+	.string "the pasture!\p"
 	.string "Just a minute!$"
 
 Common_EventScript_PcGuy_Text_4:

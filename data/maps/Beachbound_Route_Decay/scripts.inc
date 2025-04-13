@@ -281,8 +281,8 @@ BeachboundRoute_Decay_EventScript_Shepherd_Text_0:
 	.string "Shepherd$"
 
 BeachboundRoute_Decay_EventScript_Shepherd_Text_1:
-	.string "What's goin' on? Why are all the\n"
-	.string "plants rotting?$"
+	.string "What's goin' on? Why are all the plants\n"
+	.string "rotting?$"
 
 BeachboundRoute_Decay_EventScript_Karu_Text_0:
 	.string "Girl$"
@@ -317,9 +317,8 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5:
 	.string "this$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_6:
-	.string "This is unfair! How are we supposed\n"
-	.string "to investigate if we're not\l"
-	.string "allowed to?\p"
+	.string "This is unfair! How are we supposed to\n"
+	.string "investigate if we're not allowed to?\p"
 	.string "Let's leave now.$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_7:
@@ -330,8 +329,8 @@ BeachboundRoute_Decay_EventScript_Bean_Text_0:
 
 BeachboundRoute_Decay_EventScript_Koishi_Text_0:
 	.string "The situation is dire…\p"
-	.string "Please move along, and I repeat,\n"
-	.string "do NOT get into trouble!$"
+	.string "Please move along, and I repeat, do\n"
+	.string "NOT get into trouble!$"
 
 BeachboundRoute_Decay_EventScript_SamuraiBeCarefulTrigger_Text_0:
 	.string "Samurai$"

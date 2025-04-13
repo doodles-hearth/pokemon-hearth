@@ -130,8 +130,8 @@ YifuCity_House3_EggGirlsMom_Text_0:
 YifuCity_House3_EggGirlsMom_Text_1:
 	.string "I help out at the Pokémon daycare\n"
 	.string "west of Windycape on tuesdays.\l"
-	.string "Sometimes they'll let me bring\l"
-	.string "back an egg for my daughter!$"
+	.string "Sometimes they'll let me bring back an\l"
+	.string "egg for my daughter!$"
 
 YifuCity_House3_EventScript_Togepi_Text_0:
 	.string "Preee!$"
@@ -159,39 +159,35 @@ YifuCity_House3_NotTradedYet_Text_4:
 	.string "Eggs?$"
 
 YifuCity_House3_NotTradedYet_Text_5:
-	.string "Really?! Me too!! Pokémon eggs are\n"
-	.string "so cool!\l"
-	.string "I love not knowing what will jump\l"
-	.string "out of the egg!\p"
+	.string "Really?! Me too!! Pokémon eggs are so\n"
+	.string "cool!\l"
+	.string "I love not knowing what will jump out\l"
+	.string "of the egg!\p"
 	.string "Wanna trade me a mystery egg for a\n"
 	.string "mystery egg?\l"
-	.string "That way we'll both have a\l"
-	.string "surprise!$"
+	.string "That way we'll both have a surprise!$"
 
 YifuCity_House3_NotTradedYet_Text_6:
 	.string "WHAT? Ewww, gross! I don't mean\n"
 	.string "EATING them!\p"
-	.string "I just love waiting for a Pokémon\n"
-	.string "to jump of of its egg, especially\l"
-	.string "when I have no idea what it's\l"
-	.string "gonna be!\p"
+	.string "I just love waiting for a Pokémon to\n"
+	.string "jump of of its egg, especially when I\l"
+	.string "have no idea what it's gonna be!\p"
 	.string "Wanna trade me a mystery egg for a\n"
 	.string "mystery egg?\l"
-	.string "That way we'll both have a\l"
-	.string "surprise!$"
+	.string "That way we'll both have a surprise!$"
 
 YifuCity_House3_NotTradedYet_Text_7:
 	.string "Oh… Alright…$"
 
 YifuCity_House3_NotTradedYet_Text_8:
 	.string "Eggs! Pokémon eggs! I just love\n"
-	.string "waiting for a Pokémon to jump of\l"
-	.string "of its egg, especially when I\l"
-	.string "have no idea what it's gonna be!\p"
+	.string "waiting for a Pokémon to jump of of\l"
+	.string "its egg, especially when I have no\l"
+	.string "idea what it's gonna be!\p"
 	.string "Wanna trade me a mystery egg for a\n"
 	.string "mystery egg?\l"
-	.string "That way we'll both have a\l"
-	.string "surprise!$"
+	.string "That way we'll both have a surprise!$"
 
 YifuCity_House3_NotTradedYet_Text_9:
 	.string "Sure!$"

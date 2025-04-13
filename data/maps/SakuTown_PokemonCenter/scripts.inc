@@ -113,12 +113,12 @@ SakuTown_PokemonCenter_EventScript_Traveler_Text_0:
 SakuTown_PokemonCenter_EventScript_Traveler_Text_1:
 	.string "This Pokémon refuge is brand-new,\n"
 	.string "courtesy of the Pokémon League!\p"
-	.string "As you can see, it's still being\n"
-	.string "built. Watch out for the falling\l"
-	.string "bricks, ha ha, just kidding!\p"
-	.string "Seriously though, do watch out.\n"
-	.string "We're held responsible if anything\l"
-	.string "happens to you.$"
+	.string "As you can see, it's still being built.\n"
+	.string "Watch out for the falling bricks, ha\l"
+	.string "ha, just kidding!\p"
+	.string "Seriously though, do watch out. We're\n"
+	.string "held responsible if anything happens\l"
+	.string "to you.$"
 
 SakuTown_PokemonCenter_EventScript_Pushing_Text_0:
 	.string "Shady man$"

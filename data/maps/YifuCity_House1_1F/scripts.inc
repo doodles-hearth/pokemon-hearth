@@ -35,9 +35,8 @@ YifuCity_House1_1F_EventScript_Mom_Text_0:
 
 YifuCity_House1_1F_EventScript_Mom_Text_1:
 	.string "I bought the children two different\n"
-	.string "dolls at the festival in Hanabi\l"
-	.string "City…\p"
-	.string "But now they're fighting over who\n"
-	.string "has which!\p"
+	.string "dolls at the festival in Hanabi City…\p"
+	.string "But now they're fighting over who has\n"
+	.string "which!\p"
 	.string "I should have gotten two identical\n"
 	.string "dolls…$"

@@ -123,8 +123,8 @@ MaguroHarbor_Refuge_EventScript_Hariko_Text_1:
 	.string "Silveridge? I heard there are\n"
 	.string "enormous rock snakes burrowing\l"
 	.string "through Silver Tunnel…\p"
-	.string "If you see one, tell me about it\n"
-	.string "the next time we meet.$"
+	.string "If you see one, tell me about it the\n"
+	.string "next time we meet.$"
 
 MaguroHarbor_Refuge_EventScript_Hariko_Text_2:
 	.string "Hello again, {PLAYER}. So, do you\n"
@@ -132,17 +132,15 @@ MaguroHarbor_Refuge_EventScript_Hariko_Text_2:
 
 MaguroHarbor_Refuge_EventScript_Hariko_Text_3:
 	.string "Oh, hello there, {PLAYER}.\n"
-	.string "Fancy meeting you here, as they\l"
-	.string "say.\p"
+	.string "Fancy meeting you here, as they say.\p"
 	.string "I assume you are here to challenge\n"
 	.string "the Maguro Harbor Dojo?\p"
-	.string "Me? I am not particularly\n"
-	.string "interested in becoming a great\l"
-	.string "wielder.\p"
+	.string "Me? I am not particularly interested\n"
+	.string "in becoming a great wielder.\p"
 	.string "I travel to learn as much as I can\n"
 	.string "about Pokémon!\p"
-	.string "You've not met my companion yet,\n"
-	.string "have you? Meet my Slowpoke, Bean!$"
+	.string "You've not met my companion yet, have\n"
+	.string "you? Meet my Slowpoke, Bean!$"
 
 MaguroHarbor_Refuge_EventScript_Hariko_Text_4:
 	.string "Bean$"
@@ -151,13 +149,12 @@ MaguroHarbor_Refuge_EventScript_Hariko_Text_5:
 	.string "Hurr…$"
 
 MaguroHarbor_Refuge_EventScript_Hariko_Text_6:
-	.string "Bean is a little slow, but he is\n"
-	.string "happy to meet you!\p"
-	.string "He may not look like a fighter, but\n"
-	.string "he enjoys a good battle, too.\l"
-	.string "Would you like to have a friendly\l"
-	.string "bout, Bean against one of your\l"
-	.string "Pokémon?$"
+	.string "Bean is a little slow, but he is happy\n"
+	.string "to meet you!\p"
+	.string "He may not look like a fighter, but he\n"
+	.string "enjoys a good battle, too. Would you\l"
+	.string "like to have a friendly bout, Bean\l"
+	.string "against one of your Pokémon?$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_0:
 	.string "Yes!$"
@@ -169,12 +166,11 @@ MaguroHarbor_Refuge_BattleHariko_Text_2:
 	.string "Very interesting.$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_3:
-	.string "We lost, but Bean tells me he had\n"
-	.string "fun!\n"
+	.string "We lost, but Bean tells me he had fun!\n"
 	.string "I am glad.\p"
 	.string "Everyday we learn something new\n"
-	.string "about Pokémon, be it through\l"
-	.string "battling or observation.$"
+	.string "about Pokémon, be it through battling\l"
+	.string "or observation.$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_4:
 	.string "No problem. I will be here a while\n"

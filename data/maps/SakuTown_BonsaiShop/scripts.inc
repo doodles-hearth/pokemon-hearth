@@ -241,12 +241,11 @@ SakuTown_BonsaiShop_EventScript_ClayPots_Text_0:
 	.string "Some clay pots, neatly stacked.$"
 
 SakuTown_BonsaiShop_EventScript_Bonsai_Text_0:
-	.string "It's a bonsai. It has obviously\n"
-	.string "been nurtured with love.$"
+	.string "It's a bonsai. It has obviously been\n"
+	.string "nurtured with love.$"
 
 SakuTown_BonsaiShop_EventScript_Water_Text_0:
-	.string "It's filled to the brim with\n"
-	.string "rainwater.$"
+	.string "It's filled to the brim with rainwater.$"
 
 SakuTown_BonsaiShop_EventScript_FlowerBasket_Text_0:
 	.string "A small basket of freshly picked\n"
@@ -271,8 +270,8 @@ SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_1:
 SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_2:
 	.string "Have you met my twin sister?\n"
 	.string "Very “Type A”, right?\p"
-	.string "You should try beating her at her\n"
-	.string "own game!\p"
+	.string "You should try beating her at her own\n"
+	.string "game!\p"
 	.string "Here, start by planting this!$"
 
 SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_3:
@@ -289,8 +288,8 @@ SakuTown_BonsaiShop_EventScript_LittleSister_Text_1:
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_2:
 	.string "Hi there {STR_VAR_1} Grownup!\p"
-	.string "Have you planted many berries on\n"
-	.string "your travels?$"
+	.string "Have you planted many berries on your\n"
+	.string "travels?$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_3:
 	.string "Hmm…\p"
@@ -301,8 +300,7 @@ SakuTown_BonsaiShop_EventScript_LittleSister_Text_3:
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_4:
 	.string "Hmm…\p"
-	.string "I'd say it's less terrible than\n"
-	.string "before.\p"
+	.string "I'd say it's less terrible than before.\p"
 	.string "Still not great though. You need to\n"
 	.string "plant way more berries.$"
 
@@ -317,24 +315,23 @@ SakuTown_BonsaiShop_EventScript_LittleSister_Text_6:
 	.string "Hmm…\p"
 	.string "I'd say you're almost there…\p"
 	.string "There's a fine line between being\n"
-	.string "“almost good” at berries, and\l"
-	.string "being “actually good” at berries.\p"
-	.string "So, you know, keep it up, or\n"
-	.string "whatever.$"
+	.string "“almost good” at berries, and being\l"
+	.string "“actually good” at berries.\p"
+	.string "So, you know, keep it up, or whatever.$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_7:
 	.string "Hmm…\p"
 	.string "Oh?\p"
 	.string "Now that's what I'm talking about!\p"
-	.string "Congrats, {STR_VAR_1} Grownup.\n"
-	.string "By achieving berry mastery, you\l"
-	.string "have earned my respect.\p"
+	.string "Congrats, {STR_VAR_1} Grownup. By\n"
+	.string "achieving berry mastery, you have\l"
+	.string "earned my respect.\p"
 	.string "Take this!$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_8:
 	.string "This scroll contains Acrobatics.\p"
-	.string "Your Pokémon will strike harder if\n"
-	.string "he isn't holding an item.\p"
+	.string "Your Pokémon will strike harder if he\n"
+	.string "isn't holding an item.\p"
 	.string "Good match for a Pokémon holding a\n"
 	.string "berry, right?\p"
 	.string "First eat a little snack, then\n"
@@ -351,73 +348,69 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_1:
 	.string "Um, I'm actually not sure.$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_2:
-	.string "Hi, {PLAYER}! Don't mind my\n"
-	.string "sisters. They're quite the handful!$"
+	.string "Hi, {PLAYER}! Don't mind my sisters.\n"
+	.string "They're quite the handful!$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_3:
 	.string "Hello, welcome to our bonsai shop…$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_4:
-	.string "Oh, but I know you! We met on\n"
-	.string "Tranquil route, remember?\p"
-	.string "Have you used the watering can I\n"
-	.string "gave you yet?\p"
-	.string "Oh, yes, I work here. We sell\n"
-	.string "bonsai and other potted flowers!\p"
+	.string "Oh, but I know you! We met on Tranquil\n"
+	.string "route, remember?\p"
+	.string "Have you used the watering can I gave\n"
+	.string "you yet?\p"
+	.string "Oh, yes, I work here. We sell bonsai\n"
+	.string "and other potted flowers!\p"
 	.string "I'm the owner's assistant! I also\n"
-	.string "manage the shop whenever she's\l"
-	.string "away.$"
+	.string "manage the shop whenever she's away.$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_5:
-	.string "Hello, welcome to our bonsai shop!\n"
-	.string "I'm the owner's assistant.\p"
+	.string "Hello, welcome to our bonsai shop! I'm\n"
+	.string "the owner's assistant.\p"
 	.string "We sell bonsai and other potted\n"
 	.string "flowers! Are you interested in\l"
 	.string "plants?\p"
 	.string "Have you ever seen strange patches\n"
 	.string "of soil while on your journey?\p"
 	.string "Those soil patches are incredibly\n"
-	.string "fertile, which means any berry\l"
-	.string "you plant in that soil will thrive\l"
-	.string "and grow into a tree, ready to be\l"
-	.string "harvested!\p"
-	.string "I see you're a wielder. Well,\n"
-	.string "different berries have different\l"
-	.string "effects when they're fed to\l"
-	.string "Pokémon.\p"
-	.string "I love berries, hopefully you'll\n"
-	.string "soon learn to love them too!\p"
+	.string "fertile, which means any berry you\l"
+	.string "plant in that soil will thrive and grow\l"
+	.string "into a tree, ready to be harvested!\p"
+	.string "I see you're a wielder. Well, different\n"
+	.string "berries have different effects when\l"
+	.string "they're fed to Pokémon.\p"
+	.string "I love berries, hopefully you'll soon\n"
+	.string "learn to love them too!\p"
 	.string "Here, try planting a few!$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_6:
-	.string "Oh, right, I was almost\n"
-	.string "forgetting!\p"
+	.string "Oh, right, I was almost forgetting!\p"
 	.string "You must remember to water them\n"
 	.string "regularly, or they won't grow!\p"
 	.string "I like you. Take this!$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_7:
 	.string "Isn't it cute? It's friend-shaped!\p"
-	.string "Don't worry about it, I have a\n"
-	.string "spare one.\p"
+	.string "Don't worry about it, I have a spare\n"
+	.string "one.\p"
 	.string "Have fun gardening!$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_0:
 	.string "Hana$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_1:
-	.string "Hello, {PLAYER}. Can I interest\n"
-	.string "you in a little greenery?$"
+	.string "Hello, {PLAYER}. Can I interest you\n"
+	.string "in a little greenery?$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_2:
 	.string "Thank you for your business!$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_3:
-	.string "Hello, {PLAYER}. Can I interest\n"
-	.string "you in a little greenery?\p"
-	.string "Hmm… It looks like you wouldn't\n"
-	.string "have anywhere to put bonsai.\l"
-	.string "Come back when you do.$"
+	.string "Hello, {PLAYER}. Can I interest you\n"
+	.string "in a little greenery?\p"
+	.string "Hmm… It looks like you wouldn't have\n"
+	.string "anywhere to put bonsai. Come back\l"
+	.string "when you do.$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_4:
 	.string "Shop Owner$"
@@ -425,15 +418,15 @@ SakuTown_BonsaiShop_EventScript_Owner_Text_4:
 SakuTown_BonsaiShop_EventScript_Owner_Text_5:
 	.string "Hello, young {STR_VAR_1}. Can I\n"
 	.string "interest you in a little greenery?\p"
-	.string "Hmm… It looks like you wouldn't\n"
-	.string "have anywhere to put bonsai.\l"
-	.string "Come back when you do.$"
+	.string "Hmm… It looks like you wouldn't have\n"
+	.string "anywhere to put bonsai. Come back\l"
+	.string "when you do.$"
 
 SakuTown_EventScript_Man_Text_0:
 	.string "Customer$"
 
 SakuTown_EventScript_Man_Text_1:
 	.string "I'm choosing flowers for my wife.\p"
-	.string "I, uh… I didn't realize there'd be\n"
-	.string "so many different types.\p"
+	.string "I, uh… I didn't realize there'd be so\n"
+	.string "many different types.\p"
 	.string "Guess I'll be here for a while…$"

@@ -521,8 +521,8 @@ BeachboundRoute_EventScript_AnnoyedBoy_Text_0:
 
 BeachboundRoute_EventScript_AnnoyedBoy_Text_1:
 	.string "I brought my date to the Lover's\n"
-	.string "Meadow, but I kind of thought\l"
-	.string "we'd be alone…$"
+	.string "Meadow, but I kind of thought we'd be\l"
+	.string "alone…$"
 
 BeachboundRoute_EventScript_Hoppip_Text_0:
 	.string "Pip!$"
@@ -538,8 +538,8 @@ BeachboundRoute_EventScript_Shepherd_Text_1:
 	.string "everyday.$"
 
 BeachboundRoute_EventScript_Karu_Text_0:
-	.string "Please allow me to introduce you\n"
-	.string "to your own defeat!$"
+	.string "Please allow me to introduce you to\n"
+	.string "your own defeat!$"
 
 BeachboundRoute_EventScript_Karu_Text_1:
 	.string "N-nice to meet you…$"
@@ -575,8 +575,8 @@ BeachboundRoute_EventScript_Kouta_Text_2:
 	.string "Kouta$"
 
 BeachboundRoute_EventScript_Kouta_Text_3:
-	.string "When I pet my Mareep, I can hear\n"
-	.string "the static crackle!$"
+	.string "When I pet my Mareep, I can hear the\n"
+	.string "static crackle!$"
 
 BeachboundRoute_EventScript_Masato_Text_0:
 	.string "Let my Pokémon sing for you!$"
@@ -588,9 +588,9 @@ BeachboundRoute_EventScript_Masato_Text_2:
 	.string "Masato$"
 
 BeachboundRoute_EventScript_Masato_Text_3:
-	.string "I hope one day my Kricketot\n"
-	.string "evolves! I wonder what delightful\l"
-	.string "melody he'll be able to sing then…$"
+	.string "I hope one day my Kricketot evolves!\n"
+	.string "I wonder what delightful melody he'll\l"
+	.string "be able to sing then…$"
 
 BeachboundRoute_EventScript_SomeoneCallingForHelp_Text_0:
 	.string "???$"
@@ -599,22 +599,21 @@ BeachboundRoute_EventScript_SomeoneCallingForHelp_Text_1:
 	.string "Help! Someone help me!$"
 
 BeachboundRoute_EventScript_WhereAreYouGoing_Text_0:
-	.string "Hey, you! In the red and blue\n"
-	.string "clothes!\p"
+	.string "Hey, you! In the red and blue clothes!\p"
 	.string "Are you… Are you leaving?!\p"
-	.string "Can't you be a decent human being\n"
-	.string "and help me out?$"
+	.string "Can't you be a decent human being and\n"
+	.string "help me out?$"
 
 BeachboundRoute_EventScript_Mugging_Text_0:
 	.string "Shady Man$"
 
 BeachboundRoute_EventScript_Mugging_Text_1:
-	.string "Stop yappin', lady! Just give us\n"
-	.string "yer Pokémon already!$"
+	.string "Stop yappin', lady! Just give us yer\n"
+	.string "Pokémon already!$"
 
 BeachboundRoute_EventScript_Mugging_Text_2:
-	.string "C'mon, don't make this difficult!\n"
-	.string "Just hand it over!$"
+	.string "C'mon, don't make this difficult! Just\n"
+	.string "hand it over!$"
 
 BeachboundRoute_EventScript_Mugging_Text_3:
 	.string "Just what d'you think yer doin'?\p"
@@ -631,11 +630,10 @@ BeachboundRoute_EventScript_Mugging_Text_6:
 	.string "Uh…$"
 
 BeachboundRoute_EventScript_Mugging_Text_7:
-	.string "Ooh, feelin' heroic today, are\n"
-	.string "we?\p"
+	.string "Ooh, feelin' heroic today, are we?\p"
 	.string "D'ya know what we do to nosy brats\n"
-	.string "who're not clever enough to mind\l"
-	.string "their own business?\p"
+	.string "who're not clever enough to mind their\l"
+	.string "own business?\p"
 	.string "Ya have no self-preservation\n"
 	.string "instinct whatsoever, do ya?\p"
 	.string "D'ya even know who we are?\p"
@@ -643,14 +641,13 @@ BeachboundRoute_EventScript_Mugging_Text_7:
 	.string "Shadows!\p"
 	.string "Thievin', muggin', wreakin' havoc… Ya\n"
 	.string "name it!\p"
-	.string "We're basically the allegory of\n"
-	.string "crime!$"
+	.string "We're basically the allegory of crime!$"
 
 BeachboundRoute_EventScript_Mugging_Text_8:
-	.string "'S a little too late fer that, don't\n"
-	.string "ya think? D'ya know what we do to\l"
-	.string "nosy brats who're not clever\l"
-	.string "enough to mind their own business?\p"
+	.string "'S a little too late fer that, don't ya\n"
+	.string "think? D'ya know what we do to nosy\l"
+	.string "brats who're not clever enough to\l"
+	.string "mind their own business?\p"
 	.string "Ya have no self-preservation\n"
 	.string "instinct whatsoever, do ya?\p"
 	.string "D'ya even know who we are?\p"
@@ -658,14 +655,13 @@ BeachboundRoute_EventScript_Mugging_Text_8:
 	.string "Shadows!\p"
 	.string "Thievin', muggin', wreakin' havoc… Ya\n"
 	.string "name it!\p"
-	.string "We're basically the allegory of\n"
-	.string "crime!$"
+	.string "We're basically the allegory of crime!$"
 
 BeachboundRoute_EventScript_Mugging_Text_9:
 	.string "Got nothin' to say, huh?\p"
 	.string "D'ya know what we do to nosy brats\n"
-	.string "who're not clever enough to mind\l"
-	.string "their own business?\p"
+	.string "who're not clever enough to mind their\l"
+	.string "own business?\p"
 	.string "Ya have no self-preservation\n"
 	.string "instinct whatsoever, do ya?\p"
 	.string "D'ya even know who we are?\p"
@@ -673,8 +669,7 @@ BeachboundRoute_EventScript_Mugging_Text_9:
 	.string "Shadows!\p"
 	.string "Thievin', muggin', wreakin' havoc… Ya\n"
 	.string "name it!\p"
-	.string "We're basically the allegory of\n"
-	.string "crime!$"
+	.string "We're basically the allegory of crime!$"
 
 BeachboundRoute_EventScript_Mugging_Text_10:
 	.string "Crobat Shadow$"
@@ -697,8 +692,7 @@ BeachboundRoute_EventScript_Mugging_Text_15:
 
 BeachboundRoute_EventScript_Mugging_Text_16:
 	.string "Can't believe it! Look who's back!\p"
-	.string "Back fer another whoopin', are\n"
-	.string "we?\p"
+	.string "Back fer another whoopin', are we?\p"
 	.string "Take care of this clown, boys!$"
 
 BeachboundRoute_EventScript_Mugging_Text_17:
@@ -722,8 +716,8 @@ BeachboundRoute_EventScript_Mugging_Text_22:
 	.string "peace anymore!$"
 
 BeachboundRoute_EventScript_Mugging_Text_23:
-	.string "Well, I ain't gonna stoop to\n"
-	.string "fighting ya myself!$"
+	.string "Well, I ain't gonna stoop to fighting\n"
+	.string "ya myself!$"
 
 BeachboundRoute_EventScript_Mugging_Text_24:
 	.string "Boss, what's a stoop?$"
@@ -732,8 +726,8 @@ BeachboundRoute_EventScript_Mugging_Text_25:
 	.string "For the love of god, Kevin…$"
 
 BeachboundRoute_EventScript_Mugging_Text_26:
-	.string "Movin' on! You've not seen the last\n"
-	.string "of us, ya annoying brat!\p"
+	.string "Movin' on! You've not seen the last of\n"
+	.string "us, ya annoying brat!\p"
 	.string "Ya better steer clear of the Crobat\n"
 	.string "Shadows from now on!\p"
 	.string "Let's move it, boys!$"
@@ -745,27 +739,25 @@ BeachboundRoute_EventScript_Mugging_Text_28:
 	.string "Woman$"
 
 BeachboundRoute_EventScript_Mugging_Text_29:
-	.string "Thank you so much for helping\n"
-	.string "me!\p"
-	.string "Those ruffians were about to steal\n"
-	.string "my Pokémon!\p"
-	.string "I don't have much to offer you as\n"
-	.string "a thanks, but please take this!$"
+	.string "Thank you so much for helping me!\p"
+	.string "Those ruffians were about to steal my\n"
+	.string "Pokémon!\p"
+	.string "I don't have much to offer you as a\n"
+	.string "thanks, but please take this!$"
 
 BeachboundRoute_EventScript_Mugging_Text_30:
 	.string "What's your name?\n"
 	.string "{PLAYER}?\p"
-	.string "I'll be sure to tell everyone what\n"
-	.string "a hero you are!$"
+	.string "I'll be sure to tell everyone what a\n"
+	.string "hero you are!$"
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0:
 	.string "Okada$"
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1:
-	.string "Oh, hello again! {PLAYER}, was\n"
-	.string "it?\p"
-	.string "I'm in the area for a while to\n"
-	.string "gather some resources.\p"
+	.string "Oh, hello again! {PLAYER}, was it?\p"
+	.string "I'm in the area for a while to gather\n"
+	.string "some resources.\p"
 	.string "Can I interest you in some rare\n"
 	.string "goods?$"
 

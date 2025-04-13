@@ -88,14 +88,14 @@ YifuCity_House2_Seamstress_Text_0:
 	.string "Seamstress$"
 
 YifuCity_House2_Seamstress_Text_1:
-	.string "I've been working day and night on\n"
-	.string "a dress for the Samurai Chief's\l"
+	.string "I've been working day and night on a\n"
+	.string "dress for the Samurai Chief's\l"
 	.string "daugther.\p"
 	.string "This will be my greatest work!$"
 
 YifuCity_House2_Seamstress_Text_2:
-	.string "Tarountula, could you bring me\n"
-	.string "some more of that red thread?$"
+	.string "Tarountula, could you bring me some\n"
+	.string "more of that red thread?$"
 
 YifuCity_House2_Model_Text_0:
 	.string "That Tarountula creeps me out…\n"
@@ -105,12 +105,12 @@ YifuCity_House2_Model_Text_1:
 	.string "Model$"
 
 YifuCity_House2_Model_Text_2:
-	.string "Yawn… Being a model is so tiring!\n"
-	.string "My feet hurt from standing here\l"
-	.string "for hours…\p"
+	.string "Yawn… Being a model is so tiring! My\n"
+	.string "feet hurt from standing here for\l"
+	.string "hours…\p"
 	.string "I do get some sweet free stuff\n"
-	.string "though! Here, you can have this,\l"
-	.string "I already have this color!$"
+	.string "though! Here, you can have this, I\l"
+	.string "already have this color!$"
 
 YifuCity_House2_Tarountula_Text_0:
 	.string "Thshh!$"
