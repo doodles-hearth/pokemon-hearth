@@ -166,7 +166,7 @@ YifuCity_EventScript_RobberyVictim_8:
 	addvar VAR_PLAYER_REPUTATION, 1
 	fadescreen FADE_TO_BLACK
 	removeobject VAR_LAST_TALKED
-	delay 48
+	delay 60
 	fadescreen FADE_FROM_BLACK
 	goto YifuCity_EventScript_RobberyVictim_1
 
@@ -640,12 +640,14 @@ YifuCity_EventScript_DojoSign::
 	return
 
 
-YifuCity_EventScript_Fisherman::
+YifuCity_EventScript_GirlLookingAtSunriseVillage::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_Fisherman_Text_0
-	msgbox YifuCity_EventScript_Fisherman_Text_1
+	speakername YifuCity_EventScript_LostMyDoll_Text_0
+	msgbox YifuCity_EventScript_GirlLookingAtSunriseVillage_Text_0
 	closemessage
+	applymovement VAR_LAST_TALKED, YifuCity_EventScript_GirlLookingAtSunriseVillage_Movement_0
+	waitmovement 0
 	release
 	end
 
@@ -661,6 +663,11 @@ YifuCity_EventScript_HotSpringsSign::
 
 
 YifuCity_EventScript_CrobatShopSign::
+	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_CrobatShopSign_1
+	msgbox YifuCity_EventScript_CrobatShopSign_Text_1, MSGBOX_SIGN
+	return
+
+YifuCity_EventScript_CrobatShopSign_1:
 	msgbox YifuCity_EventScript_CrobatShopSign_Text_0, MSGBOX_SIGN
 	return
 
@@ -950,6 +957,10 @@ YifuCity_Trigger_HarikoCriminals_Movement_2:
 	walk_right
 	walk_right
 	face_up
+	step_end
+
+YifuCity_EventScript_GirlLookingAtSunriseVillage_Movement_0:
+	face_original_direction
 	step_end
 
 YifuCity_EscapedCrobatHideoutWithSamurai_Text_0:
@@ -1264,40 +1275,36 @@ YifuCity_EventScript_DojoSign_Text_0:
 	.string "“The poetry in the rustling of a\n"
 	.string "kimono.”$"
 
-YifuCity_EventScript_Fisherman_Text_0:
-	.string "Fisherman$"
-
-YifuCity_EventScript_Fisherman_Text_1:
-	.string "Hm? No, I'm not fishing.\p"
-	.string "I'm just watching the tiny\n"
-	.string "whirlpools that Pokémon make in\l"
-	.string "the shallow water.\p"
-	.string "Would you like your Pokémon to\n"
-	.string "make whirlpools too?\p"
-	.string "I could teach them the way of the\n"
-	.string "Whirlpool!$"
+YifuCity_EventScript_GirlLookingAtSunriseVillage_Text_0:
+	.string "If I squint hard enough, I'm sure I\n"
+	.string "can see my friend on Sunrise Beach!$"
 
 YifuCity_EventScript_NameRaterSign_Text_0:
-	.string "“What's In A Name\n"
-	.string "Humble name judge”$"
+	.string "What's In A Name\n"
+	.string "“Humble name judge”$"
 
 YifuCity_EventScript_HotSpringsSign_Text_0:
-	.string "“Torkoal Tubs\n"
-	.string "Yifu City Hot Springs”$"
+	.string "Torkoal Tubs\n"
+	.string "“The Yifu City Hot Springs”$"
 
 YifuCity_EventScript_CrobatShopSign_Text_0:
-	.string "“Crobat Shop\n"
-	.string "Only legal stuff\l"
+	.string "Yifu City Shop\n"
+	.string "“Useful items and scrolls!”$"
+
+YifuCity_EventScript_CrobatShopSign_Text_1:
+	.string "Crobat Shop\n"
+	.string "“Only legal stuff\l"
 	.string "Nothing to see here”$"
 
 YifuCity_EventScript_RestaurantSign_Text_0:
-	.string "“The Golden Drampa\n"
-	.string "Hotpot & Restaurant”$"
+	.string "The Golden Drampa\n"
+	.string "“Hotpot & Restaurant”$"
 
 YifuCity_EventScript_ClothingShopSign_Text_0:
-	.string "“Leavanny Silk\n"
-	.string "Fashionable and affordable clothes”$"
+	.string "Leavanny Silk\n"
+	.string "“Fashionable and affordable\l"
+	.string "clothes!”$"
 
 YifuCity_EventScript_DecorationShopSign_Text_0:
-	.string "“Woodworker\n"
-	.string "We sell tables and chairs, mostly”$"
+	.string "Woodworker\n"
+	.string "“We sell tables and chairs, mostly”$"

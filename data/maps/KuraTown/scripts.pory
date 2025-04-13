@@ -14,8 +14,6 @@ mapscripts KuraTown_MapScripts {
 			case TIME_DEAD_NIGHT:
 				setmetatile(18, 6, METATILE_SakuKura_ClosedDoorTop, TRUE)
 				setmetatile(18, 7, METATILE_SakuKura_ClosedDoorBottom, TRUE)
-				setmetatile(43, 22, METATILE_SakuKura_ClosedDoorTop, TRUE)
-				setmetatile(43, 23, METATILE_SakuKura_ClosedDoorBottom, TRUE)
 			case TIME_EARLY_MORNING:
 			case TIME_MORNING:
 			case TIME_LUNCHTIME:

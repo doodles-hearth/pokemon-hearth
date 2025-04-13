@@ -124,11 +124,11 @@ Soulkeep_EventScript_TownSign_Text_0:
 	.string "rest.”$"
 
 Soulkeep_EventScript_IncenseShopSign_Text_0:
-	.string "“Incense Shop”$"
+	.string "Incense Shop$"
 
 Soulkeep_EventScript_GraveyardSign_Text_0:
-	.string "“{UP_ARROW} Graveyard\n"
-	.string "Please be respectful.”$"
+	.string "{UP_ARROW} Graveyard\n"
+	.string "“Please be respectful.”$"
 
 Soulkeep_EventScript_Man_Text_0:
 	.string "Man$"

@@ -1171,3 +1171,36 @@ const struct Tileset gTileset_HouseSoulkeep =
     .metatileAttributes = gMetatileAttributes_HouseSoulkeep,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_SecretBaseHearth =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_SecretBaseHearth,
+    .palettes = gTilesetPalettes_SecretBaseHearth,
+    .metatiles = gMetatiles_SecretBaseHearth,
+    .metatileAttributes = gMetatileAttributes_SecretBaseHearth,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SecretBaseHearthBrownCave =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SecretBaseHearthBrownCave,
+    .palettes = gTilesetPalettes_SecretBaseHearthBrownCave,
+    .metatiles = gMetatiles_SecretBaseHearthBrownCave,
+    .metatileAttributes = gMetatileAttributes_SecretBaseHearthBrownCave,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Shogunate =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Shogunate,
+    .palettes = gTilesetPalettes_Shogunate,
+    .metatiles = gMetatiles_Shogunate,
+    .metatileAttributes = gMetatileAttributes_Shogunate,
+    .callback = NULL,
+};

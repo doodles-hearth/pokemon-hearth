@@ -1235,17 +1235,17 @@ CrobatHideout_1F_EventScript_Samurai_Text_1:
 	.string "inevitable confrontation?$"
 
 CrobatHideout_1F_EventScript_LaundrySchedule_Text_0:
-	.string "“WEEKLY LAUNDRY SCHEDULE\n"
+	.string "WEEKLY LAUNDRY SCHEDULE\n"
 	.string "MON - Hiro\l"
 	.string "TUE - Hiro\l"
 	.string "WED - Mei\l"
 	.string "THU - Kevin\l"
 	.string "FRI - Hiro\l"
 	.string "SAT - Saki\l"
-	.string "SUN - Hiro”$"
+	.string "SUN - Hiro$"
 
 CrobatHideout_1F_EventScript_MessPoster_Text_0:
-	.string "“KITCHEN RULES:\n"
+	.string "KITCHEN RULES:\n"
 	.string "1. DO clean up after yourself!\l"
 	.string "2. DO NOT steal food from other\l"
 	.string "grunts!\l"
@@ -1254,14 +1254,14 @@ CrobatHideout_1F_EventScript_MessPoster_Text_0:
 	.string "4. Seriously though, next one who\l"
 	.string "leaves a mess, I WILL bite them\l"
 	.string "in their sleep.\l"
-	.string "- The Boss”$"
+	.string "- The Boss$"
 
 CrobatHideout_1F_EventScript_FirstPoster_Text_0:
-	.string "“Welcome to the Super Secret\n"
-	.string "Crobat Hideout!\l"
+	.string "Welcome to the Super Secret Crobat\n"
+	.string "Hideout!\l"
 	.string "Keep it down, we don't want to\l"
 	.string "attract attention.\l"
-	.string "- The Boss”$"
+	.string "- The Boss$"
 
 CrobatHideout_1F_EventScript_Pots_Text_0:
 	.string "An assortment of mismatched pots\n"
@@ -1275,25 +1275,25 @@ CrobatHideout_1F_EventScript_EmptyBowlLeftover_Text_0:
 	.string "Mifan Berry soup.$"
 
 CrobatHideout_1F_EventScript_WantedPosterMustache_Text_0:
-	.string "“WANTED: Crobat Shadows Grunt\n"
-	.string "3000¥”\p"
+	.string "WANTED: Crobat Shadows Grunt\n"
+	.string "3000¥\p"
 	.string "Someone has doodled glasses\n"
 	.string "and a mustache on the poster.$"
 
 CrobatHideout_1F_EventScript_WantedPosterNose_Text_0:
-	.string "“WANTED: Crobat Shadows Grunt\n"
-	.string "4500¥”\p"
+	.string "WANTED: Crobat Shadows Grunt\n"
+	.string "4500¥\p"
 	.string "It looks like the nose was\n"
 	.string "drawn over with a different nose.$"
 
 CrobatHideout_1F_EventScript_WantedPosterHanddrawn_Text_0:
-	.string "“WANTED: KEVIN\n"
-	.string "10 000 000 000 000¥”\p"
+	.string "WANTED: KEVIN\n"
+	.string "10 000 000 000 000¥\p"
 	.string "This poster looks handdrawn…$"
 
 CrobatHideout_1F_EventScript_WantedPosterBoss_Text_0:
-	.string "“WANTED: Crobat Shadows Leader\n"
-	.string "100 000¥”\p"
+	.string "WANTED: Crobat Shadows Leader\n"
+	.string "100 000¥\p"
 	.string "There are various messages\n"
 	.string "scribbled on the poster:\l"
 	.string "“Happy birthday boss”,\l"
@@ -1304,11 +1304,11 @@ CrobatHideout_1F_EventScript_WantedPosterBoss_Text_0:
 	.string "It's time to go.$"
 
 CrobatHideout_1F_EventScript_PosterFeedPoochyena_Text_0:
-	.string "“Remember to feed the Poochyena”$"
+	.string "REMEMBER TO FEED THE POOCHYENA$"
 
 CrobatHideout_1F_EventScript_PosterReunionRoom_Text_0:
-	.string "“BELIEVE IN YOURSELF\n"
-	.string "Be the kind of criminal you want\l"
+	.string "BELIEVE IN YOURSELF\n"
+	.string "“Be the kind of criminal you want\l"
 	.string "to be!”\p"
 	.string "There is a doodle of a Woobat in a\n"
 	.string "corner.$"

@@ -77,6 +77,28 @@ script Silveridge_EventScript_Wildflowers {
 	release
 }
 
+script Silveridge_EventScript_Mart {
+	lock
+	faceplayer
+	speakername("Shopkeeper")
+	message(format("Welcome to Silveridge's market!\nSorry, we're fresh out of rocks!"))
+	waitmessage
+	pokemart(Silveridge_Mart)
+	speakername("Shopkeeper")
+	msgbox(format("I hope you found what you were looking for!"), MSGBOX_DEFAULT)
+	release
+}
+
+mart Silveridge_Mart {
+	ITEM_POKE_BALL
+	ITEM_OINTMENT
+	ITEM_REVIVAL_BALM
+	ITEM_PARALYZE_HEAL
+	ITEM_ANTIDOTE
+	ITEM_AWAKENING
+	ITEM_BURN_HEAL
+}
+
 script Silveridge_EventScript_TownSign {
 	msgbox(format("Silveridge\n“A rocky town in shades of grey.”"), MSGBOX_SIGN)
 }

@@ -1,0 +1,28 @@
+{
+  "id": "MAP_ORCHARD_PATH_GUARD_HOUSE",
+  "name": "OrchardPath_GuardHouse",
+  "layout": "LAYOUT_ORCHARD_PATH_GUARD_HOUSE",
+  "music": "MUS_RG_SEVII_ROUTE",
+  "region_map_section": "MAPSEC_ORCHARD_PATH",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

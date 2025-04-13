@@ -338,6 +338,22 @@ script ChiiTown_EventScript_Mart {
 	release
 }
 
+script ChiiTown_EventScript_MartDecor {
+	lock
+	faceplayer
+	speakername("Shopkeeper")
+	message(format("Decors!"))
+	waitmessage
+	pokemartdecoration(ChiiTown_MartDecors)
+	speakername("Shopkeeper")
+	msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
+	release
+}
+
+mart ChiiTown_MartDecors {
+	DECOR_SURF_MAT
+}
+
 mart ChiiTown_Mart {
 	ITEM_POKE_BALL
 	ITEM_OINTMENT
@@ -360,7 +376,7 @@ script ChiiTown_EventScript_TownSign {
 
 script ChiiTown_EventScript_SchoolSign {
 	msgbox(format(
-		"“Little Deerling elementary school”"
+		"Little Deerling elementary school"
 	), MSGBOX_SIGN)
 }
 

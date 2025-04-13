@@ -284,6 +284,24 @@ ChiiTown_EventScript_Mart::
 	return
 
 
+ChiiTown_EventScript_MartDecor::
+	lock
+	faceplayer
+	speakername ChiiTown_EventScript_Mart_Text_0
+	message ChiiTown_EventScript_MartDecor_Text_0
+	waitmessage
+	pokemartdecoration ChiiTown_MartDecors
+	speakername ChiiTown_EventScript_Mart_Text_0
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	return
+
+
+	.align 2
+ChiiTown_MartDecors:
+	.2byte DECOR_SURF_MAT
+	.2byte ITEM_NONE
+
 	.align 2
 ChiiTown_Mart:
 	.2byte ITEM_POKE_BALL
@@ -466,6 +484,9 @@ ChiiTown_EventScript_Mart_Text_1:
 	.string "Welcome to Chii Town's market! How\n"
 	.string "may I help you?$"
 
+ChiiTown_EventScript_MartDecor_Text_0:
+	.string "Decors!$"
+
 ChiiTown_EventScript_Samurai_Text_0:
 	.string "Samurai$"
 
@@ -481,4 +502,4 @@ ChiiTown_EventScript_TownSign_Text_0:
 	.string "biggest heart.”$"
 
 ChiiTown_EventScript_SchoolSign_Text_0:
-	.string "“Little Deerling elementary school”$"
+	.string "Little Deerling elementary school$"

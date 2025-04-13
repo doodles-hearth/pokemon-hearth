@@ -964,6 +964,13 @@
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
       "flag": "FLAG_HIDDEN_ITEM_BEACHBOUND_ROUTE_HEART_SCALE"
+    },
+    {
+      "type": "secret_base",
+      "x": 16,
+      "y": 4,
+      "elevation": 0,
+      "secret_base_id": "SECRET_BASE_BROWN_CAVE4_1"
     }
   ]
 }

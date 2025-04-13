@@ -1135,6 +1135,24 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_RevivalHerb,
     },
 
+    [ITEM_REVIVAL_BALM] =
+    {
+        .name = _("Revival Balm"),
+        .price = 1400,
+        .description = COMPOUND_STRING(
+            "A bitter herb\n"
+            "that revives a\n"
+            "fainted Pokémon."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_REVIVE,
+        .effect = gItemEffect_RevivalBalm,
+        .flingPower = 30,
+        .iconPic = gItemIcon_RevivalBalm,
+        .iconPalette = gItemIconPalette_RevivalHerb,
+    },
+
     [ITEM_ANTIDOTE] =
     {
         .name = _("Antidote"),
@@ -11499,16 +11517,20 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_X_SCISSOR,
     },
 
-    [ITEM_TM55] =
+    [ITEM_TM_ANCIENT_POWER] =
     {
         .name = _("TM55"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Throws rocks at\n"
+            "the foe. May\n"
+            "raise all stats."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_ANCIENT_POWER,
     },
 
     [ITEM_TM56] =

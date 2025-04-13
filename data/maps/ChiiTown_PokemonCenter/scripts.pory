@@ -197,7 +197,7 @@ script ChiiTown_PokemonCenter_EventScript_MakeNamesUp {
 	speakername("Little Boy")
 	msgbox(format(
 		"You know what happens if I see a Pokémon and I don't know its name?\p"
-		"I just make it right up! I don't care about any silly “real” names!\p"
+		"I just make it right up!\nI don't care about any silly “real” names!\p"
 		"And neither should you! Be free of the diktat of naming accuracy!"
 	))
 	closemessage

@@ -5,6 +5,21 @@ SecretBase_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, SecretBase_OnResume
 	.byte 0
 
+
+SecretBase_EventScript_Chest::
+	lockall
+	playse SE_PC_LOGIN
+	message SecretBase_EventScript_Chest_Text_0
+	waitstate
+	waitmessage
+	waitbuttonpress
+	playse SE_SELECT
+	goto SecretBase_EventScript_PCShowMainMenu
+	return
+
+
+
+
 SecretBase_OnWarp:
 	map_script_2 VAR_SECRET_BASE_INITIALIZED, 0, SecretBase_EventScript_InitDecorations
 	.2byte 0
@@ -213,3 +228,7 @@ SecretBase_Text_DiscoveredSmallCavern::
 
 SecretBase_Text_WantToMakeYourSecretBaseHere:
 	.string "Want to make your SECRET BASE here?$"
+
+SecretBase_EventScript_Chest_Text_0:
+	.string "{PLAYER} opened the decoration\n"
+	.string "chest.$"

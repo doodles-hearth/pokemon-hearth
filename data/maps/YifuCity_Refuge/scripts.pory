@@ -255,7 +255,15 @@ script YifuCity_Refuge_EventScript_HotelValet {
 }
 
 script YifuCity_Refuge_EventScript_ListenToShamisen {
-	
+	lock
+	faceplayer
+	speakername("Boy")
+	msgbox(format(
+		"Whew… I've walked all day…\nI am spent!"
+	))
+	closemessage
+	release
+	end
 }
 
 script YifuCity_Refuge_EventScript_Traveler {
@@ -292,6 +300,19 @@ script YifuCity_Refuge_EventScript_Samurai {
 	speakername("Samurai")
 	msgbox(format(
 		"The Crobat Shadows must be operating from somewhere… But where?"
+	))
+	closemessage
+	release
+	end
+}
+
+script YifuCity_Refuge_EventScript_GotTrashedByDojo {
+	lock
+	faceplayer
+	speakername("Man")
+	msgbox(format(
+		"Arrgh… this city's Dojo is all girls, so I thought it was going to be super easy…\p"
+		"I got obliterated…"
 	))
 	closemessage
 	release

@@ -171,6 +171,7 @@ script GinkoWoods_EventScript_Tracks {
 	applymovement(LOCALID_BEAN, Common_Movement_WalkInPlaceFasterRight)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 
+	speakername("Odd girl")
 	msgbox(format(
 		"THE TRACKS!! YOU'RE STEPPING ON THEM!!!"
 	))

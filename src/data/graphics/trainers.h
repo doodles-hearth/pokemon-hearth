@@ -33,8 +33,8 @@ const u32 gTrainerPalette_ExpertM[] = INCBIN_U32("graphics/trainers/front_pics/e
 const u32 gTrainerFrontPic_AquaAdminM[] = INCBIN_U32("graphics/trainers/front_pics/aqua_admin_m.4bpp.lz");
 const u32 gTrainerPalette_AquaAdminM[] = INCBIN_U32("graphics/trainers/front_pics/aqua_admin_m.gbapal.lz");
 
-const u32 gTrainerFrontPic_BlackBelt[] = INCBIN_U32("graphics/trainers/front_pics/black_belt.4bpp.lz");
-const u32 gTrainerPalette_BlackBelt[] = INCBIN_U32("graphics/trainers/front_pics/black_belt.gbapal.lz");
+const u32 gTrainerFrontPic_BlackBelt[] = INCBIN_U32("graphics/trainers/front_pics/kungfu_guy.4bpp.lz");
+const u32 gTrainerPalette_BlackBelt[] = INCBIN_U32("graphics/trainers/front_pics/kungfu_guy.gbapal.lz");
 
 const u32 gTrainerFrontPic_AquaAdminF[] = INCBIN_U32("graphics/trainers/front_pics/aqua_admin_f.4bpp.lz");
 const u32 gTrainerPalette_AquaAdminF[] = INCBIN_U32("graphics/trainers/front_pics/aqua_admin_f.gbapal.lz");
@@ -46,7 +46,8 @@ const u32 gTrainerFrontPic_HexManiac[] = INCBIN_U32("graphics/trainers/front_pic
 const u32 gTrainerPalette_HexManiac[] = INCBIN_U32("graphics/trainers/front_pics/hex_maniac.gbapal.lz");
 
 const u32 gTrainerFrontPic_AromaLady[] = INCBIN_U32("graphics/trainers/front_pics/aroma_lady.4bpp.lz");
-const u32 gTrainerPalette_AromaLady[] = INCBIN_U32("graphics/trainers/front_pics/aroma_lady.gbapal.lz");
+// OW is more up to date
+const u32 gTrainerPalette_AromaLady[] = INCBIN_U32("graphics/object_events/pics/people/aroma_lady.gbapal.lz");
 
 const u32 gTrainerFrontPic_RuinManiac[] = INCBIN_U32("graphics/trainers/front_pics/ruin_maniac.4bpp.lz");
 const u32 gTrainerPalette_RuinManiac[] = INCBIN_U32("graphics/trainers/front_pics/ruin_maniac.gbapal.lz");
@@ -195,8 +196,8 @@ const u32 gTrainerPalette_DragonTamer[] = INCBIN_U32("graphics/trainers/front_pi
 const u32 gTrainerFrontPic_NinjaBoy[] = INCBIN_U32("graphics/trainers/front_pics/ninja_boy.4bpp.lz");
 const u32 gTrainerPalette_NinjaBoy[] = INCBIN_U32("graphics/trainers/front_pics/ninja_boy.gbapal.lz");
 
-const u32 gTrainerFrontPic_BattleGirl[] = INCBIN_U32("graphics/trainers/front_pics/martial_artist_f.4bpp.lz");
-const u32 gTrainerPalette_BattleGirl[] = INCBIN_U32("graphics/trainers/palettes/martial_artist_f.gbapal.lz");
+const u32 gTrainerFrontPic_BattleGirl[] = INCBIN_U32("graphics/trainers/front_pics/kungfu_gal.4bpp.lz");
+const u32 gTrainerPalette_BattleGirl[] = INCBIN_U32("graphics/trainers/front_pics/kungfu_gal.gbapal.lz");
 
 const u32 gTrainerFrontPic_ParasolLady[] = INCBIN_U32("graphics/trainers/front_pics/parasol_lady.4bpp.lz");
 const u32 gTrainerPalette_ParasolLady[] = INCBIN_U32("graphics/trainers/front_pics/parasol_lady.gbapal.lz");

@@ -472,6 +472,7 @@ extern const u32 gItemIcon_EnergyRoot[];
 extern const u32 gItemIconPalette_EnergyRoot[];
 extern const u32 gItemIconPalette_HealPowder[];
 extern const u32 gItemIcon_RevivalHerb[];
+extern const u32 gItemIcon_RevivalBalm[];
 extern const u32 gItemIconPalette_RevivalHerb[];
 extern const u32 gItemIcon_Antidote[];
 extern const u32 gItemIconPalette_Antidote[];
