@@ -30,11 +30,6 @@
     },
     {
       "map": "MAP_SHOGUNATE",
-      "offset": 15,
-      "direction": "up"
-    },
-    {
-      "map": "MAP_SHOGUNATE",
       "offset": 68,
       "direction": "up"
     }

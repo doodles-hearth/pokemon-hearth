@@ -4,7 +4,8 @@ mapscripts OrchardPath_MapScripts {
 
 script OrchardPath_EventScript_UumeForestSoulkeepSign {
 	msgbox(format(
-		"{UP_ARROW} Uume Forest\n"
+		"{UP_ARROW} Samurai Palace\n"
+		"{LEFT_ARROW}{UP_ARROW} Uume Forest\l"
 		"{LEFT_ARROW} Soulkeep"
 	), MSGBOX_SIGN)
 }
