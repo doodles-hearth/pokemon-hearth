@@ -1561,6 +1561,8 @@ const struct BlendSettings gTimeOfDayBlend[] =
 
 void UpdateTimeOfDay(void)
 {
+    if (!OW_ENABLE_DNS)
+        return;
     s32 hours, minutes;
     RtcCalcLocalTime();
     hours = sHoursOverride ? sHoursOverride : gLocalTime.hours;
@@ -1614,21 +1616,31 @@ void UpdateTimeOfDay(void)
     }
 }
 
+#undef MORNING_HOUR_MIDDLE
 #undef TIME_BLEND_WEIGHT
+#undef DEFAULT_WEIGHT
 
 // Whether a map type is naturally lit/outside
-bool8 MapHasNaturalLight(u8 mapType)
+bool32 MapHasNaturalLight(u8 mapType)
 {
     return (mapType == MAP_TYPE_TOWN
          || mapType == MAP_TYPE_CITY
          || mapType == MAP_TYPE_ROUTE
-         || mapType == MAP_TYPE_OCEAN_ROUTE
-    );
+         || mapType == MAP_TYPE_OCEAN_ROUTE);
+}
+
+bool32 CurrentMapHasShadows(void)
+{
+    // Add all conditionals here for maps that shouldn't have shadows
+    // By default only cave maps are excluded from having shadows under object events
+    return (gMapHeader.mapType != MAP_TYPE_UNDERGROUND);
 }
 
 // Update & mix day / night bg palettes (into unfaded)
 void UpdateAltBgPalettes(u16 palettes)
 {
+    if (!OW_ENABLE_DNS)
+        return;
     const struct Tileset *primary = gMapHeader.mapLayout->primaryTileset;
     const struct Tileset *secondary = gMapHeader.mapLayout->secondaryTileset;
     u32 i = 1;
@@ -1645,9 +1657,9 @@ void UpdateAltBgPalettes(u16 palettes)
         if (palettes & 1)
         {
             if (i < NUM_PALS_IN_PRIMARY)
-                AvgPaletteWeighted(&((u16*)primary->palettes)[i*16], &((u16*)primary->palettes)[((i+9)%16)*16], gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
+                AvgPaletteWeighted(&((u16 *)primary->palettes)[i * 16], &((u16 *)primary->palettes)[((i + 9) % 16) * 16], gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
             else
-                AvgPaletteWeighted(&((u16*)secondary->palettes)[i*16], &((u16*)secondary->palettes)[((i+9)%16)*16], gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
+                AvgPaletteWeighted(&((u16 *)secondary->palettes)[i * 16], &((u16 *)secondary->palettes)[((i + 9) % 16) * 16], gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
         }
         i++;
         palettes >>= 1;
@@ -1656,32 +1668,29 @@ void UpdateAltBgPalettes(u16 palettes)
 
 void UpdatePalettesWithTime(u32 palettes)
 {
-    if (MapHasNaturalLight(gMapHeader.mapType))
-    {
-        u32 i;
-        u32 mask = 1 << 16;
-        if (palettes >= (1 << 16))
+    if (!OW_ENABLE_DNS || !MapHasNaturalLight(gMapHeader.mapType))
+        return;
+    u32 i;
+    u32 mask = 1 << 16;
+    if (palettes >= (1 << 16))
         for (i = 0; i < 16; i++, mask <<= 1)
         {
             if (IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(i)))
                 palettes &= ~(mask);
         }
 
-        palettes &= PALETTES_MAP | PALETTES_OBJECTS; // Don't blend UI pals
-        if (!palettes)
-            return;
-        TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
-    }
+    palettes &= PALETTES_MAP | PALETTES_OBJECTS; // Don't blend UI pals
+    if (!palettes)
+        return;
+    TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
 }
 
 u8 UpdateSpritePaletteWithTime(u8 paletteNum)
 {
-    if (MapHasNaturalLight(gMapHeader.mapType))
-    {
-        if (IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(paletteNum)))
-            return paletteNum;
+    if (OW_ENABLE_DNS
+     && MapHasNaturalLight(gMapHeader.mapType)
+     && !IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(paletteNum)))
         TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
-    }
     return paletteNum;
 }
 
@@ -3182,7 +3191,7 @@ static void ZeroObjectEvent(struct ObjectEvent *objEvent)
 // conflict with the usual Event Object struct, thus the definitions.
 #define linkGender(obj) obj->singleMovementActive
 // not even one can reference *byte* aligned bitfield members...
-#define linkDirection(obj) ((u8 *)obj)[offsetof(typeof(*obj), fieldEffectSpriteId) - 1] // -> rangeX
+#define linkDirection(obj) ((u8 *)obj)[offsetof(typeof(*obj), range)] // -> rangeX
 
 static void SpawnLinkPlayerObjectEvent(u8 linkPlayerId, s16 x, s16 y, u8 gender)
 {
@@ -3452,7 +3461,7 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
         sprite->data[0] = linkPlayerId;
         objEvent->triggerGroundEffectsOnMove = FALSE;
         objEvent->localId = OBJ_EVENT_ID_DYNAMIC_BASE + linkPlayerId;
-        SetUpShadow(objEvent, sprite);
+        SetUpShadow(objEvent);
     }
 }
 
@@ -3518,7 +3527,7 @@ static u8 ReformatItemDescription(u16 item, u8 *dest)
     u8 count = 0;
     u8 numLines = 1;
     u8 maxChars = 32;
-    u8 *desc = (u8 *)gItemsInfo[item].description;
+    u8 *desc = (u8 *)ItemId_GetDescription(item);
 
     while (*desc != EOS)
     {

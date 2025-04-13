@@ -599,7 +599,7 @@
 #define BLDCNT_EFFECT_BLEND     (1 << 6)   // 1st+2nd targets mixed (controlled by BLDALPHA)
 #define BLDCNT_EFFECT_LIGHTEN   (2 << 6)   // 1st target becomes whiter (controlled by BLDY)
 #define BLDCNT_EFFECT_DARKEN    (3 << 6)   // 1st target becomes blacker (controlled by BLDY)
-#define BLDCNT_EFFECT_EFF_MASK  (3 << 6)    // mask to check effect
+#define BLDCNT_EFFECT_EFF_MASK  (3 << 6)   // mask to check effect
 // Bits 8-13 select layers for the 2nd target
 #define BLDCNT_TGT2_BG0      (1 << 8)
 #define BLDCNT_TGT2_BG1      (1 << 9)

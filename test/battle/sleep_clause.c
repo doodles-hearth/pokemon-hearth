@@ -927,6 +927,8 @@ DOUBLE_BATTLE_TEST("Sleep Clause: Sleep clause is deactivated when a sleeping mo
     }
 }
 
+//  Test not applicable due to change to item use in battles
+/*
 SINGLE_BATTLE_TEST("Sleep Clause: Sleep clause is deactivated when a sleeping mon is woken up by using an item")
 {
     GIVEN {
@@ -950,6 +952,7 @@ SINGLE_BATTLE_TEST("Sleep Clause: Sleep clause is deactivated when a sleeping mo
         MESSAGE("The opposing Zigzagoon fell asleep!");
     }
 }
+*/
 
 SINGLE_BATTLE_TEST("Sleep Clause: Sleep clause is deactivated when a sleeping mon faints")
 {
@@ -1390,7 +1393,6 @@ SINGLE_BATTLE_TEST("Sleep Clause: Suppressing and then sleeping Vital Spirit / I
 
 SINGLE_BATTLE_TEST("Sleep Clause: Mold Breaker Pokémon sleeping Vital Spirit / Insomnia activates sleep clause")
 {
-    KNOWN_FAILING; // Interaction between Mold Breaker and Vital Spirit / Insomnia is broken. Issue #5578 https://github.com/rh-hideout/pokeemerald-expansion/issues/5578
     u32 ability;
     PARAMETRIZE { ability = ABILITY_VITAL_SPIRIT; }
     PARAMETRIZE { ability = ABILITY_INSOMNIA; }
@@ -1410,7 +1412,7 @@ SINGLE_BATTLE_TEST("Sleep Clause: Mold Breaker Pokémon sleeping Vital Spirit / 
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, opponent);
         MESSAGE("The opposing Delibird fell asleep!");
         STATUS_ICON(opponent, sleep: TRUE);
-        MESSAGE("Sleep Clause kept the opposing Delibird awake!");
+        ABILITY_POPUP(opponent, ability);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPORE, player);
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, opponent);
         MESSAGE("The opposing Zigzagoon fell asleep!");
@@ -1518,7 +1520,7 @@ SINGLE_BATTLE_TEST("Sleep Clause: Reflection moves (ie. Magic Coat) fail if slee
         MESSAGE("The opposing Zigzagoon fell asleep!");
         STATUS_ICON(opponent, sleep: TRUE);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MAGIC_COAT, player);
-        MESSAGE("The opposing Zigzagoon bounced the Spore back!"); // Should be MESSAGE("Zigzagoon bounced the Spore back!"); Issue #5579 https://github.com/rh-hideout/pokeemerald-expansion/issues/5579
+        MESSAGE("Zigzagoon bounced the Spore back!");
         MESSAGE("Sleep Clause kept the opposing Zigzagoon awake!");
     }
 }

@@ -4,7 +4,7 @@
 #include "config/overworld.h"
 
 // sPaletteColorMapTypes & field_effect_scripts
-enum
+enum ColorMapType
 {
     COLOR_MAP_NONE,
     COLOR_MAP_DARK_CONTRAST,
