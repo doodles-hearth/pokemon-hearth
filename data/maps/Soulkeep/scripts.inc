@@ -1,5 +1,10 @@
 Soulkeep_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Soulkeep_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Soulkeep_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	callnative TrySetSoulkeepMusic
+	return
 
 
 Soulkeep_EventScript_TownSign::

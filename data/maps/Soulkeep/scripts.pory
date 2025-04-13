@@ -1,5 +1,7 @@
 mapscripts Soulkeep_MapScripts {
-
+	MAP_SCRIPT_ON_TRANSITION {
+		callnative(TrySetSoulkeepMusic)
+	}
 }
 
 script Soulkeep_EventScript_TownSign {

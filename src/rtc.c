@@ -8,6 +8,8 @@
 #include "text.h"
 #include "fake_rtc.h"
 #include "overworld.h"
+#include "constants/songs.h"
+#include "sound.h"
 
 // iwram bss
 static u16 sErrorStatus;
@@ -441,4 +443,22 @@ enum TimeOfDay TryIncrementTimeOfDay(enum TimeOfDay timeOfDay)
 enum TimeOfDay TryDecrementTimeOfDay(enum TimeOfDay timeOfDay)
 {
     return timeOfDay == TIME_MORNING ? TIME_NIGHT : timeOfDay - 1;
+}
+
+// Sets creepy music in Soulkeep during the night,
+// regular music during the day
+void TrySetSoulkeepMusic(void)
+{
+    u32 soulkeepMusic;
+    u32 i = GetTimeOfDay();
+    if (i == TIME_EVENING || i == TIME_NIGHT || i == TIME_DEAD_NIGHT)
+    {
+        soulkeepMusic = MUS_MT_PYRE;
+    }
+    else
+    {
+        soulkeepMusic = MUS_RG_SEVII_67;
+    }
+    Overworld_SetSavedMusic(soulkeepMusic);
+    PlayNewMapMusic(soulkeepMusic);
 }
