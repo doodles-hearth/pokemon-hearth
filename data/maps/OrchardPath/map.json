@@ -230,7 +230,7 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 86,
+      "x": 87,
       "y": 20,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
