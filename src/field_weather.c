@@ -811,7 +811,7 @@ void FadeScreen(u8 mode, s8 delay)
 // Note: This enables blending in all windows;
 // These bits may need to be disabled later
 // (i.e if blending lighting effects using WINOBJ)
-u32 FadeScreenHardware(u32 mode, s32 delay)
+void FadeScreenHardware(u32 mode, s32 delay)
 {
     u32 bldCnt = GetGpuReg(REG_OFFSET_BLDCNT) & BLDCNT_TGT2_ALL;
     bldCnt |= BLDCNT_TGT1_ALL;
@@ -834,8 +834,6 @@ u32 FadeScreenHardware(u32 mode, s32 delay)
         BeginHardwarePaletteFade(bldCnt | BLDCNT_EFFECT_LIGHTEN, delay, 0, 16, FALSE);
         break;
     }
-
-    return 0;
 }
 
 bool8 IsWeatherNotFadingIn(void)
@@ -896,17 +894,6 @@ void UpdateSpritePaletteWithWeather(u8 spritePaletteIndex, bool8 allowFog)
         }
         break;
     }
-    // If faded out, i.e due to fadescreenswapbuffers,
-    // Copy unfaded palette to pal decomp buffer
-    // so it will be restored on fade-in
-    /*
-    if (gPaletteFade.y == 16)
-        CpuFastCopy(
-            gPlttBufferUnfaded + OBJ_PLTT_ID(spritePaletteIndex),
-            gDecompressionBuffer + 2 * OBJ_PLTT_ID(spritePaletteIndex),
-            PLTT_SIZE_4BPP
-        );
-    */
 }
 
 void ApplyWeatherColorMapToPals(u8 startPalIndex, u8 numPalettes)
@@ -1162,7 +1149,7 @@ void SetWeatherPalStateIdle(void)
     gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
 }
 
-const u8* SetPaletteColorMapType(u8 paletteIndex, u8 colorMapType)
+const u8 *SetPaletteColorMapType(u8 paletteIndex, enum ColorMapType colorMapType)
 {
     if (sPaletteColorMapTypes[paletteIndex] == colorMapType)
         return sPaletteColorMapTypes;
@@ -1183,9 +1170,8 @@ void PreservePaletteInWeather(u8 preservedPalIndex)
 
 void ResetPaletteColorMapType(u8 paletteIndex)
 {
-    if (sPaletteColorMapTypes == sBasePaletteColorMapTypes)
-        return;
-    sFieldEffectPaletteColorMapTypes[paletteIndex] = sBasePaletteColorMapTypes[paletteIndex];
+    if (sPaletteColorMapTypes != sBasePaletteColorMapTypes)
+        sFieldEffectPaletteColorMapTypes[paletteIndex] = sBasePaletteColorMapTypes[paletteIndex];
 }
 
 void ResetPreservedPalettesInWeather(void)

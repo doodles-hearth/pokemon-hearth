@@ -1,6 +1,8 @@
 #include "global.h"
 #include "test/battle.h"
 
+// Tests not applicable due to removed battle usage
+/*
 SINGLE_BATTLE_TEST("Paralyze Heal heals a battler from being paralyzed")
 {
     GIVEN {
@@ -134,6 +136,7 @@ SINGLE_BATTLE_TEST("Full Heal heals a battler from any primary status")
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
 }
+*/
 
 SINGLE_BATTLE_TEST("Heal Powder heals a battler from any primary status")
 {
@@ -365,6 +368,8 @@ SINGLE_BATTLE_TEST("Jubilife Muffin heals a battler from any primary status")
     }
 }
 
+// Test not applicable due to removed battle usage
+/*
 SINGLE_BATTLE_TEST("Full Heal, Heal Powder and Local Specialties heal a battler from being confused")
 {
     u16 item;
@@ -392,3 +397,4 @@ SINGLE_BATTLE_TEST("Full Heal, Heal Powder and Local Specialties heal a battler 
         EXPECT_EQ(player->status2, STATUS1_NONE); // because we dont have STATUS2_NONE
     }
 }
+*/
