@@ -310,6 +310,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_EXPERT] = { _("Expert"), 10 },
     [TRAINER_CLASS_AQUA_ADMIN] = { _("AQUA ADMIN"), 10 },
     [TRAINER_CLASS_BLACK_BELT] = { _("Kung-fu Guy"), 8, ITEM_ULTRA_BALL },
+    [TRAINER_CLASS_ROCK_SMASHER] = { _("Rock"), 1, ITEM_POKE_BALL },
     [TRAINER_CLASS_AQUA_LEADER] = { _("AQUA LEADER"), 20, ITEM_MASTER_BALL },
     [TRAINER_CLASS_HEX_MANIAC] = { _("Hex Maniac"), 6 },
     [TRAINER_CLASS_AROMA_LADY] = { _("Aroma Lady"), 10 },

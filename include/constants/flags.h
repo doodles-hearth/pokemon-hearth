@@ -76,7 +76,7 @@
 #define FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE 0x38
 #define FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE      0x39
 #define FLAG_NO_COLLISION    0x3A
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
+#define FLAG_BEAT_ROCK_SMASHER    0x3B
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag
 #define FLAG_UNUSED_0x03D    0x3D // Unused Flag
 #define FLAG_UNUSED_0x03E    0x3E // Unused Flag

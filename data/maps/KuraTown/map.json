@@ -297,7 +297,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SakuTown_EventScript_PokemonCouncil",
+      "script": "KuraTown_EventScript_PokemonCouncil",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,

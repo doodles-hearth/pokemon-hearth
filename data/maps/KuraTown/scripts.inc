@@ -168,6 +168,16 @@ KuraTown_EventScript_LovestruckGuy::
 	return
 
 
+KuraTown_EventScript_PokemonCouncil::
+	lock
+	faceplayer
+	speakername KuraTown_EventScript_PokemonCouncil_Text_0
+	msgbox KuraTown_EventScript_PokemonCouncil_Text_1
+	closemessage
+	release
+	return
+
+
 KuraTown_EventScript_TownSign::
 	msgbox KuraTown_EventScript_TownSign_Text_0, MSGBOX_SIGN
 	return
@@ -278,13 +288,24 @@ SakuTown_EventScript_ClosedGymDoor_Text_0:
 	.string "- Hana”$"
 
 KuraTown_EventScript_LovestruckGuy_Text_0:
-	.string "Lovestruck Guy$"
+	.string "Lovestruck Boy$"
 
 KuraTown_EventScript_LovestruckGuy_Text_1:
 	.string "I just got back home after spending\n"
 	.string "time with my love, and yet I already\l"
 	.string "want the day to pass by and let me\l"
 	.string "see her again…$"
+
+KuraTown_EventScript_PokemonCouncil_Text_0:
+	.string "Woman$"
+
+KuraTown_EventScript_PokemonCouncil_Text_1:
+	.string "The Elders of Toku may look like a\n"
+	.string "bunch of old people, but each of them\l"
+	.string "was once a formidable Wielder!\p"
+	.string "They paved tha way for what Pokémon\n"
+	.string "Wielding is today, and will be\l"
+	.string "tomorrow.$"
 
 KuraTown_EventScript_TownSign_Text_0:
 	.string "Kura Village\n"

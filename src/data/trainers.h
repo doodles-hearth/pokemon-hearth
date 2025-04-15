@@ -1320,17 +1320,17 @@ F_TRAINER_FEMALE |
         },
     },
 #line 609
-    [DIFFICULTY_NORMAL][TRAINER_DECLAN] =
+    [DIFFICULTY_NORMAL][TRAINER_ROCK_SMASH_GUY] =
     {
 #line 610
-        .trainerName = _("DECLAN"),
+        .trainerName = _("Smasher"),
 #line 611
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+        .trainerClass = TRAINER_CLASS_ROCK_SMASHER,
 #line 612
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
 #line 614
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+            TRAINER_ENCOUNTER_MUSIC_INTENSE,
 #line 615
         .doubleBattle = FALSE,
 #line 616
@@ -1340,14 +1340,18 @@ F_TRAINER_FEMALE |
         {
             {
 #line 618
-            .species = SPECIES_GYARADOS,
+            .species = SPECIES_MAKUHITA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 620
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 619
-            .lvl = 34,
+            .lvl = 10,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 620
+                MOVE_ROCK_SMASH,
+            },
             },
         },
     },

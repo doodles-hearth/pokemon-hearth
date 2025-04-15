@@ -606,18 +606,18 @@ Carvanha
 Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DECLAN ===
-Name: DECLAN
-Class: Swimmer M
-Pic: Swimmer M
+=== TRAINER_ROCK_SMASH_GUY ===
+Name: Smasher
+Class: Rock Smasher
+Pic: Black Belt
 Gender: Male
-Music: Swimmer
+Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Gyarados
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Makuhita
+Level: 10
+- Rock Smash
 
 === TRAINER_GRUNT_RUSTURF_TUNNEL ===
 Name: GRUNT
