@@ -29,7 +29,7 @@ script Silveridge_House1_EventScript_Sculptor {
 			// Next mon
 			setvar(VAR_TEMP_2, SPECIES_HERACROSS)
 			// Reward
-			setvar(VAR_TEMP_3, ITEM_TM_ROCK_BLAST)
+			setvar(VAR_TEMP_3, ITEM_TM_ANCIENT_POWER)
 
 			call(Silveridge_House1_EventScript_Sculptor_BringMeMon)
 	}
