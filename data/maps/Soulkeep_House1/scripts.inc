@@ -62,8 +62,8 @@ Soulkeep_House1_EventScript_Girl_Text_0:
 Soulkeep_House1_EventScript_Girl_Text_1:
 	.string "Were… Were you outside just now?\p"
 	.string "Oh, I'm too scared to leave…\n"
-	.string "Those ghost Pokémon do bad things\l"
-	.string "to people…$"
+	.string "Those ghost Pokémon do bad things to\l"
+	.string "people…$"
 
 Soulkeep_House1_EventScript_EnGarde_Text_0:
 	.string "Farmer$"
@@ -75,15 +75,15 @@ Soulkeep_House1_EventScript_EnGarde_Text_1:
 
 Soulkeep_House1_EventScript_Farmer_Text_0:
 	.string "Our crops are being neglected…\p"
-	.string "None dare till the field and turn\n"
-	.string "their back on the ghosts!$"
+	.string "None dare till the field and turn their\n"
+	.string "back on the ghosts!$"
 
 Soulkeep_House1_EventScript_LittleGirl_Text_0:
 	.string "Little Girl$"
 
 Soulkeep_House1_EventScript_LittleGirl_Text_1:
-	.string "Nothing bad can happen to us so\n"
-	.string "long as Fennekin keeps us safe!\p"
+	.string "Nothing bad can happen to us so long\n"
+	.string "as Fennekin keeps us safe!\p"
 	.string "I feed him lots of twigs for him to\n"
 	.string "keep us warm!$"
 

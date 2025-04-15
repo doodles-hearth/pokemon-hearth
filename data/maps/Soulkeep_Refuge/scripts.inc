@@ -47,8 +47,6 @@ Soulkeep_Refuge_EventScript_Man_Text_1:
 
 Soulkeep_Refuge_EventScript_NewDojo_Text_0:
 	.string "Some of the town's farmers got\n"
-	.string "together with Guang to form a\l"
-	.string "Dojo.\p"
-	.string "Guang says he's tired of us “living\n"
-	.string "in the shadows”, whatever that\l"
-	.string "means.$"
+	.string "together with Guang to form a Dojo.\p"
+	.string "Guang says he's tired of us “living in\n"
+	.string "the shadows”, whatever that means.$"

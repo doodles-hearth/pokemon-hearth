@@ -86,10 +86,10 @@ YifuCity_House4_EventScript_NameRater_Text_3:
 YifuCity_House4_EventScript_NameRater_Text_4:
 	.string "{STR_VAR_1}…\n"
 	.string "I see what you were going for…\p"
-	.string "{FONT_SMALL}Yikes…{FONT_NORMAL} I don't see this Pokémon's\n"
-	.string "soul in this name…\p"
-	.string "Are you inspired to bestow a new\n"
-	.string "name on it?\p"
+	.string "{FONT_SMALL}Yikes…{FONT_NORMAL} I don't see this Pokémon's soul\n"
+	.string "in this name…\p"
+	.string "Are you inspired to bestow a new name\n"
+	.string "on it?\p"
 	.string "Go ahead! Speak from your heart!$"
 
 YifuCity_House4_EventScript_NameRater_Text_5:
@@ -97,15 +97,13 @@ YifuCity_House4_EventScript_NameRater_Text_5:
 	.string "This name rings with truth!\p"
 	.string "Look… Your Pokémon seems happy\n"
 	.string "about its new name!\p"
-	.string "Goodbye! May wisdom guide your\n"
-	.string "steps!\p"
+	.string "Goodbye! May wisdom guide your steps!\p"
 	.string "{FONT_SMALL}Bah! I should ask money for this…{FONT_NORMAL}$"
 
 YifuCity_House4_EventScript_NameRater_Text_6:
-	.string "This new name… It sounds a little\n"
-	.string "like its old name…\p"
-	.string "{FONT_SMALL}Wait, what was the old name\n"
-	.string "again?{FONT_NORMAL}\p"
+	.string "This new name… It sounds a little like\n"
+	.string "its old name…\p"
+	.string "{FONT_SMALL}Wait, what was the old name again?{FONT_NORMAL}\p"
 	.string "Bah… You're confusing me!$"
 
 YifuCity_House4_EventScript_NameRater_Text_7:

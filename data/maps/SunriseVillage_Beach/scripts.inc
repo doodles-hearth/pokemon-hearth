@@ -271,11 +271,9 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_4:
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_5:
 	.string "Nah, you know me.\n"
-	.string "We'll figure it out when we get\l"
-	.string "there.\p"
+	.string "We'll figure it out when we get there.\p"
 	.string "That's what I've always done,\n"
-	.string "everything turns out fine\l"
-	.string "eventually.$"
+	.string "everything turns out fine eventually.$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_6:
 	.string "Hey, look.\p"
@@ -310,8 +308,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_12:
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_13:
 	.string "Hell yeah!\p"
-	.string "We're going to make awesome\n"
-	.string "wielders,\n"
+	.string "We're going to make awesome wielders,\n"
 	.string "I can already tell.\p"
 	.string "Maybe you'll even be second best\n"
 	.string "one day…\p"
@@ -337,11 +334,9 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_15:
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_16:
 	.string "Woah, there it goes again!\n"
 	.string "You good, {PLAYER}?\p"
-	.string "Whew! Those quakes are no joke,\n"
-	.string "huh?\p"
+	.string "Whew! Those quakes are no joke, huh?\p"
 	.string "Maybe the volcano's telling us\n"
-	.string "to get to Elder Kaba's house\l"
-	.string "already.$"
+	.string "to get to Elder Kaba's house already.$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_17:
 	.string "Aw Shuckles, the distribution's\n"

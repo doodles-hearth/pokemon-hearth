@@ -344,11 +344,11 @@ YifuCity_EventScript_WhirlpoolTutor_Text_0:
 
 YifuCity_EventScript_WhirlpoolTutor_Text_1:
 	.string "Hm? I can teach Whirlpool to your\n"
-	.string "Pokémon again, but you have to\l"
-	.string "make it worth my while, alright?\p"
+	.string "Pokémon again, but you have to make\l"
+	.string "it worth my while, alright?\p"
 	.string "I'm very fond of Heart Scales. They\n"
-	.string "remind me of the sea. I'll do it\l"
-	.string "in exchange for one!$"
+	.string "remind me of the sea. I'll do it in\l"
+	.string "exchange for one!$"
 
 YifuCity_EventScript_WhirlpoolTutor_Text_2:
 	.string "Give Heart Scale$"
@@ -358,11 +358,11 @@ YifuCity_EventScript_WhirlpoolTutor_Text_3:
 
 YifuCity_EventScript_WhirlpoolTutor_Text_4:
 	.string "Hm? No, I'm not fishing.\p"
-	.string "I'm just watching the tiny\n"
-	.string "whirlpools that Pokémon make in\l"
-	.string "the shallow water.\p"
-	.string "Would you like your Pokémon to\n"
-	.string "make whirlpools too?\p"
+	.string "I'm just watching the tiny whirlpools\n"
+	.string "that Pokémon make in the shallow\l"
+	.string "water.\p"
+	.string "Would you like your Pokémon to make\n"
+	.string "whirlpools too?\p"
 	.string "I could teach them the way of the\n"
 	.string "Whirlpool!$"
 
@@ -373,9 +373,8 @@ YifuCity_EventScript_WhirlpoolTutor_Text_6:
 	.string "Maybe later.$"
 
 YifuCity_EventScript_WhirlpoolTutor_Text_7:
-	.string "I see. The way of the Whirlpool\n"
-	.string "hasn't made it into your heart\l"
-	.string "yet.\p"
+	.string "I see. The way of the Whirlpool hasn't\n"
+	.string "made it into your heart yet.\p"
 	.string "That's okay!$"
 
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_0:
@@ -384,13 +383,13 @@ YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_0:
 	.string "Whirlpool?$"
 
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_1:
-	.string "You can now watch your Pokémon\n"
-	.string "make tiny whirlpools!\p"
+	.string "You can now watch your Pokémon make\n"
+	.string "tiny whirlpools!\p"
 	.string "You'll see, it's very relaxing.\p"
 	.string "I'll take that Heart Scale you\n"
 	.string "promised now, please and thank you!$"
 
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_2:
-	.string "You can now watch your Pokémon\n"
-	.string "make tiny whirlpools!\p"
+	.string "You can now watch your Pokémon make\n"
+	.string "tiny whirlpools!\p"
 	.string "You'll see, it's very relaxing.$"

@@ -120,8 +120,7 @@ Soulkeep_Mart:
 
 Soulkeep_EventScript_TownSign_Text_0:
 	.string "Soulkeep\n"
-	.string "“A town where souls are laid to\l"
-	.string "rest.”$"
+	.string "“A town where souls are laid to rest.”$"
 
 Soulkeep_EventScript_IncenseShopSign_Text_0:
 	.string "Incense Shop$"
@@ -134,8 +133,8 @@ Soulkeep_EventScript_Man_Text_0:
 	.string "Man$"
 
 Soulkeep_EventScript_Man_Text_1:
-	.string "Can you believe this place used to\n"
-	.string "be a quaint little farmers' town?\p"
+	.string "Can you believe this place used to be\n"
+	.string "a quaint little farmers' town?\p"
 	.string "Ever since the ghosts have started\n"
 	.string "roaming the streets, the townsfolk\l"
 	.string "are afraid of leaving their homes.\p"
