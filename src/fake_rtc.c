@@ -2,6 +2,7 @@
 #include "string_util.h"
 #include "strings.h"
 #include "text.h"
+#include "datetime.h"
 #include "rtc.h"
 #include "fake_rtc.h"
 #include "event_data.h"
@@ -15,9 +16,10 @@ void FakeRtc_Reset(void)
 {
 #if OW_USE_FAKE_RTC
     memset(&gSaveBlock3Ptr->fakeRTC, 0, sizeof(gSaveBlock3Ptr->fakeRTC));
-    gSaveBlock3Ptr->fakeRTC.month = MONTH_JAN;
-    gSaveBlock3Ptr->fakeRTC.day = 1;
-    gSaveBlock3Ptr->fakeRTC.dayOfWeek = WEEKDAY_SAT;
+    gSaveBlock3Ptr->fakeRTC.year = 0; // offset by gGen3Epoch.year
+    gSaveBlock3Ptr->fakeRTC.month = gGen3Epoch.month;
+    gSaveBlock3Ptr->fakeRTC.day = gGen3Epoch.day;
+    gSaveBlock3Ptr->fakeRTC.dayOfWeek = gGen3Epoch.dayOfWeek;
 #endif
 }
 
@@ -48,73 +50,38 @@ void FakeRtc_TickTimeForward(void)
     FakeRtc_AdvanceTimeBy(0, 0, 0, FakeRtc_GetSecondsRatio());
 }
 
-static void FakeRtc_AdvanceSeconds(struct SiiRtcInfo *rtc, u32 *days, u32 *hours, u32 *minutes, u32 *seconds)
-{
-    *seconds += rtc->second;
-    *minutes += rtc->minute;
-    *hours += rtc->hour;
-
-    while (*seconds >= SECONDS_PER_MINUTE)
-    {
-        (*minutes)++;
-        *seconds -= SECONDS_PER_MINUTE;
-    }
-    while (*minutes >= MINUTES_PER_HOUR)
-    {
-        (*hours)++;
-        *minutes -= MINUTES_PER_HOUR;
-    }
-    while (*hours >= HOURS_PER_DAY)
-    {
-        (*days)++;
-        *hours -= HOURS_PER_DAY;
-    }
-    
-    rtc->second = *seconds;
-    rtc->minute = *minutes;
-    rtc->hour = *hours;
-}
-
-static void FakeRtc_SetDayOfWeek(struct SiiRtcInfo *rtc, u32 daysToAdd)
-{
-    rtc->dayOfWeek = (rtc->dayOfWeek + daysToAdd) % WEEKDAY_COUNT;
-}
-
-static void FakeRtc_AdvanceDays(struct SiiRtcInfo *rtc, u32 *days)
-{
-    Script_PauseFakeRtc();
-    u32 remainingDaysInMonth = (sNumDaysInMonths[rtc->month - 1] + (rtc->month == MONTH_FEB && IsLeapYear(rtc->year)) - rtc->day);
-    if (*days > remainingDaysInMonth)
-    {
-        rtc->day = 1;
-        rtc->month++;
-        if (rtc->month > MONTH_DEC)
-        {
-            rtc->month = MONTH_JAN;
-            rtc->year++;
-        }
-        *days -= (remainingDaysInMonth + 1);
-        FakeRtc_SetDayOfWeek(rtc, remainingDaysInMonth + 1);
-    }
-    else
-    {
-        rtc->day += *days;
-        FakeRtc_SetDayOfWeek(rtc, *days);
-        *days = 0;
-    }
-    Script_ResumeFakeRtc();
-}
-
 void FakeRtc_AdvanceTimeBy(u32 days, u32 hours, u32 minutes, u32 seconds)
 {
-    Script_PauseFakeRtc();
+    struct DateTime dateTime;
     struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
-    FakeRtc_AdvanceSeconds(rtc, &days, &hours, &minutes, &seconds);
 
-    while (days > 0)
-        FakeRtc_AdvanceDays(rtc, &days);
-    Script_ResumeFakeRtc();
+    ConvertRtcToDateTime(&dateTime, rtc);
+    DateTime_AddSeconds(&dateTime, seconds);
+    DateTime_AddMinutes(&dateTime, minutes);
+    DateTime_AddHours(&dateTime, hours);
+    DateTime_AddDays(&dateTime, days);
+    ConvertDateTimeToRtc(rtc, &dateTime);
 }
+
+void FakeRtc_ManuallySetTime(u32 day, u32 hour, u32 minute, u32 second)
+{
+    FakeRtc_Reset();
+    FakeRtc_AdvanceTimeBy(day, hour, minute, second);
+}
+
+// void AdvanceScript(void)
+// {
+//     FakeRtc_AdvanceTimeBy(300, 0, 0, 0);
+// }
+
+u32 FakeRtc_GetSecondsRatio(void)
+{
+    return (OW_ALTERED_TIME_RATIO == GEN_8_PLA) ? 60 :
+           (OW_ALTERED_TIME_RATIO == GEN_9)     ? 20 :
+                                                  1;
+}
+
+STATIC_ASSERT((OW_FLAG_PAUSE_TIME == 0 || OW_USE_FAKE_RTC == TRUE), FakeRtcMustBeTrueToPauseTime);
 
 void FakeRtc_ForwardTimeTo(u32 hour, u32 minute, u32 second)
 {
@@ -166,21 +133,6 @@ static void FakeRtc_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t
         --result->days;
     }
 }
-
-void FakeRtc_ForceSetTime(u32 day, u32 hour, u32 minute, u32 second)
-{
-    FakeRtc_Reset();
-    FakeRtc_AdvanceTimeBy(day, hour, minute, second);
-}
-
-u32 FakeRtc_GetSecondsRatio(void)
-{
-    return (OW_ALTERED_TIME_RATIO == GEN_8_PLA) ? 60 :
-           (OW_ALTERED_TIME_RATIO == GEN_9)     ? 20 :
-                                                  1;
-}
-
-STATIC_ASSERT((FLAG_PAUSE_FAKERTC == 0 || OW_USE_FAKE_RTC == TRUE), FakeRtcMustBeTrueToPauseTime);
 
 void Script_PauseFakeRtc(void)
 {

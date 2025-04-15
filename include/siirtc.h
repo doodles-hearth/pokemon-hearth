@@ -13,7 +13,7 @@
 #define MINUTES_PER_HOUR    60
 #define SECONDS_PER_MINUTE  60
 
-enum
+enum Weekday
 {
     WEEKDAY_SUN,
     WEEKDAY_MON,
@@ -25,20 +25,21 @@ enum
     WEEKDAY_COUNT,
 };
 
-enum
+enum Month
 {
     MONTH_JAN = 1,
-    MONTH_FEB = 2,
-    MONTH_MAR = 3,
-    MONTH_APR = 4,
-    MONTH_MAY = 5,
-    MONTH_JUN = 6,
-    MONTH_JUL = 7,
-    MONTH_AUG = 8,
-    MONTH_SEP = 9,
-    MONTH_OCT = 10,
-    MONTH_NOV = 11,
-    MONTH_DEC = 12,
+    MONTH_FEB,
+    MONTH_MAR,
+    MONTH_APR,
+    MONTH_MAY,
+    MONTH_JUN,
+    MONTH_JUL,
+    MONTH_AUG,
+    MONTH_SEP,
+    MONTH_OCT,
+    MONTH_NOV,
+    MONTH_DEC,
+    MONTH_COUNT = MONTH_DEC
 };
 
 struct SiiRtcInfo
