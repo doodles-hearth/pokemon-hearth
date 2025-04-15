@@ -10,6 +10,8 @@
 #include "overworld.h"
 #include "constants/songs.h"
 #include "sound.h"
+#include "constants/weather.h"
+#include "field_weather.h"
 
 // iwram bss
 static u16 sErrorStatus;
@@ -447,13 +449,14 @@ enum TimeOfDay TryDecrementTimeOfDay(enum TimeOfDay timeOfDay)
 
 // Sets creepy music in Soulkeep during the night,
 // regular music during the day
-void TrySetSoulkeepMusic(void)
+void TrySetSoulkeepAmbiance(void)
 {
     u32 soulkeepMusic;
     u32 i = GetTimeOfDay();
     if (i == TIME_EVENING || i == TIME_NIGHT || i == TIME_DEAD_NIGHT)
     {
         soulkeepMusic = MUS_MT_PYRE;
+        SetWeather(WEATHER_FOG_HORIZONTAL);
     }
     else
     {

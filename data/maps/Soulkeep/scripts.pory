@@ -1,6 +1,6 @@
 mapscripts Soulkeep_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		callnative(TrySetSoulkeepMusic)
+		callnative(TrySetSoulkeepAmbiance)
 	}
 }
 

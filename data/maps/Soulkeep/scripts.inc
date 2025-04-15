@@ -3,7 +3,7 @@ Soulkeep_MapScripts::
 	.byte 0
 
 Soulkeep_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	callnative TrySetSoulkeepMusic
+	callnative TrySetSoulkeepAmbiance
 	return
 
 

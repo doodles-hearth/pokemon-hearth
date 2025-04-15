@@ -310,3 +310,6 @@ const u16 gMetatileAttributes_SecretBaseHearthBrownCave[] = INCBIN_U16("data/til
 
 const u16 gMetatiles_Shogunate[] = INCBIN_U16("data/tilesets/secondary/shogunate/metatiles.bin");
 const u16 gMetatileAttributes_Shogunate[] = INCBIN_U16("data/tilesets/secondary/shogunate/metatile_attributes.bin");
+
+const u16 gMetatiles_PuddlePath[] = INCBIN_U16("data/tilesets/secondary/puddle_path/metatiles.bin");
+const u16 gMetatileAttributes_PuddlePath[] = INCBIN_U16("data/tilesets/secondary/puddle_path/metatile_attributes.bin");

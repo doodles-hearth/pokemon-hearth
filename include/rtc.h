@@ -98,6 +98,6 @@ u32 RtcGetLocalDayCount(void);
 void FormatDecimalTimeWithoutSeconds(u8 *dest, s8 hour, s8 minute, bool32 is24Hour);
 enum TimeOfDay TryIncrementTimeOfDay(enum TimeOfDay timeOfDay);
 enum TimeOfDay TryDecrementTimeOfDay(enum TimeOfDay timeOfDay);
-void TrySetSoulkeepMusic(void);
+void TrySetSoulkeepAmbiance(void);
 
 #endif // GUARD_RTC_UTIL_H

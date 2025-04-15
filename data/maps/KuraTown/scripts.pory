@@ -195,13 +195,25 @@ script SakuTown_EventScript_ClosedGymDoor {
 script KuraTown_EventScript_LovestruckGuy{
 	lock
 	faceplayer
-	speakername("Lovestruck Guy")
+	speakername("Lovestruck Boy")
 	msgbox(
 		format(
 			"I just got back home after spending time with my love, and yet I already want the day to pass by and let me see her again…"
 		),
 		MSGBOX_DEFAULT
 	)
+	release
+}
+
+script KuraTown_EventScript_PokemonCouncil {
+	lock
+	faceplayer
+	speakername("Woman")
+	msgbox(format(
+		"The Elders of Toku may look like a bunch of old people, but each of them was once a formidable Wielder!\p"
+		"They paved tha way for what Pokémon Wielding is today, and will be tomorrow."
+	))
+	closemessage
 	release
 }
 
