@@ -6,6 +6,7 @@ Silveridge_House1_EventScript_Sculptor::
 	switch VAR_STATE_SCULPTOR
 	case 0, Silveridge_House1_EventScript_Sculptor_2
 	case 1, Silveridge_House1_EventScript_Sculptor_3
+	case 2, Silveridge_House1_EventScript_Sculptor_4
 	return
 
 Silveridge_House1_EventScript_Sculptor_2:
@@ -15,6 +16,13 @@ Silveridge_House1_EventScript_Sculptor_2:
 Silveridge_House1_EventScript_Sculptor_3:
 	setvar VAR_TEMP_1, SPECIES_ONIX
 	setvar VAR_TEMP_2, SPECIES_PONYTA
+	setvar VAR_TEMP_3, ITEM_TM_ANCIENT_POWER
+	call Silveridge_House1_EventScript_Sculptor_BringMeMon
+	return
+
+Silveridge_House1_EventScript_Sculptor_4:
+	setvar VAR_TEMP_1, SPECIES_PONYTA
+	setvar VAR_TEMP_2, SPECIES_HERACROSS
 	setvar VAR_TEMP_3, ITEM_TM_ANCIENT_POWER
 	call Silveridge_House1_EventScript_Sculptor_BringMeMon
 	return
@@ -42,6 +50,7 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_2:
 	applymovement VAR_LAST_TALKED, Silveridge_House1_EventScript_Sculptor_BringMeMon_Movement_0
 	waitse
 	waitmovement 0
+	bufferspeciesname STR_VAR_1, VAR_TEMP_1
 	speakername Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0
 	msgbox Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_2
 	closemessage
@@ -54,7 +63,7 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_2:
 	delay 24
 	playse SE_M_FLATTER
 	delay 48
-	fadescreen FADE_TO_BLACK
+	fadescreen FADE_FROM_BLACK
 	delay 24
 	bufferspeciesname STR_VAR_2, VAR_TEMP_2
 	speakername Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0
