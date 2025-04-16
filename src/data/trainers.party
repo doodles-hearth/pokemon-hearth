@@ -381,7 +381,7 @@ Name: Kouga
 Class: Monk
 Pic: Monk
 Gender: Male
-Music: Hiker
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -3696,7 +3696,7 @@ Name: Akari
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -3743,7 +3743,7 @@ Name: Kanae
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -4334,7 +4334,7 @@ Name: Karin
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -6349,7 +6349,7 @@ Name: Nanami
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -12170,7 +12170,7 @@ Name: Yuka
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -16115,7 +16115,7 @@ Name: Miika
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Basic Trainer
 

@@ -755,7 +755,7 @@ F_TRAINER_FEMALE |
         .trainerPic = TRAINER_PIC_MONK,
         .encounterMusic_gender =
 #line 384
-            TRAINER_ENCOUNTER_MUSIC_HIKER,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 385
         .doubleBattle = FALSE,
 #line 386
@@ -9118,7 +9118,7 @@ F_TRAINER_FEMALE |
 #line 3698
 F_TRAINER_FEMALE | 
 #line 3699
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 3700
         .doubleBattle = FALSE,
 #line 3701
@@ -9240,7 +9240,7 @@ F_TRAINER_FEMALE |
 #line 3745
 F_TRAINER_FEMALE | 
 #line 3746
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 3747
         .doubleBattle = FALSE,
 #line 3748
@@ -10721,7 +10721,7 @@ F_TRAINER_FEMALE |
 #line 4336
 F_TRAINER_FEMALE | 
 #line 4337
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 4338
         .doubleBattle = FALSE,
 #line 4339
@@ -15748,7 +15748,7 @@ F_TRAINER_FEMALE |
 #line 6351
 F_TRAINER_FEMALE | 
 #line 6352
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 6353
         .doubleBattle = FALSE,
 #line 6354
@@ -30549,7 +30549,7 @@ F_TRAINER_FEMALE |
 #line 12172
 F_TRAINER_FEMALE | 
 #line 12173
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 12174
         .doubleBattle = FALSE,
 #line 12175
@@ -40193,7 +40193,7 @@ F_TRAINER_FEMALE |
 #line 16117
 F_TRAINER_FEMALE | 
 #line 16118
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 16119
         .doubleBattle = FALSE,
 #line 16120
