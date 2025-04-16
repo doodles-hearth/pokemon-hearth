@@ -7,10 +7,33 @@ mapscripts SakuTown_PokemonCenter_MapScripts {
 }
 
 script SakuTown_PokemonCenter_EventScript_Nurse {
-	setvar(VAR_0x800B, LOCALID_NURSE)
-	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
-	waitmessage
-	waitbuttonpress
+	// setvar(VAR_0x800B, LOCALID_NURSE)
+	// call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
+	// waitmessage
+	// waitbuttonpress
+	lock
+
+	faceplayer
+	speakername("Nurse")
+	msgbox(format(
+		"Hello! Apologies for the mess, we're not fully set up yet!\p"
+		"Let me heal your Pokémon!"
+	))
+
+	fadescreen(FADE_TO_BLACK)
+	playfanfare(MUS_HEAL)
+	waitfanfare
+	special(HealPlayerParty)
+	callnative(UpdateFollowingPokemon)
+	fadescreen(FADE_FROM_BLACK)
+
+	speakername("Nurse")
+	msgbox(format(
+		"Come back soon!"
+	))
+
+	turnobject(VAR_LAST_TALKED, DIR_SOUTH)
+
 	release
 	end
 }

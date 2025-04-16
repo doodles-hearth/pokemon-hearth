@@ -12,11 +12,14 @@ script KuraTown_House3_EventScript_Lady {
 	// First time talking to her
 	if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0 || var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
 		faceplayer
+		speakername("Woman")
 		msgbox(format(
 			"Hello! Ah, you came for your Pokémon!"
 		))
 		closemessage
 		delay(60)
+
+		speakername("Woman")
 		msgbox(format(
 			"Sorry, I thought you were someone else.\p"
 			"See, this little one came to me a while ago. There was a thunderstorm and it looked scared and lost.\p"
@@ -39,6 +42,7 @@ script KuraTown_House3_EventScript_Lady {
 		// Talked to her before, but not Espeon's master
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
 		faceplayer
+		speakername("Woman")
 		msgbox(format(
 			"Don't worry, kitten, we'll find your master eventually!"
 		))
@@ -52,6 +56,7 @@ script KuraTown_House3_EventScript_Lady {
 		// Espeon went home
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 4) {
 		faceplayer
+		speakername("Woman")
 		msgbox(format(
 			"Sniffle… I'm going to miss him…"
 		))
@@ -60,6 +65,7 @@ script KuraTown_House3_EventScript_Lady {
 		// Talked to Espeon's master once are reunited
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 5) {
 		faceplayer
+		speakername("Woman")
 		msgbox(format(
 			"That little lost kitten is reunited with its master? Do they seem happy together?\p"
 			"Oh, how delightful!"
@@ -76,6 +82,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 		applymovement(LOCALID_LADY, Common_Movement_ExclamationMark)
 		waitmovement(0)
 		delay(48)
+		speakername("Woman")
 		msgbox(format(
 			"What? You're saying its master is waiting for him in Saku Village?\p"
 			"… …\p"
@@ -88,6 +95,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 		applymovement(LOCALID_ESPEON, Common_Movement_FaceRight)
 
 		waitmovement(0)
+		speakername("Woman")
 		msgbox(format(
 			"Good news, sweetie! You're going home!"
 		))
@@ -105,8 +113,9 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 		fadescreen(FADE_FROM_BLACK)
 		delay(40)
 
+		speakername("Woman")
 		msgbox(format(
-			"Sniffle… I'm going to miss him…"
+			"Sniffle… I'm going to miss that little kitten…"
 		))
 		closemessage
 		

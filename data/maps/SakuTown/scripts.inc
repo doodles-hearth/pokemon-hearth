@@ -123,8 +123,10 @@ SakuTown_EventScript_Karateka::
 	speakername SakuTown_EventScript_Karateka_Text_0
 	msgbox SakuTown_EventScript_Karateka_Text_1
 	closemessage
+	playse SE_LEDGE
 	applymovement 6, SakuTown_EventScript_Karateka_Movement_0
 	waitmovement 0
+	waitse
 	speakername SakuTown_EventScript_Karateka_Text_0
 	msgbox SakuTown_EventScript_Karateka_Text_2
 	closemessage

@@ -8,10 +8,19 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 SakuTown_PokemonCenter_EventScript_Nurse::
-	setvar VAR_0x800B, LOCALID_NURSE
-	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
-	waitmessage
-	waitbuttonpress
+	lock
+	faceplayer
+	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
+	msgbox SakuTown_PokemonCenter_EventScript_Nurse_Text_1
+	fadescreen FADE_TO_BLACK
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	callnative UpdateFollowingPokemon
+	fadescreen FADE_FROM_BLACK
+	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
+	msgbox SakuTown_PokemonCenter_EventScript_Nurse_Text_2
+	turnobject VAR_LAST_TALKED, DIR_SOUTH
 	release
 	end
 
@@ -106,6 +115,17 @@ SakuTown_PokemonCenter_Movement_PushesPlayerUp:
 	walk_down
 	face_original_direction
 	step_end
+
+SakuTown_PokemonCenter_EventScript_Nurse_Text_0:
+	.string "Nurse$"
+
+SakuTown_PokemonCenter_EventScript_Nurse_Text_1:
+	.string "Hello! Apologies for the mess, we're\n"
+	.string "not fully set up yet!\p"
+	.string "Let me heal your Pokémon!$"
+
+SakuTown_PokemonCenter_EventScript_Nurse_Text_2:
+	.string "Come back soon!$"
 
 SakuTown_PokemonCenter_EventScript_Traveler_Text_0:
 	.string "Man$"

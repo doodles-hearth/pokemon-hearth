@@ -22,10 +22,12 @@ KuraTown_House3_EventScript_Lady_1:
 
 KuraTown_House3_EventScript_Lady_2:
 	faceplayer
-	msgbox KuraTown_House3_EventScript_Lady_Text_0
+	speakername KuraTown_House3_EventScript_Lady_Text_0
+	msgbox KuraTown_House3_EventScript_Lady_Text_1
 	closemessage
 	delay 60
-	msgbox KuraTown_House3_EventScript_Lady_Text_1
+	speakername KuraTown_House3_EventScript_Lady_Text_0
+	msgbox KuraTown_House3_EventScript_Lady_Text_2
 	closemessage
 	compare VAR_SAKU_KURA_QUEST_ESPEON_STATE, 0
 	goto_if_eq KuraTown_House3_EventScript_Lady_15
@@ -37,7 +39,8 @@ KuraTown_House3_EventScript_Lady_14:
 
 KuraTown_House3_EventScript_Lady_3:
 	faceplayer
-	msgbox KuraTown_House3_EventScript_Lady_Text_2
+	speakername KuraTown_House3_EventScript_Lady_Text_0
+	msgbox KuraTown_House3_EventScript_Lady_Text_3
 	closemessage
 	goto KuraTown_House3_EventScript_Lady_1
 
@@ -48,13 +51,15 @@ KuraTown_House3_EventScript_Lady_4:
 
 KuraTown_House3_EventScript_Lady_5:
 	faceplayer
-	msgbox KuraTown_House3_EventScript_Lady_Text_3
+	speakername KuraTown_House3_EventScript_Lady_Text_0
+	msgbox KuraTown_House3_EventScript_Lady_Text_4
 	closemessage
 	goto KuraTown_House3_EventScript_Lady_1
 
 KuraTown_House3_EventScript_Lady_6:
 	faceplayer
-	msgbox KuraTown_House3_EventScript_Lady_Text_4
+	speakername KuraTown_House3_EventScript_Lady_Text_0
+	msgbox KuraTown_House3_EventScript_Lady_Text_5
 	closemessage
 	goto KuraTown_House3_EventScript_Lady_1
 
@@ -75,11 +80,13 @@ KuraTown_House3_EventScript_EspeonGoesHome::
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
 	delay 48
+	speakername KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_EspeonGoesHome_Text_0
 	closemessage
 	applymovement 1, Common_Movement_FaceLeft
 	applymovement 2, Common_Movement_FaceRight
 	waitmovement 0
+	speakername KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_EspeonGoesHome_Text_1
 	closemessage
 	applymovement 2, JumpInJoy
@@ -92,7 +99,8 @@ KuraTown_House3_EventScript_EspeonGoesHome::
 	delay 60
 	fadescreen FADE_FROM_BLACK
 	delay 40
-	msgbox KuraTown_House3_EventScript_Lady_Text_3
+	speakername KuraTown_House3_EventScript_Lady_Text_0
+	msgbox KuraTown_House3_EventScript_EspeonGoesHome_Text_2
 	closemessage
 	setvar VAR_SAKU_KURA_QUEST_ESPEON_STATE, 4
 	setflag FLAG_SAKU_KURA_HIDE_ESPEON_LADYS_HOUSE
@@ -119,9 +127,12 @@ JumpInJoy:
 	step_end
 
 KuraTown_House3_EventScript_Lady_Text_0:
-	.string "Hello! Ah, you came for your Pokémon!$"
+	.string "Woman$"
 
 KuraTown_House3_EventScript_Lady_Text_1:
+	.string "Hello! Ah, you came for your Pokémon!$"
+
+KuraTown_House3_EventScript_Lady_Text_2:
 	.string "Sorry, I thought you were someone\n"
 	.string "else.\p"
 	.string "See, this little one came to me a while\n"
@@ -133,14 +144,14 @@ KuraTown_House3_EventScript_Lady_Text_1:
 	.string "now. Look how shiny his fur is! Such a\l"
 	.string "pretty color, too!$"
 
-KuraTown_House3_EventScript_Lady_Text_2:
+KuraTown_House3_EventScript_Lady_Text_3:
 	.string "Don't worry, kitten, we'll find your\n"
 	.string "master eventually!$"
 
-KuraTown_House3_EventScript_Lady_Text_3:
+KuraTown_House3_EventScript_Lady_Text_4:
 	.string "Sniffle… I'm going to miss him…$"
 
-KuraTown_House3_EventScript_Lady_Text_4:
+KuraTown_House3_EventScript_Lady_Text_5:
 	.string "That little lost kitten is reunited\n"
 	.string "with its master? Do they seem happy\l"
 	.string "together?\p"
@@ -158,6 +169,10 @@ KuraTown_House3_EventScript_EspeonGoesHome_Text_0:
 
 KuraTown_House3_EventScript_EspeonGoesHome_Text_1:
 	.string "Good news, sweetie! You're going home!$"
+
+KuraTown_House3_EventScript_EspeonGoesHome_Text_2:
+	.string "Sniffle… I'm going to miss that little\n"
+	.string "kitten…$"
 
 KuraTown_House3_EventScript_Espeon_Text_0:
 	.string "Speeee!$"

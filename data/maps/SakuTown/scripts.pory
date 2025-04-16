@@ -147,8 +147,12 @@ script SakuTown_EventScript_Karateka {
 		"I let the Toku Council borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
 	))
 	closemessage
+
+	playse(SE_LEDGE)
 	applymovement(LOCALID_KARATEKA, moves(jump_in_place_up))
 	waitmovement(0)
+	waitse
+
 	speakername("Man")
 	msgbox(format(
 		"Come on, Mama, Kuku! Daddy loves you!!"

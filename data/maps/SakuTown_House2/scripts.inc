@@ -80,10 +80,10 @@ SakuTown_House2_EventScript_Reunited::
 	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_4
 	closemessage
 	delay 30
-	playse SE_DOOR
+	playse SE_EXIT
 	waitse
 	addobject 2
-	setobjectxy 2, 5, 7
+	setobjectxy 2, 4, 7
 	turnobject 2, DIR_NORTH
 	applymovement 1, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceDown
@@ -155,7 +155,7 @@ SakuTown_House2_EventScript_Reunited_10:
 SakuTown_House2_EventScript_GiveEvoStone::
 	msgbox SakuTown_House2_EventScript_GiveEvoStone_Text_0
 	closemessage
-	dynmultichoice 16, 6, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SakuTown_House2_EventScript_GiveEvoStone_Text_1, SakuTown_House2_EventScript_GiveEvoStone_Text_2, SakuTown_House2_EventScript_GiveEvoStone_Text_3
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SakuTown_House2_EventScript_GiveEvoStone_Text_1, SakuTown_House2_EventScript_GiveEvoStone_Text_2, SakuTown_House2_EventScript_GiveEvoStone_Text_3
 	speakername SakuTown_House2_EventScript_EspeonsMaster_Text_0
 	switch VAR_RESULT
 	case 0, SakuTown_House2_EventScript_GiveEvoStone_3
@@ -216,6 +216,7 @@ SakuTown_House2_Movement_EspeonWalksUpEast:
 	walk_fast_up
 	walk_fast_right
 	walk_fast_right
+	walk_fast_right
 	walk_fast_up
 	walk_fast_up
 	face_left
@@ -225,6 +226,7 @@ SakuTown_House2_Movement_EspeonWalksUpEast:
 
 SakuTown_House2_Movement_EspeonWalksUpSouth:
 	walk_fast_up
+	walk_fast_right
 	walk_fast_right
 	walk_fast_up
 	jump_in_place_up

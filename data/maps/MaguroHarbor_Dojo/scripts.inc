@@ -63,18 +63,36 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_2:
 
 MaguroHarbor_Dojo_EventScript_Izumi::
 	trainerbattle_single TRAINER_IZUMI, MaguroHarbor_Dojo_EventScript_Izumi_Text_0, MaguroHarbor_Dojo_EventScript_Izumi_Text_1
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_Dojo_EventScript_Izumi_1
+	msgbox MaguroHarbor_Dojo_EventScript_Izumi_Text_3, MSGBOX_AUTOCLOSE
+	return
+
+MaguroHarbor_Dojo_EventScript_Izumi_1:
 	msgbox MaguroHarbor_Dojo_EventScript_Izumi_Text_2, MSGBOX_AUTOCLOSE
 	return
 
 
 MaguroHarbor_Dojo_EventScript_Ren::
 	trainerbattle_single TRAINER_REN, MaguroHarbor_Dojo_EventScript_Ren_Text_0, MaguroHarbor_Dojo_EventScript_Ren_Text_1
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_Dojo_EventScript_Ren_1
+	msgbox MaguroHarbor_Dojo_EventScript_Ren_Text_3, MSGBOX_AUTOCLOSE
+	return
+
+MaguroHarbor_Dojo_EventScript_Ren_1:
 	msgbox MaguroHarbor_Dojo_EventScript_Ren_Text_2, MSGBOX_AUTOCLOSE
 	return
 
 
 MaguroHarbor_Dojo_EventScript_Mizu::
 	trainerbattle_single TRAINER_MIZU, MaguroHarbor_Dojo_EventScript_Mizu_Text_0, MaguroHarbor_Dojo_EventScript_Mizu_Text_1
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_Dojo_EventScript_Mizu_1
+	msgbox MaguroHarbor_Dojo_EventScript_Mizu_Text_3, MSGBOX_AUTOCLOSE
+	return
+
+MaguroHarbor_Dojo_EventScript_Mizu_1:
 	msgbox MaguroHarbor_Dojo_EventScript_Mizu_Text_2, MSGBOX_AUTOCLOSE
 	return
 
@@ -84,13 +102,20 @@ MaguroHarbor_Dojo_EventScript_Advice::
 	faceplayer
 	speakername MaguroHarbor_Dojo_EventScript_Advice_Text_0
 	goto_if_set FLAG_BADGE01_GET, MaguroHarbor_Dojo_EventScript_Advice_2
-	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_2
+	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_3
 MaguroHarbor_Dojo_EventScript_Advice_1:
+	closemessage
 	release
 	return
 
 MaguroHarbor_Dojo_EventScript_Advice_2:
-	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_1
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_Dojo_EventScript_Advice_5
+	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_2
+	goto MaguroHarbor_Dojo_EventScript_Advice_1
+
+MaguroHarbor_Dojo_EventScript_Advice_5:
+	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_1, MSGBOX_AUTOCLOSE
 	goto MaguroHarbor_Dojo_EventScript_Advice_1
 
 
@@ -212,6 +237,9 @@ MaguroHarbor_Dojo_EventScript_Izumi_Text_1:
 	.string "My poor Feebas!$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_2:
+	.string "Oh my, what was that quake?$"
+
+MaguroHarbor_Dojo_EventScript_Izumi_Text_3:
 	.string "You'll go far. I can tell.$"
 
 MaguroHarbor_Dojo_EventScript_Ren_Text_0:
@@ -221,6 +249,9 @@ MaguroHarbor_Dojo_EventScript_Ren_Text_1:
 	.string "Nooo!$"
 
 MaguroHarbor_Dojo_EventScript_Ren_Text_2:
+	.string "W-what happened?$"
+
+MaguroHarbor_Dojo_EventScript_Ren_Text_3:
 	.string "I l-lied. I'm f-f-freezing in h-here.$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_0:
@@ -230,6 +261,9 @@ MaguroHarbor_Dojo_EventScript_Mizu_Text_1:
 	.string "Stop making so much noise!$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_2:
+	.string "The poor fish must be all shaken!$"
+
+MaguroHarbor_Dojo_EventScript_Mizu_Text_3:
 	.string "These are sophisticated fish. They\n"
 	.string "need peace and quiet to thrive.$"
 
@@ -237,9 +271,14 @@ MaguroHarbor_Dojo_EventScript_Advice_Text_0:
 	.string "Man$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_1:
-	.string "You swept me away with that battle!$"
+	.string "You swept me away with that battle!\p"
+	.string "That quake just now nearly literally\n"
+	.string "swept me away as well!$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_2:
+	.string "You swept me away with that battle!$"
+
+MaguroHarbor_Dojo_EventScript_Advice_Text_3:
 	.string "Hello, young challenger! Are you going\n"
 	.string "to be fighting for your first Token?\p"
 	.string "Welcome to the Koi Pond Dojo!\p"

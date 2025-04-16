@@ -22,8 +22,7 @@ Beachbound_Route_Decay_SeeDecay::
 	waitmovement 0
 	fadescreen FADE_TO_BLACK
 	special RemoveCameraObject
-	fadescreen FADE_TO_BLACK
-	warpsilent MAP_BEACHBOUND_ROUTE_DECAY, 59, 16
+	fadescreen FADE_FROM_BLACK
 	release
 	return
 
