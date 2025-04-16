@@ -2161,6 +2161,7 @@ void BufferStringBattle(u16 stringID, u32 battler)
         }
         else
         {
+            gBattleStruct->shouldPrintFullName = TRUE;
             if (IsDoubleBattle() && IsValidForBattle(&gEnemyParty[gBattlerPartyIndexes[BATTLE_PARTNER(battler)]]))
             {
                 if (BATTLE_TWO_VS_ONE_OPPONENT)
@@ -2228,6 +2229,7 @@ void BufferStringBattle(u16 stringID, u32 battler)
         }
         else
         {
+            gBattleStruct->shouldPrintFullName = TRUE;
             if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_TOWER_LINK_MULTI)
@@ -2407,6 +2409,30 @@ static const u8 *TryGetStatusString(u8 *src)
     return NULL;
 }
 
+static void BuildFullname(u32 species, u8 *dst)
+{
+    if(StringCompareWithoutExtCtrlCodes(dst, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
+    {
+        StringCopy(dst, GetSpeciesName(species, DO_NAME_CHECK));
+    }
+    else
+    {
+        const u8 *speciesName = GetSpeciesName(species, DO_NAME_CHECK);
+        u32 dstIndex = 0;
+        while (dst[dstIndex] != EOS)
+            dstIndex++;
+        dst[dstIndex++] = CHAR_SPACE;
+        dst[dstIndex++] = CHAR_t;
+        dst[dstIndex++] = CHAR_h;
+        dst[dstIndex++] = CHAR_e;
+        dst[dstIndex++] = CHAR_SPACE;
+        u32 currChar = 0;
+        while (speciesName[currChar] != EOS)
+            dst[dstIndex++] = speciesName[currChar++];
+        dst[dstIndex++] = EOS;
+    }
+}
+
 static void GetBattlerNick(u32 battler, u8 *dst)
 {
     struct Pokemon *illusionMon = GetIllusionMonPtr(battler);
@@ -2418,29 +2444,11 @@ static void GetBattlerNick(u32 battler, u8 *dst)
     GetMonData(mon, MON_DATA_NICKNAME, dst);
     StringGet_Nickname(dst);
 
-    if (GetBattlerSide(battler) != B_SIDE_PLAYER)
+    if (gBattleStruct->shouldPrintFullName && GetBattlerSide(battler) == B_SIDE_OPPONENT)
     {
-        u16 species = GetMonData(mon, MON_DATA_SPECIES);
-        if(StringCompareWithoutExtCtrlCodes(dst, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
-        {
-            StringCopy(dst, GetSpeciesName(species, DO_NAME_CHECK));
-        }
-        else
-        {
-            const u8 *speciesName = GetSpeciesName(species, DO_NAME_CHECK);
-            u32 dstIndex = 0;
-            while (dst[dstIndex] != EOS)
-                dstIndex++;
-            dst[dstIndex++] = CHAR_SPACE;
-            dst[dstIndex++] = CHAR_t;
-            dst[dstIndex++] = CHAR_h;
-            dst[dstIndex++] = CHAR_e;
-            dst[dstIndex++] = CHAR_SPACE;
-            u32 currChar = 0;
-            while (speciesName[currChar] != EOS)
-                dst[dstIndex++] = speciesName[currChar++];
-            dst[dstIndex++] = EOS;
-        }
+        gBattleStruct->shouldPrintFullName = FALSE;
+        u32 species = GetMonData(mon, MON_DATA_SPECIES);
+        BuildFullname(species, dst);
     }
 }
 
@@ -3212,6 +3220,36 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
     return dstID;
 }
 
+static u32 GetSpeciesHack(u32 battler, u32 partyId)
+{
+    s32 id, i;
+    // we know it's gEnemyParty
+    struct Pokemon *mon = &gEnemyParty[partyId], *partnerMon;
+
+    if (GetMonAbility(mon) == ABILITY_ILLUSION)
+    {
+        if (IsBattlerAlive(BATTLE_PARTNER(battler)))
+            partnerMon = &gEnemyParty[gBattlerPartyIndexes[BATTLE_PARTNER(battler)]];
+        else
+            partnerMon = mon;
+
+        // Find last alive non-egg pokemon.
+        for (i = PARTY_SIZE - 1; i >= 0; i--)
+        {
+            id = i;
+            if (GetMonData(&gEnemyParty[id], MON_DATA_SANITY_HAS_SPECIES)
+                && GetMonData(&gEnemyParty[id], MON_DATA_HP)
+                && &gEnemyParty[id] != mon
+                && &gEnemyParty[id] != partnerMon)
+            {
+                return GetMonData(&gEnemyParty[id], MON_DATA_SPECIES);
+            }
+        }
+    }
+
+    return GetMonData(mon, MON_DATA_SPECIES);
+}
+
 static void IllusionNickHack(u32 battler, u32 partyId, u8 *dst)
 {
     s32 id, i;
@@ -3331,6 +3369,9 @@ void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
                 gBattleScripting.illusionNickHack = 0;
                 IllusionNickHack(src[srcID + 1], src[srcID + 2], dst);
                 StringGet_Nickname(dst);
+
+                u32 species = GetSpeciesHack(src[srcID + 1], src[srcID + 2]);
+                BuildFullname(species, dst);
             }
             else
             {
