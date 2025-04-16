@@ -484,12 +484,36 @@ script BeachboundRoute_EventScript_Mugging {
 script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 	lock
 	faceplayer
-	speakername("Okada")
-	msgbox(format(
-		"Oh, hello again! {PLAYER}, was it?\p"
-		"I'm in the area for a while to gather some resources.\p"
-		"Can I interest you in some rare goods?"
-	))
+	if (flag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)) {
+		speakername("Okada")
+		msgbox(format(
+			"Hello, hello again, {PLAYER}!\p"
+			"Can I interest you in some handpicked goods?"
+		))
+	} elif (flag(FLAG_MET_TRAVELING_MERCHANT)) {
+		speakername("Okada")
+		msgbox(format(
+			"Hello! … …Have we met before?\p"
+			"Sorry, I'm not good with faces…\p"
+			"Wait! Uhh, {PLAYER}, was it?\p"
+			"I'm in the area for a while to gather some resources.\p"
+			"Can I interest you in some handpicked goods?"
+		))
+	} else {
+		speakername("Okada")
+		msgbox(format(
+			"Hello, hello again!\p"
+			"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
+			"I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
+			"If you're a traveler, you're definitely going to see me around!\p"
+			"What's your name? {PLAYER}? It's nice to meet you, {PLAYER}!"
+			"I see you're a young wielder, eh? Maybe we can even have a friendly battle sometime!\p"
+			"I'm in the area for a while to gather some resources.\p"
+			"Can I interest you in some handpicked goods?"
+		))
+	}
+
+	setflag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)
 
 	limitedpokemart(LIMITED_SHOP_1)
 	speakername("Okada")

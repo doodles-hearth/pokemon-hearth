@@ -9,6 +9,7 @@ script KuraTown_House2_EventScript_Ashii {
 
 	// First encounter
 	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 0) {
+		speakername("Girl")
 		msgbox(format(
 			"Sigh… Oh, Tama… Why must life be so complicated?"
 		))
@@ -23,6 +24,7 @@ script KuraTown_House2_EventScript_Ashii {
 		applymovement(LOCALID_ASHII, Common_Movement_Delay48)
 		waitmovement(0)
 
+		speakername("Girl")
 		msgbox(format(
 			"Hey, what are you doing in my house? Were you eavesdropping?\p"
 			"…It doesn't matter anyway. The boy I really like lives in Saku Village, but our two villages hate each other, so I can't see him anymore.\p"

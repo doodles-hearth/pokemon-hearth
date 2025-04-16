@@ -89,10 +89,10 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	// Left
 	if (var(VAR_TEMP_2) == 16) {
-		applymovement(LOCALID_RIVAL, moves(walk_faster_right, walk_faster_up * 5))
+		applymovement(LOCALID_RIVAL, moves(walk_right, walk_up * 5))
 		// Right
 	} else {
-		applymovement(LOCALID_RIVAL, moves(walk_faster_left, walk_faster_up * 5))
+		applymovement(LOCALID_RIVAL, moves(walk_left, walk_up * 5))
 	}
 	waitmovement(0)
 

@@ -329,21 +329,21 @@ SakuTown_EventScript_RivalAtSakuWall_Movement_0:
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Movement_1:
-	walk_faster_right
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Movement_2:
-	walk_faster_left
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 SakuTown_EventScript_Karateka_Movement_0:

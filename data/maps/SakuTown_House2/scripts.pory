@@ -12,6 +12,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 
 	// First time talking to him
 	if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0) {
+		setnamedmon(SPECIES_EEVEE)
 		speakername("Boy")
 		msgbox(format(
 				"I hope Eevee comes home soon…"
@@ -20,6 +21,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 		// Talked to Espeon's master but not to lady
 		setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 2)
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
+		setnamedmon(SPECIES_EEVEE)
 		speakername("Boy")
 		msgbox(format(
 			"I hope Eevee comes home soon…\p"
@@ -58,6 +60,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			closemessage
 		} else {
 			if (flag(FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE)) {
+				setnamedmon(SPECIES_ESPEON)
 				speakername("Boy")
 				msgbox(format(
 					"How are you doing? Espeon looks happy to see you!"

@@ -7,11 +7,13 @@ mapscripts KuraTown_House1_MapScripts {
 script KuraTown_House1_OldWoman {
 	lock
 	faceplayer
+	speakername("Old woman")
 	msgbox(format(
 		"You look like you're tired, young one. Please rest a while."
 	))
 	closemessage
 	call(Common_EventScript_OutOfCenterPartyHeal)
+	speakername("Old woman")
 	msgbox(format(
 		"I wish you strength on your journey."
 	))
@@ -20,6 +22,7 @@ script KuraTown_House1_OldWoman {
 }
 
 script KuraTown_House1_OldWomansSon {
+	speakername("Guy")
 	msgbox(format(
 		"The Pokémon league organization didn't see fit to build a Pokémon refuge in our village, but those jerks over at Saku Village won't let us use theirs.\p"
 		"So my mother has to work hard to heal all the villager's Pokémon.\p"
@@ -31,6 +34,7 @@ script KuraTown_House1_Growlithe {
 	lock
 	faceplayer
 	setseenmon(SPECIES_GROWLITHE)
+	setspeakertomonname(SPECIES_GROWLITHE)
 	playmoncry(SPECIES_GROWLITHE, CRY_MODE_NORMAL)
 	msgbox(format(
 		"Wah!"

@@ -103,6 +103,7 @@ KuraTown_House3_EventScript_Espeon::
 	lock
 	faceplayer
 	setseenmon SPECIES_ESPEON
+	setspeakertomonname SPECIES_ESPEON
 	playmoncry SPECIES_ESPEON, CRY_MODE_NORMAL
 	msgbox KuraTown_House3_EventScript_Espeon_Text_0
 	waitmoncry

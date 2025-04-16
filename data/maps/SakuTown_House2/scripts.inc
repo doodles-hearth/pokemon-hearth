@@ -22,6 +22,7 @@ SakuTown_House2_EventScript_EspeonsMaster_1:
 	return
 
 SakuTown_House2_EventScript_EspeonsMaster_2:
+	setnamedmon SPECIES_EEVEE
 	speakername SakuTown_House2_EventScript_EspeonsMaster_Text_0
 	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_1
 	closemessage
@@ -29,6 +30,7 @@ SakuTown_House2_EventScript_EspeonsMaster_2:
 	goto SakuTown_House2_EventScript_EspeonsMaster_1
 
 SakuTown_House2_EventScript_EspeonsMaster_3:
+	setnamedmon SPECIES_EEVEE
 	speakername SakuTown_House2_EventScript_EspeonsMaster_Text_0
 	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_2
 	closemessage
@@ -64,6 +66,7 @@ SakuTown_House2_EventScript_EspeonsMaster_14:
 	goto SakuTown_House2_EventScript_EspeonsMaster_1
 
 SakuTown_House2_EventScript_EspeonsMaster_17:
+	setnamedmon SPECIES_ESPEON
 	speakername SakuTown_House2_EventScript_EspeonsMaster_Text_0
 	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_6
 	closemessage
