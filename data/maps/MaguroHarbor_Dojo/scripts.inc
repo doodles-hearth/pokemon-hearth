@@ -155,7 +155,7 @@ MaguroHarbor_Dojo_EventScript_Koishi_Text_1:
 	.string "of the eight Dojos officially\l"
 	.string "appointed by the Toku Council.\p"
 	.string "We Dojo Masters fight wielders that\n"
-	.string "have taken on the Pokémon Council's\l"
+	.string "have taken on the Toku Council's\l"
 	.string "challenge.\p"
 	.string "We each give out a different Token to\n"
 	.string "anyone who succeeds in defeating us.\p"

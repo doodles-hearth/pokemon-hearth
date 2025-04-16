@@ -9,6 +9,9 @@ Shogunate_EventScript_LockedDoor::
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, Shogunate_EventScript_LockedDoor_Movement_0
 	waitmovement OBJ_EVENT_ID_CAMERA
+	waitbuttonpress
+	applymovement OBJ_EVENT_ID_CAMERA, Shogunate_EventScript_LockedDoor_Movement_1
+	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
 	release
 	return
@@ -39,8 +42,9 @@ Shogunate_EventScript_LockedDoor_Movement_0:
 	walk_up
 	walk_up
 	walk_up
-	delay_16
-	delay_16
+	step_end
+
+Shogunate_EventScript_LockedDoor_Movement_1:
 	walk_down
 	walk_down
 	walk_down

@@ -264,7 +264,7 @@ ChiiTown_PokemonCenter_EventScript_IveComeALongWay_Text_0:
 ChiiTown_PokemonCenter_EventScript_IveComeALongWay_Text_1:
 	.string "I'm so glad I found this refuge. I've\n"
 	.string "come a long way and my feet hurt.\p"
-	.string "My Pokémon and I wil rest here for a\n"
+	.string "My Pokémon and I will rest here for a\n"
 	.string "while.$"
 
 ChiiTown_PokemonCenter_EventScript_Snorunt_Text_0:

@@ -207,11 +207,11 @@ script KuraTown_EventScript_LovestruckGuy{
 
 script KuraTown_EventScript_PokemonCouncil {
 	lock
-	faceplayer
+	faceplayer	
 	speakername("Woman")
 	msgbox(format(
-		"The Elders of Toku may look like a bunch of old people, but each of them was once a formidable Wielder!\p"
-		"They paved tha way for what Pokémon Wielding is today, and will be tomorrow."
+		"The Elders of the Toku Council may look like a bunch of old people, but each of them was once a formidable Wielder!\p"
+		"They paved the way for what Pokémon Wielding is today, and will be tomorrow."
 	))
 	closemessage
 	release

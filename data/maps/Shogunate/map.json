@@ -284,7 +284,20 @@
     }
   ],
   "warp_events": [
-
+    {
+      "x": 14,
+      "y": 44,
+      "elevation": 0,
+      "dest_map": "MAP_ORCHARD_PATH",
+      "dest_warp_id": "4"
+    },
+    {
+      "x": 15,
+      "y": 44,
+      "elevation": 0,
+      "dest_map": "MAP_ORCHARD_PATH",
+      "dest_warp_id": "4"
+    }
   ],
   "coord_events": [
 

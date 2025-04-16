@@ -10,7 +10,10 @@ script Shogunate_EventScript_LockedDoor {
 	closemessage
 
 	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 7, delay_16 * 2, walk_down * 7))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 7))
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	waitbuttonpress
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 7))
 	waitmovement(OBJ_EVENT_ID_CAMERA)
 	special(RemoveCameraObject)
 

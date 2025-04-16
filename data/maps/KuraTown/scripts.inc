@@ -300,10 +300,11 @@ KuraTown_EventScript_PokemonCouncil_Text_0:
 	.string "Woman$"
 
 KuraTown_EventScript_PokemonCouncil_Text_1:
-	.string "The Elders of Toku may look like a\n"
-	.string "bunch of old people, but each of them\l"
-	.string "was once a formidable Wielder!\p"
-	.string "They paved tha way for what Pokémon\n"
+	.string "The Elders of the Toku Council may\n"
+	.string "look like a bunch of old people, but\l"
+	.string "each of them was once a formidable\l"
+	.string "Wielder!\p"
+	.string "They paved the way for what Pokémon\n"
 	.string "Wielding is today, and will be\l"
 	.string "tomorrow.$"
 

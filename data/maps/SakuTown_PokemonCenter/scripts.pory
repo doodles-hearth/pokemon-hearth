@@ -20,7 +20,7 @@ script SakuTown_PokemonCenter_EventScript_Traveler {
 	faceplayer
 	speakername("Man")
 	msgbox(format(
-		"This Pokémon refuge is brand-new, courtesy of the Pokémon League!\p"
+		"This Pokémon refuge is brand-new, courtesy of the Toku Council!\p"
 		"As you can see, it's still being built. Watch out for the falling bricks, ha ha, just kidding!\p"
 		"Seriously though, do watch out. We're held responsible if anything happens to you."
 	))

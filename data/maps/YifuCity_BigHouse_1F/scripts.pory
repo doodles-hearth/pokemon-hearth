@@ -23,7 +23,7 @@ script YifuCity_BigHouse_1F_EventScript_Man {
 	faceplayer
 	speakername("Guy")
 	msgbox(format(
-		"Did you know? The Samurai aren't actually affiliated with the Elder council of Toku. That's a common misconception!\p"
+		"Did you know? The Samurai aren't actually affiliated with the Toku Council. That's a common misconception!\p"
 		"They're their own organization, which mostly deals in protecting the population and fighting crime."
 	))
 	release

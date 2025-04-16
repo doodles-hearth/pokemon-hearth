@@ -333,6 +333,11 @@ ChiiTown_EventScript_SetTrespassVar::
 	return
 
 
+ChiiTown_EventScript_ChatotPost::
+	msgbox ChiiTown_EventScript_ChatotPost_Text_0, MSGBOX_SIGN
+	return
+
+
 ChiiTown_EventScript_BattlingGirl_Movement_0:
 	face_down
 	step_end
@@ -497,3 +502,6 @@ ChiiTown_EventScript_TownSign_Text_0:
 
 ChiiTown_EventScript_SchoolSign_Text_0:
 	.string "Little Deerling elementary school$"
+
+ChiiTown_EventScript_ChatotPost_Text_0:
+	.string "It's a Chatot post.$"

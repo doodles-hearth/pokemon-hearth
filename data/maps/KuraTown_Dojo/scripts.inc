@@ -293,7 +293,7 @@ KuraTown_Dojo_EventScript_HanaDefeated_Text_1:
 	.string "will obey you without question, even\l"
 	.string "those you trade with others.\p"
 	.string "If you are interested in submitting\n"
-	.string "to the Pokémon Council challenge, you\l"
+	.string "to the Toku Council challenge, you\l"
 	.string "will need to collect a Token from each\l"
 	.string "of the eight Dojos scattered\l"
 	.string "throughout the region.\p"

@@ -144,7 +144,7 @@ script SakuTown_EventScript_Karateka {
 	faceplayer
 	speakername("Man")
 	msgbox(format(
-		"I let the Pokémon Council borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
+		"I let the Toku Council borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
 	))
 	closemessage
 	applymovement(LOCALID_KARATEKA, moves(jump_in_place_up))

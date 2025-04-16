@@ -51,7 +51,7 @@ TranquilRoute_CutHouse_EventScript_CutGrassCutscene::
 	msgbox TranquilRoute_CutHouse_EventScript_CutGrassCutscene_Text_0
 	closemessage
 	delay 48
-	warp MAP_TRANQUIL_ROUTE, 53, 33
+	warp MAP_TRANQUIL_ROUTE, 43, 33
 	release
 	return
 

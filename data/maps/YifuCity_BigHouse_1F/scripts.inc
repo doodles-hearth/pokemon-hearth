@@ -55,8 +55,8 @@ YifuCity_BigHouse_1F_EventScript_Man_Text_0:
 
 YifuCity_BigHouse_1F_EventScript_Man_Text_1:
 	.string "Did you know? The Samurai aren't\n"
-	.string "actually affiliated with the Elder\l"
-	.string "council of Toku. That's a common\l"
+	.string "actually affiliated with the Toku\l"
+	.string "Council. That's a common\l"
 	.string "misconception!\p"
 	.string "They're their own organization, which\n"
 	.string "mostly deals in protecting the\l"

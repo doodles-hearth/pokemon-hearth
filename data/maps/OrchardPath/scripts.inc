@@ -104,8 +104,8 @@ OrchardPath_EventScript_Umbreon::
 	faceplayer
 	setseenmon SPECIES_UMBREON
 	setspeakertomonname SPECIES_UMBREON
-	msgbox OrchardPath_EventScript_Umbreon_Text_0
 	playmoncry SPECIES_UMBREON, CRY_MODE_NORMAL
+	msgbox OrchardPath_EventScript_Umbreon_Text_0
 	waitmoncry
 	release
 	end
@@ -268,6 +268,7 @@ OrchardPath_EventScript_SignRockSmash::
 
 OrchardPath_EventScript_Samurai2::
 	lock
+	faceplayer
 	speakername OrchardPath_EventScript_Samurai_Text_0
 	msgbox OrchardPath_EventScript_Samurai2_Text_0
 	closemessage

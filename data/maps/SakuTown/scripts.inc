@@ -423,7 +423,7 @@ SakuTown_EventScript_Karateka_Text_0:
 	.string "Man$"
 
 SakuTown_EventScript_Karateka_Text_1:
-	.string "I let the Pokémon Council borrow my\n"
+	.string "I let the Toku Council borrow my\n"
 	.string "super-strong Pokémon to help build\l"
 	.string "the new Pokémon refuges throughout\l"
 	.string "the region.$"
