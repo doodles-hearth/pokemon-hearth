@@ -16,6 +16,7 @@ YifuCity_EventScript_WhirlpoolTutor::
 YifuCity_EventScript_WhirlpoolTutor_1:
 	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
 	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_1
+	closemessage
 	checkitem ITEM_HEART_SCALE
 	compare VAR_RESULT, 0
 	goto_if_ne YifuCity_EventScript_WhirlpoolTutor_4

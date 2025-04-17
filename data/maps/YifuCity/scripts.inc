@@ -27,6 +27,8 @@ YifuCity_EscapedCrobatHideoutWithSamurai::
 	closemessage
 	applymovement 38, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_2
 	waitmovement 38
+	removeobject 38
+	setflag FLAG_HIDE_LOCKDOWN_SAMURAI
 	releaseall
 	return
 

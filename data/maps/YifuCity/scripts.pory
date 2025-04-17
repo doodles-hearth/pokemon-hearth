@@ -43,6 +43,7 @@ script YifuCity_EscapedCrobatHideoutWithSamurai {
 	applymovement(LOCALID_SAMURAI_HIDEOUT, moves(walk_down, walk_left * 7))
 	waitmovement(LOCALID_SAMURAI_HIDEOUT)
 	removeobject(LOCALID_SAMURAI_HIDEOUT)
+	setflag(FLAG_HIDE_LOCKDOWN_SAMURAI)
 
 	releaseall
 }
