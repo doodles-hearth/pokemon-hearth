@@ -38,8 +38,8 @@ BeachboundRoute_EventScript_Hoppip::
 	faceplayer
 	setseenmon SPECIES_HOPPIP
 	setspeakertomonname SPECIES_HOPPIP
-	msgbox BeachboundRoute_EventScript_Hoppip_Text_0
 	playmoncry SPECIES_HOPPIP, CRY_MODE_NORMAL
+	msgbox BeachboundRoute_EventScript_Hoppip_Text_0
 	waitmoncry
 	release
 	end
@@ -50,8 +50,8 @@ BeachboundRoute_EventScript_Wooloo::
 	faceplayer
 	setseenmon SPECIES_WOOLOO
 	setspeakertomonname SPECIES_WOOLOO
-	msgbox BeachboundRoute_EventScript_Wooloo_Text_0
 	playmoncry SPECIES_WOOLOO, CRY_MODE_NORMAL
+	msgbox BeachboundRoute_EventScript_Wooloo_Text_0
 	waitmoncry
 	release
 	end
@@ -775,8 +775,8 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1:
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2:
 	.string "Hello! … …Have we met before?\p"
-	.string "Sorry, I'm not good with faces… Wait!\n"
-	.string "{PLAYER}, was it?\p"
+	.string "Sorry, I'm not good with faces…\p"
+	.string "Wait! Uhh, {PLAYER}, was it?\p"
 	.string "I'm in the area for a while to gather\n"
 	.string "some resources.\p"
 	.string "Can I interest you in some handpicked\n"

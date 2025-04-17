@@ -21,6 +21,9 @@ Beachbound_Route_Decay_SeeDecay::
 	applymovement OBJ_EVENT_ID_CAMERA, Beachbound_Route_Decay_SeeDecay_Movement_0
 	waitmovement 0
 	fadescreen FADE_TO_BLACK
+	setvar VAR_0x8004, 73
+	setvar VAR_0x8005, 17
+	special TeleportCamera
 	special RemoveCameraObject
 	fadescreen FADE_FROM_BLACK
 	release

@@ -75,6 +75,64 @@ WindsweptRoute_EventScript_Trainer6::
 	end
 
 
+WindsweptRoute_EventScript_TrainerBattleRoadblock::
+	lock
+	playbgm MUS_VS_TRAINER, FALSE
+	applymovement 13, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_0
+	waitmovement 0
+	speakername WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_0
+	msgbox WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_1
+	closemessage
+	playmoncry SPECIES_NUZLEAF, CRY_MODE_ENCOUNTER
+	waitmoncry
+	applymovement 20, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_1
+	playse SE_EFFECTIVE
+	waitmovement 0
+	waitse
+	applymovement 19, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_2
+	waitmovement 0
+	speakername WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_2
+	msgbox WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_3
+	closemessage
+	applymovement 21, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_3
+	playmoncry SPECIES_BRELOOM, CRY_MODE_ENCOUNTER
+	waitmoncry
+	waitmovement 0
+	applymovement 21, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_4
+	playse SE_M_HEADBUTT
+	waitmovement 0
+	waitse
+	fadedefaultbgm
+	release
+	return
+
+
+WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_0:
+	walk_in_place_fast_left
+	step_end
+
+WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_1:
+	lock_facing_direction
+	walk_fast_left
+	walk_fast_right
+	unlock_facing_direction
+	step_end
+
+WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_2:
+	walk_in_place_fast_right
+	step_end
+
+WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_3:
+	jump_in_place_right
+	step_end
+
+WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_4:
+	lock_facing_direction
+	walk_fast_right
+	walk_fast_left
+	unlock_facing_direction
+	step_end
+
 WindsweptRoute_EventScript_OvergrownTrees_Text_0:
 	.string "Thank you for cutting down that\n"
 	.string "annoying tree! We can go to Silveridge\l"
@@ -158,3 +216,19 @@ WindsweptRoute_EventScript_Roku_Text_2:
 WindsweptRoute_EventScript_Roku_Text_3:
 	.string "Please don't tell my colleagues I've\n"
 	.string "been slacking off…$"
+
+WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_0:
+	.string "Ninja boy$"
+
+WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_1:
+	.string "You shall know defeat at the hand of\n"
+	.string "my ninja Pokémon!\p"
+	.string "Nuzleaf, use Feint Attack!$"
+
+WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_2:
+	.string "School kid$"
+
+WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_3:
+	.string "Your pathetic ninja costume can't\n"
+	.string "beat the sheer power of knowledge!\p"
+	.string "Breloom! Headbutt!$"
