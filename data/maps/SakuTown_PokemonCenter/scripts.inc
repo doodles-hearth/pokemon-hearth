@@ -12,12 +12,12 @@ SakuTown_PokemonCenter_EventScript_Nurse::
 	faceplayer
 	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_Nurse_Text_1
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	playfanfare MUS_HEAL
 	waitfanfare
 	special HealPlayerParty
 	callnative UpdateFollowingPokemon
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_Nurse_Text_2
 	turnobject VAR_LAST_TALKED, DIR_SOUTH

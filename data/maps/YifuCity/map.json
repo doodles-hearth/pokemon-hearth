@@ -938,7 +938,7 @@
       "x": 4,
       "y": 36,
       "elevation": 0,
-      "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "var": "FLAG_CLEARED_CROBAT_HIDEOUT",
       "var_value": "0",
       "script": "YifuCity_Trigger_Lockdown"
     },
@@ -947,7 +947,7 @@
       "x": 4,
       "y": 37,
       "elevation": 0,
-      "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "var": "FLAG_CLEARED_CROBAT_HIDEOUT",
       "var_value": "0",
       "script": "YifuCity_Trigger_Lockdown"
     },
@@ -956,7 +956,7 @@
       "x": 4,
       "y": 38,
       "elevation": 0,
-      "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "var": "FLAG_CLEARED_CROBAT_HIDEOUT",
       "var_value": "0",
       "script": "YifuCity_Trigger_Lockdown"
     },
@@ -965,7 +965,7 @@
       "x": 4,
       "y": 39,
       "elevation": 0,
-      "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "var": "FLAG_CLEARED_CROBAT_HIDEOUT",
       "var_value": "0",
       "script": "YifuCity_Trigger_Lockdown"
     },
@@ -974,7 +974,7 @@
       "x": 4,
       "y": 40,
       "elevation": 0,
-      "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "var": "FLAG_CLEARED_CROBAT_HIDEOUT",
       "var_value": "0",
       "script": "YifuCity_Trigger_Lockdown"
     },
@@ -983,7 +983,7 @@
       "x": 4,
       "y": 41,
       "elevation": 0,
-      "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "var": "FLAG_CLEARED_CROBAT_HIDEOUT",
       "var_value": "0",
       "script": "YifuCity_Trigger_Lockdown"
     },
@@ -992,7 +992,7 @@
       "x": 4,
       "y": 42,
       "elevation": 0,
-      "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "var": "FLAG_CLEARED_CROBAT_HIDEOUT",
       "var_value": "0",
       "script": "YifuCity_Trigger_Lockdown"
     },
@@ -1001,7 +1001,7 @@
       "x": 4,
       "y": 43,
       "elevation": 0,
-      "var": "FLAG_HIDE_LOCKDOWN_SAMURAI",
+      "var": "FLAG_CLEARED_CROBAT_HIDEOUT",
       "var_value": "0",
       "script": "YifuCity_Trigger_Lockdown"
     },

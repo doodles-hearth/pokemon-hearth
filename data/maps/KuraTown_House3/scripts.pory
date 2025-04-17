@@ -107,10 +107,10 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 		waitmoncry
 		delay(40)
 
-		fadescreen(FADE_TO_BLACK)
+		fadescreenswapbuffers(FADE_TO_BLACK)
 		removeobject(LOCALID_ESPEON)
 		delay(60)
-		fadescreen(FADE_FROM_BLACK)
+		fadescreenswapbuffers(FADE_FROM_BLACK)
 		delay(40)
 
 		speakername("Woman")

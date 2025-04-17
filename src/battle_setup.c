@@ -628,6 +628,9 @@ u8 BattleSetup_GetTerrainId(void)
     
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAGURO_HARBOR_DOJO) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAGURO_HARBOR_DOJO))
         return BATTLE_TERRAIN_POND;
+    
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(KURA_TOWN_DOJO) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(KURA_TOWN_DOJO))
+        return BATTLE_TERRAIN_GRASS;
 
     if (MetatileBehavior_IsTallGrass(tileBehavior))
         return BATTLE_TERRAIN_GRASS;

@@ -10,9 +10,9 @@ Common_EventScript_PcGuy_1:
 	setflag FLAG_PC_EXPLAINED
 	msgbox Common_EventScript_PcGuy_Text_3
 	closemessage
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	delay 120
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	msgbox Common_EventScript_PcGuy_Text_4
 	closemessage
 Common_EventScript_PcGuy_5:

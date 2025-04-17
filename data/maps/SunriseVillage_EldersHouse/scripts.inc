@@ -209,19 +209,18 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10
 	closemessage
-	playfanfare MUS_OBTAIN_ITEM
-	message SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11
+	giveitem ITEM_LETTER
 	waitfanfare
 	closemessage
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_12
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11
 	closemessage
 	applymovement 2, Common_Movement_WalkInPlaceFasterLeft
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	waitmovement 2
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_12
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14
 	compare VAR_RESULT, 0
 	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_48
 	applymovement 2, Common_Movement_WalkInPlaceFasterUp
@@ -229,13 +228,13 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_55
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_17
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_54:
 	closemessage
 	applymovement 2, Common_Movement_WalkInPlaceFasterLeft
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_47:
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_19
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18
 	closemessage
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15
 	waitmovement 0
@@ -399,7 +398,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_46:
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_42
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_48:
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_16
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15
 	closemessage
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_47
 
@@ -409,7 +408,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_52:
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_51
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_55:
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_17
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_16
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_54
 
 
@@ -769,31 +768,28 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10:
 	.string "Could you deliver him this letter?$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11:
-	.string "{PLAYER} received the Letter!$"
-
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_12:
 	.string "Understood, Grandma Kaba.\n"
 	.string "We're going adventuring!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_12:
 	.string "{PLAYER}… Are you ready?$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13:
 	.string "Totally!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14:
 	.string "Absolutely not!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_16:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15:
 	.string "That's what I'm talking about!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_17:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_16:
 	.string "Don't listen to him! He's so ready!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_17:
 	.string "Don't listen to her! She's so ready!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_19:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18:
 	.string "{PLAYER}!\n"
 	.string "Let's see what our brand-new Pokémon\l"
 	.string "are capable of!\p"

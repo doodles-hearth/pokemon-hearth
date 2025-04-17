@@ -94,10 +94,10 @@ KuraTown_House3_EventScript_EspeonGoesHome::
 	playmoncry SPECIES_ESPEON, CRY_MODE_NORMAL
 	waitmoncry
 	delay 40
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject 2
 	delay 60
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	delay 40
 	speakername KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_EspeonGoesHome_Text_2

@@ -195,6 +195,18 @@ SunriseVillage_Beach_EventScript_Corsola2::
 	end
 
 
+SunriseVillage_Event_LookingAtYifu::
+	lock
+	faceplayer
+	speakername SunriseVillage_Event_LookingAtYifu_Text_0
+	msgbox SunriseVillage_Event_LookingAtYifu_Text_1
+	closemessage
+	applymovement VAR_LAST_TALKED, SunriseVillage_Event_LookingAtYifu_Movement_0
+	waitmovement 0
+	release
+	end
+
+
 SunriseVillage_Beach_Movement_RivalSitsOnBench:
 	walk_in_place_faster_left
 	delay_16
@@ -244,6 +256,10 @@ SunriseVillage_Beach_Movement_RivalRaces:
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
+	step_end
+
+SunriseVillage_Event_LookingAtYifu_Movement_0:
+	face_original_direction
 	step_end
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_0:
@@ -348,3 +364,12 @@ SunriseVillage_Beach_EventScript_Corsola_Text_0:
 
 SunriseVillage_Beach_EventScript_Corsola2_Text_0:
 	.string "Laaa!$"
+
+SunriseVillage_Event_LookingAtYifu_Text_0:
+	.string "Little Boy$"
+
+SunriseVillage_Event_LookingAtYifu_Text_1:
+	.string "My best friend lives all the way over\n"
+	.string "there in Yifu City!\p"
+	.string "I don't get to see her often. I miss\n"
+	.string "her…$"

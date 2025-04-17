@@ -3,7 +3,7 @@ Silveridge_EldersHouse_MapScripts::
 	.byte 0
 
 Silveridge_EldersHouse_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_DECAY_BEACHBOUND_ROUTE, 1, Silveridge_EldersHouse_EventScript_Conversation
+	map_script_2 VAR_DECAY_BEACHBOUND_ROUTE, 4, Silveridge_EldersHouse_EventScript_Conversation
 	.2byte 0
 
 
@@ -58,6 +58,7 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_4
 	waitmovement OBJ_EVENT_ID_PLAYER
+	removeitem ITEM_LETTER
 	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
 	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_9
 	clearflag FLAG_KURA_DOJO_CLOSED

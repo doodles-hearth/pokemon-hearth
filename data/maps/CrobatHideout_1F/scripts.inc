@@ -329,12 +329,12 @@ CrobatHideout_1F_BattleSamuraiBackToBack::
 	speakername CrobatHideout_1F_EventScript_Samurai_Text_0
 	msgbox CrobatHideout_1F_BattleSamuraiBackToBack_Text_3
 	closemessage
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	playfanfare MUS_HEAL
 	waitfanfare
 	special HealPlayerParty
 	callnative UpdateFollowingPokemon
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	speakername CrobatHideout_1F_EventScript_Samurai_Text_0
 	msgbox CrobatHideout_1F_BattleSamuraiBackToBack_Text_4
 	closemessage
@@ -490,7 +490,7 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	waitmovement 0
 	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_16
 	playse SE_M_DIVE
-	fadescreen FADE_TO_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
 	setweather WEATHER_FOG_HORIZONTAL
 	doweather
 	removeobject 6
@@ -500,7 +500,7 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	removeobject 7
 	removeobject 9
 	delay 80
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	delay 48
 	speakername CrobatHideout_1F_EventScript_Samurai_Text_0
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_15
@@ -527,7 +527,7 @@ CrobatHideout_1F_LetsFight2v2::
 	msgbox CrobatHideout_1F_LetsFight2v2_Text_0
 	closemessage
 	special SavePlayerParty
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	special ChooseHalfPartyForBattle
 	waitstate
 	compare VAR_RESULT, 0
@@ -537,7 +537,7 @@ CrobatHideout_1F_LetsFight2v2::
 	multi_2_vs_2 TRAINER_GOLBAT_ADMIN_1, CrobatHideout_1F_LetsFight2v2_Text_1, TRAINER_GOLBAT_ADMIN_2, CrobatHideout_1F_LetsFight2v2_Text_2, PARTNER_SAMURAI
 	compare VAR_RESULT, 0
 	goto_if_ne CrobatHideout_1F_LetsFight2v2_5
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	special SetCB2WhiteOut
 	waitstate
 CrobatHideout_1F_LetsFight2v2_1:
@@ -570,13 +570,13 @@ CrobatHideout_1F_LetsFight2v2_5:
 	msgbox CrobatHideout_1F_LetsFight2v2_Text_5
 	closemessage
 	playse SE_M_DIVE
-	fadescreen FADE_TO_WHITE
+	fadescreenswapbuffers FADE_TO_WHITE
 	setweather WEATHER_FOG_HORIZONTAL
 	doweather
 	removeobject 19
 	removeobject 13
 	delay 80
-	fadescreen FADE_FROM_WHITE
+	fadescreenswapbuffers FADE_FROM_WHITE
 	delay 48
 	applymovement 14, CrobatHideout_1F_BattleSamuraiBackToBack_Movement_3
 	applymovement OBJ_EVENT_ID_PLAYER, CrobatHideout_1F_Trigger_4V1_Movement_1

@@ -353,9 +353,8 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	))
 	closemessage
 
-	playfanfare(MUS_OBTAIN_ITEM)
-	// TODO EVA giveitem letter
-	message(format("{PLAYER} received the Letter!"))
+	giveitem(ITEM_LETTER)
+
 	waitfanfare
 	closemessage
 

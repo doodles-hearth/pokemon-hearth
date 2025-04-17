@@ -27,9 +27,9 @@ Shogunate_EventScript_Shuppet::
 	faceplayer
 	playmoncry SPECIES_SHUPPET, CRY_MODE_NORMAL
 	waitmoncry
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	setflag FLAG_TEMP_1
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	release
 	return
 

@@ -5,20 +5,11 @@ YifuCity_MapScripts::
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	compare VAR_CROBAT_HIDEOUT_STATE, 3
-	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
-YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	compare VAR_CROBAT_HIDEOUT_STATE, 1
-	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
-	compare VAR_CROBAT_HIDEOUT_STATE, 4
-	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	return
 
-YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	setflag FLAG_TEMP_2
-	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
-
-YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
-	setflag FLAG_HIDE_HARIKO_YIFU_CITY
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -164,10 +155,10 @@ YifuCity_EventScript_RobberyVictim_8:
 	waitmessage
 	setflag FLAG_RECEIVED_TM_CALM_MIND
 	addvar VAR_PLAYER_REPUTATION, 1
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	removeobject VAR_LAST_TALKED
 	delay 60
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	goto YifuCity_EventScript_RobberyVictim_1
 
 YifuCity_EventScript_RobberyVictim_9:
@@ -510,7 +501,7 @@ YifuCity_EventScript_Surskit::
 
 YifuCity_Trigger_Lockdown::
 	lockall
-	goto_if_set FLAG_HIDE_LOCKDOWN_SAMURAI, YifuCity_Trigger_Lockdown_2
+	goto_if_unset FLAG_TRIGGERED_LOCKDOWN, YifuCity_Trigger_Lockdown_2
 	applymovement 33, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement 0
 	special GetPlayerSirMissString
@@ -524,6 +515,7 @@ YifuCity_Trigger_Lockdown_1:
 	return
 
 YifuCity_Trigger_Lockdown_2:
+	setflag FLAG_TRIGGERED_LOCKDOWN
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	msgbox YifuCity_Trigger_Lockdown_Text_0
