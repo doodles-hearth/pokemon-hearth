@@ -75,8 +75,8 @@
 #define FLAG_PAUSE_FAKERTC   0x37 // Pause Fake RTC
 #define FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE 0x38
 #define FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE      0x39
-#define FLAG_UNUSED_0x03A    0x3A // Unused Flag
-#define FLAG_UNUSED_0x03B    0x3B // Unused Flag
+#define FLAG_NO_COLLISION    0x3A
+#define FLAG_BEAT_ROCK_SMASHER    0x3B
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag
 #define FLAG_UNUSED_0x03D    0x3D // Unused Flag
 #define FLAG_UNUSED_0x03E    0x3E // Unused Flag
@@ -680,7 +680,7 @@
 #define FLAG_HIDE_HARIKO_YIFU_CITY  0x273
 #define FLAG_GOT_SCAMMED_YIFU_REFUGE 0x274
 #define FLAG_TALKED_TO_INCENSE_SHOP_KEEPER 0x275
-#define FLAG_UNUSED_0x276  0x276 // Unused Flag
+#define FLAG_TRIGGERED_LOCKDOWN 0x276
 #define FLAG_UNUSED_0x277  0x277 // Unused Flag
 #define FLAG_UNUSED_0x278  0x278 // Unused Flag
 #define FLAG_UNUSED_0x279  0x279 // Unused Flag

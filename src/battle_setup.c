@@ -628,6 +628,9 @@ u8 BattleSetup_GetTerrainId(void)
     
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAGURO_HARBOR_DOJO) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAGURO_HARBOR_DOJO))
         return BATTLE_TERRAIN_POND;
+    
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(KURA_TOWN_DOJO) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(KURA_TOWN_DOJO))
+        return BATTLE_TERRAIN_GRASS;
 
     if (MetatileBehavior_IsTallGrass(tileBehavior))
         return BATTLE_TERRAIN_GRASS;
@@ -1449,6 +1452,9 @@ void PlayTrainerEncounterMusic(void)
             break;
         case TRAINER_ENCOUNTER_MUSIC_RICH:
             music = MUS_ENCOUNTER_RICH;
+            break;
+        case TRAINER_ENCOUNTER_MUSIC_SPIRITUAL:
+            music = MUS_B_ARENA;
             break;
         default:
             music = MUS_ENCOUNTER_SUSPICIOUS;

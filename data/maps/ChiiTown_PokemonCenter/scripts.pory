@@ -116,7 +116,7 @@ script ChiiTown_PokemonCenter_EventScript_IveComeALongWay {
 	speakername("Weary traveler")
 	msgbox(format(
 		"I'm so glad I found this refuge. I've come a long way and my feet hurt.\p"
-		"My Pokémon and I wil rest here for a while."
+		"My Pokémon and I will rest here for a while."
 	))
 	closemessage
 	release

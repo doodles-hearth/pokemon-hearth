@@ -4,7 +4,7 @@ const LOCALID_OLD_WOMAN = 3
 
 mapscripts Silveridge_EldersHouse_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_DECAY_BEACHBOUND_ROUTE, 1: Silveridge_EldersHouse_EventScript_Conversation
+        VAR_DECAY_BEACHBOUND_ROUTE, 4: Silveridge_EldersHouse_EventScript_Conversation
     ]
 }
 
@@ -93,6 +93,8 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up, delay_16, walk_down, face_up))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
+
+	removeitem(ITEM_LETTER)
 
 	speakername("Elder Iwa")
 	// TODO EVA dialogue

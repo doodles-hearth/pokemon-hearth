@@ -1420,7 +1420,7 @@ const u8 gText_MainCampaignDesc_3[] = _("Description 1");
 
 //generic
 const u8 gText_SideQuestDesc_1[] = _("Description 1");
-const u8 gText_SideQuestDesc_2[] = _("Description 2");
+const u8 gText_SideQuestDesc_2[] = _("Fill the pages of the PokéDex!");
 const u8 gText_SideQuestDesc_3[] = _("Description 3");
 const u8 gText_SideQuestDesc_4[] = _("Description 4");
 const u8 gText_SideQuestDesc_5[] = _("Description 5");
@@ -1487,13 +1487,13 @@ const u8 gText_SideQuestDoneDesc_30[] = _("Completed Quest 30");
 //complex quests
 const u8 gText_MainCampaignMap_1[] = _("Elder Kaba's House");
 const u8 gText_MainCampaignMap_2[] = _("Silveridge");
-const u8 gText_MainCampaignMap_3[] = _("Map 1");
+const u8 gText_MainCampaignMap_3[] = _("Uume Forest");
 
 //generic maps
-const u8 gText_SideQuestMap1[] = _("Map 1"); // Unused; kept to keep stuff from breaking
+const u8 gText_SideQuestMap1[] = _("Toku Region"); // Unused; kept to keep stuff from breaking
 const u8 gText_SideQuestMap2[] = _("Toku Region");
-const u8 gText_SideQuestMap3[] = _("Map 3");
-const u8 gText_SideQuestMap4[] = _("Map 4");
+const u8 gText_SideQuestMap3[] = _("Toku Region");
+const u8 gText_SideQuestMap4[] = _("Toku Region");
 const u8 gText_SideQuestMap5[] = _("Map 5");
 const u8 gText_SideQuestMap6[] = _("Map 6");
 const u8 gText_SideQuestMap7[] = _("Map 7");
@@ -1524,9 +1524,9 @@ const u8 gText_SideQuestMap30[] = _("Map 30");
 //subquests
 
 const u8 gText_SubQuest2_Name1[] = _("See all Pokémon");
-const u8 gText_SubQuest2_Name2[] = _("Catch all Pokémon");
-const u8 gText_SubQuest2_Name3[] = _("Describe all Pokémon");
-const u8 gText_SubQuest2_Name4[] = _("Part 4");
+const u8 gText_SubQuest2_Name2[] = _("Name all Pokémon");
+const u8 gText_SubQuest2_Name3[] = _("Catch all Pokémon");
+const u8 gText_SubQuest2_Name4[] = _("Describe all Pokémon");
 
 const u8 gText_SubQuest2_Desc1[] = _("Description Sub 1");
 const u8 gText_SubQuest2_Desc2[] = _("Description Sub 2");

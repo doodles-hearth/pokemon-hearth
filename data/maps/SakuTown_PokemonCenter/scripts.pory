@@ -7,10 +7,33 @@ mapscripts SakuTown_PokemonCenter_MapScripts {
 }
 
 script SakuTown_PokemonCenter_EventScript_Nurse {
-	setvar(VAR_0x800B, LOCALID_NURSE)
-	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
-	waitmessage
-	waitbuttonpress
+	// setvar(VAR_0x800B, LOCALID_NURSE)
+	// call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
+	// waitmessage
+	// waitbuttonpress
+	lock
+
+	faceplayer
+	speakername("Nurse")
+	msgbox(format(
+		"Hello! Apologies for the mess, we're not fully set up yet!\p"
+		"Let me heal your Pokémon!"
+	))
+
+	fadescreenswapbuffers(FADE_TO_BLACK)
+	playfanfare(MUS_HEAL)
+	waitfanfare
+	special(HealPlayerParty)
+	callnative(UpdateFollowingPokemon)
+	fadescreenswapbuffers(FADE_FROM_BLACK)
+
+	speakername("Nurse")
+	msgbox(format(
+		"Come back soon!"
+	))
+
+	turnobject(VAR_LAST_TALKED, DIR_SOUTH)
+
 	release
 	end
 }
@@ -20,7 +43,7 @@ script SakuTown_PokemonCenter_EventScript_Traveler {
 	faceplayer
 	speakername("Man")
 	msgbox(format(
-		"This Pokémon refuge is brand-new, courtesy of the Pokémon League!\p"
+		"This Pokémon refuge is brand-new, courtesy of the Toku Council!\p"
 		"As you can see, it's still being built. Watch out for the falling bricks, ha ha, just kidding!\p"
 		"Seriously though, do watch out. We're held responsible if anything happens to you."
 	))

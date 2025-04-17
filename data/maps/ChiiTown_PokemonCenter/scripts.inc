@@ -220,8 +220,8 @@ ChiiTown_PokemonCenter_EventScript_Shamisen_Text_1:
 	.string "Good evening.\p"
 	.string "We blind shamisen players sing to\n"
 	.string "survive.\p"
-	.string "These Pokémon refuges give us a\n"
-	.string "safe place to spend the night.$"
+	.string "These Pokémon refuges give us a safe\n"
+	.string "place to spend the night.$"
 
 ChiiTown_PokemonCenter_EventScript_ShamisenFan_Text_0:
 	.string "Shamisen fan$"
@@ -231,8 +231,8 @@ ChiiTown_PokemonCenter_EventScript_ShamisenFan_Text_1:
 	.string "Such sorrowful melodies…\p"
 	.string "Such ethereal beauty…\p"
 	.string "I could listen to her forever…\p"
-	.string "Even though she can't see me, I\n"
-	.string "sure hope she'll notice me one day…$"
+	.string "Even though she can't see me, I sure\n"
+	.string "hope she'll notice me one day…$"
 
 ChiiTown_PokemonCenter_EventScript_Boy_Text_0:
 	.string "Little boy$"
@@ -246,8 +246,8 @@ ChiiTown_PokemonCenter_EventScript_Mom_Text_0:
 
 ChiiTown_PokemonCenter_EventScript_Mom_Text_1:
 	.string "Traveling shamisen players take\n"
-	.string "shelter in Pokémon refuges when\l"
-	.string "the night falls.\p"
+	.string "shelter in Pokémon refuges when the\l"
+	.string "night falls.\p"
 	.string "Their singing makes for such a cosy\n"
 	.string "atmosphere!$"
 
@@ -262,11 +262,10 @@ ChiiTown_PokemonCenter_EventScript_IveComeALongWay_Text_0:
 	.string "Weary traveler$"
 
 ChiiTown_PokemonCenter_EventScript_IveComeALongWay_Text_1:
-	.string "I'm so glad I found this refuge.\n"
-	.string "I've come a long way and my feet\l"
-	.string "hurt.\p"
-	.string "My Pokémon and I wil rest here for\n"
-	.string "a while.$"
+	.string "I'm so glad I found this refuge. I've\n"
+	.string "come a long way and my feet hurt.\p"
+	.string "My Pokémon and I will rest here for a\n"
+	.string "while.$"
 
 ChiiTown_PokemonCenter_EventScript_Snorunt_Text_0:
 	.string "Glaglaglaglagla!$"
@@ -276,39 +275,38 @@ ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_0:
 
 ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_1:
 	.string "Berries, ointments… Oh, right, I\n"
-	.string "should get a few more Poké Balls\l"
-	.string "from the town market!$"
+	.string "should get a few more Poké Balls from\l"
+	.string "the town market!$"
 
 ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_0:
 	.string "Talkative man$"
 
 ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_1:
 	.string "Isn't it amazing? This is one of the\n"
-	.string "many brand-new Pokémon refuges\l"
-	.string "that the Pokémon league council\l"
-	.string "has decided to build in towns\l"
-	.string "across all Toku!\p"
+	.string "many brand-new Pokémon refuges that\l"
+	.string "the Pokémon league council has\l"
+	.string "decided to build in towns across all\l"
+	.string "Toku!\p"
 	.string "With traveling alone becoming more\n"
 	.string "dangerous, many people are now\l"
-	.string "training a Pokémon of their own\l"
-	.string "for protection.\p"
-	.string "Towns were starting to be in dire\n"
-	.string "need of proper healing and rest\l"
-	.string "spots for Pokémon.\p"
-	.string "Oh, sorry, I'll get out of your\n"
-	.string "hair now. Talk to the nurse and\l"
-	.string "her Chansey whenever you want\l"
-	.string "her to heal your Pokémon!$"
+	.string "training a Pokémon of their own for\l"
+	.string "protection.\p"
+	.string "Towns were starting to be in dire need\n"
+	.string "of proper healing and rest spots for\l"
+	.string "Pokémon.\p"
+	.string "Oh, sorry, I'll get out of your hair\n"
+	.string "now. Talk to the nurse and her\l"
+	.string "Chansey whenever you want her to\l"
+	.string "heal your Pokémon!$"
 
 ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_0:
 	.string "Little Boy$"
 
 ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_1:
 	.string "You know what happens if I see a\n"
-	.string "Pokémon and I don't know its\l"
-	.string "name?\p"
+	.string "Pokémon and I don't know its name?\p"
 	.string "I just make it right up!\n"
-	.string "I don't care about any silly\l"
-	.string "“real” names!\p"
+	.string "I don't care about any silly “real”\l"
+	.string "names!\p"
 	.string "And neither should you! Be free of\n"
 	.string "the diktat of naming accuracy!$"

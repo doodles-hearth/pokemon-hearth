@@ -53,10 +53,10 @@ GinkoWoods_EventScript_Bean::
 	speakername GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_3
 	closemessage
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	addtime 0, 1, 30
 	delay 60
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	delay 48
 	speakername GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_4
@@ -141,8 +141,8 @@ GinkoWoods_EventScript_Toshiki_Text_2:
 	.string "Toshiki$"
 
 GinkoWoods_EventScript_Toshiki_Text_3:
-	.string "Isn't Sewaddle cute, all wrapped up\n"
-	.string "in its leaf?$"
+	.string "Isn't Sewaddle cute, all wrapped up in\n"
+	.string "its leaf?$"
 
 GinkoWoods_EventScript_Toshio_Text_0:
 	.string "Our eyes met! Therefore we must\n"
@@ -157,8 +157,7 @@ GinkoWoods_EventScript_Toshio_Text_2:
 GinkoWoods_EventScript_Toshio_Text_3:
 	.string "Real wielders fight when they spot\n"
 	.string "each other!\p"
-	.string "At least that's what my dad told\n"
-	.string "me…$"
+	.string "At least that's what my dad told me…$"
 
 GinkoWoods_EventScript_Eiji_Text_0:
 	.string "With the help of my brand-new\n"
@@ -172,9 +171,8 @@ GinkoWoods_EventScript_Eiji_Text_2:
 	.string "Eiji$"
 
 GinkoWoods_EventScript_Eiji_Text_3:
-	.string "I asked Elder Kaba for a bird\n"
-	.string "Pokémon, because they're strong\l"
-	.string "against bugs!$"
+	.string "I asked Elder Kaba for a bird Pokémon,\n"
+	.string "because they're strong against bugs!$"
 
 GinkoWoods_EventScript_OldMan_Text_0:
 	.string "Old man$"
@@ -198,37 +196,35 @@ GinkoWoods_EventScript_Bean_Text_3:
 	.string "It looks like a small mammal's\n"
 	.string "footprints, see?\p"
 	.string "Studying Pokémon tracks is so\n"
-	.string "fascinating. One can find out\l"
-	.string "about a Pokémon's nesting place,\l"
-	.string "their hunting habits, at what time\l"
-	.string "they sleep, what they eat…\l"
-	.string "Interesting, isn't it?\p"
+	.string "fascinating. One can find out about a\l"
+	.string "Pokémon's nesting place, their\l"
+	.string "hunting habits, at what time they\l"
+	.string "sleep, what they eat… Interesting,\l"
+	.string "isn't it?\p"
 	.string "These woods host a lot of yellow\n"
 	.string "Pokémon, so I'd bet these are a\l"
-	.string "Pikachu's, or a Kotora's. Do you\l"
-	.string "know why there's a lot of yellow\l"
-	.string "Pokémon here? Well, that's\l"
-	.string "because smaller Pokémon can\l"
-	.string "easily hide from predators in the\l"
-	.string "foliage, and said predators can\l"
-	.string "stalk their prey without being\l"
-	.string "seen. Additionally, the high\l"
-	.string "concentration of electric-type\l"
+	.string "Pikachu's, or a Kotora's. Do you know\l"
+	.string "why there's a lot of yellow Pokémon\l"
+	.string "here? Well, that's because smaller\l"
+	.string "Pokémon can easily hide from\l"
+	.string "predators in the foliage, and said\l"
+	.string "predators can stalk their prey\l"
+	.string "without being seen. Additionally, the\l"
+	.string "high concentration of electric-type\l"
 	.string "Pokémon, which seems to have\l"
-	.string "happened fortuitously, explains\l"
-	.string "the unnaturally high static\l"
-	.string "electricity in the air here. Some\l"
-	.string "of the non-electric Pokémon that\l"
-	.string "live here have adapted by\l"
-	.string "developing specific traits, like\l"
-	.string "the Sewaddle you've probably\l"
-	.string "seen on your way here that blah,\l"
-	.string "blah blah blah blah, blah blah…$"
+	.string "happened fortuitously, explains the\l"
+	.string "unnaturally high static electricity in\l"
+	.string "the air here. Some of the non-electric\l"
+	.string "Pokémon that live here have adapted\l"
+	.string "by developing specific traits, like\l"
+	.string "the Sewaddle you've probably seen on\l"
+	.string "your way here that blah, blah blah\l"
+	.string "blah blah, blah blah…$"
 
 GinkoWoods_EventScript_Bean_Text_4:
 	.string "…And that's all that is currently\n"
-	.string "known about Joltik's habitat\l"
-	.string "during the winter.\p"
+	.string "known about Joltik's habitat during\l"
+	.string "the winter.\p"
 	.string "Neat, isn't it?$"
 
 GinkoWoods_EventScript_Bean_Text_5:
@@ -244,35 +240,29 @@ GinkoWoods_EventScript_Bean_Text_8:
 	.string "Hariko$"
 
 GinkoWoods_EventScript_Bean_Text_9:
-	.string "Right! I am glad you share my\n"
-	.string "interest in Pokémon habitat.\p"
-	.string "I am Hariko. And what is your\n"
-	.string "name?\p"
-	.string "{PLAYER}. It has been nice\n"
-	.string "chatting with you. I will see you\l"
-	.string "around, then.\p"
+	.string "Right! I am glad you share my interest\n"
+	.string "in Pokémon habitat.\p"
+	.string "I am Hariko. And what is your name?\p"
+	.string "{PLAYER}. It has been nice chatting\n"
+	.string "with you. I will see you around, then.\p"
 	.string "Okay, bye!$"
 
 GinkoWoods_EventScript_Bean_Text_10:
 	.string "Right! I haven't introduced myself\n"
 	.string "yet.\p"
-	.string "I am Hariko. And what is your\n"
-	.string "name?\p"
-	.string "{PLAYER}. It has been nice\n"
-	.string "chatting with you. I will see you\l"
-	.string "around, then.\p"
+	.string "I am Hariko. And what is your name?\p"
+	.string "{PLAYER}. It has been nice chatting\n"
+	.string "with you. I will see you around, then.\p"
 	.string "Okay, bye!$"
 
 GinkoWoods_EventScript_Bean_Text_11:
-	.string "…Oh. I am blocking your path. I\n"
-	.string "see.\p"
+	.string "…Oh. I am blocking your path. I see.\p"
 	.string "I guess I got carried away, have I\n"
 	.string "not? That… tends to happen.\p"
-	.string "I am Hariko. And what is your\n"
-	.string "name?\p"
-	.string "{PLAYER}. It has been nice\n"
-	.string "chatting with you. I am moving\l"
-	.string "now, so that you can go through.\p"
+	.string "I am Hariko. And what is your name?\p"
+	.string "{PLAYER}. It has been nice chatting\n"
+	.string "with you. I am moving now, so that you\l"
+	.string "can go through.\p"
 	.string "I will see you around, then.\p"
 	.string "Okay, bye!$"
 

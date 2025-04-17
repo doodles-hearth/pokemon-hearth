@@ -12,6 +12,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 
 	// First time talking to him
 	if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0) {
+		setnamedmon(SPECIES_EEVEE)
 		speakername("Boy")
 		msgbox(format(
 				"I hope Eevee comes home soon…"
@@ -20,6 +21,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 		// Talked to Espeon's master but not to lady
 		setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 2)
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
+		setnamedmon(SPECIES_EEVEE)
 		speakername("Boy")
 		msgbox(format(
 			"I hope Eevee comes home soon…\p"
@@ -58,6 +60,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			closemessage
 		} else {
 			if (flag(FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE)) {
+				setnamedmon(SPECIES_ESPEON)
 				speakername("Boy")
 				msgbox(format(
 					"How are you doing? Espeon looks happy to see you!"
@@ -84,10 +87,10 @@ script SakuTown_House2_EventScript_Reunited {
 
 	delay(30)
 	// Espeon appears
-	playse(SE_DOOR)
+	playse(SE_EXIT)
 	waitse
 	addobject(LOCALID_ESPEON)
-	setobjectxy(LOCALID_ESPEON, 5, 7)
+	setobjectxy(LOCALID_ESPEON, 4, 7)
 	turnobject(LOCALID_ESPEON, DIR_NORTH)
 
 	// Everyone faces down and is surprised
@@ -168,8 +171,8 @@ script SakuTown_House2_EventScript_GiveEvoStone {
 	closemessage
 
 	dynmultichoice(
-		16,
-		6,
+		0,
+		0,
 		TRUE,
 		10,
 		0,
@@ -236,7 +239,7 @@ script SakuTown_House2_EventScript_Sister {
 // Walks up to the east of its master
 movement SakuTown_House2_Movement_EspeonWalksUpEast {
 	walk_fast_up
-	walk_fast_right * 2
+	walk_fast_right * 3
 	walk_fast_up * 2
 	face_left
 	jump_in_place_left * 2
@@ -245,7 +248,7 @@ movement SakuTown_House2_Movement_EspeonWalksUpEast {
 // Walks up to the south of its master
 movement SakuTown_House2_Movement_EspeonWalksUpSouth {
 	walk_fast_up
-	walk_fast_right
+	walk_fast_right * 2
 	walk_fast_up
 	jump_in_place_up * 2
 }

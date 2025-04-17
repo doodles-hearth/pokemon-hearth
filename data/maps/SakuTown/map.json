@@ -44,11 +44,11 @@
       "flag": "0",
       "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": true,
       "lunchtime": true,
       "morning": true,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAKUHITA)",
@@ -64,11 +64,11 @@
       "flag": "0",
       "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": true,
       "lunchtime": true,
       "morning": true,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",

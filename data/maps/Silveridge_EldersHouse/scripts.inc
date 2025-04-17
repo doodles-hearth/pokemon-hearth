@@ -3,7 +3,7 @@ Silveridge_EldersHouse_MapScripts::
 	.byte 0
 
 Silveridge_EldersHouse_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_DECAY_BEACHBOUND_ROUTE, 1, Silveridge_EldersHouse_EventScript_Conversation
+	map_script_2 VAR_DECAY_BEACHBOUND_ROUTE, 4, Silveridge_EldersHouse_EventScript_Conversation
 	.2byte 0
 
 
@@ -58,6 +58,7 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_4
 	waitmovement OBJ_EVENT_ID_PLAYER
+	removeitem ITEM_LETTER
 	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
 	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_9
 	clearflag FLAG_KURA_DOJO_CLOSED
@@ -132,8 +133,8 @@ Silveridge_EldersHouse_EventScript_Conversation_Text_6:
 	.string "Excuse me… Can I help you?$"
 
 Silveridge_EldersHouse_EventScript_Conversation_Text_7:
-	.string "Yes? I am Iwa, the Elder of\n"
-	.string "Silveridge. What brings you to me?$"
+	.string "Yes? I am Iwa, the Elder of Silveridge.\n"
+	.string "What brings you to me?$"
 
 Silveridge_EldersHouse_EventScript_Conversation_Text_8:
 	.string "Give the letter$"
@@ -144,9 +145,9 @@ Silveridge_EldersHouse_EventScript_Conversation_Text_9:
 	.string "I see…\p"
 	.string "blah blah shit's fucked everywhere\n"
 	.string "then\p"
-	.string "Could you go investigate the\n"
-	.string "decayed area in Uume Forest near\l"
-	.string "Yifu City for me plz kthx$"
+	.string "Could you go investigate the decayed\n"
+	.string "area in Uume Forest near Yifu City for\l"
+	.string "me plz kthx$"
 
 Silveridge_EldersHouse_EventScript_Elder_Text_0:
 	.string "Go forth, my child.$"

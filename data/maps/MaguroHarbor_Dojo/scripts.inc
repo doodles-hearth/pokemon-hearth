@@ -63,18 +63,36 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_2:
 
 MaguroHarbor_Dojo_EventScript_Izumi::
 	trainerbattle_single TRAINER_IZUMI, MaguroHarbor_Dojo_EventScript_Izumi_Text_0, MaguroHarbor_Dojo_EventScript_Izumi_Text_1
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_Dojo_EventScript_Izumi_1
+	msgbox MaguroHarbor_Dojo_EventScript_Izumi_Text_3, MSGBOX_AUTOCLOSE
+	return
+
+MaguroHarbor_Dojo_EventScript_Izumi_1:
 	msgbox MaguroHarbor_Dojo_EventScript_Izumi_Text_2, MSGBOX_AUTOCLOSE
 	return
 
 
 MaguroHarbor_Dojo_EventScript_Ren::
 	trainerbattle_single TRAINER_REN, MaguroHarbor_Dojo_EventScript_Ren_Text_0, MaguroHarbor_Dojo_EventScript_Ren_Text_1
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_Dojo_EventScript_Ren_1
+	msgbox MaguroHarbor_Dojo_EventScript_Ren_Text_3, MSGBOX_AUTOCLOSE
+	return
+
+MaguroHarbor_Dojo_EventScript_Ren_1:
 	msgbox MaguroHarbor_Dojo_EventScript_Ren_Text_2, MSGBOX_AUTOCLOSE
 	return
 
 
 MaguroHarbor_Dojo_EventScript_Mizu::
 	trainerbattle_single TRAINER_MIZU, MaguroHarbor_Dojo_EventScript_Mizu_Text_0, MaguroHarbor_Dojo_EventScript_Mizu_Text_1
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_Dojo_EventScript_Mizu_1
+	msgbox MaguroHarbor_Dojo_EventScript_Mizu_Text_3, MSGBOX_AUTOCLOSE
+	return
+
+MaguroHarbor_Dojo_EventScript_Mizu_1:
 	msgbox MaguroHarbor_Dojo_EventScript_Mizu_Text_2, MSGBOX_AUTOCLOSE
 	return
 
@@ -84,13 +102,20 @@ MaguroHarbor_Dojo_EventScript_Advice::
 	faceplayer
 	speakername MaguroHarbor_Dojo_EventScript_Advice_Text_0
 	goto_if_set FLAG_BADGE01_GET, MaguroHarbor_Dojo_EventScript_Advice_2
-	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_2
+	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_3
 MaguroHarbor_Dojo_EventScript_Advice_1:
+	closemessage
 	release
 	return
 
 MaguroHarbor_Dojo_EventScript_Advice_2:
-	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_1
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_Dojo_EventScript_Advice_5
+	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_2
+	goto MaguroHarbor_Dojo_EventScript_Advice_1
+
+MaguroHarbor_Dojo_EventScript_Advice_5:
+	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_1, MSGBOX_AUTOCLOSE
 	goto MaguroHarbor_Dojo_EventScript_Advice_1
 
 
@@ -151,19 +176,17 @@ MaguroHarbor_Dojo_EventScript_Koishi_Text_0:
 	.string "Koishi$"
 
 MaguroHarbor_Dojo_EventScript_Koishi_Text_1:
-	.string "Welcome to Maguro's Koi Pond Dojo,\n"
-	.string "one of the eight Dojos officially\l"
+	.string "Welcome to Maguro's Koi Pond Dojo, one\n"
+	.string "of the eight Dojos officially\l"
 	.string "appointed by the Toku Council.\p"
 	.string "We Dojo Masters fight wielders that\n"
-	.string "have taken on the Pokémon\l"
-	.string "Council's challenge.\p"
-	.string "We each give out a different Token\n"
-	.string "to anyone who succeeds in\l"
-	.string "defeating us.\p"
-	.string "I am Koishi. I began raising\n"
-	.string "elegant, graceful Pokémon when I\l"
-	.string "was even younger than you are\l"
-	.string "now.\p"
+	.string "have taken on the Toku Council's\l"
+	.string "challenge.\p"
+	.string "We each give out a different Token to\n"
+	.string "anyone who succeeds in defeating us.\p"
+	.string "I am Koishi. I began raising elegant,\n"
+	.string "graceful Pokémon when I was even\l"
+	.string "younger than you are now.\p"
 	.string "I may behave and speak in a soft\n"
 	.string "manner, but do not for one second\l"
 	.string "mistake soft-spokenness for\l"
@@ -174,33 +197,31 @@ MaguroHarbor_Dojo_EventScript_Koishi_Text_2:
 	.string "I see…$"
 
 MaguroHarbor_Dojo_EventScript_Koishi_Text_3:
-	.string "You shall achieve great things. I\n"
-	.string "hope we meet again.$"
+	.string "You shall achieve great things. I hope\n"
+	.string "we meet again.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_0:
 	.string "{PLAYER} received the Flowing\n"
 	.string "Token from Koishi.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1:
-	.string "I applaud your skill. You are still\n"
-	.string "a child, yet you obviously have\l"
-	.string "a natural aptitude for battle.\p"
-	.string "With the Token I just gave you,\n"
-	.string "your Pokémon will obey you\l"
-	.string "without question, even those you\l"
-	.string "trade with others.\p"
-	.string "I am also supposed to give you\n"
-	.string "this.$"
+	.string "I applaud your skill. You are still a\n"
+	.string "child, yet you obviously have a\l"
+	.string "natural aptitude for battle.\p"
+	.string "With the Token I just gave you, your\n"
+	.string "Pokémon will obey you without\l"
+	.string "question, even those you trade with\l"
+	.string "others.\p"
+	.string "I am also supposed to give you this.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2:
-	.string "This scroll contains Nature Power,\n"
-	.string "a move that changes depending on\l"
-	.string "the terrain your Pokémon is\l"
-	.string "standing on.\p"
+	.string "This scroll contains Nature Power, a\n"
+	.string "move that changes depending on the\l"
+	.string "terrain your Pokémon is standing on.\p"
 	.string "Going through the Toku Council's\n"
-	.string "challenge is no easy undertaking,\l"
-	.string "but I can feel your spirit\l"
-	.string "overflowing with determination.\p"
+	.string "challenge is no easy undertaking, but\l"
+	.string "I can feel your spirit overflowing\l"
+	.string "with determination.\p"
 	.string "Good luck, {PLAYER}.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_3:
@@ -216,18 +237,22 @@ MaguroHarbor_Dojo_EventScript_Izumi_Text_1:
 	.string "My poor Feebas!$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_2:
+	.string "Oh my, what was that quake?$"
+
+MaguroHarbor_Dojo_EventScript_Izumi_Text_3:
 	.string "You'll go far. I can tell.$"
 
 MaguroHarbor_Dojo_EventScript_Ren_Text_0:
-	.string "Come in! The water's nice and\n"
-	.string "toasty!$"
+	.string "Come in! The water's nice and toasty!$"
 
 MaguroHarbor_Dojo_EventScript_Ren_Text_1:
 	.string "Nooo!$"
 
 MaguroHarbor_Dojo_EventScript_Ren_Text_2:
-	.string "I l-lied. I'm f-f-freezing in\n"
-	.string "h-here.$"
+	.string "W-what happened?$"
+
+MaguroHarbor_Dojo_EventScript_Ren_Text_3:
+	.string "I l-lied. I'm f-f-freezing in h-here.$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_0:
 	.string "Do not disturb the koi pond!$"
@@ -236,6 +261,9 @@ MaguroHarbor_Dojo_EventScript_Mizu_Text_1:
 	.string "Stop making so much noise!$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_2:
+	.string "The poor fish must be all shaken!$"
+
+MaguroHarbor_Dojo_EventScript_Mizu_Text_3:
 	.string "These are sophisticated fish. They\n"
 	.string "need peace and quiet to thrive.$"
 
@@ -243,21 +271,24 @@ MaguroHarbor_Dojo_EventScript_Advice_Text_0:
 	.string "Man$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_1:
-	.string "You swept me away with that\n"
-	.string "battle!$"
+	.string "You swept me away with that battle!\p"
+	.string "That quake just now nearly literally\n"
+	.string "swept me away as well!$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_2:
-	.string "Hello, young challenger! Are you\n"
-	.string "going to be fighting for your\l"
-	.string "first Token?\p"
+	.string "You swept me away with that battle!$"
+
+MaguroHarbor_Dojo_EventScript_Advice_Text_3:
+	.string "Hello, young challenger! Are you going\n"
+	.string "to be fighting for your first Token?\p"
 	.string "Welcome to the Koi Pond Dojo!\p"
 	.string "Koishi, the Master of this place,\n"
 	.string "favors water-type moves. Her\l"
 	.string "battling style is strong, yet\l"
 	.string "graceful… Sigh…\p"
-	.string "I am her biggest fan! It's true!\n"
-	.string "Maybe one day, I'll become your\l"
-	.string "biggest fan, who knows?\p"
+	.string "I am her biggest fan! It's true! Maybe\n"
+	.string "one day, I'll become your biggest fan,\l"
+	.string "who knows?\p"
 	.string "Go get 'em!$"
 
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_0:

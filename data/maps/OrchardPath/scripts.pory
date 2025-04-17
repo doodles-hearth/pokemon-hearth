@@ -1,10 +1,17 @@
+const LOCALID_ROCK = 16
+const FLAG_HIDE_ROCK_TOP = FLAG_TEMP_1
+const FLAG_HIDE_ROCK_LEFT = FLAG_TEMP_2
+const FLAG_HIDE_ROCK_RIGHT = FLAG_TEMP_3
+const FLAG_JUST_GOT_ROCK_SMASH = FLAG_TEMP_4
+
 mapscripts OrchardPath_MapScripts {
 
 }
 
 script OrchardPath_EventScript_UumeForestSoulkeepSign {
 	msgbox(format(
-		"{UP_ARROW} Uume Forest\n"
+		"{UP_ARROW} Samurai Palace\n"
+		"{LEFT_ARROW}{UP_ARROW} Uume Forest\l"
 		"{LEFT_ARROW} Soulkeep"
 	), MSGBOX_SIGN)
 }
@@ -33,4 +40,364 @@ script OrchardPath_EventScript_Mami {
 	)
 	speakername("Mami")
 	msgbox(format("I wanted to catch some more ghosts at the Graveyard, but…\lIt's a little TOO scary…"), MSGBOX_AUTOCLOSE)
+}
+
+script OrchardPath_EventScript_Samurai {
+	lock
+	faceplayer
+	speakername("Samurai")
+	msgbox(format("Please stand back. Everything is under control."))
+
+	dynmultichoice(
+		0,
+		0,
+		TRUE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"What is happening?",
+		"I know about the Decay!",
+		"I'd like to go through."
+	)
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			call(OrchardPath_Samurai_WhatIsHappening)
+		case 1:
+			call(OrchardPath_Samurai_KnowAboutDecay)
+		case 2:
+			call(OrchardPath_Samurai_LetMeThrough)
+	}
+
+	release
+}
+
+script OrchardPath_Samurai_WhatIsHappening {
+	special(GetPlayerSirMissString)
+			speakername("Samurai")
+			msgbox(format(
+				"Nothing that concerns you, {STR_VAR_1}.\p"
+				"This is just your regular, run-of-the-mill, top secret yet unimportant stuff."
+			))
+
+			dynmultichoice(
+				0,
+				0,
+				TRUE,
+				10,
+				0,
+				DYN_MULTICHOICE_CB_NONE,
+				"I know about the Decay!",
+				"I'd like to go through."
+			)
+			closemessage
+
+			switch(var(VAR_RESULT)) {
+				case 0:
+					call(OrchardPath_Samurai_KnowAboutDecay)
+				case 1:
+					call(OrchardPath_Samurai_LetMeThrough)
+			}
+
+}
+
+script OrchardPath_Samurai_LetMeThrough {
+	speakername("Samurai")
+	msgbox(format(
+		"We cannot let you through, so please be on your way."
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		TRUE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"I know about the Decay!"
+	)
+	closemessage
+
+	call(OrchardPath_Samurai_KnowAboutDecay)
+}
+
+script OrchardPath_Samurai_KnowAboutDecay {
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 3))
+	waitmovement(0)
+	waitse
+
+	speakername("Samurai")
+	msgbox(format(
+		"You- what-\p"
+		"Ahem! I do not know of this Decay you speak of.\p"
+		"We cannot let you through though, so please be on your way.\p"
+		"Now now, move along!"
+	))
+	
+	call(OrchardPath_SetVarDecay)
+}
+
+script OrchardPath_SetVarDecay {
+	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 6)
+}
+
+script OrchardPath_EventScript_Umbreon {
+	lock
+    faceplayer
+	setseenmon(SPECIES_UMBREON)
+	setspeakertomonname(SPECIES_UMBREON)
+	playmoncry(SPECIES_UMBREON, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Uwooo!"
+    ))
+    waitmoncry
+    release
+    end
+}
+
+script OrchardPath_EventScript_RockSmash {
+	lock
+	if (flag(FLAG_RECEIVED_HM_ROCK_SMASH)) {
+		if (flag(FLAG_BEAT_ROCK_SMASHER)) {
+			speakername("Rock Smasher")
+			msgbox(format(
+				"Hello, disciple! Or should I say… Master!"
+			))
+			closemessage
+		} elif(
+			!flag(FLAG_BEAT_ROCK_SMASHER)
+			&& !flag(FLAG_JUST_GOT_ROCK_SMASH)
+			&& (flag(FLAG_HIDE_ROCK_TOP) || flag(FLAG_HIDE_ROCK_LEFT) || flag(FLAG_HIDE_ROCK_RIGHT))
+		) {
+			call(OrchardPath_EventScript_RockSmashBrokeMyRocks)
+		} else {
+			speakername("Rock Smasher")
+			msgbox(format(
+				"Now you too can make a living smashing rocks impressively!\p"
+				"{FONT_SMALL}Just do it far from here, don't put me out of business!{FONT_NORMAL}"
+			))
+			closemessage
+		}
+	} else {
+		call(OrchardPath_EventScript_RockSmashRegular)
+	}
+	release
+}
+
+script OrchardPath_EventScript_RockSmashBrokeMyRocks {
+	speakername("Rock Smasher")
+	msgbox(format(
+		"If it isn't my disciple! Smash any good rocks lately?\p"
+		"… … …Wait a minute…"
+	))
+	closemessage
+
+	playse(SE_PIN)
+	applymovement(
+		VAR_LAST_TALKED,
+		moves(
+			emote_exclamation_mark,
+			delay_16 * 3,
+			walk_in_place_fast_left,
+			delay_16,
+			walk_in_place_fast_right,
+			delay_16,
+			walk_in_place_fast_down
+		)
+	)
+	waitmovement(0)
+	waitse
+
+	speakername("Rock Smasher")
+	msgbox(format(
+		"Have you… Have you been breaking my rocks?!"
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		TRUE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Oops!",
+		"It wasn't me!"
+	)
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			speakername("Rock Smasher")
+			msgbox(format(
+				"I can't believe this! My own disciple, of all people!\p"
+				"I'll teach you to break other people's rocks!"
+			))
+			closemessage
+		case 1:
+			speakername("Rock Smasher")
+			msgbox(format(
+				"You're lying! Think I can't tell?\p"
+				"I can't believe this! My own disciple, of all people!\p"
+				"I'll teach you to break other people's rocks!"
+			))
+			closemessage
+	}
+
+	trainerbattle_no_intro(
+		TRAINER_ROCK_SMASH_GUY,
+		format("I take it back!")
+	)
+
+	setflag(FLAG_BEAT_ROCK_SMASHER)
+
+	speakername("Rock Smasher")
+	msgbox(format(
+		"Your fighting style is incredible! I…\p"
+		"I forgive you! The pupil has surpassed the master!\p"
+		"Break all the rocks you want!"
+	))
+	closemessage
+}
+
+script OrchardPath_EventScript_RockSmashRegular {
+	speakername("Man")
+	msgbox(format(
+		"Gather round, folks, gather round!\p"
+		"Hey, kid! Do you want your mind to be BLOWN?\p"
+		"I am the world-renowned ROCK SMASHER! I kid you not!\p"
+		"For as little as 100¥, you will have the privilege of watching me ABSOLUTELY DESTROY a rock, using my BARE HANDS!\p"
+		"So what do you say?"
+	))
+
+	showmoneybox(18, 0)
+
+	dynmultichoice(
+		0,
+		0,
+		TRUE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Yes please!",
+		"I'm not interested.",
+		"But why?"
+	)
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+		if (checkmoney(100)) {
+			removemoney(100)
+			updatemoneybox
+
+			speakername("Rock Smasher")
+			msgbox(format(
+				"Wise decision!\n{FONT_SMALL}Yes! I get to eat today!{FONT_NORMAL}"
+			))
+			closemessage
+
+			hidemoneybox
+
+			speakername("Rock Smasher")
+			msgbox(format(
+				"Stand back, for your own safety!"
+			))
+			closemessage
+
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, walk_down, unlock_facing_direction, delay_16))
+			waitmovement(0)
+
+			applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right))
+			waitmovement(0)
+
+			speakername("Rock Smasher")
+			msgbox(format(
+				"Very well! Brace yourself and open your eyes…\p"
+				"Hnng…\p"
+				"Hnnnngh…\p"
+				"HNNNNNNGHYAAAAH!!"
+			))
+			closemessage
+
+			playse(SE_LEDGE)
+			applymovement(VAR_LAST_TALKED, moves(jump_in_place_right, lock_anim, walk_faster_right, walk_faster_left, unlock_anim))
+			waitmovement(0)
+			waitse
+			
+			playse(SE_M_ROCK_THROW)
+			applymovement(LOCALID_ROCK, Movement_SmashRock)
+			waitmovement(LOCALID_ROCK)
+			removeobject(LOCALID_ROCK)
+			waitse
+
+			delay(48)
+
+			applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_down))
+
+			speakername("Rock Smasher")
+			msgbox(format(
+				"Huff… Puff…\p"
+				"Tadaaah!\p"
+				"I do hope you're thoroughly impressed!\p"
+				"Thanks for stopping by. Truth be told, I rarely have an audience.\p"
+				"You're so young, and yet… I can feel a rock smashing passion burning behind those eyes!\p"
+				"Would you… ahem… Become my rock smashing disciple?"
+			))
+			closemessage
+
+			giveitem(ITEM_HM_ROCK_SMASH)
+
+			speakername("Rock Smasher")
+			msgbox(format(
+				"With this, you should be able to PULVERIZE any of those pesky rocks standing in your way!\p"
+				"If you're not strong enough, you can even have a Pokémon do it for you!"
+			))
+			closemessage
+
+			setflag(FLAG_RECEIVED_HM_ROCK_SMASH)
+			// This is to avoid him getting mad at breaking his own rocks
+			setflag(FLAG_JUST_GOT_ROCK_SMASH)
+
+		} else {
+			hidemoneybox
+			speakername("Rock Smasher")
+			msgbox(format(
+				"Very well!…\n… Wait, you don't have enough!\p"
+				"Come on, kid, this is a once in a lifetime opportunity!\p"
+				"Go ask your parents for an advance on your pocket money or something!"
+			))
+			closemessage
+		}
+			
+		case 1:
+			hidemoneybox
+			speakername("Rock Smasher")
+			msgbox(format(
+				"{FONT_SMALL}Come on kid, I'm financially struggling here{FONT_NORMAL}…"
+			))
+			closemessage
+		case 2:
+			hidemoneybox
+			speakername("Rock Smasher")
+			msgbox(format(
+				"Smashing rocks is my passion! I have fought tooth and nail… Or rather, foot and fist… To acquire the title of ROCK SMASHER!\p"
+				"{FONT_SMALL}Also, a man's gotta eat…{FONT_NORMAL}"
+			))
+			closemessage
+	}
+}
+
+script OrchardPath_EventScript_SignRockSmash {
+	msgbox(format("WITNESS AN INCREDIBLE DISPLAY\nOF STRENGTH FOR ONLY 100¥"), MSGBOX_SIGN)
+}
+
+script OrchardPath_EventScript_Samurai2 {
+	lock
+	faceplayer
+	speakername("Samurai")
+	msgbox(format("Move along, please, nothing to see here!"))
+	closemessage
+	release
 }

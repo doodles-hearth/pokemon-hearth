@@ -210,7 +210,7 @@
     },
     {
       "map_section": "MAPSEC_HAVENISLE",
-      "name": "ROUTE 107",
+      "name": "Havenisle",
       "x": 3,
       "y": 14,
       "width": 3,
@@ -218,7 +218,7 @@
     },
     {
       "map_section": "MAPSEC_MIDDLEISLE",
-      "name": "ROUTE 108",
+      "name": "Middleisle",
       "x": 6,
       "y": 14,
       "width": 2,
@@ -226,7 +226,7 @@
     },
     {
       "map_section": "MAPSEC_TOPISLE",
-      "name": "ROUTE 109",
+      "name": "Topisle",
       "x": 8,
       "y": 12,
       "width": 1,
@@ -234,7 +234,7 @@
     },
     {
       "map_section": "MAPSEC_SEATURF_ROUTE",
-      "name": "ROUTE 110",
+      "name": "Seaturf Route",
       "x": 8,
       "y": 7,
       "width": 1,
@@ -242,7 +242,7 @@
     },
     {
       "map_section": "MAPSEC_LONGTIDE_CHANNEL",
-      "name": "ROUTE 111",
+      "name": "Longtide Channel",
       "x": 8,
       "y": 0,
       "width": 1,
@@ -250,7 +250,7 @@
     },
     {
       "map_section": "MAPSEC_LONG_TIDE_CHANNEL_SOULKEEP",
-      "name": "ROUTE 112",
+      "name": "Longtide Channel",
       "x": 6,
       "y": 3,
       "width": 2,
@@ -258,7 +258,7 @@
     },
     {
       "map_section": "MAPSEC_DRAGONS_PASS",
-      "name": "ROUTE 113",
+      "name": "Dragon's Pass",
       "x": 4,
       "y": 0,
       "width": 4,
@@ -266,7 +266,7 @@
     },
     {
       "map_section": "MAPSEC_DRYUGON",
-      "name": "ROUTE 114",
+      "name": "Dryugon",
       "x": 1,
       "y": 0,
       "width": 2,
@@ -274,7 +274,7 @@
     },
     {
       "map_section": "MAPSEC_BURNFOOT_PASS_BOTTOM",
-      "name": "ROUTE 115",
+      "name": "Burnfoot Pass",
       "x": 0,
       "y": 2,
       "width": 1,
@@ -282,7 +282,7 @@
     },
     {
       "map_section": "MAPSEC_STEEPSTONE_PASS_BOTTOM",
-      "name": "ROUTE 116",
+      "name": "Steepstone Pass",
       "x": 1,
       "y": 5,
       "width": 4,
@@ -290,7 +290,7 @@
     },
     {
       "map_section": "MAPSEC_BURNFOOT_PASS",
-      "name": "ROUTE 117",
+      "name": "Burnfoot Pass",
       "x": 5,
       "y": 6,
       "width": 3,
@@ -298,7 +298,7 @@
     },
     {
       "map_section": "MAPSEC_MT_KAZAN_EXTERIOR",
-      "name": "ROUTE 118",
+      "name": "Mt Kazan",
       "x": 10,
       "y": 6,
       "width": 2,
@@ -306,7 +306,7 @@
     },
     {
       "map_section": "MAPSEC_STEEPSTONE_PASS",
-      "name": "ROUTE 119",
+      "name": "Steepstone Pass",
       "x": 11,
       "y": 0,
       "width": 1,
@@ -314,7 +314,7 @@
     },
     {
       "map_section": "MAPSEC_SHOGUNATE",
-      "name": "ROUTE 120",
+      "name": "Samurai Palace",
       "x": 13,
       "y": 0,
       "width": 1,
@@ -322,7 +322,7 @@
     },
     {
       "map_section": "MAPSEC_SCENIC_ROUTE_SABERSIDE",
-      "name": "ROUTE 121",
+      "name": "Scenic Route",
       "x": 14,
       "y": 3,
       "width": 4,
@@ -330,7 +330,7 @@
     },
     {
       "map_section": "MAPSEC_UUME_FOREST",
-      "name": "ROUTE 122",
+      "name": "Uume Forest",
       "x": 16,
       "y": 4,
       "width": 1,

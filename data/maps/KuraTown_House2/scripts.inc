@@ -13,7 +13,8 @@ KuraTown_House2_EventScript_Ashii_1:
 	return
 
 KuraTown_House2_EventScript_Ashii_2:
-	msgbox KuraTown_House2_EventScript_Ashii_Text_0
+	speakername KuraTown_House2_EventScript_Ashii_Text_0
+	msgbox KuraTown_House2_EventScript_Ashii_Text_1
 	closemessage
 	delay 30
 	playse SE_PIN
@@ -23,7 +24,8 @@ KuraTown_House2_EventScript_Ashii_2:
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	msgbox KuraTown_House2_EventScript_Ashii_Text_1
+	speakername KuraTown_House2_EventScript_Ashii_Text_0
+	msgbox KuraTown_House2_EventScript_Ashii_Text_2
 	closemessage
 	delay 30
 	playse SE_PIN
@@ -31,7 +33,7 @@ KuraTown_House2_EventScript_Ashii_2:
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	msgbox KuraTown_House2_EventScript_Ashii_Text_2
+	msgbox KuraTown_House2_EventScript_Ashii_Text_3
 	closemessage
 	giveitem ITEM_ASHIIS_SCARF
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
@@ -40,31 +42,32 @@ KuraTown_House2_EventScript_Ashii_2:
 
 KuraTown_House2_EventScript_Ashii_3:
 	faceplayer
-	msgbox KuraTown_House2_EventScript_Ashii_Text_2
+	msgbox KuraTown_House2_EventScript_Ashii_Text_3
 	closemessage
 	goto KuraTown_House2_EventScript_Ashii_1
 
 
 KuraTown_House2_EventScript_Ashii_Text_0:
-	.string "Sigh… Oh, Tama… Why must life be\n"
-	.string "so complicated?$"
+	.string "Girl$"
 
 KuraTown_House2_EventScript_Ashii_Text_1:
-	.string "Hey, what are you doing in my\n"
-	.string "house? Were you eavesdropping?\p"
-	.string "…It doesn't matter anyway. The boy\n"
-	.string "I really like lives in Saku\l"
-	.string "Village, but our two villages\l"
-	.string "hate each other, so I can't see\l"
-	.string "him anymore.\p"
+	.string "Sigh… Oh, Tama… Why must life be so\n"
+	.string "complicated?$"
+
+KuraTown_House2_EventScript_Ashii_Text_2:
+	.string "Hey, what are you doing in my house?\n"
+	.string "Were you eavesdropping?\p"
+	.string "…It doesn't matter anyway. The boy I\n"
+	.string "really like lives in Saku Village, but\l"
+	.string "our two villages hate each other, so I\l"
+	.string "can't see him anymore.\p"
 	.string "If only there was a way for him to\n"
 	.string "know my feelings…$"
 
-KuraTown_House2_EventScript_Ashii_Text_2:
-	.string "Wait, you're not from here, are\n"
-	.string "you?\p"
-	.string "The guard won't let anyone from\n"
-	.string "Kura Village enter Saku Village.\l"
-	.string "But you should be fine!\p"
-	.string "Please, go to Saku Village and give\n"
-	.string "him this. He'll know it's from me.$"
+KuraTown_House2_EventScript_Ashii_Text_3:
+	.string "Wait, you're not from here, are you?\p"
+	.string "The guard won't let anyone from Kura\n"
+	.string "Village enter Saku Village. But you\l"
+	.string "should be fine!\p"
+	.string "Please, go to Saku Village and give him\n"
+	.string "this. He'll know it's from me.$"

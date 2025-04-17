@@ -577,3 +577,5 @@ gSpecials::
 	def_special DestroySelectedPartyMon
 	def_special EnterCode
 	def_special GetCodeFeedback
+	def_special TeleportCamera
+	def_special ReturnCameraToPlayer

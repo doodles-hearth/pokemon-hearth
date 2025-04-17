@@ -54,7 +54,7 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_2:
 	speakername Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0
 	msgbox Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_2
 	closemessage
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	playse SE_M_FLATTER
 	delay 24
 	playse SE_M_FLATTER
@@ -63,7 +63,7 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_2:
 	delay 24
 	playse SE_M_FLATTER
 	delay 48
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	delay 24
 	bufferspeciesname STR_VAR_2, VAR_TEMP_2
 	speakername Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0

@@ -1,19 +1,21 @@
 const LOCALID_BERRYWOMAN = 5
 const LOCALID_SAMURAI = 21
-const LOCALID_CUT_MASTER = 22
-const LOCALID_CROBAT_SHADOW_BOSS = 25
-const LOCALID_CROBAT_SHADOW_GRUNT_TOP = 23
-const LOCALID_CROBAT_SHADOW_GRUNT_RIGHT = 26
-const LOCALID_CROBAT_SHADOW_GRUNT_LEFT = 24
+const LOCALID_CUT_MASTER = 19
+const LOCALID_CROBAT_SHADOW_BOSS = 24
+const LOCALID_CROBAT_SHADOW_GRUNT_TOP = 22
+const LOCALID_CROBAT_SHADOW_GRUNT_RIGHT = 25
+const LOCALID_CROBAT_SHADOW_GRUNT_LEFT = 23
 const LOCALID_KECLEON = 27
 const FLAG_HIDE_CUT_MASTER = FLAG_TEMP_1
 const VAR_DO_CUT_MASTER_CUTSCENE = VAR_TEMP_0
 const VAR_HOUR_OF_DAY = VAR_0x8000
 const FLAG_HIDE_FLETCHLING = FLAG_TEMP_2
+const FLAG_CUT_QUEST_COMPLETED_JUST_NOW = FLAG_TEMP_3
 
 mapscripts TranquilRoute_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		call(TranquilRoute_EventScript_CheckCutGrass)
+		call(TranquilRoute_EventScript_FlowerCutMastersGarden)
 		call(TranquilRoute_EventScript_SpawnBirds)
 	}
 	MAP_SCRIPT_ON_TRANSITION {
@@ -46,13 +48,13 @@ script TranquilRoute_EventScript_GrassCutscene {
 	lock
 	// They walk to the center of the garden
 	applymovement(LOCALID_CUT_MASTER, moves(walk_left * 5, walk_up * 3, face_up))
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 6, walk_up * 2))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 5, walk_up * 2))
 	waitmovement(LOCALID_CUT_MASTER)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
 	delay(24)
 
-	speakername("Cut master")
+	speakername("Cut Master")
 	msgbox(format(
 		"… … … … … …\n… … … … … …"
 	))
@@ -63,17 +65,17 @@ script TranquilRoute_EventScript_GrassCutscene {
 	applymovement(LOCALID_CUT_MASTER, moves(walk_left * 2))
 	waitmovement(0)
 	delay(24)
-	speakername("Cut master")
+	speakername("Cut Master")
 	msgbox(format(
 		"Was it always this big?"
 	))
 	closemessage
 
-	applymovement(LOCALID_CUT_MASTER, moves(walk_right * 3))
+	applymovement(LOCALID_CUT_MASTER, moves(walk_right * 2))
 	waitmovement(0)
 	delay(24)
 	delay(24)
-	speakername("Cut master")
+	speakername("Cut Master")
 	msgbox(format(
 		"It doesn't even look like the same garden…"
 	))
@@ -82,16 +84,19 @@ script TranquilRoute_EventScript_GrassCutscene {
 	applymovement(LOCALID_CUT_MASTER, moves(walk_left, walk_in_place_faster_down))
 	waitmovement(0)
 	delay(48)
-	speakername("Cut master")
+	speakername("Cut Master")
 	msgbox(format(
 		"I cannot thank you enough for this.\p"
 		"I shall tend to my garden again, thanks to you."
 	))
 	closemessage
 
-	// TODO reward
+	giveitem(ITEM_LEAF_STONE)
+
+	setobjectmovementtype(LOCALID_CUT_MASTER, MOVEMENT_TYPE_WANDER_AROUND)
 
 	setflag(FLAG_CUT_QUEST_COMPLETED)
+	setflag(FLAG_CUT_QUEST_COMPLETED_JUST_NOW)
 	setvar(VAR_DO_CUT_MASTER_CUTSCENE, 0)
 
 	release
@@ -104,24 +109,51 @@ script TranquilRoute_EventScript_SetupCutGrassCutscene {
 			// If the player has just exited the cut master's house after having cut all the grass,
 			// get ready for cutscene
 			getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
-			if (var(VAR_TEMP_2) == 53 && var(VAR_TEMP_3) == 33) {
+			if (var(VAR_TEMP_2) == 43 && var(VAR_TEMP_3) == 33) {
 				setobjectmovementtype(LOCALID_CUT_MASTER, MOVEMENT_TYPE_FACE_LEFT)
-				setobjectxyperm(LOCALID_CUT_MASTER, 52, 33)
+				setobjectxyperm(LOCALID_CUT_MASTER, 44, 33)
 				setvar(VAR_DO_CUT_MASTER_CUTSCENE, 1)
 			}
 		} else {
 			setflag(FLAG_HIDE_CUT_MASTER)
+		}
+	} else {
+		// Can't plug the Cut master to Zatsu's scheduling system because of his special needs
+		gettimeofday
+		switch(var(VAR_RESULT)){
+			case TIME_EVENING:
+			case TIME_NIGHT:
+			case TIME_DEAD_NIGHT:
+				setflag(FLAG_HIDE_CUT_MASTER)
 		}
 	}
 }
 
 // Cut master
 script TranquilRoute_EventScript_CutMaster{
-	speakername("Cut master")
+	speakername("Cut Master")
 	msgbox(format(
 		"I'm enjoying tending my garden again.\p"
 		"I like watching it slowly blossom into something beautiful."
 	), MSGBOX_NPC)
+}
+
+script TranquilRoute_EventScript_FlowerCutMastersGarden {
+	if (flag(FLAG_CUT_QUEST_COMPLETED) && !flag(FLAG_CUT_QUEST_COMPLETED_JUST_NOW)) {
+		if (flag(FLAG_BADGE02_GET)) {
+			setmetatile(39, 33, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+			setmetatile(40, 34, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+			setmetatile(41, 33, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+			setmetatile(42, 34, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		}
+
+		if (flag(FLAG_BADGE03_GET)) {
+			setmetatile(35, 29, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+			setmetatile(34, 30, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+			setmetatile(35, 31, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+			setmetatile(34, 32, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		}
+	}
 }
 
 script TranquilRoute_EventScript_CheckCutGrass{
@@ -131,71 +163,66 @@ script TranquilRoute_EventScript_CheckCutGrass{
 script TranquilRoute_EventScript_CutGrass {
 	// there is probably a smarter way to do this but here we are
 	// set all the tiles that were cut to just be normal grass
-	setmetatile(47, 31, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	
-	setmetatile(48, 30, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	
-	setmetatile(46, 29, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(47, 29, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	
-	setmetatile(46, 28, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(47, 28, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(48, 28, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	
-	setmetatile(46, 27, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(47, 27, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(48, 27, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	
-	setmetatile(47, 26, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(48, 26, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	
-	setmetatile(47, 25, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	
-	setmetatile(47, 24, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	
-	setmetatile(46, 23, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(47, 23, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	
-	setmetatile(41, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(42, 22, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(46, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(47, 22, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
+	setmetatile(32, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
+	setmetatile(34, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(35, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(36, 18, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(37, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(38, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
 
-	setmetatile(40, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(41, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(42, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(43, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(45, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(46, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(47, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(48, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(31, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(33, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(34, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(35, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(36, 19, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
+	setmetatile(37, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(38, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(39, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
 
-	setmetatile(41, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(42, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(43, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(44, 20, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(45, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(46, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(47, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(48, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(32, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(33, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(34, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(35, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(36, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(37, 20, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
+	setmetatile(38, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(39, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
 
-	setmetatile(40, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(42, 19, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(43, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(44, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(45, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(46, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(47, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(48, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(49, 19, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
+	setmetatile(31, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(32, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(33, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(34, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
+	setmetatile(36, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(37, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
+	setmetatile(38, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(39, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
 
-	setmetatile(41, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(43, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(44, 18, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(45, 18, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(46, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(47, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(48, 18, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(33, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(37, 22, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(38, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+
+	setmetatile(37, 23, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(38, 23, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+
+	setmetatile(38, 24, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+
+	setmetatile(38, 25, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
+
+	setmetatile(38, 26, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
+	setmetatile(39, 26, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+
+	setmetatile(37, 27, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(38, 27, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(39, 27, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+
+	setmetatile(37, 28, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
+	setmetatile(38, 28, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
+	setmetatile(39, 28, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+
+	setmetatile(37, 29, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+	setmetatile(38, 29, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
+
+	setmetatile(38, 30, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
 	return
 }
 
@@ -432,8 +459,6 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 
 	// o o o
 	//   o
-	// TODO EVA: Zubats aligning anim
-	playse(SE_LEDGE)
 	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_LEFT, moves(face_down, zubats_align, delay_16, delay_16))
 	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_TOP, moves(face_down, zubats_align, delay_16, delay_16))
 	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT, moves(face_down, zubats_align, delay_16, delay_16))
@@ -485,7 +510,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 		"I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
 		"I'm sold out on, well, pretty much everything right now… But you're definitely going to see me around!\p"
 		"What's your name? {PLAYER}? It's nice to meet you, {PLAYER}!"
-		"I see you're a young wielder, eh? Maybe we can even have a friendly battle next time!\p"
+		"I see you're a young wielder, eh? Maybe we can even have a friendly battle sometime!\p"
 		"Now if you'll excuse me, I'm running late! See you around, {PLAYER}!"
 	))
 	closemessage
@@ -497,6 +522,9 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 		"Come on, Keke."
 	))
 	closemessage
+
+	playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
+	waitmoncry
 
 	specialvar(VAR_RESULT, GetPlayerFacingDirection)
 	if (var(VAR_RESULT) == DIR_EAST) {

@@ -51,7 +51,7 @@ TranquilRoute_CutHouse_EventScript_CutGrassCutscene::
 	msgbox TranquilRoute_CutHouse_EventScript_CutGrassCutscene_Text_0
 	closemessage
 	delay 48
-	warp MAP_TRANQUIL_ROUTE, 53, 33
+	warp MAP_TRANQUIL_ROUTE, 43, 33
 	release
 	return
 
@@ -137,10 +137,9 @@ TranquilRoute_CutHouse_EventScript_RandomCryGuy_8:
 
 
 TranquilRoute_CutHouse_EventScript_CutGrassCutscene_Text_0:
-	.string "You actually cut ALL the tall\n"
-	.string "grass?\p"
-	.string "Wait, let us go outside. I want to\n"
-	.string "see it for myself.$"
+	.string "You actually cut ALL the tall grass?\p"
+	.string "Wait, let us go outside. I want to see\n"
+	.string "it for myself.$"
 
 TranquilRoute_CutHouse_EventScript_CutMaster_Text_0:
 	.string "The sun is setting on another day.\p"
@@ -149,40 +148,37 @@ TranquilRoute_CutHouse_EventScript_CutMaster_Text_0:
 TranquilRoute_CutHouse_EventScript_CutMaster_Text_1:
 	.string "Are you finding the Cut technique\n"
 	.string "useful?\p"
-	.string "No, I still haven't trimmed my\n"
-	.string "garden. I really should get to it…$"
+	.string "No, I still haven't trimmed my garden.\n"
+	.string "I really should get to it…$"
 
 TranquilRoute_CutHouse_EventScript_CutMaster_Text_2:
 	.string "Hello, there. I don't get many\n"
-	.string "visitors, so sit down, have some\l"
-	.string "tea!\p"
-	.string "What? My garden is overrun by\n"
-	.string "weeds?\p"
+	.string "visitors, so sit down, have some tea!\p"
+	.string "What? My garden is overrun by weeds?\p"
 	.string "Ho ho ho…\p"
-	.string "You're right, I have been\n"
-	.string "neglecting it lately. You see, my\l"
-	.string "old back isn't as strong as it\l"
-	.string "used to be.\p"
+	.string "You're right, I have been neglecting\n"
+	.string "it lately. You see, my old back isn't as\l"
+	.string "strong as it used to be.\p"
 	.string "Here, your Pokémon can trim them\n"
 	.string "using this.$"
 
 TranquilRoute_CutHouse_EventScript_CutMaster_Text_3:
 	.string "This scroll contains an ancient\n"
 	.string "technique created by the most\l"
-	.string "talented samurai. Pokémon can\l"
-	.string "learn that technique too.\p"
+	.string "talented samurai. Pokémon can learn\l"
+	.string "that technique too.\p"
 	.string "If you have a Pokémon capable of\n"
-	.string "learning this move, it will be\l"
-	.string "able to cut tall grass as well as\l"
-	.string "little trees that block your path.\p"
-	.string "In fact, now that you have read\n"
-	.string "the scroll, you don't even need\l"
-	.string "to teach them the actual move!\p"
+	.string "learning this move, it will be able to\l"
+	.string "cut tall grass as well as little trees\l"
+	.string "that block your path.\p"
+	.string "In fact, now that you have read the\n"
+	.string "scroll, you don't even need to teach\l"
+	.string "them the actual move!\p"
 	.string "Don't ask me how this works, it just\n"
 	.string "does!\p"
-	.string "Oh, you will need at least one\n"
-	.string "official Dojo Token to be able to\l"
-	.string "cut trees and grass, though.$"
+	.string "Oh, you will need at least one official\n"
+	.string "Dojo Token to be able to cut trees\l"
+	.string "and grass, though.$"
 
 TranquilRoute_CutHouse_EventScript_RandomCryGuy_Text_0:
 	.string "you already got it right\ncome back tomorrow dingus$"

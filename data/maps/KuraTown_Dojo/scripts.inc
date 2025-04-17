@@ -173,8 +173,8 @@ KuraTown_Dojo_EventScript_KuraDojoTree_CantCut::
 
 
 KuraTown_Dojo_EventScript_Matsu_Text_0:
-	.string "Ho ho ho… It seems you have taken\n"
-	.string "a wrong turn…$"
+	.string "Ho ho ho… It seems you have taken a\n"
+	.string "wrong turn…$"
 
 KuraTown_Dojo_EventScript_Matsu_Text_1:
 	.string "Very impressive skills!$"
@@ -201,8 +201,8 @@ KuraTown_Dojo_EventScript_Kiku_Text_3:
 	.string "Uhhh… It's a secret!$"
 
 KuraTown_Dojo_EventScript_Laura_Text_0:
-	.string "No! Don't cut down that tree! It's\n"
-	.string "my favorite tree!$"
+	.string "No! Don't cut down that tree! It's my\n"
+	.string "favorite tree!$"
 
 KuraTown_Dojo_EventScript_Laura_Text_1:
 	.string "Sniffle…$"
@@ -212,8 +212,8 @@ KuraTown_Dojo_EventScript_Laura_Text_2:
 	.string "favorite tree anyway.$"
 
 KuraTown_Dojo_EventScript_Brenden_Text_0:
-	.string "Take a deep breath! The air is so\n"
-	.string "rich and flowery here!$"
+	.string "Take a deep breath! The air is so rich\n"
+	.string "and flowery here!$"
 
 KuraTown_Dojo_EventScript_Brenden_Text_1:
 	.string "A-tchoo!$"
@@ -232,12 +232,12 @@ KuraTown_Dojo_EventScript_Cristian_Text_0:
 
 KuraTown_Dojo_EventScript_Cristian_Text_1:
 	.string "You're not here because you're\n"
-	.string "particularly interested in bonsai,\l"
-	.string "are you?$"
+	.string "particularly interested in bonsai, are\l"
+	.string "you?$"
 
 KuraTown_Dojo_EventScript_Cristian_Text_2:
-	.string "I feel bad sometimes, not letting\n"
-	.string "the tree grow the way it wants.$"
+	.string "I feel bad sometimes, not letting the\n"
+	.string "tree grow the way it wants.$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_0:
 	.string "Hana may look frail, but she's\n"
@@ -250,33 +250,31 @@ KuraTown_Dojo_EventScript_Lilith_Text_2:
 	.string "Sumire$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_3:
-	.string "I saw your fight peeking through\n"
-	.string "the leaves! That was amazing!\p"
+	.string "I saw your fight peeking through the\n"
+	.string "leaves! That was amazing!\p"
 	.string "I'm officially a fan!$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_4:
-	.string "I wish I could see you two fight!\n"
-	.string "Good luck!$"
+	.string "I wish I could see you two fight! Good\n"
+	.string "luck!$"
 
 KuraTown_Dojo_EventScript_Hana_Text_0:
 	.string "Hana$"
 
 KuraTown_Dojo_EventScript_Hana_Text_1:
-	.string "Welcome to my humble Dojo. I am\n"
-	.string "Hana. Did you enjoy my little\l"
-	.string "maze?\p"
+	.string "Welcome to my humble Dojo. I am Hana.\n"
+	.string "Did you enjoy my little maze?\p"
 	.string "Tending to my bonsai and fighting\n"
-	.string "alongside my Pokémon are my\l"
-	.string "favorite pastimes. With this Dojo,\l"
-	.string "I can do both!\p"
-	.string "A Pokémon battle can be graceful\n"
-	.string "like a budding flower, strong like\l"
-	.string "the deepest roots, powerful like\l"
-	.string "a windswept pine tree, all at\l"
-	.string "once.\p"
-	.string "I want you to show me all the\n"
-	.string "grace, strength and power you are\l"
-	.string "capable of!$"
+	.string "alongside my Pokémon are my favorite\l"
+	.string "pastimes. With this Dojo, I can do\l"
+	.string "both!\p"
+	.string "A Pokémon battle can be graceful like\n"
+	.string "a budding flower, strong like the\l"
+	.string "deepest roots, powerful like a\l"
+	.string "windswept pine tree, all at once.\p"
+	.string "I want you to show me all the grace,\n"
+	.string "strength and power you are capable\l"
+	.string "of!$"
 
 KuraTown_Dojo_EventScript_Hana_Text_2:
 	.string "Ho ho ho…$"
@@ -287,29 +285,27 @@ KuraTown_Dojo_EventScript_Hana_Text_3:
 	.string "journey, {PLAYER}.$"
 
 KuraTown_Dojo_EventScript_HanaDefeated_Text_0:
-	.string "{PLAYER} received the Carved\n"
-	.string "Token\n"
+	.string "{PLAYER} received the Carved Token\n"
 	.string "from Hana.$"
 
 KuraTown_Dojo_EventScript_HanaDefeated_Text_1:
 	.string "Thanks to this Token, your Pokémon\n"
-	.string "will obey you without question,\l"
-	.string "even those you trade with others.\p"
+	.string "will obey you without question, even\l"
+	.string "those you trade with others.\p"
 	.string "If you are interested in submitting\n"
-	.string "to the Pokémon Council challenge,\l"
-	.string "you will need to collect a Token\l"
-	.string "from each of the eight Dojos\l"
-	.string "scattered throughout the region.\p"
-	.string "It is not an easy task, but I can\n"
-	.string "feel determination taking root in\l"
-	.string "your heart.\p"
+	.string "to the Toku Council challenge, you\l"
+	.string "will need to collect a Token from each\l"
+	.string "of the eight Dojos scattered\l"
+	.string "throughout the region.\p"
+	.string "It is not an easy task, but I can feel\n"
+	.string "determination taking root in your\l"
+	.string "heart.\p"
 	.string "Here, let me also give you this.$"
 
 KuraTown_Dojo_EventScript_GiveBulldoze_Text_0:
 	.string "This scroll contains Weather Ball.\n"
-	.string "Just like a tree, this technique\l"
-	.string "is as strong as it is\l"
-	.string "weather-dependent.$"
+	.string "Just like a tree, this technique is as\l"
+	.string "strong as it is weather-dependent.$"
 
 KuraTown_Dojo_EventScript_Advice_Text_0:
 	.string "Man$"
@@ -317,47 +313,41 @@ KuraTown_Dojo_EventScript_Advice_Text_0:
 KuraTown_Dojo_EventScript_Advice_Text_1:
 	.string "That was a beautiful fight! You're\n"
 	.string "going to blossom into an excellent\l"
-	.string "Pokémon wielder, I can just feel\l"
-	.string "it!$"
+	.string "Pokémon wielder, I can just feel it!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_2:
-	.string "Hello, young challenger, and\n"
-	.string "welcome to the official Dojo of\l"
-	.string "Kura Village!\p"
+	.string "Hello, young challenger, and welcome\n"
+	.string "to the official Dojo of Kura Village!\p"
 	.string "Lady Hana, the Dojo Master, is an\n"
 	.string "expert in all things bonsai. She\l"
-	.string "designed this place and grew\l"
-	.string "these trees, of course!\p"
+	.string "designed this place and grew these\l"
+	.string "trees, of course!\p"
 	.string "She tends to favor grass-type\n"
-	.string "Pokémon, but she's got other\l"
-	.string "tricks up her sleeve, too. Be on\l"
-	.string "your guard!\p"
+	.string "Pokémon, but she's got other tricks\l"
+	.string "up her sleeve, too. Be on your guard!\p"
 	.string "Now, pay attention: only some of\n"
-	.string "these pretty trees can be cut\l"
-	.string "down.\p"
-	.string "Figure out which, and you'll reach\n"
-	.string "the Master!$"
+	.string "these pretty trees can be cut down.\p"
+	.string "Figure out which, and you'll reach the\n"
+	.string "Master!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_3:
-	.string "Hello, young challenger, and\n"
-	.string "welcome to the official Dojo of\l"
-	.string "Kura Village!\p"
-	.string "All these trees are blocking your\n"
-	.string "way, aren't they?\p"
+	.string "Hello, young challenger, and welcome\n"
+	.string "to the official Dojo of Kura Village!\p"
+	.string "All these trees are blocking your way,\n"
+	.string "aren't they?\p"
 	.string "You should come back once you've\n"
 	.string "figured out a way to cut them!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_4:
-	.string "Hello, young challenger, and\n"
-	.string "welcome to the official Dojo of\l"
-	.string "Kura Village!\p"
-	.string "All these trees are blocking your\n"
-	.string "way, aren't they?\p"
+	.string "Hello, young challenger, and welcome\n"
+	.string "to the official Dojo of Kura Village!\p"
+	.string "All these trees are blocking your way,\n"
+	.string "aren't they?\p"
 	.string "You should come back once you've\n"
 	.string "figured out a way to cut them!\p"
-	.string "If you're itching for a challenge,\n"
-	.string "why not try your skills at the\l"
-	.string "Dojo in Maguro Harbor first?\p"
+	.string "If you're itching for a challenge, why\n"
+	.string "not try your skills at the Dojo in\l"
+	.string "Maguro Harbor first?\p"
 	.string "It's not very far east from here!$"
 
 KuraTown_Dojo_EventScript_DojoStatue_Text_0:

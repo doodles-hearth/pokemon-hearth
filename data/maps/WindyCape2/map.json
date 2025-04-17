@@ -39,6 +39,66 @@
       "lunchtime": false,
       "morning": false,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
+      "x": 38,
+      "y": 43,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "WindyCape_EventScript_WindThroughHoles",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
+      "x": 20,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "WindyCape_EventScript_Mart",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KECLEON)",
+      "x": 19,
+      "y": 54,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ChiiTown_EventScript_Kecleon",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
     }
   ],
   "warp_events": [
@@ -48,6 +108,13 @@
 
   ],
   "bg_events": [
-
+    {
+      "type": "sign",
+      "x": 20,
+      "y": 29,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "WindyCape_EventScript_SignApricorn"
+    }
   ]
 }

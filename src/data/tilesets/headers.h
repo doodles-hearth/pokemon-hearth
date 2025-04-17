@@ -1204,3 +1204,14 @@ const struct Tileset gTileset_Shogunate =
     .metatileAttributes = gMetatileAttributes_Shogunate,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_PuddlePath =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PuddlePath,
+    .palettes = gTilesetPalettes_PuddlePath,
+    .metatiles = gMetatiles_PuddlePath,
+    .metatileAttributes = gMetatileAttributes_PuddlePath,
+    .callback = NULL,
+};

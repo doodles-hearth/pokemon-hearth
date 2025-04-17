@@ -5889,7 +5889,7 @@
       "border_width": 6,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_OpenSea",
+      "secondary_tileset": "gTileset_PuddlePath",
       "border_filepath": "data/layouts/PuddlePath/border.bin",
       "blockdata_filepath": "data/layouts/PuddlePath/map.bin"
     },
