@@ -51,10 +51,10 @@ script BeachboundRoute_EventScript_Hoppip {
     faceplayer
 	setseenmon(SPECIES_HOPPIP)
     setspeakertomonname(SPECIES_HOPPIP)
+    playmoncry(SPECIES_HOPPIP, CRY_MODE_NORMAL)
     msgbox(format(
         "Pip!"
     ))
-    playmoncry(SPECIES_HOPPIP, CRY_MODE_NORMAL)
     waitmoncry
     release
     end
@@ -66,10 +66,10 @@ script BeachboundRoute_EventScript_Wooloo {
     faceplayer
 	setseenmon(SPECIES_WOOLOO)
 	setspeakertomonname(SPECIES_WOOLOO)
+	playmoncry(SPECIES_WOOLOO, CRY_MODE_NORMAL)
     msgbox(format(
         "Bah…"
     ))
-	playmoncry(SPECIES_WOOLOO, CRY_MODE_NORMAL)
     waitmoncry
     release
     end
