@@ -4,10 +4,8 @@ const LOCALID_RIVALS_NOTE = 2
 mapscripts SunriseVillage_PlayersHouse_LR_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		// Put rival's note on the table
-		if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) < 4) {
+		if (!flag(FLAG_RECEIVED_STARTER)) {
 			setmetatile(4, 4, METATILE_HouseBeige_Scroll, TRUE)
-		} else {
-			removeobject(LOCALID_RIVALS_NOTE)
 		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [

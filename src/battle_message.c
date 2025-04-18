@@ -631,12 +631,11 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_FRISKACTIVATES]                       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} frisked {B_DEF_NAME_WITH_PREFIX2} and found its {B_LAST_ITEM}!"),
     [STRINGID_UNNERVEENTERS]                        = COMPOUND_STRING("{B_DEF_TEAM1} team is too nervous to eat Berries!"),
     [STRINGID_HARVESTBERRY]                         = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} harvested its {B_LAST_ITEM}!"),
-    [STRINGID_LASTABILITYRAISEDSTAT]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s {B_LAST_ABILITY} raised its {B_BUFF1}!"),
     [STRINGID_MAGICBOUNCEACTIVATES]                 = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} bounced the {B_ATK_NAME_WITH_PREFIX2} back!"),
     [STRINGID_PROTEANTYPECHANGE]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} transformed it into the {B_BUFF1} type!"),
     [STRINGID_SYMBIOSISITEMPASS]                    = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} passed its {B_LAST_ITEM} to {B_EFF_NAME_WITH_PREFIX2} through {B_LAST_ABILITY}!"),
     [STRINGID_STEALTHROCKDMG]                       = COMPOUND_STRING("Pointed stones dug into {B_SCR_NAME_WITH_PREFIX2}!"),
-    [STRINGID_TOXICSPIKESABSORBED]                  = COMPOUND_STRING("The poison spikes disappeared from the ground around {B_ATK_TEAM2} team!"),
+    [STRINGID_TOXICSPIKESABSORBED]                  = COMPOUND_STRING("The poison spikes disappeared from the ground around {B_SCR_TEAM2} team!"),
     [STRINGID_TOXICSPIKESPOISONED]                  = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} was poisoned!"),
     [STRINGID_STICKYWEBSWITCHIN]                    = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} was caught in a sticky web!"),
     [STRINGID_HEALINGWISHCAMETRUE]                  = COMPOUND_STRING("The healing wish came true for {B_ATK_NAME_WITH_PREFIX2}!"),
@@ -894,6 +893,12 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PLAYERWHITEOUT3]                      = COMPOUND_STRING("You lost the battle!{PAUSE_UNTIL_PRESS}"),
     [STRINGID_SENDCAUGHTMONPARTYORBOX]              = COMPOUND_STRING("Add {B_DEF_NAME} to your party?"),
     [STRINGID_PKMNSENTTOPCAFTERCATCH]               = gText_PkmnSentToPCAfterCatch,
+    [STRINGID_PKMNDYNAMAXED]                        = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} grew huge into its Dynamax form!"),
+    [STRINGID_PKMNGIGANTAMAXED]                     = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} grew huge into its Gigantamax form!"),
+    [STRINGID_TIMETODYNAMAX]                        = COMPOUND_STRING("Time to Dynamax!"),
+    [STRINGID_TIMETOGIGANTAMAX]                     = COMPOUND_STRING("Time to Gigantamax!"),
+    [STRINGID_QUESTIONFORFEITBATTLE]                = COMPOUND_STRING("Would you like to give up on this battle and quit now? Quitting the battle is the same as losing the battle."),
+    [STRINGID_FORFEITBATTLEGAVEMONEY]               = COMPOUND_STRING("You gave ¥{B_BUFF1} to the winner…{PAUSE_UNTIL_PRESS}"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1631,9 +1636,9 @@ static const struct BattleWindowText sTextOnWindowsInfo_Normal[] =
         .x = 0,
         .y = 1,
         .speed = 0,
-        .fgColor = 12,
+        .fgColor = B_SHOW_EFFECTIVENESS != SHOW_EFFECTIVENESS_NEVER ? 13 : 12,
         .bgColor = 14,
-        .shadowColor = 11,
+        .shadowColor = B_SHOW_EFFECTIVENESS != SHOW_EFFECTIVENESS_NEVER ? 15 : 11,
     },
     [B_WIN_DUMMY] = {
         .fillValue = PIXEL_FILL(0xE),
@@ -1883,9 +1888,9 @@ static const struct BattleWindowText sTextOnWindowsInfo_Arena[] =
         .x = 0,
         .y = 1,
         .speed = 0,
-        .fgColor = 12,
+        .fgColor = B_SHOW_EFFECTIVENESS != SHOW_EFFECTIVENESS_NEVER ? 13 : 12,
         .bgColor = 14,
-        .shadowColor = 11,
+        .shadowColor = B_SHOW_EFFECTIVENESS != SHOW_EFFECTIVENESS_NEVER ? 15 : 11,
     },
     [B_WIN_DUMMY] = {
         .fillValue = PIXEL_FILL(0xE),
@@ -2156,6 +2161,7 @@ void BufferStringBattle(u16 stringID, u32 battler)
         }
         else
         {
+            gBattleStruct->shouldPrintFullName = TRUE;
             if (IsDoubleBattle() && IsValidForBattle(&gEnemyParty[gBattlerPartyIndexes[BATTLE_PARTNER(battler)]]))
             {
                 if (BATTLE_TWO_VS_ONE_OPPONENT)
@@ -2223,6 +2229,7 @@ void BufferStringBattle(u16 stringID, u32 battler)
         }
         else
         {
+            gBattleStruct->shouldPrintFullName = TRUE;
             if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_TOWER_LINK_MULTI)
@@ -2402,6 +2409,30 @@ static const u8 *TryGetStatusString(u8 *src)
     return NULL;
 }
 
+static void BuildFullname(u32 species, u8 *dst)
+{
+    if(StringCompareWithoutExtCtrlCodes(dst, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
+    {
+        StringCopy(dst, GetSpeciesName(species, DO_NAME_CHECK));
+    }
+    else
+    {
+        const u8 *speciesName = GetSpeciesName(species, DO_NAME_CHECK);
+        u32 dstIndex = 0;
+        while (dst[dstIndex] != EOS)
+            dstIndex++;
+        dst[dstIndex++] = CHAR_SPACE;
+        dst[dstIndex++] = CHAR_t;
+        dst[dstIndex++] = CHAR_h;
+        dst[dstIndex++] = CHAR_e;
+        dst[dstIndex++] = CHAR_SPACE;
+        u32 currChar = 0;
+        while (speciesName[currChar] != EOS)
+            dst[dstIndex++] = speciesName[currChar++];
+        dst[dstIndex++] = EOS;
+    }
+}
+
 static void GetBattlerNick(u32 battler, u8 *dst)
 {
     struct Pokemon *illusionMon = GetIllusionMonPtr(battler);
@@ -2413,29 +2444,11 @@ static void GetBattlerNick(u32 battler, u8 *dst)
     GetMonData(mon, MON_DATA_NICKNAME, dst);
     StringGet_Nickname(dst);
 
-    if (GetBattlerSide(battler) != B_SIDE_PLAYER)
+    if (gBattleStruct->shouldPrintFullName && GetBattlerSide(battler) == B_SIDE_OPPONENT)
     {
-        u16 species = GetMonData(mon, MON_DATA_SPECIES);
-        if(StringCompareWithoutExtCtrlCodes(dst, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
-        {
-            StringCopy(dst, GetSpeciesName(species, DO_NAME_CHECK));
-        }
-        else
-        {
-            const u8 *speciesName = GetSpeciesName(species, DO_NAME_CHECK);
-            u32 dstIndex = 0;
-            while (dst[dstIndex] != EOS)
-                dstIndex++;
-            dst[dstIndex++] = CHAR_SPACE;
-            dst[dstIndex++] = CHAR_t;
-            dst[dstIndex++] = CHAR_h;
-            dst[dstIndex++] = CHAR_e;
-            dst[dstIndex++] = CHAR_SPACE;
-            u32 currChar = 0;
-            while (speciesName[currChar] != EOS)
-                dst[dstIndex++] = speciesName[currChar++];
-            dst[dstIndex++] = EOS;
-        }
+        gBattleStruct->shouldPrintFullName = FALSE;
+        u32 species = GetMonData(mon, MON_DATA_SPECIES);
+        BuildFullname(species, dst);
     }
 }
 
@@ -3143,6 +3156,18 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 else
                     toCpy = sText_Opposing2;
                 break;
+            case B_TXT_SCR_TEAM1:
+                if (GetBattlerSide(gBattleScripting.battler) == B_SIDE_PLAYER)
+                    toCpy = sText_Your1;
+                else
+                    toCpy = sText_Opposing1;
+                break;
+            case B_TXT_SCR_TEAM2:
+                if (GetBattlerSide(gBattleScripting.battler) == B_SIDE_PLAYER)
+                    toCpy = sText_Your2;
+                else
+                    toCpy = sText_Opposing2;
+                break;
             case B_TXT_ATK_NAME_WITH_PREFIX2:
                 HANDLE_NICKNAME_STRING_LOWERCASE(gBattlerAttacker)
                 break;
@@ -3193,6 +3218,36 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
     BreakStringAutomatic(dst, BATTLE_MSG_MAX_WIDTH, BATTLE_MSG_MAX_LINES, fontId);
 
     return dstID;
+}
+
+static u32 GetSpeciesHack(u32 battler, u32 partyId)
+{
+    s32 id, i;
+    // we know it's gEnemyParty
+    struct Pokemon *mon = &gEnemyParty[partyId], *partnerMon;
+
+    if (GetMonAbility(mon) == ABILITY_ILLUSION)
+    {
+        if (IsBattlerAlive(BATTLE_PARTNER(battler)))
+            partnerMon = &gEnemyParty[gBattlerPartyIndexes[BATTLE_PARTNER(battler)]];
+        else
+            partnerMon = mon;
+
+        // Find last alive non-egg pokemon.
+        for (i = PARTY_SIZE - 1; i >= 0; i--)
+        {
+            id = i;
+            if (GetMonData(&gEnemyParty[id], MON_DATA_SANITY_HAS_SPECIES)
+                && GetMonData(&gEnemyParty[id], MON_DATA_HP)
+                && &gEnemyParty[id] != mon
+                && &gEnemyParty[id] != partnerMon)
+            {
+                return GetMonData(&gEnemyParty[id], MON_DATA_SPECIES);
+            }
+        }
+    }
+
+    return GetMonData(mon, MON_DATA_SPECIES);
 }
 
 static void IllusionNickHack(u32 battler, u32 partyId, u8 *dst)
@@ -3314,6 +3369,9 @@ void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
                 gBattleScripting.illusionNickHack = 0;
                 IllusionNickHack(src[srcID + 1], src[srcID + 2], dst);
                 StringGet_Nickname(dst);
+
+                u32 species = GetSpeciesHack(src[srcID + 1], src[srcID + 2]);
+                BuildFullname(species, dst);
             }
             else
             {

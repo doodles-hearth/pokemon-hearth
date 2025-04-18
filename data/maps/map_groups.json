@@ -10,6 +10,7 @@
     "gMapGroup_IndoorMaguro",
     "gMapGroup_IndoorSilveridge",
     "gMapGroup_IndoorYifu",
+    "gMapGroup_IndoorOrchardPath",
     "gMapGroup_IndoorSoulkeep",
     "gMapGroup_Dungeons",
     "gMapGroup_VanillaMaps1",
@@ -67,11 +68,6 @@
     "FlowergrassPlateau"
   ],
   "gMapGroup_IndoorSunriseVillage": [
-    "LittlerootTown_BrendansHouse_1F",
-    "LittlerootTown_BrendansHouse_2F",
-    "LittlerootTown_MaysHouse_1F",
-    "LittlerootTown_MaysHouse_2F",
-    "LittlerootTown_ProfessorBirchsLab",
     "SunriseVillage_PlayersHouse_LR",
     "SunriseVillage_EldersHouse",
     "SunriseVillage_EldersHouse_PrivateQuarters",
@@ -136,6 +132,9 @@
     "YifuCity_Refuge_2F",
     "YifuCity_Refuge_2F_Rooms",
     "YifuCity_Restaurant"
+  ],
+  "gMapGroup_IndoorOrchardPath": [
+    "OrchardPath_GuardHouse"
   ],
   "gMapGroup_IndoorSoulkeep": [
     "IncenseShop",
@@ -669,6 +668,11 @@
     "Route119_WeatherInstitute_1F",
     "Route119_WeatherInstitute_2F",
     "Route119_House",
-    "Route124_DivingTreasureHuntersHouse"
+    "Route124_DivingTreasureHuntersHouse",
+    "LittlerootTown_BrendansHouse_1F",
+    "LittlerootTown_BrendansHouse_2F",
+    "LittlerootTown_MaysHouse_1F",
+    "LittlerootTown_MaysHouse_2F",
+    "LittlerootTown_ProfessorBirchsLab"
   ]
 }

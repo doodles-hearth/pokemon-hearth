@@ -1,0 +1,43 @@
+const FLAG_HIDE_SHUPPET = FLAG_TEMP_1
+
+mapscripts Shogunate_MapScripts {
+	
+}
+
+script Shogunate_EventScript_LockedDoor {
+	lock
+	msgbox(format("It's a huge bolted door."))
+	closemessage
+
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 7))
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	waitbuttonpress
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 7))
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	special(RemoveCameraObject)
+
+	release
+}
+
+script Shogunate_EventScript_Shuppet {
+	lock
+
+	setseenmon(SPECIES_SHUPPET)
+
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 3))
+	waitmovement(0)
+	waitse
+
+	faceplayer
+
+	playmoncry(SPECIES_SHUPPET, CRY_MODE_NORMAL)
+	waitmoncry
+
+	fadescreenswapbuffers(FADE_TO_BLACK)
+	setflag(FLAG_HIDE_SHUPPET)
+	fadescreenswapbuffers(FADE_FROM_BLACK)
+
+	release
+}

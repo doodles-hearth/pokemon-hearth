@@ -1,5 +1,10 @@
 Soulkeep_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Soulkeep_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Soulkeep_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	callnative TrySetSoulkeepAmbiance
+	return
 
 
 Soulkeep_EventScript_TownSign::
@@ -109,7 +114,7 @@ Soulkeep_Mart:
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_OINTMENT
 	.2byte ITEM_SUPER_OINTMENT
-	.2byte ITEM_REVIVAL_HERB
+	.2byte ITEM_REVIVAL_BALM
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_AWAKENING
@@ -120,22 +125,21 @@ Soulkeep_Mart:
 
 Soulkeep_EventScript_TownSign_Text_0:
 	.string "Soulkeep\n"
-	.string "“A town where souls are laid to\l"
-	.string "rest.”$"
+	.string "“A town where souls are laid to rest.”$"
 
 Soulkeep_EventScript_IncenseShopSign_Text_0:
-	.string "“Incense Shop”$"
+	.string "Incense Shop$"
 
 Soulkeep_EventScript_GraveyardSign_Text_0:
-	.string "“{UP_ARROW} Graveyard\n"
-	.string "Please be respectful.”$"
+	.string "{UP_ARROW} Graveyard\n"
+	.string "“Please be respectful.”$"
 
 Soulkeep_EventScript_Man_Text_0:
 	.string "Man$"
 
 Soulkeep_EventScript_Man_Text_1:
-	.string "Can you believe this place used to\n"
-	.string "be a quaint little farmers' town?\p"
+	.string "Can you believe this place used to be\n"
+	.string "a quaint little farmers' town?\p"
 	.string "Ever since the ghosts have started\n"
 	.string "roaming the streets, the townsfolk\l"
 	.string "are afraid of leaving their homes.\p"

@@ -44,11 +44,11 @@
       "flag": "0",
       "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": true,
       "lunchtime": true,
       "morning": true,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(MAKUHITA)",
@@ -64,11 +64,11 @@
       "flag": "0",
       "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": true,
       "lunchtime": true,
       "morning": true,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
@@ -105,7 +105,7 @@
       "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
+      "evening": true,
       "lunchtime": true,
       "morning": true,
       "night": false
@@ -131,7 +131,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
       "x": 39,
       "y": 23,
       "elevation": 0,
@@ -148,7 +148,7 @@
       "evening": true,
       "lunchtime": true,
       "morning": true,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FARMER",

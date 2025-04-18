@@ -25,8 +25,6 @@ KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_2:
 KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_5:
 	setmetatile 18, 6, METATILE_SakuKura_ClosedDoorTop, TRUE
 	setmetatile 18, 7, METATILE_SakuKura_ClosedDoorBottom, TRUE
-	setmetatile 43, 22, METATILE_SakuKura_ClosedDoorTop, TRUE
-	setmetatile 43, 23, METATILE_SakuKura_ClosedDoorBottom, TRUE
 	return
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -170,6 +168,16 @@ KuraTown_EventScript_LovestruckGuy::
 	return
 
 
+KuraTown_EventScript_PokemonCouncil::
+	lock
+	faceplayer
+	speakername KuraTown_EventScript_PokemonCouncil_Text_0
+	msgbox KuraTown_EventScript_PokemonCouncil_Text_1
+	closemessage
+	release
+	return
+
+
 KuraTown_EventScript_TownSign::
 	msgbox KuraTown_EventScript_TownSign_Text_0, MSGBOX_SIGN
 	return
@@ -203,8 +211,8 @@ KuraTown_EventScript_GuardStopsYou_Text_1:
 KuraTown_EventScript_GuardStopsYou_Text_2:
 	.string "You're not trying to sneak into Saku\n"
 	.string "Village, are you?\p"
-	.string "…My bad, you're that traveler\n"
-	.string "again. Didn't recognize ya.\p"
+	.string "…My bad, you're that traveler again.\n"
+	.string "Didn't recognize ya.\p"
 	.string "You can go through, though I'm not\n"
 	.string "sure why you'd want to.$"
 
@@ -212,20 +220,17 @@ KuraTown_EventScript_DojoChallenger_Text_0:
 	.string "Bold Man$"
 
 KuraTown_EventScript_DojoChallenger_Text_1:
-	.string "Looks like the dojo is closed\n"
-	.string "again…\p"
-	.string "Gah, when will I get a chance to\n"
-	.string "crush Hana in a fiery battle?\p"
-	.string "Could it be that she is scared of\n"
-	.string "me?$"
+	.string "Looks like the Dojo is closed again…\p"
+	.string "Gah, when will I get a chance to crush\n"
+	.string "Hana in a fiery battle?\p"
+	.string "Could it be that she is scared of me?$"
 
 KuraTown_EventScript_DojoChallenger_Text_2:
 	.string "Cowardly Man$"
 
 KuraTown_EventScript_DojoChallenger_Text_3:
-	.string "The dojo is open! I can finally\n"
-	.string "defeat its leader in a fiery\l"
-	.string "battle!\p"
+	.string "The Dojo is open! I can finally defeat\n"
+	.string "its leader in a fiery battle!\p"
 	.string "…Hm? When, you ask?\p"
 	.string "In… In a minute…\p"
 	.string "No, go right ahead, I'm just…\n"
@@ -235,49 +240,47 @@ KuraTown_EventScript_Farmer_Text_0:
 	.string "Farmer$"
 
 KuraTown_EventScript_Farmer_Text_1:
-	.string "Why do we hate the Saku Village\n"
-	.string "folks, y'ask?\p"
-	.string "To be honest, I don't quite\n"
-	.string "rememb'r. But who needs a reas'n,\l"
-	.string "right?$"
+	.string "Why do we hate the Saku Village folks,\n"
+	.string "y'ask?\p"
+	.string "To be honest, I don't quite rememb'r.\n"
+	.string "But who needs a reas'n, right?$"
 
 KuraTown_EventScript_SilkScarf_Text_0:
 	.string "Girl$"
 
 KuraTown_EventScript_SilkScarf_Text_1:
 	.string "Sigh… Now I'm scarfless…\p"
-	.string "Well, at least I'm not committing\n"
-	.string "any more crimes against fashion…$"
+	.string "Well, at least I'm not committing any\n"
+	.string "more crimes against fashion…$"
 
 KuraTown_EventScript_SilkScarf_Text_2:
 	.string "Hey, you! Yes, you! I need some\n"
 	.string "super-urgent fashion advice!\p"
 	.string "I bought myself this scarf in Yifu\n"
-	.string "City… But now I'm worried the\l"
-	.string "white clashes with my complexion!\p"
-	.string "Is it awful? Does my skin look\n"
-	.string "grey?\p"
+	.string "City… But now I'm worried the white\l"
+	.string "clashes with my complexion!\p"
+	.string "Is it awful?\n"
+	.string "Does it make my skin look grey?\p"
 	.string "Oh gosh, it does, doesn't it? I knew\n"
-	.string "it! I have to get rid of it right\l"
-	.string "this moment!\p"
-	.string "Take it! Take it! I can't even look\n"
-	.string "at it!$"
+	.string "it! I have to get rid of it right this\l"
+	.string "moment!\p"
+	.string "Take it! Take it! I can't even look at\n"
+	.string "it!$"
 
 KuraTown_EventScript_FarmerScyther_Text_0:
 	.string "We started taming Scyther recently\n"
-	.string "to help us with harvestin' the\l"
-	.string "crops. They've been a tremendous\l"
-	.string "help!$"
+	.string "to help us with harvestin' the crops.\l"
+	.string "They've been a tremendous help!$"
 
 KuraTown_EventScript_Scyther_Text_0:
 	.string "Gyooo!$"
 
 KuraTown_EventScript_Guard_Text_0:
-	.string "Hope you didn't have too much\n"
-	.string "trouble passing the gate.\p"
+	.string "Hope you didn't have too much trouble\n"
+	.string "passing the gate.\p"
 	.string "That Saku Village guard is such a\n"
-	.string "jerk, he won't let anyone from\l"
-	.string "our village cross to theirs.\p"
+	.string "jerk, he won't let anyone from our\l"
+	.string "village cross to theirs.\p"
 	.string "So of course we're not gonna let\n"
 	.string "anyone from theirs in ours! Hah!$"
 
@@ -286,23 +289,35 @@ SakuTown_EventScript_ClosedGymDoor_Text_0:
 	.string "- Hana”$"
 
 KuraTown_EventScript_LovestruckGuy_Text_0:
-	.string "Lovestruck Guy$"
+	.string "Lovestruck Boy$"
 
 KuraTown_EventScript_LovestruckGuy_Text_1:
 	.string "I just got back home after spending\n"
-	.string "time with my love, and yet I\l"
-	.string "already want the day to pass by\l"
-	.string "and let me see her again…$"
+	.string "time with my love, and yet I already\l"
+	.string "want the day to pass by and let me\l"
+	.string "see her again…$"
+
+KuraTown_EventScript_PokemonCouncil_Text_0:
+	.string "Woman$"
+
+KuraTown_EventScript_PokemonCouncil_Text_1:
+	.string "The Elders of the Toku Council may\n"
+	.string "look like a bunch of old people, but\l"
+	.string "each of them was once a formidable\l"
+	.string "Wielder!\p"
+	.string "They paved the way for what Pokémon\n"
+	.string "Wielding is today, and will be\l"
+	.string "tomorrow.$"
 
 KuraTown_EventScript_TownSign_Text_0:
 	.string "Kura Village\n"
-	.string "“A village where the mountains\l"
-	.string "meet the woods.”$"
+	.string "“A village where the mountains meet\l"
+	.string "the woods.”$"
 
 KuraTown_EventScript_TrainerTips_Text_0:
 	.string "Did you know?\p"
-	.string "The people from Saku Village can\n"
-	.string "and will eat your children!$"
+	.string "The people from Saku Village can and\n"
+	.string "will eat your children!$"
 
 KuraTown_EventScript_DirectionsSign_Text_0:
 	.string "{UP_ARROW} Silver Tunnel\n"

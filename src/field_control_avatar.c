@@ -297,6 +297,13 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         return TRUE;
     }
 
+    if (CanTriggerSpinEvolution())
+    {
+        ResetSpinTimer();
+        TrySpecialOverworldEvo(); // Special vars set in CanTriggerSpinEvolution.
+        return TRUE;
+    }
+
     return FALSE;
 }
 
@@ -334,6 +341,7 @@ static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatil
 
     // Don't play interaction sound for certain scripts.
     if (script != SecretBase_EventScript_PC
+     && script != SecretBase_EventScript_Chest
      && script != SecretBase_EventScript_RecordMixingPC
      && script != SecretBase_EventScript_DollInteract
      && script != SecretBase_EventScript_CushionInteract
@@ -553,12 +561,27 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return EventScript_Questionnaire;
     if (MetatileBehavior_IsTrainerHillTimer(metatileBehavior) == TRUE)
         return EventScript_TrainerHillTimer;
+    if (MetatileBehavior_IsPokeMartSign(metatileBehavior) == TRUE)
+    {
+        if(direction != DIR_NORTH)
+            return NULL;
+        SetMsgSignPostAndVarFacing(direction);
+        return Common_EventScript_ShowPokemartSign;
+    }
+    if (MetatileBehavior_IsPokemonCenterSign(metatileBehavior) == TRUE)
+    {
+        if(direction != DIR_NORTH)
+            return NULL;
+        SetMsgSignPostAndVarFacing(direction);
+        return Common_EventScript_ShowPokemonCenterSign;
+    }
 
     elevation = position->elevation;
     if (elevation == MapGridGetElevationAt(position->x, position->y))
     {
         if (MetatileBehavior_IsSecretBasePC(metatileBehavior) == TRUE)
-            return SecretBase_EventScript_PC;
+            return SecretBase_EventScript_Chest;
+            // return SecretBase_EventScript_PC;
         if (MetatileBehavior_IsRecordMixingSecretBasePC(metatileBehavior) == TRUE)
             return SecretBase_EventScript_RecordMixingPC;
         if (MetatileBehavior_IsSecretBaseSandOrnament(metatileBehavior) == TRUE)

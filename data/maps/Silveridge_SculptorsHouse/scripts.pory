@@ -5,38 +5,140 @@ mapscripts Silveridge_SculptorsHouse_MapScripts {
 }
 
 script Silveridge_House1_EventScript_Sculptor {
-	// TODO EVA: Silveridge town statue sidequest
+	// rock throw
+	// ancient power
+	// rock_blast
+	// rock slide
+	// stealth rock
+	// stone edge
+	switch(var(VAR_STATE_SCULPTOR)) {
+		case 0:
+			call(Silveridge_House1_EventScript_Sculptor_FirstTime)
+		case 1:
+			// Current mon
+			setvar(VAR_TEMP_1, SPECIES_ONIX)
+			// Next mon
+			setvar(VAR_TEMP_2, SPECIES_PONYTA)
+			// Reward
+			setvar(VAR_TEMP_3, ITEM_TM_ANCIENT_POWER)
+
+			call(Silveridge_House1_EventScript_Sculptor_BringMeMon)
+		case 2:
+			// Current mon
+			setvar(VAR_TEMP_1, SPECIES_PONYTA)
+			// Next mon
+			setvar(VAR_TEMP_2, SPECIES_HERACROSS)
+			// Reward
+			setvar(VAR_TEMP_3, ITEM_TM_ANCIENT_POWER)
+
+			call(Silveridge_House1_EventScript_Sculptor_BringMeMon)
+	}
+}
+
+script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 	lock
 	faceplayer
+
+	bufferspeciesname(STR_VAR_1, VAR_TEMP_1)
+	speakername("Sculptor")
+	msgbox(format(
+		"Please show me {STR_VAR_1}. My soul aches for it!"
+	))
+	
+	checkspecies_choose(VAR_TEMP_1)
+
+	if (var(VAR_RESULT)) {
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 3))
+		waitse
+		waitmovement(0)
+
+		bufferspeciesname(STR_VAR_1, VAR_TEMP_1)
+		speakername("Sculptor")
+		msgbox(format(
+			"Oh… … … …\n"
+			"… … …Oh!!\p"
+			"This is is… I can feel the raw inspiration coursing through my veins!\p"
+			"Hello, {STR_VAR_1}!\nStand still just a moment…"
+		))
+		closemessage
+
+		fadescreenswapbuffers(FADE_TO_BLACK)
+		playse(SE_M_FLATTER)
+		delay(24)
+		playse(SE_M_FLATTER)
+		delay(24)
+		playse(SE_M_FLATTER)
+		delay(24)
+		playse(SE_M_FLATTER)
+		delay(48)
+		fadescreenswapbuffers(FADE_FROM_BLACK)
+
+		delay(24)
+
+		bufferspeciesname(STR_VAR_2, VAR_TEMP_2)
+		speakername("Sculptor")
+		msgbox(format(
+			"There it is! My best work yet!\p"
+			"… … …And yet…\p"
+			"It still feels like something is missing.\p"
+			"I think… I think…\n"
+			"This wasn't the Pokémon my destiny was telling me about.\p"
+			"I am seeing {STR_VAR_2} in my mind's eye…\p"
+			"Yes! Please show me {STR_VAR_2} to help me achieve my magnum opus.\p"
+			"Still, I must reward you for your assistance. Take this rock technique!"
+		))
+		closemessage
+
+		giveitem(VAR_TEMP_3)
+
+		setnamedmon(VAR_TEMP_2)
+		addvar(VAR_STATE_SCULPTOR, 1)
+	} else {
+		speakername("Sculptor")
+		msgbox(format(
+			"Why must you toy with me so?"
+		))
+	}
+
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(0)
+
+	release
+}
+
+script Silveridge_House1_EventScript_Sculptor_FirstTime {
+	lock
+	faceplayer
+	speakername("Sculptor")
 	msgbox(format(
 		"Please do not talk to me. I am creating."
 	))
 	closemessage
-	applymovement(LOCALID_SCULPTOR, Common_Movement_FaceOriginalDirection)
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
 	delay(60)
 
 	playse(SE_PIN)
 	faceplayer
-	applymovement(LOCALID_SCULPTOR, Common_Movement_ExclamationMark)
+	applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
 	waitmovement(0)
-	applymovement(LOCALID_SCULPTOR, Common_Movement_Delay48)
+	applymovement(VAR_LAST_TALKED, Common_Movement_Delay48)
 	waitmovement(0)
 
-	// Absol
-	// Abra
-	// Chansey
-	// Bidoof
-	// Darmanitan
+	speakername("Sculptor")
 	msgbox(format(
 		"…Oh? Could it be? Another noble soul moved by the ancestral art of sculpture?\p"
 		"Am I no longer utterly alone? Oh, my heart swells up at the idea!\p"
 		"As a fellow connoisseur of sculpture, you must know how difficult it is to find a proper model, one that will stir in its beholder the most violent passions.\p"
 		"To transform a raw slab of stone into the pinnacle of beauty… That is my aspiration.\p"
-		"To satisfy this need, I must lay my eyes on a XXX.\p"
-		"I see that you are a trainer. Please bring me a XXX to help me achieve my magnum opus."
+		"To satisfy this need, I must lay my eyes on an Onix.\p"
+		"I see that you are a trainer. Please show me an Onix to help me achieve my magnum opus."
 	))
 	closemessage
+
+	setnamedmon(SPECIES_ONIX)
+	setvar(VAR_STATE_SCULPTOR, 1)
 
 	release
 }

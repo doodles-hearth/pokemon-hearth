@@ -15,3 +15,14 @@ script YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon {
 	// TODO EVA givemon quest
 	release
 }
+
+script YifuCity_BigHouse_2F_EventScript_RunningBoy {
+	lock
+	faceplayer
+	speakername("Boy")
+	msgbox(format(
+		"My grandpa won't let me have a Pokémon!\p"
+		"I'm bored! I want Pokémon too!"
+	))
+	release
+}

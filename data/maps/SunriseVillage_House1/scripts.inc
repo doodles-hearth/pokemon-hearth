@@ -47,20 +47,19 @@ SunriseVillage_House1_EventScript_OldWoman_Text_0:
 	.string "Neighbour$"
 
 SunriseVillage_House1_EventScript_OldWoman_Text_1:
-	.string "Kirlia here is quite the silent\n"
-	.string "type. I'm fine with that.$"
+	.string "Kirlia here is quite the silent type.\n"
+	.string "I'm fine with that.$"
 
 SunriseVillage_House1_EventScript_OldMan_Text_0:
 	.string "My granddaughter's Pokémon has\n"
-	.string "already scratched all the\l"
-	.string "furniture…$"
+	.string "already scratched all the furniture…$"
 
 SunriseVillage_House1_EventScript_LittleGirl_Text_0:
 	.string "Little girl$"
 
 SunriseVillage_House1_EventScript_LittleGirl_Text_1:
-	.string "Ahhh I'm so happy!! Look how cute\n"
-	.string "my Ziggy is!!!$"
+	.string "Ahhh I'm so happy!! Look how cute my\n"
+	.string "Ziggy is!!!$"
 
 SunriseVillage_House1_EventScript_Zigzagoon_Text_0:
 	.string "Ziggy$"

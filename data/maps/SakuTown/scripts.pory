@@ -20,10 +20,6 @@ mapscripts SakuTown_MapScripts {
 		switch(var(VAR_RESULT)){
 			case TIME_DEAD_NIGHT:
 				setmetatile(35, 31, METATILE_SakuKura_ClosedDoorBottom, TRUE)
-				setmetatile(22, 17, METATILE_SakuKura_ClosedDoorTop, TRUE)
-				setmetatile(22, 18, METATILE_SakuKura_ClosedDoorBottom, TRUE)
-				setmetatile(16, 19, METATILE_SakuKura_ClosedDoorTop, TRUE)
-				setmetatile(16, 20, METATILE_SakuKura_ClosedDoorBottom, TRUE)
 				setmetatile(18, 32, METATILE_SakuKura_ClosedDoorTop, TRUE)
 				setmetatile(18, 33, METATILE_SakuKura_ClosedDoorBottom, TRUE)
 			case TIME_EARLY_MORNING:
@@ -61,8 +57,10 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	speakername("Natsuki")
 	msgbox(format(
 		"I was wondering if you'd already reached Saku Village by now. Looks like we almost missed each other!\p"
-		"Have you caught any Pokémon on your way here?\p"
-		"Me? Oh, I can show you my Pokémon alright!"
+		"I saw several patrolling Samurai on my way here. They look so cool, no wonder they're so admired!\p"
+		"Oh, {PLAYER}, have you caught any Pokémon on your way here?\p"
+		"Me?\nBoy, I'm so glad you asked…\p"
+		"Let me show you!"
 	))
 
 	// Fight
@@ -77,14 +75,13 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Okay, I… I didn't think you'd go that hard, honestly!\p"
-		"Hahaha…\p"
+		"Woah! I… I didn't think you'd go that hard, honestly!\p"
 		"Clearly I underestimated you. That's alright. I won't make that mistake next time!\p"
 		"I can see your Pokémon are really growing to like you, it's great!\p"
-		"You might just stand a chance against the Dojo that's in the next village.\p"
-		"Me? Actually, I just fought the Dojo's master and got an official Token from her!\p"
+		"Are you doing the Dojo challenge?\nYou might just stand a chance against the Dojo that's in the next village!\p"
+		"Me? Actually, I just got my first official Token!\p"
 		"You'll have to hurry if you wanna catch up!\p"
-		"Well, it was good to see you. Until next time then.\p"
+		"It's fun to run into each other like this. Until next time then.\p"
 		"I bet you I'll get to Silveridge first!\p"
 		"See you later, Feraligatr!"
 	))
@@ -92,10 +89,10 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	// Left
 	if (var(VAR_TEMP_2) == 16) {
-		applymovement(LOCALID_RIVAL, moves(walk_faster_right, walk_faster_up * 5))
+		applymovement(LOCALID_RIVAL, moves(walk_right, walk_up * 5))
 		// Right
 	} else {
-		applymovement(LOCALID_RIVAL, moves(walk_faster_left, walk_faster_up * 5))
+		applymovement(LOCALID_RIVAL, moves(walk_left, walk_up * 5))
 	}
 	waitmovement(0)
 
@@ -108,7 +105,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 }
 
 text SakuTown_Text_RivalDefeat {
-	format("Oh, wow, okay.")
+	format("Oh, wow!")
 }
 
 script SakuTown_EventScript_Farmer {
@@ -116,7 +113,7 @@ script SakuTown_EventScript_Farmer {
 	faceplayer
 	speakername("Farmer")
 	msgbox(format(
-		"We're cultivatin' Mifan berries. Saku Village exports its berries to many towns."
+		"We're growin' Cheri berries. Saku Village exports its berries to many towns."
 	))
 	release
 }
@@ -147,18 +144,21 @@ script SakuTown_EventScript_Karateka {
 	faceplayer
 	speakername("Man")
 	msgbox(format(
-		"I let the Pokémon Council borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
+		"I let the Toku Council borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
 	))
 	closemessage
-	applymovement(LOCALID_KARATEKA, Common_Movement_WalkInPlaceFasterUp)
+
+	playse(SE_LEDGE)
+	applymovement(LOCALID_KARATEKA, moves(jump_in_place_up))
 	waitmovement(0)
+	waitse
+
 	speakername("Man")
 	msgbox(format(
 		"Come on, Mama, Kuku! Daddy loves you!!"
 	))
 	closemessage
 
-	// TODO EVA this crashes the game
 	applymovement(LOCALID_MAMA, Common_Movement_FaceDown)
 	applymovement(LOCALID_KUKU, Common_Movement_FaceDown)
 	waitmovement(LOCALID_MAMA)
@@ -307,6 +307,7 @@ mart SakuTown_Mart {
 	ITEM_ANTIDOTE
 	ITEM_AWAKENING
 	ITEM_BURN_HEAL
+	ITEM_ESCAPE_ROPE
 }
 
 script SakuTown_EventScript_Makuhita {

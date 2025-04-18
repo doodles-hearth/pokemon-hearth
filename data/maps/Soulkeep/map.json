@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_ORCHARD_PATH",
-      "offset": 20,
+      "offset": 17,
       "direction": "right"
     },
     {

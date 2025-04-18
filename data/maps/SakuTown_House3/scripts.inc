@@ -130,10 +130,10 @@ SakuTown_House3_EventScript_TradeMe_Text_1:
 SakuTown_House3_EventScript_TradeMe_Text_2:
 	.string "The best thing about Pokémon is\n"
 	.string "trading them around!\p"
-	.string "I want a Hoothoot, but my pa\n"
-	.string "doesn't let me go out at night.\p"
-	.string "I'll trade you a super dope\n"
-	.string "Psyduck for it!$"
+	.string "I want a Hoothoot, but my pa doesn't\n"
+	.string "let me go out at night.\p"
+	.string "I'll trade you a super dope Psyduck\n"
+	.string "for it!$"
 
 SakuTown_House3_EventScript_TradeMe_Text_3:
 	.string "Keep your Hoothoot, I don't want it\n"
@@ -144,10 +144,8 @@ SakuTown_House3_EventScript_TradeMe_Text_4:
 	.string "want a Hoothoot!$"
 
 SakuTown_House3_EventScript_TradeMe_Text_5:
-	.string "Yeahhh!! I have a {STR_VAR_1}\n"
-	.string "now!\n"
-	.string "Take good care of Bread for me,\l"
-	.string "okay?$"
+	.string "Yeahhh!! I have a {STR_VAR_1} now!\p"
+	.string "Take good care of Bread for me, okay?$"
 
 SakuTown_House3_EventScript_Man_Text_0:
 	.string "Man$"

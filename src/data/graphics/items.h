@@ -2,7 +2,7 @@ const u32 gItemIcon_QuestionMark[] = INCBIN_U32("graphics/items/icons/question_m
 const u32 gItemIconPalette_QuestionMark[] = INCBIN_U32("graphics/items/icon_palettes/question_mark.gbapal.lz");
 
 const u32 gItemIcon_ReturnToFieldArrow[] = INCBIN_U32("graphics/items/icons/return_to_field_arrow.4bpp.lz");
-const u32 gItemIconPalette_ReturnToFieldArrow[] = INCBIN_U32("graphics/items/icon_palettes/return_to_field_arrow.gbapal.lz");
+const u32 gItemIconPalette_ReturnToFieldArrow[] = INCBIN_U32("graphics/items/icons/return_to_field_arrow.gbapal.lz");
 
 // Poké Balls
 
@@ -148,8 +148,9 @@ const u32 gItemIconPalette_EnergyRoot[] = INCBIN_U32("graphics/items/icon_palett
 
 const u32 gItemIconPalette_HealPowder[] = INCBIN_U32("graphics/items/icon_palettes/heal_powder.gbapal.lz");
 
+const u32 gItemIcon_RevivalBalm[] = INCBIN_U32("graphics/items/icons/revival_balm.4bpp.lz");
 const u32 gItemIcon_RevivalHerb[] = INCBIN_U32("graphics/items/icons/revival_herb.4bpp.lz");
-const u32 gItemIconPalette_RevivalHerb[] = INCBIN_U32("graphics/items/icon_palettes/revival_herb.gbapal.lz");
+const u32 gItemIconPalette_RevivalHerb[] = INCBIN_U32("graphics/items/icons/revival_herb.gbapal.lz");
 
 const u32 gItemIcon_StatusHeal[] = INCBIN_U32("graphics/items/icons/status_heal.4bpp.lz");
 const u32 gItemIconPalette_Antidote[] = INCBIN_U32("graphics/items/icon_palettes/antidote.gbapal.lz");

@@ -22,6 +22,7 @@ SakuTown_House2_EventScript_EspeonsMaster_1:
 	return
 
 SakuTown_House2_EventScript_EspeonsMaster_2:
+	setnamedmon SPECIES_EEVEE
 	speakername SakuTown_House2_EventScript_EspeonsMaster_Text_0
 	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_1
 	closemessage
@@ -29,6 +30,7 @@ SakuTown_House2_EventScript_EspeonsMaster_2:
 	goto SakuTown_House2_EventScript_EspeonsMaster_1
 
 SakuTown_House2_EventScript_EspeonsMaster_3:
+	setnamedmon SPECIES_EEVEE
 	speakername SakuTown_House2_EventScript_EspeonsMaster_Text_0
 	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_2
 	closemessage
@@ -64,6 +66,7 @@ SakuTown_House2_EventScript_EspeonsMaster_14:
 	goto SakuTown_House2_EventScript_EspeonsMaster_1
 
 SakuTown_House2_EventScript_EspeonsMaster_17:
+	setnamedmon SPECIES_ESPEON
 	speakername SakuTown_House2_EventScript_EspeonsMaster_Text_0
 	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_6
 	closemessage
@@ -77,10 +80,10 @@ SakuTown_House2_EventScript_Reunited::
 	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_4
 	closemessage
 	delay 30
-	playse SE_DOOR
+	playse SE_EXIT
 	waitse
 	addobject 2
-	setobjectxy 2, 5, 7
+	setobjectxy 2, 4, 7
 	turnobject 2, DIR_NORTH
 	applymovement 1, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceDown
@@ -152,7 +155,7 @@ SakuTown_House2_EventScript_Reunited_10:
 SakuTown_House2_EventScript_GiveEvoStone::
 	msgbox SakuTown_House2_EventScript_GiveEvoStone_Text_0
 	closemessage
-	dynmultichoice 16, 6, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SakuTown_House2_EventScript_GiveEvoStone_Text_1, SakuTown_House2_EventScript_GiveEvoStone_Text_2, SakuTown_House2_EventScript_GiveEvoStone_Text_3
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SakuTown_House2_EventScript_GiveEvoStone_Text_1, SakuTown_House2_EventScript_GiveEvoStone_Text_2, SakuTown_House2_EventScript_GiveEvoStone_Text_3
 	speakername SakuTown_House2_EventScript_EspeonsMaster_Text_0
 	switch VAR_RESULT
 	case 0, SakuTown_House2_EventScript_GiveEvoStone_3
@@ -213,6 +216,7 @@ SakuTown_House2_Movement_EspeonWalksUpEast:
 	walk_fast_up
 	walk_fast_right
 	walk_fast_right
+	walk_fast_right
 	walk_fast_up
 	walk_fast_up
 	face_left
@@ -222,6 +226,7 @@ SakuTown_House2_Movement_EspeonWalksUpEast:
 
 SakuTown_House2_Movement_EspeonWalksUpSouth:
 	walk_fast_up
+	walk_fast_right
 	walk_fast_right
 	walk_fast_up
 	jump_in_place_up
@@ -237,8 +242,8 @@ SakuTown_House2_EventScript_EspeonsMaster_Text_1:
 SakuTown_House2_EventScript_EspeonsMaster_Text_2:
 	.string "I hope Eevee comes home soon…\p"
 	.string "What? Someone found my Eevee? Oh,\n"
-	.string "please, can you tell them to\l"
-	.string "bring it back?$"
+	.string "please, can you tell them to bring it\l"
+	.string "back?$"
 
 SakuTown_House2_EventScript_EspeonsMaster_Text_3:
 	.string "… …$"
@@ -257,8 +262,8 @@ SakuTown_House2_EventScript_Reunited_Text_0:
 	.string "Is… Is that Eevee?$"
 
 SakuTown_House2_EventScript_Reunited_Text_1:
-	.string "It's you! It's really you! Oh,\n"
-	.string "Eevee, I've missed you so much!\p"
+	.string "It's you! It's really you! Oh, Eevee,\n"
+	.string "I've missed you so much!\p"
 	.string "… …\p"
 	.string "Wait, you look a little different…$"
 
@@ -266,16 +271,16 @@ SakuTown_House2_EventScript_Reunited_Text_2:
 	.string "You say it was a woman from Kura\n"
 	.string "Village that found him?\p"
 	.string "She took such good care of him!\p"
-	.string "His fur is so shiny and\n"
-	.string "well-groomed, too…\p"
+	.string "His fur is so shiny and well-groomed,\n"
+	.string "too…\p"
 	.string "… …\p"
 	.string "Looks like there are actually some\n"
 	.string "nice people too in Kura Village…\p"
 	.string "… …\p"
-	.string "Anyway, thank you so much for\n"
-	.string "helping me out. I'm so grateful.\p"
-	.string "As a thanks, you can have your\n"
-	.string "pick from my cool rock collection!$"
+	.string "Anyway, thank you so much for helping\n"
+	.string "me out. I'm so grateful.\p"
+	.string "As a thanks, you can have your pick\n"
+	.string "from my cool rock collection!$"
 
 SakuTown_House2_EventScript_GiveEvoStone_Text_0:
 	.string "Which rock would you like?$"
@@ -296,15 +301,14 @@ SakuTown_House2_EventScript_Sister_Text_0:
 	.string "Girl$"
 
 SakuTown_House2_EventScript_Sister_Text_1:
-	.string "My brother's been feeling really\n"
-	.string "down lately.\p"
+	.string "My brother's been feeling really down\n"
+	.string "lately.\p"
 	.string "His precious Pokémon disappeared\n"
-	.string "during the big storm we had a\l"
-	.string "while ago.$"
+	.string "during the big storm we had a while\l"
+	.string "ago.$"
 
 SakuTown_House2_EventScript_Sister_Text_2:
 	.string "Thank you for your kindness! It's\n"
-	.string "nice to see my brother smiling\l"
-	.string "again.\p"
+	.string "nice to see my brother smiling again.\p"
 	.string "I wish I could thank whoever took\n"
 	.string "such good care of Eevee, too!$"

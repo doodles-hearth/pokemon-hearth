@@ -40,15 +40,14 @@ Soulkeep_Refuge_EventScript_Man_Text_0:
 	.string "Farmer$"
 
 Soulkeep_Refuge_EventScript_Man_Text_1:
-	.string "You must be here for the Dojo\n"
-	.string "challenge?\p"
 	.string "We sure don't see a lot of trav'lers\n"
-	.string "'round these parts…$"
+	.string "'round these parts…\p"
+	.string "You here for the Dojo challenge?\n"
+	.string "Dojo's closed, unfortunately.$"
 
 Soulkeep_Refuge_EventScript_NewDojo_Text_0:
 	.string "Some of the town's farmers got\n"
-	.string "together with Guang to form a\l"
-	.string "Dojo.\p"
-	.string "Guang says he's tired of us “living\n"
-	.string "in the shadows”, whatever that\l"
-	.string "means.$"
+	.string "together with Guang and said they\l"
+	.string "were going to open the old Dojo.\p"
+	.string "Guang says he's tired of us “living in\n"
+	.string "the shadows”, whatever that means.$"

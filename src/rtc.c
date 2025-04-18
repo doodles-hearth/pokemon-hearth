@@ -1,4 +1,7 @@
 #include "global.h"
+#include "battle_pike.h"
+#include "battle_pyramid.h"
+#include "datetime.h"
 #include "rtc.h"
 #include "constants/rtc.h"
 #include "string_util.h"
@@ -6,6 +9,10 @@
 #include "text.h"
 #include "fake_rtc.h"
 #include "overworld.h"
+#include "constants/songs.h"
+#include "sound.h"
+#include "constants/weather.h"
+#include "field_weather.h"
 
 // iwram bss
 static u16 sErrorStatus;
@@ -324,7 +331,7 @@ bool8 IsBetweenHours(s32 hours, s32 begin, s32 end)
         return hours >= begin && hours < end;
 }
 
-u8 GetTimeOfDay(void)
+enum TimeOfDay GetTimeOfDay(void)
 {
     RtcCalcLocalTime();
     if (IsBetweenHours(gLocalTime.hours, DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END))
@@ -342,6 +349,11 @@ u8 GetTimeOfDay(void)
     return TIME_EARLY_MORNING;
     // UpdateTimeOfDay();
     // return gTimeOfDay;
+}
+
+enum TimeOfDay GetTimeOfDayForDex(void)
+{
+    return OW_TIME_OF_DAY_ENCOUNTERS ? GetTimeOfDay() : OW_TIME_OF_DAY_DEFAULT;
 }
 
 void RtcInitLocalTimeOffset(s32 hour, s32 minute)
@@ -424,4 +436,69 @@ void FormatDecimalTimeWithoutSeconds(u8 *txtPtr, s8 hour, s8 minute, bool32 is24
 
     *txtPtr++ = EOS;
     *txtPtr = EOS;
+}
+
+u16 GetFullYear(void)
+{
+    struct DateTime dateTime;
+    RtcCalcLocalTime();
+    ConvertTimeToDateTime(&dateTime, &gLocalTime);
+
+    return dateTime.year;
+}
+
+enum Month GetMonth(void)
+{
+    struct DateTime dateTime;
+    RtcCalcLocalTime();
+    ConvertTimeToDateTime(&dateTime, &gLocalTime);
+
+    return dateTime.month;
+}
+
+u8 GetDay(void)
+{
+    struct DateTime dateTime;
+    RtcCalcLocalTime();
+    ConvertTimeToDateTime(&dateTime, &gLocalTime);
+
+    return dateTime.day;
+}
+
+enum Weekday GetDayOfWeek(void)
+{
+    struct DateTime dateTime;
+    RtcCalcLocalTime();
+    ConvertTimeToDateTime(&dateTime, &gLocalTime);
+
+    return dateTime.dayOfWeek;
+}
+
+enum TimeOfDay TryIncrementTimeOfDay(enum TimeOfDay timeOfDay)
+{
+    return timeOfDay == TIME_NIGHT ? TIME_MORNING : timeOfDay + 1;
+}
+
+enum TimeOfDay TryDecrementTimeOfDay(enum TimeOfDay timeOfDay)
+{
+    return timeOfDay == TIME_MORNING ? TIME_NIGHT : timeOfDay - 1;
+}
+
+// Sets creepy music in Soulkeep during the night,
+// regular music during the day
+void TrySetSoulkeepAmbiance(void)
+{
+    u32 soulkeepMusic;
+    u32 i = GetTimeOfDay();
+    if (i == TIME_EVENING || i == TIME_NIGHT || i == TIME_DEAD_NIGHT)
+    {
+        soulkeepMusic = MUS_MT_PYRE;
+        SetWeather(WEATHER_FOG_HORIZONTAL);
+    }
+    else
+    {
+        soulkeepMusic = MUS_RG_SEVII_67;
+    }
+    Overworld_SetSavedMusic(soulkeepMusic);
+    PlayNewMapMusic(soulkeepMusic);
 }

@@ -4,7 +4,7 @@ mapscripts SilverTunnel_2F_MapScripts {
 	
 }
 
-script SilverTunnel_2F_EventScript_Trainer1 {
+script SilverTunnel_2F_EventScript_Tama {
 	trainerbattle_double(
 		TRAINER_TAMA,
 		format("The lack of precious gemstones here is disappointing!"),

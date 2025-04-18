@@ -190,8 +190,8 @@ ChiiTown_School_EventScript_Teaching_Text_0:
 
 ChiiTown_School_EventScript_EndingDay_Text_0:
 	.string "Oh! I'm afraid classes are done for\n"
-	.string "the day. You'll have to come\l"
-	.string "back tomorrow.$"
+	.string "the day. You'll have to come back\l"
+	.string "tomorrow.$"
 
 ChiiTown_School_EventScript_BoardLegend_Text_0:
 	.string "A detailed print depicts\n"
@@ -216,31 +216,29 @@ ChiiTown_School_EventScript_ChildImBored_Text_1:
 	.string "already!$"
 
 ChiiTown_School_EventScript_ChildAlreadyKnowLegend_Text_0:
-	.string "I already knew all of this! My\n"
-	.string "gramma told me about the legend\l"
-	.string "a bajillion times!$"
+	.string "I already knew all of this! My gramma\n"
+	.string "told me about the legend a bajillion\l"
+	.string "times!$"
 
 ChiiTown_School_EventScript_ChildPokemonInsideVolcano_Text_0:
 	.string "There's a Pokémon inside the\n"
 	.string "volcano?! That's AWESOME!$"
 
 ChiiTown_School_EventScript_ChildTellsStory_Text_0:
-	.string "I know the story, I know the\n"
-	.string "story!\p"
-	.string "Once upon a time, the Volcano\n"
-	.string "Pokémon woke up, and then there\l"
-	.string "was fire everywhere, and then\l"
-	.string "four Pokémon were fighting the\l"
-	.string "Volcano one, and then the Volcano\l"
-	.string "stopped spitting fire because the\l"
-	.string "Pokémon went back to sleep!$"
+	.string "I know the story, I know the story!\p"
+	.string "Once upon a time, the Volcano Pokémon\n"
+	.string "woke up, and then there was fire\l"
+	.string "everywhere, and then four Pokémon\l"
+	.string "were fighting the Volcano one, and\l"
+	.string "then the Volcano stopped spitting\l"
+	.string "fire because the Pokémon went back\l"
+	.string "to sleep!$"
 
 ChiiTown_School_EventScript_IsThePokemonWakingUp_Text_0:
 	.string "When the Volcano Pokémon went to\n"
-	.string "bed, the Volcano stopped\l"
-	.string "erupting!\p"
-	.string "But the Volcano has been rumbling\n"
-	.string "for days now…\p"
+	.string "bed, the Volcano stopped erupting!\p"
+	.string "But the Volcano has been rumbling for\n"
+	.string "days now…\p"
 	.string "Does that mean the Pokémon's waking\n"
 	.string "up again?$"
 
@@ -248,8 +246,8 @@ ChiiTown_School_EventScript_ChildWiseGlasses_Text_0:
 	.string "Ugh, I missed a class so I have to\n"
 	.string "catch up on Pokémon's attack and\l"
 	.string "special attack…\p"
-	.string "I'm almost done though! I don't\n"
-	.string "even need these anymore!$"
+	.string "I'm almost done though! I don't even\n"
+	.string "need these anymore!$"
 
 ChiiTown_School_EventScript_ChildWiseGlasses_Text_1:
 	.string "These are my smart glasses. You\n"

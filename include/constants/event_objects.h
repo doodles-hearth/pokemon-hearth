@@ -297,6 +297,7 @@
 #define OBJ_EVENT_GFX_VAR_E  (OBJ_EVENT_GFX_VARS + 0xE)
 #define OBJ_EVENT_GFX_VAR_F  (OBJ_EVENT_GFX_VARS + 0xF)
 
+// Don't use (1u << 15) to avoid conflict with BLEND_IMMUNE_FLAG.
 #define OBJ_EVENT_MON               (1u << 14)
 #define OBJ_EVENT_MON_SHINY         (1u << 13)
 #define OBJ_EVENT_MON_FEMALE        (1u << 12)
@@ -460,7 +461,6 @@
 #define OBJ_EVENT_PAL_TAG_SAMURAI                 0x114D
 #define OBJ_EVENT_PAL_TAG_YUTAKA                  0x114E
 #define OBJ_EVENT_PAL_TAG_KIMONO_GIRL             0x114F
-#define OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS_BOSS     0x1150
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla
@@ -499,7 +499,7 @@
 #endif //OW_FOLLOWERS_POKEBALLS
 
 // More custom Hearth palettes
-#define OBJ_EVENT_PAL_TAG_NPC_ELECTRIC_BLUE_ORANGE 0x116B
+#define OBJ_EVENT_PAL_TAG_NPC_PURPLE_ORANGE 0x116B
 #define OBJ_EVENT_PAL_TAG_YOUNGSTER  0x116C
 #define OBJ_EVENT_PAL_TAG_HEX_MANIAC 0x116D
 #define OBJ_EVENT_PAL_TAG_BREEDER_M 0x116E
@@ -514,6 +514,10 @@
 // 4 remaining free slots
 #define OBJ_EVENT_PAL_TAG_DECORATIONS_MAREEP 0x1176
 #define OBJ_EVENT_PAL_TAG_INCENSE_SELLER 0x1177
+#define OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS_BOSS 0x1178
+#define OBJ_EVENT_PAL_TAG_BLACK_BELT 0x1179
+#define OBJ_EVENT_PAL_TAG_BOY_2 0x117A
+#define OBJ_EVENT_PAL_TAG_BOY_3 0x117B
 
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611

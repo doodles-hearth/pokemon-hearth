@@ -104,6 +104,15 @@ const u8 gItemEffect_HealPowder[9] = {
     [8] = -10, // Friendship change, high
 };
 
+const u8 gItemEffect_RevivalBalm[10] = {
+    [4] = ITEM4_REVIVE | ITEM4_HEAL_HP,
+    [5] = ITEM5_FRIENDSHIP_ALL,
+    [6] = ITEM6_HEAL_HP_HALF,
+    [7] = -15, // Friendship change, low
+    [8] = -15, // Friendship change, mid
+    [9] = -20, // Friendship change, high
+};
+
 const u8 gItemEffect_RevivalHerb[10] = {
     [4] = ITEM4_REVIVE | ITEM4_HEAL_HP,
     [5] = ITEM5_FRIENDSHIP_ALL,

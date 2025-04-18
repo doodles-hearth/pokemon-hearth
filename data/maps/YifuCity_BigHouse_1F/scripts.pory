@@ -6,9 +6,15 @@ script YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight {
 	lock
 	faceplayer
 	speakername("Girl")
-	msgbox(format(
-		"I stopped going out at night.\nThose fishy Crobat people roam the streets, speaking in hush tones…"
-	))
+	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+		msgbox(format(
+			"I'm happy Yifu City is safe again!"
+		))
+	} else {
+		msgbox(format(
+			"I stopped going out at night.\nThose fishy Crobat people roam the streets, loiter at the docks, speaking in hush tones…"
+		))
+	}
 	release
 }
 
@@ -17,8 +23,22 @@ script YifuCity_BigHouse_1F_EventScript_Man {
 	faceplayer
 	speakername("Guy")
 	msgbox(format(
-		"Did you know? The Samurai aren't actually affiliated with the Elder council of Toku. That's a common misconception!\p"
+		"Did you know? The Samurai aren't actually affiliated with the Toku Council. That's a common misconception!\p"
 		"They're their own organization, which mostly deals in protecting the population and fighting crime."
 	))
 	release
+}
+
+script YifuCity_BigHouse_1F_EventScript_Pokemon {
+	lock
+    faceplayer
+	setseenmon(SPECIES_NIDORINA)
+    setspeakertomonname(SPECIES_NIDORINA)
+    msgbox(format(
+        "Gyooh!"
+    ))
+    playmoncry(SPECIES_NIDORINA, CRY_MODE_NORMAL)
+    waitmoncry
+    release
+    end
 }

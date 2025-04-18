@@ -38,8 +38,8 @@ YifuCity_ClothingShop_EventScript_Customer_Text_0:
 YifuCity_ClothingShop_EventScript_Customer_Text_1:
 	.string "Ohmigosh ohmigosh ohmigosh!!\n"
 	.string "Master Yutaka is here!!\p"
-	.string "She's sooo beautiful, and her\n"
-	.string "clothes are amazing!\p"
+	.string "She's sooo beautiful, and her clothes\n"
+	.string "are amazing!\p"
 	.string "Did you know she's a designer, too?\n"
-	.string "There's a whole clothing line to\l"
-	.string "her name!$"
+	.string "There's a whole clothing line to her\l"
+	.string "name!$"

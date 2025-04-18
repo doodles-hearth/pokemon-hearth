@@ -18,7 +18,7 @@
 #define TRAINER_GRUNT_CROBAT_HIDEOUT_8       12
 #define TRAINER_SHAMISEN                     13
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_4      14
-#define TRAINER_DECLAN                       15
+#define TRAINER_ROCK_SMASH_GUY               15
 #define TRAINER_GRUNT_RUSTURF_TUNNEL         16
 #define TRAINER_GRUNT_WEATHER_INST_1         17
 #define TRAINER_GRUNT_WEATHER_INST_2         18

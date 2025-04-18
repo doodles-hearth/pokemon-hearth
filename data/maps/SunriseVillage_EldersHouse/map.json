@@ -2,7 +2,7 @@
   "id": "MAP_SUNRISE_VILLAGE_ELDERS_HOUSE",
   "name": "SunriseVillage_EldersHouse",
   "layout": "LAYOUT_SUNRISE_VILLAGE_ELDERS_HOUSE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_HH_SUNRISE",
   "region_map_section": "MAPSEC_SUNRISE_VILLAGE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

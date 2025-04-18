@@ -92,12 +92,12 @@ script GinkoWoods_EventScript_Bean {
 	))
 	closemessage
 
-	fadescreen(FADE_TO_BLACK)
+	fadescreenswapbuffers(FADE_TO_BLACK)
 
 	addtime(0, 1, 30)
 	delay(60)
 
-	fadescreen(FADE_FROM_BLACK)
+	fadescreenswapbuffers(FADE_FROM_BLACK)
 
 	delay(48)
 
@@ -171,6 +171,7 @@ script GinkoWoods_EventScript_Tracks {
 	applymovement(LOCALID_BEAN, Common_Movement_WalkInPlaceFasterRight)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 
+	speakername("Odd girl")
 	msgbox(format(
 		"THE TRACKS!! YOU'RE STEPPING ON THEM!!!"
 	))

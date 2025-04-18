@@ -407,6 +407,7 @@ extern const u8 EventScript_UseCut[];
 extern const u8 EventScript_UseRockSmash[];
 extern const u8 EventScript_UseDig[];
 extern const u8 EventScript_UseCutGrass[];
+extern const u8 EventScript_UseDefog[];
 
 //player pc
 extern const u8 LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC[];
@@ -590,6 +591,7 @@ extern const u8 EventScript_FallDownHoleMtPyre[];
 
 // Secret Base
 extern const u8 SecretBase_EventScript_PC[];
+extern const u8 SecretBase_EventScript_Chest[];
 extern const u8 SecretBase_EventScript_RecordMixingPC[];
 extern const u8 SecretBase_EventScript_PCCancel[];
 extern const u8 SecretBase_EventScript_ShowRegisterMenu[];

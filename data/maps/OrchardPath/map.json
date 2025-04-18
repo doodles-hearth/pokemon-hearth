@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_SOULKEEP",
-      "offset": -20,
+      "offset": -17,
       "direction": "left"
     },
     {
@@ -25,15 +25,20 @@
     },
     {
       "map": "MAP_YIFU_CITY",
-      "offset": -21,
+      "offset": -18,
       "direction": "right"
+    },
+    {
+      "map": "MAP_SHOGUNATE",
+      "offset": 68,
+      "direction": "up"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 76,
-      "y": 25,
+      "y": 28,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN",
       "movement_range_x": 6,
@@ -53,7 +58,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
       "x": 70,
-      "y": 20,
+      "y": 23,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_UP_LEFT",
       "movement_range_x": 6,
@@ -72,10 +77,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 49,
-      "y": 7,
+      "x": 48,
+      "y": 10,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -85,10 +90,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 50,
-      "y": 7,
+      "x": 49,
+      "y": 10,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -98,10 +103,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
-      "x": 51,
-      "y": 7,
+      "x": 50,
+      "y": 10,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -112,9 +117,9 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
       "x": 28,
-      "y": 9,
+      "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -125,9 +130,9 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
       "x": 29,
-      "y": 9,
+      "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -138,9 +143,9 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
       "x": 24,
-      "y": 9,
+      "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -151,9 +156,9 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
       "x": 25,
-      "y": 9,
+      "y": 11,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -164,31 +169,199 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BERRY_TREE",
       "x": 74,
-      "y": 6,
+      "y": 9,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_BERRY_TREE_GROWTH",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "BERRY_TREE_ORCHARD_PATH_UUME_6",
       "script": "BerryTreeScript",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
+      "x": 59,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_LEFT_AND_RIGHT",
+      "movement_range_x": 6,
+      "movement_range_y": 5,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "OrchardPath_EventScript_Samurai",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(UMBREON)",
+      "x": 58,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 6,
+      "movement_range_y": 5,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "OrchardPath_EventScript_Umbreon",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
+      "x": 60,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
+      "movement_range_x": 6,
+      "movement_range_y": 5,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "OrchardPath_EventScript_Samurai2",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 38,
+      "y": 9,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 37,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_2",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 39,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_3",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
+      "x": 38,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 6,
+      "movement_range_y": 5,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "OrchardPath_EventScript_RockSmash",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
     {
-      "x": 68,
-      "y": 2,
+      "x": 58,
+      "y": 5,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
       "dest_warp_id": "0"
     },
     {
-      "x": 69,
-      "y": 2,
+      "x": 59,
+      "y": 5,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
       "dest_warp_id": "1"
+    },
+    {
+      "x": 60,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 82,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_SHOGUNATE",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 83,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_SHOGUNATE",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 84,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_SHOGUNATE",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
@@ -197,19 +370,27 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 86,
-      "y": 17,
+      "x": 87,
+      "y": 20,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "OrchardPath_EventScript_UumeForestSoulkeepSign"
     },
     {
       "type": "sign",
-      "x": 62,
-      "y": 9,
+      "x": 57,
+      "y": 12,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "OrchardPath_EventScript_GuardHouseSign"
+    },
+    {
+      "type": "sign",
+      "x": 39,
+      "y": 11,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "OrchardPath_EventScript_SignRockSmash"
     }
   ]
 }

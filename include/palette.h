@@ -1,10 +1,10 @@
 #ifndef GUARD_PALETTE_H
 #define GUARD_PALETTE_H
 
-#define gPaletteFade_selectedPalettes (gPaletteFade.multipurpose1) // normal and fast fade
-#define gPaletteFade_blendCnt         (gPaletteFade.multipurpose1) // hardware fade
-#define gPaletteFade_delay            (gPaletteFade.multipurpose2) // normal and hardware fade
-#define gPaletteFade_submode          (gPaletteFade.multipurpose2) // fast fade
+#define gPaletteFadeSelectedPalettes (gPaletteFade.multipurpose1) // normal and fast fade
+#define gPaletteFadeBlendCnt         (gPaletteFade.multipurpose1) // hardware fade
+#define gPaletteFadeDelay            (gPaletteFade.multipurpose2) // normal and hardware fade
+#define gPaletteFadeSubmode          (gPaletteFade.multipurpose2) // fast fade
 
 #define PLTT_BUFFER_SIZE (PLTT_SIZE / sizeof(u16))
 

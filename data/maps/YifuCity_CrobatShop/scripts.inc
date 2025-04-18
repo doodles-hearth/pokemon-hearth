@@ -62,6 +62,7 @@ YifuCity_CrobatShop_CashierLegitTM::
 Crobat_Mart:
 	.2byte ITEM_OINTMENT
 	.2byte ITEM_SUPER_OINTMENT
+	.2byte ITEM_REVIVAL_BALM
 	.2byte ITEM_ULTRA_BALL_KNOCKOFF
 	.2byte ITEM_ESCAPE_ROPE_KNOCKOFF
 	.2byte ITEM_SLOWPOKE_TAIL
@@ -71,6 +72,7 @@ Crobat_Mart:
 Legit_Mart:
 	.2byte ITEM_OINTMENT
 	.2byte ITEM_SUPER_OINTMENT
+	.2byte ITEM_REVIVAL_BALM
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_ESCAPE_ROPE
@@ -298,19 +300,19 @@ YifuCity_CrobatShop_Cashier_Text_1:
 	.string "tchotchquees and memoralibia!$"
 
 YifuCity_CrobatShop_Cashier_Text_2:
-	.string "We thank thee fer yer business!\n"
-	.string "Tell yer friends!\p"
+	.string "We thank thee fer yer business! Tell\n"
+	.string "yer friends!\p"
 	.string "{FONT_SMALL}Unless yer friends are the police!{FONT_NORMAL}\p"
-	.string "Wut's that? I said nothin', ya must\n"
-	.string "be hearin' things!$"
+	.string "Wut's that? I said nothin', ya must be\n"
+	.string "hearin' things!$"
 
 YifuCity_CrobatShop_CashierLegit_Text_0:
-	.string "Hello there! Welcome to the Yifu\n"
-	.string "City shop!$"
+	.string "Hello there! Welcome to the Yifu City\n"
+	.string "shop!$"
 
 YifuCity_CrobatShop_CashierLegit_Text_1:
-	.string "We hope you'll come again! Have a\n"
-	.string "good day!$"
+	.string "We hope you'll come again! Have a good\n"
+	.string "day!$"
 
 YifuCity_CrobatShop_CashierLegitTM_Text_0:
 	.string "Hi! I'm prepping up here, but come\n"
@@ -357,8 +359,8 @@ YifuCity_CrobatShop_Guard_Text_12:
 	.string "…is legendary!$"
 
 YifuCity_CrobatShop_Guard_Text_13:
-	.string "Hmmm… Ya don't look like the\n"
-	.string "typical Zubat…\p"
+	.string "Hmmm… Ya don't look like the typical\n"
+	.string "Zubat…\p"
 	.string "… … … …\n"
 	.string "… …Alright, ya can go through.\l"
 	.string "Next time wear the damn uniform\l"
@@ -368,16 +370,15 @@ YifuCity_CrobatShop_Customer1_Text_0:
 	.string "Customer$"
 
 YifuCity_CrobatShop_Customer1_Text_1:
-	.string "Woah! So I was buying illegal\n"
-	.string "items? That's wild!$"
+	.string "Woah! So I was buying illegal items?\n"
+	.string "That's wild!$"
 
 YifuCity_CrobatShop_Customer1_Text_2:
 	.string "This place is amazing!\n"
 	.string "How is everything so cheap?!$"
 
 YifuCity_CrobatShop_Customer2_Text_0:
-	.string "I knew it! I knew this shop was\n"
-	.string "shady!$"
+	.string "I knew it! I knew this shop was shady!$"
 
 YifuCity_CrobatShop_Customer2_Text_1:
 	.string "These Ultra Balls look… different,\n"
@@ -389,8 +390,7 @@ YifuCity_CrobatShop_EventScript_Samurai_Text_0:
 YifuCity_CrobatShop_EventScript_Samurai_Text_1:
 	.string "Shhh, don't look at me!\n"
 	.string "Someone tipped me off that the\l"
-	.string "Crobat Shadows' band of misfits\l"
-	.string "has a secret hideout right under\l"
-	.string "the city!\p"
+	.string "Crobat Shadows' band of misfits has a\l"
+	.string "secret hideout right under the city!\p"
 	.string "I'm trying to know more by standing\n"
 	.string "around and listening!$"

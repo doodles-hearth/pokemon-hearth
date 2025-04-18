@@ -138,7 +138,7 @@ script KuraTown_Dojo_EventScript_HanaDefeated {
 		format(
 			// TODO EVA boost atk?
 			"Thanks to this Token, your Pokémon will obey you without question, even those you trade with others.\p"
-			"If you are interested in submitting to the Pokémon Council challenge, you will need to collect a Token from each of the eight Dojos scattered throughout the region.\p"
+			"If you are interested in submitting to the Toku Council challenge, you will need to collect a Token from each of the eight Dojos scattered throughout the region.\p"
 			"It is not an easy task, but I can feel determination taking root in your heart.\p"
 			"Here, let me also give you this."
 		),

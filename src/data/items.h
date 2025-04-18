@@ -1135,6 +1135,24 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_RevivalHerb,
     },
 
+    [ITEM_REVIVAL_BALM] =
+    {
+        .name = _("Revival Balm"),
+        .price = 1400,
+        .description = COMPOUND_STRING(
+            "A bitter herb\n"
+            "that revives a\n"
+            "fainted Pokémon."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_REVIVE,
+        .effect = gItemEffect_RevivalBalm,
+        .flingPower = 30,
+        .iconPic = gItemIcon_RevivalBalm,
+        .iconPalette = gItemIconPalette_RevivalHerb,
+    },
+
     [ITEM_ANTIDOTE] =
     {
         .name = _("Antidote"),
@@ -8256,10 +8274,22 @@ const struct Item gItemsInfo[] =
         .name = _("Icy Rock"),
         .price = (I_PRICE >= GEN_9) ? 8000 : ((I_PRICE >= GEN_7) ? 4000 : 200),
         .holdEffect = HOLD_EFFECT_ICY_ROCK,
+        #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_HAIL
         .description = COMPOUND_STRING(
             "Extends the length\n"
             "of the move Hail\n"
             "used by the holder."),
+        #elif B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_SNOW
+        .description = COMPOUND_STRING(
+            "Extends the length\n"
+            "of Snowscape if\n"
+            "used by the holder."),
+        #else
+        .description = COMPOUND_STRING(
+            "Extends the length\n"
+            "of cold weathers\n"
+            "used by the holder."),
+        #endif
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -10750,10 +10780,17 @@ const struct Item gItemsInfo[] =
     {
         .name = _("TM07"),
         .price = 3000,
+        #if B_PREFERRED_ICE_WEATHER == B_ICE_WEATHER_SNOW
+        .description = COMPOUND_STRING(
+            "Raises the Defense\n"
+            "of Ice type {PKMN}\n"
+            "for 5 turns."),
+        #else
         .description = COMPOUND_STRING(
             "Creates a hailstorm\n"
             "that damages all\n"
             "types except Ice."),
+        #endif
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -11480,16 +11517,20 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_X_SCISSOR,
     },
 
-    [ITEM_TM55] =
+    [ITEM_TM_ANCIENT_POWER] =
     {
         .name = _("TM55"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Throws rocks at\n"
+            "the foe. May\n"
+            "raise all stats."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_ANCIENT_POWER,
     },
 
     [ITEM_TM56] =
@@ -12853,9 +12894,10 @@ const struct Item gItemsInfo[] =
         .name = _("Letter"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A letter to Steven\n"
-            "from the President\n"
-            "of the Devon Corp."),
+            "A letter to the\n"
+            "Elder of\n"
+            "Silveridge."
+        ),
         .importance = 2,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
@@ -13771,6 +13813,8 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Adamant Crystal"),
         .price = 0,
+        .holdEffect = HOLD_EFFECT_ADAMANT_ORB,
+        .holdEffectParam = 20,
         .description = COMPOUND_STRING(
             "A large, glowing gem\n"
             "that lets Dialga\n"
@@ -13787,6 +13831,8 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Griseous Core"),
         .price = 0,
+        .holdEffect = HOLD_EFFECT_GRISEOUS_ORB,
+        .holdEffectParam = 20,
         .description = COMPOUND_STRING(
             "A large, glowing gem\n"
             "that lets Giratina\n"
@@ -13803,6 +13849,8 @@ const struct Item gItemsInfo[] =
     {
         .name = _("Lustrous Globe"),
         .price = 0,
+        .holdEffect = HOLD_EFFECT_LUSTROUS_ORB,
+        .holdEffectParam = 20,
         .description = COMPOUND_STRING(
             "A large, glowing gem\n"
             "that lets Palkia\n"

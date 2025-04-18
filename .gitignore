@@ -48,3 +48,4 @@ tools/poryscript
 *.smol
 *.fastSmol
 *.smolTM
+__pycache__

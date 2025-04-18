@@ -43,6 +43,9 @@ static void Task_HandleCopyReceivedLinkBuffersData(u8 taskId);
 static void Task_StartSendOutAnim(u8 taskId);
 static void SpriteCB_FreePlayerSpriteLoadMonSprite(struct Sprite *sprite);
 static void SpriteCB_FreeOpponentSprite(struct Sprite *sprite);
+static u32 ReturnAnimIdForBattler(bool32 isPlayerSide, u32 specificBattler);
+static void LaunchKOAnimation(u32 battlerId, u16 animId, bool32 isFront);
+static void AnimateMonAfterKnockout(u32 battler);
 
 void HandleLinkBattleSetup(void)
 {
@@ -2577,8 +2580,7 @@ void BtlController_HandleTrainerSlideBack(u32 battler, s16 data0, bool32 startAn
 
 void BtlController_HandleFaintAnimation(u32 battler)
 {
-    // TODO: fix Nico's KO anim feature
-    // SetHealthboxSpriteInvisible(gHealthboxSpriteIds[battler]);
+    SetHealthboxSpriteInvisible(gHealthboxSpriteIds[battler]);
     if (gBattleSpritesDataPtr->healthBoxesData[battler].animationState == 0)
     {
         if (gBattleSpritesDataPtr->battlerData[battler].behindSubstitute)
@@ -2609,31 +2611,7 @@ void BtlController_HandleFaintAnimation(u32 battler)
             // The player's sprite is removed in Controller_FaintPlayerMon. Controller_FaintOpponentMon only removes the healthbox once the sprite is removed by SpriteCB_FaintOpponentMon.
         }
     }
-    // TODO: fix Nico's KO anim feature
-    // if(GetBattlerSide(battler) == B_SIDE_PLAYER)
-    // {
-    //     LaunchAnimationTaskForFrontSprite(&gSprites[gBattlerSpriteIds[BATTLE_OPPOSITE(battler)]], gSpeciesInfo[gBattleMons[BATTLE_OPPOSITE(battler)].species].frontAnimId);
-    //     PlayCry_Normal(gBattleMons[BATTLE_OPPOSITE(battler)].species, CRY_PRIORITY_NORMAL);
-    //     if (HasTwoFramesAnimation(gBattleMons[BATTLE_OPPOSITE(battler)].species))
-    //         StartSpriteAnim(&gSprites[gBattlerSpriteIds[BATTLE_OPPOSITE(battler)]], 1);
-    //     if(gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-    //     {
-    //         LaunchAnimationTaskForFrontSprite(&gSprites[gBattlerSpriteIds[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]], gSpeciesInfo[gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species].frontAnimId);
-    //         PlayCry_Normal(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species, CRY_PRIORITY_NORMAL);
-    //         if (HasTwoFramesAnimation(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species))
-    //             StartSpriteAnim(&gSprites[gBattlerSpriteIds[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]], 1);
-    //     }
-    // }
-    // else if(GetBattlerSide(battler) == B_SIDE_OPPONENT)
-    // {
-    //     LaunchAnimationTaskForBackSprite(&gSprites[gBattlerSpriteIds[BATTLE_OPPOSITE(battler)]], GetSpeciesBackAnimSet(gBattleMons[BATTLE_OPPOSITE(battler)].species));
-    //     PlayCry_Normal(gBattleMons[BATTLE_OPPOSITE(battler)].species, CRY_PRIORITY_NORMAL);
-    //     if(gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-    //     {
-    //         LaunchAnimationTaskForBackSprite(&gSprites[gBattlerSpriteIds[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))]], GetSpeciesBackAnimSet(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species));
-    //         PlayCry_Normal(gBattleMons[BATTLE_PARTNER(BATTLE_OPPOSITE(battler))].species, CRY_PRIORITY_NORMAL);
-    //     }
-    // }
+    AnimateMonAfterKnockout(battler);
 }
 
 #undef sSpeedX
@@ -3048,3 +3026,48 @@ void BtlController_HandleBattleAnimation(u32 battler, bool32 ignoreSE, bool32 up
             BattleTv_SetDataBasedOnAnimation(animationId);
     }
 }
+
+static void AnimateMonAfterKnockout(u32 battler)
+{
+    if (B_ANIMATE_MON_AFTER_KO == FALSE)
+        return;
+
+    u32 oppositeBattler = BATTLE_OPPOSITE(battler);
+    u32 partnerBattler = BATTLE_PARTNER(oppositeBattler);
+    bool32 wasPlayerSideKnockedOut = (GetBattlerSide(battler) == B_SIDE_PLAYER);
+
+    if (IsBattlerAlive(oppositeBattler))
+        LaunchKOAnimation(oppositeBattler, ReturnAnimIdForBattler(wasPlayerSideKnockedOut, oppositeBattler), wasPlayerSideKnockedOut);
+
+    if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && IsBattlerAlive(partnerBattler))
+        LaunchKOAnimation(partnerBattler, ReturnAnimIdForBattler(wasPlayerSideKnockedOut, partnerBattler), wasPlayerSideKnockedOut);
+}
+
+static void LaunchKOAnimation(u32 battlerId, u16 animId, bool32 isFront)
+{
+    u32 species = gBattleMons[battlerId].species;
+    u32 spriteId = gBattlerSpriteIds[battlerId];
+
+    if (isFront)
+    {
+        LaunchAnimationTaskForFrontSprite(&gSprites[spriteId], animId);
+
+        if (HasTwoFramesAnimation(species))
+            StartSpriteAnim(&gSprites[spriteId], 1);
+    }
+    else
+    {
+        LaunchAnimationTaskForBackSprite(&gSprites[spriteId], animId);
+    }
+
+    PlayCry_Normal(species, CRY_PRIORITY_NORMAL);
+}
+
+static u32 ReturnAnimIdForBattler(bool32 wasPlayerSideKnockedOut, u32 specificBattler)
+{
+    if (wasPlayerSideKnockedOut)
+        return gSpeciesInfo[gBattleMons[specificBattler].species].frontAnimId;
+    else
+        return GetSpeciesBackAnimSet(gBattleMons[specificBattler].species);
+}
+

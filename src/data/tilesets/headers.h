@@ -3,15 +3,6 @@
 // Whether a palette has a night version, located at ((x + 9) % 16).pal
 #define SWAP_PAL(x) ((x) < NUM_PALS_IN_PRIMARY ? 1 << (x) : 1 << ((x) - NUM_PALS_IN_PRIMARY))
 
-// NOTE: Instead of using LIGHT_PAL, 
-// consider taking a look at the .pla files
-// to mark colors as lights, instead.
-// The old method *should* still work, however.
-// Check docs/tutorials/dns.md for details.
-
-// Whether a palette has lights the color indices to blend are stored in the palette's color 0
-#define LIGHT_PAL(x) ((x) < NUM_PALS_IN_PRIMARY ? 1 << (x) : 1 << ((x) - NUM_PALS_IN_PRIMARY))
-
 const struct Tileset gTileset_General =
 {
     .isCompressed = TRUE,
@@ -1178,5 +1169,49 @@ const struct Tileset gTileset_HouseSoulkeep =
     .palettes = gTilesetPalettes_HouseSoulkeep,
     .metatiles = gMetatiles_HouseSoulkeep,
     .metatileAttributes = gMetatileAttributes_HouseSoulkeep,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SecretBaseHearth =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_SecretBaseHearth,
+    .palettes = gTilesetPalettes_SecretBaseHearth,
+    .metatiles = gMetatiles_SecretBaseHearth,
+    .metatileAttributes = gMetatileAttributes_SecretBaseHearth,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_SecretBaseHearthBrownCave =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SecretBaseHearthBrownCave,
+    .palettes = gTilesetPalettes_SecretBaseHearthBrownCave,
+    .metatiles = gMetatiles_SecretBaseHearthBrownCave,
+    .metatileAttributes = gMetatileAttributes_SecretBaseHearthBrownCave,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Shogunate =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Shogunate,
+    .palettes = gTilesetPalettes_Shogunate,
+    .metatiles = gMetatiles_Shogunate,
+    .metatileAttributes = gMetatileAttributes_Shogunate,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_PuddlePath =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_PuddlePath,
+    .palettes = gTilesetPalettes_PuddlePath,
+    .metatiles = gMetatiles_PuddlePath,
+    .metatileAttributes = gMetatileAttributes_PuddlePath,
     .callback = NULL,
 };

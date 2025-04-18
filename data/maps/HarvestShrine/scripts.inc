@@ -27,18 +27,17 @@ HarvestShrine_EventScript_MonkBronzong_Text_1:
 	.string "The Bronzong you have before your\n"
 	.string "eyes is a thousand years old.\p"
 	.string "It has been bringing us rain and\n"
-	.string "plentiful harvests for\l"
-	.string "generations.\p"
+	.string "plentiful harvests for generations.\p"
 	.string "Can you believe this magnificent\n"
-	.string "statue is actually a living,\l"
-	.string "breathing Pokémon?\p"
+	.string "statue is actually a living, breathing\l"
+	.string "Pokémon?\p"
 	.string "Actually, I'm not sure Bronzong\n"
 	.string "breathe, but you get the idea.$"
 
 HarvestShrine_EventScript_Kouga_Text_0:
 	.string "Have you come here to honor the\n"
-	.string "venerable Bronzong? Or are you\l"
-	.string "here to stir trouble?$"
+	.string "venerable Bronzong? Or are you here\l"
+	.string "to stir trouble?$"
 
 HarvestShrine_EventScript_Kouga_Text_1:
 	.string "By a thousand gods!$"

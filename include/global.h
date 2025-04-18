@@ -138,7 +138,7 @@
 
 #define FEATURE_FLAG_ASSERT(flag, id) STATIC_ASSERT(flag > TEMP_FLAGS_END || flag == 0, id)
 
-#ifndef NDEBUG
+// NOTE: This uses hardware timers 2 and 3; this will not work during active link connections or with the eReader
 static inline void CycleCountStart()
 {
     REG_TM2CNT_H = 0;
@@ -161,7 +161,6 @@ static inline u32 CycleCountEnd()
     // return result
     return REG_TM2CNT_L | (REG_TM3CNT_L << 16u);
 }
-#endif
 
 struct Coords8
 {
@@ -206,30 +205,6 @@ struct Time
     /*0x03*/ s8 minutes;
     /*0x04*/ s8 seconds;
 };
-
-#define DAY_SUNDAY          0
-#define DAY_MONDAY          1
-#define DAY_TUESDAY         2
-#define DAY_WEDNESDAY       3
-#define DAY_THURSDAY        4
-#define DAY_FRIDAY          5
-#define DAY_SATURDAY        6
-#define DAYS_PER_WEEK       DAY_SATURDAY + 1
-
-#define    MONTH_ONE            1
-#define    MONTH_TWO            2
-#define    MONTH_THREE          3
-#define    MONTH_FOUR           4
-#define    MONTH_FIVE           5
-#define    MONTH_SIX            6
-#define    MONTH_SEVEN          7
-#define    MONTH_EIGHT          8
-#define    MONTH_NINE           9
-#define    MONTH_TEN           10
-#define    MONTH_ELEVEN        11
-#define    MONTH_TWELVE        12
-#define    MONTH_COUNT         MONTH_DEC
-
 
 struct SaveBlock3
 {
@@ -1089,7 +1064,8 @@ struct SaveBlock1
     /*0x988*/ u8 filler1[0x34]; // Previously Dex Flags, feel free to remove.
 #endif //FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1
     /*0x9BC*/ u16 berryBlenderRecords[3];
-    /*0x9C2*/ u8 unused_9C2[6];
+    /*0x9C2*/ struct Coords16 savedPos;
+    /*whatever*/ u8 unused_9C2[2];
 #if FREE_MATCH_CALL == FALSE
     /*0x9C8*/ u16 trainerRematchStepCounter;
     /*0x9CA*/ u8 trainerRematches[MAX_REMATCH_ENTRIES];
@@ -1183,5 +1159,9 @@ struct MapPosition
     s16 y;
     s8 elevation;
 };
+
+#if T_SHOULD_RUN_MOVE_ANIM
+extern bool32 gLoadFail;
+#endif // T_SHOULD_RUN_MOVE_ANIM
 
 #endif // GUARD_GLOBAL_H

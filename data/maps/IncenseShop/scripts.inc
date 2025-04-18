@@ -163,8 +163,8 @@ IncenseShop_EventScript_RedIncense_Text_0:
 	.string "maple and charcoal.$"
 
 IncenseShop_EventScript_PurpleIncense_Text_0:
-	.string "An incense that smells like myrrh\n"
-	.string "and hot oil.$"
+	.string "An incense that smells like myrrh and\n"
+	.string "hot oil.$"
 
 IncenseShop_EventScript_Shopkeeper_Text_0:
 	.string "Shopkeeper$"

@@ -40,8 +40,7 @@ SilverTunnel_1F_EventScript_Kento_Text_0:
 	.string "You ain't no miner, are ya?$"
 
 SilverTunnel_1F_EventScript_Kento_Text_1:
-	.string "How am I gonna get any work done\n"
-	.string "now?$"
+	.string "How am I gonna get any work done now?$"
 
 SilverTunnel_1F_EventScript_Kento_Text_2:
 	.string "Kento$"
@@ -82,8 +81,8 @@ SilverTunnel_1F_EventScript_Nerd_Text_0:
 SilverTunnel_1F_EventScript_Nerd_Text_1:
 	.string "Ugh…\p"
 	.string "I forgot to bring my fighting\n"
-	.string "Pokémon, so I got whooped by\l"
-	.string "those miners' rock Pokémon…$"
+	.string "Pokémon, so I got whooped by those\l"
+	.string "miners' rock Pokémon…$"
 
 SilverTunnel_1F_TrainerTips_Text_0:
 	.string "Warning!\p"

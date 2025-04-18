@@ -2372,8 +2372,8 @@
       "height": 9,
       "border_width": 2,
       "border_height": 2,
-      "primary_tileset": "gTileset_SecretBase",
-      "secondary_tileset": "gTileset_SecretBaseBrownCave",
+      "primary_tileset": "gTileset_SecretBaseHearth",
+      "secondary_tileset": "gTileset_SecretBaseHearthBrownCave",
       "border_filepath": "data/layouts/SecretBase_BrownCave1/border.bin",
       "blockdata_filepath": "data/layouts/SecretBase_BrownCave1/map.bin"
     },
@@ -2444,8 +2444,8 @@
       "height": 9,
       "border_width": 2,
       "border_height": 2,
-      "primary_tileset": "gTileset_SecretBase",
-      "secondary_tileset": "gTileset_SecretBaseBrownCave",
+      "primary_tileset": "gTileset_SecretBaseHearth",
+      "secondary_tileset": "gTileset_SecretBaseHearthBrownCave",
       "border_filepath": "data/layouts/SecretBase_BrownCave2/border.bin",
       "blockdata_filepath": "data/layouts/SecretBase_BrownCave2/map.bin"
     },
@@ -5609,8 +5609,8 @@
       "id": "LAYOUT_ORCHARD_PATH",
       "name": "OrchardPath_Layout",
       "width": 94,
-      "height": 34,
-      "border_width": 2,
+      "height": 41,
+      "border_width": 6,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
       "secondary_tileset": "gTileset_Yifu",
@@ -5889,7 +5889,7 @@
       "border_width": 6,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_OpenSea",
+      "secondary_tileset": "gTileset_PuddlePath",
       "border_filepath": "data/layouts/PuddlePath/border.bin",
       "blockdata_filepath": "data/layouts/PuddlePath/map.bin"
     },
@@ -5981,11 +5981,11 @@
       "id": "LAYOUT_SHOGUNATE",
       "name": "Shogunate_Layout",
       "width": 30,
-      "height": 40,
-      "border_width": 2,
+      "height": 50,
+      "border_width": 6,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_OpenSea",
+      "secondary_tileset": "gTileset_Shogunate",
       "border_filepath": "data/layouts/Shogunate/border.bin",
       "blockdata_filepath": "data/layouts/Shogunate/map.bin"
     },
@@ -6125,7 +6125,7 @@
       "id": "LAYOUT_YIFU_CITY_DECO_SHOP",
       "name": "YifuCity_DecoShop_Layout",
       "width": 10,
-      "height": 10,
+      "height": 9,
       "border_width": 1,
       "border_height": 1,
       "primary_tileset": "gTileset_Building_Generic",
@@ -6360,6 +6360,18 @@
       "secondary_tileset": "gTileset_HouseSoulkeep",
       "border_filepath": "data/layouts/Soulkeep_House1/border.bin",
       "blockdata_filepath": "data/layouts/Soulkeep_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_ORCHARD_PATH_GUARD_HOUSE",
+      "name": "OrchardPath_GuardHouse_Layout",
+      "width": 9,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseSoulkeep",
+      "border_filepath": "data/layouts/OrchardPath_GuardHouse/border.bin",
+      "blockdata_filepath": "data/layouts/OrchardPath_GuardHouse/map.bin"
     }
   ]
 }

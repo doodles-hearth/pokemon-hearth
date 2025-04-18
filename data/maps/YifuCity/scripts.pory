@@ -16,10 +16,6 @@ mapscripts YifuCity_MapScripts {
 		if (var(VAR_CROBAT_HIDEOUT_STATE) != 3) {
 			setflag(FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP)
 		}
-
-		if (var(VAR_CROBAT_HIDEOUT_STATE) != 1 || var(VAR_CROBAT_HIDEOUT_STATE) != 4) {
-			setflag(FLAG_HIDE_HARIKO_YIFU_CITY)
-		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CROBAT_HIDEOUT_STATE, 3: YifuCity_EscapedCrobatHideoutWithSamurai
@@ -46,6 +42,8 @@ script YifuCity_EscapedCrobatHideoutWithSamurai {
 
 	applymovement(LOCALID_SAMURAI_HIDEOUT, moves(walk_down, walk_left * 7))
 	waitmovement(LOCALID_SAMURAI_HIDEOUT)
+	removeobject(LOCALID_SAMURAI_HIDEOUT)
+	setflag(FLAG_HIDE_LOCKDOWN_SAMURAI)
 
 	releaseall
 }
@@ -190,10 +188,10 @@ script YifuCity_EventScript_RobberyVictim {
 					setflag(FLAG_RECEIVED_TM_CALM_MIND)
 					addvar(VAR_PLAYER_REPUTATION, 1)
 
-					fadescreen(FADE_TO_BLACK)
+					fadescreenswapbuffers(FADE_TO_BLACK)
 					removeobject(VAR_LAST_TALKED)
-					delay(48)
-					fadescreen(FADE_FROM_BLACK)
+					delay(60)
+					fadescreenswapbuffers(FADE_FROM_BLACK)
 					// TODO EVA put her somewhere in the city hanging out with her mons
 				case 1:
 					speakername("Woman")
@@ -650,8 +648,9 @@ script YifuCity_EventScript_Surskit {
 
 script YifuCity_Trigger_Lockdown {
 	lockall
-	// TODO EVA don't use the flag here you moron
-	if (flag(FLAG_HIDE_LOCKDOWN_SAMURAI)) {
+	// First time
+	if (!flag(FLAG_TRIGGERED_LOCKDOWN)) {
+		setflag(FLAG_TRIGGERED_LOCKDOWN)
 		playse(SE_PIN)
 		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
 		msgbox(format(
@@ -800,55 +799,60 @@ script YifuCity_EventScript_DojoSign {
 	)
 }
 
-script YifuCity_EventScript_Fisherman {
+script YifuCity_EventScript_GirlLookingAtSunriseVillage {
 	lock
 	faceplayer
-	speakername("Fisherman")
+	speakername("Little Girl")
 	msgbox(format(
-		"Hm? No, I'm not fishing.\p"
-		"I'm just watching the tiny whirlpools that Pokémon make in the shallow water.\p"
-		"Would you like your Pokémon to make whirlpools too?\p"
-		"I could teach them the way of the Whirlpool!"
+		"If I squint hard enough, I'm sure I can see my friend on Sunrise Beach!"
 	))
 	closemessage
+	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
+	waitmovement(0)
 	release
 	end
 }
 
 script YifuCity_EventScript_NameRaterSign {
 	msgbox(format(
-		"“What's In A Name\nHumble name judge”"
+		"What's In A Name\n“Humble name judge”"
 	), MSGBOX_SIGN)
 }
 
 script YifuCity_EventScript_HotSpringsSign {
 	msgbox(format(
-		"“Torkoal Tubs\nYifu City Hot Springs”"
+		"Torkoal Tubs\n“The Yifu City Hot Springs”"
 	), MSGBOX_SIGN)
 }
 
 script YifuCity_EventScript_CrobatShopSign {
-	msgbox(format(
-		"“Crobat Shop\nOnly legal stuff\lNothing to see here”"
-	), MSGBOX_SIGN)
+	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+		msgbox(format(
+			"Yifu City Shop\n“Useful items and scrolls!”"
+		), MSGBOX_SIGN)
+	} else {
+		msgbox(format(
+			"Crobat Shop\n“Only legal stuff\lNothing to see here”"
+		), MSGBOX_SIGN)
+	}
 }
 
 script YifuCity_EventScript_RestaurantSign {
 	msgbox(format(
-		"“The Golden Drampa\nHotpot & Restaurant”"
+		"The Golden Drampa\n“Hotpot & Restaurant”"
 	), MSGBOX_SIGN)
 }
 
 script YifuCity_EventScript_ClothingShopSign {
 	msgbox(format(
-		"“Leavanny Silk\n"
-		"Fashionable and affordable clothes”"
+		"Leavanny Silk\n"
+		"“Fashionable and affordable clothes!”"
 	), MSGBOX_SIGN)
 }
 
 script YifuCity_EventScript_DecorationShopSign {
 	msgbox(format(
-		"“Woodworker\n"
-		"We sell tables and chairs, mostly”"
+		"Woodworker\n"
+		"“We sell tables and chairs, mostly”"
 	), MSGBOX_SIGN)
 }

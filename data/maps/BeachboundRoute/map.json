@@ -51,7 +51,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
+      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
       "x": 18,
       "y": 23,
       "elevation": 0,
@@ -411,7 +411,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
+      "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_KEVIN",
       "x": 69,
       "y": 10,
       "elevation": 0,
@@ -964,6 +964,13 @@
       "elevation": 3,
       "item": "ITEM_HEART_SCALE",
       "flag": "FLAG_HIDDEN_ITEM_BEACHBOUND_ROUTE_HEART_SCALE"
+    },
+    {
+      "type": "secret_base",
+      "x": 16,
+      "y": 4,
+      "elevation": 0,
+      "secret_base_id": "SECRET_BASE_BROWN_CAVE4_1"
     }
   ]
 }

@@ -1,5 +1,7 @@
 mapscripts Soulkeep_MapScripts {
-
+	MAP_SCRIPT_ON_TRANSITION {
+		callnative(TrySetSoulkeepAmbiance)
+	}
 }
 
 script Soulkeep_EventScript_TownSign {
@@ -7,13 +9,13 @@ script Soulkeep_EventScript_TownSign {
 }
 
 script Soulkeep_EventScript_IncenseShopSign {
-	msgbox(format("“Incense Shop”"), MSGBOX_SIGN)
+	msgbox(format("Incense Shop"), MSGBOX_SIGN)
 }
 
 script Soulkeep_EventScript_GraveyardSign {
 	msgbox(format(
-		"“{UP_ARROW} Graveyard\n"
-		"Please be respectful.”"
+		"{UP_ARROW} Graveyard\n"
+		"“Please be respectful.”"
 	), MSGBOX_SIGN)
 }
 
@@ -112,7 +114,7 @@ mart Soulkeep_Mart {
 	ITEM_GREAT_BALL
 	ITEM_OINTMENT
 	ITEM_SUPER_OINTMENT
-	ITEM_REVIVAL_HERB
+	ITEM_REVIVAL_BALM
 	ITEM_PARALYZE_HEAL
 	ITEM_ANTIDOTE
 	ITEM_AWAKENING

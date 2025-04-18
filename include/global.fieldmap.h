@@ -4,11 +4,11 @@
 // Masks/shifts for blocks in the map grid
 // Map grid blocks consist of a 10 bit metatile id, a 2 bit collision value, and a 4 bit elevation value
 // This is the data stored in each data/layouts/*/map.bin file
-#define MAPGRID_METATILE_ID_MASK 0x03FF // Bits 0-9
-#define MAPGRID_COLLISION_MASK   0x0C00 // Bits 10-11
-#define MAPGRID_ELEVATION_MASK   0xF000 // Bits 12-15
-#define MAPGRID_COLLISION_SHIFT  10
-#define MAPGRID_ELEVATION_SHIFT  12
+#define MAPGRID_METATILE_ID_MASK 0x0FFF // Bits 0-11
+#define MAPGRID_COLLISION_MASK   0x1000 // Bits 12-12
+#define MAPGRID_ELEVATION_MASK   0xE000 // Bits 13-15
+#define MAPGRID_COLLISION_SHIFT  12
+#define MAPGRID_ELEVATION_SHIFT  13
 
 // An undefined map grid block has all metatile id bits set and nothing else
 #define MAPGRID_UNDEFINED   MAPGRID_METATILE_ID_MASK
@@ -38,7 +38,7 @@ typedef void (*TilesetCB)(void);
 struct Tileset
 {
     /*0x00*/ u8 isCompressed:1;
-    /*0x00*/ u8 swapPalettes:7; // bitmask determining whether palette has an alternate, night-time palette
+    /*0x00*/ u8 swapPalettes:7; // Bitmask determining whether palette has an alternate, night-time palette
     /*0x01*/ bool8 isSecondary;
     /*0x02*/ u8 lightPalettes; // Bitmask determining whether a palette should be time-blended as a light
     /*0x03*/ u8 customLightColor; // Bitmask determining which light palettes have custom light colors (color 15)
@@ -200,7 +200,8 @@ struct ObjectEvent
              u32 fixedPriority:1;
              u32 hideReflection:1;
              u32 shiny:1; // OW mon shininess
-             u32 padding:3;
+             u32 jumpDone:1;
+             u32 padding:2;
     /*0x04*/ u16 graphicsId; // 12 bits for species; high 4 bits for form
     /*0x06*/ u8 movementType;
     /*0x07*/ u8 trainerType;
@@ -214,8 +215,11 @@ struct ObjectEvent
     /*0x14*/ struct Coords16 previousCoords;
     /*0x18*/ u16 facingDirection:4; // current direction?
              u16 movementDirection:4;
-             u16 rangeX:4;
-             u16 rangeY:4;
+             struct __attribute__((packed))
+             {
+                u16 rangeX:4;
+                u16 rangeY:4;
+             } range;
     /*0x1A*/ u8 fieldEffectSpriteId;
     /*0x1B*/ u8 warpArrowSpriteId;
     /*0x1C*/ u8 movementActionId;

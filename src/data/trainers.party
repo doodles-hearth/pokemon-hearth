@@ -46,7 +46,7 @@ Optional fields for Pokemon:
           (Order does not matter)
     - EVs (252 HP / 128 Spe / 48 Def, defaults to all 0, is not capped at 512 total)
           (Order does not matter)
-    - Ball (Poke Ball or ITEM_POKE_BALL, defaults to Poke Ball
+    - Ball (Poke Ball or ITEM_POKE_BALL, defaults to Poke Ball)
     - Happiness (Number between 1 and 255)
     - Nature (Rash or NATURE_RASH, defaults to Hardy)
     - Shiny (Yes/No, defaults to No)
@@ -381,7 +381,7 @@ Name: Kouga
 Class: Monk
 Pic: Monk
 Gender: Male
-Music: Hiker
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -606,18 +606,18 @@ Carvanha
 Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DECLAN ===
-Name: DECLAN
-Class: Swimmer M
-Pic: Swimmer M
+=== TRAINER_ROCK_SMASH_GUY ===
+Name: Smasher
+Class: Rock Smasher
+Pic: Black Belt
 Gender: Male
-Music: Swimmer
+Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Gyarados
-Level: 34
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Makuhita
+Level: 10
+- Rock Smash
 
 === TRAINER_GRUNT_RUSTURF_TUNNEL ===
 Name: GRUNT
@@ -3696,7 +3696,7 @@ Name: Akari
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -3743,7 +3743,7 @@ Name: Kanae
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -4334,7 +4334,7 @@ Name: Karin
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -6349,7 +6349,7 @@ Name: Nanami
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -12170,7 +12170,7 @@ Name: Yuka
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Check Bad Move
 
@@ -16115,7 +16115,7 @@ Name: Miika
 Class: Kimono Girl
 Pic: Kimono Girl
 Gender: Female
-Music: Female
+Music: Spiritual
 Double Battle: No
 AI: Basic Trainer
 

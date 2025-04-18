@@ -10,7 +10,7 @@ script MaguroHarbor_Dojo_EventScript_Koishi {
 		TRAINER_KOISHI_1,
 		format(
 			"Welcome to Maguro's Koi Pond Dojo, one of the eight Dojos officially appointed by the Toku Council.\p"
-			"We Dojo Masters fight wielders that have taken on the Pokémon Council's challenge.\p"
+			"We Dojo Masters fight wielders that have taken on the Toku Council's challenge.\p"
 			"We each give out a different Token to anyone who succeeds in defeating us.\p"
 			"I am Koishi. I began raising elegant, graceful Pokémon when I was even younger than you are now.\p"
 			"I may behave and speak in a soft manner, but do not for one second mistake soft-spokenness for weakness.\p"
@@ -123,9 +123,15 @@ script MaguroHarbor_Dojo_EventScript_Izumi {
 		format("My Pokémon are the daintiest there is!"),
 		format("My poor Feebas!")
 	)
-	msgbox(format(
-		"You'll go far. I can tell."
-	), MSGBOX_AUTOCLOSE)
+	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
+		msgbox(format(
+			"Oh my, what was that quake?"
+		), MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox(format(
+			"You'll go far. I can tell."
+		), MSGBOX_AUTOCLOSE)
+	}
 }
 
 script MaguroHarbor_Dojo_EventScript_Ren {
@@ -134,9 +140,15 @@ script MaguroHarbor_Dojo_EventScript_Ren {
 		format("Come in! The water's nice and toasty!"),
 		format("Nooo!")
 	)
-	msgbox(format(
-		"I l-lied. I'm f-f-freezing in h-here."
-	), MSGBOX_AUTOCLOSE)
+	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
+		msgbox(format(
+			"W-what happened?"
+		), MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox(format(
+			"I l-lied. I'm f-f-freezing in h-here."
+		), MSGBOX_AUTOCLOSE)
+	}
 }
 
 script MaguroHarbor_Dojo_EventScript_Mizu {
@@ -145,10 +157,17 @@ script MaguroHarbor_Dojo_EventScript_Mizu {
 		format("Do not disturb the koi pond!"),
 		format("Stop making so much noise!")
 	)
-	msgbox(format(
-		// TODO EVA put some actual fish in the pond ffs
-		"These are sophisticated fish. They need peace and quiet to thrive."
-	), MSGBOX_AUTOCLOSE)
+
+	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
+		msgbox(format(
+			"The poor fish must be all shaken!"
+		), MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox(format(
+			// TODO EVA put some actual fish in the pond ffs
+			"These are sophisticated fish. They need peace and quiet to thrive."
+		), MSGBOX_AUTOCLOSE)
+	}
 }
 
 script MaguroHarbor_Dojo_EventScript_Advice {
@@ -156,9 +175,16 @@ script MaguroHarbor_Dojo_EventScript_Advice {
 	faceplayer
 	speakername("Man")
 	if (flag(FLAG_BADGE01_GET)) {
-		msgbox(format(
-			"You swept me away with that battle!"
-		))
+		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
+			msgbox(format(
+				"You swept me away with that battle!\p"
+				"That quake just now nearly literally swept me away as well!"
+			), MSGBOX_AUTOCLOSE)
+		} else {
+			msgbox(format(
+				"You swept me away with that battle!"
+			))
+		}
 	} else {
 		msgbox(format(
 			"Hello, young challenger! Are you going to be fighting for your first Token?\p"
@@ -168,6 +194,8 @@ script MaguroHarbor_Dojo_EventScript_Advice {
 			"Go get 'em!"
 		))
 	}
+
+	closemessage
 	release
 }
 

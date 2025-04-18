@@ -273,6 +273,21 @@ script SunriseVillage_Beach_EventScript_Corsola2 {
     end
 }
 
+script SunriseVillage_Event_LookingAtYifu {
+	lock
+	faceplayer
+	speakername("Little Boy")
+	msgbox(format(
+		"My best friend lives all the way over there in Yifu City!\p"
+		"I don't get to see her often. I miss her…"
+	))
+	closemessage
+	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
+	waitmovement(0)
+	release
+	end
+}
+
 movement SunriseVillage_Beach_Movement_RivalSitsOnBench {
 	walk_in_place_faster_left
 	delay_16 * 5

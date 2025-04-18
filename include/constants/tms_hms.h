@@ -55,7 +55,8 @@
     F(WEATHER_BALL) \
     F(ACROBATICS) \
     F(NATURE_POWER) \
-    F(X_SCISSOR)
+    F(X_SCISSOR) \
+    F(ANCIENT_POWER)
 
 #define FOREACH_HM(F) \
     F(CUT) \

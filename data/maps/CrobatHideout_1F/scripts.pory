@@ -222,33 +222,33 @@ script CrobatHideout_1F_EventScript_Samurai {
 
 script CrobatHideout_1F_EventScript_LaundrySchedule {
     msgbox(format(
-		"“WEEKLY LAUNDRY SCHEDULE\n"
+		"WEEKLY LAUNDRY SCHEDULE\n"
 		"MON - Hiro\l"
 		"TUE - Hiro\l"
 		"WED - Mei\l"
 		"THU - Kevin\l"
 		"FRI - Hiro\l"
 		"SAT - Saki\l"
-		"SUN - Hiro”"
+		"SUN - Hiro"
 	), MSGBOX_SIGN)
 }
 
 script CrobatHideout_1F_EventScript_MessPoster {
     msgbox(format(
-		"“KITCHEN RULES:\n"
+		"KITCHEN RULES:\n"
 		"1. DO clean up after yourself!\l"
 		"2. DO NOT steal food from other grunts!\l"
 		"3. But more importantly, DO NOT let your food be stolen!\l"
 		"4. Seriously though, next one who leaves a mess, I WILL bite them in their sleep.\l"
-		"- The Boss”"
+		"- The Boss"
 	), MSGBOX_SIGN)
 }
 
 script CrobatHideout_1F_EventScript_FirstPoster {
     msgbox(format(
-		"“Welcome to the Super Secret Crobat Hideout!\l"
+		"Welcome to the Super Secret Crobat Hideout!\l"
 		"Keep it down, we don't want to attract attention.\l"
-		"- The Boss”"
+		"- The Boss"
 	), MSGBOX_SIGN)
 }
 
@@ -272,32 +272,32 @@ script CrobatHideout_1F_EventScript_EmptyBowlLeftover {
 
 script CrobatHideout_1F_EventScript_WantedPosterMustache {
     msgbox(format(
-		"“WANTED: Crobat Shadows Grunt\n"
-		"3000¥”\p"
+		"WANTED: Crobat Shadows Grunt\n"
+		"3000¥\p"
 		"Someone has doodled glasses\nand a mustache on the poster."
 	), MSGBOX_SIGN)
 }
 
 script CrobatHideout_1F_EventScript_WantedPosterNose {
     msgbox(format(
-		"“WANTED: Crobat Shadows Grunt\n"
-		"4500¥”\p"
+		"WANTED: Crobat Shadows Grunt\n"
+		"4500¥\p"
 		"It looks like the nose was\ndrawn over with a different nose."
 	), MSGBOX_SIGN)
 }
 
 script CrobatHideout_1F_EventScript_WantedPosterHanddrawn {
     msgbox(format(
-		"“WANTED: KEVIN\n"
-		"10 000 000 000 000¥”\p"
+		"WANTED: KEVIN\n"
+		"10 000 000 000 000¥\p"
 		"This poster looks handdrawn…"
 	), MSGBOX_SIGN)
 }
 
 script CrobatHideout_1F_EventScript_WantedPosterBoss {
     msgbox(format(
-		"“WANTED: Crobat Shadows Leader\n"
-		"100 000¥”\p"
+		"WANTED: Crobat Shadows Leader\n"
+		"100 000¥\p"
 		"There are various messages\nscribbled on the poster:\l"
 		"“Happy birthday boss”,\l"
 		"“U are worthe 999 999¥ in our harts”,\l"
@@ -309,14 +309,14 @@ script CrobatHideout_1F_EventScript_WantedPosterBoss {
 
 script CrobatHideout_1F_EventScript_PosterFeedPoochyena {
     msgbox(format(
-		"“Remember to feed the Poochyena”"
+		"REMEMBER TO FEED THE POOCHYENA"
 	), MSGBOX_SIGN)
 }
 
 script CrobatHideout_1F_EventScript_PosterReunionRoom {
     msgbox(format(
-		"“BELIEVE IN YOURSELF\n"
-		"Be the kind of criminal you want to be!”\p"
+		"BELIEVE IN YOURSELF\n"
+		"“Be the kind of criminal you want to be!”\p"
 		"There is a doodle of a Woobat in a corner."
 	), MSGBOX_SIGN)
 }
@@ -518,12 +518,12 @@ script CrobatHideout_1F_BattleSamuraiBackToBack {
 	))
 	closemessage
 
-	fadescreen(FADE_TO_BLACK)
+	fadescreenswapbuffers(FADE_TO_BLACK)
 	playfanfare(MUS_HEAL)
 	waitfanfare
 	special(HealPlayerParty)
 	callnative(UpdateFollowingPokemon)
-	fadescreen(FADE_FROM_BLACK)
+	fadescreenswapbuffers(FADE_FROM_BLACK)
 
 	speakername("Samurai")
 	msgbox(format(
@@ -758,7 +758,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	applymovement(LOCALID_CROBAT_BOSS, moves(crobat_cape))	
 	playse(SE_M_DIVE)
 	// SE_MUGSHOT ? SE_M_SPIT_UP ? SE_M_DIVE ? SE_M_MUD_BALL + SE_REPEL?
-	fadescreen(FADE_TO_WHITE)
+	fadescreenswapbuffers(FADE_TO_WHITE)
 	setweather(WEATHER_FOG_HORIZONTAL)
 	doweather
 	removeobject(LOCALID_GRUNT_REUNION_ROOM_TOP)
@@ -768,7 +768,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	removeobject(LOCALID_KEVIN)
 	removeobject(LOCALID_CROBAT_BOSS)
 	delay(80)
-	fadescreen(FADE_FROM_WHITE)
+	fadescreenswapbuffers(FADE_FROM_WHITE)
 
 	delay(48)
 
@@ -807,7 +807,7 @@ script CrobatHideout_1F_LetsFight2v2 {
 	closemessage
 
 	special(SavePlayerParty)
-	fadescreen(FADE_TO_BLACK)
+	fadescreenswapbuffers(FADE_TO_BLACK)
 	special(ChooseHalfPartyForBattle)
 	waitstate
 
@@ -856,13 +856,13 @@ script CrobatHideout_1F_LetsFight2v2 {
 			closemessage
 
 			playse(SE_M_DIVE)
-			fadescreen(FADE_TO_WHITE)
+			fadescreenswapbuffers(FADE_TO_WHITE)
 			setweather(WEATHER_FOG_HORIZONTAL)
 			doweather
 			removeobject(LOCALID_GOLBAT_RIGHT)
 			removeobject(LOCALID_GOLBAT_LEFT)
 			delay(80)
-			fadescreen(FADE_FROM_WHITE)
+			fadescreenswapbuffers(FADE_FROM_WHITE)
 			delay(48)
 
 			applymovement(LOCALID_SAMURAI, moves(walk_in_place_fast_left))
@@ -880,7 +880,7 @@ script CrobatHideout_1F_LetsFight2v2 {
 
 			warp(MAP_YIFU_CITY, 33, 13)
 		} else {
-			fadescreen(FADE_TO_BLACK)
+			fadescreenswapbuffers(FADE_TO_BLACK)
 			special(SetCB2WhiteOut)
 			waitstate
 		}
