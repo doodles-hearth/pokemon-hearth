@@ -35,14 +35,18 @@ KuraTown_House2_EventScript_Ashii_2:
 	waitmovement 0
 	msgbox KuraTown_House2_EventScript_Ashii_Text_3
 	closemessage
+	speakername KuraTown_House2_EventScript_Ashii_Text_4
+	msgbox KuraTown_House2_EventScript_Ashii_Text_5
+	closemessage
 	giveitem ITEM_ASHIIS_SCARF
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
+	startquest QUEST_KURALOVERS
 	goto KuraTown_House2_EventScript_Ashii_1
 
 KuraTown_House2_EventScript_Ashii_3:
 	faceplayer
-	msgbox KuraTown_House2_EventScript_Ashii_Text_3
+	speakername KuraTown_House2_EventScript_Ashii_Text_4
+	msgbox KuraTown_House2_EventScript_Ashii_Text_6
 	closemessage
 	goto KuraTown_House2_EventScript_Ashii_1
 
@@ -66,6 +70,20 @@ KuraTown_House2_EventScript_Ashii_Text_2:
 
 KuraTown_House2_EventScript_Ashii_Text_3:
 	.string "Wait, you're not from here, are you?\p"
+	.string "$"
+
+KuraTown_House2_EventScript_Ashii_Text_4:
+	.string "Ashii$"
+
+KuraTown_House2_EventScript_Ashii_Text_5:
+	.string "My name is Ashii. I need your help. The\n"
+	.string "guard won't let anyone from Kura\l"
+	.string "Village enter Saku Village. But you\l"
+	.string "should be fine!\p"
+	.string "Please, go to Saku Village and give him\n"
+	.string "this. He'll know it's from me.$"
+
+KuraTown_House2_EventScript_Ashii_Text_6:
 	.string "The guard won't let anyone from Kura\n"
 	.string "Village enter Saku Village. But you\l"
 	.string "should be fine!\p"

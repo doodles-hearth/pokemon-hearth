@@ -16,8 +16,8 @@
 
 // quest number defines
 #define QUEST_HEARTH_MAIN_CAMPAIGN          0
-#define QUEST_POKEDEX          1
-#define QUEST_3          2
+#define QUEST_POKEDEX                       1
+#define QUEST_KURALOVERS                    2
 #define QUEST_4          3
 #define QUEST_5          4
 #define QUEST_6          5

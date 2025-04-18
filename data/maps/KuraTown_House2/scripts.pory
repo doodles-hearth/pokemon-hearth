@@ -41,19 +41,24 @@ script KuraTown_House2_EventScript_Ashii {
 
 		msgbox(format(
 			"Wait, you're not from here, are you?\p"
+		))
+		closemessage
+		speakername("Ashii")
+		msgbox(format(	
+			"My name is Ashii. I need your help."
 			"The guard won't let anyone from Kura Village enter Saku Village. But you should be fine!\p"
 			"Please, go to Saku Village and give him this. He'll know it's from me."
 		))
 		closemessage
 
 		giveitem(ITEM_ASHIIS_SCARF)
-		goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
 		setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
+		startquest(QUEST_KURALOVERS)
 	}
 	elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {
 		faceplayer
+		speakername("Ashii")
 		msgbox(format(
-			"Wait, you're not from here, are you?\p"
 			"The guard won't let anyone from Kura Village enter Saku Village. But you should be fine!\p"
 			"Please, go to Saku Village and give him this. He'll know it's from me."
 		))

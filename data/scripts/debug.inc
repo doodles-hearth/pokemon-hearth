@@ -55,6 +55,7 @@ Debug_CheatStart::
 
 	@ Custom Hearth flags
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
+	setflag FLAG_SYS_QUEST_MENU_GET
 	setflag FLAG_HIDE_SUNRISE_BEACH_RIVAL
 	setflag FLAG_RECEIVED_STARTER
 	setflag FLAG_VISITED_SUNRISE_VILLAGE
@@ -142,13 +143,10 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
-	setflag FLAG_SYS_QUEST_MENU_GET
-	startquest QUEST_HEARTH_MAIN_CAMPAIGN
 	release
 	end
 
 Debug_EventScript_Script_3::
-	updatequest QUEST_HEARTH_MAIN_CAMPAIGN VAR_MAIN_CAMPAIGN_QUEST
 	release
 	end
 

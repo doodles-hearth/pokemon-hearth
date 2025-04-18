@@ -1383,7 +1383,7 @@ const u8 gText_QuestUpdate[] = _("You jotted down changes to your quest,\n“{ST
 //names
 const u8 gText_SideQuestName_1[] = _("Heart of the Hearth");
 const u8 gText_SideQuestName_2[] = _("The Toku Pokédex");
-const u8 gText_SideQuestName_3[] = _("Side Quest 3");
+const u8 gText_SideQuestName_3[] = _("Star-Crossed Lovers");
 const u8 gText_SideQuestName_4[] = _("Side Quest 4");
 const u8 gText_SideQuestName_5[] = _("Side Quest 5");
 const u8 gText_SideQuestName_6[] = _("Side Quest 6");
@@ -1421,7 +1421,7 @@ const u8 gText_MainCampaignDesc_3[] = _("Description 1");
 //generic
 const u8 gText_SideQuestDesc_1[] = _("Description 1");
 const u8 gText_SideQuestDesc_2[] = _("Fill the pages of the PokéDex!");
-const u8 gText_SideQuestDesc_3[] = _("Description 3");
+const u8 gText_SideQuestDesc_3[] = _("Reunite the lovers separated by\nvillage rivalry!");
 const u8 gText_SideQuestDesc_4[] = _("Description 4");
 const u8 gText_SideQuestDesc_5[] = _("Description 5");
 const u8 gText_SideQuestDesc_6[] = _("Description 6");
@@ -1451,9 +1451,9 @@ const u8 gText_SideQuestDesc_29[] = _("Description 29");
 const u8 gText_SideQuestDesc_30[] = _("Description 30");
 
 //completed quest description
-const u8 gText_SideQuestDoneDesc_1[] = _("Completed Quest 1");
-const u8 gText_SideQuestDoneDesc_2[] = _("Completed Quest 2");
-const u8 gText_SideQuestDoneDesc_3[] = _("Completed Quest 3");
+const u8 gText_SideQuestDoneDesc_1[] = _("You've saved the Toku Region!");
+const u8 gText_SideQuestDoneDesc_2[] = _("You've completed the PokéDex!");
+const u8 gText_SideQuestDoneDesc_3[] = _("For never was a story of more glee\nThan this of Tama and Ashii.");
 const u8 gText_SideQuestDoneDesc_4[] = _("Completed Quest 4");
 const u8 gText_SideQuestDoneDesc_5[] = _("Completed Quest 5");
 const u8 gText_SideQuestDoneDesc_6[] = _("Completed Quest 6");
