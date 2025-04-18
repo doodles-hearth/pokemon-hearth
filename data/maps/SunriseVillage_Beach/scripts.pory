@@ -1,4 +1,11 @@
+const FLAG_HIDE_LITTLE_BOY = FLAG_TEMP_1
+
 mapscripts SunriseVillage_Beach_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if (flag(FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS)) {
+			setflag(FLAG_HIDE_LITTLE_BOY)
+		}
+	}
 }
 
 const LOCALID_RIVAL = 1

@@ -1,5 +1,14 @@
 SunriseVillage_Beach_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SunriseVillage_Beach_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+SunriseVillage_Beach_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto_if_set FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS, SunriseVillage_Beach_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	return
+
+SunriseVillage_Beach_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setflag FLAG_TEMP_1
+	return
 
 
 SunriseVillage_Beach_EventScript_RivalSpeech::
