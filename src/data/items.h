@@ -8488,7 +8488,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_EXP_SHARE] =
     {
-        .name = _("Exp. Share"),
+        .name = _("Wise Mirror"),
         .holdEffect = HOLD_EFFECT_EXP_SHARE,
         #if I_EXP_SHARE_ITEM >= GEN_6
             .price = 0,
@@ -8507,8 +8507,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_FIELD,
         .fieldUseFunc = ItemUseOutOfBattle_ExpShare,
         .flingPower = 30,
-        .iconPic = gItemIcon_ExpShare,
-        .iconPalette = gItemIconPalette_ExpShare,
+        .iconPic = gItemIcon_WiseMirror,
+        .iconPalette = gItemIconPalette_WiseMirror,
     },
 
     [ITEM_QUICK_CLAW] =

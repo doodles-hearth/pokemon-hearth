@@ -1044,10 +1044,10 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
 
                 // TODO EVA
                 //  To skip speech, comment DoKabaSpeech, and uncomment next lines
-		        // DoKabaSpeech();
-                NewGameBirchSpeech_SetDefaultPlayerName(0);
-                gSaveBlock2Ptr->playerGender = FEMALE;
-                SetMainCallback2(CB2_NewGame);
+		        DoKabaSpeech();
+                // NewGameBirchSpeech_SetDefaultPlayerName(0);
+                // gSaveBlock2Ptr->playerGender = FEMALE;
+                // SetMainCallback2(CB2_NewGame);
                 // end of placeholder code
 
                 DestroyTask(taskId);

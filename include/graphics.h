@@ -1269,6 +1269,8 @@ extern const u32 gItemIcon_InBattleHerb[];
 extern const u32 gItemIconPalette_WhiteHerb[];
 extern const u32 gItemIcon_ExpShare[];
 extern const u32 gItemIconPalette_ExpShare[];
+extern const u32 gItemIcon_WiseMirror[];
+extern const u32 gItemIconPalette_WiseMirror[];
 extern const u32 gItemIcon_QuickClaw[];
 extern const u32 gItemIconPalette_QuickClaw[];
 extern const u32 gItemIcon_SootheBell[];

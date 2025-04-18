@@ -33164,9 +33164,9 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 13242
                 MOVE_YAWN,
-                MOVE_PROTECT,
                 MOVE_WATER_PULSE,
                 MOVE_CONFUSION,
+                MOVE_TACKLE,
             },
             },
         },

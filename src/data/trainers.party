@@ -13239,10 +13239,10 @@ AI: Smartish Trainer
 Bean (Slowpoke) (M)
 Level: 14
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
--Yawn
--Protect
--Water Pulse
--Confusion
+- Yawn
+- Water Pulse
+- Confusion
+- Tackle
 
 === TRAINER_HAILEY ===
 Name: HAILEY
