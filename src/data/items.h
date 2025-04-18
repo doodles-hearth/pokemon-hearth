@@ -1669,7 +1669,7 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_PPUp,
         .effect = gItemEffect_PPMax,
         .flingPower = 30,
-        .iconPic = gItemIcon_PPMax,
+        .iconPic = gItemIcon_PPUp,
         .iconPalette = gItemIconPalette_PPMax,
     },
 

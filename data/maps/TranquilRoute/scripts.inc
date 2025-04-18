@@ -449,6 +449,15 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_2:
 	goto TranquilRoute_EventScript_TravelingMerchantFirstTime_1
 
 
+TranquilRoute_EventScript_WaitingForChatot::
+	lock
+	speakername TranquilRoute_EventScript_Girl_Text_0
+	msgbox TranquilRoute_EventScript_WaitingForChatot_Text_0
+	closemessage
+	release
+	return
+
+
 TranquilRoute_TrainerTips2::
 	msgbox TranquilRoute_TrainerTips2_Text_0, MSGBOX_SIGN
 	return
@@ -808,6 +817,11 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_2:
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_3:
 	.string "Come on, Keke.$"
+
+TranquilRoute_EventScript_WaitingForChatot_Text_0:
+	.string "Sigh… Maybe if I hang around the\n"
+	.string "Chatot Post, my boyfriend's message\l"
+	.string "will arrive sooner…$"
 
 TranquilRoute_TrainerTips2_Text_0:
 	.string "Did you know?\p"

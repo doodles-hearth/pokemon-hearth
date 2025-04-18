@@ -524,7 +524,6 @@ extern const u32 gItemIconPalette_Zinc[];
 extern const u32 gItemIconPalette_Carbos[];
 extern const u32 gItemIcon_PPUp[];
 extern const u32 gItemIconPalette_PPUp[];
-extern const u32 gItemIcon_PPMax[];
 extern const u32 gItemIconPalette_PPMax[];
 // EV Feathers
 extern const u32 gItemIcon_HealthFeather[];

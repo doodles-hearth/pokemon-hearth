@@ -214,22 +214,16 @@ const u32 gItemIconPalette_BigMalasada[] = INCBIN_U32("graphics/items/icon_palet
 const u32 gItemIcon_HPUp[] = INCBIN_U32("graphics/items/icons/hp_up.4bpp.lz");
 const u32 gItemIconPalette_HPUp[] = INCBIN_U32("graphics/items/icon_palettes/hp_up.gbapal.lz");
 
-const u32 gItemIcon_Vitamin[] = INCBIN_U32("graphics/items/icons/vitamin.4bpp.lz");
-const u32 gItemIconPalette_Protein[] = INCBIN_U32("graphics/items/icon_palettes/protein.gbapal.lz");
+const u32 gItemIcon_Vitamin[] = INCBIN_U32("graphics/items/icons/vitamins/protein.4bpp.lz");
+const u32 gItemIconPalette_Protein[] = INCBIN_U32("graphics/items/icons/vitamins/protein.gbapal.lz");
+const u32 gItemIconPalette_Iron[] = INCBIN_U32("graphics/items/icons/vitamins/iron.gbapal.lz");
+const u32 gItemIconPalette_Calcium[] = INCBIN_U32("graphics/items/icons/vitamins/calcium.gbapal.lz");
+const u32 gItemIconPalette_Zinc[] = INCBIN_U32("graphics/items/icons/vitamins/zinc.gbapal.lz");
+const u32 gItemIconPalette_Carbos[] = INCBIN_U32("graphics/items/icons/vitamins/carbos.gbapal.lz");
 
-const u32 gItemIconPalette_Iron[] = INCBIN_U32("graphics/items/icon_palettes/iron.gbapal.lz");
-
-const u32 gItemIconPalette_Calcium[] = INCBIN_U32("graphics/items/icon_palettes/calcium.gbapal.lz");
-
-const u32 gItemIconPalette_Zinc[] = INCBIN_U32("graphics/items/icon_palettes/zinc.gbapal.lz");
-
-const u32 gItemIconPalette_Carbos[] = INCBIN_U32("graphics/items/icon_palettes/carbos.gbapal.lz");
-
-const u32 gItemIcon_PPUp[] = INCBIN_U32("graphics/items/icons/pp_up.4bpp.lz");
-const u32 gItemIconPalette_PPUp[] = INCBIN_U32("graphics/items/icon_palettes/pp_up.gbapal.lz");
-
-const u32 gItemIcon_PPMax[] = INCBIN_U32("graphics/items/icons/pp_max.4bpp.lz");
-const u32 gItemIconPalette_PPMax[] = INCBIN_U32("graphics/items/icon_palettes/pp_max.gbapal.lz");
+const u32 gItemIcon_PPUp[] = INCBIN_U32("graphics/items/icons/vitamins/pp_up.4bpp.lz");
+const u32 gItemIconPalette_PPUp[] = INCBIN_U32("graphics/items/icons/vitamins/pp_up.gbapal.lz");
+const u32 gItemIconPalette_PPMax[] = INCBIN_U32("graphics/items/icons/vitamins/pp_max.gbapal.lz");
 
 // EV Feathers
 
