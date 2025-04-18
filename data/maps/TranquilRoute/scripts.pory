@@ -544,6 +544,16 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	release
 }
 
+script TranquilRoute_EventScript_WaitingForChatot {
+	lock
+	speakername("Girl")
+	msgbox(format(
+		"Sigh… Maybe if I hang around the Chatot Post, my boyfriend's message will arrive sooner…"
+	))
+	closemessage
+	release
+}
+
 script TranquilRoute_TrainerTips2 {
 	msgbox(format(
 		"Did you know?\p"
