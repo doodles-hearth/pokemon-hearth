@@ -4,9 +4,7 @@ SunriseVillage_PlayersHouse_LR_MapScripts::
 	.byte 0
 
 SunriseVillage_PlayersHouse_LR_MapScripts_MAP_SCRIPT_ON_LOAD:
-	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 4
-	goto_if_lt SunriseVillage_PlayersHouse_LR_MapScripts_MAP_SCRIPT_ON_LOAD_1
-	removeobject 2
+	goto_if_unset FLAG_RECEIVED_STARTER, SunriseVillage_PlayersHouse_LR_MapScripts_MAP_SCRIPT_ON_LOAD_1
 	return
 
 SunriseVillage_PlayersHouse_LR_MapScripts_MAP_SCRIPT_ON_LOAD_1:

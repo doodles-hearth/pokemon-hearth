@@ -53,10 +53,10 @@ GinkoWoods_EventScript_Bean::
 	speakername GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_3
 	closemessage
-	fadescreen FADE_TO_BLACK
+	fadescreenswapbuffers FADE_TO_BLACK
 	addtime 0, 1, 30
 	delay 60
-	fadescreen FADE_FROM_BLACK
+	fadescreenswapbuffers FADE_FROM_BLACK
 	delay 48
 	speakername GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_4

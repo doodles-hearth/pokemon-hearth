@@ -6,6 +6,7 @@ TranquilRoute_MapScripts::
 
 TranquilRoute_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call TranquilRoute_EventScript_CheckCutGrass
+	call TranquilRoute_EventScript_FlowerCutMastersGarden
 	call TranquilRoute_EventScript_SpawnBirds
 	return
 
@@ -42,35 +43,38 @@ TranquilRoute_EventScript_SpawnBirds_2:
 
 TranquilRoute_EventScript_GrassCutscene::
 	lock
-	applymovement 22, TranquilRoute_EventScript_GrassCutscene_Movement_0
+	applymovement 19, TranquilRoute_EventScript_GrassCutscene_Movement_0
 	applymovement OBJ_EVENT_ID_PLAYER, TranquilRoute_EventScript_GrassCutscene_Movement_1
-	waitmovement 22
+	waitmovement 19
 	waitmovement OBJ_EVENT_ID_PLAYER
 	delay 24
 	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_1
 	closemessage
 	delay 16
-	applymovement 22, TranquilRoute_EventScript_GrassCutscene_Movement_2
+	applymovement 19, TranquilRoute_EventScript_GrassCutscene_Movement_2
 	waitmovement 0
 	delay 24
 	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_2
 	closemessage
-	applymovement 22, TranquilRoute_EventScript_GrassCutscene_Movement_3
+	applymovement 19, TranquilRoute_EventScript_GrassCutscene_Movement_3
 	waitmovement 0
 	delay 24
 	delay 24
 	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_3
 	closemessage
-	applymovement 22, TranquilRoute_EventScript_GrassCutscene_Movement_4
+	applymovement 19, TranquilRoute_EventScript_GrassCutscene_Movement_4
 	waitmovement 0
 	delay 48
 	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_4
 	closemessage
+	giveitem ITEM_LEAF_STONE
+	setobjectmovementtype 19, MOVEMENT_TYPE_WANDER_AROUND
 	setflag FLAG_CUT_QUEST_COMPLETED
+	setflag FLAG_TEMP_3
 	setvar VAR_TEMP_0, 0
 	release
 	return
@@ -78,28 +82,37 @@ TranquilRoute_EventScript_GrassCutscene::
 
 TranquilRoute_EventScript_SetupCutGrassCutscene::
 	goto_if_unset FLAG_CUT_QUEST_COMPLETED, TranquilRoute_EventScript_SetupCutGrassCutscene_1
+	gettimeofday
+	switch VAR_RESULT
+	case TIME_EVENING, TranquilRoute_EventScript_SetupCutGrassCutscene_8
+	case TIME_NIGHT, TranquilRoute_EventScript_SetupCutGrassCutscene_8
+	case TIME_DEAD_NIGHT, TranquilRoute_EventScript_SetupCutGrassCutscene_8
 	return
 
 TranquilRoute_EventScript_SetupCutGrassCutscene_1:
-	goto_if_set FLAG_CUT_QUEST_CUT_ALL_GRASS, TranquilRoute_EventScript_SetupCutGrassCutscene_3
+	goto_if_set FLAG_CUT_QUEST_CUT_ALL_GRASS, TranquilRoute_EventScript_SetupCutGrassCutscene_4
 	setflag FLAG_TEMP_1
 	return
 
-TranquilRoute_EventScript_SetupCutGrassCutscene_3:
+TranquilRoute_EventScript_SetupCutGrassCutscene_4:
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
-	compare VAR_TEMP_2, 53
-	goto_if_eq TranquilRoute_EventScript_SetupCutGrassCutscene_7
+	compare VAR_TEMP_2, 43
+	goto_if_eq TranquilRoute_EventScript_SetupCutGrassCutscene_10
 	return
 
-TranquilRoute_EventScript_SetupCutGrassCutscene_6:
-	setobjectmovementtype 22, MOVEMENT_TYPE_FACE_LEFT
-	setobjectxyperm 22, 52, 33
+TranquilRoute_EventScript_SetupCutGrassCutscene_8:
+	setflag FLAG_TEMP_1
+	return
+
+TranquilRoute_EventScript_SetupCutGrassCutscene_9:
+	setobjectmovementtype 19, MOVEMENT_TYPE_FACE_LEFT
+	setobjectxyperm 19, 44, 33
 	setvar VAR_TEMP_0, 1
 	return
 
-TranquilRoute_EventScript_SetupCutGrassCutscene_7:
+TranquilRoute_EventScript_SetupCutGrassCutscene_10:
 	compare VAR_TEMP_3, 33
-	goto_if_eq TranquilRoute_EventScript_SetupCutGrassCutscene_6
+	goto_if_eq TranquilRoute_EventScript_SetupCutGrassCutscene_9
 	return
 
 
@@ -109,64 +122,89 @@ TranquilRoute_EventScript_CutMaster::
 	return
 
 
+TranquilRoute_EventScript_FlowerCutMastersGarden::
+	goto_if_set FLAG_CUT_QUEST_COMPLETED, TranquilRoute_EventScript_FlowerCutMastersGarden_2
+	return
+
+TranquilRoute_EventScript_FlowerCutMastersGarden_1:
+	goto_if_set FLAG_BADGE02_GET, TranquilRoute_EventScript_FlowerCutMastersGarden_6
+TranquilRoute_EventScript_FlowerCutMastersGarden_5:
+	goto_if_set FLAG_BADGE03_GET, TranquilRoute_EventScript_FlowerCutMastersGarden_8
+	return
+
+TranquilRoute_EventScript_FlowerCutMastersGarden_2:
+	goto_if_unset FLAG_TEMP_3, TranquilRoute_EventScript_FlowerCutMastersGarden_1
+	return
+
+TranquilRoute_EventScript_FlowerCutMastersGarden_6:
+	setmetatile 39, 33, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 40, 34, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 41, 33, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 42, 34, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	goto TranquilRoute_EventScript_FlowerCutMastersGarden_5
+
+TranquilRoute_EventScript_FlowerCutMastersGarden_8:
+	setmetatile 35, 29, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 34, 30, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 35, 31, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 34, 32, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	return
+
+
 TranquilRoute_EventScript_CheckCutGrass::
 	call_if_set FLAG_CUT_QUEST_CUT_ALL_GRASS, TranquilRoute_EventScript_CutGrass
 	return
 
 
 TranquilRoute_EventScript_CutGrass::
-	setmetatile 47, 31, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 48, 30, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 46, 29, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 47, 29, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 46, 28, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 47, 28, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 48, 28, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 46, 27, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 47, 27, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 48, 27, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 47, 26, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 48, 26, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 47, 25, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 47, 24, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 46, 23, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 47, 23, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 41, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 42, 22, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 46, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 47, 22, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 40, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 41, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 42, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 43, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 45, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 46, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 47, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 48, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 41, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 42, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 43, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 44, 20, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 45, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 46, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 47, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 48, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 40, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 42, 19, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 43, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 44, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 45, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 46, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 47, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 48, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 49, 19, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 41, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 43, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 44, 18, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 45, 18, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
-	setmetatile 46, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
-	setmetatile 47, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
-	setmetatile 48, 18, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 32, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
+	setmetatile 34, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 35, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 36, 18, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 37, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 38, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
+	setmetatile 31, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 33, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 34, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 35, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 36, 19, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
+	setmetatile 37, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 38, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 39, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 32, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 33, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 34, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 35, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 36, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 37, 20, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
+	setmetatile 38, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 39, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 31, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 32, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 33, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 34, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
+	setmetatile 36, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 37, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
+	setmetatile 38, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 39, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 33, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 37, 22, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 38, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 37, 23, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 38, 23, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 38, 24, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 38, 25, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
+	setmetatile 38, 26, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
+	setmetatile 39, 26, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 37, 27, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 38, 27, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 39, 27, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 37, 28, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE
+	setmetatile 38, 28, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
+	setmetatile 39, 28, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 37, 29, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 38, 29, METATILE_PorytilesPrimaryTutorial_Grass, FALSE
+	setmetatile 38, 30, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE
 	return
 
 
@@ -338,35 +376,34 @@ TranquilRoute_EventScript_CrobatShadows_Cutscene::
 	msgbox TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_1
 	closemessage
 	delay 20
-	applymovement 25, Common_Movement_WalkInPlaceFasterUp
+	applymovement 24, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	speakername TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_2
 	msgbox TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_3
 	closemessage
-	applymovement 26, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_0
-	applymovement 24, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_0
-	waitmovement 23
-	waitmovement 26
-	playse SE_LEDGE
-	applymovement 24, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_1
-	applymovement 23, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_1
-	applymovement 26, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_1
-	waitmovement 24
-	waitmovement 23
-	waitmovement 26
-	waitse
-	applymovement 23, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_2
-	applymovement 24, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_2
-	applymovement 26, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_2
-	applymovement 25, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_3
-	waitmovement 23
-	waitmovement 24
-	waitmovement 26
+	applymovement 25, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_0
+	applymovement 23, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_0
+	waitmovement 22
 	waitmovement 25
+	applymovement 23, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_1
+	applymovement 22, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_1
+	applymovement 25, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_1
+	waitmovement 23
+	waitmovement 22
+	waitmovement 25
+	waitse
+	applymovement 22, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_2
+	applymovement 23, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_2
+	applymovement 25, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_2
+	applymovement 24, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_3
+	waitmovement 22
+	waitmovement 23
+	waitmovement 25
+	waitmovement 24
+	removeobject 22
 	removeobject 23
-	removeobject 24
-	removeobject 26
 	removeobject 25
+	removeobject 24
 	setflag FLAG_HIDE_CROBAT_SHADOWS_TRANQUIL_RT
 	return
 
@@ -390,6 +427,8 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime::
 	speakername TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0
 	msgbox TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_3
 	closemessage
+	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL
+	waitmoncry
 	specialvar VAR_RESULT, GetPlayerFacingDirection
 	compare VAR_RESULT, DIR_EAST
 	goto_if_eq TranquilRoute_EventScript_TravelingMerchantFirstTime_2
@@ -443,7 +482,6 @@ TranquilRoute_EventScript_GrassCutscene_Movement_1:
 	walk_left
 	walk_left
 	walk_left
-	walk_left
 	walk_up
 	walk_up
 	step_end
@@ -454,7 +492,6 @@ TranquilRoute_EventScript_GrassCutscene_Movement_2:
 	step_end
 
 TranquilRoute_EventScript_GrassCutscene_Movement_3:
-	walk_right
 	walk_right
 	walk_right
 	step_end
@@ -567,7 +604,7 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_3:
 	step_end
 
 TranquilRoute_EventScript_GrassCutscene_Text_0:
-	.string "Cut master$"
+	.string "Cut Master$"
 
 TranquilRoute_EventScript_GrassCutscene_Text_1:
 	.string "… … … … … …\n"
@@ -764,8 +801,8 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_2:
 	.string "What's your name? {PLAYER}? It's\n"
 	.string "nice to meet you, {PLAYER}! I see\l"
 	.string "you're a young wielder, eh? Maybe we\l"
-	.string "can even have a friendly battle next\l"
-	.string "time!\p"
+	.string "can even have a friendly battle\l"
+	.string "sometime!\p"
 	.string "Now if you'll excuse me, I'm running\n"
 	.string "late! See you around, {PLAYER}!$"
 

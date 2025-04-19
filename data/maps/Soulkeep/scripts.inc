@@ -1,5 +1,10 @@
 Soulkeep_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Soulkeep_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Soulkeep_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	callnative TrySetSoulkeepAmbiance
+	return
 
 
 Soulkeep_EventScript_TownSign::
@@ -109,7 +114,7 @@ Soulkeep_Mart:
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_OINTMENT
 	.2byte ITEM_SUPER_OINTMENT
-	.2byte ITEM_REVIVAL_HERB
+	.2byte ITEM_REVIVAL_BALM
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_AWAKENING

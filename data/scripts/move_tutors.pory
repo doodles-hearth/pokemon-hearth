@@ -7,6 +7,7 @@ script YifuCity_EventScript_WhirlpoolTutor {
 			"Hm? I can teach Whirlpool to your Pokémon again, but you have to make it worth my while, alright?\p"
 			"I'm very fond of Heart Scales. They remind me of the sea. I'll do it in exchange for one!"
 		))
+		closemessage
 
 		if (checkitem(ITEM_HEART_SCALE)) {
 			dynmultichoice(

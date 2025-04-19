@@ -402,12 +402,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TranquilRoute_EventScript_CutMaster",
       "flag": "FLAG_TEMP_1",
-      "afternoon": true,
+      "afternoon": false,
       "deadnight": false,
-      "earlymorning": true,
+      "earlymorning": false,
       "evening": false,
-      "lunchtime": true,
-      "morning": true,
+      "lunchtime": false,
+      "morning": false,
       "night": false
     },
     {
@@ -491,7 +491,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
+      "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_M",
       "x": 3,
       "y": 15,
       "elevation": 0,

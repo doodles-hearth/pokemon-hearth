@@ -1,3 +1,8 @@
+const LOCALID_ROADBLOCK_SCHOOLKID = 19
+const LOCALID_ROADBLOCK_NINJA_BOY = 13
+const LOCALID_ROADBLOCK_NUZLEAF = 20
+const LOCALID_ROADBLOCK_BRELOOM = 21
+
 mapscripts WindsweptRoute_MapScripts {
 	// MAP_SCRIPT_ON_LOAD: WillSalesmanSpawn
 	// MAP_SCRIPT_ON_TRANSITION: WillSalesmanSpawn
@@ -106,6 +111,51 @@ script WindsweptRoute_EventScript_Trainer6 {
 	speakername("Musashi")
 	msgbox(format("I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
 	end
+}
+
+script WindsweptRoute_EventScript_TrainerBattleRoadblock {
+	lock
+	playbgm(MUS_VS_TRAINER, FALSE)
+
+	applymovement(LOCALID_ROADBLOCK_NINJA_BOY, moves(walk_in_place_fast_left))
+	waitmovement(0)
+
+	speakername("Ninja boy")
+	msgbox(format(
+		"You shall know defeat at the hand of my ninja Pokémon!\p"
+		"Nuzleaf, use Feint Attack!"
+	))
+	closemessage
+
+	playmoncry(SPECIES_NUZLEAF, CRY_MODE_ENCOUNTER)
+	waitmoncry
+	applymovement(LOCALID_ROADBLOCK_NUZLEAF, moves(lock_facing_direction, walk_fast_left, walk_fast_right, unlock_facing_direction))
+	playse(SE_EFFECTIVE)
+	waitmovement(0)
+	waitse
+
+	applymovement(LOCALID_ROADBLOCK_SCHOOLKID, moves(walk_in_place_fast_right))
+	waitmovement(0)
+
+	speakername("School kid")
+	msgbox(format(
+		"Your pathetic ninja costume can't beat the sheer power of knowledge!\p"
+		"Breloom! Headbutt!"
+	))
+	closemessage
+
+
+	applymovement(LOCALID_ROADBLOCK_BRELOOM, moves(jump_in_place_right))
+	playmoncry(SPECIES_BRELOOM, CRY_MODE_ENCOUNTER)
+	waitmoncry
+	waitmovement(0)
+	applymovement(LOCALID_ROADBLOCK_BRELOOM, moves(lock_facing_direction, walk_fast_right, walk_fast_left, unlock_facing_direction))
+	playse(SE_M_HEADBUTT)
+	waitmovement(0)
+	waitse
+
+	fadedefaultbgm
+	release
 }
 
 // TODO EVA traveling salesman

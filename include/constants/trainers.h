@@ -386,7 +386,8 @@
 #define TRAINER_CLASS_MINER 0x4C
 #define TRAINER_CLASS_OLD_LADY 0x4D
 #define TRAINER_CLASS_GOLBAT 0x4E
-#define TRAINER_CLASS_COUNT          0x4F
+#define TRAINER_CLASS_ROCK_SMASHER 0x4F
+#define TRAINER_CLASS_COUNT          0x50
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music
@@ -402,6 +403,7 @@
 #define TRAINER_ENCOUNTER_MUSIC_HIKER       11 // used for other trainer classes too
 #define TRAINER_ENCOUNTER_MUSIC_INTERVIEWER 12
 #define TRAINER_ENCOUNTER_MUSIC_RICH        13 // Rich Boys and Gentlemen
+#define TRAINER_ENCOUNTER_MUSIC_SPIRITUAL   14 // Monks, Kimono Girls, etc
 
 #define F_TRAINER_FEMALE (1 << 7)
 

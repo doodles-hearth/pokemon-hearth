@@ -1,11 +1,9 @@
 mapscripts Kura_Beachbound_Gate_MapScripts {
-	MAP_SCRIPT_ON_TRANSITION: Beachbound_Maguro_Gate_EventScript_SetupDecayWarp	
-}
-
-script Kura_Beachbound_Gate_EventScript_SetupDecayWarp {
-	if (var(VAR_DECAY_BEACHBOUND_ROUTE) > 0) {
-		setdynamicwarp(MAP_BEACHBOUND_ROUTE_DECAY, 1)
-	} else {
-		setdynamicwarp(MAP_BEACHBOUND_ROUTE, 1)
+	MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_DECAY_BEACHBOUND_ROUTE) > 0) {
+			setdynamicwarp(MAP_BEACHBOUND_ROUTE_DECAY, 1)
+		} else {
+			setdynamicwarp(MAP_BEACHBOUND_ROUTE, 1)
+		}
 	}
 }

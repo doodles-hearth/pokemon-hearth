@@ -61,10 +61,18 @@ MaguroHarbor_EventScript_PokemonNerdSign::
 MaguroHarbor_EventScript_LovestruckGirl::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_LovestruckGirl_Text_0
-	msgbox MaguroHarbor_EventScript_LovestruckGirl_Text_1, MSGBOX_DEFAULT
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_EventScript_LovestruckGirl_2
+	speakername MaguroHarbor_EventScript_LovestruckGirl_Text_2
+	msgbox MaguroHarbor_EventScript_LovestruckGirl_Text_3, MSGBOX_DEFAULT
+MaguroHarbor_EventScript_LovestruckGirl_1:
 	release
 	return
+
+MaguroHarbor_EventScript_LovestruckGirl_2:
+	speakername MaguroHarbor_EventScript_LovestruckGirl_Text_0
+	msgbox MaguroHarbor_EventScript_LovestruckGirl_Text_1, MSGBOX_DEFAULT
+	goto MaguroHarbor_EventScript_LovestruckGirl_1
 
 
 MaguroHarbor_EventScript_FishcakeSalesman::
@@ -214,20 +222,34 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp::
 	lock
 	faceplayer
 	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1, MSGBOX_DEFAULT
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_2
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_2, MSGBOX_DEFAULT
+MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_1:
 	closemessage
 	release
 	return
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_2:
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1, MSGBOX_DEFAULT
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_1
 
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling::
 	lock
 	faceplayer
 	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesmanSelling_2
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0, MSGBOX_DEFAULT
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1:
 	closemessage
 	release
 	return
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_2:
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1, MSGBOX_DEFAULT
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
 
 MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp::
@@ -267,7 +289,7 @@ MaguroHarbor_EventScript_FishermanOldRod::
 	faceplayer
 	goto_if_set FLAG_RECEIVED_OLD_ROD, MaguroHarbor_EventScript_FishermanOldRod_2
 	speakername MaguroHarbor_EventScript_FishermanInBoat_Text_0
-	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_1
+	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_2
 	closemessage
 	giveitem ITEM_OLD_ROD
 	setflag FLAG_RECEIVED_OLD_ROD
@@ -275,7 +297,7 @@ MaguroHarbor_EventScript_FishermanOldRod::
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq MaguroHarbor_EventScript_FishermanOldRod_5
-	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_3
+	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_4
 MaguroHarbor_EventScript_FishermanOldRod_4:
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -285,7 +307,10 @@ MaguroHarbor_EventScript_FishermanOldRod_4:
 
 MaguroHarbor_EventScript_FishermanOldRod_2:
 	speakername MaguroHarbor_EventScript_FishermanInBoat_Text_0
-	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_0
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_EventScript_FishermanOldRod_9
+	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_1
+MaguroHarbor_EventScript_FishermanOldRod_8:
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -293,18 +318,29 @@ MaguroHarbor_EventScript_FishermanOldRod_2:
 	end
 
 MaguroHarbor_EventScript_FishermanOldRod_5:
-	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_2
+	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_3
 	goto MaguroHarbor_EventScript_FishermanOldRod_4
+
+MaguroHarbor_EventScript_FishermanOldRod_9:
+	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_0, MSGBOX_AUTOCLOSE
+	goto MaguroHarbor_EventScript_FishermanOldRod_8
 
 
 MaguroHarbor_EventScript_Man::
 	lock
 	faceplayer
 	speakername MaguroHarbor_EventScript_Man_Text_0
-	msgbox MaguroHarbor_EventScript_Man_Text_1
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
+	goto_if_eq MaguroHarbor_EventScript_Man_2
+	msgbox MaguroHarbor_EventScript_Man_Text_2
+MaguroHarbor_EventScript_Man_1:
 	closemessage
 	release
 	return
+
+MaguroHarbor_EventScript_Man_2:
+	msgbox MaguroHarbor_EventScript_Man_Text_1, MSGBOX_AUTOCLOSE
+	goto MaguroHarbor_EventScript_Man_1
 
 
 MaguroHarbor_EventScript_Mart::
@@ -408,9 +444,16 @@ MaguroHarbor_EventScript_PokemonNerdSign_Text_0:
 	.string "Pokémon Nerd$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_0:
-	.string "Lovestruck Girl$"
+	.string "Girl$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_1:
+	.string "What was that? Oh, I hope my\n"
+	.string "boyfriend's okay…$"
+
+MaguroHarbor_EventScript_LovestruckGirl_Text_2:
+	.string "Lovestruck Girl$"
+
+MaguroHarbor_EventScript_LovestruckGirl_Text_3:
 	.string "It's only been an hour since I saw my\n"
 	.string "love, and yet I already want tomorrow\l"
 	.string "to come just so I can see him again…$"
@@ -475,6 +518,12 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0:
 	.string "Salesman$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1:
+	.string "Just saw Master Koishi run toward\n"
+	.string "Beachbound Route!\p"
+	.string "She's so concerned with the safety of\n"
+	.string "the village!$"
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_2:
 	.string "Aye! We're not open yet. Come back\n"
 	.string "later for the fresh catch of the day.$"
 
@@ -499,10 +548,14 @@ MaguroHarbor_EventScript_Cramorant_Text_1:
 	.string "Craaah!$"
 
 MaguroHarbor_EventScript_FishermanOldRod_Text_0:
+	.string "That tremblin' nearly made me wee me\n"
+	.string "pants!$"
+
+MaguroHarbor_EventScript_FishermanOldRod_Text_1:
 	.string "Heyo, wee fisherm'n! Hope ye be\n"
 	.string "enjoyin' yer fishing rod!$"
 
-MaguroHarbor_EventScript_FishermanOldRod_Text_1:
+MaguroHarbor_EventScript_FishermanOldRod_Text_2:
 	.string "Shush, ye fool child! You're scarin'\n"
 	.string "tha wee fishes!\p"
 	.string "… … … …\p"
@@ -515,13 +568,13 @@ MaguroHarbor_EventScript_FishermanOldRod_Text_1:
 	.string "Cramorant here…\p"
 	.string "But I can give ye this ol' rud o' mine!$"
 
-MaguroHarbor_EventScript_FishermanOldRod_Text_2:
+MaguroHarbor_EventScript_FishermanOldRod_Text_3:
 	.string "It be a wee bit used, but I reckon it\n"
 	.string "will serve ye mighty fine!\p"
 	.string "Farewell, lad! May ye become a great\n"
 	.string "fisherm'n!$"
 
-MaguroHarbor_EventScript_FishermanOldRod_Text_3:
+MaguroHarbor_EventScript_FishermanOldRod_Text_4:
 	.string "It be a wee bit used, but I reckon it\n"
 	.string "will serve ye mighty fine!\p"
 	.string "Farewell, lass! May ye become a great\n"
@@ -531,6 +584,10 @@ MaguroHarbor_EventScript_Man_Text_0:
 	.string "Man$"
 
 MaguroHarbor_EventScript_Man_Text_1:
+	.string "T-This was the biggest quake we've\n"
+	.string "felt yet!$"
+
+MaguroHarbor_EventScript_Man_Text_2:
 	.string "I wish I swam as gracefully as the\n"
 	.string "Dojo's Magikarp…$"
 

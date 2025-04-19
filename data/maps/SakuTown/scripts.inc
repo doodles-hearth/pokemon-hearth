@@ -123,8 +123,10 @@ SakuTown_EventScript_Karateka::
 	speakername SakuTown_EventScript_Karateka_Text_0
 	msgbox SakuTown_EventScript_Karateka_Text_1
 	closemessage
-	applymovement 6, Common_Movement_WalkInPlaceFasterUp
+	playse SE_LEDGE
+	applymovement 6, SakuTown_EventScript_Karateka_Movement_0
 	waitmovement 0
+	waitse
 	speakername SakuTown_EventScript_Karateka_Text_0
 	msgbox SakuTown_EventScript_Karateka_Text_2
 	closemessage
@@ -134,11 +136,11 @@ SakuTown_EventScript_Karateka::
 	waitmovement 2
 	delay 24
 	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
-	applymovement 1, SakuTown_EventScript_Karateka_Movement_0
+	applymovement 1, SakuTown_EventScript_Karateka_Movement_1
 	waitmovement 1
 	waitmoncry
 	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
-	applymovement 2, SakuTown_EventScript_Karateka_Movement_0
+	applymovement 2, SakuTown_EventScript_Karateka_Movement_1
 	waitmovement 2
 	waitmoncry
 	setseenmon SPECIES_MAKUHITA
@@ -329,24 +331,28 @@ SakuTown_EventScript_RivalAtSakuWall_Movement_0:
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Movement_1:
-	walk_faster_right
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Movement_2:
-	walk_faster_left
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
-	walk_faster_up
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 SakuTown_EventScript_Karateka_Movement_0:
+	jump_in_place_up
+	step_end
+
+SakuTown_EventScript_Karateka_Movement_1:
 	jump_in_place_down
 	step_end
 
@@ -363,30 +369,33 @@ SakuTown_EventScript_RivalAtSakuWall_Text_3:
 	.string "I was wondering if you'd already\n"
 	.string "reached Saku Village by now. Looks\l"
 	.string "like we almost missed each other!\p"
-	.string "Have you caught any Pokémon on your\n"
-	.string "way here?\p"
-	.string "Me? Oh, I can show you my Pokémon\n"
-	.string "alright!$"
+	.string "I saw several patrolling Samurai on my\n"
+	.string "way here. They look so cool, no wonder\l"
+	.string "they're so admired!\p"
+	.string "Oh, {PLAYER}, have you caught any\n"
+	.string "Pokémon on your way here?\p"
+	.string "Me?\n"
+	.string "Boy, I'm so glad you asked…\p"
+	.string "Let me show you!$"
 
 SakuTown_EventScript_RivalAtSakuWall_Text_4:
-	.string "Okay, I… I didn't think you'd go that\n"
+	.string "Woah! I… I didn't think you'd go that\n"
 	.string "hard, honestly!\p"
-	.string "Hahaha…\p"
 	.string "Clearly I underestimated you. That's\n"
 	.string "alright. I won't make that mistake\l"
 	.string "next time!\p"
 	.string "I can see your Pokémon are really\n"
 	.string "growing to like you, it's great!\p"
-	.string "You might just stand a chance\n"
+	.string "Are you doing the Dojo challenge?\n"
+	.string "You might just stand a chance\l"
 	.string "against the Dojo that's in the next\l"
-	.string "village.\p"
-	.string "Me? Actually, I just fought the Dojo's\n"
-	.string "master and got an official Token from\l"
-	.string "her!\p"
+	.string "village!\p"
+	.string "Me? Actually, I just got my first\n"
+	.string "official Token!\p"
 	.string "You'll have to hurry if you wanna\n"
 	.string "catch up!\p"
-	.string "Well, it was good to see you. Until\n"
-	.string "next time then.\p"
+	.string "It's fun to run into each other like\n"
+	.string "this. Until next time then.\p"
 	.string "I bet you I'll get to Silveridge first!\p"
 	.string "See you later, Feraligatr!$"
 
@@ -394,7 +403,7 @@ SakuTown_EventScript_Farmer_Text_0:
 	.string "Farmer$"
 
 SakuTown_EventScript_Farmer_Text_1:
-	.string "We're cultivatin' Mifan berries. Saku\n"
+	.string "We're growin' Cheri berries. Saku\n"
 	.string "Village exports its berries to many\l"
 	.string "towns.$"
 
@@ -416,7 +425,7 @@ SakuTown_EventScript_Karateka_Text_0:
 	.string "Man$"
 
 SakuTown_EventScript_Karateka_Text_1:
-	.string "I let the Pokémon Council borrow my\n"
+	.string "I let the Toku Council borrow my\n"
 	.string "super-strong Pokémon to help build\l"
 	.string "the new Pokémon refuges throughout\l"
 	.string "the region.$"
@@ -502,4 +511,4 @@ SakuTown_EventScript_Cherrim_Text_0:
 	.string "Weee!$"
 
 SakuTown_Text_RivalDefeat::
-	.string "Oh, wow, okay.$"
+	.string "Oh, wow!$"

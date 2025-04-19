@@ -38,8 +38,8 @@ BeachboundRoute_EventScript_Hoppip::
 	faceplayer
 	setseenmon SPECIES_HOPPIP
 	setspeakertomonname SPECIES_HOPPIP
-	msgbox BeachboundRoute_EventScript_Hoppip_Text_0
 	playmoncry SPECIES_HOPPIP, CRY_MODE_NORMAL
+	msgbox BeachboundRoute_EventScript_Hoppip_Text_0
 	waitmoncry
 	release
 	end
@@ -50,8 +50,8 @@ BeachboundRoute_EventScript_Wooloo::
 	faceplayer
 	setseenmon SPECIES_WOOLOO
 	setspeakertomonname SPECIES_WOOLOO
-	msgbox BeachboundRoute_EventScript_Wooloo_Text_0
 	playmoncry SPECIES_WOOLOO, CRY_MODE_NORMAL
+	msgbox BeachboundRoute_EventScript_Wooloo_Text_0
 	waitmoncry
 	release
 	end
@@ -334,14 +334,28 @@ BeachboundRoute_EventScript_Mugging_9:
 BeachboundRoute_EventScript_TravelingMerchantSecondTime::
 	lock
 	faceplayer
+	goto_if_set FLAG_MET_TRAVELING_MERCHANT_2ND_TIME, BeachboundRoute_EventScript_TravelingMerchantSecondTime_2
+	goto_if_set FLAG_MET_TRAVELING_MERCHANT, BeachboundRoute_EventScript_TravelingMerchantSecondTime_3
 	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
-	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1
+	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_3
+BeachboundRoute_EventScript_TravelingMerchantSecondTime_1:
+	setflag FLAG_MET_TRAVELING_MERCHANT_2ND_TIME
 	limitedpokemart LIMITED_SHOP_1
 	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
-	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2
+	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_4
 	closemessage
 	release
 	return
+
+BeachboundRoute_EventScript_TravelingMerchantSecondTime_2:
+	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
+	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1
+	goto BeachboundRoute_EventScript_TravelingMerchantSecondTime_1
+
+BeachboundRoute_EventScript_TravelingMerchantSecondTime_3:
+	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
+	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2
+	goto BeachboundRoute_EventScript_TravelingMerchantSecondTime_1
 
 
 BeachboundRoute_EventScript_SeeDecay::
@@ -755,12 +769,38 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0:
 	.string "Okada$"
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1:
-	.string "Oh, hello again! {PLAYER}, was it?\p"
-	.string "I'm in the area for a while to gather\n"
-	.string "some resources.\p"
-	.string "Can I interest you in some rare\n"
+	.string "Hello, hello again, {PLAYER}!\p"
+	.string "Can I interest you in some handpicked\n"
 	.string "goods?$"
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2:
+	.string "Hello! … …Have we met before?\p"
+	.string "Sorry, I'm not good with faces…\p"
+	.string "Wait! Uhh, {PLAYER}, was it?\p"
+	.string "I'm in the area for a while to gather\n"
+	.string "some resources.\p"
+	.string "Can I interest you in some handpicked\n"
+	.string "goods?$"
+
+BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_3:
+	.string "Hello, hello again!\p"
+	.string "… …Oh, sorry, we haven't met, have we?\n"
+	.string "I'm not good with faces…\p"
+	.string "I'm Okada, the traveling merchant! I\n"
+	.string "travel through all of Toku on foot,\l"
+	.string "selling useful goods and rare finds!\p"
+	.string "If you're a traveler, you're definitely\n"
+	.string "going to see me around!\p"
+	.string "What's your name? {PLAYER}? It's\n"
+	.string "nice to meet you, {PLAYER}! I see\l"
+	.string "you're a young wielder, eh? Maybe we\l"
+	.string "can even have a friendly battle\l"
+	.string "sometime!\p"
+	.string "I'm in the area for a while to gather\n"
+	.string "some resources.\p"
+	.string "Can I interest you in some handpicked\n"
+	.string "goods?$"
+
+BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_4:
 	.string "Thanks for your business! Now where\n"
 	.string "did I put that scroll again…$"

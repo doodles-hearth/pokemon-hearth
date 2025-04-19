@@ -755,7 +755,7 @@ F_TRAINER_FEMALE |
         .trainerPic = TRAINER_PIC_MONK,
         .encounterMusic_gender =
 #line 384
-            TRAINER_ENCOUNTER_MUSIC_HIKER,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 385
         .doubleBattle = FALSE,
 #line 386
@@ -1320,17 +1320,17 @@ F_TRAINER_FEMALE |
         },
     },
 #line 609
-    [DIFFICULTY_NORMAL][TRAINER_DECLAN] =
+    [DIFFICULTY_NORMAL][TRAINER_ROCK_SMASH_GUY] =
     {
 #line 610
-        .trainerName = _("DECLAN"),
+        .trainerName = _("Smasher"),
 #line 611
-        .trainerClass = TRAINER_CLASS_SWIMMER_M,
+        .trainerClass = TRAINER_CLASS_ROCK_SMASHER,
 #line 612
-        .trainerPic = TRAINER_PIC_SWIMMER_M,
+        .trainerPic = TRAINER_PIC_BLACK_BELT,
         .encounterMusic_gender =
 #line 614
-            TRAINER_ENCOUNTER_MUSIC_SWIMMER,
+            TRAINER_ENCOUNTER_MUSIC_INTENSE,
 #line 615
         .doubleBattle = FALSE,
 #line 616
@@ -1340,14 +1340,18 @@ F_TRAINER_FEMALE |
         {
             {
 #line 618
-            .species = SPECIES_GYARADOS,
+            .species = SPECIES_MAKUHITA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 620
-            .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
+            .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 619
-            .lvl = 34,
+            .lvl = 10,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
+            .moves = {
+#line 620
+                MOVE_ROCK_SMASH,
+            },
             },
         },
     },
@@ -9114,7 +9118,7 @@ F_TRAINER_FEMALE |
 #line 3698
 F_TRAINER_FEMALE | 
 #line 3699
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 3700
         .doubleBattle = FALSE,
 #line 3701
@@ -9236,7 +9240,7 @@ F_TRAINER_FEMALE |
 #line 3745
 F_TRAINER_FEMALE | 
 #line 3746
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 3747
         .doubleBattle = FALSE,
 #line 3748
@@ -10717,7 +10721,7 @@ F_TRAINER_FEMALE |
 #line 4336
 F_TRAINER_FEMALE | 
 #line 4337
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 4338
         .doubleBattle = FALSE,
 #line 4339
@@ -15744,7 +15748,7 @@ F_TRAINER_FEMALE |
 #line 6351
 F_TRAINER_FEMALE | 
 #line 6352
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 6353
         .doubleBattle = FALSE,
 #line 6354
@@ -30545,7 +30549,7 @@ F_TRAINER_FEMALE |
 #line 12172
 F_TRAINER_FEMALE | 
 #line 12173
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 12174
         .doubleBattle = FALSE,
 #line 12175
@@ -40189,7 +40193,7 @@ F_TRAINER_FEMALE |
 #line 16117
 F_TRAINER_FEMALE | 
 #line 16118
-            TRAINER_ENCOUNTER_MUSIC_FEMALE,
+            TRAINER_ENCOUNTER_MUSIC_SPIRITUAL,
 #line 16119
         .doubleBattle = FALSE,
 #line 16120

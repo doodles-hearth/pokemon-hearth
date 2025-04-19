@@ -168,6 +168,16 @@ KuraTown_EventScript_LovestruckGuy::
 	return
 
 
+KuraTown_EventScript_PokemonCouncil::
+	lock
+	faceplayer
+	speakername KuraTown_EventScript_PokemonCouncil_Text_0
+	msgbox KuraTown_EventScript_PokemonCouncil_Text_1
+	closemessage
+	release
+	return
+
+
 KuraTown_EventScript_TownSign::
 	msgbox KuraTown_EventScript_TownSign_Text_0, MSGBOX_SIGN
 	return
@@ -210,7 +220,7 @@ KuraTown_EventScript_DojoChallenger_Text_0:
 	.string "Bold Man$"
 
 KuraTown_EventScript_DojoChallenger_Text_1:
-	.string "Looks like the dojo is closed again…\p"
+	.string "Looks like the Dojo is closed again…\p"
 	.string "Gah, when will I get a chance to crush\n"
 	.string "Hana in a fiery battle?\p"
 	.string "Could it be that she is scared of me?$"
@@ -219,7 +229,7 @@ KuraTown_EventScript_DojoChallenger_Text_2:
 	.string "Cowardly Man$"
 
 KuraTown_EventScript_DojoChallenger_Text_3:
-	.string "The dojo is open! I can finally defeat\n"
+	.string "The Dojo is open! I can finally defeat\n"
 	.string "its leader in a fiery battle!\p"
 	.string "…Hm? When, you ask?\p"
 	.string "In… In a minute…\p"
@@ -249,7 +259,8 @@ KuraTown_EventScript_SilkScarf_Text_2:
 	.string "I bought myself this scarf in Yifu\n"
 	.string "City… But now I'm worried the white\l"
 	.string "clashes with my complexion!\p"
-	.string "Is it awful? Does my skin look grey?\p"
+	.string "Is it awful?\n"
+	.string "Does it make my skin look grey?\p"
 	.string "Oh gosh, it does, doesn't it? I knew\n"
 	.string "it! I have to get rid of it right this\l"
 	.string "moment!\p"
@@ -278,13 +289,25 @@ SakuTown_EventScript_ClosedGymDoor_Text_0:
 	.string "- Hana”$"
 
 KuraTown_EventScript_LovestruckGuy_Text_0:
-	.string "Lovestruck Guy$"
+	.string "Lovestruck Boy$"
 
 KuraTown_EventScript_LovestruckGuy_Text_1:
 	.string "I just got back home after spending\n"
 	.string "time with my love, and yet I already\l"
 	.string "want the day to pass by and let me\l"
 	.string "see her again…$"
+
+KuraTown_EventScript_PokemonCouncil_Text_0:
+	.string "Woman$"
+
+KuraTown_EventScript_PokemonCouncil_Text_1:
+	.string "The Elders of the Toku Council may\n"
+	.string "look like a bunch of old people, but\l"
+	.string "each of them was once a formidable\l"
+	.string "Wielder!\p"
+	.string "They paved the way for what Pokémon\n"
+	.string "Wielding is today, and will be\l"
+	.string "tomorrow.$"
 
 KuraTown_EventScript_TownSign_Text_0:
 	.string "Kura Village\n"

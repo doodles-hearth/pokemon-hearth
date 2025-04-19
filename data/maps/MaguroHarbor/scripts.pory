@@ -54,13 +54,17 @@ script MaguroHarbor_EventScript_PokemonNerdSign {
 script MaguroHarbor_EventScript_LovestruckGirl {
 	lock
 	faceplayer
-	speakername("Lovestruck Girl")
-	msgbox(
-		format(
+	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
+		speakername("Girl")
+		msgbox(format(
+			"What was that? Oh, I hope my boyfriend's okay…"
+		), MSGBOX_DEFAULT)
+	} else {
+		speakername("Lovestruck Girl")
+		msgbox(format(
 			"It's only been an hour since I saw my love, and yet I already want tomorrow to come just so I can see him again…"
-		),
-		MSGBOX_DEFAULT
-	)
+		), MSGBOX_DEFAULT)
+	}
 	release
 }
 
@@ -216,9 +220,17 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp {
 	faceplayer
 	
 	speakername("Salesman")
-	msgbox(format(
-		"Aye! We're not open yet. Come back later for the fresh catch of the day."
-	), MSGBOX_DEFAULT)
+
+	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
+		msgbox(format(
+			"Just saw Master Koishi run toward Beachbound Route!\p"
+			"She's so concerned with the safety of the village!"
+		), MSGBOX_DEFAULT)
+	} else {
+		msgbox(format(
+			"Aye! We're not open yet. Come back later for the fresh catch of the day."
+		), MSGBOX_DEFAULT)
+	}
 
 	closemessage
 	release
@@ -228,9 +240,17 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 	lock
 	faceplayer
 	speakername("Salesman")
-	msgbox(format(
-		"Fresh fish! Come get yer fish!"
-	), MSGBOX_DEFAULT)
+	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
+		msgbox(format(
+			"Just saw Master Koishi run toward Beachbound Route!\p"
+			"She's so concerned with the safety of the village!"
+		), MSGBOX_DEFAULT)
+	} else {
+		msgbox(format(
+			"Fresh fish! Come get yer fish!"
+		), MSGBOX_DEFAULT)
+	}
+	
 	// TODO EVA fish mons
 	closemessage
 	release
@@ -279,9 +299,17 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 	faceplayer
 	if (flag(FLAG_RECEIVED_OLD_ROD)) {
 		speakername("Fisherman")
-		msgbox(format(
-			"Heyo, wee fisherm'n! Hope ye be enjoyin' yer fishing rod!"
-		))
+
+		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
+			msgbox(format(
+				"That tremblin' nearly made me wee me pants!"
+			), MSGBOX_AUTOCLOSE)
+		} else {
+			msgbox(format(
+				"Heyo, wee fisherm'n! Hope ye be enjoyin' yer fishing rod!"
+			))
+		}
+
 		closemessage
 
 		applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
@@ -328,9 +356,16 @@ script MaguroHarbor_EventScript_Man {
 	lock
 	faceplayer
 	speakername("Man")
-	msgbox(format(
-		"I wish I swam as gracefully as the Dojo's Magikarp…"
-	))
+	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
+		msgbox(format(
+			"T-This was the biggest quake we've felt yet!"
+		), MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox(format(
+			"I wish I swam as gracefully as the Dojo's Magikarp…"
+		))
+	}
+	
 	closemessage
 	release
 }
