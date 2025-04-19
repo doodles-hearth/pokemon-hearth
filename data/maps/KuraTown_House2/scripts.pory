@@ -21,54 +21,51 @@ script KuraTown_House2_EventScript_Ashii {
 }
 
 script(local) AshiiScript1 {
-	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 0) {
-		speakername("Girl")
-		msgbox(format(
-			"Sigh… Oh, Tama… Why must life be so complicated?"
-		))
-		closemessage
-		delay(30)
+	speakername("Girl")
+	msgbox(format(
+		"Sigh… Oh, Tama… Why must life be so complicated?"
+	))
+	closemessage
+	delay(30)
 
-		playse(SE_PIN)
-		applymovement(LOCALID_ASHII, Common_Movement_FacePlayer)
-		waitmovement(0)
-		applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
-		waitmovement(0)
-		applymovement(LOCALID_ASHII, Common_Movement_Delay48)
-		waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_ASHII, Common_Movement_FacePlayer)
+	waitmovement(0)
+	applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
+	waitmovement(0)
 
-		speakername("Girl")
-		msgbox(format(
-			"Hey, what are you doing in my house? Were you eavesdropping?\p"
-			"…It doesn't matter anyway. The boy I really like lives in Saku Village, but our two villages hate each other, so I can't see him anymore.\p"
-			"If only there was a way for him to know my feelings…"
-		))
-		closemessage
-		delay(30)
+	speakername("Girl")
+	msgbox(format(
+		"Hey, what are you doing in my house? Were you eavesdropping?\p"
+		"…It doesn't matter anyway. The boy I really like lives in Saku Village, but our two villages hate each other, so I can't see him anymore.\p"
+		"If only there was a way for him to know my feelings…"
+	))
+	closemessage
+	delay(30)
 
-		playse(SE_PIN)
-		applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
-		waitmovement(0)
-		applymovement(LOCALID_ASHII, Common_Movement_Delay48)
-		waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
+	waitmovement(0)
 
-		msgbox(format(
-			"Wait, you're not from here, are you?\p"
-		))
-		closemessage
-		speakername("Ashii")
-		msgbox(format(	
-			"My name is Ashii. I need your help."
-			"The guard won't let anyone from Kura Village enter Saku Village. But you should be fine!\p"
-			"Please, go to Saku Village and give him this. He'll know it's from me."
-		))
-		closemessage
+	msgbox(format(
+		"Wait, you're not from here, are you?\p"
+	))
+	closemessage
+	speakername("Ashii")
+	msgbox(format(	
+		"My name is Ashii. I need your help."
+		"The guard won't let anyone from Kura Village enter Saku Village. But you should be fine!\p"
+		"Please, go to Saku Village and give him this. He'll know it's from me."
+	))
+	closemessage
 
-		giveitem(ITEM_ASHIIS_SCARF)
-		setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
-		startquest(QUEST_KURALOVERS)
-	}
-
+	giveitem(ITEM_ASHIIS_SCARF)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
+	startquest(QUEST_KURALOVERS)
 }
 
 script(local) AshiiScript2 {
@@ -114,10 +111,19 @@ script(local) AshiiScript3 {
 	waitmovement(0)
 	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
 	waitmovement(0)
-	callnative(CallnativeForPurposes)
 	applymovement(LOCALID_ASHII, moves(jump_in_place_down, delay_4, jump_in_place_down, delay_4, jump_in_place_down, delay_4, step_end))
 	waitmovement(0)
-	callnative(CallnativeForPurposes)
+	
+	gettimeofday
+	speakername("Ashii")
+	if(var(VAR_RESULT) == TIME_DEAD_NIGHT) {
+		msgbox(format("Thank you! Thank you! Thank you! Let's make haste, then. Before the moon takes her slumber in a few hours."))
+	} else {
+		msgbox(format("Thank you! Thank you! Thank you! Please come see me later tonight."))
+	} 
+	
+	
+	
 	closemessage
 
 

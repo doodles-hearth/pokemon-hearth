@@ -26,11 +26,6 @@ KuraTown_House2_EventScript_Ashii_5:
 
 
 AshiiScript1:
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 0
-	goto_if_eq AshiiScript1_1
-	return
-
-AshiiScript1_1:
 	speakername AshiiScript1_Text_0
 	msgbox AshiiScript1_Text_1
 	closemessage
@@ -98,13 +93,21 @@ AshiiScript3:
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	callnative CallnativeForPurposes
 	applymovement 1, AshiiScript3_Movement_1
 	waitmovement 0
-	callnative CallnativeForPurposes
+	gettimeofday
+	speakername AshiiScript1_Text_4
+	compare VAR_RESULT, TIME_DEAD_NIGHT
+	goto_if_eq AshiiScript3_2
+	msgbox AshiiScript3_Text_9
+AshiiScript3_1:
 	closemessage
 	addvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
 	return
+
+AshiiScript3_2:
+	msgbox AshiiScript3_Text_8
+	goto AshiiScript3_1
 
 
 AshiiScript3_Movement_0:
@@ -193,3 +196,12 @@ AshiiScript3_Text_6:
 
 AshiiScript3_Text_7:
 	.string "You both deserve it.$"
+
+AshiiScript3_Text_8:
+	.string "Thank you! Thank you! Thank you!\n"
+	.string "Let's make haste, then. Before the\l"
+	.string "moon takes her slumber in a few hours.$"
+
+AshiiScript3_Text_9:
+	.string "Thank you! Thank you! Thank you!\n"
+	.string "Please come see me later tonight.$"
