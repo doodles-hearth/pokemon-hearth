@@ -6,8 +6,21 @@ mapscripts KuraTown_House2_MapScripts {
 
 script KuraTown_House2_EventScript_Ashii {
 	lock
+	switch(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE)){
+		case 0: // First encounter
+			call(AshiiScript1)
+			break
+		case 1: // Accepted the quest
+			call(AshiiScript2)
+			break
+		case 2: //After talking to Tama
+			call(AshiiScript3)
+		default:
+	}
+	release
+}
 
-	// First encounter
+script(local) AshiiScript1 {
 	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 0) {
 		speakername("Girl")
 		msgbox(format(
@@ -55,15 +68,58 @@ script KuraTown_House2_EventScript_Ashii {
 		setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
 		startquest(QUEST_KURALOVERS)
 	}
-	elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {
-		faceplayer
-		speakername("Ashii")
-		msgbox(format(
-			"The guard won't let anyone from Kura Village enter Saku Village. But you should be fine!\p"
-			"Please, go to Saku Village and give him this. He'll know it's from me."
-		))
-		closemessage
-	}
 
-	release
+}
+
+script(local) AshiiScript2 {
+	faceplayer
+	speakername("Ashii")
+	msgbox(format(
+		"The guard won't let anyone from Kura Village enter Saku Village. But you should be fine!\p"
+		"Please, go to Saku Village and give him this. He'll know it's from me."
+	))
+	closemessage
+}
+
+script(local) AshiiScript3 {
+	faceplayer
+	speakername("Ashii")
+	msgbox(format(
+		"Were able to give the scarf to Tama yet? Did he get my message?"
+	))
+	closemessage
+	dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "Yep!","He sure did!","Loud and clear.")
+	playse(SE_PIN)
+	applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
+	waitmovement(0)
+	applymovement(LOCALID_ASHII, Common_Movement_FaceAwayPlayer)
+	waitmovement(0)
+	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
+	waitmovement(0)
+	applymovement(LOCALID_ASHII, moves(emote_heart))
+	waitmovement(0)
+	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
+	waitmovement(0)
+	applymovement(LOCALID_ASHII, Common_Movement_FacePlayer)
+	waitmovement(0)
+	speakername("Ashii")
+	msgbox(format(
+		"I'm sorry. You've been an incredible help and I haven't even gotten your name yet. May i ask what it is?\p
+		{PLAYER}… I see…\p {PLAYER}, I know this is a big thing to ask, but…\pI want to be sure that my meeting with Tama will be safe, especially if it might be our last. If so, can you please come with me when we go see each other again?"
+	))
+	dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "Of course.","Who wouldn't?","You both deserve it.")
+	applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
+	waitmovement(0)
+	callnative(CallnativeForPurposes)
+	applymovement(LOCALID_ASHII, moves(jump_in_place_down, delay_4, jump_in_place_down, delay_4, jump_in_place_down, delay_4, step_end))
+	callnative(CallnativeForPurposes)
+	closemessage
+
+
+
+	addvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
 }
