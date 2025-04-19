@@ -116,6 +116,7 @@ script(local) AshiiScript3 {
 	waitmovement(0)
 	callnative(CallnativeForPurposes)
 	applymovement(LOCALID_ASHII, moves(jump_in_place_down, delay_4, jump_in_place_down, delay_4, jump_in_place_down, delay_4, step_end))
+	waitmovement(0)
 	callnative(CallnativeForPurposes)
 	closemessage
 

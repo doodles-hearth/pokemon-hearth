@@ -100,6 +100,7 @@ AshiiScript3:
 	waitmovement 0
 	callnative CallnativeForPurposes
 	applymovement 1, AshiiScript3_Movement_1
+	waitmovement 0
 	callnative CallnativeForPurposes
 	closemessage
 	addvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
