@@ -4890,3 +4890,7 @@ static void DebugAction_Util_CheckEWRAMCounters(u8 taskId)
 {
     Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_EWRAMCounters);
 }
+
+void CallnativeForPurposes (void) {
+    MgbaPrintf(MGBA_LOG_WARN, "It's printing!!");
+}
