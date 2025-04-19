@@ -1,3 +1,6 @@
+#ifndef GUARD_CONSTANTS_RTC_H
+#define GUARD_CONSTANTS_RTC_H
+
 #define TIME_DEAD_NIGHT         0
 #define TIME_EARLY_MORNING      1
 #define TIME_MORNING            2
@@ -13,3 +16,5 @@
 #define WEEKDAY_THU             4
 #define WEEKDAY_FRI             5
 #define WEEKDAY_SAT             6
+
+#endif //GUARD_CONSTANTS_RTC_H
