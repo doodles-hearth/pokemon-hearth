@@ -383,7 +383,3 @@ script ChiiTown_EventScript_SchoolSign {
 script ChiiTown_EventScript_SetTrespassVar {
 	setvar(VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 1)
 }
-
-script ChiiTown_EventScript_ChatotPost {
-	msgbox(format("It's a Chatot post."), MSGBOX_SIGN)
-}

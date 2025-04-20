@@ -524,7 +524,6 @@ extern const u32 gItemIconPalette_Zinc[];
 extern const u32 gItemIconPalette_Carbos[];
 extern const u32 gItemIcon_PPUp[];
 extern const u32 gItemIconPalette_PPUp[];
-extern const u32 gItemIcon_PPMax[];
 extern const u32 gItemIconPalette_PPMax[];
 // EV Feathers
 extern const u32 gItemIcon_HealthFeather[];
@@ -1270,6 +1269,8 @@ extern const u32 gItemIcon_InBattleHerb[];
 extern const u32 gItemIconPalette_WhiteHerb[];
 extern const u32 gItemIcon_ExpShare[];
 extern const u32 gItemIconPalette_ExpShare[];
+extern const u32 gItemIcon_WiseMirror[];
+extern const u32 gItemIconPalette_WiseMirror[];
 extern const u32 gItemIcon_QuickClaw[];
 extern const u32 gItemIconPalette_QuickClaw[];
 extern const u32 gItemIcon_SootheBell[];

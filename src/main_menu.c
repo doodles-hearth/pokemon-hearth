@@ -1042,11 +1042,12 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
 
-                // TODO EVA decomment this, and remove next lines
-		        // DoKabaSpeech();
-                NewGameBirchSpeech_SetDefaultPlayerName(0);
-                gSaveBlock2Ptr->playerGender = FEMALE;
-                SetMainCallback2(CB2_NewGame);
+                // TODO EVA
+                //  To skip speech, comment DoKabaSpeech, and uncomment next lines
+		        DoKabaSpeech();
+                // NewGameBirchSpeech_SetDefaultPlayerName(0);
+                // gSaveBlock2Ptr->playerGender = FEMALE;
+                // SetMainCallback2(CB2_NewGame);
                 // end of placeholder code
 
                 DestroyTask(taskId);

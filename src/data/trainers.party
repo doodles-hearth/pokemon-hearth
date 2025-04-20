@@ -392,12 +392,6 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Hypnosis
 - Iron Defense
 
-Bronzor
-Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Confuse Ray
-- Confusion
-
 === TRAINER_KENTO ===
 Name: Kento
 Class: Miner
@@ -13239,10 +13233,10 @@ AI: Smartish Trainer
 Bean (Slowpoke) (M)
 Level: 14
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
--Yawn
--Protect
--Water Pulse
--Confusion
+- Protect
+- Water Pulse
+- Confusion
+- Tackle
 
 === TRAINER_HAILEY ===
 Name: HAILEY

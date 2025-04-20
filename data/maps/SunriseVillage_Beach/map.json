@@ -116,7 +116,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SunriseVillage_Event_LookingAtYifu",
-      "flag": "FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS",
+      "flag": "FLAG_TEMP_1",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
