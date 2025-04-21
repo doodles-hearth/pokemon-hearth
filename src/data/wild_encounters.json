@@ -13607,6 +13607,36 @@
               }
             ]
           },
+          "rock_smash_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_CORSOLA"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_NACLI"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_DWEBBLE"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_CORSOLA"
+              },
+              {
+                "min_level": 15,
+                "max_level": 18,
+                "species": "SPECIES_CORSOLA"
+              }
+            ]
+          },
           "fishing_mons": {
             "encounter_rate": 30,
             "mons": [
@@ -13659,36 +13689,6 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_NONE"
-              }
-            ]
-          },
-          "rock_smash_mons": {
-            "encounter_rate": 20,
-            "mons": [
-              {
-                "min_level": 15,
-                "max_level": 18,
-                "species": "SPECIES_CORSOLA"
-              },
-              {
-                "min_level": 15,
-                "max_level": 18,
-                "species": "SPECIES_NACLI"
-              },
-              {
-                "min_level": 15,
-                "max_level": 18,
-                "species": "SPECIES_DWEBBLE"
-              },
-              {
-                "min_level": 15,
-                "max_level": 18,
-                "species": "SPECIES_CORSOLA"
-              },
-              {
-                "min_level": 15,
-                "max_level": 18,
-                "species": "SPECIES_CORSOLA"
               }
             ]
           }
