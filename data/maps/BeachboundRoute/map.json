@@ -14,11 +14,6 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_KURA_TOWN",
-      "offset": 0,
-      "direction": "left"
-    },
-    {
       "map": "MAP_MAGURO_HARBOR",
       "offset": 0,
       "direction": "right"
@@ -27,6 +22,11 @@
       "map": "MAP_HARVEST_SHRINE",
       "offset": 34,
       "direction": "up"
+    },
+    {
+      "map": "MAP_KURA_TOWN",
+      "offset": 0,
+      "direction": "left"
     }
   ],
   "object_events": [

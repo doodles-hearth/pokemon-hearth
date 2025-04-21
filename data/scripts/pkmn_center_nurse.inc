@@ -22,6 +22,65 @@ Common_EventScript_PkmnCenterNurse_Blissey::
 	return
 
 
+Common_EventScript_PkmnCenterNurse_Sleep::
+	lock
+	faceplayer
+	checkmoney 500
+	compare VAR_RESULT, 0
+	goto_if_ne Common_EventScript_PkmnCenterNurse_Sleep_2
+	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
+	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_1
+	closemessage
+Common_EventScript_PkmnCenterNurse_Sleep_1:
+	hidemoneybox
+	release
+	end
+
+Common_EventScript_PkmnCenterNurse_Sleep_2:
+	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
+	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_1
+	closemessage
+	showmoneybox 18, 0
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, Common_EventScript_PkmnCenterNurse_Sleep_Text_2, Common_EventScript_PkmnCenterNurse_Sleep_Text_3, Common_EventScript_PkmnCenterNurse_Sleep_Text_4
+	switch VAR_RESULT
+	case 0, Common_EventScript_PkmnCenterNurse_Sleep_6
+	case 1, Common_EventScript_PkmnCenterNurse_Sleep_7
+	goto Common_EventScript_PkmnCenterNurse_Sleep_1
+
+Common_EventScript_PkmnCenterNurse_Sleep_6:
+	call Common_EventScript_PkmnCenterNurse_ChooseSleep
+	fadescreenswapbuffers FADE_TO_BLACK
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	callnative UpdateFollowingPokemon
+	fwdtime 8, 0
+	fadescreenswapbuffers FADE_FROM_BLACK
+	goto Common_EventScript_PkmnCenterNurse_Sleep_1
+
+Common_EventScript_PkmnCenterNurse_Sleep_7:
+	call Common_EventScript_PkmnCenterNurse_ChooseSleep
+	fadescreenswapbuffers FADE_TO_BLACK
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	callnative UpdateFollowingPokemon
+	fwdtime 22, 0
+	fadescreenswapbuffers FADE_FROM_BLACK
+	goto Common_EventScript_PkmnCenterNurse_Sleep_1
+
+
+Common_EventScript_PkmnCenterNurse_ChooseSleep::
+	playse SE_SHOP
+	removemoney 500
+	updatemoneybox
+	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
+	msgbox Common_EventScript_PkmnCenterNurse_ChooseSleep_Text_0
+	closemessage
+	hidemoneybox
+	return
+
+
 Common_EventScript_PkmnCenterNurse_CutTheBullshit::
 	lock
 	faceplayer
@@ -191,6 +250,26 @@ Movement_PkmnCenterNurse_Turn:
 
 Common_EventScript_PkmnCenterNurse_Chansey_Text_0:
 	.string "Sey!$"
+
+Common_EventScript_PkmnCenterNurse_Sleep_Text_0:
+	.string "Nurse$"
+
+Common_EventScript_PkmnCenterNurse_Sleep_Text_1:
+	.string "Hello! For 500¥, you and your Pokémon\n"
+	.string "can spend the night here.$"
+
+Common_EventScript_PkmnCenterNurse_Sleep_Text_2:
+	.string "Sleep until morning$"
+
+Common_EventScript_PkmnCenterNurse_Sleep_Text_3:
+	.string "Sleep until nighttime$"
+
+Common_EventScript_PkmnCenterNurse_Sleep_Text_4:
+	.string "Maybe later.$"
+
+Common_EventScript_PkmnCenterNurse_ChooseSleep_Text_0:
+	.string "Thank you! May you have a restful\n"
+	.string "night.$"
 
 Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_0:
 	.string "Welcome to the refuge!\p"

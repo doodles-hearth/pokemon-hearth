@@ -4100,6 +4100,10 @@ void FieldEffectScript_LoadFadedPalette_TallGrass(u8 **script)
     DebugPrintf("GRASS pals - current map secondary tileset = %d", GetSecondaryTilesetIdCurrentMap());
     switch (GetSecondaryTilesetIdCurrentMap())
     {
+        case TILESET_SILVERIDGE:
+            DebugPrintf("Ginko grass pal");
+            palId = TALL_GRASS_SILVERIDGE;
+            break;
         case TILESET_GINKO_WOODS:
             DebugPrintf("Ginko grass pal");
             palId = TALL_GRASS_GINKO;

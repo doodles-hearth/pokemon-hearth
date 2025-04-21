@@ -1382,3 +1382,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/OrchardPath_GuardHouse/scripts.inc"
 
 	.include "data/maps/SunriseCave/scripts.inc"
+
+	.include "data/maps/WindsweptRouteBottom/scripts.inc"

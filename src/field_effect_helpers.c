@@ -440,6 +440,9 @@ u32 FldEff_TallGrass(void)
         case TILESET_GINKO_WOODS:
             spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS_GINKO], x, y, subpriority);
             break;
+        case TILESET_SILVERIDGE:
+            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS_SILVERIDGE], x, y, subpriority);
+            break;
         default:
             spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS], x, y, subpriority);
             break;
