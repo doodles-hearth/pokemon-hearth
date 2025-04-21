@@ -1122,9 +1122,9 @@ const struct Item gItemsInfo[] =
         .name = _("Revival Herb"),
         .price = 1500,
         .description = COMPOUND_STRING(
-            "Revives a fainted\n"
-            "Pokémon. Cannot\n"
-            "be used in battle."
+            "A bitter herb.\n"
+            "Revives a Pokémon\n"
+            "outside of battle."
         ),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
@@ -1140,9 +1140,9 @@ const struct Item gItemsInfo[] =
         .name = _("Revival Balm"),
         .price = 800,
         .description = COMPOUND_STRING(
-            "Revives a fainted\n"
-            "Pokémon. Cannot\n"
-            "be used in battle."
+            "A bitter herb.\n"
+            "Revives a Pokémon\n"
+            "outside of battle."
         ),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
@@ -1158,9 +1158,9 @@ const struct Item gItemsInfo[] =
         .name = _("Revival Powder"),
         .price = 500,
         .description = COMPOUND_STRING(
-            "Revives a fainted\n"
-            "Pokémon. Cannot\n"
-            "be used in battle."
+            "A bitter powder.\n"
+            "Revives a Pokémon\n"
+            "outside of battle."
         ),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
