@@ -38,32 +38,32 @@ ChiiTown_DrawMetatiles_21:
 	end
 
 ChiiTown_DrawMetatiles_2:
-	setmetatile 17, 18, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 17, 19, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 17, 18, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 17, 19, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_1
 
 ChiiTown_DrawMetatiles_5:
-	setmetatile 16, 16, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 16, 16, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_4
 
 ChiiTown_DrawMetatiles_8:
-	setmetatile 11, 20, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 15, 22, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 11, 20, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 15, 22, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_7
 
 ChiiTown_DrawMetatiles_11:
-	setmetatile 16, 22, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 16, 22, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_10
 
 ChiiTown_DrawMetatiles_14:
-	setmetatile 18, 23, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 17, 16, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 18, 23, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 17, 16, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_13
 
 ChiiTown_DrawMetatiles_17:
-	setmetatile 10, 21, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 16, 19, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 21, 23, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 10, 21, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 16, 19, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 21, 23, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_16
 
 ChiiTown_DrawMetatiles_20:
