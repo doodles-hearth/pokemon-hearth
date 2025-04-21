@@ -11594,8 +11594,8 @@
               },
               {
                 "min_level": 3,
-                "max_level": 3,
-                "species": "SPECIES_MAREEP"
+                "max_level": 5,
+                "species": "SPECIES_PONYTA"
               },
               {
                 "min_level": 5,
@@ -12101,7 +12101,7 @@
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MAREEP"
+                "species": "SPECIES_WOOLOO"
               },
               {
                 "min_level": 5,
@@ -12116,12 +12116,12 @@
               {
                 "min_level": 6,
                 "max_level": 9,
-                "species": "SPECIES_NIDORAN"
+                "species": "SPECIES_WOOLOO"
               },
               {
                 "min_level": 6,
                 "max_level": 9,
-                "species": "SPECIES_NIDORAN"
+                "species": "SPECIES_WOOLOO"
               },
               {
                 "min_level": 3,
