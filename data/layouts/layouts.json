@@ -6372,6 +6372,18 @@
       "secondary_tileset": "gTileset_HouseSoulkeep",
       "border_filepath": "data/layouts/OrchardPath_GuardHouse/border.bin",
       "blockdata_filepath": "data/layouts/OrchardPath_GuardHouse/map.bin"
+    },
+    {
+      "id": "LAYOUT_SUNRISE_CAVE",
+      "name": "SunriseCave_Layout",
+      "width": 20,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_SilverTunnel",
+      "border_filepath": "data/layouts/SunriseCave/border.bin",
+      "blockdata_filepath": "data/layouts/SunriseCave/map.bin"
     }
   ]
 }

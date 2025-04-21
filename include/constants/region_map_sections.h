@@ -218,8 +218,9 @@
 #define MAPSEC_SEASTROLL_CHANNEL            0xD6
 #define MAPSEC_ORCHARD_PATH                 0xD7
 #define MAPSEC_SABERSIDE_TOWN               0xD8
-#define MAPSEC_DUMMY                        0xD9
-#define MAPSEC_NONE                         0xDA
+#define MAPSEC_SUNRISE_CAVE               0xD9
+#define MAPSEC_DUMMY                        0xDA
+#define MAPSEC_NONE                         0xDB
 
 #define METLOC_SPECIAL_EGG                  0xFD
 #define METLOC_IN_GAME_TRADE                0xFE

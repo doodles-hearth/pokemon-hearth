@@ -81,7 +81,7 @@ Silveridge_EventScript_Mart::
 Silveridge_Mart:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_OINTMENT
-	.2byte ITEM_REVIVAL_BALM
+	.2byte ITEM_REVIVAL_POWDER
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_AWAKENING
