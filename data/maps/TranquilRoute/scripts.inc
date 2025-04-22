@@ -137,17 +137,17 @@ TranquilRoute_EventScript_FlowerCutMastersGarden_2:
 	return
 
 TranquilRoute_EventScript_FlowerCutMastersGarden_6:
-	setmetatile 39, 33, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 40, 34, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 41, 33, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 42, 34, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 39, 33, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 40, 34, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 41, 33, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 42, 34, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto TranquilRoute_EventScript_FlowerCutMastersGarden_5
 
 TranquilRoute_EventScript_FlowerCutMastersGarden_8:
-	setmetatile 35, 29, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 34, 30, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 35, 31, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 34, 32, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 35, 29, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 34, 30, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 35, 31, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 34, 32, METATILE_SunriseVillage_RedFlowers, FALSE
 	return
 
 

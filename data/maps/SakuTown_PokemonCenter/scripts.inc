@@ -25,11 +25,11 @@ SakuTown_PokemonCenter_EventScript_Nurse::
 	end
 
 
-SakuTown_PokemonCenter_EventScript_Traveler::
+SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks::
 	lock
 	faceplayer
-	speakername SakuTown_PokemonCenter_EventScript_Traveler_Text_0
-	msgbox SakuTown_PokemonCenter_EventScript_Traveler_Text_1
+	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
+	msgbox SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0
 	closemessage
 	release
 	end
@@ -116,6 +116,20 @@ SakuTown_PokemonCenter_Movement_PushesPlayerUp:
 	face_original_direction
 	step_end
 
+SakuTown_PokemonCenter_EventScript_Makuhita::
+	lock
+	setseenmon SPECIES_MAKUHITA
+	setspeakertomonname SPECIES_MAKUHITA
+	playmoncry SPECIES_MAKUHITA, CRY_MODE_WEAK
+	msgbox SakuTown_PokemonCenter_EventScript_Makuhita_Text_0
+	waitmoncry
+	waitmessage
+	speakername NULL
+	msgbox SakuTown_PokemonCenter_EventScript_Makuhita_Text_1
+	release
+	return
+
+
 SakuTown_PokemonCenter_EventScript_Nurse_Text_0:
 	.string "Nurse$"
 
@@ -127,10 +141,7 @@ SakuTown_PokemonCenter_EventScript_Nurse_Text_1:
 SakuTown_PokemonCenter_EventScript_Nurse_Text_2:
 	.string "Come back soon!$"
 
-SakuTown_PokemonCenter_EventScript_Traveler_Text_0:
-	.string "Man$"
-
-SakuTown_PokemonCenter_EventScript_Traveler_Text_1:
+SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0:
 	.string "This Pokémon refuge is brand-new,\n"
 	.string "courtesy of the Toku Council!\p"
 	.string "As you can see, it's still being built.\n"
@@ -154,3 +165,9 @@ SakuTown_PokemonCenter_EventScript_Grunt2_Text_0:
 
 SakuTown_PokemonCenter_EventScript_Grunt3_Text_0:
 	.string "On Beachbound Route…$"
+
+SakuTown_PokemonCenter_EventScript_Makuhita_Text_0:
+	.string "Kuhu…$"
+
+SakuTown_PokemonCenter_EventScript_Makuhita_Text_1:
+	.string "The Pokémon is resting.$"

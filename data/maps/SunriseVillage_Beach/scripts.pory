@@ -2,7 +2,7 @@ const FLAG_HIDE_LITTLE_BOY = FLAG_TEMP_1
 
 mapscripts SunriseVillage_Beach_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		if (flag(FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS)) {
+		if (!flag(FLAG_RECEIVED_STARTER)) {
 			setflag(FLAG_HIDE_LITTLE_BOY)
 		}
 	}
@@ -293,6 +293,40 @@ script SunriseVillage_Event_LookingAtYifu {
 	waitmovement(0)
 	release
 	end
+}
+
+script SunriseVillage_Event_PokemonWontComeOut {
+	lock
+	faceplayer
+	speakername("Little Boy")
+	msgbox(format(
+		"I'm going to catch my first Pokémon myself, all on my own!"
+	))
+	closemessage
+	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
+	waitmovement(0)
+
+	speakername("Little Boy")
+	msgbox(format(
+		"Pspspsps… Come on out, Pokémon… Pspsps…"
+	))
+	closemessage
+
+	release
+	end
+}
+
+script SunriseVillage_Event_ChildsMon {
+	lock
+    faceplayer
+	setseenmon(SPECIES_DWEBBLE)
+    playmoncry(SPECIES_DWEBBLE, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Mrrb!"
+    ))
+    waitmoncry
+    release
+    end
 }
 
 movement SunriseVillage_Beach_Movement_RivalSitsOnBench {

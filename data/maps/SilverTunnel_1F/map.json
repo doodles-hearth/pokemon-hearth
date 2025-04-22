@@ -220,7 +220,7 @@
       "x": 24,
       "y": 26,
       "elevation": 0,
-      "dest_map": "MAP_WINDSWEPT_ROUTE",
+      "dest_map": "MAP_WINDSWEPT_ROUTE_BOTTOM",
       "dest_warp_id": "0"
     },
     {

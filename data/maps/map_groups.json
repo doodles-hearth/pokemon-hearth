@@ -65,7 +65,8 @@
     "ScenicRouteSaberside",
     "WindyCape2",
     "YifuCity",
-    "FlowergrassPlateau"
+    "FlowergrassPlateau",
+    "WindsweptRouteBottom"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "SunriseVillage_PlayersHouse_LR",
@@ -149,7 +150,8 @@
     "SilverTunnel_2F",
     "UumeForest",
     "CrobatHideout_1F",
-    "SilverTunnel_3F"
+    "SilverTunnel_3F",
+    "SunriseCave"
   ],
   "gMapGroup_VanillaMaps1": [
     "PetalburgCity",

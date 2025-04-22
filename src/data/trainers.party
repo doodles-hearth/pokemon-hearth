@@ -118,11 +118,11 @@ Music: Male
 Double Battle: No
 AI: Basic Trainer
 
-Taillow
+Nacli
 Level: 3
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Peck
-- Growl
+- Tackle
+- Harden
 
 Kotora
 Level: 4
@@ -181,11 +181,11 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - String Shot
 
-Meowth
+Nacli
 Level: 6
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Growl
-- Fake Out
+- Rock Throw
+- Harden
 - Tackle
 
 === TRAINER_TAKESHI ===
@@ -252,12 +252,11 @@ Music: Rich
 Double Battle: No
 AI: Basic Trainer
 
-Nidoran (M)
+Barboach
 Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Leer
-- Poison Sting
-- Peck
+- Water Gun
+- Water Sport
 
 Inkay
 Level: 8
@@ -275,12 +274,12 @@ Music: Female
 Double Battle: No
 AI: Basic Trainer
 
-Nidoran (F)
+Shellos
 Level: 7
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Leer
-- Poison Sting
-- Scratch
+- Mud Sport
+- Harden
+- Mud Slap
 
 Ponyta
 Level: 6
@@ -386,7 +385,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Bronzor
-Level: 12
+Level: 10
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Confusion
 - Hypnosis

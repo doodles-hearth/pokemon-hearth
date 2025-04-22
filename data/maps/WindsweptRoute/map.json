@@ -5,7 +5,7 @@
   "music": "MUS_ROUTE110",
   "region_map_section": "MAPSEC_WINDSWEPT_ROUTE",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_RAIN_THUNDERSTORM",
   "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -13,11 +13,6 @@
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
-    {
-      "map": "MAP_KURA_TOWN",
-      "offset": -16,
-      "direction": "down"
-    },
     {
       "map": "MAP_SILVERIDGE",
       "offset": 48,
@@ -32,69 +27,14 @@
       "map": "MAP_WINDY_CAPE2",
       "offset": 19,
       "direction": "up"
+    },
+    {
+      "map": "MAP_WINDSWEPT_ROUTE_BOTTOM",
+      "offset": 0,
+      "direction": "down"
     }
   ],
   "object_events": [
-    {
-      "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
-      "x": 14,
-      "y": 88,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_CutTree",
-      "flag": "FLAG_CUT_TREE_SILVER_TUNNEL",
-      "afternoon": false,
-      "deadnight": false,
-      "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
-      "x": 15,
-      "y": 87,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_CutTree",
-      "flag": "FLAG_CUT_TREE_SILVER_TUNNEL",
-      "afternoon": false,
-      "deadnight": false,
-      "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
-      "x": 16,
-      "y": 92,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "WindsweptRoute_EventScript_OvergrownTrees",
-      "flag": "0",
-      "afternoon": false,
-      "deadnight": false,
-      "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
-    },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
       "x": 9,
@@ -221,10 +161,10 @@
       "y": 33,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
-      "movement_range_x": 7,
+      "movement_range_x": 6,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "4",
+      "trainer_sight_or_berry_tree_id": "2",
       "script": "WindsweptRoute_EventScript_Itamae",
       "flag": "0",
       "afternoon": false,
@@ -457,13 +397,6 @@
     }
   ],
   "warp_events": [
-    {
-      "x": 14,
-      "y": 79,
-      "elevation": 0,
-      "dest_map": "MAP_SILVER_TUNNEL_1F",
-      "dest_warp_id": "0"
-    },
     {
       "x": 20,
       "y": 65,

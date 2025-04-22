@@ -34,6 +34,7 @@
 #include "constants/event_object_movement.h"
 #include "constants/field_effects.h"
 #include "constants/flags.h"
+#include "constants/layouts.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -4098,8 +4099,16 @@ void FieldEffectScript_LoadFadedPalette_TallGrass(u8 **script)
     struct SpritePalette *palettes = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
     // Dynamically change footprint subsprites based on tileset
     DebugPrintf("GRASS pals - current map secondary tileset = %d", GetSecondaryTilesetIdCurrentMap());
+    DebugPrintf("LAYOUT ID = %d VS %d", gMapHeader.mapLayoutId, LAYOUT_WINDSWEPT_ROUTE_BOTTOM);
     switch (GetSecondaryTilesetIdCurrentMap())
     {
+        case TILESET_SILVERIDGE:
+            if (gMapHeader.mapLayoutId == LAYOUT_WINDSWEPT_ROUTE_BOTTOM) {
+                palId = TALL_GRASS;
+            } else {
+                palId = TALL_GRASS_SILVERIDGE;
+            }
+            break;
         case TILESET_GINKO_WOODS:
             DebugPrintf("Ginko grass pal");
             palId = TALL_GRASS_GINKO;
