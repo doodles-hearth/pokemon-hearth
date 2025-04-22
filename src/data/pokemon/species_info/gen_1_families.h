@@ -7620,10 +7620,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     [SPECIES_GOLDUCK_TOKUAN] =
     {
         .baseHP        = 80,
-        .baseAttack    = 82,
+        .baseAttack    = 86,
         .baseDefense   = 78,
         .baseSpeed     = 85,
-        .baseSpAttack  = 95,
+        .baseSpAttack  = 89,
         .baseSpDefense = 80,
         .types = MON_TYPES(TYPE_WATER, TYPE_DARK),
         .catchRate = 75,
@@ -7684,8 +7684,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gMonShinyPalette_GolduckTokuan
         )
         // TODO EVA
-        .levelUpLearnset = sGolduckLevelUpLearnset,
-        .teachableLearnset = sGolduckTeachableLearnset,
+        .levelUpLearnset = sGolduckTokuanLevelUpLearnset,
+        .teachableLearnset = sGolduckTokuanTeachableLearnset,
     },
 #endif //P_FAMILY_PSYDUCK
 
