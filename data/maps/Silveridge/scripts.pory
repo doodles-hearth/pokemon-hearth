@@ -115,5 +115,5 @@ script Silveridge_EventScript_SculptorsHouseSign {
 }
 
 script Silveridge_EventScript_EldersHouseSign {
-	msgbox(format("{ARROW_UP} Elder Iwa's house"), MSGBOX_SIGN)
+	msgbox(format("{UP_ARROW} Elder Iwa's house"), MSGBOX_SIGN)
 }

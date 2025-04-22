@@ -62,7 +62,7 @@ echo "HOUSES"
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_beige/ ./house-beige/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_stone/ ./house-stone/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_green/ ./house-green/ ./building-generic/ ../../include/constants/metatile_behaviors.h
-porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_hardwood2/ ./house-hardwood2/ ./building-generic/ ../../include/constants/metatile_behaviors.h
+porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_hardwood_2/ ./house-hardwood2/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_marble/ ./house-marble/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 # Dojos
 echo "DOJOS"

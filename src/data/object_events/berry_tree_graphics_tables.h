@@ -11,8 +11,13 @@ static const struct SpriteFrameImage sPicTable_CheriBerryTree[] = {
 };
 
 // This stupid thing is the palette slot in sObjectEventSpritePalettes for each berry stage:
+// I thought it was:
 // Seed, Sprout, Sprout (frame 2), Treeling, Treeling, Flowers, Flowers, Berries, Berries
-const u8 gBerryTreePaletteSlotTable_Cheri[] = {10, 10, 10, 11, 11, 11, 11};
+// But actually it's not, and I'm tired of trying to understand this jankass code
+// It's PROBABLY:
+// - First 2 are seed and/or sprout
+// - Next ones are all the proper stages
+const u8 gBerryTreePaletteSlotTable_Cheri[] = {10, 10, 11, 11, 11, 11, 11};
 
 static const struct SpriteFrameImage sPicTable_ChestoBerryTree[] = {
     overworld_frame(gObjectEventPic_BerryTreeDirtPile, 2, 2, 0),
@@ -26,7 +31,7 @@ static const struct SpriteFrameImage sPicTable_ChestoBerryTree[] = {
     overworld_frame(gObjectEventPic_ChestoBerryTree, 2, 4, 5),
 };
 
-const u8 gBerryTreePaletteSlotTable_Chesto[] = {10, 10, 10, 12, 12, 12, 12};
+const u8 gBerryTreePaletteSlotTable_Chesto[] = {10, 10, 12, 12, 12, 12, 12};
 
 static const struct SpriteFrameImage sPicTable_PechaBerryTree[] = {
     overworld_frame(gObjectEventPic_BerryTreeDirtPile, 2, 2, 0),
@@ -40,7 +45,7 @@ static const struct SpriteFrameImage sPicTable_PechaBerryTree[] = {
     overworld_frame(gObjectEventPic_PechaBerryTree, 2, 4, 5),
 };
 
-const u8 gBerryTreePaletteSlotTable_Pecha[] = {10, 10, 10, 15, 15, 15, 15};
+const u8 gBerryTreePaletteSlotTable_Pecha[] = {10, 10, 15, 15, 15, 15, 15};
 
 static const struct SpriteFrameImage sPicTable_RawstBerryTree[] = {
     overworld_frame(gObjectEventPic_BerryTreeDirtPile, 2, 2, 0),
@@ -54,7 +59,7 @@ static const struct SpriteFrameImage sPicTable_RawstBerryTree[] = {
     overworld_frame(gObjectEventPic_RawstBerryTree, 2, 4, 5),
 };
 
-const u8 gBerryTreePaletteSlotTable_Rawst[] = {10, 10, 10, 16, 16, 16, 16};
+const u8 gBerryTreePaletteSlotTable_Rawst[] = {10, 10, 16, 16, 16, 16, 16};
 
 static const struct SpriteFrameImage sPicTable_AspearBerryTree[] = {
     overworld_frame(gObjectEventPic_BerryTreeDirtPile, 2, 2, 0),
@@ -82,7 +87,7 @@ static const struct SpriteFrameImage sPicTable_LeppaBerryTree[] = {
     overworld_frame(gObjectEventPic_LeppaBerryTree, 2, 4, 5),
 };
 
-const u8 gBerryTreePaletteSlotTable_Leppa[] = {10, 10, 10, 18, 18, 18, 18};
+const u8 gBerryTreePaletteSlotTable_Leppa[] = {10, 10, 18, 18, 18, 18, 18};
 
 static const struct SpriteFrameImage sPicTable_OranBerryTree[] = {
     overworld_frame(gObjectEventPic_BerryTreeDirtPile, 2, 2, 0),
@@ -96,7 +101,7 @@ static const struct SpriteFrameImage sPicTable_OranBerryTree[] = {
     overworld_frame(gObjectEventPic_OranBerryTree, 2, 4, 5),
 };
 
-const u8 gBerryTreePaletteSlotTable_Oran[] = {10, 10, 10, 13, 13, 13, 13};
+const u8 gBerryTreePaletteSlotTable_Oran[] = {10, 10, 13, 13, 13, 13, 13};
 
 static const struct SpriteFrameImage sPicTable_PersimBerryTree[] = {
     overworld_frame(gObjectEventPic_BerryTreeDirtPile, 2, 2, 0),
@@ -110,7 +115,7 @@ static const struct SpriteFrameImage sPicTable_PersimBerryTree[] = {
     overworld_frame(gObjectEventPic_PersimBerryTree, 2, 4, 5),
 };
 
-const u8 gBerryTreePaletteSlotTable_Persim[] = {10, 10, 10, 17, 17, 17, 17};
+const u8 gBerryTreePaletteSlotTable_Persim[] = {10, 10, 17, 17, 17, 17, 17};
 
 static const struct SpriteFrameImage sPicTable_LumBerryTree[] = {
     overworld_frame(gObjectEventPic_BerryTreeDirtPile, 2, 2, 0),
@@ -124,7 +129,7 @@ static const struct SpriteFrameImage sPicTable_LumBerryTree[] = {
     overworld_frame(gObjectEventPic_LumBerryTree, 2, 4, 5),
 };
 
-const u8 gBerryTreePaletteSlotTable_Lum[] = {10, 10, 10, 4, 4, 4, 4};
+const u8 gBerryTreePaletteSlotTable_Lum[] = {10, 10, 4, 4, 4, 4, 4};
 
 static const struct SpriteFrameImage sPicTable_SitrusBerryTree[] = {
     overworld_frame(gObjectEventPic_BerryTreeDirtPile, 2, 2, 0),
