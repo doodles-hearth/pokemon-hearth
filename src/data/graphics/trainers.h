@@ -170,7 +170,7 @@ const u32 gTrainerFrontPic_ChampionWallace[] = INCBIN_U32("graphics/trainers/fro
 const u32 gTrainerPalette_ChampionWallace[] = INCBIN_U32("graphics/trainers/front_pics/champion_wallace.gbapal.lz");
 
 const u32 gTrainerFrontPic_Fisherman[] = INCBIN_U32("graphics/trainers/front_pics/fisherman.4bpp.lz");
-const u32 gTrainerPalette_Fisherman[] = INCBIN_U32("graphics/trainers/palettes/fisherman.gbapal.lz");
+const u32 gTrainerPalette_Fisherman[] = INCBIN_U32("graphics/trainers/front_pics/fisherman.gbapal.lz");
 
 const u32 gTrainerFrontPic_CyclingTriathleteM[] = INCBIN_U32("graphics/trainers/front_pics/cycling_triathlete_m.4bpp.lz");
 const u32 gTrainerPalette_CyclingTriathleteM[] = INCBIN_U32("graphics/trainers/front_pics/cycling_triathlete_m.gbapal.lz");
