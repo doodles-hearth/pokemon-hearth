@@ -142,8 +142,7 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
-	setflag FLAG_SYS_QUEST_MENU_GET
-	startquest QUEST_HEARTH_MAIN_CAMPAIGN
+	callnative PrintTimesIntoMgbaPrintf
 	release
 	end
 

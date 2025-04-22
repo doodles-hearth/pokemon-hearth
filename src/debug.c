@@ -2334,13 +2334,6 @@ void BufferExpansionVersion(struct ScriptContext *ctx)
         string = StringCopy(string, sText_Unreleased);
 }
 
-static void SilentWarpForTime(void)
-{
-    SetWarpDestination(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.warpId, gSaveBlock1Ptr->location.x, gSaveBlock1Ptr->location.y);
-    DoDiveWarp();
-    ResetInitialPlayerAvatarState();
-}
-
 // *******************************
 // Actions Scripts
 static void DebugAction_Util_Script_1(u8 taskId)
@@ -3757,49 +3750,49 @@ static void DebugAction_TimeSkip_Dead_Night(u8 taskId)
 {
     FakeRtc_ForwardTimeTo(0, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_EarlyMorning(u8 taskId)
 {
     FakeRtc_ForwardTimeTo(5, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Morning(u8 taskId)
 {
     FakeRtc_ForwardTimeTo(8, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Lunchtime(u8 taskId)
 {
     FakeRtc_ForwardTimeTo(12, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Afternoon(u8 taskId)
 {
     FakeRtc_ForwardTimeTo(14, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Evening(u8 taskId)
 {
     FakeRtc_ForwardTimeTo(18, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Night(u8 taskId)
 {
     FakeRtc_ForwardTimeTo(22, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Sunday(u8 taskId)
@@ -3810,7 +3803,7 @@ static void DebugAction_TimeSkip_Sunday(u8 taskId)
     daysToAdd = ((0 - weekdayCurrent) + 7) % 7;
     FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);    
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Monday(u8 taskId)
@@ -3821,7 +3814,7 @@ static void DebugAction_TimeSkip_Monday(u8 taskId)
     daysToAdd = ((1 - weekdayCurrent) + 7) % 7;
     FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Tuesday(u8 taskId)
@@ -3832,7 +3825,7 @@ static void DebugAction_TimeSkip_Tuesday(u8 taskId)
     daysToAdd = ((2 - weekdayCurrent) + 7) % 7;
     FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Wednesday(u8 taskId)
@@ -3843,7 +3836,7 @@ static void DebugAction_TimeSkip_Wednesday(u8 taskId)
     daysToAdd = ((3 - weekdayCurrent) + 7) % 7;
     FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Thursday(u8 taskId)
@@ -3854,7 +3847,7 @@ static void DebugAction_TimeSkip_Thursday(u8 taskId)
     daysToAdd = ((4 - weekdayCurrent) + 7) % 7;
     FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Friday(u8 taskId)
@@ -3865,7 +3858,7 @@ static void DebugAction_TimeSkip_Friday(u8 taskId)
     daysToAdd = ((5 - weekdayCurrent) + 7) % 7;
     FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 static void DebugAction_TimeSkip_Saturday(u8 taskId)
@@ -3876,7 +3869,7 @@ static void DebugAction_TimeSkip_Saturday(u8 taskId)
     daysToAdd = ((6 - weekdayCurrent) + 7) % 7;
     FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);    
     Debug_DestroyMenu_Full(taskId);
-    SilentWarpForTime();
+    SetMainCallback2(CB2_LoadMap);
 }
 
 
