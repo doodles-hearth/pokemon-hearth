@@ -31,6 +31,8 @@ porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/t
 # Silver tunnel
 echo "SILVER TUNNEL"
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/silver_tunnel/ ./silver-tunnel/ ./exterior-generic ../../include/constants/metatile_behaviors.h
+echo "BROWN CAVE"
+porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/brown_cave/ ./brown-cave/ ./exterior-generic ../../include/constants/metatile_behaviors.h
 # Soulkeep
 echo "SOULKEEP"
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/soulkeep/ ./soulkeep/ ./exterior-generic ../../include/constants/metatile_behaviors.h
