@@ -7544,7 +7544,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gOverworldPalette_Golduck,
             gShinyOverworldPalette_Golduck
         )
-        .levelUpLearnset = sGolduckLevelUpLearnset,
+        .levelUpLearnset = sGolduckTokuanLevelUpLearnset,
         .teachableLearnset = sGolduckTeachableLearnset,
     },
 
@@ -7685,7 +7685,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         // TODO EVA
         .levelUpLearnset = sGolduckTokuanLevelUpLearnset,
-        .teachableLearnset = sGolduckTokuanTeachableLearnset,
+        .teachableLearnset = sGolduckTeachableLearnset,
     },
 #endif //P_FAMILY_PSYDUCK
 
