@@ -13,6 +13,7 @@
 #include "trig.h"
 #include "constants/event_objects.h"
 #include "constants/field_effects.h"
+#include "constants/layouts.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "script.h"
@@ -441,7 +442,11 @@ u32 FldEff_TallGrass(void)
             spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS_GINKO], x, y, subpriority);
             break;
         case TILESET_SILVERIDGE:
-            spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS_SILVERIDGE], x, y, subpriority);
+            if (gMapHeader.mapLayoutId == LAYOUT_WINDSWEPT_ROUTE_BOTTOM) {
+                spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS], x, y, subpriority);
+            } else {
+                spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS_SILVERIDGE], x, y, subpriority);
+            }
             break;
         default:
             spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_TALL_GRASS], x, y, subpriority);
