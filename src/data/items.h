@@ -11551,16 +11551,20 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_ANCIENT_POWER,
     },
 
-    [ITEM_TM56] =
+    [ITEM_TM_ROCK_BLAST] =
     {
         .name = _("TM56"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Hurls rocks at\n"
+            "the foe 2 to 5\n"
+            "times in a row."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_ROCK_BLAST,
     },
 
     [ITEM_TM57] =

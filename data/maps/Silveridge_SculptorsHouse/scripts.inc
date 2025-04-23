@@ -1,5 +1,31 @@
 Silveridge_SculptorsHouse_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD
 	.byte 0
+
+Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD:
+	compare VAR_STATE_SCULPTOR, 2
+	goto_if_ge Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_2
+Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_1:
+	compare VAR_STATE_SCULPTOR, 3
+	goto_if_ge Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_5
+Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_4:
+	compare VAR_STATE_SCULPTOR, 4
+	goto_if_ge Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_8
+Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_7:
+	special DrawWholeMapView
+	return
+
+Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_2:
+	call Silveridge_SculptorsHouse_EventScript_DrawPonyta
+	goto Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_1
+
+Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_5:
+	call Silveridge_SculptorsHouse_EventScript_DrawOnix
+	goto Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_4
+
+Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_8:
+	call Silveridge_SculptorsHouse_EventScript_DrawClefable
+	goto Silveridge_SculptorsHouse_MapScripts_MAP_SCRIPT_ON_LOAD_7
 
 
 Silveridge_House1_EventScript_Sculptor::
@@ -7,6 +33,7 @@ Silveridge_House1_EventScript_Sculptor::
 	case 0, Silveridge_House1_EventScript_Sculptor_2
 	case 1, Silveridge_House1_EventScript_Sculptor_3
 	case 2, Silveridge_House1_EventScript_Sculptor_4
+	case 3, Silveridge_House1_EventScript_Sculptor_5
 	return
 
 Silveridge_House1_EventScript_Sculptor_2:
@@ -14,17 +41,69 @@ Silveridge_House1_EventScript_Sculptor_2:
 	return
 
 Silveridge_House1_EventScript_Sculptor_3:
-	setvar VAR_TEMP_1, SPECIES_ONIX
-	setvar VAR_TEMP_2, SPECIES_PONYTA
+	setvar VAR_TEMP_1, SPECIES_PONYTA
+	setvar VAR_TEMP_2, SPECIES_ONIX
 	setvar VAR_TEMP_3, ITEM_TM_ANCIENT_POWER
 	call Silveridge_House1_EventScript_Sculptor_BringMeMon
 	return
 
 Silveridge_House1_EventScript_Sculptor_4:
-	setvar VAR_TEMP_1, SPECIES_PONYTA
-	setvar VAR_TEMP_2, SPECIES_HERACROSS
-	setvar VAR_TEMP_3, ITEM_TM_ANCIENT_POWER
+	setvar VAR_TEMP_1, SPECIES_ONIX
+	setvar VAR_TEMP_2, SPECIES_CLEFABLE
+	setvar VAR_TEMP_3, ITEM_TM_ROCK_BLAST
 	call Silveridge_House1_EventScript_Sculptor_BringMeMon
+	return
+
+Silveridge_House1_EventScript_Sculptor_5:
+	setvar VAR_TEMP_1, SPECIES_CLEFABLE
+	setvar VAR_TEMP_2, SPECIES_DRAGONAIR
+	setvar VAR_TEMP_3, ITEM_TM_ROCK_BLAST
+	call Silveridge_House1_EventScript_Sculptor_BringMeMon
+	return
+
+
+Silveridge_SculptorsHouse_EventScript_DrawCurrentMon::
+	switch VAR_TEMP_1
+	case SPECIES_PONYTA, Silveridge_SculptorsHouse_EventScript_DrawCurrentMon_3
+	case SPECIES_ONIX, Silveridge_SculptorsHouse_EventScript_DrawCurrentMon_4
+	case SPECIES_CLEFABLE, Silveridge_SculptorsHouse_EventScript_DrawCurrentMon_5
+Silveridge_SculptorsHouse_EventScript_DrawCurrentMon_1:
+	special DrawWholeMapView
+	return
+
+Silveridge_SculptorsHouse_EventScript_DrawCurrentMon_3:
+	call Silveridge_SculptorsHouse_EventScript_DrawPonyta
+	goto Silveridge_SculptorsHouse_EventScript_DrawCurrentMon_1
+
+Silveridge_SculptorsHouse_EventScript_DrawCurrentMon_4:
+	call Silveridge_SculptorsHouse_EventScript_DrawOnix
+	goto Silveridge_SculptorsHouse_EventScript_DrawCurrentMon_1
+
+Silveridge_SculptorsHouse_EventScript_DrawCurrentMon_5:
+	call Silveridge_SculptorsHouse_EventScript_DrawClefable
+	goto Silveridge_SculptorsHouse_EventScript_DrawCurrentMon_1
+
+
+Silveridge_SculptorsHouse_EventScript_DrawPonyta::
+	setmetatile 13, 3, METATILE_HouseStone_StatuePonytaTopLeft, FALSE
+	setmetatile 13, 4, METATILE_HouseStone_StatuePonytaBottomLeft, TRUE
+	setmetatile 14, 4, METATILE_HouseStone_StatuePonytaBottomRight, TRUE
+	return
+
+
+Silveridge_SculptorsHouse_EventScript_DrawOnix::
+	setmetatile 11, 1, METATILE_HouseStone_StatueOnixTopLeft, FALSE
+	setmetatile 12, 1, METATILE_HouseStone_StatueOnixTopRight, FALSE
+	setmetatile 11, 2, METATILE_HouseStone_StatueOnixBottomLeft, TRUE
+	setmetatile 12, 2, METATILE_HouseStone_StatueOnixBottomRight, TRUE
+	return
+
+
+Silveridge_SculptorsHouse_EventScript_DrawClefable::
+	setmetatile 9, 2, METATILE_HouseStone_StatueClefableTopLeft, FALSE
+	setmetatile 10, 2, METATILE_HouseStone_StatueClefableTopRight, FALSE
+	setmetatile 9, 3, METATILE_HouseStone_StatueClefableBottomLeft, TRUE
+	setmetatile 10, 3, METATILE_HouseStone_StatueClefableBottomRight, TRUE
 	return
 
 
@@ -62,6 +141,7 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_2:
 	playse SE_M_FLATTER
 	delay 24
 	playse SE_M_FLATTER
+	call Silveridge_SculptorsHouse_EventScript_DrawCurrentMon
 	delay 48
 	fadescreenswapbuffers FADE_FROM_BLACK
 	delay 24
@@ -93,7 +173,7 @@ Silveridge_House1_EventScript_Sculptor_FirstTime::
 	speakername Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0
 	msgbox Silveridge_House1_EventScript_Sculptor_FirstTime_Text_1
 	closemessage
-	setnamedmon SPECIES_ONIX
+	setnamedmon SPECIES_PONYTA
 	setvar VAR_STATE_SCULPTOR, 1
 	release
 	return
@@ -159,7 +239,7 @@ Silveridge_House1_EventScript_Sculptor_FirstTime_Text_1:
 	.string "the pinnacle of beauty… That is my\l"
 	.string "aspiration.\p"
 	.string "To satisfy this need, I must lay my\n"
-	.string "eyes on an Onix.\p"
+	.string "eyes on a Ponyte.\p"
 	.string "I see that you are a trainer. Please\n"
-	.string "show me an Onix to help me achieve my\l"
-	.string "magnum opus.$"
+	.string "show me a Ponyte to help me achieve\l"
+	.string "my magnum opus.$"

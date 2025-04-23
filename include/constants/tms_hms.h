@@ -56,7 +56,8 @@
     F(ACROBATICS) \
     F(NATURE_POWER) \
     F(X_SCISSOR) \
-    F(ANCIENT_POWER)
+    F(ANCIENT_POWER) \
+    F(ROCK_BLAST)
 
 #define FOREACH_HM(F) \
     F(CUT) \

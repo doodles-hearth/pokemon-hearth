@@ -268,6 +268,19 @@
 // gTileset_HouseBeige
 #define METATILE_HouseBeige_Scroll  0x817
 
+// gTileset_HouseStone
+#define METATILE_HouseStone_StatueClefableBottomLeft   0x836
+#define METATILE_HouseStone_StatueClefableBottomRight  0x837
+#define METATILE_HouseStone_StatueClefableTopLeft      0x82E
+#define METATILE_HouseStone_StatueClefableTopRight     0x82F
+#define METATILE_HouseStone_StatueOnixBottomLeft       0x826
+#define METATILE_HouseStone_StatueOnixBottomRight      0x827
+#define METATILE_HouseStone_StatueOnixTopLeft          0x81E
+#define METATILE_HouseStone_StatueOnixTopRight         0x81F
+#define METATILE_HouseStone_StatuePonytaBottomLeft     0x816
+#define METATILE_HouseStone_StatuePonytaBottomRight    0x817
+#define METATILE_HouseStone_StatuePonytaTopLeft        0x80E
+
 // gTileset_InsideOfTruck
 #define METATILE_InsideOfTruck_DoorClosedFloor_Bottom  0x81D
 #define METATILE_InsideOfTruck_DoorClosedFloor_Mid     0x815
