@@ -82,7 +82,7 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 		))
 		closemessage
 
-		giveitem(ITEM_HM_CUT)
+		giveitem(ITEM_TM_CUT)
 		setflag(FLAG_RECEIVED_HM_CUT)
 		msgbox(format(
 			"This scroll contains an ancient technique created by the most talented samurai. Pokémon can learn that technique too.\p"

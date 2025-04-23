@@ -57,10 +57,17 @@
     F(NATURE_POWER) \
     F(X_SCISSOR) \
     F(ANCIENT_POWER) \
-    F(ROCK_BLAST)
+    F(ROCK_BLAST) \
+    F(CUT) \
+    F(FLY) \
+    F(SURF) \
+    F(STRENGTH) \
+    F(FLASH) \
+    F(ROCK_SMASH) \
+    F(WATERFALL) \
+    F(DIVE)
 
 #define FOREACH_HM(F) \
-    F(CUT) \
     F(FLY) \
     F(SURF) \
     F(STRENGTH) \

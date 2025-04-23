@@ -21,6 +21,7 @@
 #include "constants/moves.h"
 #include "constants/item_effects.h"
 #include "constants/hold_effects.h"
+#include "move.h"
 
 static bool8 CheckPyramidBagHasItem(u16 itemId, u16 count);
 static bool8 CheckPyramidBagHasSpace(u16 itemId, u16 count);
@@ -100,7 +101,14 @@ void SetBagItemsPointers(void)
 
 u8 *CopyItemName(u16 itemId, u8 *dst)
 {
-    return StringCopy(dst, ItemId_GetName(itemId));
+    if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES)
+    {
+        return StringCopy(dst, GetMoveName(gItemsInfo[itemId].secondaryId));
+    }
+    else
+    {
+        return StringCopy(dst, ItemId_GetName(itemId));
+    }
 }
 
 const u8 sText_s[] =_("s");
@@ -109,7 +117,7 @@ u8 *CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
 {
     if (quantity == 1)
     {
-        return StringCopy(dst, ItemId_GetName(itemId));
+        return CopyItemName(itemId, dst);
     }
     else if (DoesItemHavePluralName(itemId))
     {
@@ -117,7 +125,16 @@ u8 *CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
     }
     else
     {
-        u8 *end = StringCopy(dst, ItemId_GetName(itemId));
+        u8 *end;
+        if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES)
+        {
+            end = StringCopy(dst, GetMoveName(gItemsInfo[itemId].secondaryId));
+        }
+        else
+        {
+            end = StringCopy(dst, ItemId_GetName(itemId));
+        }
+
         return StringCopy(end, sText_s);
     }
 }

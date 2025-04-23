@@ -252,7 +252,7 @@ OrchardPath_EventScript_RockSmashRegular_5:
 	speakername OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_8
 	closemessage
-	giveitem ITEM_HM_ROCK_SMASH
+	giveitem ITEM_TM_ROCK_SMASH
 	speakername OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_9
 	closemessage

@@ -70,7 +70,7 @@ TranquilRoute_CutHouse_EventScript_CutMaster::
 	goto_if_set FLAG_RECEIVED_HM_CUT, TranquilRoute_CutHouse_EventScript_CutMaster_2
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_2
 	closemessage
-	giveitem ITEM_HM_CUT
+	giveitem ITEM_TM_CUT
 	setflag FLAG_RECEIVED_HM_CUT
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_3
 	closemessage

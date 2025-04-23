@@ -68,6 +68,13 @@
 // - MOVE_ROCK_SMASH                                   //
 // - MOVE_WATERFALL                                    //
 // - MOVE_DIVE                                         //
+// - MOVE_FLY                                          //
+// - MOVE_SURF                                         //
+// - MOVE_STRENGTH                                     //
+// - MOVE_FLASH                                        //
+// - MOVE_ROCK_SMASH                                   //
+// - MOVE_WATERFALL                                    //
+// - MOVE_DIVE                                         //
 // *************************************************** //
 // Tutor moves found from map scripts:                 //
 // - MOVE_BODY_SLAM                                    //
