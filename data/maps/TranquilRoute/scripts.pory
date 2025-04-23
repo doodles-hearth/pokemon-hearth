@@ -546,6 +546,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 
 script TranquilRoute_EventScript_WaitingForChatot {
 	lock
+	faceplayer
 	speakername("Girl")
 	msgbox(format(
 		"Sigh… Maybe if I hang around the Chatot Post, my boyfriend's message will arrive sooner…"

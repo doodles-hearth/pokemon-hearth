@@ -451,6 +451,7 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_2:
 
 TranquilRoute_EventScript_WaitingForChatot::
 	lock
+	faceplayer
 	speakername TranquilRoute_EventScript_Girl_Text_0
 	msgbox TranquilRoute_EventScript_WaitingForChatot_Text_0
 	closemessage

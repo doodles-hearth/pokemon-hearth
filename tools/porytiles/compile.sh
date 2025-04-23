@@ -31,6 +31,8 @@ porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/t
 # Silver tunnel
 echo "SILVER TUNNEL"
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/silver_tunnel/ ./silver-tunnel/ ./exterior-generic ../../include/constants/metatile_behaviors.h
+echo "BROWN CAVE"
+porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/brown_cave/ ./brown-cave/ ./exterior-generic ../../include/constants/metatile_behaviors.h
 # Soulkeep
 echo "SOULKEEP"
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/soulkeep/ ./soulkeep/ ./exterior-generic ../../include/constants/metatile_behaviors.h
@@ -60,7 +62,7 @@ echo "HOUSES"
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_beige/ ./house-beige/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_stone/ ./house-stone/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_green/ ./house-green/ ./building-generic/ ../../include/constants/metatile_behaviors.h
-porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_hardwood2/ ./house-hardwood2/ ./building-generic/ ../../include/constants/metatile_behaviors.h
+porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_hardwood_2/ ./house-hardwood2/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ../../data/tilesets/secondary/house_marble/ ./house-marble/ ./building-generic/ ../../include/constants/metatile_behaviors.h
 # Dojos
 echo "DOJOS"

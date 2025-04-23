@@ -1072,7 +1072,7 @@
 #define FLAG_ITEM_CROBAT_HIDEOUT_NUGGET                             0x3F5
 #define FLAG_ITEM_CROBAT_HIDEOUT_RARE_CANDY                         0x3F6
 #define FLAG_CROBAT_HIDEOUT_PEARL                                   0x3F7
-#define FLAG_ITEM_ROUTE_115_SUPER_POTION                            0x3F8
+#define FLAG_ITEM_SUNRISE_CAVE_HEART_SCALE                          0x3F8
 #define FLAG_ITEM_ROUTE_115_TM_FOCUS_PUNCH                          0x3F9
 #define FLAG_ITEM_ROUTE_115_IRON                                    0x3FA
 #define FLAG_ITEM_ROUTE_116_ETHER                                   0x3FB

@@ -2192,19 +2192,19 @@ F_TRAINER_FEMALE |
         {
             {
 #line 954
-            .species = SPECIES_SHROOMISH,
+            .species = SPECIES_NIDORINA,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 956
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 955
-            .lvl = 17,
+            .lvl = 18,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
 #line 956
-                MOVE_MEGA_DRAIN,
-                MOVE_STUN_SPORE,
-                MOVE_HEADBUTT,
+                MOVE_HELPING_HAND,
+                MOVE_FURY_SWIPES,
+                MOVE_TAIL_WHIP,
             },
             },
             {
@@ -2214,7 +2214,7 @@ F_TRAINER_FEMALE |
 #line 962
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
 #line 961
-            .lvl = 20,
+            .lvl = 19,
             .nature = NATURE_HARDY,
             .dynamaxLevel = MAX_DYNAMAX_LEVEL,
             .moves = {
