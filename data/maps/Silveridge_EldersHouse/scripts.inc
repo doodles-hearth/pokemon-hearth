@@ -61,6 +61,7 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	removeitem ITEM_LETTER
 	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
 	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_9
+	giveitem ITEM_EXP_SHARE
 	clearflag FLAG_KURA_DOJO_CLOSED
 	setflag FLAG_HIDE_BONSAI_SHOP_OWNER
 	release
@@ -147,7 +148,8 @@ Silveridge_EldersHouse_EventScript_Conversation_Text_9:
 	.string "then\p"
 	.string "Could you go investigate the decayed\n"
 	.string "area in Uume Forest near Yifu City for\l"
-	.string "me plz kthx$"
+	.string "me plz kthx\p"
+	.string "Also you are the chosen one take this$"
 
 Silveridge_EldersHouse_EventScript_Elder_Text_0:
 	.string "Go forth, my child.$"

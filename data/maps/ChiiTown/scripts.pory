@@ -17,27 +17,27 @@ mapscripts ChiiTown_MapScripts {
 script ChiiTown_DrawMetatiles{
 	// Plant more flowers the more badges you have
 	if (flag(FLAG_BADGE01_GET)) {
-		setmetatile(17, 18, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
-		setmetatile(17, 19, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		setmetatile(17, 18, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(17, 19, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 	if (flag(FLAG_BADGE03_GET)) {
-		setmetatile(16, 16, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		setmetatile(16, 16, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 	if (flag(FLAG_BADGE04_GET)) {
-		setmetatile(11, 20, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
-		setmetatile(15, 22, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		setmetatile(11, 20, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(15, 22, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 	if (flag(FLAG_BADGE05_GET)) {
-		setmetatile(16, 22, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		setmetatile(16, 22, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 	if (flag(FLAG_BADGE06_GET)) {
-		setmetatile(18, 23, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
-		setmetatile(17, 16, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		setmetatile(18, 23, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(17, 16, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 	if (flag(FLAG_BADGE08_GET)) {
-		setmetatile(10, 21, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
-		setmetatile(16, 19, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
-		setmetatile(21, 23, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+		setmetatile(10, 21, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(16, 19, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(21, 23, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 
     gettimeofday
@@ -357,6 +357,7 @@ mart ChiiTown_MartDecors {
 mart ChiiTown_Mart {
 	ITEM_POKE_BALL
 	ITEM_OINTMENT
+	ITEM_REVIVAL_POWDER
 	ITEM_PARALYZE_HEAL
 	ITEM_ANTIDOTE
 	ITEM_AWAKENING
@@ -382,8 +383,4 @@ script ChiiTown_EventScript_SchoolSign {
 
 script ChiiTown_EventScript_SetTrespassVar {
 	setvar(VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 1)
-}
-
-script ChiiTown_EventScript_ChatotPost {
-	msgbox(format("It's a Chatot post."), MSGBOX_SIGN)
 }

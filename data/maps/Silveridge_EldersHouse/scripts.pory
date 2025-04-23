@@ -102,8 +102,11 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 		"… … … … … …\n… … … … … …\p"
 		"I see…\p"
 		"blah blah shit's fucked everywhere then\p"
-		"Could you go investigate the decayed area in Uume Forest near Yifu City for me plz kthx"
+		"Could you go investigate the decayed area in Uume Forest near Yifu City for me plz kthx\p"
+		"Also you are the chosen one take this"
 	))
+
+	giveitem(ITEM_EXP_SHARE)
 
 	// You can now beat gym 2
 	clearflag(FLAG_KURA_DOJO_CLOSED)

@@ -1146,6 +1146,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/cave_hole.inc"
 	.include "data/scripts/lilycove_lady.inc"
 	.include "data/scripts/traveling_merchant.inc"
+	.include "data/scripts/chatot_post.inc"
 	.include "data/text/match_call.inc"
 	.include "data/scripts/apprentice.inc"
 	.include "data/text/apprentice.inc"
@@ -1379,3 +1380,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Soulkeep_House1/scripts.inc"
 
 	.include "data/maps/OrchardPath_GuardHouse/scripts.inc"
+
+	.include "data/maps/SunriseCave/scripts.inc"
+
+	.include "data/maps/WindsweptRouteBottom/scripts.inc"

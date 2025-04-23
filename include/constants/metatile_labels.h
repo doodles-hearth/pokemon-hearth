@@ -461,7 +461,6 @@
 #define METATILE_PorytilesPrimaryTutorial_Grass                   0x000
 #define METATILE_PorytilesPrimaryTutorial_Grass2                  0x001
 #define METATILE_PorytilesPrimaryTutorial_Grass3                  0x002
-#define METATILE_PorytilesPrimaryTutorial_RedFlowers              0x003
 #define METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntrance  0x0D1
 #define METATILE_PorytilesPrimaryTutorial_TallGrass               0x008
 
@@ -748,6 +747,96 @@
 #define METATILE_SecretBase_YellowBrick_Bottom          0x82E
 #define METATILE_SecretBase_YellowBrick_Top             0x826
 
+// gTileset_SecretBaseHearth
+#define METATILE_SecretBaseHearth_AttractMat_BottomLeft      0x875
+#define METATILE_SecretBaseHearth_AttractMat_BottomMid       0x876
+#define METATILE_SecretBaseHearth_AttractMat_BottomRight     0x877
+#define METATILE_SecretBaseHearth_AttractMat_Center          0x86E
+#define METATILE_SecretBaseHearth_AttractMat_MidLeft         0x86D
+#define METATILE_SecretBaseHearth_AttractMat_MidRight        0x86F
+#define METATILE_SecretBaseHearth_AttractMat_TopLeft         0x865
+#define METATILE_SecretBaseHearth_AttractMat_TopMid          0x866
+#define METATILE_SecretBaseHearth_AttractMat_TopRight        0x867
+#define METATILE_SecretBaseHearth_CampChair                  0x888
+#define METATILE_SecretBaseHearth_CampDesk_BottomLeft        0x8A5
+#define METATILE_SecretBaseHearth_CampDesk_BottomMid         0x8A6
+#define METATILE_SecretBaseHearth_CampDesk_BottomRight       0x8A7
+#define METATILE_SecretBaseHearth_CampDesk_Center            0x89E
+#define METATILE_SecretBaseHearth_CampDesk_MidLeft           0x89D
+#define METATILE_SecretBaseHearth_CampDesk_MidRight          0x89F
+#define METATILE_SecretBaseHearth_CampDesk_TopLeft           0x895
+#define METATILE_SecretBaseHearth_CampDesk_TopMid            0x896
+#define METATILE_SecretBaseHearth_CampDesk_TopRight          0x897
+#define METATILE_SecretBaseHearth_ComfortChair               0x880
+#define METATILE_SecretBaseHearth_ComfortDesk_BottomLeft     0x8B5
+#define METATILE_SecretBaseHearth_ComfortDesk_BottomMid      0x8B6
+#define METATILE_SecretBaseHearth_ComfortDesk_BottomRight    0x8B7
+#define METATILE_SecretBaseHearth_ComfortDesk_TopLeft        0x8AD
+#define METATILE_SecretBaseHearth_ComfortDesk_TopMid         0x8AE
+#define METATILE_SecretBaseHearth_ComfortDesk_TopRight       0x8AF
+#define METATILE_SecretBaseHearth_FireBlastMat_BottomLeft    0x85A
+#define METATILE_SecretBaseHearth_FireBlastMat_BottomMid     0x85B
+#define METATILE_SecretBaseHearth_FireBlastMat_BottomRight   0x85C
+#define METATILE_SecretBaseHearth_FireBlastMat_Center        0x853
+#define METATILE_SecretBaseHearth_FireBlastMat_MidLeft       0x852
+#define METATILE_SecretBaseHearth_FireBlastMat_MidRight      0x854
+#define METATILE_SecretBaseHearth_FireBlastMat_TopLeft       0x84A
+#define METATILE_SecretBaseHearth_FireBlastMat_TopMid        0x84B
+#define METATILE_SecretBaseHearth_FireBlastMat_TopRight      0x84C
+#define METATILE_SecretBaseHearth_FissureMat_BottomLeft      0x87A
+#define METATILE_SecretBaseHearth_FissureMat_BottomMid       0x87B
+#define METATILE_SecretBaseHearth_FissureMat_BottomRight     0x87C
+#define METATILE_SecretBaseHearth_FissureMat_Center          0x883
+#define METATILE_SecretBaseHearth_FissureMat_MidLeft         0x882
+#define METATILE_SecretBaseHearth_FissureMat_MidRight        0x884
+#define METATILE_SecretBaseHearth_FissureMat_TopLeft         0x87A
+#define METATILE_SecretBaseHearth_FissureMat_TopMid          0x87B
+#define METATILE_SecretBaseHearth_FissureMat_TopRight        0x87C
+#define METATILE_SecretBaseHearth_NoteMat_A                  0x8BD
+#define METATILE_SecretBaseHearth_NoteMat_B                  0x8BE
+#define METATILE_SecretBaseHearth_NoteMat_C_High             0x8BF
+#define METATILE_SecretBaseHearth_NoteMat_C_Low              0x8B8
+#define METATILE_SecretBaseHearth_NoteMat_D                  0x8B9
+#define METATILE_SecretBaseHearth_NoteMat_E                  0x8BA
+#define METATILE_SecretBaseHearth_NoteMat_F                  0x8BB
+#define METATILE_SecretBaseHearth_NoteMat_G                  0x8BC
+#define METATILE_SecretBaseHearth_PC                         0x001
+#define METATILE_SecretBaseHearth_PowderSnowMat_BottomLeft   0x85D
+#define METATILE_SecretBaseHearth_PowderSnowMat_BottomMid    0x85E
+#define METATILE_SecretBaseHearth_PowderSnowMat_BottomRight  0x85F
+#define METATILE_SecretBaseHearth_PowderSnowMat_Center       0x856
+#define METATILE_SecretBaseHearth_PowderSnowMat_MidLeft      0x855
+#define METATILE_SecretBaseHearth_PowderSnowMat_MidRight     0x857
+#define METATILE_SecretBaseHearth_PowderSnowMat_TopLeft      0x84D
+#define METATILE_SecretBaseHearth_PowderSnowMat_TopMid       0x84E
+#define METATILE_SecretBaseHearth_PowderSnowMat_TopRight     0x84F
+#define METATILE_SecretBaseHearth_RaggedDesk_BottomLeft      0x8B2
+#define METATILE_SecretBaseHearth_RaggedDesk_BottomMid       0x8B3
+#define METATILE_SecretBaseHearth_RaggedDesk_BottomRight     0x8B4
+#define METATILE_SecretBaseHearth_RaggedDesk_TopLeft         0x8AA
+#define METATILE_SecretBaseHearth_RaggedDesk_TopMid          0x8AB
+#define METATILE_SecretBaseHearth_RaggedDesk_TopRight        0x8AC
+#define METATILE_SecretBaseHearth_RegisterPC                 0x002
+#define METATILE_SecretBaseHearth_SmallDesk                  0x824
+#define METATILE_SecretBaseHearth_SpikesMat_BottomLeft       0x872
+#define METATILE_SecretBaseHearth_SpikesMat_BottomMid        0x873
+#define METATILE_SecretBaseHearth_SpikesMat_BottomRight      0x874
+#define METATILE_SecretBaseHearth_SpikesMat_Center           0x86B
+#define METATILE_SecretBaseHearth_SpikesMat_MidLeft          0x86A
+#define METATILE_SecretBaseHearth_SpikesMat_MidRight         0x86C
+#define METATILE_SecretBaseHearth_SpikesMat_TopLeft          0x862
+#define METATILE_SecretBaseHearth_SpikesMat_TopMid           0x863
+#define METATILE_SecretBaseHearth_SpikesMat_TopRight         0x864
+#define METATILE_SecretBaseHearth_SurfMat_BottomLeft         0x842
+#define METATILE_SecretBaseHearth_SurfMat_BottomMid          0x843
+#define METATILE_SecretBaseHearth_SurfMat_BottomRight        0x844
+#define METATILE_SecretBaseHearth_SurfMat_Center             0x83B
+#define METATILE_SecretBaseHearth_SurfMat_MidLeft            0x83A
+#define METATILE_SecretBaseHearth_SurfMat_MidRight           0x83C
+#define METATILE_SecretBaseHearth_SurfMat_TopLeft            0x832
+#define METATILE_SecretBaseHearth_SurfMat_TopMid             0x833
+#define METATILE_SecretBaseHearth_SurfMat_TopRight           0x834
+
 // gTileset_Shop
 #define METATILE_Shop_Door_Elevator   0x885
 #define METATILE_Shop_Laptop1_Flash   0x858
@@ -773,6 +862,9 @@
 #define METATILE_SootopolisGym_Ice_Broken   0x806
 #define METATILE_SootopolisGym_Ice_Cracked  0x80E
 #define METATILE_SootopolisGym_Stairs       0x807
+
+// gTileset_SunriseVillage
+#define METATILE_SunriseVillage_RedFlowers  0x82A
 
 // gTileset_TrainerHill
 #define METATILE_TrainerHill_CounterDoor          0x934
@@ -830,105 +922,5 @@
 #define METATILE_RSMossdeepGym_RedArrow_Up     0x80D
 #define METATILE_RSMossdeepGym_Switch_Down     0x839
 #define METATILE_RSMossdeepGym_Switch_Up       0x838
-
-// Secret bases Hearth
-#define METATILE_SecretBaseHearth_PC                          0x001
-#define METATILE_SecretBaseHearth_RegisterPC                  0x002
-
-#define METATILE_SecretBaseHearth_SmallDesk                   0x824
-#define METATILE_SecretBaseHearth_SurfMat_BottomLeft          0x842
-#define METATILE_SecretBaseHearth_SurfMat_BottomMid           0x843
-#define METATILE_SecretBaseHearth_SurfMat_BottomRight         0x844
-#define METATILE_SecretBaseHearth_SurfMat_Center              0x83B
-#define METATILE_SecretBaseHearth_SurfMat_MidLeft             0x83A
-#define METATILE_SecretBaseHearth_SurfMat_MidRight            0x83C
-#define METATILE_SecretBaseHearth_SurfMat_TopLeft             0x832
-#define METATILE_SecretBaseHearth_SurfMat_TopMid              0x833
-#define METATILE_SecretBaseHearth_SurfMat_TopRight            0x834
-
-#define METATILE_SecretBaseHearth_FireBlastMat_BottomLeft     0x85A
-#define METATILE_SecretBaseHearth_FireBlastMat_BottomMid      0x85B
-#define METATILE_SecretBaseHearth_FireBlastMat_BottomRight    0x85C
-#define METATILE_SecretBaseHearth_FireBlastMat_Center         0x853
-#define METATILE_SecretBaseHearth_FireBlastMat_MidLeft        0x852
-#define METATILE_SecretBaseHearth_FireBlastMat_MidRight       0x854
-#define METATILE_SecretBaseHearth_FireBlastMat_TopLeft        0x84A
-#define METATILE_SecretBaseHearth_FireBlastMat_TopMid         0x84B
-#define METATILE_SecretBaseHearth_FireBlastMat_TopRight       0x84C
-
-#define METATILE_SecretBaseHearth_SpikesMat_BottomLeft        0x872
-#define METATILE_SecretBaseHearth_SpikesMat_BottomMid         0x873
-#define METATILE_SecretBaseHearth_SpikesMat_BottomRight       0x874
-#define METATILE_SecretBaseHearth_SpikesMat_Center            0x86B
-#define METATILE_SecretBaseHearth_SpikesMat_MidLeft           0x86A
-#define METATILE_SecretBaseHearth_SpikesMat_MidRight          0x86C
-#define METATILE_SecretBaseHearth_SpikesMat_TopLeft           0x862
-#define METATILE_SecretBaseHearth_SpikesMat_TopMid            0x863
-#define METATILE_SecretBaseHearth_SpikesMat_TopRight          0x864
-
-#define METATILE_SecretBaseHearth_FissureMat_BottomLeft       0x87A
-#define METATILE_SecretBaseHearth_FissureMat_BottomMid        0x87B
-#define METATILE_SecretBaseHearth_FissureMat_BottomRight      0x87C
-#define METATILE_SecretBaseHearth_FissureMat_Center           0x883
-#define METATILE_SecretBaseHearth_FissureMat_MidLeft          0x882
-#define METATILE_SecretBaseHearth_FissureMat_MidRight         0x884
-#define METATILE_SecretBaseHearth_FissureMat_TopLeft          0x87A
-#define METATILE_SecretBaseHearth_FissureMat_TopMid           0x87B
-#define METATILE_SecretBaseHearth_FissureMat_TopRight         0x87C
-
-#define METATILE_SecretBaseHearth_AttractMat_BottomLeft       0x875
-#define METATILE_SecretBaseHearth_AttractMat_BottomMid        0x876
-#define METATILE_SecretBaseHearth_AttractMat_BottomRight      0x877
-#define METATILE_SecretBaseHearth_AttractMat_Center           0x86E
-#define METATILE_SecretBaseHearth_AttractMat_MidLeft          0x86D
-#define METATILE_SecretBaseHearth_AttractMat_MidRight         0x86F
-#define METATILE_SecretBaseHearth_AttractMat_TopLeft          0x865
-#define METATILE_SecretBaseHearth_AttractMat_TopMid           0x866
-#define METATILE_SecretBaseHearth_AttractMat_TopRight         0x867
-
-#define METATILE_SecretBaseHearth_PowderSnowMat_BottomLeft    0x85D
-#define METATILE_SecretBaseHearth_PowderSnowMat_BottomMid     0x85E
-#define METATILE_SecretBaseHearth_PowderSnowMat_BottomRight   0x85F
-#define METATILE_SecretBaseHearth_PowderSnowMat_Center        0x856
-#define METATILE_SecretBaseHearth_PowderSnowMat_MidLeft       0x855
-#define METATILE_SecretBaseHearth_PowderSnowMat_MidRight      0x857
-#define METATILE_SecretBaseHearth_PowderSnowMat_TopLeft       0x84D
-#define METATILE_SecretBaseHearth_PowderSnowMat_TopMid        0x84E
-#define METATILE_SecretBaseHearth_PowderSnowMat_TopRight      0x84F
-
-#define METATILE_SecretBaseHearth_CampChair                   0x888
-#define METATILE_SecretBaseHearth_CampDesk_BottomLeft         0x8A5
-#define METATILE_SecretBaseHearth_CampDesk_BottomMid          0x8A6
-#define METATILE_SecretBaseHearth_CampDesk_BottomRight        0x8A7
-#define METATILE_SecretBaseHearth_CampDesk_Center             0x89E
-#define METATILE_SecretBaseHearth_CampDesk_MidLeft            0x89D
-#define METATILE_SecretBaseHearth_CampDesk_MidRight           0x89F
-#define METATILE_SecretBaseHearth_CampDesk_TopLeft            0x895
-#define METATILE_SecretBaseHearth_CampDesk_TopMid             0x896
-#define METATILE_SecretBaseHearth_CampDesk_TopRight           0x897
-
-#define METATILE_SecretBaseHearth_RaggedDesk_BottomLeft       0x8B2
-#define METATILE_SecretBaseHearth_RaggedDesk_BottomMid        0x8B3
-#define METATILE_SecretBaseHearth_RaggedDesk_BottomRight      0x8B4
-#define METATILE_SecretBaseHearth_RaggedDesk_TopLeft          0x8AA
-#define METATILE_SecretBaseHearth_RaggedDesk_TopMid           0x8AB
-#define METATILE_SecretBaseHearth_RaggedDesk_TopRight         0x8AC
-
-#define METATILE_SecretBaseHearth_ComfortChair                0x880
-#define METATILE_SecretBaseHearth_ComfortDesk_BottomLeft      0x8B5
-#define METATILE_SecretBaseHearth_ComfortDesk_BottomMid       0x8B6
-#define METATILE_SecretBaseHearth_ComfortDesk_BottomRight     0x8B7
-#define METATILE_SecretBaseHearth_ComfortDesk_TopLeft         0x8AD
-#define METATILE_SecretBaseHearth_ComfortDesk_TopMid          0x8AE
-#define METATILE_SecretBaseHearth_ComfortDesk_TopRight        0x8AF
-
-#define METATILE_SecretBaseHearth_NoteMat_C_Low               0x8B8
-#define METATILE_SecretBaseHearth_NoteMat_D                   0x8B9
-#define METATILE_SecretBaseHearth_NoteMat_E                   0x8BA
-#define METATILE_SecretBaseHearth_NoteMat_F                   0x8BB
-#define METATILE_SecretBaseHearth_NoteMat_G                   0x8BC
-#define METATILE_SecretBaseHearth_NoteMat_A                   0x8BD
-#define METATILE_SecretBaseHearth_NoteMat_B                   0x8BE
-#define METATILE_SecretBaseHearth_NoteMat_C_High              0x8BF
 
 #endif // GUARD_METATILE_LABELS_H

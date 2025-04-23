@@ -137,17 +137,17 @@ TranquilRoute_EventScript_FlowerCutMastersGarden_2:
 	return
 
 TranquilRoute_EventScript_FlowerCutMastersGarden_6:
-	setmetatile 39, 33, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 40, 34, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 41, 33, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 42, 34, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 39, 33, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 40, 34, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 41, 33, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 42, 34, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto TranquilRoute_EventScript_FlowerCutMastersGarden_5
 
 TranquilRoute_EventScript_FlowerCutMastersGarden_8:
-	setmetatile 35, 29, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 34, 30, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 35, 31, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 34, 32, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 35, 29, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 34, 30, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 35, 31, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 34, 32, METATILE_SunriseVillage_RedFlowers, FALSE
 	return
 
 
@@ -447,6 +447,16 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_2:
 	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_0
 	applymovement 27, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_1
 	goto TranquilRoute_EventScript_TravelingMerchantFirstTime_1
+
+
+TranquilRoute_EventScript_WaitingForChatot::
+	lock
+	faceplayer
+	speakername TranquilRoute_EventScript_Girl_Text_0
+	msgbox TranquilRoute_EventScript_WaitingForChatot_Text_0
+	closemessage
+	release
+	return
 
 
 TranquilRoute_TrainerTips2::
@@ -808,6 +818,11 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_2:
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_3:
 	.string "Come on, Keke.$"
+
+TranquilRoute_EventScript_WaitingForChatot_Text_0:
+	.string "Sigh… Maybe if I hang around the\n"
+	.string "Chatot Post, my boyfriend's message\l"
+	.string "will arrive sooner…$"
 
 TranquilRoute_TrainerTips2_Text_0:
 	.string "Did you know?\p"

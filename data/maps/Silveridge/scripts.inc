@@ -34,7 +34,8 @@ Silveridge_DrawMetatiles_2:
 Silveridge_EventScript_LotOfRocks::
 	lock
 	faceplayer
-	msgbox Silveridge_EventScript_LotOfRocks_Text_0
+	speakername Silveridge_EventScript_LotOfRocks_Text_0
+	msgbox Silveridge_EventScript_LotOfRocks_Text_1
 	release
 	return
 
@@ -42,7 +43,8 @@ Silveridge_EventScript_LotOfRocks::
 Silveridge_EventScript_HousesMadeOfSilverTunnelStone::
 	lock
 	faceplayer
-	msgbox Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0
+	speakername Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0
+	msgbox Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_1
 	release
 	return
 
@@ -50,7 +52,8 @@ Silveridge_EventScript_HousesMadeOfSilverTunnelStone::
 Silveridge_EventScript_MissingStatue::
 	lock
 	faceplayer
-	msgbox Silveridge_EventScript_MissingStatue_Text_0
+	speakername Silveridge_EventScript_MissingStatue_Text_0
+	msgbox Silveridge_EventScript_MissingStatue_Text_1
 	release
 	return
 
@@ -81,7 +84,7 @@ Silveridge_EventScript_Mart::
 Silveridge_Mart:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_OINTMENT
-	.2byte ITEM_REVIVAL_BALM
+	.2byte ITEM_REVIVAL_POWDER
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_AWAKENING
@@ -109,6 +112,9 @@ Silveridge_EventScript_EldersHouseSign::
 
 
 Silveridge_EventScript_LotOfRocks_Text_0:
+	.string "Guy$"
+
+Silveridge_EventScript_LotOfRocks_Text_1:
 	.string "We don't have a lot of natural\n"
 	.string "resources here in Silveridge.\p"
 	.string "We don't have a lot of wood…\p"
@@ -119,12 +125,18 @@ Silveridge_EventScript_LotOfRocks_Text_0:
 	.string "rocks. We have a LOT of rocks.$"
 
 Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0:
+	.string "Woman$"
+
+Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_1:
 	.string "See the houses around here? They\n"
 	.string "were all built using the stones\l"
 	.string "leftover from digging the Silver\l"
 	.string "tunnel.$"
 
 Silveridge_EventScript_MissingStatue_Text_0:
+	.string "Man$"
+
+Silveridge_EventScript_MissingStatue_Text_1:
 	.string "Hello, traveler. Have you looked at\n"
 	.string "this stunning statue that makes the\l"
 	.string "pride of our town?\p"
@@ -180,4 +192,4 @@ Silveridge_EventScript_SculptorsHouseSign_Text_0:
 	.string "The Sculptor's atelier$"
 
 Silveridge_EventScript_EldersHouseSign_Text_0:
-	.string "Elder Iwa's house$"
+	.string "{UP_ARROW} Elder Iwa's house$"
