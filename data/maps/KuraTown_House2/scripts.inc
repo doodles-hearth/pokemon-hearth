@@ -88,6 +88,7 @@ AshiiScript3:
 	waitmovement 0
 	speakername AshiiScript1_Text_4
 	msgbox AshiiScript3_Text_4
+	closemessage
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, AshiiScript3_Text_5, AshiiScript3_Text_6, AshiiScript3_Text_7
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -95,11 +96,19 @@ AshiiScript3:
 	waitmovement 0
 	applymovement 1, AshiiScript3_Movement_1
 	waitmovement 0
+	faceplayer
 	gettimeofday
 	speakername AshiiScript1_Text_4
 	compare VAR_RESULT, TIME_DEAD_NIGHT
 	goto_if_eq AshiiScript3_2
 	msgbox AshiiScript3_Text_9
+	closemessage
+	fadescreen FADE_TO_BLACK
+	msgbox AshiiScript3_Text_10
+	closemessage
+	fadescreen FADE_FROM_BLACK
+	pausefakertc
+	fwdtime 0, 0
 AshiiScript3_1:
 	closemessage
 	addvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
@@ -205,3 +214,6 @@ AshiiScript3_Text_8:
 AshiiScript3_Text_9:
 	.string "Thank you! Thank you! Thank you!\n"
 	.string "Please come see me later tonight.$"
+
+AshiiScript3_Text_10:
+	.string "Late that night…$"

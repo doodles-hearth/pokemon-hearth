@@ -106,6 +106,7 @@ script(local) AshiiScript3 {
 		"I'm sorry. You've been an incredible help and I haven't even gotten your name yet. May i ask what it is?\p
 		{PLAYER}… I see…\p {PLAYER}, I know this is a big thing to ask, but…\pI want to be sure that my meeting with Tama will be safe, especially if it might be our last. If so, can you please come with me when we go see each other again?"
 	))
+	closemessage
 	dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "Of course.","Who wouldn't?","You both deserve it.")
 	applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
 	waitmovement(0)
@@ -113,13 +114,20 @@ script(local) AshiiScript3 {
 	waitmovement(0)
 	applymovement(LOCALID_ASHII, moves(jump_in_place_down, delay_4, jump_in_place_down, delay_4, jump_in_place_down, delay_4, step_end))
 	waitmovement(0)
-	
+	faceplayer
 	gettimeofday
 	speakername("Ashii")
 	if(var(VAR_RESULT) == TIME_DEAD_NIGHT) {
 		msgbox(format("Thank you! Thank you! Thank you! Let's make haste, then. Before the moon takes her slumber in a few hours."))
 	} else {
 		msgbox(format("Thank you! Thank you! Thank you! Please come see me later tonight."))
+		closemessage
+		fadescreen(FADE_TO_BLACK)
+		msgbox("Late that night…")
+		closemessage
+		fadescreen(FADE_FROM_BLACK)
+		pausefakertc
+		fwdtime(0, 0)
 	} 
 	
 	
