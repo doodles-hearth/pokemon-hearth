@@ -3801,7 +3801,7 @@ static void DebugAction_TimeSkip_Sunday(u8 taskId)
     u32 weekdayCurrent = rtc->dayOfWeek;
     u32 daysToAdd;
     daysToAdd = ((0 - weekdayCurrent) + 7) % 7;
-    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);    
+    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0, FALSE);    
     Debug_DestroyMenu_Full(taskId);
     SetMainCallback2(CB2_LoadMap);
 }
@@ -3812,7 +3812,7 @@ static void DebugAction_TimeSkip_Monday(u8 taskId)
     u32 weekdayCurrent = rtc->dayOfWeek;
     u32 daysToAdd;
     daysToAdd = ((1 - weekdayCurrent) + 7) % 7;
-    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
+    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0, FALSE);
     Debug_DestroyMenu_Full(taskId);
     SetMainCallback2(CB2_LoadMap);
 }
@@ -3823,7 +3823,7 @@ static void DebugAction_TimeSkip_Tuesday(u8 taskId)
     u32 weekdayCurrent = rtc->dayOfWeek;
     u32 daysToAdd;
     daysToAdd = ((2 - weekdayCurrent) + 7) % 7;
-    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
+    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0, FALSE);
     Debug_DestroyMenu_Full(taskId);
     SetMainCallback2(CB2_LoadMap);
 }
@@ -3834,7 +3834,7 @@ static void DebugAction_TimeSkip_Wednesday(u8 taskId)
     u32 weekdayCurrent = rtc->dayOfWeek;
     u32 daysToAdd;
     daysToAdd = ((3 - weekdayCurrent) + 7) % 7;
-    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
+    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0, FALSE);
     Debug_DestroyMenu_Full(taskId);
     SetMainCallback2(CB2_LoadMap);
 }
@@ -3845,7 +3845,7 @@ static void DebugAction_TimeSkip_Thursday(u8 taskId)
     u32 weekdayCurrent = rtc->dayOfWeek;
     u32 daysToAdd;
     daysToAdd = ((4 - weekdayCurrent) + 7) % 7;
-    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
+    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0, FALSE);
     Debug_DestroyMenu_Full(taskId);
     SetMainCallback2(CB2_LoadMap);
 }
@@ -3856,7 +3856,7 @@ static void DebugAction_TimeSkip_Friday(u8 taskId)
     u32 weekdayCurrent = rtc->dayOfWeek;
     u32 daysToAdd;
     daysToAdd = ((5 - weekdayCurrent) + 7) % 7;
-    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
+    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0, FALSE);
     Debug_DestroyMenu_Full(taskId);
     SetMainCallback2(CB2_LoadMap);
 }
@@ -3867,7 +3867,7 @@ static void DebugAction_TimeSkip_Saturday(u8 taskId)
     u32 weekdayCurrent = rtc->dayOfWeek;
     u32 daysToAdd;
     daysToAdd = ((6 - weekdayCurrent) + 7) % 7;
-    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);    
+    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0, FALSE);    
     Debug_DestroyMenu_Full(taskId);
     SetMainCallback2(CB2_LoadMap);
 }
