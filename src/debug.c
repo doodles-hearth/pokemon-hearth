@@ -117,10 +117,13 @@ enum TimeMenuDebugMenu
 
 enum TimeMenuTimeOfDay
 {
+    DEBUG_TIME_MENU_ITEM_DEAD_NIGHT,
+    DEBUG_TIME_MENU_ITEM_EARLY_MORNING,
     DEBUG_TIME_MENU_ITEM_MORNING,
-    DEBUG_TIME_MENU_ITEM_DAY,
+    DEBUG_TIME_MENU_ITEM_LUNCHTIME,
+    DEBUG_TIME_MENU_ITEM_AFTERNOON,
     DEBUG_TIME_MENU_ITEM_EVENING,
-    DEBUG_TIME_MENU_ITEM_NIGHT, 
+    DEBUG_TIME_MENU_ITEM_NIGHT,
 };
 
 enum TimeMenuWeekdays
@@ -390,8 +393,8 @@ static void DebugAction_Util_CheckROMSpace(u8 taskId);
 static void DebugAction_Util_Weather(u8 taskId);
 static void DebugAction_Util_Weather_SelectId(u8 taskId);
 static void DebugAction_Util_FontTest(u8 taskId);
-static void DebugAction_Util_CheckWallClock(u8 taskId);
-static void DebugAction_Util_SetWallClock(u8 taskId);
+// static void DebugAction_Util_CheckWallClock(u8 taskId);
+// static void DebugAction_Util_SetWallClock(u8 taskId);
 static void DebugAction_Util_WatchCredits(u8 taskId);
 static void DebugAction_Util_Player_Name(u8 taskId);
 static void DebugAction_Util_Player_Gender(u8 taskId);
@@ -558,10 +561,13 @@ static const u8 *const gDayNameStringsTable[WEEKDAY_COUNT] = {
 };
 
 static const u8 *const gTimeOfDayStringsTable[TIMES_OF_DAY_COUNT] = {
+    COMPOUND_STRING("Early Morning"),
     COMPOUND_STRING("Morning"),
-    COMPOUND_STRING("Day"),
+    COMPOUND_STRING("Lunchtime"),
+    COMPOUND_STRING("Afternoon"),
     COMPOUND_STRING("Evening"),
     COMPOUND_STRING("Night"),
+    COMPOUND_STRING("Dead Night"),
 };
 
 // Flags/Vars Menu
@@ -659,10 +665,14 @@ static const struct ListMenuItem sDebugMenu_Items_TimeMenu[] =
 
 static const struct ListMenuItem sDebugMenu_Items_TimeMenu_TimesOfDay[] =
 {
-    [DEBUG_TIME_MENU_ITEM_MORNING] = {gTimeOfDayStringsTable[TIME_MORNING], DEBUG_TIME_MENU_ITEM_MORNING},
-    [DEBUG_TIME_MENU_ITEM_DAY] = {gTimeOfDayStringsTable[TIME_DAY],         DEBUG_TIME_MENU_ITEM_DAY},
-    [DEBUG_TIME_MENU_ITEM_EVENING] = {gTimeOfDayStringsTable[TIME_EVENING], DEBUG_TIME_MENU_ITEM_EVENING},
-    [DEBUG_TIME_MENU_ITEM_NIGHT] = {gTimeOfDayStringsTable[TIME_NIGHT],     DEBUG_TIME_MENU_ITEM_NIGHT},
+    [DEBUG_TIME_MENU_ITEM_DEAD_NIGHT] = {gTimeOfDayStringsTable[TIME_DEAD_NIGHT],        DEBUG_TIME_MENU_ITEM_DEAD_NIGHT},
+    [DEBUG_TIME_MENU_ITEM_EARLY_MORNING] = {gTimeOfDayStringsTable[TIME_EARLY_MORNING],  DEBUG_TIME_MENU_ITEM_EARLY_MORNING},
+    [DEBUG_TIME_MENU_ITEM_MORNING] = {gTimeOfDayStringsTable[TIME_MORNING],              DEBUG_TIME_MENU_ITEM_MORNING},
+    [DEBUG_TIME_MENU_ITEM_LUNCHTIME] = {gTimeOfDayStringsTable[TIME_LUNCHTIME],          DEBUG_TIME_MENU_ITEM_LUNCHTIME},
+    [DEBUG_TIME_MENU_ITEM_AFTERNOON] = {gTimeOfDayStringsTable[TIME_AFTERNOON],          DEBUG_TIME_MENU_ITEM_AFTERNOON},
+    [DEBUG_TIME_MENU_ITEM_EVENING] = {gTimeOfDayStringsTable[TIME_EVENING],              DEBUG_TIME_MENU_ITEM_EVENING},
+    [DEBUG_TIME_MENU_ITEM_NIGHT] = {gTimeOfDayStringsTable[TIME_NIGHT],                  DEBUG_TIME_MENU_ITEM_NIGHT},
+    
 };
 
 static const struct ListMenuItem sDebugMenu_Items_TimeMenu_Weekdays[] =
@@ -836,8 +846,8 @@ static void (*const sDebugMenu_Actions_Utilities[])(u8) =
     [DEBUG_UTIL_MENU_ITEM_ROM_SPACE]       = DebugAction_Util_CheckROMSpace,
     [DEBUG_UTIL_MENU_ITEM_WEATHER]         = DebugAction_Util_Weather,
     [DEBUG_UTIL_MENU_ITEM_FONT_TEST]       = DebugAction_Util_FontTest,
-    [DEBUG_UTIL_MENU_ITEM_CHECKWALLCLOCK]  = DebugAction_Util_CheckWallClock,
-    [DEBUG_UTIL_MENU_ITEM_SETWALLCLOCK]    = DebugAction_Util_SetWallClock,
+    // [DEBUG_UTIL_MENU_ITEM_CHECKWALLCLOCK]  = DebugAction_Util_CheckWallClock,
+    // [DEBUG_UTIL_MENU_ITEM_SETWALLCLOCK]    = DebugAction_Util_SetWallClock,
     [DEBUG_UTIL_MENU_ITEM_WATCHCREDITS]    = DebugAction_Util_WatchCredits,
     [DEBUG_UTIL_MENU_ITEM_PLAYER_NAME]     = DebugAction_Util_Player_Name,
     [DEBUG_UTIL_MENU_ITEM_PLAYER_GENDER]   = DebugAction_Util_Player_Gender,
@@ -950,8 +960,11 @@ static void (*const sDebugMenu_Actions_TimeMenu[])(u8) =
 
 static void (*const sDebugMenu_Actions_TimeMenu_TimesOfDay[])(u8) =
 {
+    [DEBUG_TIME_MENU_ITEM_DEAD_NIGHT] = DebugAction_TimeMenu_ChangeTimeOfDay,
+    [DEBUG_TIME_MENU_ITEM_EARLY_MORNING] = DebugAction_TimeMenu_ChangeTimeOfDay,
     [DEBUG_TIME_MENU_ITEM_MORNING] = DebugAction_TimeMenu_ChangeTimeOfDay,
-    [DEBUG_TIME_MENU_ITEM_DAY] = DebugAction_TimeMenu_ChangeTimeOfDay,
+    [DEBUG_TIME_MENU_ITEM_LUNCHTIME] = DebugAction_TimeMenu_ChangeTimeOfDay,
+    [DEBUG_TIME_MENU_ITEM_AFTERNOON] = DebugAction_TimeMenu_ChangeTimeOfDay,
     [DEBUG_TIME_MENU_ITEM_EVENING] = DebugAction_TimeMenu_ChangeTimeOfDay,
     [DEBUG_TIME_MENU_ITEM_NIGHT] = DebugAction_TimeMenu_ChangeTimeOfDay,
 };
@@ -2222,15 +2235,15 @@ static void DebugAction_Util_FontTest(u8 taskId)
     Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_FontTest);
 }
 
-static void DebugAction_Util_CheckWallClock(u8 taskId)
-{
-    Debug_DestroyMenu_Full_Script(taskId, PlayersHouse_2F_EventScript_CheckWallClock);
-}
+// static void DebugAction_Util_CheckWallClock(u8 taskId)
+// {
+//     Debug_DestroyMenu_Full_Script(taskId, PlayersHouse_2F_EventScript_CheckWallClock);
+// }
 
-static void DebugAction_Util_SetWallClock(u8 taskId)
-{
-    Debug_DestroyMenu_Full_Script(taskId, PlayersHouse_2F_EventScript_SetWallClock);
-}
+// static void DebugAction_Util_SetWallClock(u8 taskId)
+// {
+//     Debug_DestroyMenu_Full_Script(taskId, PlayersHouse_2F_EventScript_SetWallClock);
+// }
 
 static void DebugAction_Util_WatchCredits(u8 taskId)
 {
@@ -2336,11 +2349,20 @@ void DebugMenu_CalculateTimeOfDay(struct ScriptContext *ctx)
 {
     switch (GetTimeOfDay())
     {
+        case TIME_DEAD_NIGHT:
+            StringExpandPlaceholders(gStringVar1, gTimeOfDayStringsTable[TIME_DEAD_NIGHT]);
+            break;
+        case TIME_EARLY_MORNING:
+            StringExpandPlaceholders(gStringVar1, gTimeOfDayStringsTable[TIME_EARLY_MORNING]);
+            break;
         case TIME_MORNING:
             StringExpandPlaceholders(gStringVar1, gTimeOfDayStringsTable[TIME_MORNING]);
             break;
-        case TIME_DAY:
-            StringExpandPlaceholders(gStringVar1, gTimeOfDayStringsTable[TIME_DAY]);
+        case TIME_LUNCHTIME:
+            StringExpandPlaceholders(gStringVar1, gTimeOfDayStringsTable[TIME_LUNCHTIME]);
+            break;
+        case TIME_AFTERNOON:
+            StringExpandPlaceholders(gStringVar1, gTimeOfDayStringsTable[TIME_AFTERNOON]);
             break;
         case TIME_EVENING:
             StringExpandPlaceholders(gStringVar1, gTimeOfDayStringsTable[TIME_EVENING]);
@@ -3767,17 +3789,26 @@ static void DebugAction_TimeMenu_ChangeTimeOfDay(u8 taskId)
     DebugAction_DestroyExtraWindow(taskId);
     switch (input)
     {
+        case DEBUG_TIME_MENU_ITEM_DEAD_NIGHT:
+            FakeRtc_ForwardTimeTo(DEAD_NIGHT_HOUR_BEGIN, 0, 0);
+            break;
+        case DEBUG_TIME_MENU_ITEM_EARLY_MORNING:
+            FakeRtc_ForwardTimeTo(EARLY_MORNING_HOUR_BEGIN, 0, 0);
+            break;
         case DEBUG_TIME_MENU_ITEM_MORNING:
             FakeRtc_ForwardTimeTo(MORNING_HOUR_BEGIN, 0, 0);
             break;
-        case DEBUG_TIME_MENU_ITEM_DAY:
-            FakeRtc_ForwardTimeTo(DAY_HOUR_BEGIN, 0, 0);
+        case DEBUG_TIME_MENU_ITEM_LUNCHTIME:
+            FakeRtc_ForwardTimeTo(LUNCHTIME_HOUR_BEGIN, 0, 0);
+            break;
+        case DEBUG_TIME_MENU_ITEM_AFTERNOON:
+            FakeRtc_ForwardTimeTo(AFTERNOON_HOUR_BEGIN, 0, 0);
             break;
         case DEBUG_TIME_MENU_ITEM_EVENING:
             FakeRtc_ForwardTimeTo(EVENING_HOUR_BEGIN, 0, 0);
             break;
         case DEBUG_TIME_MENU_ITEM_NIGHT:
-            FakeRtc_ForwardTimeTo(NIGHT_HOUR_BEGIN, 0, 0);
+            FakeRtc_ForwardTimeTo(NIGHTTIME_HOUR_BEGIN, 0, 0);
             break;
     }
     Debug_DestroyMenu_Full(taskId);
