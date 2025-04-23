@@ -3301,7 +3301,7 @@ bool8 ScrCmd_addtime(struct ScriptContext *ctx)
     u32 hours = ScriptReadWord(ctx);
     u32 minutes = ScriptReadWord(ctx);
 
-    FakeRtc_AdvanceTimeBy(days, hours, minutes, 0);
+    FakeRtc_AdvanceTimeBy(days, hours, minutes, 0, FALSE);
 
     return FALSE;
 }
@@ -3310,7 +3310,7 @@ bool8 ScrCmd_adddays(struct ScriptContext *ctx)
 {
     u32 days = ScriptReadWord(ctx);
 
-    FakeRtc_AdvanceTimeBy(days, 0, 0, 0);
+    FakeRtc_AdvanceTimeBy(days, 0, 0, 0, FALSE);
 
     return FALSE;
 }
@@ -3319,7 +3319,7 @@ bool8 ScrCmd_addhours(struct ScriptContext *ctx)
 {
     u32 hours = ScriptReadWord(ctx);
 
-    FakeRtc_AdvanceTimeBy(0, hours, 0, 0);
+    FakeRtc_AdvanceTimeBy(0, hours, 0, 0, FALSE);
 
     return FALSE;
 }
@@ -3328,7 +3328,7 @@ bool8 ScrCmd_addminutes(struct ScriptContext *ctx)
 {
     u32 minutes = ScriptReadWord(ctx);
 
-    FakeRtc_AdvanceTimeBy(0, 0, minutes, 0);
+    FakeRtc_AdvanceTimeBy(0, 0, minutes, 0, FALSE);
 
     return FALSE;
 }
@@ -3352,7 +3352,7 @@ bool8 ScrCmd_fwdweekday(struct ScriptContext *ctx)
     u32 weekdayCurrent = rtc->dayOfWeek;
     u32 daysToAdd;
     daysToAdd = ((weekdayTarget - weekdayCurrent) + 7) % 7;
-    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
+    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0, FALSE);
     return FALSE;
 }
 

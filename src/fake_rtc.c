@@ -47,10 +47,10 @@ void FakeRtc_TickTimeForward(void)
     if (FlagGet(FLAG_PAUSE_FAKERTC) || InBattle())
         return;
 
-    FakeRtc_AdvanceTimeBy(0, 0, 0, FakeRtc_GetSecondsRatio());
+    FakeRtc_AdvanceTimeBy(0, 0, 0, FakeRtc_GetSecondsRatio(), TRUE);
 }
 
-void FakeRtc_AdvanceTimeBy(u32 days, u32 hours, u32 minutes, u32 seconds)
+void FakeRtc_AdvanceTimeBy(u32 days, u32 hours, u32 minutes, u32 seconds, u32 shouldImpactBerryGrowth)
 {
     struct DateTime dateTime;
     struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
@@ -61,12 +61,23 @@ void FakeRtc_AdvanceTimeBy(u32 days, u32 hours, u32 minutes, u32 seconds)
     DateTime_AddHours(&dateTime, hours);
     DateTime_AddDays(&dateTime, days);
     ConvertDateTimeToRtc(rtc, &dateTime);
+
+    // Resetting lastBerryTreeUpdate to the new current time effectively freezes berry growth
+    // Berry trees are therefore no longer cheesable through timeskips
+    if (!shouldImpactBerryGrowth) {
+        struct Time currentTime;
+        currentTime.days = rtc->day;
+        currentTime.hours = rtc->hour;
+        currentTime.minutes = rtc->minute;
+        currentTime.seconds = rtc->second;
+        gSaveBlock2Ptr->lastBerryTreeUpdate = currentTime;
+    }
 }
 
 void FakeRtc_ManuallySetTime(u32 day, u32 hour, u32 minute, u32 second)
 {
     FakeRtc_Reset();
-    FakeRtc_AdvanceTimeBy(day, hour, minute, second);
+    FakeRtc_AdvanceTimeBy(day, hour, minute, second, FALSE);
 }
 
 // void AdvanceScript(void)
@@ -95,7 +106,7 @@ void FakeRtc_ForwardTimeTo(u32 hour, u32 minute, u32 second)
 
     FakeRtc_CalcTimeDifference(&diff, fakeRtc, &target);
 
-    FakeRtc_AdvanceTimeBy(0, diff.hours, diff.minutes, diff.seconds);
+    FakeRtc_AdvanceTimeBy(0, diff.hours, diff.minutes, diff.seconds, FALSE);
 
     Script_ResumeFakeRtc();
 }
@@ -105,7 +116,7 @@ void FakeRtc_SetNewGameDay(void)
     struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
     u32 daysToAdd;
     daysToAdd = ((rtc->dayOfWeek) + 7) % 7;
-    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
+    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0, FALSE);
 }
 
 static void FakeRtc_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2)
