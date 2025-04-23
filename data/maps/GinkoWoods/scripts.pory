@@ -85,7 +85,7 @@ script GinkoWoods_EventScript_Bean {
 	msgbox(format(
 		"It looks like a small mammal's footprints, see?\p"
 		"Studying Pokémon tracks is so fascinating. One can find out about a Pokémon's nesting place, their hunting habits, at what time they sleep, what they eat… Interesting, isn't it?\p"
-		"These woods host a lot of yellow Pokémon, so I'd bet these are a Pikachu's, or a Kotora's."
+		"These woods host a lot of yellow Pokémon, so I'd bet these are a Kotora's."
 		"Do you know why there's a lot of yellow Pokémon here? Well, that's because smaller Pokémon can easily hide from predators in the foliage, and said predators can stalk their prey without being seen."
 		"Additionally, the high concentration of electric-type Pokémon, which seems to have happened fortuitously, explains the unnaturally high static electricity in the air here."
 		"Some of the non-electric Pokémon that live here have adapted by developing specific traits, like the Sewaddle you've probably seen on your way here that blah, blah blah blah blah, blah blah…"

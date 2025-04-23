@@ -74,11 +74,15 @@ MaguroHarbor_Refuge_BattleHariko_3:
 	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
 	msgbox MaguroHarbor_Refuge_BattleHariko_Text_3
 	closemessage
+	giveitem ITEM_UUMEGIRI, 4
+	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	msgbox MaguroHarbor_Refuge_BattleHariko_Text_4
+	closemessage
 	goto MaguroHarbor_Refuge_BattleHariko_1
 
 MaguroHarbor_Refuge_BattleHariko_4:
 	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
-	msgbox MaguroHarbor_Refuge_BattleHariko_Text_4
+	msgbox MaguroHarbor_Refuge_BattleHariko_Text_5
 	closemessage
 	goto MaguroHarbor_Refuge_BattleHariko_1
 
@@ -154,7 +158,7 @@ MaguroHarbor_Refuge_EventScript_Hariko_Text_6:
 	.string "He may not look like a fighter, but he\n"
 	.string "enjoys a good battle, too. Would you\l"
 	.string "like to have a friendly bout, Bean\l"
-	.string "against one of your Pokémon?$"
+	.string "against your Pokémon?$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_0:
 	.string "Yes!$"
@@ -170,9 +174,18 @@ MaguroHarbor_Refuge_BattleHariko_Text_3:
 	.string "I am glad.\p"
 	.string "Everyday we learn something new\n"
 	.string "about Pokémon, be it through battling\l"
-	.string "or observation.$"
+	.string "or observation.\p"
+	.string "I brought snacks for my journey.\n"
+	.string "If I give you some, you will probably\l"
+	.string "feel rewarded for this fight!$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_4:
+	.string "These can be fed to your Pokémon\n"
+	.string "during battle to save you from a\l"
+	.string "pickle.\p"
+	.string "Farewell, {PLAYER}.$"
+
+MaguroHarbor_Refuge_BattleHariko_Text_5:
 	.string "No problem. I will be here a while\n"
 	.string "before I continue my journey.$"
 

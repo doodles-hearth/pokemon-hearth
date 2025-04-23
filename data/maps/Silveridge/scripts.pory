@@ -29,6 +29,7 @@ script Silveridge_DrawMetatiles{
 script Silveridge_EventScript_LotOfRocks {
 	lock
 	faceplayer
+	speakername("Guy")
 	msgbox(format(
 		"We don't have a lot of natural resources here in Silveridge.\p"
 		"We don't have a lot of wood…\p"
@@ -43,6 +44,7 @@ script Silveridge_EventScript_LotOfRocks {
 script Silveridge_EventScript_HousesMadeOfSilverTunnelStone {
 	lock
 	faceplayer
+	speakername("Woman")
 	msgbox(format(
 		"See the houses around here? They were all built using the stones leftover from digging the Silver tunnel."
 	))
@@ -52,6 +54,7 @@ script Silveridge_EventScript_HousesMadeOfSilverTunnelStone {
 script Silveridge_EventScript_MissingStatue {
 	lock
 	faceplayer
+	speakername("Man")
 	msgbox(format(
 		"Hello, traveler. Have you looked at this stunning statue that makes the pride of our town?\p"
 		"…Is what I would say if we had one.\p"
@@ -92,7 +95,7 @@ script Silveridge_EventScript_Mart {
 mart Silveridge_Mart {
 	ITEM_POKE_BALL
 	ITEM_OINTMENT
-	ITEM_REVIVAL_BALM
+	ITEM_REVIVAL_POWDER
 	ITEM_PARALYZE_HEAL
 	ITEM_ANTIDOTE
 	ITEM_AWAKENING
@@ -112,5 +115,5 @@ script Silveridge_EventScript_SculptorsHouseSign {
 }
 
 script Silveridge_EventScript_EldersHouseSign {
-	msgbox(format("Elder Iwa's house"), MSGBOX_SIGN)
+	msgbox(format("{UP_ARROW} Elder Iwa's house"), MSGBOX_SIGN)
 }

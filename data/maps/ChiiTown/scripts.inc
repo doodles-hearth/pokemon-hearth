@@ -38,32 +38,32 @@ ChiiTown_DrawMetatiles_21:
 	end
 
 ChiiTown_DrawMetatiles_2:
-	setmetatile 17, 18, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 17, 19, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 17, 18, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 17, 19, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_1
 
 ChiiTown_DrawMetatiles_5:
-	setmetatile 16, 16, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 16, 16, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_4
 
 ChiiTown_DrawMetatiles_8:
-	setmetatile 11, 20, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 15, 22, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 11, 20, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 15, 22, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_7
 
 ChiiTown_DrawMetatiles_11:
-	setmetatile 16, 22, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 16, 22, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_10
 
 ChiiTown_DrawMetatiles_14:
-	setmetatile 18, 23, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 17, 16, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 18, 23, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 17, 16, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_13
 
 ChiiTown_DrawMetatiles_17:
-	setmetatile 10, 21, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 16, 19, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
-	setmetatile 21, 23, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE
+	setmetatile 10, 21, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 16, 19, METATILE_SunriseVillage_RedFlowers, FALSE
+	setmetatile 21, 23, METATILE_SunriseVillage_RedFlowers, FALSE
 	goto ChiiTown_DrawMetatiles_16
 
 ChiiTown_DrawMetatiles_20:
@@ -306,6 +306,7 @@ ChiiTown_MartDecors:
 ChiiTown_Mart:
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_OINTMENT
+	.2byte ITEM_REVIVAL_POWDER
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_ANTIDOTE
 	.2byte ITEM_AWAKENING
@@ -330,11 +331,6 @@ ChiiTown_EventScript_SchoolSign::
 
 ChiiTown_EventScript_SetTrespassVar::
 	setvar VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 1
-	return
-
-
-ChiiTown_EventScript_ChatotPost::
-	msgbox ChiiTown_EventScript_ChatotPost_Text_0, MSGBOX_SIGN
 	return
 
 
@@ -502,6 +498,3 @@ ChiiTown_EventScript_TownSign_Text_0:
 
 ChiiTown_EventScript_SchoolSign_Text_0:
 	.string "Little Deerling elementary school$"
-
-ChiiTown_EventScript_ChatotPost_Text_0:
-	.string "It's a Chatot post.$"

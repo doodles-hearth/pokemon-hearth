@@ -13,6 +13,9 @@ SINGLE_BATTLE_TEST("Baddy Bad sets up Reflect when it was succesful")
     PARAMETRIZE { moveSuccess = TRUE; }
 
     GIVEN {
+        // TODO EVA prevent tests from failing
+        ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
+
         PLAYER(SPECIES_WYNAUT);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {

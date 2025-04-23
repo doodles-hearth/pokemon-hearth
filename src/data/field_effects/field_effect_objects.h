@@ -13,6 +13,7 @@ const struct SpritePalette gSpritePalette_TallGrass[] =
 {
     {gObjectEventPal_HearthOwFoliage, FLDEFF_PAL_TAG_HEARTH_FOLIAGE}, //default pal
     {gFieldEffectObjectGinkoPalette, FLDEFF_PAL_TAG_GINKO_WOODS},
+    {gFieldEffectObjectGrassSilveridgePalette, FLDEFF_PAL_TAG_GRASS_SILVERIDGE},
 };
 
 static const union AnimCmd sAnim_Shadow[] =
@@ -169,6 +170,18 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass = {
 const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrassGinko = {
     .tileTag = TAG_NONE,
     .paletteTag = FLDEFF_PAL_TAG_GINKO_WOODS,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_TallGrass,
+    .images = sPicTable_TallGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateTallGrassFieldEffect,
+};
+
+// Silveridge grass
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrassSilveridge = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_GRASS_SILVERIDGE,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_TallGrass,
     .images = sPicTable_TallGrass,

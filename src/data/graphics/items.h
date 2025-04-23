@@ -151,6 +151,8 @@ const u32 gItemIconPalette_HealPowder[] = INCBIN_U32("graphics/items/icon_palett
 const u32 gItemIcon_RevivalBalm[] = INCBIN_U32("graphics/items/icons/revival_balm.4bpp.lz");
 const u32 gItemIcon_RevivalHerb[] = INCBIN_U32("graphics/items/icons/revival_herb.4bpp.lz");
 const u32 gItemIconPalette_RevivalHerb[] = INCBIN_U32("graphics/items/icons/revival_herb.gbapal.lz");
+const u32 gItemIcon_RevivalPowder[] = INCBIN_U32("graphics/items/icons/revival_powder.4bpp.lz");
+const u32 gItemIconPalette_RevivalPowder[] = INCBIN_U32("graphics/items/icons/revival_powder.gbapal.lz");
 
 const u32 gItemIcon_StatusHeal[] = INCBIN_U32("graphics/items/icons/status_heal.4bpp.lz");
 const u32 gItemIconPalette_Antidote[] = INCBIN_U32("graphics/items/icon_palettes/antidote.gbapal.lz");
@@ -162,14 +164,10 @@ const u32 gItemIconPalette_Awakening[] = INCBIN_U32("graphics/items/icon_palette
 const u32 gItemIcon_FullHeal[] = INCBIN_U32("graphics/items/icons/full_heal.4bpp.lz");
 const u32 gItemIconPalette_FullHeal[] = INCBIN_U32("graphics/items/icons/full_heal.gbapal.lz");
 
-const u32 gItemIcon_Ether[] = INCBIN_U32("graphics/items/icons/ether.4bpp.lz");
-const u32 gItemIconPalette_Ether[] = INCBIN_U32("graphics/items/icon_palettes/ether.gbapal.lz");
-
-const u32 gItemIconPalette_MaxEther[] = INCBIN_U32("graphics/items/icon_palettes/max_ether.gbapal.lz");
-
-const u32 gItemIconPalette_Elixir[] = INCBIN_U32("graphics/items/icon_palettes/elixir.gbapal.lz");
-
-const u32 gItemIconPalette_MaxElixir[] = INCBIN_U32("graphics/items/icon_palettes/max_elixir.gbapal.lz");
+const u32 gItemIcon_Ether[] = INCBIN_U32("graphics/items/icons/medicine/ether.4bpp.lz");
+const u32 gItemIcon_MaxEther[] = INCBIN_U32("graphics/items/icons/medicine/ether_max.4bpp.lz");
+const u32 gItemIconPalette_Ether[] = INCBIN_U32("graphics/items/icons/medicine/ether.gbapal.lz");
+const u32 gItemIconPalette_Elixir[] = INCBIN_U32("graphics/items/icons/medicine/elixir.gbapal.lz");
 
 const u32 gItemIcon_BerryJuice[] = INCBIN_U32("graphics/items/icons/berry_juice.4bpp.lz");
 const u32 gItemIconPalette_BerryJuice[] = INCBIN_U32("graphics/items/icon_palettes/berry_juice.gbapal.lz");
@@ -211,25 +209,17 @@ const u32 gItemIconPalette_BigMalasada[] = INCBIN_U32("graphics/items/icon_palet
 
 // Vitamins
 
-const u32 gItemIcon_HPUp[] = INCBIN_U32("graphics/items/icons/hp_up.4bpp.lz");
-const u32 gItemIconPalette_HPUp[] = INCBIN_U32("graphics/items/icon_palettes/hp_up.gbapal.lz");
+const u32 gItemIcon_Vitamin[] = INCBIN_U32("graphics/items/icons/vitamins/protein.4bpp.lz");
+const u32 gItemIconPalette_Protein[] = INCBIN_U32("graphics/items/icons/vitamins/protein.gbapal.lz");
+const u32 gItemIconPalette_Iron[] = INCBIN_U32("graphics/items/icons/vitamins/iron.gbapal.lz");
+const u32 gItemIconPalette_Calcium[] = INCBIN_U32("graphics/items/icons/vitamins/calcium.gbapal.lz");
+const u32 gItemIconPalette_Zinc[] = INCBIN_U32("graphics/items/icons/vitamins/zinc.gbapal.lz");
+const u32 gItemIconPalette_Carbos[] = INCBIN_U32("graphics/items/icons/vitamins/carbos.gbapal.lz");
+const u32 gItemIconPalette_HPUp[] = INCBIN_U32("graphics/items/icons/vitamins/hp_up.gbapal.lz");
 
-const u32 gItemIcon_Vitamin[] = INCBIN_U32("graphics/items/icons/vitamin.4bpp.lz");
-const u32 gItemIconPalette_Protein[] = INCBIN_U32("graphics/items/icon_palettes/protein.gbapal.lz");
-
-const u32 gItemIconPalette_Iron[] = INCBIN_U32("graphics/items/icon_palettes/iron.gbapal.lz");
-
-const u32 gItemIconPalette_Calcium[] = INCBIN_U32("graphics/items/icon_palettes/calcium.gbapal.lz");
-
-const u32 gItemIconPalette_Zinc[] = INCBIN_U32("graphics/items/icon_palettes/zinc.gbapal.lz");
-
-const u32 gItemIconPalette_Carbos[] = INCBIN_U32("graphics/items/icon_palettes/carbos.gbapal.lz");
-
-const u32 gItemIcon_PPUp[] = INCBIN_U32("graphics/items/icons/pp_up.4bpp.lz");
-const u32 gItemIconPalette_PPUp[] = INCBIN_U32("graphics/items/icon_palettes/pp_up.gbapal.lz");
-
-const u32 gItemIcon_PPMax[] = INCBIN_U32("graphics/items/icons/pp_max.4bpp.lz");
-const u32 gItemIconPalette_PPMax[] = INCBIN_U32("graphics/items/icon_palettes/pp_max.gbapal.lz");
+const u32 gItemIcon_PPUp[] = INCBIN_U32("graphics/items/icons/vitamins/pp_up.4bpp.lz");
+const u32 gItemIconPalette_PPUp[] = INCBIN_U32("graphics/items/icons/vitamins/pp_up.gbapal.lz");
+const u32 gItemIconPalette_PPMax[] = INCBIN_U32("graphics/items/icons/vitamins/pp_max.gbapal.lz");
 
 // EV Feathers
 
@@ -1365,6 +1355,9 @@ const u32 gItemIconPalette_WhiteHerb[] = INCBIN_U32("graphics/items/icon_palette
 
 const u32 gItemIcon_ExpShare[] = INCBIN_U32("graphics/items/icons/exp_share.4bpp.lz");
 const u32 gItemIconPalette_ExpShare[] = INCBIN_U32("graphics/items/icon_palettes/exp_share.gbapal.lz");
+
+const u32 gItemIcon_WiseMirror[] = INCBIN_U32("graphics/items/icons/sacred_treasures/mirror.4bpp.lz");
+const u32 gItemIconPalette_WiseMirror[] = INCBIN_U32("graphics/items/icons/sacred_treasures/mirror.gbapal.lz");
 
 const u32 gItemIcon_QuickClaw[] = INCBIN_U32("graphics/items/icons/quick_claw.4bpp.lz");
 const u32 gItemIconPalette_QuickClaw[] = INCBIN_U32("graphics/items/icon_palettes/quick_claw.gbapal.lz");
