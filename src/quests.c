@@ -244,6 +244,9 @@ static const u8 sText_Close[] = _("Close");
 static const u8 sText_ColorGreen[] = _("{COLOR}{GREEN}");
 static const u8 sText_AZ[] = _(" A-Z");
 
+//Some static strings
+static const u8 gText_PokedexQuestMap[] = _("Toku Region");
+
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////////BEGIN SUBQUEST CUSTOMIZATION/////////////////////////////
 
@@ -256,7 +259,7 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	      0,
 	      COMPOUND_STRING("See all Pokémon"),
 	      COMPOUND_STRING("Description 1"),
-	      COMPOUND_STRING("Toku Region"),
+	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
 	      sText_Complete
@@ -266,7 +269,7 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	      1,
 	      COMPOUND_STRING("Name all Pokémon"),
 	      COMPOUND_STRING("Description 2"),
-	      COMPOUND_STRING("Toku Region"),
+	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
 	      sText_Complete
@@ -276,7 +279,7 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	      2,
 	      COMPOUND_STRING("Catch all Pokémon"),
 	      COMPOUND_STRING("Description 3"),
-	      COMPOUND_STRING("Toku Region"),
+	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
 	      sText_Complete
@@ -286,7 +289,7 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	      3,
 	      COMPOUND_STRING("Describe all Pokémon"),
 	      COMPOUND_STRING("Description 3"),
-	      COMPOUND_STRING("Toku Region"),
+	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
 	      sText_Complete
@@ -318,7 +321,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		COMPOUND_STRING("The Toku Pokédex"),
 		COMPOUND_STRING("Fill the pages of the PokéDex!"),
 		COMPOUND_STRING("You've completed the PokéDex!"),
-		COMPOUND_STRING("Toku Region"),
+		gText_PokedexQuestMap,
 		OBJ_EVENT_GFX_ITEM_BALL,
 		OBJECT,
 		sSubQuests2,
