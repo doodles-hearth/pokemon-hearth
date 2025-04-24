@@ -44,10 +44,10 @@ script SakuTown_PokemonCenter_EventScript_Nurse {
 	end
 }
 
-script SakuTown_PokemonCenter_EventScript_Traveler {
+script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
 	lock
 	faceplayer
-	speakername("Man")
+	speakername("Nurse")
 	msgbox(format(
 		"This Pokémon refuge is brand-new, courtesy of the Toku Council!\p"
 		"As you can see, it's still being built. Watch out for the falling bricks, ha ha, just kidding!\p"
@@ -213,4 +213,17 @@ movement SakuTown_PokemonCenter_Movement_PushesPlayerUp {
 	delay_16
 	walk_down
 	face_original_direction
+}
+
+script SakuTown_PokemonCenter_EventScript_Makuhita {
+	lock
+	setseenmon(SPECIES_MAKUHITA)
+	setspeakertomonname(SPECIES_MAKUHITA)
+	playmoncry(SPECIES_MAKUHITA, CRY_MODE_WEAK)
+	msgbox(format("Kuhu…"))
+	waitmoncry
+	waitmessage
+	speakername(NULL)
+	msgbox(format("The Pokémon is resting."))
+	release
 }

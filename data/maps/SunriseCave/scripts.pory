@@ -1,0 +1,45 @@
+const LOCALID_KRABBY_LEFT = 5
+const LOCALID_KRABBY_RIGHT = 6
+const FLAG_HIDE_KRABBY = FLAG_TEMP_1
+
+mapscripts SunriseCave_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_TEMP_0) != 0) {
+			setflag(FLAG_HIDE_KRABBY)
+		}
+	}
+}
+
+script SunriseCave_Trigger_ScaringKrabby {
+	lockall
+	
+	setvar(VAR_TEMP_0, 1)
+
+	playmoncry(SPECIES_KRABBY, CRY_MODE_NORMAL)
+	applymovement(LOCALID_KRABBY_LEFT, moves(emote_exclamation_mark, delay_16 * 3, walk_fast_up))
+	delay(16)
+	playmoncry(SPECIES_KRABBY, CRY_MODE_NORMAL)
+	applymovement(LOCALID_KRABBY_RIGHT, moves(emote_exclamation_mark, delay_16 * 3, walk_fast_up * 2))
+	// SE_BALL? SE_M_DIVE?
+
+	waitmovement(LOCALID_KRABBY_LEFT)
+	playse(SE_LEDGE)
+	applymovement(LOCALID_KRABBY_LEFT, moves(jump_up, set_invisible))
+	waitse
+	playse(SE_BALL)
+	
+	waitmovement(LOCALID_KRABBY_RIGHT)
+	playse(SE_LEDGE)
+	applymovement(LOCALID_KRABBY_RIGHT, moves(jump_up, set_invisible))
+	waitse
+	playse(SE_BALL)
+
+	waitmovement(LOCALID_KRABBY_LEFT)
+	waitmovement(LOCALID_KRABBY_RIGHT)
+
+	removeobject(LOCALID_KRABBY_LEFT)
+	removeobject(LOCALID_KRABBY_RIGHT)
+	setflag(FLAG_HIDE_KRABBY)
+
+	releaseall
+}

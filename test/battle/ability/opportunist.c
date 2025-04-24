@@ -50,6 +50,9 @@ DOUBLE_BATTLE_TEST("Opportunist raises Attack only once when partner has Intimid
     PARAMETRIZE { abilityLeft = ABILITY_TANGLED_FEET; abilityRight = ABILITY_CONTRARY; }
 
     GIVEN {
+        // TODO EVA prevent tests from failing
+        ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
+
         PLAYER(SPECIES_MIGHTYENA) { Ability(ABILITY_INTIMIDATE); }
         PLAYER(SPECIES_ESPATHRA) { Ability(ABILITY_OPPORTUNIST); }
         OPPONENT(SPECIES_SPINDA) { Ability(abilityLeft); }

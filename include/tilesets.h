@@ -26,6 +26,7 @@ enum TilesetsSecondary
     TILESET_SECONDARY_VANILLA,
     TILESET_SILVER_TUNNEL,
     TILESET_GINKO_WOODS,
+    TILESET_SILVERIDGE,
 };
 
 #endif //GUARD_tilesets_H

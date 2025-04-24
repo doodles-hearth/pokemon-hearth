@@ -17,6 +17,11 @@
       "map": "MAP_WINDSWEPT_ROUTE",
       "offset": -48,
       "direction": "right"
+    },
+    {
+      "map": "MAP_WINDSWEPT_ROUTE_BOTTOM",
+      "offset": 26,
+      "direction": "right"
     }
   ],
   "object_events": [

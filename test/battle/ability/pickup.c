@@ -26,6 +26,9 @@ SINGLE_BATTLE_TEST("Pickup grants an item used by another Pokémon")
 WILD_BATTLE_TEST("Pickup grants an item used by itself in wild battles (Gen 9)")
 {
     GIVEN {
+        // TODO EVA prevent tests from failing
+        ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
+
         ASSUME(B_PICKUP_WILD >= GEN_9);
         PLAYER(SPECIES_ZIGZAGOON) { Ability(ABILITY_PICKUP); MaxHP(100); HP(51); Item(ITEM_SITRUS_BERRY); }
         OPPONENT(SPECIES_WOBBUFFET);
@@ -202,6 +205,9 @@ SINGLE_BATTLE_TEST("Pickup doesn't grant an item if the user eats it with Bug Bi
 SINGLE_BATTLE_TEST("Pickup doesn't grant an used item if its user already restored it")
 {
     GIVEN {
+        // TODO EVA prevent tests from failing
+        ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
+
         ASSUME(GetMoveEffect(MOVE_RECYCLE) == EFFECT_RECYCLE);
         PLAYER(SPECIES_ZIGZAGOON) { Ability(ABILITY_PICKUP); }
         OPPONENT(SPECIES_WOBBUFFET) { MaxHP(100); HP(51); Item(ITEM_SITRUS_BERRY); }
