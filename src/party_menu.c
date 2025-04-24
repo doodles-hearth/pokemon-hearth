@@ -2400,8 +2400,14 @@ bool32 KnowsFieldMove(struct Pokemon *mon, u32 fieldMoveType)
     // Check the field move flags of each of the Pokémon's 4 moves
     for (u32 iMoveSlot = 0; iMoveSlot < MAX_MON_MOVES; iMoveSlot += 1)
     {
-        u16 moveId = GetMonData(mon, MON_DATA_MOVE1 + iMoveSlot, NULL);
-        if (gMovesInfo[moveId].fieldMoveFlags & fieldMoveType)
+        u16 move = GetMonData(mon, MON_DATA_MOVE1 + iMoveSlot, NULL);
+
+        if (move == MOVE_NONE)
+        {
+            break;
+        }
+
+        if (gMovesInfo[move].fieldMoveFlags & fieldMoveType)
         {
             return TRUE;
         }
