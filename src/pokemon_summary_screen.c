@@ -2619,7 +2619,6 @@ static bool8 CanReplaceMove(void)
         || sMonSummaryScreen->newMove == MOVE_NONE
     )
     {
-        DebugPrintf("Leaving");
         return TRUE;
     }
     
@@ -2632,64 +2631,28 @@ static bool8 CanReplaceMove(void)
         return TRUE;
     }
 
-    // TODO: commonize the following as a function
-    // CanReplaceFieldMove
-    // u32 fieldMoveType
-    // u32 monPartyIndex
-    // mons
-    
     // If that move is a field move that the player can use in the field
     if (
         fieldMoveType != FIELD_MOVE_COUNT
         && FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag)
     )
     {
-        DebugPrintf("Wait! This move is a field move!");
-
         // If the Pokémon knows another move of the same field move type, we're good
         for (int i = 0; i < MAX_MON_MOVES; i += 1)
         {
             if (sMonSummaryScreen->firstMoveIndex != i)
             {
-                DebugPrintf("  Is this other move of same type?");
                 u32 move = sMonSummaryScreen->summary.moves[i];
 
                 if (gMovesInfo[move].fieldMoveFlags & fieldMoveType)
                 {
-                    DebugPrintf("    It is! All G then");
                     return TRUE;
                 }
             }
         }
-
-        bool32 otherMonAlsoKnowsFieldMove = FALSE;
-        // For each of the other mons in the party
-        for (u32 j = 0; j < PARTY_SIZE; j += 1)
-        {
-            if (
-                sMonSummaryScreen->curMonIndex != j
-                && GetMonData(&mons[j], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE
-                && GetMonData(&mons[j], MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
-            )
-            {
-                DebugPrintf("  Does the mon at index %d know this field move?", j);
-                // If the mon knows the field move, we're good
-                if (KnowsFieldMove(&mons[j], fieldMoveType))
-                {
-                    DebugPrintf("    It does! All G then!");
-                    otherMonAlsoKnowsFieldMove = TRUE;
-                    break;
-                }
-            }
-        }
         
-        // No other mon knows this field move, so the move has to stay
-        if (!otherMonAlsoKnowsFieldMove) {
-            DebugPrintf("No other mon knows the move :'(");
-            return FALSE;
-        }
+        return IsFieldMoveKnownByAnotherPartyMon(fieldMoveType, sMonSummaryScreen->curMonIndex, mons);
     }
-    DebugPrintf("Feel free to forget it!!");
     return TRUE;
 }
 

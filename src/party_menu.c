@@ -1606,27 +1606,9 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
                             && FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag)
                         )
                         {
-                            bool32 otherMonAlsoKnowsFieldMove = FALSE;
-                            // For each of the other mons in the party
-                            for (u32 j = 0; j < PARTY_SIZE; j += 1)
-                            {
-                                if (
-                                    partyId != j
-                                    && GetMonData(&gPlayerParty[j], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE
-                                    && GetMonData(&gPlayerParty[j], MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
-                                )
-                                {
-                                    // If the mon knows the field move, we're good
-                                    if (KnowsFieldMove(&gPlayerParty[j], fieldMoveType))
-                                    {
-                                        otherMonAlsoKnowsFieldMove = TRUE;
-                                        break;
-                                    }
-                                }
-                            }
 
                             // No other mon knows this field move, so the mon can't be sent to PC
-                            if (!otherMonAlsoKnowsFieldMove) {
+                            if (!IsFieldMoveKnownByAnotherPartyMon(fieldMoveType, partyId, gPlayerParty)) {
                                 PlaySE(SE_FAILURE);
                                 DisplayPartyMenuMessage(gText_CannotSendMonToBoxHM, FALSE);
                                 ScheduleBgCopyTilemapToVram(2);
@@ -2383,37 +2365,6 @@ u8 CanTeachMove(struct Pokemon *mon, u16 move)
         return ALREADY_KNOWS_MOVE;
     else
         return CAN_LEARN_MOVE;
-}
-
-/**
- * Checks if the given mon knows at least one move of the given field move type.
- *
- * @param mon Pokémon
- * @param fieldMoveType field move type
- */
-bool32 KnowsFieldMove(struct Pokemon *mon, u32 fieldMoveType)
-{
-    if (GetMonData(mon, MON_DATA_IS_EGG)) {
-        return FALSE;
-    }
-
-    // Check the field move flags of each of the Pokémon's 4 moves
-    for (u32 iMoveSlot = 0; iMoveSlot < MAX_MON_MOVES; iMoveSlot += 1)
-    {
-        u16 move = GetMonData(mon, MON_DATA_MOVE1 + iMoveSlot, NULL);
-
-        if (move == MOVE_NONE)
-        {
-            break;
-        }
-
-        if (gMovesInfo[move].fieldMoveFlags & fieldMoveType)
-        {
-            return TRUE;
-        }
-    }
-    
-    return FALSE;
 }
 
 static void InitPartyMenuWindows(u8 layout)
