@@ -108,6 +108,19 @@ SakuTown_EventScript_Farmer2::
 	return
 
 
+SakuTown_EventScript_Scyther::
+	lock
+	faceplayer
+	setseenmon SPECIES_SCYTHER
+	playmoncry SPECIES_SCYTHER, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_SCYTHER
+	msgbox SakuTown_EventScript_Scyther_Text_0
+	waitmoncry
+	closemessage
+	release
+	return
+
+
 SakuTown_EventScript_Woman::
 	lock
 	faceplayer
@@ -410,6 +423,9 @@ SakuTown_EventScript_Farmer_Text_1:
 SakuTown_EventScript_Farmer2_Text_0:
 	.string "Whew…\p"
 	.string "Working in the fields sure is tiring…$"
+
+SakuTown_EventScript_Scyther_Text_0:
+	.string "Gyooo!$"
 
 SakuTown_EventScript_Woman_Text_0:
 	.string "Woman$"
