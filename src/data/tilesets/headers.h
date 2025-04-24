@@ -1215,3 +1215,14 @@ const struct Tileset gTileset_PuddlePath =
     .metatileAttributes = gMetatileAttributes_PuddlePath,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_BrownCave =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_BrownCave,
+    .palettes = gTilesetPalettes_BrownCave,
+    .metatiles = gMetatiles_BrownCave,
+    .metatileAttributes = gMetatileAttributes_BrownCave,
+    .callback = NULL,
+};

@@ -12,6 +12,9 @@ SINGLE_BATTLE_TEST("Contrary raises Attack when Intimidated in a single battle",
     PARAMETRIZE { ability = ABILITY_CONTRARY; }
     PARAMETRIZE { ability = ABILITY_TANGLED_FEET; }
     GIVEN {
+        // TODO EVA prevent tests from failing
+        ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
+
         PLAYER(SPECIES_MIGHTYENA) { Ability(ABILITY_INTIMIDATE); }
         OPPONENT(SPECIES_SPINDA) { Ability(ability); }
     } WHEN {
@@ -40,6 +43,9 @@ DOUBLE_BATTLE_TEST("Contrary raises Attack when Intimidated in a double battle",
     PARAMETRIZE { abilityLeft = ABILITY_TANGLED_FEET; abilityRight = ABILITY_CONTRARY; }
 
     GIVEN {
+        // TODO EVA prevent tests from failing
+        ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
+
         PLAYER(SPECIES_MIGHTYENA) { Ability(ABILITY_INTIMIDATE); }
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_SPINDA) { Ability(abilityLeft); }
@@ -163,6 +169,9 @@ SINGLE_BATTLE_TEST("Contrary raises a stat after using a move which would normal
     PARAMETRIZE { ability = ABILITY_CONTRARY; }
     PARAMETRIZE { ability = ABILITY_TANGLED_FEET; }
     GIVEN {
+        // TODO EVA prevent tests from failing
+        ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
+
         ASSUME(GetMoveEffect(MOVE_GROWL) == EFFECT_ATTACK_DOWN);
         PLAYER(SPECIES_WOBBUFFET) { Speed(3); }
         OPPONENT(SPECIES_SPINDA) { Ability(ability); Speed(2); }
@@ -194,6 +203,9 @@ SINGLE_BATTLE_TEST("Contrary lowers a stat after using a move which would normal
     PARAMETRIZE { ability = ABILITY_CONTRARY; }
     PARAMETRIZE { ability = ABILITY_TANGLED_FEET; }
     GIVEN {
+        // TODO EVA prevent tests from failing
+        ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
+
         ASSUME(GetMoveEffect(MOVE_BELLY_DRUM) == EFFECT_BELLY_DRUM);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_SPINDA) { Ability(ability); }

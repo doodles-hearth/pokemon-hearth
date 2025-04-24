@@ -20,6 +20,78 @@ script Common_EventScript_PkmnCenterNurse_Blissey {
 	release
 }
 
+script Common_EventScript_PkmnCenterNurse_Sleep {
+	lock
+	faceplayer
+	
+	if (checkmoney(500)) {
+		speakername("Nurse")
+		msgbox(format(
+			"Hello! For 500¥, you and your Pokémon can spend the night here."
+		))
+		closemessage
+
+		showmoneybox(18, 0)
+
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Sleep until morning",
+			"Sleep until nighttime",
+			"Maybe later."
+		)
+		
+		switch(var(VAR_RESULT)) {
+			case 0:
+				call(Common_EventScript_PkmnCenterNurse_ChooseSleep)
+				fadescreenswapbuffers(FADE_TO_BLACK)
+				playfanfare(MUS_HEAL)
+				waitfanfare
+				special(HealPlayerParty)
+				callnative(UpdateFollowingPokemon)
+				fwdtime(8, 0)
+				fadescreenswapbuffers(FADE_FROM_BLACK)
+			case 1:
+				call(Common_EventScript_PkmnCenterNurse_ChooseSleep)
+				fadescreenswapbuffers(FADE_TO_BLACK)
+				playfanfare(MUS_HEAL)
+				waitfanfare
+				special(HealPlayerParty)
+				callnative(UpdateFollowingPokemon)
+				fwdtime(22, 0)
+				fadescreenswapbuffers(FADE_FROM_BLACK)
+		}
+	} else {
+		speakername("Nurse")
+		msgbox(format(
+			"Hello! For 500¥, you and your Pokémon can spend the night here."
+		))
+		closemessage
+	}
+
+	hidemoneybox
+	release
+	end
+}
+
+script Common_EventScript_PkmnCenterNurse_ChooseSleep {
+	playse(SE_SHOP)
+	removemoney(500)
+	updatemoneybox
+
+	speakername("Nurse")
+	msgbox(format(
+		"Thank you! May you have a restful night."
+	))
+	closemessage
+
+	hidemoneybox
+}
+
 script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 	lock
 	faceplayer

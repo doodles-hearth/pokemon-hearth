@@ -141,17 +141,17 @@ script TranquilRoute_EventScript_CutMaster{
 script TranquilRoute_EventScript_FlowerCutMastersGarden {
 	if (flag(FLAG_CUT_QUEST_COMPLETED) && !flag(FLAG_CUT_QUEST_COMPLETED_JUST_NOW)) {
 		if (flag(FLAG_BADGE02_GET)) {
-			setmetatile(39, 33, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
-			setmetatile(40, 34, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
-			setmetatile(41, 33, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
-			setmetatile(42, 34, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+			setmetatile(39, 33, METATILE_SunriseVillage_RedFlowers, FALSE)
+			setmetatile(40, 34, METATILE_SunriseVillage_RedFlowers, FALSE)
+			setmetatile(41, 33, METATILE_SunriseVillage_RedFlowers, FALSE)
+			setmetatile(42, 34, METATILE_SunriseVillage_RedFlowers, FALSE)
 		}
 
 		if (flag(FLAG_BADGE03_GET)) {
-			setmetatile(35, 29, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
-			setmetatile(34, 30, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
-			setmetatile(35, 31, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
-			setmetatile(34, 32, METATILE_PorytilesPrimaryTutorial_RedFlowers, FALSE)
+			setmetatile(35, 29, METATILE_SunriseVillage_RedFlowers, FALSE)
+			setmetatile(34, 30, METATILE_SunriseVillage_RedFlowers, FALSE)
+			setmetatile(35, 31, METATILE_SunriseVillage_RedFlowers, FALSE)
+			setmetatile(34, 32, METATILE_SunriseVillage_RedFlowers, FALSE)
 		}
 	}
 }
@@ -541,6 +541,17 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	removeobject(LOCALID_KECLEON)
 
 	setflag(FLAG_MET_TRAVELING_MERCHANT)
+	release
+}
+
+script TranquilRoute_EventScript_WaitingForChatot {
+	lock
+	faceplayer
+	speakername("Girl")
+	msgbox(format(
+		"Sigh… Maybe if I hang around the Chatot Post, my boyfriend's message will arrive sooner…"
+	))
+	closemessage
 	release
 }
 

@@ -1120,15 +1120,15 @@ const struct Item gItemsInfo[] =
     [ITEM_REVIVAL_HERB] =
     {
         .name = _("Revival Herb"),
-        .price = 2800,
+        .price = 1500,
         .description = COMPOUND_STRING(
-            "A very bitter herb\n"
-            "that revives a\n"
-            "fainted Pokémon."),
+            "A bitter herb.\n"
+            "Revives a Pokémon\n"
+            "outside of battle."
+        ),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = EFFECT_ITEM_REVIVE,
         .effect = gItemEffect_RevivalHerb,
         .flingPower = 30,
         .iconPic = gItemIcon_RevivalHerb,
@@ -1138,19 +1138,37 @@ const struct Item gItemsInfo[] =
     [ITEM_REVIVAL_BALM] =
     {
         .name = _("Revival Balm"),
-        .price = 1400,
+        .price = 800,
         .description = COMPOUND_STRING(
-            "A bitter herb\n"
-            "that revives a\n"
-            "fainted Pokémon."),
+            "A bitter herb.\n"
+            "Revives a Pokémon\n"
+            "outside of battle."
+        ),
         .pocket = POCKET_ITEMS,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
-        .battleUsage = EFFECT_ITEM_REVIVE,
         .effect = gItemEffect_RevivalBalm,
         .flingPower = 30,
         .iconPic = gItemIcon_RevivalBalm,
         .iconPalette = gItemIconPalette_RevivalHerb,
+    },
+
+    [ITEM_REVIVAL_POWDER] =
+    {
+        .name = _("Revival Powder"),
+        .price = 500,
+        .description = COMPOUND_STRING(
+            "A bitter powder.\n"
+            "Revives a Pokémon\n"
+            "outside of battle."
+        ),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .effect = gItemEffect_RevivalPowder,
+        .flingPower = 30,
+        .iconPic = gItemIcon_RevivalPowder,
+        .iconPalette = gItemIconPalette_RevivalPowder,
     },
 
     [ITEM_ANTIDOTE] =
@@ -1292,8 +1310,8 @@ const struct Item gItemsInfo[] =
         .battleUsage = EFFECT_ITEM_RESTORE_PP,
         .effect = gItemEffect_MaxEther,
         .flingPower = 30,
-        .iconPic = gItemIcon_Ether,
-        .iconPalette = gItemIconPalette_MaxEther,
+        .iconPic = gItemIcon_MaxEther,
+        .iconPalette = gItemIconPalette_Ether,
     },
 
     [ITEM_ELIXIR] =
@@ -1329,8 +1347,8 @@ const struct Item gItemsInfo[] =
         .battleUsage = EFFECT_ITEM_RESTORE_PP,
         .effect = gItemEffect_MaxElixir,
         .flingPower = 30,
-        .iconPic = gItemIcon_Ether,
-        .iconPalette = gItemIconPalette_MaxElixir,
+        .iconPic = gItemIcon_MaxEther,
+        .iconPalette = gItemIconPalette_Elixir,
     },
 
     [ITEM_BERRY_JUICE] =
@@ -1548,7 +1566,7 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
         .effect = gItemEffect_HPUp,
         .flingPower = 30,
-        .iconPic = gItemIcon_HPUp,
+        .iconPic = gItemIcon_Vitamin,
         .iconPalette = gItemIconPalette_HPUp,
     },
 
@@ -1669,7 +1687,7 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_PPUp,
         .effect = gItemEffect_PPMax,
         .flingPower = 30,
-        .iconPic = gItemIcon_PPMax,
+        .iconPic = gItemIcon_PPUp,
         .iconPalette = gItemIconPalette_PPMax,
     },
 
@@ -8488,7 +8506,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_EXP_SHARE] =
     {
-        .name = _("Exp. Share"),
+        .name = _("Wise Mirror"),
         .holdEffect = HOLD_EFFECT_EXP_SHARE,
         #if I_EXP_SHARE_ITEM >= GEN_6
             .price = 0,
@@ -8507,8 +8525,8 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_FIELD,
         .fieldUseFunc = ItemUseOutOfBattle_ExpShare,
         .flingPower = 30,
-        .iconPic = gItemIcon_ExpShare,
-        .iconPalette = gItemIconPalette_ExpShare,
+        .iconPic = gItemIcon_WiseMirror,
+        .iconPalette = gItemIconPalette_WiseMirror,
     },
 
     [ITEM_QUICK_CLAW] =
@@ -11291,7 +11309,7 @@ const struct Item gItemsInfo[] =
     [ITEM_TM_AERIAL_ACE] =
     {
         .name = _("TM40"),
-        .price = 3000,
+        .price = 1500,
         .description = COMPOUND_STRING(
             "An extremely fast\n"
             "attack that can't\n"

@@ -24,14 +24,9 @@
       "direction": "right"
     },
     {
-      "map": "MAP_WINDSWEPT_ROUTE",
+      "map": "MAP_WINDSWEPT_ROUTE_BOTTOM",
       "offset": 16,
       "direction": "up"
-    },
-    {
-      "map": "MAP_BEACHBOUND_ROUTE",
-      "offset": 0,
-      "direction": "right"
     }
   ],
   "object_events": [

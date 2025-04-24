@@ -78,27 +78,27 @@ WindsweptRoute_EventScript_Trainer6::
 WindsweptRoute_EventScript_TrainerBattleRoadblock::
 	lock
 	playbgm MUS_VS_TRAINER, FALSE
-	applymovement 13, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_0
+	applymovement 10, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_0
 	waitmovement 0
 	speakername WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_0
 	msgbox WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_1
 	closemessage
 	playmoncry SPECIES_NUZLEAF, CRY_MODE_ENCOUNTER
 	waitmoncry
-	applymovement 20, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_1
+	applymovement 17, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_1
 	playse SE_EFFECTIVE
 	waitmovement 0
 	waitse
-	applymovement 19, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_2
+	applymovement 16, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_2
 	waitmovement 0
 	speakername WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_2
 	msgbox WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_3
 	closemessage
-	applymovement 21, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_3
+	applymovement 18, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_3
 	playmoncry SPECIES_BRELOOM, CRY_MODE_ENCOUNTER
 	waitmoncry
 	waitmovement 0
-	applymovement 21, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_4
+	applymovement 18, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_4
 	playse SE_M_HEADBUTT
 	waitmovement 0
 	waitse

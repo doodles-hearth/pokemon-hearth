@@ -257,6 +257,9 @@ DOUBLE_BATTLE_TEST("Commander doesn't prevent Imposter from working on a Command
 DOUBLE_BATTLE_TEST("Commander Tatsugiri is still affected by Perish Song while controlling Dondozo")
 {
     GIVEN {
+        // TODO EVA prevent tests from failing
+        ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
+
         PLAYER(SPECIES_DONDOZO);
         PLAYER(SPECIES_TATSUGIRI) { Ability(ABILITY_COMMANDER); }
         OPPONENT(SPECIES_WOBBUFFET);

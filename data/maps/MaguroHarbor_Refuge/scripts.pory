@@ -72,7 +72,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 		msgbox(format(
 			"Bean is a little slow, but he is happy to meet you!\p"
 			"He may not look like a fighter, but he enjoys a good battle, too."
-			"Would you like to have a friendly bout, Bean against one of your Pokémon?"
+			"Would you like to have a friendly bout, Bean against your Pokémon?"
 		))
 
 		goto(MaguroHarbor_Refuge_BattleHariko)
@@ -105,7 +105,17 @@ script MaguroHarbor_Refuge_BattleHariko {
 			speakername("Hariko")
 			msgbox(format(
 				"We lost, but Bean tells me he had fun!\nI am glad.\p"
-				"Everyday we learn something new about Pokémon, be it through battling or observation."
+				"Everyday we learn something new about Pokémon, be it through battling or observation.\p"
+				"I brought snacks for my journey.\nIf I give you some, you will probably feel rewarded for this fight!"
+			))
+			closemessage
+
+			giveitem(ITEM_UUMEGIRI, 4)
+
+			speakername("Hariko")
+			msgbox(format(
+				"These can be fed to your Pokémon during battle to save you from a pickle.\p"
+				"Farewell, {PLAYER}."
 			))
 			closemessage
 		case 1:

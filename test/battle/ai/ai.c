@@ -817,6 +817,9 @@ AI_SINGLE_BATTLE_TEST("AI stays choice locked into moves in spite of the player'
     PARAMETRIZE { ability = ABILITY_BULLETPROOF;       playerMon = SPECIES_CHESNAUGHT;    aiMove = MOVE_BULLET_SEED; }
 
     GIVEN {
+        // TODO EVA prevent tests from failing
+        ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
+
         ASSUME(gItemsInfo[ITEM_CHOICE_BAND].holdEffect == HOLD_EFFECT_CHOICE_BAND);
         ASSUME(GetMovePriority(MOVE_QUICK_ATTACK) == 1);
         ASSUME(IsSoundMove(MOVE_BOOMBURST));

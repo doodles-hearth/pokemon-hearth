@@ -7544,7 +7544,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gOverworldPalette_Golduck,
             gShinyOverworldPalette_Golduck
         )
-        .levelUpLearnset = sGolduckLevelUpLearnset,
+        .levelUpLearnset = sGolduckTokuanLevelUpLearnset,
         .teachableLearnset = sGolduckTeachableLearnset,
     },
 
@@ -7620,10 +7620,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     [SPECIES_GOLDUCK_TOKUAN] =
     {
         .baseHP        = 80,
-        .baseAttack    = 82,
+        .baseAttack    = 86,
         .baseDefense   = 78,
         .baseSpeed     = 85,
-        .baseSpAttack  = 95,
+        .baseSpAttack  = 89,
         .baseSpDefense = 80,
         .types = MON_TYPES(TYPE_WATER, TYPE_DARK),
         .catchRate = 75,
@@ -7684,7 +7684,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gMonShinyPalette_GolduckTokuan
         )
         // TODO EVA
-        .levelUpLearnset = sGolduckLevelUpLearnset,
+        .levelUpLearnset = sGolduckTokuanLevelUpLearnset,
         .teachableLearnset = sGolduckTeachableLearnset,
     },
 #endif //P_FAMILY_PSYDUCK
@@ -10157,7 +10157,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .abilities = { ABILITY_RUN_AWAY, ABILITY_PASTEL_VEIL, ABILITY_ANTICIPATION },
         .bodyColor = BODY_COLOR_WHITE,
         .speciesName = _("Ponyta"),
-        .unknownName = _("Fire Horse"),
+        .unknownName = _("Warm Horse"),
         .cryId = CRY_PONYTA,
         .natDexNum = NATIONAL_DEX_PONYTA,
         .categoryName = _("Unique Horn"),
@@ -12790,10 +12790,10 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .abilities = { ABILITY_HYPER_CUTTER, ABILITY_SHELL_ARMOR, ABILITY_SHEER_FORCE },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Krabby"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Small Crab"),
         .cryId = CRY_KRABBY,
         .natDexNum = NATIONAL_DEX_KRABBY,
-        .categoryName = _("River Crab"),
+        .categoryName = _("Small Crab"),
         .height = 4,
         .weight = 65,
         .description = COMPOUND_STRING(
@@ -12864,7 +12864,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .bodyColor = BODY_COLOR_RED,
         .noFlip = TRUE,
         .speciesName = _("Kingler"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Huge Crab"),
         .cryId = CRY_KINGLER,
         .natDexNum = NATIONAL_DEX_KINGLER,
         .categoryName = _("Pincer"),

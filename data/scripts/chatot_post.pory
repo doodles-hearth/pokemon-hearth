@@ -1,0 +1,3 @@
+script ChatotPost_EventScript_Post {
+	msgbox(format("It's a Chatot Post."), MSGBOX_SIGN)
+}

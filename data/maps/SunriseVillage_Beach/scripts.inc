@@ -1,5 +1,14 @@
 SunriseVillage_Beach_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SunriseVillage_Beach_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+SunriseVillage_Beach_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	goto_if_unset FLAG_RECEIVED_STARTER, SunriseVillage_Beach_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	return
+
+SunriseVillage_Beach_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setflag FLAG_TEMP_1
+	return
 
 
 SunriseVillage_Beach_EventScript_RivalSpeech::
@@ -207,6 +216,32 @@ SunriseVillage_Event_LookingAtYifu::
 	end
 
 
+SunriseVillage_Event_PokemonWontComeOut::
+	lock
+	faceplayer
+	speakername SunriseVillage_Event_LookingAtYifu_Text_0
+	msgbox SunriseVillage_Event_PokemonWontComeOut_Text_0
+	closemessage
+	applymovement VAR_LAST_TALKED, SunriseVillage_Event_LookingAtYifu_Movement_0
+	waitmovement 0
+	speakername SunriseVillage_Event_LookingAtYifu_Text_0
+	msgbox SunriseVillage_Event_PokemonWontComeOut_Text_1
+	closemessage
+	release
+	end
+
+
+SunriseVillage_Event_ChildsMon::
+	lock
+	faceplayer
+	setseenmon SPECIES_DWEBBLE
+	playmoncry SPECIES_DWEBBLE, CRY_MODE_NORMAL
+	msgbox SunriseVillage_Event_ChildsMon_Text_0
+	waitmoncry
+	release
+	end
+
+
 SunriseVillage_Beach_Movement_RivalSitsOnBench:
 	walk_in_place_faster_left
 	delay_16
@@ -373,3 +408,14 @@ SunriseVillage_Event_LookingAtYifu_Text_1:
 	.string "there in Yifu City!\p"
 	.string "I don't get to see her often. I miss\n"
 	.string "her…$"
+
+SunriseVillage_Event_PokemonWontComeOut_Text_0:
+	.string "I'm going to catch my first Pokémon\n"
+	.string "myself, all on my own!$"
+
+SunriseVillage_Event_PokemonWontComeOut_Text_1:
+	.string "Pspspsps… Come on out, Pokémon…\n"
+	.string "Pspsps…$"
+
+SunriseVillage_Event_ChildsMon_Text_0:
+	.string "Mrrb!$"
