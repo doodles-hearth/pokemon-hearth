@@ -13,6 +13,14 @@ mapscripts SakuTown_MapScripts {
 			setmetatile(19, 2, METATILE_SakuKura_BoardGame, TRUE)
 			setobjectmovementtype(LOCALID_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
 		}
+		returnqueststate(QUEST_KURALOVERS)
+		copyvar(VAR_TEMP_0, VAR_RESULT)
+		returnqueststate(QUEST_KURAESPEON)
+		copyvar(VAR_TEMP_1, VAR_RESULT)
+		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1)) {
+			setflag(FLAG_SAKU_FARMERS)
+			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1)
+		}
 	}
 	MAP_SCRIPT_ON_LOAD {
 		setflag(FLAG_HIDE_NATSUKI)
@@ -125,6 +133,18 @@ script SakuTown_EventScript_Farmer2 {
 		"Whew…\p"
 		"Working in the fields sure is tiring…"
 	))
+	release
+}
+
+script SakuTown_EventScript_Scyther {
+	lock
+	faceplayer
+	setseenmon(SPECIES_SCYTHER)
+	playmoncry(SPECIES_SCYTHER, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_SCYTHER)
+	msgbox(format("Gyooo!"))
+	waitmoncry
+	closemessage
 	release
 }
 

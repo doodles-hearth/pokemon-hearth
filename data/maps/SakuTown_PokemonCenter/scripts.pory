@@ -1,9 +1,15 @@
+const LOCALID_NURSE = 1
 const LOCALID_GRUNT = 3
+const LOCALID_FARMER_1 = 9
+const LOCALID_FARMER_2 = 10
 
 mapscripts SakuTown_PokemonCenter_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_SAKU_TOWN)
 	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1: SakuTown_PokemonCenter_EventScript_ScytherQuest
+	]
 }
 
 script SakuTown_PokemonCenter_EventScript_Nurse {
@@ -47,6 +53,72 @@ script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
 		"As you can see, it's still being built. Watch out for the falling bricks, ha ha, just kidding!\p"
 		"Seriously though, do watch out. We're held responsible if anything happens to you."
 	))
+	closemessage
+	release
+	end
+}
+
+script SakuTown_PokemonCenter_EventScript_ScytherQuest {
+	lock
+	applymovement(LOCALID_NURSE, moves(face_right))
+	waitmovement(0)
+	speakername("Nurse")
+	msgbox(format("I'm sorry, but there's nothing I can do yet. We haven't received the tools that allow us to heal a Pokémon in this dire of a state."))
+	waitmessage
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right, walk_up * 6))
+	speakername("Farmer")
+	msgbox(format("Well y'have to do somet'in'! Can'tcha see she's in pain?!"))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_NURSE, moves(walk_in_place_fast_right))
+	waitmovement(0)
+	speakername("Nurse")
+	msgbox(format("She can stay here for as long as she needs to. I'll try to keep her in as good of a shape as I can."))
+	waitmessage
+	closemessage
+	release
+	setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2)
+}
+
+script SakuTown_PokemonCenter_EventScript_Farmer1 {
+	lock
+	faceplayer
+	speakername("Farmer")
+	returnqueststate(QUEST_KURASCYTHER)
+	switch(var(VAR_RESULT))
+	{
+		case 1:
+			call(FarmerGivesQuest)
+			break
+		case 2:
+			call(FarmerWaitsMedicine)
+			break
+	}
+	release
+	end
+}
+
+script(local) FarmerGivesQuest {
+	msgbox(format("The nurse 'ere said that the new fangled technology from the Toku Council isn't here yet. As such, she can't be cured of whatever's ailin' her.\pPlease! If you can spare some time, can you help us find someone or something to cure our girl?"))
+	startquest(QUEST_KURASCYTHER)
+	applymovement(LOCALID_FARMER_1, moves(face_original_direction))
+	return
+}
+
+script(local) FarmerWaitsMedicine {
+	msgbox(format("So? Have ya found anythin' yet?"))
+	return
+}
+
+script SakuTown_PokemonCenter_EventScript_Farmer2 {
+	lock
+	speakername("Farmer")
+	msgbox(format("There, there, girl… It'll be okay…"))
+	closemessage
+	playmoncry(SPECIES_SCYTHER, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_SCYTHER)
+	msgbox(format("{FONT_SMALL} Gyooo…"))
 	closemessage
 	release
 	end

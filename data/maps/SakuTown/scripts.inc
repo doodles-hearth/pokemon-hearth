@@ -5,12 +5,29 @@ SakuTown_MapScripts::
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Common_EventScript_SetupRivalGfxId
-	goto_if_set FLAG_SAKU_KURA_REUNITED, SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	goto_if_set FLAG_SAKU_KURA_REUNITED, SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	returnqueststate QUEST_KURALOVERS
+	copyvar VAR_TEMP_0, VAR_RESULT
+	returnqueststate QUEST_KURAESPEON
+	copyvar VAR_TEMP_1, VAR_RESULT
+	compare VAR_TEMP_0, 4
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
 	return
 
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	setmetatile 19, 2, METATILE_SakuKura_BoardGame, TRUE
 	setobjectmovementtype 8, MOVEMENT_TYPE_FACE_RIGHT
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	setflag FLAG_SAKU_FARMERS
+	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1
+	return
+
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
+	compare VAR_TEMP_1, 0
+	goto_if_ne SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -104,6 +121,19 @@ SakuTown_EventScript_Farmer2::
 	lock
 	speakername SakuTown_EventScript_Farmer_Text_0
 	msgbox SakuTown_EventScript_Farmer2_Text_0
+	release
+	return
+
+
+SakuTown_EventScript_Scyther::
+	lock
+	faceplayer
+	setseenmon SPECIES_SCYTHER
+	playmoncry SPECIES_SCYTHER, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_SCYTHER
+	msgbox SakuTown_EventScript_Scyther_Text_0
+	waitmoncry
+	closemessage
 	release
 	return
 
@@ -411,6 +441,9 @@ SakuTown_EventScript_Farmer_Text_1:
 SakuTown_EventScript_Farmer2_Text_0:
 	.string "Whew…\p"
 	.string "Working in the fields sure is tiring…$"
+
+SakuTown_EventScript_Scyther_Text_0:
+	.string "Gyooo!$"
 
 SakuTown_EventScript_Woman_Text_0:
 	.string "Woman$"
