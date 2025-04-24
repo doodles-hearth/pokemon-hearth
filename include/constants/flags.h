@@ -78,7 +78,7 @@
 #define FLAG_NO_COLLISION    0x3A
 #define FLAG_BEAT_ROCK_SMASHER    0x3B
 #define FLAG_SAKU_FARMERS    0x3C // Set when Scyther Quest is started
-#define FLAG_UNUSED_0x03D    0x3D // Unused Flag
+#define FLAG_SAKU_REFUGE_FARMERS    0x3D // Set when Scyther Quest is not started
 #define FLAG_UNUSED_0x03E    0x3E // Unused Flag
 #define FLAG_UNUSED_0x03F    0x3F // Unused Flag
 #define FLAG_UNUSED_0x040    0x40 // Unused Flag
