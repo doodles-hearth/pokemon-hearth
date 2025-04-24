@@ -246,7 +246,7 @@
     // 0: Quest hasn't started
     // 1: Received Ashii's scarf
 */
-#define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE                       0x409D
+#define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE             0x409D
 #define VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE      0x409E
 #define VAR_MOSSDEEP_SPACE_CENTER_STATE                  0x409F
 #define VAR_SLATEPORT_HARBOR_STATE                       0x40A0
