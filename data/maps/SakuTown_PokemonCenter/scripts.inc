@@ -87,31 +87,9 @@ SakuTown_PokemonCenter_EventScript_Farmer1_4:
 
 FarmerGivesQuest:
 	msgbox FarmerGivesQuest_Text_0
-	getobjectfacingdirection 9, VAR_TEMP_1
-	switch VAR_TEMP_1
-	case DIR_SOUTH, FarmerGivesQuest_3
-	case DIR_WEST, FarmerGivesQuest_4
-	case DIR_EAST, FarmerGivesQuest_5
-FarmerGivesQuest_1:
-	msgbox FarmerGivesQuest_Text_1
 	startquest QUEST_KURASCYTHER
-	applymovement 9, FarmerGivesQuest_Movement_2
-	return
-
-FarmerGivesQuest_3:
 	applymovement 9, FarmerGivesQuest_Movement_0
-	waitmovement 0
-	goto FarmerGivesQuest_1
-
-FarmerGivesQuest_4:
-	applymovement 9, FarmerGivesQuest_Movement_1
-	waitmovement 0
-	goto FarmerGivesQuest_1
-
-FarmerGivesQuest_5:
-	applymovement 9, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_2
-	waitmovement 0
-	goto FarmerGivesQuest_1
+	return
 
 
 FarmerWaitsMedicine:
@@ -232,14 +210,6 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_2:
 	step_end
 
 FarmerGivesQuest_Movement_0:
-	walk_in_place_fast_down
-	step_end
-
-FarmerGivesQuest_Movement_1:
-	walk_in_place_fast_left
-	step_end
-
-FarmerGivesQuest_Movement_2:
 	face_original_direction
 	step_end
 
@@ -290,9 +260,7 @@ FarmerGivesQuest_Text_0:
 	.string "fangled technology from the Toku\l"
 	.string "Council isn't here yet. As such, she\l"
 	.string "can't be cured of whatever's ailin'\l"
-	.string "her.$"
-
-FarmerGivesQuest_Text_1:
+	.string "her.\p"
 	.string "Please! If you can spare some time,\n"
 	.string "can you help us find someone or\l"
 	.string "something to cure our girl?$"
