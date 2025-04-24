@@ -2631,6 +2631,12 @@ static bool8 CanReplaceMove(void)
     if (FindFieldMoveTypeByMove(sMonSummaryScreen->newMove) == fieldMoveType) {
         return TRUE;
     }
+
+    // TODO: commonize the following as a function
+    // CanReplaceFieldMove
+    // u32 fieldMoveType
+    // u32 monPartyIndex
+    // mons
     
     // If that move is a field move that the player can use in the field
     if (
