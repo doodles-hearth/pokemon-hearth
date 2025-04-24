@@ -11,5 +11,6 @@ struct FieldMoveGrant {
 extern const struct FieldMoveGrant gFieldMoveGrant[];
 
 u32 FindFieldMoveGrantIndexByType(u32 fieldMoveType);
+u32 FindFieldMoveTypeByMove(u32 moveId);
 
 #endif // FIELD_MOVES_DEFINES_H

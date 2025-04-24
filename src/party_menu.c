@@ -367,7 +367,6 @@ static void HandleChooseMonSelection(u8, s8 *);
 static u16 PartyMenuButtonHandler(s8 *);
 static s8 *GetCurrentPartySlotPtr(void);
 static bool8 IsSelectedMonNotEgg(u8 *);
-static bool8 DoesSelectedMonKnowHM(u8 *);
 static void PartyMenuRemoveWindow(u8 *);
 static void CB2_SetUpExitToBattleScreen(void);
 static void Task_ClosePartyMenuAfterText(u8);
@@ -1584,24 +1583,67 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
         case PARTY_ACTION_SEND_MON_TO_BOX:
         {
             u8 partyId = GetPartyIdFromBattleSlot((u8)*slotPtr);
-            if (partyId == 0 || ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && partyId == 2)
-                || ((gBattleTypeFlags & BATTLE_TYPE_MULTI) && partyId >= (PARTY_SIZE / 2)))
+            if ((gBattleTypeFlags & BATTLE_TYPE_MULTI) && partyId >= (PARTY_SIZE / 2))
             {
-                // Can't select if mon is currently on the field, or doesn't belong to you
+                // Can't select if mon doesn't belong to you
                 PlaySE(SE_FAILURE);
-            }
-            else if (DoesSelectedMonKnowHM((u8 *)slotPtr))
-            {
-                PlaySE(SE_FAILURE);
-                DisplayPartyMenuMessage(gText_CannotSendMonToBoxHM, FALSE);
-                ScheduleBgCopyTilemapToVram(2);
-                gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
             }
             else
             {
-                PlaySE(SE_SELECT);
-                gSelectedMonPartyId = partyId;
-                Task_ClosePartyMenu(taskId);
+                bool32 ok = TRUE;
+                // For each of the mon's moves
+                for (u32 i = 0; i < MAX_MON_MOVES; i += 1)
+                {
+                    u32 move = GetMonData(&gPlayerParty[*slotPtr], MON_DATA_MOVE1 + i);
+
+                    if (move != MOVE_NONE)
+                    {
+                        u32 fieldMoveType = FindFieldMoveTypeByMove(move);
+                        
+                        // If that move is a field move that the player can use in the field
+                        if (
+                            fieldMoveType != FIELD_MOVE_COUNT
+                            && FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag)
+                        )
+                        {
+                            bool32 otherMonAlsoKnowsFieldMove = FALSE;
+                            // For each of the other mons in the party
+                            for (u32 j = 0; j < PARTY_SIZE; j += 1)
+                            {
+                                if (
+                                    partyId != j
+                                    && GetMonData(&gPlayerParty[j], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE
+                                    && GetMonData(&gPlayerParty[j], MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
+                                )
+                                {
+                                    // If the mon knows the field move, we're good
+                                    if (KnowsFieldMove(&gPlayerParty[j], fieldMoveType))
+                                    {
+                                        otherMonAlsoKnowsFieldMove = TRUE;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            // No other mon knows this field move, so the mon can't be sent to PC
+                            if (!otherMonAlsoKnowsFieldMove) {
+                                PlaySE(SE_FAILURE);
+                                DisplayPartyMenuMessage(gText_CannotSendMonToBoxHM, FALSE);
+                                ScheduleBgCopyTilemapToVram(2);
+                                gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+                                ok = FALSE;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (ok)
+                {
+                    PlaySE(SE_SELECT);
+                    gSelectedMonPartyId = partyId;
+                    Task_ClosePartyMenu(taskId);
+                }
             }
             break;
         }
@@ -1623,25 +1665,6 @@ static bool8 IsSelectedMonNotEgg(u8 *slotPtr)
         return FALSE;
     }
     return TRUE;
-}
-
-static bool8 DoesSelectedMonKnowHM(u8 *slotPtr)
-{
-    if (B_CATCH_SWAP_CHECK_HMS == FALSE)
-        return FALSE;
-
-    for (u32 i = 0; i < MAX_MON_MOVES; i++)
-    {
-        u32 j = 0;
-        u16 move = GetMonData(&gPlayerParty[*slotPtr], MON_DATA_MOVE1 + i);
-
-        while (sHMMoves[j] != HM_MOVES_END)
-        {
-            if (sHMMoves[j++] == move)
-                return TRUE;
-        }
-    }
-    return FALSE;
 }
 
 static void HandleChooseMonCancel(u8 taskId, s8 *slotPtr)
