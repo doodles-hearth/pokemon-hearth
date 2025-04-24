@@ -6,7 +6,7 @@ RustboroCity_CuttersHouse_EventScript_Cutter::
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_CUT, RustboroCity_CuttersHouse_EventScript_ExplainCut
 	msgbox RustboroCity_CuttersHouse_Text_YouCanPutThisHMToGoodUse, MSGBOX_DEFAULT
-	giveitem ITEM_HM_CUT
+	giveitem ITEM_TM_CUT
 	setflag FLAG_RECEIVED_HM_CUT
 	msgbox RustboroCity_CuttersHouse_Text_ExplainCut, MSGBOX_DEFAULT
 	release

@@ -347,7 +347,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 			))
 			closemessage
 
-			giveitem(ITEM_HM_ROCK_SMASH)
+			giveitem(ITEM_TM_ROCK_SMASH)
 
 			speakername("Rock Smasher")
 			msgbox(format(
