@@ -66,7 +66,7 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 	msgbox(format("I'm sorry, but there's nothing I can do yet. We haven't received the tools that allow us to heal a Pokémon in this dire of a state."))
 	waitmessage
 	closemessage
-	applymovement(OBJ_EVENT_ID_LOCALID_FARMER_1, moves(walk_right, walk_up * 6))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right, walk_up * 6))
 	speakername("Farmer")
 	msgbox(format("Well y'have to do somet'in'! Can'tcha see she's in pain?!"))
 	waitmessage
@@ -83,20 +83,32 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 
 script SakuTown_PokemonCenter_EventScript_Farmer1 {
 	lock
+	faceplayer
 	speakername("Farmer")
-	msgbox(format("The nurse 'ere said that the new fangled technology from the Toku Council isn't here yet. As such, she can't be cured of whatever's ailin' her."))
-	getobjectfacingdirection(LOCALID_FARMER_1, VAR_TEMP_1)
-    switch(var(VAR_TEMP_1)){
-        case DIR_NORTH:
-            applymovement(LOCALID_FARMER_1, )
-        case DIR_SOUTH:
-            applymovement(LOCALID_FARMER_1, )
-        case DIR_WEST:
-            applymovement(LOCALID_FARMER_1, )
-        case DIR_EAST:
-            applymovement(LOCALID_FARMER_1, Common_Movement_FaceLeft)
-    }
-    add
+	returnqueststate(QUEST_KURASCYTHER)
+	switch(var(VAR_RESULT))
+	{
+		case 1:
+			call(FarmerGivesQuest)
+			break
+		case 2:
+			call(FarmerWaitsMedicine)
+			break
+	}
+	release
+	end
+}
+
+script(local) FarmerGivesQuest {
+	msgbox(format("The nurse 'ere said that the new fangled technology from the Toku Council isn't here yet. As such, she can't be cured of whatever's ailin' her.\pPlease! If you can spare some time, can you help us find someone or something to cure our girl?"))
+	startquest(QUEST_KURASCYTHER)
+	applymovement(LOCALID_FARMER_1, moves(face_original_direction))
+	return
+}
+
+script(local) FarmerWaitsMedicine {
+	msgbox(format("So? Have ya found anythin' yet?"))
+	return
 }
 
 script SakuTown_PokemonCenter_EventScript_Farmer2 {
@@ -108,6 +120,8 @@ script SakuTown_PokemonCenter_EventScript_Farmer2 {
 	setspeakertomonname(SPECIES_SCYTHER)
 	msgbox(format("{FONT_SMALL} Gyooo…"))
 	closemessage
+	release
+	end
 }
 
 script SakuTown_PokemonCenter_EventScript_Pushing {
@@ -123,8 +137,12 @@ script SakuTown_PokemonCenter_EventScript_Pushing {
 	switch(var(VAR_FACING)) {
 		case DIR_EAST:
 			applymovement(VAR_LAST_TALKED, SakuTown_PokemonCenter_Movement_PushesPlayer)
-			applymovement(OBJ_EVENT_ID_LOCALID_FARMER_1, SakuTown_PokemonCenter_Movement_PlayerPushedemonCenter_Movement_PushesPlayerUp)
-			applymovement(OBJ_EVENT_ID_LOCALID_FARMER_1, SakuTown_PokemonCenter_Movement_PlayerPushedU
+			applymovement(OBJ_EVENT_ID_PLAYER, SakuTown_PokemonCenter_Movement_PlayerPushed)
+		case DIR_SOUTH:
+			applymovement(VAR_LAST_TALKED, SakuTown_PokemonCenter_Movement_PushesPlayerUp)
+			applymovement(OBJ_EVENT_ID_PLAYER, SakuTown_PokemonCenter_Movement_PlayerPushedUp)
+	}
+
 	waitmovement(VAR_LAST_TALKED)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 }

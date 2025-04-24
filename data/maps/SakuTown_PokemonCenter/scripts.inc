@@ -49,13 +49,11 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest::
 	waitmessage
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_1
-	applymovement 9, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_2
-	waitmovement 0
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2
 	waitmessage
 	closemessage
-	applymovement 1, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_3
+	applymovement 1, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_2
 	waitmovement 0
 	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_3
@@ -68,41 +66,57 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest::
 
 SakuTown_PokemonCenter_EventScript_Farmer1::
 	lock
+	faceplayer
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
-	msgbox SakuTown_PokemonCenter_EventScript_Farmer1_Text_0
-	getobjectfacingdirection 9, VAR_TEMP_1
-	switch VAR_TEMP_1
-	case DIR_NORTH, SakuTown_PokemonCenter_EventScript_Farmer1_3
-	case DIR_SOUTH, SakuTown_PokemonCenter_EventScript_Farmer1_4
-	case DIR_WEST, SakuTown_PokemonCenter_EventScript_Farmer1_5
-	case DIR_EAST, SakuTown_PokemonCenter_EventScript_Farmer1_6
+	returnqueststate QUEST_KURASCYTHER
+	switch VAR_RESULT
+	case 1, SakuTown_PokemonCenter_EventScript_Farmer1_3
+	case 2, SakuTown_PokemonCenter_EventScript_Farmer1_4
 SakuTown_PokemonCenter_EventScript_Farmer1_1:
-	add
-	return
+	release
+	end
 
 SakuTown_PokemonCenter_EventScript_Farmer1_3:
-	applymovement PLAYER, Common_Movement_FaceDown
-	addvar ZUBATY, 2
-	addvar STARTERY, 1
+	call FarmerGivesQuest
 	goto SakuTown_PokemonCenter_EventScript_Farmer1_1
 
 SakuTown_PokemonCenter_EventScript_Farmer1_4:
-	applymovement PLAYER, Common_Movement_FaceUp
-	subvar ZUBATY, 2
-	subvar STARTERY, 1
+	call FarmerWaitsMedicine
 	goto SakuTown_PokemonCenter_EventScript_Farmer1_1
 
-SakuTown_PokemonCenter_EventScript_Farmer1_5:
-	applymovement PLAYER, Common_Movement_FaceRight
-	addvar ZUBATX, 2
-	addvar STARTERX, 1
-	goto SakuTown_PokemonCenter_EventScript_Farmer1_1
 
-SakuTown_PokemonCenter_EventScript_Farmer1_6:
-	applymovement PLAYER, Common_Movement_FaceLeft
-	subvar ZUBATX, 2
-	subvar STARTERX, 1
-	goto SakuTown_PokemonCenter_EventScript_Farmer1_1
+FarmerGivesQuest:
+	msgbox FarmerGivesQuest_Text_0
+	getobjectfacingdirection 9, VAR_TEMP_1
+	switch VAR_TEMP_1
+	case DIR_SOUTH, FarmerGivesQuest_3
+	case DIR_WEST, FarmerGivesQuest_4
+	case DIR_EAST, FarmerGivesQuest_5
+FarmerGivesQuest_1:
+	msgbox FarmerGivesQuest_Text_1
+	startquest QUEST_KURASCYTHER
+	applymovement 9, FarmerGivesQuest_Movement_2
+	return
+
+FarmerGivesQuest_3:
+	applymovement 9, FarmerGivesQuest_Movement_0
+	waitmovement 0
+	goto FarmerGivesQuest_1
+
+FarmerGivesQuest_4:
+	applymovement 9, FarmerGivesQuest_Movement_1
+	waitmovement 0
+	goto FarmerGivesQuest_1
+
+FarmerGivesQuest_5:
+	applymovement 9, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_2
+	waitmovement 0
+	goto FarmerGivesQuest_1
+
+
+FarmerWaitsMedicine:
+	msgbox FarmerWaitsMedicine_Text_0
+	return
 
 
 SakuTown_PokemonCenter_EventScript_Farmer2::
@@ -114,7 +128,8 @@ SakuTown_PokemonCenter_EventScript_Farmer2::
 	setspeakertomonname SPECIES_SCYTHER
 	msgbox SakuTown_PokemonCenter_EventScript_Farmer2_Text_1
 	closemessage
-	return
+	release
+	end
 
 
 SakuTown_PokemonCenter_EventScript_Pushing::
@@ -213,11 +228,19 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_1:
 	step_end
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_2:
-	walk_in_place_fast_up
+	walk_in_place_fast_right
 	step_end
 
-SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_3:
-	walk_in_place_fast_right
+FarmerGivesQuest_Movement_0:
+	walk_in_place_fast_down
+	step_end
+
+FarmerGivesQuest_Movement_1:
+	walk_in_place_fast_left
+	step_end
+
+FarmerGivesQuest_Movement_2:
+	face_original_direction
 	step_end
 
 SakuTown_PokemonCenter_EventScript_Nurse_Text_0:
@@ -262,12 +285,20 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_3:
 	.string "needs to. I'll try to keep her in as\l"
 	.string "good of a shape as I can.$"
 
-SakuTown_PokemonCenter_EventScript_Farmer1_Text_0:
+FarmerGivesQuest_Text_0:
 	.string "The nurse 'ere said that the new\n"
 	.string "fangled technology from the Toku\l"
 	.string "Council isn't here yet. As such, she\l"
 	.string "can't be cured of whatever's ailin'\l"
 	.string "her.$"
+
+FarmerGivesQuest_Text_1:
+	.string "Please! If you can spare some time,\n"
+	.string "can you help us find someone or\l"
+	.string "something to cure our girl?$"
+
+FarmerWaitsMedicine_Text_0:
+	.string "So? Have ya found anythin' yet?$"
 
 SakuTown_PokemonCenter_EventScript_Farmer2_Text_0:
 	.string "There, there, girl… It'll be okay…$"
