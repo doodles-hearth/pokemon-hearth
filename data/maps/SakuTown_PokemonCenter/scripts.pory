@@ -23,11 +23,9 @@ mapscripts SakuTown_PokemonCenter_MapScripts {
 		} elif (var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 2) { //if scyther quest is active, show farmers in bed area
 			clearflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_2)
 			setflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_1)
-		} elif (var(VAR_TEMP_2) == 3){ // if scyther quest is reward ready or complete
+		} elif (var(VAR_TEMP_2) == 3 || var(VAR_TEMP_2) == 4){ // if scyther quest is reward ready or complete
 			setflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_1)
 			setflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_2)
-		} elif (var(VAR_TEMP_2) == 4) {
-			setflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_1)
 			removeobject(LOCALID_BED_FARMER_1)
 			removeobject(LOCALID_BED_FARMER_2)
 			removeobject(LOCALID_BED_SCYTHER)
