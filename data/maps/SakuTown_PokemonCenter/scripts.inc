@@ -40,7 +40,9 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_1
-	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_2
+	removeobject 11
+	removeobject 12
+	removeobject 13
 	return
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:

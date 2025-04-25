@@ -28,7 +28,9 @@ mapscripts SakuTown_PokemonCenter_MapScripts {
 			setflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_2)
 		} elif (var(VAR_TEMP_2) == 4) {
 			setflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_1)
-			setflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_2)
+			removeobject(LOCALID_BED_FARMER_1)
+			removeobject(LOCALID_BED_FARMER_2)
+			removeobject(LOCALID_BED_SCYTHER)
 		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
