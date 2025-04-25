@@ -352,9 +352,9 @@ const u8 gText_TeachWhichPokemon[] = _("Teach which Pokémon?");
 const u8 gText_UseOnWhichPokemon[] = _("Use on which Pokémon?");
 const u8 gText_GiveToWhichPokemon[] = _("Give to which Pokémon?");
 const u8 gText_DoWhatWithPokemon[] = _("Do what with this {PKMN}?");
-const u8 gText_NothingToCut[] = _("There's nothing to CUT.");
-const u8 gText_CantSurfHere[] = _("You can't SURF here.");
-const u8 gText_AlreadySurfing[] = _("You're already SURFING.");
+const u8 gText_NothingToCut[] = _("There's nothing to cut.");
+const u8 gText_CantSurfHere[] = _("You can't surf here.");
+const u8 gText_AlreadySurfing[] = _("You're already surfing.");
 const u8 gText_CantUseHere[] = _("Can't use that here.");
 const u8 gText_RestoreWhichMove[] = _("Restore which move?");
 const u8 gText_BoostPp[] = _("Boost PP of which move?");
@@ -436,7 +436,7 @@ const u8 gText_EggWillTakeALongTime[] = _("It looks like this Egg will\ntake a l
 const u8 gText_EggWillTakeSomeTime[] = _("What will hatch from this?\nIt will take some time.");
 const u8 gText_EggWillHatchSoon[] = _("It moves occasionally.\nIt should hatch soon.");
 const u8 gText_EggAboutToHatch[] = _("It's making sounds.\nIt's about to hatch!");
-const u8 gText_HMMovesCantBeForgotten2[] = _("HM moves can't be\nforgotten now.");
+const u8 gText_HMMovesCantBeForgotten2[] = _("No other Pokémon knows\nthis field move!");
 const u8 gText_XNatureMetAtYZ[] = _("{DYNAMIC 0}{DYNAMIC 2}{DYNAMIC 1}{DYNAMIC 5} nature,\nmet at {LV_2}{DYNAMIC 0}{DYNAMIC 3}{DYNAMIC 1},\n{DYNAMIC 0}{DYNAMIC 4}{DYNAMIC 1}.");
 const u8 gText_XNatureHatchedAtYZ[] = _("{DYNAMIC 0}{DYNAMIC 2}{DYNAMIC 1}{DYNAMIC 5} nature,\nhatched at {LV_2}{DYNAMIC 0}{DYNAMIC 3}{DYNAMIC 1},\n{DYNAMIC 0}{DYNAMIC 4}{DYNAMIC 1}.");
 const u8 gText_XNatureObtainedInTrade[] = _("{DYNAMIC 0}{DYNAMIC 2}{DYNAMIC 1}{DYNAMIC 5} nature,\nobtained in a trade.");
@@ -1371,7 +1371,7 @@ const u8 gText_AM[] = _("AM");
 const u8 gText_PM[] = _("PM");
 const u8 gText_Relearn[] = _("{START_BUTTON} RELEARN"); // future note: don't decap this, because it mimics the summary screen BG graphics which will not get decapped
 const u8 gText_Rename[] = _("Rename");
-const u8 gText_CannotSendMonToBoxHM[] = _("Cannot send that mon to the pasture,\nbecause it knows a HM move.{PAUSE_UNTIL_PRESS}");
+const u8 gText_CannotSendMonToBoxHM[] = _("This Pokémon knows a field move\nthat no other Pokémon knows!{PAUSE_UNTIL_PRESS}");
 
 //// side quest data
 //generic strings

@@ -14,6 +14,7 @@
 #include "decompress.h"
 #include "dynamic_placeholder_text_util.h"
 #include "event_data.h"
+#include "field_moves.h"
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "international_string_util.h"
@@ -2605,18 +2606,59 @@ static void Task_HandleReplaceMoveInput(u8 taskId)
     }
 }
 
+/**
+ * Checks if the selected move can be forgotten.
+ * If the move is a field move that no other move of the current Pokémon nor of any other
+ * Pokémon in the party has, then it cannot be forgotten to avoid any possible softlocks.
+ */
 static bool8 CanReplaceMove(void)
 {
-    if (sMonSummaryScreen->firstMoveIndex == MAX_MON_MOVES
+    // Not picking any move to be replaced
+    if (
+        sMonSummaryScreen->firstMoveIndex == MAX_MON_MOVES
         || sMonSummaryScreen->newMove == MOVE_NONE
-        || IsMoveHM(sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex]) != TRUE)
+    )
+    {
         return TRUE;
-    else
-        return FALSE;
+    }
+    
+    struct Pokemon *mons = sMonSummaryScreen->monList.mons;
+    u32 oldMove = sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex];
+    u32 fieldMoveType = FindFieldMoveTypeByMove(oldMove);
+
+    // If the new move is of the same field move type, we're good
+    if (FindFieldMoveTypeByMove(sMonSummaryScreen->newMove) == fieldMoveType) {
+        return TRUE;
+    }
+
+    // If that move is a field move that the player can use in the field
+    if (
+        fieldMoveType != FIELD_MOVE_COUNT
+        && FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag)
+    )
+    {
+        // If the Pokémon knows another move of the same field move type, we're good
+        for (int i = 0; i < MAX_MON_MOVES; i += 1)
+        {
+            if (sMonSummaryScreen->firstMoveIndex != i)
+            {
+                u32 move = sMonSummaryScreen->summary.moves[i];
+
+                if (gMovesInfo[move].fieldMoveFlags & fieldMoveType)
+                {
+                    return TRUE;
+                }
+            }
+        }
+        
+        return IsFieldMoveKnownByAnotherPartyMon(fieldMoveType, sMonSummaryScreen->curMonIndex, mons);
+    }
+    return TRUE;
 }
 
 static void ShowCantForgetHMsWindow(u8 taskId)
 {
+    // TODO EVA ICI
     ClearWindowTilemap(PSS_LABEL_WINDOW_MOVES_POWER_ACC);
     ClearWindowTilemap(PSS_LABEL_WINDOW_MOVES_APPEAL_JAM);
     gSprites[sMonSummaryScreen->categoryIconSpriteId].invisible = TRUE;

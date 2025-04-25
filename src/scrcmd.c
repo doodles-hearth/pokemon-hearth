@@ -3467,3 +3467,30 @@ bool8 ScrCmd_subquestmenu(struct ScriptContext *ctx)
 
     return TRUE;
 }
+
+u8 ScrCmd_checkmovefieldeffectflag(struct ScriptContext *ctx)
+{
+    u8 i;
+    u32 fieldeffectflag = ScriptReadWord(ctx);
+    gSpecialVar_Result = PARTY_SIZE;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
+        if (!species)
+            break;
+        for (u8 j = 0; j < MAX_MON_MOVES; j++)
+        {
+            u16 moveId = GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j, NULL);
+            if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && gMovesInfo[moveId].fieldMoveFlags & fieldeffectflag)
+            {
+                gSpecialVar_Result = i;
+                gSpecialVar_0x8004 = species;
+                gSpecialVar_0x8005 = moveId;
+                break;
+            }
+        }
+        if (gSpecialVar_Result != PARTY_SIZE)  // If a match was found, exit the outer loop
+            break;
+    }
+    return FALSE;
+}

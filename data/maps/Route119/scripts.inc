@@ -132,7 +132,7 @@ Route119_EventScript_DefeatedBrendan::
 	end
 
 Route119_EventScript_GiveFlyHM::
-	giveitem ITEM_HM_FLY
+	giveitem ITEM_TM_FLY
 	setflag FLAG_RECEIVED_HM_FLY
 	return
 
