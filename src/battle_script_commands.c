@@ -8780,13 +8780,14 @@ static void Cmd_yesnoboxlearnmove(void)
             {
                 u16 moveId = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_MOVE1 + movePosition);
                 // this function changed to always return false so you can forget HMs
-                if (IsMoveHM(moveId))
-                {
-                    PrepareStringBattle(STRINGID_HMMOVESCANTBEFORGOTTEN, B_POSITION_PLAYER_LEFT);
-                    gBattleScripting.learnMoveState = 6;
-                }
-                else
-                {
+                // TODO EVA I don't need this, do I?
+                // if (IsMoveHM(moveId))
+                // {
+                //     PrepareStringBattle(STRINGID_HMMOVESCANTBEFORGOTTEN, B_POSITION_PLAYER_LEFT);
+                //     gBattleScripting.learnMoveState = 6;
+                // }
+                // else
+                // {
                     gBattlescriptCurrInstr = cmd->forgotMovePtr;
 
                     PREPARE_MOVE_BUFFER(gBattleTextBuff2, moveId)
@@ -8806,7 +8807,7 @@ static void Cmd_yesnoboxlearnmove(void)
                         RemoveBattleMonPPBonus(&gBattleMons[2], movePosition);
                         SetBattleMonMoveSlot(&gBattleMons[2], gMoveToLearn, movePosition);
                     }
-                }
+                // }
             }
         }
         break;

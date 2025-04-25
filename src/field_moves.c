@@ -31,18 +31,6 @@ u32 FindFieldMoveGrantIndexByType(u32 fieldMoveType)
     return 0xFF;
 }
 
-u32 FindFieldMoveTypeByMove(u32 moveId)
-{
-    for (enum FieldMoveType fieldMoveType = IS_FIELD_MOVE_CUT; fieldMoveType < FIELD_MOVE_COUNT; fieldMoveType = fieldMoveType << 1)
-    {
-        if (gMovesInfo[moveId].fieldMoveFlags & fieldMoveType)
-        {
-            return fieldMoveType;
-        }
-    }
-    return FIELD_MOVE_COUNT;
-}
-
 /**
  * Checks if the given Pokémon knows at least one move of the given field move type.
  *

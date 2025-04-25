@@ -2624,18 +2624,18 @@ static bool8 CanReplaceMove(void)
     
     struct Pokemon *mons = sMonSummaryScreen->monList.mons;
     u32 oldMove = sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex];
-    u32 fieldMoveType = FindFieldMoveTypeByMove(oldMove);
+    u32 fieldMoveType = gMovesInfo[oldMove].fieldMoveFlags;
 
     // If the new move is of the same field move type, we're good
-    if (FindFieldMoveTypeByMove(sMonSummaryScreen->newMove) == fieldMoveType) {
+    if (
+        !fieldMoveType
+        || gMovesInfo[sMonSummaryScreen->newMove].fieldMoveFlags == fieldMoveType
+    ) {
         return TRUE;
     }
 
     // If that move is a field move that the player can use in the field
-    if (
-        fieldMoveType != FIELD_MOVE_COUNT
-        && FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag)
-    )
+    if (FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag))
     {
         // If the Pokémon knows another move of the same field move type, we're good
         for (int i = 0; i < MAX_MON_MOVES; i += 1)

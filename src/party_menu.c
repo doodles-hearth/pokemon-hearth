@@ -1598,11 +1598,11 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
 
                     if (move != MOVE_NONE)
                     {
-                        u32 fieldMoveType = FindFieldMoveTypeByMove(move);
+                        u32 fieldMoveType = gMovesInfo[move].fieldMoveFlags;
                         
-                        // If that move is a field move that the player can use in the field
+                        // If that move is a field move that the player is allowed to use in the field
                         if (
-                            fieldMoveType != FIELD_MOVE_COUNT
+                            fieldMoveType
                             && FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag)
                         )
                         {
