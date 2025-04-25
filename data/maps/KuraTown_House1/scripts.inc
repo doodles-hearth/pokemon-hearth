@@ -11,7 +11,6 @@ KuraTown_House1_OldWoman::
 	lock
 	faceplayer
 	speakername KuraTown_House1_OldWoman_Text_0
-	debugprint KuraTown_House1_OldWoman_Text_1, VAR_SAKU_KURA_QUEST_SCYTHER_STATE
 	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2
 	goto_if_eq KuraTown_House1_OldWoman_2
 	call OldWomanRegularScript
@@ -61,9 +60,6 @@ KuraTown_House1_Growlithe::
 
 KuraTown_House1_OldWoman_Text_0:
 	.string "Old woman$"
-
-KuraTown_House1_OldWoman_Text_1:
-	.string "VAR_SAKU_KURA_QUEST_SCYTHER_STATE= $"
 
 OldWomanRegularScript_Text_0:
 	.string "You look like you're tired, young one.\n"

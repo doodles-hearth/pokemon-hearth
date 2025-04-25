@@ -19,8 +19,8 @@ mapscripts SakuTown_MapScripts {
 		copyvar(VAR_TEMP_1, VAR_RESULT)
 		returnqueststate(QUEST_KURASCYTHER)
 		copyvar(VAR_TEMP_2, VAR_RESULT)
-		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1) == 4 && var(VAR_TEMP_2) == 0) { 
-			setflag(FLAG_SAKU_FARMERS)
+		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1) == 4 && var(VAR_TEMP_2) == 1) { 
+			setflag(FLAG_HIDE_SAKU_FARMERS)
 			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1)
 		}
 	}

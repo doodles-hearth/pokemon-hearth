@@ -1,11 +1,34 @@
 const LOCALID_NURSE = 1
 const LOCALID_GRUNT = 3
-const LOCALID_FARMER_1 = 9
-const LOCALID_FARMER_2 = 10
+const LOCALID_FRONT_SCYTHER = 8
+const LOCALID_FRONT_FARMER_1 = 9
+const LOCALID_FRONT_FARMER_2 = 10
+const LOCALID_BED_SCYTHER = 13
+const LOCALID_BED_FARMER_1 = 11
+const LOCALID_BED_FARMER_2 = 12
 
 mapscripts SakuTown_PokemonCenter_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_SAKU_TOWN)
+		returnqueststate(QUEST_KURALOVERS)
+		copyvar(VAR_TEMP_0, VAR_RESULT)
+		returnqueststate(QUEST_KURAESPEON)
+		copyvar(VAR_TEMP_1, VAR_RESULT)
+		returnqueststate(QUEST_KURASCYTHER)
+		copyvar(VAR_TEMP_2, VAR_RESULT)
+		debugprint("var temp 0", VAR_TEMP_0)
+		debugprint("var temp 1", VAR_TEMP_1)
+		debugprint("var temp 2", VAR_TEMP_2)
+		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1) == 4 && var(VAR_TEMP_2) == 1) {  // Checks if conditions for scyther quest are met. If met, then farmers_1 are shown
+			clearflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_1)
+			setflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_2)
+		} elif (var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 2) { //if scyther quest is active, show farmers in bed area
+			clearflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_2)
+			setflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_1)
+		} elif (var(VAR_TEMP_2) == 3 || var(VAR_TEMP_2) == 4){
+			setflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_1)
+			setflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_2)
+		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
 		VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1: SakuTown_PokemonCenter_EventScript_ScytherQuest
@@ -101,7 +124,7 @@ script SakuTown_PokemonCenter_EventScript_Farmer1 {
 script(local) FarmerGivesQuest {
 	msgbox(format("The nurse 'ere said that the new fangled technology from the Toku Council isn't here yet. As such, she can't be cured of whatever's ailin' her.\pPlease! If you can spare some time, can you help us find someone or something to cure our girl?"))
 	startquest(QUEST_KURASCYTHER)
-	applymovement(LOCALID_FARMER_1, moves(face_original_direction))
+	applymovement(LOCALID_FRONT_FARMER_1, moves(face_original_direction))
 	return
 }
 

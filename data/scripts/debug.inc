@@ -143,10 +143,13 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
+	completequest QUEST_KURALOVERS
+	completequest QUEST_KURAESPEON
 	release
 	end
 
 Debug_EventScript_Script_3::
+	completequest QUEST_KURASCYTHER
 	release
 	end
 

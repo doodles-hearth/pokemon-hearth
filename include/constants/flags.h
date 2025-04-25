@@ -77,9 +77,9 @@
 #define FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE      0x39
 #define FLAG_NO_COLLISION    0x3A
 #define FLAG_BEAT_ROCK_SMASHER    0x3B
-#define FLAG_SAKU_FARMERS    0x3C // Set when Scyther Quest is started
-#define FLAG_SAKU_REFUGE_FARMERS    0x3D // Set when Scyther Quest is not started
-#define FLAG_UNUSED_0x03E    0x3E // Unused Flag
+#define FLAG_HIDE_SAKU_FARMERS    0x3C // Set when Scyther Quest conditions are met
+#define FLAG_HIDE_SAKU_REFUGE_FARMERS_1    0x3D // Set when Scyther Quest is not started
+#define FLAG_HIDE_SAKU_REFUGE_FARMERS_2    0x3E // Set when Scyther Quest is started
 #define FLAG_UNUSED_0x03F    0x3F // Unused Flag
 #define FLAG_UNUSED_0x040    0x40 // Unused Flag
 #define FLAG_UNUSED_0x041    0x41 // Unused Flag

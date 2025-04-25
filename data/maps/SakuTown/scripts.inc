@@ -23,12 +23,12 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
-	setflag FLAG_SAKU_FARMERS
+	setflag FLAG_HIDE_SAKU_FARMERS
 	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
-	compare VAR_TEMP_2, 0
+	compare VAR_TEMP_2, 1
 	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 	return
 

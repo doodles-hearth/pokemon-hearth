@@ -8,7 +8,6 @@ script KuraTown_House1_OldWoman {
 	lock
 	faceplayer
 	speakername("Old woman")
-	debugprint("VAR_SAKU_KURA_QUEST_SCYTHER_STATE= ", VAR_SAKU_KURA_QUEST_SCYTHER_STATE)
 	if(var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 2) {
 		call(OldWomanQuestScript)
 	} else {
