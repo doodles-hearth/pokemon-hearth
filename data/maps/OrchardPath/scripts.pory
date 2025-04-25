@@ -353,7 +353,8 @@ script OrchardPath_EventScript_RockSmashRegular {
 			msgbox(format(
 				"This is a secret technique of my own invention.\p"
 				"It lets you PULVERIZE any of those pesky rocks standing in your way!\p"
-				"If you're not strong enough, a Pokémon can even do it for you, using a variety of SMASHING moves, such as this one!"
+				"If you're not strong enough, a Pokémon can even do it for you, using a variety of SMASHING moves, such as this one!\p"
+				"{FONT_SMALL}Even though this one really sucks in battle!{FONT_NORMAL}"
 			))
 			closemessage
 

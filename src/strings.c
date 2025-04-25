@@ -436,7 +436,7 @@ const u8 gText_EggWillTakeALongTime[] = _("It looks like this Egg will\ntake a l
 const u8 gText_EggWillTakeSomeTime[] = _("What will hatch from this?\nIt will take some time.");
 const u8 gText_EggWillHatchSoon[] = _("It moves occasionally.\nIt should hatch soon.");
 const u8 gText_EggAboutToHatch[] = _("It's making sounds.\nIt's about to hatch!");
-const u8 gText_HMMovesCantBeForgotten2[] = _("No other Pokémon knows\nthis field move!");
+const u8 gText_HMMovesCantBeForgotten2[] = _("You need this field\nmove right now!");
 const u8 gText_XNatureMetAtYZ[] = _("{DYNAMIC 0}{DYNAMIC 2}{DYNAMIC 1}{DYNAMIC 5} nature,\nmet at {LV_2}{DYNAMIC 0}{DYNAMIC 3}{DYNAMIC 1},\n{DYNAMIC 0}{DYNAMIC 4}{DYNAMIC 1}.");
 const u8 gText_XNatureHatchedAtYZ[] = _("{DYNAMIC 0}{DYNAMIC 2}{DYNAMIC 1}{DYNAMIC 5} nature,\nhatched at {LV_2}{DYNAMIC 0}{DYNAMIC 3}{DYNAMIC 1},\n{DYNAMIC 0}{DYNAMIC 4}{DYNAMIC 1}.");
 const u8 gText_XNatureObtainedInTrade[] = _("{DYNAMIC 0}{DYNAMIC 2}{DYNAMIC 1}{DYNAMIC 5} nature,\nobtained in a trade.");
@@ -1371,7 +1371,7 @@ const u8 gText_AM[] = _("AM");
 const u8 gText_PM[] = _("PM");
 const u8 gText_Relearn[] = _("{START_BUTTON} RELEARN"); // future note: don't decap this, because it mimics the summary screen BG graphics which will not get decapped
 const u8 gText_Rename[] = _("Rename");
-const u8 gText_CannotSendMonToBoxHM[] = _("This Pokémon knows a field move\nthat no other Pokémon knows!{PAUSE_UNTIL_PRESS}");
+const u8 gText_CannotSendMonToBoxHM[] = _("This Pokémon knows a field move\nthat no other Pokémon knows!{PAUSE_UNTIL_PRESS}"); // Unused
 
 //// side quest data
 //generic strings

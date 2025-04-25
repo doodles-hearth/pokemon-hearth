@@ -18,6 +18,7 @@
 #include "event_object_movement.h"
 #include "event_scripts.h"
 #include "field_message_box.h"
+#include "field_moves.h"
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
 #include "field_specials.h"
@@ -3471,8 +3472,14 @@ bool8 ScrCmd_subquestmenu(struct ScriptContext *ctx)
 u8 ScrCmd_checkmovefieldeffectflag(struct ScriptContext *ctx)
 {
     u8 i;
-    u32 fieldeffectflag = ScriptReadWord(ctx);
+    u32 fieldeffectflag = ScriptReadWord(ctx);    
     gSpecialVar_Result = PARTY_SIZE;
+
+    if (!FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldeffectflag)].grantFlag))
+    {
+        return FALSE;
+    }
+
     for (i = 0; i < PARTY_SIZE; i++)
     {
         u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);

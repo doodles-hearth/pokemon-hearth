@@ -505,7 +505,9 @@ OrchardPath_EventScript_RockSmashRegular_Text_9:
 	.string "If you're not strong enough, a\n"
 	.string "Pokémon can even do it for you, using\l"
 	.string "a variety of SMASHING moves, such as\l"
-	.string "this one!$"
+	.string "this one!\p"
+	.string "{FONT_SMALL}Even though this one really sucks in\n"
+	.string "battle!{FONT_NORMAL}$"
 
 OrchardPath_EventScript_RockSmashRegular_Text_10:
 	.string "Very well!…\n"
