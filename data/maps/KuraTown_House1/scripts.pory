@@ -8,6 +8,16 @@ script KuraTown_House1_OldWoman {
 	lock
 	faceplayer
 	speakername("Old woman")
+	debugprint("VAR_SAKU_KURA_QUEST_SCYTHER_STATE= ", VAR_SAKU_KURA_QUEST_SCYTHER_STATE)
+	if(var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 2) {
+		call(OldWomanQuestScript)
+	} else {
+		call(OldWomanRegularScript)
+	}
+	release
+}
+
+script(local) OldWomanRegularScript {
 	msgbox(format(
 		"You look like you're tired, young one. Please rest a while."
 	))
@@ -18,7 +28,14 @@ script KuraTown_House1_OldWoman {
 		"I wish you strength on your journey."
 	))
 	closemessage
-	release
+	return
+}
+
+script(local) OldWomanQuestScript {
+	msgbox(format("Hello, dearie. Do you need to rest yourself and your Pokémon?\p…\pI see… Can you take me to the ill Pokémon?"))
+	waitmessage
+	closemessage
+	return
 }
 
 script KuraTown_House1_OldWomansSon {

@@ -60,25 +60,24 @@ script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
 
 script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 	lock
+	setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2)
 	applymovement(LOCALID_NURSE, moves(face_right))
 	waitmovement(0)
 	speakername("Nurse")
 	msgbox(format("I'm sorry, but there's nothing I can do yet. We haven't received the tools that allow us to heal a Pokémon in this dire of a state."))
 	waitmessage
 	closemessage
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right, walk_up * 6))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5))
 	speakername("Farmer")
 	msgbox(format("Well y'have to do somet'in'! Can'tcha see she's in pain?!"))
 	waitmessage
 	closemessage
-	applymovement(LOCALID_NURSE, moves(walk_in_place_fast_right))
+	applymovement(LOCALID_NURSE, moves(walk_in_place_down))
 	waitmovement(0)
 	speakername("Nurse")
 	msgbox(format("She can stay here for as long as she needs to. I'll try to keep her in as good of a shape as I can."))
 	waitmessage
 	closemessage
-	release
-	setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2)
 }
 
 script SakuTown_PokemonCenter_EventScript_Farmer1 {

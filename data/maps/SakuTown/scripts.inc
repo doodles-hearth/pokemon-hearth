@@ -11,8 +11,10 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	copyvar VAR_TEMP_0, VAR_RESULT
 	returnqueststate QUEST_KURAESPEON
 	copyvar VAR_TEMP_1, VAR_RESULT
+	returnqueststate QUEST_KURASCYTHER
+	copyvar VAR_TEMP_2, VAR_RESULT
 	compare VAR_TEMP_0, 4
-	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
@@ -26,8 +28,13 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
-	compare VAR_TEMP_1, 0
-	goto_if_ne SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	compare VAR_TEMP_2, 0
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	return
+
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
+	compare VAR_TEMP_1, 4
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:

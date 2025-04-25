@@ -17,14 +17,16 @@ mapscripts SakuTown_MapScripts {
 		copyvar(VAR_TEMP_0, VAR_RESULT)
 		returnqueststate(QUEST_KURAESPEON)
 		copyvar(VAR_TEMP_1, VAR_RESULT)
-		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1)) {
+		returnqueststate(QUEST_KURASCYTHER)
+		copyvar(VAR_TEMP_2, VAR_RESULT)
+		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1) == 4 && var(VAR_TEMP_2) == 0) { 
 			setflag(FLAG_SAKU_FARMERS)
 			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1)
 		}
 	}
 	MAP_SCRIPT_ON_LOAD {
 		setflag(FLAG_HIDE_NATSUKI)
-    	gettimeofday
+		gettimeofday
 		switch(var(VAR_RESULT)){
 			case TIME_DEAD_NIGHT:
 				setmetatile(35, 31, METATILE_SakuKura_ClosedDoorBottom, TRUE)
@@ -37,8 +39,8 @@ mapscripts SakuTown_MapScripts {
 			case TIME_EVENING:
 			case TIME_NIGHT:
 			default:
-				end
-    	}
+		end
+		}
 	}
 }
 

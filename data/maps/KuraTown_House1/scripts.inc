@@ -11,13 +11,33 @@ KuraTown_House1_OldWoman::
 	lock
 	faceplayer
 	speakername KuraTown_House1_OldWoman_Text_0
-	msgbox KuraTown_House1_OldWoman_Text_1
+	debugprint KuraTown_House1_OldWoman_Text_1, VAR_SAKU_KURA_QUEST_SCYTHER_STATE
+	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2
+	goto_if_eq KuraTown_House1_OldWoman_2
+	call OldWomanRegularScript
+KuraTown_House1_OldWoman_1:
+	release
+	return
+
+KuraTown_House1_OldWoman_2:
+	call OldWomanQuestScript
+	goto KuraTown_House1_OldWoman_1
+
+
+OldWomanRegularScript:
+	msgbox OldWomanRegularScript_Text_0
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
 	speakername KuraTown_House1_OldWoman_Text_0
-	msgbox KuraTown_House1_OldWoman_Text_2
+	msgbox OldWomanRegularScript_Text_1
 	closemessage
-	release
+	return
+
+
+OldWomanQuestScript:
+	msgbox OldWomanQuestScript_Text_0
+	waitmessage
+	closemessage
 	return
 
 
@@ -43,11 +63,21 @@ KuraTown_House1_OldWoman_Text_0:
 	.string "Old woman$"
 
 KuraTown_House1_OldWoman_Text_1:
+	.string "VAR_SAKU_KURA_QUEST_SCYTHER_STATE= $"
+
+OldWomanRegularScript_Text_0:
 	.string "You look like you're tired, young one.\n"
 	.string "Please rest a while.$"
 
-KuraTown_House1_OldWoman_Text_2:
+OldWomanRegularScript_Text_1:
 	.string "I wish you strength on your journey.$"
+
+OldWomanQuestScript_Text_0:
+	.string "Hello, dearie. Do you need to rest\n"
+	.string "yourself and your Pokémon?\p"
+	.string "…\p"
+	.string "I see… Can you take me to the ill\n"
+	.string "Pokémon?$"
 
 KuraTown_House1_OldWomansSon_Text_0:
 	.string "Guy$"
