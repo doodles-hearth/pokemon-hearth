@@ -11,9 +11,7 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	copyvar VAR_TEMP_1, VAR_RESULT
 	returnqueststate QUEST_KURASCYTHER
 	copyvar VAR_TEMP_2, VAR_RESULT
-	debugprint SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_0, VAR_TEMP_0
-	debugprint SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_1, VAR_TEMP_1
-	debugprint SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_2, VAR_TEMP_2
+	debugprint SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_0, VAR_TEMP_2
 	compare VAR_TEMP_0, 4
 	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
@@ -22,7 +20,7 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
 	compare VAR_TEMP_2, 3
 	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
 	compare VAR_TEMP_2, 4
-	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
+	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 	return
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
@@ -36,6 +34,11 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	return
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
+	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_1
+	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_2
+	return
+
+SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_1
 	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_2
 	return
@@ -268,13 +271,7 @@ FarmerGivesQuest_Movement_0:
 	step_end
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_0:
-	.string "var temp 0$"
-
-SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_1:
-	.string "var temp 1$"
-
-SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_2:
-	.string "var temp 2$"
+	.string "vartemp2$"
 
 SakuTown_PokemonCenter_EventScript_Nurse_Text_0:
 	.string "Nurse$"

@@ -29,12 +29,17 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
 	compare VAR_TEMP_2, 1
-	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
 	compare VAR_TEMP_1, 4
 	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+	return
+
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
+	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 0
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:
