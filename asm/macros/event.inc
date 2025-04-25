@@ -1937,6 +1937,11 @@
 	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, \shouldSort, \initialSelected, \callbacks, NULL
 	.endm
 
+	@ A simpler version of dynmultichoice that only takes arguments; meant to be a template for the player character's dialogue.
+	.macro mcdialogue argv:vararg
+	_dynmultichoice 0, 0, TRUE, 10, FALSE, 0, DYN_MULTICHOICE_CB_NONE, \argv
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
