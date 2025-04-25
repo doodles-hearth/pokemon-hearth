@@ -346,3 +346,48 @@ script SakuTown_EventScript_Cherrim {
 	waitmoncry
 	release
 }
+
+script SakuTown_EventScript_GiveCut {
+	lock
+	msgbox("I grant you Cut.")
+	closemessage
+	giveitem(ITEM_TM_CUT)
+	setflag(FLAG_RECEIVED_HM_CUT)
+	release
+}
+
+script SakuTown_EventScript_GiveSmash {
+	lock
+	msgbox("I grant you Smash.")
+	closemessage
+	giveitem(ITEM_TM_ROCK_SMASH)
+	setflag(FLAG_RECEIVED_HM_ROCK_SMASH)
+	release
+}
+
+script SakuTown_EventScript_GiveStrength {
+	lock
+	msgbox("I grant you Strength.")
+	closemessage
+	giveitem(ITEM_TM_STRENGTH)
+	setflag(FLAG_RECEIVED_HM_STRENGTH)
+	release
+}
+
+script SakuTown_EventScript_GiveFly {
+	lock
+	msgbox("I grant you Flight.")
+	closemessage
+	giveitem(ITEM_TM_FLY)
+	setflag(FLAG_RECEIVED_HM_FLY)
+	release
+}
+
+script SakuTown_EventScript_GiveFlash {
+	lock
+	msgbox("I grant you Light.")
+	closemessage
+	giveitem(ITEM_TM_FLASH)
+	setflag(FLAG_RECEIVED_HM_FLASH)
+	release
+}

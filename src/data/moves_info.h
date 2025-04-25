@@ -4080,8 +4080,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = 0,
         .contestComboMoves = {COMBO_STARTER_SCRATCH},
-        .battleAnimScript = gBattleAnimMove_FurySwipes,
-        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
+        .battleAnimScript = gBattleAnimMove_FurySwipes
     },
 
     [MOVE_BONEMERANG] =
@@ -5549,6 +5548,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {COMBO_STARTER_SWORDS_DANCE},
         .battleAnimScript = gBattleAnimMove_FuryCutter,
         .validApprenticeMove = TRUE,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_STEEL_WING] =
@@ -7647,6 +7647,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_SecretPower,
         .validApprenticeMove = TRUE,
+        .fieldMoveFlags = IS_FIELD_MOVE_SECRET_POWER,
     },
 
     [MOVE_DIVE] =
@@ -8731,6 +8732,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_AerialAce,
         .validApprenticeMove = TRUE,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_ICICLE_SPEAR] =
@@ -11413,6 +11415,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_CrossPoison,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_GUNK_SHOT] =
@@ -13650,6 +13653,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_SacredSword,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_RAZOR_SHELL] =
@@ -14016,6 +14020,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_SecretSword,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_GLACIATE] =
@@ -16120,6 +16125,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {COMBO_STARTER_SUNNY_DAY},
         .battleAnimScript = gBattleAnimMove_SolarBlade,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_LEAFAGE] =
@@ -19211,6 +19217,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .chance = 100,
         }),
         .battleAnimScript = gBattleAnimMove_StoneAxe,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_SPRINGTIDE_STORM] =
@@ -20040,6 +20047,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .makesContact = TRUE,
         .slicingMove = TRUE,
         .battleAnimScript = gBattleAnimMove_KowtowCleave,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_FLOWER_TRICK] =
@@ -20473,6 +20481,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .slicingMove = TRUE,
         .healingMove = TRUE,
         .battleAnimScript = gBattleAnimMove_BitterBlade,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_DOUBLE_SHOCK] =
@@ -20719,6 +20728,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .makesContact = TRUE,
         .slicingMove = TRUE,
         .battleAnimScript = gBattleAnimMove_Psyblade,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_HYDRO_STEAM] =
@@ -20941,6 +20951,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .ignoresProtect = TRUE,
         .slicingMove = TRUE,
         .battleAnimScript = gBattleAnimMove_MightyCleave,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_TACHYON_CUTTER] =
@@ -20960,6 +20971,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .strikeCount = 2,
         .slicingMove = TRUE,
         .battleAnimScript = gBattleAnimMove_TachyonCutter,
+        .fieldMoveFlags = IS_FIELD_MOVE_CUT,
     },
 
     [MOVE_HARD_PRESS] =

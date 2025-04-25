@@ -14417,4 +14417,146 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_SlowpokeTail,
         .iconPalette = gItemIconPalette_SlowpokeTail,
     },
+
+    [ITEM_SECRET_CUT] =
+    {
+        .name = _("Secret of Blade"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A secret technique\n"
+            "to cut small trees\n"
+            "and grass."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SecretScroll,
+        .iconPalette = gItemIconPalette_SecretScrollCut,
+    },
+    [ITEM_SECRET_SMASH] =
+    {
+        .name = _("Secret Of Smash"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A secret technique\n"
+            "to smash rocks."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SecretScroll,
+        .iconPalette = gItemIconPalette_SecretScrollSmash,
+    },
+    [ITEM_SECRET_STRENGTH] =
+    {
+        .name = _("Secret Of Strength"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A secret technique\n"
+            "to push boulders."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SecretScroll,
+        .iconPalette = gItemIconPalette_SecretScrollStrength,
+    },
+    [ITEM_SECRET_SURF] =
+    {
+        .name = _("Secret Of Foam"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A secret technique\n"
+            "to cross bodies of\n"
+            "water."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SecretScroll,
+        .iconPalette = gItemIconPalette_SecretScrollSurf,
+    },
+    [ITEM_SECRET_DIVE] =
+    {
+        .name = _("Secret Of Strength"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A secret technique\n"
+            "to dive in deep\n"
+            "waters."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SecretScroll,
+        .iconPalette = gItemIconPalette_SecretScrollDive,
+    },
+    [ITEM_SECRET_WATERFALL] =
+    {
+        .name = _("Secret Of Currents"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A secret technique\n"
+            "to ride waterfalls."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SecretScroll,
+        .iconPalette = gItemIconPalette_SecretScrollWaterfall,
+    },
+    [ITEM_SECRET_FLY] =
+    {
+        .name = _("Secret Of Flight"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A secret technique\n"
+            "to fly with your\n"
+            "Pokémon."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SecretScroll,
+        .iconPalette = gItemIconPalette_SecretScrollFly,
+    },
+    [ITEM_SECRET_CLIMB] =
+    {
+        .name = _("Secret Of Heights"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A secret technique\n"
+            "to climb\n"
+            "cliffsides."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SecretScroll,
+        .iconPalette = gItemIconPalette_SecretScrollClimb,
+    },
+    [ITEM_SECRET_FLASH] =
+    {
+        .name = _("Secret Of Light"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "A secret technique\n"
+            "to light up dark\n"
+            "caves."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SecretScroll,
+        .iconPalette = gItemIconPalette_SecretScrollFlash,
+    },
 };

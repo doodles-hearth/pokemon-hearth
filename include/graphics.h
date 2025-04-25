@@ -1531,6 +1531,16 @@ extern const u32 gItemIconPalette_DragonScroll[];
 extern const u32 gItemIconPalette_DarkScroll[];
 extern const u32 gItemIconPalette_SteelScroll[];
 extern const u32 gItemIconPalette_FairyScroll[];
+extern const u32 gItemIcon_SecretScroll[];
+extern const u32 gItemIconPalette_SecretScrollCut[];
+extern const u32 gItemIconPalette_SecretScrollSmash[];
+extern const u32 gItemIconPalette_SecretScrollSurf[];
+extern const u32 gItemIconPalette_SecretScrollDive[];
+extern const u32 gItemIconPalette_SecretScrollWaterfall[];
+extern const u32 gItemIconPalette_SecretScrollStrength[];
+extern const u32 gItemIconPalette_SecretScrollFly[];
+extern const u32 gItemIconPalette_SecretScrollClimb[];
+extern const u32 gItemIconPalette_SecretScrollFlash[];
 // Charms
 extern const u32 gItemIcon_OvalCharm[];
 extern const u32 gItemIconPalette_OvalCharm[];

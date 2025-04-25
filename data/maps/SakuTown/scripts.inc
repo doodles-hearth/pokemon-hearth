@@ -322,6 +322,56 @@ SakuTown_EventScript_Cherrim::
 	return
 
 
+SakuTown_EventScript_GiveCut::
+	lock
+	msgbox SakuTown_EventScript_GiveCut_Text_0
+	closemessage
+	giveitem ITEM_TM_CUT
+	setflag FLAG_RECEIVED_HM_CUT
+	release
+	return
+
+
+SakuTown_EventScript_GiveSmash::
+	lock
+	msgbox SakuTown_EventScript_GiveSmash_Text_0
+	closemessage
+	giveitem ITEM_TM_ROCK_SMASH
+	setflag FLAG_RECEIVED_HM_ROCK_SMASH
+	release
+	return
+
+
+SakuTown_EventScript_GiveStrength::
+	lock
+	msgbox SakuTown_EventScript_GiveStrength_Text_0
+	closemessage
+	giveitem ITEM_TM_STRENGTH
+	setflag FLAG_RECEIVED_HM_STRENGTH
+	release
+	return
+
+
+SakuTown_EventScript_GiveFly::
+	lock
+	msgbox SakuTown_EventScript_GiveFly_Text_0
+	closemessage
+	giveitem ITEM_TM_FLY
+	setflag FLAG_RECEIVED_HM_FLY
+	release
+	return
+
+
+SakuTown_EventScript_GiveFlash::
+	lock
+	msgbox SakuTown_EventScript_GiveFlash_Text_0
+	closemessage
+	giveitem ITEM_TM_FLASH
+	setflag FLAG_RECEIVED_HM_FLASH
+	release
+	return
+
+
 SakuTown_EventScript_RivalAtSakuWall_Movement_0:
 	walk_up
 	walk_up
@@ -510,6 +560,21 @@ SakuTown_EventScript_MonHues_Text_0:
 
 SakuTown_EventScript_Cherrim_Text_0:
 	.string "Weee!$"
+
+SakuTown_EventScript_GiveCut_Text_0:
+	.string "I grant you Cut.$"
+
+SakuTown_EventScript_GiveSmash_Text_0:
+	.string "I grant you Smash.$"
+
+SakuTown_EventScript_GiveStrength_Text_0:
+	.string "I grant you Strength.$"
+
+SakuTown_EventScript_GiveFly_Text_0:
+	.string "I grant you Flight.$"
+
+SakuTown_EventScript_GiveFlash_Text_0:
+	.string "I grant you Light.$"
 
 SakuTown_Text_RivalDefeat::
 	.string "Oh, wow!$"
