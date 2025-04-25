@@ -5825,6 +5825,16 @@ static const u16 sUniversalMoves[] =
     MOVE_TERA_BLAST,
 };
 
+static const u16 sActuallyUniversalMoves[] =
+{
+    MOVE_NICK,
+    MOVE_PEBBLE_CRUSH,
+    MOVE_PUSH,
+    MOVE_SPLASH,
+    MOVE_WATER_FLAIL,
+    MOVE_SINK,
+};
+
 u8 CanLearnTeachableMove(u16 species, u16 move)
 {
     if (species == SPECIES_EGG)
@@ -5859,6 +5869,16 @@ u8 CanLearnTeachableMove(u16 species, u16 move)
     {
         u32 i, j;
         const u16 *teachableLearnset = GetSpeciesTeachableLearnset(species);
+        
+        // Universal shitty field moves
+        for (i = 0; i < ARRAY_COUNT(sActuallyUniversalMoves); i++)
+        {
+            if (sActuallyUniversalMoves[i] == move)
+            {
+                return TRUE;
+            }
+        }
+
         for (i = 0; i < ARRAY_COUNT(sUniversalMoves); i++)
         {
             if (sUniversalMoves[i] == move)

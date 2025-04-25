@@ -1590,42 +1590,9 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
             }
             else
             {
-                bool32 ok = TRUE;
-                // For each of the mon's moves
-                for (u32 i = 0; i < MAX_MON_MOVES; i += 1)
-                {
-                    u32 move = GetMonData(&gPlayerParty[*slotPtr], MON_DATA_MOVE1 + i);
-
-                    if (move != MOVE_NONE)
-                    {
-                        u32 fieldMoveType = gMovesInfo[move].fieldMoveFlags;
-                        
-                        // If that move is a field move that the player is allowed to use in the field
-                        if (
-                            fieldMoveType
-                            && FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag)
-                        )
-                        {
-
-                            // No other mon knows this field move, so the mon can't be sent to PC
-                            if (!IsFieldMoveKnownByAnotherPartyMon(fieldMoveType, partyId, gPlayerParty)) {
-                                PlaySE(SE_FAILURE);
-                                DisplayPartyMenuMessage(gText_CannotSendMonToBoxHM, FALSE);
-                                ScheduleBgCopyTilemapToVram(2);
-                                gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
-                                ok = FALSE;
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                if (ok)
-                {
-                    PlaySE(SE_SELECT);
-                    gSelectedMonPartyId = partyId;
-                    Task_ClosePartyMenu(taskId);
-                }
+                PlaySE(SE_SELECT);
+                gSelectedMonPartyId = partyId;
+                Task_ClosePartyMenu(taskId);
             }
             break;
         }

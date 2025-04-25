@@ -357,7 +357,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 			))
 			closemessage
 
-			giveitem(ITEM_TM_ROCK_SMASH)
+			giveitem(ITEM_TM_PEBBLE_CRUSH)
 
 			setflag(FLAG_RECEIVED_HM_ROCK_SMASH)
 			// This is to avoid him getting mad at breaking his own rocks

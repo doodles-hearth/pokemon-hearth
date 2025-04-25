@@ -11679,7 +11679,8 @@ const struct Item gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Dives underwater\n"
             "the 1st turn, then\n"
-            "attacks next turn."),
+            "attacks next turn."
+        ),
         .importance = 1,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
@@ -11687,76 +11688,99 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_DIVE,
     },
 
-    [ITEM_TM65] =
+    [ITEM_TM_NICK] =
     {
         .name = _("TM65"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Gently nicks the\n"
+            "foe.\n"
+            "Has no effect."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_NICK,
     },
 
-    [ITEM_TM66] =
+    [ITEM_TM_PEBBLE_CRUSH] =
     {
         .name = _("TM66"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Gently crushes a\n"
+            "pebble.\n"
+            "Has no effect."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_PEBBLE_CRUSH,
     },
 
-    [ITEM_TM67] =
+    [ITEM_TM_PUSH] =
     {
         .name = _("TM67"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Gently pushes the\n"
+            "foe.\n"
+            "Has no effect."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_PUSH,
     },
 
-    [ITEM_TM68] =
+    [ITEM_TM_WATER_FLAIL] =
     {
         .name = _("TM68"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Flails up a\n"
+            "current.\n"
+            "Has no effect."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_WATER_FLAIL
     },
 
-    [ITEM_TM69] =
+    [ITEM_TM_SINK] =
     {
         .name = _("TM69"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Lifelessly sinks\n"
+            "in water.\n"
+            "Has no effect."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_SINK
     },
 
-    [ITEM_TM70] =
+    [ITEM_TM_SPLASH] =
     {
         .name = _("TM70"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Splashes around.\n"
+            "Has no effect."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_NONE, // Todo
+        .secondaryId = MOVE_SPLASH,
     },
 
     [ITEM_TM71] =

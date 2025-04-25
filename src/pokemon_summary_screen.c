@@ -2608,51 +2608,10 @@ static void Task_HandleReplaceMoveInput(u8 taskId)
 
 /**
  * Checks if the selected move can be forgotten.
- * If the move is a field move that no other move of the current Pokémon nor of any other
- * Pokémon in the party has, then it cannot be forgotten to avoid any possible softlocks.
+ * SPOILER, IT CAN, BECAUSE ALL MOVES CAN BE FORGOTTEN, YOLO
  */
 static bool8 CanReplaceMove(void)
 {
-    // Not picking any move to be replaced
-    if (
-        sMonSummaryScreen->firstMoveIndex == MAX_MON_MOVES
-        || sMonSummaryScreen->newMove == MOVE_NONE
-    )
-    {
-        return TRUE;
-    }
-    
-    struct Pokemon *mons = sMonSummaryScreen->monList.mons;
-    u32 oldMove = sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex];
-    u32 fieldMoveType = gMovesInfo[oldMove].fieldMoveFlags;
-
-    // If the new move is of the same field move type, we're good
-    if (
-        !fieldMoveType
-        || gMovesInfo[sMonSummaryScreen->newMove].fieldMoveFlags == fieldMoveType
-    ) {
-        return TRUE;
-    }
-
-    // If that move is a field move that the player can use in the field
-    if (FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag))
-    {
-        // If the Pokémon knows another move of the same field move type, we're good
-        for (int i = 0; i < MAX_MON_MOVES; i += 1)
-        {
-            if (sMonSummaryScreen->firstMoveIndex != i)
-            {
-                u32 move = sMonSummaryScreen->summary.moves[i];
-
-                if (gMovesInfo[move].fieldMoveFlags & fieldMoveType)
-                {
-                    return TRUE;
-                }
-            }
-        }
-        
-        return IsFieldMoveKnownByAnotherPartyMon(fieldMoveType, sMonSummaryScreen->curMonIndex, mons);
-    }
     return TRUE;
 }
 

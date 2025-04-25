@@ -65,7 +65,13 @@
     F(FLASH) \
     F(ROCK_SMASH) \
     F(WATERFALL) \
-    F(DIVE)
+    F(DIVE) \
+    F(NICK) \
+    F(PEBBLE_CRUSH) \
+    F(PUSH) \
+    F(WATER_FLAIL) \
+    F(SINK) \
+    F(SPLASH)
 
 #define FOREACH_HM(F) \
     F(FLY) \

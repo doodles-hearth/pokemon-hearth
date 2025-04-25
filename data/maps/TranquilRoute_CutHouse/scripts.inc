@@ -75,7 +75,7 @@ TranquilRoute_CutHouse_EventScript_CutMaster::
 	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_4
 	closemessage
-	giveitem ITEM_TM_CUT
+	giveitem ITEM_TM_NICK
 	setflag FLAG_RECEIVED_HM_CUT
 	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_5

@@ -68,6 +68,12 @@
 // - MOVE_ROCK_SMASH                                   //
 // - MOVE_WATERFALL                                    //
 // - MOVE_DIVE                                         //
+// - MOVE_NICK                                         //
+// - MOVE_PEBBLE_CRUSH                                 //
+// - MOVE_PUSH                                         //
+// - MOVE_WATER_FLAIL                                  //
+// - MOVE_SINK                                         //
+// - MOVE_SPLASH                                       //
 // - MOVE_FLY                                          //
 // - MOVE_SURF                                         //
 // - MOVE_STRENGTH                                     //
@@ -1582,6 +1588,7 @@ static const u16 sCleffaTeachableLearnset[] = {
     MOVE_SNORE,
     MOVE_SOFT_BOILED,
     MOVE_SOLAR_BEAM,
+    MOVE_SPLASH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -1639,6 +1646,7 @@ static const u16 sClefairyTeachableLearnset[] = {
     MOVE_SNORE,
     MOVE_SOFT_BOILED,
     MOVE_SOLAR_BEAM,
+    MOVE_SPLASH,
     MOVE_STRENGTH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
@@ -1701,6 +1709,7 @@ static const u16 sClefableTeachableLearnset[] = {
     MOVE_SNORE,
     MOVE_SOFT_BOILED,
     MOVE_SOLAR_BEAM,
+    MOVE_SPLASH,
     MOVE_STRENGTH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
@@ -3119,6 +3128,7 @@ static const u16 sPoliwagTeachableLearnset[] = {
     MOVE_REST,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -3163,6 +3173,7 @@ static const u16 sPoliwhirlTeachableLearnset[] = {
     MOVE_SEISMIC_TOSS,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_STRENGTH,
     MOVE_SURF,
     MOVE_SWAGGER,
@@ -3213,6 +3224,7 @@ static const u16 sPoliwrathTeachableLearnset[] = {
     MOVE_SEISMIC_TOSS,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_STRENGTH,
     MOVE_SURF,
     MOVE_SWAGGER,
@@ -3262,6 +3274,7 @@ static const u16 sPolitoedTeachableLearnset[] = {
     MOVE_SEISMIC_TOSS,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_STRENGTH,
     MOVE_SURF,
     MOVE_SWAGGER,
@@ -6481,6 +6494,7 @@ static const u16 sHorseaTeachableLearnset[] = {
     MOVE_REST,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -6509,6 +6523,7 @@ static const u16 sSeadraTeachableLearnset[] = {
     MOVE_REST,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -6539,6 +6554,7 @@ static const u16 sKingdraTeachableLearnset[] = {
     MOVE_REST,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -7472,6 +7488,7 @@ static const u16 sTaurosPaldeaAquaTeachableLearnset[] = {
 
 #if P_FAMILY_MAGIKARP
 static const u16 sMagikarpTeachableLearnset[] = {
+    MOVE_SPLASH,
     MOVE_UNAVAILABLE,
 };
 
@@ -7501,6 +7518,7 @@ static const u16 sGyaradosTeachableLearnset[] = {
     MOVE_SANDSTORM,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_STRENGTH,
     MOVE_SUNNY_DAY,
     MOVE_SURF,
@@ -9853,6 +9871,7 @@ static const u16 sAzurillTeachableLearnset[] = {
     MOVE_ROLLOUT,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -9896,6 +9915,7 @@ static const u16 sMarillTeachableLearnset[] = {
     MOVE_SEISMIC_TOSS,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_STRENGTH,
     MOVE_SURF,
     MOVE_SWAGGER,
@@ -9940,6 +9960,7 @@ static const u16 sAzumarillTeachableLearnset[] = {
     MOVE_SEISMIC_TOSS,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_STRENGTH,
     MOVE_SURF,
     MOVE_SWAGGER,
@@ -10095,6 +10116,7 @@ static const u16 sHoppipTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
     MOVE_SOLAR_BEAM,
+    MOVE_SPLASH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
     MOVE_SWORDS_DANCE,
@@ -10124,6 +10146,7 @@ static const u16 sSkiploomTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
     MOVE_SOLAR_BEAM,
+    MOVE_SPLASH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
     MOVE_SWORDS_DANCE,
@@ -10154,6 +10177,7 @@ static const u16 sJumpluffTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
     MOVE_SOLAR_BEAM,
+    MOVE_SPLASH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
     MOVE_SWORDS_DANCE,
@@ -10697,6 +10721,7 @@ static const u16 sUnownTeachableLearnset[] = {
 static const u16 sWynautTeachableLearnset[] = {
     MOVE_COUNTER,
     MOVE_SAFEGUARD,
+    MOVE_SPLASH,
     MOVE_UNAVAILABLE,
 };
 #endif //P_GEN_3_CROSS_EVOS
@@ -10704,6 +10729,7 @@ static const u16 sWynautTeachableLearnset[] = {
 static const u16 sWobbuffetTeachableLearnset[] = {
     MOVE_COUNTER,
     MOVE_SAFEGUARD,
+    MOVE_SPLASH,
     MOVE_UNAVAILABLE,
 };
 #endif //P_FAMILY_WOBBUFFET
@@ -12044,6 +12070,7 @@ static const u16 sDelibirdTeachableLearnset[] = {
     MOVE_SEISMIC_TOSS,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_STEEL_WING,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -12078,6 +12105,7 @@ static const u16 sMantykeTeachableLearnset[] = {
     MOVE_ROCK_SLIDE,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -12115,6 +12143,7 @@ static const u16 sMantineTeachableLearnset[] = {
     MOVE_ROCK_TOMB,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -15799,6 +15828,7 @@ static const u16 sWailmerTeachableLearnset[] = {
     MOVE_ROLLOUT,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_STRENGTH,
     MOVE_SURF,
     MOVE_SWAGGER,
@@ -15834,6 +15864,7 @@ static const u16 sWailordTeachableLearnset[] = {
     MOVE_ROLLOUT,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_STRENGTH,
     MOVE_SURF,
     MOVE_SWAGGER,
@@ -15983,6 +16014,7 @@ static const u16 sSpoinkTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SNATCH,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -16032,6 +16064,7 @@ static const u16 sGrumpigTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SNATCH,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -16946,6 +16979,7 @@ static const u16 sFeebasTeachableLearnset[] = {
     MOVE_REST,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -16979,6 +17013,7 @@ static const u16 sMiloticTeachableLearnset[] = {
     MOVE_SAFEGUARD,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -17840,6 +17875,7 @@ static const u16 sLuvdiscTeachableLearnset[] = {
     MOVE_SAFEGUARD,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -20084,6 +20120,7 @@ static const u16 sBunearyTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
     MOVE_SOLAR_BEAM,
+    MOVE_SPLASH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -20125,6 +20162,7 @@ static const u16 sLopunnyTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
     MOVE_SOLAR_BEAM,
+    MOVE_SPLASH,
     MOVE_STRENGTH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
@@ -20900,6 +20938,7 @@ static const u16 sFinneonTeachableLearnset[] = {
     MOVE_SAFEGUARD,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -20932,6 +20971,7 @@ static const u16 sLumineonTeachableLearnset[] = {
     MOVE_SAFEGUARD,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -28584,6 +28624,7 @@ static const u16 sClauncherTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SLUDGE_BOMB,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWORDS_DANCE,
@@ -28617,6 +28658,7 @@ static const u16 sClawitzerTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SLUDGE_BOMB,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_SWAGGER,
     MOVE_SWORDS_DANCE,
@@ -30942,6 +30984,7 @@ static const u16 sBounsweetTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
     MOVE_SOLAR_BEAM,
+    MOVE_SPLASH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -30965,6 +31008,7 @@ static const u16 sSteeneeTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
     MOVE_SOLAR_BEAM,
+    MOVE_SPLASH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -30991,6 +31035,7 @@ static const u16 sTsareenaTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
     MOVE_SOLAR_BEAM,
+    MOVE_SPLASH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
     MOVE_SWIFT,
@@ -31468,6 +31513,7 @@ static const u16 sMimikyuTeachableLearnset[] = {
     MOVE_SLEEP_TALK,
     MOVE_SNATCH,
     MOVE_SNORE,
+    MOVE_SPLASH,
     MOVE_SUNNY_DAY,
     MOVE_SWAGGER,
     MOVE_SWORDS_DANCE,
@@ -31845,6 +31891,7 @@ static const u16 sTapuFiniTeachableLearnset[] = {
 
 #if P_FAMILY_COSMOG
 static const u16 sCosmogTeachableLearnset[] = {
+    MOVE_SPLASH,
     MOVE_UNAVAILABLE,
 };
 
@@ -36137,6 +36184,7 @@ static const u16 sTatsugiriTeachableLearnset[] = {
     MOVE_RAIN_DANCE,
     MOVE_REST,
     MOVE_SLEEP_TALK,
+    MOVE_SPLASH,
     MOVE_SURF,
     MOVE_TAUNT,
     MOVE_WATER_PULSE,
