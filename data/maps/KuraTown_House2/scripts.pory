@@ -87,19 +87,7 @@ script(local) AshiiScript3 {
 	closemessage
 	dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "Yep!","He sure did!","Loud and clear.")
 	playse(SE_PIN)
-	applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
-	waitmovement(0)
-	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
-	waitmovement(0)
-	applymovement(LOCALID_ASHII, Common_Movement_FaceAwayPlayer)
-	waitmovement(0)
-	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
-	waitmovement(0)
-	applymovement(LOCALID_ASHII, moves(emote_heart))
-	waitmovement(0)
-	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
-	waitmovement(0)
-	applymovement(LOCALID_ASHII, Common_Movement_FacePlayer)
+	applymovement(LOCALID_ASHII, moves(emote_exclamation_mark, delay_16 * 2, face_away_player, delay_16 * 3, emote_heart, face_player))
 	waitmovement(0)
 	speakername("Ashii")
 	msgbox(format(
@@ -108,33 +96,31 @@ script(local) AshiiScript3 {
 	))
 	closemessage
 	dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "Of course.","Who wouldn't?","You both deserve it.")
-	applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
-	waitmovement(0)
-	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
-	waitmovement(0)
-	applymovement(LOCALID_ASHII, moves(jump_in_place_down, delay_4, jump_in_place_down, delay_4, jump_in_place_down, delay_4, step_end))
+	applymovement(LOCALID_ASHII, moves(emote_exclamation_mark, delay_16 *3, jump_in_place_down, delay_4, jump_in_place_down, delay_4, jump_in_place_down, delay_4, step_end))
 	waitmovement(0)
 	faceplayer
 	gettimeofday
 	speakername("Ashii")
 	if(var(VAR_RESULT) == TIME_DEAD_NIGHT) {
 		msgbox(format("Thank you! Thank you! Thank you! Let's make haste, then. Before the moon takes her slumber in a few hours."))
+		fadescreen(FADE_TO_BLACK)
+		warp(MAP_KURA_TOWN, 48, 29)
+		setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3)
 	} else {
 		msgbox(format("Thank you! Thank you! Thank you! Please come see me later tonight."))
 		closemessage
 		fadescreen(FADE_TO_BLACK)
 		msgbox("Late that night…")
+		waitmessage
 		closemessage
 		fadescreen(FADE_FROM_BLACK)
 		pausefakertc
 		fwdtime(0, 0)
+		warp(MAP_KURA_TOWN, 48, 29)
+		setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3)
 	} 
 	
 	
 	
 	closemessage
-
-
-
-	addvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
 }

@@ -301,6 +301,26 @@
       "lunchtime": false,
       "morning": true,
       "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "x": 49,
+      "y": 29,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_HIDE_DEADNIGHT_ASHII",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
@@ -383,6 +403,33 @@
       "var": "VAR_SAKU_KURA_VILLAGES_STATE",
       "var_value": "2",
       "script": "KuraTown_EventScript_GuardStopsYou"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
+      "var_value": "4",
+      "script": "KuraTown_EventScript_PreventEscape"
+    },
+    {
+      "type": "trigger",
+      "x": 48,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
+      "var_value": "4",
+      "script": "KuraTown_EventScript_PreventEscape"
+    },
+    {
+      "type": "trigger",
+      "x": 47,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
+      "var_value": "4",
+      "script": "KuraTown_EventScript_PreventEscape"
     }
   ],
   "bg_events": [

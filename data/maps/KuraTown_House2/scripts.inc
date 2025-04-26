@@ -72,28 +72,12 @@ AshiiScript3:
 	closemessage
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, AshiiScript3_Text_1, AshiiScript3_Text_2, AshiiScript3_Text_3
 	playse SE_PIN
-	applymovement 1, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 1, Common_Movement_Delay48
-	waitmovement 0
-	applymovement 1, Common_Movement_FaceAwayPlayer
-	waitmovement 0
-	applymovement 1, Common_Movement_Delay48
-	waitmovement 0
 	applymovement 1, AshiiScript3_Movement_0
-	waitmovement 0
-	applymovement 1, Common_Movement_Delay48
-	waitmovement 0
-	applymovement 1, Common_Movement_FacePlayer
 	waitmovement 0
 	speakername AshiiScript1_Text_4
 	msgbox AshiiScript3_Text_4
 	closemessage
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, AshiiScript3_Text_5, AshiiScript3_Text_6, AshiiScript3_Text_7
-	applymovement 1, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement 1, Common_Movement_Delay48
-	waitmovement 0
 	applymovement 1, AshiiScript3_Movement_1
 	waitmovement 0
 	faceplayer
@@ -105,25 +89,42 @@ AshiiScript3:
 	closemessage
 	fadescreen FADE_TO_BLACK
 	msgbox AshiiScript3_Text_10
+	waitmessage
 	closemessage
 	fadescreen FADE_FROM_BLACK
 	pausefakertc
 	fwdtime 0, 0
+	warp MAP_KURA_TOWN, 48, 29
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
 AshiiScript3_1:
 	closemessage
-	addvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
 	return
 
 AshiiScript3_2:
 	msgbox AshiiScript3_Text_8
+	fadescreen FADE_TO_BLACK
+	warp MAP_KURA_TOWN, 48, 29
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
 	goto AshiiScript3_1
 
 
 AshiiScript3_Movement_0:
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	face_away_player
+	delay_16
+	delay_16
+	delay_16
 	emote_heart
+	face_player
 	step_end
 
 AshiiScript3_Movement_1:
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
 	jump_in_place_down
 	delay_4
 	jump_in_place_down

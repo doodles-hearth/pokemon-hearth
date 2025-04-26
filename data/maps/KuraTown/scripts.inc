@@ -1,7 +1,26 @@
 KuraTown_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_LOAD, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, KuraTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	returnqueststate QUEST_KURALOVERS
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
+	goto_if_lt KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	compare VAR_RESULT, 3
+	goto_if_ge KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
+	goto_if_ge KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	return
+
+KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setflag FLAG_HIDE_DEADNIGHT_ASHII
+	return
+
+KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	clearflag FLAG_HIDE_DEADNIGHT_ASHII
+	return
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	goto_if_set FLAG_KURA_DOJO_CLOSED, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_2
@@ -28,6 +47,7 @@ KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_5:
 	return
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3, KuraTown_EventScript_AnxiousAshii
 	.2byte 0
 
 
@@ -198,6 +218,54 @@ KuraTown_EventScript_GymSign::
 	return
 
 
+KuraTown_EventScript_AnxiousAshii::
+	lock
+	applymovement 16, KuraTown_EventScript_AnxiousAshii_Movement_0
+	speakername KuraTown_EventScript_AnxiousAshii_Text_0
+	msgbox KuraTown_EventScript_AnxiousAshii_Text_1
+	waitmessage
+	closemessage
+	applymovement 16, KuraTown_EventScript_AnxiousAshii_Movement_1
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
+	end
+
+
+KuraTown_EventScript_PreventEscape::
+	lock
+	applymovement 16, KuraTown_EventScript_PreventEscape_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_PreventEscape_Movement_1
+	waitmovement 16
+	waitmovement OBJ_EVENT_ID_PLAYER
+	speakername KuraTown_EventScript_AnxiousAshii_Text_0
+	msgbox KuraTown_EventScript_PreventEscape_Text_0
+	waitmessage
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_PreventEscape_Movement_2
+	waitmovement 0
+	end
+
+
+KuraTown_EventScript_AnxiousAshii_Movement_0:
+	face_player
+	step_end
+
+KuraTown_EventScript_AnxiousAshii_Movement_1:
+	face_original_direction
+	step_end
+
+KuraTown_EventScript_PreventEscape_Movement_0:
+	face_up
+	step_end
+
+KuraTown_EventScript_PreventEscape_Movement_1:
+	face_down
+	step_end
+
+KuraTown_EventScript_PreventEscape_Movement_2:
+	walk_down
+	walk_down
+	step_end
+
 KuraTown_EventScript_GuardStopsYou_Text_0:
 	.string "Hey!$"
 
@@ -328,3 +396,16 @@ KuraTown_EventScript_GymSign_Text_0:
 	.string "Leader: Hana\p"
 	.string "“Resilient as a maple rooted in\n"
 	.string "wisdom.”$"
+
+KuraTown_EventScript_AnxiousAshii_Text_0:
+	.string "Ashii$"
+
+KuraTown_EventScript_AnxiousAshii_Text_1:
+	.string "My heart is racing… Where is he? I\n"
+	.string "hope he's alright… Can you please help\l"
+	.string "me and check down south?$"
+
+KuraTown_EventScript_PreventEscape_Text_0:
+	.string "Where on earth are you going,\n"
+	.string "{PLAYER}?!\p"
+	.string "{FONT_SMALL_NARROW}Please don't leave me here alone…$"

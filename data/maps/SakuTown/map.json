@@ -409,6 +409,32 @@
       "lunchtime": false,
       "morning": true,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "x": 36,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "x": 37,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -498,6 +524,15 @@
       "var": "VAR_RIVAL_ENCOUNTER_STATE",
       "var_value": "0",
       "script": "SakuTown_EventScript_RivalAtSakuWall"
+    },
+    {
+      "type": "trigger",
+      "x": 37,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
+      "var_value": "4",
+      "script": "SakuTown_EventScript_TamaArgument"
     }
   ],
   "bg_events": [

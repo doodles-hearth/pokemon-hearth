@@ -143,15 +143,10 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
-	completequest QUEST_KURALOVERS
-	completequest QUEST_KURAESPEON
 	release
 	end
 
 Debug_EventScript_Script_3::
-	giveitem ITEM_FISHCAKE, 1
-	giveitem ITEM_ORAN_BERRY, 1
-	giveitem ITEM_REVIVAL_POWDER, 1
 	release
 	end
 

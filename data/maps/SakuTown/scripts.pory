@@ -13,6 +13,10 @@ mapscripts SakuTown_MapScripts {
 			setmetatile(19, 2, METATILE_SakuKura_BoardGame, TRUE)
 			setobjectmovementtype(LOCALID_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
 		}
+		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 4) {
+			setflag(FLAG_TEMP_2)
+			setflag(FLAG_TEMP_3)
+			}
 		returnqueststate(QUEST_KURALOVERS)
 		copyvar(VAR_TEMP_0, VAR_RESULT)
 		returnqueststate(QUEST_KURAESPEON)
@@ -378,4 +382,22 @@ script SakuTown_EventScript_Cherrim {
 	msgbox(format("Weee!"))
 	waitmoncry
 	release
+}
+
+script SakuTown_EventScript_TamaArgument {
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	playse(SE_PIN)
+	speakername("???")
+	msgbox(format("NO! I forbid you from going!"))
+	waitmessage
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_fast_down * 5))
+	waitmovement(0)
+	speakername("Tama")
+	msgbox(format("The love of my life is waiting for me on the other side! You can't do this to me!"))
+	waitmessage
+	closemessage
+	
 }
