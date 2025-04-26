@@ -151,7 +151,7 @@ script SakuTown_PokemonCenter_EventScript_Makuhita {
 	msgbox(format("Kuhu…"))
 	waitmoncry
 	waitmessage
-	speakername(NULL)
+	closemessage
 	msgbox(format("The Pokémon is resting."))
 	release
 }

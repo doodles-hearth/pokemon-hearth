@@ -7,7 +7,7 @@ GinkoWoods_EventScript_Toshiki::
 	speakername GinkoWoods_EventScript_Toshiki_Text_2
 	msgbox GinkoWoods_EventScript_Toshiki_Text_3
 	closemessage
-	setnamedmon SPECIES_SEWADDLE
+	setnamedmon SPECIES_SEWADDLE_TOKUAN
 	release
 	end
 
@@ -155,7 +155,7 @@ GinkoWoods_EventScript_Toshio_Text_2:
 	.string "Toshio$"
 
 GinkoWoods_EventScript_Toshio_Text_3:
-	.string "Real wielders fight when they spot\n"
+	.string "Real Wielder fight when they spot\n"
 	.string "each other!\p"
 	.string "At least that's what my dad told me…$"
 

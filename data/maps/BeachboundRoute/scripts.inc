@@ -563,7 +563,7 @@ BeachboundRoute_EventScript_Karu_Text_2:
 
 BeachboundRoute_EventScript_Karu_Text_3:
 	.string "You wiped me away there. How long\n"
-	.string "have you been a wielder?$"
+	.string "have you been a Wielder?$"
 
 BeachboundRoute_EventScript_Kin_Text_0:
 	.string "I run several hours everyday! You\n"
@@ -793,7 +793,7 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_3:
 	.string "going to see me around!\p"
 	.string "What's your name? {PLAYER}? It's\n"
 	.string "nice to meet you, {PLAYER}! I see\l"
-	.string "you're a young wielder, eh? Maybe we\l"
+	.string "you're a young Wielder, eh? Maybe we\l"
 	.string "can even have a friendly battle\l"
 	.string "sometime!\p"
 	.string "I'm in the area for a while to gather\n"

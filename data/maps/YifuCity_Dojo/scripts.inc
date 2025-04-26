@@ -998,13 +998,13 @@ YifuCity_Dojo_EventScript_Advice_Text_1:
 
 YifuCity_Dojo_EventScript_DojoStatue_Text_0:
 	.string "Dojo of Yifu City\p"
-	.string "Certified wielders:\n"
+	.string "Certified Wielder:\n"
 	.string "Natsuki,\l"
 	.string "{PLAYER}$"
 
 YifuCity_Dojo_EventScript_DojoStatue_Text_1:
 	.string "Dojo of Kura Village\p"
-	.string "Certified wielders:\n"
+	.string "Certified Wielder:\n"
 	.string "Natsuki$"
 
 YifuCity_Dojo_EventScript_Akari_Text_0:

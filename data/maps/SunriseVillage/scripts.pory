@@ -163,6 +163,8 @@ script SunriseVillage_Event_Boy {
             "My Happiny is the strongest of all! See how fierce it looks?"
         ))
         closemessage
+
+        setnamedmon(SPECIES_HAPPINY)
     }
     else {
         msgbox(format(
@@ -222,12 +224,12 @@ script SunriseVillage_Event_OldWoman {
 script SunriseVillage_Event_Happiny {
     lock
     faceplayer
+    playmoncry(SPECIES_HAPPINY, CRY_MODE_NORMAL)
     setseenmon(SPECIES_HAPPINY)
     setspeakertomonname(SPECIES_HAPPINY)
     msgbox(format(
         "Happi!"
     ))
-    playmoncry(SPECIES_HAPPINY, CRY_MODE_NORMAL)
     waitmoncry
     release
     end

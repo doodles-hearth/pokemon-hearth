@@ -936,10 +936,9 @@ bool8 MetatileBehavior_IsDeepOrOceanWater(u8 metatileBehavior)
         return FALSE;
 }
 
-bool8 Unref_MetatileBehavior_IsUnusedSootopolisWater(u8 metatileBehavior)
+bool8 MetatileBehavior_IsBed(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_UNUSED_SOOTOPOLIS_DEEP_WATER
-     || metatileBehavior == MB_UNUSED_SOOTOPOLIS_DEEP_WATER_2)
+    if (metatileBehavior == MB_BED)
         return TRUE;
     else
         return FALSE;

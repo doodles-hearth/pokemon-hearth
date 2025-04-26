@@ -110,14 +110,14 @@ Common_EventScript_PcGuy_Text_0:
 	.string "for you? Sure thing!$"
 
 Common_EventScript_PcGuy_Text_1:
-	.string "Hey there, Pokémon wielder!\p"
+	.string "Hey there, Pokémon Wielder!\p"
 	.string "Have you ever thought, “Darn, I wish I\n"
 	.string "could catch this seventh Pokémon,\l"
 	.string "but I only have room for six?”\p"
 	.string "Today's your lucky day!\p"
 	.string "I've been appointed by the Toku\n"
-	.string "council to store wielders' Pokémon\l"
-	.string "for them while they travel around.\p"
+	.string "council to store Wielder' Pokémon for\l"
+	.string "them while they travel around.\p"
 	.string "We bring your Pokémon to a pasture\n"
 	.string "where they live happily while waiting\l"
 	.string "for you to get them back!\p"

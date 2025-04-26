@@ -997,7 +997,7 @@ YifuCity_EventScript_Cleffa_Text_0:
 	.string "Faa!$"
 
 YifuCity_EventScript_IDontFeelSafe_Text_0:
-	.string "I heard a young wielder made those\n"
+	.string "I heard a young Wielder made those\n"
 	.string "weird Crobat dudes go away!\p"
 	.string "They must be a very brave young\n"
 	.string "person.$"

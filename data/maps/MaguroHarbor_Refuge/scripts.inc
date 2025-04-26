@@ -140,7 +140,7 @@ MaguroHarbor_Refuge_EventScript_Hariko_Text_3:
 	.string "I assume you are here to challenge\n"
 	.string "the Maguro Harbor Dojo?\p"
 	.string "Me? I am not particularly interested\n"
-	.string "in becoming a great wielder.\p"
+	.string "in becoming a great Wielder.\p"
 	.string "I travel to learn as much as I can\n"
 	.string "about Pokémon!\p"
 	.string "You've not met my companion yet, have\n"

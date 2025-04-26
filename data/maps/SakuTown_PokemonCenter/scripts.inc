@@ -124,7 +124,7 @@ SakuTown_PokemonCenter_EventScript_Makuhita::
 	msgbox SakuTown_PokemonCenter_EventScript_Makuhita_Text_0
 	waitmoncry
 	waitmessage
-	speakername NULL
+	closemessage
 	msgbox SakuTown_PokemonCenter_EventScript_Makuhita_Text_1
 	release
 	return

@@ -64,7 +64,7 @@ YifuCity_House4_EventScript_NameRater_Text_0:
 	.string "{FONT_SMALL}Or was that the eyes? Bah…{FONT_NORMAL}\p"
 	.string "I have been told I have a way\n"
 	.string "with names.\l"
-	.string "Young wielder…\l"
+	.string "Young Wielder…\l"
 	.string "Would you like me\l"
 	.string "to counsel you on the naming of\l"
 	.string "your Pokémon?$"

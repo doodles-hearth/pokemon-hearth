@@ -159,6 +159,7 @@ SunriseVillage_Event_Boy_1:
 SunriseVillage_Event_Boy_2:
 	msgbox SunriseVillage_Event_Boy_Text_1
 	closemessage
+	setnamedmon SPECIES_HAPPINY
 	goto SunriseVillage_Event_Boy_1
 
 
@@ -197,10 +198,10 @@ SunriseVillage_Event_OldWoman::
 SunriseVillage_Event_Happiny::
 	lock
 	faceplayer
+	playmoncry SPECIES_HAPPINY, CRY_MODE_NORMAL
 	setseenmon SPECIES_HAPPINY
 	setspeakertomonname SPECIES_HAPPINY
 	msgbox SunriseVillage_Event_Happiny_Text_0
-	playmoncry SPECIES_HAPPINY, CRY_MODE_NORMAL
 	waitmoncry
 	release
 	end

@@ -88,7 +88,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			speakername("Natsuki")
 			msgbox(format(
 				"You okay there, {PLAYER}?\nYou look troubled.\p"
-				"Aren't you excited to become\na Pokémon wielder?"
+				"Aren't you excited to become\na Pokémon Wielder?"
 			))
 		case 1:
 			speakername("Natsuki")
@@ -138,7 +138,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 		case 0:
 			msgbox(format(
 				"Hell yeah!\p"
-				"We're going to make awesome wielders,\nI can already tell.\p"
+				"We're going to make awesome Wielder,\nI can already tell.\p"
 				"Maybe you'll even be second best\none day…\p"
 				"Behind me, of course!"
 			))
@@ -152,7 +152,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			msgbox(format(
 				"Oh c'mon, you're just pretending\nnot to be excited.\p"
 				"Look at you, acting all tough\nand silent…\lBut I see right through you!\p"
-				"I bet you'll be a great wielder.\nMaybe even as good as me…\p"
+				"I bet you'll be a great Wielder.\nMaybe even as good as me…\p"
 				"Probably not though!"
 			))
 	}

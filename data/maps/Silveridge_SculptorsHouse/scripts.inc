@@ -240,6 +240,6 @@ Silveridge_House1_EventScript_Sculptor_FirstTime_Text_1:
 	.string "aspiration.\p"
 	.string "To satisfy this need, I must lay my\n"
 	.string "eyes on a Ponyta.\p"
-	.string "I see that you are a wielder. Please\n"
+	.string "I see that you are a Wielder. Please\n"
 	.string "show me a Ponyta to help me achieve\l"
 	.string "my magnum opus.$"

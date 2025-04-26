@@ -220,6 +220,15 @@
       "var": "VAR_SUNRISE_VILLAGE_INTRO_STATE",
       "var_value": "1",
       "script": "SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 8,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "SunriseVillage_PlayersHouse_Bedroom_Trigger_ForgotBag"
     }
   ],
   "bg_events": [

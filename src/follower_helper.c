@@ -75,6 +75,9 @@ static const u8* const sDayTexts[] = {sCondMsg43, sCondMsg44, NULL};
 static const u8 sCondMsg45[] = _("Your POKéMON is staring spellbound\nat the night sky!");
 static const u8 sCondMsg46[] = _("Your POKéMON is happily gazing at\nthe beautiful, starry sky!");
 static const u8* const sNightTexts[] = {sCondMsg45, sCondMsg46, NULL};
+static const u8 sCondMsgBed1[] = _("{STR_VAR_1} is getting comfy!");
+static const u8 sCondMsgBed2[] = _("{STR_VAR_1} wants to take a nap!");
+static const u8* const sBedTexts[] = {sCondMsgBed1, sCondMsgBed2, NULL};
 
 // See the struct definition in follower_helper.h for more info
 const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT] =
@@ -377,6 +380,16 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .conditions =
         {
             MATCH_TIME_OF_DAY(TIME_NIGHT),
+        },
+    },
+    [COND_MSG_BED] =
+    {
+        .text = (u8*)sBedTexts,
+        .textSpread = 1,
+        .emotion = FOLLOWER_EMOTION_LOVE,
+        .conditions =
+        {
+            MATCH_ON_MB(MB_BED, MB_BED),
         },
     },
 };

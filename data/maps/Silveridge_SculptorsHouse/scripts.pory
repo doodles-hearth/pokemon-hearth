@@ -191,7 +191,7 @@ script Silveridge_House1_EventScript_Sculptor_FirstTime {
 		"As a fellow connoisseur of sculpture, you must know how difficult it is to find a proper model, one that will stir in its beholder the most violent passions.\p"
 		"To transform a raw slab of stone into the pinnacle of beauty… That is my aspiration.\p"
 		"To satisfy this need, I must lay my eyes on a Ponyta.\p"
-		"I see that you are a wielder. Please show me a Ponyta to help me achieve my magnum opus."
+		"I see that you are a Wielder. Please show me a Ponyta to help me achieve my magnum opus."
 	))
 	closemessage
 

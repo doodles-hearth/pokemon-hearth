@@ -26,10 +26,6 @@ mapscripts SunriseVillage_EldersHouse_MapScripts {
 
 script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	lock
-	// Walk up to elder
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up, walk_left, walk_up, step_end))
-	waitmovement(0)
-	applymovement(LOCALID_ELDER, Common_Movement_WalkInPlaceFasterDown)
 
 	setseenmon(SPECIES_CYNDAQUIL)
 	setnamedmon(SPECIES_CYNDAQUIL)
@@ -38,6 +34,25 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	setseenmon(SPECIES_FROAKIE)
 	setnamedmon(SPECIES_FROAKIE)
 
+	// Walk up to elder
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up, walk_left, walk_up, delay_16 * 2))
+	waitmovement(0)
+	playse(SE_ARENA_TIMEUP2)
+	applymovement(LOCALID_ELDER, moves(jump_in_place_down))
+	delay(4)
+
+	playse(SE_PIN)
+	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark, delay_4))
+	waitmovement(LOCALID_RIVAL)
+	playse(SE_PIN)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
+
+	speakername("Elder Kaba")
+	msgbox(format(
+		"PAH!"
+	))
+	waitse
+	
 	// Elder speaks
 	speakername("Elder Kaba")
 	msgbox((
@@ -49,13 +64,19 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 		"This is all very worrying…$"
 	))
 	closemessage
-	applymovement(LOCALID_ELDER, moves(walk_in_place_faster_up, delay_16 * 4, walk_in_place_faster_down, step_end))
+	applymovement(LOCALID_ELDER, moves(walk_in_place_faster_up, delay_16 * 4))
 	waitmovement(0)
+	playse(SE_ARENA_TIMEUP2)
+	applymovement(LOCALID_ELDER, moves(jump_in_place_down))
+
+	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
+
 	speakername("Elder Kaba")
 	msgbox(format(
-		"Which is why!\p"
+		"Which is why!{PAUSE 15}\p"
 		"The Toku council has decided that,\nfor the time being, the best way to\lhandle this is to use the Pokémon\lthemselves as a means of protection!\p"
-		"There were very few experienced\nPokémon wielders in Toku until now.\l"
+		"There were very few experienced\nPokémon Wielders in Toku until now.\l"
 		"This is about to change.\p"
 		"With a trained Pokémon by your side,\nyou'll be able to defend yourselves\lon your own.\p"
 		"Without further ado, please carefully\nchoose your new companion!"
@@ -67,27 +88,27 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	applymovement(LOCALID_ELDER, moves(walk_right, face_up, delay_16))
 	waitmovement(0)
 	playse(SE_BALL_OPEN)
-	waitse
 	removeobject(LOCALID_BALL_SNIVY)
 	addobject(LOCALID_SNIVY)
+	waitse
 	playmoncry(SPECIES_SNIVY, CRY_MODE_NORMAL)
 	delay(30)
 
 	applymovement(LOCALID_ELDER, moves(walk_right, face_up, delay_16))
 	waitmovement(0)
 	playse(SE_BALL_OPEN)
-	waitse
 	removeobject(LOCALID_BALL_FROAKIE)
 	addobject(LOCALID_FROAKIE)
+	waitse
 	playmoncry(SPECIES_FROAKIE, CRY_MODE_NORMAL)
 	delay(30)
 
 	applymovement(LOCALID_ELDER, moves(walk_right, face_up, delay_16))
 	waitmovement(0)
 	playse(SE_BALL_OPEN)
-	waitse
 	removeobject(LOCALID_BALL_CYNDAQUIL)
 	addobject(LOCALID_CYNDAQUIL)
+	waitse
 	playmoncry(SPECIES_CYNDAQUIL, CRY_MODE_NORMAL)
 	delay(30)
 
@@ -291,6 +312,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		case SPECIES_FROAKIE:
 			applymovement(LOCALID_RIVAL, moves(walk_up, walk_left, walk_in_place_faster_up, delay_16))
 			waitmovement(0)
+			playmoncry(SPECIES_SNIVY, CRY_MODE_NORMAL)
 			removeobject(LOCALID_SNIVY)
 			removeobject(LOCALID_BALL_SNIVY)
 			applymovement(LOCALID_RIVAL, moves(walk_right, walk_down, walk_in_place_faster_up, delay_16))
@@ -298,6 +320,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		case SPECIES_SNIVY:
 			applymovement(LOCALID_RIVAL, moves(walk_up, walk_right, walk_in_place_faster_up, delay_16))
 			waitmovement(0)
+			playmoncry(SPECIES_CYNDAQUIL, CRY_MODE_NORMAL)
 			removeobject(LOCALID_CYNDAQUIL)
 			removeobject(LOCALID_BALL_CYNDAQUIL)
 			applymovement(LOCALID_RIVAL, moves(walk_left, walk_down, walk_in_place_faster_up, delay_16))
@@ -305,6 +328,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		case SPECIES_CYNDAQUIL:
 			applymovement(LOCALID_RIVAL, moves(walk_up, delay_16))
 			waitmovement(0)
+			playmoncry(SPECIES_FROAKIE, CRY_MODE_NORMAL)
 			removeobject(LOCALID_FROAKIE)
 			removeobject(LOCALID_BALL_FROAKIE)
 			applymovement(LOCALID_RIVAL, moves(walk_down, walk_in_place_faster_up, delay_16))
@@ -314,8 +338,8 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	// Elder gives Pokédex
 	speakername("Elder Kaba")
 	msgbox(format(
-		"Now that you have your own Pokémon,\nyou two are officially\lPokémon wielders!\p"
-		"The more wielders there are,\nthe deeper our understanding\lof Pokémon will be.\p"
+		"Now that you have your own Pokémon,\nyou two are officially\lPokémon Wielders!\p"
+		"The more Wielders there are,\nthe deeper our understanding\lof Pokémon will be.\p"
 		"We need to study these creatures\nfrom up close to find the root of\lthis issue.\p"
 		"Actually, there's something\nI wanted to ask you."
 	))
@@ -406,7 +430,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	speakername("Natsuki")
 	msgbox(format(
 		"{PLAYER}!\nLet's see what our brand-new Pokémon\lare capable of!\p"
-		"I request an official Pokémon\nwielder battle!"
+		"I request an official Pokémon\nWielder battle!"
 	))
 	closemessage
 

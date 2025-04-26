@@ -41,7 +41,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 		msgbox(format(
 			"Oh, hello there, {PLAYER}.\nFancy meeting you here, as they say.\p"
 			"I assume you are here to challenge the Maguro Harbor Dojo?\p"
-			"Me? I am not particularly interested in becoming a great wielder.\p"
+			"Me? I am not particularly interested in becoming a great Wielder.\p"
 			"I travel to learn as much as I can about Pokémon!\p"
 			"You've not met my companion yet, have you? Meet my Slowpoke, Bean!"
 		))

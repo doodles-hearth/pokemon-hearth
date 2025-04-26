@@ -400,10 +400,10 @@ ALIGNED(4) const u8 gText_OnlyPkmnForBattle[] = _("That's your only\nPokémon fo
 ALIGNED(4) const u8 gText_PkmnCantBeTradedNow[] = _("That Pokémon can't be traded\nnow.");
 ALIGNED(4) const u8 gText_PkmnCantBeTraded[] = _("That Pokémon can't be traded.");
 ALIGNED(4) const u8 gText_EggCantBeTradedNow[] = _("An Egg can't be traded now.");
-ALIGNED(4) const u8 gText_OtherTrainersPkmnCantBeTraded[] = _("The other wielder's Pokémon\ncan't be traded now.");
-ALIGNED(4) const u8 gText_OtherTrainerCantAcceptPkmn[] = _("The other wielder can't accept\nthat Pokémon now.");
+ALIGNED(4) const u8 gText_OtherTrainersPkmnCantBeTraded[] = _("The other Wielder's Pokémon\ncan't be traded now.");
+ALIGNED(4) const u8 gText_OtherTrainerCantAcceptPkmn[] = _("The other Wielder can't accept\nthat Pokémon now.");
 ALIGNED(4) const u8 gText_CantTradeWithTrainer[] = _("You can't trade with that\nwielder now.");
-ALIGNED(4) const u8 gText_NotPkmnOtherTrainerWants[] = _("That isn't the type of Pokémon\nthat the other wielder wants.");
+ALIGNED(4) const u8 gText_NotPkmnOtherTrainerWants[] = _("That isn't the type of Pokémon\nthat the other Wielder wants.");
 ALIGNED(4) const u8 gText_ThatIsntAnEgg[] = _("That isn't an Egg.");
 const u8 gText_Register[] = _("Register");
 const u8 gText_Attack3[] = _("ATTACK");
@@ -461,7 +461,7 @@ const u8 gText_PutAway[] = _("Put Away");
 const u8 gText_Toss2[] = _("Toss");
 const u8 gText_Color161Shadow161[] = _("{COLOR 161}{SHADOW 161}");
 const u8 gText_PutOutSelectedDecorItem[] = _("Put out the selected decoration item.");
-const u8 gText_StoreChosenDecorInPC[] = _("Store the chosen decoration in the chest.");
+const u8 gText_StoreChosenDecorInPC[] = _("Store the chosen decoration\nin the chest.");
 const u8 gText_ThrowAwayUnwantedDecors[] = _("Throw away unwanted decorations.");
 const u8 gText_NoDecorations[] = _("There are no decorations.{PAUSE_UNTIL_PRESS}");
 const u8 gText_Desk[] = _("Desk");
@@ -1414,7 +1414,7 @@ const u8 gText_SideQuestName_30[] = _("Side Quest 30");
 
 //descriptions
 //complex
-const u8 gText_MainCampaignDesc_1[] = _("Go see Elder Kaba and become\n a Pokémon wielder!");
+const u8 gText_MainCampaignDesc_1[] = _("Go see Elder Kaba and become\n a Pokémon Wielder!");
 const u8 gText_MainCampaignDesc_2[] = _("Deliver Elder Kaba's letter to\n Elder Iwa in Silveridge!");
 const u8 gText_MainCampaignDesc_3[] = _("Description 1");
 

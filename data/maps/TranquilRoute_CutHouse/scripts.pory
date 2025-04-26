@@ -95,7 +95,8 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 			"They will now be able to use those moves to cut tall grass and little trees that block your path.\p"
 			"You will need at least one official Dojo Token for that, though.\p"
 			"We can't be going around cutting trees irresponsibly, now can we?\p"
-			"You can also have this scroll, in case your Pokémon don't know any slicing moves yet."
+			"You can also have this, in case your Pokémon don't know any slicing moves yet.\p"
+			"A scroll can be used to teach your Pokémon a move!"
 		))
 		closemessage
 
