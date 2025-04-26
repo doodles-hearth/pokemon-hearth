@@ -145,13 +145,7 @@ script ChiiTown_EventScript_EatingBerries {
 			"Give the girl an Oran Berry?"
 		))
 
-		dynmultichoice(
-			0,
-			0,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
+		mcdialogue(
 			"Give",
 			"Don't give"
 		)
@@ -215,13 +209,7 @@ script ChiiTown_EventScript_BattlingGirl {
 		msgbox(format(
 			"Hey {STR_VAR_1}! We've been studying Pokémon battles in class. Wanna fight with us?"
 		))
-		dynmultichoice(
-			0,
-			0,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
+		mcdialogue(
 			"Sure!",
 			"I don't want to."
 		)
@@ -281,13 +269,7 @@ script ChiiTown_EventScript_BattlingBoy {
 		msgbox(format(
 			"Hello {STR_VAR_1}! We're top of our class! That means we're strong! Wanna battle us?"
 		))
-		dynmultichoice(
-			0,
-			0,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
+		mcdialogue(
 			"Sure!",
 			"I don't want to."
 		)

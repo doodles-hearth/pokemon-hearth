@@ -52,7 +52,7 @@ IncenseShop_EventScript_Shopkeeper::
 	goto_if_set FLAG_TALKED_TO_INCENSE_SHOP_KEEPER, IncenseShop_EventScript_Shopkeeper_2
 	speakername IncenseShop_EventScript_Shopkeeper_Text_0
 	msgbox IncenseShop_EventScript_Shopkeeper_Text_3
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, IncenseShop_EventScript_Shopkeeper_Text_4, IncenseShop_EventScript_Shopkeeper_Text_5, IncenseShop_EventScript_Shopkeeper_Text_6
+	mcdialogue IncenseShop_EventScript_Shopkeeper_Text_4, IncenseShop_EventScript_Shopkeeper_Text_5, IncenseShop_EventScript_Shopkeeper_Text_6
 	closemessage
 	switch VAR_RESULT
 	case 0, IncenseShop_EventScript_Shopkeeper_6

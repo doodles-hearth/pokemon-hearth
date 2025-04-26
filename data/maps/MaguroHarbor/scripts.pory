@@ -114,13 +114,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 
 		showmoneybox(18, 0)
 
-		dynmultichoice(
-			0,
-			0,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
+		mcdialogue(
 			"One please!",
 			"No, thanks.",
 			"Fishcakes?"

@@ -156,7 +156,7 @@ ChiiTown_EventScript_EatingBerries_1:
 
 ChiiTown_EventScript_EatingBerries_2:
 	msgbox ChiiTown_EventScript_EatingBerries_Text_2
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, ChiiTown_EventScript_EatingBerries_Text_3, ChiiTown_EventScript_EatingBerries_Text_4
+	mcdialogue ChiiTown_EventScript_EatingBerries_Text_3, ChiiTown_EventScript_EatingBerries_Text_4
 	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_EatingBerries_4
 	goto ChiiTown_EventScript_EatingBerries_1
@@ -194,7 +194,7 @@ ChiiTown_EventScript_BattlingGirl_5:
 	special GetPlayerMrMrsString
 	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
 	msgbox ChiiTown_EventScript_BattlingGirl_Text_1
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
+	mcdialogue ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_BattlingGirl_10
@@ -239,7 +239,7 @@ ChiiTown_EventScript_BattlingBoy::
 	special GetPlayerMrMrsString
 	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
 	msgbox ChiiTown_EventScript_BattlingBoy_Text_1
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
+	mcdialogue ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_BattlingBoy_6
