@@ -533,6 +533,15 @@
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
       "var_value": "4",
       "script": "SakuTown_EventScript_TamaArgument"
+    },
+    {
+      "type": "trigger",
+      "x": 37,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
+      "var_value": "4",
+      "script": "SakuTown_EventScript_TamaArgument"
     }
   ],
   "bg_events": [

@@ -3,7 +3,7 @@ const LOCALID_ASHII = 16
 
 mapscripts KuraTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		returnqueststate(QUEST_KURALOVERS)
+		returnqueststate(QUEST_SAKURALOVERS)
 		if(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 3 || var(VAR_RESULT) >=3) {
 			setflag(FLAG_HIDE_DEADNIGHT_ASHII)
 		}

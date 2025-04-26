@@ -10,11 +10,11 @@ const LOCALID_BED_FARMER_2 = 12
 mapscripts SakuTown_PokemonCenter_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_SAKU_TOWN)
-		returnqueststate(QUEST_KURALOVERS)
+		returnqueststate(QUEST_SAKURALOVERS)
 		copyvar(VAR_TEMP_0, VAR_RESULT)
-		returnqueststate(QUEST_KURAESPEON)
+		returnqueststate(QUEST_SAKURAESPEON)
 		copyvar(VAR_TEMP_1, VAR_RESULT)
-		returnqueststate(QUEST_KURASCYTHER)
+		returnqueststate(QUEST_SAKURASCYTHER)
 		copyvar(VAR_TEMP_2, VAR_RESULT)
 		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1) == 4 && var(VAR_TEMP_2) == 1) {  // Checks if conditions for scyther quest are met. If met, then farmers_1 are shown
 			clearflag(FLAG_HIDE_SAKU_REFUGE_FARMERS_1)
@@ -104,7 +104,7 @@ script SakuTown_PokemonCenter_EventScript_Farmer1 {
 	lock
 	faceplayer
 	speakername("Farmer")
-	returnqueststate(QUEST_KURASCYTHER)
+	returnqueststate(QUEST_SAKURASCYTHER)
 	switch(var(VAR_RESULT))
 	{
 		case 1:
@@ -120,7 +120,7 @@ script SakuTown_PokemonCenter_EventScript_Farmer1 {
 
 script(local) FarmerGivesQuest {
 	msgbox(format("The nurse 'ere said that the new fangled technology from the Toku Council isn't here yet. As such, she can't be cured of whatever's ailin' her.\pPlease! If you can spare some time, can you help us find someone or something to cure our girl?"))
-	startquest(QUEST_KURASCYTHER)
+	startquest(QUEST_SAKURASCYTHER)
 	applymovement(LOCALID_FRONT_FARMER_1, moves(face_original_direction))
 	return
 }
@@ -196,7 +196,7 @@ script(local) HealedScytherScript{
 	removeobject(LOCALID_BED_FARMER_2)
 	removeobject(LOCALID_BED_SCYTHER)
 	removeobject(LOCALID_BED_FARMER_1)
-	questmenu(QUEST_MENU_SET_REWARD, QUEST_KURASCYTHER)
+	questmenu(QUEST_MENU_SET_REWARD, QUEST_SAKURASCYTHER)
 	setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 7)
 	return
 }

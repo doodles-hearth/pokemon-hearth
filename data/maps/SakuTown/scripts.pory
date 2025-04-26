@@ -3,6 +3,8 @@ const LOCALID_GUARD = 8
 const LOCALID_RIVAL = 10
 const LOCALID_MAMA = 1
 const LOCALID_KUKU = 2
+const LOCALID_TAMA = 20
+const LOCALID_TAMASDAD = 21
 const FLAG_HIDE_NATSUKI = FLAG_TEMP_1
 
 mapscripts SakuTown_MapScripts {
@@ -17,11 +19,11 @@ mapscripts SakuTown_MapScripts {
 			setflag(FLAG_TEMP_2)
 			setflag(FLAG_TEMP_3)
 			}
-		returnqueststate(QUEST_KURALOVERS)
+		returnqueststate(QUEST_SAKURALOVERS)
 		copyvar(VAR_TEMP_0, VAR_RESULT)
-		returnqueststate(QUEST_KURAESPEON)
+		returnqueststate(QUEST_SAKURAESPEON)
 		copyvar(VAR_TEMP_1, VAR_RESULT)
-		returnqueststate(QUEST_KURASCYTHER)
+		returnqueststate(QUEST_SAKURASCYTHER)
 		copyvar(VAR_TEMP_2, VAR_RESULT)
 		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1) == 4 && var(VAR_TEMP_2) == 1 && var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 0) { 
 			setflag(FLAG_HIDE_SAKU_FARMERS)
@@ -128,13 +130,13 @@ script SakuTown_EventScript_Farmer {
 	lock
 	faceplayer
 	speakername("Farmer")
-	returnqueststate(QUEST_KURASCYTHER)
+	returnqueststate(QUEST_SAKURASCYTHER)
 	if(var(VAR_RESULT) == 3){
 		msgbox(format(
 		"Weilder! It's you! I can't thank ya enough for helping us heal our girl.\pI've been doin' a lot of thinkin' too, after you told us the one who helped 'er get better was someone from Kura. That ain't here nor there though. As thanks, ya can have these."
 		))
 		giveitem(ITEM_CHERI_BERRY, 20)
-		completequest(QUEST_KURASCYTHER)
+		completequest(QUEST_SAKURASCYTHER)
 	} else {
 		msgbox(format(
 			"We're growin' Cheri berries. Saku Village exports its berries to many towns."
@@ -393,11 +395,36 @@ script SakuTown_EventScript_TamaArgument {
 	msgbox(format("NO! I forbid you from going!"))
 	waitmessage
 	closemessage
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_fast_down * 5))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_fast_down * 4))
+	waitmovement(0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
 	waitmovement(0)
 	speakername("Tama")
 	msgbox(format("The love of my life is waiting for me on the other side! You can't do this to me!"))
 	waitmessage
 	closemessage
-	
+	speakername("Old man")
+	msgbox(format("Over my dad body will my son be in love with someone from Kura Village!"))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_TAMA, moves(emote_exclamation_mark, face_up))
+	applymovement(LOCALID_TAMASDAD, moves(emote_exclamation_mark, face_up))
+	waitmovement(LOCALID_TAMA)
+	waitmovement(LOCALID_TAMASDAD)
+	speakername("Tama")
+	msgbox(format("It's you! You need to help me get to Ashii, please!"))
+	waitmessage
+	closemessage
+	playse(MUS_VS_RAYQUAZA)
+	delay(180)
+	speakername("Old Man")
+	msgbox(format("So you're the whippersnapper that's making my son collude with the enemy, eh. Well, you need to thought a lesson in respect, kiddo!"))
+	waitmessage
+	closemessage
+	playse(MUS_DUMMY)
+	waitse
+	applymovement(LOCALID_TAMASDAD, moves(walk_slower_up * 2))
+	waitmovement(0)
+	trainerbattle_no_intro(TRAINER_TAMAS_DAD, "Dangnabit!")
 }

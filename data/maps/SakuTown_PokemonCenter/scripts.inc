@@ -5,11 +5,11 @@ SakuTown_PokemonCenter_MapScripts::
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	setrespawn HEAL_LOCATION_SAKU_TOWN
-	returnqueststate QUEST_KURALOVERS
+	returnqueststate QUEST_SAKURALOVERS
 	copyvar VAR_TEMP_0, VAR_RESULT
-	returnqueststate QUEST_KURAESPEON
+	returnqueststate QUEST_SAKURAESPEON
 	copyvar VAR_TEMP_1, VAR_RESULT
-	returnqueststate QUEST_KURASCYTHER
+	returnqueststate QUEST_SAKURASCYTHER
 	copyvar VAR_TEMP_2, VAR_RESULT
 	compare VAR_TEMP_0, 4
 	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
@@ -107,7 +107,7 @@ SakuTown_PokemonCenter_EventScript_Farmer1::
 	lock
 	faceplayer
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
-	returnqueststate QUEST_KURASCYTHER
+	returnqueststate QUEST_SAKURASCYTHER
 	switch VAR_RESULT
 	case 1, SakuTown_PokemonCenter_EventScript_Farmer1_3
 	case 2, SakuTown_PokemonCenter_EventScript_Farmer1_4
@@ -126,7 +126,7 @@ SakuTown_PokemonCenter_EventScript_Farmer1_4:
 
 FarmerGivesQuest:
 	msgbox FarmerGivesQuest_Text_0
-	startquest QUEST_KURASCYTHER
+	startquest QUEST_SAKURASCYTHER
 	applymovement 9, FarmerGivesQuest_Movement_0
 	return
 
@@ -211,7 +211,7 @@ HealedScytherScript:
 	removeobject 12
 	removeobject 13
 	removeobject 11
-	questmenu QUEST_MENU_SET_REWARD, QUEST_KURASCYTHER
+	questmenu QUEST_MENU_SET_REWARD, QUEST_SAKURASCYTHER
 	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 7
 	return
 

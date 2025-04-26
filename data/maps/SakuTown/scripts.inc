@@ -10,11 +10,11 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
 	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
-	returnqueststate QUEST_KURALOVERS
+	returnqueststate QUEST_SAKURALOVERS
 	copyvar VAR_TEMP_0, VAR_RESULT
-	returnqueststate QUEST_KURAESPEON
+	returnqueststate QUEST_SAKURAESPEON
 	copyvar VAR_TEMP_1, VAR_RESULT
-	returnqueststate QUEST_KURASCYTHER
+	returnqueststate QUEST_SAKURASCYTHER
 	copyvar VAR_TEMP_2, VAR_RESULT
 	compare VAR_TEMP_0, 4
 	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_11
@@ -139,7 +139,7 @@ SakuTown_EventScript_Farmer::
 	lock
 	faceplayer
 	speakername SakuTown_EventScript_Farmer_Text_0
-	returnqueststate QUEST_KURASCYTHER
+	returnqueststate QUEST_SAKURASCYTHER
 	compare VAR_RESULT, 3
 	goto_if_eq SakuTown_EventScript_Farmer_2
 	msgbox SakuTown_EventScript_Farmer_Text_2
@@ -150,7 +150,7 @@ SakuTown_EventScript_Farmer_1:
 SakuTown_EventScript_Farmer_2:
 	msgbox SakuTown_EventScript_Farmer_Text_1
 	giveitem ITEM_CHERI_BERRY, 20
-	completequest QUEST_KURASCYTHER
+	completequest QUEST_SAKURASCYTHER
 	goto SakuTown_EventScript_Farmer_1
 
 
@@ -400,10 +400,36 @@ SakuTown_EventScript_TamaArgument::
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_1
 	waitmovement 0
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_2
+	waitmovement 0
 	speakername SakuTown_EventScript_TamaArgument_Text_1
 	msgbox SakuTown_EventScript_TamaArgument_Text_2
 	waitmessage
 	closemessage
+	speakername SakuTown_EventScript_TamaArgument_Text_3
+	msgbox SakuTown_EventScript_TamaArgument_Text_4
+	waitmessage
+	closemessage
+	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_3
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_3
+	waitmovement 20
+	waitmovement 21
+	speakername SakuTown_EventScript_TamaArgument_Text_1
+	msgbox SakuTown_EventScript_TamaArgument_Text_5
+	waitmessage
+	closemessage
+	playse MUS_VS_RAYQUAZA
+	delay 180
+	speakername SakuTown_EventScript_TamaArgument_Text_6
+	msgbox SakuTown_EventScript_TamaArgument_Text_7
+	waitmessage
+	closemessage
+	playse MUS_DUMMY
+	waitse
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_4
+	waitmovement 0
+	trainerbattle_no_intro TRAINER_TAMAS_DAD, SakuTown_EventScript_TamaArgument_Text_8
 	return
 
 
@@ -451,7 +477,22 @@ SakuTown_EventScript_TamaArgument_Movement_1:
 	walk_fast_down
 	walk_fast_down
 	walk_fast_down
-	walk_fast_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_2:
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_3:
+	emote_exclamation_mark
+	face_up
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_4:
+	walk_slower_up
+	walk_slower_up
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Text_0:
@@ -630,6 +671,29 @@ SakuTown_EventScript_TamaArgument_Text_2:
 	.string "The love of my life is waiting for me\n"
 	.string "on the other side! You can't do this\l"
 	.string "to me!$"
+
+SakuTown_EventScript_TamaArgument_Text_3:
+	.string "Old man$"
+
+SakuTown_EventScript_TamaArgument_Text_4:
+	.string "Over my dad body will my son be in love\n"
+	.string "with someone from Kura Village!$"
+
+SakuTown_EventScript_TamaArgument_Text_5:
+	.string "It's you! You need to help me get to\n"
+	.string "Ashii, please!$"
+
+SakuTown_EventScript_TamaArgument_Text_6:
+	.string "Old Man$"
+
+SakuTown_EventScript_TamaArgument_Text_7:
+	.string "So you're the whippersnapper that's\n"
+	.string "making my son collude with the enemy,\l"
+	.string "eh. Well, you need to thought a lesson\l"
+	.string "in respect, kiddo!$"
+
+SakuTown_EventScript_TamaArgument_Text_8:
+	.string "Dangnabit!$"
 
 SakuTown_Text_RivalDefeat::
 	.string "Oh, wow!$"

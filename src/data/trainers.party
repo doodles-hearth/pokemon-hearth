@@ -10151,18 +10151,19 @@ Makuhita
 Level: 11
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DAVIS ===
+=== TRAINER_TAMAS_DAD ===
 Name: DAVIS
-Class: Bug Catcher
-Pic: Bug Catcher
+Class: Expert
+Pic: Expert M
 Gender: Male
-Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer
 
 Pinsir
-Level: 27
+Level: 15
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fury Cutter
+- Rock Smash
 
 === TRAINER_MITCHELL ===
 Name: MITCHELL

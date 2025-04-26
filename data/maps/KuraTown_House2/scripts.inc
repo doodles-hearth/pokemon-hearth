@@ -53,7 +53,7 @@ AshiiScript1:
 	closemessage
 	giveitem ITEM_ASHIIS_SCARF
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
-	startquest QUEST_KURALOVERS
+	startquest QUEST_SAKURALOVERS
 	return
 
 

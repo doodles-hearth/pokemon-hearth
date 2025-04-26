@@ -5,7 +5,7 @@ KuraTown_MapScripts::
 	.byte 0
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	returnqueststate QUEST_KURALOVERS
+	returnqueststate QUEST_SAKURALOVERS
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
 	goto_if_lt KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	compare VAR_RESULT, 3
