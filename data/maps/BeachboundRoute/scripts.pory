@@ -250,13 +250,7 @@ script BeachboundRoute_EventScript_Mugging {
 		waitmovement(LOCALID_GRUNT_2)
 		waitmovement(LOCALID_GRUNT_3)
 
-		dynmultichoice(
-			0,
-			0,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
+		mcdialogue(
 			"Leave her alone!",
 			"Actually, I was just leaving!",
 			"Uh…"

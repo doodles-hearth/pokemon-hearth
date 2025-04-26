@@ -71,13 +71,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 
 		showmoneybox(18, 0)
 
-		dynmultichoice(
-			0,
-			0,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
+		mcdialogue(
 			"What?!",
 			"No way!",
 			"Okay, I guess…"
@@ -184,13 +178,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 	showmoneybox(18, 0)
 
 	if (checkmoney(500)) {
-		dynmultichoice(
-			0,
-			0,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
+		mcdialogue(
 			"One room, please.",
 			"No, thanks."
 		)
@@ -230,13 +218,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 		}
 
 	} else {
-		dynmultichoice(
-			0,
-			0,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
+		mcdialogue(
 			"I'm poor…"
 		)
 		closemessage
