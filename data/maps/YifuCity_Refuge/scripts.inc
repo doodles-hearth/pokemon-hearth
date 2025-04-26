@@ -36,7 +36,7 @@ YifuCity_Refuge_EventScript_FakeNurse::
 	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_5
 	showmoneybox 18, 0
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Refuge_EventScript_FakeNurse_Text_6, YifuCity_Refuge_EventScript_FakeNurse_Text_7, YifuCity_Refuge_EventScript_FakeNurse_Text_8
+	mcdialogue YifuCity_Refuge_EventScript_FakeNurse_Text_6, YifuCity_Refuge_EventScript_FakeNurse_Text_7, YifuCity_Refuge_EventScript_FakeNurse_Text_8
 	closemessage
 	switch VAR_RESULT
 	case 0, YifuCity_Refuge_EventScript_FakeNurse_9
@@ -135,7 +135,7 @@ YifuCity_Refuge_EventScript_HotelValet::
 	checkmoney 500
 	compare VAR_RESULT, 0
 	goto_if_ne YifuCity_Refuge_EventScript_HotelValet_2
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Refuge_EventScript_HotelValet_Text_7
+	mcdialogue YifuCity_Refuge_EventScript_HotelValet_Text_7
 	closemessage
 	hidemoneybox
 	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
@@ -146,7 +146,7 @@ YifuCity_Refuge_EventScript_HotelValet_1:
 	return
 
 YifuCity_Refuge_EventScript_HotelValet_2:
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Refuge_EventScript_HotelValet_Text_2, YifuCity_Refuge_EventScript_HotelValet_Text_3
+	mcdialogue YifuCity_Refuge_EventScript_HotelValet_Text_2, YifuCity_Refuge_EventScript_HotelValet_Text_3
 	closemessage
 	switch VAR_RESULT
 	case 0, YifuCity_Refuge_EventScript_HotelValet_6
