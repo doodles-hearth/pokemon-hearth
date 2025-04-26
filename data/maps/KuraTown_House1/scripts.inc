@@ -78,10 +78,12 @@ OldWomanQuestScript:
 	closemessage
 	applymovement 1, OldWomanQuestScript_Movement_0
 	waitmovement 0
+	speakername KuraTown_House1_OldWoman_Text_0
 	msgbox OldWomanQuestScript_Text_5
 	waitmessage
 	closemessage
 	mcdialogue OldWomanQuestScript_Text_6, OldWomanQuestScript_Text_7, OldWomanQuestScript_Text_8
+	speakername KuraTown_House1_OldWoman_Text_0
 	msgbox OldWomanQuestScript_Text_9
 	waitmessage
 	closemessage
@@ -107,6 +109,7 @@ OldWomanQuest2Script_2:
 
 OldWomanQuest2Script_1:
 	applymovement 1, OldWomanQuest2Script_Movement_0
+	playse SE_PIN
 	waitmovement 0
 	msgbox OldWomanQuest2Script_Text_1
 	waitmessage
@@ -153,6 +156,7 @@ OldWomanQuestScript_Movement_0:
 
 OldWomanQuest2Script_Movement_0:
 	emote_exclamation_mark
+	delay_16
 	step_end
 
 KuraTown_House1_OldWoman_Text_0:

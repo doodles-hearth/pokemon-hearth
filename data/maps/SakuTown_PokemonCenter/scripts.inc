@@ -152,6 +152,7 @@ FarmerWaitsMedicine_3:
 HealedScytherScript:
 	mcdialogue HealedScytherScript_Text_0, HealedScytherScript_Text_1
 	applymovement 11, HealedScytherScript_Movement_0
+	playse SE_PIN
 	waitmovement 0
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox HealedScytherScript_Text_2

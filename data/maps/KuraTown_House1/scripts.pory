@@ -90,7 +90,8 @@ script OldWomanQuest2Script {
 	copyvar(VAR_TEMP_2,VAR_RESULT)
 	msgbox(format("Hello, child. Do you have the ingredients I need for the elixir, yet?"))
 	if (var(VAR_TEMP_0) >= 1 && var(VAR_TEMP_1) >= 1 && var(VAR_TEMP_2) >= 1) {
-		applymovement(LOCALID_OLDWOMAN, moves(emote_exclamation_mark))
+		applymovement(LOCALID_OLDWOMAN, moves(emote_exclamation_mark, delay_16))
+		playse(SE_PIN)
 		waitmovement(0)
 		msgbox(format("Wonderful! Give me a moment, alright? You can come back later for it."))
 		waitmessage

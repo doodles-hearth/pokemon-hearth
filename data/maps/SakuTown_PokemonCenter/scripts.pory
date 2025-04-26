@@ -137,6 +137,7 @@ script(local) FarmerWaitsMedicine {
 script(local) HealedScytherScript{
 	mcdialogue("Yep!", "Right here.")
 	applymovement(LOCALID_BED_FARMER_1, moves(emote_double_exclamation_mark))
+	playse(SE_PIN)
 	waitmovement(0)
 	speakername("Farmer")
 	msgbox(format("That's it! Can ye hand it please, weilder?"))
