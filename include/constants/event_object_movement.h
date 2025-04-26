@@ -254,17 +254,17 @@
 #define MOVEMENT_ACTION_RUN_RIGHT_SLOW                  0xA5
 // Ported from pokefirered
 #define MOVEMENT_ACTION_WANDER_AROUND_SLOWER            0xA6
-#define MOVEMENT_ACTION_WALK_SLOWER_DOWN                0xA7
 #define MOVEMENT_ACTION_WALK_SLOW_STAIRS_DOWN           0xA7
-#define MOVEMENT_ACTION_WALK_SLOWER_UP                  0xA8
 #define MOVEMENT_ACTION_WALK_SLOW_STAIRS_UP             0xA8
-#define MOVEMENT_ACTION_WALK_SLOWER_LEFT                0xA9
 #define MOVEMENT_ACTION_WALK_SLOW_STAIRS_LEFT           0xA9
-#define MOVEMENT_ACTION_WALK_SLOWER_RIGHT               0xAA
 #define MOVEMENT_ACTION_WALK_SLOW_STAIRS_RIGHT          0xAA
+#define MOVEMENT_ACTION_WALK_SLOWER_UP                  0xAB
+#define MOVEMENT_ACTION_WALK_SLOWER_DOWN                0xAC
+#define MOVEMENT_ACTION_WALK_SLOWER_LEFT                0xAD
+#define MOVEMENT_ACTION_WALK_SLOWER_RIGHT               0xAE
 
-#define MOVEMENT_ACTION_ZUBATS_ALIGN                    0xAB
-#define MOVEMENT_ACTION_CROBAT_CAPE                     0xAC
+#define MOVEMENT_ACTION_ZUBATS_ALIGN                    0xAF
+#define MOVEMENT_ACTION_CROBAT_CAPE                     0xBB
 
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF
