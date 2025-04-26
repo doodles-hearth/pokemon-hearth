@@ -14510,4 +14510,19 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_SlowpokeTail,
         .iconPalette = gItemIconPalette_SlowpokeTail,
     },
+    [ITEM_SPECIAL_MEDICINE] =
+    {
+        .name = _("Superb Elixir"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Medicine made by\n"
+            "Kura's healer."
+        ),
+        .importance = 1,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_SpecialMedicine,
+        .iconPalette = gItemIconPalette_SpecialMedicine,
+    },
 };

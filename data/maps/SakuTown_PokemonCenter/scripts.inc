@@ -11,7 +11,6 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	copyvar VAR_TEMP_1, VAR_RESULT
 	returnqueststate QUEST_KURASCYTHER
 	copyvar VAR_TEMP_2, VAR_RESULT
-	debugprint SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_0, VAR_TEMP_2
 	compare VAR_TEMP_0, 4
 	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
@@ -24,24 +23,18 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
 	return
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	debugprint SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_1
 	clearflag FLAG_HIDE_SAKU_REFUGE_FARMERS_1
 	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_2
 	return
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
-	debugprint SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_2
 	clearflag FLAG_HIDE_SAKU_REFUGE_FARMERS_2
 	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_1
 	return
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
-	debugprint SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_3
 	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_1
 	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_2
-	removeobject 11
-	removeobject 12
-	removeobject 13
 	return
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
@@ -270,18 +263,6 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_2:
 FarmerGivesQuest_Movement_0:
 	face_original_direction
 	step_end
-
-SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_0:
-	.string "vartemp2$"
-
-SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_1:
-	.string "ayo 1$"
-
-SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_2:
-	.string "ayo 2$"
-
-SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_Text_3:
-	.string "ayo 3$"
 
 SakuTown_PokemonCenter_EventScript_Nurse_Text_0:
 	.string "Nurse$"

@@ -348,7 +348,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		0
   ),
   side_quest(
- 		COMPOUND_STRING("A Sick, Sick Sycther"),
+ 		COMPOUND_STRING("The Wisened Healer"),
  		COMPOUND_STRING("Find a cure for the ailing Scyther!"),
  		COMPOUND_STRING("Cured the Scyther to Full Health!"),
  		COMPOUND_STRING("Saku & Kura Villages"),
