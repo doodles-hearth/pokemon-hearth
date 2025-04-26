@@ -103,7 +103,8 @@ u8 *CopyItemName(u16 itemId, u8 *dst)
 {
     if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES)
     {
-        return StringCopy(dst, GetMoveName(gItemsInfo[itemId].secondaryId));
+        StringCopy(dst, GetMoveName(gItemsInfo[itemId].secondaryId));
+        return StringAppend(dst, gText_Scroll);
     }
     else
     {
@@ -914,6 +915,10 @@ static u16 SanitizeItemId(u16 itemId)
 
 const u8 *ItemId_GetName(u16 itemId)
 {
+    if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES)
+    {
+        return GetMoveName(gItemsInfo[itemId].secondaryId);
+    }
     return gItemsInfo[SanitizeItemId(itemId)].name;
 }
 

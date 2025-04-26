@@ -1373,6 +1373,8 @@ const u8 gText_Relearn[] = _("{START_BUTTON} RELEARN"); // future note: don't de
 const u8 gText_Rename[] = _("Rename");
 const u8 gText_CannotSendMonToBoxHM[] = _("This Pokémon knows a field move\nthat no other Pokémon knows!{PAUSE_UNTIL_PRESS}"); // Unused
 
+const u8 gText_Scroll[] = _(" Scroll");
+
 //// side quest data
 //generic strings
 const u8 gText_QuestAnnounce[] = _("The quest “{STR_VAR_1}”\nis now {STR_VAR_2}.");

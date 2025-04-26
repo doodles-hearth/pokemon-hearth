@@ -1304,13 +1304,6 @@ static void BuyMenuInitWindows(void)
         {
             u32 item = sMartInfo.itemList[0];
             u16 quantity = CountTotalItemQuantityInBag(item);
-            if (ItemId_GetPocket(item) == POCKET_TM_HM)
-            {
-                const u8 *move = GetMoveName(ItemIdToBattleMoveId(item));
-                FormatTextByWidth(gStringVar2, 80, FONT_SMALL, ItemId_GetDescription(sMartInfo.itemList[0]), 0);
-                desc = gStringVar2;
-                BuyMenuPrint(WIN_MULTI, move, GetStringRightAlignXOffset(FONT_SMALL, move, 80), 0, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
-            }
 
             if ((ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
                 || (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(0)))
@@ -1457,13 +1450,6 @@ static void UpdateItemData(void)
             default:
             {
                 u16 quantity = CountTotalItemQuantityInBag(item);
-                if (ItemId_GetPocket(item) == POCKET_TM_HM && item != ITEM_NONE)
-                {
-                    const u8 *move = GetMoveName(ItemIdToBattleMoveId(item));
-                    FormatTextByWidth(gStringVar2, 80, FONT_SMALL, ItemId_GetDescription(sMartInfo.itemList[i]), 0);
-                    desc = gStringVar2;
-                    BuyMenuPrint(WIN_MULTI, move, GetStringRightAlignXOffset(FONT_SMALL, move, 80), 0, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
-                }
 
                 if ((ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
                     || (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(i)))
