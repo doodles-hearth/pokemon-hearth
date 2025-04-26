@@ -6349,19 +6349,19 @@ u8 GetCollisionInDirection(struct ObjectEvent *objectEvent, u8 direction)
 u8 GetSidewaysStairsCollision(struct ObjectEvent *objectEvent, u8 dir, u8 currentBehavior, u8 nextBehavior, u8 collision)
 {
     if ((dir == DIR_SOUTH || dir == DIR_NORTH) && collision != COLLISION_NONE)
-        return collision;
-
+    return collision;
+    
     // cant descend stairs into water
     if (MetatileBehavior_IsSurfableFishableWater(nextBehavior))
-        return collision;
-
+    return collision;
+    
     if (MetatileBehavior_IsSidewaysStairsLeftSide(nextBehavior))
     {
         //moving ONTO left side stair
         if (dir == DIR_WEST && currentBehavior != nextBehavior)
-            return collision;   //moving onto top part of left-stair going left, so no diagonal
+        return collision;   //moving onto top part of left-stair going left, so no diagonal
         else
-            return COLLISION_SIDEWAYS_STAIRS_TO_LEFT; // move diagonally
+        return COLLISION_SIDEWAYS_STAIRS_TO_LEFT; // move diagonally
     }
     else if (MetatileBehavior_IsSidewaysStairsRightSide(nextBehavior))
     {
