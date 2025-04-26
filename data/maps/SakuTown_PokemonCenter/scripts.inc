@@ -13,13 +13,13 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	copyvar VAR_TEMP_2, VAR_RESULT
 	compare VAR_TEMP_0, 4
 	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
-SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
-	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2
-	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
 	compare VAR_TEMP_2, 3
-	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
+	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
 	compare VAR_TEMP_2, 4
-	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
+	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2
+	goto_if_ge SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
 	return
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
@@ -28,24 +28,24 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	return
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
-	clearflag FLAG_HIDE_SAKU_REFUGE_FARMERS_2
 	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_1
+	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_2
 	return
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
+	clearflag FLAG_HIDE_SAKU_REFUGE_FARMERS_2
 	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_1
-	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_2
 	return
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
 	compare VAR_TEMP_2, 1
 	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
-	goto SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+	goto SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
 	compare VAR_TEMP_1, 4
 	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
-	goto SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+	goto SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
 
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1, SakuTown_PokemonCenter_EventScript_ScytherQuest
@@ -133,6 +133,85 @@ FarmerGivesQuest:
 
 FarmerWaitsMedicine:
 	msgbox FarmerWaitsMedicine_Text_0
+	checkitem ITEM_SPECIAL_MEDICINE, 1
+	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6
+	goto_if_eq FarmerWaitsMedicine_3
+FarmerWaitsMedicine_1:
+	return
+
+FarmerWaitsMedicine_2:
+	call HealedScytherScript
+	goto FarmerWaitsMedicine_1
+
+FarmerWaitsMedicine_3:
+	compare VAR_RESULT, TRUE
+	goto_if_eq FarmerWaitsMedicine_2
+	goto FarmerWaitsMedicine_1
+
+
+HealedScytherScript:
+	mcdialogue HealedScytherScript_Text_0, HealedScytherScript_Text_1
+	applymovement 11, HealedScytherScript_Movement_0
+	waitmovement 0
+	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	msgbox HealedScytherScript_Text_2
+	waitmessage
+	closemessage
+	removeitem ITEM_SPECIAL_MEDICINE, 1
+	applymovement 11, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_0
+	waitmovement 0
+	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	msgbox HealedScytherScript_Text_3
+	waitmessage
+	closemessage
+	applymovement 13, HealedScytherScript_Movement_1
+	playmoncry SPECIES_SCYTHER, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_SCYTHER
+	msgbox HealedScytherScript_Text_4
+	waitmessage
+	closemessage
+	playse SE_USE_ITEM
+	applymovement 13, HealedScytherScript_Movement_2
+	waitmovement 0
+	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	applymovement 11, HealedScytherScript_Movement_3
+	waitmovement 0
+	msgbox HealedScytherScript_Text_5
+	waitmessage
+	closemessage
+	mcdialogue HealedScytherScript_Text_6
+	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	msgbox HealedScytherScript_Text_7
+	applymovement 11, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_0
+	waitmovement 0
+	applymovement 13, HealedScytherScript_Movement_4
+	hidefollower
+	playmoncry SPECIES_SCYTHER, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_SCYTHER
+	msgbox HealedScytherScript_Text_8
+	waitmessage
+	closemessage
+	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	msgbox HealedScytherScript_Text_9
+	waitmessage
+	closemessage
+	applymovement 11, HealedScytherScript_Movement_3
+	waitmovement 0
+	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	msgbox HealedScytherScript_Text_10
+	waitmessage
+	closemessage
+	applymovement 12, HealedScytherScript_Movement_5
+	applymovement 13, HealedScytherScript_Movement_6
+	applymovement 11, HealedScytherScript_Movement_7
+	waitmovement 12
+	waitmovement 13
+	waitmovement 11
+	removeobject 12
+	removeobject 13
+	removeobject 11
+	questmenu QUEST_MENU_SET_REWARD, QUEST_KURASCYTHER
+	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 7
 	return
 
 
@@ -143,7 +222,7 @@ SakuTown_PokemonCenter_EventScript_Farmer2::
 	closemessage
 	playmoncry SPECIES_SCYTHER, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_SCYTHER
-	msgbox SakuTown_PokemonCenter_EventScript_Farmer2_Text_1
+	msgbox HealedScytherScript_Text_4
 	closemessage
 	release
 	end
@@ -264,6 +343,91 @@ FarmerGivesQuest_Movement_0:
 	face_original_direction
 	step_end
 
+HealedScytherScript_Movement_0:
+	emote_double_exclamation_mark
+	step_end
+
+HealedScytherScript_Movement_1:
+	face_left
+	step_end
+
+HealedScytherScript_Movement_2:
+	emote_double_exclamation_mark
+	jump_in_place_left
+	jump_in_place_left
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_right
+	walk_fast_right
+	walk_fast_up
+	walk_fast_up
+	walk_fast_left
+	walk_fast_left
+	walk_up
+	face_original_direction
+	step_end
+
+HealedScytherScript_Movement_3:
+	face_player
+	step_end
+
+HealedScytherScript_Movement_4:
+	face_left
+	delay_16
+	face_down
+	delay_16
+	face_right
+	delay_16
+	face_up
+	delay_16
+	emote_heart
+	delay_16
+	face_original_direction
+	step_end
+
+HealedScytherScript_Movement_5:
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+HealedScytherScript_Movement_6:
+	walk_right
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
+HealedScytherScript_Movement_7:
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
 SakuTown_PokemonCenter_EventScript_Nurse_Text_0:
 	.string "Nurse$"
 
@@ -316,11 +480,46 @@ FarmerGivesQuest_Text_0:
 FarmerWaitsMedicine_Text_0:
 	.string "So? Have ya found anythin' yet?$"
 
+HealedScytherScript_Text_0:
+	.string "Yep!$"
+
+HealedScytherScript_Text_1:
+	.string "Right here.$"
+
+HealedScytherScript_Text_2:
+	.string "That's it! Can ye hand it please,\n"
+	.string "weilder?$"
+
+HealedScytherScript_Text_3:
+	.string "Here girl… This'll make ya feel better…$"
+
+HealedScytherScript_Text_4:
+	.string "{FONT_SMALL} Gyooo…$"
+
+HealedScytherScript_Text_5:
+	.string "Weilder, I don't know how to thank ya.\n"
+	.string "She wouldn't be alright with you!\l"
+	.string "Where did you get this medicine?$"
+
+HealedScytherScript_Text_6:
+	.string "From a wise healer in Kura Village.$"
+
+HealedScytherScript_Text_7:
+	.string "Kura Village, eh…$"
+
+HealedScytherScript_Text_8:
+	.string "Gyaaa!$"
+
+HealedScytherScript_Text_9:
+	.string "{FONT_SMALL} Maybe they're not s'bad afta' all…$"
+
+HealedScytherScript_Text_10:
+	.string "Thank you, Weilder. I can give ye a\n"
+	.string "reward for your effors. Just meet us\l"
+	.string "in the fields outside.$"
+
 SakuTown_PokemonCenter_EventScript_Farmer2_Text_0:
 	.string "There, there, girl… It'll be okay…$"
-
-SakuTown_PokemonCenter_EventScript_Farmer2_Text_1:
-	.string "{FONT_SMALL} Gyooo…$"
 
 SakuTown_PokemonCenter_EventScript_Pushing_Text_0:
 	.string "Shady man$"

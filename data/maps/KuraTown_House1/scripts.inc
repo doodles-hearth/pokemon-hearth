@@ -22,6 +22,7 @@ KuraTown_House1_OldWoman::
 	case 3, KuraTown_House1_OldWoman_4
 	case 4, KuraTown_House1_OldWoman_5
 	case 5, KuraTown_House1_OldWoman_6
+	case 6, KuraTown_House1_OldWoman_7
 	call OldWomanRegularScript
 KuraTown_House1_OldWoman_1:
 	release
@@ -44,6 +45,16 @@ KuraTown_House1_OldWoman_5:
 KuraTown_House1_OldWoman_6:
 	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6
 	msgbox KuraTown_House1_OldWoman_Text_2
+	waitmessage
+	closemessage
+	giveitem ITEM_SPECIAL_MEDICINE, 1
+	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6
+	goto KuraTown_House1_OldWoman_1
+
+KuraTown_House1_OldWoman_7:
+	msgbox KuraTown_House1_OldWoman_Text_3
+	waitmessage
+	closemessage
 	goto KuraTown_House1_OldWoman_1
 
 
@@ -87,35 +98,31 @@ OldWomanQuest2Script::
 	copyvar VAR_TEMP_2, VAR_RESULT
 	msgbox OldWomanQuest2Script_Text_0
 	compare VAR_TEMP_0, 1
-	goto_if_ge OldWomanQuest2Script_5
-OldWomanQuest2Script_3:
-	dynmultipush OldWomanQuest2Script_Text_3, 0
-	msgbox OldWomanQuest2Script_Text_4
-	waitmessage
-	closemessage
-OldWomanQuest2Script_1:
-	dynmultistack 0, 0, TRUE, 1, FALSE, 0, DYN_MULTICHOICE_CB_NONE
-	return
-
+	goto_if_ge OldWomanQuest2Script_4
 OldWomanQuest2Script_2:
-	dynmultipush OldWomanQuest2Script_Text_1, 0
-	applymovement 1, OldWomanQuest2Script_Movement_0
-	waitmovement 0
 	msgbox OldWomanQuest2Script_Text_2
 	waitmessage
 	closemessage
+	return
+
+OldWomanQuest2Script_1:
+	applymovement 1, OldWomanQuest2Script_Movement_0
+	waitmovement 0
+	msgbox OldWomanQuest2Script_Text_1
+	waitmessage
+	closemessage
 	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 4
-	goto OldWomanQuest2Script_1
+	return
+
+OldWomanQuest2Script_3:
+	compare VAR_TEMP_2, 1
+	goto_if_ge OldWomanQuest2Script_1
+	goto OldWomanQuest2Script_2
 
 OldWomanQuest2Script_4:
-	compare VAR_TEMP_2, 1
-	goto_if_ge OldWomanQuest2Script_2
-	goto OldWomanQuest2Script_3
-
-OldWomanQuest2Script_5:
 	compare VAR_TEMP_1, 1
-	goto_if_ge OldWomanQuest2Script_4
-	goto OldWomanQuest2Script_3
+	goto_if_ge OldWomanQuest2Script_3
+	goto OldWomanQuest2Script_2
 
 
 KuraTown_House1_OldWomansSon::
@@ -155,7 +162,15 @@ KuraTown_House1_OldWoman_Text_1:
 	.string "Come back later for the medicine.$"
 
 KuraTown_House1_OldWoman_Text_2:
-	.string "It's good to see you! I've finished the medicine. Here, take it to the ailing Pokémon. Once it drinks it, it should feel good as new.$"
+	.string "It's good to see you! I've finished\n"
+	.string "the medicine. Here, take it to the\l"
+	.string "ailing Pokémon. Once it drinks it, it\l"
+	.string "should feel good as new.$"
+
+KuraTown_House1_OldWoman_Text_3:
+	.string "Once the ill Pokémon drinks the\n"
+	.string "medicine I gave you, it should feel\l"
+	.string "right as rain.$"
 
 OldWomanRegularScript_Text_0:
 	.string "You look like you're tired, young one.\n"
@@ -212,16 +227,14 @@ OldWomanQuest2Script_Text_0:
 	.string "yet?$"
 
 OldWomanQuest2Script_Text_1:
-	.string "Yep!$"
+	.string "Wonderful! Give me a moment, alright?\n"
+	.string "You can come back later for it.$"
 
 OldWomanQuest2Script_Text_2:
-	.string "Wonderful! Give me a moment, alright? You can come back later for it.$"
-
-OldWomanQuest2Script_Text_3:
-	.string "No…$"
-
-OldWomanQuest2Script_Text_4:
-	.string "Well, I'll stay here until you do. Remember, I need an Oran Berry, a Maguro Fishcake, and a Revival Powder.$"
+	.string "Well, I'll stay here until you do.\n"
+	.string "Remember, I need an Oran Berry, a\l"
+	.string "Maguro Fishcake, and a Revival\l"
+	.string "Powder.$"
 
 KuraTown_House1_OldWomansSon_Text_0:
 	.string "Guy$"

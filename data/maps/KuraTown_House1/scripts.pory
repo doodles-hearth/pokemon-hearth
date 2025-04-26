@@ -15,18 +15,31 @@ script KuraTown_House1_OldWoman {
 	switch(var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE)) {
 		case 2:
 			call(OldWomanQuestScript)
+			break
 		case 3:
 			call(OldWomanQuest2Script)
+			break
 		case 4:
-			msgbox("Come back later for the medicine.")
+			msgbox(format("Come back later for the medicine."))
 			waitmessage
 			closemessage
+			break
 		case 5:
 			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6)
-			msgbox("It's good to see you! I've finished the medicine. Here, take it to the ailing Pokémon. Once it drinks it, it should feel good as new.")
-
+			msgbox(format("It's good to see you! I've finished the medicine. Here, take it to the ailing Pokémon. Once it drinks it, it should feel good as new."))
+			waitmessage
+			closemessage
+			giveitem(ITEM_SPECIAL_MEDICINE, 1)
+			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6)
+			break
+		case 6:
+			msgbox(format("Once the ill Pokémon drinks the medicine I gave you, it should feel right as rain."))
+			waitmessage
+			closemessage
+			break
 		default:
 			call(OldWomanRegularScript)
+			break
 	}
 	release
 }
@@ -75,20 +88,17 @@ script OldWomanQuest2Script {
 	copyvar(VAR_TEMP_2,VAR_RESULT)
 	msgbox(format("Hello, child. Do you have the ingredients I need for the elixir, yet?"))
 	if (var(VAR_TEMP_0) >= 1 && var(VAR_TEMP_1) >= 1 && var(VAR_TEMP_2) >= 1) {
-		dynmultipush("Yep!", 0)
 		applymovement(LOCALID_OLDWOMAN, moves(emote_exclamation_mark))
 		waitmovement(0)
-		msgbox("Wonderful! Give me a moment, alright? You can come back later for it.")
+		msgbox(format("Wonderful! Give me a moment, alright? You can come back later for it."))
 		waitmessage
 		closemessage
 		setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 4)
 	} else {
-		dynmultipush("No…", 0)
-		msgbox("Well, I'll stay here until you do. Remember, I need an Oran Berry, a Maguro Fishcake, and a Revival Powder.")
+		msgbox(format("Well, I'll stay here until you do. Remember, I need an Oran Berry, a Maguro Fishcake, and a Revival Powder."))
 		waitmessage
 		closemessage
 	}
-	dynmultistack(0,0,TRUE,1,FALSE,0,DYN_MULTICHOICE_CB_NONE)
 
 }
 

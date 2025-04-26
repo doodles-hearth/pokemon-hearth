@@ -14,7 +14,10 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	returnqueststate QUEST_KURASCYTHER
 	copyvar VAR_TEMP_2, VAR_RESULT
 	compare VAR_TEMP_0, 4
-	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
+	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 7
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
@@ -28,19 +31,23 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
+	clearflag FLAG_HIDE_SAKU_FARMERS
+	return
+
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
 	compare VAR_TEMP_2, 1
-	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
-	return
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_11
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
 
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
 	compare VAR_TEMP_1, 4
-	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
-	return
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
 
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_11:
 	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 0
 	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
-	return
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	setflag FLAG_TEMP_1
@@ -124,9 +131,19 @@ SakuTown_EventScript_Farmer::
 	lock
 	faceplayer
 	speakername SakuTown_EventScript_Farmer_Text_0
-	msgbox SakuTown_EventScript_Farmer_Text_1
+	returnqueststate QUEST_KURASCYTHER
+	compare VAR_RESULT, 3
+	goto_if_eq SakuTown_EventScript_Farmer_2
+	msgbox SakuTown_EventScript_Farmer_Text_2
+SakuTown_EventScript_Farmer_1:
 	release
 	return
+
+SakuTown_EventScript_Farmer_2:
+	msgbox SakuTown_EventScript_Farmer_Text_1
+	giveitem ITEM_CHERI_BERRY, 20
+	completequest QUEST_KURASCYTHER
+	goto SakuTown_EventScript_Farmer_1
 
 
 SakuTown_EventScript_Farmer2::
@@ -446,6 +463,15 @@ SakuTown_EventScript_Farmer_Text_0:
 	.string "Farmer$"
 
 SakuTown_EventScript_Farmer_Text_1:
+	.string "Weilder! It's you! I can't thank ya\n"
+	.string "enough for helping us heal our girl.\p"
+	.string "I've been doin' a lot of thinkin' too,\n"
+	.string "after you told us the one who helped\l"
+	.string "'er get better was someone from Kura.\l"
+	.string "That ain't here nor there though. As\l"
+	.string "thanks, ya can have these.$"
+
+SakuTown_EventScript_Farmer_Text_2:
 	.string "We're growin' Cheri berries. Saku\n"
 	.string "Village exports its berries to many\l"
 	.string "towns.$"

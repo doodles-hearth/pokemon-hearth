@@ -22,6 +22,8 @@ mapscripts SakuTown_MapScripts {
 		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1) == 4 && var(VAR_TEMP_2) == 1 && var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 0) { 
 			setflag(FLAG_HIDE_SAKU_FARMERS)
 			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1)
+		} elif (var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 7) {
+			clearflag(FLAG_HIDE_SAKU_FARMERS)
 		}
 	}
 	MAP_SCRIPT_ON_LOAD {
@@ -122,9 +124,18 @@ script SakuTown_EventScript_Farmer {
 	lock
 	faceplayer
 	speakername("Farmer")
-	msgbox(format(
-		"We're growin' Cheri berries. Saku Village exports its berries to many towns."
-	))
+	returnqueststate(QUEST_KURASCYTHER)
+	if(var(VAR_RESULT) == 3){
+		msgbox(format(
+		"Weilder! It's you! I can't thank ya enough for helping us heal our girl.\pI've been doin' a lot of thinkin' too, after you told us the one who helped 'er get better was someone from Kura. That ain't here nor there though. As thanks, ya can have these."
+		))
+		giveitem(ITEM_CHERI_BERRY, 20)
+		completequest(QUEST_KURASCYTHER)
+	} else {
+		msgbox(format(
+			"We're growin' Cheri berries. Saku Village exports its berries to many towns."
+		))
+	}
 	release
 }
 

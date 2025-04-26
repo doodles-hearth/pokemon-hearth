@@ -350,7 +350,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
   side_quest(
  		COMPOUND_STRING("The Wisened Healer"),
  		COMPOUND_STRING("Find a cure for the ailing Scyther!"),
- 		COMPOUND_STRING("Cured the Scyther to Full Health!"),
+ 		COMPOUND_STRING("Cured the Scyther to full health!"),
  		COMPOUND_STRING("Saku & Kura Villages"),
 		OBJ_EVENT_GFX_SPECIES(SCYTHER),
 		OBJECT,
