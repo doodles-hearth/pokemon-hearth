@@ -498,3 +498,13 @@ script SakuTown_EventScript_TamasAnxious {
 	waitmessage
 	closemessage
 }
+
+script SakuTown_EventScript_NoLeavingAshii {
+	speakername("Tama")
+	msgbox(format("W-where are you going?! Ashii's waiting for us!"))
+	waitmessage
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
+	waitmovement(0)
+	end
+}

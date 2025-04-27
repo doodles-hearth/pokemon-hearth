@@ -508,6 +508,16 @@ SakuTown_EventScript_TamasAnxious::
 	return
 
 
+SakuTown_EventScript_NoLeavingAshii::
+	speakername SakuTown_EventScript_TamaArgument_Text_1
+	msgbox SakuTown_EventScript_NoLeavingAshii_Text_0
+	waitmessage
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_NoLeavingAshii_Movement_0
+	waitmovement 0
+	end
+
+
 SakuTown_EventScript_RivalAtSakuWall_Movement_0:
 	walk_up
 	walk_up
@@ -610,6 +620,10 @@ SakuTown_EventScript_TamaArgument_Movement_10:
 SakuTown_EventScript_TamaArgument_Movement_11:
 	walk_up
 	face_player
+	step_end
+
+SakuTown_EventScript_NoLeavingAshii_Movement_0:
+	walk_up
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Text_0:
@@ -847,6 +861,10 @@ SakuTown_EventScript_TamaArgument_Text_15:
 SakuTown_EventScript_TamasAnxious_Text_0:
 	.string "My heart is about to burst out of my\n"
 	.string "chest…$"
+
+SakuTown_EventScript_NoLeavingAshii_Text_0:
+	.string "W-where are you going?! Ashii's\n"
+	.string "waiting for us!$"
 
 SakuTown_Text_RivalDefeat::
 	.string "Oh, wow!$"
