@@ -68,13 +68,7 @@ script IncenseShop_EventScript_Shopkeeper {
 			"… … … … … …\n… … … … … …"
 		))
 
-		dynmultichoice(
-			0,
-			0,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
+		mcdialogue(
 			"Excuse me!",
 			"Hello?",
 			"… … …"
