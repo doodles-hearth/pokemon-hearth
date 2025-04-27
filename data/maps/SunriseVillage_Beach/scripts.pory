@@ -138,7 +138,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 		case 0:
 			msgbox(format(
 				"Hell yeah!\p"
-				"We're going to make awesome Wielder,\nI can already tell.\p"
+				"We're going to make awesome Wielders,\nI can already tell.\p"
 				"Maybe you'll even be second best\none day…\p"
 				"Behind me, of course!"
 			))

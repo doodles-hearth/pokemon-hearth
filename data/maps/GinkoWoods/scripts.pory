@@ -31,7 +31,7 @@ script GinkoWoods_EventScript_Toshio {
 	// specialvar VAR_RESULT, IsTrainerRegistered
 	// goto_if_eq VAR_RESULT, FALSE, Route102_EventScript_CalvinTryRegister
 	speakername("Toshio")
-	msgbox(format("Real Wielder fight when they spot each other!\pAt least that's what my dad told me…"))
+	msgbox(format("Real Wielders fight when they spot each other!\pAt least that's what my dad told me…"))
 	release
 	end
 }

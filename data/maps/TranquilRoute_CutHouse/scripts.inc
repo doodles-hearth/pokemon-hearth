@@ -191,9 +191,11 @@ TranquilRoute_CutHouse_EventScript_CutMaster_Text_4:
 	.string "Dojo Token for that, though.\p"
 	.string "We can't be going around cutting\n"
 	.string "trees irresponsibly, now can we?\p"
-	.string "You can also have this scroll, in case\n"
-	.string "your Pokémon don't know any slicing\l"
-	.string "moves yet.$"
+	.string "You can also have this, in case your\n"
+	.string "Pokémon don't know any slicing moves\l"
+	.string "yet.\p"
+	.string "A scroll can be used to teach your\n"
+	.string "Pokémon a move!$"
 
 TranquilRoute_CutHouse_EventScript_CutMaster_Text_5:
 	.string "Want to know another secret?\p"

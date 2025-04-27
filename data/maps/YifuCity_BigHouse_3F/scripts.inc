@@ -30,7 +30,7 @@ YifuCity_BigHouse_3F_EventScript_TradingActOfLove_Text_0:
 YifuCity_BigHouse_3F_EventScript_TradingActOfLove_Text_1:
 	.string "Trading Pokémon has long been seen\n"
 	.string "as an act of true love and trust\l"
-	.string "between Wielder.\p"
+	.string "between Wielders.\p"
 	.string "Now that I've become a Wielder, I\n"
 	.string "can't wait to find my soulmate so she\l"
 	.string "can trade me all her rare Pokémon!$"

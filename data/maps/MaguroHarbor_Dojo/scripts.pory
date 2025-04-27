@@ -10,7 +10,7 @@ script MaguroHarbor_Dojo_EventScript_Koishi {
 		TRAINER_KOISHI_1,
 		format(
 			"Welcome to Maguro's Koi Pond Dojo, one of the eight Dojos officially appointed by the Toku Council.\p"
-			"We Dojo Masters fight Wielder that have taken on the Toku Council's challenge.\p"
+			"We Dojo Masters fight Wielders that have taken on the Toku Council's challenge.\p"
 			"We each give out a different Token to anyone who succeeds in defeating us.\p"
 			"I am Koishi. I began raising elegant, graceful Pokémon when I was even younger than you are now.\p"
 			"I may behave and speak in a soft manner, but do not for one second mistake soft-spokenness for weakness.\p"
@@ -204,7 +204,7 @@ script MaguroHarbor_Dojo_EventScript_DojoStatue {
 	if (flag(FLAG_BADGE01_GET)) {
 		msgbox(
 			"Dojo of Maguro Harbor\p"
-			"Certified Wielder:\n"
+			"certified Wielders:\n"
 			"Natsuki,\l"
 			"{PLAYER}",
 			MSGBOX_SIGN
@@ -212,7 +212,7 @@ script MaguroHarbor_Dojo_EventScript_DojoStatue {
 	} else {
 		msgbox(
 			"Dojo of Maguro Harbor\p"
-			"Certified Wielder:\n"
+			"certified Wielders:\n"
 			"Natsuki",
 			MSGBOX_SIGN
 		)

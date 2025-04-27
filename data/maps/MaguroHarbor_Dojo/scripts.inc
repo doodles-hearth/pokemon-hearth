@@ -179,7 +179,7 @@ MaguroHarbor_Dojo_EventScript_Koishi_Text_1:
 	.string "Welcome to Maguro's Koi Pond Dojo, one\n"
 	.string "of the eight Dojos officially\l"
 	.string "appointed by the Toku Council.\p"
-	.string "We Dojo Masters fight Wielder that\n"
+	.string "We Dojo Masters fight Wielders that\n"
 	.string "have taken on the Toku Council's\l"
 	.string "challenge.\p"
 	.string "We each give out a different Token to\n"
@@ -293,11 +293,11 @@ MaguroHarbor_Dojo_EventScript_Advice_Text_3:
 
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_0:
 	.string "Dojo of Maguro Harbor\p"
-	.string "Certified Wielder:\n"
+	.string "certified Wielders:\n"
 	.string "Natsuki,\l"
 	.string "{PLAYER}$"
 
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_1:
 	.string "Dojo of Maguro Harbor\p"
-	.string "Certified Wielder:\n"
+	.string "certified Wielders:\n"
 	.string "Natsuki$"

@@ -359,7 +359,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_12:
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_13:
 	.string "Hell yeah!\p"
-	.string "We're going to make awesome Wielder,\n"
+	.string "We're going to make awesome Wielders,\n"
 	.string "I can already tell.\p"
 	.string "Maybe you'll even be second best\n"
 	.string "one day…\p"

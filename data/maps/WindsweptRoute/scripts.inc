@@ -136,7 +136,7 @@ WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_4:
 WindsweptRoute_EventScript_OvergrownTrees_Text_0:
 	.string "Thank you for cutting down that\n"
 	.string "annoying tree! We can go to Silveridge\l"
-	.string "again now!$"
+	.string "again!$"
 
 WindsweptRoute_EventScript_OvergrownTrees_Text_1:
 	.string "The weeds got out of control here,\n"

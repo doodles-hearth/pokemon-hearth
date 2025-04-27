@@ -218,7 +218,7 @@ script KuraTown_Dojo_EventScript_DojoStatue {
 	if (flag(FLAG_BADGE02_GET)) {
 		msgbox(
 			"Dojo of Kura Village\p"
-			"Certified Wielder:\n"
+			"certified Wielders:\n"
 			"Natsuki,\l"
 			"{PLAYER}",
 			MSGBOX_SIGN
@@ -226,7 +226,7 @@ script KuraTown_Dojo_EventScript_DojoStatue {
 	} else {
 		msgbox(
 			"Dojo of Kura Village\p"
-			"Certified Wielder:\n"
+			"certified Wielders:\n"
 			"Natsuki",
 			MSGBOX_SIGN
 		)

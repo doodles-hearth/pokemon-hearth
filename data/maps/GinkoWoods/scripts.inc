@@ -155,7 +155,7 @@ GinkoWoods_EventScript_Toshio_Text_2:
 	.string "Toshio$"
 
 GinkoWoods_EventScript_Toshio_Text_3:
-	.string "Real Wielder fight when they spot\n"
+	.string "Real Wielders fight when they spot\n"
 	.string "each other!\p"
 	.string "At least that's what my dad told me…$"
 

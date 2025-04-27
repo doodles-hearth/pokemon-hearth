@@ -763,51 +763,6 @@
     },
     {
       "type": "trigger",
-      "x": 64,
-      "y": 15,
-      "elevation": 0,
-      "var": "VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE",
-      "var_value": "2",
-      "script": "BeachboundRoute_EventScript_WhereAreYouGoing"
-    },
-    {
-      "type": "trigger",
-      "x": 64,
-      "y": 16,
-      "elevation": 0,
-      "var": "VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE",
-      "var_value": "2",
-      "script": "BeachboundRoute_EventScript_WhereAreYouGoing"
-    },
-    {
-      "type": "trigger",
-      "x": 64,
-      "y": 17,
-      "elevation": 0,
-      "var": "VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE",
-      "var_value": "2",
-      "script": "BeachboundRoute_EventScript_WhereAreYouGoing"
-    },
-    {
-      "type": "trigger",
-      "x": 64,
-      "y": 18,
-      "elevation": 0,
-      "var": "VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE",
-      "var_value": "2",
-      "script": "BeachboundRoute_EventScript_WhereAreYouGoing"
-    },
-    {
-      "type": "trigger",
-      "x": 65,
-      "y": 19,
-      "elevation": 0,
-      "var": "VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE",
-      "var_value": "2",
-      "script": "BeachboundRoute_EventScript_WhereAreYouGoing"
-    },
-    {
-      "type": "trigger",
       "x": 70,
       "y": 13,
       "elevation": 0,
