@@ -246,6 +246,8 @@
     // 0: Quest hasn't started
     // 1: Received Ashii's scarf
     // 2: Gave Scarf to Tama
+    // 3: Left Ashii's house in the night
+    // 4: Waiting with Ashii outside
 */
 #define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE             0x409D
 /*
@@ -262,6 +264,10 @@
     VAR_SAKU_KURA_QUEST_SCYTHER_STATEs
     // 0: Quest hasn't started
     // 1: Farmer has asked player for help
+    // 2:
+    // 3:
+    // 4:
+    // 5:
 */
 #define VAR_SAKU_KURA_QUEST_SCYTHER_STATE                0x409F
 /*

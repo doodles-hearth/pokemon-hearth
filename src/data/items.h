@@ -14704,4 +14704,21 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
         .secondaryId = MOVE_DIVE,
     },
+
+    [ITEM_SPECIAL_MEDICINE] =
+    {
+        .name = _("Superb Elixir"),
+        .price = 0,
+        .description = COMPOUND_STRING(
+            "Medicine made by\n"
+            "Kura's healer."
+        ),
+        .importance = 1,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+        .secondaryId = MOVE_DIVE,
+        .iconPic = gItemIcon_SpecialMedicine,
+        .iconPalette = gItemIconPalette_SpecialMedicine,
+    },
 };

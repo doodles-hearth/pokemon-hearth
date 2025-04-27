@@ -1027,8 +1027,9 @@
 #define ITEM_SECRET_FLY 854
 #define ITEM_SECRET_CLIMB 855
 #define ITEM_SECRET_FLASH 856
+#define ITEM_SPECIAL_MEDICINE 857
 
-#define ITEMS_COUNT 857
+#define ITEMS_COUNT 858
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

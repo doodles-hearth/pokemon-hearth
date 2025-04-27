@@ -1793,6 +1793,8 @@ extern const u32 gItemIcon_EnteiStatuette[];
 extern const u32 gItemIconPalette_EnteiStatuette[];
 extern const u32 gItemIcon_SlowpokeTail[];
 extern const u32 gItemIconPalette_SlowpokeTail[];
+extern const u32 gItemIcon_SpecialMedicine[];
+extern const u32 gItemIconPalette_SpecialMedicine[];
 
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u32 gItemIconPalette_ReturnToFieldArrow[];

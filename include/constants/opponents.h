@@ -542,7 +542,7 @@
 #define TRAINER_MAY_ROUTE_110_TORCHIC       536
 #define TRAINER_MAY_ROUTE_119_TORCHIC       537
 #define TRAINER_ISAAC_1                     538
-#define TRAINER_DAVIS                       539
+#define TRAINER_TAMAS_DAD                   539
 #define TRAINER_MITCHELL                    540
 #define TRAINER_ISAAC_2                     541
 #define TRAINER_ISAAC_3                     542

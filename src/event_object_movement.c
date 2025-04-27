@@ -1048,11 +1048,11 @@ const u8 gWalkSlowMovementActions[] = {
     [DIR_EAST] = MOVEMENT_ACTION_WALK_SLOW_RIGHT,
 };
 const u8 gWalkSlowerMovementActions[] = {
-    MOVEMENT_ACTION_WALK_SLOWER_DOWN,
-    MOVEMENT_ACTION_WALK_SLOWER_DOWN,
-    MOVEMENT_ACTION_WALK_SLOWER_UP,
-    MOVEMENT_ACTION_WALK_SLOWER_LEFT,
-    MOVEMENT_ACTION_WALK_SLOWER_RIGHT,
+    [DIR_NONE] = MOVEMENT_ACTION_WALK_SLOWER_DOWN,
+    [DIR_SOUTH] = MOVEMENT_ACTION_WALK_SLOWER_DOWN,
+    [DIR_NORTH] = MOVEMENT_ACTION_WALK_SLOWER_UP,
+    [DIR_WEST] = MOVEMENT_ACTION_WALK_SLOWER_LEFT,
+    [DIR_EAST] = MOVEMENT_ACTION_WALK_SLOWER_RIGHT,
 };
 const u8 gWalkNormalMovementActions[] = {
     [DIR_NONE] = MOVEMENT_ACTION_WALK_NORMAL_DOWN,
@@ -6850,6 +6850,7 @@ u8 name(u32 idx)\
 dirn_to_anim(GetFaceDirectionMovementAction, gFaceDirectionMovementActions);
 dirn_to_anim(GetWalkSlowStairsMovementAction, gWalkSlowStairsMovementActions);
 dirn_to_anim(GetWalkSlowMovementAction, gWalkSlowMovementActions);
+dirn_to_anim(GetWalkSlowerMovementAction, gWalkSlowerMovementActions);
 dirn_to_anim(GetPlayerRunSlowMovementAction, gRunSlowMovementActions);
 dirn_to_anim(GetWalkNormalMovementAction, gWalkNormalMovementActions);
 dirn_to_anim(GetWalkFastMovementAction, gWalkFastMovementActions);
@@ -10763,13 +10764,12 @@ static bool8 NpcTakeStep(struct Sprite *sprite)
 
 bool8 UpdateWalkSlowerAnim(struct Sprite *sprite)
 {
-    if (!(sprite->sTimer & 1))
+    if (++sprite->sTimer > 9)
     {
+        sprite->sTimer = 0;
         Step1(sprite, sprite->sDirection);
         sprite->sNumSteps++;
     }
-
-    sprite->sTimer++;
 
     if (sprite->sNumSteps > 15)
         return TRUE;
