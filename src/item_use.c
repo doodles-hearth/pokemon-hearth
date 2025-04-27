@@ -1642,8 +1642,8 @@ void ItemUseOutOfBattle_TownMap(u8 taskId)
     }
     else
     {
-        // TODO: handle key items with callbacks to menus allow to be used by registering them.
-        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+        sItemUseOnFieldCB = ItemUseOnFieldCB_TownMap;
+        SetUpItemUseOnFieldCallback(taskId);
     }
 }
 
