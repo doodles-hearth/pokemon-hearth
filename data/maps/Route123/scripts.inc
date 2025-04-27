@@ -145,7 +145,7 @@ Route123_EventScript_Jazmyn::
 	end
 
 Route123_EventScript_Davis::
-	trainerbattle_single TRAINER_DAVIS, Route123_Text_DavisIntro, Route123_Text_DavisDefeat
+	trainerbattle_single TRAINER_DUMMY, Route123_Text_DavisIntro, Route123_Text_DavisDefeat
 	msgbox Route123_Text_DavisPostBattle, MSGBOX_AUTOCLOSE
 	end
 

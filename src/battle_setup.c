@@ -1034,6 +1034,12 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
             SetMapVarsToTrainerA();
         }
         return EventScript_TryDoNormalTrainerBattle;
+    case TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT:
+        if (gApproachingTrainerId == 0)
+        {
+            SetMapVarsToTrainerA();
+        }
+        return EventScript_DoNoIntroTrainerBattle;
     case TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC:
         SetMapVarsToTrainerA();
         return EventScript_TryDoNormalTrainerBattle;

@@ -2101,3 +2101,6 @@ const u32 gItemIconPalette_EnteiStatuette[] = INCBIN_U32("graphics/items/icons/e
 
 const u32 gItemIcon_SlowpokeTail[] = INCBIN_U32("graphics/items/icons/slowpoke_tail.4bpp.lz");
 const u32 gItemIconPalette_SlowpokeTail[] = INCBIN_U32("graphics/items/icons/slowpoke_tail.gbapal.lz");
+
+const u32 gItemIcon_SpecialMedicine[] = INCBIN_U32("graphics/items/icons/special_medicine.4bpp.lz");
+const u32 gItemIconPalette_SpecialMedicine[] = INCBIN_U32("graphics/items/icons/special_medicine.gbapal.lz");

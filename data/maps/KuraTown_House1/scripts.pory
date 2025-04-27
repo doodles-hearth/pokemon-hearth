@@ -1,6 +1,10 @@
+const LOCALID_OLDWOMAN = 1
+
 mapscripts KuraTown_House1_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_KURA_TOWN)
+		if (var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) < 4){}
+		else {setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 5)}
 	}
 }
 
@@ -8,6 +12,39 @@ script KuraTown_House1_OldWoman {
 	lock
 	faceplayer
 	speakername("Old woman")
+	switch(var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE)) {
+		case 2:
+			call(OldWomanQuestScript)
+			break
+		case 3:
+			call(OldWomanQuest2Script)
+			break
+		case 4:
+			msgbox(format("Come back later for the medicine."))
+			waitmessage
+			closemessage
+			break
+		case 5:
+			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6)
+			msgbox(format("It's good to see you! I've finished the medicine. Here, take it to the ailing Pokémon. Once it drinks it, it should feel good as new."))
+			waitmessage
+			closemessage
+			giveitem(ITEM_SPECIAL_MEDICINE, 1)
+			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6)
+			break
+		case 6:
+			msgbox(format("Once the ill Pokémon drinks the medicine I gave you, it should feel right as rain."))
+			waitmessage
+			closemessage
+			break
+		default:
+			call(OldWomanRegularScript)
+			break
+	}
+	release
+}
+
+script(local) OldWomanRegularScript {
 	msgbox(format(
 		"You look like you're tired, young one. Please rest a while."
 	))
@@ -18,7 +55,54 @@ script KuraTown_House1_OldWoman {
 		"I wish you strength on your journey."
 	))
 	closemessage
-	release
+	return
+}
+
+script(local) OldWomanQuestScript {
+	msgbox(format("Hello, dearie. Do you need to rest yourself and your Pokémon?"))
+	mcdialogue("A Pokémon needs your help.")
+	msgbox(format("Oh my. Take me, please. Where is it?"))
+	mcdialogue("It's in the Saku village Refuge.")
+	msgbox(format("Saku village…? Oh dear…\pAs much as I'd like to help, I won't be allowed to go through the gate by the guard."))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_OLDWOMAN, moves(face_away_player, delay_16 * 3, face_player))
+	waitmovement(0)
+	speakername("Old woman")
+	msgbox(format("While I can't go to Saku village myself, I can create an healing elixir here for the Pokémon.\pI only need three: an Oran Berry, a fishcake from Maguro Harbor, and a Revival Powder.\pCan you be a dear and help me?"))
+	waitmessage
+	closemessage
+	mcdialogue("Of course!", "I'll try…", "Sure.")
+	speakername("Old woman")
+	msgbox(format("You're such a wonderful child. I'll wait here until you come back with the necessary ingredients."))
+	waitmessage
+	closemessage
+	setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 3)
+	return
+}
+
+script OldWomanQuest2Script {
+	checkitem(ITEM_FISHCAKE, 1)
+	copyvar(VAR_TEMP_0,VAR_RESULT)
+	checkitem(ITEM_ORAN_BERRY, 1)
+	copyvar(VAR_TEMP_1,VAR_RESULT)
+	checkitem(ITEM_REVIVAL_POWDER, 1)
+	copyvar(VAR_TEMP_2,VAR_RESULT)
+	msgbox(format("Hello, child. Do you have the ingredients I need for the elixir, yet?"))
+	if (var(VAR_TEMP_0) >= 1 && var(VAR_TEMP_1) >= 1 && var(VAR_TEMP_2) >= 1) {
+		applymovement(LOCALID_OLDWOMAN, moves(emote_exclamation_mark, delay_16))
+		playse(SE_PIN)
+		waitmovement(0)
+		msgbox(format("Wonderful! Give me a moment, alright? You can come back later for it."))
+		waitmessage
+		closemessage
+		setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 4)
+	} else {
+		msgbox(format("Well, I'll stay here until you do. Remember, I need an Oran Berry, a Maguro Fishcake, and a Revival Powder."))
+		waitmessage
+		closemessage
+	}
+
 }
 
 script KuraTown_House1_OldWomansSon {

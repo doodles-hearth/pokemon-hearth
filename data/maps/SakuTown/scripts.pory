@@ -3,6 +3,8 @@ const LOCALID_GUARD = 8
 const LOCALID_RIVAL = 10
 const LOCALID_MAMA = 1
 const LOCALID_KUKU = 2
+const LOCALID_TAMA = 20
+const LOCALID_TAMASDAD = 21
 const FLAG_HIDE_NATSUKI = FLAG_TEMP_1
 
 mapscripts SakuTown_MapScripts {
@@ -13,18 +15,26 @@ mapscripts SakuTown_MapScripts {
 			setmetatile(19, 2, METATILE_SakuKura_BoardGame, TRUE)
 			setobjectmovementtype(LOCALID_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
 		}
-		returnqueststate(QUEST_KURALOVERS)
+		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 4) {
+			setflag(FLAG_TEMP_2)
+			setflag(FLAG_TEMP_3)
+			}
+		returnqueststate(QUEST_SAKURALOVERS)
 		copyvar(VAR_TEMP_0, VAR_RESULT)
-		returnqueststate(QUEST_KURAESPEON)
+		returnqueststate(QUEST_SAKURAESPEON)
 		copyvar(VAR_TEMP_1, VAR_RESULT)
-		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1)) {
-			setflag(FLAG_SAKU_FARMERS)
+		returnqueststate(QUEST_SAKURASCYTHER)
+		copyvar(VAR_TEMP_2, VAR_RESULT)
+		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1) == 4 && var(VAR_TEMP_2) == 1 && var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 0) { 
+			setflag(FLAG_HIDE_SAKU_FARMERS)
 			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1)
+		} elif (var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 7) {
+			clearflag(FLAG_HIDE_SAKU_FARMERS)
 		}
 	}
 	MAP_SCRIPT_ON_LOAD {
 		setflag(FLAG_HIDE_NATSUKI)
-    	gettimeofday
+		gettimeofday
 		switch(var(VAR_RESULT)){
 			case TIME_DEAD_NIGHT:
 				setmetatile(35, 31, METATILE_SakuKura_ClosedDoorBottom, TRUE)
@@ -37,8 +47,8 @@ mapscripts SakuTown_MapScripts {
 			case TIME_EVENING:
 			case TIME_NIGHT:
 			default:
-				end
-    	}
+		end
+		}
 	}
 }
 
@@ -120,9 +130,18 @@ script SakuTown_EventScript_Farmer {
 	lock
 	faceplayer
 	speakername("Farmer")
-	msgbox(format(
-		"We're growin' Cheri berries. Saku Village exports its berries to many towns."
-	))
+	returnqueststate(QUEST_SAKURASCYTHER)
+	if(var(VAR_RESULT) == 3){
+		msgbox(format(
+		"Weilder! It's you! I can't thank ya enough for helping us heal our girl.\pI've been doin' a lot of thinkin' too, after you told us the one who helped 'er get better was someone from Kura. That ain't here nor there though. As thanks, ya can have these."
+		))
+		giveitem(ITEM_CHERI_BERRY, 20)
+		completequest(QUEST_SAKURASCYTHER)
+	} else {
+		msgbox(format(
+			"We're growin' Cheri berries. Saku Village exports its berries to many towns."
+		))
+	}
 	release
 }
 
@@ -365,4 +384,127 @@ script SakuTown_EventScript_Cherrim {
 	msgbox(format("Weee!"))
 	waitmoncry
 	release
+}
+
+script SakuTown_EventScript_TamaArgument {
+	lock
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(0)
+	playse(SE_PIN)
+	waitse
+	speakername("???")
+	msgbox(format("NO! I forbid you from going!"))
+	waitmessage
+	closemessage
+	if (var(VAR_TEMP_0) == 1) {
+		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_fast_down * 4))
+	} else {
+		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_fast_down * 3))
+	}
+	waitmovement(0)
+	special(SpawnCameraObject)
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
+	waitmovement(0)
+	speakername("Tama")
+	msgbox(format("The love of my life is waiting for me on the other side! You can't do this to me!"))
+	waitmessage
+	closemessage
+	speakername("Old man")
+	msgbox(format("Over my dead body will my son be in love with someone from Kura Village!"))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_TAMA, moves(emote_exclamation_mark, face_up))
+	applymovement(LOCALID_TAMASDAD, moves(emote_exclamation_mark, face_up))
+	waitmovement(LOCALID_TAMA)
+	waitmovement(LOCALID_TAMASDAD)
+	delay(60)
+	speakername("Tama")
+	msgbox(format("It's you! You need to help me get to Ashii, please!"))
+	waitmessage
+	closemessage
+	playse(MUS_VS_RAYQUAZA)
+	delay(180)
+	speakername("Old Man")
+	msgbox(format("So you're the whippersnapper that's making my son collude with the enemy, eh. Well, you outta be taught a lesson in respect, kiddo!"))
+	waitmessage
+	closemessage
+	playse(MUS_DUMMY)
+	waitse
+	applymovement(LOCALID_TAMASDAD, moves(walk_slower_up))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slower_up))
+	waitmovement(LOCALID_TAMASDAD)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	speakername("Old Man")
+	msgbox(format("{FONT_SMALL_NARROW}huff… wheeze…"))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_TAMASDAD, moves(walk_slower_up))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slower_up, walk_up))
+	waitmovement(LOCALID_TAMASDAD)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	special(RemoveCameraObject)
+	trainerbattle_no_intro_no_whiteout(TRAINER_TAMAS_DAD, "Dangnabit!")
+	speakername("Kiyosumi")
+	msgbox(format("{FONT_SMALL_NARROW}Huff… puff… Definitely not in as good as shape anymore…"))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_TAMA, moves(walk_up * 2, face_right))
+	waitmovement(0)
+	speakername("Tama")
+	msgbox(format("Father, I know you don't approve of us, but please understand. My mind is made up and you can't convince me otherwise.\pWhat would you have done if someone came between you and Mother?"))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_TAMASDAD, moves(face_left))
+	waitmovement(0)
+	speakername("Kiyosumi")
+	msgbox(format("…"))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_TAMASDAD, moves(face_down))
+	waitmovement(0)
+	speakername("Kiyosumi")
+	msgbox(format("If your love is as true as you say, then neither I or anyone else can stop you. Do what you must."))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_TAMASDAD, moves(walk_slow_down * 3, walk_slow_right * 3, walk_slow_down * 4))
+	waitmovement(0)
+	removeobject(LOCALID_TAMASDAD)
+	applymovement(LOCALID_TAMA, moves(walk_up * 1, face_player))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_left))
+	waitmovement(LOCALID_TAMA)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Tama")
+	msgbox(format("I can't thank you enough. Now, let's make haste. Ashii must be waiting for us. Let me heal your Pokémon up as thanks."))
+	waitmessage
+	closemessage
+	special(HealPlayerParty)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5)
+	end
+}
+
+script SakuTown_EventScript_TamaArgument_MoveDown1 {
+	setvar(VAR_TEMP_0, 1)
+	goto(SakuTown_EventScript_TamaArgument)
+}
+
+script SakuTown_EventScript_TamaArgument_MoveDown2 {
+	setvar(VAR_TEMP_0, 2)
+	goto(SakuTown_EventScript_TamaArgument)
+}
+
+script SakuTown_EventScript_TamasAnxious {
+	speakername("Tama")
+	msgbox(format("My heart is about to burst out of my chest…"))
+	waitmessage
+	closemessage
+}
+
+script SakuTown_EventScript_NoLeavingAshii {
+	speakername("Tama")
+	msgbox(format("W-where are you going?! Ashii's waiting for us!"))
+	waitmessage
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
+	waitmovement(0)
+	end
 }

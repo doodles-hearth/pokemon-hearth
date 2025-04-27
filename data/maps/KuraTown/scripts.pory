@@ -1,8 +1,19 @@
 const LOCALID_GUARD = 2
+const LOCALID_ASHII = 16
 
 mapscripts KuraTown_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		returnqueststate(QUEST_SAKURALOVERS)
+		if(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 3 || var(VAR_RESULT) >=3) {
+			setflag(FLAG_HIDE_DEADNIGHT_ASHII)
+		}
+		elif(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 3) {
+			clearflag(FLAG_HIDE_DEADNIGHT_ASHII)
+			}
+	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
 		// VAR_SAKU_KURA_VILLAGES_STATE, 1: KuraTown_EventScript_GuardStopsYou
+		VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3: KuraTown_EventScript_AnxiousAshii
 	]
 	MAP_SCRIPT_ON_LOAD {
 		// Barricading dojo
@@ -240,3 +251,29 @@ script KuraTown_EventScript_GymSign {
 	)
 }
 
+script KuraTown_EventScript_AnxiousAshii {
+	lock
+	applymovement(LOCALID_ASHII, moves(face_player))
+	speakername("Ashii")
+	msgbox(format("My heart is racing… Where is he? I hope he's alright… Can you please help me and check down south?"))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_ASHII, moves(face_original_direction))
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4)
+	end
+}
+
+script KuraTown_EventScript_PreventEscape {
+	lock
+	applymovement(LOCALID_ASHII, moves(face_up))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
+	waitmovement(LOCALID_ASHII)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	speakername("Ashii")
+	msgbox(format("Where on earth are you going, {PLAYER}?!\p{FONT_SMALL_NARROW}Please don't leave me here alone…"))
+	waitmessage
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down * 2))
+	waitmovement(0)
+	end
+}

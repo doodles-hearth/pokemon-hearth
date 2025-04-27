@@ -7,12 +7,20 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	call Common_EventScript_SetupRivalGfxId
 	goto_if_set FLAG_SAKU_KURA_REUNITED, SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	returnqueststate QUEST_KURALOVERS
-	copyvar VAR_TEMP_0, VAR_RESULT
-	returnqueststate QUEST_KURAESPEON
-	copyvar VAR_TEMP_1, VAR_RESULT
-	compare VAR_TEMP_0, 4
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
 	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	returnqueststate QUEST_SAKURALOVERS
+	copyvar VAR_TEMP_0, VAR_RESULT
+	returnqueststate QUEST_SAKURAESPEON
+	copyvar VAR_TEMP_1, VAR_RESULT
+	returnqueststate QUEST_SAKURASCYTHER
+	copyvar VAR_TEMP_2, VAR_RESULT
+	compare VAR_TEMP_0, 4
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_11
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
+	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 7
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
@@ -20,15 +28,34 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	setobjectmovementtype 8, MOVEMENT_TYPE_FACE_RIGHT
 	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
-	setflag FLAG_SAKU_FARMERS
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
+	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_3
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
+	setflag FLAG_HIDE_SAKU_FARMERS
 	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1
 	return
 
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
-	compare VAR_TEMP_1, 0
-	goto_if_ne SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
+	clearflag FLAG_HIDE_SAKU_FARMERS
 	return
+
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_10:
+	compare VAR_TEMP_2, 1
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_14
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
+
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_11:
+	compare VAR_TEMP_1, 4
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_10
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
+
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_14:
+	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 0
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	setflag FLAG_TEMP_1
@@ -112,9 +139,19 @@ SakuTown_EventScript_Farmer::
 	lock
 	faceplayer
 	speakername SakuTown_EventScript_Farmer_Text_0
-	msgbox SakuTown_EventScript_Farmer_Text_1
+	returnqueststate QUEST_SAKURASCYTHER
+	compare VAR_RESULT, 3
+	goto_if_eq SakuTown_EventScript_Farmer_2
+	msgbox SakuTown_EventScript_Farmer_Text_2
+SakuTown_EventScript_Farmer_1:
 	release
 	return
+
+SakuTown_EventScript_Farmer_2:
+	msgbox SakuTown_EventScript_Farmer_Text_1
+	giveitem ITEM_CHERI_BERRY, 20
+	completequest QUEST_SAKURASCYTHER
+	goto SakuTown_EventScript_Farmer_1
 
 
 SakuTown_EventScript_Farmer2::
@@ -352,6 +389,135 @@ SakuTown_EventScript_Cherrim::
 	return
 
 
+SakuTown_EventScript_TamaArgument::
+	lock
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_0
+	waitmovement 0
+	playse SE_PIN
+	waitse
+	speakername SakuTown_EventScript_RivalAtSakuWall_Text_0
+	msgbox SakuTown_EventScript_TamaArgument_Text_0
+	waitmessage
+	closemessage
+	compare VAR_TEMP_0, 1
+	goto_if_eq SakuTown_EventScript_TamaArgument_2
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_2
+SakuTown_EventScript_TamaArgument_1:
+	waitmovement 0
+	special SpawnCameraObject
+	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_3
+	waitmovement 0
+	speakername SakuTown_EventScript_TamaArgument_Text_1
+	msgbox SakuTown_EventScript_TamaArgument_Text_2
+	waitmessage
+	closemessage
+	speakername SakuTown_EventScript_TamaArgument_Text_3
+	msgbox SakuTown_EventScript_TamaArgument_Text_4
+	waitmessage
+	closemessage
+	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_4
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_4
+	waitmovement 20
+	waitmovement 21
+	delay 60
+	speakername SakuTown_EventScript_TamaArgument_Text_1
+	msgbox SakuTown_EventScript_TamaArgument_Text_5
+	waitmessage
+	closemessage
+	playse MUS_VS_RAYQUAZA
+	delay 180
+	speakername SakuTown_EventScript_TamaArgument_Text_6
+	msgbox SakuTown_EventScript_TamaArgument_Text_7
+	waitmessage
+	closemessage
+	playse MUS_DUMMY
+	waitse
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_5
+	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_5
+	waitmovement 21
+	waitmovement OBJ_EVENT_ID_CAMERA
+	speakername SakuTown_EventScript_TamaArgument_Text_6
+	msgbox SakuTown_EventScript_TamaArgument_Text_8
+	waitmessage
+	closemessage
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_5
+	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_6
+	waitmovement 21
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	trainerbattle_no_intro_no_whiteout TRAINER_TAMAS_DAD, SakuTown_EventScript_TamaArgument_Text_9
+	speakername SakuTown_EventScript_TamaArgument_Text_10
+	msgbox SakuTown_EventScript_TamaArgument_Text_11
+	waitmessage
+	closemessage
+	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_7
+	waitmovement 0
+	speakername SakuTown_EventScript_TamaArgument_Text_1
+	msgbox SakuTown_EventScript_TamaArgument_Text_12
+	waitmessage
+	closemessage
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_8
+	waitmovement 0
+	speakername SakuTown_EventScript_TamaArgument_Text_10
+	msgbox SakuTown_EventScript_TamaArgument_Text_13
+	waitmessage
+	closemessage
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_9
+	waitmovement 0
+	speakername SakuTown_EventScript_TamaArgument_Text_10
+	msgbox SakuTown_EventScript_TamaArgument_Text_14
+	waitmessage
+	closemessage
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_10
+	waitmovement 0
+	removeobject 21
+	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_11
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_8
+	waitmovement 20
+	waitmovement OBJ_EVENT_ID_PLAYER
+	speakername SakuTown_EventScript_TamaArgument_Text_1
+	msgbox SakuTown_EventScript_TamaArgument_Text_15
+	waitmessage
+	closemessage
+	special HealPlayerParty
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5
+	end
+
+SakuTown_EventScript_TamaArgument_2:
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_1
+	goto SakuTown_EventScript_TamaArgument_1
+
+
+SakuTown_EventScript_TamaArgument_MoveDown1::
+	setvar VAR_TEMP_0, 1
+	goto SakuTown_EventScript_TamaArgument
+	return
+
+
+SakuTown_EventScript_TamaArgument_MoveDown2::
+	setvar VAR_TEMP_0, 2
+	goto SakuTown_EventScript_TamaArgument
+	return
+
+
+SakuTown_EventScript_TamasAnxious::
+	speakername SakuTown_EventScript_TamaArgument_Text_1
+	msgbox SakuTown_EventScript_TamasAnxious_Text_0
+	waitmessage
+	closemessage
+	return
+
+
+SakuTown_EventScript_NoLeavingAshii::
+	speakername SakuTown_EventScript_TamaArgument_Text_1
+	msgbox SakuTown_EventScript_NoLeavingAshii_Text_0
+	waitmessage
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_NoLeavingAshii_Movement_0
+	waitmovement 0
+	end
+
+
 SakuTown_EventScript_RivalAtSakuWall_Movement_0:
 	walk_up
 	walk_up
@@ -385,6 +551,79 @@ SakuTown_EventScript_Karateka_Movement_0:
 
 SakuTown_EventScript_Karateka_Movement_1:
 	jump_in_place_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_0:
+	emote_exclamation_mark
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_1:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_2:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_3:
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_4:
+	emote_exclamation_mark
+	face_up
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_5:
+	walk_slower_up
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_6:
+	walk_slower_up
+	walk_up
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_7:
+	walk_up
+	walk_up
+	face_right
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_8:
+	face_left
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_9:
+	face_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_10:
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_11:
+	walk_up
+	face_player
+	step_end
+
+SakuTown_EventScript_NoLeavingAshii_Movement_0:
+	walk_up
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Text_0:
@@ -434,6 +673,15 @@ SakuTown_EventScript_Farmer_Text_0:
 	.string "Farmer$"
 
 SakuTown_EventScript_Farmer_Text_1:
+	.string "Weilder! It's you! I can't thank ya\n"
+	.string "enough for helping us heal our girl.\p"
+	.string "I've been doin' a lot of thinkin' too,\n"
+	.string "after you told us the one who helped\l"
+	.string "'er get better was someone from Kura.\l"
+	.string "That ain't here nor there though. As\l"
+	.string "thanks, ya can have these.$"
+
+SakuTown_EventScript_Farmer_Text_2:
 	.string "We're growin' Cheri berries. Saku\n"
 	.string "Village exports its berries to many\l"
 	.string "towns.$"
@@ -543,6 +791,80 @@ SakuTown_EventScript_MonHues_Text_0:
 
 SakuTown_EventScript_Cherrim_Text_0:
 	.string "Weee!$"
+
+SakuTown_EventScript_TamaArgument_Text_0:
+	.string "NO! I forbid you from going!$"
+
+SakuTown_EventScript_TamaArgument_Text_1:
+	.string "Tama$"
+
+SakuTown_EventScript_TamaArgument_Text_2:
+	.string "The love of my life is waiting for me\n"
+	.string "on the other side! You can't do this\l"
+	.string "to me!$"
+
+SakuTown_EventScript_TamaArgument_Text_3:
+	.string "Old man$"
+
+SakuTown_EventScript_TamaArgument_Text_4:
+	.string "Over my dead body will my son be in\n"
+	.string "love with someone from Kura Village!$"
+
+SakuTown_EventScript_TamaArgument_Text_5:
+	.string "It's you! You need to help me get to\n"
+	.string "Ashii, please!$"
+
+SakuTown_EventScript_TamaArgument_Text_6:
+	.string "Old Man$"
+
+SakuTown_EventScript_TamaArgument_Text_7:
+	.string "So you're the whippersnapper that's\n"
+	.string "making my son collude with the enemy,\l"
+	.string "eh. Well, you outta be taught a lesson\l"
+	.string "in respect, kiddo!$"
+
+SakuTown_EventScript_TamaArgument_Text_8:
+	.string "{FONT_SMALL_NARROW}huff… wheeze…$"
+
+SakuTown_EventScript_TamaArgument_Text_9:
+	.string "Dangnabit!$"
+
+SakuTown_EventScript_TamaArgument_Text_10:
+	.string "Kiyosumi$"
+
+SakuTown_EventScript_TamaArgument_Text_11:
+	.string "{FONT_SMALL_NARROW}Huff… puff… Definitely not in as good\n"
+	.string "as shape anymore…$"
+
+SakuTown_EventScript_TamaArgument_Text_12:
+	.string "Father, I know you don't approve of\n"
+	.string "us, but please understand. My mind is\l"
+	.string "made up and you can't convince me\l"
+	.string "otherwise.\p"
+	.string "What would you have done if someone\n"
+	.string "came between you and Mother?$"
+
+SakuTown_EventScript_TamaArgument_Text_13:
+	.string "…$"
+
+SakuTown_EventScript_TamaArgument_Text_14:
+	.string "If your love is as true as you say,\n"
+	.string "then neither I or anyone else can\l"
+	.string "stop you. Do what you must.$"
+
+SakuTown_EventScript_TamaArgument_Text_15:
+	.string "I can't thank you enough. Now, let's\n"
+	.string "make haste. Ashii must be waiting for\l"
+	.string "us. Let me heal your Pokémon up as\l"
+	.string "thanks.$"
+
+SakuTown_EventScript_TamasAnxious_Text_0:
+	.string "My heart is about to burst out of my\n"
+	.string "chest…$"
+
+SakuTown_EventScript_NoLeavingAshii_Text_0:
+	.string "W-where are you going?! Ashii's\n"
+	.string "waiting for us!$"
 
 SakuTown_Text_RivalDefeat::
 	.string "Oh, wow!$"
