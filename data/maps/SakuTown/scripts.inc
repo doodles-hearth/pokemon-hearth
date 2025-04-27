@@ -471,8 +471,16 @@ SakuTown_EventScript_TamaArgument_1:
 	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_10
 	waitmovement 0
 	removeobject 21
-	setflag 21
+	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_11
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_8
+	waitmovement 20
+	waitmovement OBJ_EVENT_ID_PLAYER
+	speakername SakuTown_EventScript_TamaArgument_Text_1
+	msgbox SakuTown_EventScript_TamaArgument_Text_15
+	waitmessage
+	closemessage
 	special HealPlayerParty
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5
 	end
 
 SakuTown_EventScript_TamaArgument_2:
@@ -489,6 +497,14 @@ SakuTown_EventScript_TamaArgument_MoveDown1::
 SakuTown_EventScript_TamaArgument_MoveDown2::
 	setvar VAR_TEMP_0, 2
 	goto SakuTown_EventScript_TamaArgument
+	return
+
+
+SakuTown_EventScript_TamasAnxious::
+	speakername SakuTown_EventScript_TamaArgument_Text_1
+	msgbox SakuTown_EventScript_TamasAnxious_Text_0
+	waitmessage
+	closemessage
 	return
 
 
@@ -567,7 +583,6 @@ SakuTown_EventScript_TamaArgument_Movement_6:
 SakuTown_EventScript_TamaArgument_Movement_7:
 	walk_up
 	walk_up
-	delay_16
 	face_right
 	step_end
 
@@ -590,6 +605,11 @@ SakuTown_EventScript_TamaArgument_Movement_10:
 	walk_slow_down
 	walk_slow_down
 	walk_slow_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_11:
+	walk_up
+	face_player
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Text_0:
@@ -817,6 +837,16 @@ SakuTown_EventScript_TamaArgument_Text_14:
 	.string "If your love is as true as you say,\n"
 	.string "then neither I or anyone else can\l"
 	.string "stop you. Do what you must.$"
+
+SakuTown_EventScript_TamaArgument_Text_15:
+	.string "I can't thank you enough. Now, let's\n"
+	.string "make haste. Ashii must be waiting for\l"
+	.string "us. Let me heal your Pokémon up as\l"
+	.string "thanks.$"
+
+SakuTown_EventScript_TamasAnxious_Text_0:
+	.string "My heart is about to burst out of my\n"
+	.string "chest…$"
 
 SakuTown_Text_RivalDefeat::
 	.string "Oh, wow!$"

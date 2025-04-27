@@ -469,9 +469,14 @@ script SakuTown_EventScript_TamaArgument {
 	applymovement(LOCALID_TAMASDAD, moves(walk_slow_down * 3, walk_slow_right * 3, walk_slow_down * 4))
 	waitmovement(0)
 	removeobject(LOCALID_TAMASDAD)
-	applymovement(LOCALID_TAMA, moves(walk_up * 2, face_player))
+	applymovement(LOCALID_TAMA, moves(walk_up * 1, face_player))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_left))
+	waitmovement(LOCALID_TAMA)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
 	speakername("Tama")
 	msgbox(format("I can't thank you enough. Now, let's make haste. Ashii must be waiting for us. Let me heal your Pokémon up as thanks."))
+	waitmessage
+	closemessage
 	special(HealPlayerParty)
 	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5)
 	end
