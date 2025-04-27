@@ -394,14 +394,18 @@ SakuTown_EventScript_TamaArgument::
 	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_0
 	waitmovement 0
 	playse SE_PIN
+	waitse
 	speakername SakuTown_EventScript_RivalAtSakuWall_Text_0
 	msgbox SakuTown_EventScript_TamaArgument_Text_0
 	waitmessage
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_1
+	compare VAR_TEMP_0, 1
+	goto_if_eq SakuTown_EventScript_TamaArgument_2
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_2
+SakuTown_EventScript_TamaArgument_1:
 	waitmovement 0
 	special SpawnCameraObject
-	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_2
+	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_3
 	waitmovement 0
 	speakername SakuTown_EventScript_TamaArgument_Text_1
 	msgbox SakuTown_EventScript_TamaArgument_Text_2
@@ -411,10 +415,11 @@ SakuTown_EventScript_TamaArgument::
 	msgbox SakuTown_EventScript_TamaArgument_Text_4
 	waitmessage
 	closemessage
-	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_3
-	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_3
+	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_4
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_4
 	waitmovement 20
 	waitmovement 21
+	delay 60
 	speakername SakuTown_EventScript_TamaArgument_Text_1
 	msgbox SakuTown_EventScript_TamaArgument_Text_5
 	waitmessage
@@ -427,9 +432,63 @@ SakuTown_EventScript_TamaArgument::
 	closemessage
 	playse MUS_DUMMY
 	waitse
-	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_4
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_5
+	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_5
+	waitmovement 21
+	waitmovement OBJ_EVENT_ID_CAMERA
+	speakername SakuTown_EventScript_TamaArgument_Text_6
+	msgbox SakuTown_EventScript_TamaArgument_Text_8
+	waitmessage
+	closemessage
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_5
+	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_6
+	waitmovement 21
+	waitmovement OBJ_EVENT_ID_CAMERA
+	special RemoveCameraObject
+	trainerbattle_no_intro_no_whiteout TRAINER_TAMAS_DAD, SakuTown_EventScript_TamaArgument_Text_9
+	speakername SakuTown_EventScript_TamaArgument_Text_10
+	msgbox SakuTown_EventScript_TamaArgument_Text_11
+	waitmessage
+	closemessage
+	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_7
 	waitmovement 0
-	trainerbattle_no_intro TRAINER_TAMAS_DAD, SakuTown_EventScript_TamaArgument_Text_8
+	speakername SakuTown_EventScript_TamaArgument_Text_1
+	msgbox SakuTown_EventScript_TamaArgument_Text_12
+	waitmessage
+	closemessage
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_8
+	waitmovement 0
+	speakername SakuTown_EventScript_TamaArgument_Text_10
+	msgbox SakuTown_EventScript_TamaArgument_Text_13
+	waitmessage
+	closemessage
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_9
+	waitmovement 0
+	speakername SakuTown_EventScript_TamaArgument_Text_10
+	msgbox SakuTown_EventScript_TamaArgument_Text_14
+	waitmessage
+	closemessage
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_10
+	waitmovement 0
+	removeobject 21
+	setflag 21
+	special HealPlayerParty
+	end
+
+SakuTown_EventScript_TamaArgument_2:
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_1
+	goto SakuTown_EventScript_TamaArgument_1
+
+
+SakuTown_EventScript_TamaArgument_MoveDown1::
+	setvar VAR_TEMP_0, 1
+	goto SakuTown_EventScript_TamaArgument
+	return
+
+
+SakuTown_EventScript_TamaArgument_MoveDown2::
+	setvar VAR_TEMP_0, 2
+	goto SakuTown_EventScript_TamaArgument
 	return
 
 
@@ -480,19 +539,57 @@ SakuTown_EventScript_TamaArgument_Movement_1:
 	step_end
 
 SakuTown_EventScript_TamaArgument_Movement_2:
+	walk_fast_down
+	walk_fast_down
+	walk_fast_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_3:
 	walk_down
 	walk_down
 	walk_down
 	step_end
 
-SakuTown_EventScript_TamaArgument_Movement_3:
+SakuTown_EventScript_TamaArgument_Movement_4:
 	emote_exclamation_mark
 	face_up
 	step_end
 
-SakuTown_EventScript_TamaArgument_Movement_4:
+SakuTown_EventScript_TamaArgument_Movement_5:
 	walk_slower_up
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_6:
 	walk_slower_up
+	walk_up
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_7:
+	walk_up
+	walk_up
+	delay_16
+	face_right
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_8:
+	face_left
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_9:
+	face_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_10:
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
+	walk_slow_down
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Text_0:
@@ -676,8 +773,8 @@ SakuTown_EventScript_TamaArgument_Text_3:
 	.string "Old man$"
 
 SakuTown_EventScript_TamaArgument_Text_4:
-	.string "Over my dad body will my son be in love\n"
-	.string "with someone from Kura Village!$"
+	.string "Over my dead body will my son be in\n"
+	.string "love with someone from Kura Village!$"
 
 SakuTown_EventScript_TamaArgument_Text_5:
 	.string "It's you! You need to help me get to\n"
@@ -689,11 +786,37 @@ SakuTown_EventScript_TamaArgument_Text_6:
 SakuTown_EventScript_TamaArgument_Text_7:
 	.string "So you're the whippersnapper that's\n"
 	.string "making my son collude with the enemy,\l"
-	.string "eh. Well, you need to thought a lesson\l"
+	.string "eh. Well, you outta be taught a lesson\l"
 	.string "in respect, kiddo!$"
 
 SakuTown_EventScript_TamaArgument_Text_8:
+	.string "{FONT_SMALL_NARROW}huff… wheeze…$"
+
+SakuTown_EventScript_TamaArgument_Text_9:
 	.string "Dangnabit!$"
+
+SakuTown_EventScript_TamaArgument_Text_10:
+	.string "Kiyosumi$"
+
+SakuTown_EventScript_TamaArgument_Text_11:
+	.string "{FONT_SMALL_NARROW}Huff… puff… Definitely not in as good\n"
+	.string "as shape anymore…$"
+
+SakuTown_EventScript_TamaArgument_Text_12:
+	.string "Father, I know you don't approve of\n"
+	.string "us, but please understand. My mind is\l"
+	.string "made up and you can't convince me\l"
+	.string "otherwise.\p"
+	.string "What would you have done if someone\n"
+	.string "came between you and Mother?$"
+
+SakuTown_EventScript_TamaArgument_Text_13:
+	.string "…$"
+
+SakuTown_EventScript_TamaArgument_Text_14:
+	.string "If your love is as true as you say,\n"
+	.string "then neither I or anyone else can\l"
+	.string "stop you. Do what you must.$"
 
 SakuTown_Text_RivalDefeat::
 	.string "Oh, wow!$"

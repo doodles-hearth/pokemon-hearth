@@ -10152,7 +10152,7 @@ Level: 11
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TAMAS_DAD ===
-Name: DAVIS
+Name: Kiyosumi
 Class: Expert
 Pic: Expert M
 Gender: Male
@@ -10162,8 +10162,10 @@ AI: Basic Trainer
 Pinsir
 Level: 15
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Fury Cutter
+- Revenge
+- Vital Throw
 - Rock Smash
+- Vise Grip
 
 === TRAINER_MITCHELL ===
 Name: MITCHELL

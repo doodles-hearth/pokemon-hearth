@@ -420,8 +420,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "SakuTown_EventScript_TamasAnxious",
+      "flag": "FLAG_HIDE_DEADNIGHT_TAMA"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
@@ -434,7 +434,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "0"
+      "flag": "FLAG_HIDE_TAMASDAD"
     }
   ],
   "warp_events": [
@@ -532,7 +532,7 @@
       "elevation": 0,
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
       "var_value": "4",
-      "script": "SakuTown_EventScript_TamaArgument"
+      "script": "SakuTown_EventScript_TamaArgument_MoveDown1"
     },
     {
       "type": "trigger",
@@ -541,7 +541,7 @@
       "elevation": 0,
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
       "var_value": "4",
-      "script": "SakuTown_EventScript_TamaArgument"
+      "script": "SakuTown_EventScript_TamaArgument_MoveDown2"
     }
   ],
   "bg_events": [
