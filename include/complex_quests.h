@@ -37,42 +37,20 @@
 #include "event_object_movement.h"
 #include "pokemon_icon.h"
 
-//////////////////////////////////////////////
-/////////////BEGIN STRING EXTERNS/////////////
-
-//Descriptions
-// Hearth Main Campaign
-extern const u8 gText_MainCampaignDesc_1[];
-extern const u8 gText_MainCampaignDesc_2[];
-extern const u8 gText_MainCampaignDesc_3[];
-
-extern const u8 *const gTable_MainCampaignDescs[];
-
-//Maps
-//Hearth Main Campaign
-extern const u8 gText_MainCampaignMap_1[];
-extern const u8 gText_MainCampaignMap_2[];
-extern const u8 gText_MainCampaignMap_3[];
-
-extern const u8 *const gTable_MainCampaignMaps[];
-
-//////////////END STRING EXTERNS//////////////
-//////////////////////////////////////////////
-
 ////////////////////////////////////////
 ///////////BEGIN QUEST ARRAYS///////////
 
 //Main Campaign Arrays
 const u8 *const gTable_MainCampaignDescs[3] = {
-    gText_MainCampaignDesc_1,
-    gText_MainCampaignDesc_2,
-    gText_MainCampaignDesc_3,
+    COMPOUND_STRING("Go see Elder Kaba and become\n a Pokémon wielder!"),
+    COMPOUND_STRING("Deliver Elder Kaba's letter to\n Elder Iwa in Silveridge!"),
+    COMPOUND_STRING("Filler desc"),
 };
 
 const u8 *const gTable_MainCampaignMaps[3] = {
-    gText_MainCampaignMap_1,
-    gText_MainCampaignMap_2,
-    gText_MainCampaignMap_3,
+    COMPOUND_STRING("Elder Kaba's House"),
+    COMPOUND_STRING("Silveridge"),
+    COMPOUND_STRING("Uume Forest"),
 };
 
 static const u16 MainCampaignSprites[3]={

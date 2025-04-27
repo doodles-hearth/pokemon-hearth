@@ -544,7 +544,7 @@ YifuCity_Trigger_Lockdown_5:
 	special GetPlayerSirMissString
 	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_1
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Trigger_Lockdown_Text_2, YifuCity_Trigger_Lockdown_Text_3
+	mcdialogue YifuCity_Trigger_Lockdown_Text_2, YifuCity_Trigger_Lockdown_Text_3
 	closemessage
 	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_4

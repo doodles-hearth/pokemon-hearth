@@ -109,7 +109,7 @@ YifuCity_CrobatShop_Guard_5:
 	goto YifuCity_CrobatShop_Guard_4
 
 YifuCity_CrobatShop_Guard_9:
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_CrobatShop_Guard_Text_3, YifuCity_CrobatShop_Guard_Text_4, YifuCity_CrobatShop_Guard_Text_5
+	mcdialogue YifuCity_CrobatShop_Guard_Text_3, YifuCity_CrobatShop_Guard_Text_4, YifuCity_CrobatShop_Guard_Text_5
 	closemessage
 	delay 24
 	speakername YifuCity_CrobatShop_Guard_Text_0

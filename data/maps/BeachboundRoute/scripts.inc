@@ -292,7 +292,7 @@ BeachboundRoute_EventScript_Mugging_2:
 	waitmovement 18
 	waitmovement 21
 	waitmovement 20
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, BeachboundRoute_EventScript_Mugging_Text_4, BeachboundRoute_EventScript_Mugging_Text_5, BeachboundRoute_EventScript_Mugging_Text_6
+	mcdialogue BeachboundRoute_EventScript_Mugging_Text_4, BeachboundRoute_EventScript_Mugging_Text_5, BeachboundRoute_EventScript_Mugging_Text_6
 	closemessage
 	speakername BeachboundRoute_EventScript_Mugging_Text_0
 	switch VAR_RESULT

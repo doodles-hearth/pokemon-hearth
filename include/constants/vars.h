@@ -245,19 +245,9 @@
 /*
     // 0: Quest hasn't started
     // 1: Received Ashii's scarf
+    // 2: Gave Scarf to Tama
 */
-#define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE                       0x409D
-#define VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE      0x409E
-#define VAR_MOSSDEEP_SPACE_CENTER_STATE                  0x409F
-#define VAR_SLATEPORT_HARBOR_STATE                       0x40A0
-/*
-    VAR_SAKU_KURA_VILLAGES_STATEs
-    // 0: The two villages hate each other
-    // 1: Player has been spotted by the Saku guard
-    // 2: Player has been spotted by the Kura guard
-    // 3: Player has come back from Kura and has been stopped by Saku guard again
-*/
-#define VAR_SAKU_KURA_VILLAGES_STATE                     0x40A1
+#define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE             0x409D
 /*
     VAR_SAKU_KURA_QUEST_ESPEON_STATEs
     // 0: Quest hasn't started
@@ -267,7 +257,22 @@
     // 4: Told lady that Espeon's master was looking for it -> Espeon goes home
     // 5: Talked to Espeon's master once are reunited
 */
-#define VAR_SAKU_KURA_QUEST_ESPEON_STATE                 0x40A8
+#define VAR_SAKU_KURA_QUEST_ESPEON_STATE                 0x409E
+/*
+    VAR_SAKU_KURA_QUEST_SCYTHER_STATEs
+    // 0: Quest hasn't started
+    // 1: Farmer has asked player for help
+*/
+#define VAR_SAKU_KURA_QUEST_SCYTHER_STATE                0x409F
+/*
+    VAR_SAKU_KURA_VILLAGES_STATEs
+    // 0: The two villages hate each other
+    // 1: Player has been spotted by the Saku guard
+    // 2: Player has been spotted by the Kura guard
+    // 3: Player has come back from Kura and has been stopped by Saku guard again
+*/
+#define VAR_SAKU_KURA_VILLAGES_STATE                     0x40A0
+#define VAR_MOSSDEEP_SPACE_CENTER_STATE                  0x40A1
 #define VAR_SEAFLOOR_CAVERN_STATE                        0x40A2
 #define VAR_CABLE_CAR_STATION_STATE                      0x40A3
 #define VAR_SAFARI_ZONE_STATE                            0x40A4  // 0: In or out of SZ, 1: Player exiting SZ, 2: Player entering SZ

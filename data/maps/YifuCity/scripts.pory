@@ -696,13 +696,7 @@ script YifuCity_Trigger_Lockdown {
 			"I'm sorry, {STR_VAR_1}, all exits are temporarily blocked. You are asked to remain inside the city until further notice."
 		))
 
-		dynmultichoice(
-			0,
-			0,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
+		mcdialogue(
 			"Why?",
 			"What's happening?"
 		)
