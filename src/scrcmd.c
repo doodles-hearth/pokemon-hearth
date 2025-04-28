@@ -906,12 +906,6 @@ bool8 ScrCmd_dotimebasedevents(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_gettimeofday(struct ScriptContext *ctx)
-{
-    gSpecialVar_Result = GetTimeOfDay();
-    return FALSE;
-}
-
 bool8 ScrCmd_gettime(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
@@ -951,6 +945,12 @@ bool8 ScrCmd_getweekday(struct ScriptContext *ctx)
         break;
     } 
     MgbaPrintf(MGBA_LOG_WARN, "%u", VarGet(gSpecialVar_Result));
+    return FALSE;
+}
+
+bool8 ScrCmd_gettimeofday(struct ScriptContext *ctx)
+{
+    gSpecialVar_0x8000 = GetTimeOfDay();
     return FALSE;
 }
 

@@ -264,12 +264,12 @@
 #define MOVEMENT_ACTION_WALK_SLOWER_RIGHT               0xAE
 
 #define MOVEMENT_ACTION_ZUBATS_ALIGN                    0xAF
-#define MOVEMENT_ACTION_CROBAT_CAPE                     0xBB
+#define MOVEMENT_ACTION_CROBAT_CAPE                     0xB0
 
-#define MOVEMENT_ACTION_SURF_STILL_DOWN                 0xFA
-#define MOVEMENT_ACTION_SURF_STILL_UP                   0xFB
-#define MOVEMENT_ACTION_SURF_STILL_LEFT                 0xFC
-#define MOVEMENT_ACTION_SURF_STILL_RIGHT                0xFD
+#define MOVEMENT_ACTION_SURF_STILL_DOWN                 0xB1
+#define MOVEMENT_ACTION_SURF_STILL_UP                   0xB2
+#define MOVEMENT_ACTION_SURF_STILL_LEFT                 0xB3
+#define MOVEMENT_ACTION_SURF_STILL_RIGHT                0xB4
 
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF

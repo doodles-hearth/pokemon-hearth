@@ -17,7 +17,7 @@ BeachboundRoute_EventScript_RunningGirl::
 BeachboundRoute_EventScript_AnnoyedGirl::
 	gettimeofday
 	speakername BeachboundRoute_EventScript_AnnoyedGirl_Text_0
-	compare VAR_RESULT, TIME_EVENING
+	compare VAR_0x8000, TIME_EVENING
 	goto_if_eq BeachboundRoute_EventScript_AnnoyedGirl_1
 	msgbox BeachboundRoute_EventScript_AnnoyedGirl_Text_2, MSGBOX_NPC
 	return

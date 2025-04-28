@@ -309,5 +309,7 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_BONSAI_SHOP_OWNER
 	setflag FLAG_HIDE_LOCKDOWN_SAMURAI
 
+	setflag FLAG_SYS_B_DASH
+
 	call EventScript_ResetAllBerries
 	end

@@ -9,7 +9,7 @@ Silveridge_MapScripts_MAP_SCRIPT_ON_LOAD:
 
 Silveridge_DrawMetatiles::
 	gettimeofday
-	switch VAR_RESULT
+	switch VAR_0x8000
 	case TIME_DEAD_NIGHT, Silveridge_DrawMetatiles_2
 	case TIME_EARLY_MORNING, Silveridge_DrawMetatiles_3
 	case TIME_MORNING, Silveridge_DrawMetatiles_3

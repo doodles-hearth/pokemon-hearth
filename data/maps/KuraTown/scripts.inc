@@ -26,7 +26,7 @@ KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	goto_if_set FLAG_KURA_DOJO_CLOSED, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_2
 KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_1:
 	gettimeofday
-	switch VAR_RESULT
+	switch VAR_0x8000
 	case TIME_DEAD_NIGHT, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_5
 	case TIME_EARLY_MORNING, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_6
 	case TIME_MORNING, KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_6

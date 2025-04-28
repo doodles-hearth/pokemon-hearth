@@ -6,7 +6,7 @@ mapscripts Silveridge_MapScripts {
 
 script Silveridge_DrawMetatiles{
     gettimeofday
-	switch(var(VAR_RESULT)){
+	switch(var(VAR_0x8000)){
         case TIME_DEAD_NIGHT:
             setmetatile(12, 10, METATILE_Silveridge_SilveridgeDoor, TRUE)
 			setmetatile(18, 18, METATILE_Silveridge_SilveridgeDoor, TRUE)

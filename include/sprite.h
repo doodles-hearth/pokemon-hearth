@@ -41,12 +41,6 @@ struct SpritePalette
     u16 tag;
 };
 
-struct CompressedSpritePalette
-{
-    const u32 *data;  // LZ77 compressed palette data
-    u16 tag;
-};
-
 struct AnimFrameCmd
 {
     // If the sprite has an array of images, this is the array index.
@@ -318,6 +312,7 @@ void RequestSpriteSheetCopy(const struct SpriteSheet *sheet);
 u16 LoadSpriteSheetDeferred(const struct SpriteSheet *sheet);
 void FreeAllSpritePalettes(void);
 u32 LoadSpritePalette(const struct SpritePalette *palette);
+u32 LoadSpritePaletteWithTag(const u16 *pal, u16 tag);
 u8 LoadSpritePaletteInSlot(const struct SpritePalette *palette, u8 paletteNum);
 void LoadSpritePalettes(const struct SpritePalette *palettes);
 u32 AllocSpritePalette(u16 tag);
@@ -335,6 +330,6 @@ void ResetAffineAnimData(void);
 u32 GetSpanPerImage(u32 shape, u32 size);
 void RequestSpriteFrameImageCopy(u16 index, u16 tileNum, const struct SpriteFrameImage *images);
 void SetSpriteOamFlipBits(struct Sprite *sprite, u8 hFlip, u8 vFlip);
-u8 LoadUniqueSpritePalette(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny);
+u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny);
 
 #endif //GUARD_SPRITE_H

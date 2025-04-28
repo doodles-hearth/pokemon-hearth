@@ -748,13 +748,6 @@ void Task_DoDoorWarp(u8 taskId)
     case DOORWARP_START_WALK_UP:
         if (task->tDoorTask < 0 || gTasks[task->tDoorTask].isActive != TRUE)
         {
-            // u8 objEventId;
-            // objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
-            // ObjectEventClearHeldMovementIfActive(&gObjectEvents[objEventId]);
-            // objEventId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
-            // // TODO EVA: Shrink the player here
-            // ObjectEventSetHeldMovement(&gObjectEvents[objEventId], MOVEMENT_ACTION_WALK_NORMAL_UP);
-            // task->tState = 2;
             ObjectEventClearHeldMovementIfActive(&gObjectEvents[playerObjId]);
             ObjectEventSetHeldMovement(&gObjectEvents[playerObjId], MOVEMENT_ACTION_WALK_NORMAL_UP);
 

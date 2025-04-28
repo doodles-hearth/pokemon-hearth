@@ -83,7 +83,7 @@ AshiiScript3:
 	faceplayer
 	gettimeofday
 	speakername AshiiScript1_Text_4
-	compare VAR_RESULT, TIME_DEAD_NIGHT
+	compare VAR_0x8000, TIME_DEAD_NIGHT
 	goto_if_eq AshiiScript3_2
 	msgbox AshiiScript3_Text_9
 	closemessage
