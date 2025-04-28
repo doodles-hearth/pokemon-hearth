@@ -16,7 +16,7 @@ const struct FieldMoveGrant gFieldMoveGrant[] =
         {IS_FIELD_MOVE_FLASH, FLAG_RECEIVED_HM_FLASH},
         {IS_FIELD_MOVE_FLY, FLAG_RECEIVED_HM_FLY},
         {IS_FIELD_MOVE_SECRET_POWER, FLAG_GOT_SECRET_POWER},
-        {FIELD_MOVE_COUNT, NULL},
+        {FIELD_MOVE_COUNT, 0xFF},
 };
 
 u32 FindFieldMoveGrantIndexByType(u32 fieldMoveType)
