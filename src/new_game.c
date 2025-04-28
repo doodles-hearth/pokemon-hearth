@@ -53,6 +53,7 @@
 #include "clock.h"
 #include "fake_rtc.h"
 #include "difficulty.h"
+#include "follower_npc.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -231,6 +232,7 @@ void NewGameInitData(void)
     SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
     ResetItemFlags();
     ResetDexNav();
+    ClearFollowerNPCData();
 
     // Custom
     FakeRtc_ForwardTimeTo(12, 0, 0);
@@ -239,7 +241,7 @@ void NewGameInitData(void)
     QuestMenu_ResetMenuSaveData();
     QuestMenu_GetSetQuestState(QUEST_HEARTH_MAIN_CAMPAIGN, FLAG_SET_UNLOCKED);
     QuestMenu_GetSetQuestState(QUEST_HEARTH_MAIN_CAMPAIGN, FLAG_SET_ACTIVE);
-    ResetLimitedShops();
+    ResetLimitedShops();    
 }
 
 static void ResetMiniGamesRecords(void)

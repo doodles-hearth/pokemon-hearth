@@ -266,6 +266,11 @@
 #define MOVEMENT_ACTION_ZUBATS_ALIGN                    0xAF
 #define MOVEMENT_ACTION_CROBAT_CAPE                     0xBB
 
+#define MOVEMENT_ACTION_SURF_STILL_DOWN                 0xFA
+#define MOVEMENT_ACTION_SURF_STILL_UP                   0xFB
+#define MOVEMENT_ACTION_SURF_STILL_LEFT                 0xFC
+#define MOVEMENT_ACTION_SURF_STILL_RIGHT                0xFD
+
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF
 
