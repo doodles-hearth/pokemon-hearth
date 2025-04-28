@@ -171,7 +171,7 @@ const struct FieldMoveMenuItem gFieldMoveTypeMenuItem[] =
 #if OW_DEFOG_FIELD_MOVE == TRUE
     {IS_FIELD_MOVE_DEFOG, FIELD_MOVE_DEFOG},
 #endif
-    {FIELD_MOVE_COUNT, NULL},
+    {FIELD_MOVE_COUNT, 0xFF},
 };
 
 static u32 FindFieldMoveMenuItemIndexByType(u32 fieldMoveType)
