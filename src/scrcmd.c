@@ -2134,7 +2134,7 @@ bool8 ScrCmd_randomdexmessage(struct ScriptContext *ctx)
     struct WindowTemplate winTemplate;
     
     const u8 *speciesName = GetSpeciesName(species, SKIP_NAME_CHECK);
-    const u8 *randomDexDesc = GetSpeciesPokedexDescription(species);
+    const u8 *randomDexDesc = GetSpeciesPokedexDescription(species, SKIP_NAME_CHECK);
     StringCopy(gStringVar1, speciesName);
 
     // Calculates the start of the mon's name if present. If not present, returns -1.
@@ -2206,7 +2206,7 @@ bool8 ScrCmd_bufferspeciesdexdesc(struct ScriptContext *ctx)
 //     return &dest[i];
 
 // TODO EVA doesn't work pointer bullshit
-    StringCopy(sScriptStringVars[stringVarIndex], GetSpeciesPokedexDescription(species));
+    StringCopy(sScriptStringVars[stringVarIndex], GetSpeciesPokedexDescription(species, SKIP_NAME_CHECK));
     return FALSE;
 }
 

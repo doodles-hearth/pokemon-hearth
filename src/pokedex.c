@@ -1536,6 +1536,7 @@ void ResetPokedex(void)
         gSaveBlock1Ptr->dexCaught[i] = 0;
         gSaveBlock1Ptr->dexNamed[i] = 0;
         gSaveBlock1Ptr->dexSeen[i] = 0;
+        gSaveBlock1Ptr->dexDescribed[i] = 0;
     }
 }
 
@@ -4222,10 +4223,9 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
     }
     PrintInfoScreenText(category, 0x64, 0x29);
     PrintMonMeasurements(species,owned);
-    if (owned)
-        description = GetSpeciesPokedexDescription(species);
-    else
-        description = sExpandedPlaceholder_PokedexDescription;
+
+    description = GetSpeciesPokedexDescription(species, DO_NAME_CHECK);
+
     PrintInfoScreenText(description, GetStringCenterAlignXOffset(FONT_NORMAL, description, DISPLAY_WIDTH), 95);
 }
 
@@ -4535,14 +4535,21 @@ s8 GetSetPokedexFlag(u16 nationalDexNo, enum PokedexFlag caseID)
     case FLAG_GET_NAMED:
         retVal = ((gSaveBlock1Ptr->dexNamed[index] & mask) != 0);
         break;
+    case FLAG_GET_DESCRIBED:
+        retVal = ((gSaveBlock1Ptr->dexDescribed[index] & mask) != 0);
+        break;
     case FLAG_SET_SEEN:
         gSaveBlock1Ptr->dexSeen[index] |= mask;
         break;
     case FLAG_SET_CAUGHT:
         gSaveBlock1Ptr->dexCaught[index] |= mask;
-        // Catching a mon should also give it's name. Intentionally fall through.
+        // Catching a mon should also give its name. Intentionally fall through.
     case FLAG_SET_NAMED:
         gSaveBlock1Ptr->dexNamed[index] |= mask;
+        break;
+        // However, catching a mon does not give its description. That will have to be found by the player lolol
+    case FLAG_SET_DESCRIBED:
+        gSaveBlock1Ptr->dexDescribed[index] |= mask;
         break;
     }
 

@@ -259,7 +259,7 @@ script YifuCity_Refuge_EventScript_Traveler {
 	closemessage
 
 	setnamedmon(SPECIES_PAWNIARD)
-	// TODO EVA setdescribedmon(SPECIES_PAWNIARD)
+	setdescribedmon(SPECIES_PAWNIARD)
 	release
 	end
 }

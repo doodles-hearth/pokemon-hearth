@@ -37,6 +37,7 @@ Soulkeep_House1_EventScript_LittleGirl::
 	faceplayer
 	speakername Soulkeep_House1_EventScript_LittleGirl_Text_0
 	setnamedmon SPECIES_FENNEKIN
+	setdescribedmon SPECIES_FENNEKIN
 	msgbox Soulkeep_House1_EventScript_LittleGirl_Text_1
 	closemessage
 	release

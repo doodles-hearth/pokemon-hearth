@@ -43,7 +43,7 @@ script Soulkeep_House1_EventScript_LittleGirl {
 	faceplayer
 	speakername("Little Girl")
 	setnamedmon(SPECIES_FENNEKIN)
-	// TODO EVA setdescribedmon
+	setdescribedmon(SPECIES_FENNEKIN)
 	msgbox(format(
 		"Nothing bad can happen to us so long as Fennekin keeps us safe!\p"
 		"I feed him lots of twigs for him to keep us warm!"
