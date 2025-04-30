@@ -373,7 +373,8 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		"Explore Toku and fill its pages with\nyour findings!\p"
 		"You can start by going all the way to\nSilveridge, north of here in the\lmountains.\p"
 		"Another Elder lives there and,\nhopefully, has more information\las to why the Pokémon are lashing out.\p"
-		"Could you deliver him this letter?"
+		"Could you deliver him this letter? I could send him a Chatot, but I need to make sure this doesn't get lost on the way.\p"
+		"Please do not dilly-dally on your way there!"
 	))
 	closemessage
 

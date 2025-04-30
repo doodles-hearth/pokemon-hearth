@@ -799,7 +799,12 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10:
 	.string "hopefully, has more information\l"
 	.string "as to why the Pokémon are lashing\l"
 	.string "out.\p"
-	.string "Could you deliver him this letter?$"
+	.string "Could you deliver him this letter? I\n"
+	.string "could send him a Chatot, but I need to\l"
+	.string "make sure this doesn't get lost on\l"
+	.string "the way.\p"
+	.string "Please do not dilly-dally on your way\n"
+	.string "there!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11:
 	.string "Understood, Grandma Kaba.\n"

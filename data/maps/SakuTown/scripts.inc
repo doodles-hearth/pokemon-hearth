@@ -672,7 +672,7 @@ SakuTown_EventScript_Farmer_Text_0:
 	.string "Farmer$"
 
 SakuTown_EventScript_Farmer_Text_1:
-	.string "Weilder! It's you! I can't thank ya\n"
+	.string "Wielder! It's you! I can't thank ya\n"
 	.string "enough for helping us heal our girl.\p"
 	.string "I've been doin' a lot of thinkin' too,\n"
 	.string "after you told us the one who helped\l"
