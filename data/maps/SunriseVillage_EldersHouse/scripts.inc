@@ -107,15 +107,36 @@ SunriseVillage_EldersHouse_Event_Elder::
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
 	goto_if_ge SunriseVillage_EldersHouse_Event_Elder_2
-	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_1
-	closemessage
+	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_2
 SunriseVillage_EldersHouse_Event_Elder_1:
+	mcdialogue SunriseVillage_EldersHouse_Event_Elder_Text_3, SunriseVillage_EldersHouse_Event_Elder_Text_4
+	closemessage
+	switch VAR_RESULT
+	case 0, SunriseVillage_EldersHouse_Event_Elder_7
+	case 1, SunriseVillage_EldersHouse_Event_Elder_8
+SunriseVillage_EldersHouse_Event_Elder_5:
 	release
 	return
 
 SunriseVillage_EldersHouse_Event_Elder_2:
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 5
+	goto_if_lt SunriseVillage_EldersHouse_Event_Elder_9
+	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_1
+	goto SunriseVillage_EldersHouse_Event_Elder_1
+
+SunriseVillage_EldersHouse_Event_Elder_7:
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_5
+	call ProfBirch_EventScript_RatePokedex
+	goto SunriseVillage_EldersHouse_Event_Elder_5
+
+SunriseVillage_EldersHouse_Event_Elder_8:
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_6
+	goto SunriseVillage_EldersHouse_Event_Elder_5
+
+SunriseVillage_EldersHouse_Event_Elder_9:
 	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_0
-	closemessage
 	goto SunriseVillage_EldersHouse_Event_Elder_1
 
 
@@ -729,11 +750,34 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_6:
 	.string "I don't mind being second pick.$"
 
 SunriseVillage_EldersHouse_Event_Elder_Text_0:
-	.string "How is your Pokémon adventure going?$"
+	.string "Don't dilly-dally on the way! And keep\n"
+	.string "an eye on your little friend Natsuki,\l"
+	.string "make sure he doesn't get into\l"
+	.string "trouble!$"
 
 SunriseVillage_EldersHouse_Event_Elder_Text_1:
+	.string "Oh! You delivered my letter. Good.\p"
+	.string "You've been appointed to investigate\n"
+	.string "Decaying areas? Well then, what are\l"
+	.string "you still doing here? Off you go!$"
+
+SunriseVillage_EldersHouse_Event_Elder_Text_2:
 	.string "Choose your new partner wisely.\n"
 	.string "No takebacks.$"
+
+SunriseVillage_EldersHouse_Event_Elder_Text_3:
+	.string "Evaluate my PokéDex!$"
+
+SunriseVillage_EldersHouse_Event_Elder_Text_4:
+	.string "See you!$"
+
+SunriseVillage_EldersHouse_Event_Elder_Text_5:
+	.string "Well, what are you waiting for? Hand it\n"
+	.string "over!$"
+
+SunriseVillage_EldersHouse_Event_Elder_Text_6:
+	.string "Alright, alright.\n"
+	.string "{FONT_SMALL}Damned children wasting my time.{FONT_NORMAL}$"
 
 SunriseVillage_EldersHouse_EventScript_TryToLeave_Text_0:
 	.string "Where do you think you're going?$"

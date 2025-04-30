@@ -137,18 +137,48 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	release
 }
 
+// TODO EVA dex evaluation, letter delivery, etc
 script SunriseVillage_EldersHouse_Event_Elder {
 	lock
 	faceplayer
 	speakername("Elder Kaba")
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
-		// TODO EVA dex evaluation, letter delivery, etc
-		msgbox(format("How is your Pokémon adventure going?"))
-		closemessage
+		if (var(VAR_DECAY_BEACHBOUND_ROUTE) < 5) {
+			msgbox(format("Don't dilly-dally on the way! And keep an eye on your little friend Natsuki, make sure he doesn't get into trouble!"))
+		} else {
+			msgbox(format(
+				"Oh! You delivered my letter. Good.\p"
+				"You've been appointed to investigate Decaying areas? Well then, what are you still doing here? Off you go!"
+			))
+
+			// msgbox(format("How is your Pokémon adventure going?"))
+			// closemessage
+		}
 	} else {
 		// Player has yet to pick a Pokémon
 		msgbox(format("Choose your new partner wisely.\nNo takebacks."))
-		closemessage
+	}
+
+	mcdialogue(
+				"Evaluate my PokéDex!",
+				"See you!"
+			)
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			speakername("Elder Kaba")
+			msgbox(format(
+				"Well, what are you waiting for? Hand it over!"
+			))
+
+			call(ProfBirch_EventScript_RatePokedex)
+		case 1:
+			speakername("Elder Kaba")
+			msgbox(format(
+				"Alright, alright.\n"
+				"{FONT_SMALL}Damned children wasting my time.{FONT_NORMAL}"
+			))
 	}
 	release
 }

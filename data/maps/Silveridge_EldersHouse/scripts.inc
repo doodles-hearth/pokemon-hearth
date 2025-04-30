@@ -96,8 +96,8 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	applymovement 4, Silveridge_EldersHouse_EventScript_Conversation_Movement_8
 	waitmovement 4
 	playse SE_EXIT
-	removeobject 4
 	waitse
+	removeobject 4
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_9
 	waitmovement 1
 	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_10
