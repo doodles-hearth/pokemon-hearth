@@ -1532,7 +1532,7 @@ extern const u16 gItemIconPalette_DarkScroll[];
 extern const u16 gItemIconPalette_SteelScroll[];
 extern const u16 gItemIconPalette_FairyScroll[];
 
-extern const u16 gItemIcon_SecretScroll[];
+extern const u32 gItemIcon_SecretScroll[];
 extern const u16 gItemIconPalette_SecretScrollCut[];
 extern const u16 gItemIconPalette_SecretScrollSmash[];
 extern const u16 gItemIconPalette_SecretScrollSurf[];
