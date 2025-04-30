@@ -41,7 +41,7 @@ script ChiiTown_DrawMetatiles{
 	}
 
     gettimeofday
-	switch(var(VAR_RESULT)){
+	switch(var(VAR_0x8000)){
         case TIME_DEAD_NIGHT:
             setmetatile(14, 5, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE)
             setmetatile(14, 6, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE)
@@ -59,7 +59,7 @@ script ChiiTown_DrawMetatiles{
 script ChiiTown_EventScript_WatchfulMom{
 	gettimeofday
 	speakername("Woman")
-	switch(var(VAR_RESULT)){
+	switch(var(VAR_0x8000)){
 		case TIME_MORNING:
 			msgbox(format(
 				"I'm dropping off my children to school.\p"

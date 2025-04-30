@@ -26,7 +26,7 @@ ChiiTown_DrawMetatiles_13:
 	goto_if_set FLAG_BADGE08_GET, ChiiTown_DrawMetatiles_17
 ChiiTown_DrawMetatiles_16:
 	gettimeofday
-	switch VAR_RESULT
+	switch VAR_0x8000
 	case TIME_DEAD_NIGHT, ChiiTown_DrawMetatiles_20
 	case TIME_EARLY_MORNING, ChiiTown_DrawMetatiles_21
 	case TIME_MORNING, ChiiTown_DrawMetatiles_21
@@ -75,7 +75,7 @@ ChiiTown_DrawMetatiles_20:
 ChiiTown_EventScript_WatchfulMom::
 	gettimeofday
 	speakername ChiiTown_EventScript_WatchfulMom_Text_0
-	switch VAR_RESULT
+	switch VAR_0x8000
 	case TIME_MORNING, ChiiTown_EventScript_WatchfulMom_3
 	case TIME_AFTERNOON, ChiiTown_EventScript_WatchfulMom_4
 	msgbox ChiiTown_EventScript_WatchfulMom_Text_3, MSGBOX_NPC

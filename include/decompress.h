@@ -15,11 +15,6 @@ u32 LoadCompressedSpriteSheetByTemplate(const struct SpriteTemplate *template, s
 u32 LoadCompressedSpriteSheetOverrideBuffer(const struct CompressedSpriteSheet *src, void *buffer);
 bool8 LoadCompressedSpriteSheetUsingHeap(const struct CompressedSpriteSheet *src);
 
-u32 LoadCompressedSpritePalette(const struct CompressedSpritePalette *src);
-u32 LoadCompressedSpritePaletteWithTag(const u32 *pal, u16 tag);
-void LoadCompressedSpritePaletteOverrideBuffer(const struct CompressedSpritePalette *src, void *buffer);
-bool8 LoadCompressedSpritePaletteUsingHeap(const struct CompressedSpritePalette *src);
-
 void DecompressPicFromTable(const struct CompressedSpriteSheet *src, void *buffer);
 
 void HandleLoadSpecialPokePic(bool32 isFrontPic, void *dest, s32 species, u32 personality);
@@ -28,8 +23,8 @@ void LoadSpecialPokePic(void *dest, s32 species, u32 personality, bool8 isFrontP
 
 u32 GetDecompressedDataSize(const u32 *ptr);
 
-u8 LoadUniqueSpritePalette(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny);
-u32 LoadCompressedUniqueSpritePalette(const struct CompressedSpritePalette *src, u16 species, u32 personality, bool8 isShiny);
-u32 LoadCompressedUniqueSpritePaletteWithTag(const u32 *pal, u16 tag, u16 species, u32 personality, bool8 isShiny);
+u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny);
+u32 LoadUniqueSpritePalette(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny);
+u32 LoadUniqueSpritePaletteWithTag(const u16 *pal, u16 tag, u16 species, u32 personality, bool8 isShiny);
 
 #endif // GUARD_DECOMPRESS_H

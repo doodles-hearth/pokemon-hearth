@@ -21,7 +21,7 @@ mapscripts KuraTown_MapScripts {
 			setmetatile(40, 16, METATILE_SakuKura_ClosedDojoDoor, TRUE)
 		}
 		gettimeofday
-		switch(var(VAR_RESULT)){
+		switch(var(VAR_0x8000)){
 			case TIME_DEAD_NIGHT:
 				setmetatile(18, 6, METATILE_SakuKura_ClosedDoorTop, TRUE)
 				setmetatile(18, 7, METATILE_SakuKura_ClosedDoorBottom, TRUE)
