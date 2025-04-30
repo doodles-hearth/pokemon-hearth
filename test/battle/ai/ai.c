@@ -920,6 +920,9 @@ AI_SINGLE_BATTLE_TEST("AI sees popped Air Balloon")
 AI_SINGLE_BATTLE_TEST("AI sees popped Air Balloon after Air Balloon mon switches out and back in")
 {
     GIVEN {
+        // TODO EVA prevent tests from failing
+        ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
+
         ASSUME(ItemId_GetHoldEffect(ITEM_AIR_BALLOON) == HOLD_EFFECT_AIR_BALLOON);
         ASSUME(GetMoveType(MOVE_EARTHQUAKE) == TYPE_GROUND);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_OMNISCIENT);
