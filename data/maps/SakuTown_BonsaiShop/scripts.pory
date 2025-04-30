@@ -224,7 +224,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 				"We sell bonsai and other potted flowers! Are you interested in plants?\p"
 				"Have you ever seen strange patches of soil while on your journey?\p"
 				"Those soil patches are incredibly fertile, which means any berry you plant in that soil will thrive and grow into a tree, ready to be harvested!\p"
-				"I see you're a wielder. Well, different berries have different effects when they're fed to Pokémon.\p"
+				"I see you're a Wielder. Well, different berries have different effects when they're fed to Pokémon.\p"
 				"I love berries, hopefully you'll soon learn to love them too!\p"
 				"Here, try planting a few!"
 			))
@@ -305,7 +305,7 @@ script SakuTown_EventScript_Man {
 	msgbox(format(
 		"I'm choosing flowers for my wife.\p"
 		"I, uh… I didn't realize there'd be so many different types.\p"
-		"Guess I'll be here for a while…"
+		"Guess I'll be here a while…"
 	))
 	closemessage
 	release

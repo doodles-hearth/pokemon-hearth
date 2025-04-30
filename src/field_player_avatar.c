@@ -833,10 +833,12 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
      && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 && !FollowerNPCComingThroughDoor())
     {
-        if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
+        if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction)) {
             PlayerRunSlow(direction);
-        else
+        }
+        else {
             PlayerRun(direction);
+        }
 
         gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_DASH;
         return;
@@ -2745,9 +2747,14 @@ bool8 ObjectMovingOnRockStairs(struct ObjectEvent *objectEvent, u8 direction)
         s16 x = objectEvent->currentCoords.x;
         s16 y = objectEvent->currentCoords.y;
 
+        // TODO Commenting this code to make rock stair running work, idk why tf this is here
         // TODO followers on sideways stairs
-        if (IsFollowerVisible() && GetFollowerObject() != NULL && (objectEvent->isPlayer || objectEvent->localId == OBJ_EVENT_ID_FOLLOWER))
-            return FALSE;
+        /* if (
+            IsFollowerVisible()
+            && GetFollowerObject() != NULL
+            && (objectEvent->isPlayer || objectEvent->localId == OBJ_EVENT_ID_FOLLOWER)
+        )
+            return FALSE; */
 
         switch (direction)
         {

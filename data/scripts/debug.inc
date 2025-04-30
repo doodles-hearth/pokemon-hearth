@@ -135,10 +135,8 @@ Debug_EventScript_Text_DefensiveIVs:
 
 Debug_EventScript_Script_1::
 	lock
-	message gText_HowMayIServeYou
-	waitmessage
-	limitedpokemart LIMITED_SHOP_1
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	completequest QUEST_SAKURALOVERS
+	completequest QUEST_SAKURAESPEON
 	release
 	end
 

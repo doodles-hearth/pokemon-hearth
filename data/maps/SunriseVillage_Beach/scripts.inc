@@ -336,7 +336,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_7:
 	.string "You okay there, {PLAYER}?\n"
 	.string "You look troubled.\p"
 	.string "Aren't you excited to become\n"
-	.string "a Pokémon wielder?$"
+	.string "a Pokémon Wielder?$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_8:
 	.string "Huh?…\p"
@@ -359,7 +359,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_12:
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_13:
 	.string "Hell yeah!\p"
-	.string "We're going to make awesome wielders,\n"
+	.string "We're going to make awesome Wielders,\n"
 	.string "I can already tell.\p"
 	.string "Maybe you'll even be second best\n"
 	.string "one day…\p"
@@ -378,7 +378,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_15:
 	.string "Look at you, acting all tough\n"
 	.string "and silent…\l"
 	.string "But I see right through you!\p"
-	.string "I bet you'll be a great wielder.\n"
+	.string "I bet you'll be a great Wielder.\n"
 	.string "Maybe even as good as me…\p"
 	.string "Probably not though!$"
 

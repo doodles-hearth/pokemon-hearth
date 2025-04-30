@@ -7,3 +7,12 @@ mapscripts Kura_Beachbound_Gate_MapScripts {
 		}
 	}
 }
+
+script Kura_Beachbound_Gate_EventScript_Guard {
+	lock
+	speakername("Samurai")
+	msgbox(format(
+		"Zzzzzz…"
+	))
+	release
+}

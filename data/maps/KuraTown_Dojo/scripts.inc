@@ -313,7 +313,7 @@ KuraTown_Dojo_EventScript_Advice_Text_0:
 KuraTown_Dojo_EventScript_Advice_Text_1:
 	.string "That was a beautiful fight! You're\n"
 	.string "going to blossom into an excellent\l"
-	.string "Pokémon wielder, I can just feel it!$"
+	.string "Pokémon Wielder, I can just feel it!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_2:
 	.string "Hello, young challenger, and welcome\n"
@@ -352,13 +352,13 @@ KuraTown_Dojo_EventScript_Advice_Text_4:
 
 KuraTown_Dojo_EventScript_DojoStatue_Text_0:
 	.string "Dojo of Kura Village\p"
-	.string "Certified wielders:\n"
+	.string "certified Wielders:\n"
 	.string "Natsuki,\l"
 	.string "{PLAYER}$"
 
 KuraTown_Dojo_EventScript_DojoStatue_Text_1:
 	.string "Dojo of Kura Village\p"
-	.string "Certified wielders:\n"
+	.string "certified Wielders:\n"
 	.string "Natsuki$"
 
 KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_Text_0:

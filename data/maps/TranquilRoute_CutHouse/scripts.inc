@@ -68,11 +68,17 @@ TranquilRoute_CutHouse_EventScript_CutMaster::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_HM_CUT, TranquilRoute_CutHouse_EventScript_CutMaster_2
-	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_2
-	closemessage
-	giveitem ITEM_HM_CUT
-	setflag FLAG_RECEIVED_HM_CUT
+	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_3
+	closemessage
+	giveitem ITEM_SECRET_CUT
+	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
+	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_4
+	closemessage
+	giveitem ITEM_TM_NICK
+	setflag FLAG_RECEIVED_HM_CUT
+	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
+	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_5
 	closemessage
 TranquilRoute_CutHouse_EventScript_CutMaster_1:
 	release
@@ -80,12 +86,14 @@ TranquilRoute_CutHouse_EventScript_CutMaster_1:
 
 TranquilRoute_CutHouse_EventScript_CutMaster_2:
 	goto_if_set FLAG_CUT_QUEST_CUT_ALL_GRASS, TranquilRoute_CutHouse_EventScript_CutMaster_5
-	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_1
+	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
+	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_2
 	closemessage
 	goto TranquilRoute_CutHouse_EventScript_CutMaster_1
 
 TranquilRoute_CutHouse_EventScript_CutMaster_5:
-	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
+	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
+	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_1
 	closemessage
 	goto TranquilRoute_CutHouse_EventScript_CutMaster_1
 
@@ -142,16 +150,19 @@ TranquilRoute_CutHouse_EventScript_CutGrassCutscene_Text_0:
 	.string "it for myself.$"
 
 TranquilRoute_CutHouse_EventScript_CutMaster_Text_0:
+	.string "Old Man$"
+
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_1:
 	.string "The sun is setting on another day.\p"
 	.string "Life is good.$"
 
-TranquilRoute_CutHouse_EventScript_CutMaster_Text_1:
-	.string "Are you finding the Cut technique\n"
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_2:
+	.string "Are you finding the Secret of Blade\n"
 	.string "useful?\p"
 	.string "No, I still haven't trimmed my garden.\n"
 	.string "I really should get to it…$"
 
-TranquilRoute_CutHouse_EventScript_CutMaster_Text_2:
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_3:
 	.string "Hello, there. I don't get many\n"
 	.string "visitors, so sit down, have some tea!\p"
 	.string "What? My garden is overrun by weeds?\p"
@@ -159,26 +170,39 @@ TranquilRoute_CutHouse_EventScript_CutMaster_Text_2:
 	.string "You're right, I have been neglecting\n"
 	.string "it lately. You see, my old back isn't as\l"
 	.string "strong as it used to be.\p"
-	.string "Here, your Pokémon can trim them\n"
-	.string "using this.$"
+	.string "I'm going to let you in on a secret…\p"
+	.string "Long ago, a powerful swordmaster\n"
+	.string "came up with a secret cutting\l"
+	.string "technique.\p"
+	.string "I just so happen to have it written\n"
+	.string "down right here!\p"
+	.string "You don't look much like a\n"
+	.string "swordmaster… But surely a Wielder\l"
+	.string "like you could teach their Pokémon\l"
+	.string "the Secret of Blade!$"
 
-TranquilRoute_CutHouse_EventScript_CutMaster_Text_3:
-	.string "This scroll contains an ancient\n"
-	.string "technique created by the most\l"
-	.string "talented samurai. Pokémon can learn\l"
-	.string "that technique too.\p"
-	.string "If you have a Pokémon capable of\n"
-	.string "learning this move, it will be able to\l"
-	.string "cut tall grass as well as little trees\l"
-	.string "that block your path.\p"
-	.string "In fact, now that you have read the\n"
-	.string "scroll, you don't even need to teach\l"
-	.string "them the actual move!\p"
-	.string "Don't ask me how this works, it just\n"
-	.string "does!\p"
-	.string "Oh, you will need at least one official\n"
-	.string "Dojo Token to be able to cut trees\l"
-	.string "and grass, though.$"
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_4:
+	.string "There is a variety of slicing moves\n"
+	.string "that your Pokémon can use.\p"
+	.string "They will now be able to use those\n"
+	.string "moves to cut tall grass and little\l"
+	.string "trees that block your path.\p"
+	.string "You will need at least one official\n"
+	.string "Dojo Token for that, though.\p"
+	.string "We can't be going around cutting\n"
+	.string "trees irresponsibly, now can we?\p"
+	.string "You can also have this, in case your\n"
+	.string "Pokémon don't know any slicing moves\l"
+	.string "yet.\p"
+	.string "A scroll can be used to teach your\n"
+	.string "Pokémon a move!$"
+
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_5:
+	.string "Want to know another secret?\p"
+	.string "That powerful swordmaster I\n"
+	.string "mentioned…\p"
+	.string "That was me in my youthful days,\n"
+	.string "ho ho ho…$"
 
 TranquilRoute_CutHouse_EventScript_RandomCryGuy_Text_0:
 	.string "you already got it right\ncome back tomorrow dingus$"

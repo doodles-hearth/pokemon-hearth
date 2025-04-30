@@ -341,20 +341,24 @@ script OrchardPath_EventScript_RockSmashRegular {
 				"Huff… Puff…\p"
 				"Tadaaah!\p"
 				"I do hope you're thoroughly impressed!\p"
-				"Thanks for stopping by. Truth be told, I rarely have an audience.\p"
-				"You're so young, and yet… I can feel a rock smashing passion burning behind those eyes!\p"
+				"Thanks for stopping by. Truth be told, I rarely have an audience these days…\p"
+				"You're so young and scrawny, yet…\nI can feel a ROCK SMASHING PASSION burning behind those eyes!\p"
 				"Would you… ahem… Become my rock smashing disciple?"
 			))
 			closemessage
 
-			giveitem(ITEM_HM_ROCK_SMASH)
+			giveitem(ITEM_SECRET_SMASH)
 
 			speakername("Rock Smasher")
 			msgbox(format(
-				"With this, you should be able to PULVERIZE any of those pesky rocks standing in your way!\p"
-				"If you're not strong enough, you can even have a Pokémon do it for you!"
+				"This is a secret technique of my own invention.\p"
+				"It lets you PULVERIZE any of those pesky rocks standing in your way!\p"
+				"If you're not strong enough, a Pokémon can even do it for you, using a variety of SMASHING moves, such as this one!\p"
+				"{FONT_SMALL}Even though this one really sucks in battle!{FONT_NORMAL}"
 			))
 			closemessage
+
+			giveitem(ITEM_TM_PEBBLE_CRUSH)
 
 			setflag(FLAG_RECEIVED_HM_ROCK_SMASH)
 			// This is to avoid him getting mad at breaking his own rocks
@@ -375,7 +379,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 			hidemoneybox
 			speakername("Rock Smasher")
 			msgbox(format(
-				"{FONT_SMALL}Come on kid, I'm financially struggling here{FONT_NORMAL}…"
+				"{FONT_SMALL}Come on, kid, I'm financially struggling here{FONT_NORMAL}…"
 			))
 			closemessage
 		case 2:

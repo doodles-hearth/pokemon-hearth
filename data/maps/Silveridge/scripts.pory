@@ -111,7 +111,7 @@ script Silveridge_EventScript_TownSculptureSignTBD {
 }
 
 script Silveridge_EventScript_SculptorsHouseSign {
-	msgbox(format("The Sculptor's atelier"), MSGBOX_SIGN)
+	msgbox(format("The Sculptor's Atelier"), MSGBOX_SIGN)
 }
 
 script Silveridge_EventScript_EldersHouseSign {

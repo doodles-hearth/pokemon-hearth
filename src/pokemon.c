@@ -135,7 +135,6 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(RAICHU),
     HOENN_TO_NATIONAL(KOTORA),
     HOENN_TO_NATIONAL(RAITORA),
-    HOENN_TO_NATIONAL(GAOTORA),
     HOENN_TO_NATIONAL(SEWADDLE_TOKUAN),
     HOENN_TO_NATIONAL(SWADLOON_TOKUAN),
     HOENN_TO_NATIONAL(LEAVANNY_TOKUAN),
@@ -5867,6 +5866,16 @@ static const u16 sUniversalMoves[] =
     MOVE_TERA_BLAST,
 };
 
+static const u16 sActuallyUniversalMoves[] =
+{
+    MOVE_NICK,
+    MOVE_PEBBLE_CRUSH,
+    MOVE_PUSH,
+    MOVE_SPLASH,
+    MOVE_WATER_FLAIL,
+    MOVE_SINK,
+};
+
 u8 CanLearnTeachableMove(u16 species, u16 move)
 {
     if (species == SPECIES_EGG)
@@ -5901,6 +5910,16 @@ u8 CanLearnTeachableMove(u16 species, u16 move)
     {
         u32 i, j;
         const u16 *teachableLearnset = GetSpeciesTeachableLearnset(species);
+        
+        // Universal shitty field moves
+        for (i = 0; i < ARRAY_COUNT(sActuallyUniversalMoves); i++)
+        {
+            if (sActuallyUniversalMoves[i] == move)
+            {
+                return TRUE;
+            }
+        }
+
         for (i = 0; i < ARRAY_COUNT(sUniversalMoves); i++)
         {
             if (sUniversalMoves[i] == move)
@@ -6219,7 +6238,7 @@ const u16 *GetMonSpritePalFromSpecies(u16 species, bool32 isShiny, bool32 isFema
     }
 }
 
-bool8 IsMoveHM(u16 move)
+UNUSED bool8 IsMoveHM(u16 move)
 {
     int i = 0;
 

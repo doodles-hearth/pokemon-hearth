@@ -3,8 +3,12 @@ const LOCALID_OLDWOMAN = 1
 mapscripts KuraTown_House1_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_KURA_TOWN)
-		if (var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) < 4){}
-		else {setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 5)}
+		if (var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) < 4) {
+
+		}
+		else {
+			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 5)
+		}
 	}
 }
 

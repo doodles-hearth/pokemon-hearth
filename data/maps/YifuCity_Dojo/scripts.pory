@@ -756,7 +756,7 @@ script YifuCity_Dojo_EventScript_DojoStatue {
 	if (flag(FLAG_BADGE03_GET)) {
 		msgbox(
 			"Dojo of Yifu City\p"
-			"Certified wielders:\n"
+			"certified Wielders:\n"
 			"Natsuki,\l"
 			"{PLAYER}",
 			MSGBOX_SIGN
@@ -764,7 +764,7 @@ script YifuCity_Dojo_EventScript_DojoStatue {
 	} else {
 		msgbox(
 			"Dojo of Kura Village\p"
-			"Certified wielders:\n"
+			"certified Wielders:\n"
 			"Natsuki",
 			MSGBOX_SIGN
 		)

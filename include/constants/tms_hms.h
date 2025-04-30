@@ -56,10 +56,24 @@
     F(ACROBATICS) \
     F(NATURE_POWER) \
     F(X_SCISSOR) \
-    F(ANCIENT_POWER)
+    F(ANCIENT_POWER) \
+    F(ROCK_BLAST) \
+    F(CUT) \
+    F(FLY) \
+    F(SURF) \
+    F(STRENGTH) \
+    F(FLASH) \
+    F(ROCK_SMASH) \
+    F(WATERFALL) \
+    F(DIVE) \
+    F(NICK) \
+    F(PEBBLE_CRUSH) \
+    F(PUSH) \
+    F(WATER_FLAIL) \
+    F(SINK) \
+    F(SPLASH)
 
 #define FOREACH_HM(F) \
-    F(CUT) \
     F(FLY) \
     F(SURF) \
     F(STRENGTH) \

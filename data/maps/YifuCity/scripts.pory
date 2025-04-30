@@ -92,7 +92,7 @@ script YifuCity_EventScript_IDontFeelSafe {
 
 	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 		msgbox(format(
-			"I heard a young wielder made those weird Crobat dudes go away!\p"
+			"I heard a young Wielder made those weird Crobat dudes go away!\p"
 			"They must be a very brave young person."
 		))
 	} else {

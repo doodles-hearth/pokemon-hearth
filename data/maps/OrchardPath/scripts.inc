@@ -252,10 +252,11 @@ OrchardPath_EventScript_RockSmashRegular_5:
 	speakername OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_8
 	closemessage
-	giveitem ITEM_HM_ROCK_SMASH
+	giveitem ITEM_SECRET_SMASH
 	speakername OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_9
 	closemessage
+	giveitem ITEM_TM_PEBBLE_CRUSH
 	setflag FLAG_RECEIVED_HM_ROCK_SMASH
 	setflag FLAG_TEMP_4
 	return
@@ -489,19 +490,24 @@ OrchardPath_EventScript_RockSmashRegular_Text_8:
 	.string "I do hope you're thoroughly\n"
 	.string "impressed!\p"
 	.string "Thanks for stopping by. Truth be told,\n"
-	.string "I rarely have an audience.\p"
-	.string "You're so young, and yet… I can feel a\n"
-	.string "rock smashing passion burning behind\l"
-	.string "those eyes!\p"
+	.string "I rarely have an audience these days…\p"
+	.string "You're so young and scrawny, yet…\n"
+	.string "I can feel a ROCK SMASHING PASSION\l"
+	.string "burning behind those eyes!\p"
 	.string "Would you… ahem… Become my rock\n"
 	.string "smashing disciple?$"
 
 OrchardPath_EventScript_RockSmashRegular_Text_9:
-	.string "With this, you should be able to\n"
-	.string "PULVERIZE any of those pesky rocks\l"
-	.string "standing in your way!\p"
-	.string "If you're not strong enough, you can\n"
-	.string "even have a Pokémon do it for you!$"
+	.string "This is a secret technique of my own\n"
+	.string "invention.\p"
+	.string "It lets you PULVERIZE any of those\n"
+	.string "pesky rocks standing in your way!\p"
+	.string "If you're not strong enough, a\n"
+	.string "Pokémon can even do it for you, using\l"
+	.string "a variety of SMASHING moves, such as\l"
+	.string "this one!\p"
+	.string "{FONT_SMALL}Even though this one really sucks in\n"
+	.string "battle!{FONT_NORMAL}$"
 
 OrchardPath_EventScript_RockSmashRegular_Text_10:
 	.string "Very well!…\n"
@@ -512,8 +518,8 @@ OrchardPath_EventScript_RockSmashRegular_Text_10:
 	.string "your pocket money or something!$"
 
 OrchardPath_EventScript_RockSmashRegular_Text_11:
-	.string "{FONT_SMALL}Come on kid, I'm financially struggling\n"
-	.string "here{FONT_NORMAL}…$"
+	.string "{FONT_SMALL}Come on, kid, I'm financially\n"
+	.string "struggling here{FONT_NORMAL}…$"
 
 OrchardPath_EventScript_RockSmashRegular_Text_12:
 	.string "Smashing rocks is my passion! I have\n"

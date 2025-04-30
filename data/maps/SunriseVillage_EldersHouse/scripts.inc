@@ -26,60 +26,74 @@ SunriseVillage_EldersHouse_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 	lock
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_0
-	waitmovement 0
-	applymovement 1, Common_Movement_WalkInPlaceFasterDown
 	setseenmon SPECIES_CYNDAQUIL
 	setnamedmon SPECIES_CYNDAQUIL
 	setseenmon SPECIES_SNIVY
 	setnamedmon SPECIES_SNIVY
 	setseenmon SPECIES_FROAKIE
 	setnamedmon SPECIES_FROAKIE
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_0
+	waitmovement 0
+	playse SE_ARENA_TIMEUP2
+	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_1
+	delay 4
+	playse SE_PIN
+	applymovement 2, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_2
+	waitmovement 2
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_3
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
 	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1
-	closemessage
-	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_1
-	waitmovement 0
+	waitse
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
 	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2
 	closemessage
+	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_4
+	waitmovement 0
+	playse SE_ARENA_TIMEUP2
+	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_1
+	applymovement 2, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_3
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_3
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
+	closemessage
 	clearflag FLAG_TEMP_1
-	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_2
+	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_5
 	waitmovement 0
 	playse SE_BALL_OPEN
-	waitse
 	removeobject 3
 	addobject 6
+	waitse
 	playmoncry SPECIES_SNIVY, CRY_MODE_NORMAL
 	delay 30
-	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_2
+	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_5
 	waitmovement 0
 	playse SE_BALL_OPEN
-	waitse
 	removeobject 4
 	addobject 7
+	waitse
 	playmoncry SPECIES_FROAKIE, CRY_MODE_NORMAL
 	delay 30
-	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_2
+	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_5
 	waitmovement 0
 	playse SE_BALL_OPEN
-	waitse
 	removeobject 5
 	addobject 8
+	waitse
 	playmoncry SPECIES_CYNDAQUIL, CRY_MODE_NORMAL
 	delay 30
-	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_3
+	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_6
 	waitmovement 0
 	playse SE_LEDGE
-	applymovement 2, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_4
+	applymovement 2, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_7
 	waitmovement 0
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
-	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
+	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	applymovement 2, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
-	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
+	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_6
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 5
@@ -182,7 +196,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16:
 	waitmovement OBJ_EVENT_ID_PLAYER
 	turnobject 1, DIR_SOUTH
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6
 	closemessage
 	switch VAR_STARTER_MON
@@ -202,7 +216,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	closemessage
 	delay 20
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9
 	closemessage
 	delay 20
@@ -212,19 +226,19 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	giveitem ITEM_LETTER
 	waitfanfare
 	closemessage
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11
 	closemessage
 	applymovement 2, Common_Movement_WalkInPlaceFasterLeft
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	waitmovement 2
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_12
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14
 	compare VAR_RESULT, 0
 	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_48
 	applymovement 2, Common_Movement_WalkInPlaceFasterUp
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_55
@@ -233,7 +247,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_54:
 	closemessage
 	applymovement 2, Common_Movement_WalkInPlaceFasterLeft
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_47:
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18
 	closemessage
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15
@@ -323,6 +337,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_25:
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_28:
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_8
 	waitmovement 0
+	playmoncry SPECIES_SNIVY, CRY_MODE_NORMAL
 	removeobject 6
 	removeobject 3
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_9
@@ -332,6 +347,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_28:
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_29:
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_10
 	waitmovement 0
+	playmoncry SPECIES_CYNDAQUIL, CRY_MODE_NORMAL
 	removeobject 8
 	removeobject 5
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_11
@@ -341,6 +357,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_29:
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_30:
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_12
 	waitmovement 0
+	playmoncry SPECIES_FROAKIE, CRY_MODE_NORMAL
 	removeobject 7
 	removeobject 4
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_13
@@ -417,7 +434,7 @@ SunriseVillage_EldersHouse_Movement_RivalPreBattlePose:
 	step_end
 
 SunriseVillage_EldersHouse_EventScript_Natsuki::
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	msgbox SunriseVillage_EldersHouse_EventScript_Natsuki_Text_0, MSGBOX_NPC
 	return
 
@@ -427,7 +444,7 @@ SunriseVillage_EldersHouse_EventScript_PostBattle::
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq SunriseVillage_EldersHouse_EventScript_PostBattle_2
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	msgbox SunriseVillage_EldersHouse_EventScript_PostBattle_Text_1
 	closemessage
 SunriseVillage_EldersHouse_EventScript_PostBattle_1:
@@ -451,7 +468,7 @@ SunriseVillage_EldersHouse_EventScript_PostBattle_5:
 	return
 
 SunriseVillage_EldersHouse_EventScript_PostBattle_2:
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	msgbox SunriseVillage_EldersHouse_EventScript_PostBattle_Text_0
 	closemessage
 	goto SunriseVillage_EldersHouse_EventScript_PostBattle_1
@@ -504,31 +521,45 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_0:
 	walk_up
 	walk_left
 	walk_up
+	delay_16
+	delay_16
 	step_end
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_1:
+	jump_in_place_down
+	step_end
+
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_2:
+	emote_exclamation_mark
+	delay_4
+	step_end
+
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_3:
+	emote_exclamation_mark
+	step_end
+
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_4:
 	walk_in_place_faster_up
 	delay_16
 	delay_16
 	delay_16
 	delay_16
-	walk_in_place_faster_down
 	step_end
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_2:
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_5:
 	walk_right
 	face_up
 	delay_16
 	step_end
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_3:
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_6:
 	walk_left
 	walk_left
 	walk_left
 	face_down
 	step_end
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_4:
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_7:
 	jump_in_place_up
 	step_end
 
@@ -662,6 +693,9 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0:
 	.string "Elder Kaba$"
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1:
+	.string "PAH!$"
+
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
 	.string "{PLAYER}, Natsuki.\nYou are late. Why am I surprised?\p"
 	.string "I always have to run after you two!\nNow stay still for a minute and\llisten closely!\p"
 	.string "As you have heard, the woods, and even\nthe roads, are no longer safe.\p"
@@ -669,14 +703,14 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1:
 	.string "There are reports of travelers being\nattacked from several nearby villages.\p"
 	.string "This is all very worrying…$"
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
-	.string "Which is why!\p"
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3:
+	.string "Which is why!{PAUSE 15}\p"
 	.string "The Toku council has decided that,\n"
 	.string "for the time being, the best way to\l"
 	.string "handle this is to use the Pokémon\l"
 	.string "themselves as a means of protection!\p"
 	.string "There were very few experienced\n"
-	.string "Pokémon wielders in Toku until now.\l"
+	.string "Pokémon Wielders in Toku until now.\l"
 	.string "This is about to change.\p"
 	.string "With a trained Pokémon by your side,\n"
 	.string "you'll be able to defend yourselves\l"
@@ -684,13 +718,13 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
 	.string "Without further ado, please carefully\n"
 	.string "choose your new companion!$"
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3:
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4:
 	.string "Natsuki$"
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4:
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5:
 	.string "Woah! Cool.$"
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5:
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_6:
 	.string "{PLAYER}, choose yours first!\n"
 	.string "I don't mind being second pick.$"
 
@@ -733,8 +767,8 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6:
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7:
 	.string "Now that you have your own Pokémon,\n"
 	.string "you two are officially\l"
-	.string "Pokémon wielders!\p"
-	.string "The more wielders there are,\n"
+	.string "Pokémon Wielders!\p"
+	.string "The more Wielders there are,\n"
 	.string "the deeper our understanding\l"
 	.string "of Pokémon will be.\p"
 	.string "We need to study these creatures\n"
@@ -794,7 +828,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18:
 	.string "Let's see what our brand-new Pokémon\l"
 	.string "are capable of!\p"
 	.string "I request an official Pokémon\n"
-	.string "wielder battle!$"
+	.string "Wielder battle!$"
 
 SunriseVillage_EldersHouse_EventScript_Natsuki_Text_0:
 	.string "Hm, which one will I choose?…$"

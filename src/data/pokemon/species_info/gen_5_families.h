@@ -3760,7 +3760,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpeed     = 42,
         .baseSpAttack  = 40,
         .baseSpDefense = 60,
-        .types = MON_TYPES(TYPE_BUG, TYPE_ELECTRIC),
+        .types = MON_TYPES(TYPE_BUG, TYPE_GRASS),
         .catchRate = 255,
         .expYield = 62,
         .evYield_Defense = 1,
@@ -3770,7 +3770,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SWARM, ABILITY_CHLOROPHYLL, ABILITY_STATIC },
+        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_STATIC },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Sewaddle"),
         .unknownName = _("Leaf Larva"),
@@ -3782,8 +3782,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .description = COMPOUND_STRING(
             "It chews up leaves and sews them with\n"
             "its saliva. Living in an environment\n"
-            "filled with static electricity has\n"
-            "altered its growth."),
+            "filled with static electricity is\n"
+            "altering its growth."),
         .pokemonScale = 530,
         .pokemonOffset = 15,
         .trainerScale = 256,
@@ -3818,7 +3818,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gShinyFollowerPalette_SewaddleTokuan)
         .levelUpLearnset = sSewaddleLevelUpLearnset,
         .teachableLearnset = sSewaddleTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_SWADLOON_TOKUAN}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_SWADLOON_TOKUAN}),
     },
 
     [SPECIES_SWADLOON_TOKUAN] =
@@ -3850,8 +3850,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .weight = 73,
         .description = COMPOUND_STRING(
             "Static electricity gathers under\n"
-            "its coat. Swadloon uses that power to\n"
-            "stay warm during the winter."
+            "its coat. Swadloon uses that power\n"
+            "to remain warm during the winter."
         ),
         .pokemonScale = 432,
         .pokemonOffset = 15,
@@ -3892,11 +3892,11 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 
     [SPECIES_LEAVANNY_TOKUAN] =
     {
-        .baseHP        = 75,
+        .baseHP        = 72,
         .baseAttack    = 103,
-        .baseDefense   = 80,
-        .baseSpeed     = 92,
-        .baseSpAttack  = 70,
+        .baseDefense   = 77,
+        .baseSpeed     = 100,
+        .baseSpAttack  = 68,
         .baseSpDefense = P_UPDATED_STATS >= GEN_6 ? 80 : 70,
         .types = MON_TYPES(TYPE_BUG, TYPE_ELECTRIC),
         .catchRate = 45,
@@ -3914,7 +3914,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SWARM, ABILITY_CHLOROPHYLL, ABILITY_OVERCOAT },
+        .abilities = { ABILITY_STATIC, ABILITY_CHLOROPHYLL, ABILITY_OVERCOAT },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Leavanny"),
         .unknownName = _("Leaf Tailor"),

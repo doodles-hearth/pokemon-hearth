@@ -189,7 +189,7 @@ Silveridge_EventScript_TownSculptureSignTBD_Text_0:
 	.string "A beautiful statue by PLACEHOLDER$"
 
 Silveridge_EventScript_SculptorsHouseSign_Text_0:
-	.string "The Sculptor's atelier$"
+	.string "The Sculptor's Atelier$"
 
 Silveridge_EventScript_EldersHouseSign_Text_0:
 	.string "{UP_ARROW} Elder Iwa's house$"

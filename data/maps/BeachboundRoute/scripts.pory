@@ -90,7 +90,7 @@ script BeachboundRoute_EventScript_Karu {
 		BeachboundRoute_EventScript_Karu_PostBattle
 	)
 	speakername("Karu")
-	msgbox(format("You wiped me away there. How long have you been a wielder?"), MSGBOX_AUTOCLOSE)
+	msgbox(format("You wiped me away there. How long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -501,7 +501,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 			"I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
 			"If you're a traveler, you're definitely going to see me around!\p"
 			"What's your name? {PLAYER}? It's nice to meet you, {PLAYER}!"
-			"I see you're a young wielder, eh? Maybe we can even have a friendly battle sometime!\p"
+			"I see you're a young Wielder, eh? Maybe we can even have a friendly battle sometime!\p"
 			"I'm in the area for a while to gather some resources.\p"
 			"Can I interest you in some handpicked goods?"
 		))

@@ -180,22 +180,22 @@ const struct SpeciesInfo gSpeciesInfo[] =
 #if P_FAMILY_KOTORA
     [SPECIES_KOTORA] =
     {
-        .baseHP        = 45,
-        .baseAttack    = 65,
-        .baseDefense   = 34,
-        .baseSpeed     = 45,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 34,
+        .baseHP        = 55,
+        .baseAttack    = 42,
+        .baseDefense   = 44,
+        .baseSpeed     = 28,
+        .baseSpAttack  = 54,
+        .baseSpDefense = 47,
         .types = MON_TYPES(TYPE_ELECTRIC),
         .catchRate = 235,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 53 : 60,
-        .evYield_Attack = 1,
+        .evYield_HP = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_RIVALRY, ABILITY_INTIMIDATE, ABILITY_GUTS },
+        .abilities = { ABILITY_RIVALRY, ABILITY_INTIMIDATE, ABILITY_STATIC },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Kotora"),
         .unknownName = _("Tiny Tiger"),
@@ -203,13 +203,13 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .natDexNum = NATIONAL_DEX_KOTORA,
         .categoryName = _("Tiny Tiger"),
         .height = 5,
-        .weight = 95,
+        .weight = 175,
         .description = COMPOUND_STRING(
-            "TODO EVA\n"
-            "It rapidly contracts and relaxes its\n"
-            "muscles to generate electricity. Its\n"
-            "body shines if endangered. It flees\n"
-            "while the foe is momentarily blinded."),
+            "His soft fur and ball-like appearance\n"
+            "makes it a children's favorite.\n"
+            "When it is happy, it releases small\n"
+            "electric jolts through its fur."
+        ),
         .pokemonScale = 432,
         .pokemonOffset = 17,
         .trainerScale = 256,
@@ -220,7 +220,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
         .backPic = gMonBackPic_Kotora,
         .backPicSize = MON_COORDS_SIZE(64, 48),
-        .backPicYOffset = 15,
+        .backPicYOffset = 0,
         .backAnimId = BACK_ANIM_SHAKE_FLASH_YELLOW,
         .palette = gMonPalette_Kotora,
         .shinyPalette = gMonShinyPalette_Kotora,
@@ -231,7 +231,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             ANIMCMD_FRAME(1, 45),
             ANIMCMD_FRAME(0, 15),
          ),
-        FOOTPRINT(Shinx)
+        FOOTPRINT(Kotora)
         SHADOW(-5, 7, SHADOW_SIZE_S)
         OVERWORLD(
             sPicTable_Kotora,
@@ -243,59 +243,64 @@ const struct SpeciesInfo gSpeciesInfo[] =
             gShinyFollowerPalette_Kotora)
         .levelUpLearnset = sKotoraLevelUpLearnset,
         .teachableLearnset = sKotoraTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 15, SPECIES_RAITORA}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 25, SPECIES_RAITORA}),
     },
 
     [SPECIES_RAITORA] =
     {
-        .baseHP        = 60,
+        .baseHP        = 100,
         .baseAttack    = 85,
-        .baseDefense   = 49,
-        .baseSpeed     = 60,
-        .baseSpAttack  = 60,
-        .baseSpDefense = 49,
+        .baseDefense   = 76,
+        .baseSpeed     = 58,
+        .baseSpAttack  = 88,
+        .baseSpDefense = 83,
         .types = MON_TYPES(TYPE_ELECTRIC),
         .catchRate = 120,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 127 : 117,
-        .evYield_Attack = 2,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 162 : 152,
+        .evYield_HP = 2,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = 100,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_RIVALRY, ABILITY_INTIMIDATE, ABILITY_GUTS },
+        .abilities = { ABILITY_THICK_FAT, ABILITY_INTIMIDATE, ABILITY_STATIC },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Raitora"),
-        .unknownName = _("Spark Tiger"),
-        .cryId = CRY_LUXIO,
+        .unknownName = _("Bolt Tiger"),
+        .cryId = CRY_HAXORUS,
         .natDexNum = NATIONAL_DEX_RAITORA,
-        .categoryName = _("Static"),
+        .categoryName = _("Bolt Tiger"),
         .height = 9,
         .weight = 305,
         .description = COMPOUND_STRING(
-            "TODO EVA\n"
-            "Strong electricity courses through the\n"
-            "tips of its sharp claws. A light scratch\n"
-            "has enough amperage to cause fainting\n"
-            "in foes."),
+            "It puffs up its fur with static\n"
+            "electricity to look bigger. It often\n"
+            "forgets to control its strength in its\n"
+            "enthusiasm."
+        ),
         .pokemonScale = 338,
         .pokemonOffset = 10,
         .trainerScale = 256,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_Raitora,
         .frontPicSize = MON_COORDS_SIZE(48, 48),
-        .frontPicYOffset = 10,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        .frontAnimId = ANIM_H_STRETCH,
+        .frontPicYOffset = 6,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 12),
+            ANIMCMD_FRAME(1, 45),
+            ANIMCMD_FRAME(0, 15),
+         ),
+        .frontAnimId = ANIM_FLASH_YELLOW,
         .backPic = gMonBackPic_Raitora,
         .backPicSize = MON_COORDS_SIZE(48, 48),
-        .backPicYOffset = 4,
+        .backPicYOffset = 0,
         .backAnimId = BACK_ANIM_JOLT_RIGHT,
         .palette = gMonPalette_Raitora,
         .shinyPalette = gMonShinyPalette_Raitora,
         .iconPalIndex = 0,
         .iconSprite = gMonIcon_Raitora,
-        FOOTPRINT(Luxio)
+        FOOTPRINT(Raitora)
+        SHADOW(0, 5, SHADOW_SIZE_M)
         OVERWORLD(
             sPicTable_Raitora,
             SIZE_32x32,
@@ -306,77 +311,6 @@ const struct SpeciesInfo gSpeciesInfo[] =
             gShinyFollowerPalette_Raitora)
         .levelUpLearnset = sRaitoraLevelUpLearnset,
         .teachableLearnset = sRaitoraTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_GAOTORA}),
-    },
-
-    [SPECIES_GAOTORA] =
-    {
-        .baseHP        = 80,
-        .baseAttack    = 120,
-        .baseDefense   = 79,
-        .baseSpeed     = 70,
-        .baseSpAttack  = 95,
-        .baseSpDefense = 79,
-        .types = MON_TYPES(TYPE_ELECTRIC),
-        .catchRate = 45,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 262,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 235,
-    #else
-        .expYield = 194,
-    #endif
-        .evYield_Attack = 3,
-        .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
-        .friendship = STANDARD_FRIENDSHIP,
-        .growthRate = GROWTH_MEDIUM_SLOW,
-        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_RIVALRY, ABILITY_INTIMIDATE, ABILITY_GUTS },
-        .bodyColor = BODY_COLOR_YELLOW,
-        .speciesName = _("Gaotora"),
-        .unknownName = _("??????????"),
-        .cryId = CRY_LUXRAY,
-        .natDexNum = NATIONAL_DEX_GAOTORA,
-        .categoryName = _("Thunder"),
-        .height = 14,
-        .weight = 420,
-        .description = COMPOUND_STRING(
-            "TODO EVA\n"
-            "It has eyes which can see through\n"
-            "anything. Luxray's ability to see\n"
-            "through objects comes in handy when\n"
-            "it's scouting for danger."),
-        .pokemonScale = 265,
-        .pokemonOffset = 2,
-        .trainerScale = 262,
-        .trainerOffset = 0,
-
-
-        .frontPic = gMonFrontPic_Gaotora,
-        .frontPicSize = MON_COORDS_SIZE(64, 64),
-        .frontPicYOffset = 10,
-        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
-        .frontAnimId = ANIM_GLOW_YELLOW,
-        .backPic = gMonBackPic_Gaotora,
-        .backPicSize = MON_COORDS_SIZE(64, 64),
-        .backPicYOffset = 4,
-        .backAnimId = BACK_ANIM_SHRINK_GROW_VIBRATE,
-        .palette = gMonPalette_Gaotora,
-        .shinyPalette = gMonShinyPalette_Gaotora,
-        .iconPalIndex = 0,
-        .iconSprite = gMonIcon_Gaotora,
-        FOOTPRINT(Luxio)
-        OVERWORLD(
-            sPicTable_Gaotora,
-            SIZE_32x32,
-            SHADOW_SIZE_M,
-            TRACKS_FOOT,
-            sAnimTable_Following,
-            gFollowerPalette_Gaotora,
-            gShinyFollowerPalette_Gaotora)
-        .levelUpLearnset = sGaotoraLevelUpLearnset,
-        .teachableLearnset = sGaotoraTeachableLearnset
     },
 #endif // P_FAMILY_KOTORA
 

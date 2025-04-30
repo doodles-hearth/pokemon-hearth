@@ -57,15 +57,16 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 	if(flag(FLAG_RECEIVED_HM_CUT)) {
 			// Home for the night
 			if(flag(FLAG_CUT_QUEST_CUT_ALL_GRASS)){
+				speakername("Old Man")
 				msgbox(format(
 					"The sun is setting on another day.\p"
 					"Life is good."
 				))
 				closemessage
 			} else {
-				// Cut grass quest todo
+				speakername("Old Man")
 				msgbox(format(
-					"Are you finding the Cut technique useful?\p"
+					"Are you finding the Secret of Blade useful?\p"
 					"No, I still haven't trimmed my garden. I really should get to it…"
 				))
 				closemessage
@@ -73,23 +74,40 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 	}
 	// First time
 	else {
+		speakername("Old Man")
 		msgbox(format(
 			"Hello, there. I don't get many visitors, so sit down, have some tea!\p"
 			"What? My garden is overrun by weeds?\p"
 			"Ho ho ho…\p"
 			"You're right, I have been neglecting it lately. You see, my old back isn't as strong as it used to be.\p"
-			"Here, your Pokémon can trim them using this."
+			"I'm going to let you in on a secret…\p"
+			"Long ago, a powerful swordmaster came up with a secret cutting technique.\p"
+			"I just so happen to have it written down right here!\p"
+			"You don't look much like a swordmaster… But surely a Wielder like you could teach their Pokémon the Secret of Blade!"
 		))
 		closemessage
 
-		giveitem(ITEM_HM_CUT)
-		setflag(FLAG_RECEIVED_HM_CUT)
+		giveitem(ITEM_SECRET_CUT)
+
+		speakername("Old Man")
 		msgbox(format(
-			"This scroll contains an ancient technique created by the most talented samurai. Pokémon can learn that technique too.\p"
-			"If you have a Pokémon capable of learning this move, it will be able to cut tall grass as well as little trees that block your path.\p"
-			"In fact, now that you have read the scroll, you don't even need to teach them the actual move!\p"
-			"Don't ask me how this works, it just does!\p"
-			"Oh, you will need at least one official Dojo Token to be able to cut trees and grass, though."
+			"There is a variety of slicing moves that your Pokémon can use.\p"
+			"They will now be able to use those moves to cut tall grass and little trees that block your path.\p"
+			"You will need at least one official Dojo Token for that, though.\p"
+			"We can't be going around cutting trees irresponsibly, now can we?\p"
+			"You can also have this, in case your Pokémon don't know any slicing moves yet.\p"
+			"A scroll can be used to teach your Pokémon a move!"
+		))
+		closemessage
+
+		giveitem(ITEM_TM_NICK)
+		setflag(FLAG_RECEIVED_HM_CUT)
+		
+		speakername("Old Man")
+		msgbox(format(
+			"Want to know another secret?\p"
+			"That powerful swordmaster I mentioned…\p"
+			"That was me in my youthful days,\nho ho ho…"
 		))
 		closemessage
 	}

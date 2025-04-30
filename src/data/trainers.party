@@ -143,7 +143,7 @@ AI: Basic Trainer
 Joltik
 Level: 3
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Absorb
+- Leech Life
 - Fury Cutter
 
 Joltik
@@ -175,11 +175,12 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Double Kick
 - Absorb
 
-Sewaddle Tokuan
+Kotora
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Baby Doll Eyes
+- Thunder Shock
 - Tackle
-- String Shot
 
 Nacli
 Level: 6

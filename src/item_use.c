@@ -90,6 +90,7 @@ static const u8 sText_PowderQty[] = _("POWDER QTY: {STR_VAR_1}{PAUSE_UNTIL_PRESS
 static const u8 sText_BootedUpTM[] = _("Booted up a TM.");
 static const u8 sText_BootedUpHM[] = _("Booted up an HM.");
 static const u8 sText_TMHMContainedVar1[] = _("Teach the {STR_VAR_1}\ntechnique to a POKéMON?");
+static const u8 sText_TMHMContainedVarFieldMove[] = _("This technique is also\na field move!\lTeach the {STR_VAR_1}\ltechnique to a POKéMON?");
 static const u8 sText_UsedVar2WildLured[] = _("{PLAYER} used the\n{STR_VAR_2}.\pWild POKéMON will be lured.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_UsedVar2WildRepelled[] = _("{PLAYER} used the\n{STR_VAR_2}.\pWild POKéMON will be repelled.{PAUSE_UNTIL_PRESS}");
 static const u8 sText_PlayedPokeFluteCatchy[] = _("Played the POKé FLUTE.\pNow, that's a catchy tune!{PAUSE_UNTIL_PRESS}");
@@ -895,8 +896,17 @@ UNUSED static void BootUpSoundTMHM(u8 taskId)
 
 static void Task_ShowTMHMContainedMessage(u8 taskId)
 {
-    StringCopy(gStringVar1, GetMoveName(ItemIdToBattleMoveId(gSpecialVar_ItemId)));
-    StringExpandPlaceholders(gStringVar4, sText_TMHMContainedVar1);
+    u32 moveId = ItemIdToBattleMoveId(gSpecialVar_ItemId);
+    StringCopy(gStringVar1, GetMoveName(moveId));
+    if (gMovesInfo[moveId].fieldMoveFlags)
+    {
+        StringExpandPlaceholders(gStringVar4, sText_TMHMContainedVarFieldMove);
+    }
+    else
+    {
+        StringExpandPlaceholders(gStringVar4, sText_TMHMContainedVar1);
+    }
+
     DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, UseTMHMYesNo);
 }
 
@@ -1638,8 +1648,8 @@ void ItemUseOutOfBattle_TownMap(u8 taskId)
     }
     else
     {
-        // TODO: handle key items with callbacks to menus allow to be used by registering them.
-        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+        sItemUseOnFieldCB = ItemUseOnFieldCB_TownMap;
+        SetUpItemUseOnFieldCallback(taskId);
     }
 }
 

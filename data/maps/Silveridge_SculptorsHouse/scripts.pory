@@ -1,7 +1,19 @@
 const LOCALID_SCULPTOR = 0
 
 mapscripts Silveridge_SculptorsHouse_MapScripts {
-	
+	MAP_SCRIPT_ON_LOAD {
+		if (var(VAR_STATE_SCULPTOR) >= 2) {
+			call(Silveridge_SculptorsHouse_EventScript_DrawPonyta)
+		}
+		if (var(VAR_STATE_SCULPTOR) >= 3) {
+			call(Silveridge_SculptorsHouse_EventScript_DrawOnix)
+		}
+		if (var(VAR_STATE_SCULPTOR) >= 4) {
+			call(Silveridge_SculptorsHouse_EventScript_DrawClefable)
+		}
+
+		special(DrawWholeMapView)
+	}
 }
 
 script Silveridge_House1_EventScript_Sculptor {
@@ -16,23 +28,66 @@ script Silveridge_House1_EventScript_Sculptor {
 			call(Silveridge_House1_EventScript_Sculptor_FirstTime)
 		case 1:
 			// Current mon
-			setvar(VAR_TEMP_1, SPECIES_ONIX)
+			setvar(VAR_TEMP_1, SPECIES_PONYTA)
 			// Next mon
-			setvar(VAR_TEMP_2, SPECIES_PONYTA)
+			setvar(VAR_TEMP_2, SPECIES_ONIX)
 			// Reward
 			setvar(VAR_TEMP_3, ITEM_TM_ANCIENT_POWER)
 
 			call(Silveridge_House1_EventScript_Sculptor_BringMeMon)
 		case 2:
 			// Current mon
-			setvar(VAR_TEMP_1, SPECIES_PONYTA)
+			setvar(VAR_TEMP_1, SPECIES_ONIX)
 			// Next mon
-			setvar(VAR_TEMP_2, SPECIES_HERACROSS)
+			setvar(VAR_TEMP_2, SPECIES_CLEFABLE)
 			// Reward
-			setvar(VAR_TEMP_3, ITEM_TM_ANCIENT_POWER)
+			setvar(VAR_TEMP_3, ITEM_TM_ROCK_BLAST)
+
+			call(Silveridge_House1_EventScript_Sculptor_BringMeMon)
+		case 3:
+			// Current mon
+			setvar(VAR_TEMP_1, SPECIES_CLEFABLE)
+			// Next mon
+			setvar(VAR_TEMP_2, SPECIES_DRAGONAIR)
+			// Reward
+			// TODO
+			setvar(VAR_TEMP_3, ITEM_TM_ROCK_BLAST)
 
 			call(Silveridge_House1_EventScript_Sculptor_BringMeMon)
 	}
+}
+
+script Silveridge_SculptorsHouse_EventScript_DrawCurrentMon {
+	switch(var(VAR_TEMP_1)) {
+		case SPECIES_PONYTA:
+			call(Silveridge_SculptorsHouse_EventScript_DrawPonyta)
+		case SPECIES_ONIX:
+			call(Silveridge_SculptorsHouse_EventScript_DrawOnix)
+		case SPECIES_CLEFABLE:
+			call(Silveridge_SculptorsHouse_EventScript_DrawClefable)
+	}
+
+	special(DrawWholeMapView)
+}
+
+script Silveridge_SculptorsHouse_EventScript_DrawPonyta {
+	setmetatile(13, 3, METATILE_HouseStone_StatuePonytaTopLeft, FALSE)
+	setmetatile(13, 4, METATILE_HouseStone_StatuePonytaBottomLeft, TRUE)
+	setmetatile(14, 4, METATILE_HouseStone_StatuePonytaBottomRight, TRUE)
+}
+
+script Silveridge_SculptorsHouse_EventScript_DrawOnix {
+	setmetatile(11, 1, METATILE_HouseStone_StatueOnixTopLeft, FALSE)
+	setmetatile(12, 1, METATILE_HouseStone_StatueOnixTopRight, FALSE)
+	setmetatile(11, 2, METATILE_HouseStone_StatueOnixBottomLeft, TRUE)
+	setmetatile(12, 2, METATILE_HouseStone_StatueOnixBottomRight, TRUE)
+}
+
+script Silveridge_SculptorsHouse_EventScript_DrawClefable {
+	setmetatile(9, 2, METATILE_HouseStone_StatueClefableTopLeft, FALSE)
+	setmetatile(10, 2, METATILE_HouseStone_StatueClefableTopRight, FALSE)
+	setmetatile(9, 3, METATILE_HouseStone_StatueClefableBottomLeft, TRUE)
+	setmetatile(10, 3, METATILE_HouseStone_StatueClefableBottomRight, TRUE)
 }
 
 script Silveridge_House1_EventScript_Sculptor_BringMeMon {
@@ -71,6 +126,9 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 		playse(SE_M_FLATTER)
 		delay(24)
 		playse(SE_M_FLATTER)
+
+		call(Silveridge_SculptorsHouse_EventScript_DrawCurrentMon)
+
 		delay(48)
 		fadescreenswapbuffers(FADE_FROM_BLACK)
 
@@ -132,12 +190,12 @@ script Silveridge_House1_EventScript_Sculptor_FirstTime {
 		"Am I no longer utterly alone? Oh, my heart swells up at the idea!\p"
 		"As a fellow connoisseur of sculpture, you must know how difficult it is to find a proper model, one that will stir in its beholder the most violent passions.\p"
 		"To transform a raw slab of stone into the pinnacle of beauty… That is my aspiration.\p"
-		"To satisfy this need, I must lay my eyes on an Onix.\p"
-		"I see that you are a trainer. Please show me an Onix to help me achieve my magnum opus."
+		"To satisfy this need, I must lay my eyes on a Ponyta.\p"
+		"I see that you are a Wielder. Please show me a Ponyta to help me achieve my magnum opus."
 	))
 	closemessage
 
-	setnamedmon(SPECIES_ONIX)
+	setnamedmon(SPECIES_PONYTA)
 	setvar(VAR_STATE_SCULPTOR, 1)
 
 	release

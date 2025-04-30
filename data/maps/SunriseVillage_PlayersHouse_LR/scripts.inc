@@ -52,11 +52,11 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis::
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
 	goto_if_eq SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4
 	special GetPlayerBroSisString
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_6
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
 	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_7
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_6
 	closemessage
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_1:
 	release
@@ -78,18 +78,14 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 	bufferspeciesname STR_VAR_2, VAR_STARTER_MON
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2
 	closemessage
-	giveitem ITEM_POKE_BALL, 5
-	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3
-	closemessage
 	giveitem ITEM_TOWN_MAP
 	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_4
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3
 	closemessage
 	giveitem ITEM_ENTEI_STATUETTE
 	special GetPlayerBrotherSisterString
 	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_4
 	closemessage
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
 	setflag FLAG_HIDE_GUARD_SUNRISE_VILLAGE
@@ -135,6 +131,8 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_1:
 	.string "because I'm VERY EXCITED!\p"
 	.string "I have to head out! Don't be late, I\n"
 	.string "know you, little {STR_VAR_1}!\p"
+	.string "And don't forget to pick up the bag I\n"
+	.string "made for you before you leave!\p"
 	.string "By the way, your friend Natsuki left\n"
 	.string "you a note.\p"
 	.string "Make sure you read it!$"
@@ -158,40 +156,36 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2:
 	.string "with you?\p"
 	.string "{STR_VAR_2}, huh?\p"
 	.string "Looks like it already likes you a lot!\n"
-	.string "You're going to make a great wielder, I\l"
+	.string "You're going to make a great Wielder, I\l"
 	.string "know it!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "So you're going on a journey…\p"
 	.string "That's great! I'm proud of you,\n"
 	.string "{PLAYER}.\p"
-	.string "Here, take some of these Poké Balls,\n"
-	.string "in case you find any good Pokémon!$"
+	.string "I'm sure you're going to get lost\n"
+	.string "though, so I'll lend you my map of\l"
+	.string "Toku!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3:
-	.string "Oh, and I'm sure you're going to get\n"
-	.string "lost, so I'll lend you my map of Toku!$"
-
-SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_4:
-	.string "I think that was all…\n"
-	.string "Ah, one last thing! Take my good luck\l"
+	.string "Ah, one last thing! Take my good luck\n"
 	.string "statuette with you.\p"
 	.string "I like the tradition, so indulge me,\n"
 	.string "alright? Please? Everyone carries\l"
 	.string "one!$"
 
-SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5:
+SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_4:
 	.string "Alrighty! You all set? Have a safe\n"
 	.string "journey, little {STR_VAR_1}.\p"
 	.string "Maybe I'll see you around!\p"
 	.string "Come back home sometimes though, will\n"
 	.string "you?$"
 
-SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_6:
+SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5:
 	.string "Hey {PLAYER}! How's it going?\p"
 	.string "Here, rest for a bit.$"
 
-SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_7:
+SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_6:
 	.string "See you around, little\n"
 	.string "{STR_VAR_1}.$"
 

@@ -8,7 +8,7 @@ script YifuCity_House4_EventScript_NameRater {
 	msgbox(format(
 		"Names are the mirror of the soul!\p"
 		"{FONT_SMALL}Or was that the eyes? Bah…{FONT_NORMAL}\p"
-		"I have been told I have a way\nwith names.\lYoung wielder…\lWould you like me\lto counsel you on the naming of\lyour Pokémon?"
+		"I have been told I have a way\nwith names.\lYoung Wielder…\lWould you like me\lto counsel you on the naming of\lyour Pokémon?"
 	), MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		msgbox(format(

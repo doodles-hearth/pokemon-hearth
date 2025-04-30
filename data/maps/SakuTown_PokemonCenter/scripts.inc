@@ -11,6 +11,8 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	copyvar VAR_TEMP_1, VAR_RESULT
 	returnqueststate QUEST_SAKURASCYTHER
 	copyvar VAR_TEMP_2, VAR_RESULT
+	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_1
+	setflag FLAG_HIDE_SAKU_REFUGE_FARMERS_2
 	compare VAR_TEMP_0, 4
 	goto_if_eq SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
 SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
@@ -318,7 +320,7 @@ SakuTown_PokemonCenter_EventScript_Makuhita::
 	msgbox SakuTown_PokemonCenter_EventScript_Makuhita_Text_0
 	waitmoncry
 	waitmessage
-	speakername NULL
+	closemessage
 	msgbox SakuTown_PokemonCenter_EventScript_Makuhita_Text_1
 	release
 	return

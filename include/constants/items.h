@@ -1018,9 +1018,18 @@
 #define ITEM_STOLEN_MONS 845
 #define ITEM_REVIVAL_POWDER 846
 #define ITEM_REVIVAL_BALM 847
-#define ITEM_SPECIAL_MEDICINE 848
+#define ITEM_SECRET_CUT 848
+#define ITEM_SECRET_SMASH 849
+#define ITEM_SECRET_STRENGTH 850
+#define ITEM_SECRET_SURF 851
+#define ITEM_SECRET_DIVE 852
+#define ITEM_SECRET_WATERFALL 853
+#define ITEM_SECRET_FLY 854
+#define ITEM_SECRET_CLIMB 855
+#define ITEM_SECRET_FLASH 856
+#define ITEM_SPECIAL_MEDICINE 857
 
-#define ITEMS_COUNT 849
+#define ITEMS_COUNT 858
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

@@ -18,6 +18,7 @@
 #include "evolution_scene.h"
 #include "field_control_avatar.h"
 #include "field_effect.h"
+#include "field_moves.h"
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
 #include "field_specials.h"
@@ -132,11 +133,11 @@ enum {
 // Badge flag names are commented here for people searching for references to remove the badge requirement.
 enum {
     FIELD_MOVE_CUT,         // FLAG_BADGE01_GET
-    FIELD_MOVE_FLASH,       // FLAG_BADGE02_GET
-    FIELD_MOVE_ROCK_SMASH,  // FLAG_BADGE03_GET
-    FIELD_MOVE_STRENGTH,    // FLAG_BADGE04_GET
-    FIELD_MOVE_SURF,        // FLAG_BADGE05_GET
-    FIELD_MOVE_FLY,         // FLAG_BADGE06_GET
+    FIELD_MOVE_ROCK_SMASH,  // FLAG_BADGE02_GET
+    FIELD_MOVE_FLASH,       // FLAG_BADGE03_GET
+    FIELD_MOVE_SURF,        // FLAG_BADGE04_GET
+    FIELD_MOVE_FLY,         // FLAG_BADGE05_GET
+    FIELD_MOVE_STRENGTH,    // FLAG_BADGE06_GET
     FIELD_MOVE_DIVE,        // FLAG_BADGE07_GET
     FIELD_MOVE_WATERFALL,   // FLAG_BADGE08_GET
     FIELD_MOVE_TELEPORT,
@@ -150,6 +151,42 @@ enum {
 #endif
     FIELD_MOVES_COUNT
 };
+
+struct FieldMoveMenuItem
+{
+    u32 type;
+    u32 partyMenuItem;
+};
+const struct FieldMoveMenuItem gFieldMoveTypeMenuItem[] = 
+{
+    {IS_FIELD_MOVE_CUT, FIELD_MOVE_CUT},
+    {IS_FIELD_MOVE_SMASH, FIELD_MOVE_ROCK_SMASH},
+    {IS_FIELD_MOVE_PUSH, FIELD_MOVE_STRENGTH},
+    {IS_FIELD_MOVE_SURF, FIELD_MOVE_SURF},
+    {IS_FIELD_MOVE_WATERFALL, FIELD_MOVE_WATERFALL},
+    {IS_FIELD_MOVE_DIVE, FIELD_MOVE_DIVE},
+    {IS_FIELD_MOVE_DIG, FIELD_MOVE_DIG},
+    {IS_FIELD_MOVE_FLASH, FIELD_MOVE_FLASH},
+    {IS_FIELD_MOVE_FLY, FIELD_MOVE_FLY},
+    {IS_FIELD_MOVE_SECRET_POWER, FIELD_MOVE_SECRET_POWER},
+#if OW_DEFOG_FIELD_MOVE == TRUE
+    {IS_FIELD_MOVE_DEFOG, FIELD_MOVE_DEFOG},
+#endif
+    {FIELD_MOVE_COUNT, 0xFF},
+};
+
+static u32 FindFieldMoveMenuItemIndexByType(u32 fieldMoveType)
+{
+    for (u32 i = 0; gFieldMoveTypeMenuItem[i].type != FIELD_MOVE_COUNT; i += 1)
+    {
+        if (gFieldMoveTypeMenuItem[i].type == fieldMoveType)
+        {
+            // DebugPrintf("index = %d", i);
+            return i;
+        }
+    }
+    return 0xFF;
+}
 
 enum {
     PARTY_BOX_LEFT_COLUMN,
@@ -331,7 +368,6 @@ static void HandleChooseMonSelection(u8, s8 *);
 static u16 PartyMenuButtonHandler(s8 *);
 static s8 *GetCurrentPartySlotPtr(void);
 static bool8 IsSelectedMonNotEgg(u8 *);
-static bool8 DoesSelectedMonKnowHM(u8 *);
 static void PartyMenuRemoveWindow(u8 *);
 static void CB2_SetUpExitToBattleScreen(void);
 static void Task_ClosePartyMenuAfterText(u8);
@@ -1549,18 +1585,10 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
         case PARTY_ACTION_SEND_MON_TO_BOX:
         {
             u8 partyId = GetPartyIdFromBattleSlot((u8)*slotPtr);
-            if (partyId == 0 || ((gBattleTypeFlags & BATTLE_TYPE_DOUBLE) && partyId == 2)
-                || ((gBattleTypeFlags & BATTLE_TYPE_MULTI) && partyId >= (PARTY_SIZE / 2)))
+            if ((gBattleTypeFlags & BATTLE_TYPE_MULTI) && partyId >= (PARTY_SIZE / 2))
             {
-                // Can't select if mon is currently on the field, or doesn't belong to you
+                // Can't select if mon doesn't belong to you
                 PlaySE(SE_FAILURE);
-            }
-            else if (DoesSelectedMonKnowHM((u8 *)slotPtr))
-            {
-                PlaySE(SE_FAILURE);
-                DisplayPartyMenuMessage(gText_CannotSendMonToBoxHM, FALSE);
-                ScheduleBgCopyTilemapToVram(2);
-                gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
             }
             else
             {
@@ -1588,25 +1616,6 @@ static bool8 IsSelectedMonNotEgg(u8 *slotPtr)
         return FALSE;
     }
     return TRUE;
-}
-
-static bool8 DoesSelectedMonKnowHM(u8 *slotPtr)
-{
-    if (B_CATCH_SWAP_CHECK_HMS == FALSE)
-        return FALSE;
-
-    for (u32 i = 0; i < MAX_MON_MOVES; i++)
-    {
-        u32 j = 0;
-        u16 move = GetMonData(&gPlayerParty[*slotPtr], MON_DATA_MOVE1 + i);
-
-        while (sHMMoves[j] != HM_MOVES_END)
-        {
-            if (sHMMoves[j++] == move)
-                return TRUE;
-        }
-    }
-    return FALSE;
 }
 
 static void HandleChooseMonCancel(u8 taskId, s8 *slotPtr)
@@ -2904,41 +2913,35 @@ static void SetPartyMonSelectionActions(struct Pokemon *mons, u8 slotId, u8 acti
     }
 }
 
+/**
+ * Builds the list of menu items displayed when selecting a Pokémon in the party menu.
+ *
+ * @param mons party mons
+ * @param index of selected Pokémon
+ */
 static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 {
-    u8 i, j;
-
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
 
-    // Add field moves to action list
-    for (i = 0; i < MAX_MON_MOVES; i++)
+    // For each of the possible field move types
+    for (enum FieldMoveType fieldMoveType = IS_FIELD_MOVE_CUT; fieldMoveType < FIELD_MOVE_COUNT; fieldMoveType = fieldMoveType << 1)
     {
-        for (j = 0; j != FIELD_MOVES_COUNT; j++)
+        // If player has been granted the field move
+        // and Pokémon knows a move of that field move type,
+        // add the menu item for that field move
+        if (
+            FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag)
+            && KnowsFieldMove(&mons[slotId], fieldMoveType)
+        )
         {
-            if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == sFieldMoves[j])
-            {
-                // If Mon already knows Cut, Fly, or Flash, prevent it from being added to action list here
-                // as it will be added later with different logic
-                if (sFieldMoves[j] != MOVE_CUT && sFieldMoves[j] != MOVE_FLY && sFieldMoves[j] != MOVE_FLASH ){
-                    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
-                }
-                break;
-            }
+            AppendToList(
+                sPartyMenuInternal->actions,
+                &sPartyMenuInternal->numActions,
+                gFieldMoveTypeMenuItem[FindFieldMoveMenuItemIndexByType(fieldMoveType)].partyMenuItem + MENU_FIELD_MOVES
+            );
         }
     }
-
-    // If player has 6th badge, action list consists of < 4 moves, Mon can learn Fly, and player has HM02 in bag
-    if (FlagGet(FLAG_BADGE06_GET) && sPartyMenuInternal->numActions < 5 && (CanTeachMove(&mons[slotId], MOVE_FLY) != 1) && CheckBagHasItem(ITEM_HM02, 1)) 
-        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 5 + MENU_FIELD_MOVES);
-    
-    // If player has 2nd badge, action list consists of < 4 moves, Mon can learn Flash, and player has HM05 in bag
-    if (FlagGet(FLAG_BADGE02_GET) && sPartyMenuInternal->numActions < 5 && (CanTeachMove(&mons[slotId], MOVE_FLASH) != 1) && CheckBagHasItem(ITEM_HM05, 1)) 
-        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 1 + MENU_FIELD_MOVES);
-
-    // If player has 1st badge, action list consists of < 4 moves, Mon can learn Cut, and player has HM01 in bag
-    if (FlagGet(FLAG_BADGE01_GET) && sPartyMenuInternal->numActions < 5 && (CanTeachMove(&mons[slotId], MOVE_CUT) != 1) && CheckBagHasItem(ITEM_HM01, 1)) 
-        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_FIELD_MOVES);
 
     if (!InBattlePike())
     {
@@ -2949,6 +2952,7 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
         else
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_ITEM);
     }
+
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_CANCEL1);
 }
 

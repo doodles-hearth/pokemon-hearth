@@ -178,7 +178,7 @@ script KuraTown_Dojo_EventScript_Advice {
 	if (flag(FLAG_BADGE02_GET)) {
 		speakername("Man")
 		msgbox(format(
-			"That was a beautiful fight! You're going to blossom into an excellent Pokémon wielder, I can just feel it!"
+			"That was a beautiful fight! You're going to blossom into an excellent Pokémon Wielder, I can just feel it!"
 		))
 	} else {
 		speakername("Man")
@@ -218,7 +218,7 @@ script KuraTown_Dojo_EventScript_DojoStatue {
 	if (flag(FLAG_BADGE02_GET)) {
 		msgbox(
 			"Dojo of Kura Village\p"
-			"Certified wielders:\n"
+			"certified Wielders:\n"
 			"Natsuki,\l"
 			"{PLAYER}",
 			MSGBOX_SIGN
@@ -226,7 +226,7 @@ script KuraTown_Dojo_EventScript_DojoStatue {
 	} else {
 		msgbox(
 			"Dojo of Kura Village\p"
-			"Certified wielders:\n"
+			"certified Wielders:\n"
 			"Natsuki",
 			MSGBOX_SIGN
 		)

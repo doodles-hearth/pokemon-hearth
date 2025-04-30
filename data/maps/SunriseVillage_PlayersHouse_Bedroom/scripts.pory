@@ -1,4 +1,5 @@
 const LOCALID_BAG = 13
+const VAR_PICKED_UP_BAG = VAR_TEMP_0
 
 mapscripts SunriseVillage_PlayersHouse_Bedroom_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
@@ -10,6 +11,9 @@ mapscripts SunriseVillage_PlayersHouse_Bedroom_MapScripts {
 		}
 	}
 	MAP_SCRIPT_ON_TRANSITION {
+		if (flag(FLAG_SYS_QUEST_MENU_GET)) {
+			setvar(VAR_PICKED_UP_BAG, 1)
+		}
 		call(SecretBase_EventScript_SetDecorationFlags)
 	}
 }
@@ -92,30 +96,36 @@ script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
 }
 
 script SunriseVillage_PlayersHouse_Bedroom_Stuff {
-	if(!flag(FLAG_SYS_QUEST_MENU_GET)) {
 	msgbox(format(
-		"It's the Pokémon medicine your sister got for you."
+		"It's the medicine and Pokéballs your sister got for you."
 	), MSGBOX_SIGN)
 	waitmessage
 
 	giveitem(ITEM_OINTMENT, 5)
+	giveitem(ITEM_POKE_BALL, 5)
 
 	msgbox(format("There is also your journal inside! It might come in handy."), MSGBOX_DEFAULT)
 	closemessage
 
 	setflag(FLAG_SYS_QUEST_MENU_GET)
-
+	setvar(VAR_PICKED_UP_BAG, 1)
 	removeobject(LOCALID_BAG)
-	
-	} else {
-		playfanfare(MUS_OBTAIN_ITEM)
-		msgbox(format(
-			"You got the lint from the bottom of the chest!"
-		), MSGBOX_SIGN)
-		waitfanfare
-		waitmessage
-		closemessage
-	}
+}
+
+script SunriseVillage_PlayersHouse_Bedroom_Trigger_ForgotBag {
+	lockall
+	playse(SE_PIN)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark, delay_16 * 3))
+	waitmovement(0)
+	waitse
+	msgbox(format(
+		"…You almost forgot to pick up your bag."
+	))
+	closemessage
+
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
+	waitmovement(0)
+	releaseall
 }
 
 script SunriseVillage_EventScript_PlayerPc {

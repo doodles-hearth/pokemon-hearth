@@ -29,6 +29,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 		"Oh, {PLAYER}, you're up! Ready for the big event?\p"
 		"Are you excited? I sure hope you are, because I'm VERY EXCITED!\p"
 		"I have to head out! Don't be late, I know you, little {STR_VAR_1}!\p"
+		"And don't forget to pick up the bag I made for you before you leave!\p"
 		"By the way, your friend Natsuki left you a note.\p"
 		"Make sure you read it!"
 	))
@@ -76,19 +77,11 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 			"Hey little {STR_VAR_1}! See how cute my new Pokémon is?\p"
 			"Oh, who is that lovely little thing with you?\p"
 			"{STR_VAR_2}, huh?\p"
-			"Looks like it already likes you a lot! You're going to make a great wielder, I know it!\p"
+			"Looks like it already likes you a lot! You're going to make a great Wielder, I know it!\p"
 			"… … … … … …\n… … … … … …\p"
 			"So you're going on a journey…\p"
 			"That's great! I'm proud of you, {PLAYER}.\p"
-			"Here, take some of these Poké Balls, in case you find any good Pokémon!"
-		))
-		closemessage
-
-		giveitem(ITEM_POKE_BALL, 5)
-
-		speakername("Big sis")
-		msgbox(format(
-			"Oh, and I'm sure you're going to get lost, so I'll lend you my map of Toku!"
+			"I'm sure you're going to get lost though, so I'll lend you my map of Toku!"
 		))
 		closemessage
 
@@ -96,7 +89,6 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 
 		speakername("Big sis")
 		msgbox(format(
-			"I think that was all…\n"
 			"Ah, one last thing! Take my good luck statuette with you.\p"
 			"I like the tradition, so indulge me, alright? Please? Everyone carries one!"
 		))

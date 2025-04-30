@@ -556,34 +556,34 @@ const u16 gItemIconPalette_RetroMail[] = INCBIN_U16("graphics/items/icon_palette
 // Evolution Items
 
 const u32 gItemIcon_FireStone[] = INCBIN_U32("graphics/items/icons/fire_stone.4bpp.lz");
-const u16 gItemIconPalette_FireStone[] = INCBIN_U16("graphics/items/icon_palettes/fire_stone.gbapal");
+const u16 gItemIconPalette_FireStone[] = INCBIN_U16("graphics/items/icons/fire_stone.gbapal");
 
 const u32 gItemIcon_WaterStone[] = INCBIN_U32("graphics/items/icons/water_stone.4bpp.lz");
-const u16 gItemIconPalette_WaterStone[] = INCBIN_U16("graphics/items/icon_palettes/water_stone.gbapal");
+const u16 gItemIconPalette_WaterStone[] = INCBIN_U16("graphics/items/icons/water_stone.gbapal");
 
 const u32 gItemIcon_ThunderStone[] = INCBIN_U32("graphics/items/icons/thunder_stone.4bpp.lz");
-const u16 gItemIconPalette_ThunderStone[] = INCBIN_U16("graphics/items/icon_palettes/thunder_stone.gbapal");
+const u16 gItemIconPalette_ThunderStone[] = INCBIN_U16("graphics/items/icons/thunder_stone.gbapal");
 
 const u32 gItemIcon_LeafStone[] = INCBIN_U32("graphics/items/icons/leaf_stone.4bpp.lz");
-const u16 gItemIconPalette_LeafStone[] = INCBIN_U16("graphics/items/icon_palettes/leaf_stone.gbapal");
+const u16 gItemIconPalette_LeafStone[] = INCBIN_U16("graphics/items/icons/leaf_stone.gbapal");
 
 const u32 gItemIcon_IceStone[] = INCBIN_U32("graphics/items/icons/ice_stone.4bpp.lz");
-const u16 gItemIconPalette_IceStone[] = INCBIN_U16("graphics/items/icon_palettes/ice_stone.gbapal");
+const u16 gItemIconPalette_IceStone[] = INCBIN_U16("graphics/items/icons/ice_stone.gbapal");
 
 const u32 gItemIcon_SunStone[] = INCBIN_U32("graphics/items/icons/sun_stone.4bpp.lz");
-const u16 gItemIconPalette_SunStone[] = INCBIN_U16("graphics/items/icon_palettes/sun_stone.gbapal");
+const u16 gItemIconPalette_SunStone[] = INCBIN_U16("graphics/items/icons/sun_stone.gbapal");
 
 const u32 gItemIcon_MoonStone[] = INCBIN_U32("graphics/items/icons/moon_stone.4bpp.lz");
-const u16 gItemIconPalette_MoonStone[] = INCBIN_U16("graphics/items/icon_palettes/moon_stone.gbapal");
+const u16 gItemIconPalette_MoonStone[] = INCBIN_U16("graphics/items/icons/moon_stone.gbapal");
 
 const u32 gItemIcon_ShinyStone[] = INCBIN_U32("graphics/items/icons/shiny_stone.4bpp.lz");
-const u16 gItemIconPalette_ShinyStone[] = INCBIN_U16("graphics/items/icon_palettes/shiny_stone.gbapal");
+const u16 gItemIconPalette_ShinyStone[] = INCBIN_U16("graphics/items/icons/shiny_stone.gbapal");
 
 const u32 gItemIcon_DuskStone[] = INCBIN_U32("graphics/items/icons/dusk_stone.4bpp.lz");
-const u16 gItemIconPalette_DuskStone[] = INCBIN_U16("graphics/items/icon_palettes/dusk_stone.gbapal");
+const u16 gItemIconPalette_DuskStone[] = INCBIN_U16("graphics/items/icons/dusk_stone.gbapal");
 
 const u32 gItemIcon_DawnStone[] = INCBIN_U32("graphics/items/icons/dawn_stone.4bpp.lz");
-const u16 gItemIconPalette_DawnStone[] = INCBIN_U16("graphics/items/icon_palettes/dawn_stone.gbapal");
+const u16 gItemIconPalette_DawnStone[] = INCBIN_U16("graphics/items/icons/dawn_stone.gbapal");
 
 const u32 gItemIcon_SweetApple[] = INCBIN_U32("graphics/items/icons/sweet_apple.4bpp.lz");
 const u16 gItemIconPalette_SweetApple[] = INCBIN_U16("graphics/items/icon_palettes/sweet_apple.gbapal");
@@ -1739,6 +1739,17 @@ const u16 gItemIconPalette_DragonScroll[] = INCBIN_U16("graphics/items/icons/scr
 const u16 gItemIconPalette_DarkScroll[] = INCBIN_U16("graphics/items/icons/scrolls/dark.gbapal");
 const u16 gItemIconPalette_SteelScroll[] = INCBIN_U16("graphics/items/icons/scrolls/steel.gbapal");
 const u16 gItemIconPalette_FairyScroll[] = INCBIN_U16("graphics/items/icons/scrolls/fairy.gbapal");
+
+const u32 gItemIcon_SecretScroll[] = INCBIN_U32("graphics/items/icons/secrets/secret_cut.4bpp.lz");
+const u16 gItemIconPalette_SecretScrollCut[] = INCBIN_U16("graphics/items/icons/secrets/secret_cut.gbapal");
+const u16 gItemIconPalette_SecretScrollSmash[] = INCBIN_U16("graphics/items/icons/secrets/secret_smash.gbapal");
+const u16 gItemIconPalette_SecretScrollSurf[] = INCBIN_U16("graphics/items/icons/secrets/secret_surf.gbapal");
+const u16 gItemIconPalette_SecretScrollDive[] = INCBIN_U16("graphics/items/icons/secrets/secret_dive.gbapal");
+const u16 gItemIconPalette_SecretScrollWaterfall[] = INCBIN_U16("graphics/items/icons/secrets/secret_waterfall.gbapal");
+const u16 gItemIconPalette_SecretScrollStrength[] = INCBIN_U16("graphics/items/icons/secrets/secret_strength.gbapal");
+const u16 gItemIconPalette_SecretScrollFly[] = INCBIN_U16("graphics/items/icons/secrets/secret_fly.gbapal");
+const u16 gItemIconPalette_SecretScrollClimb[] = INCBIN_U16("graphics/items/icons/secrets/secret_climb.gbapal");
+const u16 gItemIconPalette_SecretScrollFlash[] = INCBIN_U16("graphics/items/icons/secrets/secret_flash.gbapal");
 
 // Charms
 

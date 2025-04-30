@@ -169,6 +169,7 @@ TEST("Item names fit on Pokemon Storage System")
         if (gItemsInfo[i].importance) continue;
         PARAMETRIZE_LABEL("%S", gItemsInfo[i].name) { item = i; }
     }
+    DebugPrintf("%d", item);
     // All items explicitly listed here are too big to fit.
     switch (item)
     {
@@ -178,7 +179,7 @@ TEST("Item names fit on Pokemon Storage System")
     case ITEM_UNREMARKABLE_TEACUP:
     case ITEM_MASTERPIECE_TEACUP:
     case ITEM_TWICE_SPICED_RADISH:
-    // case ITEM_ENTEI_STATUETTE:
+    case ITEM_ENTEI_STATUETTE:
         EXPECT_GT(GetStringWidth(fontId, gItemsInfo[item].name, 0), widthPx);
         break;
     default:

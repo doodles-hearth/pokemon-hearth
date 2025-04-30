@@ -7,27 +7,40 @@ const LOCALID_TAMA = 20
 const LOCALID_TAMASDAD = 21
 const FLAG_HIDE_NATSUKI = FLAG_TEMP_1
 
+const VAR_GET_QUEST_LOG_STATE_SAKURA_LOVERS = VAR_TEMP_0
+const VAR_GET_QUEST_LOG_STATE_SAKURA_ESPEON = VAR_TEMP_1
+const VAR_GET_QUEST_LOG_STATE_SAKURA_SCYTHER = VAR_TEMP_2
+
 mapscripts SakuTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		call(Common_EventScript_SetupRivalGfxId)
+
 		if (flag(FLAG_SAKU_KURA_REUNITED)) {
 			// Once reunited, the guards from the two villages play a board game together
 			setmetatile(19, 2, METATILE_SakuKura_BoardGame, TRUE)
 			setobjectmovementtype(LOCALID_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
 		}
+
 		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 4) {
 			setflag(FLAG_TEMP_2)
 			setflag(FLAG_TEMP_3)
-			}
+		}
+
 		returnqueststate(QUEST_SAKURALOVERS)
-		copyvar(VAR_TEMP_0, VAR_RESULT)
+		copyvar(VAR_GET_QUEST_LOG_STATE_SAKURA_LOVERS, VAR_RESULT)
 		returnqueststate(QUEST_SAKURAESPEON)
-		copyvar(VAR_TEMP_1, VAR_RESULT)
+		copyvar(VAR_GET_QUEST_LOG_STATE_SAKURA_ESPEON, VAR_RESULT)
 		returnqueststate(QUEST_SAKURASCYTHER)
-		copyvar(VAR_TEMP_2, VAR_RESULT)
-		if (var(VAR_TEMP_0) == 4 && var(VAR_TEMP_1) == 4 && var(VAR_TEMP_2) == 1 && var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 0) { 
+		copyvar(VAR_GET_QUEST_LOG_STATE_SAKURA_SCYTHER, VAR_RESULT)
+
+		if (
+			var(VAR_GET_QUEST_LOG_STATE_SAKURA_LOVERS) == 4
+			&& var(VAR_GET_QUEST_LOG_STATE_SAKURA_ESPEON) == 4
+			&& var(VAR_GET_QUEST_LOG_STATE_SAKURA_SCYTHER) == 1
+			&& var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 0
+		) { 
 			setflag(FLAG_HIDE_SAKU_FARMERS)
 			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1)
+
 		} elif (var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 7) {
 			clearflag(FLAG_HIDE_SAKU_FARMERS)
 		}

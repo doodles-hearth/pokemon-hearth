@@ -7,10 +7,10 @@ script Common_EventScript_PcGuy {
 		))
 	} else {
 		msgbox(format(
-			"Hey there, Pokémon wielder!\p"
+			"Hey there, Pokémon Wielder!\p"
 			"Have you ever thought, “Darn, I wish I could catch this seventh Pokémon, but I only have room for six?”\p"
 			"Today's your lucky day!\p"
-			"I've been appointed by the Toku council to store wielders' Pokémon for them while they travel around.\p"
+			"I've been appointed by the Toku council to store Wielders' Pokémon for them while they travel around.\p"
 			"We bring your Pokémon to a pasture where they live happily while waiting for you to get them back!\p"
 			"So if you ever want to send or retrieve your Pokémon, come talk to me!"
 		))

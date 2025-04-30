@@ -264,6 +264,10 @@
     VAR_SAKU_KURA_QUEST_SCYTHER_STATEs
     // 0: Quest hasn't started
     // 1: Farmer has asked player for help
+    // 2:
+    // 3:
+    // 4:
+    // 5:
 */
 #define VAR_SAKU_KURA_QUEST_SCYTHER_STATE                0x409F
 /*

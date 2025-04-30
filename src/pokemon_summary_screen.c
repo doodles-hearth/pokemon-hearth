@@ -14,6 +14,7 @@
 #include "decompress.h"
 #include "dynamic_placeholder_text_util.h"
 #include "event_data.h"
+#include "field_moves.h"
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "international_string_util.h"
@@ -23,6 +24,7 @@
 #include "malloc.h"
 #include "menu.h"
 #include "menu_helpers.h"
+#include "metatile_behavior.h"
 #include "mon_markings.h"
 #include "move_relearner.h"
 #include "naming_screen.h"
@@ -46,6 +48,7 @@
 #include "constants/battle_move_effects.h"
 #include "constants/hold_effects.h"
 #include "constants/items.h"
+#include "constants/map_types.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
 #include "constants/region_map_sections.h"
@@ -2605,14 +2608,75 @@ static void Task_HandleReplaceMoveInput(u8 taskId)
     }
 }
 
+/**
+ * Checks if the selected move can be forgotten.
+ * SPOILER, IT CAN, BECAUSE ALL MOVES CAN BE FORGOTTEN, YOLO
+ * (except if you're surfing)
+ */
 static bool8 CanReplaceMove(void)
 {
-    if (sMonSummaryScreen->firstMoveIndex == MAX_MON_MOVES
+    // Not picking any move to be replaced
+    if (
+        sMonSummaryScreen->firstMoveIndex == MAX_MON_MOVES
         || sMonSummaryScreen->newMove == MOVE_NONE
-        || IsMoveHM(sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex]) != TRUE)
+    )
+    {
         return TRUE;
-    else
-        return FALSE;
+    }
+    
+    struct Pokemon *mons = sMonSummaryScreen->monList.mons;
+    u32 oldMove = sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex];
+    u32 fieldMoveType = gMovesInfo[oldMove].fieldMoveFlags;
+    
+    // If the new move is of the same field move type, we're good
+    if (
+        !fieldMoveType
+        || gMovesInfo[sMonSummaryScreen->newMove].fieldMoveFlags == fieldMoveType
+    ) {
+        return TRUE;
+    }
+
+    // If that move is a field move that the player can use in the field
+    if (FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag))
+    {
+        bool32 canForgetFieldMove = TRUE;
+
+        // Can't forget Surf while surfing or diving, nor Dive while diving!
+        if (
+            (fieldMoveType == IS_FIELD_MOVE_SURF || fieldMoveType == IS_FIELD_MOVE_DIVE)
+            && MetatileBehavior_IsSurfableWaterOrUnderwater(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior)
+        )
+        {
+            if (gMapHeader.mapType == MAP_TYPE_UNDERWATER)
+            {
+                canForgetFieldMove = FALSE;
+            }
+            else
+            {
+                canForgetFieldMove = fieldMoveType != IS_FIELD_MOVE_SURF;
+            }
+        }
+
+        // If the mon or someone else in the party knows a move of the same field move type, we're good
+        if (!canForgetFieldMove)
+        {
+            for (int i = 0; i < MAX_MON_MOVES; i += 1)
+            {
+                if (sMonSummaryScreen->firstMoveIndex != i)
+                {
+                    u32 move = sMonSummaryScreen->summary.moves[i];
+
+                    if (gMovesInfo[move].fieldMoveFlags & fieldMoveType)
+                    {
+                        return TRUE;
+                    }
+                }
+            }
+            
+            return IsFieldMoveKnownByAnotherPartyMon(fieldMoveType, sMonSummaryScreen->curMonIndex, mons);
+        }
+    }
+    return TRUE;
 }
 
 static void ShowCantForgetHMsWindow(u8 taskId)

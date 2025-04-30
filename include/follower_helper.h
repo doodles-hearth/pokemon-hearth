@@ -118,6 +118,7 @@ enum ConditionalMessage
     COND_MSG_BURN,
     COND_MSG_DAY,
     COND_MSG_NIGHT,
+    COND_MSG_BED,
     COND_MSG_COUNT,
 };
 
