@@ -101,7 +101,7 @@ script(local) AshiiScript3 {
 	faceplayer
 	gettimeofday
 	speakername("Ashii")
-	if(var(VAR_RESULT) == TIME_DEAD_NIGHT) {
+	if(var(VAR_0x8000) == TIME_DEAD_NIGHT) {
 		msgbox(format("Thank you! Thank you! Thank you! Let's make haste, then. Before the moon takes her slumber in a few hours."))
 		fadescreen(FADE_TO_BLACK)
 		warp(MAP_KURA_TOWN, 48, 29)

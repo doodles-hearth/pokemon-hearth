@@ -86,34 +86,6 @@ u32 LoadCompressedSpriteSheetByTemplate(const struct SpriteTemplate *template, s
     return ret;
 }
 
-u32 LoadCompressedSpritePalette(const struct CompressedSpritePalette *src)
-{
-    return LoadCompressedSpritePaletteWithTag(src->data, src->tag);
-}
-
-u32 LoadCompressedSpritePaletteWithTag(const u32 *pal, u16 tag)
-{
-    u32 index;
-    struct SpritePalette dest;
-    void *buffer = malloc_and_decompress(pal, NULL);
-
-    dest.data = buffer;
-    dest.tag = tag;
-    index = LoadSpritePalette(&dest);
-    Free(buffer);
-    return index;
-}
-
-void LoadCompressedSpritePaletteOverrideBuffer(const struct CompressedSpritePalette *src, void *buffer)
-{
-    struct SpritePalette dest;
-
-    LZ77UnCompWram(src->data, buffer);
-    dest.data = buffer;
-    dest.tag = src->tag;
-    LoadSpritePalette(&dest);
-}
-
 void DecompressPicFromTable(const struct CompressedSpriteSheet *src, void *buffer)
 {
     LZ77UnCompWram(src->data, buffer);
@@ -343,35 +315,18 @@ bool8 LoadCompressedSpriteSheetUsingHeap(const struct CompressedSpriteSheet *src
     return FALSE;
 }
 
-bool8 LoadCompressedSpritePaletteUsingHeap(const struct CompressedSpritePalette *src)
+u32 LoadUniqueSpritePalette(const struct SpritePalette *src, u16 species, u32 personality, bool8 isShiny)
 {
-    struct SpritePalette dest;
-    void *buffer;
-
-    buffer = AllocZeroed(src->data[0] >> 8);
-    LZ77UnCompWram(src->data, buffer);
-    dest.data = buffer;
-    dest.tag = src->tag;
-
-    LoadSpritePalette(&dest);
-    Free(buffer);
-    return FALSE;
+    return LoadUniqueSpritePaletteWithTag(src->data, src->tag, species, personality, isShiny);
 }
 
-u32 LoadCompressedUniqueSpritePalette(const struct CompressedSpritePalette *src, u16 species, u32 personality, bool8 isShiny)
-{
-    return LoadCompressedUniqueSpritePaletteWithTag(src->data, src->tag, species, personality, isShiny);
-}
-
-u32 LoadCompressedUniqueSpritePaletteWithTag(const u32 *pal, u16 tag, u16 species, u32 personality, bool8 isShiny)
+u32 LoadUniqueSpritePaletteWithTag(const u16 *pal, u16 tag, u16 species, u32 personality, bool8 isShiny)
 {
     u32 index;
     struct SpritePalette dest;
-    void *buffer = malloc_and_decompress(pal, NULL);
 
-    dest.data = buffer;
+    dest.data = pal;
     dest.tag = tag;
-    index = LoadUniqueSpritePalette(&dest, species, personality, isShiny);
-    Free(buffer);
+    index = LoadUniqueSpritePaletteSprite(&dest, species, personality, isShiny);
     return index;
 }

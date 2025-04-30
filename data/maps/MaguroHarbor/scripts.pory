@@ -18,7 +18,7 @@ mapscripts MaguroHarbor_MapScripts {
 
 script MaguroHarbor_DrawMetatiles{
     gettimeofday
-	switch(var(VAR_RESULT)){
+	switch(var(VAR_0x8000)){
         case TIME_DEAD_NIGHT:
             setmetatile(30, 23, METATILE_Maguro_MaguroClosedWindows, TRUE)
 			setmetatile(32, 22, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE)
@@ -70,7 +70,7 @@ script MaguroHarbor_EventScript_LovestruckGirl {
 
 script MaguroHarbor_EventScript_FishcakeSalesman {
 		gettimeofday
-	switch(var(VAR_RESULT)) {
+	switch(var(VAR_0x8000)) {
 		case TIME_EARLY_MORNING:
 			goto(MaguroHarbor_EventScript_FishcakeSalesmanSettingUp)
 		case TIME_MORNING:
@@ -188,7 +188,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanClosingUp {
 
 script MaguroHarbor_EventScript_FishPokemonSalesman {
 		gettimeofday
-	switch(var(VAR_RESULT)) {
+	switch(var(VAR_0x8000)) {
 		case TIME_EARLY_MORNING:
 			goto(MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp)
 		case TIME_MORNING:
@@ -366,7 +366,7 @@ script MaguroHarbor_EventScript_Man {
 
 script MaguroHarbor_EventScript_Mart {
 	gettimeofday
-	switch(var(VAR_RESULT)) {
+	switch(var(VAR_0x8000)) {
 		case TIME_EARLY_MORNING:
 			goto(MaguroHarbor_EventScript_MartSettingUp)
 		case TIME_MORNING:

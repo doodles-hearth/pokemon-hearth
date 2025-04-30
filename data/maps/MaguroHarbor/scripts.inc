@@ -25,7 +25,7 @@ MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 
 MaguroHarbor_DrawMetatiles::
 	gettimeofday
-	switch VAR_RESULT
+	switch VAR_0x8000
 	case TIME_DEAD_NIGHT, MaguroHarbor_DrawMetatiles_2
 	case TIME_EARLY_MORNING, MaguroHarbor_DrawMetatiles_3
 	case TIME_MORNING, MaguroHarbor_DrawMetatiles_3
@@ -77,7 +77,7 @@ MaguroHarbor_EventScript_LovestruckGirl_2:
 
 MaguroHarbor_EventScript_FishcakeSalesman::
 	gettimeofday
-	switch VAR_RESULT
+	switch VAR_0x8000
 	case TIME_EARLY_MORNING, MaguroHarbor_EventScript_FishcakeSalesman_2
 	case TIME_MORNING, MaguroHarbor_EventScript_FishcakeSalesman_3
 	case TIME_LUNCHTIME, MaguroHarbor_EventScript_FishcakeSalesman_3
@@ -186,7 +186,7 @@ MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_2:
 
 MaguroHarbor_EventScript_FishPokemonSalesman::
 	gettimeofday
-	switch VAR_RESULT
+	switch VAR_0x8000
 	case TIME_EARLY_MORNING, MaguroHarbor_EventScript_FishPokemonSalesman_2
 	case TIME_MORNING, MaguroHarbor_EventScript_FishPokemonSalesman_3
 	case TIME_LUNCHTIME, MaguroHarbor_EventScript_FishPokemonSalesman_3
@@ -345,7 +345,7 @@ MaguroHarbor_EventScript_Man_2:
 
 MaguroHarbor_EventScript_Mart::
 	gettimeofday
-	switch VAR_RESULT
+	switch VAR_0x8000
 	case TIME_EARLY_MORNING, MaguroHarbor_EventScript_Mart_2
 	case TIME_MORNING, MaguroHarbor_EventScript_Mart_3
 	case TIME_LUNCHTIME, MaguroHarbor_EventScript_Mart_3

@@ -120,7 +120,7 @@ script TranquilRoute_EventScript_SetupCutGrassCutscene {
 	} else {
 		// Can't plug the Cut master to Zatsu's scheduling system because of his special needs
 		gettimeofday
-		switch(var(VAR_RESULT)){
+		switch(var(VAR_0x8000)){
 			case TIME_EVENING:
 			case TIME_NIGHT:
 			case TIME_DEAD_NIGHT:

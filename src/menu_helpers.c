@@ -74,7 +74,7 @@ static const struct CompressedSpriteSheet sSpriteSheet_SwapLine =
     gSwapLineGfx, 0x100, TAG_SWAP_LINE
 };
 
-static const struct CompressedSpritePalette sSpritePalette_SwapLine =
+static const struct SpritePalette sSpritePalette_SwapLine =
 {
     gSwapLinePal, TAG_SWAP_LINE
 };
@@ -434,7 +434,7 @@ void LoadListMenuSwapLineGfx_RegisteredItemsMenu(void)
 void LoadListMenuSwapLineGfx(void)
 {
     LoadCompressedSpriteSheet(&sSpriteSheet_SwapLine);
-    LoadCompressedSpritePalette(&sSpritePalette_SwapLine);
+    LoadSpritePalette(&sSpritePalette_SwapLine);
 }
 
 void CreateSwapLineSprites(u8 *spriteIds, u8 count)

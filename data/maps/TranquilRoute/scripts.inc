@@ -83,7 +83,7 @@ TranquilRoute_EventScript_GrassCutscene::
 TranquilRoute_EventScript_SetupCutGrassCutscene::
 	goto_if_unset FLAG_CUT_QUEST_COMPLETED, TranquilRoute_EventScript_SetupCutGrassCutscene_1
 	gettimeofday
-	switch VAR_RESULT
+	switch VAR_0x8000
 	case TIME_EVENING, TranquilRoute_EventScript_SetupCutGrassCutscene_8
 	case TIME_NIGHT, TranquilRoute_EventScript_SetupCutGrassCutscene_8
 	case TIME_DEAD_NIGHT, TranquilRoute_EventScript_SetupCutGrassCutscene_8

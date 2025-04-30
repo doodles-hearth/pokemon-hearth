@@ -1596,6 +1596,14 @@ u32 LoadSpritePalette(const struct SpritePalette *palette)
     }
 }
 
+u32 LoadSpritePaletteWithTag(const u16 *pal, u16 tag)
+{
+    struct SpritePalette spritePal;
+    spritePal.data = pal;
+    spritePal.tag = tag;
+    return LoadSpritePalette(&spritePal);
+}
+
 void LoadSpritePalettes(const struct SpritePalette *palettes)
 {
     u32 i;
@@ -1619,7 +1627,7 @@ void DoLoadSpritePalette(const u16 *src, u16 paletteOffset)
 
 #define PAL_TAG_UNIQUE_PAL 0xFFFF
 
-u8 LoadUniqueSpritePalette(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny)
+u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny)
 {
     u8 index = IndexOfSpritePaletteTag(PAL_TAG_UNIQUE_PAL);
 

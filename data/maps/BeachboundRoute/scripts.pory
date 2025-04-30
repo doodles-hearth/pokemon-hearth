@@ -27,7 +27,7 @@ script BeachboundRoute_EventScript_RunningGirl {
 script BeachboundRoute_EventScript_AnnoyedGirl {
 	gettimeofday
 	speakername("Annoyed girl")
-	if (var(VAR_RESULT) == TIME_EVENING) {
+	if (var(VAR_0x8000) == TIME_EVENING) {
 		msgbox(format(
 			"Hum… Could you maybe, like, leave?"
 		), MSGBOX_NPC)

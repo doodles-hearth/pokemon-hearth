@@ -168,15 +168,15 @@ struct Seller
 
     u32 menuTileOffset;
     const u32 *menuGfx;
-    const u32 *menuPal;
+    const u16 *menuPal;
     const u32 *menuMap;
 
     const u32 *scrollGfx;
-    const u32 *scrollPal;
+    const u16 *scrollPal;
     const u32 *scrollMap;
 
     const u16 *cursorGfx;
-    const u32 *cursorPal;
+    const u16 *cursorPal;
 
     const u8 *message[SELLER_MSG_COUNT];
 };
@@ -204,45 +204,45 @@ const u8 sText_ThrowInPremierBall[] = _("Here's also\na promotional\nPremier Bal
 const u8 sText_ThrowInPremierBalls[] = _("Here's also\n{STR_VAR_1} promotional\nPremier Balls!");
 
 const u32 sNewShopMenu_DefaultMenuGfx[] = INCBIN_U32("graphics/new_shop/menu.4bpp.lz");
-const u32 sNewShopMenu_DefaultMenuPal[] = INCBIN_U32("graphics/new_shop/menu.gbapal.lz");
+const u16 sNewShopMenu_DefaultMenuPal[] = INCBIN_U16("graphics/new_shop/menu.gbapal");
 const u32 sNewShopMenu_DefaultMenuTilemap[] = INCBIN_U32("graphics/new_shop/menu.bin.lz");
 const u32 sNewShopMenu_DefaultScrollGfx[] = INCBIN_U32("graphics/new_shop/scroll.4bpp.lz");
-const u32 sNewShopMenu_DefaultScrollPal[] = INCBIN_U32("graphics/new_shop/scroll.gbapal.lz");
+const u16 sNewShopMenu_DefaultScrollPal[] = INCBIN_U16("graphics/new_shop/scroll.gbapal");
 const u32 sNewShopMenu_DefaultScrollTilemap[] = INCBIN_U32("graphics/new_shop/scroll.bin.lz");
 const u16 sNewShopMenu_DefaultCursorGfx[] = INCBIN_U16("graphics/new_shop/cursor.4bpp");
-const u32 sNewShopMenu_DefaultCursorPal[] = INCBIN_U16("graphics/new_shop/cursor.gbapal.lz");
+const u16 sNewShopMenu_DefaultCursorPal[] = INCBIN_U16("graphics/new_shop/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_MartFemale[] = INCBIN_U8("graphics/new_shop/sellers/female/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/mugshot.gbapal");
 const u32 sNewShopMenu_SellerScrollGfx_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.4bpp.lz");
-const u32 sNewShopMenu_SellerScrollPal_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.gbapal.lz");
+const u16 sNewShopMenu_SellerScrollPal_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/scroll.gbapal");
 const u32 sNewShopMenu_SellerScrollMap_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.bin.lz");
 const u16 sNewShopMenu_SellerCursorGfx_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/cursor.4bpp");
-const u32 sNewShopMenu_SellerCursorPal_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/cursor.gbapal.lz");
+const u16 sNewShopMenu_SellerCursorPal_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_Okada[] = INCBIN_U8("graphics/new_shop/sellers/okada/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/mugshot.gbapal");
 const u32 sNewShopMenu_SellerScrollGfx_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.4bpp.lz");
-const u32 sNewShopMenu_SellerScrollPal_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.gbapal.lz");
+const u16 sNewShopMenu_SellerScrollPal_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/scroll.gbapal");
 const u32 sNewShopMenu_SellerScrollMap_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.bin.lz");
 const u16 sNewShopMenu_SellerCursorGfx_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/cursor.4bpp");
-const u32 sNewShopMenu_SellerCursorPal_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/cursor.gbapal.lz");
+const u16 sNewShopMenu_SellerCursorPal_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_Zubat[] = INCBIN_U8("graphics/new_shop/sellers/zubat/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/mugshot.gbapal");
 const u32 sNewShopMenu_SellerScrollGfx_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.4bpp.lz");
-const u32 sNewShopMenu_SellerScrollPal_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.gbapal.lz");
+const u16 sNewShopMenu_SellerScrollPal_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/scroll.gbapal");
 const u32 sNewShopMenu_SellerScrollMap_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.bin.lz");
 const u16 sNewShopMenu_SellerCursorGfx_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/cursor.4bpp");
-const u32 sNewShopMenu_SellerCursorPal_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/cursor.gbapal.lz");
+const u16 sNewShopMenu_SellerCursorPal_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_Incense[] = INCBIN_U8("graphics/new_shop/sellers/incense/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/mugshot.gbapal");
 const u32 sNewShopMenu_SellerScrollGfx_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.4bpp.lz");
-const u32 sNewShopMenu_SellerScrollPal_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.gbapal.lz");
+const u16 sNewShopMenu_SellerScrollPal_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/scroll.gbapal");
 const u32 sNewShopMenu_SellerScrollMap_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.bin.lz");
 const u16 sNewShopMenu_SellerCursorGfx_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/cursor.4bpp");
-const u32 sNewShopMenu_SellerCursorPal_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/cursor.gbapal.lz");
+const u16 sNewShopMenu_SellerCursorPal_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/cursor.gbapal");
 
 static void Task_ShopMenu(u8 taskId);
 static void Task_HandleShopMenuQuit(u8 taskId);
@@ -433,7 +433,7 @@ static const struct SpriteSheet sDefaultCursor_SpriteSheet = {
     .tag = GFXTAG_CURSOR,
 };
 
-static const struct CompressedSpritePalette sDefaultCursor_SpritePalette = {
+static const struct SpritePalette sDefaultCursor_SpritePalette = {
     .data = sNewShopMenu_DefaultCursorPal,
     .tag = PALTAG_CURSOR,
 };
@@ -1155,8 +1155,8 @@ static void BuyMenuDecompressBgGraphics(void)
         DecompressAndCopyTileDataToVram(2, sNewShopMenu_DefaultScrollGfx, 0, 0, 0);
         LZDecompressWram(sNewShopMenu_DefaultMenuTilemap, sShopData->tilemapBuffers[0]);
         LZDecompressWram(sNewShopMenu_DefaultScrollTilemap, sShopData->tilemapBuffers[1]);
-        LoadCompressedPalette(sNewShopMenu_DefaultMenuPal, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
-        LoadCompressedPalette(sNewShopMenu_DefaultMenuPal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
+        LoadPalette(sNewShopMenu_DefaultMenuPal, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
+        LoadPalette(sNewShopMenu_DefaultMenuPal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
         return;
     }
     DecompressAndCopyTileDataToVram(2, Shop_GetSellerGraphics(SELLER_GFX_MENU_GFX), 0, sSellers[i].menuTileOffset != 0 ? sSellers[i].menuTileOffset : DEFAULT_MENU_TILE_OFFSET, 0);
@@ -1165,8 +1165,8 @@ static void BuyMenuDecompressBgGraphics(void)
     LZDecompressWram(Shop_GetSellerGraphics(SELLER_GFX_MENU_MAP), sShopData->tilemapBuffers[0]);
     LZDecompressWram(Shop_GetSellerGraphics(SELLER_GFX_SCROLL_MAP), sShopData->tilemapBuffers[1]);
 
-    LoadCompressedPalette(Shop_GetSellerGraphics(SELLER_GFX_MENU_PAL), BG_PLTT_ID(0), PLTT_SIZE_4BPP);
-    LoadCompressedPalette(Shop_GetSellerGraphics(SELLER_GFX_SCROLL_PAL), BG_PLTT_ID(1), PLTT_SIZE_4BPP);
+    LoadPalette(Shop_GetSellerGraphics(SELLER_GFX_MENU_PAL), BG_PLTT_ID(0), PLTT_SIZE_4BPP);
+    LoadPalette(Shop_GetSellerGraphics(SELLER_GFX_SCROLL_PAL), BG_PLTT_ID(1), PLTT_SIZE_4BPP);
 }
 
 static inline void SpawnWindow(u8 winId)
@@ -1339,7 +1339,7 @@ static bool32 LoadSellerCursor(void)
         .size = 64*64*2,
         .tag = GFXTAG_CURSOR,
     };
-    struct CompressedSpritePalette pal = {
+    struct SpritePalette pal = {
         .data = Shop_GetSellerGraphics(SELLER_GFX_CURSOR_PAL),
         .tag = PALTAG_CURSOR
     };
@@ -1347,12 +1347,12 @@ static bool32 LoadSellerCursor(void)
     if (gSpecialVar_LastTalked == 0 || i == 0)
     {
         LoadSpriteSheet(&sDefaultCursor_SpriteSheet);
-        LoadCompressedSpritePalette(&sDefaultCursor_SpritePalette);
+        LoadSpritePalette(&sDefaultCursor_SpritePalette);
         return FALSE;
     }
 
     LoadSpriteSheet(&gfx);
-    LoadCompressedSpritePalette(&pal);
+    LoadSpritePalette(&pal);
     return TRUE;
 }
 

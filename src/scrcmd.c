@@ -25,6 +25,7 @@
 #include "field_tasks.h"
 #include "field_weather.h"
 #include "fieldmap.h"
+#include "follower_npc.h"
 #include "gpu_regs.h"
 #include "item.h"
 #include "lilycove_lady.h"
@@ -60,6 +61,7 @@
 #include "quests.h"
 #include "new_shop.h"
 #include "constants/event_objects.h"
+#include "constants/map_types.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);
@@ -905,12 +907,6 @@ bool8 ScrCmd_dotimebasedevents(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_gettimeofday(struct ScriptContext *ctx)
-{
-    gSpecialVar_Result = GetTimeOfDay();
-    return FALSE;
-}
-
 bool8 ScrCmd_gettime(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
@@ -950,6 +946,12 @@ bool8 ScrCmd_getweekday(struct ScriptContext *ctx)
         break;
     } 
     MgbaPrintf(MGBA_LOG_WARN, "%u", VarGet(gSpecialVar_Result));
+    return FALSE;
+}
+
+bool8 ScrCmd_gettimeofday(struct ScriptContext *ctx)
+{
+    gSpecialVar_0x8000 = GetTimeOfDay();
     return FALSE;
 }
 
@@ -1540,7 +1542,29 @@ bool8 ScrCmd_resetobjectsubpriority(struct ScriptContext *ctx)
 bool8 ScrCmd_faceplayer(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+    if (PlayerHasFollowerNPC() 
+     && gObjectEvents[GetFollowerNPCObjectId()].invisible == FALSE 
+     && gSelectedObjectEvent == GetFollowerNPCObjectId())
+    {
+        struct ObjectEvent *npcFollower = &gObjectEvents[GetFollowerNPCObjectId()];
 
+        switch (DetermineFollowerNPCDirection(&gObjectEvents[gPlayerAvatar.objectEventId], npcFollower))
+        {
+        case DIR_NORTH:
+            ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_NPC_FOLLOWER, npcFollower->mapGroup, npcFollower->mapNum, Common_Movement_FaceUp);
+            break;
+        case DIR_SOUTH:
+            ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_NPC_FOLLOWER, npcFollower->mapGroup, npcFollower->mapNum, Common_Movement_FaceDown);
+            break;
+        case DIR_EAST:
+            ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_NPC_FOLLOWER, npcFollower->mapGroup, npcFollower->mapNum, Common_Movement_FaceRight);
+            break;
+        case DIR_WEST:
+            ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_NPC_FOLLOWER, npcFollower->mapGroup, npcFollower->mapNum, Common_Movement_FaceLeft);
+            break;
+        }
+        return FALSE;
+    }
     if (gObjectEvents[gSelectedObjectEvent].active)
         ObjectEventFaceOppositeDirection(&gObjectEvents[gSelectedObjectEvent], GetPlayerFacingDirection());
     return FALSE;

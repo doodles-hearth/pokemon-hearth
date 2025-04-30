@@ -262,7 +262,8 @@ void EvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, bool8 canStopEvo, u
                         currSpecies,
                         personality,
                         TRUE);
-    LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(currSpecies, isShiny, personality), OBJ_PLTT_ID(1), PLTT_SIZE_4BPP);
+    LoadPalette(GetMonSpritePalFromSpeciesAndPersonality(currSpecies, isShiny, personality), OBJ_PLTT_ID(1), PLTT_SIZE_4BPP);
+
     MakePaletteUnique(OBJ_PLTT_ID(1), currSpecies, personality, isShiny);
     CpuCopy32(gPlttBufferFaded + OBJ_PLTT_ID(1), gPlttBufferUnfaded + OBJ_PLTT_ID(1), PLTT_SIZE_4BPP);
 
@@ -279,10 +280,11 @@ void EvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, bool8 canStopEvo, u
                         postEvoSpecies,
                         personality,
                         TRUE);
-    LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
+    LoadPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
+
     MakePaletteUnique(OBJ_PLTT_ID(2), postEvoSpecies, personality, isShiny);
     CpuCopy32(gPlttBufferFaded + OBJ_PLTT_ID(2), gPlttBufferUnfaded + OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
- 
+
     SetMultiuseSpriteTemplateToPokemon(postEvoSpecies, B_POSITION_OPPONENT_RIGHT);
     gMultiuseSpriteTemplate.affineAnims = gDummySpriteAffineAnimTable;
     sEvoStructPtr->postEvoSpriteId = id = CreateSprite(&gMultiuseSpriteTemplate, 120, 64, 30);
@@ -358,7 +360,8 @@ static void CB2_EvolutionSceneLoadGraphics(void)
                         postEvoSpecies,
                         personality,
                         TRUE);
-    LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
+    LoadPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
+
     MakePaletteUnique(OBJ_PLTT_ID(2), postEvoSpecies, personality, isShiny);
     CpuCopy32(gPlttBufferFaded + OBJ_PLTT_ID(2), gPlttBufferUnfaded + OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
 
@@ -430,9 +433,11 @@ static void CB2_TradeEvolutionSceneLoadGraphics(void)
                                 postEvoSpecies,
                                 personality,
                                 TRUE);
-            LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
+            LoadPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
+
             MakePaletteUnique(OBJ_PLTT_ID(2), postEvoSpecies, personality, isShiny);
             CpuCopy32(gPlttBufferFaded + OBJ_PLTT_ID(2), gPlttBufferUnfaded + OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
+
             gMain.state++;
         }
         break;
@@ -497,7 +502,7 @@ void TradeEvolutionScene(struct Pokemon *mon, u16 postEvoSpecies, u8 preEvoSprit
                         personality,
                         TRUE);
 
-    LoadCompressedPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
+    LoadPalette(GetMonSpritePalFromSpeciesAndPersonality(postEvoSpecies, isShiny, personality), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
     MakePaletteUnique(OBJ_PLTT_ID(2), postEvoSpecies, personality, isShiny);
     CpuCopy32(gPlttBufferFaded + OBJ_PLTT_ID(2), gPlttBufferUnfaded + OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
 
@@ -552,7 +557,7 @@ static void CB2_TradeEvolutionSceneUpdate(void)
     RunTasks();
 }
 
-static void CreateShedinja(u16 preEvoSpecies, struct Pokemon *mon)
+static void CreateShedinja(u32 preEvoSpecies, u32 postEvoSpecies, struct Pokemon *mon)
 {
     u32 data = 0;
     u16 ball = ITEM_POKE_BALL;
@@ -561,41 +566,48 @@ static void CreateShedinja(u16 preEvoSpecies, struct Pokemon *mon)
     if (evolutions == NULL)
         return;
 
-    if (evolutions[0].method == EVO_LEVEL_NINJASK && gPlayerPartyCount < PARTY_SIZE && (P_SHEDINJA_BALL < GEN_4 || CheckBagHasItem(ball, 1)))
+    for (u32 i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
     {
-        s32 i;
-        struct Pokemon *shedinja = &gPlayerParty[gPlayerPartyCount];
-
-        CopyMon(&gPlayerParty[gPlayerPartyCount], mon, sizeof(struct Pokemon));
-        SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_SPECIES, &evolutions[1].targetSpecies);
-        SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_NICKNAME, GetSpeciesName(evolutions[1].targetSpecies, SKIP_NAME_CHECK));
-        SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_HELD_ITEM, &data);
-        SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_MARKINGS, &data);
-        if (P_SHEDINJA_BALL >= GEN_4)
+        if (evolutions[i].method == EVO_SPLIT_FROM_EVO
+         && evolutions[i].param == postEvoSpecies
+         && gPlayerPartyCount < PARTY_SIZE
+         && DoesMonMeetAdditionalConditions(mon, evolutions[i].params, NULL, PARTY_SIZE, NULL, CHECK_EVO))
         {
-            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_POKEBALL, &ball);
-            RemoveBagItem(ball, 1);
+            s32 j;
+            struct Pokemon *shedinja = &gPlayerParty[gPlayerPartyCount];
+    
+            CopyMon(&gPlayerParty[gPlayerPartyCount], mon, sizeof(struct Pokemon));
+            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_SPECIES, &evolutions[i].targetSpecies);
+            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_NICKNAME, GetSpeciesName(evolutions[i].targetSpecies, SKIP_NAME_CHECK));
+            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_HELD_ITEM, &data);
+            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_MARKINGS, &data);
+            if (P_SHEDINJA_BALL >= GEN_4)
+            {
+                SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_POKEBALL, &ball);
+                RemoveBagItem(ball, 1);
+            }
+    
+            for (j = MON_DATA_COOL_RIBBON; j < MON_DATA_COOL_RIBBON + CONTEST_CATEGORIES_COUNT; j++)
+                SetMonData(&gPlayerParty[gPlayerPartyCount], j, &data);
+            for (j = MON_DATA_CHAMPION_RIBBON; j <= MON_DATA_WORLD_RIBBON; j++)
+                SetMonData(&gPlayerParty[gPlayerPartyCount], j, &data);
+    
+            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_STATUS, &data);
+            data = MAIL_NONE;
+            SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_MAIL, &data);
+    
+            CalculateMonStats(&gPlayerParty[gPlayerPartyCount]);
+            CalculatePlayerPartyCount();
+    
+            GetSetPokedexFlag(SpeciesToNationalPokedexNum(evolutions[i].targetSpecies), FLAG_SET_SEEN);
+            GetSetPokedexFlag(SpeciesToNationalPokedexNum(evolutions[i].targetSpecies), FLAG_SET_CAUGHT);
+    
+            if (GetMonData(shedinja, MON_DATA_SPECIES) == SPECIES_SHEDINJA
+                && GetMonData(shedinja, MON_DATA_LANGUAGE) == LANGUAGE_JAPANESE
+                && GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NINJASK)
+                    SetMonData(shedinja, MON_DATA_NICKNAME, sText_ShedinjaJapaneseName);
+
         }
-
-        for (i = MON_DATA_COOL_RIBBON; i < MON_DATA_COOL_RIBBON + CONTEST_CATEGORIES_COUNT; i++)
-            SetMonData(&gPlayerParty[gPlayerPartyCount], i, &data);
-        for (i = MON_DATA_CHAMPION_RIBBON; i <= MON_DATA_WORLD_RIBBON; i++)
-            SetMonData(&gPlayerParty[gPlayerPartyCount], i, &data);
-
-        SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_STATUS, &data);
-        data = MAIL_NONE;
-        SetMonData(&gPlayerParty[gPlayerPartyCount], MON_DATA_MAIL, &data);
-
-        CalculateMonStats(&gPlayerParty[gPlayerPartyCount]);
-        CalculatePlayerPartyCount();
-
-        GetSetPokedexFlag(SpeciesToNationalPokedexNum(evolutions[1].targetSpecies), FLAG_SET_SEEN);
-        GetSetPokedexFlag(SpeciesToNationalPokedexNum(evolutions[1].targetSpecies), FLAG_SET_CAUGHT);
-
-        if (GetMonData(shedinja, MON_DATA_SPECIES) == SPECIES_SHEDINJA
-            && GetMonData(shedinja, MON_DATA_LANGUAGE) == LANGUAGE_JAPANESE
-            && GetMonData(mon, MON_DATA_SPECIES) == SPECIES_NINJASK)
-                SetMonData(shedinja, MON_DATA_NICKNAME, sText_ShedinjaJapaneseName);
     }
 }
 
@@ -828,12 +840,12 @@ static void Task_EvolutionScene(u8 taskId)
             {
                 StopMapMusic();
                 Overworld_PlaySpecialMapMusic();
-            }
-            if (!gTasks[taskId].tEvoWasStopped)
-            {
-                CreateShedinja(gTasks[taskId].tPreEvoSpecies, mon);
+                
             }
 
+            if (!gTasks[taskId].tEvoWasStopped)
+                CreateShedinja(gTasks[taskId].tPreEvoSpecies, gTasks[taskId].tPostEvoSpecies, mon);
+            
             DestroyTask(taskId);
             FreeMonSpritesGfx();
             FREE_AND_SET_NULL(sEvoStructPtr);

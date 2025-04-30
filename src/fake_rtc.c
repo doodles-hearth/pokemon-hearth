@@ -50,7 +50,7 @@ void FakeRtc_TickTimeForward(void)
     FakeRtc_AdvanceTimeBy(0, 0, 0, FakeRtc_GetSecondsRatio(), TRUE);
 }
 
-void FakeRtc_AdvanceTimeBy(u32 days, u32 hours, u32 minutes, u32 seconds, u32 shouldImpactBerryGrowth)
+void FakeRtc_AdvanceTimeBy(u32 days, u32 hours, u32 minutes, u32 seconds, bool32 shouldImpactBerryGrowth)
 {
     struct DateTime dateTime;
     struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
@@ -87,9 +87,10 @@ void FakeRtc_ManuallySetTime(u32 day, u32 hour, u32 minute, u32 second)
 
 u32 FakeRtc_GetSecondsRatio(void)
 {
-    return (OW_ALTERED_TIME_RATIO == GEN_8_PLA) ? 60 :
-           (OW_ALTERED_TIME_RATIO == GEN_9)     ? 20 :
-                                                  1;
+    return (OW_ALTERED_TIME_RATIO == GEN_8_PLA)   ? 60 :
+           (OW_ALTERED_TIME_RATIO == GEN_9)       ? 20 :
+           (OW_ALTERED_TIME_RATIO == TIME_DEBUG)  ?  1 :
+                                                     1;
 }
 
 STATIC_ASSERT((OW_FLAG_PAUSE_TIME == 0 || OW_USE_FAKE_RTC == TRUE), FakeRtcMustBeTrueToPauseTime);

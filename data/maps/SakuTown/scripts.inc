@@ -59,7 +59,7 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_14:
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	setflag FLAG_TEMP_1
 	gettimeofday
-	switch VAR_RESULT
+	switch VAR_0x8000
 	case TIME_DEAD_NIGHT, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_2
 	case TIME_EARLY_MORNING, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
 	case TIME_MORNING, SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3
