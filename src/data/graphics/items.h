@@ -1741,15 +1741,15 @@ const u16 gItemIconPalette_SteelScroll[] = INCBIN_U16("graphics/items/icons/scro
 const u16 gItemIconPalette_FairyScroll[] = INCBIN_U16("graphics/items/icons/scrolls/fairy.gbapal");
 
 const u32 gItemIcon_SecretScroll[] = INCBIN_U32("graphics/items/icons/secrets/secret_cut.4bpp.lz");
-const u32 gItemIconPalette_SecretScrollCut[] = INCBIN_U32("graphics/items/icons/secrets/secret_cut.gbapal.lz");
-const u32 gItemIconPalette_SecretScrollSmash[] = INCBIN_U32("graphics/items/icons/secrets/secret_smash.gbapal.lz");
-const u32 gItemIconPalette_SecretScrollSurf[] = INCBIN_U32("graphics/items/icons/secrets/secret_surf.gbapal.lz");
-const u32 gItemIconPalette_SecretScrollDive[] = INCBIN_U32("graphics/items/icons/secrets/secret_dive.gbapal.lz");
-const u32 gItemIconPalette_SecretScrollWaterfall[] = INCBIN_U32("graphics/items/icons/secrets/secret_waterfall.gbapal.lz");
-const u32 gItemIconPalette_SecretScrollStrength[] = INCBIN_U32("graphics/items/icons/secrets/secret_strength.gbapal.lz");
-const u32 gItemIconPalette_SecretScrollFly[] = INCBIN_U32("graphics/items/icons/secrets/secret_fly.gbapal.lz");
-const u32 gItemIconPalette_SecretScrollClimb[] = INCBIN_U32("graphics/items/icons/secrets/secret_climb.gbapal.lz");
-const u32 gItemIconPalette_SecretScrollFlash[] = INCBIN_U32("graphics/items/icons/secrets/secret_flash.gbapal.lz");
+const u16 gItemIconPalette_SecretScrollCut[] = INCBIN_U16("graphics/items/icons/secrets/secret_cut.gbapal");
+const u16 gItemIconPalette_SecretScrollSmash[] = INCBIN_U16("graphics/items/icons/secrets/secret_smash.gbapal");
+const u16 gItemIconPalette_SecretScrollSurf[] = INCBIN_U16("graphics/items/icons/secrets/secret_surf.gbapal");
+const u16 gItemIconPalette_SecretScrollDive[] = INCBIN_U16("graphics/items/icons/secrets/secret_dive.gbapal");
+const u16 gItemIconPalette_SecretScrollWaterfall[] = INCBIN_U16("graphics/items/icons/secrets/secret_waterfall.gbapal");
+const u16 gItemIconPalette_SecretScrollStrength[] = INCBIN_U16("graphics/items/icons/secrets/secret_strength.gbapal");
+const u16 gItemIconPalette_SecretScrollFly[] = INCBIN_U16("graphics/items/icons/secrets/secret_fly.gbapal");
+const u16 gItemIconPalette_SecretScrollClimb[] = INCBIN_U16("graphics/items/icons/secrets/secret_climb.gbapal");
+const u16 gItemIconPalette_SecretScrollFlash[] = INCBIN_U16("graphics/items/icons/secrets/secret_flash.gbapal");
 
 // Charms
 
