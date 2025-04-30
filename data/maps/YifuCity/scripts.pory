@@ -807,6 +807,37 @@ script YifuCity_EventScript_GirlLookingAtSunriseVillage {
 	end
 }
 
+script YifuCity_EventScript_Chimecho {
+	lock
+	faceplayer
+	setseenmon(SPECIES_CHIMECHO)
+	setspeakertomonname(SPECIES_CHIMECHO)
+	playmoncry(SPECIES_CHIMECHO, CRY_MODE_NORMAL)
+	msgbox(format(
+		"Ch-ching…"
+	))
+	waitmoncry
+	closemessage
+	release
+	end
+}
+
+script YifuCity_EventScript_ChimechoLady {
+	lock
+	faceplayer
+	setnamedmon(SPECIES_CHIMECHO)
+	setdescribedmon(SPECIES_CHIMECHO)
+	speakername("Old Lady")
+	msgbox(format(
+		"I love listening to Chimecho's songs.\n"
+		"They echo in its hollow body and produce the most wonderful harmonics.\p"
+		"You should always be kind to Chimecho! They are sacred, and mistreating one would surely bring you bad luck."
+	))
+	closemessage
+	release
+	end
+}
+
 script YifuCity_EventScript_NameRaterSign {
 	msgbox(format(
 		"What's In A Name\n“Humble name judge”"

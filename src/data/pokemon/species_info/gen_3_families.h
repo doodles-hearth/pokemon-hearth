@@ -10224,7 +10224,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Chingling"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Cute Bell"),
         .cryId = CRY_CHINGLING,
         .natDexNum = NATIONAL_DEX_CHINGLING,
         .categoryName = _("Bell"),
@@ -10308,17 +10308,18 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Chimecho"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Pretty Chime"),
         .cryId = CRY_CHIMECHO,
         .natDexNum = NATIONAL_DEX_CHIMECHO,
         .categoryName = _("Wind Chime"),
         .height = 6,
         .weight = 10,
         .description = COMPOUND_STRING(
-            "They fly about very actively when the hot\n"
-            "season arrives. They communicate among\n"
-            "themselves using seven different and\n"
-            "distinguishing cries."),
+            "Its cry echoes inside its hollow body to\n"
+            "produce songs.\n"
+            "Chimecho is considered sacred, and\n"
+            "mistreating one is said to bring bad luck."
+        ),
         .pokemonScale = 505,
         .pokemonOffset = 0,
         .trainerScale = 256,
