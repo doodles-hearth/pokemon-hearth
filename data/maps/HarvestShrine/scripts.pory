@@ -1,3 +1,5 @@
+const FLAG_SET_RAIN = FLAG_TEMP_1
+
 mapscripts HarvestShrine_MapScripts {
 	
 }
@@ -6,8 +8,6 @@ script HarvestShrine_EventScript_MonkBronzong {
 	lock
 	faceplayer
 	speakername("Monk")
-	// TODO EVA
-	// setmonnamed setmonseen setmondescribed
 	msgbox(format(
 		"The Bronzong you have before your eyes is a thousand years old.\p"
 		"It has been bringing us rain and plentiful harvests for generations.\p"
@@ -15,6 +15,11 @@ script HarvestShrine_EventScript_MonkBronzong {
 		"Actually, I'm not sure Bronzong breathe, but you get the idea."
 	))
 	closemessage
+
+	setseenmon(SPECIES_BRONZONG)
+	setnamedmon(SPECIES_BRONZONG)
+	setdescribedmon(SPECIES_BRONZONG)
+
 	release
 }
 
@@ -30,4 +35,79 @@ script HarvestShrine_EventScript_Kouga {
 	))
 	closemessage
 	end
+}
+
+script HarvestShrine_EventScript_MonkRain {
+	lock
+	faceplayer
+	speakername("Monk")
+	if (checkitem(ITEM_TM_RAIN_DANCE)) {
+		msgbox(format(
+			"I do enjoy the sounds of the rain…"
+		))
+	} elif (flag(FLAG_SET_RAIN)) {
+		setnamedmon(SPECIES_BRONZONG)
+
+		msgbox(format(
+			"You prayed to the venerable Bronzong for rain, and He heeded your prayer!\p"
+			"He doesn't listen to just anyone,\nyou know?\lThere's something about you, kid…\lTake this! I insist!"
+		))
+
+		giveitem(ITEM_TM_RAIN_DANCE)
+	} else {
+		msgbox(format(
+			"Impressive, isn't He?"
+		))
+	}
+	release
+}
+
+script HarvestShrine_EventScript_Bronzong {
+	lock
+
+	if (flag(FLAG_SET_RAIN)) {
+		msgbox(format(
+			"… … …The statue is back to silence."
+		))
+	} else {
+		setseenmon(SPECIES_BRONZONG)
+		delay(24)
+
+		fadeoutbgm(1)
+
+		setvar(VAR_0x8004, 0) // vertical pan
+		setvar(VAR_0x8005, 2) // horizontal pan
+		setvar(VAR_0x8006, 100) // num shakes
+		setvar(VAR_0x8007, 1) // shake delay
+		special(ShakeCamera)
+
+		playmoncry(SPECIES_BRONZONG, CRY_MODE_GROWL_1)
+		waitmoncry
+		playmoncry(SPECIES_BRONZONG, CRY_MODE_GROWL_2)
+		delay(16)
+		playmoncry(SPECIES_BRONZONG, CRY_MODE_GROWL_2)
+		waitmoncry
+
+		delay(48)
+
+		setweather(WEATHER_RAIN)
+		doweather
+
+		delay(64)
+
+		applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
+		waitmovement(0)
+
+		delay(48)
+
+		msgbox(format(
+			"… … …It started to rain."
+		))
+		closemessage
+
+		fadeinbgm(1)
+		setflag(FLAG_TEMP_1)
+	}
+
+	release
 }

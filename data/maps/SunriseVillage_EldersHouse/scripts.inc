@@ -237,16 +237,22 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	closemessage
 	delay 20
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15
+	waitmovement 0
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9
 	closemessage
 	delay 20
+	applymovement 1, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_16
+	waitmovement 0
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10
 	closemessage
 	giveitem ITEM_LETTER
 	waitfanfare
 	closemessage
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15
+	waitmovement 0
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11
 	closemessage
@@ -271,7 +277,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_47:
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18
 	closemessage
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_18
 	waitmovement 0
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 6
 	goto SunriseVillage_EldersHouse_EventScript_RivalBattle
@@ -436,6 +442,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_46:
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_42
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_48:
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_17
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15
 	closemessage
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_47
@@ -462,6 +469,7 @@ SunriseVillage_EldersHouse_EventScript_Natsuki::
 
 SunriseVillage_EldersHouse_EventScript_PostBattle::
 	special HealPlayerParty
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_17
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq SunriseVillage_EldersHouse_EventScript_PostBattle_2
@@ -696,6 +704,18 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_14:
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15:
+	walk_in_place_fast_up
+	step_end
+
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_16:
+	walk_in_place_fast_down
+	step_end
+
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_17:
+	jump_in_place_left
+	step_end
+
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_18:
 	face_player
 	step_end
 
@@ -843,12 +863,10 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10:
 	.string "hopefully, has more information\l"
 	.string "as to why the Pokémon are lashing\l"
 	.string "out.\p"
-	.string "Could you deliver him this letter? I\n"
-	.string "could send him a Chatot, but I need to\l"
-	.string "make sure this doesn't get lost on\l"
-	.string "the way.\p"
-	.string "Please do not dilly-dally on your way\n"
-	.string "there!$"
+	.string "Could you deliver him this letter?\n"
+	.string "I could send him a Chatot, but I need\l"
+	.string "to make sure this doesn't get lost on\l"
+	.string "the way.$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11:
 	.string "Understood, Grandma Kaba.\n"
@@ -902,7 +920,7 @@ SunriseVillage_EldersHouse_EventScript_PostBattle_Text_1:
 	.string "See ya later, Feraligatr.$"
 
 SunriseVillage_EldersHouse_EventScript_RivalBattle_Text_0:
-	.string "Looks like I lost!$"
+	.string "What? It's over already?$"
 
 SunriseVillage_EldersHouse_EventScript_Joltik_Text_0:
 	.string "Fss!$"

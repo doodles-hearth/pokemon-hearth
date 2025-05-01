@@ -5681,7 +5681,7 @@
       "id": "LAYOUT_HARVEST_SHRINE",
       "name": "HarvestShrine_Layout",
       "width": 32,
-      "height": 37,
+      "height": 26,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",

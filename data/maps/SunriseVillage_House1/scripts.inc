@@ -2,15 +2,15 @@ SunriseVillage_House1_MapScripts::
 	.byte 0
 
 
-SunriseVillage_House1_EventScript_Kirlia::
-	setseenmon SPECIES_KIRLIA
-	setspeakertomonname SPECIES_KIRLIA
-	msgbox SunriseVillage_House1_EventScript_Kirlia_Text_0, MSGBOX_NPC
+SunriseVillage_House1_EventScript_Ralts::
+	setseenmon SPECIES_RALTS
+	setspeakertomonname SPECIES_RALTS
+	msgbox SunriseVillage_House1_EventScript_Ralts_Text_0, MSGBOX_NPC
 	return
 
 
 SunriseVillage_House1_EventScript_OldWoman::
-	setnamedmon SPECIES_KIRLIA
+	setnamedmon SPECIES_RALTS
 	speakername SunriseVillage_House1_EventScript_OldWoman_Text_0
 	msgbox SunriseVillage_House1_EventScript_OldWoman_Text_1, MSGBOX_NPC
 	return
@@ -40,14 +40,14 @@ SunriseVillage_House1_EventScript_Zigzagoon::
 	end
 
 
-SunriseVillage_House1_EventScript_Kirlia_Text_0:
+SunriseVillage_House1_EventScript_Ralts_Text_0:
 	.string "…$"
 
 SunriseVillage_House1_EventScript_OldWoman_Text_0:
 	.string "Neighbour$"
 
 SunriseVillage_House1_EventScript_OldWoman_Text_1:
-	.string "Kirlia here is quite the silent type.\n"
+	.string "Ralts here is quite the silent type.\n"
 	.string "I'm fine with that.$"
 
 SunriseVillage_House1_EventScript_OldMan_Text_0:
