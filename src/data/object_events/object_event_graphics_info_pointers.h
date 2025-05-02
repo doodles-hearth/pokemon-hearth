@@ -50,6 +50,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SwimmerM;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_SwimmerF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BlackBelt;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Beauty;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MasquerainWoman;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scientist1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lass;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokemonBreederF;
@@ -307,6 +308,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SHAMISEN_GREEN] =           &gObjectEventGraphicsInfo_Shamisen_Green,
     [OBJ_EVENT_GFX_SHAMISEN_RED] =             &gObjectEventGraphicsInfo_Shamisen_Red,
     [OBJ_EVENT_GFX_INCENSE_SHOP_KEEPER] =      &gObjectEventGraphicsInfo_IncenseSeller,
+    [OBJ_EVENT_GFX_MASQUERAIN_WOMAN] =         &gObjectEventGraphicsInfo_MasquerainWoman,
     [OBJ_EVENT_GFX_BATTLE_GIRL] =              &gObjectEventGraphicsInfo_BattleGirl,
     [OBJ_EVENT_GFX_EXPERT_M] =                 &gObjectEventGraphicsInfo_ExpertM,
     [OBJ_EVENT_GFX_EXPERT_F] =                 &gObjectEventGraphicsInfo_ExpertF,

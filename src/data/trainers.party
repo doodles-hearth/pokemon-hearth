@@ -269,7 +269,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 === TRAINER_HIINA ===
 Name: Hiina
 Class: Beauty
-Pic: Beauty
+Pic: Masquerain Woman
 Gender: Female
 Music: Female
 Double Battle: No
@@ -6286,18 +6286,18 @@ IVs: 29 HP / 29 Atk / 29 Def / 29 SpA / 29 SpD / 29 Spe
 === TRAINER_IZUMI ===
 Name: Izumi
 Class: Beauty
-Pic: Beauty
+Pic: Masquerain Woman
 Gender: Female
 Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Lotad
+Surskit
 Level: 13
 - Absorb
-- Whirlpool
+- Sweet Scent
 - Rain Dance
-- Leech Seed
+- Quick Attack
 
 Feebas
 Level: 12

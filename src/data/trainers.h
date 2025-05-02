@@ -480,7 +480,7 @@
 #line 271
         .trainerClass = TRAINER_CLASS_BEAUTY,
 #line 272
-        .trainerPic = TRAINER_PIC_BEAUTY,
+        .trainerPic = TRAINER_PIC_MASQUERAIN_WOMAN,
         .encounterMusic_gender =
 #line 273
 F_TRAINER_FEMALE | 
@@ -15578,7 +15578,7 @@ F_TRAINER_FEMALE |
 #line 6288
         .trainerClass = TRAINER_CLASS_BEAUTY,
 #line 6289
-        .trainerPic = TRAINER_PIC_BEAUTY,
+        .trainerPic = TRAINER_PIC_MASQUERAIN_WOMAN,
         .encounterMusic_gender =
 #line 6290
 F_TRAINER_FEMALE | 
@@ -15593,7 +15593,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 6295
-            .species = SPECIES_LOTAD,
+            .species = SPECIES_SURSKIT,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6297
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
@@ -15604,9 +15604,9 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 6297
                 MOVE_ABSORB,
-                MOVE_WHIRLPOOL,
+                MOVE_SWEET_SCENT,
                 MOVE_RAIN_DANCE,
-                MOVE_LEECH_SEED,
+                MOVE_QUICK_ATTACK,
             },
             },
             {
