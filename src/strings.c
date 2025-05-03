@@ -1381,3 +1381,5 @@ const u8 gText_QuestAnnounce[] = _("The quest “{STR_VAR_1}”\nis now {STR_VAR
 const u8 gText_QuestComplete[] =_("complete");
 const u8 gText_QuestActive[] =_("active");
 const u8 gText_QuestUpdate[] = _("You jotted down changes to your quest,\n“{STR_VAR_1}”.");
+
+const u8 gText_MonDescribedNotification[] = _("You wrote down notes about {STR_VAR_1}\nin the PokéDex!");

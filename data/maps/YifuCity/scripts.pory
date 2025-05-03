@@ -825,8 +825,6 @@ script YifuCity_EventScript_Chimecho {
 script YifuCity_EventScript_ChimechoLady {
 	lock
 	faceplayer
-	setnamedmon(SPECIES_CHIMECHO)
-	setdescribedmon(SPECIES_CHIMECHO)
 	speakername("Old Lady")
 	msgbox(format(
 		"I love listening to Chimecho's songs.\n"
@@ -834,6 +832,11 @@ script YifuCity_EventScript_ChimechoLady {
 		"You should always be kind to Chimecho! They are sacred, and mistreating one would surely bring you bad luck."
 	))
 	closemessage
+
+	
+	setnamedmon(SPECIES_CHIMECHO)
+	setdescribedmon(SPECIES_CHIMECHO)
+
 	release
 	end
 }

@@ -16,11 +16,16 @@ HarvestShrine_EventScript_MonkBronzong::
 
 
 HarvestShrine_EventScript_Kouga::
-	trainerbattle_single TRAINER_KOUGA, HarvestShrine_EventScript_Kouga_Text_0, HarvestShrine_EventScript_Kouga_Text_1
+	trainerbattle_single TRAINER_KOUGA, HarvestShrine_EventScript_Kouga_Text_0, HarvestShrine_EventScript_Kouga_Text_1, HarvestShrine_EventScript_SetMonFlags
 	speakername HarvestShrine_EventScript_Kouga_Text_2
 	msgbox HarvestShrine_EventScript_Kouga_Text_3
 	closemessage
 	end
+
+
+HarvestShrine_EventScript_SetMonFlags::
+	setnamedmon SPECIES_BRONZONG
+	return
 
 
 HarvestShrine_EventScript_MonkRain::

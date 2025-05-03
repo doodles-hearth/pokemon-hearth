@@ -148,8 +148,6 @@ script MaguroHarbor_Refuge_EventScript_Slowpoke {
 script MaguroHarbor_Refuge_EventScript_DescribedMons {
 	lock
 	faceplayer
-	setnamedmon(SPECIES_KRABBY)
-	setdescribedmon(SPECIES_KRABBY)
 	speakername("Man")
 	msgbox(format(
 		"Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
@@ -159,6 +157,9 @@ script MaguroHarbor_Refuge_EventScript_DescribedMons {
 		"Go ahead, you can write that down about it!"
 	))
 	closemessage
+
+	setnamedmon(SPECIES_KRABBY)
+	setdescribedmon(SPECIES_KRABBY)
 	release
 }
 

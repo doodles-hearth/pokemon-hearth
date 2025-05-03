@@ -27,7 +27,8 @@ script HarvestShrine_EventScript_Kouga {
 	trainerbattle_single(
 		TRAINER_KOUGA,
 		format("Have you come here to honor the venerable Bronzong? Or are you here to stir trouble?"),
-		format("By a thousand gods!")
+		format("By a thousand gods!"),
+		HarvestShrine_EventScript_SetMonFlags
 	)
 	speakername("Kouga")
 	msgbox(format(
@@ -35,6 +36,10 @@ script HarvestShrine_EventScript_Kouga {
 	))
 	closemessage
 	end
+}
+
+script HarvestShrine_EventScript_SetMonFlags {
+	setnamedmon(SPECIES_BRONZONG)
 }
 
 script HarvestShrine_EventScript_MonkRain {

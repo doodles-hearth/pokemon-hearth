@@ -109,11 +109,11 @@ MaguroHarbor_Refuge_EventScript_Slowpoke_2:
 MaguroHarbor_Refuge_EventScript_DescribedMons::
 	lock
 	faceplayer
-	setnamedmon SPECIES_KRABBY
-	setdescribedmon SPECIES_KRABBY
 	speakername MaguroHarbor_Refuge_EventScript_DescribedMons_Text_0
 	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1
 	closemessage
+	setnamedmon SPECIES_KRABBY
+	setdescribedmon SPECIES_KRABBY
 	release
 	return
 

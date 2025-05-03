@@ -2541,11 +2541,13 @@
     .2byte FLAG_SET_NAMED
     .endm
 
-    @ Sets the Pokedex Described Flag for the Pokemon with speciesId
+    @ Sets the Pokedex Described Flag for the Pokemon, displaying a notification
     .macro setdescribedmon species:req
-    callnative Scrcmd_getsetpokedexflag, requests_effects=1
-    .2byte \species
-    .2byte FLAG_SET_DESCRIBED
+	callnative ScriptShowMonDescribedNotification, requests_effects=1
+	.2byte \species
+	waitbuttonpress
+	callnative ScriptHideMonDescribed, requests_effects=1
+	.2byte \species
     .endm
 
 	@ Sets the Pokedex Caught Flag for the Pokemon with speciesId

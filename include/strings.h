@@ -2647,5 +2647,6 @@ extern const u8 gText_Rename[]; // change nickname from summary screen
 extern const u8 gText_CannotSendMonToBoxHM[];
 
 extern const u8 gText_Scroll[];
+extern const u8 gText_MonDescribedNotification[];
 
 #endif // GUARD_STRINGS_H
