@@ -662,11 +662,11 @@ YifuCity_EventScript_Chimecho::
 YifuCity_EventScript_ChimechoLady::
 	lock
 	faceplayer
-	setnamedmon SPECIES_CHIMECHO
-	setdescribedmon SPECIES_CHIMECHO
 	speakername YifuCity_EventScript_ChimechoLady_Text_0
 	msgbox YifuCity_EventScript_ChimechoLady_Text_1
 	closemessage
+	setnamedmon SPECIES_CHIMECHO
+	setdescribedmon SPECIES_CHIMECHO
 	release
 	end
 

@@ -294,6 +294,9 @@ const u16 gTrainerPalette_Monk[] = INCBIN_U16("graphics/trainers/front_pics/monk
 const u32 gTrainerFrontPic_OldLady[] = INCBIN_U32("graphics/trainers/front_pics/old_lady.4bpp.lz");
 const u16 gTrainerPalette_OldLady[] = INCBIN_U16("graphics/trainers/front_pics/old_lady.gbapal");
 
+const u32 gTrainerFrontPic_Medium[] = INCBIN_U32("graphics/trainers/front_pics/medium.4bpp.lz");
+const u16 gTrainerPalette_Medium[] = INCBIN_U16("graphics/trainers/front_pics/medium.gbapal");
+
 const u32 gTrainerFrontPic_YoungCouple[] = INCBIN_U32("graphics/trainers/front_pics/young_couple.4bpp.lz");
 const u16 gTrainerPalette_YoungCouple[] = INCBIN_U16("graphics/trainers/front_pics/young_couple.gbapal");
 

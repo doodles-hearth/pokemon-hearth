@@ -9117,7 +9117,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             "Feebas live in ponds that are heavily\n"
             "infested with weeds. Because of its\n"
             "hopelessly shabby appearance, it\n"
-            "seems as if few Trainers raise it."),
+            "seems as if few Wielders raise it."),
         .pokemonScale = 423,
         .pokemonOffset = -4,
         .trainerScale = 256,

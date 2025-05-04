@@ -65,15 +65,26 @@ script BeachboundRoute_Decay_EventScript_Kin {
 script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 4)
 	speakername("Hariko")
-	msgbox(format(
-		"Oh! Hello.\n{PLAYER}, right?\p"
-		"I am Hariko, remember me? We had a chat in the Ginko Woods."
-		// "What do you think is happening here? It looks like there is some sort of {COLOR RED}decay{COLOR DARK_GRAY} affecting this whole spot.\p"
-		// "The Samurai over there told me there are reports of this phenomenon hitting several areas over the last few days.\p"
-		// "That coincides with the start of the Volcano's rumbling spells, so both seem to be related.\p"
-		// "Whatever it is, it is not good. I want to learn as much as I can about this {COLOR RED}decay{COLOR DARK_GRAY}, which is why I am here.\p"
-		// "Did you also come here to investigate, {PLAYER}? We should team up!"
-	))
+	if (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
+		msgbox(format(
+			"Oh! Hello again, {PLAYER}!\p"
+			"What do you think is happening here? It looks like there is some sort of {COLOR RED}decay{COLOR DARK_GRAY} affecting this whole area.\p"
+			"The Samurai over there told me there are reports of this phenomenon hitting several areas over the last few days.\p"
+			"That coincides with the start of the Volcano's rumbling spells, so both seem to be related.\p"
+			"Whatever it is, it is not good. I want to learn as much as I can about this {COLOR RED}decay{COLOR DARK_GRAY}.\p"
+			"Did you also come here to investigate, {PLAYER}? We should team up!"
+		))
+	} else {
+		msgbox(format(
+			"Oh! Hello.\n{PLAYER}, right?\p"
+			"I am Hariko, remember me? We had a chat in the Ginko Woods."
+			"What do you think is happening here? It looks like there is some sort of {COLOR RED}decay{COLOR DARK_GRAY} affecting this whole area.\p"
+			"The Samurai over there told me there are reports of this phenomenon hitting several areas over the last few days.\p"
+			"That coincides with the start of the Volcano's rumbling spells, so both seem to be related.\p"
+			"Whatever it is, it is not good. I want to learn as much as I can about this {COLOR RED}decay{COLOR DARK_GRAY}.\p"
+			"Did you also come here to investigate, {PLAYER}? We should team up!"
+		))
+	}
 	closemessage
 
 	setflag(FLAG_HIDE_NATSUKI)
@@ -93,7 +104,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"{PLAYER}! What's going on?\p"
+		"{PLAYER}! What the heck is going on here?\p"
 		"Who is this, blah blah blah"
 	))
 	closemessage

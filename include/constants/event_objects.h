@@ -270,11 +270,12 @@
 #define OBJ_EVENT_GFX_CROBAT_SHADOWS_ADMIN_F     266
 #define OBJ_EVENT_GFX_INCENSE_SHOP_KEEPER        267
 #define OBJ_EVENT_GFX_MASQUERAIN_WOMAN           268
+#define OBJ_EVENT_GFX_MEDIUM                     269
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        269
+#define NUM_OBJ_EVENT_GFX                        270
 
 
 // These are dynamic object gfx ids.
@@ -521,6 +522,7 @@
 #define OBJ_EVENT_PAL_TAG_BOY_2 0x117A
 #define OBJ_EVENT_PAL_TAG_BOY_3 0x117B
 #define OBJ_EVENT_PAL_TAG_MASQUERAIN_WOMAN 0x117C
+#define OBJ_EVENT_PAL_TAG_MEDIUM 0x117D
 
 // Used as a placeholder follower graphic
 #define OBJ_EVENT_PAL_TAG_SUBSTITUTE              0x7611
