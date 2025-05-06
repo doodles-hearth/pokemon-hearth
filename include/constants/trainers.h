@@ -388,7 +388,8 @@
 #define TRAINER_CLASS_OLD_LADY 0x4D
 #define TRAINER_CLASS_GOLBAT 0x4E
 #define TRAINER_CLASS_ROCK_SMASHER 0x4F
-#define TRAINER_CLASS_COUNT          0x50
+#define TRAINER_CLASS_GEM_MANIAC 0x50
+#define TRAINER_CLASS_COUNT          0x51
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

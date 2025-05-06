@@ -1,4 +1,15 @@
+const FLAG_HIDE_FIREBRINGER_FANGIRL = FLAG_TEMP_1
+
 mapscripts Silveridge_House1_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+		getweekday
+		switch(var(VAR_RESULT)) {
+			case WEEKDAY_TUE:
+			case WEEKDAY_THU:
+			case WEEKDAY_SAT:
+				setflag(FLAG_HIDE_FIREBRINGER_FANGIRL)
+		}
+	}
 }
 
 script Silveridge_House1_EventScript_Woman {
@@ -19,13 +30,17 @@ script Silveridge_House1_EventScript_FirebringerFangirl {
     msgbox(format(
         "This place gets pretty cold, especially when the winds blow strong into the valley.\p"
         "I don't know what we would do without those brave Firebringers.\p"
-        "They bring us live Slugma, carrying them on their back all the way down Mt Kazan! I could never!\p"
+        "They bring us live Slugma, carrying them on their back all the way down Mt Kazan!\p"
+        "Slugma cools and hardens up pretty fast, so they basically run the whole way down! I could never!"
         "Sigh… I hope a handsome Firebringer notices me one day…"
     ))
     closemessage
-    setnamedmon(SPECIES_SLUGMA)
     applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
     waitmovement(0)
+
+    setnamedmon(SPECIES_SLUGMA)
+    setdescribedmon(SPECIES_SLUGMA)
+
     release
 }
 

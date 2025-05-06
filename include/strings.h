@@ -494,6 +494,7 @@ extern const u8 gText_Mr[];
 extern const u8 gText_Mrs[];
 extern const u8 gText_Boy[];
 extern const u8 gText_Girl[];
+extern const u8 gText_Lass[];
 extern const u8 gText_Sir[];
 extern const u8 gText_Miss[];
 extern const u8 gText_Daughter[];

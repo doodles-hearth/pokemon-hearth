@@ -856,8 +856,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TAMA ===
 Name: Tama
-Class: Gentleman /* Gem Maniac */
-Pic: Gentleman
+Class: Gem Maniac
+Pic: Gem Maniac
 Gender: Male
 Music: Rich
 Double Battle: Yes
@@ -870,7 +870,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rock Throw
 - Smack Down
 
-Sableye
+Sableye @ Stardust
 Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Night Shade

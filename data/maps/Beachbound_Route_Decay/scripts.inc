@@ -51,7 +51,9 @@ BeachboundRoute_Decay_EventScript_Kin::
 BeachboundRoute_Decay_EventScript_BeanDialogue::
 	setvar VAR_DECAY_BEACHBOUND_ROUTE, 4
 	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_0
-	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_1
+	goto_if_set FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE, BeachboundRoute_Decay_EventScript_BeanDialogue_2
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_2
+BeachboundRoute_Decay_EventScript_BeanDialogue_1:
 	closemessage
 	setflag FLAG_TEMP_1
 	addobject 13
@@ -64,8 +66,8 @@ BeachboundRoute_Decay_EventScript_BeanDialogue::
 	delay 48
 	applymovement 13, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_1
 	waitmovement 0
-	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_2
-	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_3
+	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_3
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_4
 	closemessage
 	applymovement 12, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_2
 	waitmovement 0
@@ -74,8 +76,8 @@ BeachboundRoute_Decay_EventScript_BeanDialogue::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	delay 48
-	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_4
-	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5
+	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_6
 	closemessage
 	applymovement 12, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_3
 	waitmovement 0
@@ -85,19 +87,23 @@ BeachboundRoute_Decay_EventScript_BeanDialogue::
 	waitmovement 8
 	waitmovement OBJ_EVENT_ID_PLAYER
 	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_0
-	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_6
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_7
 	closemessage
 	applymovement 8, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_4
 	waitmovement 0
 	removeobject 8
-	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_2
-	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_7
+	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_3
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_8
 	closemessage
 	applymovement 13, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_5
 	waitmovement 0
 	removeobject 13
 	release
 	return
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_2:
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_1
+	goto BeachboundRoute_Decay_EventScript_BeanDialogue_1
 
 
 BeachboundRoute_Decay_EventScript_BeanTrigger2StepsAway::
@@ -156,7 +162,7 @@ BeachboundRoute_Decay_EventScript_Bean::
 
 BeachboundRoute_Decay_EventScript_Koishi::
 	lock
-	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_4
+	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5
 	msgbox BeachboundRoute_Decay_EventScript_Koishi_Text_0
 	closemessage
 	release
@@ -299,31 +305,65 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_0:
 	.string "Hariko$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_1:
+	.string "Oh! Hello again, {PLAYER}!\p"
+	.string "What do you think is happening here?\n"
+	.string "It looks like there is some sort of\l"
+	.string "{COLOR RED}decay{COLOR DARK_GRAY} affecting this whole area.\p"
+	.string "The Samurai over there told me there\n"
+	.string "are reports of this phenomenon\l"
+	.string "hitting several areas over the last\l"
+	.string "few days.\p"
+	.string "That coincides with the start of the\n"
+	.string "Volcano's rumbling spells, so both\l"
+	.string "seem to be related.\p"
+	.string "Whatever it is, it is not good. I want\n"
+	.string "to learn as much as I can about this\l"
+	.string "{COLOR RED}decay{COLOR DARK_GRAY}.\p"
+	.string "Did you also come here to investigate,\n"
+	.string "{PLAYER}? We should team up!$"
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_2:
 	.string "Oh! Hello.\n"
 	.string "{PLAYER}, right?\p"
 	.string "I am Hariko, remember me? We had a\n"
-	.string "chat in the Ginko Woods.$"
-
-BeachboundRoute_Decay_EventScript_BeanDialogue_Text_2:
-	.string "Natsuki$"
+	.string "chat in the Ginko Woods. What do you\l"
+	.string "think is happening here? It looks like\l"
+	.string "there is some sort of {COLOR RED}decay{COLOR DARK_GRAY} affecting\l"
+	.string "this whole area.\p"
+	.string "The Samurai over there told me there\n"
+	.string "are reports of this phenomenon\l"
+	.string "hitting several areas over the last\l"
+	.string "few days.\p"
+	.string "That coincides with the start of the\n"
+	.string "Volcano's rumbling spells, so both\l"
+	.string "seem to be related.\p"
+	.string "Whatever it is, it is not good. I want\n"
+	.string "to learn as much as I can about this\l"
+	.string "{COLOR RED}decay{COLOR DARK_GRAY}.\p"
+	.string "Did you also come here to investigate,\n"
+	.string "{PLAYER}? We should team up!$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_3:
-	.string "{PLAYER}! What's going on?\p"
-	.string "Who is this, blah blah blah$"
+	.string "Natsuki$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_4:
-	.string "Koishi$"
+	.string "{PLAYER}! What the heck is going on\n"
+	.string "here?\p"
+	.string "Who is this, blah blah blah$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5:
+	.string "Koishi$"
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_6:
 	.string "I heard you, do not get involved in\n"
 	.string "this$"
 
-BeachboundRoute_Decay_EventScript_BeanDialogue_Text_6:
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_7:
 	.string "This is unfair! How are we supposed to\n"
 	.string "investigate if we're not allowed to?\p"
 	.string "Let's leave now.$"
 
-BeachboundRoute_Decay_EventScript_BeanDialogue_Text_7:
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_8:
 	.string "I'm leaving too$"
 
 BeachboundRoute_Decay_EventScript_Bean_Text_0:

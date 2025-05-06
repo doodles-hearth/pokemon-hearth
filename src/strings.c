@@ -609,6 +609,7 @@ const u8 gText_Mr[] = _("Mister");
 const u8 gText_Mrs[] = _("Mrs");
 const u8 gText_Boy[] = _("boy");
 const u8 gText_Girl[] = _("girl");
+const u8 gText_Lass[] = _("lass");
 const u8 gText_Sir[] = _("sir");
 const u8 gText_Miss[] = _("miss");
 const u8 gText_1F[] = _("1F");

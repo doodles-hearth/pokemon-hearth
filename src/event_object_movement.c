@@ -508,6 +508,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Shamisen_Green,        OBJ_EVENT_PAL_TAG_SHAMISEN_GREEN},
     {gObjectEventPal_Shamisen_Red,          OBJ_EVENT_PAL_TAG_SHAMISEN_RED},
     {gObjectEventPal_Lass,                  OBJ_EVENT_PAL_TAG_LASS},
+    {gObjectEventPal_GemManiac,             OBJ_EVENT_PAL_TAG_GEM_MANIAC},
+    {gObjectEventPal_Miner,                 OBJ_EVENT_PAL_TAG_MINER},
     {gObjectEventPal_KimonoGirl,            OBJ_EVENT_PAL_TAG_KIMONO_GIRL},
     {gObjectEventPal_Monk,                  OBJ_EVENT_PAL_TAG_MONK},
     {gObjectEventPal_Beauty,                OBJ_EVENT_PAL_TAG_BEAUTY},
