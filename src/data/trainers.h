@@ -1951,9 +1951,9 @@ F_TRAINER_FEMALE |
 #line 858
         .trainerName = _("Tama"),
 #line 859
-        .trainerClass = TRAINER_CLASS_GENTLEMAN,
+        .trainerClass = TRAINER_CLASS_GEM_MANIAC,
 #line 860
-        .trainerPic = TRAINER_PIC_GENTLEMAN,
+        .trainerPic = TRAINER_PIC_GEM_MANIAC,
         .encounterMusic_gender =
 #line 862
             TRAINER_ENCOUNTER_MUSIC_RICH,
@@ -1985,6 +1985,8 @@ F_TRAINER_FEMALE |
 #line 873
             .species = SPECIES_SABLEYE,
             .gender = TRAINER_MON_RANDOM_GENDER,
+#line 873
+            .heldItem = ITEM_STARDUST,
 #line 875
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 874

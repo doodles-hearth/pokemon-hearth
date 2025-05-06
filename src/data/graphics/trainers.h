@@ -400,6 +400,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_LADY, gTrainerFrontPic_Lady, gTrainerPalette_Lady),
     TRAINER_SPRITE(TRAINER_PIC_BEAUTY, gTrainerFrontPic_Beauty, gTrainerPalette_Beauty),
     TRAINER_SPRITE(TRAINER_PIC_MASQUERAIN_WOMAN, gTrainerFrontPic_MasquerainWoman, gTrainerPalette_MasquerainWoman),
+    TRAINER_SPRITE(TRAINER_PIC_GEM_MANIAC, gTrainerFrontPic_GemManiac, gTrainerPalette_GemManiac),
     TRAINER_SPRITE(TRAINER_PIC_RICH_BOY, gTrainerFrontPic_RichBoy, gTrainerPalette_RichBoy),
     TRAINER_SPRITE(TRAINER_PIC_EXPERT_F, gTrainerFrontPic_ExpertF, gTrainerPalette_ExpertF),
     TRAINER_SPRITE(TRAINER_PIC_POKEMANIAC, gTrainerFrontPic_Pokemaniac, gTrainerPalette_Pokemaniac),

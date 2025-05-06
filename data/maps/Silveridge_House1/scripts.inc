@@ -1,5 +1,18 @@
 Silveridge_House1_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Silveridge_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+Silveridge_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	getweekday
+	switch VAR_RESULT
+	case WEEKDAY_TUE, Silveridge_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	case WEEKDAY_THU, Silveridge_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	case WEEKDAY_SAT, Silveridge_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	return
+
+Silveridge_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	setflag FLAG_TEMP_1
+	return
 
 
 Silveridge_House1_EventScript_Woman::
@@ -18,9 +31,10 @@ Silveridge_House1_EventScript_FirebringerFangirl::
 	speakername Silveridge_House1_EventScript_FirebringerFangirl_Text_0
 	msgbox Silveridge_House1_EventScript_FirebringerFangirl_Text_1
 	closemessage
-	setnamedmon SPECIES_SLUGMA
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
+	setnamedmon SPECIES_SLUGMA
+	setdescribedmon SPECIES_SLUGMA
 	release
 	return
 
@@ -79,9 +93,12 @@ Silveridge_House1_EventScript_FirebringerFangirl_Text_1:
 	.string "those brave Firebringers.\p"
 	.string "They bring us live Slugma, carrying\n"
 	.string "them on their back all the way down Mt\l"
-	.string "Kazan! I could never!\p"
-	.string "Sigh… I hope a handsome Firebringer\n"
-	.string "notices me one day…$"
+	.string "Kazan!\p"
+	.string "Slugma cools and hardens up pretty\n"
+	.string "fast, so they basically run the whole\l"
+	.string "way down! I could never! Sigh… I hope\l"
+	.string "a handsome Firebringer notices me one\l"
+	.string "day…$"
 
 Silveridge_House1_EventScript_Sandslash_Text_0:
 	.string "Sandslash$"

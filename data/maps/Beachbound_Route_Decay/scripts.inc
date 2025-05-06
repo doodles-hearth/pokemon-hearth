@@ -66,36 +66,55 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_1:
 	delay 48
 	applymovement 13, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_1
 	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_2
 	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_3
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_4
 	closemessage
-	applymovement 12, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_2
+	applymovement 13, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_3
+	waitmovement 13
+	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_3
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5
+	applymovement 8, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_2
+	waitmovement 8
+	applymovement OBJ_EVENT_ID_PLAYER, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_4
+	waitmovement OBJ_EVENT_ID_PLAYER
+	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_0
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_6
+	mcdialogue BeachboundRoute_Decay_EventScript_BeanDialogue_Text_7, BeachboundRoute_Decay_EventScript_BeanDialogue_Text_8
+	switch VAR_RESULT
+	case 1, BeachboundRoute_Decay_EventScript_BeanDialogue_7
+BeachboundRoute_Decay_EventScript_BeanDialogue_5:
+	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_0
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_10
+	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_3
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_11
+	applymovement 12, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_6
 	waitmovement 0
 	applymovement 8, Common_Movement_FaceUp
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	delay 48
-	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5
-	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_6
+	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_12
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_13
 	closemessage
-	applymovement 12, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_3
+	applymovement 12, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_7
 	waitmovement 0
 	delay 48
-	applymovement 8, Common_Movement_FaceRight
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 8, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_5
+	applymovement OBJ_EVENT_ID_PLAYER, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_4
 	waitmovement 8
 	waitmovement OBJ_EVENT_ID_PLAYER
 	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_0
-	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_7
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_14
 	closemessage
-	applymovement 8, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_4
+	applymovement 8, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_8
 	waitmovement 0
 	removeobject 8
 	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_3
-	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_8
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_15
 	closemessage
-	applymovement 13, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_5
+	applymovement 13, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_9
 	waitmovement 0
 	removeobject 13
 	release
@@ -104,6 +123,15 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_1:
 BeachboundRoute_Decay_EventScript_BeanDialogue_2:
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_1
 	goto BeachboundRoute_Decay_EventScript_BeanDialogue_1
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_7:
+	applymovement 8, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_5
+	waitmovement 8
+	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_0
+	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_9
+	applymovement 8, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_2
+	waitmovement 8
+	goto BeachboundRoute_Decay_EventScript_BeanDialogue_5
 
 
 BeachboundRoute_Decay_EventScript_BeanTrigger2StepsAway::
@@ -143,8 +171,8 @@ BeachboundRoute_Decay_EventScript_BeanTrigger::
 	waitse
 	waitmovement 0
 	delay 48
-	applymovement 8, Common_Movement_FaceRight
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft
+	applymovement 8, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_5
+	applymovement OBJ_EVENT_ID_PLAYER, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_4
 	waitmovement 8
 	waitmovement OBJ_EVENT_ID_PLAYER
 	call BeachboundRoute_Decay_EventScript_BeanDialogue
@@ -162,7 +190,7 @@ BeachboundRoute_Decay_EventScript_Bean::
 
 BeachboundRoute_Decay_EventScript_Koishi::
 	lock
-	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5
+	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_12
 	msgbox BeachboundRoute_Decay_EventScript_Koishi_Text_0
 	closemessage
 	release
@@ -242,18 +270,37 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_1:
 	walk_right
 	walk_right
 	walk_right
-	face_down
+	walk_in_place_fast_down
 	step_end
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_2:
-	walk_down
+	walk_in_place_fast_up
 	step_end
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_3:
-	walk_up
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_4:
+	walk_in_place_fast_left
+	step_end
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_5:
+	walk_in_place_fast_right
+	step_end
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_6:
+	walk_down
+	step_end
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_7:
+	walk_up
+	step_end
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_8:
 	walk_left
 	walk_left
 	walk_left
@@ -264,7 +311,7 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_4:
 	walk_left
 	step_end
 
-BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_5:
+BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_9:
 	walk_left
 	walk_left
 	walk_left
@@ -308,7 +355,7 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_1:
 	.string "Oh! Hello again, {PLAYER}!\p"
 	.string "What do you think is happening here?\n"
 	.string "It looks like there is some sort of\l"
-	.string "{COLOR RED}decay{COLOR DARK_GRAY} affecting this whole area.\p"
+	.string "Decay affecting this whole area.\p"
 	.string "The Samurai over there told me there\n"
 	.string "are reports of this phenomenon\l"
 	.string "hitting several areas over the last\l"
@@ -318,7 +365,7 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_1:
 	.string "seem to be related.\p"
 	.string "Whatever it is, it is not good. I want\n"
 	.string "to learn as much as I can about this\l"
-	.string "{COLOR RED}decay{COLOR DARK_GRAY}.\p"
+	.string "Decay.\p"
 	.string "Did you also come here to investigate,\n"
 	.string "{PLAYER}? We should team up!$"
 
@@ -328,7 +375,7 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_2:
 	.string "I am Hariko, remember me? We had a\n"
 	.string "chat in the Ginko Woods. What do you\l"
 	.string "think is happening here? It looks like\l"
-	.string "there is some sort of {COLOR RED}decay{COLOR DARK_GRAY} affecting\l"
+	.string "there is some sort of Decay affecting\l"
 	.string "this whole area.\p"
 	.string "The Samurai over there told me there\n"
 	.string "are reports of this phenomenon\l"
@@ -339,7 +386,7 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_2:
 	.string "seem to be related.\p"
 	.string "Whatever it is, it is not good. I want\n"
 	.string "to learn as much as I can about this\l"
-	.string "{COLOR RED}decay{COLOR DARK_GRAY}.\p"
+	.string "Decay.\p"
 	.string "Did you also come here to investigate,\n"
 	.string "{PLAYER}? We should team up!$"
 
@@ -348,22 +395,60 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_3:
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_4:
 	.string "{PLAYER}! What the heck is going on\n"
-	.string "here?\p"
-	.string "Who is this, blah blah blah$"
+	.string "here? Everything is rotting!\p"
+	.string "My Pokémon stepped in that slimy\n"
+	.string "black stuff and doesn't look well…\l"
+	.string "I need to get to Maguro Harbor's\l"
+	.string "Refuge quickly!$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5:
-	.string "Koishi$"
+	.string "Wait, who are you?$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_6:
-	.string "I heard you, do not get involved in\n"
-	.string "this$"
+	.string "I am Hariko. {PLAYER} and I are\n"
+	.string "friends. Together, we are going to\l"
+	.string "find the cause of this Decay!$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_7:
+	.string "That's right!$"
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_8:
+	.string "We are?$"
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_9:
+	.string "I might… have gotten ahead of myself.\n"
+	.string "You agree though, right?\l"
+	.string "Great!$"
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_10:
+	.string "Your name is Natsuki?\n"
+	.string "You are a friend of {PLAYER}'s too…\l"
+	.string "That makes us friends as well, then!$"
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_11:
+	.string "Is… Is that so?$"
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_12:
+	.string "Koishi$"
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_13:
+	.string "I couldn't help but overhear your\n"
+	.string "conversation. You kids are way too\l"
+	.string "young and inexperienced to be\l"
+	.string "getting involved in this!\p"
+	.string "We know nothing about this Decay yet.\n"
+	.string "We only know that it's dangerous.\p"
+	.string "We're already stretched thin as it is\n"
+	.string "and we don't want to have to rescue\l"
+	.string "you, so please let the grownups\l"
+	.string "handle the issue.$"
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_14:
 	.string "This is unfair! How are we supposed to\n"
 	.string "investigate if we're not allowed to?\p"
 	.string "Let's leave now.$"
 
-BeachboundRoute_Decay_EventScript_BeanDialogue_Text_8:
+BeachboundRoute_Decay_EventScript_BeanDialogue_Text_15:
 	.string "I'm leaving too$"
 
 BeachboundRoute_Decay_EventScript_Bean_Text_0:
@@ -387,7 +472,7 @@ BeachboundRoute_Decay_EventScript_SamuraiBeCareful_Text_0:
 
 BeachboundRoute_Decay_EventScript_Samurai_Text_0:
 	.string "Don't panic!\n"
-	.string "Don't touch the {COLOR RED}decay{COLOR DARK_GRAY}!$"
+	.string "Don't touch the Decay!$"
 
 BeachboundRoute_Decay_EventScript_SamuraiWhatCouldBe_Text_0:
 	.string "What could be the cause of this?!$"
