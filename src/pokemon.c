@@ -3775,11 +3775,21 @@ const u8 *GetSpeciesCategory(u16 species)
     return gSpeciesInfo[species].categoryName;
 }
 
-const u8 *GetSpeciesPokedexDescription(u16 species)
+ALIGNED(4) static const u8 sExpandedPlaceholder_PokedexDescription[] = _("");
+
+const u8 *GetSpeciesPokedexDescription(u16 species, enum SpeciesNameCheck check)
 {
     species = SanitizeSpeciesId(species);
     if (gSpeciesInfo[species].description == NULL)
         return gSpeciesInfo[SPECIES_NONE].description;
+
+    if (
+        P_UNKNOWN_MON_NAMES == TRUE
+        && check == DO_NAME_CHECK
+        && GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_DESCRIBED) == FALSE
+    ) {
+        return sExpandedPlaceholder_PokedexDescription;
+    }
     return gSpeciesInfo[species].description;
 }
 

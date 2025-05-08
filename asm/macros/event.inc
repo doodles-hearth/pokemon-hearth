@@ -2506,11 +2506,18 @@
 	.2byte FLAG_GET_SEEN
 	.endm
 
-	@ Returns the state of the Pokedex Caught Flag to VAR_RESULT for the Pokemon with speciesId
+	@ Returns the state of the Pokedex Named Flag to VAR_RESULT for the Pokemon with speciesId
 	.macro getnamedmon species:req
 	callnative Scrcmd_getsetpokedexflag, requests_effects=1
 	.2byte \species
 	.2byte FLAG_GET_NAMED
+	.endm
+
+	@ Returns the state of the Pokedex Described Flag to VAR_RESULT for the Pokemon with speciesId
+	.macro getdescribedmon species:req
+	callnative Scrcmd_getsetpokedexflag, requests_effects=1
+	.2byte \species
+	.2byte FLAG_GET_DESCRIBED
 	.endm
 
 	@ Returns the state of the Pokedex Caught Flag to VAR_RESULT for the Pokemon with speciesId
@@ -2532,6 +2539,15 @@
     callnative Scrcmd_getsetpokedexflag, requests_effects=1
     .2byte \species
     .2byte FLAG_SET_NAMED
+    .endm
+
+    @ Sets the Pokedex Described Flag for the Pokemon, displaying a notification
+    .macro setdescribedmon species:req
+	callnative ScriptShowMonDescribedNotification, requests_effects=1
+	.2byte \species
+	waitbuttonpress
+	callnative ScriptHideMonDescribed, requests_effects=1
+	.2byte \species
     .endm
 
 	@ Sets the Pokedex Caught Flag for the Pokemon with speciesId

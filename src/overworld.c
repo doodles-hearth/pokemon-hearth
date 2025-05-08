@@ -45,6 +45,8 @@
 #include "new_game.h"
 #include "palette.h"
 #include "play_time.h"
+#include "pokedex.h"
+#include "pokemon_icon.h"
 #include "random.h"
 #include "roamer.h"
 #include "rotating_gate.h"
@@ -58,6 +60,7 @@
 #include "secret_base.h"
 #include "sound.h"
 #include "start_menu.h"
+#include "strings.h"
 #include "string_util.h"
 #include "task.h"
 #include "tileset_anims.h"
@@ -3524,6 +3527,15 @@ EWRAM_DATA u8 sItemIconSpriteId2 = 0;
 static void ShowItemIconSprite(u16 item, bool8 firstTime, bool8 flash);
 static void DestroyItemIconSprite(void);
 
+static void ShowMonIconSprite(u16 species, bool8 flash);
+static void DestroyMonIconSprite(void);
+
+enum PopupType
+{
+    ITEM,
+    POKEDEX
+};
+
 static u8 ReformatItemDescription(u16 item, u8 *dest)
 {
     u8 count = 0;
@@ -3710,4 +3722,126 @@ bool8 ScrFunc_settimeofday(struct ScriptContext *ctx)
 {
     SetTimeOfDay(ScriptReadByte(ctx));
     return FALSE;
+}
+
+// Piggybacking the show item icon description feature for our "You wrote down notes about X in the PokéDex!" feature
+// Note: I'm not renaming stuff like ITEM_TAG, sItemIconSpriteId, etc
+// to minimize future merge conflicts with expansion
+
+// Destroys the mon icon sprite
+static void DestroyMonIconSprite(void)
+{
+    FreeSpriteTilesByTag(ITEM_TAG);
+    FreeSpritePaletteByTag(ITEM_TAG);
+    FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId]);
+    DestroySprite(&gSprites[sItemIconSpriteId]);
+
+    if ((GetFlashLevel() > 0 || InBattlePyramid_()) && sItemIconSpriteId2 != MAX_SPRITES)
+    {
+        FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId2]);
+        DestroySprite(&gSprites[sItemIconSpriteId2]);
+    }
+}
+
+static void ShowMonIconSprite(u16 species, bool8 flash)
+{
+    s16 x = 0, y = 0;
+    u8 spriteId2 = MAX_SPRITES;
+
+    // Load Pokémon icon palettes
+    LoadMonIconPalettes();
+
+    if (flash)
+    {
+        // Enable flash effects if needed
+        SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+        SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
+    }
+
+    // Create the Pokémon icon sprite
+    sItemIconSpriteId = CreateMonIconNoPersonality(species, SpriteCB_MonIcon, ITEM_ICON_X - 20, ITEM_ICON_Y - 18, 0);
+    
+    if (sItemIconSpriteId != MAX_SPRITES)
+    {
+        x = 15;  // Position in header box
+        y = 11;
+
+        // Set the icon position and priority
+        gSprites[sItemIconSpriteId].x2 = x;
+        gSprites[sItemIconSpriteId].y2 = y;
+        gSprites[sItemIconSpriteId].oam.priority = 0;
+    }
+
+    // Flash-related second sprite handling (ensure sprite is valid)
+    if (flash)
+    {
+        // Create second sprite
+        spriteId2 = CreateMonIconNoPersonality(species, SpriteCB_MonIcon, ITEM_ICON_X - 20, ITEM_ICON_Y - 18, 0);
+
+        // Only proceed if sprite creation succeeded
+        if (spriteId2 != MAX_SPRITES)
+        {
+            gSprites[spriteId2].x2 = x;
+            gSprites[spriteId2].y2 = y;
+            gSprites[spriteId2].oam.priority = 0;
+            gSprites[spriteId2].oam.objMode = ST_OAM_OBJ_WINDOW;
+            sItemIconSpriteId2 = spriteId2;
+        }
+        else
+        {
+            // Handle the failure case where the second sprite couldn't be created (prevent softlock)
+            ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+            ClearGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
+            // Reset to prevent invalid accesses
+            sItemIconSpriteId2 = MAX_SPRITES;
+        }
+    }
+}
+
+void ScriptShowMonDescribedNotification(struct ScriptContext *ctx)
+{
+    u32 species = ScriptReadHalfword(ctx);
+    
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_DESCRIBED))
+    {
+        PlayFanfare(MUS_LEVEL_UP);
+        StringCopy(gStringVar1, GetSpeciesName(species, DO_NAME_CHECK));
+        StringExpandPlaceholders(gStringVar2, gText_MonDescribedNotification);
+        const u8 *dst = gStringVar2;
+        bool8 handleFlash = FALSE;
+        
+        if (GetFlashLevel() > 0 || InBattlePyramid_())
+        handleFlash = TRUE;
+        
+        struct WindowTemplate template;
+        SetWindowTemplateFields(&template, 0, 1, 1, 28, 3, 15, 8);
+        sHeaderBoxWindowId = AddWindow(&template);
+        FillWindowPixelBuffer(sHeaderBoxWindowId, PIXEL_FILL(0));
+        PutWindowTilemap(sHeaderBoxWindowId);
+        CopyWindowToVram(sHeaderBoxWindowId, 3);
+        SetStandardWindowBorderStyle(sHeaderBoxWindowId, FALSE);
+        DrawStdFrameWithCustomTileAndPalette(sHeaderBoxWindowId, FALSE, 0x214, 14);
+
+        ShowMonIconSprite(species, handleFlash);
+        AddTextPrinterParameterized(sHeaderBoxWindowId, 0, dst, ITEM_ICON_X + 2, 0, 0, NULL);
+    }
+}
+
+void ScriptHideMonDescribed(struct ScriptContext *ctx)
+{
+    u32 species = ScriptReadHalfword(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE);
+
+    if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_DESCRIBED))
+    {
+        PlaySE(SE_SELECT);
+        GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_DESCRIBED);
+        DestroyMonIconSprite();
+        ClearStdWindowAndFrameToTransparent(sHeaderBoxWindowId, FALSE);
+        CopyWindowToVram(sHeaderBoxWindowId, 3);
+        RemoveWindow(sHeaderBoxWindowId);
+    }
 }

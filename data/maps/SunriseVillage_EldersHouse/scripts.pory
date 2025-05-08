@@ -137,18 +137,48 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	release
 }
 
+// TODO EVA dex evaluation, letter delivery, etc
 script SunriseVillage_EldersHouse_Event_Elder {
 	lock
 	faceplayer
 	speakername("Elder Kaba")
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
-		// TODO EVA dex evaluation, letter delivery, etc
-		msgbox(format("How is your Pokémon adventure going?"))
-		closemessage
+		if (var(VAR_DECAY_BEACHBOUND_ROUTE) < 5) {
+			msgbox(format("Don't dilly-dally on the way! And keep an eye on your little friend Natsuki, make sure he doesn't get into trouble!"))
+		} else {
+			msgbox(format(
+				"Oh! You delivered my letter. Good.\p"
+				"You've been appointed to investigate Decaying areas? Well then, what are you still doing here? Off you go!"
+			))
+
+			// msgbox(format("How is your Pokémon adventure going?"))
+			// closemessage
+		}
 	} else {
 		// Player has yet to pick a Pokémon
 		msgbox(format("Choose your new partner wisely.\nNo takebacks."))
-		closemessage
+	}
+
+	mcdialogue(
+				"Evaluate my PokéDex!",
+				"See you!"
+			)
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			speakername("Elder Kaba")
+			msgbox(format(
+				"Well, what are you waiting for? Hand it over!"
+			))
+
+			call(ProfBirch_EventScript_RatePokedex)
+		case 1:
+			speakername("Elder Kaba")
+			msgbox(format(
+				"Alright, alright.\n"
+				"{FONT_SMALL}Damned children wasting my time.{FONT_NORMAL}"
+			))
 	}
 	release
 }
@@ -358,6 +388,9 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	delay(20)
 
+	applymovement(LOCALID_RIVAL, moves(walk_in_place_fast_up))
+	waitmovement(0)
+
 	speakername("Natsuki")
 	msgbox(format(
 		"What's this? A book?"
@@ -366,6 +399,9 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	delay(20)
 
+	applymovement(LOCALID_ELDER, moves(walk_in_place_fast_down))
+	waitmovement(0)
+
 	speakername("Elder Kaba")
 	msgbox(format(
 		"I call this the “PokéDex”.\nIt is an encyclopedia containing\lvital information about Pokémon\lfrom the whole region!\p"
@@ -373,7 +409,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		"Explore Toku and fill its pages with\nyour findings!\p"
 		"You can start by going all the way to\nSilveridge, north of here in the\lmountains.\p"
 		"Another Elder lives there and,\nhopefully, has more information\las to why the Pokémon are lashing out.\p"
-		"Could you deliver him this letter?"
+		"Could you deliver him this letter?\nI could send him a Chatot, but I need to make sure this doesn't get lost on the way."
 	))
 	closemessage
 
@@ -381,6 +417,9 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	waitfanfare
 	closemessage
+
+	applymovement(LOCALID_RIVAL, moves(walk_in_place_fast_up))
+	waitmovement(0)
 
 	speakername("Natsuki")
 	msgbox(format("Understood, Grandma Kaba.\nWe're going adventuring!"))
@@ -404,6 +443,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	)
 
 	if (var(VAR_RESULT) == 0) {
+		applymovement(LOCALID_RIVAL, moves(jump_in_place_left))
 		msgbox(format(
 				"That's what I'm talking about!"
 			))
@@ -457,6 +497,9 @@ script SunriseVillage_EldersHouse_EventScript_Natsuki {
 
 script SunriseVillage_EldersHouse_EventScript_PostBattle {
 	special(HealPlayerParty)
+
+	applymovement(LOCALID_RIVAL, moves(jump_in_place_left))
+
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) == B_OUTCOME_WON) {
 		speakername("Natsuki")
@@ -507,11 +550,11 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 script SunriseVillage_EldersHouse_EventScript_RivalBattle {
 	switch(var(VAR_STARTER_MON)) {
 		case SPECIES_FROAKIE:
-			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_FROAKIE, format("Looks like I lost!"))
+			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_FROAKIE, format("What? It's over already?"))
 		case SPECIES_SNIVY:
-			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_SNIVY, format("Looks like I lost!"))
+			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_SNIVY, format("What? It's over already?"))
 		case SPECIES_CYNDAQUIL:
-			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL, format("Looks like I lost!"))
+			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL, format("What? It's over already?"))
 	}
 
 	goto(SunriseVillage_EldersHouse_EventScript_PostBattle)

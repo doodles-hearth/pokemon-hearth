@@ -480,7 +480,7 @@
 #line 271
         .trainerClass = TRAINER_CLASS_BEAUTY,
 #line 272
-        .trainerPic = TRAINER_PIC_BEAUTY,
+        .trainerPic = TRAINER_PIC_MASQUERAIN_WOMAN,
         .encounterMusic_gender =
 #line 273
 F_TRAINER_FEMALE | 
@@ -1951,9 +1951,9 @@ F_TRAINER_FEMALE |
 #line 858
         .trainerName = _("Tama"),
 #line 859
-        .trainerClass = TRAINER_CLASS_GENTLEMAN,
+        .trainerClass = TRAINER_CLASS_GEM_MANIAC,
 #line 860
-        .trainerPic = TRAINER_PIC_GENTLEMAN,
+        .trainerPic = TRAINER_PIC_GEM_MANIAC,
         .encounterMusic_gender =
 #line 862
             TRAINER_ENCOUNTER_MUSIC_RICH,
@@ -1985,6 +1985,8 @@ F_TRAINER_FEMALE |
 #line 873
             .species = SPECIES_SABLEYE,
             .gender = TRAINER_MON_RANDOM_GENDER,
+#line 873
+            .heldItem = ITEM_STARDUST,
 #line 875
             .iv = TRAINER_PARTY_IVS(0, 0, 0, 0, 0, 0),
 #line 874
@@ -15578,7 +15580,7 @@ F_TRAINER_FEMALE |
 #line 6288
         .trainerClass = TRAINER_CLASS_BEAUTY,
 #line 6289
-        .trainerPic = TRAINER_PIC_BEAUTY,
+        .trainerPic = TRAINER_PIC_MASQUERAIN_WOMAN,
         .encounterMusic_gender =
 #line 6290
 F_TRAINER_FEMALE | 
@@ -15593,7 +15595,7 @@ F_TRAINER_FEMALE |
         {
             {
 #line 6295
-            .species = SPECIES_LOTAD,
+            .species = SPECIES_SURSKIT,
             .gender = TRAINER_MON_RANDOM_GENDER,
 #line 6297
             .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
@@ -15604,9 +15606,9 @@ F_TRAINER_FEMALE |
             .moves = {
 #line 6297
                 MOVE_ABSORB,
-                MOVE_WHIRLPOOL,
+                MOVE_SWEET_SCENT,
                 MOVE_RAIN_DANCE,
-                MOVE_LEECH_SEED,
+                MOVE_QUICK_ATTACK,
             },
             },
             {

@@ -1,3 +1,5 @@
+
+
 gBirchDexRatingText_AreYouCurious::
 	.string "PROF. BIRCH: Ah, {PLAYER}{KUN}!\p"
 	.string "Are you curious about how your\n"
@@ -109,6 +111,119 @@ gBirchDexRatingText_DexCompleted::
 	.string "Your POKéDEX is complete!$"
 
 gBirchDexRatingText_OnANationwideBasis::
+	.string "Hmhm…\n"
+	.string "On a nationwide basis…\p"
+	.string "You've seen {STR_VAR_1} POKéMON,\n"
+	.string "and you've caught {STR_VAR_2} POKéMON…$"
+
+gHearthDexRatingText_LessThan10::
+	.string "Do you walk around with your eyes\n"
+	.string "closed or something? I know you can\l"
+	.string "do better than that, {PLAYER}!$"
+
+gHearthDexRatingText_LessThan20::
+	.string "Hmm, you should research the Pokémon\n"
+	.string "you've glimpsed by asking around, too.\p"
+	.string "Also, please work on your handwriting\n"
+	.string "for next time…$"
+
+gHearthDexRatingText_LessThan30::
+	.string "Visit the same area at night for a\n"
+	.string "chance to meet more Pokémon.$"
+
+gHearthDexRatingText_LessThan40::
+	.string "This actually isn't too bad.\n"
+	.string "And I guess your calligraphy improved\l"
+	.string "a little, as well.$"
+
+gHearthDexRatingText_LessThan50::
+	.string "It shall take courage and\n"
+	.string "perseverance to see this through,\l"
+	.string "but it is coming along.\p"
+	.string "Could you avoid making so many ink\n"
+	.string "blotches, though?$"
+
+gHearthDexRatingText_LessThan60::
+	.string "Fishing, swimming, breaking rocks…\n"
+	.string "Explore in every way possible to ink\l"
+	.string "these pages further!$"
+
+gHearthDexRatingText_LessThan70::
+	.string "You've caught quite a lot of critters,\n"
+	.string "but do you spend time making them\l"
+	.string "evolve?\l"
+	.string "It's easier to sketch up a Pokémon\l"
+	.string "that isn't scuttling around!$"
+
+gHearthDexRatingText_LessThan80::
+	.string "This PokéDex is becoming quite\n"
+	.string "comprehensive.\p"
+	.string "You should be proud of what you've\n"
+	.string "accomplished so far!$"
+
+gHearthDexRatingText_LessThan90::
+	.string "So many drawings, so many precise\n"
+	.string "descriptions!\p"
+	.string "I am glad I gave you this task.$"
+
+gHearthDexRatingText_LessThan100::
+	.string "I heard there were many fascinating\n"
+	.string "creatures in the great sea.\l"
+	.string "Have you explored that area with your\l"
+	.string "Pokémon?$"
+
+gHearthDexRatingText_LessThan110::
+	.string "The cover may be scratched and torn,\n"
+	.string "but this is an impressive PokéDex!$"
+
+gHearthDexRatingText_LessThan120::
+	.string "There might be POKéMON that can be\n"
+	.string "found using ROCK SMASH.$"
+
+gHearthDexRatingText_LessThan130::
+	.string "You should get some more POKéMON\n"
+	.string "by trading with others.$"
+
+gHearthDexRatingText_LessThan140::
+	.string "I've heard of POKéMON that evolve\n"
+	.string "when they come to fully love their\l"
+	.string "TRAINERS.$"
+
+gHearthDexRatingText_LessThan150::
+	.string "I had no idea that there were so\n"
+	.string "many POKéMON species in the HOENN\l"
+	.string "region.$"
+
+gHearthDexRatingText_LessThan160::
+	.string "On occasion, some POKéMON appear\n"
+	.string "in large numbers like outbreaks.\p"
+	.string "Don't miss opportunities like\n"
+	.string "those.$"
+
+gHearthDexRatingText_LessThan170::
+	.string "One can get a very good idea about\n"
+	.string "the POKéMON of the HOENN region\l"
+	.string "by looking through your POKéDEX.$"
+
+gHearthDexRatingText_LessThan180::
+	.string "I would say you already qualify as\n"
+	.string "a POKéMON PROFESSOR, and a good\l"
+	.string "one, too!$"
+
+gHearthDexRatingText_LessThan190::
+	.string "With a POKéDEX this complete,\n"
+	.string "you're a real professional at this!$"
+
+gHearthDexRatingText_LessThan200::
+	.string "You're very close to completing\n"
+	.string "this POKéDEX.\l"
+	.string "I can feel it in my bones!$"
+
+gHearthDexRatingText_DexCompleted::
+	.string "Congratulations!\n"
+	.string "Your POKéDEX is complete!$"
+
+gHearthDexRatingText_OnANationwideBasis::
 	.string "Hmhm…\n"
 	.string "On a nationwide basis…\p"
 	.string "You've seen {STR_VAR_1} POKéMON,\n"

@@ -169,6 +169,7 @@ gSpecials::
 	def_special GetPlayerTrainerIdOnesDigit
 	def_special GetPlayerBigGuyGirlString
 	def_special GetPlayerBoyGirlString
+	def_special GetPlayerBoyLassString
 	def_special GetPlayerSirMissString
 	def_special GetRivalSonDaughterString
 	def_special GetPlayerBroSisString

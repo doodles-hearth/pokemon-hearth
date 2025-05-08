@@ -75,7 +75,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KIRLIA)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(RALTS)",
       "x": 3,
       "y": 4,
       "elevation": 0,
@@ -84,7 +84,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SunriseVillage_House1_EventScript_Kirlia",
+      "script": "SunriseVillage_House1_EventScript_Ralts",
       "flag": "FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS",
       "afternoon": false,
       "deadnight": false,

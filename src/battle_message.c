@@ -434,7 +434,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_GOTCHAPKMNCAUGHTWALLY]                = COMPOUND_STRING("Gotcha! {B_DEF_NAME} was caught!{WAIT_SE}{PLAY_BGM MUS_CAUGHT}{PAUSE 127}"),
     [STRINGID_GIVENICKNAMECAPTURED]                 = COMPOUND_STRING("Would you like to give {B_DEF_NAME} a nickname?"),
     [STRINGID_PKMNSENTTOPC]                         = COMPOUND_STRING("{B_DEF_NAME} has been sent to {B_PC_CREATOR_NAME} PC!"), //Still used lanette's pc since terminology is different
-    [STRINGID_PKMNDATAADDEDTODEX]                   = COMPOUND_STRING("{B_DEF_NAME}'s data has been added to the Pokédex!\p"),
+    [STRINGID_PKMNDATAADDEDTODEX]                   = COMPOUND_STRING("You sketched {B_DEF_NAME} in the PokéDex!\p"),
     [STRINGID_ITISRAINING]                          = COMPOUND_STRING("It's raining!"),
     [STRINGID_SANDSTORMISRAGING]                    = COMPOUND_STRING("The sandstorm is raging!"),
     [STRINGID_CANTESCAPE2]                          = COMPOUND_STRING("You couldn't get away!\p"),
@@ -2410,12 +2410,17 @@ static const u8 *TryGetStatusString(u8 *src)
     return NULL;
 }
 
-static void BuildFullname(u32 species, u8 *dst)
+// Replaces the mon name with "NICKNAME the MONNAME" if nicknamed
+// In both cases, replaces the species name with the specie's unknown name
+// if name is unknown
+static void ReplaceIfUnkownFullMonName(u32 species, u8 *dst)
 {
+    // No nickname, so we double check if we should replace with unknown name or not
     if(StringCompareWithoutExtCtrlCodes(dst, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
     {
         StringCopy(dst, GetSpeciesName(species, DO_NAME_CHECK));
     }
+    // "NICKNAME the MONNAME"
     else
     {
         const u8 *speciesName = GetSpeciesName(species, DO_NAME_CHECK);
@@ -2434,6 +2439,16 @@ static void BuildFullname(u32 species, u8 *dst)
     }
 }
 
+// Checks if the given mon name is a nickname; if it's just the species name, replaces it
+// with the specie's unknown name if name is unknown
+static void ReplaceIfUnkownRegularMonName(u32 species, u8 *dst)
+{
+    if(StringCompareWithoutExtCtrlCodes(dst, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
+    {
+        StringCopy(dst, GetSpeciesName(species, DO_NAME_CHECK));
+    }
+}
+
 static void GetBattlerNick(u32 battler, u8 *dst)
 {
     struct Pokemon *illusionMon = GetIllusionMonPtr(battler);
@@ -2445,11 +2460,22 @@ static void GetBattlerNick(u32 battler, u8 *dst)
     GetMonData(mon, MON_DATA_NICKNAME, dst);
     StringGet_Nickname(dst);
 
-    if (gBattleStruct->shouldPrintFullName && GetBattlerSide(battler) == B_SIDE_OPPONENT)
+    if (GetBattlerSide(battler) == B_SIDE_OPPONENT)
     {
-        gBattleStruct->shouldPrintFullName = FALSE;
         u32 species = GetMonData(mon, MON_DATA_SPECIES);
-        BuildFullname(species, dst);
+
+        // Can display "NICKNAME the SPECIES" if mon is nicknamed
+        if (gBattleStruct->shouldPrintFullName)
+        {
+            gBattleStruct->shouldPrintFullName = FALSE;
+            ReplaceIfUnkownFullMonName(species, dst);
+        }
+        // Only displays the mon's name
+        // If the mon is not nicknamed, we need to check if unknown or real name
+        else
+        {
+            ReplaceIfUnkownRegularMonName(species, dst);
+        }
     }
 }
 
@@ -3372,7 +3398,7 @@ void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
                 StringGet_Nickname(dst);
 
                 u32 species = GetSpeciesHack(src[srcID + 1], src[srcID + 2]);
-                BuildFullname(species, dst);
+                ReplaceIfUnkownFullMonName(species, dst);
             }
             else
             {

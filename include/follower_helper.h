@@ -119,6 +119,8 @@ enum ConditionalMessage
     COND_MSG_DAY,
     COND_MSG_NIGHT,
     COND_MSG_BED,
+    COND_MSG_DECAY,
+    COND_MSG_DECAY_MAP,
     COND_MSG_COUNT,
 };
 

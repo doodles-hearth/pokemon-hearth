@@ -343,6 +343,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_DRAGON_TAMER] = { _("Dragon Tamer"), 12 },
     [TRAINER_CLASS_NINJA_BOY] = { _("Ninja Boy"), 3 },
     [TRAINER_CLASS_BATTLE_GIRL] = { _("Kung-fu Gal"), 6 },
+    [TRAINER_CLASS_GEM_MANIAC] = { _("Gem Maniac"), 15 },
     [TRAINER_CLASS_PARASOL_LADY] = { _("Parasol Lady"), 10 },
     [TRAINER_CLASS_SWIMMER_F] = { _("Swimmer"), 2, ITEM_DIVE_BALL },
     [TRAINER_CLASS_TWINS] = { _("Twins"), 3 },

@@ -192,6 +192,7 @@ YifuCity_Refuge_EventScript_Traveler::
 	msgbox YifuCity_Refuge_EventScript_Traveler_Text_1
 	closemessage
 	setnamedmon SPECIES_PAWNIARD
+	setdescribedmon SPECIES_PAWNIARD
 	release
 	end
 

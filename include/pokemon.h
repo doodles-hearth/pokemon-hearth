@@ -734,7 +734,7 @@ bool8 IsPokemonStorageFull(void);
 const u8 *GetSpeciesName(u16 species, enum SpeciesNameCheck nameCheck);
 const u8 *GetSpeciesSillyName(u16 species);
 const u8 *GetSpeciesCategory(u16 species);
-const u8 *GetSpeciesPokedexDescription(u16 species);
+const u8 *GetSpeciesPokedexDescription(u16 species, enum SpeciesNameCheck check);
 u16 GetSpeciesHeight(u16 species);
 u16 GetSpeciesWeight(u16 species);
 const struct LevelUpMove *GetSpeciesLevelUpLearnset(u16 species);

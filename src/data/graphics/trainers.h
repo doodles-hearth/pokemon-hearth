@@ -71,6 +71,9 @@ const u16 gTrainerPalette_Lady[] = INCBIN_U16("graphics/trainers/front_pics/lady
 const u32 gTrainerFrontPic_Beauty[] = INCBIN_U32("graphics/trainers/front_pics/beauty.4bpp.lz");
 const u16 gTrainerPalette_Beauty[] = INCBIN_U16("graphics/trainers/front_pics/beauty.gbapal");
 
+const u32 gTrainerFrontPic_MasquerainWoman[] = INCBIN_U32("graphics/trainers/front_pics/masquerain_woman.4bpp.lz");
+const u16 gTrainerPalette_MasquerainWoman[] = INCBIN_U16("graphics/trainers/front_pics/masquerain_woman.gbapal");
+
 const u32 gTrainerFrontPic_RichBoy[] = INCBIN_U32("graphics/trainers/front_pics/rich_boy.4bpp.lz");
 const u16 gTrainerPalette_RichBoy[] = INCBIN_U16("graphics/trainers/front_pics/rich_boy.gbapal");
 
@@ -265,6 +268,9 @@ const u16 gTrainerPalette_MagmaLeaderMaxie[] = INCBIN_U16("graphics/trainers/fro
 const u32 gTrainerFrontPic_Lass[] = INCBIN_U32("graphics/trainers/front_pics/lass.4bpp.lz");
 const u16 gTrainerPalette_Lass[] = INCBIN_U16("graphics/trainers/front_pics/lass.gbapal");
 
+const u32 gTrainerFrontPic_GemManiac[] = INCBIN_U32("graphics/trainers/front_pics/gem_maniac.4bpp.lz");
+const u16 gTrainerPalette_GemManiac[] = INCBIN_U16("graphics/trainers/front_pics/gem_maniac.gbapal");
+
 const u32 gTrainerFrontPic_Gardener[] = INCBIN_U32("graphics/trainers/front_pics/gardener.4bpp.lz");
 const u16 gTrainerPalette_Gardener[] = INCBIN_U16("graphics/trainers/front_pics/gardener.gbapal");
 
@@ -290,6 +296,9 @@ const u16 gTrainerPalette_Monk[] = INCBIN_U16("graphics/trainers/front_pics/monk
 
 const u32 gTrainerFrontPic_OldLady[] = INCBIN_U32("graphics/trainers/front_pics/old_lady.4bpp.lz");
 const u16 gTrainerPalette_OldLady[] = INCBIN_U16("graphics/trainers/front_pics/old_lady.gbapal");
+
+const u32 gTrainerFrontPic_Medium[] = INCBIN_U32("graphics/trainers/front_pics/medium.4bpp.lz");
+const u16 gTrainerPalette_Medium[] = INCBIN_U16("graphics/trainers/front_pics/medium.gbapal");
 
 const u32 gTrainerFrontPic_YoungCouple[] = INCBIN_U32("graphics/trainers/front_pics/young_couple.4bpp.lz");
 const u16 gTrainerPalette_YoungCouple[] = INCBIN_U16("graphics/trainers/front_pics/young_couple.gbapal");
@@ -390,6 +399,8 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_COOLTRAINER_F, gTrainerFrontPic_CoolTrainerF, gTrainerPalette_CoolTrainerF),
     TRAINER_SPRITE(TRAINER_PIC_LADY, gTrainerFrontPic_Lady, gTrainerPalette_Lady),
     TRAINER_SPRITE(TRAINER_PIC_BEAUTY, gTrainerFrontPic_Beauty, gTrainerPalette_Beauty),
+    TRAINER_SPRITE(TRAINER_PIC_MASQUERAIN_WOMAN, gTrainerFrontPic_MasquerainWoman, gTrainerPalette_MasquerainWoman),
+    TRAINER_SPRITE(TRAINER_PIC_GEM_MANIAC, gTrainerFrontPic_GemManiac, gTrainerPalette_GemManiac),
     TRAINER_SPRITE(TRAINER_PIC_RICH_BOY, gTrainerFrontPic_RichBoy, gTrainerPalette_RichBoy),
     TRAINER_SPRITE(TRAINER_PIC_EXPERT_F, gTrainerFrontPic_ExpertF, gTrainerPalette_ExpertF),
     TRAINER_SPRITE(TRAINER_PIC_POKEMANIAC, gTrainerFrontPic_Pokemaniac, gTrainerPalette_Pokemaniac),
