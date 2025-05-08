@@ -17,7 +17,9 @@ void Script_ToggleFakeRtc(void);
 
 // Hearth custom
 void FakeRtc_SetNewGameDay(void);
+#ifndef NDEBUG
 void PrintTimesIntoMgbaPrintf(void);
+#endif
 
 #define DURATION_WILD_BATTLE_MINUTES 10
 #define DURATION_TRAINER_BATTLE_MINUTES 30

@@ -164,7 +164,7 @@ Silveridge_Refuge_EventScript_Kricketune_Text_0:
 	.string "Delelelele…$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_0:
-	.string "Shamisen player$"
+	.string "Shamisen Player$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_1:
 	.string "Are you resting here for the night as\n"

@@ -153,7 +153,7 @@ script YifuCity_Refuge_EventScript_Shamisen {
 	lock
 	faceplayer
 	// TODO EVA battle shamisen player!
-	speakername("Shamisen player")
+	speakername("Shamisen Player")
 	msgbox(format(
 		"Good evening, traveler.\p"
 		"I hope my song will soothe your spirit, should it be troubled."

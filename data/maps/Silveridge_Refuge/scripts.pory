@@ -92,14 +92,14 @@ script Silveridge_Refuge_EventScript_Shamisen {
 	faceplayer
 
 	if (flag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)) {
-		speakername("Shamisen player")
+		speakername("Shamisen Player")
 		msgbox(format(
 			"Are you resting here for the night as well?"
 		))
 		closemessage
 	} else {
 		special(GetPlayerBoyGirlString)
-		speakername("Shamisen player")
+		speakername("Shamisen Player")
 		msgbox(format(
 			"Good evening to you, {STR_VAR_1}.\p"
 			"Are you here to listen to my music?\p"
@@ -109,7 +109,7 @@ script Silveridge_Refuge_EventScript_Shamisen {
 
 		trainerbattle_no_intro(TRAINER_SHAMISEN, format("Such fun!"))
 
-		speakername("Shamisen player")
+		speakername("Shamisen Player")
 		msgbox(format(
 			"That was just the thing I needed to pass the time."
 		))

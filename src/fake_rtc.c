@@ -167,6 +167,7 @@ void Script_ToggleFakeRtc(void)
     FlagToggle(FLAG_PAUSE_FAKERTC);
 }
 
+#ifndef NDEBUG
 void PrintTimesIntoMgbaPrintf(void)
 {
     struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
@@ -182,3 +183,4 @@ void PrintTimesIntoMgbaPrintf(void)
     MgbaPrintf(MGBA_LOG_WARN, "hours: %u", rtc->hour);
     MgbaPrintf(MGBA_LOG_WARN, "minutes: %u", rtc->minute);
 }
+#endif

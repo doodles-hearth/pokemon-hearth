@@ -302,7 +302,7 @@ YifuCity_Refuge_EventScript_Woobat_Text_1:
 	.string "Rrrrr!$"
 
 YifuCity_Refuge_EventScript_Shamisen_Text_0:
-	.string "Shamisen player$"
+	.string "Shamisen Player$"
 
 YifuCity_Refuge_EventScript_Shamisen_Text_1:
 	.string "Good evening, traveler.\p"
