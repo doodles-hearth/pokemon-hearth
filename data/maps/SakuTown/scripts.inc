@@ -656,6 +656,7 @@ SakuTown_EventScript_LoversReunite_1:
 	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_5
 	waitmovement 0
 	setflag FLAG_HIDE_DEADNIGHT_ASHII
+	removeobject 22
 	return
 
 SakuTown_EventScript_LoversReunite_3:
@@ -1235,7 +1236,7 @@ SakuTown_EventScript_LoversReunite_Text_10:
 	.string "{FONT_SMALL_NARROW}What?$"
 
 SakuTown_EventScript_LoversReunite_Text_11:
-	.string "*giggle* I'll see you tomorrow, my love.$"
+	.string "Hehe… I'll see you tomorrow, my love.$"
 
 SakuTown_EventScript_LoversReunite_Text_12:
 	.string "OH! Yes, haha! Well… I'll see you\n"

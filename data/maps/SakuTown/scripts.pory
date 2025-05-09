@@ -662,6 +662,7 @@ script SakuTown_EventScript_LoversReunite{
 	applymovement(LOCALID_ASHII, moves(walk_slow_up, walk_slow_right * 2, walk_slow_up * 5))
 	waitmovement(0)
 	setflag(FLAG_HIDE_DEADNIGHT_ASHII)
+	removeobject(LOCALID_ASHII)
 	return
 }
 
