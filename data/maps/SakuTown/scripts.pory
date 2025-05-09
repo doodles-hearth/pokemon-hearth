@@ -4,7 +4,9 @@ const LOCALID_RIVAL = 10
 const LOCALID_MAMA = 1
 const LOCALID_KUKU = 2
 const LOCALID_TAMA = 20
+const LOCALID_TAMA2 = OBJ_EVENT_ID_NPC_FOLLOWER
 const LOCALID_TAMASDAD = 21
+const LOCALID_ASHII = 22
 const FLAG_HIDE_NATSUKI = FLAG_TEMP_1
 
 const VAR_GET_QUEST_LOG_STATE_SAKURA_LOVERS = VAR_TEMP_0
@@ -20,9 +22,21 @@ mapscripts SakuTown_MapScripts {
 			setobjectmovementtype(LOCALID_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
 		}
 
-		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 4) {
+		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 4) { //hides rocksmash rocks
 			setflag(FLAG_TEMP_2)
 			setflag(FLAG_TEMP_3)
+		}
+
+		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) != 4) {
+			setflag(FLAG_HIDE_TAMASDAD)
+			setflag(FLAG_HIDE_DEADNIGHT_TAMA)
+		} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 4){
+			clearflag(FLAG_HIDE_TAMASDAD)
+			clearflag(FLAG_HIDE_DEADNIGHT_TAMA)
+		}
+
+		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 5){
+			setflag(FLAG_HIDE_DEADNIGHT_ASHII)
 		}
 
 		returnqueststate(QUEST_SAKURALOVERS)
@@ -426,6 +440,7 @@ script SakuTown_EventScript_TamaArgument {
 	msgbox(format("Over my dead body will my son be in love with someone from Kura Village!"))
 	waitmessage
 	closemessage
+	playse(SE_PIN)
 	applymovement(LOCALID_TAMA, moves(emote_exclamation_mark, face_up))
 	applymovement(LOCALID_TAMASDAD, moves(emote_exclamation_mark, face_up))
 	waitmovement(LOCALID_TAMA)
@@ -436,7 +451,7 @@ script SakuTown_EventScript_TamaArgument {
 	waitmessage
 	closemessage
 	playse(MUS_VS_RAYQUAZA)
-	delay(180)
+	delay(240)
 	speakername("Old Man")
 	msgbox(format("So you're the whippersnapper that's making my son collude with the enemy, eh. Well, you outta be taught a lesson in respect, kiddo!"))
 	waitmessage
@@ -452,7 +467,7 @@ script SakuTown_EventScript_TamaArgument {
 	waitmessage
 	closemessage
 	applymovement(LOCALID_TAMASDAD, moves(walk_slower_up))
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slower_up, walk_up))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slower_up, walk_faster_up))
 	waitmovement(LOCALID_TAMASDAD)
 	waitmovement(OBJ_EVENT_ID_CAMERA)
 	special(RemoveCameraObject)
@@ -491,8 +506,173 @@ script SakuTown_EventScript_TamaArgument {
 	waitmessage
 	closemessage
 	special(HealPlayerParty)
+	playse(SE_USE_ITEM)
+	setfollower(LOCALID_TAMA, FNPC_NONE, SakuTown_EventScript_TamasAnxious, 0)
+	clearflag(FLAG_HIDE_DEADNIGHT_ASHII)
+	addobject(LOCALID_ASHII)
 	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5)
 	end
+}
+
+script SakuTown_TopTamaTrigger{
+	call(SakuTown_EventScript_LoversSeeEachOther)
+	applymovement(LOCALID_TAMA2, moves(walk_fast_down, walk_fast_right * 3, walk_fast_up * 2, face_right))
+	waitmovement(0)
+	setvar(VAR_TEMP_0, 1)
+	call(SakuTown_EventScript_LoversReunite)
+	applymovement(LOCALID_TAMA2, moves(walk_down, walk_left))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down, walk_left * 3))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_right))
+	waitmovement(LOCALID_TAMA2)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	call(SakuTown_EventScript_TamaTalksToPlayerFinal)
+	applymovement(LOCALID_TAMA2, moves(walk_fast_down, walk_fast_left * 5, walk_fast_down, walk_fast_left, walk_fast_down * 4))
+	waitmovement(0)
+	destroyfollower
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6)
+	questmenu(QUEST_MENU_SET_REWARD, QUEST_SAKURALOVERS)
+	end
+}
+
+script SakuTown_BottomTamaTrigger{
+	call(SakuTown_EventScript_LoversSeeEachOther)
+	applymovement(LOCALID_TAMA2, moves(walk_fast_up, walk_fast_right * 3, walk_fast_up * 1, face_right))
+	waitmovement(0)
+	setvar(VAR_TEMP_0, 2)
+	call(SakuTown_EventScript_LoversReunite)
+	applymovement(LOCALID_TAMA2, moves(walk_down * 2, walk_left))
+	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down, walk_left * 3))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_right))
+	waitmovement(LOCALID_TAMA2)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	call(SakuTown_EventScript_TamaTalksToPlayerFinal)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_fast_up, face_down))
+	applymovement(LOCALID_TAMA2, moves(walk_fast_left * 5, walk_fast_down, walk_fast_left, walk_fast_down * 4))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	waitmovement(LOCALID_TAMA2)
+	destroyfollower
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6)
+	questmenu(QUEST_MENU_SET_REWARD, QUEST_SAKURALOVERS)
+	end
+}
+
+script SakuTown_EventScript_LoversSeeEachOther{
+	playse(SE_PIN)
+	applymovement(LOCALID_TAMA2, moves(face_right, emote_exclamation_mark))
+	applymovement(LOCALID_ASHII, moves(emote_exclamation_mark))
+	waitmovement(LOCALID_TAMA2)
+	waitmovement(LOCALID_ASHII)
+	//TODO: PUT SOME LOVEYDOVEY MUSIC HERE
+	speakername("Ashii")
+	msgbox("Tama!")
+	waitmessage
+	closemessage
+	speakername("Tama")
+	msgbox("Ashii!")
+	waitmessage
+	closemessage
+	return
+}
+
+script SakuTown_EventScript_LoversReunite{
+	applymovement(LOCALID_ASHII, moves(walk_slow_left, walk_slow_down, face_left))
+	waitmovement(0)
+	msgbox("… … …")
+	special(SpawnCameraObject)	
+	switch(var(VAR_TEMP_0))
+	{
+		case 1:
+			applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_right * 3, walk_slow_up))
+			waitmovement(0)
+		case 2:
+			applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_right * 3, walk_slow_up * 2))
+			waitmovement(0)
+	}
+	delay(60)
+	speakername("Tama")
+	msgbox("…Hi.")
+	waitmessage
+	closemessage
+	speakername("Ashii")
+	msgbox("Hehehe… Hi.\p It's nice seeing you.")
+	waitmessage
+	closemessage
+	delay(60)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_left))
+	speakername("Tama")
+	msgbox(format("I didn't think I'd ever see you again. I… I have so much to say…"))
+	waitmessage
+	closemessage
+	speakername("Ashii")
+	msgbox(format("So do I. I felt like an insect that could do nothing but stare at the impossibly tall barricade between us. And yet… even fierce seperatism couldn't keep us apart tonight. Tonight, we can have a midsummer dream of mirth and joy."))
+	waitmessage
+	closemessage
+	speakername("Tama")
+	msgbox(format("You always were so poetic with your words."))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_TAMA2, moves(emote_heart))
+	applymovement(LOCALID_ASHII, moves(emote_heart))
+	waitmovement(LOCALID_TAMA2)
+	waitmovement(LOCALID_ASHII)
+	speakername("Tama")
+	msgbox(format("…\pWe can't stay here for long, Ashii. Even if my father begrundingly let me go, there's no telling the wrath our villages will wreak upon us if they see us here in the morning."))
+	waitmessage
+	closemessage
+	speakername("Ashii")
+	msgbox(format("I know. But even so, I'm glad to have spent this time with you."))
+	waitmessage
+	closemessage
+	speakername("Tama")
+	msgbox(format("Will… will we see each other again? Tomorrow?"))
+	waitmessage
+	closemessage
+	speakername("Ashii")
+	msgbox(format("…Tomorrow and tomorrow and tomorrow… It creeps in a petty pace from day to day, but I would gladly wait a thousand of them to see you again."))
+	waitmessage
+	closemessage
+	speakername("Tama")
+	msgbox(format("{FONT_SMALL_NARROW}What?"))
+	waitmessage
+	closemessage
+	speakername("Ashii")
+	msgbox(format("Hehe… I'll see you tomorrow, my love."))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_TAMA2, moves(emote_double_exclamation_mark))
+	waitmovement(0)
+	speakername("Tama")
+	msgbox(format("OH! Yes, haha! Well… I'll see you tomorrow, then."))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_TAMA2, moves(emote_heart))
+	applymovement(LOCALID_ASHII, moves(emote_heart))
+	waitmovement(LOCALID_TAMA2)
+	waitmovement(LOCALID_ASHII)
+	speakername("Ashii")
+	msgbox(format("Goodbye, love, and may the gods give you a restful slumber"))
+	waitmessage
+	closemessage
+	speakername("Tama")
+	msgbox(format("B-bye…"))
+	waitmessage
+	closemessage
+	applymovement(LOCALID_ASHII, moves(walk_slow_up, walk_slow_right * 2, walk_slow_up * 5))
+	waitmovement(0)
+	setflag(FLAG_HIDE_DEADNIGHT_ASHII)
+	removeobject(LOCALID_ASHII)
+	return
+}
+
+script SakuTown_EventScript_TamaTalksToPlayerFinal{
+	special(RemoveCameraObject)
+	speakername("Tama")
+	msgbox(format("I can't believe it, I finally saw her again! Wielder… thank you… I'm so excited to see her again tomorrow!"))
+	waitmessage
+	closemessage
+	return
 }
 
 script SakuTown_EventScript_TamaArgument_MoveDown1 {
@@ -513,6 +693,8 @@ script SakuTown_EventScript_TamasAnxious {
 }
 
 script SakuTown_EventScript_NoLeavingAshii {
+	applymovement(LOCALID_TAMA2, moves(face_player))
+	waitmovement(0)
 	speakername("Tama")
 	msgbox(format("W-where are you going?! Ashii's waiting for us!"))
 	waitmessage

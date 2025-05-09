@@ -8,6 +8,7 @@ KuraTown_House2_EventScript_Ashii::
 	case 0, KuraTown_House2_EventScript_Ashii_3
 	case 1, KuraTown_House2_EventScript_Ashii_4
 	case 2, KuraTown_House2_EventScript_Ashii_5
+	case 6, KuraTown_House2_EventScript_Ashii_6
 KuraTown_House2_EventScript_Ashii_1:
 	release
 	return
@@ -22,6 +23,10 @@ KuraTown_House2_EventScript_Ashii_4:
 
 KuraTown_House2_EventScript_Ashii_5:
 	call AshiiScript3
+	goto KuraTown_House2_EventScript_Ashii_1
+
+KuraTown_House2_EventScript_Ashii_6:
+	call AshiiScript6
 	goto KuraTown_House2_EventScript_Ashii_1
 
 
@@ -106,6 +111,18 @@ AshiiScript3_2:
 	warp MAP_KURA_TOWN, 48, 29
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
 	goto AshiiScript3_1
+
+
+AshiiScript6:
+	faceplayer
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7
+	speakername AshiiScript1_Text_4
+	msgbox AshiiScript6_Text_0
+	waitmessage
+	closemessage
+	giveitem ITEM_DESTINY_KNOT, 1
+	completequest QUEST_SAKURALOVERS
+	end
 
 
 AshiiScript3_Movement_0:
@@ -218,3 +235,12 @@ AshiiScript3_Text_9:
 
 AshiiScript3_Text_10:
 	.string "Late that night…$"
+
+AshiiScript6_Text_0:
+	.string "{PLAYER}! It's you! I can never\n"
+	.string "thank you enough for the night you've\l"
+	.string "given us. Even if we must meet under\l"
+	.string "cover of darkness, I would risk it all\l"
+	.string "for Tama again and again and again.\l"
+	.string "Here, take this. It's the least I can\l"
+	.string "do for all your help…$"

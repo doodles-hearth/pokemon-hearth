@@ -141,6 +141,9 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
+	giveitem ITEM_FISHCAKE
+	giveitem ITEM_ORAN_BERRY
+	giveitem ITEM_REVIVAL_POWDER
 	release
 	end
 

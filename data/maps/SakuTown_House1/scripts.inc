@@ -4,21 +4,29 @@ SakuTown_House1_MapScripts::
 
 SakuTown_House1_EventScript_Tama::
 	lock
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
+	faceplayer
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 0
 	goto_if_eq SakuTown_House1_EventScript_Tama_2
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
+	goto_if_eq SakuTown_House1_EventScript_Tama_3
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 2
+	goto_if_ge SakuTown_House1_EventScript_Tama_4
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
+	goto_if_le SakuTown_House1_EventScript_Tama_4
 	speakername SakuTown_House1_EventScript_Tama_Text_1
-	msgbox SakuTown_House1_EventScript_Tama_Text_9
+	msgbox SakuTown_House1_EventScript_Tama_Text_10
+	waitmessage
 	closemessage
 SakuTown_House1_EventScript_Tama_1:
 	release
 	return
 
 SakuTown_House1_EventScript_Tama_2:
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 0
-	goto_if_eq SakuTown_House1_EventScript_Tama_6
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
-	goto_if_eq SakuTown_House1_EventScript_Tama_6
-SakuTown_House1_EventScript_Tama_5:
+	call TamaScript1
+	goto SakuTown_House1_EventScript_Tama_1
+
+SakuTown_House1_EventScript_Tama_3:
+	call TamaScript1
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SakuTown_House1_EventScript_Tama_Text_0
 	speakername SakuTown_House1_EventScript_Tama_Text_1
 	msgbox SakuTown_House1_EventScript_Tama_Text_2
@@ -59,15 +67,23 @@ SakuTown_House1_EventScript_Tama_5:
 	addvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
 	goto SakuTown_House1_EventScript_Tama_1
 
-SakuTown_House1_EventScript_Tama_6:
-	call TamaScript1
-	goto SakuTown_House1_EventScript_Tama_5
+SakuTown_House1_EventScript_Tama_4:
+	speakername SakuTown_House1_EventScript_Tama_Text_1
+	msgbox SakuTown_House1_EventScript_Tama_Text_9
+	waitmessage
+	closemessage
+	goto SakuTown_House1_EventScript_Tama_1
 
 
 TamaScript1:
 	speakername TamaScript1_Text_0
 	msgbox TamaScript1_Text_1
 	closemessage
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
+	goto_if_eq TamaScript1_1
+	return
+
+TamaScript1_1:
 	return
 
 
@@ -102,6 +118,10 @@ SakuTown_House1_EventScript_Tama_Text_9:
 	.string "Wielder, I owe you my thanks. Please,\n"
 	.string "tell her that I'll meet her tonight!\l"
 	.string "I'll be waiting for her!$"
+
+SakuTown_House1_EventScript_Tama_Text_10:
+	.string "I can't wait to see my love again\n"
+	.string "tonight!$"
 
 TamaScript1_Text_0:
 	.string "Boy$"

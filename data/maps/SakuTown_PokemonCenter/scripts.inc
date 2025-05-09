@@ -178,17 +178,18 @@ HealedScytherScript:
 	waitmovement 0
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	applymovement 11, HealedScytherScript_Movement_3
-	waitmovement 0
+	applymovement 12, HealedScytherScript_Movement_4
+	waitmovement 11
+	waitmovement 12
 	msgbox HealedScytherScript_Text_5
 	waitmessage
 	closemessage
 	mcdialogue HealedScytherScript_Text_6
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox HealedScytherScript_Text_7
-	applymovement 11, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_0
+	applymovement 11, HealedScytherScript_Movement_5
 	waitmovement 0
-	applymovement 13, HealedScytherScript_Movement_4
-	hidefollower
+	applymovement 13, HealedScytherScript_Movement_6
 	playmoncry SPECIES_SCYTHER, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_SCYTHER
 	msgbox HealedScytherScript_Text_8
@@ -204,9 +205,9 @@ HealedScytherScript:
 	msgbox HealedScytherScript_Text_10
 	waitmessage
 	closemessage
-	applymovement 12, HealedScytherScript_Movement_5
-	applymovement 13, HealedScytherScript_Movement_6
-	applymovement 11, HealedScytherScript_Movement_7
+	applymovement 12, HealedScytherScript_Movement_7
+	applymovement 13, HealedScytherScript_Movement_8
+	applymovement 11, HealedScytherScript_Movement_9
 	waitmovement 12
 	waitmovement 13
 	waitmovement 11
@@ -356,19 +357,24 @@ HealedScytherScript_Movement_1:
 
 HealedScytherScript_Movement_2:
 	emote_double_exclamation_mark
-	jump_in_place_left
-	jump_in_place_left
-	walk_fast_down
-	walk_fast_down
-	walk_fast_down
+	jump_in_place_down
+	jump_in_place_down
+	walk_fast_up
 	walk_fast_right
 	walk_fast_right
-	walk_fast_up
-	walk_fast_up
+	walk_fast_down
+	walk_fast_down
 	walk_fast_left
 	walk_fast_left
-	walk_up
-	face_original_direction
+	walk_fast_left
+	walk_fast_left
+	walk_fast_up
+	walk_fast_up
+	walk_fast_right
+	walk_fast_right
+	face_down
+	delay_16
+	emote_heart
 	step_end
 
 HealedScytherScript_Movement_3:
@@ -376,57 +382,64 @@ HealedScytherScript_Movement_3:
 	step_end
 
 HealedScytherScript_Movement_4:
+	walk_up
 	face_left
-	delay_16
-	face_down
-	delay_16
-	face_right
-	delay_16
-	face_up
-	delay_16
-	emote_heart
-	delay_16
-	face_original_direction
 	step_end
 
 HealedScytherScript_Movement_5:
-	walk_right
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
+	face_up
 	step_end
 
 HealedScytherScript_Movement_6:
-	walk_right
-	walk_right
-	walk_down
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
+	face_up
+	delay_4
+	face_left
+	delay_4
+	face_down
+	delay_4
+	face_right
+	delay_4
 	step_end
 
 HealedScytherScript_Movement_7:
 	walk_right
 	walk_right
 	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
 	walk_down
 	walk_right
 	walk_right
+	step_end
+
+HealedScytherScript_Movement_8:
 	walk_right
 	walk_right
 	walk_right
 	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	step_end
+
+HealedScytherScript_Movement_9:
+	walk_up
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
 	walk_right
 	walk_right
 	step_end

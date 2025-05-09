@@ -15,6 +15,8 @@ script KuraTown_House2_EventScript_Ashii {
 			break
 		case 2: //After talking to Tama
 			call(AshiiScript3)
+		case 6: //Getting Reward from Her
+			call(AshiiScript6)
 		default:
 	}
 	release
@@ -119,8 +121,17 @@ script(local) AshiiScript3 {
 		warp(MAP_KURA_TOWN, 48, 29)
 		setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3)
 	} 
-	
-	
-	
+		closemessage
+}
+
+script(local) AshiiScript6 {
+	faceplayer
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7)
+	speakername("Ashii")
+	msgbox(format("{PLAYER}! It's you! I can never thank you enough for the night you've given us. Even if we must meet under cover of darkness, I would risk it all for Tama again and again and again. Here, take this. It's the least I can do for all your help… "))
+	waitmessage
 	closemessage
+	giveitem(ITEM_DESTINY_KNOT, 1)
+	completequest(QUEST_SAKURALOVERS)
+	end
 }
