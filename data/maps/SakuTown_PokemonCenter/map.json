@@ -237,7 +237,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
       "x": 3,
-      "y": 4,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -257,7 +257,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SCYTHER)",
       "x": 2,
-      "y": 4,
+      "y": 3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,

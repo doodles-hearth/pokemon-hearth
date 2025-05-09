@@ -4,8 +4,10 @@ SakuTown_House1_MapScripts::
 
 SakuTown_House1_EventScript_Tama::
 	lock
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 0
 	goto_if_eq SakuTown_House1_EventScript_Tama_2
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
+	goto_if_eq SakuTown_House1_EventScript_Tama_3
 	speakername SakuTown_House1_EventScript_Tama_Text_1
 	msgbox SakuTown_House1_EventScript_Tama_Text_9
 	closemessage
@@ -14,11 +16,11 @@ SakuTown_House1_EventScript_Tama_1:
 	return
 
 SakuTown_House1_EventScript_Tama_2:
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 0
-	goto_if_eq SakuTown_House1_EventScript_Tama_6
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
-	goto_if_eq SakuTown_House1_EventScript_Tama_6
-SakuTown_House1_EventScript_Tama_5:
+	call TamaScript1
+	goto SakuTown_House1_EventScript_Tama_1
+
+SakuTown_House1_EventScript_Tama_3:
+	call TamaScript1
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SakuTown_House1_EventScript_Tama_Text_0
 	speakername SakuTown_House1_EventScript_Tama_Text_1
 	msgbox SakuTown_House1_EventScript_Tama_Text_2
@@ -59,15 +61,16 @@ SakuTown_House1_EventScript_Tama_5:
 	addvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
 	goto SakuTown_House1_EventScript_Tama_1
 
-SakuTown_House1_EventScript_Tama_6:
-	call TamaScript1
-	goto SakuTown_House1_EventScript_Tama_5
-
 
 TamaScript1:
 	speakername TamaScript1_Text_0
 	msgbox TamaScript1_Text_1
 	closemessage
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
+	goto_if_eq TamaScript1_1
+	return
+
+TamaScript1_1:
 	return
 
 

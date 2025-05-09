@@ -5,8 +5,9 @@ mapscripts SakuTown_House1_MapScripts {
 
 script SakuTown_House1_EventScript_Tama {
 	lock
-	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {
-		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 0 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {call(TamaScript1)}
+	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 0) {call(TamaScript1)}
+	elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {
+		call(TamaScript1)
 		dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "Hey, are you Tama?")
 		speakername("Tama")
 		msgbox(format("…So?"))
@@ -82,4 +83,5 @@ script(local) TamaScript1 {
 	speakername("Boy")
 	msgbox(format("Please go away. Leave me alone."))
 	closemessage
+	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {return}
 }
