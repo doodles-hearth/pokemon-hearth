@@ -68,6 +68,7 @@ script SakuTown_House1_EventScript_Tama {
 		closemessage
 		addvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
 	} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 2 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) <= 6) {
+		faceplayer
 		speakername("Tama")
 		msgbox(format(
 			"Wielder, I owe you my thanks. Please,
@@ -77,6 +78,7 @@ script SakuTown_House1_EventScript_Tama {
 		waitmessage
 		closemessage		
 	} else {
+		faceplayer
 		speakername("Tama")
 		msgbox(format(
 			"I can't wait to see my love again tonight!"
