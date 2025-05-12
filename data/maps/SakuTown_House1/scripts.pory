@@ -5,8 +5,10 @@ mapscripts SakuTown_House1_MapScripts {
 
 script SakuTown_House1_EventScript_Tama {
 	lock
-	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {
-		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 0 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {call(TamaScript1)}
+	faceplayer
+	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 0) {call(TamaScript1)}
+	elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {
+		call(TamaScript1)
 		dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "Hey, are you Tama?")
 		speakername("Tama")
 		msgbox(format("…So?"))
@@ -65,15 +67,22 @@ script SakuTown_House1_EventScript_Tama {
 		))
 		closemessage
 		addvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
-	}
-	else {
+	} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 2 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) <= 6) {
 		speakername("Tama")
 		msgbox(format(
 			"Wielder, I owe you my thanks. Please,
 			tell her that I'll meet her tonight! I'll
 			be waiting for her!"
 		))
+		waitmessage
 		closemessage		
+	} else {
+		speakername("Tama")
+		msgbox(format(
+			"I can't wait to see my love again tonight!"
+		))
+		waitmessage
+		closemessage
 	}
 	release
 }
@@ -82,4 +91,5 @@ script(local) TamaScript1 {
 	speakername("Boy")
 	msgbox(format("Please go away. Leave me alone."))
 	closemessage
+	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {return}
 }
