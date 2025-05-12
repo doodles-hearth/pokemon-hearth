@@ -10845,7 +10845,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Spheal"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Perfect Ball"),
         .cryId = CRY_SPHEAL,
         .natDexNum = NATIONAL_DEX_SPHEAL,
         .categoryName = _("Clap"),
@@ -10925,7 +10925,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Sealeo"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Big Seal"),
         .cryId = CRY_SEALEO,
         .natDexNum = NATIONAL_DEX_SEALEO,
         .categoryName = _("Ball Roll"),
@@ -11006,7 +11006,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Walrein"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Seal King"),
         .cryId = CRY_WALREIN,
         .natDexNum = NATIONAL_DEX_WALREIN,
         .categoryName = _("Ice Break"),
