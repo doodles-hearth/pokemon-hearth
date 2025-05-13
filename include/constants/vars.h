@@ -248,6 +248,9 @@
     // 2: Gave Scarf to Tama
     // 3: Left Ashii's house in the night
     // 4: Waiting with Ashii outside
+    // 5: Getting Tama to Ashii
+    // 6: Tama and Ashii cutscene
+    // 7: End of quest
 */
 #define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE             0x409D
 /*
@@ -263,11 +266,13 @@
 /*
     VAR_SAKU_KURA_QUEST_SCYTHER_STATEs
     // 0: Quest hasn't started
-    // 1: Farmer has asked player for help
-    // 2:
-    // 3:
-    // 4:
-    // 5:
+    // 1: Farmers are in Pokecenter
+    // 2: Player finds farmers in Pokecenter
+    // 3: Player has talked to old woman
+    // 4: Old woman is making medicine
+    // 5: Old woman has made medicine, can deliver to scyther now
+    // 6: Giving scyther medicine
+    // 7: Can receive quest reward from farmer
 */
 #define VAR_SAKU_KURA_QUEST_SCYTHER_STATE                0x409F
 /*

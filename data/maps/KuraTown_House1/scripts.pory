@@ -29,7 +29,6 @@ script KuraTown_House1_OldWoman {
 			closemessage
 			break
 		case 5:
-			setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6)
 			msgbox(format("It's good to see you! I've finished the medicine. Here, take it to the ailing Pokémon. Once it drinks it, it should feel good as new."))
 			waitmessage
 			closemessage
