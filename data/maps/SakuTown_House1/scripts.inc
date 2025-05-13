@@ -13,6 +13,7 @@ SakuTown_House1_EventScript_Tama::
 	goto_if_ge SakuTown_House1_EventScript_Tama_4
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
 	goto_if_le SakuTown_House1_EventScript_Tama_4
+	faceplayer
 	speakername SakuTown_House1_EventScript_Tama_Text_1
 	msgbox SakuTown_House1_EventScript_Tama_Text_10
 	waitmessage
@@ -68,6 +69,7 @@ SakuTown_House1_EventScript_Tama_3:
 	goto SakuTown_House1_EventScript_Tama_1
 
 SakuTown_House1_EventScript_Tama_4:
+	faceplayer
 	speakername SakuTown_House1_EventScript_Tama_Text_1
 	msgbox SakuTown_House1_EventScript_Tama_Text_9
 	waitmessage
