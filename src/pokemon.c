@@ -1827,7 +1827,7 @@ bool8 ShouldIgnoreDeoxysForm(u8 caseId, u8 battlerId)
             }
             else
             {
-                if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
+                if (IsOnPlayerSide(battlerId))
                     return FALSE;
             }
         }
@@ -1835,7 +1835,7 @@ bool8 ShouldIgnoreDeoxysForm(u8 caseId, u8 battlerId)
         {
             if (!gMain.inBattle)
                 return FALSE;
-            if (GetBattlerSide(battlerId) == B_SIDE_PLAYER)
+            if (IsOnPlayerSide(battlerId))
                 return FALSE;
         }
         break;
@@ -2262,30 +2262,28 @@ void DeleteFirstMoveAndGiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move)
 u8 CountAliveMonsInBattle(u8 caseId, u32 battler)
 {
     u32 i;
-    u32 battlerSide;
     u32 retVal = 0;
 
     switch (caseId)
     {
     case BATTLE_ALIVE_EXCEPT_BATTLER:
-        for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        for (i = 0; i < gBattlersCount; i++)
         {
             if (i != battler && !(gAbsentBattlerFlags & (1u << i)))
                 retVal++;
         }
         break;
     case BATTLE_ALIVE_EXCEPT_BATTLER_SIDE:
-        for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        for (i = 0; i < gBattlersCount; i++)
         {
             if (i != battler && i != BATTLE_PARTNER(battler) && !(gAbsentBattlerFlags & (1u << i)))
                 retVal++;
         }
         break;
     case BATTLE_ALIVE_SIDE:
-        battlerSide = GetBattlerSide(battler);
-        for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        for (i = 0; i < gBattlersCount; i++)
         {
-            if (GetBattlerSide(i) == battlerSide && !(gAbsentBattlerFlags & (1u << i)))
+            if (IsBattlerAlly(i, battler) && !(gAbsentBattlerFlags & (1u << i)))
                 retVal++;
         }
         break;
@@ -6334,7 +6332,7 @@ void SetMonPreventsSwitchingString(void)
     gBattleTextBuff1[2] = gBattleStruct->battlerPreventingSwitchout;
     gBattleTextBuff1[4] = B_BUFF_EOS;
 
-    if (GetBattlerSide(gBattleStruct->battlerPreventingSwitchout) == B_SIDE_PLAYER)
+    if (IsOnPlayerSide(gBattleStruct->battlerPreventingSwitchout))
         gBattleTextBuff1[3] = GetPartyIdFromBattlePartyId(gBattlerPartyIndexes[gBattleStruct->battlerPreventingSwitchout]);
     else
         gBattleTextBuff1[3] = gBattlerPartyIndexes[gBattleStruct->battlerPreventingSwitchout];
