@@ -503,7 +503,7 @@ SakuTown_EventScript_TamaArgument_1:
 	closemessage
 	special HealPlayerParty
 	playse SE_USE_ITEM
-	setfollower 20, FNPC_NONE, SakuTown_EventScript_TamasAnxious, 0
+	setfollowernpc 20, FNPC_NONE, SakuTown_EventScript_TamasAnxious, 0
 	clearflag FLAG_HIDE_DEADNIGHT_ASHII
 	addobject 22
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5
@@ -529,7 +529,7 @@ SakuTown_TopTamaTrigger::
 	call SakuTown_EventScript_TamaTalksToPlayerFinal
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_TopTamaTrigger_Movement_4
 	waitmovement 0
-	destroyfollower
+	destroyfollowernpc
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
 	questmenu QUEST_MENU_SET_REWARD, QUEST_SAKURALOVERS
 	end
@@ -552,7 +552,7 @@ SakuTown_BottomTamaTrigger::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_BottomTamaTrigger_Movement_3
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitmovement OBJ_EVENT_ID_NPC_FOLLOWER
-	destroyfollower
+	destroyfollowernpc
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
 	questmenu QUEST_MENU_SET_REWARD, QUEST_SAKURALOVERS
 	end

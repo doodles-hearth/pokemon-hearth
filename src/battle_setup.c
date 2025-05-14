@@ -640,13 +640,13 @@ u8 BattleSetup_GetEnvironmentId(void)
     tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
 
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(GINKO_WOODS) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(GINKO_WOODS))
-        return BATTLE_TERRAIN_GINKO_WOODS;
+        return BATTLE_ENVIRONMENT_GINKO_WOODS;
     
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAGURO_HARBOR_DOJO) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAGURO_HARBOR_DOJO))
-        return BATTLE_TERRAIN_POND;
+        return BATTLE_ENVIRONMENT_POND;
     
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(KURA_TOWN_DOJO) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(KURA_TOWN_DOJO))
-        return BATTLE_TERRAIN_GRASS;
+        return BATTLE_ENVIRONMENT_GRASS;
 
     if (MetatileBehavior_IsTallGrass(tileBehavior))
         return BATTLE_ENVIRONMENT_GRASS;

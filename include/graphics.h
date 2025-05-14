@@ -262,6 +262,8 @@ extern const u32 gBattleEnvironmentTilemap_Building[];
 extern const u32 gBattleEnvironmentAnimTiles_Building[];
 extern const u32 gBattleEnvironmentAnimTilemap_Building[];
 extern const u16 gBattleEnvironmentPalette_Building[];
+extern const u32 gBattleEnvironmentTiles_Plain[];
+extern const u32 gBattleEnvironmentTilemap_Plain[];
 extern const u16 gBattleEnvironmentPalette_Plain[];
 extern const u16 gBattleEnvironmentPalette_Frontier[];
 extern const u32 gBattleEnvironmentTiles_Stadium[];
@@ -274,20 +276,20 @@ extern const u16 gBattleEnvironmentPalette_Rayquaza[];
 extern const u16 gBattleEnvironmentPalette_Kyogre[];
 extern const u16 gBattleEnvironmentPalette_Groudon[];
 extern const u16 gBattleEnvironmentPalette_BuildingGym[];
-extern const u16 gBattleEnvironmentPalette_BuildingLeader[];
-extern const u16 gBattleEnvironmentPalette_StadiumAqua[];
-extern const u16 gBattleEnvironmentPalette_StadiumMagma[];
+extern const u16 gBattleEnvironmentPalette_StadiumLeader[];
+extern const u16 gBattleEnvironmentPalette_BuildingAqua[];
+extern const u16 gBattleEnvironmentPalette_BuildingMagma[];
 extern const u16 gBattleEnvironmentPalette_StadiumSidney[];
 extern const u16 gBattleEnvironmentPalette_StadiumPhoebe[];
 extern const u16 gBattleEnvironmentPalette_StadiumGlacia[];
 extern const u16 gBattleEnvironmentPalette_StadiumDrake[];
 extern const u16 gBattleEnvironmentPalette_StadiumWallace[];
 // Custom
-extern const u32 gBattleTerrainTiles_GinkoWoods[];
-extern const u32 gBattleTerrainTilemap_GinkoWoods[];
-extern const u32 gBattleTerrainAnimTiles_GinkoWoods[];
-extern const u32 gBattleTerrainAnimTilemap_GinkoWoods[];
-extern const u16 gBattleTerrainPalette_GinkoWoods[];
+extern const u32 gBattleEnvironmentTiles_GinkoWoods[];
+extern const u32 gBattleEnvironmentTilemap_GinkoWoods[];
+extern const u32 gBattleEnvironmentAnimTiles_GinkoWoods[];
+extern const u32 gBattleEnvironmentAnimTilemap_GinkoWoods[];
+extern const u16 gBattleEnvironmentPalette_GinkoWoods[];
 
 // Pokédex
 extern const u32 gPokedexInterface_Gfx[];

@@ -370,7 +370,6 @@ const u8 gText_DoWhatWithMail[] = _("Do what with the MAIL?");
 const u8 gText_ChoosePokemonCancel[] = _("Choose Pokémon or cancel.");
 const u8 gText_ChoosePokemonConfirm[] = _("Choose Pokémon and confirm.");
 const u8 gText_SendWhichMonToPC[] = _("Send which Pokémon to the Pasture?");
-const u8 gText_SendWhichMonToPC[] = _("Send which POKéMON to the Pasture?");
 const u8 gText_MoveItemWhere[] = _("Move item to where?");
 const u8 gText_XsYAnd[] = _("{STR_VAR_1}'s {STR_VAR_2} and\n");
 const u8 gText_XsYWereSwapped[] = _("{STR_VAR_1}'s {STR_VAR_2} were swapped!{PAUSE_UNTIL_PRESS}");

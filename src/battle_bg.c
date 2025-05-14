@@ -623,11 +623,11 @@ const struct BattleBackground sBattleEnvironmentTable[] =
 
     [BATTLE_ENVIRONMENT_GINKO_WOODS] =
     {
-        .tileset = gBattleTerrainTiles_GinkoWoods,
-        .tilemap = gBattleTerrainTilemap_GinkoWoods,
-        .entryTileset = gBattleTerrainAnimTiles_GinkoWoods,
-        .entryTilemap = gBattleTerrainAnimTilemap_GinkoWoods,
-        .palette = gBattleTerrainPalette_GinkoWoods,
+        .tileset = gBattleEnvironmentTiles_GinkoWoods,
+        .tilemap = gBattleEnvironmentTilemap_GinkoWoods,
+        .entryTileset = gBattleEnvironmentAnimTiles_GinkoWoods,
+        .entryTilemap = gBattleEnvironmentAnimTilemap_GinkoWoods,
+        .palette = gBattleEnvironmentPalette_GinkoWoods,
     },
 
     [BATTLE_ENVIRONMENT_LONG_GRASS] =
