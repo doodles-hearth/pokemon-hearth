@@ -55,7 +55,7 @@ SINGLE_BATTLE_TEST("Poison Point will not poison Poison-Type targets with corros
     GIVEN {
         ASSUME(MoveMakesContact(MOVE_TACKLE));
         PLAYER(SPECIES_SALANDIT) { Ability(ABILITY_CORROSION); }
-        OPPONENT(SPECIES_NIDORAN_M) { Ability(ABILITY_POISON_POINT); }
+        OPPONENT(SPECIES_NIDORAN) { Ability(ABILITY_POISON_POINT); }
     } WHEN {
         TURN { MOVE(player, MOVE_TACKLE); }
         TURN {}
