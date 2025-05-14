@@ -745,7 +745,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
 	.string "This is all very worrying…$"
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3:
-	.string "Which is why!{PAUSE 15}\p"
+	.string "WHICH IS WHY!{PAUSE 15}\p"
 	.string "The Toku council has decided that,\n"
 	.string "for the time being, the best way to\l"
 	.string "handle this is to use the Pokémon\l"
