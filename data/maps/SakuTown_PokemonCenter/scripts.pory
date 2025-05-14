@@ -175,21 +175,22 @@ script(local) HealedScytherScript{
 	waitmessage
 	closemessage
 	playse(SE_USE_ITEM)
-	applymovement(LOCALID_BED_SCYTHER, moves(emote_double_exclamation_mark, jump_in_place_left * 2, walk_fast_down * 3, walk_fast_right * 2, walk_fast_up * 2, walk_fast_left * 2, walk_up, face_original_direction))
+	applymovement(LOCALID_BED_SCYTHER, moves(emote_double_exclamation_mark, jump_in_place_down * 2, walk_fast_up, walk_fast_right * 2, walk_fast_down * 2, walk_fast_left * 4, walk_fast_up * 2, walk_fast_right * 2, face_down, delay_16, emote_heart))
 	waitmovement(0)
 	speakername("Farmer")
 	applymovement(LOCALID_BED_FARMER_1, moves(face_player))
-	waitmovement(0)
+	applymovement(LOCALID_BED_FARMER_2, moves(walk_up, face_left))
+	waitmovement(LOCALID_BED_FARMER_1)
+	waitmovement(LOCALID_BED_FARMER_2)
 	msgbox(format("Wielder, I don't know how to thank ya. She wouldn't be alright with you! Where did you get this medicine?"))
 	waitmessage
 	closemessage
 	mcdialogue("From a wise healer in Kura Village.")
 	speakername("Farmer")
 	msgbox(format("Kura Village, eh…"))
-	applymovement(LOCALID_BED_FARMER_1, moves(face_right))
+	applymovement(LOCALID_BED_FARMER_1, moves(face_up))
 	waitmovement(0)
-	applymovement(LOCALID_BED_SCYTHER, moves(face_left, delay_16, face_down, delay_16, face_right, delay_16, face_up, delay_16, emote_heart, delay_16, face_original_direction))
-	hidefollower
+	applymovement(LOCALID_BED_SCYTHER, moves(face_up, delay_4, face_left, delay_4, face_down, delay_4, face_right, delay_4))
 	playmoncry(SPECIES_SCYTHER, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_SCYTHER)
 	msgbox(format("Gyaaa!"))
@@ -205,9 +206,9 @@ script(local) HealedScytherScript{
 	msgbox(format("Thank you, Wielder. I can give ye a reward for your effors. Just meet us in the fields outside."))
 	waitmessage
 	closemessage
-	applymovement(LOCALID_BED_FARMER_2, moves(walk_right, walk_down, walk_right * 5, walk_right * 2, walk_right))
-	applymovement(LOCALID_BED_SCYTHER, moves(walk_right * 2, walk_down, walk_right * 5, walk_right * 2, walk_right))
-	applymovement(LOCALID_BED_FARMER_1, moves(walk_right * 3, walk_down, walk_right * 5, walk_right * 2, walk_right))
+	applymovement(LOCALID_BED_FARMER_2, moves(walk_right * 6, walk_down * 2, walk_right * 2))
+	applymovement(LOCALID_BED_SCYTHER, moves(walk_right * 7, walk_down * 2, walk_right * 2))
+	applymovement(LOCALID_BED_FARMER_1, moves(walk_up, walk_right * 8, walk_down * 2, walk_right * 2))
 	waitmovement(LOCALID_BED_FARMER_2)
 	waitmovement(LOCALID_BED_SCYTHER)
 	waitmovement(LOCALID_BED_FARMER_1)

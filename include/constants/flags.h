@@ -1393,7 +1393,7 @@
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
-#define FLAG_SUPPRESS_SPEAKER_NAME                  (SYSTEM_FLAGS + 0x21) // Unused Flag
+#define FLAG_SUPPRESS_SPEAKER_NAME                  (SYSTEM_FLAGS + 0x21) // Suppresses speaker name
 #define FLAG_UNUSED_0x882                           (SYSTEM_FLAGS + 0x22) // Unused Flag
 #define FLAG_UNUSED_0x883                           (SYSTEM_FLAGS + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
@@ -1669,7 +1669,7 @@
 #if TESTING
 #define TESTING_FLAGS_START                     0x5000
 #define TESTING_FLAG_SLEEP_CLAUSE               (TESTING_FLAGS_START + 0x0)
-#define TESTING_FLAG_UNUSED_1                   (TESTING_FLAGS_START + 0x1)
+#define TESTING_FLAG_INVERSE_BATTLE             (TESTING_FLAGS_START + 0x1)
 #define TESTING_FLAG_UNUSED_2                   (TESTING_FLAGS_START + 0x2)
 #define TESTING_FLAG_UNUSED_3                   (TESTING_FLAGS_START + 0x3)
 #define TESTING_FLAG_UNUSED_4                   (TESTING_FLAGS_START + 0x4)
