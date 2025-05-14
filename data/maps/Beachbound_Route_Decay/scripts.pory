@@ -65,15 +65,26 @@ script BeachboundRoute_Decay_EventScript_Kin {
 script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 4)
 	speakername("Hariko")
-	msgbox(format(
-		"Oh! Hello.\n{PLAYER}, right?\p"
-		"I am Hariko, remember me? We had a chat in the Ginko Woods."
-		// "What do you think is happening here? It looks like there is some sort of {COLOR RED}decay{COLOR DARK_GRAY} affecting this whole spot.\p"
-		// "The Samurai over there told me there are reports of this phenomenon hitting several areas over the last few days.\p"
-		// "That coincides with the start of the Volcano's rumbling spells, so both seem to be related.\p"
-		// "Whatever it is, it is not good. I want to learn as much as I can about this {COLOR RED}decay{COLOR DARK_GRAY}, which is why I am here.\p"
-		// "Did you also come here to investigate, {PLAYER}? We should team up!"
-	))
+	if (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
+		msgbox(format(
+			"Oh! Hello again, {PLAYER}!\p"
+			"What do you think is happening here? It looks like there is some sort of Decay affecting this whole area.\p"
+			"The Samurai over there told me there are reports of this phenomenon hitting several areas over the last few days.\p"
+			"That coincides with the start of the Volcano's rumbling spells, so both seem to be related.\p"
+			"Whatever it is, it is not good. I want to learn as much as I can about this Decay.\p"
+			"Did you also come here to investigate, {PLAYER}? We should team up!"
+		))
+	} else {
+		msgbox(format(
+			"Oh! Hello.\n{PLAYER}, right?\p"
+			"I am Hariko, remember me? We had a chat in the Ginko Woods."
+			"What do you think is happening here? It looks like there is some sort of Decay affecting this whole area.\p"
+			"The Samurai over there told me there are reports of this phenomenon hitting several areas over the last few days.\p"
+			"That coincides with the start of the Volcano's rumbling spells, so both seem to be related.\p"
+			"Whatever it is, it is not good. I want to learn as much as I can about this Decay.\p"
+			"Did you also come here to investigate, {PLAYER}? We should team up!"
+		))
+	}
 	closemessage
 
 	setflag(FLAG_HIDE_NATSUKI)
@@ -88,15 +99,66 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	waitmovement(0)
 	delay(48)
 
-	applymovement(LOCALID_NATSUKI, moves(walk_right * 5, face_down))
+	applymovement(LOCALID_NATSUKI, moves(walk_right * 5, walk_in_place_fast_down))
 	waitmovement(0)
+
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
 
 	speakername("Natsuki")
 	msgbox(format(
-		"{PLAYER}! What's going on?\p"
-		"Who is this, blah blah blah"
+		"{PLAYER}! What the heck is going on here? Everything is rotting!\p"
+		"My Pokémon stepped in that slimy black stuff and doesn't look well…\l"
+		"I need to get to Maguro Harbor's Refuge quickly!"
 	))
 	closemessage
+
+	applymovement(LOCALID_NATSUKI, moves(emote_exclamation_mark, delay_16 * 3))
+	waitmovement(LOCALID_NATSUKI)
+
+	speakername("Natsuki")
+	msgbox(format(
+		"Wait, who are you?"
+	))
+
+	applymovement(LOCALID_BEAN, moves(walk_in_place_fast_up))
+	waitmovement(LOCALID_BEAN)
+
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+
+	speakername("Hariko")
+	msgbox(format(
+		"I am Hariko. {PLAYER} and I are friends. Together, we are going to find the cause of this Decay!"
+	))
+
+	mcdialogue(
+		"That's right!",
+		"We are?"
+	)
+
+	switch(var(VAR_RESULT)) {
+		case 1:
+			applymovement(LOCALID_BEAN, moves(walk_in_place_fast_right))
+			waitmovement(LOCALID_BEAN)
+
+			speakername("Hariko")
+			msgbox(format(
+				"I might… have gotten ahead of myself. You agree though, right?\lGreat!"
+			))
+
+			applymovement(LOCALID_BEAN, moves(walk_in_place_fast_up))
+			waitmovement(LOCALID_BEAN)
+	}
+
+	speakername("Hariko")
+	msgbox(format(
+		"Your name is Natsuki?\nYou are a friend of {PLAYER}'s too… That makes us friends as well, then!"
+	))
+
+	speakername("Natsuki")
+	msgbox(format(
+		"Is… Is that so?"
+	))
 
 	applymovement(LOCALID_KOISHI, moves(walk_down))
 	waitmovement(0)
@@ -110,11 +172,9 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	speakername("Koishi")
 	msgbox(format(
-		"I heard you, do not get involved in this"
-		// "I couldn't help but overhear your conversation. You two are way too young and inexperienced to be getting involved in this!\p"
-		// "We know nothing about this {COLOR RED}decay{COLOR DARK_GRAY} yet. We only know that it's dangerous.\p"
-		// "The Pokémon touched by the {COLOR RED}decay{COLOR DARK_GRAY}… They act strangely, like they are corrupted by it.\p"
-		// "We don't want to have to rescue you, so please let the adults handle the issue."
+		"I couldn't help but overhear your conversation. You kids are way too young and inexperienced to be getting involved in this!\p"
+		"We know nothing about this Decay yet. We only know that it's dangerous.\p"
+		"We're already stretched thin as it is and we don't want to have to rescue you, so please let the grownups handle the issue."
 	))
 	closemessage
 
@@ -123,8 +183,8 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	delay(48)
 
-	applymovement(LOCALID_BEAN, Common_Movement_FaceRight)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+	applymovement(LOCALID_BEAN, moves(walk_in_place_fast_right))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 	waitmovement(LOCALID_BEAN)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
@@ -194,8 +254,8 @@ script BeachboundRoute_Decay_EventScript_BeanTrigger {
 	waitse
 	waitmovement(0)
 	delay(48)
-	applymovement(LOCALID_BEAN, Common_Movement_FaceRight)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+	applymovement(LOCALID_BEAN, moves(walk_in_place_fast_right))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 	waitmovement(LOCALID_BEAN)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
@@ -255,7 +315,7 @@ script BeachboundRoute_Decay_EventScript_SamuraiBeCareful {
 script BeachboundRoute_Decay_EventScript_Samurai {
 	speakername("Samurai")
 	msgbox(format(
-		"Don't panic!\nDon't touch the {COLOR RED}decay{COLOR DARK_GRAY}!"
+		"Don't panic!\nDon't touch the Decay!"
 	), MSGBOX_NPC)
 }
 

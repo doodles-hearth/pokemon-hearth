@@ -1,16 +1,16 @@
 mapscripts SunriseVillage_House1_MapScripts {
 }
 
-script SunriseVillage_House1_EventScript_Kirlia {
-    setseenmon(SPECIES_KIRLIA)
-    setspeakertomonname(SPECIES_KIRLIA)
+script SunriseVillage_House1_EventScript_Ralts {
+    setseenmon(SPECIES_RALTS)
+    setspeakertomonname(SPECIES_RALTS)
     msgbox(format("…"), MSGBOX_NPC)
 }
 
 script SunriseVillage_House1_EventScript_OldWoman {
-    setnamedmon(SPECIES_KIRLIA)
+    setnamedmon(SPECIES_RALTS)
     speakername("Neighbour")
-    msgbox(format("Kirlia here is quite the silent type. I'm fine with that."), MSGBOX_NPC)
+    msgbox(format("Ralts here is quite the silent type. I'm fine with that."), MSGBOX_NPC)
 }
 
 script SunriseVillage_House1_EventScript_OldMan {

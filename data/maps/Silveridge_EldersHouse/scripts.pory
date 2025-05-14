@@ -1,11 +1,29 @@
 const LOCALID_ELDER = 1
 const LOCALID_OLD_MAN = 2
 const LOCALID_OLD_WOMAN = 3
+const LOCALID_MESSENGER = 4
+const FLAG_HIDE_MESSENGER = FLAG_TEMP_1
 
 mapscripts Silveridge_EldersHouse_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_HIDE_MESSENGER)
+	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DECAY_BEACHBOUND_ROUTE, 4: Silveridge_EldersHouse_EventScript_Conversation
     ]
+}
+
+script Silveridge_EldersHouse_EventScript_EldersMon {
+	lock
+    faceplayer
+	setseenmon(SPECIES_LAIRON)
+    playmoncry(SPECIES_LAIRON, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_LAIRON)
+    msgbox(format(
+        "Ghurrr!"
+    ))
+    waitmoncry
+    release
 }
 
 script Silveridge_EldersHouse_EventScript_Conversation {
@@ -97,67 +115,93 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	removeitem(ITEM_LETTER)
 
 	speakername("Elder Iwa")
-	// TODO EVA dialogue
 	msgbox(format(
+		"Ah! The letter I was expecting from Kaba…\p"
 		"… … … … … …\n… … … … … …\p"
 		"I see…\p"
-		"blah blah shit's fucked everywhere then\p"
-		"Could you go investigate the decayed area in Uume Forest near Yifu City for me plz kthx\p"
-		"Also you are the chosen one take this"
+		"The wild Pokémon are in a frenzy all the way down to the Ginko Woods as well…\p"
+		"The phenomenon has thus been confirmed to be happening across the whole Toku region!\p"
+		"It must be somehow connected to the spreading Decay - and to the rumbling of Mt Kazan!\p"
+		"The situation is more dire than we thought, and our strongest Wielders are already stretched thin.\p"
+		"What to do, what to do…"
 	))
+	closemessage
+
+	applymovement(LOCALID_ELDER, moves(walk_slow_left, walk_slow_right * 2, walk_slow_left, delay_16))
+	waitmovement(0)
+
+	playse(SE_EXIT)
+	clearflag(FLAG_HIDE_MESSENGER)
+	addobject(LOCALID_MESSENGER)
+	waitse
+
+	playse(SE_PIN)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
+	applymovement(LOCALID_ELDER, moves(face_down, emote_exclamation_mark, delay_16 * 3))
+	waitmovement(LOCALID_ELDER)
+	waitse
+
+	speakername("Girl")
+	msgbox(format(
+		"Elder Iwa! Elder Iwa!\p"
+		"A Chatot just got in! Some Decay was discovered in Uume Forest!"
+	))
+	closemessage
+
+	applymovement(LOCALID_MESSENGER, moves(delay_16, walk_in_place_fast_down))
+	waitmovement(LOCALID_MESSENGER)
+	playse(SE_EXIT)
+	waitse
+	removeobject(LOCALID_MESSENGER)
+
+	applymovement(LOCALID_ELDER, moves(walk_in_place_fast_down))
+	waitmovement(LOCALID_ELDER)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
+
+	speakername("Elder Iwa")
+	msgbox(format(
+		"We cannot lose a second! We need someone to go investigate Uume Forest right now!\p"
+		"… … … … … …\n… … … … … …\p"
+		"Young one from Sunrise Village.\nWhat is your name? {PLAYER}?\p"
+		"You came all the way up here\non foot…\lYou already have a team of capable Pokémon…\lKaba has trusted you with this delivery…\p"
+		"It is decided! You shall travel to Uume Forest, southeast of Tranquil Route!\p"
+		"Our fate may well be in your hands, {PLAYER}.\p"
+		"Before you leave, let me give you something to make your journey easier."
+	))
+	closemessage
+
+	applymovement(LOCALID_ELDER, moves(walk_slow_right * 2, walk_in_place_fast_up, delay_16 * 2, walk_slow_left * 2, walk_in_place_fast_down, delay_16))
+	waitmovement(LOCALID_ELDER)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
 
 	giveitem(ITEM_EXP_SHARE)
 
-	// You can now beat gym 2
+	applymovement(LOCALID_ELDER, moves(walk_in_place_fast_down))
+	waitmovement(LOCALID_ELDER)
+
+	speakername("Elder Iwa")
+	msgbox(format(
+		"I have been keeping this mysterious ancient relic for years.\p"
+		"We aren't sure where nor when it originated, but it lets one Pokémon mirror the experience of another.\p"
+		"It should be immensely useful in the hands of a promising young Wielder such as yourself.\p"
+		"Now go, and be quick!"
+	))
+	closemessage
+
 	clearflag(FLAG_KURA_DOJO_CLOSED)
 	setflag(FLAG_HIDE_BONSAI_SHOP_OWNER)
 
 	release
 }
 
-// TODO EVA dialog
 script Silveridge_EldersHouse_EventScript_Elder {
 	lock
 	faceplayer
 	speakername("Elder Iwa")
 	msgbox(format(
-		"Go forth, my child."
+		"Go forth, young one."
 	))
 	closemessage
-
-	// checkitem(ITEM_SKY_PLATE)
-	// if (var(VAR_RESULT)) {
-	// 	speakername("Elder Iwa")
-	// 	msgbox(format(
-	// 		"Go forth, my child."
-	// 	))
-	// 	closemessage
-	// }
-	// else {
-	// 	speakername("Elder Iwa")
-	// 	msgbox(format(
-	// 		"Hello, child. I am Iwa, the elder of Silveridge. What brings you to me?\p"
-	// 		"……………\p"
-	// 		"Oh, I see! So Kaba sent you! Insert interesting dialog about the Pokémon attacking people here\p"
-	// 		"……………Yes… I can see why Kaba has trusted you with coming to see me.\p"
-	// 		"Perhaps you've seen or heard about bigger, stronger Pokémon that have gone mad; we call them the TODO EVA. They are very difficult to stop.\p"
-	// 		"That is, unless you have this in your possession."
-	// 	))
-	// 	closemessage
-
-	// 	// TODO EVA tablets
-	// 	giveitem(ITEM_SKY_PLATE)
-
-	// 	speakername("Elder Iwa")
-	// 	msgbox(format(
-	// 		"This is a copy of one of the very ancient Tablets of Power. It is said that to possess all the Tablets of Power grants one with absolute power over Pokémon.\p"
-	// 		"I am entrusting this one to you. It should grant you enough power to be able to battle a TODO EVA.\p"
-	// 		"I am convinced that by gathering these Tablets of Power, we will find the answer to why the Pokémon are attacking us.\p"
-	// 	))
-	// 	closemessage
-
-	// 	clearflag(FLAG_KURA_DOJO_CLOSED)
-	// 	setflag(FLAG_HIDE_BONSAI_SHOP_OWNER)
-	// }
 	release
 }

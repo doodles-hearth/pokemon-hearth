@@ -646,6 +646,31 @@ YifuCity_EventScript_GirlLookingAtSunriseVillage::
 	end
 
 
+YifuCity_EventScript_Chimecho::
+	lock
+	faceplayer
+	setseenmon SPECIES_CHIMECHO
+	setspeakertomonname SPECIES_CHIMECHO
+	playmoncry SPECIES_CHIMECHO, CRY_MODE_NORMAL
+	msgbox YifuCity_EventScript_Chimecho_Text_0
+	waitmoncry
+	closemessage
+	release
+	end
+
+
+YifuCity_EventScript_ChimechoLady::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_ChimechoLady_Text_0
+	msgbox YifuCity_EventScript_ChimechoLady_Text_1
+	closemessage
+	setnamedmon SPECIES_CHIMECHO
+	setdescribedmon SPECIES_CHIMECHO
+	release
+	end
+
+
 YifuCity_EventScript_NameRaterSign::
 	msgbox YifuCity_EventScript_NameRaterSign_Text_0, MSGBOX_SIGN
 	return
@@ -1264,6 +1289,22 @@ YifuCity_EventScript_DojoSign_Text_0:
 YifuCity_EventScript_GirlLookingAtSunriseVillage_Text_0:
 	.string "If I squint hard enough, I'm sure I\n"
 	.string "can see my friend on Sunrise Beach!$"
+
+YifuCity_EventScript_Chimecho_Text_0:
+	.string "Ch-ching…$"
+
+YifuCity_EventScript_ChimechoLady_Text_0:
+	.string "Old Lady$"
+
+YifuCity_EventScript_ChimechoLady_Text_1:
+	.string "I love listening to Chimecho's songs.\n"
+	.string "They echo in its hollow body and\l"
+	.string "produce the most wonderful\l"
+	.string "harmonics.\p"
+	.string "You should always be kind to\n"
+	.string "Chimecho! They are sacred, and\l"
+	.string "mistreating one would surely bring\l"
+	.string "you bad luck.$"
 
 YifuCity_EventScript_NameRaterSign_Text_0:
 	.string "What's In A Name\n"

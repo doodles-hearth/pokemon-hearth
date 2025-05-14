@@ -9117,7 +9117,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             "Feebas live in ponds that are heavily\n"
             "infested with weeds. Because of its\n"
             "hopelessly shabby appearance, it\n"
-            "seems as if few Trainers raise it."),
+            "seems as if few Wielders raise it."),
         .pokemonScale = 423,
         .pokemonOffset = -4,
         .trainerScale = 256,
@@ -10224,7 +10224,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Chingling"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Cute Bell"),
         .cryId = CRY_CHINGLING,
         .natDexNum = NATIONAL_DEX_CHINGLING,
         .categoryName = _("Bell"),
@@ -10308,17 +10308,18 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Chimecho"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Pretty Chime"),
         .cryId = CRY_CHIMECHO,
         .natDexNum = NATIONAL_DEX_CHIMECHO,
         .categoryName = _("Wind Chime"),
         .height = 6,
         .weight = 10,
         .description = COMPOUND_STRING(
-            "They fly about very actively when the hot\n"
-            "season arrives. They communicate among\n"
-            "themselves using seven different and\n"
-            "distinguishing cries."),
+            "Its cry echoes inside its hollow body to\n"
+            "produce songs.\n"
+            "Chimecho is considered sacred, and\n"
+            "mistreating one is said to bring bad luck."
+        ),
         .pokemonScale = 505,
         .pokemonOffset = 0,
         .trainerScale = 256,
@@ -10844,7 +10845,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Spheal"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Perfect Ball"),
         .cryId = CRY_SPHEAL,
         .natDexNum = NATIONAL_DEX_SPHEAL,
         .categoryName = _("Clap"),
@@ -10924,7 +10925,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Sealeo"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Big Seal"),
         .cryId = CRY_SEALEO,
         .natDexNum = NATIONAL_DEX_SEALEO,
         .categoryName = _("Ball Roll"),
@@ -11005,7 +11006,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Walrein"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Seal King"),
         .cryId = CRY_WALREIN,
         .natDexNum = NATIONAL_DEX_WALREIN,
         .categoryName = _("Ice Break"),

@@ -144,3 +144,33 @@ script MaguroHarbor_Refuge_EventScript_Slowpoke {
 	closemessage
 	release
 }
+
+script MaguroHarbor_Refuge_EventScript_DescribedMons {
+	lock
+	faceplayer
+	speakername("Man")
+	msgbox(format(
+		"Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
+		"I bet you're wondering how you can fill up the description of every Pokémon.\l"
+		"Well, asking around definitely helps!\p"
+		"For instance, Krabby sleeps burrowed inside holes in the sand, and did you know it can grow its pincers back if they fall during battle?\p"
+		"Go ahead, you can write that down about it!"
+	))
+	closemessage
+
+	setnamedmon(SPECIES_KRABBY)
+	setdescribedmon(SPECIES_KRABBY)
+	release
+}
+
+script MaguroHarbor_Refuge_EventScript_Krabby {
+	lock
+	faceplayer
+	setseenmon(SPECIES_KRABBY)
+	playmoncry(SPECIES_KRABBY, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_KRABBY)
+	msgbox(format("Krblblblbl…"))
+	waitmoncry
+	closemessage
+	release
+}

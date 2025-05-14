@@ -151,5 +151,5 @@ TEST("Every species has a description")
             PARAMETRIZE { species = i; }
     }
 
-    EXPECT_NE(StringCompare(GetSpeciesPokedexDescription(species), gFallbackPokedexText), 0);
+    EXPECT_NE(StringCompare(GetSpeciesPokedexDescription(species, SKIP_NAME_CHECK), gFallbackPokedexText), 0);
 }

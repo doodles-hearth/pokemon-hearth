@@ -340,7 +340,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	side_quest(
  		COMPOUND_STRING("The Lost Eevee"),
  		COMPOUND_STRING("Find the Eevee missed in the thunderstorm!"),
- 		COMPOUND_STRING("Reunited the Eeevee, now Espeon with\nits weilder!"),
+ 		COMPOUND_STRING("Reunited the Eeevee, now Espeon, with\nits Wielder!"),
  		COMPOUND_STRING("Saku & Kura Villages"),
 		OBJ_EVENT_GFX_SPECIES(EEVEE),
 		OBJECT,

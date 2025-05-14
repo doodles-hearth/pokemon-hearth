@@ -35,9 +35,9 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
-      "x": 20,
-      "y": 18,
+      "graphics_id": "OBJ_EVENT_GFX_GEM_MANIAC",
+      "x": 16,
+      "y": 19,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -55,7 +55,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "graphics_id": "OBJ_EVENT_GFX_MINER",
       "x": 18,
       "y": 16,
       "elevation": 0,
@@ -75,7 +75,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_MINER",
       "x": 20,
       "y": 10,
       "elevation": 0,
@@ -184,6 +184,14 @@
       "elevation": 0,
       "item": "ITEM_FRESH_WATER",
       "flag": "FLAG_HIDDEN_ITEM_SILVER_TUNNEL_FRESH_WATER"
+    },
+    {
+      "type": "hidden_item",
+      "x": 17,
+      "y": 19,
+      "elevation": 0,
+      "item": "ITEM_STAR_PIECE",
+      "flag": "FLAG_HIDDEN_ITEM_SILVER_TUNNEL_STAR_PIECE"
     }
   ]
 }

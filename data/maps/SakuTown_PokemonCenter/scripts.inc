@@ -504,7 +504,7 @@ HealedScytherScript_Text_1:
 
 HealedScytherScript_Text_2:
 	.string "That's it! Can ye hand it please,\n"
-	.string "weilder?$"
+	.string "Wielder?$"
 
 HealedScytherScript_Text_3:
 	.string "Here girl… This'll make ya feel better…$"
@@ -513,7 +513,7 @@ HealedScytherScript_Text_4:
 	.string "{FONT_SMALL} Gyooo…$"
 
 HealedScytherScript_Text_5:
-	.string "Weilder, I don't know how to thank ya.\n"
+	.string "Wielder, I don't know how to thank ya.\n"
 	.string "She wouldn't be alright with you!\l"
 	.string "Where did you get this medicine?$"
 
@@ -530,7 +530,7 @@ HealedScytherScript_Text_9:
 	.string "{FONT_SMALL} Maybe they're not s'bad afta' all…$"
 
 HealedScytherScript_Text_10:
-	.string "Thank you, Weilder. I can give ye a\n"
+	.string "Thank you, Wielder. I can give ye a\n"
 	.string "reward for your effors. Just meet us\l"
 	.string "in the fields outside.$"
 

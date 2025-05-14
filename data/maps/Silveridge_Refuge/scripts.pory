@@ -1,5 +1,16 @@
+const FLAG_HIDE_FIREBRINGER = FLAG_TEMP_1
+
 mapscripts Silveridge_Refuge_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_HIDE_FIREBRINGER)
+		getweekday
+		switch(var(VAR_RESULT)) {
+			case WEEKDAY_TUE:
+			case WEEKDAY_THU:
+			case WEEKDAY_SAT:
+				clearflag(FLAG_HIDE_FIREBRINGER)
+		}
+	}
 }
 
 script Silveridge_Refuge_EventScript_ImWorried {
@@ -11,11 +22,48 @@ script Silveridge_Refuge_EventScript_ImWorried {
 }
 
 script Silveridge_Refuge_EventScript_Firebringer {
-	speakername("Firebringer")
-	msgbox(format(
-		"I'm bringin' down some Slugma today, freshly caught on Burnfoot Pass this mornin'.\p"
-		"Tomorrow I'll be back up there, catching some more of 'em."
-	), MSGBOX_NPC)
+	lock
+	faceplayer
+	if (flag(FLAG_RECEIVED_CHARCOAL)) {
+		speakername("Firebringer")
+		msgbox(format(
+			"I'm bringin' down some Slugma today, freshly caught on Burnfoot Pass this mornin'.\p"
+			"Tomorrow I'll be back up there, catching some more of 'em."
+		))
+		closemessage
+	} else {
+		special(GetPlayerBoyLassString)
+		speakername("Firebringer")
+		msgbox(format(
+			"Hm? You askin' why I smell like smoke?\p"
+			"Prob'ly 'cause I just got down from Mt Kazan, and lemme tell ya, {STR_VAR_1}, it is no piece o' cake!\p"
+			"There's molten lava, aggressive Pokémon, chambers filled to the brim with explosive smoke!\p"
+			"Firebringers risk their life to capture fresh Slugma an' carry 'em to towns an' cities!\p"
+			"… …Wait, there's a piece of Charcoal stuck in my pocket.\lThe smell actually probably comes from there…\p"
+			"Here, you can keep it as a souvenir from Mt Kazan!"
+		))
+		closemessage
+
+		giveitem(ITEM_CHARCOAL)
+		setflag(FLAG_RECEIVED_CHARCOAL)
+	}
+	release
+}
+
+script Silveridge_Refuge_EventScript_FirebringerFangirl {
+	gettimeofday
+	if (var(VAR_0x8000) == TIME_EARLY_MORNING || var(VAR_0x8000) == TIME_MORNING) {
+		speakername("Girl")
+		msgbox(format(
+			"The Firebringer is coming to Silveridge today! Gosh, I can't wait!"
+		), MSGBOX_NPC)
+	} else {
+		speakername("Girl")
+		msgbox(format(
+			"Oh gosh, look at him…\nHe's so…\lRough-looking…\lAnd handsome…And he smells like smoke…\p"
+			"Sigh…"
+		), MSGBOX_NPC)
+	}
 }
 
 script Silveridge_Refuge_EventScript_Artist {
@@ -44,14 +92,14 @@ script Silveridge_Refuge_EventScript_Shamisen {
 	faceplayer
 
 	if (flag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)) {
-		speakername("Shamisen player")
+		speakername("Shamisen Player")
 		msgbox(format(
 			"Are you resting here for the night as well?"
 		))
 		closemessage
 	} else {
 		special(GetPlayerBoyGirlString)
-		speakername("Shamisen player")
+		speakername("Shamisen Player")
 		msgbox(format(
 			"Good evening to you, {STR_VAR_1}.\p"
 			"Are you here to listen to my music?\p"
@@ -61,7 +109,7 @@ script Silveridge_Refuge_EventScript_Shamisen {
 
 		trainerbattle_no_intro(TRAINER_SHAMISEN, format("Such fun!"))
 
-		speakername("Shamisen player")
+		speakername("Shamisen Player")
 		msgbox(format(
 			"That was just the thing I needed to pass the time."
 		))

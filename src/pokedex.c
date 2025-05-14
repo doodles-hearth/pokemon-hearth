@@ -165,6 +165,8 @@ struct PokedexListItem
     u16 dexNum;
     u16 seen:1;
     u16 owned:1;
+    u16 named:1;
+    u16 described:1;
 };
 
 struct PokedexView
@@ -1536,6 +1538,7 @@ void ResetPokedex(void)
         gSaveBlock1Ptr->dexCaught[i] = 0;
         gSaveBlock1Ptr->dexNamed[i] = 0;
         gSaveBlock1Ptr->dexSeen[i] = 0;
+        gSaveBlock1Ptr->dexDescribed[i] = 0;
     }
 }
 
@@ -1561,10 +1564,14 @@ static void ResetPokedexView(struct PokedexView *pokedexView)
         pokedexView->pokedexList[i].dexNum = 0xFFFF;
         pokedexView->pokedexList[i].seen = FALSE;
         pokedexView->pokedexList[i].owned = FALSE;
+        pokedexView->pokedexList[i].named = FALSE;
+        pokedexView->pokedexList[i].described = FALSE;
     }
     pokedexView->pokedexList[NATIONAL_DEX_COUNT].dexNum = 0;
     pokedexView->pokedexList[NATIONAL_DEX_COUNT].seen = FALSE;
     pokedexView->pokedexList[NATIONAL_DEX_COUNT].owned = FALSE;
+    pokedexView->pokedexList[NATIONAL_DEX_COUNT].named = FALSE;
+    pokedexView->pokedexList[NATIONAL_DEX_COUNT].described = FALSE;
     pokedexView->pokemonListCount = 0;
     pokedexView->selectedPokemon = 0;
     pokedexView->selectedPokemonBackup = 0;
@@ -2195,6 +2202,15 @@ static void FreeWindowAndBgBuffers(void)
         Free(tilemapBuffer);
 }
 
+static bool32 IsMonSeenNamedOrDescribed(struct PokedexListItem item)
+{
+    return (
+        item.seen
+        || item.named
+        || item.described
+    );
+}
+
 static void CreatePokedexList(u8 dexMode, u8 order)
 {
     u32 vars[3]; //I have no idea why three regular variables are stored in an array, but whatever.
@@ -2237,8 +2253,12 @@ static void CreatePokedexList(u8 dexMode, u8 order)
                 sPokedexView->pokedexList[i].dexNum = temp_dexNum;
                 sPokedexView->pokedexList[i].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
                 sPokedexView->pokedexList[i].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
-                if (sPokedexView->pokedexList[i].seen)
+                sPokedexView->pokedexList[i].named = GetSetPokedexFlag(temp_dexNum, FLAG_GET_NAMED);
+                sPokedexView->pokedexList[i].described = GetSetPokedexFlag(temp_dexNum, FLAG_GET_DESCRIBED);
+                if (IsMonSeenNamedOrDescribed(sPokedexView->pokedexList[i]))
+                {
                     sPokedexView->pokemonListCount = i + 1;
+                }
             }
         }
         else
@@ -2254,6 +2274,8 @@ static void CreatePokedexList(u8 dexMode, u8 order)
                     sPokedexView->pokedexList[r5].dexNum = temp_dexNum;
                     sPokedexView->pokedexList[r5].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
                     sPokedexView->pokedexList[r5].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
+                    sPokedexView->pokedexList[r5].named = GetSetPokedexFlag(temp_dexNum, FLAG_GET_NAMED);
+                    sPokedexView->pokedexList[r5].described = GetSetPokedexFlag(temp_dexNum, FLAG_GET_DESCRIBED);
                     if (sPokedexView->pokedexList[r5].seen)
                         sPokedexView->pokemonListCount = r5 + 1;
                     r5++;
@@ -2338,6 +2360,8 @@ static void CreatePokedexList(u8 dexMode, u8 order)
         sPokedexView->pokedexList[i].dexNum = 0xFFFF;
         sPokedexView->pokedexList[i].seen = FALSE;
         sPokedexView->pokedexList[i].owned = FALSE;
+        sPokedexView->pokedexList[i].named = FALSE;
+        sPokedexView->pokedexList[i].described = FALSE;
     }
 }
 
@@ -2375,7 +2399,11 @@ static void CreateMonListEntry(u8 position, u16 b, u16 ignored)
             else
             {
                 ClearMonListEntry(17, i * 2, ignored);
-                if (sPokedexView->pokedexList[entryNum].seen)
+                if (
+                    sPokedexView->pokedexList[entryNum].seen
+                    || sPokedexView->pokedexList[entryNum].named
+                    || sPokedexView->pokedexList[entryNum].described
+                )
                 {
                     CreateMonDexNum(entryNum, 0x12, i * 2, ignored);
                     CreateCaughtBall(sPokedexView->pokedexList[entryNum].owned, 0x11, i * 2, ignored);
@@ -2384,7 +2412,6 @@ static void CreateMonListEntry(u8 position, u16 b, u16 ignored)
                 else
                 {
                     CreateMonDexNum(entryNum, 0x12, i * 2, ignored);
-                    CreateCaughtBall(FALSE, 0x11, i * 2, ignored);
                     CreateMonName(0, 0x16, i * 2);
                 }
             }
@@ -2400,7 +2427,11 @@ static void CreateMonListEntry(u8 position, u16 b, u16 ignored)
         else
         {
             ClearMonListEntry(17, sPokedexView->listVOffset * 2, ignored);
-            if (sPokedexView->pokedexList[entryNum].seen)
+            if (
+                sPokedexView->pokedexList[entryNum].seen
+                || sPokedexView->pokedexList[entryNum].named
+                || sPokedexView->pokedexList[entryNum].described
+            )
             {
                 CreateMonDexNum(entryNum, 18, sPokedexView->listVOffset * 2, ignored);
                 CreateCaughtBall(sPokedexView->pokedexList[entryNum].owned, 0x11, sPokedexView->listVOffset * 2, ignored);
@@ -2426,7 +2457,11 @@ static void CreateMonListEntry(u8 position, u16 b, u16 ignored)
         else
         {
             ClearMonListEntry(17, vOffset * 2, ignored);
-            if (sPokedexView->pokedexList[entryNum].seen)
+            if (
+                sPokedexView->pokedexList[entryNum].seen
+                || sPokedexView->pokedexList[entryNum].named
+                || sPokedexView->pokedexList[entryNum].described
+            )
             {
                 CreateMonDexNum(entryNum, 18, vOffset * 2, ignored);
                 CreateCaughtBall(sPokedexView->pokedexList[entryNum].owned, 0x11, vOffset * 2, ignored);
@@ -2477,7 +2512,9 @@ static u8 CreateMonName(u16 num, u8 left, u8 top)
 {
     const u8 *str;
 
+    
     num = NationalPokedexNumToSpecies(num);
+    DebugPrintf("species = %d (Krabby = %d)", num, SPECIES_KRABBY);
     if (num)
         str = GetSpeciesName(num, DO_NAME_CHECK);
     else
@@ -4222,10 +4259,9 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
     }
     PrintInfoScreenText(category, 0x64, 0x29);
     PrintMonMeasurements(species,owned);
-    if (owned)
-        description = GetSpeciesPokedexDescription(species);
-    else
-        description = sExpandedPlaceholder_PokedexDescription;
+
+    description = GetSpeciesPokedexDescription(species, DO_NAME_CHECK);
+
     PrintInfoScreenText(description, GetStringCenterAlignXOffset(FONT_NORMAL, description, DISPLAY_WIDTH), 95);
 }
 
@@ -4535,14 +4571,21 @@ s8 GetSetPokedexFlag(u16 nationalDexNo, enum PokedexFlag caseID)
     case FLAG_GET_NAMED:
         retVal = ((gSaveBlock1Ptr->dexNamed[index] & mask) != 0);
         break;
+    case FLAG_GET_DESCRIBED:
+        retVal = ((gSaveBlock1Ptr->dexDescribed[index] & mask) != 0);
+        break;
     case FLAG_SET_SEEN:
         gSaveBlock1Ptr->dexSeen[index] |= mask;
         break;
     case FLAG_SET_CAUGHT:
         gSaveBlock1Ptr->dexCaught[index] |= mask;
-        // Catching a mon should also give it's name. Intentionally fall through.
+        // Catching a mon should also give its name. Intentionally fall through.
     case FLAG_SET_NAMED:
         gSaveBlock1Ptr->dexNamed[index] |= mask;
+        break;
+        // However, catching a mon does not give its description. That will have to be found by the player lolol
+    case FLAG_SET_DESCRIBED:
+        gSaveBlock1Ptr->dexDescribed[index] |= mask;
         break;
     }
 
@@ -5049,6 +5092,8 @@ static int DoPokedexSearch(u8 dexMode, u8 order, u8 abcGroup, u8 bodyColor, u8 t
             sPokedexView->pokedexList[i].dexNum = 0xFFFF;
             sPokedexView->pokedexList[i].seen = FALSE;
             sPokedexView->pokedexList[i].owned = FALSE;
+            sPokedexView->pokedexList[i].named = FALSE;
+            sPokedexView->pokedexList[i].described = FALSE;
         }
     }
 

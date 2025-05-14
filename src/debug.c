@@ -340,7 +340,7 @@ static EWRAM_DATA struct DebugMonData *sDebugMonData = NULL;
 static EWRAM_DATA struct DebugMenuListData *sDebugMenuListData = NULL;
 static EWRAM_DATA struct DebugBattleData *sDebugBattleData = NULL;
 EWRAM_DATA bool8 gIsDebugBattle = FALSE;
-EWRAM_DATA u32 gDebugAIFlags = 0;
+EWRAM_DATA u64 gDebugAIFlags = 0;
 
 // *******************************
 // Define functions
@@ -1780,7 +1780,7 @@ static void Debug_InitializeBattle(u8 taskId)
     }
 
     // Set terrain
-    gBattleTerrain = sDebugBattleData->battleTerrain;
+    gBattleEnvironment = sDebugBattleData->battleTerrain;
 
     // Populate enemy party
     for (i = 0; i < PARTY_SIZE; i++)
@@ -2646,6 +2646,8 @@ static void DebugAction_FlagsVars_PokedexFlags_All(u8 taskId)
     {
         GetSetPokedexFlag(i + 1, FLAG_SET_CAUGHT);
         GetSetPokedexFlag(i + 1, FLAG_SET_SEEN);
+        GetSetPokedexFlag(i + 1, FLAG_SET_NAMED);
+        GetSetPokedexFlag(i + 1, FLAG_SET_DESCRIBED);
     }
     Debug_DestroyMenu_Full(taskId);
     ScriptContext_Enable();
@@ -2660,6 +2662,7 @@ static void DebugAction_FlagsVars_PokedexFlags_Reset(u8 taskId)
     memset(&gSaveBlock1Ptr->dexCaught, 0, sizeof(gSaveBlock1Ptr->dexCaught));
     memset(&gSaveBlock1Ptr->dexNamed, 0, sizeof(gSaveBlock1Ptr->dexNamed));
     memset(&gSaveBlock1Ptr->dexSeen, 0, sizeof(gSaveBlock1Ptr->dexSeen));
+    memset(&gSaveBlock1Ptr->dexDescribed, 0, sizeof(gSaveBlock1Ptr->dexDescribed));
 
     // Add party Pokemon to Pokedex
     for (partyId = 0; partyId < PARTY_SIZE; partyId++)
@@ -2669,6 +2672,7 @@ static void DebugAction_FlagsVars_PokedexFlags_Reset(u8 taskId)
             species = GetMonData(&gPlayerParty[partyId], MON_DATA_SPECIES);
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_CAUGHT);
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_SEEN);
+            GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_NAMED);
         }
     }
 
@@ -2682,6 +2686,7 @@ static void DebugAction_FlagsVars_PokedexFlags_Reset(u8 taskId)
                 species = GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SPECIES);
                 GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_CAUGHT);
                 GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_SEEN);
+                GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_NAMED);
             }
         }
     }

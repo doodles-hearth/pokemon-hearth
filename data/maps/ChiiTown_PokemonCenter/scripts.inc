@@ -214,7 +214,7 @@ ChiiTown_PokemonCenter_EventScript_RefugePresentation_Movement_1:
 	step_end
 
 ChiiTown_PokemonCenter_EventScript_Shamisen_Text_0:
-	.string "Shamisen player$"
+	.string "Shamisen Player$"
 
 ChiiTown_PokemonCenter_EventScript_Shamisen_Text_1:
 	.string "Good evening.\p"
@@ -224,7 +224,7 @@ ChiiTown_PokemonCenter_EventScript_Shamisen_Text_1:
 	.string "place to spend the night.$"
 
 ChiiTown_PokemonCenter_EventScript_ShamisenFan_Text_0:
-	.string "Shamisen fan$"
+	.string "Shamisen Fan$"
 
 ChiiTown_PokemonCenter_EventScript_ShamisenFan_Text_1:
 	.string "Such a beautiful voice…\p"

@@ -8,6 +8,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 	if(flag(FLAG_DAILY_MON_DEX_RIDDLE))
 	{
+		speakername("Pokémon Nerd")
 		msgbox(format(
 			"Come back tomorrow for more Pokémon riddles… Hehe…"
 		))
@@ -16,6 +17,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 		end
 	}
 
+	speakername("Pokémon Nerd")
 	msgbox(format(
 		"Hehe… Hullo, kid…\nPeople call me the Pokémon Nerd.\p"
 		"(They're just jealous…)\p"
@@ -27,6 +29,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 	randomdexmsgbox
 
+	speakername("Pokémon Nerd")
 	msgbox("Well? What Pokémon am I talking about?")
 	closemessage
 
@@ -36,6 +39,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 	if(var(VAR_RESULT) == 1)
 	{
+		speakername("Pokémon Nerd")
 		msgbox(format(
 			"Woah, you… You solved my riddle!\p"
 			"Could you… be a true Pokémon Nerd?\p"
@@ -50,6 +54,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	}
 	else
 	{
+		speakername("Pokémon Nerd")
 		msgbox(format(
 			"Wrong, wrong, WRONG!\nYou are wrong!\p"
 			"I'm honestly disappointed.\p"
@@ -61,4 +66,17 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 	release
 	end
+}
+
+script MaguroHarbor_House1_EventScript_Clefairy {
+	lock
+	faceplayer
+	setseenmon(SPECIES_CLEFAIRY)
+	playmoncry(SPECIES_CLEFAIRY, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_CLEFAIRY)
+	msgbox(format(
+		"Teehee!"
+	))
+	waitmoncry
+	release
 }
