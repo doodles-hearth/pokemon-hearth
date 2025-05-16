@@ -43,7 +43,6 @@ KuraTown_House1_OldWoman_5:
 	goto KuraTown_House1_OldWoman_1
 
 KuraTown_House1_OldWoman_6:
-	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6
 	msgbox KuraTown_House1_OldWoman_Text_2
 	waitmessage
 	closemessage
