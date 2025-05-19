@@ -2941,3 +2941,14 @@
 	callnative ScriptChangeFollowerNPCBattlePartner
 	.2byte \battlePartner
 	.endm
+
+	.macro getroutechallengestate routeChallenge:req
+	callnative Native_GetRouteChallengeState, requests_effects = 1
+	.2byte \routeChallenge
+	.endm
+
+	.macro setroutechallengestate routeChallenge:req newState:req
+	callnative Native_SetRouteChallengeState, requests_effects=1
+	.2byte \routeChallenge
+	.2byte \newState
+	.endm

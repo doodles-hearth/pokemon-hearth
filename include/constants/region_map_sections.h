@@ -222,7 +222,7 @@
 #define MAPSEC_DUMMY                        0xDA
 #define MAPSEC_NONE                         0xDB
 
-#define METLOC_SPECIAL_EGG                  0xFD
+#define METLOC_EGG_SHAMISEN                  0xFD
 #define METLOC_IN_GAME_TRADE                0xFE
 #define METLOC_FATEFUL_ENCOUNTER            0xFF
 

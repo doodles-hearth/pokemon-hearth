@@ -16,6 +16,7 @@
 #include "constants/berry.h"
 #include "constants/maps.h"
 #include "constants/pokemon.h"
+#include "constants/route_challenge.h"
 #include "constants/easy_chat.h"
 #include "constants/trainer_hill.h"
 #include "constants/items.h"
@@ -1181,6 +1182,7 @@ struct SaveBlock1
                u8 registeredItemLastSelected:4; //max 16 items
                u8 registeredItemListCount:4;
                struct RegisteredItemSlot registeredItems[REGISTERED_ITEMS_MAX];
+               enum RouteChallengeState routeChallengeStates[ROUTE_CHALLENGE_COUNT];
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

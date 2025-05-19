@@ -49,6 +49,7 @@
 #include "constants/pokedex.h"
 #include "constants/pokemon.h"
 #include "constants/roulette.h"
+#include "constants/route_challenge.h"
 #include "constants/script_menu.h"
 #include "constants/secret_bases.h"
 #include "constants/songs.h"

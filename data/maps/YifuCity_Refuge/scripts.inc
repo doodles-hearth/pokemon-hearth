@@ -4,11 +4,21 @@ YifuCity_Refuge_MapScripts::
 
 YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	setrespawn HEAL_LOCATION_YIFU_CITY
-	goto_if_unset FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	goto_if_unset FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	getroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU
+	compare VAR_RESULT, ROUTE_CHALLENGE_STATE_SUCCESS_CONFIRMED
+	goto_if_eq YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	compare VAR_RESULT, ROUTE_CHALLENGE_STATE_FAILURE_CONFIRMED
+	goto_if_eq YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 	return
 
-YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	setflag FLAG_TEMP_1
+	goto YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+
+YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	setflag FLAG_TEMP_2
 	return
 
 
@@ -125,6 +135,18 @@ YifuCity_Refuge_EventScript_Shamisen::
 	end
 
 
+YifuCity_Refuge_EventScript_ShamisensPokemon::
+	lock
+	faceplayer
+	setseenmon SPECIES_TOXEL_TOKUAN
+	setspeakertomonname SPECIES_TOXEL_TOKUAN
+	playmoncry SPECIES_TOXEL_TOKUAN, CRY_MODE_NORMAL
+	msgbox YifuCity_Refuge_EventScript_ShamisensPokemon_Text_0
+	closemessage
+	release
+	end
+
+
 YifuCity_Refuge_EventScript_HotelValet::
 	lock
 	faceplayer
@@ -230,6 +252,199 @@ YifuCity_Refuge_EventScript_GotTrashedByDojo::
 	end
 
 
+YifuCity_Refuge_EventScript_RouteShamisensPokemon::
+	lock
+	setseenmon SPECIES_GROWLITHE
+	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_GROWLITHE
+	msgbox YifuCity_Refuge_EventScript_RouteShamisensPokemon_Text_0
+	waitse
+	closemessage
+	release
+	return
+
+
+YifuCity_Refuge_EventScript_RouteShamisen::
+	lock
+	faceplayer
+	getroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU
+	switch VAR_RESULT
+	case ROUTE_CHALLENGE_STATE_STARTED, YifuCity_Refuge_EventScript_RouteShamisen_3
+	case ROUTE_CHALLENGE_STATE_SUCCESS, YifuCity_Refuge_EventScript_RouteShamisen_3
+	case ROUTE_CHALLENGE_STATE_FAILURE, YifuCity_Refuge_EventScript_RouteShamisen_4
+YifuCity_Refuge_EventScript_RouteShamisen_1:
+	closemessage
+	release
+	end
+
+YifuCity_Refuge_EventScript_RouteShamisen_3:
+	goto_if_set FLAG_TEMP_3, YifuCity_Refuge_EventScript_RouteShamisen_6
+	setflag FLAG_TEMP_3
+	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_1
+YifuCity_Refuge_EventScript_RouteShamisen_5:
+	mcdialogue YifuCity_Refuge_EventScript_RouteShamisen_Text_2, YifuCity_Refuge_EventScript_RouteShamisen_Text_3, YifuCity_Refuge_EventScript_RouteShamisen_Text_4
+	specialvar VAR_0x8000, GetPlayerTrainerIdOnesDigit
+	switch VAR_RESULT
+	case 0, YifuCity_Refuge_EventScript_RouteShamisen_15
+	case 1, YifuCity_Refuge_EventScript_RouteShamisen_16
+	case 2, YifuCity_Refuge_EventScript_RouteShamisen_17
+YifuCity_Refuge_EventScript_RouteShamisen_13:
+	getpartysize
+	compare VAR_RESULT, PARTY_SIZE
+	goto_if_lt YifuCity_Refuge_EventScript_RouteShamisen_18
+	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_7
+	closemessage
+	goto YifuCity_Refuge_EventScript_RouteShamisen_1
+
+YifuCity_Refuge_EventScript_RouteShamisen_4:
+	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_8
+	mcdialogue YifuCity_Refuge_EventScript_RouteShamisen_Text_9, YifuCity_Refuge_EventScript_RouteShamisen_Text_10
+	switch VAR_RESULT
+	case 0, YifuCity_Refuge_EventScript_RouteShamisen_11
+	case 1, YifuCity_Refuge_EventScript_RouteShamisen_12
+YifuCity_Refuge_EventScript_RouteShamisen_9:
+	call YifuCity_Refuge_EventScript_RouteShamisenLeaves
+	setroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_FAILURE_CONFIRMED
+	goto YifuCity_Refuge_EventScript_RouteShamisen_1
+
+YifuCity_Refuge_EventScript_RouteShamisen_6:
+	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_0
+	goto YifuCity_Refuge_EventScript_RouteShamisen_5
+
+YifuCity_Refuge_EventScript_RouteShamisen_11:
+	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_11
+	closemessage
+	setflag FLAG_LIED_TO_SHAMISEN_PLAYER
+	goto YifuCity_Refuge_EventScript_RouteShamisen_9
+
+YifuCity_Refuge_EventScript_RouteShamisen_12:
+	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_12
+	giveitem ITEM_SUPERGIRI, 3
+	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_13
+	closemessage
+	goto YifuCity_Refuge_EventScript_RouteShamisen_9
+
+YifuCity_Refuge_EventScript_RouteShamisen_15:
+	compare VAR_0x8000, 4
+	goto_if_le YifuCity_Refuge_EventScript_RouteShamisen_21
+	setvar VAR_TEMP_0, SPECIES_TORCHIC
+	goto YifuCity_Refuge_EventScript_RouteShamisen_13
+
+YifuCity_Refuge_EventScript_RouteShamisen_16:
+	compare VAR_0x8000, 4
+	goto_if_le YifuCity_Refuge_EventScript_RouteShamisen_24
+	setvar VAR_TEMP_0, SPECIES_OSHAWOTT
+	goto YifuCity_Refuge_EventScript_RouteShamisen_13
+
+YifuCity_Refuge_EventScript_RouteShamisen_17:
+	compare VAR_0x8000, 4
+	goto_if_le YifuCity_Refuge_EventScript_RouteShamisen_27
+	setvar VAR_TEMP_0, SPECIES_BULBASAUR
+	goto YifuCity_Refuge_EventScript_RouteShamisen_13
+
+YifuCity_Refuge_EventScript_RouteShamisen_18:
+	playfanfare MUS_OBTAIN_ITEM
+	message YifuCity_Refuge_EventScript_RouteShamisen_Text_5
+	waitfanfare
+	giveegg VAR_TEMP_0
+	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_6
+	closemessage
+	call YifuCity_Refuge_EventScript_RouteShamisenLeaves
+	setroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_SUCCESS_CONFIRMED
+	goto YifuCity_Refuge_EventScript_RouteShamisen_1
+
+YifuCity_Refuge_EventScript_RouteShamisen_21:
+	setvar VAR_TEMP_0, SPECIES_CHIMCHAR
+	goto YifuCity_Refuge_EventScript_RouteShamisen_13
+
+YifuCity_Refuge_EventScript_RouteShamisen_24:
+	setvar VAR_TEMP_0, SPECIES_TOTODILE
+	goto YifuCity_Refuge_EventScript_RouteShamisen_13
+
+YifuCity_Refuge_EventScript_RouteShamisen_27:
+	setvar VAR_TEMP_0, SPECIES_CHIKORITA
+	goto YifuCity_Refuge_EventScript_RouteShamisen_13
+
+
+YifuCity_Refuge_EventScript_RouteShamisenLeaves::
+	switch VAR_FACING
+	case DIR_EAST, YifuCity_Refuge_EventScript_RouteShamisenLeaves_3
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_2
+	applymovement 17, YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_0
+YifuCity_Refuge_EventScript_RouteShamisenLeaves_1:
+	delay 24
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_3
+	waitmovement VAR_LAST_TALKED
+	playse SE_EXIT
+	removeobject VAR_LAST_TALKED
+	waitse
+	switch VAR_FACING
+	case DIR_EAST, YifuCity_Refuge_EventScript_RouteShamisenLeaves_7
+	applymovement 17, YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_5
+YifuCity_Refuge_EventScript_RouteShamisenLeaves_5:
+	waitmovement 17
+	playse SE_EXIT
+	removeobject 17
+	waitse
+	setflag FLAG_TEMP_2
+	return
+
+YifuCity_Refuge_EventScript_RouteShamisenLeaves_3:
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_0
+	applymovement 17, YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_1
+	goto YifuCity_Refuge_EventScript_RouteShamisenLeaves_1
+
+YifuCity_Refuge_EventScript_RouteShamisenLeaves_7:
+	applymovement 17, YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_4
+	goto YifuCity_Refuge_EventScript_RouteShamisenLeaves_5
+
+
+YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_0:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_1:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_2:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	step_end
+
+YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_3:
+	walk_in_place_fast_left
+	step_end
+
+YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_4:
+	walk_left
+	face_down
+	step_end
+
+YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_5:
+	walk_down
+	step_end
+
 YifuCity_Refuge_EventScript_FakeNurse_Text_0:
 	.string "Nurse$"
 
@@ -309,6 +524,9 @@ YifuCity_Refuge_EventScript_Shamisen_Text_1:
 	.string "I hope my song will soothe your spirit,\n"
 	.string "should it be troubled.$"
 
+YifuCity_Refuge_EventScript_ShamisensPokemon_Text_0:
+	.string "Mrrrp…$"
+
 YifuCity_Refuge_EventScript_HotelValet_Text_0:
 	.string "Valet$"
 
@@ -378,3 +596,104 @@ YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_1:
 	.string "I thought it was going to be super\l"
 	.string "easy…\p"
 	.string "I got obliterated…$"
+
+YifuCity_Refuge_EventScript_RouteShamisensPokemon_Text_0:
+	.string "Rr-ruff!$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_0:
+	.string "Ah, so have you made space in your\n"
+	.string "party for the Egg I wanted to give\l"
+	.string "you?\p"
+	.string "Which of these Eggs do you favor?$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_1:
+	.string "Hello, traveler.\n"
+	.string "… … …\l"
+	.string "… … …!\p"
+	.string "Oh, I recognize you! You're that\n"
+	.string "promising young Wielder I met on\l"
+	.string "Whiteslate Route!\p"
+	.string "… …Yes, I feel it…\p"
+	.string "You managed to traverse the whole\n"
+	.string "Route, triumphing of both Wielders\l"
+	.string "and wild Pokémon, relying on your sole\l"
+	.string "Wielding skills and medicine…\p"
+	.string "Congratulations, um… {FONT_SMALL}What did you say\n"
+	.string "your name was?{FONT_NORMAL}\p"
+	.string "Congratulations, {PLAYER}!\n"
+	.string "As I expected, you have proved\l"
+	.string "worthy of our songs!\p"
+	.string "I carry some Pokémon Eggs right this\n"
+	.string "moment. I want you to have one, I know\l"
+	.string "it would be in good hands.\p"
+	.string "Which of these Eggs do you favor?$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_2:
+	.string "The warm Egg!$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_3:
+	.string "The wet Egg!$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_4:
+	.string "The mossy Egg!$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_5:
+	.string "{PLAYER} received the mysterious\n"
+	.string "Egg.$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_6:
+	.string "Please take good care of this Egg.\p"
+	.string "May destiny cross our paths again!$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_7:
+	.string "Oh, but wait, you don't have enough\n"
+	.string "room for the Egg!\p"
+	.string "I'll wait for you to make some.$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_8:
+	.string "Hello, traveler.\n"
+	.string "… … …\l"
+	.string "… … …!\p"
+	.string "Oh, I recognize you! You're that\n"
+	.string "promising young Wielder I met on\l"
+	.string "Whiteslate Route!\p"
+	.string "{PLAYER}? It's nice to meet you\n"
+	.string "again.\p"
+	.string "Tell me honestly, {PLAYER}… Did you\n"
+	.string "manage to traverse Whiteslate Route\l"
+	.string "without resorting to the services of\l"
+	.string "a Pokémon Refuge?$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_9:
+	.string "I did!$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_10:
+	.string "I didn't…$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_11:
+	.string "Hmmmm… … …\n"
+	.string "… … …\p"
+	.string "You aren't telling the truth, are you?\n"
+	.string "You're deceiving yourself, do you not\l"
+	.string "feel it in your heart?\p"
+	.string "Don't be too sad about not\n"
+	.string "succeeding. Honesty is more\l"
+	.string "important than pride, and you will get\l"
+	.string "other opportunities to prove\l"
+	.string "yourself in the future!\p"
+	.string "Rest here a while, and prepare well for\n"
+	.string "your next journey!$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_12:
+	.string "Oh, that's alright! Don't beat\n"
+	.string "yourself up. I see in your heart that\l"
+	.string "you have a bright future ahead of\l"
+	.string "you.\p"
+	.string "Honesty is more important than pride,\n"
+	.string "and you will get other opportunities\l"
+	.string "to prove yourself in the future!\p"
+	.string "Rest here a while, and use these to\n"
+	.string "prepare for your next journey!$"
+
+YifuCity_Refuge_EventScript_RouteShamisen_Text_13:
+	.string "May destiny cross our paths again!$"

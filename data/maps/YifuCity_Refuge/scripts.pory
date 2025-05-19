@@ -1,12 +1,23 @@
 const LOCALID_NURSE_CROBAT = 1
 const LOCALID_NURSE = 10
+const LOCALID_GROWLITHE = 17
 const FLAG_HIDE_NURSE = FLAG_TEMP_1
+const FLAG_HIDE_ROUTE_SHAMISEN = FLAG_TEMP_2
+const FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG = FLAG_TEMP_3
 
 mapscripts YifuCity_Refuge_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_YIFU_CITY)
 		if (!flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 			setflag(FLAG_HIDE_NURSE)
+		}
+
+		getroutechallengestate(ROUTE_CHALLENGE_WHITESLATE_YIFU)
+		if (
+			var(VAR_RESULT) == ROUTE_CHALLENGE_STATE_SUCCESS_CONFIRMED
+			|| var(VAR_RESULT) == ROUTE_CHALLENGE_STATE_FAILURE_CONFIRMED
+		) {
+			setflag(FLAG_HIDE_ROUTE_SHAMISEN)
 		}
 	}
 }
@@ -163,6 +174,20 @@ script YifuCity_Refuge_EventScript_Shamisen {
 	end
 }
 
+script YifuCity_Refuge_EventScript_ShamisensPokemon {
+	lock
+	faceplayer
+	setseenmon(SPECIES_TOXEL_TOKUAN)
+	setspeakertomonname(SPECIES_TOXEL_TOKUAN)
+	playmoncry(SPECIES_TOXEL_TOKUAN, CRY_MODE_NORMAL)
+	msgbox(format(
+		"Mrrrp…"
+	))
+	closemessage
+	release
+	end
+}
+
 script YifuCity_Refuge_EventScript_HotelValet {
 	lock
 	faceplayer
@@ -299,4 +324,185 @@ script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 	closemessage
 	release
 	end
+}
+
+script YifuCity_Refuge_EventScript_RouteShamisensPokemon {
+	lock
+	setseenmon(SPECIES_GROWLITHE)
+	playmoncry(SPECIES_GROWLITHE, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_GROWLITHE)
+	msgbox("Rr-ruff!")
+	waitse
+	closemessage
+	release
+}
+
+script YifuCity_Refuge_EventScript_RouteShamisen {
+	lock
+	faceplayer
+	getroutechallengestate(ROUTE_CHALLENGE_WHITESLATE_YIFU)
+	switch(var(VAR_RESULT)) {
+		case ROUTE_CHALLENGE_STATE_STARTED:
+		case ROUTE_CHALLENGE_STATE_SUCCESS:
+			if (flag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)) {
+				speakername("Shamisen Player")
+				msgbox(format(
+					"Ah, so have you made space in your party for the Egg I wanted to give you?\p"
+					"Which of these Eggs do you favor?"
+				))
+			} else {
+				setflag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)
+				speakername("Shamisen Player")
+				msgbox(format(
+					"Hello, traveler.\n… … …\l"
+					"… … …!\p"
+					"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
+					"… …Yes, I feel it…\p"
+					"You managed to traverse the whole Route, triumphing of both Wielders and wild Pokémon, relying on your sole Wielding skills and medicine…\p"
+					"Congratulations, um… {FONT_SMALL}What did you say your name was?{FONT_NORMAL}\p"
+					"Congratulations, {PLAYER}!\nAs I expected, you have proved worthy of our songs!\p"
+					"I carry some Pokémon Eggs right this moment. I want you to have one, I know it would be in good hands.\p"
+					"Which of these Eggs do you favor?"
+				))
+			}
+
+			mcdialogue(
+				"The warm Egg!",
+				"The wet Egg!",
+				"The mossy Egg!"
+			)
+
+			specialvar(VAR_0x8000, GetPlayerTrainerIdOnesDigit)
+			switch(var(VAR_RESULT)) {
+				case 0:
+					if (var(VAR_0x8000) <= 4) {
+						setvar(VAR_TEMP_0, SPECIES_CHIMCHAR)
+					} else {
+						setvar(VAR_TEMP_0, SPECIES_TORCHIC)
+					}
+				case 1:
+					if (var(VAR_0x8000) <= 4) {
+						setvar(VAR_TEMP_0, SPECIES_TOTODILE)
+					} else {
+						setvar(VAR_TEMP_0, SPECIES_OSHAWOTT)
+					}
+				case 2:
+					if (var(VAR_0x8000) <= 4) {
+						setvar(VAR_TEMP_0, SPECIES_CHIKORITA)
+					} else {
+						setvar(VAR_TEMP_0, SPECIES_BULBASAUR)
+					}
+			}
+
+			// Give egg if there's room in party
+			if (getpartysize < PARTY_SIZE) {
+				playfanfare(MUS_OBTAIN_ITEM)
+				message(format("{PLAYER} received the mysterious Egg."))
+				waitfanfare
+				giveegg(VAR_TEMP_0)
+
+				speakername("Shamisen Player")
+				msgbox(format(
+					"Please take good care of this Egg.\p"
+					"May destiny cross our paths again!"
+				))
+				closemessage
+
+				call(YifuCity_Refuge_EventScript_RouteShamisenLeaves)
+
+				setroutechallengestate(ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_SUCCESS_CONFIRMED)
+			} else {
+				speakername("Shamisen Player")
+				msgbox(format(
+					"Oh, but wait, you don't have enough room for the Egg!\p"
+					"I'll wait for you to make some."
+				))
+				closemessage
+			}
+
+		case ROUTE_CHALLENGE_STATE_FAILURE:
+			speakername("Shamisen Player")
+			msgbox(format(
+				"Hello, traveler.\n… … …\l"
+				"… … …!\p"
+				"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
+				"{PLAYER}? It's nice to meet you again.\p"
+				"Tell me honestly, {PLAYER}… Did you manage to traverse Whiteslate Route without resorting to the services of a Pokémon Refuge?"
+			))
+
+			mcdialogue(
+				"I did!",
+				"I didn't…"
+			)
+
+			switch(var(VAR_RESULT)) {
+				case 0:
+					speakername("Shamisen Player")
+					msgbox(format(
+						"Hmmmm… … …\n… … …\p"
+						"You aren't telling the truth, are you?\n"
+						"You're deceiving yourself, do you not feel it in your heart?\p"
+						"Don't be too sad about not succeeding. Honesty is more important than pride, and you will get other opportunities to prove yourself in the future!\p"
+						"Rest here a while, and prepare well for your next journey!"
+					))
+					closemessage
+					setflag(FLAG_LIED_TO_SHAMISEN_PLAYER)
+				case 1:
+					speakername("Shamisen Player")
+					msgbox(format(
+						"Oh, that's alright! Don't beat yourself up. I see in your heart that you have a bright future ahead of you.\p"
+						"Honesty is more important than pride, and you will get other opportunities to prove yourself in the future!\p"
+						"Rest here a while, and use these to prepare for your next journey!"
+					))
+
+					giveitem(ITEM_SUPERGIRI, 3)
+
+					speakername("Shamisen Player")
+					msgbox(format(
+						"May destiny cross our paths again!"
+					))
+					closemessage
+			}
+
+			call(YifuCity_Refuge_EventScript_RouteShamisenLeaves)
+
+			setroutechallengestate(ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_FAILURE_CONFIRMED)
+	}
+
+	closemessage
+	release
+	end
+}
+
+script YifuCity_Refuge_EventScript_RouteShamisenLeaves {
+	switch(var(VAR_FACING)) {
+		case DIR_EAST:
+			applymovement(VAR_LAST_TALKED, moves(walk_down, walk_left * 4, face_down))
+			applymovement(LOCALID_GROWLITHE, moves(walk_down * 2, walk_left * 3))
+		default:
+			applymovement(VAR_LAST_TALKED, moves(walk_left * 4, walk_down))
+			applymovement(LOCALID_GROWLITHE, moves(walk_down, walk_left * 4, face_down))
+	}
+	delay(24)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
+
+	waitmovement(VAR_LAST_TALKED)
+
+	playse(SE_EXIT)
+	removeobject(VAR_LAST_TALKED)
+	waitse
+
+	switch(var(VAR_FACING)) {
+		case DIR_EAST:
+			applymovement(LOCALID_GROWLITHE, moves(walk_left, face_down))
+		default:
+			applymovement(LOCALID_GROWLITHE, moves(walk_down))
+	}
+	waitmovement(LOCALID_GROWLITHE)
+
+	playse(SE_EXIT)
+	removeobject(LOCALID_GROWLITHE)
+	waitse
+
+	setflag(FLAG_HIDE_ROUTE_SHAMISEN)
 }

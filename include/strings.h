@@ -2653,4 +2653,6 @@ extern const u8 gText_CannotSendMonToBoxHM[];
 extern const u8 gText_Scroll[];
 extern const u8 gText_MonDescribedNotification[];
 
+extern const u8 gText_EggFromShamisenPlayer[];
+
 #endif // GUARD_STRINGS_H
