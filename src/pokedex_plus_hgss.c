@@ -4433,10 +4433,9 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
     }
     PrintInfoScreenText(category, 123, 31);
     PrintMonMeasurements(species,owned);
-    if (owned)
-        description = GetSpeciesPokedexDescription(species);
-    else
-        description = sExpandedPlaceholder_PokedexDescription;
+
+    description = GetSpeciesPokedexDescription(species, DO_NAME_CHECK);
+
     PrintInfoScreenText(description, GetStringCenterAlignXOffset(FONT_NORMAL, description, 0xF0), 93);
 
     //Type Icon(s)

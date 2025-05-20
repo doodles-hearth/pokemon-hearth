@@ -294,7 +294,7 @@ SunriseVillage_Event_GuardForest_Text_3:
 	.string "Stop right there, kid!$"
 
 SunriseVillage_Event_GuardForest_Text_4:
-	.string "Wild POKéMON have been lashing out\n"
+	.string "Wild Pokémon have been lashing out\n"
 	.string "recently.\p"
 	.string "I know you're used to walking around\n"
 	.string "on your own, but the woods have\l"
@@ -303,7 +303,7 @@ SunriseVillage_Event_GuardForest_Text_4:
 	.string "Or, you know, if I were me.$"
 
 SunriseVillage_Event_GuardForest_Interact_Text_0:
-	.string "Wild POKéMON have been lashing out\n"
+	.string "Wild Pokémon have been lashing out\n"
 	.string "recently.\p"
 	.string "Even the Ginko woods have become a\n"
 	.string "dangerous place lately!$"

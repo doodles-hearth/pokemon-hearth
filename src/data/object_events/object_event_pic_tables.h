@@ -197,6 +197,10 @@ static const struct SpriteFrameImage sPicTable_OldWoman[] = {
     overworld_ascending_frames(gObjectEventPic_OldWoman, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Medium[] = {
+    overworld_ascending_frames(gObjectEventPic_Medium, 4, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_Camper[] = {
     overworld_ascending_frames(gObjectEventPic_Camper, 2, 4),
 };
@@ -261,12 +265,24 @@ static const struct SpriteFrameImage sPicTable_Beauty[] = {
     overworld_ascending_frames(gObjectEventPic_Beauty, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_MasquerainWoman[] = {
+    overworld_ascending_frames(gObjectEventPic_MasquerainWoman, 4, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_Scientist1[] = {
     overworld_ascending_frames(gObjectEventPic_Scientist1, 2, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_Lass[] = {
     overworld_ascending_frames(gObjectEventPic_Lass, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_GemManiac[] = {
+    overworld_ascending_frames(gObjectEventPic_GemManiac, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Miner[] = {
+    overworld_ascending_frames(gObjectEventPic_Miner, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_PokemonBreederM[] = {

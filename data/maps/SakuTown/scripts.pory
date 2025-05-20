@@ -160,7 +160,7 @@ script SakuTown_EventScript_Farmer {
 	returnqueststate(QUEST_SAKURASCYTHER)
 	if(var(VAR_RESULT) == 3){
 		msgbox(format(
-		"Weilder! It's you! I can't thank ya enough for helping us heal our girl.\pI've been doin' a lot of thinkin' too, after you told us the one who helped 'er get better was someone from Kura. That ain't here nor there though. As thanks, ya can have these."
+		"Wielder! It's you! I can't thank ya enough for helping us heal our girl.\pI've been doin' a lot of thinkin' too, after you told us the one who helped 'er get better was someone from Kura. That ain't here nor there though. As thanks, ya can have these."
 		))
 		giveitem(ITEM_CHERI_BERRY, 20)
 		completequest(QUEST_SAKURASCYTHER)
@@ -507,7 +507,7 @@ script SakuTown_EventScript_TamaArgument {
 	closemessage
 	special(HealPlayerParty)
 	playse(SE_USE_ITEM)
-	setfollower(LOCALID_TAMA, FNPC_NONE, SakuTown_EventScript_TamasAnxious, 0)
+	setfollowernpc(LOCALID_TAMA, FNPC_NONE, SakuTown_EventScript_TamasAnxious, 0)
 	clearflag(FLAG_HIDE_DEADNIGHT_ASHII)
 	addobject(LOCALID_ASHII)
 	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5)
@@ -529,7 +529,7 @@ script SakuTown_TopTamaTrigger{
 	call(SakuTown_EventScript_TamaTalksToPlayerFinal)
 	applymovement(LOCALID_TAMA2, moves(walk_fast_down, walk_fast_left * 5, walk_fast_down, walk_fast_left, walk_fast_down * 4))
 	waitmovement(0)
-	destroyfollower
+	destroyfollowernpc
 	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6)
 	questmenu(QUEST_MENU_SET_REWARD, QUEST_SAKURALOVERS)
 	end
@@ -552,7 +552,7 @@ script SakuTown_BottomTamaTrigger{
 	applymovement(LOCALID_TAMA2, moves(walk_fast_left * 5, walk_fast_down, walk_fast_left, walk_fast_down * 4))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	waitmovement(LOCALID_TAMA2)
-	destroyfollower
+	destroyfollowernpc
 	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6)
 	questmenu(QUEST_MENU_SET_REWARD, QUEST_SAKURALOVERS)
 	end

@@ -45,7 +45,7 @@ script ChiiTown_PokemonCenter_EventScript_Shamisen {
 	lock
 	faceplayer
 	// TODO EVA battle shamisen player!
-	speakername("Shamisen player")
+	speakername("Shamisen Player")
 	msgbox(format(
 		"Good evening.\p"
 		"We blind shamisen players sing to survive.\p"
@@ -59,7 +59,7 @@ script ChiiTown_PokemonCenter_EventScript_Shamisen {
 script ChiiTown_PokemonCenter_EventScript_ShamisenFan {
 	lock
 	faceplayer
-	speakername("Shamisen fan")
+	speakername("Shamisen Fan")
 	msgbox(format(
 		"Such a beautiful voice…\p"
 		"Such sorrowful melodies…\p"

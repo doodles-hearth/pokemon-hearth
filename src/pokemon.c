@@ -128,11 +128,11 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(ARON),
     HOENN_TO_NATIONAL(LAIRON),
     HOENN_TO_NATIONAL(AGGRON),
-    HOENN_TO_NATIONAL(VOLTORB),
-    HOENN_TO_NATIONAL(ELECTRODE),
-    HOENN_TO_NATIONAL(PICHU),
-    HOENN_TO_NATIONAL(PIKACHU),
-    HOENN_TO_NATIONAL(RAICHU),
+    /* HOENN_TO_NATIONAL(VOLTORB), */
+    /* HOENN_TO_NATIONAL(ELECTRODE), */
+    /* HOENN_TO_NATIONAL(PICHU), */
+    /* HOENN_TO_NATIONAL(PIKACHU), */
+    /* HOENN_TO_NATIONAL(RAICHU), */
     HOENN_TO_NATIONAL(KOTORA),
     HOENN_TO_NATIONAL(RAITORA),
     HOENN_TO_NATIONAL(SEWADDLE_TOKUAN),
@@ -140,9 +140,9 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(LEAVANNY_TOKUAN),
     HOENN_TO_NATIONAL(JOLTIK),
     HOENN_TO_NATIONAL(GALVANTULA),
-    HOENN_TO_NATIONAL(WEEDLE),
-    HOENN_TO_NATIONAL(KAKUNA),
-    HOENN_TO_NATIONAL(BEEDRILL),
+    /* HOENN_TO_NATIONAL(WEEDLE), */
+    /* HOENN_TO_NATIONAL(KAKUNA), */
+    /* HOENN_TO_NATIONAL(BEEDRILL), */
     HOENN_TO_NATIONAL(CATERPIE),
     HOENN_TO_NATIONAL(METAPOD),
     HOENN_TO_NATIONAL(BUTTERFREE),
@@ -198,10 +198,9 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(FLETCHLING),
     HOENN_TO_NATIONAL(FLETCHINDER),
     HOENN_TO_NATIONAL(TALONFLAME),
-    HOENN_TO_NATIONAL(NIDORAN_F),
+    HOENN_TO_NATIONAL(NIDORAN_M),
     HOENN_TO_NATIONAL(NIDORINA),
     HOENN_TO_NATIONAL(NIDOQUEEN),
-    HOENN_TO_NATIONAL(NIDORAN_M),
     HOENN_TO_NATIONAL(NIDORINO),
     HOENN_TO_NATIONAL(NIDOKING),
     HOENN_TO_NATIONAL(ZIGZAGOON),
@@ -1275,7 +1274,7 @@ void CreateMon(struct Pokemon *mon, u16 species, u8 level, u8 fixedIV, u8 hasFix
 void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, u8 hasFixedPersonality, u32 fixedPersonality, u8 otIdType, u32 fixedOtId)
 {
     u8 speciesName[POKEMON_NAME_LENGTH + 1];
-    u32 personality;
+    u32 personality = Random32();
     u32 value;
     u16 checksum;
     u8 i;
@@ -1284,11 +1283,6 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     bool32 isShiny;
 
     ZeroBoxMonData(boxMon);
-
-    if (hasFixedPersonality)
-        personality = fixedPersonality;
-    else
-        personality = Random32();
 
     // Determine original trainer ID
     if (otIdType == OT_ID_RANDOM_NO_SHINY)
@@ -1299,7 +1293,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     else if (otIdType == OT_ID_PRESET)
     {
         value = fixedOtId;
-        isShiny = GET_SHINY_VALUE(value, personality) < SHINY_ODDS;
+        isShiny = GET_SHINY_VALUE(value, hasFixedPersonality ? fixedPersonality : personality) < SHINY_ODDS;
     }
     else // Player is the OT
     {
@@ -1345,6 +1339,9 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
             isShiny = GET_SHINY_VALUE(value, personality) < SHINY_ODDS;
         }
     }
+    
+    if (hasFixedPersonality)
+        personality = fixedPersonality;
 
     SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
     SetBoxMonData(boxMon, MON_DATA_OT_ID, &value);
@@ -3775,11 +3772,21 @@ const u8 *GetSpeciesCategory(u16 species)
     return gSpeciesInfo[species].categoryName;
 }
 
-const u8 *GetSpeciesPokedexDescription(u16 species)
+ALIGNED(4) static const u8 sExpandedPlaceholder_PokedexDescription[] = _("");
+
+const u8 *GetSpeciesPokedexDescription(u16 species, enum SpeciesNameCheck check)
 {
     species = SanitizeSpeciesId(species);
     if (gSpeciesInfo[species].description == NULL)
         return gSpeciesInfo[SPECIES_NONE].description;
+
+    if (
+        P_UNKNOWN_MON_NAMES == TRUE
+        && check == DO_NAME_CHECK
+        && GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_DESCRIBED) == FALSE
+    ) {
+        return sExpandedPlaceholder_PokedexDescription;
+    }
     return gSpeciesInfo[species].description;
 }
 
@@ -6896,7 +6903,23 @@ u32 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, enum FormChanges
                 case FORM_CHANGE_ITEM_HOLD:
                     if ((heldItem == formChanges[i].param1 || formChanges[i].param1 == ITEM_NONE)
                      && (ability == formChanges[i].param2 || formChanges[i].param2 == ABILITY_NONE))
-                        targetSpecies = formChanges[i].targetSpecies;
+                    {
+                        // This is to prevent reverting to base form when giving the item to the corresponding form.
+                        // Eg. Giving a Zap Plate to an Electric Arceus without an item (most likely to happen when using givemon)
+                        bool32 currentItemForm = FALSE;
+                        for (int j = 0; formChanges[j].method != FORM_CHANGE_TERMINATOR; j++)
+                        {
+                            if (species == formChanges[j].targetSpecies
+                                && formChanges[j].param1 == heldItem
+                                && formChanges[j].param1 != ITEM_NONE)
+                            {
+                                currentItemForm = TRUE;
+                                break;
+                            }
+                        }
+                        if (!currentItemForm)
+                            targetSpecies = formChanges[i].targetSpecies;
+                    }
                     break;
                 case FORM_CHANGE_ITEM_USE:
                     if (arg == formChanges[i].param1)
@@ -6938,7 +6961,7 @@ u32 GetFormChangeTargetSpeciesBoxMon(struct BoxPokemon *boxMon, enum FormChanges
                         targetSpecies = formChanges[i].targetSpecies;
                     break;
                 case FORM_CHANGE_END_BATTLE_TERRAIN:
-                    if (gBattleTerrain == formChanges[i].param1)
+                    if (gBattleEnvironment == formChanges[i].param1)
                         targetSpecies = formChanges[i].targetSpecies;
                     break;
                 case FORM_CHANGE_WITHDRAW:

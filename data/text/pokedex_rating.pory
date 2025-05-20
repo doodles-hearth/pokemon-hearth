@@ -1,0 +1,254 @@
+text gHearthDexRatingText_LessThan10 {
+	format(
+		"Do you walk around with your eyes closed or something? I know you can do better than that, {PLAYER}!"
+	)
+}
+
+text gHearthDexRatingText_LessThan20 {
+	format(
+		"Hmm, you should research the Pokémon you've glimpsed by asking around, too.\p"
+		"Also, please work on your handwriting for next time…"
+	)
+}
+
+text gHearthDexRatingText_LessThan30 {
+	format(
+		"Visit the same area at night for a chance to meet more Pokémon."
+	)
+}
+
+text gHearthDexRatingText_LessThan40 {
+	format(
+		"This actually isn't too bad.\nAnd I guess your calligraphy improved a little, as well."
+	)
+}
+
+text gHearthDexRatingText_LessThan50 {
+	format(
+		"It shall take courage and perseverance to see this through, but it is coming along.\p"
+		"Could you avoid making so many ink blotches, though?"
+	)
+}
+
+text gHearthDexRatingText_LessThan60 {
+	format(
+		"Fishing, swimming, breaking rocks…\nExplore in every way possible to ink these pages further!"
+	)
+}
+
+text gHearthDexRatingText_LessThan70 {
+	format(
+		"You've caught quite a lot of critters, but do you spend time making them evolve?\lIt's easier to sketch up a Pokémon that isn't scuttling around!"
+	)
+}
+
+text gHearthDexRatingText_LessThan80 {
+	format(
+		"This PokéDex is becoming quite comprehensive.\p"
+		"You should be proud of what you've accomplished so far!"
+	)
+}
+
+text gHearthDexRatingText_LessThan90 {
+	format(
+		"So many drawings, so many precise descriptions!\p"
+		"I am glad I gave you this task."
+	)
+}
+
+text gHearthDexRatingText_LessThan100 {
+	format(
+		"I heard there were many fascinating creatures in the great sea.\lHave you explored that area with your Pokémon?"
+	)
+}
+
+text gHearthDexRatingText_LessThan110 {
+	format(
+		"The cover may be scratched and torn, but this is an impressive PokéDex!"
+	)
+}
+
+text gHearthDexRatingText_LessThan120 {
+	"There might be POKéMON that can be\n"
+	"found using ROCK SMASH.$"
+}
+
+text gHearthDexRatingText_LessThan130 {
+	"You should get some more POKéMON\n"
+	"by trading with others.$"
+}
+
+text gHearthDexRatingText_LessThan140 {
+	"I've heard of POKéMON that evolve\n"
+	"when they come to fully love their\l"
+	"TRAINERS.$"
+}
+
+text gHearthDexRatingText_LessThan150 {
+	"I had no idea that there were so\n"
+	"many POKéMON species in the HOENN\l"
+	"region.$"
+}
+
+text gHearthDexRatingText_LessThan160 {
+	"On occasion, some POKéMON appear\n"
+	"in large numbers like outbreaks.\p"
+	"Don't miss opportunities like\n"
+	"those.$"
+}
+
+text gHearthDexRatingText_LessThan170 {
+	"One can get a very good idea about\n"
+	"the POKéMON of the HOENN region\l"
+	"by looking through your POKéDEX.$"
+}
+
+text gHearthDexRatingText_LessThan180 {
+	"I would say you already qualify as\n"
+	"a POKéMON PROFESSOR, and a good\l"
+	"one, too!$"
+}
+
+text gHearthDexRatingText_LessThan190 {
+	"With a POKéDEX this complete,\n"
+	"you're a real professional at this!$"
+}
+
+text gHearthDexRatingText_LessThan200 {
+	"You're very close to completing\n"
+	"this POKéDEX.\l"
+	"I can feel it in my bones!$"
+}
+
+text gHearthDexRatingText_DexCompleted {
+	"Congratulations!\n"
+	"Your POKéDEX is complete!$"
+}
+
+text gHearthDexRatingText_OnANationwideBasis {
+	"Hmhm…\n"
+	"On a nationwide basis…\p"
+	"You've seen {STR_VAR_1} POKéMON,\n"
+	"and you've caught {STR_VAR_2} POKéMON…$"
+}
+
+raw `
+
+gBirchDexRatingText_AreYouCurious::
+	.string "PROF. BIRCH: Ah, {PLAYER}{KUN}!\p"
+	.string "Are you curious about how your\n"
+	.string "POKéDEX is coming along?$"
+
+gBirchDexRatingText_Cancel::
+	.string "Hm? Oh, you haven't caught enough\n"
+	.string "POKéMON to make it worthwhile.$"
+
+gBirchDexRatingText_SoYouveSeenAndCaught::
+	.string "Hmhm…\p"
+	.string "So, you've seen {STR_VAR_1} POKéMON,\n"
+	.string "and you've caught {STR_VAR_2} POKéMON…$"
+
+gBirchDexRatingText_LessThan10::
+	.string "Go into grassy areas more and look\n"
+	.string "for POKéMON more carefully.$"
+
+gBirchDexRatingText_LessThan20::
+	.string "I guess you're getting the hang\n"
+	.string "of it. But, it gets harder from here.$"
+
+gBirchDexRatingText_LessThan30::
+	.string "Some POKéMON only appear in\n"
+	.string "certain areas.\l"
+	.string "You must be persistent.$"
+
+gBirchDexRatingText_LessThan40::
+	.string "Well, it could use more quantity,\n"
+	.string "but this is looking more like\l"
+	.string "a POKéDEX now.$"
+
+gBirchDexRatingText_LessThan50::
+	.string "This is coming along pretty good.\n"
+	.string "Keep up the effort.$"
+
+gBirchDexRatingText_LessThan60::
+	.string "Are you using any RODS?\n"
+	.string "There are many POKéMON in the sea.$"
+
+gBirchDexRatingText_LessThan70::
+	.string "Instead of just catching POKéMON,\n"
+	.string "how about making them evolve, too?$"
+
+gBirchDexRatingText_LessThan80::
+	.string "This is going to be a fantastic\n"
+	.string "POKéDEX.\l"
+	.string "That's the feeling I'm getting.$"
+
+gBirchDexRatingText_LessThan90::
+	.string "You've collected this many…\n"
+	.string "Your talent is remarkable!$"
+
+gBirchDexRatingText_LessThan100::
+	.string "Have you visited the SAFARI ZONE?\p"
+	.string "I hear there are some POKéMON that\n"
+	.string "can only be caught there.$"
+
+gBirchDexRatingText_LessThan110::
+	.string "You've finally reached\n"
+	.string "the 100-kind mark.\p"
+	.string "This is an impressive POKéDEX!$"
+
+gBirchDexRatingText_LessThan120::
+	.string "There might be POKéMON that can be\n"
+	.string "found using ROCK SMASH.$"
+
+gBirchDexRatingText_LessThan130::
+	.string "You should get some more POKéMON\n"
+	.string "by trading with others.$"
+
+gBirchDexRatingText_LessThan140::
+	.string "I've heard of POKéMON that evolve\n"
+	.string "when they come to fully love their\l"
+	.string "TRAINERS.$"
+
+gBirchDexRatingText_LessThan150::
+	.string "I had no idea that there were so\n"
+	.string "many POKéMON species in the HOENN\l"
+	.string "region.$"
+
+gBirchDexRatingText_LessThan160::
+	.string "On occasion, some POKéMON appear\n"
+	.string "in large numbers like outbreaks.\p"
+	.string "Don't miss opportunities like\n"
+	.string "those.$"
+
+gBirchDexRatingText_LessThan170::
+	.string "One can get a very good idea about\n"
+	.string "the POKéMON of the HOENN region\l"
+	.string "by looking through your POKéDEX.$"
+
+gBirchDexRatingText_LessThan180::
+	.string "I would say you already qualify as\n"
+	.string "a POKéMON PROFESSOR, and a good\l"
+	.string "one, too!$"
+
+gBirchDexRatingText_LessThan190::
+	.string "With a POKéDEX this complete,\n"
+	.string "you're a real professional at this!$"
+
+gBirchDexRatingText_LessThan200::
+	.string "You're very close to completing\n"
+	.string "this POKéDEX.\l"
+	.string "I can feel it in my bones!$"
+
+gBirchDexRatingText_DexCompleted::
+	.string "Congratulations!\n"
+	.string "Your POKéDEX is complete!$"
+
+gBirchDexRatingText_OnANationwideBasis::
+	.string "Hmhm…\n"
+	.string "On a nationwide basis…\p"
+	.string "You've seen {STR_VAR_1} POKéMON,\n"
+	.string "and you've caught {STR_VAR_2} POKéMON…$"
+
+
+`

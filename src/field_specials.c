@@ -940,6 +940,14 @@ void GetPlayerBoyGirlString(void)
         StringCopy(gStringVar1, gText_Girl);
 }
 
+void GetPlayerBoyLassString(void)
+{
+    if (gSaveBlock2Ptr->playerGender == MALE)
+        StringCopy(gStringVar1, gText_Boy);
+    else
+        StringCopy(gStringVar1, gText_Lass);
+}
+
 void GetPlayerSirMissString(void)
 {
     if (gSaveBlock2Ptr->playerGender == MALE)

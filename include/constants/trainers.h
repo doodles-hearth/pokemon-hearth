@@ -129,7 +129,9 @@
 #define TRAINER_PIC_MINER                 111
 #define TRAINER_PIC_GOLBAT_ADMIN_M        112
 #define TRAINER_PIC_GOLBAT_ADMIN_F        113
-#define TRAINER_PIC_COUNT                 114
+#define TRAINER_PIC_MASQUERAIN_WOMAN      114
+#define TRAINER_PIC_GEM_MANIAC            115
+#define TRAINER_PIC_COUNT                 116
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -387,7 +389,8 @@
 #define TRAINER_CLASS_OLD_LADY 0x4D
 #define TRAINER_CLASS_GOLBAT 0x4E
 #define TRAINER_CLASS_ROCK_SMASHER 0x4F
-#define TRAINER_CLASS_COUNT          0x50
+#define TRAINER_CLASS_GEM_MANIAC 0x50
+#define TRAINER_CLASS_COUNT          0x51
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

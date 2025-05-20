@@ -1057,7 +1057,7 @@ static void Task_KabaSpeech_FadeAwayEverything(u8 taskId)
     }
     else
     {
-        PlaySE(SE_EXIT);
+        PlaySE(SE_M_TELEPORT);
         sKabaSpeech->timer = 60;
         BeginNormalPaletteFade(0xEFFFEFFF, 0, 0, 16, RGB_WHITE);
         gTasks[taskId].func = Task_KabaSpeech_Cleanup;

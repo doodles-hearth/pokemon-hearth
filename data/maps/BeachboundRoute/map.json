@@ -890,10 +890,10 @@
     },
     {
       "type": "hidden_item",
-      "x": 57,
+      "x": 67,
       "y": 5,
       "elevation": 3,
-      "item": "ITEM_SUPER_POTION",
+      "item": "ITEM_SUPER_OINTMENT",
       "flag": "FLAG_HIDDEN_ITEM_BEACHBOUND_ROUTE_ETHER"
     },
     {

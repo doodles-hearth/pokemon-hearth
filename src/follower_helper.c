@@ -78,6 +78,14 @@ static const u8* const sNightTexts[] = {sCondMsg45, sCondMsg46, NULL};
 static const u8 sCondMsgBed1[] = _("{STR_VAR_1} is getting comfy!");
 static const u8 sCondMsgBed2[] = _("{STR_VAR_1} wants to take a nap!");
 static const u8* const sBedTexts[] = {sCondMsgBed1, sCondMsgBed2, NULL};
+static const u8 sCondMsgDecayMap1[] = _("{STR_VAR_1} feels uncomfortable.");
+static const u8 sCondMsgDecayMap2[] = _("{STR_VAR_1} wants to leave.");
+static const u8 sCondMsgDecayMap3[] = _("{STR_VAR_1} looks scared.");
+static const u8* const sDecayMapTexts[] = {sCondMsgDecayMap1, sCondMsgDecayMap2, sCondMsgDecayMap3, NULL};
+static const u8 sCondMsgDecay1[] = _("The decay is hurting {STR_VAR_1}!");
+static const u8 sCondMsgDecay2[] = _("{STR_VAR_1} doesn't look too good.");
+static const u8 sCondMsgDecay3[] = _("{STR_VAR_1} weakens.");
+static const u8* const sDecayTexts[] = {sCondMsgDecay1, sCondMsgDecay2, sCondMsgDecay3, NULL};
 
 // See the struct definition in follower_helper.h for more info
 const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT] =
@@ -390,6 +398,26 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .conditions =
         {
             MATCH_ON_MB(MB_BED, MB_BED),
+        },
+    },
+    [COND_MSG_DECAY] =
+    {
+        .text = (u8*)sDecayTexts,
+        .textSpread = 1,
+        .emotion = FOLLOWER_EMOTION_POISONED,
+        .conditions =
+        {
+            MATCH_ON_MB(MB_DECAY, MB_DECAY),
+        },
+    },
+    [COND_MSG_DECAY_MAP] =
+    {
+        .text = (u8*)sDecayMapTexts,
+        .textSpread = 1,
+        .emotion = FOLLOWER_EMOTION_SAD,
+        .conditions =
+        {
+            MATCH_MAP(BEACHBOUND_ROUTE_DECAY),
         },
     },
 };

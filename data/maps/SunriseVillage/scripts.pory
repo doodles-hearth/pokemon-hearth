@@ -94,7 +94,7 @@ script SunriseVillage_Event_GuardForest {
         turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
         speakername("Neighbour")
         msgbox(format(
-            "Wild POKéMON have been lashing out recently.\p"
+            "Wild Pokémon have been lashing out recently.\p"
             "I know you're used to walking around on your own, but the woods have become a dangerous place lately!\p"
             "I wouldn't go alone if I were you.\p"
             "Or, you know, if I were me."
@@ -135,7 +135,7 @@ script SunriseVillage_Event_GuardForest_Interact {
     }
     else {
         msgbox(format(
-            "Wild POKéMON have been lashing out recently.\p"
+            "Wild Pokémon have been lashing out recently.\p"
             "Even the Ginko woods have become a dangerous place lately!"
         ))
         closemessage

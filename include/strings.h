@@ -422,27 +422,27 @@ extern const u8 gText_NoMatchingPkmnWereFound[];
 extern const u8 gText_SelectorArrow[];
 
 // birch dex rating text
-extern const u8 gBirchDexRatingText_LessThan10[];
-extern const u8 gBirchDexRatingText_LessThan20[];
-extern const u8 gBirchDexRatingText_LessThan30[];
-extern const u8 gBirchDexRatingText_LessThan40[];
-extern const u8 gBirchDexRatingText_LessThan50[];
-extern const u8 gBirchDexRatingText_LessThan60[];
-extern const u8 gBirchDexRatingText_LessThan70[];
-extern const u8 gBirchDexRatingText_LessThan80[];
-extern const u8 gBirchDexRatingText_LessThan90[];
-extern const u8 gBirchDexRatingText_LessThan100[];
-extern const u8 gBirchDexRatingText_LessThan110[];
-extern const u8 gBirchDexRatingText_LessThan120[];
-extern const u8 gBirchDexRatingText_LessThan130[];
-extern const u8 gBirchDexRatingText_LessThan140[];
-extern const u8 gBirchDexRatingText_LessThan150[];
-extern const u8 gBirchDexRatingText_LessThan160[];
-extern const u8 gBirchDexRatingText_LessThan170[];
-extern const u8 gBirchDexRatingText_LessThan180[];
-extern const u8 gBirchDexRatingText_LessThan190[];
-extern const u8 gBirchDexRatingText_LessThan200[];
-extern const u8 gBirchDexRatingText_DexCompleted[];
+extern const u8 gHearthDexRatingText_LessThan10[];
+extern const u8 gHearthDexRatingText_LessThan20[];
+extern const u8 gHearthDexRatingText_LessThan30[];
+extern const u8 gHearthDexRatingText_LessThan40[];
+extern const u8 gHearthDexRatingText_LessThan50[];
+extern const u8 gHearthDexRatingText_LessThan60[];
+extern const u8 gHearthDexRatingText_LessThan70[];
+extern const u8 gHearthDexRatingText_LessThan80[];
+extern const u8 gHearthDexRatingText_LessThan90[];
+extern const u8 gHearthDexRatingText_LessThan100[];
+extern const u8 gHearthDexRatingText_LessThan110[];
+extern const u8 gHearthDexRatingText_LessThan120[];
+extern const u8 gHearthDexRatingText_LessThan130[];
+extern const u8 gHearthDexRatingText_LessThan140[];
+extern const u8 gHearthDexRatingText_LessThan150[];
+extern const u8 gHearthDexRatingText_LessThan160[];
+extern const u8 gHearthDexRatingText_LessThan170[];
+extern const u8 gHearthDexRatingText_LessThan180[];
+extern const u8 gHearthDexRatingText_LessThan190[];
+extern const u8 gHearthDexRatingText_LessThan200[];
+extern const u8 gHearthDexRatingText_DexCompleted[];
 
 // player PC text
 extern const u8 gText_WhatWouldYouLike[];
@@ -494,6 +494,7 @@ extern const u8 gText_Mr[];
 extern const u8 gText_Mrs[];
 extern const u8 gText_Boy[];
 extern const u8 gText_Girl[];
+extern const u8 gText_Lass[];
 extern const u8 gText_Sir[];
 extern const u8 gText_Miss[];
 extern const u8 gText_Daughter[];
@@ -1597,6 +1598,9 @@ extern const u8 gText_ChoosePokemon[];
 extern const u8 gText_ChoosePokemonCancel[];
 extern const u8 gText_ChoosePokemonConfirm[];
 extern const u8 gText_SendWhichMonToPC[];
+extern const u8 gText_MoveItemWhere[];
+extern const u8 gText_XsYAnd[];
+extern const u8 gText_XsYWereSwapped[];
 extern const u8 gText_MoveToWhere[];
 extern const u8 gText_TeachWhichPokemon[];
 extern const u8 gText_UseOnWhichPokemon[];
@@ -2647,5 +2651,6 @@ extern const u8 gText_Rename[]; // change nickname from summary screen
 extern const u8 gText_CannotSendMonToBoxHM[];
 
 extern const u8 gText_Scroll[];
+extern const u8 gText_MonDescribedNotification[];
 
 #endif // GUARD_STRINGS_H

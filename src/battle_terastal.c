@@ -39,6 +39,9 @@ void ActivateTera(u32 battler)
     PREPARE_TYPE_BUFFER(gBattleTextBuff1, GetBattlerTeraType(battler));
     if (TryBattleFormChange(gBattlerAttacker, FORM_CHANGE_BATTLE_TERASTALLIZATION))
         BattleScriptExecute(BattleScript_TeraFormChange);
+    else if (gBattleStruct->illusion[gBattlerAttacker].state == ILLUSION_ON
+          && DoesSpeciesHaveFormChangeMethod(GetIllusionMonSpecies(gBattlerAttacker), FORM_CHANGE_BATTLE_TERASTALLIZATION))
+        BattleScriptExecute(BattleScript_IllusionOffAndTerastallization);
     else
         BattleScriptExecute(BattleScript_Terastallization);
 }
@@ -110,7 +113,7 @@ bool32 CanTerastallize(u32 battler)
 // Returns a battler's Tera type.
 u32 GetBattlerTeraType(u32 battler)
 {
-    return GetMonData(&GetBattlerParty(battler)[gBattlerPartyIndexes[battler]], MON_DATA_TERA_TYPE);
+    return GetMonData(GetBattlerMon(battler), MON_DATA_TERA_TYPE);
 }
 
 // Uses up a type's Stellar boost.

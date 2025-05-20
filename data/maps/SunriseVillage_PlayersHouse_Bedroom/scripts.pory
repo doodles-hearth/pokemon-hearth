@@ -36,13 +36,7 @@ script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
 		"{PLAYER}! {PLAYER}!\nAre you still sleeping?"
 	))
 	
-	dynmultichoice(
-		0,
-		0,
-		TRUE,
-		10,
-		0,
-		DYN_MULTICHOICE_CB_NONE,
+	mcdialogue(
 		"…Yes?",
 		"Coming!",
 		"…"
@@ -65,13 +59,7 @@ script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
 				"…{PLAYER}!! ARE YOU UP?!"
 			))
 
-		dynmultichoice(
-			16,
-			8,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
+		mcdialogue(
 			"COMIIIIING!!",
 			"COMIIIIIIIIIIING!!!"
 		)

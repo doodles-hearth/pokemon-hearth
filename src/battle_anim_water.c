@@ -614,7 +614,7 @@ static void AnimAquaTail(struct Sprite *sprite)
 {
     StartSpriteAffineAnim(sprite, gBattleAnimArgs[3]);
     if (gBattleAnimArgs[2] == 0)
-        InitSpritePosToAnimAttacker(sprite, 1);
+        InitSpritePosToAnimAttacker(sprite, TRUE);
     else
         InitSpritePosToAnimTarget(sprite, TRUE);
 
@@ -945,7 +945,7 @@ static void AnimHydroCannonCharge_Step(struct Sprite *sprite)
 // Flashing blue orbs move from the attacker to the target. Second stage of Hydro Cannon
 static void AnimHydroCannonBeam(struct Sprite *sprite)
 {
-    bool8 animType;
+    bool8 respectMonPicOffsets;
     u8 coordType;
     if (IsBattlerAlly(gBattleAnimAttacker, gBattleAnimTarget))
     {
@@ -954,14 +954,14 @@ static void AnimHydroCannonBeam(struct Sprite *sprite)
             gBattleAnimArgs[0] *= -1;
     }
     if ((gBattleAnimArgs[5] & 0xFF00) == 0)
-        animType = TRUE;
+        respectMonPicOffsets = TRUE;
     else
-        animType = FALSE;
+        respectMonPicOffsets = FALSE;
     if ((u8)gBattleAnimArgs[5] == 0)
         coordType = BATTLER_COORD_Y_PIC_OFFSET;
     else
         coordType = BATTLER_COORD_Y;
-    InitSpritePosToAnimAttacker(sprite, animType);
+    InitSpritePosToAnimAttacker(sprite, respectMonPicOffsets);
     if (GetBattlerSide(gBattleAnimAttacker) != B_SIDE_PLAYER)
         gBattleAnimArgs[2] = -gBattleAnimArgs[2];
     sprite->data[0] = gBattleAnimArgs[4];
@@ -1360,7 +1360,7 @@ static u8 GetWaterSpoutPowerForAnim(void)
     u8 i;
     u16 hp;
     u16 maxhp;
-    struct Pokemon *slot = GetPartyBattlerData(gBattleAnimAttacker);
+    struct Pokemon *slot = GetBattlerMon(gBattleAnimAttacker);
 
     maxhp = GetMonData(slot, MON_DATA_MAX_HP);
     hp = GetMonData(slot, MON_DATA_HP);

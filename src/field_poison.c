@@ -4,6 +4,7 @@
 #include "battle_pyramid.h"
 #include "event_data.h"
 #include "event_object_movement.h"
+#include "fieldmap.h"
 #include "field_message_box.h"
 #include "field_poison.h"
 #include "fldeff_misc.h"
@@ -17,6 +18,7 @@
 #include "trainer_hill.h"
 #include "constants/field_poison.h"
 #include "constants/form_change_types.h"
+#include "constants/metatile_behaviors.h"
 #include "constants/party_menu.h"
 
 static bool32 IsMonValidSpecies(struct Pokemon *pokemon)
@@ -130,9 +132,17 @@ s32 DoPoisonFieldEffect(void)
     u32 numPoisoned = 0;
     u32 numFainted = 0;
 
+    bool32 isWalkingOnDecay = MapGridGetMetatileBehaviorAt(gSaveBlock1Ptr->pos.x + MAP_OFFSET, gSaveBlock1Ptr->pos.y + MAP_OFFSET) == MB_DECAY;
+
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        if (GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES) && GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN)
+        if (
+            GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES)
+            && (
+                GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN
+                || isWalkingOnDecay
+            )
+        )
         {
             // Apply poison damage
             hp = GetMonData(pokemon, MON_DATA_HP);

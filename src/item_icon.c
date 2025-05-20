@@ -99,6 +99,7 @@ u8 AddItemIconSprite(u16 tilesTag, u16 paletteTag, u16 itemId)
         struct SpritePalette spritePalette;
         struct SpriteTemplate *spriteTemplate;
 
+        /* LZDecompressWram(GetIconSpeciesNoPersonality(itemId), gItemIconDecompressionBuffer); */
         LZDecompressWram(GetItemIconPic(itemId), gItemIconDecompressionBuffer);
         CopyItemIconPicTo4x4Buffer(gItemIconDecompressionBuffer, gItemIcon4x4Buffer);
         spriteSheet.data = gItemIcon4x4Buffer;
@@ -176,7 +177,7 @@ const void *GetItemIconPic(u16 itemId)
     return gItemsInfo[itemId].iconPic;
 }
 
-const void *GetItemIconPalette(u16 itemId)
+const u16 *GetItemIconPalette(u16 itemId)
 {
     if (itemId == ITEM_LIST_END)
         return gItemIconPalette_ReturnToFieldArrow;

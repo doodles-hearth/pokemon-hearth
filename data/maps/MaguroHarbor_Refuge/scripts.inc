@@ -106,6 +106,31 @@ MaguroHarbor_Refuge_EventScript_Slowpoke_2:
 	goto MaguroHarbor_Refuge_EventScript_Slowpoke_1
 
 
+MaguroHarbor_Refuge_EventScript_DescribedMons::
+	lock
+	faceplayer
+	speakername MaguroHarbor_Refuge_EventScript_DescribedMons_Text_0
+	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1
+	closemessage
+	setnamedmon SPECIES_KRABBY
+	setdescribedmon SPECIES_KRABBY
+	release
+	return
+
+
+MaguroHarbor_Refuge_EventScript_Krabby::
+	lock
+	faceplayer
+	setseenmon SPECIES_KRABBY
+	playmoncry SPECIES_KRABBY, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_KRABBY
+	msgbox MaguroHarbor_Refuge_EventScript_Krabby_Text_0
+	waitmoncry
+	closemessage
+	release
+	return
+
+
 MaguroHarbor_Refuge_EventScript_Hariko_Movement_0:
 	walk_in_place_fast_left
 	step_end
@@ -191,3 +216,23 @@ MaguroHarbor_Refuge_BattleHariko_Text_5:
 
 MaguroHarbor_Refuge_EventScript_Slowpoke_Text_0:
 	.string "Duh…$"
+
+MaguroHarbor_Refuge_EventScript_DescribedMons_Text_0:
+	.string "Man$"
+
+MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1:
+	.string "Oh! You're writing a Pokémon\n"
+	.string "encyclopedia? That's amazing!\p"
+	.string "I bet you're wondering how you can\n"
+	.string "fill up the description of every\l"
+	.string "Pokémon.\l"
+	.string "Well, asking around definitely helps!\p"
+	.string "For instance, Krabby sleeps burrowed\n"
+	.string "inside holes in the sand, and did you\l"
+	.string "know it can grow its pincers back if\l"
+	.string "they fall during battle?\p"
+	.string "Go ahead, you can write that down\n"
+	.string "about it!$"
+
+MaguroHarbor_Refuge_EventScript_Krabby_Text_0:
+	.string "Krblblblbl…$"
