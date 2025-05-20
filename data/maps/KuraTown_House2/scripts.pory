@@ -16,7 +16,7 @@ script KuraTown_House2_EventScript_Ashii {
 		case 2: //After talking to Tama
 			call(AshiiScript3)
 		case 6: //Getting Reward from Her
-			call(AshiiScript6)
+			call(AshiiScript_Reward)
 		default:
 	}
 	release
@@ -25,7 +25,7 @@ script KuraTown_House2_EventScript_Ashii {
 script(local) AshiiScript1 {
 	speakername("Girl")
 	msgbox(format(
-		"Sigh… Oh, Tama… Why must life be so complicated?"
+		"Sigh… Oh, Tama…\nWhy must life be so complicated?"
 	))
 	closemessage
 	delay(30)
@@ -40,28 +40,24 @@ script(local) AshiiScript1 {
 
 	speakername("Girl")
 	msgbox(format(
-		"Hey, what are you doing in my house? Were you eavesdropping?\p"
-		"…It doesn't matter anyway. The boy I really like lives in Saku Village, but our two villages hate each other, so I can't see him anymore.\p"
-		"If only there was a way for him to know my feelings…"
+		"Hey, what are you doing in my house?\nWere you eavesdropping?\p"
+		"…It doesn't matter anyway.\nThe boy I really like lives in\lSaku Village, but our two villages hate each other, so I can't see him anymore.\p"
+		"If only there was a way for him\nto know my feelings…"
 	))
 	closemessage
 	delay(30)
 
 	playse(SE_PIN)
-	applymovement(LOCALID_ASHII, Common_Movement_ExclamationMark)
-	waitmovement(0)
-	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
+	applymovement(LOCALID_ASHII, moves(emote_exclamation_mark, delay_16 * 3))
 	waitmovement(0)
 
+	speakername("Ashii")
 	msgbox(format(
 		"Wait, you're not from here, are you?\p"
-	))
-	closemessage
-	speakername("Ashii")
-	msgbox(format(	
-		"My name is Ashii. I need your help."
-		"The guard won't let anyone from Kura Village enter Saku Village. But you should be fine!\p"
-		"Please, go to Saku Village and give him this. He'll know it's from me."
+		"My name is Ashii. I need your help.\p"
+		"The guard won't let anyone from\nKura Village enter Saku Village.\lBut you should be fine!\p"
+		"Please, go to Saku Village and\ngive him this.\p"
+		"He'll know it's from me…"
 	))
 	closemessage
 
@@ -74,8 +70,7 @@ script(local) AshiiScript2 {
 	faceplayer
 	speakername("Ashii")
 	msgbox(format(
-		"The guard won't let anyone from Kura Village enter Saku Village. But you should be fine!\p"
-		"Please, go to Saku Village and give him this. He'll know it's from me."
+		"Please, give Tama my silk scarf.\nHe'll know it's from me…"
 	))
 	closemessage
 }
@@ -84,54 +79,123 @@ script(local) AshiiScript3 {
 	faceplayer
 	speakername("Ashii")
 	msgbox(format(
-		"Were able to give the scarf to Tama yet? Did he get my message?"
+		"Were you able to give Tama my gift?\p"
+		"Did…\nDid he get my letter?"
 	))
+
+	mcdialogue("Yep!","He sure did!","Loud and clear.")
 	closemessage
-	dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "Yep!","He sure did!","Loud and clear.")
+	delay(24)
+
 	playse(SE_PIN)
-	applymovement(LOCALID_ASHII, moves(emote_exclamation_mark, delay_16 * 2, face_away_player, delay_16 * 3, emote_heart, face_player))
+	applymovement(LOCALID_ASHII, moves(
+		emote_exclamation_mark,
+		delay_16 * 3,
+		face_away_player,
+		delay_16 * 3,
+	))
 	waitmovement(0)
+
+	playse(SE_PIN)
+	applymovement(LOCALID_ASHII, moves(
+		emote_heart,
+		delay_16 * 3,
+		face_player
+	))
+	waitmovement(0)
+
 	speakername("Ashii")
 	msgbox(format(
-		"I'm sorry. You've been an incredible help and I haven't even gotten your name yet. May i ask what it is?\p
-		{PLAYER}… I see…\p {PLAYER}, I know this is a big thing to ask, but…\pI want to be sure that my meeting with Tama will be safe, especially if it might be our last. If so, can you please come with me when we go see each other again?"
+		"I'm sorry. You've been an incredible help, and I don't even know your name!\NMay i ask what it is?\p"
+		"{PLAYER}… I see…\p"
+		"{PLAYER}, I know this is a big thing to ask, but…\p"
+		"I want to be sure that my meeting with Tama is safe.\NWho knows? It might be our last.\p"
+		"Could you please accompany me?"
 	))
+
+	mcdialogue("Of course.", "Who wouldn't?", "I guess?")
 	closemessage
-	dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "Of course.","Who wouldn't?","You both deserve it.")
-	applymovement(LOCALID_ASHII, moves(emote_exclamation_mark, delay_16 *3, jump_in_place_down, delay_4, jump_in_place_down, delay_4, jump_in_place_down, delay_4, step_end))
-	waitmovement(0)
-	faceplayer
+	delay(24)
+
+	applymovement(LOCALID_ASHII, moves(
+		emote_exclamation_mark,
+		delay_16 * 3,
+		jump_in_place_down,
+		delay_4,
+		jump_in_place_left,
+		delay_4,
+		jump_in_place_up,
+		delay_4,
+		jump_in_place_right,
+		delay_16 * 3,
+		face_player
+	))
+	playse(SE_PIN)
+	delay(48)
+	playse(SE_LEDGE)
+	delay(16)
+	delay(4)
+	playse(SE_LEDGE)
+	delay(16)
+	delay(4)
+	playse(SE_LEDGE)
+	delay(16)
+	delay(4)
+	playse(SE_LEDGE)
+	delay(16)
+	delay(48)
+	waitmovement(LOCALID_ASHII)
+
 	gettimeofday
-	speakername("Ashii")
 	if(var(VAR_0x8000) == TIME_DEAD_NIGHT) {
-		msgbox(format("Thank you! Thank you! Thank you! Let's make haste, then. Before the moon takes her slumber in a few hours."))
-		fadescreen(FADE_TO_BLACK)
+		speakername("Ashii")
+		msgbox(format(
+			"Thank you! Thank you! Thank you!\p"
+			"Let's make haste, then.\nBefore the moon takes her slumber!"
+		))
+
+		delay(40)
+
 		warp(MAP_KURA_TOWN, 48, 29)
+
 		setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3)
 	} else {
-		msgbox(format("Thank you! Thank you! Thank you! Please come see me later tonight."))
+		speakername("Ashii")
+		msgbox(format(
+			"Thank you! Thank you! Thank you!\p"
+			"Meet me here later tonight."
+		))
 		closemessage
+
+		delay(40)
+
 		fadescreen(FADE_TO_BLACK)
+
 		msgbox("Late that night…")
 		waitmessage
 		closemessage
-		fadescreen(FADE_FROM_BLACK)
+
 		pausefakertc
 		fwdtime(0, 0)
-		warp(MAP_KURA_TOWN, 48, 29)
+
+		warpsilent(MAP_KURA_TOWN, 48, 29)
 		setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3)
 	} 
-		closemessage
+	closemessage
 }
 
-script(local) AshiiScript6 {
+script(local) AshiiScript_Reward {
 	faceplayer
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7)
 	speakername("Ashii")
-	msgbox(format("{PLAYER}! It's you! I can never thank you enough for the night you've given us. Even if we must meet under cover of darkness, I would risk it all for Tama again and again and again. Here, take this. It's the least I can do for all your help… "))
-	waitmessage
+	msgbox(format(
+		"{PLAYER}! It's you!\nI can't thank you enough for the night you've given us.\p"
+		"Even if we must meet under cover of darkness, I would risk it all for Tama, again and again and again…\NAnd again… And again…\NAnd again…\p"
+		"Here, take this.\nIt's the least I can do… "
+	))
 	closemessage
+
 	giveitem(ITEM_DESTINY_KNOT, 1)
+
 	completequest(QUEST_SAKURALOVERS)
-	end
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7)
 }

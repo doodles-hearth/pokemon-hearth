@@ -4,7 +4,6 @@ SakuTown_House1_MapScripts::
 
 SakuTown_House1_EventScript_Tama::
 	lock
-	faceplayer
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 0
 	goto_if_eq SakuTown_House1_EventScript_Tama_2
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
@@ -13,8 +12,8 @@ SakuTown_House1_EventScript_Tama::
 	goto_if_ge SakuTown_House1_EventScript_Tama_4
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
 	goto_if_le SakuTown_House1_EventScript_Tama_4
-	speakername SakuTown_House1_EventScript_Tama_Text_1
-	msgbox SakuTown_House1_EventScript_Tama_Text_10
+	speakername SakuTown_House1_EventScript_Tama_Text_4
+	msgbox SakuTown_House1_EventScript_Tama_Text_19
 	waitmessage
 	closemessage
 SakuTown_House1_EventScript_Tama_1:
@@ -26,18 +25,23 @@ SakuTown_House1_EventScript_Tama_2:
 	goto SakuTown_House1_EventScript_Tama_1
 
 SakuTown_House1_EventScript_Tama_3:
-	call TamaScript1
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SakuTown_House1_EventScript_Tama_Text_0
-	speakername SakuTown_House1_EventScript_Tama_Text_1
-	msgbox SakuTown_House1_EventScript_Tama_Text_2
+	speakername SakuTown_House1_EventScript_Tama_Text_0
+	msgbox SakuTown_House1_EventScript_Tama_Text_1
+	mcdialogue SakuTown_House1_EventScript_Tama_Text_2, SakuTown_House1_EventScript_Tama_Text_3
 	closemessage
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SakuTown_House1_EventScript_Tama_Text_3
-	delay 32
-	speakername SakuTown_House1_EventScript_Tama_Text_1
-	msgbox SakuTown_House1_EventScript_Tama_Text_4
+	switch VAR_RESULT
+	case 0, SakuTown_House1_EventScript_Tama_13
+	case 1, SakuTown_House1_EventScript_Tama_14
+SakuTown_House1_EventScript_Tama_11:
+	mcdialogue SakuTown_House1_EventScript_Tama_Text_7, SakuTown_House1_EventScript_Tama_Text_8
 	closemessage
 	delay 32
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SakuTown_House1_EventScript_Tama_Text_5
+	speakername SakuTown_House1_EventScript_Tama_Text_4
+	msgbox SakuTown_House1_EventScript_Tama_Text_9
+	delay 32
+	mcdialogue SakuTown_House1_EventScript_Tama_Text_10
+	closemessage
+	delay 24
 	playse SE_PIN
 	applymovement 1, Common_Movement_FacePlayer
 	waitmovement 0
@@ -45,86 +49,186 @@ SakuTown_House1_EventScript_Tama_3:
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	speakername SakuTown_House1_EventScript_Tama_Text_1
-	msgbox SakuTown_House1_EventScript_Tama_Text_6
+	speakername SakuTown_House1_EventScript_Tama_Text_4
+	msgbox SakuTown_House1_EventScript_Tama_Text_11
 	closemessage
-	playse SE_SELECT
-	removeitem ITEM_ASHIIS_SCARF, 1
-	msgbox SakuTown_House1_EventScript_Tama_Text_7
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox SakuTown_House1_EventScript_Tama_Text_12
+	waitfanfare
+	removeitem ITEM_ASHIIS_SCARF
+	closemessage
+	playse SE_LEDGE
+	applymovement 1, SakuTown_House1_EventScript_Tama_Movement_0
+	waitmovement 1
+	speakername SakuTown_House1_EventScript_Tama_Text_4
+	msgbox SakuTown_House1_EventScript_Tama_Text_13
+	closemessage
+	playse SE_PIN
+	applymovement 1, SakuTown_House1_EventScript_Tama_Movement_1
+	waitmovement 1
 	waitse
+	speakername SakuTown_House1_EventScript_Tama_Text_4
+	msgbox SakuTown_House1_EventScript_Tama_Text_14
 	closemessage
-	speakername SakuTown_House1_EventScript_Tama_Text_1
-	msgbox SakuTown_House1_EventScript_Tama_Text_8
+	applymovement 1, SakuTown_House1_EventScript_Tama_Movement_2
+	waitmovement 1
+	speakername SakuTown_House1_EventScript_Tama_Text_4
+	msgbox SakuTown_House1_EventScript_Tama_Text_15
+	closemessage
+	faceplayer
+	speakername SakuTown_House1_EventScript_Tama_Text_4
+	msgbox SakuTown_House1_EventScript_Tama_Text_16
 	closemessage
 	applymovement 1, Common_Movement_FaceAwayPlayer
-	waitmovement 0
+	waitmovement 1
 	delay 60
-	applymovement 1, Common_Movement_FacePlayer
-	waitmovement 0
-	speakername SakuTown_House1_EventScript_Tama_Text_1
-	msgbox SakuTown_House1_EventScript_Tama_Text_9
+	applymovement 1, SakuTown_House1_EventScript_Tama_Movement_3
+	waitmovement 1
+	speakername SakuTown_House1_EventScript_Tama_Text_4
+	msgbox SakuTown_House1_EventScript_Tama_Text_17
 	closemessage
 	addvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
 	goto SakuTown_House1_EventScript_Tama_1
 
 SakuTown_House1_EventScript_Tama_4:
-	speakername SakuTown_House1_EventScript_Tama_Text_1
-	msgbox SakuTown_House1_EventScript_Tama_Text_9
+	speakername SakuTown_House1_EventScript_Tama_Text_4
+	msgbox SakuTown_House1_EventScript_Tama_Text_18
 	waitmessage
 	closemessage
 	goto SakuTown_House1_EventScript_Tama_1
 
+SakuTown_House1_EventScript_Tama_13:
+	speakername SakuTown_House1_EventScript_Tama_Text_4
+	msgbox SakuTown_House1_EventScript_Tama_Text_5
+	goto SakuTown_House1_EventScript_Tama_11
+
+SakuTown_House1_EventScript_Tama_14:
+	speakername SakuTown_House1_EventScript_Tama_Text_4
+	msgbox SakuTown_House1_EventScript_Tama_Text_6
+	goto SakuTown_House1_EventScript_Tama_11
+
 
 TamaScript1:
-	speakername TamaScript1_Text_0
-	msgbox TamaScript1_Text_1
+	speakername SakuTown_House1_EventScript_Tama_Text_0
+	msgbox SakuTown_House1_EventScript_Tama_Text_1
 	closemessage
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
-	goto_if_eq TamaScript1_1
 	return
 
-TamaScript1_1:
-	return
 
+SakuTown_House1_EventScript_Tama_Movement_0:
+	lock_facing_direction
+	jump_in_place_down
+	unlock_facing_direction
+	step_end
+
+SakuTown_House1_EventScript_Tama_Movement_1:
+	emote_question_mark
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
+SakuTown_House1_EventScript_Tama_Movement_2:
+	face_down
+	step_end
+
+SakuTown_House1_EventScript_Tama_Movement_3:
+	face_player
+	lock_facing_direction
+	walk_in_place_fast_down
+	unlock_facing_direction
+	step_end
 
 SakuTown_House1_EventScript_Tama_Text_0:
-	.string "Hey, are you Tama?$"
+	.string "Man$"
 
 SakuTown_House1_EventScript_Tama_Text_1:
-	.string "Tama$"
+	.string "Please go away.\n"
+	.string "Leave me alone.$"
 
 SakuTown_House1_EventScript_Tama_Text_2:
-	.string "…So?$"
+	.string "Excuse me!$"
 
 SakuTown_House1_EventScript_Tama_Text_3:
-	.string "I have something for you.$"
+	.string "Are you Tama?$"
 
 SakuTown_House1_EventScript_Tama_Text_4:
-	.string "…$"
+	.string "Tama$"
 
 SakuTown_House1_EventScript_Tama_Text_5:
-	.string "It's from Ashii in Kura.$"
+	.string "… … … … … …\n"
+	.string "… … … … …What?$"
 
 SakuTown_House1_EventScript_Tama_Text_6:
-	.string "WHAT?! Let me see!$"
+	.string "… … … … … …\n"
+	.string "… … … … …Yeah, so?$"
 
 SakuTown_House1_EventScript_Tama_Text_7:
-	.string "Gave Tama the scarf.$"
+	.string "I have something!$"
 
 SakuTown_House1_EventScript_Tama_Text_8:
-	.string "I… I can't believe it! She really does\nlove me! Thank you for this!\p Eh? There's a letter inside!\n Whatever for?\p “My dear Tama. It pains me that you're\n not by my side each night. The sweet\l chirping of birds pales in comparison\l to your hearty laugh. I would move\l heaven and earth if it meant we could\l be together. If your heart still rings\l true for mine, will you meet me under\l pale moonlight, in the vale lying\l betwixt our homes?”\p The vale… she must be talking about\n the small valley to the east of here!\l And pale moonlight… that must be\l tonight! Yes, that has to be it! Why\l else ask you to deliver this now?$"
+	.string "This is for you!$"
 
 SakuTown_House1_EventScript_Tama_Text_9:
-	.string "Wielder, I owe you my thanks. Please,\n"
-	.string "tell her that I'll meet her tonight!\l"
-	.string "I'll be waiting for her!$"
+	.string "… … … … … …\n"
+	.string "… … … … … …$"
 
 SakuTown_House1_EventScript_Tama_Text_10:
-	.string "I can't wait to see my love again\n"
+	.string "It's from Ashii.$"
+
+SakuTown_House1_EventScript_Tama_Text_11:
+	.string "WHAT?! Let me see!$"
+
+SakuTown_House1_EventScript_Tama_Text_12:
+	.string "{PLAYER} gave Tama the scarf.$"
+
+SakuTown_House1_EventScript_Tama_Text_13:
+	.string "I… I can't believe it!\n"
+	.string "She really does love me!\l"
+	.string "Thank you so much for this!$"
+
+SakuTown_House1_EventScript_Tama_Text_14:
+	.string "Eh? There's a letter inside!\n"
+	.string "Whatever for?$"
+
+SakuTown_House1_EventScript_Tama_Text_15:
+	.string "Ahem… “My dear Tama,\n"
+	.string "It pains me that you're not by my side\l"
+	.string "each night.\l"
+	.string "The sweet chirping of birds pales in\l"
+	.string "comparison to your hearty laugh.\p"
+	.string "I would move Heaven and Earth if it\n"
+	.string "meant we could be together.\p"
+	.string "If your heart still rings true for\n"
+	.string "mine, will you meet me under pale\l"
+	.string "moonlight, in the vale betwixt our\l"
+	.string "homes?\p"
+	.string "Sincerely yours,\n"
+	.string "-Ashii {EMOJI_HEART}”\p"
+	.string "… … … … … …\n"
+	.string "… … … … … …$"
+
+SakuTown_House1_EventScript_Tama_Text_16:
+	.string "…Ahem. Sorry if this was embarrassing\n"
+	.string "for you…\p"
+	.string "What does she mean with that “vale”,\n"
+	.string "though?…\p"
+	.string "Oh!\n"
+	.string "She must be talking about the small\l"
+	.string "valley to the east of here!\p"
+	.string "And “pale moonlight”…\n"
+	.string "That must be tonight!\p"
+	.string "Of course! Why else ask you to\n"
+	.string "deliver this now?$"
+
+SakuTown_House1_EventScript_Tama_Text_17:
+	.string "Wielder! I owe you my thanks.\n"
+	.string "Please, tell her I'll meet her tonight!$"
+
+SakuTown_House1_EventScript_Tama_Text_18:
+	.string "Please, tell Ashii I'll meet her\n"
 	.string "tonight!$"
 
-TamaScript1_Text_0:
-	.string "Boy$"
-
-TamaScript1_Text_1:
-	.string "Please go away. Leave me alone.$"
+SakuTown_House1_EventScript_Tama_Text_19:
+	.string "I can't wait to see Ashii again\n"
+	.string "tonight!$"
