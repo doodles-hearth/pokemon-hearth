@@ -74,6 +74,7 @@ static void UpdatePerMinute(struct Time *localTime)
             gSaveBlock2Ptr->lastBerryTreeUpdate = *localTime;
         }
     }
+    //TODO: Add a thing for checkig shiny vial
 }
 
 void FormChangeTimeUpdate()
