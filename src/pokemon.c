@@ -61,6 +61,7 @@
 #include "constants/layouts.h"
 #include "constants/moves.h"
 #include "constants/regions.h"
+#include "constants/shiny_vial.h"
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "constants/union_room.h"
@@ -1329,6 +1330,11 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
                 totalRerolls += CalculateChainFishingShinyRolls();
             if (gDexNavSpecies)
                 totalRerolls += CalculateDexNavShinyRolls();
+
+            if (gSaveBlock1Ptr->isShinyVialActive)
+            {
+                totalRerolls += SHINY_VIAL_ADDITIONAL_ROLLS;
+            }
 
             while (GET_SHINY_VALUE(value, personality) >= SHINY_ODDS && totalRerolls > 0)
             {

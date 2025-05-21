@@ -27,6 +27,7 @@
 #include "rtc.h"
 
 extern const u8 EventScript_SprayWoreOff[];
+extern const u8 ShinyVial_EventScript_EffectWoreOff[];
 
 #define MAX_ENCOUNTER_RATE 2880
 

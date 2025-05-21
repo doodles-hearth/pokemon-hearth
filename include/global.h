@@ -1183,6 +1183,8 @@ struct SaveBlock1
                u8 registeredItemListCount:4;
                struct RegisteredItemSlot registeredItems[REGISTERED_ITEMS_MAX];
                enum RouteChallengeState routeChallengeStates[ROUTE_CHALLENGE_COUNT];
+               u16 remainingShinyVialMinutes;
+               bool8 isShinyVialActive;
 };
 
 extern struct SaveBlock1* gSaveBlock1Ptr;

@@ -1,0 +1,8 @@
+script ShinyVial_EventScript_EffectWoreOff {
+	lockall
+	msgbox(format(
+		"The effects of the Shiny Vial wore off…"
+	))
+	closemessage
+	releaseall
+}

@@ -44,6 +44,7 @@
 #include "constants/event_objects.h"
 #include "constants/item_effects.h"
 #include "constants/items.h"
+#include "constants/shiny_vial.h"
 #include "constants/songs.h"
 #include "constants/map_types.h"
 
@@ -75,6 +76,8 @@ static void Task_StartUseRepel(u8);
 static void Task_StartUseLure(u8 taskId);
 static void Task_UseRepel(u8);
 static void Task_UseLure(u8 taskId);
+static void Task_StartUseShinyVial(u8 taskId);
+static void Task_UseShinyVial(u8 taskId);
 static void Task_CloseCantUseKeyItemMessage(u8);
 static void SetDistanceOfClosestHiddenItem(u8, s16, s16);
 static void CB2_OpenPokeblockFromBag(void);
@@ -980,6 +983,44 @@ void HandleUseExpiredRepel(struct ScriptContext *ctx)
 #if VAR_LAST_REPEL_LURE_USED != 0
     VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(VarGet(VAR_LAST_REPEL_LURE_USED)));
 #endif
+}
+
+void ItemUseOutOfBattle_ShinyVial(u8 taskId)
+{
+    if (!gSaveBlock1Ptr->isShinyVialActive)
+        gTasks[taskId].func = Task_StartUseShinyVial;
+    else if (!InBattlePyramid())
+        DisplayItemMessage(taskId, FONT_NORMAL, gText_ShinyVialEffectsLingered, CloseItemMessage);
+    else
+        DisplayItemMessageInBattlePyramid(taskId, gText_ShinyVialEffectsLingered, Task_CloseBattlePyramidBagMessage);
+}
+
+static void Task_StartUseShinyVial(u8 taskId)
+{
+    s16* data = gTasks[taskId].data;
+
+    if (++data[8] > 7)
+    {
+        data[8] = 0;
+        PlaySE(SE_ICE_BREAK);
+        gTasks[taskId].func = Task_UseShinyVial;
+    }
+}
+
+static void Task_UseShinyVial(u8 taskId)
+{
+    if (!IsSEPlaying())
+    {
+        gSaveBlock1Ptr->isShinyVialActive = TRUE;
+        gSaveBlock1Ptr->remainingShinyVialMinutes = NB_MINUTES_SHINY_VIAL_EFFECT;
+
+        RemoveUsedItem();
+
+        if (!InBattlePyramid())
+            DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, CloseItemMessage);
+        else
+            DisplayItemMessageInBattlePyramid(taskId, gStringVar4, Task_CloseBattlePyramidBagMessage);
+    }
 }
 
 void ItemUseOutOfBattle_Lure(u8 taskId)

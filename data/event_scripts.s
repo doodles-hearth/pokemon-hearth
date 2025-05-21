@@ -1137,6 +1137,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/mauville_man.inc"
 	.include "data/text/trainers.inc"
 	.include "data/scripts/repel.inc"
+	.include "data/scripts/shiny_vial.inc"
 	.include "data/scripts/safari_zone.inc"
 	.include "data/scripts/roulette.inc"
 	.include "data/text/pokedex_rating.inc"

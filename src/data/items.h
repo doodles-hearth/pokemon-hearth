@@ -2505,6 +2505,24 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_MaxLure,
     },
 
+    [ITEM_SHINY_VIAL] =
+    {
+        .name = _("Shiny Vial"),
+        .price = 1000,
+        .holdEffectParam = 250,
+        .description = COMPOUND_STRING(
+            "Increases shiny\n"
+            "encounters for a\n"
+            "while.\n"
+        ),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_ShinyVial,
+        .flingPower = 30,
+        .iconPic = gItemIcon_ShinyVial,
+        .iconPalette = gItemIconPalette_ShinyVial,
+    },
+
     [ITEM_ESCAPE_ROPE] =
     {
         .name = _("Escape Rope"),

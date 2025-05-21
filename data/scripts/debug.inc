@@ -64,6 +64,8 @@ Debug_CheatStart::
 	setflag FLAG_VISITED_SAKU_TOWN
 	setflag FLAG_VISITED_KURA_TOWN
 
+	resumefakertc
+
 	release
 	end
 

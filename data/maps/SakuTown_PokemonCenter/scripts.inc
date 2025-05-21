@@ -89,19 +89,18 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest::
 	waitmovement 0
 	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_0
-	waitmessage
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_1
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2
-	waitmessage
 	closemessage
 	applymovement 1, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_2
 	waitmovement 0
 	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_3
-	waitmessage
 	closemessage
+	applymovement 9, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_0
+	waitmovement 0
 	return
 
 
@@ -137,7 +136,9 @@ FarmerWaitsMedicine:
 	msgbox FarmerWaitsMedicine_Text_0
 	checkitem ITEM_SPECIAL_MEDICINE, 1
 	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6
-	goto_if_eq FarmerWaitsMedicine_3
+	goto_if_eq FarmerWaitsMedicine_4
+FarmerWaitsMedicine_3:
+	closemessage
 FarmerWaitsMedicine_1:
 	return
 
@@ -145,69 +146,69 @@ FarmerWaitsMedicine_2:
 	call HealedScytherScript
 	goto FarmerWaitsMedicine_1
 
-FarmerWaitsMedicine_3:
+FarmerWaitsMedicine_4:
 	compare VAR_RESULT, TRUE
 	goto_if_eq FarmerWaitsMedicine_2
-	goto FarmerWaitsMedicine_1
+	goto FarmerWaitsMedicine_3
 
 
 HealedScytherScript:
 	mcdialogue HealedScytherScript_Text_0, HealedScytherScript_Text_1
-	applymovement 11, HealedScytherScript_Movement_0
+	closemessage
 	playse SE_PIN
+	applymovement 11, HealedScytherScript_Movement_0
 	waitmovement 0
+	waitse
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox HealedScytherScript_Text_2
-	waitmessage
 	closemessage
-	removeitem ITEM_SPECIAL_MEDICINE, 1
-	applymovement 11, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_0
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox HealedScytherScript_Text_3
+	waitfanfare
+	removeitem ITEM_SPECIAL_MEDICINE
+	closemessage
+	applymovement 11, HealedScytherScript_Movement_1
 	waitmovement 0
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
-	msgbox HealedScytherScript_Text_3
-	waitmessage
-	closemessage
-	applymovement 13, HealedScytherScript_Movement_1
-	playmoncry SPECIES_SCYTHER, CRY_MODE_NORMAL
-	setspeakertomonname SPECIES_SCYTHER
 	msgbox HealedScytherScript_Text_4
-	waitmessage
+	closemessage
+	applymovement 13, HealedScytherScript_Movement_2
+	playmoncry SPECIES_SCYTHER, CRY_MODE_WEAK
+	setspeakertomonname SPECIES_SCYTHER
+	msgbox HealedScytherScript_Text_5
 	closemessage
 	playse SE_USE_ITEM
-	applymovement 13, HealedScytherScript_Movement_2
+	applymovement 13, HealedScytherScript_Movement_3
 	waitmovement 0
-	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
-	applymovement 11, HealedScytherScript_Movement_3
-	applymovement 12, HealedScytherScript_Movement_4
+	applymovement 11, HealedScytherScript_Movement_4
+	applymovement 12, HealedScytherScript_Movement_5
 	waitmovement 11
 	waitmovement 12
-	msgbox HealedScytherScript_Text_5
-	waitmessage
-	closemessage
-	mcdialogue HealedScytherScript_Text_6
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
-	msgbox HealedScytherScript_Text_7
-	applymovement 11, HealedScytherScript_Movement_5
+	msgbox HealedScytherScript_Text_6
+	closemessage
+	mcdialogue HealedScytherScript_Text_7
+	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	msgbox HealedScytherScript_Text_8
+	applymovement 11, HealedScytherScript_Movement_6
 	waitmovement 0
-	applymovement 13, HealedScytherScript_Movement_6
+	applymovement 13, HealedScytherScript_Movement_7
 	playmoncry SPECIES_SCYTHER, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_SCYTHER
-	msgbox HealedScytherScript_Text_8
-	waitmessage
-	closemessage
-	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox HealedScytherScript_Text_9
-	waitmessage
+	waitmoncry
 	closemessage
-	applymovement 11, HealedScytherScript_Movement_3
-	waitmovement 0
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox HealedScytherScript_Text_10
-	waitmessage
 	closemessage
-	applymovement 12, HealedScytherScript_Movement_7
-	applymovement 13, HealedScytherScript_Movement_8
-	applymovement 11, HealedScytherScript_Movement_9
+	applymovement 11, HealedScytherScript_Movement_8
+	waitmovement 0
+	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	msgbox HealedScytherScript_Text_11
+	closemessage
+	applymovement 12, HealedScytherScript_Movement_9
+	applymovement 13, HealedScytherScript_Movement_10
+	applymovement 11, HealedScytherScript_Movement_11
 	waitmovement 12
 	waitmovement 13
 	waitmovement 11
@@ -224,12 +225,13 @@ SakuTown_PokemonCenter_EventScript_Farmer2::
 	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox SakuTown_PokemonCenter_EventScript_Farmer2_Text_0
 	closemessage
-	playmoncry SPECIES_SCYTHER, CRY_MODE_NORMAL
+	playmoncry SPECIES_SCYTHER, CRY_MODE_WEAK
 	setspeakertomonname SPECIES_SCYTHER
-	msgbox HealedScytherScript_Text_4
+	msgbox HealedScytherScript_Text_5
+	waitmoncry
 	closemessage
 	release
-	end
+	return
 
 
 SakuTown_PokemonCenter_EventScript_Pushing::
@@ -340,7 +342,7 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_1:
 	step_end
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_2:
-	walk_in_place_down
+	walk_in_place_fast_down
 	step_end
 
 FarmerGivesQuest_Movement_0:
@@ -348,15 +350,25 @@ FarmerGivesQuest_Movement_0:
 	step_end
 
 HealedScytherScript_Movement_0:
-	emote_double_exclamation_mark
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 HealedScytherScript_Movement_1:
-	face_left
+	walk_in_place_fast_right
 	step_end
 
 HealedScytherScript_Movement_2:
+	face_left
+	step_end
+
+HealedScytherScript_Movement_3:
 	emote_double_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
 	jump_in_place_down
 	jump_in_place_down
 	walk_fast_up
@@ -375,22 +387,25 @@ HealedScytherScript_Movement_2:
 	face_down
 	delay_16
 	emote_heart
-	step_end
-
-HealedScytherScript_Movement_3:
-	face_player
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 HealedScytherScript_Movement_4:
+	walk_in_place_fast_left
+	step_end
+
+HealedScytherScript_Movement_5:
 	walk_up
 	face_left
 	step_end
 
-HealedScytherScript_Movement_5:
+HealedScytherScript_Movement_6:
 	face_up
 	step_end
 
-HealedScytherScript_Movement_6:
+HealedScytherScript_Movement_7:
 	face_up
 	delay_4
 	face_left
@@ -401,34 +416,38 @@ HealedScytherScript_Movement_6:
 	delay_4
 	step_end
 
-HealedScytherScript_Movement_7:
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_right
-	walk_right
-	step_end
-
 HealedScytherScript_Movement_8:
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_right
-	walk_right
+	face_player
 	step_end
 
 HealedScytherScript_Movement_9:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	step_end
+
+HealedScytherScript_Movement_10:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_right
+	walk_right
+	step_end
+
+HealedScytherScript_Movement_11:
 	walk_up
 	walk_right
 	walk_right
@@ -467,75 +486,80 @@ SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0:
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_0:
 	.string "I'm sorry, but there's nothing I can\n"
-	.string "do yet. We haven't received the tools\l"
-	.string "that allow us to heal a Pokémon in\l"
-	.string "this dire of a state.$"
+	.string "do yet.\p"
+	.string "We haven't tools that allow us to heal\n"
+	.string "a Pokémon in this dire a state.$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1:
 	.string "Farmer$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2:
-	.string "Well y'have to do somet'in'! Can'tcha\n"
-	.string "see she's in pain?!$"
+	.string "Y'have to do somet'in', miss!\n"
+	.string "Cantcha see she's in pain?!$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_3:
 	.string "She can stay here for as long as she\n"
-	.string "needs to. I'll try to keep her in as\l"
-	.string "good of a shape as I can.$"
+	.string "needs.\p"
+	.string "I'll keep her in as good a shape as I\n"
+	.string "can.$"
 
 FarmerGivesQuest_Text_0:
-	.string "The nurse 'ere said that the new\n"
-	.string "fangled technology from the Toku\l"
-	.string "Council isn't here yet. As such, she\l"
-	.string "can't be cured of whatever's ailin'\l"
-	.string "her.\p"
+	.string "The nurse 'ere said the newfangled\n"
+	.string "medical technology from the Toku\l"
+	.string "Council isn't here yet.\p"
+	.string "As such, Scyther can't be cured of\n"
+	.string "whatever's ailin' her.\p"
 	.string "Please! If you can spare some time,\n"
-	.string "can you help us find someone or\l"
-	.string "something to cure our girl?$"
+	.string "help us find someone or something to\l"
+	.string "cure our girl!$"
 
 FarmerWaitsMedicine_Text_0:
 	.string "So? Have ya found anythin' yet?$"
 
 HealedScytherScript_Text_0:
-	.string "Yep!$"
-
-HealedScytherScript_Text_1:
 	.string "Right here.$"
 
+HealedScytherScript_Text_1:
+	.string "I have this medicine.$"
+
 HealedScytherScript_Text_2:
-	.string "That's it! Can ye hand it please,\n"
-	.string "Wielder?$"
+	.string "That's it! Please, Wielder, quickly!$"
 
 HealedScytherScript_Text_3:
-	.string "Here girl… This'll make ya feel better…$"
+	.string "{PLAYER} gave the Special Medicine.$"
 
 HealedScytherScript_Text_4:
-	.string "{FONT_SMALL} Gyooo…$"
+	.string "Here, girl…\n"
+	.string "This'll make ya feel better…$"
 
 HealedScytherScript_Text_5:
-	.string "Wielder, I don't know how to thank ya.\n"
-	.string "She wouldn't be alright with you!\l"
-	.string "Where did you get this medicine?$"
+	.string "{FONT_SMALL} Gyooo…$"
 
 HealedScytherScript_Text_6:
-	.string "From a wise healer in Kura Village.$"
+	.string "Wielder… I don't know how to thank ya.\n"
+	.string "We were so worried…\p"
+	.string "Where did you get this medicine?$"
 
 HealedScytherScript_Text_7:
-	.string "Kura Village, eh…$"
+	.string "The healer in Kura Village!$"
 
 HealedScytherScript_Text_8:
-	.string "Gyaaa!$"
+	.string "Kura Village, eh…$"
 
 HealedScytherScript_Text_9:
-	.string "{FONT_SMALL} Maybe they're not s'bad afta' all…$"
+	.string "Gyaaa!$"
 
 HealedScytherScript_Text_10:
+	.string "{FONT_SMALL} Maybe they ain't s'bad afta' all…$"
+
+HealedScytherScript_Text_11:
 	.string "Thank you, Wielder. I can give ye a\n"
 	.string "reward for your effors. Just meet us\l"
 	.string "in the fields outside.$"
 
 SakuTown_PokemonCenter_EventScript_Farmer2_Text_0:
-	.string "There, there, girl… It'll be okay…$"
+	.string "There, there, girl…\n"
+	.string "It'll be okay…$"
 
 SakuTown_PokemonCenter_EventScript_Pushing_Text_0:
 	.string "Shady man$"

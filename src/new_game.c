@@ -242,7 +242,7 @@ void NewGameInitData(void)
     QuestMenu_ResetMenuSaveData();
     QuestMenu_GetSetQuestState(QUEST_HEARTH_MAIN_CAMPAIGN, FLAG_SET_UNLOCKED);
     QuestMenu_GetSetQuestState(QUEST_HEARTH_MAIN_CAMPAIGN, FLAG_SET_ACTIVE);
-    ResetLimitedShops();    
+    ResetLimitedShops();
 }
 
 static void ResetMiniGamesRecords(void)

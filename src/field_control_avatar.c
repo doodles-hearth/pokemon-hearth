@@ -27,6 +27,7 @@
 #include "safari_zone.h"
 #include "script.h"
 #include "secret_base.h"
+#include "shiny_vial.h"
 #include "sound.h"
 #include "start_menu.h"
 #include "trainer_see.h"
@@ -672,6 +673,8 @@ static bool8 TryStartStepBasedScript(struct MapPosition *position, u16 metatileB
     if (TryStartStepCountScript(metatileBehavior) == TRUE)
         return TRUE;
     if (UpdateRepelCounter() == TRUE)
+        return TRUE;
+    if (UpdateShinyVialCounter() == TRUE)
         return TRUE;
     return FALSE;
 }

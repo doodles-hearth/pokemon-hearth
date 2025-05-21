@@ -208,7 +208,7 @@ const u8 gText_DadsAdvice[] = _("Big Sis's advice…\n{PLAYER}, there's a time a
 const u8 gText_PlayerUsedVar2[] = _("{PLAYER} used the\n{STR_VAR_2}.{PAUSE_UNTIL_PRESS}");
 const u8 gText_PlayerUsedVar2ButItBroke[] = _("{PLAYER} used the\n{STR_VAR_2}.\p…But it broke!{PAUSE_UNTIL_PRESS}");
 const u8 gText_RepelEffectsLingered[] = _("But the effects of a Repel\nlingered from earlier.{PAUSE_UNTIL_PRESS}");
-const u8 gText_LureEffectsLingered[] = _("But the effects of a Lure\nlingered from earlier.{PAUSE_UNTIL_PRESS}");
+const u8 gText_ShinyVialEffectsLingered[] = _("But the effects of a Vial\nlingered from earlier.{PAUSE_UNTIL_PRESS}");
 const u8 gText_BoxFull[] = _("The Pen is full.{PAUSE_UNTIL_PRESS}");
 const u8 gText_TheField[] = _("the field");
 const u8 gText_TheBattle[] = _("the battle");
@@ -1388,3 +1388,5 @@ const u8 gText_QuestUpdate[] = _("You jotted down changes to your quest,\n“{ST
 
 const u8 gText_MonDescribedNotification[] = _("You wrote down notes about {STR_VAR_1}\nin the PokéDex!");
 const u8 gText_EggFromShamisenPlayer[] = _("A mystery Egg given by\na Shamisen Player.");
+const u8 gText_LureEffectsLingered[] = _("But the effects of a Lure\nlingered from earlier.{PAUSE_UNTIL_PRESS}");
+
