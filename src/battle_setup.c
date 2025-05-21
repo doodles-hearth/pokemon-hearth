@@ -72,7 +72,6 @@ static void TryUpdateGymLeaderRematchFromTrainer(void);
 static void CB2_GiveStarter(void);
 static void CB2_StartFirstBattle(void);
 static void CB2_EndFirstBattle(void);
-static bool8 BattleHasNoWhiteout(void);
 static void SaveChangesToPlayerParty(void);
 static void HandleBattleVariantEndParty(void);
 static void CB2_EndTrainerBattle(void);
@@ -787,7 +786,7 @@ u8 GetWildBattleTransition(void)
 
 u8 GetTrainerBattleTransition(void)
 {
-    u8 minPartyCount;
+    u8 minPartyCount = 1;
     u8 transitionType;
     u8 enemyLevel;
     u8 playerLevel;
@@ -807,10 +806,15 @@ u8 GetTrainerBattleTransition(void)
         || trainerClass == TRAINER_CLASS_AQUA_ADMIN)
         return B_TRANSITION_AQUA;
 
-    if (IsTrainerDoubleBattle(trainerId))
-        minPartyCount = 2; // double battles always at least have 2 Pokémon.
-    else
+    switch (GetTrainerBattleType(trainerId))
+    {
+    case TRAINER_BATTLE_TYPE_SINGLES:
         minPartyCount = 1;
+        break;
+    case TRAINER_BATTLE_TYPE_DOUBLES:
+        minPartyCount = 2; // double battles always at least have 2 Pokémon.
+        break;
+    }
 
     transitionType = GetBattleTransitionTypeByMap();
     enemyLevel = GetSumOfEnemyPartyLevel(trainerId, minPartyCount);
@@ -1044,18 +1048,11 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
         SetMapVarsToTrainerA();
         return EventScript_TryDoDoubleTrainerBattle;
     case TRAINER_BATTLE_CONTINUE_SCRIPT:
-    case TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT:
         if (gApproachingTrainerId == 0)
         {
             SetMapVarsToTrainerA();
         }
         return EventScript_TryDoNormalTrainerBattle;
-    case TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT:
-        if (gApproachingTrainerId == 0)
-        {
-            SetMapVarsToTrainerA();
-        }
-        return EventScript_DoNoIntroTrainerBattle;
     case TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC:
         SetMapVarsToTrainerA();
         return EventScript_TryDoNormalTrainerBattle;
@@ -1304,15 +1301,6 @@ static void HandleBattleVariantEndParty(void)
     FlagClear(B_FLAG_SKY_BATTLE);
 }
 
-static bool8 BattleHasNoWhiteout()
-{
-    if (TRAINER_BATTLE_PARAM.objEventLocalIdA == TRAINER_BATTLE_NO_WHITEOUT_CONTINUE_SCRIPT || 
-        TRAINER_BATTLE_PARAM.mode == TRAINER_BATTLE_NO_INTRO_NO_WHITEOUT)
-        return TRUE;
-    else
-        return FALSE;
-}
-
 static void CB2_EndTrainerBattle(void)
 {
     HandleBattleVariantEndParty();
@@ -1343,7 +1331,7 @@ static void CB2_EndTrainerBattle(void)
     }
     else if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
-        if (InBattlePyramid() || InTrainerHillChallenge() || (!NoAliveMonsForPlayer()) || BattleHasNoWhiteout())
+        if (InBattlePyramid() || InTrainerHillChallenge() || (!NoAliveMonsForPlayer()) || FlagGet(B_FLAG_NO_WHITEOUT))
             SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         else
             SetMainCallback2(CB2_WhiteOut);
