@@ -54,6 +54,7 @@ Debug_CheatStart::
 
 
 	@ Custom Hearth flags
+	setvar VAR_STARTER_MON, SPECIES_FROAKIE
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
 	setflag FLAG_SYS_QUEST_MENU_GET
 	setflag FLAG_HIDE_SUNRISE_BEACH_RIVAL

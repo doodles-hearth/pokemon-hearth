@@ -227,6 +227,7 @@ KuraTown_EventScript_AnxiousAshii::
 	msgbox KuraTown_EventScript_AnxiousAshii_Text_1
 	closemessage
 	applymovement 16, KuraTown_EventScript_AnxiousAshii_Movement_2
+	waitmovement 16
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
 	release
 	return

@@ -452,7 +452,6 @@ SakuTown_EventScript_TamaArgument_1:
 	delay 240
 	speakername SakuTown_EventScript_TamaArgument_Text_6
 	msgbox SakuTown_EventScript_TamaArgument_Text_7
-	waitmessage
 	closemessage
 	playse MUS_DUMMY
 	waitse
@@ -462,7 +461,6 @@ SakuTown_EventScript_TamaArgument_1:
 	waitmovement OBJ_EVENT_ID_CAMERA
 	speakername SakuTown_EventScript_TamaArgument_Text_6
 	msgbox SakuTown_EventScript_TamaArgument_Text_8
-	waitmessage
 	closemessage
 	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_6
 	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_7
@@ -470,37 +468,41 @@ SakuTown_EventScript_TamaArgument_1:
 	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
 	trainerbattle_no_intro_no_whiteout TRAINER_TAMAS_DAD, SakuTown_EventScript_TamaArgument_Text_9
+	specialvar VAR_RESULT, GetBattleOutcome
+	compare VAR_RESULT, B_OUTCOME_WON
+	goto_if_ne SakuTown_EventScript_TamaArgument_6
+SakuTown_EventScript_TamaArgument_5:
 	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_8
 	waitmovement 21
 	speakername SakuTown_EventScript_TamaArgument_Text_10
-	msgbox SakuTown_EventScript_TamaArgument_Text_11
+	msgbox SakuTown_EventScript_TamaArgument_Text_12
 	closemessage
 	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_9
 	waitmovement 20
 	speakername SakuTown_EventScript_TamaArgument_Text_1
-	msgbox SakuTown_EventScript_TamaArgument_Text_12
+	msgbox SakuTown_EventScript_TamaArgument_Text_13
 	closemessage
 	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_10
 	waitmovement 0
 	speakername SakuTown_EventScript_TamaArgument_Text_10
-	msgbox SakuTown_EventScript_TamaArgument_Text_13
+	msgbox SakuTown_EventScript_TamaArgument_Text_14
 	closemessage
 	delay 60
-	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_8
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_11
 	waitmovement 0
 	delay 60
 	speakername SakuTown_EventScript_TamaArgument_Text_10
-	msgbox SakuTown_EventScript_TamaArgument_Text_14
+	msgbox SakuTown_EventScript_TamaArgument_Text_15
 	closemessage
-	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_11
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_12
 	waitmovement 0
 	removeobject 21
-	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_12
-	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_13
+	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_13
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_14
 	waitmovement 20
 	waitmovement OBJ_EVENT_ID_PLAYER
 	speakername SakuTown_EventScript_TamaArgument_Text_1
-	msgbox SakuTown_EventScript_TamaArgument_Text_15
+	msgbox SakuTown_EventScript_TamaArgument_Text_16
 	closemessage
 	special HealPlayerParty
 	playse SE_USE_ITEM
@@ -513,6 +515,12 @@ SakuTown_EventScript_TamaArgument_1:
 SakuTown_EventScript_TamaArgument_2:
 	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_1
 	goto SakuTown_EventScript_TamaArgument_1
+
+SakuTown_EventScript_TamaArgument_6:
+	speakername SakuTown_EventScript_TamaArgument_Text_10
+	msgbox SakuTown_EventScript_TamaArgument_Text_11
+	closemessage
+	goto SakuTown_EventScript_TamaArgument_5
 
 
 SakuTown_TopTamaTrigger::
@@ -578,7 +586,7 @@ SakuTown_EventScript_LoversReunite::
 	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_0
 	waitmovement 0
 	speakername SakuTown_EventScript_LoversSeeEachOther_Text_0
-	msgbox SakuTown_EventScript_TamaArgument_Text_13
+	msgbox SakuTown_EventScript_TamaArgument_Text_14
 	special SpawnCameraObject
 	switch VAR_TEMP_0
 	case 1, SakuTown_EventScript_LoversReunite_3
@@ -631,7 +639,7 @@ SakuTown_EventScript_LoversReunite_1:
 	msgbox SakuTown_EventScript_LoversReunite_Text_8
 	closemessage
 	delay 60
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_TamaArgument_Movement_4
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_4
 	speakername SakuTown_EventScript_TamaArgument_Text_1
 	msgbox SakuTown_EventScript_LoversReunite_Text_9
 	closemessage
@@ -640,7 +648,7 @@ SakuTown_EventScript_LoversReunite_1:
 	msgbox SakuTown_EventScript_LoversReunite_Text_10
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_4
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_5
 	waitmovement 0
 	waitse
 	speakername SakuTown_EventScript_TamaArgument_Text_1
@@ -659,7 +667,7 @@ SakuTown_EventScript_LoversReunite_1:
 	speakername SakuTown_EventScript_TamaArgument_Text_1
 	msgbox SakuTown_EventScript_LoversReunite_Text_13
 	closemessage
-	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_5
+	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_6
 	waitmovement 0
 	removeobject 22
 	setflag FLAG_HIDE_DEADNIGHT_ASHII
@@ -796,6 +804,9 @@ SakuTown_EventScript_TamaArgument_Movement_7:
 
 SakuTown_EventScript_TamaArgument_Movement_8:
 	walk_in_place_fast_down
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 SakuTown_EventScript_TamaArgument_Movement_9:
@@ -809,6 +820,10 @@ SakuTown_EventScript_TamaArgument_Movement_10:
 	step_end
 
 SakuTown_EventScript_TamaArgument_Movement_11:
+	walk_in_place_fast_down
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_12:
 	walk_slow_down
 	walk_slow_down
 	walk_slow_down
@@ -821,12 +836,12 @@ SakuTown_EventScript_TamaArgument_Movement_11:
 	walk_slow_down
 	step_end
 
-SakuTown_EventScript_TamaArgument_Movement_12:
+SakuTown_EventScript_TamaArgument_Movement_13:
 	walk_up
 	face_player
 	step_end
 
-SakuTown_EventScript_TamaArgument_Movement_13:
+SakuTown_EventScript_TamaArgument_Movement_14:
 	face_left
 	step_end
 
@@ -943,13 +958,21 @@ SakuTown_EventScript_LoversReunite_Movement_3:
 	step_end
 
 SakuTown_EventScript_LoversReunite_Movement_4:
+	face_down
+	delay_16
+	delay_16
+	delay_16
+	face_right
+	step_end
+
+SakuTown_EventScript_LoversReunite_Movement_5:
 	emote_exclamation_mark
 	delay_16
 	delay_16
 	delay_16
 	step_end
 
-SakuTown_EventScript_LoversReunite_Movement_5:
+SakuTown_EventScript_LoversReunite_Movement_6:
 	walk_slow_up
 	walk_slow_right
 	walk_slow_right
@@ -1162,8 +1185,9 @@ SakuTown_EventScript_TamaArgument_Text_6:
 SakuTown_EventScript_TamaArgument_Text_7:
 	.string "So you're the whippersnapper that's\n"
 	.string "making my son collude with the enemy,\l"
-	.string "eh. Well, you outta be taught a lesson\l"
-	.string "in respect, kiddo!$"
+	.string "eh.\p"
+	.string "You outta be taught a lesson in\n"
+	.string "respect, kiddo!$"
 
 SakuTown_EventScript_TamaArgument_Text_8:
 	.string "{FONT_SMALL_NARROW}Huff… wheeze…$"
@@ -1175,10 +1199,13 @@ SakuTown_EventScript_TamaArgument_Text_10:
 	.string "Kiyosumi$"
 
 SakuTown_EventScript_TamaArgument_Text_11:
+	.string "That'll teach you!!$"
+
+SakuTown_EventScript_TamaArgument_Text_12:
 	.string "{FONT_SMALL_NARROW}Huff… puff… Definitely not in as good\n"
 	.string "a shape anymore…$"
 
-SakuTown_EventScript_TamaArgument_Text_12:
+SakuTown_EventScript_TamaArgument_Text_13:
 	.string "Father, I know you don't approve of\n"
 	.string "us, but please understand.\p"
 	.string "My mind is made up and you can't\n"
@@ -1186,21 +1213,21 @@ SakuTown_EventScript_TamaArgument_Text_12:
 	.string "What would you have done if someone\n"
 	.string "had come between you and Mother?$"
 
-SakuTown_EventScript_TamaArgument_Text_13:
+SakuTown_EventScript_TamaArgument_Text_14:
 	.string "… … … … … …\n"
 	.string "… … … … … …$"
 
-SakuTown_EventScript_TamaArgument_Text_14:
+SakuTown_EventScript_TamaArgument_Text_15:
 	.string "If your love is as true as you say,\n"
 	.string "then neither I nor anyone else can\l"
 	.string "stop you.\p"
 	.string "Do what you must.$"
 
-SakuTown_EventScript_TamaArgument_Text_15:
+SakuTown_EventScript_TamaArgument_Text_16:
 	.string "I can't thank you enough. Now, let's\n"
 	.string "make haste!\l"
-	.string "Ashii must be waiting for us Let me\l"
-	.string "heal your Pokémon as thanks.$"
+	.string "Ashii must be waiting for us!\p"
+	.string "Let me heal your Pokémon as thanks.$"
 
 SakuTown_EventScript_LoversSeeEachOther_Text_0:
 	.string "Ashii$"

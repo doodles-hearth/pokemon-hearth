@@ -12,6 +12,7 @@ SakuTown_House1_EventScript_Tama::
 	goto_if_ge SakuTown_House1_EventScript_Tama_4
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
 	goto_if_le SakuTown_House1_EventScript_Tama_4
+	faceplayer
 	speakername SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_19
 	waitmessage
@@ -82,8 +83,7 @@ SakuTown_House1_EventScript_Tama_11:
 	applymovement 1, Common_Movement_FaceAwayPlayer
 	waitmovement 1
 	delay 60
-	applymovement 1, SakuTown_House1_EventScript_Tama_Movement_3
-	waitmovement 1
+	faceplayer
 	speakername SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_17
 	closemessage
@@ -91,6 +91,7 @@ SakuTown_House1_EventScript_Tama_11:
 	goto SakuTown_House1_EventScript_Tama_1
 
 SakuTown_House1_EventScript_Tama_4:
+	faceplayer
 	speakername SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_18
 	waitmessage
@@ -130,13 +131,6 @@ SakuTown_House1_EventScript_Tama_Movement_1:
 
 SakuTown_House1_EventScript_Tama_Movement_2:
 	face_down
-	step_end
-
-SakuTown_House1_EventScript_Tama_Movement_3:
-	face_player
-	lock_facing_direction
-	walk_in_place_fast_down
-	unlock_facing_direction
 	step_end
 
 SakuTown_House1_EventScript_Tama_Text_0:
@@ -209,8 +203,8 @@ SakuTown_House1_EventScript_Tama_Text_15:
 	.string "… … … … … …$"
 
 SakuTown_House1_EventScript_Tama_Text_16:
-	.string "…Ahem. Sorry if this was embarrassing\n"
-	.string "for you…\p"
+	.string "…Ahem. Sorry, this is a little\n"
+	.string "embarrassing…\p"
 	.string "What does she mean with that “vale”,\n"
 	.string "though?…\p"
 	.string "Oh!\n"

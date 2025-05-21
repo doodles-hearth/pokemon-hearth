@@ -488,7 +488,14 @@ script SakuTown_EventScript_TamaArgument {
 
 	trainerbattle_no_intro_no_whiteout(TRAINER_TAMAS_DAD, "Dangnabit!")
 
-	applymovement(LOCALID_TAMASDAD, moves(walk_in_place_fast_down))
+	specialvar(VAR_RESULT, GetBattleOutcome)
+	if (var(VAR_RESULT) != B_OUTCOME_WON) {
+		speakername("Kiyosumi")
+		msgbox(format("That'll teach you!!"))
+		closemessage
+	}
+
+	applymovement(LOCALID_TAMASDAD, moves(walk_in_place_fast_down, delay_16 * 3))
 	waitmovement(LOCALID_TAMASDAD)
 
 	speakername("Kiyosumi")

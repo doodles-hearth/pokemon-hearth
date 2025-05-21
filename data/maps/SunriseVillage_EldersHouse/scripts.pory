@@ -550,11 +550,11 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 script SunriseVillage_EldersHouse_EventScript_RivalBattle {
 	switch(var(VAR_STARTER_MON)) {
 		case SPECIES_FROAKIE:
-			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_FROAKIE, format("What? It's over already?"))
+			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_FROAKIE, format("What? It's over already?"))
 		case SPECIES_SNIVY:
-			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_SNIVY, format("What? It's over already?"))
+			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_SNIVY, format("What? It's over already?"))
 		case SPECIES_CYNDAQUIL:
-			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL, format("What? It's over already?"))
+			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL, format("What? It's over already?"))
 	}
 
 	goto(SunriseVillage_EldersHouse_EventScript_PostBattle)
