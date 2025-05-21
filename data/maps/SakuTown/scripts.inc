@@ -450,20 +450,22 @@ SakuTown_EventScript_TamaArgument_1:
 	closemessage
 	playse MUS_VS_RAYQUAZA
 	delay 240
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_6
+	waitmovement 21
 	speakername SakuTown_EventScript_TamaArgument_Text_6
 	msgbox SakuTown_EventScript_TamaArgument_Text_7
 	closemessage
 	playse MUS_DUMMY
 	waitse
-	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_6
-	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_6
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_7
+	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_7
 	waitmovement 21
 	waitmovement OBJ_EVENT_ID_CAMERA
 	speakername SakuTown_EventScript_TamaArgument_Text_6
 	msgbox SakuTown_EventScript_TamaArgument_Text_8
 	closemessage
-	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_6
-	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_7
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_7
+	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_8
 	waitmovement 21
 	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
@@ -472,33 +474,33 @@ SakuTown_EventScript_TamaArgument_1:
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_ne SakuTown_EventScript_TamaArgument_6
 SakuTown_EventScript_TamaArgument_5:
-	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_8
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_9
 	waitmovement 21
 	speakername SakuTown_EventScript_TamaArgument_Text_10
 	msgbox SakuTown_EventScript_TamaArgument_Text_12
 	closemessage
-	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_9
+	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_10
 	waitmovement 20
 	speakername SakuTown_EventScript_TamaArgument_Text_1
 	msgbox SakuTown_EventScript_TamaArgument_Text_13
 	closemessage
-	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_10
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_11
 	waitmovement 0
 	speakername SakuTown_EventScript_TamaArgument_Text_10
 	msgbox SakuTown_EventScript_TamaArgument_Text_14
 	closemessage
 	delay 60
-	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_11
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_12
 	waitmovement 0
 	delay 60
 	speakername SakuTown_EventScript_TamaArgument_Text_10
 	msgbox SakuTown_EventScript_TamaArgument_Text_15
 	closemessage
-	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_12
+	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_13
 	waitmovement 0
 	removeobject 21
-	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_13
-	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_14
+	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_14
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_15
 	waitmovement 20
 	waitmovement OBJ_EVENT_ID_PLAYER
 	speakername SakuTown_EventScript_TamaArgument_Text_1
@@ -597,17 +599,17 @@ SakuTown_EventScript_LoversReunite_1:
 	speakername SakuTown_EventScript_TamaArgument_Text_1
 	msgbox SakuTown_EventScript_LoversReunite_Text_0
 	closemessage
-	applymovement 22, SakuTown_EventScript_TamaArgument_Movement_10
+	applymovement 22, SakuTown_EventScript_TamaArgument_Movement_11
 	speakername SakuTown_EventScript_LoversSeeEachOther_Text_0
 	msgbox SakuTown_EventScript_LoversReunite_Text_1
 	closemessage
 	delay 60
-	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_10
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_TamaArgument_Movement_11
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_TamaArgument_Movement_4
 	speakername SakuTown_EventScript_TamaArgument_Text_1
 	msgbox SakuTown_EventScript_LoversReunite_Text_2
 	closemessage
-	applymovement 22, SakuTown_EventScript_TamaArgument_Movement_10
+	applymovement 22, SakuTown_EventScript_TamaArgument_Movement_11
 	speakername SakuTown_EventScript_LoversSeeEachOther_Text_0
 	msgbox SakuTown_EventScript_LoversReunite_Text_3
 	closemessage
@@ -626,7 +628,7 @@ SakuTown_EventScript_LoversReunite_1:
 	speakername SakuTown_EventScript_TamaArgument_Text_1
 	msgbox SakuTown_EventScript_LoversReunite_Text_5
 	closemessage
-	applymovement 22, SakuTown_EventScript_TamaArgument_Movement_10
+	applymovement 22, SakuTown_EventScript_TamaArgument_Movement_11
 	speakername SakuTown_EventScript_LoversSeeEachOther_Text_0
 	msgbox SakuTown_EventScript_LoversReunite_Text_6
 	closemessage
@@ -634,7 +636,7 @@ SakuTown_EventScript_LoversReunite_1:
 	speakername SakuTown_EventScript_TamaArgument_Text_1
 	msgbox SakuTown_EventScript_LoversReunite_Text_7
 	closemessage
-	applymovement 22, SakuTown_EventScript_TamaArgument_Movement_10
+	applymovement 22, SakuTown_EventScript_TamaArgument_Movement_11
 	speakername SakuTown_EventScript_LoversSeeEachOther_Text_0
 	msgbox SakuTown_EventScript_LoversReunite_Text_8
 	closemessage
@@ -643,7 +645,7 @@ SakuTown_EventScript_LoversReunite_1:
 	speakername SakuTown_EventScript_TamaArgument_Text_1
 	msgbox SakuTown_EventScript_LoversReunite_Text_9
 	closemessage
-	applymovement 22, SakuTown_EventScript_TamaArgument_Movement_10
+	applymovement 22, SakuTown_EventScript_TamaArgument_Movement_11
 	speakername SakuTown_EventScript_LoversSeeEachOther_Text_0
 	msgbox SakuTown_EventScript_LoversReunite_Text_10
 	closemessage
@@ -794,36 +796,40 @@ SakuTown_EventScript_TamaArgument_Movement_5:
 	step_end
 
 SakuTown_EventScript_TamaArgument_Movement_6:
-	walk_slower_up
+	walk_in_place_fast_up
 	step_end
 
 SakuTown_EventScript_TamaArgument_Movement_7:
+	walk_slower_up
+	step_end
+
+SakuTown_EventScript_TamaArgument_Movement_8:
 	walk_slow_up
 	walk_slow_up
 	step_end
 
-SakuTown_EventScript_TamaArgument_Movement_8:
+SakuTown_EventScript_TamaArgument_Movement_9:
 	walk_in_place_fast_down
 	delay_16
 	delay_16
 	delay_16
 	step_end
 
-SakuTown_EventScript_TamaArgument_Movement_9:
+SakuTown_EventScript_TamaArgument_Movement_10:
 	walk_up
 	walk_up
 	walk_in_place_fast_right
 	step_end
 
-SakuTown_EventScript_TamaArgument_Movement_10:
+SakuTown_EventScript_TamaArgument_Movement_11:
 	walk_in_place_fast_left
 	step_end
 
-SakuTown_EventScript_TamaArgument_Movement_11:
+SakuTown_EventScript_TamaArgument_Movement_12:
 	walk_in_place_fast_down
 	step_end
 
-SakuTown_EventScript_TamaArgument_Movement_12:
+SakuTown_EventScript_TamaArgument_Movement_13:
 	walk_slow_down
 	walk_slow_down
 	walk_slow_down
@@ -836,12 +842,12 @@ SakuTown_EventScript_TamaArgument_Movement_12:
 	walk_slow_down
 	step_end
 
-SakuTown_EventScript_TamaArgument_Movement_13:
+SakuTown_EventScript_TamaArgument_Movement_14:
 	walk_up
 	face_player
 	step_end
 
-SakuTown_EventScript_TamaArgument_Movement_14:
+SakuTown_EventScript_TamaArgument_Movement_15:
 	face_left
 	step_end
 

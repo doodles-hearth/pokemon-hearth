@@ -461,6 +461,10 @@ script SakuTown_EventScript_TamaArgument {
 	closemessage
 	playse(MUS_VS_RAYQUAZA)
 	delay(240)
+
+	applymovement(LOCALID_TAMASDAD, moves(walk_in_place_fast_up))
+	waitmovement(LOCALID_TAMASDAD)
+
 	speakername("Old Man")
 	msgbox(format(
 		"So you're the whippersnapper that's making my son collude with the enemy, eh.\p"
