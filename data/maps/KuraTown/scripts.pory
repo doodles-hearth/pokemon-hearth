@@ -253,14 +253,31 @@ script KuraTown_EventScript_GymSign {
 
 script KuraTown_EventScript_AnxiousAshii {
 	lock
-	applymovement(LOCALID_ASHII, moves(face_player))
+	delay(48)
+	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_left))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 	speakername("Ashii")
-	msgbox(format("My heart is racing… Where is he? I hope he's alright… Can you please help me and check down south?"))
-	waitmessage
+	msgbox(format(
+		"My heart is racing… Where is he?\nI hope he's alright…\p"
+		"I'm worried…\nCan you check down south for me?"
+	))
 	closemessage
-	applymovement(LOCALID_ASHII, moves(face_original_direction))
+	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_down))
+	waitmovement(LOCALID_ASHII)
 	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4)
-	end
+	release
+}
+
+script KuraTown_EventScript_AnxiousAshiiWaiting {
+	lock
+	faceplayer
+	speakername("Ashii")
+	msgbox(format(
+		"I'm worried…\nCan you check down south for me?"
+	))
+	closemessage
+	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_down))
+	release
 }
 
 script KuraTown_EventScript_PreventEscape {

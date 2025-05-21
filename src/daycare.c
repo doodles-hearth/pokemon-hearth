@@ -1115,9 +1115,15 @@ void CreateEgg(struct Pokemon *mon, u16 species, bool8 setHotSpringsLocation)
     SetMonData(mon, MON_DATA_FRIENDSHIP, &gSpeciesInfo[species].eggCycles);
     SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
     SetMonData(mon, MON_DATA_LANGUAGE, &language);
-    if (setHotSpringsLocation)
+
+    // Special cases!
+    // Shamisen player
+    if (
+        gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(YIFU_CITY_REFUGE)
+        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(YIFU_CITY_REFUGE)
+    )
     {
-        metLocation = METLOC_SPECIAL_EGG;
+        metLocation = METLOC_EGG_SHAMISEN;
         SetMonData(mon, MON_DATA_MET_LOCATION, &metLocation);
     }
 

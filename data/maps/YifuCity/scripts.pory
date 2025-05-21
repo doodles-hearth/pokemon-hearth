@@ -752,6 +752,11 @@ script YifuCity_Trigger_CantGoThruNorth {
 
 script YifuCity_Trigger_HarikoCriminals {
 	lockall
+
+	if (getroutechallengestate(ROUTE_CHALLENGE_WHITESLATE_YIFU) == ROUTE_CHALLENGE_STATE_STARTED) {
+		setroutechallengestate(ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_SUCCESS)
+	}
+
 	playse(SE_PIN)
 
 	getplayerxy(VAR_TEMP_2, VAR_TEMP_3)

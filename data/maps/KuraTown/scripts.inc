@@ -220,14 +220,28 @@ KuraTown_EventScript_GymSign::
 
 KuraTown_EventScript_AnxiousAshii::
 	lock
+	delay 48
 	applymovement 16, KuraTown_EventScript_AnxiousAshii_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_AnxiousAshii_Movement_1
 	speakername KuraTown_EventScript_AnxiousAshii_Text_0
 	msgbox KuraTown_EventScript_AnxiousAshii_Text_1
-	waitmessage
 	closemessage
-	applymovement 16, KuraTown_EventScript_AnxiousAshii_Movement_1
+	applymovement 16, KuraTown_EventScript_AnxiousAshii_Movement_2
+	waitmovement 16
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
-	end
+	release
+	return
+
+
+KuraTown_EventScript_AnxiousAshiiWaiting::
+	lock
+	faceplayer
+	speakername KuraTown_EventScript_AnxiousAshii_Text_0
+	msgbox KuraTown_EventScript_AnxiousAshiiWaiting_Text_0
+	closemessage
+	applymovement 16, KuraTown_EventScript_AnxiousAshii_Movement_2
+	release
+	return
 
 
 KuraTown_EventScript_PreventEscape::
@@ -246,11 +260,15 @@ KuraTown_EventScript_PreventEscape::
 
 
 KuraTown_EventScript_AnxiousAshii_Movement_0:
-	face_player
+	walk_in_place_fast_left
 	step_end
 
 KuraTown_EventScript_AnxiousAshii_Movement_1:
-	face_original_direction
+	walk_in_place_fast_right
+	step_end
+
+KuraTown_EventScript_AnxiousAshii_Movement_2:
+	walk_in_place_fast_down
 	step_end
 
 KuraTown_EventScript_PreventEscape_Movement_0:
@@ -401,9 +419,14 @@ KuraTown_EventScript_AnxiousAshii_Text_0:
 	.string "Ashii$"
 
 KuraTown_EventScript_AnxiousAshii_Text_1:
-	.string "My heart is racing… Where is he? I\n"
-	.string "hope he's alright… Can you please help\l"
-	.string "me and check down south?$"
+	.string "My heart is racing… Where is he?\n"
+	.string "I hope he's alright…\p"
+	.string "I'm worried…\n"
+	.string "Can you check down south for me?$"
+
+KuraTown_EventScript_AnxiousAshiiWaiting_Text_0:
+	.string "I'm worried…\n"
+	.string "Can you check down south for me?$"
 
 KuraTown_EventScript_PreventEscape_Text_0:
 	.string "Where on earth are you going,\n"

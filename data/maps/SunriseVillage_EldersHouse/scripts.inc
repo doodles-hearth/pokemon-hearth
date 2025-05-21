@@ -522,15 +522,15 @@ SunriseVillage_EldersHouse_EventScript_RivalBattle_1:
 	return
 
 SunriseVillage_EldersHouse_EventScript_RivalBattle_3:
-	trainerbattle_no_intro TRAINER_RIVAL_FIRST_BATTLE_FROAKIE, SunriseVillage_EldersHouse_EventScript_RivalBattle_Text_0
+	trainerbattle_no_intro_no_whiteout TRAINER_RIVAL_FIRST_BATTLE_FROAKIE, SunriseVillage_EldersHouse_EventScript_RivalBattle_Text_0
 	goto SunriseVillage_EldersHouse_EventScript_RivalBattle_1
 
 SunriseVillage_EldersHouse_EventScript_RivalBattle_4:
-	trainerbattle_no_intro TRAINER_RIVAL_FIRST_BATTLE_SNIVY, SunriseVillage_EldersHouse_EventScript_RivalBattle_Text_0
+	trainerbattle_no_intro_no_whiteout TRAINER_RIVAL_FIRST_BATTLE_SNIVY, SunriseVillage_EldersHouse_EventScript_RivalBattle_Text_0
 	goto SunriseVillage_EldersHouse_EventScript_RivalBattle_1
 
 SunriseVillage_EldersHouse_EventScript_RivalBattle_5:
-	trainerbattle_no_intro TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL, SunriseVillage_EldersHouse_EventScript_RivalBattle_Text_0
+	trainerbattle_no_intro_no_whiteout TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL, SunriseVillage_EldersHouse_EventScript_RivalBattle_Text_0
 	goto SunriseVillage_EldersHouse_EventScript_RivalBattle_1
 
 
@@ -745,7 +745,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
 	.string "This is all very worrying…$"
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3:
-	.string "Which is why!{PAUSE 15}\p"
+	.string "WHICH IS WHY!{PAUSE 15}\p"
 	.string "The Toku council has decided that,\n"
 	.string "for the time being, the best way to\l"
 	.string "handle this is to use the Pokémon\l"

@@ -17062,7 +17062,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #endif
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Pinsir"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Scary Stag"),
         .cryId = CRY_PINSIR,
         .natDexNum = NATIONAL_DEX_PINSIR,
         .categoryName = _("Stag Beetle"),

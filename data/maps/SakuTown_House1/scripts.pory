@@ -5,21 +5,45 @@ mapscripts SakuTown_House1_MapScripts {
 
 script SakuTown_House1_EventScript_Tama {
 	lock
-	faceplayer
-	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 0) {call(TamaScript1)}
-	elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {
+	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 0) {
 		call(TamaScript1)
-		dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "Hey, are you Tama?")
-		speakername("Tama")
-		msgbox(format("…So?"))
+	}
+	elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {
+		speakername("Man")
+		msgbox(format("Please go away.\nLeave me alone."))
+
+		mcdialogue(
+			"Excuse me!",
+			"Are you Tama?"
+		)
 		closemessage
-		dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "I have something for you.")
-		delay(32)
-		speakername("Tama")
-		msgbox(format("…"))
+
+		switch(var(VAR_RESULT)) {
+			case 0:
+				speakername("Tama")
+				msgbox(format("… … … … … …\n… … … … …What?"))
+			case 1:
+				speakername("Tama")
+				msgbox(format("… … … … … …\n… … … … …Yeah, so?"))
+		}
+		
+		mcdialogue(
+			"I have something!",
+			"This is for you!"
+		)
 		closemessage
+
 		delay(32)
-		dynmultichoice(0,0,TRUE,10,0,DYN_MULTICHOICE_CB_NONE, "It's from Ashii in Kura.")
+
+		speakername("Tama")
+		msgbox(format("… … … … … …\n… … … … … …"))
+
+		delay(32)
+
+		mcdialogue("It's from Ashii.")
+		closemessage
+		delay(24)
+
 		playse(SE_PIN)
 		applymovement(LOCALID_TAMA, Common_Movement_FacePlayer)
 		waitmovement(0)
@@ -27,69 +51,99 @@ script SakuTown_House1_EventScript_Tama {
 		waitmovement(0)
 		applymovement(LOCALID_TAMA, Common_Movement_Delay48)
 		waitmovement(0)
+
 		speakername("Tama")
 		msgbox(format("WHAT?! Let me see!"))
 		closemessage
-		playse(SE_SELECT)
-		removeitem(ITEM_ASHIIS_SCARF, 1)
-		msgbox(format("Gave Tama the scarf."))
-		waitse
+
+		playfanfare(MUS_OBTAIN_ITEM)
+		msgbox(format("{PLAYER} gave Tama the scarf."))
+		waitfanfare
+		removeitem(ITEM_ASHIIS_SCARF)
 		closemessage
-		speakername("Tama")
-		msgbox(
-			"I… I can't believe it! She really does\nlove me! Thank you for this!\p Eh? There's a letter inside!\n Whatever for?\p
-			“My dear Tama. It pains me that you're\n
-			not by my side each night. The sweet\l
-			chirping of birds pales in comparison\l
-			to your hearty laugh. I would move\l
-			heaven and earth if it meant we could\l
-			be together. If your heart still rings\l
-			true for mine, will you meet me under\l
-			pale moonlight, in the vale lying\l
-			betwixt our homes?”\p
-			The vale… she must be talking about\n
-			the small valley to the east of here!\l
-			And pale moonlight… that must be\l
-			tonight! Yes, that has to be it! Why\l
-			else ask you to deliver this now?"
-		)
-		closemessage
-		applymovement(LOCALID_TAMA, Common_Movement_FaceAwayPlayer)
-		waitmovement(0)
-		delay(60)
-		applymovement(LOCALID_TAMA, Common_Movement_FacePlayer)
-		waitmovement(0)
+
+		playse(SE_LEDGE)
+		applymovement(LOCALID_TAMA, moves(lock_facing_direction, jump_in_place_down, unlock_facing_direction))
+		waitmovement(LOCALID_TAMA)
+
 		speakername("Tama")
 		msgbox(format(
-			"Wielder, I owe you my thanks. Please,
-			tell her that I'll meet her tonight! I'll
-			be waiting for her!"
+			"I… I can't believe it!\nShe really does love me!\lThank you so much for this!"
+		))
+		closemessage
+
+		playse(SE_PIN)
+		applymovement(LOCALID_TAMA, moves(emote_question_mark, delay_16 * 3))
+		waitmovement(LOCALID_TAMA)
+		waitse
+
+		speakername("Tama")
+		msgbox(format(
+			"Eh? There's a letter inside!\n Whatever for?"
+		))
+		closemessage
+
+		applymovement(LOCALID_TAMA, moves(face_down))
+		waitmovement(LOCALID_TAMA)
+
+		speakername("Tama")
+		msgbox(format(
+			"Ahem…"
+			"“My dear Tama,\nIt pains me that you're not by my side each night.\lThe sweet chirping of birds pales in comparison to your hearty laugh.\p"
+			"I would move Heaven and Earth if it meant we could be together.\p"
+			"If your heart still rings true for mine, will you meet me under pale moonlight, in the vale betwixt our homes?\p"
+			"Sincerely yours,\n-Ashii {EMOJI_HEART}”\p"
+			"… … … … … …\n… … … … … …"
+		))
+		closemessage
+
+		faceplayer
+	
+		speakername("Tama")
+		msgbox(format(
+			"…Ahem. Sorry, this is a little embarrassing…\p"
+			"What does she mean with that “vale”, though?…\p"
+			"Oh!\n She must be talking about the small valley to the east of here!\p"
+			"And “pale moonlight”…\nThat must be tonight!\p"
+			"Of course! Why else ask you to\ndeliver this now?"
+		))
+		closemessage
+
+		applymovement(LOCALID_TAMA, Common_Movement_FaceAwayPlayer)
+		waitmovement(LOCALID_TAMA)
+		delay(60)
+		faceplayer
+		speakername("Tama")
+		msgbox(format(
+			"Wielder! I owe you my thanks.\nPlease, tell her I'll meet her tonight!"
 		))
 		closemessage
 		addvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
+
 	} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 2 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) <= 6) {
+		faceplayer
 		speakername("Tama")
 		msgbox(format(
-			"Wielder, I owe you my thanks. Please,
-			tell her that I'll meet her tonight! I'll
-			be waiting for her!"
+			"Please, tell Ashii I'll meet her tonight!"
 		))
 		waitmessage
-		closemessage		
+		closemessage
+
 	} else {
+		faceplayer
 		speakername("Tama")
 		msgbox(format(
-			"I can't wait to see my love again tonight!"
+			"I can't wait to see Ashii again tonight!"
 		))
 		waitmessage
 		closemessage
 	}
+
 	release
 }
 
 script(local) TamaScript1 {
-	speakername("Boy")
-	msgbox(format("Please go away. Leave me alone."))
+	speakername("Man")
+	msgbox(format("Please go away.\nLeave me alone."))
 	closemessage
-	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {return}
 }

@@ -3709,8 +3709,8 @@ static void PrintEggMemo(void)
             text = gText_PeculiarEggNicePlace;
         else if (DidMonComeFromGBAGames() == FALSE || DoesMonOTMatchOwner() == FALSE)
             text = gText_PeculiarEggTrade;
-        else if (sum->metLocation == METLOC_SPECIAL_EGG)
-            text = (DidMonComeFromRSE() == TRUE) ? gText_EggFromHotSprings : gText_EggFromTraveler;
+        else if (sum->metLocation == METLOC_EGG_SHAMISEN)
+            text = gText_EggFromShamisenPlayer;
         else
             text = gText_OddEggFoundByCouple;
     }
