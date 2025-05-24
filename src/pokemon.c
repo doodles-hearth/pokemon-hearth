@@ -476,6 +476,8 @@ static const u16 sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(UNOWN),
     HOENN_TO_NATIONAL(TOXEL_TOKUAN),
     HOENN_TO_NATIONAL(TOXIKYU),
+    HOENN_TO_NATIONAL(VENONAT_TOKUAN),
+    HOENN_TO_NATIONAL(VENOMOTH_TOKUAN),
 };
 
 const struct SpindaSpot gSpindaSpotGraphics[] =

@@ -6615,6 +6615,174 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sVenomothLevelUpLearnset,
         .teachableLearnset = sVenomothTeachableLearnset,
     },
+
+#if P_TOKUAN_FORMS
+    [SPECIES_VENONAT_TOKUAN] =
+    {
+        .baseHP        = 60,
+        .baseAttack    = 55,
+        .baseDefense   = 50,
+        .baseSpeed     = 45,
+        .baseSpAttack  = 40,
+        .baseSpDefense = 55,
+        .types = MON_TYPES(TYPE_BUG, TYPE_FAIRY),
+        .catchRate = 190,
+        /* .itemCommon = ITEM_MIFAN_BERRY */
+        .expYield = 61,
+        .evYield_SpDefense = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
+        .abilities = { ABILITY_STICKY_HOLD, ABILITY_PRANKSTER, ABILITY_CHEEK_POUCH },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Venonat"),
+        .unknownName = _("Uumebuggiri"),
+        .cryId = CRY_VENONAT,
+        .natDexNum = NATIONAL_DEX_VENONAT_TOKUAN,
+        .categoryName = _("Hungry Bug"),
+        .height = 15,
+        .weight = 300,
+        .description = COMPOUND_STRING(
+            "It eats so many Mifan Berries that its\n"
+            "thin hair has acquired a sticky texture.\n"
+            "Venonat uses that stickiness to defend\n"
+            "itself against predators."
+        ),
+        .pokemonScale = 360,
+        .pokemonOffset = 0,
+        .trainerScale = 256,
+        .trainerOffset = -1,
+        .frontPic = gMonFrontPic_VenonatTokuan,
+        .frontPicSize = MON_COORDS_SIZE(48, 48),
+        .frontPicYOffset = 8,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 5),
+            ANIMCMD_FRAME(0, 5),
+            ANIMCMD_FRAME(1, 5),
+            ANIMCMD_FRAME(0, 35),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_V_JUMPS_H_JUMPS,
+        .frontAnimDelay = 20,
+        .backPic = gMonBackPic_VenonatTokuan,
+        .backPicSize = MON_COORDS_SIZE(54, 58),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_V_SHAKE_H_SLIDE,
+        .palette = gMonPalette_VenonatTokuan,
+        .shinyPalette = gMonShinyPalette_VenonatTokuan,
+        .iconSprite = gMonIcon_VenonatTokuan,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-1, 5, SHADOW_SIZE_M)
+        FOOTPRINT(Venonat)
+        OVERWORLD(
+            sPicTable_VenonatTokuan,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gMonPalette_VenonatTokuan,
+            gMonShinyPalette_VenonatTokuan
+        )
+        .levelUpLearnset = sVenonatTokuanLevelUpLearnset,
+        .teachableLearnset = sVenonatTokuanTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_VENOMOTH_TOKUAN}),
+    },
+
+    [SPECIES_VENOMOTH_TOKUAN] =
+    {
+        .baseHP        = 70,
+        .baseAttack    = 65,
+        .baseDefense   = 60,
+        .baseSpeed     = 90,
+        .baseSpAttack  = 90,
+        .baseSpDefense = 75,
+        .types = MON_TYPES(TYPE_BUG, TYPE_FAIRY),
+        .catchRate = 75,
+        .expYield = 158,
+        .evYield_Speed = 1,
+        .evYield_SpAttack = 1,
+        .itemRare = ITEM_SHED_SHELL,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
+        .abilities = { ABILITY_SHIELD_DUST, ABILITY_STICKY_HOLD, ABILITY_PRANKSTER },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Venomoth"),
+        .unknownName = _("Hungry Moth"),
+        .cryId = CRY_VENOMOTH,
+        .natDexNum = NATIONAL_DEX_VENOMOTH_TOKUAN,
+        .categoryName = _("Hungry Moth"),
+        .height = 25,
+        .weight = 125,
+        .description = COMPOUND_STRING(
+            "It hides in barns and cellars where it\n"
+            "nibbles on the Berries humans stock up.\n"
+            "It is seen as a pest and as an omen of\n"
+            "famine and bad harvests."
+        ),
+        .pokemonScale = 285,
+        .pokemonOffset = 2,
+        .trainerScale = 256,
+        .trainerOffset = 1,
+        .frontPic = gMonFrontPic_VenomothTokuan,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 4),
+            ANIMCMD_FRAME(0, 4),
+            ANIMCMD_FRAME(1, 4),
+            ANIMCMD_FRAME(0, 4),
+            ANIMCMD_FRAME(1, 4),
+            ANIMCMD_FRAME(0, 4),
+            ANIMCMD_FRAME(1, 4),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 4),
+            ANIMCMD_FRAME(0, 4),
+            ANIMCMD_FRAME(1, 4),
+            ANIMCMD_FRAME(0, 4),
+            ANIMCMD_FRAME(1, 4),
+            ANIMCMD_FRAME(0, 4),
+            ANIMCMD_FRAME(1, 4),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 4),
+            ANIMCMD_FRAME(0, 4),
+            ANIMCMD_FRAME(1, 4),
+            ANIMCMD_FRAME(0, 4),
+            ANIMCMD_FRAME(1, 4),
+            ANIMCMD_FRAME(0, 4),
+        ),
+        .frontAnimId = ANIM_ZIGZAG_SLOW,
+        .enemyMonElevation = P_GBA_STYLE_SPECIES_GFX ? 8 : 16,
+        .backPic = gMonBackPic_VenomothTokuan,
+        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 56) : MON_COORDS_SIZE(64, 56),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
+        .palette = gMonPalette_VenomothTokuan,
+        .shinyPalette = gMonShinyPalette_VenomothTokuan,
+        .iconSprite = gMonIcon_VenomothTokuan,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-5, 18, SHADOW_SIZE_M)
+        FOOTPRINT(Venomoth)
+        OVERWORLD(
+            sPicTable_VenomothTokuan,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gMonPalette_VenomothTokuan,
+            gMonShinyPalette_VenomothTokuan
+        )
+        .levelUpLearnset = sVenomothTokuanLevelUpLearnset,
+        .teachableLearnset = sVenomothTokuanTeachableLearnset,
+    },
+#endif
 #endif //P_FAMILY_VENONAT
 
 #if P_FAMILY_DIGLETT

@@ -424,6 +424,14 @@ static const struct SpriteFrameImage sPicTable_Venonat[] = {
 static const struct SpriteFrameImage sPicTable_Venomoth[] = {
     overworld_ascending_frames(gObjectEventPic_Venomoth, 4, 4),
 };
+#if P_TOKUAN_FORMS
+static const struct SpriteFrameImage sPicTable_VenonatTokuan[] = {
+    overworld_ascending_frames(gObjectEventPic_VenonatTokuan, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_VenomothTokuan[] = {
+    overworld_ascending_frames(gObjectEventPic_VenomothTokuan, 4, 4),
+};
+#endif //P_TOKUAN_FORMS
 #endif //P_FAMILY_VENONAT
 
 #if P_FAMILY_DIGLETT

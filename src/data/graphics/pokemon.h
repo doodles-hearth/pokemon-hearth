@@ -1988,6 +1988,27 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u16 gShinyOverworldPalette_Venomoth[] = INCBIN_U16("graphics/pokemon/venomoth/overworld_shiny.gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
+
+#if P_TOKUAN_FORMS
+    const u32 gMonFrontPic_VenonatTokuan[] = INCBIN_U32("graphics/pokemon/venonat/tokuan/anim_front.4bpp.lz");
+    const u16 gMonPalette_VenonatTokuan[] = INCBIN_U16("graphics/pokemon/venonat/tokuan/anim_front.gbapal");
+    const u32 gMonBackPic_VenonatTokuan[] = INCBIN_U32("graphics/pokemon/venonat/tokuan/back.4bpp.lz");
+    const u16 gMonShinyPalette_VenonatTokuan[] = INCBIN_U16("graphics/pokemon/venonat/tokuan/shiny.gbapal");
+
+    const u8 gMonIcon_VenonatTokuan[] = INCBIN_U8("graphics/pokemon/venonat/tokuan/icon.4bpp");
+
+    const u32 gMonFrontPic_VenomothTokuan[] = INCBIN_U32("graphics/pokemon/venomoth/tokuan/anim_front.4bpp.lz");
+    const u16 gMonPalette_VenomothTokuan[] = INCBIN_U16("graphics/pokemon/venomoth/tokuan/anim_front.gbapal");
+    const u32 gMonBackPic_VenomothTokuan[] = INCBIN_U32("graphics/pokemon/venomoth/tokuan/back.4bpp.lz");
+    const u16 gMonShinyPalette_VenomothTokuan[] = INCBIN_U16("graphics/pokemon/venomoth/tokuan/shiny.gbapal");
+
+    const u8 gMonIcon_VenomothTokuan[] = INCBIN_U8("graphics/pokemon/venomoth/tokuan/icon.4bpp");
+
+#if OW_POKEMON_OBJECT_EVENTS
+    const u32 gObjectEventPic_VenonatTokuan[] = INCBIN_COMP("graphics/pokemon/venonat/tokuan/overworld.4bpp");
+    const u32 gObjectEventPic_VenomothTokuan[] = INCBIN_COMP("graphics/pokemon/venomoth/tokuan/overworld.4bpp");
+#endif //OW_POKEMON_OBJECT_EVENTS
+#endif // P_TOKUAN_FORMS
 #endif //P_FAMILY_VENONAT
 
 #if P_FAMILY_DIGLETT
