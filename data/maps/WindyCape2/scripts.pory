@@ -1,5 +1,7 @@
 mapscripts WindyCape2_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_VISITED_WINDYCAPE)
+	}
 }
 
 script WindyCape_EventScript_WindThroughHoles {

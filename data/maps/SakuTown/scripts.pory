@@ -15,6 +15,7 @@ const VAR_GET_QUEST_LOG_STATE_SAKURA_SCYTHER = VAR_TEMP_2
 
 mapscripts SakuTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
+        setflag(FLAG_VISITED_SAKU_TOWN)
 
 		if (flag(FLAG_SAKU_KURA_REUNITED)) {
 			// Once reunited, the guards from the two villages play a board game together

@@ -11,12 +11,19 @@
 #include "palette.h"
 #include "region_map.h"
 #include "sound.h"
+#include "sprite.h"
 #include "strings.h"
 #include "text.h"
 #include "text_window.h"
 #include "window.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+
+#define MAPCURSOR_X_MIN 1
+#define MAPCURSOR_Y_MIN 2
+#define MAPCURSOR_X_MAX (MAPCURSOR_X_MIN + MAP_WIDTH - 1)
+#define MAPCURSOR_Y_MAX (MAPCURSOR_Y_MIN + MAP_HEIGHT - 1)
+#define MAP_SPRITE_16X16 200
 
 /*
  *  This is the type of map shown when interacting with the metatiles for
@@ -36,6 +43,7 @@ enum {
 enum {
     TAG_PLAYER_ICON,
     TAG_CURSOR,
+    TAG_UNVISITED_ICON
 };
 
 static EWRAM_DATA struct {
@@ -43,6 +51,7 @@ static EWRAM_DATA struct {
     u32 unused;
     struct RegionMap regionMap;
     u16 state;
+    u8 tileBuffer[0x1c0];
 } *sFieldRegionMapHandler = NULL;
 
 static void MCB2_InitRegionMapRegisters(void);
@@ -50,6 +59,9 @@ static void VBCB_FieldUpdateRegionMap(void);
 static void MCB2_FieldUpdateRegionMap(void);
 static void FieldUpdateRegionMap(void);
 static void PrintRegionMapSecName();
+static void GetMapSecDimensions(u16 mapSecId, u16 *x, u16 *y, u16 *width, u16 *height);
+static void CreateUnvisitedTownIcons();
+static void LoadUnvisitedTownIcons();
 
 static const struct BgTemplate sFieldRegionMapBgTemplates[] = {
     {
@@ -150,6 +162,139 @@ static void MCB2_FieldUpdateRegionMap(void)
     DoScheduledBgTilemapCopiesToVram();
 }
 
+static const u16 sUnvisitedTownIcons_Pal[] = INCBIN_U16("graphics/region_map_hearth/town_icons.gbapal");
+static const u32 sUnvisitedTownIcons_Gfx[] = INCBIN_U32("graphics/region_map_hearth/town_icons.4bpp.lz");
+
+static const struct SpritePalette sUnvisitedTownIconsSpritePalette =
+{
+    .data = sUnvisitedTownIcons_Pal,
+    .tag = TAG_UNVISITED_ICON
+};
+
+static const struct OamData sUnvisitedTownIcon_OamData =
+{
+    .shape = SPRITE_SHAPE(8x8),
+    .size = SPRITE_SIZE(8x8),
+    .priority = 2
+};
+
+static const union AnimCmd sUnvisitedTownIcon_Anim_8x8[] =
+{
+    ANIMCMD_FRAME(0, 5),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sUnvisitedTownIcon_Anim_16x8[] =
+{
+    ANIMCMD_FRAME(1, 5),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sUnvisitedTownIcon_Anim_8x16[] =
+{
+    ANIMCMD_FRAME(3, 5),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sUnvisitedTownIcon_Anim_16x16[] =
+{
+    ANIMCMD_FRAME(6, 5),
+    ANIMCMD_END
+};
+
+static const union AnimCmd *const sUnvisitedTownIcon_Anims[] =
+{
+    [SPRITE_SHAPE(8x8)]       = sUnvisitedTownIcon_Anim_8x8,
+    [SPRITE_SHAPE(16x8)]      = sUnvisitedTownIcon_Anim_16x8,
+    [SPRITE_SHAPE(8x16)]      = sUnvisitedTownIcon_Anim_8x16,
+	[MAP_SPRITE_16X16]        = sUnvisitedTownIcon_Anim_16x16,
+};
+
+static const struct SpriteTemplate sUnvisitedTownIconSpriteTemplate =
+{
+    .tileTag = TAG_UNVISITED_ICON,
+    .paletteTag = TAG_UNVISITED_ICON,
+    .oam = &sUnvisitedTownIcon_OamData,
+    .anims = sUnvisitedTownIcon_Anims,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
+static void LoadUnvisitedTownIcons(void)
+{
+    struct SpriteSheet sheet;
+
+    LZ77UnCompWram(sUnvisitedTownIcons_Gfx, sFieldRegionMapHandler->tileBuffer);
+    sheet.data = sFieldRegionMapHandler->tileBuffer;
+    sheet.size = sizeof(sFieldRegionMapHandler->tileBuffer);
+    sheet.tag = TAG_UNVISITED_ICON;
+    LoadSpriteSheet(&sheet);
+    LoadSpritePalette(&sUnvisitedTownIconsSpritePalette);
+    CreateUnvisitedTownIcons();
+}
+
+#define sIconMapSec   data[0]
+#define sFlickerTimer data[1]
+
+static void GetMapSecDimensions(u16 mapSecId, u16 *x, u16 *y, u16 *width, u16 *height)
+{
+    *x = gRegionMapEntries[mapSecId].x;
+    *y = gRegionMapEntries[mapSecId].y;
+    *width = gRegionMapEntries[mapSecId].width;
+    *height = gRegionMapEntries[mapSecId].height;
+}
+
+static void CreateUnvisitedTownIcons(void)
+{
+    u16 flagVisited;
+    u16 mapSecId;
+    u16 x;
+    u16 y;
+    u16 width;
+    u16 height;
+    u16 shape;
+    u8 spriteId;
+
+    flagVisited = FLAG_VISITED_SUNRISE_VILLAGE;
+    for (mapSecId = MAPSEC_SUNRISE_VILLAGE; mapSecId < MAPSEC_DUMMY; mapSecId++)
+    {
+        if (!FlagGet(flagVisited))
+        {
+            GetMapSecDimensions(mapSecId, &x, &y, &width, &height);
+            x = (x + MAPCURSOR_X_MIN) * 8 + 4;
+            y = (y + MAPCURSOR_Y_MIN) * 8 + 4;
+
+            DebugPrintf("mapsec %d (%d,%d)", mapSecId, width, height);
+
+            if (width == 2 && height == 2)
+                shape = MAP_SPRITE_16X16;
+            else if (width == 2)
+                shape = SPRITE_SHAPE(16x8);
+            else if (height == 2)
+                shape = SPRITE_SHAPE(8x16);
+            else
+                shape = SPRITE_SHAPE(8x8);
+
+            spriteId = CreateSprite(&sUnvisitedTownIconSpriteTemplate, x, y, 10);
+            if (spriteId != MAX_SPRITES)
+            {
+                gSprites[spriteId].oam.shape = shape;
+
+                if (shape == MAP_SPRITE_16X16)
+                {
+                    gSprites[spriteId].oam.size = SPRITE_SIZE(16x16);
+                }
+
+                StartSpriteAnim(&gSprites[spriteId], shape);
+                gSprites[spriteId].sIconMapSec = mapSecId;
+            }
+        }
+        
+        flagVisited++;
+    }
+}
+
 static void FieldUpdateRegionMap(void)
 {
     switch (sFieldRegionMapHandler->state)
@@ -174,12 +319,16 @@ static void FieldUpdateRegionMap(void)
             sFieldRegionMapHandler->state++;
             break;
         case 3:
+            LoadUnvisitedTownIcons();
+            sFieldRegionMapHandler->state++;
+            break;
+        case 4:
             if (!gPaletteFade.active)
             {
                 sFieldRegionMapHandler->state++;
             }
             break;
-        case 4:
+        case 5:
             switch (DoRegionMapInputCallback())
             {
                 case MAP_INPUT_MOVE_END:
@@ -200,11 +349,11 @@ static void FieldUpdateRegionMap(void)
                     }
             }
             break;
-        case 5:
+        case 6:
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
             sFieldRegionMapHandler->state++;
             break;
-        case 6:
+        case 7:
             if (!gPaletteFade.active)
             {
                 FreeRegionMapIconResources();

@@ -1,15 +1,6 @@
 #ifndef GUARD_REGIONMAPSEC_H
 #define GUARD_REGIONMAPSEC_H
 
-#define MAPSEC_SUNRISE_VILLAGE              0x00
-#define MAPSEC_CHII_TOWN                  0x01
-#define MAPSEC_SAKU_TOWN                 0x02
-#define MAPSEC_KURA_TOWN               0x03
-#define MAPSEC_SILVERIDGE               0x04
-#define MAPSEC_WINDYCAPE              0x05
-#define MAPSEC_YIFU_CITY              0x06
-#define MAPSEC_MAGURO_HARBOR               0x07
-#define MAPSEC_SOULKEEP               0x08
 #define MAPSEC_MAUVILLE_CITY                0x09
 #define MAPSEC_RUSTBORO_CITY                0x0A
 #define MAPSEC_FORTREE_CITY                 0x0B
@@ -23,14 +14,10 @@
 #define MAPSEC_WHITESLATE_ROUTE                    0x13
 #define MAPSEC_SCENIC_ROUTE                    0x14
 #define MAPSEC_HARVEST_SHRINE                    0x15
-#define MAPSEC_HAVENISLE                    0x16
-#define MAPSEC_MIDDLEISLE                    0x17
-#define MAPSEC_TOPISLE                    0x18
 #define MAPSEC_SEATURF_ROUTE                    0x19
 #define MAPSEC_LONGTIDE_CHANNEL                    0x1A
 #define MAPSEC_LONG_TIDE_CHANNEL_SOULKEEP                    0x1B
 #define MAPSEC_DRAGONS_PASS                    0x1C
-#define MAPSEC_DRYUGON                    0x1D
 #define MAPSEC_BURNFOOT_PASS_BOTTOM                    0x1E
 #define MAPSEC_STEEPSTONE_PASS_BOTTOM                    0x1F
 #define MAPSEC_BURNFOOT_PASS                    0x20
@@ -217,12 +204,28 @@
 #define MAPSEC_SILVER_TUNNEL                0xD5
 #define MAPSEC_SEASTROLL_CHANNEL            0xD6
 #define MAPSEC_ORCHARD_PATH                 0xD7
-#define MAPSEC_SABERSIDE_TOWN               0xD8
-#define MAPSEC_SUNRISE_CAVE               0xD9
-#define MAPSEC_DUMMY                        0xDA
-#define MAPSEC_NONE                         0xDB
+#define MAPSEC_SUNRISE_CAVE                 0xD8
 
-#define METLOC_EGG_SHAMISEN                  0xFD
+// Towns need to be continuous for dynamic region map icons
+#define MAPSEC_SUNRISE_VILLAGE              0xD9
+#define MAPSEC_CHII_TOWN                    0xDA
+#define MAPSEC_SAKU_TOWN                    0xDB
+#define MAPSEC_KURA_TOWN                    0xDC
+#define MAPSEC_SILVERIDGE                   0xDD
+#define MAPSEC_WINDYCAPE                    0xDE
+#define MAPSEC_YIFU_CITY                    0xDF
+#define MAPSEC_MAGURO_HARBOR                0xE0
+#define MAPSEC_SOULKEEP                     0xE1
+#define MAPSEC_HAVENISLE                    0xE2
+#define MAPSEC_MIDDLEISLE                   0xE3
+#define MAPSEC_TOPISLE                      0xE4
+#define MAPSEC_DRYUGON                      0xE5
+#define MAPSEC_SABERSIDE_TOWN               0xE6
+
+#define MAPSEC_DUMMY                        0xE7
+#define MAPSEC_NONE                         0xE8
+
+#define METLOC_EGG_SHAMISEN                 0xFD
 #define METLOC_IN_GAME_TRADE                0xFE
 #define METLOC_FATEFUL_ENCOUNTER            0xFF
 
