@@ -1034,7 +1034,7 @@
     },
     {
       "map_section": "MAPSEC_SECRET_BASE",
-      "name": "",
+      "name": "Secret Base",
       "x": 0,
       "y": 0,
       "width": 1,
