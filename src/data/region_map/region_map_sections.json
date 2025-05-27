@@ -1,752 +1,160 @@
 {
   "map_sections": [
     {
-      "map_section": "MAPSEC_SUNRISE_VILLAGE",
-      "name": "Sunrise Village",
-      "x": 4,
-      "y": 11,
-      "width": 1,
-      "height": 1
-    },
-    {
       "map_section": "MAPSEC_SUNRISE_CAVE",
       "name": "Beach Cave",
-      "x": 4,
-      "y": 11,
+      "x": 22,
+      "y": 13,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_CHII_TOWN",
       "name": "Chii Town",
-      "x": 4,
-      "y": 9,
+      "x": 23,
+      "y": 12,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_SAKU_TOWN",
       "name": "Saku Village",
-      "x": 2,
-      "y": 14,
+      "x": 21,
+      "y": 7,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_KURA_TOWN",
       "name": "Kura Village",
-      "x": 5,
-      "y": 3,
+      "x": 21,
+      "y": 5,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_SILVERIDGE",
       "name": "Silveridge",
-      "x": 3,
-      "y": 0,
+      "x": 20,
+      "y": 3,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_WINDYCAPE",
       "name": "Windycape",
-      "x": 4,
-      "y": 6,
+      "x": 22,
+      "y": 0,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_YIFU_CITY",
       "name": "Yifu City",
-      "x": 17,
-      "y": 10,
-      "width": 1,
-      "height": 1
+      "x": 19,
+      "y": 13,
+      "width": 2,
+      "height": 2
     },
     {
       "map_section": "MAPSEC_MAGURO_HARBOR",
       "name": "Maguro Harbor",
-      "x": 1,
-      "y": 9,
+      "x": 25,
+      "y": 5,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_SOULKEEP",
       "name": "Soulkeep",
-      "x": 8,
-      "y": 10,
-      "width": 1,
-      "height": 2
-    },
-    {
-      "map_section": "MAPSEC_MAUVILLE_CITY",
-      "name": "MAUVILLE CITY",
-      "x": 8,
-      "y": 6,
+      "x": 10,
+      "y": 13,
       "width": 2,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_RUSTBORO_CITY",
-      "name": "RUSTBORO CITY",
-      "x": 0,
-      "y": 5,
-      "width": 1,
-      "height": 2
-    },
-    {
-      "map_section": "MAPSEC_FORTREE_CITY",
-      "name": "FORTREE CITY",
-      "x": 12,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_LILYCOVE_CITY",
-      "name": "LILYCOVE CITY",
-      "x": 18,
-      "y": 3,
-      "width": 2,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_MOSSDEEP_CITY",
-      "name": "MOSSDEEP CITY",
-      "x": 24,
-      "y": 5,
-      "width": 2,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_SOOTOPOLIS_CITY",
-      "name": "SOOTOPOLIS CITY",
-      "x": 21,
-      "y": 7,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_EVER_GRANDE_CITY",
-      "name": "EVER GRANDE CITY",
-      "x": 27,
-      "y": 8,
-      "width": 1,
-      "height": 2
-    },
-    {
-      "map_section": "MAPSEC_TRANQUIL_ROUTE",
-      "name": "Tranquil Route",
-      "x": 4,
-      "y": 10,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_BEACHBOUND_ROUTE",
-      "name": "Beachbound Route",
-      "x": 2,
-      "y": 9,
-      "width": 2,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_WINDSWEPT_ROUTE",
-      "name": "Windswept Route",
-      "x": 4,
-      "y": 8,
-      "width": 4,
       "height": 1
     },
     {
       "map_section": "MAPSEC_SILVER_TUNNEL",
       "name": "Silver Tunnel",
-      "x": 4,
-      "y": 8,
+      "x": 21,
+      "y": 4,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_SEASTROLL_CHANNEL",
       "name": "Seastroll Channel",
-      "x": 4,
-      "y": 8,
+      "x": 21,
+      "y": 14,
       "width": 2,
       "height": 1
     },
     {
       "map_section": "MAPSEC_ORCHARD_PATH",
       "name": "Orchard Path",
-      "x": 4,
-      "y": 8,
-      "width": 4,
+      "x": 12,
+      "y": 13,
+      "width": 7,
       "height": 1
     },
     {
       "map_section": "MAPSEC_SABERSIDE_TOWN",
       "name": "Saberside Town",
-      "x": 4,
-      "y": 8,
+      "x": 10,
+      "y": 2,
       "width": 2,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_WHITESLATE_ROUTE",
-      "name": "Whiteslate Route",
-      "x": 0,
-      "y": 7,
-      "width": 1,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_SCENIC_ROUTE",
-      "name": "Scenic Route",
-      "x": 0,
-      "y": 10,
-      "width": 1,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_HARVEST_SHRINE",
-      "name": "Harvest Shrine",
-      "x": 0,
-      "y": 13,
-      "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_HAVENISLE",
       "name": "Havenisle",
-      "x": 3,
-      "y": 14,
-      "width": 3,
+      "x": 5,
+      "y": 9,
+      "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_MIDDLEISLE",
       "name": "Middleisle",
-      "x": 6,
-      "y": 14,
-      "width": 2,
+      "x": 3,
+      "y": 5,
+      "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_TOPISLE",
       "name": "Topisle",
-      "x": 8,
-      "y": 12,
-      "width": 1,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_SEATURF_ROUTE",
-      "name": "Seaturf Route",
-      "x": 8,
-      "y": 7,
-      "width": 1,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_LONGTIDE_CHANNEL",
-      "name": "Longtide Channel",
-      "x": 8,
-      "y": 0,
-      "width": 1,
-      "height": 6
-    },
-    {
-      "map_section": "MAPSEC_LONG_TIDE_CHANNEL_SOULKEEP",
-      "name": "Longtide Channel",
-      "x": 6,
-      "y": 3,
+      "x": 2,
+      "y": 1,
       "width": 2,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_DRAGONS_PASS",
-      "name": "Dragon's Pass",
-      "x": 4,
-      "y": 0,
-      "width": 4,
       "height": 1
     },
     {
       "map_section": "MAPSEC_DRYUGON",
       "name": "Dryugon",
-      "x": 1,
-      "y": 0,
-      "width": 2,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_BURNFOOT_PASS_BOTTOM",
-      "name": "Burnfoot Pass",
-      "x": 0,
-      "y": 2,
-      "width": 1,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_STEEPSTONE_PASS_BOTTOM",
-      "name": "Steepstone Pass",
-      "x": 1,
-      "y": 5,
-      "width": 4,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_BURNFOOT_PASS",
-      "name": "Burnfoot Pass",
-      "x": 5,
-      "y": 6,
-      "width": 3,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_MT_KAZAN_EXTERIOR",
-      "name": "Mt Kazan",
-      "x": 10,
-      "y": 6,
-      "width": 2,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_STEEPSTONE_PASS",
-      "name": "Steepstone Pass",
-      "x": 11,
-      "y": 0,
-      "width": 1,
-      "height": 6
-    },
-    {
-      "map_section": "MAPSEC_SHOGUNATE",
-      "name": "Samurai Palace",
       "x": 13,
-      "y": 0,
-      "width": 1,
-      "height": 4
-    },
-    {
-      "map_section": "MAPSEC_SCENIC_ROUTE_SABERSIDE",
-      "name": "Scenic Route",
-      "x": 14,
-      "y": 3,
-      "width": 4,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_UUME_FOREST",
-      "name": "Uume Forest",
-      "x": 16,
       "y": 4,
       "width": 1,
-      "height": 2
+      "height": 1
     },
     {
       "map_section": "MAPSEC_COREEF_ISLE",
       "name": "Coreef Isle",
-      "x": 12,
-      "y": 6,
-      "width": 5,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_OPEN_SEA_CORAL",
-      "name": "Coral Waters",
-      "x": 20,
-      "y": 3,
-      "width": 4,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_OPEN_SEA_HAVEN",
-      "name": "Haven Waters",
-      "x": 24,
-      "y": 3,
-      "width": 2,
-      "height": 2
-    },
-    {
-      "map_section": "MAPSEC_OPEN_SEA_LEAGUE",
-      "name": "Victory Waters",
-      "x": 20,
-      "y": 6,
-      "width": 3,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_OPEN_SEA_ICY",
-      "name": "Icy Waters",
-      "x": 23,
-      "y": 6,
-      "width": 3,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_SABERSIDE_CHANNEL",
-      "name": "Saberside Channel",
-      "x": 23,
-      "y": 9,
-      "width": 4,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_CROBAT_HIDEOUT",
-      "name": "Crobat Hideout",
-      "x": 24,
-      "y": 10,
-      "width": 2,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ROUTE_130",
-      "name": "ROUTE 130",
-      "x": 21,
-      "y": 10,
-      "width": 3,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ROUTE_131",
-      "name": "ROUTE 131",
-      "x": 18,
-      "y": 10,
-      "width": 3,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ROUTE_132",
-      "name": "ROUTE 132",
-      "x": 15,
-      "y": 10,
-      "width": 2,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ROUTE_133",
-      "name": "ROUTE 133",
-      "x": 12,
-      "y": 10,
-      "width": 3,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ROUTE_134",
-      "name": "ROUTE 134",
-      "x": 9,
-      "y": 10,
-      "width": 3,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_UNDERWATER_124",
-      "name": "UNDERWATER",
-      "x": 20,
-      "y": 3,
-      "width": 4,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_UNDERWATER_126",
-      "name": "UNDERWATER",
-      "x": 20,
-      "y": 6,
-      "width": 3,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_UNDERWATER_127",
-      "name": "UNDERWATER",
-      "x": 23,
-      "y": 6,
-      "width": 3,
-      "height": 3
-    },
-    {
-      "map_section": "MAPSEC_UNDERWATER_128",
-      "name": "UNDERWATER",
-      "x": 23,
-      "y": 9,
-      "width": 4,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_UNDERWATER_SOOTOPOLIS",
-      "name": "UNDERWATER",
-      "x": 21,
-      "y": 7,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_GRANITE_CAVE",
-      "name": "GRANITE CAVE",
-      "x": 1,
-      "y": 13,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_MT_CHIMNEY",
-      "name": "MT. CHIMNEY",
       "x": 6,
       "y": 2,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_SAFARI_ZONE",
-      "name": "SAFARI ZONE",
-      "x": 16,
-      "y": 2,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_BATTLE_FRONTIER",
-      "name": "BATTLE FRONTIER",
-      "x": 22,
-      "y": 12,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_GINKO_WOODS",
       "name": "Ginko Woods",
-      "x": 0,
-      "y": 8,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_RUSTURF_TUNNEL",
-      "name": "RUSTURF TUNNEL",
-      "x": 2,
-      "y": 5,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ABANDONED_SHIP",
-      "name": "ABANDONED SHIP",
-      "x": 6,
-      "y": 14,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_NEW_MAUVILLE",
-      "name": "NEW MAUVILLE",
-      "x": 8,
-      "y": 7,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_METEOR_FALLS",
-      "name": "METEOR FALLS",
-      "x": 0,
-      "y": 3,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_METEOR_FALLS2",
-      "name": "METEOR FALLS",
-      "x": 1,
-      "y": 2,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_MT_PYRE",
-      "name": "MT. PYRE",
-      "x": 16,
-      "y": 4,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_AQUA_HIDEOUT_OLD",
-      "name": "{AQUA} HIDEOUT",
-      "x": 19,
-      "y": 3,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_SHOAL_CAVE",
-      "name": "SHOAL CAVE",
-      "x": 24,
-      "y": 4,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_SEAFLOOR_CAVERN",
-      "name": "SEAFLOOR CAVERN",
-      "x": 24,
-      "y": 9,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_UNDERWATER_SEAFLOOR_CAVERN",
-      "name": "UNDERWATER",
-      "x": 24,
-      "y": 9,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_VICTORY_ROAD",
-      "name": "VICTORY ROAD",
-      "x": 27,
-      "y": 9,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_MIRAGE_ISLAND",
-      "name": "MIRAGE ISLAND",
-      "x": 17,
-      "y": 10,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_CAVE_OF_ORIGIN",
-      "name": "CAVE OF ORIGIN",
-      "x": 21,
-      "y": 7,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_SOUTHERN_ISLAND",
-      "name": "SOUTHERN ISLAND",
-      "x": 12,
-      "y": 14,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_FIERY_PATH",
-      "name": "FIERY PATH",
-      "x": 6,
-      "y": 3,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_FIERY_PATH2",
-      "name": "FIERY PATH",
-      "x": 7,
-      "y": 3,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_JAGGED_PASS",
-      "name": "JAGGED PASS",
-      "x": 6,
-      "y": 3,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_JAGGED_PASS2",
-      "name": "JAGGED PASS",
-      "x": 7,
-      "y": 2,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_SEALED_CHAMBER",
-      "name": "SEALED CHAMBER",
-      "x": 11,
-      "y": 10,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_UNDERWATER_SEALED_CHAMBER",
-      "name": "UNDERWATER",
-      "x": 11,
-      "y": 10,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_SCORCHED_SLAB",
-      "name": "SCORCHED SLAB",
-      "x": 13,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ISLAND_CAVE",
-      "name": "ISLAND CAVE",
-      "x": 0,
-      "y": 10,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_DESERT_RUINS",
-      "name": "DESERT RUINS",
-      "x": 8,
-      "y": 3,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_ANCIENT_TOMB",
-      "name": "ANCIENT TOMB",
-      "x": 13,
-      "y": 2,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_INSIDE_OF_TRUCK",
-      "name": "INSIDE OF TRUCK",
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_SKY_PILLAR",
-      "name": "SKY PILLAR",
-      "x": 19,
-      "y": 10,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_SECRET_BASE",
-      "name": "SECRET BASE",
-      "x": 0,
-      "y": 0,
+      "x": 23,
+      "y": 13,
       "width": 1,
       "height": 1
     },
     {
       "map_section": "MAPSEC_DYNAMIC",
       "name": "",
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_PALLET_TOWN",
-      "name": "PALLET TOWN",
       "x": 0,
       "y": 0,
       "width": 1,
@@ -1601,14 +1009,6 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_EMBER_SPA",
-      "name": "EMBER SPA",
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
       "map_section": "MAPSEC_SPECIAL_AREA",
       "name": "SPECIAL AREA",
       "x": 0,
@@ -1617,138 +1017,186 @@
       "height": 1
     },
     {
-      "map_section": "MAPSEC_AQUA_HIDEOUT",
-      "name": "AQUA HIDEOUT",
-      "x": 19,
-      "y": 3,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_MAGMA_HIDEOUT",
-      "name": "MAGMA HIDEOUT",
-      "x": 6,
-      "y": 3,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_MIRAGE_TOWER",
-      "name": "MIRAGE TOWER",
+      "map_section": "MAPSEC_DUMMY",
+      "name": "DUMMY",
       "x": 8,
-      "y": 2,
+      "y": 4,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_BIRTH_ISLAND",
-      "name": "BIRTH ISLAND",
+      "map_section": "MAPSEC_SUNRISE_VILLAGE",
+      "name": "Sunrise Village",
+      "x": 23,
+      "y": 14,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_SECRET_BASE",
+      "name": "",
       "x": 0,
       "y": 0,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_FARAWAY_ISLAND",
-      "name": "FARAWAY ISLAND",
-      "x": 0,
-      "y": 0,
+      "map_section": "MAPSEC_TRANQUIL_ROUTE",
+      "name": "Tranquil Route",
+      "x": 23,
+      "y": 7,
       "width": 1,
-      "height": 1
+      "height": 5
     },
     {
-      "map_section": "MAPSEC_ARTISAN_CAVE",
-      "name": "ARTISAN CAVE",
+      "map_section": "MAPSEC_BEACHBOUND_ROUTE",
+      "name": "Beachbound Route",
       "x": 22,
-      "y": 12,
+      "y": 5,
+      "width": 3,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_WINDSWEPT_ROUTE",
+      "name": "Windswept Route",
+      "x": 21,
+      "y": 1,
+      "width": 2,
+      "height": 4
+    },
+    {
+      "map_section": "MAPSEC_WHITESLATE_ROUTE",
+      "name": "Whiteslate Route",
+      "x": 20,
+      "y": 9,
+      "width": 1,
+      "height": 4
+    },
+    {
+      "map_section": "MAPSEC_SCENIC_ROUTE",
+      "name": "Scenic Route",
+      "x": 15,
+      "y": 1,
+      "width": 7,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_HARVEST_SHRINE",
+      "name": "Harvest Shrine",
+      "x": 24,
+      "y": 4,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_MARINE_CAVE",
-      "name": "MARINE CAVE",
-      "x": 0,
-      "y": 0,
-      "width": 1,
+      "map_section": "MAPSEC_SEATURF_ROUTE",
+      "name": "Seaturf Route",
+      "x": 6,
+      "y": 9,
+      "width": 7,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_UNDERWATER_MARINE_CAVE",
-      "name": "UNDERWATER",
-      "x": 0,
-      "y": 0,
-      "width": 1,
+      "map_section": "MAPSEC_LONGTIDE_CHANNEL",
+      "name": "Longtide Channel",
+      "x": 5,
+      "y": 13,
+      "width": 5,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_TERRA_CAVE",
-      "name": "TERRA CAVE",
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_UNDERWATER_105",
-      "name": "UNDERWATER",
-      "x": 0,
+      "map_section": "MAPSEC_LONG_TIDE_CHANNEL_SOULKEEP",
+      "name": "Longtide Channel",
+      "x": 5,
       "y": 10,
       "width": 1,
       "height": 3
     },
     {
-      "map_section": "MAPSEC_UNDERWATER_125",
-      "name": "UNDERWATER",
-      "x": 24,
-      "y": 3,
-      "width": 2,
+      "map_section": "MAPSEC_DRAGONS_PASS",
+      "name": "Dragon's Pass",
+      "x": 13,
+      "y": 5,
+      "width": 1,
+      "height": 3
+    },
+    {
+      "map_section": "MAPSEC_BURNFOOT_PASS_BOTTOM",
+      "name": "Burnfoot Pass",
+      "x": 14,
+      "y": 9,
+      "width": 3,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_STEEPSTONE_PASS_BOTTOM",
+      "name": "Steepstone Pass",
+      "x": 16,
+      "y": 10,
+      "width": 4,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_BURNFOOT_PASS",
+      "name": "Burnfoot Pass",
+      "x": 14,
+      "y": 7,
+      "width": 3,
+      "height": 3
+    },
+    {
+      "map_section": "MAPSEC_MT_KAZAN_EXTERIOR",
+      "name": "Mt Kazan (Ext.)",
+      "x": 14,
+      "y": 6,
+      "width": 4,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_STEEPSTONE_PASS",
+      "name": "Steepstone Pass",
+      "x": 18,
+      "y": 6,
+      "width": 1,
+      "height": 4
+    },
+    {
+      "map_section": "MAPSEC_SHOGUNATE",
+      "name": "Shogunate",
+      "x": 18,
+      "y": 11,
+      "width": 1,
       "height": 2
     },
     {
-      "map_section": "MAPSEC_UNDERWATER_129",
-      "name": "UNDERWATER",
-      "x": 24,
-      "y": 10,
-      "width": 2,
+      "map_section": "MAPSEC_SCENIC_ROUTE_SABERSIDE",
+      "name": "Scenic Route",
+      "x": 12,
+      "y": 2,
+      "width": 4,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_DESERT_UNDERPASS",
-      "name": "DESERT UNDERPASS",
-      "x": 2,
-      "y": 0,
+      "map_section": "MAPSEC_UUME_FOREST",
+      "name": "Uume Forest",
+      "x": 15,
+      "y": 12,
       "width": 1,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_ALTERING_CAVE",
-      "name": "ALTERING CAVE",
-      "x": 6,
-      "y": 8,
-      "width": 1,
+      "map_section": "MAPSEC_SABERSIDE_CHANNEL",
+      "name": "Saberside Channel",
+      "x": 7,
+      "y": 2,
+      "width": 3,
       "height": 1
     },
     {
-      "map_section": "MAPSEC_NAVEL_ROCK",
-      "name": "NAVEL ROCK",
-      "x": 0,
-      "y": 0,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_TRAINER_HILL",
-      "name": "TRAINER HILL",
-      "x": 8,
-      "y": 4,
-      "width": 1,
-      "height": 1
-    },
-    {
-      "map_section": "MAPSEC_DUMMY",
-      "name": "DUMMY",
-      "x": 8,
-      "y": 4,
+      "map_section": "MAPSEC_CROBAT_HIDEOUT",
+      "name": "Crobat Hideout",
+      "x": 20,
+      "y": 13,
       "width": 1,
       "height": 1
     }

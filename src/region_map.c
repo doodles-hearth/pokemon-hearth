@@ -45,6 +45,7 @@
 #define MAPCURSOR_X_MAX (MAPCURSOR_X_MIN + MAP_WIDTH - 1)
 #define MAPCURSOR_Y_MAX (MAPCURSOR_Y_MIN + MAP_HEIGHT - 1)
 
+#define MAP_SPRITE_16X16 200
 #define FLYDESTICON_RED_OUTLINE 6
 
 enum {
@@ -116,16 +117,16 @@ static void CB_FadeInFlyMap(void);
 static void CB_HandleFlyMapInput(void);
 static void CB_ExitFlyMap(void);
 
-static const u16 sRegionMapCursorPal[] = INCBIN_U16("graphics/pokenav/region_map/cursor.gbapal");
-static const u32 sRegionMapCursorSmallGfxLZ[] = INCBIN_U32("graphics/pokenav/region_map/cursor_small.4bpp.lz");
-static const u32 sRegionMapCursorLargeGfxLZ[] = INCBIN_U32("graphics/pokenav/region_map/cursor_large.4bpp.lz");
-static const u16 sRegionMapBg_Pal[] = INCBIN_U16("graphics/pokenav/region_map/map.gbapal");
-static const u32 sRegionMapBg_GfxLZ[] = INCBIN_U32("graphics/pokenav/region_map/map.8bpp.lz");
-static const u32 sRegionMapBg_TilemapLZ[] = INCBIN_U32("graphics/pokenav/region_map/map.bin.lz");
-static const u16 sRegionMapPlayerIcon_BrendanPal[] = INCBIN_U16("graphics/pokenav/region_map/brendan_icon.gbapal");
-static const u8 sRegionMapPlayerIcon_BrendanGfx[] = INCBIN_U8("graphics/pokenav/region_map/brendan_icon.4bpp");
-static const u16 sRegionMapPlayerIcon_MayPal[] = INCBIN_U16("graphics/pokenav/region_map/may_icon.gbapal");
-static const u8 sRegionMapPlayerIcon_MayGfx[] = INCBIN_U8("graphics/pokenav/region_map/may_icon.4bpp");
+static const u16 sRegionMapCursorPal[] = INCBIN_U16("graphics/region_map_hearth/cursor_small.gbapal");
+static const u32 sRegionMapCursorSmallGfxLZ[] = INCBIN_U32("graphics/region_map_hearth/cursor_small.4bpp.lz");
+static const u32 sRegionMapCursorLargeGfxLZ[] = INCBIN_U32("graphics/region_map_hearth/cursor_large.4bpp.lz");
+static const u16 sRegionMapBg_Pal[] = INCBIN_U16("graphics/region_map_hearth/map.gbapal");
+static const u32 sRegionMapBg_GfxLZ[] = INCBIN_U32("graphics/region_map_hearth/map.4bpp.lz");
+static const u32 sRegionMapBg_TilemapLZ[] = INCBIN_U32("graphics/region_map_hearth/map.bin.lz");
+static const u16 sRegionMapPlayerIcon_BrendanPal[] = INCBIN_U16("graphics/region_map_hearth/brendan_icon.gbapal");
+static const u8 sRegionMapPlayerIcon_BrendanGfx[] = INCBIN_U8("graphics/region_map_hearth/brendan_icon.4bpp");
+static const u16 sRegionMapPlayerIcon_MayPal[] = INCBIN_U16("graphics/region_map_hearth/may_icon.gbapal");
+static const u8 sRegionMapPlayerIcon_MayGfx[] = INCBIN_U8("graphics/region_map_hearth/may_icon.4bpp");
 
 #include "data/region_map/region_map_layout.h"
 #include "data/region_map/region_map_entries.h"
@@ -260,11 +261,12 @@ static const u8 sMapSecIdsOffMap[] =
     MAPSEC_NAVEL_ROCK
 };
 
-static const u16 sRegionMapFramePal[] = INCBIN_U16("graphics/pokenav/region_map/frame.gbapal");
-static const u32 sRegionMapFrameGfxLZ[] = INCBIN_U32("graphics/pokenav/region_map/frame.4bpp.lz");
-static const u32 sRegionMapFrameTilemapLZ[] = INCBIN_U32("graphics/pokenav/region_map/frame.bin.lz");
-static const u16 sFlyTargetIcons_Pal[] = INCBIN_U16("graphics/pokenav/region_map/fly_target_icons.gbapal");
-static const u32 sFlyTargetIcons_Gfx[] = INCBIN_U32("graphics/pokenav/region_map/fly_target_icons.4bpp.lz");
+static const u16 sRegionMapFramePal[] = INCBIN_U16("graphics/region_map_hearth/frame.gbapal");
+static const u32 sRegionMapFrameGfxLZ[] = INCBIN_U32("graphics/region_map_hearth/frame.4bpp.lz");
+static const u32 sRegionMapFrameTilemapLZ[] = INCBIN_U32("graphics/region_map_hearth/frame.bin.lz");
+static const u16 sFlyTargetIcons_Pal[] = INCBIN_U16("graphics/region_map_hearth/fly_target_icons.gbapal");
+static const u32 sFlyTargetIcons_Gfx[] = INCBIN_U32("graphics/region_map_hearth/fly_target_icons.4bpp.lz");
+static const u32 sUnvisitedTownIcons_Gfx[] = INCBIN_U32("graphics/region_map_hearth/town_icons.4bpp.lz");
 
 static const u8 sMapHealLocations[][3] =
 {
@@ -356,7 +358,7 @@ static const struct BgTemplate sFlyMapBgTemplates[] =
         .charBaseIndex = 2,
         .mapBaseIndex = 28,
         .screenSize = 2,
-        .paletteMode = 1,
+        .paletteMode = 0,
         .priority = 2
     }
 };
@@ -365,7 +367,7 @@ static const struct WindowTemplate sFlyMapWindowTemplates[] =
 {
     [WIN_MAPSEC_NAME] = {
         .bg = 0,
-        .tilemapLeft = 17,
+        .tilemapLeft = 1,
         .tilemapTop = 17,
         .width = 12,
         .height = 2,
@@ -374,7 +376,7 @@ static const struct WindowTemplate sFlyMapWindowTemplates[] =
     },
     [WIN_MAPSEC_NAME_TALL] = {
         .bg = 0,
-        .tilemapLeft = 17,
+        .tilemapLeft = 1,
         .tilemapTop = 15,
         .width = 12,
         .height = 4,
@@ -383,7 +385,7 @@ static const struct WindowTemplate sFlyMapWindowTemplates[] =
     },
     [WIN_FLY_TO_WHERE] = {
         .bg = 0,
-        .tilemapLeft = 1,
+        .tilemapLeft = 15,
         .tilemapTop = 18,
         .width = 14,
         .height = 2,
@@ -454,6 +456,18 @@ static const union AnimCmd sFlyDestIcon_Anim_8x16CantFly[] =
     ANIMCMD_END
 };
 
+static const union AnimCmd sFlyDestIcon_Anim_16x16CanFly[] =
+{
+	ANIMCMD_FRAME(14, 5),
+	ANIMCMD_END
+};
+
+static const union AnimCmd sFlyDestIcon_Anim_16x16CantFly[] =
+{
+	ANIMCMD_FRAME(18, 5),
+	ANIMCMD_END
+};
+
 // Only used by Battle Frontier
 static const union AnimCmd sFlyDestIcon_Anim_RedOutline[] =
 {
@@ -469,7 +483,9 @@ static const union AnimCmd *const sFlyDestIcon_Anims[] =
     [SPRITE_SHAPE(8x8)  + 3]  = sFlyDestIcon_Anim_8x8CantFly,
     [SPRITE_SHAPE(16x8) + 3]  = sFlyDestIcon_Anim_16x8CantFly,
     [SPRITE_SHAPE(8x16) + 3]  = sFlyDestIcon_Anim_8x16CantFly,
-    [FLYDESTICON_RED_OUTLINE] = sFlyDestIcon_Anim_RedOutline
+    [FLYDESTICON_RED_OUTLINE] = sFlyDestIcon_Anim_RedOutline,
+	[MAP_SPRITE_16X16]        = sFlyDestIcon_Anim_16x16CanFly,
+	[MAP_SPRITE_16X16 + 3]    = sFlyDestIcon_Anim_16x16CantFly,
 };
 
 static const struct SpriteTemplate sFlyDestIconSpriteTemplate =
@@ -542,7 +558,7 @@ bool8 LoadRegionMapGfx(void)
         break;
     case 2:
         if (!FreeTempTileDataBuffersIfPossible())
-            LoadPalette(sRegionMapBg_Pal, BG_PLTT_ID(7), 3 * PLTT_SIZE_4BPP);
+            LoadPalette(sRegionMapBg_Pal, BG_PLTT_ID(6), 3 * PLTT_SIZE_4BPP);
         break;
     case 3:
         LZ77UnCompWram(sRegionMapCursorSmallGfxLZ, sRegionMap->cursorSmallImage);
@@ -585,7 +601,7 @@ bool8 LoadRegionMapGfx(void)
             SetBgAttribute(sRegionMap->bgNum, BG_ATTR_CHARBASEINDEX, sRegionMap->charBaseIdx);
             SetBgAttribute(sRegionMap->bgNum, BG_ATTR_MAPBASEINDEX, sRegionMap->mapBaseIdx);
             SetBgAttribute(sRegionMap->bgNum, BG_ATTR_WRAPAROUND, 1);
-            SetBgAttribute(sRegionMap->bgNum, BG_ATTR_PALETTEMODE, 1);
+            SetBgAttribute(sRegionMap->bgNum, BG_ATTR_PALETTEMODE, 0);
         }
         sRegionMap->initStep++;
         return FALSE;
@@ -599,7 +615,7 @@ bool8 LoadRegionMapGfx(void)
 void BlendRegionMap(u16 color, u32 coeff)
 {
     BlendPalettes(0x380, coeff, color);
-    CpuCopy16(&gPlttBufferFaded[BG_PLTT_ID(7)], &gPlttBufferUnfaded[BG_PLTT_ID(7)], 3 * PLTT_SIZE_4BPP);
+    CpuCopy16(&gPlttBufferFaded[BG_PLTT_ID(6)], &gPlttBufferUnfaded[BG_PLTT_ID(6)], 3 * PLTT_SIZE_4BPP);
 }
 
 void FreeRegionMapIconResources(void)
@@ -1652,6 +1668,8 @@ void CB2_OpenFlyMap(void)
         }
         else
         {
+            CpuFill16(0, (void *)VRAM, VRAM_SIZE);
+            CleanupOverworldWindowsAndTilemaps();
             ResetPaletteFade();
             ResetSpriteData();
             FreeSpriteTileRanges();
@@ -1661,7 +1679,7 @@ void CB2_OpenFlyMap(void)
         break;
     case 1:
         ResetBgsAndClearDma3BusyFlags(0);
-        InitBgsFromTemplates(1, sFlyMapBgTemplates, ARRAY_COUNT(sFlyMapBgTemplates));
+        InitBgsFromTemplates(0, sFlyMapBgTemplates, ARRAY_COUNT(sFlyMapBgTemplates));
         gMain.state++;
         break;
     case 2:
@@ -1818,6 +1836,20 @@ static void LoadFlyDestIcons(void)
     TryCreateRedOutlineFlyDestIcons();
 }
 
+/* static void LoadUnvisitedTownIcons(void)
+{
+    struct SpriteSheet sheet;
+
+    LZ77UnCompWram(sUnvisitedTownIcons_Gfx, sRegionMap->tileBuffer);
+    sheet.data = sRegionMap->tileBuffer;
+    sheet.size = sizeof(sRegionMap->tileBuffer);
+    sheet.tag = TAG_FLY_ICON;
+    LoadSpriteSheet(&sheet);
+    LoadSpritePalette(&sFlyTargetIconsSpritePalette);
+    CreateFlyDestIcons();
+    TryCreateRedOutlineFlyDestIcons();
+} */
+
 // Sprite data for SpriteCB_FlyDestIcon
 #define sIconMapSec   data[0]
 #define sFlickerTimer data[1]
@@ -1840,7 +1872,9 @@ static void CreateFlyDestIcons(void)
         x = (x + MAPCURSOR_X_MIN) * 8 + 4;
         y = (y + MAPCURSOR_Y_MIN) * 8 + 4;
 
-        if (width == 2)
+        if (width == 2 && height == 2)
+            shape = MAP_SPRITE_16X16;
+        else if (width == 2)
             shape = SPRITE_SHAPE(16x8);
         else if (height == 2)
             shape = SPRITE_SHAPE(8x16);
@@ -1851,6 +1885,10 @@ static void CreateFlyDestIcons(void)
         if (spriteId != MAX_SPRITES)
         {
             gSprites[spriteId].oam.shape = shape;
+
+            if (shape == MAP_SPRITE_16X16) {
+                gSprites[spriteId].oam.size = SPRITE_SIZE(16x16);
+            }
 
             if (FlagGet(canFlyFlag))
                 gSprites[spriteId].callback = SpriteCB_FlyDestIcon;
