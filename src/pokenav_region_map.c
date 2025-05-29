@@ -23,7 +23,7 @@
 #define GFXTAG_CITY_ZOOM 6
 #define PALTAG_CITY_ZOOM 11
 
-#define NUM_CITY_MAPS 22
+#define NUM_CITY_MAPS 1
 
 struct Pokenav_RegionMapMenu
 {

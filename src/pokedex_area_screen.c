@@ -145,9 +145,10 @@ static const u16 sSpeciesHiddenFromAreaScreen[] = { SPECIES_WYNAUT };
 
 static const u16 sMovingRegionMapSections[3] =
 {
-    MAPSEC_MARINE_CAVE,
+    /* MAPSEC_MARINE_CAVE,
     MAPSEC_UNDERWATER_MARINE_CAVE,
-    MAPSEC_TERRA_CAVE
+    MAPSEC_TERRA_CAVE, */
+    MAPSEC_DUMMY
 };
 
 static const u16 sFeebasData[][3] =
@@ -158,12 +159,13 @@ static const u16 sFeebasData[][3] =
 
 static const u16 sLandmarkData[][2] =
 {
-    {MAPSEC_SKY_PILLAR,       FLAG_LANDMARK_SKY_PILLAR},
+    /* {MAPSEC_SKY_PILLAR,       FLAG_LANDMARK_SKY_PILLAR},
     {MAPSEC_SEAFLOOR_CAVERN,  FLAG_LANDMARK_SEAFLOOR_CAVERN},
     {MAPSEC_ALTERING_CAVE,    FLAG_LANDMARK_ALTERING_CAVE},
     {MAPSEC_MIRAGE_TOWER,     FLAG_LANDMARK_MIRAGE_TOWER},
     {MAPSEC_DESERT_UNDERPASS, FLAG_LANDMARK_DESERT_UNDERPASS},
-    {MAPSEC_ARTISAN_CAVE,     FLAG_LANDMARK_ARTISAN_CAVE},
+    {MAPSEC_ARTISAN_CAVE,     FLAG_LANDMARK_ARTISAN_CAVE}, */
+    {MAPSEC_DUMMY, FLAG_DUMMY},
     {MAPSEC_NONE}
 };
 
@@ -433,7 +435,8 @@ static bool8 MapHasSpecies(const struct WildEncounterTypes *info, u16 species)
     u8 currentMapGroup = gWildMonHeaders[headerId].mapGroup;
     u8 currentMapNum = gWildMonHeaders[headerId].mapNum;
     // If this is a header for Altering Cave, skip it if it's not the current Altering Cave encounter set
-    if (GetRegionMapSectionId(currentMapGroup, currentMapNum) == MAPSEC_ALTERING_CAVE)
+    if (GetRegionMapSectionId(currentMapGroup, currentMapNum) == MAPSEC_DUMMY)
+    /* if (GetRegionMapSectionId(currentMapGroup, currentMapNum) == MAPSEC_ALTERING_CAVE) */
     {
         sPokedexAreaScreen->alteringCaveCounter++;
         if (sPokedexAreaScreen->alteringCaveCounter != sPokedexAreaScreen->alteringCaveId + 1)

@@ -247,7 +247,6 @@ static void GetMapSecDimensions(u16 mapSecId, u16 *x, u16 *y, u16 *width, u16 *h
 
 static void CreateUnvisitedTownIcons(void)
 {
-    u16 flagVisited;
     u16 mapSecId;
     u16 x;
     u16 y;
@@ -256,10 +255,9 @@ static void CreateUnvisitedTownIcons(void)
     u16 shape;
     u8 spriteId;
 
-    flagVisited = FLAG_VISITED_SUNRISE_VILLAGE;
-    for (mapSecId = MAPSEC_SUNRISE_VILLAGE; mapSecId < MAPSEC_DUMMY; mapSecId++)
+    for (mapSecId = MAPSEC_TOWNS_START; mapSecId <= MAPSEC_TOWNS_END; mapSecId++)
     {
-        if (!FlagGet(flagVisited))
+        if (GetMapsecType(mapSecId) == MAPSECTYPE_CITY_CANTFLY)
         {
             GetMapSecDimensions(mapSecId, &x, &y, &width, &height);
             x = (x + MAPCURSOR_X_MIN) * 8 + 4;
@@ -290,8 +288,6 @@ static void CreateUnvisitedTownIcons(void)
                 gSprites[spriteId].sIconMapSec = mapSecId;
             }
         }
-        
-        flagVisited++;
     }
 }
 

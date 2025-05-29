@@ -848,8 +848,8 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     SetWarpDestination(mapGroup, mapNum, WARP_ID_NONE, -1, -1);
 
     // Dont transition map music between BF Outside West/East
-    if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER)
-        TransitionMapMusic();
+    /* if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER) */
+    TransitionMapMusic();
 
     ApplyCurrentWarp();
     LoadCurrentMapData();
@@ -892,7 +892,8 @@ if (I_VS_SEEKER_CHARGING != 0)
     }
     else
     {
-        if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER
+        if (gMapHeader.regionMapSectionId != MAPSEC_DUMMY
+        /* if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER */
          || gMapHeader.regionMapSectionId != sLastMapSectionId)
             ShowMapNamePopup();
     }

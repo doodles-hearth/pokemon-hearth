@@ -3,7 +3,7 @@
   "name": "RusturfTunnel",
   "layout": "LAYOUT_RUSTURF_TUNNEL",
   "music": "MUS_PETALBURG_WOODS",
-  "region_map_section": "MAPSEC_RUSTURF_TUNNEL",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_FOG_HORIZONTAL",
   "map_type": "MAP_TYPE_UNDERGROUND",

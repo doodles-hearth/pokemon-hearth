@@ -4150,7 +4150,7 @@ static void TranslateJapaneseEmeraldShows(TVShow *shows)
 
 void SanitizeTVShowLocationsForRuby(TVShow *shows)
 {
-    int i;
+    /* int i;
 
     for (i = 0; i < LAST_TVSHOW_IDX; i++)
     {
@@ -4165,7 +4165,7 @@ void SanitizeTVShowLocationsForRuby(TVShow *shows)
                 memset(&shows[i], 0, sizeof(TVShow));
             break;
         }
-    }
+    } */
 }
 
 // gSpecialVar_0x8004 here is set from GetRandomActiveShowIdx in EventScript_TryDoTVShow

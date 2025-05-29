@@ -2550,7 +2550,17 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
     ScriptJump(ctx, EventScript_FollowerEnd);
     species = GetMonData(mon, MON_DATA_SPECIES);
     multi = GetMonData(mon, MON_DATA_FRIENDSHIP);
-    if (multi > 80)
+    // Damn, guess your Pokémon really hates you huh
+    if (multi < 80)
+    {
+        emotion_weight[FOLLOWER_EMOTION_HAPPY] = 5;
+        emotion_weight[FOLLOWER_EMOTION_UPSET] = 20;
+        emotion_weight[FOLLOWER_EMOTION_ANGRY] = 20;
+        emotion_weight[FOLLOWER_EMOTION_PENSIVE] = 20;
+        emotion_weight[FOLLOWER_EMOTION_MUSIC] = 5;
+    }
+    // Your Pokémon kinda likes you
+    if (multi > 100)
     {
         emotion_weight[FOLLOWER_EMOTION_HAPPY] = 20;
         emotion_weight[FOLLOWER_EMOTION_UPSET] = 5;
@@ -2558,6 +2568,7 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
         emotion_weight[FOLLOWER_EMOTION_LOVE] = 20;
         emotion_weight[FOLLOWER_EMOTION_MUSIC] = 20;
     }
+    // Your Pokémon likes you
     if (multi > 170)
     {
         emotion_weight[FOLLOWER_EMOTION_HAPPY] = 30;
@@ -2581,47 +2592,27 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
         condEmotes[condCount++] = (struct SpecialEmote) {.emotion = FOLLOWER_EMOTION_SAD, .index = 6};
     }
     // Gym type advantage/disadvantage
-    if (GetCurrentMapMusic() == MUS_GYM || GetCurrentMapMusic() == MUS_RG_GYM)
+    if (GetCurrentMapMusic() == MUS_B_PALACE)
     {
         switch (gMapHeader.regionMapSectionId)
         {
-        case MAPSEC_RUSTBORO_CITY:
-        case MAPSEC_PEWTER_CITY:
+        case MAPSEC_SILVERIDGE:
             multi = TYPE_ROCK;
             break;
-        case MAPSEC_SAKU_TOWN:
-            multi = TYPE_FIGHTING;
-            break;
-        case MAPSEC_MAUVILLE_CITY:
-        case MAPSEC_VERMILION_CITY:
-            multi = TYPE_ELECTRIC;
-            break;
-        case MAPSEC_KURA_TOWN:
-        case MAPSEC_CINNABAR_ISLAND:
+        case MAPSEC_HANABI_CITY:
             multi = TYPE_FIRE;
             break;
         case MAPSEC_MAGURO_HARBOR:
-            multi = TYPE_NORMAL;
-            break;
-        case MAPSEC_FORTREE_CITY:
-            multi = TYPE_FLYING;
-            break;
-        case MAPSEC_MOSSDEEP_CITY:
-        case MAPSEC_SAFFRON_CITY:
-            multi = TYPE_PSYCHIC;
-            break;
-        case MAPSEC_SOOTOPOLIS_CITY:
-        case MAPSEC_CERULEAN_CITY:
             multi = TYPE_WATER;
             break;
-        case MAPSEC_CELADON_CITY:
+        case MAPSEC_KURA_TOWN:
             multi = TYPE_GRASS;
             break;
-        case MAPSEC_FUCHSIA_CITY:
-            multi = TYPE_POISON;
+        case MAPSEC_SABERSIDE_TOWN:
+            multi = TYPE_STEEL;
             break;
-        case MAPSEC_VIRIDIAN_CITY:
-            multi = TYPE_GROUND;
+        case MAPSEC_DRYUGON:
+            multi = TYPE_DRAGON;
             break;
         default:
             multi = NUMBER_OF_MON_TYPES;
@@ -2629,6 +2620,7 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
         if (multi < NUMBER_OF_MON_TYPES)
         {
             multi = GetOverworldTypeEffectiveness(mon, multi);
+            // TODO EVA: is this 32 supposed to correspond to COND_MSG_COUNT ?
             if (multi <= UQ_4_12(0.5))
                 condEmotes[condCount++] = (struct SpecialEmote) {.emotion = FOLLOWER_EMOTION_HAPPY, .index = 32};
             else if (multi >= UQ_4_12(2.0))

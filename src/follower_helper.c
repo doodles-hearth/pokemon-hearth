@@ -266,7 +266,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .conditions =
         {
             MATCH_TYPES(TYPE_DRAGON, TYPE_DRAGON),
-            MATCH_MAPSEC(MAPSEC_SKY_PILLAR),
+            MATCH_MAPSEC(MAPSEC_DRAGONS_PASS),
         },
     },
     [COND_MSG_FEAR] =
@@ -277,7 +277,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .conditions =
         {
             MATCH_NOT_TYPES(TYPE_GHOST, TYPE_GHOST),
-            MATCH_MAPSEC(MAPSEC_MT_PYRE),
+            MATCH_MAPSEC(MAPSEC_SOULKEEP),
             MATCH_MUSIC(MUS_MT_PYRE),
         },
     },

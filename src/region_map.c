@@ -91,10 +91,9 @@ static u16 GetMapSecIdAt(u16 x, u16 y);
 static void RegionMap_SetBG2XAndBG2Y(s16 x, s16 y);
 static void InitMapBasedOnPlayerLocation(void);
 static void RegionMap_InitializeStateBasedOnSSTidalLocation(void);
-static u8 GetMapsecType(u16 mapSecId);
 static u16 CorrectSpecialMapSecId_Internal(u16 mapSecId);
 static u16 GetTerraOrMarineCaveMapSecId(void);
-static void GetMarineCaveCoords(u16 *x, u16 *y);
+/* static void GetMarineCaveCoords(u16 *x, u16 *y); */
 static bool32 IsPlayerInAquaHideout(u8 mapSecId);
 static void GetPositionOfCursorWithinMapSec(void);
 static bool8 RegionMap_IsMapSecIdInNextRow(u16 y);
@@ -133,21 +132,22 @@ static const u8 sRegionMapPlayerIcon_MayGfx[] = INCBIN_U8("graphics/region_map_h
 
 static const u16 sRegionMap_SpecialPlaceLocations[][2] =
 {
-    {MAPSEC_UNDERWATER_105,             MAPSEC_SCENIC_ROUTE},
+    /* {MAPSEC_UNDERWATER_105,             MAPSEC_SCENIC_ROUTE},
     {MAPSEC_UNDERWATER_124,             MAPSEC_COREEF_ISLE},
     {MAPSEC_UNDERWATER_125,             MAPSEC_OPEN_SEA_HAVEN},
     {MAPSEC_UNDERWATER_126,             MAPSEC_OPEN_SEA_LEAGUE},
     {MAPSEC_UNDERWATER_127,             MAPSEC_OPEN_SEA_ICY},
-    {MAPSEC_UNDERWATER_128,             MAPSEC_SABERSIDE_CHANNEL},
+    {MAPSEC_UNDERWATER_128,             MAPSEC_SABERSIDE_CHANNEL}, */
     {MAPSEC_CROBAT_HIDEOUT,             MAPSEC_YIFU_CITY},
     {MAPSEC_NONE,                       MAPSEC_NONE}
 };
 
 static const u16 sMarineCaveMapSecIds[] =
 {
-    MAPSEC_MARINE_CAVE,
+    /* MAPSEC_MARINE_CAVE,
     MAPSEC_UNDERWATER_MARINE_CAVE,
-    MAPSEC_UNDERWATER_MARINE_CAVE
+    MAPSEC_UNDERWATER_MARINE_CAVE */
+    MAPSEC_DUMMY
 };
 
 static const u16 sTerraOrMarineCaveMapSecIds[ABNORMAL_WEATHER_LOCATIONS] =
@@ -186,7 +186,8 @@ static const struct UCoords16 sMarineCaveLocationCoords[MARINE_CAVE_LOCATIONS] =
 
 static const u8 sMapSecAquaHideoutOld[] =
 {
-    MAPSEC_AQUA_HIDEOUT_OLD
+    MAPSEC_DUMMY
+    /* MAPSEC_AQUA_HIDEOUT_OLD */
 };
 
 static const struct OamData sRegionMapCursorOam =
@@ -256,9 +257,10 @@ static const union AnimCmd *const sRegionMapPlayerIconAnimTable[] =
 // Event islands that don't appear on map. (Southern Island does)
 static const u8 sMapSecIdsOffMap[] =
 {
-    MAPSEC_BIRTH_ISLAND,
+    /* MAPSEC_BIRTH_ISLAND,
     MAPSEC_FARAWAY_ISLAND,
-    MAPSEC_NAVEL_ROCK
+    MAPSEC_NAVEL_ROCK */
+    MAPSEC_DUMMY
 };
 
 static const u16 sRegionMapFramePal[] = INCBIN_U16("graphics/region_map_hearth/frame.gbapal");
@@ -266,58 +268,64 @@ static const u32 sRegionMapFrameGfxLZ[] = INCBIN_U32("graphics/region_map_hearth
 static const u32 sRegionMapFrameTilemapLZ[] = INCBIN_U32("graphics/region_map_hearth/frame.bin.lz");
 static const u16 sFlyTargetIcons_Pal[] = INCBIN_U16("graphics/region_map_hearth/fly_target_icons.gbapal");
 static const u32 sFlyTargetIcons_Gfx[] = INCBIN_U32("graphics/region_map_hearth/fly_target_icons.4bpp.lz");
-static const u32 sUnvisitedTownIcons_Gfx[] = INCBIN_U32("graphics/region_map_hearth/town_icons.4bpp.lz");
 
 static const u8 sMapHealLocations[][3] =
 {
-    [MAPSEC_SUNRISE_VILLAGE] = {MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), HEAL_LOCATION_SUNRISE_VILLAGE},
-    [MAPSEC_CHII_TOWN] = {MAP_GROUP(CHII_TOWN), MAP_NUM(CHII_TOWN), HEAL_LOCATION_CHII_TOWN},
-    [MAPSEC_SAKU_TOWN] = {MAP_GROUP(SAKU_TOWN), MAP_NUM(SAKU_TOWN), HEAL_LOCATION_SAKU_TOWN},
-    [MAPSEC_KURA_TOWN] = {MAP_GROUP(KURA_TOWN), MAP_NUM(KURA_TOWN), HEAL_LOCATION_KURA_TOWN},
-    [MAPSEC_SILVERIDGE] = {MAP_GROUP(SILVERIDGE), MAP_NUM(SILVERIDGE), HEAL_LOCATION_SILVERIDGE},
-    [MAPSEC_WINDYCAPE] = {MAP_GROUP(WINDY_CAPE2), MAP_NUM(WINDY_CAPE2), HEAL_LOCATION_WINDY_CAPE2},
-    [MAPSEC_YIFU_CITY] = {MAP_GROUP(YIFU_CITY), MAP_NUM(YIFU_CITY), HEAL_LOCATION_YIFU_CITY},
-    [MAPSEC_MAGURO_HARBOR] = {MAP_GROUP(MAGURO_HARBOR), MAP_NUM(MAGURO_HARBOR), HEAL_LOCATION_MAGURO_HARBOR},
-    [MAPSEC_SOULKEEP] = {MAP_GROUP(SOULKEEP), MAP_NUM(SOULKEEP), HEAL_LOCATION_SOULKEEP},
-    [MAPSEC_MAUVILLE_CITY] = {MAP_GROUP(MAUVILLE_CITY), MAP_NUM(MAUVILLE_CITY), HEAL_LOCATION_MAUVILLE_CITY},
-    [MAPSEC_RUSTBORO_CITY] = {MAP_GROUP(RUSTBORO_CITY), MAP_NUM(RUSTBORO_CITY), HEAL_LOCATION_RUSTBORO_CITY},
-    [MAPSEC_FORTREE_CITY] = {MAP_GROUP(FORTREE_CITY), MAP_NUM(FORTREE_CITY), HEAL_LOCATION_FORTREE_CITY},
-    [MAPSEC_LILYCOVE_CITY] = {MAP_GROUP(LILYCOVE_CITY), MAP_NUM(LILYCOVE_CITY), HEAL_LOCATION_LILYCOVE_CITY},
-    [MAPSEC_MOSSDEEP_CITY] = {MAP_GROUP(MOSSDEEP_CITY), MAP_NUM(MOSSDEEP_CITY), HEAL_LOCATION_MOSSDEEP_CITY},
-    [MAPSEC_SOOTOPOLIS_CITY] = {MAP_GROUP(SOOTOPOLIS_CITY), MAP_NUM(SOOTOPOLIS_CITY), HEAL_LOCATION_SOOTOPOLIS_CITY},
-    [MAPSEC_EVER_GRANDE_CITY] = {MAP_GROUP(EVER_GRANDE_CITY), MAP_NUM(EVER_GRANDE_CITY), HEAL_LOCATION_EVER_GRANDE_CITY},
+    [MAPSEC_PUDDLE_PATH] = {MAP_GROUP(PUDDLE_PATH), MAP_NUM(PUDDLE_PATH), HEAL_LOCATION_NONE},
+    [MAPSEC_SABERSIDE_QUARRY] = {MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), HEAL_LOCATION_NONE},
+    [MAPSEC_FISHERMANS_CHANNEL_WINDYCAPE] = {MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), HEAL_LOCATION_NONE},
+    [MAPSEC_FISHERMANS_CHANNEL_MAGURO] = {MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), HEAL_LOCATION_NONE},
+    [MAPSEC_FISHERMANS_CHANNEL_BOTTOM] = {MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), HEAL_LOCATION_NONE},
+    [MAPSEC_FISHERMANS_CHANNEL_SACRED] = {MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), HEAL_LOCATION_NONE},
+    [MAPSEC_FISHERMANS_SHRINE] = {MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), HEAL_LOCATION_NONE},
     [MAPSEC_TRANQUIL_ROUTE] = {MAP_GROUP(TRANQUIL_ROUTE), MAP_NUM(TRANQUIL_ROUTE), HEAL_LOCATION_NONE},
     [MAPSEC_BEACHBOUND_ROUTE] = {MAP_GROUP(BEACHBOUND_ROUTE), MAP_NUM(BEACHBOUND_ROUTE), HEAL_LOCATION_NONE},
-    [MAPSEC_WINDSWEPT_ROUTE] = {MAP_GROUP(WINDSWEPT_ROUTE), MAP_NUM(WINDSWEPT_ROUTE), HEAL_LOCATION_NONE},
     [MAPSEC_WHITESLATE_ROUTE] = {MAP_GROUP(WHITESLATE_ROUTE), MAP_NUM(WHITESLATE_ROUTE), HEAL_LOCATION_NONE},
     [MAPSEC_SCENIC_ROUTE] = {MAP_GROUP(SCENIC_ROUTE), MAP_NUM(SCENIC_ROUTE), HEAL_LOCATION_NONE},
     [MAPSEC_HARVEST_SHRINE] = {MAP_GROUP(HARVEST_SHRINE), MAP_NUM(HARVEST_SHRINE), HEAL_LOCATION_NONE},
-    [MAPSEC_HAVENISLE] = {MAP_GROUP(HAVEN_ISLE), MAP_NUM(HAVEN_ISLE), HEAL_LOCATION_NONE},
-    [MAPSEC_MIDDLEISLE] = {MAP_GROUP(MIDDLE_ISLE), MAP_NUM(MIDDLE_ISLE), HEAL_LOCATION_NONE},
-    [MAPSEC_TOPISLE] = {MAP_GROUP(TOP_ISLE), MAP_NUM(TOP_ISLE), HEAL_LOCATION_NONE},
+    [MAPSEC_WINDSWEPT_ROUTE] = {MAP_GROUP(WINDSWEPT_ROUTE), MAP_NUM(WINDSWEPT_ROUTE), HEAL_LOCATION_NONE},
     [MAPSEC_SEATURF_ROUTE] = {MAP_GROUP(SEA_TURF_ROUTE), MAP_NUM(SEA_TURF_ROUTE), HEAL_LOCATION_NONE},
     [MAPSEC_LONGTIDE_CHANNEL] = {MAP_GROUP(LONGTIDE_CHANNEL), MAP_NUM(LONGTIDE_CHANNEL), HEAL_LOCATION_NONE},
     [MAPSEC_LONG_TIDE_CHANNEL_SOULKEEP] = {MAP_GROUP(LONG_TIDE_CHANNEL_SOULKEEP), MAP_NUM(LONG_TIDE_CHANNEL_SOULKEEP), HEAL_LOCATION_NONE},
     [MAPSEC_DRAGONS_PASS] = {MAP_GROUP(DRAGONS_PASS), MAP_NUM(DRAGONS_PASS), HEAL_LOCATION_NONE},
-    [MAPSEC_DRYUGON] = {MAP_GROUP(ROUTE114), MAP_NUM(ROUTE114), HEAL_LOCATION_NONE},
-    [MAPSEC_BURNFOOT_PASS_BOTTOM] = {MAP_GROUP(ROUTE115), MAP_NUM(ROUTE115), HEAL_LOCATION_NONE},
-    [MAPSEC_STEEPSTONE_PASS_BOTTOM] = {MAP_GROUP(ROUTE116), MAP_NUM(ROUTE116), HEAL_LOCATION_NONE},
-    [MAPSEC_BURNFOOT_PASS] = {MAP_GROUP(ROUTE117), MAP_NUM(ROUTE117), HEAL_LOCATION_NONE},
+    [MAPSEC_BURNFOOT_PASS_BOTTOM] = {MAP_GROUP(BURNFOOT_PASS_BOTTOM), MAP_NUM(BURNFOOT_PASS_BOTTOM), HEAL_LOCATION_NONE},
+    [MAPSEC_STEEPSTONE_PASS_BOTTOM] = {MAP_GROUP(STEEPSTONE_PASS_BOTTOM), MAP_NUM(STEEPSTONE_PASS_BOTTOM), HEAL_LOCATION_NONE},
+    [MAPSEC_BURNFOOT_PASS] = {MAP_GROUP(BURNFOOT_PASS), MAP_NUM(BURNFOOT_PASS), HEAL_LOCATION_NONE},
     [MAPSEC_MT_KAZAN_EXTERIOR] = {MAP_GROUP(MT_KAZAN_EXTERIOR), MAP_NUM(MT_KAZAN_EXTERIOR), HEAL_LOCATION_NONE},
-    [MAPSEC_STEEPSTONE_PASS] = {MAP_GROUP(ROUTE119), MAP_NUM(ROUTE119), HEAL_LOCATION_NONE},
-    [MAPSEC_SHOGUNATE] = {MAP_GROUP(ROUTE120), MAP_NUM(ROUTE120), HEAL_LOCATION_NONE},
-    [MAPSEC_SCENIC_ROUTE_SABERSIDE] = {MAP_GROUP(ROUTE121), MAP_NUM(ROUTE121), HEAL_LOCATION_NONE},
-    [MAPSEC_UUME_FOREST] = {MAP_GROUP(ROUTE122), MAP_NUM(ROUTE122), HEAL_LOCATION_NONE},
-    [MAPSEC_COREEF_ISLE] = {MAP_GROUP(COREEF_ISLE), MAP_NUM(COREEF_ISLE), HEAL_LOCATION_NONE},
+    [MAPSEC_STEEPSTONE_PASS] = {MAP_GROUP(STEEPSTONE_PASS), MAP_NUM(STEEPSTONE_PASS), HEAL_LOCATION_NONE},
+    [MAPSEC_SHOGUNATE] = {MAP_GROUP(SHOGUNATE), MAP_NUM(SHOGUNATE), HEAL_LOCATION_NONE},
+    [MAPSEC_SILVER_TUNNEL] = {MAP_GROUP(SILVER_TUNNEL_1F), MAP_NUM(SILVER_TUNNEL_1F), HEAL_LOCATION_NONE},
+    [MAPSEC_SEASTROLL_CHANNEL] = {MAP_GROUP(SEASTROLL_CHANNEL), MAP_NUM(SEASTROLL_CHANNEL), HEAL_LOCATION_NONE},
+    [MAPSEC_ORCHARD_PATH] = {MAP_GROUP(ORCHARD_PATH), MAP_NUM(ORCHARD_PATH), HEAL_LOCATION_NONE},
+    [MAPSEC_SCENIC_ROUTE_SABERSIDE] = {MAP_GROUP(SCENIC_ROUTE_SABERSIDE), MAP_NUM(SCENIC_ROUTE_SABERSIDE), HEAL_LOCATION_NONE},
+    [MAPSEC_UUME_FOREST] = {MAP_GROUP(UUME_FOREST), MAP_NUM(UUME_FOREST), HEAL_LOCATION_NONE},
+    [MAPSEC_OPEN_SEA_CORAL] = {MAP_GROUP(OPEN_SEA_CORAL), MAP_NUM(OPEN_SEA_CORAL), HEAL_LOCATION_NONE},
     [MAPSEC_OPEN_SEA_HAVEN] = {MAP_GROUP(OPEN_SEA_HAVEN), MAP_NUM(OPEN_SEA_HAVEN), HEAL_LOCATION_NONE},
     [MAPSEC_OPEN_SEA_LEAGUE] = {MAP_GROUP(OPEN_SEA_LEAGUE), MAP_NUM(OPEN_SEA_LEAGUE), HEAL_LOCATION_NONE},
     [MAPSEC_OPEN_SEA_ICY] = {MAP_GROUP(OPEN_SEA_ICY), MAP_NUM(OPEN_SEA_ICY), HEAL_LOCATION_NONE},
     [MAPSEC_SABERSIDE_CHANNEL] = {MAP_GROUP(SABERSIDE_CHANNEL), MAP_NUM(SABERSIDE_CHANNEL), HEAL_LOCATION_NONE},
-    [MAPSEC_ROUTE_130] = {MAP_GROUP(ROUTE130), MAP_NUM(ROUTE130), HEAL_LOCATION_NONE},
-    [MAPSEC_ROUTE_131] = {MAP_GROUP(ROUTE131), MAP_NUM(ROUTE131), HEAL_LOCATION_NONE},
-    [MAPSEC_ROUTE_132] = {MAP_GROUP(ROUTE132), MAP_NUM(ROUTE132), HEAL_LOCATION_NONE},
-    [MAPSEC_ROUTE_133] = {MAP_GROUP(ROUTE133), MAP_NUM(ROUTE133), HEAL_LOCATION_NONE},
-    [MAPSEC_ROUTE_134] = {MAP_GROUP(ROUTE134), MAP_NUM(ROUTE134), HEAL_LOCATION_NONE},
+    [MAPSEC_CROBAT_HIDEOUT] = {MAP_GROUP(CROBAT_HIDEOUT_1F), MAP_NUM(CROBAT_HIDEOUT_1F), HEAL_LOCATION_NONE},
+    [MAPSEC_SUNRISE_CAVE] = {MAP_GROUP(SUNRISE_CAVE), MAP_NUM(SUNRISE_CAVE), HEAL_LOCATION_NONE},
+    [MAPSEC_GINKO_WOODS] = {MAP_GROUP(GINKO_WOODS), MAP_NUM(GINKO_WOODS), HEAL_LOCATION_NONE},
+
+    [MAPSEC_SUNRISE_VILLAGE] = {MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), HEAL_LOCATION_SUNRISE_VILLAGE},
+    [MAPSEC_CHII_TOWN] = {MAP_GROUP(CHII_TOWN), MAP_NUM(CHII_TOWN), HEAL_LOCATION_CHII_TOWN},
+    [MAPSEC_SAKU_TOWN] = {MAP_GROUP(SAKU_TOWN), MAP_NUM(SAKU_TOWN), HEAL_LOCATION_SAKU_TOWN},
+    [MAPSEC_KURA_TOWN] = {MAP_GROUP(KURA_TOWN), MAP_NUM(KURA_TOWN), HEAL_LOCATION_KURA_TOWN},
+    [MAPSEC_MAGURO_HARBOR] = {MAP_GROUP(MAGURO_HARBOR), MAP_NUM(MAGURO_HARBOR), HEAL_LOCATION_MAGURO_HARBOR},
+    [MAPSEC_SILVERIDGE] = {MAP_GROUP(SILVERIDGE), MAP_NUM(SILVERIDGE), HEAL_LOCATION_SILVERIDGE},
+    [MAPSEC_WINDYCAPE] = {MAP_GROUP(WINDY_CAPE2), MAP_NUM(WINDY_CAPE2), HEAL_LOCATION_WINDY_CAPE2},
+    [MAPSEC_YIFU_CITY] = {MAP_GROUP(YIFU_CITY), MAP_NUM(YIFU_CITY), HEAL_LOCATION_YIFU_CITY},
+    [MAPSEC_SOULKEEP] = {MAP_GROUP(SOULKEEP), MAP_NUM(SOULKEEP), HEAL_LOCATION_SOULKEEP},
+    [MAPSEC_HAVENISLE] = {MAP_GROUP(HAVEN_ISLE), MAP_NUM(HAVEN_ISLE), HEAL_LOCATION_HAVEN_ISLE},
+    [MAPSEC_MIDDLEISLE] = {MAP_GROUP(MIDDLE_ISLE), MAP_NUM(MIDDLE_ISLE), HEAL_LOCATION_MIDDLE_ISLE},
+    [MAPSEC_TOPISLE] = {MAP_GROUP(TOP_ISLE), MAP_NUM(TOP_ISLE), HEAL_LOCATION_TOP_ISLE},
+    [MAPSEC_COREEF_ISLE] = {MAP_GROUP(COREEF_ISLE), MAP_NUM(COREEF_ISLE), HEAL_LOCATION_COREEF_ISLE},
+    [MAPSEC_DRYUGON] = {MAP_GROUP(DRYUGON), MAP_NUM(DRYUGON), HEAL_LOCATION_DRYUGON},
+    [MAPSEC_SABERSIDE_TOWN] = {MAP_GROUP(SABERSIDE_TOWN), MAP_NUM(SABERSIDE_TOWN), HEAL_LOCATION_SABERSIDE_TOWN},
+    [MAPSEC_HANABI_CITY] = {MAP_GROUP(HANABI_CITY), MAP_NUM(HANABI_CITY), HEAL_LOCATION_HANABI_CITY},
+    [MAPSEC_LEAGUE] = {MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), HEAL_LOCATION_NONE},
+    
 };
 
 static const u8 *const sEverGrandeCityNames[] =
@@ -330,7 +338,8 @@ static const struct MultiNameFlyDest sMultiNameFlyDestinations[] =
 {
     {
         .name = sEverGrandeCityNames,
-        .mapSecId = MAPSEC_EVER_GRANDE_CITY,
+        .mapSecId = MAPSEC_DUMMY,
+        /* .mapSecId = MAPSEC_EVER_GRANDE_CITY, */
         .flag = FLAG_LANDMARK_POKEMON_LEAGUE
     }
 };
@@ -405,7 +414,8 @@ static const u16 sRedOutlineFlyDestinations[][2] =
 {
     {
         FLAG_LANDMARK_BATTLE_FRONTIER,
-        MAPSEC_BATTLE_FRONTIER
+        /* MAPSEC_BATTLE_FRONTIER */
+        MAPSEC_DUMMY
     },
     {
         -1,
@@ -975,7 +985,7 @@ static void InitMapBasedOnPlayerLocation(void)
     u16 x;
     u16 y;
     u16 dimensionScale;
-    u16 xOnMap;
+    /* u16 xOnMap; */
     struct WarpData *warp;
 
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(SS_TIDAL_CORRIDOR)
@@ -1001,8 +1011,8 @@ static void InitMapBasedOnPlayerLocation(void)
         mapHeight = gMapHeader.mapLayout->height;
         x = gSaveBlock1Ptr->pos.x;
         y = gSaveBlock1Ptr->pos.y;
-        if (sRegionMap->mapSecId == MAPSEC_UNDERWATER_SEAFLOOR_CAVERN || sRegionMap->mapSecId == MAPSEC_UNDERWATER_MARINE_CAVE)
-            sRegionMap->playerIsInCave = TRUE;
+        /* if (sRegionMap->mapSecId == MAPSEC_UNDERWATER_SEAFLOOR_CAVERN || sRegionMap->mapSecId == MAPSEC_UNDERWATER_MARINE_CAVE)
+            sRegionMap->playerIsInCave = TRUE; */
         break;
     case MAP_TYPE_UNDERGROUND:
     case MAP_TYPE_UNKNOWN:
@@ -1061,7 +1071,7 @@ static void InitMapBasedOnPlayerLocation(void)
         break;
     }
 
-    xOnMap = x;
+    /* xOnMap = x; */
 
     dimensionScale = mapWidth / gRegionMapEntries[sRegionMap->mapSecId].width;
     if (dimensionScale == 0)
@@ -1085,7 +1095,7 @@ static void InitMapBasedOnPlayerLocation(void)
         y = gRegionMapEntries[sRegionMap->mapSecId].height - 1;
     }
 
-    switch (sRegionMap->mapSecId)
+    /* switch (sRegionMap->mapSecId)
     {
     case MAPSEC_DRYUGON:
         if (y != 0)
@@ -1117,7 +1127,7 @@ static void InitMapBasedOnPlayerLocation(void)
     case MAPSEC_UNDERWATER_MARINE_CAVE:
         GetMarineCaveCoords(&sRegionMap->cursorPosX, &sRegionMap->cursorPosY);
         return;
-    }
+    } */
     sRegionMap->cursorPosX = gRegionMapEntries[sRegionMap->mapSecId].x + x + MAPCURSOR_X_MIN;
     sRegionMap->cursorPosY = gRegionMapEntries[sRegionMap->mapSecId].y + y + MAPCURSOR_Y_MIN;
 }
@@ -1137,7 +1147,7 @@ static void RegionMap_InitializeStateBasedOnSSTidalLocation(void)
     x = 0;
     switch (GetSSTidalLocation(&mapGroup, &mapNum, &xOnMap, &yOnMap))
     {
-    case SS_TIDAL_LOCATION_SLATEPORT:
+    /* case SS_TIDAL_LOCATION_SLATEPORT:
         sRegionMap->mapSecId = MAPSEC_SOULKEEP;
         break;
     case SS_TIDAL_LOCATION_LILYCOVE:
@@ -1148,7 +1158,7 @@ static void RegionMap_InitializeStateBasedOnSSTidalLocation(void)
         break;
     case SS_TIDAL_LOCATION_ROUTE131:
         sRegionMap->mapSecId = MAPSEC_ROUTE_131;
-        break;
+        break; */
     default:
     case SS_TIDAL_LOCATION_CURRENTS:
         mapHeader = Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum);
@@ -1174,7 +1184,7 @@ static void RegionMap_InitializeStateBasedOnSSTidalLocation(void)
     sRegionMap->cursorPosY = gRegionMapEntries[sRegionMap->mapSecId].y + y + MAPCURSOR_Y_MIN;
 }
 
-static u8 GetMapsecType(u16 mapSecId)
+u8 GetMapsecType(u16 mapSecId)
 {
     switch (mapSecId)
     {
@@ -1188,14 +1198,14 @@ static u8 GetMapsecType(u16 mapSecId)
         return FlagGet(FLAG_VISITED_SAKU_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_KURA_TOWN:
         return FlagGet(FLAG_VISITED_KURA_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_MAGURO_HARBOR:
+        return FlagGet(FLAG_VISITED_MAGURO_HARBOR) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_SILVERIDGE:
         return FlagGet(FLAG_VISITED_SILVERIDGE) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_WINDYCAPE:
         return FlagGet(FLAG_VISITED_WINDYCAPE) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_YIFU_CITY:
         return FlagGet(FLAG_VISITED_YIFU_CITY) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
-    case MAPSEC_MAGURO_HARBOR:
-        return FlagGet(FLAG_VISITED_MAGURO_HARBOR) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_SOULKEEP:
         return FlagGet(FLAG_VISITED_SOULKEEP) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_HAVENISLE:
@@ -1204,12 +1214,16 @@ static u8 GetMapsecType(u16 mapSecId)
         return FlagGet(FLAG_VISITED_MIDDLEISLE) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_TOPISLE:
         return FlagGet(FLAG_VISITED_TOPISLE) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_COREEF_ISLE:
+        return FlagGet(FLAG_VISITED_COREEF_ISLE) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_DRYUGON:
         return FlagGet(FLAG_VISITED_DRYUGON) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_SABERSIDE_TOWN:
         return FlagGet(FLAG_VISITED_SABERSIDE_TOWN) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
-    case MAPSEC_COREEF_ISLE:
-        return FlagGet(FLAG_VISITED_COREEF_ISLE) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_HANABI_CITY:
+        return FlagGet(FLAG_VISITED_HANABI_CITY) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
+    case MAPSEC_LEAGUE:
+        return FlagGet(FLAG_VISITED_LEAGUE) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     default:
         return MAPSECTYPE_ROUTE;
     }
@@ -1253,7 +1267,7 @@ static u16 GetTerraOrMarineCaveMapSecId(void)
     return sTerraOrMarineCaveMapSecIds[idx];
 }
 
-static void GetMarineCaveCoords(u16 *x, u16 *y)
+/* static void GetMarineCaveCoords(u16 *x, u16 *y)
 {
     u16 idx;
 
@@ -1266,7 +1280,7 @@ static void GetMarineCaveCoords(u16 *x, u16 *y)
 
     *x = sMarineCaveLocationCoords[idx].x + MAPCURSOR_X_MIN;
     *y = sMarineCaveLocationCoords[idx].y + MAPCURSOR_Y_MIN;
-}
+} */
 
 // Probably meant to be an "IsPlayerInIndoorDungeon" function, but in practice it only has the one mapsec
 // Additionally, because the mapsec doesnt exist in Emerald, this function always returns FALSE
@@ -1609,10 +1623,10 @@ u8 *GetMapNameGeneric(u8 *dest, u16 mapSecId)
 
 u8 *GetMapNameHandleAquaHideout(u8 *dest, u16 mapSecId)
 {
-    if (mapSecId == MAPSEC_AQUA_HIDEOUT_OLD)
+    /* if (mapSecId == MAPSEC_AQUA_HIDEOUT_OLD)
         return StringCopy(dest, gText_Hideout);
-    else
-        return GetMapNameGeneric(dest, mapSecId);
+    else */
+    return GetMapNameGeneric(dest, mapSecId);
 }
 
 static void GetMapSecDimensions(u16 mapSecId, u16 *x, u16 *y, u16 *width, u16 *height)
@@ -1836,7 +1850,6 @@ static void LoadFlyDestIcons(void)
 
 static void CreateFlyDestIcons(void)
 {
-    u16 canFlyFlag;
     u16 mapSecId;
     u16 x;
     u16 y;
@@ -1845,12 +1858,13 @@ static void CreateFlyDestIcons(void)
     u16 shape;
     u8 spriteId;
 
-    canFlyFlag = FLAG_VISITED_SUNRISE_VILLAGE;
-    for (mapSecId = MAPSEC_SUNRISE_VILLAGE; mapSecId < MAPSEC_DUMMY; mapSecId++)
+    for (mapSecId = MAPSEC_TOWNS_START; mapSecId <= MAPSEC_TOWNS_END; mapSecId++)
     {
         GetMapSecDimensions(mapSecId, &x, &y, &width, &height);
         x = (x + MAPCURSOR_X_MIN) * 8 + 4;
         y = (y + MAPCURSOR_Y_MIN) * 8 + 4;
+
+        DebugPrintf("Yifu ? %d (%dx%d)", MAPSEC_YIFU_CITY == mapSecId, width, height);
 
         if (width == 2 && height == 2)
             shape = MAP_SPRITE_16X16;
@@ -1866,11 +1880,13 @@ static void CreateFlyDestIcons(void)
         {
             gSprites[spriteId].oam.shape = shape;
 
-            if (shape == MAP_SPRITE_16X16) {
+            if (shape == MAP_SPRITE_16X16)
+            {
+                DebugPrintf("Yifu found!");
                 gSprites[spriteId].oam.size = SPRITE_SIZE(16x16);
             }
 
-            if (FlagGet(canFlyFlag))
+            if (GetMapsecType(mapSecId) == MAPSECTYPE_CITY_CANFLY)
                 gSprites[spriteId].callback = SpriteCB_FlyDestIcon;
             else
                 shape += 3;
@@ -1878,7 +1894,6 @@ static void CreateFlyDestIcons(void)
             StartSpriteAnim(&gSprites[spriteId], shape);
             gSprites[spriteId].sIconMapSec = mapSecId;
         }
-        canFlyFlag++;
     }
 }
 
@@ -2016,14 +2031,14 @@ u32 FilterFlyDestination(struct RegionMap* regionMap)
 {
     switch (regionMap->mapSecId)
     {
-    case MAPSEC_SOUTHERN_ISLAND:
+    /* case MAPSEC_SOUTHERN_ISLAND:
         return HEAL_LOCATION_SOUTHERN_ISLAND_EXTERIOR;
     case MAPSEC_BATTLE_FRONTIER:
         return HEAL_LOCATION_BATTLE_FRONTIER_OUTSIDE_EAST;
     case MAPSEC_SUNRISE_VILLAGE:
         return HEAL_LOCATION_SUNRISE_VILLAGE;
     case MAPSEC_EVER_GRANDE_CITY:
-        return (FlagGet(FLAG_LANDMARK_POKEMON_LEAGUE) && regionMap->posWithinMapSec == 0 ? HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE : HEAL_LOCATION_EVER_GRANDE_CITY);
+        return (FlagGet(FLAG_LANDMARK_POKEMON_LEAGUE) && regionMap->posWithinMapSec == 0 ? HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE : HEAL_LOCATION_EVER_GRANDE_CITY); */
     default:
         if (sMapHealLocations[regionMap->mapSecId][2] != HEAL_LOCATION_NONE)
             return sMapHealLocations[regionMap->mapSecId][2];

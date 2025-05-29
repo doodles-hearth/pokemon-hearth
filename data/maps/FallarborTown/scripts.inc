@@ -3,7 +3,7 @@ FallarborTown_MapScripts::
 	.byte 0
 
 FallarborTown_OnTransition:
-	setflag FLAG_VISITED_FALLARBOR_TOWN
+	setflag FLAG_DUMMY
 	setvar VAR_CONTEST_HALL_STATE, 0
 	clearflag FLAG_CONTEST_SKETCH_CREATED
 	end
