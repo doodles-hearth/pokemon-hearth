@@ -3,7 +3,7 @@
   "name": "PuddlePath",
   "layout": "LAYOUT_PUDDLE_PATH",
   "music": "MUS_ROUTE119",
-  "region_map_section": "MAPSEC_LONG_TIDE_CHANNEL_SOULKEEP",
+  "region_map_section": "MAPSEC_PUDDLE_PATH",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY_CLOUDS",
   "map_type": "MAP_TYPE_ROUTE",

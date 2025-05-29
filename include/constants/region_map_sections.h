@@ -221,9 +221,17 @@
 #define MAPSEC_TOPISLE                      0xE4
 #define MAPSEC_DRYUGON                      0xE5
 #define MAPSEC_SABERSIDE_TOWN               0xE6
+#define MAPSEC_HANABI_CITY                  0xE7
+#define MAPSEC_PUDDLE_PATH                  0xE8
+#define MAPSEC_SABERSIDE_QUARRY             0xE9
+#define MAPSEC_FISHERMANS_CHANNEL_WINDYCAPE 0xEA
+#define MAPSEC_FISHERMANS_CHANNEL_MAGURO    0xEB
+#define MAPSEC_FISHERMANS_CHANNEL_BOTTOM    0xEC
+#define MAPSEC_FISHERMANS_CHANNEL_SACRED    0xED
+#define MAPSEC_FISHERMANS_SHRINE            0xEF
 
-#define MAPSEC_DUMMY                        0xE7
-#define MAPSEC_NONE                         0xE8
+#define MAPSEC_DUMMY                        0xF0
+#define MAPSEC_NONE                         0xF1
 
 #define METLOC_EGG_SHAMISEN                 0xFD
 #define METLOC_IN_GAME_TRADE                0xFE

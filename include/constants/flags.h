@@ -1400,6 +1400,8 @@
 #define FLAG_VISITED_MOSSDEEP_CITY                  (SYSTEM_FLAGS + 0x26)
 #define FLAG_VISITED_SOOTOPOLIS_CITY                (SYSTEM_FLAGS + 0x27)
 #define FLAG_VISITED_EVER_GRANDE_CITY               (SYSTEM_FLAGS + 0x28)
+#define FLAG_VISITED_HANABI_CITY                    (SYSTEM_FLAGS + 0x29)
+#define FLAG_VISITED_COREEF_ISLE                    (SYSTEM_FLAGS + 0x2A)
 
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)

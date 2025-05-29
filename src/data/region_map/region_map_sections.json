@@ -1139,10 +1139,10 @@
     {
       "map_section": "MAPSEC_BURNFOOT_PASS",
       "name": "Burnfoot Pass",
-      "x": 14,
+      "x": 16,
       "y": 7,
-      "width": 3,
-      "height": 3
+      "width": 1,
+      "height": 2
     },
     {
       "map_section": "MAPSEC_MT_KAZAN_EXTERIOR",
@@ -1197,6 +1197,102 @@
       "name": "Crobat Hideout",
       "x": 20,
       "y": 13,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_HANABI_CITY",
+      "name": "Hanabi City",
+      "x": 13,
+      "y": 8,
+      "width": 1,
+      "height": 2
+    },
+    {
+      "map_section": "MAPSEC_PUDDLE_PATH",
+      "name": "Puddle Path",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "height": 3
+    },
+    {
+      "map_section": "MAPSEC_SABERSIDE_QUARRY",
+      "name": "Saberside Quarry",
+      "x": 11,
+      "y": 3,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_FISHERMANS_CHANNEL_WINDYCAPE",
+      "name": "Fisherman's Channel",
+      "x": 23,
+      "y": 1,
+      "width": 4,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_FISHERMANS_CHANNEL_MAGURO",
+      "name": "Fisherman's Channel",
+      "x": 26,
+      "y": 2,
+      "width": 1,
+      "height": 4
+    },
+    {
+      "map_section": "MAPSEC_FISHERMANS_CHANNEL_BOTTOM",
+      "name": "Fisherman's Channel",
+      "x": 27,
+      "y": 5,
+      "width": 1,
+      "height": 3
+    },
+    {
+      "map_section": "MAPSEC_FISHERMANS_CHANNEL_SACRED",
+      "name": "Fisherman's Channel",
+      "x": 26,
+      "y": 8,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_OPEN_SEA_CORAL",
+      "name": "Open Sea",
+      "x": 4,
+      "y": 0,
+      "width": 3,
+      "height": 5
+    },
+    {
+      "map_section": "MAPSEC_OPEN_SEA_HAVEN",
+      "name": "Open Sea",
+      "x": 3,
+      "y": 5,
+      "width": 4,
+      "height": 5
+    },
+    {
+      "map_section": "MAPSEC_OPEN_SEA_LEAGUE",
+      "name": "Open Sea",
+      "x": 0,
+      "y": 5,
+      "width": 3,
+      "height": 5
+    },
+    {
+      "map_section": "MAPSEC_OPEN_SEA_ICY",
+      "name": "Icy Waters",
+      "x": 0,
+      "y": 0,
+      "width": 4,
+      "height": 5
+    },
+    {
+      "map_section": "MAPSEC_FISHERMANS_SHRINE",
+      "name": "Fisherman's Shrine",
+      "x": 25,
+      "y": 8,
       "width": 1,
       "height": 1
     }
