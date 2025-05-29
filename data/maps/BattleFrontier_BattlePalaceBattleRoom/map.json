@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_PALACE_BATTLE_PLAYER",
       "graphics_id": "OBJ_EVENT_GFX_VAR_1",
       "x": 1,
       "y": 9,
@@ -35,6 +36,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_PALACE_BATTLE_OPPONENT",
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
       "x": 13,
       "y": 1,
@@ -55,6 +57,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_PALACE_BATTLE_ATTENDANT",
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
       "x": 1,
       "y": 4,
@@ -75,6 +78,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_PALACE_DUSCLOPS",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(DUSCLOPS)",
       "x": 13,
       "y": 1,
@@ -95,6 +99,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_PALACE_AZURILL",
       "graphics_id": "OBJ_EVENT_GFX_AZURILL",
       "x": 13,
       "y": 1,

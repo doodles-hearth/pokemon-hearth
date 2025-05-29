@@ -1,6 +1,3 @@
-const LOCALID_BEAN = 4
-const LOCALID_SLOWPOKE = 5
-
 mapscripts MaguroHarbor_Refuge_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_MAGURO_HARBOR)

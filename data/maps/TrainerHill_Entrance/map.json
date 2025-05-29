@@ -15,6 +15,7 @@
   "connections": 0,
   "object_events": [
     {
+      "local_id": "LOCALID_TRAINER_HILL_ATTENDANT",
       "graphics_id": "OBJ_EVENT_GFX_VALET",
       "x": 11,
       "y": 6,
@@ -35,6 +36,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRAINER_HILL_NURSE",
       "graphics_id": "OBJ_EVENT_GFX_NURSE",
       "x": 4,
       "y": 9,
@@ -75,6 +77,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRAINER_HILL_GIRL",
       "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
       "x": 5,
       "y": 14,
@@ -95,6 +98,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRAINER_HILL_MAN",
       "graphics_id": "OBJ_EVENT_GFX_MAN_3",
       "x": 14,
       "y": 15,

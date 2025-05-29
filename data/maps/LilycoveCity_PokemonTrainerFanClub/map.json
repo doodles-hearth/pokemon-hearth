@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_TRAINER_FAN_CLUB_LASS",
       "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 3,
       "y": 11,
@@ -35,6 +36,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRAINER_FAN_CLUB_MAN",
       "graphics_id": "OBJ_EVENT_GFX_MAN_4",
       "x": 8,
       "y": 10,
@@ -55,6 +57,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRAINER_FAN_CLUB_POKEFAN_M",
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
       "x": 6,
       "y": 11,
@@ -75,6 +78,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRAINER_FAN_CLUB_LITTLE_GIRL",
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
       "x": 5,
       "y": 8,
@@ -95,6 +99,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRAINER_FAN_CLUB_NINJA_BOY",
       "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
       "x": 7,
       "y": 11,
@@ -115,6 +120,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRAINER_FAN_CLUB_BOY",
       "graphics_id": "OBJ_EVENT_GFX_BOY_2",
       "x": 1,
       "y": 9,
@@ -135,6 +141,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRAINER_FAN_CLUB_WOMAN",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
       "x": 3,
       "y": 10,
@@ -155,6 +162,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRAINER_FAN_CLUB_EXPERT_F",
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
       "x": 10,
       "y": 10,

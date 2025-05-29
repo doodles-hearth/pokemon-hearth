@@ -255,7 +255,7 @@ static void CreateUnvisitedTownIcons(void)
     u16 shape;
     u8 spriteId;
 
-    for (mapSecId = MAPSEC_TOWNS_START; mapSecId <= MAPSEC_TOWNS_END; mapSecId++)
+    for (mapSecId = MAPSEC_TOWNS_START; mapSecId < MAPSEC_NONE; mapSecId++)
     {
         if (GetMapsecType(mapSecId) == MAPSECTYPE_CITY_CANTFLY)
         {

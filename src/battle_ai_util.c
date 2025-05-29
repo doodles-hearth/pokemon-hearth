@@ -481,18 +481,49 @@ static inline s32 DmgRoll(s32 dmg)
     return dmg;
 }
 
-bool32 IsDamageMoveUnusable(u32 battlerAtk, u32 battlerDef, u32 move, u32 moveType)
+bool32 IsDamageMoveUnusable(u32 battlerAtk, u32 battlerDef, u32 move, u32 moveType, uq4_12_t effectiveness, u32 weather)
 {
+    u32 battlerDefAbility;
+    u32 partnerDefAbility;
     struct AiLogicData *aiData = gAiLogicData;
 
+    if (effectiveness == UQ_4_12(0.0))
+        return TRUE;
     if (gBattleStruct->battlerState[battlerDef].commandingDondozo)
         return TRUE;
 
-    if (CanAbilityBlockMove(battlerAtk, battlerDef, aiData->abilities[battlerAtk], aiData->abilities[battlerDef], move, ABILITY_CHECK_TRIGGER_AI))
+    // aiData->abilities does not check for Mold Breaker since it happens during combat so it needs to be done manually
+    if (IsMoldBreakerTypeAbility(battlerAtk, aiData->abilities[battlerAtk]) || MoveIgnoresTargetAbility(move))
+    {
+        battlerDefAbility = ABILITY_NONE;
+        partnerDefAbility = ABILITY_NONE;
+    }
+    else
+    {
+        battlerDefAbility = aiData->abilities[battlerDef];
+        partnerDefAbility = aiData->abilities[BATTLE_PARTNER(battlerDef)];
+    }
+
+    if (CanAbilityBlockMove(battlerAtk, battlerDef, aiData->abilities[battlerAtk], battlerDefAbility, move, ABILITY_CHECK_TRIGGER))
         return TRUE;
 
-    if (CanAbilityAbsorbMove(battlerAtk, battlerDef, aiData->abilities[battlerDef], move, moveType, ABILITY_CHECK_TRIGGER_AI))
+    if (CanAbilityAbsorbMove(battlerAtk, battlerDef, battlerDefAbility, move, moveType, ABILITY_CHECK_TRIGGER))
         return TRUE;
+
+    // Limited to Lighning Rod and Storm Drain because otherwise the AI would consider Water Absorb, etc...
+    if (partnerDefAbility == ABILITY_LIGHTNING_ROD || partnerDefAbility == ABILITY_STORM_DRAIN)
+    {
+        if (CanAbilityAbsorbMove(battlerAtk, BATTLE_PARTNER(battlerDef), partnerDefAbility, move, moveType, ABILITY_CHECK_TRIGGER))
+            return TRUE;
+    }
+
+    if (HasWeatherEffect())
+    {
+        if (weather & B_WEATHER_SUN_PRIMAL && moveType == TYPE_WATER)
+            return TRUE;
+        if (weather & B_WEATHER_RAIN_PRIMAL && moveType == TYPE_FIRE)
+            return TRUE;
+    }
 
     switch (GetMoveEffect(move))
     {
@@ -527,6 +558,11 @@ bool32 IsDamageMoveUnusable(u32 battlerAtk, u32 battlerDef, u32 move, u32 moveTy
         break;
     case EFFECT_FIRST_TURN_ONLY:
         if (!gDisableStructs[battlerAtk].isFirstTurn)
+            return TRUE;
+        break;
+    case EFFECT_EXPLOSION:
+    case EFFECT_MIND_BLOWN:
+        if (battlerDefAbility == ABILITY_DAMP || partnerDefAbility == ABILITY_DAMP)
             return TRUE;
         break;
     default:
@@ -729,7 +765,7 @@ struct SimulatedDamage AI_CalcDamage(u32 move, u32 battlerAtk, u32 battlerDef, u
 
     u32 movePower = GetMovePower(move);
     if (movePower)
-        isDamageMoveUnusable = IsDamageMoveUnusable(battlerAtk, battlerDef, move, moveType);
+        isDamageMoveUnusable = IsDamageMoveUnusable(battlerAtk, battlerDef, move, moveType, effectivenessMultiplier, weather);
 
     if (movePower && !isDamageMoveUnusable)
     {
@@ -1488,6 +1524,26 @@ u32 AI_GetWeather(void)
     return gBattleWeather;
 }
 
+enum WeatherState IsWeatherActive(u32 flags)
+{
+    enum WeatherState state = WEATHER_INACTIVE;
+
+    if (gBattleWeather & flags)
+        state = WEATHER_ACTIVE;
+    else
+        state = WEATHER_INACTIVE;
+
+    if (!AI_WeatherHasEffect())
+    {
+        if (state == WEATHER_ACTIVE)
+            state = WEATHER_ACTIVE_BUT_BLOCKED;
+        else
+            state = WEATHER_INACTIVE_AND_BLOCKED;
+    }
+
+    return state;
+}
+
 bool32 IsAromaVeilProtectedEffect(enum BattleMoveEffects moveEffect)
 {
     switch (moveEffect)
@@ -1724,19 +1780,18 @@ bool32 ShouldTryOHKO(u32 battlerAtk, u32 battlerDef, u32 atkAbility, u32 defAbil
 
 bool32 ShouldSetSandstorm(u32 battler, u32 ability, enum ItemHoldEffect holdEffect)
 {
-    u32 weather = AI_GetWeather();
-    if (weather & B_WEATHER_SANDSTORM)
+    if (IsWeatherActive(B_WEATHER_SANDSTORM | B_WEATHER_PRIMAL_ANY) != WEATHER_INACTIVE)
         return FALSE;
 
     if (ability == ABILITY_SAND_VEIL
-      || ability == ABILITY_SAND_RUSH
-      || ability == ABILITY_SAND_FORCE
-      || ability == ABILITY_OVERCOAT
-      || ability == ABILITY_MAGIC_GUARD
-      || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
-      || IS_BATTLER_ANY_TYPE(battler, TYPE_ROCK, TYPE_GROUND, TYPE_STEEL)
-      || HasMoveWithEffect(battler, EFFECT_SHORE_UP)
-      || HasMoveWithEffect(battler, EFFECT_WEATHER_BALL))
+     || ability == ABILITY_SAND_RUSH
+     || ability == ABILITY_SAND_FORCE
+     || ability == ABILITY_OVERCOAT
+     || ability == ABILITY_MAGIC_GUARD
+     || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
+     || IS_BATTLER_ANY_TYPE(battler, TYPE_ROCK, TYPE_GROUND, TYPE_STEEL)
+     || HasMoveWithEffect(battler, EFFECT_SHORE_UP)
+     || HasMoveWithEffect(battler, EFFECT_WEATHER_BALL))
     {
         return TRUE;
     }
@@ -1745,21 +1800,20 @@ bool32 ShouldSetSandstorm(u32 battler, u32 ability, enum ItemHoldEffect holdEffe
 
 bool32 ShouldSetHail(u32 battler, u32 ability, enum ItemHoldEffect holdEffect)
 {
-    u32 weather = AI_GetWeather();
-    if (weather & (B_WEATHER_HAIL | B_WEATHER_SNOW))
+    if (IsWeatherActive(B_WEATHER_HAIL | B_WEATHER_SNOW | B_WEATHER_PRIMAL_ANY) != WEATHER_INACTIVE)
         return FALSE;
 
     if (ability == ABILITY_SNOW_CLOAK
-      || ability == ABILITY_ICE_BODY
-      || ability == ABILITY_FORECAST
-      || ability == ABILITY_SLUSH_RUSH
-      || ability == ABILITY_MAGIC_GUARD
-      || ability == ABILITY_OVERCOAT
-      || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
-      || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
-      || HasMoveWithFlag(battler, MoveAlwaysHitsInHailSnow)
-      || HasMoveWithEffect(battler, EFFECT_AURORA_VEIL)
-      || HasMoveWithEffect(battler, EFFECT_WEATHER_BALL))
+     || ability == ABILITY_ICE_BODY
+     || ability == ABILITY_FORECAST
+     || ability == ABILITY_SLUSH_RUSH
+     || ability == ABILITY_MAGIC_GUARD
+     || ability == ABILITY_OVERCOAT
+     || holdEffect == HOLD_EFFECT_SAFETY_GOGGLES
+     || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
+     || HasMoveWithFlag(battler, MoveAlwaysHitsInHailSnow)
+     || HasMoveWithEffect(battler, EFFECT_AURORA_VEIL)
+     || HasMoveWithEffect(battler, EFFECT_WEATHER_BALL))
     {
         return TRUE;
     }
@@ -1768,8 +1822,7 @@ bool32 ShouldSetHail(u32 battler, u32 ability, enum ItemHoldEffect holdEffect)
 
 bool32 ShouldSetRain(u32 battlerAtk, u32 atkAbility, enum ItemHoldEffect holdEffect)
 {
-    u32 weather = AI_GetWeather();
-    if (weather & B_WEATHER_RAIN)
+    if (IsWeatherActive(B_WEATHER_RAIN | B_WEATHER_PRIMAL_ANY) != WEATHER_INACTIVE)
         return FALSE;
 
     if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA
@@ -1789,8 +1842,7 @@ bool32 ShouldSetRain(u32 battlerAtk, u32 atkAbility, enum ItemHoldEffect holdEff
 
 bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, enum ItemHoldEffect holdEffect)
 {
-    u32 weather = AI_GetWeather();
-    if (weather & B_WEATHER_SUN)
+    if (IsWeatherActive(B_WEATHER_SUN | B_WEATHER_PRIMAL_ANY) != WEATHER_INACTIVE)
         return FALSE;
 
     if (holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA
@@ -1815,18 +1867,17 @@ bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, enum ItemHoldEffect holdEffe
 
 bool32 ShouldSetSnow(u32 battler, u32 ability, enum ItemHoldEffect holdEffect)
 {
-    u32 weather = AI_GetWeather();
-    if (weather & (B_WEATHER_SNOW | B_WEATHER_HAIL))
+    if (IsWeatherActive(B_WEATHER_SNOW | B_WEATHER_HAIL | B_WEATHER_PRIMAL_ANY) != WEATHER_INACTIVE)
         return FALSE;
 
     if (ability == ABILITY_SNOW_CLOAK
-      || ability == ABILITY_ICE_BODY
-      || ability == ABILITY_FORECAST
-      || ability == ABILITY_SLUSH_RUSH
-      || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
-      || HasMoveWithFlag(battler, MoveAlwaysHitsInHailSnow)
-      || HasMoveWithEffect(battler, EFFECT_AURORA_VEIL)
-      || HasMoveWithEffect(battler, EFFECT_WEATHER_BALL))
+     || ability == ABILITY_ICE_BODY
+     || ability == ABILITY_FORECAST
+     || ability == ABILITY_SLUSH_RUSH
+     || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
+     || HasMoveWithFlag(battler, MoveAlwaysHitsInHailSnow)
+     || HasMoveWithEffect(battler, EFFECT_AURORA_VEIL)
+     || HasMoveWithEffect(battler, EFFECT_WEATHER_BALL))
     {
         return TRUE;
     }
@@ -2192,6 +2243,31 @@ bool32 HasMoveWithEffect(u32 battlerId, enum BattleMoveEffects effect)
     return FALSE;
 }
 
+bool32 HasBattlerSideMoveWithEffect(u32 battler, u32 effect)
+{
+    if (HasMoveWithEffect(battler, effect))
+        return TRUE;
+    if (IsDoubleBattle() && HasMoveWithEffect(BATTLE_OPPOSITE(battler), effect))
+        return TRUE;
+    return FALSE;
+}
+
+// HasBattlerSideMoveWithEffect checks if the AI knows a side has a move effect,
+// while HasBattlerSideUsedMoveWithEffect checks if the side has ever used a move effect.
+// The former acts the same way as the latter if AI_FLAG_OMNISCIENT isn't used.
+bool32 HasBattlerSideUsedMoveWithEffect(u32 battler, u32 effect)
+{
+    u32 i;
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (GetMoveEffect(gBattleHistory->usedMoves[battler][i]) == effect)
+            return TRUE;
+        if (IsDoubleBattle() && GetMoveEffect(gBattleHistory->usedMoves[BATTLE_OPPOSITE(battler)][i]) == effect)
+            return TRUE;
+    }
+    return FALSE;
+}
+
 bool32 HasNonVolatileMoveEffect(u32 battlerId, u32 effect)
 {
     s32 i;
@@ -2234,6 +2310,31 @@ bool32 HasMoveWithAdditionalEffect(u32 battlerId, u32 moveEffect)
             return TRUE;
     }
 
+    return FALSE;
+}
+
+bool32 HasBattlerSideMoveWithAdditionalEffect(u32 battler, u32 moveEffect)
+{
+    if (HasMoveWithAdditionalEffect(battler, moveEffect))
+        return TRUE;
+    if (IsDoubleBattle() && HasMoveWithAdditionalEffect(BATTLE_OPPOSITE(battler), moveEffect))
+        return TRUE;
+    return FALSE;
+}
+
+// HasBattlerSideMoveWithAdditionalEffect checks if the AI knows a side has a move effect,
+// while HasBattlerSideUsedMoveWithAdditionalEffect checks if the side has ever used a move effect.
+// The former acts the same way as the latter if AI_FLAG_OMNISCIENT isn't used.
+bool32 HasBattlerSideUsedMoveWithAdditionalEffect(u32 battler, u32 moveEffect)
+{
+    u32 i;
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        if (MoveHasAdditionalEffect(gBattleHistory->usedMoves[battler][i], moveEffect))
+            return TRUE;
+        if (IsDoubleBattle() && MoveHasAdditionalEffect(gBattleHistory->usedMoves[BATTLE_OPPOSITE(battler)][i], moveEffect))
+            return TRUE;
+    }
     return FALSE;
 }
 
@@ -4071,10 +4172,19 @@ static enum AIScore IncreaseStatUpScoreInternal(u32 battlerAtk, u32 battlerDef, 
         return NO_INCREASE;
 
     // Don't increase stats if opposing battler has Encore
-    if (HasMoveWithEffect(battlerDef, EFFECT_ENCORE))
+    if (HasBattlerSideMoveWithEffect(battlerDef, EFFECT_ENCORE))
         return NO_INCREASE;
 
-    if (IsDoubleBattle() && HasMoveWithEffect(GetPartnerBattler(battlerDef), EFFECT_ENCORE))
+    // Don't increase stats if opposing battler has used Haze effect
+    if (HasBattlerSideUsedMoveWithEffect(battlerDef, EFFECT_HAZE)
+        || HasBattlerSideUsedMoveWithAdditionalEffect(battlerDef, MOVE_EFFECT_CLEAR_SMOG)
+        || HasBattlerSideUsedMoveWithAdditionalEffect(battlerDef, MOVE_EFFECT_HAZE))
+        return NO_INCREASE;
+
+    // Don't increase if AI is at +1 and opponent has Haze effect
+    if (gBattleMons[battlerAtk].statStages[statId] >= MAX_STAT_STAGE - 5 && (HasBattlerSideMoveWithEffect(battlerDef, EFFECT_HAZE)
+        || HasBattlerSideMoveWithAdditionalEffect(battlerDef, MOVE_EFFECT_CLEAR_SMOG)
+        || HasBattlerSideMoveWithAdditionalEffect(battlerDef, MOVE_EFFECT_HAZE)))
         return NO_INCREASE;
 
     // Predicting switch

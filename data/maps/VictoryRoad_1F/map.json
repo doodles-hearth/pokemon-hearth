@@ -75,6 +75,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_VICTORY_ROAD_ENTRANCE_WALLY",
       "graphics_id": "OBJ_EVENT_GFX_WALLY",
       "x": 12,
       "y": 25,

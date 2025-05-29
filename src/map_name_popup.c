@@ -81,7 +81,8 @@ static const u16 sMapPopUp_PaletteTable[][16] =
 
 static const u16 sMapPopUp_Palette_Underwater[16] = INCBIN_U16("graphics/map_popup/underwater.gbapal");
 
-static const u8 sRegionMapSectionId_To_PopUpThemeIdMapping[] =
+// -1 in the size excludes MAPSEC_NONE.
+static const u8 sMapSectionToThemeId[MAPSEC_COUNT - 1] =
 {
     [MAPSEC_PUDDLE_PATH] = MAPPOPUP_THEME_WOOD,
     [MAPSEC_SABERSIDE_QUARRY] = MAPPOPUP_THEME_STONE,
@@ -326,7 +327,6 @@ static void Task_MapNamePopUpWindow(u8 taskId)
         break;
     case STATE_WAIT:
         // Wait while the window is fully onscreen.
-        UpdateSecondaryPopUpWindow(GetSecondaryPopUpWindowId());
         if (++task->tOnscreenTimer > 120)
         {
             task->tOnscreenTimer = 0;
@@ -521,14 +521,6 @@ static void LoadMapNamePopUpWindowBg(void)
     if (OW_POPUP_GENERATION == GEN_5)
         secondaryPopUpWindowId = GetSecondaryPopUpWindowId();
 
-    /* if (regionMapSectionId >= KANTO_MAPSEC_START)
-    {
-        if (regionMapSectionId > KANTO_MAPSEC_END)
-            regionMapSectionId -= KANTO_MAPSEC_COUNT;
-        else
-            regionMapSectionId = 0; // Discard kanto region sections;
-    } */
-
     if (OW_POPUP_GENERATION == GEN_5)
     {
         popUpThemeId = sRegionMapSectionId_To_PopUpThemeIdMapping_BW[regionMapSectionId];
@@ -551,7 +543,7 @@ static void LoadMapNamePopUpWindowBg(void)
     }
     else
     {
-        popUpThemeId = sRegionMapSectionId_To_PopUpThemeIdMapping[regionMapSectionId];
+        popUpThemeId = sMapSectionToThemeId[regionMapSectionId];
         LoadBgTiles(GetWindowAttribute(popupWindowId, WINDOW_BG), sMapPopUp_OutlineTable[popUpThemeId], 0x400, 0x21D);
         CallWindowFunction(popupWindowId, DrawMapNamePopUpFrame);
         PutWindowTilemap(popupWindowId);

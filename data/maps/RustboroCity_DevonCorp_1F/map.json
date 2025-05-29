@@ -35,6 +35,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_DEVON_CORP_STAIR_GUARD",
       "graphics_id": "OBJ_EVENT_GFX_DEVON_EMPLOYEE",
       "x": 15,
       "y": 5,

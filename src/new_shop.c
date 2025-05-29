@@ -1183,7 +1183,7 @@ static inline const u8 *BuyMenuGetItemName(u32 id)
         case MART_TYPE_DECOR ... MART_TYPE_DECOR2:
             return gDecorations[sMartInfo.itemList[id]].name;
         default:
-            return ItemId_GetName(sMartInfo.itemList[id]);
+            return GetItemName(sMartInfo.itemList[id]);
         // custom
     #ifdef MUDSKIP_OUTFIT_SYSTEM
         case MART_TYPE_OUTFIT:
@@ -1199,7 +1199,7 @@ static inline const u8 *BuyMenuGetItemDesc(u32 id)
         case MART_TYPE_DECOR ... MART_TYPE_DECOR2:
             return gDecorations[sMartInfo.itemList[id]].description;
         default:
-            return ItemId_GetDescription(sMartInfo.itemList[id]);
+            return GetItemDescription(sMartInfo.itemList[id]);
         // custom
     #ifdef MUDSKIP_OUTFIT_SYSTEM
         case MART_TYPE_OUTFIT:
@@ -1215,7 +1215,7 @@ static inline u32 BuyMenuGetItemPrice(u32 id)
         case MART_TYPE_DECOR ... MART_TYPE_DECOR2:
             return gDecorations[sMartInfo.itemList[id]].price;
         default:
-            return ItemId_GetPrice(sMartInfo.itemList[id]);
+            return GetItemPrice(sMartInfo.itemList[id]);
         // custom
         case MART_TYPE_VARIABLE:
             return SearchItemListForPrice(sMartInfo.itemList[id]);
@@ -1305,7 +1305,7 @@ static void BuyMenuInitWindows(void)
             u32 item = sMartInfo.itemList[0];
             u16 quantity = CountTotalItemQuantityInBag(item);
 
-            if ((ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
+            if ((GetItemImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
                 || (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(0)))
                 BuyMenuPrint(WIN_MULTI, sText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, sText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
             else
@@ -1451,7 +1451,7 @@ static void UpdateItemData(void)
             {
                 u16 quantity = CountTotalItemQuantityInBag(item);
 
-                if ((ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
+                if ((GetItemImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
                     || (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(i)))
                     BuyMenuPrint(WIN_MULTI, sText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, sText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
                 else
@@ -1519,7 +1519,7 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
 
     if (sMartInfo.martType < MART_TYPE_DECOR)
     {
-        if (ItemId_GetImportance(sShopData->currentItemId) && (CheckBagHasItem(sShopData->currentItemId, 1) || CheckPCHasItem(sShopData->currentItemId, 1)))
+        if (GetItemImportance(sShopData->currentItemId) && (CheckBagHasItem(sShopData->currentItemId, 1) || CheckPCHasItem(sShopData->currentItemId, 1)))
         {
             PlaySE(SE_BOO);
             str = Shop_GetSellerMessage(SELLER_MSG_BUY_FAIL_SOLD_OUT);
@@ -1543,7 +1543,7 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
             default:
             {
                 CopyItemName(sShopData->currentItemId, gStringVar1);
-                if (ItemId_GetImportance(sShopData->currentItemId))
+                if (GetItemImportance(sShopData->currentItemId))
                 {
                     u32 price = BuyMenuGetItemPrice(GridMenu_SelectedIndex(sShopData->gridItems));
                     ConvertIntToDecimalStringN(gStringVar2, sShopData->totalCost, STR_CONV_MODE_LEFT_ALIGN, 6);
@@ -1783,7 +1783,7 @@ static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    if (ItemId_GetPocket(sShopData->currentItemId) == POCKET_POKE_BALLS)
+    if (GetItemPocket(sShopData->currentItemId) == POCKET_POKE_BALLS)
     {
         if (IsTextPrinterActive(WIN_ITEM_DESCRIPTION))
         {
@@ -1797,7 +1797,7 @@ static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
 
             if (premierBallsToAdd >= 1
              && ((I_PREMIER_BALL_BONUS <= GEN_7 && sShopData->currentItemId == ITEM_POKE_BALL)
-             || (I_PREMIER_BALL_BONUS >= GEN_8 && (ItemId_GetPocket(sShopData->currentItemId) == POCKET_POKE_BALLS))))
+             || (I_PREMIER_BALL_BONUS >= GEN_8 && (GetItemPocket(sShopData->currentItemId) == POCKET_POKE_BALLS))))
             {
                 u32 spaceAvailable = GetFreeSpaceForItemInBag(ITEM_PREMIER_BALL);
                 if (spaceAvailable < premierBallsToAdd)
