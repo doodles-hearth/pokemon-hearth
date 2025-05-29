@@ -450,8 +450,8 @@
     {
       "id": "MAPSEC_LEAGUE",
       "name": "Pokémon Council",
-      "x": 25,
-      "y": 8,
+      "x": 0,
+      "y": 6,
       "width": 1,
       "height": 1
     }

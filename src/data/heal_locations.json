@@ -135,44 +135,44 @@
     {
       "id": "HEAL_LOCATION_SUNRISE_VILLAGE",
       "map": "MAP_SUNRISE_VILLAGE",
-      "x": 3,
-      "y": 3
+      "x": 13,
+      "y": 13
     },
     {
       "id": "HEAL_LOCATION_CHII_TOWN",
       "map": "MAP_CHII_TOWN",
-      "x": 3,
-      "y": 3
+      "x": 13,
+      "y": 20
     },
     {
       "id": "HEAL_LOCATION_SAKU_TOWN",
       "map": "MAP_SAKU_TOWN",
-      "x": 3,
-      "y": 3
+      "x": 37,
+      "y": 20
     },
     {
       "id": "HEAL_LOCATION_KURA_TOWN",
       "map": "MAP_KURA_TOWN",
-      "x": 3,
-      "y": 3
+      "x": 34,
+      "y": 26
     },
     {
       "id": "HEAL_LOCATION_MAGURO_HARBOR",
       "map": "MAP_MAGURO_HARBOR",
-      "x": 3,
-      "y": 3
+      "x": 19,
+      "y": 12
     },
     {
       "id": "HEAL_LOCATION_SILVERIDGE",
       "map": "MAP_SILVERIDGE",
-      "x": 3,
-      "y": 3
+      "x": 30,
+      "y": 20
     },
     {
       "id": "HEAL_LOCATION_WINDY_CAPE2",
       "map": "MAP_WINDY_CAPE2",
-      "x": 3,
-      "y": 3
+      "x": 32,
+      "y": 55
     },
     {
       "id": "HEAL_LOCATION_YIFU_CITY",
@@ -183,14 +183,14 @@
     {
       "id": "HEAL_LOCATION_SOULKEEP",
       "map": "MAP_SOULKEEP",
-      "x": 3,
-      "y": 3
+      "x": 19,
+      "y": 24
     },
     {
       "id": "HEAL_LOCATION_HAVEN_ISLE",
       "map": "MAP_HAVEN_ISLE",
-      "x": 3,
-      "y": 3
+      "x": 31,
+      "y": 36
     },
     {
       "id": "HEAL_LOCATION_MIDDLE_ISLE",
@@ -207,8 +207,8 @@
     {
       "id": "HEAL_LOCATION_COREEF_ISLE",
       "map": "MAP_COREEF_ISLE",
-      "x": 3,
-      "y": 3
+      "x": 35,
+      "y": 10
     },
     {
       "id": "HEAL_LOCATION_DRYUGON",
@@ -219,8 +219,8 @@
     {
       "id": "HEAL_LOCATION_SABERSIDE_TOWN",
       "map": "MAP_SABERSIDE_TOWN",
-      "x": 3,
-      "y": 3
+      "x": 7,
+      "y": 20
     },
     {
       "id": "HEAL_LOCATION_HANABI_CITY",

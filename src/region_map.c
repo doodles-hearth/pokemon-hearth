@@ -75,7 +75,7 @@ static EWRAM_DATA struct {
     u16 state;
     u16 mapSecId;
     struct RegionMap regionMap;
-    u8 tileBuffer[0x1c0];
+    u8 tileBuffer[0x2c0];
     u8 nameBuffer[0x26]; // never read
     bool8 choseFlyLocation;
 } *sFlyMap = NULL;
