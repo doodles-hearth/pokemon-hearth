@@ -40,6 +40,8 @@ enum MapPopUp_Themes
     MAPPOPUP_THEME_HEARTH_MARBLE,
     MAPPOPUP_THEME_HEARTH_SCROLL,
     MAPPOPUP_THEME_HEARTH_STONE,
+    MAPPOPUP_THEME_HEARTH_STEEL,
+    MAPPOPUP_THEME_HEARTH_CROBAT,
     MAPPOPUP_THEME_COUNT
 };
 
@@ -73,6 +75,8 @@ static const u8 sMapPopUp_Table[MAPPOPUP_THEME_COUNT][960] =
     [MAPPOPUP_THEME_HEARTH_MARBLE]     = INCBIN_U8("graphics/map_popup/hearth/marble.4bpp"),
     [MAPPOPUP_THEME_HEARTH_SCROLL]     = INCBIN_U8("graphics/map_popup/hearth/scroll.4bpp"),
     [MAPPOPUP_THEME_HEARTH_STONE]      = INCBIN_U8("graphics/map_popup/hearth/stone.4bpp"),
+    [MAPPOPUP_THEME_HEARTH_STEEL]      = INCBIN_U8("graphics/map_popup/hearth/steel.4bpp"),
+    [MAPPOPUP_THEME_HEARTH_CROBAT]     = INCBIN_U8("graphics/map_popup/hearth/crobat.4bpp"),
 };
 
 static const u8 sMapPopUp_OutlineTable[MAPPOPUP_THEME_COUNT][960] =
@@ -90,6 +94,8 @@ static const u8 sMapPopUp_OutlineTable[MAPPOPUP_THEME_COUNT][960] =
     [MAPPOPUP_THEME_HEARTH_MARBLE]     = INCBIN_U8("graphics/map_popup/hearth/marble_outline.4bpp"),
     [MAPPOPUP_THEME_HEARTH_SCROLL]     = INCBIN_U8("graphics/map_popup/hearth/scroll_outline.4bpp"),
     [MAPPOPUP_THEME_HEARTH_STONE]      = INCBIN_U8("graphics/map_popup/hearth/stone_outline.4bpp"),
+    [MAPPOPUP_THEME_HEARTH_STEEL]      = INCBIN_U8("graphics/map_popup/hearth/steel_outline.4bpp"),
+    [MAPPOPUP_THEME_HEARTH_CROBAT]     = INCBIN_U8("graphics/map_popup/hearth/crobat_outline.4bpp"),
 };
 
 static const u16 sMapPopUp_PaletteTable[MAPPOPUP_THEME_COUNT][16] =
@@ -107,6 +113,8 @@ static const u16 sMapPopUp_PaletteTable[MAPPOPUP_THEME_COUNT][16] =
     [MAPPOPUP_THEME_HEARTH_MARBLE]     = INCBIN_U16("graphics/map_popup/hearth/marble_outline.gbapal"),
     [MAPPOPUP_THEME_HEARTH_SCROLL]     = INCBIN_U16("graphics/map_popup/hearth/scroll_outline.gbapal"),
     [MAPPOPUP_THEME_HEARTH_STONE]      = INCBIN_U16("graphics/map_popup/hearth/stone_outline.gbapal"),
+    [MAPPOPUP_THEME_HEARTH_STEEL]      = INCBIN_U16("graphics/map_popup/hearth/steel_outline.gbapal"),
+    [MAPPOPUP_THEME_HEARTH_CROBAT]     = INCBIN_U16("graphics/map_popup/hearth/crobat_outline.gbapal"),
 };
 
 static const u16 sMapPopUp_Palette_Underwater[16] = INCBIN_U16("graphics/map_popup/hearth/underwater.gbapal");
@@ -148,10 +156,10 @@ static const u8 sMapSectionToThemeId[MAPSEC_COUNT - 1] =
     [MAPSEC_OPEN_SEA_LEAGUE] = MAPPOPUP_THEME_HEARTH_WATER,
     [MAPSEC_OPEN_SEA_ICY] = MAPPOPUP_THEME_HEARTH_WATER,
     [MAPSEC_SABERSIDE_CHANNEL] = MAPPOPUP_THEME_HEARTH_WATER,
-    [MAPSEC_CROBAT_HIDEOUT] = MAPPOPUP_THEME_HEARTH_STONE,
+    [MAPSEC_CROBAT_HIDEOUT] = MAPPOPUP_THEME_HEARTH_CROBAT,
     [MAPSEC_SUNRISE_CAVE] = MAPPOPUP_THEME_HEARTH_STONE,
     [MAPSEC_GINKO_WOODS] = MAPPOPUP_THEME_HEARTH_WOOD,
-    [MAPSEC_SECRET_BASE] = MAPPOPUP_THEME_HEARTH_KINTSUGI,
+    [MAPSEC_SECRET_BASE] = MAPPOPUP_THEME_HEARTH_WOOD,
     [MAPSEC_DYNAMIC] = MAPPOPUP_THEME_HEARTH_SCROLL,
     [MAPSEC_SUNRISE_VILLAGE] = MAPPOPUP_THEME_HEARTH_WOOD,
     [MAPSEC_CHII_TOWN] = MAPPOPUP_THEME_HEARTH_WOOD,
@@ -166,7 +174,7 @@ static const u8 sMapSectionToThemeId[MAPSEC_COUNT - 1] =
     [MAPSEC_MIDDLEISLE] = MAPPOPUP_THEME_HEARTH_UNDERWATER,
     [MAPSEC_TOPISLE] = MAPPOPUP_THEME_HEARTH_UNDERWATER,
     [MAPSEC_DRYUGON] = MAPPOPUP_THEME_HEARTH_KINTSUGI,
-    [MAPSEC_SABERSIDE_TOWN] = MAPPOPUP_THEME_HEARTH_KINTSUGI,
+    [MAPSEC_SABERSIDE_TOWN] = MAPPOPUP_THEME_HEARTH_STEEL,
     [MAPSEC_HANABI_CITY] = MAPPOPUP_THEME_HEARTH_SCROLL,
     [MAPSEC_LEAGUE] = MAPPOPUP_THEME_HEARTH_KINTSUGI,
 };
