@@ -1685,6 +1685,18 @@ void LoadBallGfx(u8 ballId)
         LoadCompressedSpriteSheetUsingHeap(&gBallSpriteSheets[ballId]);
         LoadSpritePalette(&gBallSpritePalettes[ballId]);
     }
+
+    // TODO is this needed?
+    /* switch (ballId)
+    {
+    case BALL_POKE ... BALL_MASTER:
+    case BALL_NET ... BALL_NEST:
+    case BALL_REPEAT:
+    case BALL_SAFARI:
+        var = GetSpriteTileStartByTag(gBallSpriteSheets[ballId].tag);
+        DecompressDataWithHeaderVram(gOpenPokeballGfx, (void *)(OBJ_VRAM0 + 0x100 + var * 32));
+        break;
+    } */
 }
 
 void FreeBallGfx(u8 ballId)

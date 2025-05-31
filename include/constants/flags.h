@@ -84,7 +84,7 @@
 #define FLAG_HIDE_DEADNIGHT_TAMA    0x40 // Hides Tama in deadnight
 #define FLAG_HIDE_TAMASDAD    0x41 // Hides tama's dad in Saku
 #define FLAG_LIED_TO_SHAMISEN_PLAYER 0x42
-#define FLAG_NO_WHITEOUT    0x43
+#define FLAG_UNUSED_0x043    0x43 // Unused Flag
 #define FLAG_UNUSED_0x044    0x44 // Unused Flag
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
