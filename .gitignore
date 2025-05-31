@@ -13,6 +13,9 @@
 *.8bpp
 *.gbapal
 *.lz
+*.smol
+*.fastSmol
+*.smolTM
 *.rl
 *.latfont
 *.hwjpnfont
@@ -44,6 +47,8 @@ convert_inc.sh
 tools/trainerproc/trainerproc
 *.mp4
 tools/poryscript
+tools/compresSmol/compresSmol
+tools/compresSmol/compresSmolTilemap
 *.Identifier
 *.smol
 *.fastSmol
