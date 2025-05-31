@@ -120,7 +120,7 @@ static bool32 DecompressImgPrintResultsVram(const u32 *img, const u32 *orgImg, c
     return areEqual;
 }
 
-static bool32 DecompressTilemapPrintResults(const u32 *tilemap, const u16 *orgTilemap, const char *tilemapName, s32 mode, s32 size)
+UNUSED static bool32 DecompressTilemapPrintResults(const u32 *tilemap, const u16 *orgTilemap, const char *tilemapName, s32 mode, s32 size)
 {
     u32 tilemapSize = GetDecompressedDataSize(tilemap);
     u16 *compBuffer = Alloc(tilemapSize);
@@ -170,7 +170,7 @@ static bool32 DecompressTilemapPrintResults(const u32 *tilemap, const u16 *orgTi
     return areEqual;
 }
 
-static bool32 DecompressTilemapPrintResultsVram(const u32 *tilemap, const u16 *orgTilemap, const char *tilemapName, s32 mode, s32 size)
+UNUSED static bool32 DecompressTilemapPrintResultsVram(const u32 *tilemap, const u16 *orgTilemap, const char *tilemapName, s32 mode, s32 size)
 {
     u32 tilemapSize = GetDecompressedDataSize(tilemap);
     u16 *compBuffer = (u16 *)VRAM;
