@@ -42,6 +42,7 @@ enum MapPopUp_Themes
     MAPPOPUP_THEME_HEARTH_STONE,
     MAPPOPUP_THEME_HEARTH_STEEL,
     MAPPOPUP_THEME_HEARTH_CROBAT,
+    MAPPOPUP_THEME_HEARTH_GINKO,
     MAPPOPUP_THEME_COUNT
 };
 
@@ -77,6 +78,7 @@ static const u8 sMapPopUp_Table[MAPPOPUP_THEME_COUNT][960] =
     [MAPPOPUP_THEME_HEARTH_STONE]      = INCBIN_U8("graphics/map_popup/hearth/stone.4bpp"),
     [MAPPOPUP_THEME_HEARTH_STEEL]      = INCBIN_U8("graphics/map_popup/hearth/steel.4bpp"),
     [MAPPOPUP_THEME_HEARTH_CROBAT]     = INCBIN_U8("graphics/map_popup/hearth/crobat.4bpp"),
+    [MAPPOPUP_THEME_HEARTH_GINKO]     = INCBIN_U8("graphics/map_popup/hearth/ginko.4bpp"),
 };
 
 static const u8 sMapPopUp_OutlineTable[MAPPOPUP_THEME_COUNT][960] =
@@ -96,6 +98,7 @@ static const u8 sMapPopUp_OutlineTable[MAPPOPUP_THEME_COUNT][960] =
     [MAPPOPUP_THEME_HEARTH_STONE]      = INCBIN_U8("graphics/map_popup/hearth/stone_outline.4bpp"),
     [MAPPOPUP_THEME_HEARTH_STEEL]      = INCBIN_U8("graphics/map_popup/hearth/steel_outline.4bpp"),
     [MAPPOPUP_THEME_HEARTH_CROBAT]     = INCBIN_U8("graphics/map_popup/hearth/crobat_outline.4bpp"),
+    [MAPPOPUP_THEME_HEARTH_GINKO]     = INCBIN_U8("graphics/map_popup/hearth/ginko_outline.4bpp"),
 };
 
 static const u16 sMapPopUp_PaletteTable[MAPPOPUP_THEME_COUNT][16] =
@@ -115,6 +118,7 @@ static const u16 sMapPopUp_PaletteTable[MAPPOPUP_THEME_COUNT][16] =
     [MAPPOPUP_THEME_HEARTH_STONE]      = INCBIN_U16("graphics/map_popup/hearth/stone_outline.gbapal"),
     [MAPPOPUP_THEME_HEARTH_STEEL]      = INCBIN_U16("graphics/map_popup/hearth/steel_outline.gbapal"),
     [MAPPOPUP_THEME_HEARTH_CROBAT]     = INCBIN_U16("graphics/map_popup/hearth/crobat_outline.gbapal"),
+    [MAPPOPUP_THEME_HEARTH_GINKO]     = INCBIN_U16("graphics/map_popup/hearth/ginko_outline.gbapal"),
 };
 
 static const u16 sMapPopUp_Palette_Underwater[16] = INCBIN_U16("graphics/map_popup/hearth/underwater.gbapal");
@@ -158,11 +162,11 @@ static const u8 sMapSectionToThemeId[MAPSEC_COUNT - 1] =
     [MAPSEC_SABERSIDE_CHANNEL] = MAPPOPUP_THEME_HEARTH_WATER,
     [MAPSEC_CROBAT_HIDEOUT] = MAPPOPUP_THEME_HEARTH_CROBAT,
     [MAPSEC_SUNRISE_CAVE] = MAPPOPUP_THEME_HEARTH_STONE,
-    [MAPSEC_GINKO_WOODS] = MAPPOPUP_THEME_HEARTH_WOOD,
+    [MAPSEC_GINKO_WOODS] = MAPPOPUP_THEME_HEARTH_GINKO,
     [MAPSEC_SECRET_BASE] = MAPPOPUP_THEME_HEARTH_WOOD,
     [MAPSEC_DYNAMIC] = MAPPOPUP_THEME_HEARTH_SCROLL,
-    [MAPSEC_SUNRISE_VILLAGE] = MAPPOPUP_THEME_HEARTH_WOOD,
-    [MAPSEC_CHII_TOWN] = MAPPOPUP_THEME_HEARTH_WOOD,
+    [MAPSEC_SUNRISE_VILLAGE] = MAPPOPUP_THEME_HEARTH_GINKO,
+    [MAPSEC_CHII_TOWN] = MAPPOPUP_THEME_HEARTH_GINKO,
     [MAPSEC_SAKU_TOWN] = MAPPOPUP_THEME_HEARTH_SCROLL,
     [MAPSEC_KURA_TOWN] = MAPPOPUP_THEME_HEARTH_SCROLL,
     [MAPSEC_MAGURO_HARBOR] = MAPPOPUP_THEME_HEARTH_WATER,
