@@ -853,7 +853,7 @@
 #define FLAG_HIDE_ROUTE_111_GABBY_AND_TY_1                          0x31C
 #define FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1                          0x31D
 #define FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1                          0x31E
-#define FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3                          0x31F
+#define FLAG_HIDE_ROUTE_111_GABBY_AND_TY_2                          0x31F
 #define FLAG_HIDE_LUGIA                                             0x320
 #define FLAG_HIDE_HO_OH                                             0x321
 #define FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER                    0x322
@@ -957,7 +957,7 @@
 #define FLAG_HIDE_ROUTE_110_TEAM_AQUA                               0x384
 #define FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2                          0x385
 #define FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2                          0x386
-#define FLAG_HIDE_ROUTE_111_GABBY_AND_TY_2                          0x387
+#define FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3                          0x387
 #define FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3                          0x388
 #define FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS                     0x389
 #define FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST                      0x38A
@@ -1373,22 +1373,27 @@
 #define NUM_BADGES                                   (1 + FLAG_BADGE08_GET - FLAG_BADGE01_GET)
 
 // Towns and Cities
+
 #define FLAG_VISITED_SUNRISE_VILLAGE                (SYSTEM_FLAGS + 0xF)
 #define FLAG_VISITED_CHII_TOWN                      (SYSTEM_FLAGS + 0x10)
 #define FLAG_VISITED_SAKU_TOWN                      (SYSTEM_FLAGS + 0x11)
 #define FLAG_VISITED_KURA_TOWN                      (SYSTEM_FLAGS + 0x12)
-#define FLAG_VISITED_FALLARBOR_TOWN                 (SYSTEM_FLAGS + 0x13)
-#define FLAG_VISITED_VERDANTURF_TOWN                (SYSTEM_FLAGS + 0x14)
-#define FLAG_VISITED_PACIFIDLOG_TOWN                (SYSTEM_FLAGS + 0x15)
-#define FLAG_VISITED_PETALBURG_CITY                 (SYSTEM_FLAGS + 0x16)
-#define FLAG_VISITED_SLATEPORT_CITY                 (SYSTEM_FLAGS + 0x17)
-#define FLAG_VISITED_MAUVILLE_CITY                  (SYSTEM_FLAGS + 0x18)
-#define FLAG_VISITED_RUSTBORO_CITY                  (SYSTEM_FLAGS + 0x19)
-#define FLAG_VISITED_FORTREE_CITY                   (SYSTEM_FLAGS + 0x1A)
-#define FLAG_VISITED_LILYCOVE_CITY                  (SYSTEM_FLAGS + 0x1B)
-#define FLAG_VISITED_MOSSDEEP_CITY                  (SYSTEM_FLAGS + 0x1C)
-#define FLAG_VISITED_SOOTOPOLIS_CITY                (SYSTEM_FLAGS + 0x1D)
-#define FLAG_VISITED_EVER_GRANDE_CITY               (SYSTEM_FLAGS + 0x1E)
+#define FLAG_VISITED_MAGURO_HARBOR                  (SYSTEM_FLAGS + 0x13)
+#define FLAG_VISITED_SILVERIDGE                     (SYSTEM_FLAGS + 0x14)
+#define FLAG_VISITED_WINDYCAPE                      (SYSTEM_FLAGS + 0x15)
+#define FLAG_VISITED_YIFU_CITY                      (SYSTEM_FLAGS + 0x16)
+#define FLAG_VISITED_SOULKEEP                       (SYSTEM_FLAGS + 0x17)
+#define FLAG_VISITED_HAVENISLE                      (SYSTEM_FLAGS + 0x18)
+#define FLAG_VISITED_MIDDLEISLE                     (SYSTEM_FLAGS + 0x19)
+#define FLAG_VISITED_TOPISLE                        (SYSTEM_FLAGS + 0x1A)
+#define FLAG_VISITED_COREEF_ISLE                    (SYSTEM_FLAGS + 0x1B)
+#define FLAG_VISITED_DRYUGON                        (SYSTEM_FLAGS + 0x1C)
+#define FLAG_VISITED_SABERSIDE_TOWN                 (SYSTEM_FLAGS + 0x1D)
+#define FLAG_VISITED_HANABI_CITY                    (SYSTEM_FLAGS + 0x1E)
+#define FLAG_VISITED_LEAGUE                         (SYSTEM_FLAGS + 0x1F)
+
+#define FLAGS_VISITED_START FLAG_VISITED_SUNRISE_VILLAGE
+#define FLAGS_VISITED_END   FLAG_VISITED_COREEF_ISLE
 
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)

@@ -27,18 +27,18 @@ MaguroHarbor_Refuge_EventScript_Hariko::
 	setseenmon SPECIES_SLOWPOKE
 	setnamedmon SPECIES_SLOWPOKE
 	setflag FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE
-	applymovement 4, MaguroHarbor_Refuge_EventScript_Hariko_Movement_0
-	waitmovement 4
+	applymovement LOCALID_BEAN, MaguroHarbor_Refuge_EventScript_Hariko_Movement_0
+	waitmovement LOCALID_BEAN
 	delay 60
 	playse SE_LEDGE
-	applymovement 5, MaguroHarbor_Refuge_EventScript_Hariko_Movement_1
-	waitmovement 5
+	applymovement LOCALID_SLOWPOKE, MaguroHarbor_Refuge_EventScript_Hariko_Movement_1
+	waitmovement LOCALID_SLOWPOKE
 	playmoncry SPECIES_SLOWPOKE, CRY_MODE_NORMAL
 	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_4
 	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_5
 	closemessage
-	applymovement 4, MaguroHarbor_Refuge_EventScript_Hariko_Movement_2
-	waitmovement 4
+	applymovement LOCALID_BEAN, MaguroHarbor_Refuge_EventScript_Hariko_Movement_2
+	waitmovement LOCALID_BEAN
 	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
 	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_6
 	goto MaguroHarbor_Refuge_BattleHariko

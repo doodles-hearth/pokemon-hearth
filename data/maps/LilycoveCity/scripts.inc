@@ -1,13 +1,10 @@
-.set LOCALID_WOMAN_1, 19
-.set LOCALID_MAN_1, 20
-
 LilycoveCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, LilycoveCity_OnLoad
 	.byte 0
 
 LilycoveCity_OnTransition:
-	setflag FLAG_VISITED_LILYCOVE_CITY
+	setflag FLAG_DUMMY
 	setvar VAR_CONTEST_HALL_STATE, 0
 	setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
 	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
@@ -136,13 +133,13 @@ LilycoveCity_EventScript_FatMan::
 LilycoveCity_EventScript_Man1::
 	lockall
 	msgbox LilycoveCity_Text_JustArrivedAndSawRarePokemon, MSGBOX_NPC
-	applymovement LOCALID_MAN_1, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_LILYCOVE_MAN_1, Common_Movement_FaceOriginalDirection
 	end
 
 LilycoveCity_EventScript_Woman1::
 	lockall
 	msgbox LilycoveCity_Text_HoneymoonVowToSeeRarePokemon, MSGBOX_NPC
-	applymovement LOCALID_WOMAN_1, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_LILYCOVE_WOMAN_1, Common_Movement_FaceOriginalDirection
 	end
 
 LilycoveCity_EventScript_CitySign::

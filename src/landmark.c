@@ -338,57 +338,20 @@ static const struct Landmark *const Landmarks_MtChimney_2[]  =
 
 static const struct LandmarkList sLandmarkLists[] =
 {
-    {MAPSEC_WINDSWEPT_ROUTE, 2, Landmarks_Route103_2},
-    {MAPSEC_WHITESLATE_ROUTE, 0, Landmarks_Route104_0},
-    {MAPSEC_WHITESLATE_ROUTE, 1, Landmarks_Route104_1},
-    {MAPSEC_SCENIC_ROUTE, 0, Landmarks_Route105_0},
-    {MAPSEC_HARVEST_SHRINE, 1, Landmarks_Route106_1},
-    {MAPSEC_MIDDLEISLE, 0, Landmarks_Route108_0},
-    {MAPSEC_TOPISLE, 0, Landmarks_Route109_0},
-    {MAPSEC_SEATURF_ROUTE, 0, Landmarks_Route110_0},
-    {MAPSEC_SEATURF_ROUTE, 1, Landmarks_Route110_1},
-    {MAPSEC_SEATURF_ROUTE, 2, Landmarks_Route110_2},
-    {MAPSEC_LONGTIDE_CHANNEL, 0, Landmarks_Route111_0},
-    {MAPSEC_LONGTIDE_CHANNEL, 1, Landmarks_Route111_1},
-    {MAPSEC_LONGTIDE_CHANNEL, 2, Landmarks_Route111_2},
-    {MAPSEC_LONGTIDE_CHANNEL, 3, Landmarks_Route111_3},
-    {MAPSEC_LONGTIDE_CHANNEL, 4, Landmarks_Route111_4},
-    {MAPSEC_LONG_TIDE_CHANNEL_SOULKEEP, 0, Landmarks_Route112_0},
-    {MAPSEC_LONG_TIDE_CHANNEL_SOULKEEP, 1, Landmarks_Route112_1},
-    {MAPSEC_DRAGONS_PASS, 1, Landmarks_Route113_1},
-    {MAPSEC_DRYUGON, 1, Landmarks_Route114_1},
-    {MAPSEC_DRYUGON, 2, Landmarks_Route114_2},
-    {MAPSEC_DRYUGON, 3, Landmarks_MeteorFalls},
-    {MAPSEC_BURNFOOT_PASS_BOTTOM, 0, Landmarks_MeteorFalls},
-    {MAPSEC_BURNFOOT_PASS_BOTTOM, 1, Landmarks_MeteorFalls},
-    {MAPSEC_STEEPSTONE_PASS_BOTTOM, 1, Landmarks_Route116_1},
-    {MAPSEC_STEEPSTONE_PASS_BOTTOM, 2, Landmarks_Route116_2},
-    {MAPSEC_BURNFOOT_PASS, 2, Landmarks_Route117_2},
-    {MAPSEC_STEEPSTONE_PASS, 1, Landmarks_Route119_1},
-    {MAPSEC_SHOGUNATE, 0, Landmarks_Route120_0},
-    {MAPSEC_SHOGUNATE, 2, Landmarks_Route120_2},
-    {MAPSEC_SCENIC_ROUTE_SABERSIDE, 2, Landmarks_Route121_2},
-    {MAPSEC_UUME_FOREST, 0, Landmarks_Route122_0},
-#ifdef BUGFIX
-    {MAPSEC_UUME_FOREST, 1, Landmarks_Route122_0},
-    {MAPSEC_COREEF_ISLE, 0, Landmarks_Route123_0},
-#else
-    {MAPSEC_COREEF_ISLE, 0, Landmarks_Route123_0},
-    {MAPSEC_UUME_FOREST, 1, Landmarks_Route122_0},
-#endif
-    {MAPSEC_COREEF_ISLE, 7, Landmarks_Route124_7},
-    {MAPSEC_OPEN_SEA_HAVEN, 2, Landmarks_Route125_2},
-    {MAPSEC_SABERSIDE_CHANNEL, 1, Landmarks_Route128_1},
-    {MAPSEC_ROUTE_131, 1, Landmarks_Route131_1},
-    {MAPSEC_ROUTE_132, 0, Landmarks_OceanCurrent},
-    {MAPSEC_ROUTE_132, 1, Landmarks_OceanCurrent},
-    {MAPSEC_ROUTE_133, 0, Landmarks_OceanCurrent},
-    {MAPSEC_ROUTE_133, 1, Landmarks_OceanCurrent},
-    {MAPSEC_ROUTE_133, 2, Landmarks_OceanCurrent},
-    {MAPSEC_ROUTE_134, 0, Landmarks_OceanCurrent},
-    {MAPSEC_ROUTE_134, 1, Landmarks_OceanCurrent},
-    {MAPSEC_ROUTE_134, 2, Landmarks_Route134_2},
-    {MAPSEC_MT_CHIMNEY, 2, Landmarks_MtChimney_2},
+    // Kept as examples
+    /* {MAPSEC_COREEF_ISLE, 7, Landmarks_Route124_7}, */
+    /* {MAPSEC_OPEN_SEA_HAVEN, 2, Landmarks_Route125_2}, */
+    /* {MAPSEC_SABERSIDE_CHANNEL, 1, Landmarks_Route128_1}, */
+    /* {MAPSEC_ROUTE_131, 1, Landmarks_Route131_1}, */
+    /* {MAPSEC_ROUTE_132, 0, Landmarks_OceanCurrent}, */
+    /* {MAPSEC_ROUTE_132, 1, Landmarks_OceanCurrent}, */
+    /* {MAPSEC_ROUTE_133, 0, Landmarks_OceanCurrent}, */
+    /* {MAPSEC_ROUTE_133, 1, Landmarks_OceanCurrent}, */
+    /* {MAPSEC_ROUTE_133, 2, Landmarks_OceanCurrent}, */
+    /* {MAPSEC_ROUTE_134, 0, Landmarks_OceanCurrent}, */
+    /* {MAPSEC_ROUTE_134, 1, Landmarks_OceanCurrent}, */
+    /* {MAPSEC_ROUTE_134, 2, Landmarks_Route134_2}, */
+    /* {MAPSEC_MT_CHIMNEY, 2, Landmarks_MtChimney_2}, */
     {MAPSEC_NONE, 0, NULL},
 };
 

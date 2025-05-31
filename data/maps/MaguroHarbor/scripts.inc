@@ -8,6 +8,7 @@ MaguroHarbor_MapScripts_MAP_SCRIPT_ON_LOAD:
 	return
 
 MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_MAGURO_HARBOR
 	setflag FLAG_TEMP_1
 	getweekday
 	compare VAR_RESULT, 0

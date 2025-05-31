@@ -25,6 +25,9 @@ mapscripts SunriseVillage_MapScripts {
             }
         }
     }
+    MAP_SCRIPT_ON_TRANSITION {
+        setflag(FLAG_VISITED_SUNRISE_VILLAGE)
+    }
 }
 
 // "Science is amazing" fat guy

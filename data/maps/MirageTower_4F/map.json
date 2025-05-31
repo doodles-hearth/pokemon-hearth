@@ -3,7 +3,7 @@
   "name": "MirageTower_4F",
   "layout": "LAYOUT_MIRAGE_TOWER_4F",
   "music": "MUS_MT_CHIMNEY",
-  "region_map_section": "MAPSEC_MIRAGE_TOWER",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",
@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_MIRAGE_ROOT_FOSSIL",
       "graphics_id": "OBJ_EVENT_GFX_FOSSIL",
       "x": 5,
       "y": 4,
@@ -35,6 +36,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MIRAGE_CLAW_FOSSIL",
       "graphics_id": "OBJ_EVENT_GFX_FOSSIL",
       "x": 7,
       "y": 4,

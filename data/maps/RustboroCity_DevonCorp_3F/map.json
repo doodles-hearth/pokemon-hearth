@@ -3,7 +3,7 @@
   "name": "RustboroCity_DevonCorp_3F",
   "layout": "LAYOUT_RUSTBORO_CITY_DEVON_CORP_3F",
   "music": "MUS_RUSTBORO",
-  "region_map_section": "MAPSEC_RUSTBORO_CITY",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -35,6 +35,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_DEVON_CORP_3F_EMPLOYEE",
       "graphics_id": "OBJ_EVENT_GFX_MAN_2",
       "x": 3,
       "y": 5,

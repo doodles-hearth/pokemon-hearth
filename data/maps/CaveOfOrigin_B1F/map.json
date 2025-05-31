@@ -3,7 +3,7 @@
   "name": "CaveOfOrigin_B1F",
   "layout": "LAYOUT_CAVE_OF_ORIGIN_B1F",
   "music": "MUS_NONE",
-  "region_map_section": "MAPSEC_CAVE_OF_ORIGIN",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_FOG_HORIZONTAL",
   "map_type": "MAP_TYPE_UNDERGROUND",
@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_CAVE_OF_ORIGIN_WALLACE",
       "graphics_id": "OBJ_EVENT_GFX_WALLACE",
       "x": 9,
       "y": 13,

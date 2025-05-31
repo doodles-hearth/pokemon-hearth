@@ -30,6 +30,10 @@
 #define asm_unified(x) asm(".syntax unified\n" x "\n.syntax divided")
 #define NAKED __attribute__((naked))
 
+#if MODERN
+#define asm __asm__
+#endif
+
 /// IDE support
 #if defined(__APPLE__) || defined(__CYGWIN__) || defined(__INTELLISENSE__)
 // We define these when using certain IDEs to fool preproc
@@ -708,7 +712,7 @@ struct RamScriptData
     u8 magic;
     u8 mapGroup;
     u8 mapNum;
-    u8 objectId;
+    u8 localId;
     u8 script[995];
     //u8 padding;
 };
@@ -1183,9 +1187,11 @@ struct SaveBlock1
                u8 registeredItemListCount:4;
                struct RegisteredItemSlot registeredItems[REGISTERED_ITEMS_MAX];
                enum RouteChallengeState routeChallengeStates[ROUTE_CHALLENGE_COUNT];
+               u16 remainingShinyVialMinutes;
+               bool8 isShinyVialActive;
 };
 
-extern struct SaveBlock1* gSaveBlock1Ptr;
+extern struct SaveBlock1 *gSaveBlock1Ptr;
 
 struct MapPosition
 {

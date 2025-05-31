@@ -142,17 +142,7 @@ static void WarpToStartPositionInPlayersBedroom(void)
 {
     // TODO EVA not here goddammit
     NameRival();
-    // The correct one
-    // SetWarpDestination(MAP_GROUP(YIFU_CITY_DOJO), MAP_NUM(YIFU_CITY_DOJO), WARP_ID_NONE, 4, 45);
-    SetWarpDestination(MAP_GROUP(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), MAP_NUM(SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), WARP_ID_NONE, 2, 5);
-    // SetWarpDestination(MAP_GROUP(LAVARIDGE_TOWN), MAP_NUM(LAVARIDGE_TOWN), WARP_ID_NONE, 9, 10);
-    // SetWarpDestination(MAP_GROUP(SILVERIDGE), MAP_NUM(SILVERIDGE), WARP_ID_NONE, 18, 24);
-    // SetWarpDestination(MAP_GROUP(WINDY_CAPE2), MAP_NUM(WINDY_CAPE2), WARP_ID_NONE, 16, 60);
-    // SetWarpDestination(MAP_GROUP(CHII_TOWN), MAP_NUM(CHII_TOWN), WARP_ID_NONE, 19, 15);
-    // SetWarpDestination(MAP_GROUP(SUNRISE_VILLAGE), MAP_NUM(SUNRISE_VILLAGE), WARP_ID_NONE, 5, 19);
-    // SetWarpDestination(MAP_GROUP(KURA_TOWN), MAP_NUM(KURA_TOWN), WARP_ID_NONE, 5, 19);
-    // SetWarpDestination(MAP_GROUP(SAKU_TOWN), MAP_NUM(SAKU_TOWN), WARP_ID_NONE, 24, 21);
-    // SetWarpDestination(MAP_GROUP(MAGURO_HARBOR), MAP_NUM(MAGURO_HARBOR), WARP_ID_NONE, 24, 21);
+    SetWarpDestination(MAP_GROUP(MAP_SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), MAP_NUM(MAP_SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), WARP_ID_NONE, 2, 5);
     WarpIntoMap();
 }
 
@@ -242,7 +232,7 @@ void NewGameInitData(void)
     QuestMenu_ResetMenuSaveData();
     QuestMenu_GetSetQuestState(QUEST_HEARTH_MAIN_CAMPAIGN, FLAG_SET_UNLOCKED);
     QuestMenu_GetSetQuestState(QUEST_HEARTH_MAIN_CAMPAIGN, FLAG_SET_ACTIVE);
-    ResetLimitedShops();    
+    ResetLimitedShops();
 }
 
 static void ResetMiniGamesRecords(void)

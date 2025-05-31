@@ -6,6 +6,8 @@ mapscripts MaguroHarbor_MapScripts {
     }
 
 	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_VISITED_MAGURO_HARBOR)
+
 		setflag(FLAG_HIDE_MERCHANTS)
 
 		getweekday

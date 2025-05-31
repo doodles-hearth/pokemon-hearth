@@ -4,6 +4,7 @@ YifuCity_MapScripts::
 	.byte 0
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_YIFU_CITY
 	compare VAR_CROBAT_HIDEOUT_STATE, 3
 	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	return

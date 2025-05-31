@@ -3,7 +3,7 @@
   "name": "JaggedPass",
   "layout": "LAYOUT_JAGGED_PASS",
   "music": "MUS_PETALBURG_WOODS",
-  "region_map_section": "MAPSEC_JAGGED_PASS",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
@@ -95,6 +95,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MAGMA_HIDEOUT_GUARD",
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
       "x": 16,
       "y": 19,

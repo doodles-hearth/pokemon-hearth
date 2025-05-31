@@ -3,7 +3,7 @@
   "name": "BattleFrontier_BattleTowerMultiCorridor",
   "layout": "LAYOUT_BATTLE_FRONTIER_BATTLE_TOWER_MULTI_CORRIDOR",
   "music": "MUS_B_TOWER",
-  "region_map_section": "MAPSEC_BATTLE_FRONTIER",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_TOWER_MULTI_CORRIDOR_PLAYER",
       "graphics_id": "OBJ_EVENT_GFX_VAR_F",
       "x": 1,
       "y": 1,
@@ -35,6 +36,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TOWER_MULTI_CORRIDOR_ATTENDANT_1",
       "graphics_id": "OBJ_EVENT_GFX_VALET",
       "x": 14,
       "y": 3,
@@ -55,6 +57,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TOWER_MULTI_CORRIDOR_ATTENDANT_2",
       "graphics_id": "OBJ_EVENT_GFX_VALET",
       "x": 1,
       "y": 3,
@@ -75,6 +78,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TOWER_MULTI_CORRIDOR_PARTNER",
       "graphics_id": "OBJ_EVENT_GFX_VAR_E",
       "x": 14,
       "y": 1,

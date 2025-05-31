@@ -13,6 +13,8 @@ const LOCALID_HARIKO = 35
 
 mapscripts YifuCity_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_VISITED_YIFU_CITY)
+
 		if (var(VAR_CROBAT_HIDEOUT_STATE) != 3) {
 			setflag(FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP)
 		}

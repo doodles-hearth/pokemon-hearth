@@ -3,7 +3,7 @@
   "name": "MarineCave_End",
   "layout": "LAYOUT_MARINE_CAVE_END",
   "music": "MUS_PETALBURG_WOODS",
-  "region_map_section": "MAPSEC_MARINE_CAVE",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_FOG_HORIZONTAL",
   "map_type": "MAP_TYPE_UNDERGROUND",
@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_MARINE_CAVE_KYOGRE",
       "graphics_id": "OBJ_EVENT_GFX_KYOGRE_FRONT",
       "x": 9,
       "y": 22,

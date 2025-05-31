@@ -4281,8 +4281,8 @@ void FieldEffectScript_LoadFadedPalette_TallGrass(u8 **script)
     int palId = 0;
     struct SpritePalette *palettes = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
     // Dynamically change footprint subsprites based on tileset
-    DebugPrintf("GRASS pals - current map secondary tileset = %d", GetSecondaryTilesetIdCurrentMap());
-    DebugPrintf("LAYOUT ID = %d VS %d", gMapHeader.mapLayoutId, LAYOUT_WINDSWEPT_ROUTE_BOTTOM);
+    /* DebugPrintf("GRASS pals - current map secondary tileset = %d", GetSecondaryTilesetIdCurrentMap()); */
+    /* DebugPrintf("LAYOUT ID = %d VS %d", gMapHeader.mapLayoutId, LAYOUT_WINDSWEPT_ROUTE_BOTTOM); */
     switch (GetSecondaryTilesetIdCurrentMap())
     {
         case TILESET_SILVERIDGE:
@@ -4293,15 +4293,15 @@ void FieldEffectScript_LoadFadedPalette_TallGrass(u8 **script)
             }
             break;
         case TILESET_GINKO_WOODS:
-            DebugPrintf("Ginko grass pal");
+            /* DebugPrintf("Ginko grass pal"); */
             palId = TALL_GRASS_GINKO;
             break;
         default:
-            DebugPrintf("Default grass pal");
+            /* DebugPrintf("Default grass pal"); */
             palId = TALL_GRASS;
             break;
     }
-    DebugPrintf("GRASS palId = %d", palId);
+    /* DebugPrintf("GRASS palId = %d", palId); */
     LoadSpritePalette(&palettes[palId]);
     UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palettes[palId].tag), FALSE);
     (*script) += 4;

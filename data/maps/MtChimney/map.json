@@ -3,7 +3,7 @@
   "name": "MtChimney",
   "layout": "LAYOUT_MT_CHIMNEY",
   "music": "MUS_MT_CHIMNEY",
-  "region_map_section": "MAPSEC_MT_CHIMNEY",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_VOLCANIC_ASH",
   "map_type": "MAP_TYPE_ROUTE",
@@ -15,6 +15,7 @@
   "connections": 0,
   "object_events": [
     {
+      "local_id": "LOCALID_MT_CHIMNEY_ARCHIE",
       "graphics_id": "OBJ_EVENT_GFX_ARCHIE",
       "x": 24,
       "y": 19,
@@ -35,6 +36,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MT_CHIMNEY_MAXIE",
       "graphics_id": "OBJ_EVENT_GFX_MAXIE",
       "x": 13,
       "y": 6,
@@ -55,6 +57,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MT_CHIMNEY_TABITHA",
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
       "x": 12,
       "y": 11,
@@ -435,6 +438,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MT_CHIMNEY_MAGMA_GRUNT_2",
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_M",
       "x": 9,
       "y": 16,
@@ -575,6 +579,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MT_CHIMNEY_MAGMA_GRUNT_1",
       "graphics_id": "OBJ_EVENT_GFX_MAGMA_MEMBER_F",
       "x": 13,
       "y": 16,

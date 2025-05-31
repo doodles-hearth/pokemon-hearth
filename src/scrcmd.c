@@ -89,7 +89,7 @@ static void DynamicMultichoiceSortList(struct ListMenuItem *items, u32 count);
 
 // This is defined in here so the optimizer can't see its value when compiling
 // script.c.
-void * const gNullScriptPtr = NULL;
+void *const gNullScriptPtr = NULL;
 
 static const u8 sScriptConditionTable[6][3] =
 {
@@ -952,7 +952,7 @@ bool8 ScrCmd_getweekday(struct ScriptContext *ctx)
 bool8 ScrCmd_gettimeofday(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1);
-    
+
     gSpecialVar_0x8000 = GetTimeOfDay();
     return FALSE;
 }
@@ -1061,7 +1061,7 @@ bool8 ScrCmd_warphole(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE);
 
     PlayerGetDestCoords(&x, &y);
-    if (mapGroup == MAP_GROUP(UNDEFINED) && mapNum == MAP_NUM(UNDEFINED))
+    if (mapGroup == MAP_GROUP(MAP_UNDEFINED) && mapNum == MAP_NUM(MAP_UNDEFINED))
         SetWarpDestinationToFixedHoleWarp(x - MAP_OFFSET, y - MAP_OFFSET);
     else
         SetWarpDestination(mapGroup, mapNum, WARP_ID_NONE, x - MAP_OFFSET, y - MAP_OFFSET);
@@ -1388,7 +1388,7 @@ bool8 ScrCmd_waitmovement(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
-    if (localId != 0)
+    if (localId != LOCALID_NONE)
         sMovingNpcId = localId;
     sMovingNpcMapGroup = gSaveBlock1Ptr->location.mapGroup;
     sMovingNpcMapNum = gSaveBlock1Ptr->location.mapNum;
@@ -1404,7 +1404,7 @@ bool8 ScrCmd_waitmovementat(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
-    if (localId != 0)
+    if (localId != LOCALID_NONE)
         sMovingNpcId = localId;
     mapGroup = ScriptReadByte(ctx);
     mapNum = ScriptReadByte(ctx);
@@ -1465,6 +1465,10 @@ bool8 ScrCmd_setobjectxy(struct ScriptContext *ctx)
     u16 y = VarGet(ScriptReadHalfword(ctx));
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    // Don't do follower NPC post-warp position set after setobjectxy.
+    if (localId == OBJ_EVENT_ID_NPC_FOLLOWER)
+        SetFollowerNPCData(FNPC_DATA_COME_OUT_DOOR, FNPC_DOOR_NO_POS_SET);
 
     TryMoveObjectEventToMapCoords(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, x, y);
     return FALSE;
@@ -1684,7 +1688,7 @@ bool8 ScrCmd_releaseall(struct ScriptContext *ctx)
         ClearObjectEventMovement(followerObject, &gSprites[followerObject->spriteId]);
 
     HideFieldMessageBox();
-    playerObjectId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+    playerObjectId = GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0);
     ObjectEventClearHeldMovementIfFinished(&gObjectEvents[playerObjectId]);
     ScriptMovement_UnfreezeObjectEvents();
     UnfreezeObjectEvents();
@@ -1705,7 +1709,7 @@ bool8 ScrCmd_release(struct ScriptContext *ctx)
     HideFieldMessageBox();
     if (gObjectEvents[gSelectedObjectEvent].active)
         ObjectEventClearHeldMovementIfFinished(&gObjectEvents[gSelectedObjectEvent]);
-    playerObjectId = GetObjectEventIdByLocalIdAndMap(OBJ_EVENT_ID_PLAYER, 0, 0);
+    playerObjectId = GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0);
     ObjectEventClearHeldMovementIfFinished(&gObjectEvents[playerObjectId]);
     ScriptMovement_UnfreezeObjectEvents();
     UnfreezeObjectEvents();
@@ -2536,7 +2540,7 @@ bool8 ScrCmd_updatecoinsbox(struct ScriptContext *ctx)
 bool8 ScrCmd_trainerbattle(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_TRAINERBATTLE);
-    
+
     TrainerBattleLoadArgs(ctx->scriptPtr);
     ctx->scriptPtr = BattleSetup_ConfigureTrainerBattle(ctx->scriptPtr);
     return FALSE;
@@ -2695,10 +2699,7 @@ bool8 ScrCmd_setberrytree(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
-    if (berry == 0)
-        PlantBerryTree(treeId, berry, growthStage, FALSE);
-    else
-        PlantBerryTree(treeId, berry, growthStage, FALSE);
+    PlantBerryTree(treeId, berry, growthStage, FALSE);
     return FALSE;
 }
 
@@ -3346,7 +3347,7 @@ bool8 ScrCmd_fwdtime(struct ScriptContext *ctx)
     u32 minutes = ScriptReadWord(ctx);
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
-    
+
     FakeRtc_ForwardTimeTo(hours, minutes, 0);
 
     return FALSE;
@@ -3355,10 +3356,10 @@ bool8 ScrCmd_fwdtime(struct ScriptContext *ctx)
 bool8 ScrCmd_fwdweekday(struct ScriptContext *ctx)
 {
     struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
-    
+
     u32 weekdayTarget = ScriptReadWord(ctx);
     u32 daysToAdd = ((weekdayTarget - rtc->dayOfWeek) + WEEKDAY_COUNT) % WEEKDAY_COUNT;
-    
+
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
     
     FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0, FALSE);

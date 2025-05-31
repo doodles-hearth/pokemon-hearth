@@ -1,10 +1,15 @@
 ChiiTown_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, ChiiTown_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_TRANSITION, ChiiTown_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, ChiiTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call ChiiTown_DrawMetatiles
+	return
+
+ChiiTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_CHII_TOWN
 	return
 
 ChiiTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

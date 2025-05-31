@@ -630,7 +630,7 @@ const u32 gItemIcon_Sachet[] = INCBIN_U32("graphics/items/icons/sachet.4bpp.lz")
 const u16 gItemIconPalette_Sachet[] = INCBIN_U16("graphics/items/icon_palettes/sachet.gbapal");
 
 const u32 gItemIcon_OvalStone[] = INCBIN_U32("graphics/items/icons/oval_stone.4bpp.lz");
-const u16 gItemIconPalette_OvalStone[] = INCBIN_U16("graphics/items/icon_palettes/oval_stone.gbapal");
+const u16 gItemIconPalette_OvalStone[] = INCBIN_U16("graphics/items/icons/oval_stone.gbapal");
 
 const u32 gItemIcon_StrawberrySweet[] = INCBIN_U32("graphics/items/icons/strawberry_sweet.4bpp.lz");
 const u16 gItemIconPalette_StrawberrySweet[] = INCBIN_U16("graphics/items/icon_palettes/strawberry_sweet.gbapal");
@@ -1271,7 +1271,7 @@ const u32 gItemIcon_SilverPowder[] = INCBIN_U32("graphics/items/icons/silver_pow
 const u16 gItemIconPalette_SilverPowder[] = INCBIN_U16("graphics/items/icon_palettes/silver_powder.gbapal");
 
 const u32 gItemIcon_HardStone[] = INCBIN_U32("graphics/items/icons/hard_stone.4bpp.lz");
-const u16 gItemIconPalette_HardStone[] = INCBIN_U16("graphics/items/icon_palettes/hard_stone.gbapal");
+const u16 gItemIconPalette_HardStone[] = INCBIN_U16("graphics/items/icons/hard_stone.gbapal");
 
 const u32 gItemIcon_SpellTag[] = INCBIN_U32("graphics/items/icons/spell_tag.4bpp.lz");
 const u16 gItemIconPalette_SpellTag[] = INCBIN_U16("graphics/items/icon_palettes/spell_tag.gbapal");
@@ -1750,6 +1750,9 @@ const u16 gItemIconPalette_SecretScrollStrength[] = INCBIN_U16("graphics/items/i
 const u16 gItemIconPalette_SecretScrollFly[] = INCBIN_U16("graphics/items/icons/secrets/secret_fly.gbapal");
 const u16 gItemIconPalette_SecretScrollClimb[] = INCBIN_U16("graphics/items/icons/secrets/secret_climb.gbapal");
 const u16 gItemIconPalette_SecretScrollFlash[] = INCBIN_U16("graphics/items/icons/secrets/secret_flash.gbapal");
+
+const u32 gItemIcon_ShinyVial[] = INCBIN_U32("graphics/items/icons/shiny_vial.4bpp.lz");
+const u16 gItemIconPalette_ShinyVial[] = INCBIN_U16("graphics/items/icons/shiny_vial.gbapal");
 
 // Charms
 

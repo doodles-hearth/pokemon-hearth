@@ -3,7 +3,7 @@
   "name": "BattleFrontier_BattlePyramidTop",
   "layout": "LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_TOP",
   "music": "MUS_NONE",
-  "region_map_section": "MAPSEC_BATTLE_FRONTIER",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_PYRAMID_TOP_ATTENDANT",
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
       "x": 17,
       "y": 11,
@@ -35,6 +36,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BRANDON",
       "graphics_id": "OBJ_EVENT_GFX_BRANDON",
       "x": 17,
       "y": 7,

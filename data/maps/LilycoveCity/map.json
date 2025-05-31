@@ -3,7 +3,7 @@
   "name": "LilycoveCity",
   "layout": "LAYOUT_LILYCOVE_CITY",
   "music": "MUS_LILYCOVE",
-  "region_map_section": "MAPSEC_LILYCOVE_CITY",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_CITY",
@@ -386,6 +386,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_LILYCOVE_WOMAN_1",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
       "x": 41,
       "y": 25,
@@ -406,6 +407,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_LILYCOVE_MAN_1",
       "graphics_id": "OBJ_EVENT_GFX_MAN_2",
       "x": 40,
       "y": 25,

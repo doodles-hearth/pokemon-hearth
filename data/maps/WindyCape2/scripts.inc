@@ -1,5 +1,10 @@
 WindyCape2_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, WindyCape2_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+WindyCape2_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_WINDYCAPE
+	return
 
 
 WindyCape_EventScript_WindThroughHoles::

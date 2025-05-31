@@ -3,7 +3,7 @@
   "name": "LilycoveCity_DepartmentStore_1F",
   "layout": "LAYOUT_LILYCOVE_CITY_DEPARTMENT_STORE_1F",
   "music": "MUS_LILYCOVE",
-  "region_map_section": "MAPSEC_LILYCOVE_CITY",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -35,6 +35,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_LOTTERY_CLERK",
       "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
       "x": 10,
       "y": 2,

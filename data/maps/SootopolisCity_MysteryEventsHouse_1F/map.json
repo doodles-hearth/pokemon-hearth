@@ -3,7 +3,7 @@
   "name": "SootopolisCity_MysteryEventsHouse_1F",
   "layout": "LAYOUT_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_1F",
   "music": "MUS_SOOTOPOLIS",
-  "region_map_section": "MAPSEC_SOOTOPOLIS_CITY",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_MYSTERY_EVENTS_OLD_MAN",
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
       "x": 6,
       "y": 4,

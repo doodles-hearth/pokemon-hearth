@@ -4550,7 +4550,7 @@ static u8* ConvertMeasurementToMetricString(u32 num, u32* index)
     return string;
 }
 
-s8 GetSetPokedexFlag(u16 nationalDexNo, enum PokedexFlag caseID)
+s8 GetSetPokedexFlag(u16 nationalDexNo, u8 caseID)
 {
     u32 index, bit, mask;
     s8 retVal = 0;

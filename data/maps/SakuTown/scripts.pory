@@ -15,6 +15,7 @@ const VAR_GET_QUEST_LOG_STATE_SAKURA_SCYTHER = VAR_TEMP_2
 
 mapscripts SakuTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
+        setflag(FLAG_VISITED_SAKU_TOWN)
 
 		if (flag(FLAG_SAKU_KURA_REUNITED)) {
 			// Once reunited, the guards from the two villages play a board game together
@@ -461,6 +462,10 @@ script SakuTown_EventScript_TamaArgument {
 	closemessage
 	playse(MUS_VS_RAYQUAZA)
 	delay(240)
+
+	applymovement(LOCALID_TAMASDAD, moves(walk_in_place_fast_up))
+	waitmovement(LOCALID_TAMASDAD)
+
 	speakername("Old Man")
 	msgbox(format(
 		"So you're the whippersnapper that's making my son collude with the enemy, eh.\p"

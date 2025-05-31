@@ -3,7 +3,7 @@
   "name": "BattleFrontier_BattlePalaceCorridor",
   "layout": "LAYOUT_BATTLE_FRONTIER_BATTLE_PALACE_CORRIDOR",
   "music": "MUS_B_PALACE",
-  "region_map_section": "MAPSEC_BATTLE_FRONTIER",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_PALACE_CORRIDOR_ATTENDANT",
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
       "x": 8,
       "y": 12,
