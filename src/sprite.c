@@ -879,8 +879,11 @@ void BeginAnim(struct Sprite *sprite)
 
         if (sprite->usingSheet)
         {
+            //  Inject OW decompression here
             if (OW_GFX_COMPRESS && sprite->sheetSpan)
+            {
                 imageValue = (imageValue + 1) << sprite->sheetSpan;
+            }
             sprite->oam.tileNum = sprite->sheetTileStart + imageValue;
         }
         else
@@ -938,7 +941,10 @@ void AnimCmd_frame(struct Sprite *sprite)
     if (sprite->usingSheet)
     {
         if (OW_GFX_COMPRESS && sprite->sheetSpan)
+        {
+            //  Inject OW frame switcher here
             imageValue = (imageValue + 1) << sprite->sheetSpan;
+        }
         sprite->oam.tileNum = sprite->sheetTileStart + imageValue;
     }
     else
