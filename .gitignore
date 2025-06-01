@@ -46,7 +46,7 @@ src/data/map_group_count.h
 convert_inc.sh
 tools/trainerproc/trainerproc
 *.mp4
-tools/poryscript
+tools/poryscript/poryscript
 tools/compresSmol/compresSmol
 tools/compresSmol/compresSmolTilemap
 *.Identifier
