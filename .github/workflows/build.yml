@@ -40,7 +40,7 @@ jobs:
 
       - name: Poryscript Install
         run: |
-          sudo mv tools/poryscript-linux tools/poryscript
+          sudo mv tools/poryscript-linux/poryscript tools/poryscript
           sudo chmod +x tools/poryscript/poryscript
 
       - name: ROM
