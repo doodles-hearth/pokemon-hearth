@@ -4477,6 +4477,7 @@ void GetDexRiddleFeedback(void)
 void DestroySelectedPartyMon(void) {
     u8 monId = GetCursorSelectionMonId();
     ZeroMonData(&gPlayerParty[monId]);
+    CompactPartySlots();
 }
 
 void SetSpeakerToMonName(struct ScriptContext *ctx)

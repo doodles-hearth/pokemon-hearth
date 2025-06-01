@@ -193,12 +193,8 @@ bool32 SetUpFieldMove_Cut(void)
                         sHyperCutTiles[6 + (i * 5) + j] = TRUE;
                         ret = TRUE;
                     }
-                #ifdef BUGFIX
                     // Collision has a range 0-3, any value != 0 is impassable
                     if (MapGridGetCollisionAt(x, y))
-                #else
-                    if (MapGridGetCollisionAt(x, y) == 1)
-                #endif
                     {
                         cutTiles[i * 3 + j] = FALSE;
                     }
@@ -349,9 +345,9 @@ bool8 FldEff_CutGrass(void)
         gSprites[sCutGrassSpriteArrayPtr[i]].data[2] = 32 * i;
     }
 
-    if(!FlagGet(FLAG_CUT_QUEST_CUT_ALL_GRASS) && gMapHeader.regionMapSectionId == MAPSEC_TRANQUIL_ROUTE)
+    if (gMapHeader.regionMapSectionId == MAPSEC_TRANQUIL_ROUTE && !FlagGet(FLAG_CUT_QUEST_CUT_ALL_GRASS))
     {
-        if(IsCutQuestComplete())
+        if (IsCutQuestComplete())
         {
             FlagSet(FLAG_CUT_QUEST_CUT_ALL_GRASS);
         }   
@@ -367,18 +363,51 @@ static void SetCutGrassMetatile(s16 x, s16 y)
 
     switch (metatileId)
     {
-    case METATILE_Fortree_LongGrass_Root:
-    case METATILE_General_LongGrass:
-    case METATILE_General_TallGrass:
-    // TODO EVA do the rest of this crap
     case METATILE_PorytilesPrimaryTutorial_TallGrass:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_Bottom:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_BottomLeft:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_BottomRight:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_Left:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_Right:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_Single:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_SingleBottom:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_SingleColumn:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_SingleLeft:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_SingleRight:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_SingleRow:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_SingleTop:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_Top:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_TopLeft:
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_TopRight:
         MapGridSetMetatileIdAt(x, y, METATILE_PorytilesPrimaryTutorial_Grass);
         break;
-    case METATILE_General_TallGrass_TreeLeft:
-        MapGridSetMetatileIdAt(x, y, METATILE_General_Grass_TreeLeft);
+
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_BigTreeLeft:
+        MapGridSetMetatileIdAt(x, y, METATILE_PorytilesPrimaryTutorial_Grass_BigTreeLeft);
         break;
-    case METATILE_General_TallGrass_TreeRight:
-        MapGridSetMetatileIdAt(x, y, METATILE_General_Grass_TreeRight);
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_BigTreeRight:
+        MapGridSetMetatileIdAt(x, y, METATILE_PorytilesPrimaryTutorial_Grass_BigTreeRight);
+        break;
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_BigTreeTop:
+        MapGridSetMetatileIdAt(x, y, METATILE_PorytilesPrimaryTutorial_Grass_BigTreeTop);
+        break;
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_SmallTreeBottom:
+        MapGridSetMetatileIdAt(x, y, METATILE_PorytilesPrimaryTutorial_Grass_SmallTreeBottom);
+        break;
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_SmallTreeTop:
+        MapGridSetMetatileIdAt(x, y, METATILE_PorytilesPrimaryTutorial_Grass_SmallTreeTop);
+        break;
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_TreeBottomLeft:
+        MapGridSetMetatileIdAt(x, y, METATILE_PorytilesPrimaryTutorial_Grass_TreeBottomLeft);
+        break;
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_TreeBottomRight:
+        MapGridSetMetatileIdAt(x, y, METATILE_PorytilesPrimaryTutorial_Grass_TreeBottomRight);
+        break;
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_TreeTopLeft:
+        MapGridSetMetatileIdAt(x, y, METATILE_PorytilesPrimaryTutorial_Grass_TreeTopLeft);
+        break;
+    case METATILE_PorytilesPrimaryTutorial_TallGrass_TreeTopRight:
+        MapGridSetMetatileIdAt(x, y, METATILE_PorytilesPrimaryTutorial_Grass_TreeTopRight);
         break;
     case METATILE_Fortree_SecretBase_LongGrass_BottomLeft:
         MapGridSetMetatileIdAt(x, y, METATILE_Fortree_SecretBase_LongGrass_TopLeft);

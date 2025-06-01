@@ -1,4 +1,5 @@
 const FLAG_HIDE_MERCHANTS = FLAG_TEMP_1
+const FLAG_TALKED_TO_FISH_SELLER = FLAG_TEMP_2
 
 mapscripts MaguroHarbor_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
@@ -235,20 +236,113 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp {
 script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 	lock
 	faceplayer
-	speakername("Salesman")
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
+		speakername("Salesman")
 		msgbox(format(
 			"Just saw Master Koishi run toward Beachbound Route!\p"
 			"She's so concerned with the safety of the village!"
-		), MSGBOX_DEFAULT)
+		))
+		closemessage
 	} else {
-		msgbox(format(
-			"Fresh fish! Come get yer fish!"
-		), MSGBOX_DEFAULT)
+		speakername("Salesman")
+
+		if (flag(FLAG_TALKED_TO_FISH_SELLER)) {
+			msgbox(format(
+				"Fresh fish! Come get yer fish!\p"
+				"Have any fresh fish for me?"
+			))
+		} else {
+			msgbox(format(
+				"Fresh fish! Come get yer fish!\p"
+				"Hullo there, kid.\nI buy and sell fish for a livin'.\p"
+				"Wanna make a quick buck?\nBring me any fish Pokémon you find!\p"
+				"I'll give you a fair price.\nAnd if they happen to be holdin' something in their mouth, it's all yours!\p"
+				"What do you say?\nHave any fresh fish for me?"
+			))
+		}
+
+		mcdialogue(
+			"Here's a fish!",
+			"Sorry, no fish."
+		)
+		closemessage
+
+		switch (var(VAR_RESULT)) {
+			case 0:
+				special(ChoosePartyMon)
+				waitstate
+				if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+					speakername("Salesman")
+					msgbox(format("Ah c'mon, don't waste my time!"))
+					closemessage
+				} else {
+					if (getpartysize == 1) {
+						speakername("Salesman")
+						msgbox(format("I'd feel bad leaving you with no Pokémon to defend you!"))
+						closemessage
+					} else {
+						callnative(Native_GiveFish)
+
+						if (var(VAR_0x8000) > 0) {
+							buffernumberstring(STR_VAR_1, VAR_0x8000)
+							speakername("Salesman")
+							msgbox(format("I can offer you {STR_VAR_1}¥.\nThat reasonable?"))
+
+							mcdialogue("Yes!", "Actually, no.")
+
+							switch (var(VAR_RESULT)) {
+								case 0:
+									addmoney(VAR_0x8000)
+									special(DestroySelectedPartyMon)
+
+									if (var(VAR_0x8001) != ITEM_NONE) {
+										speakername("Salesman")
+										msgbox(format(
+											"Great! Here you go."
+											"…Oh?\p"
+											"Look what we found in its mouth!\nTake it, it's yours!"
+										))
+										closemessage
+
+										giveitem(VAR_0x8001)
+
+										speakername("Salesman")
+										msgbox(format(
+											"Pleasure doin' business.\p"
+											"Come back tomorrow to trade some more!"
+										))
+										closemessage
+									} else {
+										speakername("Salesman")
+										msgbox(format(
+											"Great! Here you go.\nPleasure doin' business!"
+										))
+										closemessage
+									}
+								case 1:
+									speakername("Salesman")
+									msgbox(format("Nevermind then. Have yer fish back."))
+									closemessage
+							}
+
+							closemessage
+						} else {
+							speakername("Salesman")
+							msgbox(format("Nuh-huh, can't buy that.\nI only deal in fish."))
+							closemessage
+						}
+					}
+				}
+			case 1:
+				speakername("Salesman")
+				msgbox(format(
+					"If you find any good fish, you know where to find me!"
+				))
+				closemessage
+		}
 	}
-	
-	// TODO EVA fish mons
-	closemessage
+
+	setflag(FLAG_TALKED_TO_FISH_SELLER)
 	release
 }
 
