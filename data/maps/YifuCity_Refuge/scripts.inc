@@ -23,7 +23,8 @@ YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 
 
 YifuCity_Refuge_EventScript_Nurse::
-	setvar VAR_0x800B, 10
+	setvar VAR_0x800B, LOCALID_NURSE_YIFU
+	setvar VAR_0x800A, LOCALID_CHANSEY_YIFU
 	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
 	waitmessage
 	waitbuttonpress

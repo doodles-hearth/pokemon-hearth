@@ -95,6 +95,15 @@
     },
     "getroutechallengestate": {
       "var_name": "VAR_RESULT"
+    },
+    "getnamedmon": {
+      "var_name": "VAR_RESULT"
+    },
+    "getdescribedmon": {
+      "var_name": "VAR_RESULT"
+    },
+    "getseenmon": {
+      "var_name": "VAR_RESULT"
     }
   }
 }

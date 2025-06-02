@@ -177,8 +177,8 @@
     {
       "id": "HEAL_LOCATION_YIFU_CITY",
       "map": "MAP_YIFU_CITY",
-      "x": 3,
-      "y": 3
+      "x": 32,
+      "y": 30
     },
     {
       "id": "HEAL_LOCATION_SOULKEEP",

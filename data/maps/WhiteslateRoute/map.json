@@ -476,7 +476,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_BLUE",
+      "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_GREEN",
       "x": 23,
       "y": 10,
       "elevation": 0,
@@ -516,9 +516,7 @@
       "night": false
     }
   ],
-  "warp_events": [
-
-  ],
+  "warp_events": [],
   "coord_events": [
     {
       "type": "trigger",

@@ -66,8 +66,8 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_Text_2:
 	.string "I know a whole lot about Pokémon…\n"
 	.string "Wanna play a game?\p"
 	.string "If you can guess what Pokémon I'm\n"
-	.string "describing, I'll share my knowledge\l"
-	.string "with you.\p"
+	.string "describing,\l"
+	.string "I'll share my knowledge with you.\p"
 	.string "Hehe… Think you can solve my riddle?\n"
 	.string "Ahem…$"
 

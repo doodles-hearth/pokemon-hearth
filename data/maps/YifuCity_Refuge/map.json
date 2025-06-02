@@ -12,7 +12,7 @@
   "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
@@ -175,6 +175,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_NURSE_YIFU",
       "graphics_id": "OBJ_EVENT_GFX_NURSE",
       "x": 6,
       "y": 2,
@@ -195,6 +196,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_CHANSEY_YIFU",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
       "x": 7,
       "y": 2,
@@ -391,10 +393,6 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": []
 }

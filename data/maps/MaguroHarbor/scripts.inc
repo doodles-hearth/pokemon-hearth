@@ -242,13 +242,16 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling::
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesmanSelling_2
 	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0
-	mcdialogue MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_1, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_2
+	goto_if_set FLAG_TEMP_2, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_6
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_1
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_5:
+	mcdialogue MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_2, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_3
 	closemessage
 	switch VAR_RESULT
-	case 0, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_6
-	case 1, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_7
+	case 0, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_10
+	case 1, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_11
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1:
+	setflag FLAG_TEMP_2
 	release
 	return
 
@@ -259,76 +262,80 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_2:
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_6:
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_5
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_10:
 	special ChoosePartyMon
 	waitstate
 	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
-	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesmanSelling_8
+	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesmanSelling_12
 	getpartysize
 	compare VAR_RESULT, 1
-	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesmanSelling_11
+	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesmanSelling_15
 	callnative Native_GiveFish
 	compare VAR_0x8000, 0
-	goto_if_gt MaguroHarbor_EventScript_FishPokemonSalesmanSelling_14
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_12
-	closemessage
-	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
-
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_7:
+	goto_if_gt MaguroHarbor_EventScript_FishPokemonSalesmanSelling_18
 	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_13
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_8:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_11:
 	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_3
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_14
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_11:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_12:
 	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_4
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_14:
-	buffernumberstring STR_VAR_1, VAR_0x8000
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_15:
 	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_5
-	mcdialogue MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_6, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_7
-	switch VAR_RESULT
-	case 0, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_19
-	case 1, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_20
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_17:
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_19:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_18:
+	buffernumberstring STR_VAR_1, VAR_0x8000
+	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_6
+	mcdialogue MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_7, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_8
+	switch VAR_RESULT
+	case 0, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_23
+	case 1, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_24
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21:
+	closemessage
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_23:
 	addmoney VAR_0x8000
 	special DestroySelectedPartyMon
 	compare VAR_0x8001, ITEM_NONE
-	goto_if_ne MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_10
-	closemessage
-	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_17
-
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_20:
+	goto_if_ne MaguroHarbor_EventScript_FishPokemonSalesmanSelling_25
 	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_11
 	closemessage
-	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_17
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_24:
 	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_8
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_12
 	closemessage
-	giveitem VAR_0x8001
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_25:
 	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_9
 	closemessage
-	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_17
+	giveitem VAR_0x8001
+	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_10
+	closemessage
+	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21
 
 
 MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp::
@@ -608,6 +615,10 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_2:
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0:
 	.string "Fresh fish! Come get yer fish!\p"
+	.string "Have any fresh fish for me?$"
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_1:
+	.string "Fresh fish! Come get yer fish!\p"
 	.string "Hullo there, kid.\n"
 	.string "I buy and sell fish for a livin'.\p"
 	.string "Wanna make a quick buck?\n"
@@ -619,51 +630,51 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0:
 	.string "What do you say?\n"
 	.string "Have any fresh fish for me?$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_1:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_2:
 	.string "Here's a fish!$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_2:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_3:
 	.string "Sorry, no fish.$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_3:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_4:
 	.string "Ah c'mon, don't waste my time!$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_4:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_5:
 	.string "I'd feel bad leaving you with no\n"
 	.string "Pokémon to defend you!$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_5:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_6:
 	.string "I can offer you {STR_VAR_1}¥.\n"
 	.string "That reasonable?$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_6:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_7:
 	.string "Yes!$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_7:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_8:
 	.string "Actually, no.$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_8:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_9:
 	.string "Great! Here you go. …Oh?\p"
 	.string "Look what we found in its mouth!\n"
 	.string "Take it, it's yours!$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_9:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_10:
 	.string "Pleasure doin' business.\p"
 	.string "Come back tomorrow to trade some\n"
 	.string "more!$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_10:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_11:
 	.string "Great! Here you go.\n"
 	.string "Pleasure doin' business!$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_11:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_12:
 	.string "Nevermind then. Have yer fish back.$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_12:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_13:
 	.string "Nuh-huh, can't buy that.\n"
 	.string "I only deal in fish.$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_13:
+MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_14:
 	.string "If you find any good fish, you know\n"
 	.string "where to find me!$"
 

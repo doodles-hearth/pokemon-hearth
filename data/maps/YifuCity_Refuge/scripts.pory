@@ -1,5 +1,4 @@
 const LOCALID_NURSE_CROBAT = 1
-const LOCALID_NURSE = 10
 const LOCALID_GROWLITHE = 17
 const FLAG_HIDE_NURSE = FLAG_TEMP_1
 const FLAG_HIDE_ROUTE_SHAMISEN = FLAG_TEMP_2
@@ -23,7 +22,8 @@ mapscripts YifuCity_Refuge_MapScripts {
 }
 
 script YifuCity_Refuge_EventScript_Nurse {
-	setvar(VAR_0x800B, LOCALID_NURSE)
+	setvar(VAR_0x800B, LOCALID_NURSE_YIFU)
+	setvar(VAR_0x800A, LOCALID_CHANSEY_YIFU)
 	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
 	waitmessage
 	waitbuttonpress

@@ -41,7 +41,8 @@ ChiiTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
 
 
 ChiiTown_PokemonCenter_EventScript_Nurse::
-	setvar VAR_0x800B, 1
+	setvar VAR_0x800B, LOCALID_NURSE_CHII
+	setvar VAR_0x800A, LOCALID_CHANSEY_CHII
 	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
 	waitmessage
 	waitbuttonpress
@@ -145,7 +146,7 @@ ChiiTown_PokemonCenter_EventScript_RefugePresentation::
 	case DIR_EAST, ChiiTown_PokemonCenter_EventScript_RefugePresentation_5
 ChiiTown_PokemonCenter_EventScript_RefugePresentation_1:
 	waitmovement 0
-	removeobject 2
+	removeobject VAR_LAST_TALKED
 	playse SE_EXIT
 	waitse
 	setflag FLAG_POKEMON_REFUGE_PRESENTATION
@@ -153,15 +154,15 @@ ChiiTown_PokemonCenter_EventScript_RefugePresentation_1:
 	end
 
 ChiiTown_PokemonCenter_EventScript_RefugePresentation_3:
-	applymovement 2, ChiiTown_PokemonCenter_EventScript_RefugePresentation_Movement_0
+	applymovement VAR_LAST_TALKED, ChiiTown_PokemonCenter_EventScript_RefugePresentation_Movement_0
 	goto ChiiTown_PokemonCenter_EventScript_RefugePresentation_1
 
 ChiiTown_PokemonCenter_EventScript_RefugePresentation_4:
-	applymovement 2, ChiiTown_PokemonCenter_EventScript_RefugePresentation_Movement_1
+	applymovement VAR_LAST_TALKED, ChiiTown_PokemonCenter_EventScript_RefugePresentation_Movement_1
 	goto ChiiTown_PokemonCenter_EventScript_RefugePresentation_1
 
 ChiiTown_PokemonCenter_EventScript_RefugePresentation_5:
-	applymovement 2, ChiiTown_PokemonCenter_EventScript_RefugePresentation_Movement_1
+	applymovement VAR_LAST_TALKED, ChiiTown_PokemonCenter_EventScript_RefugePresentation_Movement_1
 	goto ChiiTown_PokemonCenter_EventScript_RefugePresentation_1
 
 
