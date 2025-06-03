@@ -1,5 +1,6 @@
 #include "global.h"
 #include "bg.h"
+#include "decompress.h"
 #include "event_data.h"
 #include "field_effect.h"
 #include "gpu_regs.h"
@@ -163,7 +164,7 @@ static void MCB2_FieldUpdateRegionMap(void)
 }
 
 static const u16 sUnvisitedTownIcons_Pal[] = INCBIN_U16("graphics/region_map_hearth/town_icons.gbapal");
-static const u32 sUnvisitedTownIcons_Gfx[] = INCBIN_U32("graphics/region_map_hearth/town_icons.4bpp.lz");
+static const u32 sUnvisitedTownIcons_Gfx[] = INCBIN_U32("graphics/region_map_hearth/town_icons.4bpp.smol");
 
 static const struct SpritePalette sUnvisitedTownIconsSpritePalette =
 {
@@ -225,7 +226,7 @@ static void LoadUnvisitedTownIcons(void)
 {
     struct SpriteSheet sheet;
 
-    LZ77UnCompWram(sUnvisitedTownIcons_Gfx, sFieldRegionMapHandler->tileBuffer);
+    DecompressDataWithHeaderWram(sUnvisitedTownIcons_Gfx, sFieldRegionMapHandler->tileBuffer);
     sheet.data = sFieldRegionMapHandler->tileBuffer;
     sheet.size = sizeof(sFieldRegionMapHandler->tileBuffer);
     sheet.tag = TAG_UNVISITED_ICON;
