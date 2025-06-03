@@ -485,6 +485,7 @@
 #define METATILE_PorytilesPrimaryTutorial_Grass_TreeTopRight         0x016
 #define METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntrance     0x0D1
 #define METATILE_PorytilesPrimaryTutorial_TallGrass                  0x008
+#define METATILE_PorytilesPrimaryTutorial_TallGrassMiddle            0x1AD
 #define METATILE_PorytilesPrimaryTutorial_TallGrass_BigTreeLeft      0x153
 #define METATILE_PorytilesPrimaryTutorial_TallGrass_BigTreeRight     0x155
 #define METATILE_PorytilesPrimaryTutorial_TallGrass_BigTreeTop       0x154
