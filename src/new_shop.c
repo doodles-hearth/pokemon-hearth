@@ -203,44 +203,44 @@ const u8 sText_SpaceForVar1Full[] = _("The space for\n{STR_VAR_1}\nis full.");
 const u8 sText_ThrowInPremierBall[] = _("Here's also\na promotional\nPremier Ball!");
 const u8 sText_ThrowInPremierBalls[] = _("Here's also\n{STR_VAR_1} promotional\nPremier Balls!");
 
-const u32 sNewShopMenu_DefaultMenuGfx[] = INCBIN_U32("graphics/new_shop/menu.4bpp.lz");
+const u32 sNewShopMenu_DefaultMenuGfx[] = INCBIN_U32("graphics/new_shop/menu.4bpp.smol");
 const u16 sNewShopMenu_DefaultMenuPal[] = INCBIN_U16("graphics/new_shop/menu.gbapal");
-const u32 sNewShopMenu_DefaultMenuTilemap[] = INCBIN_U32("graphics/new_shop/menu.bin.lz");
-const u32 sNewShopMenu_DefaultScrollGfx[] = INCBIN_U32("graphics/new_shop/scroll.4bpp.lz");
+const u32 sNewShopMenu_DefaultMenuTilemap[] = INCBIN_U32("graphics/new_shop/menu.bin.smolTM");
+const u32 sNewShopMenu_DefaultScrollGfx[] = INCBIN_U32("graphics/new_shop/scroll.4bpp.smol");
 const u16 sNewShopMenu_DefaultScrollPal[] = INCBIN_U16("graphics/new_shop/scroll.gbapal");
-const u32 sNewShopMenu_DefaultScrollTilemap[] = INCBIN_U32("graphics/new_shop/scroll.bin.lz");
+const u32 sNewShopMenu_DefaultScrollTilemap[] = INCBIN_U32("graphics/new_shop/scroll.bin.smolTM");
 const u16 sNewShopMenu_DefaultCursorGfx[] = INCBIN_U16("graphics/new_shop/cursor.4bpp");
 const u16 sNewShopMenu_DefaultCursorPal[] = INCBIN_U16("graphics/new_shop/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_MartFemale[] = INCBIN_U8("graphics/new_shop/sellers/female/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/mugshot.gbapal");
-const u32 sNewShopMenu_SellerScrollGfx_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.4bpp.lz");
+const u32 sNewShopMenu_SellerScrollGfx_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.4bpp.smol");
 const u16 sNewShopMenu_SellerScrollPal_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/scroll.gbapal");
-const u32 sNewShopMenu_SellerScrollMap_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.bin.lz");
+const u32 sNewShopMenu_SellerScrollMap_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.bin.smolTM");
 const u16 sNewShopMenu_SellerCursorGfx_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/cursor.4bpp");
 const u16 sNewShopMenu_SellerCursorPal_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_Okada[] = INCBIN_U8("graphics/new_shop/sellers/okada/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/mugshot.gbapal");
-const u32 sNewShopMenu_SellerScrollGfx_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.4bpp.lz");
+const u32 sNewShopMenu_SellerScrollGfx_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.4bpp.smol");
 const u16 sNewShopMenu_SellerScrollPal_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/scroll.gbapal");
-const u32 sNewShopMenu_SellerScrollMap_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.bin.lz");
+const u32 sNewShopMenu_SellerScrollMap_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.bin.smolTM");
 const u16 sNewShopMenu_SellerCursorGfx_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/cursor.4bpp");
 const u16 sNewShopMenu_SellerCursorPal_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_Zubat[] = INCBIN_U8("graphics/new_shop/sellers/zubat/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/mugshot.gbapal");
-const u32 sNewShopMenu_SellerScrollGfx_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.4bpp.lz");
+const u32 sNewShopMenu_SellerScrollGfx_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.4bpp.smol");
 const u16 sNewShopMenu_SellerScrollPal_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/scroll.gbapal");
-const u32 sNewShopMenu_SellerScrollMap_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.bin.lz");
+const u32 sNewShopMenu_SellerScrollMap_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.bin.smolTM");
 const u16 sNewShopMenu_SellerCursorGfx_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/cursor.4bpp");
 const u16 sNewShopMenu_SellerCursorPal_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_Incense[] = INCBIN_U8("graphics/new_shop/sellers/incense/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/mugshot.gbapal");
-const u32 sNewShopMenu_SellerScrollGfx_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.4bpp.lz");
+const u32 sNewShopMenu_SellerScrollGfx_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.4bpp.smol");
 const u16 sNewShopMenu_SellerScrollPal_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/scroll.gbapal");
-const u32 sNewShopMenu_SellerScrollMap_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.bin.lz");
+const u32 sNewShopMenu_SellerScrollMap_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.bin.smolTM");
 const u16 sNewShopMenu_SellerCursorGfx_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/cursor.4bpp");
 const u16 sNewShopMenu_SellerCursorPal_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/cursor.gbapal");
 

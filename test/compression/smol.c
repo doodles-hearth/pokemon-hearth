@@ -8,6 +8,8 @@
 #include "config/test.h"
 #include "config/general.h"
 
+#define ENABLE_ALL_COMPRESSION_TESTS FALSE
+
 #ifdef NDEBUG
 void CycleCountStart();
 u32 CycleCountEnd();
@@ -1073,7 +1075,8 @@ TEST("Compression test: table generation 32 32")
     EXPECT_EQ(areEqual, TRUE);
 }
 
-/* TEST("Compression test: Bulbasaur Smol")
+#if ENABLE_ALL_COMPRESSION_TESTS
+TEST("Compression test: Bulbasaur Smol")
 {
     static const u32 origFile[] = INCBIN_U32("graphics/pokemon/bulbasaur/anim_front.4bpp");
     static const u32 compFile[] = INCBIN_U32("graphics/pokemon/bulbasaur/anim_front.4bpp.smol");
@@ -6221,6 +6224,7 @@ TEST("Compression test: Mew fastSmol")
     bool32 areEqual = DecompressImgPrintResults(compFile, origFile, "Mew", COMPRESSION_FASTSMOL, sizeof(compFile));
     EXPECT_EQ(areEqual, TRUE);
 }
+#endif // ENABLE_ALL_COMPRESSION_TESTS
 
 TEST("Compression test: tilemap small smolTM")
 {
@@ -6292,7 +6296,7 @@ TEST("Compression test: tilemap small LZ VRAM")
 
     bool32 areEqual = DecompressTilemapPrintResultsVram(compFile, origFile, "Tilemap", COMPRESSION_LZ, sizeof(compFile));
     EXPECT_EQ(areEqual, TRUE);
-} */
+}
 
 //  The fastLZ function for this doesn't exist
 /*
@@ -6306,7 +6310,7 @@ TEST("Compression test: tilemap small fastLZ VRAM")
 }
 */
 
-/* TEST("Compression test: tilemap large smolTM VRAM")
+TEST("Compression test: tilemap large smolTM VRAM")
 {
     static const u16 origFile[] = INCBIN_U16("test/compression/tilemapLarge.bin");
     static const u32 compFile[] = INCBIN_U32("test/compression/tilemapLarge.bin.smolTM");
@@ -6322,7 +6326,7 @@ TEST("Compression test: tilemap large LZ VRAM")
 
     bool32 areEqual = DecompressTilemapPrintResultsVram(compFile, origFile, "Tilemap", COMPRESSION_LZ, sizeof(compFile));
     EXPECT_EQ(areEqual, TRUE);
-} */
+}
 
 //  The fastLZ function for this doesn't exist
 /*

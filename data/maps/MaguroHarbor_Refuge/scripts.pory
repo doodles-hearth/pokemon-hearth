@@ -5,7 +5,8 @@ mapscripts MaguroHarbor_Refuge_MapScripts {
 }
 
 script MaguroHarbor_Refuge_EventScript_Nurse {
-	setvar(VAR_0x800B, LOCALID_NURSE)
+	setvar(VAR_0x800B, LOCALID_NURSE_MAGURO)
+	setvar(VAR_0x800A, LOCALID_CHANSEY_MAGURO)
 	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
 	waitmessage
 	waitbuttonpress
@@ -146,7 +147,13 @@ script MaguroHarbor_Refuge_EventScript_DescribedMons {
 	lock
 	faceplayer
 	speakername("Man")
-	msgbox(format(
+	if (getdescribedmon(SPECIES_KRABBY)) {
+		msgbox(format(
+			"So, have you written many entries in your encyclopedia?"
+		))
+		closemessage
+	} else {
+		msgbox(format(
 		"Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
 		"I bet you're wondering how you can fill up the description of every Pokémon.\l"
 		"Well, asking around definitely helps!\p"
@@ -154,6 +161,7 @@ script MaguroHarbor_Refuge_EventScript_DescribedMons {
 		"Go ahead, you can write that down about it!"
 	))
 	closemessage
+	}
 
 	setnamedmon(SPECIES_KRABBY)
 	setdescribedmon(SPECIES_KRABBY)

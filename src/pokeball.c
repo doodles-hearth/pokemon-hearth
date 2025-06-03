@@ -79,7 +79,7 @@ static u16 GetBattlerPokeballItemId(u8 battler);
 // TODO: ITEM_LIGHT_POKE_BALL (Light Ball)
 #define GFX_TAG_KABA_BALL    55030
 
-static const u32 sBallGfx_Kaba[] = INCBIN_U32("graphics/kaba_speech/intro_ball.4bpp.lz");
+static const u32 sBallGfx_Kaba[] = INCBIN_U32("graphics/kaba_speech/intro_ball.4bpp.smol");
 static const u16 sBallPal_Kaba[] = INCBIN_U16("graphics/kaba_speech/intro_ball.gbapal");
 
 const struct CompressedSpriteSheet gBallSpriteSheets[] =

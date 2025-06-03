@@ -70,6 +70,27 @@ Common_EventScript_PkmnCenterNurse_Sleep_7:
 	goto Common_EventScript_PkmnCenterNurse_Sleep_1
 
 
+EventScript_PkmnCenterNurse_TakeAndHealPkmn::
+	hidefollower 0
+	applymovement VAR_0x800A, EventScript_PkmnCenterNurse_TakeAndHealPkmn_Movement_0
+	waitmovement VAR_0x800A
+	applymovement VAR_0x800B, EventScript_PkmnCenterNurse_TakeAndHealPkmn_Movement_1
+	waitmovement VAR_0x800B
+	applymovement VAR_0x800A, EventScript_PkmnCenterNurse_TakeAndHealPkmn_Movement_2
+	waitmovement VAR_0x800A
+	dofieldeffect FLDEFF_POKECENTER_HEAL
+	waitfieldeffect FLDEFF_POKECENTER_HEAL
+	applymovement VAR_0x800A, EventScript_PkmnCenterNurse_TakeAndHealPkmn_Movement_3
+	waitmovement VAR_0x800A
+	applymovement VAR_0x800B, EventScript_PkmnCenterNurse_TakeAndHealPkmn_Movement_4
+	waitmovement VAR_0x800B
+	applymovement VAR_0x800A, EventScript_PkmnCenterNurse_TakeAndHealPkmn_Movement_4
+	waitmovement VAR_0x800A
+	special HealPlayerParty
+	callnative UpdateFollowingPokemon
+	return
+
+
 Common_EventScript_PkmnCenterNurse_ChooseSleep::
 	playse SE_SHOP
 	removemoney 500
@@ -85,14 +106,19 @@ Common_EventScript_PkmnCenterNurse_CutTheBullshit::
 	lock
 	faceplayer
 	setvar VAR_0x8004, 0
+	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
 	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_0
 	closemessage
 	incrementgamestat GAME_STAT_USED_POKECENTER
 	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
 	goto_if_unset FLAG_POKERUS_EXPLAINED, Common_EventScript_PkmnCenterNurse_CutTheBullshit_2
 Common_EventScript_PkmnCenterNurse_CutTheBullshit_1:
+	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
 	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_1
 	closemessage
+	applymovement VAR_0x800B, Common_EventScript_PkmnCenterNurse_CutTheBullshit_Movement_0
+	waitmovement 0
+	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
 	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_2
 	closemessage
 	release
@@ -147,22 +173,6 @@ EventScript_PkmnCenterNurse_IllTakeYourPkmn::
 
 EventScript_PkmnCenterNurse_IllTakeYourPkmn2::
 	message gText_IllTakeYourPkmn2
-	return
-
-EventScript_PkmnCenterNurse_TakeAndHealPkmn::
-	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Turn @ Changed from Common_Movement_WalkInPlaceFasterLeft to force the follower to enter their Poké Ball
-	waitmovement 0
-	dofieldeffect FLDEFF_POKECENTER_HEAL
-.if OW_UNION_DISABLE_CHECK == FALSE && OW_FLAG_MOVE_UNION_ROOM_CHECK != 0
-	setflag OW_FLAG_MOVE_UNION_ROOM_CHECK
-	call CableClub_OnResume
-	clearflag OW_FLAG_MOVE_UNION_ROOM_CHECK
-.endif
-	waitfieldeffect FLDEFF_POKECENTER_HEAL
-	applymovement VAR_0x800B, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	special HealPlayerParty
-	callnative UpdateFollowingPokemon
 	return
 
 EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom::
@@ -246,6 +256,35 @@ Movement_PkmnCenterNurse_Bow:
 
 Movement_PkmnCenterNurse_Turn:
 	walk_in_place_faster_right
+	step_end
+
+EventScript_PkmnCenterNurse_TakeAndHealPkmn_Movement_0:
+	face_left
+	step_end
+
+EventScript_PkmnCenterNurse_TakeAndHealPkmn_Movement_1:
+	walk_in_place_fast_right
+	delay_16
+	delay_16
+	step_end
+
+EventScript_PkmnCenterNurse_TakeAndHealPkmn_Movement_2:
+	face_right
+	step_end
+
+EventScript_PkmnCenterNurse_TakeAndHealPkmn_Movement_3:
+	face_left
+	delay_16
+	delay_16
+	step_end
+
+EventScript_PkmnCenterNurse_TakeAndHealPkmn_Movement_4:
+	walk_in_place_fast_down
+	step_end
+
+Common_EventScript_PkmnCenterNurse_CutTheBullshit_Movement_0:
+	nurse_joy_bow
+	delay_4
 	step_end
 
 Common_EventScript_PkmnCenterNurse_Chansey_Text_0:

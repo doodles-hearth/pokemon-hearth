@@ -1,6 +1,3 @@
-const LOCALID_NURSE = 1
-const LOCALID_MAN = 2
-
 mapscripts ChiiTown_PokemonCenter_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_CHII_TOWN)
@@ -33,7 +30,8 @@ mapscripts ChiiTown_PokemonCenter_MapScripts {
 }
 
 script ChiiTown_PokemonCenter_EventScript_Nurse {
-	setvar(VAR_0x800B, LOCALID_NURSE)
+	setvar(VAR_0x800B, LOCALID_NURSE_CHII)
+	setvar(VAR_0x800A, LOCALID_CHANSEY_CHII)
 	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
 	waitmessage
 	waitbuttonpress
@@ -166,14 +164,14 @@ script ChiiTown_PokemonCenter_EventScript_RefugePresentation {
 
 	switch(var(VAR_FACING)) {
 		case DIR_NORTH:
-			applymovement(LOCALID_MAN, moves(walk_right, walk_down * 6))
+			applymovement(VAR_LAST_TALKED, moves(walk_right, walk_down * 6))
 		case DIR_WEST:
-			applymovement(LOCALID_MAN, moves(walk_down * 6))
+			applymovement(VAR_LAST_TALKED, moves(walk_down * 6))
 		case DIR_EAST:
-			applymovement(LOCALID_MAN, moves(walk_down * 6))
+			applymovement(VAR_LAST_TALKED, moves(walk_down * 6))
 	}
 	waitmovement(0)
-	removeobject(LOCALID_MAN)
+	removeobject(VAR_LAST_TALKED)
 	playse(SE_EXIT)
 	waitse
 

@@ -8,7 +8,8 @@ MaguroHarbor_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 MaguroHarbor_Refuge_EventScript_Nurse::
-	setvar VAR_0x800B, LOCALID_NURSE
+	setvar VAR_0x800B, LOCALID_NURSE_MAGURO
+	setvar VAR_0x800A, LOCALID_CHANSEY_MAGURO
 	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
 	waitmessage
 	waitbuttonpress
@@ -110,12 +111,21 @@ MaguroHarbor_Refuge_EventScript_DescribedMons::
 	lock
 	faceplayer
 	speakername MaguroHarbor_Refuge_EventScript_DescribedMons_Text_0
-	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1
+	getdescribedmon SPECIES_KRABBY
+	compare VAR_RESULT, 0
+	goto_if_ne MaguroHarbor_Refuge_EventScript_DescribedMons_2
+	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_2
 	closemessage
+MaguroHarbor_Refuge_EventScript_DescribedMons_1:
 	setnamedmon SPECIES_KRABBY
 	setdescribedmon SPECIES_KRABBY
 	release
 	return
+
+MaguroHarbor_Refuge_EventScript_DescribedMons_2:
+	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1
+	closemessage
+	goto MaguroHarbor_Refuge_EventScript_DescribedMons_1
 
 
 MaguroHarbor_Refuge_EventScript_Krabby::
@@ -221,6 +231,10 @@ MaguroHarbor_Refuge_EventScript_DescribedMons_Text_0:
 	.string "Man$"
 
 MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1:
+	.string "So, have you written many entries in\n"
+	.string "your encyclopedia?$"
+
+MaguroHarbor_Refuge_EventScript_DescribedMons_Text_2:
 	.string "Oh! You're writing a Pokémon\n"
 	.string "encyclopedia? That's amazing!\p"
 	.string "I bet you're wondering how you can\n"

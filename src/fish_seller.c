@@ -29,17 +29,18 @@ static u32 GetFishPrice(struct FishMon acceptedFish)
             return PRICE_FISH_RARE;
         case FISH_RARITY_RARE_AS_FUCK:
         default:
-            return PRICE_FISH_VERY_RARE;
+            return PRICE_FISH_RARE_AS_FUCK;
     }
 }
 
 static u32 GetFoundTreasure(struct FishMon acceptedFish)
 {
-    if (Random() % 3 == 0)
+    if (Random() % TREASURE_ODDS == 0)
     {
-        u32 fishRarity = acceptedFish.rarity;
+        // The rarer the fish, the more treasure pools
+        u32 treasureRarity = Random() % (acceptedFish.rarity + 1);
         u32 randomTreasureSlot = Random() % TREASURE_PER_RARITY_COUNT;
-        return sfoundTreasures[fishRarity][randomTreasureSlot];
+        return sfoundTreasures[treasureRarity][randomTreasureSlot];
     }
     return ITEM_NONE;
 }
@@ -49,7 +50,6 @@ void Native_GiveFish(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1);
 
     u32 species = GetMonData(&gPlayerParty[VarGet(VAR_0x8004)], MON_DATA_SPECIES);
-    DebugPrintf("species = %d in slot %d", species, VarGet(VAR_0x8004));
     struct FishMon acceptedFish = GetAcceptedFish(species);
     u32 price = 0;
     u32 treasure = ITEM_NONE;
