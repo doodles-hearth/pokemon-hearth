@@ -118,11 +118,11 @@ static void CB_HandleFlyMapInput(void);
 static void CB_ExitFlyMap(void);
 
 static const u16 sRegionMapCursorPal[] = INCBIN_U16("graphics/region_map_hearth/cursor_small.gbapal");
-static const u32 sRegionMapCursorSmallGfxLZ[] = INCBIN_U32("graphics/region_map_hearth/cursor_small.4bpp.lz");
-static const u32 sRegionMapCursorLargeGfxLZ[] = INCBIN_U32("graphics/region_map_hearth/cursor_large.4bpp.lz");
+static const u32 sRegionMapCursorSmallGfxLZ[] = INCBIN_U32("graphics/region_map_hearth/cursor_small.4bpp.smol");
+static const u32 sRegionMapCursorLargeGfxLZ[] = INCBIN_U32("graphics/region_map_hearth/cursor_large.4bpp.smol");
 static const u16 sRegionMapBg_Pal[] = INCBIN_U16("graphics/region_map_hearth/map.gbapal");
-static const u32 sRegionMapBg_GfxLZ[] = INCBIN_U32("graphics/region_map_hearth/map.4bpp.lz");
-static const u32 sRegionMapBg_TilemapLZ[] = INCBIN_U32("graphics/region_map_hearth/map.bin.lz");
+static const u32 sRegionMapBg_GfxLZ[] = INCBIN_U32("graphics/region_map_hearth/map.4bpp.smol");
+static const u32 sRegionMapBg_TilemapLZ[] = INCBIN_U32("graphics/region_map_hearth/map.bin.smolTM");
 static const u16 sRegionMapPlayerIcon_BrendanPal[] = INCBIN_U16("graphics/region_map_hearth/brendan_icon.gbapal");
 static const u8 sRegionMapPlayerIcon_BrendanGfx[] = INCBIN_U8("graphics/region_map_hearth/brendan_icon.4bpp");
 static const u16 sRegionMapPlayerIcon_MayPal[] = INCBIN_U16("graphics/region_map_hearth/may_icon.gbapal");
@@ -265,10 +265,10 @@ static const u8 sMapSecIdsOffMap[] =
 };
 
 static const u16 sRegionMapFramePal[] = INCBIN_U16("graphics/region_map_hearth/frame.gbapal");
-static const u32 sRegionMapFrameGfxLZ[] = INCBIN_U32("graphics/region_map_hearth/frame.4bpp.lz");
-static const u32 sRegionMapFrameTilemapLZ[] = INCBIN_U32("graphics/region_map_hearth/frame.bin.lz");
+static const u32 sRegionMapFrameGfxLZ[] = INCBIN_U32("graphics/region_map_hearth/frame.4bpp.smol");
+static const u32 sRegionMapFrameTilemapLZ[] = INCBIN_U32("graphics/region_map_hearth/frame.bin.smolTM");
 static const u16 sFlyTargetIcons_Pal[] = INCBIN_U16("graphics/region_map_hearth/fly_target_icons.gbapal");
-static const u32 sFlyTargetIcons_Gfx[] = INCBIN_U32("graphics/region_map_hearth/fly_target_icons.4bpp.lz");
+static const u32 sFlyTargetIcons_Gfx[] = INCBIN_U32("graphics/region_map_hearth/fly_target_icons.4bpp.smol");
 
 static const u8 sMapHealLocations[][3] =
 {
