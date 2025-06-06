@@ -22,7 +22,7 @@ dir_aseprite_folder="/mnt/c/Program Files/"
 normalize_py="${porytiles_dir}normalize.py"
 
 ## WINDOWS PATH
-dir_aseprite_raw_tilesets="\\wsl.localhost\Ubuntu\home\purrfectdoodle\romhack\pokemon-hearth\tools\porytiles\_raw_tilesets\" 
+dir_aseprite_raw_tilesets="\\\\wsl.localhost\\Ubuntu\\home\\purrfectdoodle\\romhack\\pokemon-hearth\\tools\\porytiles\\_raw_tilesets\\"
 
 # END OF CUSTOM PATHS
 
@@ -172,6 +172,7 @@ while(true); do
             lastcmd="porytiles compile-secondary ${attribute_generation} -Wall -o ${dir_compiled_secondary}${tileset} ${dir_raw_tilesets_secondary}${tilesetsrc} ${dir_raw_tilesets_primary}${tilesetsrc2} ${metatile_behaviors}"
 
             # write ${tilesetsrc2} to a .txt file for use later
+            echo "Creating primarysrc.txt"
             echo $tilesetsrc2 > ${dir_raw_tilesets_secondary}${tilesetsrc}/primarysrc.txt
 
             echo "Compiled secondary tileset."

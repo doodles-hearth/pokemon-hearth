@@ -1,4 +1,4 @@
-#include "global.h"
+/* #include "global.h"
 #include "event_data.h"
 #include "fish_seller.h"
 #include "random.h"
@@ -60,4 +60,4 @@ void Native_GiveFish(struct ScriptContext *ctx)
     }
     VarSet(VAR_0x8000, price);
     VarSet(VAR_0x8001, treasure);
-}
+} */
