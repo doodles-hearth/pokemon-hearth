@@ -136,11 +136,7 @@ script OrchardPath_Samurai_KnowAboutDecay {
 		"Now now, move along!"
 	))
 	
-	call(OrchardPath_SetVarDecay)
-}
-
-script OrchardPath_SetVarDecay {
-	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 6)
+	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 7)
 }
 
 script OrchardPath_EventScript_Umbreon {

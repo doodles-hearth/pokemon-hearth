@@ -737,15 +737,16 @@ script YifuCity_Dojo_EventScript_Advice {
 	faceplayer
 	if (flag(FLAG_BADGE03_GET)) {
 		msgbox(format(
-			"Such grace! Such swiftness! I am wowed!\p"
-            "{PLAYER}… That's a name to be remembered!"
+			"Such grace! Such swiftness!\nI am wowed!\p"
+            "{PLAYER}…\nThat's a name to be remembered!"
 		))
 	} else {
 		msgbox(format(
-            "Hello, young challenger, and welcome to the Dance Hall Dojo! Think you've got what it takes to see through the dancer's intoxicating moves?\p"
-            "Watch out though, Master Yutaka can be as critical as she is beautiful.\l"
+            "Hello, young challenger, and welcome to the Dance Hall Dojo!\p"
+            "Think you've got what it takes to see through the dancer's intoxicating moves?\p"
+            "Watch out though, Master Yutaka can be as abrasive as she is beautiful.\p"
             "She probably won't appreciate you walking around her Dojo with your clothes looking like… this…\p"
-            "Uh, nevermind my babbling! Go get 'em, champ!"
+            "Uh, nevermind my babbling!\nGo get 'em, champ!"
 		))
 	}
 	release
@@ -775,18 +776,18 @@ script YifuCity_Dojo_EventScript_DojoStatue {
 script YifuCity_Dojo_EventScript_Akari {
     trainerbattle_single(
 		TRAINER_AKARI,
-		format("You still wish to fight? Very well!"),
+		format("You still wish to fight?\nVery well!"),
 		format("Oh!")
 	)
 	speakername("Akari")
-	msgbox(format("You are very graceful. Are you sure you're not a dancer?"), MSGBOX_AUTOCLOSE)
+	msgbox(format("You are very graceful.\nAre you sure you're not a dancer?"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script YifuCity_Dojo_EventScript_Yuka {
     trainerbattle_single(
 		TRAINER_YUKA,
-		format("You have a good eye! Let's see if that applies to Pokémon, as well!"),
+		format("You have a good eye!\nLet's see if that applies to Pokémon, as well!"),
 		format("You have many talents, I see!")
 	)
 	speakername("Yuka")
@@ -797,7 +798,7 @@ script YifuCity_Dojo_EventScript_Yuka {
 script YifuCity_Dojo_EventScript_Nanami {
     trainerbattle_single(
 		TRAINER_NANAMI,
-		format("Pant… I'm impressed… Pant… This last dance was… intense!"),
+		format("Pant… I'm impressed… Pant…\nThis last dance was… intense!"),
 		format("Pant… Hey, let me catch my breath!")
 	)
 	speakername("Nanami")
@@ -809,7 +810,7 @@ script YifuCity_Dojo_EventScript_Kanae {
     trainerbattle_single(
 		TRAINER_KANAE,
 		format("You didn't see me trip over my own foot, did you?"),
-        format("My dance wasn't perfect! I deserve this!")
+        format("My dance wasn't perfect!\nI deserve this!")
 	)
 	speakername("Kanae")
 	msgbox(format("Next time my dance will be perfect, you'll see!"), MSGBOX_AUTOCLOSE)
@@ -819,7 +820,7 @@ script YifuCity_Dojo_EventScript_Kanae {
 script YifuCity_Dojo_EventScript_Karin {
     trainerbattle_single(
 		TRAINER_KARIN,
-		format("Oh good! A battle! I was getting bored."),
+		format("Oh good! A battle!\nI was getting bored."),
         format("I am regretting this…")
 	)
 	speakername("Karin")
@@ -830,7 +831,7 @@ script YifuCity_Dojo_EventScript_Karin {
 script YifuCity_Dojo_EventScript_Miika {
     trainerbattle_single(
 		TRAINER_MIIKA,
-		format("Please admire my brand-new designer kimono!"),
+		format("Please admire my brand new designer kimono!"),
         format("You don't look impressed at all!")
 	)
 	speakername("Miika")
@@ -843,7 +844,7 @@ script YifuCity_Dojo_EventScript_Dancer {
     faceplayer
     speakername("Kimono girl")
     msgbox(format(
-        "I have no Pokémon! I'm only a dancer."
+        "I have no Pokémon!\nI'm only a dancer."
     ))
     release
 }
@@ -887,9 +888,8 @@ script YifuCity_Dojo_EventScript_Yutaka {
 		format(
             "Excuse me, what is this?\p"
             "Is there a reason for the\n"
-            "accoutrement you're donning?\l"
-            "A carnival, perhaps?\l"
-            "Or have you lost a bet?\p"
+            "accoutrement you're donning?\p"
+            "A carnival, perhaps?\nOr have you lost a bet?\p"
             "Or do you simply lack a basic\n"
             "sense of style to such an\l"
             "extreme degree?\p"
@@ -898,7 +898,7 @@ script YifuCity_Dojo_EventScript_Yutaka {
             "(…Yutaka, you must not let this\n"
             "offend you so!\l"
             "You are stronger than that!)\p"
-            "Ahem… Let us move on…\n"
+            "Ahem… Let us move on…\p"
             "You shall be fighting my exquisite assortment of Pokémon,\l"
             "in the hopes of obtaining\l"
             "an official Token from me.\p"
@@ -915,7 +915,8 @@ script YifuCity_Dojo_EventScript_Yutaka {
 	// specialvar(VAR_RESULT, ShouldTryRematchBattle)
 	// goto_if_eq(VAR_RESULT, TRUE, MaguroHarbor_Dojo_EventScript_KoishiRematch)
 	msgbox(format(
-		"You shall achieve great things. I hope we meet again."
+		"You shall achieve great things, despite your fashion faux-pas.\p"
+        "I hope to battle you again."
 	))
 
     release
@@ -932,7 +933,7 @@ script YifuCity_Dojo_EventScript_YutakaDefeated {
     speakername("Yutaka")
 	msgbox(
 		format(
-            "I am outrée! Your techniques are rough and vulgar, yet…\l"
+            "I am outrée! Your techniques are rough and vulgar, yet…\p"
             "Victory is yours…\nThat is undeniable.\p"
 			"I guess what you lack in aesthetic values, you compensate in strength.\p"
 			"Do accept this, as well."

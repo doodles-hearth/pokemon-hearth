@@ -90,12 +90,7 @@ OrchardPath_Samurai_KnowAboutDecay::
 	waitse
 	speakername OrchardPath_EventScript_Samurai_Text_0
 	msgbox OrchardPath_Samurai_KnowAboutDecay_Text_0
-	call OrchardPath_SetVarDecay
-	return
-
-
-OrchardPath_SetVarDecay::
-	setvar VAR_DECAY_BEACHBOUND_ROUTE, 6
+	setvar VAR_DECAY_BEACHBOUND_ROUTE, 7
 	return
 
 

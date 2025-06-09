@@ -892,7 +892,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_17:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18:
 	.string "{PLAYER}!\n"
-	.string "Let's see what our brand-new Pokémon\l"
+	.string "Let's see what our brand new Pokémon\l"
 	.string "are capable of!\p"
 	.string "I request an official Pokémon\n"
 	.string "Wielder battle!$"

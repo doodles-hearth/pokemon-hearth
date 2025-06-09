@@ -166,6 +166,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_DECAY_HARIKO",
       "graphics_id": "OBJ_EVENT_GFX_BEAN",
       "x": 38,
       "y": 18,
@@ -176,7 +177,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BeachboundRoute_Decay_EventScript_Bean",
-      "flag": "FLAG_TEMP_2",
+      "flag": "FLAG_TEMP_1",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -206,6 +207,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_DECAY_FIRST_SAMURAI",
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 66,
       "y": 15,
@@ -226,11 +228,12 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_DECAY_SAMURAI",
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 39,
-      "y": 11,
+      "y": 15,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_LEFT_AND_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -247,10 +250,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KOISHI",
-      "x": 38,
-      "y": 15,
+      "x": 40,
+      "y": 12,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_LEFT_AND_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -266,6 +269,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_DECAY_NATSUKI",
       "graphics_id": "OBJ_EVENT_GFX_NATSUKI",
       "x": 30,
       "y": 17,
@@ -277,6 +281,27 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BeachboundRoute_Decay_EventScript_Bean",
       "flag": "FLAG_TEMP_1",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "local_id": "LOCALID_BEACHBOUND_DECAY_SAMURAI_COLLEAGUE",
+      "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
+      "x": 39,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BeachboundRoute_Decay_EventScript_SamuraiWhatCouldBe",
+      "flag": "0",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -367,7 +392,5 @@
       "script": "BeachboundRoute_Decay_EventScript_BeanTrigger2StepsAway"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

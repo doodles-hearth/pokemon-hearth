@@ -8,7 +8,7 @@ Silveridge_EldersHouse_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 Silveridge_EldersHouse_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_DECAY_BEACHBOUND_ROUTE, 4, Silveridge_EldersHouse_EventScript_Conversation
+	map_script_2 VAR_DECAY_BEACHBOUND_ROUTE, 5, Silveridge_EldersHouse_EventScript_Conversation
 	.2byte 0
 
 
@@ -26,7 +26,7 @@ Silveridge_EldersHouse_EventScript_EldersMon::
 
 Silveridge_EldersHouse_EventScript_Conversation::
 	lock
-	setvar VAR_DECAY_BEACHBOUND_ROUTE, 5
+	setvar VAR_DECAY_BEACHBOUND_ROUTE, 6
 	applymovement 2, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_0

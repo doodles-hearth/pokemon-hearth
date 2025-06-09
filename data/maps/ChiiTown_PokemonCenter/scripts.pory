@@ -86,7 +86,7 @@ script ChiiTown_PokemonCenter_EventScript_Boy {
 script ChiiTown_PokemonCenter_EventScript_Mom {
 	lock
 	faceplayer
-	speakername("Little boy's mom")
+	speakername("Woman")
 	msgbox(format(
 		"Traveling shamisen players take shelter in Pokémon refuges when the night falls.\p"
 		"Their singing makes for such a cosy atmosphere!"
@@ -153,10 +153,12 @@ script ChiiTown_PokemonCenter_EventScript_RefugePresentation {
 	faceplayer
 	speakername("Talkative man")
 	msgbox(format(
-		"Isn't it amazing? This is one of the many brand-new Pokémon refuges that the Pokémon league council has decided to build in towns across all Toku!\p"
+		"Isn't it amazing?\p"
+		"This is one of the many brand new Pokémon refuges that the Pokémon Council has built in towns across all Toku!\p"
 		"With traveling alone becoming more dangerous, many people are now training a Pokémon of their own for protection.\p"
 		"Towns were starting to be in dire need of proper healing and rest spots for Pokémon.\p"
-		"Oh, sorry, I'll get out of your hair now. Talk to the nurse and her Chansey whenever you want her to heal your Pokémon!"
+		"Sorry, I'll get out of your hair now.\n"
+		"Talk to the nurse and her Chansey\nif you want her to heal your Pokémon!"
 	))
 	closemessage
 

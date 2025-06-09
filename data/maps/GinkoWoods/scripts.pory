@@ -39,7 +39,7 @@ script GinkoWoods_EventScript_Toshio {
 script GinkoWoods_EventScript_Eiji {
 	trainerbattle_single(
 		TRAINER_EIJI,
-		format("With the help of my brand-new Pokémon, I'm catching all sort of bugs!"),
+		format("With the help of my brand new Pokémon, I'm catching all sort of bugs!"),
 		format("My bugs!")
 	)
 	speakername("Eiji")
@@ -126,24 +126,24 @@ script GinkoWoods_EventScript_Bean {
 			msgbox(format(
 				"Right! I am glad you share my interest in Pokémon habitat.\p"
 				"I am Hariko. And what is your name?\p"
-				"{PLAYER}. It has been nice chatting with you. I will see you around, then.\p"
-				"Okay, bye!"
+				"{PLAYER}.\nIt has been nice chatting with you.\NI will see you around, then.\p"
+				"Okay. Bye!"
 			))
 		case 1:
 			msgbox(format(
-				"Right! I haven't introduced myself yet.\p"
+				"Right!\nI haven't introduced myself yet.\p"
 				"I am Hariko. And what is your name?\p"
-				"{PLAYER}. It has been nice chatting with you. I will see you around, then.\p"
-				"Okay, bye!"
+				"{PLAYER}.\nIt has been nice chatting with you.\NI will see you around, then.\p"
+				"Okay. Bye!"
 			))
 		case 2:
 			msgbox(format(
 				"…Oh. I am blocking your path. I see.\p"
-				"I guess I got carried away, have I not? That… tends to happen.\p"
+				"I got carried away, have I not?\nThat… tends to happen.\p"
 				"I am Hariko. And what is your name?\p"
-				"{PLAYER}. It has been nice chatting with you. I am moving now, so that you can go through.\p"
+				"{PLAYER}.\nIt has been nice chatting with you.\NI am moving now, so that you can go through.\p"
 				"I will see you around, then.\p"
-				"Okay, bye!"
+				"Okay. Bye!"
 			))
 	}
 	closemessage
@@ -173,7 +173,7 @@ script GinkoWoods_EventScript_Tracks {
 
 	speakername("Odd girl")
 	msgbox(format(
-		"THE TRACKS!! YOU'RE STEPPING ON THEM!!!"
+		"THE TRACKS!!\nYOU'RE STEPPING ON THEM!!!"
 	))
 	closemessage
 
@@ -190,12 +190,11 @@ movement GinkoWoods_Movement_PlayerWalkDown {
 script GinkoWoods_EventScript_TrainerTips1 {
     msgbox(format(
 		"Did you know?\p"
-		"Some items can be hidden under the forest's thick canopy. Look around!"
+		"Some items can be hidden under the forest's thick canopy.\NLook around!"
 	), MSGBOX_SIGN)
 }
 
 script GinkoWoods_EventScript_TrainerTips2 {
-	// TODO EVA implement feature
     msgbox(format(
 		"Did you know?\p"
 		"You can sort the contents of your bag by pressing START."

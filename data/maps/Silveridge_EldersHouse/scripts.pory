@@ -9,7 +9,7 @@ mapscripts Silveridge_EldersHouse_MapScripts {
 		setflag(FLAG_HIDE_MESSENGER)
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_DECAY_BEACHBOUND_ROUTE, 4: Silveridge_EldersHouse_EventScript_Conversation
+        VAR_DECAY_BEACHBOUND_ROUTE, 5: Silveridge_EldersHouse_EventScript_Conversation
     ]
 }
 
@@ -28,7 +28,7 @@ script Silveridge_EldersHouse_EventScript_EldersMon {
 
 script Silveridge_EldersHouse_EventScript_Conversation {
 	lock
-	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 5)
+	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 6)
 
 	applymovement(LOCALID_OLD_MAN, Common_Movement_WalkInPlaceFasterRight)
 	waitmovement(0)

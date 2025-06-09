@@ -1070,7 +1070,7 @@ const struct Tileset gTileset_Decay =
     .palettes = gTilesetPalettes_Decay,
     .metatiles = gMetatiles_Decay,
     .metatileAttributes = gMetatileAttributes_Decay,
-    .callback = NULL,
+    .callback = InitTilesetAnim_Decay,
 };
 
 const struct Tileset gTileset_OpenSea =

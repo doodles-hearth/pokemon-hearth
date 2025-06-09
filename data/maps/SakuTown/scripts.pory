@@ -131,7 +131,36 @@ script SakuTown_EventScript_RivalAtSakuWall {
 		"I bet you I'll get to Silveridge first!\p"
 		"See you later, Feraligatr!"
 	))
+
+	mcdialogue(
+		"In a while, Totodile?",
+		"Where's the Feraligatr?"
+	)
+
 	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			speakername("Natsuki")
+			msgbox(format(
+				"You got it!"
+			))
+		case 1:
+			speakername("Natsuki")
+			msgbox(format(
+				"Right behind you!"
+			))
+			closemessage
+
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down, delay_16 * 3, walk_in_place_fast_up))
+			waitmovement(0)
+
+			speakername("Natsuki")
+			msgbox(format(
+				"Bahaha! Got you!"
+			))
+			closemessage
+	}
 
 	// Left
 	if (var(VAR_TEMP_2) == 16) {
@@ -161,13 +190,15 @@ script SakuTown_EventScript_Farmer {
 	returnqueststate(QUEST_SAKURASCYTHER)
 	if(var(VAR_RESULT) == 3){
 		msgbox(format(
-		"Wielder! It's you! I can't thank ya enough for helping us heal our girl.\pI've been doin' a lot of thinkin' too, after you told us the one who helped 'er get better was someone from Kura. That ain't here nor there though. As thanks, ya can have these."
+			"Wielder! It's you!\nI can't thank ya enough for helping us heal our girl.\p"
+			"Been doin' some thinkin' too, after you told us the one who helped 'er was from Kura.\p"
+			"That ain't here nor there though.\nAs thanks, ya can have these."
 		))
 		giveitem(ITEM_CHERI_BERRY, 20)
 		completequest(QUEST_SAKURASCYTHER)
 	} else {
 		msgbox(format(
-			"We're growin' Cheri berries. Saku Village exports its berries to many towns."
+			"We're growin' Cheri berries.\nSaku Village exports its berries to many towns."
 		))
 	}
 	release
@@ -177,8 +208,8 @@ script SakuTown_EventScript_Farmer2 {
 	lock
 	speakername("Farmer")
 	msgbox(format(
-		"Whew…\p"
-		"Working in the fields sure is tiring…"
+		"Whew…\n"
+		"Working in the fields sure is tirin'…"
 	))
 	release
 }
@@ -319,7 +350,7 @@ script SakuTown_EventScript_GuardStopsYou {
 		speakername("Guard")
 		msgbox(format(
 			"Are you trying to sneak into Kura Village?\p"
-			"…Oh, you're just a traveler. Nevermind then, you can go through.\p"
+			"…Oh, you're just a traveler.\nNevermind then, you can go through.\p"
 			"Though I wouldn't recommend visiting the next village, there's really nothing interesting there."
 		))
 		closemessage
@@ -396,7 +427,7 @@ script SakuTown_EventScript_MonHues {
 	speakername("Man")
 	msgbox(format(
 		"Have you ever paid close attention to the fur and feather colors of the wild Pokémon?\p"
-		"They may all look the same at first… But each one has its own totally unique colors!\p"
+		"They may all look the same at first…\nBut each one has its own totally unique colors!\p"
 		"Doesn't noticing that make your heart sing?"
 	))
 	closemessage
@@ -438,7 +469,7 @@ script SakuTown_EventScript_TamaArgument {
 
 	applymovement(LOCALID_TAMA, moves(walk_in_place_fast_right))
 	speakername("Tama")
-	msgbox(format("The love of my life is waiting for me on the other side! You can't do this to me!"))
+	msgbox(format("The love of my life is waiting for me\non the other side!\lYou can't do this to me!"))
 	closemessage
 
 	applymovement(LOCALID_TAMASDAD, moves(walk_in_place_fast_right))
@@ -457,7 +488,7 @@ script SakuTown_EventScript_TamaArgument {
 	applymovement(LOCALID_TAMA, moves(jump_in_place_up))
 	waitmovement(LOCALID_TAMA)
 	speakername("Tama")
-	msgbox(format("It's you! You need to help me get to Ashii, please!"))
+	msgbox(format("It's you!\nYou need to help me get to Ashii,\lplease!"))
 	waitmessage
 	closemessage
 	playse(MUS_VS_RAYQUAZA)
@@ -550,7 +581,7 @@ script SakuTown_EventScript_TamaArgument {
 
 	speakername("Tama")
 	msgbox(format(
-		"I can't thank you enough. Now, let's make haste!\lAshii must be waiting for us!\p"
+		"I can't thank you enough.\nNow, let's make haste!\lAshii must be waiting for us!\p"
 		"Let me heal your Pokémon as thanks."
 	))
 
@@ -720,7 +751,7 @@ script SakuTown_EventScript_LoversReunite {
 	speakername("Tama")
 	msgbox(format(
 		"We can't stay here for long, Ashii.\N"
-		"Even if my father begrundingly let me go, there's no telling the wrath our villages will wreak upon us if they see us here in the morning."
+		"My father begrundingly let me go, but there's no telling the wrath our villages will wreak upon us if they see us here in the morning."
 	))
 	closemessage
 
@@ -735,7 +766,7 @@ script SakuTown_EventScript_LoversReunite {
 	speakername("Tama")
 	msgbox(format(
 		"Will…\p"
-		"Will we see each other again?\NTomorrow?"
+		"Will we see each other again?\nTomorrow?"
 	))
 	closemessage
 
@@ -759,7 +790,7 @@ script SakuTown_EventScript_LoversReunite {
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_left))
 
 	speakername("Ashii")
-	msgbox(format("Hehe… I'll see you tomorrow, my love."))
+	msgbox(format("Hehe…\nI'll see you tomorrow, my love."))
 	closemessage
 
 	playse(SE_PIN)
@@ -800,8 +831,8 @@ script SakuTown_EventScript_TamaTalksToPlayerFinal {
 
 	speakername("Tama")
 	msgbox(format(
-		"I can't believe it, I finally saw her again!\p"
-		"Wielder… thank you… I'm so excited to see her again tomorrow!"
+		"I can't believe it, it finally happened!\p"
+		"Wielder… thank you…\nIt's so good to see her again!"
 	))
 	closemessage
 

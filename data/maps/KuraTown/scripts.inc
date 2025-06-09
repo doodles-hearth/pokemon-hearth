@@ -8,19 +8,26 @@ KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	setflag FLAG_VISITED_KURA_TOWN
 	returnqueststate QUEST_SAKURALOVERS
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
-	goto_if_lt KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	goto_if_lt KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
 	compare VAR_RESULT, 3
-	goto_if_ge KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
 	goto_if_ge KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
-	return
-
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
+	goto_if_ge KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
 KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	setflag FLAG_HIDE_DEADNIGHT_ASHII
+	compare VAR_DECAY_BEACHBOUND_ROUTE, 4
+	goto_if_ne KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
 	return
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	setflag FLAG_HIDE_DEADNIGHT_ASHII
+	goto KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+
+KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
 	clearflag FLAG_HIDE_DEADNIGHT_ASHII
+	goto KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+
+KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
+	setflag FLAG_TEMP_1
 	return
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -49,6 +56,7 @@ KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_5:
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3, KuraTown_EventScript_AnxiousAshii
+	map_script_2 VAR_DECAY_BEACHBOUND_ROUTE, 4, KuraTown_EventScript_PostDecayNatsukiHariko
 	.2byte 0
 
 
@@ -219,15 +227,53 @@ KuraTown_EventScript_GymSign::
 	return
 
 
+KuraTown_EventScript_PostDecayNatsukiHariko::
+	lockall
+	setvar VAR_DECAY_BEACHBOUND_ROUTE, 5
+	delay 48
+	applymovement LOCALID_KURA_HARIKO, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
+	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_0
+	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_1
+	closemessage
+	delay 60
+	applymovement LOCALID_KURA_HARIKO, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
+	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_0
+	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_2
+	closemessage
+	applymovement LOCALID_KURA_HARIKO, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_1
+	delay 32
+	applymovement LOCALID_KURA_NATSUKI, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_2
+	waitmovement LOCALID_KURA_HARIKO
+	delay 24
+	applymovement LOCALID_KURA_NATSUKI, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_3
+	waitmovement LOCALID_KURA_NATSUKI
+	applymovement LOCALID_KURA_NATSUKI, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_4
+	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
+	waitmovement 0
+	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_3
+	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_4
+	applymovement LOCALID_KURA_NATSUKI, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_5
+	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_3
+	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_5
+	closemessage
+	applymovement LOCALID_KURA_NATSUKI, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_6
+	delay 32
+	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_2
+	waitmovement LOCALID_KURA_NATSUKI
+	removeobject LOCALID_KURA_NATSUKI
+	releaseall
+	return
+
+
 KuraTown_EventScript_AnxiousAshii::
 	lock
 	delay 48
-	applymovement 16, KuraTown_EventScript_AnxiousAshii_Movement_0
-	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_AnxiousAshii_Movement_1
+	applymovement 16, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_4
 	speakername KuraTown_EventScript_AnxiousAshii_Text_0
 	msgbox KuraTown_EventScript_AnxiousAshii_Text_1
 	closemessage
-	applymovement 16, KuraTown_EventScript_AnxiousAshii_Movement_2
+	applymovement 16, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_2
 	waitmovement 16
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
 	release
@@ -240,7 +286,7 @@ KuraTown_EventScript_AnxiousAshiiWaiting::
 	speakername KuraTown_EventScript_AnxiousAshii_Text_0
 	msgbox KuraTown_EventScript_AnxiousAshiiWaiting_Text_0
 	closemessage
-	applymovement 16, KuraTown_EventScript_AnxiousAshii_Movement_2
+	applymovement 16, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_2
 	release
 	return
 
@@ -260,16 +306,49 @@ KuraTown_EventScript_PreventEscape::
 	end
 
 
-KuraTown_EventScript_AnxiousAshii_Movement_0:
+KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0:
 	walk_in_place_fast_left
 	step_end
 
-KuraTown_EventScript_AnxiousAshii_Movement_1:
+KuraTown_EventScript_PostDecayNatsukiHariko_Movement_1:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+KuraTown_EventScript_PostDecayNatsukiHariko_Movement_2:
+	walk_in_place_fast_down
+	step_end
+
+KuraTown_EventScript_PostDecayNatsukiHariko_Movement_3:
+	walk_up
+	step_end
+
+KuraTown_EventScript_PostDecayNatsukiHariko_Movement_4:
 	walk_in_place_fast_right
 	step_end
 
-KuraTown_EventScript_AnxiousAshii_Movement_2:
-	walk_in_place_fast_down
+KuraTown_EventScript_PostDecayNatsukiHariko_Movement_5:
+	lock_facing_direction
+	walk_fast_left
+	unlock_facing_direction
+	step_end
+
+KuraTown_EventScript_PostDecayNatsukiHariko_Movement_6:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 KuraTown_EventScript_PreventEscape_Movement_0:
@@ -389,9 +468,9 @@ KuraTown_EventScript_PokemonCouncil_Text_0:
 
 KuraTown_EventScript_PokemonCouncil_Text_1:
 	.string "The Elders of the Toku Council may\n"
-	.string "look like a bunch of old people, but\l"
-	.string "each of them was once a formidable\l"
-	.string "Wielder!\p"
+	.string "look like a bunch of frail old people,\l"
+	.string "but each of them was once a\l"
+	.string "formidable Wielder!\p"
 	.string "They paved the way for what Pokémon\n"
 	.string "Wielding is today, and will be\l"
 	.string "tomorrow.$"
@@ -415,6 +494,56 @@ KuraTown_EventScript_GymSign_Text_0:
 	.string "Leader: Hana\p"
 	.string "“Resilient as a maple rooted in\n"
 	.string "wisdom.”$"
+
+KuraTown_EventScript_PostDecayNatsukiHariko_Text_0:
+	.string "Hariko$"
+
+KuraTown_EventScript_PostDecayNatsukiHariko_Text_1:
+	.string "Did you hear? They said this Decay\n"
+	.string "has started less than a week ago.\p"
+	.string "That coincides with the beginning of\n"
+	.string "the Volcano's rumbling spells,\l"
+	.string "so there probably is a correlation.\p"
+	.string "We need to get to the bottom of this.\p"
+	.string "But how are we supposed to if the\n"
+	.string "grownups don't let us?$"
+
+KuraTown_EventScript_PostDecayNatsukiHariko_Text_2:
+	.string "… …{PLAYER}, Natsuki.\n"
+	.string "I am heading home, in Yifu City.\p"
+	.string "We should meet up later to talk about\n"
+	.string "this some more.\p"
+	.string "Well, I am leaving now.\p"
+	.string "Goodbye!$"
+
+KuraTown_EventScript_PostDecayNatsukiHariko_Text_3:
+	.string "Natsuki$"
+
+KuraTown_EventScript_PostDecayNatsukiHariko_Text_4:
+	.string "Boy, your friend sure talks a lot, huh?\p"
+	.string "D'you think this whole Decay business\n"
+	.string "is linked to what Elder Kaba told us?\p"
+	.string "About the wild Pokémon getting\n"
+	.string "aggressive?\p"
+	.string "I'm glad the Samurai are on it, anyway.\n"
+	.string "They know what they're doing,\l"
+	.string "I'm sure they'll fix whatever this is.\p"
+	.string "You're going up to Silveridge to\n"
+	.string "deliver that letter, huh, {PLAYER}?\p"
+	.string "Me? I'm heading to Yifu City.\n"
+	.string "I heard there's a Dojo there, and I'll\l"
+	.string "need to collect a heckload of Tokens\l"
+	.string "if I ever want to join the New Moon\l"
+	.string "order.\p"
+	.string "When I'll be a Samurai, I'll be able to\n"
+	.string "protect everyone from danger!\p"
+	.string "Don't worry, I'll protect you, too!{PAUSE_UNTIL_PRESS}\n"
+	.string "…Mostly from yourself, though!$"
+
+KuraTown_EventScript_PostDecayNatsukiHariko_Text_5:
+	.string "Don't hit me! Don't hit me!\n"
+	.string "I'm gone!\p"
+	.string "See ya later, Feraligatr!$"
 
 KuraTown_EventScript_AnxiousAshii_Text_0:
 	.string "Ashii$"

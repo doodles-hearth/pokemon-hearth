@@ -160,7 +160,7 @@ GinkoWoods_EventScript_Toshio_Text_3:
 	.string "At least that's what my dad told me…$"
 
 GinkoWoods_EventScript_Eiji_Text_0:
-	.string "With the help of my brand-new\n"
+	.string "With the help of my brand new\n"
 	.string "Pokémon, I'm catching all sort of\l"
 	.string "bugs!$"
 
@@ -243,37 +243,41 @@ GinkoWoods_EventScript_Bean_Text_9:
 	.string "Right! I am glad you share my interest\n"
 	.string "in Pokémon habitat.\p"
 	.string "I am Hariko. And what is your name?\p"
-	.string "{PLAYER}. It has been nice chatting\n"
-	.string "with you. I will see you around, then.\p"
-	.string "Okay, bye!$"
+	.string "{PLAYER}.\n"
+	.string "It has been nice chatting with you.\l"
+	.string "I will see you around, then.\p"
+	.string "Okay. Bye!$"
 
 GinkoWoods_EventScript_Bean_Text_10:
-	.string "Right! I haven't introduced myself\n"
-	.string "yet.\p"
+	.string "Right!\n"
+	.string "I haven't introduced myself yet.\p"
 	.string "I am Hariko. And what is your name?\p"
-	.string "{PLAYER}. It has been nice chatting\n"
-	.string "with you. I will see you around, then.\p"
-	.string "Okay, bye!$"
+	.string "{PLAYER}.\n"
+	.string "It has been nice chatting with you.\l"
+	.string "I will see you around, then.\p"
+	.string "Okay. Bye!$"
 
 GinkoWoods_EventScript_Bean_Text_11:
 	.string "…Oh. I am blocking your path. I see.\p"
-	.string "I guess I got carried away, have I\n"
-	.string "not? That… tends to happen.\p"
+	.string "I got carried away, have I not?\n"
+	.string "That… tends to happen.\p"
 	.string "I am Hariko. And what is your name?\p"
-	.string "{PLAYER}. It has been nice chatting\n"
-	.string "with you. I am moving now, so that you\l"
-	.string "can go through.\p"
+	.string "{PLAYER}.\n"
+	.string "It has been nice chatting with you.\l"
+	.string "I am moving now, so that you can go\l"
+	.string "through.\p"
 	.string "I will see you around, then.\p"
-	.string "Okay, bye!$"
+	.string "Okay. Bye!$"
 
 GinkoWoods_EventScript_Tracks_Text_0:
-	.string "THE TRACKS!! YOU'RE STEPPING ON\n"
-	.string "THEM!!!$"
+	.string "THE TRACKS!!\n"
+	.string "YOU'RE STEPPING ON THEM!!!$"
 
 GinkoWoods_EventScript_TrainerTips1_Text_0:
 	.string "Did you know?\p"
 	.string "Some items can be hidden under the\n"
-	.string "forest's thick canopy. Look around!$"
+	.string "forest's thick canopy.\l"
+	.string "Look around!$"
 
 GinkoWoods_EventScript_TrainerTips2_Text_0:
 	.string "Did you know?\p"
