@@ -5992,8 +5992,8 @@
     {
       "id": "LAYOUT_SCENIC_ROUTE_SABERSIDE",
       "name": "ScenicRouteSaberside_Layout",
-      "width": 50,
-      "height": 20,
+      "width": 66,
+      "height": 24,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",

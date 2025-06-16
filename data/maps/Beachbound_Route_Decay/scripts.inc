@@ -597,9 +597,9 @@ BeachboundRoute_Decay_EventScript_Koishi_Text_0:
 	.string "Koishi$"
 
 BeachboundRoute_Decay_EventScript_Koishi_Text_1:
-	.string "The situation is dire…\p"
-	.string "Please move along, and I repeat, do\n"
-	.string "NOT get into trouble!$"
+	.string "This is very worrying…\p"
+	.string "Please don't get into trouble, we're\n"
+	.string "already spread thin as it is!$"
 
 BeachboundRoute_Decay_EventScript_SamuraiBeCarefulTrigger_Text_0:
 	.string "Please be careful if you're crossing\n"
