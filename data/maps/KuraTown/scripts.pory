@@ -304,12 +304,11 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 	speakername("Natsuki")
 	msgbox(format(
 		"Boy, your friend sure talks a lot, huh?\p"
-		"D'you think this whole Decay business\nis linked to what Elder Kaba told us?\p"
-		"About the wild Pokémon getting aggressive?\p"
-		"I'm glad the Samurai are on it, anyway.\NThey know what they're doing,\lI'm sure they'll fix whatever this is.\p"
+		"D'you think this whole Decay business\nis linked to the wild Pokémon attacks\lElder Kaba told us about?\p"
+		"I'm glad the Samurai are on it.\nI'm sure they'll fix whatever this is.\p"
 		"You're going up to Silveridge to deliver that letter, huh, {PLAYER}?\p"
-		"Me? I'm heading to Yifu City.\nI heard there's a Dojo there, and I'll\lneed to collect a heckload of Tokens\lif I ever want to join the New Moon order.\p"
-		"When I'll be a Samurai, I'll be able to\nprotect everyone from danger!\p"
+		"Me? I'm heading to Yifu City.\nThere's a Dojo there, and I'll need\lto collect a heckload of Tokens\lif I ever want to join the New Moon order.\p"
+		"When I'm a Samurai, I'll be able to\nprotect everyone from danger!\p"
 		"Don't worry, I'll protect you, too!{PAUSE_UNTIL_PRESS}\n…Mostly from yourself, though!"
 	))
 

@@ -396,8 +396,8 @@ script BeachboundRoute_Decay_EventScript_Koishi {
 
 	speakername("Koishi")
 	msgbox(format(
-		"The situation is dire…\p"
-		"Please move along, and I repeat, do NOT get into trouble!"
+		"This is very worrying…\p"
+		"Please don't get into trouble, we're already spread thin as it is!"
 	))
 	closemessage
 
