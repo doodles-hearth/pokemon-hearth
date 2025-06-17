@@ -39,6 +39,7 @@
 #include "constants/global.h"
 #include "constants/items.h"
 #include "constants/event_objects.h"
+#include "constants/map_types.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 

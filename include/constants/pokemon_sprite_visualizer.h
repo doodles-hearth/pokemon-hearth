@@ -35,7 +35,10 @@
 #define WIN_END 5
 
 //Battle backgrounds
-#define MAP_BATTLE_SCENE_NORMAL       0
+// EVA COMMENTED THESE because they were partially redundant with map_types.h
+// and it was making my build fail because of my custom map_types.h import in pokemon_summary_screen.c
+// (the definitions were conflicting)
+/* #define MAP_BATTLE_SCENE_NORMAL       0
 #define MAP_BATTLE_SCENE_GYM          1
 #define MAP_BATTLE_SCENE_MAGMA        2
 #define MAP_BATTLE_SCENE_AQUA         3
@@ -48,6 +51,6 @@
 #define MAP_BATTLE_SCENE_WALLACE      10
 #define MAP_BATTLE_SCENE_GROUDON      11
 #define MAP_BATTLE_SCENE_KYOGRE       12
-#define MAP_BATTLE_SCENE_RAYQUAZA     13
+#define MAP_BATTLE_SCENE_RAYQUAZA     13 */
 
 #endif // GUARD_CONSTANTS_POKEMON_SPRITE_VISUALIZER_H
