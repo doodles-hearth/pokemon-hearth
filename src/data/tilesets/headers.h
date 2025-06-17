@@ -1226,3 +1226,14 @@ const struct Tileset gTileset_BrownCave =
     .metatileAttributes = gMetatileAttributes_BrownCave,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_ScenicRoute =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_ScenicRoute,
+    .palettes = gTilesetPalettes_ScenicRoute,
+    .metatiles = gMetatiles_ScenicRoute,
+    .metatileAttributes = gMetatileAttributes_ScenicRoute,
+    .callback = NULL,
+};
