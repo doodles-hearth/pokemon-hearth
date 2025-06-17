@@ -9332,24 +9332,25 @@ static inline s32 DoFixedDamageMoveCalc(struct DamageContext *ctx)
 
     switch (GetMoveEffect(ctx->move))
     {
-    case EFFECT_LEVEL_DAMAGE:
-        dmg = gBattleMons[ctx->battlerAtk].level;
-        break;
-    case EFFECT_PSYWAVE: {
-        randDamage = B_PSYWAVE_DMG >= GEN_6 ? (Random() % 101) : ((Random() % 11) * 10);
-        dmg = gBattleMons[ctx->battlerAtk].level * (randDamage + 50) / 100;
-        break;
-    case EFFECT_FIXED_HP_DAMAGE:
-        dmg = GetMoveFixedHPDamage(ctx->move);
-        break;
-    case EFFECT_FIXED_PERCENT_DAMAGE:
-        dmg = GetNonDynamaxHP(ctx->battlerDef) * GetMoveDamagePercentage(ctx->move) / 100;
-        break;
-    case EFFECT_FINAL_GAMBIT:
-        dmg = GetNonDynamaxHP(ctx->battlerAtk);
-        break;
-    default:
-        return INT32_MAX;
+        case EFFECT_LEVEL_DAMAGE:
+            dmg = gBattleMons[ctx->battlerAtk].level;
+            break;
+        case EFFECT_PSYWAVE: {
+            randDamage = B_PSYWAVE_DMG >= GEN_6 ? (Random() % 101) : ((Random() % 11) * 10);
+            dmg = gBattleMons[ctx->battlerAtk].level * (randDamage + 50) / 100;
+            break;
+        }
+        case EFFECT_FIXED_HP_DAMAGE:
+            dmg = GetMoveFixedHPDamage(ctx->move);
+            break;
+        case EFFECT_FIXED_PERCENT_DAMAGE:
+            dmg = GetNonDynamaxHP(ctx->battlerDef) * GetMoveDamagePercentage(ctx->move) / 100;
+            break;
+        case EFFECT_FINAL_GAMBIT:
+            dmg = GetNonDynamaxHP(ctx->battlerAtk);
+            break;
+        default:
+            return INT32_MAX;
     }
 
     gBattleStruct->moveResultFlags[ctx->battlerDef] &= ~(MOVE_RESULT_NOT_VERY_EFFECTIVE | MOVE_RESULT_SUPER_EFFECTIVE);
