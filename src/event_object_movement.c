@@ -6365,42 +6365,31 @@ u8 GetSidewaysStairsCollision(struct ObjectEvent *objectEvent, u8 dir, u8 curren
     return collision;
     
     // cant descend stairs into water
-    if (MetatileBehavior_IsSurfableFishableWater(nextBehavior))
-    return collision;
-    
-    if (MetatileBehavior_IsSidewaysStairsLeftSide(nextBehavior))
-    {
-        //moving ONTO left side stair
-        if (dir == DIR_WEST && currentBehavior != nextBehavior)
-        return collision;   //moving onto top part of left-stair going left, so no diagonal
-        else
-        return COLLISION_SIDEWAYS_STAIRS_TO_LEFT; // move diagonally
-    }
-    else if (MetatileBehavior_IsSidewaysStairsRightSide(nextBehavior))
-    {
-        //moving ONTO right side stair
-        if (dir == DIR_EAST && currentBehavior != nextBehavior)
-            return collision;   //moving onto top part of right-stair going right, so no diagonal
-        else
-            return COLLISION_SIDEWAYS_STAIRS_TO_RIGHT;
-    }
-    else if (MetatileBehavior_IsSidewaysStairsLeftSideAny(currentBehavior))
-    {
-        //moving OFF of any left side stair
-        if (dir == DIR_WEST && nextBehavior != currentBehavior)
-            return COLLISION_SIDEWAYS_STAIRS_TO_LEFT;   //moving off of left stairs onto non-stair -> move diagonal
-        else
-            return collision;   //moving off of left side stair to east -> move east
-    }
-    else if (MetatileBehavior_IsSidewaysStairsRightSideAny(currentBehavior))
-    {
-        //moving OFF of any right side stair
-        if (dir == DIR_EAST && nextBehavior != currentBehavior)
-            return COLLISION_SIDEWAYS_STAIRS_TO_RIGHT;  //moving off right stair onto non-stair -> move diagonal
-        else
-            return collision;
-    }
+    //if (MetatileBehavior_IsSurfableFishableWater(nextBehavior))
+    //return collision;
 
+    //Left Side Stairs (going up from left to right)
+    if (dir == DIR_WEST && MetatileBehavior_IsSidewaysStairsLeftSideBottom(nextBehavior)) {
+        return COLLISION_IMPASSABLE;
+    } else if (dir == DIR_WEST && MetatileBehavior_IsSidewaysStairsLeftSideAny(currentBehavior)) {
+        return COLLISION_SIDEWAYS_STAIRS_TO_LEFT;
+    }
+    else if (dir == DIR_EAST && MetatileBehavior_IsSidewaysStairsLeftSideTop(nextBehavior)) {
+        return COLLISION_IMPASSABLE;
+    } else if (dir == DIR_EAST && MetatileBehavior_IsSidewaysStairsLeftSideAny(nextBehavior)) {
+        return COLLISION_SIDEWAYS_STAIRS_TO_LEFT;
+    }
+    //Right Side Stairs (going up from right to left)
+    else if (dir == DIR_EAST && MetatileBehavior_IsSidewaysStairsRightSideBottom(nextBehavior)) {
+        return COLLISION_IMPASSABLE;
+    } else if (dir == DIR_EAST && MetatileBehavior_IsSidewaysStairsRightSideAny(currentBehavior)) {
+        return COLLISION_SIDEWAYS_STAIRS_TO_RIGHT;
+    }
+    else if (dir == DIR_WEST && MetatileBehavior_IsSidewaysStairsRightSideTop(nextBehavior)) {
+        return COLLISION_IMPASSABLE;
+    } else if (dir == DIR_WEST && MetatileBehavior_IsSidewaysStairsRightSideAny(nextBehavior)) {
+        return COLLISION_SIDEWAYS_STAIRS_TO_RIGHT;
+    }
     return collision;
 }
 
@@ -6452,8 +6441,26 @@ static bool8 ObjectEventOnRightSideStair(struct ObjectEvent *objectEvent, s16 x,
 
 u8 GetCollisionAtCoords(struct ObjectEvent *objectEvent, s16 x, s16 y, u32 dir)
 {
+    s16 x2, y2;
+    x2 = objectEvent->currentCoords.x;
+    y2 = objectEvent->currentCoords.y; 
     u8 currentBehavior = MapGridGetMetatileBehaviorAt(objectEvent->currentCoords.x, objectEvent->currentCoords.y);
-    u8 nextBehavior = MapGridGetMetatileBehaviorAt(x, y);
+    switch(dir)
+    {
+        case DIR_SOUTH:
+            y2 += 1;
+            break;
+        case DIR_NORTH:
+            y2 -= 1;
+            break;
+        case DIR_WEST:
+            x2 -= 1;
+            break;
+        case DIR_EAST:
+            x2 += 1;
+            break;
+    }
+    u8 nextBehavior = MapGridGetMetatileBehaviorAt(x2, y2);
     u8 collision;
 
     #if OW_FLAG_NO_COLLISION != 0
@@ -6464,14 +6471,9 @@ u8 GetCollisionAtCoords(struct ObjectEvent *objectEvent, s16 x, s16 y, u32 dir)
     objectEvent->directionOverwrite = DIR_NONE;
 
     //sideways stairs checks
-    if (MetatileBehavior_IsSidewaysStairsLeftSideTop(nextBehavior) && dir == DIR_EAST)
-        return COLLISION_IMPASSABLE;    //moving onto left-side top edge east from regular ground -> nope
-    else if (MetatileBehavior_IsSidewaysStairsRightSideTop(nextBehavior) && dir == DIR_WEST)
-        return COLLISION_IMPASSABLE;    //moving onto left-side top edge east from regular ground -> nope
-    else if (MetatileBehavior_IsSidewaysStairsRightSideBottom(nextBehavior) && (dir == DIR_EAST || dir == DIR_SOUTH))
-        return COLLISION_IMPASSABLE;    //moving into right-side bottom edge from regular ground -> nah
-    else if (MetatileBehavior_IsSidewaysStairsLeftSideBottom(nextBehavior) && (dir == DIR_WEST || dir == DIR_SOUTH))
-        return COLLISION_IMPASSABLE;    //moving onto left-side bottom edge from regular ground -> nah
+    if ((MetatileBehavior_IsSidewaysStairsRightSideBottom(nextBehavior) || MetatileBehavior_IsSidewaysStairsLeftSideBottom(nextBehavior))
+       && dir == DIR_SOUTH)
+        return COLLISION_IMPASSABLE;    //moving onto bottom edge from regular ground -> nah
     else if ((MetatileBehavior_IsSidewaysStairsLeftSideTop(currentBehavior) || MetatileBehavior_IsSidewaysStairsRightSideTop(currentBehavior))
      && dir == DIR_NORTH)
         return COLLISION_IMPASSABLE;    //trying to move north off of top-most tile onto same level doesn't work
