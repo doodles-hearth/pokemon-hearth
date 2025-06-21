@@ -155,7 +155,7 @@ script OrchardPath_EventScript_Umbreon {
 
 script OrchardPath_EventScript_RockSmash {
 	lock
-	if (flag(FLAG_RECEIVED_HM_ROCK_SMASH)) {
+	if (checkitem(ITEM_SECRET_SMASH)) {
 		if (flag(FLAG_BEAT_ROCK_SMASHER)) {
 			speakername("Rock Smasher")
 			msgbox(format(
@@ -356,7 +356,6 @@ script OrchardPath_EventScript_RockSmashRegular {
 
 			giveitem(ITEM_TM_PEBBLE_CRUSH)
 
-			setflag(FLAG_RECEIVED_HM_ROCK_SMASH)
 			// This is to avoid him getting mad at breaking his own rocks
 			setflag(FLAG_JUST_GOT_ROCK_SMASH)
 

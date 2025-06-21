@@ -102,10 +102,11 @@ KuraTown_Dojo_EventScript_Advice::
 	faceplayer
 	goto_if_set FLAG_BADGE02_GET, KuraTown_Dojo_EventScript_Advice_2
 	speakername KuraTown_Dojo_EventScript_Advice_Text_0
-	goto_if_set FLAG_RECEIVED_HM_CUT, KuraTown_Dojo_EventScript_Advice_7
-KuraTown_Dojo_EventScript_Advice_6:
+	isfieldmoveunlocked FIELD_MOVE_CUT
+	compare VAR_RESULT, 0
+	goto_if_ne KuraTown_Dojo_EventScript_Advice_5
 	speakername KuraTown_Dojo_EventScript_Advice_Text_0
-	goto_if_set FLAG_BADGE01_GET, KuraTown_Dojo_EventScript_Advice_10
+	goto_if_set FLAG_BADGE01_GET, KuraTown_Dojo_EventScript_Advice_8
 	speakername KuraTown_Dojo_EventScript_Advice_Text_0
 	msgbox KuraTown_Dojo_EventScript_Advice_Text_4
 KuraTown_Dojo_EventScript_Advice_1:
@@ -121,11 +122,7 @@ KuraTown_Dojo_EventScript_Advice_5:
 	msgbox KuraTown_Dojo_EventScript_Advice_Text_2
 	goto KuraTown_Dojo_EventScript_Advice_1
 
-KuraTown_Dojo_EventScript_Advice_7:
-	goto_if_set FLAG_BADGE01_GET, KuraTown_Dojo_EventScript_Advice_5
-	goto KuraTown_Dojo_EventScript_Advice_6
-
-KuraTown_Dojo_EventScript_Advice_10:
+KuraTown_Dojo_EventScript_Advice_8:
 	msgbox KuraTown_Dojo_EventScript_Advice_Text_3
 	goto KuraTown_Dojo_EventScript_Advice_1
 
@@ -145,8 +142,9 @@ KuraTown_Dojo_EventScript_DojoStatue_2:
 
 KuraTown_Dojo_EventScript_KuraDojoTree_CanCut::
 	lock
-	goto_if_set FLAG_RECEIVED_HM_CUT, KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_4
-KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_3:
+	checkfieldmove FIELD_MOVE_CUT
+	compare VAR_RESULT, PARTY_SIZE
+	goto_if_ne KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_2
 	call KuraTown_Dojo_EventScript_KuraDojoTree_CantCut
 KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_1:
 	release
@@ -161,10 +159,6 @@ KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_2:
 	waitmovement 0
 	removeobject VAR_LAST_TALKED
 	goto KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_1
-
-KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_4:
-	goto_if_set FLAG_BADGE01_GET, KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_2
-	goto KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_3
 
 
 KuraTown_Dojo_EventScript_KuraDojoTree_CantCut::

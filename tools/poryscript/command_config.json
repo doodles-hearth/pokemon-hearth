@@ -57,7 +57,10 @@
     "giveegg": {
       "var_name": "VAR_RESULT"
     },
-    "checkpartymove": {
+    "checkfieldmove": {
+      "var_name": "VAR_RESULT"
+    },
+    "isfieldmoveunlocked": {
       "var_name": "VAR_RESULT"
     },
     "choosecontestmon": {

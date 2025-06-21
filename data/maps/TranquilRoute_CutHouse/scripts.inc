@@ -67,7 +67,9 @@ TranquilRoute_CutHouse_Movement_CutMasterSurprise:
 TranquilRoute_CutHouse_EventScript_CutMaster::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_HM_CUT, TranquilRoute_CutHouse_EventScript_CutMaster_2
+	checkitem ITEM_SECRET_CUT
+	compare VAR_RESULT, 0
+	goto_if_ne TranquilRoute_CutHouse_EventScript_CutMaster_2
 	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_3
 	closemessage
@@ -76,7 +78,6 @@ TranquilRoute_CutHouse_EventScript_CutMaster::
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_4
 	closemessage
 	giveitem ITEM_TM_NICK
-	setflag FLAG_RECEIVED_HM_CUT
 	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_5
 	closemessage

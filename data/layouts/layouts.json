@@ -5997,7 +5997,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_Saberside",
+      "secondary_tileset": "gTileset_ScenicRoute",
       "border_filepath": "data/layouts/ScenicRouteSaberside/border.bin",
       "blockdata_filepath": "data/layouts/ScenicRouteSaberside/map.bin"
     },

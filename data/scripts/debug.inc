@@ -66,6 +66,7 @@ Debug_CheatStart::
 
 	giveitem ITEM_TOWN_MAP
 	giveitem ITEM_POKE_BALL, 20
+	giveitem ITEM_TM_SPLASH
 
 	resumefakertc
 
