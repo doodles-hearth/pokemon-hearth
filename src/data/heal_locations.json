@@ -316,7 +316,7 @@
     {
       "id": "HEAL_LOCATION_SABERSIDE_TOWN",
       "map": "MAP_SABERSIDE_TOWN",
-      "x": 27,
+      "x": 37,
       "y": 20,
       "respawn_map": "MAP_SABERSIDE_TOWN",
       "respawn_x": 27,
