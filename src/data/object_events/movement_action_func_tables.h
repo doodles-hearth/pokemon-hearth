@@ -294,6 +294,12 @@ u8 MovementAction_WalkFastDiagonalDownLeft_Step0(struct ObjectEvent *, struct Sp
 u8 MovementAction_WalkFastDiagonalDownRight_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_WalkFastDiagonal_Step1(struct ObjectEvent *, struct Sprite *);
 
+//Jamie movement pack
+u8 MovementAction_ShakeHorizontal_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_ShakeHorizontal_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_ShakeVertical_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_ShakeVertical_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FaceUp[])(struct ObjectEvent *, struct Sprite *);
@@ -469,12 +475,17 @@ u8 (*const gMovementActionFuncs_SurfStillDown[])(struct ObjectEvent *, struct Sp
 u8 (*const gMovementActionFuncs_SurfStillUp[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_SurfStillLeft[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_SurfStillRight[])(struct ObjectEvent *, struct Sprite *);
+<<<<<<< HEAD
 //fast diagonal
 u8 (*const gMovementActionFuncs_WalkFastDiagonalUpLeft[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_WalkFastDiagonalUpRight[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_WalkFastDiagonalDownLeft[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_WalkFastDiagonalDownRight[])(struct ObjectEvent *, struct Sprite *);
 
+=======
+u8 (*const gMovementActionFuncs_ShakeHorizontal[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_ShakeVertical[])(struct ObjectEvent *, struct Sprite *);
+>>>>>>> 74cdc8e541 (Add new movement actions: shake_horizontal and shake_vertical)
 
 u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *) = {
     [MOVEMENT_ACTION_FACE_DOWN] = gMovementActionFuncs_FaceDown,
@@ -657,6 +668,9 @@ u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *)
     [MOVEMENT_ACTION_WALK_FAST_DIAGONAL_DOWN_LEFT] = gMovementActionFuncs_WalkFastDiagonalDownLeft,
     [MOVEMENT_ACTION_WALK_FAST_DIAGONAL_DOWN_RIGHT] = gMovementActionFuncs_WalkFastDiagonalDownRight,
 
+//Jamie movement pack
+    [MOVEMENT_ACTION_SHAKE_HORIZONTAL] = gMovementActionFuncs_ShakeHorizontal,
+    [MOVEMENT_ACTION_SHAKE_VERTICAL] = gMovementActionFuncs_ShakeVertical,
 };
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *) = {
@@ -1694,6 +1708,7 @@ u8 (*const gMovementActionFuncs_SurfStillRight[])(struct ObjectEvent *, struct S
     MovementAction_SurfStillRight_Step1,
     MovementAction_PauseSpriteAnim,
 };
+
 // fast diagonal
 u8 (*const gMovementActionFuncs_WalkFastDiagonalUpLeft[])(struct ObjectEvent *, struct Sprite *) = {
     MovementAction_WalkFastDiagonalUpLeft_Step0,
@@ -1717,5 +1732,18 @@ u8 (*const gMovementActionFuncs_WalkFastDiagonalDownRight[])(struct ObjectEvent 
     MovementAction_WalkFastDiagonalDownRight_Step0,
     MovementAction_WalkFastDiagonal_Step1,
     MovementAction_PauseSpriteAnim,
+};
+
+//Jamie movement pack
+u8 (*const gMovementActionFuncs_ShakeHorizontal[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_ShakeHorizontal_Step0,
+    MovementAction_ShakeHorizontal_Step1,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_ShakeVertical[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_ShakeVertical_Step0,
+    MovementAction_ShakeVertical_Step1,
+    MovementAction_Finish,
 };
 

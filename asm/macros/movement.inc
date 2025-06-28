@@ -172,3 +172,6 @@
 	create_movement_action exit_pokeball, MOVEMENT_ACTION_EXIT_POKEBALL
 	create_movement_action enter_pokeball, MOVEMENT_ACTION_ENTER_POKEBALL
 	create_movement_action step_end, MOVEMENT_ACTION_STEP_END
+
+	create_movement_action shake_horizontal, MOVEMENT_ACTION_SHAKE_HORIZONTAL
+	create_movement_action shake_vertical, MOVEMENT_ACTION_SHAKE_VERTICAL

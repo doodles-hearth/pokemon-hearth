@@ -11534,3 +11534,84 @@ bool8 MovementAction_SurfStillRight_Step1(struct ObjectEvent *objectEvent, struc
     }
     return FALSE;
 }
+
+#define sTimer     data[4]
+
+enum ShakeDirection {
+    SHAKE_HORIZONTAL,
+    SHAKE_VERTICAL
+};
+
+static void InitMovementShake(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    sprite->sTimer = 0;
+    sprite->x2 = 0;
+    sprite->y2 = 0;
+    sprite->sActionFuncId = 1;
+}
+
+static u8 DoShakeSpriteMovement(struct Sprite *sprite, enum ShakeDirection dir)
+{
+
+    if (dir == SHAKE_HORIZONTAL) {
+        if (sprite->sTimer & 4)
+            sprite->x2 = 1;
+        else 
+            sprite->x2 = -1;
+    } else if (dir == SHAKE_VERTICAL) {
+        if (sprite->sTimer & 4)
+            sprite->y2 = 1;
+        else 
+            sprite->y2 = -1;
+    }
+    sprite->sTimer++;
+
+
+
+    if (sprite->sTimer >= 32) {
+        sprite->x2 = 0;
+        sprite->y2 = 0;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+#undef sTimer
+
+static u8 DoShakeAnim(struct ObjectEvent *objectEvent, struct Sprite *sprite, enum ShakeDirection dir)
+{
+
+    return DoShakeSpriteMovement(sprite, dir);
+}
+
+bool8 MovementAction_ShakeHorizontal_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    InitMovementShake(objectEvent, sprite);
+    return FALSE;
+}
+
+bool8 MovementAction_ShakeHorizontal_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    
+    if (DoShakeAnim(objectEvent, sprite, SHAKE_HORIZONTAL))
+    {
+        sprite->sActionFuncId = 2;
+    }
+    return FALSE;
+}
+
+bool8 MovementAction_ShakeVertical_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    InitMovementShake(objectEvent, sprite);
+    return FALSE;
+}
+
+bool8 MovementAction_ShakeVertical_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    
+    if (DoShakeAnim(objectEvent, sprite, SHAKE_VERTICAL))
+    {
+        sprite->sActionFuncId = 2;
+    }
+    return FALSE;
+}

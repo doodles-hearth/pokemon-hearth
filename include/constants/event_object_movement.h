@@ -265,6 +265,11 @@
 #define MOVEMENT_ACTION_WALK_FAST_DIAGONAL_DOWN_LEFT    0xB0
 #define MOVEMENT_ACTION_WALK_FAST_DIAGONAL_DOWN_RIGHT   0xB1
 
+//Jamie movement pack
+#define MOVEMENT_ACTION_SHAKE_HORIZONTAL                0xC0 //we starta bit late to limit conflicts
+#define MOVEMENT_ACTION_SHAKE_VERTICAL                  0xC1
+
+
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF
 
