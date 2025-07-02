@@ -167,9 +167,9 @@ while(true); do
             python3 ${normalize_py} ${dir_raw_tilesets_secondary}${tilesetsrc}/top.png ${dir_raw_tilesets_secondary}${tilesetsrc}/top.png
 
             # run porytiles
-            porytiles compile-secondary ${attribute_generation} -Wall -o ${dir_compiled_secondary}${tileset} ${dir_raw_tilesets_secondary}${tilesetsrc} ${dir_raw_tilesets_primary}${tilesetsrc2} ${metatile_behaviors}
+            porytiles compile-secondary -metatiles-total-override=4096 ${attribute_generation} -Wall -o ${dir_compiled_secondary}${tileset} ${dir_raw_tilesets_secondary}${tilesetsrc} ${dir_raw_tilesets_primary}${tilesetsrc2} ${metatile_behaviors}
 
-            lastcmd="porytiles compile-secondary ${attribute_generation} -Wall -o ${dir_compiled_secondary}${tileset} ${dir_raw_tilesets_secondary}${tilesetsrc} ${dir_raw_tilesets_primary}${tilesetsrc2} ${metatile_behaviors}"
+            lastcmd="porytiles compile-secondary -metatiles-total-override=4096 ${attribute_generation} -Wall -o ${dir_compiled_secondary}${tileset} ${dir_raw_tilesets_secondary}${tilesetsrc} ${dir_raw_tilesets_primary}${tilesetsrc2} ${metatile_behaviors}"
 
             # write ${tilesetsrc2} to a .txt file for use later
             echo "Creating primarysrc.txt"
@@ -287,7 +287,7 @@ while(true); do
 
                 tilesetsrc2="/primary/${tilesetsrc2}"
 
-                porytiles compile-secondary -Wall -o ${dir_compiled_secondary}${tileset} ${attribute_generation} ${tilesetsrc} ${dir_raw_tilesets}${tilesetsrc2} ${metatile_behaviors}
+                porytiles compile-secondary -metatiles-total-override=4096 -Wall -o ${dir_compiled_secondary}${tileset} ${attribute_generation} ${tilesetsrc} ${dir_raw_tilesets}${tilesetsrc2} ${metatile_behaviors}
 
                 echo "Compiled $(basename "$folder")."
             done
