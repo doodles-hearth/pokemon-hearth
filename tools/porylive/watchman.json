@@ -1,0 +1,13 @@
+[
+  "trigger", ".", {
+    "name": "porylive_trigger",
+    "expression": ["anyof",
+      ["match", "data/*.s", "wholename"],
+      ["match", "data/scripts/*.inc", "wholename"],
+      ["match", "data/maps/*/scripts.inc", "wholename"],
+      ["match", "data/**/*.pory", "wholename"]
+    ],
+    "append_files": true,
+    "command": ["python3", "tools/porylive/porylive_on_change.py"]
+  }
+]

@@ -1,0 +1,686 @@
+{
+  "data/battle_anim_scripts.s": {
+    "createsprite": [
+      { "index": 0, "offset": 1, "type": "address" }
+    ],
+    "createvisualtask": [
+      { "index": 0, "offset": 1, "type": "address", "add": 1 }
+    ],
+    "call": [
+      { "index": 0, "offset": 1, "type": "offset" }
+    ],
+    "choosetwoturnanim": [
+      { "index": 0, "offset": 1, "type": "offset" },
+      { "index": 1, "offset": 4, "type": "offset" }
+    ],
+    "jumpifmoveturn": [
+      { "index": 1, "offset": 2, "type": "offset" }
+    ],
+    "goto": [
+      { "index": 0, "offset": 1, "type": "offset" }
+    ],
+    "createsoundtask": [
+      { "index": 0, "offset": 1, "type": "address" }
+    ],
+    "jumpargeq": [
+      { "index": 2, "offset": 4, "type": "offset" }
+    ],
+    "jumpifcontest": [
+      { "index": 0, "offset": 1, "type": "offset" }
+    ],
+    "createvisualtaskontargets": [
+      { "index": 0, "offset": 1, "type": "address" }
+    ],
+    "createspriteontargets_onpos": [
+      { "index": 0, "offset": 1, "type": "address" }
+    ],
+    "jumpifmovetypeequal": [
+      { "index": 1, "offset": 1, "type": "offset" }
+    ],
+    "jumpreteq": [
+      { "index": 1, "offset": 4, "type": "offset" }
+    ],
+    "jumprettrue": [
+      { "index": 0, "offset": 4, "type": "offset" }
+    ],
+    "jumpretfalse": [
+      { "index": 0, "offset": 4, "type": "offset" }
+    ],
+    "jumpifdoublebattle": [
+      { "type": "macro", "name": "createvisualtask", "params": ["AnimTask_IsDoubleBattle", 0] },
+      { "index": 0, "offset": 11, "type": "offset" }
+    ]
+  },
+  "data/event_scripts.s": {
+    "call": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "goto": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "goto_if": [
+      { "index": 1, "offset": 2, "type": "dynamic" }
+    ],
+    "call_if": [
+      { "index": 1, "offset": 2, "type": "dynamic" }
+    ],
+    "setptr": [
+      { "index": 1, "offset": 2, "type": "dynamic" }
+    ],
+    "loadbytefromptr": [
+      { "index": 1, "offset": 2, "type": "dynamic" }
+    ],
+    "setptrbyte": [
+      { "index": 1, "offset": 2, "type": "dynamic" }
+    ],
+    "copybyte": [
+      { "index": 0, "offset": 1, "type": "dynamic" },
+      { "index": 1, "offset": 5, "type": "dynamic" }
+    ],
+    "compare_local_to_ptr": [
+      { "index": 1, "offset": 2, "type": "dynamic" }
+    ],
+    "compare_ptr_to_local": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "compare_ptr_to_value": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "compare_ptr_to_ptr": [
+      { "index": 0, "offset": 1, "type": "dynamic" },
+      { "index": 1, "offset": 5, "type": "dynamic" }
+    ],
+    "callnative": {
+      "$if": {
+        "$or": [
+          {
+            "$condition": "arg_num",
+            "$value": 1
+          },
+          {
+            "$condition": "arg[1]",
+            "$value": 0
+          }
+        ]
+      },
+      "$true": [
+        { "index": 0, "offset": 1, "type": "dynamic", "add": 1 }
+      ],
+      "$false": [
+        { "index": 0, "offset": 1, "type": "dynamic", "add": 33554433 }
+      ]
+    },
+    "gotonative": {
+      "$if": {
+        "$condition": "arg[1]",
+        "$value": 0
+      },
+      "$true": [
+        { "index": 0, "offset": 1, "type": "dynamic", "add": 1 }
+      ],
+      "$false": [
+        { "index": 0, "offset": 1, "type": "dynamic", "add": 33554433 }
+      ]
+    },
+    "applymovement": [
+      { "index": 1, "offset": 3, "type": "dynamic" }
+    ],
+    "trainerbattle": {
+      "$condition": "arg_num",
+      "$matches": [
+        {
+          "$value": 4,
+          "$adjustments": [
+            { "index": 3, "offset": 6, "type": "dynamic" }
+          ]
+        },
+        {
+          "$value": 5,
+          "$adjustments": [
+            { "index": 3, "offset": 6, "type": "dynamic" },
+            { "index": 4, "offset": 10, "type": "dynamic" }
+          ]
+        },
+        {
+          "$value": 6,
+          "$adjustments": [
+            { "index": 3, "offset": 6, "type": "dynamic" },
+            { "index": 4, "offset": 10, "type": "dynamic" },
+            { "index": 5, "offset": 14, "type": "dynamic" }
+          ]
+        },
+        {
+          "$value": 7,
+          "$adjustments": [
+            { "index": 3, "offset": 6, "type": "dynamic" },
+            { "index": 4, "offset": 10, "type": "dynamic" },
+            { "index": 5, "offset": 14, "type": "dynamic" },
+            { "index": 6, "offset": 18, "type": "dynamic" }
+          ]
+        }
+      ]
+    },
+    "trainerbattle_single": {
+      "$if": {
+        "$or": [
+          {
+            "$condition": "arg_num",
+            "$value": 3
+          },
+          {
+            "$condition": "arg[3]",
+            "$value": { "$in": ["FALSE", 0] }
+          }
+        ]
+      },
+      "$true": [
+        { "type": "macro", "name": "trainerbattle", "param_len": 5 }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trainerbattle", "param_len": 6 }
+      ]
+    },
+    "trainerbattle_double": {
+      "$if": {
+        "$or": [
+          {
+            "$condition": "arg_num",
+            "$value": 4
+          },
+          {
+            "$condition": "arg[4]",
+            "$value": { "$in": ["FALSE", 0] }
+          }
+        ]
+      },
+      "$true": [
+        { "type": "macro", "name": "trainerbattle", "param_len": 5 }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trainerbattle", "param_len": 6 }
+      ]
+    },
+    "trainerbattle_rematch": [
+      { "type": "macro", "name": "trainerbattle", "param_len": 5 }
+    ],
+    "trainerbattle_rematch_double": [
+      { "type": "macro", "name": "trainerbattle", "param_len": 6 }
+    ],
+    "trainerbattle_no_intro": [
+      { "type": "macro", "name": "trainerbattle", "param_len": 4 }
+    ],
+    "trainerbattle_two_trainers": [
+      { "index": 1, "offset": 4, "type": "dynamic" },
+      { "index": 3, "offset": 10, "type": "dynamic" }
+    ],
+    "message": {
+      "$if": {
+        "$condition": "arg[0]",
+        "$value": "NULL"
+      },
+      "$true": [
+      ],
+      "$false": [
+        { "index": 0, "offset": 1, "type": "dynamic" }
+      ]
+    },
+    "braillemessage": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "givemon": [
+      { "name": "ScrCmd_createmon", "offset": 1, "type": "address", "add": 33554433 }
+    ],
+    "bufferstring": [
+      { "index": 1, "offset": 2, "type": "dynamic" }
+    ],
+    "pokemart": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "pokemartdecoration": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "pokemartdecoration2": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "messageautoscroll": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "loadhelp": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "getbraillestringwidth": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "messageinstant": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "pokenavcall": [
+      { "index": 0, "offset": 1, "type": "dynamic" }
+    ],
+    "goto_if_unset": [
+      { "index": 1, "offset": 5, "type": "dynamic" }
+    ],
+    "goto_if_set": [
+      { "index": 1, "offset": 5, "type": "dynamic" }
+    ],
+    "trycompare": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 5
+      },
+      "$true": [
+        { "type": "macro", "name": "$arg[0]", "params": ["$arg[1]", "$arg[4]"], "offset": 5 }
+      ],
+      "$false": [
+        { "type": "macro", "name": "$arg[0]", "params": ["$arg[1]", "$arg[2]"] }
+      ]
+    },
+    "goto_if_lt": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "0", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "0", "$arg[0]"] }
+      ]
+    },
+    "goto_if_eq": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "1", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "1", "$arg[0]"] }
+      ]
+    },
+    "goto_if_gt": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "2", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "2", "$arg[0]"] }
+      ]
+    },
+    "goto_if_le": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "3", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "3", "$arg[0]"] }
+      ]
+    },
+    "goto_if_ge": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "4", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "4", "$arg[0]"] }
+      ]
+    },
+    "goto_if_ne": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "5", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["goto_if", "5", "$arg[0]"] }
+      ]
+    },
+    "call_if_unset": [
+      { "type": "macro", "name": "call_if", "params": ["FALSE", "$arg[1]"] }
+    ],
+    "call_if_set": [
+      { "type": "macro", "name": "call_if", "params": ["TRUE", "$arg[1]"] }
+    ],
+    "call_if_lt": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "0", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "0", "$arg[0]"] }
+      ]
+    },
+    "call_if_eq": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "1", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "1", "$arg[0]"] }
+      ]
+    },
+    "call_if_gt": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "2", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "2", "$arg[0]"] }
+      ]
+    },
+    "call_if_le": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "3", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "3", "$arg[0]"] }
+      ]
+    },
+    "call_if_ge": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "4", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "4", "$arg[0]"] }
+      ]
+    },
+    "call_if_ne": {
+      "$if": {
+        "$condition": "arg_num",
+        "$value": 3
+      },
+      "$true": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "5", "$arg[0]", "$arg[1]", "$arg[2]"] }
+      ],
+      "$false": [
+        { "type": "macro", "name": "trycompare", "params": ["call_if", "5", "$arg[0]"] }
+      ]
+    },
+    "goto_if_defeated": [
+      { "type": "macro", "name": "goto_if", "params": ["TRUE", "$arg[1]"] }
+    ],
+    "goto_if_not_defeated": [
+      { "type": "macro", "name": "goto_if", "params": ["FALSE", "$arg[1]"] }
+    ],
+    "call_if_defeated": [
+      { "type": "macro", "name": "call_if", "params": ["TRUE", "$arg[1]"] }
+    ],
+    "call_if_not_defeated": [
+      { "type": "macro", "name": "call_if", "params": ["FALSE", "$arg[1]"] }
+    ],
+    "case": [
+      { "type": "macro", "name": "goto_if_eq", "params": ["$arg[1]"], "offset": 5 }
+    ],
+    "msgbox": [
+      { "index": 0, "offset": 2, "type": "dynamic" }
+    ],
+    "braillemsgbox": [
+      { "type": "macro", "name": "braillemessage", "params": ["$arg[0]"] }
+    ],
+    "set_gym_trainers": [
+      { "type": "macro", "name": "call", "params": ["EventScript_SetGymTrainers"], "offset": 5 }
+    ],
+    "setdynamicaifunc": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptSetDynamicAiFunc", "1"] },
+      { "index": 0, "offset": 5, "type": "dynamic" }
+    ],
+    "settotemboost": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptSetTotemBoost", "1"] }
+    ],
+    "$(totemboost_\\S+)": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptSetTotemBoost", "1"] }
+    ],
+    "ai_vs_ai_battle": [
+      { "type": "macro", "name": "callnative", "params": ["CreateTrainerPartyForPlayer", "1"], "offset": 8 },
+      { "type": "macro", "name": "trainerbattle_no_intro", "params": ["$arg[1]", "NULL"], "offset": 13 }
+    ],
+    "canhypertrain": [
+      { "type": "macro", "name": "callnative", "params": ["CanHyperTrain", "1"] }
+    ],
+    "hypertrain": [
+      { "type": "macro", "name": "callnative", "params": ["HyperTrain", "1"] }
+    ],
+    "hasgigantamaxfactor": [
+      { "type": "macro", "name": "callnative", "params": ["HasGigantaMaxFactor", "1"] }
+    ],
+    "togglegigantamaxfactor": [
+      { "type": "macro", "name": "callnative", "params": ["ToggleGigantaMaxFactor", "1"] }
+    ],
+    "setstatus1": [
+      { "type": "macro", "name": "callnative", "params": ["Script_SetStatus1", "1"] }
+    ],
+    "checkteratype": [
+      { "type": "macro", "name": "callnative", "params": ["CheckTeratype", "1"] }
+    ],
+    "setteratype": [
+      { "type": "macro", "name": "callnative", "params": ["SetTeratype", "1"] }
+    ],
+    "getdaycaregfx": [
+      { "type": "macro", "name": "callnative", "params": ["GetDaycareGraphics", "1"] }
+    ],
+    "playfirstmoncry": [
+      { "type": "macro", "name": "callnative", "params": ["PlayFirstMonCry", "1"] }
+    ],
+    "bufferlivemonnickname": [
+      { "type": "macro", "name": "callnative", "params": ["BufferLiveMonNickname", "1"] }
+    ],
+    "getfolloweraction": [
+      { "type": "macro", "name": "callnative", "params": ["GetFollowerAction", "1"] }
+    ],
+    "isfollowerfieldmoveuser": [
+      { "type": "macro", "name": "callnative", "params": ["IsFollowerFieldMoveUser", "1"] }
+    ],
+    "getdirectiontoface": [
+      { "type": "macro", "name": "callnative", "params": ["GetDirectionToFaceScript", "1"] }
+    ],
+    "setwilddoubleflag": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptSetDoubleBattleFlag", "1"] }
+    ],
+    "pausefakertc": [
+      { "type": "macro", "name": "callnative", "params": ["Script_PauseFakeRtc", "1"] }
+    ],
+    "resumefakertc": [
+      { "type": "macro", "name": "callnative", "params": ["Script_ResumeFakeRtc", "1"] }
+    ],
+    "togglefakertc": [
+      { "type": "macro", "name": "callnative", "params": ["Script_ToggleFakeRtc", "1"] }
+    ],
+    "getdaycarename": [
+      { "type": "macro", "name": "callnative", "params": ["GetDaycareName", "1"] }
+    ],
+    "showitemdescription": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptShowItemDescription", "1"] }
+    ],
+    "showberrydescription": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptShowBerryDescription", "1"] }
+    ],
+    "hideitemdescription": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptHideItemDescription", "1"] }
+    ],
+    "removeallitem": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_removeallitem", "1"] }
+    ],
+    "getobjectxy": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_getobjectxy", "1"] }
+    ],
+    "getobjecttemplatexy": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_getobjectxy", "1"] }
+    ],
+    "getobjectcurrentxy": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_getobjectxy", "1"] }
+    ],
+    "checkobjectat": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_checkobjectat", "1"] }
+    ],
+    "getseenmon": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_getsetpokedexflag", "1"] }
+    ],
+    "getcaughtmon": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_getsetpokedexflag", "1"] }
+    ],
+    "setseenmon": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_getsetpokedexflag", "1"] }
+    ],
+    "setcaughtmon": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_getsetpokedexflag", "1"] }
+    ],
+    "checkspecies": {
+      "$if": {
+        "$condition": "arg[1]",
+        "$value": "OPEN_PARTY_SCREEN"
+      },
+      "$true": [
+        { "type": "macro", "name": "callnative", "params": ["ScrCmd_checkspecies_choose", "1"], "offset": 4 }
+      ],
+      "$false": [
+        { "type": "macro", "name": "callnative", "params": ["ScrCmd_checkspecies", "1"] }
+      ]
+    },
+    "checkspecies_choose": [
+      { "type": "macro", "name": "checkspecies", "params": ["$arg[0]", "OPEN_PARTY_SCREEN"] }
+    ],
+    "getobjectfacingdirection": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_getobjectfacingdirection", "1"] }
+    ],
+    "hidefollower": [
+      { "type": "macro", "name": "callnative", "params": ["ScrFunc_hidefollower"] }
+    ],
+    "increaseddifficulty": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_IncreaseDifficulty", "1"] }
+    ],
+    "decreaseddifficulty": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_DecreaseDifficulty", "1"] }
+    ],
+    "getdifficulty": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_GetDifficulty", "1"] }
+    ],
+    "setdifficulty": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_SetDifficulty", "1"] }
+    ],
+    "cant_see_if": [
+      { "type": "macro", "name": "callnative", "params": ["ScrCmd_EndTrainerCanSeeIf", "1"] }
+    ],
+    "cant_see": [
+      { "type": "macro", "name": "cant_see_if_unset", "params": ["0"] }
+    ],
+    "cant_see_if_unset": [
+      { "type": "macro", "name": "cant_see_if", "params": ["FALSE"], "offset": 3 }
+    ],
+    "cant_see_if_set": [
+      { "type": "macro", "name": "cant_see_if", "params": ["TRUE"], "offset": 3 }
+    ],
+    "cant_see_if_trainerflag_unset": [
+      { "type": "macro", "name": "cant_see_if", "params": ["FALSE"], "offset": 3 }
+    ],
+    "cant_see_if_trainerflag_set": [
+      { "type": "macro", "name": "cant_see_if", "params": ["TRUE"], "offset": 3 }
+    ],
+    "cant_see_if_lt": [
+      { "type": "macro", "name": "cant_see_if", "params": ["0"], "offset": 5 }
+    ],
+    "cant_see_if_eq": [
+      { "type": "macro", "name": "cant_see_if", "params": ["1"], "offset": 5 }
+    ],
+    "cant_see_if_gt": [
+      { "type": "macro", "name": "cant_see_if", "params": ["2"], "offset": 5 }
+    ],
+    "cant_see_if_le": [
+      { "type": "macro", "name": "cant_see_if", "params": ["3"], "offset": 5 }
+    ],
+    "cant_see_if_ge": [
+      { "type": "macro", "name": "cant_see_if", "params": ["4"], "offset": 5 }
+    ],
+    "cant_see_if_ne": [
+      { "type": "macro", "name": "cant_see_if", "params": ["5"], "offset": 5 }
+    ],
+    "setfollowernpc": {
+      "$if": {
+        "$or": [
+          {
+            "$and": [
+              {
+                "$condition": "arg_num",
+                "$value": { "$gte": 3}
+              },
+              {
+                "$condition": "arg[2]",
+                "$value": 0
+              }
+            ]
+          },
+          {
+            "$condition": "arg_num",
+            "$value": { "$lt": 3 }
+          }
+        ]
+      },
+      "$true": [
+        { "type": "macro", "name": "checkfollowernpc", "params": [] },
+        { "type": "macro", "name": "goto_if_ne", "params": [], "offset": 10 },
+        { "type": "macro", "name": "hidefollower", "params": [], "offset": 16 },
+        { "type": "macro", "name": "callnative", "params": ["ScriptSetFollowerNPC"], "offset": 26 }
+      ],
+      "$false": [
+        { "type": "macro", "name": "checkfollowernpc", "params": [] },
+        { "type": "macro", "name": "goto_if_ne", "params": [], "offset": 10 },
+        { "type": "macro", "name": "hidefollower", "params": [], "offset": 16 },
+        { "type": "macro", "name": "callnative", "params": ["ScriptSetFollowerNPC"], "offset": 26 },
+        { "index": 2, "offset": 37, "type": "dynamic" }
+      ]
+    },
+    "destroyfollowernpc": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptDestroyFollowerNPC", "1"] }
+    ],
+    "facefollowernpc": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptFaceFollowerNPC", "1"] }
+    ],
+    "hidefollowernpc": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptHideNPCFollower", "1"] },
+      { "type": "macro", "name": "callnative", "params": ["HideNPCFollower", "1"], "offset": 9 }
+    ],
+    "checkfollowernpc": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptCheckFollowerNPC", "1"] }
+    ],
+    "updatefollowingmon": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptUpdateFollowingMon", "1"] }
+    ],
+    "getfollowingmon": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptGetFollowingMon", "1"] }
+    ],
+    "changefollowerbattler": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptChangeFollowerBattler", "1"] }
+    ],
+    "getfollowerbattler": [
+      { "type": "macro", "name": "callnative", "params": ["ScriptGetFollowerBattler", "1"] }
+    ]
+  }
+}
