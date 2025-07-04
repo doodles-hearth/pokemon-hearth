@@ -24,6 +24,10 @@
 #include "constants/battle_anim.h"
 #include "constants/moves.h"
 
+#if PORYLIVE
+#include "porylive.h"
+#endif // PORYLIVE
+
 /*
     This file handles the commands for the macros defined in
     battle_anim_script.inc and used in battle_anim_scripts.s
@@ -496,6 +500,9 @@ static void RunAnimScriptCommand(void)
 {
     do
     {
+        #if PORYLIVE
+        sBattleAnimScriptPtr = PoryLive_GetScriptPointer(sBattleAnimScriptPtr);
+        #endif // PORYLIVE
         sScriptCmdTable[sBattleAnimScriptPtr[0]]();
     } while (sAnimFramesToWait == 0 && gAnimScriptActive);
 }

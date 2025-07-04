@@ -19,6 +19,8 @@ ANALYZE      ?= 0
 UNUSED_ERROR ?= 0
 # Adds -Og and -g flags, which optimize the build for debugging and include debug info respectively
 DEBUG        ?= 0
+# Enables PoryLive functionality for live development
+PORYLIVE     ?= 0
 
 ifeq (compare,$(MAKECMDGOALS))
   COMPARE := 1
@@ -28,6 +30,9 @@ ifeq (check,$(MAKECMDGOALS))
 endif
 ifeq (debug,$(MAKECMDGOALS))
   DEBUG := 1
+endif
+ifneq (,$(filter live live-update live-prep clean-live tidylive,$(MAKECMDGOALS)))
+  PORYLIVE := 1
 endif
 
 # Default make rule
@@ -64,6 +69,7 @@ ROM_NAME := $(FILE_NAME).gba
 OBJ_DIR_NAME := $(BUILD_DIR)/modern
 OBJ_DIR_NAME_TEST := $(BUILD_DIR)/modern-test
 OBJ_DIR_NAME_DEBUG := $(BUILD_DIR)/modern-debug
+OBJ_DIR_NAME_PORYLIVE := $(BUILD_DIR)/modern-porylive
 
 ELF_NAME := $(ROM_NAME:.gba=.elf)
 MAP_NAME := $(ROM_NAME:.gba=.map)
@@ -86,6 +92,10 @@ endif
 ELF := $(ROM:.gba=.elf)
 MAP := $(ROM:.gba=.map)
 SYM := $(ROM:.gba=.sym)
+
+ifeq ($(PORYLIVE),1)
+  OBJ_DIR := $(OBJ_DIR_NAME_PORYLIVE)
+endif
 
 # Commonly used directories
 C_SUBDIR = src
@@ -150,6 +160,12 @@ endif
 # Variable filled out in other make files
 AUTO_GEN_TARGETS :=
 include make_tools.mk
+
+include make_live.mk
+ifeq ($(PORYLIVE),1)
+  CPPFLAGS += -DPORYLIVE=1
+endif
+
 # Tool executables
 SMOLTM       := $(TOOLS_DIR)/compresSmol/compresSmolTilemap$(EXE)
 SMOL         := $(TOOLS_DIR)/compresSmol/compresSmol$(EXE)
@@ -206,6 +222,9 @@ MAKEFLAGS += --no-print-directory
 RULES_NO_SCAN += libagbsyscall clean clean-assets tidy tidymodern tidycheck generated clean-generated
 .PHONY: all rom agbcc modern compare check debug
 .PHONY: $(RULES_NO_SCAN)
+
+# PoryLive no scan rules
+RULES_NO_SCAN += live-update live-prep clean-live tidylive
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
 
@@ -312,7 +331,7 @@ endif
 
 syms: $(SYM)
 
-clean: tidy clean-tools clean-check-tools clean-generated clean-assets
+clean: tidy clean-tools clean-check-tools clean-generated clean-assets clean-live
 	@$(MAKE) clean -C libagbsyscall
 
 clean-assets:
@@ -323,7 +342,7 @@ clean-assets:
 	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.smol' -o -iname '*.fastSmol' -o -iname '*.rl' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
 	find $(DATA_ASM_SUBDIR)/maps \( -iname 'connections.inc' -o -iname 'events.inc' -o -iname 'header.inc' \) -exec rm {} +
 
-tidy: tidymodern tidycheck tidydebug
+tidy: tidymodern tidycheck tidydebug tidylive
 
 tidymodern:
 	rm -f $(ROM_NAME) $(ELF_NAME) $(MAP_NAME)
@@ -335,6 +354,10 @@ tidycheck:
 
 tidydebug:
 	rm -rf $(DEBUG_OBJ_DIR_NAME)
+
+
+clean-live:
+	rm -rf $(OBJ_DIR_NAME_PORYLIVE)
 
 # Other rules
 include graphics_file_rules.mk
