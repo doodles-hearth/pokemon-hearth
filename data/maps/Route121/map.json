@@ -251,6 +251,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_ROUTE121_GRUNT_1",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 30,
       "y": 8,
@@ -271,6 +272,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_ROUTE121_GRUNT_2",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 30,
       "y": 7,
@@ -291,6 +293,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_ROUTE121_GRUNT_3",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 31,
       "y": 7,

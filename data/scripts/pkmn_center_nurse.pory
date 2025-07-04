@@ -78,6 +78,31 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 	end
 }
 
+script EventScript_PkmnCenterNurse_TakeAndHealPkmn {
+	hidefollower(0)
+
+	applymovement(VAR_0x800A, moves(face_left))
+	waitmovement(VAR_0x800A)
+	applymovement(VAR_0x800B, moves(walk_in_place_fast_right, delay_16 * 2))
+	waitmovement(VAR_0x800B)
+	applymovement(VAR_0x800A, moves(face_right))
+	waitmovement(VAR_0x800A)
+
+	dofieldeffect(FLDEFF_POKECENTER_HEAL)
+	waitfieldeffect(FLDEFF_POKECENTER_HEAL)
+
+	applymovement(VAR_0x800A, moves(face_left, delay_16 * 2))
+	waitmovement(VAR_0x800A)
+	applymovement(VAR_0x800B, moves(walk_in_place_fast_down))
+	waitmovement(VAR_0x800B)
+	applymovement(VAR_0x800A, moves(walk_in_place_fast_down))
+	waitmovement(VAR_0x800A)
+
+	special(HealPlayerParty)
+	callnative(UpdateFollowingPokemon)
+	return
+}
+
 script Common_EventScript_PkmnCenterNurse_ChooseSleep {
 	playse(SE_SHOP)
 	removemoney(500)
@@ -96,6 +121,8 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 	lock
 	faceplayer
 	setvar(VAR_0x8004, 0)
+
+	speakername("Nurse")
 	msgbox(format("Welcome to the refuge!\pLet me heal your Pokémon."))
 	closemessage
 	
@@ -105,10 +132,14 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 		call(EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit)
 	}
 	
+	speakername("Nurse")
 	msgbox(format("Your Pokémon are all healed and rested."))
 	closemessage
-	// applymovement(VAR_0x800B, Movement_PkmnCenterNurse_Bow)
-	// waitmovement(0)
+
+	applymovement(VAR_0x800B, moves(nurse_joy_bow, delay_4))
+	waitmovement(0)
+
+	speakername("Nurse")
 	msgbox(format("Please come again!"))
 	closemessage
 
@@ -161,22 +192,6 @@ EventScript_PkmnCenterNurse_IllTakeYourPkmn::
 
 EventScript_PkmnCenterNurse_IllTakeYourPkmn2::
 	message gText_IllTakeYourPkmn2
-	return
-
-EventScript_PkmnCenterNurse_TakeAndHealPkmn::
-	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Turn @ Changed from Common_Movement_WalkInPlaceFasterLeft to force the follower to enter their Poké Ball
-	waitmovement 0
-	dofieldeffect FLDEFF_POKECENTER_HEAL
-.if OW_UNION_DISABLE_CHECK == FALSE && OW_FLAG_MOVE_UNION_ROOM_CHECK != 0
-	setflag OW_FLAG_MOVE_UNION_ROOM_CHECK
-	call CableClub_OnResume
-	clearflag OW_FLAG_MOVE_UNION_ROOM_CHECK
-.endif
-	waitfieldeffect FLDEFF_POKECENTER_HEAL
-	applymovement VAR_0x800B, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 0
-	special HealPlayerParty
-	callnative UpdateFollowingPokemon
 	return
 
 EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom::

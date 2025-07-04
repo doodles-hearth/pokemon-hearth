@@ -23,7 +23,7 @@
 #define GFXTAG_CITY_ZOOM 6
 #define PALTAG_CITY_ZOOM 11
 
-#define NUM_CITY_MAPS 22
+#define NUM_CITY_MAPS 1
 
 struct Pokenav_RegionMapMenu
 {
@@ -82,7 +82,7 @@ extern const u16 gRegionMapCityZoomTiles_Pal[];
 extern const u32 gRegionMapCityZoomText_Gfx[];
 
 static const u16 sMapSecInfoWindow_Pal[] = INCBIN_U16("graphics/pokenav/region_map/info_window.gbapal");
-static const u32 sRegionMapCityZoomTiles_Gfx[] = INCBIN_U32("graphics/pokenav/region_map/zoom_tiles.4bpp.lz");
+static const u32 sRegionMapCityZoomTiles_Gfx[] = INCBIN_U32("graphics/pokenav/region_map/zoom_tiles.4bpp.smol");
 
 #include "data/region_map/city_map_tilemaps.h"
 
@@ -110,7 +110,7 @@ static const struct BgTemplate sRegionMapBgTemplates[3] =
         .bg = 2,
         .charBaseIndex = 0,
         .mapBaseIndex = 0x00,
-        .screenSize = 2,
+        .screenSize = 0,
         .paletteMode = 0,
         .priority = 3,
         .baseTile = 0
@@ -657,7 +657,7 @@ static u32 LoopedTask_DecompressCityMaps(s32 taskState)
     struct Pokenav_RegionMapGfx *state = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     if (taskState < NUM_CITY_MAPS)
     {
-        LZ77UnCompWram(sPokenavCityMaps[taskState].tilemap, state->cityZoomPics[taskState]);
+        DecompressDataWithHeaderWram(sPokenavCityMaps[taskState].tilemap, state->cityZoomPics[taskState]);
         return LT_INC_AND_CONTINUE;
     }
 

@@ -1544,6 +1544,9 @@ extern const u16 gItemIconPalette_SecretScrollFly[];
 extern const u16 gItemIconPalette_SecretScrollClimb[];
 extern const u16 gItemIconPalette_SecretScrollFlash[];
 
+extern const u32 gItemIcon_ShinyVial[];
+extern const u16 gItemIconPalette_ShinyVial[];
+
 // Charms
 extern const u32 gItemIcon_OvalCharm[];
 extern const u16 gItemIconPalette_OvalCharm[];

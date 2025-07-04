@@ -2,6 +2,7 @@
 #include "clock.h"
 #include "event_data.h"
 #include "rtc.h"
+#include "shiny_vial.h"
 #include "time_events.h"
 #include "field_specials.h"
 #include "lottery_corner.h"
@@ -71,6 +72,7 @@ static void UpdatePerMinute(struct Time *localTime)
         if (minutes >= 0)
         {
             BerryTreeTimeUpdate(minutes);
+            ShinyVialTimeUpdate(minutes);
             gSaveBlock2Ptr->lastBerryTreeUpdate = *localTime;
         }
     }

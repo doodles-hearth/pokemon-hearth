@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_WEATHER_INSTITUTE_2F_GRUNT_1",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 15,
       "y": 6,
@@ -35,6 +36,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WEATHER_INSTITUTE_2F_GRUNT_2",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 10,
       "y": 8,
@@ -55,6 +57,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WEATHER_INSTITUTE_2F_SHELLY",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
       "x": 4,
       "y": 6,
@@ -95,6 +98,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WEATHER_INSTITUTE_2F_SCIENTIST",
       "graphics_id": "OBJ_EVENT_GFX_SCIENTIST_1",
       "x": 18,
       "y": 6,
@@ -135,6 +139,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WEATHER_INSTITUTE_2F_GRUNT_3",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 16,
       "y": 6,
@@ -155,6 +160,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WEATHER_INSTITUTE_2F_GRUNT_4",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
       "x": 19,
       "y": 6,

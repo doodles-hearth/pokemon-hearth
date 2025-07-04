@@ -1,5 +1,139 @@
 WhiteslateRoute_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, WhiteslateRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+WhiteslateRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	getroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU
+	compare VAR_RESULT, ROUTE_CHALLENGE_STATE_INITIAL
+	goto_if_ne WhiteslateRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	return
+
+WhiteslateRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setvar VAR_TEMP_2, 1
+	setflag FLAG_TEMP_1
+	return
+
+WhiteslateRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	compare VAR_RESULT, ROUTE_CHALLENGE_STATE_EXPLAINED
+	goto_if_ne WhiteslateRoute_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	return
+
+
+WhiteslateRoute_Trigger_ShamisenPlayerTop::
+	lockall
+	call WhiteslateRoute_EventScript_ShamisenCallsOut
+	applymovement OBJ_EVENT_ID_PLAYER, WhiteslateRoute_Trigger_ShamisenPlayerTop_Movement_0
+	waitmovement OBJ_EVENT_ID_PLAYER
+	getroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU
+	compare VAR_RESULT, ROUTE_CHALLENGE_STATE_EXPLAINED
+	goto_if_eq WhiteslateRoute_Trigger_ShamisenPlayerTop_2
+	call WhiteslateRoute_EventScript_ShamisenChallenge
+WhiteslateRoute_Trigger_ShamisenPlayerTop_1:
+	releaseall
+	return
+
+WhiteslateRoute_Trigger_ShamisenPlayerTop_2:
+	call WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady
+	goto WhiteslateRoute_Trigger_ShamisenPlayerTop_1
+
+
+WhiteslateRoute_Trigger_ShamisenPlayerBottom::
+	lockall
+	call WhiteslateRoute_EventScript_ShamisenCallsOut
+	applymovement OBJ_EVENT_ID_PLAYER, WhiteslateRoute_Trigger_ShamisenPlayerBottom_Movement_0
+	waitmovement OBJ_EVENT_ID_PLAYER
+	getroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU
+	compare VAR_RESULT, ROUTE_CHALLENGE_STATE_EXPLAINED
+	goto_if_eq WhiteslateRoute_Trigger_ShamisenPlayerBottom_2
+	call WhiteslateRoute_EventScript_ShamisenChallenge
+WhiteslateRoute_Trigger_ShamisenPlayerBottom_1:
+	releaseall
+	return
+
+WhiteslateRoute_Trigger_ShamisenPlayerBottom_2:
+	call WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady
+	goto WhiteslateRoute_Trigger_ShamisenPlayerBottom_1
+
+
+WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady::
+	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	msgbox WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_1
+	call WhiteslateRoute_EventScript_ShamisenPlayerChoice
+	return
+
+
+WhiteslateRoute_EventScript_ShamisenChallenge::
+	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	msgbox WhiteslateRoute_EventScript_ShamisenChallenge_Text_0
+	call WhiteslateRoute_EventScript_ShamisenPlayerChoice
+	return
+
+
+WhiteslateRoute_EventScript_ShamisenCallsOut::
+	applymovement 23, WhiteslateRoute_EventScript_ShamisenCallsOut_Movement_0
+	waitmovement 23
+	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	msgbox WhiteslateRoute_EventScript_ShamisenCallsOut_Text_0
+	closemessage
+	return
+
+
+WhiteslateRoute_EventScript_ShamisenPlayer::
+	lock
+	applymovement 23, WhiteslateRoute_EventScript_ShamisenPlayer_Movement_0
+	waitmovement 23
+	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	msgbox WhiteslateRoute_EventScript_ShamisenChallenge_Text_0
+	call WhiteslateRoute_EventScript_ShamisenPlayerChoice
+	release
+	return
+
+
+WhiteslateRoute_EventScript_ShamisenPlayerChoice::
+	mcdialogue WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_0, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_1
+	closemessage
+	switch VAR_RESULT
+	case 0, WhiteslateRoute_EventScript_ShamisenPlayerChoice_2
+	case 1, WhiteslateRoute_EventScript_ShamisenPlayerChoice_3
+	return
+
+WhiteslateRoute_EventScript_ShamisenPlayerChoice_2:
+	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	msgbox WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_2
+	closemessage
+	applymovement 24, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_0
+	applymovement 23, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_1
+	delay 16
+	applymovement OBJ_EVENT_ID_PLAYER, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_2
+	waitmovement 23
+	waitmovement 24
+	removeobject 23
+	removeobject 24
+	setroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_STARTED
+	setvar VAR_TEMP_2, 1
+	setflag FLAG_TEMP_1
+	return
+
+WhiteslateRoute_EventScript_ShamisenPlayerChoice_3:
+	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	msgbox WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_3
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_3
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_EXPLAINED
+	return
+
+
+WhiteslateRoute_EventScript_ShamisenPlayerPokemon::
+	lock
+	faceplayer
+	setseenmon SPECIES_GROWLITHE
+	setspeakertomonname SPECIES_GROWLITHE
+	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
+	msgbox WhiteslateRoute_EventScript_ShamisenPlayerPokemon_Text_0
+	waitmoncry
+	release
+	return
 
 
 WhiteslateRoute_EventScript_Itsumi::
@@ -245,6 +379,71 @@ WhiteslateRoute_Trigger_SecretBase_20:
 	goto WhiteslateRoute_Trigger_SecretBase_16
 
 
+WhiteslateRoute_Trigger_ShamisenPlayerTop_Movement_0:
+	walk_in_place_fast_up
+	delay_16
+	delay_16
+	step_end
+
+WhiteslateRoute_Trigger_ShamisenPlayerBottom_Movement_0:
+	walk_in_place_fast_up
+	delay_16
+	delay_16
+	walk_up
+	step_end
+
+WhiteslateRoute_EventScript_ShamisenCallsOut_Movement_0:
+	lock_facing_direction
+	walk_in_place_fast_down
+	unlock_facing_direction
+	step_end
+
+WhiteslateRoute_EventScript_ShamisenPlayer_Movement_0:
+	walk_in_place_down
+	step_end
+
+WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_0:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_1:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_2:
+	walk_in_place_fast_left
+	step_end
+
+WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_3:
+	walk_right
+	step_end
+
 WhiteslateRoute_Trigger_SecretBase_Movement_0:
 	walk_right
 	face_left
@@ -344,6 +543,55 @@ WhiteslateRoute_Trigger_SecretBase_Movement_13:
 	walk_down
 	walk_down
 	step_end
+
+WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0:
+	.string "Shamisen Player$"
+
+WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_1:
+	.string "So, are you ready?$"
+
+WhiteslateRoute_EventScript_ShamisenChallenge_Text_0:
+	.string "I am a traveling blind musician.\n"
+	.string "I was arrested by the aura of a brave\l"
+	.string "and promising young Wielder…\l"
+	.string "Are you them? Why, you must be!\l"
+	.string "There's no other explanation!\p"
+	.string "We Shamisen Players sing songs about\n"
+	.string "the brave souls we meet on our\l"
+	.string "travels.\p"
+	.string "To test your worth, how about I\n"
+	.string "submit you to a little challenge?\p"
+	.string "If you manage to reach the next\n"
+	.string "city's Refuge in one go, without\l"
+	.string "running back to the previous towns', I\l"
+	.string "will meet you there and give you a\l"
+	.string "little something.\p"
+	.string "I know we only just met, but I believe\n"
+	.string "you will succeed!\p"
+	.string "I can let you prepare before\n"
+	.string "considering this challenge as having\l"
+	.string "begun, if you wish.$"
+
+WhiteslateRoute_EventScript_ShamisenCallsOut_Text_0:
+	.string "… … …!\p"
+	.string "Excuse me! Yes, you!$"
+
+WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_0:
+	.string "I'm ready!$"
+
+WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_1:
+	.string "I need to prepare first.$"
+
+WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_2:
+	.string "Go forth, bold young soul! May luck\n"
+	.string "echo your steps!$"
+
+WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_3:
+	.string "Understood. Come back when you are\n"
+	.string "ready.$"
+
+WhiteslateRoute_EventScript_ShamisenPlayerPokemon_Text_0:
+	.string "Arf!$"
 
 WhiteslateRoute_EventScript_Itsumi_Text_0:
 	.string "Do you nurture your Pokémon with\n"

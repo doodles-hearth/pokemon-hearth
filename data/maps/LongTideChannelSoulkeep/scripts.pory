@@ -1,0 +1,7 @@
+mapscripts LongTideChannelSoulkeep_MapScripts {
+	
+}
+
+script LongTideChannelSoulkeep_RouteSign {
+	msgbox(format("{LEFT_ARROW} Havenisle"), MSGBOX_SIGN)
+}

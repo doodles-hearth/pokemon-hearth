@@ -3,7 +3,7 @@
   "name": "BattleFrontier_BattlePikeThreePathRoom",
   "layout": "LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_THREE_PATH_ROOM",
   "music": "MUS_B_PIKE",
-  "region_map_section": "MAPSEC_BATTLE_FRONTIER",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -35,6 +35,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_PIKE_HINT_GIVER",
       "graphics_id": "OBJ_EVENT_GFX_LINK_RECEPTIONIST",
       "x": 8,
       "y": 5,

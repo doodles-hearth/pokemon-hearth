@@ -1,9 +1,14 @@
 Silveridge_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, Silveridge_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_TRANSITION, Silveridge_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
 
 Silveridge_MapScripts_MAP_SCRIPT_ON_LOAD:
 	call Silveridge_DrawMetatiles
+	return
+
+Silveridge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_SILVERIDGE
 	return
 
 

@@ -1,0 +1,6 @@
+#ifndef GUARD_SHAMISEN_PLAYER_DEFINES
+#define GUARD_SHAMISEN_PLAYER_DEFINES
+
+void FailActiveRouteChallenges(void);
+
+#endif // GUARD_SHAMISEN_PLAYER_DEFINES

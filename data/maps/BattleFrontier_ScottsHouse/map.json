@@ -3,7 +3,7 @@
   "name": "BattleFrontier_ScottsHouse",
   "layout": "LAYOUT_BATTLE_FRONTIER_SCOTTS_HOUSE",
   "music": "MUS_B_TOWER_RS",
-  "region_map_section": "MAPSEC_BATTLE_FRONTIER",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_INDOOR",
@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_SCOTTS_HOUSE_SCOTT",
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 2,
       "y": 3,

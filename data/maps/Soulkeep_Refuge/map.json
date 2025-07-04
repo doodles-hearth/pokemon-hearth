@@ -12,9 +12,10 @@
   "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_NURSE_SOULKEEP",
       "graphics_id": "OBJ_EVENT_GFX_NURSE",
       "x": 13,
       "y": 3,
@@ -55,6 +56,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_CHANSEY_SOULKEEP",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(BLISSEY)",
       "x": 14,
       "y": 3,
@@ -144,10 +146,6 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": []
 }

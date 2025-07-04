@@ -3,7 +3,7 @@
   "name": "MtPyre_Summit",
   "layout": "LAYOUT_MT_PYRE_SUMMIT",
   "music": "MUS_MT_PYRE_EXTERIOR",
-  "region_map_section": "MAPSEC_MT_PYRE",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_FOG_HORIZONTAL",
   "map_type": "MAP_TYPE_ROUTE",
@@ -35,6 +35,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MT_PYRE_SUMMIT_ARCHIE",
       "graphics_id": "OBJ_EVENT_GFX_ARCHIE",
       "x": 23,
       "y": 6,
@@ -55,6 +56,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MT_PYRE_SUMMIT_OLD_LADY",
       "graphics_id": "OBJ_EVENT_GFX_EXPERT_F",
       "x": 23,
       "y": 5,
@@ -75,6 +77,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MT_PYRE_SUMMIT_GRUNT_1",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 21,
       "y": 15,
@@ -95,6 +98,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MT_PYRE_SUMMIT_GRUNT_2",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 25,
       "y": 18,
@@ -115,6 +119,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MT_PYRE_SUMMIT_GRUNT_3",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
       "x": 21,
       "y": 11,
@@ -135,6 +140,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MT_PYRE_SUMMIT_GRUNT_4",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
       "x": 25,
       "y": 11,
@@ -155,6 +161,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_MT_PYRE_SUMMIT_MAXIE",
       "graphics_id": "OBJ_EVENT_GFX_MAXIE",
       "x": 23,
       "y": 6,

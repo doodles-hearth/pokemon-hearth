@@ -326,6 +326,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_ROUTE119_RIVAL",
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
       "x": 25,
       "y": 32,
@@ -506,6 +507,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_ROUTE119_RIVAL_ON_BIKE",
       "graphics_id": "OBJ_EVENT_GFX_VAR_3",
       "x": 17,
       "y": 33,
@@ -866,6 +868,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_ROUTE119_SCOTT",
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
       "x": 28,
       "y": 25,

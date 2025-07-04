@@ -19,6 +19,7 @@
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
 #include "random.h"
+#include "route_challenge.h"
 #include "script.h"
 #include "sprite.h"
 #include "string_util.h"
@@ -43,6 +44,8 @@ void HealPlayerParty(void)
     // Recharge Tera Orb, if possible.
     if (B_FLAG_TERA_ORB_CHARGED != 0 && CheckBagHasItem(ITEM_TERA_ORB, 1))
         FlagSet(B_FLAG_TERA_ORB_CHARGED);
+
+    FailActiveRouteChallenges();
 }
 
 static void HealPlayerBoxes(void)
