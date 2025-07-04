@@ -1,5 +1,24 @@
 SakuTown_House2_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, SakuTown_House2_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+SakuTown_House2_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	compare VAR_SAKU_KURA_QUEST_ESPEON_STATE, 0
+	goto_if_eq SakuTown_House2_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	compare VAR_SAKU_KURA_QUEST_ESPEON_STATE, 4
+	goto_if_eq SakuTown_House2_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	setflag FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES ( EEVEE )
+	return
+
+SakuTown_House2_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES ( EEVEE )
+	return
+
+SakuTown_House2_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	setvar VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES ( ESPEON )
+	clearflag FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME
+	return
 
 
 SakuTown_House2_EventScript_EspeonsMaster::

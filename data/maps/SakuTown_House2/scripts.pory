@@ -3,7 +3,17 @@ const LOCALID_ESPEON = 2
 const LOCALID_SISTER = 3
 
 mapscripts SakuTown_House2_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0) {
+			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(EEVEE))
+		} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 4) {
+			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(ESPEON))
+			clearflag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)
+		} else {
+			setflag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)
+			setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SPECIES(EEVEE))
+		}
+	}
 }
 
 script SakuTown_House2_EventScript_EspeonsMaster {
