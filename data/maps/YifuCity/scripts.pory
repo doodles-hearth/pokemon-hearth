@@ -848,6 +848,38 @@ script YifuCity_EventScript_ChimechoLady {
 	end
 }
 
+script YifuCity_EventScript_ChefOnBreak {
+	lock
+	faceplayer
+	speakername("Cook")
+	msgbox(format(
+		"Huff…\n"
+		"We're on break right now.\p"
+		"The food service industry is truly merciless."
+	))
+	closemessage
+	
+	setnamedmon(SPECIES_CHIMECHO)
+	setdescribedmon(SPECIES_CHIMECHO)
+
+	release
+	end
+}
+
+script YifuCity_EventScript_Nacli {
+	lock
+    faceplayer
+	setspeakertomonname(SPECIES_NACLI)
+    msgbox(format(
+        "Xrckl…"
+    ))
+	setseenmon(SPECIES_NACLI)
+    playmoncry(SPECIES_NACLI, CRY_MODE_NORMAL)
+    waitmoncry
+    release
+    end
+}
+
 script YifuCity_EventScript_NameRaterSign {
 	msgbox(format(
 		"What's In A Name\n“Humble name judge”"
