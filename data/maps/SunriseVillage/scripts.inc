@@ -1,5 +1,6 @@
 SunriseVillage_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, SunriseVillage_MapScripts_MAP_SCRIPT_ON_LOAD
+	map_script MAP_SCRIPT_ON_TRANSITION, SunriseVillage_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
 
 SunriseVillage_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -41,6 +42,10 @@ SunriseVillage_MapScripts_MAP_SCRIPT_ON_LOAD_8:
 SunriseVillage_MapScripts_MAP_SCRIPT_ON_LOAD_9:
 	clearflag FLAG_TEMP_1
 	clearflag FLAG_TEMP_3
+	return
+
+SunriseVillage_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_SUNRISE_VILLAGE
 	return
 
 

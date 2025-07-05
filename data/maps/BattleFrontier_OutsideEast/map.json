@@ -3,7 +3,7 @@
   "name": "BattleFrontier_OutsideEast",
   "layout": "LAYOUT_BATTLE_FRONTIER_OUTSIDE_EAST",
   "music": "MUS_B_FRONTIER",
-  "region_map_section": "MAPSEC_BATTLE_FRONTIER",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
@@ -281,6 +281,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_FRONTIER_SUDOWOODO",
       "graphics_id": "OBJ_EVENT_GFX_SUDOWOODO",
       "x": 54,
       "y": 62,

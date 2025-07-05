@@ -9,6 +9,9 @@ mapscripts ChiiTown_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		call(ChiiTown_DrawMetatiles)
     }
+	MAP_SCRIPT_ON_TRANSITION {
+        setflag(FLAG_VISITED_CHII_TOWN)
+    }
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2: ChiiTown_EventScript_SetTrespassVar
     ]

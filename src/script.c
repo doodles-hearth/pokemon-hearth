@@ -10,6 +10,10 @@
 #include "constants/map_scripts.h"
 #include "field_message_box.h"
 
+#if PORYLIVE
+#include "porylive.h"
+#endif // PORYLIVE
+
 #define RAM_SCRIPT_MAGIC 51
 
 enum {
@@ -35,7 +39,7 @@ EWRAM_DATA u8 gMsgBoxIsCancelable = FALSE;
 
 extern ScrCmdFunc gScriptCmdTable[];
 extern ScrCmdFunc gScriptCmdTableEnd[];
-extern void * const gNullScriptPtr;
+extern void *const gNullScriptPtr;
 
 void InitScriptContext(struct ScriptContext *ctx, void *cmdTable, void *cmdTableEnd)
 {
@@ -59,7 +63,11 @@ void InitScriptContext(struct ScriptContext *ctx, void *cmdTable, void *cmdTable
 
 u8 SetupBytecodeScript(struct ScriptContext *ctx, const u8 *ptr)
 {
+    #if PORYLIVE
+    ctx->scriptPtr = PoryLive_GetScriptPointer(ptr);
+    #else
     ctx->scriptPtr = ptr;
+    #endif // PORYLIVE
     ctx->mode = SCRIPT_MODE_BYTECODE;
     return 1;
 }
@@ -81,6 +89,10 @@ bool8 RunScriptCommand(struct ScriptContext *ctx)
     if (ctx->mode == SCRIPT_MODE_STOPPED)
         return FALSE;
 
+    #if PORYLIVE
+    ctx->scriptPtr = PoryLive_GetScriptPointer(ctx->scriptPtr);
+    #endif // PORYLIVE
+
     switch (ctx->mode)
     {
     case SCRIPT_MODE_STOPPED:
@@ -94,6 +106,9 @@ bool8 RunScriptCommand(struct ScriptContext *ctx)
                 ctx->mode = SCRIPT_MODE_BYTECODE;
             return TRUE;
         }
+        #if PORYLIVE
+        ctx->scriptPtr = PoryLive_GetScriptPointer(ctx->scriptPtr);
+        #endif // PORYLIVE
         ctx->mode = SCRIPT_MODE_BYTECODE;
         // fallthrough
     case SCRIPT_MODE_BYTECODE:
@@ -113,6 +128,10 @@ bool8 RunScriptCommand(struct ScriptContext *ctx)
                 while (1)
                     asm("svc 2"); // HALT
             }
+
+            #if PORYLIVE
+            ctx->scriptPtr = PoryLive_GetScriptPointer(ctx->scriptPtr);
+            #endif // PORYLIVE
 
             cmdCode = *(ctx->scriptPtr);
             ctx->scriptPtr++;
@@ -157,18 +176,31 @@ static const u8 *ScriptPop(struct ScriptContext *ctx)
 
 void ScriptJump(struct ScriptContext *ctx, const u8 *ptr)
 {
+    #if PORYLIVE
+    ctx->scriptPtr = PoryLive_GetScriptPointer(ptr);
+    #else
     ctx->scriptPtr = ptr;
+    #endif // PORYLIVE
 }
 
 void ScriptCall(struct ScriptContext *ctx, const u8 *ptr)
 {
+    #if PORYLIVE
+    ScriptPush(ctx, ctx->scriptPtr);
+    ctx->scriptPtr = PoryLive_GetScriptPointer(ptr);
+    #else
     ScriptPush(ctx, ctx->scriptPtr);
     ctx->scriptPtr = ptr;
+    #endif // PORYLIVE
 }
 
 void ScriptReturn(struct ScriptContext *ctx)
 {
+    #if PORYLIVE
     ctx->scriptPtr = ScriptPop(ctx);
+    #else
+    ctx->scriptPtr = ScriptPop(ctx);
+    #endif // PORYLIVE
 }
 
 u16 ScriptReadHalfword(struct ScriptContext *ctx)
@@ -416,7 +448,7 @@ void ClearRamScript(void)
 #endif //FREE_MYSTERY_EVENT_BUFFERS
 }
 
-bool8 InitRamScript(const u8 *script, u16 scriptSize, u8 mapGroup, u8 mapNum, u8 objectId)
+bool8 InitRamScript(const u8 *script, u16 scriptSize, u8 mapGroup, u8 mapNum, u8 localId)
 {
 #if FREE_MYSTERY_EVENT_BUFFERS == FALSE
     struct RamScriptData *scriptData = &gSaveBlock1Ptr->ramScript.data;
@@ -429,7 +461,7 @@ bool8 InitRamScript(const u8 *script, u16 scriptSize, u8 mapGroup, u8 mapNum, u8
     scriptData->magic = RAM_SCRIPT_MAGIC;
     scriptData->mapGroup = mapGroup;
     scriptData->mapNum = mapNum;
-    scriptData->objectId = objectId;
+    scriptData->localId = localId;
     memcpy(scriptData->script, script, scriptSize);
     gSaveBlock1Ptr->ramScript.checksum = CalculateRamScriptChecksum();
     return TRUE;
@@ -438,7 +470,7 @@ bool8 InitRamScript(const u8 *script, u16 scriptSize, u8 mapGroup, u8 mapNum, u8
 #endif //FREE_MYSTERY_EVENT_BUFFERS
 }
 
-const u8 *GetRamScript(u8 objectId, const u8 *script)
+const u8 *GetRamScript(u8 localId, const u8 *script)
 {
 #if FREE_MYSTERY_EVENT_BUFFERS == FALSE
     struct RamScriptData *scriptData = &gSaveBlock1Ptr->ramScript.data;
@@ -449,7 +481,7 @@ const u8 *GetRamScript(u8 objectId, const u8 *script)
         return script;
     if (scriptData->mapNum != gSaveBlock1Ptr->location.mapNum)
         return script;
-    if (scriptData->objectId != objectId)
+    if (scriptData->localId != localId)
         return script;
     if (CalculateRamScriptChecksum() != gSaveBlock1Ptr->ramScript.checksum)
     {
@@ -466,7 +498,7 @@ const u8 *GetRamScript(u8 objectId, const u8 *script)
 #endif //FREE_MYSTERY_EVENT_BUFFERS
 }
 
-#define NO_OBJECT OBJ_EVENT_ID_PLAYER
+#define NO_OBJECT LOCALID_PLAYER
 
 bool32 ValidateSavedRamScript(void)
 {
@@ -474,11 +506,11 @@ bool32 ValidateSavedRamScript(void)
     struct RamScriptData *scriptData = &gSaveBlock1Ptr->ramScript.data;
     if (scriptData->magic != RAM_SCRIPT_MAGIC)
         return FALSE;
-    if (scriptData->mapGroup != MAP_GROUP(UNDEFINED))
+    if (scriptData->mapGroup != MAP_GROUP(MAP_UNDEFINED))
         return FALSE;
-    if (scriptData->mapNum != MAP_NUM(UNDEFINED))
+    if (scriptData->mapNum != MAP_NUM(MAP_UNDEFINED))
         return FALSE;
-    if (scriptData->objectId != NO_OBJECT)
+    if (scriptData->localId != NO_OBJECT)
         return FALSE;
     if (CalculateRamScriptChecksum() != gSaveBlock1Ptr->ramScript.checksum)
         return FALSE;
@@ -496,11 +528,11 @@ u8 *GetSavedRamScriptIfValid(void)
         return NULL;
     if (scriptData->magic != RAM_SCRIPT_MAGIC)
         return NULL;
-    if (scriptData->mapGroup != MAP_GROUP(UNDEFINED))
+    if (scriptData->mapGroup != MAP_GROUP(MAP_UNDEFINED))
         return NULL;
-    if (scriptData->mapNum != MAP_NUM(UNDEFINED))
+    if (scriptData->mapNum != MAP_NUM(MAP_UNDEFINED))
         return NULL;
-    if (scriptData->objectId != NO_OBJECT)
+    if (scriptData->localId != NO_OBJECT)
         return NULL;
     if (CalculateRamScriptChecksum() != gSaveBlock1Ptr->ramScript.checksum)
     {
@@ -521,7 +553,7 @@ void InitRamScript_NoObjectEvent(u8 *script, u16 scriptSize)
 #if FREE_MYSTERY_EVENT_BUFFERS == FALSE
     if (scriptSize > sizeof(gSaveBlock1Ptr->ramScript.data.script))
         scriptSize = sizeof(gSaveBlock1Ptr->ramScript.data.script);
-    InitRamScript(script, scriptSize, MAP_GROUP(UNDEFINED), MAP_NUM(UNDEFINED), NO_OBJECT);
+    InitRamScript(script, scriptSize, MAP_GROUP(MAP_UNDEFINED), MAP_NUM(MAP_UNDEFINED), NO_OBJECT);
 #endif //FREE_MYSTERY_EVENT_BUFFERS
 }
 
@@ -562,6 +594,10 @@ static bool32 RunScriptImmediatelyUntilEffect_InternalLoop(struct ScriptContext 
             if (!ctx->scriptPtr)
                 return FALSE;
 
+            #if PORYLIVE
+            ctx->scriptPtr = PoryLive_GetScriptPointer(ctx->scriptPtr);
+            #endif // PORYLIVE
+
             cmdCode = *ctx->scriptPtr;
             ctx->scriptPtr++;
             func = &ctx->cmdTable[cmdCode];
@@ -576,7 +612,11 @@ static bool32 RunScriptImmediatelyUntilEffect_InternalLoop(struct ScriptContext 
             // Command which waits for a frame.
             if ((*func)(ctx))
             {
+                #if PORYLIVE
+                gScriptEffectContext->nextCmd = PoryLive_GetScriptPointer(ctx->scriptPtr);
+                #else
                 gScriptEffectContext->nextCmd = ctx->scriptPtr;
+                #endif // PORYLIVE
                 return TRUE;
             }
         }
@@ -613,7 +653,13 @@ bool32 RunScriptImmediatelyUntilEffect_Internal(u32 effects, const u8 *ptr, stru
     gRngValue = rngValue;
 
     if (result)
+    {
+        #if PORYLIVE
+        ctx->scriptPtr = PoryLive_GetScriptPointer(seCtx.nextCmd);
+        #else
         ctx->scriptPtr = seCtx.nextCmd;
+        #endif // PORYLIVE
+    }
 
     return result;
 }

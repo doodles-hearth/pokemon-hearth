@@ -102,20 +102,30 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 	applymovement(LOCALID_NURSE, moves(face_right))
 	waitmovement(0)
 	speakername("Nurse")
-	msgbox(format("I'm sorry, but there's nothing I can do yet. We haven't received the tools that allow us to heal a Pokémon in this dire of a state."))
-	waitmessage
+	msgbox(format(
+		"I'm sorry, but there's nothing I can do yet.\p"
+		"We haven't tools that allow us to heal a Pokémon in this dire a state."
+	))
 	closemessage
+
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5))
+
 	speakername("Farmer")
-	msgbox(format("Well y'have to do somet'in'! Can'tcha see she's in pain?!"))
-	waitmessage
+	msgbox(format("Y'have to do somet'in', miss!\nCantcha see she's in pain?!"))
 	closemessage
-	applymovement(LOCALID_NURSE, moves(walk_in_place_down))
+
+	applymovement(LOCALID_NURSE, moves(walk_in_place_fast_down))
 	waitmovement(0)
+
 	speakername("Nurse")
-	msgbox(format("She can stay here for as long as she needs to. I'll try to keep her in as good of a shape as I can."))
-	waitmessage
+	msgbox(format(
+		"She can stay here for as long as she needs.\p"
+		"I'll keep her in as good a shape as I can."
+	))
 	closemessage
+
+	applymovement(LOCALID_FRONT_FARMER_1, moves(face_right))
+	waitmovement(0)
 }
 
 script SakuTown_PokemonCenter_EventScript_Farmer1 {
@@ -137,7 +147,10 @@ script SakuTown_PokemonCenter_EventScript_Farmer1 {
 }
 
 script(local) FarmerGivesQuest {
-	msgbox(format("The nurse 'ere said that the new fangled technology from the Toku Council isn't here yet. As such, she can't be cured of whatever's ailin' her.\pPlease! If you can spare some time, can you help us find someone or something to cure our girl?"))
+	msgbox(format(
+		"The nurse 'ere said the newfangled medical technology from the Toku Council isn't here yet.\p"
+		"As such, Scyther can't be cured of whatever's ailin' her.\p"
+		"Please! If you can spare some time, help us find someone or something to cure our girl!"))
 	startquest(QUEST_SAKURASCYTHER)
 	applymovement(LOCALID_FRONT_FARMER_1, moves(face_original_direction))
 	return
@@ -148,73 +161,125 @@ script(local) FarmerWaitsMedicine {
 	checkitem(ITEM_SPECIAL_MEDICINE, 1)
 	if(var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 6 && var(VAR_RESULT) == TRUE){
 		call(HealedScytherScript)
+	} else {
+		closemessage
 	}
 	return
 }
 
 script(local) HealedScytherScript{
-	mcdialogue("Yep!", "Right here.")
-	applymovement(LOCALID_BED_FARMER_1, moves(emote_double_exclamation_mark))
+	mcdialogue(
+		"Right here.",
+		"I have this medicine."
+	)
+	closemessage
+
 	playse(SE_PIN)
+	applymovement(LOCALID_BED_FARMER_1, moves(emote_exclamation_mark, delay_16 * 3))
 	waitmovement(0)
+	waitse
+
 	speakername("Farmer")
-	msgbox(format("That's it! Can ye hand it please, Wielder?"))
-	waitmessage
+	msgbox(format("That's it! Please, Wielder, quickly!"))
 	closemessage
-	removeitem(ITEM_SPECIAL_MEDICINE, 1)
-	applymovement(LOCALID_BED_FARMER_1, moves(face_right))
+
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("{PLAYER} gave the Special Medicine."))
+	waitfanfare
+	removeitem(ITEM_SPECIAL_MEDICINE)
+	closemessage
+
+	applymovement(LOCALID_BED_FARMER_1, moves(walk_in_place_fast_right))
 	waitmovement(0)
+
 	speakername("Farmer")
-	msgbox(format("Here girl… This'll make ya feel better…"))
-	waitmessage
+	msgbox(format("Here, girl…\nThis'll make ya feel better…"))
 	closemessage
+
 	applymovement(LOCALID_BED_SCYTHER, moves(face_left))
-	playmoncry(SPECIES_SCYTHER, CRY_MODE_NORMAL)
+	playmoncry(SPECIES_SCYTHER, CRY_MODE_WEAK)
 	setspeakertomonname(SPECIES_SCYTHER)
 	msgbox(format("{FONT_SMALL} Gyooo…"))
-	waitmessage
 	closemessage
+
 	playse(SE_USE_ITEM)
-	applymovement(LOCALID_BED_SCYTHER, moves(emote_double_exclamation_mark, jump_in_place_down * 2, walk_fast_up, walk_fast_right * 2, walk_fast_down * 2, walk_fast_left * 4, walk_fast_up * 2, walk_fast_right * 2, face_down, delay_16, emote_heart))
+
+	applymovement(LOCALID_BED_SCYTHER, moves(
+		emote_double_exclamation_mark,
+		delay_16 * 3,
+		jump_in_place_down * 2,
+		walk_fast_up,
+		walk_fast_right * 2,
+		walk_fast_down * 2,
+		walk_fast_left * 4,
+		walk_fast_up * 2,
+		walk_fast_right * 2,
+		face_down,
+		delay_16,
+		emote_heart,
+		delay_16 * 3
+	))
 	waitmovement(0)
-	speakername("Farmer")
-	applymovement(LOCALID_BED_FARMER_1, moves(face_player))
+
+	applymovement(LOCALID_BED_FARMER_1, moves(walk_in_place_fast_left))
 	applymovement(LOCALID_BED_FARMER_2, moves(walk_up, face_left))
 	waitmovement(LOCALID_BED_FARMER_1)
 	waitmovement(LOCALID_BED_FARMER_2)
-	msgbox(format("Wielder, I don't know how to thank ya. She wouldn't be alright with you! Where did you get this medicine?"))
-	waitmessage
+
+	speakername("Farmer")
+	msgbox(format(
+		"Wielder… I don't know how to thank ya.\NWe were so worried…\p"
+		"Where did you get this medicine?"
+	))
 	closemessage
-	mcdialogue("From a wise healer in Kura Village.")
+
+	mcdialogue("The healer in Kura Village!")
+
 	speakername("Farmer")
 	msgbox(format("Kura Village, eh…"))
+
 	applymovement(LOCALID_BED_FARMER_1, moves(face_up))
 	waitmovement(0)
-	applymovement(LOCALID_BED_SCYTHER, moves(face_up, delay_4, face_left, delay_4, face_down, delay_4, face_right, delay_4))
+	applymovement(LOCALID_BED_SCYTHER, moves(
+		face_up,
+		delay_4,
+		face_left,
+		delay_4,
+		face_down,
+		delay_4,
+		face_right,
+		delay_4
+	))
+
 	playmoncry(SPECIES_SCYTHER, CRY_MODE_NORMAL)
+
 	setspeakertomonname(SPECIES_SCYTHER)
 	msgbox(format("Gyaaa!"))
-	waitmessage
+	waitmoncry
 	closemessage
+
 	speakername("Farmer")
-	msgbox(format("{FONT_SMALL} Maybe they're not s'bad afta' all…"))
-	waitmessage
+	msgbox(format("{FONT_SMALL} Maybe they ain't s'bad afta' all…"))
 	closemessage
+
 	applymovement(LOCALID_BED_FARMER_1, moves(face_player))
 	waitmovement(0)
+
 	speakername("Farmer")
 	msgbox(format("Thank you, Wielder. I can give ye a reward for your effors. Just meet us in the fields outside."))
-	waitmessage
 	closemessage
+
 	applymovement(LOCALID_BED_FARMER_2, moves(walk_right * 6, walk_down * 2, walk_right * 2))
 	applymovement(LOCALID_BED_SCYTHER, moves(walk_right * 7, walk_down * 2, walk_right * 2))
 	applymovement(LOCALID_BED_FARMER_1, moves(walk_up, walk_right * 8, walk_down * 2, walk_right * 2))
 	waitmovement(LOCALID_BED_FARMER_2)
 	waitmovement(LOCALID_BED_SCYTHER)
 	waitmovement(LOCALID_BED_FARMER_1)
+
 	removeobject(LOCALID_BED_FARMER_2)
 	removeobject(LOCALID_BED_SCYTHER)
 	removeobject(LOCALID_BED_FARMER_1)
+
 	questmenu(QUEST_MENU_SET_REWARD, QUEST_SAKURASCYTHER)
 	setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 7)
 	return
@@ -223,14 +288,16 @@ script(local) HealedScytherScript{
 script SakuTown_PokemonCenter_EventScript_Farmer2 {
 	lock
 	speakername("Farmer")
-	msgbox(format("There, there, girl… It'll be okay…"))
+	msgbox(format("There, there, girl…\nIt'll be okay…"))
 	closemessage
-	playmoncry(SPECIES_SCYTHER, CRY_MODE_NORMAL)
+
+	playmoncry(SPECIES_SCYTHER, CRY_MODE_WEAK)
 	setspeakertomonname(SPECIES_SCYTHER)
 	msgbox(format("{FONT_SMALL} Gyooo…"))
+	waitmoncry
 	closemessage
+
 	release
-	end
 }
 
 script SakuTown_PokemonCenter_EventScript_Pushing {

@@ -2,6 +2,9 @@ mapscripts Silveridge_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		call(Silveridge_DrawMetatiles)
 	}
+	MAP_SCRIPT_ON_TRANSITION {
+        setflag(FLAG_VISITED_SILVERIDGE)
+    }
 }
 
 script Silveridge_DrawMetatiles{

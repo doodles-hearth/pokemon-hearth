@@ -3,7 +3,7 @@
   "name": "NewMauville_Entrance",
   "layout": "LAYOUT_NEW_MAUVILLE_ENTRANCE",
   "music": "MUS_MT_PYRE",
-  "region_map_section": "MAPSEC_NEW_MAUVILLE",
+  "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",

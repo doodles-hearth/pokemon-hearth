@@ -54,6 +54,7 @@ Debug_CheatStart::
 
 
 	@ Custom Hearth flags
+	setvar VAR_STARTER_MON, SPECIES_FROAKIE
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
 	setflag FLAG_SYS_QUEST_MENU_GET
 	setflag FLAG_HIDE_SUNRISE_BEACH_RIVAL
@@ -62,6 +63,11 @@ Debug_CheatStart::
 	setflag FLAG_VISITED_CHII_TOWN
 	setflag FLAG_VISITED_SAKU_TOWN
 	setflag FLAG_VISITED_KURA_TOWN
+
+	giveitem ITEM_TOWN_MAP
+	giveitem ITEM_POKE_BALL, 20
+
+	resumefakertc
 
 	release
 	end
@@ -134,16 +140,10 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	lock
-	completequest QUEST_SAKURALOVERS
-	completequest QUEST_SAKURAESPEON
 	release
 	end
 
 Debug_EventScript_Script_2::
-	giveitem ITEM_FISHCAKE
-	giveitem ITEM_ORAN_BERRY
-	giveitem ITEM_REVIVAL_POWDER
 	release
 	end
 

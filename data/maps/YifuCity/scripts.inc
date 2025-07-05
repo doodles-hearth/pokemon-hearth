@@ -4,6 +4,7 @@ YifuCity_MapScripts::
 	.byte 0
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_VISITED_YIFU_CITY
 	compare VAR_CROBAT_HIDEOUT_STATE, 3
 	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	return
@@ -598,13 +599,17 @@ YifuCity_Trigger_CantGoThruNorth::
 
 YifuCity_Trigger_HarikoCriminals::
 	lockall
+	getroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU
+	compare VAR_RESULT, ROUTE_CHALLENGE_STATE_STARTED
+	goto_if_eq YifuCity_Trigger_HarikoCriminals_2
+YifuCity_Trigger_HarikoCriminals_1:
 	playse SE_PIN
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
 	switch VAR_TEMP_2
-	case 38, YifuCity_Trigger_HarikoCriminals_3
-	case 39, YifuCity_Trigger_HarikoCriminals_4
-	case 40, YifuCity_Trigger_HarikoCriminals_5
-YifuCity_Trigger_HarikoCriminals_1:
+	case 38, YifuCity_Trigger_HarikoCriminals_6
+	case 39, YifuCity_Trigger_HarikoCriminals_7
+	case 40, YifuCity_Trigger_HarikoCriminals_8
+YifuCity_Trigger_HarikoCriminals_4:
 	waitmovement 0
 	speakername YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox YifuCity_Trigger_HarikoCriminals_Text_1
@@ -616,17 +621,21 @@ YifuCity_Trigger_HarikoCriminals_1:
 	releaseall
 	return
 
-YifuCity_Trigger_HarikoCriminals_3:
+YifuCity_Trigger_HarikoCriminals_2:
+	setroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_SUCCESS
+	goto YifuCity_Trigger_HarikoCriminals_1
+
+YifuCity_Trigger_HarikoCriminals_6:
 	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_0
-	goto YifuCity_Trigger_HarikoCriminals_1
+	goto YifuCity_Trigger_HarikoCriminals_4
 
-YifuCity_Trigger_HarikoCriminals_4:
+YifuCity_Trigger_HarikoCriminals_7:
 	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_1
-	goto YifuCity_Trigger_HarikoCriminals_1
+	goto YifuCity_Trigger_HarikoCriminals_4
 
-YifuCity_Trigger_HarikoCriminals_5:
+YifuCity_Trigger_HarikoCriminals_8:
 	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_2
-	goto YifuCity_Trigger_HarikoCriminals_1
+	goto YifuCity_Trigger_HarikoCriminals_4
 
 
 YifuCity_EventScript_DojoSign::

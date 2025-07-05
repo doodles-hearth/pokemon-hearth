@@ -203,44 +203,44 @@ const u8 sText_SpaceForVar1Full[] = _("The space for\n{STR_VAR_1}\nis full.");
 const u8 sText_ThrowInPremierBall[] = _("Here's also\na promotional\nPremier Ball!");
 const u8 sText_ThrowInPremierBalls[] = _("Here's also\n{STR_VAR_1} promotional\nPremier Balls!");
 
-const u32 sNewShopMenu_DefaultMenuGfx[] = INCBIN_U32("graphics/new_shop/menu.4bpp.lz");
+const u32 sNewShopMenu_DefaultMenuGfx[] = INCBIN_U32("graphics/new_shop/menu.4bpp.smol");
 const u16 sNewShopMenu_DefaultMenuPal[] = INCBIN_U16("graphics/new_shop/menu.gbapal");
-const u32 sNewShopMenu_DefaultMenuTilemap[] = INCBIN_U32("graphics/new_shop/menu.bin.lz");
-const u32 sNewShopMenu_DefaultScrollGfx[] = INCBIN_U32("graphics/new_shop/scroll.4bpp.lz");
+const u32 sNewShopMenu_DefaultMenuTilemap[] = INCBIN_U32("graphics/new_shop/menu.bin.smolTM");
+const u32 sNewShopMenu_DefaultScrollGfx[] = INCBIN_U32("graphics/new_shop/scroll.4bpp.smol");
 const u16 sNewShopMenu_DefaultScrollPal[] = INCBIN_U16("graphics/new_shop/scroll.gbapal");
-const u32 sNewShopMenu_DefaultScrollTilemap[] = INCBIN_U32("graphics/new_shop/scroll.bin.lz");
+const u32 sNewShopMenu_DefaultScrollTilemap[] = INCBIN_U32("graphics/new_shop/scroll.bin.smolTM");
 const u16 sNewShopMenu_DefaultCursorGfx[] = INCBIN_U16("graphics/new_shop/cursor.4bpp");
 const u16 sNewShopMenu_DefaultCursorPal[] = INCBIN_U16("graphics/new_shop/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_MartFemale[] = INCBIN_U8("graphics/new_shop/sellers/female/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/mugshot.gbapal");
-const u32 sNewShopMenu_SellerScrollGfx_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.4bpp.lz");
+const u32 sNewShopMenu_SellerScrollGfx_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.4bpp.smol");
 const u16 sNewShopMenu_SellerScrollPal_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/scroll.gbapal");
-const u32 sNewShopMenu_SellerScrollMap_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.bin.lz");
+const u32 sNewShopMenu_SellerScrollMap_MartFemale[] = INCBIN_U32("graphics/new_shop/sellers/female/scroll.bin.smolTM");
 const u16 sNewShopMenu_SellerCursorGfx_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/cursor.4bpp");
 const u16 sNewShopMenu_SellerCursorPal_MartFemale[] = INCBIN_U16("graphics/new_shop/sellers/female/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_Okada[] = INCBIN_U8("graphics/new_shop/sellers/okada/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/mugshot.gbapal");
-const u32 sNewShopMenu_SellerScrollGfx_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.4bpp.lz");
+const u32 sNewShopMenu_SellerScrollGfx_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.4bpp.smol");
 const u16 sNewShopMenu_SellerScrollPal_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/scroll.gbapal");
-const u32 sNewShopMenu_SellerScrollMap_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.bin.lz");
+const u32 sNewShopMenu_SellerScrollMap_Okada[] = INCBIN_U32("graphics/new_shop/sellers/okada/scroll.bin.smolTM");
 const u16 sNewShopMenu_SellerCursorGfx_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/cursor.4bpp");
 const u16 sNewShopMenu_SellerCursorPal_Okada[] = INCBIN_U16("graphics/new_shop/sellers/okada/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_Zubat[] = INCBIN_U8("graphics/new_shop/sellers/zubat/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/mugshot.gbapal");
-const u32 sNewShopMenu_SellerScrollGfx_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.4bpp.lz");
+const u32 sNewShopMenu_SellerScrollGfx_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.4bpp.smol");
 const u16 sNewShopMenu_SellerScrollPal_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/scroll.gbapal");
-const u32 sNewShopMenu_SellerScrollMap_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.bin.lz");
+const u32 sNewShopMenu_SellerScrollMap_Zubat[] = INCBIN_U32("graphics/new_shop/sellers/zubat/scroll.bin.smolTM");
 const u16 sNewShopMenu_SellerCursorGfx_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/cursor.4bpp");
 const u16 sNewShopMenu_SellerCursorPal_Zubat[] = INCBIN_U16("graphics/new_shop/sellers/zubat/cursor.gbapal");
 
 const u8 sNewShopMenu_SellerMugshotGfx_Incense[] = INCBIN_U8("graphics/new_shop/sellers/incense/mugshot.4bpp");
 const u16 sNewShopMenu_SellerMugshotPal_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/mugshot.gbapal");
-const u32 sNewShopMenu_SellerScrollGfx_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.4bpp.lz");
+const u32 sNewShopMenu_SellerScrollGfx_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.4bpp.smol");
 const u16 sNewShopMenu_SellerScrollPal_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/scroll.gbapal");
-const u32 sNewShopMenu_SellerScrollMap_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.bin.lz");
+const u32 sNewShopMenu_SellerScrollMap_Incense[] = INCBIN_U32("graphics/new_shop/sellers/incense/scroll.bin.smolTM");
 const u16 sNewShopMenu_SellerCursorGfx_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/cursor.4bpp");
 const u16 sNewShopMenu_SellerCursorPal_Incense[] = INCBIN_U16("graphics/new_shop/sellers/incense/cursor.gbapal");
 
@@ -1153,8 +1153,8 @@ static void BuyMenuDecompressBgGraphics(void)
     {
         DecompressAndCopyTileDataToVram(2, sNewShopMenu_DefaultMenuGfx, 0, DEFAULT_MENU_TILE_OFFSET, 0);
         DecompressAndCopyTileDataToVram(2, sNewShopMenu_DefaultScrollGfx, 0, 0, 0);
-        LZDecompressWram(sNewShopMenu_DefaultMenuTilemap, sShopData->tilemapBuffers[0]);
-        LZDecompressWram(sNewShopMenu_DefaultScrollTilemap, sShopData->tilemapBuffers[1]);
+        DecompressDataWithHeaderWram(sNewShopMenu_DefaultMenuTilemap, sShopData->tilemapBuffers[0]);
+        DecompressDataWithHeaderWram(sNewShopMenu_DefaultScrollTilemap, sShopData->tilemapBuffers[1]);
         LoadPalette(sNewShopMenu_DefaultMenuPal, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
         LoadPalette(sNewShopMenu_DefaultMenuPal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
         return;
@@ -1162,8 +1162,8 @@ static void BuyMenuDecompressBgGraphics(void)
     DecompressAndCopyTileDataToVram(2, Shop_GetSellerGraphics(SELLER_GFX_MENU_GFX), 0, sSellers[i].menuTileOffset != 0 ? sSellers[i].menuTileOffset : DEFAULT_MENU_TILE_OFFSET, 0);
     DecompressAndCopyTileDataToVram(2, Shop_GetSellerGraphics(SELLER_GFX_SCROLL_GFX), 0, 0, 0);
 
-    LZDecompressWram(Shop_GetSellerGraphics(SELLER_GFX_MENU_MAP), sShopData->tilemapBuffers[0]);
-    LZDecompressWram(Shop_GetSellerGraphics(SELLER_GFX_SCROLL_MAP), sShopData->tilemapBuffers[1]);
+    DecompressDataWithHeaderWram(Shop_GetSellerGraphics(SELLER_GFX_MENU_MAP), sShopData->tilemapBuffers[0]);
+    DecompressDataWithHeaderWram(Shop_GetSellerGraphics(SELLER_GFX_SCROLL_MAP), sShopData->tilemapBuffers[1]);
 
     LoadPalette(Shop_GetSellerGraphics(SELLER_GFX_MENU_PAL), BG_PLTT_ID(0), PLTT_SIZE_4BPP);
     LoadPalette(Shop_GetSellerGraphics(SELLER_GFX_SCROLL_PAL), BG_PLTT_ID(1), PLTT_SIZE_4BPP);
@@ -1183,7 +1183,7 @@ static inline const u8 *BuyMenuGetItemName(u32 id)
         case MART_TYPE_DECOR ... MART_TYPE_DECOR2:
             return gDecorations[sMartInfo.itemList[id]].name;
         default:
-            return ItemId_GetName(sMartInfo.itemList[id]);
+            return GetItemName(sMartInfo.itemList[id]);
         // custom
     #ifdef MUDSKIP_OUTFIT_SYSTEM
         case MART_TYPE_OUTFIT:
@@ -1199,7 +1199,7 @@ static inline const u8 *BuyMenuGetItemDesc(u32 id)
         case MART_TYPE_DECOR ... MART_TYPE_DECOR2:
             return gDecorations[sMartInfo.itemList[id]].description;
         default:
-            return ItemId_GetDescription(sMartInfo.itemList[id]);
+            return GetItemDescription(sMartInfo.itemList[id]);
         // custom
     #ifdef MUDSKIP_OUTFIT_SYSTEM
         case MART_TYPE_OUTFIT:
@@ -1215,7 +1215,7 @@ static inline u32 BuyMenuGetItemPrice(u32 id)
         case MART_TYPE_DECOR ... MART_TYPE_DECOR2:
             return gDecorations[sMartInfo.itemList[id]].price;
         default:
-            return ItemId_GetPrice(sMartInfo.itemList[id]);
+            return GetItemPrice(sMartInfo.itemList[id]);
         // custom
         case MART_TYPE_VARIABLE:
             return SearchItemListForPrice(sMartInfo.itemList[id]);
@@ -1305,7 +1305,7 @@ static void BuyMenuInitWindows(void)
             u32 item = sMartInfo.itemList[0];
             u16 quantity = CountTotalItemQuantityInBag(item);
 
-            if ((ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
+            if ((GetItemImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
                 || (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(0)))
                 BuyMenuPrint(WIN_MULTI, sText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, sText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
             else
@@ -1451,7 +1451,7 @@ static void UpdateItemData(void)
             {
                 u16 quantity = CountTotalItemQuantityInBag(item);
 
-                if ((ItemId_GetImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
+                if ((GetItemImportance(item) && (CheckBagHasItem(item, 1) || CheckPCHasItem(item, 1)))
                     || (sMartInfo.martType == MART_TYPE_LIMITED && LimitedItemSoldOut(i)))
                     BuyMenuPrint(WIN_MULTI, sText_SoldOut, GetStringRightAlignXOffset(FONT_SMALL, sText_SoldOut, 80), 2*8, TEXT_SKIP_DRAW, COLORID_BLACK, FALSE);
                 else
@@ -1519,7 +1519,7 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
 
     if (sMartInfo.martType < MART_TYPE_DECOR)
     {
-        if (ItemId_GetImportance(sShopData->currentItemId) && (CheckBagHasItem(sShopData->currentItemId, 1) || CheckPCHasItem(sShopData->currentItemId, 1)))
+        if (GetItemImportance(sShopData->currentItemId) && (CheckBagHasItem(sShopData->currentItemId, 1) || CheckPCHasItem(sShopData->currentItemId, 1)))
         {
             PlaySE(SE_BOO);
             str = Shop_GetSellerMessage(SELLER_MSG_BUY_FAIL_SOLD_OUT);
@@ -1543,7 +1543,7 @@ static void Task_BuyMenuTryBuyingItem(u8 taskId)
             default:
             {
                 CopyItemName(sShopData->currentItemId, gStringVar1);
-                if (ItemId_GetImportance(sShopData->currentItemId))
+                if (GetItemImportance(sShopData->currentItemId))
                 {
                     u32 price = BuyMenuGetItemPrice(GridMenu_SelectedIndex(sShopData->gridItems));
                     ConvertIntToDecimalStringN(gStringVar2, sShopData->totalCost, STR_CONV_MODE_LEFT_ALIGN, 6);
@@ -1783,7 +1783,7 @@ static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 
-    if (ItemId_GetPocket(sShopData->currentItemId) == POCKET_POKE_BALLS)
+    if (GetItemPocket(sShopData->currentItemId) == POCKET_POKE_BALLS)
     {
         if (IsTextPrinterActive(WIN_ITEM_DESCRIPTION))
         {
@@ -1797,7 +1797,7 @@ static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
 
             if (premierBallsToAdd >= 1
              && ((I_PREMIER_BALL_BONUS <= GEN_7 && sShopData->currentItemId == ITEM_POKE_BALL)
-             || (I_PREMIER_BALL_BONUS >= GEN_8 && (ItemId_GetPocket(sShopData->currentItemId) == POCKET_POKE_BALLS))))
+             || (I_PREMIER_BALL_BONUS >= GEN_8 && (GetItemPocket(sShopData->currentItemId) == POCKET_POKE_BALLS))))
             {
                 u32 spaceAvailable = GetFreeSpaceForItemInBag(ITEM_PREMIER_BALL);
                 if (spaceAvailable < premierBallsToAdd)

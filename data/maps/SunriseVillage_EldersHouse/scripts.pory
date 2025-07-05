@@ -74,7 +74,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 
 	speakername("Elder Kaba")
 	msgbox(format(
-		"Which is why!{PAUSE 15}\p"
+		"WHICH IS WHY!{PAUSE 15}\p"
 		"The Toku council has decided that,\nfor the time being, the best way to\lhandle this is to use the Pokémon\lthemselves as a means of protection!\p"
 		"There were very few experienced\nPokémon Wielders in Toku until now.\l"
 		"This is about to change.\p"
@@ -550,11 +550,11 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 script SunriseVillage_EldersHouse_EventScript_RivalBattle {
 	switch(var(VAR_STARTER_MON)) {
 		case SPECIES_FROAKIE:
-			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_FROAKIE, format("What? It's over already?"))
+			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_FROAKIE, format("What? It's over already?"))
 		case SPECIES_SNIVY:
-			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_SNIVY, format("What? It's over already?"))
+			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_SNIVY, format("What? It's over already?"))
 		case SPECIES_CYNDAQUIL:
-			trainerbattle_no_intro(TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL, format("What? It's over already?"))
+			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL, format("What? It's over already?"))
 	}
 
 	goto(SunriseVillage_EldersHouse_EventScript_PostBattle)

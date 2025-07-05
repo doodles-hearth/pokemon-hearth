@@ -1,6 +1,11 @@
 static const struct CityMapEntry sPokenavCityMaps[NUM_CITY_MAPS] =
 {
     {
+        .mapSecId = MAPSEC_DUMMY,
+        .index = 1,
+        .tilemap = gPokenavCityMap_EverGrande_1,
+    },
+    /* {
         .mapSecId = MAPSEC_SUNRISE_VILLAGE,
         .index = 0,
         .tilemap = gPokenavCityMap_Littleroot_0,
@@ -109,5 +114,5 @@ static const struct CityMapEntry sPokenavCityMaps[NUM_CITY_MAPS] =
         .mapSecId = MAPSEC_EVER_GRANDE_CITY,
         .index = 1,
         .tilemap = gPokenavCityMap_EverGrande_1,
-    },
+    }, */
 };

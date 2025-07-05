@@ -26,7 +26,7 @@ KuraTown_House2_EventScript_Ashii_5:
 	goto KuraTown_House2_EventScript_Ashii_1
 
 KuraTown_House2_EventScript_Ashii_6:
-	call AshiiScript6
+	call AshiiScript_Reward
 	goto KuraTown_House2_EventScript_Ashii_1
 
 
@@ -47,14 +47,10 @@ AshiiScript1:
 	closemessage
 	delay 30
 	playse SE_PIN
-	applymovement 1, Common_Movement_ExclamationMark
+	applymovement 1, AshiiScript1_Movement_0
 	waitmovement 0
-	applymovement 1, Common_Movement_Delay48
-	waitmovement 0
-	msgbox AshiiScript1_Text_3
-	closemessage
-	speakername AshiiScript1_Text_4
-	msgbox AshiiScript1_Text_5
+	speakername AshiiScript1_Text_3
+	msgbox AshiiScript1_Text_4
 	closemessage
 	giveitem ITEM_ASHIIS_SCARF
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
@@ -64,7 +60,7 @@ AshiiScript1:
 
 AshiiScript2:
 	faceplayer
-	speakername AshiiScript1_Text_4
+	speakername AshiiScript1_Text_3
 	msgbox AshiiScript2_Text_0
 	closemessage
 	return
@@ -72,126 +68,160 @@ AshiiScript2:
 
 AshiiScript3:
 	faceplayer
-	speakername AshiiScript1_Text_4
+	speakername AshiiScript1_Text_3
 	msgbox AshiiScript3_Text_0
+	mcdialogue AshiiScript3_Text_1, AshiiScript3_Text_2, AshiiScript3_Text_3
 	closemessage
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, AshiiScript3_Text_1, AshiiScript3_Text_2, AshiiScript3_Text_3
+	delay 24
 	playse SE_PIN
 	applymovement 1, AshiiScript3_Movement_0
 	waitmovement 0
-	speakername AshiiScript1_Text_4
-	msgbox AshiiScript3_Text_4
-	closemessage
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, AshiiScript3_Text_5, AshiiScript3_Text_6, AshiiScript3_Text_7
+	playse SE_PIN
 	applymovement 1, AshiiScript3_Movement_1
 	waitmovement 0
-	faceplayer
+	speakername AshiiScript1_Text_3
+	msgbox AshiiScript3_Text_4
+	mcdialogue AshiiScript3_Text_5, AshiiScript3_Text_6, AshiiScript3_Text_7
+	closemessage
+	delay 24
+	applymovement 1, AshiiScript3_Movement_2
+	playse SE_PIN
+	delay 48
+	playse SE_LEDGE
+	delay 16
+	delay 4
+	playse SE_LEDGE
+	delay 16
+	delay 4
+	playse SE_LEDGE
+	delay 16
+	delay 4
+	playse SE_LEDGE
+	delay 16
+	delay 48
+	waitmovement 1
 	gettimeofday
-	speakername AshiiScript1_Text_4
 	compare VAR_0x8000, TIME_DEAD_NIGHT
 	goto_if_eq AshiiScript3_2
+	speakername AshiiScript1_Text_3
 	msgbox AshiiScript3_Text_9
 	closemessage
+	delay 40
 	fadescreen FADE_TO_BLACK
 	msgbox AshiiScript3_Text_10
 	waitmessage
 	closemessage
-	fadescreen FADE_FROM_BLACK
 	pausefakertc
 	fwdtime 0, 0
-	warp MAP_KURA_TOWN, 48, 29
+	warpsilent MAP_KURA_TOWN, 48, 29
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
 AshiiScript3_1:
 	closemessage
 	return
 
 AshiiScript3_2:
+	speakername AshiiScript1_Text_3
 	msgbox AshiiScript3_Text_8
-	fadescreen FADE_TO_BLACK
+	delay 40
 	warp MAP_KURA_TOWN, 48, 29
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
 	goto AshiiScript3_1
 
 
-AshiiScript6:
+AshiiScript_Reward:
 	faceplayer
-	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7
-	speakername AshiiScript1_Text_4
-	msgbox AshiiScript6_Text_0
-	waitmessage
+	speakername AshiiScript1_Text_3
+	msgbox AshiiScript_Reward_Text_0
 	closemessage
 	giveitem ITEM_DESTINY_KNOT, 1
 	completequest QUEST_SAKURALOVERS
-	end
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7
+	return
 
+
+AshiiScript1_Movement_0:
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+	step_end
 
 AshiiScript3_Movement_0:
 	emote_exclamation_mark
+	delay_16
 	delay_16
 	delay_16
 	face_away_player
 	delay_16
 	delay_16
 	delay_16
-	emote_heart
-	face_player
 	step_end
 
 AshiiScript3_Movement_1:
+	emote_heart
+	delay_16
+	delay_16
+	delay_16
+	face_player
+	step_end
+
+AshiiScript3_Movement_2:
 	emote_exclamation_mark
 	delay_16
 	delay_16
 	delay_16
 	jump_in_place_down
 	delay_4
-	jump_in_place_down
+	jump_in_place_left
 	delay_4
-	jump_in_place_down
+	jump_in_place_up
 	delay_4
+	jump_in_place_right
+	delay_16
+	delay_16
+	delay_16
+	face_player
 	step_end
 
 AshiiScript1_Text_0:
 	.string "Girl$"
 
 AshiiScript1_Text_1:
-	.string "Sigh… Oh, Tama… Why must life be so\n"
-	.string "complicated?$"
+	.string "Sigh… Oh, Tama…\n"
+	.string "Why must life be so complicated?$"
 
 AshiiScript1_Text_2:
 	.string "Hey, what are you doing in my house?\n"
 	.string "Were you eavesdropping?\p"
-	.string "…It doesn't matter anyway. The boy I\n"
-	.string "really like lives in Saku Village, but\l"
-	.string "our two villages hate each other, so I\l"
-	.string "can't see him anymore.\p"
-	.string "If only there was a way for him to\n"
-	.string "know my feelings…$"
+	.string "…It doesn't matter anyway.\n"
+	.string "The boy I really like lives in\l"
+	.string "Saku Village, but our two villages\l"
+	.string "hate each other, so I can't see him\l"
+	.string "anymore.\p"
+	.string "If only there was a way for him\n"
+	.string "to know my feelings…$"
 
 AshiiScript1_Text_3:
-	.string "Wait, you're not from here, are you?\p"
-	.string "$"
-
-AshiiScript1_Text_4:
 	.string "Ashii$"
 
-AshiiScript1_Text_5:
-	.string "My name is Ashii. I need your help. The\n"
-	.string "guard won't let anyone from Kura\l"
-	.string "Village enter Saku Village. But you\l"
-	.string "should be fine!\p"
-	.string "Please, go to Saku Village and give him\n"
-	.string "this. He'll know it's from me.$"
+AshiiScript1_Text_4:
+	.string "Wait, you're not from here, are you?\p"
+	.string "My name is Ashii. I need your help.\p"
+	.string "The guard won't let anyone from\n"
+	.string "Kura Village enter Saku Village.\l"
+	.string "But you should be fine!\p"
+	.string "Please, go to Saku Village and\n"
+	.string "give him this.\p"
+	.string "He'll know it's from me…$"
 
 AshiiScript2_Text_0:
-	.string "The guard won't let anyone from Kura\n"
-	.string "Village enter Saku Village. But you\l"
-	.string "should be fine!\p"
-	.string "Please, go to Saku Village and give him\n"
-	.string "this. He'll know it's from me.$"
+	.string "Please, give Tama my silk scarf.\n"
+	.string "He'll know it's from me…$"
 
 AshiiScript3_Text_0:
-	.string "Were able to give the scarf to Tama\n"
-	.string "yet? Did he get my message?$"
+	.string "Were you able to give Tama my gift?\p"
+	.string "Did…\n"
+	.string "Did he get my letter?$"
 
 AshiiScript3_Text_1:
 	.string "Yep!$"
@@ -204,16 +234,15 @@ AshiiScript3_Text_3:
 
 AshiiScript3_Text_4:
 	.string "I'm sorry. You've been an incredible\n"
-	.string "help and I haven't even gotten your\l"
-	.string "name yet. May i ask what it is?\p"
+	.string "help, and I don't even know your name!\l"
+	.string "May i ask what it is?\p"
 	.string "{PLAYER}… I see…\p"
 	.string "{PLAYER}, I know this is a big thing\n"
 	.string "to ask, but…\p"
 	.string "I want to be sure that my meeting\n"
-	.string "with Tama will be safe, especially if it\l"
-	.string "might be our last. If so, can you\l"
-	.string "please come with me when we go see\l"
-	.string "each other again?$"
+	.string "with Tama is safe.\l"
+	.string "Who knows? It might be our last.\p"
+	.string "Could you please accompany me?$"
 
 AshiiScript3_Text_5:
 	.string "Of course.$"
@@ -222,25 +251,28 @@ AshiiScript3_Text_6:
 	.string "Who wouldn't?$"
 
 AshiiScript3_Text_7:
-	.string "You both deserve it.$"
+	.string "I guess?$"
 
 AshiiScript3_Text_8:
-	.string "Thank you! Thank you! Thank you!\n"
-	.string "Let's make haste, then. Before the\l"
-	.string "moon takes her slumber in a few hours.$"
+	.string "Thank you! Thank you! Thank you!\p"
+	.string "Let's make haste, then.\n"
+	.string "Before the moon takes her slumber!$"
 
 AshiiScript3_Text_9:
-	.string "Thank you! Thank you! Thank you!\n"
-	.string "Please come see me later tonight.$"
+	.string "Thank you! Thank you! Thank you!\p"
+	.string "Meet me here later tonight.$"
 
 AshiiScript3_Text_10:
 	.string "Late that night…$"
 
-AshiiScript6_Text_0:
-	.string "{PLAYER}! It's you! I can never\n"
-	.string "thank you enough for the night you've\l"
-	.string "given us. Even if we must meet under\l"
-	.string "cover of darkness, I would risk it all\l"
-	.string "for Tama again and again and again.\l"
-	.string "Here, take this. It's the least I can\l"
-	.string "do for all your help…$"
+AshiiScript_Reward_Text_0:
+	.string "{PLAYER}! It's you!\n"
+	.string "I can't thank you enough for the\l"
+	.string "night you've given us.\p"
+	.string "Even if we must meet under cover of\n"
+	.string "darkness, I would risk it all for Tama,\l"
+	.string "again and again and again…\l"
+	.string "And again… And again…\l"
+	.string "And again…\p"
+	.string "Here, take this.\n"
+	.string "It's the least I can do…$"

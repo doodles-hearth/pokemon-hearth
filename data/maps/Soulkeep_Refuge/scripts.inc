@@ -8,7 +8,8 @@ Soulkeep_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 Soulkeep_Refuge_EventScript_Nurse::
-	setvar VAR_0x800B, 1
+	setvar VAR_0x800B, LOCALID_NURSE_SOULKEEP
+	setvar VAR_0x800A, LOCALID_CHANSEY_SOULKEEP
 	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
 	waitmessage
 	waitbuttonpress
