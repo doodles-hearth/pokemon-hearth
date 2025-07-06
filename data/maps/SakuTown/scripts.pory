@@ -468,8 +468,8 @@ script SakuTown_EventScript_TamaArgument {
 
 	speakername("Old Man")
 	msgbox(format(
-		"So you're the whippersnapper that's making my son collude with the enemy, eh.\p"
-		"You outta be taught a lesson in respect, kiddo!"
+		"So you're the whippersnapper that's\Nmaking my son collude with the enemy.\p"
+		"I outta be taught a lesson in respect,\Nkiddo!"
 	))
 	closemessage
 
@@ -512,9 +512,9 @@ script SakuTown_EventScript_TamaArgument {
 
 	speakername("Tama")
 	msgbox(format(
-		"Father, I know you don't approve of us, but please understand.\p"
-		"My mind is made up and you can't convince me otherwise.\p"
-		"What would you have done if someone had come between you and Mother?"
+		"Father, I know you don't approve of us,\Nbut please understand.\p"
+		"My mind is made up, and neither you or\Nanyone else can convince me otherwise.\p"
+		"What would you have done if someone\Nhad come between you and Mother?"
 	))
 	closemessage
 
@@ -535,7 +535,7 @@ script SakuTown_EventScript_TamaArgument {
 
 	speakername("Kiyosumi")
 	msgbox(format(
-		"If your love is as true as you say, then neither I nor anyone else can stop you.\p"
+		"If your love is as true as you say, then\Nneither I nor anyone else can stop you.\p"
 		"Do what you must."
 	))
 	closemessage
@@ -550,7 +550,8 @@ script SakuTown_EventScript_TamaArgument {
 
 	speakername("Tama")
 	msgbox(format(
-		"I can't thank you enough. Now, let's make haste!\lAshii must be waiting for us!\p"
+		"I can't thank you enough. Let's hurry\Nup now!\p"
+		"Ashii is waiting for us!\n"
 		"Let me heal your Pokémon as thanks."
 	))
 
@@ -695,8 +696,9 @@ script SakuTown_EventScript_LoversReunite {
 
 	speakername("Ashii")
 	msgbox(format(
-		"So do I.\nI felt like an insect that could do nothing but stare at the impossibly tall barricade between us.\p"
-		"And yet… Even fierce seperatism couldn't keep us apart tonight.\p"
+		"As do I.\p"
+		"I felt like an insect that could not do\Nanything but stare at the impossibly\Ntall barricade between us.\p"
+		"And yet… even fierce tribalism couldn't\Nkeep us apart tonight.\p"
 		"Tonight, we can have a midsummer dream of mirth and joy."
 	))
 	closemessage
@@ -704,7 +706,10 @@ script SakuTown_EventScript_LoversReunite {
 	applymovement(LOCALID_TAMA2, moves(walk_in_place_fast_right))
 
 	speakername("Tama")
-	msgbox(format("You always were so poetic with your words."))
+	msgbox(format(
+		"…\p"
+		"You're such an enchanting poet… your\Nwords are as beautiful as you are."
+		))
 	waitmessage
 	closemessage
 
@@ -720,20 +725,22 @@ script SakuTown_EventScript_LoversReunite {
 	speakername("Tama")
 	msgbox(format(
 		"We can't stay here for long, Ashii.\N"
-		"Even if my father begrundingly let me go, there's no telling the wrath our villages will wreak upon us if they see us here in the morning."
+		"Even if my father begrundingly let me\Ngo, I fear the wrath from our villages…\p"
+		"I can't stand the thought of you being\Nostracized just for me."
 	))
 	closemessage
 
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_left))
 
 	speakername("Ashii")
-	msgbox(format("I know. But even so, I'm glad to have spent this time with you."))
+	msgbox(format("I know, my love. I know. But my font of\Nlove for you drowns whatever fear I\Nhave for our villages."))
 	closemessage
 
 	applymovement(LOCALID_TAMA2, moves(walk_in_place_fast_right))
 
 	speakername("Tama")
 	msgbox(format(
+		"…\p"
 		"Will…\p"
 		"Will we see each other again?\NTomorrow?"
 	))

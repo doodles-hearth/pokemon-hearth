@@ -89,20 +89,22 @@ script SakuTown_House1_EventScript_Tama {
 		speakername("Tama")
 		msgbox(format(
 			"Ahem…"
-			"“My dear Tama,\nIt pains me that you're not by my side each night.\lThe sweet chirping of birds pales in comparison to your hearty laugh.\p"
-			"I would move Heaven and Earth if it meant we could be together.\p"
-			"If your heart still rings true for mine, will you meet me under pale moonlight, in the vale betwixt our homes?\p"
+			"“My dear Tama,\p"
+			"It pains me that you're not by my side\Neach night."
+			"The sweet chirping of birds pales in\Ncomparison to your hearty laugh.\p"
+			"I would move Heaven and Earth itself if\Nit meant we could be together.\p"
+			"If your heart still rings true for mine,\Nwill you meet me under pale moonlight, in\Nthe vale betwixt our homes?\p"
 			"Sincerely yours,\n-Ashii {EMOJI_HEART}”\p"
 			"… … … … … …\n… … … … … …"
 		))
 		closemessage
 
 		faceplayer
-	
+		delay(120)
 		speakername("Tama")
 		msgbox(format(
-			"…Ahem. Sorry, this is a little embarrassing…\p"
-			"What does she mean with that “vale”, though?…\p"
+			"Oh, uh, sorry I forgot you were here for a\nsecond…\p"
+			"What does she mean with that “vale”, though?\p"
 			"Oh!\n She must be talking about the small valley to the east of here!\p"
 			"And “pale moonlight”…\nThat must be tonight!\p"
 			"Of course! Why else ask you to\ndeliver this now?"
@@ -144,6 +146,6 @@ script SakuTown_House1_EventScript_Tama {
 
 script(local) TamaScript1 {
 	speakername("Man")
-	msgbox(format("Please go away.\nLeave me alone."))
+	msgbox(format("Please go away.\nLeave me alone\p"))
 	closemessage
 }

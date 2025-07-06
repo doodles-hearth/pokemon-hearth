@@ -41,8 +41,10 @@ script(local) AshiiScript1 {
 	speakername("Girl")
 	msgbox(format(
 		"Hey, what are you doing in my house?\nWere you eavesdropping?\p"
-		"…It doesn't matter anyway.\nThe boy I really like lives in\lSaku Village, but our two villages hate each other, so I can't see him anymore.\p"
-		"If only there was a way for him\nto know my feelings…"
+		"…You've must have heard my woes, then.\p"
+		"My heart was taken by this… adorable\Nboy I saw in Maguro Harbor's market.\p"
+		"And yet, we are separated needlessly by\Nconflict. Our villages bicker all day and\Nnight, yet even our elders forgot why.\p"
+		"I have no way of seeing him again. Oh, if\Nonly there was a way…"
 	))
 	closemessage
 	delay(30)
@@ -53,10 +55,10 @@ script(local) AshiiScript1 {
 
 	speakername("Ashii")
 	msgbox(format(
-		"Wait, you're not from here, are you?\p"
-		"My name is Ashii. I need your help.\p"
+		"Wait, you are not from here, are you?\p"
+		"My name is Ashii. Maybe you could help\Nme?\p"
 		"The guard won't let anyone from\nKura Village enter Saku Village.\lBut you should be fine!\p"
-		"Please, go to Saku Village and\ngive him this.\p"
+		"Please, go to Saku Village and this\nto Tama.\p"
 		"He'll know it's from me…"
 	))
 	closemessage
@@ -106,7 +108,7 @@ script(local) AshiiScript3 {
 
 	speakername("Ashii")
 	msgbox(format(
-		"I'm sorry. You've been an incredible help, and I don't even know your name!\NMay i ask what it is?\p"
+		"I'm sorry. You've been an incredible help, and I don't even know your name!\NMay I ask what it is?\p"
 		"{PLAYER}… I see…\p"
 		"{PLAYER}, I know this is a big thing to ask, but…\p"
 		"I want to be sure that my meeting with Tama is safe.\NWho knows? It might be our last.\p"
@@ -151,7 +153,7 @@ script(local) AshiiScript3 {
 		speakername("Ashii")
 		msgbox(format(
 			"Thank you! Thank you! Thank you!\p"
-			"Let's make haste, then.\nBefore the moon takes her slumber!"
+			"Let's make haste, before the moon takes her slumber!"
 		))
 
 		delay(40)
@@ -190,11 +192,13 @@ script(local) AshiiScript_Reward {
 	msgbox(format(
 		"{PLAYER}! It's you!\nI can't thank you enough for the night you've given us.\p"
 		"Even if we must meet under cover of darkness, I would risk it all for Tama, again and again and again…\NAnd again… And again…\NAnd again…\p"
-		"Here, take this.\nIt's the least I can do… "
+		"Here, take this for all the trouble.\p"
+		"My friend got it for me when she first\Nheard of my troubles with seeing Tama."
+		"It was supposed to conceal me so I\Ncould go to Saku, but… after the guards\Nsaw me, I realized it is for Pokémon."
 	))
 	closemessage
 
-	giveitem(ITEM_DESTINY_KNOT, 1)
+	giveitem(ITEM_COVERT_CLOAK, 1)
 
 	completequest(QUEST_SAKURALOVERS)
 	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7)

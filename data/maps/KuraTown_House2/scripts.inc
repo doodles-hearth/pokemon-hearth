@@ -133,7 +133,7 @@ AshiiScript_Reward:
 	speakername AshiiScript1_Text_3
 	msgbox AshiiScript_Reward_Text_0
 	closemessage
-	giveitem ITEM_DESTINY_KNOT, 1
+	giveitem ITEM_COVERT_CLOAK, 1
 	completequest QUEST_SAKURALOVERS
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7
 	return
@@ -193,25 +193,31 @@ AshiiScript1_Text_1:
 AshiiScript1_Text_2:
 	.string "Hey, what are you doing in my house?\n"
 	.string "Were you eavesdropping?\p"
-	.string "…It doesn't matter anyway.\n"
-	.string "The boy I really like lives in\l"
-	.string "Saku Village, but our two villages\l"
-	.string "hate each other, so I can't see him\l"
-	.string "anymore.\p"
-	.string "If only there was a way for him\n"
-	.string "to know my feelings…$"
+	.string "…You've must have heard my woes,\n"
+	.string "then.\p"
+	.string "My heart was taken by this… adorable\n"
+	.string "boy I saw in Maguro Harbor's market.\p"
+	.string "And yet, we are separated needlessly\n"
+	.string "by\l"
+	.string "conflict. Our villages bicker all day\l"
+	.string "and\l"
+	.string "night, yet even our elders forgot why.\p"
+	.string "I have no way of seeing him again. Oh,\n"
+	.string "if\l"
+	.string "only there was a way…$"
 
 AshiiScript1_Text_3:
 	.string "Ashii$"
 
 AshiiScript1_Text_4:
-	.string "Wait, you're not from here, are you?\p"
-	.string "My name is Ashii. I need your help.\p"
+	.string "Wait, you are not from here, are you?\p"
+	.string "My name is Ashii. Maybe you could help\n"
+	.string "me?\p"
 	.string "The guard won't let anyone from\n"
 	.string "Kura Village enter Saku Village.\l"
 	.string "But you should be fine!\p"
-	.string "Please, go to Saku Village and\n"
-	.string "give him this.\p"
+	.string "Please, go to Saku Village and this\n"
+	.string "to Tama.\p"
 	.string "He'll know it's from me…$"
 
 AshiiScript2_Text_0:
@@ -235,7 +241,7 @@ AshiiScript3_Text_3:
 AshiiScript3_Text_4:
 	.string "I'm sorry. You've been an incredible\n"
 	.string "help, and I don't even know your name!\l"
-	.string "May i ask what it is?\p"
+	.string "May I ask what it is?\p"
 	.string "{PLAYER}… I see…\p"
 	.string "{PLAYER}, I know this is a big thing\n"
 	.string "to ask, but…\p"
@@ -255,8 +261,8 @@ AshiiScript3_Text_7:
 
 AshiiScript3_Text_8:
 	.string "Thank you! Thank you! Thank you!\p"
-	.string "Let's make haste, then.\n"
-	.string "Before the moon takes her slumber!$"
+	.string "Let's make haste, before the moon\n"
+	.string "takes her slumber!$"
 
 AshiiScript3_Text_9:
 	.string "Thank you! Thank you! Thank you!\p"
@@ -274,5 +280,11 @@ AshiiScript_Reward_Text_0:
 	.string "again and again and again…\l"
 	.string "And again… And again…\l"
 	.string "And again…\p"
-	.string "Here, take this.\n"
-	.string "It's the least I can do…$"
+	.string "Here, take this for all the trouble.\p"
+	.string "My friend got it for me when she first\n"
+	.string "heard of my troubles with seeing\l"
+	.string "Tama. It was supposed to conceal me\l"
+	.string "so I\l"
+	.string "could go to Saku, but… after the\l"
+	.string "guards\l"
+	.string "saw me, I realized it is for Pokémon.$"

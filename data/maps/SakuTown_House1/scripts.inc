@@ -77,6 +77,7 @@ SakuTown_House1_EventScript_Tama_11:
 	msgbox SakuTown_House1_EventScript_Tama_Text_15
 	closemessage
 	faceplayer
+	delay 120
 	speakername SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_16
 	closemessage
@@ -111,7 +112,7 @@ SakuTown_House1_EventScript_Tama_14:
 
 TamaScript1:
 	speakername SakuTown_House1_EventScript_Tama_Text_0
-	msgbox SakuTown_House1_EventScript_Tama_Text_1
+	msgbox TamaScript1_Text_0
 	closemessage
 	return
 
@@ -186,27 +187,30 @@ SakuTown_House1_EventScript_Tama_Text_14:
 	.string "Whatever for?$"
 
 SakuTown_House1_EventScript_Tama_Text_15:
-	.string "Ahem… “My dear Tama,\n"
-	.string "It pains me that you're not by my side\l"
-	.string "each night.\l"
-	.string "The sweet chirping of birds pales in\l"
+	.string "Ahem… “My dear Tama,\p"
+	.string "It pains me that you're not by my side\n"
+	.string "each night. The sweet chirping of\l"
+	.string "birds pales in\l"
 	.string "comparison to your hearty laugh.\p"
-	.string "I would move Heaven and Earth if it\n"
-	.string "meant we could be together.\p"
+	.string "I would move Heaven and Earth itself\n"
+	.string "if\l"
+	.string "it meant we could be together.\p"
 	.string "If your heart still rings true for\n"
-	.string "mine, will you meet me under pale\l"
-	.string "moonlight, in the vale betwixt our\l"
-	.string "homes?\p"
+	.string "mine,\l"
+	.string "will you meet me under pale moonlight,\l"
+	.string "in\l"
+	.string "the vale betwixt our homes?\p"
 	.string "Sincerely yours,\n"
 	.string "-Ashii {EMOJI_HEART}”\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …$"
 
 SakuTown_House1_EventScript_Tama_Text_16:
-	.string "…Ahem. Sorry, this is a little\n"
-	.string "embarrassing…\p"
+	.string "Oh, uh, sorry I forgot you were here\n"
+	.string "for a\n"
+	.string "second…\p"
 	.string "What does she mean with that “vale”,\n"
-	.string "though?…\p"
+	.string "though?\p"
 	.string "Oh!\n"
 	.string "She must be talking about the small\l"
 	.string "valley to the east of here!\p"
@@ -226,3 +230,8 @@ SakuTown_House1_EventScript_Tama_Text_18:
 SakuTown_House1_EventScript_Tama_Text_19:
 	.string "I can't wait to see Ashii again\n"
 	.string "tonight!$"
+
+TamaScript1_Text_0:
+	.string "Please go away.\n"
+	.string "Leave me alone\p"
+	.string "$"

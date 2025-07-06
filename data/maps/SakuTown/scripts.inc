@@ -1191,10 +1191,10 @@ SakuTown_EventScript_TamaArgument_Text_6:
 
 SakuTown_EventScript_TamaArgument_Text_7:
 	.string "So you're the whippersnapper that's\n"
-	.string "making my son collude with the enemy,\l"
-	.string "eh.\p"
-	.string "You outta be taught a lesson in\n"
-	.string "respect, kiddo!$"
+	.string "making my son collude with the enemy.\p"
+	.string "I outta be taught a lesson in\n"
+	.string "respect,\l"
+	.string "kiddo!$"
 
 SakuTown_EventScript_TamaArgument_Text_8:
 	.string "{FONT_SMALL_NARROW}Huff… wheeze…$"
@@ -1214,9 +1214,11 @@ SakuTown_EventScript_TamaArgument_Text_12:
 
 SakuTown_EventScript_TamaArgument_Text_13:
 	.string "Father, I know you don't approve of\n"
-	.string "us, but please understand.\p"
-	.string "My mind is made up and you can't\n"
-	.string "convince me otherwise.\p"
+	.string "us,\l"
+	.string "but please understand.\p"
+	.string "My mind is made up, and neither you or\n"
+	.string "anyone else can convince me\l"
+	.string "otherwise.\p"
 	.string "What would you have done if someone\n"
 	.string "had come between you and Mother?$"
 
@@ -1226,14 +1228,15 @@ SakuTown_EventScript_TamaArgument_Text_14:
 
 SakuTown_EventScript_TamaArgument_Text_15:
 	.string "If your love is as true as you say,\n"
-	.string "then neither I nor anyone else can\l"
-	.string "stop you.\p"
+	.string "then\l"
+	.string "neither I nor anyone else can stop\l"
+	.string "you.\p"
 	.string "Do what you must.$"
 
 SakuTown_EventScript_TamaArgument_Text_16:
-	.string "I can't thank you enough. Now, let's\n"
-	.string "make haste!\l"
-	.string "Ashii must be waiting for us!\p"
+	.string "I can't thank you enough. Let's hurry\n"
+	.string "up now!\p"
+	.string "Ashii is waiting for us!\n"
 	.string "Let me heal your Pokémon as thanks.$"
 
 SakuTown_EventScript_LoversSeeEachOther_Text_0:
@@ -1257,31 +1260,38 @@ SakuTown_EventScript_LoversReunite_Text_2:
 	.string "I… I have so much to say…$"
 
 SakuTown_EventScript_LoversReunite_Text_3:
-	.string "So do I.\n"
-	.string "I felt like an insect that could do\l"
-	.string "nothing but stare at the impossibly\l"
+	.string "As do I.\p"
+	.string "I felt like an insect that could not\n"
+	.string "do\l"
+	.string "anything but stare at the impossibly\l"
 	.string "tall barricade between us.\p"
-	.string "And yet… Even fierce seperatism\n"
-	.string "couldn't keep us apart tonight.\p"
+	.string "And yet… even fierce tribalism\n"
+	.string "couldn't\l"
+	.string "keep us apart tonight.\p"
 	.string "Tonight, we can have a midsummer\n"
 	.string "dream of mirth and joy.$"
 
 SakuTown_EventScript_LoversReunite_Text_4:
-	.string "You always were so poetic with your\n"
-	.string "words.$"
+	.string "…\p"
+	.string "You're such an enchanting poet… your\n"
+	.string "words are as beautiful as you are.$"
 
 SakuTown_EventScript_LoversReunite_Text_5:
 	.string "We can't stay here for long, Ashii.\n"
 	.string "Even if my father begrundingly let me\l"
-	.string "go, there's no telling the wrath our\l"
-	.string "villages will wreak upon us if they see\l"
-	.string "us here in the morning.$"
+	.string "go, I fear the wrath from our\l"
+	.string "villages…\p"
+	.string "I can't stand the thought of you\n"
+	.string "being\l"
+	.string "ostracized just for me.$"
 
 SakuTown_EventScript_LoversReunite_Text_6:
-	.string "I know. But even so, I'm glad to have\n"
-	.string "spent this time with you.$"
+	.string "I know, my love. I know. But my font of\n"
+	.string "love for you drowns whatever fear I\l"
+	.string "have for our villages.$"
 
 SakuTown_EventScript_LoversReunite_Text_7:
+	.string "…\p"
 	.string "Will…\p"
 	.string "Will we see each other again?\n"
 	.string "Tomorrow?$"
