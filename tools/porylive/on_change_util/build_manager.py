@@ -33,6 +33,7 @@ class BuildManager:
                 error_message.insert(0, f"Error while processing {pory_file_path}:")
                 self.logger.log_message(*error_message)
                 sys.exit(1)
+            self.logger.log_message("Processing pory file complete!")
         except subprocess.CalledProcessError as e:
             error_message = e.stderr.decode('utf-8').strip().split('\n')
             error_message.insert(0, f"Error while processing {pory_file_path}:")

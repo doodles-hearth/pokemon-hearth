@@ -20,7 +20,7 @@ live: tidylive all live-prep
 	@trap 'echo ""; echo "Cleaning up..."; cat tools/porylive/watchman_clean.json | watchman -j > /dev/null; exit 0' INT TERM; \
 	mkdir -p .porylive; \
 	touch .porylive/porylive_on_change.log; \
-	python3 tools/porylive/porylive_get_addresses.py pokeemerald.map $(OBJ_DIR_PORYLIVE)/addresses.lua; \
+	python3 tools/porylive/porylive_get_addresses.py pokeemerald-hearth.map $(OBJ_DIR_PORYLIVE)/addresses.lua; \
 	echo ""; \
 	echo ""; \
 	echo -e "\033[0;90m========== \033[0;36mPorylive\033[0;90m ==========="; sleep 0.01; \

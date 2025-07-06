@@ -145,7 +145,7 @@
 	.endm
 
 	@ Changes the value of destination to value.
-	.macro setvar destination:req, value:req, warn=TRUE
+	.macro setvar destination:req, value:req, warn=FALSE
 	.if \warn && ((\value >= VARS_START && \value <= VARS_END) || (\value >= SPECIAL_VARS_START && \value <= SPECIAL_VARS_END))
 	.warning "setvar with a value that might be a VAR_ constant; did you mean copyvar instead?"
 	.endif
