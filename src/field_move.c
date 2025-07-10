@@ -89,6 +89,14 @@ static bool32 IsFieldMoveUnlocked_Defog(void)
 
 const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
 {
+    [FIELD_MOVE_NONE] =
+    {
+        .fieldMoveFunc = SetUpFieldMove_Cut,
+        .isUnlockedFunc = IsFieldMoveUnlocked_Cut,
+        .moveID = MOVE_NONE,
+        .partyMsgID = PARTY_MSG_NOTHING_TO_CUT,
+    },
+
     [FIELD_MOVE_CUT] =
     {
         .fieldMoveFunc = SetUpFieldMove_Cut,
