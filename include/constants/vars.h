@@ -116,8 +116,9 @@
     // 2: Seen the decay once
     // 3: "be careful!"
     // 4: Talked to Hariko about decay
-    // 5: Delivered letter to elder in Silveridge
-    // 6: Talked to Samurai near Uume Forest
+    // 5: End of decay cutscene
+    // 6: Delivered letter to elder in Silveridge
+    // 7: Talked to Samurai near Uume Forest
 */
 #define VAR_DECAY_BEACHBOUND_ROUTE                       0x4052
 #define VAR_LAVARIDGE_TOWN_STATE                         0x4053

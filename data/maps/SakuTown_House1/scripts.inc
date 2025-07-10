@@ -178,7 +178,7 @@ SakuTown_House1_EventScript_Tama_Text_12:
 
 SakuTown_House1_EventScript_Tama_Text_13:
 	.string "I… I can't believe it!\n"
-	.string "She really does love me!\l"
+	.string "She really does love me!\p"
 	.string "Thank you so much for this!$"
 
 SakuTown_House1_EventScript_Tama_Text_14:
@@ -187,13 +187,13 @@ SakuTown_House1_EventScript_Tama_Text_14:
 
 SakuTown_House1_EventScript_Tama_Text_15:
 	.string "Ahem… “My dear Tama,\n"
-	.string "It pains me that you're not by my side\l"
+	.string "It pains me that you aren't by my side\l"
 	.string "each night.\l"
 	.string "The sweet chirping of birds pales in\l"
-	.string "comparison to your hearty laugh.\p"
-	.string "I would move Heaven and Earth if it\n"
-	.string "meant we could be together.\p"
-	.string "If your heart still rings true for\n"
+	.string "comparison to your hearty laugh.\l"
+	.string "I would move Heaven and Earth for us\l"
+	.string "to be together.\l"
+	.string "If your heart still rings true for\l"
 	.string "mine, will you meet me under pale\l"
 	.string "moonlight, in the vale betwixt our\l"
 	.string "homes?\p"

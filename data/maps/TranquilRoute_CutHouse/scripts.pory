@@ -54,7 +54,7 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 	faceplayer
 
 	// Cut already received
-	if(flag(FLAG_RECEIVED_HM_CUT)) {
+	if(checkitem(ITEM_SECRET_CUT)) {
 			// Home for the night
 			if(flag(FLAG_CUT_QUEST_CUT_ALL_GRASS)){
 				speakername("Old Man")
@@ -101,8 +101,7 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 		closemessage
 
 		giveitem(ITEM_TM_NICK)
-		setflag(FLAG_RECEIVED_HM_CUT)
-		
+
 		speakername("Old Man")
 		msgbox(format(
 			"Want to know another secret?\p"

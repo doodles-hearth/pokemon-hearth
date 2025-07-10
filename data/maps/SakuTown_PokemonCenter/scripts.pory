@@ -87,9 +87,9 @@ script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
 	faceplayer
 	speakername("Nurse")
 	msgbox(format(
-		"This Pokémon refuge is brand-new, courtesy of the Toku Council!\p"
-		"As you can see, it's still being built. Watch out for the falling bricks, ha ha, just kidding!\p"
-		"Seriously though, do watch out. We're held responsible if anything happens to you."
+		"This Pokémon refuge is brand new, courtesy of the Toku Council!\p"
+		"As you can see, it's still being built.\NWatch out for the falling bricks, ha ha, just kidding!\p"
+		"Seriously though, do watch out.\nWe're held responsible if anything happens to you."
 	))
 	closemessage
 	release
@@ -111,7 +111,7 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5))
 
 	speakername("Farmer")
-	msgbox(format("Y'have to do somet'in', miss!\nCantcha see she's in pain?!"))
+	msgbox(format("Y'have to do som'thin', miss!\nCantcha see she's in pain?!"))
 	closemessage
 
 	applymovement(LOCALID_NURSE, moves(walk_in_place_fast_down))
@@ -149,7 +149,7 @@ script SakuTown_PokemonCenter_EventScript_Farmer1 {
 script(local) FarmerGivesQuest {
 	msgbox(format(
 		"The nurse 'ere said the newfangled medical technology from the Toku Council isn't here yet.\p"
-		"As such, Scyther can't be cured of whatever's ailin' her.\p"
+		"Scyther can't be cured of whatever's ailin' her.\p"
 		"Please! If you can spare some time, help us find someone or something to cure our girl!"))
 	startquest(QUEST_SAKURASCYTHER)
 	applymovement(LOCALID_FRONT_FARMER_1, moves(face_original_direction))
@@ -180,7 +180,7 @@ script(local) HealedScytherScript{
 	waitse
 
 	speakername("Farmer")
-	msgbox(format("That's it! Please, Wielder, quickly!"))
+	msgbox(format("That's it!\nPlease, Wielder, quickly!"))
 	closemessage
 
 	playfanfare(MUS_OBTAIN_ITEM)

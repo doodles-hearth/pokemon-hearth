@@ -124,11 +124,16 @@ SakuTown_EventScript_RivalAtSakuWall_1:
 SakuTown_EventScript_RivalAtSakuWall_5:
 	speakername SakuTown_EventScript_RivalAtSakuWall_Text_2
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_4
+	mcdialogue SakuTown_EventScript_RivalAtSakuWall_Text_5, SakuTown_EventScript_RivalAtSakuWall_Text_6
 	closemessage
-	compare VAR_TEMP_2, 16
-	goto_if_eq SakuTown_EventScript_RivalAtSakuWall_11
-	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_2
+	switch VAR_RESULT
+	case 0, SakuTown_EventScript_RivalAtSakuWall_12
+	case 1, SakuTown_EventScript_RivalAtSakuWall_13
 SakuTown_EventScript_RivalAtSakuWall_10:
+	compare VAR_TEMP_2, 16
+	goto_if_eq SakuTown_EventScript_RivalAtSakuWall_15
+	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_3
+SakuTown_EventScript_RivalAtSakuWall_14:
 	waitmovement 0
 	removeobject 10
 	setflag FLAG_TEMP_1
@@ -152,9 +157,25 @@ SakuTown_EventScript_RivalAtSakuWall_9:
 	trainerbattle_no_intro TRAINER_RIVAL_SAKU_CYNDAQUIL, SakuTown_Text_RivalDefeat
 	goto SakuTown_EventScript_RivalAtSakuWall_5
 
-SakuTown_EventScript_RivalAtSakuWall_11:
-	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_1
+SakuTown_EventScript_RivalAtSakuWall_12:
+	speakername SakuTown_EventScript_RivalAtSakuWall_Text_2
+	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_7
 	goto SakuTown_EventScript_RivalAtSakuWall_10
+
+SakuTown_EventScript_RivalAtSakuWall_13:
+	speakername SakuTown_EventScript_RivalAtSakuWall_Text_2
+	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_8
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_RivalAtSakuWall_Movement_1
+	waitmovement 0
+	speakername SakuTown_EventScript_RivalAtSakuWall_Text_2
+	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_9
+	closemessage
+	goto SakuTown_EventScript_RivalAtSakuWall_10
+
+SakuTown_EventScript_RivalAtSakuWall_15:
+	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_2
+	goto SakuTown_EventScript_RivalAtSakuWall_14
 
 
 SakuTown_EventScript_Farmer::
@@ -736,6 +757,14 @@ SakuTown_EventScript_RivalAtSakuWall_Movement_0:
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Movement_1:
+	walk_in_place_fast_down
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_fast_up
+	step_end
+
+SakuTown_EventScript_RivalAtSakuWall_Movement_2:
 	walk_right
 	walk_up
 	walk_up
@@ -744,7 +773,7 @@ SakuTown_EventScript_RivalAtSakuWall_Movement_1:
 	walk_up
 	step_end
 
-SakuTown_EventScript_RivalAtSakuWall_Movement_2:
+SakuTown_EventScript_RivalAtSakuWall_Movement_3:
 	walk_left
 	walk_up
 	walk_up
@@ -1041,26 +1070,42 @@ SakuTown_EventScript_RivalAtSakuWall_Text_4:
 	.string "I bet you I'll get to Silveridge first!\p"
 	.string "See you later, Feraligatr!$"
 
+SakuTown_EventScript_RivalAtSakuWall_Text_5:
+	.string "In a while, Totodile?$"
+
+SakuTown_EventScript_RivalAtSakuWall_Text_6:
+	.string "Where's the Feraligatr?$"
+
+SakuTown_EventScript_RivalAtSakuWall_Text_7:
+	.string "You got it!$"
+
+SakuTown_EventScript_RivalAtSakuWall_Text_8:
+	.string "Right behind you!$"
+
+SakuTown_EventScript_RivalAtSakuWall_Text_9:
+	.string "Bahaha! Got you!$"
+
 SakuTown_EventScript_Farmer_Text_0:
 	.string "Farmer$"
 
 SakuTown_EventScript_Farmer_Text_1:
-	.string "Wielder! It's you! I can't thank ya\n"
-	.string "enough for helping us heal our girl.\p"
-	.string "I've been doin' a lot of thinkin' too,\n"
-	.string "after you told us the one who helped\l"
-	.string "'er get better was someone from Kura.\l"
-	.string "That ain't here nor there though. As\l"
-	.string "thanks, ya can have these.$"
+	.string "Wielder! It's you!\n"
+	.string "I can't thank ya enough for helping\l"
+	.string "us heal our girl.\p"
+	.string "Been doin' some thinkin' too, after\n"
+	.string "you told us the one who helped 'er was\l"
+	.string "from Kura.\p"
+	.string "That ain't here nor there though.\n"
+	.string "As thanks, ya can have these.$"
 
 SakuTown_EventScript_Farmer_Text_2:
-	.string "We're growin' Cheri berries. Saku\n"
-	.string "Village exports its berries to many\l"
-	.string "towns.$"
+	.string "We're growin' Cheri berries.\n"
+	.string "Saku Village exports its berries to\l"
+	.string "many towns.$"
 
 SakuTown_EventScript_Farmer2_Text_0:
-	.string "Whew…\p"
-	.string "Working in the fields sure is tiring…$"
+	.string "Whew…\n"
+	.string "Working in the fields sure is tirin'…$"
 
 SakuTown_EventScript_Scyther_Text_0:
 	.string "Gyooo!$"
@@ -1117,8 +1162,8 @@ SakuTown_EventScript_GuardStopsYou_Text_1:
 SakuTown_EventScript_GuardStopsYou_Text_2:
 	.string "Are you trying to sneak into Kura\n"
 	.string "Village?\p"
-	.string "…Oh, you're just a traveler. Nevermind\n"
-	.string "then, you can go through.\p"
+	.string "…Oh, you're just a traveler.\n"
+	.string "Nevermind then, you can go through.\p"
 	.string "Though I wouldn't recommend visiting\n"
 	.string "the next village, there's really\l"
 	.string "nothing interesting there.$"
@@ -1172,8 +1217,8 @@ SakuTown_EventScript_TamaArgument_Text_1:
 
 SakuTown_EventScript_TamaArgument_Text_2:
 	.string "The love of my life is waiting for me\n"
-	.string "on the other side! You can't do this\l"
-	.string "to me!$"
+	.string "on the other side!\l"
+	.string "You can't do this to me!$"
 
 SakuTown_EventScript_TamaArgument_Text_3:
 	.string "Old man$"
@@ -1183,8 +1228,9 @@ SakuTown_EventScript_TamaArgument_Text_4:
 	.string "love with someone from Kura Village!$"
 
 SakuTown_EventScript_TamaArgument_Text_5:
-	.string "It's you! You need to help me get to\n"
-	.string "Ashii, please!$"
+	.string "It's you!\n"
+	.string "You need to help me get to Ashii,\l"
+	.string "please!$"
 
 SakuTown_EventScript_TamaArgument_Text_6:
 	.string "Old Man$"
@@ -1231,8 +1277,8 @@ SakuTown_EventScript_TamaArgument_Text_15:
 	.string "Do what you must.$"
 
 SakuTown_EventScript_TamaArgument_Text_16:
-	.string "I can't thank you enough. Now, let's\n"
-	.string "make haste!\l"
+	.string "I can't thank you enough.\n"
+	.string "Now, let's make haste!\l"
 	.string "Ashii must be waiting for us!\p"
 	.string "Let me heal your Pokémon as thanks.$"
 
@@ -1272,8 +1318,8 @@ SakuTown_EventScript_LoversReunite_Text_4:
 
 SakuTown_EventScript_LoversReunite_Text_5:
 	.string "We can't stay here for long, Ashii.\n"
-	.string "Even if my father begrundingly let me\l"
-	.string "go, there's no telling the wrath our\l"
+	.string "My father begrundingly let me go, but\l"
+	.string "there's no telling the wrath our\l"
 	.string "villages will wreak upon us if they see\l"
 	.string "us here in the morning.$"
 
@@ -1296,7 +1342,8 @@ SakuTown_EventScript_LoversReunite_Text_9:
 	.string "{FONT_SMALL_NARROW}What?$"
 
 SakuTown_EventScript_LoversReunite_Text_10:
-	.string "Hehe… I'll see you tomorrow, my love.$"
+	.string "Hehe…\n"
+	.string "I'll see you tomorrow, my love.$"
 
 SakuTown_EventScript_LoversReunite_Text_11:
 	.string "OH! Yes, haha!\n"
@@ -1310,10 +1357,10 @@ SakuTown_EventScript_LoversReunite_Text_13:
 	.string "B-bye…$"
 
 SakuTown_EventScript_TamaTalksToPlayerFinal_Text_0:
-	.string "I can't believe it, I finally saw her\n"
-	.string "again!\p"
-	.string "Wielder… thank you… I'm so excited to\n"
-	.string "see her again tomorrow!$"
+	.string "I can't believe it, it finally\n"
+	.string "happened!\p"
+	.string "Wielder… thank you…\n"
+	.string "It's so good to see her again!$"
 
 SakuTown_EventScript_TamasAnxious_Text_0:
 	.string "My heart is about to burst out of my\n"

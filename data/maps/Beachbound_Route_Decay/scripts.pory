@@ -1,8 +1,4 @@
-const LOCALID_BEAN = 8
-const LOCALID_SAMURAI = 10
-const LOCALID_KOISHI = 12
-const LOCALID_NATSUKI = 13
-const FLAG_HIDE_NATSUKI = FLAG_TEMP_1
+const FLAG_HIDE_NATSUKI_HARIKO = FLAG_TEMP_1
 
 mapscripts Beachbound_Route_Decay_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
@@ -14,8 +10,8 @@ script Beachbound_Route_Decay_SeeDecay {
 	lock
 	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 2)
 
-	setflag(FLAG_HIDE_NATSUKI)
-	removeobject(LOCALID_NATSUKI)
+	setflag(FLAG_HIDE_NATSUKI_HARIKO)
+	removeobject(LOCALID_BEACHBOUND_DECAY_NATSUKI)
 
 	playse(SE_PIN)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
@@ -36,7 +32,13 @@ script Beachbound_Route_Decay_SeeDecay {
 
 	special(RemoveCameraObject)
 
+	special(DrawWholeMapView)
+
 	fadescreenswapbuffers(FADE_FROM_BLACK)
+
+	clearflag(FLAG_HIDE_NATSUKI_HARIKO)
+	addobject(LOCALID_BEACHBOUND_DECAY_NATSUKI)
+	addobject(LOCALID_BEACHBOUND_DECAY_HARIKO)
 
 	release
 }
@@ -67,68 +69,81 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	speakername("Hariko")
 	if (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
 		msgbox(format(
-			"Oh! Hello again, {PLAYER}!\p"
-			"What do you think is happening here? It looks like there is some sort of Decay affecting this whole area.\p"
-			"The Samurai over there told me there are reports of this phenomenon hitting several areas over the last few days.\p"
-			"That coincides with the start of the Volcano's rumbling spells, so both seem to be related.\p"
-			"Whatever it is, it is not good. I want to learn as much as I can about this Decay.\p"
-			"Did you also come here to investigate, {PLAYER}? We should team up!"
+			"Oh! Hello again, {PLAYER}!\n"
+			"As you can see, I am investigating."
+			// "What do you think is happening here? It looks like there is some sort of Decay affecting this whole area.\p"
+			// "The Samurai over there told me there are reports of this phenomenon hitting several areas over the last few days.\p"
+			// "That coincides with the start of the Volcano's rumbling spells, so both seem to be related.\p"
+			// "Whatever it is, it is not good. I want to learn as much as I can about this Decay.\p"
+			// "Did you also come here to investigate, {PLAYER}? We should team up!"
 		))
 	} else {
 		msgbox(format(
 			"Oh! Hello.\n{PLAYER}, right?\p"
-			"I am Hariko, remember me? We had a chat in the Ginko Woods."
-			"What do you think is happening here? It looks like there is some sort of Decay affecting this whole area.\p"
-			"The Samurai over there told me there are reports of this phenomenon hitting several areas over the last few days.\p"
-			"That coincides with the start of the Volcano's rumbling spells, so both seem to be related.\p"
-			"Whatever it is, it is not good. I want to learn as much as I can about this Decay.\p"
-			"Did you also come here to investigate, {PLAYER}? We should team up!"
+			"I am Hariko, remember me? We had a chat in the Ginko Woods.\p"
+			"As you can see, I am investigating."
+			// "What do you think is happening here? It looks like there is some sort of Decay affecting this whole area.\p"
+			// "The Samurai over there told me there are reports of this phenomenon hitting several areas over the last few days.\p"
+			// "That coincides with the start of the Volcano's rumbling spells, so both seem to be related.\p"
+			// "Whatever it is, it is not good. I want to learn as much as I can about this Decay.\p"
+			// "Did you also come here to investigate, {PLAYER}? We should team up!"
 		))
 	}
+
+	mcdialogue(
+		"What's happening?",
+		"Investigating?"
+	)
 	closemessage
 
-	setflag(FLAG_HIDE_NATSUKI)
-	addobject(LOCALID_NATSUKI)
+	speakername("Hariko")
+	msgbox(format(
+		"Well, look around you! This whole area is decaying.\p"
+		"Whatever this is, it is not good.\NI want to learn as much as I can about this decay.\p"
+		"Did you also come here to investigate, {PLAYER}? We should team up!"
+	))
 
-	applymovement(LOCALID_NATSUKI, moves(walk_right * 4))
+	addobject(LOCALID_BEACHBOUND_DECAY_NATSUKI)
+
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_right * 4))
 	waitmovement(0)
 
 	playse(SE_PIN)
-	applymovement(LOCALID_NATSUKI, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, Common_Movement_ExclamationMark)
 	waitse
 	waitmovement(0)
 	delay(48)
 
-	applymovement(LOCALID_NATSUKI, moves(walk_right * 5, walk_in_place_fast_down))
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_right * 5, walk_in_place_fast_down))
 	waitmovement(0)
 
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
 
 	speakername("Natsuki")
 	msgbox(format(
-		"{PLAYER}! What the heck is going on here? Everything is rotting!\p"
-		"My Pokémon stepped in that slimy black stuff and doesn't look well…\l"
-		"I need to get to Maguro Harbor's Refuge quickly!"
+		"{PLAYER}!\nWhat the heck is going on here?\lEverything is rotting!\p"
+		"Stepping in that slimy black stuff made me awfully nauseous…"
 	))
 	closemessage
 
-	applymovement(LOCALID_NATSUKI, moves(emote_exclamation_mark, delay_16 * 3))
-	waitmovement(LOCALID_NATSUKI)
+	playse(SE_PIN)
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(emote_exclamation_mark, delay_16 * 3))
+	waitmovement(LOCALID_BEACHBOUND_DECAY_NATSUKI)
 
 	speakername("Natsuki")
 	msgbox(format(
 		"Wait, who are you?"
 	))
 
-	applymovement(LOCALID_BEAN, moves(walk_in_place_fast_up))
-	waitmovement(LOCALID_BEAN)
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(walk_in_place_fast_up))
+	waitmovement(LOCALID_BEACHBOUND_DECAY_HARIKO)
 
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
 	speakername("Hariko")
 	msgbox(format(
-		"I am Hariko. {PLAYER} and I are friends. Together, we are going to find the cause of this Decay!"
+		"I am Hariko.\n{PLAYER} and I are friends.\pTogether, we are going to find the cause of this Decay!"
 	))
 
 	mcdialogue(
@@ -136,78 +151,173 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 		"We are?"
 	)
 
+	delay(24)
+
 	switch(var(VAR_RESULT)) {
 		case 1:
-			applymovement(LOCALID_BEAN, moves(walk_in_place_fast_right))
-			waitmovement(LOCALID_BEAN)
+			applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(walk_in_place_fast_right))
+			waitmovement(LOCALID_BEACHBOUND_DECAY_HARIKO)
 
 			speakername("Hariko")
 			msgbox(format(
-				"I might… have gotten ahead of myself. You agree though, right?\lGreat!"
+				"I may… have gotten ahead of myself.\p"
+				"You agree though, right?\nGreat!"
 			))
-
-			applymovement(LOCALID_BEAN, moves(walk_in_place_fast_up))
-			waitmovement(LOCALID_BEAN)
 	}
+
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(walk_in_place_fast_up))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_up))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
 
 	speakername("Hariko")
 	msgbox(format(
-		"Your name is Natsuki?\nYou are a friend of {PLAYER}'s too… That makes us friends as well, then!"
+		"Your name is Natsuki?\nYou are a friend of {PLAYER}'s too…\p"
+		"That makes us friends as well!"
 	))
+
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_in_place_fast_down))
+	waitmovement(LOCALID_BEACHBOUND_DECAY_NATSUKI)
 
 	speakername("Natsuki")
 	msgbox(format(
 		"Is… Is that so?"
 	))
-
-	applymovement(LOCALID_KOISHI, moves(walk_down))
-	waitmovement(0)
-
-	applymovement(LOCALID_BEAN, Common_Movement_FaceUp)
-	waitmovement(0)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
-	waitmovement(0)
-
-	delay(48)
-
-	speakername("Koishi")
-	msgbox(format(
-		"I couldn't help but overhear your conversation. You kids are way too young and inexperienced to be getting involved in this!\p"
-		"We know nothing about this Decay yet. We only know that it's dangerous.\p"
-		"We're already stretched thin as it is and we don't want to have to rescue you, so please let the grownups handle the issue."
-	))
 	closemessage
 
-	applymovement(LOCALID_KOISHI, moves(walk_up))
-	waitmovement(0)
+	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI_COLLEAGUE, moves(face_down, delay_16 * 2))
+	waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI_COLLEAGUE)
+	playse(SE_PIN)
+	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(face_down, delay_16, emote_exclamation_mark, delay_16 * 3))
+	waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
+	waitse
 
-	delay(48)
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, Common_Movement_FaceUp)
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, Common_Movement_FaceUp)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
 
-	applymovement(LOCALID_BEAN, moves(walk_in_place_fast_right))
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
-	waitmovement(LOCALID_BEAN)
+	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(walk_down * 2))
+
+	delay(16)
+
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_right, walk_down, face_up))
+
+	waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
+
+	speakername("Samurai")
+	msgbox(format(
+		"What's a bunch of children doing here?\p"
+		"You really shouldn't stay here.\nThe situation is under control,\lbut this is no place for you kids!"
+	))
+
+	mcdialogue(
+		"What's going on?",
+		"We can help!"
+	)
+	closemessage
+
+	switch (var(VAR_RESULT)) {
+		case 0:
+			speakername("Samurai")
+			msgbox(format(
+				"Nothing that concerns you!\n"
+				"Let the grownups handle this!\p"
+				"On you go!"
+			))
+			closemessage
+		case 1:
+			speakername("Samurai")
+			msgbox(format(
+				"Help? That's adorable."
+			))
+			closemessage
+
+			applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(walk_in_place_fast_up))
+			waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
+
+			speakername("Samurai")
+			msgbox(format(
+				"Hear that?\nKids here are saying they can help!\p"
+				"Hahaha!"
+			))
+			closemessage
+
+			applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(walk_in_place_fast_down, delay_16 * 2))
+			waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
+
+			speakername("Samurai")
+			msgbox(format(
+				"In all seriousness though, move along and let the grownups handle this!\p"
+				"On you go!"
+			))
+			closemessage
+	}
+
+	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(walk_up * 2, delay_16))
+	waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
+
+	speakername("Samurai")
+	msgbox(format(
+		"{FONT_SMALL}Mumble mumble…{PAUSE 32}\n"
+		"Psst psst…{PAUSE 32} Mumble mumble…{PAUSE 32}"
+	))
+
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(walk_in_place_fast_right))
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_in_place_fast_left))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left, delay_16 * 2, walk_in_place_fast_right))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
-	speakername("Hariko")
+	delay(48)
+
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
+
+	speakername("Samurai")
 	msgbox(format(
-		"This is unfair! How are we supposed to investigate if we're not allowed to?\p"
-		"Let's leave now."
+		"{FONT_SMALL}Mumble mumble…{PAUSE 32}\n"
+		"Psst psst…{PAUSE 32}{FONT_NORMAL} Mumble mumble…{PAUSE 32}"
+	))
+
+	waitmovement(0)
+
+	speakername("Samurai")
+	msgbox(format(
+		"…need more Samurai to secure the perimeter…\p"
+		"…started less than a week ago…\p"
+		"…spreading over several areas…"
 	))
 	closemessage
 
-	applymovement(LOCALID_BEAN, moves(walk_left * 8))
-	waitmovement(0)
-	removeobject(LOCALID_BEAN)
+	playse(SE_PIN)
+	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_exclamation_mark, delay_16 * 3, face_down))
+	waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
 
-	speakername("Natsuki")
+	speakername("Samurai")
 	msgbox(format(
-		"I'm leaving too"
+		"Are you kidding me?"
+	))
+
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_up))
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(face_up))
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(face_up))
+	waitmovement(0)
+
+	delay(32)
+
+	speakername("Samurai")
+	msgbox(format(
+		"Have your parents never taught you\nnot to eavesdrop?\p"
+		"Move along!"
 	))
 	closemessage
 	
-	applymovement(LOCALID_NATSUKI, moves(walk_left * 9))
-	waitmovement(0)
-	removeobject(LOCALID_NATSUKI)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_fast_left * 8))
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(walk_fast_left * 8))
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_fast_left * 8))
+	
+	delay(48)
+
+	warpsilent(MAP_KURA_TOWN, 52, 14)
 
 	release
 }
@@ -216,13 +326,16 @@ script BeachboundRoute_Decay_EventScript_BeanTrigger2StepsAway {
 	lock
 	
 	playse(SE_PIN)
-	applymovement(LOCALID_BEAN, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(face_right, emote_exclamation_mark, delay_16 * 3))
+
+	delay(24)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_left))
+
 	waitse
-	waitmovement(0)
+	waitmovement(LOCALID_BEACHBOUND_DECAY_HARIKO)
+
 	delay(48)
-	applymovement(LOCALID_BEAN, Common_Movement_FaceRight)
-	waitmovement(0)
-	
+
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left * 2))
 	waitmovement(0)
 
@@ -233,13 +346,16 @@ script BeachboundRoute_Decay_EventScript_BeanTrigger1StepAway {
 	lock
 	
 	playse(SE_PIN)
-	applymovement(LOCALID_BEAN, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(face_right, emote_exclamation_mark, delay_16 * 3))
+
+	delay(24)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_left))
+
 	waitse
-	waitmovement(0)
+	waitmovement(LOCALID_BEACHBOUND_DECAY_HARIKO)
+
 	delay(48)
-	applymovement(LOCALID_BEAN, Common_Movement_FaceRight)
-	waitmovement(0)
-	
+
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_left))
 	waitmovement(0)
 
@@ -250,14 +366,15 @@ script BeachboundRoute_Decay_EventScript_BeanTrigger {
 	lock
 
 	playse(SE_PIN)
-	applymovement(LOCALID_BEAN, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(face_right, emote_exclamation_mark, delay_16 * 3))
+
+	delay(24)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_left))
+
 	waitse
-	waitmovement(0)
+	waitmovement(LOCALID_BEACHBOUND_DECAY_HARIKO)
+
 	delay(48)
-	applymovement(LOCALID_BEAN, moves(walk_in_place_fast_right))
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
-	waitmovement(LOCALID_BEAN)
-	waitmovement(OBJ_EVENT_ID_PLAYER)
 
 	call(BeachboundRoute_Decay_EventScript_BeanDialogue)
 }
@@ -279,8 +396,8 @@ script BeachboundRoute_Decay_EventScript_Koishi {
 
 	speakername("Koishi")
 	msgbox(format(
-		"The situation is dire…\p"
-		"Please move along, and I repeat, do NOT get into trouble!"
+		"This is very worrying…\p"
+		"Please don't get into trouble, we're already spread thin as it is!"
 	))
 	closemessage
 
@@ -291,9 +408,9 @@ script BeachboundRoute_Decay_EventScript_SamuraiBeCarefulTrigger {
 	lock
 	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 3)
 
-	applymovement(LOCALID_SAMURAI, Common_Movement_WalkInPlaceFasterDown)
+	applymovement(LOCALID_BEACHBOUND_DECAY_FIRST_SAMURAI, Common_Movement_WalkInPlaceFasterDown)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp)
-	waitmovement(LOCALID_SAMURAI)
+	waitmovement(LOCALID_BEACHBOUND_DECAY_FIRST_SAMURAI)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
 	speakername("Samurai")

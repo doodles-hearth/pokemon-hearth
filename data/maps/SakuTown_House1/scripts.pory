@@ -68,7 +68,7 @@ script SakuTown_House1_EventScript_Tama {
 
 		speakername("Tama")
 		msgbox(format(
-			"I… I can't believe it!\nShe really does love me!\lThank you so much for this!"
+			"I… I can't believe it!\nShe really does love me!\pThank you so much for this!"
 		))
 		closemessage
 
@@ -89,8 +89,9 @@ script SakuTown_House1_EventScript_Tama {
 		speakername("Tama")
 		msgbox(format(
 			"Ahem…"
-			"“My dear Tama,\nIt pains me that you're not by my side each night.\lThe sweet chirping of birds pales in comparison to your hearty laugh.\p"
-			"I would move Heaven and Earth if it meant we could be together.\p"
+			"“My dear Tama,\nIt pains me that you aren't by my side each night.\l"
+			"The sweet chirping of birds pales in comparison to your hearty laugh.\l"
+			"I would move Heaven and Earth for us to be together.\l"
 			"If your heart still rings true for mine, will you meet me under pale moonlight, in the vale betwixt our homes?\p"
 			"Sincerely yours,\n-Ashii {EMOJI_HEART}”\p"
 			"… … … … … …\n… … … … … …"

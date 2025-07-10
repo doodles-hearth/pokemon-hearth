@@ -1150,6 +1150,12 @@
 	.byte \checkUnlocked
 	.endm
 
+	@ Checks if the specified field move has been unlocked.
+	.macro isfieldmoveunlocked fieldMove:req
+	.byte SCR_OP_ISFIELDMOVEUNLOCKED
+	.byte \fieldMove
+	.endm
+
 	@ Converts STR_VAR_1, STR_VAR_2, or STR_VAR_3 to its corresponding index into sScriptStringVars (0, 1, or 2).
 	@ If given anything else it will output it directly.
 	@ Note: Because the STR_VAR_# arguments given to this macro are not part of a processed string they are not
@@ -2860,14 +2866,6 @@
 	@ destroys a mugshot in the overworld, if there is one
 	.macro removefieldmugshot
 	callnative RemoveFieldMugshot
-	.endm
-
-	@ Checks if at least one Pokemon in the player's party knows the specified field move. If so, VAR_RESULT is set to the
-	@ (zero-indexed) slot number of the first Pokemon that knows the move. If not, VAR_RESULT is set to PARTY_SIZE.
-	@ VAR_0x8004 is also set to this Pokemon's species.
-	.macro checkmovefieldeffectflag fieldeffectflag:req
-	.byte 0xe9
-	.4byte \fieldeffectflag
 	.endm
 
 	@DebugPrintF macro

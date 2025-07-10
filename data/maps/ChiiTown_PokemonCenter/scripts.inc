@@ -126,8 +126,8 @@ ChiiTown_PokemonCenter_EventScript_Snorunt::
 ChiiTown_PokemonCenter_EventScript_NeedMarket::
 	lock
 	faceplayer
-	speakername ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_0
-	msgbox ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_1
+	speakername ChiiTown_PokemonCenter_EventScript_Mom_Text_0
+	msgbox ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_0
 	closemessage
 	release
 	end
@@ -243,7 +243,7 @@ ChiiTown_PokemonCenter_EventScript_Boy_Text_1:
 	.string "The music lady's nice!$"
 
 ChiiTown_PokemonCenter_EventScript_Mom_Text_0:
-	.string "Little boy's mom$"
+	.string "Woman$"
 
 ChiiTown_PokemonCenter_EventScript_Mom_Text_1:
 	.string "Traveling shamisen players take\n"
@@ -272,9 +272,6 @@ ChiiTown_PokemonCenter_EventScript_Snorunt_Text_0:
 	.string "Glaglaglaglagla!$"
 
 ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_0:
-	.string "Woman$"
-
-ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_1:
 	.string "Berries, ointments… Oh, right, I\n"
 	.string "should get a few more Poké Balls from\l"
 	.string "the town market!$"
@@ -283,10 +280,10 @@ ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_0:
 	.string "Talkative man$"
 
 ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_1:
-	.string "Isn't it amazing? This is one of the\n"
-	.string "many brand-new Pokémon refuges that\l"
-	.string "the Pokémon league council has\l"
-	.string "decided to build in towns across all\l"
+	.string "Isn't it amazing?\p"
+	.string "This is one of the many brand new\n"
+	.string "Pokémon refuges that the Pokémon\l"
+	.string "Council has built in towns across all\l"
 	.string "Toku!\p"
 	.string "With traveling alone becoming more\n"
 	.string "dangerous, many people are now\l"
@@ -295,10 +292,9 @@ ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_1:
 	.string "Towns were starting to be in dire need\n"
 	.string "of proper healing and rest spots for\l"
 	.string "Pokémon.\p"
-	.string "Oh, sorry, I'll get out of your hair\n"
-	.string "now. Talk to the nurse and her\l"
-	.string "Chansey whenever you want her to\l"
-	.string "heal your Pokémon!$"
+	.string "Sorry, I'll get out of your hair now.\n"
+	.string "Talk to the nurse and her Chansey\n"
+	.string "if you want her to heal your Pokémon!$"
 
 ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_0:
 	.string "Little Boy$"

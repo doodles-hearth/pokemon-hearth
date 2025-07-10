@@ -46,7 +46,6 @@
 #include "constants/items.h"
 #include "constants/shiny_vial.h"
 #include "constants/songs.h"
-#include "constants/map_types.h"
 
 static void SetUpItemUseCallback(u8);
 static void FieldCB_UseItemOnField(void);
@@ -901,7 +900,8 @@ static void Task_ShowTMHMContainedMessage(u8 taskId)
 {
     u32 moveId = ItemIdToBattleMoveId(gSpecialVar_ItemId);
     StringCopy(gStringVar1, GetMoveName(moveId));
-    if (gMovesInfo[moveId].fieldMoveFlags)
+    DebugPrintf("Move ID = %d, fieldMove = %d", moveId, gMovesInfo[moveId].fieldMove);
+    if (gMovesInfo[moveId].fieldMove)
     {
         StringExpandPlaceholders(gStringVar4, sText_TMHMContainedVarFieldMove);
     }
@@ -1567,7 +1567,7 @@ static bool32 IsValidLocationForVsSeeker(void)
 {
     u16 mapGroup = gSaveBlock1Ptr->location.mapGroup;
     u16 mapNum = gSaveBlock1Ptr->location.mapNum;
-    u16 mapType = gMapHeader.mapType;
+    enum MapType mapType = gMapHeader.mapType;
 
     typedef struct {
         u16 mapGroup;

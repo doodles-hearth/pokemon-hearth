@@ -475,14 +475,14 @@ SakuTown_PokemonCenter_EventScript_Nurse_Text_2:
 	.string "Come back soon!$"
 
 SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0:
-	.string "This Pokémon refuge is brand-new,\n"
+	.string "This Pokémon refuge is brand new,\n"
 	.string "courtesy of the Toku Council!\p"
 	.string "As you can see, it's still being built.\n"
 	.string "Watch out for the falling bricks, ha\l"
 	.string "ha, just kidding!\p"
-	.string "Seriously though, do watch out. We're\n"
-	.string "held responsible if anything happens\l"
-	.string "to you.$"
+	.string "Seriously though, do watch out.\n"
+	.string "We're held responsible if anything\l"
+	.string "happens to you.$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_0:
 	.string "I'm sorry, but there's nothing I can\n"
@@ -494,7 +494,7 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1:
 	.string "Farmer$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2:
-	.string "Y'have to do somet'in', miss!\n"
+	.string "Y'have to do som'thin', miss!\n"
 	.string "Cantcha see she's in pain?!$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_3:
@@ -507,8 +507,8 @@ FarmerGivesQuest_Text_0:
 	.string "The nurse 'ere said the newfangled\n"
 	.string "medical technology from the Toku\l"
 	.string "Council isn't here yet.\p"
-	.string "As such, Scyther can't be cured of\n"
-	.string "whatever's ailin' her.\p"
+	.string "Scyther can't be cured of whatever's\n"
+	.string "ailin' her.\p"
 	.string "Please! If you can spare some time,\n"
 	.string "help us find someone or something to\l"
 	.string "cure our girl!$"
@@ -523,7 +523,8 @@ HealedScytherScript_Text_1:
 	.string "I have this medicine.$"
 
 HealedScytherScript_Text_2:
-	.string "That's it! Please, Wielder, quickly!$"
+	.string "That's it!\n"
+	.string "Please, Wielder, quickly!$"
 
 HealedScytherScript_Text_3:
 	.string "{PLAYER} gave the Special Medicine.$"

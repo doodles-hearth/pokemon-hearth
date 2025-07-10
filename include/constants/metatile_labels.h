@@ -485,6 +485,7 @@
 #define METATILE_PorytilesPrimaryTutorial_Grass_TreeTopRight         0x016
 #define METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntrance     0x0D1
 #define METATILE_PorytilesPrimaryTutorial_TallGrass                  0x008
+#define METATILE_PorytilesPrimaryTutorial_TallGrassMiddle            0x1AD
 #define METATILE_PorytilesPrimaryTutorial_TallGrass_BigTreeLeft      0x153
 #define METATILE_PorytilesPrimaryTutorial_TallGrass_BigTreeRight     0x155
 #define METATILE_PorytilesPrimaryTutorial_TallGrass_BigTreeTop       0x154
@@ -521,6 +522,26 @@
 #define METATILE_SakuKura_ClosedDoorBottom  0x92C
 #define METATILE_SakuKura_ClosedDoorTop     0x924
 #define METATILE_SakuKura_Door              0x8C6
+
+// gTileset_ScenicRoute
+#define METATILE_ScenicRoute_BridgePassUnder_BottomLeft    0x830
+#define METATILE_ScenicRoute_BridgePassUnder_BottomMiddle  0x831
+#define METATILE_ScenicRoute_BridgePassUnder_BottomRight   0x832
+#define METATILE_ScenicRoute_BridgePassUnder_MiddleLeft    0x828
+#define METATILE_ScenicRoute_BridgePassUnder_MiddleMiddle  0x829
+#define METATILE_ScenicRoute_BridgePassUnder_MiddleRight   0x82A
+#define METATILE_ScenicRoute_BridgePassUnder_TopLeft       0x820
+#define METATILE_ScenicRoute_BridgePassUnder_TopMiddle     0x821
+#define METATILE_ScenicRoute_BridgePassUnder_TopRight      0x822
+#define METATILE_ScenicRoute_BridgeWalkOver_BottomLeft     0x812
+#define METATILE_ScenicRoute_BridgeWalkOver_BottomMiddle   0x813
+#define METATILE_ScenicRoute_BridgeWalkOver_BottomRight    0x814
+#define METATILE_ScenicRoute_BridgeWalkOver_MiddleLeft     0x80A
+#define METATILE_ScenicRoute_BridgeWalkOver_MiddleMiddle   0x80B
+#define METATILE_ScenicRoute_BridgeWalkOver_MiddleRight    0x80C
+#define METATILE_ScenicRoute_BridgeWalkOver_TopLeft        0x802
+#define METATILE_ScenicRoute_BridgeWalkOver_TopMiddle      0x803
+#define METATILE_ScenicRoute_BridgeWalkOver_TopRight       0x804
 
 // gTileset_SecretBase
 #define METATILE_SecretBase_AttractMat_BottomLeft       0x913

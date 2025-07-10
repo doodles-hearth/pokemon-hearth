@@ -363,7 +363,7 @@ static void SetCutGrassMetatile(s16 x, s16 y)
 
     switch (metatileId)
     {
-    case METATILE_PorytilesPrimaryTutorial_TallGrass:
+    case METATILE_PorytilesPrimaryTutorial_TallGrassMiddle:
     case METATILE_PorytilesPrimaryTutorial_TallGrass_Bottom:
     case METATILE_PorytilesPrimaryTutorial_TallGrass_BottomLeft:
     case METATILE_PorytilesPrimaryTutorial_TallGrass_BottomRight:

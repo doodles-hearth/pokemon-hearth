@@ -3,6 +3,8 @@
 #include "field_move.h"
 #include "fldeff.h"
 #include "fldeff_misc.h"
+#include "item.h"
+#include "move.h"
 #include "party_menu.h"
 #include "constants/field_move.h"
 #include "constants/moves.h"
@@ -10,42 +12,42 @@
 
 static bool32 IsFieldMoveUnlocked_Cut(void)
 {
-    return FlagGet(FLAG_BADGE01_GET);
+    return FlagGet(FLAG_BADGE01_GET) && CheckBagHasItem(ITEM_SECRET_CUT, 1);
 }
 
 static bool32 IsFieldMoveUnlocked_Flash(void)
 {
-    return FlagGet(FLAG_BADGE02_GET);
+    return FlagGet(FLAG_BADGE02_GET) && CheckBagHasItem(ITEM_SECRET_FLASH, 1);
 }
 
 static bool32 IsFieldMoveUnlocked_RockSmash(void)
 {
-    return FlagGet(FLAG_BADGE03_GET);
+    return FlagGet(FLAG_BADGE03_GET) && CheckBagHasItem(ITEM_SECRET_SMASH, 1);
 }
 
 static bool32 IsFieldMoveUnlocked_Strength(void)
 {
-    return FlagGet(FLAG_BADGE04_GET);
+    return FlagGet(FLAG_BADGE04_GET) && CheckBagHasItem(ITEM_SECRET_STRENGTH, 1);
 }
 
 static bool32 IsFieldMoveUnlocked_Surf(void)
 {
-    return FlagGet(FLAG_BADGE05_GET);
+    return FlagGet(FLAG_BADGE05_GET) && CheckBagHasItem(ITEM_SECRET_SURF, 1);
 }
 
 static bool32 IsFieldMoveUnlocked_Fly(void)
 {
-    return FlagGet(FLAG_BADGE06_GET);
+    return FlagGet(FLAG_BADGE06_GET) && CheckBagHasItem(ITEM_SECRET_FLY, 1);
 }
 
 static bool32 IsFieldMoveUnlocked_Dive(void)
 {
-    return FlagGet(FLAG_BADGE07_GET);
+    return FlagGet(FLAG_BADGE07_GET) && CheckBagHasItem(ITEM_SECRET_DIVE, 1);
 }
 
 static bool32 IsFieldMoveUnlocked_Waterfall(void)
 {
-    return FlagGet(FLAG_BADGE08_GET);
+    return FlagGet(FLAG_BADGE08_GET) && CheckBagHasItem(ITEM_SECRET_WATERFALL, 1);
 }
 
 static bool32 IsFieldMoveUnlocked_Teleport(void)
@@ -87,6 +89,14 @@ static bool32 IsFieldMoveUnlocked_Defog(void)
 
 const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
 {
+    [FIELD_MOVE_NONE] =
+    {
+        .fieldMoveFunc = SetUpFieldMove_Cut,
+        .isUnlockedFunc = IsFieldMoveUnlocked_Cut,
+        .moveID = MOVE_NONE,
+        .partyMsgID = PARTY_MSG_NOTHING_TO_CUT,
+    },
+
     [FIELD_MOVE_CUT] =
     {
         .fieldMoveFunc = SetUpFieldMove_Cut,
@@ -210,3 +220,75 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
 #endif
 
 };
+
+
+
+
+/**
+ * Checks if the given Pokémon knows at least one move of the given field move type.
+ *
+ * @param mon           Pokémon
+ * @param fieldMoveType field move type
+ * @return true if the Pokémon knows the field move, false otherwise
+ */
+bool32 KnowsFieldMove(struct Pokemon *mon, u32 fieldMoveType)
+{
+    if (GetMonData(mon, MON_DATA_IS_EGG)) {
+        return FALSE;
+    }
+
+    // Check the field move flags of each of the Pokémon's 4 moves
+    for (u32 iMoveSlot = 0; iMoveSlot < MAX_MON_MOVES; iMoveSlot += 1)
+    {
+        u16 move = GetMonData(mon, MON_DATA_MOVE1 + iMoveSlot, NULL);
+
+        if (move == MOVE_NONE)
+        {
+            break;
+        }
+
+        if (gMovesInfo[move].fieldMove == fieldMoveType)
+        {
+            return TRUE;
+        }
+    }
+    
+    return FALSE;
+}
+
+/**
+ * Checks if the given field move is known by at least one Pokémon other than the given one.
+ *
+ * @param fieldMoveType field move type
+ * @param monPartyIndex index of the selected Pokémon in the party
+ * @param mons          party mons
+ * @return true if the field move is known by another party mon, false otherwise
+ */
+bool32 IsFieldMoveKnownByAnotherPartyMon(u32 fieldMoveType, u32 monPartyIndex, struct Pokemon * mons)
+{
+    bool32 otherMonAlsoKnowsFieldMove = FALSE;
+    // For each of the other mons in the party
+    for (u32 j = 0; j < PARTY_SIZE; j += 1)
+    {
+        if (
+            monPartyIndex != j
+            && GetMonData(&mons[j], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE
+            && GetMonData(&mons[j], MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
+        )
+        {
+            // If the mon knows the field move, we're good
+            if (KnowsFieldMove(&mons[j], fieldMoveType))
+            {
+                otherMonAlsoKnowsFieldMove = TRUE;
+                break;
+            }
+        }
+    }
+    
+    // No other mon knows this field move, so the move has to stay
+    if (!otherMonAlsoKnowsFieldMove) {
+        return FALSE;
+    }
+
+    return TRUE;
+}

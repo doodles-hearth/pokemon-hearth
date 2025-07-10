@@ -20,7 +20,6 @@
 #include "event_scripts.h"
 #include "fake_rtc.h"
 #include "field_message_box.h"
-#include "field_moves.h"
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
 #include "field_specials.h"
@@ -2402,7 +2401,6 @@ bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
 {
     enum FieldMove fieldMove = ScriptReadByte(ctx);
     bool32 doUnlockedCheck = ScriptReadByte(ctx);
-    u16 move;
 
     Script_RequestEffects(SCREFF_V1);
 
@@ -2410,21 +2408,42 @@ bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
     if (doUnlockedCheck && !IsFieldMoveUnlocked(fieldMove))
         return FALSE;
 
-    move = FieldMove_GetMoveId(fieldMove);
     for (u32 i = 0; i < PARTY_SIZE; i++)
     {
         u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
         if (!species)
             break;
-            // TODO EVA what does this if mean
-        if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && CanTeachMove(&gPlayerParty[i], move) != 1)
+
+        for (u32 j = 0; j < MAX_MON_MOVES; j++)
         {
-            gSpecialVar_Result = i;
-            gSpecialVar_0x8004 = species;
-            break;
+            u16 moveId = GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j, NULL);
+            if (
+                !GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG)
+                && gMovesInfo[moveId].fieldMove == fieldMove
+            )
+            {
+                gSpecialVar_Result = i;
+                gSpecialVar_0x8004 = species;
+                gSpecialVar_0x8005 = moveId;
+                break;
+            }
         }
+
+        if (gSpecialVar_Result != PARTY_SIZE)  // If a match was found, exit the outer loop
+            break;
     }
 
+    return FALSE;
+}
+
+bool8 ScrCmd_isfieldmoveunlocked(struct ScriptContext *ctx)
+{
+    enum FieldMove fieldMove = ScriptReadByte(ctx);
+
+    Script_RequestEffects(SCREFF_V1);
+
+    gSpecialVar_Result = IsFieldMoveUnlocked(fieldMove);
+    
     return FALSE;
 }
 
@@ -3131,7 +3150,7 @@ static void CloseRandomDexWindow(void)
 bool8 ScrCmd_buffertrainerclassname(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
-    u16 trainerClassId = VarGet(ScriptReadHalfword(ctx));
+    enum TrainerClassID trainerClassId = VarGet(ScriptReadHalfword(ctx));
 
     Script_RequestEffects(SCREFF_V1);
 
@@ -3142,7 +3161,7 @@ bool8 ScrCmd_buffertrainerclassname(struct ScriptContext *ctx)
 bool8 ScrCmd_buffertrainername(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
-    u16 trainerClassId = VarGet(ScriptReadHalfword(ctx));
+    enum TrainerClassID trainerClassId = VarGet(ScriptReadHalfword(ctx));
 
     Script_RequestEffects(SCREFF_V1);
 
@@ -3490,39 +3509,6 @@ bool8 ScrCmd_subquestmenu(struct ScriptContext *ctx)
     }
 
     return TRUE;
-}
-
-u8 ScrCmd_checkmovefieldeffectflag(struct ScriptContext *ctx)
-{
-    u8 i;
-    u32 fieldeffectflag = ScriptReadWord(ctx);    
-    gSpecialVar_Result = PARTY_SIZE;
-
-    if (!FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldeffectflag)].grantFlag))
-    {
-        return FALSE;
-    }
-
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
-        if (!species)
-            break;
-        for (u8 j = 0; j < MAX_MON_MOVES; j++)
-        {
-            u16 moveId = GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j, NULL);
-            if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && gMovesInfo[moveId].fieldMoveFlags & fieldeffectflag)
-            {
-                gSpecialVar_Result = i;
-                gSpecialVar_0x8004 = species;
-                gSpecialVar_0x8005 = moveId;
-                break;
-            }
-        }
-        if (gSpecialVar_Result != PARTY_SIZE)  // If a match was found, exit the outer loop
-            break;
-    }
-    return FALSE;
 }
 
 bool8 ScrCmd_debugprint(struct ScriptContext *ctx)

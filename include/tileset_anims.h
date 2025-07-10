@@ -39,5 +39,6 @@ void InitTilesetAnim_Building_Generic(void);
 void InitTilesetAnim_SakuKura(void);
 void InitTilesetAnim_Maguro(void);
 void InitTilesetAnim_Yifu(void);
+void InitTilesetAnim_Decay(void);
 
 #endif // GUARD_TILESET_ANIMS_H

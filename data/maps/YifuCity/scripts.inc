@@ -680,6 +680,30 @@ YifuCity_EventScript_ChimechoLady::
 	end
 
 
+YifuCity_EventScript_ChefOnBreak::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_ChefOnBreak_Text_0
+	msgbox YifuCity_EventScript_ChefOnBreak_Text_1
+	closemessage
+	setnamedmon SPECIES_CHIMECHO
+	setdescribedmon SPECIES_CHIMECHO
+	release
+	end
+
+
+YifuCity_EventScript_Nacli::
+	lock
+	faceplayer
+	setspeakertomonname SPECIES_NACLI
+	msgbox YifuCity_EventScript_Nacli_Text_0
+	setseenmon SPECIES_NACLI
+	playmoncry SPECIES_NACLI, CRY_MODE_NORMAL
+	waitmoncry
+	release
+	end
+
+
 YifuCity_EventScript_NameRaterSign::
 	msgbox YifuCity_EventScript_NameRaterSign_Text_0, MSGBOX_SIGN
 	return
@@ -1314,6 +1338,18 @@ YifuCity_EventScript_ChimechoLady_Text_1:
 	.string "Chimecho! They are sacred, and\l"
 	.string "mistreating one would surely bring\l"
 	.string "you bad luck.$"
+
+YifuCity_EventScript_ChefOnBreak_Text_0:
+	.string "Cook$"
+
+YifuCity_EventScript_ChefOnBreak_Text_1:
+	.string "Huff…\n"
+	.string "We're on break right now.\p"
+	.string "The food service industry is truly\n"
+	.string "merciless.$"
+
+YifuCity_EventScript_Nacli_Text_0:
+	.string "Xrckl…$"
 
 YifuCity_EventScript_NameRaterSign_Text_0:
 	.string "What's In A Name\n"

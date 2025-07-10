@@ -316,7 +316,8 @@ const u32 gObjectEventPic_Lunchbox[] = INCBIN_U32("graphics/object_events/pics/m
 // 5-11: foliage
 // 12: bark grey
 // 13: darkest green
-// 14-15: free real estate
+// 14: decay
+// 15: free real estate
 const u16 gObjectEventPal_HearthOwFoliage[] = INCBIN_U16("graphics/object_events/palettes/hearth_ow_foliage.gbapal");
 // 0: Transparency
 // 1-3: Reds

@@ -14,7 +14,7 @@
 #include "decompress.h"
 #include "dynamic_placeholder_text_util.h"
 #include "event_data.h"
-#include "field_moves.h"
+#include "field_move.h"
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "international_string_util.h"
@@ -2626,24 +2626,24 @@ static bool8 CanReplaceMove(void)
     
     struct Pokemon *mons = sMonSummaryScreen->monList.mons;
     u32 oldMove = sMonSummaryScreen->summary.moves[sMonSummaryScreen->firstMoveIndex];
-    u32 fieldMoveType = gMovesInfo[oldMove].fieldMoveFlags;
+    u32 fieldMoveType = gMovesInfo[oldMove].fieldMove;
     
     // If the new move is of the same field move type, we're good
     if (
         !fieldMoveType
-        || gMovesInfo[sMonSummaryScreen->newMove].fieldMoveFlags == fieldMoveType
+        || gMovesInfo[sMonSummaryScreen->newMove].fieldMove == fieldMoveType
     ) {
         return TRUE;
     }
 
     // If that move is a field move that the player can use in the field
-    if (FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag))
+    if (IsFieldMoveUnlocked(fieldMoveType))
     {
         bool32 canForgetFieldMove = TRUE;
 
         // Can't forget Surf while surfing or diving, nor Dive while diving!
         if (
-            (fieldMoveType == IS_FIELD_MOVE_SURF || fieldMoveType == IS_FIELD_MOVE_DIVE)
+            (fieldMoveType == FIELD_MOVE_SURF || fieldMoveType == FIELD_MOVE_DIVE)
             && MetatileBehavior_IsSurfableWaterOrUnderwater(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior)
         )
         {
@@ -2653,7 +2653,7 @@ static bool8 CanReplaceMove(void)
             }
             else
             {
-                canForgetFieldMove = fieldMoveType != IS_FIELD_MOVE_SURF;
+                canForgetFieldMove = fieldMoveType != FIELD_MOVE_SURF;
             }
         }
 
@@ -2666,7 +2666,7 @@ static bool8 CanReplaceMove(void)
                 {
                     u32 move = sMonSummaryScreen->summary.moves[i];
 
-                    if (gMovesInfo[move].fieldMoveFlags & fieldMoveType)
+                    if (gMovesInfo[move].fieldMove == fieldMoveType)
                     {
                         return TRUE;
                     }
@@ -4337,10 +4337,10 @@ static void SetMonTypeIcons(void)
     }
     else
     {
-        SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[0], 120, 48, SPRITE_ARR_ID_TYPE);
-        if (gSpeciesInfo[summary->species].types[0] != gSpeciesInfo[summary->species].types[1])
+        SetTypeSpritePosAndPal(GetSpeciesType(summary->species, 0), 120, 48, SPRITE_ARR_ID_TYPE);
+        if (GetSpeciesType(summary->species, 0) != GetSpeciesType(summary->species, 1))
         {
-            SetTypeSpritePosAndPal(gSpeciesInfo[summary->species].types[1], 160, 48, SPRITE_ARR_ID_TYPE + 1);
+            SetTypeSpritePosAndPal(GetSpeciesType(summary->species, 1), 160, 48, SPRITE_ARR_ID_TYPE + 1);
             SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, FALSE);
         }
         else

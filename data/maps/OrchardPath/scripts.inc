@@ -90,12 +90,7 @@ OrchardPath_Samurai_KnowAboutDecay::
 	waitse
 	speakername OrchardPath_EventScript_Samurai_Text_0
 	msgbox OrchardPath_Samurai_KnowAboutDecay_Text_0
-	call OrchardPath_SetVarDecay
-	return
-
-
-OrchardPath_SetVarDecay::
-	setvar VAR_DECAY_BEACHBOUND_ROUTE, 6
+	setvar VAR_DECAY_BEACHBOUND_ROUTE, 7
 	return
 
 
@@ -113,7 +108,9 @@ OrchardPath_EventScript_Umbreon::
 
 OrchardPath_EventScript_RockSmash::
 	lock
-	goto_if_set FLAG_RECEIVED_HM_ROCK_SMASH, OrchardPath_EventScript_RockSmash_2
+	checkitem ITEM_SECRET_SMASH
+	compare VAR_RESULT, 0
+	goto_if_ne OrchardPath_EventScript_RockSmash_2
 	call OrchardPath_EventScript_RockSmashRegular
 OrchardPath_EventScript_RockSmash_1:
 	release
@@ -257,7 +254,6 @@ OrchardPath_EventScript_RockSmashRegular_5:
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_9
 	closemessage
 	giveitem ITEM_TM_PEBBLE_CRUSH
-	setflag FLAG_RECEIVED_HM_ROCK_SMASH
 	setflag FLAG_TEMP_4
 	return
 

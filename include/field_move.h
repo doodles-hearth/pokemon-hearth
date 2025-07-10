@@ -12,6 +12,9 @@ struct FieldMoveInfo
     u8 partyMsgID;
 };
 
+bool32 KnowsFieldMove(struct Pokemon *mon, u32 fieldMoveType);
+bool32 IsFieldMoveKnownByAnotherPartyMon(u32 fieldMoveType, u32 monPartyIndex, struct Pokemon * mons);
+
 extern const struct FieldMoveInfo gFieldMoveInfo[];
 
 static inline bool32 SetUpFieldMove(enum FieldMove fieldMove)

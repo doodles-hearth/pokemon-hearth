@@ -131,9 +131,10 @@ struct MoveInfo
     bool32 parentalBondBanned:1;
     bool32 skyBattleBanned:1;
     bool32 sketchBanned:1;
+    bool32 dampBanned:1;
     //Other
     bool32 validApprenticeMove:1;
-    u32 padding:7;
+    u32 padding:6;
     // end of word
 
     union {
@@ -147,6 +148,7 @@ struct MoveInfo
         u32 holdEffect;
         u32 type;
         u32 fixedDamage;
+        u32 damagePercentage;
         u32 absorbPercentage;
         u32 recoilPercentage;
         u32 nonVolatileStatus;
@@ -161,7 +163,7 @@ struct MoveInfo
     u8 contestComboStarterId;
     u8 contestComboMoves[MAX_COMBO_MOVES];
     const u8 *battleAnimScript;
-    u32 fieldMoveFlags;
+    u32 fieldMove;
 };
 
 extern const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL];
@@ -474,6 +476,11 @@ static inline bool32 IsMoveSketchBanned(u32 moveId)
     return gMovesInfo[SanitizeMoveId(moveId)].sketchBanned;
 }
 
+static inline bool32 IsMoveDampBanned(u32 moveId)
+{
+    return gMovesInfo[SanitizeMoveId(moveId)].dampBanned;
+}
+
 static inline bool32 IsValidApprenticeMove(u32 moveId)
 {
     return gMovesInfo[SanitizeMoveId(moveId)].validApprenticeMove;
@@ -494,7 +501,7 @@ static inline u32 GetMoveTwoTurnAttackWeather(u32 moveId)
     return gMovesInfo[SanitizeMoveId(moveId)].argument.twoTurnAttack.status;
 }
 
-static inline u32 GetMoveProtectMethod(u32 moveId)
+static inline enum ProtectMethod GetMoveProtectMethod(u32 moveId)
 {
     return gMovesInfo[SanitizeMoveId(moveId)].argument.protectMethod;
 }
@@ -519,7 +526,7 @@ static inline u32 GetMoveArgType(u32 moveId)
     return gMovesInfo[SanitizeMoveId(moveId)].argument.type;
 }
 
-static inline u32 GetMoveFixedDamage(u32 moveId)
+static inline u32 GetMoveFixedHPDamage(u32 moveId)
 {
     return gMovesInfo[SanitizeMoveId(moveId)].argument.fixedDamage;
 }
@@ -549,6 +556,11 @@ static inline u32 GetMoveNonVolatileStatus(u32 move)
     default:
         return MOVE_EFFECT_NONE;
     }
+}
+
+static inline u32 GetMoveDamagePercentage(u32 move)
+{
+    return gMovesInfo[SanitizeMoveId(move)].argument.damagePercentage;
 }
 
 static inline const struct AdditionalEffect *GetMoveAdditionalEffectById(u32 moveId, u32 effect)

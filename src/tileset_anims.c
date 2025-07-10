@@ -1225,6 +1225,8 @@ static void BlendAnimPalette_BattleDome_FloorLightsNoBlend(u16 timer)
 
 // Custom shit
 
+#define START_OF_SECONDARY_TILESET_EXTERIOR 0x200
+
 const u16 gTilesetAnims_PorytilesPrimaryTutorial_Sea_Frame0[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/anim/sea/00.4bpp");
 const u16 gTilesetAnims_PorytilesPrimaryTutorial_Sea_Frame1[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/anim/sea/01.4bpp");
 const u16 gTilesetAnims_PorytilesPrimaryTutorial_Sea_Frame2[] = INCBIN_U16("data/tilesets/primary/porytiles_primary_tutorial/anim/sea/02.4bpp");
@@ -1405,7 +1407,7 @@ void InitTilesetAnim_SakuKura(void)
 
 // MAGURO
 
-#define STARTING_TILE_FISH 0x200
+#define STARTING_TILE_FISH START_OF_SECONDARY_TILESET_EXTERIOR
 #define NB_TILES_FISH 12
 
 const u16 gTilesetAnims_gTilesetAnims_Maguro_Fish_Frame0[] = INCBIN_U16("data/tilesets/secondary/maguro/anim/fish/00.4bpp");
@@ -1446,7 +1448,7 @@ void InitTilesetAnim_Maguro(void)
 
 // YIFU
 
-#define STARTING_TILE_CHIME 0x200
+#define STARTING_TILE_CHIME START_OF_SECONDARY_TILESET_EXTERIOR
 #define NB_TILES_CHIME 4
 
 const u16 gTilesetAnims_gTilesetAnims_Yifu_Chime_Frame0[] = INCBIN_U16("data/tilesets/secondary/yifu/anim/chime/00.4bpp");
@@ -1478,6 +1480,39 @@ void InitTilesetAnim_Yifu(void)
     sSecondaryTilesetAnimCounter = 0;
     sSecondaryTilesetAnimCounterMax = 256;
     sSecondaryTilesetAnimCallback = TilesetAnim_Yifu;
+}
+
+// DECAY
+
+#define STARTING_TILE_DECAY_PUDDLE START_OF_SECONDARY_TILESET_EXTERIOR
+#define NB_TILES_DECAY_PUDDLE      8
+
+const u16 gTilesetAnims_gTilesetAnims_Decay_DecayPuddle_Frame0[] = INCBIN_U16("data/tilesets/secondary/decay/anim/decay_puddle/00.4bpp");
+const u16 gTilesetAnims_gTilesetAnims_Decay_DecayPuddle_Frame1[] = INCBIN_U16("data/tilesets/secondary/decay/anim/decay_puddle/01.4bpp");
+
+const u16 *const gTilesetAnims_Decay_DecayPuddle[] = {
+    gTilesetAnims_gTilesetAnims_Decay_DecayPuddle_Frame0,
+    gTilesetAnims_gTilesetAnims_Decay_DecayPuddle_Frame1
+};
+
+static void QueueAnimTiles_Decay_DecayPuddle(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_Decay_DecayPuddle);
+    AppendTilesetAnimToBuffer(gTilesetAnims_Decay_DecayPuddle[i], STARTING_TILE_DECAY_PUDDLE, NB_TILES_DECAY_PUDDLE * TILE_SIZE_4BPP);
+}
+
+static void TilesetAnim_Decay(u16 timer)
+{
+    if (timer % 32 == 0) {
+        QueueAnimTiles_Decay_DecayPuddle(timer / 32);
+    }
+}
+
+void InitTilesetAnim_Decay(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 256;
+    sSecondaryTilesetAnimCallback = TilesetAnim_Decay;
 }
 
 // BUILDING

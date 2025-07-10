@@ -1070,7 +1070,7 @@ const struct Tileset gTileset_Decay =
     .palettes = gTilesetPalettes_Decay,
     .metatiles = gMetatiles_Decay,
     .metatileAttributes = gMetatileAttributes_Decay,
-    .callback = NULL,
+    .callback = InitTilesetAnim_Decay,
 };
 
 const struct Tileset gTileset_OpenSea =
@@ -1224,5 +1224,16 @@ const struct Tileset gTileset_BrownCave =
     .palettes = gTilesetPalettes_BrownCave,
     .metatiles = gMetatiles_BrownCave,
     .metatileAttributes = gMetatileAttributes_BrownCave,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_ScenicRoute =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_ScenicRoute,
+    .palettes = gTilesetPalettes_ScenicRoute,
+    .metatiles = gMetatiles_ScenicRoute,
+    .metatileAttributes = gMetatileAttributes_ScenicRoute,
     .callback = NULL,
 };

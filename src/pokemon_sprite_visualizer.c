@@ -39,6 +39,7 @@
 #include "constants/global.h"
 #include "constants/items.h"
 #include "constants/event_objects.h"
+#include "constants/map_types.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
@@ -922,7 +923,7 @@ static void LoadAndCreateEnemyShadowSpriteCustom(struct PokemonSpriteVisualizer 
 }
 
 //Battle background functions
-static void LoadBattleBg(u8 battleBgType, u8 battleEnvironment)
+static void LoadBattleBg(u8 battleBgType, enum BattleEnvironment battleEnvironment)
 {
     switch (battleBgType)
     {

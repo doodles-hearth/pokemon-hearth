@@ -128,11 +128,11 @@
 #define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
 #define FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE 0x68
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
-#define FLAG_RECEIVED_HM_STRENGTH            0x6A
-#define FLAG_RECEIVED_HM_ROCK_SMASH          0x6B
+#define FLAG_UNUSED_0x6A                     0x6A // Unused
+#define FLAG_UNUSED_0x6B                     0x6B // Unused
 #define FLAG_WHITEOUT_TO_LAVARIDGE           0x6C // Set after defeating Flannery, so the player cant white out from poison before receiving Go Goggles
-#define FLAG_RECEIVED_HM_FLASH               0x6D
-#define FLAG_RECEIVED_HM_FLY                 0x6E
+#define FLAG_UNUSED_0x6D                     0x6D // Unused
+#define FLAG_UNUSED_0x6E                     0x6E // Unused
 #define FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT  0x6F
 #define FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE  0x70
 #define FLAG_UNUSED_RS_LEGENDARY_BATTLE_DONE 0x71 // Unused Flag. Used in R/S to indicate whether player defeated or caught Groudon/Kyogre in Cave of Origin.
@@ -146,8 +146,8 @@
 
 #define FLAG_LANDMARK_MIRAGE_TOWER           0x78
 #define FLAG_RECEIVED_TM_BRICK_BREAK         0x79
-#define FLAG_RECEIVED_HM_SURF                0x7A
-#define FLAG_RECEIVED_HM_DIVE                0x7B
+#define FLAG_UNUSED_0x7A                     0x7A // Unused
+#define FLAG_UNUSED_0x7B                     0x7B // Unused
 #define FLAG_REGISTER_RIVAL_POKENAV          0x7C
 #define FLAG_DEFEATED_RIVAL_ROUTE_104        0x7D
 #define FLAG_DEFEATED_WALLY_VICTORY_ROAD     0x7E
@@ -161,7 +161,7 @@
 #define FLAG_PENDING_DAYCARE_EGG             0x86
 #define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87
 #define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 // Set after defeating Wally outside Mauville Gym. Will activate a call later to register Wally.
-#define FLAG_RECEIVED_HM_CUT                 0x89
+#define FLAG_UNUSED_0x89                     0x89 // Unused
 #define FLAG_SCOTT_CALL_FORTREE_GYM          0x8A // Triggers call from Scott after defeating Winona
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
 #define FLAG_RECEIVED_6_SODA_POP             0x8C
@@ -340,7 +340,7 @@
 #define FLAG_MET_MAXIE_SOOTOPOLIS            0x135
 #define FLAG_MET_SCOTT_RUSTBORO              0x136
 #define FLAG_WALLACE_GOES_TO_SKY_PILLAR      0x137 // Set after speaking to Wallace within the Cave of Origin.
-#define FLAG_RECEIVED_HM_WATERFALL           0x138
+#define FLAG_UNUSED_0x138                    0x138 // Unused
 #define FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS    0x139
 #define FLAG_RECEIVED_AURORA_TICKET          0x13A
 #define FLAG_RECEIVED_MYSTIC_TICKET          0x13B

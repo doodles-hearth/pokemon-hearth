@@ -21,16 +21,6 @@
 
 	.section script_data, "aw", %progbits
 
-BattleScript_DamageToQuarterTargetHP::
-	attackcanceler
-	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	attackstring
-	ppreduce
-	typecalc
-	clearmoveresultflags MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE
-	damagetoquartertargethp
-	goto BattleScript_HitFromAtkAnimation
-
 BattleScript_EffectFickleBeam::
 	attackcanceler
 	attackstring
@@ -747,7 +737,7 @@ BattleScript_SkyDropChangedTarget:
 BattleScript_SkyDropFlyingConfuseLock:
 	seteffectprimary MOVE_EFFECT_CONFUSION
 BattleScript_SkyDropFlyingAlreadyConfused:
-	clearstatusfromeffect BS_TARGET, MOVE_EFFECT_THRASH
+	clearstatus2 BS_TARGET, STATUS2_LOCK_CONFUSE
 	jumpifstatus2 BS_TARGET, STATUS2_CONFUSION, BattleScript_MoveEnd
 	setbyte BS_ATTACKER, BS_TARGET
 	goto BattleScript_ThrashConfuses
@@ -1104,13 +1094,6 @@ BattleScript_JungleHealingTryRestoreAlly:
 	jumpifnoally BS_TARGET, BattleScript_MoveEnd
 	setallytonexttarget JungleHealing_RestoreTargetHealth
 	goto BattleScript_MoveEnd
-
-BattleScript_EffectRelicSong::
-	call BattleScript_EffectHit_Ret
-	tryfaintmon BS_TARGET
-	moveendall
-	tryrelicsong
-	end
 
 BattleScript_EffectAllySwitch::
 	attackcanceler
@@ -3250,7 +3233,6 @@ BattleScript_EffectBide::
 	ppreduce
 	attackanimation
 	waitanimation
-	orword gHitMarker, HITMARKER_CHARGING
 	setbide
 	goto BattleScript_MoveEnd
 
@@ -3580,7 +3562,7 @@ BattleScript_EffectGeomancy::
 BattleScript_GeomancySecondTurn:
 	attackcanceler
 	setbyte sB_ANIM_TURN, 1
-	clearstatusfromeffect BS_ATTACKER, MOVE_EFFECT_CHARGING
+	clearstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS
 	orword gHitMarker, HITMARKER_NO_PPDEDUCT
 	attackstring
 	jumpifstat BS_ATTACKER, CMP_LESS_THAN, STAT_SPATK, MAX_STAT_STAGE, BattleScript_GeomancyDoMoveAnim
@@ -3625,7 +3607,6 @@ BattleScript_FirstChargingTurn::
 	ppreduce
 BattleScript_FirstChargingTurnAfterAttackString:
 	setsemiinvulnerablebit @ only for moves with EFFECT_SEMI_INVULNERABLE/EFFECT_SKY_DROP
-	orword gHitMarker, HITMARKER_CHARGING
 	seteffectprimary MOVE_EFFECT_CHARGING | MOVE_EFFECT_AFFECTS_USER
 	twoturnmoveschargestringandanimation
 	setadditionaleffects @ only onChargeTurnOnly effects will work here
@@ -3652,7 +3633,7 @@ BattleScript_TwoTurnMovesSecondTurn::
 BattleScript_TwoTurnMovesSecondTurnRet:
 	setbyte sB_ANIM_TURN, 1
 	setbyte sB_ANIM_TARGETS_HIT, 0
-	clearstatusfromeffect BS_ATTACKER, MOVE_EFFECT_CHARGING
+	clearstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS
 	clearsemiinvulnerablebit @ only for moves with EFFECT_SEMI_INVULNERABLE/EFFECT_SKY_DROP
 	return
 
@@ -3692,7 +3673,7 @@ BattleScript_EffectRage::
 	seteffectprimary MOVE_EFFECT_RAGE
 	goto BattleScript_HitFromAtkString
 BattleScript_RageMiss::
-	clearstatusfromeffect BS_ATTACKER, MOVE_EFFECT_RAGE
+	clearstatus2 BS_ATTACKER, STATUS2_RAGE
 	goto BattleScript_PrintMoveMissed
 
 BattleScript_EffectMimic::
@@ -4725,7 +4706,7 @@ BattleScript_EffectNonVolatileStatus::
 	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
 	attackanimation
 	waitanimation
-	setnonvolatilestatus
+	setnonvolatilestatus TRIGGER_ON_MOVE
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
@@ -5439,23 +5420,23 @@ BattleScript_LocalBattleLost::
 	jumpifnowhiteout BattleScript_LocalBattleLostEnd_
 BattleScript_LocalBattleLostPrintWhiteOut::
 	getmoneyreward
-.if B_WHITEOUT_MONEY >= GEN_4
-	jumpifbattletype BATTLE_TYPE_TRAINER, BattleScript_LocalBattleLostEnd
 	printstring STRINGID_PLAYERWHITEOUT
 	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_PLAYERWHITEOUT2
+.if B_WHITEOUT_MONEY >= GEN_4
+	jumpifbattletype BATTLE_TYPE_TRAINER, BattleScript_LocalBattleLostEnd
+	printstring STRINGID_PLAYERWHITEOUT2_WILD
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_PLAYERWHITEOUT3
 	waitmessage B_WAIT_TIME_LONG
 	end2
 BattleScript_LocalBattleLostEnd::
-	printstring STRINGID_PLAYERLOSTTOENEMYTRAINER
+	printstring STRINGID_PLAYERWHITEOUT2_TRAINER
 	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_PLAYERPAIDPRIZEMONEY
+	printstring STRINGID_PLAYERWHITEOUT3
 	waitmessage B_WAIT_TIME_LONG
 	end2
 .else
-	printstring STRINGID_PLAYERWHITEOUT
-	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_PLAYERWHITEOUT2
+	printstring STRINGID_PLAYERWHITEOUT3
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_LocalBattleLostEnd::
 	end2
@@ -5838,7 +5819,7 @@ BattleScript_BideStoringEnergy::
 
 BattleScript_BideAttack::
 	attackcanceler
-	clearstatusfromeffect BS_ATTACKER, MOVE_EFFECT_CHARGING
+	clearstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS
 	printstring STRINGID_PKMNUNLEASHEDENERGY
 	waitmessage B_WAIT_TIME_LONG
 	accuracycheck BattleScript_MoveMissed, ACC_CURR_MOVE
@@ -5861,7 +5842,7 @@ BattleScript_BideAttack::
 
 BattleScript_BideNoEnergyToAttack::
 	attackcanceler
-	clearstatusfromeffect BS_ATTACKER, MOVE_EFFECT_CHARGING
+	clearstatus2 BS_ATTACKER, STATUS2_MULTIPLETURNS
 	printstring STRINGID_PKMNUNLEASHEDENERGY
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_ButItFailed
@@ -8296,7 +8277,9 @@ BattleScript_WanderingSpiritActivates::
 	printstring STRINGID_SWAPPEDABILITIES
 	waitmessage B_WAIT_TIME_LONG
 	switchinabilities BS_ATTACKER
+	jumpiffainted BS_TARGET, TRUE, BattleScript_WanderingSpiritActivatesRet
 	switchinabilities BS_TARGET
+BattleScript_WanderingSpiritActivatesRet:
 	return
 
 BattleScript_TargetsStatWasMaxedOut::
@@ -8506,9 +8489,9 @@ BattleScript_KingsShieldEffect::
 	return
 
 BattleScript_BanefulBunkerEffect::
-	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_STATUS_ABILITY_EFFECT | HITMARKER_PASSIVE_DAMAGE
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE | HITMARKER_PASSIVE_DAMAGE
 	clearmoveresultflags MOVE_RESULT_NO_EFFECT
-	seteffectsecondary
+	setnonvolatilestatus TRIGGER_ON_ATTACKER
 	setmoveresultflags MOVE_RESULT_MISSED
 	return
 
@@ -8531,7 +8514,7 @@ BattleScript_GooeyActivates::
 BattleScript_AbilityStatusEffect::
 	waitstate
 	call BattleScript_AbilityPopUp
-	seteffectsecondary
+	setnonvolatilestatus TRIGGER_ON_ABILITY
 	return
 
 BattleScript_BattleBondActivatesOnMoveEndAttacker::
@@ -8579,7 +8562,7 @@ BattleScript_DancerActivates::
 BattleScript_SynchronizeActivates::
 	waitstate
 	call BattleScript_AbilityPopUp
-	seteffectprimary
+	setnonvolatilestatus TRIGGER_ON_ABILITY
 	return
 
 BattleScript_NoItemSteal::
@@ -10074,9 +10057,9 @@ BattleScript_QuestionForfeitBattle::
 BattleScript_ForfeitBattleGaveMoney::
 	getmoneyreward
 .if B_WHITEOUT_MONEY >= GEN_4
-	printstring STRINGID_FORFEITBATTLEGAVEMONEY
+	printstring STRINGID_PLAYERWHITEOUT2_TRAINER
 .else
-	printstring STRINGID_PLAYERWHITEOUT2
+	printstring STRINGID_PLAYERWHITEOUT3
 .endif
 	waitmessage B_WAIT_TIME_LONG
 	end2

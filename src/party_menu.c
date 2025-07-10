@@ -18,7 +18,6 @@
 #include "evolution_scene.h"
 #include "field_control_avatar.h"
 #include "field_effect.h"
-#include "field_moves.h"
 #include "field_move.h"
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
@@ -138,37 +137,6 @@ struct FieldMoveMenuItem
     u32 partyMenuItem;
 };
 
-const struct FieldMoveMenuItem gFieldMoveTypeMenuItem[] = 
-{
-    {IS_FIELD_MOVE_CUT, FIELD_MOVE_CUT},
-    {IS_FIELD_MOVE_SMASH, FIELD_MOVE_ROCK_SMASH},
-    {IS_FIELD_MOVE_PUSH, FIELD_MOVE_STRENGTH},
-    {IS_FIELD_MOVE_SURF, FIELD_MOVE_SURF},
-    {IS_FIELD_MOVE_WATERFALL, FIELD_MOVE_WATERFALL},
-    {IS_FIELD_MOVE_DIVE, FIELD_MOVE_DIVE},
-    {IS_FIELD_MOVE_DIG, FIELD_MOVE_DIG},
-    {IS_FIELD_MOVE_FLASH, FIELD_MOVE_FLASH},
-    {IS_FIELD_MOVE_FLY, FIELD_MOVE_FLY},
-    {IS_FIELD_MOVE_SECRET_POWER, FIELD_MOVE_SECRET_POWER},
-#if OW_DEFOG_FIELD_MOVE == TRUE
-    {IS_FIELD_MOVE_DEFOG, FIELD_MOVE_DEFOG},
-#endif
-    {FIELD_MOVE_COUNT, 0xFF},
-};
-
-static u32 FindFieldMoveMenuItemIndexByType(u32 fieldMoveType)
-{
-    for (u32 i = 0; gFieldMoveTypeMenuItem[i].type != FIELD_MOVE_COUNT; i += 1)
-    {
-        if (gFieldMoveTypeMenuItem[i].type == fieldMoveType)
-        {
-            // DebugPrintf("index = %d", i);
-            return i;
-        }
-    }
-    return 0xFF;
-}
-
 enum {
     PARTY_BOX_LEFT_COLUMN,
     PARTY_BOX_RIGHT_COLUMN,
@@ -197,12 +165,6 @@ enum {
 #define MENU_DIR_LEFT    -2
 
 #define HM_MOVES_END 0xFFFF
-
-static const u16 sHMMoves[] =
-{
-    MOVE_CUT, MOVE_FLY, MOVE_SURF, MOVE_STRENGTH, MOVE_FLASH,
-    MOVE_ROCK_SMASH, MOVE_WATERFALL, MOVE_DIVE, HM_MOVES_END
-};
 
 enum {
     CAN_LEARN_MOVE,
@@ -2902,22 +2864,30 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
 
+    u32 nbFieldMoves = 0;
+
     // For each of the possible field move types
-    for (enum FieldMoveType fieldMoveType = IS_FIELD_MOVE_CUT; fieldMoveType < FIELD_MOVE_COUNT; fieldMoveType = fieldMoveType << 1)
+    for (enum FieldMove fieldMove = FIELD_MOVE_CUT; fieldMove < FIELD_MOVES_COUNT; fieldMove += 1)
     {
         // If player has been granted the field move
         // and Pokémon knows a move of that field move type,
         // add the menu item for that field move
         if (
-            FlagGet(gFieldMoveGrant[FindFieldMoveGrantIndexByType(fieldMoveType)].grantFlag)
-            && KnowsFieldMove(&mons[slotId], fieldMoveType)
+            IsFieldMoveUnlocked(fieldMove)
+            && KnowsFieldMove(&mons[slotId], fieldMove)
         )
         {
             AppendToList(
                 sPartyMenuInternal->actions,
                 &sPartyMenuInternal->numActions,
-                gFieldMoveTypeMenuItem[FindFieldMoveMenuItemIndexByType(fieldMoveType)].partyMenuItem + MENU_FIELD_MOVES
+                fieldMove + MENU_FIELD_MOVES
             );
+
+            nbFieldMoves += 1;
+            if (nbFieldMoves == MAX_MON_MOVES)
+            {
+                break;
+            }
         }
     }
 
@@ -4871,8 +4841,8 @@ void Task_AbilityCapsule(u8 taskId)
     {
     case 0:
         // Can't use.
-        if (gSpeciesInfo[tSpecies].abilities[0] == gSpeciesInfo[tSpecies].abilities[1]
-            || gSpeciesInfo[tSpecies].abilities[1] == 0
+        if (GetSpeciesAbility(tSpecies, 0) == GetSpeciesAbility(tSpecies, 1)
+            || GetSpeciesAbility(tSpecies, 1) == 0
             || tAbilityNum > 1
             || !tSpecies)
         {
@@ -4959,7 +4929,7 @@ void Task_AbilityPatch(u8 taskId)
     {
     case 0:
         // Can't use.
-        if (gSpeciesInfo[tSpecies].abilities[tAbilityNum] == 0
+        if (GetSpeciesAbility(tSpecies, tAbilityNum) == 0
             || !tSpecies
             )
         {

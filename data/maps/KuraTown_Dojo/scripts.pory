@@ -182,7 +182,7 @@ script KuraTown_Dojo_EventScript_Advice {
 		))
 	} else {
 		speakername("Man")
-		if (flag(FLAG_RECEIVED_HM_CUT) && flag(FLAG_BADGE01_GET)) {
+		if (isfieldmoveunlocked(FIELD_MOVE_CUT)) {
 			msgbox(format(
 				"Hello, young challenger, and welcome to the official Dojo of Kura Village!\p"
 				"Lady Hana, the Dojo Master, is an expert in all things bonsai. She designed this place and grew these trees, of course!\p"
@@ -236,7 +236,7 @@ script KuraTown_Dojo_EventScript_DojoStatue {
 
 script KuraTown_Dojo_EventScript_KuraDojoTree_CanCut {
 	lock
-	if (flag(FLAG_RECEIVED_HM_CUT) && flag(FLAG_BADGE01_GET)) {
+	if (checkfieldmove(FIELD_MOVE_CUT) != PARTY_SIZE) {
 		msgbox("…Oh? This tree can be cut down!", MSGBOX_DEFAULT)
 		closemessage
 		playse(SE_M_CUT)

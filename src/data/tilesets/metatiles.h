@@ -316,3 +316,6 @@ const u16 gMetatileAttributes_PuddlePath[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_BrownCave[] = INCBIN_U16("data/tilesets/secondary/brown_cave/metatiles.bin");
 const u16 gMetatileAttributes_BrownCave[] = INCBIN_U16("data/tilesets/secondary/brown_cave/metatile_attributes.bin");
+
+const u16 gMetatiles_ScenicRoute[] = INCBIN_U16("data/tilesets/secondary/scenic_route/metatiles.bin");
+const u16 gMetatileAttributes_ScenicRoute[] = INCBIN_U16("data/tilesets/secondary/scenic_route/metatile_attributes.bin");
