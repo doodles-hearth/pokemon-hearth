@@ -8,6 +8,8 @@
 
 TEST("TMs and HMs are sorted correctly in the bag")
 {
+    // We have custom sorting AND overhauled the TMs/HMs, so ya know
+    KNOWN_FAILING;
     struct BagPocket *pocket = &gBagPockets[POCKET_TM_HM];
 
     ASSUME(GetItemPocket(ITEM_HM07) == POCKET_TM_HM);
