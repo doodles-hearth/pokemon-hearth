@@ -44,6 +44,7 @@ prefabs.json
 /pokeemerald-*.png
 src/data/map_group_count.h
 convert_inc.sh
+include/constants/heal_locations.h
 tools/trainerproc/trainerproc
 *.mp4
 tools/poryscript/poryscript

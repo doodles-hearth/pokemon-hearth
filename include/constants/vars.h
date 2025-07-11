@@ -351,7 +351,14 @@
 #define VAR_GIFT_UNUSED_5                                0x40E2 // Var is written to, but never read
 #define VAR_GIFT_UNUSED_6                                0x40E3 // Var is written to, but never read
 #define VAR_GIFT_UNUSED_7                                0x40E4 // var is written to, but never read
-#define VAR_UNUSED_0x40E5                                0x40E5 // Unused Var
+/*
+    VAR_HOTPOT_SCENE_STATE States
+    // 0: Nothing happened
+    // 1: Talked to Hariko or Natsuki
+    // 2: Agreed to go
+    // 3: Cutscene over
+*/
+#define VAR_HOTPOT_SCENE_STATE                           0x40E5
 #define VAR_DAILY_SLOTS                                  0x40E6
 #define VAR_DAILY_WILDS                                  0x40E7
 #define VAR_DAILY_BLENDER                                0x40E8

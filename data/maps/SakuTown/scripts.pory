@@ -590,7 +590,7 @@ script SakuTown_EventScript_TamaArgument {
 	special(HealPlayerParty)
 	playse(SE_USE_ITEM)
 
-	setfollowernpc(LOCALID_TAMA, FNPC_NONE, SakuTown_EventScript_TamasAnxious, 0)
+	destroyfollowernpc
 
 	clearflag(FLAG_HIDE_DEADNIGHT_ASHII)
 	addobject(LOCALID_ASHII)

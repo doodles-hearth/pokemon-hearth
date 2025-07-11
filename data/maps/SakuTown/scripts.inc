@@ -530,7 +530,7 @@ SakuTown_EventScript_TamaArgument_5:
 	closemessage
 	special HealPlayerParty
 	playse SE_USE_ITEM
-	setfollowernpc 20, FNPC_NONE, SakuTown_EventScript_TamasAnxious, 0
+	destroyfollowernpc
 	clearflag FLAG_HIDE_DEADNIGHT_ASHII
 	addobject 22
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5

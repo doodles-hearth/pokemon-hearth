@@ -277,7 +277,7 @@ static void TxRegItemsMenu_ItemSwapChoosePrompt(u8 taskId)
     s16 *data;
 
     data = gTasks[taskId].data;
-    ListMenuSetUnkIndicatorsStructField(data[5], 16, 1);
+    ListMenuSetTemplateField(data[5], 16, 1);
     gTxRegItemsMenu->toSwapPos = (TxRegItemsMenuItemPageInfo.itemsAbove + TxRegItemsMenuItemPageInfo.cursorPos);
     TxRegItemsMenu_GetSwappingCursorPositionAndPrint(data[5], 0, 0);
     TxRegItemsMenu_UpdateSwapLinePos(gTxRegItemsMenu->toSwapPos);

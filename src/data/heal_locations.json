@@ -253,8 +253,8 @@
     {
       "id": "HEAL_LOCATION_YIFU_CITY",
       "map": "MAP_YIFU_CITY",
-      "x": 32,
-      "y": 30,
+      "x": 47,
+      "y": 31,
       "respawn_map": "MAP_YIFU_CITY",
       "respawn_x": 32,
       "respawn_y": 30

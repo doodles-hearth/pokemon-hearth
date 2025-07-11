@@ -73,17 +73,18 @@
     F(SINK) \
     F(SPLASH)
 
-#define FOREACH_HM(F) \
+/* #define FOREACH_HM(F) \
     F(FLY) \
     F(SURF) \
     F(STRENGTH) \
     F(FLASH) \
     F(ROCK_SMASH) \
     F(WATERFALL) \
-    F(DIVE)
+    F(DIVE) */
 
 #define FOREACH_TMHM(F) \
-    FOREACH_TM(F) \
-    FOREACH_HM(F)
+    FOREACH_TM(F)
+    /* FOREACH_TM(F) \ */
+    /* FOREACH_HM(F) */
 
 #endif

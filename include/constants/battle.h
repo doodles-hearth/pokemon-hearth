@@ -132,10 +132,61 @@ enum BattlerId
 #define STATUS1_PSN_ANY          (STATUS1_POISON | STATUS1_TOXIC_POISON)
 #define STATUS1_ANY              (STATUS1_SLEEP | STATUS1_POISON | STATUS1_BURN | STATUS1_FREEZE | STATUS1_PARALYSIS | STATUS1_TOXIC_POISON | STATUS1_FROSTBITE)
 
-#define STATUS1_REFRESH          (STATUS1_POISON | STATUS1_BURN | STATUS1_PARALYSIS | STATUS1_TOXIC_POISON | STATUS1_FROSTBITE)
+#define STATUS1_CAN_MOVE         (STATUS1_POISON | STATUS1_BURN | STATUS1_PARALYSIS | STATUS1_TOXIC_POISON | STATUS1_FROSTBITE)
+#define STATUS1_INCAPACITATED    (STATUS1_SLEEP | STATUS1_FREEZE)
+#define STATUS1_ICY_ANY          (STATUS1_FREEZE | STATUS1_FROSTBITE)
+#define STATUS1_DAMAGING         (STATUS1_PSN_ANY | STATUS1_BURN | STATUS1_FROSTBITE)
+
+enum VolatileFlags
+{
+    V_BATON_PASSABLE = (1 << 0),
+};
 
 // Volatile status ailments
-// These are removed after exiting the battle or switching out
+// These are removed after exiting the battle or switching
+/* Definitions with names e.g. "Confusion" are accessible in the debug menu
+ * Enum, Type, (Field name, (optional)bitSize), Flags,      (optional)(Debug menu header, (optional)max. value)
+ */
+#define VOLATILE_DEFINITIONS(F) \
+    F(VOLATILE_CONFUSION,                       confusionTurns,                    (u32, 3), V_BATON_PASSABLE) \
+    F(VOLATILE_FLINCHED,                        flinched,                          (u32, 1)) \
+    F(VOLATILE_UPROAR,                          uproarTurns,                       (u32, 3)) \
+    F(VOLATILE_TORMENT,                         torment,                           (u32, 1)) \
+    F(VOLATILE_BIDE,                            bideTurns,                         (u32, 2)) \
+    F(VOLATILE_LOCK_CONFUSE,                    lockConfusionTurns,                (u32, 2)) \
+    F(VOLATILE_MULTIPLETURNS,                   multipleTurns,                     (u32, 1)) \
+    F(VOLATILE_WRAPPED,                         wrapped,                           (u32, 1)) \
+    F(VOLATILE_POWDER,                          powder,                            (u32, 1)) \
+    F(VOLATILE_UNUSED,                          padding,                           (u32, 1)) \
+    F(VOLATILE_INFATUATION,                     infatuation,                       (u32, 4)) \
+    F(VOLATILE_DEFENSE_CURL,                    defenseCurl,                       (u32, 1)) \
+    F(VOLATILE_TRANSFORMED,                     transformed,                       (u32, 1)) \
+    F(VOLATILE_RECHARGE,                        recharge,                          (u32, 1)) \
+    F(VOLATILE_RAGE,                            rage,                              (u32, 1)) \
+    F(VOLATILE_SUBSTITUTE,                      substitute,                        (u32, 1), V_BATON_PASSABLE) \
+    F(VOLATILE_DESTINY_BOND,                    destinyBond,                       (u32, 1)) \
+    F(VOLATILE_ESCAPE_PREVENTION,               escapePrevention,                  (u32, 1), V_BATON_PASSABLE) \
+    F(VOLATILE_NIGHTMARE,                       nightmare,                         (u32, 1)) \
+    F(VOLATILE_CURSED,                          cursed,                            (u32, 1), V_BATON_PASSABLE) \
+    F(VOLATILE_FORESIGHT,                       foresight,                         (u32, 1)) \
+    F(VOLATILE_DRAGON_CHEER,                    dragonCheer,                       (u32, 1), V_BATON_PASSABLE) \
+    F(VOLATILE_FOCUS_ENERGY,                    focusEnergy,                       (u32, 1), V_BATON_PASSABLE) \
+    F(VOLATILE_MUD_SPORT,                       mudSport,                          (u32, 1), V_BATON_PASSABLE) \
+    F(VOLATILE_WATER_SPORT,                     waterSport,                        (u32, 1), V_BATON_PASSABLE)
+
+/* Use within a macro to get the maximum allowed value for a volatile. Requires _typeBitSize and debug parameters as input. */
+#define GET_VOLATILE_MAXIMUM(_typeBitSize, ...) INVOKE_WITH_B(GET_VOLATILE_MAXIMUM_, _typeBitSize)
+#define GET_VOLATILE_MAXIMUM_(_type, ...) FIRST(__VA_OPT__(MAX_BITS(FIRST(__VA_ARGS__)),) MAX_BITS((sizeof(_type) * 8)))
+
+#define UNPACK_VOLATILE_ENUMS(_enum, ...) _enum,
+
+enum Volatile
+{
+    VOLATILE_DEFINITIONS(UNPACK_VOLATILE_ENUMS)
+    /* Expands to VOLATILE_CONFUSION, VOLATILE_FLINCHED, etc. */
+};
+
+// Old flags
 #define STATUS2_CONFUSION             (1 << 0 | 1 << 1 | 1 << 2)
 #define STATUS2_CONFUSION_TURN(num)   ((num) << 0)
 #define STATUS2_FLINCHED              (1 << 3)
@@ -149,6 +200,7 @@ enum BattlerId
 #define STATUS2_MULTIPLETURNS         (1 << 12)
 #define STATUS2_WRAPPED               (1 << 13)
 #define STATUS2_POWDER                (1 << 14)
+//#define STATUS2_UNUSED                (1 << 15)
 #define STATUS2_INFATUATION           (1 << 16 | 1 << 17 | 1 << 18 | 1 << 19)  // 4 bits, one for every battler
 #define STATUS2_INFATUATED_WITH(battler) (1u << (battler + 16))
 #define STATUS2_DEFENSE_CURL          (1 << 20)
@@ -237,27 +289,33 @@ enum BattlerId
 // Per-side statuses that affect an entire party
 #define SIDE_STATUS_REFLECT                 (1 << 0)
 #define SIDE_STATUS_LIGHTSCREEN             (1 << 1)
-#define SIDE_STATUS_STICKY_WEB              (1 << 2)
-#define SIDE_STATUS_SPIKES                  (1 << 4)
-#define SIDE_STATUS_SAFEGUARD               (1 << 5)
-#define SIDE_STATUS_FUTUREATTACK            (1 << 6)
-#define SIDE_STATUS_MIST                    (1 << 8)
-// (1 << 9) previously was SIDE_STATUS_SPIKES_DAMAGED
-#define SIDE_STATUS_TAILWIND                (1 << 10)
-#define SIDE_STATUS_AURORA_VEIL             (1 << 11)
-#define SIDE_STATUS_LUCKY_CHANT             (1 << 12)
-#define SIDE_STATUS_TOXIC_SPIKES            (1 << 13)
-#define SIDE_STATUS_STEALTH_ROCK            (1 << 14)
-// Missing flags previously were SIDE_STATUS_TOXIC_SPIKES_DAMAGED, SIDE_STATUS_STEALTH_ROCK_DAMAGED, SIDE_STATUS_STICKY_WEB_DAMAGED
-#define SIDE_STATUS_STEELSURGE              (1 << 18)
-#define SIDE_STATUS_DAMAGE_NON_TYPES        (1 << 19)
-#define SIDE_STATUS_RAINBOW                 (1 << 20)
-#define SIDE_STATUS_SEA_OF_FIRE             (1 << 21)
-#define SIDE_STATUS_SWAMP                   (1 << 22)
+#define SIDE_STATUS_SAFEGUARD               (1 << 2)
+#define SIDE_STATUS_FUTUREATTACK            (1 << 3)
+#define SIDE_STATUS_MIST                    (1 << 4)
+#define SIDE_STATUS_TAILWIND                (1 << 5)
+#define SIDE_STATUS_AURORA_VEIL             (1 << 6)
+#define SIDE_STATUS_LUCKY_CHANT             (1 << 7)
+#define SIDE_STATUS_DAMAGE_NON_TYPES        (1 << 8)
+#define SIDE_STATUS_RAINBOW                 (1 << 9)
+#define SIDE_STATUS_SEA_OF_FIRE             (1 << 10)
+#define SIDE_STATUS_SWAMP                   (1 << 11)
 
-#define SIDE_STATUS_HAZARDS_ANY    (SIDE_STATUS_SPIKES | SIDE_STATUS_STICKY_WEB | SIDE_STATUS_TOXIC_SPIKES | SIDE_STATUS_STEALTH_ROCK | SIDE_STATUS_STEELSURGE)
 #define SIDE_STATUS_SCREEN_ANY     (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)
 #define SIDE_STATUS_PLEDGE_ANY     (SIDE_STATUS_RAINBOW | SIDE_STATUS_SEA_OF_FIRE | SIDE_STATUS_SWAMP)
+#define SIDE_STATUS_GOOD_FOG       (SIDE_STATUS_SCREEN_ANY | SIDE_STATUS_SAFEGUARD | SIDE_STATUS_MIST)
+#define SIDE_STATUS_GOOD_COURT     (SIDE_STATUS_GOOD_FOG | SIDE_STATUS_TAILWIND | SIDE_STATUS_LUCKY_CHANT | SIDE_STATUS_RAINBOW)
+#define SIDE_STATUS_BAD_COURT      (SIDE_STATUS_DAMAGE_NON_TYPES | SIDE_STATUS_SEA_OF_FIRE | SIDE_STATUS_SWAMP)
+
+enum Hazards
+{
+    HAZARDS_NONE,
+    HAZARDS_SPIKES,
+    HAZARDS_STICKY_WEB,
+    HAZARDS_TOXIC_SPIKES,
+    HAZARDS_STEALTH_ROCK,
+    HAZARDS_STEELSURGE,
+    HAZARDS_MAX_COUNT,
+};
 
 // Used for damaging entry hazards based on type
 enum TypeSideHazard
@@ -293,6 +351,7 @@ enum TypeSideHazard
 #define MOVE_RESULT_FOE_HUNG_ON           (1 << 7)
 #define MOVE_RESULT_STURDIED              (1 << 8)
 #define MOVE_RESULT_FOE_ENDURED_AFFECTION (1 << 9)
+#define MOVE_RESULT_SYNCHRONOISE_AFFECTED (1 << 10)
 #define MOVE_RESULT_NO_EFFECT             (MOVE_RESULT_MISSED | MOVE_RESULT_DOESNT_AFFECT_FOE | MOVE_RESULT_FAILED)
 
 enum BattleWeather
@@ -343,7 +402,6 @@ enum MoveEffects
     MOVE_EFFECT_TRI_ATTACK,
     MOVE_EFFECT_UPROAR,
     MOVE_EFFECT_PAYDAY,
-    MOVE_EFFECT_CHARGING,
     MOVE_EFFECT_WRAP,
     MOVE_EFFECT_ATK_PLUS_1,
     MOVE_EFFECT_DEF_PLUS_1,
@@ -468,8 +526,6 @@ enum MoveEffects
 #define MOVE_EFFECT_FREEZE_OR_FROSTBITE MOVE_EFFECT_FREEZE
 #endif
 
-#define MOVE_EFFECT_AFFECTS_USER        0x2000
-#define MOVE_EFFECT_CERTAIN             0x4000
 #define MOVE_EFFECT_CONTINUE            0x8000
 
 // Battle environment defines for gBattleEnvironment.

@@ -107,6 +107,9 @@
     },
     "getseenmon": {
       "var_name": "VAR_RESULT"
+    },
+    "gettimeofday": {
+      "var_name": "VAR_0x8000"
     }
   }
 }
