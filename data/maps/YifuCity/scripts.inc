@@ -38,10 +38,16 @@ YifuCity_EventScript_StoleMyMon::
 	lock
 	faceplayer
 	speakername YifuCity_EventScript_StoleMyMon_Text_0
-	msgbox YifuCity_EventScript_StoleMyMon_Text_1
+	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_StoleMyMon_2
+	msgbox YifuCity_EventScript_StoleMyMon_Text_2
+YifuCity_EventScript_StoleMyMon_1:
 	closemessage
 	release
 	return
+
+YifuCity_EventScript_StoleMyMon_2:
+	msgbox YifuCity_EventScript_StoleMyMon_Text_1
+	goto YifuCity_EventScript_StoleMyMon_1
 
 
 YifuCity_EventScript_LostMyDoll::
@@ -50,6 +56,7 @@ YifuCity_EventScript_LostMyDoll::
 	speakername YifuCity_EventScript_LostMyDoll_Text_0
 	msgbox YifuCity_EventScript_LostMyDoll_Text_1
 	closemessage
+	setnamedmon SPECIES_CLEFFA
 	release
 	return
 
@@ -686,8 +693,6 @@ YifuCity_EventScript_ChefOnBreak::
 	speakername YifuCity_EventScript_ChefOnBreak_Text_0
 	msgbox YifuCity_EventScript_ChefOnBreak_Text_1
 	closemessage
-	setnamedmon SPECIES_CHIMECHO
-	setdescribedmon SPECIES_CHIMECHO
 	release
 	end
 
@@ -736,6 +741,691 @@ YifuCity_EventScript_ClothingShopSign::
 
 YifuCity_EventScript_DecorationShopSign::
 	msgbox YifuCity_EventScript_DecorationShopSign_Text_0, MSGBOX_SIGN
+	return
+
+
+YifuCity_EventScript_NastukiPostHideout::
+	lock
+	faceplayer
+	compare VAR_HOTPOT_SCENE_STATE, 0
+	goto_if_eq YifuCity_EventScript_NastukiPostHideout_2
+	call SpeakToNatsukiAgain
+YifuCity_EventScript_NastukiPostHideout_1:
+	release
+	return
+
+YifuCity_EventScript_NastukiPostHideout_2:
+	setvar VAR_HOTPOT_SCENE_STATE, 1
+	gettime
+	compare VAR_0x8000, 5
+	goto_if_ge YifuCity_EventScript_NastukiPostHideout_20
+YifuCity_EventScript_NastukiPostHideout_15:
+	compare VAR_0x8000, 11
+	goto_if_gt YifuCity_EventScript_NastukiPostHideout_14
+YifuCity_EventScript_NastukiPostHideout_13:
+	compare VAR_0x8000, 18
+	goto_if_gt YifuCity_EventScript_NastukiPostHideout_17
+YifuCity_EventScript_NastukiPostHideout_11:
+	compare VAR_0x8000, 15
+	goto_if_gt YifuCity_EventScript_NastukiPostHideout_10
+YifuCity_EventScript_NastukiPostHideout_9:
+	call SpeakToNatsukiNight
+YifuCity_EventScript_NastukiPostHideout_5:
+	closemessage
+	goto YifuCity_EventScript_NastukiPostHideout_1
+
+YifuCity_EventScript_NastukiPostHideout_6:
+	call SpeakToNatsukiMorning
+	goto YifuCity_EventScript_NastukiPostHideout_5
+
+YifuCity_EventScript_NastukiPostHideout_7:
+	call SpeakToHarikoLunchOrDinner
+	goto YifuCity_EventScript_NastukiPostHideout_5
+
+YifuCity_EventScript_NastukiPostHideout_8:
+	call SpeakToNatsukiAfternoon
+	goto YifuCity_EventScript_NastukiPostHideout_5
+
+YifuCity_EventScript_NastukiPostHideout_10:
+	compare VAR_0x8000, 18
+	goto_if_le YifuCity_EventScript_NastukiPostHideout_8
+	goto YifuCity_EventScript_NastukiPostHideout_9
+
+YifuCity_EventScript_NastukiPostHideout_14:
+	compare VAR_0x8000, 15
+	goto_if_le YifuCity_EventScript_NastukiPostHideout_7
+	goto YifuCity_EventScript_NastukiPostHideout_13
+
+YifuCity_EventScript_NastukiPostHideout_17:
+	compare VAR_0x8000, 22
+	goto_if_le YifuCity_EventScript_NastukiPostHideout_7
+	goto YifuCity_EventScript_NastukiPostHideout_11
+
+YifuCity_EventScript_NastukiPostHideout_20:
+	compare VAR_0x8000, 11
+	goto_if_le YifuCity_EventScript_NastukiPostHideout_6
+	goto YifuCity_EventScript_NastukiPostHideout_15
+
+
+SpeakToNatsukiMorning:
+	call NatsukiCanIComeToo
+	call HarikoFacesPlayer
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	msgbox SpeakToNatsukiMorning_Text_0
+	call HarikoNotABreakfastPlace
+	return
+
+
+SpeakToNatsukiLunchOrDinner:
+	call NatsukiCanIComeToo
+	call HarikoFacesPlayer
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	msgbox SpeakToNatsukiLunchOrDinner_Text_0
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	msgbox SpeakToNatsukiLunchOrDinner_Text_1
+	call HarikoFacesPlayer
+	msgbox SpeakToNatsukiLunchOrDinner_Text_2
+	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	switch VAR_RESULT
+	case 1, SpeakToNatsukiLunchOrDinner_2
+	case 0, SpeakToNatsukiLunchOrDinner_3
+	return
+
+SpeakToNatsukiLunchOrDinner_2:
+	call EnterRestaurant
+	return
+
+SpeakToNatsukiLunchOrDinner_3:
+	call NotRightNow
+	return
+
+
+SpeakToNatsukiAfternoon:
+	call NatsukiCanIComeToo
+	call HarikoFacesNatsuki
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	msgbox SpeakToNatsukiAfternoon_Text_0
+	call NatsukiFacesHariko
+	call HarikoTurnsToNatsuki
+	speakername SpeakToNatsukiAfternoon_Text_1
+	msgbox SpeakToNatsukiAfternoon_Text_2
+	call NatsukiFacesPlayer
+	msgbox SpeakToNatsukiAfternoon_Text_3
+	mcdialogue SpeakToNatsukiAfternoon_Text_4, SpeakToNatsukiLunchOrDinner_Text_4
+	closemessage
+	switch VAR_RESULT
+	case 0, SpeakToNatsukiAfternoon_2
+	case 1, SpeakToNatsukiAfternoon_3
+	return
+
+SpeakToNatsukiAfternoon_2:
+	call EnterRestaurant
+	return
+
+SpeakToNatsukiAfternoon_3:
+	call NotRightNow
+	return
+
+
+SpeakToNatsukiNight:
+	call NatsukiCanIComeToo
+	call HarikoFacesPlayer
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	msgbox SpeakToNatsukiNight_Text_0
+	call HarikoTooLateForDinner
+	return
+
+
+YifuCity_EventScript_HarikoPostHideout::
+	lock
+	faceplayer
+	compare VAR_HOTPOT_SCENE_STATE, 0
+	goto_if_eq YifuCity_EventScript_HarikoPostHideout_2
+	call SpeakToHarikoAgain
+YifuCity_EventScript_HarikoPostHideout_1:
+	release
+	return
+
+YifuCity_EventScript_HarikoPostHideout_2:
+	setvar VAR_HOTPOT_SCENE_STATE, 1
+	gettime
+	compare VAR_0x8000, 5
+	goto_if_ge YifuCity_EventScript_HarikoPostHideout_20
+YifuCity_EventScript_HarikoPostHideout_15:
+	compare VAR_0x8000, 11
+	goto_if_gt YifuCity_EventScript_HarikoPostHideout_14
+YifuCity_EventScript_HarikoPostHideout_13:
+	compare VAR_0x8000, 18
+	goto_if_gt YifuCity_EventScript_HarikoPostHideout_17
+YifuCity_EventScript_HarikoPostHideout_11:
+	compare VAR_0x8000, 15
+	goto_if_gt YifuCity_EventScript_HarikoPostHideout_10
+YifuCity_EventScript_HarikoPostHideout_9:
+	call SpeakToHarikoNight
+YifuCity_EventScript_HarikoPostHideout_5:
+	closemessage
+	goto YifuCity_EventScript_HarikoPostHideout_1
+
+YifuCity_EventScript_HarikoPostHideout_6:
+	call SpeakToHarikoMorning
+	goto YifuCity_EventScript_HarikoPostHideout_5
+
+YifuCity_EventScript_HarikoPostHideout_7:
+	call SpeakToHarikoLunchOrDinner
+	goto YifuCity_EventScript_HarikoPostHideout_5
+
+YifuCity_EventScript_HarikoPostHideout_8:
+	call SpeakToHarikoAfternoon
+	goto YifuCity_EventScript_HarikoPostHideout_5
+
+YifuCity_EventScript_HarikoPostHideout_10:
+	compare VAR_0x8000, 18
+	goto_if_le YifuCity_EventScript_HarikoPostHideout_8
+	goto YifuCity_EventScript_HarikoPostHideout_9
+
+YifuCity_EventScript_HarikoPostHideout_14:
+	compare VAR_0x8000, 15
+	goto_if_le YifuCity_EventScript_HarikoPostHideout_7
+	goto YifuCity_EventScript_HarikoPostHideout_13
+
+YifuCity_EventScript_HarikoPostHideout_17:
+	compare VAR_0x8000, 22
+	goto_if_le YifuCity_EventScript_HarikoPostHideout_7
+	goto YifuCity_EventScript_HarikoPostHideout_11
+
+YifuCity_EventScript_HarikoPostHideout_20:
+	compare VAR_0x8000, 11
+	goto_if_le YifuCity_EventScript_HarikoPostHideout_6
+	goto YifuCity_EventScript_HarikoPostHideout_15
+
+
+SpeakToHarikoMorning:
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	msgbox SpeakToHarikoMorning_Text_0
+	mcdialogue SpeakToHarikoMorning_Text_1, SpeakToHarikoMorning_Text_2
+	switch VAR_RESULT
+	case 0, SpeakToHarikoMorning_3
+	case 1, SpeakToHarikoMorning_4
+SpeakToHarikoMorning_1:
+	call HarikoNotABreakfastPlace
+	return
+
+SpeakToHarikoMorning_3:
+	msgbox SpeakToHarikoMorning_Text_3
+	goto SpeakToHarikoMorning_1
+
+SpeakToHarikoMorning_4:
+	msgbox SpeakToHarikoMorning_Text_4
+	goto SpeakToHarikoMorning_1
+
+
+HarikoNotABreakfastPlace:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	msgbox HarikoNotABreakfastPlace_Text_0
+	call HarikoFacesPlayer
+	msgbox HarikoNotABreakfastPlace_Text_1
+	call NatsukiFacesHariko
+	call HarikoTurnsToNatsuki
+	speakername SpeakToNatsukiAfternoon_Text_1
+	msgbox HarikoNotABreakfastPlace_Text_2
+	call NatsukiFacesPlayer
+	speakername SpeakToNatsukiAfternoon_Text_1
+	msgbox SpeakToNatsukiAfternoon_Text_3
+	mcdialogue HarikoNotABreakfastPlace_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	closemessage
+	switch VAR_RESULT
+	case 0, HarikoNotABreakfastPlace_2
+	case 1, HarikoNotABreakfastPlace_3
+	return
+
+HarikoNotABreakfastPlace_2:
+	call EnterRestaurant
+	return
+
+HarikoNotABreakfastPlace_3:
+	call NotRightNow
+	return
+
+
+HarikoTooLateForDinner:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	msgbox HarikoNotABreakfastPlace_Text_0
+	faceplayer
+	msgbox HarikoTooLateForDinner_Text_0
+	call NatsukiFacesHariko
+	call HarikoTurnsToNatsuki
+	speakername SpeakToNatsukiAfternoon_Text_1
+	msgbox HarikoTooLateForDinner_Text_1
+	mcdialogue HarikoTooLateForDinner_Text_2, SpeakToNatsukiLunchOrDinner_Text_4
+	closemessage
+	switch VAR_RESULT
+	case 0, HarikoTooLateForDinner_2
+	case 1, HarikoTooLateForDinner_3
+	return
+
+HarikoTooLateForDinner_2:
+	call EnterRestaurant
+	return
+
+HarikoTooLateForDinner_3:
+	call NotRightNow
+	return
+
+
+SpeakToHarikoLunchOrDinner:
+	compare VAR_0x8000, 11
+	goto_if_gt SpeakToHarikoLunchOrDinner_4
+SpeakToHarikoLunchOrDinner_3:
+	bufferstring STR_VAR_1, SpeakToHarikoLunchOrDinner_Text_1
+SpeakToHarikoLunchOrDinner_1:
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	msgbox SpeakToHarikoLunchOrDinner_Text_2
+	call HarikoFacesNatsuki
+	turnobject LOCALID_FRONT_OF_RESTAURANT_NATSUKI, DIR_WEST
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	msgbox SpeakToHarikoLunchOrDinner_Text_3
+	call NatsukiFacesPlayer
+	faceplayer
+	speakername SpeakToNatsukiAfternoon_Text_1
+	msgbox SpeakToHarikoLunchOrDinner_Text_4
+	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	switch VAR_RESULT
+	case 1, SpeakToHarikoLunchOrDinner_8
+	case 0, SpeakToHarikoLunchOrDinner_9
+	return
+
+SpeakToHarikoLunchOrDinner_2:
+	bufferstring STR_VAR_1, SpeakToHarikoLunchOrDinner_Text_0
+	goto SpeakToHarikoLunchOrDinner_1
+
+SpeakToHarikoLunchOrDinner_4:
+	compare VAR_0x8000, 15
+	goto_if_le SpeakToHarikoLunchOrDinner_2
+	goto SpeakToHarikoLunchOrDinner_3
+
+SpeakToHarikoLunchOrDinner_8:
+	call EnterRestaurant
+	return
+
+SpeakToHarikoLunchOrDinner_9:
+	call NotRightNow
+	return
+
+
+SpeakToHarikoNight:
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	msgbox SpeakToHarikoNight_Text_0
+	mcdialogue SpeakToHarikoNight_Text_1, SpeakToHarikoNight_Text_2
+	switch VAR_RESULT
+	case 0, SpeakToHarikoNight_3
+	case 1, SpeakToHarikoNight_4
+SpeakToHarikoNight_1:
+	call HarikoTooLateForDinner
+	return
+
+SpeakToHarikoNight_3:
+	msgbox SpeakToHarikoMorning_Text_3
+	goto SpeakToHarikoNight_1
+
+SpeakToHarikoNight_4:
+	msgbox SpeakToHarikoMorning_Text_4
+	goto SpeakToHarikoNight_1
+
+
+SpeakToHarikoAfternoon:
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	msgbox SpeakToHarikoAfternoon_Text_0
+	mcdialogue SpeakToHarikoNight_Text_1, SpeakToHarikoNight_Text_2
+	switch VAR_RESULT
+	case 0, SpeakToHarikoAfternoon_3
+	case 1, SpeakToHarikoAfternoon_4
+SpeakToHarikoAfternoon_1:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	msgbox HarikoNotABreakfastPlace_Text_0
+	faceplayer
+	msgbox SpeakToHarikoAfternoon_Text_1
+	call NatsukiFacesHariko
+	call HarikoTurnsToNatsuki
+	speakername SpeakToNatsukiAfternoon_Text_1
+	msgbox SpeakToNatsukiAfternoon_Text_2
+	call NatsukiFacesPlayer
+	msgbox SpeakToNatsukiAfternoon_Text_3
+	mcdialogue SpeakToNatsukiAfternoon_Text_4, SpeakToNatsukiLunchOrDinner_Text_4
+	closemessage
+	switch VAR_RESULT
+	case 0, SpeakToHarikoAfternoon_6
+	case 1, SpeakToHarikoAfternoon_7
+	return
+
+SpeakToHarikoAfternoon_3:
+	msgbox SpeakToHarikoMorning_Text_3
+	goto SpeakToHarikoAfternoon_1
+
+SpeakToHarikoAfternoon_4:
+	msgbox SpeakToHarikoMorning_Text_4
+	goto SpeakToHarikoAfternoon_1
+
+SpeakToHarikoAfternoon_6:
+	call EnterRestaurant
+	return
+
+SpeakToHarikoAfternoon_7:
+	call NotRightNow
+	return
+
+
+SpeakToHarikoAgain:
+	gettime
+	call NatsukiTurnsToPlayer
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	compare VAR_0x8000, 5
+	goto_if_ge SpeakToHarikoAgain_16
+SpeakToHarikoAgain_11:
+	compare VAR_0x8000, 11
+	goto_if_gt SpeakToHarikoAgain_10
+SpeakToHarikoAgain_9:
+	compare VAR_0x8000, 18
+	goto_if_gt SpeakToHarikoAgain_13
+SpeakToHarikoAgain_7:
+	compare VAR_0x8000, 15
+	goto_if_gt SpeakToHarikoAgain_6
+SpeakToHarikoAgain_5:
+	msgbox SpeakToHarikoAgain_Text_3
+SpeakToHarikoAgain_1:
+	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	closemessage
+	switch VAR_RESULT
+	case 0, SpeakToHarikoAgain_20
+	case 1, SpeakToHarikoAgain_21
+	return
+
+SpeakToHarikoAgain_2:
+	msgbox SpeakToHarikoAgain_Text_0
+	goto SpeakToHarikoAgain_1
+
+SpeakToHarikoAgain_3:
+	msgbox SpeakToHarikoAgain_Text_1
+	goto SpeakToHarikoAgain_1
+
+SpeakToHarikoAgain_4:
+	msgbox SpeakToHarikoAgain_Text_2
+	goto SpeakToHarikoAgain_1
+
+SpeakToHarikoAgain_6:
+	compare VAR_0x8000, 18
+	goto_if_le SpeakToHarikoAgain_4
+	goto SpeakToHarikoAgain_5
+
+SpeakToHarikoAgain_10:
+	compare VAR_0x8000, 15
+	goto_if_le SpeakToHarikoAgain_3
+	goto SpeakToHarikoAgain_9
+
+SpeakToHarikoAgain_13:
+	compare VAR_0x8000, 22
+	goto_if_le SpeakToHarikoAgain_3
+	goto SpeakToHarikoAgain_7
+
+SpeakToHarikoAgain_16:
+	compare VAR_0x8000, 11
+	goto_if_le SpeakToHarikoAgain_2
+	goto SpeakToHarikoAgain_11
+
+SpeakToHarikoAgain_20:
+	call EnterRestaurant
+	return
+
+SpeakToHarikoAgain_21:
+	call NotRightNow
+	return
+
+
+SpeakToNatsukiAgain:
+	gettime
+	call HarikoTurnsToPlayer
+	speakername SpeakToNatsukiAfternoon_Text_1
+	compare VAR_0x8000, 5
+	goto_if_ge SpeakToNatsukiAgain_16
+SpeakToNatsukiAgain_11:
+	compare VAR_0x8000, 11
+	goto_if_gt SpeakToNatsukiAgain_10
+SpeakToNatsukiAgain_9:
+	compare VAR_0x8000, 18
+	goto_if_gt SpeakToNatsukiAgain_13
+SpeakToNatsukiAgain_7:
+	compare VAR_0x8000, 15
+	goto_if_gt SpeakToNatsukiAgain_6
+SpeakToNatsukiAgain_5:
+	msgbox SpeakToNatsukiAgain_Text_3
+SpeakToNatsukiAgain_1:
+	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	closemessage
+	switch VAR_RESULT
+	case 0, SpeakToNatsukiAgain_20
+	case 1, SpeakToNatsukiAgain_21
+	return
+
+SpeakToNatsukiAgain_2:
+	msgbox SpeakToNatsukiAgain_Text_0
+	goto SpeakToNatsukiAgain_1
+
+SpeakToNatsukiAgain_3:
+	msgbox SpeakToNatsukiAgain_Text_1
+	goto SpeakToNatsukiAgain_1
+
+SpeakToNatsukiAgain_4:
+	msgbox SpeakToNatsukiAgain_Text_2
+	goto SpeakToNatsukiAgain_1
+
+SpeakToNatsukiAgain_6:
+	compare VAR_0x8000, 18
+	goto_if_le SpeakToNatsukiAgain_4
+	goto SpeakToNatsukiAgain_5
+
+SpeakToNatsukiAgain_10:
+	compare VAR_0x8000, 15
+	goto_if_le SpeakToNatsukiAgain_3
+	goto SpeakToNatsukiAgain_9
+
+SpeakToNatsukiAgain_13:
+	compare VAR_0x8000, 22
+	goto_if_le SpeakToNatsukiAgain_3
+	goto SpeakToNatsukiAgain_7
+
+SpeakToNatsukiAgain_16:
+	compare VAR_0x8000, 11
+	goto_if_le SpeakToNatsukiAgain_2
+	goto SpeakToNatsukiAgain_11
+
+SpeakToNatsukiAgain_20:
+	call EnterRestaurant
+	return
+
+SpeakToNatsukiAgain_21:
+	call NotRightNow
+	return
+
+
+NatsukiCanIComeToo:
+	faceplayer
+	speakername SpeakToNatsukiAfternoon_Text_1
+	msgbox NatsukiCanIComeToo_Text_0
+	call NatsukiFacesHariko
+	compare VAR_0x8000, 5
+	goto_if_gt NatsukiCanIComeToo_4
+NatsukiCanIComeToo_3:
+	bufferstring STR_VAR_1, SpeakToHarikoLunchOrDinner_Text_1
+NatsukiCanIComeToo_1:
+	msgbox NatsukiCanIComeToo_Text_1
+	return
+
+NatsukiCanIComeToo_2:
+	bufferstring STR_VAR_1, SpeakToHarikoLunchOrDinner_Text_0
+	goto NatsukiCanIComeToo_1
+
+NatsukiCanIComeToo_4:
+	compare VAR_0x8000, 15
+	goto_if_le NatsukiCanIComeToo_2
+	goto NatsukiCanIComeToo_3
+
+
+NotRightNow:
+	call HarikoFacesPlayer
+	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	msgbox NotRightNow_Text_0
+	call NatsukiFacesPlayer
+	speakername SpeakToNatsukiAfternoon_Text_1
+	msgbox NotRightNow_Text_1
+	return
+
+
+EnterRestaurant:
+	setvar VAR_HOTPOT_SCENE_STATE, 1
+	warp MAP_YIFU_CITY_RESTAURANT, WARP_ID_RESTAURANT_CUTSCENE
+	return
+
+
+HarikoFacesPlayer:
+	switch VAR_FACING
+	case DIR_NORTH, HarikoFacesPlayer_2
+	case DIR_SOUTH, HarikoFacesPlayer_3
+	case DIR_EAST, HarikoFacesPlayer_4
+	case DIR_WEST, HarikoFacesPlayer_5
+	return
+
+HarikoFacesPlayer_2:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_Trigger_CantGoThruNorth_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	return
+
+HarikoFacesPlayer_3:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	return
+
+HarikoFacesPlayer_4:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	return
+
+HarikoFacesPlayer_5:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	return
+
+
+NatsukiFacesPlayer:
+	switch VAR_FACING
+	case DIR_NORTH, NatsukiFacesPlayer_2
+	case DIR_SOUTH, NatsukiFacesPlayer_3
+	case DIR_EAST, NatsukiFacesPlayer_4
+	case DIR_WEST, NatsukiFacesPlayer_5
+	return
+
+NatsukiFacesPlayer_2:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_Trigger_CantGoThruNorth_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
+	return
+
+NatsukiFacesPlayer_3:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
+	return
+
+NatsukiFacesPlayer_4:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
+	return
+
+NatsukiFacesPlayer_5:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
+	return
+
+
+HarikoTurnsToPlayer:
+	switch VAR_FACING
+	case DIR_NORTH, HarikoTurnsToPlayer_2
+	case DIR_SOUTH, HarikoTurnsToPlayer_3
+	case DIR_EAST, HarikoTurnsToPlayer_4
+	case DIR_WEST, HarikoTurnsToPlayer_5
+	return
+
+HarikoTurnsToPlayer_2:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, HarikoTurnsToPlayer_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	return
+
+HarikoTurnsToPlayer_3:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, HarikoTurnsToPlayer_Movement_1
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	return
+
+HarikoTurnsToPlayer_4:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, HarikoTurnsToPlayer_Movement_2
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	return
+
+HarikoTurnsToPlayer_5:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, HarikoTurnsToPlayer_Movement_3
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	return
+
+
+NatsukiTurnsToPlayer:
+	switch VAR_FACING
+	case DIR_NORTH, NatsukiTurnsToPlayer_2
+	case DIR_SOUTH, NatsukiTurnsToPlayer_3
+	case DIR_EAST, NatsukiTurnsToPlayer_4
+	case DIR_WEST, NatsukiTurnsToPlayer_5
+	return
+
+NatsukiTurnsToPlayer_2:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, HarikoTurnsToPlayer_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
+	return
+
+NatsukiTurnsToPlayer_3:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, HarikoTurnsToPlayer_Movement_1
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
+	return
+
+NatsukiTurnsToPlayer_4:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, HarikoTurnsToPlayer_Movement_2
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
+	return
+
+NatsukiTurnsToPlayer_5:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, HarikoTurnsToPlayer_Movement_3
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
+	return
+
+
+NatsukiFacesHariko:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
+	return
+
+
+HarikoFacesNatsuki:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
+	return
+
+
+NatsukiTurnsToHariko:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, HarikoTurnsToPlayer_Movement_2
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
+	return
+
+
+HarikoTurnsToNatsuki:
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, HarikoTurnsToPlayer_Movement_3
+	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
 	return
 
 
@@ -1015,6 +1705,22 @@ YifuCity_EventScript_GirlLookingAtSunriseVillage_Movement_0:
 	face_original_direction
 	step_end
 
+HarikoTurnsToPlayer_Movement_0:
+	face_down
+	step_end
+
+HarikoTurnsToPlayer_Movement_1:
+	face_up
+	step_end
+
+HarikoTurnsToPlayer_Movement_2:
+	face_left
+	step_end
+
+HarikoTurnsToPlayer_Movement_3:
+	face_right
+	step_end
+
 YifuCity_EscapedCrobatHideoutWithSamurai_Text_0:
 	.string "Samurai$"
 
@@ -1032,15 +1738,21 @@ YifuCity_EscapedCrobatHideoutWithSamurai_Text_1:
 	.string "Ha ha ha ha!\p"
 	.string "I have to go report to my superiors.\p"
 	.string "{PLAYER}!\n"
-	.string "I am sure we will meet again!$"
+	.string "I am sure we will meet again!\l"
+	.string "Until then, farewell!$"
 
 YifuCity_EventScript_StoleMyMon_Text_0:
 	.string "Man$"
 
 YifuCity_EventScript_StoleMyMon_Text_1:
-	.string "When I got my Shiftry back from the\n"
-	.string "nurse, it had somehow changed into a\l"
-	.string "Pidgey…\p"
+	.string "The Refuge's nurse was stealing our\n"
+	.string "Pokémon?\p"
+	.string "That… explains a lot!$"
+
+YifuCity_EventScript_StoleMyMon_Text_2:
+	.string "When my friend got his Shiftry back\n"
+	.string "from the nurse, it had somehow\l"
+	.string "changed into a Pidgey…\p"
 	.string "Each day, Pokémon never cease to\n"
 	.string "amaze me!$"
 
@@ -1049,7 +1761,9 @@ YifuCity_EventScript_LostMyDoll_Text_0:
 
 YifuCity_EventScript_LostMyDoll_Text_1:
 	.string "I lost my doll while I was busy\n"
-	.string "playing!$"
+	.string "playing!\p"
+	.string "It's okay though, Cleffa is cuter\n"
+	.string "than any doll!$"
 
 YifuCity_EventScript_Cleffa_Text_0:
 	.string "Faa!$"
@@ -1087,7 +1801,7 @@ YifuCity_EventScript_RobberyVictim_Text_1:
 	.string "You and the Samurai scared those\n"
 	.string "crooks off? That's good…\p"
 	.string "Although I wonder where my stolen\n"
-	.string "Pokémon can be…$"
+	.string "Pokémon are…$"
 
 YifuCity_EventScript_RobberyVictim_Text_2:
 	.string "Here are your Pokémon!$"
@@ -1259,7 +1973,7 @@ YifuCity_EventScript_Surskit_Text_0:
 	.string "Sksksksk…$"
 
 YifuCity_Trigger_Lockdown_Text_0:
-	.string "ATTENTION! ATTENTION!\p"
+	.string "ATTENTION! ATTENTION!\n"
 	.string "THE CITY IS NOW UNDER LOCKDOWN!$"
 
 YifuCity_Trigger_Lockdown_Text_1:
@@ -1330,14 +2044,14 @@ YifuCity_EventScript_ChimechoLady_Text_0:
 	.string "Old Lady$"
 
 YifuCity_EventScript_ChimechoLady_Text_1:
-	.string "I love listening to Chimecho's songs.\n"
-	.string "They echo in its hollow body and\l"
+	.string "I love listening to Chimecho's songs.\p"
+	.string "They echo in its hollow body and\n"
 	.string "produce the most wonderful\l"
 	.string "harmonics.\p"
 	.string "You should always be kind to\n"
 	.string "Chimecho! They are sacred, and\l"
-	.string "mistreating one would surely bring\l"
-	.string "you bad luck.$"
+	.string "mistreating one\l"
+	.string "would surely bring you bad luck.$"
 
 YifuCity_EventScript_ChefOnBreak_Text_0:
 	.string "Cook$"
@@ -1380,3 +2094,190 @@ YifuCity_EventScript_ClothingShopSign_Text_0:
 YifuCity_EventScript_DecorationShopSign_Text_0:
 	.string "Woodworker\n"
 	.string "“We sell tables and chairs, mostly”$"
+
+SpeakToNatsukiMorning_Text_0:
+	.string "But… It is too late for dinner!$"
+
+SpeakToNatsukiLunchOrDinner_Text_0:
+	.string "It would be impolite not to invite\n"
+	.string "your friend, {PLAYER}.$"
+
+SpeakToNatsukiLunchOrDinner_Text_1:
+	.string "I have selected the Golden Drampa for\n"
+	.string "our outing.$"
+
+SpeakToNatsukiLunchOrDinner_Text_2:
+	.string "Shall we go in?$"
+
+SpeakToNatsukiLunchOrDinner_Text_3:
+	.string "Let's go!$"
+
+SpeakToNatsukiLunchOrDinner_Text_4:
+	.string "Not right now…$"
+
+SpeakToNatsukiAfternoon_Text_0:
+	.string "But… It is too late for lunch,\n"
+	.string "and too early for dinner!$"
+
+SpeakToNatsukiAfternoon_Text_1:
+	.string "Natsuki$"
+
+SpeakToNatsukiAfternoon_Text_2:
+	.string "Hey, you should chill.\n"
+	.string "The Golden Drampa's open all day!\p"
+	.string "I actually haven't had lunch yet.\n"
+	.string "I vote afternoon hotpot!$"
+
+SpeakToNatsukiAfternoon_Text_3:
+	.string "What d'you say, {PLAYER}?\n"
+	.string "You in or what?$"
+
+SpeakToNatsukiAfternoon_Text_4:
+	.string "Afternoon hotpot!$"
+
+SpeakToNatsukiNight_Text_0:
+	.string "What? Clearly, you haven't looked\n"
+	.string "at the time!$"
+
+SpeakToHarikoMorning_Text_0:
+	.string "{PLAYER}!\n"
+	.string "You are here too early!$"
+
+SpeakToHarikoMorning_Text_1:
+	.string "Too early for what?$"
+
+SpeakToHarikoMorning_Text_2:
+	.string "I'm hungry now!$"
+
+SpeakToHarikoMorning_Text_3:
+	.string "Do you not remember?\p"
+	.string "You said we would eat together\n"
+	.string "before leaving the city.$"
+
+SpeakToHarikoMorning_Text_4:
+	.string "When we said we would eat together\n"
+	.string "before leaving the city, I thought\l"
+	.string "that meant lunch, or dinner.$"
+
+HarikoNotABreakfastPlace_Text_0:
+	.string "I had selected the Golden Drampa for\n"
+	.string "our outing…$"
+
+HarikoNotABreakfastPlace_Text_1:
+	.string "But it isn't a breakfast place.\n"
+	.string "It is a lunch or dinner place.\p"
+	.string "You should have told me you wanted to\n"
+	.string "have breakfast!$"
+
+HarikoNotABreakfastPlace_Text_2:
+	.string "Hey, you should chill.\n"
+	.string "I'm sure they'll have breakfast\l"
+	.string "options!\p"
+	.string "I could actually go for a hotpot\n"
+	.string "anyway!$"
+
+HarikoNotABreakfastPlace_Text_3:
+	.string "Heck yeah!$"
+
+HarikoTooLateForDinner_Text_0:
+	.string "But it is too late for dinner, and\n"
+	.string "definitely too early for lunch!$"
+
+HarikoTooLateForDinner_Text_1:
+	.string "Hey, you should chill.\n"
+	.string "The Golden Drampa's open all night!\p"
+	.string "I haven't eaten much today.\n"
+	.string "I could go for a late night hotpot!\p"
+	.string "What d'you say, {PLAYER}?\n"
+	.string "You in or what?$"
+
+HarikoTooLateForDinner_Text_2:
+	.string "Late night hotpot!$"
+
+SpeakToHarikoLunchOrDinner_Text_0:
+	.string "lunch$"
+
+SpeakToHarikoLunchOrDinner_Text_1:
+	.string "dinner$"
+
+SpeakToHarikoLunchOrDinner_Text_2:
+	.string "{PLAYER}! You are here to eat\n"
+	.string "{STR_VAR_1}\n"
+	.string "with me, yes?$"
+
+SpeakToHarikoLunchOrDinner_Text_3:
+	.string "I saw Natsuki on the way here.\p"
+	.string "It would be impolite not to invite him,\n"
+	.string "too!$"
+
+SpeakToHarikoLunchOrDinner_Text_4:
+	.string "Hey, {PLAYER}!\n"
+	.string "Sounds like fun, I'm in!$"
+
+SpeakToHarikoNight_Text_0:
+	.string "{PLAYER}!\n"
+	.string "You are very late!$"
+
+SpeakToHarikoNight_Text_1:
+	.string "Late for what?$"
+
+SpeakToHarikoNight_Text_2:
+	.string "I'm sorry!$"
+
+SpeakToHarikoAfternoon_Text_0:
+	.string "{PLAYER}!\n"
+	.string "You are late!$"
+
+SpeakToHarikoAfternoon_Text_1:
+	.string "But it is both too late for lunch, and\n"
+	.string "too early for dinner!$"
+
+SpeakToHarikoAgain_Text_0:
+	.string "{PLAYER}. Shall we have… (Sigh)\n"
+	.string "Hotpot breakfast, apparently?$"
+
+SpeakToHarikoAgain_Text_1:
+	.string "{PLAYER}. Shall we have dinner\n"
+	.string "at the hotpot together?$"
+
+SpeakToHarikoAgain_Text_2:
+	.string "{PLAYER}. Shall we have… (Sigh)\n"
+	.string "Hotpot snack, apparently?$"
+
+SpeakToHarikoAgain_Text_3:
+	.string "{PLAYER}. Shall we have… (Sigh)\n"
+	.string "Late night hotpot?$"
+
+SpeakToNatsukiAgain_Text_0:
+	.string "Ready for a sick hotpot breakfast,\n"
+	.string "{PLAYER}?$"
+
+SpeakToNatsukiAgain_Text_1:
+	.string "Ready for a sick hotpot meal,\n"
+	.string "{PLAYER}?$"
+
+SpeakToNatsukiAgain_Text_2:
+	.string "Ready for a sick hotpot snack,\n"
+	.string "{PLAYER}?$"
+
+SpeakToNatsukiAgain_Text_3:
+	.string "Ready for a sick late night hotpot,\n"
+	.string "{PLAYER}?$"
+
+NatsukiCanIComeToo_Text_0:
+	.string "{PLAYER}! What's up? Did you hear\n"
+	.string "about the whole lockdown thing?\l"
+	.string "Wild stuff, huh?$"
+
+NatsukiCanIComeToo_Text_1:
+	.string "I found your friend Hariko!\n"
+	.string "So you're having {STR_VAR_1}\l"
+	.string "together?\l"
+	.string "Sounds like fun, can I come too?$"
+
+NotRightNow_Text_0:
+	.string "You still have errands to run?\n"
+	.string "We will be waiting here!$"
+
+NotRightNow_Text_1:
+	.string "Be quick about it! I'm starving!$"

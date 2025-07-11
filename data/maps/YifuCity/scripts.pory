@@ -11,6 +11,8 @@ const LOCALID_LOCKDOWN_SAMURAI = 33
 const LOCALID_LOCKDOWN_SAMURAI_NORTH = 34
 const LOCALID_HARIKO = 35
 
+const VAR_HOUR_OF_DAY = VAR_0x8000
+
 mapscripts YifuCity_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_YIFU_CITY)
@@ -38,7 +40,7 @@ script YifuCity_EscapedCrobatHideoutWithSamurai {
 		"You might be young, but you wouldn't make a half bad Samurai yourself,\lyou know…\p"
 		"Ha ha ha ha!\p"
 		"I have to go report to my superiors.\p"
-		"{PLAYER}!\nI am sure we will meet again!"
+		"{PLAYER}!\nI am sure we will meet again!\lUntil then, farewell!"
 	))
 	closemessage
 
@@ -54,10 +56,19 @@ script YifuCity_EventScript_StoleMyMon {
 	lock
 	faceplayer
 	speakername("Man")
-	msgbox(format(
-		"When I got my Shiftry back from the nurse, it had somehow changed into a Pidgey…\p"
-		"Each day, Pokémon never cease to amaze me!"
-	))
+
+	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+		msgbox(format(
+			"The Refuge's nurse was stealing our Pokémon?\p"
+			"That… explains a lot!"
+		))
+	} else {
+		msgbox(format(
+			"When my friend got his Shiftry back from the nurse, it had somehow changed into a Pidgey…\p"
+			"Each day, Pokémon never cease to amaze me!"
+		))
+	}
+
 	closemessage
 	release
 }
@@ -67,9 +78,12 @@ script YifuCity_EventScript_LostMyDoll {
 	faceplayer
 	speakername("Little Girl")
 	msgbox(format(
-		"I lost my doll while I was busy playing!"
+		"I lost my doll while I was busy playing!\p"
+		"It's okay though, Cleffa is cuter than any doll!"
 	))
 	closemessage
+
+	setnamedmon(SPECIES_CLEFFA)
 	release
 }
 
@@ -149,7 +163,7 @@ script YifuCity_EventScript_RobberyVictim {
 		faceplayer
 		msgbox(format(
 			"You and the Samurai scared those crooks off? That's good…\p"
-			"Although I wonder where my stolen Pokémon can be…"
+			"Although I wonder where my stolen Pokémon are…"
 		))
 
 		if (checkitem(ITEM_STOLEN_MONS)) {
@@ -656,7 +670,7 @@ script YifuCity_Trigger_Lockdown {
 		playse(SE_PIN)
 		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
 		msgbox(format(
-			"ATTENTION! ATTENTION!\p"
+			"ATTENTION! ATTENTION!\n"
 			"THE CITY IS NOW UNDER LOCKDOWN!"
 		))
 		closemessage
@@ -834,9 +848,9 @@ script YifuCity_EventScript_ChimechoLady {
 	faceplayer
 	speakername("Old Lady")
 	msgbox(format(
-		"I love listening to Chimecho's songs.\n"
+		"I love listening to Chimecho's songs.\p"
 		"They echo in its hollow body and produce the most wonderful harmonics.\p"
-		"You should always be kind to Chimecho! They are sacred, and mistreating one would surely bring you bad luck."
+		"You should always be kind to Chimecho! They are sacred, and mistreating one\lwould surely bring you bad luck."
 	))
 	closemessage
 
@@ -858,9 +872,6 @@ script YifuCity_EventScript_ChefOnBreak {
 		"The food service industry is truly merciless."
 	))
 	closemessage
-	
-	setnamedmon(SPECIES_CHIMECHO)
-	setdescribedmon(SPECIES_CHIMECHO)
 
 	release
 	end
@@ -923,3 +934,650 @@ script YifuCity_EventScript_DecorationShopSign {
 		"“We sell tables and chairs, mostly”"
 	), MSGBOX_SIGN)
 }
+
+// NATSUKI
+
+script YifuCity_EventScript_NastukiPostHideout {
+	lock
+	faceplayer
+
+	if (var(VAR_HOTPOT_SCENE_STATE) == 0) {
+		setvar(VAR_HOTPOT_SCENE_STATE, 1)
+		gettime
+
+		// Morning
+		if (var(VAR_HOUR_OF_DAY) >= 5 && var(VAR_HOUR_OF_DAY) <= 11) {
+			call(SpeakToNatsukiMorning)
+			// Lunch or dinner
+		} elif (
+			(var(VAR_HOUR_OF_DAY) > 11 && var(VAR_HOUR_OF_DAY) <= 15)
+			|| (var(VAR_HOUR_OF_DAY) > 18 && var(VAR_HOUR_OF_DAY) <= 22)
+		) {
+			call(SpeakToHarikoLunchOrDinner)
+			// Snack
+		} elif (var(VAR_HOUR_OF_DAY) > 15 && var(VAR_HOUR_OF_DAY) <= 18) {
+			call(SpeakToNatsukiAfternoon)
+			// Late night dinner (23h-5h)
+		} else {
+			call(SpeakToNatsukiNight)
+		}
+
+		closemessage
+	} else {
+		call(SpeakToNatsukiAgain)
+	}
+
+	release
+}
+
+script(local) SpeakToNatsukiMorning {
+	call(NatsukiCanIComeToo)
+
+	call(HarikoFacesPlayer)
+
+	speakername("Hariko")
+	msgbox(format(
+		"But… It is too late for dinner!"
+	))
+
+	call(HarikoNotABreakfastPlace)
+}
+
+script(local) SpeakToNatsukiLunchOrDinner {
+	call(NatsukiCanIComeToo)
+
+	call(HarikoFacesPlayer)
+
+	speakername("Hariko")
+	msgbox(format(
+		"It would be impolite not to invite\nyour friend, {PLAYER}."
+	))
+
+	applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(walk_in_place_fast_up))
+	waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+
+	msgbox(format(
+		"I have selected the Golden Drampa for our outing."
+	))
+
+	call(HarikoFacesPlayer)
+
+	msgbox(format(
+		"Shall we go in?"
+	))
+
+	mcdialogue(
+		"Let's go!",
+		"Not right now…"
+	)
+
+	switch (var(VAR_RESULT)) {
+		case 1:
+			call(EnterRestaurant)
+		case 0:
+			call(NotRightNow)
+	}
+}
+
+script(local) SpeakToNatsukiAfternoon {
+	call(NatsukiCanIComeToo)
+
+	call(HarikoFacesNatsuki)
+
+	speakername("Hariko")
+	msgbox(format(
+		"But… It is too late for lunch,\nand too early for dinner!"
+	))
+
+	call(NatsukiFacesHariko)
+	call(HarikoTurnsToNatsuki)
+
+	speakername("Natsuki")
+	msgbox(format(
+		"Hey, you should chill.\nThe Golden Drampa's open all day!\p"
+		"I actually haven't had lunch yet.\nI vote afternoon hotpot!"
+	))
+
+	call(NatsukiFacesPlayer)
+
+	msgbox(format(
+		"What d'you say, {PLAYER}?\nYou in or what?"
+	))
+
+	mcdialogue(
+		"Afternoon hotpot!",
+		"Not right now…"
+	)
+
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			call(EnterRestaurant)
+		case 1:
+			call(NotRightNow)
+	}
+}
+
+script(local) SpeakToNatsukiNight {
+	call(NatsukiCanIComeToo)
+
+	call(HarikoFacesPlayer)
+
+	speakername("Hariko")
+	msgbox(format(
+		"What? Clearly, you haven't looked\nat the time!"
+	))
+
+	call(HarikoTooLateForDinner)
+}
+
+// HARIKO
+
+script YifuCity_EventScript_HarikoPostHideout {
+	lock
+	faceplayer
+
+	if (var(VAR_HOTPOT_SCENE_STATE) == 0) {
+		setvar(VAR_HOTPOT_SCENE_STATE, 1)
+		gettime
+
+		// Morning
+		if (var(VAR_HOUR_OF_DAY) >= 5 && var(VAR_HOUR_OF_DAY) <= 11) {
+			call(SpeakToHarikoMorning)
+			// Lunch or dinner
+		} elif (
+			(var(VAR_HOUR_OF_DAY) > 11 && var(VAR_HOUR_OF_DAY) <= 15)
+			|| (var(VAR_HOUR_OF_DAY) > 18 && var(VAR_HOUR_OF_DAY) <= 22)
+		) {
+			call(SpeakToHarikoLunchOrDinner)
+			// Snack
+		} elif (var(VAR_HOUR_OF_DAY) > 15 && var(VAR_HOUR_OF_DAY) <= 18) {
+			call(SpeakToHarikoAfternoon)
+			// Late night dinner (23h-5h)
+		} else {
+			call(SpeakToHarikoNight)
+		}
+
+		closemessage
+	} else {
+		call(SpeakToHarikoAgain)
+	}
+
+	release
+}
+
+script(local) SpeakToHarikoMorning {
+	speakername("Hariko")
+	msgbox(format(
+		"{PLAYER}!\nYou are here too early!"
+	))
+
+	mcdialogue(
+		"Too early for what?",
+		"I'm hungry now!"
+	)
+
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox(format(
+				"Do you not remember?\p"
+				"You said we would eat together\nbefore leaving the city."
+			))
+
+		case 1:
+			msgbox(format(
+				"When we said we would eat together\nbefore leaving the city, I thought\lthat meant lunch, or dinner."
+			))
+	}
+
+	call(HarikoNotABreakfastPlace)
+}
+
+script(local) HarikoNotABreakfastPlace {
+	applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(walk_in_place_fast_up))
+	waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+
+	msgbox(format(
+		"I had selected the Golden Drampa for our outing…"
+	))
+
+	call(HarikoFacesPlayer)
+
+	msgbox(format(
+		"But it isn't a breakfast place.\nIt is a lunch or dinner place.\p"
+		"You should have told me you wanted to have breakfast!"
+	))
+
+	call(NatsukiFacesHariko)
+	call(HarikoTurnsToNatsuki)
+
+	speakername("Natsuki")
+	msgbox(format(
+		"Hey, you should chill.\nI'm sure they'll have breakfast options!\p"
+		"I could actually go for a hotpot anyway!"
+	))
+
+	call(NatsukiFacesPlayer)
+	speakername("Natsuki")
+	msgbox(format(
+		"What d'you say, {PLAYER}?\nYou in or what?"
+	))
+
+	mcdialogue(
+		"Heck yeah!",
+		"Not right now…"
+	)
+
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			call(EnterRestaurant)
+		case 1:
+			call(NotRightNow)
+	}
+}
+
+script(local) HarikoTooLateForDinner {
+	applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(walk_in_place_fast_up))
+	waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+
+	msgbox(format(
+		"I had selected the Golden Drampa for our outing…"
+	))
+
+	faceplayer
+
+	msgbox(format(
+		"But it is too late for dinner, and definitely too early for lunch!"
+	))
+
+	call(NatsukiFacesHariko)
+	call(HarikoTurnsToNatsuki)
+
+	speakername("Natsuki")
+	msgbox(format(
+		"Hey, you should chill.\nThe Golden Drampa's open all night!\p"
+		"I haven't eaten much today.\nI could go for a late night hotpot!\p"
+		"What d'you say, {PLAYER}?\nYou in or what?"
+	))
+
+	mcdialogue(
+		"Late night hotpot!",
+		"Not right now…"
+	)
+
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			call(EnterRestaurant)
+		case 1:
+			call(NotRightNow)
+	}
+}
+
+script(local) SpeakToHarikoLunchOrDinner {
+	if (var(VAR_HOUR_OF_DAY) > 11 && var(VAR_HOUR_OF_DAY) <= 15) {
+		bufferstring(STR_VAR_1, "lunch")
+	} else {
+		bufferstring(STR_VAR_1, "dinner")
+	}
+
+	speakername("Hariko")
+	msgbox(format(
+		"{PLAYER}! You are here to eat {STR_VAR_1}\nwith me, yes?"
+	))
+
+	call(HarikoFacesNatsuki)
+	turnobject(LOCALID_FRONT_OF_RESTAURANT_NATSUKI, DIR_WEST)
+
+	speakername("Hariko")
+	msgbox(format(
+		"I saw Natsuki on the way here.\p"
+		"It would be impolite not to invite him, too!"
+	))
+	
+	call(NatsukiFacesPlayer)
+	faceplayer
+
+	speakername("Natsuki")
+	msgbox(format(
+		"Hey, {PLAYER}!\nSounds like fun, I'm in!"
+	))
+
+	mcdialogue(
+		"Let's go!",
+		"Not right now…"
+	)
+
+	switch (var(VAR_RESULT)) {
+		case 1:
+			call(EnterRestaurant)
+		case 0:
+			call(NotRightNow)
+	}
+}
+
+script(local) SpeakToHarikoNight {
+	speakername("Hariko")
+	msgbox(format(
+		"{PLAYER}!\nYou are very late!"
+	))
+
+	mcdialogue(
+		"Late for what?",
+		"I'm sorry!"
+	)
+
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox(format(
+				"Do you not remember?\p"
+				"You said we would eat together\nbefore leaving the city."
+			))
+
+		case 1:
+			msgbox(format(
+				"When we said we would eat together\nbefore leaving the city, I thought\lthat meant lunch, or dinner."
+			))
+	}
+
+	call(HarikoTooLateForDinner)
+}
+
+script(local) SpeakToHarikoAfternoon {
+	speakername("Hariko")
+	msgbox(format(
+		"{PLAYER}!\nYou are late!"
+	))
+
+	mcdialogue(
+		"Late for what?",
+		"I'm sorry!"
+	)
+
+	switch (var(VAR_RESULT)) {
+		case 0:
+			msgbox(format(
+				"Do you not remember?\p"
+				"You said we would eat together\nbefore leaving the city."
+			))
+
+		case 1:
+			msgbox(format(
+				"When we said we would eat together\nbefore leaving the city, I thought\lthat meant lunch, or dinner."
+			))
+	}
+
+	applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(walk_in_place_fast_up))
+	waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+
+	msgbox(format(
+		"I had selected the Golden Drampa for our outing…"
+	))
+
+	faceplayer
+
+	msgbox(format(
+		"But it is both too late for lunch, and too early for dinner!"
+	))
+
+	call(NatsukiFacesHariko)
+	call(HarikoTurnsToNatsuki)
+
+	speakername("Natsuki")
+	msgbox(format(
+		"Hey, you should chill.\nThe Golden Drampa's open all day!\p"
+		"I actually haven't had lunch yet.\nI vote afternoon hotpot!"
+	))
+
+	call(NatsukiFacesPlayer)
+
+	msgbox(format(
+		"What d'you say, {PLAYER}?\nYou in or what?"
+	))
+
+	mcdialogue(
+		"Afternoon hotpot!",
+		"Not right now…"
+	)
+
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			call(EnterRestaurant)
+		case 1:
+			call(NotRightNow)
+	}
+}
+
+script(local) SpeakToHarikoAgain {
+	gettime
+
+	call(NatsukiTurnsToPlayer)
+
+	speakername("Hariko")
+
+	// Morning
+	if (var(VAR_HOUR_OF_DAY) >= 5 && var(VAR_HOUR_OF_DAY) <= 11) {
+		msgbox(format(
+			"{PLAYER}. Shall we have… (Sigh)\n"
+			"Hotpot breakfast, apparently?"
+		))
+		// Lunch or dinner
+	} elif (
+		(var(VAR_HOUR_OF_DAY) > 11 && var(VAR_HOUR_OF_DAY) <= 15)
+		|| (var(VAR_HOUR_OF_DAY) > 18 && var(VAR_HOUR_OF_DAY) <= 22)
+	) {
+		msgbox(format(
+			"{PLAYER}. Shall we have dinner\nat the hotpot together?"
+		))
+		// Snack
+	} elif (var(VAR_HOUR_OF_DAY) > 15 && var(VAR_HOUR_OF_DAY) <= 18) {
+		msgbox(format(
+			"{PLAYER}. Shall we have… (Sigh)\n"
+			"Hotpot snack, apparently?"
+		))
+		// Late night dinner (23h-5h)
+	} else {
+		msgbox(format(
+			"{PLAYER}. Shall we have… (Sigh)\n"
+			"Late night hotpot?"
+		))
+	}
+
+	mcdialogue(
+		"Let's go!",
+		"Not right now…"
+	)
+
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			call(EnterRestaurant)
+		case 1:
+			call(NotRightNow)
+	}
+}
+
+script(local) SpeakToNatsukiAgain {
+	gettime
+
+	call(HarikoTurnsToPlayer)
+
+	speakername("Natsuki")
+
+	// Morning
+	if (var(VAR_HOUR_OF_DAY) >= 5 && var(VAR_HOUR_OF_DAY) <= 11) {
+		msgbox(format(
+			"Ready for a sick hotpot breakfast,\n{PLAYER}?"
+		))
+		// Lunch or dinner
+	} elif (
+		(var(VAR_HOUR_OF_DAY) > 11 && var(VAR_HOUR_OF_DAY) <= 15)
+		|| (var(VAR_HOUR_OF_DAY) > 18 && var(VAR_HOUR_OF_DAY) <= 22)
+	) {
+		msgbox(format(
+			"Ready for a sick hotpot meal,\n{PLAYER}?"
+		))
+		// Snack
+	} elif (var(VAR_HOUR_OF_DAY) > 15 && var(VAR_HOUR_OF_DAY) <= 18) {
+		msgbox(format(
+			"Ready for a sick hotpot snack,\n{PLAYER}?"
+		))
+		// Late night dinner (23h-5h)
+	} else {
+		msgbox(format(
+			"Ready for a sick late night hotpot,\n{PLAYER}?"
+		))
+	}
+
+	mcdialogue(
+		"Let's go!",
+		"Not right now…"
+	)
+
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			call(EnterRestaurant)
+		case 1:
+			call(NotRightNow)
+	}
+}
+
+script(local) NatsukiCanIComeToo {
+	faceplayer
+
+	speakername("Natsuki")
+	msgbox(format(
+		"{PLAYER}! What's up? Did you hear\nabout the whole lockdown thing?\l"
+		"Wild stuff, huh?"
+	))
+
+	call(NatsukiFacesHariko)
+
+	if (var(VAR_HOUR_OF_DAY) > 5 && var(VAR_HOUR_OF_DAY) <= 15) {
+		bufferstring(STR_VAR_1, "lunch")
+	} else {
+		bufferstring(STR_VAR_1, "dinner")
+	}
+
+	msgbox(format(
+		"I found your friend Hariko!\nSo you're having {STR_VAR_1} together?\l"
+		"Sounds like fun, can I come too?"
+	))
+}
+
+script(local) NotRightNow {
+	call(HarikoFacesPlayer)
+	speakername("Hariko")
+	msgbox(format(
+		"You still have errands to run?\nWe will be waiting here!"
+	))
+
+	call(NatsukiFacesPlayer)
+	speakername("Natsuki")
+	msgbox(format(
+		"Be quick about it! I'm starving!"
+	))
+}
+
+script(local) EnterRestaurant {
+	setvar(VAR_HOTPOT_SCENE_STATE, 1)
+	warp(MAP_YIFU_CITY_RESTAURANT, WARP_ID_RESTAURANT_CUTSCENE)
+}
+
+script(local) HarikoFacesPlayer {
+	switch(var(VAR_FACING)) {
+		case DIR_NORTH:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(walk_in_place_fast_down))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+		case DIR_SOUTH:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(walk_in_place_fast_up))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+		case DIR_EAST:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(walk_in_place_fast_left))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+		case DIR_WEST:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(walk_in_place_fast_right))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+	}
+}
+
+script(local) NatsukiFacesPlayer {
+	switch(var(VAR_FACING)) {
+		case DIR_NORTH:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI, moves(walk_in_place_fast_down))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI)
+		case DIR_SOUTH:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI, moves(walk_in_place_fast_up))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI)
+		case DIR_EAST:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI, moves(walk_in_place_fast_left))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI)
+		case DIR_WEST:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI, moves(walk_in_place_fast_right))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI)
+	}
+}
+
+script(local) HarikoTurnsToPlayer {
+	switch(var(VAR_FACING)) {
+		case DIR_NORTH:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(face_down))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+		case DIR_SOUTH:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(face_up))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+		case DIR_EAST:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(face_left))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+		case DIR_WEST:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(face_right))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+	}
+}
+
+script(local) NatsukiTurnsToPlayer {
+	switch(var(VAR_FACING)) {
+		case DIR_NORTH:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI, moves(face_down))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI)
+		case DIR_SOUTH:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI, moves(face_up))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI)
+		case DIR_EAST:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI, moves(face_left))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI)
+		case DIR_WEST:
+			applymovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI, moves(face_right))
+			waitmovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI)
+	}
+}
+
+script(local) NatsukiFacesHariko {
+	applymovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI, moves(walk_in_place_fast_left))
+	waitmovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI)
+}
+
+script(local) HarikoFacesNatsuki {
+	applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(walk_in_place_fast_right))
+	waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+}
+
+script(local) NatsukiTurnsToHariko {
+	applymovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI, moves(face_left))
+	waitmovement(LOCALID_FRONT_OF_RESTAURANT_NATSUKI)
+}
+
+script(local) HarikoTurnsToNatsuki {
+	applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(face_right))
+	waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
+}
+
