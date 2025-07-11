@@ -20,7 +20,7 @@
 enum TMHMItemId
 {
     RECURSIVELY(R_ZIP(ENUM_TM, TO_TMHM_NUMS NUMBERS_256, (FOREACH_TM(APPEND_COMMA))))
-    RECURSIVELY(R_ZIP(ENUM_HM, TO_TMHM_NUMS NUMBERS_256, (FOREACH_HM(APPEND_COMMA))))
+    /* RECURSIVELY(R_ZIP(ENUM_HM, TO_TMHM_NUMS NUMBERS_256, (FOREACH_HM(APPEND_COMMA)))) */
 };
 
 #undef ENUM_TM
@@ -35,8 +35,9 @@ enum TMHMIndex
 {
     FOREACH_TMHM(UNPACK_TM_HM_ENUM)
     NUM_ALL_MACHINES,
-    NUM_TECHNICAL_MACHINES = (0 FOREACH_TM(PLUS_ONE)),
-    NUM_HIDDEN_MACHINES = (0 FOREACH_HM(PLUS_ONE)),
+    // We don't need these bc we have no "HMs"
+    /* NUM_TECHNICAL_MACHINES = (0 FOREACH_TM(PLUS_ONE)), */
+    /* NUM_HIDDEN_MACHINES = (0 FOREACH_HM(PLUS_ONE)), */
 };
 
 #undef UNPACK_TM_HM_ENUM
@@ -81,8 +82,6 @@ extern const struct Item gItemsInfo[];
 extern struct BagPocket gBagPockets[];
 extern const struct TmHmIndexKey gTMHMItemMoveIds[];
 
-u16 GetBagItemQuantity(u16 *quantity);
-
 #define UNPACK_ITEM_TO_TM_INDEX(_tm) case CAT(ITEM_TM_, _tm): return CAT(ENUM_TM_HM_, _tm) + 1;
 #define UNPACK_ITEM_TO_HM_INDEX(_hm) case CAT(ITEM_HM_, _hm): return CAT(ENUM_TM_HM_, _hm) + 1;
 #define UNPACK_ITEM_TO_TM_MOVE_ID(_tm) case CAT(ITEM_TM_, _tm): return CAT(MOVE_, _tm);
@@ -99,7 +98,7 @@ static inline enum TMHMIndex GetItemTMHMIndex(u16 item)
          *      return 2;
          * etc */
         FOREACH_TM(UNPACK_ITEM_TO_TM_INDEX)
-        FOREACH_HM(UNPACK_ITEM_TO_HM_INDEX)
+        /* FOREACH_HM(UNPACK_ITEM_TO_HM_INDEX) */
         default:
             return 0;
     }
@@ -116,7 +115,7 @@ static inline u16 GetItemTMHMMoveId(u16 item)
          *      return MOVE_DRAGON_CLAW;
          * etc */
         FOREACH_TM(UNPACK_ITEM_TO_TM_MOVE_ID)
-        FOREACH_HM(UNPACK_ITEM_TO_HM_MOVE_ID)
+        /* FOREACH_HM(UNPACK_ITEM_TO_HM_MOVE_ID) */
         default:
             return MOVE_NONE;
     }

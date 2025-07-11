@@ -1017,7 +1017,7 @@ void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
         itemQuantity = GetBagItemQuantity(gBagPosition.pocket, itemIndex);
 
         // Draw HM icon
-        if (gBagPosition.pocket == POCKET_TM_HM && GetItemTMHMIndex(itemId) > NUM_TECHNICAL_MACHINES)
+        if (gBagPosition.pocket == POCKET_TM_HM && GetItemTMHMIndex(itemId) > NUM_ALL_MACHINES)
             BlitBitmapToWindow(windowId, gBagMenuHMIcon_Gfx, 8, y - 1, 16, 16);
 
         if (gBagPosition.pocket != POCKET_KEY_ITEMS && GetItemImportance(itemId) == FALSE)
@@ -1308,11 +1308,11 @@ static void Task_BagMenu_HandleInput(u8 taskId)
                 }
 
                 data[1] = GetItemListPosition(gBagPosition.pocket);
-                data[2] = BagGetQuantityByPocketPosition(gBagPosition.pocket + 1, data[1]);
+                data[2] = GetBagItemQuantity(gBagPosition.pocket, data[1]);
                 if (gBagPosition.cursorPosition[gBagPosition.pocket] == gBagMenu->numItemStacks[gBagPosition.pocket] - 1)
                     break;
                 else
-                    gSpecialVar_ItemId = BagGetItemIdByPocketPosition(gBagPosition.pocket + 1, data[1]);
+                    gSpecialVar_ItemId = GetBagItemId(gBagPosition.pocket, data[1]);
 
                 PlaySE(SE_SELECT);
                 BagDestroyPocketScrollArrowPair();
@@ -2033,7 +2033,7 @@ static void PrintItemCantBeHeld(u8 taskId)
 {
     switch (gBagPosition.pocket)
     {
-        case TMHM_POCKET:
+        case POCKET_TM_HM:
             StringCopy(gStringVar4, gText_ScrollsCantBeHeld);
             break;
         default:
@@ -2789,8 +2789,8 @@ void UNUSED ItemMenu_Register(u8 taskId)
     BagDestroyPocketScrollArrowPair();
     BagMenu_PrintCursor(tListTaskId, COLORID_GRAY_CURSOR);
     tListPosition = listPosition;
-    tQuantity = BagGetQuantityByPocketPosition(gBagPosition.pocket + 1, listPosition);
-    gSpecialVar_ItemId = BagGetItemIdByPocketPosition(gBagPosition.pocket + 1, listPosition);
+    tQuantity = GetBagItemQuantity(gBagPosition.pocket, listPosition);
+    gSpecialVar_ItemId = GetBagItemId(gBagPosition.pocket, listPosition);
     sContextMenuFuncs[gBagPosition.location](taskId);
 }
 
@@ -2806,7 +2806,7 @@ static void UNUSED ItemMenu_Deselect(u8 taskId)
 {
     s16* data = gTasks[taskId].data;
     int listPosition = ListMenu_ProcessInput(tListTaskId);
-    u16 itemId = BagGetItemIdByPocketPosition(gBagPosition.pocket + 1, listPosition);
+    u16 itemId = GetBagItemId(gBagPosition.pocket, listPosition);
 
     ResetRegisteredItem(itemId);
 
@@ -3424,24 +3424,24 @@ static void SortItemsInBag(u8 pocket, u8 type)
 
     switch (pocket)
     {
-    case ITEMS_POCKET:
-        itemMem = gSaveBlock1Ptr->bagPocket_Items;
+    case POCKET_ITEMS:
+        itemMem = gSaveBlock1Ptr->bag.items;
         itemAmount = BAG_ITEMS_COUNT;
         break;
-    case KEYITEMS_POCKET:
-        itemMem = gSaveBlock1Ptr->bagPocket_KeyItems;
+    case POCKET_KEY_ITEMS:
+        itemMem = gSaveBlock1Ptr->bag.keyItems;
         itemAmount = BAG_KEYITEMS_COUNT;
         break;
-    case BALLS_POCKET:
-        itemMem = gSaveBlock1Ptr->bagPocket_PokeBalls;
+    case POCKET_POKE_BALLS:
+        itemMem = gSaveBlock1Ptr->bag.pokeBalls;
         itemAmount = BAG_POKEBALLS_COUNT;
         break;
-    case BERRIES_POCKET:
-        itemMem = gSaveBlock1Ptr->bagPocket_Berries;
+    case POCKET_BERRIES:
+        itemMem = gSaveBlock1Ptr->bag.berries;
         itemAmount = BAG_BERRIES_COUNT;
         break;
-    case TMHM_POCKET:
-        itemMem = gSaveBlock1Ptr->bagPocket_TMHM;
+    case POCKET_TM_HM:
+        itemMem = gSaveBlock1Ptr->bag.TMsHMs;
         itemAmount = BAG_TMHM_COUNT;
         break;
     default:
@@ -3534,8 +3534,8 @@ static s8 CompareItemsAlphabetically(struct ItemSlot* itemSlot1, struct ItemSlot
 
 static s8 CompareItemsByMost(struct ItemSlot* itemSlot1, struct ItemSlot* itemSlot2)
 {
-    u16 quantity1 = GetBagItemQuantity(&itemSlot1->quantity);
-    u16 quantity2 = GetBagItemQuantity(&itemSlot2->quantity);
+    u16 quantity1 = GetBagItemQuantity(gBagPosition.pocket, itemSlot1->quantity);
+    u16 quantity2 = GetBagItemQuantity(gBagPosition.pocket, itemSlot2->quantity);
 
     if (itemSlot1->itemId == ITEM_NONE)
         return 1;

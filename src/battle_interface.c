@@ -2594,14 +2594,14 @@ static void PrintBattlerOnAbilityPopUp(u8 battler, u8 spriteId1, u8 spriteId2)
 
     if (
         (gBattlerPositions[battler] & BIT_SIDE) != B_SIDE_PLAYER
-        && StringCompareWithoutExtCtrlCodes(nick, GetSpeciesName(gBattleMons[battler].species, SKIP_NAME_CHECK)) == 0
+        && StringCompareWithoutExtCtrlCodes(gStringVar1, GetSpeciesName(gBattleMons[battler].species, SKIP_NAME_CHECK)) == 0
     )
     {
         StringCopy(gStringVar1, GetSpeciesName(gBattleMons[battler].species, DO_NAME_CHECK));
     }
 
     while (gStringVar1[totalChar] != EOS)
-    totalChar++;
+        totalChar++;
 
     lastChar = gStringVar1[totalChar - 1];
     StringAppend(gStringVar1, COMPOUND_STRING("'"));

@@ -14196,16 +14196,15 @@ static void Cmd_recoverbasedonsunlight(void)
             switch (GetMoveEffect(gCurrentMove))
             {
             case EFFECT_MOONLIGHT:
-                if (time == TIME_NIGHT || time == TIME_EVENING)
+                if (time == TIME_NIGHT || time == TIME_EVENING || time == TIME_DEAD_NIGHT)
                     healingModifier = 2;
                 break;
             case EFFECT_MORNING_SUN:
-                if ((OW_TIMES_OF_DAY == GEN_3 && time == TIME_DAY) // Gen 3 doesn't have morning
-                  || (OW_TIMES_OF_DAY != GEN_3 && time == TIME_MORNING))
+                if (time == TIME_EARLY_MORNING || time == TIME_MORNING)
                     healingModifier = 2;
                 break;
             case EFFECT_SYNTHESIS:
-                if (time == TIME_DAY)
+                if (time == TIME_MORNING || time == TIME_LUNCHTIME || time == TIME_AFTERNOON)
                     healingModifier = 2;
                 break;
             default:

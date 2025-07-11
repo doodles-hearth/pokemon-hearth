@@ -46,11 +46,6 @@ static const u32 sBadgesList[NUM_BADGES + 1] =
 #include "data/pokemon/item_effects.h"
 #include "data/items.h"
 
-u16 GetBagItemQuantity(u16 *quantity)
-{
-    return gSaveBlock2Ptr->encryptionKey ^ *quantity;
-}
-
 #define UNPACK_TM_ITEM_ID(_tm) [CAT(ENUM_TM_HM_, _tm) + 1] = { CAT(ITEM_TM_, _tm), CAT(MOVE_, _tm) },
 #define UNPACK_HM_ITEM_ID(_hm) [CAT(ENUM_TM_HM_, _hm) + 1] = { CAT(ITEM_HM_, _hm), CAT(MOVE_, _hm) },
 
@@ -58,7 +53,7 @@ const struct TmHmIndexKey gTMHMItemMoveIds[NUM_ALL_MACHINES + 1] =
 {
     [0] = { ITEM_NONE, MOVE_NONE }, // Failsafe
     FOREACH_TM(UNPACK_TM_ITEM_ID)
-    FOREACH_HM(UNPACK_HM_ITEM_ID)
+    /* FOREACH_HM(UNPACK_HM_ITEM_ID) */
     /*
      * Expands to the following:
      * 
@@ -153,7 +148,8 @@ void SetBagItemsPointers(void)
 
 u8 *CopyItemName(u16 itemId, u8 *dst)
 {
-    if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES)
+    if (itemId >= ITEM_TM01 && itemId <= ITEM_HM08)
+    /* if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES) */
     {
         StringCopy(dst, GetMoveName(gItemsInfo[itemId].secondaryId));
         return StringAppend(dst, gText_Scroll);
@@ -179,7 +175,8 @@ u8 *CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
     else
     {
         u8 *end;
-        if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES)
+        if (itemId >= ITEM_TM01 && itemId <= ITEM_HM08)
+        /* if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES) */
         {
             end = StringCopy(dst, GetMoveName(gItemsInfo[itemId].secondaryId));
         }
@@ -960,7 +957,8 @@ static u16 SanitizeItemId(u16 itemId)
 
 const u8 *GetItemName(u16 itemId)
 {
-    if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES)
+    if (itemId >= ITEM_TM01 && itemId <= ITEM_HM08)
+    /* if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES) */
     {
         return GetMoveName(gItemsInfo[itemId].secondaryId);
     }

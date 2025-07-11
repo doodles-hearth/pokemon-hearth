@@ -1029,8 +1029,6 @@ static const s8 sFriendshipEventModifiers[][3] =
     [FRIENDSHIP_EVENT_FAINT_LARGE]     = {-5, -5, -10},
 };
 
-#define HM_MOVES_END 0xFFFF
-
 static const struct SpeciesItem sAlteringCaveWildMonHeldItems[] =
 {
     {SPECIES_NONE,      ITEM_NONE},
@@ -6224,7 +6222,8 @@ const u16 *GetMonSpritePalFromSpecies(u16 species, bool32 isShiny, bool32 isFema
 
 bool32 IsMoveHM(u16 move)
 {
-    return FALSE FOREACH_HM(OR_MOVE_IS_HM);
+    return FALSE;
+    /* return FALSE FOREACH_HM(OR_MOVE_IS_HM); */
 }
 
 #undef OR_MOVE_IS_HM
@@ -6301,6 +6300,8 @@ void BoxMonRestorePP(struct BoxPokemon *boxMon)
         }
     }
 }
+
+void SetMonPreventsSwitchingString(void)
 {
     gLastUsedAbility = gBattleStruct->abilityPreventingSwitchout;
 

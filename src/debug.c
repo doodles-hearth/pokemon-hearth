@@ -476,10 +476,13 @@ static const s32 sPowersOfTen[] =
 // Menu Actions. Make sure that submenus are defined before the menus that call them.
 static const struct DebugMenuOption sDebugMenu_Actions_TimeMenu_TimesOfDay[] =
 {
-    [TIME_MORNING] = { gTimeOfDayStringsTable[TIME_MORNING], DebugAction_TimeMenu_ChangeTimeOfDay },
-    [TIME_DAY]     = { gTimeOfDayStringsTable[TIME_DAY],     DebugAction_TimeMenu_ChangeTimeOfDay },
-    [TIME_EVENING] = { gTimeOfDayStringsTable[TIME_EVENING], DebugAction_TimeMenu_ChangeTimeOfDay },
-    [TIME_NIGHT]   = { gTimeOfDayStringsTable[TIME_NIGHT],   DebugAction_TimeMenu_ChangeTimeOfDay },
+    [TIME_EARLY_MORNING] = { gTimeOfDayStringsTable[TIME_EARLY_MORNING], DebugAction_TimeMenu_ChangeTimeOfDay },
+    [TIME_MORNING]       = { gTimeOfDayStringsTable[TIME_MORNING], DebugAction_TimeMenu_ChangeTimeOfDay },
+    [TIME_LUNCHTIME]     = { gTimeOfDayStringsTable[TIME_LUNCHTIME],     DebugAction_TimeMenu_ChangeTimeOfDay },
+    [TIME_AFTERNOON]     = { gTimeOfDayStringsTable[TIME_AFTERNOON],     DebugAction_TimeMenu_ChangeTimeOfDay },
+    [TIME_EVENING]       = { gTimeOfDayStringsTable[TIME_EVENING], DebugAction_TimeMenu_ChangeTimeOfDay },
+    [TIME_NIGHT]         = { gTimeOfDayStringsTable[TIME_NIGHT],   DebugAction_TimeMenu_ChangeTimeOfDay },
+    [TIME_DEAD_NIGHT]    = { gTimeOfDayStringsTable[TIME_DEAD_NIGHT],   DebugAction_TimeMenu_ChangeTimeOfDay },
     { NULL }
 };
 
@@ -512,8 +515,8 @@ static const struct DebugMenuOption sDebugMenu_Actions_TimeMenu[] =
     { COMPOUND_STRING("Get time of day…"),  DebugAction_ExecuteScript, Debug_EventScript_PrintTimeOfDay },
     { COMPOUND_STRING("Set time of day…"),  DebugAction_OpenSubMenuFakeRTC, sDebugMenu_Actions_TimeMenu_TimesOfDay },
     { COMPOUND_STRING("Set weekday…"),      DebugAction_OpenSubMenuFakeRTC, sDebugMenu_Actions_TimeMenu_Weekdays },
-    { COMPOUND_STRING("Check wall clock…"), DebugAction_ExecuteScript, PlayersHouse_2F_EventScript_CheckWallClock },
-    { COMPOUND_STRING("Set wall clock…"),   DebugAction_ExecuteScript, PlayersHouse_2F_EventScript_SetWallClock },
+    /* { COMPOUND_STRING("Check wall clock…"), DebugAction_ExecuteScript, PlayersHouse_2F_EventScript_CheckWallClock }, */
+    /* { COMPOUND_STRING("Set wall clock…"),   DebugAction_ExecuteScript, PlayersHouse_2F_EventScript_SetWallClock }, */
     { NULL }
 };
 
@@ -1590,12 +1593,6 @@ void DebugMenu_CalculateTimeOfDay(struct ScriptContext *ctx)
     enum TimeOfDay timeOfDay = GetTimeOfDay();
     switch (timeOfDay)
     {
-        case TIME_DEAD_NIGHT:
-            StringExpandPlaceholders(gStringVar1, gTimeOfDayStringsTable[TIME_DEAD_NIGHT]);
-            break;
-        case TIME_EARLY_MORNING:
-            StringExpandPlaceholders(gStringVar1, gTimeOfDayStringsTable[TIME_EARLY_MORNING]);
-            break;
         case TIME_EARLY_MORNING:
         case TIME_MORNING:
         case TIME_LUNCHTIME:
@@ -3067,7 +3064,7 @@ static void DebugAction_TimeMenu_ChangeTimeOfDay(u8 taskId)
             FakeRtc_ForwardTimeTo(EVENING_HOUR_BEGIN, 0, 0);
             break;
         case TIME_NIGHT:
-            FakeRtc_ForwardTimeTo(NIGHT_HOUR_BEGIN, 0, 0);
+            FakeRtc_ForwardTimeTo(NIGHTTIME_HOUR_BEGIN, 0, 0);
             break;
     }
     Debug_DestroyMenu_Full(taskId);
@@ -3082,7 +3079,7 @@ static void DebugAction_TimeMenu_ChangeWeekdays(u8 taskId)
 
     DebugAction_DestroyExtraWindow(taskId);
     daysToAdd = ((input - rtc->dayOfWeek) + WEEKDAY_COUNT) % WEEKDAY_COUNT;
-    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0);
+    FakeRtc_AdvanceTimeBy(daysToAdd, 0, 0, 0, TRUE);
     Debug_DestroyMenu_Full(taskId);
     SetMainCallback2(CB2_LoadMap);
 }
