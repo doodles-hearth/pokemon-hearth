@@ -1,5 +1,16 @@
-mapscripts YifuCity_Restaurant_MapScripts {
+const FLAG_HIDE_HOTPOT_SCENE = FLAG_TEMP_1
 
+mapscripts YifuCity_Restaurant_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_HOTPOT_SCENE_STATE) == 2) {
+			getnatsukistartermongfx(VAR_OBJ_GFX_ID_0)
+		} else {
+			setflag(FLAG_HIDE_HOTPOT_SCENE)
+		}
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_HOTPOT_SCENE_STATE, 2: HotpotWithFriends
+    ]
 }
 
 script YifuCity_Restaurant_EventScript_UninspiredChef {
@@ -42,4 +53,12 @@ script YifuCity_Restaurant_EventScript_RunningChef {
 	msgbox(format(
 		"Huff… Huff…\nI wish my colleague would stop whining and get back to helping me…"
 	))
+}
+
+script(local) HotpotWithFriends {
+	lockall
+
+	
+
+	releaseall
 }

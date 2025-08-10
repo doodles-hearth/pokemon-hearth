@@ -1361,6 +1361,7 @@ script(local) SpeakToHarikoAgain {
 
 	speakername("Hariko")
 
+	gettime
 	// Morning
 	if (var(VAR_HOUR_OF_DAY) >= 5 && var(VAR_HOUR_OF_DAY) <= 11) {
 		msgbox(format(
@@ -1489,7 +1490,7 @@ script(local) NotRightNow {
 }
 
 script(local) EnterRestaurant {
-	setvar(VAR_HOTPOT_SCENE_STATE, 1)
+	setvar(VAR_HOTPOT_SCENE_STATE, 2)
 	warp(MAP_YIFU_CITY_RESTAURANT, WARP_ID_RESTAURANT_CUTSCENE)
 }
 

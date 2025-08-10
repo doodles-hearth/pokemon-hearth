@@ -2352,6 +2352,11 @@
 	.2byte \varForm2
 	.endm
 
+	.macro getnatsukistartermongfx varGfx:req
+	callnative GetNatsukiStarter, requests_effects=1
+	.2byte \varSpecies1
+	.endm
+
 	@ Plays the cry of the first alive party member.
 	.macro playfirstmoncry
 	callnative PlayFirstMonCry, requests_effects=1

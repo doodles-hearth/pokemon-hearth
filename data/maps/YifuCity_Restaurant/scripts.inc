@@ -1,5 +1,21 @@
 YifuCity_Restaurant_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, YifuCity_Restaurant_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, YifuCity_Restaurant_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+YifuCity_Restaurant_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	compare VAR_HOTPOT_SCENE_STATE, 2
+	goto_if_eq YifuCity_Restaurant_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	setflag FLAG_TEMP_1
+	return
+
+YifuCity_Restaurant_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	getnatsukistartermongfx VAR_OBJ_GFX_ID_0
+	return
+
+YifuCity_Restaurant_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
+	map_script_2 VAR_HOTPOT_SCENE_STATE, 2, HotpotWithFriends
+	.2byte 0
 
 
 YifuCity_Restaurant_EventScript_UninspiredChef::
@@ -21,6 +37,12 @@ YifuCity_Restaurant_EventScript_RunningChef::
 	speakername YifuCity_Restaurant_EventScript_UninspiredChef_Text_0
 	faceplayer
 	msgbox YifuCity_Restaurant_EventScript_RunningChef_Text_0
+	return
+
+
+HotpotWithFriends:
+	lockall
+	releaseall
 	return
 
 

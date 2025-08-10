@@ -1122,6 +1122,7 @@ SpeakToHarikoAgain:
 	gettime
 	call NatsukiTurnsToPlayer
 	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	gettime
 	compare VAR_0x8000, 5
 	goto_if_ge SpeakToHarikoAgain_16
 SpeakToHarikoAgain_11:
@@ -1284,7 +1285,7 @@ NotRightNow:
 
 
 EnterRestaurant:
-	setvar VAR_HOTPOT_SCENE_STATE, 1
+	setvar VAR_HOTPOT_SCENE_STATE, 2
 	warp MAP_YIFU_CITY_RESTAURANT, WARP_ID_RESTAURANT_CUTSCENE
 	return
 
