@@ -315,13 +315,13 @@ static const struct PikeRoomNPC sNPCTable[] =
         .speechId3 = 31
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_GIRL_3,
+        .graphicsId = OBJ_EVENT_GFX_SUNRISE_GIRL_2,
         .speechId1 = 13,
         .speechId2 = 39,
         .speechId3 = 21
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_WOMAN_2,
+        .graphicsId = OBJ_EVENT_GFX_SUNRISE_WOMAN_2,
         .speechId1 = 2,
         .speechId2 = 4,
         .speechId3 = 17
@@ -333,7 +333,7 @@ static const struct PikeRoomNPC sNPCTable[] =
         .speechId3 = 36
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_MAN_5,
+        .graphicsId = OBJ_EVENT_GFX_SUNRISE_MAN_2,
         .speechId1 = 28,
         .speechId2 = 34,
         .speechId3 = 25
@@ -369,19 +369,19 @@ static const struct PikeRoomNPC sNPCTable[] =
         .speechId3 = 32
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_MAN_3,
+        .graphicsId = OBJ_EVENT_GFX_SUNRISE_MAN_1,
         .speechId1 = 24,
         .speechId2 = 23,
         .speechId3 = 38
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_WOMAN_3,
+        .graphicsId = OBJ_EVENT_GFX_SUNRISE_WOMAN_2,
         .speechId1 = 5,
         .speechId2 = 22,
         .speechId3 = 4
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_LITTLE_BOY,
+        .graphicsId = OBJ_EVENT_GFX_SUNRISE_LITTLE_BOY,
         .speechId1 = 41,
         .speechId2 = 37,
         .speechId3 = 35
@@ -399,7 +399,7 @@ static const struct PikeRoomNPC sNPCTable[] =
         .speechId3 = 9
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_LITTLE_GIRL,
+        .graphicsId = OBJ_EVENT_GFX_SUNRISE_LITTLE_GIRL,
         .speechId1 = 40,
         .speechId2 = 20,
         .speechId3 = 16
@@ -411,7 +411,7 @@ static const struct PikeRoomNPC sNPCTable[] =
         .speechId3 = 21
     },
     {
-        .graphicsId = OBJ_EVENT_GFX_MAN_1,
+        .graphicsId = OBJ_EVENT_GFX_SUNRISE_MAN_1,
         .speechId1 = 22,
         .speechId2 = 31,
         .speechId3 = 27

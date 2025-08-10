@@ -75,7 +75,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_UUME_MAN_2",
       "x": 2,
       "y": 6,
       "elevation": 0,
@@ -176,7 +176,7 @@
     },
     {
       "local_id": "LOCALID_NURSE_YIFU",
-      "graphics_id": "OBJ_EVENT_GFX_NURSE",
+      "graphics_id": "OBJ_EVENT_GFX_UUME_NURSE",
       "x": 6,
       "y": 2,
       "elevation": 0,
@@ -237,7 +237,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_2",
+      "graphics_id": "OBJ_EVENT_GFX_UUME_BOY_2",
       "x": 13,
       "y": 3,
       "elevation": 0,
@@ -277,7 +277,7 @@
       "night": true
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_RED",
+      "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_BLUE",
       "x": 11,
       "y": 2,
       "elevation": 0,
@@ -357,7 +357,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_GREEN",
+      "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_RED",
       "x": 10,
       "y": 9,
       "elevation": 0,

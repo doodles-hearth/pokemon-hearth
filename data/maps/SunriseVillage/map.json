@@ -46,7 +46,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_1",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_1",
       "x": 20,
       "y": 15,
       "elevation": 3,
@@ -66,7 +66,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_WOMAN_2",
       "x": 22,
       "y": 14,
       "elevation": 3,
@@ -126,7 +126,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_2",
       "x": 19,
       "y": 7,
       "elevation": 3,
@@ -146,7 +146,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_LITTLE_GIRL",
       "x": 13,
       "y": 15,
       "elevation": 3,
@@ -166,7 +166,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_BOY_1",
       "x": 12,
       "y": 18,
       "elevation": 3,
@@ -226,7 +226,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_BOY_1",
       "x": 19,
       "y": 15,
       "elevation": 3,

@@ -15,7 +15,7 @@
   "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_WOMAN_2",
       "x": 12,
       "y": 7,
       "elevation": 3,
@@ -95,7 +95,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_GIRL_2",
       "x": 7,
       "y": 3,
       "elevation": 3,
@@ -195,7 +195,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_1",
       "x": 1,
       "y": 7,
       "elevation": 3,
@@ -235,7 +235,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_WOMAN_1",
       "x": 4,
       "y": 6,
       "elevation": 3,

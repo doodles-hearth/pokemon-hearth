@@ -36,7 +36,7 @@
     },
     {
       "local_id": "LOCALID_COLE",
-      "graphics_id": "OBJ_EVENT_GFX_MAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_2",
       "x": 3,
       "y": 14,
       "elevation": 3,
@@ -57,7 +57,7 @@
     },
     {
       "local_id": "LOCALID_GERALD",
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_1",
       "x": 2,
       "y": 15,
       "elevation": 3,
@@ -78,7 +78,7 @@
     },
     {
       "local_id": "LOCALID_AXLE",
-      "graphics_id": "OBJ_EVENT_GFX_MAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_2",
       "x": 3,
       "y": 10,
       "elevation": 3,
@@ -99,7 +99,7 @@
     },
     {
       "local_id": "LOCALID_DANIELLE",
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_GIRL_2",
       "x": 5,
       "y": 2,
       "elevation": 3,
@@ -119,7 +119,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_2",
       "x": 12,
       "y": 16,
       "elevation": 3,

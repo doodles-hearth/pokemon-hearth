@@ -12,10 +12,10 @@
   "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "graphics_id": "OBJ_EVENT_GFX_HOT_GIRL_2",
       "x": 26,
       "y": 4,
       "elevation": 0,
@@ -55,7 +55,7 @@
       "night": true
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
+      "graphics_id": "OBJ_EVENT_GFX_UUME_OLD_WOMAN",
       "x": 12,
       "y": 3,
       "elevation": 0,
@@ -75,7 +75,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_UUME_OLD_MAN",
       "x": 11,
       "y": 2,
       "elevation": 0,
@@ -208,9 +208,7 @@
       "dest_warp_id": "8"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "hidden_item",

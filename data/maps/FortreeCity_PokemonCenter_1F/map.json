@@ -56,7 +56,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_1",
       "x": 8,
       "y": 5,
       "elevation": 3,
@@ -76,7 +76,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_3",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_BOY_2",
       "x": 2,
       "y": 3,
       "elevation": 3,

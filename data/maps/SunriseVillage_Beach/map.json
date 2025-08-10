@@ -106,7 +106,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_LITTLE_BOY",
       "x": 7,
       "y": 14,
       "elevation": 3,
@@ -126,7 +126,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_LITTLE_BOY",
       "x": 21,
       "y": 6,
       "elevation": 3,
@@ -175,10 +175,6 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": []
 }

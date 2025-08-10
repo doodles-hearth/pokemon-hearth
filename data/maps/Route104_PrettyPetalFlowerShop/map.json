@@ -16,7 +16,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_FLOWER_SHOP_OWNER",
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_WOMAN_2",
       "x": 0,
       "y": 3,
       "elevation": 3,
@@ -36,7 +36,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_3",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_GIRL_2",
       "x": 7,
       "y": 3,
       "elevation": 3,
@@ -56,7 +56,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_GIRL_1",
       "x": 11,
       "y": 6,
       "elevation": 4,
