@@ -10,7 +10,6 @@ YifuCity_Restaurant_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 YifuCity_Restaurant_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	getnatsukistartermongfx VAR_OBJ_GFX_ID_0
 	return
 
 YifuCity_Restaurant_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -41,8 +40,6 @@ YifuCity_Restaurant_EventScript_RunningChef::
 
 
 HotpotWithFriends:
-	lockall
-	releaseall
 	return
 
 

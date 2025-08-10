@@ -11566,10 +11566,10 @@ void GetDaycareGraphics(struct ScriptContext *ctx)
 }
 
 // Get gfx of Natsuki's starter mon
-void GetNatsukiStarter(ScriptContext *ctx)
+void GetNatsukiStarter(struct ScriptContext *ctx)
 {
     u16 varGfx = ScriptReadHalfword(ctx);
-    u32 specGfx;
+    u32 specGfx = SPECIES_NONE;
 
     switch(VarGet(VAR_STARTER_MON))
     {
@@ -11584,7 +11584,7 @@ void GetNatsukiStarter(ScriptContext *ctx)
             break;
     }
 
-    VarSet(varGfx[i], (u16) (specGfx + OBJ_EVENT_MON));
+    VarSet(varGfx, (u16) (specGfx + OBJ_EVENT_MON));
 }
 
 // running slow

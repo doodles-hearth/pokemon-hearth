@@ -3,7 +3,8 @@ const FLAG_HIDE_HOTPOT_SCENE = FLAG_TEMP_1
 mapscripts YifuCity_Restaurant_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		if (var(VAR_HOTPOT_SCENE_STATE) == 2) {
-			getnatsukistartermongfx(VAR_OBJ_GFX_ID_0)
+			// TODO EVA
+			// getnatsukistartermongfx(VAR_OBJ_GFX_ID_0)
 		} else {
 			setflag(FLAG_HIDE_HOTPOT_SCENE)
 		}
@@ -56,9 +57,5 @@ script YifuCity_Restaurant_EventScript_RunningChef {
 }
 
 script(local) HotpotWithFriends {
-	lockall
-
-	
-
-	releaseall
+	// TODO EVA
 }
