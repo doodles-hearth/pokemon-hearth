@@ -74,8 +74,10 @@ const u16 gObjectEventPal_Npc_Purplish[] = INCBIN_U16("graphics/object_events/pa
 const u16 gObjectEventPal_Npc_Woody[] = INCBIN_U16("graphics/object_events/palettes/pal_woody.gbapal");
 const u16 gObjectEventPal_Npc_Greenish[] = INCBIN_U16("graphics/object_events/palettes/pal_greenish.gbapal");
 const u16 gObjectEventPal_Npc_Sunrise[] = INCBIN_U16("graphics/object_events/palettes/pal_sunrise.gbapal");
+const u16 gObjectEventPal_Npc_Seaside[] = INCBIN_U16("graphics/object_events/palettes/pal_seaside.gbapal");
 const u16 gObjectEventPal_Npc_Uume[] = INCBIN_U16("graphics/object_events/palettes/pal_uume.gbapal");
 const u16 gObjectEventPal_Npc_Hot[] = INCBIN_U16("graphics/object_events/palettes/pal_hot.gbapal");
+const u16 gObjectEventPal_Npc_Sakura[] = INCBIN_U16("graphics/object_events/palettes/pal_sakura.gbapal");
 
 // Evil teams
 const u32 gObjectEventPic_CrobatShadowsGruntM[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/zubat_m.4bpp");
@@ -106,6 +108,22 @@ const u32 gObjectEventPic_Sunrise_Boy1[] = INCBIN_U32("graphics/object_events/pi
 const u32 gObjectEventPic_Sunrise_Boy2[] = INCBIN_U32("graphics/object_events/pics/people/sunrise/boy_2.4bpp");
 const u32 gObjectEventPic_Sunrise_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/sunrise/nurse.4bpp");
 const u32 gObjectEventPic_Sunrise_FatGuy[] = INCBIN_U32("graphics/object_events/pics/people/sunrise/fat_guy.4bpp");
+
+// Seaside area NPCs
+const u32 gObjectEventPic_Seaside_Woman1[] = INCBIN_U32("graphics/object_events/pics/people/seaside/woman_1.4bpp");
+const u32 gObjectEventPic_Seaside_Woman2[] = INCBIN_U32("graphics/object_events/pics/people/seaside/woman_2.4bpp");
+const u32 gObjectEventPic_Seaside_Man1[] = INCBIN_U32("graphics/object_events/pics/people/seaside/man_1.4bpp");
+const u32 gObjectEventPic_Seaside_Man2[] = INCBIN_U32("graphics/object_events/pics/people/seaside/man_2.4bpp");
+const u32 gObjectEventPic_Seaside_OldMan[] = INCBIN_U32("graphics/object_events/pics/people/seaside/old_man.4bpp");
+const u32 gObjectEventPic_Seaside_OldWoman[] = INCBIN_U32("graphics/object_events/pics/people/seaside/old_woman.4bpp");
+const u32 gObjectEventPic_Seaside_LittleGirl[] = INCBIN_U32("graphics/object_events/pics/people/seaside/little_girl.4bpp");
+const u32 gObjectEventPic_Seaside_LittleBoy[] = INCBIN_U32("graphics/object_events/pics/people/seaside/little_boy.4bpp");
+const u32 gObjectEventPic_Seaside_Girl1[] = INCBIN_U32("graphics/object_events/pics/people/seaside/girl_1.4bpp");
+const u32 gObjectEventPic_Seaside_Girl2[] = INCBIN_U32("graphics/object_events/pics/people/seaside/girl_2.4bpp");
+const u32 gObjectEventPic_Seaside_Boy1[] = INCBIN_U32("graphics/object_events/pics/people/seaside/boy_1.4bpp");
+const u32 gObjectEventPic_Seaside_Boy2[] = INCBIN_U32("graphics/object_events/pics/people/seaside/boy_2.4bpp");
+const u32 gObjectEventPic_Seaside_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/seaside/nurse.4bpp");
+const u32 gObjectEventPic_Seaside_FatGuy[] = INCBIN_U32("graphics/object_events/pics/people/seaside/fat_guy.4bpp");
 
 // Uume area NPCs
 const u32 gObjectEventPic_Uume_Woman1[] = INCBIN_U32("graphics/object_events/pics/people/uume/woman_1.4bpp");

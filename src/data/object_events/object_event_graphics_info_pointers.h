@@ -20,6 +20,20 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunrise_Boy
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunrise_Boy2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunrise_Nurse;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunrise_FatGuy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Woman1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Woman2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Man1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Man2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_OldWoman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_OldMan;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_LittleBoy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_LittleGirl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Girl1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Girl2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Boy1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Boy2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Nurse;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_FatGuy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Woman1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Woman2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Man1;
@@ -340,6 +354,21 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SUNRISE_BOY_2] =            &gObjectEventGraphicsInfo_Sunrise_Boy2,
     [OBJ_EVENT_GFX_SUNRISE_NURSE] =            &gObjectEventGraphicsInfo_Sunrise_Nurse,
     [OBJ_EVENT_GFX_SUNRISE_FAT_GUY] =          &gObjectEventGraphicsInfo_Sunrise_FatGuy,
+
+    [OBJ_EVENT_GFX_SEASIDE_WOMAN_1] =          &gObjectEventGraphicsInfo_Seaside_Woman1,
+    [OBJ_EVENT_GFX_SEASIDE_WOMAN_2] =          &gObjectEventGraphicsInfo_Seaside_Woman2,
+    [OBJ_EVENT_GFX_SEASIDE_MAN_1] =            &gObjectEventGraphicsInfo_Seaside_Man1,
+    [OBJ_EVENT_GFX_SEASIDE_MAN_2] =            &gObjectEventGraphicsInfo_Seaside_Man2,
+    [OBJ_EVENT_GFX_SEASIDE_OLD_WOMAN] =        &gObjectEventGraphicsInfo_Seaside_OldWoman,
+    [OBJ_EVENT_GFX_SEASIDE_OLD_MAN] =          &gObjectEventGraphicsInfo_Seaside_OldMan,
+    [OBJ_EVENT_GFX_SEASIDE_LITTLE_BOY] =       &gObjectEventGraphicsInfo_Seaside_LittleBoy,
+    [OBJ_EVENT_GFX_SEASIDE_LITTLE_GIRL] =      &gObjectEventGraphicsInfo_Seaside_LittleGirl,
+    [OBJ_EVENT_GFX_SEASIDE_GIRL_1] =           &gObjectEventGraphicsInfo_Seaside_Girl1,
+    [OBJ_EVENT_GFX_SEASIDE_GIRL_2] =           &gObjectEventGraphicsInfo_Seaside_Girl2,
+    [OBJ_EVENT_GFX_SEASIDE_BOY_1] =            &gObjectEventGraphicsInfo_Seaside_Boy1,
+    [OBJ_EVENT_GFX_SEASIDE_BOY_2] =            &gObjectEventGraphicsInfo_Seaside_Boy2,
+    [OBJ_EVENT_GFX_SEASIDE_NURSE] =            &gObjectEventGraphicsInfo_Seaside_Nurse,
+    [OBJ_EVENT_GFX_SEASIDE_FAT_GUY] =          &gObjectEventGraphicsInfo_Seaside_FatGuy,
 
     [OBJ_EVENT_GFX_UUME_WOMAN_1] =             &gObjectEventGraphicsInfo_Uume_Woman1,
     [OBJ_EVENT_GFX_UUME_WOMAN_2] =             &gObjectEventGraphicsInfo_Uume_Woman2,

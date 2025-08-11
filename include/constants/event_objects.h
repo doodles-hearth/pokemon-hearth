@@ -314,11 +314,25 @@
 #define OBJ_EVENT_GFX_SAKURA_BOY_2               306
 #define OBJ_EVENT_GFX_SAKURA_NURSE               307
 #define OBJ_EVENT_GFX_SAKURA_FAT_GUY             308
+#define OBJ_EVENT_GFX_SEASIDE_WOMAN_1            309
+#define OBJ_EVENT_GFX_SEASIDE_WOMAN_2            310
+#define OBJ_EVENT_GFX_SEASIDE_MAN_1              311
+#define OBJ_EVENT_GFX_SEASIDE_MAN_2              312
+#define OBJ_EVENT_GFX_SEASIDE_OLD_WOMAN          313
+#define OBJ_EVENT_GFX_SEASIDE_OLD_MAN            314
+#define OBJ_EVENT_GFX_SEASIDE_LITTLE_BOY         315
+#define OBJ_EVENT_GFX_SEASIDE_LITTLE_GIRL        316
+#define OBJ_EVENT_GFX_SEASIDE_GIRL_1             317
+#define OBJ_EVENT_GFX_SEASIDE_GIRL_2             318
+#define OBJ_EVENT_GFX_SEASIDE_BOY_1              319
+#define OBJ_EVENT_GFX_SEASIDE_BOY_2              320
+#define OBJ_EVENT_GFX_SEASIDE_NURSE              321
+#define OBJ_EVENT_GFX_SEASIDE_FAT_GUY            322
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        309
+#define NUM_OBJ_EVENT_GFX                        323
 
 
 // These are dynamic object gfx ids.
@@ -453,7 +467,7 @@
 #define OBJ_EVENT_PAL_TAG_UUME                    0x1129
 #define OBJ_EVENT_PAL_TAG_HOT                     0x112A
 #define OBJ_EVENT_PAL_TAG_COLD                    0x112B
-#define OBJ_EVENT_PAL_TAG_SEA                     0x112C
+#define OBJ_EVENT_PAL_TAG_SEASIDE                 0x112C
 #define OBJ_EVENT_PAL_TAG_MOUNTAINS               0x112D
 #define OBJ_EVENT_PAL_TAG_DRAGONS                 0x112E
 #define OBJ_EVENT_PAL_TAG_SAKURA                  0x112F

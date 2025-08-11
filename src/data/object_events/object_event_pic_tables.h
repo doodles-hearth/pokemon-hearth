@@ -111,6 +111,72 @@ static const struct SpriteFrameImage sPicTable_Sunrise_FatGuy[] = {
     overworld_ascending_frames(gObjectEventPic_Sunrise_FatGuy, 4, 4),
 };
 
+// Seaside NPCs
+static const struct SpriteFrameImage sPicTable_Seaside_Woman1[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_Woman1, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_Woman2[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_Woman2, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_Man1[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_Man1, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_Man2[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_Man2, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_OldWoman[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_OldWoman, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_OldMan[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_OldMan, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_LittleGirl[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_LittleGirl, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_LittleBoy[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_LittleBoy, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_Girl1[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_Girl1, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_Girl2[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_Girl2, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_Boy1[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_Boy1, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_Boy2[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_Boy2, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_Nurse[] = {
+    overworld_frame(gObjectEventPic_Seaside_Nurse, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Seaside_Nurse, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Seaside_Nurse, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Seaside_Nurse, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Seaside_Nurse, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Seaside_Nurse, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Seaside_Nurse, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Seaside_Nurse, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Seaside_Nurse, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Seaside_Nurse, 4, 4, 3),
+};
+
+static const struct SpriteFrameImage sPicTable_Seaside_FatGuy[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_FatGuy, 4, 4),
+};
+
 // Uume NPCs
 static const struct SpriteFrameImage sPicTable_Uume_Woman1[] = {
     overworld_ascending_frames(gObjectEventPic_Uume_Woman1, 4, 4),
