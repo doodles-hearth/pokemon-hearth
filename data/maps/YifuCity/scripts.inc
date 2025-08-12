@@ -6,11 +6,17 @@ YifuCity_MapScripts::
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	setflag FLAG_VISITED_YIFU_CITY
 	compare VAR_CROBAT_HIDEOUT_STATE, 3
-	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	goto_if_unset FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 	return
 
-YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	setflag FLAG_TEMP_2
+	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	setflag FLAG_TEMP_4
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -87,6 +93,16 @@ YifuCity_EventScript_IDontFeelSafe_1:
 YifuCity_EventScript_IDontFeelSafe_2:
 	msgbox YifuCity_EventScript_IDontFeelSafe_Text_0
 	goto YifuCity_EventScript_IDontFeelSafe_1
+
+
+YifuCity_EventScript_MissingChild::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_StoleMyMon_Text_0
+	msgbox YifuCity_EventScript_MissingChild_Text_0
+	closemessage
+	release
+	return
 
 
 YifuCity_EventScript_Samurai::
@@ -505,6 +521,88 @@ YifuCity_EventScript_Surskit::
 	setseenmon SPECIES_SURSKIT
 	playmoncry SPECIES_SURSKIT, CRY_MODE_NORMAL
 	waitmoncry
+	release
+	end
+
+
+YifuCity_EventScript_SafeCity::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_SafeCity_Text_0
+	msgbox YifuCity_EventScript_SafeCity_Text_1
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_Tourist::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_RobberyVictim_Text_0
+	msgbox YifuCity_EventScript_Tourist_Text_0
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_TouristKid::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_TouristKid_Text_0
+	msgbox YifuCity_EventScript_TouristKid_Text_1
+	closemessage
+	setnamedmon SPECIES_SAWSBUCK
+	release
+	return
+
+
+YifuCity_EventScript_TouristGirl::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_SafeCity_Text_0
+	msgbox YifuCity_EventScript_TouristGirl_Text_0
+	closemessage
+	setnamedmon SPECIES_SAWSBUCK
+	release
+	return
+
+
+YifuCity_EventScript_Zubat1::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_Zubat1_Text_0
+	msgbox YifuCity_EventScript_Zubat1_Text_1
+	closemessage
+	release
+	end
+
+
+YifuCity_EventScript_Zubat2::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_Zubat1_Text_0
+	msgbox YifuCity_EventScript_Zubat2_Text_0
+	closemessage
+	release
+	end
+
+
+YifuCity_EventScript_Zubat3::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_Zubat1_Text_0
+	msgbox YifuCity_EventScript_Zubat3_Text_0
+	closemessage
+	release
+	end
+
+
+YifuCity_EventScript_Zubat4::
+	lock
+	faceplayer
+	speakername YifuCity_EventScript_Zubat1_Text_0
+	msgbox YifuCity_EventScript_Zubat4_Text_0
+	closemessage
 	release
 	end
 
@@ -1782,6 +1880,12 @@ YifuCity_EventScript_IDontFeelSafe_Text_1:
 	.string "were it not for the patrolling\l"
 	.string "Samurai!$"
 
+YifuCity_EventScript_MissingChild_Text_0:
+	.string "Have you seen a young child, small, red\n"
+	.string "hair?\p"
+	.string "My son told me he was going to the\n"
+	.string "beach, but I don't see him anywhere…$"
+
 YifuCity_EventScript_Samurai_Text_0:
 	.string "The Crobat Shadows' reign of terror\n"
 	.string "will cease!$"
@@ -1973,6 +2077,51 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Text_5:
 YifuCity_EventScript_Surskit_Text_0:
 	.string "Sksksksk…$"
 
+YifuCity_EventScript_SafeCity_Text_0:
+	.string "Girl$"
+
+YifuCity_EventScript_SafeCity_Text_1:
+	.string "Yifu City is finally safe again!\n"
+	.string "I can't believe it!$"
+
+YifuCity_EventScript_Tourist_Text_0:
+	.string "We came all the way from Windycape to\n"
+	.string "see the great capital.\p"
+	.string "The city's beautiful!\n"
+	.string "So many tourists, though…$"
+
+YifuCity_EventScript_TouristKid_Text_0:
+	.string "Little Boy$"
+
+YifuCity_EventScript_TouristKid_Text_1:
+	.string "We're on vacation!\n"
+	.string "I wanna see the big Sawsbuck!$"
+
+YifuCity_EventScript_TouristGirl_Text_0:
+	.string "I'm tired… I wish mom'd take us to the\n"
+	.string "hot springs…$"
+
+YifuCity_EventScript_Zubat1_Text_0:
+	.string "Zubat Grunt$"
+
+YifuCity_EventScript_Zubat1_Text_1:
+	.string "Whatchu lookin' at?$"
+
+YifuCity_EventScript_Zubat2_Text_0:
+	.string "Scram, kid, I got no time for the likes\n"
+	.string "of ya.$"
+
+YifuCity_EventScript_Zubat3_Text_0:
+	.string "I'm just a regular, non-suspect,\n"
+	.string "law-abiding citizen, mindin' my own\l"
+	.string "business.$"
+
+YifuCity_EventScript_Zubat4_Text_0:
+	.string "I sure enjoy quaint day-to-day\n"
+	.string "activities like strolling, shopping,\l"
+	.string "thieving, fostering a positive\l"
+	.string "environment within my community…$"
+
 YifuCity_Trigger_Lockdown_Text_0:
 	.string "ATTENTION! ATTENTION!\n"
 	.string "THE CITY IS NOW UNDER LOCKDOWN!$"
@@ -2024,9 +2173,8 @@ YifuCity_Trigger_HarikoCriminals_Text_1:
 	.string "I was planning on going there, but a\l"
 	.string "Samurai was blocking the way, so I am\l"
 	.string "waiting here.\p"
-	.string "I am going for a stroll now. Let us\n"
-	.string "have lunch together before you leave.\l"
-	.string "Yes? Good.$"
+	.string "Let us have lunch together before\n"
+	.string "you leave. Yes? Good.$"
 
 YifuCity_EventScript_DojoSign_Text_0:
 	.string "Yifu City Pokémon Dojo\n"
@@ -2042,7 +2190,7 @@ YifuCity_EventScript_Chimecho_Text_0:
 	.string "Ch-ching…$"
 
 YifuCity_EventScript_ChimechoLady_Text_0:
-	.string "Old Lady$"
+	.string "Old Woman$"
 
 YifuCity_EventScript_ChimechoLady_Text_1:
 	.string "I love listening to Chimecho's songs.\p"

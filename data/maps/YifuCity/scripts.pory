@@ -5,6 +5,7 @@ const LOCALID_GRUNT_PASSWORD_ZUBAT = 11
 const FLAG_IS_MON_SENT_TO_PC = FLAG_TEMP_1
 const FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP = FLAG_TEMP_2
 const FLAG_HIDE_ROBBERY_VICTIM = FLAG_TEMP_3
+const FLAG_HIDE_CITIZENS_UNSAFE_CITY = FLAG_TEMP_4
 
 const LOCALID_SAMURAI_HIDEOUT = 38
 const LOCALID_LOCKDOWN_SAMURAI = 33
@@ -19,6 +20,10 @@ mapscripts YifuCity_MapScripts {
 
 		if (var(VAR_CROBAT_HIDEOUT_STATE) != 3) {
 			setflag(FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP)
+		}
+
+		if (!flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+			setflag(FLAG_HIDE_CITIZENS_UNSAFE_CITY)
 		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
@@ -117,6 +122,18 @@ script YifuCity_EventScript_IDontFeelSafe {
 			"I can't imagine how much worse it'd be were it not for the patrolling Samurai!"
 		))
 	}
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_MissingChild {
+	lock
+	faceplayer
+	speakername("Man")
+	msgbox(format(
+		"Have you seen a young child, small, red hair?\p"
+		"My son told me he was going to the beach, but I don't see him anywhere…"
+	))
 	closemessage
 	release
 }
@@ -662,6 +679,112 @@ script YifuCity_EventScript_Surskit {
     end
 }
 
+script YifuCity_EventScript_SafeCity {
+	lock
+	faceplayer
+	speakername("Girl")
+	msgbox(format(
+		"Yifu City is finally safe again!\nI can't believe it!"
+	))
+	closemessage
+
+	release
+}
+
+
+script YifuCity_EventScript_Tourist {
+	lock
+	faceplayer
+	speakername("Woman")
+	msgbox(format(
+		"We came all the way from Windycape to see the great capital.\p"
+		"The city's beautiful!\nSo many tourists, though…"
+	))
+	closemessage
+
+	release
+}
+
+script YifuCity_EventScript_TouristKid {
+	lock
+	faceplayer
+	speakername("Little Boy")
+	msgbox(format(
+		"We're on vacation!\nI wanna see the big Sawsbuck!"
+	))
+	closemessage
+
+	setnamedmon(SPECIES_SAWSBUCK)
+
+	release
+}
+
+script YifuCity_EventScript_TouristGirl {
+	lock
+	faceplayer
+	speakername("Girl")
+	msgbox(format(
+		"I'm tired… I wish mom'd take us to the hot springs…"
+	))
+	closemessage
+
+	setnamedmon(SPECIES_SAWSBUCK)
+
+	release
+}
+
+script YifuCity_EventScript_Zubat1 {
+	lock
+	faceplayer
+	speakername("Zubat Grunt")
+	msgbox(format(
+		"Whatchu lookin' at?"
+	))
+	closemessage
+
+	release
+	end
+}
+
+script YifuCity_EventScript_Zubat2 {
+	lock
+	faceplayer
+	speakername("Zubat Grunt")
+	msgbox(format(
+		"Scram, kid, I got no time for the likes of ya."
+	))
+	closemessage
+
+	release
+	end
+}
+
+script YifuCity_EventScript_Zubat3 {
+	lock
+	faceplayer
+	speakername("Zubat Grunt")
+	msgbox(format(
+		"I'm just a regular, non-suspect, law-abiding citizen, mindin' my own business."
+	))
+	closemessage
+
+	release
+	end
+}
+
+script YifuCity_EventScript_Zubat4 {
+	lock
+	faceplayer
+	speakername("Zubat Grunt")
+	msgbox(format(
+		"I sure enjoy quaint day-to-day activities like strolling, shopping, thieving, fostering a positive environment within my community…"
+	))
+	closemessage
+
+	release
+	end
+}
+
 script YifuCity_Trigger_Lockdown {
 	lockall
 	// First time
@@ -791,7 +914,7 @@ script YifuCity_Trigger_HarikoCriminals {
 		"Hello, {PLAYER}.\nAre you well, since last time?\p"
 		"Did you hear?\nThere was a robbery right here in Yifu City! Some people's Pokémon were stolen!\p"
 		"I heard there was a second decaying area west of here.\lI was planning on going there, but a Samurai was blocking the way, so I am waiting here.\p"
-		"I am going for a stroll now. Let us have lunch together before you leave. Yes? Good."
+		"Let us have lunch together before you leave. Yes? Good."
 	))
 	closemessage
 
@@ -846,7 +969,7 @@ script YifuCity_EventScript_Chimecho {
 script YifuCity_EventScript_ChimechoLady {
 	lock
 	faceplayer
-	speakername("Old Lady")
+	speakername("Old Woman")
 	msgbox(format(
 		"I love listening to Chimecho's songs.\p"
 		"They echo in its hollow body and produce the most wonderful harmonics.\p"

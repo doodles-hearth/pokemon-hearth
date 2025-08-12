@@ -49,11 +49,85 @@ script YifuCity_Restaurant_EventScript_UninspiredChef {
 
 script YifuCity_Restaurant_EventScript_RunningChef {
 	lock
-	speakername("Cook")
 	faceplayer
+	speakername("Cook")
 	msgbox(format(
 		"Huff… Huff…\nI wish my colleague would stop whining and get back to helping me…"
 	))
+	closemessage
+	release
+}
+
+script YifuCity_Restaurant_EventScript_LonelyGirl {
+	lock
+	faceplayer
+	speakername("Girl")
+	msgbox(format(
+		"I'm waiting for my date, but it seems he's late yet again…"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_Restaurant_EventScript_OldWomen {
+	lock
+
+	applymovement(LOCALID_HOTPOT_OLD_WOMAN_1, moves(walk_in_place_fast_right))
+	waitmovement(0)
+
+	speakername("Old Woman")
+	msgbox(format(
+		// TODO EVA useful gossip
+		"Psst psst mumble gossip…"
+	))
+	closemessage
+
+	applymovement(LOCALID_HOTPOT_OLD_WOMAN_2, moves(walk_in_place_fast_left))
+	waitmovement(0)
+
+	speakername("Old Woman")
+	msgbox(format(
+		"Gossip gossip…\nHo ho ho…"
+	))
+	closemessage
+
+	release
+}
+
+script YifuCity_Restaurant_EventScript_FatGuy {
+	lock
+	faceplayer
+	speakername("Guy")
+	gettimeofday
+	if (var(VAR_0x8000) == TIME_LUNCHTIME) {
+		msgbox(format(
+			"Chomp…\nJust gett'n a head start on lunch…\p"
+			"{FONT_SMALL}Burp…{FONT_NORMAL} Ahem.\nIf you'll excuse me."
+		))
+	} else {
+		msgbox(format(
+			"UHHHHG I ate too much…"
+		))
+	}
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(VAR_LAST_TALKED)
+	closemessage
+	release
+}
+
+script YifuCity_Restaurant_EventScript_Munchlax {
+	lock
+    faceplayer
+	setseenmon(SPECIES_MUNCHLAX)
+    setspeakertomonname(SPECIES_MUNCHLAX)
+    playmoncry(SPECIES_MUNCHLAX, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Chomp… Gulp!"
+    ))
+    waitmoncry
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(VAR_LAST_TALKED)
+    release
 }
 
 script(local) HotpotWithFriends {

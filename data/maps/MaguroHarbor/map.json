@@ -350,12 +350,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0",
-      "afternoon": false,
-      "deadnight": true,
+      "afternoon": true,
+      "deadnight": false,
       "earlymorning": false,
       "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -370,12 +370,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0",
-      "afternoon": false,
-      "deadnight": true,
+      "afternoon": true,
+      "deadnight": false,
       "earlymorning": false,
       "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     }
   ],

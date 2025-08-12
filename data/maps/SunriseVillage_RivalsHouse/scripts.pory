@@ -37,9 +37,11 @@ script SunriseVillage_RivalsHouse_EventScript_Natsuki {
 	if (flag(FLAG_TEMP_TALKED_TO_NATSUKI)) {
 		speakername("Natsuki")
 		msgbox(format(
-			"Region map, check…\nFavorite plushie, check…"
+			"Region map, check…\nJoltik plushie, check…"
 		))
 		closemessage
+
+		setnamedmon(SPECIES_JOLTIK)
 	} else {
 		speakername("Natsuki")
 		msgbox(format(
@@ -71,10 +73,15 @@ script SunriseVillage_RivalsHouse_EventScript_Man {
 	lock
 	faceplayer
 	speakername("Natsuki's dad")
-	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
+	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
 		msgbox(format(
 			"Hello, {PLAYER}.\nHow is your adventure going?\p"
 			"Make sure you come back home\nto see your sister sometimes,\lI'm sure she misses you."
+		))
+	} elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
+		msgbox(format(
+			"It was tough when Natsuki and I\nfirst moved all the way down here.\p"
+			"Things are better now.\nWe both needed a fresh start."
 		))
 	} else {
 		msgbox(format(

@@ -111,6 +111,10 @@ static const struct SpriteFrameImage sPicTable_Sunrise_FatGuy[] = {
     overworld_ascending_frames(gObjectEventPic_Sunrise_FatGuy, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Sunrise_Valet[] = {
+    overworld_ascending_frames(gObjectEventPic_Sunrise_Valet, 4, 4),
+};
+
 // Seaside NPCs
 static const struct SpriteFrameImage sPicTable_Seaside_Woman1[] = {
     overworld_ascending_frames(gObjectEventPic_Seaside_Woman1, 4, 4),
@@ -177,6 +181,10 @@ static const struct SpriteFrameImage sPicTable_Seaside_FatGuy[] = {
     overworld_ascending_frames(gObjectEventPic_Seaside_FatGuy, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Seaside_Valet[] = {
+    overworld_ascending_frames(gObjectEventPic_Seaside_Valet, 4, 4),
+};
+
 // Uume NPCs
 static const struct SpriteFrameImage sPicTable_Uume_Woman1[] = {
     overworld_ascending_frames(gObjectEventPic_Uume_Woman1, 4, 4),
@@ -241,6 +249,10 @@ static const struct SpriteFrameImage sPicTable_Uume_Nurse[] = {
 
 static const struct SpriteFrameImage sPicTable_Uume_FatGuy[] = {
     overworld_ascending_frames(gObjectEventPic_Uume_FatGuy, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Uume_Valet[] = {
+    overworld_ascending_frames(gObjectEventPic_Uume_Valet, 4, 4),
 };
 
 // Hot NPCs
@@ -310,6 +322,10 @@ static const struct SpriteFrameImage sPicTable_Hot_FatGuy[] = {
     overworld_ascending_frames(gObjectEventPic_Hot_FatGuy, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Hot_Valet[] = {
+    overworld_ascending_frames(gObjectEventPic_Hot_Valet, 4, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_Sakura_Woman1[] = {
     overworld_ascending_frames(gObjectEventPic_Sakura_Woman1, 4, 4),
 };
@@ -373,6 +389,10 @@ static const struct SpriteFrameImage sPicTable_Sakura_Nurse[] = {
 
 static const struct SpriteFrameImage sPicTable_Sakura_FatGuy[] = {
     overworld_ascending_frames(gObjectEventPic_Sakura_FatGuy, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Sakura_Valet[] = {
+    overworld_ascending_frames(gObjectEventPic_Sakura_Valet, 4, 4),
 };
 
 // Greenish

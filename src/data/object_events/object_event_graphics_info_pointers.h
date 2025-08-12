@@ -19,6 +19,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunrise_Gir
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunrise_Boy1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunrise_Boy2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunrise_Nurse;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunrise_Valet;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sunrise_FatGuy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Woman1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Woman2;
@@ -33,6 +34,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Gir
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Boy1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Boy2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Nurse;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_Valet;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Seaside_FatGuy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Woman1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Woman2;
@@ -47,6 +49,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Girl2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Boy1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Boy2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Nurse;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Valet;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_FatGuy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hot_Woman1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hot_Woman2;
@@ -61,6 +64,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hot_Girl2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hot_Boy1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hot_Boy2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hot_Nurse;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hot_Valet;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hot_FatGuy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_Woman1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_Woman2;
@@ -75,6 +79,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_Girl
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_Boy1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_Boy2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_Nurse;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_Valet;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_FatGuy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RichBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gardener;
@@ -353,6 +358,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SUNRISE_BOY_1] =            &gObjectEventGraphicsInfo_Sunrise_Boy1,
     [OBJ_EVENT_GFX_SUNRISE_BOY_2] =            &gObjectEventGraphicsInfo_Sunrise_Boy2,
     [OBJ_EVENT_GFX_SUNRISE_NURSE] =            &gObjectEventGraphicsInfo_Sunrise_Nurse,
+    [OBJ_EVENT_GFX_SUNRISE_VALET] =            &gObjectEventGraphicsInfo_Sunrise_Valet,
     [OBJ_EVENT_GFX_SUNRISE_FAT_GUY] =          &gObjectEventGraphicsInfo_Sunrise_FatGuy,
 
     [OBJ_EVENT_GFX_SEASIDE_WOMAN_1] =          &gObjectEventGraphicsInfo_Seaside_Woman1,
@@ -368,6 +374,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SEASIDE_BOY_1] =            &gObjectEventGraphicsInfo_Seaside_Boy1,
     [OBJ_EVENT_GFX_SEASIDE_BOY_2] =            &gObjectEventGraphicsInfo_Seaside_Boy2,
     [OBJ_EVENT_GFX_SEASIDE_NURSE] =            &gObjectEventGraphicsInfo_Seaside_Nurse,
+    [OBJ_EVENT_GFX_SEASIDE_VALET] =            &gObjectEventGraphicsInfo_Seaside_Valet,
     [OBJ_EVENT_GFX_SEASIDE_FAT_GUY] =          &gObjectEventGraphicsInfo_Seaside_FatGuy,
 
     [OBJ_EVENT_GFX_UUME_WOMAN_1] =             &gObjectEventGraphicsInfo_Uume_Woman1,
@@ -383,6 +390,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_UUME_BOY_1] =               &gObjectEventGraphicsInfo_Uume_Boy1,
     [OBJ_EVENT_GFX_UUME_BOY_2] =               &gObjectEventGraphicsInfo_Uume_Boy2,
     [OBJ_EVENT_GFX_UUME_NURSE] =               &gObjectEventGraphicsInfo_Uume_Nurse,
+    [OBJ_EVENT_GFX_UUME_VALET] =               &gObjectEventGraphicsInfo_Uume_Valet,
     [OBJ_EVENT_GFX_UUME_FAT_GUY] =             &gObjectEventGraphicsInfo_Uume_FatGuy,
 
     [OBJ_EVENT_GFX_HOT_WOMAN_1] =              &gObjectEventGraphicsInfo_Hot_Woman1,
@@ -398,6 +406,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_HOT_BOY_1] =                &gObjectEventGraphicsInfo_Hot_Boy1,
     [OBJ_EVENT_GFX_HOT_BOY_2] =                &gObjectEventGraphicsInfo_Hot_Boy2,
     [OBJ_EVENT_GFX_HOT_NURSE] =                &gObjectEventGraphicsInfo_Hot_Nurse,
+    [OBJ_EVENT_GFX_HOT_VALET] =                &gObjectEventGraphicsInfo_Hot_Valet,
     [OBJ_EVENT_GFX_HOT_FAT_GUY] =              &gObjectEventGraphicsInfo_Hot_FatGuy,
 
     [OBJ_EVENT_GFX_SAKURA_WOMAN_1] =           &gObjectEventGraphicsInfo_Sakura_Woman1,
@@ -413,6 +422,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SAKURA_BOY_1] =             &gObjectEventGraphicsInfo_Sakura_Boy1,
     [OBJ_EVENT_GFX_SAKURA_BOY_2] =             &gObjectEventGraphicsInfo_Sakura_Boy2,
     [OBJ_EVENT_GFX_SAKURA_NURSE] =             &gObjectEventGraphicsInfo_Sakura_Nurse,
+    [OBJ_EVENT_GFX_SAKURA_VALET] =             &gObjectEventGraphicsInfo_Sakura_Valet,
     [OBJ_EVENT_GFX_SAKURA_FAT_GUY] =           &gObjectEventGraphicsInfo_Sakura_FatGuy,
 
     [OBJ_EVENT_GFX_NINJA_BOY] =                &gObjectEventGraphicsInfo_NinjaBoy,

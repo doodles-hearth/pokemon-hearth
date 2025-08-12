@@ -107,6 +107,7 @@ const u32 gObjectEventPic_Sunrise_Girl2[] = INCBIN_U32("graphics/object_events/p
 const u32 gObjectEventPic_Sunrise_Boy1[] = INCBIN_U32("graphics/object_events/pics/people/sunrise/boy_1.4bpp");
 const u32 gObjectEventPic_Sunrise_Boy2[] = INCBIN_U32("graphics/object_events/pics/people/sunrise/boy_2.4bpp");
 const u32 gObjectEventPic_Sunrise_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/sunrise/nurse.4bpp");
+const u32 gObjectEventPic_Sunrise_Valet[] = INCBIN_U32("graphics/object_events/pics/people/sunrise/valet.4bpp");
 const u32 gObjectEventPic_Sunrise_FatGuy[] = INCBIN_U32("graphics/object_events/pics/people/sunrise/fat_guy.4bpp");
 
 // Seaside area NPCs
@@ -123,6 +124,7 @@ const u32 gObjectEventPic_Seaside_Girl2[] = INCBIN_U32("graphics/object_events/p
 const u32 gObjectEventPic_Seaside_Boy1[] = INCBIN_U32("graphics/object_events/pics/people/seaside/boy_1.4bpp");
 const u32 gObjectEventPic_Seaside_Boy2[] = INCBIN_U32("graphics/object_events/pics/people/seaside/boy_2.4bpp");
 const u32 gObjectEventPic_Seaside_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/seaside/nurse.4bpp");
+const u32 gObjectEventPic_Seaside_Valet[] = INCBIN_U32("graphics/object_events/pics/people/seaside/valet.4bpp");
 const u32 gObjectEventPic_Seaside_FatGuy[] = INCBIN_U32("graphics/object_events/pics/people/seaside/fat_guy.4bpp");
 
 // Uume area NPCs
@@ -139,6 +141,7 @@ const u32 gObjectEventPic_Uume_Girl2[] = INCBIN_U32("graphics/object_events/pics
 const u32 gObjectEventPic_Uume_Boy1[] = INCBIN_U32("graphics/object_events/pics/people/uume/boy_1.4bpp");
 const u32 gObjectEventPic_Uume_Boy2[] = INCBIN_U32("graphics/object_events/pics/people/uume/boy_2.4bpp");
 const u32 gObjectEventPic_Uume_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/uume/nurse.4bpp");
+const u32 gObjectEventPic_Uume_Valet[] = INCBIN_U32("graphics/object_events/pics/people/uume/valet.4bpp");
 const u32 gObjectEventPic_Uume_FatGuy[] = INCBIN_U32("graphics/object_events/pics/people/uume/fat_guy.4bpp");
 
 // Hot area NPCs
@@ -156,6 +159,7 @@ const u32 gObjectEventPic_Hot_Boy1[] = INCBIN_U32("graphics/object_events/pics/p
 const u32 gObjectEventPic_Hot_Boy2[] = INCBIN_U32("graphics/object_events/pics/people/hot/boy_2.4bpp");
 const u32 gObjectEventPic_Hot_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/hot/nurse.4bpp");
 const u32 gObjectEventPic_Hot_FatGuy[] = INCBIN_U32("graphics/object_events/pics/people/hot/fat_guy.4bpp");
+const u32 gObjectEventPic_Hot_Valet[] = INCBIN_U32("graphics/object_events/pics/people/hot/valet.4bpp");
 const u32 gObjectEventPic_Natsuki[] = INCBIN_U32("graphics/object_events/pics/people/hot/natsuki.4bpp");
 
 // Sakura area NPCs
@@ -172,6 +176,7 @@ const u32 gObjectEventPic_Sakura_Girl2[] = INCBIN_U32("graphics/object_events/pi
 const u32 gObjectEventPic_Sakura_Boy1[] = INCBIN_U32("graphics/object_events/pics/people/sakura/boy_1.4bpp");
 const u32 gObjectEventPic_Sakura_Boy2[] = INCBIN_U32("graphics/object_events/pics/people/sakura/boy_2.4bpp");
 const u32 gObjectEventPic_Sakura_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/sakura/nurse.4bpp");
+const u32 gObjectEventPic_Sakura_Valet[] = INCBIN_U32("graphics/object_events/pics/people/sakura/valet.4bpp");
 const u32 gObjectEventPic_Sakura_FatGuy[] = INCBIN_U32("graphics/object_events/pics/people/sakura/fat_guy.4bpp");
 
 // Greenish pal

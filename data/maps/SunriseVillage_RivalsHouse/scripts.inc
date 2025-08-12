@@ -52,6 +52,7 @@ SunriseVillage_RivalsHouse_EventScript_Natsuki_2:
 	speakername SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_0
 	msgbox SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_1
 	closemessage
+	setnamedmon SPECIES_JOLTIK
 	goto SunriseVillage_RivalsHouse_EventScript_Natsuki_1
 
 
@@ -59,15 +60,21 @@ SunriseVillage_RivalsHouse_EventScript_Man::
 	lock
 	faceplayer
 	speakername SunriseVillage_RivalsHouse_EventScript_Man_Text_0
+	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
+	goto_if_eq SunriseVillage_RivalsHouse_EventScript_Man_2
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
-	goto_if_ge SunriseVillage_RivalsHouse_EventScript_Man_2
-	msgbox SunriseVillage_RivalsHouse_EventScript_Man_Text_2
+	goto_if_ge SunriseVillage_RivalsHouse_EventScript_Man_3
+	msgbox SunriseVillage_RivalsHouse_EventScript_Man_Text_3
 SunriseVillage_RivalsHouse_EventScript_Man_1:
 	release
 	return
 
 SunriseVillage_RivalsHouse_EventScript_Man_2:
 	msgbox SunriseVillage_RivalsHouse_EventScript_Man_Text_1
+	goto SunriseVillage_RivalsHouse_EventScript_Man_1
+
+SunriseVillage_RivalsHouse_EventScript_Man_3:
+	msgbox SunriseVillage_RivalsHouse_EventScript_Man_Text_2
 	goto SunriseVillage_RivalsHouse_EventScript_Man_1
 
 
@@ -109,7 +116,7 @@ SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_0:
 
 SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_1:
 	.string "Region map, check…\n"
-	.string "Favorite plushie, check…$"
+	.string "Joltik plushie, check…$"
 
 SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_2:
 	.string "Poké Balls, check…\n"
@@ -133,6 +140,12 @@ SunriseVillage_RivalsHouse_EventScript_Man_Text_1:
 	.string "I'm sure she misses you.$"
 
 SunriseVillage_RivalsHouse_EventScript_Man_Text_2:
+	.string "It was tough when Natsuki and I\n"
+	.string "first moved all the way down here.\p"
+	.string "Things are better now.\n"
+	.string "We both needed a fresh start.$"
+
+SunriseVillage_RivalsHouse_EventScript_Man_Text_3:
 	.string "Hello, {PLAYER}! How are you doing?\n"
 	.string "Off to some trouble with Natsuki, I\l"
 	.string "bet?$"

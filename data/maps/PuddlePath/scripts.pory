@@ -1,0 +1,15 @@
+mapscripts PuddlePath_MapScripts {
+	
+}
+
+script PuddlePath_EventScript_Farmer {
+	lock
+	faceplayer
+	speakername("Farmer")
+	msgbox(format(
+		"You're in what's probably the most fertile stretch of land in all of Toku.\p"
+		"The nearby forest enriches the soil,\nand the water stream is rich with volcanic ashes.\p"
+		"Farmers from both Soulkeep and Hanabi City share the land."
+	))
+	release
+}

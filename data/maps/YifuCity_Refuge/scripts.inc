@@ -208,6 +208,16 @@ YifuCity_Refuge_EventScript_ListenToShamisen::
 	end
 
 
+YifuCity_Refuge_EventScript_OldMan::
+	lock
+	faceplayer
+	speakername YifuCity_Refuge_EventScript_OldMan_Text_0
+	msgbox YifuCity_Refuge_EventScript_OldMan_Text_1
+	closemessage
+	release
+	end
+
+
 YifuCity_Refuge_EventScript_Traveler::
 	lock
 	faceplayer
@@ -568,6 +578,15 @@ YifuCity_Refuge_EventScript_ListenToShamisen_Text_1:
 	.string "Whew… I've walked all day…\n"
 	.string "I am spent!$"
 
+YifuCity_Refuge_EventScript_OldMan_Text_0:
+	.string "Old Man$"
+
+YifuCity_Refuge_EventScript_OldMan_Text_1:
+	.string "I'm just resting my old bones by the\n"
+	.string "fire.\p"
+	.string "How the years go by swiftly…\n"
+	.string "Do treasure each passing day…$"
+
 YifuCity_Refuge_EventScript_Traveler_Text_0:
 	.string "Traveler$"
 
@@ -617,7 +636,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_Text_1:
 	.string "… …Yes, I feel it…\p"
 	.string "You managed to traverse the whole\n"
 	.string "Route, triumphing of both Wielders\l"
-	.string "and wild Pokémon, relying on your sole\l"
+	.string "and wild Pokémon, relying on your\l"
 	.string "Wielding skills and medicine…\p"
 	.string "Congratulations, um… {FONT_SMALL}What did you say\n"
 	.string "your name was?{FONT_NORMAL}\p"
@@ -678,10 +697,9 @@ YifuCity_Refuge_EventScript_RouteShamisen_Text_11:
 	.string "You're deceiving yourself, do you not\l"
 	.string "feel it in your heart?\p"
 	.string "Don't be too sad about not\n"
-	.string "succeeding. Honesty is more\l"
-	.string "important than pride, and you will get\l"
-	.string "other opportunities to prove\l"
-	.string "yourself in the future!\p"
+	.string "succeeding. Honesty beats pride, and\l"
+	.string "you will get other opportunities to\l"
+	.string "prove yourself in the future!\p"
 	.string "Rest here a while, and prepare well for\n"
 	.string "your next journey!$"
 
@@ -690,9 +708,9 @@ YifuCity_Refuge_EventScript_RouteShamisen_Text_12:
 	.string "yourself up. I see in your heart that\l"
 	.string "you have a bright future ahead of\l"
 	.string "you.\p"
-	.string "Honesty is more important than pride,\n"
-	.string "and you will get other opportunities\l"
-	.string "to prove yourself in the future!\p"
+	.string "Honesty beats pride, and you will get\n"
+	.string "other opportunities to prove\l"
+	.string "yourself in the future!\p"
 	.string "Rest here a while, and use these to\n"
 	.string "prepare for your next journey!$"
 

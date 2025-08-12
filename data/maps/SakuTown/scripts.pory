@@ -102,7 +102,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"I was wondering if you'd already reached Saku Village by now. Looks like we almost missed each other!\p"
+		"I was wondering if you'd reached Saku Village by now. Looks like we almost missed each other!\p"
 		"I saw several patrolling Samurai on my way here. They look so cool, no wonder they're so admired!\p"
 		"Oh, {PLAYER}, have you caught any Pokémon on your way here?\p"
 		"Me?\nBoy, I'm so glad you asked…\p"

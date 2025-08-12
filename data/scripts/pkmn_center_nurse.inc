@@ -298,10 +298,10 @@ Common_EventScript_PkmnCenterNurse_Sleep_Text_1:
 	.string "can spend the night here.$"
 
 Common_EventScript_PkmnCenterNurse_Sleep_Text_2:
-	.string "Sleep until morning$"
+	.string "Sleep until morning.$"
 
 Common_EventScript_PkmnCenterNurse_Sleep_Text_3:
-	.string "Sleep until nighttime$"
+	.string "Sleep until nighttime.$"
 
 Common_EventScript_PkmnCenterNurse_Sleep_Text_4:
 	.string "Maybe later.$"

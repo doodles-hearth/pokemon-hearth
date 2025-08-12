@@ -26,7 +26,7 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_FAT_GUY",
       "x": 7,
       "y": 14,
       "elevation": 3,
@@ -86,7 +86,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_OLD_WOMAN",
       "x": 21,
       "y": 14,
       "elevation": 3,
@@ -147,8 +147,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SUNRISE_LITTLE_GIRL",
-      "x": 13,
-      "y": 15,
+      "x": 16,
+      "y": 16,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
       "movement_range_x": 2,
@@ -206,7 +206,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_OLD_MAN",
       "x": 20,
       "y": 14,
       "elevation": 3,

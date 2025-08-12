@@ -73,7 +73,7 @@ script ChiiTown_PokemonCenter_EventScript_ShamisenFan {
 script ChiiTown_PokemonCenter_EventScript_Boy {
 	lock
 	faceplayer
-	speakername("Little boy")
+	speakername("Little Girl")
 	msgbox(format(
 		"I'm here with my mama!\p"
 		"The music lady's nice!"

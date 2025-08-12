@@ -12,7 +12,7 @@
   "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
@@ -215,7 +215,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SAKURA_MAN_2",
       "x": 4,
       "y": 16,
       "elevation": 0,
@@ -364,9 +364,7 @@
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [
-
-  ],
+  "coord_events": [],
   "bg_events": [
     {
       "type": "sign",

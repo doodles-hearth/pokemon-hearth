@@ -236,7 +236,7 @@ ChiiTown_PokemonCenter_EventScript_ShamisenFan_Text_1:
 	.string "hope she'll notice me one day…$"
 
 ChiiTown_PokemonCenter_EventScript_Boy_Text_0:
-	.string "Little boy$"
+	.string "Little Girl$"
 
 ChiiTown_PokemonCenter_EventScript_Boy_Text_1:
 	.string "I'm here with my mama!\p"

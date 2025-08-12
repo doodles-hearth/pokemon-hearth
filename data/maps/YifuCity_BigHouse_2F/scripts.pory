@@ -16,6 +16,18 @@ script YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon {
 	release
 }
 
+script YifuCity_BigHouse_2F_EventScript_TradingActOfLove {
+	lock
+	faceplayer
+	speakername("Woman")
+	msgbox(format(
+		"Trading Pokémon has long been seen as an act of true love and trust between Wielders.\p"
+		"Now that I've become a Wielder, I can't wait to find my soulmate so she can trade me all her rare Pokémon!"
+	))
+	closemessage
+	release
+}
+
 script YifuCity_BigHouse_2F_EventScript_RunningBoy {
 	lock
 	faceplayer

@@ -1037,9 +1037,9 @@ SakuTown_EventScript_RivalAtSakuWall_Text_2:
 	.string "Natsuki$"
 
 SakuTown_EventScript_RivalAtSakuWall_Text_3:
-	.string "I was wondering if you'd already\n"
-	.string "reached Saku Village by now. Looks\l"
-	.string "like we almost missed each other!\p"
+	.string "I was wondering if you'd reached Saku\n"
+	.string "Village by now. Looks like we almost\l"
+	.string "missed each other!\p"
 	.string "I saw several patrolling Samurai on my\n"
 	.string "way here. They look so cool, no wonder\l"
 	.string "they're so admired!\p"

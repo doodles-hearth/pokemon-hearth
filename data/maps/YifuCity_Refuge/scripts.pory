@@ -273,6 +273,19 @@ script YifuCity_Refuge_EventScript_ListenToShamisen {
 	end
 }
 
+script YifuCity_Refuge_EventScript_OldMan {
+	lock
+	faceplayer
+	speakername("Old Man")
+	msgbox(format(
+		"I'm just resting my old bones by the fire.\p"
+		"How the years go by swiftly…\nDo treasure each passing day…"
+	))
+	closemessage
+	release
+	end
+}
+
 script YifuCity_Refuge_EventScript_Traveler {
 	lock
 	faceplayer
@@ -358,7 +371,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 					"… … …!\p"
 					"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
 					"… …Yes, I feel it…\p"
-					"You managed to traverse the whole Route, triumphing of both Wielders and wild Pokémon, relying on your sole Wielding skills and medicine…\p"
+					"You managed to traverse the whole Route, triumphing of both Wielders and wild Pokémon, relying on your Wielding skills and medicine…\p"
 					"Congratulations, um… {FONT_SMALL}What did you say your name was?{FONT_NORMAL}\p"
 					"Congratulations, {PLAYER}!\nAs I expected, you have proved worthy of our songs!\p"
 					"I carry some Pokémon Eggs right this moment. I want you to have one, I know it would be in good hands.\p"
@@ -442,7 +455,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 						"Hmmmm… … …\n… … …\p"
 						"You aren't telling the truth, are you?\n"
 						"You're deceiving yourself, do you not feel it in your heart?\p"
-						"Don't be too sad about not succeeding. Honesty is more important than pride, and you will get other opportunities to prove yourself in the future!\p"
+						"Don't be too sad about not succeeding. Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
 						"Rest here a while, and prepare well for your next journey!"
 					))
 					closemessage
@@ -451,7 +464,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 					speakername("Shamisen Player")
 					msgbox(format(
 						"Oh, that's alright! Don't beat yourself up. I see in your heart that you have a bright future ahead of you.\p"
-						"Honesty is more important than pride, and you will get other opportunities to prove yourself in the future!\p"
+						"Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
 						"Rest here a while, and use these to prepare for your next journey!"
 					))
 

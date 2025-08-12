@@ -40,8 +40,8 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 			10,
 			0,
 			DYN_MULTICHOICE_CB_NONE,
-			"Sleep until morning",
-			"Sleep until nighttime",
+			"Sleep until morning.",
+			"Sleep until nighttime.",
 			"Maybe later."
 		)
 		

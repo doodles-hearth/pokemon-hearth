@@ -2,27 +2,64 @@ mapscripts YifuCity_BigHouse_3F_MapScripts {
 
 }
 
-script YifuCity_BigHouse_3F_EventScript_TradingActOfLove {
+script YifuCity_BigHouse_3F_EventScript_HarikosGrandma {
 	lock
 	faceplayer
-	speakername("Woman")
+	speakername("Old Woman")
 	msgbox(format(
-		"Trading Pokémon has long been seen as an act of true love and trust between Wielders.\p"
-		"Now that I've become a Wielder, I can't wait to find my soulmate so she can trade me all her rare Pokémon!"
+		"I'm so proud of my grandchildren!\p"
+		"My eldest is always out and about with her head in the clouds.\p"
+		"She's quite the oddball, but she's probably the most brilliant!"
 	))
 	closemessage
 	release
 }
 
-script YifuCity_BigHouse_3F_EventScript_Butterfree {
+script YifuCity_BigHouse_3F_EventScript_HarikosGrandpa {
+	lock
+	faceplayer
+	speakername("Old Man")
+	msgbox(format(
+		"The climate here is a lot warmer than the Icy Isles.\p"
+		"That's why we brought Snom with us!"
+		// TODO EVA setdescribedmon
+	))
+	setnamedmon(SPECIES_SNOM)
+	closemessage
+	release
+}
+
+script YifuCity_BigHouse_3F_EventScript_HarikosSister {
+	lock
+	faceplayer
+	speakername("Little Girl")
+	msgbox(format(
+		"My big sister brings us food from the places she visits!\pI miss her…"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_BigHouse_3F_EventScript_HarikosBrother {
+	lock
+	faceplayer
+	speakername("Boy")
+	msgbox(format(
+		"Are you from here? I haven't seen your hair color before."
+	))
+	closemessage
+	release
+}
+
+script YifuCity_BigHouse_3F_EventScript_Snom {
 	lock
     faceplayer
-	setseenmon(SPECIES_BUTTERFREE)
-    setspeakertomonname(SPECIES_BUTTERFREE)
+	setseenmon(SPECIES_SNOM)
+    setspeakertomonname(SPECIES_SNOM)
     msgbox(format(
-        "E-e-e-eee!"
+        "Mrmr…"
     ))
-    playmoncry(SPECIES_BUTTERFREE, CRY_MODE_NORMAL)
+    playmoncry(SPECIES_SNOM, CRY_MODE_NORMAL)
     waitmoncry
     release
     end
