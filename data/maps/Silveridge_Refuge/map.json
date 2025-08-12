@@ -15,7 +15,7 @@
   "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_MAN_2",
       "x": 9,
       "y": 7,
       "elevation": 0,
@@ -35,7 +35,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_WOMAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_WOMAN_2",
       "x": 16,
       "y": 9,
       "elevation": 0,
@@ -95,7 +95,7 @@
       "night": true
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_NURSE",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_NURSE",
       "x": 13,
       "y": 3,
       "elevation": 0,
@@ -175,7 +175,7 @@
       "night": true
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_NURSE",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_NURSE",
       "x": 6,
       "y": 3,
       "elevation": 0,
@@ -195,7 +195,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_GIRL_1",
       "x": 11,
       "y": 5,
       "elevation": 0,

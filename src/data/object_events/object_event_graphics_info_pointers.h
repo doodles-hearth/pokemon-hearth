@@ -81,6 +81,21 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_Boy2
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_Nurse;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_Valet;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Sakura_FatGuy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_Woman1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_Woman2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_Man1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_Man2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_OldWoman;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_OldMan;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_LittleBoy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_LittleGirl;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_Girl1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_Girl2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_Boy1;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_Boy2;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_Nurse;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_Valet;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Mountain_FatGuy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RichBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Gardener;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_FatMan;
@@ -377,21 +392,21 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SEASIDE_VALET] =            &gObjectEventGraphicsInfo_Seaside_Valet,
     [OBJ_EVENT_GFX_SEASIDE_FAT_GUY] =          &gObjectEventGraphicsInfo_Seaside_FatGuy,
 
-    [OBJ_EVENT_GFX_UUME_WOMAN_1] =             &gObjectEventGraphicsInfo_Uume_Woman1,
-    [OBJ_EVENT_GFX_UUME_WOMAN_2] =             &gObjectEventGraphicsInfo_Uume_Woman2,
-    [OBJ_EVENT_GFX_UUME_MAN_1] =               &gObjectEventGraphicsInfo_Uume_Man1,
-    [OBJ_EVENT_GFX_UUME_MAN_2] =               &gObjectEventGraphicsInfo_Uume_Man2,
-    [OBJ_EVENT_GFX_UUME_OLD_WOMAN] =           &gObjectEventGraphicsInfo_Uume_OldWoman,
-    [OBJ_EVENT_GFX_UUME_OLD_MAN] =             &gObjectEventGraphicsInfo_Uume_OldMan,
-    [OBJ_EVENT_GFX_UUME_LITTLE_BOY] =          &gObjectEventGraphicsInfo_Uume_LittleBoy,
-    [OBJ_EVENT_GFX_UUME_LITTLE_GIRL] =         &gObjectEventGraphicsInfo_Uume_LittleGirl,
-    [OBJ_EVENT_GFX_UUME_GIRL_1] =              &gObjectEventGraphicsInfo_Uume_Girl1,
-    [OBJ_EVENT_GFX_UUME_GIRL_2] =              &gObjectEventGraphicsInfo_Uume_Girl2,
-    [OBJ_EVENT_GFX_UUME_BOY_1] =               &gObjectEventGraphicsInfo_Uume_Boy1,
-    [OBJ_EVENT_GFX_UUME_BOY_2] =               &gObjectEventGraphicsInfo_Uume_Boy2,
-    [OBJ_EVENT_GFX_UUME_NURSE] =               &gObjectEventGraphicsInfo_Uume_Nurse,
-    [OBJ_EVENT_GFX_UUME_VALET] =               &gObjectEventGraphicsInfo_Uume_Valet,
-    [OBJ_EVENT_GFX_UUME_FAT_GUY] =             &gObjectEventGraphicsInfo_Uume_FatGuy,
+    [OBJ_EVENT_GFX_UUME_WOMAN_1] =             &gObjectEventGraphicsInfo_Mountain_Woman1,
+    [OBJ_EVENT_GFX_UUME_WOMAN_2] =             &gObjectEventGraphicsInfo_Mountain_Woman2,
+    [OBJ_EVENT_GFX_UUME_MAN_1] =               &gObjectEventGraphicsInfo_Mountain_Man1,
+    [OBJ_EVENT_GFX_UUME_MAN_2] =               &gObjectEventGraphicsInfo_Mountain_Man2,
+    [OBJ_EVENT_GFX_UUME_OLD_WOMAN] =           &gObjectEventGraphicsInfo_Mountain_OldWoman,
+    [OBJ_EVENT_GFX_UUME_OLD_MAN] =             &gObjectEventGraphicsInfo_Mountain_OldMan,
+    [OBJ_EVENT_GFX_UUME_LITTLE_BOY] =          &gObjectEventGraphicsInfo_Mountain_LittleBoy,
+    [OBJ_EVENT_GFX_UUME_LITTLE_GIRL] =         &gObjectEventGraphicsInfo_Mountain_LittleGirl,
+    [OBJ_EVENT_GFX_UUME_GIRL_1] =              &gObjectEventGraphicsInfo_Mountain_Girl1,
+    [OBJ_EVENT_GFX_UUME_GIRL_2] =              &gObjectEventGraphicsInfo_Mountain_Girl2,
+    [OBJ_EVENT_GFX_UUME_BOY_1] =               &gObjectEventGraphicsInfo_Mountain_Boy1,
+    [OBJ_EVENT_GFX_UUME_BOY_2] =               &gObjectEventGraphicsInfo_Mountain_Boy2,
+    [OBJ_EVENT_GFX_UUME_NURSE] =               &gObjectEventGraphicsInfo_Mountain_Nurse,
+    [OBJ_EVENT_GFX_UUME_VALET] =               &gObjectEventGraphicsInfo_Mountain_Valet,
+    [OBJ_EVENT_GFX_UUME_FAT_GUY] =             &gObjectEventGraphicsInfo_Mountain_FatGuy,
 
     [OBJ_EVENT_GFX_HOT_WOMAN_1] =              &gObjectEventGraphicsInfo_Hot_Woman1,
     [OBJ_EVENT_GFX_HOT_WOMAN_2] =              &gObjectEventGraphicsInfo_Hot_Woman2,
@@ -424,6 +439,22 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_SAKURA_NURSE] =             &gObjectEventGraphicsInfo_Sakura_Nurse,
     [OBJ_EVENT_GFX_SAKURA_VALET] =             &gObjectEventGraphicsInfo_Sakura_Valet,
     [OBJ_EVENT_GFX_SAKURA_FAT_GUY] =           &gObjectEventGraphicsInfo_Sakura_FatGuy,
+
+    [OBJ_EVENT_GFX_MOUNTAIN_WOMAN_1] =           &gObjectEventGraphicsInfo_Mountain_Woman1,
+    [OBJ_EVENT_GFX_MOUNTAIN_WOMAN_2] =           &gObjectEventGraphicsInfo_Mountain_Woman2,
+    [OBJ_EVENT_GFX_MOUNTAIN_MAN_1] =             &gObjectEventGraphicsInfo_Mountain_Man1,
+    [OBJ_EVENT_GFX_MOUNTAIN_MAN_2] =             &gObjectEventGraphicsInfo_Mountain_Man2,
+    [OBJ_EVENT_GFX_MOUNTAIN_OLD_WOMAN] =         &gObjectEventGraphicsInfo_Mountain_OldWoman,
+    [OBJ_EVENT_GFX_MOUNTAIN_OLD_MAN] =           &gObjectEventGraphicsInfo_Mountain_OldMan,
+    [OBJ_EVENT_GFX_MOUNTAIN_LITTLE_BOY] =        &gObjectEventGraphicsInfo_Mountain_LittleBoy,
+    [OBJ_EVENT_GFX_MOUNTAIN_LITTLE_GIRL] =       &gObjectEventGraphicsInfo_Mountain_LittleGirl,
+    [OBJ_EVENT_GFX_MOUNTAIN_GIRL_1] =            &gObjectEventGraphicsInfo_Mountain_Girl1,
+    [OBJ_EVENT_GFX_MOUNTAIN_GIRL_2] =            &gObjectEventGraphicsInfo_Mountain_Girl2,
+    [OBJ_EVENT_GFX_MOUNTAIN_BOY_1] =             &gObjectEventGraphicsInfo_Mountain_Boy1,
+    [OBJ_EVENT_GFX_MOUNTAIN_BOY_2] =             &gObjectEventGraphicsInfo_Mountain_Boy2,
+    [OBJ_EVENT_GFX_MOUNTAIN_NURSE] =             &gObjectEventGraphicsInfo_Mountain_Nurse,
+    [OBJ_EVENT_GFX_MOUNTAIN_VALET] =             &gObjectEventGraphicsInfo_Mountain_Valet,
+    [OBJ_EVENT_GFX_MOUNTAIN_FAT_GUY] =           &gObjectEventGraphicsInfo_Mountain_FatGuy,
 
     [OBJ_EVENT_GFX_NINJA_BOY] =                &gObjectEventGraphicsInfo_NinjaBoy,
     [OBJ_EVENT_GFX_TWIN_M] =                   &gObjectEventGraphicsInfo_TwinM,

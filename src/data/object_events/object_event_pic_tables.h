@@ -395,6 +395,76 @@ static const struct SpriteFrameImage sPicTable_Sakura_Valet[] = {
     overworld_ascending_frames(gObjectEventPic_Sakura_Valet, 4, 4),
 };
 
+// Mountain
+static const struct SpriteFrameImage sPicTable_Mountain_Woman1[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_Woman1, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_Woman2[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_Woman2, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_Man1[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_Man1, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_Man2[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_Man2, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_OldWoman[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_OldWoman, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_OldMan[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_OldMan, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_LittleGirl[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_LittleGirl, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_LittleBoy[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_LittleBoy, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_Girl1[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_Girl1, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_Girl2[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_Girl2, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_Boy1[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_Boy1, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_Boy2[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_Boy2, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_Nurse[] = {
+    overworld_frame(gObjectEventPic_Mountain_Nurse, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Mountain_Nurse, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Mountain_Nurse, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Mountain_Nurse, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Mountain_Nurse, 4, 4, 0),
+    overworld_frame(gObjectEventPic_Mountain_Nurse, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Mountain_Nurse, 4, 4, 1),
+    overworld_frame(gObjectEventPic_Mountain_Nurse, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Mountain_Nurse, 4, 4, 2),
+    overworld_frame(gObjectEventPic_Mountain_Nurse, 4, 4, 3),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_FatGuy[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_FatGuy, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_Mountain_Valet[] = {
+    overworld_ascending_frames(gObjectEventPic_Mountain_Valet, 4, 4),
+};
+
 // Greenish
 static const struct SpriteFrameImage sPicTable_AromaLady[] = {
     overworld_ascending_frames(gObjectEventPic_AromaLady, 4, 4),

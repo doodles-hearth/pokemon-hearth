@@ -26,7 +26,7 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_FAT_GUY",
       "x": 32,
       "y": 20,
       "elevation": 0,
@@ -46,7 +46,7 @@
       "night": true
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_WOMAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_WOMAN_2",
       "x": 23,
       "y": 27,
       "elevation": 0,
@@ -86,7 +86,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_BOY_1",
+      "graphics_id": "OBJ_EVENT_GFX_SEASIDE_BOY_2",
       "x": 30,
       "y": 13,
       "elevation": 0,
@@ -126,7 +126,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_MAN_2",
       "x": 25,
       "y": 22,
       "elevation": 0,

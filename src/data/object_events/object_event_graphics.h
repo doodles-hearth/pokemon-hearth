@@ -78,6 +78,7 @@ const u16 gObjectEventPal_Npc_Seaside[] = INCBIN_U16("graphics/object_events/pal
 const u16 gObjectEventPal_Npc_Uume[] = INCBIN_U16("graphics/object_events/palettes/pal_uume.gbapal");
 const u16 gObjectEventPal_Npc_Hot[] = INCBIN_U16("graphics/object_events/palettes/pal_hot.gbapal");
 const u16 gObjectEventPal_Npc_Sakura[] = INCBIN_U16("graphics/object_events/palettes/pal_sakura.gbapal");
+const u16 gObjectEventPal_Npc_Mountain[] = INCBIN_U16("graphics/object_events/palettes/pal_mountain.gbapal");
 
 // Evil teams
 const u32 gObjectEventPic_CrobatShadowsGruntM[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/zubat_m.4bpp");
@@ -178,6 +179,23 @@ const u32 gObjectEventPic_Sakura_Boy2[] = INCBIN_U32("graphics/object_events/pic
 const u32 gObjectEventPic_Sakura_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/sakura/nurse.4bpp");
 const u32 gObjectEventPic_Sakura_Valet[] = INCBIN_U32("graphics/object_events/pics/people/sakura/valet.4bpp");
 const u32 gObjectEventPic_Sakura_FatGuy[] = INCBIN_U32("graphics/object_events/pics/people/sakura/fat_guy.4bpp");
+
+// Mountain area NPCs
+const u32 gObjectEventPic_Mountain_Woman1[] = INCBIN_U32("graphics/object_events/pics/people/mountain/woman_1.4bpp");
+const u32 gObjectEventPic_Mountain_Woman2[] = INCBIN_U32("graphics/object_events/pics/people/mountain/woman_2.4bpp");
+const u32 gObjectEventPic_Mountain_Man1[] = INCBIN_U32("graphics/object_events/pics/people/mountain/man_1.4bpp");
+const u32 gObjectEventPic_Mountain_Man2[] = INCBIN_U32("graphics/object_events/pics/people/mountain/man_2.4bpp");
+const u32 gObjectEventPic_Mountain_OldMan[] = INCBIN_U32("graphics/object_events/pics/people/mountain/old_man.4bpp");
+const u32 gObjectEventPic_Mountain_OldWoman[] = INCBIN_U32("graphics/object_events/pics/people/mountain/old_woman.4bpp");
+const u32 gObjectEventPic_Mountain_LittleGirl[] = INCBIN_U32("graphics/object_events/pics/people/mountain/little_girl.4bpp");
+const u32 gObjectEventPic_Mountain_LittleBoy[] = INCBIN_U32("graphics/object_events/pics/people/mountain/little_boy.4bpp");
+const u32 gObjectEventPic_Mountain_Girl1[] = INCBIN_U32("graphics/object_events/pics/people/mountain/girl_1.4bpp");
+const u32 gObjectEventPic_Mountain_Girl2[] = INCBIN_U32("graphics/object_events/pics/people/mountain/girl_2.4bpp");
+const u32 gObjectEventPic_Mountain_Boy1[] = INCBIN_U32("graphics/object_events/pics/people/mountain/boy_1.4bpp");
+const u32 gObjectEventPic_Mountain_Boy2[] = INCBIN_U32("graphics/object_events/pics/people/mountain/boy_2.4bpp");
+const u32 gObjectEventPic_Mountain_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/mountain/nurse.4bpp");
+const u32 gObjectEventPic_Mountain_Valet[] = INCBIN_U32("graphics/object_events/pics/people/mountain/valet.4bpp");
+const u32 gObjectEventPic_Mountain_FatGuy[] = INCBIN_U32("graphics/object_events/pics/people/mountain/fat_guy.4bpp");
 
 // Greenish pal
 const u32 gObjectEventPic_AromaLady[] = INCBIN_U32("graphics/object_events/pics/people/greenish/aroma_lady.4bpp");
