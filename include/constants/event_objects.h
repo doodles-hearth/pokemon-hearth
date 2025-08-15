@@ -516,7 +516,7 @@
 #define OBJ_EVENT_PAL_TAG_E4_3                    0x1143
 #define OBJ_EVENT_PAL_TAG_E4_4                    0x1144
 
-#define OBJ_EVENT_PAL_TAG_ELDER                   0x1145
+#define OBJ_EVENT_PAL_TAG_UNUSED                  0x1145 // Unused
 #define OBJ_EVENT_PAL_TAG_TRAVELING_MERCHANT      0x1146
 #define OBJ_EVENT_PAL_TAG_BEAN                    0x1147
 #define OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS          0x1148

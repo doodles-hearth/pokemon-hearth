@@ -3090,7 +3090,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BerryTreeLateStage
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kaba = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_ELDER,
+    .paletteTag = OBJ_EVENT_PAL_TAG_PURPLISH,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,
@@ -3109,7 +3109,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kaba = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Elder2 = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_ELDER,
+    .paletteTag = OBJ_EVENT_PAL_TAG_PURPLISH,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,
