@@ -72,8 +72,8 @@ void RemoveFieldMugshot(void)
 
 void CreateFieldMugshot(struct ScriptContext *ctx)
 {
-    u16 id = ScriptReadHalfword(ctx);
-    u16 emote = ScriptReadHalfword(ctx);
+    u16 id = VarGet(ScriptReadHalfword(ctx));
+    u16 emote = VarGet(ScriptReadHalfword(ctx));
 
     _CreateFieldMugshot(id, emote);
 }
