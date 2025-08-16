@@ -103,7 +103,7 @@ void _CreateFieldMugshot(u32 id, u32 emote)
     struct CompressedSpriteSheet sheet = { .size=0x1000, .tag=slot+TAG_MUGSHOT };
     struct SpritePalette pal = { .tag = sheet.tag };
 
-    DebugPrintf("id: %u, emote: %u, sFieldMugshotSlot: %u", id, emote, slot);
+    DebugPrintf("id: %u, emote: %u, sFieldMugshotSlot: %u, NULL: %d", id, emote, slot, sFieldMugshots[id][emote].gfx == NULL);
     if (sIsFieldMugshotActive)
     {
         _RemoveFieldMugshot(slot);
