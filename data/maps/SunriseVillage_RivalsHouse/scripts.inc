@@ -115,16 +115,16 @@ SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_0:
 	.string "Natsuki$"
 
 SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_1:
-	.string "Region map, check…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Region map, check…\n"
 	.string "Joltik plushie, check…$"
 
 SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_2:
-	.string "Poké Balls, check…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Poké Balls, check…\n"
 	.string "Medicine, check…\l"
 	.string "Spare pair of underwear, check…$"
 
 SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_3:
-	.string "Oh, hey, {PLAYER}. I'm just sorting\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh, hey, {PLAYER}. I'm just sorting\n"
 	.string "out my stuff for the journey.\p"
 	.string "I'm traveling as light as possible!\p"
 	.string "See you around, yeah?$"

@@ -53,7 +53,7 @@ script CrobatHideout_1F_SeenByGrunt {
 
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"Who the heck're you?!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Who the heck're you?!"
 	))
 
 	dynmultichoice(
@@ -73,20 +73,20 @@ script CrobatHideout_1F_SeenByGrunt {
 		case 0:
 			speakername("Zubat Grunt")
 			msgbox(format(
-				"I don' know no {PLAYER}!\nThis ain't no tea party!\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I don' know no {PLAYER}!\nThis ain't no tea party!\p"
 				"You a spy? Ya don' work with the Samurai or somethin', do ya?"
 			))
 		case 1:
 			speakername("Zubat Grunt")
 			msgbox(format(
-				"Oh, right, 'course, the new recruit!\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Oh, right, 'course, the new recruit!\p"
 				"(Why am I never in the loop?…)\p"
 				"Wait… Where's yer uniform?"
 			))
 		case 2:
 			speakername("Zubat Grunt")
 			msgbox(format(
-				"Duh, what dum' question is that?\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Duh, what dum' question is that?\p"
 				"…Wait…\nYou're not a Crobat Shadow, are ya?"
 			))
 	}
@@ -99,7 +99,7 @@ script CrobatHideout_1F_SeenByGrunt {
 
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"Ah, crappers! Hideout's compromised!\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Ah, crappers! Hideout's compromised!\p"
 		"We've got an intruder!\nBOSS!! BOOOSSSS!!!"
 	))
 	closemessage
@@ -121,7 +121,7 @@ script CrobatHideout_1F_EventScript_Grunt1 {
 	)
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"Whaddyawant? Ya got nothin' on us!\nErr I mean, we done nothin' wrong!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Whaddyawant? Ya got nothin' on us!\nErr I mean, we done nothin' wrong!"
 	))
 	closemessage
 	end
@@ -135,7 +135,7 @@ script CrobatHideout_1F_EventScript_GruntPaintingPokeballs {
 	)
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"I'm sure this is all super legal, but dontcha dare say a thing!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I'm sure this is all super legal, but dontcha dare say a thing!"
 	))
 	closemessage
 	end
@@ -151,7 +151,7 @@ script CrobatHideout_1F_EventScript_GruntLaundryRoom {
 	)
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"I always end up on laundry duty, even when it's someone else's turn…"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I always end up on laundry duty, even when it's someone else's turn…"
 	))
 	closemessage
 	end
@@ -167,7 +167,7 @@ script CrobatHideout_1F_EventScript_GruntDoubleGirl {
 	)
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"Yer laughin' now, but our boss is gonna stomp on ya real good!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yer laughin' now, but our boss is gonna stomp on ya real good!"
 	))
 	closemessage
 	end
@@ -183,7 +183,7 @@ script CrobatHideout_1F_EventScript_GruntDoubleGuy {
 	)
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"We ain't gon' take this invasion of our privacy lyin' down!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We ain't gon' take this invasion of our privacy lyin' down!"
 	))
 	closemessage
 	end
@@ -199,7 +199,7 @@ script CrobatHideout_1F_EventScript_GruntNearReunionRoom {
 	)
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"Our boss takes good care of us! Everythin' was fine an' dandy 'til you showed up!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Our boss takes good care of us! Everythin' was fine an' dandy 'til you showed up!"
 	))
 	closemessage
 	end
@@ -404,12 +404,12 @@ script CrobatHideout_1F_Trigger_4V1 {
 	applymovement(LOCALID_4V1_GRUNT_1, moves(walk_in_place_fast_right))
 	waitmovement(LOCALID_4V1_GRUNT_1)
 	speakername("Zubat Grunt")
-	msgbox("Dontcha take another step!")
+	msgbox("{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Dontcha take another step!")
 
 	applymovement(LOCALID_4V1_GRUNT_2, moves(walk_in_place_fast_up))
 	waitmovement(LOCALID_4V1_GRUNT_2)
 	speakername("Zubat Grunt")
-	msgbox("We're 'ere to end ya!")
+	msgbox("{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We're 'ere to end ya!")
 
 	// Samurai runs in
 	addobject(LOCALID_SAMURAI)
@@ -477,7 +477,7 @@ script CrobatHideout_1F_SamuraiOffersHelp {
 	waitmovement(LOCALID_4V1_GRUNT_4)
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"Hey, no fair! This was s'posed to be a four on one situation!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hey, no fair! This was s'posed to be a four on one situation!"
 	))
 	closemessage
 }
@@ -494,7 +494,7 @@ script CrobatHideout_1F_BattleSamuraiBackToBack {
 	waitmovement(LOCALID_4V1_GRUNT_1)
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"Ayayaya! Jus' wait til the Boss hears of this!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Ayayaya! Jus' wait til the Boss hears of this!"
 	))
 	closemessage
 
@@ -554,7 +554,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	waitmovement(LOCALID_KEVIN)
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"Boss, uh, the intruder's 'ere!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Boss, uh, the intruder's 'ere!"
 	))
 	closemessage
 

@@ -268,7 +268,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 
 	speakername("Hariko")
 	msgbox(format(
-		"Did you hear? They said this Decay\nhas started less than a week ago.\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Did you hear? They said this Decay\nhas started less than a week ago.\p"
 		"That coincides with the beginning of\nthe Volcano's rumbling spells,\lso there probably is a correlation.\p"
 		"We need to get to the bottom of this.\p"
 		"But how are we supposed to if the grownups don't let us?"
@@ -281,7 +281,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 
 	speakername("Hariko")
 	msgbox(format(
-		"… …{PLAYER}, Natsuki.\nI am heading home, in Yifu City.\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}… …{PLAYER}, Natsuki.\nI am heading home, in Yifu City.\p"
 		"We should meet up later to talk about this some more.\p"
 		"Well, I am leaving now.\p"
 		"Goodbye!"
@@ -303,7 +303,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Boy, your friend sure talks a lot, huh?\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Boy, your friend sure talks a lot, huh?\p"
 		"D'you think this whole Decay business\nis linked to the wild Pokémon attacks\lElder Kaba told us about?\p"
 		"I'm glad the Samurai are on it.\nI'm sure they'll fix whatever this is.\p"
 		"You're going up to Silveridge to deliver that letter, huh, {PLAYER}?\p"
@@ -316,7 +316,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Don't hit me! Don't hit me!\nI'm gone!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't hit me! Don't hit me!\nI'm gone!\p"
 		"See ya later, Feraligatr!"
 	))
 

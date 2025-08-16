@@ -24,9 +24,9 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 
 	special(GetPlayerBrotherSisterString)
-	speakername("Big sis")
+	speakername("Big Sis")
 	msgbox(format(
-		"Oh, {PLAYER}, you're up! Ready for the big event?\p"
+		"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Oh, {PLAYER}, you're up! Ready for the big event?\p"
 		"Are you excited? I sure hope you are, because I'm VERY EXCITED!\p"
 		"I have to head out! Don't be late, I know you, little {STR_VAR_1}!\p"
 		"And don't forget to pick up the bag I made for you before you leave!\p"
@@ -56,17 +56,17 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 	lock
 	faceplayer
-	speakername("Big sis")
+	speakername("Big Sis")
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) <= 4) {
 		msgbox(format(
-			"What are you still doing here? You're late for the distribution!\p"
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}What are you still doing here? You're late for the distribution!\p"
 			"Go to Kaba's house right now!"
 		))
 		closemessage
 	} elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) <= 6) {
 		special(GetPlayerBrotherSisterString)
 		msgbox(format(
-			"Hey little {STR_VAR_1}! See how cute my new Pokémon is?\p"
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Hey little {STR_VAR_1}! See how cute my new Pokémon is?\p"
 			"By the way, I heard Natsuki was waiting for you at Elder Kaba's house. You should probably go see them."
 		))
 		closemessage
@@ -74,7 +74,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		special(GetPlayerBrotherSisterString)
 		bufferspeciesname(STR_VAR_2, VAR_STARTER_MON)
 		msgbox(format(
-			"Hey little {STR_VAR_1}! See how cute my new Pokémon is?\p"
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Hey little {STR_VAR_1}! See how cute my new Pokémon is?\p"
 			"Oh, who is that lovely little thing with you?\p"
 			"{STR_VAR_2}, huh?\p"
 			"Looks like it already likes you a lot! You're going to make a great Wielder, I know it!\p"
@@ -87,9 +87,9 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 
 		giveitem(ITEM_TOWN_MAP)
 
-		speakername("Big sis")
+		speakername("Big Sis")
 		msgbox(format(
-			"Ah, one last thing! Take my good luck statuette with you.\p"
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Ah, one last thing! Take my good luck statuette with you.\p"
 			"I like the tradition, so indulge me, alright? Please? Everyone carries one!"
 		))
 		closemessage
@@ -97,9 +97,9 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		giveitem(ITEM_ENTEI_STATUETTE)
 
 		special(GetPlayerBrotherSisterString)
-		speakername("Big sis")
+		speakername("Big Sis")
 		msgbox(format(
-			"Alrighty! You all set? Have a safe journey, little {STR_VAR_1}.\p"
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Alrighty! You all set? Have a safe journey, little {STR_VAR_1}.\p"
 			"Maybe I'll see you around!\p"
 			"Come back home sometimes though, will you?"
 		))
@@ -112,14 +112,14 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 	} else {
 		special(GetPlayerBroSisString)
 		msgbox(format(
-			"Hey {PLAYER}! How's it going?\p"
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Hey {PLAYER}! How's it going?\p"
 			"Here, rest for a bit."
 		))
 		closemessage
 		call(Common_EventScript_OutOfCenterPartyHeal)
-		speakername("Big sis")
+		speakername("Big Sis")
 		msgbox(format(
-			"See you around, little {STR_VAR_1}."
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}See you around, little {STR_VAR_1}."
 		))
 		closemessage
 	}

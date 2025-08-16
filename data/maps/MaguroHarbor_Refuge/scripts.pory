@@ -20,7 +20,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 	if (flag(FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE)) {
 		speakername("Hariko")
 		msgbox(format(
-			"Where are you headed after getting the Maguro Dojo's Token?\p"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Where are you headed after getting the Maguro Dojo's Token?\p"
 			"Silveridge? I heard there are enormous rock snakes burrowing through Silver Tunnel…\p"
 			"If you see one, tell me about it the next time we meet."
 		))
@@ -29,7 +29,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 	elif (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
 		speakername("Hariko")
 		msgbox(format(
-			"Hello again, {PLAYER}. So, do you want to battle?"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello again, {PLAYER}. So, do you want to battle?"
 		))
 		closemessage
 
@@ -37,7 +37,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 	} else {
 		speakername("Hariko")
 		msgbox(format(
-			"Oh, hello there, {PLAYER}.\nFancy meeting you here, as they say.\p"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Oh, hello there, {PLAYER}.\nFancy meeting you here, as they say.\p"
 			"I assume you are here to challenge the Maguro Harbor Dojo?\p"
 			"Me? I am not particularly interested in becoming a great Wielder.\p"
 			"I travel to learn as much as I can about Pokémon!\p"
@@ -68,7 +68,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 
 		speakername("Hariko")
 		msgbox(format(
-			"Bean is a little slow, but he is happy to meet you!\p"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Bean is a little slow, but he is happy to meet you!\p"
 			"He may not look like a fighter, but he enjoys a good battle, too."
 			"Would you like to have a friendly bout, Bean against your Pokémon?"
 		))
@@ -102,7 +102,7 @@ script MaguroHarbor_Refuge_BattleHariko {
 
 			speakername("Hariko")
 			msgbox(format(
-				"We lost, but Bean tells me he had fun!\nI am glad.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}We lost, but Bean tells me he had fun!\nI am glad.\p"
 				"Everyday we learn something new about Pokémon, be it through battling or observation.\p"
 				"I brought snacks for my journey.\nIf I give you some, you will probably feel rewarded for this fight!"
 			))
@@ -112,14 +112,14 @@ script MaguroHarbor_Refuge_BattleHariko {
 
 			speakername("Hariko")
 			msgbox(format(
-				"These can be fed to your Pokémon during battle to save you from a pickle.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}These can be fed to your Pokémon during battle to save you from a pickle.\p"
 				"Farewell, {PLAYER}."
 			))
 			closemessage
 		case 1:
 			speakername("Hariko")
 			msgbox(format(
-				"No problem. I will be here a while before I continue my journey."
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}No problem. I will be here a while before I continue my journey."
 			))
 			closemessage
 	}

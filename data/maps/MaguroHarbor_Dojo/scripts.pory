@@ -9,7 +9,7 @@ script MaguroHarbor_Dojo_EventScript_Koishi {
 	trainerbattle_single(
 		TRAINER_KOISHI_1,
 		format(
-			"Welcome to Maguro's Koi Pond Dojo, one of the eight Dojos officially appointed by the Toku Council.\p"
+			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}Welcome to Maguro's Koi Pond Dojo, one of the eight Dojos officially appointed by the Toku Council.\p"
 			"We Dojo Masters fight Wielders that have taken on the Toku Council's challenge.\p"
 			"We each give out a different Token to anyone who succeeds in defeating us.\p"
 			"I am Koishi. I began raising elegant, graceful Pokémon when I was even younger than you are now.\p"
@@ -37,7 +37,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	speakername("Koishi")
 	msgbox(
 		format(
-			"I applaud your skill. You are still a child, yet you obviously have a natural aptitude for battle.\p"
+			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}I applaud your skill. You are still a child, yet you obviously have a natural aptitude for battle.\p"
 			"With the Token I just gave you, your Pokémon will obey you without question, even those you trade with others.\p"
 			"I am also supposed to give you this."
 		),
@@ -49,7 +49,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	speakername("Koishi")
 	msgbox(
 		format(
-			"This scroll contains Nature Power, a move that changes depending on the terrain your Pokémon is standing on.\p"
+			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}This scroll contains Nature Power, a move that changes depending on the terrain your Pokémon is standing on.\p"
 			"Going through the Toku Council's challenge is no easy undertaking, but I can feel your spirit overflowing with determination.\p"
 			"Good luck, {PLAYER}."
 		),
@@ -96,7 +96,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 
 	speakername("Koishi")
 	msgbox(format(
-		"That… That was a big one!…\p"
+		"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}That… That was a big one!…\p"
 		"I'm going outside to make sure everyone's alright."
 	))
 	closemessage

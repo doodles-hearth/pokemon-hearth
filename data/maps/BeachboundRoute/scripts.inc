@@ -207,7 +207,7 @@ BeachboundRoute_EventScript_Mugging_1:
 	closemessage
 	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_2
 	waitmovement 0
-	speakername BeachboundRoute_EventScript_Mugging_Text_10
+	speakername BeachboundRoute_EventScript_Mugging_Text_19
 	msgbox BeachboundRoute_EventScript_Mugging_Text_24
 	closemessage
 	delay 24
@@ -622,15 +622,15 @@ BeachboundRoute_EventScript_Mugging_Text_0:
 	.string "Shady Man$"
 
 BeachboundRoute_EventScript_Mugging_Text_1:
-	.string "Stop yappin', lady! Just give us yer\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Stop yappin', lady! Just give us yer\n"
 	.string "Pokémon already!$"
 
 BeachboundRoute_EventScript_Mugging_Text_2:
-	.string "C'mon, don't make this difficult! Just\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'mon, don't make this difficult! Just\n"
 	.string "hand it over!$"
 
 BeachboundRoute_EventScript_Mugging_Text_3:
-	.string "Just what d'you think yer doin'?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Just what d'you think yer doin'?\p"
 	.string "Can't ya see we're in the middle of\n"
 	.string "something 'ere?$"
 
@@ -644,7 +644,7 @@ BeachboundRoute_EventScript_Mugging_Text_6:
 	.string "Uh…$"
 
 BeachboundRoute_EventScript_Mugging_Text_7:
-	.string "Ooh, feelin' heroic today, are we?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Ooh, feelin' heroic today, are we?\p"
 	.string "D'ya know what we do to nosy brats\n"
 	.string "who're not clever enough to mind their\l"
 	.string "own business?\p"
@@ -658,7 +658,7 @@ BeachboundRoute_EventScript_Mugging_Text_7:
 	.string "We're basically the allegory of crime!$"
 
 BeachboundRoute_EventScript_Mugging_Text_8:
-	.string "'S a little too late fer that, don't ya\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}'S a little too late fer that, don't ya\n"
 	.string "think? D'ya know what we do to nosy\l"
 	.string "brats who're not clever enough to\l"
 	.string "mind their own business?\p"
@@ -672,7 +672,7 @@ BeachboundRoute_EventScript_Mugging_Text_8:
 	.string "We're basically the allegory of crime!$"
 
 BeachboundRoute_EventScript_Mugging_Text_9:
-	.string "Got nothin' to say, huh?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Got nothin' to say, huh?\p"
 	.string "D'ya know what we do to nosy brats\n"
 	.string "who're not clever enough to mind their\l"
 	.string "own business?\p"
@@ -689,23 +689,23 @@ BeachboundRoute_EventScript_Mugging_Text_10:
 	.string "Crobat Shadow$"
 
 BeachboundRoute_EventScript_Mugging_Text_11:
-	.string "Uh… What's an allergory, boss?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Uh… What's an allergory, boss?$"
 
 BeachboundRoute_EventScript_Mugging_Text_12:
 	.string "Crobat boss$"
 
 BeachboundRoute_EventScript_Mugging_Text_13:
-	.string "…Gonna pretend ya didn't say that.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}…Gonna pretend ya didn't say that.$"
 
 BeachboundRoute_EventScript_Mugging_Text_14:
 	.string "Crobat Boss$"
 
 BeachboundRoute_EventScript_Mugging_Text_15:
-	.string "'Nuff yappin' already! Take care of\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}'Nuff yappin' already! Take care of\n"
 	.string "this clown, boys!$"
 
 BeachboundRoute_EventScript_Mugging_Text_16:
-	.string "Can't believe it! Look who's back!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Can't believe it! Look who's back!\p"
 	.string "Back fer another whoopin', are we?\p"
 	.string "Take care of this clown, boys!$"
 
@@ -719,35 +719,35 @@ BeachboundRoute_EventScript_Mugging_Text_19:
 	.string "Zubat Grunt$"
 
 BeachboundRoute_EventScript_Mugging_Text_20:
-	.string "Sorry, boss!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Sorry, boss!$"
 
 BeachboundRoute_EventScript_Mugging_Text_21:
-	.string "We got stomped proper, boss!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We got stomped proper, boss!$"
 
 BeachboundRoute_EventScript_Mugging_Text_22:
-	.string "Ya gotta be kiddin' me…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Ya gotta be kiddin' me…\p"
 	.string "Can't even do no regular muggin' in\n"
 	.string "peace anymore!$"
 
 BeachboundRoute_EventScript_Mugging_Text_23:
-	.string "Well, I ain't gonna stoop to fighting\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Well, I ain't gonna stoop to fighting\n"
 	.string "ya myself!$"
 
 BeachboundRoute_EventScript_Mugging_Text_24:
-	.string "Boss, what's a stoop?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Boss, what's a stoop?$"
 
 BeachboundRoute_EventScript_Mugging_Text_25:
-	.string "For the love of god, Kevin…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}For the love of god, Kevin…$"
 
 BeachboundRoute_EventScript_Mugging_Text_26:
-	.string "Movin' on! You've not seen the last of\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Movin' on! You've not seen the last of\n"
 	.string "us, ya annoying brat!\p"
 	.string "Ya better steer clear of the Crobat\n"
 	.string "Shadows from now on!\p"
 	.string "Let's move it, boys!$"
 
 BeachboundRoute_EventScript_Mugging_Text_27:
-	.string "ZUBATS, ALIGN!!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}ZUBATS, ALIGN!!$"
 
 BeachboundRoute_EventScript_Mugging_Text_28:
 	.string "Woman$"
@@ -769,12 +769,12 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0:
 	.string "Okada$"
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1:
-	.string "Hello, hello again, {PLAYER}!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Hello, hello again, {PLAYER}!\p"
 	.string "Can I interest you in some handpicked\n"
 	.string "goods?$"
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2:
-	.string "Hello! … …Have we met before?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Hello! … …Have we met before?\p"
 	.string "Sorry, I'm not good with faces…\p"
 	.string "Wait! Uhh, {PLAYER}, was it?\p"
 	.string "I'm in the area for a while to gather\n"
@@ -783,7 +783,7 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2:
 	.string "goods?$"
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_3:
-	.string "Hello, hello again!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Hello, hello again!\p"
 	.string "… …Oh, sorry, we haven't met, have we?\n"
 	.string "I'm not good with faces…\p"
 	.string "I'm Okada, the traveling merchant! I\n"
@@ -802,5 +802,5 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_3:
 	.string "goods?$"
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_4:
-	.string "Thanks for your business! Now where\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Thanks for your business! Now where\n"
 	.string "did I put that scroll again…$"

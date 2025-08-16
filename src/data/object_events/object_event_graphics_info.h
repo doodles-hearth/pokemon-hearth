@@ -1969,7 +1969,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokefanF = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Farmer = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_PURPLISH,
+    .paletteTag = OBJ_EVENT_PAL_TAG_WOODY,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,

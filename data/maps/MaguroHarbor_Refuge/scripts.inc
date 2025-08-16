@@ -157,7 +157,7 @@ MaguroHarbor_Refuge_EventScript_Hariko_Text_0:
 	.string "Hariko$"
 
 MaguroHarbor_Refuge_EventScript_Hariko_Text_1:
-	.string "Where are you headed after getting\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Where are you headed after getting\n"
 	.string "the Maguro Dojo's Token?\p"
 	.string "Silveridge? I heard there are\n"
 	.string "enormous rock snakes burrowing\l"
@@ -166,11 +166,11 @@ MaguroHarbor_Refuge_EventScript_Hariko_Text_1:
 	.string "next time we meet.$"
 
 MaguroHarbor_Refuge_EventScript_Hariko_Text_2:
-	.string "Hello again, {PLAYER}. So, do you\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello again, {PLAYER}. So, do you\n"
 	.string "want to battle?$"
 
 MaguroHarbor_Refuge_EventScript_Hariko_Text_3:
-	.string "Oh, hello there, {PLAYER}.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Oh, hello there, {PLAYER}.\n"
 	.string "Fancy meeting you here, as they say.\p"
 	.string "I assume you are here to challenge\n"
 	.string "the Maguro Harbor Dojo?\p"
@@ -188,7 +188,7 @@ MaguroHarbor_Refuge_EventScript_Hariko_Text_5:
 	.string "Hurr…$"
 
 MaguroHarbor_Refuge_EventScript_Hariko_Text_6:
-	.string "Bean is a little slow, but he is happy\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Bean is a little slow, but he is happy\n"
 	.string "to meet you!\p"
 	.string "He may not look like a fighter, but he\n"
 	.string "enjoys a good battle, too. Would you\l"
@@ -205,7 +205,7 @@ MaguroHarbor_Refuge_BattleHariko_Text_2:
 	.string "Very interesting.$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_3:
-	.string "We lost, but Bean tells me he had fun!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}We lost, but Bean tells me he had fun!\n"
 	.string "I am glad.\p"
 	.string "Everyday we learn something new\n"
 	.string "about Pokémon, be it through battling\l"
@@ -215,13 +215,13 @@ MaguroHarbor_Refuge_BattleHariko_Text_3:
 	.string "feel rewarded for this fight!$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_4:
-	.string "These can be fed to your Pokémon\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}These can be fed to your Pokémon\n"
 	.string "during battle to save you from a\l"
 	.string "pickle.\p"
 	.string "Farewell, {PLAYER}.$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_5:
-	.string "No problem. I will be here a while\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}No problem. I will be here a while\n"
 	.string "before I continue my journey.$"
 
 MaguroHarbor_Refuge_EventScript_Slowpoke_Text_0:

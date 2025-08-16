@@ -19,7 +19,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	faceplayer
 	speakername("Natsuki")
 	msgbox(format(
-		"Hey, {PLAYER}! Come on, sit down next to me."
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, {PLAYER}! Come on, sit down next to me."
 	))
 	closemessage
 
@@ -40,7 +40,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"It's been crazy lately, huh?\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}It's been crazy lately, huh?\p"
 		"With the Pokémon in Ginko Woods,\nand the volcano…\p"
 		"It feels like everything's\nabout to change.\p"
 		"Everyone is so anxious.\p"
@@ -64,7 +64,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 		case 0:
 			speakername("Natsuki")
 			msgbox(format(
-				"Nah, you know me.\nWe'll figure it out when we get there.\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Nah, you know me.\nWe'll figure it out when we get there.\p"
 				"That's what I've always done,\neverything turns out fine eventually."
 			))
 			closemessage
@@ -74,7 +74,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 			speakername("Natsuki")
 			msgbox(format(
-				"Hey, look.\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, look.\p"
 				"You can see Yifu City very clearly\ntoday, it's gorgeous!\p"
 				"…"
 			))
@@ -87,13 +87,13 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 			speakername("Natsuki")
 			msgbox(format(
-				"You okay there, {PLAYER}?\nYou look troubled.\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}You okay there, {PLAYER}?\nYou look troubled.\p"
 				"Aren't you excited to become\na Pokémon Wielder?"
 			))
 		case 1:
 			speakername("Natsuki")
 			msgbox(format(
-				"Huh?…\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Huh?…\p"
 				"…Oh, sorry, I was just wondering\nwhich Pokémon I'm gonna be getting."
 			))
 			closemessage
@@ -103,7 +103,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 			speakername("Natsuki")
 			msgbox(format(
-				"Hey, look.\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, look.\p"
 				"You can see Yifu City very clearly\ntoday, it's gorgeous!\p"
 				"…"
 			))
@@ -116,7 +116,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 			speakername("Natsuki")
 			msgbox(format(
-				"What about you, {PLAYER}?\nYou excited about getting\lyour own Pokémon?"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What about you, {PLAYER}?\nYou excited about getting\lyour own Pokémon?"
 			))
 	}
 
@@ -137,20 +137,20 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	switch (var(VAR_RESULT)) {
 		case 0:
 			msgbox(format(
-				"Hell yeah!\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hell yeah!\p"
 				"We're going to make awesome Wielders,\nI can already tell.\p"
 				"Maybe you'll even be second best\none day…\p"
 				"Behind me, of course!"
 			))
 		case 1:
 			msgbox(format(
-				"Uh, you're kidding, right?\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Uh, you're kidding, right?\p"
 				"It's going to be awesome.\nJust chill.\p"
 				"Once we get our Pokémon, we'll do\nwhatever we want!"
 			))
 		case 2:
 			msgbox(format(
-				"Oh c'mon, you're just pretending\nnot to be excited.\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh c'mon, you're just pretending\nnot to be excited.\p"
 				"Look at you, acting all tough\nand silent…\lBut I see right through you!\p"
 				"I bet you'll be a great Wielder.\nMaybe even as good as me…\p"
 				"Probably not though!"
@@ -184,7 +184,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Woah, there it goes again!\n"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah, there it goes again!\n"
 		"You good, {PLAYER}?\p"
 		"Whew! Those quakes are no joke, huh?\p"
 		"Maybe the volcano's telling us\nto get to Elder Kaba's house already."
@@ -201,7 +201,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Aw Shuckles, the distribution's\nalready started!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Aw Shuckles, the distribution's\nalready started!\p"
 		"Let's go, {PLAYER}!!"
 	))
 	closemessage

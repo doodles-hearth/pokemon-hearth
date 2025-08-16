@@ -306,7 +306,7 @@ script SakuTown_PokemonCenter_EventScript_Pushing {
 	faceplayer
 	speakername("Shady man")
 	msgbox(format(
-		"Watchu lookin' at? Scram!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Watchu lookin' at? Scram!"
 	))
 	closemessage
 
@@ -327,7 +327,7 @@ script SakuTown_PokemonCenter_EventScript_Grunt1 {
 	lock
 	speakername("Shady man")
 	msgbox(format(
-		"Great plan…"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Great plan…"
 	))
 	closemessage
 
@@ -341,7 +341,7 @@ script SakuTown_PokemonCenter_EventScript_Grunt2 {
 	lock
 	speakername("Shady man")
 	msgbox(format(
-		"We should do this next…"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We should do this next…"
 	))
 	closemessage
 	
@@ -355,7 +355,7 @@ script SakuTown_PokemonCenter_EventScript_Grunt3 {
 	lock
 	speakername("Shady man")
 	msgbox(format(
-		"On Beachbound Route…"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}On Beachbound Route…"
 	))
 	closemessage
 	

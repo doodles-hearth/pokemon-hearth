@@ -79,6 +79,7 @@ const u16 gObjectEventPal_Npc_Uume[] = INCBIN_U16("graphics/object_events/palett
 const u16 gObjectEventPal_Npc_Hot[] = INCBIN_U16("graphics/object_events/palettes/pal_hot.gbapal");
 const u16 gObjectEventPal_Npc_Sakura[] = INCBIN_U16("graphics/object_events/palettes/pal_sakura.gbapal");
 const u16 gObjectEventPal_Npc_Mountain[] = INCBIN_U16("graphics/object_events/palettes/pal_mountain.gbapal");
+const u16 gObjectEventPal_Npc_Cold[] = INCBIN_U16("graphics/object_events/palettes/pal_cold.gbapal");
 
 // Evil teams
 const u32 gObjectEventPic_CrobatShadowsGruntM[] = INCBIN_U32("graphics/object_events/pics/people/crobat_shadows/zubat_m.4bpp");

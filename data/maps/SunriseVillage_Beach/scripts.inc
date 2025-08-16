@@ -301,11 +301,11 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_0:
 	.string "Natsuki$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_1:
-	.string "Hey, {PLAYER}! Come on, sit down\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, {PLAYER}! Come on, sit down\n"
 	.string "next to me.$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_2:
-	.string "It's been crazy lately, huh?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}It's been crazy lately, huh?\p"
 	.string "With the Pokémon in Ginko Woods,\n"
 	.string "and the volcano…\p"
 	.string "It feels like everything's\n"
@@ -321,30 +321,30 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_4:
 	.string "What are you thinking about?$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_5:
-	.string "Nah, you know me.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Nah, you know me.\n"
 	.string "We'll figure it out when we get there.\p"
 	.string "That's what I've always done,\n"
 	.string "everything turns out fine eventually.$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_6:
-	.string "Hey, look.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, look.\p"
 	.string "You can see Yifu City very clearly\n"
 	.string "today, it's gorgeous!\p"
 	.string "…$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_7:
-	.string "You okay there, {PLAYER}?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}You okay there, {PLAYER}?\n"
 	.string "You look troubled.\p"
 	.string "Aren't you excited to become\n"
 	.string "a Pokémon Wielder?$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_8:
-	.string "Huh?…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Huh?…\p"
 	.string "…Oh, sorry, I was just wondering\n"
 	.string "which Pokémon I'm gonna be getting.$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_9:
-	.string "What about you, {PLAYER}?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What about you, {PLAYER}?\n"
 	.string "You excited about getting\l"
 	.string "your own Pokémon?$"
 
@@ -358,7 +358,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_12:
 	.string "It's whatever.$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_13:
-	.string "Hell yeah!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hell yeah!\p"
 	.string "We're going to make awesome Wielders,\n"
 	.string "I can already tell.\p"
 	.string "Maybe you'll even be second best\n"
@@ -366,14 +366,14 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_13:
 	.string "Behind me, of course!$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_14:
-	.string "Uh, you're kidding, right?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Uh, you're kidding, right?\p"
 	.string "It's going to be awesome.\n"
 	.string "Just chill.\p"
 	.string "Once we get our Pokémon, we'll do\n"
 	.string "whatever we want!$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_15:
-	.string "Oh c'mon, you're just pretending\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh c'mon, you're just pretending\n"
 	.string "not to be excited.\p"
 	.string "Look at you, acting all tough\n"
 	.string "and silent…\l"
@@ -383,14 +383,14 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_15:
 	.string "Probably not though!$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_16:
-	.string "Woah, there it goes again!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah, there it goes again!\n"
 	.string "You good, {PLAYER}?\p"
 	.string "Whew! Those quakes are no joke, huh?\p"
 	.string "Maybe the volcano's telling us\n"
 	.string "to get to Elder Kaba's house already.$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_17:
-	.string "Aw Shuckles, the distribution's\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Aw Shuckles, the distribution's\n"
 	.string "already started!\p"
 	.string "Let's go, {PLAYER}!!$"
 

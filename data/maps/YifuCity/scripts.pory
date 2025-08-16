@@ -252,7 +252,7 @@ script YifuCity_EventScript_ShinySeller {
 	faceplayer
 	speakername("Shady man")
 	msgbox(format(
-		"Hey, uh… Wanna buy this Pokémon 'ere?\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hey, uh… Wanna buy this Pokémon 'ere?\p"
 		"'Parently it's super rare or somethin', but I don't really need it, so…"
 	))
 
@@ -266,7 +266,7 @@ script YifuCity_EventScript_ShinySeller {
 	
 	speakername("Shady man")
 	msgbox(format(
-		"So whaddyasay?\n"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}So whaddyasay?\n"
 		"It's yours for only 10 000¥."
 	))
 
@@ -297,7 +297,7 @@ script YifuCity_ShinySellerChoice {
 			if (checkmoney(10000)) {
 				speakername("Shady man")
 				msgbox(format(
-					"Alright yeah, gimme the cash."
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Alright yeah, gimme the cash."
 				))
 
 				setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CATERPIE)
@@ -337,7 +337,7 @@ script YifuCity_ShinySellerChoice {
 
 				speakername("Shady man")
 				msgbox(format(
-					"Heheheehe… I'm rich! Finally rich!"
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Heheheehe… I'm rich! Finally rich!"
 				))
 				closemessage
 
@@ -392,7 +392,7 @@ script YifuCity_ShinySellerChoice {
 			} else {
 				speakername("Shady man")
 				msgbox(format(
-					"You, uh… You don't got enough cash, kid."
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}You, uh… You don't got enough cash, kid."
 				))
 				closemessage
 			}
@@ -400,14 +400,14 @@ script YifuCity_ShinySellerChoice {
 			hidemoneybox
 			speakername("Shady man")
 			msgbox(format(
-				"Then why are ya botherin' me? Scram, kid!"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Then why are ya botherin' me? Scram, kid!"
 			))
 			closemessage
 		case 2:
 			hidemoneybox
 			speakername("Shady man")
 			msgbox(format(
-				"What? No! Why woudja even say that? Do I not look respectable to ya?\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}What? No! Why woudja even say that? Do I not look respectable to ya?\p"
 				"So uh… You gonna buy it or not?"
 			))
 			goto(YifuCity_ShinySellerChoice)
@@ -424,7 +424,7 @@ script YifuCity_Trigger_CrobatGruntsScram {
 
 	speakername("Shady man")
 	msgbox(format(
-		"I tell ya man, damn password keeps changin'…"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I tell ya man, damn password keeps changin'…"
 	))
 	closemessage
 
@@ -447,7 +447,7 @@ script YifuCity_Trigger_CrobatGruntsScram {
 
 	speakername("Shady man")
 	msgbox(format(
-		"Are ya kiddin' me? Lookaddis eavesdroppin' moron!\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Are ya kiddin' me? Lookaddis eavesdroppin' moron!\p"
 		"Want a taste of this?"
 	))
 	closemessage
@@ -478,7 +478,7 @@ script YifuCity_Trigger_CrobatGruntsScram {
 
 	speakername("Shady man")
 	msgbox(format(
-		"Yeah, that's right, hightail it outta here!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yeah, that's right, hightail it outta here!"
 	))
 	closemessage
 
@@ -516,7 +516,7 @@ script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 
 	speakername("Shady man")
 	msgbox(format(
-		"Last time, I got it wrong and he didn' let me through!\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Last time, I got it wrong and he didn' let me through!\p"
 		"Like, brother, why I gotta tell ya some password for ya to let me in, we wen' to school together!"
 	))
 	closemessage
@@ -526,7 +526,7 @@ script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 
 	speakername("Shady man")
 	msgbox(format(
-		"Wait, ya didn't go to school though, didja?"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Wait, ya didn't go to school though, didja?"
 	))
 	closemessage
 
@@ -535,7 +535,7 @@ script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 
 	speakername("Shady man")
 	msgbox(format(
-		"Who cares! It's a figger of speech! What's the newest password anyway?"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Who cares! It's a figger of speech! What's the newest password anyway?"
 	))
 	closemessage
 
@@ -544,7 +544,7 @@ script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 
 	speakername("Shady man")
 	msgbox(format(
-		"It's uh…\nSomethin' with Crobat…\l"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}It's uh…\nSomethin' with Crobat…\l"
 		"“{COLOR RED}Crobat is{COLOR DARK_GRAY}”… Uh…"
 	))
 
@@ -552,7 +552,7 @@ script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(jump_in_place_up))
 	speakername("Shady man")
 	msgbox(format(
-		"Aw man! I forgot it too!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Aw man! I forgot it too!"
 	))
 	waitmovement(0)
 	waitse
@@ -562,7 +562,7 @@ script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 	applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(jump_in_place_down))
 	speakername("Shady man")
 	msgbox(format(
-		"Ya idjet! How're we gunna get back in now??\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Ya idjet! How're we gunna get back in now??\p"
 		"Now we gotta find another Zubat an' hope he's got enough brains to remember the full sent'nce!\p"
 		"C'mon, lessgo!"
 	))
@@ -738,7 +738,7 @@ script YifuCity_EventScript_Zubat1 {
 	faceplayer
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"Whatchu lookin' at?"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Whatchu lookin' at?"
 	))
 	closemessage
 
@@ -751,7 +751,7 @@ script YifuCity_EventScript_Zubat2 {
 	faceplayer
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"Scram, kid, I got no time for the likes of ya."
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Scram, kid, I got no time for the likes of ya."
 	))
 	closemessage
 
@@ -764,7 +764,7 @@ script YifuCity_EventScript_Zubat3 {
 	faceplayer
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"I'm just a regular, non-suspect, law-abiding citizen, mindin' my own business."
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I'm just a regular, non-suspect, law-abiding citizen, mindin' my own business."
 	))
 	closemessage
 
@@ -777,7 +777,7 @@ script YifuCity_EventScript_Zubat4 {
 	faceplayer
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"I sure enjoy quaint day-to-day activities like strolling, shopping, thieving, fostering a positive environment within my community…"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I sure enjoy quaint day-to-day activities like strolling, shopping, thieving, fostering a positive environment within my community…"
 	))
 	closemessage
 
@@ -911,7 +911,7 @@ script YifuCity_Trigger_HarikoCriminals {
 
 	speakername("Hariko")
 	msgbox(format(
-		"Hello, {PLAYER}.\nAre you well, since last time?\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello, {PLAYER}.\nAre you well, since last time?\p"
 		"Did you hear?\nThere was a robbery right here in Yifu City! Some people's Pokémon were stolen!\p"
 		"I heard there was a second decaying area west of here.\lI was planning on going there, but a Samurai was blocking the way, so I am waiting here.\p"
 		"Let us have lunch together before you leave. Yes? Good."
@@ -1100,7 +1100,7 @@ script(local) SpeakToNatsukiMorning {
 
 	speakername("Hariko")
 	msgbox(format(
-		"But… It is too late for dinner!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}But… It is too late for dinner!"
 	))
 
 	call(HarikoNotABreakfastPlace)
@@ -1113,7 +1113,7 @@ script(local) SpeakToNatsukiLunchOrDinner {
 
 	speakername("Hariko")
 	msgbox(format(
-		"It would be impolite not to invite\nyour friend, {PLAYER}."
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}It would be impolite not to invite\nyour friend, {PLAYER}."
 	))
 
 	applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(walk_in_place_fast_up))
@@ -1149,7 +1149,7 @@ script(local) SpeakToNatsukiAfternoon {
 
 	speakername("Hariko")
 	msgbox(format(
-		"But… It is too late for lunch,\nand too early for dinner!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}But… It is too late for lunch,\nand too early for dinner!"
 	))
 
 	call(NatsukiFacesHariko)
@@ -1157,7 +1157,7 @@ script(local) SpeakToNatsukiAfternoon {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Hey, you should chill.\nThe Golden Drampa's open all day!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\nThe Golden Drampa's open all day!\p"
 		"I actually haven't had lunch yet.\nI vote afternoon hotpot!"
 	))
 
@@ -1189,7 +1189,7 @@ script(local) SpeakToNatsukiNight {
 
 	speakername("Hariko")
 	msgbox(format(
-		"What? Clearly, you haven't looked\nat the time!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}What? Clearly, you haven't looked\nat the time!"
 	))
 
 	call(HarikoTooLateForDinner)
@@ -1233,7 +1233,7 @@ script YifuCity_EventScript_HarikoPostHideout {
 script(local) SpeakToHarikoMorning {
 	speakername("Hariko")
 	msgbox(format(
-		"{PLAYER}!\nYou are here too early!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}!\nYou are here too early!"
 	))
 
 	mcdialogue(
@@ -1277,14 +1277,14 @@ script(local) HarikoNotABreakfastPlace {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Hey, you should chill.\nI'm sure they'll have breakfast options!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\nI'm sure they'll have breakfast options!\p"
 		"I could actually go for a hotpot anyway!"
 	))
 
 	call(NatsukiFacesPlayer)
 	speakername("Natsuki")
 	msgbox(format(
-		"What d'you say, {PLAYER}?\nYou in or what?"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What d'you say, {PLAYER}?\nYou in or what?"
 	))
 
 	mcdialogue(
@@ -1321,7 +1321,7 @@ script(local) HarikoTooLateForDinner {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Hey, you should chill.\nThe Golden Drampa's open all night!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\nThe Golden Drampa's open all night!\p"
 		"I haven't eaten much today.\nI could go for a late night hotpot!\p"
 		"What d'you say, {PLAYER}?\nYou in or what?"
 	))
@@ -1350,7 +1350,7 @@ script(local) SpeakToHarikoLunchOrDinner {
 
 	speakername("Hariko")
 	msgbox(format(
-		"{PLAYER}! You are here to eat {STR_VAR_1}\nwith me, yes?"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}! You are here to eat {STR_VAR_1}\nwith me, yes?"
 	))
 
 	call(HarikoFacesNatsuki)
@@ -1358,7 +1358,7 @@ script(local) SpeakToHarikoLunchOrDinner {
 
 	speakername("Hariko")
 	msgbox(format(
-		"I saw Natsuki on the way here.\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I saw Natsuki on the way here.\p"
 		"It would be impolite not to invite him, too!"
 	))
 	
@@ -1367,7 +1367,7 @@ script(local) SpeakToHarikoLunchOrDinner {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Hey, {PLAYER}!\nSounds like fun, I'm in!"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, {PLAYER}!\nSounds like fun, I'm in!"
 	))
 
 	mcdialogue(
@@ -1386,7 +1386,7 @@ script(local) SpeakToHarikoLunchOrDinner {
 script(local) SpeakToHarikoNight {
 	speakername("Hariko")
 	msgbox(format(
-		"{PLAYER}!\nYou are very late!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}!\nYou are very late!"
 	))
 
 	mcdialogue(
@@ -1413,7 +1413,7 @@ script(local) SpeakToHarikoNight {
 script(local) SpeakToHarikoAfternoon {
 	speakername("Hariko")
 	msgbox(format(
-		"{PLAYER}!\nYou are late!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}!\nYou are late!"
 	))
 
 	mcdialogue(
@@ -1452,7 +1452,7 @@ script(local) SpeakToHarikoAfternoon {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Hey, you should chill.\nThe Golden Drampa's open all day!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\nThe Golden Drampa's open all day!\p"
 		"I actually haven't had lunch yet.\nI vote afternoon hotpot!"
 	))
 
@@ -1488,7 +1488,7 @@ script(local) SpeakToHarikoAgain {
 	// Morning
 	if (var(VAR_HOUR_OF_DAY) >= 5 && var(VAR_HOUR_OF_DAY) <= 11) {
 		msgbox(format(
-			"{PLAYER}. Shall we have… (Sigh)\n"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have… (Sigh)\n"
 			"Hotpot breakfast, apparently?"
 		))
 		// Lunch or dinner
@@ -1497,18 +1497,18 @@ script(local) SpeakToHarikoAgain {
 		|| (var(VAR_HOUR_OF_DAY) > 18 && var(VAR_HOUR_OF_DAY) <= 22)
 	) {
 		msgbox(format(
-			"{PLAYER}. Shall we have dinner\nat the hotpot together?"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have dinner\nat the hotpot together?"
 		))
 		// Snack
 	} elif (var(VAR_HOUR_OF_DAY) > 15 && var(VAR_HOUR_OF_DAY) <= 18) {
 		msgbox(format(
-			"{PLAYER}. Shall we have… (Sigh)\n"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have… (Sigh)\n"
 			"Hotpot snack, apparently?"
 		))
 		// Late night dinner (23h-5h)
 	} else {
 		msgbox(format(
-			"{PLAYER}. Shall we have… (Sigh)\n"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have… (Sigh)\n"
 			"Late night hotpot?"
 		))
 	}
@@ -1538,7 +1538,7 @@ script(local) SpeakToNatsukiAgain {
 	// Morning
 	if (var(VAR_HOUR_OF_DAY) >= 5 && var(VAR_HOUR_OF_DAY) <= 11) {
 		msgbox(format(
-			"Ready for a sick hotpot breakfast,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot breakfast,\n{PLAYER}?"
 		))
 		// Lunch or dinner
 	} elif (
@@ -1546,17 +1546,17 @@ script(local) SpeakToNatsukiAgain {
 		|| (var(VAR_HOUR_OF_DAY) > 18 && var(VAR_HOUR_OF_DAY) <= 22)
 	) {
 		msgbox(format(
-			"Ready for a sick hotpot meal,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot meal,\n{PLAYER}?"
 		))
 		// Snack
 	} elif (var(VAR_HOUR_OF_DAY) > 15 && var(VAR_HOUR_OF_DAY) <= 18) {
 		msgbox(format(
-			"Ready for a sick hotpot snack,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot snack,\n{PLAYER}?"
 		))
 		// Late night dinner (23h-5h)
 	} else {
 		msgbox(format(
-			"Ready for a sick late night hotpot,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick late night hotpot,\n{PLAYER}?"
 		))
 	}
 
@@ -1580,7 +1580,7 @@ script(local) NatsukiCanIComeToo {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"{PLAYER}! What's up? Did you hear\nabout the whole lockdown thing?\l"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}! What's up? Did you hear\nabout the whole lockdown thing?\l"
 		"Wild stuff, huh?"
 	))
 
@@ -1602,13 +1602,13 @@ script(local) NotRightNow {
 	call(HarikoFacesPlayer)
 	speakername("Hariko")
 	msgbox(format(
-		"You still have errands to run?\nWe will be waiting here!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}You still have errands to run?\nWe will be waiting here!"
 	))
 
 	call(NatsukiFacesPlayer)
 	speakername("Natsuki")
 	msgbox(format(
-		"Be quick about it! I'm starving!"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Be quick about it! I'm starving!"
 	))
 }
 

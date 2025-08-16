@@ -102,7 +102,7 @@ script KuraTown_Dojo_EventScript_Hana {
 		TRAINER_HANA_1,
 		// TODO different dialogue if you already met
 		format(
-			"Welcome to my humble Dojo. I am Hana. Did you enjoy my little maze?\p"
+			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana. Did you enjoy my little maze?\p"
 			"Tending to my bonsai and fighting alongside my Pokémon are my favorite pastimes. With this Dojo, I can do both!\p"
 			"A Pokémon battle can be graceful like a budding flower, strong like the deepest roots, powerful like a windswept pine tree, all at once.\p"
 			"I want you to show me all the grace, strength and power you are capable of!"
@@ -117,7 +117,7 @@ script KuraTown_Dojo_EventScript_Hana {
 	speakername("Hana")
 	msgbox(
 		format(
-			"The slow-growing tree becomes the sturdiest. Take your time on your journey, {PLAYER}."
+			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}The slow-growing tree becomes the sturdiest. Take your time on your journey, {PLAYER}."
 		),
 		MSGBOX_DEFAULT
 	)
@@ -137,7 +137,7 @@ script KuraTown_Dojo_EventScript_HanaDefeated {
 	msgbox(
 		format(
 			// TODO EVA boost atk?
-			"Thanks to this Token, your Pokémon will obey you without question, even those you trade with others.\p"
+			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Thanks to this Token, your Pokémon will obey you without question, even those you trade with others.\p"
 			"If you are interested in submitting to the Toku Council challenge, you will need to collect a Token from each of the eight Dojos scattered throughout the region.\p"
 			"It is not an easy task, but I can feel determination taking root in your heart.\p"
 			"Here, let me also give you this."
@@ -165,7 +165,7 @@ script KuraTown_Dojo_EventScript_GiveBulldoze {
 	speakername("Hana")
 	msgbox(
 		format(
-			"This scroll contains Weather Ball. Just like a tree, this technique is as strong as it is weather-dependent."
+			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}This scroll contains Weather Ball. Just like a tree, this technique is as strong as it is weather-dependent."
 		),
 		MSGBOX_DEFAULT
 	)

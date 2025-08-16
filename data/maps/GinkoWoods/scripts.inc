@@ -186,14 +186,14 @@ GinkoWoods_EventScript_Bean_Text_0:
 	.string "Odd girl$"
 
 GinkoWoods_EventScript_Bean_Text_1:
-	.string "Hello!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello!$"
 
 GinkoWoods_EventScript_Bean_Text_2:
-	.string "I just noticed there are some neat\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just noticed there are some neat\n"
 	.string "tracks in the dirt here.$"
 
 GinkoWoods_EventScript_Bean_Text_3:
-	.string "It looks like a small mammal's\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}It looks like a small mammal's\n"
 	.string "footprints, see?\p"
 	.string "Studying Pokémon tracks is so\n"
 	.string "fascinating. One can find out about a\l"
@@ -222,7 +222,7 @@ GinkoWoods_EventScript_Bean_Text_3:
 	.string "blah…$"
 
 GinkoWoods_EventScript_Bean_Text_4:
-	.string "…And that's all that is currently\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…And that's all that is currently\n"
 	.string "known about Joltik's habitat during\l"
 	.string "the winter.\p"
 	.string "Neat, isn't it?$"
@@ -240,7 +240,7 @@ GinkoWoods_EventScript_Bean_Text_8:
 	.string "Hariko$"
 
 GinkoWoods_EventScript_Bean_Text_9:
-	.string "Right! I am glad you share my interest\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right! I am glad you share my interest\n"
 	.string "in Pokémon habitat.\p"
 	.string "I am Hariko. And what is your name?\p"
 	.string "{PLAYER}.\n"
@@ -249,7 +249,7 @@ GinkoWoods_EventScript_Bean_Text_9:
 	.string "Okay. Bye!$"
 
 GinkoWoods_EventScript_Bean_Text_10:
-	.string "Right!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right!\n"
 	.string "I haven't introduced myself yet.\p"
 	.string "I am Hariko. And what is your name?\p"
 	.string "{PLAYER}.\n"
@@ -258,7 +258,7 @@ GinkoWoods_EventScript_Bean_Text_10:
 	.string "Okay. Bye!$"
 
 GinkoWoods_EventScript_Bean_Text_11:
-	.string "…Oh. I am blocking your path. I see.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…Oh. I am blocking your path. I see.\p"
 	.string "I got carried away, have I not?\n"
 	.string "That… tends to happen.\p"
 	.string "I am Hariko. And what is your name?\p"
@@ -270,7 +270,7 @@ GinkoWoods_EventScript_Bean_Text_11:
 	.string "Okay. Bye!$"
 
 GinkoWoods_EventScript_Tracks_Text_0:
-	.string "THE TRACKS!!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}THE TRACKS!!\n"
 	.string "YOU'RE STEPPING ON THEM!!!$"
 
 GinkoWoods_EventScript_TrainerTips1_Text_0:

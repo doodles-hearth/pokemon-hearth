@@ -779,7 +779,7 @@ TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_0:
 	.string "Shady men$"
 
 TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_1:
-	.string "…Excellent idea…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Excellent idea…\p"
 	.string "…Yeah, and then…\p"
 	.string "… … …$"
 
@@ -787,18 +787,18 @@ TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_2:
 	.string "Shady man$"
 
 TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_3:
-	.string "Alright boys, let's move.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Alright boys, let's move.$"
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0:
 	.string "Man$"
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_1:
-	.string "Mumble mumble… Should restock on\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Mumble mumble… Should restock on\n"
 	.string "ointment… Damn, where did I put my\l"
 	.string "purse?…$"
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_2:
-	.string "Oh, hello! Sorry, shop's closed at the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Oh, hello! Sorry, shop's closed at the\n"
 	.string "moment!\p"
 	.string "… …Oh, sorry, we haven't met, have we?\n"
 	.string "I'm not good with faces…\p"
@@ -817,7 +817,7 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_2:
 	.string "late! See you around, {PLAYER}!$"
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_3:
-	.string "Come on, Keke.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Come on, Keke.$"
 
 TranquilRoute_EventScript_WaitingForChatot_Text_0:
 	.string "Sigh… Maybe if I hang around the\n"

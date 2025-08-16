@@ -500,14 +500,14 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5:
 	.string "Natsuki$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_6:
-	.string "{PLAYER}!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}!\n"
 	.string "What the heck is going on here?\l"
 	.string "Everything is rotting!\p"
 	.string "Stepping in that slimy black stuff\n"
 	.string "made me awfully nauseous…$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_7:
-	.string "Wait, who are you?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Wait, who are you?$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_8:
 	.string "I am Hariko.\n"
@@ -532,7 +532,7 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_12:
 	.string "That makes us friends as well!$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_13:
-	.string "Is… Is that so?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Is… Is that so?$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_14:
 	.string "Samurai$"
@@ -591,13 +591,13 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_26:
 	.string "Move along!$"
 
 BeachboundRoute_Decay_EventScript_Bean_Text_0:
-	.string "… …$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}… …$"
 
 BeachboundRoute_Decay_EventScript_Koishi_Text_0:
 	.string "Koishi$"
 
 BeachboundRoute_Decay_EventScript_Koishi_Text_1:
-	.string "This is very worrying…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}This is very worrying…\p"
 	.string "Please don't get into trouble, we're\n"
 	.string "already spread thin as it is!$"
 

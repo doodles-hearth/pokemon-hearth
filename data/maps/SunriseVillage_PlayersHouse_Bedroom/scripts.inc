@@ -117,7 +117,7 @@ SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll_Text_0:
 	.string "“100% real Mareep wool”!$"
 
 SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_0:
-	.string "Big sis$"
+	.string "Big Sis$"
 
 SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_1:
 	.string "{PLAYER}! {PLAYER}!\n"

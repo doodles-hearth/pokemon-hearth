@@ -7,7 +7,7 @@ $(OBJEVENTGFXDIR)/people/brendan/acro_bike.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/brendan/decorating.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 4 -mheight 4
+	$(GFX) $< $@ -mwidth 2 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/brendan/field_move.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
@@ -304,15 +304,6 @@ $(OBJEVENTGFXDIR)/people/wally.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/pokefan_f.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/purplish/*.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 4 -mheight 4
-
-$(OBJEVENTGFXDIR)/people/purplish/*.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 4 -mheight 4
-
-$(OBJEVENTGFXDIR)/people/purplish/*.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 4 -mheight 4
-
 $(OBJEVENTGFXDIR)/people/purplish/artist.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
@@ -413,9 +404,6 @@ $(OBJEVENTGFXDIR)/people/greenish/twin_f.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/greenish/twin_m.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 4 -mheight 4
-
-$(OBJEVENTGFXDIR)/people/greenish/*.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/woody/monk.4bpp: %.4bpp: %.png
@@ -731,10 +719,31 @@ $(OBJEVENTGFXDIR)/people/traveling_merchant.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/link_receptionist.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/crobat_shadows/*.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/crobat_shadows/crobat.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/samurai/*.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/crobat_shadows/crobat_cape.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/crobat_shadows/golbat_f.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/crobat_shadows/golbat_m.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/crobat_shadows/kevin.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/crobat_shadows/zubat_f.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/crobat_shadows/zubat_m.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/crobat_shadows/zubat_m_align.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/samurai/samurai.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(OBJEVENTGFXDIR)/pokemon_old/azumarill.4bpp: %.4bpp: %.png

@@ -121,7 +121,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"{PLAYER}!\nWhat the heck is going on here?\lEverything is rotting!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}!\nWhat the heck is going on here?\lEverything is rotting!\p"
 		"Stepping in that slimy black stuff made me awfully nauseous…"
 	))
 	closemessage
@@ -132,7 +132,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Wait, who are you?"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Wait, who are you?"
 	))
 
 	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(walk_in_place_fast_up))
@@ -180,7 +180,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Is… Is that so?"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Is… Is that so?"
 	))
 	closemessage
 
@@ -384,7 +384,7 @@ script BeachboundRoute_Decay_EventScript_Bean {
 
 	speakername("Hariko")
 	msgbox(format(
-		"… …"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}… …"
 	))
 	closemessage
 
@@ -396,7 +396,7 @@ script BeachboundRoute_Decay_EventScript_Koishi {
 
 	speakername("Koishi")
 	msgbox(format(
-		"This is very worrying…\p"
+		"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}This is very worrying…\p"
 		"Please don't get into trouble, we're already spread thin as it is!"
 	))
 	closemessage

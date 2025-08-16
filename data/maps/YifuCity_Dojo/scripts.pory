@@ -874,7 +874,7 @@ script YifuCity_Dojo_EventScript_Yutaka {
     faceplayer
     speakername("Yutaka")
     msgbox(format(
-        "Well done! Welcome to Yifu City's Doj-"
+        "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}Well done! Welcome to Yifu City's Doj-"
     ))
 
     applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
@@ -933,7 +933,7 @@ script YifuCity_Dojo_EventScript_YutakaDefeated {
     speakername("Yutaka")
 	msgbox(
 		format(
-            "I am outrée! Your techniques are rough and vulgar, yet…\p"
+            "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}I am outrée! Your techniques are rough and vulgar, yet…\p"
             "Victory is yours…\nThat is undeniable.\p"
 			"I guess what you lack in aesthetic values, you compensate in strength.\p"
 			"Do accept this, as well."
@@ -946,7 +946,7 @@ script YifuCity_Dojo_EventScript_YutakaDefeated {
     speakername("Yutaka")
 	msgbox(
 		format(
-			"This scroll contains my famous X-Scissor technique.\p"
+			"{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}This scroll contains my famous X-Scissor technique.\p"
             "I perfected it back when I worked as a seamstress.\p"
 			"About that, uh… We should go clothes-shopping together sometime.\p"
             "I cannot bear to see your image suffer so."

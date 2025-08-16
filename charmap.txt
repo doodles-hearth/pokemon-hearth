@@ -469,12 +469,23 @@ DESTROY_MUGSHOT = FC 1A
 
 @ mugshot stuff begins
 
-MUGSHOT_TEST = 01
-MUGSHOT_HARIKO = 02
-MUGSHOT_NATSUKI = 03
+MUGSHOT_TEST            = 01
+MUGSHOT_HARIKO          = 02
+MUGSHOT_NATSUKI         = 03
+MUGSHOT_BIG_SIS         = 04
+MUGSHOT_CLERK           = 05
+MUGSHOT_CROBAT          = 06
+MUGSHOT_ZUBAT           = 07
+MUGSHOT_INCENSE         = 08
+MUGSHOT_HANA            = 09
+MUGSHOT_KOISHI          = 0A
+MUGSHOT_YUTAKA          = 0B
+MUGSHOT_KABA            = 0C
+MUGSHOT_MASQUERAIN_GIRL = 0D
+MUGSHOT_OKADA           = 0E
 
 EMOTE_NORMAL = 00
-EMOTE_ALT = 01
+EMOTE_SEXY = 01
 
 @ mugshot stuff ends
 

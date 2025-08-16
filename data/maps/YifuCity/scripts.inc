@@ -395,7 +395,7 @@ YifuCity_Trigger_CrobatGruntsScram::
 YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	lockall
 	speakername YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
-	msgbox YifuCity_Trigger_CrobatGruntsScram_Text_0
+	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_1
 	closemessage
 	delay 24
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
@@ -406,33 +406,33 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	applymovement 9, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	speakername YifuCity_EventScript_ShinySeller_Text_0
-	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_1
-	closemessage
-	applymovement 10, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	speakername YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_2
 	closemessage
-	applymovement 9, Common_Movement_WalkInPlaceFasterDown
+	applymovement 10, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	speakername YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_3
 	closemessage
-	applymovement 10, Common_Movement_WalkInPlaceFasterUp
+	applymovement 9, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	speakername YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_4
+	closemessage
+	applymovement 10, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	speakername YifuCity_EventScript_ShinySeller_Text_0
+	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_5
 	playse SE_LEDGE
 	applymovement 10, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_2
 	speakername YifuCity_EventScript_ShinySeller_Text_0
-	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_5
+	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_6
 	waitmovement 0
 	waitse
 	closemessage
 	playse SE_LEDGE
 	applymovement 9, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_3
 	speakername YifuCity_EventScript_ShinySeller_Text_0
-	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_6
+	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_7
 	waitmovement 0
 	waitse
 	closemessage
@@ -1070,8 +1070,8 @@ HarikoNotABreakfastPlace:
 	msgbox HarikoNotABreakfastPlace_Text_2
 	call NatsukiFacesPlayer
 	speakername SpeakToNatsukiAfternoon_Text_1
-	msgbox SpeakToNatsukiAfternoon_Text_3
-	mcdialogue HarikoNotABreakfastPlace_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	msgbox HarikoNotABreakfastPlace_Text_3
+	mcdialogue HarikoNotABreakfastPlace_Text_4, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
 	switch VAR_RESULT
 	case 0, HarikoNotABreakfastPlace_2
@@ -1938,12 +1938,12 @@ YifuCity_EventScript_ShinySeller_Text_0:
 	.string "Shady man$"
 
 YifuCity_EventScript_ShinySeller_Text_1:
-	.string "Hey, uh… Wanna buy this Pokémon 'ere?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hey, uh… Wanna buy this Pokémon 'ere?\p"
 	.string "'Parently it's super rare or somethin',\n"
 	.string "but I don't really need it, so…$"
 
 YifuCity_EventScript_ShinySeller_Text_2:
-	.string "So whaddyasay?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}So whaddyasay?\n"
 	.string "It's yours for only 10 000¥.$"
 
 YifuCity_ShinySellerChoice_Text_0:
@@ -1956,14 +1956,14 @@ YifuCity_ShinySellerChoice_Text_2:
 	.string "Are you a criminal?$"
 
 YifuCity_ShinySellerChoice_Text_3:
-	.string "Alright yeah, gimme the cash.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Alright yeah, gimme the cash.$"
 
 YifuCity_ShinySellerChoice_Text_4:
 	.string "{PLAYER} received the Pokémon\n"
 	.string "Caterpie!$"
 
 YifuCity_ShinySellerChoice_Text_5:
-	.string "Heheheehe… I'm rich! Finally rich!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Heheheehe… I'm rich! Finally rich!$"
 
 YifuCity_ShinySellerChoice_Text_6:
 	.string "… … … … … …\n"
@@ -1974,59 +1974,63 @@ YifuCity_ShinySellerChoice_Text_7:
 	.string "Caterpie…$"
 
 YifuCity_ShinySellerChoice_Text_8:
-	.string "You, uh… You don't got enough cash,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}You, uh… You don't got enough cash,\n"
 	.string "kid.$"
 
 YifuCity_ShinySellerChoice_Text_9:
-	.string "Then why are ya botherin' me? Scram,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Then why are ya botherin' me? Scram,\n"
 	.string "kid!$"
 
 YifuCity_ShinySellerChoice_Text_10:
-	.string "What? No! Why woudja even say that?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}What? No! Why woudja even say that?\n"
 	.string "Do I not look respectable to ya?\p"
 	.string "So uh… You gonna buy it or not?$"
 
 YifuCity_Trigger_CrobatGruntsScram_Text_0:
-	.string "I tell ya man, damn password keeps\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I tell ya man, damn password keeps\n"
 	.string "changin'…$"
 
 YifuCity_Trigger_CrobatGruntsScram_Text_1:
-	.string "Are ya kiddin' me? Lookaddis\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Are ya kiddin' me? Lookaddis\n"
 	.string "eavesdroppin' moron!\p"
 	.string "Want a taste of this?$"
 
 YifuCity_Trigger_CrobatGruntsScram_Text_2:
-	.string "Yeah, that's right, hightail it outta\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yeah, that's right, hightail it outta\n"
 	.string "here!$"
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0:
 	.string "???$"
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_1:
-	.string "Last time, I got it wrong and he didn'\n"
+	.string "I tell ya man, damn password keeps\n"
+	.string "changin'…$"
+
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_2:
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Last time, I got it wrong and he didn'\n"
 	.string "let me through!\p"
 	.string "Like, brother, why I gotta tell ya\n"
 	.string "some password for ya to let me in, we\l"
 	.string "wen' to school together!$"
 
-YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_2:
-	.string "Wait, ya didn't go to school though,\n"
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_3:
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Wait, ya didn't go to school though,\n"
 	.string "didja?$"
 
-YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_3:
-	.string "Who cares! It's a figger of speech!\n"
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_4:
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Who cares! It's a figger of speech!\n"
 	.string "What's the newest password anyway?$"
 
-YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_4:
-	.string "It's uh…\n"
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_5:
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}It's uh…\n"
 	.string "Somethin' with Crobat…\l"
 	.string "“{COLOR RED}Crobat is{COLOR DARK_GRAY}”… Uh…$"
 
-YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_5:
-	.string "Aw man! I forgot it too!$"
-
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_6:
-	.string "Ya idjet! How're we gunna get back in\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Aw man! I forgot it too!$"
+
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_7:
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Ya idjet! How're we gunna get back in\n"
 	.string "now??\p"
 	.string "Now we gotta find another Zubat an'\n"
 	.string "hope he's got enough brains to\l"
@@ -2105,19 +2109,19 @@ YifuCity_EventScript_Zubat1_Text_0:
 	.string "Zubat Grunt$"
 
 YifuCity_EventScript_Zubat1_Text_1:
-	.string "Whatchu lookin' at?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Whatchu lookin' at?$"
 
 YifuCity_EventScript_Zubat2_Text_0:
-	.string "Scram, kid, I got no time for the likes\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Scram, kid, I got no time for the likes\n"
 	.string "of ya.$"
 
 YifuCity_EventScript_Zubat3_Text_0:
-	.string "I'm just a regular, non-suspect,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I'm just a regular, non-suspect,\n"
 	.string "law-abiding citizen, mindin' my own\l"
 	.string "business.$"
 
 YifuCity_EventScript_Zubat4_Text_0:
-	.string "I sure enjoy quaint day-to-day\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I sure enjoy quaint day-to-day\n"
 	.string "activities like strolling, shopping,\l"
 	.string "thieving, fostering a positive\l"
 	.string "environment within my community…$"
@@ -2162,7 +2166,7 @@ YifuCity_Trigger_HarikoCriminals_Text_0:
 	.string "Hariko$"
 
 YifuCity_Trigger_HarikoCriminals_Text_1:
-	.string "Hello, {PLAYER}.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello, {PLAYER}.\n"
 	.string "Are you well, since last time?\p"
 	.string "Did you hear?\n"
 	.string "There was a robbery right here in Yifu\l"
@@ -2245,10 +2249,10 @@ YifuCity_EventScript_DecorationShopSign_Text_0:
 	.string "“We sell tables and chairs, mostly”$"
 
 SpeakToNatsukiMorning_Text_0:
-	.string "But… It is too late for dinner!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}But… It is too late for dinner!$"
 
 SpeakToNatsukiLunchOrDinner_Text_0:
-	.string "It would be impolite not to invite\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}It would be impolite not to invite\n"
 	.string "your friend, {PLAYER}.$"
 
 SpeakToNatsukiLunchOrDinner_Text_1:
@@ -2265,14 +2269,14 @@ SpeakToNatsukiLunchOrDinner_Text_4:
 	.string "Not right now…$"
 
 SpeakToNatsukiAfternoon_Text_0:
-	.string "But… It is too late for lunch,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}But… It is too late for lunch,\n"
 	.string "and too early for dinner!$"
 
 SpeakToNatsukiAfternoon_Text_1:
 	.string "Natsuki$"
 
 SpeakToNatsukiAfternoon_Text_2:
-	.string "Hey, you should chill.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\n"
 	.string "The Golden Drampa's open all day!\p"
 	.string "I actually haven't had lunch yet.\n"
 	.string "I vote afternoon hotpot!$"
@@ -2285,11 +2289,11 @@ SpeakToNatsukiAfternoon_Text_4:
 	.string "Afternoon hotpot!$"
 
 SpeakToNatsukiNight_Text_0:
-	.string "What? Clearly, you haven't looked\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}What? Clearly, you haven't looked\n"
 	.string "at the time!$"
 
 SpeakToHarikoMorning_Text_0:
-	.string "{PLAYER}!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}!\n"
 	.string "You are here too early!$"
 
 SpeakToHarikoMorning_Text_1:
@@ -2319,13 +2323,17 @@ HarikoNotABreakfastPlace_Text_1:
 	.string "have breakfast!$"
 
 HarikoNotABreakfastPlace_Text_2:
-	.string "Hey, you should chill.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\n"
 	.string "I'm sure they'll have breakfast\l"
 	.string "options!\p"
 	.string "I could actually go for a hotpot\n"
 	.string "anyway!$"
 
 HarikoNotABreakfastPlace_Text_3:
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What d'you say, {PLAYER}?\n"
+	.string "You in or what?$"
+
+HarikoNotABreakfastPlace_Text_4:
 	.string "Heck yeah!$"
 
 HarikoTooLateForDinner_Text_0:
@@ -2333,7 +2341,7 @@ HarikoTooLateForDinner_Text_0:
 	.string "definitely too early for lunch!$"
 
 HarikoTooLateForDinner_Text_1:
-	.string "Hey, you should chill.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\n"
 	.string "The Golden Drampa's open all night!\p"
 	.string "I haven't eaten much today.\n"
 	.string "I could go for a late night hotpot!\p"
@@ -2350,21 +2358,21 @@ SpeakToHarikoLunchOrDinner_Text_1:
 	.string "dinner$"
 
 SpeakToHarikoLunchOrDinner_Text_2:
-	.string "{PLAYER}! You are here to eat\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}! You are here to eat\n"
 	.string "{STR_VAR_1}\n"
 	.string "with me, yes?$"
 
 SpeakToHarikoLunchOrDinner_Text_3:
-	.string "I saw Natsuki on the way here.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I saw Natsuki on the way here.\p"
 	.string "It would be impolite not to invite him,\n"
 	.string "too!$"
 
 SpeakToHarikoLunchOrDinner_Text_4:
-	.string "Hey, {PLAYER}!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, {PLAYER}!\n"
 	.string "Sounds like fun, I'm in!$"
 
 SpeakToHarikoNight_Text_0:
-	.string "{PLAYER}!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}!\n"
 	.string "You are very late!$"
 
 SpeakToHarikoNight_Text_1:
@@ -2374,7 +2382,7 @@ SpeakToHarikoNight_Text_2:
 	.string "I'm sorry!$"
 
 SpeakToHarikoAfternoon_Text_0:
-	.string "{PLAYER}!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}!\n"
 	.string "You are late!$"
 
 SpeakToHarikoAfternoon_Text_1:
@@ -2382,39 +2390,39 @@ SpeakToHarikoAfternoon_Text_1:
 	.string "too early for dinner!$"
 
 SpeakToHarikoAgain_Text_0:
-	.string "{PLAYER}. Shall we have… (Sigh)\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have… (Sigh)\n"
 	.string "Hotpot breakfast, apparently?$"
 
 SpeakToHarikoAgain_Text_1:
-	.string "{PLAYER}. Shall we have dinner\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have dinner\n"
 	.string "at the hotpot together?$"
 
 SpeakToHarikoAgain_Text_2:
-	.string "{PLAYER}. Shall we have… (Sigh)\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have… (Sigh)\n"
 	.string "Hotpot snack, apparently?$"
 
 SpeakToHarikoAgain_Text_3:
-	.string "{PLAYER}. Shall we have… (Sigh)\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have… (Sigh)\n"
 	.string "Late night hotpot?$"
 
 SpeakToNatsukiAgain_Text_0:
-	.string "Ready for a sick hotpot breakfast,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot breakfast,\n"
 	.string "{PLAYER}?$"
 
 SpeakToNatsukiAgain_Text_1:
-	.string "Ready for a sick hotpot meal,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot meal,\n"
 	.string "{PLAYER}?$"
 
 SpeakToNatsukiAgain_Text_2:
-	.string "Ready for a sick hotpot snack,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot snack,\n"
 	.string "{PLAYER}?$"
 
 SpeakToNatsukiAgain_Text_3:
-	.string "Ready for a sick late night hotpot,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick late night hotpot,\n"
 	.string "{PLAYER}?$"
 
 NatsukiCanIComeToo_Text_0:
-	.string "{PLAYER}! What's up? Did you hear\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}! What's up? Did you hear\n"
 	.string "about the whole lockdown thing?\l"
 	.string "Wild stuff, huh?$"
 
@@ -2425,8 +2433,8 @@ NatsukiCanIComeToo_Text_1:
 	.string "Sounds like fun, can I come too?$"
 
 NotRightNow_Text_0:
-	.string "You still have errands to run?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}You still have errands to run?\n"
 	.string "We will be waiting here!$"
 
 NotRightNow_Text_1:
-	.string "Be quick about it! I'm starving!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Be quick about it! I'm starving!$"

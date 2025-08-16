@@ -114,7 +114,7 @@ script YifuCity_CrobatShop_Guard {
 	if (flag(FLAG_CROBAT_PASSWORD_CORRECT)) {
 		speakername("Shady man")
 		msgbox(format(
-			"Standin' guard is boring… Yawn…"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Standin' guard is boring… Yawn…"
 		))
 		release
 		end
@@ -129,7 +129,7 @@ script YifuCity_CrobatShop_Guard {
 	applymovement(VAR_LAST_TALKED, moves(lock_facing_direction, walk_in_place_faster_left, unlock_facing_direction))
 	speakername("Shady man")
 	msgbox(format(
-		"Password?"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Password?"
 	))
 
 	if (!flag(FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF) || !flag(FLAG_GOT_CROBAT_PASSWORD_SECOND_HALF)) {
@@ -144,7 +144,7 @@ script YifuCity_CrobatShop_Guard {
 
 		speakername("Shady man")
 		msgbox(format(
-			"That ain't the password! Scram!"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}That ain't the password! Scram!"
 		))
 		waitmovement(0)
 		closemessage
@@ -203,7 +203,7 @@ script YifuCity_CrobatShop_Guard {
 			if (flag(FLAG_CROBAT_PASSWORD_FIRST_HALF_CORRECT) && flag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT)) {
 				speakername("Shady man")
 				msgbox(format(
-					"Hmmm… Ya don't look like the typical Zubat…\p"
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hmmm… Ya don't look like the typical Zubat…\p"
 					"… … … …\n… …Alright, ya can go through.\l"
 					"Next time wear the damn uniform though, will ya?"
 				))
@@ -223,7 +223,7 @@ script YifuCity_CrobatShop_Guard {
 
 				speakername("Shady man")
 				msgbox(format(
-					"That ain't the password! Scram!"
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}That ain't the password! Scram!"
 				))
 				waitmovement(0)
 				closemessage

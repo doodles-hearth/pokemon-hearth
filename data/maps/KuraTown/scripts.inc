@@ -499,7 +499,7 @@ KuraTown_EventScript_PostDecayNatsukiHariko_Text_0:
 	.string "Hariko$"
 
 KuraTown_EventScript_PostDecayNatsukiHariko_Text_1:
-	.string "Did you hear? They said this Decay\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Did you hear? They said this Decay\n"
 	.string "has started less than a week ago.\p"
 	.string "That coincides with the beginning of\n"
 	.string "the Volcano's rumbling spells,\l"
@@ -509,7 +509,7 @@ KuraTown_EventScript_PostDecayNatsukiHariko_Text_1:
 	.string "grownups don't let us?$"
 
 KuraTown_EventScript_PostDecayNatsukiHariko_Text_2:
-	.string "… …{PLAYER}, Natsuki.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}… …{PLAYER}, Natsuki.\n"
 	.string "I am heading home, in Yifu City.\p"
 	.string "We should meet up later to talk about\n"
 	.string "this some more.\p"
@@ -520,7 +520,7 @@ KuraTown_EventScript_PostDecayNatsukiHariko_Text_3:
 	.string "Natsuki$"
 
 KuraTown_EventScript_PostDecayNatsukiHariko_Text_4:
-	.string "Boy, your friend sure talks a lot, huh?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Boy, your friend sure talks a lot, huh?\p"
 	.string "D'you think this whole Decay business\n"
 	.string "is linked to the wild Pokémon attacks\l"
 	.string "Elder Kaba told us about?\p"
@@ -539,7 +539,7 @@ KuraTown_EventScript_PostDecayNatsukiHariko_Text_4:
 	.string "…Mostly from yourself, though!$"
 
 KuraTown_EventScript_PostDecayNatsukiHariko_Text_5:
-	.string "Don't hit me! Don't hit me!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't hit me! Don't hit me!\n"
 	.string "I'm gone!\p"
 	.string "See ya later, Feraligatr!$"
 

@@ -176,7 +176,7 @@ MaguroHarbor_Dojo_EventScript_Koishi_Text_0:
 	.string "Koishi$"
 
 MaguroHarbor_Dojo_EventScript_Koishi_Text_1:
-	.string "Welcome to Maguro's Koi Pond Dojo, one\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}Welcome to Maguro's Koi Pond Dojo, one\n"
 	.string "of the eight Dojos officially\l"
 	.string "appointed by the Toku Council.\p"
 	.string "We Dojo Masters fight Wielders that\n"
@@ -205,7 +205,7 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_0:
 	.string "Token from Koishi.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1:
-	.string "I applaud your skill. You are still a\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}I applaud your skill. You are still a\n"
 	.string "child, yet you obviously have a\l"
 	.string "natural aptitude for battle.\p"
 	.string "With the Token I just gave you, your\n"
@@ -215,7 +215,7 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1:
 	.string "I am also supposed to give you this.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2:
-	.string "This scroll contains Nature Power, a\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}This scroll contains Nature Power, a\n"
 	.string "move that changes depending on the\l"
 	.string "terrain your Pokémon is standing on.\p"
 	.string "Going through the Toku Council's\n"
@@ -225,7 +225,7 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2:
 	.string "Good luck, {PLAYER}.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_3:
-	.string "That… That was a big one!…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}That… That was a big one!…\p"
 	.string "I'm going outside to make sure\n"
 	.string "everyone's alright.$"
 

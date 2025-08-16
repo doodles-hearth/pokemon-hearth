@@ -234,7 +234,7 @@ YifuCity_Refuge_2F_EventScript_TravelingMerchant_Text_0:
 	.string "Okada$"
 
 YifuCity_Refuge_2F_EventScript_TravelingMerchant_Text_1:
-	.string "Oh, good evening, {PLAYER}! I'm\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Oh, good evening, {PLAYER}! I'm\n"
 	.string "exhausted! I've been walking since\l"
 	.string "morning, I'm calling it a day.\p"
 	.string "Never underestimate a good night's\n"

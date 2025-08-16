@@ -102,7 +102,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"I was wondering if you'd reached Saku Village by now. Looks like we almost missed each other!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}I was wondering if you'd reached Saku Village by now. Looks like we almost missed each other!\p"
 		"I saw several patrolling Samurai on my way here. They look so cool, no wonder they're so admired!\p"
 		"Oh, {PLAYER}, have you caught any Pokémon on your way here?\p"
 		"Me?\nBoy, I'm so glad you asked…\p"
@@ -121,7 +121,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Woah! I… I didn't think you'd go that hard, honestly!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah! I… I didn't think you'd go that hard, honestly!\p"
 		"Clearly I underestimated you. That's alright. I won't make that mistake next time!\p"
 		"I can see your Pokémon are really growing to like you, it's great!\p"
 		"Are you doing the Dojo challenge?\nYou might just stand a chance against the Dojo that's in the next village!\p"
@@ -143,21 +143,21 @@ script SakuTown_EventScript_RivalAtSakuWall {
 		case 0:
 			speakername("Natsuki")
 			msgbox(format(
-				"You got it!"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}You got it!"
 			))
 		case 1:
 			speakername("Natsuki")
 			msgbox(format(
-				"Right behind you!"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Right behind you!"
 			))
 			closemessage
 
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down, delay_16 * 3, walk_in_place_fast_up))
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up, delay_16 * 3, walk_in_place_fast_down))
 			waitmovement(0)
 
 			speakername("Natsuki")
 			msgbox(format(
-				"Bahaha! Got you!"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Bahaha! Got you!"
 			))
 			closemessage
 	}

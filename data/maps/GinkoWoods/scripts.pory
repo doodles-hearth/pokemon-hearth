@@ -63,7 +63,7 @@ script GinkoWoods_EventScript_Bean {
 
 	speakername("Odd girl")
 	msgbox(format(
-		"Hello!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello!"
 	))
 	closemessage
 
@@ -73,7 +73,7 @@ script GinkoWoods_EventScript_Bean {
 
 	speakername("Odd girl")
 	msgbox(format(
-		"I just noticed there are some neat tracks in the dirt here."
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just noticed there are some neat tracks in the dirt here."
 	))
 	closemessage
 
@@ -83,7 +83,7 @@ script GinkoWoods_EventScript_Bean {
 
 	speakername("Odd girl")
 	msgbox(format(
-		"It looks like a small mammal's footprints, see?\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}It looks like a small mammal's footprints, see?\p"
 		"Studying Pokémon tracks is so fascinating. One can find out about a Pokémon's nesting place, their hunting habits, at what time they sleep, what they eat… Interesting, isn't it?\p"
 		"These woods host a lot of yellow Pokémon, so I'd bet these are a Kotora's."
 		"Do you know why there's a lot of yellow Pokémon here? Well, that's because smaller Pokémon can easily hide from predators in the foliage, and said predators can stalk their prey without being seen."
@@ -103,7 +103,7 @@ script GinkoWoods_EventScript_Bean {
 
 	speakername("Odd girl")
 	msgbox(format(
-		"…And that's all that is currently known about Joltik's habitat during the winter.\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…And that's all that is currently known about Joltik's habitat during the winter.\p"
 		"Neat, isn't it?"
 	))
 
@@ -124,21 +124,21 @@ script GinkoWoods_EventScript_Bean {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			msgbox(format(
-				"Right! I am glad you share my interest in Pokémon habitat.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right! I am glad you share my interest in Pokémon habitat.\p"
 				"I am Hariko. And what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\NI will see you around, then.\p"
 				"Okay. Bye!"
 			))
 		case 1:
 			msgbox(format(
-				"Right!\nI haven't introduced myself yet.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right!\nI haven't introduced myself yet.\p"
 				"I am Hariko. And what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\NI will see you around, then.\p"
 				"Okay. Bye!"
 			))
 		case 2:
 			msgbox(format(
-				"…Oh. I am blocking your path. I see.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…Oh. I am blocking your path. I see.\p"
 				"I got carried away, have I not?\nThat… tends to happen.\p"
 				"I am Hariko. And what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\NI am moving now, so that you can go through.\p"
@@ -173,7 +173,7 @@ script GinkoWoods_EventScript_Tracks {
 
 	speakername("Odd girl")
 	msgbox(format(
-		"THE TRACKS!!\nYOU'RE STEPPING ON THEM!!!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}THE TRACKS!!\nYOU'RE STEPPING ON THEM!!!"
 	))
 	closemessage
 

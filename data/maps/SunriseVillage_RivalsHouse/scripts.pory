@@ -37,7 +37,7 @@ script SunriseVillage_RivalsHouse_EventScript_Natsuki {
 	if (flag(FLAG_TEMP_TALKED_TO_NATSUKI)) {
 		speakername("Natsuki")
 		msgbox(format(
-			"Region map, check…\nJoltik plushie, check…"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Region map, check…\nJoltik plushie, check…"
 		))
 		closemessage
 
@@ -45,7 +45,7 @@ script SunriseVillage_RivalsHouse_EventScript_Natsuki {
 	} else {
 		speakername("Natsuki")
 		msgbox(format(
-			"Poké Balls, check…\nMedicine, check…\lSpare pair of underwear, check…"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Poké Balls, check…\nMedicine, check…\lSpare pair of underwear, check…"
 		))
 		closemessage
 
@@ -54,7 +54,7 @@ script SunriseVillage_RivalsHouse_EventScript_Natsuki {
 		faceplayer
 		speakername("Natsuki")
 		msgbox(format(
-			"Oh, hey, {PLAYER}. I'm just sorting\nout my stuff for the journey.\p"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh, hey, {PLAYER}. I'm just sorting\nout my stuff for the journey.\p"
 			"I'm traveling as light as possible!\p"
 			"See you around, yeah?"
 		))

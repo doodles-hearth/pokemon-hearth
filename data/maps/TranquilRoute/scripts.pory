@@ -435,7 +435,7 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 
 	speakername("Shady men")
 	msgbox(format(
-		"…Excellent idea…\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Excellent idea…\p"
 		"…Yeah, and then…\p"
 		"… … …"
 	))
@@ -448,7 +448,7 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 
 	speakername("Shady man")
 	msgbox(format(
-		"Alright boys, let's move."
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Alright boys, let's move."
 	))
 	closemessage
 
@@ -490,7 +490,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	lock
 	speakername("Man")
 	msgbox(format(
-		"Mumble mumble… Should restock on ointment… Damn, where did I put my purse?…"
+		"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Mumble mumble… Should restock on ointment… Damn, where did I put my purse?…"
 	))
 	closemessage
 
@@ -505,7 +505,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 
 	speakername("Man")
 	msgbox(format(
-		"Oh, hello! Sorry, shop's closed at the moment!\p"
+		"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Oh, hello! Sorry, shop's closed at the moment!\p"
 		"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
 		"I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
 		"I'm sold out on, well, pretty much everything right now… But you're definitely going to see me around!\p"
@@ -519,7 +519,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 
 	speakername("Man")
 	msgbox(format(
-		"Come on, Keke."
+		"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Come on, Keke."
 	))
 	closemessage
 

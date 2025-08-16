@@ -325,10 +325,10 @@ YifuCity_CrobatShop_Guard_Text_0:
 	.string "Shady man$"
 
 YifuCity_CrobatShop_Guard_Text_1:
-	.string "Standin' guard is boring… Yawn…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Standin' guard is boring… Yawn…$"
 
 YifuCity_CrobatShop_Guard_Text_2:
-	.string "Password?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Password?$"
 
 YifuCity_CrobatShop_Guard_Text_3:
 	.string "Uh…$"
@@ -340,7 +340,7 @@ YifuCity_CrobatShop_Guard_Text_5:
 	.string "Well…$"
 
 YifuCity_CrobatShop_Guard_Text_6:
-	.string "That ain't the password! Scram!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}That ain't the password! Scram!$"
 
 YifuCity_CrobatShop_Guard_Text_7:
 	.string "Noivern…$"
@@ -361,7 +361,7 @@ YifuCity_CrobatShop_Guard_Text_12:
 	.string "…is legendary!$"
 
 YifuCity_CrobatShop_Guard_Text_13:
-	.string "Hmmm… Ya don't look like the typical\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hmmm… Ya don't look like the typical\n"
 	.string "Zubat…\p"
 	.string "… … … …\n"
 	.string "… …Alright, ya can go through.\l"

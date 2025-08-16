@@ -566,16 +566,16 @@ SakuTown_PokemonCenter_EventScript_Pushing_Text_0:
 	.string "Shady man$"
 
 SakuTown_PokemonCenter_EventScript_Pushing_Text_1:
-	.string "Watchu lookin' at? Scram!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Watchu lookin' at? Scram!$"
 
 SakuTown_PokemonCenter_EventScript_Grunt1_Text_0:
-	.string "Great plan…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Great plan…$"
 
 SakuTown_PokemonCenter_EventScript_Grunt2_Text_0:
-	.string "We should do this next…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We should do this next…$"
 
 SakuTown_PokemonCenter_EventScript_Grunt3_Text_0:
-	.string "On Beachbound Route…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}On Beachbound Route…$"
 
 SakuTown_PokemonCenter_EventScript_Makuhita_Text_0:
 	.string "Kuhu…$"

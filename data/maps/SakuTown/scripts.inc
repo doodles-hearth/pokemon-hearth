@@ -757,11 +757,11 @@ SakuTown_EventScript_RivalAtSakuWall_Movement_0:
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Movement_1:
-	walk_in_place_fast_down
-	delay_16
-	delay_16
-	delay_16
 	walk_in_place_fast_up
+	delay_16
+	delay_16
+	delay_16
+	walk_in_place_fast_down
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Movement_2:
@@ -1037,7 +1037,7 @@ SakuTown_EventScript_RivalAtSakuWall_Text_2:
 	.string "Natsuki$"
 
 SakuTown_EventScript_RivalAtSakuWall_Text_3:
-	.string "I was wondering if you'd reached Saku\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}I was wondering if you'd reached Saku\n"
 	.string "Village by now. Looks like we almost\l"
 	.string "missed each other!\p"
 	.string "I saw several patrolling Samurai on my\n"
@@ -1050,7 +1050,7 @@ SakuTown_EventScript_RivalAtSakuWall_Text_3:
 	.string "Let me show you!$"
 
 SakuTown_EventScript_RivalAtSakuWall_Text_4:
-	.string "Woah! I… I didn't think you'd go that\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah! I… I didn't think you'd go that\n"
 	.string "hard, honestly!\p"
 	.string "Clearly I underestimated you. That's\n"
 	.string "alright. I won't make that mistake\l"
@@ -1077,13 +1077,13 @@ SakuTown_EventScript_RivalAtSakuWall_Text_6:
 	.string "Where's the Feraligatr?$"
 
 SakuTown_EventScript_RivalAtSakuWall_Text_7:
-	.string "You got it!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}You got it!$"
 
 SakuTown_EventScript_RivalAtSakuWall_Text_8:
-	.string "Right behind you!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Right behind you!$"
 
 SakuTown_EventScript_RivalAtSakuWall_Text_9:
-	.string "Bahaha! Got you!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Bahaha! Got you!$"
 
 SakuTown_EventScript_Farmer_Text_0:
 	.string "Farmer$"

@@ -215,7 +215,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 		speakername("Shady Man")
 		msgbox(format(
-			"Stop yappin', lady! Just give us yer Pokémon already!"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Stop yappin', lady! Just give us yer Pokémon already!"
 		))
 		closemessage
 
@@ -224,7 +224,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 		speakername("Shady Man")
 		msgbox(format(
-			"C'mon, don't make this difficult! Just hand it over!"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'mon, don't make this difficult! Just hand it over!"
 		))
 		closemessage
 
@@ -239,7 +239,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 		speakername("Shady Man")
 		msgbox(format(
-			"Just what d'you think yer doin'?\p"
+			"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Just what d'you think yer doin'?\p"
 			"Can't ya see we're in the middle of something 'ere?"
 		))
 
@@ -261,7 +261,7 @@ script BeachboundRoute_EventScript_Mugging {
 		switch (var(VAR_RESULT)) {
 			case 0:
 				msgbox(format(
-					"Ooh, feelin' heroic today, are we?\p"
+					"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Ooh, feelin' heroic today, are we?\p"
 					"D'ya know what we do to nosy brats who're not clever enough to mind their own business?\p"
 					"Ya have no self-preservation instinct whatsoever, do ya?\p"
 					"D'ya even know who we are?\p"
@@ -271,7 +271,7 @@ script BeachboundRoute_EventScript_Mugging {
 				))
 			case 1:
 				msgbox(format(
-					"'S a little too late fer that, don't ya think?"
+					"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}'S a little too late fer that, don't ya think?"
 					"D'ya know what we do to nosy brats who're not clever enough to mind their own business?\p"
 					"Ya have no self-preservation instinct whatsoever, do ya?\p"
 					"D'ya even know who we are?\p"
@@ -281,7 +281,7 @@ script BeachboundRoute_EventScript_Mugging {
 				))
 			case 2:
 				msgbox(format(
-					"Got nothin' to say, huh?\p"
+					"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Got nothin' to say, huh?\p"
 					"D'ya know what we do to nosy brats who're not clever enough to mind their own business?\p"
 					"Ya have no self-preservation instinct whatsoever, do ya?\p"
 					"D'ya even know who we are?\p"
@@ -296,7 +296,7 @@ script BeachboundRoute_EventScript_Mugging {
 		waitmovement(0)
 		speakername("Crobat Shadow")
 		msgbox(format(
-			"Uh… What's an allergory, boss?"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Uh… What's an allergory, boss?"
 		))
 		closemessage
 
@@ -305,7 +305,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 		speakername("Crobat boss")
 		msgbox(format(
-			"…Gonna pretend ya didn't say that."
+			"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}…Gonna pretend ya didn't say that."
 		))
 		closemessage
 
@@ -315,14 +315,14 @@ script BeachboundRoute_EventScript_Mugging {
 
 		speakername("Crobat Boss")
 		msgbox(format(
-			"'Nuff yappin' already! Take care of this clown, boys!"
+			"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}'Nuff yappin' already! Take care of this clown, boys!"
 		))
 		closemessage
 	} else {
 		turnobject(LOCALID_GRUNT_BOSS, DIR_SOUTH)
 		speakername("Crobat Boss")
 		msgbox(format(
-			"Can't believe it! Look who's back!\p"
+			"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Can't believe it! Look who's back!\p"
 			"Back fer another whoopin', are we?\p"
 			"Take care of this clown, boys!"
 		))
@@ -348,7 +348,7 @@ script BeachboundRoute_EventScript_Mugging {
 	waitmovement(LOCALID_GRUNT_1)
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"Sorry, boss!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Sorry, boss!"
 	))
 	closemessage
 	
@@ -356,7 +356,7 @@ script BeachboundRoute_EventScript_Mugging {
 	waitmovement(LOCALID_GRUNT_2)
 	speakername("Zubat Grunt")
 	msgbox(format(
-		"We got stomped proper, boss!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We got stomped proper, boss!"
 	))
 	closemessage
 
@@ -364,7 +364,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	speakername("Crobat Boss")
 	msgbox(format(
-		"Ya gotta be kiddin' me…\p"
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Ya gotta be kiddin' me…\p"
 		"Can't even do no regular muggin' in peace anymore!"
 	))
 	closemessage
@@ -374,15 +374,15 @@ script BeachboundRoute_EventScript_Mugging {
 
 	speakername("Crobat Boss")
 	msgbox(format(
-		"Well, I ain't gonna stoop to fighting ya myself!"
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Well, I ain't gonna stoop to fighting ya myself!"
 	))
 	closemessage
 
 	applymovement(LOCALID_GRUNT_3, moves(walk_in_place_fast_down))
 	waitmovement(0)
-	speakername("Crobat Shadow")
+	speakername("Zubat Grunt")
 	msgbox(format(
-		"Boss, what's a stoop?"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Boss, what's a stoop?"
 	))
 	closemessage
 
@@ -393,7 +393,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	speakername("Crobat Boss")
 	msgbox(format(
-		"For the love of god, Kevin…"
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}For the love of god, Kevin…"
 	))
 	closemessage
 
@@ -404,7 +404,7 @@ script BeachboundRoute_EventScript_Mugging {
 	
 	speakername("Crobat Boss")
 	msgbox(format(
-		"Movin' on! You've not seen the last of us, ya annoying brat!\p"
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Movin' on! You've not seen the last of us, ya annoying brat!\p"
 		"Ya better steer clear of the Crobat Shadows from now on!\p"
 		"Let's move it, boys!"
 	))
@@ -414,7 +414,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	speakername("Crobat Boss")
 	msgbox(format(
-		"ZUBATS, ALIGN!!"
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}ZUBATS, ALIGN!!"
 	))
 	closemessage
 
@@ -481,13 +481,13 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 	if (flag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)) {
 		speakername("Okada")
 		msgbox(format(
-			"Hello, hello again, {PLAYER}!\p"
+			"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Hello, hello again, {PLAYER}!\p"
 			"Can I interest you in some handpicked goods?"
 		))
 	} elif (flag(FLAG_MET_TRAVELING_MERCHANT)) {
 		speakername("Okada")
 		msgbox(format(
-			"Hello! … …Have we met before?\p"
+			"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Hello! … …Have we met before?\p"
 			"Sorry, I'm not good with faces…\p"
 			"Wait! Uhh, {PLAYER}, was it?\p"
 			"I'm in the area for a while to gather some resources.\p"
@@ -496,7 +496,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 	} else {
 		speakername("Okada")
 		msgbox(format(
-			"Hello, hello again!\p"
+			"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Hello, hello again!\p"
 			"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
 			"I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
 			"If you're a traveler, you're definitely going to see me around!\p"
@@ -512,7 +512,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 	limitedpokemart(LIMITED_SHOP_1)
 	speakername("Okada")
 	msgbox(format(
-		"Thanks for your business! Now where did I put that scroll again…"
+		"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Thanks for your business! Now where did I put that scroll again…"
 	))
 	closemessage
 

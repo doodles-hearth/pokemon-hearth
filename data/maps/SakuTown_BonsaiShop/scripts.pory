@@ -264,7 +264,7 @@ script SakuTown_BonsaiShop_EventScript_Owner {
 		if (flag(FLAG_RECEIVED_SECRET_POWER)) {
 			speakername("Hana")
 			msgbox(format(
-				"Hello, {PLAYER}. Can I interest you in a little greenery?"
+				"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you in a little greenery?"
 			))
 			closemessage
 			
@@ -275,7 +275,7 @@ script SakuTown_BonsaiShop_EventScript_Owner {
 		} else {
 			speakername("Hana")
 			msgbox(format(
-				"Hello, {PLAYER}. Can I interest you in a little greenery?\p"
+				"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you in a little greenery?\p"
 				"Hmm… It looks like you wouldn't have anywhere to put bonsai. Come back when you do."
 			))
 			closemessage
@@ -284,7 +284,7 @@ script SakuTown_BonsaiShop_EventScript_Owner {
 		special(GetPlayerBoyGirlString)
 		speakername("Shop Owner")
 		msgbox(format(
-			"Hello, young {STR_VAR_1}. Can I interest you in a little greenery?\p"
+			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I interest you in a little greenery?\p"
 			"Hmm… It looks like you wouldn't have anywhere to put bonsai. Come back when you do."
 		))
 		closemessage

@@ -1119,7 +1119,7 @@ CrobatHideout_1F_SeenByGrunt_Text_0:
 	.string "Zubat Grunt$"
 
 CrobatHideout_1F_SeenByGrunt_Text_1:
-	.string "Who the heck're you?!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Who the heck're you?!$"
 
 CrobatHideout_1F_SeenByGrunt_Text_2:
 	.string "{PLAYER}, nice to meet you!$"
@@ -1131,23 +1131,23 @@ CrobatHideout_1F_SeenByGrunt_Text_4:
 	.string "Are you a criminal?$"
 
 CrobatHideout_1F_SeenByGrunt_Text_5:
-	.string "I don' know no {PLAYER}!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I don' know no {PLAYER}!\n"
 	.string "This ain't no tea party!\p"
 	.string "You a spy? Ya don' work with the\n"
 	.string "Samurai or somethin', do ya?$"
 
 CrobatHideout_1F_SeenByGrunt_Text_6:
-	.string "Oh, right, 'course, the new recruit!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Oh, right, 'course, the new recruit!\p"
 	.string "(Why am I never in the loop?…)\p"
 	.string "Wait… Where's yer uniform?$"
 
 CrobatHideout_1F_SeenByGrunt_Text_7:
-	.string "Duh, what dum' question is that?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Duh, what dum' question is that?\p"
 	.string "…Wait…\n"
 	.string "You're not a Crobat Shadow, are ya?$"
 
 CrobatHideout_1F_SeenByGrunt_Text_8:
-	.string "Ah, crappers! Hideout's compromised!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Ah, crappers! Hideout's compromised!\p"
 	.string "We've got an intruder!\n"
 	.string "BOSS!! BOOOSSSS!!!$"
 
@@ -1159,7 +1159,7 @@ CrobatHideout_1F_EventScript_Grunt1_Text_1:
 	.string "Boss, help us!$"
 
 CrobatHideout_1F_EventScript_Grunt1_Text_2:
-	.string "Whaddyawant? Ya got nothin' on us!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Whaddyawant? Ya got nothin' on us!\n"
 	.string "Err I mean, we done nothin' wrong!$"
 
 CrobatHideout_1F_EventScript_GruntPaintingPokeballs_Text_0:
@@ -1170,7 +1170,7 @@ CrobatHideout_1F_EventScript_GruntPaintingPokeballs_Text_1:
 	.string "Alright alright, ya got me!$"
 
 CrobatHideout_1F_EventScript_GruntPaintingPokeballs_Text_2:
-	.string "I'm sure this is all super legal, but\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I'm sure this is all super legal, but\n"
 	.string "dontcha dare say a thing!$"
 
 CrobatHideout_1F_EventScript_GruntLaundryRoom_Text_0:
@@ -1181,7 +1181,7 @@ CrobatHideout_1F_EventScript_GruntLaundryRoom_Text_1:
 	.string "Hung me out to dry…$"
 
 CrobatHideout_1F_EventScript_GruntLaundryRoom_Text_2:
-	.string "I always end up on laundry duty, even\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I always end up on laundry duty, even\n"
 	.string "when it's someone else's turn…$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGirl_Text_0:
@@ -1191,7 +1191,7 @@ CrobatHideout_1F_EventScript_GruntDoubleGirl_Text_1:
 	.string "Fine, go where ya want then, sheesh!$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGirl_Text_2:
-	.string "Yer laughin' now, but our boss is\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yer laughin' now, but our boss is\n"
 	.string "gonna stomp on ya real good!$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGuy_Text_0:
@@ -1202,7 +1202,7 @@ CrobatHideout_1F_EventScript_GruntDoubleGuy_Text_1:
 	.string "Kids these days, I swear!$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGuy_Text_2:
-	.string "We ain't gon' take this invasion of our\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We ain't gon' take this invasion of our\n"
 	.string "privacy lyin' down!$"
 
 CrobatHideout_1F_EventScript_GruntNearReunionRoom_Text_0:
@@ -1213,7 +1213,7 @@ CrobatHideout_1F_EventScript_GruntNearReunionRoom_Text_1:
 	.string "Yer ruinin' everythin'!$"
 
 CrobatHideout_1F_EventScript_GruntNearReunionRoom_Text_2:
-	.string "Our boss takes good care of us!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Our boss takes good care of us!\n"
 	.string "Everythin' was fine an' dandy 'til you\l"
 	.string "showed up!$"
 
@@ -1316,10 +1316,10 @@ CrobatHideout_1F_EventScript_Nickit_Text_0:
 	.string "Whewrr…$"
 
 CrobatHideout_1F_Trigger_4V1_Text_0:
-	.string "Dontcha take another step!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Dontcha take another step!$"
 
 CrobatHideout_1F_Trigger_4V1_Text_1:
-	.string "We're 'ere to end ya!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We're 'ere to end ya!$"
 
 CrobatHideout_1F_Trigger_4V1_Text_2:
 	.string "Excuse me!$"
@@ -1339,7 +1339,7 @@ CrobatHideout_1F_SamuraiOffersHelp_Text_1:
 	.string "I can handle two at a time!$"
 
 CrobatHideout_1F_SamuraiOffersHelp_Text_2:
-	.string "Hey, no fair! This was s'posed to be a\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hey, no fair! This was s'posed to be a\n"
 	.string "four on one situation!$"
 
 CrobatHideout_1F_BattleSamuraiBackToBack_Text_0:
@@ -1349,7 +1349,7 @@ CrobatHideout_1F_BattleSamuraiBackToBack_Text_1:
 	.string "Please let me live!$"
 
 CrobatHideout_1F_BattleSamuraiBackToBack_Text_2:
-	.string "Ayayaya! Jus' wait til the Boss hears\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Ayayaya! Jus' wait til the Boss hears\n"
 	.string "of this!$"
 
 CrobatHideout_1F_BattleSamuraiBackToBack_Text_3:
@@ -1365,7 +1365,7 @@ CrobatHideout_1F_BattleSamuraiBackToBack_Text_4:
 	.string "Right! Follow me, {PLAYER}!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_0:
-	.string "Boss, uh, the intruder's 'ere!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Boss, uh, the intruder's 'ere!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_1:
 	.string "Crobat Boss$"

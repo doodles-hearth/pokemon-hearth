@@ -399,14 +399,14 @@ SakuTown_BonsaiShop_EventScript_Owner_Text_0:
 	.string "Hana$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_1:
-	.string "Hello, {PLAYER}. Can I interest you\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you\n"
 	.string "in a little greenery?$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_2:
 	.string "Thank you for your business!$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_3:
-	.string "Hello, {PLAYER}. Can I interest you\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you\n"
 	.string "in a little greenery?\p"
 	.string "Hmm… It looks like you wouldn't have\n"
 	.string "anywhere to put bonsai. Come back\l"
@@ -416,7 +416,7 @@ SakuTown_BonsaiShop_EventScript_Owner_Text_4:
 	.string "Shop Owner$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_5:
-	.string "Hello, young {STR_VAR_1}. Can I\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I\n"
 	.string "interest you in a little greenery?\p"
 	.string "Hmm… It looks like you wouldn't have\n"
 	.string "anywhere to put bonsai. Come back\l"

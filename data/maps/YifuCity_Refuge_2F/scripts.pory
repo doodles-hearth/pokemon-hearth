@@ -149,7 +149,7 @@ script YifuCity_Refuge_2F_EventScript_TravelingMerchant {
 	faceplayer
 	speakername("Okada")
 	msgbox(format(
-		"Oh, good evening, {PLAYER}! I'm exhausted! I've been walking since morning, I'm calling it a day.\p"
+		"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Oh, good evening, {PLAYER}! I'm exhausted! I've been walking since morning, I'm calling it a day.\p"
 		"Never underestimate a good night's sleep!"
 	))
 	closemessage
