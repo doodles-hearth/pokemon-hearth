@@ -1,12 +1,16 @@
 #ifndef GUARD_CONSTANTS_FIELD_MUGSHOTS_H
 #define GUARD_CONSTANTS_FIELD_MUGSHOTS_H
 
-#define MUGSHOT_NONE  0
-#define MUGSHOT_TEST  1
-#define MUGSHOT_COUNT 2
+enum Mugshots {
+    MUGSHOT_NONE = 0,
+    MUGSHOT_TEST,
+    MUGSHOT_COUNT,
+};
 
-#define EMOTE_NORMAL  0
-#define EMOTE_ALT     1
-#define EMOTE_COUNT   2
+enum MugshotEmotes {
+    EMOTE_NORMAL = 0,
+    EMOTE_ALT,
+    EMOTE_COUNT,
+};
 
 #endif // GUARD_CONSTANTS_FIELD_MUGSHOTS_H
