@@ -218,17 +218,17 @@ WindsweptRoute_EventScript_Roku_Text_3:
 	.string "been slacking off…$"
 
 WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_0:
-	.string "Ninja boy$"
+	.string "Ninja Boy$"
 
 WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_1:
-	.string "You shall know defeat at the hand of\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}You shall know defeat at the hand of\n"
 	.string "my ninja Pokémon!\p"
 	.string "Nuzleaf, use Feint Attack!$"
 
 WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_2:
-	.string "School kid$"
+	.string "School Kid$"
 
 WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_3:
-	.string "Your pathetic ninja costume can't\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Your pathetic ninja costume can't\n"
 	.string "beat the sheer power of knowledge!\p"
 	.string "Breloom! Headbutt!$"

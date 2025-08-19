@@ -474,8 +474,8 @@ SakuTown_EventScript_TamaArgument_1:
 	delay 240
 	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_6
 	waitmovement 21
-	speakername SakuTown_EventScript_TamaArgument_Text_6
-	msgbox SakuTown_EventScript_TamaArgument_Text_7
+	speakername SakuTown_EventScript_TamaArgument_Text_3
+	msgbox SakuTown_EventScript_TamaArgument_Text_6
 	closemessage
 	playse MUS_DUMMY
 	waitse
@@ -483,40 +483,40 @@ SakuTown_EventScript_TamaArgument_1:
 	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_7
 	waitmovement 21
 	waitmovement OBJ_EVENT_ID_CAMERA
-	speakername SakuTown_EventScript_TamaArgument_Text_6
-	msgbox SakuTown_EventScript_TamaArgument_Text_8
+	speakername SakuTown_EventScript_TamaArgument_Text_3
+	msgbox SakuTown_EventScript_TamaArgument_Text_7
 	closemessage
 	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_7
 	applymovement OBJ_EVENT_ID_CAMERA, SakuTown_EventScript_TamaArgument_Movement_8
 	waitmovement 21
 	waitmovement OBJ_EVENT_ID_CAMERA
 	special RemoveCameraObject
-	trainerbattle_no_intro_no_whiteout TRAINER_TAMAS_DAD, SakuTown_EventScript_TamaArgument_Text_9
+	trainerbattle_no_intro_no_whiteout TRAINER_TAMAS_DAD, SakuTown_EventScript_TamaArgument_Text_8
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_ne SakuTown_EventScript_TamaArgument_6
 SakuTown_EventScript_TamaArgument_5:
 	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_9
 	waitmovement 21
-	speakername SakuTown_EventScript_TamaArgument_Text_10
-	msgbox SakuTown_EventScript_TamaArgument_Text_12
+	speakername SakuTown_EventScript_TamaArgument_Text_9
+	msgbox SakuTown_EventScript_TamaArgument_Text_11
 	closemessage
 	applymovement 20, SakuTown_EventScript_TamaArgument_Movement_10
 	waitmovement 20
 	speakername SakuTown_EventScript_TamaArgument_Text_1
-	msgbox SakuTown_EventScript_TamaArgument_Text_13
+	msgbox SakuTown_EventScript_TamaArgument_Text_12
 	closemessage
 	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_11
 	waitmovement 0
-	speakername SakuTown_EventScript_TamaArgument_Text_10
-	msgbox SakuTown_EventScript_TamaArgument_Text_14
+	speakername SakuTown_EventScript_TamaArgument_Text_9
+	msgbox SakuTown_EventScript_TamaArgument_Text_13
 	closemessage
 	delay 60
 	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_12
 	waitmovement 0
 	delay 60
-	speakername SakuTown_EventScript_TamaArgument_Text_10
-	msgbox SakuTown_EventScript_TamaArgument_Text_15
+	speakername SakuTown_EventScript_TamaArgument_Text_9
+	msgbox SakuTown_EventScript_TamaArgument_Text_14
 	closemessage
 	applymovement 21, SakuTown_EventScript_TamaArgument_Movement_13
 	waitmovement 0
@@ -526,7 +526,7 @@ SakuTown_EventScript_TamaArgument_5:
 	waitmovement 20
 	waitmovement OBJ_EVENT_ID_PLAYER
 	speakername SakuTown_EventScript_TamaArgument_Text_1
-	msgbox SakuTown_EventScript_TamaArgument_Text_16
+	msgbox SakuTown_EventScript_TamaArgument_Text_15
 	closemessage
 	special HealPlayerParty
 	playse SE_USE_ITEM
@@ -541,8 +541,8 @@ SakuTown_EventScript_TamaArgument_2:
 	goto SakuTown_EventScript_TamaArgument_1
 
 SakuTown_EventScript_TamaArgument_6:
-	speakername SakuTown_EventScript_TamaArgument_Text_10
-	msgbox SakuTown_EventScript_TamaArgument_Text_11
+	speakername SakuTown_EventScript_TamaArgument_Text_9
+	msgbox SakuTown_EventScript_TamaArgument_Text_10
 	closemessage
 	goto SakuTown_EventScript_TamaArgument_5
 
@@ -610,7 +610,7 @@ SakuTown_EventScript_LoversReunite::
 	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_0
 	waitmovement 0
 	speakername SakuTown_EventScript_LoversSeeEachOther_Text_0
-	msgbox SakuTown_EventScript_TamaArgument_Text_14
+	msgbox SakuTown_EventScript_TamaArgument_Text_13
 	special SpawnCameraObject
 	switch VAR_TEMP_0
 	case 1, SakuTown_EventScript_LoversReunite_3
@@ -1221,7 +1221,7 @@ SakuTown_EventScript_TamaArgument_Text_2:
 	.string "You can't do this to me!$"
 
 SakuTown_EventScript_TamaArgument_Text_3:
-	.string "Old man$"
+	.string "Old Man$"
 
 SakuTown_EventScript_TamaArgument_Text_4:
 	.string "Over my dead body will my son be in\n"
@@ -1233,32 +1233,29 @@ SakuTown_EventScript_TamaArgument_Text_5:
 	.string "please!$"
 
 SakuTown_EventScript_TamaArgument_Text_6:
-	.string "Old Man$"
-
-SakuTown_EventScript_TamaArgument_Text_7:
 	.string "So you're the whippersnapper that's\n"
 	.string "making my son collude with the enemy,\l"
 	.string "eh.\p"
 	.string "You outta be taught a lesson in\n"
 	.string "respect, kiddo!$"
 
-SakuTown_EventScript_TamaArgument_Text_8:
+SakuTown_EventScript_TamaArgument_Text_7:
 	.string "{FONT_SMALL_NARROW}Huff… wheeze…$"
 
-SakuTown_EventScript_TamaArgument_Text_9:
+SakuTown_EventScript_TamaArgument_Text_8:
 	.string "Dangnabit!$"
 
-SakuTown_EventScript_TamaArgument_Text_10:
+SakuTown_EventScript_TamaArgument_Text_9:
 	.string "Kiyosumi$"
 
-SakuTown_EventScript_TamaArgument_Text_11:
+SakuTown_EventScript_TamaArgument_Text_10:
 	.string "That'll teach you!!$"
 
-SakuTown_EventScript_TamaArgument_Text_12:
+SakuTown_EventScript_TamaArgument_Text_11:
 	.string "{FONT_SMALL_NARROW}Huff… puff… Definitely not in as good\n"
 	.string "a shape anymore…$"
 
-SakuTown_EventScript_TamaArgument_Text_13:
+SakuTown_EventScript_TamaArgument_Text_12:
 	.string "Father, I know you don't approve of\n"
 	.string "us, but please understand.\p"
 	.string "My mind is made up and you can't\n"
@@ -1266,17 +1263,17 @@ SakuTown_EventScript_TamaArgument_Text_13:
 	.string "What would you have done if someone\n"
 	.string "had come between you and Mother?$"
 
-SakuTown_EventScript_TamaArgument_Text_14:
+SakuTown_EventScript_TamaArgument_Text_13:
 	.string "… … … … … …\n"
 	.string "… … … … … …$"
 
-SakuTown_EventScript_TamaArgument_Text_15:
+SakuTown_EventScript_TamaArgument_Text_14:
 	.string "If your love is as true as you say,\n"
 	.string "then neither I nor anyone else can\l"
 	.string "stop you.\p"
 	.string "Do what you must.$"
 
-SakuTown_EventScript_TamaArgument_Text_16:
+SakuTown_EventScript_TamaArgument_Text_15:
 	.string "I can't thank you enough.\n"
 	.string "Now, let's make haste!\l"
 	.string "Ashii must be waiting for us!\p"

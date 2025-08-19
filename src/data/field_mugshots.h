@@ -32,6 +32,30 @@ static const u32 sFieldMugshotGfx_OkadaSexy[] = INCBIN_U32("graphics/field_mugsh
 
 static const u32 sFieldMugshotGfx_MasquerainGirlNormal[] = INCBIN_U32("graphics/field_mugshots/masquerain_girl/normal.4bpp.smol");
 
+static const u32 sFieldMugshotGfx_YoungsterNormal[] = INCBIN_U32("graphics/field_mugshots/youngster/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_SchoolKidFNormal[] = INCBIN_U32("graphics/field_mugshots/school_kid_f/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_SchoolKidMNormal[] = INCBIN_U32("graphics/field_mugshots/school_kid_m/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_BugCatcherMNormal[] = INCBIN_U32("graphics/field_mugshots/bug_catcher/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_AromaLadyNormal[] = INCBIN_U32("graphics/field_mugshots/aroma_lady/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_MonkNormal[] = INCBIN_U32("graphics/field_mugshots/monk/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_LassNormal[] = INCBIN_U32("graphics/field_mugshots/lass/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_NinjaBoyNormal[] = INCBIN_U32("graphics/field_mugshots/ninja_boy/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_HexManiacNormal[] = INCBIN_U32("graphics/field_mugshots/hex_maniac/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_ArtistNormal[] = INCBIN_U32("graphics/field_mugshots/artist/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_BattleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/battle_girl/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_HotSpringFNormal[] = INCBIN_U32("graphics/field_mugshots/hot_spring_f/normal.4bpp.smol");
+
 struct MugshotGfx
 {
     const u32 *gfx;
@@ -147,6 +171,102 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_OkadaSexy,
             .pal = gObjectEventPal_Npc_Cold,
+        },
+    },
+    [MUGSHOT_YOUNGSTER] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_YoungsterNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+    [MUGSHOT_SCHOOL_KID_F] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SchoolKidFNormal,
+            .pal = gObjectEventPal_Npc_Greenish,
+        },
+    },
+    [MUGSHOT_SCHOOL_KID_M] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SchoolKidMNormal,
+            .pal = gObjectEventPal_Npc_Greenish,
+        },
+    },
+    [MUGSHOT_BUG_CATCHER] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_BugCatcherMNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+    [MUGSHOT_AROMA_LADY] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_AromaLadyNormal,
+            .pal = gObjectEventPal_Npc_Greenish,
+        },
+    },
+    [MUGSHOT_MONK] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_MonkNormal,
+            .pal = gObjectEventPal_Npc_Woody,
+        },
+    },
+    [MUGSHOT_LASS] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_LassNormal,
+            .pal = gObjectEventPal_Npc_Greenish,
+        },
+    },
+    [MUGSHOT_NINJA_BOY] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_NinjaBoyNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+    [MUGSHOT_HEX_MANIAC] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_HexManiacNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+    [MUGSHOT_ARTIST] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ArtistNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+    [MUGSHOT_BATTLE_GIRL] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_BattleGirlNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+    [MUGSHOT_HOT_SPRING_F] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_HotSpringFNormal,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
 };

@@ -25,21 +25,21 @@ script OrchardPath_EventScript_GuardHouseSign {
 script OrchardPath_EventScript_Junko {
 	trainerbattle_single(
 		TRAINER_JUNKO,
-		format("I'm gathering ripe Berries to feed my Pokémon!"),
+		format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}I'm gathering ripe Berries to feed my Pokémon!"),
 		format("He ought to eat more Berries…")
 	)
 	speakername("Junko")
-	msgbox(format("My Pokémon is insatiable!\nI need to scour my local Library for more Berry recipes!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}My Pokémon is insatiable!\nI need to scour my local Library for more Berry recipes!"), MSGBOX_AUTOCLOSE)
 }
 
 script OrchardPath_EventScript_Mami {
 	trainerbattle_single(
 		TRAINER_MAMI,
-		format("Hehehehe… This place is haunted at night! Are you scared?"),
+		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}Hehehehe… This place is haunted at night! Are you scared?"),
 		format("H-how could my ghosts lose to a mere mortal?")
 	)
 	speakername("Mami")
-	msgbox(format("I wanted to catch some more ghosts at the Graveyard, but…\lIt's a little TOO scary…"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I wanted to catch some more ghosts at the Graveyard, but…\lIt's a little TOO scary…"), MSGBOX_AUTOCLOSE)
 }
 
 script OrchardPath_EventScript_Samurai {

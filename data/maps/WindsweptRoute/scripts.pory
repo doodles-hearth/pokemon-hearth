@@ -120,9 +120,9 @@ script WindsweptRoute_EventScript_TrainerBattleRoadblock {
 	applymovement(LOCALID_ROADBLOCK_NINJA_BOY, moves(walk_in_place_fast_left))
 	waitmovement(0)
 
-	speakername("Ninja boy")
+	speakername("Ninja Boy")
 	msgbox(format(
-		"You shall know defeat at the hand of my ninja Pokémon!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}You shall know defeat at the hand of my ninja Pokémon!\p"
 		"Nuzleaf, use Feint Attack!"
 	))
 	closemessage
@@ -137,9 +137,9 @@ script WindsweptRoute_EventScript_TrainerBattleRoadblock {
 	applymovement(LOCALID_ROADBLOCK_SCHOOLKID, moves(walk_in_place_fast_right))
 	waitmovement(0)
 
-	speakername("School kid")
+	speakername("School Kid")
 	msgbox(format(
-		"Your pathetic ninja costume can't beat the sheer power of knowledge!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Your pathetic ninja costume can't beat the sheer power of knowledge!\p"
 		"Breloom! Headbutt!"
 	))
 	closemessage

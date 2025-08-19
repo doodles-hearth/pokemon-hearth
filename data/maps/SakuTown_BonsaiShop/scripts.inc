@@ -352,10 +352,10 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_2:
 	.string "They're quite the handful!$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_3:
-	.string "Hello, welcome to our bonsai shop…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hello, welcome to our bonsai shop…$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_4:
-	.string "Oh, but I know you! We met on Tranquil\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, but I know you! We met on Tranquil\n"
 	.string "route, remember?\p"
 	.string "Have you used the watering can I gave\n"
 	.string "you yet?\p"
@@ -365,7 +365,7 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_4:
 	.string "manage the shop whenever she's away.$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_5:
-	.string "Hello, welcome to our bonsai shop! I'm\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hello, welcome to our bonsai shop! I'm\n"
 	.string "the owner's assistant.\p"
 	.string "We sell bonsai and other potted\n"
 	.string "flowers! Are you interested in\l"
@@ -384,13 +384,13 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_5:
 	.string "Here, try planting a few!$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_6:
-	.string "Oh, right, I was almost forgetting!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I was almost forgetting!\p"
 	.string "You must remember to water them\n"
 	.string "regularly, or they won't grow!\p"
 	.string "I like you. Take this!$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_7:
-	.string "Isn't it cute? It's friend-shaped!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Isn't it cute? It's friend-shaped!\p"
 	.string "Don't worry about it, I have a spare\n"
 	.string "one.\p"
 	.string "Have fun gardening!$"

@@ -190,11 +190,11 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0:
 	.string "Sculptor$"
 
 Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_1:
-	.string "Please show me {STR_VAR_1}. My\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Please show me {STR_VAR_1}. My\n"
 	.string "soul aches for it!$"
 
 Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_2:
-	.string "Oh… … … …\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Oh… … … …\n"
 	.string "… … …Oh!!\p"
 	.string "This is is… I can feel the raw\n"
 	.string "inspiration coursing through my\l"
@@ -203,7 +203,7 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_2:
 	.string "Stand still just a moment…$"
 
 Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_3:
-	.string "There it is! My best work yet!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}There it is! My best work yet!\p"
 	.string "… … …And yet…\p"
 	.string "It still feels like something is\n"
 	.string "missing.\p"
@@ -218,14 +218,14 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_3:
 	.string "assistance. Take this rock technique!$"
 
 Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_4:
-	.string "Why must you toy with me so?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Why must you toy with me so?$"
 
 Silveridge_House1_EventScript_Sculptor_FirstTime_Text_0:
-	.string "Please do not talk to me. I am\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Please do not talk to me. I am\n"
 	.string "creating.$"
 
 Silveridge_House1_EventScript_Sculptor_FirstTime_Text_1:
-	.string "…Oh? Could it be? Another noble soul\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}…Oh? Could it be? Another noble soul\n"
 	.string "moved by the ancestral art of\l"
 	.string "sculpture?\p"
 	.string "Am I no longer utterly alone? Oh, my\n"

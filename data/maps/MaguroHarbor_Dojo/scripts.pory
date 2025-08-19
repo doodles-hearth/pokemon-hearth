@@ -120,16 +120,16 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 script MaguroHarbor_Dojo_EventScript_Izumi {
 	trainerbattle_single(
 		TRAINER_IZUMI,
-		format("My Pokémon are the daintiest there is!"),
+		format("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}My Pokémon are the daintiest there is!"),
 		format("My poor Feebas!")
 	)
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		msgbox(format(
-			"Oh my, what was that quake?"
+			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Oh my, what was that quake?"
 		), MSGBOX_AUTOCLOSE)
 	} else {
 		msgbox(format(
-			"You'll go far. I can tell."
+			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}You'll go far. I can tell."
 		), MSGBOX_AUTOCLOSE)
 	}
 }
@@ -154,18 +154,18 @@ script MaguroHarbor_Dojo_EventScript_Ren {
 script MaguroHarbor_Dojo_EventScript_Mizu {
 	trainerbattle_single(
 		TRAINER_MIZU,
-		format("Do not disturb the koi pond!"),
+		format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}Do not disturb the koi pond!"),
 		format("Stop making so much noise!")
 	)
 
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		msgbox(format(
-			"The poor fish must be all shaken!"
+			"{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}The poor fish must be all shaken!"
 		), MSGBOX_AUTOCLOSE)
 	} else {
 		msgbox(format(
 			// TODO EVA put some actual fish in the pond ffs
-			"These are sophisticated fish. They need peace and quiet to thrive."
+			"{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}These are sophisticated fish. They need peace and quiet to thrive."
 		), MSGBOX_AUTOCLOSE)
 	}
 }

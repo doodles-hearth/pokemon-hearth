@@ -638,7 +638,7 @@ TranquilRoute_EventScript_CutMaster_Text_0:
 	.string "something beautiful.$"
 
 TranquilRoute_EventScript_Chikao_Text_0:
-	.string "I've been studying Pokémon at school!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}I've been studying Pokémon at school!\n"
 	.string "I can't lose!$"
 
 TranquilRoute_EventScript_Chikao_Text_1:
@@ -648,13 +648,13 @@ TranquilRoute_EventScript_Chikao_Text_2:
 	.string "Chikao$"
 
 TranquilRoute_EventScript_Chikao_Text_3:
-	.string "Some Pokémon have more attack, and\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Some Pokémon have more attack, and\n"
 	.string "some have more special attack!\p"
 	.string "What's the difference? Uhh… It's too\n"
 	.string "complicated to explain.$"
 
 TranquilRoute_EventScript_Kodomo_Text_0:
-	.string "Ha! Are you trying to avoid the tall\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Ha! Are you trying to avoid the tall\n"
 	.string "grass?$"
 
 TranquilRoute_EventScript_Kodomo_Text_1:
@@ -664,12 +664,12 @@ TranquilRoute_EventScript_Kodomo_Text_2:
 	.string "Kodomo$"
 
 TranquilRoute_EventScript_Kodomo_Text_3:
-	.string "I should look for stronger Pokémon in\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}I should look for stronger Pokémon in\n"
 	.string "the tall grass, but I'm a little scared\l"
 	.string "of getting jumped by surprise!$"
 
 TranquilRoute_EventScript_Takeshi_Text_0:
-	.string "Stay right there! I'll defeat you with\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}Stay right there! I'll defeat you with\n"
 	.string "my ninja skills!$"
 
 TranquilRoute_EventScript_Takeshi_Text_1:
@@ -679,10 +679,10 @@ TranquilRoute_EventScript_Takeshi_Text_2:
 	.string "Takeshi$"
 
 TranquilRoute_EventScript_Takeshi_Text_3:
-	.string "I must hone my ninja skills!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}I must hone my ninja skills!$"
 
 TranquilRoute_EventScript_Hana_Text_0:
-	.string "Ugh, how can Kenji paint a portrait of\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Ugh, how can Kenji paint a portrait of\n"
 	.string "me if people keep walking between us?$"
 
 TranquilRoute_EventScript_Hana_Text_1:
@@ -692,11 +692,11 @@ TranquilRoute_EventScript_Hana_Text_2:
 	.string "Hiina$"
 
 TranquilRoute_EventScript_Hana_Text_3:
-	.string "Kenji really is an amazing artist. I\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Kenji really is an amazing artist. I\n"
 	.string "feel very lucky.$"
 
 TranquilRoute_EventScript_Kenji_Text_0:
-	.string "You're interrupting my creative flow!!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}You're interrupting my creative flow!!$"
 
 TranquilRoute_EventScript_Kenji_Text_1:
 	.string "Such beauty! What an artistic fight\n"
@@ -706,7 +706,7 @@ TranquilRoute_EventScript_Kenji_Text_2:
 	.string "Kenji$"
 
 TranquilRoute_EventScript_Kenji_Text_3:
-	.string "Hiina is the best subject I could\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Hiina is the best subject I could\n"
 	.string "dream of.\p"
 	.string "…Hey, uh, please don't tell her I said\n"
 	.string "that.$"
@@ -732,13 +732,13 @@ TranquilRoute_EventScript_BerryWoman_Text_0:
 	.string "Woman$"
 
 TranquilRoute_EventScript_BerryWoman_Text_1:
-	.string "Enjoy gardening!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Enjoy gardening!$"
 
 TranquilRoute_EventScript_BerryWoman_Text_2:
-	.string "Hi, young one! See this?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hi, young one! See this?$"
 
 TranquilRoute_EventScript_BerryWoman_Text_3:
-	.string "You can plant berries in the ground in\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}You can plant berries in the ground in\n"
 	.string "fertile spots like this.\p"
 	.string "The seeds will eventually grow into a\n"
 	.string "healthy berry tree, ready to be\l"
@@ -751,13 +751,13 @@ TranquilRoute_EventScript_BerryWoman_Text_3:
 	.string "Here, try planting a few!$"
 
 TranquilRoute_EventScript_BerryWoman_Text_4:
-	.string "Oh, right, I was almost forgetting!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I was almost forgetting!\p"
 	.string "You must remember to water them\n"
 	.string "regularly, or they won't grow!\p"
 	.string "I like you. Take this!$"
 
 TranquilRoute_EventScript_BerryWoman_Text_5:
-	.string "Isn't it cute? It's friend-shaped!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Isn't it cute? It's friend-shaped!\p"
 	.string "Don't worry about it, I have a spare\n"
 	.string "one.\p"
 	.string "Have fun gardening!$"

@@ -180,7 +180,7 @@ KuraTown_Dojo_EventScript_Matsu_Text_3:
 	.string "Not all paths lead to the master.$"
 
 KuraTown_Dojo_EventScript_Kiku_Text_0:
-	.string "Is the maze giving you trouble?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Is the maze giving you trouble?$"
 
 KuraTown_Dojo_EventScript_Kiku_Text_1:
 	.string "At least I didn't give you any\n"
@@ -190,7 +190,7 @@ KuraTown_Dojo_EventScript_Kiku_Text_2:
 	.string "Kiku$"
 
 KuraTown_Dojo_EventScript_Kiku_Text_3:
-	.string "You're wondering why you can't just\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}You're wondering why you can't just\n"
 	.string "cut down all the trees?\p"
 	.string "Uhhh… It's a secret!$"
 
@@ -206,7 +206,7 @@ KuraTown_Dojo_EventScript_Laura_Text_2:
 	.string "favorite tree anyway.$"
 
 KuraTown_Dojo_EventScript_Brenden_Text_0:
-	.string "Take a deep breath! The air is so rich\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}Take a deep breath! The air is so rich\n"
 	.string "and flowery here!$"
 
 KuraTown_Dojo_EventScript_Brenden_Text_1:

@@ -132,7 +132,7 @@ GinkoWoods_EventScript_TrainerTips2::
 
 
 GinkoWoods_EventScript_Toshiki_Text_0:
-	.string "These bugs are electrifying!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}These bugs are electrifying!$"
 
 GinkoWoods_EventScript_Toshiki_Text_1:
 	.string "Ouch! How did you do that?$"
@@ -141,11 +141,11 @@ GinkoWoods_EventScript_Toshiki_Text_2:
 	.string "Toshiki$"
 
 GinkoWoods_EventScript_Toshiki_Text_3:
-	.string "Isn't Sewaddle cute, all wrapped up in\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}Isn't Sewaddle cute, all wrapped up in\n"
 	.string "its leaf?$"
 
 GinkoWoods_EventScript_Toshio_Text_0:
-	.string "Our eyes met! Therefore we must\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Our eyes met! Therefore we must\n"
 	.string "battle!$"
 
 GinkoWoods_EventScript_Toshio_Text_1:
@@ -155,12 +155,12 @@ GinkoWoods_EventScript_Toshio_Text_2:
 	.string "Toshio$"
 
 GinkoWoods_EventScript_Toshio_Text_3:
-	.string "Real Wielders fight when they spot\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Real Wielders fight when they spot\n"
 	.string "each other!\p"
 	.string "At least that's what my dad told me…$"
 
 GinkoWoods_EventScript_Eiji_Text_0:
-	.string "With the help of my brand new\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}With the help of my brand new\n"
 	.string "Pokémon, I'm catching all sort of\l"
 	.string "bugs!$"
 
@@ -171,11 +171,11 @@ GinkoWoods_EventScript_Eiji_Text_2:
 	.string "Eiji$"
 
 GinkoWoods_EventScript_Eiji_Text_3:
-	.string "I asked Elder Kaba for a bird Pokémon,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I asked Elder Kaba for a bird Pokémon,\n"
 	.string "because they're strong against bugs!$"
 
 GinkoWoods_EventScript_OldMan_Text_0:
-	.string "Old man$"
+	.string "Old Man$"
 
 GinkoWoods_EventScript_OldMan_Text_1:
 	.string "These woods are fascinating.\p"
@@ -183,7 +183,7 @@ GinkoWoods_EventScript_OldMan_Text_1:
 	.string "Pokémon here.$"
 
 GinkoWoods_EventScript_Bean_Text_0:
-	.string "Odd girl$"
+	.string "Odd Girl$"
 
 GinkoWoods_EventScript_Bean_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello!$"

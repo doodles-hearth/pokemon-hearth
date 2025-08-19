@@ -1,0 +1,465 @@
+python3 tools/learnset_helpers/make_teachables.py tools/learnset_helpers/build/all_learnables.json
+tools/scaninc/scaninc -M build/modern/src/pokemon.d -I include -I tools/agbcc/include src/pokemon.c
+tools/compresSmol/compresSmol -w graphics/battle_transitions/frontier_square_1.4bpp graphics/battle_transitions/frontier_square_1.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/battle_transitions/frontier_square_2.4bpp graphics/battle_transitions/frontier_square_2.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/battle_transitions/frontier_square_3.4bpp graphics/battle_transitions/frontier_square_3.4bpp.smol
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/battle_script_commands.o src/battle_script_commands.c
+tools/compresSmol/compresSmol -w graphics/battle_transitions/frontier_square_4.4bpp graphics/battle_transitions/frontier_square_4.4bpp.smol
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/battle_transition_frontier.o src/battle_transition_frontier.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/berry_crush.o src/berry_crush.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/contest_painting.o src/contest_painting.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/credits.o src/credits.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/dexnav.o src/dexnav.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/data.o src/data.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/diploma.o src/diploma.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/dodrio_berry_picking.o src/dodrio_berry_picking.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/easy_chat.o src/easy_chat.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/evolution_graphics.o src/evolution_graphics.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/evolution_scene.o src/evolution_scene.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/expansion_intro.o src/expansion_intro.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/field_mugshot.o src/field_mugshot.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/field_region_map.o src/field_region_map.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/fldeff_flash.o src/fldeff_flash.c
+tools/compresSmol/compresSmol -w graphics/battle_anims/sprites/flower.4bpp graphics/battle_anims/sprites/flower.4bpp.smol
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/frontier_pass.o src/frontier_pass.c
+tools/compresSmol/compresSmol -w graphics/battle_anims/sprites/ice_crystals.4bpp graphics/battle_anims/sprites/ice_crystals.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/battle_anims/sprites/ice_cube.4bpp graphics/battle_anims/sprites/ice_cube.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/battle_anims/sprites/mud_sand.4bpp graphics/battle_anims/sprites/mud_sand.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/battle_anims/sprites/spark.4bpp graphics/battle_anims/sprites/spark.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/battle_interface/battle_bar.4bpp graphics/battle_interface/battle_bar.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/contest/japanese/composite_1.4bpp graphics/contest/japanese/composite_1.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/contest/japanese/composite_2.4bpp graphics/contest/japanese/composite_2.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/horizontal/tiles.4bpp graphics/pokemon_storage/wallpapers/horizontal/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/ribbon/tiles.4bpp graphics/pokemon_storage/wallpapers/ribbon/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokenav/options/options.4bpp graphics/pokenav/options/options.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/types/move_types.4bpp graphics/types/move_types.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/unused/obi1.4bpp graphics/unused/obi1.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/unused/obi2.4bpp graphics/unused/obi2.4bpp.smol
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/hall_of_fame.o src/hall_of_fame.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/intro.o src/intro.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/intro_credits_graphics.o src/intro_credits_graphics.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/link.o src/link.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/link_rfu_3.o src/link_rfu_3.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/list_menu.o src/list_menu.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/main_menu.o src/main_menu.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/match_call.o src/match_call.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/minigame_countdown.o src/minigame_countdown.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/mystery_gift_menu.o src/mystery_gift_menu.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/new_shop.o src/new_shop.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/mystery_gift_view.o src/mystery_gift_view.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokeball.o src/pokeball.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokedex_area_region_map.o src/pokedex_area_region_map.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokedex_area_screen.o src/pokedex_area_screen.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokedex_cry_screen.o src/pokedex_cry_screen.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokedex_plus_hgss.o src/pokedex_plus_hgss.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokemon.o src/pokemon.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokemon_jump.o src/pokemon_jump.c
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/azumarill/tiles.4bpp graphics/pokemon_storage/wallpapers/azumarill/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/beach/tiles.4bpp graphics/pokemon_storage/wallpapers/beach/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/blank/tiles.4bpp graphics/pokemon_storage/wallpapers/blank/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/block/tiles.4bpp graphics/pokemon_storage/wallpapers/block/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/cave/tiles.4bpp graphics/pokemon_storage/wallpapers/cave/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/circles/tiles.4bpp graphics/pokemon_storage/wallpapers/circles/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/city/tiles.4bpp graphics/pokemon_storage/wallpapers/city/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/crag/tiles.4bpp graphics/pokemon_storage/wallpapers/crag/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/desert/tiles.4bpp graphics/pokemon_storage/wallpapers/desert/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/diagonal/tiles.4bpp graphics/pokemon_storage/wallpapers/diagonal/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/dusclops/tiles.4bpp graphics/pokemon_storage/wallpapers/dusclops/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/forest/tiles.4bpp graphics/pokemon_storage/wallpapers/forest/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/frame/tiles.4bpp graphics/pokemon_storage/wallpapers/frame/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/legendary/tiles.4bpp graphics/pokemon_storage/wallpapers/legendary/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/ludicolo/tiles.4bpp graphics/pokemon_storage/wallpapers/ludicolo/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/machine/tiles.4bpp graphics/pokemon_storage/wallpapers/machine/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/pikachu/tiles.4bpp graphics/pokemon_storage/wallpapers/pikachu/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/plain/tiles.4bpp graphics/pokemon_storage/wallpapers/plain/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/pokecenter/tiles.4bpp graphics/pokemon_storage/wallpapers/pokecenter/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/pokecenter2/tiles.4bpp graphics/pokemon_storage/wallpapers/pokecenter2/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/polkadot/tiles.4bpp graphics/pokemon_storage/wallpapers/polkadot/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/river/tiles.4bpp graphics/pokemon_storage/wallpapers/river/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/savanna/tiles.4bpp graphics/pokemon_storage/wallpapers/savanna/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/screen/tiles.4bpp graphics/pokemon_storage/wallpapers/screen/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/seafloor/tiles.4bpp graphics/pokemon_storage/wallpapers/seafloor/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/sky/tiles.4bpp graphics/pokemon_storage/wallpapers/sky/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/snow/tiles.4bpp graphics/pokemon_storage/wallpapers/snow/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/volcano/tiles.4bpp graphics/pokemon_storage/wallpapers/volcano/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/whiscash/tiles.4bpp graphics/pokemon_storage/wallpapers/whiscash/tiles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon_storage/wallpapers/zigzagoon/tiles.4bpp graphics/pokemon_storage/wallpapers/zigzagoon/tiles.4bpp.smol
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokenav_conditions_gfx.o src/pokenav_conditions_gfx.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokenav_conditions_search_results.o src/pokenav_conditions_search_results.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokenav_list.o src/pokenav_list.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokenav_main_menu.o src/pokenav_main_menu.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokenav_match_call_gfx.o src/pokenav_match_call_gfx.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokenav_menu_handler_gfx.o src/pokenav_menu_handler_gfx.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokenav_region_map.o src/pokenav_region_map.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokenav_ribbons_list.o src/pokenav_ribbons_list.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/pokenav_ribbons_summary.o src/pokenav_ribbons_summary.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/quests.o src/quests.c
+tools/compresSmol/compresSmol -w graphics/roulette/roulette_tilt.4bpp graphics/roulette/roulette_tilt.4bpp.smol
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/region_map.o src/region_map.c
+tools/compresSmol/compresSmol -w graphics/roulette/wheel_icons.4bpp graphics/roulette/wheel_icons.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/slot_machine/reel_time_gfx.4bpp graphics/slot_machine/reel_time_gfx.4bpp.smol
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/save_failed_screen.o src/save_failed_screen.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/starter_choose.o src/starter_choose.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/tilesets.o src/tilesets.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/title_screen.o src/title_screen.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/trade.o src/trade.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/trainer_card.o src/trainer_card.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/union_room_chat.o src/union_room_chat.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/wallclock.o src/wallclock.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/modern/src/wireless_communication_status_screen.o src/wireless_communication_status_screen.c
+tools/preproc/preproc data/event_scripts.s charmap.txt | arm-none-eabi-cpp -I include - | tools/preproc/preproc -ie data/event_scripts.s charmap.txt | arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -o build/modern/data/event_scripts.o
+tools/preproc/preproc data/map_events.s charmap.txt | arm-none-eabi-cpp -I include - | tools/preproc/preproc -ie data/map_events.s charmap.txt | arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -o build/modern/data/map_events.o
+tools/preproc/preproc data/maps.s charmap.txt | arm-none-eabi-cpp -I include - | tools/preproc/preproc -ie data/maps.s charmap.txt | arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -o build/modern/data/maps.o
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zangoose.aif sound/direct_sound_samples/cries/zangoose.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zapdos.aif sound/direct_sound_samples/cries/zapdos.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zarude.aif sound/direct_sound_samples/cries/zarude.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zebstrika.aif sound/direct_sound_samples/cries/zebstrika.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zekrom.aif sound/direct_sound_samples/cries/zekrom.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zeraora.aif sound/direct_sound_samples/cries/zeraora.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zigzagoon.aif sound/direct_sound_samples/cries/zigzagoon.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zoroark.aif sound/direct_sound_samples/cries/zoroark.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zorua.aif sound/direct_sound_samples/cries/zorua.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zubat.aif sound/direct_sound_samples/cries/zubat.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zweilous.aif sound/direct_sound_samples/cries/zweilous.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zygarde_10.aif sound/direct_sound_samples/cries/zygarde_10.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zygarde_50.aif sound/direct_sound_samples/cries/zygarde_50.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/cries/zygarde_complete.aif sound/direct_sound_samples/cries/zygarde_complete.bin --compress
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/dance_drums_ride_bell.aif sound/direct_sound_samples/dance_drums_ride_bell.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/drum_and_percussion_kick.aif sound/direct_sound_samples/drum_and_percussion_kick.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/drum_and_percussion_stick.aif sound/direct_sound_samples/drum_and_percussion_stick.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/ethnic_flavours_atarigane.aif sound/direct_sound_samples/ethnic_flavours_atarigane.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/ethnic_flavours_hyoushigi.aif sound/direct_sound_samples/ethnic_flavours_hyoushigi.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/ethnic_flavours_kotsuzumi.aif sound/direct_sound_samples/ethnic_flavours_kotsuzumi.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/ethnic_flavours_ohtsuzumi.aif sound/direct_sound_samples/ethnic_flavours_ohtsuzumi.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/heart_of_asia_gamelan.aif sound/direct_sound_samples/heart_of_asia_gamelan.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/01.aif sound/direct_sound_samples/phonemes/01.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/02.aif sound/direct_sound_samples/phonemes/02.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/03.aif sound/direct_sound_samples/phonemes/03.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/04.aif sound/direct_sound_samples/phonemes/04.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/05.aif sound/direct_sound_samples/phonemes/05.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/06.aif sound/direct_sound_samples/phonemes/06.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/07.aif sound/direct_sound_samples/phonemes/07.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/08.aif sound/direct_sound_samples/phonemes/08.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/09.aif sound/direct_sound_samples/phonemes/09.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/10.aif sound/direct_sound_samples/phonemes/10.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/11.aif sound/direct_sound_samples/phonemes/11.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/12.aif sound/direct_sound_samples/phonemes/12.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/13.aif sound/direct_sound_samples/phonemes/13.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/14.aif sound/direct_sound_samples/phonemes/14.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/15.aif sound/direct_sound_samples/phonemes/15.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/16.aif sound/direct_sound_samples/phonemes/16.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/17.aif sound/direct_sound_samples/phonemes/17.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/18.aif sound/direct_sound_samples/phonemes/18.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/19.aif sound/direct_sound_samples/phonemes/19.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/20.aif sound/direct_sound_samples/phonemes/20.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/21.aif sound/direct_sound_samples/phonemes/21.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/22.aif sound/direct_sound_samples/phonemes/22.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/23.aif sound/direct_sound_samples/phonemes/23.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/24.aif sound/direct_sound_samples/phonemes/24.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/25.aif sound/direct_sound_samples/phonemes/25.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/26.aif sound/direct_sound_samples/phonemes/26.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/27.aif sound/direct_sound_samples/phonemes/27.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/28.aif sound/direct_sound_samples/phonemes/28.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/29.aif sound/direct_sound_samples/phonemes/29.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/30.aif sound/direct_sound_samples/phonemes/30.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/31.aif sound/direct_sound_samples/phonemes/31.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/32.aif sound/direct_sound_samples/phonemes/32.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/33.aif sound/direct_sound_samples/phonemes/33.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/34.aif sound/direct_sound_samples/phonemes/34.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/35.aif sound/direct_sound_samples/phonemes/35.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/36.aif sound/direct_sound_samples/phonemes/36.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/37.aif sound/direct_sound_samples/phonemes/37.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/38.aif sound/direct_sound_samples/phonemes/38.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/39.aif sound/direct_sound_samples/phonemes/39.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/40.aif sound/direct_sound_samples/phonemes/40.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/41.aif sound/direct_sound_samples/phonemes/41.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/42.aif sound/direct_sound_samples/phonemes/42.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/43.aif sound/direct_sound_samples/phonemes/43.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/44.aif sound/direct_sound_samples/phonemes/44.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/45.aif sound/direct_sound_samples/phonemes/45.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/46.aif sound/direct_sound_samples/phonemes/46.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/47.aif sound/direct_sound_samples/phonemes/47.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/48.aif sound/direct_sound_samples/phonemes/48.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/49.aif sound/direct_sound_samples/phonemes/49.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/50.aif sound/direct_sound_samples/phonemes/50.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/51.aif sound/direct_sound_samples/phonemes/51.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/phonemes/shared.aif sound/direct_sound_samples/phonemes/shared.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/prosamples_15_dance_drums_kick.aif sound/direct_sound_samples/prosamples_15_dance_drums_kick.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/register_noise.aif sound/direct_sound_samples/register_noise.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_accordion.aif sound/direct_sound_samples/sc88pro_accordion.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_accordion_duplicate.aif sound/direct_sound_samples/sc88pro_accordion_duplicate.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_bubbles.aif sound/direct_sound_samples/sc88pro_bubbles.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_church_organ3_high.aif sound/direct_sound_samples/sc88pro_church_organ3_high.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_church_organ3_low.aif sound/direct_sound_samples/sc88pro_church_organ3_low.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_fingered_bass.aif sound/direct_sound_samples/sc88pro_fingered_bass.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_flute.aif sound/direct_sound_samples/sc88pro_flute.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_french_horn_60.aif sound/direct_sound_samples/sc88pro_french_horn_60.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_french_horn_72.aif sound/direct_sound_samples/sc88pro_french_horn_72.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_fretless_bass.aif sound/direct_sound_samples/sc88pro_fretless_bass.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_glockenspiel.aif sound/direct_sound_samples/sc88pro_glockenspiel.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_harp.aif sound/direct_sound_samples/sc88pro_harp.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_jingle_bell.aif sound/direct_sound_samples/sc88pro_jingle_bell.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_mute_high_conga.aif sound/direct_sound_samples/sc88pro_mute_high_conga.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_nylon_str_guitar.aif sound/direct_sound_samples/sc88pro_nylon_str_guitar.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_open_low_conga.aif sound/direct_sound_samples/sc88pro_open_low_conga.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_orchestra_cymbal_crash.aif sound/direct_sound_samples/sc88pro_orchestra_cymbal_crash.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_orchestra_snare.aif sound/direct_sound_samples/sc88pro_orchestra_snare.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_organ2.aif sound/direct_sound_samples/sc88pro_organ2.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_piano1_48.aif sound/direct_sound_samples/sc88pro_piano1_48.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_piano1_60.aif sound/direct_sound_samples/sc88pro_piano1_60.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_piano1_72.aif sound/direct_sound_samples/sc88pro_piano1_72.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_piano1_84.aif sound/direct_sound_samples/sc88pro_piano1_84.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_pizzicato_strings.aif sound/direct_sound_samples/sc88pro_pizzicato_strings.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_rnd_kick.aif sound/direct_sound_samples/sc88pro_rnd_kick.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_rnd_snare.aif sound/direct_sound_samples/sc88pro_rnd_snare.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_shamisen.aif sound/direct_sound_samples/sc88pro_shamisen.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_slap_bass.aif sound/direct_sound_samples/sc88pro_slap_bass.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_square_wave.aif sound/direct_sound_samples/sc88pro_square_wave.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_string_ensemble_60.aif sound/direct_sound_samples/sc88pro_string_ensemble_60.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_string_ensemble_72.aif sound/direct_sound_samples/sc88pro_string_ensemble_72.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_string_ensemble_84.aif sound/direct_sound_samples/sc88pro_string_ensemble_84.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_synth_bass.aif sound/direct_sound_samples/sc88pro_synth_bass.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_taiko.aif sound/direct_sound_samples/sc88pro_taiko.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_tambourine.aif sound/direct_sound_samples/sc88pro_tambourine.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_timpani.aif sound/direct_sound_samples/sc88pro_timpani.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_timpani_with_snare.aif sound/direct_sound_samples/sc88pro_timpani_with_snare.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_tr909_hand_clap.aif sound/direct_sound_samples/sc88pro_tr909_hand_clap.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_trumpet_60.aif sound/direct_sound_samples/sc88pro_trumpet_60.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_trumpet_72.aif sound/direct_sound_samples/sc88pro_trumpet_72.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_trumpet_84.aif sound/direct_sound_samples/sc88pro_trumpet_84.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_tuba_39.aif sound/direct_sound_samples/sc88pro_tuba_39.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_tuba_51.aif sound/direct_sound_samples/sc88pro_tuba_51.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_tubular_bell.aif sound/direct_sound_samples/sc88pro_tubular_bell.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_wind.aif sound/direct_sound_samples/sc88pro_wind.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sc88pro_xylophone.aif sound/direct_sound_samples/sc88pro_xylophone.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_ambient_tom.aif sound/direct_sound_samples/sd90_ambient_tom.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_classical_detuned_ep1_high.aif sound/direct_sound_samples/sd90_classical_detuned_ep1_high.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_classical_detuned_ep1_low.aif sound/direct_sound_samples/sd90_classical_detuned_ep1_low.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_classical_distortion_guitar_high.aif sound/direct_sound_samples/sd90_classical_distortion_guitar_high.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_classical_distortion_guitar_low.aif sound/direct_sound_samples/sd90_classical_distortion_guitar_low.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_classical_oboe.aif sound/direct_sound_samples/sd90_classical_oboe.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_classical_overdrive_guitar.aif sound/direct_sound_samples/sd90_classical_overdrive_guitar.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_classical_shakuhachi.aif sound/direct_sound_samples/sd90_classical_shakuhachi.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_classical_whistle.aif sound/direct_sound_samples/sd90_classical_whistle.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_cowbell.aif sound/direct_sound_samples/sd90_cowbell.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_enhanced_delay_shaku.aif sound/direct_sound_samples/sd90_enhanced_delay_shaku.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_open_triangle.aif sound/direct_sound_samples/sd90_open_triangle.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_power_snare.aif sound/direct_sound_samples/sd90_power_snare.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_solo_snare.aif sound/direct_sound_samples/sd90_solo_snare.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/sd90_special_scream_drive.aif sound/direct_sound_samples/sd90_special_scream_drive.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/steinway_b_piano.aif sound/direct_sound_samples/steinway_b_piano.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/trinity_30303_mega_bass.aif sound/direct_sound_samples/trinity_30303_mega_bass.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/trinity_big_boned.aif sound/direct_sound_samples/trinity_big_boned.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/trinity_cymbal_crash.aif sound/direct_sound_samples/trinity_cymbal_crash.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_01.aif sound/direct_sound_samples/unknown_01.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_02.aif sound/direct_sound_samples/unknown_02.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_03.aif sound/direct_sound_samples/unknown_03.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_04.aif sound/direct_sound_samples/unknown_04.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_05.aif sound/direct_sound_samples/unknown_05.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_06.aif sound/direct_sound_samples/unknown_06.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_07.aif sound/direct_sound_samples/unknown_07.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_08.aif sound/direct_sound_samples/unknown_08.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_09.aif sound/direct_sound_samples/unknown_09.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_10.aif sound/direct_sound_samples/unknown_10.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_11.aif sound/direct_sound_samples/unknown_11.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_12.aif sound/direct_sound_samples/unknown_12.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_13.aif sound/direct_sound_samples/unknown_13.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_14.aif sound/direct_sound_samples/unknown_14.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_15.aif sound/direct_sound_samples/unknown_15.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_16.aif sound/direct_sound_samples/unknown_16.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_17.aif sound/direct_sound_samples/unknown_17.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_18.aif sound/direct_sound_samples/unknown_18.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_bell.aif sound/direct_sound_samples/unknown_bell.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_close_hihat.aif sound/direct_sound_samples/unknown_close_hihat.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_female_voice.aif sound/direct_sound_samples/unknown_female_voice.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_koto_high.aif sound/direct_sound_samples/unknown_koto_high.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_koto_low.aif sound/direct_sound_samples/unknown_koto_low.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_open_hihat.aif sound/direct_sound_samples/unknown_open_hihat.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_snare.aif sound/direct_sound_samples/unknown_snare.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unknown_synth_snare.aif sound/direct_sound_samples/unknown_synth_snare.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unused_guitar_separates_power_chord.aif sound/direct_sound_samples/unused_guitar_separates_power_chord.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unused_heart_of_asia_indian_drum.aif sound/direct_sound_samples/unused_heart_of_asia_indian_drum.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unused_sc55_tom.aif sound/direct_sound_samples/unused_sc55_tom.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unused_sc88pro_unison_slap.aif sound/direct_sound_samples/unused_sc88pro_unison_slap.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unused_sd90_oboe.aif sound/direct_sound_samples/unused_sd90_oboe.bin
+tools/aif2pcm/aif2pcm sound/direct_sound_samples/unused_unknown_male_voice.aif sound/direct_sound_samples/unused_unknown_male_voice.bin
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_dex_page.o sound/songs/se_dex_page.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_dex_scroll.o sound/songs/se_dex_scroll.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_absorb.o sound/songs/se_m_absorb.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_absorb_2.o sound/songs/se_m_absorb_2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_acid_armor.o sound/songs/se_m_acid_armor.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_attract.o sound/songs/se_m_attract.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_attract2.o sound/songs/se_m_attract2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_barrier.o sound/songs/se_m_barrier.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_baton_pass.o sound/songs/se_m_baton_pass.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_belly_drum.o sound/songs/se_m_belly_drum.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_bite.o sound/songs/se_m_bite.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_blizzard.o sound/songs/se_m_blizzard.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_blizzard2.o sound/songs/se_m_blizzard2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_bonemerang.o sound/songs/se_m_bonemerang.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_brick_break.o sound/songs/se_m_brick_break.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_bubble.o sound/songs/se_m_bubble.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_bubble2.o sound/songs/se_m_bubble2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_bubble3.o sound/songs/se_m_bubble3.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_bubble_beam.o sound/songs/se_m_bubble_beam.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_bubble_beam2.o sound/songs/se_m_bubble_beam2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_charge.o sound/songs/se_m_charge.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_charm.o sound/songs/se_m_charm.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_confuse_ray.o sound/songs/se_m_confuse_ray.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_cosmic_power.o sound/songs/se_m_cosmic_power.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_crabhammer.o sound/songs/se_m_crabhammer.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_detect.o sound/songs/se_m_detect.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_dig.o sound/songs/se_m_dig.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_dive.o sound/songs/se_m_dive.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_dizzy_punch.o sound/songs/se_m_dizzy_punch.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_double_team.o sound/songs/se_m_double_team.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_dragon_rage.o sound/songs/se_m_dragon_rage.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_earthquake.o sound/songs/se_m_earthquake.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_ember.o sound/songs/se_m_ember.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_encore.o sound/songs/se_m_encore.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_encore2.o sound/songs/se_m_encore2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_explosion.o sound/songs/se_m_explosion.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_faint_attack.o sound/songs/se_m_faint_attack.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_flame_wheel.o sound/songs/se_m_flame_wheel.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_flame_wheel2.o sound/songs/se_m_flame_wheel2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_flamethrower.o sound/songs/se_m_flamethrower.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_flatter.o sound/songs/se_m_flatter.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_giga_drain.o sound/songs/se_m_giga_drain.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_grasswhistle.o sound/songs/se_m_grasswhistle.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_hail.o sound/songs/se_m_hail.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_harden.o sound/songs/se_m_harden.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_haze.o sound/songs/se_m_haze.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_heal_bell.o sound/songs/se_m_heal_bell.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_heat_wave.o sound/songs/se_m_heat_wave.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_hydro_pump.o sound/songs/se_m_hydro_pump.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_hyper_beam.o sound/songs/se_m_hyper_beam.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_hyper_beam2.o sound/songs/se_m_hyper_beam2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_icy_wind.o sound/songs/se_m_icy_wind.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_lick.o sound/songs/se_m_lick.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_lock_on.o sound/songs/se_m_lock_on.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_metronome.o sound/songs/se_m_metronome.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_milk_drink.o sound/songs/se_m_milk_drink.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_minimize.o sound/songs/se_m_minimize.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_mist.o sound/songs/se_m_mist.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_moonlight.o sound/songs/se_m_moonlight.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_morning_sun.o sound/songs/se_m_morning_sun.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_nightmare.o sound/songs/se_m_nightmare.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_perish_song.o sound/songs/se_m_perish_song.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_petal_dance.o sound/songs/se_m_petal_dance.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_poison_powder.o sound/songs/se_m_poison_powder.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_psybeam.o sound/songs/se_m_psybeam.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_psybeam2.o sound/songs/se_m_psybeam2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_rain_dance.o sound/songs/se_m_rain_dance.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_reflect.o sound/songs/se_m_reflect.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_reversal.o sound/songs/se_m_reversal.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_rock_throw.o sound/songs/se_m_rock_throw.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_sacred_fire.o sound/songs/se_m_sacred_fire.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_sacred_fire2.o sound/songs/se_m_sacred_fire2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_sand_tomb.o sound/songs/se_m_sand_tomb.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_sandstorm.o sound/songs/se_m_sandstorm.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_screech.o sound/songs/se_m_screech.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_self_destruct.o sound/songs/se_m_self_destruct.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_sing.o sound/songs/se_m_sing.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_sketch.o sound/songs/se_m_sketch.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_sky_uppercut.o sound/songs/se_m_sky_uppercut.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_snore.o sound/songs/se_m_snore.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_solar_beam.o sound/songs/se_m_solar_beam.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_spit_up.o sound/songs/se_m_spit_up.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_stat_decrease.o sound/songs/se_m_stat_decrease.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_stat_increase.o sound/songs/se_m_stat_increase.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_strength.o sound/songs/se_m_strength.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_string_shot.o sound/songs/se_m_string_shot.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_string_shot2.o sound/songs/se_m_string_shot2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_supersonic.o sound/songs/se_m_supersonic.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_surf.o sound/songs/se_m_surf.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_swagger.o sound/songs/se_m_swagger.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_swagger2.o sound/songs/se_m_swagger2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_sweet_scent.o sound/songs/se_m_sweet_scent.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_swift.o sound/songs/se_m_swift.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_teeter_dance.o sound/songs/se_m_teeter_dance.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_teleport.o sound/songs/se_m_teleport.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_thunder_wave.o sound/songs/se_m_thunder_wave.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_thunderbolt.o sound/songs/se_m_thunderbolt.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_thunderbolt2.o sound/songs/se_m_thunderbolt2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_toxic.o sound/songs/se_m_toxic.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_tri_attack.o sound/songs/se_m_tri_attack.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_tri_attack2.o sound/songs/se_m_tri_attack2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_twister.o sound/songs/se_m_twister.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_uproar.o sound/songs/se_m_uproar.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_vital_throw.o sound/songs/se_m_vital_throw.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_vital_throw2.o sound/songs/se_m_vital_throw2.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_waterfall.o sound/songs/se_m_waterfall.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_whirlpool.o sound/songs/se_m_whirlpool.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_m_yawn.o sound/songs/se_m_yawn.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_wall_hit.o sound/songs/se_wall_hit.s
+arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 -I sound -o build/modern/sound/songs/se_win_open.o sound/songs/se_win_open.s
+tools/mid2agb/mid2agb sound/songs/midi/mus_abandoned_ship.mid sound/songs/midi/mus_abandoned_ship.s -E -R50 -G_abandoned_ship -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_abnormal_weather.mid sound/songs/midi/mus_abnormal_weather.s -E -R50 -G_abnormal_weather -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_aqua_magma_hideout.mid sound/songs/midi/mus_aqua_magma_hideout.s -E -R50 -G_aqua_magma_hideout -V084
+tools/mid2agb/mid2agb sound/songs/midi/mus_awaken_legend.mid sound/songs/midi/mus_awaken_legend.s -E -R50 -G_fanfare -V090 -P5
+tools/mid2agb/mid2agb sound/songs/midi/mus_b_arena.mid sound/songs/midi/mus_b_arena.s -E -R50 -G_b_arena -V090
+tools/mid2agb/mid2agb sound/songs/midi/mus_b_dome.mid sound/songs/midi/mus_b_dome.s -E -R50 -G_b_dome -V090
+tools/mid2agb/mid2agb sound/songs/midi/mus_b_dome_lobby.mid sound/songs/midi/mus_b_dome_lobby.s -E -R50 -G_b_dome -V056
+tools/mid2agb/mid2agb sound/songs/midi/mus_b_factory.mid sound/songs/midi/mus_b_factory.s -E -R50 -G_b_factory -V100
+tools/mid2agb/mid2agb sound/songs/midi/mus_b_frontier.mid sound/songs/midi/mus_b_frontier.s -E -R50 -G_b_frontier -V094
+tools/mid2agb/mid2agb sound/songs/midi/mus_b_palace.mid sound/songs/midi/mus_b_palace.s -E -R50 -G_b_palace -V105
+tools/mid2agb/mid2agb sound/songs/midi/mus_b_pike.mid sound/songs/midi/mus_b_pike.s -E -R50 -G_b_pike -V092
+tools/mid2agb/mid2agb sound/songs/midi/mus_b_pyramid.mid sound/songs/midi/mus_b_pyramid.s -E -R50 -G_b_pyramid -V079
+tools/mid2agb/mid2agb sound/songs/midi/mus_b_pyramid_top.mid sound/songs/midi/mus_b_pyramid_top.s -E -R50 -G_b_pyramid_top -V077
+tools/mid2agb/mid2agb sound/songs/midi/mus_b_tower.mid sound/songs/midi/mus_b_tower.s -E -R50 -G_b_tower -V100
+tools/mid2agb/mid2agb sound/songs/midi/mus_b_tower_rs.mid sound/songs/midi/mus_b_tower_rs.s -E -R50 -G_b_tower_rs -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_birch_lab.mid sound/songs/midi/mus_birch_lab.s -E -R50 -G_birch_lab -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_c_comm_center.mid sound/songs/midi/mus_c_comm_center.s -E -R50 -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_c_vs_legend_beast.mid sound/songs/midi/mus_c_vs_legend_beast.s -E -R50 -G_c_vs_legend_beast -V090
+tools/mid2agb/mid2agb sound/songs/midi/mus_cable_car.mid sound/songs/midi/mus_cable_car.s -E -R50 -G_cable_car -V078
+tools/mid2agb/mid2agb sound/songs/midi/mus_caught.mid sound/songs/midi/mus_caught.s -E -R50 -G_victory_wild -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_cave_of_origin.mid sound/songs/midi/mus_cave_of_origin.s -E -R50 -G_cave_of_origin -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_contest.mid sound/songs/midi/mus_contest.s -E -R50 -G_contest -V088
+tools/mid2agb/mid2agb sound/songs/midi/mus_contest_lobby.mid sound/songs/midi/mus_contest_lobby.s -E -R50 -G_contest_lobby -V060
+tools/mid2agb/mid2agb sound/songs/midi/mus_contest_results.mid sound/songs/midi/mus_contest_results.s -E -R50 -G_contest_results -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_contest_winner.mid sound/songs/midi/mus_contest_winner.s -E -R50 -G_contest_winner -V100
+tools/mid2agb/mid2agb sound/songs/midi/mus_credits.mid sound/songs/midi/mus_credits.s -E -R50 -G_credits -V100
+tools/mid2agb/mid2agb sound/songs/midi/mus_cycling.mid sound/songs/midi/mus_cycling.s -E -R50 -G_cycling -V083
+tools/mid2agb/mid2agb sound/songs/midi/mus_dewford.mid sound/songs/midi/mus_dewford.s -E -R50 -G_dewford -V078
+tools/mid2agb/mid2agb sound/songs/midi/mus_dummy.mid sound/songs/midi/mus_dummy.s -E -R40
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_aqua.mid sound/songs/midi/mus_encounter_aqua.s -E -R50 -G_encounter_aqua -V086
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_brendan.mid sound/songs/midi/mus_encounter_brendan.s -E -R50 -G_encounter_brendan -V078
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_champion.mid sound/songs/midi/mus_encounter_champion.s -E -R50 -G_encounter_champion -V076
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_cool.mid sound/songs/midi/mus_encounter_cool.s -E -R50 -G_encounter_cool -V086
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_elite_four.mid sound/songs/midi/mus_encounter_elite_four.s -E -R50 -G_encounter_elite_4 -V078
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_female.mid sound/songs/midi/mus_encounter_female.s -E -R50 -G_encounter_female -V072
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_girl.mid sound/songs/midi/mus_encounter_girl.s -E -R50 -G_encounter_girl -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_hiker.mid sound/songs/midi/mus_encounter_hiker.s -E -R50 -G_encounter_hiker -V076
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_intense.mid sound/songs/midi/mus_encounter_intense.s -E -R50 -G_encounter_intense -V078
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_interviewer.mid sound/songs/midi/mus_encounter_interviewer.s -E -R50 -G_encounter_interviewer -V062
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_magma.mid sound/songs/midi/mus_encounter_magma.s -E -R50 -G_encounter_magma -V072
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_male.mid sound/songs/midi/mus_encounter_male.s -E -R50 -G_encounter_male -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_may.mid sound/songs/midi/mus_encounter_may.s -E -R50 -G_encounter_may -V078
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_rich.mid sound/songs/midi/mus_encounter_rich.s -E -R50 -G_encounter_rich -V094
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_suspicious.mid sound/songs/midi/mus_encounter_suspicious.s -E -R50 -G_encounter_suspicious -V078
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_swimmer.mid sound/songs/midi/mus_encounter_swimmer.s -E -R50 -G_encounter_swimmer -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_encounter_twins.mid sound/songs/midi/mus_encounter_twins.s -E -R50 -G_encounter_twins -V075
+tools/mid2agb/mid2agb sound/songs/midi/mus_end.mid sound/songs/midi/mus_end.s -E -R50 -G_end -V036
+tools/mid2agb/mid2agb sound/songs/midi/mus_ever_grande.mid sound/songs/midi/mus_ever_grande.s -E -R50 -G_ever_grande -V086
+tools/mid2agb/mid2agb sound/songs/midi/mus_evolution.mid sound/songs/midi/mus_evolution.s -E -R50 -G_evolution -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_evolution_intro.mid sound/songs/midi/mus_evolution_intro.s -E -R50 -G_evolution -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_evolved.mid sound/songs/midi/mus_evolved.s -E -R50 -G_fanfare -V090 -P5
+tools/mid2agb/mid2agb sound/songs/midi/mus_fallarbor.mid sound/songs/midi/mus_fallarbor.s -E -R50 -G_fallarbor -V100
+tools/mid2agb/mid2agb sound/songs/midi/mus_follow_me.mid sound/songs/midi/mus_follow_me.s -E -R50 -G_follow_me -V074
+tools/mid2agb/mid2agb sound/songs/midi/mus_fortree.mid sound/songs/midi/mus_fortree.s -E -R50 -G_fortree -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_game_corner.mid sound/songs/midi/mus_game_corner.s -E -R50 -G_game_corner -V072
+tools/mid2agb/mid2agb sound/songs/midi/mus_gsc_pewter.mid sound/songs/midi/mus_gsc_pewter.s -E -R50 -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_gsc_route38.mid sound/songs/midi/mus_gsc_route38.s -E -R50 -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_gym.mid sound/songs/midi/mus_gym.s -E -R50 -G_gym -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_hall_of_fame.mid sound/songs/midi/mus_hall_of_fame.s -E -R50 -G_hall_of_fame -V078
+tools/mid2agb/mid2agb sound/songs/midi/mus_hall_of_fame_room.mid sound/songs/midi/mus_hall_of_fame_room.s -E -R50 -G_hall_of_fame_room -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_heal.mid sound/songs/midi/mus_heal.s -E -R50 -G_fanfare -V090 -P5
+tools/mid2agb/mid2agb sound/songs/midi/mus_help.mid sound/songs/midi/mus_help.s -E -R50 -G_help -V078
+tools/mid2agb/mid2agb sound/songs/midi/mus_hh_sunrise.mid sound/songs/midi/mus_hh_sunrise.s -E -R50 -G_hh_sunrise -V090
+tools/mid2agb/mid2agb sound/songs/midi/mus_intro.mid sound/songs/midi/mus_intro.s -E -R50 -G_intro -V090
+tools/mid2agb/mid2agb sound/songs/midi/mus_intro_battle.mid sound/songs/midi/mus_intro_battle.s -E -R50 -G_intro_battle -V088
+tools/mid2agb/mid2agb sound/songs/midi/mus_level_up.mid sound/songs/midi/mus_level_up.s -E -R50 -G_fanfare -V090 -P5
+tools/mid2agb/mid2agb sound/songs/midi/mus_lilycove.mid sound/songs/midi/mus_lilycove.s -E -R50 -G_lilycove -V085
+tools/mid2agb/mid2agb sound/songs/midi/mus_lilycove_museum.mid sound/songs/midi/mus_lilycove_museum.s -E -R50 -G_lilycove_museum -V080
+tools/mid2agb/mid2agb sound/songs/midi/mus_link_contest_p1.mid sound/songs/midi/mus_link_contest_p1.s -E -R50 -G_link_contest_p1 -V079
+tools/mid2agb/mid2agb sound/songs/midi/mus_link_contest_p2.mid sound/songs/midi/mus_link_contest_p2.s -E -R50 -G_link_contest_p2 -V090

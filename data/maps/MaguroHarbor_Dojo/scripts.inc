@@ -230,17 +230,17 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_3:
 	.string "everyone's alright.$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_0:
-	.string "My Pokémon are the daintiest there\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}My Pokémon are the daintiest there\n"
 	.string "is!$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_1:
 	.string "My poor Feebas!$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_2:
-	.string "Oh my, what was that quake?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Oh my, what was that quake?$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_3:
-	.string "You'll go far. I can tell.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}You'll go far. I can tell.$"
 
 MaguroHarbor_Dojo_EventScript_Ren_Text_0:
 	.string "Come in! The water's nice and toasty!$"
@@ -255,16 +255,16 @@ MaguroHarbor_Dojo_EventScript_Ren_Text_3:
 	.string "I l-lied. I'm f-f-freezing in h-here.$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_0:
-	.string "Do not disturb the koi pond!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}Do not disturb the koi pond!$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_1:
 	.string "Stop making so much noise!$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_2:
-	.string "The poor fish must be all shaken!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}The poor fish must be all shaken!$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_3:
-	.string "These are sophisticated fish. They\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}These are sophisticated fish. They\n"
 	.string "need peace and quiet to thrive.$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_0:

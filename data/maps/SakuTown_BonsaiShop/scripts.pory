@@ -200,7 +200,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 		if (flag(FLAG_RECEIVED_WAILMER_PAIL)) {
 			speakername("Woman")
 			msgbox(format(
-				"Hello, welcome to our bonsai shop…"
+				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hello, welcome to our bonsai shop…"
 			))
 			playse(SE_PIN)
 			applymovement(1, Common_Movement_ExclamationMark)
@@ -209,7 +209,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 			waitmovement(0)
 			speakername("Woman")
 			msgbox(format(
-				"Oh, but I know you! We met on Tranquil route, remember?\p"
+				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, but I know you! We met on Tranquil route, remember?\p"
 				"Have you used the watering can I gave you yet?\p"
 				"Oh, yes, I work here. We sell bonsai and other potted flowers!\p"
 				"I'm the owner's assistant! I also manage the shop whenever she's away."
@@ -220,7 +220,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 		else {
 			speakername("Woman")
 			msgbox(format(
-				"Hello, welcome to our bonsai shop! I'm the owner's assistant.\p"
+				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hello, welcome to our bonsai shop! I'm the owner's assistant.\p"
 				"We sell bonsai and other potted flowers! Are you interested in plants?\p"
 				"Have you ever seen strange patches of soil while on your journey?\p"
 				"Those soil patches are incredibly fertile, which means any berry you plant in that soil will thrive and grow into a tree, ready to be harvested!\p"
@@ -234,7 +234,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 
 			speakername("Woman")
 			msgbox(format(
-				"Oh, right, I was almost forgetting!\p"
+				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I was almost forgetting!\p"
 				"You must remember to water them regularly, or they won't grow!\p"
 				"I like you. Take this!"
 			))
@@ -244,7 +244,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 
 			speakername("Woman")
 			msgbox(format(
-				"Isn't it cute? It's friend-shaped!\p"
+				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Isn't it cute? It's friend-shaped!\p"
 				"Don't worry about it, I have a spare one.\p"
 				"Have fun gardening!"
 			))

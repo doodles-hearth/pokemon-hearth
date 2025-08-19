@@ -324,7 +324,7 @@ OrchardPath_EventScript_GuardHouseSign_Text_0:
 	.string "Guard House$"
 
 OrchardPath_EventScript_Junko_Text_0:
-	.string "I'm gathering ripe Berries to feed my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}I'm gathering ripe Berries to feed my\n"
 	.string "Pokémon!$"
 
 OrchardPath_EventScript_Junko_Text_1:
@@ -334,12 +334,12 @@ OrchardPath_EventScript_Junko_Text_2:
 	.string "Junko$"
 
 OrchardPath_EventScript_Junko_Text_3:
-	.string "My Pokémon is insatiable!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}My Pokémon is insatiable!\n"
 	.string "I need to scour my local Library for\l"
 	.string "more Berry recipes!$"
 
 OrchardPath_EventScript_Mami_Text_0:
-	.string "Hehehehe… This place is haunted at\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}Hehehehe… This place is haunted at\n"
 	.string "night! Are you scared?$"
 
 OrchardPath_EventScript_Mami_Text_1:
@@ -350,7 +350,7 @@ OrchardPath_EventScript_Mami_Text_2:
 	.string "Mami$"
 
 OrchardPath_EventScript_Mami_Text_3:
-	.string "I wanted to catch some more ghosts\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I wanted to catch some more ghosts\n"
 	.string "at the Graveyard, but…\l"
 	.string "It's a little TOO scary…$"
 

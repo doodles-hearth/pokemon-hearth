@@ -33,7 +33,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	applymovement(LOCALID_OLD_MAN, Common_Movement_WalkInPlaceFasterRight)
 	waitmovement(0)
 
-	speakername("Old man")
+	speakername("Old Man")
 	msgbox(format(
 		"Yet another area is decaying on Beachbound Route…"
 	))

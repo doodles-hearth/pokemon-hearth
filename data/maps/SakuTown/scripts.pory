@@ -473,7 +473,7 @@ script SakuTown_EventScript_TamaArgument {
 	closemessage
 
 	applymovement(LOCALID_TAMASDAD, moves(walk_in_place_fast_right))
-	speakername("Old man")
+	speakername("Old Man")
 	msgbox(format("Over my dead body will my son be in love with someone from Kura Village!"))
 	closemessage
 

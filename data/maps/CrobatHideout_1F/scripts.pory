@@ -116,7 +116,7 @@ script CrobatHideout_1F_SeenByGrunt {
 script CrobatHideout_1F_EventScript_Grunt1 {
 	trainerbattle_single(
 		TRAINER_GRUNT_CROBAT_HIDEOUT_1,
-		format("I bet yer the intruder!\nYeah, I'm smart like that!"),
+		format("{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I bet yer the intruder!\nYeah, I'm smart like that!"),
 		format("Boss, help us!")
 	)
 	speakername("Zubat Grunt")
@@ -130,7 +130,7 @@ script CrobatHideout_1F_EventScript_Grunt1 {
 script CrobatHideout_1F_EventScript_GruntPaintingPokeballs {
 	trainerbattle_single(
 		TRAINER_GRUNT_CROBAT_HIDEOUT_2,
-		format("What? I'm not paintin' Poké Balls to look like Ultra Balls!"),
+		format("{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}What? I'm not paintin' Poké Balls to look like Ultra Balls!"),
 		format("Alright alright, ya got me!")
 	)
 	speakername("Zubat Grunt")
@@ -145,7 +145,7 @@ script CrobatHideout_1F_EventScript_GruntLaundryRoom {
 	trainerbattle_single(
 		TRAINER_GRUNT_CROBAT_HIDEOUT_3,
 		format(
-			"Yer not here to help with the laundry, are ya?"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yer not here to help with the laundry, are ya?"
 			),
 		format("Hung me out to dry…")
 	)
@@ -161,7 +161,7 @@ script CrobatHideout_1F_EventScript_GruntDoubleGirl {
 	trainerbattle_single(
 		TRAINER_GRUNT_CROBAT_HIDEOUT_4,
 		format(
-			"Where d'ya think yer goin', cutie pie?"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Where d'ya think yer goin', cutie pie?"
 			),
 		format("Fine, go where ya want then, sheesh!")
 	)
@@ -177,7 +177,7 @@ script CrobatHideout_1F_EventScript_GruntDoubleGuy {
 	trainerbattle_single(
 		TRAINER_GRUNT_CROBAT_HIDEOUT_5,
 		format(
-			"Trespassin's against the law, ya know?"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Trespassin's against the law, ya know?"
 			),
 		format("Kids these days, I swear!")
 	)
@@ -193,7 +193,7 @@ script CrobatHideout_1F_EventScript_GruntNearReunionRoom {
 	trainerbattle_single(
 		TRAINER_GRUNT_CROBAT_HIDEOUT_6,
 		format(
-			"This is our super secret hideout! Yer not wanted 'ere!"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}This is our super secret hideout! Yer not wanted 'ere!"
 			),
 		format("Yer ruinin' everythin'!")
 	)

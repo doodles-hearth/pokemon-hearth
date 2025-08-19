@@ -623,7 +623,7 @@ WhiteslateRoute_EventScript_Ryosuke_Text_3:
 	.string "I want to see for myself!$"
 
 WhiteslateRoute_EventScript_Riku_Text_0:
-	.string "BOO!!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}BOO!!\p"
 	.string "… … …Are you surprised?$"
 
 WhiteslateRoute_EventScript_Riku_Text_1:
@@ -633,7 +633,7 @@ WhiteslateRoute_EventScript_Riku_Text_2:
 	.string "Riku$"
 
 WhiteslateRoute_EventScript_Riku_Text_3:
-	.string "I have to work on my element of\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}I have to work on my element of\n"
 	.string "surprise.$"
 
 WhiteslateRoute_EventScript_Tomomi_Text_0:
@@ -664,7 +664,7 @@ WhiteslateRoute_EventScript_Yono_Text_3:
 	.string "keeps me young!$"
 
 WhiteslateRoute_EventScript_Sumi_Text_0:
-	.string "Excuse me… What's with that white\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}Excuse me… What's with that white\n"
 	.string "hand on your shoulder?$"
 
 WhiteslateRoute_EventScript_Sumi_Text_1:
@@ -674,10 +674,10 @@ WhiteslateRoute_EventScript_Sumi_Text_2:
 	.string "Sumi$"
 
 WhiteslateRoute_EventScript_Sumi_Text_3:
-	.string "You don't scare easily, do you?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}You don't scare easily, do you?$"
 
 WhiteslateRoute_EventScript_Tomiko_Text_0:
-	.string "Weird Pokémon are my favorite!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}Weird Pokémon are my favorite!$"
 
 WhiteslateRoute_EventScript_Tomiko_Text_1:
 	.string "I don't care if they're not the\n"
@@ -687,11 +687,11 @@ WhiteslateRoute_EventScript_Tomiko_Text_2:
 	.string "Tomiko$"
 
 WhiteslateRoute_EventScript_Tomiko_Text_3:
-	.string "I love Spinda. Doesn't it look silly\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}I love Spinda. Doesn't it look silly\n"
 	.string "and adorable?$"
 
 WhiteslateRoute_EventScript_Utaro_Text_0:
-	.string "I love cool Pokémon!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}I love cool Pokémon!$"
 
 WhiteslateRoute_EventScript_Utaro_Text_1:
 	.string "At least I lost with style!$"
@@ -700,7 +700,7 @@ WhiteslateRoute_EventScript_Utaro_Text_2:
 	.string "Utaro$"
 
 WhiteslateRoute_EventScript_Utaro_Text_3:
-	.string "Seviper is so darn cool! I mean, it's\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Seviper is so darn cool! I mean, it's\n"
 	.string "got a sword on its tail!$"
 
 WhiteslateRoute_EventScript_ShuckleGirl_Text_0:

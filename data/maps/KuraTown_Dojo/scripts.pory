@@ -31,13 +31,13 @@ script KuraTown_Dojo_EventScript_Matsu {
 script KuraTown_Dojo_EventScript_Kiku {
 	trainerbattle_single(
 		TRAINER_KIKU,
-		format("Is the maze giving you trouble?"),
+		format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Is the maze giving you trouble?"),
 		format("At least I didn't give you any trouble…")
 	)
 
 	speakername("Kiku")
 	msgbox(format(
-		"You're wondering why you can't just cut down all the trees?\p"
+		"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}You're wondering why you can't just cut down all the trees?\p"
 		"Uhhh… It's a secret!"
 	), MSGBOX_AUTOCLOSE)
 	end
@@ -56,7 +56,7 @@ script KuraTown_Dojo_EventScript_Laura {
 script KuraTown_Dojo_EventScript_Brenden {
 	trainerbattle_single(
 		TRAINER_TSUBAKI,
-		format("Take a deep breath! The air is so rich and flowery here!"),
+		format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}Take a deep breath! The air is so rich and flowery here!"),
 		format("A-tchoo!")
 	)
 

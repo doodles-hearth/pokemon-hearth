@@ -31,7 +31,7 @@ YifuCity_BigHouse_2F_EventScript_RunningBoy::
 
 
 YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon_Text_0:
-	.string "Old man$"
+	.string "Old Man$"
 
 YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon_Text_1:
 	.string "I was told I needed to raise a\n"

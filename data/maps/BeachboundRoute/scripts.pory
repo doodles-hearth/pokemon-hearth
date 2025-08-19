@@ -85,12 +85,12 @@ script BeachboundRoute_EventScript_Shepherd {
 script BeachboundRoute_EventScript_Karu {
 	trainerbattle_single(
 		TRAINER_KARU,
-		format("Please allow me to introduce you to your own defeat!"),
+		format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}Please allow me to introduce you to your own defeat!"),
 		format("N-nice to meet you…"),
 		BeachboundRoute_EventScript_Karu_PostBattle
 	)
 	speakername("Karu")
-	msgbox(format("You wiped me away there. How long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}You wiped me away there. How long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -114,12 +114,12 @@ script BeachboundRoute_EventScript_Kin {
 script BeachboundRoute_EventScript_Kouta {
 	trainerbattle_single(
 		TRAINER_KOUTA ,
-		format("Look at how soft my Pokémon is!"),
+		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Look at how soft my Pokémon is!"),
 		format("Maybe I'm the one who's soft…")
 	)
 	speakername("Kouta")
 	setnamedmon(SPECIES_MAREEP)
-	msgbox(format("When I pet my Mareep, I can hear the static crackle!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}When I pet my Mareep, I can hear the static crackle!"))
 	release
 	end
 }
@@ -127,12 +127,12 @@ script BeachboundRoute_EventScript_Kouta {
 script BeachboundRoute_EventScript_Masato {
 	trainerbattle_single(
 		TRAINER_MASATO ,
-		format("Let my Pokémon sing for you!"),
+		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}Let my Pokémon sing for you!"),
 		format("Okay, rude.")
 	)
 	setnamedmon(SPECIES_KRICKETOT)
 	speakername("Masato")
-	msgbox(format("I hope one day my Kricketot evolves! I wonder what delightful melody he'll be able to sing then…"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I hope one day my Kricketot evolves! I wonder what delightful melody he'll be able to sing then…"))
 	release
 	end
 }

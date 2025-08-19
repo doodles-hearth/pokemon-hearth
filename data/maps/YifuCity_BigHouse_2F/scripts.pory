@@ -5,7 +5,7 @@ mapscripts YifuCity_BigHouse_2F_MapScripts {
 script YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon {
 	lock
 	faceplayer
-	speakername("Old man")
+	speakername("Old Man")
 	msgbox(format(
 		"I was told I needed to raise a Pokémon of my own. No sir!\p"
 		"Back in my day, we didn't need no Pokémon!\l"

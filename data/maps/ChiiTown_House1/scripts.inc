@@ -152,7 +152,7 @@ ChiiTown_House1_Movement_PlayerStepsAwayFromGrowlithe:
 	step_end
 
 ChiiTown_House1_EventScript_OldManTrespassing_Text_0:
-	.string "Old man$"
+	.string "Old Man$"
 
 ChiiTown_House1_EventScript_OldManTrespassing_Text_1:
 	.string "Do you often barge into people's\n"

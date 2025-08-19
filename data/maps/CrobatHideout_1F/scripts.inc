@@ -1152,7 +1152,7 @@ CrobatHideout_1F_SeenByGrunt_Text_8:
 	.string "BOSS!! BOOOSSSS!!!$"
 
 CrobatHideout_1F_EventScript_Grunt1_Text_0:
-	.string "I bet yer the intruder!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I bet yer the intruder!\n"
 	.string "Yeah, I'm smart like that!$"
 
 CrobatHideout_1F_EventScript_Grunt1_Text_1:
@@ -1163,7 +1163,7 @@ CrobatHideout_1F_EventScript_Grunt1_Text_2:
 	.string "Err I mean, we done nothin' wrong!$"
 
 CrobatHideout_1F_EventScript_GruntPaintingPokeballs_Text_0:
-	.string "What? I'm not paintin' Poké Balls to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}What? I'm not paintin' Poké Balls to\n"
 	.string "look like Ultra Balls!$"
 
 CrobatHideout_1F_EventScript_GruntPaintingPokeballs_Text_1:
@@ -1174,7 +1174,7 @@ CrobatHideout_1F_EventScript_GruntPaintingPokeballs_Text_2:
 	.string "dontcha dare say a thing!$"
 
 CrobatHideout_1F_EventScript_GruntLaundryRoom_Text_0:
-	.string "Yer not here to help with the laundry,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yer not here to help with the laundry,\n"
 	.string "are ya?$"
 
 CrobatHideout_1F_EventScript_GruntLaundryRoom_Text_1:
@@ -1185,7 +1185,7 @@ CrobatHideout_1F_EventScript_GruntLaundryRoom_Text_2:
 	.string "when it's someone else's turn…$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGirl_Text_0:
-	.string "Where d'ya think yer goin', cutie pie?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Where d'ya think yer goin', cutie pie?$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGirl_Text_1:
 	.string "Fine, go where ya want then, sheesh!$"
@@ -1195,7 +1195,7 @@ CrobatHideout_1F_EventScript_GruntDoubleGirl_Text_2:
 	.string "gonna stomp on ya real good!$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGuy_Text_0:
-	.string "Trespassin's against the law, ya\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Trespassin's against the law, ya\n"
 	.string "know?$"
 
 CrobatHideout_1F_EventScript_GruntDoubleGuy_Text_1:
@@ -1206,7 +1206,7 @@ CrobatHideout_1F_EventScript_GruntDoubleGuy_Text_2:
 	.string "privacy lyin' down!$"
 
 CrobatHideout_1F_EventScript_GruntNearReunionRoom_Text_0:
-	.string "This is our super secret hideout! Yer\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}This is our super secret hideout! Yer\n"
 	.string "not wanted 'ere!$"
 
 CrobatHideout_1F_EventScript_GruntNearReunionRoom_Text_1:

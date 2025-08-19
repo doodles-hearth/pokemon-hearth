@@ -552,7 +552,7 @@ BeachboundRoute_EventScript_Shepherd_Text_1:
 	.string "everyday.$"
 
 BeachboundRoute_EventScript_Karu_Text_0:
-	.string "Please allow me to introduce you to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}Please allow me to introduce you to\n"
 	.string "your own defeat!$"
 
 BeachboundRoute_EventScript_Karu_Text_1:
@@ -562,7 +562,7 @@ BeachboundRoute_EventScript_Karu_Text_2:
 	.string "Karu$"
 
 BeachboundRoute_EventScript_Karu_Text_3:
-	.string "You wiped me away there. How long\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}You wiped me away there. How long\n"
 	.string "have you been a Wielder?$"
 
 BeachboundRoute_EventScript_Kin_Text_0:
@@ -580,7 +580,7 @@ BeachboundRoute_EventScript_Kin_Text_3:
 	.string "and yet…$"
 
 BeachboundRoute_EventScript_Kouta_Text_0:
-	.string "Look at how soft my Pokémon is!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Look at how soft my Pokémon is!$"
 
 BeachboundRoute_EventScript_Kouta_Text_1:
 	.string "Maybe I'm the one who's soft…$"
@@ -589,11 +589,11 @@ BeachboundRoute_EventScript_Kouta_Text_2:
 	.string "Kouta$"
 
 BeachboundRoute_EventScript_Kouta_Text_3:
-	.string "When I pet my Mareep, I can hear the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}When I pet my Mareep, I can hear the\n"
 	.string "static crackle!$"
 
 BeachboundRoute_EventScript_Masato_Text_0:
-	.string "Let my Pokémon sing for you!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}Let my Pokémon sing for you!$"
 
 BeachboundRoute_EventScript_Masato_Text_1:
 	.string "Okay, rude.$"
@@ -602,7 +602,7 @@ BeachboundRoute_EventScript_Masato_Text_2:
 	.string "Masato$"
 
 BeachboundRoute_EventScript_Masato_Text_3:
-	.string "I hope one day my Kricketot evolves!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I hope one day my Kricketot evolves!\n"
 	.string "I wonder what delightful melody he'll\l"
 	.string "be able to sing then…$"
 
