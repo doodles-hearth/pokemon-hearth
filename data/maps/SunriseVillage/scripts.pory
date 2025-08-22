@@ -38,14 +38,14 @@ script SunriseVillage_Event_FatGuy {
     speakername("Neighbour")
     if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 4) {
         msgbox(format(
-            "My new Pokémon is so cute, I don't feel like leaving it in its Pokéball!"
+            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY EMOTE_NORMAL}My new Pokémon is so cute, I don't feel like leaving it in its Pokéball!"
         ))
         closemessage
         applymovement(LOCALID_FATGUY, Common_Movement_FaceOriginalDirection)
     }
     else {
         msgbox(format(
-            "Someone managed to fit entire Pokémon"
+            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY EMOTE_NORMAL}Someone managed to fit entire Pokémon"
             "inside these tiny balls.\p"
             "The power of science is staggering!"
         ))
@@ -57,13 +57,13 @@ script SunriseVillage_Event_FatGuy {
 
 // Man guarding the forest while you have no Pokémon
 script SunriseVillage_Event_GuardForest {
-    lock
+    lockall
     applymovement(LOCALID_GUARD, Common_Movement_WalkInPlaceFasterLeft)
     if (flag(FLAG_RECEIVED_STARTER)) {
         speakername("Neighbour")
         if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
             msgbox(format(
-                "Oh, I see you received a Pokémon!\p"
+                "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Oh, I see you received a Pokémon!\p"
                 "You'll probably be able to manage the woods on your own, then.\p"
                 "Be careful!"
             ))
@@ -71,7 +71,7 @@ script SunriseVillage_Event_GuardForest {
         } elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
             turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
             msgbox(format(
-                "Hey, kid, heard you were going off on an adventure!\p"
+                "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Hey, kid, heard you were going off on an adventure!\p"
                 "Did you say bye to your sister?\p"
                 "No? Thought so. Go see her before you run off, you ungrateful sibling!"
             ))
@@ -81,7 +81,7 @@ script SunriseVillage_Event_GuardForest {
         } else {
             turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
             msgbox(format(
-                "Hey, kid, a friend of yours was looking for you."
+                "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Hey, kid, a friend of yours was looking for you."
             ))
             closemessage
             applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
@@ -91,13 +91,13 @@ script SunriseVillage_Event_GuardForest {
     else {
         speakername("Neighbour")
         msgbox(format(
-        "Stop right there, kid!"
+        "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Stop right there, kid!"
         ))
         closemessage
         turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
         speakername("Neighbour")
         msgbox(format(
-            "Wild Pokémon have been lashing out recently.\p"
+            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Wild Pokémon have been lashing out recently.\p"
             "I know you're used to walking around on your own, but the woods have become a dangerous place lately!\p"
             "I wouldn't go alone if I were you.\p"
             "Or, you know, if I were me."
@@ -106,7 +106,7 @@ script SunriseVillage_Event_GuardForest {
         applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
         waitmovement(0)
     }
-    release
+    releaseall
     end
 }
 
@@ -117,28 +117,28 @@ script SunriseVillage_Event_GuardForest_Interact {
     if (flag(FLAG_RECEIVED_STARTER)) {
         if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
             msgbox(format(
-                "Oh, I see you received a Pokémon!\p"
+                "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Oh, I see you received a Pokémon!\p"
                 "You'll probably be able to manage the woods on your own, then.\p"
                 "Be careful!"
             ))
             closemessage
         } elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
             msgbox(format(
-                "Hey, kid, heard you were going off on an adventure!\p"
+                "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Hey, kid, heard you were going off on an adventure!\p"
                 "Did you say bye to your sister?\p"
                 "No? Thought so. Go see her before you run off, you ungrateful sibling!"
             ))
             closemessage
         } else {
             msgbox(format(
-                "Hey, kid, a friend of yours was looking for you."
+                "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Hey, kid, a friend of yours was looking for you."
             ))
             closemessage
         }
     }
     else {
         msgbox(format(
-            "Wild Pokémon have been lashing out recently.\p"
+            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Wild Pokémon have been lashing out recently.\p"
             "Even the Ginko woods have become a dangerous place lately!"
         ))
         closemessage
@@ -151,19 +151,19 @@ script SunriseVillage_Event_GuardForest_Interact {
 script SunriseVillage_Event_LittleGirl {
     speakername("Little girl")
     msgbox(format(
-        "I can't wait I can't wait I can't wait!!!\p"
+        "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I can't wait I can't wait I can't wait!!!\p"
         "AHHHHH I CAN'T WAIT!!!!"
     ), MSGBOX_NPC)
 }
 
 // Boy
 script SunriseVillage_Event_Boy {
-    lockall
+    lock
     faceplayer
     speakername("Kid")
     if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 4) {
         msgbox(format(
-            "My Happiny is the strongest of all! See how fierce it looks?"
+            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}My Happiny is the strongest of all! See how fierce it looks?"
         ))
         closemessage
 
@@ -171,47 +171,47 @@ script SunriseVillage_Event_Boy {
     }
     else {
         msgbox(format(
-            "Hey {PLAYER}{KUN}!\p"
+            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}Hey {PLAYER}!\p"
             "So, d'you think we'll get to choose the one we want?"
         ))
         closemessage
     }
-    releaseall
+    release
     end
 }
 
 // Woman
 script SunriseVillage_Event_Woman {
-    lockall
+    lock
     speakername("Neighbour")
     msgbox(format(
-        "I can see the Poké Balls from here… I've never seen so many in my life!"
+        "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}I can see the Poké Balls from here… I've never seen so many in my life!"
     ))
-    releaseall
+    release
     end
 }
 
 // Farmer
 script SunriseVillage_Event_Farmer {
-    lockall
+    lock
     faceplayer
     speakername("Neighbour")
     msgbox(format(
-        "I've been waiting for hours!"
+        "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_1 EMOTE_NORMAL}I've been waiting for hours!"
     ))
-    releaseall
+    release
     end
 }
 
 // Old man
 script SunriseVillage_Event_OldMan {
-    lockall
+    lock
     faceplayer
     speakername("Neighbour")
     msgbox(format(
-        "The distribution is about to start."
+        "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}The distribution is about to start."
     ))
-    releaseall
+    release
     end
 }
 
@@ -219,7 +219,7 @@ script SunriseVillage_Event_OldMan {
 script SunriseVillage_Event_OldWoman {
     speakername("Neighbour")
     msgbox(format(
-        "I'm tired of waiting!"
+        "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_WOMAN EMOTE_NORMAL}I'm tired of waiting!"
     ), MSGBOX_NPC)
 }
 
@@ -261,16 +261,6 @@ script SunriseVillage_Event_Kirlia {
     msgbox(format(
         "…"
     ))
-    release
-    end
-}
-
-// TODO EVA remove
-script SunriseVillage_Event_TestGyarados {
-    lock
-    givemon(SPECIES_SPHEAL, 100)
-    setwildbattle(SPECIES_KOTORA, 5)
-    dowildbattle
     release
     end
 }

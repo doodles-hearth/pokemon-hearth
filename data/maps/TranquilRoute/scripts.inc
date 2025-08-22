@@ -715,7 +715,7 @@ TranquilRoute_EventScript_Girl_Text_0:
 	.string "Girl$"
 
 TranquilRoute_EventScript_Girl_Text_1:
-	.string "What? Oh, I don't fight.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 EMOTE_NORMAL}What? Oh, I don't fight.\p"
 	.string "My Pokémon and I are just strolling.$"
 
 TranquilRoute_EventScript_WhiteslateRoadblock_Text_0:

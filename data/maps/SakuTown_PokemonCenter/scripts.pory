@@ -60,7 +60,7 @@ script SakuTown_PokemonCenter_EventScript_Nurse {
 	faceplayer
 	speakername("Nurse")
 	msgbox(format(
-		"Hello! Apologies for the mess, we're not fully set up yet!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}Hello! Apologies for the mess, we're not fully set up yet!\p"
 		"Let me heal your Pokémon!"
 	))
 
@@ -73,7 +73,7 @@ script SakuTown_PokemonCenter_EventScript_Nurse {
 
 	speakername("Nurse")
 	msgbox(format(
-		"Come back soon!"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}Come back soon!"
 	))
 
 	turnobject(VAR_LAST_TALKED, DIR_SOUTH)
@@ -87,7 +87,7 @@ script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
 	faceplayer
 	speakername("Nurse")
 	msgbox(format(
-		"This Pokémon refuge is brand new, courtesy of the Toku Council!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}This Pokémon refuge is brand new, courtesy of the Toku Council!\p"
 		"As you can see, it's still being built.\NWatch out for the falling bricks, ha ha, just kidding!\p"
 		"Seriously though, do watch out.\nWe're held responsible if anything happens to you."
 	))
@@ -103,7 +103,7 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 	waitmovement(0)
 	speakername("Nurse")
 	msgbox(format(
-		"I'm sorry, but there's nothing I can do yet.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}I'm sorry, but there's nothing I can do yet.\p"
 		"We haven't tools that allow us to heal a Pokémon in this dire a state."
 	))
 	closemessage
@@ -119,7 +119,7 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 
 	speakername("Nurse")
 	msgbox(format(
-		"She can stay here for as long as she needs.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}She can stay here for as long as she needs.\p"
 		"I'll keep her in as good a shape as I can."
 	))
 	closemessage

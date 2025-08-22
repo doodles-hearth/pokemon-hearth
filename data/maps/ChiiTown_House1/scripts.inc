@@ -155,7 +155,7 @@ ChiiTown_House1_EventScript_OldManTrespassing_Text_0:
 	.string "Old Man$"
 
 ChiiTown_House1_EventScript_OldManTrespassing_Text_1:
-	.string "Do you often barge into people's\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}Do you often barge into people's\n"
 	.string "houses uninvited without even taking\l"
 	.string "off your shoes?\p"
 	.string "Want to break a couple of pots while\n"
@@ -174,13 +174,13 @@ ChiiTown_House1_EventScript_GrowlitheBarks_Text_0:
 	.string "BARKBARKBARKBARKBARK!$"
 
 ChiiTown_House1_EventScript_GrowlitheBarks_Text_1:
-	.string "Mean old man$"
+	.string "Mean Old Man$"
 
 ChiiTown_House1_EventScript_GrowlitheBarks_Text_2:
-	.string "Good girl, Growlithe, good girl.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}Good girl, Growlithe, good girl.$"
 
 ChiiTown_House1_EventScript_GrowlitheBarks_Text_3:
-	.string "She keeps intruders out.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}She keeps intruders out.$"
 
 ChiiTown_House1_EventScript_Cheater_Text_0:
 	.string "Voice of God$"

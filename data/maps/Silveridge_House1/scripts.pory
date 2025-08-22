@@ -17,7 +17,7 @@ script Silveridge_House1_EventScript_Woman {
     faceplayer
     speakername("Woman")
     msgbox(format(
-        "Oh, you came all the way from Kura Village? You have good legs!"
+        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}Oh, you came all the way from Kura Village? You have good legs!"
     ))
     closemessage
     release
@@ -28,10 +28,10 @@ script Silveridge_House1_EventScript_FirebringerFangirl {
     faceplayer
     speakername("Girl")
     msgbox(format(
-        "This place gets pretty cold, especially when the winds blow strong into the valley.\p"
+        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}This place gets pretty cold, especially when the winds blow strong into the valley.\p"
         "I don't know what we would do without those brave Firebringers.\p"
         "They bring us live Slugma, carrying them on their back all the way down Mt Kazan!\p"
-        "Slugma cools and hardens up pretty fast, so they basically run the whole way down! I could never!"
+        "Slugma cools and hardens up pretty fast, so they basically run the whole way down! I could never!\p"
         "Sigh… I hope a handsome Firebringer notices me one day…"
     ))
     closemessage

@@ -249,7 +249,7 @@ ChiiTown_EventScript_BattlingBoy::
 	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_BattlingBoy_6
 	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
-	msgbox ChiiTown_EventScript_BattlingBoy_Text_2
+	msgbox ChiiTown_EventScript_BattlingBoy_Text_3
 	closemessage
 ChiiTown_EventScript_BattlingBoy_5:
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -271,7 +271,7 @@ ChiiTown_EventScript_BattlingBoy_6:
 	setflag FLAG_BEAT_CHII_TOWN_KIDS
 	special GetPlayerMrMrsString
 	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
-	msgbox ChiiTown_EventScript_BattlingBoy_Text_0
+	msgbox ChiiTown_EventScript_BattlingBoy_Text_2
 	closemessage
 	goto ChiiTown_EventScript_BattlingBoy_5
 
@@ -355,23 +355,23 @@ ChiiTown_EventScript_WatchfulMom_Text_0:
 	.string "Woman$"
 
 ChiiTown_EventScript_WatchfulMom_Text_1:
-	.string "I'm dropping off my children to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}I'm dropping off my children to\n"
 	.string "school.\p"
 	.string "With all the recent Pokémon attacks,\n"
 	.string "I will not let them leave my sight!$"
 
 ChiiTown_EventScript_WatchfulMom_Text_2:
-	.string "I'm waiting to pick up my children\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}I'm waiting to pick up my children\n"
 	.string "after school.\p"
 	.string "With all the recent Pokémon attacks,\n"
 	.string "I will not let them leave my sight!$"
 
 ChiiTown_EventScript_WatchfulMom_Text_3:
-	.string "Phew… Being a full-time mom is\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}Phew… Being a full-time mom is\n"
 	.string "exhausting…$"
 
 ChiiTown_EventScript_Shopper_Text_0:
-	.string "The lady who keeps the town's market\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}The lady who keeps the town's market\n"
 	.string "has started selling Pokémon medicine\l"
 	.string "and Poké Balls!\p"
 	.string "Be careful, though: the ointments she\n"
@@ -389,14 +389,14 @@ ChiiTown_EventScript_PlantingFlowers_Text_0:
 	.string "Little girl$"
 
 ChiiTown_EventScript_PlantingFlowers_Text_1:
-	.string "I'm planting flowers so that the wild\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm planting flowers so that the wild\n"
 	.string "Pokémon become happy again!$"
 
 ChiiTown_EventScript_AlsoPlantingFlowers_Text_0:
 	.string "Little boy$"
 
 ChiiTown_EventScript_AlsoPlantingFlowers_Text_1:
-	.string "She's making me plant flowers so that\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}She's making me plant flowers so that\n"
 	.string "the wild Pokémon become happy again.\p"
 	.string "I'm not though…$"
 
@@ -404,7 +404,7 @@ ChiiTown_EventScript_WatchingTheChildren_Text_0:
 	.string "Sensei$"
 
 ChiiTown_EventScript_WatchingTheChildren_Text_1:
-	.string "To make sure the children's energy\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}To make sure the children's energy\n"
 	.string "isn't pent up too much, I bring them\l"
 	.string "out for recess.$"
 
@@ -412,7 +412,7 @@ ChiiTown_EventScript_EatingBerries_Text_0:
 	.string "Twin girl$"
 
 ChiiTown_EventScript_EatingBerries_Text_1:
-	.string "Sensei said that we should eat\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Sensei said that we should eat\n"
 	.string "berries to grow big and strong!\p"
 	.string "But how are we supposed to get them\n"
 	.string "if we aren't big and strong yet?$"
@@ -427,25 +427,25 @@ ChiiTown_EventScript_EatingBerries_Text_4:
 	.string "Don't give$"
 
 ChiiTown_EventScript_EatingBerries_Text_5:
-	.string "Oh my gosh, thank you!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Oh my gosh, thank you!$"
 
 ChiiTown_EventScript_BerryEnthusiast_Text_0:
 	.string "Twin boy$"
 
 ChiiTown_EventScript_BerryEnthusiast_Text_1:
-	.string "I've been eating berries just like\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}I've been eating berries just like\n"
 	.string "Sensei said, but I haven't grown yet.\p"
 	.string "I don't care though. They're\n"
 	.string "delicious!$"
 
 ChiiTown_EventScript_BattlingGirl_Text_0:
-	.string "Wow, {STR_VAR_1}! You're super\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Wow, {STR_VAR_1}! You're super\n"
 	.string "strong!!\p"
 	.string "I'll have to train Snuggles a whole lot\n"
 	.string "more!$"
 
 ChiiTown_EventScript_BattlingGirl_Text_1:
-	.string "Hey {STR_VAR_1}! We've been\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Hey {STR_VAR_1}! We've been\n"
 	.string "studying Pokémon battles in class.\l"
 	.string "Wanna fight with us?$"
 
@@ -462,26 +462,31 @@ ChiiTown_EventScript_BattlingGirl_Text_5:
 	.string "Well I never learned about THAT!$"
 
 ChiiTown_EventScript_BattlingGirl_Text_6:
-	.string "Ughhhh, older kids are so boooring!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Ughhhh, older kids are so boooring!$"
 
 ChiiTown_EventScript_BattlingBoy_Text_0:
-	.string "Wow, {STR_VAR_1}! Can you be our\n"
-	.string "sensei?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Wow, {STR_VAR_1}! Can you be our\n"
+	.string "Sensei?\p"
 	.string "That way, Destroyer will be invincible!$"
 
 ChiiTown_EventScript_BattlingBoy_Text_1:
-	.string "Hello {STR_VAR_1}! We're top of our\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Hello {STR_VAR_1}! We're top of our\n"
 	.string "class! That means we're strong! Wanna\l"
 	.string "battle us?$"
 
 ChiiTown_EventScript_BattlingBoy_Text_2:
-	.string "Fine! Go do grownup stuff!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Wow, {STR_VAR_1}! Can you be our\n"
+	.string "sensei?\p"
+	.string "That way, Destroyer will be invincible!$"
+
+ChiiTown_EventScript_BattlingBoy_Text_3:
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Fine! Go do grownup stuff!$"
 
 ChiiTown_EventScript_Mart_Text_0:
 	.string "Shopkeeper$"
 
 ChiiTown_EventScript_Mart_Text_1:
-	.string "Welcome to Chii Town's market! How may\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Welcome to Chii Town's market! How may\n"
 	.string "I help you?$"
 
 ChiiTown_EventScript_MartDecor_Text_0:

@@ -467,15 +467,15 @@ SakuTown_PokemonCenter_EventScript_Nurse_Text_0:
 	.string "Nurse$"
 
 SakuTown_PokemonCenter_EventScript_Nurse_Text_1:
-	.string "Hello! Apologies for the mess, we're\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}Hello! Apologies for the mess, we're\n"
 	.string "not fully set up yet!\p"
 	.string "Let me heal your Pokémon!$"
 
 SakuTown_PokemonCenter_EventScript_Nurse_Text_2:
-	.string "Come back soon!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}Come back soon!$"
 
 SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0:
-	.string "This Pokémon refuge is brand new,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}This Pokémon refuge is brand new,\n"
 	.string "courtesy of the Toku Council!\p"
 	.string "As you can see, it's still being built.\n"
 	.string "Watch out for the falling bricks, ha\l"
@@ -485,7 +485,7 @@ SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0:
 	.string "happens to you.$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_0:
-	.string "I'm sorry, but there's nothing I can\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}I'm sorry, but there's nothing I can\n"
 	.string "do yet.\p"
 	.string "We haven't tools that allow us to heal\n"
 	.string "a Pokémon in this dire a state.$"
@@ -498,7 +498,7 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2:
 	.string "Cantcha see she's in pain?!$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_3:
-	.string "She can stay here for as long as she\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}She can stay here for as long as she\n"
 	.string "needs.\p"
 	.string "I'll keep her in as good a shape as I\n"
 	.string "can.$"

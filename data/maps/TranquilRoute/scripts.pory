@@ -297,7 +297,7 @@ movement TranquilRoute_Movement_MysteriousSamuraiWalksAway {
 
 script TranquilRoute_EventScript_Girl {
 	speakername("Girl")
-	msgbox(format("What? Oh, I don't fight.\pMy Pokémon and I are just strolling."), MSGBOX_NPC)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 EMOTE_NORMAL}What? Oh, I don't fight.\pMy Pokémon and I are just strolling."), MSGBOX_NPC)
 }
 
 script TranquilRoute_EventScript_WhiteslateRoadblock {

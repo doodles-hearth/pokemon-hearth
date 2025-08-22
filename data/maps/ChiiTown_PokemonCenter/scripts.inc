@@ -43,9 +43,21 @@ ChiiTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
 ChiiTown_PokemonCenter_EventScript_Nurse::
 	setvar VAR_0x800B, LOCALID_NURSE_CHII
 	setvar VAR_0x800A, LOCALID_CHANSEY_CHII
+	createfieldmugshot MUGSHOT_SUNRISE_NURSE, EMOTE_NORMAL
 	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
 	waitmessage
 	waitbuttonpress
+	removefieldmugshot
+	release
+	end
+
+
+ChiiTown_PokemonCenter_EventScript_NurseSleep::
+	createfieldmugshot MUGSHOT_SUNRISE_NURSE, EMOTE_NORMAL
+	call Common_EventScript_PkmnCenterNurse_Sleep
+	waitmessage
+	waitbuttonpress
+	removefieldmugshot
 	release
 	end
 
@@ -228,7 +240,7 @@ ChiiTown_PokemonCenter_EventScript_ShamisenFan_Text_0:
 	.string "Shamisen Fan$"
 
 ChiiTown_PokemonCenter_EventScript_ShamisenFan_Text_1:
-	.string "Such a beautiful voice…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_2 EMOTE_NORMAL}Such a beautiful voice…\p"
 	.string "Such sorrowful melodies…\p"
 	.string "Such ethereal beauty…\p"
 	.string "I could listen to her forever…\p"
@@ -239,14 +251,14 @@ ChiiTown_PokemonCenter_EventScript_Boy_Text_0:
 	.string "Little Girl$"
 
 ChiiTown_PokemonCenter_EventScript_Boy_Text_1:
-	.string "I'm here with my mama!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm here with my mama!\p"
 	.string "The music lady's nice!$"
 
 ChiiTown_PokemonCenter_EventScript_Mom_Text_0:
 	.string "Woman$"
 
 ChiiTown_PokemonCenter_EventScript_Mom_Text_1:
-	.string "Traveling shamisen players take\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}Traveling shamisen players take\n"
 	.string "shelter in Pokémon refuges when the\l"
 	.string "night falls.\p"
 	.string "Their singing makes for such a cosy\n"
@@ -256,7 +268,7 @@ ChiiTown_PokemonCenter_EventScript_WhereShamisen_Text_0:
 	.string "Weird man$"
 
 ChiiTown_PokemonCenter_EventScript_WhereShamisen_Text_1:
-	.string "Where's that cute shamisen player\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY EMOTE_NORMAL}Where's that cute shamisen player\n"
 	.string "that was here last night?$"
 
 ChiiTown_PokemonCenter_EventScript_IveComeALongWay_Text_0:
@@ -272,7 +284,7 @@ ChiiTown_PokemonCenter_EventScript_Snorunt_Text_0:
 	.string "Glaglaglaglagla!$"
 
 ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_0:
-	.string "Berries, ointments… Oh, right, I\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}Berries, ointments… Oh, right, I\n"
 	.string "should get a few more Poké Balls from\l"
 	.string "the town market!$"
 
@@ -280,7 +292,7 @@ ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_0:
 	.string "Talkative man$"
 
 ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_1:
-	.string "Isn't it amazing?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_1 EMOTE_NORMAL}Isn't it amazing?\p"
 	.string "This is one of the many brand new\n"
 	.string "Pokémon refuges that the Pokémon\l"
 	.string "Council has built in towns across all\l"
@@ -300,7 +312,7 @@ ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_0:
 	.string "Little Boy$"
 
 ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_1:
-	.string "You know what happens if I see a\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}You know what happens if I see a\n"
 	.string "Pokémon and I don't know its name?\p"
 	.string "I just make it right up!\n"
 	.string "I don't care about any silly “real”\l"

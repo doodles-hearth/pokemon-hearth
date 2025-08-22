@@ -52,7 +52,7 @@ script GinkoWoods_EventScript_OldMan {
 	lock
 	faceplayer
 	speakername("Old Man")
-	msgbox(format("These woods are fascinating.\pThere seem to be a lot of yellow Pokémon here."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}These woods are fascinating.\pThere seem to be a lot of yellow Pokémon here."))
 	release
 	end
 }

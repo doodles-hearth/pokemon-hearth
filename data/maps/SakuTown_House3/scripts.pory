@@ -44,7 +44,7 @@ script SakuTown_House3_EventScript_TradeMe {
 	faceplayer
     if (flag(FLAG_FORTREE_NPC_TRADE_COMPLETED)) {
         speakername("Little boy")
-        msgbox(format("Thank you!"))
+        msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}Thank you!"))
         closemessage
     } else {
         setvar(VAR_0x8008, INGAME_TRADE_PSYDUCK)
@@ -55,7 +55,7 @@ script SakuTown_House3_EventScript_TradeMe {
         speakername("Little boy")
         msgbox(
             format(
-                "The best thing about Pokémon is trading them around!\p"
+                "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}The best thing about Pokémon is trading them around!\p"
                 "I want a Hoothoot, but my pa doesn't let me go out at night.\p"
                 "I'll trade you a super dope Psyduck for it!"
             ), MSGBOX_YESNO
@@ -63,7 +63,7 @@ script SakuTown_House3_EventScript_TradeMe {
 
 	    if (var(VAR_RESULT) == NO || var(VAR_RESULT) == MULTI_B_PRESSED) {
             speakername("Little boy")
-            msgbox(format("Keep your Hoothoot, I don't want it anyway…"))
+            msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}Keep your Hoothoot, I don't want it anyway…"))
             closemessage
         } else {
 	        special(ChoosePartyMon)
@@ -71,14 +71,14 @@ script SakuTown_House3_EventScript_TradeMe {
             copyvar(VAR_0x800A, VAR_0x8004)
             if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
                 speakername("Little boy")
-                msgbox(format("Keep your Hoothoot, I don't want it anyway…"))
+                msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}Keep your Hoothoot, I don't want it anyway…"))
                 closemessage
             } else {
                 copyvar(VAR_0x8005, VAR_0x800A)
                 specialvar(VAR_RESULT, GetTradeSpecies)
                 if (var(VAR_RESULT) != VAR_0x8009) {
                     speakername("Little boy")
-                    msgbox(format("I don't want your weird Pokémon! I want a Hoothoot!"))
+                    msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}I don't want your weird Pokémon! I want a Hoothoot!"))
                     closemessage
                 } else {
                     copyvar(VAR_0x8004, VAR_0x8008)
@@ -96,7 +96,7 @@ script SakuTown_House3_EventScript_TradeMe {
 
                     bufferspeciesname(STR_VAR_1, VAR_0x8009)
                     msgbox(format(
-                        "Yeahhh!! I have a {STR_VAR_1} now!\p"
+                        "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}Yeahhh!! I have a {STR_VAR_1} now!\p"
                         "Take good care of Bread for me, okay?"
                     ), MSGBOX_DEFAULT)
                     closemessage
@@ -113,11 +113,11 @@ script SakuTown_House3_EventScript_Man {
     speakername("Man")
     if (flag(FLAG_FORTREE_NPC_TRADE_COMPLETED)) {
         msgbox(format(
-            "Oh great, he's got yet another Pokémon…"
+            "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Oh great, he's got yet another Pokémon…"
         ))
     } else {
         msgbox(format(
-            "My son is really into this whole Pokémon trading business, huh…"
+            "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}My son is really into this whole Pokémon trading business, huh…"
         ))
     }
     closemessage

@@ -178,7 +178,7 @@ GinkoWoods_EventScript_OldMan_Text_0:
 	.string "Old Man$"
 
 GinkoWoods_EventScript_OldMan_Text_1:
-	.string "These woods are fascinating.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}These woods are fascinating.\p"
 	.string "There seem to be a lot of yellow\n"
 	.string "Pokémon here.$"
 

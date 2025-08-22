@@ -125,10 +125,10 @@ SakuTown_House3_EventScript_TradeMe_Text_0:
 	.string "Little boy$"
 
 SakuTown_House3_EventScript_TradeMe_Text_1:
-	.string "Thank you!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}Thank you!$"
 
 SakuTown_House3_EventScript_TradeMe_Text_2:
-	.string "The best thing about Pokémon is\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}The best thing about Pokémon is\n"
 	.string "trading them around!\p"
 	.string "I want a Hoothoot, but my pa doesn't\n"
 	.string "let me go out at night.\p"
@@ -136,24 +136,24 @@ SakuTown_House3_EventScript_TradeMe_Text_2:
 	.string "for it!$"
 
 SakuTown_House3_EventScript_TradeMe_Text_3:
-	.string "Keep your Hoothoot, I don't want it\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}Keep your Hoothoot, I don't want it\n"
 	.string "anyway…$"
 
 SakuTown_House3_EventScript_TradeMe_Text_4:
-	.string "I don't want your weird Pokémon! I\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}I don't want your weird Pokémon! I\n"
 	.string "want a Hoothoot!$"
 
 SakuTown_House3_EventScript_TradeMe_Text_5:
-	.string "Yeahhh!! I have a {STR_VAR_1} now!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}Yeahhh!! I have a {STR_VAR_1} now!\p"
 	.string "Take good care of Bread for me, okay?$"
 
 SakuTown_House3_EventScript_Man_Text_0:
 	.string "Man$"
 
 SakuTown_House3_EventScript_Man_Text_1:
-	.string "Oh great, he's got yet another\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Oh great, he's got yet another\n"
 	.string "Pokémon…$"
 
 SakuTown_House3_EventScript_Man_Text_2:
-	.string "My son is really into this whole\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}My son is really into this whole\n"
 	.string "Pokémon trading business, huh…$"

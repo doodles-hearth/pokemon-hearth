@@ -135,7 +135,7 @@ script KuraTown_EventScript_SilkScarf {
 		speakername("Girl")
 		msgbox(
 			format(
-				"Sigh… Now I'm scarfless…\p"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Sigh… Now I'm scarfless…\p"
 				"Well, at least I'm not committing any more crimes against fashion…"
 			)
 		)
@@ -144,7 +144,7 @@ script KuraTown_EventScript_SilkScarf {
 		speakername("Girl")
 		msgbox(
 			format(
-				"Hey, you! Yes, you! I need some super-urgent fashion advice!\p"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Hey, you! Yes, you! I need some super-urgent fashion advice!\p"
 				"I bought myself this scarf in Yifu City… But now I'm worried the white clashes with my complexion!\p"
 				"Is it awful?\nDoes it make my skin look grey?\p"
 				"Oh gosh, it does, doesn't it? I knew it! I have to get rid of it right this moment!\p"
@@ -189,6 +189,7 @@ script KuraTown_EventScript_Scyther {
 script KuraTown_EventScript_Guard {
 	lock
 	faceplayer
+	speakername("Guard")
 	msgbox(
 		format(
 			"Hope you didn't have too much trouble passing the gate.\p"
@@ -216,7 +217,7 @@ script KuraTown_EventScript_LovestruckGuy{
 	speakername("Lovestruck Boy")
 	msgbox(
 		format(
-			"I just got back home after spending time with my love, and yet I already want the day to pass by and let me see her again…"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 EMOTE_NORMAL}I just got back home after spending time with my love, and yet I already want the day to pass by and let me see her again…"
 		),
 		MSGBOX_DEFAULT
 	)
@@ -228,7 +229,7 @@ script KuraTown_EventScript_PokemonCouncil {
 	faceplayer	
 	speakername("Woman")
 	msgbox(format(
-		"The Elders of the Toku Council may look like a bunch of frail old people, but each of them was once a formidable Wielder!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 EMOTE_NORMAL}The Elders of the Toku Council may look like a bunch of frail old people, but each of them was once a formidable Wielder!\p"
 		"They paved the way for what Pokémon Wielding is today, and will be tomorrow."
 	))
 	closemessage
@@ -338,7 +339,7 @@ script KuraTown_EventScript_AnxiousAshii {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 	speakername("Ashii")
 	msgbox(format(
-		"My heart is racing… Where is he?\nI hope he's alright…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}My heart is racing… Where is he?\nI hope he's alright…\p"
 		"I'm worried…\nCan you check down south for me?"
 	))
 	closemessage
@@ -353,7 +354,7 @@ script KuraTown_EventScript_AnxiousAshiiWaiting {
 	faceplayer
 	speakername("Ashii")
 	msgbox(format(
-		"I'm worried…\nCan you check down south for me?"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm worried…\nCan you check down south for me?"
 	))
 	closemessage
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_down))
@@ -367,7 +368,7 @@ script KuraTown_EventScript_PreventEscape {
 	waitmovement(LOCALID_ASHII)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	speakername("Ashii")
-	msgbox(format("Where on earth are you going, {PLAYER}?!\p{FONT_SMALL_NARROW}Please don't leave me here alone…"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Where on earth are you going, {PLAYER}?!\p{FONT_SMALL_NARROW}Please don't leave me here alone…"))
 	waitmessage
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down * 2))

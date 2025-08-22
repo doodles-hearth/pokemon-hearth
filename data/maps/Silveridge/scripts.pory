@@ -34,7 +34,7 @@ script Silveridge_EventScript_LotOfRocks {
 	faceplayer
 	speakername("Guy")
 	msgbox(format(
-		"We don't have a lot of natural resources here in Silveridge.\p"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_FAT_GUY EMOTE_NORMAL}We don't have a lot of natural resources here in Silveridge.\p"
 		"We don't have a lot of wood…\p"
 		"Or steel…\p"
 		"Or freshwater…\p"
@@ -49,7 +49,7 @@ script Silveridge_EventScript_HousesMadeOfSilverTunnelStone {
 	faceplayer
 	speakername("Woman")
 	msgbox(format(
-		"See the houses around here? They were all built using the stones leftover from digging the Silver tunnel."
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}See the houses around here? They were all built using the stones leftover from digging the Silver tunnel."
 	))
 	release
 }
@@ -59,7 +59,7 @@ script Silveridge_EventScript_MissingStatue {
 	faceplayer
 	speakername("Man")
 	msgbox(format(
-		"Hello, traveler. Have you looked at this stunning statue that makes the pride of our town?\p"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_2 EMOTE_NORMAL}Hello, traveler. Have you looked at this stunning statue that makes the pride of our town?\p"
 		"…Is what I would say if we had one.\p"
 		"There used to be a statue, but a quake destroyed it long ago, so now we're left with this empty pedestal.\p"
 		"There's an excentric man that lives nearby and that calls himself “The Sculptor”.\p"
@@ -87,11 +87,11 @@ script Silveridge_EventScript_Mart {
 	lock
 	faceplayer
 	speakername("Shopkeeper")
-	message(format("Welcome to Silveridge's market!\nSorry, we're fresh out of rocks!"))
+	message(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Welcome to Silveridge's market!\nSorry, we're fresh out of rocks!"))
 	waitmessage
 	pokemart(Silveridge_Mart)
 	speakername("Shopkeeper")
-	msgbox(format("I hope you found what you were looking for!"), MSGBOX_DEFAULT)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}I hope you found what you were looking for!"), MSGBOX_DEFAULT)
 	release
 }
 

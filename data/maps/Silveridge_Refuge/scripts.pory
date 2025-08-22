@@ -16,7 +16,7 @@ mapscripts Silveridge_Refuge_MapScripts {
 script Silveridge_Refuge_EventScript_ImWorried {
 	speakername("Woman")
 	msgbox(format(
-		"The whole town trembles from the Volcano's quakes…\p"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}The whole town trembles from the Volcano's quakes…\p"
 		"I'm so worried…"
 	), MSGBOX_NPC)
 }
@@ -55,12 +55,12 @@ script Silveridge_Refuge_EventScript_FirebringerFangirl {
 	if (var(VAR_0x8000) == TIME_EARLY_MORNING || var(VAR_0x8000) == TIME_MORNING) {
 		speakername("Girl")
 		msgbox(format(
-			"The Firebringer is coming to Silveridge today! Gosh, I can't wait!"
+			"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}The Firebringer is coming to Silveridge today! Gosh, I can't wait!"
 		), MSGBOX_NPC)
 	} else {
 		speakername("Girl")
 		msgbox(format(
-			"Oh gosh, look at him…\nHe's so…\lRough-looking…\lAnd handsome…And he smells like smoke…\p"
+			"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}Oh gosh, look at him…\nHe's so…\lRough-looking…\lAnd handsome…And he smells like smoke…\p"
 			"Sigh…"
 		), MSGBOX_NPC)
 	}
@@ -69,7 +69,7 @@ script Silveridge_Refuge_EventScript_FirebringerFangirl {
 script Silveridge_Refuge_EventScript_Artist {
 	speakername("Artist")
 	msgbox(format(
-		"Listening to the musician's sweet song inspires me so!"
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Listening to the musician's sweet song inspires me so!"
 	), MSGBOX_NPC)
 }
 

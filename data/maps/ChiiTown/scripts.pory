@@ -65,17 +65,17 @@ script ChiiTown_EventScript_WatchfulMom{
 	switch(var(VAR_0x8000)){
 		case TIME_MORNING:
 			msgbox(format(
-				"I'm dropping off my children to school.\p"
+				"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}I'm dropping off my children to school.\p"
 				"With all the recent Pokémon attacks, I will not let them leave my sight!"
 			), MSGBOX_NPC)	
 		case TIME_AFTERNOON:
 			msgbox(format(
-				"I'm waiting to pick up my children after school.\p"
+				"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}I'm waiting to pick up my children after school.\p"
 				"With all the recent Pokémon attacks, I will not let them leave my sight!"
 			), MSGBOX_NPC)
 		default:
 			msgbox(format(
-				"Phew… Being a full-time mom is exhausting…"
+				"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}Phew… Being a full-time mom is exhausting…"
 			), MSGBOX_NPC)
 	}
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
@@ -85,7 +85,7 @@ script ChiiTown_EventScript_WatchfulMom{
 script ChiiTown_EventScript_Shopper {
 	speakername("Woman")
 	msgbox(format(
-		"The lady who keeps the town's market has started selling Pokémon medicine and Poké Balls!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}The lady who keeps the town's market has started selling Pokémon medicine and Poké Balls!\p"
 		"Be careful, though: the ointments she sells can't be used in the middle of a battle.\p"
 		"They are super cheap though, so don't be afraid to use them so you don't always have to run to the nearest refuge!"
 	), MSGBOX_NPC)
@@ -108,7 +108,7 @@ script ChiiTown_EventScript_Kecleon {
 script ChiiTown_EventScript_PlantingFlowers {
 	speakername("Little girl")
 	msgbox(format(
-		"I'm planting flowers so that the wild Pokémon become happy again!"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm planting flowers so that the wild Pokémon become happy again!"
 	), MSGBOX_NPC)
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
@@ -117,7 +117,7 @@ script ChiiTown_EventScript_PlantingFlowers {
 script ChiiTown_EventScript_AlsoPlantingFlowers {
 	speakername("Little boy")
 	msgbox(format(
-		"She's making me plant flowers so that the wild Pokémon become happy again.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}She's making me plant flowers so that the wild Pokémon become happy again.\p"
 		"I'm not though…"
 	), MSGBOX_NPC)
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
@@ -127,7 +127,7 @@ script ChiiTown_EventScript_AlsoPlantingFlowers {
 script ChiiTown_EventScript_WatchingTheChildren {
 	speakername("Sensei")
 	msgbox(format(
-		"To make sure the children's energy isn't pent up too much, I bring them out for recess."
+		"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}To make sure the children's energy isn't pent up too much, I bring them out for recess."
 	), MSGBOX_NPC)
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
@@ -138,7 +138,7 @@ script ChiiTown_EventScript_EatingBerries {
 	faceplayer
 	speakername("Twin girl")
 	msgbox(format(
-		"Sensei said that we should eat berries to grow big and strong!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Sensei said that we should eat berries to grow big and strong!\p"
 		"But how are we supposed to get them if we aren't big and strong yet?"
 	), MSGBOX_DEFAULT)
 	closemessage
@@ -157,7 +157,7 @@ script ChiiTown_EventScript_EatingBerries {
 			removeitem(ITEM_ORAN_BERRY)
 			speakername("Twin girl")
 			msgbox(format(
-				"Oh my gosh, thank you!"
+				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Oh my gosh, thank you!"
 			), MSGBOX_DEFAULT)
 			closemessage
 
@@ -175,7 +175,7 @@ script ChiiTown_EventScript_BerryEnthusiast {
 	faceplayer
 	speakername("Twin boy")
 	msgbox(format(
-		"I've been eating berries just like Sensei said, but I haven't grown yet.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}I've been eating berries just like Sensei said, but I haven't grown yet.\p"
 		"I don't care though. They're delicious!"
 	))
 	closemessage
@@ -192,7 +192,7 @@ script ChiiTown_EventScript_BattlingGirl {
 		special(GetPlayerMrMrsString)
 		speakername("Little girl")
 		msgbox(format(
-			"Wow, {STR_VAR_1}! You're super strong!!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Wow, {STR_VAR_1}! You're super strong!!\p"
 			"I'll have to train Snuggles a whole lot more!"
 		))
 		closemessage
@@ -210,7 +210,7 @@ script ChiiTown_EventScript_BattlingGirl {
 		special(GetPlayerMrMrsString)
 		speakername("Little girl")
 		msgbox(format(
-			"Hey {STR_VAR_1}! We've been studying Pokémon battles in class. Wanna fight with us?"
+			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Hey {STR_VAR_1}! We've been studying Pokémon battles in class. Wanna fight with us?"
 		))
 		mcdialogue(
 			"Sure!",
@@ -230,7 +230,7 @@ script ChiiTown_EventScript_BattlingGirl {
 			special(GetPlayerMrMrsString)
 			speakername("Little girl")
 			msgbox(format(
-				"Wow, {STR_VAR_1}! You're super strong!!\p"
+				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Wow, {STR_VAR_1}! You're super strong!!\p"
 				"I'll have to train Snuggles a whole lot more!"
 			))
 			closemessage
@@ -239,7 +239,7 @@ script ChiiTown_EventScript_BattlingGirl {
 		} else {
 			speakername("Little girl")
 			msgbox(format(
-				"Ughhhh, older kids are so boooring!"
+				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Ughhhh, older kids are so boooring!"
 			))
 			closemessage
 		}
@@ -259,7 +259,7 @@ script ChiiTown_EventScript_BattlingBoy {
 		special(GetPlayerMrMrsString)
 		speakername("Little boy")
 		msgbox(format(
-			"Wow, {STR_VAR_1}! Can you be our sensei?\p"
+			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Wow, {STR_VAR_1}! Can you be our Sensei?\p"
 			"That way, Destroyer will be invincible!"
 		))
 		closemessage
@@ -270,7 +270,7 @@ script ChiiTown_EventScript_BattlingBoy {
 		special(GetPlayerMrMrsString)
 		speakername("Little boy")
 		msgbox(format(
-			"Hello {STR_VAR_1}! We're top of our class! That means we're strong! Wanna battle us?"
+			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Hello {STR_VAR_1}! We're top of our class! That means we're strong! Wanna battle us?"
 		))
 		mcdialogue(
 			"Sure!",
@@ -290,7 +290,7 @@ script ChiiTown_EventScript_BattlingBoy {
 			special(GetPlayerMrMrsString)
 			speakername("Little boy")
 			msgbox(format(
-				"Wow, {STR_VAR_1}! Can you be our sensei?\p"
+				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Wow, {STR_VAR_1}! Can you be our sensei?\p"
 				"That way, Destroyer will be invincible!"
 			))
 			closemessage
@@ -299,7 +299,7 @@ script ChiiTown_EventScript_BattlingBoy {
 		} else {
 			speakername("Little boy")
 			msgbox(format(
-				"Fine! Go do grownup stuff!"
+				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Fine! Go do grownup stuff!"
 			))
 			closemessage
 		}
@@ -315,7 +315,7 @@ script ChiiTown_EventScript_Mart {
 	lock
 	faceplayer
 	speakername("Shopkeeper")
-	message(format("Welcome to Chii Town's market! How may I help you?"))
+	message(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Welcome to Chii Town's market! How may I help you?"))
 	waitmessage
 	pokemart(ChiiTown_Mart)
 	speakername("Shopkeeper")

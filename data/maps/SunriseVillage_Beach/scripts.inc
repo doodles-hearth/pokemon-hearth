@@ -404,17 +404,17 @@ SunriseVillage_Event_LookingAtYifu_Text_0:
 	.string "Little Boy$"
 
 SunriseVillage_Event_LookingAtYifu_Text_1:
-	.string "My best friend lives all the way over\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}My best friend lives all the way over\n"
 	.string "there in Yifu City!\p"
 	.string "I don't get to see her often. I miss\n"
 	.string "her…$"
 
 SunriseVillage_Event_PokemonWontComeOut_Text_0:
-	.string "I'm going to catch my first Pokémon\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}I'm going to catch my first Pokémon\n"
 	.string "myself, all on my own!$"
 
 SunriseVillage_Event_PokemonWontComeOut_Text_1:
-	.string "Pspspsps… Come on out, Pokémon…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}Pspspsps… Come on out, Pokémon…\n"
 	.string "Pspsps…$"
 
 SunriseVillage_Event_ChildsMon_Text_0:
