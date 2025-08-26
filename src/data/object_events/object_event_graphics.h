@@ -235,13 +235,13 @@ const u32 gObjectEventPic_Miner[] = INCBIN_U32("graphics/object_events/pics/peop
 const u32 gObjectEventPic_NinjaBoy[] = INCBIN_U32("graphics/object_events/pics/people/purplish/ninja_boy.4bpp");
 const u32 gObjectEventPic_PonytaWoman[] = INCBIN_U32("graphics/object_events/pics/people/purplish/ponyta_woman.4bpp");
 const u32 gObjectEventPic_Youngster[] = INCBIN_U32("graphics/object_events/pics/people/purplish/youngster.4bpp");
+const u32 gObjectEventPic_PokemonBreederF[] = INCBIN_U32("graphics/object_events/pics/people/purplish/breeder_f.4bpp");
+const u32 gObjectEventPic_PokemonBreederM[] = INCBIN_U32("graphics/object_events/pics/people/purplish/breeder_m.4bpp");
 
 // Woody pal
 const u32 gObjectEventPic_Monk[] = INCBIN_U32("graphics/object_events/pics/people/woody/monk.4bpp");
 const u32 gObjectEventPic_OldMan[] = INCBIN_U32("graphics/object_events/pics/people/woody/old_man.4bpp");
 const u32 gObjectEventPic_OldWoman[] = INCBIN_U32("graphics/object_events/pics/people/woody/old_woman.4bpp");
-const u32 gObjectEventPic_PokemonBreederF[] = INCBIN_U32("graphics/object_events/pics/people/woody/pokemon_breeder_f.4bpp");
-const u32 gObjectEventPic_PokemonBreederM[] = INCBIN_U32("graphics/object_events/pics/people/woody/pokemon_breeder_m.4bpp");
 const u32 gObjectEventPic_SwimmerF[] = INCBIN_U32("graphics/object_events/pics/people/woody/swimmer_swimming_f.4bpp");
 const u32 gObjectEventPic_Traveler[] = INCBIN_U32("graphics/object_events/pics/people/woody/traveler.4bpp");
 const u32 gObjectEventPic_Valet[] = INCBIN_U32("graphics/object_events/pics/people/woody/valet.4bpp");

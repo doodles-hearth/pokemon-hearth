@@ -133,20 +133,20 @@ SunriseVillage_RivalsHouse_EventScript_Man_Text_0:
 	.string "Natsuki's dad$"
 
 SunriseVillage_RivalsHouse_EventScript_Man_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_HOT_MAN_2 EMOTE_NORMAL}Hello, {PLAYER}.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 EMOTE_NORMAL}Hello, {PLAYER}.\n"
 	.string "How is your adventure going?\p"
 	.string "Make sure you come back home\n"
 	.string "to see your sister sometimes,\l"
 	.string "I'm sure she misses you.$"
 
 SunriseVillage_RivalsHouse_EventScript_Man_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_HOT_MAN_2 EMOTE_NORMAL}It was tough when Natsuki and I\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 EMOTE_NORMAL}It was tough when Natsuki and I\n"
 	.string "first moved all the way down here.\p"
 	.string "Things are better now.\n"
 	.string "We both needed a fresh start.$"
 
 SunriseVillage_RivalsHouse_EventScript_Man_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_HOT_MAN_2 EMOTE_NORMAL}Hello, {PLAYER}! How are you doing?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 EMOTE_NORMAL}Hello, {PLAYER}! How are you doing?\n"
 	.string "Off to some trouble with Natsuki, I\l"
 	.string "bet?$"
 

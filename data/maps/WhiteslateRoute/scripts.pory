@@ -162,23 +162,23 @@ script WhiteslateRoute_EventScript_ShamisenPlayerPokemon {
 script WhiteslateRoute_EventScript_Itsumi {
 	trainerbattle_single(
 		TRAINER_ITSUMI,
-		format("Do you nurture your Pokémon with love?"),
+		format("{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Do you nurture your Pokémon with love?"),
 		format("Oh, you do!")
 	)
 	speakername("Itsumi")
-	msgbox(format("I am glad we met! Your Pokémon seem so happy."), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}I am glad we met! Your Pokémon seem so happy."), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WhiteslateRoute_EventScript_Ryosuke {
 	trainerbattle_single(
 		TRAINER_RYOSUKE,
-		format("I massage my Pokémon after each battle!"),
+		format("{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}I massage my Pokémon after each battle!"),
 		format("Can somebody give me a massage?")
 	)
 	speakername("Ryosuke")
 	// TODO EVA
-	msgbox(format("I heard there was a very talented masseur in Saberside Town.\pI want to see for myself!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}I heard there was a very talented masseur in Saberside Town.\pI want to see for myself!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -254,7 +254,7 @@ script WhiteslateRoute_EventScript_Utaro {
 script WhiteslateRoute_EventScript_ShuckleGirl {
 	setnamedmon(SPECIES_SHUCKLE)
 	speakername("Woman")
-	msgbox(format("This Shuckle lives around here. I feed him fresh berries every morning!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}This Shuckle lives around here. I feed him fresh berries every morning!"), MSGBOX_AUTOCLOSE)
 	end
 }
 

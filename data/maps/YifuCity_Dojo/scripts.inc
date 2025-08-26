@@ -978,13 +978,13 @@ YifuCity_Dojo_EventScript_Dance3_Text_7:
 	.string "foot, did you?$"
 
 YifuCity_Dojo_EventScript_Advice_Text_0:
-	.string "Such grace! Such swiftness!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Such grace! Such swiftness!\n"
 	.string "I am wowed!\p"
 	.string "{PLAYER}…\n"
 	.string "That's a name to be remembered!$"
 
 YifuCity_Dojo_EventScript_Advice_Text_1:
-	.string "Hello, young challenger, and welcome\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\n"
 	.string "to the Dance Hall Dojo!\p"
 	.string "Think you've got what it takes to see\n"
 	.string "through the dancer's intoxicating\l"

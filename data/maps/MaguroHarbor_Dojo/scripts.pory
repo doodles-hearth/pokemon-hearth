@@ -177,17 +177,17 @@ script MaguroHarbor_Dojo_EventScript_Advice {
 	if (flag(FLAG_BADGE01_GET)) {
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 			msgbox(format(
-				"You swept me away with that battle!\p"
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}You swept me away with that battle!\p"
 				"That quake just now nearly literally swept me away as well!"
 			), MSGBOX_AUTOCLOSE)
 		} else {
 			msgbox(format(
-				"You swept me away with that battle!"
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}You swept me away with that battle!"
 			))
 		}
 	} else {
 		msgbox(format(
-			"Hello, young challenger! Are you going to be fighting for your first Token?\p"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}Hello, young challenger! Are you going to be fighting for your first Token?\p"
 			"Welcome to the Koi Pond Dojo!\p"
 			"Koishi, the Master of this place, favors water-type moves. Her battling style is strong, yet graceful… Sigh…\p"
 			"I am her biggest fan! It's true! Maybe one day, I'll become your biggest fan, who knows?\p"

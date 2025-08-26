@@ -244,18 +244,18 @@ YifuCity_Refuge_2F_EventScript_Tourist_Text_0:
 	.string "Woman$"
 
 YifuCity_Refuge_2F_EventScript_Tourist_Text_1:
-	.string "I'm so glad we're able to spend our\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 EMOTE_NORMAL}I'm so glad we're able to spend our\n"
 	.string "vacation here.$"
 
 YifuCity_Refuge_2F_EventScript_TouristKid_Text_0:
 	.string "Little Boy$"
 
 YifuCity_Refuge_2F_EventScript_TouristKid_Text_1:
-	.string "We went to see the Dojo's dancers\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY EMOTE_NORMAL}We went to see the Dojo's dancers\n"
 	.string "today!$"
 
 YifuCity_Refuge_2F_EventScript_TouristGirl_Text_0:
-	.string "Ughh, I have to share the bed with my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}Ughh, I have to share the bed with my\n"
 	.string "baby brother…\p"
 	.string "Life is SO unfair!$"
 

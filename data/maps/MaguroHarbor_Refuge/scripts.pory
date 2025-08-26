@@ -5,8 +5,9 @@ mapscripts MaguroHarbor_Refuge_MapScripts {
 }
 
 script MaguroHarbor_Refuge_EventScript_Nurse {
-	setvar(VAR_0x800B, LOCALID_NURSE_MAGURO)
 	setvar(VAR_0x800A, LOCALID_CHANSEY_MAGURO)
+	setvar(VAR_0x800B, LOCALID_NURSE_MAGURO)
+	setvar(VAR_0x8009, MUGSHOT_SEASIDE_NURSE)
 	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
 	waitmessage
 	waitbuttonpress
@@ -149,12 +150,12 @@ script MaguroHarbor_Refuge_EventScript_DescribedMons {
 	speakername("Man")
 	if (getdescribedmon(SPECIES_KRABBY)) {
 		msgbox(format(
-			"So, have you written many entries in your encyclopedia?"
+			"{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}So, have you written many entries in your encyclopedia?"
 		))
 		closemessage
 	} else {
 		msgbox(format(
-		"Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
 		"I bet you're wondering how you can fill up the description of every Pokémon.\l"
 		"Well, asking around definitely helps!\p"
 		"For instance, Krabby sleeps burrowed inside holes in the sand, and did you know it can grow its pincers back if they fall during battle?\p"

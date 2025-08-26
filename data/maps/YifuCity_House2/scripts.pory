@@ -9,7 +9,7 @@ script YifuCity_House2_Seamstress {
 	faceplayer
 	speakername("Seamstress")
 	msgbox(format(
-		"I've been working day and night on a dress for the Samurai Chief's daugther.\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}I've been working day and night on a dress for the Samurai Chief's daugther.\p"
 		"This will be my greatest work!"
 	))
 	closemessage
@@ -19,7 +19,7 @@ script YifuCity_House2_Seamstress {
 
 	speakername("Seamstress")
 	msgbox(format(
-		"Tarountula, could you bring me some more of that red thread?"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Tarountula, could you bring me some more of that red thread?"
 	))
 	closemessage
 
@@ -35,13 +35,13 @@ script YifuCity_House2_Model {
 	
 	if(flag(FLAG_OBTAINED_CHOICE_SCARF)) {
 		msgbox(format(
-			"That Tarountula creeps me out…\nIt has so many legs…"
+			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}That Tarountula creeps me out…\nIt has so many legs…"
 		))
 		closemessage
 	} else {
 		speakername("Model")
 		msgbox(format(
-			"Yawn… Being a model is so tiring! My feet hurt from standing here for hours…\p"
+			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Yawn… Being a model is so tiring! My feet hurt from standing here for hours…\p"
 			"I do get some sweet free stuff though! Here, you can have this, I already have this color!"
 		))
 		closemessage

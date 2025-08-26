@@ -63,7 +63,7 @@ script YifuCity_Restaurant_EventScript_LonelyGirl {
 	faceplayer
 	speakername("Girl")
 	msgbox(format(
-		"I'm waiting for my date, but it seems he's late yet again…"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}I'm waiting for my date, but it seems he's late yet again…"
 	))
 	closemessage
 	release
@@ -78,7 +78,7 @@ script YifuCity_Restaurant_EventScript_OldWomen {
 	speakername("Old Woman")
 	msgbox(format(
 		// TODO EVA useful gossip
-		"Psst psst mumble gossip…"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Psst psst mumble gossip…"
 	))
 	closemessage
 
@@ -87,7 +87,7 @@ script YifuCity_Restaurant_EventScript_OldWomen {
 
 	speakername("Old Woman")
 	msgbox(format(
-		"Gossip gossip…\nHo ho ho…"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Gossip gossip…\nHo ho ho…"
 	))
 	closemessage
 
@@ -101,12 +101,12 @@ script YifuCity_Restaurant_EventScript_FatGuy {
 	gettimeofday
 	if (var(VAR_0x8000) == TIME_LUNCHTIME) {
 		msgbox(format(
-			"Chomp…\nJust gett'n a head start on lunch…\p"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}Chomp…\nJust gett'n a head start on lunch…\p"
 			"{FONT_SMALL}Burp…{FONT_NORMAL} Ahem.\nIf you'll excuse me."
 		))
 	} else {
 		msgbox(format(
-			"UHHHHG I ate too much…"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}UHHHHG I ate too much…"
 		))
 	}
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)

@@ -594,7 +594,7 @@ WhiteslateRoute_EventScript_ShamisenPlayerPokemon_Text_0:
 	.string "Arf!$"
 
 WhiteslateRoute_EventScript_Itsumi_Text_0:
-	.string "Do you nurture your Pokémon with\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Do you nurture your Pokémon with\n"
 	.string "love?$"
 
 WhiteslateRoute_EventScript_Itsumi_Text_1:
@@ -604,11 +604,11 @@ WhiteslateRoute_EventScript_Itsumi_Text_2:
 	.string "Itsumi$"
 
 WhiteslateRoute_EventScript_Itsumi_Text_3:
-	.string "I am glad we met! Your Pokémon seem\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}I am glad we met! Your Pokémon seem\n"
 	.string "so happy.$"
 
 WhiteslateRoute_EventScript_Ryosuke_Text_0:
-	.string "I massage my Pokémon after each\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}I massage my Pokémon after each\n"
 	.string "battle!$"
 
 WhiteslateRoute_EventScript_Ryosuke_Text_1:
@@ -618,7 +618,7 @@ WhiteslateRoute_EventScript_Ryosuke_Text_2:
 	.string "Ryosuke$"
 
 WhiteslateRoute_EventScript_Ryosuke_Text_3:
-	.string "I heard there was a very talented\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}I heard there was a very talented\n"
 	.string "masseur in Saberside Town.\p"
 	.string "I want to see for myself!$"
 
@@ -707,7 +707,7 @@ WhiteslateRoute_EventScript_ShuckleGirl_Text_0:
 	.string "Woman$"
 
 WhiteslateRoute_EventScript_ShuckleGirl_Text_1:
-	.string "This Shuckle lives around here. I feed\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}This Shuckle lives around here. I feed\n"
 	.string "him fresh berries every morning!$"
 
 WhiteslateRoute_EventScript_Deerling_Text_0:

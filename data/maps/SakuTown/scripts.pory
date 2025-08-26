@@ -426,7 +426,7 @@ script SakuTown_EventScript_MonHues {
 	faceplayer
 	speakername("Man")
 	msgbox(format(
-		"Have you ever paid close attention to the fur and feather colors of the wild Pokémon?\p"
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}Have you ever paid close attention to the fur and feather colors of the wild Pokémon?\p"
 		"They may all look the same at first…\nBut each one has its own totally unique colors!\p"
 		"Doesn't noticing that make your heart sing?"
 	))

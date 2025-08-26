@@ -25,6 +25,7 @@ YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 YifuCity_Refuge_EventScript_Nurse::
 	setvar VAR_0x800B, LOCALID_NURSE_YIFU
 	setvar VAR_0x800A, LOCALID_CHANSEY_YIFU
+	setvar VAR_0x8009, MUGSHOT_UUME_NURSE
 	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
 	waitmessage
 	waitbuttonpress
@@ -34,6 +35,7 @@ YifuCity_Refuge_EventScript_Nurse::
 
 YifuCity_Refuge_EventScript_FakeNurse::
 	setvar VAR_0x800B, 1
+	setvar VAR_0x800A, LOCALID_WOOBAT_YIFU
 	lock
 	faceplayer
 	setvar VAR_0x8004, 0
@@ -460,18 +462,18 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_0:
 	.string "Nurse$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_1:
-	.string "Gimme yer Pokémon, I'mma heal 'em\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Gimme yer Pokémon, I'mma heal 'em\n"
 	.string "good.$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_2:
-	.string "Yep, uh, good as new, probably!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 	.string "Ya know the drill, 500¥ please!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_3:
-	.string "C'magain, or whatever.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever.$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_4:
-	.string "Yep, uh, good as new, probably!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 	.string "Ya know the drill, 500¥ please!\p"
 	.string "… … …\n"
 	.string "… … …What? Yer THAT poor?\p"
@@ -481,7 +483,7 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_4:
 	.string "Now make like a Treecko 'n leave!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_5:
-	.string "Yep, uh, good as new, probably!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 	.string "By the way, that'll be 500¥, wow, so\n"
 	.string "cheap!$"
 
@@ -495,11 +497,11 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_8:
 	.string "Okay, I guess…$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_9:
-	.string "No whinin'! Fork over the cash before\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}No whinin'! Fork over the cash before\n"
 	.string "I call security!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_10:
-	.string "No whinin'! Fork over the cash before\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}No whinin'! Fork over the cash before\n"
 	.string "I call security!\p"
 	.string "… … …\n"
 	.string "… … …What? Yer THAT poor?\p"
@@ -509,12 +511,12 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_10:
 	.string "Now make like a Treecko 'n leave!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_11:
-	.string "…Really? Jus' like that?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Really? Jus' like that?\p"
 	.string "(Wow, this one's really dumb, huh?)\p"
 	.string "I mean, yeah, you better!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_12:
-	.string "…Really? Jus' like that?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Really? Jus' like that?\p"
 	.string "(Wow, this one's really dumb, huh?)\p"
 	.string "… … …\n"
 	.string "… … …What? Ya don't have 'nuff cash?!\p"
@@ -575,14 +577,14 @@ YifuCity_Refuge_EventScript_ListenToShamisen_Text_0:
 	.string "Boy$"
 
 YifuCity_Refuge_EventScript_ListenToShamisen_Text_1:
-	.string "Whew… I've walked all day…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Whew… I've walked all day…\n"
 	.string "I am spent!$"
 
 YifuCity_Refuge_EventScript_OldMan_Text_0:
 	.string "Old Man$"
 
 YifuCity_Refuge_EventScript_OldMan_Text_1:
-	.string "I'm just resting my old bones by the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I'm just resting my old bones by the\n"
 	.string "fire.\p"
 	.string "How the years go by swiftly…\n"
 	.string "Do treasure each passing day…$"

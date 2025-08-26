@@ -1197,7 +1197,7 @@ SakuTown_EventScript_Makuhita_Text_0:
 	.string "Kuhi!$"
 
 SakuTown_EventScript_MonHues_Text_0:
-	.string "Have you ever paid close attention to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}Have you ever paid close attention to\n"
 	.string "the fur and feather colors of the wild\l"
 	.string "Pokémon?\p"
 	.string "They may all look the same at first…\n"

@@ -160,7 +160,7 @@ Silveridge_EventScript_Wildflowers_Text_0:
 	.string "Boy$"
 
 Silveridge_EventScript_Wildflowers_Text_1:
-	.string "I loved gardening back when I lived on\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_BOY_2 EMOTE_NORMAL}I loved gardening back when I lived on\n"
 	.string "Havenisle.\p"
 	.string "When I first moved here, the barren\n"
 	.string "landscape made me very homesick.\p"
@@ -169,10 +169,10 @@ Silveridge_EventScript_Wildflowers_Text_1:
 	.string "the town.\p"
 	.string "I was told they symbolize eternal\n"
 	.string "love. I don't know about that, but\l"
-	.string "they make me happy! I wish I had\l"
-	.string "brought some seeds with me when I\l"
-	.string "left Havenisle, though. The flowers\l"
-	.string "there are so colorful!$"
+	.string "they make me happy!\p"
+	.string "I wish I had brought some seeds with\n"
+	.string "me when I left Havenisle, though. The\l"
+	.string "flowers there are so colorful!$"
 
 Silveridge_EventScript_Mart_Text_0:
 	.string "Shopkeeper$"

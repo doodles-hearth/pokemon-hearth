@@ -54,6 +54,10 @@ static const u32 sFieldMugshotGfx_BattleGirlNormal[] = INCBIN_U32("graphics/fiel
 
 static const u32 sFieldMugshotGfx_HotSpringFNormal[] = INCBIN_U32("graphics/field_mugshots/hot_spring_f/normal.4bpp.smol");
 
+static const u32 sFieldMugshotGfx_BreederMNormal[] = INCBIN_U32("graphics/field_mugshots/breeder_m/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_BreederFNormal[] = INCBIN_U32("graphics/field_mugshots/breeder_f/normal.4bpp.smol");
+
 // Sunrise
 
 static const u32 sFieldMugshotGfx_BigSisNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/big_sis/normal.4bpp.smol");
@@ -110,8 +114,62 @@ static const u32 sFieldMugshotGfx_MountainFatGuyNormal[] = INCBIN_U32("graphics/
 static const u32 sFieldMugshotGfx_MountainNurseNormal[] = INCBIN_U32("graphics/field_mugshots/mountain/nurse/normal.4bpp.smol");
 static const u32 sFieldMugshotGfx_MountainValetNormal[] = INCBIN_U32("graphics/field_mugshots/mountain/valet/normal.4bpp.smol");
 
+// Uume
+
+static const u32 sFieldMugshotGfx_UumeWoman1Normal[] = INCBIN_U32("graphics/field_mugshots/uume/woman_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeWoman2Normal[] = INCBIN_U32("graphics/field_mugshots/uume/woman_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeMan1Normal[] = INCBIN_U32("graphics/field_mugshots/uume/man_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeMan2Normal[] = INCBIN_U32("graphics/field_mugshots/uume/man_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeOldManNormal[] = INCBIN_U32("graphics/field_mugshots/uume/old_man/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/uume/old_woman/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeLittleBoyNormal[] = INCBIN_U32("graphics/field_mugshots/uume/little_boy/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeLittleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/uume/little_girl/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeGirl1Normal[] = INCBIN_U32("graphics/field_mugshots/uume/girl_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/uume/girl_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeBoy1Normal[] = INCBIN_U32("graphics/field_mugshots/uume/boy_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeBoy2Normal[] = INCBIN_U32("graphics/field_mugshots/uume/boy_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeFatGuyNormal[] = INCBIN_U32("graphics/field_mugshots/uume/fat_guy/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeNurseNormal[] = INCBIN_U32("graphics/field_mugshots/uume/nurse/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeValetNormal[] = INCBIN_U32("graphics/field_mugshots/uume/valet/normal.4bpp.smol");
+
+// Cold
+
+static const u32 sFieldMugshotGfx_ColdWoman1Normal[] = INCBIN_U32("graphics/field_mugshots/cold/woman_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdWoman2Normal[] = INCBIN_U32("graphics/field_mugshots/cold/woman_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdMan1Normal[] = INCBIN_U32("graphics/field_mugshots/cold/man_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdMan2Normal[] = INCBIN_U32("graphics/field_mugshots/cold/man_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdOldManNormal[] = INCBIN_U32("graphics/field_mugshots/cold/old_man/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/cold/old_woman/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdLittleBoyNormal[] = INCBIN_U32("graphics/field_mugshots/cold/little_boy/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdLittleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/cold/little_girl/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdGirl1Normal[] = INCBIN_U32("graphics/field_mugshots/cold/girl_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/cold/girl_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdBoy1Normal[] = INCBIN_U32("graphics/field_mugshots/cold/boy_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdBoy2Normal[] = INCBIN_U32("graphics/field_mugshots/cold/boy_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdFatGuyNormal[] = INCBIN_U32("graphics/field_mugshots/cold/fat_guy/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdNurseNormal[] = INCBIN_U32("graphics/field_mugshots/cold/nurse/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdValetNormal[] = INCBIN_U32("graphics/field_mugshots/cold/valet/normal.4bpp.smol");
+
+// Seaside
+
+static const u32 sFieldMugshotGfx_SeasideWoman1Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/woman_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideWoman2Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/woman_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideMan1Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/man_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideMan2Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/man_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideOldManNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/old_man/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/old_woman/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideLittleBoyNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/little_boy/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideLittleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/little_girl/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideGirl1Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/girl_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/girl_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideBoy1Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/boy_1/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideBoy2Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/boy_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideFatGuyNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/fat_guy/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideNurseNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/nurse/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideValetNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/valet/normal.4bpp.smol");
+
 // Hot
-static const u32 sFieldMugshotGfx_HotMan2Normal[] = INCBIN_U32("graphics/field_mugshots/hot/man_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_HotMan1Normal[] = INCBIN_U32("graphics/field_mugshots/hot/man_1/normal.4bpp.smol");
 
 struct MugshotGfx
 {
@@ -318,12 +376,31 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
             .pal = gObjectEventPal_Npc_Purplish,
         },
     },
+
     [MUGSHOT_HOT_SPRING_F] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_HotSpringFNormal,
             .pal = gObjectEventPal_Npc_Greenish,
+        },
+    },
+
+    [MUGSHOT_BREEDER_M] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_BreederMNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+
+    [MUGSHOT_BREEDER_F] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_BreederFNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
 
@@ -585,13 +662,151 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         }
     },
 
-    // Hot
+    // Seaside
 
-    [MUGSHOT_HOT_MAN_2] =
+    [MUGSHOT_SEASIDE_WOMAN_1] =
     {
         [EMOTE_NORMAL] =
         {
-            .gfx = sFieldMugshotGfx_HotMan2Normal,
+            .gfx = sFieldMugshotGfx_SeasideWoman1Normal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_WOMAN_2] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideWoman2Normal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_MAN_1] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideMan1Normal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_MAN_2] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideMan2Normal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_OLD_MAN] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideOldManNormal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_OLD_WOMAN] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideOldWomanNormal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_LITTLE_BOY] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideLittleBoyNormal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_LITTLE_GIRL] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideLittleGirlNormal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_GIRL_1] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideGirl1Normal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_GIRL_2] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideGirl2Normal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_BOY_1] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideBoy1Normal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_BOY_2] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideBoy2Normal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_FAT_GUY] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideFatGuyNormal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_NURSE] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideNurseNormal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+    [MUGSHOT_SEASIDE_VALET] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SeasideValetNormal,
+            .pal = gObjectEventPal_Npc_Seaside,
+        }
+    },
+
+
+    // Hot
+
+    [MUGSHOT_HOT_MAN_1] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_HotMan1Normal,
             .pal = gObjectEventPal_Npc_Hot,
         }
     },
@@ -714,6 +929,277 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_MountainValetNormal,
             .pal = gObjectEventPal_Npc_Mountain,
+        }
+    },
+
+    [MUGSHOT_UUME_WOMAN_1] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeWoman1Normal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_WOMAN_2] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeWoman2Normal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_MAN_1] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeMan1Normal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_MAN_2] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeMan2Normal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_OLD_MAN] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeOldManNormal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_OLD_WOMAN] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeOldWomanNormal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_LITTLE_BOY] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeLittleBoyNormal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_LITTLE_GIRL] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeLittleGirlNormal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_GIRL_1] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeGirl1Normal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_GIRL_2] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeGirl2Normal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_BOY_1] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeBoy1Normal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_BOY_2] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeBoy2Normal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_FAT_GUY] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeFatGuyNormal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_NURSE] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeNurseNormal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+    
+    [MUGSHOT_UUME_VALET] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_UumeValetNormal,
+            .pal = gObjectEventPal_Npc_Uume,
+        }
+    },
+
+
+    [MUGSHOT_COLD_WOMAN_1] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdWoman1Normal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_WOMAN_2] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdWoman2Normal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_MAN_1] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdMan1Normal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_MAN_2] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdMan2Normal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_OLD_MAN] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdOldManNormal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_OLD_WOMAN] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdOldWomanNormal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_LITTLE_BOY] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdLittleBoyNormal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_LITTLE_GIRL] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdLittleGirlNormal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_GIRL_1] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdGirl1Normal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_GIRL_2] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdGirl2Normal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_BOY_1] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdBoy1Normal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_BOY_2] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdBoy2Normal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_FAT_GUY] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdFatGuyNormal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_NURSE] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdNurseNormal,
+            .pal = gObjectEventPal_Npc_Cold,
+        }
+    },
+
+    [MUGSHOT_COLD_VALET] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ColdValetNormal,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 

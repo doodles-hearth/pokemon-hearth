@@ -7,7 +7,7 @@ script YifuCity_House1_1F_EventScript_Dad {
 	faceplayer
 	speakername("Man")
 	msgbox(format(
-		"Our kids are constantly yelling and running and bickering…\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Our kids are constantly yelling and running and bickering…\p"
 		"I can't ever get anything done!"
 	))
 	closemessage
@@ -19,7 +19,7 @@ script YifuCity_House1_1F_EventScript_Mom {
 	faceplayer
 	speakername("Woman")
 	msgbox(format(
-		"I bought the children two different dolls at the festival in Hanabi City…\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 EMOTE_NORMAL}I bought the children two different dolls at the festival in Hanabi City…\p"
 		"But now they're fighting over who has which!\p"
 		"I should have gotten two identical dolls…"
 	))

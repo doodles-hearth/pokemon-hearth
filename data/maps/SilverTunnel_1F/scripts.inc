@@ -79,7 +79,7 @@ SilverTunnel_1F_EventScript_Nerd_Text_0:
 	.string "Man$"
 
 SilverTunnel_1F_EventScript_Nerd_Text_1:
-	.string "Ugh…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Ugh…\p"
 	.string "I forgot to bring my fighting\n"
 	.string "Pokémon, so I got whooped by those\l"
 	.string "miners' rock Pokémon…$"

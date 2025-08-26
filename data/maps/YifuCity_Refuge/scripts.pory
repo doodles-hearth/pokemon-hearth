@@ -24,6 +24,7 @@ mapscripts YifuCity_Refuge_MapScripts {
 script YifuCity_Refuge_EventScript_Nurse {
 	setvar(VAR_0x800B, LOCALID_NURSE_YIFU)
 	setvar(VAR_0x800A, LOCALID_CHANSEY_YIFU)
+	setvar(VAR_0x8009, MUGSHOT_UUME_NURSE)
 	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
 	waitmessage
 	waitbuttonpress
@@ -33,11 +34,12 @@ script YifuCity_Refuge_EventScript_Nurse {
 
 script YifuCity_Refuge_EventScript_FakeNurse {
 	setvar(VAR_0x800B, LOCALID_NURSE_CROBAT)
+	setvar(VAR_0x800A, LOCALID_WOOBAT_YIFU)
 	lock
 	faceplayer
 	setvar(VAR_0x8004, 0)
 	speakername("Nurse")
-	msgbox(format("Gimme yer Pokémon, I'mma heal 'em good."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Gimme yer Pokémon, I'mma heal 'em good."))
 	closemessage
 
 	incrementgamestat(GAME_STAT_USED_POKECENTER)
@@ -49,7 +51,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 		if (checkmoney(500)) {
 			speakername("Nurse")
 			msgbox(format(
-				"Yep, uh, good as new, probably!\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 				"Ya know the drill, 500¥ please!"
 			))
 			playse(SE_SHOP)
@@ -58,12 +60,12 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 
 			speakername("Nurse")
 				msgbox(format(
-					"C'magain, or whatever."
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever."
 				))
 		} else {
 			speakername("Nurse")
 			msgbox(format(
-				"Yep, uh, good as new, probably!\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 				"Ya know the drill, 500¥ please!\p"
 				"… … …\n… … …What? Yer THAT poor?\p"
 				"I feel almost bad for ya, buddy…\p"
@@ -76,7 +78,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 		setflag(FLAG_GOT_SCAMMED_YIFU_REFUGE)
 		speakername("Nurse")
 		msgbox(format(
-			"Yep, uh, good as new, probably!\p"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 			"By the way, that'll be 500¥, wow, so cheap!"
 		))
 
@@ -95,7 +97,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 				if (checkmoney(500)) {
 					speakername("Nurse")
 					msgbox(format(
-						"No whinin'! Fork over the cash before I call security!"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}No whinin'! Fork over the cash before I call security!"
 					))
 					playse(SE_SHOP)
 					removemoney(500)
@@ -103,12 +105,12 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 
 					speakername("Nurse")
 					msgbox(format(
-						"C'magain, or whatever."
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever."
 					))
 				} else {
 					speakername("Nurse")
 					msgbox(format(
-						"No whinin'! Fork over the cash before I call security!\p"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}No whinin'! Fork over the cash before I call security!\p"
 						"… … …\n… … …What? Yer THAT poor?\p"
 						"I feel almost bad for ya, buddy…\p"
 						"I guess, uh… I guess we're good then, don' worry 'bout it.\p"
@@ -120,7 +122,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 				if (checkmoney(500)) {
 					speakername("Nurse")
 					msgbox(format(
-						"…Really? Jus' like that?\p"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Really? Jus' like that?\p"
 						"(Wow, this one's really dumb, huh?)\p"
 						"I mean, yeah, you better!"
 					))
@@ -131,12 +133,12 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 
 					speakername("Nurse")
 					msgbox(format(
-						"C'magain, or whatever."
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever."
 					))
 				} else {
 					speakername("Nurse")
 					msgbox(format(
-						"…Really? Jus' like that?\p"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Really? Jus' like that?\p"
 						"(Wow, this one's really dumb, huh?)\p"
 						"… … …\n… … …What? Ya don't have 'nuff cash?!\p"
 						"I can't believe it! I've been had!\p"
@@ -266,7 +268,7 @@ script YifuCity_Refuge_EventScript_ListenToShamisen {
 	faceplayer
 	speakername("Boy")
 	msgbox(format(
-		"Whew… I've walked all day…\nI am spent!"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Whew… I've walked all day…\nI am spent!"
 	))
 	closemessage
 	release
@@ -278,7 +280,7 @@ script YifuCity_Refuge_EventScript_OldMan {
 	faceplayer
 	speakername("Old Man")
 	msgbox(format(
-		"I'm just resting my old bones by the fire.\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I'm just resting my old bones by the fire.\p"
 		"How the years go by swiftly…\nDo treasure each passing day…"
 	))
 	closemessage

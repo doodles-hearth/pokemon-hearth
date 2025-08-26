@@ -43,7 +43,7 @@ ChiiTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
 ChiiTown_PokemonCenter_EventScript_Nurse::
 	setvar VAR_0x800B, LOCALID_NURSE_CHII
 	setvar VAR_0x800A, LOCALID_CHANSEY_CHII
-	createfieldmugshot MUGSHOT_SUNRISE_NURSE, EMOTE_NORMAL
+	setvar VAR_0x8009, MUGSHOT_SUNRISE_NURSE
 	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
 	waitmessage
 	waitbuttonpress

@@ -35,6 +35,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WOOBAT_YIFU",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(WOOBAT)",
       "x": 7,
       "y": 2,

@@ -512,29 +512,29 @@ BeachboundRoute_EventScript_RunningBoy_Text_0:
 	.string "Little boy$"
 
 BeachboundRoute_EventScript_RunningBoy_Text_1:
-	.string "Running running running!!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}Running running running!!\p"
 	.string "Yaaaaaaaay!!!$"
 
 BeachboundRoute_EventScript_RunningGirl_Text_0:
 	.string "Little girl$"
 
 BeachboundRoute_EventScript_RunningGirl_Text_1:
-	.string "Wait for me!! It's not fair!!!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}Wait for me!! It's not fair!!!$"
 
 BeachboundRoute_EventScript_AnnoyedGirl_Text_0:
 	.string "Annoyed girl$"
 
 BeachboundRoute_EventScript_AnnoyedGirl_Text_1:
-	.string "Hum… Could you maybe, like, leave?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}Hum… Could you maybe, like, leave?$"
 
 BeachboundRoute_EventScript_AnnoyedGirl_Text_2:
-	.string "I wish those kids would leave…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I wish those kids would leave…$"
 
 BeachboundRoute_EventScript_AnnoyedBoy_Text_0:
 	.string "Annoyed boy$"
 
 BeachboundRoute_EventScript_AnnoyedBoy_Text_1:
-	.string "I brought my date to the Lover's\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 EMOTE_NORMAL}I brought my date to the Lover's\n"
 	.string "Meadow, but I kind of thought we'd be\l"
 	.string "alone…$"
 
@@ -566,7 +566,7 @@ BeachboundRoute_EventScript_Karu_Text_3:
 	.string "have you been a Wielder?$"
 
 BeachboundRoute_EventScript_Kin_Text_0:
-	.string "I run several hours everyday! You\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I run several hours everyday! You\n"
 	.string "literally cannot defeat me!$"
 
 BeachboundRoute_EventScript_Kin_Text_1:
@@ -576,7 +576,7 @@ BeachboundRoute_EventScript_Kin_Text_2:
 	.string "Kin$"
 
 BeachboundRoute_EventScript_Kin_Text_3:
-	.string "You really don't look strong at all,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}You really don't look strong at all,\n"
 	.string "and yet…$"
 
 BeachboundRoute_EventScript_Kouta_Text_0:
@@ -753,14 +753,14 @@ BeachboundRoute_EventScript_Mugging_Text_28:
 	.string "Woman$"
 
 BeachboundRoute_EventScript_Mugging_Text_29:
-	.string "Thank you so much for helping me!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_1 EMOTE_NORMAL}Thank you so much for helping me!\p"
 	.string "Those ruffians were about to steal my\n"
 	.string "Pokémon!\p"
 	.string "I don't have much to offer you as a\n"
 	.string "thanks, but please take this!$"
 
 BeachboundRoute_EventScript_Mugging_Text_30:
-	.string "What's your name?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_1 EMOTE_NORMAL}What's your name?\n"
 	.string "{PLAYER}?\p"
 	.string "I'll be sure to tell everyone what a\n"
 	.string "hero you are!$"

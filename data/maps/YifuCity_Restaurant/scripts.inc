@@ -144,30 +144,30 @@ YifuCity_Restaurant_EventScript_LonelyGirl_Text_0:
 	.string "Girl$"
 
 YifuCity_Restaurant_EventScript_LonelyGirl_Text_1:
-	.string "I'm waiting for my date, but it seems\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}I'm waiting for my date, but it seems\n"
 	.string "he's late yet again…$"
 
 YifuCity_Restaurant_EventScript_OldWomen_Text_0:
 	.string "Old Woman$"
 
 YifuCity_Restaurant_EventScript_OldWomen_Text_1:
-	.string "Psst psst mumble gossip…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Psst psst mumble gossip…$"
 
 YifuCity_Restaurant_EventScript_OldWomen_Text_2:
-	.string "Gossip gossip…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Gossip gossip…\n"
 	.string "Ho ho ho…$"
 
 YifuCity_Restaurant_EventScript_FatGuy_Text_0:
 	.string "Guy$"
 
 YifuCity_Restaurant_EventScript_FatGuy_Text_1:
-	.string "Chomp…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}Chomp…\n"
 	.string "Just gett'n a head start on lunch…\p"
 	.string "{FONT_SMALL}Burp…{FONT_NORMAL} Ahem.\n"
 	.string "If you'll excuse me.$"
 
 YifuCity_Restaurant_EventScript_FatGuy_Text_2:
-	.string "UHHHHG I ate too much…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}UHHHHG I ate too much…$"
 
 YifuCity_Restaurant_EventScript_Munchlax_Text_0:
 	.string "Chomp… Gulp!$"

@@ -161,7 +161,7 @@ script YifuCity_Refuge_2F_EventScript_Tourist {
 	faceplayer
 	speakername("Woman")
 	msgbox(format(
-		"I'm so glad we're able to spend our vacation here."
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 EMOTE_NORMAL}I'm so glad we're able to spend our vacation here."
 	))
 	closemessage
 	release
@@ -172,7 +172,7 @@ script YifuCity_Refuge_2F_EventScript_TouristKid {
 	faceplayer
 	speakername("Little Boy")
 	msgbox(format(
-		"We went to see the Dojo's dancers today!"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY EMOTE_NORMAL}We went to see the Dojo's dancers today!"
 	))
 	closemessage
 	release
@@ -183,7 +183,7 @@ script YifuCity_Refuge_2F_EventScript_TouristGirl {
 	faceplayer
 	speakername("Girl")
 	msgbox(format(
-		"Ughh, I have to share the bed with my baby brother…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}Ughh, I have to share the bed with my baby brother…\p"
 		"Life is SO unfair!"
 	))
 	closemessage

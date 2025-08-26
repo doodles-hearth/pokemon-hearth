@@ -394,6 +394,16 @@ YifuCity_Trigger_CrobatGruntsScram::
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	lockall
+	gettimeofday
+	compare VAR_RESULT, TIME_NIGHT
+	goto_if_eq YifuCity_Trigger_CrobatGruntsEavesdropPassword_2
+	compare VAR_RESULT, TIME_DEAD_NIGHT
+	goto_if_eq YifuCity_Trigger_CrobatGruntsEavesdropPassword_2
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_1:
+	releaseall
+	return
+
+YifuCity_Trigger_CrobatGruntsEavesdropPassword_2:
 	speakername YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_1
 	closemessage
@@ -446,8 +456,7 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_6
 	waitmovement 0
 	special RemoveCameraObject
-	releaseall
-	return
+	goto YifuCity_Trigger_CrobatGruntsEavesdropPassword_1
 
 
 YifuCity_EventScript_HearEcho::
@@ -1844,12 +1853,12 @@ YifuCity_EventScript_StoleMyMon_Text_0:
 	.string "Man$"
 
 YifuCity_EventScript_StoleMyMon_Text_1:
-	.string "The Refuge's nurse was stealing our\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}The Refuge's nurse was stealing our\n"
 	.string "Pokémon?\p"
 	.string "That… explains a lot!$"
 
 YifuCity_EventScript_StoleMyMon_Text_2:
-	.string "When my friend got his Shiftry back\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}When my friend got his Shiftry back\n"
 	.string "from the nurse, it had somehow\l"
 	.string "changed into a Pidgey…\p"
 	.string "Each day, Pokémon never cease to\n"
@@ -1859,7 +1868,7 @@ YifuCity_EventScript_LostMyDoll_Text_0:
 	.string "Little Girl$"
 
 YifuCity_EventScript_LostMyDoll_Text_1:
-	.string "I lost my doll while I was busy\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}I lost my doll while I was busy\n"
 	.string "playing!\p"
 	.string "It's okay though, Cleffa is cuter\n"
 	.string "than any doll!$"
@@ -1868,20 +1877,20 @@ YifuCity_EventScript_Cleffa_Text_0:
 	.string "Faa!$"
 
 YifuCity_EventScript_IDontFeelSafe_Text_0:
-	.string "I heard a young Wielder made those\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_1 EMOTE_NORMAL}I heard a young Wielder made those\n"
 	.string "weird Crobat dudes go away!\p"
 	.string "They must be a very brave young\n"
 	.string "person.$"
 
 YifuCity_EventScript_IDontFeelSafe_Text_1:
-	.string "I don't feel safe with those Crobat\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_1 EMOTE_NORMAL}I don't feel safe with those Crobat\n"
 	.string "weirdos creeping around the city…\p"
 	.string "I can't imagine how much worse it'd be\n"
 	.string "were it not for the patrolling\l"
 	.string "Samurai!$"
 
 YifuCity_EventScript_MissingChild_Text_0:
-	.string "Have you seen a young child, small, red\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Have you seen a young child, small, red\n"
 	.string "hair?\p"
 	.string "My son told me he was going to the\n"
 	.string "beach, but I don't see him anywhere…$"
@@ -1903,7 +1912,7 @@ YifuCity_EventScript_RobberyVictim_Text_0:
 	.string "Woman$"
 
 YifuCity_EventScript_RobberyVictim_Text_1:
-	.string "You and the Samurai scared those\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 EMOTE_NORMAL}You and the Samurai scared those\n"
 	.string "crooks off? That's good…\p"
 	.string "Although I wonder where my stolen\n"
 	.string "Pokémon are…$"
@@ -1919,17 +1928,17 @@ YifuCity_EventScript_RobberyVictim_Text_4:
 	.string "Pokémon to their rightful owner.$"
 
 YifuCity_EventScript_RobberyVictim_Text_5:
-	.string "Oh my! You even got my precious\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 EMOTE_NORMAL}Oh my! You even got my precious\n"
 	.string "Pokémon back!\p"
 	.string "You're a true hero, you know that?\p"
 	.string "I'm finally at peace again! Here, take\n"
 	.string "this, as a thanks!$"
 
 YifuCity_EventScript_RobberyVictim_Text_6:
-	.string "Sigh… I hope they're okay…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 EMOTE_NORMAL}Sigh… I hope they're okay…$"
 
 YifuCity_EventScript_RobberyVictim_Text_7:
-	.string "A couple of crooks threatened me and\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 EMOTE_NORMAL}A couple of crooks threatened me and\n"
 	.string "stole all my Pokémon, right in front of\l"
 	.string "the Refuge!\p"
 	.string "Oh, what am I ever going to do…?$"
@@ -2041,7 +2050,7 @@ YifuCity_EventScript_HearEcho_Text_0:
 	.string "Boy$"
 
 YifuCity_EventScript_HearEcho_Text_1:
-	.string "There's a ghost haunting the sewers!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_BOY_1 EMOTE_NORMAL}There's a ghost haunting the sewers!\p"
 	.string "I swear I heard a voice calling when I\n"
 	.string "was walking along the canal!$"
 
@@ -2085,11 +2094,11 @@ YifuCity_EventScript_SafeCity_Text_0:
 	.string "Girl$"
 
 YifuCity_EventScript_SafeCity_Text_1:
-	.string "Yifu City is finally safe again!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Yifu City is finally safe again!\n"
 	.string "I can't believe it!$"
 
 YifuCity_EventScript_Tourist_Text_0:
-	.string "We came all the way from Windycape to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 EMOTE_NORMAL}We came all the way from Windycape to\n"
 	.string "see the great capital.\p"
 	.string "The city's beautiful!\n"
 	.string "So many tourists, though…$"
@@ -2098,11 +2107,11 @@ YifuCity_EventScript_TouristKid_Text_0:
 	.string "Little Boy$"
 
 YifuCity_EventScript_TouristKid_Text_1:
-	.string "We're on vacation!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY EMOTE_NORMAL}We're on vacation!\n"
 	.string "I wanna see the big Sawsbuck!$"
 
 YifuCity_EventScript_TouristGirl_Text_0:
-	.string "I'm tired… I wish mom'd take us to the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I'm tired… I wish mom'd take us to the\n"
 	.string "hot springs…$"
 
 YifuCity_EventScript_Zubat1_Text_0:
@@ -2187,7 +2196,7 @@ YifuCity_EventScript_DojoSign_Text_0:
 	.string "kimono.”$"
 
 YifuCity_EventScript_GirlLookingAtSunriseVillage_Text_0:
-	.string "If I squint hard enough, I'm sure I\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}If I squint hard enough, I'm sure I\n"
 	.string "can see my friend on Sunrise Beach!$"
 
 YifuCity_EventScript_Chimecho_Text_0:
@@ -2197,7 +2206,7 @@ YifuCity_EventScript_ChimechoLady_Text_0:
 	.string "Old Woman$"
 
 YifuCity_EventScript_ChimechoLady_Text_1:
-	.string "I love listening to Chimecho's songs.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}I love listening to Chimecho's songs.\p"
 	.string "They echo in its hollow body and\n"
 	.string "produce the most wonderful\l"
 	.string "harmonics.\p"

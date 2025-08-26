@@ -35,7 +35,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	speakername("Old Man")
 	msgbox(format(
-		"Yet another area is decaying on Beachbound Route…"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_MAN EMOTE_NORMAL}Yet another area is decaying on Beachbound Route…"
 	))
 	closemessage
 
@@ -44,7 +44,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	speakername("Old woman")
 	msgbox(format(
-		"We have yet to receive tidings from the Elder in Sunrise Village…"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_WOMAN EMOTE_NORMAL}We have yet to receive tidings from the Elder in Sunrise Village…"
 	))
 	closemessage
 

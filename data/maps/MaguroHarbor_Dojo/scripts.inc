@@ -271,15 +271,15 @@ MaguroHarbor_Dojo_EventScript_Advice_Text_0:
 	.string "Man$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_1:
-	.string "You swept me away with that battle!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}You swept me away with that battle!\p"
 	.string "That quake just now nearly literally\n"
 	.string "swept me away as well!$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_2:
-	.string "You swept me away with that battle!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}You swept me away with that battle!$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_3:
-	.string "Hello, young challenger! Are you going\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}Hello, young challenger! Are you going\n"
 	.string "to be fighting for your first Token?\p"
 	.string "Welcome to the Koi Pond Dojo!\p"
 	.string "Koishi, the Master of this place,\n"

@@ -74,10 +74,10 @@ script Silveridge_EventScript_Wildflowers {
 	faceplayer
 	speakername("Boy")
 	msgbox(format(
-		"I loved gardening back when I lived on Havenisle.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_BOY_2 EMOTE_NORMAL}I loved gardening back when I lived on Havenisle.\p"
 		"When I first moved here, the barren landscape made me very homesick.\p"
 		"So I started planting little patches of these native wildflowers around the town.\p"
-		"I was told they symbolize eternal love. I don't know about that, but they make me happy!"
+		"I was told they symbolize eternal love. I don't know about that, but they make me happy!\p"
 		"I wish I had brought some seeds with me when I left Havenisle, though. The flowers there are so colorful!"
 	))
 	release

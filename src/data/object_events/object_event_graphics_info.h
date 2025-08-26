@@ -2729,7 +2729,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Miner = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokemonBreederF = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_WOODY,
+    .paletteTag = OBJ_EVENT_PAL_TAG_PURPLISH,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,
@@ -2748,7 +2748,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokemonBreederF = 
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokemonBreederM = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_WOODY,
+    .paletteTag = OBJ_EVENT_PAL_TAG_PURPLISH,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,

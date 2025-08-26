@@ -43,7 +43,7 @@ script SilverTunnel_1F_EventScript_Yoru {
 script SilverTunnel_1F_EventScript_Nerd {
 	speakername("Man")
 	msgbox(format(
-		"Ugh…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Ugh…\p"
 		"I forgot to bring my fighting Pokémon, so I got whooped by those miners' rock Pokémon…"
 	), MSGBOX_NPC)
 }

@@ -12,7 +12,7 @@ mapscripts BeachboundRoute_MapScripts {
 script BeachboundRoute_EventScript_RunningBoy {
 	speakername("Little boy")
 	msgbox(format(
-		"Running running running!!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}Running running running!!\p"
 		"Yaaaaaaaay!!!"
 	), MSGBOX_NPC)
 }
@@ -20,7 +20,7 @@ script BeachboundRoute_EventScript_RunningBoy {
 script BeachboundRoute_EventScript_RunningGirl {
 	speakername("Little girl")
 	msgbox(format(
-		"Wait for me!! It's not fair!!!"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}Wait for me!! It's not fair!!!"
 	), MSGBOX_NPC)
 }
 
@@ -29,11 +29,11 @@ script BeachboundRoute_EventScript_AnnoyedGirl {
 	speakername("Annoyed girl")
 	if (var(VAR_0x8000) == TIME_EVENING) {
 		msgbox(format(
-			"Hum… Could you maybe, like, leave?"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}Hum… Could you maybe, like, leave?"
 		), MSGBOX_NPC)
 	} else {
 		msgbox(format(
-			"I wish those kids would leave…"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I wish those kids would leave…"
 		), MSGBOX_NPC)
 	}
 }
@@ -41,7 +41,7 @@ script BeachboundRoute_EventScript_AnnoyedGirl {
 script BeachboundRoute_EventScript_AnnoyedBoy {
 	speakername("Annoyed boy")
 	msgbox(format(
-		"I brought my date to the Lover's Meadow, but I kind of thought we'd be alone…"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 EMOTE_NORMAL}I brought my date to the Lover's Meadow, but I kind of thought we'd be alone…"
 	), MSGBOX_NPC)
 }
 
@@ -103,11 +103,11 @@ script BeachboundRoute_EventScript_Kin {
 	// TODO EVA rematch
 	trainerbattle_single(
 		TRAINER_KIN_1,
-		format("I run several hours everyday! You literally cannot defeat me!"),
+		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I run several hours everyday! You literally cannot defeat me!"),
 		format("Ow! I pulled a muscle!")
 	)
 	speakername("Kin")
-	msgbox(format("You really don't look strong at all, and yet…"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}You really don't look strong at all, and yet…"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -451,7 +451,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	speakername("Woman")
 	msgbox(format(
-		"Thank you so much for helping me!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_1 EMOTE_NORMAL}Thank you so much for helping me!\p"
 		"Those ruffians were about to steal my Pokémon!\p"
 		"I don't have much to offer you as a thanks, but please take this!"
 	))
@@ -462,7 +462,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	speakername("Woman")
 	msgbox(format(
-		"What's your name?\n"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_1 EMOTE_NORMAL}What's your name?\n"
 		"{PLAYER}?\p"
 		"I'll be sure to tell everyone what a hero you are!"
 	))

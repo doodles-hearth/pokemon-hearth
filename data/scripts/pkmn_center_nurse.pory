@@ -122,6 +122,7 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 	faceplayer
 	setvar(VAR_0x8004, 0)
 
+	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 	speakername("Nurse")
 	msgbox(format("Welcome to the refuge!\pLet me heal your Pokémon."))
 	closemessage
@@ -132,6 +133,7 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 		call(EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit)
 	}
 	
+	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 	speakername("Nurse")
 	msgbox(format("Your Pokémon are all healed and rested."))
 	closemessage
@@ -139,9 +141,11 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 	applymovement(VAR_0x800B, moves(nurse_joy_bow, delay_4))
 	waitmovement(0)
 
+	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 	speakername("Nurse")
 	msgbox(format("Please come again!"))
 	closemessage
+	removefieldmugshot
 
 	release
 	end
@@ -149,6 +153,7 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 
 script EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit {
 	specialvar(VAR_RESULT, IsPokerusInParty)
+	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 	if (var(VAR_RESULT) == TRUE) {
 		message(format(
 			"Um, excuse me…\p"

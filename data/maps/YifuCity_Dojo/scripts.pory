@@ -737,12 +737,12 @@ script YifuCity_Dojo_EventScript_Advice {
 	faceplayer
 	if (flag(FLAG_BADGE03_GET)) {
 		msgbox(format(
-			"Such grace! Such swiftness!\nI am wowed!\p"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Such grace! Such swiftness!\nI am wowed!\p"
             "{PLAYER}…\nThat's a name to be remembered!"
 		))
 	} else {
 		msgbox(format(
-            "Hello, young challenger, and welcome to the Dance Hall Dojo!\p"
+            "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome to the Dance Hall Dojo!\p"
             "Think you've got what it takes to see through the dancer's intoxicating moves?\p"
             "Watch out though, Master Yutaka can be as abrasive as she is beautiful.\p"
             "She probably won't appreciate you walking around her Dojo with your clothes looking like… this…\p"
