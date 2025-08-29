@@ -297,6 +297,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_3:
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_1
 YifuCity_Refuge_EventScript_RouteShamisen_5:
 	mcdialogue YifuCity_Refuge_EventScript_RouteShamisen_Text_2, YifuCity_Refuge_EventScript_RouteShamisen_Text_3, YifuCity_Refuge_EventScript_RouteShamisen_Text_4
+	closemessage
 	specialvar VAR_0x8000, GetPlayerTrainerIdOnesDigit
 	switch VAR_RESULT
 	case 0, YifuCity_Refuge_EventScript_RouteShamisen_15
@@ -533,7 +534,7 @@ YifuCity_Refuge_EventScript_Shamisen_Text_0:
 	.string "Shamisen Player$"
 
 YifuCity_Refuge_EventScript_Shamisen_Text_1:
-	.string "Good evening, traveler.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE EMOTE_NORMAL}Good evening, traveler.\p"
 	.string "I hope my song will soothe your spirit,\n"
 	.string "should it be troubled.$"
 
@@ -623,13 +624,13 @@ YifuCity_Refuge_EventScript_RouteShamisensPokemon_Text_0:
 	.string "Rr-ruff!$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_0:
-	.string "Ah, so have you made space in your\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Ah, so have you made space in your\n"
 	.string "party for the Egg I wanted to give\l"
 	.string "you?\p"
 	.string "Which of these Eggs do you favor?$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_1:
-	.string "Hello, traveler.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hello, traveler.\n"
 	.string "… … …\l"
 	.string "… … …!\p"
 	.string "Oh, I recognize you! You're that\n"
@@ -664,16 +665,16 @@ YifuCity_Refuge_EventScript_RouteShamisen_Text_5:
 	.string "Egg.$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_6:
-	.string "Please take good care of this Egg.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Please take good care of this Egg.\p"
 	.string "May destiny cross our paths again!$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_7:
-	.string "Oh, but wait, you don't have enough\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Oh, but wait, you don't have enough\n"
 	.string "room for the Egg!\p"
 	.string "I'll wait for you to make some.$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_8:
-	.string "Hello, traveler.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hello, traveler.\n"
 	.string "… … …\l"
 	.string "… … …!\p"
 	.string "Oh, I recognize you! You're that\n"
@@ -693,7 +694,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_Text_10:
 	.string "I didn't…$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_11:
-	.string "Hmmmm… … …\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hmmmm… … …\n"
 	.string "… … …\p"
 	.string "You aren't telling the truth, are you?\n"
 	.string "You're deceiving yourself, do you not\l"
@@ -706,7 +707,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_Text_11:
 	.string "your next journey!$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_12:
-	.string "Oh, that's alright! Don't beat\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Oh, that's alright! Don't beat\n"
 	.string "yourself up. I see in your heart that\l"
 	.string "you have a bright future ahead of\l"
 	.string "you.\p"
@@ -717,4 +718,4 @@ YifuCity_Refuge_EventScript_RouteShamisen_Text_12:
 	.string "prepare for your next journey!$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_13:
-	.string "May destiny cross our paths again!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}May destiny cross our paths again!$"

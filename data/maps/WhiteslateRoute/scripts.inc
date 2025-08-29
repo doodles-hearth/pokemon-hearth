@@ -548,10 +548,10 @@ WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0:
 	.string "Shamisen Player$"
 
 WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_1:
-	.string "So, are you ready?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}So, are you ready?$"
 
 WhiteslateRoute_EventScript_ShamisenChallenge_Text_0:
-	.string "I am a traveling blind musician.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}I am a traveling blind musician.\n"
 	.string "I was arrested by the aura of a brave\l"
 	.string "and promising young Wielder…\l"
 	.string "Are you them? Why, you must be!\l"
@@ -573,7 +573,7 @@ WhiteslateRoute_EventScript_ShamisenChallenge_Text_0:
 	.string "begun, if you wish.$"
 
 WhiteslateRoute_EventScript_ShamisenCallsOut_Text_0:
-	.string "… … …!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}… … …!\p"
 	.string "Excuse me! Yes, you!$"
 
 WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_0:
@@ -583,11 +583,11 @@ WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_1:
 	.string "I need to prepare first.$"
 
 WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_2:
-	.string "Go forth, bold young soul! May luck\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Go forth, bold young soul! May luck\n"
 	.string "echo your steps!$"
 
 WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_3:
-	.string "Understood. Come back when you are\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Understood. Come back when you are\n"
 	.string "ready.$"
 
 WhiteslateRoute_EventScript_ShamisenPlayerPokemon_Text_0:

@@ -168,7 +168,7 @@ script YifuCity_Refuge_EventScript_Shamisen {
 	// TODO EVA battle shamisen player!
 	speakername("Shamisen Player")
 	msgbox(format(
-		"Good evening, traveler.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE EMOTE_NORMAL}Good evening, traveler.\p"
 		"I hope my song will soothe your spirit, should it be troubled."
 	))
 	closemessage
@@ -362,14 +362,14 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 			if (flag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)) {
 				speakername("Shamisen Player")
 				msgbox(format(
-					"Ah, so have you made space in your party for the Egg I wanted to give you?\p"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Ah, so have you made space in your party for the Egg I wanted to give you?\p"
 					"Which of these Eggs do you favor?"
 				))
 			} else {
 				setflag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)
 				speakername("Shamisen Player")
 				msgbox(format(
-					"Hello, traveler.\n… … …\l"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hello, traveler.\n… … …\l"
 					"… … …!\p"
 					"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
 					"… …Yes, I feel it…\p"
@@ -386,6 +386,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				"The wet Egg!",
 				"The mossy Egg!"
 			)
+			closemessage
 
 			specialvar(VAR_0x8000, GetPlayerTrainerIdOnesDigit)
 			switch(var(VAR_RESULT)) {
@@ -418,7 +419,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 
 				speakername("Shamisen Player")
 				msgbox(format(
-					"Please take good care of this Egg.\p"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Please take good care of this Egg.\p"
 					"May destiny cross our paths again!"
 				))
 				closemessage
@@ -429,7 +430,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 			} else {
 				speakername("Shamisen Player")
 				msgbox(format(
-					"Oh, but wait, you don't have enough room for the Egg!\p"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Oh, but wait, you don't have enough room for the Egg!\p"
 					"I'll wait for you to make some."
 				))
 				closemessage
@@ -438,7 +439,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 		case ROUTE_CHALLENGE_STATE_FAILURE:
 			speakername("Shamisen Player")
 			msgbox(format(
-				"Hello, traveler.\n… … …\l"
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hello, traveler.\n… … …\l"
 				"… … …!\p"
 				"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
 				"{PLAYER}? It's nice to meet you again.\p"
@@ -454,7 +455,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				case 0:
 					speakername("Shamisen Player")
 					msgbox(format(
-						"Hmmmm… … …\n… … …\p"
+						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hmmmm… … …\n… … …\p"
 						"You aren't telling the truth, are you?\n"
 						"You're deceiving yourself, do you not feel it in your heart?\p"
 						"Don't be too sad about not succeeding. Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
@@ -465,7 +466,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				case 1:
 					speakername("Shamisen Player")
 					msgbox(format(
-						"Oh, that's alright! Don't beat yourself up. I see in your heart that you have a bright future ahead of you.\p"
+						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Oh, that's alright! Don't beat yourself up. I see in your heart that you have a bright future ahead of you.\p"
 						"Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
 						"Rest here a while, and use these to prepare for your next journey!"
 					))
@@ -474,7 +475,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 
 					speakername("Shamisen Player")
 					msgbox(format(
-						"May destiny cross our paths again!"
+						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}May destiny cross our paths again!"
 					))
 					closemessage
 			}

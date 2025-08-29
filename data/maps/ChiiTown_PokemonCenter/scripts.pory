@@ -57,7 +57,7 @@ script ChiiTown_PokemonCenter_EventScript_Shamisen {
 	// TODO EVA battle shamisen player!
 	speakername("Shamisen Player")
 	msgbox(format(
-		"Good evening.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE EMOTE_NORMAL}Good evening.\p"
 		"We blind shamisen players sing to survive.\p"
 		"These Pokémon refuges give us a safe place to spend the night."
 	))

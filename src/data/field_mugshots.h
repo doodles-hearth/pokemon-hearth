@@ -60,6 +60,12 @@ static const u32 sFieldMugshotGfx_BreederFNormal[] = INCBIN_U32("graphics/field_
 
 static const u32 sFieldMugshotGfx_SamuraiNormal[] = INCBIN_U32("graphics/field_mugshots/samurai/normal.4bpp.smol");
 
+static const u32 sFieldMugshotGfx_ShamisenGreenNormal[] = INCBIN_U32("graphics/field_mugshots/shamisen_green/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_ShamisenRedNormal[] = INCBIN_U32("graphics/field_mugshots/shamisen_red/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_ShamisenBlueNormal[] = INCBIN_U32("graphics/field_mugshots/shamisen_blue/normal.4bpp.smol");
+
 // Sunrise
 
 static const u32 sFieldMugshotGfx_BigSisNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/big_sis/normal.4bpp.smol");
@@ -412,6 +418,33 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_SamuraiNormal,
             .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+
+    [MUGSHOT_SHAMISEN_GREEN] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ShamisenGreenNormal,
+            .pal = gObjectEventPal_Npc_Greenish,
+        },
+    },
+
+    [MUGSHOT_SHAMISEN_RED] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ShamisenRedNormal,
+            .pal = gObjectEventPal_Npc_Greenish,
+        },
+    },
+
+    [MUGSHOT_SHAMISEN_BLUE] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ShamisenBlueNormal,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
 

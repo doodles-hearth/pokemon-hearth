@@ -52,7 +52,7 @@ script WhiteslateRoute_Trigger_ShamisenPlayerBottom {
 script WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady {
 	speakername("Shamisen Player")
 	msgbox(format(
-		"So, are you ready?"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}So, are you ready?"
 	))
 
 	call(WhiteslateRoute_EventScript_ShamisenPlayerChoice)
@@ -61,7 +61,7 @@ script WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady {
 script WhiteslateRoute_EventScript_ShamisenChallenge {
 	speakername("Shamisen Player")
 	msgbox(format(
-		"I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\lAre you them? Why, you must be!\lThere's no other explanation!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\lAre you them? Why, you must be!\lThere's no other explanation!\p"
 		"We Shamisen Players sing songs about the brave souls we meet on our travels.\p"
 		"To test your worth, how about I submit you to a little challenge?\p"
 		"If you manage to reach the next city's Refuge in one go, without running back to the previous towns', I will meet you there and give you a little something.\p"
@@ -78,7 +78,7 @@ script WhiteslateRoute_EventScript_ShamisenCallsOut {
 
 	speakername("Shamisen Player")
 	msgbox(format(
-		"… … …!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}… … …!\p"
 		"Excuse me! Yes, you!"
 	))
 	closemessage
@@ -92,7 +92,7 @@ script WhiteslateRoute_EventScript_ShamisenPlayer {
 
 	speakername("Shamisen Player")
 	msgbox(format(
-		"I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\lAre you them? Why, you must be!\lThere's no other explanation!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\lAre you them? Why, you must be!\lThere's no other explanation!\p"
 		"We Shamisen Players sing songs about the brave souls we meet on our travels.\p"
 		"To test your worth, how about I submit you to a little challenge?\p"
 		"If you manage to reach the next city's Refuge in one go, without running back to the previous towns', I will meet you there and give you a little something.\p"
@@ -116,7 +116,7 @@ script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
 		case 0:
 			speakername("Shamisen Player")
 			msgbox(format(
-				"Go forth, bold young soul! May luck echo your steps!"
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Go forth, bold young soul! May luck echo your steps!"
 			))
 			closemessage
 
@@ -135,7 +135,7 @@ script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
 		case 1:
 			speakername("Shamisen Player")
 			msgbox(format(
-				"Understood. Come back when you are ready."
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Understood. Come back when you are ready."
 			))
 			closemessage
 

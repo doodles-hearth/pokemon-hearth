@@ -230,7 +230,7 @@ ChiiTown_PokemonCenter_EventScript_Shamisen_Text_0:
 	.string "Shamisen Player$"
 
 ChiiTown_PokemonCenter_EventScript_Shamisen_Text_1:
-	.string "Good evening.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE EMOTE_NORMAL}Good evening.\p"
 	.string "We blind shamisen players sing to\n"
 	.string "survive.\p"
 	.string "These Pokémon refuges give us a safe\n"

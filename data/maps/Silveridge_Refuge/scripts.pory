@@ -87,6 +87,18 @@ script Silveridge_Refuge_EventScript_Kricketune {
 	release
 }
 
+script Silveridge_Refuge_EventScript_Nurse {
+	setvar(VAR_0x800B, LOCALID_NURSE_SILVERIDGE)
+	setvar(VAR_0x800A, LOCALID_CHANSEY_SILVERIDGE)
+	setvar(VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE)
+	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
+	waitmessage
+	waitbuttonpress
+	removefieldmugshot
+	release
+	end
+}
+
 script Silveridge_Refuge_EventScript_Shamisen {
 	lock
 	faceplayer
@@ -94,14 +106,14 @@ script Silveridge_Refuge_EventScript_Shamisen {
 	if (flag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)) {
 		speakername("Shamisen Player")
 		msgbox(format(
-			"Are you resting here for the night as well?"
+			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Are you resting here for the night as well?"
 		))
 		closemessage
 	} else {
 		special(GetPlayerBoyGirlString)
 		speakername("Shamisen Player")
 		msgbox(format(
-			"Good evening to you, {STR_VAR_1}.\p"
+			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Good evening to you, {STR_VAR_1}.\p"
 			"Are you here to listen to my music?\p"
 			"Or are you here to battle?"
 		))
@@ -111,7 +123,7 @@ script Silveridge_Refuge_EventScript_Shamisen {
 
 		speakername("Shamisen Player")
 		msgbox(format(
-			"That was just the thing I needed to pass the time."
+			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}That was just the thing I needed to pass the time."
 		))
 		closemessage
 

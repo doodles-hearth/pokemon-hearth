@@ -78,6 +78,18 @@ Silveridge_Refuge_EventScript_Kricketune::
 	return
 
 
+Silveridge_Refuge_EventScript_Nurse::
+	setvar VAR_0x800B, LOCALID_NURSE_SILVERIDGE
+	setvar VAR_0x800A, LOCALID_CHANSEY_SILVERIDGE
+	setvar VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE
+	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
+	waitmessage
+	waitbuttonpress
+	removefieldmugshot
+	release
+	end
+
+
 Silveridge_Refuge_EventScript_Shamisen::
 	lock
 	faceplayer
@@ -167,11 +179,11 @@ Silveridge_Refuge_EventScript_Shamisen_Text_0:
 	.string "Shamisen Player$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_1:
-	.string "Are you resting here for the night as\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Are you resting here for the night as\n"
 	.string "well?$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_2:
-	.string "Good evening to you, {STR_VAR_1}.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Good evening to you, {STR_VAR_1}.\p"
 	.string "Are you here to listen to my music?\p"
 	.string "Or are you here to battle?$"
 
@@ -179,5 +191,5 @@ Silveridge_Refuge_EventScript_Shamisen_Text_3:
 	.string "Such fun!$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_4:
-	.string "That was just the thing I needed to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}That was just the thing I needed to\n"
 	.string "pass the time.$"
