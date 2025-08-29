@@ -2007,7 +2007,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Firebringer = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bean = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_BEAN,
+    .paletteTag = OBJ_EVENT_PAL_TAG_COLD,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,
@@ -6092,7 +6092,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Azurill = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BigSister = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_MAY,
+    .paletteTag = OBJ_EVENT_PAL_TAG_SUNRISE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,

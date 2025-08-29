@@ -161,7 +161,7 @@ void _CreateFieldMugshot(u32 id, u32 emote)
     if (sFieldMugshots[id][emote].tag)
     {
         temp.paletteTag = sFieldMugshots[id][emote].tag;
-        u32 abc = LoadObjectEventPalette(temp.paletteTag);
+        LoadObjectEventPalette(temp.paletteTag);
     }
     else
     {

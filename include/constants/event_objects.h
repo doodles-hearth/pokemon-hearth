@@ -518,7 +518,7 @@
 
 #define OBJ_EVENT_PAL_TAG_UNUSED                  0x1145 // Unused
 #define OBJ_EVENT_PAL_TAG_TRAVELING_MERCHANT      0x1146
-#define OBJ_EVENT_PAL_TAG_BEAN                    0x1147
+#define OBJ_EVENT_PAL_TAG_BEAN_UNUSED             0x1147 // Unused
 #define OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS          0x1148
 #define OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS_BOSS     0x1149
 #define OBJ_EVENT_PAL_TAG_SAMURAI                 0x114A
