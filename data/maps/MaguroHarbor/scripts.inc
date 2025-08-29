@@ -453,10 +453,10 @@ MaguroHarbor_EventScript_MartSelling::
 	lock
 	faceplayer
 	speakername MaguroHarbor_EventScript_MartSelling_Text_0
-	message gText_HowMayIServeYou
+	message MaguroHarbor_EventScript_MartSelling_Text_1
 	waitmessage
 	pokemart MaguroHarbor_Mart
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	message MaguroHarbor_EventScript_MartSelling_Text_2
 	release
 	return
 
@@ -533,14 +533,14 @@ MaguroHarbor_EventScript_LovestruckGirl_Text_0:
 	.string "Girl$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_1:
-	.string "What was that? Oh, I hope my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}What was that? Oh, I hope my\n"
 	.string "boyfriend's okay…$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_2:
 	.string "Lovestruck Girl$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_3:
-	.string "It's only been an hour since I saw my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}It's only been an hour since I saw my\n"
 	.string "love, and yet I already want tomorrow\l"
 	.string "to come just so I can see him again…$"
 
@@ -548,15 +548,15 @@ MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0:
 	.string "Old woman$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_1:
-	.string "Oh I'm so sorry, dearie. We haven't\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh I'm so sorry, dearie. We haven't\n"
 	.string "opened yet. Come back later!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0:
-	.string "Come back tomorrow if you'd like\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Come back tomorrow if you'd like\n"
 	.string "another fishcake!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_1:
-	.string "Hello dear, want to try a fishcake?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\p"
 	.string "They're the town's specialty! Only\n"
 	.string "500¥!$"
 
@@ -570,23 +570,23 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_4:
 	.string "Fishcakes?$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_5:
-	.string "One fishcake, coming right up!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}One fishcake, coming right up!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_6:
-	.string "Oh dear! It appears you're a little\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh dear! It appears you're a little\n"
 	.string "short on pocket money.$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7:
-	.string "What's in the Fishcakes, you ask?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}What's in the Fishcakes, you ask?\p"
 	.string "Uhh… Cake!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0:
-	.string "I'm sorry but we've closed shop now,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm sorry but we've closed shop now,\n"
 	.string "dearie.\p"
 	.string "We'll be open again {STR_VAR_1}!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_1:
-	.string "Oh my! I'm sorry but we've closed shop\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh my! I'm sorry but we've closed shop\n"
 	.string "now, dearie.\p"
 	.string "We'll be open again {STR_VAR_1}!\p"
 	.string "Did you want to buy one of my\n"
@@ -732,23 +732,30 @@ MaguroHarbor_EventScript_Man_Text_0:
 	.string "Man$"
 
 MaguroHarbor_EventScript_Man_Text_1:
-	.string "T-This was the biggest quake we've\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN EMOTE_NORMAL}T-This was the biggest quake we've\n"
 	.string "felt yet!$"
 
 MaguroHarbor_EventScript_Man_Text_2:
-	.string "I wish I swam as gracefully as the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN EMOTE_NORMAL}I wish I swam as gracefully as the\n"
 	.string "Dojo's Magikarp…$"
 
 MaguroHarbor_EventScript_MartSelling_Text_0:
 	.string "Shopkeeper$"
 
+MaguroHarbor_EventScript_MartSelling_Text_1:
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Hello, welcome to the Maguro Harbor\n"
+	.string "market!$"
+
+MaguroHarbor_EventScript_MartSelling_Text_2:
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Come back soon!$"
+
 MaguroHarbor_EventScript_MartSettingUp_Text_0:
-	.string "Oh, uh, the shop isn't open yet. Come\n"
-	.string "back later.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Oh, uh, the shop isn't open yet. Come\n"
+	.string "back later!$"
 
 MaguroHarbor_EventScript_MartClosingUp_Text_0:
-	.string "The shop's closed for today. Come\n"
-	.string "back {STR_VAR_1}.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}The shop's closed for today. Come\n"
+	.string "back {STR_VAR_1}!$"
 
 StringVarSetter_Text_0:
 	.string "on Saturday$"

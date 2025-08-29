@@ -324,7 +324,7 @@ OrchardPath_EventScript_GuardHouseSign_Text_0:
 	.string "Guard House$"
 
 OrchardPath_EventScript_Junko_Text_0:
-	.string "I'm gathering ripe Berries to feed my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}I'm gathering ripe Berries to feed my\n"
 	.string "Pokémon!$"
 
 OrchardPath_EventScript_Junko_Text_1:
@@ -334,12 +334,12 @@ OrchardPath_EventScript_Junko_Text_2:
 	.string "Junko$"
 
 OrchardPath_EventScript_Junko_Text_3:
-	.string "My Pokémon is insatiable!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}My Pokémon is insatiable!\n"
 	.string "I need to scour my local Library for\l"
 	.string "more Berry recipes!$"
 
 OrchardPath_EventScript_Mami_Text_0:
-	.string "Hehehehe… This place is haunted at\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}Hehehehe… This place is haunted at\n"
 	.string "night! Are you scared?$"
 
 OrchardPath_EventScript_Mami_Text_1:
@@ -350,7 +350,7 @@ OrchardPath_EventScript_Mami_Text_2:
 	.string "Mami$"
 
 OrchardPath_EventScript_Mami_Text_3:
-	.string "I wanted to catch some more ghosts\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I wanted to catch some more ghosts\n"
 	.string "at the Graveyard, but…\l"
 	.string "It's a little TOO scary…$"
 
@@ -358,7 +358,7 @@ OrchardPath_EventScript_Samurai_Text_0:
 	.string "Samurai$"
 
 OrchardPath_EventScript_Samurai_Text_1:
-	.string "Please stand back. Everything is\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Please stand back. Everything is\n"
 	.string "under control.$"
 
 OrchardPath_EventScript_Samurai_Text_2:
@@ -371,18 +371,18 @@ OrchardPath_EventScript_Samurai_Text_4:
 	.string "I'd like to go through.$"
 
 OrchardPath_Samurai_WhatIsHappening_Text_0:
-	.string "Nothing that concerns you,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Nothing that concerns you,\n"
 	.string "{STR_VAR_1}.\p"
 	.string "This is just your regular,\n"
 	.string "run-of-the-mill, top secret yet\l"
 	.string "unimportant stuff.$"
 
 OrchardPath_Samurai_LetMeThrough_Text_0:
-	.string "We cannot let you through, so please\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}We cannot let you through, so please\n"
 	.string "be on your way.$"
 
 OrchardPath_Samurai_KnowAboutDecay_Text_0:
-	.string "You- what-\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}You- what-\p"
 	.string "Ahem! I do not know of this Decay you\n"
 	.string "speak of.\p"
 	.string "We cannot let you through though, so\n"
@@ -529,5 +529,5 @@ OrchardPath_EventScript_SignRockSmash_Text_0:
 	.string "OF STRENGTH FOR ONLY 100¥$"
 
 OrchardPath_EventScript_Samurai2_Text_0:
-	.string "Move along, please, nothing to see\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Move along, please, nothing to see\n"
 	.string "here!$"

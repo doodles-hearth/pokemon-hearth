@@ -5,6 +5,8 @@ const LOCALID_GRUNT_PASSWORD_ZUBAT = 11
 const FLAG_IS_MON_SENT_TO_PC = FLAG_TEMP_1
 const FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP = FLAG_TEMP_2
 const FLAG_HIDE_ROBBERY_VICTIM = FLAG_TEMP_3
+const FLAG_HIDE_CITIZENS_UNSAFE_CITY = FLAG_TEMP_4
+const FLAG_HIDE_HARIKO_NATSUKI_HOTPOT = FLAG_TEMP_5
 
 const LOCALID_SAMURAI_HIDEOUT = 38
 const LOCALID_LOCKDOWN_SAMURAI = 33
@@ -20,6 +22,14 @@ mapscripts YifuCity_MapScripts {
 		if (var(VAR_CROBAT_HIDEOUT_STATE) != 3) {
 			setflag(FLAG_HIDE_SAMURAI_IN_FRONT_OF_SHOP)
 		}
+
+		if (!flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+			setflag(FLAG_HIDE_CITIZENS_UNSAFE_CITY)
+		}
+
+		if (var(VAR_CROBAT_HIDEOUT_STATE) < 3 || var(VAR_HOTPOT_SCENE_STATE) >= 2) {
+			setflag(FLAG_HIDE_HARIKO_NATSUKI_HOTPOT)
+		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CROBAT_HIDEOUT_STATE, 3: YifuCity_EscapedCrobatHideoutWithSamurai
@@ -34,7 +44,7 @@ script YifuCity_EscapedCrobatHideoutWithSamurai {
 
 	speakername("Samurai")
 	msgbox(format(
-		"Well, well…\nThey slipped through our fingers,\lbut they finally left the city!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Well, well…\nThey slipped through our fingers,\lbut they finally left the city!\p"
 		"Their hideout is now useless!\p"
 		"Thank you for giving the Samurai a hand.\lThis operation was a success!\p"
 		"You might be young, but you wouldn't make a half bad Samurai yourself,\lyou know…\p"
@@ -59,12 +69,12 @@ script YifuCity_EventScript_StoleMyMon {
 
 	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 		msgbox(format(
-			"The Refuge's nurse was stealing our Pokémon?\p"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}The Refuge's nurse was stealing our Pokémon?\p"
 			"That… explains a lot!"
 		))
 	} else {
 		msgbox(format(
-			"When my friend got his Shiftry back from the nurse, it had somehow changed into a Pidgey…\p"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}When my friend got his Shiftry back from the nurse, it had somehow changed into a Pidgey…\p"
 			"Each day, Pokémon never cease to amaze me!"
 		))
 	}
@@ -78,7 +88,7 @@ script YifuCity_EventScript_LostMyDoll {
 	faceplayer
 	speakername("Little Girl")
 	msgbox(format(
-		"I lost my doll while I was busy playing!\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}I lost my doll while I was busy playing!\p"
 		"It's okay though, Cleffa is cuter than any doll!"
 	))
 	closemessage
@@ -108,15 +118,27 @@ script YifuCity_EventScript_IDontFeelSafe {
 
 	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 		msgbox(format(
-			"I heard a young Wielder made those weird Crobat dudes go away!\p"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_1 EMOTE_NORMAL}I heard a young Wielder made those weird Crobat dudes go away!\p"
 			"They must be a very brave young person."
 		))
 	} else {
 		msgbox(format(
-			"I don't feel safe with those Crobat weirdos creeping around the city…\p"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_1 EMOTE_NORMAL}I don't feel safe with those Crobat weirdos creeping around the city…\p"
 			"I can't imagine how much worse it'd be were it not for the patrolling Samurai!"
 		))
 	}
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_MissingChild {
+	lock
+	faceplayer
+	speakername("Man")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Have you seen a young child, small, red hair?\p"
+		"My son told me he was going to the beach, but I don't see him anywhere…"
+	))
 	closemessage
 	release
 }
@@ -126,7 +148,7 @@ script YifuCity_EventScript_Samurai {
 	faceplayer
 	speakername("Samurai")
 	msgbox(format(
-		"The Crobat Shadows' reign of terror will cease!"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}The Crobat Shadows' reign of terror will cease!"
 	))
 	closemessage
 	release
@@ -137,7 +159,7 @@ script YifuCity_EventScript_Samurai2 {
 	faceplayer
 	speakername("Samurai")
 	msgbox(format(
-		"Please be vigilant! Should you witness any suspicious situation, report it immediately!"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Please be vigilant! Should you witness any suspicious situation, report it immediately!"
 	))
 	closemessage
 	release
@@ -149,7 +171,7 @@ script YifuCity_EventScript_SamuraiTalkToRobberyVictim {
 	waitmovement(0)
 	speakername("Samurai")
 	msgbox(format(
-		"Ma'am, can you describe what the thiefs looked like?"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Ma'am, can you describe what the thiefs looked like?"
 	))
 	closemessage
 	release
@@ -162,7 +184,7 @@ script YifuCity_EventScript_RobberyVictim {
 	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 		faceplayer
 		msgbox(format(
-			"You and the Samurai scared those crooks off? That's good…\p"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 EMOTE_NORMAL}You and the Samurai scared those crooks off? That's good…\p"
 			"Although I wonder where my stolen Pokémon are…"
 		))
 
@@ -193,7 +215,7 @@ script YifuCity_EventScript_RobberyVictim {
 					waitse
 					speakername("Woman")
 					msgbox(format(
-						"Oh my! You even got my precious Pokémon back!\p"
+						"{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 EMOTE_NORMAL}Oh my! You even got my precious Pokémon back!\p"
 						"You're a true hero, you know that?\p"
 						"I'm finally at peace again! Here, take this, as a thanks!"
 					))
@@ -212,7 +234,7 @@ script YifuCity_EventScript_RobberyVictim {
 				case 1:
 					speakername("Woman")
 					msgbox(format(
-						"Sigh… I hope they're okay…"
+						"{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 EMOTE_NORMAL}Sigh… I hope they're okay…"
 					))
 					closemessage
 			}
@@ -221,7 +243,7 @@ script YifuCity_EventScript_RobberyVictim {
 		applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right))
 		waitmovement(0)
 		msgbox(format(
-			"A couple of crooks threatened me and stole all my Pokémon, right in front of the Refuge!\p"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 EMOTE_NORMAL}A couple of crooks threatened me and stole all my Pokémon, right in front of the Refuge!\p"
 			"Oh, what am I ever going to do…?"
 		))
 	}
@@ -235,7 +257,7 @@ script YifuCity_EventScript_ShinySeller {
 	faceplayer
 	speakername("Shady man")
 	msgbox(format(
-		"Hey, uh… Wanna buy this Pokémon 'ere?\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hey, uh… Wanna buy this Pokémon 'ere?\p"
 		"'Parently it's super rare or somethin', but I don't really need it, so…"
 	))
 
@@ -249,7 +271,7 @@ script YifuCity_EventScript_ShinySeller {
 	
 	speakername("Shady man")
 	msgbox(format(
-		"So whaddyasay?\n"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}So whaddyasay?\n"
 		"It's yours for only 10 000¥."
 	))
 
@@ -280,7 +302,7 @@ script YifuCity_ShinySellerChoice {
 			if (checkmoney(10000)) {
 				speakername("Shady man")
 				msgbox(format(
-					"Alright yeah, gimme the cash."
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Alright yeah, gimme the cash."
 				))
 
 				setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CATERPIE)
@@ -320,7 +342,7 @@ script YifuCity_ShinySellerChoice {
 
 				speakername("Shady man")
 				msgbox(format(
-					"Heheheehe… I'm rich! Finally rich!"
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Heheheehe… I'm rich! Finally rich!"
 				))
 				closemessage
 
@@ -375,7 +397,7 @@ script YifuCity_ShinySellerChoice {
 			} else {
 				speakername("Shady man")
 				msgbox(format(
-					"You, uh… You don't got enough cash, kid."
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}You, uh… You don't got enough cash, kid."
 				))
 				closemessage
 			}
@@ -383,14 +405,14 @@ script YifuCity_ShinySellerChoice {
 			hidemoneybox
 			speakername("Shady man")
 			msgbox(format(
-				"Then why are ya botherin' me? Scram, kid!"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Then why are ya botherin' me? Scram, kid!"
 			))
 			closemessage
 		case 2:
 			hidemoneybox
 			speakername("Shady man")
 			msgbox(format(
-				"What? No! Why woudja even say that? Do I not look respectable to ya?\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}What? No! Why woudja even say that? Do I not look respectable to ya?\p"
 				"So uh… You gonna buy it or not?"
 			))
 			goto(YifuCity_ShinySellerChoice)
@@ -407,7 +429,7 @@ script YifuCity_Trigger_CrobatGruntsScram {
 
 	speakername("Shady man")
 	msgbox(format(
-		"I tell ya man, damn password keeps changin'…"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I tell ya man, damn password keeps changin'…"
 	))
 	closemessage
 
@@ -430,7 +452,7 @@ script YifuCity_Trigger_CrobatGruntsScram {
 
 	speakername("Shady man")
 	msgbox(format(
-		"Are ya kiddin' me? Lookaddis eavesdroppin' moron!\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Are ya kiddin' me? Lookaddis eavesdroppin' moron!\p"
 		"Want a taste of this?"
 	))
 	closemessage
@@ -461,7 +483,7 @@ script YifuCity_Trigger_CrobatGruntsScram {
 
 	speakername("Shady man")
 	msgbox(format(
-		"Yeah, that's right, hightail it outta here!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yeah, that's right, hightail it outta here!"
 	))
 	closemessage
 
@@ -478,93 +500,95 @@ script YifuCity_Trigger_CrobatGruntsScram {
 
 script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 	lockall
+	gettimeofday
+	if (var(VAR_RESULT) == TIME_NIGHT || var(VAR_RESULT) == TIME_DEAD_NIGHT) {
+		speakername("???")
+		msgbox(format(
+			"I tell ya man, damn password keeps changin'…"
+		))
+		closemessage
 
-	speakername("???")
-	msgbox(format(
-		"I tell ya man, damn password keeps changin'…"
-	))
-	closemessage
+		delay(24)
 
-	delay(24)
+		applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
+		
+		special(SpawnCameraObject)
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
+		waitmovement(0)
+		delay(48)
 
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
-	
-	special(SpawnCameraObject)
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 3))
-	waitmovement(0)
-	delay(48)
+		applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
+		waitmovement(0)
 
-	applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
-	waitmovement(0)
+		speakername("Shady man")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Last time, I got it wrong and he didn' let me through!\p"
+			"Like, brother, why I gotta tell ya some password for ya to let me in, we wen' to school together!"
+		))
+		closemessage
 
-	speakername("Shady man")
-	msgbox(format(
-		"Last time, I got it wrong and he didn' let me through!\p"
-		"Like, brother, why I gotta tell ya some password for ya to let me in, we wen' to school together!"
-	))
-	closemessage
+		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
+		waitmovement(0)
 
-	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
-	waitmovement(0)
+		speakername("Shady man")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Wait, ya didn't go to school though, didja?"
+		))
+		closemessage
 
-	speakername("Shady man")
-	msgbox(format(
-		"Wait, ya didn't go to school though, didja?"
-	))
-	closemessage
+		applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
+		waitmovement(0)
 
-	applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
-	waitmovement(0)
+		speakername("Shady man")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Who cares! It's a figger of speech! What's the newest password anyway?"
+		))
+		closemessage
 
-	speakername("Shady man")
-	msgbox(format(
-		"Who cares! It's a figger of speech! What's the newest password anyway?"
-	))
-	closemessage
+		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
+		waitmovement(0)
 
-	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
-	waitmovement(0)
+		speakername("Shady man")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}It's uh…\nSomethin' with Crobat…\l"
+			"“{COLOR RED}Crobat is{COLOR DARK_GRAY}”… Uh…"
+		))
 
-	speakername("Shady man")
-	msgbox(format(
-		"It's uh…\nSomethin' with Crobat…\l"
-		"“{COLOR RED}Crobat is{COLOR DARK_GRAY}”… Uh…"
-	))
+		playse(SE_LEDGE)
+		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(jump_in_place_up))
+		speakername("Shady man")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Aw man! I forgot it too!"
+		))
+		waitmovement(0)
+		waitse
+		closemessage
 
-	playse(SE_LEDGE)
-	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(jump_in_place_up))
-	speakername("Shady man")
-	msgbox(format(
-		"Aw man! I forgot it too!"
-	))
-	waitmovement(0)
-	waitse
-	closemessage
+		playse(SE_LEDGE)
+		applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(jump_in_place_down))
+		speakername("Shady man")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Ya idjet! How're we gunna get back in now??\p"
+			"Now we gotta find another Zubat an' hope he's got enough brains to remember the full sent'nce!\p"
+			"C'mon, lessgo!"
+		))
+		waitmovement(0)
+		waitse
+		closemessage
 
-	playse(SE_LEDGE)
-	applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(jump_in_place_down))
-	speakername("Shady man")
-	msgbox(format(
-		"Ya idjet! How're we gunna get back in now??\p"
-		"Now we gotta find another Zubat an' hope he's got enough brains to remember the full sent'nce!\p"
-		"C'mon, lessgo!"
-	))
-	waitmovement(0)
-	waitse
-	closemessage
+		applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(walk_left * 10))
+		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(walk_up, walk_left * 9))
+		waitmovement(0)
 
-	applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(walk_left * 10))
-	applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(walk_up, walk_left * 9))
-	waitmovement(0)
+		removeobject(LOCALID_GRUNT_PASSWORD_TOP)
+		removeobject(LOCALID_GRUNT_PASSWORD_BOTTOM)
+		removeobject(LOCALID_GRUNT_PASSWORD_ZUBAT)
+		setflag(FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF)
 
-	removeobject(LOCALID_GRUNT_PASSWORD_TOP)
-	removeobject(LOCALID_GRUNT_PASSWORD_BOTTOM)
-	removeobject(LOCALID_GRUNT_PASSWORD_ZUBAT)
-	setflag(FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF)
-
-	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
-	waitmovement(0)
-	special(RemoveCameraObject)
+		applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3))
+		waitmovement(0)
+		special(RemoveCameraObject)
+	}
 
 	releaseall
 }
@@ -574,7 +598,7 @@ script YifuCity_EventScript_HearEcho {
 	faceplayer
 	speakername("Boy")
 	msgbox(format(
-		"There's a ghost haunting the sewers!\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_BOY_1 EMOTE_NORMAL}There's a ghost haunting the sewers!\p"
 		"I swear I heard a voice calling when I was walking along the canal!"
 	))
 	closemessage
@@ -662,6 +686,112 @@ script YifuCity_EventScript_Surskit {
     end
 }
 
+script YifuCity_EventScript_SafeCity {
+	lock
+	faceplayer
+	speakername("Girl")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Yifu City is finally safe again!\nI can't believe it!"
+	))
+	closemessage
+
+	release
+}
+
+
+script YifuCity_EventScript_Tourist {
+	lock
+	faceplayer
+	speakername("Woman")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 EMOTE_NORMAL}We came all the way from Windycape to see the great capital.\p"
+		"The city's beautiful!\nSo many tourists, though…"
+	))
+	closemessage
+
+	release
+}
+
+script YifuCity_EventScript_TouristKid {
+	lock
+	faceplayer
+	speakername("Little Boy")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY EMOTE_NORMAL}We're on vacation!\nI wanna see the big Sawsbuck!"
+	))
+	closemessage
+
+	setnamedmon(SPECIES_SAWSBUCK)
+
+	release
+}
+
+script YifuCity_EventScript_TouristGirl {
+	lock
+	faceplayer
+	speakername("Girl")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I'm tired… I wish mom'd take us to the hot springs…"
+	))
+	closemessage
+
+	setnamedmon(SPECIES_SAWSBUCK)
+
+	release
+}
+
+script YifuCity_EventScript_Zubat1 {
+	lock
+	faceplayer
+	speakername("Zubat Grunt")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Whatchu lookin' at?"
+	))
+	closemessage
+
+	release
+	end
+}
+
+script YifuCity_EventScript_Zubat2 {
+	lock
+	faceplayer
+	speakername("Zubat Grunt")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Scram, kid, I got no time for the likes of ya."
+	))
+	closemessage
+
+	release
+	end
+}
+
+script YifuCity_EventScript_Zubat3 {
+	lock
+	faceplayer
+	speakername("Zubat Grunt")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I'm just a regular, non-suspect, law-abiding citizen, mindin' my own business."
+	))
+	closemessage
+
+	release
+	end
+}
+
+script YifuCity_EventScript_Zubat4 {
+	lock
+	faceplayer
+	speakername("Zubat Grunt")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}I sure enjoy quaint day-to-day activities like strolling, shopping, thieving, fostering a positive environment within my community…"
+	))
+	closemessage
+
+	release
+	end
+}
+
 script YifuCity_Trigger_Lockdown {
 	lockall
 	// First time
@@ -709,7 +839,7 @@ script YifuCity_Trigger_Lockdown {
 		special(GetPlayerSirMissString)
 		speakername("Samurai")
 		msgbox(format(
-			"I'm sorry, {STR_VAR_1}, all exits are temporarily blocked. You are asked to remain inside the city until further notice."
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}I'm sorry, {STR_VAR_1}, all exits are temporarily blocked. You are asked to remain inside the city until further notice."
 		))
 
 		mcdialogue(
@@ -720,7 +850,7 @@ script YifuCity_Trigger_Lockdown {
 
 		speakername("Samurai")
 		msgbox(format(
-			"A robbery has taken place near the Pokémon Refuge!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}A robbery has taken place near the Pokémon Refuge!\p"
 			"We Samurai are on the cusp of cracking down on the infamous Crobat Shadows!\p"
 			"We cannot risk this operation to go awry, so we've locked down the premises for the time being!\p"
 			"Please remain calm, I'm sure everything will be over before you know it."
@@ -736,7 +866,7 @@ script YifuCity_Trigger_Lockdown {
 		special(GetPlayerSirMissString)
 		speakername("Samurai")
 		msgbox(format(
-			"I'm sorry, {STR_VAR_1}, all exits are temporarily blocked. Nobody in or out.\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}I'm sorry, {STR_VAR_1}, all exits are temporarily blocked. Nobody in or out.\p"
 			"You are asked to remain inside the city until further notice."
 		))
 		closemessage
@@ -755,7 +885,7 @@ script YifuCity_Trigger_CantGoThruNorth {
 	special(GetPlayerSirMissString)
 	speakername("Samurai")
 	msgbox(format(
-		"I'm sorry, {STR_VAR_1}, all exits are temporarily blocked. Nobody in or out.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}I'm sorry, {STR_VAR_1}, all exits are temporarily blocked. Nobody in or out.\p"
 		"You are asked to remain inside the city until further notice."
 	))
 	closemessage
@@ -788,10 +918,10 @@ script YifuCity_Trigger_HarikoCriminals {
 
 	speakername("Hariko")
 	msgbox(format(
-		"Hello, {PLAYER}.\nAre you well, since last time?\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello, {PLAYER}.\nAre you well, since last time?\p"
 		"Did you hear?\nThere was a robbery right here in Yifu City! Some people's Pokémon were stolen!\p"
 		"I heard there was a second decaying area west of here.\lI was planning on going there, but a Samurai was blocking the way, so I am waiting here.\p"
-		"I am going for a stroll now. Let us have lunch together before you leave. Yes? Good."
+		"Let us have lunch together before you leave. Yes? Good."
 	))
 	closemessage
 
@@ -819,7 +949,7 @@ script YifuCity_EventScript_GirlLookingAtSunriseVillage {
 	faceplayer
 	speakername("Little Girl")
 	msgbox(format(
-		"If I squint hard enough, I'm sure I can see my friend on Sunrise Beach!"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}If I squint hard enough, I'm sure I can see my friend on Sunrise Beach!"
 	))
 	closemessage
 	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
@@ -846,9 +976,9 @@ script YifuCity_EventScript_Chimecho {
 script YifuCity_EventScript_ChimechoLady {
 	lock
 	faceplayer
-	speakername("Old Lady")
+	speakername("Old Woman")
 	msgbox(format(
-		"I love listening to Chimecho's songs.\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}I love listening to Chimecho's songs.\p"
 		"They echo in its hollow body and produce the most wonderful harmonics.\p"
 		"You should always be kind to Chimecho! They are sacred, and mistreating one\lwould surely bring you bad luck."
 	))
@@ -977,7 +1107,7 @@ script(local) SpeakToNatsukiMorning {
 
 	speakername("Hariko")
 	msgbox(format(
-		"But… It is too late for dinner!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}But… It is too late for dinner!"
 	))
 
 	call(HarikoNotABreakfastPlace)
@@ -990,7 +1120,7 @@ script(local) SpeakToNatsukiLunchOrDinner {
 
 	speakername("Hariko")
 	msgbox(format(
-		"It would be impolite not to invite\nyour friend, {PLAYER}."
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}It would be impolite not to invite\nyour friend, {PLAYER}."
 	))
 
 	applymovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO, moves(walk_in_place_fast_up))
@@ -1012,9 +1142,9 @@ script(local) SpeakToNatsukiLunchOrDinner {
 	)
 
 	switch (var(VAR_RESULT)) {
-		case 1:
-			call(EnterRestaurant)
 		case 0:
+			call(EnterRestaurant)
+		case 1:
 			call(NotRightNow)
 	}
 }
@@ -1026,7 +1156,7 @@ script(local) SpeakToNatsukiAfternoon {
 
 	speakername("Hariko")
 	msgbox(format(
-		"But… It is too late for lunch,\nand too early for dinner!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}But… It is too late for lunch,\nand too early for dinner!"
 	))
 
 	call(NatsukiFacesHariko)
@@ -1034,7 +1164,7 @@ script(local) SpeakToNatsukiAfternoon {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Hey, you should chill.\nThe Golden Drampa's open all day!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\nThe Golden Drampa's open all day!\p"
 		"I actually haven't had lunch yet.\nI vote afternoon hotpot!"
 	))
 
@@ -1066,7 +1196,7 @@ script(local) SpeakToNatsukiNight {
 
 	speakername("Hariko")
 	msgbox(format(
-		"What? Clearly, you haven't looked\nat the time!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}What? Clearly, you haven't looked\nat the time!"
 	))
 
 	call(HarikoTooLateForDinner)
@@ -1110,7 +1240,7 @@ script YifuCity_EventScript_HarikoPostHideout {
 script(local) SpeakToHarikoMorning {
 	speakername("Hariko")
 	msgbox(format(
-		"{PLAYER}!\nYou are here too early!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}!\nYou are here too early!"
 	))
 
 	mcdialogue(
@@ -1154,14 +1284,14 @@ script(local) HarikoNotABreakfastPlace {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Hey, you should chill.\nI'm sure they'll have breakfast options!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\nI'm sure they'll have breakfast options!\p"
 		"I could actually go for a hotpot anyway!"
 	))
 
 	call(NatsukiFacesPlayer)
 	speakername("Natsuki")
 	msgbox(format(
-		"What d'you say, {PLAYER}?\nYou in or what?"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What d'you say, {PLAYER}?\nYou in or what?"
 	))
 
 	mcdialogue(
@@ -1198,7 +1328,7 @@ script(local) HarikoTooLateForDinner {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Hey, you should chill.\nThe Golden Drampa's open all night!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\nThe Golden Drampa's open all night!\p"
 		"I haven't eaten much today.\nI could go for a late night hotpot!\p"
 		"What d'you say, {PLAYER}?\nYou in or what?"
 	))
@@ -1227,7 +1357,7 @@ script(local) SpeakToHarikoLunchOrDinner {
 
 	speakername("Hariko")
 	msgbox(format(
-		"{PLAYER}! You are here to eat {STR_VAR_1}\nwith me, yes?"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}! You are here to eat {STR_VAR_1} with me, yes?"
 	))
 
 	call(HarikoFacesNatsuki)
@@ -1235,7 +1365,7 @@ script(local) SpeakToHarikoLunchOrDinner {
 
 	speakername("Hariko")
 	msgbox(format(
-		"I saw Natsuki on the way here.\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I saw Natsuki on the way here.\p"
 		"It would be impolite not to invite him, too!"
 	))
 	
@@ -1244,7 +1374,7 @@ script(local) SpeakToHarikoLunchOrDinner {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Hey, {PLAYER}!\nSounds like fun, I'm in!"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, {PLAYER}!\nSounds like fun, I'm in!"
 	))
 
 	mcdialogue(
@@ -1253,9 +1383,9 @@ script(local) SpeakToHarikoLunchOrDinner {
 	)
 
 	switch (var(VAR_RESULT)) {
-		case 1:
-			call(EnterRestaurant)
 		case 0:
+			call(EnterRestaurant)
+		case 1:
 			call(NotRightNow)
 	}
 }
@@ -1263,7 +1393,7 @@ script(local) SpeakToHarikoLunchOrDinner {
 script(local) SpeakToHarikoNight {
 	speakername("Hariko")
 	msgbox(format(
-		"{PLAYER}!\nYou are very late!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}!\nYou are very late!"
 	))
 
 	mcdialogue(
@@ -1290,7 +1420,7 @@ script(local) SpeakToHarikoNight {
 script(local) SpeakToHarikoAfternoon {
 	speakername("Hariko")
 	msgbox(format(
-		"{PLAYER}!\nYou are late!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}!\nYou are late!"
 	))
 
 	mcdialogue(
@@ -1329,7 +1459,7 @@ script(local) SpeakToHarikoAfternoon {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"Hey, you should chill.\nThe Golden Drampa's open all day!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\nThe Golden Drampa's open all day!\p"
 		"I actually haven't had lunch yet.\nI vote afternoon hotpot!"
 	))
 
@@ -1361,10 +1491,11 @@ script(local) SpeakToHarikoAgain {
 
 	speakername("Hariko")
 
+	gettime
 	// Morning
 	if (var(VAR_HOUR_OF_DAY) >= 5 && var(VAR_HOUR_OF_DAY) <= 11) {
 		msgbox(format(
-			"{PLAYER}. Shall we have… (Sigh)\n"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have… (Sigh)\n"
 			"Hotpot breakfast, apparently?"
 		))
 		// Lunch or dinner
@@ -1373,18 +1504,18 @@ script(local) SpeakToHarikoAgain {
 		|| (var(VAR_HOUR_OF_DAY) > 18 && var(VAR_HOUR_OF_DAY) <= 22)
 	) {
 		msgbox(format(
-			"{PLAYER}. Shall we have dinner\nat the hotpot together?"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have dinner\nat the hotpot together?"
 		))
 		// Snack
 	} elif (var(VAR_HOUR_OF_DAY) > 15 && var(VAR_HOUR_OF_DAY) <= 18) {
 		msgbox(format(
-			"{PLAYER}. Shall we have… (Sigh)\n"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have… (Sigh)\n"
 			"Hotpot snack, apparently?"
 		))
 		// Late night dinner (23h-5h)
 	} else {
 		msgbox(format(
-			"{PLAYER}. Shall we have… (Sigh)\n"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}. Shall we have… (Sigh)\n"
 			"Late night hotpot?"
 		))
 	}
@@ -1411,10 +1542,17 @@ script(local) SpeakToNatsukiAgain {
 
 	speakername("Natsuki")
 
+	buffernumberstring(STR_VAR_2, VAR_HOUR_OF_DAY)
+
+	// TODO EVA
+	msgbox("hour of day = {STR_VAR_2}")
+
+	gettime
+
 	// Morning
 	if (var(VAR_HOUR_OF_DAY) >= 5 && var(VAR_HOUR_OF_DAY) <= 11) {
 		msgbox(format(
-			"Ready for a sick hotpot breakfast,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot breakfast,\n{PLAYER}?"
 		))
 		// Lunch or dinner
 	} elif (
@@ -1422,17 +1560,17 @@ script(local) SpeakToNatsukiAgain {
 		|| (var(VAR_HOUR_OF_DAY) > 18 && var(VAR_HOUR_OF_DAY) <= 22)
 	) {
 		msgbox(format(
-			"Ready for a sick hotpot meal,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot meal,\n{PLAYER}?"
 		))
 		// Snack
 	} elif (var(VAR_HOUR_OF_DAY) > 15 && var(VAR_HOUR_OF_DAY) <= 18) {
 		msgbox(format(
-			"Ready for a sick hotpot snack,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot snack,\n{PLAYER}?"
 		))
 		// Late night dinner (23h-5h)
 	} else {
 		msgbox(format(
-			"Ready for a sick late night hotpot,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick late night hotpot,\n{PLAYER}?"
 		))
 	}
 
@@ -1456,7 +1594,7 @@ script(local) NatsukiCanIComeToo {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"{PLAYER}! What's up? Did you hear\nabout the whole lockdown thing?\l"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}! What's up? Did you hear\nabout the whole lockdown thing?\l"
 		"Wild stuff, huh?"
 	))
 
@@ -1478,18 +1616,18 @@ script(local) NotRightNow {
 	call(HarikoFacesPlayer)
 	speakername("Hariko")
 	msgbox(format(
-		"You still have errands to run?\nWe will be waiting here!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}You still have errands to run?\nWe will be waiting here!"
 	))
 
 	call(NatsukiFacesPlayer)
 	speakername("Natsuki")
 	msgbox(format(
-		"Be quick about it! I'm starving!"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Be quick about it! I'm starving!"
 	))
 }
 
 script(local) EnterRestaurant {
-	setvar(VAR_HOTPOT_SCENE_STATE, 1)
+	setvar(VAR_HOTPOT_SCENE_STATE, 2)
 	warp(MAP_YIFU_CITY_RESTAURANT, WARP_ID_RESTAURANT_CUTSCENE)
 }
 

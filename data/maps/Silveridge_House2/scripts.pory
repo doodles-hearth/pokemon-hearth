@@ -7,7 +7,7 @@ script Silveridge_House2_EventScript_Woman {
     faceplayer
     speakername("Woman")
     msgbox(format(
-        "TODO EVA"
+        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}TODO EVA"
     ))
     closemessage
     release

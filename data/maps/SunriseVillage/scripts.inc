@@ -69,7 +69,7 @@ SunriseVillage_Event_FatGuy_2:
 
 
 SunriseVillage_Event_GuardForest::
-	lock
+	lockall
 	applymovement 6, Common_Movement_WalkInPlaceFasterLeft
 	goto_if_set FLAG_RECEIVED_STARTER, SunriseVillage_Event_GuardForest_2
 	speakername SunriseVillage_Event_FatGuy_Text_0
@@ -82,7 +82,7 @@ SunriseVillage_Event_GuardForest::
 	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_Event_GuardForest_Movement_0
 	waitmovement 0
 SunriseVillage_Event_GuardForest_1:
-	release
+	releaseall
 	end
 
 SunriseVillage_Event_GuardForest_2:
@@ -150,7 +150,7 @@ SunriseVillage_Event_LittleGirl::
 
 
 SunriseVillage_Event_Boy::
-	lockall
+	lock
 	faceplayer
 	speakername SunriseVillage_Event_Boy_Text_0
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 4
@@ -158,7 +158,7 @@ SunriseVillage_Event_Boy::
 	msgbox SunriseVillage_Event_Boy_Text_2
 	closemessage
 SunriseVillage_Event_Boy_1:
-	releaseall
+	release
 	end
 
 SunriseVillage_Event_Boy_2:
@@ -169,28 +169,28 @@ SunriseVillage_Event_Boy_2:
 
 
 SunriseVillage_Event_Woman::
-	lockall
+	lock
 	speakername SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_Woman_Text_0
-	releaseall
+	release
 	end
 
 
 SunriseVillage_Event_Farmer::
-	lockall
+	lock
 	faceplayer
 	speakername SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_Farmer_Text_0
-	releaseall
+	release
 	end
 
 
 SunriseVillage_Event_OldMan::
-	lockall
+	lock
 	faceplayer
 	speakername SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_OldMan_Text_0
-	releaseall
+	release
 	end
 
 
@@ -233,15 +233,6 @@ SunriseVillage_Event_Kirlia::
 	end
 
 
-SunriseVillage_Event_TestGyarados::
-	lock
-	givemon SPECIES_SPHEAL, 100
-	setwildbattle SPECIES_KOTORA, 5
-	dowildbattle
-	release
-	end
-
-
 SunriseVillage_Event_TownSign::
 	msgbox SunriseVillage_Event_TownSign_Text_0, MSGBOX_SIGN
 	return
@@ -270,36 +261,36 @@ SunriseVillage_Event_FatGuy_Text_0:
 	.string "Neighbour$"
 
 SunriseVillage_Event_FatGuy_Text_1:
-	.string "My new Pokémon is so cute, I don't\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY EMOTE_NORMAL}My new Pokémon is so cute, I don't\n"
 	.string "feel like leaving it in its Pokéball!$"
 
 SunriseVillage_Event_FatGuy_Text_2:
-	.string "Someone managed to fit entire\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY EMOTE_NORMAL}Someone managed to fit entire\n"
 	.string "Pokémon inside these tiny balls.\p"
 	.string "The power of science is staggering!$"
 
 SunriseVillage_Event_GuardForest_Text_0:
-	.string "Oh, I see you received a Pokémon!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Oh, I see you received a Pokémon!\p"
 	.string "You'll probably be able to manage the\n"
 	.string "woods on your own, then.\p"
 	.string "Be careful!$"
 
 SunriseVillage_Event_GuardForest_Text_1:
-	.string "Hey, kid, heard you were going off on\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Hey, kid, heard you were going off on\n"
 	.string "an adventure!\p"
 	.string "Did you say bye to your sister?\p"
 	.string "No? Thought so. Go see her before you\n"
 	.string "run off, you ungrateful sibling!$"
 
 SunriseVillage_Event_GuardForest_Text_2:
-	.string "Hey, kid, a friend of yours was looking\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Hey, kid, a friend of yours was looking\n"
 	.string "for you.$"
 
 SunriseVillage_Event_GuardForest_Text_3:
-	.string "Stop right there, kid!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Stop right there, kid!$"
 
 SunriseVillage_Event_GuardForest_Text_4:
-	.string "Wild Pokémon have been lashing out\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Wild Pokémon have been lashing out\n"
 	.string "recently.\p"
 	.string "I know you're used to walking around\n"
 	.string "on your own, but the woods have\l"
@@ -308,7 +299,7 @@ SunriseVillage_Event_GuardForest_Text_4:
 	.string "Or, you know, if I were me.$"
 
 SunriseVillage_Event_GuardForest_Interact_Text_0:
-	.string "Wild Pokémon have been lashing out\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Wild Pokémon have been lashing out\n"
 	.string "recently.\p"
 	.string "Even the Ginko woods have become a\n"
 	.string "dangerous place lately!$"
@@ -317,7 +308,7 @@ SunriseVillage_Event_LittleGirl_Text_0:
 	.string "Little girl$"
 
 SunriseVillage_Event_LittleGirl_Text_1:
-	.string "I can't wait I can't wait I can't\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I can't wait I can't wait I can't\n"
 	.string "wait!!!\p"
 	.string "AHHHHH I CAN'T WAIT!!!!$"
 
@@ -325,26 +316,26 @@ SunriseVillage_Event_Boy_Text_0:
 	.string "Kid$"
 
 SunriseVillage_Event_Boy_Text_1:
-	.string "My Happiny is the strongest of all!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}My Happiny is the strongest of all!\n"
 	.string "See how fierce it looks?$"
 
 SunriseVillage_Event_Boy_Text_2:
-	.string "Hey {PLAYER}{KUN}!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}Hey {PLAYER}!\p"
 	.string "So, d'you think we'll get to choose the\n"
 	.string "one we want?$"
 
 SunriseVillage_Event_Woman_Text_0:
-	.string "I can see the Poké Balls from here…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}I can see the Poké Balls from here…\n"
 	.string "I've never seen so many in my life!$"
 
 SunriseVillage_Event_Farmer_Text_0:
-	.string "I've been waiting for hours!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_1 EMOTE_NORMAL}I've been waiting for hours!$"
 
 SunriseVillage_Event_OldMan_Text_0:
-	.string "The distribution is about to start.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}The distribution is about to start.$"
 
 SunriseVillage_Event_OldWoman_Text_0:
-	.string "I'm tired of waiting!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_WOMAN EMOTE_NORMAL}I'm tired of waiting!$"
 
 SunriseVillage_Event_Happiny_Text_0:
 	.string "Happi!$"

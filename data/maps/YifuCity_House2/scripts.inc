@@ -88,24 +88,24 @@ YifuCity_House2_Seamstress_Text_0:
 	.string "Seamstress$"
 
 YifuCity_House2_Seamstress_Text_1:
-	.string "I've been working day and night on a\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}I've been working day and night on a\n"
 	.string "dress for the Samurai Chief's\l"
 	.string "daugther.\p"
 	.string "This will be my greatest work!$"
 
 YifuCity_House2_Seamstress_Text_2:
-	.string "Tarountula, could you bring me some\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Tarountula, could you bring me some\n"
 	.string "more of that red thread?$"
 
 YifuCity_House2_Model_Text_0:
-	.string "That Tarountula creeps me out…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}That Tarountula creeps me out…\n"
 	.string "It has so many legs…$"
 
 YifuCity_House2_Model_Text_1:
 	.string "Model$"
 
 YifuCity_House2_Model_Text_2:
-	.string "Yawn… Being a model is so tiring! My\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Yawn… Being a model is so tiring! My\n"
 	.string "feet hurt from standing here for\l"
 	.string "hours…\p"
 	.string "I do get some sweet free stuff\n"

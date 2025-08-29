@@ -174,7 +174,8 @@ KuraTown_EventScript_Scyther::
 KuraTown_EventScript_Guard::
 	lock
 	faceplayer
-	msgbox KuraTown_EventScript_Guard_Text_0, MSGBOX_DEFAULT
+	speakername KuraTown_EventScript_Guard_Text_0
+	msgbox KuraTown_EventScript_Guard_Text_1, MSGBOX_DEFAULT
 	release
 	return
 
@@ -415,12 +416,12 @@ KuraTown_EventScript_SilkScarf_Text_0:
 	.string "Girl$"
 
 KuraTown_EventScript_SilkScarf_Text_1:
-	.string "Sigh… Now I'm scarfless…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Sigh… Now I'm scarfless…\p"
 	.string "Well, at least I'm not committing any\n"
 	.string "more crimes against fashion…$"
 
 KuraTown_EventScript_SilkScarf_Text_2:
-	.string "Hey, you! Yes, you! I need some\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Hey, you! Yes, you! I need some\n"
 	.string "super-urgent fashion advice!\p"
 	.string "I bought myself this scarf in Yifu\n"
 	.string "City… But now I'm worried the white\l"
@@ -442,6 +443,9 @@ KuraTown_EventScript_Scyther_Text_0:
 	.string "Gyooo!$"
 
 KuraTown_EventScript_Guard_Text_0:
+	.string "Guard$"
+
+KuraTown_EventScript_Guard_Text_1:
 	.string "Hope you didn't have too much trouble\n"
 	.string "passing the gate.\p"
 	.string "That Saku Village guard is such a\n"
@@ -458,7 +462,7 @@ KuraTown_EventScript_LovestruckGuy_Text_0:
 	.string "Lovestruck Boy$"
 
 KuraTown_EventScript_LovestruckGuy_Text_1:
-	.string "I just got back home after spending\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 EMOTE_NORMAL}I just got back home after spending\n"
 	.string "time with my love, and yet I already\l"
 	.string "want the day to pass by and let me\l"
 	.string "see her again…$"
@@ -467,7 +471,7 @@ KuraTown_EventScript_PokemonCouncil_Text_0:
 	.string "Woman$"
 
 KuraTown_EventScript_PokemonCouncil_Text_1:
-	.string "The Elders of the Toku Council may\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 EMOTE_NORMAL}The Elders of the Toku Council may\n"
 	.string "look like a bunch of frail old people,\l"
 	.string "but each of them was once a\l"
 	.string "formidable Wielder!\p"
@@ -499,7 +503,7 @@ KuraTown_EventScript_PostDecayNatsukiHariko_Text_0:
 	.string "Hariko$"
 
 KuraTown_EventScript_PostDecayNatsukiHariko_Text_1:
-	.string "Did you hear? They said this Decay\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Did you hear? They said this Decay\n"
 	.string "has started less than a week ago.\p"
 	.string "That coincides with the beginning of\n"
 	.string "the Volcano's rumbling spells,\l"
@@ -509,7 +513,7 @@ KuraTown_EventScript_PostDecayNatsukiHariko_Text_1:
 	.string "grownups don't let us?$"
 
 KuraTown_EventScript_PostDecayNatsukiHariko_Text_2:
-	.string "… …{PLAYER}, Natsuki.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}… …{PLAYER}, Natsuki.\n"
 	.string "I am heading home, in Yifu City.\p"
 	.string "We should meet up later to talk about\n"
 	.string "this some more.\p"
@@ -520,7 +524,7 @@ KuraTown_EventScript_PostDecayNatsukiHariko_Text_3:
 	.string "Natsuki$"
 
 KuraTown_EventScript_PostDecayNatsukiHariko_Text_4:
-	.string "Boy, your friend sure talks a lot, huh?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Boy, your friend sure talks a lot, huh?\p"
 	.string "D'you think this whole Decay business\n"
 	.string "is linked to the wild Pokémon attacks\l"
 	.string "Elder Kaba told us about?\p"
@@ -539,7 +543,7 @@ KuraTown_EventScript_PostDecayNatsukiHariko_Text_4:
 	.string "…Mostly from yourself, though!$"
 
 KuraTown_EventScript_PostDecayNatsukiHariko_Text_5:
-	.string "Don't hit me! Don't hit me!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't hit me! Don't hit me!\n"
 	.string "I'm gone!\p"
 	.string "See ya later, Feraligatr!$"
 
@@ -547,16 +551,16 @@ KuraTown_EventScript_AnxiousAshii_Text_0:
 	.string "Ashii$"
 
 KuraTown_EventScript_AnxiousAshii_Text_1:
-	.string "My heart is racing… Where is he?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}My heart is racing… Where is he?\n"
 	.string "I hope he's alright…\p"
 	.string "I'm worried…\n"
 	.string "Can you check down south for me?$"
 
 KuraTown_EventScript_AnxiousAshiiWaiting_Text_0:
-	.string "I'm worried…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm worried…\n"
 	.string "Can you check down south for me?$"
 
 KuraTown_EventScript_PreventEscape_Text_0:
-	.string "Where on earth are you going,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Where on earth are you going,\n"
 	.string "{PLAYER}?!\p"
 	.string "{FONT_SMALL_NARROW}Please don't leave me here alone…$"

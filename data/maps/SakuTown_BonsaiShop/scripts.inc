@@ -217,6 +217,7 @@ SakuTown_BonsaiShop_EventScript_Owner_5:
 	pokemartdecoration BonsaiShop
 	speakername SakuTown_BonsaiShop_EventScript_Owner_Text_0
 	msgbox SakuTown_BonsaiShop_EventScript_Owner_Text_2, MSGBOX_DEFAULT
+	closemessage
 	goto SakuTown_BonsaiShop_EventScript_Owner_1
 
 
@@ -265,54 +266,54 @@ SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_0:
 	.string "Little girl$"
 
 SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_1:
-	.string "Go plant the berry I gave you!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Go plant the berry I gave you!$"
 
 SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_2:
-	.string "Have you met my twin sister?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Have you met my twin sister?\n"
 	.string "Very “Type A”, right?\p"
 	.string "You should try beating her at her own\n"
 	.string "game!\p"
 	.string "Here, start by planting this!$"
 
 SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_3:
-	.string "Go for them berries!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Go for them berries!\n"
 	.string "Eyes on the prize!$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_0:
 	.string "Little Girl$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_1:
-	.string "What's up, berry master?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}What's up, berry master?\p"
 	.string "Didja know you've planted\n"
 	.string "{STR_VAR_2} berries so far?$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_2:
-	.string "Hi there {STR_VAR_1} Grownup!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hi there {STR_VAR_1} Grownup!\p"
 	.string "Have you planted many berries on your\n"
 	.string "travels?$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_3:
-	.string "Hmm…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 	.string "Your face still has “berry amateur”\n"
 	.string "written all over it.\p"
 	.string "Come back when you're less of an\n"
 	.string "embarrassment.$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_4:
-	.string "Hmm…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 	.string "I'd say it's less terrible than before.\p"
 	.string "Still not great though. You need to\n"
 	.string "plant way more berries.$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_5:
-	.string "Hmm…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 	.string "Hey, I'm actually impressed at the\n"
 	.string "berry skills I'm sensing!\p"
 	.string "… … Kidding!\p"
 	.string "You're getting better at it though.$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_6:
-	.string "Hmm…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 	.string "I'd say you're almost there…\p"
 	.string "There's a fine line between being\n"
 	.string "“almost good” at berries, and being\l"
@@ -320,7 +321,7 @@ SakuTown_BonsaiShop_EventScript_LittleSister_Text_6:
 	.string "So, you know, keep it up, or whatever.$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_7:
-	.string "Hmm…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 	.string "Oh?\p"
 	.string "Now that's what I'm talking about!\p"
 	.string "Congrats, {STR_VAR_1} Grownup. By\n"
@@ -329,7 +330,7 @@ SakuTown_BonsaiShop_EventScript_LittleSister_Text_7:
 	.string "Take this!$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_8:
-	.string "This scroll contains Acrobatics.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}This scroll contains Acrobatics.\p"
 	.string "Your Pokémon will strike harder if he\n"
 	.string "isn't holding an item.\p"
 	.string "Good match for a Pokémon holding a\n"
@@ -341,21 +342,21 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_0:
 	.string "Woman$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_1:
-	.string "Hi, {PLAYER}!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hi, {PLAYER}!\p"
 	.string "The shop owner is currently away.\n"
 	.string "She's very busy.\p"
 	.string "Busy with what, you ask?\p"
 	.string "Um, I'm actually not sure.$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_2:
-	.string "Hi, {PLAYER}! Don't mind my sisters.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hi, {PLAYER}! Don't mind my sisters.\n"
 	.string "They're quite the handful!$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_3:
-	.string "Hello, welcome to our bonsai shop…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hello, welcome to our bonsai shop…$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_4:
-	.string "Oh, but I know you! We met on Tranquil\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, but I know you! We met on Tranquil\n"
 	.string "route, remember?\p"
 	.string "Have you used the watering can I gave\n"
 	.string "you yet?\p"
@@ -365,7 +366,7 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_4:
 	.string "manage the shop whenever she's away.$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_5:
-	.string "Hello, welcome to our bonsai shop! I'm\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hello, welcome to our bonsai shop! I'm\n"
 	.string "the owner's assistant.\p"
 	.string "We sell bonsai and other potted\n"
 	.string "flowers! Are you interested in\l"
@@ -384,13 +385,13 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_5:
 	.string "Here, try planting a few!$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_6:
-	.string "Oh, right, I was almost forgetting!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I was almost forgetting!\p"
 	.string "You must remember to water them\n"
 	.string "regularly, or they won't grow!\p"
 	.string "I like you. Take this!$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_7:
-	.string "Isn't it cute? It's friend-shaped!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Isn't it cute? It's friend-shaped!\p"
 	.string "Don't worry about it, I have a spare\n"
 	.string "one.\p"
 	.string "Have fun gardening!$"
@@ -399,14 +400,14 @@ SakuTown_BonsaiShop_EventScript_Owner_Text_0:
 	.string "Hana$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_1:
-	.string "Hello, {PLAYER}. Can I interest you\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you\n"
 	.string "in a little greenery?$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_2:
-	.string "Thank you for your business!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Thank you for your business!$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_3:
-	.string "Hello, {PLAYER}. Can I interest you\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you\n"
 	.string "in a little greenery?\p"
 	.string "Hmm… It looks like you wouldn't have\n"
 	.string "anywhere to put bonsai. Come back\l"
@@ -416,7 +417,7 @@ SakuTown_BonsaiShop_EventScript_Owner_Text_4:
 	.string "Shop Owner$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_5:
-	.string "Hello, young {STR_VAR_1}. Can I\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I\n"
 	.string "interest you in a little greenery?\p"
 	.string "Hmm… It looks like you wouldn't have\n"
 	.string "anywhere to put bonsai. Come back\l"
@@ -426,7 +427,7 @@ SakuTown_EventScript_Man_Text_0:
 	.string "Customer$"
 
 SakuTown_EventScript_Man_Text_1:
-	.string "I'm choosing flowers for my wife.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}I'm choosing flowers for my wife.\p"
 	.string "I, uh… I didn't realize there'd be so\n"
 	.string "many different types.\p"
 	.string "Guess I'll be here a while…$"

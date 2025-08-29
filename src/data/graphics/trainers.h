@@ -48,7 +48,7 @@ const u16 gTrainerPalette_HexManiac[] = INCBIN_U16("graphics/trainers/front_pics
 
 const u32 gTrainerFrontPic_AromaLady[] = INCBIN_U32("graphics/trainers/front_pics/aroma_lady.4bpp.smol");
 // OW is more up to date
-const u16 gTrainerPalette_AromaLady[] = INCBIN_U16("graphics/object_events/pics/people/aroma_lady.gbapal");
+const u16 gTrainerPalette_AromaLady[] = INCBIN_U16("graphics/trainers/front_pics/aroma_lady.gbapal");
 
 const u32 gTrainerFrontPic_RuinManiac[] = INCBIN_U32("graphics/trainers/front_pics/ruin_maniac.4bpp.smol");
 const u16 gTrainerPalette_RuinManiac[] = INCBIN_U16("graphics/trainers/front_pics/ruin_maniac.gbapal");

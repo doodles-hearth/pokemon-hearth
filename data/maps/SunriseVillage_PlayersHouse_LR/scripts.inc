@@ -122,10 +122,10 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Movement_0:
 	step_end
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0:
-	.string "Big sis$"
+	.string "Big Sis$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_1:
-	.string "Oh, {PLAYER}, you're up! Ready for\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Oh, {PLAYER}, you're up! Ready for\n"
 	.string "the big event?\p"
 	.string "Are you excited? I sure hope you are,\n"
 	.string "because I'm VERY EXCITED!\p"
@@ -138,19 +138,19 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_1:
 	.string "Make sure you read it!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_0:
-	.string "What are you still doing here? You're\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}What are you still doing here? You're\n"
 	.string "late for the distribution!\p"
 	.string "Go to Kaba's house right now!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_1:
-	.string "Hey little {STR_VAR_1}! See how\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Hey little {STR_VAR_1}! See how\n"
 	.string "cute my new Pokémon is?\p"
 	.string "By the way, I heard Natsuki was\n"
 	.string "waiting for you at Elder Kaba's house.\l"
 	.string "You should probably go see them.$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2:
-	.string "Hey little {STR_VAR_1}! See how\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Hey little {STR_VAR_1}! See how\n"
 	.string "cute my new Pokémon is?\p"
 	.string "Oh, who is that lovely little thing\n"
 	.string "with you?\p"
@@ -168,25 +168,25 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2:
 	.string "Toku!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3:
-	.string "Ah, one last thing! Take my good luck\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Ah, one last thing! Take my good luck\n"
 	.string "statuette with you.\p"
 	.string "I like the tradition, so indulge me,\n"
 	.string "alright? Please? Everyone carries\l"
 	.string "one!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_4:
-	.string "Alrighty! You all set? Have a safe\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Alrighty! You all set? Have a safe\n"
 	.string "journey, little {STR_VAR_1}.\p"
 	.string "Maybe I'll see you around!\p"
 	.string "Come back home sometimes though, will\n"
 	.string "you?$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5:
-	.string "Hey {PLAYER}! How's it going?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Hey {PLAYER}! How's it going?\p"
 	.string "Here, rest for a bit.$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_6:
-	.string "See you around, little\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}See you around, little\n"
 	.string "{STR_VAR_1}.$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_0:

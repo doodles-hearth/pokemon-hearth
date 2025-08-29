@@ -215,17 +215,17 @@ Silveridge_EldersHouse_EventScript_EldersMon_Text_0:
 	.string "Ghurrr!$"
 
 Silveridge_EldersHouse_EventScript_Conversation_Text_0:
-	.string "Old man$"
+	.string "Old Man$"
 
 Silveridge_EldersHouse_EventScript_Conversation_Text_1:
-	.string "Yet another area is decaying on\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_MAN EMOTE_NORMAL}Yet another area is decaying on\n"
 	.string "Beachbound Route…$"
 
 Silveridge_EldersHouse_EventScript_Conversation_Text_2:
 	.string "Old woman$"
 
 Silveridge_EldersHouse_EventScript_Conversation_Text_3:
-	.string "We have yet to receive tidings from\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_WOMAN EMOTE_NORMAL}We have yet to receive tidings from\n"
 	.string "the Elder in Sunrise Village…$"
 
 Silveridge_EldersHouse_EventScript_Conversation_Text_4:

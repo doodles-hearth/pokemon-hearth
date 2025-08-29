@@ -128,7 +128,7 @@ YifuCity_House3_EggGirlsMom_Text_0:
 	.string "Woman$"
 
 YifuCity_House3_EggGirlsMom_Text_1:
-	.string "I help out at the Pokémon daycare\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}I help out at the Pokémon daycare\n"
 	.string "west of Windycape on tuesdays.\l"
 	.string "Sometimes they'll let me bring back an\l"
 	.string "egg for my daughter!$"
@@ -140,10 +140,10 @@ YifuCity_House3_EventScript_EggGirl_Text_0:
 	.string "Little girl$"
 
 YifuCity_House3_EventScript_EggGirl_Text_1:
-	.string "Can't wait for my egg to hatch!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Can't wait for my egg to hatch!$"
 
 YifuCity_House3_NotTradedYet_Text_0:
-	.string "Hello {STR_VAR_1}! Do you like\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Hello {STR_VAR_1}! Do you like\n"
 	.string "eggs?$"
 
 YifuCity_House3_NotTradedYet_Text_1:
@@ -159,7 +159,7 @@ YifuCity_House3_NotTradedYet_Text_4:
 	.string "Eggs?$"
 
 YifuCity_House3_NotTradedYet_Text_5:
-	.string "Really?! Me too!! Pokémon eggs are so\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Really?! Me too!! Pokémon eggs are so\n"
 	.string "cool!\l"
 	.string "I love not knowing what will jump out\l"
 	.string "of the egg!\p"
@@ -168,7 +168,7 @@ YifuCity_House3_NotTradedYet_Text_5:
 	.string "That way we'll both have a surprise!$"
 
 YifuCity_House3_NotTradedYet_Text_6:
-	.string "WHAT? Ewww, gross! I don't mean\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}WHAT? Ewww, gross! I don't mean\n"
 	.string "EATING them!\p"
 	.string "I just love waiting for a Pokémon to\n"
 	.string "jump of of its egg, especially when I\l"
@@ -178,10 +178,10 @@ YifuCity_House3_NotTradedYet_Text_6:
 	.string "That way we'll both have a surprise!$"
 
 YifuCity_House3_NotTradedYet_Text_7:
-	.string "Oh… Alright…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Oh… Alright…$"
 
 YifuCity_House3_NotTradedYet_Text_8:
-	.string "Eggs! Pokémon eggs! I just love\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Eggs! Pokémon eggs! I just love\n"
 	.string "waiting for a Pokémon to jump of of\l"
 	.string "its egg, especially when I have no\l"
 	.string "idea what it's gonna be!\p"
@@ -196,17 +196,17 @@ YifuCity_House3_NotTradedYet_Text_10:
 	.string "No.$"
 
 YifuCity_House3_TradeEgg_Text_0:
-	.string "Have you changed your mind?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Have you changed your mind?$"
 
 YifuCity_House3_TradeEgg_Text_1:
 	.string "{PLAYER} received the mysterious\n"
 	.string "egg!$"
 
 YifuCity_House3_TradeEgg_Text_2:
-	.string "Yay!!! I can't wait for my egg to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Yay!!! I can't wait for my egg to\n"
 	.string "hatch!\p"
 	.string "Aren't you wondering what you're\n"
 	.string "gonna get?$"
 
 YifuCity_House3_TradeEgg_Text_3:
-	.string "That's not an egg, you silly!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}That's not an egg, you silly!$"

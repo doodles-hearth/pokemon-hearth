@@ -176,7 +176,7 @@ MaguroHarbor_Dojo_EventScript_Koishi_Text_0:
 	.string "Koishi$"
 
 MaguroHarbor_Dojo_EventScript_Koishi_Text_1:
-	.string "Welcome to Maguro's Koi Pond Dojo, one\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}Welcome to Maguro's Koi Pond Dojo, one\n"
 	.string "of the eight Dojos officially\l"
 	.string "appointed by the Toku Council.\p"
 	.string "We Dojo Masters fight Wielders that\n"
@@ -205,7 +205,7 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_0:
 	.string "Token from Koishi.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1:
-	.string "I applaud your skill. You are still a\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}I applaud your skill. You are still a\n"
 	.string "child, yet you obviously have a\l"
 	.string "natural aptitude for battle.\p"
 	.string "With the Token I just gave you, your\n"
@@ -215,7 +215,7 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1:
 	.string "I am also supposed to give you this.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2:
-	.string "This scroll contains Nature Power, a\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}This scroll contains Nature Power, a\n"
 	.string "move that changes depending on the\l"
 	.string "terrain your Pokémon is standing on.\p"
 	.string "Going through the Toku Council's\n"
@@ -225,22 +225,22 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2:
 	.string "Good luck, {PLAYER}.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_3:
-	.string "That… That was a big one!…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}That… That was a big one!…\p"
 	.string "I'm going outside to make sure\n"
 	.string "everyone's alright.$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_0:
-	.string "My Pokémon are the daintiest there\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}My Pokémon are the daintiest there\n"
 	.string "is!$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_1:
 	.string "My poor Feebas!$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_2:
-	.string "Oh my, what was that quake?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Oh my, what was that quake?$"
 
 MaguroHarbor_Dojo_EventScript_Izumi_Text_3:
-	.string "You'll go far. I can tell.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}You'll go far. I can tell.$"
 
 MaguroHarbor_Dojo_EventScript_Ren_Text_0:
 	.string "Come in! The water's nice and toasty!$"
@@ -255,31 +255,31 @@ MaguroHarbor_Dojo_EventScript_Ren_Text_3:
 	.string "I l-lied. I'm f-f-freezing in h-here.$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_0:
-	.string "Do not disturb the koi pond!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}Do not disturb the koi pond!$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_1:
 	.string "Stop making so much noise!$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_2:
-	.string "The poor fish must be all shaken!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}The poor fish must be all shaken!$"
 
 MaguroHarbor_Dojo_EventScript_Mizu_Text_3:
-	.string "These are sophisticated fish. They\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}These are sophisticated fish. They\n"
 	.string "need peace and quiet to thrive.$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_0:
 	.string "Man$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_1:
-	.string "You swept me away with that battle!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}You swept me away with that battle!\p"
 	.string "That quake just now nearly literally\n"
 	.string "swept me away as well!$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_2:
-	.string "You swept me away with that battle!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}You swept me away with that battle!$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_3:
-	.string "Hello, young challenger! Are you going\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}Hello, young challenger! Are you going\n"
 	.string "to be fighting for your first Token?\p"
 	.string "Welcome to the Koi Pond Dojo!\p"
 	.string "Koishi, the Master of this place,\n"

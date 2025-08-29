@@ -187,11 +187,11 @@ AshiiScript1_Text_0:
 	.string "Girl$"
 
 AshiiScript1_Text_1:
-	.string "Sigh… Oh, Tama…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Sigh… Oh, Tama…\n"
 	.string "Why must life be so complicated?$"
 
 AshiiScript1_Text_2:
-	.string "Hey, what are you doing in my house?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Hey, what are you doing in my house?\n"
 	.string "Were you eavesdropping?\p"
 	.string "…It doesn't matter anyway.\n"
 	.string "The boy I really like lives in\l"
@@ -205,7 +205,7 @@ AshiiScript1_Text_3:
 	.string "Ashii$"
 
 AshiiScript1_Text_4:
-	.string "Wait, you're not from here, are you?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Wait, you're not from here, are you?\p"
 	.string "My name is Ashii. I need your help.\p"
 	.string "The guard won't let anyone from\n"
 	.string "Kura Village enter Saku Village.\l"
@@ -215,11 +215,11 @@ AshiiScript1_Text_4:
 	.string "He'll know it's from me…$"
 
 AshiiScript2_Text_0:
-	.string "Please, give Tama my silk scarf.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Please, give Tama my silk scarf.\n"
 	.string "He'll know it's from me…$"
 
 AshiiScript3_Text_0:
-	.string "Were you able to give Tama my gift?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Were you able to give Tama my gift?\p"
 	.string "Did…\n"
 	.string "Did he get my letter?$"
 
@@ -233,7 +233,7 @@ AshiiScript3_Text_3:
 	.string "Loud and clear.$"
 
 AshiiScript3_Text_4:
-	.string "I'm sorry. You've been an incredible\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm sorry. You've been an incredible\n"
 	.string "help, and I don't even know your name!\l"
 	.string "May i ask what it is?\p"
 	.string "{PLAYER}… I see…\p"
@@ -254,19 +254,19 @@ AshiiScript3_Text_7:
 	.string "I guess?$"
 
 AshiiScript3_Text_8:
-	.string "Thank you! Thank you! Thank you!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
 	.string "Let's make haste, then.\n"
 	.string "Before the moon takes her slumber!$"
 
 AshiiScript3_Text_9:
-	.string "Thank you! Thank you! Thank you!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
 	.string "Meet me here later tonight.$"
 
 AshiiScript3_Text_10:
 	.string "Late that night…$"
 
 AshiiScript_Reward_Text_0:
-	.string "{PLAYER}! It's you!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}{PLAYER}! It's you!\n"
 	.string "I can't thank you enough for the\l"
 	.string "night you've given us.\p"
 	.string "Even if we must meet under cover of\n"

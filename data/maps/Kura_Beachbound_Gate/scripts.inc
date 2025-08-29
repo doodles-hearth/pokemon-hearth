@@ -25,4 +25,4 @@ Kura_Beachbound_Gate_EventScript_Guard_Text_0:
 	.string "Samurai$"
 
 Kura_Beachbound_Gate_EventScript_Guard_Text_1:
-	.string "Zzzzzz…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Zzzzzz…$"

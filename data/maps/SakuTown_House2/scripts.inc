@@ -237,38 +237,38 @@ SakuTown_House2_EventScript_EspeonsMaster_Text_0:
 	.string "Boy$"
 
 SakuTown_House2_EventScript_EspeonsMaster_Text_1:
-	.string "I hope Eevee comes home soon…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}I hope Eevee comes home soon…$"
 
 SakuTown_House2_EventScript_EspeonsMaster_Text_2:
-	.string "I hope Eevee comes home soon…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}I hope Eevee comes home soon…\p"
 	.string "What? Someone found my Eevee? Oh,\n"
 	.string "please, can you tell them to bring it\l"
 	.string "back?$"
 
 SakuTown_House2_EventScript_EspeonsMaster_Text_3:
-	.string "… …$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}… …$"
 
 SakuTown_House2_EventScript_EspeonsMaster_Text_4:
-	.string "Where's my Eevee?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Where's my Eevee?$"
 
 SakuTown_House2_EventScript_EspeonsMaster_Text_5:
-	.string "Thanks again!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Thanks again!$"
 
 SakuTown_House2_EventScript_EspeonsMaster_Text_6:
-	.string "How are you doing? Espeon looks\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}How are you doing? Espeon looks\n"
 	.string "happy to see you!$"
 
 SakuTown_House2_EventScript_Reunited_Text_0:
-	.string "Is… Is that Eevee?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Is… Is that Eevee?$"
 
 SakuTown_House2_EventScript_Reunited_Text_1:
-	.string "It's you! It's really you! Oh, Eevee,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}It's you! It's really you! Oh, Eevee,\n"
 	.string "I've missed you so much!\p"
 	.string "… …\p"
 	.string "Wait, you look a little different…$"
 
 SakuTown_House2_EventScript_Reunited_Text_2:
-	.string "You say it was a woman from Kura\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}You say it was a woman from Kura\n"
 	.string "Village that found him?\p"
 	.string "She took such good care of him!\p"
 	.string "His fur is so shiny and well-groomed,\n"
@@ -301,14 +301,14 @@ SakuTown_House2_EventScript_Sister_Text_0:
 	.string "Girl$"
 
 SakuTown_House2_EventScript_Sister_Text_1:
-	.string "My brother's been feeling really down\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}My brother's been feeling really down\n"
 	.string "lately.\p"
 	.string "His precious Pokémon disappeared\n"
 	.string "during the big storm we had a while\l"
 	.string "ago.$"
 
 SakuTown_House2_EventScript_Sister_Text_2:
-	.string "Thank you for your kindness! It's\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you for your kindness! It's\n"
 	.string "nice to see my brother smiling again.\p"
 	.string "I wish I could thank whoever took\n"
 	.string "such good care of Eevee, too!$"

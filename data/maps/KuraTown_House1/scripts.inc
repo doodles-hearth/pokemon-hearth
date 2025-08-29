@@ -163,47 +163,47 @@ KuraTown_House1_OldWoman_Text_0:
 	.string "Old woman$"
 
 KuraTown_House1_OldWoman_Text_1:
-	.string "Come back later for the medicine.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Come back later for the medicine.$"
 
 KuraTown_House1_OldWoman_Text_2:
-	.string "It's good to see you! I've finished\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}It's good to see you! I've finished\n"
 	.string "the medicine. Here, take it to the\l"
 	.string "ailing Pokémon. Once it drinks it, it\l"
 	.string "should feel good as new.$"
 
 KuraTown_House1_OldWoman_Text_3:
-	.string "Once the ill Pokémon drinks the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Once the ill Pokémon drinks the\n"
 	.string "medicine I gave you, it should feel\l"
 	.string "right as rain.$"
 
 OldWomanRegularScript_Text_0:
-	.string "You look like you're tired, young one.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}You look like you're tired, young one.\n"
 	.string "Please rest a while.$"
 
 OldWomanRegularScript_Text_1:
-	.string "I wish you strength on your journey.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}I wish you strength on your journey.$"
 
 OldWomanQuestScript_Text_0:
-	.string "Hello, dearie. Do you need to rest\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Hello, dearie. Do you need to rest\n"
 	.string "yourself and your Pokémon?$"
 
 OldWomanQuestScript_Text_1:
 	.string "A Pokémon needs your help.$"
 
 OldWomanQuestScript_Text_2:
-	.string "Oh my. Take me, please. Where is it?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Oh my. Take me, please. Where is it?$"
 
 OldWomanQuestScript_Text_3:
 	.string "It's in the Saku village Refuge.$"
 
 OldWomanQuestScript_Text_4:
-	.string "Saku village…? Oh dear…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Saku village…? Oh dear…\p"
 	.string "As much as I'd like to help, I won't be\n"
 	.string "allowed to go through the gate by the\l"
 	.string "guard.$"
 
 OldWomanQuestScript_Text_5:
-	.string "While I can't go to Saku village\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}While I can't go to Saku village\n"
 	.string "myself, I can create an healing elixir\l"
 	.string "here for the Pokémon.\p"
 	.string "I only need three: an Oran Berry, a\n"
@@ -221,21 +221,21 @@ OldWomanQuestScript_Text_8:
 	.string "Sure.$"
 
 OldWomanQuestScript_Text_9:
-	.string "You're such a wonderful child. I'll\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}You're such a wonderful child. I'll\n"
 	.string "wait here until you come back with the\l"
 	.string "necessary ingredients.$"
 
 OldWomanQuest2Script_Text_0:
-	.string "Hello, child. Do you have the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Hello, child. Do you have the\n"
 	.string "ingredients I need for the elixir,\l"
 	.string "yet?$"
 
 OldWomanQuest2Script_Text_1:
-	.string "Wonderful! Give me a moment, alright?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Wonderful! Give me a moment, alright?\n"
 	.string "You can come back later for it.$"
 
 OldWomanQuest2Script_Text_2:
-	.string "Well, I'll stay here until you do.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Well, I'll stay here until you do.\n"
 	.string "Remember, I need an Oran Berry, a\l"
 	.string "Maguro Fishcake, and a Revival\l"
 	.string "Powder.$"
@@ -244,7 +244,7 @@ KuraTown_House1_OldWomansSon_Text_0:
 	.string "Guy$"
 
 KuraTown_House1_OldWomansSon_Text_1:
-	.string "The Pokémon league organization\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}The Pokémon league organization\n"
 	.string "didn't see fit to build a Pokémon\l"
 	.string "refuge in our village, but those jerks\l"
 	.string "over at Saku Village won't let us use\l"

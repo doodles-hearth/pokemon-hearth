@@ -31,7 +31,7 @@ script SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll {
 script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
     lock
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
-	speakername("Big sis")
+	speakername("Big Sis")
 	msgbox(format(
 		"{PLAYER}! {PLAYER}!\nAre you still sleeping?"
 	))
@@ -44,7 +44,7 @@ script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
 
 	closemessage
 
-	speakername("Big sis")
+	speakername("Big Sis")
 
 	if (var(VAR_RESULT) == 0) {
 		delay(30)
@@ -68,7 +68,7 @@ script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
 
 		delay(30)
 
-		speakername("Big sis")
+		speakername("Big Sis")
 		msgbox(format(
 			"No need to yell, I can hear you just fine!\p"
 			"Now get up and get ready!"

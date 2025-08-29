@@ -47,18 +47,18 @@ SunriseVillage_House1_EventScript_OldWoman_Text_0:
 	.string "Neighbour$"
 
 SunriseVillage_House1_EventScript_OldWoman_Text_1:
-	.string "Ralts here is quite the silent type.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_WOMAN EMOTE_NORMAL}Ralts here is quite the silent type.\n"
 	.string "I'm fine with that.$"
 
 SunriseVillage_House1_EventScript_OldMan_Text_0:
-	.string "My granddaughter's Pokémon has\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}My granddaughter's Pokémon has\n"
 	.string "already scratched all the furniture…$"
 
 SunriseVillage_House1_EventScript_LittleGirl_Text_0:
 	.string "Little girl$"
 
 SunriseVillage_House1_EventScript_LittleGirl_Text_1:
-	.string "Ahhh I'm so happy!! Look how cute my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}Ahhh I'm so happy!! Look how cute my\n"
 	.string "Ziggy is!!!$"
 
 SunriseVillage_House1_EventScript_Zigzagoon_Text_0:

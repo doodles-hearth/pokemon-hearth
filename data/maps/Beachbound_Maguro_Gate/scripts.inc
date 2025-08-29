@@ -33,9 +33,9 @@ Beachbound_Maguro_Gate_EventScript_Guard_Text_0:
 	.string "Samurai$"
 
 Beachbound_Maguro_Gate_EventScript_Guard_Text_1:
-	.string "Are you going to Beachbound Route?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Are you going to Beachbound Route?\n"
 	.string "Uh, be careful, kid!$"
 
 Beachbound_Maguro_Gate_EventScript_Guard_Text_2:
-	.string "Ugh, I hate guard duty…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Ugh, I hate guard duty…\n"
 	.string "We're not even allowed a book…$"

@@ -10,7 +10,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	{
 		speakername("Pokémon Nerd")
 		msgbox(format(
-			"Come back tomorrow for more Pokémon riddles… Hehe…"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Come back tomorrow for more Pokémon riddles… Hehe…"
 		))
 		closemessage
 		release
@@ -19,7 +19,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 	speakername("Pokémon Nerd")
 	msgbox(format(
-		"Hehe… Hullo, kid…\nPeople call me the Pokémon Nerd.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Hehe… Hullo, kid…\nPeople call me the Pokémon Nerd.\p"
 		"(They're just jealous…)\p"
 		"I know a whole lot about Pokémon… Wanna play a game?\p"
 		"If you can guess what Pokémon I'm describing,\NI'll share my knowledge with you.\p"
@@ -30,7 +30,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	randomdexmsgbox
 
 	speakername("Pokémon Nerd")
-	msgbox("Well? What Pokémon am I talking about?")
+	msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Well? What Pokémon am I talking about?")
 	closemessage
 
 	special(EnterDexRiddleGuess)
@@ -41,7 +41,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	{
 		speakername("Pokémon Nerd")
 		msgbox(format(
-			"Woah, you… You solved my riddle!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Woah, you… You solved my riddle!\p"
 			"Could you… be a true Pokémon Nerd?\p"
 			"You have bested me today. Can you feel the rush of pure knowledge that's coursing through your veins?\p"
 			"Your Pokémon… They will gain more experience today.\p"
@@ -56,7 +56,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	{
 		speakername("Pokémon Nerd")
 		msgbox(format(
-			"Wrong, wrong, WRONG!\nYou are wrong!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Wrong, wrong, WRONG!\nYou are wrong!\p"
 			"I'm honestly disappointed.\p"
 			"Come back tomorrow, or when you've accumulated more Pokémon knowledge."
 		))

@@ -28,7 +28,7 @@ YifuCity_ClothingShop_EventScript_Cashier_Text_0:
 	.string "Cashier$"
 
 YifuCity_ClothingShop_EventScript_Cashier_Text_1:
-	.string "Sorry, everything's sold out at the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Sorry, everything's sold out at the\n"
 	.string "moment!\p"
 	.string "We'll be restocking soon.$"
 
@@ -36,7 +36,7 @@ YifuCity_ClothingShop_EventScript_Customer_Text_0:
 	.string "Girl$"
 
 YifuCity_ClothingShop_EventScript_Customer_Text_1:
-	.string "Ohmigosh ohmigosh ohmigosh!!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Ohmigosh ohmigosh ohmigosh!!\n"
 	.string "Master Yutaka is here!!\p"
 	.string "She's sooo beautiful, and her clothes\n"
 	.string "are amazing!\p"

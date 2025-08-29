@@ -59,22 +59,22 @@ YifuCity_House1_2F_EventScript_ChildGiveDoll_Text_0:
 	.string "Little boy$"
 
 YifuCity_House1_2F_EventScript_ChildGiveDoll_Text_1:
-	.string "Keep your mouth shut about it!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}Keep your mouth shut about it!$"
 
 YifuCity_House1_2F_EventScript_ChildGiveDoll_Text_2:
-	.string "Quick, take this!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}Quick, take this!$"
 
 YifuCity_House1_2F_EventScript_ChildGiveDoll_Text_3:
-	.string "Tell no one! I was never here!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}Tell no one! I was never here!$"
 
 YifuCity_House1_2F_EventScript_ChildGiveDoll_Text_4:
-	.string "Quit following me around!!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}Quit following me around!!$"
 
 YifuCity_House1_2F_EventScript_ChildStolenDoll_Text_0:
 	.string "Little girl$"
 
 YifuCity_House1_2F_EventScript_ChildStolenDoll_Text_1:
-	.string "My brother is meaaannnn!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}My brother is meaaannnn!\n"
 	.string "He won't give me my doll back!!$"
 
 YifuCity_House1_2F_EventScript_Vulpix_Text_0:

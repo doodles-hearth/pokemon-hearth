@@ -56,11 +56,11 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0:
 	.string "Pokémon Nerd$"
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_Text_1:
-	.string "Come back tomorrow for more Pokémon\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Come back tomorrow for more Pokémon\n"
 	.string "riddles… Hehe…$"
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_Text_2:
-	.string "Hehe… Hullo, kid…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Hehe… Hullo, kid…\n"
 	.string "People call me the Pokémon Nerd.\p"
 	.string "(They're just jealous…)\p"
 	.string "I know a whole lot about Pokémon…\n"
@@ -72,10 +72,10 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_Text_2:
 	.string "Ahem…$"
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_Text_3:
-	.string "Well? What Pokémon am I talking about?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Well? What Pokémon am I talking about?$"
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4:
-	.string "Woah, you… You solved my riddle!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Woah, you… You solved my riddle!\p"
 	.string "Could you… be a true Pokémon Nerd?\p"
 	.string "You have bested me today. Can you\n"
 	.string "feel the rush of pure knowledge\l"
@@ -87,7 +87,7 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4:
 	.string "riddle…$"
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_Text_5:
-	.string "Wrong, wrong, WRONG!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Wrong, wrong, WRONG!\n"
 	.string "You are wrong!\p"
 	.string "I'm honestly disappointed.\p"
 	.string "Come back tomorrow, or when you've\n"

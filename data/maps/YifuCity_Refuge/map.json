@@ -35,6 +35,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WOOBAT_YIFU",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(WOOBAT)",
       "x": 7,
       "y": 2,
@@ -55,8 +56,8 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_VALET",
-      "x": 3,
+      "graphics_id": "OBJ_EVENT_GFX_UUME_VALET",
+      "x": 2,
       "y": 2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -75,7 +76,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_UUME_MAN_2",
       "x": 2,
       "y": 6,
       "elevation": 0,
@@ -176,7 +177,7 @@
     },
     {
       "local_id": "LOCALID_NURSE_YIFU",
-      "graphics_id": "OBJ_EVENT_GFX_NURSE",
+      "graphics_id": "OBJ_EVENT_GFX_UUME_NURSE",
       "x": 6,
       "y": 2,
       "elevation": 0,
@@ -237,7 +238,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_2",
+      "graphics_id": "OBJ_EVENT_GFX_SAKURA_BOY_2",
       "x": 13,
       "y": 3,
       "elevation": 0,
@@ -277,7 +278,7 @@
       "night": true
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_RED",
+      "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_BLUE",
       "x": 11,
       "y": 2,
       "elevation": 0,
@@ -357,7 +358,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_GREEN",
+      "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_RED",
       "x": 10,
       "y": 9,
       "elevation": 0,
@@ -368,6 +369,26 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_Refuge_EventScript_RouteShamisen",
       "flag": "FLAG_TEMP_2",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_UUME_OLD_MAN",
+      "x": 1,
+      "y": 8,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "YifuCity_Refuge_EventScript_OldMan",
+      "flag": "0",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,

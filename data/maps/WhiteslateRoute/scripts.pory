@@ -162,34 +162,34 @@ script WhiteslateRoute_EventScript_ShamisenPlayerPokemon {
 script WhiteslateRoute_EventScript_Itsumi {
 	trainerbattle_single(
 		TRAINER_ITSUMI,
-		format("Do you nurture your Pokémon with love?"),
+		format("{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Do you nurture your Pokémon with love?"),
 		format("Oh, you do!")
 	)
 	speakername("Itsumi")
-	msgbox(format("I am glad we met! Your Pokémon seem so happy."), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}I am glad we met! Your Pokémon seem so happy."), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WhiteslateRoute_EventScript_Ryosuke {
 	trainerbattle_single(
 		TRAINER_RYOSUKE,
-		format("I massage my Pokémon after each battle!"),
+		format("{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}I massage my Pokémon after each battle!"),
 		format("Can somebody give me a massage?")
 	)
 	speakername("Ryosuke")
 	// TODO EVA
-	msgbox(format("I heard there was a very talented masseur in Saberside Town.\pI want to see for myself!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}I heard there was a very talented masseur in Saberside Town.\pI want to see for myself!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WhiteslateRoute_EventScript_Riku {
 	trainerbattle_single(
 		TRAINER_RIKU,
-		format("BOO!!\p… … …Are you surprised?"),
+		format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}BOO!!\p… … …Are you surprised?"),
 		format("My loyal Pokémon!")
 	)
 	speakername("Riku")
-	msgbox(format("I have to work on my element of surprise."), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}I have to work on my element of surprise."), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -218,43 +218,43 @@ script WhiteslateRoute_EventScript_Yono {
 script WhiteslateRoute_EventScript_Sumi {
 	trainerbattle_single(
 		TRAINER_SUMI,
-		format("Excuse me… What's with that white hand on your shoulder?"),
+		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}Excuse me… What's with that white hand on your shoulder?"),
 		format("Heeeeeee!")
 	)
 	speakername("Sumi")
-	msgbox(format("You don't scare easily, do you?"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}You don't scare easily, do you?"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WhiteslateRoute_EventScript_Tomiko {
 	trainerbattle_single(
 		TRAINER_TOMIKO,
-		format("Weird Pokémon are my favorite!"),
+		format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}Weird Pokémon are my favorite!"),
 		format("I don't care if they're not the strongest!")
 	)
 
 	setspeakertomonname(SPECIES_SPINDA)
 	speakername("Tomiko")
-	msgbox(format("I love Spinda. Doesn't it look silly and adorable?"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}I love Spinda. Doesn't it look silly and adorable?"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WhiteslateRoute_EventScript_Utaro {
 	trainerbattle_single(
 		TRAINER_UTARO,
-		format("I love cool Pokémon!"),
+		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}I love cool Pokémon!"),
 		format("At least I lost with style!")
 	)
 	setspeakertomonname(SPECIES_SEVIPER)
 	speakername("Utaro")
-	msgbox(format("Seviper is so darn cool! I mean, it's got a sword on its tail!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Seviper is so darn cool! I mean, it's got a sword on its tail!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WhiteslateRoute_EventScript_ShuckleGirl {
 	setnamedmon(SPECIES_SHUCKLE)
 	speakername("Woman")
-	msgbox(format("This Shuckle lives around here. I feed him fresh berries every morning!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}This Shuckle lives around here. I feed him fresh berries every morning!"), MSGBOX_AUTOCLOSE)
 	end
 }
 

@@ -137,7 +137,7 @@ script ChiiTown_School_EventScript_ChildTellsStory {
 	speakername("Child")
 	msgbox(format(
 		"I know the story, I know the story!\p"
-		"Once upon a time, the Volcano Pokémon woke up, and then there was fire everywhere, and then four Pokémon were fighting the Volcano one, and then the Volcano stopped spitting fire because the Pokémon went back to sleep!"
+		"Once upon a time, the Volcano Pokémon woke up, and then there was fire everywhere, and then four Pokémon were fighting the Volcano one, and then- and then the Volcano stopped spitting fire because the Pokémon went back to sleep!"
 	))
 	closemessage
 
@@ -154,7 +154,7 @@ script ChiiTown_School_EventScript_IsThePokemonWakingUp {
 	msgbox(format(
 		"When the Volcano Pokémon went to bed, the Volcano stopped erupting!\p"
 		"But the Volcano has been rumbling for days now…\p"
-		"Does that mean the Pokémon's waking up again?"
+		"Does that mean the Volcano Pokémon's waking up again?"
 	))
 	closemessage
 

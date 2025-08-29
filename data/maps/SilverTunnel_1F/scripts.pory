@@ -29,12 +29,12 @@ script SilverTunnel_1F_EventScript_Shuya {
 script SilverTunnel_1F_EventScript_Yoru {
 	trainerbattle_single(
 		TRAINER_YORU,
-		format("This place sucks!"),
+		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}This place sucks!"),
 		format("This battle sucked as well!")
 	)
 	speakername("Yoru")
 	msgbox(format(
-		"I thought caves were spooky places with lots of Ghost Pokémon…\p"
+		"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I thought caves were spooky places with lots of Ghost Pokémon…\p"
 		"All I see are dumb rocks and bats!"
 	), MSGBOX_AUTOCLOSE)
 	end
@@ -43,7 +43,7 @@ script SilverTunnel_1F_EventScript_Yoru {
 script SilverTunnel_1F_EventScript_Nerd {
 	speakername("Man")
 	msgbox(format(
-		"Ugh…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Ugh…\p"
 		"I forgot to bring my fighting Pokémon, so I got whooped by those miners' rock Pokémon…"
 	), MSGBOX_NPC)
 }

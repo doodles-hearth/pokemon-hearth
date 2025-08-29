@@ -2352,6 +2352,18 @@
 	.2byte \varForm2
 	.endm
 
+	.macro getspeciesgfx species:req, varGfx:req
+	callnative GetSpeciesGraphics, requests_effects=1
+	.2byte \species
+	.2byte \varGfx
+	.endm
+
+	.macro getnatsukistartermongfx varGfx:req stage=1
+	callnative GetNatsukiStarter, requests_effects=1
+	.2byte \varGfx
+	.2byte \stage
+	.endm
+
 	@ Plays the cry of the first alive party member.
 	.macro playfirstmoncry
 	callnative PlayFirstMonCry, requests_effects=1
@@ -2855,12 +2867,10 @@
 	@ 	removefieldmugshot
 
 	@ spawn a mugshot in the overworld at a specific coordinate
-	@ NOTE: this macro uses VAR_TEMP_E and VAR_TEMP_F as its parameter
-	@ so be careful if you use them in your script too!
 	.macro createfieldmugshot id:req, emote=0
 	callnative CreateFieldMugshot
-	setorcopyvar VAR_TEMP_E, \id
-	setorcopyvar VAR_TEMP_F, \emote
+	.2byte \id
+	.2byte \emote
 	.endm
 
 	@ destroys a mugshot in the overworld, if there is one

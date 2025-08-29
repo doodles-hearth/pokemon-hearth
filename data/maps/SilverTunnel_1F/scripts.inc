@@ -62,7 +62,7 @@ SilverTunnel_1F_EventScript_Shuya_Text_3:
 	.string "Makuhita just for kicks!$"
 
 SilverTunnel_1F_EventScript_Yoru_Text_0:
-	.string "This place sucks!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}This place sucks!$"
 
 SilverTunnel_1F_EventScript_Yoru_Text_1:
 	.string "This battle sucked as well!$"
@@ -71,7 +71,7 @@ SilverTunnel_1F_EventScript_Yoru_Text_2:
 	.string "Yoru$"
 
 SilverTunnel_1F_EventScript_Yoru_Text_3:
-	.string "I thought caves were spooky places\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I thought caves were spooky places\n"
 	.string "with lots of Ghost Pokémon…\p"
 	.string "All I see are dumb rocks and bats!$"
 
@@ -79,7 +79,7 @@ SilverTunnel_1F_EventScript_Nerd_Text_0:
 	.string "Man$"
 
 SilverTunnel_1F_EventScript_Nerd_Text_1:
-	.string "Ugh…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Ugh…\p"
 	.string "I forgot to bring my fighting\n"
 	.string "Pokémon, so I got whooped by those\l"
 	.string "miners' rock Pokémon…$"
