@@ -6,7 +6,9 @@
 #include "field_weather.h"
 #include "field_message_box.h"
 #include "field_mugshot.h"
+#include "event_object_movement.h"
 #include "constants/field_mugshots.h"
+#include "constants/event_objects.h"
 #include "data/field_mugshots.h"
 
 static EWRAM_DATA u8 sFieldMugshotSpriteIds[2] = {};
@@ -52,19 +54,45 @@ static void SpriteCB_FieldMugshot(struct Sprite *s)
 
 void RemoveFieldMugshot(void)
 {
+    struct Sprite *sprite;
     ResetPreservedPalettesInWeather();
+
     if (sFieldMugshotSpriteIds[0] != 0xFF)
     {
+        sprite = &gSprites[sFieldMugshotSpriteIds[0]];
         FreeSpriteTilesByTag(TAG_MUGSHOT);
-        FreeSpritePaletteByTag(TAG_MUGSHOT);
-        DestroySprite(&gSprites[sFieldMugshotSpriteIds[0]]);
+        u32 tag = sFieldMugshots[sprite->data[1]][sprite->data[2]].tag;
+        if (tag)
+        {
+            // do not free if an object with the same tag IS within the camera view
+            if (!IsObjectEventPaletteTagInUse(tag))
+                FreeSpritePaletteByTag(tag);
+        }
+        else
+        {
+            FreeSpritePaletteByTag(TAG_MUGSHOT);
+        }
+
+        DestroySprite(sprite);
         sFieldMugshotSpriteIds[0] = SPRITE_NONE;
     }
     if (sFieldMugshotSpriteIds[1] != 0xFF)
     {
+        sprite = &gSprites[sFieldMugshotSpriteIds[1]];
         FreeSpriteTilesByTag(TAG_MUGSHOT2);
-        FreeSpritePaletteByTag(TAG_MUGSHOT2);
-        DestroySprite(&gSprites[sFieldMugshotSpriteIds[1]]);
+        u32 tag = sFieldMugshots[sprite->data[1]][sprite->data[2]].tag;
+        if (tag)
+        {
+            // do not free if an object with the same tag IS within the camera view
+            if (!IsObjectEventPaletteTagInUse(tag))
+                FreeSpritePaletteByTag(tag);
+        }
+        else
+        {
+            FreeSpritePaletteByTag(TAG_MUGSHOT2);
+        }
+
+        DestroySprite(sprite);
         sFieldMugshotSpriteIds[1] = SPRITE_NONE;
     }
     sIsFieldMugshotActive = FALSE;
@@ -80,17 +108,29 @@ void CreateFieldMugshot(struct ScriptContext *ctx)
 
 void _RemoveFieldMugshot(u8 slot)
 {
+    struct Sprite *slot1 = &gSprites[sFieldMugshotSpriteIds[slot]],
+                  *slot2 = &gSprites[sFieldMugshotSpriteIds[slot ^ 1]];
     ResetPreservedPalettesInWeather();
     if (sFieldMugshotSpriteIds[slot ^ 1] != SPRITE_NONE)
     {
-        gSprites[sFieldMugshotSpriteIds[slot ^ 1]].data[0] = FALSE; // same as setting visibility
+        slot2->data[0] = FALSE; // same as setting visibility
     }
 
     if (sFieldMugshotSpriteIds[slot] != SPRITE_NONE)
     {
-        gSprites[sFieldMugshotSpriteIds[slot]].data[0] = TRUE; // same as setting visibility
+        slot1->data[0] = TRUE; // same as setting visibility
         FreeSpriteTilesByTag(slot + TAG_MUGSHOT);
-        FreeSpritePaletteByTag(slot + TAG_MUGSHOT);
+        u32 tag = sFieldMugshots[slot1->data[1]][slot1->data[2]].tag;
+        if (tag)
+        {
+            // do not free if an object with the same tag IS within the camera view
+            if (!IsObjectEventPaletteTagInUse(tag))
+                FreeSpritePaletteByTag(tag);
+        }
+        else
+        {
+            FreeSpritePaletteByTag(slot + TAG_MUGSHOT);
+        }
         DestroySprite(&gSprites[sFieldMugshotSpriteIds[slot]]);
         sFieldMugshotSpriteIds[slot] = SPRITE_NONE;
     }
@@ -115,20 +155,30 @@ void _CreateFieldMugshot(u32 id, u32 emote)
     }
 
     temp.tileTag = sheet.tag;
-    temp.paletteTag = sheet.tag;
     sheet.data = (sFieldMugshots[id][emote].gfx != NULL ? sFieldMugshots[id][emote].gfx : sFieldMugshotGfx_TestNormal);
-    pal.data = (sFieldMugshots[id][emote].pal != NULL ? sFieldMugshots[id][emote].pal : sFieldMugshotPal_TestNormal);
 
-    LoadSpritePalette(&pal);
+    // override the palette completely when the tag field is used
+    if (sFieldMugshots[id][emote].tag)
+    {
+        temp.paletteTag = sFieldMugshots[id][emote].tag;
+        u32 abc = LoadObjectEventPalette(temp.paletteTag);
+    }
+    else
+    {
+        pal.data = (sFieldMugshots[id][emote].pal != NULL ? sFieldMugshots[id][emote].pal : sFieldMugshotPal_TestNormal);
+        temp.paletteTag = sheet.tag;
+        LoadSpritePalette(&pal);
+    }
+
+    PreservePaletteInWeather(IndexOfSpritePaletteTag(temp.paletteTag) + 0x10);
     LoadCompressedSpriteSheet(&sheet);
-
     sFieldMugshotSpriteIds[slot] = CreateSprite(&temp, MUGSHOT_X, MUGSHOT_Y, 0);
     if (sFieldMugshotSpriteIds[slot] == SPRITE_NONE)
-    {
         return;
-    }
-    PreservePaletteInWeather(gSprites[sFieldMugshotSpriteIds[slot]].oam.paletteNum + 0x10);
+
     gSprites[sFieldMugshotSpriteIds[slot]].data[0] = FALSE;
+    gSprites[sFieldMugshotSpriteIds[slot]].data[1] = id;
+    gSprites[sFieldMugshotSpriteIds[slot]].data[2] = emote;
     sIsFieldMugshotActive = TRUE;
     sFieldMugshotSlot ^= 1;
 }
