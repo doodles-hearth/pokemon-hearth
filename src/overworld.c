@@ -3526,7 +3526,7 @@ static void ShowItemIconSprite(u16 item, bool8 firstTime, bool8 flash);
 static void DestroyItemIconSprite(void);
 
 static void ShowMonIconSprite(u16 species, bool8 flash);
-static void DestroyMonIconSprite(void);
+static void DestroyMonIconSprite(u32 species);
 
 enum PopupType
 {
@@ -3725,10 +3725,9 @@ bool8 ScrFunc_settimeofday(struct ScriptContext *ctx)
 // to minimize future merge conflicts with expansion
 
 // Destroys the mon icon sprite
-static void DestroyMonIconSprite(void)
+static void DestroyMonIconSprite(u32 species)
 {
-    FreeSpriteTilesByTag(ITEM_TAG);
-    FreeSpritePaletteByTag(ITEM_TAG);
+    FreeMonIconPalette(species);
     FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId]);
     DestroySprite(&gSprites[sItemIconSpriteId]);
 
@@ -3744,8 +3743,8 @@ static void ShowMonIconSprite(u16 species, bool8 flash)
     s16 x = 0, y = 0;
     u8 spriteId2 = MAX_SPRITES;
 
-    // Load Pokémon icon palettes
-    LoadMonIconPalettes();
+    // Load Pokémon icon palette
+    LoadMonIconPalette(species);
 
     if (flash)
     {
@@ -3835,7 +3834,7 @@ void ScriptHideMonDescribed(struct ScriptContext *ctx)
     {
         PlaySE(SE_SELECT);
         GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_SET_DESCRIBED);
-        DestroyMonIconSprite();
+        DestroyMonIconSprite(species);
         ClearStdWindowAndFrameToTransparent(sHeaderBoxWindowId, FALSE);
         CopyWindowToVram(sHeaderBoxWindowId, 3);
         RemoveWindow(sHeaderBoxWindowId);
