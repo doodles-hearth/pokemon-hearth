@@ -13,7 +13,7 @@
 #define OBJ_EVENT_GFX_TWIN_M                       6
 #define OBJ_EVENT_GFX_RICH_BOY                     7
 #define OBJ_EVENT_GFX_GARDENER                     8
-#define OBJ_EVENT_GFX_FAT_MAN                     9
+#define OBJ_EVENT_GFX_FAT_MAN                      9
 #define OBJ_EVENT_GFX_POKEFAN_F                   10
 #define OBJ_EVENT_GFX_EXPERT_M                    11
 #define OBJ_EVENT_GFX_EXPERT_F                    12
