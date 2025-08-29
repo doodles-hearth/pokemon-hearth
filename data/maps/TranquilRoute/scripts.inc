@@ -722,7 +722,7 @@ TranquilRoute_EventScript_WhiteslateRoadblock_Text_0:
 	.string "Samurai$"
 
 TranquilRoute_EventScript_WhiteslateRoadblock_Text_1:
-	.string "Sorry, you can't go through. The road\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Sorry, you can't go through. The road\n"
 	.string "ahead is blocked.$"
 
 TranquilRoute_EventScript_Shellos_Text_0:
@@ -820,7 +820,7 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Come on, Keke.$"
 
 TranquilRoute_EventScript_WaitingForChatot_Text_0:
-	.string "Sigh… Maybe if I hang around the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Sigh… Maybe if I hang around the\n"
 	.string "Chatot Post, my boyfriend's message\l"
 	.string "will arrive sooner…$"
 

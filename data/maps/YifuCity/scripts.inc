@@ -8,15 +8,24 @@ YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	compare VAR_CROBAT_HIDEOUT_STATE, 3
 	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	goto_if_unset FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	goto_if_unset FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	compare VAR_CROBAT_HIDEOUT_STATE, 3
+	goto_if_lt YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+	compare VAR_HOTPOT_SCENE_STATE, 2
+	goto_if_ge YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	setflag FLAG_TEMP_2
 	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 
-YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
 	setflag FLAG_TEMP_4
+	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
+	setflag FLAG_TEMP_5
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
@@ -935,8 +944,8 @@ SpeakToNatsukiLunchOrDinner:
 	msgbox SpeakToNatsukiLunchOrDinner_Text_2
 	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	switch VAR_RESULT
-	case 1, SpeakToNatsukiLunchOrDinner_2
-	case 0, SpeakToNatsukiLunchOrDinner_3
+	case 0, SpeakToNatsukiLunchOrDinner_2
+	case 1, SpeakToNatsukiLunchOrDinner_3
 	return
 
 SpeakToNatsukiLunchOrDinner_2:
@@ -1140,8 +1149,8 @@ SpeakToHarikoLunchOrDinner_1:
 	msgbox SpeakToHarikoLunchOrDinner_Text_4
 	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	switch VAR_RESULT
-	case 1, SpeakToHarikoLunchOrDinner_8
-	case 0, SpeakToHarikoLunchOrDinner_9
+	case 0, SpeakToHarikoLunchOrDinner_8
+	case 1, SpeakToHarikoLunchOrDinner_9
 	return
 
 SpeakToHarikoLunchOrDinner_2:
@@ -1296,6 +1305,9 @@ SpeakToNatsukiAgain:
 	gettime
 	call HarikoTurnsToPlayer
 	speakername SpeakToNatsukiAfternoon_Text_1
+	buffernumberstring STR_VAR_2, VAR_0x8000
+	msgbox SpeakToNatsukiAgain_Text_0
+	gettime
 	compare VAR_0x8000, 5
 	goto_if_ge SpeakToNatsukiAgain_16
 SpeakToNatsukiAgain_11:
@@ -1308,7 +1320,7 @@ SpeakToNatsukiAgain_7:
 	compare VAR_0x8000, 15
 	goto_if_gt SpeakToNatsukiAgain_6
 SpeakToNatsukiAgain_5:
-	msgbox SpeakToNatsukiAgain_Text_3
+	msgbox SpeakToNatsukiAgain_Text_4
 SpeakToNatsukiAgain_1:
 	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
@@ -1318,15 +1330,15 @@ SpeakToNatsukiAgain_1:
 	return
 
 SpeakToNatsukiAgain_2:
-	msgbox SpeakToNatsukiAgain_Text_0
-	goto SpeakToNatsukiAgain_1
-
-SpeakToNatsukiAgain_3:
 	msgbox SpeakToNatsukiAgain_Text_1
 	goto SpeakToNatsukiAgain_1
 
-SpeakToNatsukiAgain_4:
+SpeakToNatsukiAgain_3:
 	msgbox SpeakToNatsukiAgain_Text_2
+	goto SpeakToNatsukiAgain_1
+
+SpeakToNatsukiAgain_4:
+	msgbox SpeakToNatsukiAgain_Text_3
 	goto SpeakToNatsukiAgain_1
 
 SpeakToNatsukiAgain_6:
@@ -1833,7 +1845,7 @@ YifuCity_EscapedCrobatHideoutWithSamurai_Text_0:
 	.string "Samurai$"
 
 YifuCity_EscapedCrobatHideoutWithSamurai_Text_1:
-	.string "Well, well…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Well, well…\n"
 	.string "They slipped through our fingers,\l"
 	.string "but they finally left the city!\p"
 	.string "Their hideout is now useless!\p"
@@ -1896,16 +1908,16 @@ YifuCity_EventScript_MissingChild_Text_0:
 	.string "beach, but I don't see him anywhere…$"
 
 YifuCity_EventScript_Samurai_Text_0:
-	.string "The Crobat Shadows' reign of terror\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}The Crobat Shadows' reign of terror\n"
 	.string "will cease!$"
 
 YifuCity_EventScript_Samurai2_Text_0:
-	.string "Please be vigilant! Should you\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Please be vigilant! Should you\n"
 	.string "witness any suspicious situation,\l"
 	.string "report it immediately!$"
 
 YifuCity_EventScript_SamuraiTalkToRobberyVictim_Text_0:
-	.string "Ma'am, can you describe what the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Ma'am, can you describe what the\n"
 	.string "thiefs looked like?$"
 
 YifuCity_EventScript_RobberyVictim_Text_0:
@@ -2140,7 +2152,7 @@ YifuCity_Trigger_Lockdown_Text_0:
 	.string "THE CITY IS NOW UNDER LOCKDOWN!$"
 
 YifuCity_Trigger_Lockdown_Text_1:
-	.string "I'm sorry, {STR_VAR_1}, all exits\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}I'm sorry, {STR_VAR_1}, all exits\n"
 	.string "are temporarily blocked. You are\l"
 	.string "asked to remain inside the city until\l"
 	.string "further notice.$"
@@ -2152,7 +2164,7 @@ YifuCity_Trigger_Lockdown_Text_3:
 	.string "What's happening?$"
 
 YifuCity_Trigger_Lockdown_Text_4:
-	.string "A robbery has taken place near the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}A robbery has taken place near the\n"
 	.string "Pokémon Refuge!\p"
 	.string "We Samurai are on the cusp of\n"
 	.string "cracking down on the infamous Crobat\l"
@@ -2165,7 +2177,7 @@ YifuCity_Trigger_Lockdown_Text_4:
 	.string "know it.$"
 
 YifuCity_Trigger_Lockdown_Text_5:
-	.string "I'm sorry, {STR_VAR_1}, all exits\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}I'm sorry, {STR_VAR_1}, all exits\n"
 	.string "are temporarily blocked. Nobody in or\l"
 	.string "out.\p"
 	.string "You are asked to remain inside the\n"
@@ -2368,8 +2380,7 @@ SpeakToHarikoLunchOrDinner_Text_1:
 
 SpeakToHarikoLunchOrDinner_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}{PLAYER}! You are here to eat\n"
-	.string "{STR_VAR_1}\n"
-	.string "with me, yes?$"
+	.string "{STR_VAR_1} with me, yes?$"
 
 SpeakToHarikoLunchOrDinner_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I saw Natsuki on the way here.\p"
@@ -2415,18 +2426,21 @@ SpeakToHarikoAgain_Text_3:
 	.string "Late night hotpot?$"
 
 SpeakToNatsukiAgain_Text_0:
+	.string "hour of day = {STR_VAR_2}$"
+
+SpeakToNatsukiAgain_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot breakfast,\n"
 	.string "{PLAYER}?$"
 
-SpeakToNatsukiAgain_Text_1:
+SpeakToNatsukiAgain_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot meal,\n"
 	.string "{PLAYER}?$"
 
-SpeakToNatsukiAgain_Text_2:
+SpeakToNatsukiAgain_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot snack,\n"
 	.string "{PLAYER}?$"
 
-SpeakToNatsukiAgain_Text_3:
+SpeakToNatsukiAgain_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick late night hotpot,\n"
 	.string "{PLAYER}?$"
 

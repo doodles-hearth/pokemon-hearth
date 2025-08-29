@@ -343,7 +343,7 @@ $(OBJEVENTGFXDIR)/people/purplish/mart_employee.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/purplish/martial_artist_f.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
-$(OBJEVENTGFXDIR)/people/purplish/martial_artist_.4bpp: %.4bpp: %.png
+$(OBJEVENTGFXDIR)/people/purplish/martial_artist_m.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/purplish/masquerain_woman.4bpp: %.4bpp: %.png

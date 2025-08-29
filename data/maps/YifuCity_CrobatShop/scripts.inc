@@ -393,7 +393,7 @@ YifuCity_CrobatShop_EventScript_Samurai_Text_0:
 	.string "Samurai$"
 
 YifuCity_CrobatShop_EventScript_Samurai_Text_1:
-	.string "Shhh, don't look at me!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Shhh, don't look at me!\n"
 	.string "Someone tipped me off that the\l"
 	.string "Crobat Shadows' band of misfits has a\l"
 	.string "secret hideout right under the city!\p"

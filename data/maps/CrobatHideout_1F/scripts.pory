@@ -209,7 +209,7 @@ script CrobatHideout_1F_EventScript_Samurai {
 	lock
 	speakername("Samurai")
 	msgbox(format(
-		"Quiet! The leader of the Crobat Shadows is in the next room!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Quiet! The leader of the Crobat Shadows is in the next room!\p"
 		"You're a trainer, yes? You have a wild look in your eyes… Like you're itching for a fight!\p"
 		"Shall we join forces for the inevitable confrontation?"
 	))
@@ -436,7 +436,7 @@ script CrobatHideout_1F_Trigger_4V1 {
 
 	speakername("Samurai")
 	msgbox(format(
-		"Excuse me!"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Excuse me!"
 	))
 	closemessage
 
@@ -454,7 +454,7 @@ script CrobatHideout_1F_Trigger_4V1 {
 script CrobatHideout_1F_SamuraiOffersHelp {
 	speakername("Samurai")
 	msgbox(format(
-		"You sure are elusive! I finally caught up with your trail!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}You sure are elusive! I finally caught up with your trail!\p"
 		"Good work finding the Crobat Shadows' lair, we'd been on the lookout for a while!"
 	))
 	closemessage
@@ -468,7 +468,7 @@ script CrobatHideout_1F_SamuraiOffersHelp {
 
 	speakername("Samurai")
 	msgbox(format(
-		"Oh, you were in the midst of getting attacked by these four delinquents, were you not?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Oh, you were in the midst of getting attacked by these four delinquents, were you not?\p"
 		"Let me help!\nI can handle two at a time!"
 	))
 	closemessage
@@ -512,7 +512,7 @@ script CrobatHideout_1F_BattleSamuraiBackToBack {
 
 	speakername("Samurai")
 	msgbox(format(
-		"Nicely done!\nWhat is your name, child?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Nicely done!\nWhat is your name, child?\p"
 		"… … …{PLAYER}!\nI see you have skill!\p"
 		"We have to take their leader down!\nBut first, let me heal your companions!"
 	))
@@ -527,7 +527,7 @@ script CrobatHideout_1F_BattleSamuraiBackToBack {
 
 	speakername("Samurai")
 	msgbox(format(
-		"Right! Follow me, {PLAYER}!"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Right! Follow me, {PLAYER}!"
 	))
 	closemessage
 
@@ -593,7 +593,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 
 	speakername("Samurai")
 	msgbox(format(
-		"I make the law here!\n"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}I make the law here!\n"
 		"You're under arrest, you thug!\p"
 		"I'm taking you in for the Pokémon Refuge robbery!"
 	))
@@ -650,7 +650,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	
 	speakername("Samurai")
 	msgbox(format(
-		"Cut the chatter, you lowlife crook!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Cut the chatter, you lowlife crook!\p"
 		"Your reign of terror has been going on for too long!\p"
 		"You are under arrest, I said!"
 	))
@@ -774,7 +774,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 
 	speakername("Samurai")
 	msgbox(format(
-		"Cough… cough…\nThey're gone!"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Cough… cough…\nThey're gone!"
 	))
 	closemessage
 
@@ -802,7 +802,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 script CrobatHideout_1F_LetsFight2v2 {
 	speakername("Samurai")
 	msgbox(format(
-		"Let us join forces, {PLAYER}!"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Let us join forces, {PLAYER}!"
 	))
 	closemessage
 
@@ -870,7 +870,7 @@ script CrobatHideout_1F_LetsFight2v2 {
 			waitmovement(0)
 			speakername("Samurai")
 			msgbox(format(
-				"Cough… Let's get out of here!"
+				"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Cough… Let's get out of here!"
 			))
 			closemessage
 

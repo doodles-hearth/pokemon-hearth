@@ -12,7 +12,7 @@ script Kura_Beachbound_Gate_EventScript_Guard {
 	lock
 	speakername("Samurai")
 	msgbox(format(
-		"Zzzzzz…"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Zzzzzz…"
 	))
 	release
 }

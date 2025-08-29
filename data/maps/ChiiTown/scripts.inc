@@ -496,9 +496,8 @@ ChiiTown_EventScript_Samurai_Text_0:
 	.string "Samurai$"
 
 ChiiTown_EventScript_Samurai_Text_1:
-	.string "There's been reports of some shady\n"
-	.string "men dressed in blue loitering around\l"
-	.string "the area.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}There's been reports of shady men\n"
+	.string "dressed in blue loitering around here.\p"
 	.string "Be careful when traveling!$"
 
 ChiiTown_EventScript_TownSign_Text_0:

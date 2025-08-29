@@ -146,6 +146,7 @@ enum Mugshots {
 
     MUGSHOT_BREEDER_M,
     MUGSHOT_BREEDER_F,
+    MUGSHOT_SAMURAI,
 
     MUGSHOT_COUNT,
 };

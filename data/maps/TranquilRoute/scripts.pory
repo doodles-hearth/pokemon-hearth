@@ -306,7 +306,7 @@ script TranquilRoute_EventScript_WhiteslateRoadblock {
 	waitmovement(0)
 
 	speakername("Samurai")
-	msgbox(format("Sorry, you can't go through. The road ahead is blocked."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Sorry, you can't go through. The road ahead is blocked."))
 	closemessage
 
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right))
@@ -549,7 +549,7 @@ script TranquilRoute_EventScript_WaitingForChatot {
 	faceplayer
 	speakername("Girl")
 	msgbox(format(
-		"Sigh… Maybe if I hang around the Chatot Post, my boyfriend's message will arrive sooner…"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Sigh… Maybe if I hang around the Chatot Post, my boyfriend's message will arrive sooner…"
 	))
 	closemessage
 	release

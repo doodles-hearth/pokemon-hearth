@@ -58,6 +58,8 @@ static const u32 sFieldMugshotGfx_BreederMNormal[] = INCBIN_U32("graphics/field_
 
 static const u32 sFieldMugshotGfx_BreederFNormal[] = INCBIN_U32("graphics/field_mugshots/breeder_f/normal.4bpp.smol");
 
+static const u32 sFieldMugshotGfx_SamuraiNormal[] = INCBIN_U32("graphics/field_mugshots/samurai/normal.4bpp.smol");
+
 // Sunrise
 
 static const u32 sFieldMugshotGfx_BigSisNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/big_sis/normal.4bpp.smol");
@@ -400,6 +402,15 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_BreederFNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+
+    [MUGSHOT_SAMURAI] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_SamuraiNormal,
             .pal = gObjectEventPal_Npc_Purplish,
         },
     },

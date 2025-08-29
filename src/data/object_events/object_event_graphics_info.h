@@ -4230,7 +4230,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CrobatShadowsKevin
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Samurai = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_SAMURAI,
+    .paletteTag = OBJ_EVENT_PAL_TAG_PURPLISH,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,

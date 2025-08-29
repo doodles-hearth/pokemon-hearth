@@ -538,7 +538,7 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_14:
 	.string "Samurai$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_15:
-	.string "What's a bunch of children doing\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}What's a bunch of children doing\n"
 	.string "here?\p"
 	.string "You really shouldn't stay here.\n"
 	.string "The situation is under control,\l"
@@ -551,20 +551,20 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_17:
 	.string "We can help!$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_18:
-	.string "Nothing that concerns you!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Nothing that concerns you!\n"
 	.string "Let the grownups handle this!\p"
 	.string "On you go!$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_19:
-	.string "Help? That's adorable.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Help? That's adorable.$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_20:
-	.string "Hear that?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Hear that?\n"
 	.string "Kids here are saying they can help!\p"
 	.string "Hahaha!$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_21:
-	.string "In all seriousness though, move along\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}In all seriousness though, move along\n"
 	.string "and let the grownups handle this!\p"
 	.string "On you go!$"
 
@@ -577,16 +577,16 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_23:
 	.string "Psst psst…{PAUSE 32}{FONT_NORMAL} Mumble mumble…{PAUSE 32}$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_24:
-	.string "…need more Samurai to secure the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}…need more Samurai to secure the\n"
 	.string "perimeter…\p"
 	.string "…started less than a week ago…\p"
 	.string "…spreading over several areas…$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_25:
-	.string "Are you kidding me?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Are you kidding me?$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_26:
-	.string "Have your parents never taught you\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Have your parents never taught you\n"
 	.string "not to eavesdrop?\p"
 	.string "Move along!$"
 
@@ -602,16 +602,16 @@ BeachboundRoute_Decay_EventScript_Koishi_Text_1:
 	.string "already spread thin as it is!$"
 
 BeachboundRoute_Decay_EventScript_SamuraiBeCarefulTrigger_Text_0:
-	.string "Please be careful if you're crossing\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Please be careful if you're crossing\n"
 	.string "over the {COLOR RED}decayed{COLOR DARK_GRAY} area.\p"
 	.string "We don't want anyone getting hurt!$"
 
 BeachboundRoute_Decay_EventScript_SamuraiBeCareful_Text_0:
-	.string "Please be careful!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Please be careful!$"
 
 BeachboundRoute_Decay_EventScript_Samurai_Text_0:
-	.string "Don't panic!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Don't panic!\n"
 	.string "Don't touch the Decay!$"
 
 BeachboundRoute_Decay_EventScript_SamuraiWhatCouldBe_Text_0:
-	.string "What could be the cause of this?!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}What could be the cause of this?!$"

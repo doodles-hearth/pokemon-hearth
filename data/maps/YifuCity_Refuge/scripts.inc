@@ -607,7 +607,7 @@ YifuCity_Refuge_EventScript_Samurai_Text_0:
 	.string "Samurai$"
 
 YifuCity_Refuge_EventScript_Samurai_Text_1:
-	.string "The Crobat Shadows must be operating\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}The Crobat Shadows must be operating\n"
 	.string "from somewhere… But where?$"
 
 YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_0:

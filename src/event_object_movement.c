@@ -11530,10 +11530,25 @@ void GetDaycareGraphics(struct ScriptContext *ctx)
     gSpecialVar_Result = i;
 }
 
+// Get gfx of given species
+void GetSpeciesGraphics(struct ScriptContext *ctx)
+{
+    u32 species = ScriptReadHalfword(ctx);
+    u32 varGfx = ScriptReadHalfword(ctx);
+
+    Script_RequestEffects(SCREFF_V1);
+    Script_RequestWriteVar(varGfx);
+
+    DebugPrintf("Species=%d (or %d), GFX=%d", species, VarGet(species), varGfx);
+
+    VarSet(varGfx, (u16) (VarGet(species) + OBJ_EVENT_MON));
+}
+
 // Get gfx of Natsuki's starter mon
 void GetNatsukiStarter(struct ScriptContext *ctx)
 {
     u16 varGfx = ScriptReadHalfword(ctx);
+    u32 stage = ScriptReadHalfword(ctx);
     u32 specGfx = SPECIES_NONE;
 
     switch(VarGet(VAR_STARTER_MON))
@@ -11549,7 +11564,7 @@ void GetNatsukiStarter(struct ScriptContext *ctx)
             break;
     }
 
-    VarSet(varGfx, (u16) (specGfx + OBJ_EVENT_MON));
+    VarSet(varGfx, (u16) (specGfx + (stage - 1) + OBJ_EVENT_MON));
 }
 
 // running slow

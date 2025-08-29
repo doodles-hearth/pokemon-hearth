@@ -2352,9 +2352,16 @@
 	.2byte \varForm2
 	.endm
 
-	.macro getnatsukistartermongfx varGfx:req
+	.macro getspeciesgfx species:req, varGfx:req
+	callnative GetSpeciesGraphics, requests_effects=1
+	.2byte \species
+	.2byte \varGfx
+	.endm
+
+	.macro getnatsukistartermongfx varGfx:req stage=1
 	callnative GetNatsukiStarter, requests_effects=1
-	.2byte \varSpecies1
+	.2byte \varGfx
+	.2byte \stage
 	.endm
 
 	@ Plays the cry of the first alive party member.

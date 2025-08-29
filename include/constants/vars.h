@@ -205,6 +205,7 @@
     // 1: Seen by grunt when entering hideout
     // 2: Jumped by 4 grunts at once, beat them
     // 3: Beat the Golbat admins
+    // 4: Talked to Samurai afterwards
 */
 #define VAR_CROBAT_HIDEOUT_STATE                         0x408B
 #define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN              0x408C

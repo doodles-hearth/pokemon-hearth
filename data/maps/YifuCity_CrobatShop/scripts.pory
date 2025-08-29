@@ -288,7 +288,7 @@ script YifuCity_CrobatShop_EventScript_Samurai {
 	faceplayer
 	speakername("Samurai")
 	msgbox(format(
-		"Shhh, don't look at me!\nSomeone tipped me off that the Crobat Shadows' band of misfits has a secret hideout right under the city!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Shhh, don't look at me!\nSomeone tipped me off that the Crobat Shadows' band of misfits has a secret hideout right under the city!\p"
 		"I'm trying to know more by standing around and listening!"
 	))
 	closemessage

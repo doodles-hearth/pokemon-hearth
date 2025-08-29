@@ -358,7 +358,7 @@ OrchardPath_EventScript_Samurai_Text_0:
 	.string "Samurai$"
 
 OrchardPath_EventScript_Samurai_Text_1:
-	.string "Please stand back. Everything is\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Please stand back. Everything is\n"
 	.string "under control.$"
 
 OrchardPath_EventScript_Samurai_Text_2:
@@ -371,18 +371,18 @@ OrchardPath_EventScript_Samurai_Text_4:
 	.string "I'd like to go through.$"
 
 OrchardPath_Samurai_WhatIsHappening_Text_0:
-	.string "Nothing that concerns you,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Nothing that concerns you,\n"
 	.string "{STR_VAR_1}.\p"
 	.string "This is just your regular,\n"
 	.string "run-of-the-mill, top secret yet\l"
 	.string "unimportant stuff.$"
 
 OrchardPath_Samurai_LetMeThrough_Text_0:
-	.string "We cannot let you through, so please\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}We cannot let you through, so please\n"
 	.string "be on your way.$"
 
 OrchardPath_Samurai_KnowAboutDecay_Text_0:
-	.string "You- what-\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}You- what-\p"
 	.string "Ahem! I do not know of this Decay you\n"
 	.string "speak of.\p"
 	.string "We cannot let you through though, so\n"
@@ -529,5 +529,5 @@ OrchardPath_EventScript_SignRockSmash_Text_0:
 	.string "OF STRENGTH FOR ONLY 100¥$"
 
 OrchardPath_EventScript_Samurai2_Text_0:
-	.string "Move along, please, nothing to see\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Move along, please, nothing to see\n"
 	.string "here!$"

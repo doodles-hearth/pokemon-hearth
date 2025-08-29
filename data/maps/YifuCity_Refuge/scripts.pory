@@ -321,7 +321,7 @@ script YifuCity_Refuge_EventScript_Samurai {
 	faceplayer
 	speakername("Samurai")
 	msgbox(format(
-		"The Crobat Shadows must be operating from somewhere… But where?"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}The Crobat Shadows must be operating from somewhere… But where?"
 	))
 	closemessage
 	release
