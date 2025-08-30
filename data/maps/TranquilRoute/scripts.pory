@@ -332,14 +332,16 @@ script TranquilRoute_EventScript_Shellos {
 
 script TranquilRoute_EventScript_BerryWoman {
 	lock
-	faceplayer
-	// TODO EVA add speech bubble with  little musical notes
 	if (flag(FLAG_RECEIVED_WAILMER_PAIL)) {
+		faceplayer
 		speakername("Woman")
 		msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Enjoy gardening!"))
 		closemessage
 	}
 	else {
+		applymovement(VAR_LAST_TALKED, moves(emote_music, delay_16 * 6))
+		waitmovement(0)
+		faceplayer
 		speakername("Woman")
 		msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hi, young one! See this?"))
 		closemessage

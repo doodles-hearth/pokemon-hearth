@@ -288,8 +288,10 @@ TranquilRoute_EventScript_Shellos::
 
 TranquilRoute_EventScript_BerryWoman::
 	lock
-	faceplayer
 	goto_if_set FLAG_RECEIVED_WAILMER_PAIL, TranquilRoute_EventScript_BerryWoman_2
+	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_BerryWoman_Movement_0
+	waitmovement 0
+	faceplayer
 	speakername TranquilRoute_EventScript_BerryWoman_Text_0
 	msgbox TranquilRoute_EventScript_BerryWoman_Text_2
 	closemessage
@@ -317,6 +319,7 @@ TranquilRoute_EventScript_BerryWoman_1:
 	end
 
 TranquilRoute_EventScript_BerryWoman_2:
+	faceplayer
 	speakername TranquilRoute_EventScript_BerryWoman_Text_0
 	msgbox TranquilRoute_EventScript_BerryWoman_Text_1
 	closemessage
@@ -513,6 +516,16 @@ TranquilRoute_EventScript_GrassCutscene_Movement_4:
 
 TranquilRoute_EventScript_WhiteslateRoadblock_Movement_0:
 	walk_right
+	step_end
+
+TranquilRoute_EventScript_BerryWoman_Movement_0:
+	emote_music
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 TranquilRoute_EventScript_CrobatShadows_Camera_Movement_0:

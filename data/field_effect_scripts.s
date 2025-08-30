@@ -81,6 +81,13 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_TracksSpot                @ FLDEFF_TRACKS_SPOT
 	.4byte gFieldEffectScript_CaveDust                  @ FLDEFF_CAVE_DUST
 	.4byte gFieldEffectScript_Defog                     @ FLDEFF_DEFOG
+	.4byte gFieldEffectScript_MusicIcon             	@ FLDEFF_MUSIC_ICON
+	.4byte gFieldEffectScript_SadIcon               	@ FLDEFF_SAD_ICON
+	.4byte gFieldEffectScript_UpsetIcon             	@ FLDEFF_UPSET_ICON
+	.4byte gFieldEffectScript_AngryIcon             	@ FLDEFF_ANGRY_ICON
+	.4byte gFieldEffectScript_PensiveIcon           	@ FLDEFF_PENSIVE_ICON
+	.4byte gFieldEffectScript_PoisonedIcon          	@ FLDEFF_POISONED_ICON
+	.4byte gFieldEffectScript_TrainerExclamation       	@ FLDEFF_TRAINER_EXCLAMATION
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -270,6 +277,34 @@ gFieldEffectScript_PokeballTrail::
 
 gFieldEffectScript_HeartIcon::
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_HeartIcon
+	field_eff_end
+
+gFieldEffectScript_MusicIcon::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_MusicIcon
+	field_eff_end
+
+gFieldEffectScript_SadIcon::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_SadIcon
+	field_eff_end
+
+gFieldEffectScript_UpsetIcon::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_UpsetIcon
+	field_eff_end
+
+gFieldEffectScript_AngryIcon::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_AngryIcon
+	field_eff_end
+
+gFieldEffectScript_PensiveIcon::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_PensiveIcon
+	field_eff_end
+
+gFieldEffectScript_PoisonedIcon::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_PoisonedIcon
+	field_eff_end
+
+gFieldEffectScript_TrainerExclamation::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_TrainerExclamation
 	field_eff_end
 
 gFieldEffectScript_Nop47::

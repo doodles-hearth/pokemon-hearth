@@ -77,6 +77,13 @@
 #define FLDEFF_TRACKS_BUG                72
 #define FLDEFF_CAVE_DUST                 73
 #define FLDEFF_DEFOG                     74
+#define FLDEFF_MUSIC_ICON                75
+#define FLDEFF_SAD_ICON                  76
+#define FLDEFF_UPSET_ICON                77
+#define FLDEFF_ANGRY_ICON                78
+#define FLDEFF_PENSIVE_ICON              79
+#define FLDEFF_POISONED_ICON             80
+#define FLDEFF_TRAINER_EXCLAMATION       81
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1
