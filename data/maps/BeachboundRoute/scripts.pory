@@ -10,18 +10,26 @@ mapscripts BeachboundRoute_MapScripts {
 }
 
 script BeachboundRoute_EventScript_RunningBoy {
+	lock
 	speakername("Little boy")
+	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}Running running running!!\p"
 		"Yaaaaaaaay!!!"
-	), MSGBOX_NPC)
+	))
+	closemessage
+	release
 }
 
 script BeachboundRoute_EventScript_RunningGirl {
+	lock
 	speakername("Little girl")
+	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}Wait for me!! It's not fair!!!"
-	), MSGBOX_NPC)
+	))
+	closemessage
+	release
 }
 
 script BeachboundRoute_EventScript_AnnoyedGirl {
@@ -39,6 +47,7 @@ script BeachboundRoute_EventScript_AnnoyedGirl {
 }
 
 script BeachboundRoute_EventScript_AnnoyedBoy {
+	// TODO emote_sweat
 	speakername("Annoyed boy")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 EMOTE_NORMAL}I brought my date to the Lover's Meadow, but I kind of thought we'd be alone…"
@@ -215,12 +224,13 @@ script BeachboundRoute_EventScript_Mugging {
 
 		speakername("Shady Man")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Stop yappin', lady! Just give us yer Pokémon already!"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Quit yappin', lady! Just give us yer Pokémon already!"
 		))
 		closemessage
 
 		applymovement(LOCALID_GRUNT_2, Common_Movement_WalkInPlaceFasterUp)
 		waitmovement(0)
+		applymovement(LOCALID_GRUNT_2, moves(emote_angry))
 
 		speakername("Shady Man")
 		msgbox(format(
@@ -362,6 +372,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	delay(24)
 
+	applymovement(LOCALID_GRUNT_BOSS, moves(emote_angry))
 	speakername("Crobat Boss")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Ya gotta be kiddin' me…\p"

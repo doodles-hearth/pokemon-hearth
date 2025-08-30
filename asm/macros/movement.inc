@@ -105,6 +105,7 @@
 	create_movement_action emote_angry, MOVEMENT_ACTION_EMOTE_ANGRY
 	create_movement_action emote_pensive, MOVEMENT_ACTION_EMOTE_PENSIVE
 	create_movement_action emote_poisoned, MOVEMENT_ACTION_EMOTE_POISONED
+	create_movement_action emote_happy, MOVEMENT_ACTION_EMOTE_HAPPY
 	create_movement_action reveal_trainer, MOVEMENT_ACTION_REVEAL_TRAINER
 	create_movement_action rock_smash_break, MOVEMENT_ACTION_ROCK_SMASH_BREAK
 	create_movement_action cut_tree, MOVEMENT_ACTION_CUT_TREE

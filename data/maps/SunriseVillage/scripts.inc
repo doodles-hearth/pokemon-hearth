@@ -62,8 +62,10 @@ SunriseVillage_Event_FatGuy_1:
 	end
 
 SunriseVillage_Event_FatGuy_2:
+	applymovement VAR_LAST_TALKED, SunriseVillage_Event_FatGuy_Movement_0
 	msgbox SunriseVillage_Event_FatGuy_Text_1
 	closemessage
+	waitmovement VAR_LAST_TALKED
 	applymovement 3, Common_Movement_FaceOriginalDirection
 	goto SunriseVillage_Event_FatGuy_1
 
@@ -73,13 +75,13 @@ SunriseVillage_Event_GuardForest::
 	applymovement 6, Common_Movement_WalkInPlaceFasterLeft
 	goto_if_set FLAG_RECEIVED_STARTER, SunriseVillage_Event_GuardForest_2
 	speakername SunriseVillage_Event_FatGuy_Text_0
-	msgbox SunriseVillage_Event_GuardForest_Text_3
+	msgbox SunriseVillage_Event_GuardForest_Text_4
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	speakername SunriseVillage_Event_FatGuy_Text_0
-	msgbox SunriseVillage_Event_GuardForest_Text_4
+	msgbox SunriseVillage_Event_GuardForest_Text_5
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_Event_GuardForest_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_Event_GuardForest_Movement_1
 	waitmovement 0
 SunriseVillage_Event_GuardForest_1:
 	releaseall
@@ -92,9 +94,9 @@ SunriseVillage_Event_GuardForest_2:
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
 	goto_if_eq SunriseVillage_Event_GuardForest_6
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
-	msgbox SunriseVillage_Event_GuardForest_Text_2
+	msgbox SunriseVillage_Event_GuardForest_Text_3
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_Event_GuardForest_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_Event_GuardForest_Movement_1
 	waitmovement 0
 	goto SunriseVillage_Event_GuardForest_1
 
@@ -106,8 +108,10 @@ SunriseVillage_Event_GuardForest_5:
 SunriseVillage_Event_GuardForest_6:
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	msgbox SunriseVillage_Event_GuardForest_Text_1
+	applymovement 6, SunriseVillage_Event_GuardForest_Movement_0
+	msgbox SunriseVillage_Event_GuardForest_Text_2
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_Event_GuardForest_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_Event_GuardForest_Movement_1
 	waitmovement 0
 	goto SunriseVillage_Event_GuardForest_1
 
@@ -128,7 +132,7 @@ SunriseVillage_Event_GuardForest_Interact_2:
 	goto_if_ge SunriseVillage_Event_GuardForest_Interact_5
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
 	goto_if_eq SunriseVillage_Event_GuardForest_Interact_6
-	msgbox SunriseVillage_Event_GuardForest_Text_2
+	msgbox SunriseVillage_Event_GuardForest_Text_3
 	closemessage
 	goto SunriseVillage_Event_GuardForest_Interact_1
 
@@ -139,13 +143,19 @@ SunriseVillage_Event_GuardForest_Interact_5:
 
 SunriseVillage_Event_GuardForest_Interact_6:
 	msgbox SunriseVillage_Event_GuardForest_Text_1
+	applymovement 6, SunriseVillage_Event_GuardForest_Movement_0
+	msgbox SunriseVillage_Event_GuardForest_Text_2
 	closemessage
 	goto SunriseVillage_Event_GuardForest_Interact_1
 
 
 SunriseVillage_Event_LittleGirl::
+	lock
+	applymovement VAR_LAST_TALKED, SunriseVillage_Event_LittleGirl_Movement_0
 	speakername SunriseVillage_Event_LittleGirl_Text_0
-	msgbox SunriseVillage_Event_LittleGirl_Text_1, MSGBOX_NPC
+	msgbox SunriseVillage_Event_LittleGirl_Text_1
+	closemessage
+	release
 	return
 
 
@@ -179,6 +189,7 @@ SunriseVillage_Event_Woman::
 SunriseVillage_Event_Farmer::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, SunriseVillage_Event_Farmer_Movement_0
 	speakername SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_Farmer_Text_0
 	release
@@ -191,12 +202,15 @@ SunriseVillage_Event_OldMan::
 	speakername SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_OldMan_Text_0
 	release
-	end
+	return
 
 
 SunriseVillage_Event_OldWoman::
+	lock
+	applymovement VAR_LAST_TALKED, SunriseVillage_Event_GuardForest_Movement_0
 	speakername SunriseVillage_Event_FatGuy_Text_0
-	msgbox SunriseVillage_Event_OldWoman_Text_0, MSGBOX_NPC
+	msgbox SunriseVillage_Event_OldWoman_Text_0
+	release
 	return
 
 
@@ -205,6 +219,7 @@ SunriseVillage_Event_Happiny::
 	faceplayer
 	playmoncry SPECIES_HAPPINY, CRY_MODE_NORMAL
 	setseenmon SPECIES_HAPPINY
+	applymovement VAR_LAST_TALKED, SunriseVillage_Event_Happiny_Movement_0
 	setspeakertomonname SPECIES_HAPPINY
 	msgbox SunriseVillage_Event_Happiny_Text_0
 	waitmoncry
@@ -227,6 +242,7 @@ SunriseVillage_Event_Munchlax::
 SunriseVillage_Event_Kirlia::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, SunriseVillage_Event_Kirlia_Movement_0
 	setspeakertomonname SPECIES_KIRLIA
 	msgbox SunriseVillage_Event_Kirlia_Text_0
 	release
@@ -253,8 +269,32 @@ SunriseVillage_Event_EldersHouseSign::
 	return
 
 
+SunriseVillage_Event_FatGuy_Movement_0:
+	emote_heart
+	step_end
+
 SunriseVillage_Event_GuardForest_Movement_0:
+	emote_angry
+	step_end
+
+SunriseVillage_Event_GuardForest_Movement_1:
 	walk_down
+	step_end
+
+SunriseVillage_Event_LittleGirl_Movement_0:
+	emote_happy
+	step_end
+
+SunriseVillage_Event_Farmer_Movement_0:
+	emote_upset
+	step_end
+
+SunriseVillage_Event_Happiny_Movement_0:
+	emote_music
+	step_end
+
+SunriseVillage_Event_Kirlia_Movement_0:
+	emote_pensive
 	step_end
 
 SunriseVillage_Event_FatGuy_Text_0:
@@ -278,18 +318,20 @@ SunriseVillage_Event_GuardForest_Text_0:
 SunriseVillage_Event_GuardForest_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Hey, kid, heard you were going off on\n"
 	.string "an adventure!\p"
-	.string "Did you say bye to your sister?\p"
+	.string "Did you say bye to your sister?$"
+
+SunriseVillage_Event_GuardForest_Text_2:
 	.string "No? Thought so. Go see her before you\n"
 	.string "run off, you ungrateful sibling!$"
 
-SunriseVillage_Event_GuardForest_Text_2:
+SunriseVillage_Event_GuardForest_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Hey, kid, a friend of yours was looking\n"
 	.string "for you.$"
 
-SunriseVillage_Event_GuardForest_Text_3:
+SunriseVillage_Event_GuardForest_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Stop right there, kid!$"
 
-SunriseVillage_Event_GuardForest_Text_4:
+SunriseVillage_Event_GuardForest_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Wild Pokémon have been lashing out\n"
 	.string "recently.\p"
 	.string "I know you're used to walking around\n"

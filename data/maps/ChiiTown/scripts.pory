@@ -85,7 +85,7 @@ script ChiiTown_EventScript_WatchfulMom{
 script ChiiTown_EventScript_Shopper {
 	speakername("Woman")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}The lady who keeps the town's market has started selling Pokémon medicine and Poké Balls!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}The town market lady sells Pokémon medicine and Poké Balls now!\p"
 		"Be careful, though: the ointments she sells can't be used in the middle of a battle.\p"
 		"They are super cheap though, so don't be afraid to use them so you don't always have to run to the nearest refuge!"
 	), MSGBOX_NPC)
@@ -106,12 +106,16 @@ script ChiiTown_EventScript_Kecleon {
 }
 
 script ChiiTown_EventScript_PlantingFlowers {
+	lock
+	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	speakername("Little girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm planting flowers so that the wild Pokémon become happy again!"
-	), MSGBOX_NPC)
+	))
+	closemessage
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
+	release
 }
 
 script ChiiTown_EventScript_AlsoPlantingFlowers {
@@ -155,6 +159,7 @@ script ChiiTown_EventScript_EatingBerries {
 
 		if(var(VAR_RESULT) == 0){
 			removeitem(ITEM_ORAN_BERRY)
+			applymovement(VAR_LAST_TALKED, moves(emote_heart))
 			speakername("Twin girl")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Oh my gosh, thank you!"
@@ -228,6 +233,7 @@ script ChiiTown_EventScript_BattlingGirl {
 			setflag(FLAG_BEAT_CHII_TOWN_KIDS)
 
 			special(GetPlayerMrMrsString)
+			applymovement(VAR_LAST_TALKED, moves(emote_heart))
 			speakername("Little girl")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Wow, {STR_VAR_1}! You're super strong!!\p"
@@ -237,6 +243,7 @@ script ChiiTown_EventScript_BattlingGirl {
 
 			// TODO EVA reward?
 		} else {
+			applymovement(VAR_LAST_TALKED, moves(emote_angry))
 			speakername("Little girl")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Ughhhh, older kids are so boooring!"
@@ -288,6 +295,7 @@ script ChiiTown_EventScript_BattlingBoy {
 			setflag(FLAG_BEAT_CHII_TOWN_KIDS)
 
 			special(GetPlayerMrMrsString)
+			applymovement(VAR_LAST_TALKED, moves(emote_heart))
 			speakername("Little boy")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Wow, {STR_VAR_1}! Can you be our sensei?\p"
@@ -297,6 +305,7 @@ script ChiiTown_EventScript_BattlingBoy {
 
 			// TODO EVA reward?
 		} else {
+			applymovement(VAR_LAST_TALKED, moves(emote_angry))
 			speakername("Little boy")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Fine! Go do grownup stuff!"

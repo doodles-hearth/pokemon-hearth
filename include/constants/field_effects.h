@@ -83,7 +83,8 @@
 #define FLDEFF_ANGRY_ICON                78
 #define FLDEFF_PENSIVE_ICON              79
 #define FLDEFF_POISONED_ICON             80
-#define FLDEFF_TRAINER_EXCLAMATION       81
+#define FLDEFF_HAPPY_ICON                81
+#define FLDEFF_TRAINER_EXCLAMATION       82
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1

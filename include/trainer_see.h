@@ -29,6 +29,7 @@ u8 FldEff_UpsetIcon(void);
 u8 FldEff_AngryIcon(void);
 u8 FldEff_PensiveIcon(void);
 u8 FldEff_PoisonedIcon(void);
+u8 FldEff_HappyIcon(void);
 u8 FldEff_TrainerExclamation(void);
 u8 GetCurrentApproachingTrainerObjectEventId(void);
 u8 GetChosenApproachingTrainerObjectEventId(u8 arrayId);

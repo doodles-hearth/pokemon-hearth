@@ -120,10 +120,14 @@ ChiiTown_EventScript_Kecleon::
 
 
 ChiiTown_EventScript_PlantingFlowers::
+	lock
+	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_PlantingFlowers_Movement_0
 	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
-	msgbox ChiiTown_EventScript_PlantingFlowers_Text_1, MSGBOX_NPC
+	msgbox ChiiTown_EventScript_PlantingFlowers_Text_1
+	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
+	release
 	return
 
 
@@ -168,6 +172,7 @@ ChiiTown_EventScript_EatingBerries_2:
 
 ChiiTown_EventScript_EatingBerries_4:
 	removeitem ITEM_ORAN_BERRY
+	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_EatingBerries_Movement_0
 	speakername ChiiTown_EventScript_EatingBerries_Text_0
 	msgbox ChiiTown_EventScript_EatingBerries_Text_5, MSGBOX_DEFAULT
 	closemessage
@@ -203,6 +208,7 @@ ChiiTown_EventScript_BattlingGirl_5:
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_BattlingGirl_10
+	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_BattlingGirl_Movement_2
 	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
 	msgbox ChiiTown_EventScript_BattlingGirl_Text_6
 	closemessage
@@ -229,6 +235,7 @@ ChiiTown_EventScript_BattlingGirl_10:
 	trainerbattle_two_trainers TRAINER_MINORI, ChiiTown_EventScript_BattlingGirl_Text_4, TRAINER_KAITO, ChiiTown_EventScript_BattlingGirl_Text_5
 	setflag FLAG_BEAT_CHII_TOWN_KIDS
 	special GetPlayerMrMrsString
+	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_EatingBerries_Movement_0
 	speakername ChiiTown_EventScript_PlantingFlowers_Text_0
 	msgbox ChiiTown_EventScript_BattlingGirl_Text_0
 	closemessage
@@ -248,6 +255,7 @@ ChiiTown_EventScript_BattlingBoy::
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_BattlingBoy_6
+	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_BattlingGirl_Movement_2
 	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
 	msgbox ChiiTown_EventScript_BattlingBoy_Text_3
 	closemessage
@@ -270,6 +278,7 @@ ChiiTown_EventScript_BattlingBoy_6:
 	trainerbattle_two_trainers TRAINER_MINORI, ChiiTown_EventScript_BattlingGirl_Text_4, TRAINER_KAITO, ChiiTown_EventScript_BattlingGirl_Text_5
 	setflag FLAG_BEAT_CHII_TOWN_KIDS
 	special GetPlayerMrMrsString
+	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_EatingBerries_Movement_0
 	speakername ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
 	msgbox ChiiTown_EventScript_BattlingBoy_Text_2
 	closemessage
@@ -339,12 +348,24 @@ ChiiTown_EventScript_SetTrespassVar::
 	return
 
 
+ChiiTown_EventScript_PlantingFlowers_Movement_0:
+	emote_happy
+	step_end
+
+ChiiTown_EventScript_EatingBerries_Movement_0:
+	emote_heart
+	step_end
+
 ChiiTown_EventScript_BattlingGirl_Movement_0:
 	face_down
 	step_end
 
 ChiiTown_EventScript_BattlingGirl_Movement_1:
 	face_left
+	step_end
+
+ChiiTown_EventScript_BattlingGirl_Movement_2:
+	emote_angry
 	step_end
 
 ChiiTown_EventScript_BattlingBoy_Movement_0:
@@ -371,9 +392,8 @@ ChiiTown_EventScript_WatchfulMom_Text_3:
 	.string "exhausting…$"
 
 ChiiTown_EventScript_Shopper_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}The lady who keeps the town's market\n"
-	.string "has started selling Pokémon medicine\l"
-	.string "and Poké Balls!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}The town market lady sells Pokémon\n"
+	.string "medicine and Poké Balls now!\p"
 	.string "Be careful, though: the ointments she\n"
 	.string "sells can't be used in the middle of a\l"
 	.string "battle.\p"

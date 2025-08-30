@@ -31,6 +31,7 @@ GinkoWoods_EventScript_Eiji::
 GinkoWoods_EventScript_OldMan::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_OldMan_Movement_0
 	speakername GinkoWoods_EventScript_OldMan_Text_0
 	msgbox GinkoWoods_EventScript_OldMan_Text_1
 	release
@@ -39,6 +40,8 @@ GinkoWoods_EventScript_OldMan::
 
 GinkoWoods_EventScript_Bean::
 	lock
+	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_Bean_Movement_0
+	waitmovement VAR_LAST_TALKED
 	faceplayer
 	speakername GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_1
@@ -85,6 +88,7 @@ GinkoWoods_EventScript_Bean_4:
 	goto GinkoWoods_EventScript_Bean_1
 
 GinkoWoods_EventScript_Bean_5:
+	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_OldMan_Movement_0
 	msgbox GinkoWoods_EventScript_Bean_Text_11
 	goto GinkoWoods_EventScript_Bean_1
 
@@ -108,6 +112,7 @@ GinkoWoods_EventScript_Tracks::
 	delay 48
 	applymovement 7, Common_Movement_WalkInPlaceFasterRight
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_Tracks_Movement_0
 	speakername GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Tracks_Text_0
 	closemessage
@@ -130,6 +135,24 @@ GinkoWoods_EventScript_TrainerTips2::
 	msgbox GinkoWoods_EventScript_TrainerTips2_Text_0, MSGBOX_SIGN
 	return
 
+
+GinkoWoods_EventScript_OldMan_Movement_0:
+	emote_pensive
+	step_end
+
+GinkoWoods_EventScript_Bean_Movement_0:
+	emote_angry
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
+GinkoWoods_EventScript_Tracks_Movement_0:
+	emote_upset
+	step_end
 
 GinkoWoods_EventScript_Toshiki_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}These bugs are electrifying!$"

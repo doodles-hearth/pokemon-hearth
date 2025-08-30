@@ -37,10 +37,12 @@ script SunriseVillage_Event_FatGuy {
 
     speakername("Neighbour")
     if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 4) {
+        applymovement(VAR_LAST_TALKED, moves(emote_heart))
         msgbox(format(
             "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY EMOTE_NORMAL}My new Pokémon is so cute, I don't feel like leaving it in its Pokéball!"
         ))
         closemessage
+        waitmovement(VAR_LAST_TALKED)
         applymovement(LOCALID_FATGUY, Common_Movement_FaceOriginalDirection)
     }
     else {
@@ -72,7 +74,10 @@ script SunriseVillage_Event_GuardForest {
             turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
             msgbox(format(
                 "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Hey, kid, heard you were going off on an adventure!\p"
-                "Did you say bye to your sister?\p"
+                "Did you say bye to your sister?"
+            ))
+            applymovement(LOCALID_GUARD, moves(emote_angry))
+            msgbox(format(
                 "No? Thought so. Go see her before you run off, you ungrateful sibling!"
             ))
             closemessage
@@ -125,7 +130,10 @@ script SunriseVillage_Event_GuardForest_Interact {
         } elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
             msgbox(format(
                 "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Hey, kid, heard you were going off on an adventure!\p"
-                "Did you say bye to your sister?\p"
+                "Did you say bye to your sister?"
+            ))
+            applymovement(LOCALID_GUARD, moves(emote_angry))
+            msgbox(format(
                 "No? Thought so. Go see her before you run off, you ungrateful sibling!"
             ))
             closemessage
@@ -149,11 +157,15 @@ script SunriseVillage_Event_GuardForest_Interact {
 
 // Little running girl
 script SunriseVillage_Event_LittleGirl {
+    lock
+    applymovement(VAR_LAST_TALKED, moves(emote_happy))
     speakername("Little girl")
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I can't wait I can't wait I can't wait!!!\p"
         "AHHHHH I CAN'T WAIT!!!!"
-    ), MSGBOX_NPC)
+    ))
+    closemessage
+    release
 }
 
 // Boy
@@ -195,6 +207,7 @@ script SunriseVillage_Event_Woman {
 script SunriseVillage_Event_Farmer {
     lock
     faceplayer
+    applymovement(VAR_LAST_TALKED, moves(emote_upset))
     speakername("Neighbour")
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_1 EMOTE_NORMAL}I've been waiting for hours!"
@@ -212,15 +225,17 @@ script SunriseVillage_Event_OldMan {
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}The distribution is about to start."
     ))
     release
-    end
 }
 
 // Old woman
 script SunriseVillage_Event_OldWoman {
+    lock
+    applymovement(VAR_LAST_TALKED, moves(emote_angry))
     speakername("Neighbour")
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_WOMAN EMOTE_NORMAL}I'm tired of waiting!"
-    ), MSGBOX_NPC)
+    ))
+    release
 }
 
 // Happiny
@@ -229,6 +244,7 @@ script SunriseVillage_Event_Happiny {
     faceplayer
     playmoncry(SPECIES_HAPPINY, CRY_MODE_NORMAL)
     setseenmon(SPECIES_HAPPINY)
+    applymovement(VAR_LAST_TALKED, moves(emote_music))
     setspeakertomonname(SPECIES_HAPPINY)
     msgbox(format(
         "Happi!"
@@ -257,6 +273,7 @@ script SunriseVillage_Event_Munchlax {
 script SunriseVillage_Event_Kirlia {
     lock
     faceplayer
+    applymovement(VAR_LAST_TALKED, moves(emote_pensive))
     setspeakertomonname(SPECIES_KIRLIA)
     msgbox(format(
         "…"

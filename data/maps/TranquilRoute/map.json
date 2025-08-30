@@ -551,6 +551,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRANQUIL_RT_KECLEON",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES_SHINY(KECLEON)",
       "x": 26,
       "y": 66,

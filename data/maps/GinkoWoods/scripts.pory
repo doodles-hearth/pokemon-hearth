@@ -51,6 +51,7 @@ script GinkoWoods_EventScript_Eiji {
 script GinkoWoods_EventScript_OldMan {
 	lock
 	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	speakername("Old Man")
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}These woods are fascinating.\pThere seem to be a lot of yellow Pokémon here."))
 	release
@@ -59,6 +60,10 @@ script GinkoWoods_EventScript_OldMan {
 
 script GinkoWoods_EventScript_Bean {
 	lock
+
+	applymovement(VAR_LAST_TALKED, moves(emote_angry, delay_16 * 6))
+	waitmovement(VAR_LAST_TALKED)
+
 	faceplayer
 
 	speakername("Odd Girl")
@@ -137,6 +142,7 @@ script GinkoWoods_EventScript_Bean {
 				"Okay. Bye!"
 			))
 		case 2:
+			applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…Oh. I am blocking your path. I see.\p"
 				"I got carried away, have I not?\nThat… tends to happen.\p"
@@ -171,6 +177,7 @@ script GinkoWoods_EventScript_Tracks {
 	applymovement(LOCALID_BEAN, Common_Movement_WalkInPlaceFasterRight)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 
+	applymovement(VAR_LAST_TALKED, moves(emote_upset))
 	speakername("Odd Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}THE TRACKS!!\nYOU'RE STEPPING ON THEM!!!"

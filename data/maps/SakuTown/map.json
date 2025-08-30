@@ -211,6 +211,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_NATSUKI_SAKU",
       "graphics_id": "OBJ_EVENT_GFX_NATSUKI",
       "x": 17,
       "y": 8,

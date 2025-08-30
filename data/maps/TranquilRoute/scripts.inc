@@ -413,6 +413,7 @@ TranquilRoute_EventScript_CrobatShadows_Cutscene::
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime::
 	lock
+	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_0
 	speakername TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0
 	msgbox TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_1
 	closemessage
@@ -430,13 +431,14 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime::
 	speakername TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0
 	msgbox TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_3
 	closemessage
+	applymovement LOCALID_TRANQUIL_RT_KECLEON, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_1
 	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL
 	waitmoncry
 	specialvar VAR_RESULT, GetPlayerFacingDirection
 	compare VAR_RESULT, DIR_EAST
 	goto_if_eq TranquilRoute_EventScript_TravelingMerchantFirstTime_2
-	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_2
-	applymovement 27, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_3
+	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_4
+	applymovement 27, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_5
 TranquilRoute_EventScript_TravelingMerchantFirstTime_1:
 	waitmovement VAR_LAST_TALKED
 	waitmovement 27
@@ -447,14 +449,15 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_1:
 	return
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_2:
-	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_0
-	applymovement 27, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_1
+	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_2
+	applymovement 27, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_3
 	goto TranquilRoute_EventScript_TravelingMerchantFirstTime_1
 
 
 TranquilRoute_EventScript_WaitingForChatot::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_0
 	speakername TranquilRoute_EventScript_Girl_Text_0
 	msgbox TranquilRoute_EventScript_WaitingForChatot_Text_0
 	closemessage
@@ -570,40 +573,19 @@ TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_3:
 	step_end
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_0:
-	walk_up
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	emote_pensive
 	step_end
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_1:
-	walk_left
-	walk_up
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	emote_music
 	step_end
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_2:
-	walk_left
-	walk_left
-	walk_left
-	walk_left
 	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	walk_up
 	walk_up
 	walk_up
@@ -613,6 +595,35 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_2:
 	step_end
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_3:
+	walk_left
+	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_4:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_5:
 	walk_left
 	walk_left
 	walk_left

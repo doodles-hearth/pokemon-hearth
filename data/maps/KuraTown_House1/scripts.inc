@@ -44,6 +44,7 @@ KuraTown_House1_OldWoman_5:
 
 KuraTown_House1_OldWoman_6:
 	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6
+	applymovement VAR_LAST_TALKED, KuraTown_House1_OldWoman_Movement_0
 	msgbox KuraTown_House1_OldWoman_Text_2
 	waitmessage
 	closemessage
@@ -84,6 +85,7 @@ OldWomanQuestScript:
 	closemessage
 	mcdialogue OldWomanQuestScript_Text_6, OldWomanQuestScript_Text_7, OldWomanQuestScript_Text_8
 	speakername KuraTown_House1_OldWoman_Text_0
+	applymovement VAR_LAST_TALKED, OldWomanQuestScript_Movement_1
 	msgbox OldWomanQuestScript_Text_9
 	waitmessage
 	closemessage
@@ -129,8 +131,12 @@ OldWomanQuest2Script_4:
 
 
 KuraTown_House1_OldWomansSon::
+	lock
+	applymovement VAR_LAST_TALKED, KuraTown_House1_OldWomansSon_Movement_0
 	speakername KuraTown_House1_OldWomansSon_Text_0
-	msgbox KuraTown_House1_OldWomansSon_Text_1, MSGBOX_NPC
+	msgbox KuraTown_House1_OldWomansSon_Text_1
+	closemessage
+	release
 	return
 
 
@@ -139,6 +145,7 @@ KuraTown_House1_Growlithe::
 	faceplayer
 	setseenmon SPECIES_GROWLITHE
 	setspeakertomonname SPECIES_GROWLITHE
+	applymovement VAR_LAST_TALKED, KuraTown_House1_OldWoman_Movement_0
 	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
 	msgbox KuraTown_House1_Growlithe_Text_0
 	waitmoncry
@@ -146,17 +153,33 @@ KuraTown_House1_Growlithe::
 	return
 
 
+KuraTown_House1_OldWoman_Movement_0:
+	emote_happy
+	step_end
+
 OldWomanQuestScript_Movement_0:
 	face_away_player
+	emote_pensive
+	delay_16
+	delay_16
+	delay_16
 	delay_16
 	delay_16
 	delay_16
 	face_player
 	step_end
 
+OldWomanQuestScript_Movement_1:
+	emote_heart
+	step_end
+
 OldWomanQuest2Script_Movement_0:
 	emote_exclamation_mark
 	delay_16
+	step_end
+
+KuraTown_House1_OldWomansSon_Movement_0:
+	emote_angry
 	step_end
 
 KuraTown_House1_OldWoman_Text_0:
@@ -166,18 +189,16 @@ KuraTown_House1_OldWoman_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Come back later for the medicine.$"
 
 KuraTown_House1_OldWoman_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}It's good to see you! I've finished\n"
-	.string "the medicine. Here, take it to the\l"
-	.string "ailing Pokémon. Once it drinks it, it\l"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}There you are! The medicine is ready.\p"
+	.string "Take it to the ailing Pokémon. It\n"
 	.string "should feel good as new.$"
 
 KuraTown_House1_OldWoman_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Once the ill Pokémon drinks the\n"
-	.string "medicine I gave you, it should feel\l"
-	.string "right as rain.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL} Once the ill Pokémon drinks that\n"
+	.string "medicine, it should feel right as rain.$"
 
 OldWomanRegularScript_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}You look like you're tired, young one.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}You look tired, young one.\n"
 	.string "Please rest a while.$"
 
 OldWomanRegularScript_Text_1:
@@ -194,7 +215,7 @@ OldWomanQuestScript_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Oh my. Take me, please. Where is it?$"
 
 OldWomanQuestScript_Text_3:
-	.string "It's in the Saku village Refuge.$"
+	.string "In the Saku village Refuge.$"
 
 OldWomanQuestScript_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Saku village…? Oh dear…\p"
@@ -203,13 +224,13 @@ OldWomanQuestScript_Text_4:
 	.string "guard.$"
 
 OldWomanQuestScript_Text_5:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}While I can't go to Saku village\n"
-	.string "myself, I can create an healing elixir\l"
-	.string "here for the Pokémon.\p"
-	.string "I only need three: an Oran Berry, a\n"
-	.string "fishcake from Maguro Harbor, and a\l"
-	.string "Revival Powder.\p"
-	.string "Can you be a dear and help me?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL} While I can't go to Saku village\n"
+	.string "myself, I can create an healing elixir.\p"
+	.string "I'll need an Oran Berry, a fishcake\n"
+	.string "from Maguro Harbor, and a Revival\l"
+	.string "Powder.\p"
+	.string "Be a dear and fetch these things for\n"
+	.string "me!$"
 
 OldWomanQuestScript_Text_6:
 	.string "Of course!$"
@@ -221,24 +242,21 @@ OldWomanQuestScript_Text_8:
 	.string "Sure.$"
 
 OldWomanQuestScript_Text_9:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}You're such a wonderful child. I'll\n"
-	.string "wait here until you come back with the\l"
-	.string "necessary ingredients.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Such a wonderful child. I'll wait here\n"
+	.string "for the ingredients.$"
 
 OldWomanQuest2Script_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Hello, child. Do you have the\n"
-	.string "ingredients I need for the elixir,\l"
-	.string "yet?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Do you have the ingredients I need\n"
+	.string "for the elixir, child?$"
 
 OldWomanQuest2Script_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Wonderful! Give me a moment, alright?\n"
 	.string "You can come back later for it.$"
 
 OldWomanQuest2Script_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Well, I'll stay here until you do.\n"
-	.string "Remember, I need an Oran Berry, a\l"
-	.string "Maguro Fishcake, and a Revival\l"
-	.string "Powder.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Well, off you go, then. Remember, I\n"
+	.string "need an Oran Berry, a Maguro Fishcake,\l"
+	.string "and a Revival Powder.$"
 
 KuraTown_House1_OldWomansSon_Text_0:
 	.string "Guy$"

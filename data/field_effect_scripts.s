@@ -87,6 +87,7 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_AngryIcon             	@ FLDEFF_ANGRY_ICON
 	.4byte gFieldEffectScript_PensiveIcon           	@ FLDEFF_PENSIVE_ICON
 	.4byte gFieldEffectScript_PoisonedIcon          	@ FLDEFF_POISONED_ICON
+	.4byte gFieldEffectScript_HappyIcon					@ FLDEFF_HAPPY_ICON
 	.4byte gFieldEffectScript_TrainerExclamation       	@ FLDEFF_TRAINER_EXCLAMATION
 
 gFieldEffectScript_ExclamationMarkIcon1::
@@ -301,6 +302,10 @@ gFieldEffectScript_PensiveIcon::
 
 gFieldEffectScript_PoisonedIcon::
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_PoisonedIcon
+	field_eff_end
+
+gFieldEffectScript_HappyIcon::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_HappyIcon
 	field_eff_end
 
 gFieldEffectScript_TrainerExclamation::

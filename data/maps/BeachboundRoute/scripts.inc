@@ -3,14 +3,22 @@ BeachboundRoute_MapScripts::
 
 
 BeachboundRoute_EventScript_RunningBoy::
+	lock
 	speakername BeachboundRoute_EventScript_RunningBoy_Text_0
-	msgbox BeachboundRoute_EventScript_RunningBoy_Text_1, MSGBOX_NPC
+	applymovement VAR_LAST_TALKED, BeachboundRoute_EventScript_RunningBoy_Movement_0
+	msgbox BeachboundRoute_EventScript_RunningBoy_Text_1
+	closemessage
+	release
 	return
 
 
 BeachboundRoute_EventScript_RunningGirl::
+	lock
 	speakername BeachboundRoute_EventScript_RunningGirl_Text_0
-	msgbox BeachboundRoute_EventScript_RunningGirl_Text_1, MSGBOX_NPC
+	applymovement VAR_LAST_TALKED, BeachboundRoute_EventScript_RunningGirl_Movement_0
+	msgbox BeachboundRoute_EventScript_RunningGirl_Text_1
+	closemessage
+	release
 	return
 
 
@@ -178,9 +186,9 @@ BeachboundRoute_EventScript_Mugging::
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_16
 BeachboundRoute_EventScript_Mugging_1:
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_0
-	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_1
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_1
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_1
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_2
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_2
 	waitmovement 19
 	waitmovement 18
 	waitmovement 21
@@ -197,27 +205,28 @@ BeachboundRoute_EventScript_Mugging_1:
 	msgbox BeachboundRoute_EventScript_Mugging_Text_21
 	closemessage
 	delay 24
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_0
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_22
 	closemessage
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_2
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_3
 	waitmovement 19
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_23
 	closemessage
-	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_2
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_3
 	waitmovement 0
 	speakername BeachboundRoute_EventScript_Mugging_Text_19
 	msgbox BeachboundRoute_EventScript_Mugging_Text_24
 	closemessage
 	delay 24
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_3
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_4
 	waitmovement 0
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_25
 	closemessage
 	delay 48
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_2
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_3
 	waitmovement 0
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_26
@@ -226,20 +235,20 @@ BeachboundRoute_EventScript_Mugging_1:
 	speakername BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_27
 	closemessage
-	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_4
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_4
-	waitmovement 18
-	waitmovement 21
 	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_5
 	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_5
-	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_5
+	waitmovement 18
+	waitmovement 21
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_6
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_6
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_6
 	waitmovement 18
 	waitmovement 21
 	waitmovement 20
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_6
-	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_7
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_8
-	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_9
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_7
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_8
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_9
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_10
 	waitmovement 19
 	waitmovement 18
 	waitmovement 21
@@ -250,7 +259,7 @@ BeachboundRoute_EventScript_Mugging_1:
 	removeobject 20
 	setflag FLAG_HIDE_CROBAT_SHADOWS_BEACHBOUND_RT
 	delay 60
-	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_10
+	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_11
 	waitmovement 17
 	speakername BeachboundRoute_EventScript_Mugging_Text_28
 	msgbox BeachboundRoute_EventScript_Mugging_Text_29
@@ -260,7 +269,7 @@ BeachboundRoute_EventScript_Mugging_1:
 	msgbox BeachboundRoute_EventScript_Mugging_Text_30
 	closemessage
 	addvar VAR_PLAYER_REPUTATION, 1
-	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_11
+	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_12
 	waitmovement 17
 	waitmovement 0
 	return
@@ -274,6 +283,7 @@ BeachboundRoute_EventScript_Mugging_2:
 	closemessage
 	applymovement 21, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_0
 	speakername BeachboundRoute_EventScript_Mugging_Text_0
 	msgbox BeachboundRoute_EventScript_Mugging_Text_2
 	closemessage
@@ -370,6 +380,14 @@ BeachboundRoute_EventScript_SeeDecay::
 	return
 
 
+BeachboundRoute_EventScript_RunningBoy_Movement_0:
+	emote_happy
+	step_end
+
+BeachboundRoute_EventScript_RunningGirl_Movement_0:
+	emote_sad
+	step_end
+
 BeachboundRoute_EventScript_WhereAreYouGoing_Movement_0:
 	walk_left
 	step_end
@@ -383,55 +401,39 @@ BeachboundRoute_EventScript_WhereAreYouGoing_Movement_2:
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_0:
+	emote_angry
+	step_end
+
+BeachboundRoute_EventScript_Mugging_Movement_1:
 	walk_right
 	face_left
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_1:
+BeachboundRoute_EventScript_Mugging_Movement_2:
 	walk_down
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_2:
+BeachboundRoute_EventScript_Mugging_Movement_3:
 	walk_in_place_fast_down
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_3:
+BeachboundRoute_EventScript_Mugging_Movement_4:
 	face_up
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_4:
+BeachboundRoute_EventScript_Mugging_Movement_5:
 	walk_up
 	face_down
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_5:
+BeachboundRoute_EventScript_Mugging_Movement_6:
 	face_down
 	zubats_align
 	delay_16
 	delay_16
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_6:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
 BeachboundRoute_EventScript_Mugging_Movement_7:
-	walk_right
-	walk_right
-	walk_down
 	walk_down
 	walk_down
 	walk_down
@@ -449,6 +451,7 @@ BeachboundRoute_EventScript_Mugging_Movement_7:
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_8:
+	walk_right
 	walk_right
 	walk_down
 	walk_down
@@ -468,6 +471,7 @@ BeachboundRoute_EventScript_Mugging_Movement_8:
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_9:
+	walk_right
 	walk_down
 	walk_down
 	walk_down
@@ -488,9 +492,27 @@ BeachboundRoute_EventScript_Mugging_Movement_9:
 BeachboundRoute_EventScript_Mugging_Movement_10:
 	walk_down
 	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_11:
+	walk_down
+	walk_down
+	step_end
+
+BeachboundRoute_EventScript_Mugging_Movement_12:
 	walk_left
 	walk_down
 	walk_down
@@ -622,7 +644,7 @@ BeachboundRoute_EventScript_Mugging_Text_0:
 	.string "Shady Man$"
 
 BeachboundRoute_EventScript_Mugging_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Stop yappin', lady! Just give us yer\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Quit yappin', lady! Just give us yer\n"
 	.string "Pokémon already!$"
 
 BeachboundRoute_EventScript_Mugging_Text_2:

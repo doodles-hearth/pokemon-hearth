@@ -490,6 +490,7 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 
 script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	lock
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	speakername("Man")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Mumble mumble… Should restock on ointment… Damn, where did I put my purse?…"
@@ -525,6 +526,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	))
 	closemessage
 
+	applymovement(LOCALID_TRANQUIL_RT_KECLEON, moves(emote_music))
 	playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
 	waitmoncry
 
@@ -549,6 +551,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 script TranquilRoute_EventScript_WaitingForChatot {
 	lock
 	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	speakername("Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Sigh… Maybe if I hang around the Chatot Post, my boyfriend's message will arrive sooner…"

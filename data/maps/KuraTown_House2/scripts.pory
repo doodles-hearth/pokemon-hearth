@@ -23,6 +23,7 @@ script KuraTown_House2_EventScript_Ashii {
 }
 
 script(local) AshiiScript1 {
+	applymovement(LOCALID_ASHII, moves(emote_pensive))
 	speakername("Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Sigh… Oh, Tama…\nWhy must life be so complicated?"
@@ -38,6 +39,7 @@ script(local) AshiiScript1 {
 	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
 	waitmovement(0)
 
+	applymovement(LOCALID_ASHII, moves(emote_upset))
 	speakername("Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Hey, what are you doing in my house?\nWere you eavesdropping?\p"
@@ -106,8 +108,8 @@ script(local) AshiiScript3 {
 
 	speakername("Ashii")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm sorry. You've been an incredible help, and I don't even know your name!\NMay i ask what it is?\p"
-		"{PLAYER}… I see…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm sorry. You've been an incredible help, and I don't even know your name!\p"
+		"… … …{PLAYER}. I see…\p"
 		"{PLAYER}, I know this is a big thing to ask, but…\p"
 		"I want to be sure that my meeting with Tama is safe.\NWho knows? It might be our last.\p"
 		"Could you please accompany me?"
@@ -148,6 +150,7 @@ script(local) AshiiScript3 {
 
 	gettimeofday
 	if(var(VAR_0x8000) == TIME_DEAD_NIGHT) {
+		applymovement(LOCALID_ASHII, moves(emote_heart))
 		speakername("Ashii")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
@@ -160,6 +163,7 @@ script(local) AshiiScript3 {
 
 		setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3)
 	} else {
+		applymovement(LOCALID_ASHII, moves(emote_heart))
 		speakername("Ashii")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
@@ -186,6 +190,7 @@ script(local) AshiiScript3 {
 
 script(local) AshiiScript_Reward {
 	faceplayer
+	applymovement(LOCALID_ASHII, moves(emote_happy))
 	speakername("Ashii")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}{PLAYER}! It's you!\nI can't thank you enough for the night you've given us.\p"
@@ -194,6 +199,7 @@ script(local) AshiiScript_Reward {
 	))
 	closemessage
 
+	// TODO EVA change reward!
 	giveitem(ITEM_DESTINY_KNOT, 1)
 
 	completequest(QUEST_SAKURALOVERS)

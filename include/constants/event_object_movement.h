@@ -277,6 +277,7 @@
 #define MOVEMENT_ACTION_EMOTE_ANGRY                     0xB8
 #define MOVEMENT_ACTION_EMOTE_PENSIVE                   0xB9
 #define MOVEMENT_ACTION_EMOTE_POISONED                  0xBA
+#define MOVEMENT_ACTION_EMOTE_HAPPY                     0xBB
 
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF
