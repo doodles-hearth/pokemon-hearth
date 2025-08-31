@@ -89,6 +89,8 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_PoisonedIcon          	@ FLDEFF_POISONED_ICON
 	.4byte gFieldEffectScript_HappyIcon					@ FLDEFF_HAPPY_ICON
 	.4byte gFieldEffectScript_TrainerExclamation       	@ FLDEFF_TRAINER_EXCLAMATION
+	.4byte gFldEffScript_CryingIcon       				@ FLDEFF_CRYING_ICON
+	.4byte gFldEffScript_SweatIcon   					@ FLDEFF_SWEAT_ICON
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -399,6 +401,14 @@ gFldEffScript_UseVsSeeker::
 
 gFldEffScript_XIcon::
 	field_eff_callnative FldEff_XIcon
+	field_eff_end
+
+gFldEffScript_CryingIcon::
+	field_eff_callnative FldEff_CryingIcon
+	field_eff_end
+
+gFldEffScript_SweatIcon::
+	field_eff_callnative FldEff_SweatIcon
 	field_eff_end
 
 gFldEffScript_DoubleExclMarkIcon::
