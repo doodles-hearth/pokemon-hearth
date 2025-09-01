@@ -13,7 +13,7 @@ script WindsweptRoute_EventScript_OvergrownTrees {
 	faceplayer
 	if (flag(FLAG_CUT_TREE_SILVER_TUNNEL)) {
 		msgbox(format(
-			"Thank you for cutting down that annoying tree! We can go to Silveridge again!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Thank you for cutting down that annoying tree! We can go to Silveridge again!"
 		))
 	} else {
 		msgbox(format(
@@ -27,22 +27,25 @@ script WindsweptRoute_EventScript_OvergrownTrees {
 script WindsweptRoute_EventScript_Trainer1 {
 	trainerbattle_single(
 		TRAINER_MUSASHI_1,
-		format("These winds blow as strong as my will to win!"),
+		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}These winds blow as strong as my will to win!"),
 		format("You blew us away!")
 	)
 	speakername("Musashi")
-	msgbox(format("I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WindsweptRoute_EventScript_Itamae {
 	trainerbattle_single(
 		TRAINER_ITAMAE,
-		format("I'm scouring this salty grass for the tastiest ingredients!"),
+		format("{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}I'm scouring this salty grass for the tastiest ingredients!"),
 		format("Bitter is the taste of defeat…")
 	)
 	speakername("Itamae")
-	msgbox(format("This place is an inspiration for my innovative cuisine.\pThe rocks are salty, the plants are salty… To an extent, even the air is salty."), MSGBOX_AUTOCLOSE)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}This place is an inspiration for my innovative cuisine.\p"
+		"The rocks are salty, the plants are salty… To an extent, even the air is salty."
+	), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -120,9 +123,9 @@ script WindsweptRoute_EventScript_TrainerBattleRoadblock {
 	applymovement(LOCALID_ROADBLOCK_NINJA_BOY, moves(walk_in_place_fast_left))
 	waitmovement(0)
 
-	speakername("Ninja boy")
+	speakername("Ninja Boy")
 	msgbox(format(
-		"You shall know defeat at the hand of my ninja Pokémon!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}You shall know defeat at the hand of my ninja Pokémon!\p"
 		"Nuzleaf, use Feint Attack!"
 	))
 	closemessage
@@ -137,9 +140,9 @@ script WindsweptRoute_EventScript_TrainerBattleRoadblock {
 	applymovement(LOCALID_ROADBLOCK_SCHOOLKID, moves(walk_in_place_fast_right))
 	waitmovement(0)
 
-	speakername("School kid")
+	speakername("School Kid")
 	msgbox(format(
-		"Your pathetic ninja costume can't beat the sheer power of knowledge!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Your pathetic ninja costume can't beat the sheer power of knowledge!\p"
 		"Breloom! Headbutt!"
 	))
 	closemessage

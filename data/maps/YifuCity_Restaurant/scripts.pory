@@ -1,12 +1,27 @@
-mapscripts YifuCity_Restaurant_MapScripts {
+const FLAG_HIDE_HOTPOT_SCENE_PEOPLE = FLAG_TEMP_1
+const FLAG_HIDE_HOTPOT_SCENE_MONS = FLAG_TEMP_2
 
+mapscripts YifuCity_Restaurant_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		getspeciesgfx(VAR_STARTER_MON, VAR_OBJ_GFX_ID_0)
+		getnatsukistartermongfx(VAR_OBJ_GFX_ID_1, 2)
+		if (var(VAR_HOTPOT_SCENE_STATE) == 2) {
+		} else {
+			setflag(FLAG_HIDE_HOTPOT_SCENE_PEOPLE)
+			setflag(FLAG_HIDE_HOTPOT_SCENE_MONS)
+		}
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_HOTPOT_SCENE_STATE, 2: HotpotWithFriends
+    ]
 }
 
 script YifuCity_Restaurant_EventScript_UninspiredChef {
 	lock
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	speakername("Cook")
 	msgbox(format(
-		"Hmm… No, that's not it…"
+		"{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}Hmm… No, that's not it…"
 	))
 	closemessage
 
@@ -15,11 +30,14 @@ script YifuCity_Restaurant_EventScript_UninspiredChef {
 	faceplayer
 	speakername("Cook")
 	msgbox(format(
-		"You don't happen to be a culinary connoisseur, do you?\p"
+		"{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}You don't happen to be a culinary connoisseur, do you?\p"
 		"What kids nowadays refer to as a “foodie”?\p"
-		"You see, cooking used to be my passion. But lately I've been feeling… uninspired!\p"
-		"It's a tragedy! I desperately seek fresh, bold new recipes!\p"
-		"Say, if you come across interesting recipes during your travels… Would you mind coming back here and tell me about them?\p"
+		"You see, cooking was my passion. But lately I've been… uninspired!"
+	))
+	applymovement(VAR_LAST_TALKED, moves(emote_sad))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}It's a tragedy! I desperately seek fresh, bold new recipes!\p"
+		"If you come across interesting recipes during your travels… Come back here and tell me about them!\p"
 		"I'll make it worth your while!"
 	))
 	closemessage
@@ -37,9 +55,411 @@ script YifuCity_Restaurant_EventScript_UninspiredChef {
 
 script YifuCity_Restaurant_EventScript_RunningChef {
 	lock
-	speakername("Cook")
 	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
+	speakername("Cook")
 	msgbox(format(
-		"Huff… Huff…\nI wish my colleague would stop whining and get back to helping me…"
+		"{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}Huff… Huff…\nI wish my colleague would stop whining and get back to helping me…"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_Restaurant_EventScript_LonelyGirl {
+	lock
+	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
+	speakername("Girl")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}I'm waiting for my date, but it seems he's late yet again…"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_Restaurant_EventScript_OldWomen {
+	lock
+
+	applymovement(LOCALID_HOTPOT_OLD_WOMAN_1, moves(walk_in_place_fast_right))
+	waitmovement(0)
+
+	speakername("Old Woman")
+	msgbox(format(
+		// TODO EVA useful gossip
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Psst psst mumble gossip…"
+	))
+	closemessage
+
+	applymovement(LOCALID_HOTPOT_OLD_WOMAN_2, moves(walk_in_place_fast_left))
+	waitmovement(0)
+
+	speakername("Old Woman")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Gossip gossip…\nHo ho ho…"
+	))
+	closemessage
+
+	release
+}
+
+script YifuCity_Restaurant_EventScript_FatGuy {
+	lock
+	faceplayer
+	speakername("Guy")
+	gettimeofday
+	if (var(VAR_0x8000) == TIME_LUNCHTIME) {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}Chomp…\nJust gett'n a head start on lunch…\p"
+			"{FONT_SMALL}Burp…{FONT_NORMAL} Ahem.\nIf you'll excuse me."
+		))
+	} else {
+		applymovement(VAR_LAST_TALKED, moves(emote_sad))
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}UHHHHG I ate too much…"
+		))
+	}
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(VAR_LAST_TALKED)
+	closemessage
+	release
+}
+
+script YifuCity_Restaurant_EventScript_Munchlax {
+	lock
+    faceplayer
+	setseenmon(SPECIES_MUNCHLAX)
+    setspeakertomonname(SPECIES_MUNCHLAX)
+    playmoncry(SPECIES_MUNCHLAX, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Chomp… Gulp!"
+    ))
+    waitmoncry
+	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+	waitmovement(VAR_LAST_TALKED)
+    release
+}
+
+script(local) HotpotWithFriends {
+	lockall
+
+	call(Hotpot_OrderedEverythingOnMenu)
+
+	fadescreen(FADE_TO_BLACK)
+
+	turnobject(LOCALID_HOTPOT_HARIKO, DIR_SOUTH)
+
+	playse(SE_M_ACID_ARMOR)
+	message(format(
+		"The broth bubbles gently."
+	))
+	waitse
+	waitmessage
+	closemessage
+
+	fadescreen(FADE_FROM_BLACK)
+
+	call(Hotpot_Slowpoke)
+
+	fadescreen(FADE_TO_BLACK)
+
+	playse(SE_M_ACID_ARMOR)
+	message(format(
+		"Fragrant Berry leaves arise to the surface."
+	))
+	waitse
+	waitmessage
+	closemessage
+
+	fadescreen(FADE_FROM_BLACK)
+
+	call(Hotpot_Decay)
+
+	fadescreen(FADE_TO_BLACK)
+
+	removeobject(LOCALID_HOTPOT_PLAYERS_MON)
+	removeobject(LOCALID_HOTPOT_NATSUKIS_MON)
+	removeobject(LOCALID_HOTPOT_SLOWPOKE)
+
+	setobjectxyperm(OBJ_EVENT_ID_PLAYER, 7, 9)
+	setobjectxyperm(LOCALID_HOTPOT_NATSUKI, 6, 10)
+	setobjectxyperm(LOCALID_HOTPOT_HARIKO, 8, 10)
+
+	playse(SE_M_ACID_ARMOR)
+	message(format(
+		"You finally see the bottom of the pan."
+	))
+	waitse
+	waitmessage
+	closemessage
+
+	fadescreen(FADE_FROM_BLACK)
+
+	call(Hotpot_End)
+	
+	setvar(VAR_HOTPOT_SCENE_STATE, 3)
+	warpsilent(MAP_YIFU_CITY, 13)
+	
+	releaseall
+}
+
+script(local) Hotpot_OrderedEverythingOnMenu {
+	delay(24)
+
+	applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_down, walk_left))
+	waitmovement(LOCALID_HOTPOT_HARIKO)
+
+	speakername("Hariko")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I was not sure what you two usually eat, so I ordered everything."
+	))
+
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+	speakername("Natsuki")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Everything? As in, every item on the menu?"
+	))
+
+	applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left))
+	speakername("Hariko")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Ah, yes. You did say you were going to have “some of everything”, correct?"
+	))
+
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(jump_in_place_right, emote_sweat))
+	playse(SE_LEDGE)
+	speakername("Natsuki")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}That- That's not a thing normal people do, Hariko!"
+	))
+
+	applymovement(LOCALID_HOTPOT_HARIKO, moves(face_right, emote_pensive, delay_16 * 6, face_left))
+	speakername("Hariko")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}You know, other people often tell me that."
+	))
+
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+	speakername("Natsuki")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Well gee, I sure wonder why…"
+	))
+	closemessage
+}
+
+script(local) Hotpot_Slowpoke {
+	delay(24)
+
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+	speakername("Natsuki")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Chomp, chomp…\nWhat does a Slowpoke even eat?"
+	))
+
+	applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left))
+	speakername("Hariko")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Mainly shellfish, but did you know they aren't very good hunters?\p"
+		"Luckily for them, they have a very slow metabolism."
+	))
+	closemessage
+
+	playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
+	applymovement(LOCALID_HOTPOT_SLOWPOKE, moves(jump_in_place_left))
+	applymovement(LOCALID_HOTPOT_HARIKO, moves(face_down))
+	waitmovement(LOCALID_HOTPOT_SLOWPOKE)
+	waitmoncry
+
+	playse(SE_PIN)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_pensive, delay_16 * 6))
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+
+	setnamedmon(SPECIES_SLOWPOKE)
+	setseenmon(SPECIES_SLOWPOKE)
+	setdescribedmon(SPECIES_SLOWPOKE)
+
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_up))
+	speakername("Natsuki")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Whatcha doing, {PLAYER}?"
+	))
+
+	mcdialogue(
+		"Filling my PokéDex!",
+		"Writing about Slowpoke!"		
+	)
+
+	playse(SE_PIN)
+	applymovement(LOCALID_HOTPOT_HARIKO, moves(face_left, emote_question_mark, delay_16 * 6))
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(face_right))
+	waitmovement(LOCALID_HOTPOT_HARIKO)
+	speakername("Hariko")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}A PokéDex?"
+	))
+	playse(SE_LEDGE)
+	applymovement(LOCALID_HOTPOT_HARIKO, moves(jump_in_place_left))
+	msgbox(format(
+		"You two are writing a Pokémon encyclopedia?!"
+	))
+
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(emote_happy))
+	speakername("Natsuki")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Yeah, here, have a look at mine!"
+	))
+	closemessage
+
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(lock_facing_direction, lock_anim, walk_fast_right, walk_fast_left, unlock_facing_direction, unlock_anim))
+	waitmovement(LOCALID_HOTPOT_NATSUKI)
+
+	applymovement(LOCALID_HOTPOT_HARIKO, moves(delay_16 * 2, walk_in_place_fast_down))
+	speakername("Hariko")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}That's… That's amazing!\nSo many useful notes…\p"
+		"Wow, you draw really well, Natsuki…"
+	))
+	closemessage
+}
+
+script(local) Hotpot_Decay {
+	delay(24)
+
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+	speakername("Natsuki")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}I heard rumors the Decay' spreading again in Uume Forest, west of here."
+	))
+
+	applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left, emote_pensive))
+	speakername("Hariko")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I wonder what it is.\nIt feels unnatural…"
+	))
+
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+	speakername("Natsuki")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}You mean… Someone could be behind this mess?\p"
+		"Who'd do something like this?"
+	))
+
+	mcdialogue(
+		"The Crobat Shadows?",
+		"The New Moon Order?",
+		"Entei?"
+	)
+	closemessage
+
+	switch(var(VAR_RESULT)) {
+		case 0:
+			applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+			speakername("Natsuki")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}That bunch is definitely up to no good…\p"
+				"They strike me as dumb more than evil, but we ought to keep an eye on them!"
+			))
+
+			applymovement(LOCALID_HOTPOT_HARIKO, moves(face_down, emote_pensive))
+			speakername("Hariko")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…"
+			))
+
+			applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+			speakername("Natsuki")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}You okay there, Hariko?\nWhy the long face?"
+			))
+
+			applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left))
+			speakername("Hariko")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just- I hope Entei is alright…"
+			))
+
+			applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+			speakername("Natsuki")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What do you mean?"
+			))
+
+			applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left))
+			speakername("Hariko")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Well, Mt Kazan has been grumbling, after all.\p"
+				"Let us hope it doesn't erupt like in the old legend…"
+			))
+
+		case 1:
+			applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+			speakername("Natsuki")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What are you on about, {PLAYER}?\p"
+				"You know I wanna become a Samurai someday!\NThey've been protecting us forever!"
+			))
+
+			applymovement(LOCALID_HOTPOT_HARIKO, moves(face_down, emote_pensive))
+			speakername("Hariko")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…"
+			))
+
+			applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+			speakername("Natsuki")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}You okay there, Hariko?\nWhy the long face?"
+			))
+
+			applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left))
+			speakername("Hariko")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just- I hope Entei is alright…"
+			))
+
+			applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+			speakername("Natsuki")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What do you mean?"
+			))
+
+			applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left))
+			speakername("Hariko")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Well, Mt Kazan has been grumbling, after all.\p"
+				"Let us hope it doesn't erupt like in the old legend…"
+			))
+
+		case 2:
+			applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+			speakername("Natsuki")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}But… Entei is the spirit of the island!\p"
+				"Why would he do something like this?"
+			))
+
+			applymovement(LOCALID_HOTPOT_HARIKO, moves(emote_pensive))
+			speakername("Hariko")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Maybe Entei is mad, or hurt…\pMt Kazan has been grumbling, after all.\p"
+				"Let us hope it doesn't erupt like in the old legend..."
+			))
+	}
+	closemessage
+}
+
+script(local) Hotpot_End {
+	delay(24)
+
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right, emote_sweat))
+	speakername("Natsuki")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Man, I think I ate too much…"
+	))
+
+	applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left))
+	speakername("Hariko")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}This was very fun.\nI am glad to have you two as friends."
 	))
 }

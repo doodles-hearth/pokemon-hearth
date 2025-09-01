@@ -45,6 +45,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
 	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1
 	waitse
+	createfieldmugshot MUGSHOT_KABA, EMOTE_NORMAL
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
 	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2
 	closemessage
@@ -107,36 +108,35 @@ SunriseVillage_EldersHouse_Event_Elder::
 	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
 	goto_if_ge SunriseVillage_EldersHouse_Event_Elder_2
-	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_2
+	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_6
 SunriseVillage_EldersHouse_Event_Elder_1:
-	mcdialogue SunriseVillage_EldersHouse_Event_Elder_Text_3, SunriseVillage_EldersHouse_Event_Elder_Text_4
-	closemessage
-	switch VAR_RESULT
-	case 0, SunriseVillage_EldersHouse_Event_Elder_7
-	case 1, SunriseVillage_EldersHouse_Event_Elder_8
-SunriseVillage_EldersHouse_Event_Elder_5:
 	release
 	return
 
 SunriseVillage_EldersHouse_Event_Elder_2:
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 5
-	goto_if_lt SunriseVillage_EldersHouse_Event_Elder_9
+	goto_if_lt SunriseVillage_EldersHouse_Event_Elder_5
 	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_1
+	mcdialogue SunriseVillage_EldersHouse_Event_Elder_Text_2, SunriseVillage_EldersHouse_Event_Elder_Text_3
+	closemessage
+	switch VAR_RESULT
+	case 0, SunriseVillage_EldersHouse_Event_Elder_9
+	case 1, SunriseVillage_EldersHouse_Event_Elder_10
 	goto SunriseVillage_EldersHouse_Event_Elder_1
 
-SunriseVillage_EldersHouse_Event_Elder_7:
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
-	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_5
-	call ProfBirch_EventScript_RatePokedex
-	goto SunriseVillage_EldersHouse_Event_Elder_5
-
-SunriseVillage_EldersHouse_Event_Elder_8:
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
-	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_6
-	goto SunriseVillage_EldersHouse_Event_Elder_5
+SunriseVillage_EldersHouse_Event_Elder_5:
+	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_0
+	goto SunriseVillage_EldersHouse_Event_Elder_1
 
 SunriseVillage_EldersHouse_Event_Elder_9:
-	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_0
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_4
+	call ProfBirch_EventScript_RatePokedex
+	goto SunriseVillage_EldersHouse_Event_Elder_1
+
+SunriseVillage_EldersHouse_Event_Elder_10:
+	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_5
 	goto SunriseVillage_EldersHouse_Event_Elder_1
 
 
@@ -734,10 +734,10 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0:
 	.string "Elder Kaba$"
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1:
-	.string "PAH!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}PAH!$"
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
-	.string "{PLAYER}, Natsuki.\nYou are late. Why am I surprised?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}{PLAYER}, Natsuki.\nYou are late. Why am I surprised?\p"
 	.string "I always have to run after you two!\nNow stay still for a minute and\llisten closely!\p"
 	.string "As you have heard, the woods, and even\nthe roads, are no longer safe.\p"
 	.string "We don't yet know why, but the wild\nPokémon that usually hide in the\ltall grass and live peacefully\lalongside men have started behaving\laggressively.\p"
@@ -745,7 +745,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
 	.string "This is all very worrying…$"
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3:
-	.string "WHICH IS WHY!{PAUSE 15}\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}WHICH IS WHY!{PAUSE 15}\p"
 	.string "The Toku council has decided that,\n"
 	.string "for the time being, the best way to\l"
 	.string "handle this is to use the Pokémon\l"
@@ -763,44 +763,44 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4:
 	.string "Natsuki$"
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5:
-	.string "Woah! Cool.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah! Cool.$"
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_6:
-	.string "{PLAYER}, choose yours first!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}, choose yours first!\n"
 	.string "I don't mind being second pick.$"
 
 SunriseVillage_EldersHouse_Event_Elder_Text_0:
-	.string "Don't dilly-dally on the way! And keep\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Don't dilly-dally on the way! And keep\n"
 	.string "an eye on your little friend Natsuki,\l"
 	.string "make sure he doesn't get into\l"
 	.string "trouble!$"
 
 SunriseVillage_EldersHouse_Event_Elder_Text_1:
-	.string "Oh! You delivered my letter. Good.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Oh! You delivered my letter. Good.\p"
 	.string "You've been appointed to investigate\n"
 	.string "Decaying areas? Well then, what are\l"
 	.string "you still doing here? Off you go!$"
 
 SunriseVillage_EldersHouse_Event_Elder_Text_2:
-	.string "Choose your new partner wisely.\n"
-	.string "No takebacks.$"
-
-SunriseVillage_EldersHouse_Event_Elder_Text_3:
 	.string "Evaluate my PokéDex!$"
 
-SunriseVillage_EldersHouse_Event_Elder_Text_4:
+SunriseVillage_EldersHouse_Event_Elder_Text_3:
 	.string "See you!$"
 
-SunriseVillage_EldersHouse_Event_Elder_Text_5:
-	.string "Well, what are you waiting for? Hand it\n"
+SunriseVillage_EldersHouse_Event_Elder_Text_4:
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Well, what are you waiting for? Hand it\n"
 	.string "over!$"
 
-SunriseVillage_EldersHouse_Event_Elder_Text_6:
-	.string "Alright, alright.\n"
+SunriseVillage_EldersHouse_Event_Elder_Text_5:
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Alright, alright.\n"
 	.string "{FONT_SMALL}Damned children wasting my time.{FONT_NORMAL}$"
 
+SunriseVillage_EldersHouse_Event_Elder_Text_6:
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Choose your new partner wisely.\n"
+	.string "No takebacks.$"
+
 SunriseVillage_EldersHouse_EventScript_TryToLeave_Text_0:
-	.string "Where do you think you're going?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Where do you think you're going?$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_0:
 	.string "You already got a Pokémon.\n"
@@ -819,17 +819,17 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_3:
 	.string "tender heart of the hearth?$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_4:
-	.string "Take the time you need.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Take the time you need.$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_5:
 	.string "{PLAYER} received the Pokémon\n"
 	.string "{STR_VAR_1}!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6:
-	.string "Alright. I'm taking this one!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Alright. I'm taking this one!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7:
-	.string "Now that you have your own Pokémon,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Now that you have your own Pokémon,\n"
 	.string "you two are officially\l"
 	.string "Pokémon Wielders!\p"
 	.string "The more Wielders there are,\n"
@@ -845,10 +845,10 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_8:
 	.string "{PLAYER} received the PokéDex!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9:
-	.string "What's this? A book?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What's this? A book?$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10:
-	.string "I call this the “PokéDex”.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}I call this the “PokéDex”.\n"
 	.string "It is an encyclopedia containing\l"
 	.string "vital information about Pokémon\l"
 	.string "from the whole region!\p"
@@ -869,11 +869,11 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10:
 	.string "the way.$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11:
-	.string "Understood, Grandma Kaba.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Understood, Grandma Kaba.\n"
 	.string "We're going adventuring!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_12:
-	.string "{PLAYER}… Are you ready?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}… Are you ready?$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13:
 	.string "Totally!$"
@@ -885,23 +885,23 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15:
 	.string "That's what I'm talking about!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_16:
-	.string "Don't listen to him! He's so ready!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't listen to him! He's so ready!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_17:
-	.string "Don't listen to her! She's so ready!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't listen to her! She's so ready!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18:
-	.string "{PLAYER}!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}!\n"
 	.string "Let's see what our brand new Pokémon\l"
 	.string "are capable of!\p"
 	.string "I request an official Pokémon\n"
 	.string "Wielder battle!$"
 
 SunriseVillage_EldersHouse_EventScript_Natsuki_Text_0:
-	.string "Hm, which one will I choose?…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hm, which one will I choose?…$"
 
 SunriseVillage_EldersHouse_EventScript_PostBattle_Text_0:
-	.string "Oh, man!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh, man!\n"
 	.string "That was the most fun I've ever had!\p"
 	.string "{PLAYER}!\n"
 	.string "We're now officially rivals!\p"
@@ -911,7 +911,7 @@ SunriseVillage_EldersHouse_EventScript_PostBattle_Text_0:
 	.string "See ya later, Feraligatr.$"
 
 SunriseVillage_EldersHouse_EventScript_PostBattle_Text_1:
-	.string "Oh, man!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh, man!\n"
 	.string "That was the most fun I've ever had!\p"
 	.string "{PLAYER}!\n"
 	.string "We're now officially rivals!\p"

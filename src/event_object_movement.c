@@ -513,58 +513,23 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_LeppaBerryTree,        OBJ_EVENT_PAL_TAG_BERRY_TREE_LEPPA},
     {gObjectEventPal_HearthOwFoliage,       OBJ_EVENT_PAL_TAG_OW_FOLIAGE},
     {gObjectEventPal_HearthOwItem,          OBJ_EVENT_PAL_TAG_OW_ITEM},
-    {gObjectEventPal_AromaLady,             OBJ_EVENT_PAL_TAG_AROMA_LADY},
-    {gObjectEventPal_Shamisen_Blue,         OBJ_EVENT_PAL_TAG_SHAMISEN_BLUE},
-    {gObjectEventPal_Shamisen_Green,        OBJ_EVENT_PAL_TAG_SHAMISEN_GREEN},
-    {gObjectEventPal_Shamisen_Red,          OBJ_EVENT_PAL_TAG_SHAMISEN_RED},
-    {gObjectEventPal_Lass,                  OBJ_EVENT_PAL_TAG_LASS},
-    {gObjectEventPal_GemManiac,             OBJ_EVENT_PAL_TAG_GEM_MANIAC},
-    {gObjectEventPal_Miner,                 OBJ_EVENT_PAL_TAG_MINER},
-    {gObjectEventPal_KimonoGirl,            OBJ_EVENT_PAL_TAG_KIMONO_GIRL},
-    {gObjectEventPal_Monk,                  OBJ_EVENT_PAL_TAG_MONK},
-    {gObjectEventPal_Beauty,                OBJ_EVENT_PAL_TAG_BEAUTY},
-    {gObjectEventPal_MasquerainWoman,       OBJ_EVENT_PAL_TAG_MASQUERAIN_WOMAN},
-    {gObjectEventPal_BlackBelt,             OBJ_EVENT_PAL_TAG_BLACK_BELT},
-    {gObjectEventPal_Bean,                  OBJ_EVENT_PAL_TAG_BEAN},
-    {gObjectEventPal_Natsuki,               OBJ_EVENT_PAL_TAG_NATSUKI},
+    {gObjectEventPal_Npc_Purplish,          OBJ_EVENT_PAL_TAG_PURPLISH},
+    {gObjectEventPal_Npc_Woody,             OBJ_EVENT_PAL_TAG_WOODY},
+    {gObjectEventPal_Npc_Greenish,          OBJ_EVENT_PAL_TAG_GREENISH},
+    {gObjectEventPal_Npc_Sunrise,           OBJ_EVENT_PAL_TAG_SUNRISE},
+    {gObjectEventPal_Npc_Seaside,           OBJ_EVENT_PAL_TAG_SEASIDE},
+    {gObjectEventPal_Npc_Uume,              OBJ_EVENT_PAL_TAG_UUME},
+    {gObjectEventPal_Npc_Cold,              OBJ_EVENT_PAL_TAG_COLD},
+    {gObjectEventPal_Npc_Hot,               OBJ_EVENT_PAL_TAG_HOT},
+    {gObjectEventPal_Npc_Sakura,            OBJ_EVENT_PAL_TAG_SAKURA},
+    {gObjectEventPal_Npc_Mountain,          OBJ_EVENT_PAL_TAG_MOUNTAIN},
     {gObjectEventPal_CrobatShadowsGolbat,   OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS},
     {gObjectEventPal_CrobatShadowsCrobat,   OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS_BOSS},
     {gObjectEventPal_Samurai,               OBJ_EVENT_PAL_TAG_SAMURAI},
-    {gObjectEventPal_OldMan,                OBJ_EVENT_PAL_TAG_OLD_MAN},
-    {gObjectEventPal_Medium,                OBJ_EVENT_PAL_TAG_MEDIUM},
-    {gObjectEventPal_Cook,                  OBJ_EVENT_PAL_TAG_COOK},
-    {gObjectEventPal_Nurse,                 OBJ_EVENT_PAL_TAG_NURSE},
-    {gObjectEventPal_Traveler,              OBJ_EVENT_PAL_TAG_TRAVELER},
-    {gObjectEventPal_Fisherman,             OBJ_EVENT_PAL_TAG_FISHERMAN},
-    {gObjectEventPal_FatMan,                OBJ_EVENT_PAL_TAG_NPC_PINK_GREEN},
-    {gObjectEventPal_Artist,                OBJ_EVENT_PAL_TAG_ARTIST},
-    {gObjectEventPal_NinjaBoy,              OBJ_EVENT_PAL_TAG_NINJA_BOY},
-    {gObjectEventPal_Twins,                 OBJ_EVENT_PAL_TAG_TWINS},
-    {gObjectEventPal_Npc_ElectricBlueOrange, OBJ_EVENT_PAL_TAG_NPC_PURPLE_ORANGE},
-    {gObjectEventPal_Npc_PinkGreen,         OBJ_EVENT_PAL_TAG_NPC_PINK_GREEN},
-    {gObjectEventPal_Gardener,              OBJ_EVENT_PAL_TAG_GARDENER},
-    {gObjectEventPal_Farmer,                OBJ_EVENT_PAL_TAG_FARMER},
-    {gObjectEventPal_Firebringer,           OBJ_EVENT_PAL_TAG_FIREBRINGER},
-    {gObjectEventPal_Youngster,             OBJ_EVENT_PAL_TAG_YOUNGSTER},
-    {gObjectEventPal_HexManiac,             OBJ_EVENT_PAL_TAG_HEX_MANIAC},
-    {gObjectEventPal_IncenseSeller,         OBJ_EVENT_PAL_TAG_INCENSE_SELLER},
-    {gObjectEventPal_PokemonBreederM,       OBJ_EVENT_PAL_TAG_BREEDER_M},
-    {gObjectEventPal_PokemonBreederF,       OBJ_EVENT_PAL_TAG_BREEDER_F},
-    {gObjectEventPal_SchoolKidGreen,        OBJ_EVENT_PAL_TAG_SCHOOL_KID_GREEN},
-    {gObjectEventPal_SchoolKidOrange,       OBJ_EVENT_PAL_TAG_SCHOOL_KID_ORANGE},
     {gObjectEventPal_TravelingMerchant,     OBJ_EVENT_PAL_TAG_TRAVELING_MERCHANT},
-    {gObjectEventPal_OnsenF,                OBJ_EVENT_PAL_TAG_ONSEN},
-    {gObjectEventPal_BugCatcher,            OBJ_EVENT_PAL_TAG_BUG_CATCHER},
-    {gObjectEventPal_Boy1,                  OBJ_EVENT_PAL_TAG_BOY_1},
-    {gObjectEventPal_Boy2,                  OBJ_EVENT_PAL_TAG_BOY_2},
-    {gObjectEventPal_Boy3,                  OBJ_EVENT_PAL_TAG_BOY_3},
-    {gObjectEventPal_MartEmployee,          OBJ_EVENT_PAL_TAG_MART_EMPLOYEE},
-    {gObjectEventPal_Valet,                 OBJ_EVENT_PAL_TAG_VALET},
-    {gObjectEventPal_BattleGirl,            OBJ_EVENT_PAL_TAG_BATTLE_GIRL},
     {gObjectEventPal_Hana,                  OBJ_EVENT_PAL_TAG_HANA},
     {gObjectEventPal_Koishi,                OBJ_EVENT_PAL_TAG_KOISHI},
     {gObjectEventPal_Yutaka,                OBJ_EVENT_PAL_TAG_YUTAKA},
-    {gObjectEventPal_Kaba,                  OBJ_EVENT_PAL_TAG_KABA},
     {gObjectEventPal_Brendan,               OBJ_EVENT_PAL_TAG_BRENDAN},
     {gObjectEventPal_BrendanReflection,     OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION},
     {gObjectEventPal_BridgeReflection,      OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION},
@@ -2548,6 +2513,8 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
         [FOLLOWER_EMOTION_CURIOUS] = 10,
         [FOLLOWER_EMOTION_MUSIC] = 15,
         [FOLLOWER_EMOTION_POISONED] = 0,
+        [FOLLOWER_EMOTION_CRYING] = 0,
+        [FOLLOWER_EMOTION_SWEAT] = 0,
     };
     u32 i, j;
     bool32 pickedCondition = FALSE;
@@ -3130,6 +3097,28 @@ void ObjectEventTurnByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup, u8 direc
 void PlayerObjectTurn(struct PlayerAvatar *playerAvatar, u8 direction)
 {
     ObjectEventTurn(&gObjectEvents[playerAvatar->objectEventId], direction);
+}
+
+bool32 IsObjectEventPaletteTagInUse(u16 paletteTag)
+{
+    u32 res = FALSE;
+    for (u32 i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        struct ObjectEvent *objectEvent = &gObjectEvents[i];
+
+        if (objectEvent->active && !objectEvent->isPlayer
+         && objectEvent->localId != OBJ_EVENT_ID_FOLLOWER && objectEvent->localId != OBJ_EVENT_ID_NPC_FOLLOWER)
+        {
+            const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+            if (graphicsInfo->paletteTag == paletteTag)
+            {
+                res = TRUE;
+                break;
+            }
+        }
+    }
+
+    return res;
 }
 
 static void SetBerryTreeGraphicsById(struct ObjectEvent *objectEvent, u8 berryId, u8 berryStage)
@@ -8795,6 +8784,86 @@ bool8 MovementAction_EmoteHeart_Step0(struct ObjectEvent *objectEvent, struct Sp
     return TRUE;
 }
 
+bool8 MovementAction_EmoteMusic_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_MUSIC_ICON);
+    sprite->sActionFuncId = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmoteSad_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_SAD_ICON);
+    sprite->sActionFuncId = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmoteUpset_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_UPSET_ICON);
+    sprite->sActionFuncId = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmoteAngry_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_ANGRY_ICON);
+    sprite->sActionFuncId = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmotePensive_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_PENSIVE_ICON);
+    sprite->sActionFuncId = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmotePoisoned_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_POISONED_ICON);
+    sprite->sActionFuncId = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmoteHappy_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_HAPPY_ICON);
+    sprite->sActionFuncId = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmoteCrying_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_CRYING_ICON);
+    sprite->sActionFuncId = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmoteSweat_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_SWEAT_ICON);
+    sprite->sActionFuncId = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmoteSleep_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_SLEEP_ICON);
+    sprite->sActionFuncId = 1;
+    return TRUE;
+}
+
 bool8 MovementAction_RevealTrainer_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     if (objectEvent->movementType == MOVEMENT_TYPE_BURIED)
@@ -11563,6 +11632,43 @@ void GetDaycareGraphics(struct ScriptContext *ctx)
         VarSet(varForm[i], 0);  //  This shouldn't be needed anymore, track down
     }
     gSpecialVar_Result = i;
+}
+
+// Get gfx of given species
+void GetSpeciesGraphics(struct ScriptContext *ctx)
+{
+    u32 species = ScriptReadHalfword(ctx);
+    u32 varGfx = ScriptReadHalfword(ctx);
+
+    Script_RequestEffects(SCREFF_V1);
+    Script_RequestWriteVar(varGfx);
+
+    DebugPrintf("Species=%d (or %d), GFX=%d", species, VarGet(species), varGfx);
+
+    VarSet(varGfx, (u16) (VarGet(species) + OBJ_EVENT_MON));
+}
+
+// Get gfx of Natsuki's starter mon
+void GetNatsukiStarter(struct ScriptContext *ctx)
+{
+    u16 varGfx = ScriptReadHalfword(ctx);
+    u32 stage = ScriptReadHalfword(ctx);
+    u32 specGfx = SPECIES_NONE;
+
+    switch(VarGet(VAR_STARTER_MON))
+    {
+        case SPECIES_SNIVY:
+            specGfx = SPECIES_CYNDAQUIL;
+            break;
+        case SPECIES_FROAKIE:
+            specGfx = SPECIES_SNIVY;
+            break;
+        case SPECIES_CYNDAQUIL:
+            specGfx = SPECIES_FROAKIE;
+            break;
+    }
+
+    VarSet(varGfx, (u16) (specGfx + (stage - 1) + OBJ_EVENT_MON));
 }
 
 // running slow

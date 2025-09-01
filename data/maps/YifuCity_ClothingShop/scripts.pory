@@ -12,7 +12,7 @@ script YifuCity_ClothingShop_EventScript_Cashier {
 	faceplayer
 	speakername("Cashier")
 	msgbox(format(
-		"Sorry, everything's sold out at the moment!\p"
+		"{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Sorry, everything's sold out at the moment!\p"
 		"We'll be restocking soon."
 	))
 	release
@@ -24,7 +24,7 @@ script YifuCity_ClothingShop_EventScript_Customer {
 	faceplayer
 	speakername("Girl")
 	msgbox(format(
-		"Ohmigosh ohmigosh ohmigosh!!\n"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Ohmigosh ohmigosh ohmigosh!!\n"
 		"Master Yutaka is here!!\p"
 		"She's sooo beautiful, and her clothes are amazing!\p"
 		"Did you know she's a designer, too? There's a whole clothing line to her name!"

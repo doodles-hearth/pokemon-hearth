@@ -15,5 +15,5 @@ YifuCity_Onsen_EventScript_Owner_Text_0:
 	.string "Owner$"
 
 YifuCity_Onsen_EventScript_Owner_Text_1:
-	.string "The hot springs are closed for the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}The hot springs are closed for the\n"
 	.string "moment.$"

@@ -31,6 +31,7 @@ GinkoWoods_EventScript_Eiji::
 GinkoWoods_EventScript_OldMan::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_OldMan_Movement_0
 	speakername GinkoWoods_EventScript_OldMan_Text_0
 	msgbox GinkoWoods_EventScript_OldMan_Text_1
 	release
@@ -39,6 +40,8 @@ GinkoWoods_EventScript_OldMan::
 
 GinkoWoods_EventScript_Bean::
 	lock
+	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_Bean_Movement_0
+	waitmovement VAR_LAST_TALKED
 	faceplayer
 	speakername GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_1
@@ -85,6 +88,7 @@ GinkoWoods_EventScript_Bean_4:
 	goto GinkoWoods_EventScript_Bean_1
 
 GinkoWoods_EventScript_Bean_5:
+	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_OldMan_Movement_0
 	msgbox GinkoWoods_EventScript_Bean_Text_11
 	goto GinkoWoods_EventScript_Bean_1
 
@@ -108,6 +112,7 @@ GinkoWoods_EventScript_Tracks::
 	delay 48
 	applymovement 7, Common_Movement_WalkInPlaceFasterRight
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
+	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_Tracks_Movement_0
 	speakername GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Tracks_Text_0
 	closemessage
@@ -131,8 +136,26 @@ GinkoWoods_EventScript_TrainerTips2::
 	return
 
 
+GinkoWoods_EventScript_OldMan_Movement_0:
+	emote_pensive
+	step_end
+
+GinkoWoods_EventScript_Bean_Movement_0:
+	emote_angry
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
+GinkoWoods_EventScript_Tracks_Movement_0:
+	emote_upset
+	step_end
+
 GinkoWoods_EventScript_Toshiki_Text_0:
-	.string "These bugs are electrifying!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}These bugs are electrifying!$"
 
 GinkoWoods_EventScript_Toshiki_Text_1:
 	.string "Ouch! How did you do that?$"
@@ -141,11 +164,11 @@ GinkoWoods_EventScript_Toshiki_Text_2:
 	.string "Toshiki$"
 
 GinkoWoods_EventScript_Toshiki_Text_3:
-	.string "Isn't Sewaddle cute, all wrapped up in\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}Isn't Sewaddle cute, all wrapped up in\n"
 	.string "its leaf?$"
 
 GinkoWoods_EventScript_Toshio_Text_0:
-	.string "Our eyes met! Therefore we must\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Our eyes met! Therefore we must\n"
 	.string "battle!$"
 
 GinkoWoods_EventScript_Toshio_Text_1:
@@ -155,12 +178,12 @@ GinkoWoods_EventScript_Toshio_Text_2:
 	.string "Toshio$"
 
 GinkoWoods_EventScript_Toshio_Text_3:
-	.string "Real Wielders fight when they spot\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Real Wielders fight when they spot\n"
 	.string "each other!\p"
 	.string "At least that's what my dad told me…$"
 
 GinkoWoods_EventScript_Eiji_Text_0:
-	.string "With the help of my brand new\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}With the help of my brand new\n"
 	.string "Pokémon, I'm catching all sort of\l"
 	.string "bugs!$"
 
@@ -171,29 +194,29 @@ GinkoWoods_EventScript_Eiji_Text_2:
 	.string "Eiji$"
 
 GinkoWoods_EventScript_Eiji_Text_3:
-	.string "I asked Elder Kaba for a bird Pokémon,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I asked Elder Kaba for a bird Pokémon,\n"
 	.string "because they're strong against bugs!$"
 
 GinkoWoods_EventScript_OldMan_Text_0:
-	.string "Old man$"
+	.string "Old Man$"
 
 GinkoWoods_EventScript_OldMan_Text_1:
-	.string "These woods are fascinating.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}These woods are fascinating.\p"
 	.string "There seem to be a lot of yellow\n"
 	.string "Pokémon here.$"
 
 GinkoWoods_EventScript_Bean_Text_0:
-	.string "Odd girl$"
+	.string "Odd Girl$"
 
 GinkoWoods_EventScript_Bean_Text_1:
-	.string "Hello!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello!$"
 
 GinkoWoods_EventScript_Bean_Text_2:
-	.string "I just noticed there are some neat\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just noticed there are some neat\n"
 	.string "tracks in the dirt here.$"
 
 GinkoWoods_EventScript_Bean_Text_3:
-	.string "It looks like a small mammal's\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}It looks like a small mammal's\n"
 	.string "footprints, see?\p"
 	.string "Studying Pokémon tracks is so\n"
 	.string "fascinating. One can find out about a\l"
@@ -222,7 +245,7 @@ GinkoWoods_EventScript_Bean_Text_3:
 	.string "blah…$"
 
 GinkoWoods_EventScript_Bean_Text_4:
-	.string "…And that's all that is currently\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…And that's all that is currently\n"
 	.string "known about Joltik's habitat during\l"
 	.string "the winter.\p"
 	.string "Neat, isn't it?$"
@@ -240,7 +263,7 @@ GinkoWoods_EventScript_Bean_Text_8:
 	.string "Hariko$"
 
 GinkoWoods_EventScript_Bean_Text_9:
-	.string "Right! I am glad you share my interest\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right! I am glad you share my interest\n"
 	.string "in Pokémon habitat.\p"
 	.string "I am Hariko. And what is your name?\p"
 	.string "{PLAYER}.\n"
@@ -249,7 +272,7 @@ GinkoWoods_EventScript_Bean_Text_9:
 	.string "Okay. Bye!$"
 
 GinkoWoods_EventScript_Bean_Text_10:
-	.string "Right!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right!\n"
 	.string "I haven't introduced myself yet.\p"
 	.string "I am Hariko. And what is your name?\p"
 	.string "{PLAYER}.\n"
@@ -258,7 +281,7 @@ GinkoWoods_EventScript_Bean_Text_10:
 	.string "Okay. Bye!$"
 
 GinkoWoods_EventScript_Bean_Text_11:
-	.string "…Oh. I am blocking your path. I see.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…Oh. I am blocking your path. I see.\p"
 	.string "I got carried away, have I not?\n"
 	.string "That… tends to happen.\p"
 	.string "I am Hariko. And what is your name?\p"
@@ -270,7 +293,7 @@ GinkoWoods_EventScript_Bean_Text_11:
 	.string "Okay. Bye!$"
 
 GinkoWoods_EventScript_Tracks_Text_0:
-	.string "THE TRACKS!!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}THE TRACKS!!\n"
 	.string "YOU'RE STEPPING ON THEM!!!$"
 
 GinkoWoods_EventScript_TrainerTips1_Text_0:

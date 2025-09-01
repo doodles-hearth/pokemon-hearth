@@ -180,7 +180,7 @@ KuraTown_Dojo_EventScript_Matsu_Text_3:
 	.string "Not all paths lead to the master.$"
 
 KuraTown_Dojo_EventScript_Kiku_Text_0:
-	.string "Is the maze giving you trouble?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Is the maze giving you trouble?$"
 
 KuraTown_Dojo_EventScript_Kiku_Text_1:
 	.string "At least I didn't give you any\n"
@@ -190,7 +190,7 @@ KuraTown_Dojo_EventScript_Kiku_Text_2:
 	.string "Kiku$"
 
 KuraTown_Dojo_EventScript_Kiku_Text_3:
-	.string "You're wondering why you can't just\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}You're wondering why you can't just\n"
 	.string "cut down all the trees?\p"
 	.string "Uhhh… It's a secret!$"
 
@@ -206,7 +206,7 @@ KuraTown_Dojo_EventScript_Laura_Text_2:
 	.string "favorite tree anyway.$"
 
 KuraTown_Dojo_EventScript_Brenden_Text_0:
-	.string "Take a deep breath! The air is so rich\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}Take a deep breath! The air is so rich\n"
 	.string "and flowery here!$"
 
 KuraTown_Dojo_EventScript_Brenden_Text_1:
@@ -256,7 +256,7 @@ KuraTown_Dojo_EventScript_Hana_Text_0:
 	.string "Hana$"
 
 KuraTown_Dojo_EventScript_Hana_Text_1:
-	.string "Welcome to my humble Dojo. I am Hana.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\n"
 	.string "Did you enjoy my little maze?\p"
 	.string "Tending to my bonsai and fighting\n"
 	.string "alongside my Pokémon are my favorite\l"
@@ -274,7 +274,7 @@ KuraTown_Dojo_EventScript_Hana_Text_2:
 	.string "Ho ho ho…$"
 
 KuraTown_Dojo_EventScript_Hana_Text_3:
-	.string "The slow-growing tree becomes the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}The slow-growing tree becomes the\n"
 	.string "sturdiest. Take your time on your\l"
 	.string "journey, {PLAYER}.$"
 
@@ -283,7 +283,7 @@ KuraTown_Dojo_EventScript_HanaDefeated_Text_0:
 	.string "from Hana.$"
 
 KuraTown_Dojo_EventScript_HanaDefeated_Text_1:
-	.string "Thanks to this Token, your Pokémon\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Thanks to this Token, your Pokémon\n"
 	.string "will obey you without question, even\l"
 	.string "those you trade with others.\p"
 	.string "If you are interested in submitting\n"
@@ -297,7 +297,7 @@ KuraTown_Dojo_EventScript_HanaDefeated_Text_1:
 	.string "Here, let me also give you this.$"
 
 KuraTown_Dojo_EventScript_GiveBulldoze_Text_0:
-	.string "This scroll contains Weather Ball.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}This scroll contains Weather Ball.\n"
 	.string "Just like a tree, this technique is as\l"
 	.string "strong as it is weather-dependent.$"
 

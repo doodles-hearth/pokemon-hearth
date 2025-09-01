@@ -137,7 +137,7 @@ SakuTown_House1_EventScript_Tama_Text_0:
 	.string "Man$"
 
 SakuTown_House1_EventScript_Tama_Text_1:
-	.string "Please go away.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Please go away.\n"
 	.string "Leave me alone.$"
 
 SakuTown_House1_EventScript_Tama_Text_2:
@@ -150,11 +150,11 @@ SakuTown_House1_EventScript_Tama_Text_4:
 	.string "Tama$"
 
 SakuTown_House1_EventScript_Tama_Text_5:
-	.string "… … … … … …\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}… … … … … …\n"
 	.string "… … … … …What?$"
 
 SakuTown_House1_EventScript_Tama_Text_6:
-	.string "… … … … … …\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}… … … … … …\n"
 	.string "… … … … …Yeah, so?$"
 
 SakuTown_House1_EventScript_Tama_Text_7:
@@ -164,29 +164,28 @@ SakuTown_House1_EventScript_Tama_Text_8:
 	.string "This is for you!$"
 
 SakuTown_House1_EventScript_Tama_Text_9:
-	.string "… … … … … …\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}… … … … … …\n"
 	.string "… … … … … …$"
 
 SakuTown_House1_EventScript_Tama_Text_10:
 	.string "It's from Ashii.$"
 
 SakuTown_House1_EventScript_Tama_Text_11:
-	.string "WHAT?! Let me see!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}WHAT?! Let me see!$"
 
 SakuTown_House1_EventScript_Tama_Text_12:
 	.string "{PLAYER} gave Tama the scarf.$"
 
 SakuTown_House1_EventScript_Tama_Text_13:
-	.string "I… I can't believe it!\n"
-	.string "She really does love me!\p"
-	.string "Thank you so much for this!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I… I can't believe it!\n"
+	.string "She really does love me!$"
 
 SakuTown_House1_EventScript_Tama_Text_14:
-	.string "Eh? There's a letter inside!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Eh? There's a letter inside!\n"
 	.string "Whatever for?$"
 
 SakuTown_House1_EventScript_Tama_Text_15:
-	.string "Ahem… “My dear Tama,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Ahem… “My dear Tama,\n"
 	.string "It pains me that you aren't by my side\l"
 	.string "each night.\l"
 	.string "The sweet chirping of birds pales in\l"
@@ -203,7 +202,7 @@ SakuTown_House1_EventScript_Tama_Text_15:
 	.string "… … … … … …$"
 
 SakuTown_House1_EventScript_Tama_Text_16:
-	.string "…Ahem. Sorry, this is a little\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}…Ahem. Sorry, this is a little\n"
 	.string "embarrassing…\p"
 	.string "What does she mean with that “vale”,\n"
 	.string "though?…\p"
@@ -216,13 +215,13 @@ SakuTown_House1_EventScript_Tama_Text_16:
 	.string "deliver this now?$"
 
 SakuTown_House1_EventScript_Tama_Text_17:
-	.string "Wielder! I owe you my thanks.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Wielder! I owe you my thanks.\n"
 	.string "Please, tell her I'll meet her tonight!$"
 
 SakuTown_House1_EventScript_Tama_Text_18:
-	.string "Please, tell Ashii I'll meet her\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Please, tell Ashii I'll meet her\n"
 	.string "tonight!$"
 
 SakuTown_House1_EventScript_Tama_Text_19:
-	.string "I can't wait to see Ashii again\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I can't wait to see Ashii again\n"
 	.string "tonight!$"

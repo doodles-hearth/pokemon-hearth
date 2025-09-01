@@ -73,13 +73,18 @@ TranquilRoute_CutHouse_EventScript_CutMaster::
 	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_3
 	closemessage
-	giveitem ITEM_SECRET_CUT
+	applymovement VAR_LAST_TALKED, TranquilRoute_CutHouse_EventScript_CutMaster_Movement_0
+	waitmovement VAR_LAST_TALKED
 	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_4
 	closemessage
-	giveitem ITEM_TM_NICK
+	giveitem ITEM_SECRET_CUT
 	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_5
+	closemessage
+	giveitem ITEM_TM_NICK
+	speakername TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
+	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_6
 	closemessage
 TranquilRoute_CutHouse_EventScript_CutMaster_1:
 	release
@@ -145,6 +150,16 @@ TranquilRoute_CutHouse_EventScript_RandomCryGuy_8:
 	goto TranquilRoute_CutHouse_EventScript_RandomCryGuy_7
 
 
+TranquilRoute_CutHouse_EventScript_CutMaster_Movement_0:
+	emote_question_mark
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
 TranquilRoute_CutHouse_EventScript_CutGrassCutscene_Text_0:
 	.string "You actually cut ALL the tall grass?\p"
 	.string "Wait, let us go outside. I want to see\n"
@@ -154,19 +169,21 @@ TranquilRoute_CutHouse_EventScript_CutMaster_Text_0:
 	.string "Old Man$"
 
 TranquilRoute_CutHouse_EventScript_CutMaster_Text_1:
-	.string "The sun is setting on another day.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}The sun is setting on another day.\p"
 	.string "Life is good.$"
 
 TranquilRoute_CutHouse_EventScript_CutMaster_Text_2:
-	.string "Are you finding the Secret of Blade\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Are you finding the Secret of Blade\n"
 	.string "useful?\p"
 	.string "No, I still haven't trimmed my garden.\n"
 	.string "I really should get to it…$"
 
 TranquilRoute_CutHouse_EventScript_CutMaster_Text_3:
-	.string "Hello, there. I don't get many\n"
-	.string "visitors, so sit down, have some tea!\p"
-	.string "What? My garden is overrun by weeds?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Hello, there. I don't get many\n"
+	.string "visitors, so sit down, have some tea!$"
+
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_4:
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}What? My garden is overrun by weeds?\p"
 	.string "Ho ho ho…\p"
 	.string "You're right, I have been neglecting\n"
 	.string "it lately. You see, my old back isn't as\l"
@@ -182,8 +199,8 @@ TranquilRoute_CutHouse_EventScript_CutMaster_Text_3:
 	.string "like you could teach their Pokémon\l"
 	.string "the Secret of Blade!$"
 
-TranquilRoute_CutHouse_EventScript_CutMaster_Text_4:
-	.string "There is a variety of slicing moves\n"
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_5:
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}There is a variety of slicing moves\n"
 	.string "that your Pokémon can use.\p"
 	.string "They will now be able to use those\n"
 	.string "moves to cut tall grass and little\l"
@@ -198,8 +215,8 @@ TranquilRoute_CutHouse_EventScript_CutMaster_Text_4:
 	.string "A scroll can be used to teach your\n"
 	.string "Pokémon a move!$"
 
-TranquilRoute_CutHouse_EventScript_CutMaster_Text_5:
-	.string "Want to know another secret?\p"
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_6:
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Want to know another secret?\p"
 	.string "That powerful swordmaster I\n"
 	.string "mentioned…\p"
 	.string "That was me in my youthful days,\n"

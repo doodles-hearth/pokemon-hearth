@@ -79,14 +79,14 @@ Silveridge_House1_EventScript_Woman_Text_0:
 	.string "Woman$"
 
 Silveridge_House1_EventScript_Woman_Text_1:
-	.string "Oh, you came all the way from Kura\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}Oh, you came all the way from Kura\n"
 	.string "Village? You have good legs!$"
 
 Silveridge_House1_EventScript_FirebringerFangirl_Text_0:
 	.string "Girl$"
 
 Silveridge_House1_EventScript_FirebringerFangirl_Text_1:
-	.string "This place gets pretty cold,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}This place gets pretty cold,\n"
 	.string "especially when the winds blow strong\l"
 	.string "into the valley.\p"
 	.string "I don't know what we would do without\n"
@@ -96,9 +96,9 @@ Silveridge_House1_EventScript_FirebringerFangirl_Text_1:
 	.string "Kazan!\p"
 	.string "Slugma cools and hardens up pretty\n"
 	.string "fast, so they basically run the whole\l"
-	.string "way down! I could never! Sigh… I hope\l"
-	.string "a handsome Firebringer notices me one\l"
-	.string "day…$"
+	.string "way down! I could never!\p"
+	.string "Sigh… I hope a handsome Firebringer\n"
+	.string "notices me one day…$"
 
 Silveridge_House1_EventScript_Sandslash_Text_0:
 	.string "Sandslash$"

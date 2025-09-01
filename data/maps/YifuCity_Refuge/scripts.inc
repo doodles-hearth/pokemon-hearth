@@ -25,6 +25,7 @@ YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 YifuCity_Refuge_EventScript_Nurse::
 	setvar VAR_0x800B, LOCALID_NURSE_YIFU
 	setvar VAR_0x800A, LOCALID_CHANSEY_YIFU
+	setvar VAR_0x8009, MUGSHOT_UUME_NURSE
 	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
 	waitmessage
 	waitbuttonpress
@@ -34,6 +35,7 @@ YifuCity_Refuge_EventScript_Nurse::
 
 YifuCity_Refuge_EventScript_FakeNurse::
 	setvar VAR_0x800B, 1
+	setvar VAR_0x800A, LOCALID_WOOBAT_YIFU
 	lock
 	faceplayer
 	setvar VAR_0x8004, 0
@@ -91,6 +93,8 @@ YifuCity_Refuge_EventScript_FakeNurse_10:
 	goto_if_ne YifuCity_Refuge_EventScript_FakeNurse_14
 	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_12
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_FakeNurse_Movement_0
+	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_13
 	goto YifuCity_Refuge_EventScript_FakeNurse_1
 
 YifuCity_Refuge_EventScript_FakeNurse_11:
@@ -202,7 +206,18 @@ YifuCity_Refuge_EventScript_ListenToShamisen::
 	lock
 	faceplayer
 	speakername YifuCity_Refuge_EventScript_ListenToShamisen_Text_0
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_ListenToShamisen_Movement_0
 	msgbox YifuCity_Refuge_EventScript_ListenToShamisen_Text_1
+	closemessage
+	release
+	end
+
+
+YifuCity_Refuge_EventScript_OldMan::
+	lock
+	faceplayer
+	speakername YifuCity_Refuge_EventScript_OldMan_Text_0
+	msgbox YifuCity_Refuge_EventScript_OldMan_Text_1
 	closemessage
 	release
 	end
@@ -236,6 +251,7 @@ YifuCity_Refuge_EventScript_Bisharp::
 YifuCity_Refuge_EventScript_Samurai::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_Samurai_Movement_0
 	speakername YifuCity_Refuge_EventScript_Samurai_Text_0
 	msgbox YifuCity_Refuge_EventScript_Samurai_Text_1
 	closemessage
@@ -246,6 +262,7 @@ YifuCity_Refuge_EventScript_Samurai::
 YifuCity_Refuge_EventScript_GotTrashedByDojo::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_ListenToShamisen_Movement_0
 	speakername YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_0
 	msgbox YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_1
 	closemessage
@@ -285,6 +302,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_3:
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_1
 YifuCity_Refuge_EventScript_RouteShamisen_5:
 	mcdialogue YifuCity_Refuge_EventScript_RouteShamisen_Text_2, YifuCity_Refuge_EventScript_RouteShamisen_Text_3, YifuCity_Refuge_EventScript_RouteShamisen_Text_4
+	closemessage
 	specialvar VAR_0x8000, GetPlayerTrainerIdOnesDigit
 	switch VAR_RESULT
 	case 0, YifuCity_Refuge_EventScript_RouteShamisen_15
@@ -300,6 +318,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_13:
 	goto YifuCity_Refuge_EventScript_RouteShamisen_1
 
 YifuCity_Refuge_EventScript_RouteShamisen_4:
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_Samurai_Movement_0
 	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_8
 	mcdialogue YifuCity_Refuge_EventScript_RouteShamisen_Text_9, YifuCity_Refuge_EventScript_RouteShamisen_Text_10
@@ -317,6 +336,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_6:
 	goto YifuCity_Refuge_EventScript_RouteShamisen_5
 
 YifuCity_Refuge_EventScript_RouteShamisen_11:
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_Samurai_Movement_0
 	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_11
 	closemessage
@@ -324,6 +344,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_11:
 	goto YifuCity_Refuge_EventScript_RouteShamisen_9
 
 YifuCity_Refuge_EventScript_RouteShamisen_12:
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_RouteShamisen_Movement_0
 	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_12
 	giveitem ITEM_SUPERGIRI, 3
@@ -408,6 +429,22 @@ YifuCity_Refuge_EventScript_RouteShamisenLeaves_7:
 	goto YifuCity_Refuge_EventScript_RouteShamisenLeaves_5
 
 
+YifuCity_Refuge_EventScript_FakeNurse_Movement_0:
+	emote_angry
+	step_end
+
+YifuCity_Refuge_EventScript_ListenToShamisen_Movement_0:
+	emote_sweat
+	step_end
+
+YifuCity_Refuge_EventScript_Samurai_Movement_0:
+	emote_pensive
+	step_end
+
+YifuCity_Refuge_EventScript_RouteShamisen_Movement_0:
+	emote_happy
+	step_end
+
 YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_0:
 	walk_down
 	walk_left
@@ -450,18 +487,18 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_0:
 	.string "Nurse$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_1:
-	.string "Gimme yer Pokémon, I'mma heal 'em\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Gimme yer Pokémon, I'mma heal 'em\n"
 	.string "good.$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_2:
-	.string "Yep, uh, good as new, probably!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 	.string "Ya know the drill, 500¥ please!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_3:
-	.string "C'magain, or whatever.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever.$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_4:
-	.string "Yep, uh, good as new, probably!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 	.string "Ya know the drill, 500¥ please!\p"
 	.string "… … …\n"
 	.string "… … …What? Yer THAT poor?\p"
@@ -471,7 +508,7 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_4:
 	.string "Now make like a Treecko 'n leave!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_5:
-	.string "Yep, uh, good as new, probably!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 	.string "By the way, that'll be 500¥, wow, so\n"
 	.string "cheap!$"
 
@@ -485,11 +522,11 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_8:
 	.string "Okay, I guess…$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_9:
-	.string "No whinin'! Fork over the cash before\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}No whinin'! Fork over the cash before\n"
 	.string "I call security!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_10:
-	.string "No whinin'! Fork over the cash before\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}No whinin'! Fork over the cash before\n"
 	.string "I call security!\p"
 	.string "… … …\n"
 	.string "… … …What? Yer THAT poor?\p"
@@ -499,16 +536,18 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_10:
 	.string "Now make like a Treecko 'n leave!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_11:
-	.string "…Really? Jus' like that?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Really? Jus' like that?\p"
 	.string "(Wow, this one's really dumb, huh?)\p"
 	.string "I mean, yeah, you better!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_12:
-	.string "…Really? Jus' like that?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Really? Jus' like that?\p"
 	.string "(Wow, this one's really dumb, huh?)\p"
 	.string "… … …\n"
 	.string "… … …What? Ya don't have 'nuff cash?!\p"
-	.string "I can't believe it! I've been had!\p"
+	.string "I can't believe it! I've been had!$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_13:
 	.string "Get outta here, ya scammer!$"
 
 YifuCity_Refuge_EventScript_Woobat_Text_0:
@@ -521,7 +560,7 @@ YifuCity_Refuge_EventScript_Shamisen_Text_0:
 	.string "Shamisen Player$"
 
 YifuCity_Refuge_EventScript_Shamisen_Text_1:
-	.string "Good evening, traveler.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE EMOTE_NORMAL}Good evening, traveler.\p"
 	.string "I hope my song will soothe your spirit,\n"
 	.string "should it be troubled.$"
 
@@ -565,8 +604,17 @@ YifuCity_Refuge_EventScript_ListenToShamisen_Text_0:
 	.string "Boy$"
 
 YifuCity_Refuge_EventScript_ListenToShamisen_Text_1:
-	.string "Whew… I've walked all day…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Whew… I've walked all day…\n"
 	.string "I am spent!$"
+
+YifuCity_Refuge_EventScript_OldMan_Text_0:
+	.string "Old Man$"
+
+YifuCity_Refuge_EventScript_OldMan_Text_1:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I'm just resting my old bones by the\n"
+	.string "fire.\p"
+	.string "How the years go by swiftly…\n"
+	.string "Do treasure each passing day…$"
 
 YifuCity_Refuge_EventScript_Traveler_Text_0:
 	.string "Traveler$"
@@ -586,7 +634,7 @@ YifuCity_Refuge_EventScript_Samurai_Text_0:
 	.string "Samurai$"
 
 YifuCity_Refuge_EventScript_Samurai_Text_1:
-	.string "The Crobat Shadows must be operating\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}The Crobat Shadows must be operating\n"
 	.string "from somewhere… But where?$"
 
 YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_0:
@@ -602,13 +650,13 @@ YifuCity_Refuge_EventScript_RouteShamisensPokemon_Text_0:
 	.string "Rr-ruff!$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_0:
-	.string "Ah, so have you made space in your\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Ah, so have you made space in your\n"
 	.string "party for the Egg I wanted to give\l"
 	.string "you?\p"
 	.string "Which of these Eggs do you favor?$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_1:
-	.string "Hello, traveler.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hello, traveler.\n"
 	.string "… … …\l"
 	.string "… … …!\p"
 	.string "Oh, I recognize you! You're that\n"
@@ -617,7 +665,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_Text_1:
 	.string "… …Yes, I feel it…\p"
 	.string "You managed to traverse the whole\n"
 	.string "Route, triumphing of both Wielders\l"
-	.string "and wild Pokémon, relying on your sole\l"
+	.string "and wild Pokémon, relying on your\l"
 	.string "Wielding skills and medicine…\p"
 	.string "Congratulations, um… {FONT_SMALL}What did you say\n"
 	.string "your name was?{FONT_NORMAL}\p"
@@ -643,16 +691,16 @@ YifuCity_Refuge_EventScript_RouteShamisen_Text_5:
 	.string "Egg.$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_6:
-	.string "Please take good care of this Egg.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Please take good care of this Egg.\p"
 	.string "May destiny cross our paths again!$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_7:
-	.string "Oh, but wait, you don't have enough\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Oh, but wait, you don't have enough\n"
 	.string "room for the Egg!\p"
 	.string "I'll wait for you to make some.$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_8:
-	.string "Hello, traveler.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hello, traveler.\n"
 	.string "… … …\l"
 	.string "… … …!\p"
 	.string "Oh, I recognize you! You're that\n"
@@ -672,29 +720,28 @@ YifuCity_Refuge_EventScript_RouteShamisen_Text_10:
 	.string "I didn't…$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_11:
-	.string "Hmmmm… … …\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hmmmm… … …\n"
 	.string "… … …\p"
 	.string "You aren't telling the truth, are you?\n"
 	.string "You're deceiving yourself, do you not\l"
 	.string "feel it in your heart?\p"
 	.string "Don't be too sad about not\n"
-	.string "succeeding. Honesty is more\l"
-	.string "important than pride, and you will get\l"
-	.string "other opportunities to prove\l"
-	.string "yourself in the future!\p"
+	.string "succeeding. Honesty beats pride, and\l"
+	.string "you will get other opportunities to\l"
+	.string "prove yourself in the future!\p"
 	.string "Rest here a while, and prepare well for\n"
 	.string "your next journey!$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_12:
-	.string "Oh, that's alright! Don't beat\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Oh, that's alright! Don't beat\n"
 	.string "yourself up. I see in your heart that\l"
 	.string "you have a bright future ahead of\l"
 	.string "you.\p"
-	.string "Honesty is more important than pride,\n"
-	.string "and you will get other opportunities\l"
-	.string "to prove yourself in the future!\p"
+	.string "Honesty beats pride, and you will get\n"
+	.string "other opportunities to prove\l"
+	.string "yourself in the future!\p"
 	.string "Rest here a while, and use these to\n"
 	.string "prepare for your next journey!$"
 
 YifuCity_Refuge_EventScript_RouteShamisen_Text_13:
-	.string "May destiny cross our paths again!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}May destiny cross our paths again!$"

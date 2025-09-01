@@ -16,4 +16,4 @@ Silveridge_House2_EventScript_Woman_Text_0:
 	.string "Woman$"
 
 Silveridge_House2_EventScript_Woman_Text_1:
-	.string "TODO EVA$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}TODO EVA$"

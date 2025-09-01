@@ -55,23 +55,23 @@ WindsweptRoute_EventScript_Roku::
 
 
 WindsweptRoute_EventScript_Trainer4::
-	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer1_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
+	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer4_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
 	speakername WindsweptRoute_EventScript_Trainer1_Text_2
-	msgbox WindsweptRoute_EventScript_Trainer1_Text_3, MSGBOX_AUTOCLOSE
+	msgbox WindsweptRoute_EventScript_Trainer4_Text_1, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Trainer5::
-	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer1_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
+	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer4_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
 	speakername WindsweptRoute_EventScript_Trainer1_Text_2
-	msgbox WindsweptRoute_EventScript_Trainer1_Text_3, MSGBOX_AUTOCLOSE
+	msgbox WindsweptRoute_EventScript_Trainer4_Text_1, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Trainer6::
-	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer1_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
+	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer4_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
 	speakername WindsweptRoute_EventScript_Trainer1_Text_2
-	msgbox WindsweptRoute_EventScript_Trainer1_Text_3, MSGBOX_AUTOCLOSE
+	msgbox WindsweptRoute_EventScript_Trainer4_Text_1, MSGBOX_AUTOCLOSE
 	end
 
 
@@ -134,7 +134,7 @@ WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_4:
 	step_end
 
 WindsweptRoute_EventScript_OvergrownTrees_Text_0:
-	.string "Thank you for cutting down that\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Thank you for cutting down that\n"
 	.string "annoying tree! We can go to Silveridge\l"
 	.string "again!$"
 
@@ -147,7 +147,7 @@ WindsweptRoute_EventScript_OvergrownTrees_Text_1:
 	.string "Tranquil route…$"
 
 WindsweptRoute_EventScript_Trainer1_Text_0:
-	.string "These winds blow as strong as my will\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}These winds blow as strong as my will\n"
 	.string "to win!$"
 
 WindsweptRoute_EventScript_Trainer1_Text_1:
@@ -157,12 +157,12 @@ WindsweptRoute_EventScript_Trainer1_Text_2:
 	.string "Musashi$"
 
 WindsweptRoute_EventScript_Trainer1_Text_3:
-	.string "I come here to train my Pokémon. The\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I come here to train my Pokémon. The\n"
 	.string "harsh weather helps us give the best\l"
 	.string "of ourselves.$"
 
 WindsweptRoute_EventScript_Itamae_Text_0:
-	.string "I'm scouring this salty grass for the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}I'm scouring this salty grass for the\n"
 	.string "tastiest ingredients!$"
 
 WindsweptRoute_EventScript_Itamae_Text_1:
@@ -172,7 +172,7 @@ WindsweptRoute_EventScript_Itamae_Text_2:
 	.string "Itamae$"
 
 WindsweptRoute_EventScript_Itamae_Text_3:
-	.string "This place is an inspiration for my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}This place is an inspiration for my\n"
 	.string "innovative cuisine.\p"
 	.string "The rocks are salty, the plants are\n"
 	.string "salty… To an extent, even the air is\l"
@@ -217,18 +217,27 @@ WindsweptRoute_EventScript_Roku_Text_3:
 	.string "Please don't tell my colleagues I've\n"
 	.string "been slacking off…$"
 
+WindsweptRoute_EventScript_Trainer4_Text_0:
+	.string "These winds blow as strong as my will\n"
+	.string "to win!$"
+
+WindsweptRoute_EventScript_Trainer4_Text_1:
+	.string "I come here to train my Pokémon. The\n"
+	.string "harsh weather helps us give the best\l"
+	.string "of ourselves.$"
+
 WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_0:
-	.string "Ninja boy$"
+	.string "Ninja Boy$"
 
 WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_1:
-	.string "You shall know defeat at the hand of\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}You shall know defeat at the hand of\n"
 	.string "my ninja Pokémon!\p"
 	.string "Nuzleaf, use Feint Attack!$"
 
 WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_2:
-	.string "School kid$"
+	.string "School Kid$"
 
 WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_3:
-	.string "Your pathetic ninja costume can't\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Your pathetic ninja costume can't\n"
 	.string "beat the sheer power of knowledge!\p"
 	.string "Breloom! Headbutt!$"

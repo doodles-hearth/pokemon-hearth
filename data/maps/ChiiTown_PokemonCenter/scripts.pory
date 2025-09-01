@@ -32,9 +32,21 @@ mapscripts ChiiTown_PokemonCenter_MapScripts {
 script ChiiTown_PokemonCenter_EventScript_Nurse {
 	setvar(VAR_0x800B, LOCALID_NURSE_CHII)
 	setvar(VAR_0x800A, LOCALID_CHANSEY_CHII)
+	setvar(VAR_0x8009, MUGSHOT_SUNRISE_NURSE)
 	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
 	waitmessage
 	waitbuttonpress
+	removefieldmugshot
+	release
+	end
+}
+
+script ChiiTown_PokemonCenter_EventScript_NurseSleep {
+	createfieldmugshot(MUGSHOT_SUNRISE_NURSE, EMOTE_NORMAL)
+	call(Common_EventScript_PkmnCenterNurse_Sleep)
+	waitmessage
+	waitbuttonpress
+	removefieldmugshot
 	release
 	end
 }
@@ -45,7 +57,7 @@ script ChiiTown_PokemonCenter_EventScript_Shamisen {
 	// TODO EVA battle shamisen player!
 	speakername("Shamisen Player")
 	msgbox(format(
-		"Good evening.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE EMOTE_NORMAL}Good evening.\p"
 		"We blind shamisen players sing to survive.\p"
 		"These Pokémon refuges give us a safe place to spend the night."
 	))
@@ -59,7 +71,7 @@ script ChiiTown_PokemonCenter_EventScript_ShamisenFan {
 	faceplayer
 	speakername("Shamisen Fan")
 	msgbox(format(
-		"Such a beautiful voice…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_2 EMOTE_NORMAL}Such a beautiful voice…\p"
 		"Such sorrowful melodies…\p"
 		"Such ethereal beauty…\p"
 		"I could listen to her forever…\p"
@@ -73,9 +85,9 @@ script ChiiTown_PokemonCenter_EventScript_ShamisenFan {
 script ChiiTown_PokemonCenter_EventScript_Boy {
 	lock
 	faceplayer
-	speakername("Little boy")
+	speakername("Little Girl")
 	msgbox(format(
-		"I'm here with my mama!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm here with my mama!\p"
 		"The music lady's nice!"
 	))
 	closemessage
@@ -88,7 +100,7 @@ script ChiiTown_PokemonCenter_EventScript_Mom {
 	faceplayer
 	speakername("Woman")
 	msgbox(format(
-		"Traveling shamisen players take shelter in Pokémon refuges when the night falls.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}Traveling shamisen players take shelter in Pokémon refuges when the night falls.\p"
 		"Their singing makes for such a cosy atmosphere!"
 	))
 	closemessage
@@ -101,7 +113,7 @@ script ChiiTown_PokemonCenter_EventScript_WhereShamisen {
 	faceplayer
 	speakername("Weird man")
 	msgbox(format(
-		"Where's that cute shamisen player that was here last night?"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY EMOTE_NORMAL}Where's that cute shamisen player that was here last night?"
 	))
 	closemessage
 	release
@@ -141,7 +153,7 @@ script ChiiTown_PokemonCenter_EventScript_NeedMarket {
 	faceplayer
 	speakername("Woman")
 	msgbox(format(
-		"Berries, ointments… Oh, right, I should get a few more Poké Balls from the town market!"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}Berries, ointments… Oh, right, I should get a few more Poké Balls from the town market!"
 	))
 	closemessage
 	release
@@ -153,7 +165,7 @@ script ChiiTown_PokemonCenter_EventScript_RefugePresentation {
 	faceplayer
 	speakername("Talkative man")
 	msgbox(format(
-		"Isn't it amazing?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_1 EMOTE_NORMAL}Isn't it amazing?\p"
 		"This is one of the many brand new Pokémon refuges that the Pokémon Council has built in towns across all Toku!\p"
 		"With traveling alone becoming more dangerous, many people are now training a Pokémon of their own for protection.\p"
 		"Towns were starting to be in dire need of proper healing and rest spots for Pokémon.\p"
@@ -196,7 +208,7 @@ script ChiiTown_PokemonCenter_EventScript_MakeNamesUp {
 	faceplayer
 	speakername("Little Boy")
 	msgbox(format(
-		"You know what happens if I see a Pokémon and I don't know its name?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}You know what happens if I see a Pokémon and I don't know its name?\p"
 		"I just make it right up!\nI don't care about any silly “real” names!\p"
 		"And neither should you! Be free of the diktat of naming accuracy!"
 	))

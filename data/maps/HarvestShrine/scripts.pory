@@ -9,7 +9,7 @@ script HarvestShrine_EventScript_MonkBronzong {
 	faceplayer
 	speakername("Monk")
 	msgbox(format(
-		"The Bronzong you have before your eyes is a thousand years old.\p"
+		"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}The Bronzong you have before your eyes is a thousand years old.\p"
 		"It has been bringing us rain and plentiful harvests for generations.\p"
 		"Can you believe this magnificent statue is actually a living, breathing Pokémon?\p"
 		"Actually, I'm not sure Bronzong breathe, but you get the idea."
@@ -26,13 +26,13 @@ script HarvestShrine_EventScript_MonkBronzong {
 script HarvestShrine_EventScript_Kouga {
 	trainerbattle_single(
 		TRAINER_KOUGA,
-		format("Have you come here to honor the venerable Bronzong? Or are you here to stir trouble?"),
+		format("{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Have you come here to honor the venerable Bronzong? Or are you here to stir trouble?"),
 		format("By a thousand gods!"),
 		HarvestShrine_EventScript_SetMonFlags
 	)
 	speakername("Kouga")
 	msgbox(format(
-		"Fine, you may approach the ancient Bronzong. Please be respectful."
+		"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Fine, you may approach the ancient Bronzong. Please be respectful."
 	))
 	closemessage
 	end
@@ -48,20 +48,20 @@ script HarvestShrine_EventScript_MonkRain {
 	speakername("Monk")
 	if (checkitem(ITEM_TM_RAIN_DANCE)) {
 		msgbox(format(
-			"I do enjoy the sounds of the rain…"
+			"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}I do enjoy the sounds of the rain…"
 		))
 	} elif (flag(FLAG_SET_RAIN)) {
 		setnamedmon(SPECIES_BRONZONG)
 
 		msgbox(format(
-			"You prayed to the venerable Bronzong for rain, and He heeded your prayer!\p"
+			"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}You prayed to the venerable Bronzong for rain, and He heeded your prayer!\p"
 			"He doesn't listen to just anyone,\nyou know?\lThere's something about you, kid…\lTake this! I insist!"
 		))
 
 		giveitem(ITEM_TM_RAIN_DANCE)
 	} else {
 		msgbox(format(
-			"Impressive, isn't He?"
+			"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Impressive, isn't He?"
 		))
 	}
 	release

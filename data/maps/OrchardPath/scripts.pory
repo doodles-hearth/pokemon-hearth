@@ -25,28 +25,28 @@ script OrchardPath_EventScript_GuardHouseSign {
 script OrchardPath_EventScript_Junko {
 	trainerbattle_single(
 		TRAINER_JUNKO,
-		format("I'm gathering ripe Berries to feed my Pokémon!"),
+		format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}I'm gathering ripe Berries to feed my Pokémon!"),
 		format("He ought to eat more Berries…")
 	)
 	speakername("Junko")
-	msgbox(format("My Pokémon is insatiable!\nI need to scour my local Library for more Berry recipes!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}My Pokémon is insatiable!\nI need to scour my local Library for more Berry recipes!"), MSGBOX_AUTOCLOSE)
 }
 
 script OrchardPath_EventScript_Mami {
 	trainerbattle_single(
 		TRAINER_MAMI,
-		format("Hehehehe… This place is haunted at night! Are you scared?"),
+		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}Hehehehe… This place is haunted at night! Are you scared?"),
 		format("H-how could my ghosts lose to a mere mortal?")
 	)
 	speakername("Mami")
-	msgbox(format("I wanted to catch some more ghosts at the Graveyard, but…\lIt's a little TOO scary…"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I wanted to catch some more ghosts at the Graveyard, but…\lIt's a little TOO scary…"), MSGBOX_AUTOCLOSE)
 }
 
 script OrchardPath_EventScript_Samurai {
 	lock
 	faceplayer
 	speakername("Samurai")
-	msgbox(format("Please stand back. Everything is under control."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Please stand back. Everything is under control."))
 
 	dynmultichoice(
 		0,
@@ -75,37 +75,37 @@ script OrchardPath_EventScript_Samurai {
 
 script OrchardPath_Samurai_WhatIsHappening {
 	special(GetPlayerSirMissString)
-			speakername("Samurai")
-			msgbox(format(
-				"Nothing that concerns you, {STR_VAR_1}.\p"
-				"This is just your regular, run-of-the-mill, top secret yet unimportant stuff."
-			))
+	speakername("Samurai")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Nothing that concerns you, {STR_VAR_1}.\p"
+		"This is just your regular, run-of-the-mill, top secret yet unimportant stuff."
+	))
 
-			dynmultichoice(
-				0,
-				0,
-				TRUE,
-				10,
-				0,
-				DYN_MULTICHOICE_CB_NONE,
-				"I know about the Decay!",
-				"I'd like to go through."
-			)
-			closemessage
+	dynmultichoice(
+		0,
+		0,
+		TRUE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"I know about the Decay!",
+		"I'd like to go through."
+	)
+	closemessage
 
-			switch(var(VAR_RESULT)) {
-				case 0:
-					call(OrchardPath_Samurai_KnowAboutDecay)
-				case 1:
-					call(OrchardPath_Samurai_LetMeThrough)
-			}
+	switch(var(VAR_RESULT)) {
+		case 0:
+			call(OrchardPath_Samurai_KnowAboutDecay)
+		case 1:
+			call(OrchardPath_Samurai_LetMeThrough)
+	}
 
 }
 
 script OrchardPath_Samurai_LetMeThrough {
 	speakername("Samurai")
 	msgbox(format(
-		"We cannot let you through, so please be on your way."
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}We cannot let you through, so please be on your way."
 	))
 
 	dynmultichoice(
@@ -130,7 +130,7 @@ script OrchardPath_Samurai_KnowAboutDecay {
 
 	speakername("Samurai")
 	msgbox(format(
-		"You- what-\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}You- what-\p"
 		"Ahem! I do not know of this Decay you speak of.\p"
 		"We cannot let you through though, so please be on your way.\p"
 		"Now now, move along!"
@@ -396,7 +396,7 @@ script OrchardPath_EventScript_Samurai2 {
 	lock
 	faceplayer
 	speakername("Samurai")
-	msgbox(format("Move along, please, nothing to see here!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Move along, please, nothing to see here!"))
 	closemessage
 	release
 }

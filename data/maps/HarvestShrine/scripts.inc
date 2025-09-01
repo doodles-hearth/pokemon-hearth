@@ -97,7 +97,7 @@ HarvestShrine_EventScript_MonkBronzong_Text_0:
 	.string "Monk$"
 
 HarvestShrine_EventScript_MonkBronzong_Text_1:
-	.string "The Bronzong you have before your\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}The Bronzong you have before your\n"
 	.string "eyes is a thousand years old.\p"
 	.string "It has been bringing us rain and\n"
 	.string "plentiful harvests for generations.\p"
@@ -108,7 +108,7 @@ HarvestShrine_EventScript_MonkBronzong_Text_1:
 	.string "breathe, but you get the idea.$"
 
 HarvestShrine_EventScript_Kouga_Text_0:
-	.string "Have you come here to honor the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Have you come here to honor the\n"
 	.string "venerable Bronzong? Or are you here\l"
 	.string "to stir trouble?$"
 
@@ -119,14 +119,14 @@ HarvestShrine_EventScript_Kouga_Text_2:
 	.string "Kouga$"
 
 HarvestShrine_EventScript_Kouga_Text_3:
-	.string "Fine, you may approach the ancient\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Fine, you may approach the ancient\n"
 	.string "Bronzong. Please be respectful.$"
 
 HarvestShrine_EventScript_MonkRain_Text_0:
-	.string "I do enjoy the sounds of the rain…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}I do enjoy the sounds of the rain…$"
 
 HarvestShrine_EventScript_MonkRain_Text_1:
-	.string "You prayed to the venerable Bronzong\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}You prayed to the venerable Bronzong\n"
 	.string "for rain, and He heeded your prayer!\p"
 	.string "He doesn't listen to just anyone,\n"
 	.string "you know?\l"
@@ -134,7 +134,7 @@ HarvestShrine_EventScript_MonkRain_Text_1:
 	.string "Take this! I insist!$"
 
 HarvestShrine_EventScript_MonkRain_Text_2:
-	.string "Impressive, isn't He?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Impressive, isn't He?$"
 
 HarvestShrine_EventScript_Bronzong_Text_0:
 	.string "… … …The statue is back to silence.$"

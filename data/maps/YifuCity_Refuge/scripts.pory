@@ -24,6 +24,7 @@ mapscripts YifuCity_Refuge_MapScripts {
 script YifuCity_Refuge_EventScript_Nurse {
 	setvar(VAR_0x800B, LOCALID_NURSE_YIFU)
 	setvar(VAR_0x800A, LOCALID_CHANSEY_YIFU)
+	setvar(VAR_0x8009, MUGSHOT_UUME_NURSE)
 	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
 	waitmessage
 	waitbuttonpress
@@ -33,11 +34,12 @@ script YifuCity_Refuge_EventScript_Nurse {
 
 script YifuCity_Refuge_EventScript_FakeNurse {
 	setvar(VAR_0x800B, LOCALID_NURSE_CROBAT)
+	setvar(VAR_0x800A, LOCALID_WOOBAT_YIFU)
 	lock
 	faceplayer
 	setvar(VAR_0x8004, 0)
 	speakername("Nurse")
-	msgbox(format("Gimme yer Pokémon, I'mma heal 'em good."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Gimme yer Pokémon, I'mma heal 'em good."))
 	closemessage
 
 	incrementgamestat(GAME_STAT_USED_POKECENTER)
@@ -49,7 +51,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 		if (checkmoney(500)) {
 			speakername("Nurse")
 			msgbox(format(
-				"Yep, uh, good as new, probably!\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 				"Ya know the drill, 500¥ please!"
 			))
 			playse(SE_SHOP)
@@ -58,12 +60,12 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 
 			speakername("Nurse")
 				msgbox(format(
-					"C'magain, or whatever."
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever."
 				))
 		} else {
 			speakername("Nurse")
 			msgbox(format(
-				"Yep, uh, good as new, probably!\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 				"Ya know the drill, 500¥ please!\p"
 				"… … …\n… … …What? Yer THAT poor?\p"
 				"I feel almost bad for ya, buddy…\p"
@@ -76,7 +78,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 		setflag(FLAG_GOT_SCAMMED_YIFU_REFUGE)
 		speakername("Nurse")
 		msgbox(format(
-			"Yep, uh, good as new, probably!\p"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
 			"By the way, that'll be 500¥, wow, so cheap!"
 		))
 
@@ -95,7 +97,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 				if (checkmoney(500)) {
 					speakername("Nurse")
 					msgbox(format(
-						"No whinin'! Fork over the cash before I call security!"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}No whinin'! Fork over the cash before I call security!"
 					))
 					playse(SE_SHOP)
 					removemoney(500)
@@ -103,12 +105,12 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 
 					speakername("Nurse")
 					msgbox(format(
-						"C'magain, or whatever."
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever."
 					))
 				} else {
 					speakername("Nurse")
 					msgbox(format(
-						"No whinin'! Fork over the cash before I call security!\p"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}No whinin'! Fork over the cash before I call security!\p"
 						"… … …\n… … …What? Yer THAT poor?\p"
 						"I feel almost bad for ya, buddy…\p"
 						"I guess, uh… I guess we're good then, don' worry 'bout it.\p"
@@ -120,7 +122,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 				if (checkmoney(500)) {
 					speakername("Nurse")
 					msgbox(format(
-						"…Really? Jus' like that?\p"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Really? Jus' like that?\p"
 						"(Wow, this one's really dumb, huh?)\p"
 						"I mean, yeah, you better!"
 					))
@@ -131,15 +133,18 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 
 					speakername("Nurse")
 					msgbox(format(
-						"C'magain, or whatever."
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever."
 					))
 				} else {
 					speakername("Nurse")
 					msgbox(format(
-						"…Really? Jus' like that?\p"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Really? Jus' like that?\p"
 						"(Wow, this one's really dumb, huh?)\p"
 						"… … …\n… … …What? Ya don't have 'nuff cash?!\p"
-						"I can't believe it! I've been had!\p"
+						"I can't believe it! I've been had!"
+					))
+					applymovement(VAR_LAST_TALKED, moves(emote_angry))
+					msgbox(format(
 						"Get outta here, ya scammer!"
 					))
 				}
@@ -166,7 +171,7 @@ script YifuCity_Refuge_EventScript_Shamisen {
 	// TODO EVA battle shamisen player!
 	speakername("Shamisen Player")
 	msgbox(format(
-		"Good evening, traveler.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE EMOTE_NORMAL}Good evening, traveler.\p"
 		"I hope my song will soothe your spirit, should it be troubled."
 	))
 	closemessage
@@ -265,8 +270,22 @@ script YifuCity_Refuge_EventScript_ListenToShamisen {
 	lock
 	faceplayer
 	speakername("Boy")
+	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	msgbox(format(
-		"Whew… I've walked all day…\nI am spent!"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Whew… I've walked all day…\nI am spent!"
+	))
+	closemessage
+	release
+	end
+}
+
+script YifuCity_Refuge_EventScript_OldMan {
+	lock
+	faceplayer
+	speakername("Old Man")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I'm just resting my old bones by the fire.\p"
+		"How the years go by swiftly…\nDo treasure each passing day…"
 	))
 	closemessage
 	release
@@ -304,9 +323,10 @@ script YifuCity_Refuge_EventScript_Bisharp {
 script YifuCity_Refuge_EventScript_Samurai {
 	lock
 	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	speakername("Samurai")
 	msgbox(format(
-		"The Crobat Shadows must be operating from somewhere… But where?"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}The Crobat Shadows must be operating from somewhere… But where?"
 	))
 	closemessage
 	release
@@ -316,6 +336,7 @@ script YifuCity_Refuge_EventScript_Samurai {
 script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 	lock
 	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	speakername("Man")
 	msgbox(format(
 		"Arrgh… this city's Dojo is all girls, so I thought it was going to be super easy…\p"
@@ -347,18 +368,18 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 			if (flag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)) {
 				speakername("Shamisen Player")
 				msgbox(format(
-					"Ah, so have you made space in your party for the Egg I wanted to give you?\p"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Ah, so have you made space in your party for the Egg I wanted to give you?\p"
 					"Which of these Eggs do you favor?"
 				))
 			} else {
 				setflag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)
 				speakername("Shamisen Player")
 				msgbox(format(
-					"Hello, traveler.\n… … …\l"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hello, traveler.\n… … …\l"
 					"… … …!\p"
 					"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
 					"… …Yes, I feel it…\p"
-					"You managed to traverse the whole Route, triumphing of both Wielders and wild Pokémon, relying on your sole Wielding skills and medicine…\p"
+					"You managed to traverse the whole Route, triumphing of both Wielders and wild Pokémon, relying on your Wielding skills and medicine…\p"
 					"Congratulations, um… {FONT_SMALL}What did you say your name was?{FONT_NORMAL}\p"
 					"Congratulations, {PLAYER}!\nAs I expected, you have proved worthy of our songs!\p"
 					"I carry some Pokémon Eggs right this moment. I want you to have one, I know it would be in good hands.\p"
@@ -371,6 +392,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				"The wet Egg!",
 				"The mossy Egg!"
 			)
+			closemessage
 
 			specialvar(VAR_0x8000, GetPlayerTrainerIdOnesDigit)
 			switch(var(VAR_RESULT)) {
@@ -403,7 +425,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 
 				speakername("Shamisen Player")
 				msgbox(format(
-					"Please take good care of this Egg.\p"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Please take good care of this Egg.\p"
 					"May destiny cross our paths again!"
 				))
 				closemessage
@@ -414,16 +436,17 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 			} else {
 				speakername("Shamisen Player")
 				msgbox(format(
-					"Oh, but wait, you don't have enough room for the Egg!\p"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Oh, but wait, you don't have enough room for the Egg!\p"
 					"I'll wait for you to make some."
 				))
 				closemessage
 			}
 
 		case ROUTE_CHALLENGE_STATE_FAILURE:
+			applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 			speakername("Shamisen Player")
 			msgbox(format(
-				"Hello, traveler.\n… … …\l"
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hello, traveler.\n… … …\l"
 				"… … …!\p"
 				"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
 				"{PLAYER}? It's nice to meet you again.\p"
@@ -437,21 +460,23 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 
 			switch(var(VAR_RESULT)) {
 				case 0:
+					applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 					speakername("Shamisen Player")
 					msgbox(format(
-						"Hmmmm… … …\n… … …\p"
+						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hmmmm… … …\n… … …\p"
 						"You aren't telling the truth, are you?\n"
 						"You're deceiving yourself, do you not feel it in your heart?\p"
-						"Don't be too sad about not succeeding. Honesty is more important than pride, and you will get other opportunities to prove yourself in the future!\p"
+						"Don't be too sad about not succeeding. Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
 						"Rest here a while, and prepare well for your next journey!"
 					))
 					closemessage
 					setflag(FLAG_LIED_TO_SHAMISEN_PLAYER)
 				case 1:
+					applymovement(VAR_LAST_TALKED, moves(emote_happy))
 					speakername("Shamisen Player")
 					msgbox(format(
-						"Oh, that's alright! Don't beat yourself up. I see in your heart that you have a bright future ahead of you.\p"
-						"Honesty is more important than pride, and you will get other opportunities to prove yourself in the future!\p"
+						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Oh, that's alright! Don't beat yourself up. I see in your heart that you have a bright future ahead of you.\p"
+						"Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
 						"Rest here a while, and use these to prepare for your next journey!"
 					))
 
@@ -459,7 +484,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 
 					speakername("Shamisen Player")
 					msgbox(format(
-						"May destiny cross our paths again!"
+						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}May destiny cross our paths again!"
 					))
 					closemessage
 			}

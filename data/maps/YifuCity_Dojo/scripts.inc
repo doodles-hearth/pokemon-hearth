@@ -978,13 +978,13 @@ YifuCity_Dojo_EventScript_Dance3_Text_7:
 	.string "foot, did you?$"
 
 YifuCity_Dojo_EventScript_Advice_Text_0:
-	.string "Such grace! Such swiftness!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Such grace! Such swiftness!\n"
 	.string "I am wowed!\p"
 	.string "{PLAYER}…\n"
 	.string "That's a name to be remembered!$"
 
 YifuCity_Dojo_EventScript_Advice_Text_1:
-	.string "Hello, young challenger, and welcome\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\n"
 	.string "to the Dance Hall Dojo!\p"
 	.string "Think you've got what it takes to see\n"
 	.string "through the dancer's intoxicating\l"
@@ -1103,7 +1103,7 @@ YifuCity_Dojo_EventScript_Yutaka_Text_0:
 	.string "Yutaka$"
 
 YifuCity_Dojo_EventScript_Yutaka_Text_1:
-	.string "Well done! Welcome to Yifu City's Doj-$"
+	.string "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}Well done! Welcome to Yifu City's Doj-$"
 
 YifuCity_Dojo_EventScript_Yutaka_Text_2:
 	.string "Excuse me, what is this?\p"
@@ -1143,7 +1143,7 @@ YifuCity_Dojo_EventScript_YutakaDefeated_Text_0:
 	.string "from Yutaka.$"
 
 YifuCity_Dojo_EventScript_YutakaDefeated_Text_1:
-	.string "I am outrée! Your techniques are\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}I am outrée! Your techniques are\n"
 	.string "rough and vulgar, yet…\p"
 	.string "Victory is yours…\n"
 	.string "That is undeniable.\p"
@@ -1152,7 +1152,7 @@ YifuCity_Dojo_EventScript_YutakaDefeated_Text_1:
 	.string "Do accept this, as well.$"
 
 YifuCity_Dojo_EventScript_YutakaDefeated_Text_2:
-	.string "This scroll contains my famous\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}This scroll contains my famous\n"
 	.string "X-Scissor technique.\p"
 	.string "I perfected it back when I worked as\n"
 	.string "a seamstress.\p"

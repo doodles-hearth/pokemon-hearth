@@ -9,7 +9,7 @@ script MaguroHarbor_Dojo_EventScript_Koishi {
 	trainerbattle_single(
 		TRAINER_KOISHI_1,
 		format(
-			"Welcome to Maguro's Koi Pond Dojo, one of the eight Dojos officially appointed by the Toku Council.\p"
+			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}Welcome to Maguro's Koi Pond Dojo, one of the eight Dojos officially appointed by the Toku Council.\p"
 			"We Dojo Masters fight Wielders that have taken on the Toku Council's challenge.\p"
 			"We each give out a different Token to anyone who succeeds in defeating us.\p"
 			"I am Koishi. I began raising elegant, graceful Pokémon when I was even younger than you are now.\p"
@@ -37,7 +37,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	speakername("Koishi")
 	msgbox(
 		format(
-			"I applaud your skill. You are still a child, yet you obviously have a natural aptitude for battle.\p"
+			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}I applaud your skill. You are still a child, yet you obviously have a natural aptitude for battle.\p"
 			"With the Token I just gave you, your Pokémon will obey you without question, even those you trade with others.\p"
 			"I am also supposed to give you this."
 		),
@@ -49,7 +49,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	speakername("Koishi")
 	msgbox(
 		format(
-			"This scroll contains Nature Power, a move that changes depending on the terrain your Pokémon is standing on.\p"
+			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}This scroll contains Nature Power, a move that changes depending on the terrain your Pokémon is standing on.\p"
 			"Going through the Toku Council's challenge is no easy undertaking, but I can feel your spirit overflowing with determination.\p"
 			"Good luck, {PLAYER}."
 		),
@@ -96,7 +96,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 
 	speakername("Koishi")
 	msgbox(format(
-		"That… That was a big one!…\p"
+		"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}That… That was a big one!…\p"
 		"I'm going outside to make sure everyone's alright."
 	))
 	closemessage
@@ -120,16 +120,16 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 script MaguroHarbor_Dojo_EventScript_Izumi {
 	trainerbattle_single(
 		TRAINER_IZUMI,
-		format("My Pokémon are the daintiest there is!"),
+		format("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}My Pokémon are the daintiest there is!"),
 		format("My poor Feebas!")
 	)
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		msgbox(format(
-			"Oh my, what was that quake?"
+			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Oh my, what was that quake?"
 		), MSGBOX_AUTOCLOSE)
 	} else {
 		msgbox(format(
-			"You'll go far. I can tell."
+			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}You'll go far. I can tell."
 		), MSGBOX_AUTOCLOSE)
 	}
 }
@@ -154,18 +154,18 @@ script MaguroHarbor_Dojo_EventScript_Ren {
 script MaguroHarbor_Dojo_EventScript_Mizu {
 	trainerbattle_single(
 		TRAINER_MIZU,
-		format("Do not disturb the koi pond!"),
+		format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}Do not disturb the koi pond!"),
 		format("Stop making so much noise!")
 	)
 
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		msgbox(format(
-			"The poor fish must be all shaken!"
+			"{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}The poor fish must be all shaken!"
 		), MSGBOX_AUTOCLOSE)
 	} else {
 		msgbox(format(
 			// TODO EVA put some actual fish in the pond ffs
-			"These are sophisticated fish. They need peace and quiet to thrive."
+			"{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}These are sophisticated fish. They need peace and quiet to thrive."
 		), MSGBOX_AUTOCLOSE)
 	}
 }
@@ -177,17 +177,17 @@ script MaguroHarbor_Dojo_EventScript_Advice {
 	if (flag(FLAG_BADGE01_GET)) {
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 			msgbox(format(
-				"You swept me away with that battle!\p"
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}You swept me away with that battle!\p"
 				"That quake just now nearly literally swept me away as well!"
 			), MSGBOX_AUTOCLOSE)
 		} else {
 			msgbox(format(
-				"You swept me away with that battle!"
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}You swept me away with that battle!"
 			))
 		}
 	} else {
 		msgbox(format(
-			"Hello, young challenger! Are you going to be fighting for your first Token?\p"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}Hello, young challenger! Are you going to be fighting for your first Token?\p"
 			"Welcome to the Koi Pond Dojo!\p"
 			"Koishi, the Master of this place, favors water-type moves. Her battling style is strong, yet graceful… Sigh…\p"
 			"I am her biggest fan! It's true! Maybe one day, I'll become your biggest fan, who knows?\p"

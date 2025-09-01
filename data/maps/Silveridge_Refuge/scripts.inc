@@ -78,6 +78,18 @@ Silveridge_Refuge_EventScript_Kricketune::
 	return
 
 
+Silveridge_Refuge_EventScript_Nurse::
+	setvar VAR_0x800B, LOCALID_NURSE_SILVERIDGE
+	setvar VAR_0x800A, LOCALID_CHANSEY_SILVERIDGE
+	setvar VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE
+	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
+	waitmessage
+	waitbuttonpress
+	removefieldmugshot
+	release
+	end
+
+
 Silveridge_Refuge_EventScript_Shamisen::
 	lock
 	faceplayer
@@ -106,7 +118,7 @@ Silveridge_Refuge_EventScript_ImWorried_Text_0:
 	.string "Woman$"
 
 Silveridge_Refuge_EventScript_ImWorried_Text_1:
-	.string "The whole town trembles from the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}The whole town trembles from the\n"
 	.string "Volcano's quakes…\p"
 	.string "I'm so worried…$"
 
@@ -142,11 +154,11 @@ Silveridge_Refuge_EventScript_FirebringerFangirl_Text_0:
 	.string "Girl$"
 
 Silveridge_Refuge_EventScript_FirebringerFangirl_Text_1:
-	.string "The Firebringer is coming to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}The Firebringer is coming to\n"
 	.string "Silveridge today! Gosh, I can't wait!$"
 
 Silveridge_Refuge_EventScript_FirebringerFangirl_Text_2:
-	.string "Oh gosh, look at him…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}Oh gosh, look at him…\n"
 	.string "He's so…\l"
 	.string "Rough-looking…\l"
 	.string "And handsome…And he smells like\l"
@@ -157,7 +169,7 @@ Silveridge_Refuge_EventScript_Artist_Text_0:
 	.string "Artist$"
 
 Silveridge_Refuge_EventScript_Artist_Text_1:
-	.string "Listening to the musician's sweet\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Listening to the musician's sweet\n"
 	.string "song inspires me so!$"
 
 Silveridge_Refuge_EventScript_Kricketune_Text_0:
@@ -167,11 +179,11 @@ Silveridge_Refuge_EventScript_Shamisen_Text_0:
 	.string "Shamisen Player$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_1:
-	.string "Are you resting here for the night as\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Are you resting here for the night as\n"
 	.string "well?$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_2:
-	.string "Good evening to you, {STR_VAR_1}.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Good evening to you, {STR_VAR_1}.\p"
 	.string "Are you here to listen to my music?\p"
 	.string "Or are you here to battle?$"
 
@@ -179,5 +191,5 @@ Silveridge_Refuge_EventScript_Shamisen_Text_3:
 	.string "Such fun!$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_4:
-	.string "That was just the thing I needed to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}That was just the thing I needed to\n"
 	.string "pass the time.$"

@@ -15,7 +15,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 		setnamedmon(SPECIES_EEVEE)
 		speakername("Boy")
 		msgbox(format(
-				"I hope Eevee comes home soon…"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}I hope Eevee comes home soon…"
 		))
 		closemessage
 		// Talked to Espeon's master but not to lady
@@ -24,7 +24,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 		setnamedmon(SPECIES_EEVEE)
 		speakername("Boy")
 		msgbox(format(
-			"I hope Eevee comes home soon…\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}I hope Eevee comes home soon…\p"
 			"What? Someone found my Eevee? Oh, please, can you tell them to bring it back?"
 		))
 		closemessage
@@ -34,7 +34,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
 		speakername("Boy")
 		msgbox(format(
-			"… …"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}… …"
 		))
 		closemessage
 
@@ -42,7 +42,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 3) {
 		speakername("Boy")
 		msgbox(format(
-			"Where's my Eevee?"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Where's my Eevee?"
 		))
 		closemessage
 
@@ -55,7 +55,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 		if (flag(FLAG_TEMP_1)) {
 			speakername("Boy")
 			msgbox(format(
-				"Thanks again!"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Thanks again!"
 			))
 			closemessage
 		} else {
@@ -63,7 +63,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 				setnamedmon(SPECIES_ESPEON)
 				speakername("Boy")
 				msgbox(format(
-					"How are you doing? Espeon looks happy to see you!"
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}How are you doing? Espeon looks happy to see you!"
 				))
 				closemessage
 			} else {
@@ -81,7 +81,7 @@ script SakuTown_House2_EventScript_Reunited {
 	clearflag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)
 	speakername("Boy")
 	msgbox(format(
-		"Where's my Eevee?"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Where's my Eevee?"
 	))
 	closemessage
 
@@ -104,7 +104,7 @@ script SakuTown_House2_EventScript_Reunited {
 	delay(48)
 
 	msgbox(format(
-		"Is… Is that Eevee?"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Is… Is that Eevee?"
 	))
 	closemessage
 
@@ -133,7 +133,7 @@ script SakuTown_House2_EventScript_Reunited {
 
 	speakername("Boy")
 	msgbox(format(
-		"It's you! It's really you! Oh, Eevee, I've missed you so much!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}It's you! It's really you! Oh, Eevee, I've missed you so much!\p"
 		"… …\p"
 		"Wait, you look a little different…"
 	))
@@ -154,7 +154,7 @@ script SakuTown_House2_EventScript_Reunited {
 	
 	speakername("Boy")
 	msgbox(format(
-		"You say it was a woman from Kura Village that found him?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}You say it was a woman from Kura Village that found him?\p"
 		"She took such good care of him!\p"
 		"His fur is so shiny and well-groomed, too…\p"
 		"… …\p"
@@ -221,14 +221,14 @@ script SakuTown_House2_EventScript_Sister {
 	speakername("Girl")
 	if (flag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)) {
 		msgbox(format(
-			"My brother's been feeling really down lately.\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}My brother's been feeling really down lately.\p"
 			"His precious Pokémon disappeared during the big storm we had a while ago."
 		))
 		closemessage
 		applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)
 	} else {
 		msgbox(format(
-			"Thank you for your kindness! It's nice to see my brother smiling again.\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you for your kindness! It's nice to see my brother smiling again.\p"
 			"I wish I could thank whoever took such good care of Eevee, too!"
 		))
 		closemessage

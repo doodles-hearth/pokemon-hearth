@@ -31,7 +31,7 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_WOMAN_1",
       "x": 22,
       "y": 34,
       "elevation": 3,
@@ -111,7 +111,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_2",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_BOY_2",
       "x": 12,
       "y": 45,
       "elevation": 3,
@@ -131,7 +131,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_1",
       "x": 26,
       "y": 23,
       "elevation": 3,
@@ -152,7 +152,7 @@
     },
     {
       "local_id": "LOCALID_RUSTBORO_LITTLE_BOY",
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_LITTLE_BOY",
       "x": 24,
       "y": 51,
       "elevation": 3,
@@ -173,7 +173,7 @@
     },
     {
       "local_id": "LOCALID_RUSTBORO_LITTLE_GIRL",
-      "graphics_id": "OBJ_EVENT_GFX_LITTLE_GIRL",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_LITTLE_GIRL",
       "x": 25,
       "y": 51,
       "elevation": 3,
@@ -194,7 +194,7 @@
     },
     {
       "local_id": "LOCALID_RUSTBORO_DEVON_EMPLOYEE",
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_2",
       "x": 30,
       "y": 10,
       "elevation": 3,
@@ -275,7 +275,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_MAN_2",
       "x": 19,
       "y": 27,
       "elevation": 3,
@@ -337,7 +337,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BOY_1",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_BOY_1",
       "x": 31,
       "y": 36,
       "elevation": 3,

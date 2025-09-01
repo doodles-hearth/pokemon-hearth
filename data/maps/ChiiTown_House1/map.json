@@ -12,10 +12,10 @@
   "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_OLD_MAN",
       "x": 3,
       "y": 3,
       "elevation": 0,
@@ -194,7 +194,5 @@
       "script": "ChiiTown_House1_EventScript_OldManTrespassing"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": []
 }

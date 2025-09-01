@@ -23,9 +23,10 @@ script KuraTown_House2_EventScript_Ashii {
 }
 
 script(local) AshiiScript1 {
+	applymovement(LOCALID_ASHII, moves(emote_pensive))
 	speakername("Girl")
 	msgbox(format(
-		"Sigh… Oh, Tama…\nWhy must life be so complicated?"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Sigh… Oh, Tama…\nWhy must life be so complicated?"
 	))
 	closemessage
 	delay(30)
@@ -38,9 +39,10 @@ script(local) AshiiScript1 {
 	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
 	waitmovement(0)
 
+	applymovement(LOCALID_ASHII, moves(emote_upset))
 	speakername("Girl")
 	msgbox(format(
-		"Hey, what are you doing in my house?\nWere you eavesdropping?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Hey, what are you doing in my house?\nWere you eavesdropping?\p"
 		"…It doesn't matter anyway.\nThe boy I really like lives in\lSaku Village, but our two villages hate each other, so I can't see him anymore.\p"
 		"If only there was a way for him\nto know my feelings…"
 	))
@@ -53,7 +55,7 @@ script(local) AshiiScript1 {
 
 	speakername("Ashii")
 	msgbox(format(
-		"Wait, you're not from here, are you?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Wait, you're not from here, are you?\p"
 		"My name is Ashii. I need your help.\p"
 		"The guard won't let anyone from\nKura Village enter Saku Village.\lBut you should be fine!\p"
 		"Please, go to Saku Village and\ngive him this.\p"
@@ -70,7 +72,7 @@ script(local) AshiiScript2 {
 	faceplayer
 	speakername("Ashii")
 	msgbox(format(
-		"Please, give Tama my silk scarf.\nHe'll know it's from me…"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Please, give Tama my silk scarf.\nHe'll know it's from me…"
 	))
 	closemessage
 }
@@ -79,7 +81,7 @@ script(local) AshiiScript3 {
 	faceplayer
 	speakername("Ashii")
 	msgbox(format(
-		"Were you able to give Tama my gift?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Were you able to give Tama my gift?\p"
 		"Did…\nDid he get my letter?"
 	))
 
@@ -106,8 +108,8 @@ script(local) AshiiScript3 {
 
 	speakername("Ashii")
 	msgbox(format(
-		"I'm sorry. You've been an incredible help, and I don't even know your name!\NMay i ask what it is?\p"
-		"{PLAYER}… I see…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm sorry. You've been an incredible help, and I don't even know your name!\p"
+		"… … …{PLAYER}. I see…\p"
 		"{PLAYER}, I know this is a big thing to ask, but…\p"
 		"I want to be sure that my meeting with Tama is safe.\NWho knows? It might be our last.\p"
 		"Could you please accompany me?"
@@ -148,9 +150,10 @@ script(local) AshiiScript3 {
 
 	gettimeofday
 	if(var(VAR_0x8000) == TIME_DEAD_NIGHT) {
+		applymovement(LOCALID_ASHII, moves(emote_heart))
 		speakername("Ashii")
 		msgbox(format(
-			"Thank you! Thank you! Thank you!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
 			"Let's make haste, then.\nBefore the moon takes her slumber!"
 		))
 
@@ -160,9 +163,10 @@ script(local) AshiiScript3 {
 
 		setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3)
 	} else {
+		applymovement(LOCALID_ASHII, moves(emote_heart))
 		speakername("Ashii")
 		msgbox(format(
-			"Thank you! Thank you! Thank you!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
 			"Meet me here later tonight."
 		))
 		closemessage
@@ -186,14 +190,16 @@ script(local) AshiiScript3 {
 
 script(local) AshiiScript_Reward {
 	faceplayer
+	applymovement(LOCALID_ASHII, moves(emote_happy))
 	speakername("Ashii")
 	msgbox(format(
-		"{PLAYER}! It's you!\nI can't thank you enough for the night you've given us.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}{PLAYER}! It's you!\nI can't thank you enough for the night you've given us.\p"
 		"Even if we must meet under cover of darkness, I would risk it all for Tama, again and again and again…\NAnd again… And again…\NAnd again…\p"
 		"Here, take this.\nIt's the least I can do… "
 	))
 	closemessage
 
+	// TODO EVA change reward!
 	giveitem(ITEM_DESTINY_KNOT, 1)
 
 	completequest(QUEST_SAKURALOVERS)

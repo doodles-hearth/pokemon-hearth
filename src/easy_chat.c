@@ -5017,7 +5017,7 @@ static void TryAddInterviewObjectEvents(void)
         graphicsId = OBJ_EVENT_GFX_REPORTER_F;
         break;
     case EASY_CHAT_PERSON_BOY:
-        graphicsId = OBJ_EVENT_GFX_BOY_1;
+        graphicsId = OBJ_EVENT_GFX_SUNRISE_BOY_1;
         break;
     default:
         return;

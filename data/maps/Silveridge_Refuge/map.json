@@ -12,10 +12,10 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_MAN_2",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_MAN_2",
       "x": 9,
       "y": 7,
       "elevation": 0,
@@ -35,7 +35,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_WOMAN_2",
       "x": 16,
       "y": 9,
       "elevation": 0,
@@ -95,7 +95,8 @@
       "night": true
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_NURSE",
+      "local_id": "LOCALID_NURSE_SILVERIDGE",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_NURSE",
       "x": 13,
       "y": 3,
       "elevation": 0,
@@ -104,7 +105,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "ChiiTown_PokemonCenter_EventScript_Nurse",
+      "script": "Silveridge_Refuge_EventScript_Nurse",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,
@@ -115,6 +116,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_CHANSEY_SILVERIDGE",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CHANSEY)",
       "x": 14,
       "y": 3,
@@ -175,7 +177,7 @@
       "night": true
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_NURSE",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_NURSE",
       "x": 6,
       "y": 3,
       "elevation": 0,
@@ -195,7 +197,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "graphics_id": "OBJ_EVENT_GFX_MOUNTAIN_GIRL_1",
       "x": 11,
       "y": 5,
       "elevation": 0,
@@ -224,10 +226,6 @@
       "dest_warp_id": "4"
     }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": []
 }

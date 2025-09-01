@@ -31,6 +31,7 @@ KuraTown_House2_EventScript_Ashii_6:
 
 
 AshiiScript1:
+	applymovement 1, AshiiScript1_Movement_0
 	speakername AshiiScript1_Text_0
 	msgbox AshiiScript1_Text_1
 	closemessage
@@ -42,12 +43,13 @@ AshiiScript1:
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
+	applymovement 1, AshiiScript1_Movement_1
 	speakername AshiiScript1_Text_0
 	msgbox AshiiScript1_Text_2
 	closemessage
 	delay 30
 	playse SE_PIN
-	applymovement 1, AshiiScript1_Movement_0
+	applymovement 1, AshiiScript1_Movement_2
 	waitmovement 0
 	speakername AshiiScript1_Text_3
 	msgbox AshiiScript1_Text_4
@@ -103,6 +105,7 @@ AshiiScript3:
 	gettimeofday
 	compare VAR_0x8000, TIME_DEAD_NIGHT
 	goto_if_eq AshiiScript3_2
+	applymovement 1, AshiiScript3_Movement_3
 	speakername AshiiScript1_Text_3
 	msgbox AshiiScript3_Text_9
 	closemessage
@@ -120,6 +123,7 @@ AshiiScript3_1:
 	return
 
 AshiiScript3_2:
+	applymovement 1, AshiiScript3_Movement_3
 	speakername AshiiScript1_Text_3
 	msgbox AshiiScript3_Text_8
 	delay 40
@@ -130,6 +134,7 @@ AshiiScript3_2:
 
 AshiiScript_Reward:
 	faceplayer
+	applymovement 1, AshiiScript_Reward_Movement_0
 	speakername AshiiScript1_Text_3
 	msgbox AshiiScript_Reward_Text_0
 	closemessage
@@ -140,6 +145,14 @@ AshiiScript_Reward:
 
 
 AshiiScript1_Movement_0:
+	emote_pensive
+	step_end
+
+AshiiScript1_Movement_1:
+	emote_upset
+	step_end
+
+AshiiScript1_Movement_2:
 	emote_exclamation_mark
 	delay_16
 	delay_16
@@ -183,15 +196,23 @@ AshiiScript3_Movement_2:
 	face_player
 	step_end
 
+AshiiScript3_Movement_3:
+	emote_heart
+	step_end
+
+AshiiScript_Reward_Movement_0:
+	emote_happy
+	step_end
+
 AshiiScript1_Text_0:
 	.string "Girl$"
 
 AshiiScript1_Text_1:
-	.string "Sigh… Oh, Tama…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Sigh… Oh, Tama…\n"
 	.string "Why must life be so complicated?$"
 
 AshiiScript1_Text_2:
-	.string "Hey, what are you doing in my house?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Hey, what are you doing in my house?\n"
 	.string "Were you eavesdropping?\p"
 	.string "…It doesn't matter anyway.\n"
 	.string "The boy I really like lives in\l"
@@ -205,7 +226,7 @@ AshiiScript1_Text_3:
 	.string "Ashii$"
 
 AshiiScript1_Text_4:
-	.string "Wait, you're not from here, are you?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Wait, you're not from here, are you?\p"
 	.string "My name is Ashii. I need your help.\p"
 	.string "The guard won't let anyone from\n"
 	.string "Kura Village enter Saku Village.\l"
@@ -215,11 +236,11 @@ AshiiScript1_Text_4:
 	.string "He'll know it's from me…$"
 
 AshiiScript2_Text_0:
-	.string "Please, give Tama my silk scarf.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Please, give Tama my silk scarf.\n"
 	.string "He'll know it's from me…$"
 
 AshiiScript3_Text_0:
-	.string "Were you able to give Tama my gift?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Were you able to give Tama my gift?\p"
 	.string "Did…\n"
 	.string "Did he get my letter?$"
 
@@ -233,10 +254,9 @@ AshiiScript3_Text_3:
 	.string "Loud and clear.$"
 
 AshiiScript3_Text_4:
-	.string "I'm sorry. You've been an incredible\n"
-	.string "help, and I don't even know your name!\l"
-	.string "May i ask what it is?\p"
-	.string "{PLAYER}… I see…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm sorry. You've been an incredible\n"
+	.string "help, and I don't even know your name!\p"
+	.string "… … …{PLAYER}. I see…\p"
 	.string "{PLAYER}, I know this is a big thing\n"
 	.string "to ask, but…\p"
 	.string "I want to be sure that my meeting\n"
@@ -254,19 +274,19 @@ AshiiScript3_Text_7:
 	.string "I guess?$"
 
 AshiiScript3_Text_8:
-	.string "Thank you! Thank you! Thank you!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
 	.string "Let's make haste, then.\n"
 	.string "Before the moon takes her slumber!$"
 
 AshiiScript3_Text_9:
-	.string "Thank you! Thank you! Thank you!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
 	.string "Meet me here later tonight.$"
 
 AshiiScript3_Text_10:
 	.string "Late that night…$"
 
 AshiiScript_Reward_Text_0:
-	.string "{PLAYER}! It's you!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}{PLAYER}! It's you!\n"
 	.string "I can't thank you enough for the\l"
 	.string "night you've given us.\p"
 	.string "Even if we must meet under cover of\n"

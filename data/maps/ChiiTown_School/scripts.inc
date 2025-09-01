@@ -230,17 +230,17 @@ ChiiTown_School_EventScript_ChildTellsStory_Text_0:
 	.string "woke up, and then there was fire\l"
 	.string "everywhere, and then four Pokémon\l"
 	.string "were fighting the Volcano one, and\l"
-	.string "then the Volcano stopped spitting\l"
-	.string "fire because the Pokémon went back\l"
-	.string "to sleep!$"
+	.string "then- and then the Volcano stopped\l"
+	.string "spitting fire because the Pokémon\l"
+	.string "went back to sleep!$"
 
 ChiiTown_School_EventScript_IsThePokemonWakingUp_Text_0:
 	.string "When the Volcano Pokémon went to\n"
 	.string "bed, the Volcano stopped erupting!\p"
 	.string "But the Volcano has been rumbling for\n"
 	.string "days now…\p"
-	.string "Does that mean the Pokémon's waking\n"
-	.string "up again?$"
+	.string "Does that mean the Volcano Pokémon's\n"
+	.string "waking up again?$"
 
 ChiiTown_School_EventScript_ChildWiseGlasses_Text_0:
 	.string "Ugh, I missed a class so I have to\n"

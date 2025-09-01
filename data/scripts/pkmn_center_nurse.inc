@@ -106,6 +106,7 @@ Common_EventScript_PkmnCenterNurse_CutTheBullshit::
 	lock
 	faceplayer
 	setvar VAR_0x8004, 0
+	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
 	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_0
 	closemessage
@@ -113,14 +114,17 @@ Common_EventScript_PkmnCenterNurse_CutTheBullshit::
 	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
 	goto_if_unset FLAG_POKERUS_EXPLAINED, Common_EventScript_PkmnCenterNurse_CutTheBullshit_2
 Common_EventScript_PkmnCenterNurse_CutTheBullshit_1:
+	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
 	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_1
 	closemessage
 	applymovement VAR_0x800B, Common_EventScript_PkmnCenterNurse_CutTheBullshit_Movement_0
 	waitmovement 0
+	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
 	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_2
 	closemessage
+	removefieldmugshot
 	release
 	end
 
@@ -131,6 +135,7 @@ Common_EventScript_PkmnCenterNurse_CutTheBullshit_2:
 
 EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit::
 	specialvar VAR_RESULT, IsPokerusInParty
+	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	compare VAR_RESULT, TRUE
 	goto_if_eq EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit_1
 	return
@@ -298,10 +303,10 @@ Common_EventScript_PkmnCenterNurse_Sleep_Text_1:
 	.string "can spend the night here.$"
 
 Common_EventScript_PkmnCenterNurse_Sleep_Text_2:
-	.string "Sleep until morning$"
+	.string "Sleep until morning.$"
 
 Common_EventScript_PkmnCenterNurse_Sleep_Text_3:
-	.string "Sleep until nighttime$"
+	.string "Sleep until nighttime.$"
 
 Common_EventScript_PkmnCenterNurse_Sleep_Text_4:
 	.string "Maybe later.$"

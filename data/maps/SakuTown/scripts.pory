@@ -83,6 +83,10 @@ mapscripts SakuTown_MapScripts {
 // Rival encounter right before the Saku wall
 script SakuTown_EventScript_RivalAtSakuWall {
 	lock
+
+	playse(SE_PIN)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
+
 	speakername("???")
 	msgbox(format("Wait up, {PLAYER}!"))
 	closemessage
@@ -102,8 +106,12 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"I was wondering if you'd already reached Saku Village by now. Looks like we almost missed each other!\p"
-		"I saw several patrolling Samurai on my way here. They look so cool, no wonder they're so admired!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}I was wondering if you'd reached Saku Village by now. Looks like we almost missed each other!\p"
+		"I saw several patrolling Samurai on my way here."
+	))
+	applymovement(LOCALID_RIVAL, moves(emote_heart))
+	msgbox(format(
+		"They look so cool, no wonder they're so admired!\p"
 		"Oh, {PLAYER}, have you caught any Pokémon on your way here?\p"
 		"Me?\nBoy, I'm so glad you asked…\p"
 		"Let me show you!"
@@ -119,9 +127,10 @@ script SakuTown_EventScript_RivalAtSakuWall {
 			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_CYNDAQUIL, SakuTown_Text_RivalDefeat)
 	}
 
+	applymovement(LOCALID_NATSUKI_SAKU, moves(emote_pensive))
 	speakername("Natsuki")
 	msgbox(format(
-		"Woah! I… I didn't think you'd go that hard, honestly!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah! I… I didn't think you'd go that hard, honestly!\p"
 		"Clearly I underestimated you. That's alright. I won't make that mistake next time!\p"
 		"I can see your Pokémon are really growing to like you, it's great!\p"
 		"Are you doing the Dojo challenge?\nYou might just stand a chance against the Dojo that's in the next village!\p"
@@ -143,21 +152,22 @@ script SakuTown_EventScript_RivalAtSakuWall {
 		case 0:
 			speakername("Natsuki")
 			msgbox(format(
-				"You got it!"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}You got it!"
 			))
 		case 1:
 			speakername("Natsuki")
 			msgbox(format(
-				"Right behind you!"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Right behind you!"
 			))
 			closemessage
 
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down, delay_16 * 3, walk_in_place_fast_up))
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up, delay_16 * 3, walk_in_place_fast_down))
 			waitmovement(0)
 
+			applymovement(LOCALID_NATSUKI_SAKU, moves(emote_happy))
 			speakername("Natsuki")
 			msgbox(format(
-				"Bahaha! Got you!"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Bahaha! Got you!"
 			))
 			closemessage
 	}
@@ -229,9 +239,10 @@ script SakuTown_EventScript_Scyther {
 script SakuTown_EventScript_Woman {
 	lock
 	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_upset))
 	speakername("Woman")
 	msgbox(format(
-		"Those thugs in Kura Village may have their own Dojo, but their town is nothing but an ugly pile of rocks!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_1 EMOTE_NORMAL}Those thugs in Kura Village may have their own Dojo, but their town is nothing but an ugly pile of rocks!\p"
 		"They don't even have a Pokémon refuge!"
 	))
 	release
@@ -251,6 +262,7 @@ script SakuTown_EventScript_Karateka {
 	waitmovement(0)
 	waitse
 
+	applymovement(VAR_LAST_TALKED, moves(emote_heart))
 	speakername("Man")
 	msgbox(format(
 		"Come on, Mama, Kuku! Daddy loves you!!"
@@ -426,8 +438,11 @@ script SakuTown_EventScript_MonHues {
 	faceplayer
 	speakername("Man")
 	msgbox(format(
-		"Have you ever paid close attention to the fur and feather colors of the wild Pokémon?\p"
-		"They may all look the same at first…\nBut each one has its own totally unique colors!\p"
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}Have you ever paid close attention to the fur and feather colors of the wild Pokémon?\p"
+		"They may all look the same at first…\nBut each one has its own totally unique colors!"
+	))
+	applymovement(VAR_LAST_TALKED, moves(emote_music))
+	msgbox(format(
 		"Doesn't noticing that make your heart sing?"
 	))
 	closemessage
@@ -469,12 +484,12 @@ script SakuTown_EventScript_TamaArgument {
 
 	applymovement(LOCALID_TAMA, moves(walk_in_place_fast_right))
 	speakername("Tama")
-	msgbox(format("The love of my life is waiting for me\non the other side!\lYou can't do this to me!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}The love of my life is waiting for me\non the other side!\lYou can't do this to me!"))
 	closemessage
 
 	applymovement(LOCALID_TAMASDAD, moves(walk_in_place_fast_right))
-	speakername("Old man")
-	msgbox(format("Over my dead body will my son be in love with someone from Kura Village!"))
+	speakername("Old Man")
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Over my dead body will my son be in love with someone from Kura Village!"))
 	closemessage
 
 	playse(SE_PIN)
@@ -488,7 +503,7 @@ script SakuTown_EventScript_TamaArgument {
 	applymovement(LOCALID_TAMA, moves(jump_in_place_up))
 	waitmovement(LOCALID_TAMA)
 	speakername("Tama")
-	msgbox(format("It's you!\nYou need to help me get to Ashii,\lplease!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}It's you!\nYou need to help me get to Ashii,\lplease!"))
 	waitmessage
 	closemessage
 	playse(MUS_VS_RAYQUAZA)
@@ -497,9 +512,10 @@ script SakuTown_EventScript_TamaArgument {
 	applymovement(LOCALID_TAMASDAD, moves(walk_in_place_fast_up))
 	waitmovement(LOCALID_TAMASDAD)
 
+	applymovement(LOCALID_TAMASDAD, moves(emote_angry))
 	speakername("Old Man")
 	msgbox(format(
-		"So you're the whippersnapper that's making my son collude with the enemy, eh.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}So you're the whippersnapper that's making my son collude with the enemy, eh.\p"
 		"You outta be taught a lesson in respect, kiddo!"
 	))
 	closemessage
@@ -513,7 +529,7 @@ script SakuTown_EventScript_TamaArgument {
 	waitmovement(OBJ_EVENT_ID_CAMERA)
 
 	speakername("Old Man")
-	msgbox(format("{FONT_SMALL_NARROW}Huff… wheeze…"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}{FONT_SMALL_NARROW}Huff… wheeze…"))
 	closemessage
 
 	applymovement(LOCALID_TAMASDAD, moves(walk_slower_up))
@@ -527,15 +543,16 @@ script SakuTown_EventScript_TamaArgument {
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) != B_OUTCOME_WON) {
 		speakername("Kiyosumi")
-		msgbox(format("That'll teach you!!"))
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}That'll teach you!!"))
 		closemessage
 	}
 
 	applymovement(LOCALID_TAMASDAD, moves(walk_in_place_fast_down, delay_16 * 3))
 	waitmovement(LOCALID_TAMASDAD)
 
+	applymovement(LOCALID_TAMASDAD, moves(emote_upset))
 	speakername("Kiyosumi")
-	msgbox(format("{FONT_SMALL_NARROW}Huff… puff… Definitely not in as good a shape anymore…"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}{FONT_SMALL_NARROW}Huff… puff… Definitely not in as good a shape anymore…"))
 	closemessage
 
 	applymovement(LOCALID_TAMA, moves(walk_up * 2, walk_in_place_fast_right))
@@ -543,7 +560,7 @@ script SakuTown_EventScript_TamaArgument {
 
 	speakername("Tama")
 	msgbox(format(
-		"Father, I know you don't approve of us, but please understand.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Father, I know you don't approve of us, but please understand.\p"
 		"My mind is made up and you can't convince me otherwise.\p"
 		"What would you have done if someone had come between you and Mother?"
 	))
@@ -552,9 +569,10 @@ script SakuTown_EventScript_TamaArgument {
 	applymovement(LOCALID_TAMASDAD, moves(walk_in_place_fast_left))
 	waitmovement(0)
 
+	applymovement(LOCALID_TAMASDAD, moves(emote_pensive))
 	speakername("Kiyosumi")
 	msgbox(format(
-		"… … … … … …\n… … … … … …"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}… … … … … …\n… … … … … …"
 	))
 	closemessage
 	delay(60)
@@ -566,7 +584,7 @@ script SakuTown_EventScript_TamaArgument {
 
 	speakername("Kiyosumi")
 	msgbox(format(
-		"If your love is as true as you say, then neither I nor anyone else can stop you.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}If your love is as true as you say, then neither I nor anyone else can stop you.\p"
 		"Do what you must."
 	))
 	closemessage
@@ -581,7 +599,7 @@ script SakuTown_EventScript_TamaArgument {
 
 	speakername("Tama")
 	msgbox(format(
-		"I can't thank you enough.\nNow, let's make haste!\lAshii must be waiting for us!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I can't thank you enough.\nNow, let's make haste!\lAshii must be waiting for us!\p"
 		"Let me heal your Pokémon as thanks."
 	))
 
@@ -666,11 +684,11 @@ script SakuTown_EventScript_LoversSeeEachOther {
 
 	// TODO: PUT SOME LOVEYDOVEY MUSIC HERE
 	speakername("Ashii")
-	msgbox("Tama!")
+	msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Tama!")
 	closemessage
 
 	speakername("Tama")
-	msgbox("Ashii!")
+	msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Ashii!")
 	closemessage
 
 	return
@@ -681,7 +699,7 @@ script SakuTown_EventScript_LoversReunite {
 	waitmovement(0)
 
 	speakername("Ashii")
-	msgbox(format("… … … … … …\n… … … … … …"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}… … … … … …\n… … … … … …"))
 
 	special(SpawnCameraObject)	
 	switch(var(VAR_TEMP_0))
@@ -698,14 +716,14 @@ script SakuTown_EventScript_LoversReunite {
 	applymovement(LOCALID_TAMA2, moves(walk_in_place_fast_right))
 
 	speakername("Tama")
-	msgbox("…Hi.")
+	msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}…Hi.")
 	closemessage
 
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_left))
 
 	speakername("Ashii")
 	msgbox(format(
-		"Hehehe… Hi.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Hehehe… Hi.\p"
 		"It's nice seeing you."
 	))
 	closemessage
@@ -717,7 +735,7 @@ script SakuTown_EventScript_LoversReunite {
 
 	speakername("Tama")
 	msgbox(format(
-		"I didn't think I'd ever see you again.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I didn't think I'd ever see you again.\p"
 		"I… I have so much to say…"
 	))
 	closemessage
@@ -726,7 +744,7 @@ script SakuTown_EventScript_LoversReunite {
 
 	speakername("Ashii")
 	msgbox(format(
-		"So do I.\nI felt like an insect that could do nothing but stare at the impossibly tall barricade between us.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}So do I.\nI felt like an insect that could do nothing but stare at the impossibly tall barricade between us.\p"
 		"And yet… Even fierce seperatism couldn't keep us apart tonight.\p"
 		"Tonight, we can have a midsummer dream of mirth and joy."
 	))
@@ -735,13 +753,13 @@ script SakuTown_EventScript_LoversReunite {
 	applymovement(LOCALID_TAMA2, moves(walk_in_place_fast_right))
 
 	speakername("Tama")
-	msgbox(format("You always were so poetic with your words."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}You always were so poetic with your words."))
 	waitmessage
 	closemessage
 
 	playse(SE_PIN)
-	applymovement(LOCALID_TAMA2, moves(emote_heart, delay_16 * 3))
-	applymovement(LOCALID_ASHII, moves(emote_heart, delay_16 * 3))
+	applymovement(LOCALID_TAMA2, moves(emote_heart, delay_16 * 6))
+	applymovement(LOCALID_ASHII, moves(emote_heart, delay_16 * 6))
 	waitmovement(LOCALID_TAMA2)
 	waitmovement(LOCALID_ASHII)
 	waitse
@@ -750,7 +768,7 @@ script SakuTown_EventScript_LoversReunite {
 
 	speakername("Tama")
 	msgbox(format(
-		"We can't stay here for long, Ashii.\N"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}We can't stay here for long, Ashii.\N"
 		"My father begrundingly let me go, but there's no telling the wrath our villages will wreak upon us if they see us here in the morning."
 	))
 	closemessage
@@ -758,14 +776,14 @@ script SakuTown_EventScript_LoversReunite {
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_left))
 
 	speakername("Ashii")
-	msgbox(format("I know. But even so, I'm glad to have spent this time with you."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I know. But even so, I'm glad to have spent this time with you."))
 	closemessage
 
 	applymovement(LOCALID_TAMA2, moves(walk_in_place_fast_right))
 
 	speakername("Tama")
 	msgbox(format(
-		"Will…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Will…\p"
 		"Will we see each other again?\nTomorrow?"
 	))
 	closemessage
@@ -774,7 +792,7 @@ script SakuTown_EventScript_LoversReunite {
 
 	speakername("Ashii")
 	msgbox(format(
-		"…Tomorrow and tomorrow and tomorrow…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}…Tomorrow and tomorrow and tomorrow…\p"
 		"It creeps in a petty pace from day to day, but I would gladly wait a thousand of them to see you again."
 	))
 	closemessage
@@ -784,13 +802,13 @@ script SakuTown_EventScript_LoversReunite {
 	applymovement(LOCALID_TAMA2, moves(face_down, delay_16 * 3, face_right))
 
 	speakername("Tama")
-	msgbox(format("{FONT_SMALL_NARROW}What?"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}{FONT_SMALL_NARROW}What?"))
 	closemessage
 
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_left))
 
 	speakername("Ashii")
-	msgbox(format("Hehe…\nI'll see you tomorrow, my love."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Hehe…\nI'll see you tomorrow, my love."))
 	closemessage
 
 	playse(SE_PIN)
@@ -798,24 +816,24 @@ script SakuTown_EventScript_LoversReunite {
 	waitmovement(0)
 	waitse
 	speakername("Tama")
-	msgbox(format("OH! Yes, haha!\nWell… I'll see you tomorrow, then."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}OH! Yes, haha!\nWell… I'll see you tomorrow, then."))
 	closemessage
 
 	playse(SE_PIN)
-	applymovement(LOCALID_TAMA2, moves(emote_heart, delay_16 * 3))
-	applymovement(LOCALID_ASHII, moves(emote_heart, delay_16 * 3))
+	applymovement(LOCALID_TAMA2, moves(emote_heart, delay_16 * 6))
+	applymovement(LOCALID_ASHII, moves(emote_heart, delay_16 * 6))
 	waitmovement(LOCALID_TAMA2)
 	waitmovement(LOCALID_ASHII)
 	waitse
 
 	speakername("Ashii")
-	msgbox(format("Goodbye, love! May the gods give you a restful slumber!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Goodbye, love! May the gods give you a restful slumber!"))
 	closemessage
 
 	applymovement(LOCALID_TAMA2, moves(walk_in_place_fast_right))
 
 	speakername("Tama")
-	msgbox(format("B-bye…"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}B-bye…"))
 	closemessage
 
 	applymovement(LOCALID_ASHII, moves(walk_slow_up, walk_slow_right * 2, walk_slow_up * 5))
@@ -829,9 +847,10 @@ script SakuTown_EventScript_LoversReunite {
 script SakuTown_EventScript_TamaTalksToPlayerFinal {
 	special(RemoveCameraObject)
 
+	applymovement(LOCALID_TAMA2, moves(emote_heart))
 	speakername("Tama")
 	msgbox(format(
-		"I can't believe it, it finally happened!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I can't believe it, it finally happened!\p"
 		"Wielder… thank you…\nIt's so good to see her again!"
 	))
 	closemessage
@@ -852,7 +871,7 @@ script SakuTown_EventScript_TamaArgument_MoveDown2 {
 script SakuTown_EventScript_TamasAnxious {
 	faceplayer
 	speakername("Tama")
-	msgbox(format("My heart is about to burst out of my chest…"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}My heart is about to burst out of my chest…"))
 	closemessage
 }
 
@@ -860,8 +879,9 @@ script SakuTown_EventScript_NoLeavingAshii {
 	applymovement(LOCALID_TAMA2, moves(face_player))
 	waitmovement(0)
 
+	applymovement(LOCALID_TAMA2, moves(emote_sad))
 	speakername("Tama")
-	msgbox(format("W-where are you going?!\nAshii's waiting for us!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}W-where are you going?!\nAshii's waiting for us!"))
 	closemessage
 
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up))

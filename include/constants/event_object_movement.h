@@ -271,6 +271,17 @@
 #define MOVEMENT_ACTION_SURF_STILL_LEFT                 0xB3
 #define MOVEMENT_ACTION_SURF_STILL_RIGHT                0xB4
 
+#define MOVEMENT_ACTION_EMOTE_MUSIC                     0xB5
+#define MOVEMENT_ACTION_EMOTE_SAD                       0xB6
+#define MOVEMENT_ACTION_EMOTE_UPSET                     0xB7
+#define MOVEMENT_ACTION_EMOTE_ANGRY                     0xB8
+#define MOVEMENT_ACTION_EMOTE_PENSIVE                   0xB9
+#define MOVEMENT_ACTION_EMOTE_POISONED                  0xBA
+#define MOVEMENT_ACTION_EMOTE_HAPPY                     0xBB
+#define MOVEMENT_ACTION_EMOTE_CRYING                    0xBC
+#define MOVEMENT_ACTION_EMOTE_SWEAT                     0xBD
+#define MOVEMENT_ACTION_EMOTE_SLEEP                     0xBE
+
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF
 

@@ -112,14 +112,15 @@ YifuCity_CrobatShop_Guard_9:
 	mcdialogue YifuCity_CrobatShop_Guard_Text_3, YifuCity_CrobatShop_Guard_Text_4, YifuCity_CrobatShop_Guard_Text_5
 	closemessage
 	delay 24
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_3
 	speakername YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_6
 	waitmovement 0
 	closemessage
 	compare VAR_FACING, DIR_NORTH
 	goto_if_eq YifuCity_CrobatShop_Guard_15
-	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_5
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_6
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_6
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_7
 YifuCity_CrobatShop_Guard_14:
 	waitmovement VAR_LAST_TALKED
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -129,8 +130,8 @@ YifuCity_CrobatShop_Guard_14:
 	goto YifuCity_CrobatShop_Guard_8
 
 YifuCity_CrobatShop_Guard_15:
-	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_3
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_4
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_4
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_5
 	goto YifuCity_CrobatShop_Guard_14
 
 YifuCity_CrobatShop_Guard_18:
@@ -147,14 +148,15 @@ YifuCity_CrobatShop_Guard_23:
 	goto_if_set FLAG_TEMP_1, YifuCity_CrobatShop_Guard_28
 YifuCity_CrobatShop_Guard_27:
 	delay 24
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_3
 	speakername YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_6
 	waitmovement 0
 	closemessage
 	compare VAR_FACING, DIR_NORTH
 	goto_if_eq YifuCity_CrobatShop_Guard_35
-	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_5
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_6
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_6
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_7
 YifuCity_CrobatShop_Guard_34:
 	waitmovement VAR_LAST_TALKED
 	waitmovement OBJ_EVENT_ID_PLAYER
@@ -171,6 +173,7 @@ YifuCity_CrobatShop_Guard_24:
 	goto YifuCity_CrobatShop_Guard_23
 
 YifuCity_CrobatShop_Guard_26:
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_8
 	speakername YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_13
 	closemessage
@@ -178,7 +181,7 @@ YifuCity_CrobatShop_Guard_26:
 	compare VAR_FACING, DIR_NORTH
 	goto_if_eq YifuCity_CrobatShop_Guard_32
 YifuCity_CrobatShop_Guard_31:
-	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_8
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_10
 	waitmovement 0
 	goto YifuCity_CrobatShop_Guard_8
 
@@ -187,12 +190,12 @@ YifuCity_CrobatShop_Guard_28:
 	goto YifuCity_CrobatShop_Guard_27
 
 YifuCity_CrobatShop_Guard_32:
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_7
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_9
 	goto YifuCity_CrobatShop_Guard_31
 
 YifuCity_CrobatShop_Guard_35:
-	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_3
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_4
+	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_4
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_CrobatShop_Guard_Movement_5
 	goto YifuCity_CrobatShop_Guard_34
 
 
@@ -215,16 +218,16 @@ YifuCity_CrobatShop_Customer1_2:
 YifuCity_CrobatShop_Customer2::
 	lock
 	faceplayer
-	speakername YifuCity_CrobatShop_Customer1_Text_0
+	speakername YifuCity_CrobatShop_Customer2_Text_0
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_CrobatShop_Customer2_2
-	msgbox YifuCity_CrobatShop_Customer2_Text_1
+	msgbox YifuCity_CrobatShop_Customer2_Text_2
 YifuCity_CrobatShop_Customer2_1:
 	closemessage
 	release
 	return
 
 YifuCity_CrobatShop_Customer2_2:
-	msgbox YifuCity_CrobatShop_Customer2_Text_0
+	msgbox YifuCity_CrobatShop_Customer2_Text_1
 	goto YifuCity_CrobatShop_Customer2_1
 
 
@@ -253,13 +256,17 @@ YifuCity_CrobatShop_Guard_Movement_2:
 	step_end
 
 YifuCity_CrobatShop_Guard_Movement_3:
+	emote_angry
+	step_end
+
+YifuCity_CrobatShop_Guard_Movement_4:
 	walk_down
 	lock_facing_direction
 	walk_up
 	unlock_facing_direction
 	step_end
 
-YifuCity_CrobatShop_Guard_Movement_4:
+YifuCity_CrobatShop_Guard_Movement_5:
 	lock_facing_direction
 	lock_anim
 	jump_2_down
@@ -267,14 +274,14 @@ YifuCity_CrobatShop_Guard_Movement_4:
 	unlock_anim
 	step_end
 
-YifuCity_CrobatShop_Guard_Movement_5:
+YifuCity_CrobatShop_Guard_Movement_6:
 	walk_left
 	lock_facing_direction
 	walk_right
 	unlock_facing_direction
 	step_end
 
-YifuCity_CrobatShop_Guard_Movement_6:
+YifuCity_CrobatShop_Guard_Movement_7:
 	lock_facing_direction
 	lock_anim
 	jump_2_left
@@ -282,12 +289,16 @@ YifuCity_CrobatShop_Guard_Movement_6:
 	unlock_anim
 	step_end
 
-YifuCity_CrobatShop_Guard_Movement_7:
+YifuCity_CrobatShop_Guard_Movement_8:
+	emote_pensive
+	step_end
+
+YifuCity_CrobatShop_Guard_Movement_9:
 	walk_left
 	face_right
 	step_end
 
-YifuCity_CrobatShop_Guard_Movement_8:
+YifuCity_CrobatShop_Guard_Movement_10:
 	walk_down
 	face_left
 	step_end
@@ -296,28 +307,28 @@ YifuCity_CrobatShop_Cashier_Text_0:
 	.string "Shopkeeper$"
 
 YifuCity_CrobatShop_Cashier_Text_1:
-	.string "G'day uh, welcome to the ye olde\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}G'day uh, welcome to the ye olde\n"
 	.string "Crobat Shoppe!\p"
 	.string "Have a lookee at our totally legal\n"
 	.string "tchotchquees and memoralibia!$"
 
 YifuCity_CrobatShop_Cashier_Text_2:
-	.string "We thank thee fer yer business! Tell\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We thank thee fer yer business! Tell\n"
 	.string "yer friends!\p"
 	.string "{FONT_SMALL}Unless yer friends are the police!{FONT_NORMAL}\p"
-	.string "Wut's that? I said nothin', ya must be\n"
+	.string "Wussthat? I said nothin', ya must be\n"
 	.string "hearin' things!$"
 
 YifuCity_CrobatShop_CashierLegit_Text_0:
-	.string "Hello there! Welcome to the Yifu City\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Hello there! Welcome to the Yifu City\n"
 	.string "shop!$"
 
 YifuCity_CrobatShop_CashierLegit_Text_1:
-	.string "We hope you'll come again! Have a good\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}We hope you'll come again! Have a good\n"
 	.string "day!$"
 
 YifuCity_CrobatShop_CashierLegitTM_Text_0:
-	.string "Hi! I'm prepping up here, but come\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Hi! I'm prepping up here, but come\n"
 	.string "back soon for some excusive new\l"
 	.string "items!$"
 
@@ -325,10 +336,10 @@ YifuCity_CrobatShop_Guard_Text_0:
 	.string "Shady man$"
 
 YifuCity_CrobatShop_Guard_Text_1:
-	.string "Standin' guard is boring… Yawn…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Standin' guard is boring… Yawn…$"
 
 YifuCity_CrobatShop_Guard_Text_2:
-	.string "Password?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Password?$"
 
 YifuCity_CrobatShop_Guard_Text_3:
 	.string "Uh…$"
@@ -340,7 +351,7 @@ YifuCity_CrobatShop_Guard_Text_5:
 	.string "Well…$"
 
 YifuCity_CrobatShop_Guard_Text_6:
-	.string "That ain't the password! Scram!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}That ain't the password! Scram!$"
 
 YifuCity_CrobatShop_Guard_Text_7:
 	.string "Noivern…$"
@@ -361,7 +372,7 @@ YifuCity_CrobatShop_Guard_Text_12:
 	.string "…is legendary!$"
 
 YifuCity_CrobatShop_Guard_Text_13:
-	.string "Hmmm… Ya don't look like the typical\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hmmm… Ya don't look like the typical\n"
 	.string "Zubat…\p"
 	.string "… … … …\n"
 	.string "… …Alright, ya can go through.\l"
@@ -369,28 +380,31 @@ YifuCity_CrobatShop_Guard_Text_13:
 	.string "though, will ya?$"
 
 YifuCity_CrobatShop_Customer1_Text_0:
-	.string "Customer$"
+	.string "Man$"
 
 YifuCity_CrobatShop_Customer1_Text_1:
-	.string "Woah! So I was buying illegal items?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Woah! So I was buying illegal items?\n"
 	.string "That's wild!$"
 
 YifuCity_CrobatShop_Customer1_Text_2:
-	.string "This place is amazing!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}This place is amazing!\n"
 	.string "How is everything so cheap?!$"
 
 YifuCity_CrobatShop_Customer2_Text_0:
-	.string "I knew it! I knew this shop was shady!$"
+	.string "Girl$"
 
 YifuCity_CrobatShop_Customer2_Text_1:
-	.string "These Ultra Balls look… different,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}I knew it! I knew this shop was shady!$"
+
+YifuCity_CrobatShop_Customer2_Text_2:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}These Ultra Balls look… different,\n"
 	.string "somehow…$"
 
 YifuCity_CrobatShop_EventScript_Samurai_Text_0:
 	.string "Samurai$"
 
 YifuCity_CrobatShop_EventScript_Samurai_Text_1:
-	.string "Shhh, don't look at me!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Shhh, don't look at me!\n"
 	.string "Someone tipped me off that the\l"
 	.string "Crobat Shadows' band of misfits has a\l"
 	.string "secret hideout right under the city!\p"

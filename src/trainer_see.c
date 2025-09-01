@@ -20,6 +20,8 @@
 #include "constants/event_object_movement.h"
 #include "constants/field_effects.h"
 #include "constants/trainer_types.h"
+#include "data.h"
+#include "follower_helper.h"
 
 // this file's functions
 static u8 CheckTrainer(u8 objectEventId);
@@ -68,6 +70,7 @@ static const u8 sEmotion_DoubleExclamationMarkGfx[] = INCBIN_U8("graphics/field_
 static const u8 sEmotion_XGfx[] = INCBIN_U8("graphics/field_effects/pics/emote_x.4bpp");
 // HGSS emote graphics ripped by Lemon on The Spriters Resource: https://www.spriters-resource.com/ds_dsi/pokemonheartgoldsoulsilver/sheet/30497/
 static const u8 sEmotion_Gfx[] = INCBIN_U8("graphics/misc/emotes.4bpp");
+static const u8 sEmotes_Custom_Gfx[] = INCBIN_U8("graphics/misc/emotes_non_follower.4bpp");
 
 static u8 (*const sDirectionalApproachDistanceFuncs[])(struct ObjectEvent *trainerObj, s16 range, s16 x, s16 y) =
 {
@@ -185,6 +188,15 @@ static const struct SpriteFrameImage sSpriteImageTable_Emotes[] =
     overworld_frame(sEmotion_Gfx, 2, 2, 19), // FOLLOWER_EMOTION_MUSIC
     overworld_frame(sEmotion_Gfx, 2, 2, 20), // FOLLOWER_EMOTION_POISONED
     overworld_frame(sEmotion_Gfx, 2, 2, 21), // FOLLOWER_EMOTION_POISONED
+    overworld_frame(sEmotion_Gfx, 2, 2, 26), // TRAINER_!
+};
+
+static const struct SpriteFrameImage sSpriteImageTable_Emotes_Non_Follower[] =
+{
+    overworld_frame(sEmotes_Custom_Gfx, 2, 2, 0), // CRYING
+    overworld_frame(sEmotes_Custom_Gfx, 2, 2, 1), // CRYING
+    overworld_frame(sEmotes_Custom_Gfx, 2, 2, 2), // SWEAT
+    overworld_frame(sEmotes_Custom_Gfx, 2, 2, 3), // SWEAT
 };
 
 static const union AnimCmd sSpriteAnim_Emotes0[] =
@@ -275,6 +287,28 @@ static const union AnimCmd sSpriteAnim_Emotes10[] =
     ANIMCMD_END
 };
 
+static const union AnimCmd sSpriteAnim_Emotes11[] =
+{
+    ANIMCMD_FRAME(11*2, 60),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_Emotes_Non_Follower0[] =
+{
+    ANIMCMD_FRAME(0*2, 30),
+    ANIMCMD_FRAME(0*2+1, 25),
+    ANIMCMD_FRAME(0*2, 30),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_Emotes_Non_Follower1[] =
+{
+    ANIMCMD_FRAME(1*2, 30),
+    ANIMCMD_FRAME(1*2+1, 25),
+    ANIMCMD_FRAME(1*2, 30),
+    ANIMCMD_END
+};
+
 static const union AnimCmd sSpriteAnim_Icons1[] =
 {
     ANIMCMD_FRAME(0, 60),
@@ -321,6 +355,13 @@ static const union AnimCmd *const sSpriteAnimTable_Emotes[] =
     sSpriteAnim_Emotes8,
     sSpriteAnim_Emotes9,
     sSpriteAnim_Emotes10,
+    sSpriteAnim_Emotes11,
+};
+
+static const union AnimCmd *const sSpriteAnimTable_Emotes_Non_Follower[] =
+{
+    sSpriteAnim_Emotes_Non_Follower0,
+    sSpriteAnim_Emotes_Non_Follower1,
 };
 
 static const struct SpriteTemplate sSpriteTemplate_ExclamationQuestionMark =
@@ -352,6 +393,17 @@ static const struct SpriteTemplate sSpriteTemplate_Emote =
     .oam = &sOamData_Icons,
     .anims = sSpriteAnimTable_Emotes,
     .images = sSpriteImageTable_Emotes,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_TrainerIcons
+};
+
+static const struct SpriteTemplate sSpriteTemplate_Emote_Non_Follower =
+{
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_EMOTES,
+    .oam = &sOamData_Icons,
+    .anims = sSpriteAnimTable_Emotes_Non_Follower,
+    .images = sSpriteImageTable_Emotes_Non_Follower,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_TrainerIcons
 };
@@ -666,7 +718,7 @@ static bool8 TrainerExclamationMark(u8 taskId, struct Task *task, struct ObjectE
     u8 direction;
 
     ObjectEventGetLocalIdAndMap(trainerObj, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
-    FieldEffectStart(FLDEFF_EXCLAMATION_MARK_ICON);
+    FieldEffectStart(FLDEFF_TRAINER_EXCLAMATION);
     direction = GetFaceDirectionMovementAction(trainerObj->facingDirection);
     ObjectEventSetHeldMovement(trainerObj, direction);
     task->tFuncId++; // TRSEE_EXCLAMATION_WAIT
@@ -676,7 +728,7 @@ static bool8 TrainerExclamationMark(u8 taskId, struct Task *task, struct ObjectE
 // TRSEE_EXCLAMATION_WAIT
 static bool8 WaitTrainerExclamationMark(u8 taskId, struct Task *task, struct ObjectEvent *trainerObj)
 {
-    if (FieldEffectActiveListContains(FLDEFF_EXCLAMATION_MARK_ICON))
+    if (FieldEffectActiveListContains(FLDEFF_TRAINER_EXCLAMATION))
     {
         return FALSE;
     }
@@ -900,12 +952,25 @@ void TryPrepareSecondApproachingTrainer(void)
 
 u8 FldEff_ExclamationMarkIcon(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
 
     if (spriteId != MAX_SPRITES)
     {
-        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, 0);
-        UpdateSpritePaletteByTemplate(&sSpriteTemplate_ExclamationQuestionMark, &gSprites[spriteId]);
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, FOLLOWER_EMOTION_SURPRISE);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
+    }
+
+    return 0;
+}
+
+u8 FldEff_TrainerExclamation(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_TRAINER_EXCLAMATION, FOLLOWER_EMOTION_LENGTH);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
     }
 
     return 0;
@@ -925,12 +990,13 @@ u8 FldEff_QuestionMarkIcon(void)
         UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
         return 0;
     }
-    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x52);
+
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
 
     if (spriteId != MAX_SPRITES)
     {
-        SetIconSpriteData(&gSprites[spriteId], FLDEFF_QUESTION_MARK_ICON, 1);
-        UpdateSpritePaletteByTemplate(&sSpriteTemplate_ExclamationQuestionMark, &gSprites[spriteId]);
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_QUESTION_MARK_ICON, FOLLOWER_EMOTION_CURIOUS);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
     }
 
     return 0;
@@ -938,14 +1004,103 @@ u8 FldEff_QuestionMarkIcon(void)
 
 u8 FldEff_HeartIcon(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_HeartIcon, 0, 0, 0x52);
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
 
     if (spriteId != MAX_SPRITES)
     {
-        struct Sprite *sprite = &gSprites[spriteId];
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_HEART_ICON, FOLLOWER_EMOTION_LOVE);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
+    }
 
-        SetIconSpriteData(sprite, FLDEFF_HEART_ICON, 0);
-        UpdateSpritePaletteByTemplate(&sSpriteTemplate_HeartIcon, sprite);
+    return 0;
+}
+
+u8 FldEff_MusicIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_MUSIC_ICON, FOLLOWER_EMOTION_MUSIC);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
+    }
+
+    return 0;
+}
+
+u8 FldEff_SadIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_SAD_ICON, FOLLOWER_EMOTION_SAD);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
+    }
+
+    return 0;
+}
+
+u8 FldEff_UpsetIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_UPSET_ICON, FOLLOWER_EMOTION_UPSET);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
+    }
+
+    return 0;
+}
+
+u8 FldEff_AngryIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_ANGRY_ICON, FOLLOWER_EMOTION_ANGRY);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
+    }
+
+    return 0;
+}
+
+u8 FldEff_PensiveIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_PENSIVE_ICON, FOLLOWER_EMOTION_PENSIVE);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
+    }
+
+    return 0;
+}
+
+u8 FldEff_PoisonedIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_POISONED_ICON, FOLLOWER_EMOTION_POISONED);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
+    }
+
+    return 0;
+}
+
+u8 FldEff_HappyIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_HAPPY_ICON, FOLLOWER_EMOTION_HAPPY);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote, &gSprites[spriteId]);
     }
 
     return 0;
@@ -968,6 +1123,45 @@ u8 FldEff_XIcon(void)
 
     if (spriteId != MAX_SPRITES)
         SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, 3);
+
+    return 0;
+}
+
+u8 FldEff_CryingIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote_Non_Follower, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_CRYING_ICON, 0);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote_Non_Follower, &gSprites[spriteId]);
+    }
+
+    return 0;
+}
+
+u8 FldEff_SweatIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote_Non_Follower, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_SWEAT_ICON, 1);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote_Non_Follower, &gSprites[spriteId]);
+    }
+
+    return 0;
+}
+
+u8 FldEff_SleepIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote_Non_Follower, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_SLEEP_ICON, 2);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote_Non_Follower, &gSprites[spriteId]);
+    }
 
     return 0;
 }

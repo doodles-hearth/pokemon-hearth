@@ -31,7 +31,7 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M_ORANGE",
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M",
       "x": 18,
       "y": 57,
       "elevation": 0,
@@ -51,7 +51,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_1",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_GIRL_1",
       "x": 37,
       "y": 51,
       "elevation": 0,
@@ -391,7 +391,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "graphics_id": "OBJ_EVENT_GFX_SAKURA_OLD_MAN",
       "x": 36,
       "y": 30,
       "elevation": 0,
@@ -551,6 +551,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_TRANQUIL_RT_KECLEON",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES_SHINY(KECLEON)",
       "x": 26,
       "y": 66,
@@ -571,7 +572,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
+      "graphics_id": "OBJ_EVENT_GFX_UUME_GIRL_2",
       "x": 13,
       "y": 51,
       "elevation": 0,

@@ -10,7 +10,7 @@ script SakuTown_House1_EventScript_Tama {
 	}
 	elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {
 		speakername("Man")
-		msgbox(format("Please go away.\nLeave me alone."))
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Please go away.\nLeave me alone."))
 
 		mcdialogue(
 			"Excuse me!",
@@ -21,10 +21,10 @@ script SakuTown_House1_EventScript_Tama {
 		switch(var(VAR_RESULT)) {
 			case 0:
 				speakername("Tama")
-				msgbox(format("… … … … … …\n… … … … …What?"))
+				msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}… … … … … …\n… … … … …What?"))
 			case 1:
 				speakername("Tama")
-				msgbox(format("… … … … … …\n… … … … …Yeah, so?"))
+				msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}… … … … … …\n… … … … …Yeah, so?"))
 		}
 		
 		mcdialogue(
@@ -36,7 +36,7 @@ script SakuTown_House1_EventScript_Tama {
 		delay(32)
 
 		speakername("Tama")
-		msgbox(format("… … … … … …\n… … … … … …"))
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}… … … … … …\n… … … … … …"))
 
 		delay(32)
 
@@ -53,7 +53,7 @@ script SakuTown_House1_EventScript_Tama {
 		waitmovement(0)
 
 		speakername("Tama")
-		msgbox(format("WHAT?! Let me see!"))
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}WHAT?! Let me see!"))
 		closemessage
 
 		playfanfare(MUS_OBTAIN_ITEM)
@@ -68,7 +68,7 @@ script SakuTown_House1_EventScript_Tama {
 
 		speakername("Tama")
 		msgbox(format(
-			"I… I can't believe it!\nShe really does love me!\pThank you so much for this!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I… I can't believe it!\nShe really does love me!"
 		))
 		closemessage
 
@@ -79,7 +79,7 @@ script SakuTown_House1_EventScript_Tama {
 
 		speakername("Tama")
 		msgbox(format(
-			"Eh? There's a letter inside!\n Whatever for?"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Eh? There's a letter inside!\n Whatever for?"
 		))
 		closemessage
 
@@ -88,7 +88,7 @@ script SakuTown_House1_EventScript_Tama {
 
 		speakername("Tama")
 		msgbox(format(
-			"Ahem…"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Ahem…"
 			"“My dear Tama,\nIt pains me that you aren't by my side each night.\l"
 			"The sweet chirping of birds pales in comparison to your hearty laugh.\l"
 			"I would move Heaven and Earth for us to be together.\l"
@@ -102,7 +102,7 @@ script SakuTown_House1_EventScript_Tama {
 	
 		speakername("Tama")
 		msgbox(format(
-			"…Ahem. Sorry, this is a little embarrassing…\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}…Ahem. Sorry, this is a little embarrassing…\p"
 			"What does she mean with that “vale”, though?…\p"
 			"Oh!\n She must be talking about the small valley to the east of here!\p"
 			"And “pale moonlight”…\nThat must be tonight!\p"
@@ -116,7 +116,7 @@ script SakuTown_House1_EventScript_Tama {
 		faceplayer
 		speakername("Tama")
 		msgbox(format(
-			"Wielder! I owe you my thanks.\nPlease, tell her I'll meet her tonight!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Wielder! I owe you my thanks.\nPlease, tell her I'll meet her tonight!"
 		))
 		closemessage
 		addvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
@@ -125,7 +125,7 @@ script SakuTown_House1_EventScript_Tama {
 		faceplayer
 		speakername("Tama")
 		msgbox(format(
-			"Please, tell Ashii I'll meet her tonight!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Please, tell Ashii I'll meet her tonight!"
 		))
 		waitmessage
 		closemessage
@@ -134,7 +134,7 @@ script SakuTown_House1_EventScript_Tama {
 		faceplayer
 		speakername("Tama")
 		msgbox(format(
-			"I can't wait to see Ashii again tonight!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I can't wait to see Ashii again tonight!"
 		))
 		waitmessage
 		closemessage
@@ -145,6 +145,6 @@ script SakuTown_House1_EventScript_Tama {
 
 script(local) TamaScript1 {
 	speakername("Man")
-	msgbox(format("Please go away.\nLeave me alone."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Please go away.\nLeave me alone."))
 	closemessage
 }

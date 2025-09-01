@@ -17,12 +17,12 @@ script SunriseVillage_RivalsHouse_EventScript_Woman {
 	speakername("Natsuki's mom")
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
 		msgbox(format(
-			"The house feels a little empty\nnow that Natsuki has left home.\p"
+			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}The house feels a little empty\nnow that Natsuki has left home.\p"
 			"I'm glad for our Pokémon and the\ncompanionship they provide us."
 		))
 	} else {
 		msgbox(format(
-			"Good morning, {PLAYER}!\nToday's the big day, huh?\p"
+			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}Good morning, {PLAYER}!\nToday's the big day, huh?\p"
 			"Break a leg! Don't talk to strangers!"
 		))
 	}
@@ -37,13 +37,15 @@ script SunriseVillage_RivalsHouse_EventScript_Natsuki {
 	if (flag(FLAG_TEMP_TALKED_TO_NATSUKI)) {
 		speakername("Natsuki")
 		msgbox(format(
-			"Region map, check…\nFavorite plushie, check…"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Region map, check…\nJoltik plushie, check…"
 		))
 		closemessage
+
+		setnamedmon(SPECIES_JOLTIK)
 	} else {
 		speakername("Natsuki")
 		msgbox(format(
-			"Poké Balls, check…\nMedicine, check…\lSpare pair of underwear, check…"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Poké Balls, check…\nMedicine, check…\lSpare pair of underwear, check…"
 		))
 		closemessage
 
@@ -52,7 +54,7 @@ script SunriseVillage_RivalsHouse_EventScript_Natsuki {
 		faceplayer
 		speakername("Natsuki")
 		msgbox(format(
-			"Oh, hey, {PLAYER}. I'm just sorting\nout my stuff for the journey.\p"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh, hey, {PLAYER}. I'm just sorting\nout my stuff for the journey.\p"
 			"I'm traveling as light as possible!\p"
 			"See you around, yeah?"
 		))
@@ -71,14 +73,19 @@ script SunriseVillage_RivalsHouse_EventScript_Man {
 	lock
 	faceplayer
 	speakername("Natsuki's dad")
-	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
+	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
 		msgbox(format(
-			"Hello, {PLAYER}.\nHow is your adventure going?\p"
+			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 EMOTE_NORMAL}Hello, {PLAYER}.\nHow is your adventure going?\p"
 			"Make sure you come back home\nto see your sister sometimes,\lI'm sure she misses you."
+		))
+	} elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 EMOTE_NORMAL}It was tough when Natsuki and I\nfirst moved all the way down here.\p"
+			"Things are better now.\nWe both needed a fresh start."
 		))
 	} else {
 		msgbox(format(
-			"Hello, {PLAYER}! How are you doing? Off to some trouble with Natsuki, I bet?"
+			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 EMOTE_NORMAL}Hello, {PLAYER}! How are you doing? Off to some trouble with Natsuki, I bet?"
 		))
 	}
 	release

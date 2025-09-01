@@ -49,14 +49,16 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 
 	speakername("Elder Kaba")
 	msgbox(format(
-		"PAH!"
+		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}PAH!"
 	))
 	waitse
+
+	createfieldmugshot(MUGSHOT_KABA, EMOTE_NORMAL)
 	
 	// Elder speaks
 	speakername("Elder Kaba")
 	msgbox((
-		"{PLAYER}, Natsuki.\nYou are late. Why am I surprised?\p"
+		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}{PLAYER}, Natsuki.\nYou are late. Why am I surprised?\p"
 		"I always have to run after you two!\nNow stay still for a minute and\llisten closely!\p"
 		"As you have heard, the woods, and even\nthe roads, are no longer safe.\p"
 		"We don't yet know why, but the wild\nPokémon that usually hide in the\ltall grass and live peacefully\lalongside men have started behaving\laggressively.\p"
@@ -74,7 +76,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 
 	speakername("Elder Kaba")
 	msgbox(format(
-		"WHICH IS WHY!{PAUSE 15}\p"
+		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}WHICH IS WHY!{PAUSE 15}\p"
 		"The Toku council has decided that,\nfor the time being, the best way to\lhandle this is to use the Pokémon\lthemselves as a means of protection!\p"
 		"There were very few experienced\nPokémon Wielders in Toku until now.\l"
 		"This is about to change.\p"
@@ -119,7 +121,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	applymovement(LOCALID_RIVAL, moves(jump_in_place_up))
 	waitmovement(0)
 	speakername("Natsuki")
-	msgbox(format("Woah! Cool."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah! Cool."))
 
 	// Rival is nice and lets you pick first
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
@@ -127,7 +129,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	waitmovement(0)
 	speakername("Natsuki")
 	msgbox(format(
-		"{PLAYER}, choose yours first!\n"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}, choose yours first!\n"
 		"I don't mind being second pick."
 	))
 	closemessage
@@ -144,22 +146,14 @@ script SunriseVillage_EldersHouse_Event_Elder {
 	speakername("Elder Kaba")
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) < 5) {
-			msgbox(format("Don't dilly-dally on the way! And keep an eye on your little friend Natsuki, make sure he doesn't get into trouble!"))
+			msgbox(format("{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Don't dilly-dally on the way! And keep an eye on your little friend Natsuki, make sure he doesn't get into trouble!"))
 		} else {
 			msgbox(format(
-				"Oh! You delivered my letter. Good.\p"
+				"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Oh! You delivered my letter. Good.\p"
 				"You've been appointed to investigate Decaying areas? Well then, what are you still doing here? Off you go!"
 			))
 
-			// msgbox(format("How is your Pokémon adventure going?"))
-			// closemessage
-		}
-	} else {
-		// Player has yet to pick a Pokémon
-		msgbox(format("Choose your new partner wisely.\nNo takebacks."))
-	}
-
-	mcdialogue(
+			mcdialogue(
 				"Evaluate my PokéDex!",
 				"See you!"
 			)
@@ -169,17 +163,23 @@ script SunriseVillage_EldersHouse_Event_Elder {
 		case 0:
 			speakername("Elder Kaba")
 			msgbox(format(
-				"Well, what are you waiting for? Hand it over!"
+				"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Well, what are you waiting for? Hand it over!"
 			))
 
 			call(ProfBirch_EventScript_RatePokedex)
 		case 1:
 			speakername("Elder Kaba")
 			msgbox(format(
-				"Alright, alright.\n"
+				"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Alright, alright.\n"
 				"{FONT_SMALL}Damned children wasting my time.{FONT_NORMAL}"
 			))
 	}
+		}
+	} else {
+		// Player has yet to pick a Pokémon
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Choose your new partner wisely.\nNo takebacks."))
+	}
+
 	release
 }
 
@@ -188,7 +188,7 @@ script SunriseVillage_EldersHouse_EventScript_TryToLeave {
 	turnobject(LOCALID_ELDER, DIR_SOUTH)
 	speakername("Elder Kaba")
 	msgbox(format(
-		"Where do you think you're going?"
+		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Where do you think you're going?"
 	))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp)
@@ -201,7 +201,7 @@ script SunriseVillage_EldersHouse_EventScript_TryToEnterOtherRoom {
 	turnobject(LOCALID_ELDER, DIR_NORTH)
 	speakername("Elder Kaba")
 	msgbox(format(
-		"Where do you think you're going?"
+		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Where do you think you're going?"
 	))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
@@ -252,7 +252,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	if (var(VAR_RESULT) == NO || var(VAR_RESULT) == MULTI_B_PRESSED) {
 		hidemonpic
 		speakername("Elder Kaba")
-		msgbox(format("Take the time you need."))
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Take the time you need."))
 		closemessage
 		return
 	} elif (var(VAR_RESULT) == YES) {
@@ -335,7 +335,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	// Rival walks up to his Pokémon
 	speakername("Natsuki")
-	msgbox(format("Alright. I'm taking this one!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Alright. I'm taking this one!"))
 	closemessage
 
 	switch(var(VAR_STARTER_MON)) {
@@ -368,7 +368,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	// Elder gives Pokédex
 	speakername("Elder Kaba")
 	msgbox(format(
-		"Now that you have your own Pokémon,\nyou two are officially\lPokémon Wielders!\p"
+		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Now that you have your own Pokémon,\nyou two are officially\lPokémon Wielders!\p"
 		"The more Wielders there are,\nthe deeper our understanding\lof Pokémon will be.\p"
 		"We need to study these creatures\nfrom up close to find the root of\lthis issue.\p"
 		"Actually, there's something\nI wanted to ask you."
@@ -393,7 +393,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"What's this? A book?"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What's this? A book?"
 	))
 	closemessage
 
@@ -404,7 +404,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	speakername("Elder Kaba")
 	msgbox(format(
-		"I call this the “PokéDex”.\nIt is an encyclopedia containing\lvital information about Pokémon\lfrom the whole region!\p"
+		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}I call this the “PokéDex”.\nIt is an encyclopedia containing\lvital information about Pokémon\lfrom the whole region!\p"
 		"Except it's, well, empty.\nThat's where you come in!\p"
 		"Explore Toku and fill its pages with\nyour findings!\p"
 		"You can start by going all the way to\nSilveridge, north of here in the\lmountains.\p"
@@ -422,7 +422,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	waitmovement(0)
 
 	speakername("Natsuki")
-	msgbox(format("Understood, Grandma Kaba.\nWe're going adventuring!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Understood, Grandma Kaba.\nWe're going adventuring!"))
 	closemessage
 
 	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterLeft)
@@ -430,7 +430,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	waitmovement(LOCALID_RIVAL)
 
 	speakername("Natsuki")
-	msgbox(format("{PLAYER}… Are you ready?"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}… Are you ready?"))
 	dynmultichoice(
 		0,
 		0,
@@ -455,11 +455,11 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		checkplayergender
 		if (var(VAR_RESULT) == MALE) {
 			msgbox(format(
-				"Don't listen to him! He's so ready!"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't listen to him! He's so ready!"
 			))
 		} else {
 			msgbox(format(
-				"Don't listen to her! She's so ready!"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't listen to her! She's so ready!"
 			))
 		}
 		closemessage
@@ -469,7 +469,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	speakername("Natsuki")
 	msgbox(format(
-		"{PLAYER}!\nLet's see what our brand new Pokémon\lare capable of!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}!\nLet's see what our brand new Pokémon\lare capable of!\p"
 		"I request an official Pokémon\nWielder battle!"
 	))
 	closemessage
@@ -492,7 +492,7 @@ movement SunriseVillage_EldersHouse_Movement_RivalPreBattlePose {
 
 script SunriseVillage_EldersHouse_EventScript_Natsuki {
 	speakername("Natsuki")
-	msgbox(format("Hm, which one will I choose?…"), MSGBOX_NPC)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hm, which one will I choose?…"), MSGBOX_NPC)
 }
 
 script SunriseVillage_EldersHouse_EventScript_PostBattle {
@@ -504,7 +504,7 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 	if (var(VAR_RESULT) == B_OUTCOME_WON) {
 		speakername("Natsuki")
 		msgbox(format(
-			"Oh, man!\nThat was the most fun I've ever had!\p"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh, man!\nThat was the most fun I've ever had!\p"
 			"{PLAYER}!\nWe're now officially rivals!\p"
 			"I went easy on you this time, but\nnext time… You'll see!\p"
 			"I'm going home to pack some things.\p"
@@ -514,7 +514,7 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 	} else {
 		speakername("Natsuki")
 		msgbox(format(
-			"Oh, man!\nThat was the most fun I've ever had!\p"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh, man!\nThat was the most fun I've ever had!\p"
 			"{PLAYER}!\nWe're now officially rivals!\p"
 			"You better work hard to keep up!\p"
 			"I'm going home to pack some things.\p"
