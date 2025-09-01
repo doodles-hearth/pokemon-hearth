@@ -182,6 +182,7 @@ u8 MovementAction_EmotePoisoned_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteHappy_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteCrying_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteSweat_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteSleep_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_RevealTrainer_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_RevealTrainer_Step1(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_RockSmashBreak_Step0(struct ObjectEvent *, struct Sprite *);
@@ -414,6 +415,7 @@ u8 (*const gMovementActionFuncs_EmotePoisoned[])(struct ObjectEvent *, struct Sp
 u8 (*const gMovementActionFuncs_EmoteHappy[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_EmoteCrying[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_EmoteSweat[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteSleep[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_RevealTrainer[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_RockSmashBreak[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_CutTree[])(struct ObjectEvent *, struct Sprite *);
@@ -603,6 +605,7 @@ u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *)
     [MOVEMENT_ACTION_EMOTE_HAPPY] = gMovementActionFuncs_EmoteHappy,
     [MOVEMENT_ACTION_EMOTE_CRYING] = gMovementActionFuncs_EmoteCrying,
     [MOVEMENT_ACTION_EMOTE_SWEAT] = gMovementActionFuncs_EmoteSweat,
+    [MOVEMENT_ACTION_EMOTE_SLEEP] = gMovementActionFuncs_EmoteSleep,
     [MOVEMENT_ACTION_REVEAL_TRAINER] = gMovementActionFuncs_RevealTrainer,
     [MOVEMENT_ACTION_ROCK_SMASH_BREAK] = gMovementActionFuncs_RockSmashBreak,
     [MOVEMENT_ACTION_CUT_TREE] = gMovementActionFuncs_CutTree,
@@ -1363,6 +1366,11 @@ u8 (*const gMovementActionFuncs_EmoteCrying[])(struct ObjectEvent *, struct Spri
 
 u8 (*const gMovementActionFuncs_EmoteSweat[])(struct ObjectEvent *, struct Sprite *) = {
     MovementAction_EmoteSweat_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteSleep[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteSleep_Step0,
     MovementAction_Finish,
 };
 

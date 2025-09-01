@@ -75,11 +75,10 @@ YifuCity_House4_EventScript_NameRater_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Names are the mirror of the soul!\p"
 	.string "{FONT_SMALL}Or was that the eyes? Bah…{FONT_NORMAL}\p"
 	.string "I have been told I have a way\n"
-	.string "with names.\l"
-	.string "Young Wielder…\l"
-	.string "Would you like me\l"
-	.string "to counsel you on the naming of\l"
-	.string "your Pokémon?$"
+	.string "with names.\p"
+	.string "Young Wielder… Would you like me to\n"
+	.string "counsel you on the naming of your\l"
+	.string "Pokémon?$"
 
 YifuCity_House4_EventScript_NameRater_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Which Pokémon should receive my\n"
@@ -98,8 +97,8 @@ YifuCity_House4_EventScript_NameRater_Text_4:
 YifuCity_House4_EventScript_NameRater_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}{STR_VAR_1}…\n"
 	.string "I see what you were going for…\p"
-	.string "{FONT_SMALL}Yikes…{FONT_NORMAL} I don't see this Pokémon's soul\n"
-	.string "in this name…\p"
+	.string "{FONT_SMALL}Yikes…{FONT_NORMAL} But I don't see this Pokémon's\n"
+	.string "soul in this name…\p"
 	.string "Are you inspired to bestow a new name\n"
 	.string "on it?\p"
 	.string "Go ahead! Speak from your heart!$"
@@ -110,7 +109,7 @@ YifuCity_House4_EventScript_NameRater_Text_6:
 	.string "Look… Your Pokémon seems happy\n"
 	.string "about its new name!\p"
 	.string "Goodbye! May wisdom guide your steps!\p"
-	.string "{FONT_SMALL}Bah! I should ask money for this…{FONT_NORMAL}$"
+	.string "{FONT_SMALL}Bah! I should charge for this…{FONT_NORMAL}$"
 
 YifuCity_House4_EventScript_NameRater_Text_7:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}This new name… It sounds a little like\n"

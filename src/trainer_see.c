@@ -1153,6 +1153,19 @@ u8 FldEff_SweatIcon(void)
     return 0;
 }
 
+u8 FldEff_SleepIcon(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Emote_Non_Follower, 0, 0, 0x52);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_SLEEP_ICON, 2);
+        UpdateSpritePaletteByTemplate(&sSpriteTemplate_Emote_Non_Follower, &gSprites[spriteId]);
+    }
+
+    return 0;
+}
+
 static void SetIconSpriteData(struct Sprite *sprite, u16 fldEffId, u8 spriteAnimNum)
 {
     sprite->oam.priority = 1;

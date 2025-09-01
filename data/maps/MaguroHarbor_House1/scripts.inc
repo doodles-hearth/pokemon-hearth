@@ -18,6 +18,7 @@ MaguroHarbor_House1_EventScript_PokedexRiddler::
 	special GetDexRiddleFeedback
 	compare VAR_RESULT, 1
 	goto_if_eq MaguroHarbor_House1_EventScript_PokedexRiddler_5
+	applymovement VAR_LAST_TALKED, MaguroHarbor_House1_EventScript_PokedexRiddler_Movement_0
 	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
 	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_5
 MaguroHarbor_House1_EventScript_PokedexRiddler_4:
@@ -46,11 +47,20 @@ MaguroHarbor_House1_EventScript_Clefairy::
 	setseenmon SPECIES_CLEFAIRY
 	playmoncry SPECIES_CLEFAIRY, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_CLEFAIRY
+	applymovement VAR_LAST_TALKED, MaguroHarbor_House1_EventScript_Clefairy_Movement_0
 	msgbox MaguroHarbor_House1_EventScript_Clefairy_Text_0
 	waitmoncry
 	release
 	return
 
+
+MaguroHarbor_House1_EventScript_PokedexRiddler_Movement_0:
+	emote_upset
+	step_end
+
+MaguroHarbor_House1_EventScript_Clefairy_Movement_0:
+	emote_music
+	step_end
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0:
 	.string "Pokémon Nerd$"

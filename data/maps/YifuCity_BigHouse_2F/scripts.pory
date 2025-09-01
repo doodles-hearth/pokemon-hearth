@@ -31,6 +31,7 @@ script YifuCity_BigHouse_2F_EventScript_TradingActOfLove {
 script YifuCity_BigHouse_2F_EventScript_RunningBoy {
 	lock
 	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	speakername("Boy")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_BOY_1 EMOTE_NORMAL}My grandpa won't let me have a Pokémon!\p"

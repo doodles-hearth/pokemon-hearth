@@ -23,6 +23,7 @@ YifuCity_House2_Model::
 	lock
 	faceplayer
 	goto_if_set FLAG_OBTAINED_CHOICE_SCARF, YifuCity_House2_Model_2
+	applymovement VAR_LAST_TALKED, YifuCity_House2_Model_Movement_0
 	speakername YifuCity_House2_Model_Text_1
 	msgbox YifuCity_House2_Model_Text_2
 	closemessage
@@ -76,6 +77,10 @@ YifuCity_House2_Seamstress_Movement_0:
 	walk_down
 	walk_left
 	walk_left
+	step_end
+
+YifuCity_House2_Model_Movement_0:
+	emote_sad
 	step_end
 
 YifuCity_House2_Tarountula_Movement_0:

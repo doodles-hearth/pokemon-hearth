@@ -36,8 +36,12 @@ BeachboundRoute_EventScript_AnnoyedGirl_1:
 
 
 BeachboundRoute_EventScript_AnnoyedBoy::
+	lock
+	applymovement VAR_LAST_TALKED, BeachboundRoute_EventScript_AnnoyedBoy_Movement_0
 	speakername BeachboundRoute_EventScript_AnnoyedBoy_Text_0
-	msgbox BeachboundRoute_EventScript_AnnoyedBoy_Text_1, MSGBOX_NPC
+	msgbox BeachboundRoute_EventScript_AnnoyedBoy_Text_1
+	closemessage
+	release
 	return
 
 
@@ -386,6 +390,10 @@ BeachboundRoute_EventScript_RunningBoy_Movement_0:
 
 BeachboundRoute_EventScript_RunningGirl_Movement_0:
 	emote_sad
+	step_end
+
+BeachboundRoute_EventScript_AnnoyedBoy_Movement_0:
+	emote_sweat
 	step_end
 
 BeachboundRoute_EventScript_WhereAreYouGoing_Movement_0:

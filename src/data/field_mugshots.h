@@ -66,6 +66,10 @@ static const u32 sFieldMugshotGfx_ShamisenRedNormal[] = INCBIN_U32("graphics/fie
 
 static const u32 sFieldMugshotGfx_ShamisenBlueNormal[] = INCBIN_U32("graphics/field_mugshots/shamisen_blue/normal.4bpp.smol");
 
+static const u32 sFieldMugshotGfx_CookNormal[] = INCBIN_U32("graphics/field_mugshots/cook/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_IwaNormal[] = INCBIN_U32("graphics/field_mugshots/elder_iwa/normal.4bpp.smol");
+
 // Sunrise
 
 static const u32 sFieldMugshotGfx_BigSisNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/big_sis/normal.4bpp.smol");
@@ -446,6 +450,24 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_ShamisenBlueNormal,
             .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+        },
+    },
+
+    [MUGSHOT_COOK] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_CookNormal,
+            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+        },
+    },
+
+    [MUGSHOT_IWA] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_IwaNormal,
+            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
         },
     },
 

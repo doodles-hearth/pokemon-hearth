@@ -93,6 +93,8 @@ YifuCity_Refuge_EventScript_FakeNurse_10:
 	goto_if_ne YifuCity_Refuge_EventScript_FakeNurse_14
 	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_12
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_FakeNurse_Movement_0
+	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_13
 	goto YifuCity_Refuge_EventScript_FakeNurse_1
 
 YifuCity_Refuge_EventScript_FakeNurse_11:
@@ -204,6 +206,7 @@ YifuCity_Refuge_EventScript_ListenToShamisen::
 	lock
 	faceplayer
 	speakername YifuCity_Refuge_EventScript_ListenToShamisen_Text_0
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_ListenToShamisen_Movement_0
 	msgbox YifuCity_Refuge_EventScript_ListenToShamisen_Text_1
 	closemessage
 	release
@@ -248,6 +251,7 @@ YifuCity_Refuge_EventScript_Bisharp::
 YifuCity_Refuge_EventScript_Samurai::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_Samurai_Movement_0
 	speakername YifuCity_Refuge_EventScript_Samurai_Text_0
 	msgbox YifuCity_Refuge_EventScript_Samurai_Text_1
 	closemessage
@@ -258,6 +262,7 @@ YifuCity_Refuge_EventScript_Samurai::
 YifuCity_Refuge_EventScript_GotTrashedByDojo::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_ListenToShamisen_Movement_0
 	speakername YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_0
 	msgbox YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_1
 	closemessage
@@ -313,6 +318,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_13:
 	goto YifuCity_Refuge_EventScript_RouteShamisen_1
 
 YifuCity_Refuge_EventScript_RouteShamisen_4:
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_Samurai_Movement_0
 	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_8
 	mcdialogue YifuCity_Refuge_EventScript_RouteShamisen_Text_9, YifuCity_Refuge_EventScript_RouteShamisen_Text_10
@@ -330,6 +336,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_6:
 	goto YifuCity_Refuge_EventScript_RouteShamisen_5
 
 YifuCity_Refuge_EventScript_RouteShamisen_11:
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_Samurai_Movement_0
 	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_11
 	closemessage
@@ -337,6 +344,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_11:
 	goto YifuCity_Refuge_EventScript_RouteShamisen_9
 
 YifuCity_Refuge_EventScript_RouteShamisen_12:
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_RouteShamisen_Movement_0
 	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_12
 	giveitem ITEM_SUPERGIRI, 3
@@ -420,6 +428,22 @@ YifuCity_Refuge_EventScript_RouteShamisenLeaves_7:
 	applymovement 17, YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_4
 	goto YifuCity_Refuge_EventScript_RouteShamisenLeaves_5
 
+
+YifuCity_Refuge_EventScript_FakeNurse_Movement_0:
+	emote_angry
+	step_end
+
+YifuCity_Refuge_EventScript_ListenToShamisen_Movement_0:
+	emote_sweat
+	step_end
+
+YifuCity_Refuge_EventScript_Samurai_Movement_0:
+	emote_pensive
+	step_end
+
+YifuCity_Refuge_EventScript_RouteShamisen_Movement_0:
+	emote_happy
+	step_end
 
 YifuCity_Refuge_EventScript_RouteShamisenLeaves_Movement_0:
 	walk_down
@@ -521,7 +545,9 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_12:
 	.string "(Wow, this one's really dumb, huh?)\p"
 	.string "… … …\n"
 	.string "… … …What? Ya don't have 'nuff cash?!\p"
-	.string "I can't believe it! I've been had!\p"
+	.string "I can't believe it! I've been had!$"
+
+YifuCity_Refuge_EventScript_FakeNurse_Text_13:
 	.string "Get outta here, ya scammer!$"
 
 YifuCity_Refuge_EventScript_Woobat_Text_0:

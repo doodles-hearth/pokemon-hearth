@@ -141,7 +141,10 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Really? Jus' like that?\p"
 						"(Wow, this one's really dumb, huh?)\p"
 						"… … …\n… … …What? Ya don't have 'nuff cash?!\p"
-						"I can't believe it! I've been had!\p"
+						"I can't believe it! I've been had!"
+					))
+					applymovement(VAR_LAST_TALKED, moves(emote_angry))
+					msgbox(format(
 						"Get outta here, ya scammer!"
 					))
 				}
@@ -267,6 +270,7 @@ script YifuCity_Refuge_EventScript_ListenToShamisen {
 	lock
 	faceplayer
 	speakername("Boy")
+	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Whew… I've walked all day…\nI am spent!"
 	))
@@ -319,6 +323,7 @@ script YifuCity_Refuge_EventScript_Bisharp {
 script YifuCity_Refuge_EventScript_Samurai {
 	lock
 	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	speakername("Samurai")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}The Crobat Shadows must be operating from somewhere… But where?"
@@ -331,6 +336,7 @@ script YifuCity_Refuge_EventScript_Samurai {
 script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 	lock
 	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	speakername("Man")
 	msgbox(format(
 		"Arrgh… this city's Dojo is all girls, so I thought it was going to be super easy…\p"
@@ -437,6 +443,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 			}
 
 		case ROUTE_CHALLENGE_STATE_FAILURE:
+			applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 			speakername("Shamisen Player")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hello, traveler.\n… … …\l"
@@ -453,6 +460,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 
 			switch(var(VAR_RESULT)) {
 				case 0:
+					applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 					speakername("Shamisen Player")
 					msgbox(format(
 						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hmmmm… … …\n… … …\p"
@@ -464,6 +472,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 					closemessage
 					setflag(FLAG_LIED_TO_SHAMISEN_PLAYER)
 				case 1:
+					applymovement(VAR_LAST_TALKED, moves(emote_happy))
 					speakername("Shamisen Player")
 					msgbox(format(
 						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Oh, that's alright! Don't beat yourself up. I see in your heart that you have a bright future ahead of you.\p"

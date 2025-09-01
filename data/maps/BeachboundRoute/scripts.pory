@@ -47,11 +47,14 @@ script BeachboundRoute_EventScript_AnnoyedGirl {
 }
 
 script BeachboundRoute_EventScript_AnnoyedBoy {
-	// TODO emote_sweat
+	lock
+	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	speakername("Annoyed boy")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 EMOTE_NORMAL}I brought my date to the Lover's Meadow, but I kind of thought we'd be alone…"
-	), MSGBOX_NPC)
+	))
+	closemessage
+	release
 }
 
 // Hoppip

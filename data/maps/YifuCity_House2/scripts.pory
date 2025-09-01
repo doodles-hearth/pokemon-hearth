@@ -39,6 +39,7 @@ script YifuCity_House2_Model {
 		))
 		closemessage
 	} else {
+		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		speakername("Model")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Yawn… Being a model is so tiring! My feet hurt from standing here for hours…\p"

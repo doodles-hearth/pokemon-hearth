@@ -16,10 +16,15 @@ Kura_Beachbound_Gate_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 Kura_Beachbound_Gate_EventScript_Guard::
 	lock
 	speakername Kura_Beachbound_Gate_EventScript_Guard_Text_0
+	applymovement VAR_LAST_TALKED, Kura_Beachbound_Gate_EventScript_Guard_Movement_0
 	msgbox Kura_Beachbound_Gate_EventScript_Guard_Text_1
 	release
 	return
 
+
+Kura_Beachbound_Gate_EventScript_Guard_Movement_0:
+	emote_sleep
+	step_end
 
 Kura_Beachbound_Gate_EventScript_Guard_Text_0:
 	.string "Samurai$"

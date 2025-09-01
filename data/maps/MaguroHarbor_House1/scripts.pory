@@ -54,6 +54,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	}
 	else
 	{
+		applymovement(VAR_LAST_TALKED, moves(emote_upset))
 		speakername("Pokémon Nerd")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Wrong, wrong, WRONG!\nYou are wrong!\p"
@@ -74,6 +75,7 @@ script MaguroHarbor_House1_EventScript_Clefairy {
 	setseenmon(SPECIES_CLEFAIRY)
 	playmoncry(SPECIES_CLEFAIRY, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_CLEFAIRY)
+	applymovement(VAR_LAST_TALKED, moves(emote_music))
 	msgbox(format(
 		"Teehee!"
 	))

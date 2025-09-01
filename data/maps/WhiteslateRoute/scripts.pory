@@ -116,7 +116,7 @@ script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
 		case 0:
 			speakername("Shamisen Player")
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Go forth, bold young soul! May luck echo your steps!"
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Go forth, bold young soul!\nMay luck echo your steps!"
 			))
 			closemessage
 
@@ -222,6 +222,7 @@ script WhiteslateRoute_EventScript_Sumi {
 		format("Heeeeeee!")
 	)
 	speakername("Sumi")
+	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}You don't scare easily, do you?"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -288,6 +289,7 @@ script WhiteslateRoute_EventScript_Shuckle {
 	if (!flag(FLAG_DAILY_SHUCKLE_BERRY_JUICE)) {
 		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48)
 		waitmovement(0)
+		applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_question_mark))
 		msgbox(format(
 			"…Oh? The Pokémon is giving you something."
 		))
@@ -380,6 +382,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 			waitmovement(LOCALID_SECRET_BASE_MAN)
 	}
 
+	applymovement(LOCALID_SECRET_BASE_MAN, moves(emote_sad))
 	speakername("Man")
 	msgbox(format(
 		"Oh, man! You were here this whole time? My secret base is no longer secret!"
@@ -411,7 +414,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 		case 1:
 			speakername("Man")
 			msgbox(format(
-				"Ah, it's alright. You look like you're a good kid. I'm sure you have what it takes to become a secret base master. I'll let you in on the secret!\p"
+				"Ah, it's alright. You seem like a good kid. I'm sure you have what it takes to become a secret base master. I'll let you in on the secret!\p"
 				"I taught my Grovyle a secret technique to open passages to hidden natural caves!\p"
 				"Not only that! Trees with low-hanging vines, bushes…"
 				"That kind of place is perfect to build a secret base!\p"

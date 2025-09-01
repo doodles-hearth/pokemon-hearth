@@ -174,8 +174,6 @@ script SunriseVillage_Event_Boy {
     faceplayer
     speakername("Kid")
     if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 4) {
-        applymovement(VAR_LAST_TALKED, moves(emote_sweat, delay_16 * 6, emote_crying, delay_16 * 6))
-        waitmovement(0)
         msgbox(format(
             "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}My Happiny is the strongest of all! See how fierce it looks?"
         ))

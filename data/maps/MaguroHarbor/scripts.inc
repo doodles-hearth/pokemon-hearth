@@ -425,6 +425,7 @@ MaguroHarbor_EventScript_Man_1:
 	return
 
 MaguroHarbor_EventScript_Man_2:
+	applymovement VAR_LAST_TALKED, MaguroHarbor_EventScript_Man_Movement_0
 	msgbox MaguroHarbor_EventScript_Man_Text_1, MSGBOX_AUTOCLOSE
 	goto MaguroHarbor_EventScript_Man_1
 
@@ -456,6 +457,7 @@ MaguroHarbor_EventScript_MartSelling::
 	message MaguroHarbor_EventScript_MartSelling_Text_1
 	waitmessage
 	pokemart MaguroHarbor_Mart
+	applymovement VAR_LAST_TALKED, MaguroHarbor_EventScript_MartSelling_Movement_0
 	message MaguroHarbor_EventScript_MartSelling_Text_2
 	release
 	return
@@ -514,6 +516,14 @@ MaguroHarbor_Mart:
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_NONE
+
+MaguroHarbor_EventScript_Man_Movement_0:
+	emote_sad
+	step_end
+
+MaguroHarbor_EventScript_MartSelling_Movement_0:
+	emote_happy
+	step_end
 
 MaguroHarbor_EventScript_TownSign_Text_0:
 	.string "Maguro Harbor\n"

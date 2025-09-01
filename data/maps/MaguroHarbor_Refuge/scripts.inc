@@ -97,6 +97,7 @@ MaguroHarbor_Refuge_EventScript_Slowpoke::
 	goto_if_set FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE, MaguroHarbor_Refuge_EventScript_Slowpoke_2
 	setspeakertomonname SPECIES_SLOWPOKE
 MaguroHarbor_Refuge_EventScript_Slowpoke_1:
+	applymovement VAR_LAST_TALKED, MaguroHarbor_Refuge_EventScript_Slowpoke_Movement_0
 	msgbox MaguroHarbor_Refuge_EventScript_Slowpoke_Text_0
 	waitmoncry
 	closemessage
@@ -115,6 +116,7 @@ MaguroHarbor_Refuge_EventScript_DescribedMons::
 	getdescribedmon SPECIES_KRABBY
 	compare VAR_RESULT, 0
 	goto_if_ne MaguroHarbor_Refuge_EventScript_DescribedMons_2
+	applymovement VAR_LAST_TALKED, MaguroHarbor_Refuge_EventScript_DescribedMons_Movement_0
 	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_2
 	closemessage
 MaguroHarbor_Refuge_EventScript_DescribedMons_1:
@@ -152,6 +154,14 @@ MaguroHarbor_Refuge_EventScript_Hariko_Movement_1:
 
 MaguroHarbor_Refuge_EventScript_Hariko_Movement_2:
 	walk_in_place_fast_down
+	step_end
+
+MaguroHarbor_Refuge_EventScript_Slowpoke_Movement_0:
+	emote_sleep
+	step_end
+
+MaguroHarbor_Refuge_EventScript_DescribedMons_Movement_0:
+	emote_happy
 	step_end
 
 MaguroHarbor_Refuge_EventScript_Hariko_Text_0:
@@ -192,9 +202,9 @@ MaguroHarbor_Refuge_EventScript_Hariko_Text_6:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Bean is a little slow, but he is happy\n"
 	.string "to meet you!\p"
 	.string "He may not look like a fighter, but he\n"
-	.string "enjoys a good battle, too. Would you\l"
-	.string "like to have a friendly bout, Bean\l"
-	.string "against your Pokémon?$"
+	.string "enjoys a good battle, too.\p"
+	.string "Would you like to have a friendly\n"
+	.string "bout, Bean against your Pokémon?$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_0:
 	.string "Yes!$"
@@ -212,8 +222,8 @@ MaguroHarbor_Refuge_BattleHariko_Text_3:
 	.string "about Pokémon, be it through battling\l"
 	.string "or observation.\p"
 	.string "I brought snacks for my journey.\n"
-	.string "If I give you some, you will probably\l"
-	.string "feel rewarded for this fight!$"
+	.string "If I give you some, will you feel\l"
+	.string "rewarded for this fight?$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}These can be fed to your Pokémon\n"

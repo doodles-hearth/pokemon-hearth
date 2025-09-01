@@ -70,7 +70,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 		speakername("Hariko")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Bean is a little slow, but he is happy to meet you!\p"
-			"He may not look like a fighter, but he enjoys a good battle, too."
+			"He may not look like a fighter, but he enjoys a good battle, too.\p"
 			"Would you like to have a friendly bout, Bean against your Pokémon?"
 		))
 
@@ -105,7 +105,7 @@ script MaguroHarbor_Refuge_BattleHariko {
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}We lost, but Bean tells me he had fun!\nI am glad.\p"
 				"Everyday we learn something new about Pokémon, be it through battling or observation.\p"
-				"I brought snacks for my journey.\nIf I give you some, you will probably feel rewarded for this fight!"
+				"I brought snacks for my journey.\nIf I give you some, will you feel rewarded for this fight?"
 			))
 			closemessage
 
@@ -138,6 +138,7 @@ script MaguroHarbor_Refuge_EventScript_Slowpoke {
 	} else {
 		setspeakertomonname(SPECIES_SLOWPOKE)
 	}
+	applymovement(VAR_LAST_TALKED, moves(emote_sleep))
 	msgbox(format("Duh…"))
 	waitmoncry
 	closemessage
@@ -154,6 +155,7 @@ script MaguroHarbor_Refuge_EventScript_DescribedMons {
 		))
 		closemessage
 	} else {
+		applymovement(VAR_LAST_TALKED, moves(emote_happy))
 		msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
 		"I bet you're wondering how you can fill up the description of every Pokémon.\l"

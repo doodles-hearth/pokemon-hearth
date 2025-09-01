@@ -162,7 +162,7 @@ WindsweptRoute_EventScript_Trainer1_Text_3:
 	.string "of ourselves.$"
 
 WindsweptRoute_EventScript_Itamae_Text_0:
-	.string "I'm scouring this salty grass for the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}I'm scouring this salty grass for the\n"
 	.string "tastiest ingredients!$"
 
 WindsweptRoute_EventScript_Itamae_Text_1:
@@ -172,7 +172,7 @@ WindsweptRoute_EventScript_Itamae_Text_2:
 	.string "Itamae$"
 
 WindsweptRoute_EventScript_Itamae_Text_3:
-	.string "This place is an inspiration for my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}This place is an inspiration for my\n"
 	.string "innovative cuisine.\p"
 	.string "The rocks are salty, the plants are\n"
 	.string "salty… To an extent, even the air is\l"

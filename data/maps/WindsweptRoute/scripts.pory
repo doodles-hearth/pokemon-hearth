@@ -38,11 +38,14 @@ script WindsweptRoute_EventScript_Trainer1 {
 script WindsweptRoute_EventScript_Itamae {
 	trainerbattle_single(
 		TRAINER_ITAMAE,
-		format("I'm scouring this salty grass for the tastiest ingredients!"),
+		format("{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}I'm scouring this salty grass for the tastiest ingredients!"),
 		format("Bitter is the taste of defeat…")
 	)
 	speakername("Itamae")
-	msgbox(format("This place is an inspiration for my innovative cuisine.\pThe rocks are salty, the plants are salty… To an extent, even the air is salty."), MSGBOX_AUTOCLOSE)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}This place is an inspiration for my innovative cuisine.\p"
+		"The rocks are salty, the plants are salty… To an extent, even the air is salty."
+	), MSGBOX_AUTOCLOSE)
 	end
 }
 

@@ -447,6 +447,8 @@ script MaguroHarbor_EventScript_Man {
 	faceplayer
 	speakername("Man")
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
+		
+    	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN EMOTE_NORMAL}T-This was the biggest quake we've felt yet!"
 		), MSGBOX_AUTOCLOSE)
@@ -481,6 +483,7 @@ script MaguroHarbor_EventScript_MartSelling {
 	message(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Hello, welcome to the Maguro Harbor market!"))
 	waitmessage
 	pokemart(MaguroHarbor_Mart)
+	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	message(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Come back soon!"))
 	release
 }

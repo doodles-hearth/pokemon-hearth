@@ -108,6 +108,7 @@
 	create_movement_action emote_happy, MOVEMENT_ACTION_EMOTE_HAPPY
 	create_movement_action emote_crying, MOVEMENT_ACTION_EMOTE_CRYING
 	create_movement_action emote_sweat, MOVEMENT_ACTION_EMOTE_SWEAT
+	create_movement_action emote_sleep, MOVEMENT_ACTION_EMOTE_SLEEP
 	create_movement_action reveal_trainer, MOVEMENT_ACTION_REVEAL_TRAINER
 	create_movement_action rock_smash_break, MOVEMENT_ACTION_ROCK_SMASH_BREAK
 	create_movement_action cut_tree, MOVEMENT_ACTION_CUT_TREE

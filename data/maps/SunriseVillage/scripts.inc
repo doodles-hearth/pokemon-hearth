@@ -172,8 +172,6 @@ SunriseVillage_Event_Boy_1:
 	end
 
 SunriseVillage_Event_Boy_2:
-	applymovement VAR_LAST_TALKED, SunriseVillage_Event_Boy_Movement_0
-	waitmovement 0
 	msgbox SunriseVillage_Event_Boy_Text_1
 	closemessage
 	setnamedmon SPECIES_HAPPINY
@@ -285,23 +283,6 @@ SunriseVillage_Event_GuardForest_Movement_1:
 
 SunriseVillage_Event_LittleGirl_Movement_0:
 	emote_happy
-	step_end
-
-SunriseVillage_Event_Boy_Movement_0:
-	emote_sweat
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	emote_crying
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
 	step_end
 
 SunriseVillage_Event_Farmer_Movement_0:

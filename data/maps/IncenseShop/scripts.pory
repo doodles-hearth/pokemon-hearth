@@ -46,6 +46,7 @@ script IncenseShop_EventScript_Shopkeeper {
 	lock
 
 	if (flag(FLAG_TALKED_TO_INCENSE_SHOP_KEEPER)) {
+		applymovement(VAR_LAST_TALKED, moves(emote_sleep))
 		speakername("Shopkeeper")
 		msgbox(format(
 			"… … … … … …\n… … … ZzzZz…"

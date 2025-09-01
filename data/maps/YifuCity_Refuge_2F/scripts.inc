@@ -76,6 +76,7 @@ YifuCity_Refuge_2F_EventScript_NumelTrade::
 	removeobject LOCALID_TRADE_NUMEL
 	waitstate
 	addobject LOCALID_TRADE_HERACROSS
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0
 	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_5, MSGBOX_DEFAULT
 	closemessage
 YifuCity_Refuge_2F_EventScript_NumelTrade_1:
@@ -89,12 +90,14 @@ YifuCity_Refuge_2F_EventScript_NumelTrade_2:
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_5:
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0
 	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_10:
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0
 	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3
 	closemessage
@@ -164,6 +167,7 @@ YifuCity_Refuge_2F_EventScript_TouristKid::
 YifuCity_Refuge_2F_EventScript_TouristGirl::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_TouristGirl_Movement_0
 	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_TouristGirl_Text_0
 	closemessage
@@ -182,6 +186,14 @@ YifuCity_Refuge_2F_EventScript_Castform::
 	release
 	return
 
+
+YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0:
+	emote_happy
+	step_end
+
+YifuCity_Refuge_2F_EventScript_TouristGirl_Movement_0:
+	emote_angry
+	step_end
 
 YifuCity_Refuge_2F_EventScript_Sleep_Text_0:
 	.string "It's a soft feather bed…\n"

@@ -9,7 +9,8 @@ script YifuCity_House4_EventScript_NameRater {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Names are the mirror of the soul!\p"
 		"{FONT_SMALL}Or was that the eyes? Bah…{FONT_NORMAL}\p"
-		"I have been told I have a way\nwith names.\lYoung Wielder…\lWould you like me\lto counsel you on the naming of\lyour Pokémon?"
+		"I have been told I have a way\nwith names.\p"
+		"Young Wielder… Would you like me to counsel you on the naming of your Pokémon?"
 	), MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		speakername("Name Rater")
@@ -48,7 +49,7 @@ script YifuCity_House4_EventScript_NameRater {
 						msgbox(format(
 							"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}{STR_VAR_1}…\nI see what you were going for…\p"
 							"{FONT_SMALL}Yikes…{FONT_NORMAL}"
-							"I don't see this Pokémon's soul in this name…\p"
+							"But I don't see this Pokémon's soul in this name…\p"
 							"Are you inspired to bestow a new name on it?\p"
 							"Go ahead! Speak from your heart!"
 						))
@@ -61,7 +62,7 @@ script YifuCity_House4_EventScript_NameRater {
 								"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}{STR_VAR_1}… I see…\nThis name rings with truth!\p"
 								"Look… Your Pokémon seems happy about its new name!\p"
 								"Goodbye! May wisdom guide your steps!\p"
-								"{FONT_SMALL}Bah! I should ask money for this…{FONT_NORMAL}"
+								"{FONT_SMALL}Bah! I should charge for this…{FONT_NORMAL}"
 							))
 						} else {
 							speakername("Name Rater")

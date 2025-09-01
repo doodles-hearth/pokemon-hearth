@@ -29,6 +29,7 @@ script YifuCity_House1_2F_EventScript_ChildGiveDoll {
 			))
 			closemessage
 		} else {
+			applymovement(VAR_LAST_TALKED, moves(emote_upset))
 			speakername("Little boy")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}Quit following me around!!"
@@ -44,6 +45,7 @@ script YifuCity_House1_2F_EventScript_ChildGiveDoll {
 script YifuCity_House1_2F_EventScript_ChildStolenDoll {
 	lock
 	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_upset))
 	speakername("Little girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}My brother is meaaannnn!\nHe won't give me my doll back!!"

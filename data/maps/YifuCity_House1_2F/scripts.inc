@@ -6,6 +6,7 @@ YifuCity_House1_2F_EventScript_ChildGiveDoll::
 	lock
 	goto_if_set FLAG_RECEIVED_DOLL_FROM_CHILD, YifuCity_House1_2F_EventScript_ChildGiveDoll_2
 	goto_if_set FLAG_RECEIVED_SECRET_POWER, YifuCity_House1_2F_EventScript_ChildGiveDoll_5
+	applymovement VAR_LAST_TALKED, YifuCity_House1_2F_EventScript_ChildGiveDoll_Movement_0
 	speakername YifuCity_House1_2F_EventScript_ChildGiveDoll_Text_0
 	msgbox YifuCity_House1_2F_EventScript_ChildGiveDoll_Text_4
 	closemessage
@@ -35,6 +36,7 @@ YifuCity_House1_2F_EventScript_ChildGiveDoll_5:
 YifuCity_House1_2F_EventScript_ChildStolenDoll::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, YifuCity_House1_2F_EventScript_ChildGiveDoll_Movement_0
 	speakername YifuCity_House1_2F_EventScript_ChildStolenDoll_Text_0
 	msgbox YifuCity_House1_2F_EventScript_ChildStolenDoll_Text_1
 	closemessage
@@ -54,6 +56,10 @@ YifuCity_House1_2F_EventScript_Vulpix::
 	release
 	return
 
+
+YifuCity_House1_2F_EventScript_ChildGiveDoll_Movement_0:
+	emote_upset
+	step_end
 
 YifuCity_House1_2F_EventScript_ChildGiveDoll_Text_0:
 	.string "Little boy$"

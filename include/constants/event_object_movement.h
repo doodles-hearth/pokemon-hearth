@@ -280,6 +280,7 @@
 #define MOVEMENT_ACTION_EMOTE_HAPPY                     0xBB
 #define MOVEMENT_ACTION_EMOTE_CRYING                    0xBC
 #define MOVEMENT_ACTION_EMOTE_SWEAT                     0xBD
+#define MOVEMENT_ACTION_EMOTE_SLEEP                     0xBE
 
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF

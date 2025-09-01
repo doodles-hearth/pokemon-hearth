@@ -62,6 +62,7 @@ IncenseShop_EventScript_Shopkeeper_1:
 	return
 
 IncenseShop_EventScript_Shopkeeper_2:
+	applymovement VAR_LAST_TALKED, IncenseShop_EventScript_Shopkeeper_Movement_0
 	speakername IncenseShop_EventScript_Shopkeeper_Text_0
 	msgbox IncenseShop_EventScript_Shopkeeper_Text_1
 	closemessage
@@ -146,6 +147,10 @@ IncenseShop_Mart_4:
 	.2byte ITEM_LAX_INCENSE
 	.2byte ITEM_FULL_INCENSE
 	.2byte ITEM_NONE
+
+IncenseShop_EventScript_Shopkeeper_Movement_0:
+	emote_sleep
+	step_end
 
 IncenseShop_EventScript_Drowzee_Text_0:
 	.string "Hrmmm…$"

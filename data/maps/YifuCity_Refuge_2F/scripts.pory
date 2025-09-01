@@ -74,6 +74,7 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
         )
 
 	    if (var(VAR_RESULT) == NO || var(VAR_RESULT) == MULTI_B_PRESSED) {
+			applymovement(VAR_LAST_TALKED, moves(emote_happy))
             speakername("Girl")
             msgbox(format("It's okay. I'll hang out with my Numel for a while!"))
             closemessage
@@ -82,6 +83,7 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
             waitstate
             copyvar(VAR_0x800A, VAR_0x8004)
             if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+				applymovement(VAR_LAST_TALKED, moves(emote_happy))
                 speakername("Girl")
                 msgbox(format("It's okay. I'll hang out with my Numel for a while!"))
                 closemessage
@@ -106,6 +108,7 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
 
                     addobject(LOCALID_TRADE_HERACROSS)
 
+					applymovement(VAR_LAST_TALKED, moves(emote_happy))
                     msgbox(format(
 						"Woah!\nIt's bigger than I thought! Amazing!!\p"
 						"Please, take good care of my girl Luo Luo, okay?"
@@ -181,6 +184,7 @@ script YifuCity_Refuge_2F_EventScript_TouristKid {
 script YifuCity_Refuge_2F_EventScript_TouristGirl {
 	lock
 	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	speakername("Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}Ughh, I have to share the bed with my baby brother…\p"

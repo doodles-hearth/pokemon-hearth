@@ -53,18 +53,18 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	speakername("Elder Iwa")
 	msgbox(format(
-		"Let us not surrender to panic."
+		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Let us not surrender to panic."
 	))
 	closemessage
 
 	playse(SE_PIN)
-	applymovement(LOCALID_ELDER, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_ELDER, moves(emote_question_mark, delay_16 * 6))
 	waitse
 	waitmovement(0)
 
 	speakername("Elder Iwa")
 	msgbox(format(
-		"Excuse me… Can I help you?"
+		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Excuse me… Can I help you?"
 	))
 	closemessage
 
@@ -95,7 +95,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	speakername("Elder Iwa")
 	msgbox(format(
-		"Yes? I am Iwa, the Elder of Silveridge. What brings you to me?"
+		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Yes? I am Iwa, the Elder of Silveridge. What brings you to me?"
 	))
 
 	dynmultichoice(
@@ -116,8 +116,11 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	speakername("Elder Iwa")
 	msgbox(format(
-		"Ah! The letter I was expecting from Kaba…\p"
-		"… … … … … …\n… … … … … …\p"
+		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Ah! The letter I was expecting from Kaba…!"
+	))
+	applymovement(LOCALID_ELDER, moves(emote_pensive))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}… … … … … …\n… … … … … …\p"
 		"I see…\p"
 		"The wild Pokémon are in a frenzy all the way down to the Ginko Woods as well…\p"
 		"The phenomenon has thus been confirmed to be happening across the whole Toku region!\p"
@@ -127,7 +130,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	))
 	closemessage
 
-	applymovement(LOCALID_ELDER, moves(walk_slow_left, walk_slow_right * 2, walk_slow_left, delay_16))
+	applymovement(LOCALID_ELDER, moves(walk_slow_left, walk_slow_right * 2, walk_slow_left, delay_16, emote_pensive, delay_16 * 6))
 	waitmovement(0)
 
 	playse(SE_EXIT)
@@ -141,9 +144,10 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	waitmovement(LOCALID_ELDER)
 	waitse
 
+	applymovement(LOCALID_MESSENGER, moves(emote_sad))
 	speakername("Girl")
 	msgbox(format(
-		"Elder Iwa! Elder Iwa!\p"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_2 EMOTE_NORMAL}Elder Iwa! Elder Iwa!\p"
 		"A Chatot just got in! Some Decay was discovered in Uume Forest!"
 	))
 	closemessage
@@ -160,10 +164,13 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	speakername("Elder Iwa")
 	msgbox(format(
-		"We cannot lose a second! We need someone to go investigate Uume Forest right now!\p"
-		"… … … … … …\n… … … … … …\p"
+		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}We cannot lose a second! We need someone to go investigate Uume Forest right now!"
+	))
+	applymovement(LOCALID_ELDER, moves(emote_pensive))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}… … … … … …\n… … … … … …\p"
 		"Young one from Sunrise Village.\nWhat is your name? {PLAYER}?\p"
-		"You came all the way up here\non foot…\lYou already have a team of capable Pokémon…\lKaba has trusted you with this delivery…\p"
+		"You came all the way up here\non foot…\lYou already have a team of capable Pokémon…\lKaba seems to trust you…\p"
 		"It is decided! You shall travel to Uume Forest, southeast of Tranquil Route!\p"
 		"Our fate may well be in your hands, {PLAYER}.\p"
 		"Before you leave, let me give you something to make your journey easier."
@@ -182,7 +189,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	speakername("Elder Iwa")
 	msgbox(format(
-		"I have been keeping this mysterious ancient relic for years.\p"
+		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}I have been keeping this mysterious ancient relic for years.\p"
 		"We aren't sure where nor when it originated, but it lets one Pokémon mirror the experience of another.\p"
 		"It should be immensely useful in the hands of a promising young Wielder such as yourself.\p"
 		"Now go, and be quick!"
@@ -200,7 +207,7 @@ script Silveridge_EldersHouse_EventScript_Elder {
 	faceplayer
 	speakername("Elder Iwa")
 	msgbox(format(
-		"Go forth, young one."
+		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Go forth, young one."
 	))
 	closemessage
 	release

@@ -35,7 +35,7 @@ script YifuCity_CrobatShop_Cashier {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We thank thee fer yer business! Tell yer friends!\p"
 		"{FONT_SMALL}Unless yer friends are the police!{FONT_NORMAL}\p"
-		"Wut's that? I said nothin', ya must be hearin' things!"
+		"Wussthat? I said nothin', ya must be hearin' things!"
 	))
 	closemessage
 	release
@@ -142,6 +142,7 @@ script YifuCity_CrobatShop_Guard {
 
 		delay(24)
 
+		applymovement(VAR_LAST_TALKED, moves(emote_angry))
 		speakername("Shady man")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}That ain't the password! Scram!"
@@ -201,6 +202,7 @@ script YifuCity_CrobatShop_Guard {
 			delay(24)
 
 			if (flag(FLAG_CROBAT_PASSWORD_FIRST_HALF_CORRECT) && flag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT)) {
+				applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 				speakername("Shady man")
 				msgbox(format(
 					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hmmm… Ya don't look like the typical Zubat…\p"
@@ -221,6 +223,7 @@ script YifuCity_CrobatShop_Guard {
 			} else {
 				delay(24)
 
+				applymovement(VAR_LAST_TALKED, moves(emote_angry))
 				speakername("Shady man")
 				msgbox(format(
 					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}That ain't the password! Scram!"

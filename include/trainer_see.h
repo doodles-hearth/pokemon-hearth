@@ -38,5 +38,6 @@ u8 FldEff_DoubleExclMarkIcon(void);
 u8 FldEff_XIcon(void);
 u8 FldEff_CryingIcon(void);
 u8 FldEff_SweatIcon(void);
+u8 FldEff_SleepIcon(void);
 
 #endif // GUARD_TRAINER_SEE_H

@@ -24,11 +24,16 @@ YifuCity_BigHouse_2F_EventScript_TradingActOfLove::
 YifuCity_BigHouse_2F_EventScript_RunningBoy::
 	lock
 	faceplayer
+	applymovement VAR_LAST_TALKED, YifuCity_BigHouse_2F_EventScript_RunningBoy_Movement_0
 	speakername YifuCity_BigHouse_2F_EventScript_RunningBoy_Text_0
 	msgbox YifuCity_BigHouse_2F_EventScript_RunningBoy_Text_1
 	release
 	return
 
+
+YifuCity_BigHouse_2F_EventScript_RunningBoy_Movement_0:
+	emote_angry
+	step_end
 
 YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon_Text_0:
 	.string "Old Man$"
