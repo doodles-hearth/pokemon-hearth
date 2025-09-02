@@ -204,6 +204,6 @@ script GinkoWoods_EventScript_TrainerTips1 {
 script GinkoWoods_EventScript_TrainerTips2 {
     msgbox(format(
 		"Did you know?\p"
-		"You can sort the contents of your bag by pressing START."
+		"You can sort the contents of your bag by pressing {START_BUTTON}."
 	), MSGBOX_SIGN)
 }
