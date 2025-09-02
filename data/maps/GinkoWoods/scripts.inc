@@ -141,7 +141,7 @@ GinkoWoods_EventScript_OldMan_Movement_0:
 	step_end
 
 GinkoWoods_EventScript_Bean_Movement_0:
-	emote_angry
+	emote_music
 	delay_16
 	delay_16
 	delay_16

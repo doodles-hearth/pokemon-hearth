@@ -61,7 +61,7 @@ script GinkoWoods_EventScript_OldMan {
 script GinkoWoods_EventScript_Bean {
 	lock
 
-	applymovement(VAR_LAST_TALKED, moves(emote_angry, delay_16 * 6))
+	applymovement(VAR_LAST_TALKED, moves(emote_music, delay_16 * 6))
 	waitmovement(VAR_LAST_TALKED)
 
 	faceplayer

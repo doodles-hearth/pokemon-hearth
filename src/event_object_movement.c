@@ -2513,8 +2513,6 @@ void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch fo
         [FOLLOWER_EMOTION_CURIOUS] = 10,
         [FOLLOWER_EMOTION_MUSIC] = 15,
         [FOLLOWER_EMOTION_POISONED] = 0,
-        [FOLLOWER_EMOTION_CRYING] = 0,
-        [FOLLOWER_EMOTION_SWEAT] = 0,
     };
     u32 i, j;
     bool32 pickedCondition = FALSE;
