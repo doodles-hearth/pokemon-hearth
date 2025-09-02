@@ -430,7 +430,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ShamisenGreenNormal,
-            .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
 
@@ -439,7 +439,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ShamisenRedNormal,
-            .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
 
@@ -448,7 +448,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ShamisenBlueNormal,
-            .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
 
@@ -457,7 +457,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_CookNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
 
@@ -466,7 +466,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_IwaNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
 

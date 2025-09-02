@@ -8,13 +8,14 @@
 #include "field_mugshot.h"
 #include "constants/field_mugshots.h"
 #include "data/field_mugshots.h"
+#include "palette.h"
 
 static EWRAM_DATA u8 sFieldMugshotSpriteIds[2] = {};
 static EWRAM_DATA u8 sIsFieldMugshotActive = 0;
 static EWRAM_DATA u8 sFieldMugshotSlot = 0;
 
-#define TAG_MUGSHOT 0x9000
-#define TAG_MUGSHOT2 0x9001
+#define TAG_MUGSHOT (0x9000 | BLEND_IMMUNE_FLAG)
+#define TAG_MUGSHOT2 (0x9001 | BLEND_IMMUNE_FLAG)
 
 // don't remove the `+ 32`
 // otherwise your sprite will not be placed in the place you desire
