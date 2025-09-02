@@ -11563,7 +11563,7 @@
         },
         {
           "map": "MAP_TRANQUIL_ROUTE",
-          "base_label": "gTranquilRoute_Day",
+          "base_label": "gTranquilRoute_Lunchtime",
           "land_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -11871,7 +11871,7 @@
         },
         {
           "map": "MAP_WINDSWEPT_ROUTE",
-          "base_label": "gWindsweptRoute_Day",
+          "base_label": "gWindsweptRoute_Lunchtime",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -12069,7 +12069,7 @@
         },
         {
           "map": "MAP_BEACHBOUND_ROUTE",
-          "base_label": "gBeachboundRoute_Day",
+          "base_label": "gBeachboundRoute_Lunchtime",
           "land_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -13442,7 +13442,7 @@
         },
         {
           "map": "MAP_SOULKEEP_GRAVEYARD",
-          "base_label": "gSoulkeepGraveyard_Day",
+          "base_label": "gSoulkeepGraveyard_Lunchtime",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
