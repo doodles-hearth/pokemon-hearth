@@ -519,8 +519,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Npc_Sunrise,           OBJ_EVENT_PAL_TAG_SUNRISE},
     {gObjectEventPal_Npc_Seaside,           OBJ_EVENT_PAL_TAG_SEASIDE},
     {gObjectEventPal_Npc_Uume,              OBJ_EVENT_PAL_TAG_UUME},
-    {gObjectEventPal_Npc_Cold,              OBJ_EVENT_PAL_TAG_COLD},
     {gObjectEventPal_Npc_Hot,               OBJ_EVENT_PAL_TAG_HOT},
+    {gObjectEventPal_Npc_Cold,              OBJ_EVENT_PAL_TAG_COLD},
     {gObjectEventPal_Npc_Sakura,            OBJ_EVENT_PAL_TAG_SAKURA},
     {gObjectEventPal_Npc_Mountain,          OBJ_EVENT_PAL_TAG_MOUNTAIN},
     {gObjectEventPal_CrobatShadowsGolbat,   OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS},
@@ -3095,28 +3095,6 @@ void ObjectEventTurnByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup, u8 direc
 void PlayerObjectTurn(struct PlayerAvatar *playerAvatar, u8 direction)
 {
     ObjectEventTurn(&gObjectEvents[playerAvatar->objectEventId], direction);
-}
-
-bool32 IsObjectEventPaletteTagInUse(u16 paletteTag)
-{
-    u32 res = FALSE;
-    for (u32 i = 0; i < OBJECT_EVENTS_COUNT; i++)
-    {
-        struct ObjectEvent *objectEvent = &gObjectEvents[i];
-
-        if (objectEvent->active && !objectEvent->isPlayer
-         && objectEvent->localId != OBJ_EVENT_ID_FOLLOWER && objectEvent->localId != OBJ_EVENT_ID_NPC_FOLLOWER)
-        {
-            const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
-            if (graphicsInfo->paletteTag == paletteTag)
-            {
-                res = TRUE;
-                break;
-            }
-        }
-    }
-
-    return res;
 }
 
 static void SetBerryTreeGraphicsById(struct ObjectEvent *objectEvent, u8 berryId, u8 berryStage)
