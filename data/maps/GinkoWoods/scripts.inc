@@ -305,4 +305,4 @@ GinkoWoods_EventScript_TrainerTips1_Text_0:
 GinkoWoods_EventScript_TrainerTips2_Text_0:
 	.string "Did you know?\p"
 	.string "You can sort the contents of your\n"
-	.string "bag by pressing START.$"
+	.string "bag by pressing {START_BUTTON}.$"

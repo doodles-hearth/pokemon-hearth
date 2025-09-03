@@ -112,6 +112,7 @@ ChiiTown_EventScript_Kecleon::
 	setseenmon SPECIES_KECLEON
 	playmoncry SPECIES_KECLEON, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_KECLEON
+	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_Kecleon_Movement_0
 	msgbox ChiiTown_EventScript_Kecleon_Text_0
 	waitmoncry
 	closemessage
@@ -347,6 +348,10 @@ ChiiTown_EventScript_SetTrespassVar::
 	setvar VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 1
 	return
 
+
+ChiiTown_EventScript_Kecleon_Movement_0:
+	emote_music
+	step_end
 
 ChiiTown_EventScript_PlantingFlowers_Movement_0:
 	emote_happy
