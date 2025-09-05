@@ -263,11 +263,10 @@ KuraTown_House1_OldWomansSon_Text_0:
 	.string "Guy$"
 
 KuraTown_House1_OldWomansSon_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}The Pokémon league organization\n"
-	.string "didn't see fit to build a Pokémon\l"
-	.string "refuge in our village, but those jerks\l"
-	.string "over at Saku Village won't let us use\l"
-	.string "theirs.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}The Pokémon Council didn't see fit to\n"
+	.string "build a Refuge in our town. But those\l"
+	.string "jerks over at Saku Village won't let\l"
+	.string "us use theirs!\p"
 	.string "So my mother has to work hard to heal\n"
 	.string "all the villager's Pokémon.\p"
 	.string "It's not fair!$"

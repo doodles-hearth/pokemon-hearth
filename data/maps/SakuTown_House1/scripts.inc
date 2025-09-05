@@ -76,6 +76,7 @@ SakuTown_House1_EventScript_Tama_11:
 	speakername SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_15
 	closemessage
+	delay 24
 	faceplayer
 	speakername SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_16
@@ -185,7 +186,8 @@ SakuTown_House1_EventScript_Tama_Text_14:
 	.string "Whatever for?$"
 
 SakuTown_House1_EventScript_Tama_Text_15:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Ahem… “My dear Tama,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Ahem…\n"
+	.string "“My dear Tama,\l"
 	.string "It pains me that you aren't by my side\l"
 	.string "each night.\l"
 	.string "The sweet chirping of birds pales in\l"
@@ -193,9 +195,8 @@ SakuTown_House1_EventScript_Tama_Text_15:
 	.string "I would move Heaven and Earth for us\l"
 	.string "to be together.\l"
 	.string "If your heart still rings true for\l"
-	.string "mine, will you meet me under pale\l"
-	.string "moonlight, in the vale betwixt our\l"
-	.string "homes?\p"
+	.string "mine, meet me under pale moonlight, in\l"
+	.string "the vale betwixt our homes.\p"
 	.string "Sincerely yours,\n"
 	.string "-Ashii {EMOJI_HEART}”\p"
 	.string "… … … … … …\n"
@@ -208,11 +209,11 @@ SakuTown_House1_EventScript_Tama_Text_16:
 	.string "though?…\p"
 	.string "Oh!\n"
 	.string "She must be talking about the small\l"
-	.string "valley to the east of here!\p"
+	.string "valley east of here!\p"
 	.string "And “pale moonlight”…\n"
 	.string "That must be tonight!\p"
-	.string "Of course! Why else ask you to\n"
-	.string "deliver this now?$"
+	.string "Of course! Why else ask you to deliver\n"
+	.string "this now?$"
 
 SakuTown_House1_EventScript_Tama_Text_17:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Wielder! I owe you my thanks.\n"

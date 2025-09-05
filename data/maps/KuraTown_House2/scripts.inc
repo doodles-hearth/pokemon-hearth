@@ -84,7 +84,6 @@ AshiiScript3:
 	msgbox AshiiScript3_Text_4
 	mcdialogue AshiiScript3_Text_5, AshiiScript3_Text_6, AshiiScript3_Text_7
 	closemessage
-	delay 24
 	applymovement 1, AshiiScript3_Movement_2
 	playse SE_PIN
 	delay 48

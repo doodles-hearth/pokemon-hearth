@@ -25381,9 +25381,9 @@ F_TRAINER_FEMALE |
 #line 10156
         .trainerName = _("Kiyosumi"),
 #line 10157
-        .trainerClass = TRAINER_CLASS_EXPERT,
+        .trainerClass = TRAINER_CLASS_OLD_MAN,
 #line 10158
-        .trainerPic = TRAINER_PIC_EXPERT_M,
+        .trainerPic = TRAINER_PIC_OLD_MAN,
         .encounterMusic_gender =
 0,
 #line 10160

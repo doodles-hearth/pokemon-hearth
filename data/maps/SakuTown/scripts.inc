@@ -1299,10 +1299,9 @@ SakuTown_EventScript_TamaArgument_Text_5:
 	.string "please!$"
 
 SakuTown_EventScript_TamaArgument_Text_6:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}So you're the whippersnapper that's\n"
-	.string "making my son collude with the enemy,\l"
-	.string "eh.\p"
-	.string "You outta be taught a lesson in\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}So you're the whippersnapper making\n"
+	.string "my son collude with the enemy, eh.\p"
+	.string "You ought to be taught a lesson in\n"
 	.string "respect, kiddo!$"
 
 SakuTown_EventScript_TamaArgument_Text_7:
@@ -1335,9 +1334,8 @@ SakuTown_EventScript_TamaArgument_Text_13:
 
 SakuTown_EventScript_TamaArgument_Text_14:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}If your love is as true as you say,\n"
-	.string "then neither I nor anyone else can\l"
-	.string "stop you.\p"
-	.string "Do what you must.$"
+	.string "neither I nor anyone can stop you.\p"
+	.string "Do what you must… {PAUSE 32} Son.$"
 
 SakuTown_EventScript_TamaArgument_Text_15:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I can't thank you enough.\n"
@@ -1371,32 +1369,32 @@ SakuTown_EventScript_LoversReunite_Text_3:
 
 SakuTown_EventScript_LoversReunite_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}So do I.\n"
-	.string "I felt like an insect that could do\l"
+	.string "I felt as an insect that could do\l"
 	.string "nothing but stare at the impossibly\l"
 	.string "tall barricade between us.\p"
-	.string "And yet… Even fierce seperatism\n"
-	.string "couldn't keep us apart tonight.\p"
+	.string "And yet… Even fierce separatism can't\n"
+	.string "keep us apart.\p"
 	.string "Tonight, we can have a midsummer\n"
-	.string "dream of mirth and joy.$"
+	.string "dream of joy and mirth.$"
 
 SakuTown_EventScript_LoversReunite_Text_5:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}You always were so poetic with your\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}You're always so poetic with your\n"
 	.string "words.$"
 
 SakuTown_EventScript_LoversReunite_Text_6:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}We can't stay here for long, Ashii.\n"
-	.string "My father begrundingly let me go, but\l"
-	.string "there's no telling the wrath our\l"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}We can't stay here long, Ashii.\n"
+	.string "My father begrundgingly let me go,\l"
+	.string "but there's no telling the wrath our\l"
 	.string "villages will wreak upon us if they see\l"
 	.string "us here in the morning.$"
 
 SakuTown_EventScript_LoversReunite_Text_7:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I know. But even so, I'm glad to have\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I know. Even so, I'm glad to have\n"
 	.string "spent this time with you.$"
 
 SakuTown_EventScript_LoversReunite_Text_8:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Will…\p"
-	.string "Will we see each other again?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Will…\n"
+	.string "Will we see each other again?\p"
 	.string "Tomorrow?$"
 
 SakuTown_EventScript_LoversReunite_Text_9:
@@ -1409,12 +1407,12 @@ SakuTown_EventScript_LoversReunite_Text_10:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}{FONT_SMALL_NARROW}What?$"
 
 SakuTown_EventScript_LoversReunite_Text_11:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Hehe…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Hehe…\n"
 	.string "I'll see you tomorrow, my love.$"
 
 SakuTown_EventScript_LoversReunite_Text_12:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}OH! Yes, haha!\n"
-	.string "Well… I'll see you tomorrow, then.$"
+	.string "Well… See you tomorrow, then.$"
 
 SakuTown_EventScript_LoversReunite_Text_13:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Goodbye, love! May the gods give you a\n"

@@ -365,9 +365,9 @@ YifuCity_ShinySellerChoice_27:
 YifuCity_Trigger_CrobatGruntsScram::
 	lockall
 	gettimeofday
-	compare VAR_RESULT, TIME_NIGHT
+	compare VAR_0x8000, TIME_NIGHT
 	goto_if_eq YifuCity_Trigger_CrobatGruntsScram_2
-	compare VAR_RESULT, TIME_DEAD_NIGHT
+	compare VAR_0x8000, TIME_DEAD_NIGHT
 	goto_if_eq YifuCity_Trigger_CrobatGruntsScram_2
 YifuCity_Trigger_CrobatGruntsScram_1:
 	releaseall
@@ -423,9 +423,9 @@ YifuCity_Trigger_CrobatGruntsScram_2:
 YifuCity_Trigger_CrobatGruntsEavesdropPassword::
 	lockall
 	gettimeofday
-	compare VAR_RESULT, TIME_NIGHT
+	compare VAR_0x8000, TIME_NIGHT
 	goto_if_eq YifuCity_Trigger_CrobatGruntsEavesdropPassword_2
-	compare VAR_RESULT, TIME_DEAD_NIGHT
+	compare VAR_0x8000, TIME_DEAD_NIGHT
 	goto_if_eq YifuCity_Trigger_CrobatGruntsEavesdropPassword_2
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_1:
 	releaseall
