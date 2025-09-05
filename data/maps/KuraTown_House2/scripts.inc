@@ -98,7 +98,8 @@ AshiiScript3:
 	delay 4
 	playse SE_LEDGE
 	delay 16
-	delay 48
+	delay 4
+	playse SE_LEDGE
 	waitmovement 1
 	gettimeofday
 	compare VAR_0x8000, TIME_DEAD_NIGHT
@@ -125,6 +126,8 @@ AshiiScript3_2:
 	speakername AshiiScript1_Text_3
 	msgbox AshiiScript3_Text_8
 	delay 40
+	pausefakertc
+	fwdtime 0, 0
 	warp MAP_KURA_TOWN, 48, 29
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
 	goto AshiiScript3_1
@@ -184,10 +187,8 @@ AshiiScript3_Movement_2:
 	jump_in_place_up
 	delay_4
 	jump_in_place_right
-	delay_16
-	delay_16
-	delay_16
-	face_player
+	delay_4
+	jump_in_place_down
 	step_end
 
 AshiiScript3_Movement_3:
@@ -277,7 +278,7 @@ AshiiScript3_Text_9:
 	.string "Meet me here later tonight.$"
 
 AshiiScript3_Text_10:
-	.string "Late that night…$"
+	.string "Later that night…$"
 
 AshiiScript_Reward_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}{PLAYER}! It's you!\n"

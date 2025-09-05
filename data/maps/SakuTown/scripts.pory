@@ -488,7 +488,8 @@ script SakuTown_EventScript_TamaArgument {
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 3, delay_16 * 2))
 	waitmovement(0)
 
-	applymovement(LOCALID_TAMA, moves(walk_in_place_fast_right))
+	playse(SE_PIN)
+	applymovement(LOCALID_TAMA, moves(jump_in_place_right))
 	speakername("Tama")
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}The love of my life is waiting for me\non the other side!\lYou can't do this to me!"))
 	closemessage
@@ -509,7 +510,7 @@ script SakuTown_EventScript_TamaArgument {
 	applymovement(LOCALID_TAMA, moves(jump_in_place_up))
 	waitmovement(LOCALID_TAMA)
 	speakername("Tama")
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}It's you!\nYou need to help me get to Ashii,\lplease!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}It's you!\nHelp me get to Ashii, please!"))
 	waitmessage
 	closemessage
 	playse(MUS_VS_RAYQUAZA)
@@ -591,7 +592,7 @@ script SakuTown_EventScript_TamaArgument {
 	speakername("Kiyosumi")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}If your love is as true as you say, neither I nor anyone can stop you.\p"
-		"Do what you must… {PAUSE 32} Son."
+		"Do what you must… {PAUSE 48} son."
 	))
 	closemessage
 
@@ -614,7 +615,7 @@ script SakuTown_EventScript_TamaArgument {
 	special(HealPlayerParty)
 	playse(SE_USE_ITEM)
 
-	destroyfollowernpc
+	setfollowernpc(LOCALID_TAMA, 0)
 
 	clearflag(FLAG_HIDE_DEADNIGHT_ASHII)
 	addobject(LOCALID_ASHII)
@@ -676,6 +677,11 @@ script SakuTown_BottomTamaTrigger {
 	destroyfollowernpc
 
 	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6)
+
+	fadescreen(FADE_TO_BLACK)
+	delay(48)
+	resumefakertc
+	fadescreen(FADE_FROM_BLACK)
 
 	questmenu(QUEST_MENU_SET_REWARD, QUEST_SAKURALOVERS)
 	end
@@ -831,16 +837,6 @@ script SakuTown_EventScript_LoversReunite {
 	waitmovement(LOCALID_TAMA2)
 	waitmovement(LOCALID_ASHII)
 	waitse
-
-	speakername("Ashii")
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Goodbye, love! May the gods give you a restful slumber!"))
-	closemessage
-
-	applymovement(LOCALID_TAMA2, moves(walk_in_place_fast_right))
-
-	speakername("Tama")
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}B-bye…"))
-	closemessage
 
 	applymovement(LOCALID_ASHII, moves(walk_slow_up, walk_slow_right * 2, walk_slow_up * 5))
 	waitmovement(0)
