@@ -163,6 +163,7 @@ SakuTown_EventScript_RivalAtSakuWall_9:
 	goto SakuTown_EventScript_RivalAtSakuWall_5
 
 SakuTown_EventScript_RivalAtSakuWall_12:
+	applymovement LOCALID_NATSUKI_SAKU, SakuTown_EventScript_RivalAtSakuWall_Movement_4
 	speakername SakuTown_EventScript_RivalAtSakuWall_Text_2
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_8
 	goto SakuTown_EventScript_RivalAtSakuWall_10
@@ -171,9 +172,9 @@ SakuTown_EventScript_RivalAtSakuWall_13:
 	speakername SakuTown_EventScript_RivalAtSakuWall_Text_2
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_9
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_RivalAtSakuWall_Movement_4
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_RivalAtSakuWall_Movement_5
 	waitmovement 0
-	applymovement LOCALID_NATSUKI_SAKU, SakuTown_EventScript_RivalAtSakuWall_Movement_5
+	applymovement LOCALID_NATSUKI_SAKU, SakuTown_EventScript_RivalAtSakuWall_Movement_4
 	speakername SakuTown_EventScript_RivalAtSakuWall_Text_2
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_10
 	closemessage
@@ -384,11 +385,12 @@ SakuTown_EventScript_Mart::
 	lock
 	faceplayer
 	speakername SakuTown_EventScript_Mart_Text_0
-	message gText_HowMayIServeYou
+	message SakuTown_EventScript_Mart_Text_1
 	waitmessage
 	pokemart SakuTown_Mart
 	speakername SakuTown_EventScript_Mart_Text_0
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	msgbox SakuTown_EventScript_Mart_Text_2
+	closemessage
 	release
 	return
 
@@ -784,15 +786,22 @@ SakuTown_EventScript_RivalAtSakuWall_Movement_3:
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Movement_4:
-	walk_in_place_fast_up
-	delay_16
-	delay_16
-	delay_16
-	walk_in_place_fast_down
+	emote_happy
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Movement_5:
-	emote_happy
+	face_up
+	delay_16
+	delay_16
+	delay_16
+	face_down
+	emote_question_mark
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Movement_6:
@@ -1108,8 +1117,7 @@ SakuTown_EventScript_RivalAtSakuWall_Text_5:
 	.string "growing to like you, it's great!\p"
 	.string "Are you doing the Dojo challenge?\n"
 	.string "You might just stand a chance\l"
-	.string "against the Dojo that's in the next\l"
-	.string "village!\p"
+	.string "against the next village's Dojo!\p"
 	.string "Me? Actually, I just got my first\n"
 	.string "official Token!\p"
 	.string "You'll have to hurry if you wanna\n"
@@ -1241,6 +1249,13 @@ SakuTown_EventScript_BoardGame_Text_0:
 
 SakuTown_EventScript_Mart_Text_0:
 	.string "Shopkeeper$"
+
+SakuTown_EventScript_Mart_Text_1:
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Welcome to my humble shop!\n"
+	.string "How can I help you?$"
+
+SakuTown_EventScript_Mart_Text_2:
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Hope to see you again!$"
 
 SakuTown_EventScript_Makuhita_Text_0:
 	.string "Kuhi!$"

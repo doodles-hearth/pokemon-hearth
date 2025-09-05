@@ -43,13 +43,12 @@ AshiiScript1:
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	applymovement 1, AshiiScript1_Movement_1
 	speakername AshiiScript1_Text_0
 	msgbox AshiiScript1_Text_2
 	closemessage
 	delay 30
 	playse SE_PIN
-	applymovement 1, AshiiScript1_Movement_2
+	applymovement 1, AshiiScript1_Movement_1
 	waitmovement 0
 	speakername AshiiScript1_Text_3
 	msgbox AshiiScript1_Text_4
@@ -149,10 +148,6 @@ AshiiScript1_Movement_0:
 	step_end
 
 AshiiScript1_Movement_1:
-	emote_upset
-	step_end
-
-AshiiScript1_Movement_2:
 	emote_exclamation_mark
 	delay_16
 	delay_16

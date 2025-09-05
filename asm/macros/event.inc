@@ -1905,6 +1905,11 @@
 	.4byte \text
 	.endm
 
+	@ Removes the current text of the name box.
+	.macro removespeakername
+	.byte SCR_OP_REMOVE_SPEAKER
+	.endm
+
     .macro setspeakertomonname species:req
     callnative SetSpeakerToMonName
     .2byte \species

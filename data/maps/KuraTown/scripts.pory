@@ -338,6 +338,8 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down))
 	waitmovement(LOCALID_KURA_NATSUKI)
 	removeobject(LOCALID_KURA_NATSUKI)
+	removeobject(LOCALID_KURA_HARIKO)
+	setflag(FLAG_HIDE_HARIKO_NATSUKI)
 
 	releaseall
 }

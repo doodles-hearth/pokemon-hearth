@@ -97,20 +97,41 @@ script KuraTown_Dojo_EventScript_Lilith {
 }
 
 script KuraTown_Dojo_EventScript_Hana {
-	speakername("Hana")
-	trainerbattle_single(
-		TRAINER_HANA_1,
-		// TODO different dialogue if you already met
-		format(
-			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana. Did you enjoy my little maze?\p"
-			"Tending to my bonsai and fighting alongside my Pokémon are my favorite pastimes. With this Dojo, I can do both!\p"
-			"A Pokémon battle can be graceful like a budding flower, strong like the deepest roots, powerful like a windswept pine tree, all at once.\p"
-			"I want you to show me all the grace, strength and power you are capable of!"
-		),
-		format("Ho ho ho…"),
-		KuraTown_Dojo_EventScript_HanaDefeated,
-		NO_MUSIC
-	)
+	setflag(FLAG_MET_HANA_GYM)
+
+	// Zomg, the bonsai shop owner is ALSO the dojo master?!
+	if (flag(FLAG_MET_HANA_BONSAI_SHOP)) {
+		speakername("Hana")
+		trainerbattle_single(
+			TRAINER_HANA_1,
+			format(
+				"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
+				"You must be wondering what a Bonsai seller from Saku Village is doing in the Kura Village Dojo.\p"
+				"I'd prefer you don't tell anyone.\nSee, the two towns have a beef with one another.\p"
+				"A Pokémon battle can be graceful like a budding flower, strong like the deepest roots, powerful like a windswept pine tree, all at once.\p"
+				"I want you to show me all the grace, strength and power you are capable of!"
+			),
+			format("Ho ho ho…"),
+			KuraTown_Dojo_EventScript_HanaDefeated,
+			NO_MUSIC
+		)
+		// Player doesn't know she's also the bonsai shop owner yet
+	} else {
+		speakername("Hana")
+		trainerbattle_single(
+			TRAINER_HANA_1,
+			format(
+				"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
+				"Tending to my bonsai and fighting alongside my Pokémon are my favorite pastimes. With this Dojo, I can do both!\p"
+				"A Pokémon battle can be graceful like a budding flower, strong like the deepest roots, powerful like a windswept pine tree, all at once.\p"
+				"I want you to show me all the grace, strength and power you are capable of!"
+			),
+			format("Ho ho ho…"),
+			KuraTown_Dojo_EventScript_HanaDefeated,
+			NO_MUSIC
+		)
+	}
+	
 	// specialvar(VAR_RESULT, ShouldTryRematchBattle)
 	// goto_if_eq(VAR_RESULT, TRUE, KuraTown_Dojo_EventScript_HanaRematch)
 
@@ -127,6 +148,7 @@ script KuraTown_Dojo_EventScript_Hana {
 }
 
 script KuraTown_Dojo_EventScript_HanaDefeated {
+	removespeakername
 	message(format(
 		"{PLAYER} received the Carved Token\n"
 		"from Hana."
@@ -147,7 +169,7 @@ script KuraTown_Dojo_EventScript_HanaDefeated {
 	setflag(FLAG_BADGE02_GET)
 	setvar(VAR_0x8008, 2)
 	call(Common_EventScript_SetGymTrainers)
-	call(KuraTown_Dojo_EventScript_GiveBulldoze)
+	call(KuraTown_Dojo_EventScript_GiveTm)
 	closemessage
 	// TODO rematch
 	// delay(30)
@@ -159,13 +181,13 @@ script KuraTown_Dojo_EventScript_HanaDefeated {
 	end
 }
 
-script KuraTown_Dojo_EventScript_GiveBulldoze {
+script(local) KuraTown_Dojo_EventScript_GiveTm {
 	giveitem(ITEM_TM_WEATHER_BALL)
-	goto_if_eq(VAR_RESULT, 0, Common_EventScript_BagIsFull)
 	speakername("Hana")
 	msgbox(
 		format(
-			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}This scroll contains Weather Ball. Just like a tree, this technique is as strong as it is weather-dependent."
+			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}This scroll contains Weather Ball.\p"
+			"Just like a tree, this technique is as strong as it is weather-dependent."
 		),
 		MSGBOX_DEFAULT
 	)
@@ -178,7 +200,7 @@ script KuraTown_Dojo_EventScript_Advice {
 	if (flag(FLAG_BADGE02_GET)) {
 		speakername("Man")
 		msgbox(format(
-			"That was a beautiful fight! You're going to blossom into an excellent Pokémon Wielder, I can just feel it!"
+			"That was a beautiful fight!\nYou'll blossom into an excellent Pokémon Wielder, I can just feel it!"
 		))
 	} else {
 		speakername("Man")
@@ -187,7 +209,7 @@ script KuraTown_Dojo_EventScript_Advice {
 				"Hello, young challenger, and welcome to the official Dojo of Kura Village!\p"
 				"Lady Hana, the Dojo Master, is an expert in all things bonsai. She designed this place and grew these trees, of course!\p"
 				"She tends to favor grass-type Pokémon, but she's got other tricks up her sleeve, too. Be on your guard!\p"
-				"Now, pay attention: only some of these pretty trees can be cut down.\p"
+				"Now, pay attention: only some of these noble trees can be cut down.\p"
 				"Figure out which, and you'll reach the Master!"
 			))
 		} else {

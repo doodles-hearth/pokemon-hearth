@@ -7,7 +7,17 @@ Soulkeep_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	return
 
 
+Soulkeep_Refuge_EventScript_NurseSleep::
+	setvar VAR_0x8009, MUGSHOT_UUME_NURSE
+	call Common_EventScript_PkmnCenterNurse_Sleep
+	waitmessage
+	waitbuttonpress
+	release
+	end
+
+
 Soulkeep_Refuge_EventScript_Nurse::
+	setvar VAR_0x8009, MUGSHOT_UUME_NURSE
 	setvar VAR_0x800B, LOCALID_NURSE_SOULKEEP
 	setvar VAR_0x800A, LOCALID_CHANSEY_SOULKEEP
 	call Common_EventScript_PkmnCenterNurse_CutTheBullshit

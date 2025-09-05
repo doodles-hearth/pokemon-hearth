@@ -25,18 +25,18 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 	faceplayer
 	
 	if (checkmoney(500)) {
+		createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 		speakername("Nurse")
 		msgbox(format(
 			"Hello! For 500¥, you and your Pokémon can spend the night here."
 		))
-		closemessage
 
 		showmoneybox(18, 0)
 
 		dynmultichoice(
 			0,
 			0,
-			TRUE,
+			FALSE,
 			10,
 			0,
 			DYN_MULTICHOICE_CB_NONE,
@@ -44,28 +44,40 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 			"Sleep until nighttime.",
 			"Maybe later."
 		)
-		
-		switch(var(VAR_RESULT)) {
-			case 0:
-				call(Common_EventScript_PkmnCenterNurse_ChooseSleep)
-				fadescreenswapbuffers(FADE_TO_BLACK)
-				playfanfare(MUS_HEAL)
-				waitfanfare
-				special(HealPlayerParty)
-				callnative(UpdateFollowingPokemon)
-				fwdtime(8, 0)
-				fadescreenswapbuffers(FADE_FROM_BLACK)
-			case 1:
-				call(Common_EventScript_PkmnCenterNurse_ChooseSleep)
-				fadescreenswapbuffers(FADE_TO_BLACK)
-				playfanfare(MUS_HEAL)
-				waitfanfare
-				special(HealPlayerParty)
-				callnative(UpdateFollowingPokemon)
-				fwdtime(22, 0)
-				fadescreenswapbuffers(FADE_FROM_BLACK)
+
+		if (var(VAR_RESULT) == 0 || var(VAR_RESULT) == 1) {
+			call(Common_EventScript_PkmnCenterNurse_ChooseSleep)
+			fadescreenswapbuffers(FADE_TO_BLACK)
+			playfanfare(MUS_HEAL)
+			waitfanfare
+			special(HealPlayerParty)
+			callnative(UpdateFollowingPokemon)
+
+			switch(var(VAR_RESULT)) {
+				case 0:
+					fwdtime(8, 0)
+				case 1:
+					fwdtime(22, 0)
+			}
+			fadescreenswapbuffers(FADE_FROM_BLACK)
+
+			createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
+			speakername("Nurse")
+			msgbox(format(
+				"Did you sleep well?\nTravel safely, now!"
+			))
+			closemessage
+		} else {
+			hidemoneybox
+			createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
+			speakername("Nurse")
+			msgbox(format(
+				"Come back anytime!"
+			))
+			closemessage
 		}
 	} else {
+		createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 		speakername("Nurse")
 		msgbox(format(
 			"Hello! For 500¥, you and your Pokémon can spend the night here."
@@ -74,6 +86,7 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 	}
 
 	hidemoneybox
+	removefieldmugshot
 	release
 	end
 }

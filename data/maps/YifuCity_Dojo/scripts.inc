@@ -603,6 +603,7 @@ YifuCity_Dojo_EventScript_Yutaka::
 
 
 YifuCity_Dojo_EventScript_YutakaDefeated::
+	removespeakername
 	message YifuCity_Dojo_EventScript_YutakaDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare

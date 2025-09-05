@@ -271,6 +271,8 @@ KuraTown_EventScript_PostDecayNatsukiHariko::
 	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_3
 	waitmovement LOCALID_KURA_NATSUKI
 	removeobject LOCALID_KURA_NATSUKI
+	removeobject LOCALID_KURA_HARIKO
+	setflag FLAG_TEMP_1
 	releaseall
 	return
 

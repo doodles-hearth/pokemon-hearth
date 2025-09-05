@@ -202,6 +202,8 @@ static const struct SpriteFrameImage sSpriteImageTable_Emotes_Non_Follower[] =
     overworld_frame(sEmotion_Custom_Gfx, 2, 2, 1), // CRYING
     overworld_frame(sEmotion_Custom_Gfx, 2, 2, 2), // SWEAT
     overworld_frame(sEmotion_Custom_Gfx, 2, 2, 3), // SWEAT
+    overworld_frame(sEmotion_Custom_Gfx, 2, 2, 4), // SLEEP
+    overworld_frame(sEmotion_Custom_Gfx, 2, 2, 5), // SLEEP
 };
 
 static const union AnimCmd sSpriteAnim_Emotes0[] =
@@ -314,6 +316,14 @@ static const union AnimCmd sSpriteAnim_Emotes_Non_Follower1[] =
     ANIMCMD_END
 };
 
+static const union AnimCmd sSpriteAnim_Emotes_Non_Follower2[] =
+{
+    ANIMCMD_FRAME(2*2, 30),
+    ANIMCMD_FRAME(2*2+1, 25),
+    ANIMCMD_FRAME(2*2, 30),
+    ANIMCMD_END
+};
+
 static const union AnimCmd sSpriteAnim_Icons1[] =
 {
     ANIMCMD_FRAME(0, 60),
@@ -371,6 +381,7 @@ static const union AnimCmd *const sSpriteAnimTable_Emotes_Non_Follower[] =
 {
     sSpriteAnim_Emotes_Non_Follower0,
     sSpriteAnim_Emotes_Non_Follower1,
+    sSpriteAnim_Emotes_Non_Follower2,
 };
 
 static const struct SpriteTemplate sSpriteTemplate_ExclamationQuestionMark =

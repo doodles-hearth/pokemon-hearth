@@ -133,6 +133,7 @@ OldWomanQuest2Script_4:
 KuraTown_House1_OldWomansSon::
 	lock
 	applymovement VAR_LAST_TALKED, KuraTown_House1_OldWomansSon_Movement_0
+	faceplayer
 	speakername KuraTown_House1_OldWomansSon_Text_0
 	msgbox KuraTown_House1_OldWomansSon_Text_1
 	closemessage

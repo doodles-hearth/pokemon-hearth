@@ -39,7 +39,6 @@ script(local) AshiiScript1 {
 	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
 	waitmovement(0)
 
-	applymovement(LOCALID_ASHII, moves(emote_upset))
 	speakername("Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Hey, what are you doing in my house?\nWere you eavesdropping?\p"
@@ -117,7 +116,6 @@ script(local) AshiiScript3 {
 
 	mcdialogue("Of course.", "Who wouldn't?", "I guess?")
 	closemessage
-	delay(24)
 
 	applymovement(LOCALID_ASHII, moves(
 		emote_exclamation_mark,
