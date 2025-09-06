@@ -1,6 +1,11 @@
 Beachbound_Route_Decay_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Beachbound_Route_Decay_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Beachbound_Route_Decay_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE
 	.byte 0
+
+Beachbound_Route_Decay_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setflag FLAG_TEMP_1
+	return
 
 Beachbound_Route_Decay_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_DECAY_BEACHBOUND_ROUTE, 1, Beachbound_Route_Decay_SeeDecay
@@ -10,8 +15,6 @@ Beachbound_Route_Decay_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 Beachbound_Route_Decay_SeeDecay::
 	lock
 	setvar VAR_DECAY_BEACHBOUND_ROUTE, 2
-	setflag FLAG_TEMP_1
-	removeobject LOCALID_BEACHBOUND_DECAY_NATSUKI
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitse
@@ -63,7 +66,6 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_1:
 	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_0
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5
 	closemessage
-	addobject LOCALID_BEACHBOUND_DECAY_NATSUKI
 	applymovement LOCALID_BEACHBOUND_DECAY_NATSUKI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_0
 	waitmovement 0
 	playse SE_PIN
@@ -257,6 +259,7 @@ BeachboundRoute_Decay_EventScript_Bean::
 
 BeachboundRoute_Decay_EventScript_Koishi::
 	lock
+	faceplayer
 	applymovement VAR_LAST_TALKED, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_3
 	speakername BeachboundRoute_Decay_EventScript_Koishi_Text_0
 	msgbox BeachboundRoute_Decay_EventScript_Koishi_Text_1
@@ -287,6 +290,7 @@ BeachboundRoute_Decay_EventScript_SamuraiBeCareful::
 
 BeachboundRoute_Decay_EventScript_Samurai::
 	lock
+	faceplayer
 	applymovement VAR_LAST_TALKED, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_3
 	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_16
 	msgbox BeachboundRoute_Decay_EventScript_Samurai_Text_0
@@ -297,6 +301,7 @@ BeachboundRoute_Decay_EventScript_Samurai::
 
 BeachboundRoute_Decay_EventScript_SamuraiWhatCouldBe::
 	lock
+	faceplayer
 	applymovement VAR_LAST_TALKED, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_14
 	speakername BeachboundRoute_Decay_EventScript_BeanDialogue_Text_16
 	msgbox BeachboundRoute_Decay_EventScript_SamuraiWhatCouldBe_Text_0

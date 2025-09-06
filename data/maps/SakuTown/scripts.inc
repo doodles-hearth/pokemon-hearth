@@ -94,7 +94,8 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3:
 	end
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_2:
-	setmetatile 35, 31, METATILE_SakuKura_ClosedDoorBottom, TRUE
+	setmetatile 22, 17, METATILE_SakuKura_ClosedDoorTop, TRUE
+	setmetatile 22, 18, METATILE_SakuKura_ClosedDoorBottom, TRUE
 	setmetatile 18, 32, METATILE_SakuKura_ClosedDoorTop, TRUE
 	setmetatile 18, 33, METATILE_SakuKura_ClosedDoorBottom, TRUE
 	return
@@ -549,7 +550,7 @@ SakuTown_EventScript_TamaArgument_5:
 	setfollowernpc 20, 0
 	clearflag FLAG_HIDE_DEADNIGHT_ASHII
 	addobject 22
-	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
 	return
 
 SakuTown_EventScript_TamaArgument_2:
@@ -579,7 +580,7 @@ SakuTown_TopTamaTrigger::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_TopTamaTrigger_Movement_4
 	waitmovement 0
 	destroyfollowernpc
-	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7
 	questmenu QUEST_MENU_SET_REWARD, QUEST_SAKURALOVERS
 	return
 
@@ -602,7 +603,7 @@ SakuTown_BottomTamaTrigger::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitmovement OBJ_EVENT_ID_NPC_FOLLOWER
 	destroyfollowernpc
-	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7
 	fadescreen FADE_TO_BLACK
 	delay 48
 	resumefakertc

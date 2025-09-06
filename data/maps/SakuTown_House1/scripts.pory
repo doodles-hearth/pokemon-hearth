@@ -122,7 +122,7 @@ script SakuTown_House1_EventScript_Tama {
 		closemessage
 		addvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
 
-	} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 2 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) <= 6) {
+	} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 2 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) <= 7) {
 		faceplayer
 		speakername("Tama")
 		msgbox(format(
@@ -130,12 +130,11 @@ script SakuTown_House1_EventScript_Tama {
 		))
 		waitmessage
 		closemessage
-
 	} else {
 		faceplayer
 		speakername("Tama")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I can't wait to see Ashii again tonight!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}One day our villages will stand together, and we will love each other in broad daylight!"
 		))
 		waitmessage
 		closemessage

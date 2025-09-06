@@ -65,7 +65,8 @@ mapscripts SakuTown_MapScripts {
 		gettimeofday
 		switch(var(VAR_0x8000)){
 			case TIME_DEAD_NIGHT:
-				setmetatile(35, 31, METATILE_SakuKura_ClosedDoorBottom, TRUE)
+				setmetatile(22, 17, METATILE_SakuKura_ClosedDoorTop, TRUE)
+				setmetatile(22, 18, METATILE_SakuKura_ClosedDoorBottom, TRUE)
 				setmetatile(18, 32, METATILE_SakuKura_ClosedDoorTop, TRUE)
 				setmetatile(18, 33, METATILE_SakuKura_ClosedDoorBottom, TRUE)
 			case TIME_EARLY_MORNING:
@@ -620,7 +621,7 @@ script SakuTown_EventScript_TamaArgument {
 	clearflag(FLAG_HIDE_DEADNIGHT_ASHII)
 	addobject(LOCALID_ASHII)
 
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6)
 }
 
 script SakuTown_TopTamaTrigger {
@@ -646,7 +647,7 @@ script SakuTown_TopTamaTrigger {
 
 	destroyfollowernpc
 
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7)
 
 	questmenu(QUEST_MENU_SET_REWARD, QUEST_SAKURALOVERS)
 }
@@ -676,7 +677,7 @@ script SakuTown_BottomTamaTrigger {
 
 	destroyfollowernpc
 
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7)
 
 	fadescreen(FADE_TO_BLACK)
 	delay(48)

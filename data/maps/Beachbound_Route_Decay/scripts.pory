@@ -4,14 +4,14 @@ mapscripts Beachbound_Route_Decay_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DECAY_BEACHBOUND_ROUTE, 1: Beachbound_Route_Decay_SeeDecay
     ]
+	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_HIDE_NATSUKI_HARIKO)
+	}
 }
 
 script Beachbound_Route_Decay_SeeDecay {
 	lock
 	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 2)
-
-	setflag(FLAG_HIDE_NATSUKI_HARIKO)
-	removeobject(LOCALID_BEACHBOUND_DECAY_NATSUKI)
 
 	playse(SE_PIN)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
@@ -93,8 +93,6 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 		"Did you also come here to investigate, {PLAYER}? We should team up!"
 	))
 	closemessage
-
-	addobject(LOCALID_BEACHBOUND_DECAY_NATSUKI)
 
 	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_right * 4))
 	waitmovement(0)
@@ -378,7 +376,6 @@ script BeachboundRoute_Decay_EventScript_BeanTrigger {
 
 script BeachboundRoute_Decay_EventScript_Bean {
 	lock
-
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	speakername("Hariko")
 	msgbox(format(
@@ -391,7 +388,7 @@ script BeachboundRoute_Decay_EventScript_Bean {
 
 script BeachboundRoute_Decay_EventScript_Koishi {
 	lock
-
+	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 	speakername("Koishi")
 	msgbox(format(
@@ -430,6 +427,7 @@ script BeachboundRoute_Decay_EventScript_SamuraiBeCareful {
 
 script BeachboundRoute_Decay_EventScript_Samurai {
 	lock
+	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 	speakername("Samurai")
 	msgbox(format(
@@ -441,6 +439,7 @@ script BeachboundRoute_Decay_EventScript_Samurai {
 
 script BeachboundRoute_Decay_EventScript_SamuraiWhatCouldBe {
 	lock
+	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_upset))
 	speakername("Samurai")
 	msgbox(format(

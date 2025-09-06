@@ -7,11 +7,11 @@ KuraTown_MapScripts::
 KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	setflag FLAG_VISITED_KURA_TOWN
 	returnqueststate QUEST_SAKURALOVERS
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
 	goto_if_lt KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
 	compare VAR_RESULT, 3
 	goto_if_ge KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
 	goto_if_ge KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
 KuraTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 4
@@ -55,7 +55,7 @@ KuraTown_MapScripts_MAP_SCRIPT_ON_LOAD_5:
 	return
 
 KuraTown_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
-	map_script_2 VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3, KuraTown_EventScript_AnxiousAshii
+	map_script_2 VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4, KuraTown_EventScript_AnxiousAshii
 	map_script_2 VAR_DECAY_BEACHBOUND_ROUTE, 4, KuraTown_EventScript_PostDecayNatsukiHariko
 	.2byte 0
 
@@ -289,7 +289,7 @@ KuraTown_EventScript_AnxiousAshii::
 	closemessage
 	applymovement 16, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_3
 	waitmovement 16
-	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5
 	release
 	return
 

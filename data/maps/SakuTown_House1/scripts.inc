@@ -10,7 +10,7 @@ SakuTown_House1_EventScript_Tama::
 	goto_if_eq SakuTown_House1_EventScript_Tama_3
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 2
 	goto_if_ge SakuTown_House1_EventScript_Tama_4
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7
 	goto_if_le SakuTown_House1_EventScript_Tama_4
 	faceplayer
 	speakername SakuTown_House1_EventScript_Tama_Text_4
@@ -224,5 +224,6 @@ SakuTown_House1_EventScript_Tama_Text_18:
 	.string "tonight!$"
 
 SakuTown_House1_EventScript_Tama_Text_19:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I can't wait to see Ashii again\n"
-	.string "tonight!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}One day our villages will stand\n"
+	.string "together, and we will love each other\l"
+	.string "in broad daylight!$"
