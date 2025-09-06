@@ -53,11 +53,10 @@ ChiiTown_PokemonCenter_EventScript_Nurse::
 
 
 ChiiTown_PokemonCenter_EventScript_NurseSleep::
-	createfieldmugshot MUGSHOT_SUNRISE_NURSE, EMOTE_NORMAL
+	setvar VAR_0x8009, MUGSHOT_SUNRISE_NURSE
 	call Common_EventScript_PkmnCenterNurse_Sleep
 	waitmessage
 	waitbuttonpress
-	removefieldmugshot
 	release
 	end
 

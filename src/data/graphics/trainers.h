@@ -297,6 +297,9 @@ const u16 gTrainerPalette_Monk[] = INCBIN_U16("graphics/trainers/front_pics/monk
 const u32 gTrainerFrontPic_OldLady[] = INCBIN_U32("graphics/trainers/front_pics/old_lady.4bpp.smol");
 const u16 gTrainerPalette_OldLady[] = INCBIN_U16("graphics/trainers/front_pics/old_lady.gbapal");
 
+const u32 gTrainerFrontPic_OldMan[] = INCBIN_U32("graphics/trainers/front_pics/old_man.4bpp.smol");
+const u16 gTrainerPalette_OldMan[] = INCBIN_U16("graphics/trainers/front_pics/old_man.gbapal");
+
 const u32 gTrainerFrontPic_Medium[] = INCBIN_U32("graphics/trainers/front_pics/medium.4bpp.smol");
 const u16 gTrainerPalette_Medium[] = INCBIN_U16("graphics/trainers/front_pics/medium.gbapal");
 
@@ -476,6 +479,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_KIMONO_GIRL, gTrainerFrontPic_KimonoGirl, gTrainerPalette_KimonoGirl),
     TRAINER_SPRITE(TRAINER_PIC_MONK, gTrainerFrontPic_Monk, gTrainerPalette_Monk),
     TRAINER_SPRITE(TRAINER_PIC_OLD_LADY, gTrainerFrontPic_OldLady, gTrainerPalette_OldLady),
+    TRAINER_SPRITE(TRAINER_PIC_OLD_MAN, gTrainerFrontPic_OldMan, gTrainerPalette_OldMan),
     TRAINER_SPRITE(TRAINER_PIC_YOUNG_COUPLE, gTrainerFrontPic_YoungCouple, gTrainerPalette_YoungCouple),
     TRAINER_SPRITE(TRAINER_PIC_OLD_COUPLE, gTrainerFrontPic_OldCouple, gTrainerPalette_OldCouple),
     TRAINER_SPRITE(TRAINER_PIC_SIS_AND_BRO, gTrainerFrontPic_SisAndBro, gTrainerPalette_SisAndBro),

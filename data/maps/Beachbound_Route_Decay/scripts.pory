@@ -4,14 +4,14 @@ mapscripts Beachbound_Route_Decay_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_DECAY_BEACHBOUND_ROUTE, 1: Beachbound_Route_Decay_SeeDecay
     ]
+	MAP_SCRIPT_ON_TRANSITION {
+		setflag(FLAG_HIDE_NATSUKI_HARIKO)
+	}
 }
 
 script Beachbound_Route_Decay_SeeDecay {
 	lock
 	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 2)
-
-	setflag(FLAG_HIDE_NATSUKI_HARIKO)
-	removeobject(LOCALID_BEACHBOUND_DECAY_NATSUKI)
 
 	playse(SE_PIN)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
@@ -92,8 +92,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 		"Whatever this is, it is not good.\NI want to learn as much as I can about this decay.\p"
 		"Did you also come here to investigate, {PLAYER}? We should team up!"
 	))
-
-	addobject(LOCALID_BEACHBOUND_DECAY_NATSUKI)
+	closemessage
 
 	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_right * 4))
 	waitmovement(0)
@@ -136,7 +135,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	speakername("Hariko")
 	msgbox(format(
-		"I am Hariko.\n{PLAYER} and I are friends.\pTogether, we are going to find the cause of this Decay!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I am Hariko.\n{PLAYER} and I are friends.\pTogether, we are going to find the cause of this Decay!"
 	))
 
 	mcdialogue(
@@ -153,7 +152,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 			speakername("Hariko")
 			msgbox(format(
-				"I may… have gotten ahead of myself.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I may… have gotten ahead of myself.\p"
 				"You agree though, right?\nGreat!"
 			))
 	}
@@ -164,7 +163,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	speakername("Hariko")
 	msgbox(format(
-		"Your name is Natsuki?\nYou are a friend of {PLAYER}'s too…\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Your name is Natsuki?\nYou are a friend of {PLAYER}'s too…\p"
 		"That makes us friends as well!"
 	))
 
@@ -264,8 +263,8 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	delay(48)
 
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
-	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
-	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(delay_16, lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(delay_8, lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
 
 	speakername("Samurai")
 	msgbox(format(
@@ -284,10 +283,9 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	closemessage
 
 	playse(SE_PIN)
-	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_exclamation_mark, delay_16 * 3, face_down))
+	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_exclamation_mark, delay_16 * 6, face_down))
 	waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
 
-	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_angry))
 	speakername("Samurai")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Are you kidding me?"
@@ -300,6 +298,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	delay(32)
 
+	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_angry))
 	speakername("Samurai")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Have your parents never taught you\nnot to eavesdrop?\p"
@@ -377,7 +376,6 @@ script BeachboundRoute_Decay_EventScript_BeanTrigger {
 
 script BeachboundRoute_Decay_EventScript_Bean {
 	lock
-
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	speakername("Hariko")
 	msgbox(format(
@@ -390,7 +388,7 @@ script BeachboundRoute_Decay_EventScript_Bean {
 
 script BeachboundRoute_Decay_EventScript_Koishi {
 	lock
-
+	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 	speakername("Koishi")
 	msgbox(format(
@@ -429,6 +427,7 @@ script BeachboundRoute_Decay_EventScript_SamuraiBeCareful {
 
 script BeachboundRoute_Decay_EventScript_Samurai {
 	lock
+	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 	speakername("Samurai")
 	msgbox(format(
@@ -440,6 +439,7 @@ script BeachboundRoute_Decay_EventScript_Samurai {
 
 script BeachboundRoute_Decay_EventScript_SamuraiWhatCouldBe {
 	lock
+	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_upset))
 	speakername("Samurai")
 	msgbox(format(

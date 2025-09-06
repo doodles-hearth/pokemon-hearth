@@ -186,8 +186,7 @@ static const u32 sFieldMugshotGfx_HotMan1Normal[] = INCBIN_U32("graphics/field_m
 struct MugshotGfx
 {
     const u32 *gfx;
-    const u16 *pal; // custom palette
-    u32 tag;        // object event-based palette (tag)
+    const u16 *pal;
 };
 
 static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
@@ -197,7 +196,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_HarikoNormal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         },
     },
     [MUGSHOT_NATSUKI] =
@@ -205,7 +204,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_NatsukiNormal,
-            .tag = OBJ_EVENT_PAL_TAG_HOT,
+            .pal = gObjectEventPal_Npc_Hot,
         },
     },
     [MUGSHOT_BIG_SIS] =
@@ -213,7 +212,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_BigSisNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         },
     },
     [MUGSHOT_KABA] =
@@ -221,7 +220,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_KabaNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
     [MUGSHOT_CLERK] =
@@ -229,7 +228,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ClerkNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
     [MUGSHOT_CROBAT] =
@@ -237,7 +236,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_CrobatNormal,
-            .tag = OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS_BOSS,
+            .pal = gObjectEventPal_CrobatShadowsCrobat,
         },
     },
     [MUGSHOT_ZUBAT] =
@@ -245,7 +244,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ZubatNormal,
-            .tag = OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS,
+            .pal = gObjectEventPal_CrobatShadowsGolbat,
         },
     },
     [MUGSHOT_INCENSE] =
@@ -253,7 +252,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_IncenseNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
     [MUGSHOT_HANA] =
@@ -261,7 +260,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_HanaNormal,
-            .tag = OBJ_EVENT_PAL_TAG_WOODY,
+            .pal = gObjectEventPal_Npc_Woody,
         },
     },
     [MUGSHOT_KOISHI] =
@@ -269,7 +268,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_KoishiNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
     [MUGSHOT_YUTAKA] =
@@ -277,7 +276,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_YutakaNormal,
-            .tag = OBJ_EVENT_PAL_TAG_WOODY,
+            .pal = gObjectEventPal_Npc_Woody,
         },
     },
     [MUGSHOT_MASQUERAIN_GIRL] =
@@ -285,7 +284,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MasquerainGirlNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
     [MUGSHOT_OKADA] =
@@ -293,12 +292,12 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_OkadaNormal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         },
         [EMOTE_SEXY] =
         {
             .gfx = sFieldMugshotGfx_OkadaSexy,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         },
     },
     [MUGSHOT_YOUNGSTER] =
@@ -306,7 +305,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_YoungsterNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
     [MUGSHOT_SCHOOL_KID_F] =
@@ -314,7 +313,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SchoolKidFNormal,
-            .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
     [MUGSHOT_SCHOOL_KID_M] =
@@ -322,7 +321,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SchoolKidMNormal,
-            .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
     [MUGSHOT_BUG_CATCHER] =
@@ -330,7 +329,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_BugCatcherMNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
     [MUGSHOT_AROMA_LADY] =
@@ -338,7 +337,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_AromaLadyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
     [MUGSHOT_MONK] =
@@ -346,7 +345,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MonkNormal,
-            .tag = OBJ_EVENT_PAL_TAG_WOODY,
+            .pal = gObjectEventPal_Npc_Woody,
         },
     },
     [MUGSHOT_LASS] =
@@ -354,7 +353,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_LassNormal,
-            .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
     [MUGSHOT_NINJA_BOY] =
@@ -362,7 +361,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_NinjaBoyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
     [MUGSHOT_HEX_MANIAC] =
@@ -370,7 +369,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_HexManiacNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
     [MUGSHOT_ARTIST] =
@@ -378,7 +377,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ArtistNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
     [MUGSHOT_BATTLE_GIRL] =
@@ -386,7 +385,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_BattleGirlNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
 
@@ -395,7 +394,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_HotSpringFNormal,
-            .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
 
@@ -404,7 +403,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_BreederMNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
 
@@ -413,7 +412,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_BreederFNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
 
@@ -422,7 +421,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SamuraiNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
 
@@ -431,7 +430,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ShamisenGreenNormal,
-            .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
 
@@ -440,7 +439,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ShamisenRedNormal,
-            .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
 
@@ -449,7 +448,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ShamisenBlueNormal,
-            .tag = OBJ_EVENT_PAL_TAG_GREENISH,
+            .pal = gObjectEventPal_Npc_Greenish,
         },
     },
 
@@ -458,7 +457,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_CookNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
 
@@ -467,7 +466,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_IwaNormal,
-            .tag = OBJ_EVENT_PAL_TAG_PURPLISH,
+            .pal = gObjectEventPal_Npc_Purplish,
         },
     },
 
@@ -476,7 +475,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseWoman1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -485,7 +484,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseWoman2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -494,7 +493,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseMan1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -503,7 +502,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseMan2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -512,7 +511,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseOldManNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -521,7 +520,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseOldWomanNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -530,7 +529,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseLittleBoyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -539,7 +538,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseLittleGirlNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -548,7 +547,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseGirl1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -557,7 +556,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseGirl2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -566,7 +565,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseBoy1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -575,7 +574,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseBoy2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -584,7 +583,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseFatGuyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -593,7 +592,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseNurseNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -602,7 +601,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SunriseValetNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SUNRISE,
+            .pal = gObjectEventPal_Npc_Sunrise,
         }
     },
 
@@ -613,7 +612,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraWoman1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_WOMAN_2] =
@@ -621,7 +620,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraWoman2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_MAN_1] =
@@ -629,7 +628,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraMan1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_MAN_2] =
@@ -637,7 +636,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraMan2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_OLD_MAN] =
@@ -645,7 +644,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraOldManNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_OLD_WOMAN] =
@@ -653,7 +652,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraOldWomanNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_LITTLE_BOY] =
@@ -661,7 +660,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraLittleBoyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_LITTLE_GIRL] =
@@ -669,7 +668,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraLittleGirlNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_GIRL_1] =
@@ -677,7 +676,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraGirl1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_GIRL_2] =
@@ -685,7 +684,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraGirl2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_BOY_1] =
@@ -693,7 +692,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraBoy1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_BOY_2] =
@@ -701,7 +700,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraBoy2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_FAT_GUY] =
@@ -709,7 +708,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraFatGuyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_NURSE] =
@@ -717,7 +716,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraNurseNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
     [MUGSHOT_SAKURA_VALET] =
@@ -725,7 +724,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SakuraValetNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SAKURA,
+            .pal = gObjectEventPal_Npc_Sakura,
         }
     },
 
@@ -736,7 +735,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideWoman1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -745,7 +744,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideWoman2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -754,7 +753,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideMan1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -763,7 +762,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideMan2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -772,7 +771,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideOldManNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -781,7 +780,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideOldWomanNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -790,7 +789,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideLittleBoyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -799,7 +798,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideLittleGirlNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -808,7 +807,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideGirl1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -817,7 +816,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideGirl2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -826,7 +825,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideBoy1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -835,7 +834,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideBoy2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -844,7 +843,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideFatGuyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -853,7 +852,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideNurseNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -862,7 +861,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_SeasideValetNormal,
-            .tag = OBJ_EVENT_PAL_TAG_SEASIDE,
+            .pal = gObjectEventPal_Npc_Seaside,
         }
     },
 
@@ -874,7 +873,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_HotMan1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_HOT,
+            .pal = gObjectEventPal_Npc_Hot,
         }
     },
 
@@ -883,7 +882,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainWoman1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_WOMAN_2] =
@@ -891,7 +890,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainWoman2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_MAN_1] =
@@ -899,7 +898,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainMan1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_MAN_2] =
@@ -907,7 +906,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainMan2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_OLD_MAN] =
@@ -915,7 +914,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainOldManNormal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_OLD_WOMAN] =
@@ -923,7 +922,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainOldWomanNormal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_LITTLE_BOY] =
@@ -931,7 +930,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainLittleBoyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_LITTLE_GIRL] =
@@ -939,7 +938,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainLittleGirlNormal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_GIRL_1] =
@@ -947,7 +946,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainGirl1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_GIRL_2] =
@@ -955,7 +954,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainGirl2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_BOY_1] =
@@ -963,7 +962,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainBoy1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_BOY_2] =
@@ -971,7 +970,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainBoy2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_FAT_GUY] =
@@ -979,7 +978,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainFatGuyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_NURSE] =
@@ -987,7 +986,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainNurseNormal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
     [MUGSHOT_MOUNTAIN_VALET] =
@@ -995,7 +994,7 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_MountainValetNormal,
-            .tag = OBJ_EVENT_PAL_TAG_MOUNTAIN,
+            .pal = gObjectEventPal_Npc_Mountain,
         }
     },
 
@@ -1004,269 +1003,269 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeWoman1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_WOMAN_2] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeWoman2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_MAN_1] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeMan1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_MAN_2] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeMan2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_OLD_MAN] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeOldManNormal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_OLD_WOMAN] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeOldWomanNormal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_LITTLE_BOY] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeLittleBoyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_LITTLE_GIRL] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeLittleGirlNormal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_GIRL_1] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeGirl1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_GIRL_2] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeGirl2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_BOY_1] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeBoy1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_BOY_2] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeBoy2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_FAT_GUY] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeFatGuyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_NURSE] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeNurseNormal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
-
+    
     [MUGSHOT_UUME_VALET] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_UumeValetNormal,
-            .tag = OBJ_EVENT_PAL_TAG_UUME,
+            .pal = gObjectEventPal_Npc_Uume,
         }
     },
 
 
-    [MUGSHOT_COLD_WOMAN_1] =
+    [MUGSHOT_COLD_WOMAN_1] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdWoman1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_WOMAN_2] =
+    [MUGSHOT_COLD_WOMAN_2] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdWoman2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_MAN_1] =
+    [MUGSHOT_COLD_MAN_1] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdMan1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_MAN_2] =
+    [MUGSHOT_COLD_MAN_2] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdMan2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_OLD_MAN] =
+    [MUGSHOT_COLD_OLD_MAN] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdOldManNormal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_OLD_WOMAN] =
+    [MUGSHOT_COLD_OLD_WOMAN] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdOldWomanNormal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_LITTLE_BOY] =
+    [MUGSHOT_COLD_LITTLE_BOY] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdLittleBoyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_LITTLE_GIRL] =
+    [MUGSHOT_COLD_LITTLE_GIRL] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdLittleGirlNormal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_GIRL_1] =
+    [MUGSHOT_COLD_GIRL_1] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdGirl1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_GIRL_2] =
+    [MUGSHOT_COLD_GIRL_2] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdGirl2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_BOY_1] =
+    [MUGSHOT_COLD_BOY_1] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdBoy1Normal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_BOY_2] =
+    [MUGSHOT_COLD_BOY_2] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdBoy2Normal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_FAT_GUY] =
+    [MUGSHOT_COLD_FAT_GUY] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdFatGuyNormal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_NURSE] =
+    [MUGSHOT_COLD_NURSE] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdNurseNormal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 
-    [MUGSHOT_COLD_VALET] =
+    [MUGSHOT_COLD_VALET] = 
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ColdValetNormal,
-            .tag = OBJ_EVENT_PAL_TAG_COLD,
+            .pal = gObjectEventPal_Npc_Cold,
         }
     },
 

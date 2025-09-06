@@ -3,6 +3,7 @@ script EventScript_ClayFurnace {
 	closemessage
 	playmoncry(SPECIES_SLUGMA, CRY_MODE_NORMAL)
 	getnamedmon(SPECIES_SLUGMA)
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
 	if (var(VAR_RESULT)) {
 		msgbox(format("…Hey, there's a Slugma in here!"))
 	} else {

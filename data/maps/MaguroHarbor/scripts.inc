@@ -9,18 +9,28 @@ MaguroHarbor_MapScripts_MAP_SCRIPT_ON_LOAD:
 
 MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	setflag FLAG_VISITED_MAGURO_HARBOR
-	setflag FLAG_TEMP_1
 	getweekday
-	compare VAR_RESULT, 0
-	goto_if_eq MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
-	compare VAR_RESULT, 3
-	goto_if_eq MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
-	compare VAR_RESULT, 6
-	goto_if_eq MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	compare VAR_RESULT, WEEKDAY_MON
+	goto_if_ne MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_3
 	return
 
 MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	clearflag FLAG_TEMP_1
+	setflag FLAG_TEMP_1
+	return
+
+MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	compare VAR_RESULT, WEEKDAY_FRI
+	goto_if_ne MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
+	return
+
+MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_3:
+	compare VAR_RESULT, WEEKDAY_WED
+	goto_if_ne MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	return
+
+MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
+	compare VAR_RESULT, WEEKDAY_SUN
+	goto_if_ne MaguroHarbor_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	return
 
 
@@ -96,7 +106,6 @@ MaguroHarbor_EventScript_FishcakeSalesman_3:
 	return
 
 MaguroHarbor_EventScript_FishcakeSalesman_4:
-	call StringVarSetter
 	goto MaguroHarbor_EventScript_FishcakeSalesmanClosingUp
 	return
 
@@ -210,7 +219,7 @@ MaguroHarbor_EventScript_FishPokemonSalesman_4:
 	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesman_6
 	bufferstring STR_VAR_2, MaguroHarbor_EventScript_FishPokemonSalesman_Text_1
 MaguroHarbor_EventScript_FishPokemonSalesman_5:
-	call StringVarSetter
+	call StringVarSetterFishSalesman
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp
 	return
 
@@ -483,24 +492,34 @@ MaguroHarbor_EventScript_MartClosingUp::
 	return
 
 
-StringVarSetter:
+StringVarSetterFishSalesman:
 	getweekday
 	switch VAR_RESULT
-	case WEEKDAY_WED, StringVarSetter_2
-	case WEEKDAY_SAT, StringVarSetter_3
-	case WEEKDAY_SUN, StringVarSetter_4
+	case WEEKDAY_WED, StringVarSetterFishSalesman_2
+	case WEEKDAY_FRI, StringVarSetterFishSalesman_3
+	case WEEKDAY_SUN, StringVarSetterFishSalesman_4
+	case WEEKDAY_MON, StringVarSetterFishSalesman_5
 	return
 
-StringVarSetter_2:
-	bufferstring STR_VAR_1, StringVarSetter_Text_0
+StringVarSetterFishSalesman_2:
+	bufferstring STR_VAR_1, StringVarSetterFishSalesman_Text_0
 	return
 
-StringVarSetter_3:
-	bufferstring STR_VAR_1, StringVarSetter_Text_1
+StringVarSetterFishSalesman_3:
+	bufferstring STR_VAR_1, StringVarSetterFishSalesman_Text_1
 	return
 
-StringVarSetter_4:
-	bufferstring STR_VAR_1, StringVarSetter_Text_2
+StringVarSetterFishSalesman_4:
+	bufferstring STR_VAR_1, StringVarSetterFishSalesman_Text_2
+	return
+
+StringVarSetterFishSalesman_5:
+	bufferstring STR_VAR_1, StringVarSetterFishSalesman_Text_3
+	return
+
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSign::
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSign_Text_0, MSGBOX_SIGN
 	return
 
 
@@ -592,13 +611,13 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7:
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm sorry but we've closed shop now,\n"
-	.string "dearie.\p"
-	.string "We'll be open again {STR_VAR_1}!$"
+	.string "dearie.\l"
+	.string "Come back tomorrow!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh my! I'm sorry but we've closed shop\n"
-	.string "now, dearie.\p"
-	.string "We'll be open again {STR_VAR_1}!\p"
+	.string "now, dearie.\l"
+	.string "Come back tomorrow!\p"
 	.string "Did you want to buy one of my\n"
 	.string "Fishcakes?\p"
 	.string "Here, you can have the leftovers from\n"
@@ -650,8 +669,8 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_4:
 	.string "Ah c'mon, don't waste my time!$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_5:
-	.string "I'd feel bad leaving you with no\n"
-	.string "Pokémon to defend you!$"
+	.string "I'd feel bad leaving a Wielder with no\n"
+	.string "Pokémon!$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_6:
 	.string "I can offer you {STR_VAR_1}¥.\n"
@@ -664,7 +683,8 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_8:
 	.string "Actually, no.$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_9:
-	.string "Great! Here you go. …Oh?\p"
+	.string "Great! Here you go.\p"
+	.string "…Oh?\p"
 	.string "Look what we found in its mouth!\n"
 	.string "Take it, it's yours!$"
 
@@ -742,11 +762,11 @@ MaguroHarbor_EventScript_Man_Text_0:
 	.string "Man$"
 
 MaguroHarbor_EventScript_Man_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN EMOTE_NORMAL}T-This was the biggest quake we've\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}T-This was the biggest quake we've\n"
 	.string "felt yet!$"
 
 MaguroHarbor_EventScript_Man_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN EMOTE_NORMAL}I wish I swam as gracefully as the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}I wish I swam as gracefully as the\n"
 	.string "Dojo's Magikarp…$"
 
 MaguroHarbor_EventScript_MartSelling_Text_0:
@@ -767,11 +787,19 @@ MaguroHarbor_EventScript_MartClosingUp_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}The shop's closed for today. Come\n"
 	.string "back {STR_VAR_1}!$"
 
-StringVarSetter_Text_0:
-	.string "on Saturday$"
+StringVarSetterFishSalesman_Text_0:
+	.string "on Friday$"
 
-StringVarSetter_Text_1:
+StringVarSetterFishSalesman_Text_1:
+	.string "on Sunday$"
+
+StringVarSetterFishSalesman_Text_2:
 	.string "tomorrow$"
 
-StringVarSetter_Text_2:
+StringVarSetterFishSalesman_Text_3:
 	.string "on Wednesday$"
+
+MaguroHarbor_EventScript_FishPokemonSalesmanSign_Text_0:
+	.string "We buy Fish Pokémon!\n"
+	.string "Monday, Wednesday, Friday, Sunday\n"
+	.string "$"

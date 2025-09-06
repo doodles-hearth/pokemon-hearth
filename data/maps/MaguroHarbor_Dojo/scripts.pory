@@ -29,6 +29,7 @@ script MaguroHarbor_Dojo_EventScript_Koishi {
 }
 
 script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
+	removespeakername
 	message(format(
 		"{PLAYER} received the Flowing Token from Koishi."
 	))

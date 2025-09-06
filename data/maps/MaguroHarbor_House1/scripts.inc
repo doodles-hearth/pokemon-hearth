@@ -18,7 +18,7 @@ MaguroHarbor_House1_EventScript_PokedexRiddler::
 	special GetDexRiddleFeedback
 	compare VAR_RESULT, 1
 	goto_if_eq MaguroHarbor_House1_EventScript_PokedexRiddler_5
-	applymovement VAR_LAST_TALKED, MaguroHarbor_House1_EventScript_PokedexRiddler_Movement_0
+	applymovement VAR_LAST_TALKED, MaguroHarbor_House1_EventScript_PokedexRiddler_Movement_1
 	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
 	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_5
 MaguroHarbor_House1_EventScript_PokedexRiddler_4:
@@ -34,6 +34,10 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_2:
 	end
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_5:
+	playse SE_PIN
+	applymovement LOCALID_MAGURO_NERD, MaguroHarbor_House1_EventScript_PokedexRiddler_Movement_0
+	waitse
+	waitmovement 0
 	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
 	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4
 	closemessage
@@ -55,6 +59,16 @@ MaguroHarbor_House1_EventScript_Clefairy::
 
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_Movement_0:
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
+MaguroHarbor_House1_EventScript_PokedexRiddler_Movement_1:
 	emote_upset
 	step_end
 
@@ -71,13 +85,12 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_Text_1:
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Hehe… Hullo, kid…\n"
-	.string "People call me the Pokémon Nerd.\p"
+	.string "They call me the Pokémon Nerd.\p"
 	.string "(They're just jealous…)\p"
 	.string "I know a whole lot about Pokémon…\n"
 	.string "Wanna play a game?\p"
-	.string "If you can guess what Pokémon I'm\n"
-	.string "describing,\l"
-	.string "I'll share my knowledge with you.\p"
+	.string "Guess what Pokémon I'm describing,\n"
+	.string "and I'll share my knowledge with you.\p"
 	.string "Hehe… Think you can solve my riddle?\n"
 	.string "Ahem…$"
 
@@ -87,9 +100,9 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_Text_3:
 MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Woah, you… You solved my riddle!\p"
 	.string "Could you… be a true Pokémon Nerd?\p"
-	.string "You have bested me today. Can you\n"
-	.string "feel the rush of pure knowledge\l"
-	.string "that's coursing through your veins?\p"
+	.string "You have bested me today. Feel the\n"
+	.string "rush of pure knowledge coursing\l"
+	.string "through your veins?\p"
 	.string "Your Pokémon… They will gain more\n"
 	.string "experience today.\p"
 	.string "Knowledge is power, after all, hehe…\p"

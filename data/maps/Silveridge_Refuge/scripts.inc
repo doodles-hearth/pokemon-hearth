@@ -78,6 +78,15 @@ Silveridge_Refuge_EventScript_Kricketune::
 	return
 
 
+Silveridge_Refuge_EventScript_NurseSleep::
+	setvar VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE
+	call Common_EventScript_PkmnCenterNurse_Sleep
+	waitmessage
+	waitbuttonpress
+	release
+	end
+
+
 Silveridge_Refuge_EventScript_Nurse::
 	setvar VAR_0x800B, LOCALID_NURSE_SILVERIDGE
 	setvar VAR_0x800A, LOCALID_CHANSEY_SILVERIDGE

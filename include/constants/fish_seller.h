@@ -15,6 +15,6 @@ enum {
 #define PRICE_FISH_RARE           4000
 #define PRICE_FISH_RARE_AS_FUCK   6500
 // 1/TREASURE_ODDS chance to find treasure
-#define TREASURE_ODDS             2
+#define TREASURE_ODDS             3
 
 #endif

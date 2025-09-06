@@ -151,6 +151,7 @@ SunriseVillage_Event_GuardForest_Interact_6:
 
 SunriseVillage_Event_LittleGirl::
 	lock
+	faceplayer
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_LittleGirl_Movement_0
 	speakername SunriseVillage_Event_LittleGirl_Text_0
 	msgbox SunriseVillage_Event_LittleGirl_Text_1
@@ -180,6 +181,7 @@ SunriseVillage_Event_Boy_2:
 
 SunriseVillage_Event_Woman::
 	lock
+	faceplayer
 	speakername SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_Woman_Text_0
 	release
@@ -207,6 +209,7 @@ SunriseVillage_Event_OldMan::
 
 SunriseVillage_Event_OldWoman::
 	lock
+	faceplayer
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_GuardForest_Movement_0
 	speakername SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_OldWoman_Text_0

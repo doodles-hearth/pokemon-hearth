@@ -191,33 +191,56 @@ SakuTown_BonsaiShop_EventScript_Assistant_9:
 	goto SakuTown_BonsaiShop_EventScript_Assistant_8
 
 
+SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue:
+	goto_if_set FLAG_RECEIVED_SECRET_POWER, SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_1
+	speakername SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_3
+	closemessage
+	return
+
+SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_1:
+	speakername SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_1
+	closemessage
+	pokemartdecoration BonsaiShop
+	speakername SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_2, MSGBOX_DEFAULT
+	closemessage
+	return
+
+
+SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader:
+	setflag FLAG_MET_HANA_BONSAI_SHOP
+	speakername SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_0
+	mcdialogue SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_1
+	closemessage
+	speakername SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_2
+	closemessage
+	return
+
+
 SakuTown_BonsaiShop_EventScript_Owner::
 	lock
 	faceplayer
-	goto_if_set FLAG_BADGE02_GET, SakuTown_BonsaiShop_EventScript_Owner_2
-	special GetPlayerBoyGirlString
-	speakername SakuTown_BonsaiShop_EventScript_Owner_Text_4
-	msgbox SakuTown_BonsaiShop_EventScript_Owner_Text_5
-	closemessage
+	goto_if_unset FLAG_MET_HANA_GYM, SakuTown_BonsaiShop_EventScript_Owner_2
+	goto_if_set FLAG_MET_HANA_BONSAI_SHOP, SakuTown_BonsaiShop_EventScript_Owner_5
+	call SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader
 SakuTown_BonsaiShop_EventScript_Owner_1:
 	release
 	return
 
 SakuTown_BonsaiShop_EventScript_Owner_2:
-	goto_if_set FLAG_RECEIVED_SECRET_POWER, SakuTown_BonsaiShop_EventScript_Owner_5
+	setflag FLAG_MET_HANA_BONSAI_SHOP
+	special GetPlayerBoyGirlString
 	speakername SakuTown_BonsaiShop_EventScript_Owner_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Owner_Text_3
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_Text_1
 	closemessage
 	goto SakuTown_BonsaiShop_EventScript_Owner_1
 
 SakuTown_BonsaiShop_EventScript_Owner_5:
-	speakername SakuTown_BonsaiShop_EventScript_Owner_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Owner_Text_1
-	closemessage
-	pokemartdecoration BonsaiShop
-	speakername SakuTown_BonsaiShop_EventScript_Owner_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Owner_Text_2, MSGBOX_DEFAULT
-	closemessage
+	call SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue
 	goto SakuTown_BonsaiShop_EventScript_Owner_1
 
 
@@ -396,27 +419,48 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_7:
 	.string "one.\p"
 	.string "Have fun gardening!$"
 
-SakuTown_BonsaiShop_EventScript_Owner_Text_0:
+SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0:
 	.string "Hana$"
 
-SakuTown_BonsaiShop_EventScript_Owner_Text_1:
+SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you\n"
 	.string "in a little greenery?$"
 
-SakuTown_BonsaiShop_EventScript_Owner_Text_2:
+SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Thank you for your business!$"
 
-SakuTown_BonsaiShop_EventScript_Owner_Text_3:
+SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you\n"
 	.string "in a little greenery?\p"
 	.string "Hmm… It looks like you wouldn't have\n"
 	.string "anywhere to put bonsai. Come back\l"
 	.string "when you do.$"
 
-SakuTown_BonsaiShop_EventScript_Owner_Text_4:
+SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I\n"
+	.string "interest you in a little greenery?$"
+
+SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_1:
+	.string "Hana?"
+	.string "Have we met?$"
+
+SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_2:
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Ho ho, I have been discovered…\p"
+	.string "You must be wondering what the Kura\n"
+	.string "Village Dojo Master is doing in a\l"
+	.string "Bonsai shop in Saku Village.\p"
+	.string "I'd prefer you don't tell anyone.\n"
+	.string "See, the two towns have a beef with\l"
+	.string "one another.\p"
+	.string "This senseless enmity pains me.\n"
+	.string "I wish something could be done.\p"
+	.string "If only the villagers saw they are\n"
+	.string "more similar than they are different…$"
+
+SakuTown_BonsaiShop_EventScript_Owner_Text_0:
 	.string "Shop Owner$"
 
-SakuTown_BonsaiShop_EventScript_Owner_Text_5:
+SakuTown_BonsaiShop_EventScript_Owner_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I\n"
 	.string "interest you in a little greenery?\p"
 	.string "Hmm… It looks like you wouldn't have\n"

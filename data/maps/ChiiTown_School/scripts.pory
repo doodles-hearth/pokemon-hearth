@@ -69,7 +69,7 @@ script ChiiTown_School_EventScript_BoardLegend {
 	msgbox(format(
 		"A detailed print depicts\nan old legend.\p"
 		"“A very long time ago, the Volcano\nerupted terribly.\p"
-		"Four awakened Treasures fought\nthe fiery Pokémon that lived\linside it.\p"
+		"Four awakened Treasures fought\nthe fiery Pokémon within.\p"
 		"At last, the four Treasures and\nthe fiery Pokémon slumbered again.”"
 	))
 	closemessage

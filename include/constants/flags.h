@@ -128,8 +128,8 @@
 #define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
 #define FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE 0x68
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
-#define FLAG_UNUSED_0x6A                     0x6A // Unused
-#define FLAG_UNUSED_0x6B                     0x6B // Unused
+#define FLAG_MET_HANA_BONSAI_SHOP            0x6A
+#define FLAG_MET_HANA_GYM                    0x6B
 #define FLAG_WHITEOUT_TO_LAVARIDGE           0x6C // Set after defeating Flannery, so the player cant white out from poison before receiving Go Goggles
 #define FLAG_UNUSED_0x6D                     0x6D // Unused
 #define FLAG_UNUSED_0x6E                     0x6E // Unused
@@ -1592,7 +1592,7 @@
 #define FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER    (DAILY_FLAGS_START + 0x8)
 #define FLAG_DAILY_MON_DEX_RIDDLE_WON               (DAILY_FLAGS_START + 0x9)
 #define FLAG_DAILY_PICKED_LOTO_TICKET               (DAILY_FLAGS_START + 0xA)
-#define FLAG_DAILY_ROUTE_114_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xB)
+#define FLAG_DAILY_FISH_SELLER_UNUSED               (DAILY_FLAGS_START + 0xB) // Unused Flag
 #define FLAG_DAILY_ROUTE_111_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xC)
 #define FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY      (DAILY_FLAGS_START + 0xD)
 #define FLAG_DAILY_ROUTE_120_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xE)

@@ -19,10 +19,10 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 	speakername("Pokémon Nerd")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Hehe… Hullo, kid…\nPeople call me the Pokémon Nerd.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Hehe… Hullo, kid…\nThey call me the Pokémon Nerd.\p"
 		"(They're just jealous…)\p"
 		"I know a whole lot about Pokémon… Wanna play a game?\p"
-		"If you can guess what Pokémon I'm describing,\NI'll share my knowledge with you.\p"
+		"Guess what Pokémon I'm describing,\nand I'll share my knowledge with you.\p"
 		"Hehe… Think you can solve my riddle? Ahem…"
 	))
 	closemessage
@@ -39,11 +39,15 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 	if(var(VAR_RESULT) == 1)
 	{
+		playse(SE_PIN)
+		applymovement(LOCALID_MAGURO_NERD, moves(emote_exclamation_mark, delay_16 * 6))
+		waitse
+		waitmovement(0)
 		speakername("Pokémon Nerd")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Woah, you… You solved my riddle!\p"
 			"Could you… be a true Pokémon Nerd?\p"
-			"You have bested me today. Can you feel the rush of pure knowledge that's coursing through your veins?\p"
+			"You have bested me today. Feel the rush of pure knowledge coursing through your veins?\p"
 			"Your Pokémon… They will gain more experience today.\p"
 			"Knowledge is power, after all, hehe…\p"
 			"Come back another time for another riddle…"

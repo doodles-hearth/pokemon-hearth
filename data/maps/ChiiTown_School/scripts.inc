@@ -199,8 +199,7 @@ ChiiTown_School_EventScript_BoardLegend_Text_0:
 	.string "“A very long time ago, the Volcano\n"
 	.string "erupted terribly.\p"
 	.string "Four awakened Treasures fought\n"
-	.string "the fiery Pokémon that lived\l"
-	.string "inside it.\p"
+	.string "the fiery Pokémon within.\p"
 	.string "At last, the four Treasures and\n"
 	.string "the fiery Pokémon slumbered again.”$"
 

@@ -51,7 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MaguroHarbor_EventScript_FishcakeSalesman",
-      "flag": "FLAG_TEMP_1",
+      "flag": "0",
       "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
@@ -142,7 +142,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
-      "x": 24,
+      "x": 16,
       "y": 26,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -231,7 +231,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MaguroHarbor_EventScript_FishcakeSalesman",
-      "flag": "FLAG_TEMP_1",
+      "flag": "0",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": true,
@@ -320,7 +320,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
-      "x": 24,
+      "x": 16,
       "y": 27,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -350,7 +350,7 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0",
-      "afternoon": true,
+      "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
       "evening": false,
@@ -370,7 +370,7 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0",
-      "afternoon": true,
+      "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
       "evening": false,
@@ -441,6 +441,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MaguroHarbor_EventScript_PokemonNerdSign"
+    },
+    {
+      "type": "sign",
+      "x": 17,
+      "y": 26,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "MaguroHarbor_EventScript_FishPokemonSalesmanSign"
     }
   ]
 }

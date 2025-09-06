@@ -128,6 +128,15 @@ script MaguroHarbor_Refuge_BattleHariko {
 	release
 }
 
+script MaguroHarbor_Refuge_EventScript_NurseSleep {
+	setvar(VAR_0x8009, MUGSHOT_SEASIDE_NURSE)
+	call(Common_EventScript_PkmnCenterNurse_Sleep)
+	waitmessage
+	waitbuttonpress
+	release
+	end
+}
+
 script MaguroHarbor_Refuge_EventScript_Slowpoke {
 	lock
 	faceplayer
@@ -151,14 +160,14 @@ script MaguroHarbor_Refuge_EventScript_DescribedMons {
 	speakername("Man")
 	if (getdescribedmon(SPECIES_KRABBY)) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}So, have you written many entries in your encyclopedia?"
+			"{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}So, have you written many entries in your encyclopedia?"
 		))
 		closemessage
 	} else {
 		applymovement(VAR_LAST_TALKED, moves(emote_happy))
 		msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
-		"I bet you're wondering how you can fill up the description of every Pokémon.\l"
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
+		"I bet you're wondering how to fill up the description of every Pokémon.\l"
 		"Well, asking around definitely helps!\p"
 		"For instance, Krabby sleeps burrowed inside holes in the sand, and did you know it can grow its pincers back if they fall during battle?\p"
 		"Go ahead, you can write that down about it!"

@@ -66,15 +66,24 @@ KuraTown_Dojo_EventScript_Lilith_2:
 
 
 KuraTown_Dojo_EventScript_Hana::
+	setflag FLAG_MET_HANA_GYM
+	goto_if_set FLAG_MET_HANA_BONSAI_SHOP, KuraTown_Dojo_EventScript_Hana_2
 	speakername KuraTown_Dojo_EventScript_Hana_Text_0
-	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_1, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
+	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_3, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
+KuraTown_Dojo_EventScript_Hana_1:
 	speakername KuraTown_Dojo_EventScript_Hana_Text_0
-	msgbox KuraTown_Dojo_EventScript_Hana_Text_3, MSGBOX_DEFAULT
+	msgbox KuraTown_Dojo_EventScript_Hana_Text_4, MSGBOX_DEFAULT
 	release
 	end
 
+KuraTown_Dojo_EventScript_Hana_2:
+	speakername KuraTown_Dojo_EventScript_Hana_Text_0
+	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_1, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
+	goto KuraTown_Dojo_EventScript_Hana_1
+
 
 KuraTown_Dojo_EventScript_HanaDefeated::
+	removespeakername
 	message KuraTown_Dojo_EventScript_HanaDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
@@ -83,17 +92,16 @@ KuraTown_Dojo_EventScript_HanaDefeated::
 	setflag FLAG_BADGE02_GET
 	setvar VAR_0x8008, 2
 	call Common_EventScript_SetGymTrainers
-	call KuraTown_Dojo_EventScript_GiveBulldoze
+	call KuraTown_Dojo_EventScript_GiveTm
 	closemessage
 	release
 	end
 
 
-KuraTown_Dojo_EventScript_GiveBulldoze::
+KuraTown_Dojo_EventScript_GiveTm:
 	giveitem ITEM_TM_WEATHER_BALL
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
 	speakername KuraTown_Dojo_EventScript_Hana_Text_0
-	msgbox KuraTown_Dojo_EventScript_GiveBulldoze_Text_0, MSGBOX_DEFAULT
+	msgbox KuraTown_Dojo_EventScript_GiveTm_Text_0, MSGBOX_DEFAULT
 	return
 
 
@@ -258,10 +266,12 @@ KuraTown_Dojo_EventScript_Hana_Text_0:
 KuraTown_Dojo_EventScript_Hana_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\n"
 	.string "Did you enjoy my little maze?\p"
-	.string "Tending to my bonsai and fighting\n"
-	.string "alongside my Pokémon are my favorite\l"
-	.string "pastimes. With this Dojo, I can do\l"
-	.string "both!\p"
+	.string "You must be wondering what a Bonsai\n"
+	.string "seller from Saku Village is doing in\l"
+	.string "the Kura Village Dojo.\p"
+	.string "I'd prefer you don't tell anyone.\n"
+	.string "See, the two towns have a beef with\l"
+	.string "one another.\p"
 	.string "A Pokémon battle can be graceful like\n"
 	.string "a budding flower, strong like the\l"
 	.string "deepest roots, powerful like a\l"
@@ -274,6 +284,21 @@ KuraTown_Dojo_EventScript_Hana_Text_2:
 	.string "Ho ho ho…$"
 
 KuraTown_Dojo_EventScript_Hana_Text_3:
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\n"
+	.string "Did you enjoy my little maze?\p"
+	.string "Tending to my bonsai and fighting\n"
+	.string "alongside my Pokémon are my favorite\l"
+	.string "pastimes. With this Dojo, I can do\l"
+	.string "both!\p"
+	.string "A Pokémon battle can be graceful like\n"
+	.string "a budding flower, strong like the\l"
+	.string "deepest roots, powerful like a\l"
+	.string "windswept pine tree, all at once.\p"
+	.string "I want you to show me all the grace,\n"
+	.string "strength and power you are capable\l"
+	.string "of!$"
+
+KuraTown_Dojo_EventScript_Hana_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}The slow-growing tree becomes the\n"
 	.string "sturdiest. Take your time on your\l"
 	.string "journey, {PLAYER}.$"
@@ -296,17 +321,17 @@ KuraTown_Dojo_EventScript_HanaDefeated_Text_1:
 	.string "heart.\p"
 	.string "Here, let me also give you this.$"
 
-KuraTown_Dojo_EventScript_GiveBulldoze_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}This scroll contains Weather Ball.\n"
-	.string "Just like a tree, this technique is as\l"
+KuraTown_Dojo_EventScript_GiveTm_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}This scroll contains Weather Ball.\p"
+	.string "Just like a tree, this technique is as\n"
 	.string "strong as it is weather-dependent.$"
 
 KuraTown_Dojo_EventScript_Advice_Text_0:
 	.string "Man$"
 
 KuraTown_Dojo_EventScript_Advice_Text_1:
-	.string "That was a beautiful fight! You're\n"
-	.string "going to blossom into an excellent\l"
+	.string "That was a beautiful fight!\n"
+	.string "You'll blossom into an excellent\l"
 	.string "Pokémon Wielder, I can just feel it!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_2:
@@ -320,7 +345,7 @@ KuraTown_Dojo_EventScript_Advice_Text_2:
 	.string "Pokémon, but she's got other tricks\l"
 	.string "up her sleeve, too. Be on your guard!\p"
 	.string "Now, pay attention: only some of\n"
-	.string "these pretty trees can be cut down.\p"
+	.string "these noble trees can be cut down.\p"
 	.string "Figure out which, and you'll reach the\n"
 	.string "Master!$"
 

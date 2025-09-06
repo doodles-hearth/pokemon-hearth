@@ -61,7 +61,7 @@ script GinkoWoods_EventScript_OldMan {
 script GinkoWoods_EventScript_Bean {
 	lock
 
-	applymovement(VAR_LAST_TALKED, moves(emote_angry, delay_16 * 6))
+	applymovement(VAR_LAST_TALKED, moves(emote_music, delay_16 * 6))
 	waitmovement(VAR_LAST_TALKED)
 
 	faceplayer
@@ -204,6 +204,6 @@ script GinkoWoods_EventScript_TrainerTips1 {
 script GinkoWoods_EventScript_TrainerTips2 {
     msgbox(format(
 		"Did you know?\p"
-		"You can sort the contents of your bag by pressing START."
+		"You can sort the contents of your bag by pressing {START_BUTTON}."
 	), MSGBOX_SIGN)
 }

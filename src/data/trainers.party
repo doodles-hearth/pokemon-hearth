@@ -10154,8 +10154,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TAMAS_DAD ===
 Name: Kiyosumi
-Class: Expert
-Pic: Expert M
+Class: Old Man
+Pic: Old Man
 Gender: Male
 Battle Type: Singles
 AI: Basic Trainer
@@ -11303,7 +11303,7 @@ Pic: Natsuki
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Smartish Trainer
+AI: Smart Trainer
 
 Growlithe
 Level: 10
