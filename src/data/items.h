@@ -11759,7 +11759,8 @@ const struct Item gItemsInfo[] =
         .price = 3000,
         .description = COMPOUND_STRING(
             "Fires an odd ray.\n"
-            "May confuse the foe."
+            "May confuse the\n"
+            "foe."
         ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,

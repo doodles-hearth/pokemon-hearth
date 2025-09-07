@@ -8,12 +8,72 @@ Silveridge_House2_EventScript_Woman::
 	speakername Silveridge_House2_EventScript_Woman_Text_0
 	msgbox Silveridge_House2_EventScript_Woman_Text_1
 	closemessage
+	applymovement LOCALID_SILVERIDGE_MINING_NERD, Silveridge_House2_EventScript_Woman_Movement_0
+	waitmovement 0
+	speakername Silveridge_House2_EventScript_Woman_Text_2
+	msgbox Silveridge_House2_EventScript_Woman_Text_3
+	closemessage
+	applymovement VAR_LAST_TALKED, Silveridge_House2_EventScript_Woman_Movement_1
+	speakername Silveridge_House2_EventScript_Woman_Text_0
+	msgbox Silveridge_House2_EventScript_Woman_Text_4
+	closemessage
 	release
 	return
 
+
+Silveridge_House2_EventScript_Miner::
+	lock
+	faceplayer
+	speakername Silveridge_House2_EventScript_Woman_Text_2
+	msgbox Silveridge_House2_EventScript_Miner_Text_0
+	closemessage
+	release
+	return
+
+
+Silveridge_House2_EventScript_Makuhita::
+	lock
+	faceplayer
+	setseenmon SPECIES_MAKUHITA
+	setspeakertomonname SPECIES_MAKUHITA
+	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
+	msgbox Silveridge_House2_EventScript_Makuhita_Text_0
+	waitmoncry
+	release
+	return
+
+
+Silveridge_House2_EventScript_Woman_Movement_0:
+	delay_16
+	delay_16
+	walk_in_place_fast_left
+	step_end
+
+Silveridge_House2_EventScript_Woman_Movement_1:
+	face_right
+	step_end
 
 Silveridge_House2_EventScript_Woman_Text_0:
 	.string "Woman$"
 
 Silveridge_House2_EventScript_Woman_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}TODO EVA$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}I wish my husband would stop talking\n"
+	.string "about rocks…$"
+
+Silveridge_House2_EventScript_Woman_Text_2:
+	.string "Miner$"
+
+Silveridge_House2_EventScript_Woman_Text_3:
+	.string "But honey, steel isn't a rock!$"
+
+Silveridge_House2_EventScript_Woman_Text_4:
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}… …{FONT_SMALL}Sigh{FONT_NORMAL}…$"
+
+Silveridge_House2_EventScript_Miner_Text_0:
+	.string "The region's finest steel is found in\n"
+	.string "the quarry near Saberside Town.\p"
+	.string "When my Makuhita is strong enough,\n"
+	.string "we'll go see it for ourselves!$"
+
+Silveridge_House2_EventScript_Makuhita_Text_0:
+	.string "Ku!$"

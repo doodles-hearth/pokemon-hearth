@@ -179,6 +179,18 @@ Silveridge_House1_EventScript_Sculptor_FirstTime::
 	return
 
 
+Silveridge_House1_EventScript_Aron::
+	lock
+	faceplayer
+	setseenmon SPECIES_ARON
+	setspeakertomonname SPECIES_ARON
+	playmoncry SPECIES_ARON, CRY_MODE_NORMAL
+	msgbox Silveridge_House1_EventScript_Aron_Text_0
+	waitmoncry
+	release
+	end
+
+
 Silveridge_House1_EventScript_Sculptor_BringMeMon_Movement_0:
 	emote_exclamation_mark
 	delay_16
@@ -243,3 +255,6 @@ Silveridge_House1_EventScript_Sculptor_FirstTime_Text_1:
 	.string "I see that you are a Wielder. Please\n"
 	.string "show me a Ponyta to help me achieve\l"
 	.string "my magnum opus.$"
+
+Silveridge_House1_EventScript_Aron_Text_0:
+	.string "Keee!$"

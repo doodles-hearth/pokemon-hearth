@@ -231,8 +231,8 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 25,
-      "y": 3,
+      "x": 29,
+      "y": 2,
       "elevation": 0,
       "dest_map": "MAP_SILVER_TUNNEL_2F",
       "dest_warp_id": "1"

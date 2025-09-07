@@ -757,84 +757,6 @@ SakuTown_EventScript_NoLeavingAshii::
 	return
 
 
-SakuTown_EventScript_Abra::
-	lock
-	setseenmon SPECIES_ABRA
-	setspeakertomonname SPECIES_ABRA
-	msgbox SakuTown_EventScript_Abra_Text_0
-	closemessage
-	playse SE_M_SNORE
-	applymovement VAR_LAST_TALKED, SakuTown_EventScript_Abra_Movement_0
-	waitmovement 0
-	release
-	return
-
-
-SakuTown_EventScript_TeachingScrolls::
-	lock
-	setnamedmon SPECIES_ABRA
-	getdescribedmon SPECIES_ABRA
-	compare VAR_RESULT, 0
-	goto_if_ne SakuTown_EventScript_TeachingScrolls_2
-	checkitem ITEM_TM_PSYBEAM
-	compare VAR_RESULT, 0
-	goto_if_ne SakuTown_EventScript_TeachingScrolls_3
-	faceplayer
-	speakername SakuTown_EventScript_TeachingScrolls_Text_0
-	msgbox SakuTown_EventScript_TeachingScrolls_Text_5
-	closemessage
-	giveitem ITEM_TM_PSYBEAM
-	applymovement VAR_LAST_TALKED, SakuTown_EventScript_TamaArgument_Movement_17
-	waitmovement VAR_LAST_TALKED
-SakuTown_EventScript_TeachingScrolls_1:
-	release
-	return
-
-SakuTown_EventScript_TeachingScrolls_2:
-	faceplayer
-	speakername SakuTown_EventScript_TeachingScrolls_Text_0
-	msgbox SakuTown_EventScript_TeachingScrolls_Text_1
-	closemessage
-	applymovement VAR_LAST_TALKED, SakuTown_EventScript_TamaArgument_Movement_17
-	waitmovement VAR_LAST_TALKED
-	goto SakuTown_EventScript_TeachingScrolls_1
-
-SakuTown_EventScript_TeachingScrolls_3:
-	speakername SakuTown_EventScript_TeachingScrolls_Text_0
-	msgbox SakuTown_EventScript_TeachingScrolls_Text_2
-	closemessage
-	setseenmon SPECIES_ABRA
-	playse SE_M_SNORE
-	applymovement LOCALID_SAKU_ABRA, SakuTown_EventScript_TeachingScrolls_Movement_0
-	waitmovement 0
-	applymovement VAR_LAST_TALKED, SakuTown_EventScript_TeachingScrolls_Movement_1
-	playse SE_M_PSYBEAM
-	waitse
-	playse SE_M_PSYBEAM
-	waitse
-	playse SE_M_PSYBEAM
-	waitse
-	playse SE_M_PSYBEAM2
-	waitse
-	waitmovement VAR_LAST_TALKED
-	faceplayer
-	speakername SakuTown_EventScript_TeachingScrolls_Text_0
-	msgbox SakuTown_EventScript_TeachingScrolls_Text_3
-	closemessage
-	applymovement VAR_LAST_TALKED, SakuTown_EventScript_TeachingScrolls_Movement_2
-	waitmovement VAR_LAST_TALKED
-	playse SE_M_SNORE
-	applymovement LOCALID_SAKU_ABRA, SakuTown_EventScript_Abra_Movement_0
-	waitmovement LOCALID_SAKU_ABRA
-	waitse
-	applymovement VAR_LAST_TALKED, SakuTown_EventScript_Farmer2_Movement_0
-	speakername SakuTown_EventScript_TeachingScrolls_Text_0
-	msgbox SakuTown_EventScript_TeachingScrolls_Text_4
-	closemessage
-	setdescribedmon SPECIES_ABRA
-	goto SakuTown_EventScript_TeachingScrolls_1
-
-
 SakuTown_EventScript_RivalAtSakuWall_Movement_0:
 	emote_exclamation_mark
 	step_end
@@ -1159,61 +1081,6 @@ SakuTown_EventScript_NoLeavingAshii_Movement_1:
 
 SakuTown_EventScript_NoLeavingAshii_Movement_2:
 	walk_up
-	step_end
-
-SakuTown_EventScript_Abra_Movement_0:
-	emote_sleep
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	step_end
-
-SakuTown_EventScript_TeachingScrolls_Movement_0:
-	emote_sleep
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	face_right
-	delay_16
-	delay_16
-	delay_16
-	step_end
-
-SakuTown_EventScript_TeachingScrolls_Movement_1:
-	face_down
-	emote_exclamation_mark
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	walk_in_place_fast_down
-	walk_in_place_fast_down
-	lock_facing_direction
-	lock_anim
-	walk_slow_up
-	walk_slow_down
-	walk_slow_up
-	walk_slow_down
-	unlock_facing_direction
-	unlock_anim
-	delay_16
-	delay_16
-	delay_16
-	step_end
-
-SakuTown_EventScript_TeachingScrolls_Movement_2:
-	face_left
-	delay_16
-	delay_16
-	delay_16
 	step_end
 
 SakuTown_EventScript_RivalAtSakuWall_Text_0:
@@ -1559,38 +1426,6 @@ SakuTown_EventScript_TamasAnxious_Text_0:
 SakuTown_EventScript_NoLeavingAshii_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}W-where are you going?!\n"
 	.string "Ashii's waiting for us!$"
-
-SakuTown_EventScript_Abra_Text_0:
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …$"
-
-SakuTown_EventScript_TeachingScrolls_Text_0:
-	.string "Guy$"
-
-SakuTown_EventScript_TeachingScrolls_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Abra is the best!\n"
-	.string "He can use attacks in his sleep!$"
-
-SakuTown_EventScript_TeachingScrolls_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}C'mon Abra, wakey wakey…$"
-
-SakuTown_EventScript_TeachingScrolls_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Did… Did you see that?!\p"
-	.string "Abra made me float in the air with his\n"
-	.string "Psybeam!!$"
-
-SakuTown_EventScript_TeachingScrolls_Text_4:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}He didn't even wake up…$"
-
-SakuTown_EventScript_TeachingScrolls_Text_5:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}I taught Abra a sick Psychic move\n"
-	.string "using a Technique Scroll, but…\p"
-	.string "Guess even the sickest move is\n"
-	.string "useless if all he does is sleep, huh…\p"
-	.string "You can have my Scroll.\n"
-	.string "Use it as many times as you want.$"
 
 SakuTown_Text_RivalDefeat::
 	.string "Oh, wow!$"
