@@ -452,7 +452,7 @@
       "y": 27,
       "elevation": 0,
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
-      "var_value": "5",
+      "var_value": "6",
       "script": "KuraTown_EventScript_PreventEscape"
     },
     {
@@ -461,7 +461,7 @@
       "y": 27,
       "elevation": 0,
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
-      "var_value": "5",
+      "var_value": "6",
       "script": "KuraTown_EventScript_PreventEscape"
     },
     {
@@ -470,7 +470,7 @@
       "y": 27,
       "elevation": 0,
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
-      "var_value": "5",
+      "var_value": "6",
       "script": "KuraTown_EventScript_PreventEscape"
     }
   ],

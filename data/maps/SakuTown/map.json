@@ -242,7 +242,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_3",
+      "flag": "FLAG_BROKE_SAKU_ROCK_2",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -282,7 +282,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
-      "flag": "FLAG_TEMP_2",
+      "flag": "FLAG_BROKE_SAKU_ROCK_1",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -552,7 +552,7 @@
       "y": 5,
       "elevation": 0,
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
-      "var_value": "5",
+      "var_value": "6",
       "script": "SakuTown_EventScript_TamaArgument_MoveDown1"
     },
     {
@@ -561,7 +561,7 @@
       "y": 6,
       "elevation": 0,
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
-      "var_value": "5",
+      "var_value": "6",
       "script": "SakuTown_EventScript_TamaArgument_MoveDown2"
     },
     {
@@ -570,7 +570,7 @@
       "y": 10,
       "elevation": 0,
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
-      "var_value": "6",
+      "var_value": "7",
       "script": "SakuTown_EventScript_NoLeavingAshii"
     },
     {
@@ -579,7 +579,7 @@
       "y": 10,
       "elevation": 0,
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
-      "var_value": "6",
+      "var_value": "7",
       "script": "SakuTown_EventScript_NoLeavingAshii"
     },
     {
@@ -588,7 +588,7 @@
       "y": 3,
       "elevation": 0,
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
-      "var_value": "6",
+      "var_value": "7",
       "script": "SakuTown_TopTamaTrigger"
     },
     {
@@ -597,7 +597,7 @@
       "y": 4,
       "elevation": 0,
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
-      "var_value": "6",
+      "var_value": "7",
       "script": "SakuTown_BottomTamaTrigger"
     }
   ],

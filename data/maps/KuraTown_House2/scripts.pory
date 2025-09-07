@@ -16,10 +16,17 @@ script KuraTown_House2_EventScript_Ashii {
 		case 2: // Reporting back after giving Scarf
 			call(AshiiScript_ReportBackAfterGivingScarf)
 		case 3: // After having reported back
+			if (flag(FLAG_BROKE_SAKU_ROCK_1) && flag(FLAG_BROKE_SAKU_ROCK_2)) {
+				setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4)
+				call(AshiiScript_EscortAshii)
+			} else {
+				call(AshiiScript_Rocks)
+			}
+		case 4: // After breaking rocks
 			call(AshiiScript_EscortAshii)
-		case 7: // Getting Reward from her
+		case 8: // Getting Reward from her
 			call(AshiiScript_Reward)
-		case 8: // Quest over
+		case 9: // Quest over
 			call(AshiiScript_QuestOver)
 		default:
 	}
@@ -114,32 +121,28 @@ script(local) AshiiScript_ReportBackAfterGivingScarf {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm sorry. You've been an incredible help, and I don't even know your name!\p"
 		"… … …{PLAYER}. I see…\p"
-		"{PLAYER}, I know this is a big thing to ask, but…\p"
-		"I want to be sure that my meeting with Tama is safe.\NWho knows? It might be our last.\p"
-		"Could you please escort me?"
+		"{PLAYER}, look, There are rocks blocking the entrance of the vale.\p"
+		"Tama can't get to me!\nCould you destroy them for me?\p"
+		"I'd do it myself, but I can't get into Saku Village."
 	))
+}
 
-	mcdialogue("Who wouldn't?", "I guess?", "Not right now.")
-	closemessage
-
-	if (var(VAR_RESULT) == 0 || var(VAR_RESULT) == 1) {
-		call(AshiiScript_PlayerAcceptsEscort)
-		// Player says no
-	} else {
-		applymovement(LOCALID_ASHII, moves(emote_sad))
-		speakername("Ashii")
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Please come back as soon as you can spare some time…"
-		))
-		closemessage
-	}
+script(local) AshiiScript_Rocks {
+	faceplayer
+	speakername("Ashii")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Could you please destroy those rocky obstacles in the vale?\p"
+		"I'd do it myself, but I can't get into Saku Village."
+	))
 }
 
 script(local) AshiiScript_EscortAshii {
 	faceplayer
 	speakername("Ashii")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I want to be sure that my meeting with Tama is safe.\NWho knows? It might be our last.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you for clearing the way of those rocks!\p"
+		"{PLAYER}… I know this is a big thing to ask, but…\p"
+		"I want to be sure that my meeting with Tama is safe.\NWho knows? It might be our last.\p"
 		"Could you please escort me?"
 	))
 
@@ -160,7 +163,7 @@ script(local) AshiiScript_EscortAshii {
 }
 
 script(local) AshiiScript_PlayerAcceptsEscort {
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5)
 	applymovement(LOCALID_ASHII, moves(
 		emote_exclamation_mark,
 		delay_16 * 3,
@@ -256,7 +259,7 @@ script(local) AshiiScript_Reward {
 	closemessage
 
 	completequest(QUEST_SAKURALOVERS)
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 8)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 9)
 }
 
 script(local) AshiiScript_QuestOver {

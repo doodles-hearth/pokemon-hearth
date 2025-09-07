@@ -7,17 +7,14 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	setflag FLAG_VISITED_SAKU_TOWN
 	goto_if_set FLAG_SAKU_KURA_REUNITED, SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
-	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
+	goto_if_ne SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
-	goto_if_ne SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
-	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5
-	goto_if_lt SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_13
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_12:
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7
+	goto_if_lt SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_10
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
 	returnqueststate QUEST_SAKURALOVERS
 	copyvar VAR_TEMP_0, VAR_RESULT
 	returnqueststate QUEST_SAKURAESPEON
@@ -25,10 +22,10 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_12:
 	returnqueststate QUEST_SAKURASCYTHER
 	copyvar VAR_TEMP_2, VAR_RESULT
 	compare VAR_TEMP_0, 4
-	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_19
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_17:
-	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 7
 	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_16
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_14:
+	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 7
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_13
 	return
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
@@ -37,47 +34,42 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
-	setflag FLAG_TEMP_2
-	setflag FLAG_TEMP_3
-	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
-
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
 	setflag FLAG_HIDE_TAMASDAD
 	setflag FLAG_HIDE_DEADNIGHT_TAMA
-	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
 	clearflag FLAG_HIDE_TAMASDAD
 	clearflag FLAG_HIDE_DEADNIGHT_TAMA
-	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_13:
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_10:
 	setflag FLAG_HIDE_DEADNIGHT_ASHII
-	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_12
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
 
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_15:
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_12:
 	setflag FLAG_HIDE_SAKU_FARMERS
 	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1
 	return
 
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_16:
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_13:
 	clearflag FLAG_HIDE_SAKU_FARMERS
 	return
 
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_18:
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_15:
 	compare VAR_TEMP_2, 1
-	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_22
-	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_17
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_19
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_14
+
+SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_16:
+	compare VAR_TEMP_1, 4
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_15
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_14
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_19:
-	compare VAR_TEMP_1, 4
-	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_18
-	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_17
-
-SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_22:
 	compare VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 0
-	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_15
-	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_17
+	goto_if_eq SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_12
+	goto SakuTown_MapScripts_MAP_SCRIPT_ON_TRANSITION_14
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD:
 	setflag FLAG_TEMP_1
@@ -550,7 +542,7 @@ SakuTown_EventScript_TamaArgument_5:
 	setfollowernpc 20, 0
 	clearflag FLAG_HIDE_DEADNIGHT_ASHII
 	addobject 22
-	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7
 	return
 
 SakuTown_EventScript_TamaArgument_2:
@@ -580,7 +572,7 @@ SakuTown_TopTamaTrigger::
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_TopTamaTrigger_Movement_4
 	waitmovement 0
 	destroyfollowernpc
-	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 8
 	questmenu QUEST_MENU_SET_REWARD, QUEST_SAKURALOVERS
 	return
 
@@ -603,7 +595,7 @@ SakuTown_BottomTamaTrigger::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitmovement OBJ_EVENT_ID_NPC_FOLLOWER
 	destroyfollowernpc
-	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 8
 	fadescreen FADE_TO_BLACK
 	delay 48
 	resumefakertc

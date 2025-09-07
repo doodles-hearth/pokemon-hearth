@@ -7,6 +7,7 @@ const LOCALID_TAMA = 20
 const LOCALID_TAMA2 = OBJ_EVENT_ID_NPC_FOLLOWER
 const LOCALID_TAMASDAD = 21
 const LOCALID_ASHII = 22
+
 const FLAG_HIDE_NATSUKI = FLAG_TEMP_1
 
 const VAR_GET_QUEST_LOG_STATE_SAKURA_LOVERS = VAR_TEMP_0
@@ -23,20 +24,15 @@ mapscripts SakuTown_MapScripts {
 			setobjectmovementtype(LOCALID_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
 		}
 
-		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 4) { //hides rocksmash rocks
-			setflag(FLAG_TEMP_2)
-			setflag(FLAG_TEMP_3)
-		}
-
-		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) != 4) {
+		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) != 6) {
 			setflag(FLAG_HIDE_TAMASDAD)
 			setflag(FLAG_HIDE_DEADNIGHT_TAMA)
-		} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 4){
+		} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 6) {
 			clearflag(FLAG_HIDE_TAMASDAD)
 			clearflag(FLAG_HIDE_DEADNIGHT_TAMA)
 		}
 
-		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 5){
+		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 7){
 			setflag(FLAG_HIDE_DEADNIGHT_ASHII)
 		}
 
@@ -621,7 +617,7 @@ script SakuTown_EventScript_TamaArgument {
 	clearflag(FLAG_HIDE_DEADNIGHT_ASHII)
 	addobject(LOCALID_ASHII)
 
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7)
 }
 
 script SakuTown_TopTamaTrigger {
@@ -647,7 +643,7 @@ script SakuTown_TopTamaTrigger {
 
 	destroyfollowernpc
 
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 8)
 
 	questmenu(QUEST_MENU_SET_REWARD, QUEST_SAKURALOVERS)
 }
@@ -677,7 +673,7 @@ script SakuTown_BottomTamaTrigger {
 
 	destroyfollowernpc
 
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 7)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 8)
 
 	fadescreen(FADE_TO_BLACK)
 	delay(48)

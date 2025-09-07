@@ -9,8 +9,9 @@ KuraTown_House2_EventScript_Ashii::
 	case 1, KuraTown_House2_EventScript_Ashii_4
 	case 2, KuraTown_House2_EventScript_Ashii_5
 	case 3, KuraTown_House2_EventScript_Ashii_6
-	case 7, KuraTown_House2_EventScript_Ashii_7
+	case 4, KuraTown_House2_EventScript_Ashii_7
 	case 8, KuraTown_House2_EventScript_Ashii_8
+	case 9, KuraTown_House2_EventScript_Ashii_9
 KuraTown_House2_EventScript_Ashii_1:
 	release
 	return
@@ -28,16 +29,31 @@ KuraTown_House2_EventScript_Ashii_5:
 	goto KuraTown_House2_EventScript_Ashii_1
 
 KuraTown_House2_EventScript_Ashii_6:
-	call AshiiScript_EscortAshii
+	goto_if_set FLAG_BROKE_SAKU_ROCK_1, KuraTown_House2_EventScript_Ashii_12
+KuraTown_House2_EventScript_Ashii_11:
+	call AshiiScript_Rocks
 	goto KuraTown_House2_EventScript_Ashii_1
 
 KuraTown_House2_EventScript_Ashii_7:
-	call AshiiScript_Reward
+	call AshiiScript_EscortAshii
 	goto KuraTown_House2_EventScript_Ashii_1
 
 KuraTown_House2_EventScript_Ashii_8:
+	call AshiiScript_Reward
+	goto KuraTown_House2_EventScript_Ashii_1
+
+KuraTown_House2_EventScript_Ashii_9:
 	call AshiiScript_QuestOver
 	goto KuraTown_House2_EventScript_Ashii_1
+
+KuraTown_House2_EventScript_Ashii_10:
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
+	call AshiiScript_EscortAshii
+	goto KuraTown_House2_EventScript_Ashii_1
+
+KuraTown_House2_EventScript_Ashii_12:
+	goto_if_set FLAG_BROKE_SAKU_ROCK_2, KuraTown_House2_EventScript_Ashii_10
+	goto KuraTown_House2_EventScript_Ashii_11
 
 
 AshiiScript_FirstEncounter:
@@ -93,20 +109,13 @@ AshiiScript_ReportBackAfterGivingScarf:
 	waitmovement 0
 	speakername AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_ReportBackAfterGivingScarf_Text_4
-	mcdialogue AshiiScript_ReportBackAfterGivingScarf_Text_5, AshiiScript_ReportBackAfterGivingScarf_Text_6, AshiiScript_ReportBackAfterGivingScarf_Text_7
-	closemessage
-	compare VAR_RESULT, 0
-	goto_if_eq AshiiScript_ReportBackAfterGivingScarf_1
-	compare VAR_RESULT, 1
-	goto_if_eq AshiiScript_ReportBackAfterGivingScarf_1
-	applymovement 1, AshiiScript_ReportBackAfterGivingScarf_Movement_2
-	speakername AshiiScript_FirstEncounter_Text_3
-	msgbox AshiiScript_ReportBackAfterGivingScarf_Text_8
-	closemessage
 	return
 
-AshiiScript_ReportBackAfterGivingScarf_1:
-	call AshiiScript_PlayerAcceptsEscort
+
+AshiiScript_Rocks:
+	faceplayer
+	speakername AshiiScript_FirstEncounter_Text_3
+	msgbox AshiiScript_Rocks_Text_0
 	return
 
 
@@ -114,13 +123,13 @@ AshiiScript_EscortAshii:
 	faceplayer
 	speakername AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_EscortAshii_Text_0
-	mcdialogue AshiiScript_EscortAshii_Text_1, AshiiScript_ReportBackAfterGivingScarf_Text_7
+	mcdialogue AshiiScript_EscortAshii_Text_1, AshiiScript_EscortAshii_Text_2
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq AshiiScript_EscortAshii_1
-	applymovement 1, AshiiScript_ReportBackAfterGivingScarf_Movement_2
+	applymovement 1, AshiiScript_EscortAshii_Movement_0
 	speakername AshiiScript_FirstEncounter_Text_3
-	msgbox AshiiScript_EscortAshii_Text_2
+	msgbox AshiiScript_EscortAshii_Text_3
 	closemessage
 	return
 
@@ -130,7 +139,7 @@ AshiiScript_EscortAshii_1:
 
 
 AshiiScript_PlayerAcceptsEscort:
-	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5
 	applymovement 1, AshiiScript_PlayerAcceptsEscort_Movement_0
 	playse SE_PIN
 	delay 48
@@ -191,7 +200,7 @@ AshiiScript_Reward:
 	msgbox AshiiScript_Reward_Text_1
 	closemessage
 	completequest QUEST_SAKURALOVERS
-	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 8
+	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 9
 	return
 
 
@@ -233,7 +242,7 @@ AshiiScript_ReportBackAfterGivingScarf_Movement_1:
 	face_player
 	step_end
 
-AshiiScript_ReportBackAfterGivingScarf_Movement_2:
+AshiiScript_EscortAshii_Movement_0:
 	emote_sad
 	step_end
 
@@ -318,28 +327,25 @@ AshiiScript_ReportBackAfterGivingScarf_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm sorry. You've been an incredible\n"
 	.string "help, and I don't even know your name!\p"
 	.string "… … …{PLAYER}. I see…\p"
-	.string "{PLAYER}, I know this is a big thing\n"
-	.string "to ask, but…\p"
-	.string "I want to be sure that my meeting\n"
-	.string "with Tama is safe.\l"
-	.string "Who knows? It might be our last.\p"
-	.string "Could you please escort me?$"
+	.string "{PLAYER}, look, There are rocks\n"
+	.string "blocking the entrance of the vale.\p"
+	.string "Tama can't get to me!\n"
+	.string "Could you destroy them for me?\p"
+	.string "I'd do it myself, but I can't get into\n"
+	.string "Saku Village.$"
 
-AshiiScript_ReportBackAfterGivingScarf_Text_5:
-	.string "Who wouldn't?$"
-
-AshiiScript_ReportBackAfterGivingScarf_Text_6:
-	.string "I guess?$"
-
-AshiiScript_ReportBackAfterGivingScarf_Text_7:
-	.string "Not right now.$"
-
-AshiiScript_ReportBackAfterGivingScarf_Text_8:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Please come back as soon as you can\n"
-	.string "spare some time…$"
+AshiiScript_Rocks_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Could you please destroy those rocky\n"
+	.string "obstacles in the vale?\p"
+	.string "I'd do it myself, but I can't get into\n"
+	.string "Saku Village.$"
 
 AshiiScript_EscortAshii_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I want to be sure that my meeting\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you for clearing the way of\n"
+	.string "those rocks!\p"
+	.string "{PLAYER}… I know this is a big thing\n"
+	.string "to ask, but…\p"
+	.string "I want to be sure that my meeting\n"
 	.string "with Tama is safe.\l"
 	.string "Who knows? It might be our last.\p"
 	.string "Could you please escort me?$"
@@ -348,6 +354,9 @@ AshiiScript_EscortAshii_Text_1:
 	.string "Let's go!$"
 
 AshiiScript_EscortAshii_Text_2:
+	.string "Not right now.$"
+
+AshiiScript_EscortAshii_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Please come back…\n"
 	.string "Don't toy with a girl's heart…$"
 

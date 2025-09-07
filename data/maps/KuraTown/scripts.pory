@@ -7,10 +7,10 @@ mapscripts KuraTown_MapScripts {
         setflag(FLAG_VISITED_KURA_TOWN)
 
 		returnqueststate(QUEST_SAKURALOVERS)
-		if(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 4 || var(VAR_RESULT) >= 3) {
+		if(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 5 || var(VAR_RESULT) >= 3) {
 			setflag(FLAG_HIDE_DEADNIGHT_ASHII)
 		}
-		elif(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 4) {
+		elif(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 5) {
 			clearflag(FLAG_HIDE_DEADNIGHT_ASHII)
 		}
 
@@ -19,7 +19,7 @@ mapscripts KuraTown_MapScripts {
 		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4: KuraTown_EventScript_AnxiousAshii
+		VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5: KuraTown_EventScript_AnxiousAshii
 		VAR_DECAY_BEACHBOUND_ROUTE, 4: KuraTown_EventScript_PostDecayNatsukiHariko
 	]
 	MAP_SCRIPT_ON_LOAD {
@@ -360,7 +360,7 @@ script KuraTown_EventScript_AnxiousAshii {
 	closemessage
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_down))
 	waitmovement(LOCALID_ASHII)
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6)
 	release
 }
 

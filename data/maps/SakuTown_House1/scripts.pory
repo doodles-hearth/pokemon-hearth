@@ -122,7 +122,7 @@ script SakuTown_House1_EventScript_Tama {
 		closemessage
 		addvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
 
-	} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 2 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) <= 7) {
+	} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 2 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 9) {
 		faceplayer
 		speakername("Tama")
 		msgbox(format(
