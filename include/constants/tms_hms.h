@@ -71,7 +71,8 @@
     F(PUSH) \
     F(WATER_FLAIL) \
     F(SINK) \
-    F(SPLASH)
+    F(SPLASH) \
+    F(PSYBEAM)
 
 /* #define FOREACH_HM(F) \
     F(FLY) \

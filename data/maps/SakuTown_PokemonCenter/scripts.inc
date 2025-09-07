@@ -315,16 +315,34 @@ SakuTown_PokemonCenter_Movement_PushesPlayerUp:
 	face_original_direction
 	step_end
 
-SakuTown_PokemonCenter_EventScript_Makuhita::
+SakuTown_Refuge_EventScript_MakuhitaRest::
 	lock
 	setseenmon SPECIES_MAKUHITA
 	setspeakertomonname SPECIES_MAKUHITA
+	applymovement VAR_LAST_TALKED, SakuTown_Refuge_EventScript_MakuhitaRest_Movement_0
 	playmoncry SPECIES_MAKUHITA, CRY_MODE_WEAK
-	msgbox SakuTown_PokemonCenter_EventScript_Makuhita_Text_0
+	msgbox SakuTown_Refuge_EventScript_MakuhitaRest_Text_0
 	waitmoncry
 	waitmessage
 	closemessage
-	msgbox SakuTown_PokemonCenter_EventScript_Makuhita_Text_1
+	msgbox SakuTown_Refuge_EventScript_MakuhitaRest_Text_1
+	closemessage
+	release
+	return
+
+
+SakuTown_Refuge_EventScript_MakuhitaWork::
+	lock
+	setseenmon SPECIES_MAKUHITA
+	setspeakertomonname SPECIES_MAKUHITA
+	faceplayer
+	applymovement VAR_LAST_TALKED, SakuTown_Refuge_EventScript_MakuhitaWork_Movement_0
+	playmoncry SPECIES_MAKUHITA, CRY_MODE_NORMAL
+	msgbox SakuTown_Refuge_EventScript_MakuhitaWork_Text_0
+	waitmoncry
+	waitmessage
+	closemessage
+	msgbox SakuTown_Refuge_EventScript_MakuhitaWork_Text_1
 	release
 	return
 
@@ -365,7 +383,10 @@ HealedScytherScript_Movement_2:
 	step_end
 
 HealedScytherScript_Movement_3:
-	emote_double_exclamation_mark
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
 	delay_16
 	delay_16
 	delay_16
@@ -463,6 +484,14 @@ HealedScytherScript_Movement_11:
 	walk_right
 	step_end
 
+SakuTown_Refuge_EventScript_MakuhitaRest_Movement_0:
+	emote_sleep
+	step_end
+
+SakuTown_Refuge_EventScript_MakuhitaWork_Movement_0:
+	emote_happy
+	step_end
+
 SakuTown_PokemonCenter_EventScript_Nurse_Text_0:
 	.string "Nurse$"
 
@@ -478,8 +507,8 @@ SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}This Pokémon refuge is brand new,\n"
 	.string "courtesy of the Toku Council!\p"
 	.string "As you can see, it's still being built.\n"
-	.string "Watch out for the falling bricks, ha\l"
-	.string "ha, just kidding!\p"
+	.string "Watch out for the falling bricks,\l"
+	.string "ha ha, just kidding!\p"
 	.string "Seriously though, do watch out.\n"
 	.string "We're held responsible if anything\l"
 	.string "happens to you.$"
@@ -504,7 +533,7 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_3:
 	.string "can.$"
 
 FarmerGivesQuest_Text_0:
-	.string "The nurse 'ere said the newfangled\n"
+	.string "The nurse here said the newfangled\n"
 	.string "medical technology from the Toku\l"
 	.string "Council isn't here yet.\p"
 	.string "Scyther can't be cured of whatever's\n"
@@ -514,7 +543,7 @@ FarmerGivesQuest_Text_0:
 	.string "cure our girl!$"
 
 FarmerWaitsMedicine_Text_0:
-	.string "So? Have ya found anythin' yet?$"
+	.string "So? Have ye found anythin' yet?$"
 
 HealedScytherScript_Text_0:
 	.string "Right here.$"
@@ -531,7 +560,7 @@ HealedScytherScript_Text_3:
 
 HealedScytherScript_Text_4:
 	.string "Here, girl…\n"
-	.string "This'll make ya feel better…$"
+	.string "This'll make ye feel better…$"
 
 HealedScytherScript_Text_5:
 	.string "{FONT_SMALL} Gyooo…$"
@@ -577,8 +606,14 @@ SakuTown_PokemonCenter_EventScript_Grunt2_Text_0:
 SakuTown_PokemonCenter_EventScript_Grunt3_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}On Beachbound Route…$"
 
-SakuTown_PokemonCenter_EventScript_Makuhita_Text_0:
-	.string "Kuhu…$"
+SakuTown_Refuge_EventScript_MakuhitaRest_Text_0:
+	.string "Hu…$"
 
-SakuTown_PokemonCenter_EventScript_Makuhita_Text_1:
+SakuTown_Refuge_EventScript_MakuhitaRest_Text_1:
 	.string "The Pokémon is resting.$"
+
+SakuTown_Refuge_EventScript_MakuhitaWork_Text_0:
+	.string "Kuhu!$"
+
+SakuTown_Refuge_EventScript_MakuhitaWork_Text_1:
+	.string "The Pokémon is hard at work!$"

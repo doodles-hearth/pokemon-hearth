@@ -17,10 +17,10 @@ script SakuTown_House3_EventScript_Psyduck {
     faceplayer
     setseenmon(SPECIES_PSYDUCK_TOKUAN)
     setspeakertomonname(SPECIES_PSYDUCK)
+    playmoncry(SPECIES_PSYDUCK, CRY_MODE_NORMAL)
     msgbox(format(
         "Psaïaïaï…"
     ))
-    playmoncry(SPECIES_PSYDUCK, CRY_MODE_NORMAL)
     waitmoncry
     release
     end
@@ -58,10 +58,12 @@ script SakuTown_House3_EventScript_TradeMe {
                 "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}The best thing about Pokémon is trading them around!\p"
                 "I want a Hoothoot, but my pa doesn't let me go out at night.\p"
                 "I'll trade you a super dope Psyduck for it!"
-            ), MSGBOX_YESNO
+            )
         )
 
-	    if (var(VAR_RESULT) == NO || var(VAR_RESULT) == MULTI_B_PRESSED) {
+        mcdialogue("Yes!", "No thanks.")
+
+	    if (var(VAR_RESULT) != 0) {
             speakername("Little boy")
             msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}Keep your Hoothoot, I don't want it anyway…"))
             closemessage

@@ -8719,10 +8719,9 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 9,
         .weight = 195,
         .description = COMPOUND_STRING(
-            "A Pokémon that sleeps 18 hours a day.\n"
-            "Observation revealed that it uses\n"
-            "Teleport to change its location once\n"
-            "every hour."),
+            "It spends most of its time in a deep\n"
+            "slumber. It can use its psychic powers\n"
+            "and teleport itself even while dreaming."),
         .pokemonScale = 363,
         .pokemonOffset = 14,
         .trainerScale = 256,
