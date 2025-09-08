@@ -134,7 +134,10 @@ KuraTown_EventScript_Farmer::
 	faceplayer
 	speakername KuraTown_EventScript_Farmer_Text_0
 	msgbox KuraTown_EventScript_Farmer_Text_1
+	closemessage
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_Farmer_Movement_0
+	waitmovement 0
+	speakername KuraTown_EventScript_Farmer_Text_0
 	msgbox KuraTown_EventScript_Farmer_Text_2
 	release
 	return
@@ -416,6 +419,12 @@ KuraTown_EventScript_DojoChallenger_Movement_1:
 
 KuraTown_EventScript_Farmer_Movement_0:
 	emote_pensive
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0:
@@ -588,8 +597,7 @@ KuraTown_EventScript_Farmer_Text_0:
 
 KuraTown_EventScript_Farmer_Text_1:
 	.string "Why do we hate the Saku Village folks,\n"
-	.string "y'ask?\p"
-	.string "$"
+	.string "y'ask?$"
 
 KuraTown_EventScript_Farmer_Text_2:
 	.string "To be honest, I don't quite rememb'r.\n"
@@ -621,7 +629,7 @@ KuraTown_EventScript_SilkScarf_Text_3:
 
 KuraTown_EventScript_FarmerScyther_Text_0:
 	.string "We started taming Scyther recently\n"
-	.string "to help us with harvestin' the crops.\l"
+	.string "to help with harvestin' the crops.\l"
 	.string "They've been a tremendous help!$"
 
 KuraTown_EventScript_Scyther_Text_0:

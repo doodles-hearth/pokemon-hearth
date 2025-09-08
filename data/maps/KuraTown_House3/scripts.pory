@@ -68,8 +68,8 @@ script KuraTown_House3_EventScript_Lady {
 		faceplayer
 		speakername("Woman")
 		msgbox(format(
-			"That little lost kitten is reunited with its master? Do they seem happy together?\p"
-			"Oh, how delightful!"
+			"That little lost kitten is reunited with its master?\p"
+			"Do they look happy together?\nOh, how delightful!"
 		))
 		closemessage
 	}

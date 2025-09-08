@@ -126,9 +126,14 @@ script KuraTown_EventScript_Farmer {
 	faceplayer
 	speakername("Farmer")
 	msgbox(format(
-		"Why do we hate the Saku Village folks, y'ask?\p"
+		"Why do we hate the Saku Village folks, y'ask?"
 	))
-	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
+	closemessage
+
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive, delay_16 * 6))
+	waitmovement(0)
+
+	speakername("Farmer")
 	msgbox(format(
 		"To be honest, I don't quite rememb'r.\nBut who needs a reas'n, right?"
 	))
@@ -178,7 +183,7 @@ script KuraTown_EventScript_FarmerScyther {
 	speakername("Farmer")
 	msgbox(
 		format(
-			"We started taming Scyther recently to help us with harvestin' the crops. They've been a tremendous help!"
+			"We started taming Scyther recently to help with harvestin' the crops. They've been a tremendous help!"
 		),
 		MSGBOX_DEFAULT
 	)

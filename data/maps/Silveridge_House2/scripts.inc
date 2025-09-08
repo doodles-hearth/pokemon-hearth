@@ -51,6 +51,8 @@ Silveridge_House2_EventScript_Woman_Movement_0:
 
 Silveridge_House2_EventScript_Woman_Movement_1:
 	face_right
+	delay_16
+	delay_16
 	step_end
 
 Silveridge_House2_EventScript_Woman_Text_0:
