@@ -184,7 +184,7 @@ KuraTown_House3_EventScript_Lady_Text_4:
 
 KuraTown_House3_EventScript_Lady_Text_5:
 	.string "That little lost kitten is reunited\n"
-	.string "with its master?\n"
+	.string "with its master?\p"
 	.string "Do they look happy together?\n"
 	.string "Oh, how delightful!$"
 

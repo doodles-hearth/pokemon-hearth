@@ -111,6 +111,7 @@ Silveridge_Refuge_EventScript_Shamisen::
 	speakername Silveridge_Refuge_EventScript_Shamisen_Text_0
 	msgbox Silveridge_Refuge_EventScript_Shamisen_Text_4
 	closemessage
+	giveitem ITEM_UUMEGIRI, 3
 	setflag FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER
 Silveridge_Refuge_EventScript_Shamisen_1:
 	release
@@ -201,4 +202,6 @@ Silveridge_Refuge_EventScript_Shamisen_Text_3:
 
 Silveridge_Refuge_EventScript_Shamisen_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}That was just the thing I needed to\n"
-	.string "pass the time.$"
+	.string "pass the time.\p"
+	.string "I'll share my meal with you as a\n"
+	.string "thanks.$"

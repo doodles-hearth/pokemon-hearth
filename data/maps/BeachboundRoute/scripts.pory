@@ -522,6 +522,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 		))
 	}
 
+	setflag(FLAG_MET_TRAVELING_MERCHANT)
 	setflag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)
 
 	limitedpokemart(LIMITED_SHOP_1)

@@ -109,7 +109,7 @@ script KuraTown_Dojo_EventScript_Hana {
 				"You must be wondering what a Bonsai seller from Saku Village is doing in the Kura Village Dojo.\p"
 				"I'd prefer you don't tell anyone.\nSee, the two towns have a beef with one another.\p"
 				"A Pokémon battle can be graceful like a budding flower, strong like the deepest roots, powerful like a windswept pine tree, all at once.\p"
-				"I want you to show me all the grace, strength and power you are capable of!"
+				"Show me all the grace, strength and power you are capable of!"
 			),
 			format("Ho ho ho…"),
 			KuraTown_Dojo_EventScript_HanaDefeated,
@@ -124,7 +124,7 @@ script KuraTown_Dojo_EventScript_Hana {
 				"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
 				"Tending to my bonsai and fighting alongside my Pokémon are my favorite pastimes. With this Dojo, I can do both!\p"
 				"A Pokémon battle can be graceful like a budding flower, strong like the deepest roots, powerful like a windswept pine tree, all at once.\p"
-				"I want you to show me all the grace, strength and power you are capable of!"
+				"Show me all the grace, strength and power you are capable of!"
 			),
 			format("Ho ho ho…"),
 			KuraTown_Dojo_EventScript_HanaDefeated,
@@ -138,7 +138,8 @@ script KuraTown_Dojo_EventScript_Hana {
 	speakername("Hana")
 	msgbox(
 		format(
-			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}The slow-growing tree becomes the sturdiest. Take your time on your journey, {PLAYER}."
+			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}The slow-growing tree becomes the sturdiest.\p"
+			"Take your time on your journey, {PLAYER}."
 		),
 		MSGBOX_DEFAULT
 	)
@@ -206,24 +207,26 @@ script KuraTown_Dojo_EventScript_Advice {
 		speakername("Man")
 		if (isfieldmoveunlocked(FIELD_MOVE_CUT)) {
 			msgbox(format(
-				"Hello, young challenger, and welcome to the official Dojo of Kura Village!\p"
-				"Lady Hana, the Dojo Master, is an expert in all things bonsai. She designed this place and grew these trees, of course!\p"
-				"She tends to favor grass-type Pokémon, but she's got other tricks up her sleeve, too. Be on your guard!\p"
+				"Hello, young challenger, and welcome to the Kura Village Dojo!\p"
+				"Lady Hana, the Dojo Master, is an expert in all things bonsai.\p"
+				"She designed this place and, of course, grew these trees herself!\p"
 				"Now, pay attention: only some of these noble trees can be cut down.\p"
-				"Figure out which, and you'll reach the Master!"
+				"Figure out which, and you'll reach the Master!\p"
+				"By the way - Hana's a weather expert, and a formidable adversary.\p"
+				"Be on your guard!\nMaybe get an umbrella, I don't know!"
 			))
 		} else {
 			speakername("Man")
 			if (flag(FLAG_BADGE01_GET)) {
 				msgbox(format(
-					"Hello, young challenger, and welcome to the official Dojo of Kura Village!\p"
+					"Hello, young challenger, and welcome to the Kura Village Dojo!\p"
 					"All these trees are blocking your way, aren't they?\p"
 					"You should come back once you've figured out a way to cut them!"
 				))
 			} else {
 				speakername("Man")
 				msgbox(format(
-					"Hello, young challenger, and welcome to the official Dojo of Kura Village!\p"
+					"Hello, young challenger, and welcome to the Kura Village Dojo!\p"
 					"All these trees are blocking your way, aren't they?\p"
 					"You should come back once you've figured out a way to cut them!\p"
 					"If you're itching for a challenge, why not try your skills at the Dojo in Maguro Harbor first?\p"
@@ -239,7 +242,7 @@ script KuraTown_Dojo_EventScript_DojoStatue {
 	lockall
 	if (flag(FLAG_BADGE02_GET)) {
 		msgbox(
-			"Dojo of Kura Village\p"
+			"Kura Village Dojo\p"
 			"certified Wielders:\n"
 			"Natsuki,\l"
 			"{PLAYER}",
@@ -247,7 +250,7 @@ script KuraTown_Dojo_EventScript_DojoStatue {
 		)
 	} else {
 		msgbox(
-			"Dojo of Kura Village\p"
+			"Kura Village Dojo\p"
 			"certified Wielders:\n"
 			"Natsuki",
 			MSGBOX_SIGN

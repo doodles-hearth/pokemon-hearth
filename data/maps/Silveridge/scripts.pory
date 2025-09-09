@@ -62,8 +62,8 @@ script Silveridge_EventScript_MissingStatue {
 		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_2 EMOTE_NORMAL}Hello, traveler. Have you looked at this stunning statue that makes the pride of our town?\p"
 		"…Is what I would say if we had one.\p"
 		"There used to be a statue, but a quake destroyed it long ago, so now we're left with this empty pedestal.\p"
-		"There's an excentric man that lives nearby and that calls himself “The Sculptor”.\p"
-		"I wish he'd make a replacement, but he hasn't been making anything for a while now."
+		"An excentric man lives nearby, calls himself “The Sculptor”.\p"
+		"I wish he'd make a replacement, but he hasn't been making anything in forever."
 	))
 	release
 }

@@ -132,11 +132,12 @@ script Silveridge_Refuge_EventScript_Shamisen {
 
 		speakername("Shamisen Player")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}That was just the thing I needed to pass the time."
+			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}That was just the thing I needed to pass the time.\p"
+			"I'll share my meal with you as a thanks."
 		))
 		closemessage
 
-		// TODO EVA reward?
+		giveitem(ITEM_UUMEGIRI, 3)
 
 		setflag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)
 	}

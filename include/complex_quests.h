@@ -44,7 +44,7 @@
 const u8 *const gTable_MainCampaignDescs[3] = {
     COMPOUND_STRING("Go see Elder Kaba and become\n a Pokémon wielder!"),
     COMPOUND_STRING("Deliver Elder Kaba's letter to\n Elder Iwa in Silveridge!"),
-    COMPOUND_STRING("Filler desc"),
+    COMPOUND_STRING("Investigate on the Decay in\nUume Forest!"),
 };
 
 const u8 *const gTable_MainCampaignMaps[3] = {
@@ -56,13 +56,13 @@ const u8 *const gTable_MainCampaignMaps[3] = {
 static const u16 MainCampaignSprites[3]={
 	OBJ_EVENT_GFX_KABA,
     OBJ_EVENT_GFX_ELDER2,
-	OBJ_EVENT_GFX_NATSUKI,
+	ITEM_LUM_BERRY,
 };
 
 static const u8 MainCampaignSpriteTypes[3]={
 	OBJECT,
 	OBJECT,
-	OBJECT,
+	ITEM,
 };
 
 ////////////END QUEST ARRAYS////////////

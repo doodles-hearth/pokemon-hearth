@@ -276,9 +276,8 @@ KuraTown_Dojo_EventScript_Hana_Text_1:
 	.string "a budding flower, strong like the\l"
 	.string "deepest roots, powerful like a\l"
 	.string "windswept pine tree, all at once.\p"
-	.string "I want you to show me all the grace,\n"
-	.string "strength and power you are capable\l"
-	.string "of!$"
+	.string "Show me all the grace, strength and\n"
+	.string "power you are capable of!$"
 
 KuraTown_Dojo_EventScript_Hana_Text_2:
 	.string "Ho ho ho…$"
@@ -294,14 +293,14 @@ KuraTown_Dojo_EventScript_Hana_Text_3:
 	.string "a budding flower, strong like the\l"
 	.string "deepest roots, powerful like a\l"
 	.string "windswept pine tree, all at once.\p"
-	.string "I want you to show me all the grace,\n"
-	.string "strength and power you are capable\l"
-	.string "of!$"
+	.string "Show me all the grace, strength and\n"
+	.string "power you are capable of!$"
 
 KuraTown_Dojo_EventScript_Hana_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}The slow-growing tree becomes the\n"
-	.string "sturdiest. Take your time on your\l"
-	.string "journey, {PLAYER}.$"
+	.string "sturdiest.\p"
+	.string "Take your time on your journey,\n"
+	.string "{PLAYER}.$"
 
 KuraTown_Dojo_EventScript_HanaDefeated_Text_0:
 	.string "{PLAYER} received the Carved Token\n"
@@ -336,22 +335,23 @@ KuraTown_Dojo_EventScript_Advice_Text_1:
 
 KuraTown_Dojo_EventScript_Advice_Text_2:
 	.string "Hello, young challenger, and welcome\n"
-	.string "to the official Dojo of Kura Village!\p"
+	.string "to the Kura Village Dojo!\p"
 	.string "Lady Hana, the Dojo Master, is an\n"
-	.string "expert in all things bonsai. She\l"
-	.string "designed this place and grew these\l"
-	.string "trees, of course!\p"
-	.string "She tends to favor grass-type\n"
-	.string "Pokémon, but she's got other tricks\l"
-	.string "up her sleeve, too. Be on your guard!\p"
+	.string "expert in all things bonsai.\p"
+	.string "She designed this place and, of\n"
+	.string "course, grew these trees herself!\p"
 	.string "Now, pay attention: only some of\n"
 	.string "these noble trees can be cut down.\p"
 	.string "Figure out which, and you'll reach the\n"
-	.string "Master!$"
+	.string "Master!\p"
+	.string "By the way - Hana's a weather expert,\n"
+	.string "and a formidable adversary.\p"
+	.string "Be on your guard!\n"
+	.string "Maybe get an umbrella, I don't know!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_3:
 	.string "Hello, young challenger, and welcome\n"
-	.string "to the official Dojo of Kura Village!\p"
+	.string "to the Kura Village Dojo!\p"
 	.string "All these trees are blocking your way,\n"
 	.string "aren't they?\p"
 	.string "You should come back once you've\n"
@@ -359,7 +359,7 @@ KuraTown_Dojo_EventScript_Advice_Text_3:
 
 KuraTown_Dojo_EventScript_Advice_Text_4:
 	.string "Hello, young challenger, and welcome\n"
-	.string "to the official Dojo of Kura Village!\p"
+	.string "to the Kura Village Dojo!\p"
 	.string "All these trees are blocking your way,\n"
 	.string "aren't they?\p"
 	.string "You should come back once you've\n"
@@ -370,13 +370,13 @@ KuraTown_Dojo_EventScript_Advice_Text_4:
 	.string "It's not very far east from here!$"
 
 KuraTown_Dojo_EventScript_DojoStatue_Text_0:
-	.string "Dojo of Kura Village\p"
+	.string "Kura Village Dojo\p"
 	.string "certified Wielders:\n"
 	.string "Natsuki,\l"
 	.string "{PLAYER}$"
 
 KuraTown_Dojo_EventScript_DojoStatue_Text_1:
-	.string "Dojo of Kura Village\p"
+	.string "Kura Village Dojo\p"
 	.string "certified Wielders:\n"
 	.string "Natsuki$"
 

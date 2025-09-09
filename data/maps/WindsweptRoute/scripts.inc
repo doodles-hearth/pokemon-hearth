@@ -5,14 +5,15 @@ WindsweptRoute_MapScripts::
 WindsweptRoute_EventScript_OvergrownTrees::
 	lock
 	faceplayer
+	speakername WindsweptRoute_EventScript_OvergrownTrees_Text_0
 	goto_if_set FLAG_CUT_TREE_SILVER_TUNNEL, WindsweptRoute_EventScript_OvergrownTrees_2
-	msgbox WindsweptRoute_EventScript_OvergrownTrees_Text_1
+	msgbox WindsweptRoute_EventScript_OvergrownTrees_Text_2
 WindsweptRoute_EventScript_OvergrownTrees_1:
 	release
 	return
 
 WindsweptRoute_EventScript_OvergrownTrees_2:
-	msgbox WindsweptRoute_EventScript_OvergrownTrees_Text_0
+	msgbox WindsweptRoute_EventScript_OvergrownTrees_Text_1
 	goto WindsweptRoute_EventScript_OvergrownTrees_1
 
 
@@ -134,17 +135,17 @@ WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_4:
 	step_end
 
 WindsweptRoute_EventScript_OvergrownTrees_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Thank you for cutting down that\n"
-	.string "annoying tree! We can go to Silveridge\l"
-	.string "again!$"
+	.string "Man$"
 
 WindsweptRoute_EventScript_OvergrownTrees_Text_1:
-	.string "The weeds got out of control here,\n"
-	.string "and some trees now block the way to\l"
-	.string "Silver Tunnel…\p"
-	.string "Someone'll eventually have to ask for\n"
-	.string "help from the old Cut master on\l"
-	.string "Tranquil route…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Someone cut down that annoying tree!\n"
+	.string "We can go to Silveridge again!$"
+
+WindsweptRoute_EventScript_OvergrownTrees_Text_2:
+	.string "The weeds got out of control, some\n"
+	.string "trees block the way to Silver Tunnel…\p"
+	.string "We'll eventually have to ask the Cut\n"
+	.string "master on Tranquil route for help…$"
 
 WindsweptRoute_EventScript_Trainer1_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}These winds blow as strong as my will\n"
