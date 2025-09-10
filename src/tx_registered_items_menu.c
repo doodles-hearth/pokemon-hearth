@@ -340,7 +340,7 @@ static u8 TxRegItemsMenu_InitWindow(void)
     if (*windowIdLoc == WINDOW_NONE)
     {
         *windowIdLoc = AddWindow(&TxRegItemsMenu_WindowTemplates[0]);
-        DrawStdFrameWithCustomTileAndPalette(*windowIdLoc, FALSE, 0x214, 0xE);
+        DrawStdFrameWithCustomTileAndPalette(*windowIdLoc, FALSE, STD_WINDOW_BASE_TILE_NUM, 0xE);
         ScheduleBgCopyTilemapToVram(0);
     }
     return *windowIdLoc;

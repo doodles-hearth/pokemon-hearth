@@ -742,7 +742,6 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
     {
         if (MetatileBehavior_IsLandWildEncounter(curMetatileBehavior) == TRUE)
         {
-            // TODO EVA ici
             timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_LAND);
 
             if (gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo == NULL)

@@ -187,7 +187,7 @@ void DrawMoneyBox(int amount, u8 x, u8 y)
     FillWindowPixelBuffer(sMoneyBoxWindowId, PIXEL_FILL(0));
     PutWindowTilemap(sMoneyBoxWindowId);
     CopyWindowToVram(sMoneyBoxWindowId, COPYWIN_MAP);
-    PrintMoneyAmountInMoneyBoxWithBorder(sMoneyBoxWindowId, 0x214, 14, amount);
+    PrintMoneyAmountInMoneyBoxWithBorder(sMoneyBoxWindowId, STD_WINDOW_BASE_TILE_NUM, 14, amount);
     AddMoneyLabelObject((8 * x) + 19, (8 * y) + 11);
 }
 

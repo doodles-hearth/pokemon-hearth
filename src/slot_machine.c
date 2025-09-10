@@ -1248,7 +1248,7 @@ static void SlotMachineSetup_LoadGfxAndTilemaps(void)
     LoadMenuAndReelOverlayTilemaps();
     LoadSlotMachineGfx();
     LoadMessageBoxGfx(0, 0x200, BG_PLTT_ID(15));
-    LoadUserWindowBorderGfx(0, 0x214, BG_PLTT_ID(14));
+    LoadUserWindowBorderGfx(0, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(14));
     PutWindowTilemap(0);
 }
 
@@ -1658,7 +1658,7 @@ static bool8 SlotTask_AskQuit(struct Task *task)
     DrawDialogueFrame(0, FALSE);
     AddTextPrinterParameterized(0, FONT_NORMAL, gText_QuitTheGame, 0, 1, 0, 0);
     CopyWindowToVram(0, COPYWIN_FULL);
-    CreateYesNoMenuParameterized(0x15, 7, 0x214, 0x180, 0xE, 0xF);
+    CreateYesNoMenuParameterized(0x15, 7, STD_WINDOW_BASE_TILE_NUM, 0x180, 0xE, 0xF);
     sSlotMachine->state = SLOTTASK_HANDLE_QUIT_INPUT;
     return FALSE;
 }

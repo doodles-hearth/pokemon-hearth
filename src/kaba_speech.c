@@ -898,7 +898,7 @@ static void Task_KabaSpeech_SpawnYesNoMenuForPlayerMugshot(u8 taskId)
     else
     {
         sKabaSpeech->playerHasName = FALSE;
-        CreateYesNoMenu(&sKabaSpeech_YesNoWindow, 0x214, 14, 0);
+        CreateYesNoMenu(&sKabaSpeech_YesNoWindow, STD_WINDOW_BASE_TILE_NUM, 14, 0);
         gTasks[taskId].func = Task_KabaSpeech_HandleConfirmChosenMugshotInput;
     }
 }
@@ -986,7 +986,7 @@ static void Task_KabaSpeech_ConfirmChosenName(u8 taskId)
         else
         {
             KabaSpeech_PrintMessageBox(sKabaSpeech_SoYourePlayer);
-            CreateYesNoMenu(&sKabaSpeech_YesNoWindow, 0x214, 14, 0);
+            CreateYesNoMenu(&sKabaSpeech_YesNoWindow, STD_WINDOW_BASE_TILE_NUM, 14, 0);
             gTasks[taskId].func = Task_KabaSpeech_HandleConfirmNameInput;
         }
     }

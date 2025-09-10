@@ -3602,19 +3602,13 @@ void ScriptShowItemDescription(struct ScriptContext *ctx)
     else
         dst = gStringVar1;
 
-    if (GetSetItemObtained(item, FLAG_GET_ITEM_OBTAINED))
-    {
-        ShowItemIconSprite(item, FALSE, handleFlash);
-        return; //no box if item obtained previously
-    }
-
     SetWindowTemplateFields(&template, 0, 1, 1, 28, 3, 15, 8);
     sHeaderBoxWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sHeaderBoxWindowId, PIXEL_FILL(0));
     PutWindowTilemap(sHeaderBoxWindowId);
     CopyWindowToVram(sHeaderBoxWindowId, 3);
     SetStandardWindowBorderStyle(sHeaderBoxWindowId, FALSE);
-    DrawStdFrameWithCustomTileAndPalette(sHeaderBoxWindowId, FALSE, 0x214, 14);
+    DrawStdFrameWithCustomTileAndPalette(sHeaderBoxWindowId, FALSE, STD_WINDOW_BASE_TILE_NUM, 14);
 
     if (ReformatItemDescription(item, dst) == 1)
         textY = 4;
@@ -3817,7 +3811,7 @@ void ScriptShowMonDescribedNotification(struct ScriptContext *ctx)
         PutWindowTilemap(sHeaderBoxWindowId);
         CopyWindowToVram(sHeaderBoxWindowId, 3);
         SetStandardWindowBorderStyle(sHeaderBoxWindowId, FALSE);
-        DrawStdFrameWithCustomTileAndPalette(sHeaderBoxWindowId, FALSE, 0x214, 14);
+        DrawStdFrameWithCustomTileAndPalette(sHeaderBoxWindowId, FALSE, STD_WINDOW_BASE_TILE_NUM, 14);
 
         ShowMonIconSprite(species, handleFlash);
         AddTextPrinterParameterized(sHeaderBoxWindowId, 0, dst, ITEM_ICON_X + 2, 0, 0, NULL);

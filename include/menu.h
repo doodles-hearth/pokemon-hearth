@@ -9,7 +9,8 @@
 #define DLG_WINDOW_BASE_TILE_NUM 0x200
 #define STD_WINDOW_PALETTE_NUM 14
 #define STD_WINDOW_PALETTE_SIZE PLTT_SIZEOF(10)
-#define STD_WINDOW_BASE_TILE_NUM 0x214
+// [Index of 1st frame tile in mGBA > Tools > Tiles] - [mGba > Tools > I/O Viewer > BG0CNT > Tile data base] * 512
+#define STD_WINDOW_BASE_TILE_NUM (1578 - (2 * 512))
 
 #define MENU_NOTHING_CHOSEN -2
 #define MENU_B_PRESSED -1

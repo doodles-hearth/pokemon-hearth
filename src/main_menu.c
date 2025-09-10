@@ -2269,6 +2269,7 @@ static UNUSED void NewGameBirchSpeech_ShowDialogueWindow(u8 windowId, u8 copyToV
         CopyWindowToVram(windowId, COPYWIN_FULL);
 }
 
+// Doesn't work with the new msgbox but is unused anyway
 static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 palNum)
 {
     FillBgTilemapBufferRect(bg, BIRCH_DLG_BASE_TILE_NUM, x-2,       y-1, 1,       1, palNum);

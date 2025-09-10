@@ -153,14 +153,14 @@ void DecompressionError_CB2(void)
     DmaFill16(3, 0, PLTT, PLTT_SIZE);
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
-    LoadBgTiles(0, gTextWindowFrame1_Gfx, 0x120, 0x214);
+    LoadBgTiles(0, gTextWindowFrame1_Gfx, 0x120, STD_WINDOW_BASE_TILE_NUM);
     DeactivateAllTextPrinters();
     ResetTasks();
     ResetPaletteFade();
     LoadPalette(gTextWindowFrame1_Pal, 0xE0, 0x20);
     LoadPalette(gStandardMenuPalette, 0xF0, 0x20);
     InitWindows(textWin);
-    DrawStdFrameWithCustomTileAndPalette(0, TRUE, 0x214, 0xE);
+    DrawStdFrameWithCustomTileAndPalette(0, TRUE, STD_WINDOW_BASE_TILE_NUM, 0xE);
     static const u8 romCheckFailMessage[] =_(
         "{COLOR RED}ERROR! {COLOR DARK_GRAY}Decompression Failed!\n"
         "\n"
