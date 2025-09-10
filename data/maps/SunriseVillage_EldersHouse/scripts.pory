@@ -82,7 +82,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 		"The Toku council has decided that,\nfor the time being, the best way to\lhandle this is to use the Pokémon\lthemselves as a means of protection!\p"
 		"There were very few experienced\nPokémon Wielders in Toku until now.\l"
 		"This is about to change.\p"
-		"With a trained Pokémon by your side,\nyou'll be able to defend yourselves\lon your own.\p"
+		"With a trained Pokémon by your side,\nyou'll be able to defend yourselves\lon your own."
 	))
 	applymovement(LOCALID_ELDER, moves(walk_in_place_fast_right))
 	msgbox(format(

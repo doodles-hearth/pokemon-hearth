@@ -68,7 +68,7 @@ script GinkoWoods_EventScript_Bean {
 
 	speakername("Odd Girl")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Wow, see this? The FRLG font sucks\nway less than the RSE one!"
 	))
 	closemessage
 

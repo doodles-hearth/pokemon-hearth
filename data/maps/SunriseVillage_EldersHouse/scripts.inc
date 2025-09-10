@@ -784,8 +784,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3:
 	.string "This is about to change.\p"
 	.string "With a trained Pokémon by your side,\n"
 	.string "you'll be able to defend yourselves\l"
-	.string "on your own.\p"
-	.string "$"
+	.string "on your own.$"
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4:
 	.string "Without further ado, please carefully\n"

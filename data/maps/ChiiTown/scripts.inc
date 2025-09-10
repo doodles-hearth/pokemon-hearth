@@ -399,13 +399,11 @@ ChiiTown_EventScript_WatchfulMom_Text_3:
 ChiiTown_EventScript_Shopper_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}The town market lady sells Pokémon\n"
 	.string "medicine and Poké Balls now!\p"
-	.string "Be careful, though: the ointments she\n"
-	.string "sells can't be used in the middle of a\l"
-	.string "battle.\p"
-	.string "They are super cheap though, so don't\n"
-	.string "be afraid to use them so you don't\l"
-	.string "always have to run to the nearest\l"
-	.string "refuge!$"
+	.string "Careful, though: her ointments can't\n"
+	.string "be used in the middle of a battle.\p"
+	.string "They're super cheap though, so don't\n"
+	.string "be afraid to use them to avoid\l"
+	.string "needing to run to the nearest Refuge!$"
 
 ChiiTown_EventScript_Kecleon_Text_0:
 	.string "Kleeeeh!$"
@@ -429,9 +427,8 @@ ChiiTown_EventScript_WatchingTheChildren_Text_0:
 	.string "Sensei$"
 
 ChiiTown_EventScript_WatchingTheChildren_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}To make sure the children's energy\n"
-	.string "isn't pent up too much, I bring them\l"
-	.string "out for recess.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Recess is great to channel the\n"
+	.string "children's pent up energy.$"
 
 ChiiTown_EventScript_EatingBerries_Text_0:
 	.string "Twin girl$"
@@ -511,8 +508,8 @@ ChiiTown_EventScript_Mart_Text_0:
 	.string "Shopkeeper$"
 
 ChiiTown_EventScript_Mart_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Welcome to Chii Town's market! How may\n"
-	.string "I help you?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Welcome to Chii Town's market!\p"
+	.string "How may I help you?$"
 
 ChiiTown_EventScript_MartDecor_Text_0:
 	.string "Decors!$"

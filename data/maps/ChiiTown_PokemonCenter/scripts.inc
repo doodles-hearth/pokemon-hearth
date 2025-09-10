@@ -250,7 +250,7 @@ ChiiTown_PokemonCenter_EventScript_Boy_Text_0:
 	.string "Little Girl$"
 
 ChiiTown_PokemonCenter_EventScript_Boy_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm here with my mama!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm here with my mama!\n"
 	.string "The music lady's nice!$"
 
 ChiiTown_PokemonCenter_EventScript_Mom_Text_0:
@@ -283,9 +283,8 @@ ChiiTown_PokemonCenter_EventScript_Snorunt_Text_0:
 	.string "Glaglaglaglagla!$"
 
 ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}Berries, ointments… Oh, right, I\n"
-	.string "should get a few more Poké Balls from\l"
-	.string "the town market!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}Berries, ointments… I should get a\n"
+	.string "few more Poké Balls from the market!$"
 
 ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_0:
 	.string "Talkative man$"
@@ -314,7 +313,6 @@ ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}You know what happens if I see a\n"
 	.string "Pokémon and I don't know its name?\p"
 	.string "I just make it right up!\n"
-	.string "I don't care about any silly “real”\l"
-	.string "names!\p"
+	.string "I don't care about silly “real” names!\p"
 	.string "And neither should you! Be free of\n"
 	.string "the diktat of naming accuracy!$"
