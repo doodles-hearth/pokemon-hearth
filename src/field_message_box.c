@@ -149,7 +149,7 @@ static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkip
             StringExpandPlaceholders(&gNamePlateBuffer[0], gSpeakerName);
         }
         FillDialogFramePlate();
-        AddTextPrinterParameterized2(1, FONT_SMALL, gNamePlateBuffer, 0, NULL, 2, 0, 3);
+        AddTextPrinterParameterized2(1, FONT_SMALL, gNamePlateBuffer, 0, NULL, 11, 0, 10);
         PutWindowTilemap(1);
         CopyWindowToVram(1, COPYWIN_FULL);
     }
