@@ -14999,10 +14999,11 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .height = 11,
         .weight = 346,
         .description = COMPOUND_STRING(
-            "Chansey lay nutritionally excellent eggs\n"
-            "every day. The eggs are so delicious, they\n"
-            "are eagerly devoured by even those people\n"
-            "who have lost their appetite."),
+            "Chansey has extraordinary healing powers.\n"
+            "Crafters line apricorns with its eggshells\n"
+            "to make Heal Balls. The happier Chansey\n"
+            "is, the better it heals."
+        ),
         .pokemonScale = 257,
         .pokemonOffset = 7,
         .trainerScale = 256,
