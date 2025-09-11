@@ -2808,7 +2808,7 @@ void TrySpawnLightSprites(s16 camX, s16 camY)
     }
 }
 
-void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
+void TrySpawnObjectEvents(s16 cameraX, s16 cameraY, u32 isOnMapLoad)
 {
     u8 i;
     u8 objectCount;
@@ -2845,10 +2845,23 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
                     SpawnLightSprite(npcX, npcY, cameraX, cameraY, template->trainerRange_berryTreeId); // light sprite instead
                 else
                 {
-                    if (template->timeVisibility != 0)
-                        TrySpawnObjectEventTemplateBasedOnSchedule(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY, timeOfDay);
-                    else
+                    if (template->timeVisibility != 0) {
+                        if (
+                            isOnMapLoad
+                            || (
+                                npcX <= gSaveBlock1Ptr->pos.x
+                                || npcY <= gSaveBlock1Ptr->pos.y + 1
+                                || npcX >= gSaveBlock1Ptr->pos.x + MAP_OFFSET_W
+                                || npcY >= gSaveBlock1Ptr->pos.y + MAP_OFFSET_H
+                            )
+                        ) {
+                            // Spawn these babies only on map load or offscreen
+                            TrySpawnObjectEventTemplateBasedOnSchedule(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY, timeOfDay);
+                        }
+                    }
+                    else {
                         TrySpawnObjectEventTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
+                    }
                 }
             }
         }
@@ -3455,7 +3468,7 @@ static bool8 ObjectEventDoesElevationMatch(struct ObjectEvent *objectEvent, u8 e
 void UpdateObjectEventsForCameraUpdate(s16 x, s16 y)
 {
     UpdateObjectEventCoordsForCameraUpdate();
-    TrySpawnObjectEvents(x, y);
+    TrySpawnObjectEvents(x, y, FALSE);
     RemoveObjectEventsOutsideView();
 }
 
