@@ -568,12 +568,11 @@ WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_1:
 WhiteslateRoute_EventScript_ShamisenChallenge_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}I am a traveling blind musician.\n"
 	.string "I was arrested by the aura of a brave\l"
-	.string "and promising young Wielder…\l"
-	.string "Are you them? Why, you must be!\l"
+	.string "and promising young Wielder…\p"
+	.string "Are you them? Why, you must be!\n"
 	.string "There's no other explanation!\p"
 	.string "We Shamisen Players sing songs about\n"
-	.string "the brave souls we meet on our\l"
-	.string "travels.\p"
+	.string "brave souls we meet on our travels.\p"
 	.string "To test your worth, how about I\n"
 	.string "submit you to a little challenge?\p"
 	.string "If you manage to reach the next\n"
@@ -603,7 +602,7 @@ WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_2:
 
 WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Understood. Come back when you are\n"
-	.string "ready.$"
+	.string "done preparing.$"
 
 WhiteslateRoute_EventScript_ShamisenPlayerPokemon_Text_0:
 	.string "Arf!$"
@@ -746,8 +745,8 @@ WhiteslateRoute_Trigger_SecretBase_Text_2:
 
 WhiteslateRoute_Trigger_SecretBase_Text_3:
 	.string "Oh, man! You were here this whole\n"
-	.string "time? My secret base is no longer\l"
-	.string "secret!$"
+	.string "time?\l"
+	.string "My secret base is no longer secret!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_4:
 	.string "What were you doing?$"
@@ -802,5 +801,5 @@ WhiteslateRoute_Trigger_SecretBase_Text_9:
 
 WhiteslateRoute_Trigger_SecretBase_Text_10:
 	.string "I'll keep looking for the perfect\n"
-	.string "secret base spot! Maybe I'll see you\l"
-	.string "around!$"
+	.string "secret base spot!\l"
+	.string "Maybe I'll see you around!$"

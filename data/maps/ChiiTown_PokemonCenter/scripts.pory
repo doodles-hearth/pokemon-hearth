@@ -98,7 +98,7 @@ script ChiiTown_PokemonCenter_EventScript_Mom {
 	faceplayer
 	speakername("Woman")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}Traveling shamisen players take shelter in Pokémon refuges when the night falls.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}Traveling shamisen players take shelter in Refuges at nightfall.\p"
 		"Their singing makes for such a cosy atmosphere!"
 	))
 	closemessage

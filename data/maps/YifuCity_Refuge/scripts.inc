@@ -571,9 +571,9 @@ YifuCity_Refuge_EventScript_HotelValet_Text_0:
 	.string "Valet$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_1:
-	.string "Good day, {STR_VAR_1}! There's a\n"
-	.string "room available for 500¥, if you need a\l"
-	.string "place to spend the night!$"
+	.string "Good day, {STR_VAR_1}!\n"
+	.string "A room is available for 500¥, if you\l"
+	.string "need a place to spend the night!$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_2:
 	.string "One room, please.$"
@@ -623,9 +623,8 @@ YifuCity_Refuge_EventScript_Traveler_Text_1:
 	.string "I come from a place high up in the\n"
 	.string "mountains, where the Pokémon are as\l"
 	.string "tough as the rocky landscape.\p"
-	.string "My Pawniard hones its saberlike claws\n"
-	.string "on the hardest stones to keep them\l"
-	.string "sharp.$"
+	.string "My Pawniard hones its claws on the\n"
+	.string "hardest stones to keep them sharp.$"
 
 YifuCity_Refuge_EventScript_Bisharp_Text_0:
 	.string "Kshhh.$"

@@ -202,7 +202,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 	speakername("Valet")
 	msgbox(format(
 		// TODO EVA time of day
-		"Good day, {STR_VAR_1}! There's a room available for 500¥, if you need a place to spend the night!"
+		"Good day, {STR_VAR_1}!\nA room is available for 500¥, if you need a place to spend the night!"
 	))
 
 	showmoneybox(18, 0)
@@ -298,7 +298,7 @@ script YifuCity_Refuge_EventScript_Traveler {
 	speakername("Traveler")
 	msgbox(format(
 		"I come from a place high up in the mountains, where the Pokémon are as tough as the rocky landscape.\p"
-		"My Pawniard hones its saberlike claws on the hardest stones to keep them sharp."
+		"My Pawniard hones its claws on the hardest stones to keep them sharp."
 	))
 	closemessage
 

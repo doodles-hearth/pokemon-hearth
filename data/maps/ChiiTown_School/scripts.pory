@@ -9,10 +9,10 @@ script ChiiTown_School_EventScript_Teacher {
 	switch(var(VAR_0x8000)){
 		case TIME_EARLY_MORNING:
 			goto(ChiiTown_School_EventScript_PreparingDay)
-		case TIME_MORNING:
-			goto(ChiiTown_School_EventScript_Teaching)
 		case TIME_EVENING:
 			goto(ChiiTown_School_EventScript_EndingDay)
+		default:
+			goto(ChiiTown_School_EventScript_Teaching)
 	}
 }
 

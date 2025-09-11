@@ -278,7 +278,7 @@ script ChiiTown_EventScript_BattlingBoy {
 		special(GetPlayerMrMrsString)
 		speakername("Little boy")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Hello {STR_VAR_1}! We're top of our class! That means we're strong! Wanna battle us?"
+			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Hello {STR_VAR_1}! We're top of our class! That means we're strong!\lWanna battle us?"
 		))
 		mcdialogue(
 			"Sure!",

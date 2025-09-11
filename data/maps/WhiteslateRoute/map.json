@@ -58,7 +58,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
       "x": 26,
-      "y": 47,
+      "y": 49,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -127,13 +127,13 @@
       "trainer_sight_or_berry_tree_id": "3",
       "script": "WhiteslateRoute_EventScript_Yono",
       "flag": "0",
-      "afternoon": false,
-      "deadnight": false,
+      "afternoon": true,
+      "deadnight": true,
       "earlymorning": true,
-      "evening": false,
+      "evening": true,
       "lunchtime": true,
       "morning": true,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SHUCKLE)",

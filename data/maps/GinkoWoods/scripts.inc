@@ -209,8 +209,7 @@ GinkoWoods_EventScript_Bean_Text_0:
 	.string "Odd Girl$"
 
 GinkoWoods_EventScript_Bean_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Wow, see this? The FRLG font sucks\n"
-	.string "way less than the RSE one!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello!$"
 
 GinkoWoods_EventScript_Bean_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just noticed there are some neat\n"
