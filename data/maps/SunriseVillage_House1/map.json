@@ -2,7 +2,7 @@
   "id": "MAP_SUNRISE_VILLAGE_HOUSE1",
   "name": "SunriseVillage_House1",
   "layout": "LAYOUT_HOUSE_BEIGE_HEARTH",
-  "music": "MUS_DUMMY",
+  "music": "MUS_HH_SUNRISE",
   "region_map_section": "MAPSEC_SUNRISE_VILLAGE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

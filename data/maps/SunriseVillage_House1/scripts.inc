@@ -3,9 +3,15 @@ SunriseVillage_House1_MapScripts::
 
 
 SunriseVillage_House1_EventScript_Ralts::
+	lock
 	setseenmon SPECIES_RALTS
 	setspeakertomonname SPECIES_RALTS
-	msgbox SunriseVillage_House1_EventScript_Ralts_Text_0, MSGBOX_NPC
+	playmoncry SPECIES_RALTS, CRY_MODE_NORMAL
+	applymovement VAR_LAST_TALKED, SunriseVillage_House1_EventScript_Ralts_Movement_0
+	msgbox SunriseVillage_House1_EventScript_Ralts_Text_0
+	waitmoncry
+	closemessage
+	release
 	return
 
 
@@ -39,6 +45,10 @@ SunriseVillage_House1_EventScript_Zigzagoon::
 	release
 	end
 
+
+SunriseVillage_House1_EventScript_Ralts_Movement_0:
+	emote_pensive
+	step_end
 
 SunriseVillage_House1_EventScript_Ralts_Text_0:
 	.string "…$"

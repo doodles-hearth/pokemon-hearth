@@ -556,7 +556,7 @@ static u8 AddDecorationWindow(u8 windowIndex)
         *windowId = AddWindow(&sDecorationWindowTemplates[windowIndex]);
     }
 
-    DrawStdFrameWithCustomTileAndPalette(*windowId, FALSE, 0x214, 14);
+    DrawStdFrameWithCustomTileAndPalette(*windowId, FALSE, STD_WINDOW_BASE_TILE_NUM, 14);
     ScheduleBgCopyTilemapToVram(0);
     return *windowId;
 }

@@ -88,7 +88,7 @@ script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
 	speakername("Nurse")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}This Pokémon refuge is brand new, courtesy of the Toku Council!\p"
-		"As you can see, it's still being built.\NWatch out for the falling bricks, ha ha, just kidding!\p"
+		"As you can see, it's still being built.\NWatch out for the falling bricks,\lha ha, just kidding!\p"
 		"Seriously though, do watch out.\nWe're held responsible if anything happens to you."
 	))
 	closemessage
@@ -148,7 +148,7 @@ script SakuTown_PokemonCenter_EventScript_Farmer1 {
 
 script(local) FarmerGivesQuest {
 	msgbox(format(
-		"The nurse 'ere said the newfangled medical technology from the Toku Council isn't here yet.\p"
+		"The nurse here said the newfangled medical technology from the Toku Council isn't here yet.\p"
 		"Scyther can't be cured of whatever's ailin' her.\p"
 		"Please! If you can spare some time, help us find someone or something to cure our girl!"))
 	startquest(QUEST_SAKURASCYTHER)
@@ -157,7 +157,7 @@ script(local) FarmerGivesQuest {
 }
 
 script(local) FarmerWaitsMedicine {
-	msgbox(format("So? Have ya found anythin' yet?"))
+	msgbox(format("So? Have ye found anythin' yet?"))
 	checkitem(ITEM_SPECIAL_MEDICINE, 1)
 	if(var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 6 && var(VAR_RESULT) == TRUE){
 		call(HealedScytherScript)
@@ -193,7 +193,7 @@ script(local) HealedScytherScript{
 	waitmovement(0)
 
 	speakername("Farmer")
-	msgbox(format("Here, girl…\nThis'll make ya feel better…"))
+	msgbox(format("Here, girl…\nThis'll make ye feel better…"))
 	closemessage
 
 	applymovement(LOCALID_BED_SCYTHER, moves(face_left))
@@ -205,8 +205,8 @@ script(local) HealedScytherScript{
 	playse(SE_USE_ITEM)
 
 	applymovement(LOCALID_BED_SCYTHER, moves(
-		emote_double_exclamation_mark,
-		delay_16 * 3,
+		emote_exclamation_mark,
+		delay_16 * 6,
 		jump_in_place_down * 2,
 		walk_fast_up,
 		walk_fast_right * 2,
@@ -391,15 +391,32 @@ movement SakuTown_PokemonCenter_Movement_PushesPlayerUp {
 	face_original_direction
 }
 
-script SakuTown_PokemonCenter_EventScript_Makuhita {
+script SakuTown_Refuge_EventScript_MakuhitaRest {
 	lock
 	setseenmon(SPECIES_MAKUHITA)
 	setspeakertomonname(SPECIES_MAKUHITA)
+	applymovement(VAR_LAST_TALKED, moves(emote_sleep))
 	playmoncry(SPECIES_MAKUHITA, CRY_MODE_WEAK)
-	msgbox(format("Kuhu…"))
+	msgbox(format("Hu…"))
 	waitmoncry
 	waitmessage
 	closemessage
 	msgbox(format("The Pokémon is resting."))
+	closemessage
+	release
+}
+
+script SakuTown_Refuge_EventScript_MakuhitaWork {
+	lock
+	setseenmon(SPECIES_MAKUHITA)
+	setspeakertomonname(SPECIES_MAKUHITA)
+	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_happy))
+	playmoncry(SPECIES_MAKUHITA, CRY_MODE_NORMAL)
+	msgbox(format("Kuhu!"))
+	waitmoncry
+	waitmessage
+	closemessage
+	msgbox(format("The Pokémon is hard at work!"))
 	release
 }

@@ -158,6 +158,7 @@ script SunriseVillage_Event_GuardForest_Interact {
 // Little running girl
 script SunriseVillage_Event_LittleGirl {
     lock
+    faceplayer
     applymovement(VAR_LAST_TALKED, moves(emote_happy))
     speakername("Little girl")
     msgbox(format(
@@ -195,6 +196,7 @@ script SunriseVillage_Event_Boy {
 // Woman
 script SunriseVillage_Event_Woman {
     lock
+    faceplayer
     speakername("Neighbour")
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}I can see the Poké Balls from here… I've never seen so many in my life!"
@@ -230,6 +232,7 @@ script SunriseVillage_Event_OldMan {
 // Old woman
 script SunriseVillage_Event_OldWoman {
     lock
+    faceplayer
     applymovement(VAR_LAST_TALKED, moves(emote_angry))
     speakername("Neighbour")
     msgbox(format(

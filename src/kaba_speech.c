@@ -378,8 +378,8 @@ static const u8 sKabaSpeech_Greetings[] = _(
     "Greetings, child.\n"
     "Welcome to the world of Pokémon!\p"
     "I am Kaba, one of the Elders of\n"
-    "the Council of the Toku Region.\l"
-    "Does that not instill respect\l"
+    "the Council of the Toku Region.\p"
+    "Does that not instill respect\n"
     "and fear in you?\p"
     "(Pah! As if… Youths nowadays have\n"
     "no respect for their elders…)\p"
@@ -898,7 +898,7 @@ static void Task_KabaSpeech_SpawnYesNoMenuForPlayerMugshot(u8 taskId)
     else
     {
         sKabaSpeech->playerHasName = FALSE;
-        CreateYesNoMenu(&sKabaSpeech_YesNoWindow, 0x214, 14, 0);
+        CreateYesNoMenu(&sKabaSpeech_YesNoWindow, STD_WINDOW_BASE_TILE_NUM, 14, 0);
         gTasks[taskId].func = Task_KabaSpeech_HandleConfirmChosenMugshotInput;
     }
 }
@@ -986,7 +986,7 @@ static void Task_KabaSpeech_ConfirmChosenName(u8 taskId)
         else
         {
             KabaSpeech_PrintMessageBox(sKabaSpeech_SoYourePlayer);
-            CreateYesNoMenu(&sKabaSpeech_YesNoWindow, 0x214, 14, 0);
+            CreateYesNoMenu(&sKabaSpeech_YesNoWindow, STD_WINDOW_BASE_TILE_NUM, 14, 0);
             gTasks[taskId].func = Task_KabaSpeech_HandleConfirmNameInput;
         }
     }

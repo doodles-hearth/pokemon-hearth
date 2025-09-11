@@ -141,7 +141,7 @@ GinkoWoods_EventScript_OldMan_Movement_0:
 	step_end
 
 GinkoWoods_EventScript_Bean_Movement_0:
-	emote_angry
+	emote_music
 	delay_16
 	delay_16
 	delay_16
@@ -209,7 +209,8 @@ GinkoWoods_EventScript_Bean_Text_0:
 	.string "Odd Girl$"
 
 GinkoWoods_EventScript_Bean_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Wow, see this? The FRLG font sucks\n"
+	.string "way less than the RSE one!$"
 
 GinkoWoods_EventScript_Bean_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just noticed there are some neat\n"
@@ -305,4 +306,4 @@ GinkoWoods_EventScript_TrainerTips1_Text_0:
 GinkoWoods_EventScript_TrainerTips2_Text_0:
 	.string "Did you know?\p"
 	.string "You can sort the contents of your\n"
-	.string "bag by pressing START.$"
+	.string "bag by pressing {START_BUTTON}.$"

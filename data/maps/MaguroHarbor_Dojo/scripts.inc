@@ -10,6 +10,7 @@ MaguroHarbor_Dojo_EventScript_Koishi::
 
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated::
+	removespeakername
 	message MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare

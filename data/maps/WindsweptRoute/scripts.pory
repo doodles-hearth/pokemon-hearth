@@ -11,14 +11,15 @@ mapscripts WindsweptRoute_MapScripts {
 script WindsweptRoute_EventScript_OvergrownTrees {
 	lock
 	faceplayer
+	speakername("Man")
 	if (flag(FLAG_CUT_TREE_SILVER_TUNNEL)) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Thank you for cutting down that annoying tree! We can go to Silveridge again!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Someone cut down that annoying tree! We can go to Silveridge again!"
 		))
 	} else {
 		msgbox(format(
-			"The weeds got out of control here, and some trees now block the way to Silver Tunnel…\p"
-			"Someone'll eventually have to ask for help from the old Cut master on Tranquil route…"
+			"The weeds got out of control, some trees block the way to Silver Tunnel…\p"
+			"We'll eventually have to ask the Cut master on Tranquil route for help…"
 		))
 	}
 	release

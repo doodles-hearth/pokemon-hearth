@@ -26,7 +26,8 @@ BeachboundRoute_EventScript_AnnoyedGirl::
 	gettimeofday
 	speakername BeachboundRoute_EventScript_AnnoyedGirl_Text_0
 	compare VAR_0x8000, TIME_EVENING
-	goto_if_eq BeachboundRoute_EventScript_AnnoyedGirl_1
+	goto_if_ne BeachboundRoute_EventScript_AnnoyedGirl_3
+BeachboundRoute_EventScript_AnnoyedGirl_2:
 	msgbox BeachboundRoute_EventScript_AnnoyedGirl_Text_2, MSGBOX_NPC
 	return
 
@@ -34,9 +35,15 @@ BeachboundRoute_EventScript_AnnoyedGirl_1:
 	msgbox BeachboundRoute_EventScript_AnnoyedGirl_Text_1, MSGBOX_NPC
 	return
 
+BeachboundRoute_EventScript_AnnoyedGirl_3:
+	compare VAR_0x8000, TIME_AFTERNOON
+	goto_if_ne BeachboundRoute_EventScript_AnnoyedGirl_1
+	goto BeachboundRoute_EventScript_AnnoyedGirl_2
+
 
 BeachboundRoute_EventScript_AnnoyedBoy::
 	lock
+	faceplayer
 	applymovement VAR_LAST_TALKED, BeachboundRoute_EventScript_AnnoyedBoy_Movement_0
 	speakername BeachboundRoute_EventScript_AnnoyedBoy_Text_0
 	msgbox BeachboundRoute_EventScript_AnnoyedBoy_Text_1
@@ -353,6 +360,7 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime::
 	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
 	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_3
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_1:
+	setflag FLAG_MET_TRAVELING_MERCHANT
 	setflag FLAG_MET_TRAVELING_MERCHANT_2ND_TIME
 	limitedpokemart LIMITED_SHOP_1
 	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
@@ -427,6 +435,9 @@ BeachboundRoute_EventScript_Mugging_Movement_3:
 
 BeachboundRoute_EventScript_Mugging_Movement_4:
 	face_up
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_5:
@@ -542,7 +553,7 @@ BeachboundRoute_EventScript_RunningBoy_Text_0:
 	.string "Little boy$"
 
 BeachboundRoute_EventScript_RunningBoy_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}Running running running!!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}Running running running!!\p"
 	.string "Yaaaaaaaay!!!$"
 
 BeachboundRoute_EventScript_RunningGirl_Text_0:

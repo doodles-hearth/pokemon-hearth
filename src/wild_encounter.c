@@ -385,30 +385,11 @@ u16 GetCurrentMapWildMonHeaderId(void)
         if (wildHeader->mapGroup == MAP_GROUP(MAP_UNDEFINED))
             break;
 
-        // Found wild mon headers for the current map
-        if (
-            gWildMonHeaders[i].mapGroup == gSaveBlock1Ptr->location.mapGroup &&
-            gWildMonHeaders[i].mapNum == gSaveBlock1Ptr->location.mapNum
-        )
+        if (gWildMonHeaders[i].mapGroup == gSaveBlock1Ptr->location.mapGroup &&
+            gWildMonHeaders[i].mapNum == gSaveBlock1Ptr->location.mapNum)
         {
-            RtcCalcLocalTime();
-            if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_ALTERING_CAVE) &&
-                gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_ALTERING_CAVE))
-            {
-                if (gLocalTime.hours >= EARLY_MORNING_HOUR_BEGIN && gLocalTime.hours < AFTERNOON_HOUR_END)
-                {
-                    i += 0; // Day
-                }
-                else if ((gLocalTime.hours >= EVENING_HOUR_BEGIN || gLocalTime.hours < DEAD_NIGHT_HOUR_END) &&
-                         gWildMonHeaders[i + 1].mapGroup == gSaveBlock1Ptr->location.mapGroup &&
-                         gWildMonHeaders[i + 1].mapNum == gSaveBlock1Ptr->location.mapNum)
-                {
-                    i += 1; // Night
-                }
-            } else if (
-                gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ALTERING_CAVE) &&
-                gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ALTERING_CAVE)
-            )
+            if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ALTERING_CAVE) &&
+                gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ALTERING_CAVE))
             {
                 u16 alteringCaveId = VarGet(VAR_ALTERING_CAVE_WILD_SET);
                 if (alteringCaveId >= NUM_ALTERING_CAVE_TABLES)
@@ -427,7 +408,14 @@ u16 GetCurrentMapWildMonHeaderId(void)
 enum TimeOfDay GetTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area)
 {
     const struct WildPokemonInfo *wildMonInfo;
-    enum TimeOfDay timeOfDay = GetTimeOfDay();
+
+    // Custom Hearth behavior:
+    // Only DAY and NIGHT encounter tables, despite there being more than two times of day
+    RtcCalcLocalTime();
+    enum TimeOfDay timeOfDay = (
+        IsBetweenHours(gLocalTime.hours, EARLY_MORNING_HOUR_BEGIN, AFTERNOON_HOUR_END) ?
+        TIME_LUNCHTIME : TIME_NIGHT
+    );
 
     if (!OW_TIME_OF_DAY_ENCOUNTERS)
         return TIME_OF_DAY_DEFAULT;

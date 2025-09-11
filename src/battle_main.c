@@ -309,6 +309,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_HIKER] = { _("Hiker"), 10 },
     [TRAINER_CLASS_MINER] = { _("Miner"), 10 },
     [TRAINER_CLASS_OLD_LADY] = { _("Old Lady"), 40 },
+    [TRAINER_CLASS_OLD_MAN] = { _("Old Man"), 40 },
     [TRAINER_CLASS_TEAM_AQUA] = { _("TEAM AQUA") },
     [TRAINER_CLASS_PKMN_BREEDER] = { _("{PKMN} Breeder"), 10, B_TRAINER_CLASS_POKE_BALLS >= GEN_8 ? ITEM_HEAL_BALL : ITEM_FRIEND_BALL },
     [TRAINER_CLASS_COOLTRAINER] = { _("Ace Wielder"), 12, ITEM_ULTRA_BALL },

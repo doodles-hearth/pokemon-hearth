@@ -130,8 +130,7 @@ Common_EventScript_PcGuy_Text_2:
 	.string "Pokémon pasture service!$"
 
 Common_EventScript_PcGuy_Text_3:
-	.string "Oh, you want to store these Pokémon?\p"
-	.string "Alright, I'll just carry them over to\n"
+	.string "Alrighty, I'll just do a quick trip to\n"
 	.string "the pasture!\p"
 	.string "Just a minute!$"
 

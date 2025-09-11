@@ -262,9 +262,9 @@ static const u8 gText_SaveFileErased[] = _("The save file has been erased\ndue t
 static const u8 gJPText_No1MSubCircuit[] = _("1Mサブきばんが ささっていません！");
 static const u8 gText_BatteryRunDry[] = _("The internal battery has run dry.\nThe game can be played.\pHowever, clock-based events will\nno longer occur.");
 
-static const u8 gText_MainMenuNewGame[] = _("NEW GAME");
+static const u8 gText_MainMenuNewGame[] = _("NEW ADVENTURE");
 static const u8 gText_MainMenuContinue[] = _("CONTINUE");
-static const u8 gText_MainMenuOption[] = _("OPTION");
+static const u8 gText_MainMenuOption[] = _("SETTINGS");
 static const u8 gText_MainMenuMysteryGift[] = _("MYSTERY GIFT");
 static const u8 gText_MainMenuMysteryGift2[] = _("MYSTERY GIFT");
 static const u8 gText_MainMenuMysteryEvents[] = _("MYSTERY EVENTS");
@@ -272,10 +272,10 @@ static const u8 gText_WirelessNotConnected[] = _("The Wireless Adapter is not\nc
 static const u8 gText_MysteryGiftCantUse[] = _("MYSTERY GIFT can't be used while\nthe Wireless Adapter is attached.");
 static const u8 gText_MysteryEventsCantUse[] = _("MYSTERY EVENTS can't be used while\nthe Wireless Adapter is attached.");
 
-static const u8 gText_ContinueMenuPlayer[] = _("PLAYER");
-static const u8 gText_ContinueMenuTime[] = _("TIME");
-static const u8 gText_ContinueMenuPokedex[] = _("POKéDEX");
-static const u8 gText_ContinueMenuBadges[] = _("BADGES");
+static const u8 gText_ContinueMenuPlayer[] = _("Wielder");
+static const u8 gText_ContinueMenuTime[] = _("Time");
+static const u8 gText_ContinueMenuPokedex[] = _("PokéDex");
+static const u8 gText_ContinueMenuBadges[] = _("Tokens");
 
 #define MENU_LEFT 2
 #define MENU_TOP_WIN0 1
@@ -738,25 +738,25 @@ static void Task_DisplayMainMenu(u8 taskId)
         palette = RGB_BLACK;
         LoadPalette(&palette, BG_PLTT_ID(15) + 14, PLTT_SIZEOF(1));
 
-        palette = RGB_WHITE;
+        palette = RGB_OFF_WHITE;
         LoadPalette(&palette, BG_PLTT_ID(15) + 10, PLTT_SIZEOF(1));
 
-        palette = RGB(12, 12, 12);
+        palette = RGB_BLACK;
         LoadPalette(&palette, BG_PLTT_ID(15) + 11, PLTT_SIZEOF(1));
 
-        palette = RGB(26, 26, 25);
+        palette = RGB_OFF_WHITE_SHADOW;
         LoadPalette(&palette, BG_PLTT_ID(15) + 12, PLTT_SIZEOF(1));
 
         // Note: If there is no save file, the save block is zeroed out,
         // so the default gender is MALE.
         if (gSaveBlock2Ptr->playerGender == MALE)
         {
-            palette = RGB(4, 16, 31);
+            palette = RGB2GBA(77, 118, 166);
             LoadPalette(&palette, BG_PLTT_ID(15) + 1, PLTT_SIZEOF(1));
         }
         else
         {
-            palette = RGB(31, 3, 21);
+            palette = RGB2GBA(181, 66, 57);
             LoadPalette(&palette, BG_PLTT_ID(15) + 1, PLTT_SIZEOF(1));
         }
 
@@ -2269,6 +2269,7 @@ static UNUSED void NewGameBirchSpeech_ShowDialogueWindow(u8 windowId, u8 copyToV
         CopyWindowToVram(windowId, COPYWIN_FULL);
 }
 
+// Doesn't work with the new msgbox but is unused anyway
 static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 palNum)
 {
     FillBgTilemapBufferRect(bg, BIRCH_DLG_BASE_TILE_NUM, x-2,       y-1, 1,       1, palNum);

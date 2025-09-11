@@ -248,8 +248,13 @@
     // 0: Quest hasn't started
     // 1: Received Ashii's scarf
     // 2: Gave Scarf to Tama
-    // 3: Left Ashii's house in the night
-    // 4: Waiting with Ashii outside
+    // 3: Reported back to Ashii
+    // 4: Broke rocks
+    // 5: Left Ashii's house in the night
+    // 6: Waiting with Ashii outside
+    // 7: Tama following player
+    // 8: They finally meet
+    // 9: Ashii gives reward
 */
 #define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE             0x409D
 /*

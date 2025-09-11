@@ -1,25 +1,30 @@
 const LOCALID_GUARD = 2
 const LOCALID_ASHII = 16
 const FLAG_HIDE_HARIKO_NATSUKI = FLAG_TEMP_1
+const FLAG_HIDE_ABRA_GUY = FLAG_TEMP_2
 
 mapscripts KuraTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
         setflag(FLAG_VISITED_KURA_TOWN)
 
 		returnqueststate(QUEST_SAKURALOVERS)
-		if(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 3 || var(VAR_RESULT) >= 3) {
+		if(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 5 || var(VAR_RESULT) >= 3) {
 			setflag(FLAG_HIDE_DEADNIGHT_ASHII)
 		}
-		elif(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 3) {
+		elif(var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 5) {
 			clearflag(FLAG_HIDE_DEADNIGHT_ASHII)
 		}
 
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) != 4) {
 			setflag(FLAG_HIDE_HARIKO_NATSUKI)
 		}
+
+		if (!flag(FLAG_BADGE01_GET)) {
+			setflag(FLAG_HIDE_ABRA_GUY)
+		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3: KuraTown_EventScript_AnxiousAshii
+		VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 5: KuraTown_EventScript_AnxiousAshii
 		VAR_DECAY_BEACHBOUND_ROUTE, 4: KuraTown_EventScript_PostDecayNatsukiHariko
 	]
 	MAP_SCRIPT_ON_LOAD {
@@ -121,9 +126,14 @@ script KuraTown_EventScript_Farmer {
 	faceplayer
 	speakername("Farmer")
 	msgbox(format(
-		"Why do we hate the Saku Village folks, y'ask?\p"
+		"Why do we hate the Saku Village folks, y'ask?"
 	))
-	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
+	closemessage
+
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive, delay_16 * 6))
+	waitmovement(0)
+
+	speakername("Farmer")
 	msgbox(format(
 		"To be honest, I don't quite rememb'r.\nBut who needs a reas'n, right?"
 	))
@@ -173,7 +183,7 @@ script KuraTown_EventScript_FarmerScyther {
 	speakername("Farmer")
 	msgbox(
 		format(
-			"We started taming Scyther recently to help us with harvestin' the crops. They've been a tremendous help!"
+			"We started taming Scyther recently to help with harvestin' the crops. They've been a tremendous help!"
 		),
 		MSGBOX_DEFAULT
 	)
@@ -338,6 +348,8 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down))
 	waitmovement(LOCALID_KURA_NATSUKI)
 	removeobject(LOCALID_KURA_NATSUKI)
+	removeobject(LOCALID_KURA_HARIKO)
+	setflag(FLAG_HIDE_HARIKO_NATSUKI)
 
 	releaseall
 }
@@ -358,7 +370,7 @@ script KuraTown_EventScript_AnxiousAshii {
 	closemessage
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_down))
 	waitmovement(LOCALID_ASHII)
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 4)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 6)
 	release
 }
 
@@ -389,4 +401,119 @@ script KuraTown_EventScript_PreventEscape {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down * 2))
 	waitmovement(0)
 	end
+}
+
+script KuraTown_EventScript_Abra {
+	lock
+	setseenmon(SPECIES_ABRA)
+	setspeakertomonname(SPECIES_ABRA)
+	msgbox(format(
+		"… … … … … …\n… … … … … …\p"
+		"… … … … … …\n… … … … … …"
+	))
+	closemessage
+	playse(SE_M_SNORE)
+	applymovement(VAR_LAST_TALKED, moves(emote_sleep, delay_16 * 6))
+	waitmovement(0)
+	release
+}
+
+script KuraTown_EventScript_TeachingScrolls {
+	lock
+
+	setnamedmon(SPECIES_ABRA)
+
+	if (getdescribedmon(SPECIES_ABRA)) {
+		faceplayer
+		speakername("Guy")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Abra is the best!\nHe can use attacks in his sleep!"
+		))
+		closemessage
+
+		applymovement(VAR_LAST_TALKED, moves(face_left))
+		waitmovement(VAR_LAST_TALKED)
+
+	} elif (checkitem(ITEM_TM_PSYBEAM)) {
+		speakername("Guy")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}C'mon Abra, wakey wakey…"
+		))
+		closemessage
+
+		setseenmon(SPECIES_ABRA)
+
+		playse(SE_M_SNORE)
+		applymovement(LOCALID_SAKU_ABRA, moves(emote_sleep, delay_16 * 6, face_right, delay_16 * 3))
+		waitmovement(0)
+
+		applymovement(VAR_LAST_TALKED, moves(
+			face_down,
+			emote_exclamation_mark,
+			delay_16 * 6,
+			walk_in_place_fast_down * 2,
+			lock_facing_direction,
+			lock_anim,
+			walk_slow_up,
+			walk_slow_down,
+			walk_slow_up,
+			walk_slow_down,
+			unlock_facing_direction,
+			unlock_anim,
+			delay_16 * 3
+		))
+
+		playse(SE_M_PSYBEAM)
+		waitse
+		playse(SE_M_PSYBEAM)
+		waitse
+		playse(SE_M_PSYBEAM)
+		waitse
+		playse(SE_M_PSYBEAM2)
+		waitse
+
+		waitmovement(VAR_LAST_TALKED)
+
+		faceplayer
+		speakername("Guy")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Did… Did you see that?!\p"
+			"Abra made me float in the air with his Psybeam!!"
+		))
+		closemessage
+
+		applymovement(VAR_LAST_TALKED, moves(face_left, delay_16 * 3))
+		waitmovement(VAR_LAST_TALKED)
+
+		playse(SE_M_SNORE)
+		applymovement(LOCALID_SAKU_ABRA, moves(emote_sleep, delay_16 * 6))
+		waitmovement(LOCALID_SAKU_ABRA)
+		waitse
+
+		applymovement(VAR_LAST_TALKED, moves(emote_sweat))
+		speakername("Guy")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}He didn't even wake up…"
+		))
+		closemessage
+
+		setdescribedmon(SPECIES_ABRA)
+
+	} else {
+		faceplayer
+		speakername("Guy")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}I taught Abra a sick Psychic move using a Technique Scroll, but…\p"
+			"Guess even the sickest move is useless if all he does is sleep, huh…\p"
+			"You can have my Scroll.\nUse it as many times as you want."
+		))
+		closemessage
+
+		giveitem(ITEM_TM_PSYBEAM)
+		
+		applymovement(VAR_LAST_TALKED, moves(face_left))
+		waitmovement(VAR_LAST_TALKED)
+	}
+
+	release
 }

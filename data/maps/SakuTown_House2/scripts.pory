@@ -24,8 +24,17 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 		setnamedmon(SPECIES_EEVEE)
 		speakername("Boy")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}I hope Eevee comes home soon…\p"
-			"What? Someone found my Eevee? Oh, please, can you tell them to bring it back?"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}I hope Eevee comes home soon…"
+		))
+
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
+		waitmovement(0)
+		waitse
+
+		msgbox(format(
+			"What? Someone found my Eevee?\n"
+			"Oh, please, tell them to bring it back!"
 		))
 		closemessage
 
@@ -98,10 +107,8 @@ script SakuTown_House2_EventScript_Reunited {
 	applymovement(LOCALID_SISTER, Common_Movement_FaceDown)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown)
 	playse(SE_PIN)
-	applymovement(LOCALID_ESPEONS_MASTER, Common_Movement_ExclamationMark)
-	applymovement(LOCALID_SISTER, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_ESPEONS_MASTER, moves(emote_exclamation_mark, delay_16 * 6))
 	waitmovement(0)
-	delay(48)
 
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Is… Is that Eevee?"
@@ -131,9 +138,10 @@ script SakuTown_House2_EventScript_Reunited {
 	playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
 	waitmoncry
 
+	applymovement(LOCALID_ESPEONS_MASTER, moves(emote_crying))
 	speakername("Boy")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}It's you! It's really you! Oh, Eevee, I've missed you so much!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}It's you! It's really you!\nOh, Eevee, I've missed you so much!\p"
 		"… …\p"
 		"Wait, you look a little different…"
 	))
@@ -156,11 +164,24 @@ script SakuTown_House2_EventScript_Reunited {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}You say it was a woman from Kura Village that found him?\p"
 		"She took such good care of him!\p"
-		"His fur is so shiny and well-groomed, too…\p"
-		"… …\p"
-		"Looks like there are actually some nice people too in Kura Village…\p"
-		"… …\p"
-		"Anyway, thank you so much for helping me out. I'm so grateful.\p"
+		"His fur is so shiny and well-groomed, too…"
+	))
+	closemessage
+
+	applymovement(LOCALID_ESPEONS_MASTER, moves(face_down, emote_pensive, delay_16 * 6))
+	waitmovement(0)
+
+	speakername("Boy")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Looks like there are actually some nice people too in Kura Village…"
+	))
+
+	applymovement(LOCALID_ESPEONS_MASTER, moves(emote_pensive, delay_16 * 6, face_right))
+	waitmovement(0)
+
+	speakername("Boy")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Anyway, thank you so much for helping me out. I'm so grateful.\p"
 		"As a thanks, you can have your pick from my cool rock collection!"
 	))
 	call(SakuTown_House2_EventScript_GiveEvoStone)
@@ -168,7 +189,6 @@ script SakuTown_House2_EventScript_Reunited {
 
 script SakuTown_House2_EventScript_GiveEvoStone {
 	msgbox(format("Which rock would you like?"))
-	closemessage
 
 	dynmultichoice(
 		0,
@@ -181,6 +201,7 @@ script SakuTown_House2_EventScript_GiveEvoStone {
 		"The blue rock",
 		"The yellow rock"
 	)
+	closemessage
 
 	speakername("Boy")
 	switch (var(VAR_RESULT)) {
@@ -222,7 +243,7 @@ script SakuTown_House2_EventScript_Sister {
 	if (flag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}My brother's been feeling really down lately.\p"
-			"His precious Pokémon disappeared during the big storm we had a while ago."
+			"His precious Pokémon disappeared in a big storm a while ago."
 		))
 		closemessage
 		applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)

@@ -43,7 +43,10 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}It's been crazy lately, huh?\p"
 		"With the Pokémon in Ginko Woods,\nand the volcano…\p"
 		"It feels like everything's\nabout to change.\p"
-		"Everyone is so anxious.\p"
+		"Everyone is so anxious."
+	))
+	applymovement(LOCALID_RIVAL, moves(emote_pensive))
+	msgbox(format(
 		"… … … … … …\n… … … … … …"
 	))
 
@@ -75,7 +78,10 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			speakername("Natsuki")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, look.\p"
-				"You can see Yifu City very clearly\ntoday, it's gorgeous!\p"
+				"You can see Yifu City very clearly\ntoday, it's gorgeous!"
+			))
+			applymovement(LOCALID_RIVAL, moves(emote_pensive))
+			msgbox(format(
 				"…"
 			))
 			closemessage

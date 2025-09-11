@@ -17,8 +17,8 @@ SakuTown_House3_EventScript_Psyduck::
 	faceplayer
 	setseenmon SPECIES_PSYDUCK_TOKUAN
 	setspeakertomonname SPECIES_PSYDUCK
-	msgbox SakuTown_House3_EventScript_Psyduck_Text_0
 	playmoncry SPECIES_PSYDUCK, CRY_MODE_NORMAL
+	msgbox SakuTown_House3_EventScript_Psyduck_Text_0
 	waitmoncry
 	release
 	end
@@ -44,22 +44,27 @@ SakuTown_House3_EventScript_TradeMe::
 	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
 	copyvar VAR_0x8009, VAR_RESULT
 	speakername SakuTown_House3_EventScript_TradeMe_Text_0
-	msgbox SakuTown_House3_EventScript_TradeMe_Text_2, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq SakuTown_House3_EventScript_TradeMe_5
-	compare VAR_RESULT, MULTI_B_PRESSED
-	goto_if_eq SakuTown_House3_EventScript_TradeMe_5
+	msgbox SakuTown_House3_EventScript_TradeMe_Text_2
+	mcdialogue SakuTown_House3_EventScript_TradeMe_Text_3, SakuTown_House3_EventScript_TradeMe_Text_4
+	compare VAR_RESULT, 0
+	goto_if_ne SakuTown_House3_EventScript_TradeMe_5
 	special ChoosePartyMon
 	waitstate
 	copyvar VAR_0x800A, VAR_0x8004
 	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
-	goto_if_eq SakuTown_House3_EventScript_TradeMe_10
+	goto_if_eq SakuTown_House3_EventScript_TradeMe_8
 	copyvar VAR_0x8005, VAR_0x800A
 	specialvar VAR_RESULT, GetTradeSpecies
 	compare VAR_RESULT, VAR_0x8009
-	goto_if_ne SakuTown_House3_EventScript_TradeMe_13
+	goto_if_ne SakuTown_House3_EventScript_TradeMe_11
 	copyvar VAR_0x8004, VAR_0x8008
 	copyvar VAR_0x8005, VAR_0x800A
+	applymovement VAR_LAST_TALKED, SakuTown_House3_EventScript_TradeMe_Movement_0
+	waitmovement 0
+	applymovement 3, SakuTown_House3_EventScript_TradeMe_Movement_1
+	waitmovement 0
+	applymovement VAR_LAST_TALKED, SakuTown_House3_EventScript_TradeMe_Movement_2
+	waitmovement 0
 	special CreateInGameTradePokemon
 	special DoInGameTradeScene
 	setflag FLAG_FORTREE_NPC_TRADE_COMPLETED
@@ -67,8 +72,9 @@ SakuTown_House3_EventScript_TradeMe::
 	removeobject 3
 	waitstate
 	addobject 4
+	applymovement 4, SakuTown_House3_EventScript_TradeMe_Movement_3
 	bufferspeciesname STR_VAR_1, VAR_0x8009
-	msgbox SakuTown_House3_EventScript_TradeMe_Text_5, MSGBOX_DEFAULT
+	msgbox SakuTown_House3_EventScript_TradeMe_Text_7, MSGBOX_DEFAULT
 	closemessage
 SakuTown_House3_EventScript_TradeMe_1:
 	release
@@ -82,19 +88,19 @@ SakuTown_House3_EventScript_TradeMe_2:
 
 SakuTown_House3_EventScript_TradeMe_5:
 	speakername SakuTown_House3_EventScript_TradeMe_Text_0
-	msgbox SakuTown_House3_EventScript_TradeMe_Text_3
+	msgbox SakuTown_House3_EventScript_TradeMe_Text_5
 	closemessage
 	goto SakuTown_House3_EventScript_TradeMe_1
 
-SakuTown_House3_EventScript_TradeMe_10:
+SakuTown_House3_EventScript_TradeMe_8:
 	speakername SakuTown_House3_EventScript_TradeMe_Text_0
-	msgbox SakuTown_House3_EventScript_TradeMe_Text_3
+	msgbox SakuTown_House3_EventScript_TradeMe_Text_5
 	closemessage
 	goto SakuTown_House3_EventScript_TradeMe_1
 
-SakuTown_House3_EventScript_TradeMe_13:
+SakuTown_House3_EventScript_TradeMe_11:
 	speakername SakuTown_House3_EventScript_TradeMe_Text_0
-	msgbox SakuTown_House3_EventScript_TradeMe_Text_4
+	msgbox SakuTown_House3_EventScript_TradeMe_Text_6
 	closemessage
 	goto SakuTown_House3_EventScript_TradeMe_1
 
@@ -115,6 +121,30 @@ SakuTown_House3_EventScript_Man_2:
 	goto SakuTown_House3_EventScript_Man_1
 
 
+SakuTown_House3_EventScript_TradeMe_Movement_0:
+	face_left
+	step_end
+
+SakuTown_House3_EventScript_TradeMe_Movement_1:
+	enter_pokeball
+	delay_16
+	delay_16
+	step_end
+
+SakuTown_House3_EventScript_TradeMe_Movement_2:
+	face_down
+	delay_16
+	delay_16
+	step_end
+
+SakuTown_House3_EventScript_TradeMe_Movement_3:
+	exit_pokeball
+	set_visible
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
 SakuTown_House3_EventScript_Psyduck_Text_0:
 	.string "Psaïaïaï…$"
 
@@ -125,7 +155,7 @@ SakuTown_House3_EventScript_TradeMe_Text_0:
 	.string "Little boy$"
 
 SakuTown_House3_EventScript_TradeMe_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}Thank you!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}How's Bread doing?$"
 
 SakuTown_House3_EventScript_TradeMe_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}The best thing about Pokémon is\n"
@@ -136,14 +166,20 @@ SakuTown_House3_EventScript_TradeMe_Text_2:
 	.string "for it!$"
 
 SakuTown_House3_EventScript_TradeMe_Text_3:
+	.string "Yes!$"
+
+SakuTown_House3_EventScript_TradeMe_Text_4:
+	.string "No thanks.$"
+
+SakuTown_House3_EventScript_TradeMe_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}Keep your Hoothoot, I don't want it\n"
 	.string "anyway…$"
 
-SakuTown_House3_EventScript_TradeMe_Text_4:
+SakuTown_House3_EventScript_TradeMe_Text_6:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}I don't want your weird Pokémon! I\n"
 	.string "want a Hoothoot!$"
 
-SakuTown_House3_EventScript_TradeMe_Text_5:
+SakuTown_House3_EventScript_TradeMe_Text_7:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY EMOTE_NORMAL}Yeahhh!! I have a {STR_VAR_1} now!\p"
 	.string "Take good care of Bread for me, okay?$"
 

@@ -128,11 +128,11 @@
 #define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67 //
 #define FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE 0x68
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
-#define FLAG_UNUSED_0x6A                     0x6A // Unused
-#define FLAG_UNUSED_0x6B                     0x6B // Unused
+#define FLAG_MET_HANA_BONSAI_SHOP            0x6A
+#define FLAG_MET_HANA_GYM                    0x6B
 #define FLAG_WHITEOUT_TO_LAVARIDGE           0x6C // Set after defeating Flannery, so the player cant white out from poison before receiving Go Goggles
-#define FLAG_UNUSED_0x6D                     0x6D // Unused
-#define FLAG_UNUSED_0x6E                     0x6E // Unused
+#define FLAG_BROKE_SAKU_ROCK_1               0x6D
+#define FLAG_BROKE_SAKU_ROCK_2               0x6E
 #define FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT  0x6F
 #define FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE  0x70
 #define FLAG_UNUSED_RS_LEGENDARY_BATTLE_DONE 0x71 // Unused Flag. Used in R/S to indicate whether player defeated or caught Groudon/Kyogre in Cave of Origin.
@@ -1073,7 +1073,7 @@
 #define FLAG_ITEM_CROBAT_HIDEOUT_RARE_CANDY                         0x3F6
 #define FLAG_CROBAT_HIDEOUT_PEARL                                   0x3F7
 #define FLAG_ITEM_SUNRISE_CAVE_HEART_SCALE                          0x3F8
-#define FLAG_ITEM_ROUTE_115_TM_FOCUS_PUNCH                          0x3F9
+#define FLAG_ITEM_SILVER_TUNNEL_SUPER_OINTMENT                      0x3F9
 #define FLAG_ITEM_ROUTE_115_IRON                                    0x3FA
 #define FLAG_ITEM_ROUTE_116_ETHER                                   0x3FB
 #define FLAG_ITEM_ROUTE_116_REPEL                                   0x3FC
@@ -1592,7 +1592,7 @@
 #define FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER    (DAILY_FLAGS_START + 0x8)
 #define FLAG_DAILY_MON_DEX_RIDDLE_WON               (DAILY_FLAGS_START + 0x9)
 #define FLAG_DAILY_PICKED_LOTO_TICKET               (DAILY_FLAGS_START + 0xA)
-#define FLAG_DAILY_ROUTE_114_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xB)
+#define FLAG_DAILY_FISH_SELLER_UNUSED               (DAILY_FLAGS_START + 0xB) // Unused Flag
 #define FLAG_DAILY_ROUTE_111_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xC)
 #define FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY      (DAILY_FLAGS_START + 0xD)
 #define FLAG_DAILY_ROUTE_120_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xE)

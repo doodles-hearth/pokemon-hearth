@@ -200,3 +200,17 @@ script Silveridge_House1_EventScript_Sculptor_FirstTime {
 
 	release
 }
+
+script Silveridge_House1_EventScript_Aron {
+	lock
+    faceplayer
+	setseenmon(SPECIES_ARON)
+	setspeakertomonname(SPECIES_ARON)
+	playmoncry(SPECIES_ARON, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Keee!"
+    ))
+    waitmoncry
+    release
+    end
+}

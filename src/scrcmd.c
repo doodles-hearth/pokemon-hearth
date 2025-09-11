@@ -1726,6 +1726,12 @@ bool8 ScrCmd_setspeaker(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_removespeaker(struct ScriptContext *ctx)
+{
+    SetSpeakerName(NULL);
+    return FALSE;
+}
+
 bool8 ScrCmd_message(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
@@ -2119,7 +2125,7 @@ bool8 ScrCmd_braillemessage(struct ScriptContext *ctx)
 
     winTemplate = CreateWindowTemplate(0, xWindow, yWindow + 1, width, height, 0xF, 0x1);
     sBrailleWindowId = AddWindow(&winTemplate);
-    LoadUserWindowBorderGfx(sBrailleWindowId, 0x214, BG_PLTT_ID(14));
+    LoadUserWindowBorderGfx(sBrailleWindowId, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(14));
     DrawStdWindowFrame(sBrailleWindowId, FALSE);
     PutWindowTilemap(sBrailleWindowId);
     FillWindowPixelBuffer(sBrailleWindowId, PIXEL_FILL(1));
@@ -2154,7 +2160,7 @@ bool8 ScrCmd_randomdexmessage(struct ScriptContext *ctx)
 
     winTemplate = CreateWindowTemplate(0, 1, 5, 28, 9, 0xF, 0x1);
     sRandomDexWindowId = AddWindow(&winTemplate);
-    LoadUserWindowBorderGfx(sRandomDexWindowId, 0x214, BG_PLTT_ID(14));
+    LoadUserWindowBorderGfx(sRandomDexWindowId, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(14));
     DrawStdWindowFrame(sRandomDexWindowId, FALSE);
     PutWindowTilemap(sRandomDexWindowId);
     FillWindowPixelBuffer(sRandomDexWindowId, PIXEL_FILL(1));

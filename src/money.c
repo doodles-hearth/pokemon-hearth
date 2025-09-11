@@ -10,11 +10,12 @@
 #include "strings.h"
 #include "decompress.h"
 #include "tv.h"
+#include "palette.h"
 
 EWRAM_DATA static u8 sMoneyBoxWindowId = 0;
 EWRAM_DATA static u8 sMoneyLabelSpriteId = 0;
 
-#define MONEY_LABEL_TAG 0x2722
+#define MONEY_LABEL_TAG 0x2722 | BLEND_IMMUNE_FLAG
 
 static const struct OamData sOamData_MoneyLabel =
 {
@@ -186,7 +187,7 @@ void DrawMoneyBox(int amount, u8 x, u8 y)
     FillWindowPixelBuffer(sMoneyBoxWindowId, PIXEL_FILL(0));
     PutWindowTilemap(sMoneyBoxWindowId);
     CopyWindowToVram(sMoneyBoxWindowId, COPYWIN_MAP);
-    PrintMoneyAmountInMoneyBoxWithBorder(sMoneyBoxWindowId, 0x214, 14, amount);
+    PrintMoneyAmountInMoneyBoxWithBorder(sMoneyBoxWindowId, STD_WINDOW_BASE_TILE_NUM, 14, amount);
     AddMoneyLabelObject((8 * x) + 19, (8 * y) + 11);
 }
 

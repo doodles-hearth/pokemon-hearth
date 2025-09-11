@@ -468,7 +468,7 @@ static void AddSearchWindow(u8 width)
     PutWindowTilemap(sDexNavSearchDataPtr->windowId);
     CopyWindowToVram(sDexNavSearchDataPtr->windowId, 3);
 
-    DrawStdFrameWithCustomTileAndPalette(sDexNavSearchDataPtr->windowId, TRUE, 0x214, 14);
+    DrawStdFrameWithCustomTileAndPalette(sDexNavSearchDataPtr->windowId, TRUE, STD_WINDOW_BASE_TILE_NUM, 14);
 }
 
 #define WINDOW_COL_0        (SPECIES_ICON_X + 4)

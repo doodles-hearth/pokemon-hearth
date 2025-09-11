@@ -148,7 +148,7 @@ void RemoveFollowingPokemon(void);
 struct ObjectEvent *GetFollowerObject(void);
 u8 GetDirectionToFace(s16, s16, s16, s16);
 void UpdateLightSprite(struct Sprite *);
-void TrySpawnObjectEvents(s16 cameraX, s16 cameraY);
+void TrySpawnObjectEvents(s16 cameraX, s16 cameraY, u32 isOnMapLoad);
 u8 CreateObjectGraphicsSpriteWithTag(u16 graphicsId, void (*callback)(struct Sprite *), s16 x, s16 y, u8 subpriority, u16 paletteTag);
 u8 CreateObjectGraphicsSprite(u16 graphicsId, void (*callback)(struct Sprite *), s16 x, s16 y, u8 subpriority);
 u8 TrySpawnObjectEvent(u8 localId, u8 mapNum, u8 mapGroup);
@@ -515,7 +515,5 @@ u8 GetSidewaysStairsCollision(struct ObjectEvent *objectEvent, u8 dir, u8 curren
 bool8 MovementAction_EmoteX_Step0(struct ObjectEvent *, struct Sprite *);
 bool8 MovementAction_EmoteDoubleExclamationMark_Step0(struct ObjectEvent *, struct Sprite *);
 bool8 PlayerIsUnderWaterfall(struct ObjectEvent *objectEvent);
-
-bool32 IsObjectEventPaletteTagInUse(u16 paletteTag);
 
 #endif //GUARD_EVENT_OBJECT_MOVEMENT_H

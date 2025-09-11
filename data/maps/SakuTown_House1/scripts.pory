@@ -88,25 +88,26 @@ script SakuTown_House1_EventScript_Tama {
 
 		speakername("Tama")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Ahem…"
-			"“My dear Tama,\nIt pains me that you aren't by my side each night.\l"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Ahem…\n"
+			"“My dear Tama,\lIt pains me that you aren't by my side each night.\l"
 			"The sweet chirping of birds pales in comparison to your hearty laugh.\l"
 			"I would move Heaven and Earth for us to be together.\l"
-			"If your heart still rings true for mine, will you meet me under pale moonlight, in the vale betwixt our homes?\p"
+			"If your heart still rings true for mine, meet me under pale moonlight, in the vale betwixt our homes.\p"
 			"Sincerely yours,\n-Ashii {EMOJI_HEART}”\p"
 			"… … … … … …\n… … … … … …"
 		))
 		closemessage
 
+		delay(24)
 		faceplayer
 	
 		speakername("Tama")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}…Ahem. Sorry, this is a little embarrassing…\p"
 			"What does she mean with that “vale”, though?…\p"
-			"Oh!\n She must be talking about the small valley to the east of here!\p"
+			"Oh!\n She must be talking about the small valley east of here!\p"
 			"And “pale moonlight”…\nThat must be tonight!\p"
-			"Of course! Why else ask you to\ndeliver this now?"
+			"Of course! Why else ask you to deliver this now?"
 		))
 		closemessage
 
@@ -121,7 +122,7 @@ script SakuTown_House1_EventScript_Tama {
 		closemessage
 		addvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
 
-	} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 2 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) <= 6) {
+	} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 2 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 9) {
 		faceplayer
 		speakername("Tama")
 		msgbox(format(
@@ -129,12 +130,11 @@ script SakuTown_House1_EventScript_Tama {
 		))
 		waitmessage
 		closemessage
-
 	} else {
 		faceplayer
 		speakername("Tama")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I can't wait to see Ashii again tonight!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}One day our villages will stand together, and we will love each other in broad daylight!"
 		))
 		waitmessage
 		closemessage

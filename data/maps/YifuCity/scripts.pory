@@ -436,7 +436,7 @@ script YifuCity_Trigger_CrobatGruntsScram {
 	lockall
 	
 	gettimeofday
-	if (var(VAR_RESULT) == TIME_NIGHT || var(VAR_RESULT) == TIME_DEAD_NIGHT) {
+	if (var(VAR_0x8000) == TIME_NIGHT || var(VAR_0x8000) == TIME_DEAD_NIGHT) {
 		applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
 		waitmovement(0)
 
@@ -515,7 +515,7 @@ script YifuCity_Trigger_CrobatGruntsScram {
 script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 	lockall
 	gettimeofday
-	if (var(VAR_RESULT) == TIME_NIGHT || var(VAR_RESULT) == TIME_DEAD_NIGHT) {
+	if (var(VAR_0x8000) == TIME_NIGHT || var(VAR_0x8000) == TIME_DEAD_NIGHT) {
 		speakername("???")
 		msgbox(format(
 			"I tell ya man, damn password keeps changin'…"

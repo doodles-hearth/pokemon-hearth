@@ -1,4 +1,4 @@
-const FLAG_HIDE_MERCHANTS = FLAG_TEMP_1
+const FLAG_HIDE_FISH_SELLER = FLAG_TEMP_1
 const FLAG_TALKED_TO_FISH_SELLER = FLAG_TEMP_2
 
 mapscripts MaguroHarbor_MapScripts {
@@ -9,13 +9,16 @@ mapscripts MaguroHarbor_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_MAGURO_HARBOR)
 
-		setflag(FLAG_HIDE_MERCHANTS)
 
 		getweekday
-		if(var(VAR_RESULT) == 0 || var(VAR_RESULT) == 3 || var(VAR_RESULT) == 6) {
-			clearflag(FLAG_HIDE_MERCHANTS)
+		if(
+			var(VAR_RESULT) != WEEKDAY_MON
+			&& var(VAR_RESULT) != WEEKDAY_WED
+			&& var(VAR_RESULT) != WEEKDAY_FRI
+			&& var(VAR_RESULT) != WEEKDAY_SUN
+		) {
+			setflag(FLAG_HIDE_FISH_SELLER)
 		}
-		
 	}
 }
 
@@ -82,7 +85,6 @@ script MaguroHarbor_EventScript_FishcakeSalesman {
 		case TIME_EVENING:
 			goto(MaguroHarbor_EventScript_FishcakeSalesmanSelling)
 		case TIME_NIGHT:
-			call(StringVarSetter)
 			goto(MaguroHarbor_EventScript_FishcakeSalesmanClosingUp)
 	}
 }
@@ -168,15 +170,15 @@ script MaguroHarbor_EventScript_FishcakeSalesmanClosingUp {
 	if (flag(FLAG_DAILY_FISHCAKE)) {
 		speakername("Old woman")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm sorry but we've closed shop now, dearie.\p"
-			"We'll be open again {STR_VAR_1}!"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm sorry but we've closed shop now, dearie.\l"
+			"Come back tomorrow!"
 		), MSGBOX_DEFAULT)
 		closemessage
 	} else {
 		speakername("Old woman")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh my! I'm sorry but we've closed shop now, dearie.\p"
-			"We'll be open again {STR_VAR_1}!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh my! I'm sorry but we've closed shop now, dearie.\l"
+			"Come back tomorrow!\p"
 			"Did you want to buy one of my Fishcakes?\p"
 			"Here, you can have the leftovers from today!"
 		), MSGBOX_DEFAULT)
@@ -207,7 +209,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesman {
 			else {
 				bufferstring(STR_VAR_2, "lassie")
 			}
-			call(StringVarSetter)
+			call(StringVarSetterFishSalesman)
 			goto(MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp)
 	}
 }
@@ -278,7 +280,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 				} else {
 					if (getpartysize == 1) {
 						speakername("Salesman")
-						msgbox(format("I'd feel bad leaving you with no Pokémon to defend you!"))
+						msgbox(format("I'd feel bad leaving a Wielder with no Pokémon!"))
 						closemessage
 					} else {
 						callnative(Native_GiveFish)
@@ -298,7 +300,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 									if (var(VAR_0x8001) != ITEM_NONE) {
 										speakername("Salesman")
 										msgbox(format(
-											"Great! Here you go."
+											"Great! Here you go.\p"
 											"…Oh?\p"
 											"Look what we found in its mouth!\nTake it, it's yours!"
 										))
@@ -450,11 +452,11 @@ script MaguroHarbor_EventScript_Man {
 		
     	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN EMOTE_NORMAL}T-This was the biggest quake we've felt yet!"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}T-This was the biggest quake we've felt yet!"
 		), MSGBOX_AUTOCLOSE)
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN EMOTE_NORMAL}I wish I swam as gracefully as the Dojo's Magikarp…"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}I wish I swam as gracefully as the Dojo's Magikarp…"
 		))
 	}
 	
@@ -506,19 +508,29 @@ script MaguroHarbor_EventScript_MartClosingUp {
 	release
 }
 
-script(local) StringVarSetter {
+script(local) StringVarSetterFishSalesman {
 	getweekday
 	switch(var(VAR_RESULT)) {
 		case WEEKDAY_WED:
-			bufferstring(STR_VAR_1, "on Saturday")
+			bufferstring(STR_VAR_1, "on Friday")
 			return
-		case WEEKDAY_SAT:
-			bufferstring(STR_VAR_1, "tomorrow")
+		case WEEKDAY_FRI:
+			bufferstring(STR_VAR_1, "on Sunday")
 			return
 		case WEEKDAY_SUN:
+			bufferstring(STR_VAR_1, "tomorrow")
+			return
+		case WEEKDAY_MON:
 			bufferstring(STR_VAR_1, "on Wednesday")
 			return
 	}
+}
+
+script MaguroHarbor_EventScript_FishPokemonSalesmanSign {
+	msgbox(format(
+		"We buy Fish Pokémon!\n"
+		"Monday, Wednesday, Friday, Sunday\n"
+	), MSGBOX_SIGN)
 }
 
 mart MaguroHarbor_Mart {

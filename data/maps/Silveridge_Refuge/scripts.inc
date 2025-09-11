@@ -78,6 +78,15 @@ Silveridge_Refuge_EventScript_Kricketune::
 	return
 
 
+Silveridge_Refuge_EventScript_NurseSleep::
+	setvar VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE
+	call Common_EventScript_PkmnCenterNurse_Sleep
+	waitmessage
+	waitbuttonpress
+	release
+	end
+
+
 Silveridge_Refuge_EventScript_Nurse::
 	setvar VAR_0x800B, LOCALID_NURSE_SILVERIDGE
 	setvar VAR_0x800A, LOCALID_CHANSEY_SILVERIDGE
@@ -102,6 +111,7 @@ Silveridge_Refuge_EventScript_Shamisen::
 	speakername Silveridge_Refuge_EventScript_Shamisen_Text_0
 	msgbox Silveridge_Refuge_EventScript_Shamisen_Text_4
 	closemessage
+	giveitem ITEM_UUMEGIRI, 3
 	setflag FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER
 Silveridge_Refuge_EventScript_Shamisen_1:
 	release
@@ -192,4 +202,6 @@ Silveridge_Refuge_EventScript_Shamisen_Text_3:
 
 Silveridge_Refuge_EventScript_Shamisen_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}That was just the thing I needed to\n"
-	.string "pass the time.$"
+	.string "pass the time.\p"
+	.string "I'll share my meal with you as a\n"
+	.string "thanks.$"

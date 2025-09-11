@@ -924,6 +924,7 @@ script YifuCity_Dojo_EventScript_Yutaka {
 }
 
 script YifuCity_Dojo_EventScript_YutakaDefeated {
+    removespeakername
 	message(format(
 		"{PLAYER} received the Silk Token from Yutaka."
 	))

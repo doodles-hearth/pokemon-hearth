@@ -3,6 +3,7 @@ EventScript_ClayFurnace::
 	closemessage
 	playmoncry SPECIES_SLUGMA, CRY_MODE_NORMAL
 	getnamedmon SPECIES_SLUGMA
+	applymovement OBJ_EVENT_ID_PLAYER, EventScript_ClayFurnace_Movement_0
 	compare VAR_RESULT, 0
 	goto_if_ne EventScript_ClayFurnace_2
 	msgbox EventScript_ClayFurnace_Text_2
@@ -45,6 +46,10 @@ EventScript_ShopShelf::
 EventScript_Blueprint::
 	msgbox Text_Blueprint, MSGBOX_SIGN
 	end
+
+EventScript_ClayFurnace_Movement_0:
+	emote_exclamation_mark
+	step_end
 
 EventScript_ClayFurnace_Text_0:
 	.string "The fire dances in the furnace.$"

@@ -2,7 +2,7 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 	lock
 	faceplayer
 	setvar(VAR_0x8004, 0)
-	msgbox(format("Welcome to the refuge!\pLet me heal your Pokémon."))
+	msgbox(format("Welcome to the refuge!\nLet me heal your Pokémon."))
 	closemessage
 	goto(EventScript_PkmnCenterNurse_HealPkmn_CutTheBullshit)
 	release

@@ -14,7 +14,7 @@ script BeachboundRoute_EventScript_RunningBoy {
 	speakername("Little boy")
 	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}Running running running!!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}Running running running!!\p"
 		"Yaaaaaaaay!!!"
 	))
 	closemessage
@@ -35,7 +35,7 @@ script BeachboundRoute_EventScript_RunningGirl {
 script BeachboundRoute_EventScript_AnnoyedGirl {
 	gettimeofday
 	speakername("Annoyed girl")
-	if (var(VAR_0x8000) == TIME_EVENING) {
+	if (var(VAR_0x8000) != TIME_EVENING && var(VAR_0x8000) != TIME_AFTERNOON) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}Hum… Could you maybe, like, leave?"
 		), MSGBOX_NPC)
@@ -48,6 +48,7 @@ script BeachboundRoute_EventScript_AnnoyedGirl {
 
 script BeachboundRoute_EventScript_AnnoyedBoy {
 	lock
+	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	speakername("Annoyed boy")
 	msgbox(format(
@@ -402,7 +403,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	delay(24)
 
-	applymovement(LOCALID_GRUNT_BOSS, moves(face_up))
+	applymovement(LOCALID_GRUNT_BOSS, moves(face_up, delay_16 * 3))
 	waitmovement(0)
 
 	speakername("Crobat Boss")
@@ -521,6 +522,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 		))
 	}
 
+	setflag(FLAG_MET_TRAVELING_MERCHANT)
 	setflag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)
 
 	limitedpokemart(LIMITED_SHOP_1)

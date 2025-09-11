@@ -135,9 +135,11 @@ script OldWomanQuest2Script {
 script KuraTown_House1_OldWomansSon {
 	lock
 	applymovement(VAR_LAST_TALKED, moves(emote_angry))
+	faceplayer
 	speakername("Guy")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}The Pokémon league organization didn't see fit to build a Pokémon refuge in our village, but those jerks over at Saku Village won't let us use theirs.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}The Pokémon Council didn't see fit to build a Refuge in our town."
+		"But those jerks over at Saku Village won't let us use theirs!\p"
 		"So my mother has to work hard to heal all the villager's Pokémon.\p"
 		"It's not fair!"
 	))

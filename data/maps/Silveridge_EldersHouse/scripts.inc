@@ -101,6 +101,7 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	playse SE_EXIT
 	waitse
 	removeobject 4
+	delay 48
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_12
 	waitmovement 1
 	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_13
@@ -282,15 +283,12 @@ Silveridge_EldersHouse_EventScript_Conversation_Text_10:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "I see…\p"
-	.string "The wild Pokémon are in a frenzy all\n"
-	.string "the way down to the Ginko Woods as\l"
-	.string "well…\p"
-	.string "The phenomenon has thus been\n"
-	.string "confirmed to be happening across the\l"
-	.string "whole Toku region!\p"
-	.string "It must be somehow connected to the\n"
-	.string "spreading Decay - and to the rumbling\l"
-	.string "of Mt Kazan!\p"
+	.string "Wild Pokémon are in a frenzy all the\n"
+	.string "way down to Ginko Woods as well…\p"
+	.string "So the phenomenon is happening\n"
+	.string "across the whole Toku region!\p"
+	.string "It must be linked to the spreading\n"
+	.string "Decay - and to Mt Kazan's fits!\p"
 	.string "The situation is more dire than we\n"
 	.string "thought, and our strongest Wielders\l"
 	.string "are already stretched thin.\p"
@@ -305,9 +303,8 @@ Silveridge_EldersHouse_EventScript_Conversation_Text_12:
 	.string "discovered in Uume Forest!$"
 
 Silveridge_EldersHouse_EventScript_Conversation_Text_13:
-	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}We cannot lose a second! We need\n"
-	.string "someone to go investigate Uume\l"
-	.string "Forest right now!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}We cannot lose a second! We need to\n"
+	.string "investigate Uume Forest right now!$"
 
 Silveridge_EldersHouse_EventScript_Conversation_Text_14:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}… … … … … …\n"
@@ -316,17 +313,15 @@ Silveridge_EldersHouse_EventScript_Conversation_Text_14:
 	.string "What is your name? {PLAYER}?\p"
 	.string "You came all the way up here\n"
 	.string "on foot…\l"
-	.string "You already have a team of capable\l"
-	.string "Pokémon…\l"
+	.string "You have a team of capable Pokémon…\l"
 	.string "Kaba seems to trust you…\p"
 	.string "It is decided! You shall travel to\n"
 	.string "Uume Forest, southeast of Tranquil\l"
 	.string "Route!\p"
 	.string "Our fate may well be in your hands,\n"
 	.string "{PLAYER}.\p"
-	.string "Before you leave, let me give you\n"
-	.string "something to make your journey\l"
-	.string "easier.$"
+	.string "Before you leave, I have something\n"
+	.string "that will make your journey easier.$"
 
 Silveridge_EldersHouse_EventScript_Conversation_Text_15:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}I have been keeping this mysterious\n"
@@ -334,10 +329,9 @@ Silveridge_EldersHouse_EventScript_Conversation_Text_15:
 	.string "We aren't sure where nor when it\n"
 	.string "originated, but it lets one Pokémon\l"
 	.string "mirror the experience of another.\p"
-	.string "It should be immensely useful in the\n"
-	.string "hands of a promising young Wielder\l"
-	.string "such as yourself.\p"
-	.string "Now go, and be quick!$"
+	.string "It should be useful in the hands of\n"
+	.string "such a promising young Wielder.\p"
+	.string "Now go, and be swift!$"
 
 Silveridge_EldersHouse_EventScript_Elder_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Go forth, young one.$"

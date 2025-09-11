@@ -231,8 +231,8 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 25,
-      "y": 3,
+      "x": 29,
+      "y": 2,
       "elevation": 0,
       "dest_map": "MAP_SILVER_TUNNEL_2F",
       "dest_warp_id": "1"
@@ -255,6 +255,14 @@
       "elevation": 0,
       "item": "ITEM_HYPER_OINTMENT",
       "flag": "FLAG_HIDDEN_ITEM_SILVER_TUNNEL_HYPER_OINTMENT"
+    },
+    {
+      "type": "hidden_item",
+      "x": 6,
+      "y": 11,
+      "elevation": 0,
+      "item": "ITEM_SUPER_OINTMENT",
+      "flag": "FLAG_ITEM_SILVER_TUNNEL_SUPER_OINTMENT"
     }
   ]
 }

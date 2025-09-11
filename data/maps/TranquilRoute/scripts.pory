@@ -512,8 +512,8 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 		"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
 		"I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
 		"I'm sold out on, well, pretty much everything right now… But you're definitely going to see me around!\p"
-		"What's your name? {PLAYER}? It's nice to meet you, {PLAYER}!"
-		"I see you're a young Wielder, eh? Maybe we can even have a friendly battle sometime!\p"
+		"What's your name? {PLAYER}?\nNice to meet you, {PLAYER}!\p"
+		"I see you're a young Wielder, eh?\NMaybe we can even have a friendly battle sometime!\p"
 		"Now if you'll excuse me, I'm running late! See you around, {PLAYER}!"
 	))
 	closemessage

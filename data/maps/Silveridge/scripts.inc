@@ -149,12 +149,11 @@ Silveridge_EventScript_MissingStatue_Text_1:
 	.string "There used to be a statue, but a\n"
 	.string "quake destroyed it long ago, so now\l"
 	.string "we're left with this empty pedestal.\p"
-	.string "There's an excentric man that lives\n"
-	.string "nearby and that calls himself “The\l"
-	.string "Sculptor”.\p"
+	.string "An excentric man lives nearby, calls\n"
+	.string "himself “The Sculptor”.\p"
 	.string "I wish he'd make a replacement, but he\n"
-	.string "hasn't been making anything for a\l"
-	.string "while now.$"
+	.string "hasn't been making anything in\l"
+	.string "forever.$"
 
 Silveridge_EventScript_Wildflowers_Text_0:
 	.string "Boy$"

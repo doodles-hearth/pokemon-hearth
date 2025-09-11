@@ -149,9 +149,8 @@ void SetBagItemsPointers(void)
 u8 *CopyItemName(u16 itemId, u8 *dst)
 {
     if (itemId >= ITEM_TM01 && itemId <= ITEM_HM08)
-    /* if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES) */
     {
-        StringCopy(dst, GetMoveName(gItemsInfo[itemId].secondaryId));
+        StringCopy(dst, GetMoveName(GetTMHMMoveId(GetItemTMHMIndex(itemId))));
         return StringAppend(dst, gText_Scroll);
     }
     else
@@ -174,17 +173,7 @@ u8 *CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
     }
     else
     {
-        u8 *end;
-        if (itemId >= ITEM_TM01 && itemId <= ITEM_HM08)
-        /* if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES) */
-        {
-            end = StringCopy(dst, GetMoveName(gItemsInfo[itemId].secondaryId));
-        }
-        else
-        {
-            end = StringCopy(dst, GetItemName(itemId));
-        }
-
+        u8 *end = StringCopy(dst, GetItemName(itemId));
         return StringCopy(end, sText_s);
     }
 }
@@ -958,9 +947,8 @@ static u16 SanitizeItemId(u16 itemId)
 const u8 *GetItemName(u16 itemId)
 {
     if (itemId >= ITEM_TM01 && itemId <= ITEM_HM08)
-    /* if (itemId >= ITEM_TM01 && itemId < ITEM_HM01 + NUM_HIDDEN_MACHINES) */
     {
-        return GetMoveName(gItemsInfo[itemId].secondaryId);
+        return GetMoveName(GetTMHMMoveId(GetItemTMHMIndex(itemId)));
     }
     return gItemsInfo[SanitizeItemId(itemId)].name;
 }

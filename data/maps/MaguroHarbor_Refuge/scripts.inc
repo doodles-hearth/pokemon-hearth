@@ -89,6 +89,15 @@ MaguroHarbor_Refuge_BattleHariko_4:
 	goto MaguroHarbor_Refuge_BattleHariko_1
 
 
+MaguroHarbor_Refuge_EventScript_NurseSleep::
+	setvar VAR_0x8009, MUGSHOT_SEASIDE_NURSE
+	call Common_EventScript_PkmnCenterNurse_Sleep
+	waitmessage
+	waitbuttonpress
+	release
+	end
+
+
 MaguroHarbor_Refuge_EventScript_Slowpoke::
 	lock
 	faceplayer
@@ -242,15 +251,14 @@ MaguroHarbor_Refuge_EventScript_DescribedMons_Text_0:
 	.string "Man$"
 
 MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}So, have you written many entries in\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}So, have you written many entries in\n"
 	.string "your encyclopedia?$"
 
 MaguroHarbor_Refuge_EventScript_DescribedMons_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}Oh! You're writing a Pokémon\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Oh! You're writing a Pokémon\n"
 	.string "encyclopedia? That's amazing!\p"
-	.string "I bet you're wondering how you can\n"
-	.string "fill up the description of every\l"
-	.string "Pokémon.\l"
+	.string "I bet you're wondering how to fill up\n"
+	.string "the description of every Pokémon.\l"
 	.string "Well, asking around definitely helps!\p"
 	.string "For instance, Krabby sleeps burrowed\n"
 	.string "inside holes in the sand, and did you\l"

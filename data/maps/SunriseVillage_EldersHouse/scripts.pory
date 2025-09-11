@@ -42,18 +42,17 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	delay(4)
 
 	playse(SE_PIN)
-	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark, delay_4))
+	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark, delay_16))
 	waitmovement(LOCALID_RIVAL)
 	playse(SE_PIN)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
 
+	applymovement(LOCALID_ELDER, moves(emote_angry))
 	speakername("Elder Kaba")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}PAH!"
 	))
 	waitse
-
-	createfieldmugshot(MUGSHOT_KABA, EMOTE_NORMAL)
 	
 	// Elder speaks
 	speakername("Elder Kaba")
@@ -66,12 +65,15 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 		"This is all very worrying…$"
 	))
 	closemessage
-	applymovement(LOCALID_ELDER, moves(walk_in_place_faster_up, delay_16 * 4))
+	applymovement(LOCALID_ELDER, moves(walk_in_place_faster_up, emote_pensive, delay_16 * 6))
 	waitmovement(0)
 	playse(SE_ARENA_TIMEUP2)
-	applymovement(LOCALID_ELDER, moves(jump_in_place_down))
+	applymovement(LOCALID_ELDER, moves(jump_in_place_down, emote_angry))
 
-	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark))
+	playse(SE_PIN)
+	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark, delay_16))
+	waitmovement(LOCALID_RIVAL)
+	playse(SE_PIN)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
 
 	speakername("Elder Kaba")
@@ -80,7 +82,10 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 		"The Toku council has decided that,\nfor the time being, the best way to\lhandle this is to use the Pokémon\lthemselves as a means of protection!\p"
 		"There were very few experienced\nPokémon Wielders in Toku until now.\l"
 		"This is about to change.\p"
-		"With a trained Pokémon by your side,\nyou'll be able to defend yourselves\lon your own.\p"
+		"With a trained Pokémon by your side,\nyou'll be able to defend yourselves\lon your own."
+	))
+	applymovement(LOCALID_ELDER, moves(walk_in_place_fast_right))
+	msgbox(format(
 		"Without further ado, please carefully\nchoose your new companion!"
 	))
 	closemessage
@@ -120,6 +125,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	playse(SE_LEDGE)
 	applymovement(LOCALID_RIVAL, moves(jump_in_place_up))
 	waitmovement(0)
+	applymovement(LOCALID_RIVAL, moves(emote_heart))
 	speakername("Natsuki")
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah! Cool."))
 
@@ -146,34 +152,37 @@ script SunriseVillage_EldersHouse_Event_Elder {
 	speakername("Elder Kaba")
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) < 5) {
-			msgbox(format("{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Don't dilly-dally on the way! And keep an eye on your little friend Natsuki, make sure he doesn't get into trouble!"))
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Don't dilly-dally on the way!\pAnd keep an eye on Natsuki, make sure he doesn't get into trouble!"
+			))
 		} else {
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Oh! You delivered my letter. Good.\p"
-				"You've been appointed to investigate Decaying areas? Well then, what are you still doing here? Off you go!"
+				"You've been appointed to investigate Decaying areas?\p"
+				"Well then, what are you still doing here? Off you go!"
 			))
 
 			mcdialogue(
 				"Evaluate my PokéDex!",
 				"See you!"
 			)
-	closemessage
+			closemessage
 
-	switch(var(VAR_RESULT)) {
-		case 0:
-			speakername("Elder Kaba")
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Well, what are you waiting for? Hand it over!"
-			))
+			switch(var(VAR_RESULT)) {
+				case 0:
+					speakername("Elder Kaba")
+					msgbox(format(
+						"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Well, what are you waiting for? Hand it over!"
+					))
 
-			call(ProfBirch_EventScript_RatePokedex)
-		case 1:
-			speakername("Elder Kaba")
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Alright, alright.\n"
-				"{FONT_SMALL}Damned children wasting my time.{FONT_NORMAL}"
-			))
-	}
+					call(ProfBirch_EventScript_RatePokedex)
+				case 1:
+					speakername("Elder Kaba")
+					msgbox(format(
+						"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Alright, alright.\n"
+						"{FONT_SMALL}Damned children wasting my time.{FONT_NORMAL}"
+					))
+			}
 		}
 	} else {
 		// Player has yet to pick a Pokémon
@@ -388,10 +397,8 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	delay(20)
 
-	applymovement(LOCALID_RIVAL, moves(walk_in_place_fast_up))
-	waitmovement(0)
-
 	speakername("Natsuki")
+	applymovement(LOCALID_RIVAL, moves(emote_question_mark))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What's this? A book?"
 	))

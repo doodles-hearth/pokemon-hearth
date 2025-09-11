@@ -87,6 +87,15 @@ script Silveridge_Refuge_EventScript_Kricketune {
 	release
 }
 
+script Silveridge_Refuge_EventScript_NurseSleep {
+	setvar(VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE)
+	call(Common_EventScript_PkmnCenterNurse_Sleep)
+	waitmessage
+	waitbuttonpress
+	release
+	end
+}
+
 script Silveridge_Refuge_EventScript_Nurse {
 	setvar(VAR_0x800B, LOCALID_NURSE_SILVERIDGE)
 	setvar(VAR_0x800A, LOCALID_CHANSEY_SILVERIDGE)
@@ -123,11 +132,12 @@ script Silveridge_Refuge_EventScript_Shamisen {
 
 		speakername("Shamisen Player")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}That was just the thing I needed to pass the time."
+			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}That was just the thing I needed to pass the time.\p"
+			"I'll share my meal with you as a thanks."
 		))
 		closemessage
 
-		// TODO EVA reward?
+		giveitem(ITEM_UUMEGIRI, 3)
 
 		setflag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)
 	}

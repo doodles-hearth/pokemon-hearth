@@ -28,46 +28,58 @@ Common_EventScript_PkmnCenterNurse_Sleep::
 	checkmoney 500
 	compare VAR_RESULT, 0
 	goto_if_ne Common_EventScript_PkmnCenterNurse_Sleep_2
+	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
 	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_1
 	closemessage
 Common_EventScript_PkmnCenterNurse_Sleep_1:
 	hidemoneybox
+	removefieldmugshot
 	release
 	end
 
 Common_EventScript_PkmnCenterNurse_Sleep_2:
+	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
 	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_1
-	closemessage
 	showmoneybox 18, 0
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, Common_EventScript_PkmnCenterNurse_Sleep_Text_2, Common_EventScript_PkmnCenterNurse_Sleep_Text_3, Common_EventScript_PkmnCenterNurse_Sleep_Text_4
+	dynmultichoice 0, 0, FALSE, 10, 0, DYN_MULTICHOICE_CB_NONE, Common_EventScript_PkmnCenterNurse_Sleep_Text_2, Common_EventScript_PkmnCenterNurse_Sleep_Text_3, Common_EventScript_PkmnCenterNurse_Sleep_Text_4
+	compare VAR_RESULT, 0
+	goto_if_eq Common_EventScript_PkmnCenterNurse_Sleep_5
+	compare VAR_RESULT, 1
+	goto_if_eq Common_EventScript_PkmnCenterNurse_Sleep_5
+	hidemoneybox
+	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
+	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
+	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_6
+	closemessage
+	goto Common_EventScript_PkmnCenterNurse_Sleep_1
+
+Common_EventScript_PkmnCenterNurse_Sleep_5:
+	call Common_EventScript_PkmnCenterNurse_ChooseSleep
+	fadescreenswapbuffers FADE_TO_BLACK
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	callnative UpdateFollowingPokemon
 	switch VAR_RESULT
-	case 0, Common_EventScript_PkmnCenterNurse_Sleep_6
-	case 1, Common_EventScript_PkmnCenterNurse_Sleep_7
+	case 0, Common_EventScript_PkmnCenterNurse_Sleep_12
+	case 1, Common_EventScript_PkmnCenterNurse_Sleep_13
+Common_EventScript_PkmnCenterNurse_Sleep_10:
+	fadescreenswapbuffers FADE_FROM_BLACK
+	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
+	speakername Common_EventScript_PkmnCenterNurse_Sleep_Text_0
+	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_5
+	closemessage
 	goto Common_EventScript_PkmnCenterNurse_Sleep_1
 
-Common_EventScript_PkmnCenterNurse_Sleep_6:
-	call Common_EventScript_PkmnCenterNurse_ChooseSleep
-	fadescreenswapbuffers FADE_TO_BLACK
-	playfanfare MUS_HEAL
-	waitfanfare
-	special HealPlayerParty
-	callnative UpdateFollowingPokemon
+Common_EventScript_PkmnCenterNurse_Sleep_12:
 	fwdtime 8, 0
-	fadescreenswapbuffers FADE_FROM_BLACK
-	goto Common_EventScript_PkmnCenterNurse_Sleep_1
+	goto Common_EventScript_PkmnCenterNurse_Sleep_10
 
-Common_EventScript_PkmnCenterNurse_Sleep_7:
-	call Common_EventScript_PkmnCenterNurse_ChooseSleep
-	fadescreenswapbuffers FADE_TO_BLACK
-	playfanfare MUS_HEAL
-	waitfanfare
-	special HealPlayerParty
-	callnative UpdateFollowingPokemon
+Common_EventScript_PkmnCenterNurse_Sleep_13:
 	fwdtime 22, 0
-	fadescreenswapbuffers FADE_FROM_BLACK
-	goto Common_EventScript_PkmnCenterNurse_Sleep_1
+	goto Common_EventScript_PkmnCenterNurse_Sleep_10
 
 
 EventScript_PkmnCenterNurse_TakeAndHealPkmn::
@@ -310,6 +322,13 @@ Common_EventScript_PkmnCenterNurse_Sleep_Text_3:
 
 Common_EventScript_PkmnCenterNurse_Sleep_Text_4:
 	.string "Maybe later.$"
+
+Common_EventScript_PkmnCenterNurse_Sleep_Text_5:
+	.string "Did you sleep well?\n"
+	.string "Travel safely, now!$"
+
+Common_EventScript_PkmnCenterNurse_Sleep_Text_6:
+	.string "Come back anytime!$"
 
 Common_EventScript_PkmnCenterNurse_ChooseSleep_Text_0:
 	.string "Thank you! May you have a restful\n"

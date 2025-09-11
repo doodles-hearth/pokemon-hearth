@@ -29,8 +29,7 @@ script Common_EventScript_PcGuy {
 		setflag(FLAG_PC_EXPLAINED)
 		// TODO EVA do this only if we actually stored mons
 		msgbox(format(
-			"Oh, you want to store these Pokémon?\p"
-			"Alright, I'll just carry them over to the pasture!\p"
+			"Alrighty, I'll just do a quick trip to the pasture!\p"
 			"Just a minute!"
 		))
 		closemessage

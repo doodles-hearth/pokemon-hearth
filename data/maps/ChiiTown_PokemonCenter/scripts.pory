@@ -42,11 +42,10 @@ script ChiiTown_PokemonCenter_EventScript_Nurse {
 }
 
 script ChiiTown_PokemonCenter_EventScript_NurseSleep {
-	createfieldmugshot(MUGSHOT_SUNRISE_NURSE, EMOTE_NORMAL)
+	setvar(VAR_0x8009, MUGSHOT_SUNRISE_NURSE)
 	call(Common_EventScript_PkmnCenterNurse_Sleep)
 	waitmessage
 	waitbuttonpress
-	removefieldmugshot
 	release
 	end
 }
@@ -87,8 +86,7 @@ script ChiiTown_PokemonCenter_EventScript_Boy {
 	faceplayer
 	speakername("Little Girl")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm here with my mama!\p"
-		"The music lady's nice!"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm here with my mama!\nThe music lady's nice!"
 	))
 	closemessage
 	release
@@ -153,7 +151,7 @@ script ChiiTown_PokemonCenter_EventScript_NeedMarket {
 	faceplayer
 	speakername("Woman")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}Berries, ointments… Oh, right, I should get a few more Poké Balls from the town market!"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}Berries, ointments… I should get a few more Poké Balls from the market!"
 	))
 	closemessage
 	release
@@ -209,7 +207,7 @@ script ChiiTown_PokemonCenter_EventScript_MakeNamesUp {
 	speakername("Little Boy")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}You know what happens if I see a Pokémon and I don't know its name?\p"
-		"I just make it right up!\nI don't care about any silly “real” names!\p"
+		"I just make it right up!\nI don't care about silly “real” names!\p"
 		"And neither should you! Be free of the diktat of naming accuracy!"
 	))
 	closemessage

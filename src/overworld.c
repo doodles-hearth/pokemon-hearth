@@ -2419,7 +2419,7 @@ static void InitObjectEventsLink(void)
     gTotalCameraPixelOffsetX = 0;
     gTotalCameraPixelOffsetY = 0;
     ResetObjectEvents();
-    TrySpawnObjectEvents(0, 0);
+    TrySpawnObjectEvents(0, 0, TRUE);
     TryRunOnWarpIntoMapScript();
 }
 
@@ -2436,7 +2436,7 @@ static void InitObjectEventsLocal(void)
     InitPlayerAvatar(x, y, player->direction, gSaveBlock2Ptr->playerGender);
     SetPlayerAvatarTransitionFlags(player->transitionFlags);
     ResetInitialPlayerAvatarState();
-    TrySpawnObjectEvents(0, 0);
+    TrySpawnObjectEvents(0, 0, TRUE);
     FollowerNPC_HandleSprite();
     UpdateFollowingPokemon();
     TryRunOnWarpIntoMapScript();
@@ -3498,7 +3498,7 @@ static void SpriteCB_LinkPlayer(struct Sprite *sprite)
 
 #define ITEM_ICON_X     26
 #define ITEM_ICON_Y     24
-#define ITEM_TAG        0x2722 //same as money label
+#define ITEM_TAG        0x2722 | BLEND_IMMUNE_FLAG //same as money label
 
 bool8 GetSetItemObtained(u16 item, enum ItemObtainFlags caseId)
 {
@@ -3602,19 +3602,13 @@ void ScriptShowItemDescription(struct ScriptContext *ctx)
     else
         dst = gStringVar1;
 
-    if (GetSetItemObtained(item, FLAG_GET_ITEM_OBTAINED))
-    {
-        ShowItemIconSprite(item, FALSE, handleFlash);
-        return; //no box if item obtained previously
-    }
-
     SetWindowTemplateFields(&template, 0, 1, 1, 28, 3, 15, 8);
     sHeaderBoxWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sHeaderBoxWindowId, PIXEL_FILL(0));
     PutWindowTilemap(sHeaderBoxWindowId);
     CopyWindowToVram(sHeaderBoxWindowId, 3);
     SetStandardWindowBorderStyle(sHeaderBoxWindowId, FALSE);
-    DrawStdFrameWithCustomTileAndPalette(sHeaderBoxWindowId, FALSE, 0x214, 14);
+    DrawStdFrameWithCustomTileAndPalette(sHeaderBoxWindowId, FALSE, STD_WINDOW_BASE_TILE_NUM, 14);
 
     if (ReformatItemDescription(item, dst) == 1)
         textY = 4;
@@ -3817,7 +3811,7 @@ void ScriptShowMonDescribedNotification(struct ScriptContext *ctx)
         PutWindowTilemap(sHeaderBoxWindowId);
         CopyWindowToVram(sHeaderBoxWindowId, 3);
         SetStandardWindowBorderStyle(sHeaderBoxWindowId, FALSE);
-        DrawStdFrameWithCustomTileAndPalette(sHeaderBoxWindowId, FALSE, 0x214, 14);
+        DrawStdFrameWithCustomTileAndPalette(sHeaderBoxWindowId, FALSE, STD_WINDOW_BASE_TILE_NUM, 14);
 
         ShowMonIconSprite(species, handleFlash);
         AddTextPrinterParameterized(sHeaderBoxWindowId, 0, dst, ITEM_ICON_X + 2, 0, 0, NULL);

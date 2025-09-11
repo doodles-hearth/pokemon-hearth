@@ -2,9 +2,15 @@ mapscripts SunriseVillage_House1_MapScripts {
 }
 
 script SunriseVillage_House1_EventScript_Ralts {
+    lock
     setseenmon(SPECIES_RALTS)
     setspeakertomonname(SPECIES_RALTS)
-    msgbox(format("…"), MSGBOX_NPC)
+    playmoncry(SPECIES_RALTS, CRY_MODE_NORMAL)
+    applymovement(VAR_LAST_TALKED, moves(emote_pensive))
+    msgbox(format("…"))
+    waitmoncry
+    closemessage
+    release
 }
 
 script SunriseVillage_House1_EventScript_OldWoman {
