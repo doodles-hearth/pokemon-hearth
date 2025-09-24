@@ -44,6 +44,42 @@ static const u8 sRoundedDownGrayscaleMap[] = {
     31, 31
 };
 
+u16 ConvertColorToDesaturatedNaive(u16 input)
+{
+    u32 setting = 3;
+    u16 output = 0;
+    s32 rVal = input & 0x1F;
+    s32 gVal = (input >> 5) & 0x1f;
+    s32 bVal = (input >> 10) & 0x1f;
+    s32 i = (rVal + gVal + bVal) / 3;
+    s32 rD = i - rVal;
+    s32 gD = i - gVal;
+    s32 bD = i - bVal;
+    rD *= setting;
+    gD *= setting;
+    bD *= setting;
+    rD = rD >> 2;
+    gD = gD >> 2;
+    bD = bD >> 2;
+    s32 rValNew = rVal + rD;
+    s32 gValNew = gVal + gD;
+    s32 bValNew = bVal + bD;
+    if (rValNew < 0)
+        rValNew = 0;
+    else if (rValNew > 31)
+        rValNew = 31;
+    if (gValNew < 0)
+        gValNew = 0;
+    else if (gValNew > 31)
+        gValNew = 31;
+    if (bValNew < 0)
+        bValNew = 0;
+    else if (bValNew > 31)
+        bValNew = 31;
+    output = (bValNew << 10) | (gValNew << 5) | rValNew;
+    return output;
+}
+
 void LoadPalette(const void *src, u32 offset, u32 size)
 {
     CpuCopy16(src, &gPlttBufferUnfaded[offset], size);
