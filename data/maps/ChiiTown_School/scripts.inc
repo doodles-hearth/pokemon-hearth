@@ -10,8 +10,8 @@ ChiiTown_School_EventScript_Teacher::
 	gettimeofday
 	switch VAR_0x8000
 	case TIME_EARLY_MORNING, ChiiTown_School_EventScript_Teacher_2
-	case TIME_MORNING, ChiiTown_School_EventScript_Teacher_3
-	case TIME_EVENING, ChiiTown_School_EventScript_Teacher_4
+	case TIME_EVENING, ChiiTown_School_EventScript_Teacher_3
+	goto ChiiTown_School_EventScript_Teaching
 	return
 
 ChiiTown_School_EventScript_Teacher_2:
@@ -19,10 +19,6 @@ ChiiTown_School_EventScript_Teacher_2:
 	return
 
 ChiiTown_School_EventScript_Teacher_3:
-	goto ChiiTown_School_EventScript_Teaching
-	return
-
-ChiiTown_School_EventScript_Teacher_4:
 	goto ChiiTown_School_EventScript_EndingDay
 	return
 

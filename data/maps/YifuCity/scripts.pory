@@ -11,7 +11,6 @@ const FLAG_HIDE_HARIKO_NATSUKI_HOTPOT = FLAG_TEMP_5
 const LOCALID_SAMURAI_HIDEOUT = 38
 const LOCALID_LOCKDOWN_SAMURAI = 33
 const LOCALID_LOCKDOWN_SAMURAI_NORTH = 34
-const LOCALID_HARIKO = 35
 
 const VAR_HOUR_OF_DAY = VAR_0x8000
 
@@ -933,27 +932,28 @@ script YifuCity_Trigger_HarikoCriminals {
 	getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
 	switch(var(VAR_TEMP_2)) {
 		case 38:
-			applymovement(LOCALID_HARIKO, moves(face_right, emote_exclamation_mark, delay_16 * 3, walk_right * 2, face_up))
+			applymovement(LOCALID_YIFU_HARIKO_ENTRANCE, moves(face_right, emote_exclamation_mark, delay_16 * 3, walk_right * 2, face_up))
 		case 39:
-			applymovement(LOCALID_HARIKO, moves(face_right, emote_exclamation_mark, delay_16 * 3, walk_right * 3, face_up))
+			applymovement(LOCALID_YIFU_HARIKO_ENTRANCE, moves(face_right, emote_exclamation_mark, delay_16 * 3, walk_right * 3, face_up))
 		case 40:
-			applymovement(LOCALID_HARIKO, moves(face_right, emote_exclamation_mark, delay_16 * 3, walk_right * 4, face_up))
+			applymovement(LOCALID_YIFU_HARIKO_ENTRANCE, moves(face_right, emote_exclamation_mark, delay_16 * 3, walk_right * 4, face_up))
 	}
 	waitmovement(0)
 
 	speakername("Hariko")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello, {PLAYER}.\nAre you well, since last time?\p"
-		"Did you hear?\nThere was a robbery right here in Yifu City! Some people's Pokémon were stolen!\p"
-		"I heard there was a second decaying area west of here.\lI was planning on going there, but a Samurai was blocking the way, so I am waiting here.\p"
+		"Did you hear? There was a robbery,\nright here in Yifu City!\lSome people's Pokémon were stolen!\p"
+		"I heard there was a second decaying area west of here.\p"
+		"I wanted to go and see but a Samurai blocked the way.\p"
 		"Let us have lunch together before you leave. Yes? Good."
 	))
 	closemessage
 
-	applymovement(LOCALID_HARIKO, moves(walk_left * 10))
-	waitmovement(LOCALID_HARIKO)
+	applymovement(LOCALID_YIFU_HARIKO_ENTRANCE, moves(walk_left * 10))
+	waitmovement(LOCALID_YIFU_HARIKO_ENTRANCE)
 
-	removeobject(LOCALID_HARIKO)
+	removeobject(LOCALID_YIFU_HARIKO_ENTRANCE)
 	setflag(FLAG_HIDE_HARIKO_YIFU_CITY)
 	releaseall
 }
@@ -1747,3 +1747,67 @@ script(local) HarikoTurnsToNatsuki {
 	waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
 }
 
+script YifuCity_EventScript_Nurse {
+	lock
+	faceplayer
+
+	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+		if (flag(FLAG_ITEM_YIFU_CITY_HEAL_BALL)) {
+			speakername("Nurse")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}The more relaxed Chansey is, the stronger its healing power becomes!"
+			))
+			closemessage
+		} else {
+			speakername("Nurse")
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}I'm taking care of these Chansey while they're not on shift.\p"
+				"Their body has amazing healing virtues!\NPoké Balls lined with their eggshells heal the Pokémon they catch!\p"
+				"Don't believe me? Try for yourself!"
+			))
+			closemessage
+
+			giveitem(ITEM_HEAL_BALL, 2)
+			setflag(FLAG_ITEM_YIFU_CITY_HEAL_BALL)
+
+			setdescribedmon(SPECIES_CHANSEY)
+		}
+	} else {
+		applymovement(VAR_LAST_TALKED, moves(emote_sad))
+		speakername("Nurse")
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}We got kicked out of our own Refuge…\nI'm so anguished!"
+		))
+		closemessage
+	}
+
+	release
+}
+
+script YifuCity_EventScript_Chansey1 {
+	lock
+	faceplayer
+	setseenmon(SPECIES_CHANSEY)
+	playmoncry(SPECIES_CHANSEY, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_CHANSEY)
+	msgbox(format(
+		"Ha!"
+	))
+	waitmoncry
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_Chansey2 {
+	lock
+	faceplayer
+	setseenmon(SPECIES_CHANSEY)
+	playmoncry(SPECIES_CHANSEY, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_CHANSEY)
+	msgbox(format(
+		"Eyyyy!"
+	))
+	waitmoncry
+	closemessage
+	release
+}

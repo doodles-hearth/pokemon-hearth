@@ -258,8 +258,7 @@ ChiiTown_PokemonCenter_EventScript_Mom_Text_0:
 
 ChiiTown_PokemonCenter_EventScript_Mom_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}Traveling shamisen players take\n"
-	.string "shelter in Pokémon refuges when the\l"
-	.string "night falls.\p"
+	.string "shelter in Refuges at nightfall.\p"
 	.string "Their singing makes for such a cosy\n"
 	.string "atmosphere!$"
 

@@ -930,7 +930,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Nurse = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_32x32,
     .subspriteTables = sOamTables_32x32,
-    .anims = sAnimTable_Standard,
+    .anims = sAnimTable_Nurse,
     .images = sPicTable_Uume_Nurse,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
@@ -968,7 +968,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_FatGuy = {
     .tracks = TRACKS_FOOT,
     .oam = &gObjectEventBaseOam_32x32,
     .subspriteTables = sOamTables_32x32,
-    .anims = sAnimTable_Nurse,
+    .anims = sAnimTable_Standard,
     .images = sPicTable_Uume_FatGuy,
     .affineAnims = gDummySpriteAffineAnimTable,
 };

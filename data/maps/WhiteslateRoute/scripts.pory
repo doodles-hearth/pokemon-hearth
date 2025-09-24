@@ -61,8 +61,9 @@ script WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady {
 script WhiteslateRoute_EventScript_ShamisenChallenge {
 	speakername("Shamisen Player")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\lAre you them? Why, you must be!\lThere's no other explanation!\p"
-		"We Shamisen Players sing songs about the brave souls we meet on our travels.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\p"
+		"Are you them? Why, you must be!\nThere's no other explanation!\p"
+		"We Shamisen Players sing songs about brave souls we meet on our travels.\p"
 		"To test your worth, how about I submit you to a little challenge?\p"
 		"If you manage to reach the next city's Refuge in one go, without running back to the previous towns', I will meet you there and give you a little something.\p"
 		"I know we only just met, but I believe you will succeed!\p"
@@ -92,8 +93,9 @@ script WhiteslateRoute_EventScript_ShamisenPlayer {
 
 	speakername("Shamisen Player")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\lAre you them? Why, you must be!\lThere's no other explanation!\p"
-		"We Shamisen Players sing songs about the brave souls we meet on our travels.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\p"
+		"Are you them? Why, you must be!\nThere's no other explanation!\p"
+		"We Shamisen Players sing songs about brave souls we meet on our travels.\p"
 		"To test your worth, how about I submit you to a little challenge?\p"
 		"If you manage to reach the next city's Refuge in one go, without running back to the previous towns', I will meet you there and give you a little something.\p"
 		"I know we only just met, but I believe you will succeed!\p"
@@ -135,7 +137,7 @@ script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
 		case 1:
 			speakername("Shamisen Player")
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Understood. Come back when you are ready."
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Understood. Come back when you are done preparing."
 			))
 			closemessage
 
@@ -385,7 +387,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 	applymovement(LOCALID_SECRET_BASE_MAN, moves(emote_sad))
 	speakername("Man")
 	msgbox(format(
-		"Oh, man! You were here this whole time? My secret base is no longer secret!"
+		"Oh, man! You were here this whole time?\NMy secret base is no longer secret!"
 	))
 	
 	dynmultichoice(
@@ -436,7 +438,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 
 	speakername("Man")
 	msgbox(format(
-		"I'll keep looking for the perfect secret base spot! Maybe I'll see you around!"
+		"I'll keep looking for the perfect secret base spot!\NMaybe I'll see you around!"
 	))
 	closemessage
 

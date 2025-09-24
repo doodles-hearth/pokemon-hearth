@@ -493,8 +493,8 @@ ChiiTown_EventScript_BattlingBoy_Text_0:
 
 ChiiTown_EventScript_BattlingBoy_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Hello {STR_VAR_1}! We're top of our\n"
-	.string "class! That means we're strong! Wanna\l"
-	.string "battle us?$"
+	.string "class! That means we're strong!\l"
+	.string "Wanna battle us?$"
 
 ChiiTown_EventScript_BattlingBoy_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Wow, {STR_VAR_1}! Can you be our\n"

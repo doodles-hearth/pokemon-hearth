@@ -766,9 +766,9 @@ YifuCity_Trigger_HarikoCriminals_4:
 	speakername YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox YifuCity_Trigger_HarikoCriminals_Text_1
 	closemessage
-	applymovement 35, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_5
-	waitmovement 35
-	removeobject 35
+	applymovement LOCALID_YIFU_HARIKO_ENTRANCE, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_5
+	waitmovement LOCALID_YIFU_HARIKO_ENTRANCE
+	removeobject LOCALID_YIFU_HARIKO_ENTRANCE
 	setflag FLAG_HIDE_HARIKO_YIFU_CITY
 	releaseall
 	return
@@ -778,15 +778,15 @@ YifuCity_Trigger_HarikoCriminals_2:
 	goto YifuCity_Trigger_HarikoCriminals_1
 
 YifuCity_Trigger_HarikoCriminals_6:
-	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_0
+	applymovement LOCALID_YIFU_HARIKO_ENTRANCE, YifuCity_Trigger_HarikoCriminals_Movement_0
 	goto YifuCity_Trigger_HarikoCriminals_4
 
 YifuCity_Trigger_HarikoCriminals_7:
-	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_1
+	applymovement LOCALID_YIFU_HARIKO_ENTRANCE, YifuCity_Trigger_HarikoCriminals_Movement_1
 	goto YifuCity_Trigger_HarikoCriminals_4
 
 YifuCity_Trigger_HarikoCriminals_8:
-	applymovement 35, YifuCity_Trigger_HarikoCriminals_Movement_2
+	applymovement LOCALID_YIFU_HARIKO_ENTRANCE, YifuCity_Trigger_HarikoCriminals_Movement_2
 	goto YifuCity_Trigger_HarikoCriminals_4
 
 
@@ -1581,6 +1581,61 @@ HarikoTurnsToNatsuki:
 	return
 
 
+YifuCity_EventScript_Nurse::
+	lock
+	faceplayer
+	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_Nurse_2
+	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
+	speakername YifuCity_EventScript_Nurse_Text_0
+	msgbox YifuCity_EventScript_Nurse_Text_3
+	closemessage
+YifuCity_EventScript_Nurse_1:
+	release
+	return
+
+YifuCity_EventScript_Nurse_2:
+	goto_if_set FLAG_ITEM_YIFU_CITY_HEAL_BALL, YifuCity_EventScript_Nurse_5
+	speakername YifuCity_EventScript_Nurse_Text_0
+	msgbox YifuCity_EventScript_Nurse_Text_2
+	closemessage
+	giveitem ITEM_HEAL_BALL, 2
+	setflag FLAG_ITEM_YIFU_CITY_HEAL_BALL
+	setdescribedmon SPECIES_CHANSEY
+	goto YifuCity_EventScript_Nurse_1
+
+YifuCity_EventScript_Nurse_5:
+	speakername YifuCity_EventScript_Nurse_Text_0
+	msgbox YifuCity_EventScript_Nurse_Text_1
+	closemessage
+	goto YifuCity_EventScript_Nurse_1
+
+
+YifuCity_EventScript_Chansey1::
+	lock
+	faceplayer
+	setseenmon SPECIES_CHANSEY
+	playmoncry SPECIES_CHANSEY, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_CHANSEY
+	msgbox YifuCity_EventScript_Chansey1_Text_0
+	waitmoncry
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_Chansey2::
+	lock
+	faceplayer
+	setseenmon SPECIES_CHANSEY
+	playmoncry SPECIES_CHANSEY, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_CHANSEY
+	msgbox YifuCity_EventScript_Chansey2_Text_0
+	waitmoncry
+	closemessage
+	release
+	return
+
+
 YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0:
 	walk_in_place_fast_right
 	step_end
@@ -2254,15 +2309,13 @@ YifuCity_Trigger_HarikoCriminals_Text_0:
 YifuCity_Trigger_HarikoCriminals_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello, {PLAYER}.\n"
 	.string "Are you well, since last time?\p"
-	.string "Did you hear?\n"
-	.string "There was a robbery right here in Yifu\l"
-	.string "City! Some people's Pokémon were\l"
-	.string "stolen!\p"
+	.string "Did you hear? There was a robbery,\n"
+	.string "right here in Yifu City!\l"
+	.string "Some people's Pokémon were stolen!\p"
 	.string "I heard there was a second decaying\n"
-	.string "area west of here.\l"
-	.string "I was planning on going there, but a\l"
-	.string "Samurai was blocking the way, so I am\l"
-	.string "waiting here.\p"
+	.string "area west of here.\p"
+	.string "I wanted to go and see but a Samurai\n"
+	.string "blocked the way.\p"
 	.string "Let us have lunch together before\n"
 	.string "you leave. Yes? Good.$"
 
@@ -2526,3 +2579,29 @@ NotRightNow_Text_0:
 
 NotRightNow_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Be quick about it! I'm starving!$"
+
+YifuCity_EventScript_Nurse_Text_0:
+	.string "Nurse$"
+
+YifuCity_EventScript_Nurse_Text_1:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}The more relaxed Chansey is, the\n"
+	.string "stronger its healing power becomes!$"
+
+YifuCity_EventScript_Nurse_Text_2:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}I'm taking care of these Chansey\n"
+	.string "while they're not on shift.\p"
+	.string "Their body has amazing healing\n"
+	.string "virtues!\l"
+	.string "Poké Balls lined with their eggshells\l"
+	.string "heal the Pokémon they catch!\p"
+	.string "Don't believe me? Try for yourself!$"
+
+YifuCity_EventScript_Nurse_Text_3:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}We got kicked out of our own Refuge…\n"
+	.string "I'm so anguished!$"
+
+YifuCity_EventScript_Chansey1_Text_0:
+	.string "Ha!$"
+
+YifuCity_EventScript_Chansey2_Text_0:
+	.string "Eyyyy!$"

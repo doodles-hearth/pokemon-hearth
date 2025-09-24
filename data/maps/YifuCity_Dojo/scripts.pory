@@ -890,9 +890,7 @@ script YifuCity_Dojo_EventScript_Yutaka {
             "Is there a reason for the\n"
             "accoutrement you're donning?\p"
             "A carnival, perhaps?\nOr have you lost a bet?\p"
-            "Or do you simply lack a basic\n"
-            "sense of style to such an\l"
-            "extreme degree?\p"
+            "Or do you just lack a basic sense of style to such an extreme degree?\p"
             "Here you are, parading around\n"
             "in your peasant's clothes…\p"
             "(…Yutaka, you must not let this\n"
@@ -902,10 +900,7 @@ script YifuCity_Dojo_EventScript_Yutaka {
             "You shall be fighting my exquisite assortment of Pokémon,\l"
             "in the hopes of obtaining\l"
             "an official Token from me.\p"
-            "Please try not to be too\n"
-            "overwhelmed by my strength and,\l"
-            "most of all, by my impeccable\l"
-            "sense of fashion.\p"
+            "Try not to be too overwhelmed by my strength and, most of all, by my impeccable sense of fashion.\p"
             "Let this battle begin!"
 		),
 		format("How dare you!"),
@@ -915,7 +910,7 @@ script YifuCity_Dojo_EventScript_Yutaka {
 	// specialvar(VAR_RESULT, ShouldTryRematchBattle)
 	// goto_if_eq(VAR_RESULT, TRUE, MaguroHarbor_Dojo_EventScript_KoishiRematch)
 	msgbox(format(
-		"You shall achieve great things, despite your fashion faux-pas.\p"
+		"You shall achieve great things,\ndespite your fashion faux-pas.\p"
         "I hope to battle you again."
 	))
 
