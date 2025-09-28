@@ -5,7 +5,7 @@ WindsweptRoute_MapScripts::
 WindsweptRoute_EventScript_OvergrownTrees::
 	lock
 	faceplayer
-	speakername WindsweptRoute_EventScript_OvergrownTrees_Text_0
+	setspeaker WindsweptRoute_EventScript_OvergrownTrees_Text_0
 	goto_if_set FLAG_CUT_TREE_SILVER_TUNNEL, WindsweptRoute_EventScript_OvergrownTrees_2
 	msgbox WindsweptRoute_EventScript_OvergrownTrees_Text_2
 WindsweptRoute_EventScript_OvergrownTrees_1:
@@ -19,21 +19,21 @@ WindsweptRoute_EventScript_OvergrownTrees_2:
 
 WindsweptRoute_EventScript_Trainer1::
 	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer1_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
-	speakername WindsweptRoute_EventScript_Trainer1_Text_2
+	setspeaker WindsweptRoute_EventScript_Trainer1_Text_2
 	msgbox WindsweptRoute_EventScript_Trainer1_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Itamae::
 	trainerbattle_single TRAINER_ITAMAE, WindsweptRoute_EventScript_Itamae_Text_0, WindsweptRoute_EventScript_Itamae_Text_1
-	speakername WindsweptRoute_EventScript_Itamae_Text_2
+	setspeaker WindsweptRoute_EventScript_Itamae_Text_2
 	msgbox WindsweptRoute_EventScript_Itamae_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Trainer3::
 	trainerbattle_single TRAINER_MAKOTO_1, WindsweptRoute_EventScript_Trainer3_Text_0, WindsweptRoute_EventScript_Trainer3_Text_1
-	speakername WindsweptRoute_EventScript_Trainer3_Text_2
+	setspeaker WindsweptRoute_EventScript_Trainer3_Text_2
 	msgbox WindsweptRoute_EventScript_Trainer3_Text_3, MSGBOX_AUTOCLOSE
 	end
 
@@ -41,7 +41,7 @@ WindsweptRoute_EventScript_Trainer3::
 WindsweptRoute_EventScript_Fisherman_ShortRod::
 	lock
 	faceplayer
-	speakername WindsweptRoute_EventScript_Fisherman_ShortRod_Text_0
+	setspeaker WindsweptRoute_EventScript_Fisherman_ShortRod_Text_0
 	msgbox WindsweptRoute_EventScript_Fisherman_ShortRod_Text_1
 	closemessage
 	release
@@ -50,28 +50,28 @@ WindsweptRoute_EventScript_Fisherman_ShortRod::
 
 WindsweptRoute_EventScript_Roku::
 	trainerbattle_single TRAINER_ROKU, WindsweptRoute_EventScript_Roku_Text_0, WindsweptRoute_EventScript_Roku_Text_1
-	speakername WindsweptRoute_EventScript_Roku_Text_2
+	setspeaker WindsweptRoute_EventScript_Roku_Text_2
 	msgbox WindsweptRoute_EventScript_Roku_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Trainer4::
 	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer4_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
-	speakername WindsweptRoute_EventScript_Trainer1_Text_2
+	setspeaker WindsweptRoute_EventScript_Trainer1_Text_2
 	msgbox WindsweptRoute_EventScript_Trainer4_Text_1, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Trainer5::
 	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer4_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
-	speakername WindsweptRoute_EventScript_Trainer1_Text_2
+	setspeaker WindsweptRoute_EventScript_Trainer1_Text_2
 	msgbox WindsweptRoute_EventScript_Trainer4_Text_1, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Trainer6::
 	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer4_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
-	speakername WindsweptRoute_EventScript_Trainer1_Text_2
+	setspeaker WindsweptRoute_EventScript_Trainer1_Text_2
 	msgbox WindsweptRoute_EventScript_Trainer4_Text_1, MSGBOX_AUTOCLOSE
 	end
 
@@ -81,7 +81,7 @@ WindsweptRoute_EventScript_TrainerBattleRoadblock::
 	playbgm MUS_VS_TRAINER, FALSE
 	applymovement 10, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_0
 	waitmovement 0
-	speakername WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_0
+	setspeaker WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_0
 	msgbox WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_1
 	closemessage
 	playmoncry SPECIES_NUZLEAF, CRY_MODE_ENCOUNTER
@@ -92,7 +92,7 @@ WindsweptRoute_EventScript_TrainerBattleRoadblock::
 	waitse
 	applymovement 16, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_2
 	waitmovement 0
-	speakername WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_2
+	setspeaker WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_2
 	msgbox WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_3
 	closemessage
 	applymovement 18, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_3

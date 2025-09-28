@@ -1719,19 +1719,6 @@ bool8 ScrCmd_release(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_setspeaker(struct ScriptContext *ctx)
-{
-    const u8 *name = (const u8 *)ScriptReadWord(ctx);
-    SetSpeakerName(name);
-    return FALSE;
-}
-
-bool8 ScrCmd_removespeaker(struct ScriptContext *ctx)
-{
-    SetSpeakerName(NULL);
-    return FALSE;
-}
-
 bool8 ScrCmd_message(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
@@ -2882,7 +2869,7 @@ bool8 ScrCmd_setmetatile(struct ScriptContext *ctx)
     if (!isImpassable)
         MapGridSetMetatileIdAt(x, y, metatileId);
     else
-        MapGridSetMetatileIdAt(x, y, metatileId | MAPGRID_COLLISION_MASK);
+        MapGridSetMetatileIdAt(x, y, metatileId | MAPGRID_IMPASSABLE);
     return FALSE;
 }
 

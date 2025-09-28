@@ -17,7 +17,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	waitmovement(0)
 	delay(48)
 	faceplayer
-	speakername("Natsuki")
+	setspeaker("Natsuki")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, {PLAYER}! Come on, sit down next to me."
 	))
@@ -38,7 +38,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	applymovement(LOCALID_RIVAL, SunriseVillage_Beach_Movement_RivalSitsOnBench)
 	waitmovement(0)
 
-	speakername("Natsuki")
+	setspeaker("Natsuki")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}It's been crazy lately, huh?\p"
 		"With the Pokémon in Ginko Woods,\nand the volcano…\p"
@@ -65,7 +65,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	switch(var(VAR_RESULT)) {
 		case 0:
-			speakername("Natsuki")
+			setspeaker("Natsuki")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Nah, you know me.\nWe'll figure it out when we get there.\p"
 				"That's what I've always done,\neverything turns out fine eventually."
@@ -75,7 +75,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			applymovement(LOCALID_RIVAL, Common_Movement_Delay48)
 			waitmovement(0)
 
-			speakername("Natsuki")
+			setspeaker("Natsuki")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, look.\p"
 				"You can see Yifu City very clearly\ntoday, it's gorgeous!"
@@ -91,13 +91,13 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp)
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 
-			speakername("Natsuki")
+			setspeaker("Natsuki")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}You okay there, {PLAYER}?\nYou look troubled.\p"
 				"Aren't you excited to become\na Pokémon Wielder?"
 			))
 		case 1:
-			speakername("Natsuki")
+			setspeaker("Natsuki")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Huh?…\p"
 				"…Oh, sorry, I was just wondering\nwhich Pokémon I'm gonna be getting."
@@ -107,7 +107,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			applymovement(LOCALID_RIVAL, Common_Movement_Delay48)
 			waitmovement(0)
 
-			speakername("Natsuki")
+			setspeaker("Natsuki")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, look.\p"
 				"You can see Yifu City very clearly\ntoday, it's gorgeous!\p"
@@ -120,7 +120,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp)
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 
-			speakername("Natsuki")
+			setspeaker("Natsuki")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What about you, {PLAYER}?\nYou excited about getting\lyour own Pokémon?"
 			))
@@ -139,7 +139,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	)
 	closemessage
 
-	speakername("Natsuki")
+	setspeaker("Natsuki")
 	switch (var(VAR_RESULT)) {
 		case 0:
 			msgbox(format(
@@ -188,7 +188,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp)
 	waitmovement(0)
 
-	speakername("Natsuki")
+	setspeaker("Natsuki")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah, there it goes again!\n"
 		"You good, {PLAYER}?\p"
@@ -205,7 +205,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	applymovement(LOCALID_RIVAL, SunriseVillage_Beach_Movement_RivalSeesDistribution)
 	waitmovement(0)
 
-	speakername("Natsuki")
+	setspeaker("Natsuki")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Aw Shuckles, the distribution's\nalready started!\p"
 		"Let's go, {PLAYER}!!"
@@ -289,7 +289,7 @@ script SunriseVillage_Beach_EventScript_Corsola2 {
 script SunriseVillage_Event_LookingAtYifu {
 	lock
 	faceplayer
-	speakername("Little Boy")
+	setspeaker("Little Boy")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}My best friend lives all the way over there in Yifu City!\p"
 		"I don't get to see her often. I miss her…"
@@ -304,7 +304,7 @@ script SunriseVillage_Event_LookingAtYifu {
 script SunriseVillage_Event_PokemonWontComeOut {
 	lock
 	faceplayer
-	speakername("Little Boy")
+	setspeaker("Little Boy")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}I'm going to catch my first Pokémon myself, all on my own!"
 	))
@@ -312,7 +312,7 @@ script SunriseVillage_Event_PokemonWontComeOut {
 	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
 	waitmovement(0)
 
-	speakername("Little Boy")
+	setspeaker("Little Boy")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}Pspspsps… Come on out, Pokémon… Pspsps…"
 	))

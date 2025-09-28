@@ -15,7 +15,7 @@ Beachbound_Maguro_Gate_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 
 Beachbound_Maguro_Gate_EventScript_Guard::
 	lock
-	speakername Beachbound_Maguro_Gate_EventScript_Guard_Text_0
+	setspeaker Beachbound_Maguro_Gate_EventScript_Guard_Text_0
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq Beachbound_Maguro_Gate_EventScript_Guard_2
 	msgbox Beachbound_Maguro_Gate_EventScript_Guard_Text_2

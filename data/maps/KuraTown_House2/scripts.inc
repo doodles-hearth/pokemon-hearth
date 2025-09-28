@@ -58,7 +58,7 @@ KuraTown_House2_EventScript_Ashii_12:
 
 AshiiScript_FirstEncounter:
 	applymovement 1, AshiiScript_FirstEncounter_Movement_0
-	speakername AshiiScript_FirstEncounter_Text_0
+	setspeaker AshiiScript_FirstEncounter_Text_0
 	msgbox AshiiScript_FirstEncounter_Text_1
 	closemessage
 	delay 30
@@ -69,14 +69,14 @@ AshiiScript_FirstEncounter:
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	speakername AshiiScript_FirstEncounter_Text_0
+	setspeaker AshiiScript_FirstEncounter_Text_0
 	msgbox AshiiScript_FirstEncounter_Text_2
 	closemessage
 	delay 30
 	playse SE_PIN
 	applymovement 1, AshiiScript_FirstEncounter_Movement_1
 	waitmovement 0
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_FirstEncounter_Text_4
 	closemessage
 	giveitem ITEM_ASHIIS_SCARF
@@ -87,7 +87,7 @@ AshiiScript_FirstEncounter:
 
 AshiiScript_DidYouGiveTamaScarf:
 	faceplayer
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_DidYouGiveTamaScarf_Text_0
 	closemessage
 	return
@@ -96,7 +96,7 @@ AshiiScript_DidYouGiveTamaScarf:
 AshiiScript_ReportBackAfterGivingScarf:
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
 	faceplayer
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_ReportBackAfterGivingScarf_Text_0
 	mcdialogue AshiiScript_ReportBackAfterGivingScarf_Text_1, AshiiScript_ReportBackAfterGivingScarf_Text_2, AshiiScript_ReportBackAfterGivingScarf_Text_3
 	closemessage
@@ -107,28 +107,28 @@ AshiiScript_ReportBackAfterGivingScarf:
 	playse SE_PIN
 	applymovement 1, AshiiScript_ReportBackAfterGivingScarf_Movement_1
 	waitmovement 0
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_ReportBackAfterGivingScarf_Text_4
 	return
 
 
 AshiiScript_Rocks:
 	faceplayer
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_Rocks_Text_0
 	return
 
 
 AshiiScript_EscortAshii:
 	faceplayer
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_EscortAshii_Text_0
 	mcdialogue AshiiScript_EscortAshii_Text_1, AshiiScript_EscortAshii_Text_2
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq AshiiScript_EscortAshii_1
 	applymovement 1, AshiiScript_EscortAshii_Movement_0
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_EscortAshii_Text_3
 	closemessage
 	return
@@ -162,7 +162,7 @@ AshiiScript_PlayerAcceptsEscort:
 	compare VAR_0x8000, TIME_DEAD_NIGHT
 	goto_if_eq AshiiScript_PlayerAcceptsEscort_2
 	applymovement 1, AshiiScript_PlayerAcceptsEscort_Movement_1
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_PlayerAcceptsEscort_Text_1
 	closemessage
 	delay 40
@@ -179,7 +179,7 @@ AshiiScript_PlayerAcceptsEscort_1:
 
 AshiiScript_PlayerAcceptsEscort_2:
 	applymovement 1, AshiiScript_PlayerAcceptsEscort_Movement_1
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_PlayerAcceptsEscort_Text_0
 	delay 40
 	pausefakertc
@@ -191,12 +191,12 @@ AshiiScript_PlayerAcceptsEscort_2:
 AshiiScript_Reward:
 	faceplayer
 	applymovement 1, AshiiScript_Reward_Movement_0
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_Reward_Text_0
 	closemessage
 	giveitem ITEM_COVERT_CLOAK
 	applymovement 1, AshiiScript_Reward_Movement_1
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_Reward_Text_1
 	closemessage
 	completequest QUEST_SAKURALOVERS
@@ -206,7 +206,7 @@ AshiiScript_Reward:
 
 AshiiScript_QuestOver:
 	faceplayer
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker AshiiScript_FirstEncounter_Text_3
 	msgbox AshiiScript_QuestOver_Text_0
 	closemessage
 	return

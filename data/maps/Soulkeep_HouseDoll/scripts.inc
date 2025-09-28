@@ -5,7 +5,7 @@ Soulkeep_HouseDoll_MapScripts::
 Soulkeep_HouseDoll_EventScript_Mom::
 	lock
 	faceplayer
-	speakername Soulkeep_HouseDoll_EventScript_Mom_Text_0
+	setspeaker Soulkeep_HouseDoll_EventScript_Mom_Text_0
 	msgbox Soulkeep_HouseDoll_EventScript_Mom_Text_1
 	closemessage
 	release
@@ -15,7 +15,7 @@ Soulkeep_HouseDoll_EventScript_Mom::
 Soulkeep_HouseDoll_EventScript_Dad::
 	lock
 	faceplayer
-	speakername Soulkeep_HouseDoll_EventScript_Dad_Text_0
+	setspeaker Soulkeep_HouseDoll_EventScript_Dad_Text_0
 	msgbox Soulkeep_HouseDoll_EventScript_Dad_Text_1
 	closemessage
 	release

@@ -24,7 +24,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 
 	special(GetPlayerBrotherSisterString)
-	speakername("Big Sis")
+	setspeaker("Big Sis")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Oh, {PLAYER}, you're up! Ready for the big event?\p"
 		"Are you excited? I sure hope you are, because I'm VERY EXCITED!\p"
@@ -56,7 +56,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 	lock
 	faceplayer
-	speakername("Big Sis")
+	setspeaker("Big Sis")
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) <= 4) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}What are you still doing here? You're late for the distribution!\p"
@@ -87,7 +87,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 
 		giveitem(ITEM_TOWN_MAP)
 
-		speakername("Big Sis")
+		setspeaker("Big Sis")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Ah, one last thing! Take my good luck statuette with you.\p"
 			"I like the tradition, so indulge me, alright? Please? Everyone carries one!"
@@ -97,7 +97,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		giveitem(ITEM_ENTEI_STATUETTE)
 
 		special(GetPlayerBrotherSisterString)
-		speakername("Big Sis")
+		setspeaker("Big Sis")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Alrighty! You all set? Have a safe journey, little {STR_VAR_1}.\p"
 			"Maybe I'll see you around!\p"
@@ -117,7 +117,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		))
 		closemessage
 		call(Common_EventScript_OutOfCenterPartyHeal)
-		speakername("Big Sis")
+		setspeaker("Big Sis")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}See you around, little {STR_VAR_1}."
 		))

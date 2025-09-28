@@ -4,7 +4,7 @@ BeachboundRoute_MapScripts::
 
 BeachboundRoute_EventScript_RunningBoy::
 	lock
-	speakername BeachboundRoute_EventScript_RunningBoy_Text_0
+	setspeaker BeachboundRoute_EventScript_RunningBoy_Text_0
 	applymovement VAR_LAST_TALKED, BeachboundRoute_EventScript_RunningBoy_Movement_0
 	msgbox BeachboundRoute_EventScript_RunningBoy_Text_1
 	closemessage
@@ -14,7 +14,7 @@ BeachboundRoute_EventScript_RunningBoy::
 
 BeachboundRoute_EventScript_RunningGirl::
 	lock
-	speakername BeachboundRoute_EventScript_RunningGirl_Text_0
+	setspeaker BeachboundRoute_EventScript_RunningGirl_Text_0
 	applymovement VAR_LAST_TALKED, BeachboundRoute_EventScript_RunningGirl_Movement_0
 	msgbox BeachboundRoute_EventScript_RunningGirl_Text_1
 	closemessage
@@ -24,7 +24,7 @@ BeachboundRoute_EventScript_RunningGirl::
 
 BeachboundRoute_EventScript_AnnoyedGirl::
 	gettimeofday
-	speakername BeachboundRoute_EventScript_AnnoyedGirl_Text_0
+	setspeaker BeachboundRoute_EventScript_AnnoyedGirl_Text_0
 	compare VAR_0x8000, TIME_EVENING
 	goto_if_ne BeachboundRoute_EventScript_AnnoyedGirl_3
 BeachboundRoute_EventScript_AnnoyedGirl_2:
@@ -45,7 +45,7 @@ BeachboundRoute_EventScript_AnnoyedBoy::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, BeachboundRoute_EventScript_AnnoyedBoy_Movement_0
-	speakername BeachboundRoute_EventScript_AnnoyedBoy_Text_0
+	setspeaker BeachboundRoute_EventScript_AnnoyedBoy_Text_0
 	msgbox BeachboundRoute_EventScript_AnnoyedBoy_Text_1
 	closemessage
 	release
@@ -77,14 +77,14 @@ BeachboundRoute_EventScript_Wooloo::
 
 
 BeachboundRoute_EventScript_Shepherd::
-	speakername BeachboundRoute_EventScript_Shepherd_Text_0
+	setspeaker BeachboundRoute_EventScript_Shepherd_Text_0
 	msgbox BeachboundRoute_EventScript_Shepherd_Text_1, MSGBOX_NPC
 	return
 
 
 BeachboundRoute_EventScript_Karu::
 	trainerbattle_single TRAINER_KARU, BeachboundRoute_EventScript_Karu_Text_0, BeachboundRoute_EventScript_Karu_Text_1, BeachboundRoute_EventScript_Karu_PostBattle
-	speakername BeachboundRoute_EventScript_Karu_Text_2
+	setspeaker BeachboundRoute_EventScript_Karu_Text_2
 	msgbox BeachboundRoute_EventScript_Karu_Text_3, MSGBOX_AUTOCLOSE
 	end
 
@@ -97,14 +97,14 @@ BeachboundRoute_EventScript_Karu_PostBattle::
 
 BeachboundRoute_EventScript_Kin::
 	trainerbattle_single TRAINER_KIN_1, BeachboundRoute_EventScript_Kin_Text_0, BeachboundRoute_EventScript_Kin_Text_1
-	speakername BeachboundRoute_EventScript_Kin_Text_2
+	setspeaker BeachboundRoute_EventScript_Kin_Text_2
 	msgbox BeachboundRoute_EventScript_Kin_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 BeachboundRoute_EventScript_Kouta::
 	trainerbattle_single TRAINER_KOUTA, BeachboundRoute_EventScript_Kouta_Text_0, BeachboundRoute_EventScript_Kouta_Text_1
-	speakername BeachboundRoute_EventScript_Kouta_Text_2
+	setspeaker BeachboundRoute_EventScript_Kouta_Text_2
 	setnamedmon SPECIES_MAREEP
 	msgbox BeachboundRoute_EventScript_Kouta_Text_3
 	release
@@ -114,7 +114,7 @@ BeachboundRoute_EventScript_Kouta::
 BeachboundRoute_EventScript_Masato::
 	trainerbattle_single TRAINER_MASATO, BeachboundRoute_EventScript_Masato_Text_0, BeachboundRoute_EventScript_Masato_Text_1
 	setnamedmon SPECIES_KRICKETOT
-	speakername BeachboundRoute_EventScript_Masato_Text_2
+	setspeaker BeachboundRoute_EventScript_Masato_Text_2
 	msgbox BeachboundRoute_EventScript_Masato_Text_3
 	release
 	end
@@ -122,7 +122,7 @@ BeachboundRoute_EventScript_Masato::
 
 BeachboundRoute_EventScript_SomeoneCallingForHelp::
 	lock
-	speakername BeachboundRoute_EventScript_SomeoneCallingForHelp_Text_0
+	setspeaker BeachboundRoute_EventScript_SomeoneCallingForHelp_Text_0
 	msgbox BeachboundRoute_EventScript_SomeoneCallingForHelp_Text_1
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
@@ -138,7 +138,7 @@ BeachboundRoute_EventScript_SomeoneCallingForHelp::
 
 BeachboundRoute_EventScript_WhereAreYouGoing::
 	lock
-	speakername BeachboundRoute_EventScript_SomeoneCallingForHelp_Text_0
+	setspeaker BeachboundRoute_EventScript_SomeoneCallingForHelp_Text_0
 	msgbox BeachboundRoute_EventScript_WhereAreYouGoing_Text_0
 	specialvar VAR_RESULT, GetPlayerFacingDirection
 	switch VAR_RESULT
@@ -194,7 +194,7 @@ BeachboundRoute_EventScript_Mugging::
 	compare VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 3
 	goto_if_lt BeachboundRoute_EventScript_Mugging_2
 	turnobject 19, DIR_SOUTH
-	speakername BeachboundRoute_EventScript_Mugging_Text_14
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_16
 BeachboundRoute_EventScript_Mugging_1:
 	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_1
@@ -207,43 +207,43 @@ BeachboundRoute_EventScript_Mugging_1:
 	setvar VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 4
 	applymovement 18, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 18
-	speakername BeachboundRoute_EventScript_Mugging_Text_19
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_19
 	msgbox BeachboundRoute_EventScript_Mugging_Text_20
 	closemessage
 	applymovement 21, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 21
-	speakername BeachboundRoute_EventScript_Mugging_Text_19
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_19
 	msgbox BeachboundRoute_EventScript_Mugging_Text_21
 	closemessage
 	delay 24
 	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_0
-	speakername BeachboundRoute_EventScript_Mugging_Text_14
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_22
 	closemessage
 	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_3
 	waitmovement 19
-	speakername BeachboundRoute_EventScript_Mugging_Text_14
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_23
 	closemessage
 	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_3
 	waitmovement 0
-	speakername BeachboundRoute_EventScript_Mugging_Text_19
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_19
 	msgbox BeachboundRoute_EventScript_Mugging_Text_24
 	closemessage
 	delay 24
 	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_4
 	waitmovement 0
-	speakername BeachboundRoute_EventScript_Mugging_Text_14
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_25
 	closemessage
 	delay 48
 	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_3
 	waitmovement 0
-	speakername BeachboundRoute_EventScript_Mugging_Text_14
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_26
 	closemessage
 	turnobject 19, DIR_NORTH
-	speakername BeachboundRoute_EventScript_Mugging_Text_14
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_27
 	closemessage
 	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_5
@@ -272,11 +272,11 @@ BeachboundRoute_EventScript_Mugging_1:
 	delay 60
 	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_11
 	waitmovement 17
-	speakername BeachboundRoute_EventScript_Mugging_Text_28
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_28
 	msgbox BeachboundRoute_EventScript_Mugging_Text_29
 	closemessage
 	giveitem ITEM_WHITE_HERB
-	speakername BeachboundRoute_EventScript_Mugging_Text_28
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_28
 	msgbox BeachboundRoute_EventScript_Mugging_Text_30
 	closemessage
 	addvar VAR_PLAYER_REPUTATION, 1
@@ -289,13 +289,13 @@ BeachboundRoute_EventScript_Mugging_2:
 	setvar VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 3
 	applymovement 18, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	speakername BeachboundRoute_EventScript_Mugging_Text_0
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_0
 	msgbox BeachboundRoute_EventScript_Mugging_Text_1
 	closemessage
 	applymovement 21, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_0
-	speakername BeachboundRoute_EventScript_Mugging_Text_0
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_0
 	msgbox BeachboundRoute_EventScript_Mugging_Text_2
 	closemessage
 	delay 40
@@ -305,7 +305,7 @@ BeachboundRoute_EventScript_Mugging_2:
 	waitmovement 0
 	waitse
 	delay 48
-	speakername BeachboundRoute_EventScript_Mugging_Text_0
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_0
 	msgbox BeachboundRoute_EventScript_Mugging_Text_3
 	applymovement 18, Common_Movement_FaceDown
 	applymovement 21, Common_Movement_FaceDown
@@ -315,7 +315,7 @@ BeachboundRoute_EventScript_Mugging_2:
 	waitmovement 20
 	mcdialogue BeachboundRoute_EventScript_Mugging_Text_4, BeachboundRoute_EventScript_Mugging_Text_5, BeachboundRoute_EventScript_Mugging_Text_6
 	closemessage
-	speakername BeachboundRoute_EventScript_Mugging_Text_0
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_0
 	switch VAR_RESULT
 	case 0, BeachboundRoute_EventScript_Mugging_7
 	case 1, BeachboundRoute_EventScript_Mugging_8
@@ -324,17 +324,17 @@ BeachboundRoute_EventScript_Mugging_5:
 	closemessage
 	applymovement 20, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	speakername BeachboundRoute_EventScript_Mugging_Text_10
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_10
 	msgbox BeachboundRoute_EventScript_Mugging_Text_11
 	closemessage
 	turnobject 19, DIR_NORTH
 	delay 40
-	speakername BeachboundRoute_EventScript_Mugging_Text_12
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_12
 	msgbox BeachboundRoute_EventScript_Mugging_Text_13
 	closemessage
 	turnobject 19, DIR_SOUTH
 	delay 24
-	speakername BeachboundRoute_EventScript_Mugging_Text_14
+	setspeaker BeachboundRoute_EventScript_Mugging_Text_14
 	msgbox BeachboundRoute_EventScript_Mugging_Text_15
 	closemessage
 	goto BeachboundRoute_EventScript_Mugging_1
@@ -357,25 +357,25 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime::
 	faceplayer
 	goto_if_set FLAG_MET_TRAVELING_MERCHANT_2ND_TIME, BeachboundRoute_EventScript_TravelingMerchantSecondTime_2
 	goto_if_set FLAG_MET_TRAVELING_MERCHANT, BeachboundRoute_EventScript_TravelingMerchantSecondTime_3
-	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
+	setspeaker BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
 	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_3
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_1:
 	setflag FLAG_MET_TRAVELING_MERCHANT
 	setflag FLAG_MET_TRAVELING_MERCHANT_2ND_TIME
 	limitedpokemart LIMITED_SHOP_1
-	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
+	setspeaker BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
 	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_4
 	closemessage
 	release
 	return
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_2:
-	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
+	setspeaker BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
 	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_1
 	goto BeachboundRoute_EventScript_TravelingMerchantSecondTime_1
 
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_3:
-	speakername BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
+	setspeaker BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_0
 	msgbox BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2
 	goto BeachboundRoute_EventScript_TravelingMerchantSecondTime_1
 

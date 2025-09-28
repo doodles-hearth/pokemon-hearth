@@ -57,7 +57,7 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 SakuTown_PokemonCenter_EventScript_Nurse::
 	lock
 	faceplayer
-	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
+	setspeaker SakuTown_PokemonCenter_EventScript_Nurse_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_Nurse_Text_1
 	fadescreenswapbuffers FADE_TO_BLACK
 	playfanfare MUS_HEAL
@@ -65,7 +65,7 @@ SakuTown_PokemonCenter_EventScript_Nurse::
 	special HealPlayerParty
 	callnative UpdateFollowingPokemon
 	fadescreenswapbuffers FADE_FROM_BLACK
-	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
+	setspeaker SakuTown_PokemonCenter_EventScript_Nurse_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_Nurse_Text_2
 	turnobject VAR_LAST_TALKED, DIR_SOUTH
 	release
@@ -75,7 +75,7 @@ SakuTown_PokemonCenter_EventScript_Nurse::
 SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks::
 	lock
 	faceplayer
-	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
+	setspeaker SakuTown_PokemonCenter_EventScript_Nurse_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0
 	closemessage
 	release
@@ -87,16 +87,16 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest::
 	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2
 	applymovement 1, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_0
 	waitmovement 0
-	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
+	setspeaker SakuTown_PokemonCenter_EventScript_Nurse_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_1
-	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2
 	closemessage
 	applymovement 1, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_2
 	waitmovement 0
-	speakername SakuTown_PokemonCenter_EventScript_Nurse_Text_0
+	setspeaker SakuTown_PokemonCenter_EventScript_Nurse_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_3
 	closemessage
 	applymovement 9, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_0
@@ -107,7 +107,7 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest::
 SakuTown_PokemonCenter_EventScript_Farmer1::
 	lock
 	faceplayer
-	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	returnqueststate QUEST_SAKURASCYTHER
 	switch VAR_RESULT
 	case 1, SakuTown_PokemonCenter_EventScript_Farmer1_3
@@ -159,7 +159,7 @@ HealedScytherScript:
 	applymovement 11, HealedScytherScript_Movement_0
 	waitmovement 0
 	waitse
-	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox HealedScytherScript_Text_2
 	closemessage
 	playfanfare MUS_OBTAIN_ITEM
@@ -169,7 +169,7 @@ HealedScytherScript:
 	closemessage
 	applymovement 11, HealedScytherScript_Movement_1
 	waitmovement 0
-	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox HealedScytherScript_Text_4
 	closemessage
 	applymovement 13, HealedScytherScript_Movement_2
@@ -184,11 +184,11 @@ HealedScytherScript:
 	applymovement 12, HealedScytherScript_Movement_5
 	waitmovement 11
 	waitmovement 12
-	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox HealedScytherScript_Text_6
 	closemessage
 	mcdialogue HealedScytherScript_Text_7
-	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox HealedScytherScript_Text_8
 	applymovement 11, HealedScytherScript_Movement_6
 	waitmovement 0
@@ -198,12 +198,12 @@ HealedScytherScript:
 	msgbox HealedScytherScript_Text_9
 	waitmoncry
 	closemessage
-	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox HealedScytherScript_Text_10
 	closemessage
 	applymovement 11, HealedScytherScript_Movement_8
 	waitmovement 0
-	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox HealedScytherScript_Text_11
 	closemessage
 	applymovement 12, HealedScytherScript_Movement_9
@@ -222,7 +222,7 @@ HealedScytherScript:
 
 SakuTown_PokemonCenter_EventScript_Farmer2::
 	lock
-	speakername SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	msgbox SakuTown_PokemonCenter_EventScript_Farmer2_Text_0
 	closemessage
 	playmoncry SPECIES_SCYTHER, CRY_MODE_WEAK
@@ -237,7 +237,7 @@ SakuTown_PokemonCenter_EventScript_Farmer2::
 SakuTown_PokemonCenter_EventScript_Pushing::
 	delay 30
 	faceplayer
-	speakername SakuTown_PokemonCenter_EventScript_Pushing_Text_0
+	setspeaker SakuTown_PokemonCenter_EventScript_Pushing_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_Pushing_Text_1
 	closemessage
 	switch VAR_FACING
@@ -261,7 +261,7 @@ SakuTown_PokemonCenter_EventScript_Pushing_4:
 
 SakuTown_PokemonCenter_EventScript_Grunt1::
 	lock
-	speakername SakuTown_PokemonCenter_EventScript_Pushing_Text_0
+	setspeaker SakuTown_PokemonCenter_EventScript_Pushing_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_Grunt1_Text_0
 	closemessage
 	call SakuTown_PokemonCenter_EventScript_Pushing
@@ -271,7 +271,7 @@ SakuTown_PokemonCenter_EventScript_Grunt1::
 
 SakuTown_PokemonCenter_EventScript_Grunt2::
 	lock
-	speakername SakuTown_PokemonCenter_EventScript_Pushing_Text_0
+	setspeaker SakuTown_PokemonCenter_EventScript_Pushing_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_Grunt2_Text_0
 	closemessage
 	call SakuTown_PokemonCenter_EventScript_Pushing
@@ -281,7 +281,7 @@ SakuTown_PokemonCenter_EventScript_Grunt2::
 
 SakuTown_PokemonCenter_EventScript_Grunt3::
 	lock
-	speakername SakuTown_PokemonCenter_EventScript_Pushing_Text_0
+	setspeaker SakuTown_PokemonCenter_EventScript_Pushing_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_Grunt3_Text_0
 	closemessage
 	call SakuTown_PokemonCenter_EventScript_Pushing

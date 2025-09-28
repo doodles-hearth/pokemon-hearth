@@ -18,7 +18,7 @@ TravelingMerchant_EventScript_Keke_5:
 	return
 
 TravelingMerchant_EventScript_Keke_2:
-	speakername TravelingMerchant_EventScript_Keke_Text_0
+	setspeaker TravelingMerchant_EventScript_Keke_Text_0
 	goto TravelingMerchant_EventScript_Keke_1
 
 TravelingMerchant_EventScript_Keke_7:

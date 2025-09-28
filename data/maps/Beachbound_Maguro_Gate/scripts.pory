@@ -11,7 +11,7 @@ mapscripts Beachbound_Maguro_Gate_MapScripts {
 
 script Beachbound_Maguro_Gate_EventScript_Guard {
 	lock
-	speakername("Samurai")
+	setspeaker("Samurai")
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Are you going to Beachbound Route? Uh, be careful, kid!"

@@ -23,11 +23,11 @@ YifuCity_CrobatShop_SetupNpcs_4:
 YifuCity_CrobatShop_Cashier::
 	lock
 	faceplayer
-	speakername YifuCity_CrobatShop_Cashier_Text_0
+	setspeaker YifuCity_CrobatShop_Cashier_Text_0
 	msgbox YifuCity_CrobatShop_Cashier_Text_1
 	waitmessage
 	pokemart Crobat_Mart
-	speakername YifuCity_CrobatShop_Cashier_Text_0
+	setspeaker YifuCity_CrobatShop_Cashier_Text_0
 	msgbox YifuCity_CrobatShop_Cashier_Text_2
 	closemessage
 	release
@@ -37,11 +37,11 @@ YifuCity_CrobatShop_Cashier::
 YifuCity_CrobatShop_CashierLegit::
 	lock
 	faceplayer
-	speakername YifuCity_CrobatShop_Cashier_Text_0
+	setspeaker YifuCity_CrobatShop_Cashier_Text_0
 	msgbox YifuCity_CrobatShop_CashierLegit_Text_0
 	waitmessage
 	pokemart Legit_Mart
-	speakername YifuCity_CrobatShop_Cashier_Text_0
+	setspeaker YifuCity_CrobatShop_Cashier_Text_0
 	msgbox YifuCity_CrobatShop_CashierLegit_Text_1
 	closemessage
 	release
@@ -51,7 +51,7 @@ YifuCity_CrobatShop_CashierLegit::
 YifuCity_CrobatShop_CashierLegitTM::
 	lock
 	faceplayer
-	speakername YifuCity_CrobatShop_Cashier_Text_0
+	setspeaker YifuCity_CrobatShop_Cashier_Text_0
 	msgbox YifuCity_CrobatShop_CashierLegitTM_Text_0
 	closemessage
 	release
@@ -89,7 +89,7 @@ YifuCity_CrobatShop_Guard::
 	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_1
 YifuCity_CrobatShop_Guard_4:
 	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_2
-	speakername YifuCity_CrobatShop_Guard_Text_0
+	setspeaker YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_2
 	goto_if_unset FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF, YifuCity_CrobatShop_Guard_9
 	goto_if_unset FLAG_GOT_CROBAT_PASSWORD_SECOND_HALF, YifuCity_CrobatShop_Guard_9
@@ -99,7 +99,7 @@ YifuCity_CrobatShop_Guard_8:
 	return
 
 YifuCity_CrobatShop_Guard_2:
-	speakername YifuCity_CrobatShop_Guard_Text_0
+	setspeaker YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_1
 	release
 	end
@@ -113,7 +113,7 @@ YifuCity_CrobatShop_Guard_9:
 	closemessage
 	delay 24
 	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_3
-	speakername YifuCity_CrobatShop_Guard_Text_0
+	setspeaker YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_6
 	waitmovement 0
 	closemessage
@@ -149,7 +149,7 @@ YifuCity_CrobatShop_Guard_23:
 YifuCity_CrobatShop_Guard_27:
 	delay 24
 	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_3
-	speakername YifuCity_CrobatShop_Guard_Text_0
+	setspeaker YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_6
 	waitmovement 0
 	closemessage
@@ -174,7 +174,7 @@ YifuCity_CrobatShop_Guard_24:
 
 YifuCity_CrobatShop_Guard_26:
 	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_8
-	speakername YifuCity_CrobatShop_Guard_Text_0
+	setspeaker YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_13
 	closemessage
 	setflag FLAG_CROBAT_PASSWORD_CORRECT
@@ -202,7 +202,7 @@ YifuCity_CrobatShop_Guard_35:
 YifuCity_CrobatShop_Customer1::
 	lock
 	faceplayer
-	speakername YifuCity_CrobatShop_Customer1_Text_0
+	setspeaker YifuCity_CrobatShop_Customer1_Text_0
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_CrobatShop_Customer1_2
 	msgbox YifuCity_CrobatShop_Customer1_Text_2
 YifuCity_CrobatShop_Customer1_1:
@@ -218,7 +218,7 @@ YifuCity_CrobatShop_Customer1_2:
 YifuCity_CrobatShop_Customer2::
 	lock
 	faceplayer
-	speakername YifuCity_CrobatShop_Customer2_Text_0
+	setspeaker YifuCity_CrobatShop_Customer2_Text_0
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_CrobatShop_Customer2_2
 	msgbox YifuCity_CrobatShop_Customer2_Text_2
 YifuCity_CrobatShop_Customer2_1:
@@ -234,7 +234,7 @@ YifuCity_CrobatShop_Customer2_2:
 YifuCity_CrobatShop_EventScript_Samurai::
 	lock
 	faceplayer
-	speakername YifuCity_CrobatShop_EventScript_Samurai_Text_0
+	setspeaker YifuCity_CrobatShop_EventScript_Samurai_Text_0
 	msgbox YifuCity_CrobatShop_EventScript_Samurai_Text_1
 	closemessage
 	release

@@ -20,7 +20,7 @@ script KuraTown_Dojo_EventScript_Matsu {
 		format("Very impressive skills!")
 	)
 
-	speakername("Matsu")
+	setspeaker("Matsu")
 	msgbox(
 		format("Not all paths lead to the master."),
 		MSGBOX_AUTOCLOSE
@@ -35,7 +35,7 @@ script KuraTown_Dojo_EventScript_Kiku {
 		format("At least I didn't give you any trouble…")
 	)
 
-	speakername("Kiku")
+	setspeaker("Kiku")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}You're wondering why you can't just cut down all the trees?\p"
 		"Uhhh… It's a secret!"
@@ -60,7 +60,7 @@ script KuraTown_Dojo_EventScript_Brenden {
 		format("A-tchoo!")
 	)
 
-	speakername("Tsubaki")
+	setspeaker("Tsubaki")
 	msgbox(format("Sniff… By zeazonal allergiez are agdig up agaid…"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -82,7 +82,7 @@ script KuraTown_Dojo_EventScript_Lilith {
 		format("Stop it! I'm a delicate flower!")
 	)
 
-	speakername("Sumire")
+	setspeaker("Sumire")
 	if (flag(FLAG_BADGE02_GET)) {
 		msgbox(format(
 			"I saw your fight peeking through the leaves! That was amazing!\p"
@@ -101,7 +101,7 @@ script KuraTown_Dojo_EventScript_Hana {
 
 	// Zomg, the bonsai shop owner is ALSO the dojo master?!
 	if (flag(FLAG_MET_HANA_BONSAI_SHOP)) {
-		speakername("Hana")
+		setspeaker("Hana")
 		trainerbattle_single(
 			TRAINER_HANA_1,
 			format(
@@ -117,7 +117,7 @@ script KuraTown_Dojo_EventScript_Hana {
 		)
 		// Player doesn't know she's also the bonsai shop owner yet
 	} else {
-		speakername("Hana")
+		setspeaker("Hana")
 		trainerbattle_single(
 			TRAINER_HANA_1,
 			format(
@@ -135,7 +135,7 @@ script KuraTown_Dojo_EventScript_Hana {
 	// specialvar(VAR_RESULT, ShouldTryRematchBattle)
 	// goto_if_eq(VAR_RESULT, TRUE, KuraTown_Dojo_EventScript_HanaRematch)
 
-	speakername("Hana")
+	setspeaker("Hana")
 	msgbox(
 		format(
 			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}The slow-growing tree becomes the sturdiest.\p"
@@ -149,14 +149,14 @@ script KuraTown_Dojo_EventScript_Hana {
 }
 
 script KuraTown_Dojo_EventScript_HanaDefeated {
-	removespeakername
+	// removespeakername
 	message(format(
 		"{PLAYER} received the Carved Token\n"
 		"from Hana."
 	))
 	waitmessage
 	call(Common_EventScript_PlayGymBadgeFanfare)
-	speakername("Hana")
+	setspeaker("Hana")
 	msgbox(
 		format(
 			// TODO EVA boost atk?
@@ -184,7 +184,7 @@ script KuraTown_Dojo_EventScript_HanaDefeated {
 
 script(local) KuraTown_Dojo_EventScript_GiveTm {
 	giveitem(ITEM_TM_WEATHER_BALL)
-	speakername("Hana")
+	setspeaker("Hana")
 	msgbox(
 		format(
 			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}This scroll contains Weather Ball.\p"
@@ -199,12 +199,12 @@ script KuraTown_Dojo_EventScript_Advice {
 	lock
 	faceplayer
 	if (flag(FLAG_BADGE02_GET)) {
-		speakername("Man")
+		setspeaker("Man")
 		msgbox(format(
 			"That was a beautiful fight!\nYou'll blossom into an excellent Pokémon Wielder, I can just feel it!"
 		))
 	} else {
-		speakername("Man")
+		setspeaker("Man")
 		if (isfieldmoveunlocked(FIELD_MOVE_CUT)) {
 			msgbox(format(
 				"Hello, young challenger, and welcome to the Kura Village Dojo!\p"
@@ -216,7 +216,7 @@ script KuraTown_Dojo_EventScript_Advice {
 				"Be on your guard!\nMaybe get an umbrella, I don't know!"
 			))
 		} else {
-			speakername("Man")
+			setspeaker("Man")
 			if (flag(FLAG_BADGE01_GET)) {
 				msgbox(format(
 					"Hello, young challenger, and welcome to the Kura Village Dojo!\p"
@@ -224,7 +224,7 @@ script KuraTown_Dojo_EventScript_Advice {
 					"You should come back once you've figured out a way to cut them!"
 				))
 			} else {
-				speakername("Man")
+				setspeaker("Man")
 				msgbox(format(
 					"Hello, young challenger, and welcome to the Kura Village Dojo!\p"
 					"All these trees are blocking your way, aren't they?\p"

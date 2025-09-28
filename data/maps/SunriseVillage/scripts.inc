@@ -52,7 +52,7 @@ SunriseVillage_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 SunriseVillage_Event_FatGuy::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SunriseVillage_Event_FatGuy_Text_0
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 4
 	goto_if_ge SunriseVillage_Event_FatGuy_2
 	msgbox SunriseVillage_Event_FatGuy_Text_2
@@ -74,11 +74,11 @@ SunriseVillage_Event_GuardForest::
 	lockall
 	applymovement 6, Common_Movement_WalkInPlaceFasterLeft
 	goto_if_set FLAG_RECEIVED_STARTER, SunriseVillage_Event_GuardForest_2
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_GuardForest_Text_4
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_GuardForest_Text_5
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_Event_GuardForest_Movement_1
@@ -88,7 +88,7 @@ SunriseVillage_Event_GuardForest_1:
 	end
 
 SunriseVillage_Event_GuardForest_2:
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SunriseVillage_Event_FatGuy_Text_0
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
 	goto_if_ge SunriseVillage_Event_GuardForest_5
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
@@ -119,7 +119,7 @@ SunriseVillage_Event_GuardForest_6:
 SunriseVillage_Event_GuardForest_Interact::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SunriseVillage_Event_FatGuy_Text_0
 	goto_if_set FLAG_RECEIVED_STARTER, SunriseVillage_Event_GuardForest_Interact_2
 	msgbox SunriseVillage_Event_GuardForest_Interact_Text_0
 	closemessage
@@ -153,7 +153,7 @@ SunriseVillage_Event_LittleGirl::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_LittleGirl_Movement_0
-	speakername SunriseVillage_Event_LittleGirl_Text_0
+	setspeaker SunriseVillage_Event_LittleGirl_Text_0
 	msgbox SunriseVillage_Event_LittleGirl_Text_1
 	closemessage
 	release
@@ -163,7 +163,7 @@ SunriseVillage_Event_LittleGirl::
 SunriseVillage_Event_Boy::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_Boy_Text_0
+	setspeaker SunriseVillage_Event_Boy_Text_0
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 4
 	goto_if_ge SunriseVillage_Event_Boy_2
 	msgbox SunriseVillage_Event_Boy_Text_2
@@ -182,7 +182,7 @@ SunriseVillage_Event_Boy_2:
 SunriseVillage_Event_Woman::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_Woman_Text_0
 	release
 	end
@@ -192,7 +192,7 @@ SunriseVillage_Event_Farmer::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_Farmer_Movement_0
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_Farmer_Text_0
 	release
 	end
@@ -201,7 +201,7 @@ SunriseVillage_Event_Farmer::
 SunriseVillage_Event_OldMan::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_OldMan_Text_0
 	release
 	return
@@ -211,7 +211,7 @@ SunriseVillage_Event_OldWoman::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_GuardForest_Movement_0
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SunriseVillage_Event_FatGuy_Text_0
 	msgbox SunriseVillage_Event_OldWoman_Text_0
 	release
 	return

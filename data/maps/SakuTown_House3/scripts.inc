@@ -43,7 +43,7 @@ SakuTown_House3_EventScript_TradeMe::
 	copyvar VAR_0x8004, VAR_0x8008
 	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
 	copyvar VAR_0x8009, VAR_RESULT
-	speakername SakuTown_House3_EventScript_TradeMe_Text_0
+	setspeaker SakuTown_House3_EventScript_TradeMe_Text_0
 	msgbox SakuTown_House3_EventScript_TradeMe_Text_2
 	mcdialogue SakuTown_House3_EventScript_TradeMe_Text_3, SakuTown_House3_EventScript_TradeMe_Text_4
 	compare VAR_RESULT, 0
@@ -81,25 +81,25 @@ SakuTown_House3_EventScript_TradeMe_1:
 	return
 
 SakuTown_House3_EventScript_TradeMe_2:
-	speakername SakuTown_House3_EventScript_TradeMe_Text_0
+	setspeaker SakuTown_House3_EventScript_TradeMe_Text_0
 	msgbox SakuTown_House3_EventScript_TradeMe_Text_1
 	closemessage
 	goto SakuTown_House3_EventScript_TradeMe_1
 
 SakuTown_House3_EventScript_TradeMe_5:
-	speakername SakuTown_House3_EventScript_TradeMe_Text_0
+	setspeaker SakuTown_House3_EventScript_TradeMe_Text_0
 	msgbox SakuTown_House3_EventScript_TradeMe_Text_5
 	closemessage
 	goto SakuTown_House3_EventScript_TradeMe_1
 
 SakuTown_House3_EventScript_TradeMe_8:
-	speakername SakuTown_House3_EventScript_TradeMe_Text_0
+	setspeaker SakuTown_House3_EventScript_TradeMe_Text_0
 	msgbox SakuTown_House3_EventScript_TradeMe_Text_5
 	closemessage
 	goto SakuTown_House3_EventScript_TradeMe_1
 
 SakuTown_House3_EventScript_TradeMe_11:
-	speakername SakuTown_House3_EventScript_TradeMe_Text_0
+	setspeaker SakuTown_House3_EventScript_TradeMe_Text_0
 	msgbox SakuTown_House3_EventScript_TradeMe_Text_6
 	closemessage
 	goto SakuTown_House3_EventScript_TradeMe_1
@@ -108,7 +108,7 @@ SakuTown_House3_EventScript_TradeMe_11:
 SakuTown_House3_EventScript_Man::
 	lock
 	faceplayer
-	speakername SakuTown_House3_EventScript_Man_Text_0
+	setspeaker SakuTown_House3_EventScript_Man_Text_0
 	goto_if_set FLAG_FORTREE_NPC_TRADE_COMPLETED, SakuTown_House3_EventScript_Man_2
 	msgbox SakuTown_House3_EventScript_Man_Text_2
 SakuTown_House3_EventScript_Man_1:

@@ -4,7 +4,7 @@ GinkoWoods_MapScripts::
 
 GinkoWoods_EventScript_Toshiki::
 	trainerbattle_single TRAINER_TOSHIKI, GinkoWoods_EventScript_Toshiki_Text_0, GinkoWoods_EventScript_Toshiki_Text_1
-	speakername GinkoWoods_EventScript_Toshiki_Text_2
+	setspeaker GinkoWoods_EventScript_Toshiki_Text_2
 	msgbox GinkoWoods_EventScript_Toshiki_Text_3
 	closemessage
 	setnamedmon SPECIES_SEWADDLE_TOKUAN
@@ -14,7 +14,7 @@ GinkoWoods_EventScript_Toshiki::
 
 GinkoWoods_EventScript_Toshio::
 	trainerbattle_single TRAINER_TOSHIO_1, GinkoWoods_EventScript_Toshio_Text_0, GinkoWoods_EventScript_Toshio_Text_1
-	speakername GinkoWoods_EventScript_Toshio_Text_2
+	setspeaker GinkoWoods_EventScript_Toshio_Text_2
 	msgbox GinkoWoods_EventScript_Toshio_Text_3
 	release
 	end
@@ -22,7 +22,7 @@ GinkoWoods_EventScript_Toshio::
 
 GinkoWoods_EventScript_Eiji::
 	trainerbattle_single TRAINER_EIJI, GinkoWoods_EventScript_Eiji_Text_0, GinkoWoods_EventScript_Eiji_Text_1
-	speakername GinkoWoods_EventScript_Eiji_Text_2
+	setspeaker GinkoWoods_EventScript_Eiji_Text_2
 	msgbox GinkoWoods_EventScript_Eiji_Text_3
 	release
 	end
@@ -32,7 +32,7 @@ GinkoWoods_EventScript_OldMan::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_OldMan_Movement_0
-	speakername GinkoWoods_EventScript_OldMan_Text_0
+	setspeaker GinkoWoods_EventScript_OldMan_Text_0
 	msgbox GinkoWoods_EventScript_OldMan_Text_1
 	release
 	end
@@ -43,17 +43,17 @@ GinkoWoods_EventScript_Bean::
 	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_Bean_Movement_0
 	waitmovement VAR_LAST_TALKED
 	faceplayer
-	speakername GinkoWoods_EventScript_Bean_Text_0
+	setspeaker GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_1
 	closemessage
 	delay 48
 	turnobject 7, DIR_EAST
-	speakername GinkoWoods_EventScript_Bean_Text_0
+	setspeaker GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_2
 	closemessage
 	turnobject 7, DIR_SOUTH
 	delay 48
-	speakername GinkoWoods_EventScript_Bean_Text_0
+	setspeaker GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_3
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
@@ -61,11 +61,11 @@ GinkoWoods_EventScript_Bean::
 	delay 60
 	fadescreenswapbuffers FADE_FROM_BLACK
 	delay 48
-	speakername GinkoWoods_EventScript_Bean_Text_0
+	setspeaker GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_4
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, GinkoWoods_EventScript_Bean_Text_5, GinkoWoods_EventScript_Bean_Text_6, GinkoWoods_EventScript_Bean_Text_7
 	closemessage
-	speakername GinkoWoods_EventScript_Bean_Text_8
+	setspeaker GinkoWoods_EventScript_Bean_Text_8
 	switch VAR_RESULT
 	case 0, GinkoWoods_EventScript_Bean_3
 	case 1, GinkoWoods_EventScript_Bean_4
@@ -113,7 +113,7 @@ GinkoWoods_EventScript_Tracks::
 	applymovement 7, Common_Movement_WalkInPlaceFasterRight
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_Tracks_Movement_0
-	speakername GinkoWoods_EventScript_Bean_Text_0
+	setspeaker GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Tracks_Text_0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, GinkoWoods_Movement_PlayerWalkDown
@@ -209,8 +209,7 @@ GinkoWoods_EventScript_Bean_Text_0:
 	.string "Odd Girl$"
 
 GinkoWoods_EventScript_Bean_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Wow, see this? The FRLG font sucks\n"
-	.string "way less than the RSE one!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello!$"
 
 GinkoWoods_EventScript_Bean_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just noticed there are some neat\n"

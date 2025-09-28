@@ -5,7 +5,7 @@ YifuCity_House1_1F_MapScripts::
 YifuCity_House1_1F_EventScript_Dad::
 	lock
 	faceplayer
-	speakername YifuCity_House1_1F_EventScript_Dad_Text_0
+	setspeaker YifuCity_House1_1F_EventScript_Dad_Text_0
 	msgbox YifuCity_House1_1F_EventScript_Dad_Text_1
 	closemessage
 	release
@@ -15,7 +15,7 @@ YifuCity_House1_1F_EventScript_Dad::
 YifuCity_House1_1F_EventScript_Mom::
 	lock
 	faceplayer
-	speakername YifuCity_House1_1F_EventScript_Mom_Text_0
+	setspeaker YifuCity_House1_1F_EventScript_Mom_Text_0
 	msgbox YifuCity_House1_1F_EventScript_Mom_Text_1
 	closemessage
 	release

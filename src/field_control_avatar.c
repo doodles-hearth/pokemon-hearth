@@ -13,6 +13,7 @@
 #include "field_control_avatar.h"
 #include "field_message_box.h"
 #include "field_move.h"
+#include "field_effect.h"
 #include "field_player_avatar.h"
 #include "field_poison.h"
 #include "field_screen_effect.h"
@@ -33,7 +34,6 @@
 #include "start_menu.h"
 #include "trainer_see.h"
 #include "trainer_hill.h"
-#include "tx_registered_items_menu.h"
 #include "vs_seeker.h"
 #include "wild_encounter.h"
 #include "constants/event_bg.h"
@@ -279,21 +279,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (input->tookStep && TryFindHiddenPokemon())
         return TRUE;
 
-        if (input->pressedSelectButton)
-        {
-            if (gSaveBlock1Ptr->registeredItemListCount == 1) 
-            {
-                if (UseRegisteredKeyItemOnField(1) == TRUE)
-                {
-                    return TRUE;
-                }
-            }
-            else if (gSaveBlock1Ptr->registeredItemListCount > 0)
-            {
-                TxRegItemsMenu_OpenMenu();
-                return TRUE;
-            }
-        }
+    if (input->pressedSelectButton && UseRegisteredKeyItemOnField() == TRUE)
+        return TRUE;
 
     if (input->pressedRButton && TryStartDexNavSearch())
         return TRUE;
@@ -586,6 +573,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         SetMsgSignPostAndVarFacing(direction);
         return Common_EventScript_ShowPokemonCenterSign;
     }
+    if (MetatileBehavior_IsRockClimbable(metatileBehavior) == TRUE && !IsRockClimbActive())
+        return EventScript_UseRockClimb;
 
     elevation = position->elevation;
     if (elevation == MapGridGetElevationAt(position->x, position->y))

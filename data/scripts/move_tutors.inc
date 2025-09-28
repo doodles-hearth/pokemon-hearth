@@ -2,19 +2,19 @@ YifuCity_EventScript_WhirlpoolTutor::
 	lock
 	faceplayer
 	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL, YifuCity_EventScript_WhirlpoolTutor_1
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
+	setspeaker YifuCity_EventScript_WhirlpoolTutor_Text_0
 	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_4
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_EventScript_WhirlpoolTutor_Text_5, YifuCity_EventScript_WhirlpoolTutor_Text_6
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq YifuCity_EventScript_WhirlpoolTutor_6
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
+	setspeaker YifuCity_EventScript_WhirlpoolTutor_Text_0
 	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_7
 	closemessage
 	return
 
 YifuCity_EventScript_WhirlpoolTutor_1:
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
+	setspeaker YifuCity_EventScript_WhirlpoolTutor_Text_0
 	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_1
 	closemessage
 	checkitem ITEM_HEART_SCALE
@@ -39,7 +39,7 @@ YifuCity_EventScript_WhirlpoolTutor_9:
 
 
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool::
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
+	setspeaker YifuCity_EventScript_WhirlpoolTutor_Text_0
 	msgbox YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_0
 	setvar VAR_0x8005, MOVE_WHIRLPOOL
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -47,7 +47,7 @@ YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool::
 	goto_if_eq YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_2
 	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL, YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_5
 	setflag FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
+	setspeaker YifuCity_EventScript_WhirlpoolTutor_Text_0
 	msgbox YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_2
 	closemessage
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_1:
@@ -55,13 +55,13 @@ YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_1:
 	return
 
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_2:
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
+	setspeaker YifuCity_EventScript_WhirlpoolTutor_Text_0
 	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_7
 	closemessage
 	goto YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_1
 
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_5:
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
+	setspeaker YifuCity_EventScript_WhirlpoolTutor_Text_0
 	msgbox YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_1
 	closemessage
 	removeitem ITEM_HEART_SCALE

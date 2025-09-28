@@ -9,7 +9,7 @@ YifuCity_ClothingShop_EventScript_Yutaka::
 YifuCity_ClothingShop_EventScript_Cashier::
 	lock
 	faceplayer
-	speakername YifuCity_ClothingShop_EventScript_Cashier_Text_0
+	setspeaker YifuCity_ClothingShop_EventScript_Cashier_Text_0
 	msgbox YifuCity_ClothingShop_EventScript_Cashier_Text_1
 	release
 	return
@@ -18,7 +18,7 @@ YifuCity_ClothingShop_EventScript_Cashier::
 YifuCity_ClothingShop_EventScript_Customer::
 	lock
 	faceplayer
-	speakername YifuCity_ClothingShop_EventScript_Customer_Text_0
+	setspeaker YifuCity_ClothingShop_EventScript_Customer_Text_0
 	msgbox YifuCity_ClothingShop_EventScript_Customer_Text_1
 	release
 	return

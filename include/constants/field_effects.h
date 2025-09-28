@@ -88,6 +88,8 @@
 #define FLDEFF_CRYING_ICON               83
 #define FLDEFF_SWEAT_ICON                84
 #define FLDEFF_SLEEP_ICON                85
+#define FLDEFF_USE_ROCK_CLIMB            86
+#define FLDEFF_ROCK_CLIMB_DUST           87
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1
@@ -137,6 +139,8 @@
 #define FLDEFFOBJ_CAVE_BIKE_TIRE_TRACKS 45
 #define FLDEFFOBJ_TALL_GRASS_GINKO      45
 #define FLDEFFOBJ_TALL_GRASS_SILVERIDGE 46
+#define FLDEFFOBJ_ROCK_CLIMB_BLOB       47
+#define FLDEFFOBJ_ROCK_CLIMB_DUST       48
 
 #define FLDEFF_PAL_TAG_CUT_GRASS          0x1000
 #define FLDEFF_PAL_TAG_SECRET_POWER_TREE  0x1003
@@ -158,6 +162,7 @@
 #define FLDEFF_PAL_TAG_GINKO_WOODS        0x1015
 #define FLDEFF_PAL_TAG_GRASS_SILVERIDGE   0x1016
 
+#define FLDEFF_PAL_TAG_DUST_CLOUD         0x1017
 #define FLDEFF_PAL_TAG_FIELD_MOVE_MON     0x8400
 
 // tile tags, for field effects that may have many copies on screen at once

@@ -5,7 +5,7 @@ SoulkeepGraveyard_MapScripts::
 SoulkeepGraveyard_EventScript_Guard::
 	lock
 	faceplayer
-	speakername SoulkeepGraveyard_EventScript_Guard_Text_0
+	setspeaker SoulkeepGraveyard_EventScript_Guard_Text_0
 	msgbox SoulkeepGraveyard_EventScript_Guard_Text_1
 	closemessage
 	release

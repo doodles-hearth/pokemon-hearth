@@ -17,19 +17,19 @@ SunriseVillage_House1_EventScript_Ralts::
 
 SunriseVillage_House1_EventScript_OldWoman::
 	setnamedmon SPECIES_RALTS
-	speakername SunriseVillage_House1_EventScript_OldWoman_Text_0
+	setspeaker SunriseVillage_House1_EventScript_OldWoman_Text_0
 	msgbox SunriseVillage_House1_EventScript_OldWoman_Text_1, MSGBOX_NPC
 	return
 
 
 SunriseVillage_House1_EventScript_OldMan::
-	speakername SunriseVillage_House1_EventScript_OldWoman_Text_0
+	setspeaker SunriseVillage_House1_EventScript_OldWoman_Text_0
 	msgbox SunriseVillage_House1_EventScript_OldMan_Text_0, MSGBOX_NPC
 	return
 
 
 SunriseVillage_House1_EventScript_LittleGirl::
-	speakername SunriseVillage_House1_EventScript_LittleGirl_Text_0
+	setspeaker SunriseVillage_House1_EventScript_LittleGirl_Text_0
 	msgbox SunriseVillage_House1_EventScript_LittleGirl_Text_1, MSGBOX_NPC
 	return
 
@@ -39,7 +39,7 @@ SunriseVillage_House1_EventScript_Zigzagoon::
 	faceplayer
 	setseenmon SPECIES_ZIGZAGOON
 	playmoncry SPECIES_ZIGZAGOON, CRY_MODE_NORMAL
-	speakername SunriseVillage_House1_EventScript_Zigzagoon_Text_0
+	setspeaker SunriseVillage_House1_EventScript_Zigzagoon_Text_0
 	msgbox SunriseVillage_House1_EventScript_Zigzagoon_Text_1
 	waitmoncry
 	release

@@ -5,7 +5,7 @@ HarvestShrine_MapScripts::
 HarvestShrine_EventScript_MonkBronzong::
 	lock
 	faceplayer
-	speakername HarvestShrine_EventScript_MonkBronzong_Text_0
+	setspeaker HarvestShrine_EventScript_MonkBronzong_Text_0
 	msgbox HarvestShrine_EventScript_MonkBronzong_Text_1
 	closemessage
 	setseenmon SPECIES_BRONZONG
@@ -17,7 +17,7 @@ HarvestShrine_EventScript_MonkBronzong::
 
 HarvestShrine_EventScript_Kouga::
 	trainerbattle_single TRAINER_KOUGA, HarvestShrine_EventScript_Kouga_Text_0, HarvestShrine_EventScript_Kouga_Text_1, HarvestShrine_EventScript_SetMonFlags
-	speakername HarvestShrine_EventScript_Kouga_Text_2
+	setspeaker HarvestShrine_EventScript_Kouga_Text_2
 	msgbox HarvestShrine_EventScript_Kouga_Text_3
 	closemessage
 	end
@@ -31,7 +31,7 @@ HarvestShrine_EventScript_SetMonFlags::
 HarvestShrine_EventScript_MonkRain::
 	lock
 	faceplayer
-	speakername HarvestShrine_EventScript_MonkBronzong_Text_0
+	setspeaker HarvestShrine_EventScript_MonkBronzong_Text_0
 	checkitem ITEM_TM_RAIN_DANCE
 	compare VAR_RESULT, 0
 	goto_if_ne HarvestShrine_EventScript_MonkRain_2

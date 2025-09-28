@@ -18,7 +18,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech::
 	waitmovement 0
 	delay 48
 	faceplayer
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_1
 	closemessage
 	switch VAR_FACING
@@ -30,7 +30,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_1:
 	waitmovement 0
 	applymovement 1, SunriseVillage_Beach_Movement_RivalSitsOnBench
 	waitmovement 0
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_2
 	applymovement 1, SunriseVillage_Beach_EventScript_RivalSpeech_Movement_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_3
@@ -42,7 +42,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_1:
 SunriseVillage_Beach_EventScript_RivalSpeech_7:
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_Beach_EventScript_RivalSpeech_Text_13, SunriseVillage_Beach_EventScript_RivalSpeech_Text_14, SunriseVillage_Beach_EventScript_RivalSpeech_Text_15
 	closemessage
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	switch VAR_RESULT
 	case 0, SunriseVillage_Beach_EventScript_RivalSpeech_13
 	case 1, SunriseVillage_Beach_EventScript_RivalSpeech_14
@@ -68,7 +68,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_11:
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	applymovement 1, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_19
 	closemessage
 	playse SE_PIN
@@ -77,7 +77,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_11:
 	delay 48
 	applymovement 1, SunriseVillage_Beach_Movement_RivalSeesDistribution
 	waitmovement 0
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_20
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
@@ -108,12 +108,12 @@ SunriseVillage_Beach_EventScript_RivalSpeech_6:
 	goto SunriseVillage_Beach_EventScript_RivalSpeech_1
 
 SunriseVillage_Beach_EventScript_RivalSpeech_9:
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_6
 	closemessage
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_7
 	applymovement 1, SunriseVillage_Beach_EventScript_RivalSpeech_Movement_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_8
@@ -121,23 +121,23 @@ SunriseVillage_Beach_EventScript_RivalSpeech_9:
 	delay 48
 	applymovement 1, Common_Movement_WalkInPlaceFasterUp
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_9
 	goto SunriseVillage_Beach_EventScript_RivalSpeech_7
 
 SunriseVillage_Beach_EventScript_RivalSpeech_10:
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_10
 	closemessage
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_11
 	closemessage
 	delay 48
 	applymovement 1, Common_Movement_WalkInPlaceFasterUp
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_12
 	goto SunriseVillage_Beach_EventScript_RivalSpeech_7
 
@@ -211,7 +211,7 @@ SunriseVillage_Beach_EventScript_Corsola2::
 SunriseVillage_Event_LookingAtYifu::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_LookingAtYifu_Text_0
+	setspeaker SunriseVillage_Event_LookingAtYifu_Text_0
 	msgbox SunriseVillage_Event_LookingAtYifu_Text_1
 	closemessage
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_LookingAtYifu_Movement_0
@@ -223,12 +223,12 @@ SunriseVillage_Event_LookingAtYifu::
 SunriseVillage_Event_PokemonWontComeOut::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_LookingAtYifu_Text_0
+	setspeaker SunriseVillage_Event_LookingAtYifu_Text_0
 	msgbox SunriseVillage_Event_PokemonWontComeOut_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_LookingAtYifu_Movement_0
 	waitmovement 0
-	speakername SunriseVillage_Event_LookingAtYifu_Text_0
+	setspeaker SunriseVillage_Event_LookingAtYifu_Text_0
 	msgbox SunriseVillage_Event_PokemonWontComeOut_Text_1
 	closemessage
 	release

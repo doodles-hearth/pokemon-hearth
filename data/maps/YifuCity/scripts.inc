@@ -38,7 +38,7 @@ YifuCity_EscapedCrobatHideoutWithSamurai::
 	setvar VAR_CROBAT_HIDEOUT_STATE, 4
 	applymovement 38, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
-	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
+	setspeaker YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_EscapedCrobatHideoutWithSamurai_Text_1
 	closemessage
 	applymovement 38, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_2
@@ -52,7 +52,7 @@ YifuCity_EscapedCrobatHideoutWithSamurai::
 YifuCity_EventScript_StoleMyMon::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_StoleMyMon_Text_0
+	setspeaker YifuCity_EventScript_StoleMyMon_Text_0
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_StoleMyMon_2
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_StoleMyMon_Movement_0
 	msgbox YifuCity_EventScript_StoleMyMon_Text_2
@@ -69,7 +69,7 @@ YifuCity_EventScript_StoleMyMon_2:
 YifuCity_EventScript_LostMyDoll::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_LostMyDoll_Text_0
+	setspeaker YifuCity_EventScript_LostMyDoll_Text_0
 	msgbox YifuCity_EventScript_LostMyDoll_Text_1
 	closemessage
 	setnamedmon SPECIES_CLEFFA
@@ -92,7 +92,7 @@ YifuCity_EventScript_Cleffa::
 YifuCity_EventScript_IDontFeelSafe::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_StoleMyMon_Text_0
+	setspeaker YifuCity_EventScript_StoleMyMon_Text_0
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_IDontFeelSafe_2
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
 	msgbox YifuCity_EventScript_IDontFeelSafe_Text_1
@@ -109,7 +109,7 @@ YifuCity_EventScript_IDontFeelSafe_2:
 YifuCity_EventScript_MissingChild::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_StoleMyMon_Text_0
+	setspeaker YifuCity_EventScript_StoleMyMon_Text_0
 	msgbox YifuCity_EventScript_MissingChild_Text_0
 	closemessage
 	release
@@ -120,7 +120,7 @@ YifuCity_EventScript_Samurai::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_Samurai_Movement_0
-	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
+	setspeaker YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_EventScript_Samurai_Text_0
 	closemessage
 	release
@@ -130,7 +130,7 @@ YifuCity_EventScript_Samurai::
 YifuCity_EventScript_Samurai2::
 	lock
 	faceplayer
-	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
+	setspeaker YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_EventScript_Samurai2_Text_0
 	closemessage
 	release
@@ -141,7 +141,7 @@ YifuCity_EventScript_SamuraiTalkToRobberyVictim::
 	lock
 	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
 	waitmovement 0
-	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
+	setspeaker YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_EventScript_SamuraiTalkToRobberyVictim_Text_0
 	closemessage
 	release
@@ -150,7 +150,7 @@ YifuCity_EventScript_SamuraiTalkToRobberyVictim::
 
 YifuCity_EventScript_RobberyVictim::
 	lock
-	speakername YifuCity_EventScript_RobberyVictim_Text_0
+	setspeaker YifuCity_EventScript_RobberyVictim_Text_0
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_RobberyVictim_2
 	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement 0
@@ -189,7 +189,7 @@ YifuCity_EventScript_RobberyVictim_8:
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_RobberyVictim_Movement_0
 	waitmovement 0
 	waitse
-	speakername YifuCity_EventScript_RobberyVictim_Text_0
+	setspeaker YifuCity_EventScript_RobberyVictim_Text_0
 	msgbox YifuCity_EventScript_RobberyVictim_Text_6
 	closemessage
 	giveitem ITEM_TM_CALM_MIND
@@ -204,7 +204,7 @@ YifuCity_EventScript_RobberyVictim_8:
 
 YifuCity_EventScript_RobberyVictim_9:
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
-	speakername YifuCity_EventScript_RobberyVictim_Text_0
+	setspeaker YifuCity_EventScript_RobberyVictim_Text_0
 	msgbox YifuCity_EventScript_RobberyVictim_Text_7
 	closemessage
 	goto YifuCity_EventScript_RobberyVictim_1
@@ -213,7 +213,7 @@ YifuCity_EventScript_RobberyVictim_9:
 YifuCity_EventScript_ShinySeller::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_EventScript_ShinySeller_Text_1
 	setseenmon SPECIES_CATERPIE
 	showmonpic SPECIES_CATERPIE, 10, 3, TRUE
@@ -221,7 +221,7 @@ YifuCity_EventScript_ShinySeller::
 	waitmoncry
 	waitbuttonpress
 	hidemonpic
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_EventScript_ShinySeller_Text_2
 	goto YifuCity_ShinySellerChoice
 	release
@@ -245,14 +245,14 @@ YifuCity_ShinySellerChoice_3:
 	checkmoney 10000
 	compare VAR_RESULT, 0
 	goto_if_ne YifuCity_ShinySellerChoice_6
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_ShinySellerChoice_Text_8
 	closemessage
 	goto YifuCity_ShinySellerChoice_1
 
 YifuCity_ShinySellerChoice_4:
 	hidemoneybox
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	applymovement VAR_LAST_TALKED, YifuCity_ShinySellerChoice_Movement_2
 	msgbox YifuCity_ShinySellerChoice_Text_9
 	closemessage
@@ -260,14 +260,14 @@ YifuCity_ShinySellerChoice_4:
 
 YifuCity_ShinySellerChoice_5:
 	hidemoneybox
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	applymovement VAR_LAST_TALKED, YifuCity_ShinySellerChoice_Movement_2
 	msgbox YifuCity_ShinySellerChoice_Text_10
 	goto YifuCity_ShinySellerChoice
 	goto YifuCity_ShinySellerChoice_1
 
 YifuCity_ShinySellerChoice_6:
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_ShinySellerChoice_Text_3
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CATERPIE
 	givemon SPECIES_CATERPIE, 5, isShiny = FALSE
@@ -289,7 +289,7 @@ YifuCity_ShinySellerChoice_9:
 	compare VAR_RESULT, MON_GIVEN_TO_PC
 	goto_if_eq YifuCity_ShinySellerChoice_14
 YifuCity_ShinySellerChoice_12:
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_ShinySellerChoice_Text_5
 	closemessage
 	compare VAR_FACING, DIR_EAST
@@ -376,7 +376,7 @@ YifuCity_Trigger_CrobatGruntsScram_1:
 YifuCity_Trigger_CrobatGruntsScram_2:
 	applymovement 9, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsScram_Text_0
 	closemessage
 	playse SE_PIN
@@ -394,7 +394,7 @@ YifuCity_Trigger_CrobatGruntsScram_2:
 	applymovement 9, YifuCity_Trigger_CrobatGruntsScram_Movement_0
 	waitmovement 0
 	waitse
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsScram_Text_1
 	closemessage
 	playse SE_BALL_OPEN
@@ -408,7 +408,7 @@ YifuCity_Trigger_CrobatGruntsScram_2:
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_CrobatGruntsScram_Movement_2
 	waitmovement 0
 	applymovement 9, YifuCity_ShinySellerChoice_Movement_2
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsScram_Text_2
 	closemessage
 	delay 24
@@ -432,7 +432,7 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword_1:
 	return
 
 YifuCity_Trigger_CrobatGruntsEavesdropPassword_2:
-	speakername YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
+	setspeaker YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_1
 	closemessage
 	delay 24
@@ -443,7 +443,7 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword_2:
 	delay 48
 	applymovement 9, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_2
 	applymovement 9, YifuCity_ShinySellerChoice_Movement_2
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_3
@@ -451,29 +451,29 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword_2:
 	applymovement 10, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	applymovement 10, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_2
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_4
 	closemessage
 	applymovement 9, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	applymovement 9, YifuCity_ShinySellerChoice_Movement_2
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_5
 	closemessage
 	applymovement 10, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_6
 	playse SE_LEDGE
 	applymovement 10, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_3
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_7
 	waitmovement 0
 	waitse
 	closemessage
 	playse SE_LEDGE
 	applymovement 9, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_4
-	speakername YifuCity_EventScript_ShinySeller_Text_0
+	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_8
 	waitmovement 0
 	waitse
@@ -494,7 +494,7 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword_2:
 YifuCity_EventScript_HearEcho::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_HearEcho_Text_0
+	setspeaker YifuCity_EventScript_HearEcho_Text_0
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
 	msgbox YifuCity_EventScript_HearEcho_Text_1
 	closemessage
@@ -505,7 +505,7 @@ YifuCity_EventScript_HearEcho::
 YifuCity_Trigger_CrobatGruntStuckInHole::
 	lockall
 	goto_if_set FLAG_GOT_CROBAT_PASSWORD_SECOND_HALF, YifuCity_Trigger_CrobatGruntStuckInHole_2
-	speakername YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
+	setspeaker YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntStuckInHole_Text_4
 	closemessage
 	delay 24
@@ -514,7 +514,7 @@ YifuCity_Trigger_CrobatGruntStuckInHole::
 	delay 24
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_CrobatGruntStuckInHole_Movement_1
-	speakername YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
+	setspeaker YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntStuckInHole_Text_5
 	waitmovement 0
 	waitse
@@ -525,7 +525,7 @@ YifuCity_Trigger_CrobatGruntStuckInHole_1:
 	return
 
 YifuCity_Trigger_CrobatGruntStuckInHole_2:
-	speakername YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
+	setspeaker YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_0
 	random 5
 	switch VAR_RESULT
 	case 0, YifuCity_Trigger_CrobatGruntStuckInHole_7
@@ -570,7 +570,7 @@ YifuCity_EventScript_Surskit::
 YifuCity_EventScript_SafeCity::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_SafeCity_Text_0
+	setspeaker YifuCity_EventScript_SafeCity_Text_0
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_SafeCity_Movement_0
 	msgbox YifuCity_EventScript_SafeCity_Text_1
 	closemessage
@@ -581,7 +581,7 @@ YifuCity_EventScript_SafeCity::
 YifuCity_EventScript_Tourist::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_RobberyVictim_Text_0
+	setspeaker YifuCity_EventScript_RobberyVictim_Text_0
 	msgbox YifuCity_EventScript_Tourist_Text_0
 	closemessage
 	release
@@ -592,7 +592,7 @@ YifuCity_EventScript_TouristKid::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_SafeCity_Movement_0
-	speakername YifuCity_EventScript_TouristKid_Text_0
+	setspeaker YifuCity_EventScript_TouristKid_Text_0
 	msgbox YifuCity_EventScript_TouristKid_Text_1
 	closemessage
 	setnamedmon SPECIES_SAWSBUCK
@@ -603,7 +603,7 @@ YifuCity_EventScript_TouristKid::
 YifuCity_EventScript_TouristGirl::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_SafeCity_Text_0
+	setspeaker YifuCity_EventScript_SafeCity_Text_0
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
 	msgbox YifuCity_EventScript_TouristGirl_Text_0
 	closemessage
@@ -615,7 +615,7 @@ YifuCity_EventScript_TouristGirl::
 YifuCity_EventScript_Zubat1::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_Zubat1_Text_0
+	setspeaker YifuCity_EventScript_Zubat1_Text_0
 	applymovement VAR_LAST_TALKED, YifuCity_ShinySellerChoice_Movement_2
 	msgbox YifuCity_EventScript_Zubat1_Text_1
 	closemessage
@@ -626,7 +626,7 @@ YifuCity_EventScript_Zubat1::
 YifuCity_EventScript_Zubat2::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_Zubat1_Text_0
+	setspeaker YifuCity_EventScript_Zubat1_Text_0
 	msgbox YifuCity_EventScript_Zubat2_Text_0
 	closemessage
 	release
@@ -637,7 +637,7 @@ YifuCity_EventScript_Zubat3::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_Zubat3_Movement_0
-	speakername YifuCity_EventScript_Zubat1_Text_0
+	setspeaker YifuCity_EventScript_Zubat1_Text_0
 	msgbox YifuCity_EventScript_Zubat3_Text_0
 	closemessage
 	release
@@ -647,7 +647,7 @@ YifuCity_EventScript_Zubat3::
 YifuCity_EventScript_Zubat4::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_Zubat1_Text_0
+	setspeaker YifuCity_EventScript_Zubat1_Text_0
 	msgbox YifuCity_EventScript_Zubat4_Text_0
 	closemessage
 	release
@@ -660,7 +660,7 @@ YifuCity_Trigger_Lockdown::
 	applymovement 33, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement 0
 	special GetPlayerSirMissString
-	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
+	setspeaker YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_5
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_8
@@ -695,11 +695,11 @@ YifuCity_Trigger_Lockdown_5:
 	waitmovement 33
 	waitmovement OBJ_EVENT_ID_PLAYER
 	special GetPlayerSirMissString
-	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
+	setspeaker YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_1
 	mcdialogue YifuCity_Trigger_Lockdown_Text_2, YifuCity_Trigger_Lockdown_Text_3
 	closemessage
-	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
+	setspeaker YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_4
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_Lockdown_Movement_8
@@ -740,7 +740,7 @@ YifuCity_Trigger_CantGoThruNorth::
 	applymovement 34, YifuCity_Trigger_CantGoThruNorth_Movement_0
 	waitmovement 0
 	special GetPlayerSirMissString
-	speakername YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
+	setspeaker YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	msgbox YifuCity_Trigger_Lockdown_Text_5
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_CantGoThruNorth_Movement_1
@@ -763,7 +763,7 @@ YifuCity_Trigger_HarikoCriminals_1:
 	case 40, YifuCity_Trigger_HarikoCriminals_8
 YifuCity_Trigger_HarikoCriminals_4:
 	waitmovement 0
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox YifuCity_Trigger_HarikoCriminals_Text_1
 	closemessage
 	applymovement LOCALID_YIFU_HARIKO_ENTRANCE, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_5
@@ -798,7 +798,7 @@ YifuCity_EventScript_DojoSign::
 YifuCity_EventScript_GirlLookingAtSunriseVillage::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_LostMyDoll_Text_0
+	setspeaker YifuCity_EventScript_LostMyDoll_Text_0
 	msgbox YifuCity_EventScript_GirlLookingAtSunriseVillage_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_GirlLookingAtSunriseVillage_Movement_0
@@ -824,7 +824,7 @@ YifuCity_EventScript_Chimecho::
 YifuCity_EventScript_ChimechoLady::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_ChimechoLady_Text_0
+	setspeaker YifuCity_EventScript_ChimechoLady_Text_0
 	msgbox YifuCity_EventScript_ChimechoLady_Text_1
 	closemessage
 	setnamedmon SPECIES_CHIMECHO
@@ -836,7 +836,7 @@ YifuCity_EventScript_ChimechoLady::
 YifuCity_EventScript_ChefOnBreak::
 	lock
 	faceplayer
-	speakername YifuCity_EventScript_ChefOnBreak_Text_0
+	setspeaker YifuCity_EventScript_ChefOnBreak_Text_0
 	msgbox YifuCity_EventScript_ChefOnBreak_Text_1
 	closemessage
 	release
@@ -957,7 +957,7 @@ SpeakToNatsukiMorning:
 	call NatsukiCanIComeToo
 	call HarikoFacesPlayer
 	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EventScript_IDontFeelSafe_Movement_0
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox SpeakToNatsukiMorning_Text_0
 	call HarikoNotABreakfastPlace
 	return
@@ -966,7 +966,7 @@ SpeakToNatsukiMorning:
 SpeakToNatsukiLunchOrDinner:
 	call NatsukiCanIComeToo
 	call HarikoFacesPlayer
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox SpeakToNatsukiLunchOrDinner_Text_0
 	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
@@ -992,11 +992,11 @@ SpeakToNatsukiAfternoon:
 	call NatsukiCanIComeToo
 	call HarikoFacesNatsuki
 	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EventScript_IDontFeelSafe_Movement_0
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox SpeakToNatsukiAfternoon_Text_0
 	call NatsukiFacesHariko
 	call HarikoTurnsToNatsuki
-	speakername SpeakToNatsukiAfternoon_Text_1
+	setspeaker SpeakToNatsukiAfternoon_Text_1
 	msgbox SpeakToNatsukiAfternoon_Text_2
 	call NatsukiFacesPlayer
 	msgbox SpeakToNatsukiAfternoon_Text_3
@@ -1019,7 +1019,7 @@ SpeakToNatsukiAfternoon_3:
 SpeakToNatsukiNight:
 	call NatsukiCanIComeToo
 	call HarikoFacesPlayer
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox SpeakToNatsukiNight_Text_0
 	call HarikoTooLateForDinner
 	return
@@ -1089,7 +1089,7 @@ YifuCity_EventScript_HarikoPostHideout_20:
 
 
 SpeakToHarikoMorning:
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox SpeakToHarikoMorning_Text_0
 	mcdialogue SpeakToHarikoMorning_Text_1, SpeakToHarikoMorning_Text_2
 	switch VAR_RESULT
@@ -1116,10 +1116,10 @@ HarikoNotABreakfastPlace:
 	msgbox HarikoNotABreakfastPlace_Text_1
 	call NatsukiFacesHariko
 	call HarikoTurnsToNatsuki
-	speakername SpeakToNatsukiAfternoon_Text_1
+	setspeaker SpeakToNatsukiAfternoon_Text_1
 	msgbox HarikoNotABreakfastPlace_Text_2
 	call NatsukiFacesPlayer
-	speakername SpeakToNatsukiAfternoon_Text_1
+	setspeaker SpeakToNatsukiAfternoon_Text_1
 	msgbox HarikoNotABreakfastPlace_Text_3
 	mcdialogue HarikoNotABreakfastPlace_Text_4, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
@@ -1145,7 +1145,7 @@ HarikoTooLateForDinner:
 	msgbox HarikoTooLateForDinner_Text_0
 	call NatsukiFacesHariko
 	call HarikoTurnsToNatsuki
-	speakername SpeakToNatsukiAfternoon_Text_1
+	setspeaker SpeakToNatsukiAfternoon_Text_1
 	msgbox HarikoTooLateForDinner_Text_1
 	mcdialogue HarikoTooLateForDinner_Text_2, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
@@ -1169,15 +1169,15 @@ SpeakToHarikoLunchOrDinner:
 SpeakToHarikoLunchOrDinner_3:
 	bufferstring STR_VAR_1, SpeakToHarikoLunchOrDinner_Text_1
 SpeakToHarikoLunchOrDinner_1:
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox SpeakToHarikoLunchOrDinner_Text_2
 	call HarikoFacesNatsuki
 	turnobject LOCALID_FRONT_OF_RESTAURANT_NATSUKI, DIR_WEST
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox SpeakToHarikoLunchOrDinner_Text_3
 	call NatsukiFacesPlayer
 	faceplayer
-	speakername SpeakToNatsukiAfternoon_Text_1
+	setspeaker SpeakToNatsukiAfternoon_Text_1
 	msgbox SpeakToHarikoLunchOrDinner_Text_4
 	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	switch VAR_RESULT
@@ -1204,7 +1204,7 @@ SpeakToHarikoLunchOrDinner_9:
 
 
 SpeakToHarikoNight:
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox SpeakToHarikoNight_Text_0
 	mcdialogue SpeakToHarikoNight_Text_1, SpeakToHarikoNight_Text_2
 	switch VAR_RESULT
@@ -1224,7 +1224,7 @@ SpeakToHarikoNight_4:
 
 
 SpeakToHarikoAfternoon:
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox SpeakToHarikoAfternoon_Text_0
 	mcdialogue SpeakToHarikoNight_Text_1, SpeakToHarikoNight_Text_2
 	switch VAR_RESULT
@@ -1238,7 +1238,7 @@ SpeakToHarikoAfternoon_1:
 	msgbox SpeakToHarikoAfternoon_Text_1
 	call NatsukiFacesHariko
 	call HarikoTurnsToNatsuki
-	speakername SpeakToNatsukiAfternoon_Text_1
+	setspeaker SpeakToNatsukiAfternoon_Text_1
 	msgbox SpeakToNatsukiAfternoon_Text_2
 	call NatsukiFacesPlayer
 	msgbox SpeakToNatsukiAfternoon_Text_3
@@ -1269,7 +1269,7 @@ SpeakToHarikoAfternoon_7:
 SpeakToHarikoAgain:
 	gettime
 	call NatsukiTurnsToPlayer
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	gettime
 	compare VAR_0x8000, 5
 	goto_if_ge SpeakToHarikoAgain_16
@@ -1336,7 +1336,7 @@ SpeakToHarikoAgain_21:
 SpeakToNatsukiAgain:
 	gettime
 	call HarikoTurnsToPlayer
-	speakername SpeakToNatsukiAfternoon_Text_1
+	setspeaker SpeakToNatsukiAfternoon_Text_1
 	buffernumberstring STR_VAR_2, VAR_0x8000
 	msgbox SpeakToNatsukiAgain_Text_0
 	gettime
@@ -1404,7 +1404,7 @@ SpeakToNatsukiAgain_21:
 
 NatsukiCanIComeToo:
 	faceplayer
-	speakername SpeakToNatsukiAfternoon_Text_1
+	setspeaker SpeakToNatsukiAfternoon_Text_1
 	msgbox NatsukiCanIComeToo_Text_0
 	call NatsukiFacesHariko
 	compare VAR_0x8000, 5
@@ -1427,10 +1427,10 @@ NatsukiCanIComeToo_4:
 
 NotRightNow:
 	call HarikoFacesPlayer
-	speakername YifuCity_Trigger_HarikoCriminals_Text_0
+	setspeaker YifuCity_Trigger_HarikoCriminals_Text_0
 	msgbox NotRightNow_Text_0
 	call NatsukiFacesPlayer
-	speakername SpeakToNatsukiAfternoon_Text_1
+	setspeaker SpeakToNatsukiAfternoon_Text_1
 	msgbox NotRightNow_Text_1
 	return
 
@@ -1586,7 +1586,7 @@ YifuCity_EventScript_Nurse::
 	faceplayer
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_Nurse_2
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
-	speakername YifuCity_EventScript_Nurse_Text_0
+	setspeaker YifuCity_EventScript_Nurse_Text_0
 	msgbox YifuCity_EventScript_Nurse_Text_3
 	closemessage
 YifuCity_EventScript_Nurse_1:
@@ -1595,7 +1595,7 @@ YifuCity_EventScript_Nurse_1:
 
 YifuCity_EventScript_Nurse_2:
 	goto_if_set FLAG_ITEM_YIFU_CITY_HEAL_BALL, YifuCity_EventScript_Nurse_5
-	speakername YifuCity_EventScript_Nurse_Text_0
+	setspeaker YifuCity_EventScript_Nurse_Text_0
 	msgbox YifuCity_EventScript_Nurse_Text_2
 	closemessage
 	giveitem ITEM_HEAL_BALL, 2
@@ -1604,7 +1604,7 @@ YifuCity_EventScript_Nurse_2:
 	goto YifuCity_EventScript_Nurse_1
 
 YifuCity_EventScript_Nurse_5:
-	speakername YifuCity_EventScript_Nurse_Text_0
+	setspeaker YifuCity_EventScript_Nurse_Text_0
 	msgbox YifuCity_EventScript_Nurse_Text_1
 	closemessage
 	goto YifuCity_EventScript_Nurse_1

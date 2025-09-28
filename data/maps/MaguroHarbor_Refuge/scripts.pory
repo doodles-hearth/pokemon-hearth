@@ -19,7 +19,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 	lock
 	faceplayer
 	if (flag(FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE)) {
-		speakername("Hariko")
+		setspeaker("Hariko")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Where are you headed after getting the Maguro Dojo's Token?\p"
 			"Silveridge? I heard there are enormous rock snakes burrowing through Silver Tunnel…\p"
@@ -28,7 +28,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 		closemessage
 	}
 	elif (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
-		speakername("Hariko")
+		setspeaker("Hariko")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello again, {PLAYER}. So, do you want to battle?"
 		))
@@ -36,7 +36,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 
 		goto(MaguroHarbor_Refuge_BattleHariko)
 	} else {
-		speakername("Hariko")
+		setspeaker("Hariko")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Oh, hello there, {PLAYER}.\nFancy meeting you here, as they say.\p"
 			"I assume you are here to challenge the Maguro Harbor Dojo?\p"
@@ -58,7 +58,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 		waitmovement(LOCALID_SLOWPOKE)
 		playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
 
-		speakername("Bean")
+		setspeaker("Bean")
 		msgbox(format(
 			"Hurr…"
 		))
@@ -67,7 +67,7 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 		applymovement(LOCALID_BEAN, moves(walk_in_place_fast_down))
 		waitmovement(LOCALID_BEAN)
 
-		speakername("Hariko")
+		setspeaker("Hariko")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Bean is a little slow, but he is happy to meet you!\p"
 			"He may not look like a fighter, but he enjoys a good battle, too.\p"
@@ -101,7 +101,7 @@ script MaguroHarbor_Refuge_BattleHariko {
 
 			setflag(FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE)
 
-			speakername("Hariko")
+			setspeaker("Hariko")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}We lost, but Bean tells me he had fun!\nI am glad.\p"
 				"Everyday we learn something new about Pokémon, be it through battling or observation.\p"
@@ -111,14 +111,14 @@ script MaguroHarbor_Refuge_BattleHariko {
 
 			giveitem(ITEM_UUMEGIRI, 4)
 
-			speakername("Hariko")
+			setspeaker("Hariko")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}These can be fed to your Pokémon during battle to save you from a pickle.\p"
 				"Farewell, {PLAYER}."
 			))
 			closemessage
 		case 1:
-			speakername("Hariko")
+			setspeaker("Hariko")
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}No problem. I will be here a while before I continue my journey."
 			))
@@ -143,7 +143,7 @@ script MaguroHarbor_Refuge_EventScript_Slowpoke {
 	setseenmon(SPECIES_SLOWPOKE)
 	playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
 	if (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
-		speakername("Bean")
+		setspeaker("Bean")
 	} else {
 		setspeakertomonname(SPECIES_SLOWPOKE)
 	}
@@ -157,7 +157,7 @@ script MaguroHarbor_Refuge_EventScript_Slowpoke {
 script MaguroHarbor_Refuge_EventScript_DescribedMons {
 	lock
 	faceplayer
-	speakername("Man")
+	setspeaker("Man")
 	if (getdescribedmon(SPECIES_KRABBY)) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}So, have you written many entries in your encyclopedia?"

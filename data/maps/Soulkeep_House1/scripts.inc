@@ -5,7 +5,7 @@ Soulkeep_House1_MapScripts::
 Soulkeep_House1_EventScript_Girl::
 	lock
 	faceplayer
-	speakername Soulkeep_House1_EventScript_Girl_Text_0
+	setspeaker Soulkeep_House1_EventScript_Girl_Text_0
 	msgbox Soulkeep_House1_EventScript_Girl_Text_1
 	closemessage
 	release
@@ -15,7 +15,7 @@ Soulkeep_House1_EventScript_Girl::
 Soulkeep_House1_EventScript_EnGarde::
 	lock
 	faceplayer
-	speakername Soulkeep_House1_EventScript_EnGarde_Text_0
+	setspeaker Soulkeep_House1_EventScript_EnGarde_Text_0
 	msgbox Soulkeep_House1_EventScript_EnGarde_Text_1
 	closemessage
 	release
@@ -25,7 +25,7 @@ Soulkeep_House1_EventScript_EnGarde::
 Soulkeep_House1_EventScript_Farmer::
 	lock
 	faceplayer
-	speakername Soulkeep_House1_EventScript_EnGarde_Text_0
+	setspeaker Soulkeep_House1_EventScript_EnGarde_Text_0
 	msgbox Soulkeep_House1_EventScript_Farmer_Text_0
 	closemessage
 	release
@@ -35,7 +35,7 @@ Soulkeep_House1_EventScript_Farmer::
 Soulkeep_House1_EventScript_LittleGirl::
 	lock
 	faceplayer
-	speakername Soulkeep_House1_EventScript_LittleGirl_Text_0
+	setspeaker Soulkeep_House1_EventScript_LittleGirl_Text_0
 	msgbox Soulkeep_House1_EventScript_LittleGirl_Text_1
 	closemessage
 	setnamedmon SPECIES_FENNEKIN

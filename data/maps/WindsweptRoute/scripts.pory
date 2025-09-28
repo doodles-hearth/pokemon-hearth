@@ -11,7 +11,7 @@ mapscripts WindsweptRoute_MapScripts {
 script WindsweptRoute_EventScript_OvergrownTrees {
 	lock
 	faceplayer
-	speakername("Man")
+	setspeaker("Man")
 	if (flag(FLAG_CUT_TREE_SILVER_TUNNEL)) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Someone cut down that annoying tree! We can go to Silveridge again!"
@@ -31,7 +31,7 @@ script WindsweptRoute_EventScript_Trainer1 {
 		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}These winds blow as strong as my will to win!"),
 		format("You blew us away!")
 	)
-	speakername("Musashi")
+	setspeaker("Musashi")
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -42,7 +42,7 @@ script WindsweptRoute_EventScript_Itamae {
 		format("{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}I'm scouring this salty grass for the tastiest ingredients!"),
 		format("Bitter is the taste of defeat…")
 	)
-	speakername("Itamae")
+	setspeaker("Itamae")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}This place is an inspiration for my innovative cuisine.\p"
 		"The rocks are salty, the plants are salty… To an extent, even the air is salty."
@@ -56,7 +56,7 @@ script WindsweptRoute_EventScript_Trainer3 {
 		format("These cliffs are so damn tall! Good thing I have a damn long fishing rod."),
 		format("My rod didn't keep me from losing…")
 	)
-	speakername("Makoto")
+	setspeaker("Makoto")
 	msgbox(format("Look at that poor sod over there! His fishing rod's so short, I can't help but laugh!"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -64,7 +64,7 @@ script WindsweptRoute_EventScript_Trainer3 {
 script WindsweptRoute_EventScript_Fisherman_ShortRod {
 	lock
 	faceplayer
-	speakername("Fisherman")
+	setspeaker("Fisherman")
 	msgbox(format(
 		"That guy over there keeps bragging about having a long fishing rod.\p"
 		"Little does he realize that I, with my much shorter rod, catch only the highest-jumping fish!"
@@ -79,7 +79,7 @@ script WindsweptRoute_EventScript_Roku {
 		format("Uh, I was just taking a short break, okay?"),
 		format("I mistook you for the boss…")
 	)
-	speakername("Roku")
+	setspeaker("Roku")
 	msgbox(format("Please don't tell my colleagues I've been slacking off…"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -90,7 +90,7 @@ script WindsweptRoute_EventScript_Trainer4 {
 		format("These winds blow as strong as my will to win!"),
 		format("You blew us away!")
 	)
-	speakername("Musashi")
+	setspeaker("Musashi")
 	msgbox(format("I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -101,7 +101,7 @@ script WindsweptRoute_EventScript_Trainer5 {
 		format("These winds blow as strong as my will to win!"),
 		format("You blew us away!")
 	)
-	speakername("Musashi")
+	setspeaker("Musashi")
 	msgbox(format("I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -112,7 +112,7 @@ script WindsweptRoute_EventScript_Trainer6 {
 		format("These winds blow as strong as my will to win!"),
 		format("You blew us away!")
 	)
-	speakername("Musashi")
+	setspeaker("Musashi")
 	msgbox(format("I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -124,7 +124,7 @@ script WindsweptRoute_EventScript_TrainerBattleRoadblock {
 	applymovement(LOCALID_ROADBLOCK_NINJA_BOY, moves(walk_in_place_fast_left))
 	waitmovement(0)
 
-	speakername("Ninja Boy")
+	setspeaker("Ninja Boy")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}You shall know defeat at the hand of my ninja Pokémon!\p"
 		"Nuzleaf, use Feint Attack!"
@@ -141,7 +141,7 @@ script WindsweptRoute_EventScript_TrainerBattleRoadblock {
 	applymovement(LOCALID_ROADBLOCK_SCHOOLKID, moves(walk_in_place_fast_right))
 	waitmovement(0)
 
-	speakername("School Kid")
+	setspeaker("School Kid")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Your pathetic ninja costume can't beat the sheer power of knowledge!\p"
 		"Breloom! Headbutt!"

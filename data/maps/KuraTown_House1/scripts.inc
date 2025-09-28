@@ -16,7 +16,7 @@ KuraTown_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 KuraTown_House1_OldWoman::
 	lock
 	faceplayer
-	speakername KuraTown_House1_OldWoman_Text_0
+	setspeaker KuraTown_House1_OldWoman_Text_0
 	switch VAR_SAKU_KURA_QUEST_SCYTHER_STATE
 	case 2, KuraTown_House1_OldWoman_3
 	case 3, KuraTown_House1_OldWoman_4
@@ -63,7 +63,7 @@ OldWomanRegularScript:
 	msgbox OldWomanRegularScript_Text_0
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
-	speakername KuraTown_House1_OldWoman_Text_0
+	setspeaker KuraTown_House1_OldWoman_Text_0
 	msgbox OldWomanRegularScript_Text_1
 	closemessage
 	return
@@ -79,12 +79,12 @@ OldWomanQuestScript:
 	closemessage
 	applymovement 1, OldWomanQuestScript_Movement_0
 	waitmovement 0
-	speakername KuraTown_House1_OldWoman_Text_0
+	setspeaker KuraTown_House1_OldWoman_Text_0
 	msgbox OldWomanQuestScript_Text_5
 	waitmessage
 	closemessage
 	mcdialogue OldWomanQuestScript_Text_6, OldWomanQuestScript_Text_7, OldWomanQuestScript_Text_8
-	speakername KuraTown_House1_OldWoman_Text_0
+	setspeaker KuraTown_House1_OldWoman_Text_0
 	applymovement VAR_LAST_TALKED, OldWomanQuestScript_Movement_1
 	msgbox OldWomanQuestScript_Text_9
 	waitmessage
@@ -134,7 +134,7 @@ KuraTown_House1_OldWomansSon::
 	lock
 	applymovement VAR_LAST_TALKED, KuraTown_House1_OldWomansSon_Movement_0
 	faceplayer
-	speakername KuraTown_House1_OldWomansSon_Text_0
+	setspeaker KuraTown_House1_OldWomansSon_Text_0
 	msgbox KuraTown_House1_OldWomansSon_Text_1
 	closemessage
 	release

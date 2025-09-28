@@ -14,7 +14,7 @@ mapscripts Silveridge_Refuge_MapScripts {
 }
 
 script Silveridge_Refuge_EventScript_ImWorried {
-	speakername("Woman")
+	setspeaker("Woman")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}The whole town trembles from the Volcano's quakes…\p"
 		"I'm so worried…"
@@ -25,7 +25,7 @@ script Silveridge_Refuge_EventScript_Firebringer {
 	lock
 	faceplayer
 	if (flag(FLAG_RECEIVED_CHARCOAL)) {
-		speakername("Firebringer")
+		setspeaker("Firebringer")
 		msgbox(format(
 			"I'm bringin' down some Slugma today, freshly caught on Burnfoot Pass this mornin'.\p"
 			"Tomorrow I'll be back up there, catching some more of 'em."
@@ -33,7 +33,7 @@ script Silveridge_Refuge_EventScript_Firebringer {
 		closemessage
 	} else {
 		special(GetPlayerBoyLassString)
-		speakername("Firebringer")
+		setspeaker("Firebringer")
 		msgbox(format(
 			"Hm? You askin' why I smell like smoke?\p"
 			"Prob'ly 'cause I just got down from Mt Kazan, and lemme tell ya, {STR_VAR_1}, it is no piece o' cake!\p"
@@ -53,12 +53,12 @@ script Silveridge_Refuge_EventScript_Firebringer {
 script Silveridge_Refuge_EventScript_FirebringerFangirl {
 	gettimeofday
 	if (var(VAR_0x8000) == TIME_EARLY_MORNING || var(VAR_0x8000) == TIME_MORNING) {
-		speakername("Girl")
+		setspeaker("Girl")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}The Firebringer is coming to Silveridge today! Gosh, I can't wait!"
 		), MSGBOX_NPC)
 	} else {
-		speakername("Girl")
+		setspeaker("Girl")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}Oh gosh, look at him…\nHe's so…\lRough-looking…\lAnd handsome…And he smells like smoke…\p"
 			"Sigh…"
@@ -67,7 +67,7 @@ script Silveridge_Refuge_EventScript_FirebringerFangirl {
 }
 
 script Silveridge_Refuge_EventScript_Artist {
-	speakername("Artist")
+	setspeaker("Artist")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Listening to the musician's sweet song inspires me so!"
 	), MSGBOX_NPC)
@@ -113,14 +113,14 @@ script Silveridge_Refuge_EventScript_Shamisen {
 	faceplayer
 
 	if (flag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)) {
-		speakername("Shamisen Player")
+		setspeaker("Shamisen Player")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Are you resting here for the night as well?"
 		))
 		closemessage
 	} else {
 		special(GetPlayerBoyGirlString)
-		speakername("Shamisen Player")
+		setspeaker("Shamisen Player")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Good evening to you, {STR_VAR_1}.\p"
 			"Are you here to listen to my music?\p"
@@ -130,7 +130,7 @@ script Silveridge_Refuge_EventScript_Shamisen {
 
 		trainerbattle_no_intro(TRAINER_SHAMISEN, format("Such fun!"))
 
-		speakername("Shamisen Player")
+		setspeaker("Shamisen Player")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}That was just the thing I needed to pass the time.\p"
 			"I'll share my meal with you as a thanks."

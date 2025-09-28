@@ -1,9 +1,9 @@
 	.align 2
 voicegroup_c_vs_legend_beast::
-	voice_keysplit_all voicegroup_drums_rs
-	voice_keysplit voicegroup_piano, KeySplitTable1
+	voice_keysplit_all voicegroup_rs_drumset
+	voice_keysplit voicegroup_piano_keysplit, keysplit_piano
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_keysplit_all voicegroup_drums_dd
+	voice_keysplit_all voicegroup_dd_drumset
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -48,7 +48,7 @@ voicegroup_c_vs_legend_beast::
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_timpani, 255, 0, 193, 153
-	voice_keysplit voicegroup_strings, KeySplitTable2
+	voice_keysplit voicegroup_strings_keysplit, keysplit_strings
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -56,11 +56,11 @@ voicegroup_c_vs_legend_beast::
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_keysplit voicegroup_trumpet, KeySplitTable3
+	voice_keysplit voicegroup_trumpet_keysplit, keysplit_trumpet
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_keysplit voicegroup_french_horn, KeySplitTable5
+	voice_keysplit voicegroup_french_horn_keysplit, keysplit_french_horn
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound 60, 0, DirectSoundWaveData_sd90_classical_distortion_guitar_low, 255, 165, 180, 165
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0

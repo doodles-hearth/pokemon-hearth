@@ -5,7 +5,7 @@ mapscripts MaguroHarbor_Dojo_MapScripts {
 }
 
 script MaguroHarbor_Dojo_EventScript_Koishi {
-	speakername("Koishi")
+	setspeaker("Koishi")
 	trainerbattle_single(
 		TRAINER_KOISHI_1,
 		format(
@@ -29,13 +29,13 @@ script MaguroHarbor_Dojo_EventScript_Koishi {
 }
 
 script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
-	removespeakername
+	// removespeakername
 	message(format(
 		"{PLAYER} received the Flowing Token from Koishi."
 	))
 	waitmessage
 	call(Common_EventScript_PlayGymBadgeFanfare)
-	speakername("Koishi")
+	setspeaker("Koishi")
 	msgbox(
 		format(
 			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}I applaud your skill. You are still a child, yet you obviously have a natural aptitude for battle.\p"
@@ -47,7 +47,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	
 	giveitem(ITEM_TM_NATURE_POWER)
 
-	speakername("Koishi")
+	setspeaker("Koishi")
 	msgbox(
 		format(
 			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}This scroll contains Nature Power, a move that changes depending on the terrain your Pokémon is standing on.\p"
@@ -95,7 +95,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	waitmovement(LOCALID_LEADER)
 	delay(60)
 
-	speakername("Koishi")
+	setspeaker("Koishi")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}That… That was a big one!…\p"
 		"I'm going outside to make sure everyone's alright."
@@ -174,7 +174,7 @@ script MaguroHarbor_Dojo_EventScript_Mizu {
 script MaguroHarbor_Dojo_EventScript_Advice {
 	lock
 	faceplayer
-	speakername("Man")
+	setspeaker("Man")
 	if (flag(FLAG_BADGE01_GET)) {
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 			msgbox(format(

@@ -95,7 +95,7 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 	faceplayer
 
 	bufferspeciesname(STR_VAR_1, VAR_TEMP_1)
-	speakername("Sculptor")
+	setspeaker("Sculptor")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Please show me {STR_VAR_1}. My soul aches for it!"
 	))
@@ -109,7 +109,7 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 		waitmovement(0)
 
 		bufferspeciesname(STR_VAR_1, VAR_TEMP_1)
-		speakername("Sculptor")
+		setspeaker("Sculptor")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Oh… … … …\n"
 			"… … …Oh!!\p"
@@ -135,7 +135,7 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 		delay(24)
 
 		bufferspeciesname(STR_VAR_2, VAR_TEMP_2)
-		speakername("Sculptor")
+		setspeaker("Sculptor")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}There it is! My best work yet!\p"
 			"… … …And yet…\p"
@@ -153,7 +153,7 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 		setnamedmon(VAR_TEMP_2)
 		addvar(VAR_STATE_SCULPTOR, 1)
 	} else {
-		speakername("Sculptor")
+		setspeaker("Sculptor")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Why must you toy with me so?"
 		))
@@ -168,7 +168,7 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 script Silveridge_House1_EventScript_Sculptor_FirstTime {
 	lock
 	faceplayer
-	speakername("Sculptor")
+	setspeaker("Sculptor")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Please do not talk to me. I am creating."
 	))
@@ -184,7 +184,7 @@ script Silveridge_House1_EventScript_Sculptor_FirstTime {
 	applymovement(VAR_LAST_TALKED, Common_Movement_Delay48)
 	waitmovement(0)
 
-	speakername("Sculptor")
+	setspeaker("Sculptor")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}…Oh? Could it be? Another noble soul moved by the ancestral art of sculpture?\p"
 		"Am I no longer utterly alone? Oh, my heart swells up at the idea!\p"

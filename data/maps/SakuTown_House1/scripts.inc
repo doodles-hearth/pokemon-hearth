@@ -13,7 +13,7 @@ SakuTown_House1_EventScript_Tama::
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 9
 	goto_if_lt SakuTown_House1_EventScript_Tama_4
 	faceplayer
-	speakername SakuTown_House1_EventScript_Tama_Text_4
+	setspeaker SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_19
 	waitmessage
 	closemessage
@@ -26,7 +26,7 @@ SakuTown_House1_EventScript_Tama_2:
 	goto SakuTown_House1_EventScript_Tama_1
 
 SakuTown_House1_EventScript_Tama_3:
-	speakername SakuTown_House1_EventScript_Tama_Text_0
+	setspeaker SakuTown_House1_EventScript_Tama_Text_0
 	msgbox SakuTown_House1_EventScript_Tama_Text_1
 	mcdialogue SakuTown_House1_EventScript_Tama_Text_2, SakuTown_House1_EventScript_Tama_Text_3
 	closemessage
@@ -37,7 +37,7 @@ SakuTown_House1_EventScript_Tama_11:
 	mcdialogue SakuTown_House1_EventScript_Tama_Text_7, SakuTown_House1_EventScript_Tama_Text_8
 	closemessage
 	delay 32
-	speakername SakuTown_House1_EventScript_Tama_Text_4
+	setspeaker SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_9
 	delay 32
 	mcdialogue SakuTown_House1_EventScript_Tama_Text_10
@@ -50,7 +50,7 @@ SakuTown_House1_EventScript_Tama_11:
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	speakername SakuTown_House1_EventScript_Tama_Text_4
+	setspeaker SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_11
 	closemessage
 	playfanfare MUS_OBTAIN_ITEM
@@ -61,31 +61,31 @@ SakuTown_House1_EventScript_Tama_11:
 	playse SE_LEDGE
 	applymovement 1, SakuTown_House1_EventScript_Tama_Movement_0
 	waitmovement 1
-	speakername SakuTown_House1_EventScript_Tama_Text_4
+	setspeaker SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_13
 	closemessage
 	playse SE_PIN
 	applymovement 1, SakuTown_House1_EventScript_Tama_Movement_1
 	waitmovement 1
 	waitse
-	speakername SakuTown_House1_EventScript_Tama_Text_4
+	setspeaker SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_14
 	closemessage
 	applymovement 1, SakuTown_House1_EventScript_Tama_Movement_2
 	waitmovement 1
-	speakername SakuTown_House1_EventScript_Tama_Text_4
+	setspeaker SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_15
 	closemessage
 	delay 24
 	faceplayer
-	speakername SakuTown_House1_EventScript_Tama_Text_4
+	setspeaker SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_16
 	closemessage
 	applymovement 1, Common_Movement_FaceAwayPlayer
 	waitmovement 1
 	delay 60
 	faceplayer
-	speakername SakuTown_House1_EventScript_Tama_Text_4
+	setspeaker SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_17
 	closemessage
 	addvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
@@ -93,25 +93,25 @@ SakuTown_House1_EventScript_Tama_11:
 
 SakuTown_House1_EventScript_Tama_4:
 	faceplayer
-	speakername SakuTown_House1_EventScript_Tama_Text_4
+	setspeaker SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_18
 	waitmessage
 	closemessage
 	goto SakuTown_House1_EventScript_Tama_1
 
 SakuTown_House1_EventScript_Tama_13:
-	speakername SakuTown_House1_EventScript_Tama_Text_4
+	setspeaker SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_5
 	goto SakuTown_House1_EventScript_Tama_11
 
 SakuTown_House1_EventScript_Tama_14:
-	speakername SakuTown_House1_EventScript_Tama_Text_4
+	setspeaker SakuTown_House1_EventScript_Tama_Text_4
 	msgbox SakuTown_House1_EventScript_Tama_Text_6
 	goto SakuTown_House1_EventScript_Tama_11
 
 
 TamaScript1:
-	speakername SakuTown_House1_EventScript_Tama_Text_0
+	setspeaker SakuTown_House1_EventScript_Tama_Text_0
 	msgbox SakuTown_House1_EventScript_Tama_Text_1
 	closemessage
 	return

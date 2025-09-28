@@ -14,14 +14,14 @@ OrchardPath_EventScript_GuardHouseSign::
 
 OrchardPath_EventScript_Junko::
 	trainerbattle_single TRAINER_JUNKO, OrchardPath_EventScript_Junko_Text_0, OrchardPath_EventScript_Junko_Text_1
-	speakername OrchardPath_EventScript_Junko_Text_2
+	setspeaker OrchardPath_EventScript_Junko_Text_2
 	msgbox OrchardPath_EventScript_Junko_Text_3, MSGBOX_AUTOCLOSE
 	return
 
 
 OrchardPath_EventScript_Mami::
 	trainerbattle_single TRAINER_MAMI, OrchardPath_EventScript_Mami_Text_0, OrchardPath_EventScript_Mami_Text_1
-	speakername OrchardPath_EventScript_Mami_Text_2
+	setspeaker OrchardPath_EventScript_Mami_Text_2
 	msgbox OrchardPath_EventScript_Mami_Text_3, MSGBOX_AUTOCLOSE
 	return
 
@@ -29,7 +29,7 @@ OrchardPath_EventScript_Mami::
 OrchardPath_EventScript_Samurai::
 	lock
 	faceplayer
-	speakername OrchardPath_EventScript_Samurai_Text_0
+	setspeaker OrchardPath_EventScript_Samurai_Text_0
 	msgbox OrchardPath_EventScript_Samurai_Text_1
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, OrchardPath_EventScript_Samurai_Text_2, OrchardPath_EventScript_Samurai_Text_3, OrchardPath_EventScript_Samurai_Text_4
 	closemessage
@@ -56,7 +56,7 @@ OrchardPath_EventScript_Samurai_5:
 
 OrchardPath_Samurai_WhatIsHappening::
 	special GetPlayerSirMissString
-	speakername OrchardPath_EventScript_Samurai_Text_0
+	setspeaker OrchardPath_EventScript_Samurai_Text_0
 	msgbox OrchardPath_Samurai_WhatIsHappening_Text_0
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, OrchardPath_EventScript_Samurai_Text_3, OrchardPath_EventScript_Samurai_Text_4
 	closemessage
@@ -75,7 +75,7 @@ OrchardPath_Samurai_WhatIsHappening_3:
 
 
 OrchardPath_Samurai_LetMeThrough::
-	speakername OrchardPath_EventScript_Samurai_Text_0
+	setspeaker OrchardPath_EventScript_Samurai_Text_0
 	msgbox OrchardPath_Samurai_LetMeThrough_Text_0
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, OrchardPath_EventScript_Samurai_Text_3
 	closemessage
@@ -88,7 +88,7 @@ OrchardPath_Samurai_KnowAboutDecay::
 	applymovement VAR_LAST_TALKED, OrchardPath_Samurai_KnowAboutDecay_Movement_0
 	waitmovement 0
 	waitse
-	speakername OrchardPath_EventScript_Samurai_Text_0
+	setspeaker OrchardPath_EventScript_Samurai_Text_0
 	msgbox OrchardPath_Samurai_KnowAboutDecay_Text_0
 	setvar VAR_DECAY_BEACHBOUND_ROUTE, 7
 	return
@@ -120,13 +120,13 @@ OrchardPath_EventScript_RockSmash_2:
 	goto_if_set FLAG_BEAT_ROCK_SMASHER, OrchardPath_EventScript_RockSmash_5
 	goto_if_unset FLAG_BEAT_ROCK_SMASHER, OrchardPath_EventScript_RockSmash_9
 OrchardPath_EventScript_RockSmash_7:
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmash_Text_2
 	closemessage
 	goto OrchardPath_EventScript_RockSmash_1
 
 OrchardPath_EventScript_RockSmash_5:
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmash_Text_1
 	closemessage
 	goto OrchardPath_EventScript_RockSmash_1
@@ -147,14 +147,14 @@ OrchardPath_EventScript_RockSmash_9:
 
 
 OrchardPath_EventScript_RockSmashBrokeMyRocks::
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashBrokeMyRocks_Text_0
 	closemessage
 	playse SE_PIN
 	applymovement VAR_LAST_TALKED, OrchardPath_EventScript_RockSmashBrokeMyRocks_Movement_0
 	waitmovement 0
 	waitse
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashBrokeMyRocks_Text_1
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, OrchardPath_EventScript_RockSmashBrokeMyRocks_Text_2, OrchardPath_EventScript_RockSmashBrokeMyRocks_Text_3
 	closemessage
@@ -164,26 +164,26 @@ OrchardPath_EventScript_RockSmashBrokeMyRocks::
 OrchardPath_EventScript_RockSmashBrokeMyRocks_1:
 	trainerbattle_no_intro TRAINER_ROCK_SMASH_GUY, OrchardPath_EventScript_RockSmashBrokeMyRocks_Text_6
 	setflag FLAG_BEAT_ROCK_SMASHER
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashBrokeMyRocks_Text_7
 	closemessage
 	return
 
 OrchardPath_EventScript_RockSmashBrokeMyRocks_3:
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashBrokeMyRocks_Text_4
 	closemessage
 	goto OrchardPath_EventScript_RockSmashBrokeMyRocks_1
 
 OrchardPath_EventScript_RockSmashBrokeMyRocks_4:
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashBrokeMyRocks_Text_5
 	closemessage
 	goto OrchardPath_EventScript_RockSmashBrokeMyRocks_1
 
 
 OrchardPath_EventScript_RockSmashRegular::
-	speakername OrchardPath_EventScript_RockSmashRegular_Text_0
+	setspeaker OrchardPath_EventScript_RockSmashRegular_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_1
 	showmoneybox 18, 0
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, OrchardPath_EventScript_RockSmashRegular_Text_2, OrchardPath_EventScript_RockSmashRegular_Text_3, OrchardPath_EventScript_RockSmashRegular_Text_4
@@ -199,21 +199,21 @@ OrchardPath_EventScript_RockSmashRegular_2:
 	compare VAR_RESULT, 0
 	goto_if_ne OrchardPath_EventScript_RockSmashRegular_5
 	hidemoneybox
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_10
 	closemessage
 	return
 
 OrchardPath_EventScript_RockSmashRegular_3:
 	hidemoneybox
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_11
 	closemessage
 	return
 
 OrchardPath_EventScript_RockSmashRegular_4:
 	hidemoneybox
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_12
 	closemessage
 	return
@@ -221,18 +221,18 @@ OrchardPath_EventScript_RockSmashRegular_4:
 OrchardPath_EventScript_RockSmashRegular_5:
 	removemoney 100
 	updatemoneybox
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_5
 	closemessage
 	hidemoneybox
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_6
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, OrchardPath_EventScript_RockSmashRegular_Movement_0
 	waitmovement 0
 	applymovement VAR_LAST_TALKED, OrchardPath_EventScript_RockSmashRegular_Movement_1
 	waitmovement 0
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_7
 	closemessage
 	playse SE_LEDGE
@@ -246,11 +246,11 @@ OrchardPath_EventScript_RockSmashRegular_5:
 	waitse
 	delay 48
 	applymovement VAR_LAST_TALKED, OrchardPath_EventScript_RockSmashRegular_Movement_3
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_8
 	closemessage
 	giveitem ITEM_SECRET_SMASH
-	speakername OrchardPath_EventScript_RockSmash_Text_0
+	setspeaker OrchardPath_EventScript_RockSmash_Text_0
 	msgbox OrchardPath_EventScript_RockSmashRegular_Text_9
 	closemessage
 	giveitem ITEM_TM_PEBBLE_CRUSH
@@ -266,7 +266,7 @@ OrchardPath_EventScript_SignRockSmash::
 OrchardPath_EventScript_Samurai2::
 	lock
 	faceplayer
-	speakername OrchardPath_EventScript_Samurai_Text_0
+	setspeaker OrchardPath_EventScript_Samurai_Text_0
 	msgbox OrchardPath_EventScript_Samurai2_Text_0
 	closemessage
 	release

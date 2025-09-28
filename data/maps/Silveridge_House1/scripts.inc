@@ -18,7 +18,7 @@ Silveridge_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 Silveridge_House1_EventScript_Woman::
 	lock
 	faceplayer
-	speakername Silveridge_House1_EventScript_Woman_Text_0
+	setspeaker Silveridge_House1_EventScript_Woman_Text_0
 	msgbox Silveridge_House1_EventScript_Woman_Text_1
 	closemessage
 	release
@@ -28,7 +28,7 @@ Silveridge_House1_EventScript_Woman::
 Silveridge_House1_EventScript_FirebringerFangirl::
 	lock
 	faceplayer
-	speakername Silveridge_House1_EventScript_FirebringerFangirl_Text_0
+	setspeaker Silveridge_House1_EventScript_FirebringerFangirl_Text_0
 	msgbox Silveridge_House1_EventScript_FirebringerFangirl_Text_1
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -44,7 +44,7 @@ Silveridge_House1_EventScript_Sandslash::
 	faceplayer
 	setseenmon SPECIES_SANDSLASH
 	playmoncry SPECIES_SANDSLASH, CRY_MODE_NORMAL
-	speakername Silveridge_House1_EventScript_Sandslash_Text_0
+	setspeaker Silveridge_House1_EventScript_Sandslash_Text_0
 	msgbox Silveridge_House1_EventScript_Sandslash_Text_1
 	waitmoncry
 	closemessage
@@ -55,13 +55,13 @@ Silveridge_House1_EventScript_Sandslash::
 Silveridge_House1_EventScript_Man::
 	lock
 	faceplayer
-	speakername Silveridge_House1_EventScript_Man_Text_0
+	setspeaker Silveridge_House1_EventScript_Man_Text_0
 	goto_if_set FLAG_OBTAINED_EVERSTONE, Silveridge_House1_EventScript_Man_2
 	msgbox Silveridge_House1_EventScript_Man_Text_2
 	closemessage
 	giveitem ITEM_EVERSTONE
 	setflag FLAG_OBTAINED_EVERSTONE
-	speakername Silveridge_House1_EventScript_Man_Text_0
+	setspeaker Silveridge_House1_EventScript_Man_Text_0
 	msgbox Silveridge_House1_EventScript_Man_Text_3
 	closemessage
 	setnamedmon SPECIES_SANDSLASH

@@ -15,7 +15,7 @@ SunriseVillage_RivalsHouse_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 SunriseVillage_RivalsHouse_EventScript_Woman::
 	lock
 	faceplayer
-	speakername SunriseVillage_RivalsHouse_EventScript_Woman_Text_0
+	setspeaker SunriseVillage_RivalsHouse_EventScript_Woman_Text_0
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
 	goto_if_ge SunriseVillage_RivalsHouse_EventScript_Woman_2
 	msgbox SunriseVillage_RivalsHouse_EventScript_Woman_Text_2
@@ -33,12 +33,12 @@ SunriseVillage_RivalsHouse_EventScript_Natsuki::
 	applymovement 5, Common_Movement_FaceUp
 	waitmovement 0
 	goto_if_set FLAG_TEMP_2, SunriseVillage_RivalsHouse_EventScript_Natsuki_2
-	speakername SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_0
+	setspeaker SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_0
 	msgbox SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_2
 	closemessage
 	delay 48
 	faceplayer
-	speakername SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_0
+	setspeaker SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_0
 	msgbox SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_3
 	closemessage
 	applymovement 5, Common_Movement_FaceUp
@@ -49,7 +49,7 @@ SunriseVillage_RivalsHouse_EventScript_Natsuki_1:
 	return
 
 SunriseVillage_RivalsHouse_EventScript_Natsuki_2:
-	speakername SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_0
+	setspeaker SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_0
 	msgbox SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_1
 	closemessage
 	setnamedmon SPECIES_JOLTIK
@@ -59,7 +59,7 @@ SunriseVillage_RivalsHouse_EventScript_Natsuki_2:
 SunriseVillage_RivalsHouse_EventScript_Man::
 	lock
 	faceplayer
-	speakername SunriseVillage_RivalsHouse_EventScript_Man_Text_0
+	setspeaker SunriseVillage_RivalsHouse_EventScript_Man_Text_0
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
 	goto_if_eq SunriseVillage_RivalsHouse_EventScript_Man_2
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 8

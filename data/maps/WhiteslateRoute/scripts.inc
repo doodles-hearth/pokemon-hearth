@@ -56,14 +56,14 @@ WhiteslateRoute_Trigger_ShamisenPlayerBottom_2:
 
 
 WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady::
-	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
 	msgbox WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_1
 	call WhiteslateRoute_EventScript_ShamisenPlayerChoice
 	return
 
 
 WhiteslateRoute_EventScript_ShamisenChallenge::
-	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
 	msgbox WhiteslateRoute_EventScript_ShamisenChallenge_Text_0
 	call WhiteslateRoute_EventScript_ShamisenPlayerChoice
 	return
@@ -72,7 +72,7 @@ WhiteslateRoute_EventScript_ShamisenChallenge::
 WhiteslateRoute_EventScript_ShamisenCallsOut::
 	applymovement 23, WhiteslateRoute_EventScript_ShamisenCallsOut_Movement_0
 	waitmovement 23
-	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
 	msgbox WhiteslateRoute_EventScript_ShamisenCallsOut_Text_0
 	closemessage
 	return
@@ -82,7 +82,7 @@ WhiteslateRoute_EventScript_ShamisenPlayer::
 	lock
 	applymovement 23, WhiteslateRoute_EventScript_ShamisenPlayer_Movement_0
 	waitmovement 23
-	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
 	msgbox WhiteslateRoute_EventScript_ShamisenChallenge_Text_0
 	call WhiteslateRoute_EventScript_ShamisenPlayerChoice
 	release
@@ -98,7 +98,7 @@ WhiteslateRoute_EventScript_ShamisenPlayerChoice::
 	return
 
 WhiteslateRoute_EventScript_ShamisenPlayerChoice_2:
-	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
 	msgbox WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_2
 	closemessage
 	applymovement 24, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_0
@@ -115,7 +115,7 @@ WhiteslateRoute_EventScript_ShamisenPlayerChoice_2:
 	return
 
 WhiteslateRoute_EventScript_ShamisenPlayerChoice_3:
-	speakername WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
 	msgbox WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_3
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_3
@@ -138,42 +138,42 @@ WhiteslateRoute_EventScript_ShamisenPlayerPokemon::
 
 WhiteslateRoute_EventScript_Itsumi::
 	trainerbattle_single TRAINER_ITSUMI, WhiteslateRoute_EventScript_Itsumi_Text_0, WhiteslateRoute_EventScript_Itsumi_Text_1
-	speakername WhiteslateRoute_EventScript_Itsumi_Text_2
+	setspeaker WhiteslateRoute_EventScript_Itsumi_Text_2
 	msgbox WhiteslateRoute_EventScript_Itsumi_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Ryosuke::
 	trainerbattle_single TRAINER_RYOSUKE, WhiteslateRoute_EventScript_Ryosuke_Text_0, WhiteslateRoute_EventScript_Ryosuke_Text_1
-	speakername WhiteslateRoute_EventScript_Ryosuke_Text_2
+	setspeaker WhiteslateRoute_EventScript_Ryosuke_Text_2
 	msgbox WhiteslateRoute_EventScript_Ryosuke_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Riku::
 	trainerbattle_single TRAINER_RIKU, WhiteslateRoute_EventScript_Riku_Text_0, WhiteslateRoute_EventScript_Riku_Text_1
-	speakername WhiteslateRoute_EventScript_Riku_Text_2
+	setspeaker WhiteslateRoute_EventScript_Riku_Text_2
 	msgbox WhiteslateRoute_EventScript_Riku_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Tomomi::
 	trainerbattle_single TRAINER_TOMOMI, WhiteslateRoute_EventScript_Tomomi_Text_0, WhiteslateRoute_EventScript_Tomomi_Text_1
-	speakername WhiteslateRoute_EventScript_Tomomi_Text_2
+	setspeaker WhiteslateRoute_EventScript_Tomomi_Text_2
 	msgbox WhiteslateRoute_EventScript_Tomomi_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Yono::
 	trainerbattle_single TRAINER_YONO, WhiteslateRoute_EventScript_Yono_Text_0, WhiteslateRoute_EventScript_Yono_Text_1
-	speakername WhiteslateRoute_EventScript_Yono_Text_2
+	setspeaker WhiteslateRoute_EventScript_Yono_Text_2
 	msgbox WhiteslateRoute_EventScript_Yono_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Sumi::
 	trainerbattle_single TRAINER_SUMI, WhiteslateRoute_EventScript_Sumi_Text_0, WhiteslateRoute_EventScript_Sumi_Text_1
-	speakername WhiteslateRoute_EventScript_Sumi_Text_2
+	setspeaker WhiteslateRoute_EventScript_Sumi_Text_2
 	applymovement VAR_LAST_TALKED, WhiteslateRoute_EventScript_Sumi_Movement_0
 	msgbox WhiteslateRoute_EventScript_Sumi_Text_3, MSGBOX_AUTOCLOSE
 	end
@@ -182,7 +182,7 @@ WhiteslateRoute_EventScript_Sumi::
 WhiteslateRoute_EventScript_Tomiko::
 	trainerbattle_single TRAINER_TOMIKO, WhiteslateRoute_EventScript_Tomiko_Text_0, WhiteslateRoute_EventScript_Tomiko_Text_1
 	setspeakertomonname SPECIES_SPINDA
-	speakername WhiteslateRoute_EventScript_Tomiko_Text_2
+	setspeaker WhiteslateRoute_EventScript_Tomiko_Text_2
 	msgbox WhiteslateRoute_EventScript_Tomiko_Text_3, MSGBOX_AUTOCLOSE
 	end
 
@@ -190,14 +190,14 @@ WhiteslateRoute_EventScript_Tomiko::
 WhiteslateRoute_EventScript_Utaro::
 	trainerbattle_single TRAINER_UTARO, WhiteslateRoute_EventScript_Utaro_Text_0, WhiteslateRoute_EventScript_Utaro_Text_1
 	setspeakertomonname SPECIES_SEVIPER
-	speakername WhiteslateRoute_EventScript_Utaro_Text_2
+	setspeaker WhiteslateRoute_EventScript_Utaro_Text_2
 	msgbox WhiteslateRoute_EventScript_Utaro_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_ShuckleGirl::
 	setnamedmon SPECIES_SHUCKLE
-	speakername WhiteslateRoute_EventScript_ShuckleGirl_Text_0
+	setspeaker WhiteslateRoute_EventScript_ShuckleGirl_Text_0
 	msgbox WhiteslateRoute_EventScript_ShuckleGirl_Text_1, MSGBOX_AUTOCLOSE
 	end
 
@@ -242,7 +242,7 @@ WhiteslateRoute_EventScript_Shuckle_2:
 
 WhiteslateRoute_Trigger_SecretBase::
 	lockall
-	speakername WhiteslateRoute_Trigger_SecretBase_Text_0
+	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
 	msgbox WhiteslateRoute_Trigger_SecretBase_Text_1
 	closemessage
 	applymovement 7, WhiteslateRoute_Trigger_SecretBase_Movement_0
@@ -262,7 +262,7 @@ WhiteslateRoute_Trigger_SecretBase::
 	setmetatile 26, 34, METATILE_PorytilesPrimaryTutorial_CaveEntrance, TRUE
 	special DrawWholeMapView
 	waitse
-	speakername WhiteslateRoute_Trigger_SecretBase_Text_0
+	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
 	msgbox WhiteslateRoute_Trigger_SecretBase_Text_2
 	closemessage
 	playmoncry SPECIES_GROVYLE, CRY_MODE_NORMAL
@@ -284,7 +284,7 @@ WhiteslateRoute_Trigger_SecretBase::
 	case 27, WhiteslateRoute_Trigger_SecretBase_5
 WhiteslateRoute_Trigger_SecretBase_1:
 	applymovement 7, WhiteslateRoute_Trigger_SecretBase_Movement_9
-	speakername WhiteslateRoute_Trigger_SecretBase_Text_0
+	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
 	msgbox WhiteslateRoute_Trigger_SecretBase_Text_3
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, WhiteslateRoute_Trigger_SecretBase_Text_4, WhiteslateRoute_Trigger_SecretBase_Text_5, WhiteslateRoute_Trigger_SecretBase_Text_6
 	closemessage
@@ -295,7 +295,7 @@ WhiteslateRoute_Trigger_SecretBase_1:
 WhiteslateRoute_Trigger_SecretBase_6:
 	closemessage
 	giveitem ITEM_TM_SECRET_POWER
-	speakername WhiteslateRoute_Trigger_SecretBase_Text_0
+	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
 	msgbox WhiteslateRoute_Trigger_SecretBase_Text_10
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
@@ -337,17 +337,17 @@ WhiteslateRoute_Trigger_SecretBase_5:
 	goto WhiteslateRoute_Trigger_SecretBase_1
 
 WhiteslateRoute_Trigger_SecretBase_8:
-	speakername WhiteslateRoute_Trigger_SecretBase_Text_0
+	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
 	msgbox WhiteslateRoute_Trigger_SecretBase_Text_7
 	goto WhiteslateRoute_Trigger_SecretBase_6
 
 WhiteslateRoute_Trigger_SecretBase_9:
-	speakername WhiteslateRoute_Trigger_SecretBase_Text_0
+	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
 	msgbox WhiteslateRoute_Trigger_SecretBase_Text_8
 	goto WhiteslateRoute_Trigger_SecretBase_6
 
 WhiteslateRoute_Trigger_SecretBase_10:
-	speakername WhiteslateRoute_Trigger_SecretBase_Text_0
+	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
 	msgbox WhiteslateRoute_Trigger_SecretBase_Text_9
 	goto WhiteslateRoute_Trigger_SecretBase_6
 

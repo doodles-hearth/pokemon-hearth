@@ -4,14 +4,14 @@ SilverTunnel_2F_MapScripts::
 
 SilverTunnel_2F_EventScript_Tama::
 	trainerbattle_double TRAINER_TAMA, SilverTunnel_2F_EventScript_Tama_Text_0, SilverTunnel_2F_EventScript_Tama_Text_1, SilverTunnel_2F_EventScript_Tama_Text_2
-	speakername SilverTunnel_2F_EventScript_Tama_Text_3
+	setspeaker SilverTunnel_2F_EventScript_Tama_Text_3
 	msgbox SilverTunnel_2F_EventScript_Tama_Text_4, MSGBOX_AUTOCLOSE
 	end
 
 
 SilverTunnel_2F_EventScript_Kansaku::
 	trainerbattle_single TRAINER_IKUTO, SilverTunnel_2F_EventScript_Kansaku_Text_0, SilverTunnel_2F_EventScript_Kansaku_Text_1
-	speakername SilverTunnel_2F_EventScript_Kansaku_Text_2
+	setspeaker SilverTunnel_2F_EventScript_Kansaku_Text_2
 	setnamedmon SPECIES_ONIX
 	msgbox SilverTunnel_2F_EventScript_Kansaku_Text_3, MSGBOX_AUTOCLOSE
 	end
@@ -22,7 +22,7 @@ SilverTunnel_2F_EventScript_Sandslash::
 	faceplayer
 	setseenmon SPECIES_SANDSLASH
 	playmoncry SPECIES_SANDSLASH, CRY_MODE_NORMAL
-	speakername SilverTunnel_2F_EventScript_Sandslash_Text_0
+	setspeaker SilverTunnel_2F_EventScript_Sandslash_Text_0
 	msgbox SilverTunnel_2F_EventScript_Sandslash_Text_1
 	waitmoncry
 	closemessage
@@ -33,7 +33,7 @@ SilverTunnel_2F_EventScript_Sandslash::
 SilverTunnel_2F_EventScript_Miner::
 	lock
 	faceplayer
-	speakername SilverTunnel_2F_EventScript_Miner_Text_0
+	setspeaker SilverTunnel_2F_EventScript_Miner_Text_0
 	msgbox SilverTunnel_2F_EventScript_Miner_Text_1
 	closemessage
 	turnobject VAR_LAST_TALKED, DIR_WEST

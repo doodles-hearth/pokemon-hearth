@@ -22,11 +22,11 @@ KuraTown_House3_EventScript_Lady_1:
 
 KuraTown_House3_EventScript_Lady_2:
 	faceplayer
-	speakername KuraTown_House3_EventScript_Lady_Text_0
+	setspeaker KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_Lady_Text_1
 	closemessage
 	delay 60
-	speakername KuraTown_House3_EventScript_Lady_Text_0
+	setspeaker KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_Lady_Text_2
 	closemessage
 	compare VAR_SAKU_KURA_QUEST_ESPEON_STATE, 0
@@ -39,7 +39,7 @@ KuraTown_House3_EventScript_Lady_14:
 
 KuraTown_House3_EventScript_Lady_3:
 	faceplayer
-	speakername KuraTown_House3_EventScript_Lady_Text_0
+	setspeaker KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_Lady_Text_3
 	closemessage
 	goto KuraTown_House3_EventScript_Lady_1
@@ -52,14 +52,14 @@ KuraTown_House3_EventScript_Lady_4:
 KuraTown_House3_EventScript_Lady_5:
 	applymovement VAR_LAST_TALKED, KuraTown_House3_EventScript_Lady_Movement_0
 	faceplayer
-	speakername KuraTown_House3_EventScript_Lady_Text_0
+	setspeaker KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_Lady_Text_4
 	closemessage
 	goto KuraTown_House3_EventScript_Lady_1
 
 KuraTown_House3_EventScript_Lady_6:
 	faceplayer
-	speakername KuraTown_House3_EventScript_Lady_Text_0
+	setspeaker KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_Lady_Text_5
 	closemessage
 	goto KuraTown_House3_EventScript_Lady_1
@@ -81,19 +81,19 @@ KuraTown_House3_EventScript_EspeonGoesHome::
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
 	delay 48
-	speakername KuraTown_House3_EventScript_Lady_Text_0
+	setspeaker KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_EspeonGoesHome_Text_0
 	closemessage
 	applymovement 1, KuraTown_House3_EventScript_EspeonGoesHome_Movement_0
 	waitmovement 0
-	speakername KuraTown_House3_EventScript_Lady_Text_0
+	setspeaker KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_EspeonGoesHome_Text_1
 	closemessage
 	applymovement 1, Common_Movement_FaceLeft
 	applymovement 2, Common_Movement_FaceRight
 	waitmovement 0
 	applymovement 1, KuraTown_House3_EventScript_EspeonGoesHome_Movement_1
-	speakername KuraTown_House3_EventScript_Lady_Text_0
+	setspeaker KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_EspeonGoesHome_Text_2
 	closemessage
 	applymovement 2, JumpInJoy
@@ -107,7 +107,7 @@ KuraTown_House3_EventScript_EspeonGoesHome::
 	fadescreenswapbuffers FADE_FROM_BLACK
 	delay 40
 	applymovement 1, KuraTown_House3_EventScript_Lady_Movement_0
-	speakername KuraTown_House3_EventScript_Lady_Text_0
+	setspeaker KuraTown_House3_EventScript_Lady_Text_0
 	msgbox KuraTown_House3_EventScript_EspeonGoesHome_Text_3
 	closemessage
 	setvar VAR_SAKU_KURA_QUEST_ESPEON_STATE, 4

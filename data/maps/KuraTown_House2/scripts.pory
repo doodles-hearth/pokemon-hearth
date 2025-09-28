@@ -35,7 +35,7 @@ script KuraTown_House2_EventScript_Ashii {
 
 script(local) AshiiScript_FirstEncounter {
 	applymovement(LOCALID_ASHII, moves(emote_pensive))
-	speakername("Girl")
+	setspeaker("Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Sigh… Oh, Tama…\nWhy must life be so complicated?"
 	))
@@ -50,7 +50,7 @@ script(local) AshiiScript_FirstEncounter {
 	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
 	waitmovement(0)
 
-	speakername("Girl")
+	setspeaker("Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Hey, what are you doing in my house?\nWere you eavesdropping?\p"
 		"…It doesn't matter anyway.\nThe boy who stole my heart lives in\lSaku Village, but our two villages hate each other, so I can't see him anymore.\p"
@@ -63,7 +63,7 @@ script(local) AshiiScript_FirstEncounter {
 	applymovement(LOCALID_ASHII, moves(emote_exclamation_mark, delay_16 * 3))
 	waitmovement(0)
 
-	speakername("Ashii")
+	setspeaker("Ashii")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Wait, you're not from here, are you?\p"
 		"My name is Ashii. I need your help.\p"
@@ -80,7 +80,7 @@ script(local) AshiiScript_FirstEncounter {
 
 script(local) AshiiScript_DidYouGiveTamaScarf {
 	faceplayer
-	speakername("Ashii")
+	setspeaker("Ashii")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Please, give Tama my silk scarf.\nHe'll know it's from me…"
 	))
@@ -90,7 +90,7 @@ script(local) AshiiScript_DidYouGiveTamaScarf {
 script(local) AshiiScript_ReportBackAfterGivingScarf {
 	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3)
 	faceplayer
-	speakername("Ashii")
+	setspeaker("Ashii")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Were you able to give Tama my gift?\p"
 		"Did…\nDid he get my letter?"
@@ -117,7 +117,7 @@ script(local) AshiiScript_ReportBackAfterGivingScarf {
 	))
 	waitmovement(0)
 
-	speakername("Ashii")
+	setspeaker("Ashii")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm sorry. You've been an incredible help, and I don't even know your name!\p"
 		"… … …{PLAYER}. I see…\p"
@@ -129,7 +129,7 @@ script(local) AshiiScript_ReportBackAfterGivingScarf {
 
 script(local) AshiiScript_Rocks {
 	faceplayer
-	speakername("Ashii")
+	setspeaker("Ashii")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Could you please destroy those rocky obstacles in the vale?\p"
 		"I'd do it myself, but I can't get into Saku Village."
@@ -138,7 +138,7 @@ script(local) AshiiScript_Rocks {
 
 script(local) AshiiScript_EscortAshii {
 	faceplayer
-	speakername("Ashii")
+	setspeaker("Ashii")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you for clearing the way of those rocks!\p"
 		"{PLAYER}… I know this is a big thing to ask, but…\p"
@@ -154,7 +154,7 @@ script(local) AshiiScript_EscortAshii {
 		// Player says no
 	} else {
 		applymovement(LOCALID_ASHII, moves(emote_sad))
-		speakername("Ashii")
+		setspeaker("Ashii")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Please come back…\nDon't toy with a girl's heart…"
 		))
@@ -198,7 +198,7 @@ script(local) AshiiScript_PlayerAcceptsEscort {
 	gettimeofday
 	if(var(VAR_0x8000) == TIME_DEAD_NIGHT) {
 		applymovement(LOCALID_ASHII, moves(emote_heart))
-		speakername("Ashii")
+		setspeaker("Ashii")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
 			"Let's make haste, then.\nBefore the moon takes her slumber!"
@@ -213,7 +213,7 @@ script(local) AshiiScript_PlayerAcceptsEscort {
 
 	} else {
 		applymovement(LOCALID_ASHII, moves(emote_heart))
-		speakername("Ashii")
+		setspeaker("Ashii")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
 			"Meet me here later tonight."
@@ -239,7 +239,7 @@ script(local) AshiiScript_PlayerAcceptsEscort {
 script(local) AshiiScript_Reward {
 	faceplayer
 	applymovement(LOCALID_ASHII, moves(emote_happy))
-	speakername("Ashii")
+	setspeaker("Ashii")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}{PLAYER}! It's you!\p"
 		"I can't thank you enough for the night you've given us.\p"
@@ -251,7 +251,7 @@ script(local) AshiiScript_Reward {
 	giveitem(ITEM_COVERT_CLOAK)
 
 	applymovement(LOCALID_ASHII, moves(emote_sweat))
-	speakername("Ashii")
+	setspeaker("Ashii")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}It was supposed to conceal me so I could sneak into Saku Village, but…\p"
 		"When the guards made fun of me, I realized it's meant for Pokémon."
@@ -264,7 +264,7 @@ script(local) AshiiScript_Reward {
 
 script(local) AshiiScript_QuestOver {
 	faceplayer
-	speakername("Ashii")
+	setspeaker("Ashii")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}If only Saku and Kura Village stopped this nonsensical rivalry…\p"
 		"I'm sure nobody even remembers the reason!"

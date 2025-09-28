@@ -113,7 +113,7 @@ KuraTown_EventScript_DojoChallenger::
 	lock
 	faceplayer
 	goto_if_set FLAG_KURA_DOJO_CLOSED, KuraTown_EventScript_DojoChallenger_2
-	speakername KuraTown_EventScript_DojoChallenger_Text_2
+	setspeaker KuraTown_EventScript_DojoChallenger_Text_2
 	msgbox KuraTown_EventScript_DojoChallenger_Text_3
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_DojoChallenger_Movement_1
 	msgbox KuraTown_EventScript_DojoChallenger_Text_4
@@ -124,7 +124,7 @@ KuraTown_EventScript_DojoChallenger_1:
 
 KuraTown_EventScript_DojoChallenger_2:
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_DojoChallenger_Movement_0
-	speakername KuraTown_EventScript_DojoChallenger_Text_0
+	setspeaker KuraTown_EventScript_DojoChallenger_Text_0
 	msgbox KuraTown_EventScript_DojoChallenger_Text_1
 	goto KuraTown_EventScript_DojoChallenger_1
 
@@ -132,12 +132,12 @@ KuraTown_EventScript_DojoChallenger_2:
 KuraTown_EventScript_Farmer::
 	lock
 	faceplayer
-	speakername KuraTown_EventScript_Farmer_Text_0
+	setspeaker KuraTown_EventScript_Farmer_Text_0
 	msgbox KuraTown_EventScript_Farmer_Text_1
 	closemessage
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_Farmer_Movement_0
 	waitmovement 0
-	speakername KuraTown_EventScript_Farmer_Text_0
+	setspeaker KuraTown_EventScript_Farmer_Text_0
 	msgbox KuraTown_EventScript_Farmer_Text_2
 	release
 	return
@@ -147,7 +147,7 @@ KuraTown_EventScript_SilkScarf::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_SILK_SCARF, KuraTown_EventScript_SilkScarf_2
-	speakername KuraTown_EventScript_SilkScarf_Text_0
+	setspeaker KuraTown_EventScript_SilkScarf_Text_0
 	msgbox KuraTown_EventScript_SilkScarf_Text_2
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_DojoChallenger_Movement_1
 	msgbox KuraTown_EventScript_SilkScarf_Text_3
@@ -159,7 +159,7 @@ KuraTown_EventScript_SilkScarf_1:
 	return
 
 KuraTown_EventScript_SilkScarf_2:
-	speakername KuraTown_EventScript_SilkScarf_Text_0
+	setspeaker KuraTown_EventScript_SilkScarf_Text_0
 	msgbox KuraTown_EventScript_SilkScarf_Text_1
 	closemessage
 	goto KuraTown_EventScript_SilkScarf_1
@@ -168,7 +168,7 @@ KuraTown_EventScript_SilkScarf_2:
 KuraTown_EventScript_FarmerScyther::
 	lock
 	faceplayer
-	speakername KuraTown_EventScript_Farmer_Text_0
+	setspeaker KuraTown_EventScript_Farmer_Text_0
 	msgbox KuraTown_EventScript_FarmerScyther_Text_0, MSGBOX_DEFAULT
 	release
 	return
@@ -190,7 +190,7 @@ KuraTown_EventScript_Scyther::
 KuraTown_EventScript_Guard::
 	lock
 	faceplayer
-	speakername KuraTown_EventScript_Guard_Text_0
+	setspeaker KuraTown_EventScript_Guard_Text_0
 	msgbox KuraTown_EventScript_Guard_Text_1, MSGBOX_DEFAULT
 	release
 	return
@@ -208,7 +208,7 @@ SakuTown_EventScript_ClosedGymDoor_1:
 KuraTown_EventScript_LovestruckGuy::
 	lock
 	faceplayer
-	speakername KuraTown_EventScript_LovestruckGuy_Text_0
+	setspeaker KuraTown_EventScript_LovestruckGuy_Text_0
 	msgbox KuraTown_EventScript_LovestruckGuy_Text_1, MSGBOX_DEFAULT
 	release
 	return
@@ -217,7 +217,7 @@ KuraTown_EventScript_LovestruckGuy::
 KuraTown_EventScript_PokemonCouncil::
 	lock
 	faceplayer
-	speakername KuraTown_EventScript_PokemonCouncil_Text_0
+	setspeaker KuraTown_EventScript_PokemonCouncil_Text_0
 	msgbox KuraTown_EventScript_PokemonCouncil_Text_1
 	closemessage
 	release
@@ -249,14 +249,14 @@ KuraTown_EventScript_PostDecayNatsukiHariko::
 	setvar VAR_DECAY_BEACHBOUND_ROUTE, 5
 	delay 48
 	applymovement LOCALID_KURA_HARIKO, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
-	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_0
+	setspeaker KuraTown_EventScript_PostDecayNatsukiHariko_Text_0
 	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_1
 	applymovement LOCALID_KURA_HARIKO, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_1
 	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_2
 	closemessage
 	delay 60
 	applymovement LOCALID_KURA_HARIKO, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
-	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_0
+	setspeaker KuraTown_EventScript_PostDecayNatsukiHariko_Text_0
 	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_3
 	closemessage
 	applymovement LOCALID_KURA_HARIKO, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_2
@@ -269,10 +269,10 @@ KuraTown_EventScript_PostDecayNatsukiHariko::
 	applymovement LOCALID_KURA_NATSUKI, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_5
 	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
 	waitmovement 0
-	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_4
+	setspeaker KuraTown_EventScript_PostDecayNatsukiHariko_Text_4
 	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_5
 	applymovement LOCALID_KURA_NATSUKI, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_6
-	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_4
+	setspeaker KuraTown_EventScript_PostDecayNatsukiHariko_Text_4
 	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_6
 	closemessage
 	applymovement LOCALID_KURA_NATSUKI, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_7
@@ -291,7 +291,7 @@ KuraTown_EventScript_AnxiousAshii::
 	delay 48
 	applymovement 16, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
 	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_5
-	speakername KuraTown_EventScript_AnxiousAshii_Text_0
+	setspeaker KuraTown_EventScript_AnxiousAshii_Text_0
 	msgbox KuraTown_EventScript_AnxiousAshii_Text_1
 	applymovement 16, KuraTown_EventScript_DojoChallenger_Movement_1
 	msgbox KuraTown_EventScript_AnxiousAshii_Text_2
@@ -307,7 +307,7 @@ KuraTown_EventScript_AnxiousAshiiWaiting::
 	lock
 	faceplayer
 	applymovement 16, KuraTown_EventScript_DojoChallenger_Movement_1
-	speakername KuraTown_EventScript_AnxiousAshii_Text_0
+	setspeaker KuraTown_EventScript_AnxiousAshii_Text_0
 	msgbox KuraTown_EventScript_AnxiousAshiiWaiting_Text_0
 	closemessage
 	applymovement 16, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_3
@@ -322,7 +322,7 @@ KuraTown_EventScript_PreventEscape::
 	waitmovement 16
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 16, KuraTown_EventScript_DojoChallenger_Movement_1
-	speakername KuraTown_EventScript_AnxiousAshii_Text_0
+	setspeaker KuraTown_EventScript_AnxiousAshii_Text_0
 	msgbox KuraTown_EventScript_PreventEscape_Text_0
 	waitmessage
 	closemessage
@@ -354,7 +354,7 @@ KuraTown_EventScript_TeachingScrolls::
 	compare VAR_RESULT, 0
 	goto_if_ne KuraTown_EventScript_TeachingScrolls_3
 	faceplayer
-	speakername KuraTown_EventScript_TeachingScrolls_Text_0
+	setspeaker KuraTown_EventScript_TeachingScrolls_Text_0
 	msgbox KuraTown_EventScript_TeachingScrolls_Text_5
 	closemessage
 	giveitem ITEM_TM_PSYBEAM
@@ -366,7 +366,7 @@ KuraTown_EventScript_TeachingScrolls_1:
 
 KuraTown_EventScript_TeachingScrolls_2:
 	faceplayer
-	speakername KuraTown_EventScript_TeachingScrolls_Text_0
+	setspeaker KuraTown_EventScript_TeachingScrolls_Text_0
 	msgbox KuraTown_EventScript_TeachingScrolls_Text_1
 	closemessage
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_TeachingScrolls_Movement_0
@@ -374,7 +374,7 @@ KuraTown_EventScript_TeachingScrolls_2:
 	goto KuraTown_EventScript_TeachingScrolls_1
 
 KuraTown_EventScript_TeachingScrolls_3:
-	speakername KuraTown_EventScript_TeachingScrolls_Text_0
+	setspeaker KuraTown_EventScript_TeachingScrolls_Text_0
 	msgbox KuraTown_EventScript_TeachingScrolls_Text_2
 	closemessage
 	setseenmon SPECIES_ABRA
@@ -392,7 +392,7 @@ KuraTown_EventScript_TeachingScrolls_3:
 	waitse
 	waitmovement VAR_LAST_TALKED
 	faceplayer
-	speakername KuraTown_EventScript_TeachingScrolls_Text_0
+	setspeaker KuraTown_EventScript_TeachingScrolls_Text_0
 	msgbox KuraTown_EventScript_TeachingScrolls_Text_3
 	closemessage
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_TeachingScrolls_Movement_3
@@ -402,7 +402,7 @@ KuraTown_EventScript_TeachingScrolls_3:
 	waitmovement LOCALID_SAKU_ABRA
 	waitse
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_TeachingScrolls_Movement_4
-	speakername KuraTown_EventScript_TeachingScrolls_Text_0
+	setspeaker KuraTown_EventScript_TeachingScrolls_Text_0
 	msgbox KuraTown_EventScript_TeachingScrolls_Text_4
 	closemessage
 	setdescribedmon SPECIES_ABRA

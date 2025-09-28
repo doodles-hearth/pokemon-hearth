@@ -17,7 +17,7 @@ ChiiTown_House1_EventScript_OldManTrespassing::
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	speakername ChiiTown_House1_EventScript_OldManTrespassing_Text_0
+	setspeaker ChiiTown_House1_EventScript_OldManTrespassing_Text_0
 	msgbox ChiiTown_House1_EventScript_OldManTrespassing_Text_1
 	closemessage
 	applymovement 1, Common_Movement_Delay48
@@ -34,7 +34,7 @@ ChiiTown_House1_EventScript_GrowlitheGrrr::
 	waitmovement 0
 	applymovement 2, Common_Movement_Delay48
 	waitmovement 0
-	speakername ChiiTown_House1_EventScript_GrowlitheGrrr_Text_0
+	setspeaker ChiiTown_House1_EventScript_GrowlitheGrrr_Text_0
 	msgbox ChiiTown_House1_EventScript_GrowlitheGrrr_Text_1
 	closemessage
 	setseenmon SPECIES_GROWLITHE
@@ -60,7 +60,7 @@ ChiiTown_House1_EventScript_GrowlitheBarks::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
-	speakername ChiiTown_House1_EventScript_GrowlitheGrrr_Text_0
+	setspeaker ChiiTown_House1_EventScript_GrowlitheGrrr_Text_0
 	msgbox ChiiTown_House1_EventScript_GrowlitheBarks_Text_0
 	waitmoncry
 	closemessage
@@ -68,7 +68,7 @@ ChiiTown_House1_EventScript_GrowlitheBarks::
 	waitmovement 0
 	applymovement 2, Common_Movement_FaceRight
 	waitmovement 0
-	speakername ChiiTown_House1_EventScript_GrowlitheBarks_Text_1
+	setspeaker ChiiTown_House1_EventScript_GrowlitheBarks_Text_1
 	msgbox ChiiTown_House1_EventScript_GrowlitheBarks_Text_2
 	closemessage
 	applymovement 1, Common_Movement_FaceDown
@@ -77,7 +77,7 @@ ChiiTown_House1_EventScript_GrowlitheBarks::
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	speakername ChiiTown_House1_EventScript_GrowlitheBarks_Text_1
+	setspeaker ChiiTown_House1_EventScript_GrowlitheBarks_Text_1
 	msgbox ChiiTown_House1_EventScript_GrowlitheBarks_Text_3
 	closemessage
 	applymovement 1, Common_Movement_Delay48
@@ -96,7 +96,7 @@ ChiiTown_House1_EventScript_Cheater::
 	faceplayer
 	setwildbattle SPECIES_ELECTRODE, 100
 	waitse
-	speakername ChiiTown_House1_EventScript_Cheater_Text_0
+	setspeaker ChiiTown_House1_EventScript_Cheater_Text_0
 	msgbox ChiiTown_House1_EventScript_Cheater_Text_1
 	playmoncry SPECIES_ELECTRODE, CRY_MODE_ENCOUNTER
 	delay 40

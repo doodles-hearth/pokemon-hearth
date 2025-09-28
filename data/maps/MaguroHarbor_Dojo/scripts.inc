@@ -3,21 +3,20 @@ MaguroHarbor_Dojo_MapScripts::
 
 
 MaguroHarbor_Dojo_EventScript_Koishi::
-	speakername MaguroHarbor_Dojo_EventScript_Koishi_Text_0
+	setspeaker MaguroHarbor_Dojo_EventScript_Koishi_Text_0
 	trainerbattle_single TRAINER_KOISHI_1, MaguroHarbor_Dojo_EventScript_Koishi_Text_1, MaguroHarbor_Dojo_EventScript_Koishi_Text_2, MaguroHarbor_Dojo_EventScript_KoishiDefeated, NO_MUSIC
 	msgbox MaguroHarbor_Dojo_EventScript_Koishi_Text_3
 	end
 
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated::
-	removespeakername
 	message MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
-	speakername MaguroHarbor_Dojo_EventScript_Koishi_Text_0
+	setspeaker MaguroHarbor_Dojo_EventScript_Koishi_Text_0
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1, MSGBOX_DEFAULT
 	giveitem ITEM_TM_NATURE_POWER
-	speakername MaguroHarbor_Dojo_EventScript_Koishi_Text_0
+	setspeaker MaguroHarbor_Dojo_EventScript_Koishi_Text_0
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_BADGE01_GET
@@ -43,7 +42,7 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitmovement 4
 	delay 60
-	speakername MaguroHarbor_Dojo_EventScript_Koishi_Text_0
+	setspeaker MaguroHarbor_Dojo_EventScript_Koishi_Text_0
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_3
 	closemessage
 	specialvar VAR_RESULT, GetPlayerFacingDirection
@@ -101,7 +100,7 @@ MaguroHarbor_Dojo_EventScript_Mizu_1:
 MaguroHarbor_Dojo_EventScript_Advice::
 	lock
 	faceplayer
-	speakername MaguroHarbor_Dojo_EventScript_Advice_Text_0
+	setspeaker MaguroHarbor_Dojo_EventScript_Advice_Text_0
 	goto_if_set FLAG_BADGE01_GET, MaguroHarbor_Dojo_EventScript_Advice_2
 	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_3
 MaguroHarbor_Dojo_EventScript_Advice_1:

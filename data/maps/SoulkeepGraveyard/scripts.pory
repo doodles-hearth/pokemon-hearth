@@ -5,7 +5,7 @@ mapscripts SoulkeepGraveyard_MapScripts {
 script SoulkeepGraveyard_EventScript_Guard {
 	lock
     faceplayer
-	speakername("Man")
+	setspeaker("Man")
 	msgbox(format(
 		"Oooh boy, you scared me!\p"
 		"I'm s-standing guard f-for today…"

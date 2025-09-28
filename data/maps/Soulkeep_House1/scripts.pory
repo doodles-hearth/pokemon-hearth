@@ -5,7 +5,7 @@ mapscripts Soulkeep_House1_MapScripts {
 script Soulkeep_House1_EventScript_Girl {
 	lock
 	faceplayer
-	speakername("Girl")
+	setspeaker("Girl")
 	msgbox(format(
 		"Were… Were you outside just now?\p"
 		"Oh, I'm too scared to leave…\nThose ghost Pokémon do bad things to people…"
@@ -17,7 +17,7 @@ script Soulkeep_House1_EventScript_Girl {
 script Soulkeep_House1_EventScript_EnGarde {
 	lock
 	faceplayer
-	speakername("Farmer")
+	setspeaker("Farmer")
 	msgbox(format(
 		"En garde, puny ghosts!!\n… … … …\p"
 		"What? I'm practicing!"
@@ -29,7 +29,7 @@ script Soulkeep_House1_EventScript_EnGarde {
 script Soulkeep_House1_EventScript_Farmer {
 	lock
 	faceplayer
-	speakername("Farmer")
+	setspeaker("Farmer")
 	msgbox(format(
 		"Our crops are being neglected…\p"
 		"None dare till the field and turn their back on the ghosts!"
@@ -41,7 +41,7 @@ script Soulkeep_House1_EventScript_Farmer {
 script Soulkeep_House1_EventScript_LittleGirl {
 	lock
 	faceplayer
-	speakername("Little Girl")
+	setspeaker("Little Girl")
 	msgbox(format(
 		"Nothing bad can happen to us so long as Fennekin keeps us safe!\p"
 		"I feed him lots of twigs for him to keep us warm!"

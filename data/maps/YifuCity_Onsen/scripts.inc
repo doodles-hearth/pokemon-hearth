@@ -5,7 +5,7 @@ YifuCity_Onsen_MapScripts::
 YifuCity_Onsen_EventScript_Owner::
 	lock
 	faceplayer
-	speakername YifuCity_Onsen_EventScript_Owner_Text_0
+	setspeaker YifuCity_Onsen_EventScript_Owner_Text_0
 	msgbox YifuCity_Onsen_EventScript_Owner_Text_1
 	release
 	return

@@ -17,7 +17,7 @@ script ChiiTown_House1_EventScript_OldManTrespassing {
 	waitmovement(0)
 	applymovement(LOCALID_OLD_MAN, Common_Movement_Delay48)
 	waitmovement(0)
-	speakername("Old Man")
+	setspeaker("Old Man")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}Do you often barge into people's houses uninvited without even taking off your shoes?\p"
 		"Want to break a couple of pots while you're at it?\p"
@@ -38,7 +38,7 @@ script ChiiTown_House1_EventScript_GrowlitheGrrr {
 	waitmovement(0)
 	applymovement(LOCALID_GROWLITHE, Common_Movement_Delay48)
 	waitmovement(0)
-	speakername("Growlithe")
+	setspeaker("Growlithe")
 	msgbox(format("Grrrrrrr…"))
 	closemessage
 	setseenmon(SPECIES_GROWLITHE)
@@ -63,7 +63,7 @@ script ChiiTown_House1_EventScript_GrowlitheBarks {
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
 	waitmovement(0)
 	playmoncry(SPECIES_GROWLITHE, CRY_MODE_NORMAL)
-	speakername("Growlithe")
+	setspeaker("Growlithe")
 	msgbox(format("BARK!\pBARKBARKBARKBARKBARK!"))
 	waitmoncry
 	closemessage
@@ -72,7 +72,7 @@ script ChiiTown_House1_EventScript_GrowlitheBarks {
 	waitmovement(0)
 	applymovement(LOCALID_GROWLITHE, Common_Movement_FaceRight)
 	waitmovement(0)
-	speakername("Mean Old Man")
+	setspeaker("Mean Old Man")
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}Good girl, Growlithe, good girl."))
 	closemessage
 
@@ -82,7 +82,7 @@ script ChiiTown_House1_EventScript_GrowlitheBarks {
 	waitmovement(0)
 	applymovement(LOCALID_OLD_MAN, Common_Movement_Delay48)
 	waitmovement(0)
-	speakername("Mean Old Man")
+	setspeaker("Mean Old Man")
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}She keeps intruders out."))
 	closemessage
 
@@ -104,7 +104,7 @@ script ChiiTown_House1_EventScript_Cheater {
 	faceplayer
 	setwildbattle(SPECIES_ELECTRODE, 100)
 	waitse
-	speakername("Voice of God")
+	setspeaker("Voice of God")
 	msgbox("Cheater!")
 	playmoncry(SPECIES_ELECTRODE, CRY_MODE_ENCOUNTER)
 	delay(40)

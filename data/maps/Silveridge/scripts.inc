@@ -39,7 +39,7 @@ Silveridge_DrawMetatiles_2:
 Silveridge_EventScript_LotOfRocks::
 	lock
 	faceplayer
-	speakername Silveridge_EventScript_LotOfRocks_Text_0
+	setspeaker Silveridge_EventScript_LotOfRocks_Text_0
 	msgbox Silveridge_EventScript_LotOfRocks_Text_1
 	release
 	return
@@ -48,7 +48,7 @@ Silveridge_EventScript_LotOfRocks::
 Silveridge_EventScript_HousesMadeOfSilverTunnelStone::
 	lock
 	faceplayer
-	speakername Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0
+	setspeaker Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0
 	msgbox Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_1
 	release
 	return
@@ -57,7 +57,7 @@ Silveridge_EventScript_HousesMadeOfSilverTunnelStone::
 Silveridge_EventScript_MissingStatue::
 	lock
 	faceplayer
-	speakername Silveridge_EventScript_MissingStatue_Text_0
+	setspeaker Silveridge_EventScript_MissingStatue_Text_0
 	msgbox Silveridge_EventScript_MissingStatue_Text_1
 	release
 	return
@@ -66,7 +66,7 @@ Silveridge_EventScript_MissingStatue::
 Silveridge_EventScript_Wildflowers::
 	lock
 	faceplayer
-	speakername Silveridge_EventScript_Wildflowers_Text_0
+	setspeaker Silveridge_EventScript_Wildflowers_Text_0
 	msgbox Silveridge_EventScript_Wildflowers_Text_1
 	release
 	return
@@ -75,11 +75,11 @@ Silveridge_EventScript_Wildflowers::
 Silveridge_EventScript_Mart::
 	lock
 	faceplayer
-	speakername Silveridge_EventScript_Mart_Text_0
+	setspeaker Silveridge_EventScript_Mart_Text_0
 	message Silveridge_EventScript_Mart_Text_1
 	waitmessage
 	pokemart Silveridge_Mart
-	speakername Silveridge_EventScript_Mart_Text_0
+	setspeaker Silveridge_EventScript_Mart_Text_0
 	msgbox Silveridge_EventScript_Mart_Text_2, MSGBOX_DEFAULT
 	release
 	return

@@ -48,27 +48,27 @@ TranquilRoute_EventScript_GrassCutscene::
 	waitmovement 19
 	waitmovement OBJ_EVENT_ID_PLAYER
 	delay 24
-	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
+	setspeaker TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_1
 	closemessage
 	delay 16
 	applymovement 19, TranquilRoute_EventScript_GrassCutscene_Movement_2
 	waitmovement 0
 	delay 24
-	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
+	setspeaker TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_2
 	closemessage
 	applymovement 19, TranquilRoute_EventScript_GrassCutscene_Movement_3
 	waitmovement 0
 	delay 24
 	delay 24
-	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
+	setspeaker TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_3
 	closemessage
 	applymovement 19, TranquilRoute_EventScript_GrassCutscene_Movement_4
 	waitmovement 0
 	delay 48
-	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
+	setspeaker TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_GrassCutscene_Text_4
 	closemessage
 	giveitem ITEM_LEAF_STONE
@@ -117,7 +117,7 @@ TranquilRoute_EventScript_SetupCutGrassCutscene_10:
 
 
 TranquilRoute_EventScript_CutMaster::
-	speakername TranquilRoute_EventScript_GrassCutscene_Text_0
+	setspeaker TranquilRoute_EventScript_GrassCutscene_Text_0
 	msgbox TranquilRoute_EventScript_CutMaster_Text_0, MSGBOX_NPC
 	return
 
@@ -210,7 +210,7 @@ TranquilRoute_EventScript_CutGrass::
 
 TranquilRoute_EventScript_Chikao::
 	trainerbattle_single TRAINER_CHIKAO, TranquilRoute_EventScript_Chikao_Text_0, TranquilRoute_EventScript_Chikao_Text_1
-	speakername TranquilRoute_EventScript_Chikao_Text_2
+	setspeaker TranquilRoute_EventScript_Chikao_Text_2
 	msgbox TranquilRoute_EventScript_Chikao_Text_3
 	closemessage
 	end
@@ -218,7 +218,7 @@ TranquilRoute_EventScript_Chikao::
 
 TranquilRoute_EventScript_Kodomo::
 	trainerbattle_single TRAINER_KODOMO, TranquilRoute_EventScript_Kodomo_Text_0, TranquilRoute_EventScript_Kodomo_Text_1
-	speakername TranquilRoute_EventScript_Kodomo_Text_2
+	setspeaker TranquilRoute_EventScript_Kodomo_Text_2
 	msgbox TranquilRoute_EventScript_Kodomo_Text_3
 	closemessage
 	end
@@ -226,21 +226,21 @@ TranquilRoute_EventScript_Kodomo::
 
 TranquilRoute_EventScript_Takeshi::
 	trainerbattle_single TRAINER_TAKESHI, TranquilRoute_EventScript_Takeshi_Text_0, TranquilRoute_EventScript_Takeshi_Text_1
-	speakername TranquilRoute_EventScript_Takeshi_Text_2
+	setspeaker TranquilRoute_EventScript_Takeshi_Text_2
 	msgbox TranquilRoute_EventScript_Takeshi_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 TranquilRoute_EventScript_Hana::
 	trainerbattle_single TRAINER_HIINA, TranquilRoute_EventScript_Hana_Text_0, TranquilRoute_EventScript_Hana_Text_1
-	speakername TranquilRoute_EventScript_Hana_Text_2
+	setspeaker TranquilRoute_EventScript_Hana_Text_2
 	msgbox TranquilRoute_EventScript_Hana_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 TranquilRoute_EventScript_Kenji::
 	trainerbattle_single TRAINER_KENJI, TranquilRoute_EventScript_Kenji_Text_0, TranquilRoute_EventScript_Kenji_Text_1
-	speakername TranquilRoute_EventScript_Kenji_Text_2
+	setspeaker TranquilRoute_EventScript_Kenji_Text_2
 	msgbox TranquilRoute_EventScript_Kenji_Text_3, MSGBOX_AUTOCLOSE
 	end
 
@@ -255,7 +255,7 @@ TranquilRoute_Movement_MysteriousSamuraiWalksAway:
 	step_end
 
 TranquilRoute_EventScript_Girl::
-	speakername TranquilRoute_EventScript_Girl_Text_0
+	setspeaker TranquilRoute_EventScript_Girl_Text_0
 	msgbox TranquilRoute_EventScript_Girl_Text_1, MSGBOX_NPC
 	return
 
@@ -264,7 +264,7 @@ TranquilRoute_EventScript_WhiteslateRoadblock::
 	lock
 	applymovement 21, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	speakername TranquilRoute_EventScript_WhiteslateRoadblock_Text_0
+	setspeaker TranquilRoute_EventScript_WhiteslateRoadblock_Text_0
 	msgbox TranquilRoute_EventScript_WhiteslateRoadblock_Text_1
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, TranquilRoute_EventScript_WhiteslateRoadblock_Movement_0
@@ -292,7 +292,7 @@ TranquilRoute_EventScript_BerryWoman::
 	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_BerryWoman_Movement_0
 	waitmovement 0
 	faceplayer
-	speakername TranquilRoute_EventScript_BerryWoman_Text_0
+	setspeaker TranquilRoute_EventScript_BerryWoman_Text_0
 	msgbox TranquilRoute_EventScript_BerryWoman_Text_2
 	closemessage
 	applymovement 5, Common_Movement_FaceRight
@@ -300,17 +300,17 @@ TranquilRoute_EventScript_BerryWoman::
 	delay 48
 	applymovement 5, Common_Movement_FacePlayer
 	waitmovement 0
-	speakername TranquilRoute_EventScript_BerryWoman_Text_0
+	setspeaker TranquilRoute_EventScript_BerryWoman_Text_0
 	msgbox TranquilRoute_EventScript_BerryWoman_Text_3
 	closemessage
 	giveitem ITEM_ORAN_BERRY, 3
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	speakername TranquilRoute_EventScript_BerryWoman_Text_0
+	setspeaker TranquilRoute_EventScript_BerryWoman_Text_0
 	msgbox TranquilRoute_EventScript_BerryWoman_Text_4
 	closemessage
 	giveitem ITEM_WAILMER_PAIL
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	speakername TranquilRoute_EventScript_BerryWoman_Text_0
+	setspeaker TranquilRoute_EventScript_BerryWoman_Text_0
 	msgbox TranquilRoute_EventScript_BerryWoman_Text_5
 	closemessage
 	setflag FLAG_RECEIVED_WAILMER_PAIL
@@ -320,7 +320,7 @@ TranquilRoute_EventScript_BerryWoman_1:
 
 TranquilRoute_EventScript_BerryWoman_2:
 	faceplayer
-	speakername TranquilRoute_EventScript_BerryWoman_Text_0
+	setspeaker TranquilRoute_EventScript_BerryWoman_Text_0
 	msgbox TranquilRoute_EventScript_BerryWoman_Text_1
 	closemessage
 	goto TranquilRoute_EventScript_BerryWoman_1
@@ -375,13 +375,13 @@ TranquilRoute_EventScript_CrobatShadows::
 
 TranquilRoute_EventScript_CrobatShadows_Cutscene::
 	setvar VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 1
-	speakername TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_0
+	setspeaker TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_0
 	msgbox TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_1
 	closemessage
 	delay 20
 	applymovement 24, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	speakername TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_2
+	setspeaker TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_2
 	msgbox TranquilRoute_EventScript_CrobatShadows_Cutscene_Text_3
 	closemessage
 	applymovement 25, TranquilRoute_EventScript_CrobatShadows_Cutscene_Movement_0
@@ -414,7 +414,7 @@ TranquilRoute_EventScript_CrobatShadows_Cutscene::
 TranquilRoute_EventScript_TravelingMerchantFirstTime::
 	lock
 	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_0
-	speakername TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0
+	setspeaker TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0
 	msgbox TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_1
 	closemessage
 	delay 24
@@ -424,11 +424,11 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime::
 	waitmovement 0
 	delay 48
 	faceplayer
-	speakername TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0
+	setspeaker TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0
 	msgbox TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_2
 	closemessage
 	turnobject VAR_LAST_TALKED, DIR_EAST
-	speakername TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0
+	setspeaker TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0
 	msgbox TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_3
 	closemessage
 	applymovement LOCALID_TRANQUIL_RT_KECLEON, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_1
@@ -458,7 +458,7 @@ TranquilRoute_EventScript_WaitingForChatot::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_0
-	speakername TranquilRoute_EventScript_Girl_Text_0
+	setspeaker TranquilRoute_EventScript_Girl_Text_0
 	msgbox TranquilRoute_EventScript_WaitingForChatot_Text_0
 	closemessage
 	release

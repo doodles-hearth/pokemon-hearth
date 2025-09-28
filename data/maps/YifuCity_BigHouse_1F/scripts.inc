@@ -5,7 +5,7 @@ YifuCity_BigHouse_1F_MapScripts::
 YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight::
 	lock
 	faceplayer
-	speakername YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight_Text_0
+	setspeaker YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight_Text_0
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight_2
 	msgbox YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight_Text_2
 YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight_1:
@@ -20,7 +20,7 @@ YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight_2:
 YifuCity_BigHouse_1F_EventScript_Man::
 	lock
 	faceplayer
-	speakername YifuCity_BigHouse_1F_EventScript_Man_Text_0
+	setspeaker YifuCity_BigHouse_1F_EventScript_Man_Text_0
 	msgbox YifuCity_BigHouse_1F_EventScript_Man_Text_1
 	release
 	return

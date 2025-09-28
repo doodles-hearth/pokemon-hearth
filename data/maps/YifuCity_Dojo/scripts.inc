@@ -104,7 +104,7 @@ YifuCity_Dojo_EventScript_Dance1_FromDown::
 
 
 YifuCity_Dojo_EventScript_Dance1::
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_1
 	closemessage
 	special SpawnCameraObject
@@ -114,20 +114,20 @@ YifuCity_Dojo_EventScript_Dance1::
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_EventScript_Dance1_Movement_1
 	waitmovement 0
 	special RemoveCameraObject
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_2
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Dojo_EventScript_Dance1_Text_3, YifuCity_Dojo_EventScript_Dance1_Text_4, YifuCity_Dojo_EventScript_Dance1_Text_5
 	closemessage
 	call YifuCity_Dojo_Dance1_Jump
 	compare VAR_RESULT, 1
 	goto_if_eq YifuCity_Dojo_EventScript_Dance1_2
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_7
 	closemessage
 	call YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle
 	trainerbattle_two_trainers TRAINER_AKARI, YifuCity_Dojo_EventScript_Dance1_Text_8, TRAINER_YUKA, YifuCity_Dojo_EventScript_Dance1_Text_9
 	setvar VAR_YIFU_DOJO_STATE, 1
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_10
 	closemessage
 	applymovement 2, YifuCity_Dojo_EventScript_Dance1_Movement_2
@@ -154,7 +154,7 @@ YifuCity_Dojo_EventScript_Dance1_1:
 	return
 
 YifuCity_Dojo_EventScript_Dance1_2:
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_6
 	closemessage
 	setvar VAR_YIFU_DOJO_STATE, 1
@@ -163,7 +163,7 @@ YifuCity_Dojo_EventScript_Dance1_2:
 
 
 YifuCity_Dojo_EventScript_Dance2::
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance2_Text_0
 	closemessage
 	special SpawnCameraObject
@@ -173,20 +173,20 @@ YifuCity_Dojo_EventScript_Dance2::
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_EventScript_Dance1_Movement_1
 	waitmovement 0
 	special RemoveCameraObject
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance2_Text_1
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Dojo_EventScript_Dance2_Text_2, YifuCity_Dojo_EventScript_Dance2_Text_3, YifuCity_Dojo_EventScript_Dance2_Text_4
 	closemessage
 	call YifuCity_Dojo_Dance2_Jump
 	compare VAR_RESULT, 0
 	goto_if_eq YifuCity_Dojo_EventScript_Dance2_2
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_7
 	closemessage
 	call YifuCity_Dojo_Dance2_GeishasSurroundPlayerToBattle
 	trainerbattle_two_trainers TRAINER_KARIN, YifuCity_Dojo_EventScript_Dance2_Text_5, TRAINER_MIIKA, YifuCity_Dojo_EventScript_Dance2_Text_6
 	setvar VAR_YIFU_DOJO_STATE, 2
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_10
 	closemessage
 	applymovement 4, YifuCity_Dojo_EventScript_Dance1_Movement_2
@@ -213,7 +213,7 @@ YifuCity_Dojo_EventScript_Dance2_1:
 	return
 
 YifuCity_Dojo_EventScript_Dance2_2:
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_6
 	closemessage
 	setvar VAR_YIFU_DOJO_STATE, 2
@@ -222,7 +222,7 @@ YifuCity_Dojo_EventScript_Dance2_2:
 
 
 YifuCity_Dojo_EventScript_Dance3::
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance3_Text_0
 	closemessage
 	special SpawnCameraObject
@@ -232,20 +232,20 @@ YifuCity_Dojo_EventScript_Dance3::
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_EventScript_Dance1_Movement_1
 	waitmovement 0
 	special RemoveCameraObject
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance3_Text_1
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_Dojo_EventScript_Dance3_Text_2, YifuCity_Dojo_EventScript_Dance3_Text_3, YifuCity_Dojo_EventScript_Dance3_Text_4
 	closemessage
 	call YifuCity_Dojo_Dance3_Jump
 	compare VAR_RESULT, 0
 	goto_if_eq YifuCity_Dojo_EventScript_Dance3_2
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_7
 	closemessage
 	call YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle
 	trainerbattle_two_trainers TRAINER_NANAMI, YifuCity_Dojo_EventScript_Dance3_Text_6, TRAINER_KANAE, YifuCity_Dojo_EventScript_Dance3_Text_7
 	setvar VAR_YIFU_DOJO_STATE, 3
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_10
 	closemessage
 	applymovement 7, YifuCity_Dojo_EventScript_Dance3_Movement_0
@@ -274,7 +274,7 @@ YifuCity_Dojo_EventScript_Dance3_1:
 	return
 
 YifuCity_Dojo_EventScript_Dance3_2:
-	speakername YifuCity_Dojo_EventScript_Dance1_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dance1_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dance3_Text_5
 	closemessage
 	setvar VAR_YIFU_DOJO_STATE, 3
@@ -519,42 +519,42 @@ YifuCity_Dojo_EventScript_DojoStatue_2:
 
 YifuCity_Dojo_EventScript_Akari::
 	trainerbattle_single TRAINER_AKARI, YifuCity_Dojo_EventScript_Akari_Text_0, YifuCity_Dojo_EventScript_Dance1_Text_8
-	speakername YifuCity_Dojo_EventScript_Akari_Text_1
+	setspeaker YifuCity_Dojo_EventScript_Akari_Text_1
 	msgbox YifuCity_Dojo_EventScript_Akari_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 YifuCity_Dojo_EventScript_Yuka::
 	trainerbattle_single TRAINER_YUKA, YifuCity_Dojo_EventScript_Yuka_Text_0, YifuCity_Dojo_EventScript_Yuka_Text_1
-	speakername YifuCity_Dojo_EventScript_Yuka_Text_2
+	setspeaker YifuCity_Dojo_EventScript_Yuka_Text_2
 	msgbox YifuCity_Dojo_EventScript_Yuka_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 YifuCity_Dojo_EventScript_Nanami::
 	trainerbattle_single TRAINER_NANAMI, YifuCity_Dojo_EventScript_Nanami_Text_0, YifuCity_Dojo_EventScript_Dance3_Text_6
-	speakername YifuCity_Dojo_EventScript_Nanami_Text_1
+	setspeaker YifuCity_Dojo_EventScript_Nanami_Text_1
 	msgbox YifuCity_Dojo_EventScript_Nanami_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 YifuCity_Dojo_EventScript_Kanae::
 	trainerbattle_single TRAINER_KANAE, YifuCity_Dojo_EventScript_Dance3_Text_7, YifuCity_Dojo_EventScript_Kanae_Text_0
-	speakername YifuCity_Dojo_EventScript_Kanae_Text_1
+	setspeaker YifuCity_Dojo_EventScript_Kanae_Text_1
 	msgbox YifuCity_Dojo_EventScript_Kanae_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 YifuCity_Dojo_EventScript_Karin::
 	trainerbattle_single TRAINER_KARIN, YifuCity_Dojo_EventScript_Karin_Text_0, YifuCity_Dojo_EventScript_Karin_Text_1
-	speakername YifuCity_Dojo_EventScript_Karin_Text_2
+	setspeaker YifuCity_Dojo_EventScript_Karin_Text_2
 	msgbox YifuCity_Dojo_EventScript_Karin_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 YifuCity_Dojo_EventScript_Miika::
 	trainerbattle_single TRAINER_MIIKA, YifuCity_Dojo_EventScript_Miika_Text_0, YifuCity_Dojo_EventScript_Miika_Text_1
-	speakername YifuCity_Dojo_EventScript_Miika_Text_2
+	setspeaker YifuCity_Dojo_EventScript_Miika_Text_2
 	msgbox YifuCity_Dojo_EventScript_Miika_Text_3, MSGBOX_AUTOCLOSE
 	end
 
@@ -562,7 +562,7 @@ YifuCity_Dojo_EventScript_Miika::
 YifuCity_Dojo_EventScript_Dancer::
 	lock
 	faceplayer
-	speakername YifuCity_Dojo_EventScript_Dancer_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dancer_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dancer_Text_1
 	release
 	return
@@ -571,7 +571,7 @@ YifuCity_Dojo_EventScript_Dancer::
 YifuCity_Dojo_EventScript_Dancer2::
 	lock
 	faceplayer
-	speakername YifuCity_Dojo_EventScript_Dancer_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dancer_Text_0
 	msgbox YifuCity_Dojo_EventScript_Dancer2_Text_0
 	release
 	return
@@ -580,7 +580,7 @@ YifuCity_Dojo_EventScript_Dancer2::
 YifuCity_Dojo_EventScript_ImpossibleDancer::
 	lock
 	faceplayer
-	speakername YifuCity_Dojo_EventScript_Dancer_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Dancer_Text_0
 	msgbox YifuCity_Dojo_EventScript_ImpossibleDancer_Text_0
 	release
 	return
@@ -589,7 +589,7 @@ YifuCity_Dojo_EventScript_ImpossibleDancer::
 YifuCity_Dojo_EventScript_Yutaka::
 	lock
 	faceplayer
-	speakername YifuCity_Dojo_EventScript_Yutaka_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Yutaka_Text_0
 	msgbox YifuCity_Dojo_EventScript_Yutaka_Text_1
 	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
 	playse SE_PIN
@@ -603,14 +603,13 @@ YifuCity_Dojo_EventScript_Yutaka::
 
 
 YifuCity_Dojo_EventScript_YutakaDefeated::
-	removespeakername
 	message YifuCity_Dojo_EventScript_YutakaDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
-	speakername YifuCity_Dojo_EventScript_Yutaka_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Yutaka_Text_0
 	msgbox YifuCity_Dojo_EventScript_YutakaDefeated_Text_1, MSGBOX_DEFAULT
 	giveitem ITEM_TM_X_SCISSOR
-	speakername YifuCity_Dojo_EventScript_Yutaka_Text_0
+	setspeaker YifuCity_Dojo_EventScript_Yutaka_Text_0
 	msgbox YifuCity_Dojo_EventScript_YutakaDefeated_Text_2
 	closemessage
 	setflag FLAG_BADGE03_GET
@@ -1112,9 +1111,8 @@ YifuCity_Dojo_EventScript_Yutaka_Text_2:
 	.string "accoutrement you're donning?\p"
 	.string "A carnival, perhaps?\n"
 	.string "Or have you lost a bet?\p"
-	.string "Or do you simply lack a basic\n"
-	.string "sense of style to such an\l"
-	.string "extreme degree?\p"
+	.string "Or do you just lack a basic sense of\n"
+	.string "style to such an extreme degree?\p"
 	.string "Here you are, parading around\n"
 	.string "in your peasant's clothes…\p"
 	.string "(…Yutaka, you must not let this\n"
@@ -1125,10 +1123,9 @@ YifuCity_Dojo_EventScript_Yutaka_Text_2:
 	.string "assortment of Pokémon,\l"
 	.string "in the hopes of obtaining\l"
 	.string "an official Token from me.\p"
-	.string "Please try not to be too\n"
-	.string "overwhelmed by my strength and,\l"
-	.string "most of all, by my impeccable\l"
-	.string "sense of fashion.\p"
+	.string "Try not to be too overwhelmed by my\n"
+	.string "strength and, most of all, by my\l"
+	.string "impeccable sense of fashion.\p"
 	.string "Let this battle begin!$"
 
 YifuCity_Dojo_EventScript_Yutaka_Text_3:

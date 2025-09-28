@@ -64,7 +64,7 @@ ChiiTown_PokemonCenter_EventScript_NurseSleep::
 ChiiTown_PokemonCenter_EventScript_Shamisen::
 	lock
 	faceplayer
-	speakername ChiiTown_PokemonCenter_EventScript_Shamisen_Text_0
+	setspeaker ChiiTown_PokemonCenter_EventScript_Shamisen_Text_0
 	msgbox ChiiTown_PokemonCenter_EventScript_Shamisen_Text_1
 	closemessage
 	release
@@ -74,7 +74,7 @@ ChiiTown_PokemonCenter_EventScript_Shamisen::
 ChiiTown_PokemonCenter_EventScript_ShamisenFan::
 	lock
 	faceplayer
-	speakername ChiiTown_PokemonCenter_EventScript_ShamisenFan_Text_0
+	setspeaker ChiiTown_PokemonCenter_EventScript_ShamisenFan_Text_0
 	msgbox ChiiTown_PokemonCenter_EventScript_ShamisenFan_Text_1
 	closemessage
 	release
@@ -84,7 +84,7 @@ ChiiTown_PokemonCenter_EventScript_ShamisenFan::
 ChiiTown_PokemonCenter_EventScript_Boy::
 	lock
 	faceplayer
-	speakername ChiiTown_PokemonCenter_EventScript_Boy_Text_0
+	setspeaker ChiiTown_PokemonCenter_EventScript_Boy_Text_0
 	msgbox ChiiTown_PokemonCenter_EventScript_Boy_Text_1
 	closemessage
 	release
@@ -94,7 +94,7 @@ ChiiTown_PokemonCenter_EventScript_Boy::
 ChiiTown_PokemonCenter_EventScript_Mom::
 	lock
 	faceplayer
-	speakername ChiiTown_PokemonCenter_EventScript_Mom_Text_0
+	setspeaker ChiiTown_PokemonCenter_EventScript_Mom_Text_0
 	msgbox ChiiTown_PokemonCenter_EventScript_Mom_Text_1
 	closemessage
 	release
@@ -104,7 +104,7 @@ ChiiTown_PokemonCenter_EventScript_Mom::
 ChiiTown_PokemonCenter_EventScript_WhereShamisen::
 	lock
 	faceplayer
-	speakername ChiiTown_PokemonCenter_EventScript_WhereShamisen_Text_0
+	setspeaker ChiiTown_PokemonCenter_EventScript_WhereShamisen_Text_0
 	msgbox ChiiTown_PokemonCenter_EventScript_WhereShamisen_Text_1
 	closemessage
 	release
@@ -114,7 +114,7 @@ ChiiTown_PokemonCenter_EventScript_WhereShamisen::
 ChiiTown_PokemonCenter_EventScript_IveComeALongWay::
 	lock
 	faceplayer
-	speakername ChiiTown_PokemonCenter_EventScript_IveComeALongWay_Text_0
+	setspeaker ChiiTown_PokemonCenter_EventScript_IveComeALongWay_Text_0
 	msgbox ChiiTown_PokemonCenter_EventScript_IveComeALongWay_Text_1
 	closemessage
 	release
@@ -137,7 +137,7 @@ ChiiTown_PokemonCenter_EventScript_Snorunt::
 ChiiTown_PokemonCenter_EventScript_NeedMarket::
 	lock
 	faceplayer
-	speakername ChiiTown_PokemonCenter_EventScript_Mom_Text_0
+	setspeaker ChiiTown_PokemonCenter_EventScript_Mom_Text_0
 	msgbox ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_0
 	closemessage
 	release
@@ -147,7 +147,7 @@ ChiiTown_PokemonCenter_EventScript_NeedMarket::
 ChiiTown_PokemonCenter_EventScript_RefugePresentation::
 	lock
 	faceplayer
-	speakername ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_0
+	setspeaker ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_0
 	msgbox ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_1
 	closemessage
 	setnamedmon SPECIES_CHANSEY
@@ -199,7 +199,7 @@ ChiiTown_PokemonCenter_Movement_Leave:
 ChiiTown_PokemonCenter_EventScript_MakeNamesUp::
 	lock
 	faceplayer
-	speakername ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_0
+	setspeaker ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_0
 	msgbox ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_1
 	closemessage
 	release

@@ -5,7 +5,7 @@ PuddlePath_MapScripts::
 PuddlePath_EventScript_Farmer::
 	lock
 	faceplayer
-	speakername PuddlePath_EventScript_Farmer_Text_0
+	setspeaker PuddlePath_EventScript_Farmer_Text_0
 	msgbox PuddlePath_EventScript_Farmer_Text_1
 	release
 	return

@@ -23,7 +23,7 @@ script Soulkeep_EventScript_GraveyardSign {
 script Soulkeep_EventScript_Man {
 	lock
 	faceplayer
-	speakername("Man")
+	setspeaker("Man")
 	msgbox(format(
 		"Can you believe this place used to be a quaint little farmers' town?\p"
 		"Ever since the ghosts have started roaming the streets, the townsfolk are afraid of leaving their homes.\p"
@@ -101,11 +101,11 @@ script Soulkeep_EventScript_Gastly {
 script Soulkeep_EventScript_Mart {
 	lock
 	faceplayer
-	speakername("Shopkeeper")
+	setspeaker("Shopkeeper")
 	message(format("Welcome to Soulkeep's market, traveler!\pAre you looking to buy?"))
 	waitmessage
 	pokemart(Soulkeep_Mart)
-	speakername("Shopkeeper")
+	setspeaker("Shopkeeper")
 	msgbox(format("Do come again!"), MSGBOX_DEFAULT)
 	release
 }

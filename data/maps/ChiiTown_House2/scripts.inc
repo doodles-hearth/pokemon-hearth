@@ -3,13 +3,13 @@ ChiiTown_House2_MapScripts::
 
 
 ChiiTown_House2_Child::
-	speakername ChiiTown_House2_Child_Text_0
+	setspeaker ChiiTown_House2_Child_Text_0
 	msgbox ChiiTown_House2_Child_Text_1, MSGBOX_NPC
 	return
 
 
 ChiiTown_House2_Parent::
-	speakername ChiiTown_House2_Parent_Text_0
+	setspeaker ChiiTown_House2_Parent_Text_0
 	msgbox ChiiTown_House2_Parent_Text_1, MSGBOX_NPC
 	return
 

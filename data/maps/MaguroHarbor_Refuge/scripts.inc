@@ -23,7 +23,7 @@ MaguroHarbor_Refuge_EventScript_Hariko::
 	faceplayer
 	goto_if_set FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE, MaguroHarbor_Refuge_EventScript_Hariko_1
 	goto_if_set FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE, MaguroHarbor_Refuge_EventScript_Hariko_2
-	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
 	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_3
 	closemessage
 	setseenmon SPECIES_SLOWPOKE
@@ -36,24 +36,24 @@ MaguroHarbor_Refuge_EventScript_Hariko::
 	applymovement LOCALID_SLOWPOKE, MaguroHarbor_Refuge_EventScript_Hariko_Movement_1
 	waitmovement LOCALID_SLOWPOKE
 	playmoncry SPECIES_SLOWPOKE, CRY_MODE_NORMAL
-	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_4
+	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_4
 	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_5
 	closemessage
 	applymovement LOCALID_BEAN, MaguroHarbor_Refuge_EventScript_Hariko_Movement_2
 	waitmovement LOCALID_BEAN
-	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
 	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_6
 	goto MaguroHarbor_Refuge_BattleHariko
 	return
 
 MaguroHarbor_Refuge_EventScript_Hariko_1:
-	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
 	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_1
 	closemessage
 	return
 
 MaguroHarbor_Refuge_EventScript_Hariko_2:
-	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
 	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_2
 	closemessage
 	goto MaguroHarbor_Refuge_BattleHariko
@@ -73,17 +73,17 @@ MaguroHarbor_Refuge_BattleHariko_1:
 MaguroHarbor_Refuge_BattleHariko_3:
 	trainerbattle_no_intro TRAINER_HARIKO_MAGURO, MaguroHarbor_Refuge_BattleHariko_Text_2
 	setflag FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE
-	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
 	msgbox MaguroHarbor_Refuge_BattleHariko_Text_3
 	closemessage
 	giveitem ITEM_UUMEGIRI, 4
-	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
 	msgbox MaguroHarbor_Refuge_BattleHariko_Text_4
 	closemessage
 	goto MaguroHarbor_Refuge_BattleHariko_1
 
 MaguroHarbor_Refuge_BattleHariko_4:
-	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
 	msgbox MaguroHarbor_Refuge_BattleHariko_Text_5
 	closemessage
 	goto MaguroHarbor_Refuge_BattleHariko_1
@@ -114,14 +114,14 @@ MaguroHarbor_Refuge_EventScript_Slowpoke_1:
 	return
 
 MaguroHarbor_Refuge_EventScript_Slowpoke_2:
-	speakername MaguroHarbor_Refuge_EventScript_Hariko_Text_4
+	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_4
 	goto MaguroHarbor_Refuge_EventScript_Slowpoke_1
 
 
 MaguroHarbor_Refuge_EventScript_DescribedMons::
 	lock
 	faceplayer
-	speakername MaguroHarbor_Refuge_EventScript_DescribedMons_Text_0
+	setspeaker MaguroHarbor_Refuge_EventScript_DescribedMons_Text_0
 	getdescribedmon SPECIES_KRABBY
 	compare VAR_RESULT, 0
 	goto_if_ne MaguroHarbor_Refuge_EventScript_DescribedMons_2

@@ -20,7 +20,7 @@ script ChiiTown_School_EventScript_PreparingDay {
 	lock
 	faceplayer
 
-	speakername("Sensei")
+	setspeaker("Sensei")
 	msgbox(format(
 		"Um… The school isn't open yet, I'm afraid. Come back later with your little brother or sister!"
 	))
@@ -36,7 +36,7 @@ script ChiiTown_School_EventScript_Teaching {
 	lock
 	faceplayer
 
-	speakername("Sensei")
+	setspeaker("Sensei")
 	msgbox(format(
 		"Um… Aren't you a little old for\nthis class?\p"
 		"It's alright, you can stay!\p"
@@ -53,7 +53,7 @@ script ChiiTown_School_EventScript_EndingDay {
 	lock
 	faceplayer
 
-	speakername("Sensei")
+	setspeaker("Sensei")
 	msgbox(format(
 		"Oh! I'm afraid classes are done for the day. You'll have to come back tomorrow."
 	))
@@ -89,7 +89,7 @@ script ChiiTown_School_EventScript_ChildImBored {
 	lock
 	faceplayer
 
-	speakername("Child")
+	setspeaker("Child")
 	msgbox(format(
 		"I'm bored! Why won't recess start already!"
 	))
@@ -104,7 +104,7 @@ script ChiiTown_School_EventScript_ChildAlreadyKnowLegend {
 	lock
 	faceplayer
 
-	speakername("Child")
+	setspeaker("Child")
 	msgbox(format(
 		"I already knew all of this! My gramma told me about the legend a bajillion times!"
 	))
@@ -119,7 +119,7 @@ script ChiiTown_School_EventScript_ChildPokemonInsideVolcano {
 	lock
 	faceplayer
 
-	speakername("Child")
+	setspeaker("Child")
 	msgbox(format(
 		"There's a Pokémon inside the volcano?! That's AWESOME!"
 	))
@@ -134,7 +134,7 @@ script ChiiTown_School_EventScript_ChildTellsStory {
 	lock
 	faceplayer
 
-	speakername("Child")
+	setspeaker("Child")
 	msgbox(format(
 		"I know the story, I know the story!\p"
 		"Once upon a time, the Volcano Pokémon woke up, and then there was fire everywhere, and then four Pokémon were fighting the Volcano one, and then- and then the Volcano stopped spitting fire because the Pokémon went back to sleep!"
@@ -150,7 +150,7 @@ script ChiiTown_School_EventScript_IsThePokemonWakingUp {
 	lock
 	faceplayer
 
-	speakername("Child")
+	setspeaker("Child")
 	msgbox(format(
 		"When the Volcano Pokémon went to bed, the Volcano stopped erupting!\p"
 		"But the Volcano has been rumbling for days now…\p"
@@ -168,7 +168,7 @@ script ChiiTown_School_EventScript_ChildWiseGlasses {
 	faceplayer
 
 	if (!flag(FLAG_SMART_GLASSES)) {
-		speakername("Child")
+		setspeaker("Child")
 		msgbox(format(
 			"Ugh, I missed a class so I have to catch up on Pokémon's attack and special attack…\p"
 			"I'm almost done though! I don't even need these anymore!"
@@ -179,7 +179,7 @@ script ChiiTown_School_EventScript_ChildWiseGlasses {
 		setflag(FLAG_SMART_GLASSES)
 	}
 
-	speakername("Child")
+	setspeaker("Child")
 	msgbox(format(
 		"These are my smart glasses. You looked like you needed them!"
 	))
@@ -194,7 +194,7 @@ script ChiiTown_School_EventScript_ChildLikeSensei {
 	lock
 	faceplayer
 
-	speakername("Child")
+	setspeaker("Child")
 	msgbox(format(
 		"I like our Sensei. She's pretty and she smells nice."
 	))

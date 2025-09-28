@@ -19,14 +19,14 @@ KuraTown_Dojo_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 
 KuraTown_Dojo_EventScript_Matsu::
 	trainerbattle_single TRAINER_MATSU, KuraTown_Dojo_EventScript_Matsu_Text_0, KuraTown_Dojo_EventScript_Matsu_Text_1
-	speakername KuraTown_Dojo_EventScript_Matsu_Text_2
+	setspeaker KuraTown_Dojo_EventScript_Matsu_Text_2
 	msgbox KuraTown_Dojo_EventScript_Matsu_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 KuraTown_Dojo_EventScript_Kiku::
 	trainerbattle_single TRAINER_KIKU, KuraTown_Dojo_EventScript_Kiku_Text_0, KuraTown_Dojo_EventScript_Kiku_Text_1
-	speakername KuraTown_Dojo_EventScript_Kiku_Text_2
+	setspeaker KuraTown_Dojo_EventScript_Kiku_Text_2
 	msgbox KuraTown_Dojo_EventScript_Kiku_Text_3, MSGBOX_AUTOCLOSE
 	end
 
@@ -39,7 +39,7 @@ KuraTown_Dojo_EventScript_Laura::
 
 KuraTown_Dojo_EventScript_Brenden::
 	trainerbattle_single TRAINER_TSUBAKI, KuraTown_Dojo_EventScript_Brenden_Text_0, KuraTown_Dojo_EventScript_Brenden_Text_1
-	speakername KuraTown_Dojo_EventScript_Brenden_Text_2
+	setspeaker KuraTown_Dojo_EventScript_Brenden_Text_2
 	msgbox KuraTown_Dojo_EventScript_Brenden_Text_3, MSGBOX_AUTOCLOSE
 	end
 
@@ -52,7 +52,7 @@ KuraTown_Dojo_EventScript_Cristian::
 
 KuraTown_Dojo_EventScript_Lilith::
 	trainerbattle_single TRAINER_SUMIRE, KuraTown_Dojo_EventScript_Lilith_Text_0, KuraTown_Dojo_EventScript_Lilith_Text_1
-	speakername KuraTown_Dojo_EventScript_Lilith_Text_2
+	setspeaker KuraTown_Dojo_EventScript_Lilith_Text_2
 	goto_if_set FLAG_BADGE02_GET, KuraTown_Dojo_EventScript_Lilith_2
 	msgbox KuraTown_Dojo_EventScript_Lilith_Text_4, MSGBOX_AUTOCLOSE
 KuraTown_Dojo_EventScript_Lilith_1:
@@ -68,26 +68,25 @@ KuraTown_Dojo_EventScript_Lilith_2:
 KuraTown_Dojo_EventScript_Hana::
 	setflag FLAG_MET_HANA_GYM
 	goto_if_set FLAG_MET_HANA_BONSAI_SHOP, KuraTown_Dojo_EventScript_Hana_2
-	speakername KuraTown_Dojo_EventScript_Hana_Text_0
+	setspeaker KuraTown_Dojo_EventScript_Hana_Text_0
 	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_3, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
 KuraTown_Dojo_EventScript_Hana_1:
-	speakername KuraTown_Dojo_EventScript_Hana_Text_0
+	setspeaker KuraTown_Dojo_EventScript_Hana_Text_0
 	msgbox KuraTown_Dojo_EventScript_Hana_Text_4, MSGBOX_DEFAULT
 	release
 	end
 
 KuraTown_Dojo_EventScript_Hana_2:
-	speakername KuraTown_Dojo_EventScript_Hana_Text_0
+	setspeaker KuraTown_Dojo_EventScript_Hana_Text_0
 	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_1, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
 	goto KuraTown_Dojo_EventScript_Hana_1
 
 
 KuraTown_Dojo_EventScript_HanaDefeated::
-	removespeakername
 	message KuraTown_Dojo_EventScript_HanaDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
-	speakername KuraTown_Dojo_EventScript_Hana_Text_0
+	setspeaker KuraTown_Dojo_EventScript_Hana_Text_0
 	msgbox KuraTown_Dojo_EventScript_HanaDefeated_Text_1, MSGBOX_DEFAULT
 	setflag FLAG_BADGE02_GET
 	setvar VAR_0x8008, 2
@@ -100,7 +99,7 @@ KuraTown_Dojo_EventScript_HanaDefeated::
 
 KuraTown_Dojo_EventScript_GiveTm:
 	giveitem ITEM_TM_WEATHER_BALL
-	speakername KuraTown_Dojo_EventScript_Hana_Text_0
+	setspeaker KuraTown_Dojo_EventScript_Hana_Text_0
 	msgbox KuraTown_Dojo_EventScript_GiveTm_Text_0, MSGBOX_DEFAULT
 	return
 
@@ -109,20 +108,20 @@ KuraTown_Dojo_EventScript_Advice::
 	lock
 	faceplayer
 	goto_if_set FLAG_BADGE02_GET, KuraTown_Dojo_EventScript_Advice_2
-	speakername KuraTown_Dojo_EventScript_Advice_Text_0
+	setspeaker KuraTown_Dojo_EventScript_Advice_Text_0
 	isfieldmoveunlocked FIELD_MOVE_CUT
 	compare VAR_RESULT, 0
 	goto_if_ne KuraTown_Dojo_EventScript_Advice_5
-	speakername KuraTown_Dojo_EventScript_Advice_Text_0
+	setspeaker KuraTown_Dojo_EventScript_Advice_Text_0
 	goto_if_set FLAG_BADGE01_GET, KuraTown_Dojo_EventScript_Advice_8
-	speakername KuraTown_Dojo_EventScript_Advice_Text_0
+	setspeaker KuraTown_Dojo_EventScript_Advice_Text_0
 	msgbox KuraTown_Dojo_EventScript_Advice_Text_4
 KuraTown_Dojo_EventScript_Advice_1:
 	release
 	return
 
 KuraTown_Dojo_EventScript_Advice_2:
-	speakername KuraTown_Dojo_EventScript_Advice_Text_0
+	setspeaker KuraTown_Dojo_EventScript_Advice_Text_0
 	msgbox KuraTown_Dojo_EventScript_Advice_Text_1
 	goto KuraTown_Dojo_EventScript_Advice_1
 

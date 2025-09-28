@@ -5,7 +5,7 @@ YifuCity_BigHouse_3F_MapScripts::
 YifuCity_BigHouse_3F_EventScript_HarikosGrandma::
 	lock
 	faceplayer
-	speakername YifuCity_BigHouse_3F_EventScript_HarikosGrandma_Text_0
+	setspeaker YifuCity_BigHouse_3F_EventScript_HarikosGrandma_Text_0
 	msgbox YifuCity_BigHouse_3F_EventScript_HarikosGrandma_Text_1
 	closemessage
 	release
@@ -15,7 +15,7 @@ YifuCity_BigHouse_3F_EventScript_HarikosGrandma::
 YifuCity_BigHouse_3F_EventScript_HarikosGrandpa::
 	lock
 	faceplayer
-	speakername YifuCity_BigHouse_3F_EventScript_HarikosGrandpa_Text_0
+	setspeaker YifuCity_BigHouse_3F_EventScript_HarikosGrandpa_Text_0
 	msgbox YifuCity_BigHouse_3F_EventScript_HarikosGrandpa_Text_1
 	setnamedmon SPECIES_SNOM
 	closemessage
@@ -26,7 +26,7 @@ YifuCity_BigHouse_3F_EventScript_HarikosGrandpa::
 YifuCity_BigHouse_3F_EventScript_HarikosSister::
 	lock
 	faceplayer
-	speakername YifuCity_BigHouse_3F_EventScript_HarikosSister_Text_0
+	setspeaker YifuCity_BigHouse_3F_EventScript_HarikosSister_Text_0
 	msgbox YifuCity_BigHouse_3F_EventScript_HarikosSister_Text_1
 	closemessage
 	release
@@ -36,7 +36,7 @@ YifuCity_BigHouse_3F_EventScript_HarikosSister::
 YifuCity_BigHouse_3F_EventScript_HarikosBrother::
 	lock
 	faceplayer
-	speakername YifuCity_BigHouse_3F_EventScript_HarikosBrother_Text_0
+	setspeaker YifuCity_BigHouse_3F_EventScript_HarikosBrother_Text_0
 	msgbox YifuCity_BigHouse_3F_EventScript_HarikosBrother_Text_1
 	closemessage
 	release

@@ -50,7 +50,7 @@ IncenseShop_EventScript_PurpleIncense::
 IncenseShop_EventScript_Shopkeeper::
 	lock
 	goto_if_set FLAG_TALKED_TO_INCENSE_SHOP_KEEPER, IncenseShop_EventScript_Shopkeeper_2
-	speakername IncenseShop_EventScript_Shopkeeper_Text_0
+	setspeaker IncenseShop_EventScript_Shopkeeper_Text_0
 	msgbox IncenseShop_EventScript_Shopkeeper_Text_3
 	mcdialogue IncenseShop_EventScript_Shopkeeper_Text_4, IncenseShop_EventScript_Shopkeeper_Text_5, IncenseShop_EventScript_Shopkeeper_Text_6
 	closemessage
@@ -63,7 +63,7 @@ IncenseShop_EventScript_Shopkeeper_1:
 
 IncenseShop_EventScript_Shopkeeper_2:
 	applymovement VAR_LAST_TALKED, IncenseShop_EventScript_Shopkeeper_Movement_0
-	speakername IncenseShop_EventScript_Shopkeeper_Text_0
+	setspeaker IncenseShop_EventScript_Shopkeeper_Text_0
 	msgbox IncenseShop_EventScript_Shopkeeper_Text_1
 	closemessage
 	delay 30
@@ -74,12 +74,12 @@ IncenseShop_EventScript_Shopkeeper_2:
 	goto IncenseShop_EventScript_Shopkeeper_1
 
 IncenseShop_EventScript_Shopkeeper_6:
-	speakername IncenseShop_EventScript_Shopkeeper_Text_0
+	setspeaker IncenseShop_EventScript_Shopkeeper_Text_0
 	msgbox IncenseShop_EventScript_Shopkeeper_Text_7
 	closemessage
 	faceplayer
 	delay 30
-	speakername IncenseShop_EventScript_Shopkeeper_Text_0
+	setspeaker IncenseShop_EventScript_Shopkeeper_Text_0
 	msgbox IncenseShop_EventScript_Shopkeeper_Text_8
 	closemessage
 	setflag FLAG_TALKED_TO_INCENSE_SHOP_KEEPER
@@ -93,7 +93,7 @@ IncenseShop_EventScript_OpenMart::
 	goto_if_set FLAG_BADGE04_GET, IncenseShop_EventScript_OpenMart_4
 	pokemart IncenseShop_Mart_1
 IncenseShop_EventScript_OpenMart_1:
-	speakername IncenseShop_EventScript_Shopkeeper_Text_0
+	setspeaker IncenseShop_EventScript_Shopkeeper_Text_0
 	msgbox IncenseShop_EventScript_OpenMart_Text_0, MSGBOX_DEFAULT
 	return
 

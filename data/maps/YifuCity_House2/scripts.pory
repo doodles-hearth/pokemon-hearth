@@ -7,7 +7,7 @@ mapscripts YifuCity_House2_MapScripts {
 script YifuCity_House2_Seamstress {
 	lock
 	faceplayer
-	speakername("Seamstress")
+	setspeaker("Seamstress")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}I've been working day and night on a dress for the Samurai Chief's daugther.\p"
 		"This will be my greatest work!"
@@ -17,7 +17,7 @@ script YifuCity_House2_Seamstress {
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceDown)
 	waitmovement(0)
 
-	speakername("Seamstress")
+	setspeaker("Seamstress")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Tarountula, could you bring me some more of that red thread?"
 	))
@@ -40,7 +40,7 @@ script YifuCity_House2_Model {
 		closemessage
 	} else {
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
-		speakername("Model")
+		setspeaker("Model")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Yawn… Being a model is so tiring! My feet hurt from standing here for hours…\p"
 			"I do get some sweet free stuff though! Here, you can have this, I already have this color!"

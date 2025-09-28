@@ -27,7 +27,7 @@ script Soulkeep_Refuge_EventScript_Nurse {
 script Soulkeep_Refuge_EventScript_Man {
 	lock
 	faceplayer
-	speakername("Farmer")
+	setspeaker("Farmer")
 	msgbox(format(
 		"We sure don't see a lot of trav'lers 'round these parts…\p"
 		"You here for the Dojo challenge? Dojo's closed, unfortunately."
@@ -39,7 +39,7 @@ script Soulkeep_Refuge_EventScript_Man {
 script Soulkeep_Refuge_EventScript_NewDojo {
 	lock
 	faceplayer
-	speakername("Farmer")
+	setspeaker("Farmer")
 	msgbox(format(
 		"Some of the town's farmers got together with Guang and said they were going to open the old Dojo.\p"
 		"Guang says he's tired of us “living in the shadows”, whatever that means."

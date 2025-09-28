@@ -17,7 +17,7 @@ Silveridge_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 
 
 Silveridge_Refuge_EventScript_ImWorried::
-	speakername Silveridge_Refuge_EventScript_ImWorried_Text_0
+	setspeaker Silveridge_Refuge_EventScript_ImWorried_Text_0
 	msgbox Silveridge_Refuge_EventScript_ImWorried_Text_1, MSGBOX_NPC
 	return
 
@@ -27,7 +27,7 @@ Silveridge_Refuge_EventScript_Firebringer::
 	faceplayer
 	goto_if_set FLAG_RECEIVED_CHARCOAL, Silveridge_Refuge_EventScript_Firebringer_2
 	special GetPlayerBoyLassString
-	speakername Silveridge_Refuge_EventScript_Firebringer_Text_0
+	setspeaker Silveridge_Refuge_EventScript_Firebringer_Text_0
 	msgbox Silveridge_Refuge_EventScript_Firebringer_Text_2
 	closemessage
 	giveitem ITEM_CHARCOAL
@@ -37,7 +37,7 @@ Silveridge_Refuge_EventScript_Firebringer_1:
 	return
 
 Silveridge_Refuge_EventScript_Firebringer_2:
-	speakername Silveridge_Refuge_EventScript_Firebringer_Text_0
+	setspeaker Silveridge_Refuge_EventScript_Firebringer_Text_0
 	msgbox Silveridge_Refuge_EventScript_Firebringer_Text_1
 	closemessage
 	goto Silveridge_Refuge_EventScript_Firebringer_1
@@ -49,18 +49,18 @@ Silveridge_Refuge_EventScript_FirebringerFangirl::
 	goto_if_eq Silveridge_Refuge_EventScript_FirebringerFangirl_1
 	compare VAR_0x8000, TIME_MORNING
 	goto_if_eq Silveridge_Refuge_EventScript_FirebringerFangirl_1
-	speakername Silveridge_Refuge_EventScript_FirebringerFangirl_Text_0
+	setspeaker Silveridge_Refuge_EventScript_FirebringerFangirl_Text_0
 	msgbox Silveridge_Refuge_EventScript_FirebringerFangirl_Text_2, MSGBOX_NPC
 	return
 
 Silveridge_Refuge_EventScript_FirebringerFangirl_1:
-	speakername Silveridge_Refuge_EventScript_FirebringerFangirl_Text_0
+	setspeaker Silveridge_Refuge_EventScript_FirebringerFangirl_Text_0
 	msgbox Silveridge_Refuge_EventScript_FirebringerFangirl_Text_1, MSGBOX_NPC
 	return
 
 
 Silveridge_Refuge_EventScript_Artist::
-	speakername Silveridge_Refuge_EventScript_Artist_Text_0
+	setspeaker Silveridge_Refuge_EventScript_Artist_Text_0
 	msgbox Silveridge_Refuge_EventScript_Artist_Text_1, MSGBOX_NPC
 	return
 
@@ -104,11 +104,11 @@ Silveridge_Refuge_EventScript_Shamisen::
 	faceplayer
 	goto_if_set FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER, Silveridge_Refuge_EventScript_Shamisen_2
 	special GetPlayerBoyGirlString
-	speakername Silveridge_Refuge_EventScript_Shamisen_Text_0
+	setspeaker Silveridge_Refuge_EventScript_Shamisen_Text_0
 	msgbox Silveridge_Refuge_EventScript_Shamisen_Text_2
 	closemessage
 	trainerbattle_no_intro TRAINER_SHAMISEN, Silveridge_Refuge_EventScript_Shamisen_Text_3
-	speakername Silveridge_Refuge_EventScript_Shamisen_Text_0
+	setspeaker Silveridge_Refuge_EventScript_Shamisen_Text_0
 	msgbox Silveridge_Refuge_EventScript_Shamisen_Text_4
 	closemessage
 	giveitem ITEM_UUMEGIRI, 3
@@ -118,7 +118,7 @@ Silveridge_Refuge_EventScript_Shamisen_1:
 	end
 
 Silveridge_Refuge_EventScript_Shamisen_2:
-	speakername Silveridge_Refuge_EventScript_Shamisen_Text_0
+	setspeaker Silveridge_Refuge_EventScript_Shamisen_Text_0
 	msgbox Silveridge_Refuge_EventScript_Shamisen_Text_1
 	closemessage
 	goto Silveridge_Refuge_EventScript_Shamisen_1

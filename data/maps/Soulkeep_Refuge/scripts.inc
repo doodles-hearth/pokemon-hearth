@@ -30,7 +30,7 @@ Soulkeep_Refuge_EventScript_Nurse::
 Soulkeep_Refuge_EventScript_Man::
 	lock
 	faceplayer
-	speakername Soulkeep_Refuge_EventScript_Man_Text_0
+	setspeaker Soulkeep_Refuge_EventScript_Man_Text_0
 	msgbox Soulkeep_Refuge_EventScript_Man_Text_1
 	closemessage
 	release
@@ -40,7 +40,7 @@ Soulkeep_Refuge_EventScript_Man::
 Soulkeep_Refuge_EventScript_NewDojo::
 	lock
 	faceplayer
-	speakername Soulkeep_Refuge_EventScript_Man_Text_0
+	setspeaker Soulkeep_Refuge_EventScript_Man_Text_0
 	msgbox Soulkeep_Refuge_EventScript_NewDojo_Text_0
 	closemessage
 	release

@@ -6,11 +6,11 @@ MaguroHarbor_House1_EventScript_PokedexRiddler::
 	lock
 	faceplayer
 	goto_if_set FLAG_DAILY_MON_DEX_RIDDLE, MaguroHarbor_House1_EventScript_PokedexRiddler_2
-	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
+	setspeaker MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
 	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_2
 	closemessage
 	randomdexmsgbox
-	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
+	setspeaker MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
 	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_3
 	closemessage
 	special EnterDexRiddleGuess
@@ -19,7 +19,7 @@ MaguroHarbor_House1_EventScript_PokedexRiddler::
 	compare VAR_RESULT, 1
 	goto_if_eq MaguroHarbor_House1_EventScript_PokedexRiddler_5
 	applymovement VAR_LAST_TALKED, MaguroHarbor_House1_EventScript_PokedexRiddler_Movement_1
-	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
+	setspeaker MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
 	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_5
 MaguroHarbor_House1_EventScript_PokedexRiddler_4:
 	setflag FLAG_DAILY_MON_DEX_RIDDLE
@@ -27,7 +27,7 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_4:
 	end
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_2:
-	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
+	setspeaker MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
 	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_1
 	closemessage
 	release
@@ -38,7 +38,7 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_5:
 	applymovement LOCALID_MAGURO_NERD, MaguroHarbor_House1_EventScript_PokedexRiddler_Movement_0
 	waitse
 	waitmovement 0
-	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
+	setspeaker MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
 	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4
 	closemessage
 	setflag FLAG_DAILY_MON_DEX_RIDDLE_WON

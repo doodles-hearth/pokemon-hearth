@@ -9,7 +9,7 @@ WindyCape2_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 WindyCape_EventScript_WindThroughHoles::
 	lock
-	speakername WindyCape_EventScript_WindThroughHoles_Text_0
+	setspeaker WindyCape_EventScript_WindThroughHoles_Text_0
 	msgbox WindyCape_EventScript_WindThroughHoles_Text_1
 	closemessage
 	release
@@ -19,11 +19,11 @@ WindyCape_EventScript_WindThroughHoles::
 WindyCape_EventScript_Mart::
 	lock
 	faceplayer
-	speakername WindyCape_EventScript_Mart_Text_0
+	setspeaker WindyCape_EventScript_Mart_Text_0
 	message WindyCape_EventScript_Mart_Text_1
 	waitmessage
 	pokemart Soulkeep_Mart
-	speakername WindyCape_EventScript_Mart_Text_0
+	setspeaker WindyCape_EventScript_Mart_Text_0
 	msgbox WindyCape_EventScript_Mart_Text_2, MSGBOX_DEFAULT
 	release
 	return

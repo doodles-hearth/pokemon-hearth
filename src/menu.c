@@ -23,6 +23,8 @@
 #include "text_window.h"
 #include "window.h"
 #include "field_mugshot.h"
+#include "match_call.h"
+#include "config/overworld.h"
 #include "constants/songs.h"
 
 #define DLG_WINDOW_PALETTE_NUM 15
@@ -62,7 +64,6 @@ static void WindowFunc_DrawStandardFrame(u8, u8, u8, u8, u8, u8);
 static void WindowFunc_DrawSignFrame(u8, u8, u8, u8, u8, u8);
 static inline void *GetWindowFunc_DialogueFrame(void);
 static void WindowFunc_DrawDialogueFrame(u8, u8, u8, u8, u8, u8);
-static void WindowFunc_DrawNamePlate(u8, u8, u8, u8, u8, u8);
 static void WindowFunc_ClearStdWindowAndFrame(u8, u8, u8, u8, u8, u8);
 static void WindowFunc_ClearDialogWindowAndFrame(u8, u8, u8, u8, u8, u8);
 static void WindowFunc_DrawDialogFrameWithCustomTileAndPalette(u8, u8, u8, u8, u8, u8);
@@ -103,7 +104,7 @@ static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
         .paletteNum = 15,
         .baseBlock = 0x194
     },
-    {
+    /* {
         .bg = 0,
         .tilemapLeft = 2,
         .tilemapTop = 12,
@@ -111,7 +112,7 @@ static const struct WindowTemplate sStandardTextBox_WindowTemplates[] =
         .height = 2,
         .paletteNum = 15,
         .baseBlock = (0x194 - (DLW_WIN_PLATE_SIZE * 2)),
-    },
+    }, */
     DUMMY_WIN_TEMPLATE
 };
 
@@ -217,7 +218,6 @@ void AddTextPrinterForMessage(bool8 allowSkippingDelayWithButtonPress)
 {
     void (*callback)(struct TextPrinterTemplate *, u16) = NULL;
     gTextFlags.canABSpeedUpPrint = allowSkippingDelayWithButtonPress;
-    // TODO EVA change this font maybe
     AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), callback, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
 }
 
@@ -362,15 +362,51 @@ void DrawDialogueFrame(u8 windowId, bool8 copyToVram)
         CopyWindowToVram(windowId, COPYWIN_FULL);
 }
 
-void DrawNamePlate(u8 windowId, bool8 copyToVram)
+static void WindowFunc_RedrawDialogueFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
 {
-    CallWindowFunction(windowId, WindowFunc_DrawNamePlate);
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
-    PutWindowTilemap(windowId);
-    if (copyToVram == TRUE)
-    {
-        CopyWindowToVram(windowId, COPYWIN_FULL);
-    }
+    FillBgTilemapBufferRect(bg,
+                            DLG_WINDOW_BASE_TILE_NUM + 1,
+                            tilemapLeft - 2,
+                            tilemapTop - 1,
+                            1,
+                            1,
+                            DLG_WINDOW_PALETTE_NUM);
+    FillBgTilemapBufferRect(bg,
+                            DLG_WINDOW_BASE_TILE_NUM + 3,
+                            tilemapLeft - 1,
+                            tilemapTop - 1,
+                            1,
+                            1,
+                            DLG_WINDOW_PALETTE_NUM);
+    FillBgTilemapBufferRect(bg,
+                            DLG_WINDOW_BASE_TILE_NUM + 4,
+                            tilemapLeft,
+                            tilemapTop - 1,
+                            width - 1,
+                            1,
+                            DLG_WINDOW_PALETTE_NUM);
+    FillBgTilemapBufferRect(bg,
+                            DLG_WINDOW_BASE_TILE_NUM + 5,
+                            tilemapLeft + width - 1,
+                            tilemapTop - 1,
+                            1,
+                            1,
+                            DLG_WINDOW_PALETTE_NUM);
+    FillBgTilemapBufferRect(bg,
+                            DLG_WINDOW_BASE_TILE_NUM + 6,
+                            tilemapLeft + width,
+                            tilemapTop - 1,
+                            1,
+                            1,
+                            DLG_WINDOW_PALETTE_NUM);
+}
+
+void RedrawDialogueFrame(void)
+{
+    if (IsMatchCallTaskActive())
+        RedrawMatchCallTextBoxBorder();
+    else
+        CallWindowFunction(0, WindowFunc_RedrawDialogueFrame);
 }
 
 void DrawStdWindowFrame(u8 windowId, bool8 copyToVram)
@@ -517,7 +553,7 @@ static void WindowFunc_DrawDialogueFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u
     FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 0x29, tilemapLeft + width + 1, tilemapTop + height, 1, 1, DLG_WINDOW_PALETTE_NUM);
 }
 
-static void WindowFunc_DrawNamePlate(u8 bg, u8 tilesetLeft, u8 tilesetTop, u8 width, u8 height, u8 pal)
+/* static void WindowFunc_DrawNamePlate(u8 bg, u8 tilesetLeft, u8 tilesetTop, u8 width, u8 height, u8 pal)
 {
     u32 plateW = DLW_WIN_PLATE_SIZE, plateR = tilesetLeft + plateW, platePal = DLG_WINDOW_PALETTE_NUM;
     u32 plateH = DLW_WIN_PLATE_HEIGHT;
@@ -534,7 +570,7 @@ static void WindowFunc_DrawNamePlate(u8 bg, u8 tilesetLeft, u8 tilesetTop, u8 wi
 
     // Middle
     FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 0x02, tilesetLeft, tilesetTop, plateW, plateH, platePal);
-}
+} */
 
 int GetDialogFramePlateWidth(void)
 {

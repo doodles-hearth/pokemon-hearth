@@ -5,12 +5,12 @@ YifuCity_House2_MapScripts::
 YifuCity_House2_Seamstress::
 	lock
 	faceplayer
-	speakername YifuCity_House2_Seamstress_Text_0
+	setspeaker YifuCity_House2_Seamstress_Text_0
 	msgbox YifuCity_House2_Seamstress_Text_1
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceDown
 	waitmovement 0
-	speakername YifuCity_House2_Seamstress_Text_0
+	setspeaker YifuCity_House2_Seamstress_Text_0
 	msgbox YifuCity_House2_Seamstress_Text_2
 	closemessage
 	applymovement 3, YifuCity_House2_Seamstress_Movement_0
@@ -24,7 +24,7 @@ YifuCity_House2_Model::
 	faceplayer
 	goto_if_set FLAG_OBTAINED_CHOICE_SCARF, YifuCity_House2_Model_2
 	applymovement VAR_LAST_TALKED, YifuCity_House2_Model_Movement_0
-	speakername YifuCity_House2_Model_Text_1
+	setspeaker YifuCity_House2_Model_Text_1
 	msgbox YifuCity_House2_Model_Text_2
 	closemessage
 	giveitem ITEM_CHOICE_SCARF

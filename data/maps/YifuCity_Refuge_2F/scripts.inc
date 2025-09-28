@@ -52,7 +52,7 @@ YifuCity_Refuge_2F_EventScript_NumelTrade::
 	copyvar VAR_0x8004, VAR_0x8008
 	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
 	copyvar VAR_0x8009, VAR_RESULT
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
+	setspeaker YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq YifuCity_Refuge_2F_EventScript_NumelTrade_5
@@ -84,27 +84,27 @@ YifuCity_Refuge_2F_EventScript_NumelTrade_1:
 	return
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_2:
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
+	setspeaker YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_1
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_5:
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
+	setspeaker YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_10:
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
+	setspeaker YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_13:
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
+	setspeaker YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_4
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
@@ -137,7 +137,7 @@ YifuCity_Refuge_2F_EventScript_Heracross::
 YifuCity_Refuge_2F_EventScript_TravelingMerchant::
 	lock
 	faceplayer
-	speakername YifuCity_Refuge_2F_EventScript_TravelingMerchant_Text_0
+	setspeaker YifuCity_Refuge_2F_EventScript_TravelingMerchant_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_TravelingMerchant_Text_1
 	closemessage
 	release
@@ -147,7 +147,7 @@ YifuCity_Refuge_2F_EventScript_TravelingMerchant::
 YifuCity_Refuge_2F_EventScript_Tourist::
 	lock
 	faceplayer
-	speakername YifuCity_Refuge_2F_EventScript_Tourist_Text_0
+	setspeaker YifuCity_Refuge_2F_EventScript_Tourist_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_Tourist_Text_1
 	closemessage
 	release
@@ -157,7 +157,7 @@ YifuCity_Refuge_2F_EventScript_Tourist::
 YifuCity_Refuge_2F_EventScript_TouristKid::
 	lock
 	faceplayer
-	speakername YifuCity_Refuge_2F_EventScript_TouristKid_Text_0
+	setspeaker YifuCity_Refuge_2F_EventScript_TouristKid_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_TouristKid_Text_1
 	closemessage
 	release
@@ -168,7 +168,7 @@ YifuCity_Refuge_2F_EventScript_TouristGirl::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_TouristGirl_Movement_0
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
+	setspeaker YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
 	msgbox YifuCity_Refuge_2F_EventScript_TouristGirl_Text_0
 	closemessage
 	release

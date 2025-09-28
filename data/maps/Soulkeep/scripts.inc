@@ -26,7 +26,7 @@ Soulkeep_EventScript_GraveyardSign::
 Soulkeep_EventScript_Man::
 	lock
 	faceplayer
-	speakername Soulkeep_EventScript_Man_Text_0
+	setspeaker Soulkeep_EventScript_Man_Text_0
 	msgbox Soulkeep_EventScript_Man_Text_1
 	closemessage
 	release
@@ -99,11 +99,11 @@ Soulkeep_EventScript_Gastly_2:
 Soulkeep_EventScript_Mart::
 	lock
 	faceplayer
-	speakername Soulkeep_EventScript_Mart_Text_0
+	setspeaker Soulkeep_EventScript_Mart_Text_0
 	message Soulkeep_EventScript_Mart_Text_1
 	waitmessage
 	pokemart Soulkeep_Mart
-	speakername Soulkeep_EventScript_Mart_Text_0
+	setspeaker Soulkeep_EventScript_Mart_Text_0
 	msgbox Soulkeep_EventScript_Mart_Text_2, MSGBOX_DEFAULT
 	release
 	return

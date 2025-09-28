@@ -39,14 +39,14 @@ YifuCity_Refuge_EventScript_FakeNurse::
 	lock
 	faceplayer
 	setvar VAR_0x8004, 0
-	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	setspeaker YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_1
 	closemessage
 	incrementgamestat GAME_STAT_USED_POKECENTER
 	call EventScript_PkmnCenterNurse_TakeAndHealPkmn
 	goto_if_set FLAG_GOT_SCAMMED_YIFU_REFUGE, YifuCity_Refuge_EventScript_FakeNurse_2
 	setflag FLAG_GOT_SCAMMED_YIFU_REFUGE
-	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	setspeaker YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_5
 	showmoneybox 18, 0
 	mcdialogue YifuCity_Refuge_EventScript_FakeNurse_Text_6, YifuCity_Refuge_EventScript_FakeNurse_Text_7, YifuCity_Refuge_EventScript_FakeNurse_Text_8
@@ -65,17 +65,17 @@ YifuCity_Refuge_EventScript_FakeNurse_2:
 	checkmoney 500
 	compare VAR_RESULT, 0
 	goto_if_ne YifuCity_Refuge_EventScript_FakeNurse_5
-	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	setspeaker YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_4
 	goto YifuCity_Refuge_EventScript_FakeNurse_1
 
 YifuCity_Refuge_EventScript_FakeNurse_5:
-	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	setspeaker YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_2
 	playse SE_SHOP
 	removemoney 500
 	updatemoneybox
-	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	setspeaker YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_3
 	goto YifuCity_Refuge_EventScript_FakeNurse_1
 
@@ -83,7 +83,7 @@ YifuCity_Refuge_EventScript_FakeNurse_9:
 	checkmoney 500
 	compare VAR_RESULT, 0
 	goto_if_ne YifuCity_Refuge_EventScript_FakeNurse_11
-	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	setspeaker YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_10
 	goto YifuCity_Refuge_EventScript_FakeNurse_1
 
@@ -91,29 +91,29 @@ YifuCity_Refuge_EventScript_FakeNurse_10:
 	checkmoney 500
 	compare VAR_RESULT, 0
 	goto_if_ne YifuCity_Refuge_EventScript_FakeNurse_14
-	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	setspeaker YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_12
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_FakeNurse_Movement_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_13
 	goto YifuCity_Refuge_EventScript_FakeNurse_1
 
 YifuCity_Refuge_EventScript_FakeNurse_11:
-	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	setspeaker YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_9
 	playse SE_SHOP
 	removemoney 500
 	updatemoneybox
-	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	setspeaker YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_3
 	goto YifuCity_Refuge_EventScript_FakeNurse_1
 
 YifuCity_Refuge_EventScript_FakeNurse_14:
-	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	setspeaker YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_11
 	playse SE_SHOP
 	removemoney 500
 	updatemoneybox
-	speakername YifuCity_Refuge_EventScript_FakeNurse_Text_0
+	setspeaker YifuCity_Refuge_EventScript_FakeNurse_Text_0
 	msgbox YifuCity_Refuge_EventScript_FakeNurse_Text_3
 	goto YifuCity_Refuge_EventScript_FakeNurse_1
 
@@ -122,7 +122,7 @@ YifuCity_Refuge_EventScript_Woobat::
 	lock
 	setseenmon SPECIES_WOOBAT
 	playmoncry SPECIES_WOOBAT, CRY_MODE_NORMAL
-	speakername YifuCity_Refuge_EventScript_Woobat_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Woobat_Text_0
 	msgbox YifuCity_Refuge_EventScript_Woobat_Text_1
 	waitse
 	closemessage
@@ -133,7 +133,7 @@ YifuCity_Refuge_EventScript_Woobat::
 YifuCity_Refuge_EventScript_Shamisen::
 	lock
 	faceplayer
-	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_Shamisen_Text_1
 	closemessage
 	release
@@ -156,7 +156,7 @@ YifuCity_Refuge_EventScript_HotelValet::
 	lock
 	faceplayer
 	special GetPlayerSirMissString
-	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
+	setspeaker YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_1
 	showmoneybox 18, 0
 	checkmoney 500
@@ -165,7 +165,7 @@ YifuCity_Refuge_EventScript_HotelValet::
 	mcdialogue YifuCity_Refuge_EventScript_HotelValet_Text_7
 	closemessage
 	hidemoneybox
-	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
+	setspeaker YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_8
 	closemessage
 YifuCity_Refuge_EventScript_HotelValet_1:
@@ -181,7 +181,7 @@ YifuCity_Refuge_EventScript_HotelValet_2:
 	goto YifuCity_Refuge_EventScript_HotelValet_1
 
 YifuCity_Refuge_EventScript_HotelValet_6:
-	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
+	setspeaker YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_4
 	playse SE_SHOP
 	removemoney 500
@@ -189,14 +189,14 @@ YifuCity_Refuge_EventScript_HotelValet_6:
 	closemessage
 	giveitem ITEM_REFUGE_ROOM_KEY
 	hidemoneybox
-	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
+	setspeaker YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_5
 	closemessage
 	goto YifuCity_Refuge_EventScript_HotelValet_1
 
 YifuCity_Refuge_EventScript_HotelValet_7:
 	hidemoneybox
-	speakername YifuCity_Refuge_EventScript_HotelValet_Text_0
+	setspeaker YifuCity_Refuge_EventScript_HotelValet_Text_0
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_6
 	closemessage
 	goto YifuCity_Refuge_EventScript_HotelValet_1
@@ -205,7 +205,7 @@ YifuCity_Refuge_EventScript_HotelValet_7:
 YifuCity_Refuge_EventScript_ListenToShamisen::
 	lock
 	faceplayer
-	speakername YifuCity_Refuge_EventScript_ListenToShamisen_Text_0
+	setspeaker YifuCity_Refuge_EventScript_ListenToShamisen_Text_0
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_ListenToShamisen_Movement_0
 	msgbox YifuCity_Refuge_EventScript_ListenToShamisen_Text_1
 	closemessage
@@ -216,7 +216,7 @@ YifuCity_Refuge_EventScript_ListenToShamisen::
 YifuCity_Refuge_EventScript_OldMan::
 	lock
 	faceplayer
-	speakername YifuCity_Refuge_EventScript_OldMan_Text_0
+	setspeaker YifuCity_Refuge_EventScript_OldMan_Text_0
 	msgbox YifuCity_Refuge_EventScript_OldMan_Text_1
 	closemessage
 	release
@@ -226,7 +226,7 @@ YifuCity_Refuge_EventScript_OldMan::
 YifuCity_Refuge_EventScript_Traveler::
 	lock
 	faceplayer
-	speakername YifuCity_Refuge_EventScript_Traveler_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Traveler_Text_0
 	msgbox YifuCity_Refuge_EventScript_Traveler_Text_1
 	closemessage
 	setnamedmon SPECIES_PAWNIARD
@@ -252,7 +252,7 @@ YifuCity_Refuge_EventScript_Samurai::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_Samurai_Movement_0
-	speakername YifuCity_Refuge_EventScript_Samurai_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Samurai_Text_0
 	msgbox YifuCity_Refuge_EventScript_Samurai_Text_1
 	closemessage
 	release
@@ -263,7 +263,7 @@ YifuCity_Refuge_EventScript_GotTrashedByDojo::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_ListenToShamisen_Movement_0
-	speakername YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_0
+	setspeaker YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_0
 	msgbox YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_1
 	closemessage
 	release
@@ -298,7 +298,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_1:
 YifuCity_Refuge_EventScript_RouteShamisen_3:
 	goto_if_set FLAG_TEMP_3, YifuCity_Refuge_EventScript_RouteShamisen_6
 	setflag FLAG_TEMP_3
-	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_1
 YifuCity_Refuge_EventScript_RouteShamisen_5:
 	mcdialogue YifuCity_Refuge_EventScript_RouteShamisen_Text_2, YifuCity_Refuge_EventScript_RouteShamisen_Text_3, YifuCity_Refuge_EventScript_RouteShamisen_Text_4
@@ -312,14 +312,14 @@ YifuCity_Refuge_EventScript_RouteShamisen_13:
 	getpartysize
 	compare VAR_RESULT, PARTY_SIZE
 	goto_if_lt YifuCity_Refuge_EventScript_RouteShamisen_18
-	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_7
 	closemessage
 	goto YifuCity_Refuge_EventScript_RouteShamisen_1
 
 YifuCity_Refuge_EventScript_RouteShamisen_4:
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_Samurai_Movement_0
-	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_8
 	mcdialogue YifuCity_Refuge_EventScript_RouteShamisen_Text_9, YifuCity_Refuge_EventScript_RouteShamisen_Text_10
 	switch VAR_RESULT
@@ -331,13 +331,13 @@ YifuCity_Refuge_EventScript_RouteShamisen_9:
 	goto YifuCity_Refuge_EventScript_RouteShamisen_1
 
 YifuCity_Refuge_EventScript_RouteShamisen_6:
-	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_0
 	goto YifuCity_Refuge_EventScript_RouteShamisen_5
 
 YifuCity_Refuge_EventScript_RouteShamisen_11:
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_Samurai_Movement_0
-	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_11
 	closemessage
 	setflag FLAG_LIED_TO_SHAMISEN_PLAYER
@@ -345,10 +345,10 @@ YifuCity_Refuge_EventScript_RouteShamisen_11:
 
 YifuCity_Refuge_EventScript_RouteShamisen_12:
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_RouteShamisen_Movement_0
-	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_12
 	giveitem ITEM_SUPERGIRI, 3
-	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_13
 	closemessage
 	goto YifuCity_Refuge_EventScript_RouteShamisen_9
@@ -376,7 +376,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_18:
 	message YifuCity_Refuge_EventScript_RouteShamisen_Text_5
 	waitfanfare
 	giveegg VAR_TEMP_0
-	speakername YifuCity_Refuge_EventScript_Shamisen_Text_0
+	setspeaker YifuCity_Refuge_EventScript_Shamisen_Text_0
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_6
 	closemessage
 	call YifuCity_Refuge_EventScript_RouteShamisenLeaves
