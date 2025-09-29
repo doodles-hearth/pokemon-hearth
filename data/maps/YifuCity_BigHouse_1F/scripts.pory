@@ -5,7 +5,7 @@ mapscripts YifuCity_BigHouse_1F_MapScripts {
 script YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight {
 	lock
 	faceplayer
-	speakername("Girl")
+	setspeaker(SP_NAME_GIRL)
 	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}I'm happy Yifu City is safe again!"
@@ -21,7 +21,7 @@ script YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight {
 script YifuCity_BigHouse_1F_EventScript_Man {
 	lock
 	faceplayer
-	speakername("Guy")
+	setspeaker(SP_NAME_GUY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}The Samurai aren't actually affiliated with the Toku Council. That's a common misconception!\p"
 		"They're their own organization, which mostly deals in protecting the population and fighting crime."

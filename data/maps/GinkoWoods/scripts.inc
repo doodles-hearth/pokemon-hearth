@@ -4,8 +4,8 @@ GinkoWoods_MapScripts::
 
 GinkoWoods_EventScript_Toshiki::
 	trainerbattle_single TRAINER_TOSHIKI, GinkoWoods_EventScript_Toshiki_Text_0, GinkoWoods_EventScript_Toshiki_Text_1
-	speakername GinkoWoods_EventScript_Toshiki_Text_2
-	msgbox GinkoWoods_EventScript_Toshiki_Text_3
+	setspeaker SP_NAME_BUGCATCHER
+	msgbox GinkoWoods_EventScript_Toshiki_Text_2
 	closemessage
 	setnamedmon SPECIES_SEWADDLE_TOKUAN
 	release
@@ -14,16 +14,16 @@ GinkoWoods_EventScript_Toshiki::
 
 GinkoWoods_EventScript_Toshio::
 	trainerbattle_single TRAINER_TOSHIO_1, GinkoWoods_EventScript_Toshio_Text_0, GinkoWoods_EventScript_Toshio_Text_1
-	speakername GinkoWoods_EventScript_Toshio_Text_2
-	msgbox GinkoWoods_EventScript_Toshio_Text_3
+	setspeaker SP_NAME_BUGCATCHER
+	msgbox GinkoWoods_EventScript_Toshio_Text_2
 	release
 	end
 
 
 GinkoWoods_EventScript_Eiji::
 	trainerbattle_single TRAINER_EIJI, GinkoWoods_EventScript_Eiji_Text_0, GinkoWoods_EventScript_Eiji_Text_1
-	speakername GinkoWoods_EventScript_Eiji_Text_2
-	msgbox GinkoWoods_EventScript_Eiji_Text_3
+	setspeaker SP_NAME_BUGCATCHER
+	msgbox GinkoWoods_EventScript_Eiji_Text_2
 	release
 	end
 
@@ -32,8 +32,8 @@ GinkoWoods_EventScript_OldMan::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_OldMan_Movement_0
-	speakername GinkoWoods_EventScript_OldMan_Text_0
-	msgbox GinkoWoods_EventScript_OldMan_Text_1
+	setspeaker SP_NAME_OLD_MAN
+	msgbox GinkoWoods_EventScript_OldMan_Text_0
 	release
 	end
 
@@ -43,17 +43,17 @@ GinkoWoods_EventScript_Bean::
 	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_Bean_Movement_0
 	waitmovement VAR_LAST_TALKED
 	faceplayer
-	speakername GinkoWoods_EventScript_Bean_Text_0
+	setspeaker GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_1
 	closemessage
 	delay 48
 	turnobject 7, DIR_EAST
-	speakername GinkoWoods_EventScript_Bean_Text_0
+	setspeaker GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_2
 	closemessage
 	turnobject 7, DIR_SOUTH
 	delay 48
-	speakername GinkoWoods_EventScript_Bean_Text_0
+	setspeaker GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_3
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
@@ -61,11 +61,11 @@ GinkoWoods_EventScript_Bean::
 	delay 60
 	fadescreenswapbuffers FADE_FROM_BLACK
 	delay 48
-	speakername GinkoWoods_EventScript_Bean_Text_0
+	setspeaker GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Bean_Text_4
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, GinkoWoods_EventScript_Bean_Text_5, GinkoWoods_EventScript_Bean_Text_6, GinkoWoods_EventScript_Bean_Text_7
 	closemessage
-	speakername GinkoWoods_EventScript_Bean_Text_8
+	setspeaker SP_NAME_HARIKO
 	switch VAR_RESULT
 	case 0, GinkoWoods_EventScript_Bean_3
 	case 1, GinkoWoods_EventScript_Bean_4
@@ -80,16 +80,16 @@ GinkoWoods_EventScript_Bean_1:
 	return
 
 GinkoWoods_EventScript_Bean_3:
-	msgbox GinkoWoods_EventScript_Bean_Text_9
+	msgbox GinkoWoods_EventScript_Bean_Text_8
 	goto GinkoWoods_EventScript_Bean_1
 
 GinkoWoods_EventScript_Bean_4:
-	msgbox GinkoWoods_EventScript_Bean_Text_10
+	msgbox GinkoWoods_EventScript_Bean_Text_9
 	goto GinkoWoods_EventScript_Bean_1
 
 GinkoWoods_EventScript_Bean_5:
 	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_OldMan_Movement_0
-	msgbox GinkoWoods_EventScript_Bean_Text_11
+	msgbox GinkoWoods_EventScript_Bean_Text_10
 	goto GinkoWoods_EventScript_Bean_1
 
 
@@ -113,7 +113,7 @@ GinkoWoods_EventScript_Tracks::
 	applymovement 7, Common_Movement_WalkInPlaceFasterRight
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_Tracks_Movement_0
-	speakername GinkoWoods_EventScript_Bean_Text_0
+	setspeaker GinkoWoods_EventScript_Bean_Text_0
 	msgbox GinkoWoods_EventScript_Tracks_Text_0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, GinkoWoods_Movement_PlayerWalkDown
@@ -161,9 +161,6 @@ GinkoWoods_EventScript_Toshiki_Text_1:
 	.string "Ouch! How did you do that?$"
 
 GinkoWoods_EventScript_Toshiki_Text_2:
-	.string "Toshiki$"
-
-GinkoWoods_EventScript_Toshiki_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}Isn't Sewaddle cute, all wrapped up in\n"
 	.string "its leaf?$"
 
@@ -175,9 +172,6 @@ GinkoWoods_EventScript_Toshio_Text_1:
 	.string "Should have kept my mouth shut…$"
 
 GinkoWoods_EventScript_Toshio_Text_2:
-	.string "Toshio$"
-
-GinkoWoods_EventScript_Toshio_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Real Wielders fight when they spot\n"
 	.string "each other!\p"
 	.string "At least that's what my dad told me…$"
@@ -191,16 +185,10 @@ GinkoWoods_EventScript_Eiji_Text_1:
 	.string "My bugs!$"
 
 GinkoWoods_EventScript_Eiji_Text_2:
-	.string "Eiji$"
-
-GinkoWoods_EventScript_Eiji_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I asked Elder Kaba for a bird Pokémon,\n"
 	.string "because they're strong against bugs!$"
 
 GinkoWoods_EventScript_OldMan_Text_0:
-	.string "Old Man$"
-
-GinkoWoods_EventScript_OldMan_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}These woods are fascinating.\p"
 	.string "There seem to be a lot of yellow\n"
 	.string "Pokémon here.$"
@@ -209,8 +197,7 @@ GinkoWoods_EventScript_Bean_Text_0:
 	.string "Odd Girl$"
 
 GinkoWoods_EventScript_Bean_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Wow, see this? The FRLG font sucks\n"
-	.string "way less than the RSE one!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello!$"
 
 GinkoWoods_EventScript_Bean_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just noticed there are some neat\n"
@@ -261,9 +248,6 @@ GinkoWoods_EventScript_Bean_Text_7:
 	.string "I was just passing through…$"
 
 GinkoWoods_EventScript_Bean_Text_8:
-	.string "Hariko$"
-
-GinkoWoods_EventScript_Bean_Text_9:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right! I am glad you share my interest\n"
 	.string "in Pokémon habitat.\p"
 	.string "I am Hariko. And what is your name?\p"
@@ -272,7 +256,7 @@ GinkoWoods_EventScript_Bean_Text_9:
 	.string "I will see you around, then.\p"
 	.string "Okay. Bye!$"
 
-GinkoWoods_EventScript_Bean_Text_10:
+GinkoWoods_EventScript_Bean_Text_9:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right!\n"
 	.string "I haven't introduced myself yet.\p"
 	.string "I am Hariko. And what is your name?\p"
@@ -281,7 +265,7 @@ GinkoWoods_EventScript_Bean_Text_10:
 	.string "I will see you around, then.\p"
 	.string "Okay. Bye!$"
 
-GinkoWoods_EventScript_Bean_Text_11:
+GinkoWoods_EventScript_Bean_Text_10:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…Oh. I am blocking your path. I see.\p"
 	.string "I got carried away, have I not?\n"
 	.string "That… tends to happen.\p"

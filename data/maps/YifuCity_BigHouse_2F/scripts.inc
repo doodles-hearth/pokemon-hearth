@@ -5,8 +5,8 @@ YifuCity_BigHouse_2F_MapScripts::
 YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon::
 	lock
 	faceplayer
-	speakername YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon_Text_0
-	msgbox YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon_Text_1
+	setspeaker SP_NAME_OLD_MAN
+	msgbox YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon_Text_0
 	release
 	return
 
@@ -14,8 +14,8 @@ YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon::
 YifuCity_BigHouse_2F_EventScript_TradingActOfLove::
 	lock
 	faceplayer
-	speakername YifuCity_BigHouse_2F_EventScript_TradingActOfLove_Text_0
-	msgbox YifuCity_BigHouse_2F_EventScript_TradingActOfLove_Text_1
+	setspeaker SP_NAME_WOMAN
+	msgbox YifuCity_BigHouse_2F_EventScript_TradingActOfLove_Text_0
 	closemessage
 	release
 	return
@@ -25,8 +25,8 @@ YifuCity_BigHouse_2F_EventScript_RunningBoy::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, YifuCity_BigHouse_2F_EventScript_RunningBoy_Movement_0
-	speakername YifuCity_BigHouse_2F_EventScript_RunningBoy_Text_0
-	msgbox YifuCity_BigHouse_2F_EventScript_RunningBoy_Text_1
+	setspeaker SP_NAME_BOY
+	msgbox YifuCity_BigHouse_2F_EventScript_RunningBoy_Text_0
 	release
 	return
 
@@ -36,9 +36,6 @@ YifuCity_BigHouse_2F_EventScript_RunningBoy_Movement_0:
 	step_end
 
 YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon_Text_0:
-	.string "Old Man$"
-
-YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I was told I needed to raise a\n"
 	.string "Pokémon of my own. No sir!\p"
 	.string "Back in my day, we didn't need no\n"
@@ -49,9 +46,6 @@ YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon_Text_1:
 	.string "to do with them!$"
 
 YifuCity_BigHouse_2F_EventScript_TradingActOfLove_Text_0:
-	.string "Woman$"
-
-YifuCity_BigHouse_2F_EventScript_TradingActOfLove_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Trading Pokémon has long been seen\n"
 	.string "as an act of true love and trust\l"
 	.string "between Wielders.\p"
@@ -60,9 +54,6 @@ YifuCity_BigHouse_2F_EventScript_TradingActOfLove_Text_1:
 	.string "can trade me all her rare Pokémon!$"
 
 YifuCity_BigHouse_2F_EventScript_RunningBoy_Text_0:
-	.string "Boy$"
-
-YifuCity_BigHouse_2F_EventScript_RunningBoy_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_BOY_1 EMOTE_NORMAL}My grandpa won't let me have a\n"
 	.string "Pokémon!\p"
 	.string "I'm bored! I want Pokémon too!$"

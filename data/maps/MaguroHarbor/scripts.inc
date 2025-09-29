@@ -74,15 +74,15 @@ MaguroHarbor_EventScript_LovestruckGirl::
 	faceplayer
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq MaguroHarbor_EventScript_LovestruckGirl_2
-	speakername MaguroHarbor_EventScript_LovestruckGirl_Text_2
-	msgbox MaguroHarbor_EventScript_LovestruckGirl_Text_3, MSGBOX_DEFAULT
+	setspeaker MaguroHarbor_EventScript_LovestruckGirl_Text_1
+	msgbox MaguroHarbor_EventScript_LovestruckGirl_Text_2, MSGBOX_DEFAULT
 MaguroHarbor_EventScript_LovestruckGirl_1:
 	release
 	return
 
 MaguroHarbor_EventScript_LovestruckGirl_2:
-	speakername MaguroHarbor_EventScript_LovestruckGirl_Text_0
-	msgbox MaguroHarbor_EventScript_LovestruckGirl_Text_1, MSGBOX_DEFAULT
+	setspeaker SP_NAME_GIRL
+	msgbox MaguroHarbor_EventScript_LovestruckGirl_Text_0, MSGBOX_DEFAULT
 	goto MaguroHarbor_EventScript_LovestruckGirl_1
 
 
@@ -113,8 +113,8 @@ MaguroHarbor_EventScript_FishcakeSalesman_4:
 MaguroHarbor_EventScript_FishcakeSalesmanSettingUp::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
-	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_1, MSGBOX_DEFAULT
+	setspeaker SP_NAME_OLD_LADY
+	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0, MSGBOX_DEFAULT
 	closemessage
 	release
 	return
@@ -124,7 +124,7 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling::
 	lock
 	faceplayer
 	goto_if_set FLAG_DAILY_FISHCAKE, MaguroHarbor_EventScript_FishcakeSalesmanSelling_2
-	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_OLD_LADY
 	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_1, MSGBOX_DEFAULT
 	showmoneybox 18, 0
 	mcdialogue MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_3, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_4
@@ -138,7 +138,7 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_1:
 	return
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_2:
-	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_OLD_LADY
 	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0, MSGBOX_DEFAULT
 	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
 
@@ -146,7 +146,7 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_6:
 	checkmoney 500
 	compare VAR_RESULT, 0
 	goto_if_ne MaguroHarbor_EventScript_FishcakeSalesmanSelling_9
-	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_OLD_LADY
 	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_6
 	closemessage
 	hidemoneybox
@@ -158,7 +158,7 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_7:
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_8:
 	hidemoneybox
-	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_OLD_LADY
 	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7
 	closemessage
 	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
@@ -166,7 +166,7 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_8:
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_9:
 	removemoney 500
 	updatemoneybox
-	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_OLD_LADY
 	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_5
 	closemessage
 	hidemoneybox
@@ -178,7 +178,7 @@ MaguroHarbor_EventScript_FishcakeSalesmanClosingUp::
 	lock
 	faceplayer
 	goto_if_set FLAG_DAILY_FISHCAKE, MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_2
-	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_OLD_LADY
 	msgbox MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_1, MSGBOX_DEFAULT
 	closemessage
 	giveitem ITEM_FISHCAKE
@@ -188,7 +188,7 @@ MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_1:
 	return
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_2:
-	speakername MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_OLD_LADY
 	msgbox MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0, MSGBOX_DEFAULT
 	closemessage
 	goto MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_1
@@ -231,17 +231,17 @@ MaguroHarbor_EventScript_FishPokemonSalesman_6:
 MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_2
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_2, MSGBOX_DEFAULT
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1, MSGBOX_DEFAULT
 MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_1:
 	closemessage
 	release
 	return
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_2:
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1, MSGBOX_DEFAULT
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0, MSGBOX_DEFAULT
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_1
 
 
@@ -250,7 +250,7 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling::
 	faceplayer
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq MaguroHarbor_EventScript_FishPokemonSalesmanSelling_2
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	goto_if_set FLAG_TEMP_2, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_6
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_1
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_5:
@@ -265,8 +265,8 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1:
 	return
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_2:
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
@@ -285,32 +285,32 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_10:
 	callnative Native_GiveFish
 	compare VAR_0x8000, 0
 	goto_if_gt MaguroHarbor_EventScript_FishPokemonSalesmanSelling_18
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_13
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_11:
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_14
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_12:
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_4
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_15:
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_5
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_18:
 	buffernumberstring STR_VAR_1, VAR_0x8000
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_6
 	mcdialogue MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_7, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_8
 	switch VAR_RESULT
@@ -325,23 +325,23 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_23:
 	special DestroySelectedPartyMon
 	compare VAR_0x8001, ITEM_NONE
 	goto_if_ne MaguroHarbor_EventScript_FishPokemonSalesmanSelling_25
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_11
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_24:
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_12
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_25:
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_9
 	closemessage
 	giveitem VAR_0x8001
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_10
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21
@@ -350,7 +350,7 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_25:
 MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp_Text_0
 	closemessage
 	release
@@ -360,8 +360,8 @@ MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp::
 MaguroHarbor_EventScript_FishermanInBoat::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_FishermanInBoat_Text_0
-	msgbox MaguroHarbor_EventScript_FishermanInBoat_Text_1, MSGBOX_DEFAULT
+	setspeaker SP_NAME_FISHERMAN
+	msgbox MaguroHarbor_EventScript_FishermanInBoat_Text_0, MSGBOX_DEFAULT
 	closemessage
 	release
 	return
@@ -372,8 +372,8 @@ MaguroHarbor_EventScript_Cramorant::
 	faceplayer
 	setseenmon SPECIES_CRAMORANT
 	playmoncry SPECIES_CRAMORANT, CRY_MODE_NORMAL
-	speakername MaguroHarbor_EventScript_Cramorant_Text_0
-	msgbox MaguroHarbor_EventScript_Cramorant_Text_1, MSGBOX_DEFAULT
+	setspeakertomonname SPECIES_CRAMORANT
+	msgbox MaguroHarbor_EventScript_Cramorant_Text_0
 	closemessage
 	release
 	return
@@ -383,12 +383,12 @@ MaguroHarbor_EventScript_FishermanOldRod::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_OLD_ROD, MaguroHarbor_EventScript_FishermanOldRod_2
-	speakername MaguroHarbor_EventScript_FishermanInBoat_Text_0
+	setspeaker SP_NAME_FISHERMAN
 	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_2
 	closemessage
 	giveitem ITEM_OLD_ROD
 	setflag FLAG_RECEIVED_OLD_ROD
-	speakername MaguroHarbor_EventScript_FishermanInBoat_Text_0
+	setspeaker SP_NAME_FISHERMAN
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq MaguroHarbor_EventScript_FishermanOldRod_5
@@ -401,7 +401,7 @@ MaguroHarbor_EventScript_FishermanOldRod_4:
 	return
 
 MaguroHarbor_EventScript_FishermanOldRod_2:
-	speakername MaguroHarbor_EventScript_FishermanInBoat_Text_0
+	setspeaker SP_NAME_FISHERMAN
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq MaguroHarbor_EventScript_FishermanOldRod_9
 	msgbox MaguroHarbor_EventScript_FishermanOldRod_Text_1
@@ -424,10 +424,10 @@ MaguroHarbor_EventScript_FishermanOldRod_9:
 MaguroHarbor_EventScript_Man::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_Man_Text_0
+	setspeaker SP_NAME_MAN
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq MaguroHarbor_EventScript_Man_2
-	msgbox MaguroHarbor_EventScript_Man_Text_2
+	msgbox MaguroHarbor_EventScript_Man_Text_1
 MaguroHarbor_EventScript_Man_1:
 	closemessage
 	release
@@ -435,7 +435,7 @@ MaguroHarbor_EventScript_Man_1:
 
 MaguroHarbor_EventScript_Man_2:
 	applymovement VAR_LAST_TALKED, MaguroHarbor_EventScript_Man_Movement_0
-	msgbox MaguroHarbor_EventScript_Man_Text_1, MSGBOX_AUTOCLOSE
+	msgbox MaguroHarbor_EventScript_Man_Text_0, MSGBOX_AUTOCLOSE
 	goto MaguroHarbor_EventScript_Man_1
 
 
@@ -462,12 +462,12 @@ MaguroHarbor_EventScript_Mart_3:
 MaguroHarbor_EventScript_MartSelling::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_MartSelling_Text_0
-	message MaguroHarbor_EventScript_MartSelling_Text_1
+	setspeaker SP_NAME_SHOPKEEPER
+	message MaguroHarbor_EventScript_MartSelling_Text_0
 	waitmessage
 	pokemart MaguroHarbor_Mart
 	applymovement VAR_LAST_TALKED, MaguroHarbor_EventScript_MartSelling_Movement_0
-	message MaguroHarbor_EventScript_MartSelling_Text_2
+	message MaguroHarbor_EventScript_MartSelling_Text_1
 	release
 	return
 
@@ -475,7 +475,7 @@ MaguroHarbor_EventScript_MartSelling::
 MaguroHarbor_EventScript_MartSettingUp::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_MartSelling_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_MartSettingUp_Text_0, MSGBOX_DEFAULT
 	waitmessage
 	release
@@ -485,7 +485,7 @@ MaguroHarbor_EventScript_MartSettingUp::
 MaguroHarbor_EventScript_MartClosingUp::
 	lock
 	faceplayer
-	speakername MaguroHarbor_EventScript_MartSelling_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_MartClosingUp_Text_0, MSGBOX_DEFAULT
 	waitmessage
 	release
@@ -559,24 +559,18 @@ MaguroHarbor_EventScript_PokemonNerdSign_Text_0:
 	.string "Pokémon Nerd$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_0:
-	.string "Girl$"
-
-MaguroHarbor_EventScript_LovestruckGirl_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}What was that? Oh, I hope my\n"
 	.string "boyfriend's okay…$"
 
-MaguroHarbor_EventScript_LovestruckGirl_Text_2:
+MaguroHarbor_EventScript_LovestruckGirl_Text_1:
 	.string "Lovestruck Girl$"
 
-MaguroHarbor_EventScript_LovestruckGirl_Text_3:
+MaguroHarbor_EventScript_LovestruckGirl_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}It's only been an hour since I saw my\n"
 	.string "love, and yet I already want tomorrow\l"
 	.string "to come just so I can see him again…$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0:
-	.string "Old woman$"
-
-MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh I'm so sorry, dearie. We haven't\n"
 	.string "opened yet. Come back later!$"
 
@@ -630,15 +624,12 @@ MaguroHarbor_EventScript_FishPokemonSalesman_Text_1:
 	.string "lassie$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0:
-	.string "Salesman$"
-
-MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1:
 	.string "Just saw Master Koishi run toward\n"
 	.string "Beachbound Route!\p"
 	.string "She's so concerned with the safety of\n"
 	.string "the village!$"
 
-MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_2:
+MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1:
 	.string "Aye! We're not open yet. Come back\n"
 	.string "later for the fresh catch of the day.$"
 
@@ -713,16 +704,10 @@ MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp_Text_0:
 	.string "We'll be open again\l{STR_VAR_1}.$"
 
 MaguroHarbor_EventScript_FishermanInBoat_Text_0:
-	.string "Fisherman$"
-
-MaguroHarbor_EventScript_FishermanInBoat_Text_1:
 	.string "I'm letting my fishing partner\n"
 	.string "Cramorant rest for a while.$"
 
 MaguroHarbor_EventScript_Cramorant_Text_0:
-	.string "Cramorant$"
-
-MaguroHarbor_EventScript_Cramorant_Text_1:
 	.string "Craaah!$"
 
 MaguroHarbor_EventScript_FishermanOldRod_Text_0:
@@ -759,24 +744,18 @@ MaguroHarbor_EventScript_FishermanOldRod_Text_4:
 	.string "fisherm'n!$"
 
 MaguroHarbor_EventScript_Man_Text_0:
-	.string "Man$"
-
-MaguroHarbor_EventScript_Man_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}T-This was the biggest quake we've\n"
 	.string "felt yet!$"
 
-MaguroHarbor_EventScript_Man_Text_2:
+MaguroHarbor_EventScript_Man_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}I wish I swam as gracefully as the\n"
 	.string "Dojo's Magikarp…$"
 
 MaguroHarbor_EventScript_MartSelling_Text_0:
-	.string "Shopkeeper$"
-
-MaguroHarbor_EventScript_MartSelling_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Hello, welcome to the Maguro Harbor\n"
 	.string "market!$"
 
-MaguroHarbor_EventScript_MartSelling_Text_2:
+MaguroHarbor_EventScript_MartSelling_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Come back soon!$"
 
 MaguroHarbor_EventScript_MartSettingUp_Text_0:

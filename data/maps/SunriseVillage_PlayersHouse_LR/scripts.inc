@@ -26,8 +26,8 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi::
 	turnobject 1, DIR_EAST
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	special GetPlayerBrotherSisterString
-	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_1
+	setspeaker SP_NAME_BIG_SIS
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
 	closemessage
 	applymovement 1, SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Movement_0
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
@@ -44,7 +44,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi::
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis::
 	lock
 	faceplayer
-	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
+	setspeaker SP_NAME_BIG_SIS
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 4
 	goto_if_le SunriseVillage_PlayersHouse_LR_EventScript_BigSis_2
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 6
@@ -55,7 +55,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis::
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
-	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
+	setspeaker SP_NAME_BIG_SIS
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_6
 	closemessage
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_1:
@@ -79,12 +79,12 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2
 	closemessage
 	giveitem ITEM_TOWN_MAP
-	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
+	setspeaker SP_NAME_BIG_SIS
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3
 	closemessage
 	giveitem ITEM_ENTEI_STATUETTE
 	special GetPlayerBrotherSisterString
-	speakername SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0
+	setspeaker SP_NAME_BIG_SIS
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_4
 	closemessage
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
@@ -122,9 +122,6 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Movement_0:
 	step_end
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0:
-	.string "Big Sis$"
-
-SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Oh, {PLAYER}, you're up! Ready for\n"
 	.string "the big event?\p"
 	.string "Are you excited? I sure hope you are,\n"

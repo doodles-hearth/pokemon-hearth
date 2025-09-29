@@ -29,25 +29,25 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	setvar VAR_DECAY_BEACHBOUND_ROUTE, 6
 	applymovement 2, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
-	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_0
-	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_1
+	setspeaker SP_NAME_OLD_MAN
+	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_0
 	closemessage
 	applymovement 3, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_2
-	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_3
+	setspeaker SP_NAME_OLD_LADY
+	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_1
 	closemessage
 	applymovement 1, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
-	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_5
+	setspeaker SP_NAME_ELDER_IWA
+	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_2
 	closemessage
 	playse SE_PIN
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_0
 	waitse
 	waitmovement 0
-	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
-	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_6
+	setspeaker SP_NAME_ELDER_IWA
+	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_3
 	closemessage
 	applymovement 3, Common_Movement_FaceDown
 	applymovement 2, Common_Movement_FaceDown
@@ -69,17 +69,17 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	delay 48
 	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_4
 	waitmovement OBJ_EVENT_ID_PLAYER
-	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
-	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_7
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, Silveridge_EldersHouse_EventScript_Conversation_Text_8
+	setspeaker SP_NAME_ELDER_IWA
+	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_4
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, Silveridge_EldersHouse_EventScript_Conversation_Text_5
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_5
 	waitmovement OBJ_EVENT_ID_PLAYER
 	removeitem ITEM_LETTER
-	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
-	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_9
+	setspeaker SP_NAME_ELDER_IWA
+	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_6
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_6
-	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_10
+	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_7
 	closemessage
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_7
 	waitmovement 0
@@ -93,8 +93,8 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	waitmovement 1
 	waitse
 	applymovement 4, Silveridge_EldersHouse_EventScript_Conversation_Movement_10
-	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_11
-	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_12
+	setspeaker SP_NAME_GIRL
+	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_8
 	closemessage
 	applymovement 4, Silveridge_EldersHouse_EventScript_Conversation_Movement_11
 	waitmovement 4
@@ -105,10 +105,10 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_12
 	waitmovement 1
 	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_13
-	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
-	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_13
+	setspeaker SP_NAME_ELDER_IWA
+	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_9
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_6
-	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_14
+	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_10
 	closemessage
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_14
 	waitmovement 1
@@ -117,8 +117,8 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	giveitem ITEM_EXP_SHARE
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_12
 	waitmovement 1
-	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
-	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_15
+	setspeaker SP_NAME_ELDER_IWA
+	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_11
 	closemessage
 	clearflag FLAG_KURA_DOJO_CLOSED
 	setflag FLAG_HIDE_BONSAI_SHOP_OWNER
@@ -129,7 +129,7 @@ Silveridge_EldersHouse_EventScript_Conversation::
 Silveridge_EldersHouse_EventScript_Elder::
 	lock
 	faceplayer
-	speakername Silveridge_EldersHouse_EventScript_Conversation_Text_4
+	setspeaker SP_NAME_ELDER_IWA
 	msgbox Silveridge_EldersHouse_EventScript_Elder_Text_0
 	closemessage
 	release
@@ -246,40 +246,31 @@ Silveridge_EldersHouse_EventScript_EldersMon_Text_0:
 	.string "Ghurrr!$"
 
 Silveridge_EldersHouse_EventScript_Conversation_Text_0:
-	.string "Old Man$"
-
-Silveridge_EldersHouse_EventScript_Conversation_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_MAN EMOTE_NORMAL}Yet another area is decaying on\n"
 	.string "Beachbound Route…$"
 
-Silveridge_EldersHouse_EventScript_Conversation_Text_2:
-	.string "Old woman$"
-
-Silveridge_EldersHouse_EventScript_Conversation_Text_3:
+Silveridge_EldersHouse_EventScript_Conversation_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_WOMAN EMOTE_NORMAL}We have yet to receive tidings from\n"
 	.string "the Elder in Sunrise Village…$"
 
-Silveridge_EldersHouse_EventScript_Conversation_Text_4:
-	.string "Elder Iwa$"
-
-Silveridge_EldersHouse_EventScript_Conversation_Text_5:
+Silveridge_EldersHouse_EventScript_Conversation_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Let us not surrender to panic.$"
 
-Silveridge_EldersHouse_EventScript_Conversation_Text_6:
+Silveridge_EldersHouse_EventScript_Conversation_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Excuse me… Can I help you?$"
 
-Silveridge_EldersHouse_EventScript_Conversation_Text_7:
+Silveridge_EldersHouse_EventScript_Conversation_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Yes? I am Iwa, the Elder of Silveridge.\n"
 	.string "What brings you to me?$"
 
-Silveridge_EldersHouse_EventScript_Conversation_Text_8:
+Silveridge_EldersHouse_EventScript_Conversation_Text_5:
 	.string "Give the letter$"
 
-Silveridge_EldersHouse_EventScript_Conversation_Text_9:
+Silveridge_EldersHouse_EventScript_Conversation_Text_6:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Ah! The letter I was expecting from\n"
 	.string "Kaba…!$"
 
-Silveridge_EldersHouse_EventScript_Conversation_Text_10:
+Silveridge_EldersHouse_EventScript_Conversation_Text_7:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "I see…\p"
@@ -294,19 +285,16 @@ Silveridge_EldersHouse_EventScript_Conversation_Text_10:
 	.string "are already stretched thin.\p"
 	.string "What to do, what to do…$"
 
-Silveridge_EldersHouse_EventScript_Conversation_Text_11:
-	.string "Girl$"
-
-Silveridge_EldersHouse_EventScript_Conversation_Text_12:
+Silveridge_EldersHouse_EventScript_Conversation_Text_8:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_2 EMOTE_NORMAL}Elder Iwa! Elder Iwa!\p"
 	.string "A Chatot just got in! Some Decay was\n"
 	.string "discovered in Uume Forest!$"
 
-Silveridge_EldersHouse_EventScript_Conversation_Text_13:
+Silveridge_EldersHouse_EventScript_Conversation_Text_9:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}We cannot lose a second! We need to\n"
 	.string "investigate Uume Forest right now!$"
 
-Silveridge_EldersHouse_EventScript_Conversation_Text_14:
+Silveridge_EldersHouse_EventScript_Conversation_Text_10:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "Young one from Sunrise Village.\n"
@@ -323,7 +311,7 @@ Silveridge_EldersHouse_EventScript_Conversation_Text_14:
 	.string "Before you leave, I have something\n"
 	.string "that will make your journey easier.$"
 
-Silveridge_EldersHouse_EventScript_Conversation_Text_15:
+Silveridge_EldersHouse_EventScript_Conversation_Text_11:
 	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}I have been keeping this mysterious\n"
 	.string "ancient relic for years.\p"
 	.string "We aren't sure where nor when it\n"

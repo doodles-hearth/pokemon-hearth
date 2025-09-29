@@ -90,23 +90,6 @@ static const struct SpriteTemplate sSpriteTemplate_SwapLine =
     .callback = SpriteCallbackDummy,
 };
 
-//tx_registered_items_menu
-#define TAG_SWAP_LINE_TX    5110
-static const struct CompressedSpriteSheet sSpriteSheet_SwapLine_RegisteredItemsMenu =
-{
-    gSwapLineGfx_RegisteredItemsMenu, 0x100, TAG_SWAP_LINE
-};
-static const struct SpriteTemplate sSpriteTemplate_SwapLine_RegisteredItemsMenu =
-{
-    .tileTag = TAG_SWAP_LINE,
-    .paletteTag = TAG_SWAP_LINE_TX,
-    .oam = &sOamData_SwapLine,
-    .anims = sAnims_SwapLine,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy,
-};
-
 // code
 void ResetAllBgsCoordinatesAndBgCntRegs(void)
 {
@@ -356,13 +339,12 @@ bool8 MenuHelpers_ShouldWaitForLinkRecv(void)
 void SetItemListPerPageCount(struct ItemSlot *slots, u8 slotsCount, u8 *pageItems, u8 *totalItems, u8 maxPerPage)
 {
     u16 i;
-    struct ItemSlot *slots_ = slots;
 
     // Count the number of non-empty item slots
     *totalItems = 0;
     for (i = 0; i < slotsCount; i++)
     {
-        if (slots_[i].itemId != ITEM_NONE)
+        if (slots[i].itemId != ITEM_NONE)
             (*totalItems)++;
     }
     (*totalItems)++; // + 1 for 'Cancel'
@@ -424,13 +406,6 @@ void SetCursorScrollWithinListBounds(u16 *scrollOffset, u16 *cursorPos, u8 shown
     }
 }
 
-//tx_registered_items_menu
-void LoadListMenuSwapLineGfx_RegisteredItemsMenu(void)
-{
-    LoadCompressedSpriteSheet(&sSpriteSheet_SwapLine_RegisteredItemsMenu);
-    //LoadCompressedSpritePalette(&sSpritePalette_SwapLine);
-}
-
 void LoadListMenuSwapLineGfx(void)
 {
     LoadCompressedSpriteSheet(&sSpriteSheet_SwapLine);
@@ -444,21 +419,6 @@ void CreateSwapLineSprites(u8 *spriteIds, u8 count)
     for (i = 0; i < count; i++)
     {
         spriteIds[i] = CreateSprite(&sSpriteTemplate_SwapLine, i * 16, 0, 0);
-        if (i != 0)
-            StartSpriteAnim(&gSprites[spriteIds[i]], 1);
-
-        gSprites[spriteIds[i]].invisible = TRUE;
-    }
-}
-
-//tx_registered_items_menu
-void CreateSwapLineSprites_RegisteredItemsMenu(u8 *spriteIds, u8 count)
-{
-    u8 i;
-
-    for (i = 0; i < count; i++)
-    {
-        spriteIds[i] = CreateSprite(&sSpriteTemplate_SwapLine_RegisteredItemsMenu, i * 16, 0, 0);
         if (i != 0)
             StartSpriteAnim(&gSprites[spriteIds[i]], 1);
 

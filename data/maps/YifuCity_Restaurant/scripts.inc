@@ -23,15 +23,15 @@ YifuCity_Restaurant_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 YifuCity_Restaurant_EventScript_UninspiredChef::
 	lock
 	applymovement VAR_LAST_TALKED, YifuCity_Restaurant_EventScript_UninspiredChef_Movement_0
-	speakername YifuCity_Restaurant_EventScript_UninspiredChef_Text_0
-	msgbox YifuCity_Restaurant_EventScript_UninspiredChef_Text_1
+	setspeaker SP_NAME_COOK
+	msgbox YifuCity_Restaurant_EventScript_UninspiredChef_Text_0
 	closemessage
 	delay 48
 	faceplayer
-	speakername YifuCity_Restaurant_EventScript_UninspiredChef_Text_0
-	msgbox YifuCity_Restaurant_EventScript_UninspiredChef_Text_2
+	setspeaker SP_NAME_COOK
+	msgbox YifuCity_Restaurant_EventScript_UninspiredChef_Text_1
 	applymovement VAR_LAST_TALKED, YifuCity_Restaurant_EventScript_UninspiredChef_Movement_1
-	msgbox YifuCity_Restaurant_EventScript_UninspiredChef_Text_3
+	msgbox YifuCity_Restaurant_EventScript_UninspiredChef_Text_2
 	closemessage
 	release
 	return
@@ -41,7 +41,7 @@ YifuCity_Restaurant_EventScript_RunningChef::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, YifuCity_Restaurant_EventScript_RunningChef_Movement_0
-	speakername YifuCity_Restaurant_EventScript_UninspiredChef_Text_0
+	setspeaker SP_NAME_COOK
 	msgbox YifuCity_Restaurant_EventScript_RunningChef_Text_0
 	closemessage
 	release
@@ -52,8 +52,8 @@ YifuCity_Restaurant_EventScript_LonelyGirl::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, YifuCity_Restaurant_EventScript_UninspiredChef_Movement_0
-	speakername YifuCity_Restaurant_EventScript_LonelyGirl_Text_0
-	msgbox YifuCity_Restaurant_EventScript_LonelyGirl_Text_1
+	setspeaker SP_NAME_GIRL
+	msgbox YifuCity_Restaurant_EventScript_LonelyGirl_Text_0
 	closemessage
 	release
 	return
@@ -63,13 +63,13 @@ YifuCity_Restaurant_EventScript_OldWomen::
 	lock
 	applymovement LOCALID_HOTPOT_OLD_WOMAN_1, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
 	waitmovement 0
-	speakername YifuCity_Restaurant_EventScript_OldWomen_Text_0
-	msgbox YifuCity_Restaurant_EventScript_OldWomen_Text_1
+	setspeaker SP_NAME_OLD_LADY
+	msgbox YifuCity_Restaurant_EventScript_OldWomen_Text_0
 	closemessage
 	applymovement LOCALID_HOTPOT_OLD_WOMAN_2, YifuCity_Restaurant_EventScript_OldWomen_Movement_1
 	waitmovement 0
-	speakername YifuCity_Restaurant_EventScript_OldWomen_Text_0
-	msgbox YifuCity_Restaurant_EventScript_OldWomen_Text_2
+	setspeaker SP_NAME_OLD_LADY
+	msgbox YifuCity_Restaurant_EventScript_OldWomen_Text_1
 	closemessage
 	release
 	return
@@ -78,12 +78,12 @@ YifuCity_Restaurant_EventScript_OldWomen::
 YifuCity_Restaurant_EventScript_FatGuy::
 	lock
 	faceplayer
-	speakername YifuCity_Restaurant_EventScript_FatGuy_Text_0
+	setspeaker SP_NAME_GUY
 	gettimeofday
 	compare VAR_0x8000, TIME_LUNCHTIME
 	goto_if_eq YifuCity_Restaurant_EventScript_FatGuy_2
 	applymovement VAR_LAST_TALKED, YifuCity_Restaurant_EventScript_UninspiredChef_Movement_1
-	msgbox YifuCity_Restaurant_EventScript_FatGuy_Text_2
+	msgbox YifuCity_Restaurant_EventScript_FatGuy_Text_1
 YifuCity_Restaurant_EventScript_FatGuy_1:
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement VAR_LAST_TALKED
@@ -92,7 +92,7 @@ YifuCity_Restaurant_EventScript_FatGuy_1:
 	return
 
 YifuCity_Restaurant_EventScript_FatGuy_2:
-	msgbox YifuCity_Restaurant_EventScript_FatGuy_Text_1
+	msgbox YifuCity_Restaurant_EventScript_FatGuy_Text_0
 	goto YifuCity_Restaurant_EventScript_FatGuy_1
 
 
@@ -154,24 +154,24 @@ Hotpot_OrderedEverythingOnMenu:
 	delay 24
 	applymovement LOCALID_HOTPOT_HARIKO, Hotpot_OrderedEverythingOnMenu_Movement_0
 	waitmovement LOCALID_HOTPOT_HARIKO
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
-	msgbox Hotpot_OrderedEverythingOnMenu_Text_1
+	setspeaker SP_NAME_HARIKO
+	msgbox Hotpot_OrderedEverythingOnMenu_Text_0
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
-	msgbox Hotpot_OrderedEverythingOnMenu_Text_3
+	setspeaker SP_NAME_NATSUKI
+	msgbox Hotpot_OrderedEverythingOnMenu_Text_1
 	applymovement LOCALID_HOTPOT_HARIKO, YifuCity_Restaurant_EventScript_OldWomen_Movement_1
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
-	msgbox Hotpot_OrderedEverythingOnMenu_Text_4
+	setspeaker SP_NAME_HARIKO
+	msgbox Hotpot_OrderedEverythingOnMenu_Text_2
 	applymovement LOCALID_HOTPOT_NATSUKI, Hotpot_OrderedEverythingOnMenu_Movement_1
 	playse SE_LEDGE
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
-	msgbox Hotpot_OrderedEverythingOnMenu_Text_5
+	setspeaker SP_NAME_NATSUKI
+	msgbox Hotpot_OrderedEverythingOnMenu_Text_3
 	applymovement LOCALID_HOTPOT_HARIKO, Hotpot_OrderedEverythingOnMenu_Movement_2
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
-	msgbox Hotpot_OrderedEverythingOnMenu_Text_6
+	setspeaker SP_NAME_HARIKO
+	msgbox Hotpot_OrderedEverythingOnMenu_Text_4
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
-	msgbox Hotpot_OrderedEverythingOnMenu_Text_7
+	setspeaker SP_NAME_NATSUKI
+	msgbox Hotpot_OrderedEverythingOnMenu_Text_5
 	closemessage
 	return
 
@@ -179,10 +179,10 @@ Hotpot_OrderedEverythingOnMenu:
 Hotpot_Slowpoke:
 	delay 24
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Slowpoke_Text_0
 	applymovement LOCALID_HOTPOT_HARIKO, YifuCity_Restaurant_EventScript_OldWomen_Movement_1
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_Slowpoke_Text_1
 	closemessage
 	playmoncry SPECIES_SLOWPOKE, CRY_MODE_NORMAL
@@ -197,27 +197,27 @@ Hotpot_Slowpoke:
 	setseenmon SPECIES_SLOWPOKE
 	setdescribedmon SPECIES_SLOWPOKE
 	applymovement LOCALID_HOTPOT_NATSUKI, Hotpot_Slowpoke_Movement_3
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Slowpoke_Text_2
 	mcdialogue Hotpot_Slowpoke_Text_3, Hotpot_Slowpoke_Text_4
 	playse SE_PIN
 	applymovement LOCALID_HOTPOT_HARIKO, Hotpot_Slowpoke_Movement_4
 	applymovement LOCALID_HOTPOT_NATSUKI, Hotpot_Slowpoke_Movement_5
 	waitmovement LOCALID_HOTPOT_HARIKO
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_Slowpoke_Text_5
 	playse SE_LEDGE
 	applymovement LOCALID_HOTPOT_HARIKO, Hotpot_Slowpoke_Movement_0
 	msgbox Hotpot_Slowpoke_Text_6
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
 	applymovement LOCALID_HOTPOT_NATSUKI, Hotpot_Slowpoke_Movement_6
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Slowpoke_Text_7
 	closemessage
 	applymovement LOCALID_HOTPOT_NATSUKI, Hotpot_Slowpoke_Movement_7
 	waitmovement LOCALID_HOTPOT_NATSUKI
 	applymovement LOCALID_HOTPOT_HARIKO, Hotpot_Slowpoke_Movement_8
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_Slowpoke_Text_8
 	closemessage
 	return
@@ -226,13 +226,13 @@ Hotpot_Slowpoke:
 Hotpot_Decay:
 	delay 24
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Decay_Text_0
 	applymovement LOCALID_HOTPOT_HARIKO, Hotpot_Decay_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_Decay_Text_1
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Decay_Text_2
 	mcdialogue Hotpot_Decay_Text_3, Hotpot_Decay_Text_4, Hotpot_Decay_Text_5
 	closemessage
@@ -246,52 +246,52 @@ Hotpot_Decay_1:
 
 Hotpot_Decay_3:
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Decay_Text_6
 	applymovement LOCALID_HOTPOT_HARIKO, Hotpot_Decay_Movement_1
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_Decay_Text_7
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Decay_Text_8
 	applymovement LOCALID_HOTPOT_HARIKO, YifuCity_Restaurant_EventScript_OldWomen_Movement_1
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_Decay_Text_9
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Decay_Text_10
 	applymovement LOCALID_HOTPOT_HARIKO, YifuCity_Restaurant_EventScript_OldWomen_Movement_1
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_Decay_Text_11
 	goto Hotpot_Decay_1
 
 Hotpot_Decay_4:
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Decay_Text_12
 	applymovement LOCALID_HOTPOT_HARIKO, Hotpot_Decay_Movement_1
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_Decay_Text_7
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Decay_Text_8
 	applymovement LOCALID_HOTPOT_HARIKO, YifuCity_Restaurant_EventScript_OldWomen_Movement_1
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_Decay_Text_9
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Decay_Text_10
 	applymovement LOCALID_HOTPOT_HARIKO, YifuCity_Restaurant_EventScript_OldWomen_Movement_1
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_Decay_Text_11
 	goto Hotpot_Decay_1
 
 Hotpot_Decay_5:
 	applymovement LOCALID_HOTPOT_NATSUKI, YifuCity_Restaurant_EventScript_OldWomen_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_Decay_Text_13
 	applymovement LOCALID_HOTPOT_HARIKO, YifuCity_Restaurant_EventScript_UninspiredChef_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_Decay_Text_14
 	goto Hotpot_Decay_1
 
@@ -299,10 +299,10 @@ Hotpot_Decay_5:
 Hotpot_End:
 	delay 24
 	applymovement LOCALID_HOTPOT_NATSUKI, Hotpot_End_Movement_0
-	speakername Hotpot_OrderedEverythingOnMenu_Text_2
+	setspeaker SP_NAME_NATSUKI
 	msgbox Hotpot_End_Text_0
 	applymovement LOCALID_HOTPOT_HARIKO, YifuCity_Restaurant_EventScript_OldWomen_Movement_1
-	speakername Hotpot_OrderedEverythingOnMenu_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox Hotpot_End_Text_1
 	return
 
@@ -421,12 +421,9 @@ Hotpot_End_Movement_0:
 	step_end
 
 YifuCity_Restaurant_EventScript_UninspiredChef_Text_0:
-	.string "Cook$"
-
-YifuCity_Restaurant_EventScript_UninspiredChef_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}Hmm… No, that's not it…$"
 
-YifuCity_Restaurant_EventScript_UninspiredChef_Text_2:
+YifuCity_Restaurant_EventScript_UninspiredChef_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}You don't happen to be a culinary\n"
 	.string "connoisseur, do you?\p"
 	.string "What kids nowadays refer to as a\n"
@@ -434,7 +431,7 @@ YifuCity_Restaurant_EventScript_UninspiredChef_Text_2:
 	.string "You see, cooking was my passion. But\n"
 	.string "lately I've been… uninspired!$"
 
-YifuCity_Restaurant_EventScript_UninspiredChef_Text_3:
+YifuCity_Restaurant_EventScript_UninspiredChef_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}It's a tragedy! I desperately seek\n"
 	.string "fresh, bold new recipes!\p"
 	.string "If you come across interesting\n"
@@ -448,32 +445,23 @@ YifuCity_Restaurant_EventScript_RunningChef_Text_0:
 	.string "and get back to helping me…$"
 
 YifuCity_Restaurant_EventScript_LonelyGirl_Text_0:
-	.string "Girl$"
-
-YifuCity_Restaurant_EventScript_LonelyGirl_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}I'm waiting for my date, but it seems\n"
 	.string "he's late yet again…$"
 
 YifuCity_Restaurant_EventScript_OldWomen_Text_0:
-	.string "Old Woman$"
-
-YifuCity_Restaurant_EventScript_OldWomen_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Psst psst mumble gossip…$"
 
-YifuCity_Restaurant_EventScript_OldWomen_Text_2:
+YifuCity_Restaurant_EventScript_OldWomen_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Gossip gossip…\n"
 	.string "Ho ho ho…$"
 
 YifuCity_Restaurant_EventScript_FatGuy_Text_0:
-	.string "Guy$"
-
-YifuCity_Restaurant_EventScript_FatGuy_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}Chomp…\n"
 	.string "Just gett'n a head start on lunch…\p"
 	.string "{FONT_SMALL}Burp…{FONT_NORMAL} Ahem.\n"
 	.string "If you'll excuse me.$"
 
-YifuCity_Restaurant_EventScript_FatGuy_Text_2:
+YifuCity_Restaurant_EventScript_FatGuy_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY EMOTE_NORMAL}UHHHHG I ate too much…$"
 
 YifuCity_Restaurant_EventScript_Munchlax_Text_0:
@@ -490,32 +478,26 @@ HotpotWithFriends_Text_2:
 	.string "You finally see the bottom of the pan.$"
 
 Hotpot_OrderedEverythingOnMenu_Text_0:
-	.string "Hariko$"
-
-Hotpot_OrderedEverythingOnMenu_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I was not sure what you two usually\n"
 	.string "eat, so I ordered everything.$"
 
-Hotpot_OrderedEverythingOnMenu_Text_2:
-	.string "Natsuki$"
-
-Hotpot_OrderedEverythingOnMenu_Text_3:
+Hotpot_OrderedEverythingOnMenu_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Everything? As in, every item on the\n"
 	.string "menu?$"
 
-Hotpot_OrderedEverythingOnMenu_Text_4:
+Hotpot_OrderedEverythingOnMenu_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Ah, yes. You did say you were going to\n"
 	.string "have “some of everything”, correct?$"
 
-Hotpot_OrderedEverythingOnMenu_Text_5:
+Hotpot_OrderedEverythingOnMenu_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}That- That's not a thing normal\n"
 	.string "people do, Hariko!$"
 
-Hotpot_OrderedEverythingOnMenu_Text_6:
+Hotpot_OrderedEverythingOnMenu_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}You know, other people often tell me\n"
 	.string "that.$"
 
-Hotpot_OrderedEverythingOnMenu_Text_7:
+Hotpot_OrderedEverythingOnMenu_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Well gee, I sure wonder why…$"
 
 Hotpot_Slowpoke_Text_0:

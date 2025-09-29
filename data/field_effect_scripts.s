@@ -92,6 +92,8 @@ gFieldEffectScriptPointers::
 	.4byte gFldEffScript_CryingIcon       				@ FLDEFF_CRYING_ICON
 	.4byte gFldEffScript_SweatIcon   					@ FLDEFF_SWEAT_ICON
 	.4byte gFldEffScript_SleepIcon   					@ FLDEFF_SLEEP_ICON
+	.4byte gFieldEffectScript_UseRockClimb              @ FLDEFF_USE_ROCK_CLIMB
+	.4byte gFieldEffectScript_RockClimbDust             @ FLDEFF_ROCK_CLIMB_DUST
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -439,3 +441,11 @@ gFieldEffectScript_CaveDust::
 gFieldEffectScript_Defog::
     field_eff_callnative FldEff_Defog
     field_eff_end
+gFieldEffectScript_UseRockClimb:: @ 82DBC3F
+	field_eff_callnative FldEff_UseRockClimb
+	field_eff_end
+
+gFieldEffectScript_RockClimbDust:: @ 82DBB28
+	field_eff_loadfadedpal_callnative gSpritePalette_BigDust, FldEff_RockClimbDust
+	field_eff_end
+

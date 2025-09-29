@@ -9,7 +9,7 @@ script SilverTunnel_1F_EventScript_Kento {
 		format("How am I gonna get any work done now?")
 	)
 	setnamedmon(SPECIES_MAKUHITA)
-	speakername("Kento")
+	setspeaker(SP_NAME_MINER)
 	msgbox(format("My Makuhita breaks rocks for me!"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -21,7 +21,7 @@ script SilverTunnel_1F_EventScript_Shuya {
 		format("I gotta say, yer not bad either!")
 	)
 	setnamedmon(SPECIES_MAKUHITA)
-	speakername("Shuya")
+	setspeaker(SP_NAME_MINER)
 	msgbox(format("Sometimes we armwrestle with our Makuhita just for kicks!"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -32,7 +32,7 @@ script SilverTunnel_1F_EventScript_Yoru {
 		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}This place sucks!"),
 		format("This battle sucked as well!")
 	)
-	speakername("Yoru")
+	setspeaker(SP_NAME_HEX_MANIAC)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I thought caves were spooky places with lots of Ghost Pokémon…\p"
 		"All I see are dumb rocks and bats!"
@@ -41,7 +41,7 @@ script SilverTunnel_1F_EventScript_Yoru {
 }
 
 script SilverTunnel_1F_EventScript_Nerd {
-	speakername("Man")
+	setspeaker(SP_NAME_MAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Ugh…\p"
 		"I forgot to bring my fighting Pokémon, so I got whooped by those miners' rock Pokémon…"

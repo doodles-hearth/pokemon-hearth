@@ -5,7 +5,7 @@ mapscripts YifuCity_BigHouse_3F_MapScripts {
 script YifuCity_BigHouse_3F_EventScript_HarikosGrandma {
 	lock
 	faceplayer
-	speakername("Old Woman")
+	setspeaker(SP_NAME_OLD_LADY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_COLD_OLD_WOMAN EMOTE_NORMAL}I'm so proud of my grandchildren!\p"
 		"My eldest is always out and about with her head in the clouds.\p"
@@ -18,7 +18,7 @@ script YifuCity_BigHouse_3F_EventScript_HarikosGrandma {
 script YifuCity_BigHouse_3F_EventScript_HarikosGrandpa {
 	lock
 	faceplayer
-	speakername("Old Man")
+	setspeaker(SP_NAME_OLD_MAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_COLD_OLD_MAN EMOTE_NORMAL}The climate here is a lot warmer than the Icy Isles.\p"
 		"That's why we brought Snom with us!"
@@ -32,7 +32,7 @@ script YifuCity_BigHouse_3F_EventScript_HarikosGrandpa {
 script YifuCity_BigHouse_3F_EventScript_HarikosSister {
 	lock
 	faceplayer
-	speakername("Little Girl")
+	setspeaker(SP_NAME_LITTLE_GIRL)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_COLD_LITTLE_GIRL EMOTE_NORMAL}My big sister brings us food from the places she visits!\pI miss her…"
 	))
@@ -43,7 +43,7 @@ script YifuCity_BigHouse_3F_EventScript_HarikosSister {
 script YifuCity_BigHouse_3F_EventScript_HarikosBrother {
 	lock
 	faceplayer
-	speakername("Boy")
+	setspeaker(SP_NAME_BOY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_COLD_BOY_2 EMOTE_NORMAL}Where are you from? I haven't seen anyone with your hair color around here."
 	))

@@ -86,7 +86,7 @@ script YifuCity_Dojo_EventScript_Dance1_FromDown {
 }
 
 script YifuCity_Dojo_EventScript_Dance1 {
-    speakername("Kimono girls")
+    setspeaker(SP_NAME_KIMONO_GIRLS)
     msgbox(format(
         "Welcome to the Yifu City Dojo. Here you will have the pleasure to watch three different dances, at the end of which you will be asked a different question.\p"
         "The first dance will soon commence! The real Miss Yutaka, the Dojo Master, is among us.\p"
@@ -106,7 +106,7 @@ script YifuCity_Dojo_EventScript_Dance1 {
 	waitmovement(0)
     special(RemoveCameraObject)
 
-    speakername("Kimono girls")
+    setspeaker(SP_NAME_KIMONO_GIRLS)
     msgbox(format(
         "Well? Can you remember which one is the real Yutaka?"
     ))
@@ -130,7 +130,7 @@ script YifuCity_Dojo_EventScript_Dance1 {
 
     if (var(VAR_RESULT) == 1) {
 
-        speakername("Kimono girls")
+        setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are correct!\p"
             "Very well. You may proceed to the next room."
@@ -141,7 +141,7 @@ script YifuCity_Dojo_EventScript_Dance1 {
 
         call(YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor)
     } else {
-        speakername("Kimono girls")
+        setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are incorrect!\p"
             "We shall face you in battle before you proceed."
@@ -159,7 +159,7 @@ script YifuCity_Dojo_EventScript_Dance1 {
 
         setvar(VAR_YIFU_DOJO_STATE, 1)
 
-        speakername("Kimono girls")
+        setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "Very well! You may now proceed."
         ))
@@ -209,7 +209,7 @@ script YifuCity_Dojo_EventScript_Dance1 {
 }
 
 script YifuCity_Dojo_EventScript_Dance2 {
-    speakername("Kimono girls")
+    setspeaker(SP_NAME_KIMONO_GIRLS)
     msgbox(format(
         "Are you ready for a second dance? Follow each of our moves…"
     ))
@@ -225,7 +225,7 @@ script YifuCity_Dojo_EventScript_Dance2 {
 	waitmovement(0)
     special(RemoveCameraObject)
 
-    speakername("Kimono girls")
+    setspeaker(SP_NAME_KIMONO_GIRLS)
     msgbox(format(
         "Do you remember where the dancer on the right was placed originally?"
     ))
@@ -249,7 +249,7 @@ script YifuCity_Dojo_EventScript_Dance2 {
 
     if (var(VAR_RESULT) == 0) {
 
-        speakername("Kimono girls")
+        setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are correct!\p"
             "Very well. You may proceed to the next room."
@@ -260,7 +260,7 @@ script YifuCity_Dojo_EventScript_Dance2 {
 
         call(YifuCity_Dojo_Dance2_GeishasGoDirectlyToDoor)
     } else {
-        speakername("Kimono girls")
+        setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are incorrect!\p"
             "We shall face you in battle before you proceed."
@@ -278,7 +278,7 @@ script YifuCity_Dojo_EventScript_Dance2 {
 
         setvar(VAR_YIFU_DOJO_STATE, 2)
 
-        speakername("Kimono girls")
+        setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "Very well! You may now proceed."
         ))
@@ -328,7 +328,7 @@ script YifuCity_Dojo_EventScript_Dance2 {
 }
 
 script YifuCity_Dojo_EventScript_Dance3 {
-    speakername("Kimono girls")
+    setspeaker(SP_NAME_KIMONO_GIRLS)
     msgbox(format(
         "Let the third dance begin! Pay close attention…"
     ))
@@ -344,7 +344,7 @@ script YifuCity_Dojo_EventScript_Dance3 {
 	waitmovement(0)
     special(RemoveCameraObject)
 
-    speakername("Kimono girls")
+    setspeaker(SP_NAME_KIMONO_GIRLS)
     msgbox(format(
         "Can you tell us how many jumps there were in this dance?"
     ))
@@ -366,7 +366,7 @@ script YifuCity_Dojo_EventScript_Dance3 {
 
     if (var(VAR_RESULT) == 0) {
 
-        speakername("Kimono girls")
+        setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are correct!\p"
             "Very well. You may proceed to the last room."
@@ -377,7 +377,7 @@ script YifuCity_Dojo_EventScript_Dance3 {
 
         call(YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor)
     } else {
-        speakername("Kimono girls")
+        setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are incorrect!\p"
             "We shall face you in battle before you proceed."
@@ -395,7 +395,7 @@ script YifuCity_Dojo_EventScript_Dance3 {
 
         setvar(VAR_YIFU_DOJO_STATE, 3)
 
-        speakername("Kimono girls")
+        setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "Very well! You may now proceed."
         ))
@@ -779,7 +779,7 @@ script YifuCity_Dojo_EventScript_Akari {
 		format("You still wish to fight?\nVery well!"),
 		format("Oh!")
 	)
-	speakername("Akari")
+	setspeaker(SP_NAME_KIMONO_GIRL)
 	msgbox(format("You are very graceful.\nAre you sure you're not a dancer?"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -790,7 +790,7 @@ script YifuCity_Dojo_EventScript_Yuka {
 		format("You have a good eye!\nLet's see if that applies to Pokémon, as well!"),
 		format("You have many talents, I see!")
 	)
-	speakername("Yuka")
+	setspeaker(SP_NAME_KIMONO_GIRL)
 	msgbox(format("The next dance should be more of a challenge."), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -801,7 +801,7 @@ script YifuCity_Dojo_EventScript_Nanami {
 		format("Pant… I'm impressed… Pant…\nThis last dance was… intense!"),
 		format("Pant… Hey, let me catch my breath!")
 	)
-	speakername("Nanami")
+	setspeaker(SP_NAME_KIMONO_GIRL)
 	msgbox(format("I really need to exercise more…"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -812,7 +812,7 @@ script YifuCity_Dojo_EventScript_Kanae {
 		format("You didn't see me trip over my own foot, did you?"),
         format("My dance wasn't perfect!\nI deserve this!")
 	)
-	speakername("Kanae")
+	setspeaker(SP_NAME_KIMONO_GIRL)
 	msgbox(format("Next time my dance will be perfect, you'll see!"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -823,7 +823,7 @@ script YifuCity_Dojo_EventScript_Karin {
 		format("Oh good! A battle!\nI was getting bored."),
         format("I am regretting this…")
 	)
-	speakername("Karin")
+	setspeaker(SP_NAME_KIMONO_GIRL)
 	msgbox(format("Miss Yutaka holds us to the highest standards, both in battle and onstage!"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -834,7 +834,7 @@ script YifuCity_Dojo_EventScript_Miika {
 		format("Please admire my brand new designer kimono!"),
         format("You don't look impressed at all!")
 	)
-	speakername("Miika")
+	setspeaker(SP_NAME_KIMONO_GIRL)
 	msgbox(format("Working here has its perks.\nWe get the finest silk clothes for free!"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -842,7 +842,7 @@ script YifuCity_Dojo_EventScript_Miika {
 script YifuCity_Dojo_EventScript_Dancer {
     lock
     faceplayer
-    speakername("Kimono girl")
+    setspeaker(SP_NAME_KIMONO_GIRL)
     msgbox(format(
         "I have no Pokémon!\nI'm only a dancer."
     ))
@@ -852,7 +852,7 @@ script YifuCity_Dojo_EventScript_Dancer {
 script YifuCity_Dojo_EventScript_Dancer2 {
     lock
     faceplayer
-    speakername("Kimono girl")
+    setspeaker(SP_NAME_KIMONO_GIRL)
     msgbox(format(
         "Come back to watch us dance sometimes!"
     ))
@@ -862,7 +862,7 @@ script YifuCity_Dojo_EventScript_Dancer2 {
 script YifuCity_Dojo_EventScript_ImpossibleDancer {
     lock
     faceplayer
-    speakername("Kimono girl")
+    setspeaker(SP_NAME_KIMONO_GIRL)
     msgbox(format(
         "Hey! How did you get up here?!"
     ))
@@ -872,7 +872,7 @@ script YifuCity_Dojo_EventScript_ImpossibleDancer {
 script YifuCity_Dojo_EventScript_Yutaka {
     lock
     faceplayer
-    speakername("Yutaka")
+    setspeaker(SP_NAME_YUTAKA)
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}Well done! Welcome to Yifu City's Doj-"
     ))
@@ -919,14 +919,14 @@ script YifuCity_Dojo_EventScript_Yutaka {
 }
 
 script YifuCity_Dojo_EventScript_YutakaDefeated {
-    removespeakername
+    // removespeakername
 	message(format(
 		"{PLAYER} received the Silk Token from Yutaka."
 	))
 	waitmessage
 	call(Common_EventScript_PlayGymBadgeFanfare)
 
-    speakername("Yutaka")
+    setspeaker(SP_NAME_YUTAKA)
 	msgbox(
 		format(
             "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}I am outrée! Your techniques are rough and vulgar, yet…\p"
@@ -939,7 +939,7 @@ script YifuCity_Dojo_EventScript_YutakaDefeated {
 	
 	giveitem(ITEM_TM_X_SCISSOR)
 
-    speakername("Yutaka")
+    setspeaker(SP_NAME_YUTAKA)
 	msgbox(
 		format(
 			"{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}This scroll contains my famous X-Scissor technique.\p"

@@ -5,19 +5,19 @@ YifuCity_House4_MapScripts::
 YifuCity_House4_EventScript_NameRater::
 	lock
 	faceplayer
-	speakername YifuCity_House4_EventScript_NameRater_Text_0
-	msgbox YifuCity_House4_EventScript_NameRater_Text_1, MSGBOX_YESNO
+	setspeaker SP_NAME_NAME_RATER
+	msgbox YifuCity_House4_EventScript_NameRater_Text_0, MSGBOX_YESNO
 	compare VAR_RESULT, YES
 	goto_if_eq YifuCity_House4_EventScript_NameRater_2
-	speakername YifuCity_House4_EventScript_NameRater_Text_0
-	msgbox YifuCity_House4_EventScript_NameRater_Text_8
+	setspeaker SP_NAME_NAME_RATER
+	msgbox YifuCity_House4_EventScript_NameRater_Text_7
 YifuCity_House4_EventScript_NameRater_1:
 	release
 	return
 
 YifuCity_House4_EventScript_NameRater_2:
-	speakername YifuCity_House4_EventScript_NameRater_Text_0
-	msgbox YifuCity_House4_EventScript_NameRater_Text_2
+	setspeaker SP_NAME_NAME_RATER
+	msgbox YifuCity_House4_EventScript_NameRater_Text_1
 	special ChoosePartyMon
 	waitstate
 	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
@@ -36,42 +36,39 @@ YifuCity_House4_EventScript_NameRater_5:
 	special BufferMonNickname
 	compare VAR_RESULT, 0
 	goto_if_ne YifuCity_House4_EventScript_NameRater_13
-	speakername YifuCity_House4_EventScript_NameRater_Text_0
-	msgbox YifuCity_House4_EventScript_NameRater_Text_5
+	setspeaker SP_NAME_NAME_RATER
+	msgbox YifuCity_House4_EventScript_NameRater_Text_4
 	call Common_EventScript_NameReceivedPartyMon
 	special BufferMonNickname
 	specialvar VAR_RESULT, WasNicknameChanged
 	compare VAR_RESULT, 0
 	goto_if_ne YifuCity_House4_EventScript_NameRater_16
-	speakername YifuCity_House4_EventScript_NameRater_Text_0
-	msgbox YifuCity_House4_EventScript_NameRater_Text_7
+	setspeaker SP_NAME_NAME_RATER
+	msgbox YifuCity_House4_EventScript_NameRater_Text_6
 	goto YifuCity_House4_EventScript_NameRater_1
 
 YifuCity_House4_EventScript_NameRater_7:
-	speakername YifuCity_House4_EventScript_NameRater_Text_0
-	msgbox YifuCity_House4_EventScript_NameRater_Text_3
+	setspeaker SP_NAME_NAME_RATER
+	msgbox YifuCity_House4_EventScript_NameRater_Text_2
 	goto YifuCity_House4_EventScript_NameRater_1
 
 YifuCity_House4_EventScript_NameRater_10:
-	speakername YifuCity_House4_EventScript_NameRater_Text_0
-	msgbox YifuCity_House4_EventScript_NameRater_Text_4
+	setspeaker SP_NAME_NAME_RATER
+	msgbox YifuCity_House4_EventScript_NameRater_Text_3
 	goto YifuCity_House4_EventScript_NameRater_1
 
 YifuCity_House4_EventScript_NameRater_13:
-	speakername YifuCity_House4_EventScript_NameRater_Text_0
-	msgbox YifuCity_House4_EventScript_NameRater_Text_4
+	setspeaker SP_NAME_NAME_RATER
+	msgbox YifuCity_House4_EventScript_NameRater_Text_3
 	goto YifuCity_House4_EventScript_NameRater_1
 
 YifuCity_House4_EventScript_NameRater_16:
-	speakername YifuCity_House4_EventScript_NameRater_Text_0
-	msgbox YifuCity_House4_EventScript_NameRater_Text_6
+	setspeaker SP_NAME_NAME_RATER
+	msgbox YifuCity_House4_EventScript_NameRater_Text_5
 	goto YifuCity_House4_EventScript_NameRater_1
 
 
 YifuCity_House4_EventScript_NameRater_Text_0:
-	.string "Name Rater$"
-
-YifuCity_House4_EventScript_NameRater_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Names are the mirror of the soul!\p"
 	.string "{FONT_SMALL}Or was that the eyes? Bah…{FONT_NORMAL}\p"
 	.string "I have been told I have a way\n"
@@ -80,21 +77,21 @@ YifuCity_House4_EventScript_NameRater_Text_1:
 	.string "counsel you on the naming of your\l"
 	.string "Pokémon?$"
 
-YifuCity_House4_EventScript_NameRater_Text_2:
+YifuCity_House4_EventScript_NameRater_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Which Pokémon should receive my\n"
 	.string "attention?$"
 
-YifuCity_House4_EventScript_NameRater_Text_3:
+YifuCity_House4_EventScript_NameRater_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Bah! An Egg is yet unborn…\n"
 	.string "Its name yet unchosen!$"
 
-YifuCity_House4_EventScript_NameRater_Text_4:
+YifuCity_House4_EventScript_NameRater_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}This creature… It was named by\n"
 	.string "someone else, was it not?\p"
 	.string "I couldn't ever strip this Pokémon\n"
 	.string "from its original name, no no!$"
 
-YifuCity_House4_EventScript_NameRater_Text_5:
+YifuCity_House4_EventScript_NameRater_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}{STR_VAR_1}…\n"
 	.string "I see what you were going for…\p"
 	.string "{FONT_SMALL}Yikes…{FONT_NORMAL} But I don't see this Pokémon's\n"
@@ -103,7 +100,7 @@ YifuCity_House4_EventScript_NameRater_Text_5:
 	.string "on it?\p"
 	.string "Go ahead! Speak from your heart!$"
 
-YifuCity_House4_EventScript_NameRater_Text_6:
+YifuCity_House4_EventScript_NameRater_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}{STR_VAR_1}… I see…\n"
 	.string "This name rings with truth!\p"
 	.string "Look… Your Pokémon seems happy\n"
@@ -111,11 +108,11 @@ YifuCity_House4_EventScript_NameRater_Text_6:
 	.string "Goodbye! May wisdom guide your steps!\p"
 	.string "{FONT_SMALL}Bah! I should charge for this…{FONT_NORMAL}$"
 
-YifuCity_House4_EventScript_NameRater_Text_7:
+YifuCity_House4_EventScript_NameRater_Text_6:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}This new name… It sounds a little like\n"
 	.string "its old name…\p"
 	.string "{FONT_SMALL}Wait, what was the old name again?{FONT_NORMAL}\p"
 	.string "Bah… You're confusing me!$"
 
-YifuCity_House4_EventScript_NameRater_Text_8:
+YifuCity_House4_EventScript_NameRater_Text_7:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Nevermind, then.$"

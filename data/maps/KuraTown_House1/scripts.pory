@@ -15,7 +15,7 @@ mapscripts KuraTown_House1_MapScripts {
 script KuraTown_House1_OldWoman {
 	lock
 	faceplayer
-	speakername("Old woman")
+	setspeaker(SP_NAME_OLD_LADY)
 	switch(var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE)) {
 		case 2:
 			call(OldWomanQuestScript)
@@ -61,7 +61,7 @@ script(local) OldWomanRegularScript {
 	))
 	closemessage
 	call(Common_EventScript_OutOfCenterPartyHeal)
-	speakername("Old woman")
+	setspeaker(SP_NAME_OLD_LADY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}I wish you strength on your journey."
 	))
@@ -82,7 +82,7 @@ script(local) OldWomanQuestScript {
 	closemessage
 	applymovement(LOCALID_OLDWOMAN, moves(face_away_player, emote_pensive, delay_16 * 6, face_player))
 	waitmovement(0)
-	speakername("Old woman")
+	setspeaker(SP_NAME_OLD_LADY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}"
 		"While I can't go to Saku village myself, I can create an healing elixir.\p"
@@ -92,7 +92,7 @@ script(local) OldWomanQuestScript {
 	waitmessage
 	closemessage
 	mcdialogue("Of course!", "I'll try…", "Sure.")
-	speakername("Old woman")
+	setspeaker(SP_NAME_OLD_LADY)
 	applymovement(VAR_LAST_TALKED, moves(emote_heart))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Such a wonderful child. I'll wait here for the ingredients."
@@ -136,7 +136,7 @@ script KuraTown_House1_OldWomansSon {
 	lock
 	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	faceplayer
-	speakername("Guy")
+	setspeaker(SP_NAME_GUY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}The Pokémon Council didn't see fit to build a Refuge in our town."
 		"But those jerks over at Saku Village won't let us use theirs!\p"

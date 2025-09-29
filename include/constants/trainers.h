@@ -132,7 +132,8 @@
 #define TRAINER_PIC_MASQUERAIN_WOMAN      114
 #define TRAINER_PIC_GEM_MANIAC            115
 #define TRAINER_PIC_OLD_MAN               116
-#define TRAINER_PIC_COUNT                 117
+#define TRAINER_PIC_SAMURAI               117
+#define TRAINER_PIC_COUNT                 118
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0

@@ -43,11 +43,11 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_3
 	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_4
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
-	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1
+	setspeaker SP_NAME_ELDER_KABA
+	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
 	waitse
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
-	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2
+	setspeaker SP_NAME_ELDER_KABA
+	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1
 	closemessage
 	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_5
 	waitmovement 0
@@ -58,10 +58,10 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 	waitmovement 2
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_3
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
-	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
+	setspeaker SP_NAME_ELDER_KABA
+	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2
 	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_7
-	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
+	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3
 	closemessage
 	clearflag FLAG_TEMP_1
 	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_8
@@ -94,13 +94,13 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 	applymovement 2, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_10
 	waitmovement 0
 	applymovement 2, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_11
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
-	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_6
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	applymovement 2, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
-	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_7
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 5
@@ -111,7 +111,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 SunriseVillage_EldersHouse_Event_Elder::
 	lock
 	faceplayer
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	setspeaker SP_NAME_ELDER_KABA
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
 	goto_if_ge SunriseVillage_EldersHouse_Event_Elder_2
 	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_6
@@ -135,13 +135,13 @@ SunriseVillage_EldersHouse_Event_Elder_5:
 	goto SunriseVillage_EldersHouse_Event_Elder_1
 
 SunriseVillage_EldersHouse_Event_Elder_9:
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	setspeaker SP_NAME_ELDER_KABA
 	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_4
 	call ProfBirch_EventScript_RatePokedex
 	goto SunriseVillage_EldersHouse_Event_Elder_1
 
 SunriseVillage_EldersHouse_Event_Elder_10:
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	setspeaker SP_NAME_ELDER_KABA
 	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_5
 	goto SunriseVillage_EldersHouse_Event_Elder_1
 
@@ -149,7 +149,7 @@ SunriseVillage_EldersHouse_Event_Elder_10:
 SunriseVillage_EldersHouse_EventScript_TryToLeave::
 	lock
 	turnobject 1, DIR_SOUTH
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	setspeaker SP_NAME_ELDER_KABA
 	msgbox SunriseVillage_EldersHouse_EventScript_TryToLeave_Text_0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp
@@ -161,7 +161,7 @@ SunriseVillage_EldersHouse_EventScript_TryToLeave::
 SunriseVillage_EldersHouse_EventScript_TryToEnterOtherRoom::
 	lock
 	turnobject 1, DIR_NORTH
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	setspeaker SP_NAME_ELDER_KABA
 	msgbox SunriseVillage_EldersHouse_EventScript_TryToLeave_Text_0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_EventScript_TryToEnterOtherRoom_Movement_0
@@ -223,7 +223,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16:
 	waitmovement OBJ_EVENT_ID_PLAYER
 	turnobject 1, DIR_SOUTH
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
+	setspeaker SP_NAME_NATSUKI
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6
 	closemessage
 	switch VAR_STARTER_MON
@@ -231,7 +231,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16:
 	case SPECIES_SNIVY, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_29
 	case SPECIES_CYNDAQUIL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_30
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	setspeaker SP_NAME_ELDER_KABA
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7
 	closemessage
 	applymovement 1, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_14
@@ -243,14 +243,14 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	closemessage
 	delay 20
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
+	setspeaker SP_NAME_NATSUKI
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9
 	closemessage
 	delay 20
 	applymovement 1, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_16
 	waitmovement 0
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	setspeaker SP_NAME_ELDER_KABA
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10
 	closemessage
 	giveitem ITEM_LETTER
@@ -258,19 +258,19 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	closemessage
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_17
 	waitmovement 0
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
+	setspeaker SP_NAME_NATSUKI
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11
 	closemessage
 	applymovement 2, Common_Movement_WalkInPlaceFasterLeft
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	waitmovement 2
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
+	setspeaker SP_NAME_NATSUKI
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_12
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14
 	compare VAR_RESULT, 0
 	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_48
 	applymovement 2, Common_Movement_WalkInPlaceFasterUp
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
+	setspeaker SP_NAME_NATSUKI
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_55
@@ -279,7 +279,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_54:
 	closemessage
 	applymovement 2, Common_Movement_WalkInPlaceFasterLeft
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_47:
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
+	setspeaker SP_NAME_NATSUKI
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18
 	closemessage
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_19
@@ -307,7 +307,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_8:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_10:
 	hidemonpic
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0
+	setspeaker SP_NAME_ELDER_KABA
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_4
 	closemessage
 	return
@@ -467,7 +467,7 @@ SunriseVillage_EldersHouse_Movement_RivalPreBattlePose:
 	step_end
 
 SunriseVillage_EldersHouse_EventScript_Natsuki::
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
+	setspeaker SP_NAME_NATSUKI
 	msgbox SunriseVillage_EldersHouse_EventScript_Natsuki_Text_0, MSGBOX_NPC
 	return
 
@@ -478,7 +478,7 @@ SunriseVillage_EldersHouse_EventScript_PostBattle::
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq SunriseVillage_EldersHouse_EventScript_PostBattle_2
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
+	setspeaker SP_NAME_NATSUKI
 	msgbox SunriseVillage_EldersHouse_EventScript_PostBattle_Text_1
 	closemessage
 SunriseVillage_EldersHouse_EventScript_PostBattle_1:
@@ -502,7 +502,7 @@ SunriseVillage_EldersHouse_EventScript_PostBattle_5:
 	return
 
 SunriseVillage_EldersHouse_EventScript_PostBattle_2:
-	speakername SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5
+	setspeaker SP_NAME_NATSUKI
 	msgbox SunriseVillage_EldersHouse_EventScript_PostBattle_Text_0
 	closemessage
 	goto SunriseVillage_EldersHouse_EventScript_PostBattle_1
@@ -760,12 +760,9 @@ SunriseVillage_EldersHouse_EventScript_PostBattle_Movement_1:
 	step_end
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0:
-	.string "Elder Kaba$"
-
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}PAH!$"
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}{PLAYER}, Natsuki.\nYou are late. Why am I surprised?\p"
 	.string "I always have to run after you two!\nNow stay still for a minute and\llisten closely!\p"
 	.string "As you have heard, the woods, and even\nthe roads, are no longer safe.\p"
@@ -773,7 +770,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
 	.string "There are reports of travelers being\nattacked from several nearby villages.\p"
 	.string "This is all very worrying…$"
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3:
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}WHICH IS WHY!{PAUSE 15}\p"
 	.string "The Toku council has decided that,\n"
 	.string "for the time being, the best way to\l"
@@ -786,17 +783,14 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3:
 	.string "you'll be able to defend yourselves\l"
 	.string "on your own.$"
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4:
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3:
 	.string "Without further ado, please carefully\n"
 	.string "choose your new companion!$"
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5:
-	.string "Natsuki$"
-
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_6:
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah! Cool.$"
 
-SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_7:
+SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}, choose yours first!\n"
 	.string "I don't mind being second pick.$"
 

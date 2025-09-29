@@ -113,7 +113,7 @@ KuraTown_EventScript_DojoChallenger::
 	lock
 	faceplayer
 	goto_if_set FLAG_KURA_DOJO_CLOSED, KuraTown_EventScript_DojoChallenger_2
-	speakername KuraTown_EventScript_DojoChallenger_Text_2
+	setspeaker KuraTown_EventScript_DojoChallenger_Text_2
 	msgbox KuraTown_EventScript_DojoChallenger_Text_3
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_DojoChallenger_Movement_1
 	msgbox KuraTown_EventScript_DojoChallenger_Text_4
@@ -124,7 +124,7 @@ KuraTown_EventScript_DojoChallenger_1:
 
 KuraTown_EventScript_DojoChallenger_2:
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_DojoChallenger_Movement_0
-	speakername KuraTown_EventScript_DojoChallenger_Text_0
+	setspeaker KuraTown_EventScript_DojoChallenger_Text_0
 	msgbox KuraTown_EventScript_DojoChallenger_Text_1
 	goto KuraTown_EventScript_DojoChallenger_1
 
@@ -132,13 +132,13 @@ KuraTown_EventScript_DojoChallenger_2:
 KuraTown_EventScript_Farmer::
 	lock
 	faceplayer
-	speakername KuraTown_EventScript_Farmer_Text_0
-	msgbox KuraTown_EventScript_Farmer_Text_1
+	setspeaker SP_NAME_FARMER
+	msgbox KuraTown_EventScript_Farmer_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_Farmer_Movement_0
 	waitmovement 0
-	speakername KuraTown_EventScript_Farmer_Text_0
-	msgbox KuraTown_EventScript_Farmer_Text_2
+	setspeaker SP_NAME_FARMER
+	msgbox KuraTown_EventScript_Farmer_Text_1
 	release
 	return
 
@@ -147,10 +147,10 @@ KuraTown_EventScript_SilkScarf::
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_SILK_SCARF, KuraTown_EventScript_SilkScarf_2
-	speakername KuraTown_EventScript_SilkScarf_Text_0
-	msgbox KuraTown_EventScript_SilkScarf_Text_2
+	setspeaker SP_NAME_GIRL
+	msgbox KuraTown_EventScript_SilkScarf_Text_1
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_DojoChallenger_Movement_1
-	msgbox KuraTown_EventScript_SilkScarf_Text_3
+	msgbox KuraTown_EventScript_SilkScarf_Text_2
 	closemessage
 	giveitem ITEM_SILK_SCARF
 	setflag FLAG_RECEIVED_SILK_SCARF
@@ -159,8 +159,8 @@ KuraTown_EventScript_SilkScarf_1:
 	return
 
 KuraTown_EventScript_SilkScarf_2:
-	speakername KuraTown_EventScript_SilkScarf_Text_0
-	msgbox KuraTown_EventScript_SilkScarf_Text_1
+	setspeaker SP_NAME_GIRL
+	msgbox KuraTown_EventScript_SilkScarf_Text_0
 	closemessage
 	goto KuraTown_EventScript_SilkScarf_1
 
@@ -168,7 +168,7 @@ KuraTown_EventScript_SilkScarf_2:
 KuraTown_EventScript_FarmerScyther::
 	lock
 	faceplayer
-	speakername KuraTown_EventScript_Farmer_Text_0
+	setspeaker SP_NAME_FARMER
 	msgbox KuraTown_EventScript_FarmerScyther_Text_0, MSGBOX_DEFAULT
 	release
 	return
@@ -190,8 +190,8 @@ KuraTown_EventScript_Scyther::
 KuraTown_EventScript_Guard::
 	lock
 	faceplayer
-	speakername KuraTown_EventScript_Guard_Text_0
-	msgbox KuraTown_EventScript_Guard_Text_1, MSGBOX_DEFAULT
+	setspeaker SP_NAME_GUARD
+	msgbox KuraTown_EventScript_Guard_Text_0, MSGBOX_DEFAULT
 	release
 	return
 
@@ -208,7 +208,7 @@ SakuTown_EventScript_ClosedGymDoor_1:
 KuraTown_EventScript_LovestruckGuy::
 	lock
 	faceplayer
-	speakername KuraTown_EventScript_LovestruckGuy_Text_0
+	setspeaker KuraTown_EventScript_LovestruckGuy_Text_0
 	msgbox KuraTown_EventScript_LovestruckGuy_Text_1, MSGBOX_DEFAULT
 	release
 	return
@@ -217,8 +217,8 @@ KuraTown_EventScript_LovestruckGuy::
 KuraTown_EventScript_PokemonCouncil::
 	lock
 	faceplayer
-	speakername KuraTown_EventScript_PokemonCouncil_Text_0
-	msgbox KuraTown_EventScript_PokemonCouncil_Text_1
+	setspeaker SP_NAME_WOMAN
+	msgbox KuraTown_EventScript_PokemonCouncil_Text_0
 	closemessage
 	release
 	return
@@ -249,15 +249,15 @@ KuraTown_EventScript_PostDecayNatsukiHariko::
 	setvar VAR_DECAY_BEACHBOUND_ROUTE, 5
 	delay 48
 	applymovement LOCALID_KURA_HARIKO, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
-	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_0
-	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_1
+	setspeaker SP_NAME_HARIKO
+	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_0
 	applymovement LOCALID_KURA_HARIKO, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_1
-	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_2
+	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_1
 	closemessage
 	delay 60
 	applymovement LOCALID_KURA_HARIKO, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
-	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_0
-	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_3
+	setspeaker SP_NAME_HARIKO
+	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_2
 	closemessage
 	applymovement LOCALID_KURA_HARIKO, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_2
 	delay 32
@@ -269,11 +269,11 @@ KuraTown_EventScript_PostDecayNatsukiHariko::
 	applymovement LOCALID_KURA_NATSUKI, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_5
 	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
 	waitmovement 0
-	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_4
-	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_5
+	setspeaker SP_NAME_NATSUKI
+	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_3
 	applymovement LOCALID_KURA_NATSUKI, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_6
-	speakername KuraTown_EventScript_PostDecayNatsukiHariko_Text_4
-	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_6
+	setspeaker SP_NAME_NATSUKI
+	msgbox KuraTown_EventScript_PostDecayNatsukiHariko_Text_4
 	closemessage
 	applymovement LOCALID_KURA_NATSUKI, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_7
 	delay 32
@@ -291,10 +291,10 @@ KuraTown_EventScript_AnxiousAshii::
 	delay 48
 	applymovement 16, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_0
 	applymovement OBJ_EVENT_ID_PLAYER, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_5
-	speakername KuraTown_EventScript_AnxiousAshii_Text_0
-	msgbox KuraTown_EventScript_AnxiousAshii_Text_1
+	setspeaker SP_NAME_ASHII
+	msgbox KuraTown_EventScript_AnxiousAshii_Text_0
 	applymovement 16, KuraTown_EventScript_DojoChallenger_Movement_1
-	msgbox KuraTown_EventScript_AnxiousAshii_Text_2
+	msgbox KuraTown_EventScript_AnxiousAshii_Text_1
 	closemessage
 	applymovement 16, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_3
 	waitmovement 16
@@ -307,7 +307,7 @@ KuraTown_EventScript_AnxiousAshiiWaiting::
 	lock
 	faceplayer
 	applymovement 16, KuraTown_EventScript_DojoChallenger_Movement_1
-	speakername KuraTown_EventScript_AnxiousAshii_Text_0
+	setspeaker SP_NAME_ASHII
 	msgbox KuraTown_EventScript_AnxiousAshiiWaiting_Text_0
 	closemessage
 	applymovement 16, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_3
@@ -322,7 +322,7 @@ KuraTown_EventScript_PreventEscape::
 	waitmovement 16
 	waitmovement OBJ_EVENT_ID_PLAYER
 	applymovement 16, KuraTown_EventScript_DojoChallenger_Movement_1
-	speakername KuraTown_EventScript_AnxiousAshii_Text_0
+	setspeaker SP_NAME_ASHII
 	msgbox KuraTown_EventScript_PreventEscape_Text_0
 	waitmessage
 	closemessage
@@ -354,8 +354,8 @@ KuraTown_EventScript_TeachingScrolls::
 	compare VAR_RESULT, 0
 	goto_if_ne KuraTown_EventScript_TeachingScrolls_3
 	faceplayer
-	speakername KuraTown_EventScript_TeachingScrolls_Text_0
-	msgbox KuraTown_EventScript_TeachingScrolls_Text_5
+	setspeaker SP_NAME_GUY
+	msgbox KuraTown_EventScript_TeachingScrolls_Text_4
 	closemessage
 	giveitem ITEM_TM_PSYBEAM
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_TeachingScrolls_Movement_0
@@ -366,16 +366,16 @@ KuraTown_EventScript_TeachingScrolls_1:
 
 KuraTown_EventScript_TeachingScrolls_2:
 	faceplayer
-	speakername KuraTown_EventScript_TeachingScrolls_Text_0
-	msgbox KuraTown_EventScript_TeachingScrolls_Text_1
+	setspeaker SP_NAME_GUY
+	msgbox KuraTown_EventScript_TeachingScrolls_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_TeachingScrolls_Movement_0
 	waitmovement VAR_LAST_TALKED
 	goto KuraTown_EventScript_TeachingScrolls_1
 
 KuraTown_EventScript_TeachingScrolls_3:
-	speakername KuraTown_EventScript_TeachingScrolls_Text_0
-	msgbox KuraTown_EventScript_TeachingScrolls_Text_2
+	setspeaker SP_NAME_GUY
+	msgbox KuraTown_EventScript_TeachingScrolls_Text_1
 	closemessage
 	setseenmon SPECIES_ABRA
 	playse SE_M_SNORE
@@ -392,8 +392,8 @@ KuraTown_EventScript_TeachingScrolls_3:
 	waitse
 	waitmovement VAR_LAST_TALKED
 	faceplayer
-	speakername KuraTown_EventScript_TeachingScrolls_Text_0
-	msgbox KuraTown_EventScript_TeachingScrolls_Text_3
+	setspeaker SP_NAME_GUY
+	msgbox KuraTown_EventScript_TeachingScrolls_Text_2
 	closemessage
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_TeachingScrolls_Movement_3
 	waitmovement VAR_LAST_TALKED
@@ -402,8 +402,8 @@ KuraTown_EventScript_TeachingScrolls_3:
 	waitmovement LOCALID_SAKU_ABRA
 	waitse
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_TeachingScrolls_Movement_4
-	speakername KuraTown_EventScript_TeachingScrolls_Text_0
-	msgbox KuraTown_EventScript_TeachingScrolls_Text_4
+	setspeaker SP_NAME_GUY
+	msgbox KuraTown_EventScript_TeachingScrolls_Text_3
 	closemessage
 	setdescribedmon SPECIES_ABRA
 	goto KuraTown_EventScript_TeachingScrolls_1
@@ -593,25 +593,19 @@ KuraTown_EventScript_DojoChallenger_Text_4:
 	.string "preparing…$"
 
 KuraTown_EventScript_Farmer_Text_0:
-	.string "Farmer$"
-
-KuraTown_EventScript_Farmer_Text_1:
 	.string "Why do we hate the Saku Village folks,\n"
 	.string "y'ask?$"
 
-KuraTown_EventScript_Farmer_Text_2:
+KuraTown_EventScript_Farmer_Text_1:
 	.string "To be honest, I don't quite rememb'r.\n"
 	.string "But who needs a reas'n, right?$"
 
 KuraTown_EventScript_SilkScarf_Text_0:
-	.string "Girl$"
-
-KuraTown_EventScript_SilkScarf_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Sigh… Now I'm scarfless…\p"
 	.string "At least I'm not committing any more\n"
 	.string "crimes against fashion…$"
 
-KuraTown_EventScript_SilkScarf_Text_2:
+KuraTown_EventScript_SilkScarf_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Hey, you! Yes, you! I need some\n"
 	.string "super-urgent fashion advice!\p"
 	.string "I bought myself this scarf in Yifu\n"
@@ -620,7 +614,7 @@ KuraTown_EventScript_SilkScarf_Text_2:
 	.string "Is it awful?\n"
 	.string "Does it make my skin look grey?$"
 
-KuraTown_EventScript_SilkScarf_Text_3:
+KuraTown_EventScript_SilkScarf_Text_2:
 	.string "Oh gosh, it does, doesn't it? I knew\n"
 	.string "it! I have to get rid of it right this\l"
 	.string "moment!\p"
@@ -636,9 +630,6 @@ KuraTown_EventScript_Scyther_Text_0:
 	.string "Gyooo!$"
 
 KuraTown_EventScript_Guard_Text_0:
-	.string "Guard$"
-
-KuraTown_EventScript_Guard_Text_1:
 	.string "Hope you didn't have too much trouble\n"
 	.string "passing the gate.\p"
 	.string "That Saku Village guard is such a\n"
@@ -661,9 +652,6 @@ KuraTown_EventScript_LovestruckGuy_Text_1:
 	.string "see her again…$"
 
 KuraTown_EventScript_PokemonCouncil_Text_0:
-	.string "Woman$"
-
-KuraTown_EventScript_PokemonCouncil_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 EMOTE_NORMAL}The Elders of the Toku Council may\n"
 	.string "look like a bunch of frail old people,\l"
 	.string "but each of them was once a\l"
@@ -693,9 +681,6 @@ KuraTown_EventScript_GymSign_Text_0:
 	.string "wisdom.”$"
 
 KuraTown_EventScript_PostDecayNatsukiHariko_Text_0:
-	.string "Hariko$"
-
-KuraTown_EventScript_PostDecayNatsukiHariko_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Did you hear? They said this Decay\n"
 	.string "has started less than a week ago.\p"
 	.string "That coincides with the beginning of\n"
@@ -703,11 +688,11 @@ KuraTown_EventScript_PostDecayNatsukiHariko_Text_1:
 	.string "so there probably is a correlation.\p"
 	.string "We need to get to the bottom of this.$"
 
-KuraTown_EventScript_PostDecayNatsukiHariko_Text_2:
+KuraTown_EventScript_PostDecayNatsukiHariko_Text_1:
 	.string "But how are we supposed to if the\n"
 	.string "grownups don't let us?$"
 
-KuraTown_EventScript_PostDecayNatsukiHariko_Text_3:
+KuraTown_EventScript_PostDecayNatsukiHariko_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}… …{PLAYER}, Natsuki.\n"
 	.string "I am heading home, in Yifu City.\p"
 	.string "We should meet up later to talk about\n"
@@ -715,10 +700,7 @@ KuraTown_EventScript_PostDecayNatsukiHariko_Text_3:
 	.string "Well, I am leaving now.\p"
 	.string "Goodbye!$"
 
-KuraTown_EventScript_PostDecayNatsukiHariko_Text_4:
-	.string "Natsuki$"
-
-KuraTown_EventScript_PostDecayNatsukiHariko_Text_5:
+KuraTown_EventScript_PostDecayNatsukiHariko_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Boy, your friend sure talks a lot, huh?\p"
 	.string "D'you think this whole Decay business\n"
 	.string "is linked to the wild Pokémon attacks\l"
@@ -737,19 +719,16 @@ KuraTown_EventScript_PostDecayNatsukiHariko_Text_5:
 	.string "Don't worry, I'll protect you, too!{PAUSE_UNTIL_PRESS}\n"
 	.string "…Mostly from yourself, though!$"
 
-KuraTown_EventScript_PostDecayNatsukiHariko_Text_6:
+KuraTown_EventScript_PostDecayNatsukiHariko_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't hit me! Don't hit me!\n"
 	.string "I'm gone!\p"
 	.string "See ya later, Feraligatr!$"
 
 KuraTown_EventScript_AnxiousAshii_Text_0:
-	.string "Ashii$"
-
-KuraTown_EventScript_AnxiousAshii_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}My heart is racing… Where is he?\n"
 	.string "I hope he's alright…$"
 
-KuraTown_EventScript_AnxiousAshii_Text_2:
+KuraTown_EventScript_AnxiousAshii_Text_1:
 	.string "I'm worried…\n"
 	.string "Can you check down south for me?$"
 
@@ -769,24 +748,21 @@ KuraTown_EventScript_Abra_Text_0:
 	.string "… … … … … …$"
 
 KuraTown_EventScript_TeachingScrolls_Text_0:
-	.string "Guy$"
-
-KuraTown_EventScript_TeachingScrolls_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Abra is the best!\n"
 	.string "He can use attacks in his sleep!$"
 
-KuraTown_EventScript_TeachingScrolls_Text_2:
+KuraTown_EventScript_TeachingScrolls_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}C'mon Abra, wakey wakey…$"
 
-KuraTown_EventScript_TeachingScrolls_Text_3:
+KuraTown_EventScript_TeachingScrolls_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Did… Did you see that?!\p"
 	.string "Abra made me float in the air with his\n"
 	.string "Psybeam!!$"
 
-KuraTown_EventScript_TeachingScrolls_Text_4:
+KuraTown_EventScript_TeachingScrolls_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}He didn't even wake up…$"
 
-KuraTown_EventScript_TeachingScrolls_Text_5:
+KuraTown_EventScript_TeachingScrolls_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}I taught Abra a sick Psychic move\n"
 	.string "using a Technique Scroll, but…\p"
 	.string "Guess even the sickest move is\n"

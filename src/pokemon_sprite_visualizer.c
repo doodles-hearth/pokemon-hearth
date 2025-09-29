@@ -3,6 +3,7 @@
 #include "battle.h"
 #include "battle_anim.h"
 #include "battle_gfx_sfx_util.h"
+#include "battle_environment.h"
 #include "bg.h"
 #include "data.h"
 #include "decompress.h"
@@ -43,7 +44,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
-extern const struct BattleBackground sBattleEnvironmentTable[];
+extern const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT];
 extern const struct CompressedSpriteSheet gSpriteSheet_EnemyShadow;
 extern const struct CompressedSpriteSheet gSpriteSheet_EnemyShadowsSized;
 extern const struct SpriteTemplate gSpriteTemplate_EnemyShadow;
@@ -386,6 +387,7 @@ const u8 gBattleBackgroundNames[][30] =
     [MAP_BATTLE_SCENE_KYOGRE]   = _("KYOGRE                  "),
     [MAP_BATTLE_SCENE_RAYQUAZA] = _("RAYQUAZA                "),
 };
+
 const u8 gBattleBackgroundTerrainNames[][26] =
 {
     [BATTLE_ENVIRONMENT_GRASS]      = _("NORMAL - GRASS           "),
@@ -400,6 +402,7 @@ const u8 gBattleBackgroundTerrainNames[][26] =
     [BATTLE_ENVIRONMENT_BUILDING]   = _("NORMAL - BUILDING        "),
     [BATTLE_ENVIRONMENT_PLAIN]      = _("NORMAL - PLAIN           "),
 };
+
 const u8 sShadowSizeLabels[][4] =
 {
     [SHADOW_SIZE_S]                 = _(" S"),
@@ -407,6 +410,7 @@ const u8 sShadowSizeLabels[][4] =
     [SHADOW_SIZE_L]                 = _(" L"),
     [SHADOW_SIZE_XL_BATTLE_ONLY]    = _(" XL"),
 };
+
 //Function declarations
 static void PrintDigitChars(struct PokemonSpriteVisualizer *data);
 static void SetUpModifyArrows(struct PokemonSpriteVisualizer *data);
@@ -923,15 +927,15 @@ static void LoadAndCreateEnemyShadowSpriteCustom(struct PokemonSpriteVisualizer 
 }
 
 //Battle background functions
-static void LoadBattleBg(u8 battleBgType, enum BattleEnvironment battleEnvironment)
+static void LoadBattleBg(u8 battleBgType, enum BattleEnvironments battleEnvironment)
 {
     switch (battleBgType)
     {
     default:
     case MAP_BATTLE_SCENE_NORMAL:
-        DecompressDataWithHeaderVram(sBattleEnvironmentTable[battleEnvironment].tileset, (void*)(BG_CHAR_ADDR(2)));
-        DecompressDataWithHeaderVram(sBattleEnvironmentTable[battleEnvironment].tilemap, (void*)(BG_SCREEN_ADDR(26)));
-        LoadPalette(sBattleEnvironmentTable[battleEnvironment].palette, 0x20, 0x60);
+        DecompressDataWithHeaderVram(gBattleEnvironmentInfo[battleEnvironment].background.tileset, (void*)(BG_CHAR_ADDR(2)));
+        DecompressDataWithHeaderVram(gBattleEnvironmentInfo[battleEnvironment].background.tilemap, (void*)(BG_SCREEN_ADDR(26)));
+        LoadPalette(gBattleEnvironmentInfo[battleEnvironment].background.palette, 0x20, 0x60);
         break;
     case MAP_BATTLE_SCENE_GYM:
         DecompressDataWithHeaderVram(gBattleEnvironmentTiles_Building, (void*)(BG_CHAR_ADDR(2)));
@@ -1000,6 +1004,7 @@ static void LoadBattleBg(u8 battleBgType, enum BattleEnvironment battleEnvironme
         break;
     }
 }
+
 static void PrintBattleBgName(u8 taskId)
 {
     struct PokemonSpriteVisualizer *data = GetStructPtr(taskId);
@@ -1007,11 +1012,12 @@ static void PrintBattleBgName(u8 taskId)
     u8 text[30+1];
 
     if (data->battleBgType == 0)
-        StringCopy(text, gBattleBackgroundTerrainNames[data->battleTerrain]);
+        StringCopy(text, gBattleBackgroundTerrainNames[data->battleEnvironment]);
     else
         StringCopy(text, gBattleBackgroundNames[data->battleBgType]);
     AddTextPrinterParameterized(WIN_BOTTOM_RIGHT, fontId, text, 0, 24, 0, NULL);
 }
+
 static void UpdateBattleBg(u8 taskId, bool8 increment)
 {
     struct PokemonSpriteVisualizer *data = GetStructPtr(taskId);
@@ -1020,17 +1026,17 @@ static void UpdateBattleBg(u8 taskId, bool8 increment)
     {
         if (increment)
         {
-            if (data->battleTerrain == BATTLE_ENVIRONMENT_PLAIN)
+            if (data->battleEnvironment == BATTLE_ENVIRONMENT_PLAIN)
                 data->battleBgType += 1;
             else
-                data->battleTerrain += 1;
+                data->battleEnvironment += 1;
         }
         else
         {
-            if (data->battleTerrain == BATTLE_ENVIRONMENT_GRASS)
+            if (data->battleEnvironment == BATTLE_ENVIRONMENT_GRASS)
                 data->battleBgType = MAP_BATTLE_SCENE_RAYQUAZA;
             else
-                data->battleTerrain -= 1;
+                data->battleEnvironment -= 1;
         }
     }
     else if (data->battleBgType == MAP_BATTLE_SCENE_GYM)
@@ -1040,7 +1046,7 @@ static void UpdateBattleBg(u8 taskId, bool8 increment)
         else
         {
             data->battleBgType = MAP_BATTLE_SCENE_NORMAL;
-            data->battleTerrain = BATTLE_ENVIRONMENT_PLAIN;
+            data->battleEnvironment = BATTLE_ENVIRONMENT_PLAIN;
         }
     }
     else if (data->battleBgType == MAP_BATTLE_SCENE_RAYQUAZA)
@@ -1048,7 +1054,7 @@ static void UpdateBattleBg(u8 taskId, bool8 increment)
         if (increment)
         {
             data->battleBgType = MAP_BATTLE_SCENE_NORMAL;
-            data->battleTerrain = BATTLE_ENVIRONMENT_GRASS;
+            data->battleEnvironment = BATTLE_ENVIRONMENT_GRASS;
         }
         else
             data->battleBgType -= 1;
@@ -1063,7 +1069,7 @@ static void UpdateBattleBg(u8 taskId, bool8 increment)
 
     PrintBattleBgName(taskId);
 
-    LoadBattleBg(data->battleBgType, data->battleTerrain);
+    LoadBattleBg(data->battleBgType, data->battleEnvironment);
 }
 
 // *******************************

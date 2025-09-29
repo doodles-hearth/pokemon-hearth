@@ -9,11 +9,12 @@
 #include "field_mugshot.h"
 #include "sprite.h"
 #include "script.h"
+// TODO EVA IS this useless?
 #include "text_window.h"
+#include "field_name_box.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 EWRAM_DATA u8 gWalkAwayFromSignpostTimer = 0;
-EWRAM_DATA const u8* gSpeakerName = NULL;
 
 static void ExpandStringAndStartDrawFieldMessage(const u8 *, bool32);
 static void StartDrawFieldMessage(void);
@@ -43,13 +44,14 @@ static void Task_DrawFieldMessage(u8 taskId)
             task->tState++;
             break;
         case 1:
+        {
+            u32 nameboxWinId = GetNameboxWindowId();
             DrawDialogueFrame(0, TRUE);
-            if (gSpeakerName != NULL && !FlagGet(FLAG_SUPPRESS_SPEAKER_NAME))
-            {
-                DrawNamePlate(1, FALSE);
-            }
+            if (nameboxWinId != WINDOW_NONE)
+                DrawNamebox(nameboxWinId, NAME_BOX_BASE_TILE_NUM - NAME_BOX_BASE_TILES_TOTAL, TRUE);
             task->tState++;
             break;
+        }
         case 2:
             if (RunTextPrintersAndIsPrinter0Active() != TRUE)
             {
@@ -133,26 +135,7 @@ extern void FillDialogFramePlate();
 extern int GetDialogFramePlateWidth();
 static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkippingDelayWithButtonPress)
 {
-    if (gSpeakerName != NULL && !FlagGet(FLAG_SUPPRESS_SPEAKER_NAME))
-    {
-        int strLen = GetStringWidth(FONT_SMALL, gSpeakerName, -1);
-        if (strLen > 0)
-        {
-            strLen = GetDialogFramePlateWidth()/2 - strLen/2;
-            gNamePlateBuffer[0] = EXT_CTRL_CODE_BEGIN;
-            gNamePlateBuffer[1] = EXT_CTRL_CODE_CLEAR_TO;
-            gNamePlateBuffer[2] = strLen;
-            StringExpandPlaceholders(&gNamePlateBuffer[3], gSpeakerName);
-        }
-        else
-        {
-            StringExpandPlaceholders(&gNamePlateBuffer[0], gSpeakerName);
-        }
-        FillDialogFramePlate();
-        AddTextPrinterParameterized2(1, FONT_SMALL, gNamePlateBuffer, 0, NULL, 11, 0, 10);
-        PutWindowTilemap(1);
-        CopyWindowToVram(1, COPYWIN_FULL);
-    }
+    TrySpawnNamebox(NAME_BOX_BASE_TILE_NUM);
     StringExpandPlaceholders(gStringVar4, str);
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
     CreateTask_DrawFieldMessage();
@@ -172,10 +155,13 @@ void HideFieldMessageBox(void)
 {
     DestroyTask_DrawFieldMessage();
     ClearDialogWindowAndFrame(0, TRUE);
+    DestroyNamebox();
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
     gSpeakerName = NULL;
+    DebugPrintf("HideFieldMessageBox");
     if (IsFieldMugshotActive())
     {
+        DebugPrintf("removing mugshot");
         gSprites[GetFieldMugshotSpriteId()].data[0] = FALSE;
         RemoveFieldMugshot();
     }
@@ -204,9 +190,4 @@ void StopFieldMessage(void)
 {
     DestroyTask_DrawFieldMessage();
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
-}
-
-void SetSpeakerName(const u8* name)
-{
-    gSpeakerName = name;
 }

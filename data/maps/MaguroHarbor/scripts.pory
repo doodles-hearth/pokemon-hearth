@@ -61,12 +61,12 @@ script MaguroHarbor_EventScript_LovestruckGirl {
 	lock
 	faceplayer
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
-		speakername("Girl")
+		setspeaker(SP_NAME_GIRL)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}What was that? Oh, I hope my boyfriend's okay…"
 		), MSGBOX_DEFAULT)
 	} else {
-		speakername("Lovestruck Girl")
+		setspeaker("Lovestruck Girl")
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}It's only been an hour since I saw my love, and yet I already want tomorrow to come just so I can see him again…"
 		), MSGBOX_DEFAULT)
@@ -93,7 +93,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSettingUp {
 	lock
 	faceplayer
 	
-	speakername("Old woman")
+	setspeaker(SP_NAME_OLD_LADY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh I'm so sorry, dearie. We haven't opened yet. Come back later!"
 	), MSGBOX_DEFAULT)
@@ -106,12 +106,12 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 	lock
 	faceplayer
 	if (flag(FLAG_DAILY_FISHCAKE)) {
-		speakername("Old woman")
+		setspeaker(SP_NAME_OLD_LADY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Come back tomorrow if you'd like another fishcake!"
 		), MSGBOX_DEFAULT)
 	} else {
-		speakername("Old woman")
+		setspeaker(SP_NAME_OLD_LADY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\p"
 			"They're the town's specialty! Only 500¥!"
@@ -132,7 +132,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 					removemoney(500)
 					updatemoneybox
 
-					speakername("Old woman")
+					setspeaker(SP_NAME_OLD_LADY)
 					msgbox(format(
 						"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}One fishcake, coming right up!"
 					))
@@ -141,7 +141,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 
 					giveitem(ITEM_FISHCAKE)
 				} else {
-					speakername("Old woman")
+					setspeaker(SP_NAME_OLD_LADY)
 					msgbox(format(
 						"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh dear! It appears you're a little short on pocket money."
 					))
@@ -152,7 +152,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 				hidemoneybox
 			case 2:
 				hidemoneybox
-				speakername("Old woman")
+				setspeaker(SP_NAME_OLD_LADY)
 				msgbox(format(
 					"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}What's in the Fishcakes, you ask?\p"
 					"Uhh… Cake!"
@@ -168,14 +168,14 @@ script MaguroHarbor_EventScript_FishcakeSalesmanClosingUp {
 	faceplayer
 
 	if (flag(FLAG_DAILY_FISHCAKE)) {
-		speakername("Old woman")
+		setspeaker(SP_NAME_OLD_LADY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm sorry but we've closed shop now, dearie.\l"
 			"Come back tomorrow!"
 		), MSGBOX_DEFAULT)
 		closemessage
 	} else {
-		speakername("Old woman")
+		setspeaker(SP_NAME_OLD_LADY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh my! I'm sorry but we've closed shop now, dearie.\l"
 			"Come back tomorrow!\p"
@@ -218,7 +218,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp {
 	lock
 	faceplayer
 	
-	speakername("Salesman")
+	setspeaker(SP_NAME_SHOPKEEPER)
 
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		msgbox(format(
@@ -239,14 +239,14 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 	lock
 	faceplayer
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
-		speakername("Salesman")
+		setspeaker(SP_NAME_SHOPKEEPER)
 		msgbox(format(
 			"Just saw Master Koishi run toward Beachbound Route!\p"
 			"She's so concerned with the safety of the village!"
 		))
 		closemessage
 	} else {
-		speakername("Salesman")
+		setspeaker(SP_NAME_SHOPKEEPER)
 
 		if (flag(FLAG_TALKED_TO_FISH_SELLER)) {
 			msgbox(format(
@@ -274,12 +274,12 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 				special(ChoosePartyMon)
 				waitstate
 				if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
-					speakername("Salesman")
+					setspeaker(SP_NAME_SHOPKEEPER)
 					msgbox(format("Ah c'mon, don't waste my time!"))
 					closemessage
 				} else {
 					if (getpartysize == 1) {
-						speakername("Salesman")
+						setspeaker(SP_NAME_SHOPKEEPER)
 						msgbox(format("I'd feel bad leaving a Wielder with no Pokémon!"))
 						closemessage
 					} else {
@@ -287,7 +287,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 
 						if (var(VAR_0x8000) > 0) {
 							buffernumberstring(STR_VAR_1, VAR_0x8000)
-							speakername("Salesman")
+							setspeaker(SP_NAME_SHOPKEEPER)
 							msgbox(format("I can offer you {STR_VAR_1}¥.\nThat reasonable?"))
 
 							mcdialogue("Yes!", "Actually, no.")
@@ -298,7 +298,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 									special(DestroySelectedPartyMon)
 
 									if (var(VAR_0x8001) != ITEM_NONE) {
-										speakername("Salesman")
+										setspeaker(SP_NAME_SHOPKEEPER)
 										msgbox(format(
 											"Great! Here you go.\p"
 											"…Oh?\p"
@@ -308,35 +308,35 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 
 										giveitem(VAR_0x8001)
 
-										speakername("Salesman")
+										setspeaker(SP_NAME_SHOPKEEPER)
 										msgbox(format(
 											"Pleasure doin' business.\p"
 											"Come back tomorrow to trade some more!"
 										))
 										closemessage
 									} else {
-										speakername("Salesman")
+										setspeaker(SP_NAME_SHOPKEEPER)
 										msgbox(format(
 											"Great! Here you go.\nPleasure doin' business!"
 										))
 										closemessage
 									}
 								case 1:
-									speakername("Salesman")
+									setspeaker(SP_NAME_SHOPKEEPER)
 									msgbox(format("Nevermind then. Have yer fish back."))
 									closemessage
 							}
 
 							closemessage
 						} else {
-							speakername("Salesman")
+							setspeaker(SP_NAME_SHOPKEEPER)
 							msgbox(format("Nuh-huh, can't buy that.\nI only deal in fish."))
 							closemessage
 						}
 					}
 				}
 			case 1:
-				speakername("Salesman")
+				setspeaker(SP_NAME_SHOPKEEPER)
 				msgbox(format(
 					"If you find any good fish, you know where to find me!"
 				))
@@ -352,7 +352,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp {
 	lock
 	faceplayer
 	
-	speakername("Salesman")
+	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(
 		"Ah! You're a bit too late {STR_VAR_2}. We're\nclosed for th' day.\p"
 		"We'll be open again\l{STR_VAR_1}."
@@ -365,7 +365,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp {
 script MaguroHarbor_EventScript_FishermanInBoat {
 	lock
 	faceplayer
-	speakername("Fisherman")
+	setspeaker(SP_NAME_FISHERMAN)
 	msgbox(format(
 		"I'm letting my fishing partner Cramorant rest for a while."
 	), MSGBOX_DEFAULT)
@@ -378,10 +378,10 @@ script MaguroHarbor_EventScript_Cramorant {
 	faceplayer
 	setseenmon(SPECIES_CRAMORANT)
 	playmoncry(SPECIES_CRAMORANT, CRY_MODE_NORMAL)
-	speakername("Cramorant")
+	setspeakertomonname(SPECIES_CRAMORANT)
 	msgbox(format(
 		"Craaah!"
-	), MSGBOX_DEFAULT)
+	))
 	closemessage
 	release
 }
@@ -390,7 +390,7 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 	lock
 	faceplayer
 	if (flag(FLAG_RECEIVED_OLD_ROD)) {
-		speakername("Fisherman")
+		setspeaker(SP_NAME_FISHERMAN)
 
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 			msgbox(format(
@@ -410,7 +410,7 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 		end
 	}
 
-	speakername("Fisherman")
+	setspeaker(SP_NAME_FISHERMAN)
 	msgbox(format(
 		"Shush, ye fool child! You're scarin' tha wee fishes!\p"
 		"… … … …\p"
@@ -424,7 +424,7 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 	giveitem(ITEM_OLD_ROD)
 	setflag(FLAG_RECEIVED_OLD_ROD)
 
-	speakername("Fisherman")
+	setspeaker(SP_NAME_FISHERMAN)
 	if (checkplayergender == MALE) {
 		msgbox(format(
 			"It be a wee bit used, but I reckon it will serve ye mighty fine!\p"
@@ -447,7 +447,7 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 script MaguroHarbor_EventScript_Man {
 	lock
 	faceplayer
-	speakername("Man")
+	setspeaker(SP_NAME_MAN)
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		
     	applymovement(VAR_LAST_TALKED, moves(emote_sad))
@@ -481,7 +481,7 @@ script MaguroHarbor_EventScript_Mart {
 script MaguroHarbor_EventScript_MartSelling {
 	lock
 	faceplayer
-	speakername("Shopkeeper")
+	setspeaker(SP_NAME_SHOPKEEPER)
 	message(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Hello, welcome to the Maguro Harbor market!"))
 	waitmessage
 	pokemart(MaguroHarbor_Mart)
@@ -493,7 +493,7 @@ script MaguroHarbor_EventScript_MartSelling {
 script MaguroHarbor_EventScript_MartSettingUp {
 	lock
 	faceplayer
-	speakername("Shopkeeper")
+	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Oh, uh, the shop isn't open yet. Come back later!"), MSGBOX_DEFAULT)
 	waitmessage
 	release
@@ -502,7 +502,7 @@ script MaguroHarbor_EventScript_MartSettingUp {
 script MaguroHarbor_EventScript_MartClosingUp {
 	lock
 	faceplayer
-	speakername("Shopkeeper")
+	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}The shop's closed for today. Come back {STR_VAR_1}!"), MSGBOX_DEFAULT)
 	waitmessage
 	release

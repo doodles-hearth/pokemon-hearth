@@ -52,7 +52,7 @@ bool g_compressionEnabled = true;
         "\n"
         "options  -L???  label for assembler (default:output_file)\n"
         "         -V???  master volume (default:127)\n"
-        "         -G???  voice group number (default:0)\n"
+        "         -G???  voice group label (default:_dummy)\n"
         "         -P???  priority (default:0)\n"
         "         -R???  reverb (default:off)\n"
         "            -X  48 clocks/beat (default:24 clocks/beat)\n"

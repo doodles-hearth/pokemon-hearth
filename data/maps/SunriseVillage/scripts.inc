@@ -52,10 +52,10 @@ SunriseVillage_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 SunriseVillage_Event_FatGuy::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SP_NAME_NEIGHBOR
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 4
 	goto_if_ge SunriseVillage_Event_FatGuy_2
-	msgbox SunriseVillage_Event_FatGuy_Text_2
+	msgbox SunriseVillage_Event_FatGuy_Text_1
 	closemessage
 SunriseVillage_Event_FatGuy_1:
 	release
@@ -63,7 +63,7 @@ SunriseVillage_Event_FatGuy_1:
 
 SunriseVillage_Event_FatGuy_2:
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_FatGuy_Movement_0
-	msgbox SunriseVillage_Event_FatGuy_Text_1
+	msgbox SunriseVillage_Event_FatGuy_Text_0
 	closemessage
 	waitmovement VAR_LAST_TALKED
 	applymovement 3, Common_Movement_FaceOriginalDirection
@@ -74,11 +74,11 @@ SunriseVillage_Event_GuardForest::
 	lockall
 	applymovement 6, Common_Movement_WalkInPlaceFasterLeft
 	goto_if_set FLAG_RECEIVED_STARTER, SunriseVillage_Event_GuardForest_2
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SP_NAME_NEIGHBOR
 	msgbox SunriseVillage_Event_GuardForest_Text_4
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SP_NAME_NEIGHBOR
 	msgbox SunriseVillage_Event_GuardForest_Text_5
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_Event_GuardForest_Movement_1
@@ -88,7 +88,7 @@ SunriseVillage_Event_GuardForest_1:
 	end
 
 SunriseVillage_Event_GuardForest_2:
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SP_NAME_NEIGHBOR
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
 	goto_if_ge SunriseVillage_Event_GuardForest_5
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
@@ -119,7 +119,7 @@ SunriseVillage_Event_GuardForest_6:
 SunriseVillage_Event_GuardForest_Interact::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SP_NAME_NEIGHBOR
 	goto_if_set FLAG_RECEIVED_STARTER, SunriseVillage_Event_GuardForest_Interact_2
 	msgbox SunriseVillage_Event_GuardForest_Interact_Text_0
 	closemessage
@@ -153,8 +153,8 @@ SunriseVillage_Event_LittleGirl::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_LittleGirl_Movement_0
-	speakername SunriseVillage_Event_LittleGirl_Text_0
-	msgbox SunriseVillage_Event_LittleGirl_Text_1
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SunriseVillage_Event_LittleGirl_Text_0
 	closemessage
 	release
 	return
@@ -163,17 +163,17 @@ SunriseVillage_Event_LittleGirl::
 SunriseVillage_Event_Boy::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_Boy_Text_0
+	setspeaker SP_NAME_BOY
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 4
 	goto_if_ge SunriseVillage_Event_Boy_2
-	msgbox SunriseVillage_Event_Boy_Text_2
+	msgbox SunriseVillage_Event_Boy_Text_1
 	closemessage
 SunriseVillage_Event_Boy_1:
 	release
 	end
 
 SunriseVillage_Event_Boy_2:
-	msgbox SunriseVillage_Event_Boy_Text_1
+	msgbox SunriseVillage_Event_Boy_Text_0
 	closemessage
 	setnamedmon SPECIES_HAPPINY
 	goto SunriseVillage_Event_Boy_1
@@ -182,7 +182,7 @@ SunriseVillage_Event_Boy_2:
 SunriseVillage_Event_Woman::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SP_NAME_NEIGHBOR
 	msgbox SunriseVillage_Event_Woman_Text_0
 	release
 	end
@@ -192,7 +192,7 @@ SunriseVillage_Event_Farmer::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_Farmer_Movement_0
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SP_NAME_NEIGHBOR
 	msgbox SunriseVillage_Event_Farmer_Text_0
 	release
 	end
@@ -201,7 +201,7 @@ SunriseVillage_Event_Farmer::
 SunriseVillage_Event_OldMan::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SP_NAME_NEIGHBOR
 	msgbox SunriseVillage_Event_OldMan_Text_0
 	release
 	return
@@ -211,7 +211,7 @@ SunriseVillage_Event_OldWoman::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_GuardForest_Movement_0
-	speakername SunriseVillage_Event_FatGuy_Text_0
+	setspeaker SP_NAME_NEIGHBOR
 	msgbox SunriseVillage_Event_OldWoman_Text_0
 	release
 	return
@@ -301,13 +301,10 @@ SunriseVillage_Event_Kirlia_Movement_0:
 	step_end
 
 SunriseVillage_Event_FatGuy_Text_0:
-	.string "Neighbour$"
-
-SunriseVillage_Event_FatGuy_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY EMOTE_NORMAL}My new Pokémon is so cute, I don't\n"
 	.string "feel like leaving it in its Pokéball!$"
 
-SunriseVillage_Event_FatGuy_Text_2:
+SunriseVillage_Event_FatGuy_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY EMOTE_NORMAL}Someone managed to fit entire\n"
 	.string "Pokémon inside these tiny balls.\p"
 	.string "The power of science is staggering!$"
@@ -350,21 +347,15 @@ SunriseVillage_Event_GuardForest_Interact_Text_0:
 	.string "dangerous place lately!$"
 
 SunriseVillage_Event_LittleGirl_Text_0:
-	.string "Little girl$"
-
-SunriseVillage_Event_LittleGirl_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I can't wait I can't wait I can't\n"
 	.string "wait!!!\p"
 	.string "AHHHHH I CAN'T WAIT!!!!$"
 
 SunriseVillage_Event_Boy_Text_0:
-	.string "Kid$"
-
-SunriseVillage_Event_Boy_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}My Happiny is the strongest of all!\n"
 	.string "See how fierce it looks?$"
 
-SunriseVillage_Event_Boy_Text_2:
+SunriseVillage_Event_Boy_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}Hey {PLAYER}!\p"
 	.string "So, d'you think we'll get to choose the\n"
 	.string "one we want?$"

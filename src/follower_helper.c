@@ -39,7 +39,7 @@ static const u8 sCondMsg16[] = _("{STR_VAR_1} doesn't want to get off\nthe boat 
 static const u8* const sBoatTexts[] = {sCondMsg14, sCondMsg15, sCondMsg16, NULL};
 static const u8 sCondMsg17[] = _("{STR_VAR_1} is listening to the\nsound of the machines.");
 static const u8* const sMachineTexts[] = {sCondMsg13, sCondMsg17, NULL};
-static const u8 sCondMsg18[] = _("Waah! your POKéMON suddenly splashed\nwater!");
+static const u8 sCondMsg18[] = _("Waah! Your POKéMON suddenly splashed\nwater!");
 static const u8 sCondMsg19[] = _("Your POKéMON is blowing sand in the\nair!");
 static const u8 sCondMsg20[] = _("{STR_VAR_1} is playing around,\nplucking bits of grass.");
 static const u8 sCondMsg21[] = _("Your POKéMON is happily looking at\nyour footprints!");
@@ -86,6 +86,7 @@ static const u8 sCondMsgDecay1[] = _("The decay is hurting {STR_VAR_1}!");
 static const u8 sCondMsgDecay2[] = _("{STR_VAR_1} doesn't look too good.");
 static const u8 sCondMsgDecay3[] = _("{STR_VAR_1} weakens.");
 static const u8* const sDecayTexts[] = {sCondMsgDecay1, sCondMsgDecay2, sCondMsgDecay3, NULL};
+static const u8 sCondMsg50[] = _("{STR_VAR_1} is disturbed by the\nabnormal weather!");
 
 // See the struct definition in follower_helper.h for more info
 const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT] =
@@ -419,6 +420,18 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         {
             MATCH_MAP(MAP_BEACHBOUND_ROUTE_DECAY),
         },
+    },
+    [COND_MSG_ABNORMAL_WEATHER] =
+    {
+        .text = sCondMsg50,
+        .emotion = FOLLOWER_EMOTION_SURPRISE,
+        .conditions =
+        {
+            MATCH_MUSIC(MUS_ABNORMAL_WEATHER),
+            MATCH_NOT_SPECIES(SPECIES_KYOGRE),
+            MATCH_NOT_SPECIES(SPECIES_GROUDON),
+            MATCH_NOT_SPECIES(SPECIES_RAYQUAZA),
+        }
     },
 };
 

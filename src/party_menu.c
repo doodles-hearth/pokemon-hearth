@@ -430,7 +430,6 @@ static void Task_SacredAshDisplayHPRestored(u8);
 static void GiveItemOrMailToSelectedMon(u8);
 static void DisplayItemMustBeRemovedFirstMessage(u8);
 static void Task_SwitchItemsFromBagYesNo(u8);
-static void RemoveItemToGiveFromBag(u16);
 static void CB2_WriteMailToGiveMonFromBag(void);
 static void GiveItemToSelectedMon(u8);
 static void Task_UpdateHeldItemSpriteAndClosePartyMenu(u8);
@@ -494,6 +493,7 @@ void TryItemHoldFormChange(struct Pokemon *mon, s8 slotId);
 static void ShowMoveSelectWindow(u8 slot);
 static void Task_HandleWhichMoveInput(u8 taskId);
 static void Task_HideFollowerNPCForTeleport(u8);
+static void FieldCallback_RockClimb(void);
 
 // static const data
 #include "data/party_menu.h"
@@ -3368,7 +3368,7 @@ static void CursorCb_Give(u8 taskId)
 
 static void CB2_SelectBagItemToGive(void)
 {
-    if (InBattlePyramid() == FALSE)
+    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
         GoToBagMenu(ITEMMENULOCATION_PARTY, POCKETS_COUNT, CB2_GiveHoldItem);
     else
         GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_PARTY, CB2_GiveHoldItem);
@@ -4242,6 +4242,21 @@ bool32 SetUpFieldMove_Waterfall(void)
     return FALSE;
 }
 
+bool32 SetUpFieldMove_RockClimb(void)
+{
+    s16 x, y;
+
+    GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+    if (MetatileBehavior_IsRockClimbable(MapGridGetMetatileBehaviorAt(x, y)))
+    {
+        gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
+        gPostMenuFieldCallback = FieldCallback_RockClimb;
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 static void FieldCallback_Dive(void)
 {
     gFieldEffectArguments[0] = GetCursorSelectionMonId();
@@ -4568,6 +4583,12 @@ void CB2_ShowPartyMenuForItemUse(void)
     u8 msgId;
     TaskFunc task;
 
+    if (gPartyMenu.data1 == DATA1_PARTY_MENU_FROM_FIELD)
+    {
+        callback = CB2_ReturnToField;
+        gPartyMenu.data1 = 0;
+    }
+
     if (gMain.inBattle)
     {
         menuType = PARTY_MENU_TYPE_IN_BATTLE;
@@ -4608,7 +4629,7 @@ void CB2_ShowPartyMenuForItemUse(void)
 
 static void CB2_ReturnToBagMenu(void)
 {
-    if (InBattlePyramid() == FALSE)
+    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
         GoToBagMenu(ITEMMENULOCATION_LAST, POCKETS_COUNT, NULL);
     else
         GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_PREV, gPyramidBagMenuState.exitCallback);
@@ -6912,7 +6933,7 @@ void CB2_PartyMenuFromStartMenu(void)
 // As opposted to by selecting Give in the party menu, which is handled by CursorCb_Give
 void CB2_ChooseMonToGiveItem(void)
 {
-    MainCallback callback = (InBattlePyramid() == FALSE) ? CB2_ReturnToBagMenu : CB2_ReturnToPyramidBagMenu;
+    MainCallback callback = (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE) ? CB2_ReturnToBagMenu : CB2_ReturnToPyramidBagMenu;
     InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_GIVE_ITEM, FALSE, PARTY_MSG_GIVE_TO_WHICH_MON, Task_HandleChooseMonInput, callback);
     gPartyMenu.bagItem = gSpecialVar_ItemId;
 }
@@ -6939,7 +6960,7 @@ static void GiveItemOrMailToSelectedMon(u8 taskId)
 {
     if (ItemIsMail(gPartyMenu.bagItem))
     {
-        RemoveItemToGiveFromBag(gPartyMenu.bagItem);
+        RemoveBagItem(gPartyMenu.bagItem, 1);
         sPartyMenuInternal->exitCallback = CB2_WriteMailToGiveMonFromBag;
         Task_ClosePartyMenu(taskId);
     }
@@ -6958,7 +6979,7 @@ static void GiveItemToSelectedMon(u8 taskId)
         item = gPartyMenu.bagItem;
         DisplayGaveHeldItemMessage(&gPlayerParty[gPartyMenu.slotId], item, FALSE, 1);
         GiveItemToMon(&gPlayerParty[gPartyMenu.slotId], item);
-        RemoveItemToGiveFromBag(item);
+        RemoveBagItem(item, 1);
         gTasks[taskId].func = Task_UpdateHeldItemSpriteAndClosePartyMenu;
     }
 }
@@ -7037,7 +7058,7 @@ static void Task_HandleSwitchItemsFromBagYesNoInput(u8 taskId)
     {
     case 0: // Yes, switch items
         item = gPartyMenu.bagItem;
-        RemoveItemToGiveFromBag(item);
+        RemoveBagItem(item, 1);
         if (AddBagItem(sPartyMenuItemId, 1) == FALSE)
         {
             ReturnGiveItemToBagOrPC(item);
@@ -7071,14 +7092,6 @@ static void DisplayItemMustBeRemovedFirstMessage(u8 taskId)
     DisplayPartyMenuMessage(gText_RemoveMailBeforeItem, TRUE);
     ScheduleBgCopyTilemapToVram(2);
     gTasks[taskId].func = Task_UpdateHeldItemSpriteAndClosePartyMenu;
-}
-
-static void RemoveItemToGiveFromBag(u16 item)
-{
-    if (gPartyMenu.action == PARTY_ACTION_GIVE_PC_ITEM) // Unused, never occurs
-        RemovePCItem(item, 1);
-    else
-        RemoveBagItem(item, 1);
 }
 
 // Returns FALSE if there was no space to return the item
@@ -8097,3 +8110,10 @@ void CursorCb_MoveItem(u8 taskId)
         gTasks[taskId].func = Task_UpdateHeldItemSprite;
     }
 }
+
+static void FieldCallback_RockClimb(void)
+{
+    gFieldEffectArguments[0] = GetCursorSelectionMonId();
+    FieldEffectStart(FLDEFF_USE_ROCK_CLIMB);
+}
+
