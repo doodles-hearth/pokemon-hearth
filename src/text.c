@@ -1245,6 +1245,23 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             case EXT_CTRL_CODE_ENG:
                 textPrinter->japanese = FALSE;
                 return RENDER_REPEAT;
+
+            case EXT_CTRL_CODE_CREATE_MUGSHOT:
+            {
+                u32 id, emote;
+                id = *textPrinter->printerTemplate.currentChar;
+                textPrinter->printerTemplate.currentChar++;
+                emote = *textPrinter->printerTemplate.currentChar;
+                textPrinter->printerTemplate.currentChar++;
+                _CreateFieldMugshot(id, emote);
+                if (IsFieldMugshotActive())
+                {
+                    gSprites[GetFieldMugshotSpriteId()].data[0] = TRUE;
+                }
+
+                return RENDER_REPEAT;
+            }
+
             case EXT_CTRL_CODE_SPEAKER:
                 {
                     enum SpeakerNames name = *textPrinter->printerTemplate.currentChar++;
