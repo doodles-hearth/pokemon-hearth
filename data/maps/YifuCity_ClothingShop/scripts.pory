@@ -10,7 +10,7 @@ script YifuCity_ClothingShop_EventScript_Cashier {
 	// TODO EVA
 	lock
 	faceplayer
-	setspeaker("Cashier")
+	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Sorry, everything's sold out at the moment!\p"
 		"We'll be restocking soon."
@@ -22,7 +22,7 @@ script YifuCity_ClothingShop_EventScript_Customer {
 	// TODO EVA: only says this if Yutaka is present
 	lock
 	faceplayer
-	setspeaker("Girl")
+	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Ohmigosh ohmigosh ohmigosh!!\n"
 		"Master Yutaka is here!!\p"

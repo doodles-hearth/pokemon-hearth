@@ -553,25 +553,6 @@ static void WindowFunc_DrawDialogueFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u
     FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 0x29, tilemapLeft + width + 1, tilemapTop + height, 1, 1, DLG_WINDOW_PALETTE_NUM);
 }
 
-/* static void WindowFunc_DrawNamePlate(u8 bg, u8 tilesetLeft, u8 tilesetTop, u8 width, u8 height, u8 pal)
-{
-    u32 plateW = DLW_WIN_PLATE_SIZE, plateR = tilesetLeft + plateW, platePal = DLG_WINDOW_PALETTE_NUM;
-    u32 plateH = DLW_WIN_PLATE_HEIGHT;
-
-    // Left edge
-    FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 0x0, tilesetLeft - 2, tilesetTop, 1, 1, platePal);
-    FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 0x01, tilesetLeft - 1, tilesetTop, 1, 1, platePal);
-    FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 0x05, tilesetLeft - 2, tilesetTop + 1, 1, 1, platePal);
-    FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 0x06, tilesetLeft - 1, tilesetTop + 1, 1, 1, platePal);
-    
-    // Right edge
-    FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 0x03, plateR, tilesetTop, 1, 1, platePal);
-    FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 0x07, plateR, tilesetTop + 1, 1, 1, platePal);
-
-    // Middle
-    FillBgTilemapBufferRect(bg, DLG_WINDOW_BASE_TILE_NUM + 0x02, tilesetLeft, tilesetTop, plateW, plateH, platePal);
-} */
-
 int GetDialogFramePlateWidth(void)
 {
     return DLW_WIN_PLATE_SIZE * 8;

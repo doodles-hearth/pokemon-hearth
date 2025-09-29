@@ -11,7 +11,7 @@ script SilverTunnel_2F_EventScript_Tama {
 		format("You shine like a diamond!"),
 		format("My two Pokémon like to fight side by side. Come back with at least two Pokémon.")
 	)
-	setspeaker("Tama")
+	setspeaker(SP_NAME_GEM_MANIAC)
 	msgbox(format(
 		"I came here all the way from Saberside Town looking for precious gemstones.\p"
 		"But there's only sad, grey rocks here…"
@@ -25,7 +25,7 @@ script SilverTunnel_2F_EventScript_Kansaku {
 		format("You scared me! I'll break your head!"),
 		format("What a headache!")
 	)
-	setspeaker("Ikuto")
+	setspeaker(SP_NAME_MINER)
 	setnamedmon(SPECIES_ONIX)
 	msgbox(format("Onix is the best! Sure, she causes cave-ins sometimes, but that's not important!"), MSGBOX_AUTOCLOSE)
 	end
@@ -36,7 +36,7 @@ script SilverTunnel_2F_EventScript_Sandslash {
     faceplayer
 	setseenmon(SPECIES_SANDSLASH)
     playmoncry(SPECIES_SANDSLASH, CRY_MODE_NORMAL)
-    setspeaker("Sandslash")
+    setspeakertomonname(SPECIES_SANDSLASH)
     msgbox(format(
         "Sahaaah!"
     ))
@@ -48,7 +48,7 @@ script SilverTunnel_2F_EventScript_Sandslash {
 script SilverTunnel_2F_EventScript_Miner {
     lock
     faceplayer
-    setspeaker("Miner")
+    setspeaker(SP_NAME_MINER)
     msgbox(format(
         "We're here mining all day, everyday! Ain't that right, Sandy?"
     ))

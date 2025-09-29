@@ -5,8 +5,8 @@ Soulkeep_HouseDoll_MapScripts::
 Soulkeep_HouseDoll_EventScript_Mom::
 	lock
 	faceplayer
-	setspeaker Soulkeep_HouseDoll_EventScript_Mom_Text_0
-	msgbox Soulkeep_HouseDoll_EventScript_Mom_Text_1
+	setspeaker SP_NAME_WOMAN
+	msgbox Soulkeep_HouseDoll_EventScript_Mom_Text_0
 	closemessage
 	release
 	return
@@ -15,24 +15,18 @@ Soulkeep_HouseDoll_EventScript_Mom::
 Soulkeep_HouseDoll_EventScript_Dad::
 	lock
 	faceplayer
-	setspeaker Soulkeep_HouseDoll_EventScript_Dad_Text_0
-	msgbox Soulkeep_HouseDoll_EventScript_Dad_Text_1
+	setspeaker SP_NAME_MAN
+	msgbox Soulkeep_HouseDoll_EventScript_Dad_Text_0
 	closemessage
 	release
 	return
 
 
 Soulkeep_HouseDoll_EventScript_Mom_Text_0:
-	.string "Woman$"
-
-Soulkeep_HouseDoll_EventScript_Mom_Text_1:
 	.string "Our little girl has such a wild\n"
 	.string "imagination!$"
 
 Soulkeep_HouseDoll_EventScript_Dad_Text_0:
-	.string "Man$"
-
-Soulkeep_HouseDoll_EventScript_Dad_Text_1:
 	.string "Our daughter's been having very vivid\n"
 	.string "nightmares lately.\p"
 	.string "It must be this town's awful\n"

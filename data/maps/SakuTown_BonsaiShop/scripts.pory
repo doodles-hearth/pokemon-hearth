@@ -59,11 +59,11 @@ script SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry {
 	faceplayer
 	dotimebasedevents
 	if (flag(FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY)) {
-		setspeaker("Little girl")
+		setspeaker(SP_NAME_LITTLE_GIRL)
 		msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Go plant the berry I gave you!"))
 		closemessage
 	} else {
-		setspeaker("Little girl")
+		setspeaker(SP_NAME_LITTLE_GIRL)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Have you met my twin sister?\nVery “Type A”, right?\p"
 			"You should try beating her at her own game!\p"
@@ -75,7 +75,7 @@ script SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry {
 		giveitem(VAR_RESULT)
 		setflag(FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY)
 
-		setspeaker("Little girl")
+		setspeaker(SP_NAME_LITTLE_GIRL)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Go for them berries!\nEyes on the prize!"
 		))
@@ -92,20 +92,20 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 
 	if (flag(FLAG_RECEIVED_TM_ACROBATICS)) {
 		buffernumberstring(STR_VAR_2, VAR_RESULT)
-		setspeaker("Little Girl")
+		setspeaker(SP_NAME_LITTLE_GIRL)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}What's up, berry master?\p"
 			"Didja know you've planted {STR_VAR_2} berries so far?"
 		))
 	} else {
 		special(GetPlayerMrMrsString)
-		setspeaker("Little Girl")
+		setspeaker(SP_NAME_LITTLE_GIRL)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hi there {STR_VAR_1} Grownup!\pHave you planted many berries on your travels?"
 		))
 
 		if (var(VAR_RESULT) < 10) {
-			setspeaker("Little Girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 				"Your face still has “berry amateur” written all over it.\p"
@@ -113,7 +113,7 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 			))
 			closemessage
 		} elif (var(VAR_RESULT) < 20) {
-			setspeaker("Little Girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 				"I'd say it's less terrible than before.\p"
@@ -121,7 +121,7 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 			))
 			closemessage
 		} elif (var(VAR_RESULT) < 30) {
-			setspeaker("Little Girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 				"Hey, I'm actually impressed at the berry skills I'm sensing!\p"
@@ -131,7 +131,7 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 			))
 			closemessage
 		} elif (var(VAR_RESULT) < 40) {
-			setspeaker("Little Girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 				"I'd say you're almost there…\p"
@@ -140,7 +140,7 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 			))
 			closemessage
 		} elif (var(VAR_RESULT) >= 40) {
-			setspeaker("Little Girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 				"Oh?\p"
@@ -152,7 +152,7 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 
 			giveitem(ITEM_TM_ACROBATICS)
 			goto_if_eq(VAR_RESULT, 0, Common_EventScript_BagIsFull)
-			setspeaker("Little Girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(
 				format(
 					"{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}This scroll contains Acrobatics.\p"
@@ -177,7 +177,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 	if (var(VAR_BONSAI_SHOP_STATE) == 1) {
 		// Assistant is alone
 		if (flag(FLAG_HIDE_BONSAI_SHOP_OWNER)) {
-			setspeaker("Woman")
+			setspeaker(SP_NAME_WOMAN)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hi, {PLAYER}!\p"
 				"The shop owner is currently away. She's very busy.\p"
@@ -187,7 +187,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 			closemessage
 			// Owner is there too
 		} else {
-			setspeaker("Woman")
+			setspeaker(SP_NAME_WOMAN)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hi, {PLAYER}! Don't mind my sisters. They're quite the handful!"
 			))
@@ -198,7 +198,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 	else {
 		// Already met on Tranquil route
 		if (flag(FLAG_RECEIVED_WAILMER_PAIL)) {
-			setspeaker("Woman")
+			setspeaker(SP_NAME_WOMAN)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hello, welcome to our bonsai shop…"
 			))
@@ -207,7 +207,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 			waitmovement(0)
 			applymovement(1, Common_Movement_Delay48)
 			waitmovement(0)
-			setspeaker("Woman")
+			setspeaker(SP_NAME_WOMAN)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, but I know you! We met on Tranquil route, remember?\p"
 				"Have you used the watering can I gave you yet?\p"
@@ -218,7 +218,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 		}
 		// Very first encounter (missed her on Tranquil route)
 		else {
-			setspeaker("Woman")
+			setspeaker(SP_NAME_WOMAN)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hello, welcome to our bonsai shop! I'm the owner's assistant.\p"
 				"We sell bonsai and other potted flowers! Are you interested in plants?\p"
@@ -232,7 +232,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 			giveitem(ITEM_ORAN_BERRY, 3)
 			goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
 
-			setspeaker("Woman")
+			setspeaker(SP_NAME_WOMAN)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I was almost forgetting!\p"
 				"You must remember to water them regularly, or they won't grow!\p"
@@ -242,7 +242,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 			giveitem(ITEM_WAILMER_PAIL)
 			goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
 
-			setspeaker("Woman")
+			setspeaker(SP_NAME_WOMAN)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Isn't it cute? It's friend-shaped!\p"
 				"Don't worry about it, I have a spare one.\p"
@@ -258,7 +258,7 @@ script SakuTown_BonsaiShop_EventScript_Assistant {
 
 script(local) SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue {
 	if (flag(FLAG_RECEIVED_SECRET_POWER)) {
-			setspeaker("Hana")
+			setspeaker(SP_NAME_HANA)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you in a little greenery?"
 			))
@@ -266,11 +266,11 @@ script(local) SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue {
 			
 			pokemartdecoration(BonsaiShop)
 
-			setspeaker("Hana")
+			setspeaker(SP_NAME_HANA)
 			msgbox("{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Thank you for your business!", MSGBOX_DEFAULT)
 			closemessage
 		} else {
-			setspeaker("Hana")
+			setspeaker(SP_NAME_HANA)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you in a little greenery?\p"
 				"Hmm… It looks like you wouldn't have anywhere to put bonsai. Come back when you do."
@@ -281,7 +281,7 @@ script(local) SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue {
 
 script(local) SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader {
 	setflag(FLAG_MET_HANA_BONSAI_SHOP)
-	setspeaker("Hana")
+	setspeaker(SP_NAME_HANA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I interest you in a little greenery?"
 	))
@@ -292,7 +292,7 @@ script(local) SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader {
 	)
 	closemessage
 
-	setspeaker("Hana")
+	setspeaker(SP_NAME_HANA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Ho ho, I have been discovered…\p"
 		"You must be wondering what the Kura Village Dojo Master is doing in a Bonsai shop in Saku Village.\p"
@@ -313,7 +313,7 @@ script SakuTown_BonsaiShop_EventScript_Owner {
 		setflag(FLAG_MET_HANA_BONSAI_SHOP)
 
 		special(GetPlayerBoyGirlString)
-		setspeaker("Shop Owner")
+		setspeaker(SP_NAME_SHOP_OWNER)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I interest you in a little greenery?\p"
 			"Hmm… It looks like you wouldn't have anywhere to put bonsai. Come back when you do."
@@ -343,7 +343,7 @@ mart BonsaiShop {
 script SakuTown_EventScript_Man {
 	lock
 	faceplayer
-	setspeaker("Customer")
+	setspeaker(SP_NAME_CUSTOMER)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}I'm choosing flowers for my wife.\p"
 		"I, uh… I didn't realize there'd be so many different types.\p"

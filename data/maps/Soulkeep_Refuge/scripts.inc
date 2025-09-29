@@ -30,8 +30,8 @@ Soulkeep_Refuge_EventScript_Nurse::
 Soulkeep_Refuge_EventScript_Man::
 	lock
 	faceplayer
-	setspeaker Soulkeep_Refuge_EventScript_Man_Text_0
-	msgbox Soulkeep_Refuge_EventScript_Man_Text_1
+	setspeaker SP_NAME_FARMER
+	msgbox Soulkeep_Refuge_EventScript_Man_Text_0
 	closemessage
 	release
 	return
@@ -40,7 +40,7 @@ Soulkeep_Refuge_EventScript_Man::
 Soulkeep_Refuge_EventScript_NewDojo::
 	lock
 	faceplayer
-	setspeaker Soulkeep_Refuge_EventScript_Man_Text_0
+	setspeaker SP_NAME_FARMER
 	msgbox Soulkeep_Refuge_EventScript_NewDojo_Text_0
 	closemessage
 	release
@@ -48,9 +48,6 @@ Soulkeep_Refuge_EventScript_NewDojo::
 
 
 Soulkeep_Refuge_EventScript_Man_Text_0:
-	.string "Farmer$"
-
-Soulkeep_Refuge_EventScript_Man_Text_1:
 	.string "We sure don't see a lot of trav'lers\n"
 	.string "'round these parts…\p"
 	.string "You here for the Dojo challenge?\n"

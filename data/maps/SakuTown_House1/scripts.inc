@@ -13,8 +13,8 @@ SakuTown_House1_EventScript_Tama::
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 9
 	goto_if_lt SakuTown_House1_EventScript_Tama_4
 	faceplayer
-	setspeaker SakuTown_House1_EventScript_Tama_Text_4
-	msgbox SakuTown_House1_EventScript_Tama_Text_19
+	setspeaker SP_NAME_TAMA
+	msgbox SakuTown_House1_EventScript_Tama_Text_17
 	waitmessage
 	closemessage
 SakuTown_House1_EventScript_Tama_1:
@@ -26,21 +26,21 @@ SakuTown_House1_EventScript_Tama_2:
 	goto SakuTown_House1_EventScript_Tama_1
 
 SakuTown_House1_EventScript_Tama_3:
-	setspeaker SakuTown_House1_EventScript_Tama_Text_0
-	msgbox SakuTown_House1_EventScript_Tama_Text_1
-	mcdialogue SakuTown_House1_EventScript_Tama_Text_2, SakuTown_House1_EventScript_Tama_Text_3
+	setspeaker SP_NAME_MAN
+	msgbox SakuTown_House1_EventScript_Tama_Text_0
+	mcdialogue SakuTown_House1_EventScript_Tama_Text_1, SakuTown_House1_EventScript_Tama_Text_2
 	closemessage
 	switch VAR_RESULT
 	case 0, SakuTown_House1_EventScript_Tama_13
 	case 1, SakuTown_House1_EventScript_Tama_14
 SakuTown_House1_EventScript_Tama_11:
-	mcdialogue SakuTown_House1_EventScript_Tama_Text_7, SakuTown_House1_EventScript_Tama_Text_8
+	mcdialogue SakuTown_House1_EventScript_Tama_Text_5, SakuTown_House1_EventScript_Tama_Text_6
 	closemessage
 	delay 32
-	setspeaker SakuTown_House1_EventScript_Tama_Text_4
-	msgbox SakuTown_House1_EventScript_Tama_Text_9
+	setspeaker SP_NAME_TAMA
+	msgbox SakuTown_House1_EventScript_Tama_Text_7
 	delay 32
-	mcdialogue SakuTown_House1_EventScript_Tama_Text_10
+	mcdialogue SakuTown_House1_EventScript_Tama_Text_8
 	closemessage
 	delay 24
 	playse SE_PIN
@@ -50,69 +50,69 @@ SakuTown_House1_EventScript_Tama_11:
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	setspeaker SakuTown_House1_EventScript_Tama_Text_4
-	msgbox SakuTown_House1_EventScript_Tama_Text_11
+	setspeaker SP_NAME_TAMA
+	msgbox SakuTown_House1_EventScript_Tama_Text_9
 	closemessage
 	playfanfare MUS_OBTAIN_ITEM
-	msgbox SakuTown_House1_EventScript_Tama_Text_12
+	msgbox SakuTown_House1_EventScript_Tama_Text_10
 	waitfanfare
 	removeitem ITEM_ASHIIS_SCARF
 	closemessage
 	playse SE_LEDGE
 	applymovement 1, SakuTown_House1_EventScript_Tama_Movement_0
 	waitmovement 1
-	setspeaker SakuTown_House1_EventScript_Tama_Text_4
-	msgbox SakuTown_House1_EventScript_Tama_Text_13
+	setspeaker SP_NAME_TAMA
+	msgbox SakuTown_House1_EventScript_Tama_Text_11
 	closemessage
 	playse SE_PIN
 	applymovement 1, SakuTown_House1_EventScript_Tama_Movement_1
 	waitmovement 1
 	waitse
-	setspeaker SakuTown_House1_EventScript_Tama_Text_4
-	msgbox SakuTown_House1_EventScript_Tama_Text_14
+	setspeaker SP_NAME_TAMA
+	msgbox SakuTown_House1_EventScript_Tama_Text_12
 	closemessage
 	applymovement 1, SakuTown_House1_EventScript_Tama_Movement_2
 	waitmovement 1
-	setspeaker SakuTown_House1_EventScript_Tama_Text_4
-	msgbox SakuTown_House1_EventScript_Tama_Text_15
+	setspeaker SP_NAME_TAMA
+	msgbox SakuTown_House1_EventScript_Tama_Text_13
 	closemessage
 	delay 24
 	faceplayer
-	setspeaker SakuTown_House1_EventScript_Tama_Text_4
-	msgbox SakuTown_House1_EventScript_Tama_Text_16
+	setspeaker SP_NAME_TAMA
+	msgbox SakuTown_House1_EventScript_Tama_Text_14
 	closemessage
 	applymovement 1, Common_Movement_FaceAwayPlayer
 	waitmovement 1
 	delay 60
 	faceplayer
-	setspeaker SakuTown_House1_EventScript_Tama_Text_4
-	msgbox SakuTown_House1_EventScript_Tama_Text_17
+	setspeaker SP_NAME_TAMA
+	msgbox SakuTown_House1_EventScript_Tama_Text_15
 	closemessage
 	addvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
 	goto SakuTown_House1_EventScript_Tama_1
 
 SakuTown_House1_EventScript_Tama_4:
 	faceplayer
-	setspeaker SakuTown_House1_EventScript_Tama_Text_4
-	msgbox SakuTown_House1_EventScript_Tama_Text_18
+	setspeaker SP_NAME_TAMA
+	msgbox SakuTown_House1_EventScript_Tama_Text_16
 	waitmessage
 	closemessage
 	goto SakuTown_House1_EventScript_Tama_1
 
 SakuTown_House1_EventScript_Tama_13:
-	setspeaker SakuTown_House1_EventScript_Tama_Text_4
-	msgbox SakuTown_House1_EventScript_Tama_Text_5
+	setspeaker SP_NAME_TAMA
+	msgbox SakuTown_House1_EventScript_Tama_Text_3
 	goto SakuTown_House1_EventScript_Tama_11
 
 SakuTown_House1_EventScript_Tama_14:
-	setspeaker SakuTown_House1_EventScript_Tama_Text_4
-	msgbox SakuTown_House1_EventScript_Tama_Text_6
+	setspeaker SP_NAME_TAMA
+	msgbox SakuTown_House1_EventScript_Tama_Text_4
 	goto SakuTown_House1_EventScript_Tama_11
 
 
 TamaScript1:
-	setspeaker SakuTown_House1_EventScript_Tama_Text_0
-	msgbox SakuTown_House1_EventScript_Tama_Text_1
+	setspeaker SP_NAME_MAN
+	msgbox SakuTown_House1_EventScript_Tama_Text_0
 	closemessage
 	return
 
@@ -135,57 +135,51 @@ SakuTown_House1_EventScript_Tama_Movement_2:
 	step_end
 
 SakuTown_House1_EventScript_Tama_Text_0:
-	.string "Man$"
-
-SakuTown_House1_EventScript_Tama_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Please go away.\n"
 	.string "Leave me alone.$"
 
-SakuTown_House1_EventScript_Tama_Text_2:
+SakuTown_House1_EventScript_Tama_Text_1:
 	.string "Excuse me!$"
 
-SakuTown_House1_EventScript_Tama_Text_3:
+SakuTown_House1_EventScript_Tama_Text_2:
 	.string "Are you Tama?$"
 
-SakuTown_House1_EventScript_Tama_Text_4:
-	.string "Tama$"
-
-SakuTown_House1_EventScript_Tama_Text_5:
+SakuTown_House1_EventScript_Tama_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}… … … … … …\n"
 	.string "… … … … …What?$"
 
-SakuTown_House1_EventScript_Tama_Text_6:
+SakuTown_House1_EventScript_Tama_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}… … … … … …\n"
 	.string "… … … … …Yeah, so?$"
 
-SakuTown_House1_EventScript_Tama_Text_7:
+SakuTown_House1_EventScript_Tama_Text_5:
 	.string "I have something!$"
 
-SakuTown_House1_EventScript_Tama_Text_8:
+SakuTown_House1_EventScript_Tama_Text_6:
 	.string "This is for you!$"
 
-SakuTown_House1_EventScript_Tama_Text_9:
+SakuTown_House1_EventScript_Tama_Text_7:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}… … … … … …\n"
 	.string "… … … … … …$"
 
-SakuTown_House1_EventScript_Tama_Text_10:
+SakuTown_House1_EventScript_Tama_Text_8:
 	.string "It's from Ashii.$"
 
-SakuTown_House1_EventScript_Tama_Text_11:
+SakuTown_House1_EventScript_Tama_Text_9:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}WHAT?! Let me see!$"
 
-SakuTown_House1_EventScript_Tama_Text_12:
+SakuTown_House1_EventScript_Tama_Text_10:
 	.string "{PLAYER} gave Tama the scarf.$"
 
-SakuTown_House1_EventScript_Tama_Text_13:
+SakuTown_House1_EventScript_Tama_Text_11:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}I… I can't believe it!\n"
 	.string "She really does love me!$"
 
-SakuTown_House1_EventScript_Tama_Text_14:
+SakuTown_House1_EventScript_Tama_Text_12:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Eh? There's a letter inside!\n"
 	.string "Whatever for?$"
 
-SakuTown_House1_EventScript_Tama_Text_15:
+SakuTown_House1_EventScript_Tama_Text_13:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Ahem…\n"
 	.string "“My dear Tama,\l"
 	.string "It pains me that you aren't by my side\l"
@@ -202,7 +196,7 @@ SakuTown_House1_EventScript_Tama_Text_15:
 	.string "… … … … … …\n"
 	.string "… … … … … …$"
 
-SakuTown_House1_EventScript_Tama_Text_16:
+SakuTown_House1_EventScript_Tama_Text_14:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}…Ahem. Sorry, this is a little\n"
 	.string "embarrassing…\p"
 	.string "What does she mean with that “vale”,\n"
@@ -215,15 +209,15 @@ SakuTown_House1_EventScript_Tama_Text_16:
 	.string "Of course! Why else ask you to deliver\n"
 	.string "this now?$"
 
-SakuTown_House1_EventScript_Tama_Text_17:
+SakuTown_House1_EventScript_Tama_Text_15:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Wielder! I owe you my thanks.\n"
 	.string "Please, tell her I'll meet her tonight!$"
 
-SakuTown_House1_EventScript_Tama_Text_18:
+SakuTown_House1_EventScript_Tama_Text_16:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}Please, tell Ashii I'll meet her\n"
 	.string "tonight!$"
 
-SakuTown_House1_EventScript_Tama_Text_19:
+SakuTown_House1_EventScript_Tama_Text_17:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}One day our villages will stand\n"
 	.string "together, and we will love each other\l"
 	.string "in broad daylight!$"

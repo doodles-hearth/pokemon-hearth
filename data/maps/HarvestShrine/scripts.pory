@@ -7,7 +7,7 @@ mapscripts HarvestShrine_MapScripts {
 script HarvestShrine_EventScript_MonkBronzong {
 	lock
 	faceplayer
-	setspeaker("Monk")
+	setspeaker(SP_NAME_MONK)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}The Bronzong you have before your eyes is a thousand years old.\p"
 		"It has been bringing us rain and plentiful harvests for generations.\p"
@@ -30,7 +30,7 @@ script HarvestShrine_EventScript_Kouga {
 		format("By a thousand gods!"),
 		HarvestShrine_EventScript_SetMonFlags
 	)
-	setspeaker("Kouga")
+	setspeaker(SP_NAME_MONK)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Fine, you may approach the ancient Bronzong. Please be respectful."
 	))
@@ -45,7 +45,7 @@ script HarvestShrine_EventScript_SetMonFlags {
 script HarvestShrine_EventScript_MonkRain {
 	lock
 	faceplayer
-	setspeaker("Monk")
+	setspeaker(SP_NAME_MONK)
 	if (checkitem(ITEM_TM_RAIN_DANCE)) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}I do enjoy the sounds of the rain…"

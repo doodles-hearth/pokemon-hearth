@@ -33,7 +33,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	applymovement(LOCALID_OLD_MAN, Common_Movement_WalkInPlaceFasterRight)
 	waitmovement(0)
 
-	setspeaker("Old Man")
+	setspeaker(SP_NAME_OLD_MAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_MAN EMOTE_NORMAL}Yet another area is decaying on Beachbound Route…"
 	))
@@ -42,7 +42,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	applymovement(LOCALID_OLD_WOMAN, Common_Movement_WalkInPlaceFasterUp)
 	waitmovement(0)
 
-	setspeaker("Old woman")
+	setspeaker(SP_NAME_OLD_LADY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_WOMAN EMOTE_NORMAL}We have yet to receive tidings from the Elder in Sunrise Village…"
 	))
@@ -51,7 +51,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	applymovement(LOCALID_ELDER, Common_Movement_WalkInPlaceFasterDown)
 	waitmovement(0)
 
-	setspeaker("Elder Iwa")
+	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Let us not surrender to panic."
 	))
@@ -62,7 +62,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	waitse
 	waitmovement(0)
 
-	setspeaker("Elder Iwa")
+	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Excuse me… Can I help you?"
 	))
@@ -93,7 +93,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right, walk_up * 2))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
-	setspeaker("Elder Iwa")
+	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Yes? I am Iwa, the Elder of Silveridge. What brings you to me?"
 	))
@@ -114,7 +114,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	removeitem(ITEM_LETTER)
 
-	setspeaker("Elder Iwa")
+	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Ah! The letter I was expecting from Kaba…!"
 	))
@@ -145,7 +145,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	waitse
 
 	applymovement(LOCALID_MESSENGER, moves(emote_sad))
-	setspeaker("Girl")
+	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_2 EMOTE_NORMAL}Elder Iwa! Elder Iwa!\p"
 		"A Chatot just got in! Some Decay was discovered in Uume Forest!"
@@ -164,7 +164,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	waitmovement(LOCALID_ELDER)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
 
-	setspeaker("Elder Iwa")
+	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}We cannot lose a second! We need to investigate Uume Forest right now!"
 	))
@@ -189,7 +189,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	applymovement(LOCALID_ELDER, moves(walk_in_place_fast_down))
 	waitmovement(LOCALID_ELDER)
 
-	setspeaker("Elder Iwa")
+	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}I have been keeping this mysterious ancient relic for years.\p"
 		"We aren't sure where nor when it originated, but it lets one Pokémon mirror the experience of another.\p"
@@ -207,7 +207,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 script Silveridge_EldersHouse_EventScript_Elder {
 	lock
 	faceplayer
-	setspeaker("Elder Iwa")
+	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Go forth, young one."
 	))

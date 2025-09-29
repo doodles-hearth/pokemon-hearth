@@ -5,8 +5,8 @@ SoulkeepGraveyard_MapScripts::
 SoulkeepGraveyard_EventScript_Guard::
 	lock
 	faceplayer
-	setspeaker SoulkeepGraveyard_EventScript_Guard_Text_0
-	msgbox SoulkeepGraveyard_EventScript_Guard_Text_1
+	setspeaker SP_NAME_MAN
+	msgbox SoulkeepGraveyard_EventScript_Guard_Text_0
 	closemessage
 	release
 	end
@@ -25,9 +25,6 @@ SoulkeepGraveyard_EventScript_Banette::
 
 
 SoulkeepGraveyard_EventScript_Guard_Text_0:
-	.string "Man$"
-
-SoulkeepGraveyard_EventScript_Guard_Text_1:
 	.string "Oooh boy, you scared me!\p"
 	.string "I'm s-standing guard f-for today…$"
 

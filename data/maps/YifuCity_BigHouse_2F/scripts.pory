@@ -5,7 +5,7 @@ mapscripts YifuCity_BigHouse_2F_MapScripts {
 script YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon {
 	lock
 	faceplayer
-	setspeaker("Old Man")
+	setspeaker(SP_NAME_OLD_MAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I was told I needed to raise a Pokémon of my own. No sir!\p"
 		"Back in my day, we didn't need no Pokémon!\l"
@@ -19,7 +19,7 @@ script YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon {
 script YifuCity_BigHouse_2F_EventScript_TradingActOfLove {
 	lock
 	faceplayer
-	setspeaker("Woman")
+	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Trading Pokémon has long been seen as an act of true love and trust between Wielders.\p"
 		"Now that I've become a Wielder, I can't wait to find my soulmate so she can trade me all her rare Pokémon!"
@@ -32,7 +32,7 @@ script YifuCity_BigHouse_2F_EventScript_RunningBoy {
 	lock
 	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_angry))
-	setspeaker("Boy")
+	setspeaker(SP_NAME_BOY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_BOY_1 EMOTE_NORMAL}My grandpa won't let me have a Pokémon!\p"
 		"I'm bored! I want Pokémon too!"

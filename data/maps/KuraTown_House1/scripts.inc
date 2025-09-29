@@ -16,7 +16,7 @@ KuraTown_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 KuraTown_House1_OldWoman::
 	lock
 	faceplayer
-	setspeaker KuraTown_House1_OldWoman_Text_0
+	setspeaker SP_NAME_OLD_LADY
 	switch VAR_SAKU_KURA_QUEST_SCYTHER_STATE
 	case 2, KuraTown_House1_OldWoman_3
 	case 3, KuraTown_House1_OldWoman_4
@@ -37,7 +37,7 @@ KuraTown_House1_OldWoman_4:
 	goto KuraTown_House1_OldWoman_1
 
 KuraTown_House1_OldWoman_5:
-	msgbox KuraTown_House1_OldWoman_Text_1
+	msgbox KuraTown_House1_OldWoman_Text_0
 	waitmessage
 	closemessage
 	goto KuraTown_House1_OldWoman_1
@@ -45,7 +45,7 @@ KuraTown_House1_OldWoman_5:
 KuraTown_House1_OldWoman_6:
 	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 6
 	applymovement VAR_LAST_TALKED, KuraTown_House1_OldWoman_Movement_0
-	msgbox KuraTown_House1_OldWoman_Text_2
+	msgbox KuraTown_House1_OldWoman_Text_1
 	waitmessage
 	closemessage
 	giveitem ITEM_SPECIAL_MEDICINE, 1
@@ -53,7 +53,7 @@ KuraTown_House1_OldWoman_6:
 	goto KuraTown_House1_OldWoman_1
 
 KuraTown_House1_OldWoman_7:
-	msgbox KuraTown_House1_OldWoman_Text_3
+	msgbox KuraTown_House1_OldWoman_Text_2
 	waitmessage
 	closemessage
 	goto KuraTown_House1_OldWoman_1
@@ -63,7 +63,7 @@ OldWomanRegularScript:
 	msgbox OldWomanRegularScript_Text_0
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
-	setspeaker KuraTown_House1_OldWoman_Text_0
+	setspeaker SP_NAME_OLD_LADY
 	msgbox OldWomanRegularScript_Text_1
 	closemessage
 	return
@@ -79,12 +79,12 @@ OldWomanQuestScript:
 	closemessage
 	applymovement 1, OldWomanQuestScript_Movement_0
 	waitmovement 0
-	setspeaker KuraTown_House1_OldWoman_Text_0
+	setspeaker SP_NAME_OLD_LADY
 	msgbox OldWomanQuestScript_Text_5
 	waitmessage
 	closemessage
 	mcdialogue OldWomanQuestScript_Text_6, OldWomanQuestScript_Text_7, OldWomanQuestScript_Text_8
-	setspeaker KuraTown_House1_OldWoman_Text_0
+	setspeaker SP_NAME_OLD_LADY
 	applymovement VAR_LAST_TALKED, OldWomanQuestScript_Movement_1
 	msgbox OldWomanQuestScript_Text_9
 	waitmessage
@@ -134,8 +134,8 @@ KuraTown_House1_OldWomansSon::
 	lock
 	applymovement VAR_LAST_TALKED, KuraTown_House1_OldWomansSon_Movement_0
 	faceplayer
-	setspeaker KuraTown_House1_OldWomansSon_Text_0
-	msgbox KuraTown_House1_OldWomansSon_Text_1
+	setspeaker SP_NAME_GUY
+	msgbox KuraTown_House1_OldWomansSon_Text_0
 	closemessage
 	release
 	return
@@ -184,17 +184,14 @@ KuraTown_House1_OldWomansSon_Movement_0:
 	step_end
 
 KuraTown_House1_OldWoman_Text_0:
-	.string "Old woman$"
-
-KuraTown_House1_OldWoman_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Come back later for the medicine.$"
 
-KuraTown_House1_OldWoman_Text_2:
+KuraTown_House1_OldWoman_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}There you are! The medicine is ready.\p"
 	.string "Take it to the ailing Pokémon. It\n"
 	.string "should feel good as new.$"
 
-KuraTown_House1_OldWoman_Text_3:
+KuraTown_House1_OldWoman_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL} Once the ill Pokémon drinks that\n"
 	.string "medicine, it should feel right as rain.$"
 
@@ -260,9 +257,6 @@ OldWomanQuest2Script_Text_2:
 	.string "and a Revival Powder.$"
 
 KuraTown_House1_OldWomansSon_Text_0:
-	.string "Guy$"
-
-KuraTown_House1_OldWomansSon_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}The Pokémon Council didn't see fit to\n"
 	.string "build a Refuge in our town. But those\l"
 	.string "jerks over at Saku Village won't let\l"

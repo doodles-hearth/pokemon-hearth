@@ -18,8 +18,8 @@ Silveridge_House1_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 Silveridge_House1_EventScript_Woman::
 	lock
 	faceplayer
-	setspeaker Silveridge_House1_EventScript_Woman_Text_0
-	msgbox Silveridge_House1_EventScript_Woman_Text_1
+	setspeaker SP_NAME_WOMAN
+	msgbox Silveridge_House1_EventScript_Woman_Text_0
 	closemessage
 	release
 	return
@@ -28,8 +28,8 @@ Silveridge_House1_EventScript_Woman::
 Silveridge_House1_EventScript_FirebringerFangirl::
 	lock
 	faceplayer
-	setspeaker Silveridge_House1_EventScript_FirebringerFangirl_Text_0
-	msgbox Silveridge_House1_EventScript_FirebringerFangirl_Text_1
+	setspeaker SP_NAME_GIRL
+	msgbox Silveridge_House1_EventScript_FirebringerFangirl_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -44,8 +44,8 @@ Silveridge_House1_EventScript_Sandslash::
 	faceplayer
 	setseenmon SPECIES_SANDSLASH
 	playmoncry SPECIES_SANDSLASH, CRY_MODE_NORMAL
-	setspeaker Silveridge_House1_EventScript_Sandslash_Text_0
-	msgbox Silveridge_House1_EventScript_Sandslash_Text_1
+	setspeakertomonname SPECIES_SANDSLASH
+	msgbox Silveridge_House1_EventScript_Sandslash_Text_0
 	waitmoncry
 	closemessage
 	release
@@ -55,14 +55,14 @@ Silveridge_House1_EventScript_Sandslash::
 Silveridge_House1_EventScript_Man::
 	lock
 	faceplayer
-	setspeaker Silveridge_House1_EventScript_Man_Text_0
+	setspeaker SP_NAME_MINER
 	goto_if_set FLAG_OBTAINED_EVERSTONE, Silveridge_House1_EventScript_Man_2
-	msgbox Silveridge_House1_EventScript_Man_Text_2
+	msgbox Silveridge_House1_EventScript_Man_Text_1
 	closemessage
 	giveitem ITEM_EVERSTONE
 	setflag FLAG_OBTAINED_EVERSTONE
-	setspeaker Silveridge_House1_EventScript_Man_Text_0
-	msgbox Silveridge_House1_EventScript_Man_Text_3
+	setspeaker SP_NAME_MINER
+	msgbox Silveridge_House1_EventScript_Man_Text_2
 	closemessage
 	setnamedmon SPECIES_SANDSLASH
 Silveridge_House1_EventScript_Man_1:
@@ -70,22 +70,16 @@ Silveridge_House1_EventScript_Man_1:
 	return
 
 Silveridge_House1_EventScript_Man_2:
-	msgbox Silveridge_House1_EventScript_Man_Text_1
+	msgbox Silveridge_House1_EventScript_Man_Text_0
 	closemessage
 	goto Silveridge_House1_EventScript_Man_1
 
 
 Silveridge_House1_EventScript_Woman_Text_0:
-	.string "Woman$"
-
-Silveridge_House1_EventScript_Woman_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}Oh, you came all the way from Kura\n"
 	.string "Village? You have good legs!$"
 
 Silveridge_House1_EventScript_FirebringerFangirl_Text_0:
-	.string "Girl$"
-
-Silveridge_House1_EventScript_FirebringerFangirl_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}This place gets pretty cold,\n"
 	.string "especially when the winds blow strong\l"
 	.string "into the valley.\p"
@@ -101,19 +95,13 @@ Silveridge_House1_EventScript_FirebringerFangirl_Text_1:
 	.string "notices me one day…$"
 
 Silveridge_House1_EventScript_Sandslash_Text_0:
-	.string "Sandslash$"
-
-Silveridge_House1_EventScript_Sandslash_Text_1:
 	.string "Sahaaah!$"
 
 Silveridge_House1_EventScript_Man_Text_0:
-	.string "Miner$"
-
-Silveridge_House1_EventScript_Man_Text_1:
 	.string "You think some Pokémon prefer to\n"
 	.string "remain small forever?$"
 
-Silveridge_House1_EventScript_Man_Text_2:
+Silveridge_House1_EventScript_Man_Text_1:
 	.string "My job is to mine ore in Silver Tunnel,\n"
 	.string "all day long.\p"
 	.string "I love it! I wouldn't trade it for the\n"
@@ -122,7 +110,7 @@ Silveridge_House1_EventScript_Man_Text_2:
 	.string "Speaking of… I often find interesting\n"
 	.string "rocks in there. Look at this!$"
 
-Silveridge_House1_EventScript_Man_Text_3:
+Silveridge_House1_EventScript_Man_Text_2:
 	.string "Apparently as long as a Pokémon holds\n"
 	.string "on to this stone, it'll stop growing.\p"
 	.string "My helper Sandslash is already fully\n"

@@ -26,8 +26,8 @@ ChiiTown_School_EventScript_Teacher_3:
 ChiiTown_School_EventScript_PreparingDay::
 	lock
 	faceplayer
-	setspeaker ChiiTown_School_EventScript_PreparingDay_Text_0
-	msgbox ChiiTown_School_EventScript_PreparingDay_Text_1
+	setspeaker SP_NAME_TEACHER
+	msgbox ChiiTown_School_EventScript_PreparingDay_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -38,7 +38,7 @@ ChiiTown_School_EventScript_PreparingDay::
 ChiiTown_School_EventScript_Teaching::
 	lock
 	faceplayer
-	setspeaker ChiiTown_School_EventScript_PreparingDay_Text_0
+	setspeaker SP_NAME_TEACHER
 	msgbox ChiiTown_School_EventScript_Teaching_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -50,7 +50,7 @@ ChiiTown_School_EventScript_Teaching::
 ChiiTown_School_EventScript_EndingDay::
 	lock
 	faceplayer
-	setspeaker ChiiTown_School_EventScript_PreparingDay_Text_0
+	setspeaker SP_NAME_TEACHER
 	msgbox ChiiTown_School_EventScript_EndingDay_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -78,8 +78,8 @@ ChiiTown_School_EventScript_Board::
 ChiiTown_School_EventScript_ChildImBored::
 	lock
 	faceplayer
-	setspeaker ChiiTown_School_EventScript_ChildImBored_Text_0
-	msgbox ChiiTown_School_EventScript_ChildImBored_Text_1
+	setspeaker SP_NAME_SCHOOL_KID
+	msgbox ChiiTown_School_EventScript_ChildImBored_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -90,7 +90,7 @@ ChiiTown_School_EventScript_ChildImBored::
 ChiiTown_School_EventScript_ChildAlreadyKnowLegend::
 	lock
 	faceplayer
-	setspeaker ChiiTown_School_EventScript_ChildImBored_Text_0
+	setspeaker SP_NAME_SCHOOL_KID
 	msgbox ChiiTown_School_EventScript_ChildAlreadyKnowLegend_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -102,7 +102,7 @@ ChiiTown_School_EventScript_ChildAlreadyKnowLegend::
 ChiiTown_School_EventScript_ChildPokemonInsideVolcano::
 	lock
 	faceplayer
-	setspeaker ChiiTown_School_EventScript_ChildImBored_Text_0
+	setspeaker SP_NAME_SCHOOL_KID
 	msgbox ChiiTown_School_EventScript_ChildPokemonInsideVolcano_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -114,7 +114,7 @@ ChiiTown_School_EventScript_ChildPokemonInsideVolcano::
 ChiiTown_School_EventScript_ChildTellsStory::
 	lock
 	faceplayer
-	setspeaker ChiiTown_School_EventScript_ChildImBored_Text_0
+	setspeaker SP_NAME_SCHOOL_KID
 	msgbox ChiiTown_School_EventScript_ChildTellsStory_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -126,7 +126,7 @@ ChiiTown_School_EventScript_ChildTellsStory::
 ChiiTown_School_EventScript_IsThePokemonWakingUp::
 	lock
 	faceplayer
-	setspeaker ChiiTown_School_EventScript_ChildImBored_Text_0
+	setspeaker SP_NAME_SCHOOL_KID
 	msgbox ChiiTown_School_EventScript_IsThePokemonWakingUp_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -140,7 +140,7 @@ ChiiTown_School_EventScript_ChildWiseGlasses::
 	faceplayer
 	goto_if_unset FLAG_SMART_GLASSES, ChiiTown_School_EventScript_ChildWiseGlasses_2
 ChiiTown_School_EventScript_ChildWiseGlasses_1:
-	setspeaker ChiiTown_School_EventScript_ChildImBored_Text_0
+	setspeaker SP_NAME_SCHOOL_KID
 	msgbox ChiiTown_School_EventScript_ChildWiseGlasses_Text_1
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -149,7 +149,7 @@ ChiiTown_School_EventScript_ChildWiseGlasses_1:
 	return
 
 ChiiTown_School_EventScript_ChildWiseGlasses_2:
-	setspeaker ChiiTown_School_EventScript_ChildImBored_Text_0
+	setspeaker SP_NAME_SCHOOL_KID
 	msgbox ChiiTown_School_EventScript_ChildWiseGlasses_Text_0
 	closemessage
 	giveitem ITEM_WISE_GLASSES
@@ -160,7 +160,7 @@ ChiiTown_School_EventScript_ChildWiseGlasses_2:
 ChiiTown_School_EventScript_ChildLikeSensei::
 	lock
 	faceplayer
-	setspeaker ChiiTown_School_EventScript_ChildImBored_Text_0
+	setspeaker SP_NAME_SCHOOL_KID
 	msgbox ChiiTown_School_EventScript_ChildLikeSensei_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -170,9 +170,6 @@ ChiiTown_School_EventScript_ChildLikeSensei::
 
 
 ChiiTown_School_EventScript_PreparingDay_Text_0:
-	.string "Sensei$"
-
-ChiiTown_School_EventScript_PreparingDay_Text_1:
 	.string "Um… The school isn't open yet, I'm\n"
 	.string "afraid. Come back later with your\l"
 	.string "little brother or sister!$"
@@ -204,9 +201,6 @@ ChiiTown_School_EventScript_Board_Text_0:
 	.string "tiny squiggles on it.$"
 
 ChiiTown_School_EventScript_ChildImBored_Text_0:
-	.string "Child$"
-
-ChiiTown_School_EventScript_ChildImBored_Text_1:
 	.string "I'm bored! Why won't recess start\n"
 	.string "already!$"
 

@@ -5,17 +5,17 @@ Silveridge_House2_MapScripts::
 Silveridge_House2_EventScript_Woman::
 	lock
 	faceplayer
-	setspeaker Silveridge_House2_EventScript_Woman_Text_0
-	msgbox Silveridge_House2_EventScript_Woman_Text_1
+	setspeaker SP_NAME_WOMAN
+	msgbox Silveridge_House2_EventScript_Woman_Text_0
 	closemessage
 	applymovement LOCALID_SILVERIDGE_MINING_NERD, Silveridge_House2_EventScript_Woman_Movement_0
 	waitmovement 0
-	setspeaker Silveridge_House2_EventScript_Woman_Text_2
-	msgbox Silveridge_House2_EventScript_Woman_Text_3
+	setspeaker SP_NAME_MINER
+	msgbox Silveridge_House2_EventScript_Woman_Text_1
 	closemessage
 	applymovement VAR_LAST_TALKED, Silveridge_House2_EventScript_Woman_Movement_1
-	setspeaker Silveridge_House2_EventScript_Woman_Text_0
-	msgbox Silveridge_House2_EventScript_Woman_Text_4
+	setspeaker SP_NAME_WOMAN
+	msgbox Silveridge_House2_EventScript_Woman_Text_2
 	closemessage
 	release
 	return
@@ -24,7 +24,7 @@ Silveridge_House2_EventScript_Woman::
 Silveridge_House2_EventScript_Miner::
 	lock
 	faceplayer
-	setspeaker Silveridge_House2_EventScript_Woman_Text_2
+	setspeaker SP_NAME_MINER
 	msgbox Silveridge_House2_EventScript_Miner_Text_0
 	closemessage
 	release
@@ -56,19 +56,13 @@ Silveridge_House2_EventScript_Woman_Movement_1:
 	step_end
 
 Silveridge_House2_EventScript_Woman_Text_0:
-	.string "Woman$"
-
-Silveridge_House2_EventScript_Woman_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}I wish my husband would stop talking\n"
 	.string "about rocks…$"
 
-Silveridge_House2_EventScript_Woman_Text_2:
-	.string "Miner$"
-
-Silveridge_House2_EventScript_Woman_Text_3:
+Silveridge_House2_EventScript_Woman_Text_1:
 	.string "But honey, steel isn't a rock!$"
 
-Silveridge_House2_EventScript_Woman_Text_4:
+Silveridge_House2_EventScript_Woman_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}… …{FONT_SMALL}Sigh{FONT_NORMAL}…$"
 
 Silveridge_House2_EventScript_Miner_Text_0:

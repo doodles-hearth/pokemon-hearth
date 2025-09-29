@@ -8,7 +8,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 	if(flag(FLAG_DAILY_MON_DEX_RIDDLE))
 	{
-		setspeaker("Pokémon Nerd")
+		setspeaker(SP_NAME_PKMN_NERD)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Come back tomorrow for more Pokémon riddles… Hehe…"
 		))
@@ -17,7 +17,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 		end
 	}
 
-	setspeaker("Pokémon Nerd")
+	setspeaker(SP_NAME_PKMN_NERD)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Hehe… Hullo, kid…\nThey call me the Pokémon Nerd.\p"
 		"(They're just jealous…)\p"
@@ -29,7 +29,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 	randomdexmsgbox
 
-	setspeaker("Pokémon Nerd")
+	setspeaker(SP_NAME_PKMN_NERD)
 	msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Well? What Pokémon am I talking about?")
 	closemessage
 
@@ -43,7 +43,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 		applymovement(LOCALID_MAGURO_NERD, moves(emote_exclamation_mark, delay_16 * 6))
 		waitse
 		waitmovement(0)
-		setspeaker("Pokémon Nerd")
+		setspeaker(SP_NAME_PKMN_NERD)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Woah, you… You solved my riddle!\p"
 			"Could you… be a true Pokémon Nerd?\p"
@@ -59,7 +59,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	else
 	{
 		applymovement(VAR_LAST_TALKED, moves(emote_upset))
-		setspeaker("Pokémon Nerd")
+		setspeaker(SP_NAME_PKMN_NERD)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Wrong, wrong, WRONG!\nYou are wrong!\p"
 			"I'm honestly disappointed.\p"

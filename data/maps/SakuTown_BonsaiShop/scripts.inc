@@ -53,23 +53,23 @@ SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry::
 	faceplayer
 	dotimebasedevents
 	goto_if_set FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY, SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_2
-	setspeaker SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_2
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_1
 	closemessage
 	random 8
 	addvar VAR_RESULT, FIRST_BERRY_INDEX
 	giveitem VAR_RESULT
 	setflag FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY
-	setspeaker SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_3
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_2
 	closemessage
 SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_1:
 	release
 	return
 
 SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_2:
-	setspeaker SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_1
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_0
 	closemessage
 	goto SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_1
 
@@ -80,8 +80,8 @@ SakuTown_BonsaiShop_EventScript_LittleSister::
 	getgamestat GAME_STAT_PLANTED_BERRIES
 	goto_if_set FLAG_RECEIVED_TM_ACROBATICS, SakuTown_BonsaiShop_EventScript_LittleSister_2
 	special GetPlayerMrMrsString
-	setspeaker SakuTown_BonsaiShop_EventScript_LittleSister_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_2
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_1
 	compare VAR_RESULT, 10
 	goto_if_lt SakuTown_BonsaiShop_EventScript_LittleSister_5
 	compare VAR_RESULT, 20
@@ -98,42 +98,42 @@ SakuTown_BonsaiShop_EventScript_LittleSister_1:
 
 SakuTown_BonsaiShop_EventScript_LittleSister_2:
 	buffernumberstring STR_VAR_2, VAR_RESULT
-	setspeaker SakuTown_BonsaiShop_EventScript_LittleSister_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_1
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_0
 	goto SakuTown_BonsaiShop_EventScript_LittleSister_1
 
 SakuTown_BonsaiShop_EventScript_LittleSister_5:
-	setspeaker SakuTown_BonsaiShop_EventScript_LittleSister_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_3
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_2
 	closemessage
 	goto SakuTown_BonsaiShop_EventScript_LittleSister_1
 
 SakuTown_BonsaiShop_EventScript_LittleSister_6:
-	setspeaker SakuTown_BonsaiShop_EventScript_LittleSister_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_4
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_3
 	closemessage
 	goto SakuTown_BonsaiShop_EventScript_LittleSister_1
 
 SakuTown_BonsaiShop_EventScript_LittleSister_7:
-	setspeaker SakuTown_BonsaiShop_EventScript_LittleSister_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_5
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_4
 	closemessage
 	goto SakuTown_BonsaiShop_EventScript_LittleSister_1
 
 SakuTown_BonsaiShop_EventScript_LittleSister_8:
-	setspeaker SakuTown_BonsaiShop_EventScript_LittleSister_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_6
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_5
 	closemessage
 	goto SakuTown_BonsaiShop_EventScript_LittleSister_1
 
 SakuTown_BonsaiShop_EventScript_LittleSister_9:
-	setspeaker SakuTown_BonsaiShop_EventScript_LittleSister_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_7
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_6
 	closemessage
 	giveitem ITEM_TM_ACROBATICS
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
-	setspeaker SakuTown_BonsaiShop_EventScript_LittleSister_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_8
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox SakuTown_BonsaiShop_EventScript_LittleSister_Text_7
 	closemessage
 	setflag FLAG_RECEIVED_TM_ACROBATICS
 	goto SakuTown_BonsaiShop_EventScript_LittleSister_1
@@ -145,18 +145,18 @@ SakuTown_BonsaiShop_EventScript_Assistant::
 	compare VAR_BONSAI_SHOP_STATE, 1
 	goto_if_eq SakuTown_BonsaiShop_EventScript_Assistant_2
 	goto_if_set FLAG_RECEIVED_WAILMER_PAIL, SakuTown_BonsaiShop_EventScript_Assistant_9
-	setspeaker SakuTown_BonsaiShop_EventScript_Assistant_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_5
+	setspeaker SP_NAME_WOMAN
+	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_4
 	closemessage
 	giveitem ITEM_ORAN_BERRY, 3
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setspeaker SakuTown_BonsaiShop_EventScript_Assistant_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_6
+	setspeaker SP_NAME_WOMAN
+	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_5
 	closemessage
 	giveitem ITEM_WAILMER_PAIL
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setspeaker SakuTown_BonsaiShop_EventScript_Assistant_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_7
+	setspeaker SP_NAME_WOMAN
+	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_6
 	setflag FLAG_RECEIVED_WAILMER_PAIL
 SakuTown_BonsaiShop_EventScript_Assistant_8:
 	setvar VAR_BONSAI_SHOP_STATE, 1
@@ -166,56 +166,56 @@ SakuTown_BonsaiShop_EventScript_Assistant_1:
 
 SakuTown_BonsaiShop_EventScript_Assistant_2:
 	goto_if_set FLAG_HIDE_BONSAI_SHOP_OWNER, SakuTown_BonsaiShop_EventScript_Assistant_5
-	setspeaker SakuTown_BonsaiShop_EventScript_Assistant_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_2
-	closemessage
-	goto SakuTown_BonsaiShop_EventScript_Assistant_1
-
-SakuTown_BonsaiShop_EventScript_Assistant_5:
-	setspeaker SakuTown_BonsaiShop_EventScript_Assistant_Text_0
+	setspeaker SP_NAME_WOMAN
 	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_1
 	closemessage
 	goto SakuTown_BonsaiShop_EventScript_Assistant_1
 
+SakuTown_BonsaiShop_EventScript_Assistant_5:
+	setspeaker SP_NAME_WOMAN
+	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_0
+	closemessage
+	goto SakuTown_BonsaiShop_EventScript_Assistant_1
+
 SakuTown_BonsaiShop_EventScript_Assistant_9:
-	setspeaker SakuTown_BonsaiShop_EventScript_Assistant_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_3
+	setspeaker SP_NAME_WOMAN
+	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_2
 	playse SE_PIN
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	setspeaker SakuTown_BonsaiShop_EventScript_Assistant_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_4
+	setspeaker SP_NAME_WOMAN
+	msgbox SakuTown_BonsaiShop_EventScript_Assistant_Text_3
 	closemessage
 	goto SakuTown_BonsaiShop_EventScript_Assistant_8
 
 
 SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue:
 	goto_if_set FLAG_RECEIVED_SECRET_POWER, SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_1
-	setspeaker SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_3
+	setspeaker SP_NAME_HANA
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_2
 	closemessage
 	return
 
 SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_1:
-	setspeaker SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_1
+	setspeaker SP_NAME_HANA
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
 	closemessage
 	pokemartdecoration BonsaiShop
-	setspeaker SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_2, MSGBOX_DEFAULT
+	setspeaker SP_NAME_HANA
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_1, MSGBOX_DEFAULT
 	closemessage
 	return
 
 
 SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader:
 	setflag FLAG_MET_HANA_BONSAI_SHOP
-	setspeaker SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
+	setspeaker SP_NAME_HANA
 	msgbox SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_0
 	mcdialogue SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_1
 	closemessage
-	setspeaker SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
+	setspeaker SP_NAME_HANA
 	msgbox SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_2
 	closemessage
 	return
@@ -234,8 +234,8 @@ SakuTown_BonsaiShop_EventScript_Owner_1:
 SakuTown_BonsaiShop_EventScript_Owner_2:
 	setflag FLAG_MET_HANA_BONSAI_SHOP
 	special GetPlayerBoyGirlString
-	setspeaker SakuTown_BonsaiShop_EventScript_Owner_Text_0
-	msgbox SakuTown_BonsaiShop_EventScript_Owner_Text_1
+	setspeaker SP_NAME_SHOP_OWNER
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_Text_0
 	closemessage
 	goto SakuTown_BonsaiShop_EventScript_Owner_1
 
@@ -254,8 +254,8 @@ BonsaiShop:
 SakuTown_EventScript_Man::
 	lock
 	faceplayer
-	setspeaker SakuTown_EventScript_Man_Text_0
-	msgbox SakuTown_EventScript_Man_Text_1
+	setspeaker SP_NAME_CUSTOMER
+	msgbox SakuTown_EventScript_Man_Text_0
 	closemessage
 	release
 	return
@@ -286,56 +286,50 @@ SakuTown_BonsaiShop_EventScript_Painting_Text_0:
 	.string "A dainty painting of a flower.$"
 
 SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_0:
-	.string "Little girl$"
-
-SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Go plant the berry I gave you!$"
 
-SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_2:
+SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Have you met my twin sister?\n"
 	.string "Very “Type A”, right?\p"
 	.string "You should try beating her at her own\n"
 	.string "game!\p"
 	.string "Here, start by planting this!$"
 
-SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_3:
+SakuTown_BonsaiShop_EventScript_LittleSisterGiveBerry_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Go for them berries!\n"
 	.string "Eyes on the prize!$"
 
 SakuTown_BonsaiShop_EventScript_LittleSister_Text_0:
-	.string "Little Girl$"
-
-SakuTown_BonsaiShop_EventScript_LittleSister_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}What's up, berry master?\p"
 	.string "Didja know you've planted\n"
 	.string "{STR_VAR_2} berries so far?$"
 
-SakuTown_BonsaiShop_EventScript_LittleSister_Text_2:
+SakuTown_BonsaiShop_EventScript_LittleSister_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hi there {STR_VAR_1} Grownup!\p"
 	.string "Have you planted many berries on your\n"
 	.string "travels?$"
 
-SakuTown_BonsaiShop_EventScript_LittleSister_Text_3:
+SakuTown_BonsaiShop_EventScript_LittleSister_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 	.string "Your face still has “berry amateur”\n"
 	.string "written all over it.\p"
 	.string "Come back when you're less of an\n"
 	.string "embarrassment.$"
 
-SakuTown_BonsaiShop_EventScript_LittleSister_Text_4:
+SakuTown_BonsaiShop_EventScript_LittleSister_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 	.string "I'd say it's less terrible than before.\p"
 	.string "Still not great though. You need to\n"
 	.string "plant way more berries.$"
 
-SakuTown_BonsaiShop_EventScript_LittleSister_Text_5:
+SakuTown_BonsaiShop_EventScript_LittleSister_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 	.string "Hey, I'm actually impressed at the\n"
 	.string "berry skills I'm sensing!\p"
 	.string "… … Kidding!\p"
 	.string "You're getting better at it though.$"
 
-SakuTown_BonsaiShop_EventScript_LittleSister_Text_6:
+SakuTown_BonsaiShop_EventScript_LittleSister_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 	.string "I'd say you're almost there…\p"
 	.string "There's a fine line between being\n"
@@ -343,7 +337,7 @@ SakuTown_BonsaiShop_EventScript_LittleSister_Text_6:
 	.string "“actually good” at berries.\p"
 	.string "So, you know, keep it up, or whatever.$"
 
-SakuTown_BonsaiShop_EventScript_LittleSister_Text_7:
+SakuTown_BonsaiShop_EventScript_LittleSister_Text_6:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}Hmm…\p"
 	.string "Oh?\p"
 	.string "Now that's what I'm talking about!\p"
@@ -352,7 +346,7 @@ SakuTown_BonsaiShop_EventScript_LittleSister_Text_7:
 	.string "earned my respect.\p"
 	.string "Take this!$"
 
-SakuTown_BonsaiShop_EventScript_LittleSister_Text_8:
+SakuTown_BonsaiShop_EventScript_LittleSister_Text_7:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL EMOTE_NORMAL}This scroll contains Acrobatics.\p"
 	.string "Your Pokémon will strike harder if he\n"
 	.string "isn't holding an item.\p"
@@ -362,23 +356,20 @@ SakuTown_BonsaiShop_EventScript_LittleSister_Text_8:
 	.string "mercilessly crush your opponent!$"
 
 SakuTown_BonsaiShop_EventScript_Assistant_Text_0:
-	.string "Woman$"
-
-SakuTown_BonsaiShop_EventScript_Assistant_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hi, {PLAYER}!\p"
 	.string "The shop owner is currently away.\n"
 	.string "She's very busy.\p"
 	.string "Busy with what, you ask?\p"
 	.string "Um, I'm actually not sure.$"
 
-SakuTown_BonsaiShop_EventScript_Assistant_Text_2:
+SakuTown_BonsaiShop_EventScript_Assistant_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hi, {PLAYER}! Don't mind my sisters.\n"
 	.string "They're quite the handful!$"
 
-SakuTown_BonsaiShop_EventScript_Assistant_Text_3:
+SakuTown_BonsaiShop_EventScript_Assistant_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hello, welcome to our bonsai shop…$"
 
-SakuTown_BonsaiShop_EventScript_Assistant_Text_4:
+SakuTown_BonsaiShop_EventScript_Assistant_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, but I know you! We met on Tranquil\n"
 	.string "route, remember?\p"
 	.string "Have you used the watering can I gave\n"
@@ -388,7 +379,7 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_4:
 	.string "I'm the owner's assistant! I also\n"
 	.string "manage the shop whenever she's away.$"
 
-SakuTown_BonsaiShop_EventScript_Assistant_Text_5:
+SakuTown_BonsaiShop_EventScript_Assistant_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hello, welcome to our bonsai shop! I'm\n"
 	.string "the owner's assistant.\p"
 	.string "We sell bonsai and other potted\n"
@@ -407,29 +398,26 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_5:
 	.string "learn to love them too!\p"
 	.string "Here, try planting a few!$"
 
-SakuTown_BonsaiShop_EventScript_Assistant_Text_6:
+SakuTown_BonsaiShop_EventScript_Assistant_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I was almost forgetting!\p"
 	.string "You must remember to water them\n"
 	.string "regularly, or they won't grow!\p"
 	.string "I like you. Take this!$"
 
-SakuTown_BonsaiShop_EventScript_Assistant_Text_7:
+SakuTown_BonsaiShop_EventScript_Assistant_Text_6:
 	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Isn't it cute? It's friend-shaped!\p"
 	.string "Don't worry about it, I have a spare\n"
 	.string "one.\p"
 	.string "Have fun gardening!$"
 
 SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0:
-	.string "Hana$"
-
-SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you\n"
 	.string "in a little greenery?$"
 
-SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_2:
+SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Thank you for your business!$"
 
-SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_3:
+SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you\n"
 	.string "in a little greenery?\p"
 	.string "Hmm… It looks like you wouldn't have\n"
@@ -458,9 +446,6 @@ SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_2:
 	.string "more similar than they are different…$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_0:
-	.string "Shop Owner$"
-
-SakuTown_BonsaiShop_EventScript_Owner_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I\n"
 	.string "interest you in a little greenery?\p"
 	.string "Hmm… It looks like you wouldn't have\n"
@@ -468,9 +453,6 @@ SakuTown_BonsaiShop_EventScript_Owner_Text_1:
 	.string "when you do.$"
 
 SakuTown_EventScript_Man_Text_0:
-	.string "Customer$"
-
-SakuTown_EventScript_Man_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}I'm choosing flowers for my wife.\p"
 	.string "I, uh… I didn't realize there'd be so\n"
 	.string "many different types.\p"

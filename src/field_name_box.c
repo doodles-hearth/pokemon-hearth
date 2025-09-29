@@ -63,7 +63,7 @@ void TrySpawnNamebox(u32 tileNum)
     {
         .bg = 0,
         .tilemapLeft = 2,
-        .tilemapTop = 13,
+        .tilemapTop = 12,
         .width = winWidth,
         .height = OW_NAME_BOX_DEFAULT_HEIGHT,
         .paletteNum = matchCall ? 14 : DLG_WINDOW_PALETTE_NUM,
@@ -128,8 +128,8 @@ void FillNamebox(void)
     for (u32 i = 0; i < winSize; i++)
     {
         #define TILE(x) (8 * x)
-        CopyToWindowPixelBuffer(sNameboxWindowId, &gfx[TILE(1)], TILE_SIZE_4BPP, i);
-        CopyToWindowPixelBuffer(sNameboxWindowId, &gfx[TILE(4)], TILE_SIZE_4BPP, i + winSize);
+        CopyToWindowPixelBuffer(sNameboxWindowId, &gfx[TILE(2)], TILE_SIZE_4BPP, i);
+        CopyToWindowPixelBuffer(sNameboxWindowId, &gfx[TILE(2)], TILE_SIZE_4BPP, i + winSize);
         #undef TILE
     }
 }
@@ -158,12 +158,14 @@ void ClearNamebox(u32 windowId, bool32 copyToVram)
 static void WindowFunc_DrawNamebox(u32 bg, u32 L, u32 T, u32 w, u32 h, u32 p, u32 tileNum)
 {
     // left-most
-    FillBgTilemapBufferRect(bg, tileNum,     L - 1, T,     1, 1, p);
-    FillBgTilemapBufferRect(bg, tileNum + 3, L - 1, T + 1, 1, 1, p);
-
+    FillBgTilemapBufferRect(bg, tileNum + 0, L - 2, T, 1, 1, p);
+    FillBgTilemapBufferRect(bg, tileNum + 1, L - 1, T, 1, 1, p);
+    FillBgTilemapBufferRect(bg, tileNum + 4, L - 2, T + 1, 1, 1, p);
+    FillBgTilemapBufferRect(bg, tileNum + 5, L - 1, T + 1, 1, 1, p);
+    
     // right-most
-    FillBgTilemapBufferRect(bg, tileNum + 2, L + w, T,     1, 1, p);
-    FillBgTilemapBufferRect(bg, tileNum + 5, L + w, T + 1, 1, 1, p);
+    FillBgTilemapBufferRect(bg, tileNum + 3, L + w, T, 1, 1, p);
+    FillBgTilemapBufferRect(bg, tileNum + 6, L + w, T + 1, 1, 1, p);
 }
 
 static void WindowFunc_ClearNamebox(u8 bg, u8 L, u8 T, u8 w, u8 h, u8 p)

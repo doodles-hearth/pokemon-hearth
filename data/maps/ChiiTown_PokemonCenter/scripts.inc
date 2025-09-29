@@ -64,8 +64,8 @@ ChiiTown_PokemonCenter_EventScript_NurseSleep::
 ChiiTown_PokemonCenter_EventScript_Shamisen::
 	lock
 	faceplayer
-	setspeaker ChiiTown_PokemonCenter_EventScript_Shamisen_Text_0
-	msgbox ChiiTown_PokemonCenter_EventScript_Shamisen_Text_1
+	setspeaker SP_NAME_SHAMISEN_PLAYER
+	msgbox ChiiTown_PokemonCenter_EventScript_Shamisen_Text_0
 	closemessage
 	release
 	end
@@ -84,8 +84,8 @@ ChiiTown_PokemonCenter_EventScript_ShamisenFan::
 ChiiTown_PokemonCenter_EventScript_Boy::
 	lock
 	faceplayer
-	setspeaker ChiiTown_PokemonCenter_EventScript_Boy_Text_0
-	msgbox ChiiTown_PokemonCenter_EventScript_Boy_Text_1
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox ChiiTown_PokemonCenter_EventScript_Boy_Text_0
 	closemessage
 	release
 	end
@@ -94,8 +94,8 @@ ChiiTown_PokemonCenter_EventScript_Boy::
 ChiiTown_PokemonCenter_EventScript_Mom::
 	lock
 	faceplayer
-	setspeaker ChiiTown_PokemonCenter_EventScript_Mom_Text_0
-	msgbox ChiiTown_PokemonCenter_EventScript_Mom_Text_1
+	setspeaker SP_NAME_WOMAN
+	msgbox ChiiTown_PokemonCenter_EventScript_Mom_Text_0
 	closemessage
 	release
 	end
@@ -137,7 +137,7 @@ ChiiTown_PokemonCenter_EventScript_Snorunt::
 ChiiTown_PokemonCenter_EventScript_NeedMarket::
 	lock
 	faceplayer
-	setspeaker ChiiTown_PokemonCenter_EventScript_Mom_Text_0
+	setspeaker SP_NAME_WOMAN
 	msgbox ChiiTown_PokemonCenter_EventScript_NeedMarket_Text_0
 	closemessage
 	release
@@ -199,8 +199,8 @@ ChiiTown_PokemonCenter_Movement_Leave:
 ChiiTown_PokemonCenter_EventScript_MakeNamesUp::
 	lock
 	faceplayer
-	setspeaker ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_0
-	msgbox ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_1
+	setspeaker SP_NAME_LITTLE_BOY
+	msgbox ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_0
 	closemessage
 	release
 	end
@@ -226,9 +226,6 @@ ChiiTown_PokemonCenter_EventScript_RefugePresentation_Movement_1:
 	step_end
 
 ChiiTown_PokemonCenter_EventScript_Shamisen_Text_0:
-	.string "Shamisen Player$"
-
-ChiiTown_PokemonCenter_EventScript_Shamisen_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE EMOTE_NORMAL}Good evening.\p"
 	.string "We blind shamisen players sing to\n"
 	.string "survive.\p"
@@ -247,16 +244,10 @@ ChiiTown_PokemonCenter_EventScript_ShamisenFan_Text_1:
 	.string "hope she'll notice me one day…$"
 
 ChiiTown_PokemonCenter_EventScript_Boy_Text_0:
-	.string "Little Girl$"
-
-ChiiTown_PokemonCenter_EventScript_Boy_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm here with my mama!\n"
 	.string "The music lady's nice!$"
 
 ChiiTown_PokemonCenter_EventScript_Mom_Text_0:
-	.string "Woman$"
-
-ChiiTown_PokemonCenter_EventScript_Mom_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}Traveling shamisen players take\n"
 	.string "shelter in Refuges at nightfall.\p"
 	.string "Their singing makes for such a cosy\n"
@@ -306,9 +297,6 @@ ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_1:
 	.string "if you want her to heal your Pokémon!$"
 
 ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_0:
-	.string "Little Boy$"
-
-ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}You know what happens if I see a\n"
 	.string "Pokémon and I don't know its name?\p"
 	.string "I just make it right up!\n"

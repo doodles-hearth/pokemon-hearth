@@ -15,17 +15,17 @@ script SunriseVillage_House1_EventScript_Ralts {
 
 script SunriseVillage_House1_EventScript_OldWoman {
     setnamedmon(SPECIES_RALTS)
-    setspeaker("Neighbour")
+    setspeaker(SP_NAME_NEIGHBOR)
     msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_WOMAN EMOTE_NORMAL}Ralts here is quite the silent type. I'm fine with that."), MSGBOX_NPC)
 }
 
 script SunriseVillage_House1_EventScript_OldMan {
-    setspeaker("Neighbour")
+    setspeaker(SP_NAME_NEIGHBOR)
     msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}My granddaughter's Pokémon has already scratched all the furniture…"), MSGBOX_NPC)
 }
 
 script SunriseVillage_House1_EventScript_LittleGirl {
-    setspeaker("Little girl")
+    setspeaker(SP_NAME_LITTLE_GIRL)
     msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}Ahhh I'm so happy!! Look how cute my Ziggy is!!!"), MSGBOX_NPC)
 }
 

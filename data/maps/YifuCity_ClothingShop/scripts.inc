@@ -9,8 +9,8 @@ YifuCity_ClothingShop_EventScript_Yutaka::
 YifuCity_ClothingShop_EventScript_Cashier::
 	lock
 	faceplayer
-	setspeaker YifuCity_ClothingShop_EventScript_Cashier_Text_0
-	msgbox YifuCity_ClothingShop_EventScript_Cashier_Text_1
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox YifuCity_ClothingShop_EventScript_Cashier_Text_0
 	release
 	return
 
@@ -18,24 +18,18 @@ YifuCity_ClothingShop_EventScript_Cashier::
 YifuCity_ClothingShop_EventScript_Customer::
 	lock
 	faceplayer
-	setspeaker YifuCity_ClothingShop_EventScript_Customer_Text_0
-	msgbox YifuCity_ClothingShop_EventScript_Customer_Text_1
+	setspeaker SP_NAME_GIRL
+	msgbox YifuCity_ClothingShop_EventScript_Customer_Text_0
 	release
 	return
 
 
 YifuCity_ClothingShop_EventScript_Cashier_Text_0:
-	.string "Cashier$"
-
-YifuCity_ClothingShop_EventScript_Cashier_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Sorry, everything's sold out at the\n"
 	.string "moment!\p"
 	.string "We'll be restocking soon.$"
 
 YifuCity_ClothingShop_EventScript_Customer_Text_0:
-	.string "Girl$"
-
-YifuCity_ClothingShop_EventScript_Customer_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Ohmigosh ohmigosh ohmigosh!!\n"
 	.string "Master Yutaka is here!!\p"
 	.string "She's sooo beautiful, and her clothes\n"

@@ -44,21 +44,21 @@ script Beachbound_Route_Decay_SeeDecay {
 }
 
 script BeachboundRoute_Decay_EventScript_Shepherd {
-	setspeaker("Shepherd")
+	setspeaker(SP_NAME_SHEPHERD)
 	msgbox(format(
 		"What's goin' on? Why are all the plants rotting?"
 	), MSGBOX_NPC)
 }
 
 script BeachboundRoute_Decay_EventScript_Karu {
-	setspeaker("Lass")
+	setspeaker(SP_NAME_LASS)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}I'm scared…"
 	), MSGBOX_NPC)
 }
 
 script BeachboundRoute_Decay_EventScript_Kin {
-	setspeaker("Battle Girl")
+	setspeaker(SP_NAME_BATTLE_GIRL)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}What's happening?"
 	), MSGBOX_NPC)
@@ -66,7 +66,7 @@ script BeachboundRoute_Decay_EventScript_Kin {
 
 script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 4)
-	setspeaker("Hariko")
+	setspeaker(SP_NAME_HARIKO)
 	if (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Oh! Hello again, {PLAYER}!\n"
@@ -86,7 +86,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	)
 	closemessage
 
-	setspeaker("Hariko")
+	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Well, look around you! This whole area is decaying.\p"
 		"Whatever this is, it is not good.\NI want to learn as much as I can about this decay.\p"
@@ -108,7 +108,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
 
-	setspeaker("Natsuki")
+	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}!\nWhat the heck is going on here?\lEverything is rotting!"
 	))
@@ -122,7 +122,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(emote_question_mark, delay_16 * 6))
 	waitmovement(LOCALID_BEACHBOUND_DECAY_NATSUKI)
 
-	setspeaker("Natsuki")
+	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Wait, who are you?"
 	))
@@ -133,7 +133,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
-	setspeaker("Hariko")
+	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I am Hariko.\n{PLAYER} and I are friends.\pTogether, we are going to find the cause of this Decay!"
 	))
@@ -150,7 +150,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 			applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(walk_in_place_fast_right))
 			waitmovement(LOCALID_BEACHBOUND_DECAY_HARIKO)
 
-			setspeaker("Hariko")
+			setspeaker(SP_NAME_HARIKO)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I may… have gotten ahead of myself.\p"
 				"You agree though, right?\nGreat!"
@@ -161,7 +161,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_up))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
-	setspeaker("Hariko")
+	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Your name is Natsuki?\nYou are a friend of {PLAYER}'s too…\p"
 		"That makes us friends as well!"
@@ -171,7 +171,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	waitmovement(LOCALID_BEACHBOUND_DECAY_NATSUKI)
 
 	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(emote_sweat))
-	setspeaker("Natsuki")
+	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Is… Is that so?"
 	))
@@ -196,7 +196,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
 
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}What's a bunch of children doing here?\p"
 		"You really shouldn't stay here.\nThe situation is under control,\lbut this is no place for you kids!"
@@ -211,7 +211,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	switch (var(VAR_RESULT)) {
 		case 0:
 			applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_upset))
-			setspeaker("Samurai")
+			setspeaker(SP_NAME_SAMURAI)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Nothing that concerns you!\n"
 				"Let the grownups handle this!\p"
@@ -219,7 +219,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 			))
 			closemessage
 		case 1:
-			setspeaker("Samurai")
+			setspeaker(SP_NAME_SAMURAI)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Help? That's adorable."
 			))
@@ -228,7 +228,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 			applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(walk_in_place_fast_up))
 			waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
 
-			setspeaker("Samurai")
+			setspeaker(SP_NAME_SAMURAI)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Hear that?\nKids here are saying they can help!\p"
 				"Hahaha!"
@@ -238,7 +238,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 			applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(walk_in_place_fast_down, delay_16 * 2))
 			waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
 
-			setspeaker("Samurai")
+			setspeaker(SP_NAME_SAMURAI)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}In all seriousness though, move along and let the grownups handle this!\p"
 				"On you go!"
@@ -249,7 +249,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(walk_up * 2, delay_16))
 	waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
 
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{FONT_SMALL}Mumble mumble…{PAUSE 32}\n"
 		"Psst psst…{PAUSE 32} Mumble mumble…{PAUSE 32}"
@@ -266,7 +266,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(delay_16, lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
 	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(delay_8, lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
 
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{FONT_SMALL}Mumble mumble…{PAUSE 32}\n"
 		"Psst psst…{PAUSE 32}{FONT_NORMAL} Mumble mumble…{PAUSE 32}"
@@ -274,7 +274,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	waitmovement(0)
 
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}…need more Samurai to secure the perimeter…\p"
 		"…started less than a week ago…\p"
@@ -286,7 +286,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_exclamation_mark, delay_16 * 6, face_down))
 	waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
 
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Are you kidding me?"
 	))
@@ -299,7 +299,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	delay(32)
 
 	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_angry))
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Have your parents never taught you\nnot to eavesdrop?\p"
 		"Move along!"
@@ -377,7 +377,7 @@ script BeachboundRoute_Decay_EventScript_BeanTrigger {
 script BeachboundRoute_Decay_EventScript_Bean {
 	lock
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
-	setspeaker("Hariko")
+	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}… …"
 	))
@@ -390,7 +390,7 @@ script BeachboundRoute_Decay_EventScript_Koishi {
 	lock
 	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_sad))
-	setspeaker("Koishi")
+	setspeaker(SP_NAME_KOISHI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}This is very worrying…\p"
 		"Please don't get into trouble, we're already spread thin as it is!"
@@ -409,7 +409,7 @@ script BeachboundRoute_Decay_EventScript_SamuraiBeCarefulTrigger {
 	waitmovement(LOCALID_BEACHBOUND_DECAY_FIRST_SAMURAI)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Please be careful if you're crossing over the {COLOR RED}decayed{COLOR DARK_GRAY} area.\p"
 		"We don't want anyone getting hurt!"
@@ -419,7 +419,7 @@ script BeachboundRoute_Decay_EventScript_SamuraiBeCarefulTrigger {
 }
 
 script BeachboundRoute_Decay_EventScript_SamuraiBeCareful {
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Please be careful!"
 	), MSGBOX_NPC)
@@ -429,7 +429,7 @@ script BeachboundRoute_Decay_EventScript_Samurai {
 	lock
 	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_sad))
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Don't panic!\nDon't touch the Decay!"
 	))
@@ -441,7 +441,7 @@ script BeachboundRoute_Decay_EventScript_SamuraiWhatCouldBe {
 	lock
 	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_upset))
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}What could be the cause of this?!"
 	))

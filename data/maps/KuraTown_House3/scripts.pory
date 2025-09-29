@@ -12,14 +12,14 @@ script KuraTown_House3_EventScript_Lady {
 	// First time talking to her
 	if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0 || var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
 		faceplayer
-		setspeaker("Woman")
+		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
 			"Hello! Ah, you came for your Pokémon!"
 		))
 		closemessage
 		delay(60)
 
-		setspeaker("Woman")
+		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
 			"Sorry, I thought you were someone else.\p"
 			"See, this little one came to me a while ago. There was a thunderstorm and it looked scared and lost.\p"
@@ -42,7 +42,7 @@ script KuraTown_House3_EventScript_Lady {
 		// Talked to her before, but not Espeon's master
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
 		faceplayer
-		setspeaker("Woman")
+		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
 			"Don't worry, kitten, we'll find your master eventually!"
 		))
@@ -57,7 +57,7 @@ script KuraTown_House3_EventScript_Lady {
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 4) {
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		faceplayer
-		setspeaker("Woman")
+		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
 			"Sniffle… I'm going to miss him…"
 		))
@@ -66,7 +66,7 @@ script KuraTown_House3_EventScript_Lady {
 		// Talked to Espeon's master once are reunited
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 5) {
 		faceplayer
-		setspeaker("Woman")
+		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
 			"That little lost kitten is reunited with its master?\p"
 			"Do they look happy together?\nOh, how delightful!"
@@ -83,7 +83,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 		applymovement(LOCALID_LADY, Common_Movement_ExclamationMark)
 		waitmovement(0)
 		delay(48)
-		setspeaker("Woman")
+		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
 			"What? You're saying its master is waiting for him in Saku Village?"
 		))
@@ -92,7 +92,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 		applymovement(LOCALID_LADY, moves(emote_pensive, delay_16 * 6))
 		waitmovement(0)
 
-		setspeaker("Woman")
+		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
 			"I'd rather not try going over there, folks over at Saku Village are notoriously mean…\p"
 			"But I guess… I can make an effort for this kitten here."
@@ -104,7 +104,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 
 		waitmovement(0)
 		applymovement(LOCALID_LADY, moves(emote_heart))
-		setspeaker("Woman")
+		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
 			"Good news, sweetie! You're going home!"
 		))
@@ -123,7 +123,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 		delay(40)
 
 		applymovement(LOCALID_LADY, moves(emote_sad))
-		setspeaker("Woman")
+		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
 			"Sniffle… I'm going to miss that little kitten…"
 		))

@@ -5,44 +5,44 @@ WindsweptRoute_MapScripts::
 WindsweptRoute_EventScript_OvergrownTrees::
 	lock
 	faceplayer
-	setspeaker WindsweptRoute_EventScript_OvergrownTrees_Text_0
+	setspeaker SP_NAME_MAN
 	goto_if_set FLAG_CUT_TREE_SILVER_TUNNEL, WindsweptRoute_EventScript_OvergrownTrees_2
-	msgbox WindsweptRoute_EventScript_OvergrownTrees_Text_2
+	msgbox WindsweptRoute_EventScript_OvergrownTrees_Text_1
 WindsweptRoute_EventScript_OvergrownTrees_1:
 	release
 	return
 
 WindsweptRoute_EventScript_OvergrownTrees_2:
-	msgbox WindsweptRoute_EventScript_OvergrownTrees_Text_1
+	msgbox WindsweptRoute_EventScript_OvergrownTrees_Text_0
 	goto WindsweptRoute_EventScript_OvergrownTrees_1
 
 
 WindsweptRoute_EventScript_Trainer1::
 	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer1_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
-	setspeaker WindsweptRoute_EventScript_Trainer1_Text_2
-	msgbox WindsweptRoute_EventScript_Trainer1_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_BATTLE_GIRL
+	msgbox WindsweptRoute_EventScript_Trainer1_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Itamae::
 	trainerbattle_single TRAINER_ITAMAE, WindsweptRoute_EventScript_Itamae_Text_0, WindsweptRoute_EventScript_Itamae_Text_1
-	setspeaker WindsweptRoute_EventScript_Itamae_Text_2
-	msgbox WindsweptRoute_EventScript_Itamae_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_COOK
+	msgbox WindsweptRoute_EventScript_Itamae_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Trainer3::
 	trainerbattle_single TRAINER_MAKOTO_1, WindsweptRoute_EventScript_Trainer3_Text_0, WindsweptRoute_EventScript_Trainer3_Text_1
-	setspeaker WindsweptRoute_EventScript_Trainer3_Text_2
-	msgbox WindsweptRoute_EventScript_Trainer3_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_FISHERMAN
+	msgbox WindsweptRoute_EventScript_Trainer3_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Fisherman_ShortRod::
 	lock
 	faceplayer
-	setspeaker WindsweptRoute_EventScript_Fisherman_ShortRod_Text_0
-	msgbox WindsweptRoute_EventScript_Fisherman_ShortRod_Text_1
+	setspeaker SP_NAME_FISHERMAN
+	msgbox WindsweptRoute_EventScript_Fisherman_ShortRod_Text_0
 	closemessage
 	release
 	return
@@ -50,29 +50,29 @@ WindsweptRoute_EventScript_Fisherman_ShortRod::
 
 WindsweptRoute_EventScript_Roku::
 	trainerbattle_single TRAINER_ROKU, WindsweptRoute_EventScript_Roku_Text_0, WindsweptRoute_EventScript_Roku_Text_1
-	setspeaker WindsweptRoute_EventScript_Roku_Text_2
-	msgbox WindsweptRoute_EventScript_Roku_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_MINER
+	msgbox WindsweptRoute_EventScript_Roku_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Trainer4::
 	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer4_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
-	setspeaker WindsweptRoute_EventScript_Trainer1_Text_2
-	msgbox WindsweptRoute_EventScript_Trainer4_Text_1, MSGBOX_AUTOCLOSE
+	setspeaker WindsweptRoute_EventScript_Trainer4_Text_1
+	msgbox WindsweptRoute_EventScript_Trainer4_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Trainer5::
 	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer4_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
-	setspeaker WindsweptRoute_EventScript_Trainer1_Text_2
-	msgbox WindsweptRoute_EventScript_Trainer4_Text_1, MSGBOX_AUTOCLOSE
+	setspeaker WindsweptRoute_EventScript_Trainer4_Text_1
+	msgbox WindsweptRoute_EventScript_Trainer4_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WindsweptRoute_EventScript_Trainer6::
 	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer4_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
-	setspeaker WindsweptRoute_EventScript_Trainer1_Text_2
-	msgbox WindsweptRoute_EventScript_Trainer4_Text_1, MSGBOX_AUTOCLOSE
+	setspeaker WindsweptRoute_EventScript_Trainer4_Text_1
+	msgbox WindsweptRoute_EventScript_Trainer4_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
@@ -81,8 +81,8 @@ WindsweptRoute_EventScript_TrainerBattleRoadblock::
 	playbgm MUS_VS_TRAINER, FALSE
 	applymovement 10, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_0
 	waitmovement 0
-	setspeaker WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_0
-	msgbox WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_1
+	setspeaker SP_NAME_NINJA_BOY
+	msgbox WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_0
 	closemessage
 	playmoncry SPECIES_NUZLEAF, CRY_MODE_ENCOUNTER
 	waitmoncry
@@ -92,8 +92,8 @@ WindsweptRoute_EventScript_TrainerBattleRoadblock::
 	waitse
 	applymovement 16, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_2
 	waitmovement 0
-	setspeaker WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_2
-	msgbox WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_3
+	setspeaker SP_NAME_SCHOOL_KID
+	msgbox WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_1
 	closemessage
 	applymovement 18, WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_3
 	playmoncry SPECIES_BRELOOM, CRY_MODE_ENCOUNTER
@@ -135,13 +135,10 @@ WindsweptRoute_EventScript_TrainerBattleRoadblock_Movement_4:
 	step_end
 
 WindsweptRoute_EventScript_OvergrownTrees_Text_0:
-	.string "Man$"
-
-WindsweptRoute_EventScript_OvergrownTrees_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Someone cut down that annoying tree!\n"
 	.string "We can go to Silveridge again!$"
 
-WindsweptRoute_EventScript_OvergrownTrees_Text_2:
+WindsweptRoute_EventScript_OvergrownTrees_Text_1:
 	.string "The weeds got out of control, some\n"
 	.string "trees block the way to Silver Tunnel…\p"
 	.string "We'll eventually have to ask the Cut\n"
@@ -155,9 +152,6 @@ WindsweptRoute_EventScript_Trainer1_Text_1:
 	.string "You blew us away!$"
 
 WindsweptRoute_EventScript_Trainer1_Text_2:
-	.string "Musashi$"
-
-WindsweptRoute_EventScript_Trainer1_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I come here to train my Pokémon. The\n"
 	.string "harsh weather helps us give the best\l"
 	.string "of ourselves.$"
@@ -170,9 +164,6 @@ WindsweptRoute_EventScript_Itamae_Text_1:
 	.string "Bitter is the taste of defeat…$"
 
 WindsweptRoute_EventScript_Itamae_Text_2:
-	.string "Itamae$"
-
-WindsweptRoute_EventScript_Itamae_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}This place is an inspiration for my\n"
 	.string "innovative cuisine.\p"
 	.string "The rocks are salty, the plants are\n"
@@ -187,17 +178,11 @@ WindsweptRoute_EventScript_Trainer3_Text_1:
 	.string "My rod didn't keep me from losing…$"
 
 WindsweptRoute_EventScript_Trainer3_Text_2:
-	.string "Makoto$"
-
-WindsweptRoute_EventScript_Trainer3_Text_3:
 	.string "Look at that poor sod over there! His\n"
 	.string "fishing rod's so short, I can't help\l"
 	.string "but laugh!$"
 
 WindsweptRoute_EventScript_Fisherman_ShortRod_Text_0:
-	.string "Fisherman$"
-
-WindsweptRoute_EventScript_Fisherman_ShortRod_Text_1:
 	.string "That guy over there keeps bragging\n"
 	.string "about having a long fishing rod.\p"
 	.string "Little does he realize that I, with my\n"
@@ -212,9 +197,6 @@ WindsweptRoute_EventScript_Roku_Text_1:
 	.string "I mistook you for the boss…$"
 
 WindsweptRoute_EventScript_Roku_Text_2:
-	.string "Roku$"
-
-WindsweptRoute_EventScript_Roku_Text_3:
 	.string "Please don't tell my colleagues I've\n"
 	.string "been slacking off…$"
 
@@ -223,22 +205,19 @@ WindsweptRoute_EventScript_Trainer4_Text_0:
 	.string "to win!$"
 
 WindsweptRoute_EventScript_Trainer4_Text_1:
+	.string "Musashi$"
+
+WindsweptRoute_EventScript_Trainer4_Text_2:
 	.string "I come here to train my Pokémon. The\n"
 	.string "harsh weather helps us give the best\l"
 	.string "of ourselves.$"
 
 WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_0:
-	.string "Ninja Boy$"
-
-WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}You shall know defeat at the hand of\n"
 	.string "my ninja Pokémon!\p"
 	.string "Nuzleaf, use Feint Attack!$"
 
-WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_2:
-	.string "School Kid$"
-
-WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_3:
+WindsweptRoute_EventScript_TrainerBattleRoadblock_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Your pathetic ninja costume can't\n"
 	.string "beat the sheer power of knowledge!\p"
 	.string "Breloom! Headbutt!$"

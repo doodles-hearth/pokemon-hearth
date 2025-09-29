@@ -57,16 +57,16 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 SakuTown_PokemonCenter_EventScript_Nurse::
 	lock
 	faceplayer
-	setspeaker SakuTown_PokemonCenter_EventScript_Nurse_Text_0
-	msgbox SakuTown_PokemonCenter_EventScript_Nurse_Text_1
+	setspeaker SP_NAME_NURSE
+	msgbox SakuTown_PokemonCenter_EventScript_Nurse_Text_0
 	fadescreenswapbuffers FADE_TO_BLACK
 	playfanfare MUS_HEAL
 	waitfanfare
 	special HealPlayerParty
 	callnative UpdateFollowingPokemon
 	fadescreenswapbuffers FADE_FROM_BLACK
-	setspeaker SakuTown_PokemonCenter_EventScript_Nurse_Text_0
-	msgbox SakuTown_PokemonCenter_EventScript_Nurse_Text_2
+	setspeaker SP_NAME_NURSE
+	msgbox SakuTown_PokemonCenter_EventScript_Nurse_Text_1
 	turnobject VAR_LAST_TALKED, DIR_SOUTH
 	release
 	end
@@ -75,7 +75,7 @@ SakuTown_PokemonCenter_EventScript_Nurse::
 SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks::
 	lock
 	faceplayer
-	setspeaker SakuTown_PokemonCenter_EventScript_Nurse_Text_0
+	setspeaker SP_NAME_NURSE
 	msgbox SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0
 	closemessage
 	release
@@ -87,17 +87,17 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest::
 	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2
 	applymovement 1, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_0
 	waitmovement 0
-	setspeaker SakuTown_PokemonCenter_EventScript_Nurse_Text_0
+	setspeaker SP_NAME_NURSE
 	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_0
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_1
-	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
-	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2
+	setspeaker SP_NAME_FARMER
+	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
 	closemessage
 	applymovement 1, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_2
 	waitmovement 0
-	setspeaker SakuTown_PokemonCenter_EventScript_Nurse_Text_0
-	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_3
+	setspeaker SP_NAME_NURSE
+	msgbox SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2
 	closemessage
 	applymovement 9, SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_0
 	waitmovement 0
@@ -107,7 +107,7 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest::
 SakuTown_PokemonCenter_EventScript_Farmer1::
 	lock
 	faceplayer
-	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SP_NAME_FARMER
 	returnqueststate QUEST_SAKURASCYTHER
 	switch VAR_RESULT
 	case 1, SakuTown_PokemonCenter_EventScript_Farmer1_3
@@ -159,7 +159,7 @@ HealedScytherScript:
 	applymovement 11, HealedScytherScript_Movement_0
 	waitmovement 0
 	waitse
-	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SP_NAME_FARMER
 	msgbox HealedScytherScript_Text_2
 	closemessage
 	playfanfare MUS_OBTAIN_ITEM
@@ -169,7 +169,7 @@ HealedScytherScript:
 	closemessage
 	applymovement 11, HealedScytherScript_Movement_1
 	waitmovement 0
-	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SP_NAME_FARMER
 	msgbox HealedScytherScript_Text_4
 	closemessage
 	applymovement 13, HealedScytherScript_Movement_2
@@ -184,11 +184,11 @@ HealedScytherScript:
 	applymovement 12, HealedScytherScript_Movement_5
 	waitmovement 11
 	waitmovement 12
-	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SP_NAME_FARMER
 	msgbox HealedScytherScript_Text_6
 	closemessage
 	mcdialogue HealedScytherScript_Text_7
-	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SP_NAME_FARMER
 	msgbox HealedScytherScript_Text_8
 	applymovement 11, HealedScytherScript_Movement_6
 	waitmovement 0
@@ -198,12 +198,12 @@ HealedScytherScript:
 	msgbox HealedScytherScript_Text_9
 	waitmoncry
 	closemessage
-	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SP_NAME_FARMER
 	msgbox HealedScytherScript_Text_10
 	closemessage
 	applymovement 11, HealedScytherScript_Movement_8
 	waitmovement 0
-	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SP_NAME_FARMER
 	msgbox HealedScytherScript_Text_11
 	closemessage
 	applymovement 12, HealedScytherScript_Movement_9
@@ -222,7 +222,7 @@ HealedScytherScript:
 
 SakuTown_PokemonCenter_EventScript_Farmer2::
 	lock
-	setspeaker SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1
+	setspeaker SP_NAME_FARMER
 	msgbox SakuTown_PokemonCenter_EventScript_Farmer2_Text_0
 	closemessage
 	playmoncry SPECIES_SCYTHER, CRY_MODE_WEAK
@@ -493,14 +493,11 @@ SakuTown_Refuge_EventScript_MakuhitaWork_Movement_0:
 	step_end
 
 SakuTown_PokemonCenter_EventScript_Nurse_Text_0:
-	.string "Nurse$"
-
-SakuTown_PokemonCenter_EventScript_Nurse_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}Hello! Apologies for the mess, we're\n"
 	.string "not fully set up yet!\p"
 	.string "Let me heal your Pokémon!$"
 
-SakuTown_PokemonCenter_EventScript_Nurse_Text_2:
+SakuTown_PokemonCenter_EventScript_Nurse_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}Come back soon!$"
 
 SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0:
@@ -520,13 +517,10 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_0:
 	.string "a Pokémon in this dire a state.$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1:
-	.string "Farmer$"
-
-SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2:
 	.string "Y'have to do som'thin', miss!\n"
 	.string "Cantcha see she's in pain?!$"
 
-SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_3:
+SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}She can stay here for as long as she\n"
 	.string "needs.\p"
 	.string "I'll keep her in as good a shape as I\n"

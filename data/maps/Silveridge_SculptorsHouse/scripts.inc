@@ -111,13 +111,13 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon::
 	lock
 	faceplayer
 	bufferspeciesname STR_VAR_1, VAR_TEMP_1
-	setspeaker Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0
-	msgbox Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_1
+	setspeaker SP_NAME_SCULPTOR
+	msgbox Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0
 	checkspecies_choose VAR_TEMP_1
 	compare VAR_RESULT, 0
 	goto_if_ne Silveridge_House1_EventScript_Sculptor_BringMeMon_2
-	setspeaker Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0
-	msgbox Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_4
+	setspeaker SP_NAME_SCULPTOR
+	msgbox Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_3
 Silveridge_House1_EventScript_Sculptor_BringMeMon_1:
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -130,8 +130,8 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_2:
 	waitse
 	waitmovement 0
 	bufferspeciesname STR_VAR_1, VAR_TEMP_1
-	setspeaker Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0
-	msgbox Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_2
+	setspeaker SP_NAME_SCULPTOR
+	msgbox Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_1
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
 	playse SE_M_FLATTER
@@ -146,8 +146,8 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_2:
 	fadescreenswapbuffers FADE_FROM_BLACK
 	delay 24
 	bufferspeciesname STR_VAR_2, VAR_TEMP_2
-	setspeaker Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0
-	msgbox Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_3
+	setspeaker SP_NAME_SCULPTOR
+	msgbox Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_2
 	closemessage
 	giveitem VAR_TEMP_3
 	setnamedmon VAR_TEMP_2
@@ -158,7 +158,7 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_2:
 Silveridge_House1_EventScript_Sculptor_FirstTime::
 	lock
 	faceplayer
-	setspeaker Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0
+	setspeaker SP_NAME_SCULPTOR
 	msgbox Silveridge_House1_EventScript_Sculptor_FirstTime_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
@@ -170,7 +170,7 @@ Silveridge_House1_EventScript_Sculptor_FirstTime::
 	waitmovement 0
 	applymovement VAR_LAST_TALKED, Common_Movement_Delay48
 	waitmovement 0
-	setspeaker Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0
+	setspeaker SP_NAME_SCULPTOR
 	msgbox Silveridge_House1_EventScript_Sculptor_FirstTime_Text_1
 	closemessage
 	setnamedmon SPECIES_PONYTA
@@ -199,13 +199,10 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_Movement_0:
 	step_end
 
 Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_0:
-	.string "Sculptor$"
-
-Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Please show me {STR_VAR_1}. My\n"
 	.string "soul aches for it!$"
 
-Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_2:
+Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Oh… … … …\n"
 	.string "… … …Oh!!\p"
 	.string "This is is… I can feel the raw\n"
@@ -214,7 +211,7 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_2:
 	.string "Hello, {STR_VAR_1}!\n"
 	.string "Stand still just a moment…$"
 
-Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_3:
+Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}There it is! My best work yet!\p"
 	.string "… … …And yet…\p"
 	.string "It still feels like something is\n"
@@ -229,7 +226,7 @@ Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_3:
 	.string "Still, I must reward you for your\n"
 	.string "assistance. Take this rock technique!$"
 
-Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_4:
+Silveridge_House1_EventScript_Sculptor_BringMeMon_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Why must you toy with me so?$"
 
 Silveridge_House1_EventScript_Sculptor_FirstTime_Text_0:

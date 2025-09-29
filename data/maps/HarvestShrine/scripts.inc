@@ -5,8 +5,8 @@ HarvestShrine_MapScripts::
 HarvestShrine_EventScript_MonkBronzong::
 	lock
 	faceplayer
-	setspeaker HarvestShrine_EventScript_MonkBronzong_Text_0
-	msgbox HarvestShrine_EventScript_MonkBronzong_Text_1
+	setspeaker SP_NAME_MONK
+	msgbox HarvestShrine_EventScript_MonkBronzong_Text_0
 	closemessage
 	setseenmon SPECIES_BRONZONG
 	setnamedmon SPECIES_BRONZONG
@@ -17,8 +17,8 @@ HarvestShrine_EventScript_MonkBronzong::
 
 HarvestShrine_EventScript_Kouga::
 	trainerbattle_single TRAINER_KOUGA, HarvestShrine_EventScript_Kouga_Text_0, HarvestShrine_EventScript_Kouga_Text_1, HarvestShrine_EventScript_SetMonFlags
-	setspeaker HarvestShrine_EventScript_Kouga_Text_2
-	msgbox HarvestShrine_EventScript_Kouga_Text_3
+	setspeaker SP_NAME_MONK
+	msgbox HarvestShrine_EventScript_Kouga_Text_2
 	closemessage
 	end
 
@@ -31,7 +31,7 @@ HarvestShrine_EventScript_SetMonFlags::
 HarvestShrine_EventScript_MonkRain::
 	lock
 	faceplayer
-	setspeaker HarvestShrine_EventScript_MonkBronzong_Text_0
+	setspeaker SP_NAME_MONK
 	checkitem ITEM_TM_RAIN_DANCE
 	compare VAR_RESULT, 0
 	goto_if_ne HarvestShrine_EventScript_MonkRain_2
@@ -94,9 +94,6 @@ HarvestShrine_EventScript_Bronzong_Movement_0:
 	step_end
 
 HarvestShrine_EventScript_MonkBronzong_Text_0:
-	.string "Monk$"
-
-HarvestShrine_EventScript_MonkBronzong_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}The Bronzong you have before your\n"
 	.string "eyes is a thousand years old.\p"
 	.string "It has been bringing us rain and\n"
@@ -116,9 +113,6 @@ HarvestShrine_EventScript_Kouga_Text_1:
 	.string "By a thousand gods!$"
 
 HarvestShrine_EventScript_Kouga_Text_2:
-	.string "Kouga$"
-
-HarvestShrine_EventScript_Kouga_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Fine, you may approach the ancient\n"
 	.string "Bronzong. Please be respectful.$"
 

@@ -5,7 +5,7 @@ mapscripts MaguroHarbor_Dojo_MapScripts {
 }
 
 script MaguroHarbor_Dojo_EventScript_Koishi {
-	setspeaker("Koishi")
+	setspeaker(SP_NAME_KOISHI)
 	trainerbattle_single(
 		TRAINER_KOISHI_1,
 		format(
@@ -35,7 +35,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	))
 	waitmessage
 	call(Common_EventScript_PlayGymBadgeFanfare)
-	setspeaker("Koishi")
+	setspeaker(SP_NAME_KOISHI)
 	msgbox(
 		format(
 			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}I applaud your skill. You are still a child, yet you obviously have a natural aptitude for battle.\p"
@@ -47,7 +47,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	
 	giveitem(ITEM_TM_NATURE_POWER)
 
-	setspeaker("Koishi")
+	setspeaker(SP_NAME_KOISHI)
 	msgbox(
 		format(
 			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}This scroll contains Nature Power, a move that changes depending on the terrain your Pokémon is standing on.\p"
@@ -95,7 +95,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	waitmovement(LOCALID_LEADER)
 	delay(60)
 
-	setspeaker("Koishi")
+	setspeaker(SP_NAME_KOISHI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}That… That was a big one!…\p"
 		"I'm going outside to make sure everyone's alright."
@@ -124,6 +124,8 @@ script MaguroHarbor_Dojo_EventScript_Izumi {
 		format("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}My Pokémon are the daintiest there is!"),
 		format("My poor Feebas!")
 	)
+
+	setspeaker(SP_NAME_BEAUTY)
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Oh my, what was that quake?"
@@ -141,6 +143,8 @@ script MaguroHarbor_Dojo_EventScript_Ren {
 		format("Come in! The water's nice and toasty!"),
 		format("Nooo!")
 	)
+
+	setspeaker(SP_NAME_SWIMMER)
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		msgbox(format(
 			"W-what happened?"
@@ -159,6 +163,7 @@ script MaguroHarbor_Dojo_EventScript_Mizu {
 		format("Stop making so much noise!")
 	)
 
+	setspeaker(SP_NAME_HOT_SPRING_GAL)
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}The poor fish must be all shaken!"
@@ -174,7 +179,7 @@ script MaguroHarbor_Dojo_EventScript_Mizu {
 script MaguroHarbor_Dojo_EventScript_Advice {
 	lock
 	faceplayer
-	setspeaker("Man")
+	setspeaker(SP_NAME_MAN)
 	if (flag(FLAG_BADGE01_GET)) {
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 			msgbox(format(

@@ -70,21 +70,21 @@ TranquilRoute_CutHouse_EventScript_CutMaster::
 	checkitem ITEM_SECRET_CUT
 	compare VAR_RESULT, 0
 	goto_if_ne TranquilRoute_CutHouse_EventScript_CutMaster_2
-	setspeaker TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
-	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_3
+	setspeaker SP_NAME_OLD_MAN
+	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_2
 	closemessage
 	applymovement VAR_LAST_TALKED, TranquilRoute_CutHouse_EventScript_CutMaster_Movement_0
 	waitmovement VAR_LAST_TALKED
-	setspeaker TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
-	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_4
+	setspeaker SP_NAME_OLD_MAN
+	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_3
 	closemessage
 	giveitem ITEM_SECRET_CUT
-	setspeaker TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
-	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_5
+	setspeaker SP_NAME_OLD_MAN
+	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_4
 	closemessage
 	giveitem ITEM_TM_NICK
-	setspeaker TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
-	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_6
+	setspeaker SP_NAME_OLD_MAN
+	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_5
 	closemessage
 TranquilRoute_CutHouse_EventScript_CutMaster_1:
 	release
@@ -92,14 +92,14 @@ TranquilRoute_CutHouse_EventScript_CutMaster_1:
 
 TranquilRoute_CutHouse_EventScript_CutMaster_2:
 	goto_if_set FLAG_CUT_QUEST_CUT_ALL_GRASS, TranquilRoute_CutHouse_EventScript_CutMaster_5
-	setspeaker TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
-	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_2
+	setspeaker SP_NAME_OLD_MAN
+	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_1
 	closemessage
 	goto TranquilRoute_CutHouse_EventScript_CutMaster_1
 
 TranquilRoute_CutHouse_EventScript_CutMaster_5:
-	setspeaker TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
-	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_1
+	setspeaker SP_NAME_OLD_MAN
+	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_0
 	closemessage
 	goto TranquilRoute_CutHouse_EventScript_CutMaster_1
 
@@ -166,23 +166,20 @@ TranquilRoute_CutHouse_EventScript_CutGrassCutscene_Text_0:
 	.string "it for myself.$"
 
 TranquilRoute_CutHouse_EventScript_CutMaster_Text_0:
-	.string "Old Man$"
-
-TranquilRoute_CutHouse_EventScript_CutMaster_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}The sun is setting on another day.\p"
 	.string "Life is good.$"
 
-TranquilRoute_CutHouse_EventScript_CutMaster_Text_2:
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Are you finding the Secret of Blade\n"
 	.string "useful?\p"
 	.string "No, I still haven't trimmed my garden.\n"
 	.string "I really should get to it…$"
 
-TranquilRoute_CutHouse_EventScript_CutMaster_Text_3:
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Hello, there. I don't get many\n"
 	.string "visitors, so sit down, have some tea!$"
 
-TranquilRoute_CutHouse_EventScript_CutMaster_Text_4:
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}What? My garden is overrun by weeds?\p"
 	.string "Ho ho ho…\p"
 	.string "You're right, I have been neglecting\n"
@@ -199,7 +196,7 @@ TranquilRoute_CutHouse_EventScript_CutMaster_Text_4:
 	.string "like you could teach their Pokémon\l"
 	.string "the Secret of Blade!$"
 
-TranquilRoute_CutHouse_EventScript_CutMaster_Text_5:
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}There is a variety of slicing moves\n"
 	.string "that your Pokémon can use.\p"
 	.string "They will now be able to use those\n"
@@ -214,7 +211,7 @@ TranquilRoute_CutHouse_EventScript_CutMaster_Text_5:
 	.string "A scroll can be used to teach your\n"
 	.string "Pokémon a move!$"
 
-TranquilRoute_CutHouse_EventScript_CutMaster_Text_6:
+TranquilRoute_CutHouse_EventScript_CutMaster_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Want to know another secret?\p"
 	.string "That powerful swordmaster I\n"
 	.string "mentioned…\p"

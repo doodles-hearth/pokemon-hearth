@@ -79,27 +79,27 @@ ChiiTown_DrawMetatiles_20:
 
 ChiiTown_EventScript_WatchfulMom::
 	gettimeofday
-	setspeaker ChiiTown_EventScript_WatchfulMom_Text_0
+	setspeaker SP_NAME_WOMAN
 	switch VAR_0x8000
 	case TIME_MORNING, ChiiTown_EventScript_WatchfulMom_3
 	case TIME_AFTERNOON, ChiiTown_EventScript_WatchfulMom_4
-	msgbox ChiiTown_EventScript_WatchfulMom_Text_3, MSGBOX_NPC
+	msgbox ChiiTown_EventScript_WatchfulMom_Text_2, MSGBOX_NPC
 ChiiTown_EventScript_WatchfulMom_1:
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	return
 
 ChiiTown_EventScript_WatchfulMom_3:
-	msgbox ChiiTown_EventScript_WatchfulMom_Text_1, MSGBOX_NPC
+	msgbox ChiiTown_EventScript_WatchfulMom_Text_0, MSGBOX_NPC
 	goto ChiiTown_EventScript_WatchfulMom_1
 
 ChiiTown_EventScript_WatchfulMom_4:
-	msgbox ChiiTown_EventScript_WatchfulMom_Text_2, MSGBOX_NPC
+	msgbox ChiiTown_EventScript_WatchfulMom_Text_1, MSGBOX_NPC
 	goto ChiiTown_EventScript_WatchfulMom_1
 
 
 ChiiTown_EventScript_Shopper::
-	setspeaker ChiiTown_EventScript_WatchfulMom_Text_0
+	setspeaker SP_NAME_WOMAN
 	msgbox ChiiTown_EventScript_Shopper_Text_0, MSGBOX_NPC
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -123,8 +123,8 @@ ChiiTown_EventScript_Kecleon::
 ChiiTown_EventScript_PlantingFlowers::
 	lock
 	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_PlantingFlowers_Movement_0
-	setspeaker ChiiTown_EventScript_PlantingFlowers_Text_0
-	msgbox ChiiTown_EventScript_PlantingFlowers_Text_1
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox ChiiTown_EventScript_PlantingFlowers_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -133,16 +133,16 @@ ChiiTown_EventScript_PlantingFlowers::
 
 
 ChiiTown_EventScript_AlsoPlantingFlowers::
-	setspeaker ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
-	msgbox ChiiTown_EventScript_AlsoPlantingFlowers_Text_1, MSGBOX_NPC
+	setspeaker SP_NAME_LITTLE_BOY
+	msgbox ChiiTown_EventScript_AlsoPlantingFlowers_Text_0, MSGBOX_NPC
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	return
 
 
 ChiiTown_EventScript_WatchingTheChildren::
-	setspeaker ChiiTown_EventScript_WatchingTheChildren_Text_0
-	msgbox ChiiTown_EventScript_WatchingTheChildren_Text_1, MSGBOX_NPC
+	setspeaker SP_NAME_TEACHER
+	msgbox ChiiTown_EventScript_WatchingTheChildren_Text_0, MSGBOX_NPC
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	return
@@ -151,8 +151,8 @@ ChiiTown_EventScript_WatchingTheChildren::
 ChiiTown_EventScript_EatingBerries::
 	lock
 	faceplayer
-	setspeaker ChiiTown_EventScript_EatingBerries_Text_0
-	msgbox ChiiTown_EventScript_EatingBerries_Text_1, MSGBOX_DEFAULT
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox ChiiTown_EventScript_EatingBerries_Text_0, MSGBOX_DEFAULT
 	closemessage
 	checkitem ITEM_ORAN_BERRY, 1
 	compare VAR_RESULT, 0
@@ -165,8 +165,8 @@ ChiiTown_EventScript_EatingBerries_1:
 	return
 
 ChiiTown_EventScript_EatingBerries_2:
-	msgbox ChiiTown_EventScript_EatingBerries_Text_2
-	mcdialogue ChiiTown_EventScript_EatingBerries_Text_3, ChiiTown_EventScript_EatingBerries_Text_4
+	msgbox ChiiTown_EventScript_EatingBerries_Text_1
+	mcdialogue ChiiTown_EventScript_EatingBerries_Text_2, ChiiTown_EventScript_EatingBerries_Text_3
 	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_EatingBerries_4
 	goto ChiiTown_EventScript_EatingBerries_1
@@ -174,8 +174,8 @@ ChiiTown_EventScript_EatingBerries_2:
 ChiiTown_EventScript_EatingBerries_4:
 	removeitem ITEM_ORAN_BERRY
 	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_EatingBerries_Movement_0
-	setspeaker ChiiTown_EventScript_EatingBerries_Text_0
-	msgbox ChiiTown_EventScript_EatingBerries_Text_5, MSGBOX_DEFAULT
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox ChiiTown_EventScript_EatingBerries_Text_4, MSGBOX_DEFAULT
 	closemessage
 	addvar VAR_PLAYER_REPUTATION, 1
 	goto ChiiTown_EventScript_EatingBerries_1
@@ -184,8 +184,8 @@ ChiiTown_EventScript_EatingBerries_4:
 ChiiTown_EventScript_BerryEnthusiast::
 	lock
 	faceplayer
-	setspeaker ChiiTown_EventScript_BerryEnthusiast_Text_0
-	msgbox ChiiTown_EventScript_BerryEnthusiast_Text_1
+	setspeaker SP_NAME_LITTLE_BOY
+	msgbox ChiiTown_EventScript_BerryEnthusiast_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection
 	waitmovement 0
@@ -203,14 +203,14 @@ ChiiTown_EventScript_BattlingGirl::
 ChiiTown_EventScript_BattlingGirl_5:
 	waitmovement 0
 	special GetPlayerMrMrsString
-	setspeaker ChiiTown_EventScript_PlantingFlowers_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox ChiiTown_EventScript_BattlingGirl_Text_1
 	mcdialogue ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_BattlingGirl_10
 	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_BattlingGirl_Movement_2
-	setspeaker ChiiTown_EventScript_PlantingFlowers_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox ChiiTown_EventScript_BattlingGirl_Text_6
 	closemessage
 ChiiTown_EventScript_BattlingGirl_9:
@@ -223,7 +223,7 @@ ChiiTown_EventScript_BattlingGirl_1:
 
 ChiiTown_EventScript_BattlingGirl_2:
 	special GetPlayerMrMrsString
-	setspeaker ChiiTown_EventScript_PlantingFlowers_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox ChiiTown_EventScript_BattlingGirl_Text_0
 	closemessage
 	goto ChiiTown_EventScript_BattlingGirl_1
@@ -237,7 +237,7 @@ ChiiTown_EventScript_BattlingGirl_10:
 	setflag FLAG_BEAT_CHII_TOWN_KIDS
 	special GetPlayerMrMrsString
 	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_EatingBerries_Movement_0
-	setspeaker ChiiTown_EventScript_PlantingFlowers_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox ChiiTown_EventScript_BattlingGirl_Text_0
 	closemessage
 	goto ChiiTown_EventScript_BattlingGirl_9
@@ -250,14 +250,14 @@ ChiiTown_EventScript_BattlingBoy::
 	applymovement 15, ChiiTown_EventScript_BattlingGirl_Movement_0
 	waitmovement 0
 	special GetPlayerMrMrsString
-	setspeaker ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	setspeaker SP_NAME_LITTLE_BOY
 	msgbox ChiiTown_EventScript_BattlingBoy_Text_1
 	mcdialogue ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_BattlingBoy_6
 	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_BattlingGirl_Movement_2
-	setspeaker ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	setspeaker SP_NAME_LITTLE_BOY
 	msgbox ChiiTown_EventScript_BattlingBoy_Text_3
 	closemessage
 ChiiTown_EventScript_BattlingBoy_5:
@@ -270,7 +270,7 @@ ChiiTown_EventScript_BattlingBoy_1:
 
 ChiiTown_EventScript_BattlingBoy_2:
 	special GetPlayerMrMrsString
-	setspeaker ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	setspeaker SP_NAME_LITTLE_BOY
 	msgbox ChiiTown_EventScript_BattlingBoy_Text_0
 	closemessage
 	goto ChiiTown_EventScript_BattlingBoy_1
@@ -280,7 +280,7 @@ ChiiTown_EventScript_BattlingBoy_6:
 	setflag FLAG_BEAT_CHII_TOWN_KIDS
 	special GetPlayerMrMrsString
 	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_EatingBerries_Movement_0
-	setspeaker ChiiTown_EventScript_AlsoPlantingFlowers_Text_0
+	setspeaker SP_NAME_LITTLE_BOY
 	msgbox ChiiTown_EventScript_BattlingBoy_Text_2
 	closemessage
 	goto ChiiTown_EventScript_BattlingBoy_5
@@ -289,11 +289,11 @@ ChiiTown_EventScript_BattlingBoy_6:
 ChiiTown_EventScript_Mart::
 	lock
 	faceplayer
-	setspeaker ChiiTown_EventScript_Mart_Text_0
-	message ChiiTown_EventScript_Mart_Text_1
+	setspeaker SP_NAME_SHOPKEEPER
+	message ChiiTown_EventScript_Mart_Text_0
 	waitmessage
 	pokemart ChiiTown_Mart
-	setspeaker ChiiTown_EventScript_Mart_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	return
@@ -302,11 +302,11 @@ ChiiTown_EventScript_Mart::
 ChiiTown_EventScript_MartDecor::
 	lock
 	faceplayer
-	setspeaker ChiiTown_EventScript_Mart_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	message ChiiTown_EventScript_MartDecor_Text_0
 	waitmessage
 	pokemartdecoration ChiiTown_MartDecors
-	setspeaker ChiiTown_EventScript_Mart_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	return
@@ -329,8 +329,8 @@ ChiiTown_Mart:
 	.2byte ITEM_NONE
 
 ChiiTown_EventScript_Samurai::
-	setspeaker ChiiTown_EventScript_Samurai_Text_0
-	msgbox ChiiTown_EventScript_Samurai_Text_1, MSGBOX_NPC
+	setspeaker SP_NAME_SAMURAI
+	msgbox ChiiTown_EventScript_Samurai_Text_0, MSGBOX_NPC
 	return
 
 
@@ -378,21 +378,18 @@ ChiiTown_EventScript_BattlingBoy_Movement_0:
 	step_end
 
 ChiiTown_EventScript_WatchfulMom_Text_0:
-	.string "Woman$"
-
-ChiiTown_EventScript_WatchfulMom_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}I'm dropping off my children to\n"
 	.string "school.\p"
 	.string "With all the recent Pokémon attacks,\n"
 	.string "I will not let them leave my sight!$"
 
-ChiiTown_EventScript_WatchfulMom_Text_2:
+ChiiTown_EventScript_WatchfulMom_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}I'm waiting to pick up my children\n"
 	.string "after school.\p"
 	.string "With all the recent Pokémon attacks,\n"
 	.string "I will not let them leave my sight!$"
 
-ChiiTown_EventScript_WatchfulMom_Text_3:
+ChiiTown_EventScript_WatchfulMom_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}Phew… Being a full-time mom is\n"
 	.string "exhausting…$"
 
@@ -409,52 +406,37 @@ ChiiTown_EventScript_Kecleon_Text_0:
 	.string "Kleeeeh!$"
 
 ChiiTown_EventScript_PlantingFlowers_Text_0:
-	.string "Little girl$"
-
-ChiiTown_EventScript_PlantingFlowers_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm planting flowers so that the wild\n"
 	.string "Pokémon become happy again!$"
 
 ChiiTown_EventScript_AlsoPlantingFlowers_Text_0:
-	.string "Little boy$"
-
-ChiiTown_EventScript_AlsoPlantingFlowers_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}She's making me plant flowers so that\n"
 	.string "the wild Pokémon become happy again.\p"
 	.string "I'm not though…$"
 
 ChiiTown_EventScript_WatchingTheChildren_Text_0:
-	.string "Sensei$"
-
-ChiiTown_EventScript_WatchingTheChildren_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Recess is great to channel the\n"
 	.string "children's pent up energy.$"
 
 ChiiTown_EventScript_EatingBerries_Text_0:
-	.string "Twin girl$"
-
-ChiiTown_EventScript_EatingBerries_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Sensei said that we should eat\n"
 	.string "berries to grow big and strong!\p"
 	.string "But how are we supposed to get them\n"
 	.string "if we aren't big and strong yet?$"
 
-ChiiTown_EventScript_EatingBerries_Text_2:
+ChiiTown_EventScript_EatingBerries_Text_1:
 	.string "Give the girl an Oran Berry?$"
 
-ChiiTown_EventScript_EatingBerries_Text_3:
+ChiiTown_EventScript_EatingBerries_Text_2:
 	.string "Give$"
 
-ChiiTown_EventScript_EatingBerries_Text_4:
+ChiiTown_EventScript_EatingBerries_Text_3:
 	.string "Don't give$"
 
-ChiiTown_EventScript_EatingBerries_Text_5:
+ChiiTown_EventScript_EatingBerries_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Oh my gosh, thank you!$"
 
 ChiiTown_EventScript_BerryEnthusiast_Text_0:
-	.string "Twin boy$"
-
-ChiiTown_EventScript_BerryEnthusiast_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}I've been eating berries just like\n"
 	.string "Sensei said, but I haven't grown yet.\p"
 	.string "I don't care though. They're\n"
@@ -505,9 +487,6 @@ ChiiTown_EventScript_BattlingBoy_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Fine! Go do grownup stuff!$"
 
 ChiiTown_EventScript_Mart_Text_0:
-	.string "Shopkeeper$"
-
-ChiiTown_EventScript_Mart_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Welcome to Chii Town's market!\p"
 	.string "How may I help you?$"
 
@@ -515,9 +494,6 @@ ChiiTown_EventScript_MartDecor_Text_0:
 	.string "Decors!$"
 
 ChiiTown_EventScript_Samurai_Text_0:
-	.string "Samurai$"
-
-ChiiTown_EventScript_Samurai_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}There's been reports of shady men\n"
 	.string "dressed in blue loitering around here.\p"
 	.string "Be careful when traveling!$"

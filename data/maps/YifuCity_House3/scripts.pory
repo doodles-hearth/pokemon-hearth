@@ -5,7 +5,7 @@ mapscripts YifuCity_House3_MapScripts {
 script YifuCity_House3_EggGirlsMom {
 	lock
 	faceplayer
-	setspeaker("Woman")
+	setspeaker(SP_NAME_WOMAN)
 	// TODO EVA: tuesday -> daycare
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}I help out at the Pokémon daycare west of Windycape on tuesdays. Sometimes they'll let me bring back an egg for my daughter!"
@@ -36,7 +36,7 @@ script YifuCity_House3_EventScript_EggGirl {
 	} else {
 		// TODO Make egg hatch after a while (nb steps? badge?)
 		applymovement(VAR_LAST_TALKED, moves(emote_happy))
-		setspeaker("Little girl")
+		setspeaker(SP_NAME_LITTLE_GIRL)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Can't wait for my egg to hatch!"
 		))
@@ -45,7 +45,7 @@ script YifuCity_House3_EventScript_EggGirl {
 }
 
 script YifuCity_House3_NotTradedYet {
-	setspeaker("Little girl")
+	setspeaker(SP_NAME_LITTLE_GIRL)
 	special(GetPlayerSirMissString)
 	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	msgbox(format(
@@ -69,7 +69,7 @@ script YifuCity_House3_NotTradedYet {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
-			setspeaker("Little girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Really?! Me too!! Pokémon eggs are so cool!\l"
 				"I love not knowing what will jump out of the egg!\p"
@@ -77,7 +77,7 @@ script YifuCity_House3_NotTradedYet {
 				"That way we'll both have a surprise!"
 			))
 		case 1:
-			setspeaker("Little girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}WHAT? Ewww, gross! I don't mean EATING them!\p"
 				"I just love waiting for a Pokémon to jump of of its egg, especially when I have no idea what it's gonna be!\p"
@@ -85,14 +85,14 @@ script YifuCity_House3_NotTradedYet {
 				"That way we'll both have a surprise!"
 			))
 		case 2:
-			setspeaker("Little girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Oh… Alright…"
 			))
 			release
 			end
 		case 3:
-			setspeaker("Little girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Eggs! Pokémon eggs!"
 				"I just love waiting for a Pokémon to jump of of its egg, especially when I have no idea what it's gonna be!\p"
@@ -118,7 +118,7 @@ script YifuCity_House3_NotTradedYet {
 			call(YifuCity_House3_TradeEgg)
 		case 1:
 			applymovement(VAR_LAST_TALKED, moves(emote_pensive))
-			setspeaker("Little girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Oh… Alright…"
 			))
@@ -131,7 +131,7 @@ script YifuCity_House3_TradeEgg {
 	special(ChoosePartyMon)
 	waitstate
 	if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
-		setspeaker("Little girl")
+		setspeaker(SP_NAME_LITTLE_GIRL)
 		msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Have you changed your mind?"))
 		closemessage
 	} else {
@@ -149,7 +149,7 @@ script YifuCity_House3_TradeEgg {
 			waitfanfare
 
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
-			setspeaker("Little girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Yay!!! I can't wait for my egg to hatch!\p"
 				"Aren't you wondering what you're gonna get?"
@@ -157,7 +157,7 @@ script YifuCity_House3_TradeEgg {
 			closemessage
 		} else {
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
-			setspeaker("Little girl")
+			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}That's not an egg, you silly!"))
 			closemessage
 		}

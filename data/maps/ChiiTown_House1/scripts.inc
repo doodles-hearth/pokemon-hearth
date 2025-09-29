@@ -17,8 +17,8 @@ ChiiTown_House1_EventScript_OldManTrespassing::
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	setspeaker ChiiTown_House1_EventScript_OldManTrespassing_Text_0
-	msgbox ChiiTown_House1_EventScript_OldManTrespassing_Text_1
+	setspeaker SP_NAME_OLD_MAN
+	msgbox ChiiTown_House1_EventScript_OldManTrespassing_Text_0
 	closemessage
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
@@ -34,8 +34,8 @@ ChiiTown_House1_EventScript_GrowlitheGrrr::
 	waitmovement 0
 	applymovement 2, Common_Movement_Delay48
 	waitmovement 0
-	setspeaker ChiiTown_House1_EventScript_GrowlitheGrrr_Text_0
-	msgbox ChiiTown_House1_EventScript_GrowlitheGrrr_Text_1
+	setspeakertomonname SPECIES_GROWLITHE
+	msgbox ChiiTown_House1_EventScript_GrowlitheGrrr_Text_0
 	closemessage
 	setseenmon SPECIES_GROWLITHE
 	applymovement OBJ_EVENT_ID_PLAYER, ChiiTown_House1_Movement_PlayerStepsAwayFromGrowlithe
@@ -60,7 +60,7 @@ ChiiTown_House1_EventScript_GrowlitheBarks::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	playmoncry SPECIES_GROWLITHE, CRY_MODE_NORMAL
-	setspeaker ChiiTown_House1_EventScript_GrowlitheGrrr_Text_0
+	setspeakertomonname SPECIES_GROWLITHE
 	msgbox ChiiTown_House1_EventScript_GrowlitheBarks_Text_0
 	waitmoncry
 	closemessage
@@ -152,9 +152,6 @@ ChiiTown_House1_Movement_PlayerStepsAwayFromGrowlithe:
 	step_end
 
 ChiiTown_House1_EventScript_OldManTrespassing_Text_0:
-	.string "Old Man$"
-
-ChiiTown_House1_EventScript_OldManTrespassing_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}Do you often barge into people's\n"
 	.string "houses uninvited without even taking\l"
 	.string "off your shoes?\p"
@@ -164,9 +161,6 @@ ChiiTown_House1_EventScript_OldManTrespassing_Text_1:
 	.string "Now get out of my house.$"
 
 ChiiTown_House1_EventScript_GrowlitheGrrr_Text_0:
-	.string "Growlithe$"
-
-ChiiTown_House1_EventScript_GrowlitheGrrr_Text_1:
 	.string "Grrrrrrr…$"
 
 ChiiTown_House1_EventScript_GrowlitheBarks_Text_0:

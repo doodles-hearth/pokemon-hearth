@@ -9,8 +9,8 @@ WindyCape2_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 WindyCape_EventScript_WindThroughHoles::
 	lock
-	setspeaker WindyCape_EventScript_WindThroughHoles_Text_0
-	msgbox WindyCape_EventScript_WindThroughHoles_Text_1
+	setspeaker SP_NAME_LITTLE_BOY
+	msgbox WindyCape_EventScript_WindThroughHoles_Text_0
 	closemessage
 	release
 	return
@@ -19,12 +19,12 @@ WindyCape_EventScript_WindThroughHoles::
 WindyCape_EventScript_Mart::
 	lock
 	faceplayer
-	setspeaker WindyCape_EventScript_Mart_Text_0
-	message WindyCape_EventScript_Mart_Text_1
+	setspeaker SP_NAME_SHOPKEEPER
+	message WindyCape_EventScript_Mart_Text_0
 	waitmessage
 	pokemart Soulkeep_Mart
-	setspeaker WindyCape_EventScript_Mart_Text_0
-	msgbox WindyCape_EventScript_Mart_Text_2, MSGBOX_DEFAULT
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox WindyCape_EventScript_Mart_Text_1, MSGBOX_DEFAULT
 	release
 	return
 
@@ -51,21 +51,15 @@ WindyCape_EventScript_SignApricorn::
 
 
 WindyCape_EventScript_WindThroughHoles_Text_0:
-	.string "Little Boy$"
-
-WindyCape_EventScript_WindThroughHoles_Text_1:
 	.string "When the wind blows through the holes\n"
 	.string "in the rock, it makes strange noises.\p"
 	.string "It's like it's singing a song!$"
 
 WindyCape_EventScript_Mart_Text_0:
-	.string "Shopkeeper$"
-
-WindyCape_EventScript_Mart_Text_1:
 	.string "Good day, welcome to Windycape's\n"
 	.string "market!$"
 
-WindyCape_EventScript_Mart_Text_2:
+WindyCape_EventScript_Mart_Text_1:
 	.string "Thank you for your business!$"
 
 WindyCape_EventScript_SignApricorn_Text_0:

@@ -36,20 +36,20 @@ SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll::
 SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling::
 	lock
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
-	setspeaker SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_0
-	msgbox SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_1
-	mcdialogue SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_2, SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_3, SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_4
+	setspeaker SP_NAME_BIG_SIS
+	msgbox SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_0
+	mcdialogue SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_1, SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_2, SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_3
 	closemessage
-	setspeaker SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_0
+	setspeaker SP_NAME_BIG_SIS
 	compare VAR_RESULT, 0
 	goto_if_eq SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_2
 	delay 48
-	msgbox SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_6
-	mcdialogue SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_7, SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_8
+	msgbox SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_5
+	mcdialogue SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_6, SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_7
 	closemessage
 	delay 30
-	setspeaker SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_0
-	msgbox SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_9
+	setspeaker SP_NAME_BIG_SIS
+	msgbox SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_8
 SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_1:
 	closemessage
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 2
@@ -59,7 +59,7 @@ SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_1:
 
 SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_2:
 	delay 30
-	msgbox SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_5
+	msgbox SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_4
 	goto SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_1
 
 
@@ -117,35 +117,32 @@ SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll_Text_0:
 	.string "“100% real Mareep wool”!$"
 
 SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_0:
-	.string "Big Sis$"
-
-SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_1:
 	.string "{PLAYER}! {PLAYER}!\n"
 	.string "Are you still sleeping?$"
 
-SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_2:
+SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_1:
 	.string "…Yes?$"
 
-SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_3:
+SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_2:
 	.string "Coming!$"
 
-SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_4:
+SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_3:
 	.string "…$"
 
-SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_5:
+SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_4:
 	.string "Very funny! Now get up and get ready!$"
 
-SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_6:
+SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_5:
 	.string "… … … … … …\p"
 	.string "…{PLAYER}!! ARE YOU UP?!$"
 
-SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_7:
+SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_6:
 	.string "COMIIIIING!!$"
 
-SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_8:
+SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_7:
 	.string "COMIIIIIIIIIIING!!!$"
 
-SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_9:
+SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_8:
 	.string "No need to yell, I can hear you just\n"
 	.string "fine!\p"
 	.string "Now get up and get ready!$"

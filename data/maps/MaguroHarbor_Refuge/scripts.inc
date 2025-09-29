@@ -23,8 +23,8 @@ MaguroHarbor_Refuge_EventScript_Hariko::
 	faceplayer
 	goto_if_set FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE, MaguroHarbor_Refuge_EventScript_Hariko_1
 	goto_if_set FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE, MaguroHarbor_Refuge_EventScript_Hariko_2
-	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
-	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_3
+	setspeaker SP_NAME_HARIKO
+	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_2
 	closemessage
 	setseenmon SPECIES_SLOWPOKE
 	setnamedmon SPECIES_SLOWPOKE
@@ -36,25 +36,25 @@ MaguroHarbor_Refuge_EventScript_Hariko::
 	applymovement LOCALID_SLOWPOKE, MaguroHarbor_Refuge_EventScript_Hariko_Movement_1
 	waitmovement LOCALID_SLOWPOKE
 	playmoncry SPECIES_SLOWPOKE, CRY_MODE_NORMAL
-	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_4
-	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_5
+	setspeaker SP_NAME_BEAN
+	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_3
 	closemessage
 	applymovement LOCALID_BEAN, MaguroHarbor_Refuge_EventScript_Hariko_Movement_2
 	waitmovement LOCALID_BEAN
-	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
-	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_6
+	setspeaker SP_NAME_HARIKO
+	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_4
 	goto MaguroHarbor_Refuge_BattleHariko
 	return
 
 MaguroHarbor_Refuge_EventScript_Hariko_1:
-	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
-	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_1
+	setspeaker SP_NAME_HARIKO
+	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_0
 	closemessage
 	return
 
 MaguroHarbor_Refuge_EventScript_Hariko_2:
-	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
-	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_2
+	setspeaker SP_NAME_HARIKO
+	msgbox MaguroHarbor_Refuge_EventScript_Hariko_Text_1
 	closemessage
 	goto MaguroHarbor_Refuge_BattleHariko
 	return
@@ -73,17 +73,17 @@ MaguroHarbor_Refuge_BattleHariko_1:
 MaguroHarbor_Refuge_BattleHariko_3:
 	trainerbattle_no_intro TRAINER_HARIKO_MAGURO, MaguroHarbor_Refuge_BattleHariko_Text_2
 	setflag FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE
-	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox MaguroHarbor_Refuge_BattleHariko_Text_3
 	closemessage
 	giveitem ITEM_UUMEGIRI, 4
-	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox MaguroHarbor_Refuge_BattleHariko_Text_4
 	closemessage
 	goto MaguroHarbor_Refuge_BattleHariko_1
 
 MaguroHarbor_Refuge_BattleHariko_4:
-	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_0
+	setspeaker SP_NAME_HARIKO
 	msgbox MaguroHarbor_Refuge_BattleHariko_Text_5
 	closemessage
 	goto MaguroHarbor_Refuge_BattleHariko_1
@@ -114,19 +114,19 @@ MaguroHarbor_Refuge_EventScript_Slowpoke_1:
 	return
 
 MaguroHarbor_Refuge_EventScript_Slowpoke_2:
-	setspeaker MaguroHarbor_Refuge_EventScript_Hariko_Text_4
+	setspeaker SP_NAME_BEAN
 	goto MaguroHarbor_Refuge_EventScript_Slowpoke_1
 
 
 MaguroHarbor_Refuge_EventScript_DescribedMons::
 	lock
 	faceplayer
-	setspeaker MaguroHarbor_Refuge_EventScript_DescribedMons_Text_0
+	setspeaker SP_NAME_MAN
 	getdescribedmon SPECIES_KRABBY
 	compare VAR_RESULT, 0
 	goto_if_ne MaguroHarbor_Refuge_EventScript_DescribedMons_2
 	applymovement VAR_LAST_TALKED, MaguroHarbor_Refuge_EventScript_DescribedMons_Movement_0
-	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_2
+	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1
 	closemessage
 MaguroHarbor_Refuge_EventScript_DescribedMons_1:
 	setnamedmon SPECIES_KRABBY
@@ -135,7 +135,7 @@ MaguroHarbor_Refuge_EventScript_DescribedMons_1:
 	return
 
 MaguroHarbor_Refuge_EventScript_DescribedMons_2:
-	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1
+	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_0
 	closemessage
 	goto MaguroHarbor_Refuge_EventScript_DescribedMons_1
 
@@ -174,9 +174,6 @@ MaguroHarbor_Refuge_EventScript_DescribedMons_Movement_0:
 	step_end
 
 MaguroHarbor_Refuge_EventScript_Hariko_Text_0:
-	.string "Hariko$"
-
-MaguroHarbor_Refuge_EventScript_Hariko_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Where are you headed after getting\n"
 	.string "the Maguro Dojo's Token?\p"
 	.string "Silveridge? I heard there are\n"
@@ -185,11 +182,11 @@ MaguroHarbor_Refuge_EventScript_Hariko_Text_1:
 	.string "If you see one, tell me about it the\n"
 	.string "next time we meet.$"
 
-MaguroHarbor_Refuge_EventScript_Hariko_Text_2:
+MaguroHarbor_Refuge_EventScript_Hariko_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello again, {PLAYER}. So, do you\n"
 	.string "want to battle?$"
 
-MaguroHarbor_Refuge_EventScript_Hariko_Text_3:
+MaguroHarbor_Refuge_EventScript_Hariko_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Oh, hello there, {PLAYER}.\n"
 	.string "Fancy meeting you here, as they say.\p"
 	.string "I assume you are here to challenge\n"
@@ -201,13 +198,10 @@ MaguroHarbor_Refuge_EventScript_Hariko_Text_3:
 	.string "You've not met my companion yet, have\n"
 	.string "you? Meet my Slowpoke, Bean!$"
 
-MaguroHarbor_Refuge_EventScript_Hariko_Text_4:
-	.string "Bean$"
-
-MaguroHarbor_Refuge_EventScript_Hariko_Text_5:
+MaguroHarbor_Refuge_EventScript_Hariko_Text_3:
 	.string "Hurr…$"
 
-MaguroHarbor_Refuge_EventScript_Hariko_Text_6:
+MaguroHarbor_Refuge_EventScript_Hariko_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Bean is a little slow, but he is happy\n"
 	.string "to meet you!\p"
 	.string "He may not look like a fighter, but he\n"
@@ -248,13 +242,10 @@ MaguroHarbor_Refuge_EventScript_Slowpoke_Text_0:
 	.string "Duh…$"
 
 MaguroHarbor_Refuge_EventScript_DescribedMons_Text_0:
-	.string "Man$"
-
-MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}So, have you written many entries in\n"
 	.string "your encyclopedia?$"
 
-MaguroHarbor_Refuge_EventScript_DescribedMons_Text_2:
+MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Oh! You're writing a Pokémon\n"
 	.string "encyclopedia? That's amazing!\p"
 	.string "I bet you're wondering how to fill up\n"

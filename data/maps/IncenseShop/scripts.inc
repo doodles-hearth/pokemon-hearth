@@ -50,9 +50,9 @@ IncenseShop_EventScript_PurpleIncense::
 IncenseShop_EventScript_Shopkeeper::
 	lock
 	goto_if_set FLAG_TALKED_TO_INCENSE_SHOP_KEEPER, IncenseShop_EventScript_Shopkeeper_2
-	setspeaker IncenseShop_EventScript_Shopkeeper_Text_0
-	msgbox IncenseShop_EventScript_Shopkeeper_Text_3
-	mcdialogue IncenseShop_EventScript_Shopkeeper_Text_4, IncenseShop_EventScript_Shopkeeper_Text_5, IncenseShop_EventScript_Shopkeeper_Text_6
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox IncenseShop_EventScript_Shopkeeper_Text_2
+	mcdialogue IncenseShop_EventScript_Shopkeeper_Text_3, IncenseShop_EventScript_Shopkeeper_Text_4, IncenseShop_EventScript_Shopkeeper_Text_5
 	closemessage
 	switch VAR_RESULT
 	case 0, IncenseShop_EventScript_Shopkeeper_6
@@ -63,24 +63,24 @@ IncenseShop_EventScript_Shopkeeper_1:
 
 IncenseShop_EventScript_Shopkeeper_2:
 	applymovement VAR_LAST_TALKED, IncenseShop_EventScript_Shopkeeper_Movement_0
-	setspeaker IncenseShop_EventScript_Shopkeeper_Text_0
-	msgbox IncenseShop_EventScript_Shopkeeper_Text_1
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox IncenseShop_EventScript_Shopkeeper_Text_0
 	closemessage
 	delay 30
 	faceplayer
-	msgbox IncenseShop_EventScript_Shopkeeper_Text_2
+	msgbox IncenseShop_EventScript_Shopkeeper_Text_1
 	closemessage
 	call IncenseShop_EventScript_OpenMart
 	goto IncenseShop_EventScript_Shopkeeper_1
 
 IncenseShop_EventScript_Shopkeeper_6:
-	setspeaker IncenseShop_EventScript_Shopkeeper_Text_0
-	msgbox IncenseShop_EventScript_Shopkeeper_Text_7
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox IncenseShop_EventScript_Shopkeeper_Text_6
 	closemessage
 	faceplayer
 	delay 30
-	setspeaker IncenseShop_EventScript_Shopkeeper_Text_0
-	msgbox IncenseShop_EventScript_Shopkeeper_Text_8
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox IncenseShop_EventScript_Shopkeeper_Text_7
 	closemessage
 	setflag FLAG_TALKED_TO_INCENSE_SHOP_KEEPER
 	call IncenseShop_EventScript_OpenMart
@@ -93,7 +93,7 @@ IncenseShop_EventScript_OpenMart::
 	goto_if_set FLAG_BADGE04_GET, IncenseShop_EventScript_OpenMart_4
 	pokemart IncenseShop_Mart_1
 IncenseShop_EventScript_OpenMart_1:
-	setspeaker IncenseShop_EventScript_Shopkeeper_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox IncenseShop_EventScript_OpenMart_Text_0, MSGBOX_DEFAULT
 	return
 
@@ -172,37 +172,34 @@ IncenseShop_EventScript_PurpleIncense_Text_0:
 	.string "hot oil.$"
 
 IncenseShop_EventScript_Shopkeeper_Text_0:
-	.string "Shopkeeper$"
-
-IncenseShop_EventScript_Shopkeeper_Text_1:
 	.string "… … … … … …\n"
 	.string "… … … ZzzZz…$"
 
-IncenseShop_EventScript_Shopkeeper_Text_2:
+IncenseShop_EventScript_Shopkeeper_Text_1:
 	.string "… … …I'm awake! I'm awake!\p"
 	.string "{FONT_SMALL}Yawn{FONT_NORMAL}… Welcome to the Incense Shop…$"
 
-IncenseShop_EventScript_Shopkeeper_Text_3:
+IncenseShop_EventScript_Shopkeeper_Text_2:
 	.string "… … … … … …\n"
 	.string "… … … … … …$"
 
-IncenseShop_EventScript_Shopkeeper_Text_4:
+IncenseShop_EventScript_Shopkeeper_Text_3:
 	.string "Excuse me!$"
 
-IncenseShop_EventScript_Shopkeeper_Text_5:
+IncenseShop_EventScript_Shopkeeper_Text_4:
 	.string "Hello?$"
 
-IncenseShop_EventScript_Shopkeeper_Text_6:
+IncenseShop_EventScript_Shopkeeper_Text_5:
 	.string "… … …$"
 
-IncenseShop_EventScript_Shopkeeper_Text_7:
+IncenseShop_EventScript_Shopkeeper_Text_6:
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "… … …ZzzZZz…\p"
 	.string "… … … … … …\n"
 	.string "… … … Huh?$"
 
-IncenseShop_EventScript_Shopkeeper_Text_8:
+IncenseShop_EventScript_Shopkeeper_Text_7:
 	.string "…Oh, yes hello, welcome…\n"
 	.string "{FONT_SMALL}Yawn{FONT_NORMAL}… …to the Incense Shop…\p"
 	.string "I'm sorry, the Incense in the air\n"

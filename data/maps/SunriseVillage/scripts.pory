@@ -35,7 +35,7 @@ script SunriseVillage_Event_FatGuy {
     lock
     faceplayer
 
-    setspeaker("Neighbour")
+    setspeaker(SP_NAME_NEIGHBOR)
     if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 4) {
         applymovement(VAR_LAST_TALKED, moves(emote_heart))
         msgbox(format(
@@ -62,7 +62,7 @@ script SunriseVillage_Event_GuardForest {
     lockall
     applymovement(LOCALID_GUARD, Common_Movement_WalkInPlaceFasterLeft)
     if (flag(FLAG_RECEIVED_STARTER)) {
-        setspeaker("Neighbour")
+        setspeaker(SP_NAME_NEIGHBOR)
         if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
             msgbox(format(
                 "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Oh, I see you received a Pokémon!\p"
@@ -94,13 +94,13 @@ script SunriseVillage_Event_GuardForest {
         }
     }
     else {
-        setspeaker("Neighbour")
+        setspeaker(SP_NAME_NEIGHBOR)
         msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Stop right there, kid!"
         ))
         closemessage
         turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-        setspeaker("Neighbour")
+        setspeaker(SP_NAME_NEIGHBOR)
         msgbox(format(
             "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Wild Pokémon have been lashing out recently.\p"
             "I know you're used to walking around on your own, but the woods have become a dangerous place lately!\p"
@@ -118,7 +118,7 @@ script SunriseVillage_Event_GuardForest {
 script SunriseVillage_Event_GuardForest_Interact {
     lock
     faceplayer
-    setspeaker("Neighbour")
+    setspeaker(SP_NAME_NEIGHBOR)
     if (flag(FLAG_RECEIVED_STARTER)) {
         if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
             msgbox(format(
@@ -160,7 +160,7 @@ script SunriseVillage_Event_LittleGirl {
     lock
     faceplayer
     applymovement(VAR_LAST_TALKED, moves(emote_happy))
-    setspeaker("Little girl")
+    setspeaker(SP_NAME_LITTLE_GIRL)
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I can't wait I can't wait I can't wait!!!\p"
         "AHHHHH I CAN'T WAIT!!!!"
@@ -173,7 +173,7 @@ script SunriseVillage_Event_LittleGirl {
 script SunriseVillage_Event_Boy {
     lock
     faceplayer
-    setspeaker("Kid")
+    setspeaker(SP_NAME_BOY)
     if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 4) {
         msgbox(format(
             "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}My Happiny is the strongest of all! See how fierce it looks?"
@@ -197,7 +197,7 @@ script SunriseVillage_Event_Boy {
 script SunriseVillage_Event_Woman {
     lock
     faceplayer
-    setspeaker("Neighbour")
+    setspeaker(SP_NAME_NEIGHBOR)
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}I can see the Poké Balls from here… I've never seen so many in my life!"
     ))
@@ -210,7 +210,7 @@ script SunriseVillage_Event_Farmer {
     lock
     faceplayer
     applymovement(VAR_LAST_TALKED, moves(emote_upset))
-    setspeaker("Neighbour")
+    setspeaker(SP_NAME_NEIGHBOR)
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_1 EMOTE_NORMAL}I've been waiting for hours!"
     ))
@@ -222,7 +222,7 @@ script SunriseVillage_Event_Farmer {
 script SunriseVillage_Event_OldMan {
     lock
     faceplayer
-    setspeaker("Neighbour")
+    setspeaker(SP_NAME_NEIGHBOR)
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}The distribution is about to start."
     ))
@@ -234,7 +234,7 @@ script SunriseVillage_Event_OldWoman {
     lock
     faceplayer
     applymovement(VAR_LAST_TALKED, moves(emote_angry))
-    setspeaker("Neighbour")
+    setspeaker(SP_NAME_NEIGHBOR)
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_WOMAN EMOTE_NORMAL}I'm tired of waiting!"
     ))

@@ -11,7 +11,7 @@ mapscripts BeachboundRoute_MapScripts {
 
 script BeachboundRoute_EventScript_RunningBoy {
 	lock
-	setspeaker("Little boy")
+	setspeaker(SP_NAME_LITTLE_BOY)
 	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}Running running running!!\p"
@@ -23,7 +23,7 @@ script BeachboundRoute_EventScript_RunningBoy {
 
 script BeachboundRoute_EventScript_RunningGirl {
 	lock
-	setspeaker("Little girl")
+	setspeaker(SP_NAME_LITTLE_GIRL)
 	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}Wait for me!! It's not fair!!!"
@@ -89,7 +89,7 @@ script BeachboundRoute_EventScript_Wooloo {
 }
 
 script BeachboundRoute_EventScript_Shepherd {
-	setspeaker("Shepherd")
+	setspeaker(SP_NAME_SHEPHERD)
 	msgbox(format(
 		"I bring my Wooloo here to graze everyday."
 	), MSGBOX_NPC)
@@ -102,7 +102,7 @@ script BeachboundRoute_EventScript_Karu {
 		format("N-nice to meet you…"),
 		BeachboundRoute_EventScript_Karu_PostBattle
 	)
-	setspeaker("Karu")
+	setspeaker(SP_NAME_LASS)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}You wiped me away there. How long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -119,7 +119,7 @@ script BeachboundRoute_EventScript_Kin {
 		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I run several hours everyday! You literally cannot defeat me!"),
 		format("Ow! I pulled a muscle!")
 	)
-	setspeaker("Kin")
+	setspeaker(SP_NAME_BATTLE_GIRL)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}You really don't look strong at all, and yet…"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -130,7 +130,7 @@ script BeachboundRoute_EventScript_Kouta {
 		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Look at how soft my Pokémon is!"),
 		format("Maybe I'm the one who's soft…")
 	)
-	setspeaker("Kouta")
+	setspeaker(SP_NAME_YOUNGSTER)
 	setnamedmon(SPECIES_MAREEP)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}When I pet my Mareep, I can hear the static crackle!"))
 	release
@@ -144,7 +144,7 @@ script BeachboundRoute_EventScript_Masato {
 		format("Okay, rude.")
 	)
 	setnamedmon(SPECIES_KRICKETOT)
-	setspeaker("Masato")
+	setspeaker(SP_NAME_BUGCATCHER)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I hope one day my Kricketot evolves! I wonder what delightful melody he'll be able to sing then…"))
 	release
 	end
@@ -153,7 +153,7 @@ script BeachboundRoute_EventScript_Masato {
 script BeachboundRoute_EventScript_SomeoneCallingForHelp {
 	lock
 
-	setspeaker("???")
+	setspeaker(SP_NAME_UNKNOWN)
 	msgbox(format(
 		"Help! Someone help me!"
 	))
@@ -174,7 +174,7 @@ script BeachboundRoute_EventScript_SomeoneCallingForHelp {
 script BeachboundRoute_EventScript_WhereAreYouGoing {
 	lock
 
-	setspeaker("???")
+	setspeaker(SP_NAME_UNKNOWN)
 	msgbox(format(
 		"Hey, you! In the red and blue clothes!\p"
 		"Are you… Are you leaving?!\p"
@@ -308,7 +308,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 		applymovement(LOCALID_GRUNT_3, Common_Movement_WalkInPlaceFasterDown)
 		waitmovement(0)
-		setspeaker("Crobat Shadow")
+		setspeaker(SP_NAME_CROBAT_SHADOW)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Uh… What's an allergory, boss?"
 		))
@@ -317,7 +317,7 @@ script BeachboundRoute_EventScript_Mugging {
 		turnobject(LOCALID_GRUNT_BOSS, DIR_NORTH)
 		delay(40)
 
-		setspeaker("Crobat boss")
+		setspeaker(SP_NAME_CROBAT_BOSS)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}…Gonna pretend ya didn't say that."
 		))
@@ -327,14 +327,14 @@ script BeachboundRoute_EventScript_Mugging {
 
 		delay(24)
 
-		setspeaker("Crobat Boss")
+		setspeaker(SP_NAME_CROBAT_BOSS)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}'Nuff yappin' already! Take care of this clown, boys!"
 		))
 		closemessage
 	} else {
 		turnobject(LOCALID_GRUNT_BOSS, DIR_SOUTH)
-		setspeaker("Crobat Boss")
+		setspeaker(SP_NAME_CROBAT_BOSS)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Can't believe it! Look who's back!\p"
 			"Back fer another whoopin', are we?\p"
@@ -360,7 +360,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	applymovement(LOCALID_GRUNT_1, Common_Movement_WalkInPlaceFasterRight)
 	waitmovement(LOCALID_GRUNT_1)
-	setspeaker("Zubat Grunt")
+	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Sorry, boss!"
 	))
@@ -368,7 +368,7 @@ script BeachboundRoute_EventScript_Mugging {
 	
 	applymovement(LOCALID_GRUNT_2, Common_Movement_WalkInPlaceFasterRight)
 	waitmovement(LOCALID_GRUNT_2)
-	setspeaker("Zubat Grunt")
+	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We got stomped proper, boss!"
 	))
@@ -377,7 +377,7 @@ script BeachboundRoute_EventScript_Mugging {
 	delay(24)
 
 	applymovement(LOCALID_GRUNT_BOSS, moves(emote_angry))
-	setspeaker("Crobat Boss")
+	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Ya gotta be kiddin' me…\p"
 		"Can't even do no regular muggin' in peace anymore!"
@@ -387,7 +387,7 @@ script BeachboundRoute_EventScript_Mugging {
 	applymovement(LOCALID_GRUNT_BOSS, moves(walk_in_place_fast_down))
 	waitmovement(LOCALID_GRUNT_BOSS)
 
-	setspeaker("Crobat Boss")
+	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Well, I ain't gonna stoop to fighting ya myself!"
 	))
@@ -395,7 +395,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	applymovement(LOCALID_GRUNT_3, moves(walk_in_place_fast_down))
 	waitmovement(0)
-	setspeaker("Zubat Grunt")
+	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Boss, what's a stoop?"
 	))
@@ -406,7 +406,7 @@ script BeachboundRoute_EventScript_Mugging {
 	applymovement(LOCALID_GRUNT_BOSS, moves(face_up, delay_16 * 3))
 	waitmovement(0)
 
-	setspeaker("Crobat Boss")
+	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}For the love of god, Kevin…"
 	))
@@ -417,7 +417,7 @@ script BeachboundRoute_EventScript_Mugging {
 	applymovement(LOCALID_GRUNT_BOSS, moves(walk_in_place_fast_down))
 	waitmovement(0)
 	
-	setspeaker("Crobat Boss")
+	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Movin' on! You've not seen the last of us, ya annoying brat!\p"
 		"Ya better steer clear of the Crobat Shadows from now on!\p"
@@ -427,7 +427,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	turnobject(LOCALID_GRUNT_BOSS, DIR_NORTH)
 
-	setspeaker("Crobat Boss")
+	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}ZUBATS, ALIGN!!"
 	))
@@ -464,7 +464,7 @@ script BeachboundRoute_EventScript_Mugging {
 	applymovement(LOCALID_MUGGED_WOMAN, moves(walk_down * 2))
 	waitmovement(LOCALID_MUGGED_WOMAN)
 
-	setspeaker("Woman")
+	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_1 EMOTE_NORMAL}Thank you so much for helping me!\p"
 		"Those ruffians were about to steal my Pokémon!\p"
@@ -475,7 +475,7 @@ script BeachboundRoute_EventScript_Mugging {
 	// TODO EVA: reward
 	giveitem(ITEM_WHITE_HERB)
 
-	setspeaker("Woman")
+	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_1 EMOTE_NORMAL}What's your name?\n"
 		"{PLAYER}?\p"
@@ -494,13 +494,13 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 	lock
 	faceplayer
 	if (flag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)) {
-		setspeaker("Okada")
+		setspeaker(SP_NAME_OKADA)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Hello, hello again, {PLAYER}!\p"
 			"Can I interest you in some handpicked goods?"
 		))
 	} elif (flag(FLAG_MET_TRAVELING_MERCHANT)) {
-		setspeaker("Okada")
+		setspeaker(SP_NAME_OKADA)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Hello! … …Have we met before?\p"
 			"Sorry, I'm not good with faces…\p"
@@ -509,7 +509,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 			"Can I interest you in some handpicked goods?"
 		))
 	} else {
-		setspeaker("Okada")
+		setspeaker(SP_NAME_OKADA)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Hello, hello again!\p"
 			"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
@@ -526,7 +526,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 	setflag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)
 
 	limitedpokemart(LIMITED_SHOP_1)
-	setspeaker("Okada")
+	setspeaker(SP_NAME_OKADA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Thanks for your business! Now where did I put that scroll again…"
 	))

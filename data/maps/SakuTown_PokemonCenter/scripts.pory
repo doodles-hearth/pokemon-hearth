@@ -58,7 +58,7 @@ script SakuTown_PokemonCenter_EventScript_Nurse {
 	lock
 
 	faceplayer
-	setspeaker("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}Hello! Apologies for the mess, we're not fully set up yet!\p"
 		"Let me heal your Pokémon!"
@@ -71,7 +71,7 @@ script SakuTown_PokemonCenter_EventScript_Nurse {
 	callnative(UpdateFollowingPokemon)
 	fadescreenswapbuffers(FADE_FROM_BLACK)
 
-	setspeaker("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}Come back soon!"
 	))
@@ -85,7 +85,7 @@ script SakuTown_PokemonCenter_EventScript_Nurse {
 script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
 	lock
 	faceplayer
-	setspeaker("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}This Pokémon refuge is brand new, courtesy of the Toku Council!\p"
 		"As you can see, it's still being built.\NWatch out for the falling bricks,\lha ha, just kidding!\p"
@@ -101,7 +101,7 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 	setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2)
 	applymovement(LOCALID_NURSE, moves(face_right))
 	waitmovement(0)
-	setspeaker("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}I'm sorry, but there's nothing I can do yet.\p"
 		"We haven't tools that allow us to heal a Pokémon in this dire a state."
@@ -110,14 +110,14 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5))
 
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("Y'have to do som'thin', miss!\nCantcha see she's in pain?!"))
 	closemessage
 
 	applymovement(LOCALID_NURSE, moves(walk_in_place_fast_down))
 	waitmovement(0)
 
-	setspeaker("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}She can stay here for as long as she needs.\p"
 		"I'll keep her in as good a shape as I can."
@@ -131,7 +131,7 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 script SakuTown_PokemonCenter_EventScript_Farmer1 {
 	lock
 	faceplayer
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	returnqueststate(QUEST_SAKURASCYTHER)
 	switch(var(VAR_RESULT))
 	{
@@ -179,7 +179,7 @@ script(local) HealedScytherScript{
 	waitmovement(0)
 	waitse
 
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("That's it!\nPlease, Wielder, quickly!"))
 	closemessage
 
@@ -192,7 +192,7 @@ script(local) HealedScytherScript{
 	applymovement(LOCALID_BED_FARMER_1, moves(walk_in_place_fast_right))
 	waitmovement(0)
 
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("Here, girl…\nThis'll make ye feel better…"))
 	closemessage
 
@@ -226,7 +226,7 @@ script(local) HealedScytherScript{
 	waitmovement(LOCALID_BED_FARMER_1)
 	waitmovement(LOCALID_BED_FARMER_2)
 
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
 		"Wielder… I don't know how to thank ya.\NWe were so worried…\p"
 		"Where did you get this medicine?"
@@ -235,7 +235,7 @@ script(local) HealedScytherScript{
 
 	mcdialogue("The healer in Kura Village!")
 
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("Kura Village, eh…"))
 
 	applymovement(LOCALID_BED_FARMER_1, moves(face_up))
@@ -258,14 +258,14 @@ script(local) HealedScytherScript{
 	waitmoncry
 	closemessage
 
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("{FONT_SMALL} Maybe they ain't s'bad afta' all…"))
 	closemessage
 
 	applymovement(LOCALID_BED_FARMER_1, moves(face_player))
 	waitmovement(0)
 
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("Thank you, Wielder. I can give ye a reward for your effors. Just meet us in the fields outside."))
 	closemessage
 
@@ -287,7 +287,7 @@ script(local) HealedScytherScript{
 
 script SakuTown_PokemonCenter_EventScript_Farmer2 {
 	lock
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("There, there, girl…\nIt'll be okay…"))
 	closemessage
 

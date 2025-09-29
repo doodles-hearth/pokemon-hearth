@@ -56,14 +56,14 @@ WhiteslateRoute_Trigger_ShamisenPlayerBottom_2:
 
 
 WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady::
-	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
-	msgbox WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_1
+	setspeaker SP_NAME_SHAMISEN_PLAYER
+	msgbox WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
 	call WhiteslateRoute_EventScript_ShamisenPlayerChoice
 	return
 
 
 WhiteslateRoute_EventScript_ShamisenChallenge::
-	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	setspeaker SP_NAME_SHAMISEN_PLAYER
 	msgbox WhiteslateRoute_EventScript_ShamisenChallenge_Text_0
 	call WhiteslateRoute_EventScript_ShamisenPlayerChoice
 	return
@@ -72,7 +72,7 @@ WhiteslateRoute_EventScript_ShamisenChallenge::
 WhiteslateRoute_EventScript_ShamisenCallsOut::
 	applymovement 23, WhiteslateRoute_EventScript_ShamisenCallsOut_Movement_0
 	waitmovement 23
-	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	setspeaker SP_NAME_SHAMISEN_PLAYER
 	msgbox WhiteslateRoute_EventScript_ShamisenCallsOut_Text_0
 	closemessage
 	return
@@ -82,7 +82,7 @@ WhiteslateRoute_EventScript_ShamisenPlayer::
 	lock
 	applymovement 23, WhiteslateRoute_EventScript_ShamisenPlayer_Movement_0
 	waitmovement 23
-	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	setspeaker SP_NAME_SHAMISEN_PLAYER
 	msgbox WhiteslateRoute_EventScript_ShamisenChallenge_Text_0
 	call WhiteslateRoute_EventScript_ShamisenPlayerChoice
 	release
@@ -98,7 +98,7 @@ WhiteslateRoute_EventScript_ShamisenPlayerChoice::
 	return
 
 WhiteslateRoute_EventScript_ShamisenPlayerChoice_2:
-	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	setspeaker SP_NAME_SHAMISEN_PLAYER
 	msgbox WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_2
 	closemessage
 	applymovement 24, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_0
@@ -115,7 +115,7 @@ WhiteslateRoute_EventScript_ShamisenPlayerChoice_2:
 	return
 
 WhiteslateRoute_EventScript_ShamisenPlayerChoice_3:
-	setspeaker WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0
+	setspeaker SP_NAME_SHAMISEN_PLAYER
 	msgbox WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_3
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_3
@@ -138,67 +138,67 @@ WhiteslateRoute_EventScript_ShamisenPlayerPokemon::
 
 WhiteslateRoute_EventScript_Itsumi::
 	trainerbattle_single TRAINER_ITSUMI, WhiteslateRoute_EventScript_Itsumi_Text_0, WhiteslateRoute_EventScript_Itsumi_Text_1
-	setspeaker WhiteslateRoute_EventScript_Itsumi_Text_2
-	msgbox WhiteslateRoute_EventScript_Itsumi_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_BREEDER
+	msgbox WhiteslateRoute_EventScript_Itsumi_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Ryosuke::
 	trainerbattle_single TRAINER_RYOSUKE, WhiteslateRoute_EventScript_Ryosuke_Text_0, WhiteslateRoute_EventScript_Ryosuke_Text_1
-	setspeaker WhiteslateRoute_EventScript_Ryosuke_Text_2
-	msgbox WhiteslateRoute_EventScript_Ryosuke_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_BREEDER
+	msgbox WhiteslateRoute_EventScript_Ryosuke_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Riku::
 	trainerbattle_single TRAINER_RIKU, WhiteslateRoute_EventScript_Riku_Text_0, WhiteslateRoute_EventScript_Riku_Text_1
-	setspeaker WhiteslateRoute_EventScript_Riku_Text_2
-	msgbox WhiteslateRoute_EventScript_Riku_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_NINJA_BOY
+	msgbox WhiteslateRoute_EventScript_Riku_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Tomomi::
 	trainerbattle_single TRAINER_TOMOMI, WhiteslateRoute_EventScript_Tomomi_Text_0, WhiteslateRoute_EventScript_Tomomi_Text_1
-	setspeaker WhiteslateRoute_EventScript_Tomomi_Text_2
-	msgbox WhiteslateRoute_EventScript_Tomomi_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_BEAUTY
+	msgbox WhiteslateRoute_EventScript_Tomomi_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Yono::
 	trainerbattle_single TRAINER_YONO, WhiteslateRoute_EventScript_Yono_Text_0, WhiteslateRoute_EventScript_Yono_Text_1
-	setspeaker WhiteslateRoute_EventScript_Yono_Text_2
-	msgbox WhiteslateRoute_EventScript_Yono_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_OLD_LADY
+	msgbox WhiteslateRoute_EventScript_Yono_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Sumi::
 	trainerbattle_single TRAINER_SUMI, WhiteslateRoute_EventScript_Sumi_Text_0, WhiteslateRoute_EventScript_Sumi_Text_1
-	setspeaker WhiteslateRoute_EventScript_Sumi_Text_2
+	setspeaker SP_NAME_HEX_MANIAC
 	applymovement VAR_LAST_TALKED, WhiteslateRoute_EventScript_Sumi_Movement_0
-	msgbox WhiteslateRoute_EventScript_Sumi_Text_3, MSGBOX_AUTOCLOSE
+	msgbox WhiteslateRoute_EventScript_Sumi_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Tomiko::
 	trainerbattle_single TRAINER_TOMIKO, WhiteslateRoute_EventScript_Tomiko_Text_0, WhiteslateRoute_EventScript_Tomiko_Text_1
 	setspeakertomonname SPECIES_SPINDA
-	setspeaker WhiteslateRoute_EventScript_Tomiko_Text_2
-	msgbox WhiteslateRoute_EventScript_Tomiko_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_LASS
+	msgbox WhiteslateRoute_EventScript_Tomiko_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_Utaro::
 	trainerbattle_single TRAINER_UTARO, WhiteslateRoute_EventScript_Utaro_Text_0, WhiteslateRoute_EventScript_Utaro_Text_1
 	setspeakertomonname SPECIES_SEVIPER
-	setspeaker WhiteslateRoute_EventScript_Utaro_Text_2
-	msgbox WhiteslateRoute_EventScript_Utaro_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_YOUNGSTER
+	msgbox WhiteslateRoute_EventScript_Utaro_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 WhiteslateRoute_EventScript_ShuckleGirl::
 	setnamedmon SPECIES_SHUCKLE
-	setspeaker WhiteslateRoute_EventScript_ShuckleGirl_Text_0
-	msgbox WhiteslateRoute_EventScript_ShuckleGirl_Text_1, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_WOMAN
+	msgbox WhiteslateRoute_EventScript_ShuckleGirl_Text_0, MSGBOX_AUTOCLOSE
 	end
 
 
@@ -242,8 +242,8 @@ WhiteslateRoute_EventScript_Shuckle_2:
 
 WhiteslateRoute_Trigger_SecretBase::
 	lockall
-	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
-	msgbox WhiteslateRoute_Trigger_SecretBase_Text_1
+	setspeaker SP_NAME_MAN
+	msgbox WhiteslateRoute_Trigger_SecretBase_Text_0
 	closemessage
 	applymovement 7, WhiteslateRoute_Trigger_SecretBase_Movement_0
 	waitmovement 7
@@ -262,8 +262,8 @@ WhiteslateRoute_Trigger_SecretBase::
 	setmetatile 26, 34, METATILE_PorytilesPrimaryTutorial_CaveEntrance, TRUE
 	special DrawWholeMapView
 	waitse
-	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
-	msgbox WhiteslateRoute_Trigger_SecretBase_Text_2
+	setspeaker SP_NAME_MAN
+	msgbox WhiteslateRoute_Trigger_SecretBase_Text_1
 	closemessage
 	playmoncry SPECIES_GROVYLE, CRY_MODE_NORMAL
 	applymovement 8, WhiteslateRoute_Trigger_SecretBase_Movement_4
@@ -284,9 +284,9 @@ WhiteslateRoute_Trigger_SecretBase::
 	case 27, WhiteslateRoute_Trigger_SecretBase_5
 WhiteslateRoute_Trigger_SecretBase_1:
 	applymovement 7, WhiteslateRoute_Trigger_SecretBase_Movement_9
-	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
-	msgbox WhiteslateRoute_Trigger_SecretBase_Text_3
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, WhiteslateRoute_Trigger_SecretBase_Text_4, WhiteslateRoute_Trigger_SecretBase_Text_5, WhiteslateRoute_Trigger_SecretBase_Text_6
+	setspeaker SP_NAME_MAN
+	msgbox WhiteslateRoute_Trigger_SecretBase_Text_2
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, WhiteslateRoute_Trigger_SecretBase_Text_3, WhiteslateRoute_Trigger_SecretBase_Text_4, WhiteslateRoute_Trigger_SecretBase_Text_5
 	closemessage
 	switch VAR_RESULT
 	case 0, WhiteslateRoute_Trigger_SecretBase_8
@@ -295,8 +295,8 @@ WhiteslateRoute_Trigger_SecretBase_1:
 WhiteslateRoute_Trigger_SecretBase_6:
 	closemessage
 	giveitem ITEM_TM_SECRET_POWER
-	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
-	msgbox WhiteslateRoute_Trigger_SecretBase_Text_10
+	setspeaker SP_NAME_MAN
+	msgbox WhiteslateRoute_Trigger_SecretBase_Text_9
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	switch VAR_TEMP_0
@@ -337,18 +337,18 @@ WhiteslateRoute_Trigger_SecretBase_5:
 	goto WhiteslateRoute_Trigger_SecretBase_1
 
 WhiteslateRoute_Trigger_SecretBase_8:
-	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
-	msgbox WhiteslateRoute_Trigger_SecretBase_Text_7
+	setspeaker SP_NAME_MAN
+	msgbox WhiteslateRoute_Trigger_SecretBase_Text_6
 	goto WhiteslateRoute_Trigger_SecretBase_6
 
 WhiteslateRoute_Trigger_SecretBase_9:
-	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
-	msgbox WhiteslateRoute_Trigger_SecretBase_Text_8
+	setspeaker SP_NAME_MAN
+	msgbox WhiteslateRoute_Trigger_SecretBase_Text_7
 	goto WhiteslateRoute_Trigger_SecretBase_6
 
 WhiteslateRoute_Trigger_SecretBase_10:
-	setspeaker WhiteslateRoute_Trigger_SecretBase_Text_0
-	msgbox WhiteslateRoute_Trigger_SecretBase_Text_9
+	setspeaker SP_NAME_MAN
+	msgbox WhiteslateRoute_Trigger_SecretBase_Text_8
 	goto WhiteslateRoute_Trigger_SecretBase_6
 
 WhiteslateRoute_Trigger_SecretBase_13:
@@ -560,9 +560,6 @@ WhiteslateRoute_Trigger_SecretBase_Movement_14:
 	step_end
 
 WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0:
-	.string "Shamisen Player$"
-
-WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}So, are you ready?$"
 
 WhiteslateRoute_EventScript_ShamisenChallenge_Text_0:
@@ -615,9 +612,6 @@ WhiteslateRoute_EventScript_Itsumi_Text_1:
 	.string "Oh, you do!$"
 
 WhiteslateRoute_EventScript_Itsumi_Text_2:
-	.string "Itsumi$"
-
-WhiteslateRoute_EventScript_Itsumi_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}I am glad we met! Your Pokémon seem\n"
 	.string "so happy.$"
 
@@ -629,9 +623,6 @@ WhiteslateRoute_EventScript_Ryosuke_Text_1:
 	.string "Can somebody give me a massage?$"
 
 WhiteslateRoute_EventScript_Ryosuke_Text_2:
-	.string "Ryosuke$"
-
-WhiteslateRoute_EventScript_Ryosuke_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}I heard there was a very talented\n"
 	.string "masseur in Saberside Town.\p"
 	.string "I want to see for myself!$"
@@ -644,9 +635,6 @@ WhiteslateRoute_EventScript_Riku_Text_1:
 	.string "My loyal Pokémon!$"
 
 WhiteslateRoute_EventScript_Riku_Text_2:
-	.string "Riku$"
-
-WhiteslateRoute_EventScript_Riku_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}I have to work on my element of\n"
 	.string "surprise.$"
 
@@ -657,9 +645,6 @@ WhiteslateRoute_EventScript_Tomomi_Text_1:
 	.string "Retreat! Retreat!$"
 
 WhiteslateRoute_EventScript_Tomomi_Text_2:
-	.string "Tomomi$"
-
-WhiteslateRoute_EventScript_Tomomi_Text_3:
 	.string "Deer Pokémon are my very favorite.\n"
 	.string "Such strength! Such elegance!$"
 
@@ -671,9 +656,6 @@ WhiteslateRoute_EventScript_Yono_Text_1:
 	.string "Let an old woman catch her breath!…$"
 
 WhiteslateRoute_EventScript_Yono_Text_2:
-	.string "Yono$"
-
-WhiteslateRoute_EventScript_Yono_Text_3:
 	.string "Walking is good for the joints. It\n"
 	.string "keeps me young!$"
 
@@ -685,9 +667,6 @@ WhiteslateRoute_EventScript_Sumi_Text_1:
 	.string "Heeeeeee!$"
 
 WhiteslateRoute_EventScript_Sumi_Text_2:
-	.string "Sumi$"
-
-WhiteslateRoute_EventScript_Sumi_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}You don't scare easily, do you?$"
 
 WhiteslateRoute_EventScript_Tomiko_Text_0:
@@ -698,9 +677,6 @@ WhiteslateRoute_EventScript_Tomiko_Text_1:
 	.string "strongest!$"
 
 WhiteslateRoute_EventScript_Tomiko_Text_2:
-	.string "Tomiko$"
-
-WhiteslateRoute_EventScript_Tomiko_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}I love Spinda. Doesn't it look silly\n"
 	.string "and adorable?$"
 
@@ -711,16 +687,10 @@ WhiteslateRoute_EventScript_Utaro_Text_1:
 	.string "At least I lost with style!$"
 
 WhiteslateRoute_EventScript_Utaro_Text_2:
-	.string "Utaro$"
-
-WhiteslateRoute_EventScript_Utaro_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Seviper is so darn cool! I mean, it's\n"
 	.string "got a sword on its tail!$"
 
 WhiteslateRoute_EventScript_ShuckleGirl_Text_0:
-	.string "Woman$"
-
-WhiteslateRoute_EventScript_ShuckleGirl_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}This Shuckle lives around here. I feed\n"
 	.string "him fresh berries every morning!$"
 
@@ -735,29 +705,26 @@ WhiteslateRoute_EventScript_Shuckle_Text_1:
 	.string "something.$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_0:
-	.string "Man$"
-
-WhiteslateRoute_Trigger_SecretBase_Text_1:
 	.string "Hehe… Looks like the perfect spot!$"
 
-WhiteslateRoute_Trigger_SecretBase_Text_2:
+WhiteslateRoute_Trigger_SecretBase_Text_1:
 	.string "Good job, Grovyle!$"
 
-WhiteslateRoute_Trigger_SecretBase_Text_3:
+WhiteslateRoute_Trigger_SecretBase_Text_2:
 	.string "Oh, man! You were here this whole\n"
 	.string "time?\l"
 	.string "My secret base is no longer secret!$"
 
-WhiteslateRoute_Trigger_SecretBase_Text_4:
+WhiteslateRoute_Trigger_SecretBase_Text_3:
 	.string "What were you doing?$"
 
-WhiteslateRoute_Trigger_SecretBase_Text_5:
+WhiteslateRoute_Trigger_SecretBase_Text_4:
 	.string "Sorry for interrupting!$"
 
-WhiteslateRoute_Trigger_SecretBase_Text_6:
+WhiteslateRoute_Trigger_SecretBase_Text_5:
 	.string "Are you a criminal?$"
 
-WhiteslateRoute_Trigger_SecretBase_Text_7:
+WhiteslateRoute_Trigger_SecretBase_Text_6:
 	.string "Alright, you seem interested, so I'll\n"
 	.string "let you in on the secret!\p"
 	.string "I taught my Grovyle a secret\n"
@@ -770,7 +737,7 @@ WhiteslateRoute_Trigger_SecretBase_Text_7:
 	.string "case. Here, now you can teach your\l"
 	.string "Pokémon too!$"
 
-WhiteslateRoute_Trigger_SecretBase_Text_8:
+WhiteslateRoute_Trigger_SecretBase_Text_7:
 	.string "Ah, it's alright. You seem like a good\n"
 	.string "kid. I'm sure you have what it takes\l"
 	.string "to become a secret base master. I'll\l"
@@ -785,7 +752,7 @@ WhiteslateRoute_Trigger_SecretBase_Text_8:
 	.string "case. Here, now you can teach your\l"
 	.string "Pokémon too!$"
 
-WhiteslateRoute_Trigger_SecretBase_Text_9:
+WhiteslateRoute_Trigger_SecretBase_Text_8:
 	.string "Of course not, this is perfectly\n"
 	.string "legal! You know what? I'll let you in\l"
 	.string "on the secret!\p"
@@ -799,7 +766,7 @@ WhiteslateRoute_Trigger_SecretBase_Text_9:
 	.string "case. Here, now you can teach your\l"
 	.string "Pokémon too!$"
 
-WhiteslateRoute_Trigger_SecretBase_Text_10:
+WhiteslateRoute_Trigger_SecretBase_Text_9:
 	.string "I'll keep looking for the perfect\n"
 	.string "secret base spot!\l"
 	.string "Maybe I'll see you around!$"

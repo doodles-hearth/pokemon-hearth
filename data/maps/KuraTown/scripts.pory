@@ -124,7 +124,7 @@ script KuraTown_EventScript_DojoChallenger {
 script KuraTown_EventScript_Farmer {
 	lock
 	faceplayer
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
 		"Why do we hate the Saku Village folks, y'ask?"
 	))
@@ -133,7 +133,7 @@ script KuraTown_EventScript_Farmer {
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive, delay_16 * 6))
 	waitmovement(0)
 
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
 		"To be honest, I don't quite rememb'r.\nBut who needs a reas'n, right?"
 	))
@@ -144,7 +144,7 @@ script KuraTown_EventScript_SilkScarf {
 	lock
 	faceplayer
 	if (flag(FLAG_RECEIVED_SILK_SCARF)) {
-		setspeaker("Girl")
+		setspeaker(SP_NAME_GIRL)
 		msgbox(
 			format(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Sigh… Now I'm scarfless…\p"
@@ -153,7 +153,7 @@ script KuraTown_EventScript_SilkScarf {
 		)
 		closemessage
 	} else {
-		setspeaker("Girl")
+		setspeaker(SP_NAME_GIRL)
 		msgbox(
 			format(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Hey, you! Yes, you! I need some super-urgent fashion advice!\p"
@@ -180,7 +180,7 @@ script KuraTown_EventScript_SilkScarf {
 script KuraTown_EventScript_FarmerScyther {
 	lock
 	faceplayer
-	setspeaker("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(
 		format(
 			"We started taming Scyther recently to help with harvestin' the crops. They've been a tremendous help!"
@@ -205,7 +205,7 @@ script KuraTown_EventScript_Scyther {
 script KuraTown_EventScript_Guard {
 	lock
 	faceplayer
-	setspeaker("Guard")
+	setspeaker(SP_NAME_GUARD)
 	msgbox(
 		format(
 			"Hope you didn't have too much trouble passing the gate.\p"
@@ -243,7 +243,7 @@ script KuraTown_EventScript_LovestruckGuy{
 script KuraTown_EventScript_PokemonCouncil {
 	lock
 	faceplayer	
-	setspeaker("Woman")
+	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 EMOTE_NORMAL}The Elders of the Toku Council may look like a bunch of frail old people, but each of them was once a formidable Wielder!\p"
 		"They paved the way for what Pokémon Wielding is today, and will be tomorrow."
@@ -283,7 +283,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 
 	applymovement(LOCALID_KURA_HARIKO, moves(walk_in_place_fast_left))
 
-	setspeaker("Hariko")
+	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Did you hear? They said this Decay\nhas started less than a week ago.\p"
 		"That coincides with the beginning of\nthe Volcano's rumbling spells,\lso there probably is a correlation.\p"
@@ -299,7 +299,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 
 	applymovement(LOCALID_KURA_HARIKO, moves(walk_in_place_fast_left))
 
-	setspeaker("Hariko")
+	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}… …{PLAYER}, Natsuki.\nI am heading home, in Yifu City.\p"
 		"We should meet up later to talk about this some more.\p"
@@ -322,7 +322,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 	waitmovement(0)
 
 	// TODO emote_sweat
-	setspeaker("Natsuki")
+	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Boy, your friend sure talks a lot, huh?\p"
 		"D'you think this whole Decay business\nis linked to the wild Pokémon attacks\lElder Kaba told us about?\p"
@@ -335,7 +335,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 
 	applymovement(LOCALID_KURA_NATSUKI, moves(lock_facing_direction, walk_fast_left, unlock_facing_direction))
 
-	setspeaker("Natsuki")
+	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't hit me! Don't hit me!\nI'm gone!\p"
 		"See ya later, Feraligatr!"
@@ -359,7 +359,7 @@ script KuraTown_EventScript_AnxiousAshii {
 	delay(48)
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_left))
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
-	setspeaker("Ashii")
+	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}My heart is racing… Where is he?\nI hope he's alright…"
 	))
@@ -378,7 +378,7 @@ script KuraTown_EventScript_AnxiousAshiiWaiting {
 	lock
 	faceplayer
 	applymovement(LOCALID_ASHII, moves(emote_sad))
-	setspeaker("Ashii")
+	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm worried…\nCan you check down south for me?"
 	))
@@ -394,7 +394,7 @@ script KuraTown_EventScript_PreventEscape {
 	waitmovement(LOCALID_ASHII)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	applymovement(LOCALID_ASHII, moves(emote_sad))
-	setspeaker("Ashii")
+	setspeaker(SP_NAME_ASHII)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Where on earth are you going, {PLAYER}?!\p{FONT_SMALL_NARROW}Please don't leave me here alone…"))
 	waitmessage
 	closemessage
@@ -425,7 +425,7 @@ script KuraTown_EventScript_TeachingScrolls {
 
 	if (getdescribedmon(SPECIES_ABRA)) {
 		faceplayer
-		setspeaker("Guy")
+		setspeaker(SP_NAME_GUY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Abra is the best!\nHe can use attacks in his sleep!"
 		))
@@ -435,7 +435,7 @@ script KuraTown_EventScript_TeachingScrolls {
 		waitmovement(VAR_LAST_TALKED)
 
 	} elif (checkitem(ITEM_TM_PSYBEAM)) {
-		setspeaker("Guy")
+		setspeaker(SP_NAME_GUY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}C'mon Abra, wakey wakey…"
 		))
@@ -475,7 +475,7 @@ script KuraTown_EventScript_TeachingScrolls {
 		waitmovement(VAR_LAST_TALKED)
 
 		faceplayer
-		setspeaker("Guy")
+		setspeaker(SP_NAME_GUY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Did… Did you see that?!\p"
 			"Abra made me float in the air with his Psybeam!!"
@@ -491,7 +491,7 @@ script KuraTown_EventScript_TeachingScrolls {
 		waitse
 
 		applymovement(VAR_LAST_TALKED, moves(emote_sweat))
-		setspeaker("Guy")
+		setspeaker(SP_NAME_GUY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}He didn't even wake up…"
 		))
@@ -501,7 +501,7 @@ script KuraTown_EventScript_TeachingScrolls {
 
 	} else {
 		faceplayer
-		setspeaker("Guy")
+		setspeaker(SP_NAME_GUY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}I taught Abra a sick Psychic move using a Technique Scroll, but…\p"
 			"Guess even the sickest move is useless if all he does is sleep, huh…\p"

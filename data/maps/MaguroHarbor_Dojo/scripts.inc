@@ -3,9 +3,9 @@ MaguroHarbor_Dojo_MapScripts::
 
 
 MaguroHarbor_Dojo_EventScript_Koishi::
-	setspeaker MaguroHarbor_Dojo_EventScript_Koishi_Text_0
-	trainerbattle_single TRAINER_KOISHI_1, MaguroHarbor_Dojo_EventScript_Koishi_Text_1, MaguroHarbor_Dojo_EventScript_Koishi_Text_2, MaguroHarbor_Dojo_EventScript_KoishiDefeated, NO_MUSIC
-	msgbox MaguroHarbor_Dojo_EventScript_Koishi_Text_3
+	setspeaker SP_NAME_KOISHI
+	trainerbattle_single TRAINER_KOISHI_1, MaguroHarbor_Dojo_EventScript_Koishi_Text_0, MaguroHarbor_Dojo_EventScript_Koishi_Text_1, MaguroHarbor_Dojo_EventScript_KoishiDefeated, NO_MUSIC
+	msgbox MaguroHarbor_Dojo_EventScript_Koishi_Text_2
 	end
 
 
@@ -13,10 +13,10 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated::
 	message MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
-	setspeaker MaguroHarbor_Dojo_EventScript_Koishi_Text_0
+	setspeaker SP_NAME_KOISHI
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1, MSGBOX_DEFAULT
 	giveitem ITEM_TM_NATURE_POWER
-	setspeaker MaguroHarbor_Dojo_EventScript_Koishi_Text_0
+	setspeaker SP_NAME_KOISHI
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_BADGE01_GET
@@ -42,7 +42,7 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated::
 	waitmovement OBJ_EVENT_ID_PLAYER
 	waitmovement 4
 	delay 60
-	setspeaker MaguroHarbor_Dojo_EventScript_Koishi_Text_0
+	setspeaker SP_NAME_KOISHI
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_3
 	closemessage
 	specialvar VAR_RESULT, GetPlayerFacingDirection
@@ -63,6 +63,7 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_2:
 
 MaguroHarbor_Dojo_EventScript_Izumi::
 	trainerbattle_single TRAINER_IZUMI, MaguroHarbor_Dojo_EventScript_Izumi_Text_0, MaguroHarbor_Dojo_EventScript_Izumi_Text_1
+	setspeaker SP_NAME_BEAUTY
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq MaguroHarbor_Dojo_EventScript_Izumi_1
 	msgbox MaguroHarbor_Dojo_EventScript_Izumi_Text_3, MSGBOX_AUTOCLOSE
@@ -75,6 +76,7 @@ MaguroHarbor_Dojo_EventScript_Izumi_1:
 
 MaguroHarbor_Dojo_EventScript_Ren::
 	trainerbattle_single TRAINER_REN, MaguroHarbor_Dojo_EventScript_Ren_Text_0, MaguroHarbor_Dojo_EventScript_Ren_Text_1
+	setspeaker SP_NAME_SWIMMER
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq MaguroHarbor_Dojo_EventScript_Ren_1
 	msgbox MaguroHarbor_Dojo_EventScript_Ren_Text_3, MSGBOX_AUTOCLOSE
@@ -87,6 +89,7 @@ MaguroHarbor_Dojo_EventScript_Ren_1:
 
 MaguroHarbor_Dojo_EventScript_Mizu::
 	trainerbattle_single TRAINER_MIZU, MaguroHarbor_Dojo_EventScript_Mizu_Text_0, MaguroHarbor_Dojo_EventScript_Mizu_Text_1
+	setspeaker SP_NAME_HOT_SPRING_GAL
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq MaguroHarbor_Dojo_EventScript_Mizu_1
 	msgbox MaguroHarbor_Dojo_EventScript_Mizu_Text_3, MSGBOX_AUTOCLOSE
@@ -100,9 +103,9 @@ MaguroHarbor_Dojo_EventScript_Mizu_1:
 MaguroHarbor_Dojo_EventScript_Advice::
 	lock
 	faceplayer
-	setspeaker MaguroHarbor_Dojo_EventScript_Advice_Text_0
+	setspeaker SP_NAME_MAN
 	goto_if_set FLAG_BADGE01_GET, MaguroHarbor_Dojo_EventScript_Advice_2
-	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_3
+	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_2
 MaguroHarbor_Dojo_EventScript_Advice_1:
 	closemessage
 	release
@@ -111,11 +114,11 @@ MaguroHarbor_Dojo_EventScript_Advice_1:
 MaguroHarbor_Dojo_EventScript_Advice_2:
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq MaguroHarbor_Dojo_EventScript_Advice_5
-	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_2
+	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_1
 	goto MaguroHarbor_Dojo_EventScript_Advice_1
 
 MaguroHarbor_Dojo_EventScript_Advice_5:
-	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_1, MSGBOX_AUTOCLOSE
+	msgbox MaguroHarbor_Dojo_EventScript_Advice_Text_0, MSGBOX_AUTOCLOSE
 	goto MaguroHarbor_Dojo_EventScript_Advice_1
 
 
@@ -173,9 +176,6 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Movement_1:
 	step_end
 
 MaguroHarbor_Dojo_EventScript_Koishi_Text_0:
-	.string "Koishi$"
-
-MaguroHarbor_Dojo_EventScript_Koishi_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}Welcome to Maguro's Koi Pond Dojo, one\n"
 	.string "of the eight Dojos officially\l"
 	.string "appointed by the Toku Council.\p"
@@ -193,10 +193,10 @@ MaguroHarbor_Dojo_EventScript_Koishi_Text_1:
 	.string "weakness.\p"
 	.string "Now… Shall we battle?$"
 
-MaguroHarbor_Dojo_EventScript_Koishi_Text_2:
+MaguroHarbor_Dojo_EventScript_Koishi_Text_1:
 	.string "I see…$"
 
-MaguroHarbor_Dojo_EventScript_Koishi_Text_3:
+MaguroHarbor_Dojo_EventScript_Koishi_Text_2:
 	.string "You shall achieve great things. I hope\n"
 	.string "we meet again.$"
 
@@ -268,17 +268,14 @@ MaguroHarbor_Dojo_EventScript_Mizu_Text_3:
 	.string "need peace and quiet to thrive.$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_0:
-	.string "Man$"
-
-MaguroHarbor_Dojo_EventScript_Advice_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}You swept me away with that battle!\p"
 	.string "That quake just now nearly literally\n"
 	.string "swept me away as well!$"
 
-MaguroHarbor_Dojo_EventScript_Advice_Text_2:
+MaguroHarbor_Dojo_EventScript_Advice_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}You swept me away with that battle!$"
 
-MaguroHarbor_Dojo_EventScript_Advice_Text_3:
+MaguroHarbor_Dojo_EventScript_Advice_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}Hello, young challenger! Are you going\n"
 	.string "to be fighting for your first Token?\p"
 	.string "Welcome to the Koi Pond Dojo!\p"

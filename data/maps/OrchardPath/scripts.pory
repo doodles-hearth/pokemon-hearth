@@ -28,7 +28,7 @@ script OrchardPath_EventScript_Junko {
 		format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}I'm gathering ripe Berries to feed my Pokémon!"),
 		format("He ought to eat more Berries…")
 	)
-	setspeaker("Junko")
+	setspeaker(SP_NAME_LASS)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}My Pokémon is insatiable!\nI need to scour my local Library for more Berry recipes!"), MSGBOX_AUTOCLOSE)
 }
 
@@ -38,14 +38,14 @@ script OrchardPath_EventScript_Mami {
 		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}Hehehehe… This place is haunted at night! Are you scared?"),
 		format("H-how could my ghosts lose to a mere mortal?")
 	)
-	setspeaker("Mami")
+	setspeaker(SP_NAME_HEX_MANIAC)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I wanted to catch some more ghosts at the Graveyard, but…\lIt's a little TOO scary…"), MSGBOX_AUTOCLOSE)
 }
 
 script OrchardPath_EventScript_Samurai {
 	lock
 	faceplayer
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Please stand back. Everything is under control."))
 
 	dynmultichoice(
@@ -75,7 +75,7 @@ script OrchardPath_EventScript_Samurai {
 
 script OrchardPath_Samurai_WhatIsHappening {
 	special(GetPlayerSirMissString)
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Nothing that concerns you, {STR_VAR_1}.\p"
 		"This is just your regular, run-of-the-mill, top secret yet unimportant stuff."
@@ -103,7 +103,7 @@ script OrchardPath_Samurai_WhatIsHappening {
 }
 
 script OrchardPath_Samurai_LetMeThrough {
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}We cannot let you through, so please be on your way."
 	))
@@ -128,7 +128,7 @@ script OrchardPath_Samurai_KnowAboutDecay {
 	waitmovement(0)
 	waitse
 
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}You- what-\p"
 		"Ahem! I do not know of this Decay you speak of.\p"
@@ -157,7 +157,7 @@ script OrchardPath_EventScript_RockSmash {
 	lock
 	if (checkitem(ITEM_SECRET_SMASH)) {
 		if (flag(FLAG_BEAT_ROCK_SMASHER)) {
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"Hello, disciple! Or should I say… Master!"
 			))
@@ -169,7 +169,7 @@ script OrchardPath_EventScript_RockSmash {
 		) {
 			call(OrchardPath_EventScript_RockSmashBrokeMyRocks)
 		} else {
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"Now you too can make a living smashing rocks impressively!\p"
 				"{FONT_SMALL}Just do it far from here, don't put me out of business!{FONT_NORMAL}"
@@ -183,7 +183,7 @@ script OrchardPath_EventScript_RockSmash {
 }
 
 script OrchardPath_EventScript_RockSmashBrokeMyRocks {
-	setspeaker("Rock Smasher")
+	setspeaker(SP_NAME_ROCK_SMASHER)
 	msgbox(format(
 		"If it isn't my disciple! Smash any good rocks lately?\p"
 		"… … …Wait a minute…"
@@ -206,7 +206,7 @@ script OrchardPath_EventScript_RockSmashBrokeMyRocks {
 	waitmovement(0)
 	waitse
 
-	setspeaker("Rock Smasher")
+	setspeaker(SP_NAME_ROCK_SMASHER)
 	msgbox(format(
 		"Have you… Have you been breaking my rocks?!"
 	))
@@ -225,14 +225,14 @@ script OrchardPath_EventScript_RockSmashBrokeMyRocks {
 
 	switch(var(VAR_RESULT)) {
 		case 0:
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"I can't believe this! My own disciple, of all people!\p"
 				"I'll teach you to break other people's rocks!"
 			))
 			closemessage
 		case 1:
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"You're lying! Think I can't tell?\p"
 				"I can't believe this! My own disciple, of all people!\p"
@@ -248,7 +248,7 @@ script OrchardPath_EventScript_RockSmashBrokeMyRocks {
 
 	setflag(FLAG_BEAT_ROCK_SMASHER)
 
-	setspeaker("Rock Smasher")
+	setspeaker(SP_NAME_ROCK_SMASHER)
 	msgbox(format(
 		"Your fighting style is incredible! I…\p"
 		"I forgive you! The pupil has surpassed the master!\p"
@@ -258,7 +258,7 @@ script OrchardPath_EventScript_RockSmashBrokeMyRocks {
 }
 
 script OrchardPath_EventScript_RockSmashRegular {
-	setspeaker("Man")
+	setspeaker(SP_NAME_MAN)
 	msgbox(format(
 		"Gather round, folks, gather round!\p"
 		"Hey, kid! Do you want your mind to be BLOWN?\p"
@@ -288,7 +288,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 			removemoney(100)
 			updatemoneybox
 
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"Wise decision!\n{FONT_SMALL}Yes! I get to eat today!{FONT_NORMAL}"
 			))
@@ -296,7 +296,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 
 			hidemoneybox
 
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"Stand back, for your own safety!"
 			))
@@ -308,7 +308,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 			applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right))
 			waitmovement(0)
 
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"Very well! Brace yourself and open your eyes…\p"
 				"Hnng…\p"
@@ -332,7 +332,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 
 			applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_down))
 
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"Huff… Puff…\p"
 				"Tadaaah!\p"
@@ -345,7 +345,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 
 			giveitem(ITEM_SECRET_SMASH)
 
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"This is a secret technique of my own invention.\p"
 				"It lets you PULVERIZE any of those pesky rocks standing in your way!\p"
@@ -361,7 +361,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 
 		} else {
 			hidemoneybox
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"Very well!…\n… Wait, you don't have enough!\p"
 				"Come on, kid, this is a once in a lifetime opportunity!\p"
@@ -372,14 +372,14 @@ script OrchardPath_EventScript_RockSmashRegular {
 			
 		case 1:
 			hidemoneybox
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"{FONT_SMALL}Come on, kid, I'm financially struggling here{FONT_NORMAL}…"
 			))
 			closemessage
 		case 2:
 			hidemoneybox
-			setspeaker("Rock Smasher")
+			setspeaker(SP_NAME_ROCK_SMASHER)
 			msgbox(format(
 				"Smashing rocks is my passion! I have fought tooth and nail… Or rather, foot and fist… To acquire the title of ROCK SMASHER!\p"
 				"{FONT_SMALL}Also, a man's gotta eat…{FONT_NORMAL}"
@@ -395,7 +395,7 @@ script OrchardPath_EventScript_SignRockSmash {
 script OrchardPath_EventScript_Samurai2 {
 	lock
 	faceplayer
-	setspeaker("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Move along, please, nothing to see here!"))
 	closemessage
 	release

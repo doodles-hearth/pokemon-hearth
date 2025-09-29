@@ -15,9 +15,9 @@ Kura_Beachbound_Gate_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 
 Kura_Beachbound_Gate_EventScript_Guard::
 	lock
-	setspeaker Kura_Beachbound_Gate_EventScript_Guard_Text_0
+	setspeaker SP_NAME_SAMURAI
 	applymovement VAR_LAST_TALKED, Kura_Beachbound_Gate_EventScript_Guard_Movement_0
-	msgbox Kura_Beachbound_Gate_EventScript_Guard_Text_1
+	msgbox Kura_Beachbound_Gate_EventScript_Guard_Text_0
 	release
 	return
 
@@ -27,7 +27,4 @@ Kura_Beachbound_Gate_EventScript_Guard_Movement_0:
 	step_end
 
 Kura_Beachbound_Gate_EventScript_Guard_Text_0:
-	.string "Samurai$"
-
-Kura_Beachbound_Gate_EventScript_Guard_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Zzzzzz…$"

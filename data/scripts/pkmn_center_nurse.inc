@@ -29,8 +29,8 @@ Common_EventScript_PkmnCenterNurse_Sleep::
 	compare VAR_RESULT, 0
 	goto_if_ne Common_EventScript_PkmnCenterNurse_Sleep_2
 	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
-	setspeaker Common_EventScript_PkmnCenterNurse_Sleep_Text_0
-	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_1
+	setspeaker SP_NAME_NURSE
+	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_0
 	closemessage
 Common_EventScript_PkmnCenterNurse_Sleep_1:
 	hidemoneybox
@@ -40,18 +40,18 @@ Common_EventScript_PkmnCenterNurse_Sleep_1:
 
 Common_EventScript_PkmnCenterNurse_Sleep_2:
 	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
-	setspeaker Common_EventScript_PkmnCenterNurse_Sleep_Text_0
-	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_1
+	setspeaker SP_NAME_NURSE
+	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_0
 	showmoneybox 18, 0
-	dynmultichoice 0, 0, FALSE, 10, 0, DYN_MULTICHOICE_CB_NONE, Common_EventScript_PkmnCenterNurse_Sleep_Text_2, Common_EventScript_PkmnCenterNurse_Sleep_Text_3, Common_EventScript_PkmnCenterNurse_Sleep_Text_4
+	dynmultichoice 0, 0, FALSE, 10, 0, DYN_MULTICHOICE_CB_NONE, Common_EventScript_PkmnCenterNurse_Sleep_Text_1, Common_EventScript_PkmnCenterNurse_Sleep_Text_2, Common_EventScript_PkmnCenterNurse_Sleep_Text_3
 	compare VAR_RESULT, 0
 	goto_if_eq Common_EventScript_PkmnCenterNurse_Sleep_5
 	compare VAR_RESULT, 1
 	goto_if_eq Common_EventScript_PkmnCenterNurse_Sleep_5
 	hidemoneybox
 	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
-	setspeaker Common_EventScript_PkmnCenterNurse_Sleep_Text_0
-	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_6
+	setspeaker SP_NAME_NURSE
+	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_5
 	closemessage
 	goto Common_EventScript_PkmnCenterNurse_Sleep_1
 
@@ -68,8 +68,8 @@ Common_EventScript_PkmnCenterNurse_Sleep_5:
 Common_EventScript_PkmnCenterNurse_Sleep_10:
 	fadescreenswapbuffers FADE_FROM_BLACK
 	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
-	setspeaker Common_EventScript_PkmnCenterNurse_Sleep_Text_0
-	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_5
+	setspeaker SP_NAME_NURSE
+	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_4
 	closemessage
 	goto Common_EventScript_PkmnCenterNurse_Sleep_1
 
@@ -107,7 +107,7 @@ Common_EventScript_PkmnCenterNurse_ChooseSleep::
 	playse SE_SHOP
 	removemoney 500
 	updatemoneybox
-	setspeaker Common_EventScript_PkmnCenterNurse_Sleep_Text_0
+	setspeaker SP_NAME_NURSE
 	msgbox Common_EventScript_PkmnCenterNurse_ChooseSleep_Text_0
 	closemessage
 	hidemoneybox
@@ -119,7 +119,7 @@ Common_EventScript_PkmnCenterNurse_CutTheBullshit::
 	faceplayer
 	setvar VAR_0x8004, 0
 	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
-	setspeaker Common_EventScript_PkmnCenterNurse_Sleep_Text_0
+	setspeaker SP_NAME_NURSE
 	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_0
 	closemessage
 	incrementgamestat GAME_STAT_USED_POKECENTER
@@ -127,13 +127,13 @@ Common_EventScript_PkmnCenterNurse_CutTheBullshit::
 	goto_if_unset FLAG_POKERUS_EXPLAINED, Common_EventScript_PkmnCenterNurse_CutTheBullshit_2
 Common_EventScript_PkmnCenterNurse_CutTheBullshit_1:
 	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
-	setspeaker Common_EventScript_PkmnCenterNurse_Sleep_Text_0
+	setspeaker SP_NAME_NURSE
 	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_1
 	closemessage
 	applymovement VAR_0x800B, Common_EventScript_PkmnCenterNurse_CutTheBullshit_Movement_0
 	waitmovement 0
 	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
-	setspeaker Common_EventScript_PkmnCenterNurse_Sleep_Text_0
+	setspeaker SP_NAME_NURSE
 	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_2
 	closemessage
 	removefieldmugshot
@@ -308,26 +308,23 @@ Common_EventScript_PkmnCenterNurse_Chansey_Text_0:
 	.string "Sey!$"
 
 Common_EventScript_PkmnCenterNurse_Sleep_Text_0:
-	.string "Nurse$"
-
-Common_EventScript_PkmnCenterNurse_Sleep_Text_1:
 	.string "Hello! For 500¥, you and your Pokémon\n"
 	.string "can spend the night here.$"
 
-Common_EventScript_PkmnCenterNurse_Sleep_Text_2:
+Common_EventScript_PkmnCenterNurse_Sleep_Text_1:
 	.string "Sleep until morning.$"
 
-Common_EventScript_PkmnCenterNurse_Sleep_Text_3:
+Common_EventScript_PkmnCenterNurse_Sleep_Text_2:
 	.string "Sleep until nighttime.$"
 
-Common_EventScript_PkmnCenterNurse_Sleep_Text_4:
+Common_EventScript_PkmnCenterNurse_Sleep_Text_3:
 	.string "Maybe later.$"
 
-Common_EventScript_PkmnCenterNurse_Sleep_Text_5:
+Common_EventScript_PkmnCenterNurse_Sleep_Text_4:
 	.string "Did you sleep well?\n"
 	.string "Travel safely, now!$"
 
-Common_EventScript_PkmnCenterNurse_Sleep_Text_6:
+Common_EventScript_PkmnCenterNurse_Sleep_Text_5:
 	.string "Come back anytime!$"
 
 Common_EventScript_PkmnCenterNurse_ChooseSleep_Text_0:

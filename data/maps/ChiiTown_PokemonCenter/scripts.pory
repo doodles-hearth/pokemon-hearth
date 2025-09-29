@@ -54,7 +54,7 @@ script ChiiTown_PokemonCenter_EventScript_Shamisen {
 	lock
 	faceplayer
 	// TODO EVA battle shamisen player!
-	setspeaker("Shamisen Player")
+	setspeaker(SP_NAME_SHAMISEN_PLAYER)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE EMOTE_NORMAL}Good evening.\p"
 		"We blind shamisen players sing to survive.\p"
@@ -84,7 +84,7 @@ script ChiiTown_PokemonCenter_EventScript_ShamisenFan {
 script ChiiTown_PokemonCenter_EventScript_Boy {
 	lock
 	faceplayer
-	setspeaker("Little Girl")
+	setspeaker(SP_NAME_LITTLE_GIRL)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL EMOTE_NORMAL}I'm here with my mama!\nThe music lady's nice!"
 	))
@@ -96,7 +96,7 @@ script ChiiTown_PokemonCenter_EventScript_Boy {
 script ChiiTown_PokemonCenter_EventScript_Mom {
 	lock
 	faceplayer
-	setspeaker("Woman")
+	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 EMOTE_NORMAL}Traveling shamisen players take shelter in Refuges at nightfall.\p"
 		"Their singing makes for such a cosy atmosphere!"
@@ -149,7 +149,7 @@ script ChiiTown_PokemonCenter_EventScript_Snorunt {
 script ChiiTown_PokemonCenter_EventScript_NeedMarket {
 	lock
 	faceplayer
-	setspeaker("Woman")
+	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}Berries, ointments… I should get a few more Poké Balls from the market!"
 	))
@@ -204,7 +204,7 @@ movement ChiiTown_PokemonCenter_Movement_Leave {
 script ChiiTown_PokemonCenter_EventScript_MakeNamesUp {
 	lock
 	faceplayer
-	setspeaker("Little Boy")
+	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}You know what happens if I see a Pokémon and I don't know its name?\p"
 		"I just make it right up!\nI don't care about silly “real” names!\p"

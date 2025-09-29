@@ -11,7 +11,7 @@ mapscripts WindsweptRoute_MapScripts {
 script WindsweptRoute_EventScript_OvergrownTrees {
 	lock
 	faceplayer
-	setspeaker("Man")
+	setspeaker(SP_NAME_MAN)
 	if (flag(FLAG_CUT_TREE_SILVER_TUNNEL)) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Someone cut down that annoying tree! We can go to Silveridge again!"
@@ -31,7 +31,7 @@ script WindsweptRoute_EventScript_Trainer1 {
 		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}These winds blow as strong as my will to win!"),
 		format("You blew us away!")
 	)
-	setspeaker("Musashi")
+	setspeaker(SP_NAME_BATTLE_GIRL)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -42,7 +42,7 @@ script WindsweptRoute_EventScript_Itamae {
 		format("{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}I'm scouring this salty grass for the tastiest ingredients!"),
 		format("Bitter is the taste of defeat…")
 	)
-	setspeaker("Itamae")
+	setspeaker(SP_NAME_COOK)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}This place is an inspiration for my innovative cuisine.\p"
 		"The rocks are salty, the plants are salty… To an extent, even the air is salty."
@@ -56,7 +56,7 @@ script WindsweptRoute_EventScript_Trainer3 {
 		format("These cliffs are so damn tall! Good thing I have a damn long fishing rod."),
 		format("My rod didn't keep me from losing…")
 	)
-	setspeaker("Makoto")
+	setspeaker(SP_NAME_FISHERMAN)
 	msgbox(format("Look at that poor sod over there! His fishing rod's so short, I can't help but laugh!"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -64,7 +64,7 @@ script WindsweptRoute_EventScript_Trainer3 {
 script WindsweptRoute_EventScript_Fisherman_ShortRod {
 	lock
 	faceplayer
-	setspeaker("Fisherman")
+	setspeaker(SP_NAME_FISHERMAN)
 	msgbox(format(
 		"That guy over there keeps bragging about having a long fishing rod.\p"
 		"Little does he realize that I, with my much shorter rod, catch only the highest-jumping fish!"
@@ -79,7 +79,7 @@ script WindsweptRoute_EventScript_Roku {
 		format("Uh, I was just taking a short break, okay?"),
 		format("I mistook you for the boss…")
 	)
-	setspeaker("Roku")
+	setspeaker(SP_NAME_MINER)
 	msgbox(format("Please don't tell my colleagues I've been slacking off…"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -124,7 +124,7 @@ script WindsweptRoute_EventScript_TrainerBattleRoadblock {
 	applymovement(LOCALID_ROADBLOCK_NINJA_BOY, moves(walk_in_place_fast_left))
 	waitmovement(0)
 
-	setspeaker("Ninja Boy")
+	setspeaker(SP_NAME_NINJA_BOY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}You shall know defeat at the hand of my ninja Pokémon!\p"
 		"Nuzleaf, use Feint Attack!"
@@ -141,7 +141,7 @@ script WindsweptRoute_EventScript_TrainerBattleRoadblock {
 	applymovement(LOCALID_ROADBLOCK_SCHOOLKID, moves(walk_in_place_fast_right))
 	waitmovement(0)
 
-	setspeaker("School Kid")
+	setspeaker(SP_NAME_SCHOOL_KID)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Your pathetic ninja costume can't beat the sheer power of knowledge!\p"
 		"Breloom! Headbutt!"

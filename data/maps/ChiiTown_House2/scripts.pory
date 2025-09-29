@@ -5,7 +5,7 @@ mapscripts ChiiTown_House2_MapScripts {
 // TODO this is placeholder dialogue
 
 script ChiiTown_House2_Child {
-	setspeaker("Little girl")
+	setspeaker(SP_NAME_LITTLE_GIRL)
 	msgbox(format(
 		"Mama said there's a BIIIG library in a town far away from here!\p"
 		"One day, I'll read ALLLL the books in that library!"
@@ -14,7 +14,7 @@ script ChiiTown_House2_Child {
 }
 
 script ChiiTown_House2_Parent {
-	setspeaker("Woman")
+	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
 		"My daughter loves reading. I don't read her bedtime stories, she reads them to me!"
 	),

@@ -26,8 +26,8 @@ Soulkeep_EventScript_GraveyardSign::
 Soulkeep_EventScript_Man::
 	lock
 	faceplayer
-	setspeaker Soulkeep_EventScript_Man_Text_0
-	msgbox Soulkeep_EventScript_Man_Text_1
+	setspeaker SP_NAME_MAN
+	msgbox Soulkeep_EventScript_Man_Text_0
 	closemessage
 	release
 	return
@@ -99,12 +99,12 @@ Soulkeep_EventScript_Gastly_2:
 Soulkeep_EventScript_Mart::
 	lock
 	faceplayer
-	setspeaker Soulkeep_EventScript_Mart_Text_0
-	message Soulkeep_EventScript_Mart_Text_1
+	setspeaker SP_NAME_SHOPKEEPER
+	message Soulkeep_EventScript_Mart_Text_0
 	waitmessage
 	pokemart Soulkeep_Mart
-	setspeaker Soulkeep_EventScript_Mart_Text_0
-	msgbox Soulkeep_EventScript_Mart_Text_2, MSGBOX_DEFAULT
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox Soulkeep_EventScript_Mart_Text_1, MSGBOX_DEFAULT
 	release
 	return
 
@@ -137,9 +137,6 @@ Soulkeep_EventScript_GraveyardSign_Text_0:
 	.string "“Please be respectful.”$"
 
 Soulkeep_EventScript_Man_Text_0:
-	.string "Man$"
-
-Soulkeep_EventScript_Man_Text_1:
 	.string "Can you believe this place used to be\n"
 	.string "a quaint little farmers' town?\p"
 	.string "Ever since the ghosts have started\n"
@@ -152,12 +149,9 @@ Soulkeep_EventScript_Misdreavus_Text_0:
 	.string "y o u r s o u l$"
 
 Soulkeep_EventScript_Mart_Text_0:
-	.string "Shopkeeper$"
-
-Soulkeep_EventScript_Mart_Text_1:
 	.string "Welcome to Soulkeep's market,\n"
 	.string "traveler!\p"
 	.string "Are you looking to buy?$"
 
-Soulkeep_EventScript_Mart_Text_2:
+Soulkeep_EventScript_Mart_Text_1:
 	.string "Do come again!$"

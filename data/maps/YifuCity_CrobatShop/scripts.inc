@@ -23,12 +23,12 @@ YifuCity_CrobatShop_SetupNpcs_4:
 YifuCity_CrobatShop_Cashier::
 	lock
 	faceplayer
-	setspeaker YifuCity_CrobatShop_Cashier_Text_0
-	msgbox YifuCity_CrobatShop_Cashier_Text_1
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox YifuCity_CrobatShop_Cashier_Text_0
 	waitmessage
 	pokemart Crobat_Mart
-	setspeaker YifuCity_CrobatShop_Cashier_Text_0
-	msgbox YifuCity_CrobatShop_Cashier_Text_2
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox YifuCity_CrobatShop_Cashier_Text_1
 	closemessage
 	release
 	return
@@ -37,11 +37,11 @@ YifuCity_CrobatShop_Cashier::
 YifuCity_CrobatShop_CashierLegit::
 	lock
 	faceplayer
-	setspeaker YifuCity_CrobatShop_Cashier_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox YifuCity_CrobatShop_CashierLegit_Text_0
 	waitmessage
 	pokemart Legit_Mart
-	setspeaker YifuCity_CrobatShop_Cashier_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox YifuCity_CrobatShop_CashierLegit_Text_1
 	closemessage
 	release
@@ -51,7 +51,7 @@ YifuCity_CrobatShop_CashierLegit::
 YifuCity_CrobatShop_CashierLegitTM::
 	lock
 	faceplayer
-	setspeaker YifuCity_CrobatShop_Cashier_Text_0
+	setspeaker SP_NAME_SHOPKEEPER
 	msgbox YifuCity_CrobatShop_CashierLegitTM_Text_0
 	closemessage
 	release
@@ -202,40 +202,40 @@ YifuCity_CrobatShop_Guard_35:
 YifuCity_CrobatShop_Customer1::
 	lock
 	faceplayer
-	setspeaker YifuCity_CrobatShop_Customer1_Text_0
+	setspeaker SP_NAME_MAN
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_CrobatShop_Customer1_2
-	msgbox YifuCity_CrobatShop_Customer1_Text_2
+	msgbox YifuCity_CrobatShop_Customer1_Text_1
 YifuCity_CrobatShop_Customer1_1:
 	closemessage
 	release
 	return
 
 YifuCity_CrobatShop_Customer1_2:
-	msgbox YifuCity_CrobatShop_Customer1_Text_1
+	msgbox YifuCity_CrobatShop_Customer1_Text_0
 	goto YifuCity_CrobatShop_Customer1_1
 
 
 YifuCity_CrobatShop_Customer2::
 	lock
 	faceplayer
-	setspeaker YifuCity_CrobatShop_Customer2_Text_0
+	setspeaker SP_NAME_GIRL
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_CrobatShop_Customer2_2
-	msgbox YifuCity_CrobatShop_Customer2_Text_2
+	msgbox YifuCity_CrobatShop_Customer2_Text_1
 YifuCity_CrobatShop_Customer2_1:
 	closemessage
 	release
 	return
 
 YifuCity_CrobatShop_Customer2_2:
-	msgbox YifuCity_CrobatShop_Customer2_Text_1
+	msgbox YifuCity_CrobatShop_Customer2_Text_0
 	goto YifuCity_CrobatShop_Customer2_1
 
 
 YifuCity_CrobatShop_EventScript_Samurai::
 	lock
 	faceplayer
-	setspeaker YifuCity_CrobatShop_EventScript_Samurai_Text_0
-	msgbox YifuCity_CrobatShop_EventScript_Samurai_Text_1
+	setspeaker SP_NAME_SAMURAI
+	msgbox YifuCity_CrobatShop_EventScript_Samurai_Text_0
 	closemessage
 	release
 	return
@@ -304,15 +304,12 @@ YifuCity_CrobatShop_Guard_Movement_10:
 	step_end
 
 YifuCity_CrobatShop_Cashier_Text_0:
-	.string "Shopkeeper$"
-
-YifuCity_CrobatShop_Cashier_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}G'day uh, welcome to the ye olde\n"
 	.string "Crobat Shoppe!\p"
 	.string "Have a lookee at our totally legal\n"
 	.string "tchotchquees and memoralibia!$"
 
-YifuCity_CrobatShop_Cashier_Text_2:
+YifuCity_CrobatShop_Cashier_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We thank thee fer yer business! Tell\n"
 	.string "yer friends!\p"
 	.string "{FONT_SMALL}Unless yer friends are the police!{FONT_NORMAL}\p"
@@ -380,30 +377,21 @@ YifuCity_CrobatShop_Guard_Text_13:
 	.string "though, will ya?$"
 
 YifuCity_CrobatShop_Customer1_Text_0:
-	.string "Man$"
-
-YifuCity_CrobatShop_Customer1_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Woah! So I was buying illegal items?\n"
 	.string "That's wild!$"
 
-YifuCity_CrobatShop_Customer1_Text_2:
+YifuCity_CrobatShop_Customer1_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}This place is amazing!\n"
 	.string "How is everything so cheap?!$"
 
 YifuCity_CrobatShop_Customer2_Text_0:
-	.string "Girl$"
-
-YifuCity_CrobatShop_Customer2_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}I knew it! I knew this shop was shady!$"
 
-YifuCity_CrobatShop_Customer2_Text_2:
+YifuCity_CrobatShop_Customer2_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}These Ultra Balls look… different,\n"
 	.string "somehow…$"
 
 YifuCity_CrobatShop_EventScript_Samurai_Text_0:
-	.string "Samurai$"
-
-YifuCity_CrobatShop_EventScript_Samurai_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Shhh, don't look at me!\n"
 	.string "Someone tipped me off that the\l"
 	.string "Crobat Shadows' band of misfits has a\l"

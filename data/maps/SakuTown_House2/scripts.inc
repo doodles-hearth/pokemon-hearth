@@ -23,34 +23,34 @@ SakuTown_House2_EventScript_EspeonsMaster_1:
 
 SakuTown_House2_EventScript_EspeonsMaster_2:
 	setnamedmon SPECIES_EEVEE
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
-	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_1
+	setspeaker SP_NAME_BOY
+	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_0
 	closemessage
 	setvar VAR_SAKU_KURA_QUEST_ESPEON_STATE, 2
 	goto SakuTown_House2_EventScript_EspeonsMaster_1
 
 SakuTown_House2_EventScript_EspeonsMaster_3:
 	setnamedmon SPECIES_EEVEE
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
-	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_1
+	setspeaker SP_NAME_BOY
+	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_0
 	playse SE_PIN
 	applymovement VAR_LAST_TALKED, SakuTown_House2_EventScript_EspeonsMaster_Movement_0
 	waitmovement 0
 	waitse
-	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_2
+	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_1
 	closemessage
 	setvar VAR_SAKU_KURA_QUEST_ESPEON_STATE, 3
 	goto SakuTown_House2_EventScript_EspeonsMaster_1
 
 SakuTown_House2_EventScript_EspeonsMaster_4:
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
-	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_3
+	setspeaker SP_NAME_BOY
+	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_2
 	closemessage
 	goto SakuTown_House2_EventScript_EspeonsMaster_1
 
 SakuTown_House2_EventScript_EspeonsMaster_5:
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
-	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_4
+	setspeaker SP_NAME_BOY
+	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_3
 	closemessage
 	goto SakuTown_House2_EventScript_EspeonsMaster_1
 
@@ -65,15 +65,15 @@ SakuTown_House2_EventScript_EspeonsMaster_7:
 	goto SakuTown_House2_EventScript_EspeonsMaster_1
 
 SakuTown_House2_EventScript_EspeonsMaster_14:
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
-	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_5
+	setspeaker SP_NAME_BOY
+	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_4
 	closemessage
 	goto SakuTown_House2_EventScript_EspeonsMaster_1
 
 SakuTown_House2_EventScript_EspeonsMaster_17:
 	setnamedmon SPECIES_ESPEON
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
-	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_6
+	setspeaker SP_NAME_BOY
+	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_5
 	closemessage
 	goto SakuTown_House2_EventScript_EspeonsMaster_1
 
@@ -81,8 +81,8 @@ SakuTown_House2_EventScript_EspeonsMaster_17:
 SakuTown_House2_EventScript_Reunited::
 	setvar VAR_SAKU_KURA_QUEST_ESPEON_STATE, 5
 	clearflag FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
-	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_4
+	setspeaker SP_NAME_BOY
+	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_3
 	closemessage
 	delay 30
 	playse SE_EXIT
@@ -108,7 +108,7 @@ SakuTown_House2_EventScript_Reunited_1:
 	playmoncry SPECIES_ESPEON, CRY_MODE_NORMAL
 	waitmoncry
 	applymovement 1, SakuTown_House2_EventScript_Reunited_Movement_0
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
+	setspeaker SP_NAME_BOY
 	msgbox SakuTown_House2_EventScript_Reunited_Text_1
 	closemessage
 	switch VAR_FACING
@@ -117,16 +117,16 @@ SakuTown_House2_EventScript_Reunited_1:
 	case DIR_SOUTH, SakuTown_House2_EventScript_Reunited_10
 SakuTown_House2_EventScript_Reunited_6:
 	delay 30
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
+	setspeaker SP_NAME_BOY
 	msgbox SakuTown_House2_EventScript_Reunited_Text_2
 	closemessage
 	applymovement 1, SakuTown_House2_EventScript_Reunited_Movement_1
 	waitmovement 0
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
+	setspeaker SP_NAME_BOY
 	msgbox SakuTown_House2_EventScript_Reunited_Text_3
 	applymovement 1, SakuTown_House2_EventScript_Reunited_Movement_2
 	waitmovement 0
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
+	setspeaker SP_NAME_BOY
 	msgbox SakuTown_House2_EventScript_Reunited_Text_4
 	call SakuTown_House2_EventScript_GiveEvoStone
 	return
@@ -169,7 +169,7 @@ SakuTown_House2_EventScript_GiveEvoStone::
 	msgbox SakuTown_House2_EventScript_GiveEvoStone_Text_0
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SakuTown_House2_EventScript_GiveEvoStone_Text_1, SakuTown_House2_EventScript_GiveEvoStone_Text_2, SakuTown_House2_EventScript_GiveEvoStone_Text_3
 	closemessage
-	setspeaker SakuTown_House2_EventScript_EspeonsMaster_Text_0
+	setspeaker SP_NAME_BOY
 	switch VAR_RESULT
 	case 0, SakuTown_House2_EventScript_GiveEvoStone_3
 	case 1, SakuTown_House2_EventScript_GiveEvoStone_4
@@ -210,16 +210,16 @@ SakuTown_House2_EventScript_Espeon::
 SakuTown_House2_EventScript_Sister::
 	lock
 	faceplayer
-	setspeaker SakuTown_House2_EventScript_Sister_Text_0
+	setspeaker SP_NAME_GIRL
 	goto_if_set FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME, SakuTown_House2_EventScript_Sister_2
-	msgbox SakuTown_House2_EventScript_Sister_Text_2
+	msgbox SakuTown_House2_EventScript_Sister_Text_1
 	closemessage
 SakuTown_House2_EventScript_Sister_1:
 	release
 	return
 
 SakuTown_House2_EventScript_Sister_2:
-	msgbox SakuTown_House2_EventScript_Sister_Text_1
+	msgbox SakuTown_House2_EventScript_Sister_Text_0
 	closemessage
 	applymovement 3, Common_Movement_FaceOriginalDirection
 	goto SakuTown_House2_EventScript_Sister_1
@@ -283,25 +283,22 @@ SakuTown_House2_EventScript_Reunited_Movement_2:
 	step_end
 
 SakuTown_House2_EventScript_EspeonsMaster_Text_0:
-	.string "Boy$"
-
-SakuTown_House2_EventScript_EspeonsMaster_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}I hope Eevee comes home soon…$"
 
-SakuTown_House2_EventScript_EspeonsMaster_Text_2:
+SakuTown_House2_EventScript_EspeonsMaster_Text_1:
 	.string "What? Someone found my Eevee?\n"
 	.string "Oh, please, tell them to bring it back!$"
 
-SakuTown_House2_EventScript_EspeonsMaster_Text_3:
+SakuTown_House2_EventScript_EspeonsMaster_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}… …$"
 
-SakuTown_House2_EventScript_EspeonsMaster_Text_4:
+SakuTown_House2_EventScript_EspeonsMaster_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Where's my Eevee?$"
 
-SakuTown_House2_EventScript_EspeonsMaster_Text_5:
+SakuTown_House2_EventScript_EspeonsMaster_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Thanks again!$"
 
-SakuTown_House2_EventScript_EspeonsMaster_Text_6:
+SakuTown_House2_EventScript_EspeonsMaster_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}How are you doing? Espeon looks\n"
 	.string "happy to see you!$"
 
@@ -347,15 +344,12 @@ SakuTown_House2_EventScript_Espeon_Text_0:
 	.string "Eeeoon!$"
 
 SakuTown_House2_EventScript_Sister_Text_0:
-	.string "Girl$"
-
-SakuTown_House2_EventScript_Sister_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}My brother's been feeling really down\n"
 	.string "lately.\p"
 	.string "His precious Pokémon disappeared in a\n"
 	.string "big storm a while ago.$"
 
-SakuTown_House2_EventScript_Sister_Text_2:
+SakuTown_House2_EventScript_Sister_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you for your kindness! It's\n"
 	.string "nice to see my brother smiling again.\p"
 	.string "I wish I could thank whoever took\n"

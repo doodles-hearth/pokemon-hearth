@@ -14,7 +14,7 @@ mapscripts SunriseVillage_RivalsHouse_MapScripts {
 script SunriseVillage_RivalsHouse_EventScript_Woman {
 	lock
 	faceplayer
-	setspeaker("Natsuki's mom")
+	setspeaker(SP_NAME_NATSUKIS_MOM)
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}The house feels a little empty\nnow that Natsuki has left home.\p"
@@ -35,7 +35,7 @@ script SunriseVillage_RivalsHouse_EventScript_Natsuki {
 	waitmovement(0)
 
 	if (flag(FLAG_TEMP_TALKED_TO_NATSUKI)) {
-		setspeaker("Natsuki")
+		setspeaker(SP_NAME_NATSUKI)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Region map, check…\nJoltik plushie, check…"
 		))
@@ -43,7 +43,7 @@ script SunriseVillage_RivalsHouse_EventScript_Natsuki {
 
 		setnamedmon(SPECIES_JOLTIK)
 	} else {
-		setspeaker("Natsuki")
+		setspeaker(SP_NAME_NATSUKI)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Poké Balls, check…\nMedicine, check…\lSpare pair of underwear, check…"
 		))
@@ -52,7 +52,7 @@ script SunriseVillage_RivalsHouse_EventScript_Natsuki {
 		delay(48)
 
 		faceplayer
-		setspeaker("Natsuki")
+		setspeaker(SP_NAME_NATSUKI)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh, hey, {PLAYER}. I'm just sorting\nout my stuff for the journey.\p"
 			"I'm traveling as light as possible!\p"
@@ -72,7 +72,7 @@ script SunriseVillage_RivalsHouse_EventScript_Natsuki {
 script SunriseVillage_RivalsHouse_EventScript_Man {
 	lock
 	faceplayer
-	setspeaker("Natsuki's dad")
+	setspeaker(SP_NAME_NATSUKIS_DAD)
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 EMOTE_NORMAL}Hello, {PLAYER}.\nHow is your adventure going?\p"
