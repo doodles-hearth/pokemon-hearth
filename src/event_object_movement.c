@@ -214,6 +214,7 @@ static void DestroyLevitateMovementTask(u8);
 static u32 LoadDynamicFollowerPalette(u32 species, bool32 shiny, bool32 female);
 const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(u32 species, bool32 shiny, bool32 female);
 static bool8 NpcTakeStep(struct Sprite *);
+static bool8 NpcTakeQuarterStep(struct Sprite *sprite);
 static bool8 AreElevationsCompatible(u8, u8);
 static void CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(u16 graphicsId, u16 movementType, struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
 
@@ -6910,16 +6911,33 @@ static bool8 UpdateMovementNormal(struct ObjectEvent *objectEvent, struct Sprite
     return FALSE;
 }
 
+static bool8 UpdateMovementQuarterStep(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (NpcTakeQuarterStep(sprite))
+    {
+        objectEvent->triggerGroundEffectsOnStop = TRUE;
+        sprite->animPaused = TRUE;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+#define QUARTER_STEP_OFFSET 128
 static void InitNpcForWalkSlow(struct ObjectEvent *objectEvent, struct Sprite *sprite, u8 direction)
 {
     s16 x;
     s16 y;
 
-    x = objectEvent->currentCoords.x;
-    y = objectEvent->currentCoords.y;
+    if (direction < QUARTER_STEP_OFFSET)
+    {
+        x = objectEvent->currentCoords.x;
+        y = objectEvent->currentCoords.y;
+        MoveCoords(direction, &x, &y);
+        ShiftObjectEventCoords(objectEvent, x, y);
+    }
+    else
+        direction -= QUARTER_STEP_OFFSET;
     SetObjectEventDirection(objectEvent, direction);
-    MoveCoords(direction, &x, &y);
-    ShiftObjectEventCoords(objectEvent, x, y);
     SetWalkSlowSpriteData(sprite, direction);
     sprite->animPaused = FALSE;
     objectEvent->triggerGroundEffectsOnMove = TRUE;
@@ -10530,6 +10548,19 @@ static bool8 UpdateWalkSlowAnim(struct Sprite *sprite)
         return FALSE;
 }
 
+static bool8 NpcTakeQuarterStep(struct Sprite *sprite)
+{
+    if (!(sprite->sTimer % 4))
+        Step1(sprite, sprite->sDirection);
+
+    sprite->sTimer++;
+
+    if (sprite->sTimer == 15)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 UpdateWalkSlowStairsAnim(struct Sprite *sprite)
 {
     if (++sprite->sTimer < 3)
@@ -11612,6 +11643,53 @@ bool8 MovementAction_ShakeVertical_Step1(struct ObjectEvent *objectEvent, struct
     if (DoShakeAnim(objectEvent, sprite, SHAKE_VERTICAL))
     {
         sprite->sActionFuncId = 2;
+    }
+    return FALSE;
+}
+
+bool8 MovementAction_QuarterStepLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (objectEvent->directionOverwrite)
+        InitWalkSlow(objectEvent, sprite, objectEvent->directionOverwrite + QUARTER_STEP_OFFSET);
+    else
+        InitWalkSlow(objectEvent, sprite, DIR_WEST + QUARTER_STEP_OFFSET);
+    return MovementAction_QuarterStep_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_QuarterStepRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (objectEvent->directionOverwrite)
+        InitWalkSlow(objectEvent, sprite, objectEvent->directionOverwrite + QUARTER_STEP_OFFSET);
+    else
+        InitWalkSlow(objectEvent, sprite, DIR_EAST + QUARTER_STEP_OFFSET);
+    return MovementAction_QuarterStep_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_QuarterStepUp_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (objectEvent->directionOverwrite)
+        InitWalkSlow(objectEvent, sprite, objectEvent->directionOverwrite + QUARTER_STEP_OFFSET);
+    else
+        InitWalkSlow(objectEvent, sprite, DIR_NORTH + QUARTER_STEP_OFFSET);
+    return MovementAction_QuarterStep_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_QuarterStepDown_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (objectEvent->directionOverwrite)
+        InitWalkSlow(objectEvent, sprite, objectEvent->directionOverwrite + QUARTER_STEP_OFFSET);
+    else
+        InitWalkSlow(objectEvent, sprite, DIR_SOUTH + QUARTER_STEP_OFFSET);
+    return MovementAction_QuarterStep_Step1(objectEvent, sprite);
+}
+
+#undef QUARTER_STEP_OFFSET
+bool8 MovementAction_QuarterStep_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (UpdateMovementQuarterStep(objectEvent, sprite))
+    {
+        sprite->sActionFuncId = 2;
+        return TRUE;
     }
     return FALSE;
 }

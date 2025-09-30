@@ -268,7 +268,10 @@
 //Jamie movement pack
 #define MOVEMENT_ACTION_SHAKE_HORIZONTAL                0xC0 //we starta bit late to limit conflicts
 #define MOVEMENT_ACTION_SHAKE_VERTICAL                  0xC1
-
+#define MOVEMENT_ACTION_QUARTER_STEP_LEFT               0xC2
+#define MOVEMENT_ACTION_QUARTER_STEP_RIGHT              0xC3
+#define MOVEMENT_ACTION_QUARTER_STEP_UP                 0xC4
+#define MOVEMENT_ACTION_QUARTER_STEP_DOWN               0xC5
 
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF

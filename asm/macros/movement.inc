@@ -175,3 +175,7 @@
 
 	create_movement_action shake_horizontal, MOVEMENT_ACTION_SHAKE_HORIZONTAL
 	create_movement_action shake_vertical, MOVEMENT_ACTION_SHAKE_VERTICAL
+	create_movement_action quarter_step_left, MOVEMENT_ACTION_QUARTER_STEP_LEFT
+	create_movement_action quarter_step_right, MOVEMENT_ACTION_QUARTER_STEP_RIGHT
+	create_movement_action quarter_step_up, MOVEMENT_ACTION_QUARTER_STEP_UP
+	create_movement_action quarter_step_down, MOVEMENT_ACTION_QUARTER_STEP_DOWN
