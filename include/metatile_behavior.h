@@ -25,6 +25,7 @@ bool8 MetatileBehavior_IsWarpDoor(u8 metatileBehavior);
 bool8 MetatileBehavior_IsDoor(u8 metatileBehavior);
 bool8 MetatileBehavior_IsEscalator(u8 metatileBehavior);
 bool8 MetatileBehavior_IsLadder(u8 metatileBehavior);
+bool8 MetatileBehavior_IsPlayerFacingChatotPerch(u8 metatileBehavior, u8 playerDir);
 bool8 MetatileBehavior_IsNonAnimDoor(u8 metatileBehavior);
 bool8 MetatileBehavior_IsDeepSouthWarp(u8 metatileBehavior);
 bool8 MetatileBehavior_IsSurfableWaterOrUnderwater(u8 metatileBehavior);

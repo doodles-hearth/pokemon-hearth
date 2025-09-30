@@ -1136,6 +1136,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/flash.inc"
 	.include "data/scripts/players_house.inc"
 	.include "data/scripts/berry_blender.inc"
+    .include "data/scripts/mail_chatot.inc"
 	.include "data/text/mauville_man.inc"
 	.include "data/text/trainers.inc"
 	.include "data/scripts/repel.inc"

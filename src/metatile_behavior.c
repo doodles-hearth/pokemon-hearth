@@ -67,12 +67,13 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_SLIDE_NORTH]                     = TILE_FLAG_UNUSED,
     [MB_SLIDE_SOUTH]                     = TILE_FLAG_UNUSED,
     [MB_TRICK_HOUSE_PUZZLE_8_FLOOR]      = TILE_FLAG_UNUSED,
-    [MB_CHEST_OPEN]                       = TILE_FLAG_UNUSED,
-    [MB_CHEST_CLOSED]                       = TILE_FLAG_UNUSED,
+    [MB_CHEST_OPEN]                      = TILE_FLAG_UNUSED,
+    [MB_CHEST_CLOSED]                    = TILE_FLAG_UNUSED,
     [MB_EASTWARD_CURRENT]                = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_WESTWARD_CURRENT]                = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_NORTHWARD_CURRENT]               = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_SOUTHWARD_CURRENT]               = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
+    [MB_CHATOT_PERCH]                    = TILE_FLAG_UNUSED,
     [MB_NON_ANIMATED_DOOR]               = TILE_FLAG_UNUSED,
     [MB_LADDER]                          = TILE_FLAG_UNUSED,
     [MB_EAST_ARROW_WARP]                 = TILE_FLAG_UNUSED,
@@ -294,6 +295,13 @@ bool8 MetatileBehavior_IsLadder(u8 metatileBehavior)
         return TRUE;
     else
         return FALSE;
+}
+
+bool8 MetatileBehavior_IsPlayerFacingChatotPerch(u8 metatileBehavior, u8 playerDir)
+{
+    if (playerDir != DIR_NORTH)
+        return FALSE;
+    return metatileBehavior == MB_CHATOT_PERCH;
 }
 
 bool8 MetatileBehavior_IsNonAnimDoor(u8 metatileBehavior)
@@ -969,7 +977,8 @@ bool8 MetatileBehavior_IsEastBlocked(u8 metatileBehavior)
      || metatileBehavior == MB_IMPASSABLE_NORTHEAST
      || metatileBehavior == MB_IMPASSABLE_SOUTHEAST
      || metatileBehavior == MB_IMPASSABLE_WEST_AND_EAST
-     || metatileBehavior == MB_SECRET_BASE_BREAKABLE_DOOR)
+     || metatileBehavior == MB_SECRET_BASE_BREAKABLE_DOOR
+     || metatileBehavior == MB_CHATOT_PERCH)
         return TRUE;
     else
         return FALSE;
@@ -981,7 +990,8 @@ bool8 MetatileBehavior_IsWestBlocked(u8 metatileBehavior)
      || metatileBehavior == MB_IMPASSABLE_NORTHWEST
      || metatileBehavior == MB_IMPASSABLE_SOUTHWEST
      || metatileBehavior == MB_IMPASSABLE_WEST_AND_EAST
-     || metatileBehavior == MB_SECRET_BASE_BREAKABLE_DOOR)
+     || metatileBehavior == MB_SECRET_BASE_BREAKABLE_DOOR
+     || metatileBehavior == MB_CHATOT_PERCH)
         return TRUE;
     else
         return FALSE;
@@ -992,7 +1002,8 @@ bool8 MetatileBehavior_IsNorthBlocked(u8 metatileBehavior)
     if (metatileBehavior == MB_IMPASSABLE_NORTH
      || metatileBehavior == MB_IMPASSABLE_NORTHEAST
      || metatileBehavior == MB_IMPASSABLE_NORTHWEST
-     || metatileBehavior == MB_IMPASSABLE_SOUTH_AND_NORTH)
+     || metatileBehavior == MB_IMPASSABLE_SOUTH_AND_NORTH
+     || metatileBehavior == MB_CHATOT_PERCH)
         return TRUE;
     else
         return FALSE;
@@ -1003,7 +1014,8 @@ bool8 MetatileBehavior_IsSouthBlocked(u8 metatileBehavior)
     if (metatileBehavior == MB_IMPASSABLE_SOUTH
      || metatileBehavior == MB_IMPASSABLE_SOUTHEAST
      || metatileBehavior == MB_IMPASSABLE_SOUTHWEST
-     || metatileBehavior == MB_IMPASSABLE_SOUTH_AND_NORTH)
+     || metatileBehavior == MB_IMPASSABLE_SOUTH_AND_NORTH
+     || metatileBehavior == MB_CHATOT_PERCH)
         return TRUE;
     else
         return FALSE;
