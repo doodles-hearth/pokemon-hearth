@@ -29,6 +29,7 @@ static void WindowFunc_ClearNamebox(u8, u8, u8, u8, u8, u8);
 void TrySpawnNamebox(u32 tileNum)
 {
     u8 *strbuf = AllocZeroed(32 * sizeof(u8));
+
     if ((OW_FLAG_SUPPRESS_NAME_BOX != 0 && FlagGet(OW_FLAG_SUPPRESS_NAME_BOX)) || gSpeakerName == NULL || !strbuf)
     {
         // Re-check again in case anything but !strbuf is TRUE.
@@ -83,7 +84,6 @@ void TrySpawnNamebox(u32 tileNum)
     }
 
     SaveTextColors(&bakColors[0], &bakColors[1], &bakColors[2]);
-    AddTextPrinterParameterized2(1, FONT_SMALL, gNamePlateBuffer, 0, NULL, 11, 0, 10);
     AddTextPrinterParameterized3(sNameboxWindowId, fontId, strX, 0, colors, 0, strbuf);
     RestoreTextColors(&bakColors[0], &bakColors[1], &bakColors[2]);
     PutWindowTilemap(sNameboxWindowId);
