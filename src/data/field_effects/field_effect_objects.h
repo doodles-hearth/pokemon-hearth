@@ -1342,7 +1342,7 @@ static const union AnimCmd *const sAnimTable_HotSpringsWater[] =
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_HotSpringsWater = {
     .tileTag = TAG_NONE,
-    .paletteTag = FLDEFF_PAL_TAG_GENERAL_1,
+    .paletteTag = OBJ_EVENT_PAL_TAG_OW_FOLIAGE,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_HotSpringsWater,
     .images = sPicTable_HotSpringsWater,

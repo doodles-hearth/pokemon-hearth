@@ -264,6 +264,7 @@ script SunriseVillage_Beach_EventScript_Corsola {
 	lock
     faceplayer
 	setseenmon(SPECIES_CORSOLA)
+	setspeakertomonname(SPECIES_CORSOLA)
     playmoncry(SPECIES_CORSOLA, CRY_MODE_NORMAL)
     msgbox(format(
         "Krr!"
@@ -277,6 +278,7 @@ script SunriseVillage_Beach_EventScript_Corsola2 {
 	lock
     faceplayer
 	setseenmon(SPECIES_CORSOLA)
+	setspeakertomonname(SPECIES_CORSOLA)
     playmoncry(SPECIES_CORSOLA, CRY_MODE_WEAK)
     msgbox(format(
         "Laaa!"
@@ -326,6 +328,7 @@ script SunriseVillage_Event_ChildsMon {
 	lock
     faceplayer
 	setseenmon(SPECIES_DWEBBLE)
+	setspeakertomonname(SPECIES_DWEBBLE)
     playmoncry(SPECIES_DWEBBLE, CRY_MODE_NORMAL)
     msgbox(format(
         "Mrrb!"

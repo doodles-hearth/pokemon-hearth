@@ -1390,3 +1390,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SunriseCave/scripts.inc"
 
 	.include "data/maps/WindsweptRouteBottom/scripts.inc"
+
+	.include "data/maps/YifuCity_HotSprings/scripts.inc"

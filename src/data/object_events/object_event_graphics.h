@@ -145,6 +145,7 @@ const u32 gObjectEventPic_Uume_Boy2[] = INCBIN_U32("graphics/object_events/pics/
 const u32 gObjectEventPic_Uume_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/uume/nurse.4bpp");
 const u32 gObjectEventPic_Uume_Valet[] = INCBIN_U32("graphics/object_events/pics/people/uume/valet.4bpp");
 const u32 gObjectEventPic_Uume_FatGuy[] = INCBIN_U32("graphics/object_events/pics/people/uume/fat_guy.4bpp");
+const u32 gObjectEventPic_Uume_OldWomanSwimming[] = INCBIN_U32("graphics/object_events/pics/people/uume/old_woman_swimming.4bpp");
 
 // Hot area NPCs
 const u32 gObjectEventPic_Hot_Woman1[] = INCBIN_U32("graphics/object_events/pics/people/hot/woman_1.4bpp");
@@ -213,6 +214,8 @@ const u32 gObjectEventPic_ShamisenGreen[] = INCBIN_U32("graphics/object_events/p
 const u32 gObjectEventPic_ShamisenRed[] = INCBIN_U32("graphics/object_events/pics/people/greenish/shamisen_red.4bpp");
 const u32 gObjectEventPic_TwinF[] = INCBIN_U32("graphics/object_events/pics/people/greenish/twin_f.4bpp");
 const u32 gObjectEventPic_TwinM[] = INCBIN_U32("graphics/object_events/pics/people/greenish/twin_m.4bpp");
+const u32 gObjectEventPic_OnsenFSwimming[] = INCBIN_U32("graphics/object_events/pics/people/greenish/hotspring_f_swimming.4bpp");
+const u32 gObjectEventPic_OnsenMSwimming[] = INCBIN_U32("graphics/object_events/pics/people/greenish/hotspring_m_swimming.4bpp");
 
 // Purplish pal
 const u32 gObjectEventPic_Artist[] = INCBIN_U32("graphics/object_events/pics/people/purplish/artist.4bpp");
@@ -384,8 +387,8 @@ const u32 gObjectEventPic_Lunchbox[] = INCBIN_U32("graphics/object_events/pics/m
 // 3-4: greys
 // 5-11: foliage
 // 12: bark grey
-// 13: darkest green
-// 14: decay
+// 13: decay
+// 14: hot springs water
 // 15: free real estate
 const u16 gObjectEventPal_HearthOwFoliage[] = INCBIN_U16("graphics/object_events/palettes/hearth_ow_foliage.gbapal");
 // 0: Transparency

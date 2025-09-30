@@ -16,7 +16,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_HOT_OLD_WOMAN",
-      "x": 6,
+      "x": 2,
       "y": 2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -42,6 +42,13 @@
       "elevation": 0,
       "dest_map": "MAP_YIFU_CITY",
       "dest_warp_id": "2"
+    },
+    {
+      "x": 1,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_YIFU_CITY_HOT_SPRINGS",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

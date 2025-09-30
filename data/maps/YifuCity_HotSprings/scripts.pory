@@ -1,0 +1,56 @@
+mapscripts YifuCity_HotSprings_MapScripts {
+	
+}
+
+script YifuCity_HotSprings_EventScript_OldWoman {
+	trainerbattle_single(
+		TRAINER_KODOMO,
+		format("{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}What do you mean, it burns?\nThe water's barely warm!"),
+		format("Ouchie, what a burning defeat…")
+	)
+	setspeaker(SP_NAME_OLD_LADY)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}My Pokémon need to relax a little."), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script YifuCity_HotSprings_EventScript_OldWoman2 {
+	lock
+	setspeaker(SP_NAME_OLD_LADY)
+	playse(SE_PIN)
+	applymovement(LOCALID_HOT_SPRINGS_OLD_WOMAN_2, moves(emote_music))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}The scorching water is heaven for this old skin…"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_HotSprings_EventScript_HotSpringM {
+	lock
+	trainerbattle_single(
+		TRAINER_KODOMO,
+		format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}What do you mean, it burns?\nThe water's barely warm!"),
+		format("Ouchie, what a burning defeat…")
+	)
+	setspeaker(SP_NAME_HOT_SPRING_GAL)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}My Pokémon need to relax a little."), MSGBOX_AUTOCLOSE)
+	release
+}
+
+script YifuCity_HotSprings_EventScript_HotSpringF {
+	lock
+	release
+}
+
+script YifuCity_HotSprings_EventScript_Torkoal {
+	lock
+    faceplayer
+	setseenmon(SPECIES_TORKOAL)
+    setspeakertomonname(SPECIES_TORKOAL)
+    playmoncry(SPECIES_TORKOAL, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Pschhhhhh…"
+    ))
+    waitmoncry
+    release
+}
