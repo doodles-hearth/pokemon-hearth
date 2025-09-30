@@ -34,6 +34,8 @@ YifuCity_HotSprings_EventScript_HotSpringF::
 	trainerbattle_single TRAINER_WAKAE, YifuCity_HotSprings_EventScript_HotSpringF_Text_0, YifuCity_HotSprings_EventScript_HotSpringF_Text_1
 	setspeaker SP_NAME_HOT_SPRING_GAL
 	setnamedmon SPECIES_TORKOAL
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, YifuCity_HotSprings_EventScript_HotSpringF_Movement_0
 	msgbox YifuCity_HotSprings_EventScript_HotSpringF_Text_2, MSGBOX_AUTOCLOSE
 	release
 	return
@@ -76,6 +78,10 @@ YifuCity_HotSprings_EventScript_Slowpoke::
 
 YifuCity_HotSprings_EventScript_OldWoman2_Movement_0:
 	emote_music
+	step_end
+
+YifuCity_HotSprings_EventScript_HotSpringF_Movement_0:
+	emote_sweat
 	step_end
 
 YifuCity_HotSprings_EventScript_Slowpoke_Movement_0:

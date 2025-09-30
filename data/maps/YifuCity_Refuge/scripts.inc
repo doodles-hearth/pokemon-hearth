@@ -489,14 +489,14 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_0:
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
-	.string "Ya know the drill, 500¥ please!$"
+	.string "Ya know the drill, ¥500 please!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever.$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
-	.string "Ya know the drill, 500¥ please!\p"
+	.string "Ya know the drill, ¥500 please!\p"
 	.string "… … …\n"
 	.string "… … …What? Yer THAT poor?\p"
 	.string "I feel almost bad for ya, buddy…\p"
@@ -506,7 +506,7 @@ YifuCity_Refuge_EventScript_FakeNurse_Text_3:
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
-	.string "By the way, that'll be 500¥, wow, so\n"
+	.string "By the way, that'll be ¥500, wow, so\n"
 	.string "cheap!$"
 
 YifuCity_Refuge_EventScript_FakeNurse_Text_5:
@@ -563,7 +563,7 @@ YifuCity_Refuge_EventScript_ShamisensPokemon_Text_0:
 
 YifuCity_Refuge_EventScript_HotelValet_Text_0:
 	.string "Good day, {STR_VAR_1}!\n"
-	.string "A room is available for 500¥, if you\l"
+	.string "A room is available for ¥500, if you\l"
 	.string "need a place to spend the night!$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_1:

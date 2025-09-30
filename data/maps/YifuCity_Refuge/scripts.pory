@@ -52,7 +52,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 			setspeaker(SP_NAME_NURSE)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
-				"Ya know the drill, 500¥ please!"
+				"Ya know the drill, ¥500 please!"
 			))
 			playse(SE_SHOP)
 			removemoney(500)
@@ -66,7 +66,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 			setspeaker(SP_NAME_NURSE)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
-				"Ya know the drill, 500¥ please!\p"
+				"Ya know the drill, ¥500 please!\p"
 				"… … …\n… … …What? Yer THAT poor?\p"
 				"I feel almost bad for ya, buddy…\p"
 				"I guess, uh… I guess we're good then, don' worry 'bout it.\p"
@@ -79,7 +79,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 		setspeaker(SP_NAME_NURSE)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
-			"By the way, that'll be 500¥, wow, so cheap!"
+			"By the way, that'll be ¥500, wow, so cheap!"
 		))
 
 		showmoneybox(18, 0)
@@ -202,7 +202,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 	setspeaker(SP_NAME_VALET)
 	msgbox(format(
 		// TODO EVA time of day
-		"Good day, {STR_VAR_1}!\nA room is available for 500¥, if you need a place to spend the night!"
+		"Good day, {STR_VAR_1}!\nA room is available for ¥500, if you need a place to spend the night!"
 	))
 
 	showmoneybox(18, 0)

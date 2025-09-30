@@ -28,7 +28,7 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 		createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 		setspeaker(SP_NAME_NURSE)
 		msgbox(format(
-			"Hello! For 500¥, you and your Pokémon can spend the night here."
+			"Hello! For ¥500, you and your Pokémon can spend the night here."
 		))
 
 		showmoneybox(18, 0)
@@ -80,7 +80,7 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 		createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 		setspeaker(SP_NAME_NURSE)
 		msgbox(format(
-			"Hello! For 500¥, you and your Pokémon can spend the night here."
+			"Hello! For ¥500, you and your Pokémon can spend the night here."
 		))
 		closemessage
 	}

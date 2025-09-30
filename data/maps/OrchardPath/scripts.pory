@@ -263,7 +263,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 		"Gather round, folks, gather round!\p"
 		"Hey, kid! Do you want your mind to be BLOWN?\p"
 		"I am the world-renowned ROCK SMASHER! I kid you not!\p"
-		"For as little as 100¥, you will have the privilege of watching me ABSOLUTELY DESTROY a rock, using my BARE HANDS!\p"
+		"For as little as ¥100, you will have the privilege of watching me ABSOLUTELY DESTROY a rock, using my BARE HANDS!\p"
 		"So what do you say?"
 	))
 
@@ -389,7 +389,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 }
 
 script OrchardPath_EventScript_SignRockSmash {
-	msgbox(format("WITNESS AN INCREDIBLE DISPLAY\nOF STRENGTH FOR ONLY 100¥"), MSGBOX_SIGN)
+	msgbox(format("WITNESS AN INCREDIBLE DISPLAY\nOF STRENGTH FOR ONLY ¥100"), MSGBOX_SIGN)
 }
 
 script OrchardPath_EventScript_Samurai2 {
