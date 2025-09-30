@@ -456,7 +456,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .conditions =
         {
             MATCH_ON_MB(MB_HOT_SPRINGS, MB_HOT_SPRINGS),
-            MATCH_TYPES(TYPE_FIRE, TYPE_FIRE)
+            MATCH_TYPES(TYPE_FIRE, TYPE_ICE)
         },
     },
 };

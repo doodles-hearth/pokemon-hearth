@@ -815,10 +815,12 @@
 #define TRAINER_NOLAND                      809
 #define TRAINER_LUCY                        810
 #define TRAINER_BRANDON                     811
-#define TRAINER_ANDRES_2                    812
-#define TRAINER_ANDRES_3                    813
-#define TRAINER_ANDRES_4                    814
-#define TRAINER_ANDRES_5                    815
+
+// Daily trainers
+#define TRAINER_WAKAE                       812
+#define TRAINER_FUTOSHI                     813
+#define TRAINER_LIHUO                       814
+#define TRAINER_SACHIKO                     815
 #define TRAINER_CORY_2                      816
 #define TRAINER_CORY_3                      817
 #define TRAINER_CORY_4                      818
@@ -858,6 +860,11 @@
 #define TRAINER_LEAF                        852
 #define TRAINER_BRENDAN_PLACEHOLDER         853
 #define TRAINER_MAY_PLACEHOLDER             854
+
+#define DAILY_TRAINERS_START TRAINER_WAKAE
+#define DAILY_TRAINERS_END   TRAINER_MAY_PLACEHOLDER
+#define NUM_DAILY_TRAINERS   (DAILY_TRAINERS_END - DAILY_TRAINERS_START + 1)
+
 #define TRAINER_DUMMY                       855
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows

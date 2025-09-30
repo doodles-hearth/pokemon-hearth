@@ -381,9 +381,10 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_CROBAT_SHADOW_LEADER] = { _("Crobat Boss"), 20, ITEM_DUSK_BALL },
     [TRAINER_CLASS_GOLBAT] = { _("Golbat"), 20, ITEM_DUSK_BALL },
     [TRAINER_CLASS_TRAVELING_MERCHANT] = { _("Merchant") },
-    [TRAINER_CLASS_ONSEN_F] = { _("Bath Gal") },
-    [TRAINER_CLASS_ONSEN_M] = { _("Bath Guy") },
+    [TRAINER_CLASS_ONSEN_F] = { _("Baths Gal") },
+    [TRAINER_CLASS_ONSEN_M] = { _("Baths Guy") },
     [TRAINER_CLASS_SHAMISEN] = { _("Blind Singer") },
+    [TRAINER_CLASS_FIREBRINGER] = { _("Firebringer") },
 };
 
 static void (*const sTurnActionsFuncsTable[])(void) =

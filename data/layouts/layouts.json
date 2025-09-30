@@ -6400,7 +6400,7 @@
     {
       "id": "LAYOUT_YIFU_CITY_HOT_SPRINGS",
       "name": "YifuCity_HotSprings_Layout",
-      "width": 20,
+      "width": 30,
       "height": 25,
       "primary_tileset": "gTileset_Building_Generic",
       "secondary_tileset": "gTileset_HotSprings",
