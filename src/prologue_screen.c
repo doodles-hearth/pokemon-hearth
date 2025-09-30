@@ -72,6 +72,7 @@ static const struct WindowTemplate sWindowTemplate_PrologueText =
 static const u8 sPrologueTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
 
 const u8 sText_Prologue[] = _(
+    "This is a demo for Pokémon Hearth!\n"
     "This game is FREE.\nYou should not have paid for it.{PAUSE 48}\n\n"
     "To avoid playing an outdated version\n"
     "of the game,{PAUSE 16} make sure you got the hack\n"
