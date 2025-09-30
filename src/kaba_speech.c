@@ -333,7 +333,6 @@ struct KabaSpeech
 static EWRAM_DATA struct KabaSpeech *sKabaSpeech = NULL;
 
 // Function declarations
-static void Task_KabaSpeech_Begin(u8);
 static void Task_KabaSpeech_FadeInEverything(u8);
 static void Task_KabaSpeech_GreetingsTraveler(u8);
 static void Task_KabaSpeech_AndThis(u8);
@@ -596,13 +595,13 @@ void VBlankCB_KabaSpeech(void)
     TransferPlttBuffer();
 }
 
-void DoKabaSpeech(void)
+/* void DoKabaSpeech(void)
 {
-    CreateTask(Task_KabaSpeech_Begin, 0);
+    CreateTask(Task_OpenPrologueScreen, 0);
     SetMainCallback2(CB2_KabaSpeech);
-}
+} */
 
-static void Task_KabaSpeech_Begin(u8 taskId)
+void Task_KabaSpeech_Begin(u8 taskId)
 {
     switch(gMain.state)
     {
