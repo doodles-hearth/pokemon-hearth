@@ -46,6 +46,8 @@ script YifuCity_HotSprings_EventScript_HotSpringF {
 	)
 	setspeaker(SP_NAME_HOT_SPRING_GAL)
 	setnamedmon(SPECIES_TORKOAL)
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}Maybe I can get that Torkoal to bring me a towel…"), MSGBOX_AUTOCLOSE)
 	release
 }
