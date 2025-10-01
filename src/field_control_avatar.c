@@ -520,7 +520,7 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
     if (MetatileBehavior_IsPC(metatileBehavior) == TRUE)
         return EventScript_PC;
     if (MetatileBehavior_IsPlayerFacingChatotPerch(metatileBehavior, direction) == TRUE)
-        return EventScript_MailChatot;
+        return ChatotPost_EventScript_Chatot;
     if (MetatileBehavior_IsClosedSootopolisDoor(metatileBehavior) == TRUE)
         return EventScript_ClosedSootopolisDoor;
     if (MetatileBehavior_IsSkyPillarClosedDoor(metatileBehavior) == TRUE)

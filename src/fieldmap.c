@@ -83,6 +83,8 @@ void InitMap(void)
     RunOnLoadMapScript();
     if (PlayerHasChatotPost())
         SpawnPostChatot();
+    else
+        ClearPostChatot();
 }
 
 void InitMapFromSavedGame(void)
@@ -94,6 +96,8 @@ void InitMapFromSavedGame(void)
     RunOnLoadMapScript();
     if (PlayerHasChatotPost())
         SpawnPostChatot();
+    else
+        ClearPostChatot();
     UpdateTVScreensOnMap(gBackupMapLayout.width, gBackupMapLayout.height);
 }
 

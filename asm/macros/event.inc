@@ -2985,3 +2985,10 @@
 	.2byte \newState
 	.endm
 
+    .macro checkchatotpost
+    callnative Native_CheckChatotPost, requests_effects=1
+    .endm
+
+    .macro readchatotpost
+    callnative Native_ReadChatotPost, requests_effects=1
+    .endm

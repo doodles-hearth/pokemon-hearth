@@ -1,3 +1,48 @@
 script ChatotPost_EventScript_Post {
 	msgbox(format("It's a Chatot Post."), MSGBOX_SIGN)
 }
+
+script ChatotPost_EventScript_Chatot {
+    lockall
+    if (checkchatotpost)
+    {
+        msgbox(format("SQWAK! POST FOR YOU! SQWAK!"), MSGBOX_DEFAULT)
+        readchatotpost
+    }
+    else
+    {
+        msgbox(format("SQWAK! NO MORE POST! SQUAK!"), MSGBOX_DEFAULT)
+        releaseall
+        end
+    }
+    if (checkchatotpost)
+    {
+        msgbox(format("SQWAK! MORE POST! SQWAK"), MSGBOX_DEFAULT)
+        readchatotpost
+    }
+    if (checkchatotpost)
+    {
+        msgbox(format("SQWAK! FINAL POST! SQWAK!"), MSGBOX_DEFAULT)
+        readchatotpost
+    }
+    msgbox(format("SQWAK!"), MSGBOX_DEFAULT)
+    releaseall
+    end
+}
+
+script ChatotPost_EventScript_None {
+    return
+}
+
+//
+// Chatot Post Scripts - Make more below and add to /src/data/chatot_post.h
+//
+script ChatotPost_EventScript_FromHaru {
+    msgbox(format("Hi bestie!\pDo you want to hear a fun fact?\pDid you know that wailord aren't actually the biggest living things?\pthe biggest living things are actually mushrooms, because…"), MSGBOX_DEFAULT)
+    fadescreen(FADE_TO_BLACK)
+	delay(48)
+    closemessage
+	fadescreen(FADE_FROM_BLACK)
+    msgbox(format("…also did you know…\pWait… Chatot!\pCome back Chatot!"), MSGBOX_DEFAULT)
+    return
+}
