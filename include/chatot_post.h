@@ -1,6 +1,9 @@
 #ifndef GUARD_CHATOT_POST_H
 #define GUARD_CHATOT_POST_H
 
+#define INITIAL_POST_CHANCE 2 //%
+#define POST_CHANCE_INCREMENT 2 //%
+
 enum ChatotPostTypes
 {
     POST_TYPE_NONE, // Default

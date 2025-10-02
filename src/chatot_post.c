@@ -16,7 +16,7 @@
 // Starts the post
 void InitialisePost(void)
 {
-    gSaveBlock1Ptr->postChance = 2;
+    gSaveBlock1Ptr->postChance = INITIAL_POST_CHANCE;
 }
 
 // Makes Chatot appear
@@ -120,7 +120,7 @@ void ClearFirstPostSlotAndCompressPostQueue(void)
     CompressPostQueue();
 }
 
-static void Task_FindAndActivatePost(u8 taskId)
+static void Task_TryFindAndActivatePost(u8 taskId)
 {
     const u8 postCount = ARRAY_COUNT(gChatotPost);
     if (postCount == 0)
@@ -160,15 +160,23 @@ static void Task_FindAndActivatePost(u8 taskId)
 
         // For random-type posts, store the first eligible one (so we can pick it if
         // we don't find any immediate/guaranteed ones)
-        if (post->type == POST_TYPE_RANDOM && storedIndex == -1)
+        if (post->type == POST_TYPE_RANDOM && storedIndex == 0)
             storedIndex = postIdx;
     }
 
-    // If no immediate was found, but we stored an eligible random, activate it.
+    // If no immediate was found, but we stored an eligible random, try activate it
     if (storedIndex != 0)
     {
-        SetChatotPostActive(storedIndex);
-        return;
+        gSaveBlock1Ptr->postStepCounter = 0;
+        if (gSaveBlock1Ptr->postChance > (Random() % 100))
+        {
+            SetChatotPostActive(storedIndex);
+            gSaveBlock1Ptr->postChance = INITIAL_POST_CHANCE;
+        }
+        else
+        {
+            gSaveBlock1Ptr->postChance += POST_CHANCE_INCREMENT;
+        }
     }
 
     return;
@@ -184,19 +192,8 @@ bool8 TrySetRandomPostActive(void)
     gSaveBlock1Ptr->postStepCounter++;
     if (gSaveBlock1Ptr->postStepCounter >= 255)
     {
-        gSaveBlock1Ptr->postStepCounter = 0;
-        if (gSaveBlock1Ptr->postChance > (Random() % 100)
-        || FlagGet(FLAG_GUARANTEED_POST))
-        {
-            CreateTask(Task_FindAndActivatePost, 9);
-            gSaveBlock1Ptr->postChance = 2;
-            return TRUE;
-        }
-        else
-        {
-            gSaveBlock1Ptr->postChance += 2;
-            return FALSE;
-        }
+        CreateTask(Task_TryFindAndActivatePost, 9);
+        return TRUE;
     }
     return FALSE;
 }

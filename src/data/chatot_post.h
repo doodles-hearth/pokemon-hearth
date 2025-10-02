@@ -15,5 +15,6 @@ const struct ChatotPost gChatotPost[] =
     {
         .script = ChatotPost_EventScript_FromHaru,
         .importance = 0,
+        .type = POST_TYPE_RANDOM,
     },
 };
