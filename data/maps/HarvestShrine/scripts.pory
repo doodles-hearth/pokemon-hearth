@@ -57,6 +57,7 @@ script HarvestShrine_EventScript_MonkRain {
 			"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}You prayed to the venerable Bronzong for rain, and He heeded your prayer!\p"
 			"He doesn't listen to just anyone,\nyou know?\lThere's something about you, kid…\lTake this! I insist!"
 		))
+		closemessage
 
 		giveitem(ITEM_TM_RAIN_DANCE)
 	} else {
@@ -64,6 +65,7 @@ script HarvestShrine_EventScript_MonkRain {
 			"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Impressive, isn't He?"
 		))
 	}
+	closemessage
 	release
 }
 
