@@ -1396,6 +1396,14 @@ void GetXYCoordsOneStepInFrontOfPlayer(s16 *x, s16 *y)
     MoveCoords(GetPlayerFacingDirection(), x, y);
 }
 
+void GetXYCoordsTwoStepsInFrontOfPlayer(s16 *x, s16 *y)
+{
+    *x = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.x;
+    *y = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.y;
+    MoveCoords(GetPlayerFacingDirection(), x, y);
+    MoveCoords(GetPlayerFacingDirection(), x, y);
+}
+
 void PlayerGetDestCoords(s16 *x, s16 *y)
 {
     *x = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.x;

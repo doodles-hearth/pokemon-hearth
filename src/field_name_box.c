@@ -186,6 +186,11 @@ void SetSpeaker(struct ScriptContext *ctx)
     gSpeakerName = speaker;
 }
 
+void ClearSpeaker(struct ScriptContext *ctx)
+{
+    gSpeakerName = NULL;
+}
+
 // useful for other context e.g. match call
 void TrySpawnAndShowNamebox(const u8 *speaker, u32 tileNum)
 {

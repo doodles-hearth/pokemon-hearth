@@ -110,6 +110,9 @@
     },
     "gettimeofday": {
       "var_name": "VAR_0x8000"
+    },
+    "checkchatotpost": {
+        "var_name": "VAR_RESULT"
     }
   }
 }
