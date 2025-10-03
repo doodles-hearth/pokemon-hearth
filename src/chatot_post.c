@@ -2,6 +2,8 @@
 #include "chatot_post.h"
 #include "event_data.h"
 #include "event_object_movement.h"
+#include "field_player_avatar.h"
+#include "fldeff.h"
 #include "random.h"
 #include "script.h"
 #include "sprite.h"
@@ -201,6 +203,23 @@ bool8 TrySetRandomPostActive(void)
 void Debug_PutPostFromHaruInQueue(void)
 {
     SetChatotPostActive(POST_FROM_HARU);
+}
+
+bool8 Native_SetChatotLastSpeaker(struct ScriptContext *ctx)
+{
+    u8 objEventId;
+
+    GetXYCoordsTwoStepsInFrontOfPlayer(&gPlayerFacingPosition.x, &gPlayerFacingPosition.y);
+    objEventId = GetObjectEventIdByPosition(gPlayerFacingPosition.x, gPlayerFacingPosition.y, 0);
+    if (gObjectEvents[objEventId].graphicsId != OBJ_EVENT_GFX_SPECIES(CHATOT))
+    {
+        return FALSE;
+    }
+    else
+    {
+        gSpecialVar_LastTalked = gObjectEvents[objEventId].localId;
+        return TRUE;
+    }
 }
 
 bool8 Native_CheckChatotPost(struct ScriptContext *ctx)

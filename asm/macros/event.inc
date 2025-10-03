@@ -2985,6 +2985,10 @@
 	.2byte \newState
 	.endm
 
+    .macro setchatotlastspeaker
+    callnative Native_SetChatotLastSpeaker, requests_effects=1
+    .endm
+
     .macro checkchatotpost
     callnative Native_CheckChatotPost, requests_effects=1
     .endm

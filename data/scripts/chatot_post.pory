@@ -4,6 +4,9 @@ script ChatotPost_EventScript_Post {
 
 script ChatotPost_EventScript_Chatot {
     lockall
+    setchatotlastspeaker
+    applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+    delay(16)
     if (checkchatotpost)
     {
         msgbox(format("SQWAK! POST FOR YOU! SQWAK!"), MSGBOX_DEFAULT)

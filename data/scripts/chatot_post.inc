@@ -5,6 +5,9 @@ ChatotPost_EventScript_Post::
 
 ChatotPost_EventScript_Chatot::
 	lockall
+	setchatotlastspeaker
+	applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
+	delay 16
 	checkchatotpost
 	compare VAR_RESULT, 0
 	goto_if_ne ChatotPost_EventScript_Chatot_2
