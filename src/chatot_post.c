@@ -44,6 +44,13 @@ bool8 PlayerHasChatotPost(void)
     return FALSE;
 }
 
+// Checks if the Chatot obj event is on the perch
+// (this avoids the post script to trigger even though Chatot hasn't been spawned)
+bool8 ChatotIsOnPerch(void)
+{
+    return !FlagGet(FLAG_POST_CHATOT);
+}
+
 // Get the u8 associated with the post flag
 static u8 *GetChatotPostFlagPointer(u8 postId)
 {
@@ -229,6 +236,24 @@ bool8 Native_CheckChatotPost(struct ScriptContext *ctx)
 
     if (gSaveBlock1Ptr->activePost[0])
         gSpecialVar_Result = TRUE;
+    return FALSE;
+}
+
+bool8 Native_CheckChatotPostNumber(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1);
+
+    gSpecialVar_Result = 0;
+
+    u32 i = 0;
+    while (i < NUM_ACTIVE_POST_SLOTS)
+    {
+        if (gSaveBlock1Ptr->activePost[i])
+            gSpecialVar_Result += 1;
+
+        i += 1;
+    }
+
     return FALSE;
 }
 

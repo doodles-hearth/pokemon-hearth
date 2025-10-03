@@ -773,14 +773,6 @@
       "elevation": 0,
       "item": "ITEM_REVIVAL_HERB",
       "flag": "FLAG_HIDDEN_ITEM_TRANQUIL_ROUTE_REVIVAL_HERB"
-    },
-    {
-      "type": "sign",
-      "x": 12,
-      "y": 51,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "ChatotPost_EventScript_Post"
     }
   ]
 }

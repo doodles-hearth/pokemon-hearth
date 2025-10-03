@@ -2974,6 +2974,10 @@
 	.4byte \name
 	.endm
 
+	.macro clearspeaker
+	callnative ClearSpeaker
+	.endm
+
 	.macro getroutechallengestate routeChallenge:req
 	callnative Native_GetRouteChallengeState, requests_effects = 1
 	.2byte \routeChallenge
@@ -2991,6 +2995,10 @@
 
     .macro checkchatotpost
     callnative Native_CheckChatotPost, requests_effects=1
+    .endm
+
+    .macro checkchatotpostnumber
+    callnative Native_CheckChatotPostNumber, requests_effects=1
     .endm
 
     .macro readchatotpost

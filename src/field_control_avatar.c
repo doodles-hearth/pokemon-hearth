@@ -520,9 +520,14 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return EventScript_TV;
     if (MetatileBehavior_IsPC(metatileBehavior) == TRUE)
         return EventScript_PC;
-    if (MetatileBehavior_IsPlayerFacingChatotPerch(metatileBehavior, direction) == TRUE
-        && PlayerHasChatotPost())
-        return ChatotPost_EventScript_Chatot;
+    if (MetatileBehavior_IsPlayerFacingChatotPerch(metatileBehavior, direction) == TRUE)
+    {
+        if (ChatotIsOnPerch())
+        {
+            return ChatotPost_EventScript_Chatot;
+        }
+        return ChatotPost_EventScript_EmptyPost;
+    }
     if (MetatileBehavior_IsClosedSootopolisDoor(metatileBehavior) == TRUE)
         return EventScript_ClosedSootopolisDoor;
     if (MetatileBehavior_IsSkyPillarClosedDoor(metatileBehavior) == TRUE)
@@ -535,8 +540,6 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return Route110_TrickHousePuzzle_EventScript_Door;
     if (MetatileBehavior_IsRegionMap(metatileBehavior) == TRUE)
         return EventScript_RegionMap;
-    // if (MetatileBehavior_IsRunningShoesManual(metatileBehavior) == TRUE)
-    //     return EventScript_RunningShoesManual;
     if (MetatileBehavior_IsPictureBookShelf(metatileBehavior) == TRUE)
         return EventScript_PictureBookShelf;
     if (MetatileBehavior_IsBookShelf(metatileBehavior) == TRUE)

@@ -17,6 +17,7 @@ struct ChatotPost
     u8 importance;
     u8 condition;
     enum ChatotPostTypes type;
+    // TODO add sender's name
 };
 
 extern const struct ChatotPost gChatotPost[];
@@ -25,6 +26,7 @@ void InitialisePost(void);
 void SpawnPostChatot(void);
 void ClearPostChatot(void);
 bool8 PlayerHasChatotPost(void);
+bool8 ChatotIsOnPerch(void);
 void SetChatotPostFlag(u8 postId);
 bool8 CheckChatotPostFlag(u8 postId);
 bool8 SetChatotPostActive(u8 postId);
