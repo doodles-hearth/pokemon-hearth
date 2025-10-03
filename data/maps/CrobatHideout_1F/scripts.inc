@@ -1265,28 +1265,28 @@ CrobatHideout_1F_EventScript_EmptyBowlLeftover_Text_0:
 
 CrobatHideout_1F_EventScript_WantedPosterMustache_Text_0:
 	.string "WANTED: Crobat Shadows Grunt\n"
-	.string "3000¥\p"
+	.string "¥3000\p"
 	.string "Someone has doodled glasses\n"
 	.string "and a mustache on the poster.$"
 
 CrobatHideout_1F_EventScript_WantedPosterNose_Text_0:
 	.string "WANTED: Crobat Shadows Grunt\n"
-	.string "4500¥\p"
+	.string "¥4500\p"
 	.string "It looks like the nose was\n"
 	.string "drawn over with a different nose.$"
 
 CrobatHideout_1F_EventScript_WantedPosterHanddrawn_Text_0:
 	.string "WANTED: KEVIN\n"
-	.string "10 000 000 000 000¥\p"
+	.string "¥10 000 000 000 000\p"
 	.string "This poster looks handdrawn…$"
 
 CrobatHideout_1F_EventScript_WantedPosterBoss_Text_0:
 	.string "WANTED: Crobat Shadows Leader\n"
-	.string "100 000¥\p"
+	.string "¥100 000\p"
 	.string "There are various messages\n"
 	.string "scribbled on the poster:\l"
 	.string "“Happy birthday boss”,\l"
-	.string "“U are worthe 999 999¥ in our harts”,\l"
+	.string "“U are worthe ¥999 999 in our harts”,\l"
 	.string "“Gogettem boss”…\l"
 	.string "… … …\l"
 	.string "It's time to go.$"

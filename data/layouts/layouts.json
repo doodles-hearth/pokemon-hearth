@@ -6396,6 +6396,18 @@
       "blockdata_filepath": "data/layouts/WindsweptRouteBottom/map.bin",
       "border_height": 2,
       "border_width": 2
+    },
+    {
+      "id": "LAYOUT_YIFU_CITY_HOT_SPRINGS",
+      "name": "YifuCity_HotSprings_Layout",
+      "width": 30,
+      "height": 25,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HotSprings",
+      "border_filepath": "data/layouts/YifuCity_HotSprings/border.bin",
+      "blockdata_filepath": "data/layouts/YifuCity_HotSprings/map.bin",
+      "border_height": 2,
+      "border_width": 2
     }
   ]
 }

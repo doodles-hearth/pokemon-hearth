@@ -308,7 +308,7 @@ Common_EventScript_PkmnCenterNurse_Chansey_Text_0:
 	.string "Sey!$"
 
 Common_EventScript_PkmnCenterNurse_Sleep_Text_0:
-	.string "Hello! For 500¥, you and your Pokémon\n"
+	.string "Hello! For ¥500, you and your Pokémon\n"
 	.string "can spend the night here.$"
 
 Common_EventScript_PkmnCenterNurse_Sleep_Text_1:

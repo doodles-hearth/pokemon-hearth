@@ -581,7 +581,7 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0:
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\p"
 	.string "They're the town's specialty! Only\n"
-	.string "500¥!$"
+	.string "¥500!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2:
 	.string "One please!$"
@@ -664,7 +664,7 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_5:
 	.string "Pokémon!$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_6:
-	.string "I can offer you {STR_VAR_1}¥.\n"
+	.string "I can offer you ¥{STR_VAR_1}.\n"
 	.string "That reasonable?$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_7:

@@ -255,6 +255,10 @@ static const struct SpriteFrameImage sPicTable_Uume_Valet[] = {
     overworld_ascending_frames(gObjectEventPic_Uume_Valet, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Uume_OldWomanSwimming[] = {
+    overworld_ascending_frames(gObjectEventPic_Uume_OldWomanSwimming, 4, 4),
+};
+
 // Hot NPCs
 
 static const struct SpriteFrameImage sPicTable_Hot_Woman1[] = {
@@ -476,6 +480,14 @@ static const struct SpriteFrameImage sPicTable_Fisherman[] = {
 
 static const struct SpriteFrameImage sPicTable_OnsenF[] = {
     overworld_ascending_frames(gObjectEventPic_OnsenF, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_OnsenFSwimming[] = {
+    overworld_ascending_frames(gObjectEventPic_OnsenFSwimming, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_OnsenMSwimming[] = {
+    overworld_ascending_frames(gObjectEventPic_OnsenMSwimming, 4, 4),
 };
 
 static const struct SpriteFrameImage sPicTable_OnsenM[] = {

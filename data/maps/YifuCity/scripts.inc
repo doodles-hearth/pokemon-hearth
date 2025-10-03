@@ -2071,7 +2071,7 @@ YifuCity_EventScript_ShinySeller_Text_1:
 
 YifuCity_EventScript_ShinySeller_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}So whaddyasay?\n"
-	.string "It's yours for only 10 000¥.$"
+	.string "It's yours for only ¥10 000.$"
 
 YifuCity_ShinySellerChoice_Text_0:
 	.string "I'll buy it!$"

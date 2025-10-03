@@ -265,7 +265,7 @@ gFieldEffectScript_ShortGrass::
 	field_eff_end
 
 gFieldEffectScript_HotSpringsWater::
-	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_HotSpringsWater
+	field_eff_loadfadedpal_callnative gSpritePalette_Foliage, FldEff_HotSpringsWater
 	field_eff_end
 
 gFieldEffectScript_UseWaterfall::

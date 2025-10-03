@@ -279,7 +279,7 @@ script YifuCity_EventScript_ShinySeller {
 	setspeaker("Shady man")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}So whaddyasay?\n"
-		"It's yours for only 10 000¥."
+		"It's yours for only ¥10 000."
 	))
 
 	goto(YifuCity_ShinySellerChoice)

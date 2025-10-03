@@ -38,6 +38,7 @@ HarvestShrine_EventScript_MonkRain::
 	goto_if_set FLAG_TEMP_1, HarvestShrine_EventScript_MonkRain_3
 	msgbox HarvestShrine_EventScript_MonkRain_Text_2
 HarvestShrine_EventScript_MonkRain_1:
+	closemessage
 	release
 	return
 
@@ -48,6 +49,7 @@ HarvestShrine_EventScript_MonkRain_2:
 HarvestShrine_EventScript_MonkRain_3:
 	setnamedmon SPECIES_BRONZONG
 	msgbox HarvestShrine_EventScript_MonkRain_Text_1
+	closemessage
 	giveitem ITEM_TM_RAIN_DANCE
 	goto HarvestShrine_EventScript_MonkRain_1
 

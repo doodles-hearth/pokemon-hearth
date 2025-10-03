@@ -16,6 +16,8 @@ const struct SpritePalette gSpritePalette_TallGrass[] =
     {gFieldEffectObjectGrassSilveridgePalette, FLDEFF_PAL_TAG_GRASS_SILVERIDGE},
 };
 
+const struct SpritePalette gSpritePalette_Foliage = {gObjectEventPal_HearthOwFoliage, FLDEFF_PAL_TAG_HEARTH_FOLIAGE};
+
 static const union AnimCmd sAnim_Shadow[] =
 {
     ANIMCMD_FRAME(0, 1),
@@ -1342,7 +1344,7 @@ static const union AnimCmd *const sAnimTable_HotSpringsWater[] =
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_HotSpringsWater = {
     .tileTag = TAG_NONE,
-    .paletteTag = FLDEFF_PAL_TAG_GENERAL_1,
+    .paletteTag = FLDEFF_PAL_TAG_HEARTH_FOLIAGE,
     .oam = &gObjectEventBaseOam_16x16,
     .anims = sAnimTable_HotSpringsWater,
     .images = sPicTable_HotSpringsWater,

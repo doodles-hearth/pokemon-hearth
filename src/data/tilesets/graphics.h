@@ -2337,3 +2337,22 @@ const u16 gTilesetPalettes_ScenicRoute[][16] =
 };
 
 const u32 gTilesetTiles_ScenicRoute[] = INCBIN_U32("data/tilesets/secondary/scenic_route/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_HotSprings[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/hot_springs/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_HotSprings[] = INCBIN_U32("data/tilesets/secondary/hot_springs/tiles.4bpp.lz");
