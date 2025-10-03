@@ -2,7 +2,7 @@
 #define GUARD_CHATOT_POST_CONSTANTS_H
 
 #define POST_NONE 0
-#define POST_FROM_HARU 1
+#define POST_FROM_HARIKO 1
 
 // Must always be equal to the last mail value + 1
 #define NUM_CHATOT_POST 2

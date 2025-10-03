@@ -1,7 +1,7 @@
 script ChatotPost_EventScript_Chatot {
     lockall
 
-    setnamedmon(SPECIES_CHATOT)
+    setseenmon(SPECIES_CHATOT)
     setchatotlastspeaker
 
     waitse
@@ -16,15 +16,20 @@ script ChatotPost_EventScript_Chatot {
     delay(16)
     if (checkchatotpost)
     {
-        checkchatotpostnumber
-        buffernumberstring(STR_VAR_1, VAR_RESULT)
         setspeakertomonname(SPECIES_CHATOT)
+
+        checkchatotpostnumber
         if (var(VAR_RESULT) == 1) {
-            msgbox(format("SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!"), MSGBOX_DEFAULT)
+            msgbox(format(
+                "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!\p"
+                "THIS IS FROM “{STR_VAR_2}”…"
+            ))
         } else {
+            buffernumberstring(STR_VAR_1, VAR_RESULT)
             msgbox(format(
                 "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!{PAUSE 8}\n"
-                "{STR_VAR_1} NEW MESSAGES!{PAUSE 8} SQWAK!"
+                "{STR_VAR_1} NEW MESSAGES!{PAUSE 8} SQWAK!\p"
+                "FIRST MESSAGE FROM “{STR_VAR_2}”…"
             ))
         }
         closemessage
@@ -48,6 +53,7 @@ script ChatotPost_EventScript_Chatot {
 
     playse(SE_LEDGE)
     applymovement(VAR_LAST_TALKED, moves(jump_in_place_down))
+    waitse
 
     playmoncry(SPECIES_CHATOT, CRY_MODE_NORMAL)
 
@@ -81,7 +87,7 @@ script(local) ChatotPost_EventScript_NextMessage {
 script ChatotPost_EventScript_EmptyPost {
     lock
     setnamedmon(SPECIES_CHATOT)
-    msgbox(format("It's a Chatot Post.\n… …No Chatot in sight!"))
+    msgbox(format("It reads: “Chatot Post”.\n… …No Chatot in sight!"))
     closemessage
     release
 }
@@ -92,29 +98,28 @@ script ChatotPost_EventScript_None {
 }
 
 text(local) Text_Chatot_Next1 {
-    format("HERE'S ANOTHER!{PAUSE 8} SQWAK!")
+    format("HERE'S ANOTHER FROM “{STR_VAR_2}”!{PAUSE 8}\nSQWAK!")
 }
 
 text(local) Text_Chatot_Next2 {
-    format("SQWAK!{PAUSE 8} NEXT MESSAGE!")
+    format("SQWAK!{PAUSE 8}\nNEXT MESSAGE, FROM “{STR_VAR_2}”!")
 }
 
 text(local) Text_Chatot_Next3 {
-    format("SQWAK!{PAUSE 8} ANOTHER MESSAGE!{PAUSE 8} SQWAK!")
+    format("SQWAK!{PAUSE 8} ANOTHER MESSAGE!{PAUSE 8}\nFROM “{STR_VAR_2}”!{PAUSE 8} SQWAK!")
 }
 
 text(local) Text_Chatot_Next4 {
-    format("SQWAK SQWAK!{PAUSE 8} ONE MORE!")
+    format("SQWAK SQWAK!{PAUSE 8} ONE MORE!\nFROM “{STR_VAR_2}”!")
 }
 
 //
 // Chatot Post Scripts - Make more below and add to /src/data/chatot_post.h
 //
-script ChatotPost_EventScript_FromHaru {
+script ChatotPost_EventScript_FromHariko {
     setspeakertomonname(SPECIES_CHATOT)
     msgbox(format(
-        "“Hello {PLAYER}!\p"
-        "Do you want to hear a fun fact?\p"
+        "“Hello {PLAYER}!\nDo you want to hear a fun fact?\p"
         "Did you know that Wailord aren't actually the biggest living things?\p"
         "The biggest living things are actually mushrooms, because…"
     ))

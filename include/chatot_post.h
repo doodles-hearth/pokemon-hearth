@@ -11,13 +11,19 @@ enum ChatotPostTypes
     POST_TYPE_RANDOM, // Post can appear at random once its condition is true
 };
 
+extern const u8 gText_ChatotPostSender_BigSis[];
+extern const u8 gText_ChatotPostSender_Hariko[];
+extern const u8 gText_ChatotPostSender_Natsuki[];
+extern const u8 gText_ChatotPostSender_Okada[];
+extern const u8 gText_ChatotPostSender_Kaba[];
+
 struct ChatotPost
 {
     const u8 *script;
     u8 importance;
     u8 condition;
     enum ChatotPostTypes type;
-    // TODO add sender's name
+    const u8 *senderName;
 };
 
 extern const struct ChatotPost gChatotPost[];

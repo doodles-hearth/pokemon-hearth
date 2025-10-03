@@ -1634,6 +1634,7 @@ bool32 TrainerIsMatchCallRegistered(s32 i)
     return FlagGet(TRAINER_REGISTERED_FLAGS_START + i);
 }
 
+// TODO EVA rematch + chatot post
 #if FREE_MATCH_CALL == FALSE
 static bool32 UpdateRandomTrainerRematches(const struct RematchTrainer *table, u16 mapGroup, u16 mapNum)
 {

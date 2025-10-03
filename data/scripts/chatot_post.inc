@@ -1,6 +1,6 @@
 ChatotPost_EventScript_Chatot::
 	lockall
-	setnamedmon SPECIES_CHATOT
+	setseenmon SPECIES_CHATOT
 	setchatotlastspeaker
 	waitse
 	playse SE_LEDGE
@@ -22,6 +22,7 @@ ChatotPost_EventScript_Chatot::
 ChatotPost_EventScript_Chatot_1:
 	playse SE_LEDGE
 	applymovement VAR_LAST_TALKED, ChatotPost_EventScript_Chatot_Movement_0
+	waitse
 	playmoncry SPECIES_CHATOT, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_CHATOT
 	msgbox ChatotPost_EventScript_Chatot_Text_3, MSGBOX_DEFAULT
@@ -29,11 +30,11 @@ ChatotPost_EventScript_Chatot_1:
 	end
 
 ChatotPost_EventScript_Chatot_2:
-	checkchatotpostnumber
-	buffernumberstring STR_VAR_1, VAR_RESULT
 	setspeakertomonname SPECIES_CHATOT
+	checkchatotpostnumber
 	compare VAR_RESULT, 1
 	goto_if_eq ChatotPost_EventScript_Chatot_6
+	buffernumberstring STR_VAR_1, VAR_RESULT
 	msgbox ChatotPost_EventScript_Chatot_Text_1
 ChatotPost_EventScript_Chatot_5:
 	closemessage
@@ -46,7 +47,7 @@ ChatotPost_EventScript_Chatot_9:
 	goto ChatotPost_EventScript_Chatot_1
 
 ChatotPost_EventScript_Chatot_6:
-	msgbox ChatotPost_EventScript_Chatot_Text_0, MSGBOX_DEFAULT
+	msgbox ChatotPost_EventScript_Chatot_Text_0
 	goto ChatotPost_EventScript_Chatot_5
 
 ChatotPost_EventScript_Chatot_10:
@@ -98,15 +99,15 @@ ChatotPost_EventScript_None::
 	return
 
 
-ChatotPost_EventScript_FromHaru::
+ChatotPost_EventScript_FromHariko::
 	setspeakertomonname SPECIES_CHATOT
-	msgbox ChatotPost_EventScript_FromHaru_Text_0
+	msgbox ChatotPost_EventScript_FromHariko_Text_0
 	fadescreen FADE_TO_BLACK
 	delay 48
 	closemessage
 	fadescreen FADE_FROM_BLACK
 	setspeakertomonname SPECIES_CHATOT
-	msgbox ChatotPost_EventScript_FromHaru_Text_1
+	msgbox ChatotPost_EventScript_FromHariko_Text_1
 	closemessage
 	setnamedmon SPECIES_CHATOT
 	setnamedmon SPECIES_WAILORD
@@ -122,11 +123,14 @@ ChatotPost_EventScript_Chatot_Movement_1:
 	step_end
 
 ChatotPost_EventScript_Chatot_Text_0:
-	.string "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!$"
+	.string "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!\p"
+	.string "THIS IS FROM “{STR_VAR_2}”…$"
 
 ChatotPost_EventScript_Chatot_Text_1:
 	.string "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!{PAUSE 8}\n"
-	.string "{STR_VAR_1} NEW MESSAGES!{PAUSE 8} SQWAK!$"
+	.string "{STR_VAR_1} NEW MESSAGES!{PAUSE 8} SQWAK!\p"
+	.string "FIRST MESSAGE FROM\n"
+	.string "“{STR_VAR_2}”…$"
 
 ChatotPost_EventScript_Chatot_Text_2:
 	.string "SQWAK!{PAUSE 8} NO MORE POST!$"
@@ -135,30 +139,35 @@ ChatotPost_EventScript_Chatot_Text_3:
 	.string "SQWAK!$"
 
 ChatotPost_EventScript_EmptyPost_Text_0:
-	.string "It's a Chatot Post.\n"
+	.string "It reads: “Chatot Post”.\n"
 	.string "… …No Chatot in sight!$"
 
-ChatotPost_EventScript_FromHaru_Text_0:
-	.string "“Hello {PLAYER}!\p"
+ChatotPost_EventScript_FromHariko_Text_0:
+	.string "“Hello {PLAYER}!\n"
 	.string "Do you want to hear a fun fact?\p"
 	.string "Did you know that Wailord aren't\n"
 	.string "actually the biggest living things?\p"
 	.string "The biggest living things are actually\n"
 	.string "mushrooms, because…$"
 
-ChatotPost_EventScript_FromHaru_Text_1:
+ChatotPost_EventScript_FromHariko_Text_1:
 	.string "…also did you know…\p"
 	.string "Wait… Chatot!\p"
 	.string "Come back, Chatot!”$"
 
 Text_Chatot_Next1:
-	.string "HERE'S ANOTHER!{PAUSE 8} SQWAK!$"
+	.string "HERE'S ANOTHER FROM\n"
+	.string "“{STR_VAR_2}”!{PAUSE 8}\n"
+	.string "SQWAK!$"
 
 Text_Chatot_Next2:
-	.string "SQWAK!{PAUSE 8} NEXT MESSAGE!$"
+	.string "SQWAK!{PAUSE 8}\n"
+	.string "NEXT MESSAGE, FROM “{STR_VAR_2}”!$"
 
 Text_Chatot_Next3:
-	.string "SQWAK!{PAUSE 8} ANOTHER MESSAGE!{PAUSE 8} SQWAK!$"
+	.string "SQWAK!{PAUSE 8} ANOTHER MESSAGE!{PAUSE 8}\n"
+	.string "FROM “{STR_VAR_2}”!{PAUSE 8} SQWAK!$"
 
 Text_Chatot_Next4:
-	.string "SQWAK SQWAK!{PAUSE 8} ONE MORE!$"
+	.string "SQWAK SQWAK!{PAUSE 8} ONE MORE!\n"
+	.string "FROM “{STR_VAR_2}”!$"

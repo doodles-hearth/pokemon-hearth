@@ -12,8 +12,14 @@
 #include "constants/event_objects.h"
 #include "constants/flags.h"
 #include "constants/global.h"
-
 #include "data/chatot_post.h"
+#include "string_util.h"
+
+const u8 gText_ChatotPostSender_BigSis[] = _("Big Sis");
+const u8 gText_ChatotPostSender_Hariko[] = _("Hariko");
+const u8 gText_ChatotPostSender_Natsuki[] = _("Natsuki");
+const u8 gText_ChatotPostSender_Okada[] = _("Okada");
+const u8 gText_ChatotPostSender_Kaba[] = _("Elder Kaba");
 
 // Starts the post
 void InitialisePost(void)
@@ -152,8 +158,8 @@ static void Task_TryFindAndActivatePost(u8 taskId)
         if (post->type == POST_TYPE_NONE || postIdx == 0)
             continue;
 
-        bool8 alreadyUsed = CheckChatotPostFlag(postIdx);
-        if (alreadyUsed)
+        // Already used msg
+        if (CheckChatotPostFlag(postIdx))
             continue;
 
         bool8 condSatisfied = (post->condition == 0) ? TRUE : FlagGet(post->condition);
@@ -209,7 +215,7 @@ bool8 TrySetRandomPostActive(void)
 
 void Debug_PutPostFromHaruInQueue(void)
 {
-    SetChatotPostActive(POST_FROM_HARU);
+    SetChatotPostActive(POST_FROM_HARIKO);
 }
 
 bool8 Native_SetChatotLastSpeaker(struct ScriptContext *ctx)
@@ -235,7 +241,10 @@ bool8 Native_CheckChatotPost(struct ScriptContext *ctx)
     gSpecialVar_Result = FALSE;
 
     if (gSaveBlock1Ptr->activePost[0])
+    {
         gSpecialVar_Result = TRUE;
+        StringCopy(gStringVar2, gChatotPost[gSaveBlock1Ptr->activePost[0]].senderName);
+    }
     return FALSE;
 }
 
