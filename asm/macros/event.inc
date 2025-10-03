@@ -2454,6 +2454,14 @@
 	.4byte \weekday
 	.endm
 
+	.macro campfire
+	callnative Script_Campfire
+	.endm
+
+	.macro leavecampfire
+	callnative Script_LeaveCampfire
+	.endm
+
 	@ ============================ @
 	@ ITEM DESCRIPTION HEADER MACROS
 	@ Used with OW_SHOW_ITEM_DESCRIPTIONS config

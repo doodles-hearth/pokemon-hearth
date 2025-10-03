@@ -351,11 +351,12 @@
 #define OBJ_EVENT_GFX_UUME_OLD_WOMAN_SWIMMING    343
 #define OBJ_EVENT_GFX_ONSEN_F_SWIMMING           344
 #define OBJ_EVENT_GFX_ONSEN_M_SWIMMING           345
+#define OBJ_EVENT_GFX_CAMPFIRE                   346
 
 // NOTE: The maximum amount of object events has been expanded from 255 to 65535.
 // Since dynamic graphics ids still require at least 16 free values, the actual limit
 // is 65519, but even considering follower Pokémon, this should be more than enough :)
-#define NUM_OBJ_EVENT_GFX                        346
+#define NUM_OBJ_EVENT_GFX                        347
 
 
 // These are dynamic object gfx ids.
@@ -534,6 +535,8 @@
 // Blues, yellows, browns, dark gray, reds
 // 4 remaining free slots
 #define OBJ_EVENT_PAL_TAG_DECORATIONS_MAREEP      0x114D
+// Campfire
+#define OBJ_EVENT_PAL_TAG_CAMPFIRE                0x114E
 
 #if OW_FOLLOWERS_POKEBALLS
 // Vanilla

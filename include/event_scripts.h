@@ -589,6 +589,7 @@ extern const u8 RustboroCity_Gym_EventScript_RegisterRoxanne[];
 extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall[];
 extern const u8 SSTidalCorridor_EventScript_ReachedStepCount[];
 extern const u8 EventScript_FallDownHoleMtPyre[];
+extern const u8 EventScript_Campfire[];
 
 // Secret Base
 extern const u8 SecretBase_EventScript_PC[];
@@ -690,5 +691,8 @@ extern const u8 EventScript_LostSignal[];
 extern const u8 EventScript_TooDark[];
 extern const u8 EventScript_MovedTooFast[];
 
+
+// Custom scripts
+extern const u8 EventScript_WalkAwayFromCampfire[];
 
 #endif // GUARD_EVENT_SCRIPTS_H
