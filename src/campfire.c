@@ -22,10 +22,11 @@ void restAtCampfireWithParty()
     // Placing player's Pokémon in the field (VAR_OBJ_GFX_ID_A to F)
     for (int i = 0; i < PARTY_SIZE; i += 1)
     {
-        u16 speciesGfx;
-        u8 form;
-        u8 shiny;
-        GetMonInfo(&gPlayerParty[i], &speciesGfx, &form, &shiny);
+        u32 speciesGfx;
+        u16 form;
+        bool32 shiny;
+        bool32 female;
+        GetMonInfo(&gPlayerParty[i], &speciesGfx, &shiny, &female);
 
         if (speciesGfx == SPECIES_NONE || speciesGfx == SPECIES_EGG)
         {
@@ -36,9 +37,12 @@ void restAtCampfireWithParty()
         FlagClear(FLAG_HIDE_CAMPFIRE_PARTY_MON_1 + i);
 
         // Assemble gfx ID like FollowerSetGraphics
-        speciesGfx = (OBJ_EVENT_GFX_MON_BASE + speciesGfx) & OBJ_EVENT_GFX_SPECIES_MASK;
-        speciesGfx |= form << OBJ_EVENT_GFX_SPECIES_BITS;
-        VarSet((VAR_OBJ_GFX_ID_A + i), speciesGfx);
+        speciesGfx = speciesGfx + OBJ_EVENT_MON;
+        if (shiny)
+            speciesGfx += OBJ_EVENT_MON_SHINY;
+        if (female)
+            speciesGfx += OBJ_EVENT_MON_FEMALE;
+        VarSet((VAR_OBJ_GFX_ID_A + i), (u16)speciesGfx);
         DebugPrintfLevel(MGBA_LOG_WARN, "loading Pokémon %d: %d", i, speciesGfx);
     }
 

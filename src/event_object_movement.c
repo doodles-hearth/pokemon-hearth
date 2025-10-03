@@ -2239,7 +2239,7 @@ u16 GetOverworldWeatherSpecies(u16 species)
     return species;
 }
 
-static bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32 *female)
+bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32 *female)
 {
     if (!mon)
     {
