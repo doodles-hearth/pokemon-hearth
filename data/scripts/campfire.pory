@@ -7,9 +7,7 @@ script EventScript_Campfire {
 		), MSGBOX_YESNO)
 
 		if (var(VAR_RESULT) == YES) {
-			// fadescreen(FADE_TO_BLACK)
 			campfire
-			// fadescreen(FADE_FROM_BLACK)
 		}
 	} else {
 		msgbox(format(
@@ -83,6 +81,6 @@ script EventScript_LeaveCampfire {
 	closemessage
 
 	fadescreen(FADE_TO_BLACK)
-	leavecampfire
+	leaveCampfire
 	fadescreen(FADE_FROM_BLACK)
 }

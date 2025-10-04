@@ -3739,7 +3739,7 @@ void OverrideTemplateCoordsForObjectEvent(const struct ObjectEvent *objectEvent)
     }
 }
 
-static void OverrideObjectEventTemplateScript(const struct ObjectEvent *objectEvent, const u8 *script)
+void OverrideObjectEventTemplateScript(const struct ObjectEvent *objectEvent, const u8 *script)
 {
     struct ObjectEventTemplate *objectEventTemplate;
 

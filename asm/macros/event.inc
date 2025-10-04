@@ -2455,11 +2455,11 @@
 	.endm
 
 	.macro campfire
-	callnative Script_Campfire
+	callnative Native_Campfire
 	.endm
 
-	.macro leavecampfire
-	callnative Script_LeaveCampfire
+	.macro leaveCampfire
+	callnative Native_LeaveCampfire
 	.endm
 
 	@ ============================ @

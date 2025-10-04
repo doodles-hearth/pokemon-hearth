@@ -222,6 +222,7 @@ u8 ObjectEventGetHeldMovementActionId(struct ObjectEvent *objectEvent);
 const struct ObjectEventTemplate *FindObjectEventTemplateByLocalId(u8, const struct ObjectEventTemplate *, u8);
 void TryOverrideTemplateCoordsForObjectEvent(const struct ObjectEvent *objectEvent, u8 movementType);
 void OverrideTemplateCoordsForObjectEvent(const struct ObjectEvent *objectEvent);
+void OverrideObjectEventTemplateScript(const struct ObjectEvent *objectEvent, const u8 *script);
 void ShiftStillObjectEventCoords(struct ObjectEvent *objEvent);
 void ObjectEventMoveDestCoords(struct ObjectEvent *objEvent, u32 direction, s16 *x, s16 *y);
 u8 AddCameraObject(u8 linkedSpriteId);
@@ -504,6 +505,9 @@ void SetVirtualObjectSpriteAnim(u8 virtualObjId, u8 animNum);
 bool32 IsVirtualObjectAnimating(u8 virtualObjId);
 u8 GetObjectEventIdByLocalId(u8 localId);
 bool32 IsFollowerVisible(void);
+
+struct FollowerMsgInfoExtended;
+bool32 CheckMsgInfo(const struct FollowerMsgInfoExtended *info, struct Pokemon *mon, u32 species, struct ObjectEvent *obj);
 
 // run slow
 u8 GetPlayerRunSlowMovementAction(u32);
