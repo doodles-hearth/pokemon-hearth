@@ -21,15 +21,15 @@ script ChatotPost_EventScript_Chatot {
         checkchatotpostnumber
         if (var(VAR_RESULT) == 1) {
             msgbox(format(
-                "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!\p"
-                "THIS IS FROM “{STR_VAR_2}”…"
+                "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!{PAUSE 8}\n"
+                "THIS IS FROM “{STR_VAR_1}”…"
             ))
         } else {
-            buffernumberstring(STR_VAR_1, VAR_RESULT)
+            buffernumberstring(STR_VAR_2, VAR_RESULT)
             msgbox(format(
                 "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!{PAUSE 8}\n"
-                "{STR_VAR_1} NEW MESSAGES!{PAUSE 8} SQWAK!\p"
-                "FIRST MESSAGE FROM “{STR_VAR_2}”…"
+                "{STR_VAR_2} NEW MESSAGES!{PAUSE 8} SQWAK!\p"
+                "FIRST MESSAGE FROM “{STR_VAR_1}”…"
             ))
         }
         closemessage
@@ -37,7 +37,12 @@ script ChatotPost_EventScript_Chatot {
 
         readchatotpost
 
-        while (checkchatotpost)
+        if (checkchatotpost)
+        {
+            call(ChatotPost_EventScript_NextMessage)
+        }
+
+        if (checkchatotpost)
         {
             call(ChatotPost_EventScript_NextMessage)
         }
@@ -98,19 +103,19 @@ script ChatotPost_EventScript_None {
 }
 
 text(local) Text_Chatot_Next1 {
-    format("HERE'S ANOTHER FROM “{STR_VAR_2}”!{PAUSE 8}\nSQWAK!")
+    format("HERE'S ANOTHER FROM “{STR_VAR_1}”!{PAUSE 8}\nSQWAK!")
 }
 
 text(local) Text_Chatot_Next2 {
-    format("SQWAK!{PAUSE 8}\nNEXT MESSAGE, FROM “{STR_VAR_2}”!")
+    format("SQWAK!{PAUSE 8}\nNEXT MESSAGE, FROM “{STR_VAR_1}”!")
 }
 
 text(local) Text_Chatot_Next3 {
-    format("SQWAK!{PAUSE 8} ANOTHER MESSAGE!{PAUSE 8}\nFROM “{STR_VAR_2}”!{PAUSE 8} SQWAK!")
+    format("SQWAK!{PAUSE 8} ANOTHER MESSAGE!{PAUSE 8}\nFROM “{STR_VAR_1}”!{PAUSE 8} SQWAK!")
 }
 
 text(local) Text_Chatot_Next4 {
-    format("SQWAK SQWAK!{PAUSE 8} ONE MORE!\nFROM “{STR_VAR_2}”!")
+    format("SQWAK SQWAK!{PAUSE 8} ONE MORE!\nFROM “{STR_VAR_1}”!")
 }
 
 //
@@ -133,5 +138,12 @@ script ChatotPost_EventScript_FromHariko {
 
     setnamedmon(SPECIES_CHATOT)
     setnamedmon(SPECIES_WAILORD)
+    return
+}
+
+script ChatotPost_EventScript_TrainerMessage {
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox(gStringVar4)
+    closemessage
     return
 }

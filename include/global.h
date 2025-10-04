@@ -1201,8 +1201,7 @@ struct SaveBlock1
     bool8 isShinyVialActive;
     u8 activePost[NUM_ACTIVE_POST_SLOTS];
     u8 postFlags[NUM_MAIL_FLAG_BYTES];
-    u8 postStepCounter;
-    u8 postChance;
+    u16 chatotPostRematchTrainerId;
 };
 
 extern struct SaveBlock1 *gSaveBlock1Ptr;

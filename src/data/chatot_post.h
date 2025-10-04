@@ -1,6 +1,8 @@
 extern const u8 ChatotPost_EventScript_None[];
 extern const u8 ChatotPost_EventScript_FromHariko[];
 
+extern const u8 ChatotPost_EventScript_TrainerMessage[];
+
 const struct ChatotPost gChatotPost[] =
 {
     [POST_NONE] =

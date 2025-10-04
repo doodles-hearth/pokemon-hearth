@@ -13,11 +13,37 @@ GinkoWoods_EventScript_Toshiki::
 
 
 GinkoWoods_EventScript_Toshio::
-	trainerbattle_single TRAINER_TOSHIO_1, GinkoWoods_EventScript_Toshio_Text_0, GinkoWoods_EventScript_Toshio_Text_1
+	trainerbattle_single TRAINER_TOSHIO_1, GinkoWoods_EventScript_Toshio_Text_0, GinkoWoods_EventScript_Toshio_Text_1, GinkoWoods_EventScript_Toshio_Register
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	compare VAR_RESULT, 0
+	goto_if_ne GinkoWoods_EventScript_Toshio_2
+	setvar VAR_0x8004, TRAINER_TOSHIO_1
+	specialvar VAR_RESULT, IsTrainerRegistered
+	compare VAR_RESULT, 0
+	goto_if_eq GinkoWoods_EventScript_Toshio_5
 	setspeaker SP_NAME_BUGCATCHER
-	msgbox GinkoWoods_EventScript_Toshio_Text_2
+	msgbox GinkoWoods_EventScript_Toshio_Text_4
+	closemessage
+GinkoWoods_EventScript_Toshio_1:
 	release
 	end
+
+GinkoWoods_EventScript_Toshio_2:
+	trainerbattle_rematch TRAINER_TOSHIO_1, GinkoWoods_EventScript_Toshio_Text_2, GinkoWoods_EventScript_Toshio_Text_3
+	msgbox GinkoWoods_EventScript_Toshio_Text_4
+	closemessage
+	release
+	return
+
+GinkoWoods_EventScript_Toshio_5:
+	call GinkoWoods_EventScript_Toshio_Register
+	goto GinkoWoods_EventScript_Toshio_1
+
+
+GinkoWoods_EventScript_Toshio_Register:
+	msgbox GinkoWoods_EventScript_Toshio_Register_Text_0
+	register_matchcall TRAINER_TOSHIO_1
+	return
 
 
 GinkoWoods_EventScript_Eiji::
@@ -172,9 +198,20 @@ GinkoWoods_EventScript_Toshio_Text_1:
 	.string "Should have kept my mouth shut…$"
 
 GinkoWoods_EventScript_Toshio_Text_2:
+	.string "Let's fight again!$"
+
+GinkoWoods_EventScript_Toshio_Text_3:
+	.string "I lost again?!$"
+
+GinkoWoods_EventScript_Toshio_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Real Wielders fight when they spot\n"
 	.string "each other!\p"
 	.string "At least that's what my dad told me…$"
+
+GinkoWoods_EventScript_Toshio_Register_Text_0:
+	.string "Hey, let's be friends!\p"
+	.string "We'll send each other Chatot\n"
+	.string "messages and battle again sometime!$"
 
 GinkoWoods_EventScript_Eiji_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}With the help of my brand new\n"

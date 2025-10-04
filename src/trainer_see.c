@@ -1015,7 +1015,6 @@ u8 FldEff_ExclamationMarkIcon(void)
 
 u8 FldEff_TrainerExclamation(void)
 {
-    DebugPrintf("!");
     u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_Trainer_Exclamation, 0, 0, 0x52);
 
     if (spriteId != MAX_SPRITES)

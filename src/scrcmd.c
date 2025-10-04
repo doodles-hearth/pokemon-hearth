@@ -912,8 +912,7 @@ bool8 ScrCmd_gettime(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
     RtcCalcLocalTime();
-    DebugPrintf("Value of STR_VAR_2: %S", gStringVar2);
-    DebugPrintf("H=%d, M=%d, S=%d", gLocalTime.hours, gLocalTime.minutes, gLocalTime.seconds);
+    /* DebugPrintf("H=%d, M=%d, S=%d", gLocalTime.hours, gLocalTime.minutes, gLocalTime.seconds); */
     gSpecialVar_0x8000 = gLocalTime.hours;
     gSpecialVar_0x8001 = gLocalTime.minutes;
     gSpecialVar_0x8002 = gLocalTime.seconds;

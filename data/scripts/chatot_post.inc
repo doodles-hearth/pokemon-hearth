@@ -34,16 +34,19 @@ ChatotPost_EventScript_Chatot_2:
 	checkchatotpostnumber
 	compare VAR_RESULT, 1
 	goto_if_eq ChatotPost_EventScript_Chatot_6
-	buffernumberstring STR_VAR_1, VAR_RESULT
+	buffernumberstring STR_VAR_2, VAR_RESULT
 	msgbox ChatotPost_EventScript_Chatot_Text_1
 ChatotPost_EventScript_Chatot_5:
 	closemessage
 	delay 24
 	readchatotpost
-ChatotPost_EventScript_Chatot_9:
 	checkchatotpost
 	compare VAR_RESULT, 0
 	goto_if_ne ChatotPost_EventScript_Chatot_10
+ChatotPost_EventScript_Chatot_9:
+	checkchatotpost
+	compare VAR_RESULT, 0
+	goto_if_ne ChatotPost_EventScript_Chatot_12
 	goto ChatotPost_EventScript_Chatot_1
 
 ChatotPost_EventScript_Chatot_6:
@@ -53,6 +56,10 @@ ChatotPost_EventScript_Chatot_6:
 ChatotPost_EventScript_Chatot_10:
 	call ChatotPost_EventScript_NextMessage
 	goto ChatotPost_EventScript_Chatot_9
+
+ChatotPost_EventScript_Chatot_12:
+	call ChatotPost_EventScript_NextMessage
+	goto ChatotPost_EventScript_Chatot_1
 
 
 ChatotPost_EventScript_NextMessage:
@@ -114,6 +121,13 @@ ChatotPost_EventScript_FromHariko::
 	return
 
 
+ChatotPost_EventScript_TrainerMessage::
+	setspeakertomonname SPECIES_CHATOT
+	msgbox gStringVar4
+	closemessage
+	return
+
+
 ChatotPost_EventScript_Chatot_Movement_0:
 	jump_in_place_down
 	step_end
@@ -123,14 +137,14 @@ ChatotPost_EventScript_Chatot_Movement_1:
 	step_end
 
 ChatotPost_EventScript_Chatot_Text_0:
-	.string "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!\p"
-	.string "THIS IS FROM “{STR_VAR_2}”…$"
+	.string "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!{PAUSE 8}\n"
+	.string "THIS IS FROM “{STR_VAR_1}”…$"
 
 ChatotPost_EventScript_Chatot_Text_1:
 	.string "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!{PAUSE 8}\n"
-	.string "{STR_VAR_1} NEW MESSAGES!{PAUSE 8} SQWAK!\p"
+	.string "{STR_VAR_2} NEW MESSAGES!{PAUSE 8} SQWAK!\p"
 	.string "FIRST MESSAGE FROM\n"
-	.string "“{STR_VAR_2}”…$"
+	.string "“{STR_VAR_1}”…$"
 
 ChatotPost_EventScript_Chatot_Text_2:
 	.string "SQWAK!{PAUSE 8} NO MORE POST!$"
@@ -157,17 +171,17 @@ ChatotPost_EventScript_FromHariko_Text_1:
 
 Text_Chatot_Next1:
 	.string "HERE'S ANOTHER FROM\n"
-	.string "“{STR_VAR_2}”!{PAUSE 8}\n"
+	.string "“{STR_VAR_1}”!{PAUSE 8}\n"
 	.string "SQWAK!$"
 
 Text_Chatot_Next2:
 	.string "SQWAK!{PAUSE 8}\n"
-	.string "NEXT MESSAGE, FROM “{STR_VAR_2}”!$"
+	.string "NEXT MESSAGE, FROM “{STR_VAR_1}”!$"
 
 Text_Chatot_Next3:
 	.string "SQWAK!{PAUSE 8} ANOTHER MESSAGE!{PAUSE 8}\n"
-	.string "FROM “{STR_VAR_2}”!{PAUSE 8} SQWAK!$"
+	.string "FROM “{STR_VAR_1}”!{PAUSE 8} SQWAK!$"
 
 Text_Chatot_Next4:
 	.string "SQWAK SQWAK!{PAUSE 8} ONE MORE!\n"
-	.string "FROM “{STR_VAR_2}”!$"
+	.string "FROM “{STR_VAR_1}”!$"

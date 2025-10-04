@@ -1167,6 +1167,8 @@
 		.byte 1
 	.elseif \id == STR_VAR_3
 		.byte 2
+	.elseif \id == STR_VAR_4
+		.byte 3
 	.else
 		.byte \id
 	.endif

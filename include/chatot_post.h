@@ -28,7 +28,6 @@ struct ChatotPost
 
 extern const struct ChatotPost gChatotPost[];
 
-void InitialisePost(void);
 void SpawnPostChatot(void);
 void ClearPostChatot(void);
 bool8 PlayerHasChatotPost(void);
@@ -38,5 +37,6 @@ bool8 CheckChatotPostFlag(u8 postId);
 bool8 SetChatotPostActive(u8 postId);
 void ClearFirstPostSlotAndCompressPostQueue(void);
 void ResetChatotPost(void);
+bool32 TryGetChatotPost(void);
 
 #endif // GUARD_CHATOT_POST_H

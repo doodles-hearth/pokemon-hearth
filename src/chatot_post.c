@@ -14,18 +14,14 @@
 #include "constants/global.h"
 #include "data/chatot_post.h"
 #include "string_util.h"
+#include "match_call.h"
+#include "data.h"
 
 const u8 gText_ChatotPostSender_BigSis[] = _("Big Sis");
 const u8 gText_ChatotPostSender_Hariko[] = _("Hariko");
 const u8 gText_ChatotPostSender_Natsuki[] = _("Natsuki");
 const u8 gText_ChatotPostSender_Okada[] = _("Okada");
 const u8 gText_ChatotPostSender_Kaba[] = _("Elder Kaba");
-
-// Starts the post
-void InitialisePost(void)
-{
-    gSaveBlock1Ptr->postChance = INITIAL_POST_CHANCE;
-}
 
 // Makes Chatot appear
 void SpawnPostChatot(void)
@@ -106,10 +102,10 @@ bool8 SetChatotPostActive(u8 postId)
 
     for (i = NUM_ACTIVE_POST_SLOTS; i > 0; i--)
     {
-        u8 storedPost = gSaveBlock1Ptr->activePost[i-1];
-        if (gChatotPost[postId].importance > gChatotPost[storedPost].importance)
+        u8 storedPost = gSaveBlock1Ptr->activePost[i - 1];
+        if (postId != POST_TRAINER_TEMPLATE && gChatotPost[postId].importance > gChatotPost[storedPost].importance)
         {
-            gSaveBlock1Ptr->activePost[i-1] = postId;
+            gSaveBlock1Ptr->activePost[i - 1] = postId;
             return TRUE;
         }
     }
@@ -124,7 +120,7 @@ static void CompressPostQueue(void)
         if (postToMove)
         {
             gSaveBlock1Ptr->activePost[i] = POST_NONE;
-            gSaveBlock1Ptr->activePost[i-1] = postToMove;
+            gSaveBlock1Ptr->activePost[i - 1] = postToMove;
         }
     }
 }
@@ -135,11 +131,26 @@ void ClearFirstPostSlotAndCompressPostQueue(void)
     CompressPostQueue();
 }
 
-static void Task_TryFindAndActivatePost(u8 taskId)
+bool32 TryGetRandomTrainerPost()
 {
+    u32 trainerId = SelectMatchCallTrainerId();
+    if (trainerId != 0)
+    {
+        SetChatotPostActive(POST_TRAINER_TEMPLATE);
+        gSaveBlock1Ptr->chatotPostRematchTrainerId = trainerId;
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+bool32 TryGetRandomNonTrainerPost(u32 postType)
+{
+    DebugPrintf("TryGetRandomNonTrainerPost");
     const u8 postCount = ARRAY_COUNT(gChatotPost);
     if (postCount == 0)
-        return;
+        return FALSE;
 
     // Build an index array
     u8 indices[postCount];
@@ -147,69 +158,41 @@ static void Task_TryFindAndActivatePost(u8 taskId)
         indices[i] = i;
     Shuffle(indices, postCount, sizeof(indices[0]));
 
-    // Iterate shuffled order, pick immediate if found, else first eligible random
-    u8 storedIndex = 0; // index into gChatotPost for first eligible random-type post
+    DebugPrintf("Looping %dx", postCount);
     for (u8 j = 0; j < postCount; ++j)
     {
+        DebugPrintf("  %d", j);
         u8 postIdx = indices[j];
         const struct ChatotPost *post = &gChatotPost[postIdx];
 
+        DebugPrintf("  -");
         // Skip none-type posts for now & skip the null value post
         if (post->type == POST_TYPE_NONE || postIdx == 0)
+        {
+            DebugPrintf("  Skipping post NONE");
             continue;
+        }
 
         // Already used msg
         if (CheckChatotPostFlag(postIdx))
+        {
+            DebugPrintf("  Skipping already used");
             continue;
+        }
 
         bool8 condSatisfied = (post->condition == 0) ? TRUE : FlagGet(post->condition);
+        DebugPrintf("  Cond satisfied? %d", condSatisfied);
         if (!condSatisfied)
             continue;
 
-        if (post->type == POST_TYPE_IMMEDIATE)
+        if (postType == post->type)
         {
-            // Guaranteed - activate immediately and return.
+            DebugPrintf("  Set active");
             SetChatotPostActive(postIdx);
-            return;
-        }
-
-        // For random-type posts, store the first eligible one (so we can pick it if
-        // we don't find any immediate/guaranteed ones)
-        if (post->type == POST_TYPE_RANDOM && storedIndex == 0)
-            storedIndex = postIdx;
-    }
-
-    // If no immediate was found, but we stored an eligible random, try activate it
-    if (storedIndex != 0)
-    {
-        gSaveBlock1Ptr->postStepCounter = 0;
-        if (gSaveBlock1Ptr->postChance > (Random() % 100))
-        {
-            SetChatotPostActive(storedIndex);
-            gSaveBlock1Ptr->postChance = INITIAL_POST_CHANCE;
-        }
-        else
-        {
-            gSaveBlock1Ptr->postChance += POST_CHANCE_INCREMENT;
+            return TRUE;
         }
     }
 
-    return;
-}
-
-bool8 TrySetRandomPostActive(void)
-{
-    // Do nothing if postChance is not initialised yet
-    if ((gSaveBlock1Ptr->postChance = 0))
-        return FALSE;
-
-    // Has an increasing chance of succeeding every 255 steps
-    gSaveBlock1Ptr->postStepCounter++;
-    if (gSaveBlock1Ptr->postStepCounter >= 255)
-    {
-        CreateTask(Task_TryFindAndActivatePost, 9);
-        return TRUE;
-    }
     return FALSE;
 }
 
@@ -239,19 +222,33 @@ bool8 Native_CheckChatotPost(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1);
     gSpecialVar_Result = FALSE;
+    
+    u32 activePostId = gSaveBlock1Ptr->activePost[0];
 
-    if (gSaveBlock1Ptr->activePost[0])
+    if (activePostId)
     {
         gSpecialVar_Result = TRUE;
-        StringCopy(gStringVar2, gChatotPost[gSaveBlock1Ptr->activePost[0]].senderName);
+
+        if (activePostId == POST_TRAINER_TEMPLATE)
+        {
+            u16 trainerId = gSaveBlock1Ptr->chatotPostRematchTrainerId;
+            DebugPrintf("SENDER=%S", GetTrainerNameFromId(trainerId));
+            StringCopy(gStringVar1, GetTrainerNameFromId(trainerId));
+        }
+        else
+        {
+            DebugPrintf("SENDER=%S", gChatotPost[activePostId].senderName);
+            StringCopy(gStringVar1, gChatotPost[activePostId].senderName);
+        }
     }
+    
     return FALSE;
 }
 
 bool8 Native_CheckChatotPostNumber(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1);
-
+    
     gSpecialVar_Result = 0;
 
     u32 i = 0;
@@ -269,11 +266,26 @@ bool8 Native_CheckChatotPostNumber(struct ScriptContext *ctx)
 bool8 Native_ReadChatotPost(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1);
-    const u8 *script = ChatotPost_EventScript_None;
     
+    const u8 *script = ChatotPost_EventScript_None;
     u8 storedPost = gSaveBlock1Ptr->activePost[0];
     if (storedPost)
-        script = gChatotPost[storedPost].script;
+    {
+        if (storedPost == POST_TRAINER_TEMPLATE)
+        {
+            DebugPrintf("  trainer");
+            SelectMatchCallMessage(gSaveBlock1Ptr->chatotPostRematchTrainerId, gStringVar4);
+            DebugPrintf("  msg selected");
+            script = ChatotPost_EventScript_TrainerMessage;
+            DebugPrintf("  script selected");
+            gSaveBlock1Ptr->chatotPostRematchTrainerId = 0;
+        }
+        else
+        {
+            DebugPrintf("  non trainer");
+            script = gChatotPost[storedPost].script;
+        }
+    }
 
     SetChatotPostFlag(storedPost);
     ClearFirstPostSlotAndCompressPostQueue();
@@ -284,8 +296,44 @@ bool8 Native_ReadChatotPost(struct ScriptContext *ctx)
 // Resets all saveblock elements for a new game
 void ResetChatotPost(void)
 {
-    gSaveBlock1Ptr->postChance = 0;
-    gSaveBlock1Ptr->postStepCounter = 0;
     memset(gSaveBlock1Ptr->postFlags, 0, sizeof(gSaveBlock1Ptr->postFlags));
     memset(gSaveBlock1Ptr->activePost, 0, sizeof(gSaveBlock1Ptr->activePost));
+}
+
+/*
+    One message can be added to the queue
+    - Every 10th step
+    - Every 10 minutes
+    - 1/3 of the time
+    Immediate messages
+*/
+bool32 TryGetChatotPost(void)
+{
+    if (UpdateMatchCallStepCounter() && UpdateMatchCallMinutesCounter())
+    {
+        DebugPrintf("I'm in");
+        if (TryGetRandomNonTrainerPost(POST_TYPE_IMMEDIATE))
+        {
+            DebugPrintf("Immediate NPC");
+            return TRUE;
+        }
+        else
+        {
+            if (CheckMatchCallChance()) 
+            {
+                if (gSaveBlock1Ptr->chatotPostRematchTrainerId == 0 && Random() % 2 != 0)
+                {
+                    DebugPrintf("Random trainer");
+                    return TryGetRandomTrainerPost();
+                }
+                else
+                {
+                    DebugPrintf("Random NPC");
+                    return TryGetRandomNonTrainerPost(POST_TYPE_RANDOM);
+                }
+            }
+        }
+    }
+
+    return FALSE;
 }

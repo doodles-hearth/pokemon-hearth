@@ -23,17 +23,38 @@ script GinkoWoods_EventScript_Toshio {
 	trainerbattle_single(
 		TRAINER_TOSHIO_1,
 		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Our eyes met! Therefore we must battle!"),
-		format("Should have kept my mouth shut…")
+		format("Should have kept my mouth shut…"),
+		GinkoWoods_EventScript_Toshio_Register
 	)
-	// specialvar VAR_RESULT, ShouldTryRematchBattle
-	// goto_if_eq VAR_RESULT, TRUE, Route102_EventScript_CalvinRematch
-	// setvar VAR_0x8004, TRAINER_CALVIN_1
-	// specialvar VAR_RESULT, IsTrainerRegistered
-	// goto_if_eq VAR_RESULT, FALSE, Route102_EventScript_CalvinTryRegister
-	setspeaker(SP_NAME_BUGCATCHER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Real Wielders fight when they spot each other!\pAt least that's what my dad told me…"))
+
+	specialvar(VAR_RESULT, ShouldTryRematchBattle)
+	if (var(VAR_RESULT)) {
+		trainerbattle_rematch(TRAINER_TOSHIO_1, format("Let's fight again!"), format("I lost again?!"))
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Real Wielders fight when they spot each other!\pAt least that's what my dad told me…"))
+		closemessage
+		release
+		return
+	} else {
+		setvar(VAR_0x8004, TRAINER_TOSHIO_1)
+		specialvar(VAR_RESULT, IsTrainerRegistered)
+		if (!var(VAR_RESULT)) {
+			call(GinkoWoods_EventScript_Toshio_Register)
+		} else {
+			setspeaker(SP_NAME_BUGCATCHER)
+			msgbox(format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Real Wielders fight when they spot each other!\pAt least that's what my dad told me…"))
+			closemessage
+		}
+	}
 	release
 	end
+}
+
+script(local) GinkoWoods_EventScript_Toshio_Register {
+	msgbox(format(
+		"Hey, let's be friends!\p"
+		"We'll send each other Chatot messages and battle again sometime!"
+	))
+	register_matchcall(TRAINER_TOSHIO_1)
 }
 
 script GinkoWoods_EventScript_Eiji {

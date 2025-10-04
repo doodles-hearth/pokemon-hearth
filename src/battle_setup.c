@@ -1634,7 +1634,6 @@ bool32 TrainerIsMatchCallRegistered(s32 i)
     return FlagGet(TRAINER_REGISTERED_FLAGS_START + i);
 }
 
-// TODO EVA rematch + chatot post
 #if FREE_MATCH_CALL == FALSE
 static bool32 UpdateRandomTrainerRematches(const struct RematchTrainer *table, u16 mapGroup, u16 mapNum)
 {
@@ -1645,8 +1644,8 @@ static bool32 UpdateRandomTrainerRematches(const struct RematchTrainer *table, u
 
     for (i = 0; i <= REMATCH_SPECIAL_TRAINER_START; i++)
     {
-        if (!DoesCurrentMapMatchRematchTrainerMap(i,table,mapGroup,mapNum) || IsRematchForbidden(i))
-            continue; // Only check permitted trainers within the current map.
+        /* if (!DoesCurrentMapMatchRematchTrainerMap(i,table,mapGroup,mapNum) || IsRematchForbidden(i))
+            continue; // Only check permitted trainers within the current map. */
 
         if (gSaveBlock1Ptr->trainerRematches[i] != 0)
         {
@@ -1819,7 +1818,7 @@ static bool8 WasSecondRematchWon(const struct RematchTrainer *table, u16 firstBa
 }
 
 #if FREE_MATCH_CALL == FALSE
-static bool32 HasAtLeastFiveBadges(void)
+UNUSED static bool32 HasAtLeastFiveBadges(void)
 {
     s32 i, count;
 
@@ -1841,8 +1840,8 @@ static bool32 HasAtLeastFiveBadges(void)
 void IncrementRematchStepCounter(void)
 {
 #if FREE_MATCH_CALL == FALSE
-    if (!HasAtLeastFiveBadges())
-        return;
+    /* if (!HasAtLeastFiveBadges())
+        return; */
 
     if (IsVsSeekerEnabled())
         return;
@@ -1857,7 +1856,7 @@ void IncrementRematchStepCounter(void)
 #if FREE_MATCH_CALL == FALSE
 static bool32 IsRematchStepCounterMaxed(void)
 {
-    if (HasAtLeastFiveBadges() && gSaveBlock1Ptr->trainerRematchStepCounter >= STEP_COUNTER_MAX)
+    if (/*HasAtLeastFiveBadges() && */gSaveBlock1Ptr->trainerRematchStepCounter >= STEP_COUNTER_MAX)
         return TRUE;
     else
         return FALSE;
