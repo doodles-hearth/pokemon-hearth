@@ -135,6 +135,7 @@ u32 BattlePalace_TryEscapeStatus(u8 battler)
                     gEffectBattler = battler;
                     gBattleMons[battler].status1 &= ~(STATUS1_SLEEP);
                     gBattleMons[battler].volatiles.nightmare = FALSE;
+                    gBattleMons[battler].volatiles.dreamSleep = FALSE;
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP_UPROAR;
                     BattleScriptCall(BattleScript_MoveUsedWokeUp);
                     effect = 2;
@@ -164,6 +165,7 @@ u32 BattlePalace_TryEscapeStatus(u8 battler)
                     {
                         // Wake up
                         gBattleMons[battler].volatiles.nightmare = FALSE;
+                        gBattleMons[battler].volatiles.dreamSleep = FALSE;
                         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP;
                         BattleScriptCall(BattleScript_MoveUsedWokeUp);
                         effect = 2;
