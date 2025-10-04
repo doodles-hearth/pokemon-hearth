@@ -1,0 +1,86 @@
+script EventScript_Campfire {
+	lock
+
+	if (flag(FLAG_HIDE_CAMPFIRE_PARTY_MON_1)) {
+		msgbox(format(
+			"Rest at the campfire?"
+		), MSGBOX_YESNO)
+
+		if (var(VAR_RESULT) == YES) {
+			campfire
+		}
+	} else {
+		msgbox(format(
+			"Leave the campfire?"
+		), MSGBOX_YESNO)
+
+		if (var(VAR_RESULT) == YES) {
+			call(EventScript_LeaveCampfire)
+		}
+	}
+
+	release
+}
+
+script EventScript_WalkAwayFromCampfire {
+	lock
+	
+	msgbox(format(
+		"Leave the campfire?"
+	), MSGBOX_YESNO)
+	closemessage
+
+	if (var(VAR_RESULT) == YES) {
+		call(EventScript_LeaveCampfire)
+	} else {
+    	specialvar(VAR_RESULT, GetPlayerFacingDirection)
+		buffernumberstring(STR_VAR_1, VAR_RESULT)
+		// msgbox("{STR_VAR_1}")
+		// closemessage
+
+		switch(var(VAR_RESULT)) {
+			case DIR_NORTH:
+				// msgbox("facing up")
+				applymovement(OBJ_EVENT_ID_PLAYER, Movement_ComeBackToCampfire_Down)
+			case DIR_SOUTH:
+				// msgbox("facing down")
+				applymovement(OBJ_EVENT_ID_PLAYER, Movement_ComeBackToCampfire_Up)
+			case DIR_EAST:
+				// msgbox("facing right")
+				applymovement(OBJ_EVENT_ID_PLAYER, Movement_ComeBackToCampfire_Left)
+			case DIR_WEST:
+				// msgbox("facing left")
+				applymovement(OBJ_EVENT_ID_PLAYER, Movement_ComeBackToCampfire_Right)
+		}
+		waitmovement(0)
+	}
+
+	release
+}
+
+movement Movement_ComeBackToCampfire_Down {
+	walk_down
+}
+
+movement Movement_ComeBackToCampfire_Up {
+	walk_up
+}
+
+movement Movement_ComeBackToCampfire_Left {
+	walk_left
+}
+
+movement Movement_ComeBackToCampfire_Right {
+	walk_right
+}
+
+script EventScript_LeaveCampfire {
+	msgbox(format(
+		"Your Pokémon are well-rested.\nTime to go!"
+	))
+	closemessage
+
+	fadescreen(FADE_TO_BLACK)
+	leaveCampfire
+	fadescreen(FADE_FROM_BLACK)
+}

@@ -947,6 +947,12 @@ struct WaldaPhrase
     //u8 padding;
 };
 
+struct Campfire
+{
+    u8 x;
+    u8 y;
+};
+
 struct TrainerNameRecord
 {
     u32 trainerId;
@@ -1197,6 +1203,7 @@ struct SaveBlock1
     enum RouteChallengeState routeChallengeStates[ROUTE_CHALLENGE_COUNT];
     u16 remainingShinyVialMinutes;
     bool8 isShinyVialActive;
+    struct Campfire campfire;
 };
 
 extern struct SaveBlock1 *gSaveBlock1Ptr;

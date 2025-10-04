@@ -207,3 +207,51 @@ script GinkoWoods_EventScript_TrainerTips2 {
 		"You can sort the contents of your bag by pressing {START_BUTTON}."
 	), MSGBOX_SIGN)
 }
+
+script GinkoWoods_EventScript_CampfirePokemon1 {
+	lock
+	faceplayer
+	msgbox(format("Script1"))
+	release
+	end
+}
+
+script GinkoWoods_EventScript_CampfirePokemon2 {
+	lock
+	faceplayer
+	msgbox(format("Script2"))
+	release
+	end
+}
+
+script GinkoWoods_EventScript_CampfirePokemon3 {
+	lock
+	faceplayer
+	msgbox(format("Script3"))
+	release
+	end
+}
+
+script GinkoWoods_EventScript_CampfirePokemon4 {
+	lock
+	faceplayer
+	msgbox(format("Script4"))
+	release
+	end
+}
+
+script GinkoWoods_EventScript_CampfirePokemon5 {
+	lock
+	faceplayer
+	msgbox(format("Script5"))
+	release
+	end
+}
+
+script GinkoWoods_EventScript_CampfirePokemon6 {
+	lock
+	faceplayer
+	msgbox(format("Script6"))
+	release
+	end
+}

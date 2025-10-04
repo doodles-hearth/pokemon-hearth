@@ -1762,6 +1762,33 @@ static const union AffineAnimCmd *const sAffineAnimTable_KyogreGroudon[] = {
     sAffineAnim_KyogreGroudon_DipEast,      // Unused
 };
 
+// Campfire animation
+static const union AnimCmd sAnim_Campfire[] =
+{
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_FRAME(1, 4),
+    ANIMCMD_FRAME(2, 4),
+    ANIMCMD_FRAME(3, 4),
+    ANIMCMD_FRAME(4, 4),
+    ANIMCMD_FRAME(5, 4),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_Campfire[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_Campfire,
+    [ANIM_STD_FACE_NORTH] = sAnim_Campfire,
+    [ANIM_STD_FACE_WEST] = sAnim_Campfire,
+    [ANIM_STD_FACE_EAST] = sAnim_Campfire,
+    [ANIM_STD_GO_SOUTH] = sAnim_Campfire,
+    [ANIM_STD_GO_NORTH] = sAnim_Campfire,
+    [ANIM_STD_GO_WEST] = sAnim_Campfire,
+    [ANIM_STD_GO_EAST] = sAnim_Campfire,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_Campfire,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_Campfire,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_Campfire,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_Campfire,
+};
+
 // For animations with alternating steps
 static const struct StepAnimTable sStepAnimTables[] = {
     {
