@@ -400,11 +400,17 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Right")
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         if (speedPLeft < speedPRight) {
-            MESSAGE("Wynaut is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wynaut is fast asleep.");
+                MESSAGE("Wynaut is deep in a dream.");
+            }
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
         } else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
-            MESSAGE("Wynaut is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wynaut is fast asleep.");
+                MESSAGE("Wynaut is deep in a dream.");
+            }
         }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -438,11 +444,17 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Left")
         TURN { MOVE(playerRight, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerLeft, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         if (speedPRight < speedPLeft) {
-            MESSAGE("Wobbuffet is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wobbuffet is fast asleep.");
+                MESSAGE("Wobbuffet is deep in a dream.");
+            }
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
         } else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
-            MESSAGE("Wobbuffet is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wobbuffet is fast asleep.");
+                MESSAGE("Wobbuffet is deep in a dream.");
+            }
         }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
@@ -534,7 +546,9 @@ DOUBLE_BATTLE_TEST("Pledge move combo doesn't fail if any mon wakes up")
     } SCENE {
         NONE_OF {
             MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Wobbuffet is deep in a dream.");
             MESSAGE("Wynaut is fast asleep.");
+            MESSAGE("Wynaut is deep in a dream.");
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASS_PLEDGE, playerRight);
         }
@@ -582,11 +596,17 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Both Le
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         if (speedLeft < speedRight) {
-            MESSAGE("Wynaut is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wynaut is fast asleep.");
+                MESSAGE("Wynaut is deep in a dream.");
+            }
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
         } else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
-            MESSAGE("Wynaut is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wynaut is fast asleep.");
+                MESSAGE("Wynaut is deep in a dream.");
+            }
         }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -610,11 +630,17 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Both Ri
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
         if (speedRight < speedLeft) {
-            MESSAGE("Wobbuffet is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wobbuffet is fast asleep.");
+                MESSAGE("Wobbuffet is deep in a dream.");
+            }
             ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASS_PLEDGE, playerRight);
         } else {
             NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_GRASS_PLEDGE, playerRight);
-            MESSAGE("Wobbuffet is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wobbuffet is fast asleep.");
+                MESSAGE("Wobbuffet is deep in a dream.");
+            }
         }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
@@ -638,8 +664,14 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Both Le
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
-        MESSAGE("Wobbuffet is fast asleep.");
-        MESSAGE("Wynaut is fast asleep.");
+        ONE_OF {
+            MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Wobbuffet is deep in a dream.");
+        }
+        ONE_OF {
+            MESSAGE("Wynaut is fast asleep.");
+            MESSAGE("Wynaut is deep in a dream.");
+        }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);
@@ -664,8 +696,14 @@ DOUBLE_BATTLE_TEST("Pledge move combo fails if ally fails to act - Sleep Both Ri
     } WHEN {
         TURN { MOVE(playerLeft, MOVE_FIRE_PLEDGE, target: opponentRight); MOVE(playerRight, MOVE_GRASS_PLEDGE, target: opponentRight); }
     } SCENE {
-        MESSAGE("Wynaut is fast asleep.");
-        MESSAGE("Wobbuffet is fast asleep.");
+        ONE_OF {
+            MESSAGE("Wynaut is fast asleep.");
+            MESSAGE("Wynaut is deep in a dream.");
+        }
+        ONE_OF {
+            MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Wobbuffet is deep in a dream.");
+        }
         NONE_OF {
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerLeft);
             ANIMATION(ANIM_TYPE_MOVE, MOVE_FIRE_PLEDGE, playerRight);

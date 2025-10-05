@@ -162,6 +162,7 @@ enum RandomTag
     RNG_SPEED_TIE,
     RNG_STATIC,
     RNG_STENCH,
+    RNG_DREAM_SLEEP,
     RNG_TOXIC_CHAIN,
     RNG_TRI_ATTACK,
     RNG_QUICK_DRAW,
@@ -217,6 +218,7 @@ enum RandomTag
     RNG_WRAP,
     RNG_PRESENT,
     RNG_MAGNITUDE,
+    RNG_BALLTHROW_SHAKE
 };
 
 #define RandomWeighted(tag, ...) \

@@ -315,7 +315,10 @@ SINGLE_BATTLE_TEST("Pursuit attacks a switching foe but fails if user is asleep"
         TURN { SWITCH(player, 1); MOVE(opponent, MOVE_PURSUIT); }
     } SCENE {
         SWITCH_OUT_MESSAGE("Wobbuffet");
-        MESSAGE("The opposing Wynaut is fast asleep.");
+        ONE_OF {
+            MESSAGE("The opposing Wynaut is fast asleep.");
+            MESSAGE("The opposing Wynaut is deep in a dream.");
+        }
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PURSUIT, opponent);
         SEND_IN_MESSAGE("Zigzagoon");
     }
