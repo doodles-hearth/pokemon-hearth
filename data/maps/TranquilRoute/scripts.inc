@@ -289,6 +289,7 @@ TranquilRoute_EventScript_Shellos::
 TranquilRoute_EventScript_BerryWoman::
 	lock
 	goto_if_set FLAG_RECEIVED_WAILMER_PAIL, TranquilRoute_EventScript_BerryWoman_2
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_BerryWoman_Movement_0
 	waitmovement 0
 	faceplayer

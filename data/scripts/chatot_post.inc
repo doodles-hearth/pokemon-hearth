@@ -121,6 +121,16 @@ ChatotPost_EventScript_FromHariko::
 	return
 
 
+ChatotPost_EventScript_FromBigSis::
+	special GetPlayerBrotherSisterString
+	setspeakertomonname SPECIES_CHATOT
+	msgbox ChatotPost_EventScript_FromBigSis_Text_0
+	closemessage
+	giveitem ITEM_ENTEI_STATUETTE
+	setnamedmon SPECIES_CHATOT
+	return
+
+
 ChatotPost_EventScript_TrainerMessage::
 	setspeakertomonname SPECIES_CHATOT
 	msgbox gStringVar4
@@ -168,6 +178,17 @@ ChatotPost_EventScript_FromHariko_Text_1:
 	.string "…also did you know…\p"
 	.string "Wait… Chatot!\p"
 	.string "Come back, Chatot!”$"
+
+ChatotPost_EventScript_FromBigSis_Text_0:
+	.string "“Chatot, are you listening to me?\n"
+	.string "Hey, look this way-{PAUSE 8}pspsps!\p"
+	.string "Ahem, hey little {STR_VAR_1}!\n"
+	.string "Hope you're missing me already!\p"
+	.string "You forgot your lucky Entei\n"
+	.string "Statuette when you left.\p"
+	.string "I like the tradition, so indulge me,\n"
+	.string "okay? Please? Everyone carries one!\p"
+	.string "See you soon {PLAYER}, love you.”$"
 
 Text_Chatot_Next1:
 	.string "HERE'S ANOTHER FROM\n"

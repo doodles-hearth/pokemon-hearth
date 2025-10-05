@@ -118,13 +118,13 @@ Music: Male
 Battle Type: Singles
 AI: Basic Trainer
 
-Nacli
+Nacli (F)
 Level: 3
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - Harden
 
-Kotora
+Kotora (M)
 Level: 4
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
@@ -290,7 +290,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tail Whip
 - Ember
 
-=== TRAINER_KIN_1 ===
+=== TRAINER_KIN ===
 Name: Kin
 Class: Battle Girl
 Pic: Battle Girl
@@ -354,7 +354,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 15 SpA / 0 SpD / 15 Spe
 - Thunder Shock
 - Cotton Spore
 
-=== TRAINER_MASATO ===
+=== TRAINER_MASATO_1 ===
 Name: Masato
 Class: Bug Catcher
 Pic: Bug Catcher
@@ -1041,22 +1041,35 @@ Level: 19
 - Sand Attack
 - Leer
 
-=== TRAINER_ROSE_2 ===
-Name: ROSE
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
+=== TRAINER_MASATO_2 ===
+Name: Masato
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Prefer Status Moves / Try To Faint / Check Bad Move
 
-Shroomish
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Kricketune (M)
+Level: 25
+- Screech
+- Struggle Bug
+- Slash
+- Sing
 
-Roselia
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Kricketune (M)
+Level: 24
+- Fury Cutter
+- Facade
+- Sing
+- Snore
+
+Nincada (F)
+Level: 24
+- Fury Cutter
+- Facade
+- Sing
+- Snore
 
 === TRAINER_ROSE_3 ===
 Name: ROSE
@@ -6440,77 +6453,122 @@ Aron
 Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CALVIN_2 ===
-Name: CALVIN
+=== TRAINER_TOSHIO_2 ===
+Name: Toshio
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Mightyena
+Naclstack (F)
+Level: 26
+- Rock Throw
+- Smack Down
+- Iron Defense
+
+Raitora (M)
+Level: 25
+- Nuzzle
+- Bite
+- Roar
+- Volt Switch
+
+Nidoran (M)
+Level: 25
+- Focus Energy
+- Poison Sting
+- Fury Attack
+
+=== TRAINER_TOSHIO_3 ===
+Name: Toshio
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer
+
+Raitora (M)
 Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+- Nuzzle
+- Bite
+- Roar
+- Volt Switch
 
-=== TRAINER_CALVIN_3 ===
-Name: CALVIN
-Class: Youngster
-Pic: Youngster
-Gender: Male
-Music: Male
-Battle Type: Singles
-AI: Check Bad Move
+Nidorino (M)
+Level: 27
+- Focus Energy
+- Poison Sting
+- Double Kick
+- Horn Attack
 
-Swellow
-Level: 28
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-
-Mightyena
+Naclstack (F)
 Level: 30
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+- Mud Shot
+- Smack Down
+- Rock Polish
+- Iron Defense
 
-=== TRAINER_CALVIN_4 ===
-Name: CALVIN
+=== TRAINER_TOSHIO_4 ===
+Name: Toshio
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Smartish Trainer
 
-Swellow
-Level: 31
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Nidorino (M)
+Level: 30
+- Focus Energy
+- Toxic Spikes
+- Double Kick
+- Fury Attack
 
-Linoone
+Raitora (M)
 Level: 29
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Thunder Fang
+- Bite
+- Volt Switch
 
-Mightyena
+Naclstack (F)
 Level: 33
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Rock Slide
+- Smack Down
+- Rock Polish
+- Recover
 
-=== TRAINER_CALVIN_5 ===
-Name: CALVIN
+=== TRAINER_TOSHIO_5 ===
+Name: Toshio
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Smartish Trainer
 
-Swellow
-Level: 34
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Garganacl (F)
+Level: 38
+- Rock Slide
+- Salt Cure
+- Stealth Rock
+- Recover
 
-Linoone
-Level: 32
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Nidorino (M)
+Level: 35
+- Thrash
+- Toxic Spikes
+- Fury Attack
+- Focus Energy
 
-Mightyena
-Level: 36
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Raitora (M)
+Level: 35
+- Thunder Fang
+- Electrify
+- Crunch
+- Volt Switch
 
 === TRAINER_EDDIE ===
 Name: EDDIE

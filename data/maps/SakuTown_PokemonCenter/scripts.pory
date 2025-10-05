@@ -96,6 +96,24 @@ script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
 	end
 }
 
+script SakuTown_PokemonCenter_EventScript_ChatotPost {
+	lock
+	faceplayer
+	setspeaker(SP_NAME_GUY)
+	playse(SE_PIN)
+	setnamedmon(SPECIES_CHATOT)
+	applymovement(VAR_LAST_TALKED, moves(emote_music, lock_facing_direction, walk_in_place_down * 4, unlock_facing_direction))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}If you're waiting for Chatot post~\nHang out by the Chatot Post~!\p"
+		"If a Chatot is perched on a Chatot Post, that means you've got mail!\p"
+		"Chatot will repeat the message it's been told for you to enjoy!\p"
+		"SQWAK SQWAK!\nHe he."
+	))
+	closemessage
+	release
+	end
+}
+
 script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 	lock
 	setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2)

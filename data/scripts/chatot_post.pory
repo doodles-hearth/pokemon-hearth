@@ -141,6 +141,24 @@ script ChatotPost_EventScript_FromHariko {
     return
 }
 
+script ChatotPost_EventScript_FromBigSis {
+    special(GetPlayerBrotherSisterString)
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox(format(
+        "“Chatot, are you listening to me?\nHey, look this way-{PAUSE 8} pspsps!\p"
+        "Ahem, hey little {STR_VAR_1}!\nHope you're missing me already!\p"
+        "You forgot your lucky Entei Statuette when you left.\p"
+        "I like the tradition, so indulge me, okay? Please? Everyone carries one!\p"
+        "See you soon {PLAYER}, love you.”"
+    ))
+    closemessage
+
+    giveitem(ITEM_ENTEI_STATUETTE)
+
+    setnamedmon(SPECIES_CHATOT)
+    return
+}
+
 script ChatotPost_EventScript_TrainerMessage {
     setspeakertomonname(SPECIES_CHATOT)
     msgbox(gStringVar4)

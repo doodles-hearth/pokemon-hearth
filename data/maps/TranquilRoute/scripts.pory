@@ -339,6 +339,7 @@ script TranquilRoute_EventScript_BerryWoman {
 		closemessage
 	}
 	else {
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_music, delay_16 * 6))
 		waitmovement(0)
 		faceplayer

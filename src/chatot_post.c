@@ -17,7 +17,7 @@
 #include "match_call.h"
 #include "data.h"
 
-const u8 gText_ChatotPostSender_BigSis[] = _("Big Sis");
+const u8 gText_ChatotPostSender_BigSis[] = _("Big Sister");
 const u8 gText_ChatotPostSender_Hariko[] = _("Hariko");
 const u8 gText_ChatotPostSender_Natsuki[] = _("Natsuki");
 const u8 gText_ChatotPostSender_Okada[] = _("Okada");
@@ -112,6 +112,21 @@ bool8 SetChatotPostActive(u8 postId)
     return FALSE;
 }
 
+// Checks if the post is already in the queue
+bool8 IsPostInQueue(u8 postId)
+{
+    u32 i;
+    for (i = 0; i < NUM_ACTIVE_POST_SLOTS; i++)
+    {
+        if (gSaveBlock1Ptr->activePost[i] == postId)
+        {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
 static void CompressPostQueue(void)
 {
     for (u8 i = 1; i < NUM_ACTIVE_POST_SLOTS; i++)
@@ -145,9 +160,9 @@ bool32 TryGetRandomTrainerPost()
     return FALSE;
 }
 
-bool32 TryGetRandomNonTrainerPost(u32 postType)
+bool32 TryGetNonTrainerPost(u32 postType)
 {
-    DebugPrintf("TryGetRandomNonTrainerPost");
+    DebugPrintf("TryGetNonTrainerPost");
     const u8 postCount = ARRAY_COUNT(gChatotPost);
     if (postCount == 0)
         return FALSE;
@@ -185,9 +200,8 @@ bool32 TryGetRandomNonTrainerPost(u32 postType)
         if (!condSatisfied)
             continue;
 
-        if (postType == post->type)
+        if (postType == post->type && !IsPostInQueue(postIdx))
         {
-            DebugPrintf("  Set active");
             SetChatotPostActive(postIdx);
             return TRUE;
         }
@@ -312,7 +326,7 @@ bool32 TryGetChatotPost(void)
     if (UpdateMatchCallStepCounter() && UpdateMatchCallMinutesCounter())
     {
         DebugPrintf("I'm in");
-        if (TryGetRandomNonTrainerPost(POST_TYPE_IMMEDIATE))
+        if (TryGetNonTrainerPost(POST_TYPE_IMMEDIATE))
         {
             DebugPrintf("Immediate NPC");
             return TRUE;
@@ -329,7 +343,7 @@ bool32 TryGetChatotPost(void)
                 else
                 {
                     DebugPrintf("Random NPC");
-                    return TryGetRandomNonTrainerPost(POST_TYPE_RANDOM);
+                    return TryGetNonTrainerPost(POST_TYPE_RANDOM);
                 }
             }
         }

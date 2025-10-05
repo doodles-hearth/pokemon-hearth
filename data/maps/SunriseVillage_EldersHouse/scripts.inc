@@ -49,8 +49,10 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 	setspeaker SP_NAME_ELDER_KABA
 	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1
 	closemessage
+	playse SE_PIN
 	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_5
 	waitmovement 0
+	waitse
 	playse SE_ARENA_TIMEUP2
 	applymovement 1, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_6
 	playse SE_PIN
@@ -93,6 +95,8 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene::
 	playse SE_LEDGE
 	applymovement 2, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_10
 	waitmovement 0
+	waitse
+	playse SE_PIN
 	applymovement 2, SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_11
 	setspeaker SP_NAME_NATSUKI
 	msgbox SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_4
@@ -244,6 +248,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	closemessage
 	delay 20
 	setspeaker SP_NAME_NATSUKI
+	playse SE_PIN
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9
 	closemessage
@@ -764,9 +769,9 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0:
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}{PLAYER}, Natsuki.\nYou are late. Why am I surprised?\p"
-	.string "I always have to run after you two!\nNow stay still for a minute and\llisten closely!\p"
+	.string "I always have to run after you two!\nNow stay still and listen closely!\p"
 	.string "As you have heard, the woods, and even\nthe roads, are no longer safe.\p"
-	.string "We don't yet know why, but the wild\nPokémon that usually hide in the\ltall grass and live peacefully\lalongside men have started behaving\laggressively.\p"
+	.string "We don't yet know why, but the wild\nPokémon that hide in the tall grass\land live peacefully alongside men\lhave started behaving aggressively.\p"
 	.string "There are reports of travelers being\nattacked from several nearby villages.\p"
 	.string "This is all very worrying…$"
 
@@ -780,8 +785,7 @@ SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_2:
 	.string "Pokémon Wielders in Toku until now.\l"
 	.string "This is about to change.\p"
 	.string "With a trained Pokémon by your side,\n"
-	.string "you'll be able to defend yourselves\l"
-	.string "on your own.$"
+	.string "you'll be able to defend yourselves.$"
 
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_3:
 	.string "Without further ado, please carefully\n"
@@ -854,17 +858,10 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Alright. I'm taking this one!$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7:
-	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Now that you have your own Pokémon,\n"
-	.string "you two are officially\l"
-	.string "Pokémon Wielders!\p"
-	.string "The more Wielders there are,\n"
-	.string "the deeper our understanding\l"
-	.string "of Pokémon will be.\p"
-	.string "We need to study these creatures\n"
-	.string "from up close to find the root of\l"
-	.string "this issue.\p"
-	.string "Actually, there's something\n"
-	.string "I wanted to ask you.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Now that you have your own Pokémon,\nyou two are budding Pokémon Wielders!\p"
+	.string "The more Wielders there are,\nthe deeper our understanding\lof Pokémon will be.\p"
+	.string "Studying these creatures from up\nclose will get us to the bottom of this.\p"
+	.string "Actually, there's something\nI wanted to ask you.$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_8:
 	.string "{PLAYER} received the PokéDex!$"
@@ -874,24 +871,20 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10:
 	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}I call this the “PokéDex”.\n"
-	.string "It is an encyclopedia containing\l"
-	.string "vital information about Pokémon\l"
-	.string "from the whole region!\p"
+	.string "It is an encyclopedia containing all\l"
+	.string "we know about the region's Pokémon!\p"
 	.string "Except it's, well, empty.\n"
 	.string "That's where you come in!\p"
 	.string "Explore Toku and fill its pages with\n"
 	.string "your findings!\p"
-	.string "You can start by going all the way to\n"
-	.string "Silveridge, north of here in the\l"
-	.string "mountains.\p"
+	.string "Start by going all the way to rocky\n"
+	.string "Silveridge, north of here.\p"
 	.string "Another Elder lives there and,\n"
-	.string "hopefully, has more information\l"
-	.string "as to why the Pokémon are lashing\l"
-	.string "out.\p"
+	.string "hopefully, has more information as to\l"
+	.string "why the Pokémon are lashing out.\p"
 	.string "Could you deliver him this letter?\n"
 	.string "I could send him a Chatot, but I need\l"
-	.string "to make sure this doesn't get lost on\l"
-	.string "the way.$"
+	.string "to make sure it gets to him.$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Understood, Grandma Kaba.\n"
@@ -917,8 +910,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_17:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}!\n"
-	.string "Let's see what our brand new Pokémon\l"
-	.string "are capable of!\p"
+	.string "Let's see what our Pokémon can do!\p"
 	.string "I request an official Pokémon\n"
 	.string "Wielder battle!$"
 

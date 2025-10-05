@@ -58,15 +58,19 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}{PLAYER}, Natsuki.\nYou are late. Why am I surprised?\p"
-		"I always have to run after you two!\nNow stay still for a minute and\llisten closely!\p"
+		"I always have to run after you two!\nNow stay still and listen closely!\p"
 		"As you have heard, the woods, and even\nthe roads, are no longer safe.\p"
-		"We don't yet know why, but the wild\nPokémon that usually hide in the\ltall grass and live peacefully\lalongside men have started behaving\laggressively.\p"
+		"We don't yet know why, but the wild\nPokémon that hide in the tall grass\land live peacefully alongside men\lhave started behaving aggressively.\p"
 		"There are reports of travelers being\nattacked from several nearby villages.\p"
 		"This is all very worrying…$"
 	))
 	closemessage
+
+	playse(SE_PIN)
 	applymovement(LOCALID_ELDER, moves(walk_in_place_faster_up, emote_pensive, delay_16 * 6))
 	waitmovement(0)
+	waitse
+
 	playse(SE_ARENA_TIMEUP2)
 	applymovement(LOCALID_ELDER, moves(jump_in_place_down, emote_angry))
 
@@ -82,7 +86,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 		"The Toku council has decided that,\nfor the time being, the best way to\lhandle this is to use the Pokémon\lthemselves as a means of protection!\p"
 		"There were very few experienced\nPokémon Wielders in Toku until now.\l"
 		"This is about to change.\p"
-		"With a trained Pokémon by your side,\nyou'll be able to defend yourselves\lon your own."
+		"With a trained Pokémon by your side,\nyou'll be able to defend yourselves."
 	))
 	applymovement(LOCALID_ELDER, moves(walk_in_place_fast_right))
 	msgbox(format(
@@ -125,6 +129,8 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	playse(SE_LEDGE)
 	applymovement(LOCALID_RIVAL, moves(jump_in_place_up))
 	waitmovement(0)
+	waitse
+	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, moves(emote_heart))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah! Cool."))
@@ -376,12 +382,12 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	// Elder gives Pokédex
 	setspeaker(SP_NAME_ELDER_KABA)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Now that you have your own Pokémon,\nyou two are officially\lPokémon Wielders!\p"
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Now that you have your own Pokémon,\nyou two are budding Pokémon Wielders!\p"
 		"The more Wielders there are,\nthe deeper our understanding\lof Pokémon will be.\p"
-		"We need to study these creatures\nfrom up close to find the root of\lthis issue.\p"
+		"Studying these creatures from up\nclose will get us to the bottom of this.\p"
 		"Actually, there's something\nI wanted to ask you."
-	))
+	)
 	closemessage
 
 	applymovement(LOCALID_ELDER, moves(walk_right * 2, walk_in_place_faster_down, delay_16, walk_left, walk_in_place_faster_down, delay_16))
@@ -398,6 +404,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	delay(20)
 
 	setspeaker(SP_NAME_NATSUKI)
+	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, moves(emote_question_mark))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What's this? A book?"
@@ -411,12 +418,12 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}I call this the “PokéDex”.\nIt is an encyclopedia containing\lvital information about Pokémon\lfrom the whole region!\p"
+		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}I call this the “PokéDex”.\nIt is an encyclopedia containing all\lwe know about the region's Pokémon!\p"
 		"Except it's, well, empty.\nThat's where you come in!\p"
 		"Explore Toku and fill its pages with\nyour findings!\p"
-		"You can start by going all the way to\nSilveridge, north of here in the\lmountains.\p"
-		"Another Elder lives there and,\nhopefully, has more information\las to why the Pokémon are lashing out.\p"
-		"Could you deliver him this letter?\nI could send him a Chatot, but I need to make sure this doesn't get lost on the way."
+		"Start by going all the way to rocky\nSilveridge, north of here.\p"
+		"Another Elder lives there and,\nhopefully, has more information as to\lwhy the Pokémon are lashing out.\p"
+		"Could you deliver him this letter?\nI could send him a Chatot, but I need\lto make sure it gets to him."
 	))
 	closemessage
 
@@ -476,7 +483,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}!\nLet's see what our brand new Pokémon\lare capable of!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}!\nLet's see what our Pokémon can do!\p"
 		"I request an official Pokémon\nWielder battle!"
 	))
 	closemessage
