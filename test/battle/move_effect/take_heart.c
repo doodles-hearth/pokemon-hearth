@@ -34,7 +34,10 @@ SINGLE_BATTLE_TEST("Take Heart cures the user of all status conditions")
         TURN { MOVE(player, MOVE_TAKE_HEART); }
     } SCENE {
         if (status1 == STATUS1_SLEEP) {
-            MESSAGE("Wobbuffet is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wobbuffet is fast asleep.");
+                MESSAGE("Wobbuffet is deep in a dream.");
+            }
         } else if (status1 == STATUS1_FREEZE) {
             PASSES_RANDOMLY(20, 100, RNG_FROZEN);
             STATUS_ICON(player, none: TRUE);
