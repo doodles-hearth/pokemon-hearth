@@ -2584,8 +2584,7 @@ static u8 BagMenu_AddWindow(u8 windowType)
     {
         *windowId = AddWindow(&sContextMenuWindowTemplates[windowType]);
         DrawStdFrameWithCustomTileAndPalette(*windowId, FALSE, 1, 14);
-        // TODO EVA ICI
-        FillWindowPixelBuffer(*windowId, PIXEL_FILL(1));
+        FillWindowPixelBuffer(*windowId, PIXEL_FILL(BG_COLOR_HEARTH_BEIGE));
         ScheduleBgCopyTilemapToVram(1);
     }
     return *windowId;
