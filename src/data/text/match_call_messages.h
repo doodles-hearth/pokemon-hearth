@@ -390,7 +390,7 @@ const u8 gText_MatchCallChampion_Wallace_Intro2[] = _("well as intelligence.");
 
 const u8 *const gMatchCallFlavorTexts[REMATCH_TABLE_ENTRIES][CHECK_PAGE_ENTRY_COUNT] =
 {
-    [REMATCH_ROSE] = MCFLAVOR(AromaLady_Rose),
+    [REMATCH_MASATO] = MCFLAVOR(AromaLady_Rose),
     [REMATCH_ANDRES] = MCFLAVOR(RuinManiac_Andres),
     [REMATCH_DUSTY] = MCFLAVOR(RuinManiac_Dusty),
     [REMATCH_LOLA] = MCFLAVOR(Tuber_Lola),
@@ -424,7 +424,7 @@ const u8 *const gMatchCallFlavorTexts[REMATCH_TABLE_ENTRIES][CHECK_PAGE_ENTRY_CO
     [REMATCH_MIGUEL] = MCFLAVOR(Pokefan_Miguel),
     [REMATCH_TIMOTHY] = MCFLAVOR(Expert_Timothy),
     [REMATCH_SHELBY] = MCFLAVOR(Expert_Shelby),
-    [REMATCH_CALVIN] = MCFLAVOR(Youngster_Calvin),
+    [REMATCH_TOSHIO] = MCFLAVOR(Youngster_Calvin),
     [REMATCH_ELLIOT] = MCFLAVOR(Fisherman_Elliot),
     [REMATCH_ISAIAH] = MCFLAVOR(Triathlete_Isaiah),
     [REMATCH_MARIA] = MCFLAVOR(Triathlete_Maria),

@@ -53,6 +53,7 @@
 #include "fake_rtc.h"
 #include "difficulty.h"
 #include "follower_npc.h"
+#include "chatot_post.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -181,6 +182,7 @@ void NewGameInitData(void)
     PlayTimeCounter_Reset();
     ClearPokedexFlags();
     InitEventData();
+    ResetChatotPost();
     ClearTVShowData();
     ResetGabbyAndTy();
     ClearSecretBases();

@@ -158,10 +158,8 @@ void HideFieldMessageBox(void)
     DestroyNamebox();
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
     gSpeakerName = NULL;
-    DebugPrintf("HideFieldMessageBox");
     if (IsFieldMugshotActive())
     {
-        DebugPrintf("removing mugshot");
         gSprites[GetFieldMugshotSpriteId()].data[0] = FALSE;
         RemoveFieldMugshot();
     }

@@ -96,7 +96,7 @@ BeachboundRoute_EventScript_Karu_PostBattle::
 
 
 BeachboundRoute_EventScript_Kin::
-	trainerbattle_single TRAINER_KIN_1, BeachboundRoute_EventScript_Kin_Text_0, BeachboundRoute_EventScript_Kin_Text_1
+	trainerbattle_single TRAINER_KIN, BeachboundRoute_EventScript_Kin_Text_0, BeachboundRoute_EventScript_Kin_Text_1
 	setspeaker SP_NAME_BATTLE_GIRL
 	msgbox BeachboundRoute_EventScript_Kin_Text_2, MSGBOX_AUTOCLOSE
 	end
@@ -112,7 +112,7 @@ BeachboundRoute_EventScript_Kouta::
 
 
 BeachboundRoute_EventScript_Masato::
-	trainerbattle_single TRAINER_MASATO, BeachboundRoute_EventScript_Masato_Text_0, BeachboundRoute_EventScript_Masato_Text_1
+	trainerbattle_single TRAINER_MASATO_1, BeachboundRoute_EventScript_Masato_Text_0, BeachboundRoute_EventScript_Masato_Text_1
 	setnamedmon SPECIES_KRICKETOT
 	setspeaker SP_NAME_BUGCATCHER
 	msgbox BeachboundRoute_EventScript_Masato_Text_2

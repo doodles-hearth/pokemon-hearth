@@ -115,7 +115,7 @@ script BeachboundRoute_EventScript_Karu_PostBattle {
 script BeachboundRoute_EventScript_Kin {
 	// TODO EVA rematch
 	trainerbattle_single(
-		TRAINER_KIN_1,
+		TRAINER_KIN,
 		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I run several hours everyday! You literally cannot defeat me!"),
 		format("Ow! I pulled a muscle!")
 	)
@@ -139,7 +139,7 @@ script BeachboundRoute_EventScript_Kouta {
 
 script BeachboundRoute_EventScript_Masato {
 	trainerbattle_single(
-		TRAINER_MASATO ,
+		TRAINER_MASATO_1,
 		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}Let my Pokémon sing for you!"),
 		format("Okay, rude.")
 	)

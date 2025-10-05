@@ -164,11 +164,11 @@ script ChiiTown_PokemonCenter_EventScript_RefugePresentation {
 	setspeaker("Talkative man")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_1 EMOTE_NORMAL}Isn't it amazing?\p"
-		"This is one of the many brand new Pokémon refuges that the Pokémon Council has built in towns across all Toku!\p"
-		"With traveling alone becoming more dangerous, many people are now training a Pokémon of their own for protection.\p"
-		"Towns were starting to be in dire need of proper healing and rest spots for Pokémon.\p"
+		"This is one of the many brand new Pokémon refuges that the Pokémon Council has built across all Toku!\p"
+		"With traveling alone becoming more dangerous, many people are now training a Pokémon for protection.\p"
+		"Towns were in dire need of proper healing and rest spots for Pokémon.\p"
 		"Sorry, I'll get out of your hair now.\n"
-		"Talk to the nurse and her Chansey\nif you want her to heal your Pokémon!"
+		"Talk to the nurse and her Chansey\lif you want her to heal your Pokémon!"
 	))
 	closemessage
 

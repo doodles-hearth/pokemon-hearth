@@ -611,16 +611,18 @@ static const struct DebugMenuOption sDebugMenu_Actions_Player[] =
     { NULL }
 };
 
+extern void Debug_PutPostFromHaruInQueue(void);
+
 static const struct DebugMenuOption sDebugMenu_Actions_Scripts[] =
 {
-    { COMPOUND_STRING("Script 1"), DebugAction_ExecuteScript, Debug_EventScript_Script_1 },
-    { COMPOUND_STRING("Script 2"), DebugAction_ExecuteScript, Debug_EventScript_Script_2 },
+    { COMPOUND_STRING("Compl Quests"), DebugAction_ExecuteScript, Debug_EventScript_Script_1 },
+    { COMPOUND_STRING("Give Heal Items"), DebugAction_ExecuteScript, Debug_EventScript_Script_2 },
     { COMPOUND_STRING("Script 3"), DebugAction_ExecuteScript, Debug_EventScript_Script_3 },
     { COMPOUND_STRING("Script 4"), DebugAction_ExecuteScript, Debug_EventScript_Script_4 },
     { COMPOUND_STRING("Script 5"), DebugAction_ExecuteScript, Debug_EventScript_Script_5 },
     { COMPOUND_STRING("Script 6"), DebugAction_ExecuteScript, Debug_EventScript_Script_6 },
     { COMPOUND_STRING("Script 7"), DebugAction_ExecuteScript, Debug_EventScript_Script_7 },
-    { COMPOUND_STRING("Script 8"), DebugAction_ExecuteScript, Debug_EventScript_Script_8 },
+    { COMPOUND_STRING("Add Haru Post"), Debug_PutPostFromHaruInQueue, Debug_EventScript_Script_8 },
     { NULL }
 };
 
@@ -1122,6 +1124,11 @@ static void DebugTask_HandleMenuInput_General(u8 taskId)
             if (IsSubMenuAction(option.action))
             {
                 ((DebugSubmenuFunc)option.action)(taskId, option.actionParams);
+            }
+            else if (option.action == Debug_PutPostFromHaruInQueue)
+            {
+                Debug_PutPostFromHaruInQueue();
+                Debug_DestroyMenu_Full_Script(taskId, (const u8 *)option.actionParams);
             }
             else if (option.action == DebugAction_ExecuteScript)
             {

@@ -1167,6 +1167,8 @@
 		.byte 1
 	.elseif \id == STR_VAR_3
 		.byte 2
+	.elseif \id == STR_VAR_4
+		.byte 3
 	.else
 		.byte \id
 	.endif
@@ -2974,6 +2976,10 @@
 	.4byte \name
 	.endm
 
+	.macro clearspeaker
+	callnative ClearSpeaker
+	.endm
+
 	.macro getroutechallengestate routeChallenge:req
 	callnative Native_GetRouteChallengeState, requests_effects = 1
 	.2byte \routeChallenge
@@ -2985,3 +2991,18 @@
 	.2byte \newState
 	.endm
 
+    .macro setchatotlastspeaker
+    callnative Native_SetChatotLastSpeaker, requests_effects=1
+    .endm
+
+    .macro checkchatotpost
+    callnative Native_CheckChatotPost, requests_effects=1
+    .endm
+
+    .macro checkchatotpostnumber
+    callnative Native_CheckChatotPostNumber, requests_effects=1
+    .endm
+
+    .macro readchatotpost
+    callnative Native_ReadChatotPost, requests_effects=1
+    .endm

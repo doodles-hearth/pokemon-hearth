@@ -13,11 +13,26 @@ GinkoWoods_EventScript_Toshiki::
 
 
 GinkoWoods_EventScript_Toshio::
-	trainerbattle_single TRAINER_TOSHIO_1, GinkoWoods_EventScript_Toshio_Text_0, GinkoWoods_EventScript_Toshio_Text_1
-	setspeaker SP_NAME_BUGCATCHER
-	msgbox GinkoWoods_EventScript_Toshio_Text_2
+	trainerbattle_single TRAINER_TOSHIO_1, GinkoWoods_EventScript_Toshio_Text_0, GinkoWoods_EventScript_Toshio_Text_1, GinkoWoods_EventScript_Toshio_Register
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	compare VAR_RESULT, 0
+	goto_if_ne GinkoWoods_EventScript_Toshio_2
+GinkoWoods_EventScript_Toshio_1:
+	msgbox GinkoWoods_EventScript_Toshio_Text_4
+	closemessage
 	release
-	end
+	return
+
+GinkoWoods_EventScript_Toshio_2:
+	trainerbattle_rematch TRAINER_TOSHIO_1, GinkoWoods_EventScript_Toshio_Text_2, GinkoWoods_EventScript_Toshio_Text_3
+	goto GinkoWoods_EventScript_Toshio_1
+
+
+GinkoWoods_EventScript_Toshio_Register:
+	msgbox GinkoWoods_EventScript_Toshio_Register_Text_0
+	closemessage
+	register_matchcall TRAINER_TOSHIO_1
+	return
 
 
 GinkoWoods_EventScript_Eiji::
@@ -40,6 +55,7 @@ GinkoWoods_EventScript_OldMan::
 
 GinkoWoods_EventScript_Bean::
 	lock
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_Bean_Movement_0
 	waitmovement VAR_LAST_TALKED
 	faceplayer
@@ -88,6 +104,7 @@ GinkoWoods_EventScript_Bean_4:
 	goto GinkoWoods_EventScript_Bean_1
 
 GinkoWoods_EventScript_Bean_5:
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_OldMan_Movement_0
 	msgbox GinkoWoods_EventScript_Bean_Text_10
 	goto GinkoWoods_EventScript_Bean_1
@@ -172,9 +189,20 @@ GinkoWoods_EventScript_Toshio_Text_1:
 	.string "Should have kept my mouth shut…$"
 
 GinkoWoods_EventScript_Toshio_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Real Wielders fight when they spot\n"
+	.string "Let's fight again!$"
+
+GinkoWoods_EventScript_Toshio_Text_3:
+	.string "I lost again?!$"
+
+GinkoWoods_EventScript_Toshio_Text_4:
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}{SPEAKER NAME_YOUNGSTER}Real Wielders fight when they spot\n"
 	.string "each other!\p"
 	.string "At least that's what my dad told me…$"
+
+GinkoWoods_EventScript_Toshio_Register_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}{SPEAKER NAME_YOUNGSTER} Hey, let's be friends!\n"
+	.string "We'll send each other Chatot mail,\l"
+	.string "and battle again sometime!$"
 
 GinkoWoods_EventScript_Eiji_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}With the help of my brand new\n"
@@ -274,7 +302,7 @@ GinkoWoods_EventScript_Bean_Text_10:
 	.string "It has been nice chatting with you.\l"
 	.string "I am moving now, so that you can go\l"
 	.string "through.\p"
-	.string "I will see you around, then.\p"
+	.string "I will see you around.{PAUSE 8}\n"
 	.string "Okay. Bye!$"
 
 GinkoWoods_EventScript_Tracks_Text_0:
