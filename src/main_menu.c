@@ -39,6 +39,7 @@
 #include "window.h"
 #include "mystery_gift_menu.h"
 #include "kaba_speech.h"
+#include "prologue_screen.h"
 
 /*
  * Main menu state machine
@@ -1043,8 +1044,9 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
 
-                //  To skip speech, comment DoKabaSpeech, and uncomment next lines
-		        DoKabaSpeech();
+                // To skip speech, comment these, and uncomment next lines
+		        CreateTask(Task_OpenPrologueScreen, 0);
+                SetMainCallback2(CB2_KabaSpeech);
                 // NewGameBirchSpeech_SetDefaultPlayerName(0);
                 // gSaveBlock2Ptr->playerGender = FEMALE;
                 // SetMainCallback2(CB2_NewGame);

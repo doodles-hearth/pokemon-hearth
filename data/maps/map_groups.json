@@ -132,7 +132,8 @@
     "YifuCity_House4",
     "YifuCity_Refuge_2F",
     "YifuCity_Refuge_2F_Rooms",
-    "YifuCity_Restaurant"
+    "YifuCity_Restaurant",
+    "YifuCity_HotSprings"
   ],
   "gMapGroup_IndoorOrchardPath": [
     "OrchardPath_GuardHouse"

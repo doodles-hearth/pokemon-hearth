@@ -273,7 +273,7 @@ script CrobatHideout_1F_EventScript_EmptyBowlLeftover {
 script CrobatHideout_1F_EventScript_WantedPosterMustache {
     msgbox(format(
 		"WANTED: Crobat Shadows Grunt\n"
-		"3000¥\p"
+		"¥3000\p"
 		"Someone has doodled glasses\nand a mustache on the poster."
 	), MSGBOX_SIGN)
 }
@@ -281,7 +281,7 @@ script CrobatHideout_1F_EventScript_WantedPosterMustache {
 script CrobatHideout_1F_EventScript_WantedPosterNose {
     msgbox(format(
 		"WANTED: Crobat Shadows Grunt\n"
-		"4500¥\p"
+		"¥4500\p"
 		"It looks like the nose was\ndrawn over with a different nose."
 	), MSGBOX_SIGN)
 }
@@ -289,7 +289,7 @@ script CrobatHideout_1F_EventScript_WantedPosterNose {
 script CrobatHideout_1F_EventScript_WantedPosterHanddrawn {
     msgbox(format(
 		"WANTED: KEVIN\n"
-		"10 000 000 000 000¥\p"
+		"¥10 000 000 000 000\p"
 		"This poster looks handdrawn…"
 	), MSGBOX_SIGN)
 }
@@ -297,10 +297,10 @@ script CrobatHideout_1F_EventScript_WantedPosterHanddrawn {
 script CrobatHideout_1F_EventScript_WantedPosterBoss {
     msgbox(format(
 		"WANTED: Crobat Shadows Leader\n"
-		"100 000¥\p"
+		"¥100 000\p"
 		"There are various messages\nscribbled on the poster:\l"
 		"“Happy birthday boss”,\l"
-		"“U are worthe 999 999¥ in our harts”,\l"
+		"“U are worthe ¥999 999 in our harts”,\l"
 		"“Gogettem boss”…\l"
 		"… … …\l"
 		"It's time to go."

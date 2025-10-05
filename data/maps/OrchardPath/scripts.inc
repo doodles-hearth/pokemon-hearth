@@ -436,7 +436,7 @@ OrchardPath_EventScript_RockSmashRegular_Text_0:
 	.string "BLOWN?\p"
 	.string "I am the world-renowned ROCK\n"
 	.string "SMASHER! I kid you not!\p"
-	.string "For as little as 100¥, you will have\n"
+	.string "For as little as ¥100, you will have\n"
 	.string "the privilege of watching me\l"
 	.string "ABSOLUTELY DESTROY a rock, using my\l"
 	.string "BARE HANDS!\p"
@@ -511,7 +511,7 @@ OrchardPath_EventScript_RockSmashRegular_Text_11:
 
 OrchardPath_EventScript_SignRockSmash_Text_0:
 	.string "WITNESS AN INCREDIBLE DISPLAY\n"
-	.string "OF STRENGTH FOR ONLY 100¥$"
+	.string "OF STRENGTH FOR ONLY ¥100$"
 
 OrchardPath_EventScript_Samurai2_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Move along, please, nothing to see\n"

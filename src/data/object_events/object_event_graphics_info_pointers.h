@@ -51,6 +51,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Boy2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Nurse;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_Valet;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_FatGuy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Uume_OldWomanSwimming;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hot_Woman1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hot_Woman2;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Hot_Man1;
@@ -167,6 +168,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bean;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Natsuki;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TravelingMerchant;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OnsenF;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OnsenFSwimming;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OnsenMSwimming;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BattleGirl;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_IncenseSeller;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedSquirtleDoll;
@@ -407,6 +410,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_UUME_NURSE] =               &gObjectEventGraphicsInfo_Uume_Nurse,
     [OBJ_EVENT_GFX_UUME_VALET] =               &gObjectEventGraphicsInfo_Uume_Valet,
     [OBJ_EVENT_GFX_UUME_FAT_GUY] =             &gObjectEventGraphicsInfo_Uume_FatGuy,
+    [OBJ_EVENT_GFX_UUME_OLD_WOMAN_SWIMMING] =  &gObjectEventGraphicsInfo_Uume_OldWomanSwimming,
 
     [OBJ_EVENT_GFX_HOT_WOMAN_1] =              &gObjectEventGraphicsInfo_Hot_Woman1,
     [OBJ_EVENT_GFX_HOT_WOMAN_2] =              &gObjectEventGraphicsInfo_Hot_Woman2,
@@ -535,6 +539,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_NATSUKI] =                  &gObjectEventGraphicsInfo_Natsuki,
     [OBJ_EVENT_GFX_TRAVELING_MERCHANT] =       &gObjectEventGraphicsInfo_TravelingMerchant,
     [OBJ_EVENT_GFX_ONSEN_F] =                  &gObjectEventGraphicsInfo_OnsenF,
+    [OBJ_EVENT_GFX_ONSEN_F_SWIMMING] =         &gObjectEventGraphicsInfo_OnsenFSwimming,
+    [OBJ_EVENT_GFX_ONSEN_M_SWIMMING] =         &gObjectEventGraphicsInfo_OnsenMSwimming,
     [OBJ_EVENT_GFX_CUTTABLE_TREE_KURA_DOJO] =  &gObjectEventGraphicsInfo_CuttableTreeKuraDojo,
     [OBJ_EVENT_GFX_TRAVELER] =                 &gObjectEventGraphicsInfo_Traveler,
     [OBJ_EVENT_GFX_UNUSED_PORYGON2_DOLL] =     &gObjectEventGraphicsInfo_UnusedPorygon2Doll,

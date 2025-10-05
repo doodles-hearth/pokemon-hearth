@@ -114,7 +114,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 		setspeaker(SP_NAME_OLD_LADY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\p"
-			"They're the town's specialty! Only 500¥!"
+			"They're the town's specialty! Only ¥500!"
 		), MSGBOX_DEFAULT)
 
 		showmoneybox(18, 0)
@@ -288,7 +288,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 						if (var(VAR_0x8000) > 0) {
 							buffernumberstring(STR_VAR_1, VAR_0x8000)
 							setspeaker(SP_NAME_SHOPKEEPER)
-							msgbox(format("I can offer you {STR_VAR_1}¥.\nThat reasonable?"))
+							msgbox(format("I can offer you ¥{STR_VAR_1}.\nThat reasonable?"))
 
 							mcdialogue("Yes!", "Actually, no.")
 

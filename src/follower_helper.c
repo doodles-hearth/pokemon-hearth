@@ -87,6 +87,11 @@ static const u8 sCondMsgDecay2[] = _("{STR_VAR_1} doesn't look too good.");
 static const u8 sCondMsgDecay3[] = _("{STR_VAR_1} weakens.");
 static const u8* const sDecayTexts[] = {sCondMsgDecay1, sCondMsgDecay2, sCondMsgDecay3, NULL};
 static const u8 sCondMsg50[] = _("{STR_VAR_1} is disturbed by the\nabnormal weather!");
+static const u8 sCondMsgHotSprings1[] = _("{STR_VAR_1} is relaxing in the hot\nwater!");
+static const u8 sCondMsgHotSprings2[] = _("Your Pokémon is enjoying the hot\nsprings.");
+static const u8 sCondMsgHotSprings3[] = _("{STR_VAR_1} spat out some water\nat you!");
+static const u8* const sHotSpringsTexts[] = {sCondMsgHotSprings1, sCondMsgHotSprings2, sCondMsgHotSprings3, NULL};
+static const u8 sCondMsgHotSpringsDislike[] = _("{STR_VAR_1} doesn't like the water!");
 
 // See the struct definition in follower_helper.h for more info
 const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT] =
@@ -432,6 +437,27 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
             MATCH_NOT_SPECIES(SPECIES_GROUDON),
             MATCH_NOT_SPECIES(SPECIES_RAYQUAZA),
         }
+    },
+    [COND_MSG_HOT_SPRINGS_LIKE] =
+    {
+        .text = (u8*)sHotSpringsTexts,
+        .textSpread = 1,
+        .emotion = FOLLOWER_EMOTION_HAPPY,
+        .conditions =
+        {
+            MATCH_ON_MB(MB_HOT_SPRINGS, MB_HOT_SPRINGS),
+            MATCH_NOT_TYPES(TYPE_FIRE, TYPE_FIRE)
+        },
+    },
+    [COND_MSG_HOT_SPRINGS_DISLIKE] =
+    {
+        .text = sCondMsgHotSpringsDislike,
+        .emotion = FOLLOWER_EMOTION_UPSET,
+        .conditions =
+        {
+            MATCH_ON_MB(MB_HOT_SPRINGS, MB_HOT_SPRINGS),
+            MATCH_TYPES(TYPE_FIRE, TYPE_ICE)
+        },
     },
 };
 

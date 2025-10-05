@@ -928,6 +928,14 @@ bool8 MetatileBehavior_IsShallowFlowingWater(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsHotSpringsWater(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_HOT_SPRINGS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsThinIce(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_THIN_ICE)

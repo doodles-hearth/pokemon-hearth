@@ -93,6 +93,7 @@ bool8 MetatileBehavior_IsMountain(u8 metatileBehavior);
 bool8 MetatileBehavior_IsDiveable(u8 metatileBehavior);
 bool8 MetatileBehavior_IsUnableToEmerge(u8 metatileBehavior);
 bool8 MetatileBehavior_IsShallowFlowingWater(u8 metatileBehavior);
+bool8 MetatileBehavior_IsHotSpringsWater(u8 metatileBehavior);
 bool8 MetatileBehavior_IsThinIce(u8 metatileBehavior);
 bool8 MetatileBehavior_IsCrackedIce(u8 metatileBehavior);
 bool8 MetatileBehavior_IsDeepOrOceanWater(u8 metatileBehavior);

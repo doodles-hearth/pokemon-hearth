@@ -192,6 +192,7 @@ SunriseVillage_Beach_EventScript_Corsola::
 	lock
 	faceplayer
 	setseenmon SPECIES_CORSOLA
+	setspeakertomonname SPECIES_CORSOLA
 	playmoncry SPECIES_CORSOLA, CRY_MODE_NORMAL
 	msgbox SunriseVillage_Beach_EventScript_Corsola_Text_0
 	waitmoncry
@@ -203,6 +204,7 @@ SunriseVillage_Beach_EventScript_Corsola2::
 	lock
 	faceplayer
 	setseenmon SPECIES_CORSOLA
+	setspeakertomonname SPECIES_CORSOLA
 	playmoncry SPECIES_CORSOLA, CRY_MODE_WEAK
 	msgbox SunriseVillage_Beach_EventScript_Corsola2_Text_0
 	waitmoncry
@@ -241,6 +243,7 @@ SunriseVillage_Event_ChildsMon::
 	lock
 	faceplayer
 	setseenmon SPECIES_DWEBBLE
+	setspeakertomonname SPECIES_DWEBBLE
 	playmoncry SPECIES_DWEBBLE, CRY_MODE_NORMAL
 	msgbox SunriseVillage_Event_ChildsMon_Text_0
 	waitmoncry

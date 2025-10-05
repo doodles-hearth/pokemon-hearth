@@ -7080,7 +7080,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     #endif
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Torkoal"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Steam Turtle"),
         .cryId = CRY_TORKOAL,
         .natDexNum = NATIONAL_DEX_TORKOAL,
         .categoryName = _("Coal"),

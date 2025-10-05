@@ -379,6 +379,12 @@ $(OBJEVENTGFXDIR)/people/greenish/hotspring_f.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/greenish/hotspring_m.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(OBJEVENTGFXDIR)/people/greenish/hotspring_f_swimming.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
+$(OBJEVENTGFXDIR)/people/greenish/hotspring_m_swimming.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(OBJEVENTGFXDIR)/people/greenish/kimono_girl.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
@@ -520,6 +526,8 @@ $(OBJEVENTGFXDIR)/people/uume/woman_1.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/uume/woman_2.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(OBJEVENTGFXDIR)/people/uume/old_woman_swimming.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
 
 $(OBJEVENTGFXDIR)/people/hot/boy_1.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4

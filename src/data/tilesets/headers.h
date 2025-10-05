@@ -1237,3 +1237,14 @@ const struct Tileset gTileset_ScenicRoute =
     .metatileAttributes = gMetatileAttributes_ScenicRoute,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_HotSprings =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HotSprings,
+    .palettes = gTilesetPalettes_HotSprings,
+    .metatiles = gMetatiles_HotSprings,
+    .metatileAttributes = gMetatileAttributes_HotSprings,
+    .callback = NULL,
+};

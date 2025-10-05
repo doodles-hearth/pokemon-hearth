@@ -10902,7 +10902,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_MIZU ===
 Name: Mizu
-Class: Beauty
+Class: Onsen F
 Pic: Onsen F
 Gender: Female
 Music: Female
@@ -16350,85 +16350,110 @@ Beldum
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_ANDRES_2 ===
-Name: ANDRES
-Class: Ruin Maniac
-Pic: Ruin Maniac
+=== TRAINER_WAKAE ===
+Name: Wakae
+Class: Onsen F
+Pic: Onsen F
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer
+
+Torkoal
+Level: 22
+- Rapid Spin
+- Smokescreen
+- Flame Wheel
+- Curse
+
+Wailmer
+Level: 22
+- Rollout
+- Whirlpool
+- Mist
+
+Slowpoke
+Level: 21
+- Yawn
+- Disable
+- Headbutt
+- Growl
+
+=== TRAINER_FUTOSHI ===
+Name: Futoshi
+Class: Onsen M
+Pic: Onsen M
+Gender: Male
+Music: Intense
+Battle Type: Singles
+AI: Basic Trainer
+
+Vigoroth
+Level: 23
+- Focus Energy
+- Uproar
+- Encore
+- Endure
+
+Barboach
+Level: 22
+- Magnitude
+- Rest
+- Snore
+
+=== TRAINER_LIHUO ===
+Name: Lihuo
+Class: Firebringer
+Pic: Firebringer
 Gender: Male
 Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Smartish Trainer
 
-Sandshrew
-Level: 31
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Darumaka
+Level: 23
+- Incinerate
+- Rage
+- Facade
 
-Sandshrew
-Level: 31
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Slugma
+Level: 24
+- Smog
+- Rock Throw
+- Ancient Power
 
-=== TRAINER_ANDRES_3 ===
-Name: ANDRES
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
+Slugma
+Level: 23
+- Harden
+- CLear Smog
+- Flame Burst
+
+=== TRAINER_SACHIKO ===
+Name: Sachiko
+Class: Old Lady
+Pic: Old Lady
+Gender: Female
+Music: Rich
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Nosepass
-Level: 33
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Shuckle
+Level: 24
+- Sticky Web
+- Wrap
+- Safeguard
+- Struggle Bug
 
-Sandshrew
-Level: 33
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Poltchageist
+Level: 23
+- Stun Spore
+- Withdraw
+- Mega Drain
 
-Sandshrew
-Level: 33
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-
-=== TRAINER_ANDRES_4 ===
-Name: ANDRES
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
-Battle Type: Singles
-AI: Check Bad Move
-
-Nosepass
-Level: 35
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-Sandshrew
-Level: 35
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-Sandshrew
-Level: 35
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-=== TRAINER_ANDRES_5 ===
-Name: ANDRES
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
-Battle Type: Singles
-AI: Check Bad Move
-
-Nosepass
-Level: 37
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-
-Sandslash
-Level: 37
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-
-Sandslash
-Level: 37
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Braixen
+- Howl
+- Psybeam
+- Flame Charge
 
 === TRAINER_CORY_2 ===
 Name: CORY

@@ -71,6 +71,13 @@ void ClearDailyFlags(void)
     memset(&gSaveBlock1Ptr->flags[DAILY_FLAGS_START / 8], 0, DAILY_FLAGS_SIZE);
 }
 
+#define DAILY_TRAINER_FLAGS_SIZE (NUM_DAILY_TRAINERS / 8)
+
+void ClearDailyTrainers(void)
+{
+    memset(&gSaveBlock1Ptr->flags[(TRAINER_FLAGS_START + DAILY_TRAINERS_START) / 8], 0, DAILY_TRAINER_FLAGS_SIZE);
+}
+
 void DisableNationalPokedex(void)
 {
     u16 *nationalDexVar = GetVarPointer(VAR_NATIONAL_DEX);
