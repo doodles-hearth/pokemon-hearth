@@ -421,7 +421,7 @@ static const u8 sFontColorTable[][3] = {
     [COLORID_POCKET_NAME] = {TEXT_COLOR_TRANSPARENT, 6, 2},
     [COLORID_GRAY_CURSOR] = {TEXT_COLOR_TRANSPARENT, 6, 2},
     [COLORID_UNUSED]      = {TEXT_COLOR_DARK_GRAY,   6, 2},
-    [COLORID_TMHM_INFO]   = {TEXT_COLOR_TRANSPARENT,  6, 2},
+    [COLORID_TMHM_INFO]   = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_5,  TEXT_DYNAMIC_COLOR_1}
 };
 
 static const struct WindowTemplate sDefaultBagWindows[] =
