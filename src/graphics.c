@@ -2090,6 +2090,18 @@ const u16 gMonIconPalettes[][16] =
     INCBIN_U16("graphics/pokemon/icon_palettes/pal5.gbapal"),
 };
 
+// Hearth title screen
+const u32 gHearthTitleScreenPokemonLogoGfx[]     = INCBIN_U32("graphics/title_screen/hearth/pokemon_logo-tiles.4bpp.smol");
+const u32 gHearthTitleScreenPokemonLogoTilemap[] = INCBIN_U32("graphics/title_screen/hearth/pokemon_logo-tiles.bin.smolTM");
+const u32 gHearthTitleScreenHearthGfx[]  = INCBIN_U32("graphics/title_screen/hearth/hearth.8bpp.smol");
+const u16 gHearthTitleScreenBgPokemonLogoPalette[] = INCBIN_U16("graphics/title_screen/hearth/pokemon_logo-tiles.gbapal");
+
+const u16 gHearthTitleScreenBgSkyPalette[]  = INCBIN_U16("graphics/title_screen/hearth/sky-tiles.gbapal");
+const u16 gHearthTitleScreenBgLandscapePalette[]  = INCBIN_U16("graphics/title_screen/hearth/landscape-tiles.gbapal");
+const u16 gHearthTitleScreenBgChimechoPalette[]  = INCBIN_U16("graphics/title_screen/hearth/landscape-tiles.gbapal");
+const u16 gHearthTitleScreenHearthPal[]  = INCBIN_U16("graphics/title_screen/hearth/hearth.gbapal");
+
+
 const u16 gTitleScreenBgPalettes[]         = INCBIN_U16("graphics/title_screen/pokemon_logo.gbapal",
                                                         "graphics/title_screen/rayquaza_and_clouds.gbapal");
 const u16 gTitleScreenEmeraldVersionPal[]  = INCBIN_U16("graphics/title_screen/emerald_version.gbapal");
