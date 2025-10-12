@@ -88,6 +88,157 @@ EventScript_LeaveCampfire::
 	return
 
 
+EventScript_PokemonGaveYouAnItem::
+	msgbox EventScript_PokemonGaveYouAnItem_Text_0, MSGBOX_DEFAULT
+	giveitem 0x1
+	release
+	end
+
+
+
+EventScript_CampfirePokemon1::
+    getcampfireaction 0
+    end
+
+EventScript_CampfirePokemon2::
+    getcampfireaction 1
+    end
+
+EventScript_CampfirePokemon3::
+    getcampfireaction 2
+    end
+
+EventScript_CampfirePokemon4::
+    getcampfireaction 3
+    end
+
+EventScript_CampfirePokemon5::
+    getcampfireaction 4
+    end
+
+EventScript_CampfirePokemon6::
+    getcampfireaction 5
+    end
+
+EventScript_CampfireGeneric::
+	faceplayer
+EventScript_CampfireGenericSkipFace:
+	waitfieldeffect FLDEFF_EMOTE
+	message 0x0
+	waitmessage
+	waitbuttonpress
+    closemessage
+	return 
+
+EventScript_CampfireFaceUp::
+	applymovement OBJ_EVENT_ID_FOLLOWER Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	goto EventScript_FollowerGenericSkipFace
+
+EventScript_CampfireIsShivering::
+	faceplayer
+	compare VAR_FACING, DIR_NORTH
+	call_if_eq ShiverVertical
+	compare VAR_FACING, DIR_SOUTH
+	call_if_eq ShiverVertical
+	compare VAR_FACING, DIR_WEST
+	call_if_eq ShiverHorizontal
+	compare VAR_FACING, DIR_EAST
+	call_if_eq ShiverHorizontal
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireNostalgia::
+	applymovement VAR_LAST_TALKED, FollowerNostalgiaMovement
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireHopping::
+	faceplayer
+	applymovement VAR_LAST_TALKED, FollowerSkippingMovement
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireCuddling:: @ similar to Std_MsgboxDefault
+	faceplayer
+	compare VAR_FACING, DIR_NORTH
+	call_if_eq CuddleS
+	compare VAR_FACING, DIR_SOUTH
+	call_if_eq CuddleN
+	compare VAR_FACING, DIR_WEST
+	call_if_eq CuddleE
+	compare VAR_FACING, DIR_EAST
+	call_if_eq CuddleW
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireGetCloser::
+	faceplayer
+	compare VAR_FACING, DIR_NORTH
+	call_if_eq CreepCloserS
+	compare VAR_FACING, DIR_SOUTH
+	call_if_eq CreepCloserN
+	compare VAR_FACING, DIR_WEST
+	call_if_eq CreepCloserE
+	compare VAR_FACING, DIR_EAST
+	call_if_eq CreepCloserW
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfirePokingPlayer::
+	faceplayer
+	compare VAR_FACING, DIR_NORTH
+	call_if_eq PokePlayerS
+	compare VAR_FACING, DIR_SOUTH
+	call_if_eq PokePlayerN
+	compare VAR_FACING, DIR_WEST
+	call_if_eq PokePlayerE
+	compare VAR_FACING, DIR_EAST
+	call_if_eq PokePlayerW
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireLookAround::
+	applymovement VAR_LAST_TALKED FollowerLookAround
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireLookAway::
+	applymovement OBJ_EVENT_ID_FOLLOWER FollowerLookAway
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	goto EventScript_FollowerGenericSkipFace
+
+EventScript_CampfireLookAwayBark::
+	applymovement VAR_LAST_TALKED FollowerLookAwayBark
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGenericSkipFace
+
+EventScript_CampfirePokeGround::
+	faceplayer
+	applymovement VAR_LAST_TALKED FollowerPokeGround
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireFastHopping::
+	applymovement VAR_LAST_TALKED FollowerHopFast
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGenericSkipFace
+
+EventScript_CampfireDizzy::
+	applymovement VAR_LAST_TALKED FollowerDizzy
+	waitmovement 0
+	goto EventScript_CampfireGenericSkipFace
+
+EventScript_CampfireDance::
+	faceplayer
+	applymovement VAR_LAST_TALKED FollowerDance
+	waitmovement 0
+	goto EventScript_CampfireGenericSkipFace
+
+EventScript_CampfireFaceResult:: @ Face towards direction in VAR_RESULT
+	switch VAR_RESULT
+	case DIR_SOUTH, EventScript_FollowerFaceDown
+	case DIR_NORTH, EventScript_FollowerFaceUp
+	case DIR_WEST, EventScript_FollowerFaceLeft
+	case DIR_EAST, EventScript_FollowerFaceRight
+	goto EventScript_CampfireGeneric
+
 EventScript_Campfire_Text_0:
 	.string "Rest at the campfire?$"
 
@@ -97,3 +248,6 @@ EventScript_Campfire_Text_1:
 EventScript_LeaveCampfire_Text_0:
 	.string "Your Pokémon are well-rested.\n"
 	.string "Time to go!$"
+
+EventScript_PokemonGaveYouAnItem_Text_0:
+	.string "{STR_VAR_1} handed you an item!$"

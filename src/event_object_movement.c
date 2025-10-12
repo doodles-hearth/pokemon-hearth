@@ -86,13 +86,6 @@ enum {
     JUMP_DISTANCE_FAR,
 };
 
-// Used for storing conditional emotes
-struct SpecialEmote
-{
-    u16 index;
-    u8 emotion;
-};
-
 // Sprite data used throughout
 #define sObjEventId   data[0]
 #define sTypeFuncId   data[1] // Index into corresponding gMovementTypeFuncs_* table
@@ -2356,7 +2349,7 @@ static bool8 SpeciesHasType(u16 species, u8 type)
 
 // Display an emote above an object event
 // Note that this is not a movement action
-static void ObjectEventEmote(struct ObjectEvent *objEvent, u8 emotion)
+void ObjectEventEmote(struct ObjectEvent *objEvent, u8 emotion)
 {
     emotion %= FOLLOWER_EMOTION_LENGTH;
     ObjectEventGetLocalIdAndMap(objEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);

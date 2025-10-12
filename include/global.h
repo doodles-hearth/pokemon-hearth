@@ -951,6 +951,7 @@ struct Campfire
 {
     u8 x;
     u8 y;
+    s8 scriptTargetMon;
 };
 
 struct TrainerNameRecord

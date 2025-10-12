@@ -208,7 +208,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GinkoWoods_EventScript_CampfirePokemon1",
+      "script": "EventScript_CampfirePokemon1",
       "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_1"
     },
     {
@@ -221,7 +221,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GinkoWoods_EventScript_CampfirePokemon2",
+      "script": "EventScript_CampfirePokemon2",
       "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_2"
     },
     {
@@ -234,7 +234,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GinkoWoods_EventScript_CampfirePokemon3",
+      "script": "EventScript_CampfirePokemon3",
       "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_3"
     },
     {
@@ -247,7 +247,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GinkoWoods_EventScript_CampfirePokemon4",
+      "script": "EventScript_CampfirePokemon4",
       "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_4"
     },
     {
@@ -260,7 +260,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GinkoWoods_EventScript_CampfirePokemon5",
+      "script": "EventScript_CampfirePokemon5",
       "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_5"
     },
     {
@@ -273,7 +273,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GinkoWoods_EventScript_CampfirePokemon6",
+      "script": "EventScript_CampfirePokemon6",
       "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_6"
     }
   ],

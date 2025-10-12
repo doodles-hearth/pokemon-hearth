@@ -2375,6 +2375,12 @@
 	callnative GetFollowerAction
 	.endm
 
+    @ Executes Campfire actions
+    .macro getcampfireaction partyIndex:req
+    callnative GetCampfireAction
+    .byte \partyIndex
+    .endm
+
 	@ Checks if Field move is being used by the current follower.
 	.macro isfollowerfieldmoveuser var:req
 	callnative IsFollowerFieldMoveUser, requests_effects=1

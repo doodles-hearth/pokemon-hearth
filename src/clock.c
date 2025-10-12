@@ -1,5 +1,6 @@
 #include "global.h"
 #include "clock.h"
+#include "campfire.h"
 #include "event_data.h"
 #include "rtc.h"
 #include "shiny_vial.h"
@@ -57,6 +58,7 @@ static void UpdatePerDay(struct Time *localTime)
         SetShoalItemFlag(daysSince);
         SetRandomLotteryNumber(daysSince);
         UpdateDaysPassedSinceFormChange(daysSince);
+        RollDailyCampfireEvents(daysSince);
         *days = localTime->days;
     }
 }

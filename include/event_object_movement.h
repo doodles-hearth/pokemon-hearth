@@ -107,6 +107,12 @@ struct LockedAnimObjectEvents
     u8 count;
 };
 
+struct SpecialEmote
+{
+    u16 index;
+    u8 emotion;
+};
+
 extern const struct OamData gObjectEventBaseOam_32x8;
 extern const struct OamData gObjectEventBaseOam_32x32;
 extern const struct OamData gObjectEventBaseOam_64x64;
@@ -507,6 +513,7 @@ u8 GetObjectEventIdByLocalId(u8 localId);
 bool32 IsFollowerVisible(void);
 
 struct FollowerMsgInfoExtended;
+void ObjectEventEmote(struct ObjectEvent *objEvent, u8 emotion);
 bool32 CheckMsgInfo(const struct FollowerMsgInfoExtended *info, struct Pokemon *mon, u32 species, struct ObjectEvent *obj);
 
 // run slow

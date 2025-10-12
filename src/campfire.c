@@ -1,4 +1,5 @@
 #include "global.h"
+#include "campfire.h"
 #include "data.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -20,16 +21,52 @@
 #include "constants/species.h"
 #include "constants/vars.h"
 
-// Used for storing conditional emotes
-struct SpecialEmote
+EWRAM_DATA const u8 *gSavedFollowerMessagePtr = NULL;
+const u8 EventScript_CampfireMessageNone[] = _("");
+
+struct CampfireDailyEvents
 {
-    u16 index;
+    s8 mapGroup;
+    s8 mapNum;
+    u16 campfireVar;
+};
+
+const struct CampfireDailyEvents sCampfireDailyEvents[CAMPFIRE_COUNT] =
+{
+    [CAMPFIRE_GINKO_WOODS] =
+    {
+        .mapGroup = MAP_GROUP(MAP_GINKO_WOODS),
+        .mapNum = MAP_NUM(MAP_GINKO_WOODS),
+        .campfireVar = VAR_GINKO_WOODS_CAMPFIRE,
+    },
+};
+
+struct CampfirePartyMonEvent
+{
+    const u8 *script;
     u8 emotion;
+    u16 item;
+};
+
+const struct CampfirePartyMonEvent sCampfirePartyMonEvents[CAMPFIRE_EVENT_COUNT] =
+{
+    [CAMPFIRE_EVENT_1] = 
+    {
+        .script = EventScript_PokemonGaveYouAnItem,
+        .emotion = MOVEMENT_ACTION_EMOTE_HEART,
+        .item = ITEM_HEART_SCALE,
+    },
+    [CAMPFIRE_EVENT_2] = 
+    {
+        .script = EventScript_PokemonGaveYouAnItem,
+        .emotion = MOVEMENT_ACTION_EMOTE_MUSIC,
+        .item = ITEM_THROAT_SPRAY,
+    }
 };
 
 static void TryShowPlayerPokemonAtCampfire(void);
-u8 GetCampfirePokemonLocalId(u8 campfireIndex);
-const u8 *GetRandomCampfireScriptForPokemon(struct Pokemon *mon, struct ObjectEvent *objEvent);
+static void GetLocationCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, u8 mapGroup, u8 mapNum);
+static void GetDailyCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, s32 friendship);
 static void TryRemoveCampfireObjects(void);
 
 /**
@@ -38,6 +75,42 @@ static void TryRemoveCampfireObjects(void);
 bool8 CampfireIsActive(void)
 {
     return !FlagGet(FLAG_HIDE_CAMPFIRE_PARTY_MON_1);
+}
+
+void RollDailyCampfireEvents(u16 days)
+{
+    u8 group, event;
+    u16 var = 0;
+
+    for (u32 i = 0; i < CAMPFIRE_COUNT; i++)
+    {
+        group = CAMPFIRE_EVENT_GROUP_PARTYMON;
+        event = 0;
+
+        var = (group << 8) | event;
+        VarSet(sCampfireDailyEvents[i].campfireVar, var);
+    }
+}
+
+u16 GetDailyCampfireEvent(u8 mapGroup, u8 mapNum)
+{
+    for (u32 i = 0; i < CAMPFIRE_COUNT; i++)
+    {
+        if (gSaveBlock1Ptr->location.mapGroup == sCampfireDailyEvents[i].mapGroup
+           && gSaveBlock1Ptr->location.mapNum == sCampfireDailyEvents[i].mapNum)
+           return VarGet(sCampfireDailyEvents[i].campfireVar);
+    }
+    return 0;
+}
+
+static void SetDailyCampfireEventDone(u8 mapGroup, u8 mapNum)
+{
+    for (u32 i = 0; i < CAMPFIRE_COUNT; i++)
+    {
+        if (gSaveBlock1Ptr->location.mapGroup == sCampfireDailyEvents[i].mapGroup
+           && gSaveBlock1Ptr->location.mapNum == sCampfireDailyEvents[i].mapNum)
+            VarSet(sCampfireDailyEvents[i].campfireVar, 0);
+    }
 }
 
 /**
@@ -58,6 +131,9 @@ void RestAtCampfire(void)
     u32 pX = gSaveBlock1Ptr->pos.x;
     u32 pY = gSaveBlock1Ptr->pos.y;
 
+    u16 campfireEvent;
+    u8 group, event;
+
     switch (gSpecialVar_Facing)
     {
     case DIR_EAST:
@@ -72,6 +148,14 @@ void RestAtCampfire(void)
         pY -= 1;
         break;
     }
+
+    campfireEvent = GetDailyCampfireEvent(mapGroup, mapNum);
+    group = (campfireEvent >> 8) & 0xFF;
+    event = campfireEvent & 0xFF;
+
+    gSaveBlock1Ptr->campfire.scriptTargetMon = -1;
+    if (group == CAMPFIRE_EVENT_GROUP_PARTYMON)
+        gSaveBlock1Ptr->campfire.scriptTargetMon = Random() % gPlayerPartyCount;
 
     SetWarpDestination(mapGroup, mapNum, warpId, pX, pY);
     DoDiveWarp();
@@ -94,12 +178,9 @@ static void TryShowPlayerPokemonAtCampfire(void)
     // Placing player's Pokémon in the field (VAR_OBJ_GFX_ID_A to F)
     for (s32 i = 0; i < PARTY_SIZE; i++)
     {
-        u8 localId;
-        const u8 *script;
         u32 specGfx;
         bool32 shiny;
         bool32 female;
-        struct ObjectEvent *pokemonObjEvent;
         GetMonInfo(&gPlayerParty[i], &specGfx, &shiny, &female);
 
         if (specGfx == SPECIES_NONE || specGfx == SPECIES_EGG)
@@ -116,41 +197,20 @@ static void TryShowPlayerPokemonAtCampfire(void)
             specGfx += OBJ_EVENT_MON_FEMALE;
         VarSet((VAR_OBJ_GFX_ID_A + i), (u16)specGfx);
         DebugPrintfLevel(MGBA_LOG_WARN, "loading Pokémon %d: %d", i, specGfx);
-
-        localId = GetCampfirePokemonLocalId(i);
-        if (localId)
-        {
-            pokemonObjEvent = &gObjectEvents[GetObjectEventIdByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup)];
-            script = GetRandomCampfireScriptForPokemon(&gPlayerParty[i], pokemonObjEvent);
-            if (script != EventScript_FollowerEnd)
-                OverrideObjectEventTemplateScript(pokemonObjEvent, script);
-        }
     }
 }
 
-u8 GetCampfirePokemonLocalId(u8 campfireIndex)
+void GetCampfireAction(struct ScriptContext *ctx)
 {
-    u8 i;
-
-    for (i = 0; i < gMapHeader.events->objectEventCount; i++)
-    {
-        if (gMapHeader.events->objectEvents[i].flagId == FLAG_HIDE_CAMPFIRE_PARTY_MON_1 + campfireIndex)
-        {
-            return gMapHeader.events->objectEvents[i].localId;
-        }
-    }
-
-    return 0;
-}
-
-const u8 *GetRandomCampfireScriptForPokemon(struct Pokemon *mon, struct ObjectEvent *objEvent)
-{
-    u32 species;
-    s32 multi;
+    u8 partyIndex = ScriptReadByte(ctx);
+    struct Pokemon *mon = &gPlayerParty[partyIndex];
+    struct ObjectEvent *objEvent = &gObjectEvents[GetObjectEventIdByLocalIdAndMap(gSpecialVar_LastTalked, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup)];
     struct SpecialEmote condEmotes[16] = {0};
-    const u8 *basicScript = EventScript_FollowerEnd;
-    u32 condCount = 0;
-    u32 emotion;
+    u32 i, j, emotion, condCount = 0;
+    bool32 pickedCondition = FALSE;
+
+    u32 species = GetMonData(mon, MON_DATA_SPECIES);
+    s32 multi = GetMonData(mon, MON_DATA_FRIENDSHIP);
     u8 emotion_weight[FOLLOWER_EMOTION_LENGTH] =
     {
         [FOLLOWER_EMOTION_HAPPY] = 10,
@@ -165,11 +225,11 @@ const u8 *GetRandomCampfireScriptForPokemon(struct Pokemon *mon, struct ObjectEv
         [FOLLOWER_EMOTION_MUSIC] = 15,
         [FOLLOWER_EMOTION_POISONED] = 0,
     };
-    u32 i, j;
-    bool32 pickedCondition = FALSE;
-    species = GetMonData(mon, MON_DATA_SPECIES);
-    multi = GetMonData(mon, MON_DATA_FRIENDSHIP);
+
     GetMonData(mon, MON_DATA_NICKNAME, gStringVar1);
+    if (partyIndex == gSaveBlock1Ptr->campfire.scriptTargetMon)
+        GetDailyCampfireAction(ctx, objEvent, multi);
+
     // Damn, guess your Pokémon really hates you huh
     if (multi < 80)
     {
@@ -215,12 +275,20 @@ const u8 *GetRandomCampfireScriptForPokemon(struct Pokemon *mon, struct ObjectEv
 
     // roll for basic/unconditional message
     multi = Random() % gFollowerBasicMessages[emotion].length;
+
+    // (20% chance) Select a location-based message
+    if (!(Random() % 4))
+    {
+        GetLocationCampfireAction(ctx, objEvent, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+    }
+
     // (50% chance) Select special condition using reservoir sampling
     for (i = (Random() & 1) ? condCount : 0, j = 1; i < condCount; i++)
     {
         if (condEmotes[i].emotion == emotion && (Random() < 0x10000 / (j++)))  // Replace each item with 1/j chance
-            multi = condEmotes[i].index;
+        multi = condEmotes[i].index;
     }
+
     // (50% chance) Match *scripted* conditional messages, from follower_helper.c
     for (i = (Random() & 1) ? COND_MSG_COUNT : 0, j = 1; i < COND_MSG_COUNT; i++)
     {
@@ -236,18 +304,52 @@ const u8 *GetRandomCampfireScriptForPokemon(struct Pokemon *mon, struct ObjectEv
         }
     }
 
-    // 50/50 whether to use a basic follower message, or the location based (default) script
-    if (Random() % 2)
-        basicScript = gFollowerBasicMessages[emotion].script;
-
     // condition message was chosen
     if (pickedCondition)
     {
         emotion = gFollowerConditionalMessages[multi].emotion;
-        return gFollowerConditionalMessages[multi].script ? gFollowerConditionalMessages[multi].script : basicScript;
+        ObjectEventEmote(objEvent, emotion);
+        ctx->data[0] = (u32)gFollowerConditionalMessages[multi].text;
+        // text choices are spread across array; pick a random one
+        if (gFollowerConditionalMessages[multi].textSpread)
+        {
+            for (i = 0; i < 4; i++)
+            {
+                if (!((u32*)gFollowerConditionalMessages[multi].text)[i])
+                    break;
+            }
+            ctx->data[0] = i ? ((u32*)gFollowerConditionalMessages[multi].text)[Random() % i] : 0;
+        }
+        ScriptCall(ctx, gFollowerConditionalMessages[multi].script ? gFollowerConditionalMessages[multi].campfireScript : gFollowerBasicMessages[emotion].campfireScript);
+        return;
     }
+
     // otherwise, a basic or C-based message was picked
-    return gFollowerBasicMessages[emotion].messages[multi].script ? gFollowerBasicMessages[emotion].messages[multi].script : basicScript;
+    ObjectEventEmote(objEvent, emotion);
+    ctx->data[0] = (u32)gFollowerBasicMessages[emotion].messages[multi].text; // Load message text
+    ScriptCall(ctx, gFollowerBasicMessages[emotion].messages[multi].campfireScript ?
+                        gFollowerBasicMessages[emotion].messages[multi].campfireScript :
+                        gFollowerBasicMessages[emotion].campfireScript);
+}
+
+static void GetLocationCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, u8 mapGroup, u8 mapNum)
+{
+
+}
+
+static void GetDailyCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, s32 friendship)
+{
+    u8 random = Random() % CAMPFIRE_EVENT_COUNT;
+    const u8 *script = sCampfirePartyMonEvents[random].script;
+    u8 emotion = sCampfirePartyMonEvents[random].emotion;
+    u16 item = sCampfirePartyMonEvents[random].item;
+
+    gSaveBlock1Ptr->campfire.scriptTargetMon = -1;
+    SetDailyCampfireEventDone(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+
+    ObjectEventEmote(objEvent, emotion);
+    ctx->data[1] = (u32)item;
+    ScriptCall(ctx, script);
 }
 
 bool8 MovedTooFarFromCampfire(u16 x, u16 y)
@@ -277,6 +379,7 @@ void LeaveCampfire(void)
     // Erase campfire coords
     gSaveBlock1Ptr->campfire.x = 0;
     gSaveBlock1Ptr->campfire.y = 0;
+    gSaveBlock1Ptr->campfire.scriptTargetMon = -1;
     
     TryRemoveCampfireObjects();
 }

@@ -136,54 +136,6 @@ GinkoWoods_EventScript_TrainerTips2::
 	return
 
 
-GinkoWoods_EventScript_CampfirePokemon1::
-	lock
-	faceplayer
-	msgbox GinkoWoods_EventScript_CampfirePokemon1_Text_0
-	release
-	end
-
-
-GinkoWoods_EventScript_CampfirePokemon2::
-	lock
-	faceplayer
-	msgbox GinkoWoods_EventScript_CampfirePokemon2_Text_0
-	release
-	end
-
-
-GinkoWoods_EventScript_CampfirePokemon3::
-	lock
-	faceplayer
-	msgbox GinkoWoods_EventScript_CampfirePokemon3_Text_0
-	release
-	end
-
-
-GinkoWoods_EventScript_CampfirePokemon4::
-	lock
-	faceplayer
-	msgbox GinkoWoods_EventScript_CampfirePokemon4_Text_0
-	release
-	end
-
-
-GinkoWoods_EventScript_CampfirePokemon5::
-	lock
-	faceplayer
-	msgbox GinkoWoods_EventScript_CampfirePokemon5_Text_0
-	release
-	end
-
-
-GinkoWoods_EventScript_CampfirePokemon6::
-	lock
-	faceplayer
-	msgbox GinkoWoods_EventScript_CampfirePokemon6_Text_0
-	release
-	end
-
-
 GinkoWoods_EventScript_OldMan_Movement_0:
 	emote_pensive
 	step_end
@@ -339,21 +291,3 @@ GinkoWoods_EventScript_TrainerTips2_Text_0:
 	.string "Did you know?\p"
 	.string "You can sort the contents of your\n"
 	.string "bag by pressing {START_BUTTON}.$"
-
-GinkoWoods_EventScript_CampfirePokemon1_Text_0:
-	.string "Script1$"
-
-GinkoWoods_EventScript_CampfirePokemon2_Text_0:
-	.string "Script2$"
-
-GinkoWoods_EventScript_CampfirePokemon3_Text_0:
-	.string "Script3$"
-
-GinkoWoods_EventScript_CampfirePokemon4_Text_0:
-	.string "Script4$"
-
-GinkoWoods_EventScript_CampfirePokemon5_Text_0:
-	.string "Script5$"
-
-GinkoWoods_EventScript_CampfirePokemon6_Text_0:
-	.string "Script6$"
