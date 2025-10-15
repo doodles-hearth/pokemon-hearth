@@ -52,8 +52,8 @@ YifuCity_Refuge_2F_EventScript_NumelTrade::
 	copyvar VAR_0x8004, VAR_0x8008
 	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
 	copyvar VAR_0x8009, VAR_RESULT
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
-	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2, MSGBOX_YESNO
+	setspeaker SP_NAME_GIRL
+	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_1, MSGBOX_YESNO
 	compare VAR_RESULT, NO
 	goto_if_eq YifuCity_Refuge_2F_EventScript_NumelTrade_5
 	compare VAR_RESULT, MULTI_B_PRESSED
@@ -77,35 +77,35 @@ YifuCity_Refuge_2F_EventScript_NumelTrade::
 	waitstate
 	addobject LOCALID_TRADE_HERACROSS
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0
-	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_5, MSGBOX_DEFAULT
+	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_4, MSGBOX_DEFAULT
 	closemessage
 YifuCity_Refuge_2F_EventScript_NumelTrade_1:
 	release
 	return
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_2:
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
-	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_1
+	setspeaker SP_NAME_GIRL
+	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_5:
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
-	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3
+	setspeaker SP_NAME_GIRL
+	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_10:
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
-	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3
+	setspeaker SP_NAME_GIRL
+	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_13:
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
-	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_4
+	setspeaker SP_NAME_GIRL
+	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
@@ -137,8 +137,8 @@ YifuCity_Refuge_2F_EventScript_Heracross::
 YifuCity_Refuge_2F_EventScript_TravelingMerchant::
 	lock
 	faceplayer
-	speakername YifuCity_Refuge_2F_EventScript_TravelingMerchant_Text_0
-	msgbox YifuCity_Refuge_2F_EventScript_TravelingMerchant_Text_1
+	setspeaker SP_NAME_OKADA
+	msgbox YifuCity_Refuge_2F_EventScript_TravelingMerchant_Text_0
 	closemessage
 	release
 	return
@@ -147,8 +147,8 @@ YifuCity_Refuge_2F_EventScript_TravelingMerchant::
 YifuCity_Refuge_2F_EventScript_Tourist::
 	lock
 	faceplayer
-	speakername YifuCity_Refuge_2F_EventScript_Tourist_Text_0
-	msgbox YifuCity_Refuge_2F_EventScript_Tourist_Text_1
+	setspeaker SP_NAME_WOMAN
+	msgbox YifuCity_Refuge_2F_EventScript_Tourist_Text_0
 	closemessage
 	release
 	return
@@ -157,8 +157,8 @@ YifuCity_Refuge_2F_EventScript_Tourist::
 YifuCity_Refuge_2F_EventScript_TouristKid::
 	lock
 	faceplayer
-	speakername YifuCity_Refuge_2F_EventScript_TouristKid_Text_0
-	msgbox YifuCity_Refuge_2F_EventScript_TouristKid_Text_1
+	setspeaker SP_NAME_LITTLE_BOY
+	msgbox YifuCity_Refuge_2F_EventScript_TouristKid_Text_0
 	closemessage
 	release
 	return
@@ -168,7 +168,7 @@ YifuCity_Refuge_2F_EventScript_TouristGirl::
 	lock
 	faceplayer
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_TouristGirl_Movement_0
-	speakername YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0
+	setspeaker SP_NAME_GIRL
 	msgbox YifuCity_Refuge_2F_EventScript_TouristGirl_Text_0
 	closemessage
 	release
@@ -209,12 +209,9 @@ YifuCity_Refuge_2F_EventScript_Sleep_Text_3:
 	.string "I'm not tired.$"
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0:
-	.string "Girl$"
-
-YifuCity_Refuge_2F_EventScript_NumelTrade_Text_1:
 	.string "Heracross is so fascinating!$"
 
-YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2:
+YifuCity_Refuge_2F_EventScript_NumelTrade_Text_1:
 	.string "A visitor, hi, pleased to meet you!!\p"
 	.string "You have such pretty Pokémon!\n"
 	.string "I brought a Numel from my home, hoping\l"
@@ -222,15 +219,15 @@ YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2:
 	.string "What do you say? Want to trade a\n"
 	.string "Heracross for my Numel?$"
 
-YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3:
+YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2:
 	.string "It's okay. I'll hang out with my Numel\n"
 	.string "for a while!$"
 
-YifuCity_Refuge_2F_EventScript_NumelTrade_Text_4:
+YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3:
 	.string "I'm sure your Pokémon is very nice,\n"
 	.string "but I'm looking for a Heracross!$"
 
-YifuCity_Refuge_2F_EventScript_NumelTrade_Text_5:
+YifuCity_Refuge_2F_EventScript_NumelTrade_Text_4:
 	.string "Woah!\n"
 	.string "It's bigger than I thought! Amazing!!\p"
 	.string "Please, take good care of my girl Luo\n"
@@ -243,9 +240,6 @@ YifuCity_Refuge_2F_EventScript_Heracross_Text_0:
 	.string "Aaay!$"
 
 YifuCity_Refuge_2F_EventScript_TravelingMerchant_Text_0:
-	.string "Okada$"
-
-YifuCity_Refuge_2F_EventScript_TravelingMerchant_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Oh, good evening, {PLAYER}! I'm\n"
 	.string "exhausted! I've been walking since\l"
 	.string "morning, I'm calling it a day.\p"
@@ -253,16 +247,10 @@ YifuCity_Refuge_2F_EventScript_TravelingMerchant_Text_1:
 	.string "sleep!$"
 
 YifuCity_Refuge_2F_EventScript_Tourist_Text_0:
-	.string "Woman$"
-
-YifuCity_Refuge_2F_EventScript_Tourist_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 EMOTE_NORMAL}I'm so glad we're able to spend our\n"
 	.string "vacation here.$"
 
 YifuCity_Refuge_2F_EventScript_TouristKid_Text_0:
-	.string "Little Boy$"
-
-YifuCity_Refuge_2F_EventScript_TouristKid_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY EMOTE_NORMAL}We went to see the Dojo's dancers\n"
 	.string "today!$"
 

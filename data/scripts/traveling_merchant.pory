@@ -6,7 +6,7 @@ script TravelingMerchant_EventScript_Keke {
 	playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
 
 	if (flag(FLAG_MET_TRAVELING_MERCHANT)) {
-		speakername("Keke")
+		setspeaker(SP_NAME_OKADAS_KECLEON)
 	} else {
 		setspeakertomonname(SPECIES_KECLEON)
 	}

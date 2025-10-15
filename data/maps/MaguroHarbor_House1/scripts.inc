@@ -6,12 +6,12 @@ MaguroHarbor_House1_EventScript_PokedexRiddler::
 	lock
 	faceplayer
 	goto_if_set FLAG_DAILY_MON_DEX_RIDDLE, MaguroHarbor_House1_EventScript_PokedexRiddler_2
-	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
-	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_2
+	setspeaker SP_NAME_PKMN_NERD
+	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_1
 	closemessage
 	randomdexmsgbox
-	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
-	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_3
+	setspeaker SP_NAME_PKMN_NERD
+	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_2
 	closemessage
 	special EnterDexRiddleGuess
 	waitstate
@@ -19,16 +19,16 @@ MaguroHarbor_House1_EventScript_PokedexRiddler::
 	compare VAR_RESULT, 1
 	goto_if_eq MaguroHarbor_House1_EventScript_PokedexRiddler_5
 	applymovement VAR_LAST_TALKED, MaguroHarbor_House1_EventScript_PokedexRiddler_Movement_1
-	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
-	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_5
+	setspeaker SP_NAME_PKMN_NERD
+	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4
 MaguroHarbor_House1_EventScript_PokedexRiddler_4:
 	setflag FLAG_DAILY_MON_DEX_RIDDLE
 	release
 	end
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_2:
-	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
-	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_1
+	setspeaker SP_NAME_PKMN_NERD
+	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
 	closemessage
 	release
 	end
@@ -38,8 +38,8 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_5:
 	applymovement LOCALID_MAGURO_NERD, MaguroHarbor_House1_EventScript_PokedexRiddler_Movement_0
 	waitse
 	waitmovement 0
-	speakername MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0
-	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4
+	setspeaker SP_NAME_PKMN_NERD
+	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_3
 	closemessage
 	setflag FLAG_DAILY_MON_DEX_RIDDLE_WON
 	goto MaguroHarbor_House1_EventScript_PokedexRiddler_4
@@ -77,13 +77,10 @@ MaguroHarbor_House1_EventScript_Clefairy_Movement_0:
 	step_end
 
 MaguroHarbor_House1_EventScript_PokedexRiddler_Text_0:
-	.string "Pokémon Nerd$"
-
-MaguroHarbor_House1_EventScript_PokedexRiddler_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Come back tomorrow for more Pokémon\n"
 	.string "riddles… Hehe…$"
 
-MaguroHarbor_House1_EventScript_PokedexRiddler_Text_2:
+MaguroHarbor_House1_EventScript_PokedexRiddler_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Hehe… Hullo, kid…\n"
 	.string "They call me the Pokémon Nerd.\p"
 	.string "(They're just jealous…)\p"
@@ -94,10 +91,10 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_Text_2:
 	.string "Hehe… Think you can solve my riddle?\n"
 	.string "Ahem…$"
 
-MaguroHarbor_House1_EventScript_PokedexRiddler_Text_3:
+MaguroHarbor_House1_EventScript_PokedexRiddler_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Well? What Pokémon am I talking about?$"
 
-MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4:
+MaguroHarbor_House1_EventScript_PokedexRiddler_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Woah, you… You solved my riddle!\p"
 	.string "Could you… be a true Pokémon Nerd?\p"
 	.string "You have bested me today. Feel the\n"
@@ -109,7 +106,7 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4:
 	.string "Come back another time for another\n"
 	.string "riddle…$"
 
-MaguroHarbor_House1_EventScript_PokedexRiddler_Text_5:
+MaguroHarbor_House1_EventScript_PokedexRiddler_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Wrong, wrong, WRONG!\n"
 	.string "You are wrong!\p"
 	.string "I'm honestly disappointed.\p"

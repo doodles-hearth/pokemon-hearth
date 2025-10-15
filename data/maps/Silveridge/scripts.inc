@@ -39,8 +39,8 @@ Silveridge_DrawMetatiles_2:
 Silveridge_EventScript_LotOfRocks::
 	lock
 	faceplayer
-	speakername Silveridge_EventScript_LotOfRocks_Text_0
-	msgbox Silveridge_EventScript_LotOfRocks_Text_1
+	setspeaker SP_NAME_GUY
+	msgbox Silveridge_EventScript_LotOfRocks_Text_0
 	release
 	return
 
@@ -48,8 +48,8 @@ Silveridge_EventScript_LotOfRocks::
 Silveridge_EventScript_HousesMadeOfSilverTunnelStone::
 	lock
 	faceplayer
-	speakername Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0
-	msgbox Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_1
+	setspeaker SP_NAME_WOMAN
+	msgbox Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0
 	release
 	return
 
@@ -57,8 +57,8 @@ Silveridge_EventScript_HousesMadeOfSilverTunnelStone::
 Silveridge_EventScript_MissingStatue::
 	lock
 	faceplayer
-	speakername Silveridge_EventScript_MissingStatue_Text_0
-	msgbox Silveridge_EventScript_MissingStatue_Text_1
+	setspeaker SP_NAME_MAN
+	msgbox Silveridge_EventScript_MissingStatue_Text_0
 	release
 	return
 
@@ -66,8 +66,8 @@ Silveridge_EventScript_MissingStatue::
 Silveridge_EventScript_Wildflowers::
 	lock
 	faceplayer
-	speakername Silveridge_EventScript_Wildflowers_Text_0
-	msgbox Silveridge_EventScript_Wildflowers_Text_1
+	setspeaker SP_NAME_BOY
+	msgbox Silveridge_EventScript_Wildflowers_Text_0
 	release
 	return
 
@@ -75,12 +75,12 @@ Silveridge_EventScript_Wildflowers::
 Silveridge_EventScript_Mart::
 	lock
 	faceplayer
-	speakername Silveridge_EventScript_Mart_Text_0
-	message Silveridge_EventScript_Mart_Text_1
+	setspeaker SP_NAME_SHOPKEEPER
+	message Silveridge_EventScript_Mart_Text_0
 	waitmessage
 	pokemart Silveridge_Mart
-	speakername Silveridge_EventScript_Mart_Text_0
-	msgbox Silveridge_EventScript_Mart_Text_2, MSGBOX_DEFAULT
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox Silveridge_EventScript_Mart_Text_1, MSGBOX_DEFAULT
 	release
 	return
 
@@ -117,9 +117,6 @@ Silveridge_EventScript_EldersHouseSign::
 
 
 Silveridge_EventScript_LotOfRocks_Text_0:
-	.string "Guy$"
-
-Silveridge_EventScript_LotOfRocks_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_FAT_GUY EMOTE_NORMAL}We don't have a lot of natural\n"
 	.string "resources here in Silveridge.\p"
 	.string "We don't have a lot of wood…\p"
@@ -130,18 +127,12 @@ Silveridge_EventScript_LotOfRocks_Text_1:
 	.string "rocks. We have a LOT of rocks.$"
 
 Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_0:
-	.string "Woman$"
-
-Silveridge_EventScript_HousesMadeOfSilverTunnelStone_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}See the houses around here? They\n"
 	.string "were all built using the stones\l"
 	.string "leftover from digging the Silver\l"
 	.string "tunnel.$"
 
 Silveridge_EventScript_MissingStatue_Text_0:
-	.string "Man$"
-
-Silveridge_EventScript_MissingStatue_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_2 EMOTE_NORMAL}Hello, traveler. Have you looked at\n"
 	.string "this stunning statue that makes the\l"
 	.string "pride of our town?\p"
@@ -156,9 +147,6 @@ Silveridge_EventScript_MissingStatue_Text_1:
 	.string "forever.$"
 
 Silveridge_EventScript_Wildflowers_Text_0:
-	.string "Boy$"
-
-Silveridge_EventScript_Wildflowers_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_BOY_2 EMOTE_NORMAL}I loved gardening back when I lived on\n"
 	.string "Havenisle.\p"
 	.string "When I first moved here, the barren\n"
@@ -174,13 +162,10 @@ Silveridge_EventScript_Wildflowers_Text_1:
 	.string "flowers there are so colorful!$"
 
 Silveridge_EventScript_Mart_Text_0:
-	.string "Shopkeeper$"
-
-Silveridge_EventScript_Mart_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Welcome to Silveridge's market!\n"
 	.string "Sorry, we're fresh out of rocks!$"
 
-Silveridge_EventScript_Mart_Text_2:
+Silveridge_EventScript_Mart_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}I hope you found what you were\n"
 	.string "looking for!$"
 

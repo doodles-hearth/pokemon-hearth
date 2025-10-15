@@ -5,7 +5,7 @@ mapscripts YifuCity_House1_1F_MapScripts {
 script YifuCity_House1_1F_EventScript_Dad {
 	lock
 	faceplayer
-	speakername("Man")
+	setspeaker(SP_NAME_MAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Our kids are constantly yelling and running and bickering…\p"
 		"I can't ever get anything done!"
@@ -17,7 +17,7 @@ script YifuCity_House1_1F_EventScript_Dad {
 script YifuCity_House1_1F_EventScript_Mom {
 	lock
 	faceplayer
-	speakername("Woman")
+	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 EMOTE_NORMAL}I bought the children two different dolls at the festival in Hanabi City…\p"
 		"But now they're fighting over who has which!\p"

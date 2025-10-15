@@ -234,6 +234,7 @@
 #define EXT_CTRL_CODE_RESUME_MUSIC           0x18
 #define EXT_CTRL_CODE_CREATE_MUGSHOT         0x19
 #define EXT_CTRL_CODE_DESTROY_MUGSHOT        0x1A
+#define EXT_CTRL_CODE_SPEAKER                0x1B
 
 #define TEXT_COLOR_TRANSPARENT  0x0
 #define TEXT_COLOR_WHITE        0x1
@@ -251,6 +252,7 @@
 #define TEXT_DYNAMIC_COLOR_4    0xD // Usually aquamarine
 #define TEXT_DYNAMIC_COLOR_5    0xE // Usually blue-green
 #define TEXT_DYNAMIC_COLOR_6    0xF // Usually cerulean
+#define BG_COLOR_HEARTH_BEIGE   0xF
 
 #define PLACEHOLDER_ID_UNKNOWN       0x0
 #define PLACEHOLDER_ID_PLAYER        0x1

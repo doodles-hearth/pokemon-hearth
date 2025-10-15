@@ -5,8 +5,8 @@ YifuCity_House3_MapScripts::
 YifuCity_House3_EggGirlsMom::
 	lock
 	faceplayer
-	speakername YifuCity_House3_EggGirlsMom_Text_0
-	msgbox YifuCity_House3_EggGirlsMom_Text_1
+	setspeaker SP_NAME_WOMAN
+	msgbox YifuCity_House3_EggGirlsMom_Text_0
 	release
 	return
 
@@ -29,8 +29,8 @@ YifuCity_House3_EventScript_EggGirl::
 	compare VAR_EGG_SPECIES_GIVEN_TO_EGG_GIRL, SPECIES_NONE
 	goto_if_eq YifuCity_House3_EventScript_EggGirl_2
 	applymovement VAR_LAST_TALKED, YifuCity_House3_EventScript_EggGirl_Movement_0
-	speakername YifuCity_House3_EventScript_EggGirl_Text_0
-	msgbox YifuCity_House3_EventScript_EggGirl_Text_1
+	setspeaker SP_NAME_LITTLE_GIRL
+	msgbox YifuCity_House3_EventScript_EggGirl_Text_0
 YifuCity_House3_EventScript_EggGirl_1:
 	release
 	return
@@ -41,7 +41,7 @@ YifuCity_House3_EventScript_EggGirl_2:
 
 
 YifuCity_House3_NotTradedYet::
-	speakername YifuCity_House3_EventScript_EggGirl_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	special GetPlayerSirMissString
 	applymovement VAR_LAST_TALKED, YifuCity_House3_EventScript_EggGirl_Movement_0
 	msgbox YifuCity_House3_NotTradedYet_Text_0
@@ -64,23 +64,23 @@ YifuCity_House3_NotTradedYet_7:
 
 YifuCity_House3_NotTradedYet_3:
 	applymovement VAR_LAST_TALKED, YifuCity_House3_EventScript_EggGirl_Movement_0
-	speakername YifuCity_House3_EventScript_EggGirl_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox YifuCity_House3_NotTradedYet_Text_5
 	goto YifuCity_House3_NotTradedYet_1
 
 YifuCity_House3_NotTradedYet_4:
-	speakername YifuCity_House3_EventScript_EggGirl_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox YifuCity_House3_NotTradedYet_Text_6
 	goto YifuCity_House3_NotTradedYet_1
 
 YifuCity_House3_NotTradedYet_5:
-	speakername YifuCity_House3_EventScript_EggGirl_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox YifuCity_House3_NotTradedYet_Text_7
 	release
 	end
 
 YifuCity_House3_NotTradedYet_6:
-	speakername YifuCity_House3_EventScript_EggGirl_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox YifuCity_House3_NotTradedYet_Text_8
 	goto YifuCity_House3_NotTradedYet_1
 
@@ -90,7 +90,7 @@ YifuCity_House3_NotTradedYet_9:
 
 YifuCity_House3_NotTradedYet_10:
 	applymovement VAR_LAST_TALKED, YifuCity_House3_NotTradedYet_Movement_0
-	speakername YifuCity_House3_EventScript_EggGirl_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox YifuCity_House3_NotTradedYet_Text_7
 	goto YifuCity_House3_NotTradedYet_7
 
@@ -104,13 +104,13 @@ YifuCity_House3_TradeEgg::
 	compare VAR_RESULT, 0
 	goto_if_ne YifuCity_House3_TradeEgg_4
 	applymovement VAR_LAST_TALKED, YifuCity_House3_EventScript_EggGirl_Movement_0
-	speakername YifuCity_House3_EventScript_EggGirl_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox YifuCity_House3_TradeEgg_Text_3
 	closemessage
 	return
 
 YifuCity_House3_TradeEgg_1:
-	speakername YifuCity_House3_EventScript_EggGirl_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox YifuCity_House3_TradeEgg_Text_0
 	closemessage
 	return
@@ -124,7 +124,7 @@ YifuCity_House3_TradeEgg_4:
 	waitmessage
 	waitfanfare
 	applymovement VAR_LAST_TALKED, YifuCity_House3_EventScript_EggGirl_Movement_0
-	speakername YifuCity_House3_EventScript_EggGirl_Text_0
+	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox YifuCity_House3_TradeEgg_Text_2
 	closemessage
 	return
@@ -139,9 +139,6 @@ YifuCity_House3_NotTradedYet_Movement_0:
 	step_end
 
 YifuCity_House3_EggGirlsMom_Text_0:
-	.string "Woman$"
-
-YifuCity_House3_EggGirlsMom_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}I help out at the Pokémon daycare\n"
 	.string "west of Windycape on tuesdays.\l"
 	.string "Sometimes they'll let me bring back an\l"
@@ -151,9 +148,6 @@ YifuCity_House3_EventScript_Togepi_Text_0:
 	.string "Preee!$"
 
 YifuCity_House3_EventScript_EggGirl_Text_0:
-	.string "Little girl$"
-
-YifuCity_House3_EventScript_EggGirl_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Can't wait for my egg to hatch!$"
 
 YifuCity_House3_NotTradedYet_Text_0:

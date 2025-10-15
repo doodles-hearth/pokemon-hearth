@@ -2,20 +2,20 @@ YifuCity_EventScript_WhirlpoolTutor::
 	lock
 	faceplayer
 	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL, YifuCity_EventScript_WhirlpoolTutor_1
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
-	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_4
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_EventScript_WhirlpoolTutor_Text_5, YifuCity_EventScript_WhirlpoolTutor_Text_6
+	setspeaker SP_NAME_FISHERMAN
+	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_3
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_EventScript_WhirlpoolTutor_Text_4, YifuCity_EventScript_WhirlpoolTutor_Text_5
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq YifuCity_EventScript_WhirlpoolTutor_6
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
-	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_7
+	setspeaker SP_NAME_FISHERMAN
+	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_6
 	closemessage
 	return
 
 YifuCity_EventScript_WhirlpoolTutor_1:
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
-	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_1
+	setspeaker SP_NAME_FISHERMAN
+	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_0
 	closemessage
 	checkitem ITEM_HEART_SCALE
 	compare VAR_RESULT, 0
@@ -23,7 +23,7 @@ YifuCity_EventScript_WhirlpoolTutor_1:
 	return
 
 YifuCity_EventScript_WhirlpoolTutor_4:
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_EventScript_WhirlpoolTutor_Text_2, YifuCity_EventScript_WhirlpoolTutor_Text_3
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_EventScript_WhirlpoolTutor_Text_1, YifuCity_EventScript_WhirlpoolTutor_Text_2
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq YifuCity_EventScript_WhirlpoolTutor_9
@@ -39,7 +39,7 @@ YifuCity_EventScript_WhirlpoolTutor_9:
 
 
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool::
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
+	setspeaker SP_NAME_FISHERMAN
 	msgbox YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_0
 	setvar VAR_0x8005, MOVE_WHIRLPOOL
 	call MoveTutor_EventScript_OpenPartyMenu
@@ -47,7 +47,7 @@ YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool::
 	goto_if_eq YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_2
 	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL, YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_5
 	setflag FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
+	setspeaker SP_NAME_FISHERMAN
 	msgbox YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_2
 	closemessage
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_1:
@@ -55,13 +55,13 @@ YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_1:
 	return
 
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_2:
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
-	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_7
+	setspeaker SP_NAME_FISHERMAN
+	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_6
 	closemessage
 	goto YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_1
 
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_5:
-	speakername YifuCity_EventScript_WhirlpoolTutor_Text_0
+	setspeaker SP_NAME_FISHERMAN
 	msgbox YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_1
 	closemessage
 	removeitem ITEM_HEART_SCALE
@@ -341,9 +341,6 @@ MoveTutor_EventScript_CanOnlyBeLearnedOnce::
 	return
 
 YifuCity_EventScript_WhirlpoolTutor_Text_0:
-	.string "Fisherman$"
-
-YifuCity_EventScript_WhirlpoolTutor_Text_1:
 	.string "Hm? I can teach Whirlpool to your\n"
 	.string "Pokémon again, but you have to make\l"
 	.string "it worth my while, alright?\p"
@@ -351,13 +348,13 @@ YifuCity_EventScript_WhirlpoolTutor_Text_1:
 	.string "remind me of the sea. I'll do it in\l"
 	.string "exchange for one!$"
 
-YifuCity_EventScript_WhirlpoolTutor_Text_2:
+YifuCity_EventScript_WhirlpoolTutor_Text_1:
 	.string "Give Heart Scale$"
 
-YifuCity_EventScript_WhirlpoolTutor_Text_3:
+YifuCity_EventScript_WhirlpoolTutor_Text_2:
 	.string "Don't give$"
 
-YifuCity_EventScript_WhirlpoolTutor_Text_4:
+YifuCity_EventScript_WhirlpoolTutor_Text_3:
 	.string "Hm? No, I'm not fishing.\p"
 	.string "I'm just watching the tiny whirlpools\n"
 	.string "that Pokémon make in the shallow\l"
@@ -367,13 +364,13 @@ YifuCity_EventScript_WhirlpoolTutor_Text_4:
 	.string "I could teach them the way of the\n"
 	.string "Whirlpool!$"
 
-YifuCity_EventScript_WhirlpoolTutor_Text_5:
+YifuCity_EventScript_WhirlpoolTutor_Text_4:
 	.string "Teach me the way!$"
 
-YifuCity_EventScript_WhirlpoolTutor_Text_6:
+YifuCity_EventScript_WhirlpoolTutor_Text_5:
 	.string "Maybe later.$"
 
-YifuCity_EventScript_WhirlpoolTutor_Text_7:
+YifuCity_EventScript_WhirlpoolTutor_Text_6:
 	.string "I see. The way of the Whirlpool hasn't\n"
 	.string "made it into your heart yet.\p"
 	.string "That's okay!$"

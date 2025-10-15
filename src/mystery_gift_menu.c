@@ -17,6 +17,7 @@
 #include "mystery_gift_menu.h"
 #include "union_room.h"
 #include "title_screen.h"
+#include "title_screen_hearth.h"
 #include "ereader_screen.h"
 #include "international_string_util.h"
 #include "list_menu.h"
@@ -479,7 +480,7 @@ void MainCB_FreeAllBuffersAndReturnToInitTitleScreen(void)
     Free(GetBgTilemapBuffer(1));
     Free(GetBgTilemapBuffer(2));
     Free(GetBgTilemapBuffer(3));
-    SetMainCallback2(CB2_InitTitleScreen);
+    SetMainCallback2(CB2_InitHearthTitleScreen);
 }
 
 // Print the text window at the top of the screen with the title and control instructions

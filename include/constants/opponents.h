@@ -7,7 +7,7 @@
 #define TRAINER_SAWYER_1                      1
 #define TRAINER_TOSHIKI                       2
 #define TRAINER_KOUTA                         3
-#define TRAINER_MASATO          4
+#define TRAINER_MASATO_1          4
 #define TRAINER_KOUGA          5
 #define TRAINER_KENTO       6
 #define TRAINER_SHUYA       7
@@ -43,7 +43,7 @@
 #define TRAINER_ROSE_1                       37
 #define TRAINER_RIKU                         38
 #define TRAINER_TOMOMI                       39
-#define TRAINER_ROSE_2                       40
+#define TRAINER_MASATO_2                       40
 #define TRAINER_ROSE_3                       41
 #define TRAINER_ROSE_4                       42
 #define TRAINER_ROSE_5                       43
@@ -139,7 +139,7 @@
 #define TRAINER_JESSICA_3                   133
 #define TRAINER_JESSICA_4                   134
 #define TRAINER_JESSICA_5                   135
-#define TRAINER_KIN_1                       136
+#define TRAINER_KIN                       136
 #define TRAINER_MOLLIE                      137
 #define TRAINER_GARRET                      138
 #define TRAINER_WINSTON_2                   139
@@ -331,10 +331,10 @@
 #define TRAINER_KATELYNN                    325
 #define TRAINER_JAYLEN                      326
 #define TRAINER_DILLON                      327
-#define TRAINER_CALVIN_2                    328
-#define TRAINER_CALVIN_3                    329
-#define TRAINER_CALVIN_4                    330
-#define TRAINER_CALVIN_5                    331
+#define TRAINER_TOSHIO_2                    328
+#define TRAINER_TOSHIO_3                    329
+#define TRAINER_TOSHIO_4                    330
+#define TRAINER_TOSHIO_5                    331
 #define TRAINER_EDDIE                       332
 #define TRAINER_KARU                        333
 #define TRAINER_TIMMY                       334
@@ -815,10 +815,12 @@
 #define TRAINER_NOLAND                      809
 #define TRAINER_LUCY                        810
 #define TRAINER_BRANDON                     811
-#define TRAINER_ANDRES_2                    812
-#define TRAINER_ANDRES_3                    813
-#define TRAINER_ANDRES_4                    814
-#define TRAINER_ANDRES_5                    815
+
+// Daily trainers
+#define TRAINER_WAKAE                       812
+#define TRAINER_FUTOSHI                     813
+#define TRAINER_LIHUO                       814
+#define TRAINER_SACHIKO                     815
 #define TRAINER_CORY_2                      816
 #define TRAINER_CORY_3                      817
 #define TRAINER_CORY_4                      818
@@ -858,6 +860,11 @@
 #define TRAINER_LEAF                        852
 #define TRAINER_BRENDAN_PLACEHOLDER         853
 #define TRAINER_MAY_PLACEHOLDER             854
+
+#define DAILY_TRAINERS_START TRAINER_WAKAE
+#define DAILY_TRAINERS_END   TRAINER_MAY_PLACEHOLDER
+#define NUM_DAILY_TRAINERS   (DAILY_TRAINERS_END - DAILY_TRAINERS_START + 1)
+
 #define TRAINER_DUMMY                       855
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows

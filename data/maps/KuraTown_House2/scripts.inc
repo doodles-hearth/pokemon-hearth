@@ -58,8 +58,8 @@ KuraTown_House2_EventScript_Ashii_12:
 
 AshiiScript_FirstEncounter:
 	applymovement 1, AshiiScript_FirstEncounter_Movement_0
-	speakername AshiiScript_FirstEncounter_Text_0
-	msgbox AshiiScript_FirstEncounter_Text_1
+	setspeaker SP_NAME_GIRL
+	msgbox AshiiScript_FirstEncounter_Text_0
 	closemessage
 	delay 30
 	playse SE_PIN
@@ -69,15 +69,15 @@ AshiiScript_FirstEncounter:
 	waitmovement 0
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	speakername AshiiScript_FirstEncounter_Text_0
-	msgbox AshiiScript_FirstEncounter_Text_2
+	setspeaker SP_NAME_GIRL
+	msgbox AshiiScript_FirstEncounter_Text_1
 	closemessage
 	delay 30
 	playse SE_PIN
 	applymovement 1, AshiiScript_FirstEncounter_Movement_1
 	waitmovement 0
-	speakername AshiiScript_FirstEncounter_Text_3
-	msgbox AshiiScript_FirstEncounter_Text_4
+	setspeaker SP_NAME_ASHII
+	msgbox AshiiScript_FirstEncounter_Text_2
 	closemessage
 	giveitem ITEM_ASHIIS_SCARF
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1
@@ -87,7 +87,7 @@ AshiiScript_FirstEncounter:
 
 AshiiScript_DidYouGiveTamaScarf:
 	faceplayer
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_DidYouGiveTamaScarf_Text_0
 	closemessage
 	return
@@ -96,7 +96,7 @@ AshiiScript_DidYouGiveTamaScarf:
 AshiiScript_ReportBackAfterGivingScarf:
 	setvar VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3
 	faceplayer
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_ReportBackAfterGivingScarf_Text_0
 	mcdialogue AshiiScript_ReportBackAfterGivingScarf_Text_1, AshiiScript_ReportBackAfterGivingScarf_Text_2, AshiiScript_ReportBackAfterGivingScarf_Text_3
 	closemessage
@@ -107,28 +107,28 @@ AshiiScript_ReportBackAfterGivingScarf:
 	playse SE_PIN
 	applymovement 1, AshiiScript_ReportBackAfterGivingScarf_Movement_1
 	waitmovement 0
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_ReportBackAfterGivingScarf_Text_4
 	return
 
 
 AshiiScript_Rocks:
 	faceplayer
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_Rocks_Text_0
 	return
 
 
 AshiiScript_EscortAshii:
 	faceplayer
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_EscortAshii_Text_0
 	mcdialogue AshiiScript_EscortAshii_Text_1, AshiiScript_EscortAshii_Text_2
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq AshiiScript_EscortAshii_1
 	applymovement 1, AshiiScript_EscortAshii_Movement_0
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_EscortAshii_Text_3
 	closemessage
 	return
@@ -162,7 +162,7 @@ AshiiScript_PlayerAcceptsEscort:
 	compare VAR_0x8000, TIME_DEAD_NIGHT
 	goto_if_eq AshiiScript_PlayerAcceptsEscort_2
 	applymovement 1, AshiiScript_PlayerAcceptsEscort_Movement_1
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_PlayerAcceptsEscort_Text_1
 	closemessage
 	delay 40
@@ -179,7 +179,7 @@ AshiiScript_PlayerAcceptsEscort_1:
 
 AshiiScript_PlayerAcceptsEscort_2:
 	applymovement 1, AshiiScript_PlayerAcceptsEscort_Movement_1
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_PlayerAcceptsEscort_Text_0
 	delay 40
 	pausefakertc
@@ -191,12 +191,12 @@ AshiiScript_PlayerAcceptsEscort_2:
 AshiiScript_Reward:
 	faceplayer
 	applymovement 1, AshiiScript_Reward_Movement_0
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_Reward_Text_0
 	closemessage
 	giveitem ITEM_COVERT_CLOAK
 	applymovement 1, AshiiScript_Reward_Movement_1
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_Reward_Text_1
 	closemessage
 	completequest QUEST_SAKURALOVERS
@@ -206,7 +206,7 @@ AshiiScript_Reward:
 
 AshiiScript_QuestOver:
 	faceplayer
-	speakername AshiiScript_FirstEncounter_Text_3
+	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_QuestOver_Text_0
 	closemessage
 	return
@@ -275,13 +275,10 @@ AshiiScript_Reward_Movement_1:
 	step_end
 
 AshiiScript_FirstEncounter_Text_0:
-	.string "Girl$"
-
-AshiiScript_FirstEncounter_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Sigh… Oh, Tama…\n"
 	.string "Why must life be so complicated?$"
 
-AshiiScript_FirstEncounter_Text_2:
+AshiiScript_FirstEncounter_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Hey, what are you doing in my house?\n"
 	.string "Were you eavesdropping?\p"
 	.string "…It doesn't matter anyway.\n"
@@ -292,10 +289,7 @@ AshiiScript_FirstEncounter_Text_2:
 	.string "If only there was a way for him\n"
 	.string "to know my feelings…$"
 
-AshiiScript_FirstEncounter_Text_3:
-	.string "Ashii$"
-
-AshiiScript_FirstEncounter_Text_4:
+AshiiScript_FirstEncounter_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Wait, you're not from here, are you?\p"
 	.string "My name is Ashii. I need your help.\p"
 	.string "The guard won't let anyone from\n"

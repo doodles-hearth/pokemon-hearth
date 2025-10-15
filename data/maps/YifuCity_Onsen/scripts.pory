@@ -1,13 +1,87 @@
 mapscripts YifuCity_Onsen_MapScripts {
-
+	MAP_SCRIPT_ON_TRANSITION {
+	// MAP_SCRIPT_ON_LOAD {
+		if (flag(FLAG_PAID_HOT_SPRINGS)) {
+			setobjectxyperm(LOCALID_HOT_SPRINGS_OWNER, 2, 2)
+		}
+	}
 }
 
 script YifuCity_Onsen_EventScript_Owner {
 	lock
 	faceplayer
-	speakername("Owner")
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}The hot springs are closed for the moment."
-	))
+	if (flag(FLAG_PAID_HOT_SPRINGS)) {
+		setspeaker(SP_NAME_OWNER)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Enjoy the hot springs!"
+		))
+		closemessage
+	} else {
+		setspeaker(SP_NAME_OWNER)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}You can access the hot springs for the day for ¥500.\p"
+			"Be careful though, some bathers are there to relax, some to battle!"
+		))
+
+		showmoneybox(18, 0)
+
+		if (checkmoney(500)) {
+			mcdialogue(
+				"One entry!",
+				"No, thanks."
+			)
+			closemessage
+
+			switch(var(VAR_RESULT)) {
+				case 0:
+					playse(SE_SHOP)
+					removemoney(500)
+					updatemoneybox
+
+					closemessage
+
+					hidemoneybox
+
+					setflag(FLAG_PAID_HOT_SPRINGS)
+
+					if (var(VAR_FACING) == DIR_WEST) {
+						applymovement(VAR_LAST_TALKED, moves(walk_slow_left, face_down))
+					} else {
+						applymovement(VAR_LAST_TALKED, moves(walk_slow_right, face_down))
+					}
+					waitmovement(0)
+
+					setspeaker(SP_NAME_OWNER)
+					msgbox(format(
+						"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Enjoy the hot springs!"
+					))
+					closemessage
+
+				case 1:
+					hidemoneybox
+
+					setspeaker(SP_NAME_OWNER)
+					msgbox(format(
+						"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Sure, sure."
+					))
+					closemessage
+			}
+
+		} else {
+			mcdialogue(
+				"I don't have enough…"
+			)
+			closemessage
+
+			hidemoneybox
+
+			setspeaker(SP_NAME_OWNER)
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Sorry but I run a business, not a charity."
+			))
+			closemessage
+		}
+	}
+
 	release
 }

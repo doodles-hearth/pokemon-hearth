@@ -11,7 +11,7 @@ mapscripts Soulkeep_HouseDollBedroom_MapScripts {
 script Soulkeep_HouseDollBedroom_EventScript_Girl {
 	lock
 	faceplayer
-	speakername("Little Girl")
+	setspeaker(SP_NAME_LITTLE_GIRL)
 	msgbox(format(
 		"My doll moves when I sleep!"
 	))

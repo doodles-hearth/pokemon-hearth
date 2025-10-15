@@ -48,12 +48,12 @@
 #include "constants/quests.h"
 #include "quests.h"
 #include "constants/items.h"
-#include "tx_registered_items_menu.h"
 #include "naming_screen.h"
 #include "clock.h"
 #include "fake_rtc.h"
 #include "difficulty.h"
 #include "follower_npc.h"
+#include "chatot_post.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -182,6 +182,7 @@ void NewGameInitData(void)
     PlayTimeCounter_Reset();
     ClearPokedexFlags();
     InitEventData();
+    ResetChatotPost();
     ClearTVShowData();
     ResetGabbyAndTy();
     ClearSecretBases();
@@ -200,7 +201,6 @@ void NewGameInitData(void)
     DeactivateAllRoamers();
     ClearBag();
     NewGameInitPCItems();
-    TxRegItemsMenu_RegisteredItemsMenuNewGame();
     ClearPokeblocks();
     ClearDecorationInventories();
     InitEasyChatPhrases();

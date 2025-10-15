@@ -912,8 +912,7 @@ bool8 ScrCmd_gettime(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
     RtcCalcLocalTime();
-    DebugPrintf("Value of STR_VAR_2: %S", gStringVar2);
-    DebugPrintf("H=%d, M=%d, S=%d", gLocalTime.hours, gLocalTime.minutes, gLocalTime.seconds);
+    /* DebugPrintf("H=%d, M=%d, S=%d", gLocalTime.hours, gLocalTime.minutes, gLocalTime.seconds); */
     gSpecialVar_0x8000 = gLocalTime.hours;
     gSpecialVar_0x8001 = gLocalTime.minutes;
     gSpecialVar_0x8002 = gLocalTime.seconds;
@@ -1716,19 +1715,6 @@ bool8 ScrCmd_release(struct ScriptContext *ctx)
     ScriptMovement_UnfreezeObjectEvents();
     UnfreezeObjectEvents();
     gMsgBoxIsCancelable = FALSE;
-    return FALSE;
-}
-
-bool8 ScrCmd_setspeaker(struct ScriptContext *ctx)
-{
-    const u8 *name = (const u8 *)ScriptReadWord(ctx);
-    SetSpeakerName(name);
-    return FALSE;
-}
-
-bool8 ScrCmd_removespeaker(struct ScriptContext *ctx)
-{
-    SetSpeakerName(NULL);
     return FALSE;
 }
 
@@ -2882,7 +2868,7 @@ bool8 ScrCmd_setmetatile(struct ScriptContext *ctx)
     if (!isImpassable)
         MapGridSetMetatileIdAt(x, y, metatileId);
     else
-        MapGridSetMetatileIdAt(x, y, metatileId | MAPGRID_COLLISION_MASK);
+        MapGridSetMetatileIdAt(x, y, metatileId | MAPGRID_IMPASSABLE);
     return FALSE;
 }
 

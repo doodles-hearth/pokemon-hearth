@@ -47,7 +47,7 @@ script IncenseShop_EventScript_Shopkeeper {
 
 	if (flag(FLAG_TALKED_TO_INCENSE_SHOP_KEEPER)) {
 		applymovement(VAR_LAST_TALKED, moves(emote_sleep))
-		speakername("Shopkeeper")
+		setspeaker(SP_NAME_SHOPKEEPER)
 		msgbox(format(
 			"… … … … … …\n… … … ZzzZz…"
 		))
@@ -64,7 +64,7 @@ script IncenseShop_EventScript_Shopkeeper {
 
 		call(IncenseShop_EventScript_OpenMart)
 	} else {
-		speakername("Shopkeeper")
+		setspeaker(SP_NAME_SHOPKEEPER)
 		msgbox(format(
 			"… … … … … …\n… … … … … …"
 		))
@@ -79,7 +79,7 @@ script IncenseShop_EventScript_Shopkeeper {
 		switch(var(VAR_RESULT)) {
 			case 0:
 			case 1:
-				speakername("Shopkeeper")
+				setspeaker(SP_NAME_SHOPKEEPER)
 				msgbox(format(
 					"… … … … … …\n… … … … … …\p"
 					"… … …ZzzZZz…\p"
@@ -90,7 +90,7 @@ script IncenseShop_EventScript_Shopkeeper {
 				faceplayer
 				delay(30)
 
-				speakername("Shopkeeper")
+				setspeaker(SP_NAME_SHOPKEEPER)
 				msgbox(format(
 					"…Oh, yes hello, welcome…\n{FONT_SMALL}Yawn{FONT_NORMAL}… …to the Incense Shop…\p"
 					"I'm sorry, the Incense in the air\nmakes me a little sleepy…\p"
@@ -119,7 +119,7 @@ script IncenseShop_EventScript_OpenMart {
 		pokemart(IncenseShop_Mart_1)
 	}
 
-	speakername("Shopkeeper")
+	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(format(
 		"Please come again…\p"
 		"… … … … … …\n… … … … … …\p"

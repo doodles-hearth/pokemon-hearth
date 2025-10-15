@@ -15,7 +15,7 @@ mapscripts Silveridge_House1_MapScripts {
 script Silveridge_House1_EventScript_Woman {
     lock
     faceplayer
-    speakername("Woman")
+    setspeaker(SP_NAME_WOMAN)
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}Oh, you came all the way from Kura Village? You have good legs!"
     ))
@@ -26,7 +26,7 @@ script Silveridge_House1_EventScript_Woman {
 script Silveridge_House1_EventScript_FirebringerFangirl {
     lock
     faceplayer
-    speakername("Girl")
+    setspeaker(SP_NAME_GIRL)
     msgbox(format(
         "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}This place gets pretty cold, especially when the winds blow strong into the valley.\p"
         "I don't know what we would do without those brave Firebringers.\p"
@@ -49,7 +49,7 @@ script Silveridge_House1_EventScript_Sandslash {
     faceplayer
     setseenmon(SPECIES_SANDSLASH)
     playmoncry(SPECIES_SANDSLASH, CRY_MODE_NORMAL)
-    speakername("Sandslash")
+    setspeakertomonname(SPECIES_SANDSLASH)
     msgbox(format(
         "Sahaaah!"
     ))
@@ -61,7 +61,7 @@ script Silveridge_House1_EventScript_Sandslash {
 script Silveridge_House1_EventScript_Man {
     lock
     faceplayer
-    speakername("Miner")
+    setspeaker(SP_NAME_MINER)
     if (flag(FLAG_OBTAINED_EVERSTONE)) {
         msgbox(format(
             "You think some Pokémon prefer to remain small forever?"
@@ -78,7 +78,7 @@ script Silveridge_House1_EventScript_Man {
         giveitem(ITEM_EVERSTONE)
         setflag(FLAG_OBTAINED_EVERSTONE)
 
-        speakername("Miner")
+        setspeaker(SP_NAME_MINER)
         msgbox(format(
             "Apparently as long as a Pokémon holds on to this stone, it'll stop growing.\p"
             "My helper Sandslash is already fully grown, so I don't need it."

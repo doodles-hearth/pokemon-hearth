@@ -19,47 +19,49 @@ KuraTown_Dojo_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 
 KuraTown_Dojo_EventScript_Matsu::
 	trainerbattle_single TRAINER_MATSU, KuraTown_Dojo_EventScript_Matsu_Text_0, KuraTown_Dojo_EventScript_Matsu_Text_1
-	speakername KuraTown_Dojo_EventScript_Matsu_Text_2
-	msgbox KuraTown_Dojo_EventScript_Matsu_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_OLD_MAN
+	msgbox KuraTown_Dojo_EventScript_Matsu_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 KuraTown_Dojo_EventScript_Kiku::
 	trainerbattle_single TRAINER_KIKU, KuraTown_Dojo_EventScript_Kiku_Text_0, KuraTown_Dojo_EventScript_Kiku_Text_1
-	speakername KuraTown_Dojo_EventScript_Kiku_Text_2
-	msgbox KuraTown_Dojo_EventScript_Kiku_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_AROMA_LADY
+	msgbox KuraTown_Dojo_EventScript_Kiku_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 KuraTown_Dojo_EventScript_Laura::
 	trainerbattle_single TRAINER_AYAME, KuraTown_Dojo_EventScript_Laura_Text_0, KuraTown_Dojo_EventScript_Laura_Text_1
+	setspeaker SP_NAME_GARDENER
 	msgbox KuraTown_Dojo_EventScript_Laura_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 KuraTown_Dojo_EventScript_Brenden::
 	trainerbattle_single TRAINER_TSUBAKI, KuraTown_Dojo_EventScript_Brenden_Text_0, KuraTown_Dojo_EventScript_Brenden_Text_1
-	speakername KuraTown_Dojo_EventScript_Brenden_Text_2
-	msgbox KuraTown_Dojo_EventScript_Brenden_Text_3, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_LASS
+	msgbox KuraTown_Dojo_EventScript_Brenden_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 KuraTown_Dojo_EventScript_Cristian::
 	trainerbattle_single TRAINER_AJISAI, KuraTown_Dojo_EventScript_Cristian_Text_0, KuraTown_Dojo_EventScript_Cristian_Text_1
+	setspeaker SP_NAME_OLD_LADY
 	msgbox KuraTown_Dojo_EventScript_Cristian_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
 KuraTown_Dojo_EventScript_Lilith::
 	trainerbattle_single TRAINER_SUMIRE, KuraTown_Dojo_EventScript_Lilith_Text_0, KuraTown_Dojo_EventScript_Lilith_Text_1
-	speakername KuraTown_Dojo_EventScript_Lilith_Text_2
+	setspeaker SP_NAME_GARDENER
 	goto_if_set FLAG_BADGE02_GET, KuraTown_Dojo_EventScript_Lilith_2
-	msgbox KuraTown_Dojo_EventScript_Lilith_Text_4, MSGBOX_AUTOCLOSE
+	msgbox KuraTown_Dojo_EventScript_Lilith_Text_3, MSGBOX_AUTOCLOSE
 KuraTown_Dojo_EventScript_Lilith_1:
 	end
 
 KuraTown_Dojo_EventScript_Lilith_2:
-	msgbox KuraTown_Dojo_EventScript_Lilith_Text_3
+	msgbox KuraTown_Dojo_EventScript_Lilith_Text_2
 	closemessage
 	addvar VAR_PLAYER_REPUTATION, 1
 	goto KuraTown_Dojo_EventScript_Lilith_1
@@ -68,26 +70,25 @@ KuraTown_Dojo_EventScript_Lilith_2:
 KuraTown_Dojo_EventScript_Hana::
 	setflag FLAG_MET_HANA_GYM
 	goto_if_set FLAG_MET_HANA_BONSAI_SHOP, KuraTown_Dojo_EventScript_Hana_2
-	speakername KuraTown_Dojo_EventScript_Hana_Text_0
-	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_3, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
+	setspeaker SP_NAME_HANA
+	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_Hana_Text_1, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
 KuraTown_Dojo_EventScript_Hana_1:
-	speakername KuraTown_Dojo_EventScript_Hana_Text_0
-	msgbox KuraTown_Dojo_EventScript_Hana_Text_4, MSGBOX_DEFAULT
+	setspeaker SP_NAME_HANA
+	msgbox KuraTown_Dojo_EventScript_Hana_Text_3, MSGBOX_DEFAULT
 	release
 	end
 
 KuraTown_Dojo_EventScript_Hana_2:
-	speakername KuraTown_Dojo_EventScript_Hana_Text_0
-	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_1, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
+	setspeaker SP_NAME_HANA
+	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_0, KuraTown_Dojo_EventScript_Hana_Text_1, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
 	goto KuraTown_Dojo_EventScript_Hana_1
 
 
 KuraTown_Dojo_EventScript_HanaDefeated::
-	removespeakername
 	message KuraTown_Dojo_EventScript_HanaDefeated_Text_0
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
-	speakername KuraTown_Dojo_EventScript_Hana_Text_0
+	setspeaker SP_NAME_HANA
 	msgbox KuraTown_Dojo_EventScript_HanaDefeated_Text_1, MSGBOX_DEFAULT
 	setflag FLAG_BADGE02_GET
 	setvar VAR_0x8008, 2
@@ -100,7 +101,7 @@ KuraTown_Dojo_EventScript_HanaDefeated::
 
 KuraTown_Dojo_EventScript_GiveTm:
 	giveitem ITEM_TM_WEATHER_BALL
-	speakername KuraTown_Dojo_EventScript_Hana_Text_0
+	setspeaker SP_NAME_HANA
 	msgbox KuraTown_Dojo_EventScript_GiveTm_Text_0, MSGBOX_DEFAULT
 	return
 
@@ -109,29 +110,29 @@ KuraTown_Dojo_EventScript_Advice::
 	lock
 	faceplayer
 	goto_if_set FLAG_BADGE02_GET, KuraTown_Dojo_EventScript_Advice_2
-	speakername KuraTown_Dojo_EventScript_Advice_Text_0
+	setspeaker SP_NAME_MAN
 	isfieldmoveunlocked FIELD_MOVE_CUT
 	compare VAR_RESULT, 0
 	goto_if_ne KuraTown_Dojo_EventScript_Advice_5
-	speakername KuraTown_Dojo_EventScript_Advice_Text_0
+	setspeaker SP_NAME_MAN
 	goto_if_set FLAG_BADGE01_GET, KuraTown_Dojo_EventScript_Advice_8
-	speakername KuraTown_Dojo_EventScript_Advice_Text_0
-	msgbox KuraTown_Dojo_EventScript_Advice_Text_4
+	setspeaker SP_NAME_MAN
+	msgbox KuraTown_Dojo_EventScript_Advice_Text_3
 KuraTown_Dojo_EventScript_Advice_1:
 	release
 	return
 
 KuraTown_Dojo_EventScript_Advice_2:
-	speakername KuraTown_Dojo_EventScript_Advice_Text_0
-	msgbox KuraTown_Dojo_EventScript_Advice_Text_1
+	setspeaker SP_NAME_MAN
+	msgbox KuraTown_Dojo_EventScript_Advice_Text_0
 	goto KuraTown_Dojo_EventScript_Advice_1
 
 KuraTown_Dojo_EventScript_Advice_5:
-	msgbox KuraTown_Dojo_EventScript_Advice_Text_2
+	msgbox KuraTown_Dojo_EventScript_Advice_Text_1
 	goto KuraTown_Dojo_EventScript_Advice_1
 
 KuraTown_Dojo_EventScript_Advice_8:
-	msgbox KuraTown_Dojo_EventScript_Advice_Text_3
+	msgbox KuraTown_Dojo_EventScript_Advice_Text_2
 	goto KuraTown_Dojo_EventScript_Advice_1
 
 
@@ -182,9 +183,6 @@ KuraTown_Dojo_EventScript_Matsu_Text_1:
 	.string "Very impressive skills!$"
 
 KuraTown_Dojo_EventScript_Matsu_Text_2:
-	.string "Matsu$"
-
-KuraTown_Dojo_EventScript_Matsu_Text_3:
 	.string "Not all paths lead to the master.$"
 
 KuraTown_Dojo_EventScript_Kiku_Text_0:
@@ -195,9 +193,6 @@ KuraTown_Dojo_EventScript_Kiku_Text_1:
 	.string "trouble…$"
 
 KuraTown_Dojo_EventScript_Kiku_Text_2:
-	.string "Kiku$"
-
-KuraTown_Dojo_EventScript_Kiku_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}You're wondering why you can't just\n"
 	.string "cut down all the trees?\p"
 	.string "Uhhh… It's a secret!$"
@@ -221,9 +216,6 @@ KuraTown_Dojo_EventScript_Brenden_Text_1:
 	.string "A-tchoo!$"
 
 KuraTown_Dojo_EventScript_Brenden_Text_2:
-	.string "Tsubaki$"
-
-KuraTown_Dojo_EventScript_Brenden_Text_3:
 	.string "Sniff… By zeazonal allergiez are\n"
 	.string "agdig up agaid…$"
 
@@ -249,21 +241,15 @@ KuraTown_Dojo_EventScript_Lilith_Text_1:
 	.string "Stop it! I'm a delicate flower!$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_2:
-	.string "Sumire$"
-
-KuraTown_Dojo_EventScript_Lilith_Text_3:
 	.string "I saw your fight peeking through the\n"
 	.string "leaves! That was amazing!\p"
 	.string "I'm officially a fan!$"
 
-KuraTown_Dojo_EventScript_Lilith_Text_4:
+KuraTown_Dojo_EventScript_Lilith_Text_3:
 	.string "I wish I could see you two fight! Good\n"
 	.string "luck!$"
 
 KuraTown_Dojo_EventScript_Hana_Text_0:
-	.string "Hana$"
-
-KuraTown_Dojo_EventScript_Hana_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\n"
 	.string "Did you enjoy my little maze?\p"
 	.string "You must be wondering what a Bonsai\n"
@@ -279,10 +265,10 @@ KuraTown_Dojo_EventScript_Hana_Text_1:
 	.string "Show me all the grace, strength and\n"
 	.string "power you are capable of!$"
 
-KuraTown_Dojo_EventScript_Hana_Text_2:
+KuraTown_Dojo_EventScript_Hana_Text_1:
 	.string "Ho ho ho…$"
 
-KuraTown_Dojo_EventScript_Hana_Text_3:
+KuraTown_Dojo_EventScript_Hana_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\n"
 	.string "Did you enjoy my little maze?\p"
 	.string "Tending to my bonsai and fighting\n"
@@ -296,7 +282,7 @@ KuraTown_Dojo_EventScript_Hana_Text_3:
 	.string "Show me all the grace, strength and\n"
 	.string "power you are capable of!$"
 
-KuraTown_Dojo_EventScript_Hana_Text_4:
+KuraTown_Dojo_EventScript_Hana_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}The slow-growing tree becomes the\n"
 	.string "sturdiest.\p"
 	.string "Take your time on your journey,\n"
@@ -326,14 +312,11 @@ KuraTown_Dojo_EventScript_GiveTm_Text_0:
 	.string "strong as it is weather-dependent.$"
 
 KuraTown_Dojo_EventScript_Advice_Text_0:
-	.string "Man$"
-
-KuraTown_Dojo_EventScript_Advice_Text_1:
 	.string "That was a beautiful fight!\n"
 	.string "You'll blossom into an excellent\l"
 	.string "Pokémon Wielder, I can just feel it!$"
 
-KuraTown_Dojo_EventScript_Advice_Text_2:
+KuraTown_Dojo_EventScript_Advice_Text_1:
 	.string "Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "Lady Hana, the Dojo Master, is an\n"
@@ -349,7 +332,7 @@ KuraTown_Dojo_EventScript_Advice_Text_2:
 	.string "Be on your guard!\n"
 	.string "Maybe get an umbrella, I don't know!$"
 
-KuraTown_Dojo_EventScript_Advice_Text_3:
+KuraTown_Dojo_EventScript_Advice_Text_2:
 	.string "Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "All these trees are blocking your way,\n"
@@ -357,7 +340,7 @@ KuraTown_Dojo_EventScript_Advice_Text_3:
 	.string "You should come back once you've\n"
 	.string "figured out a way to cut them!$"
 
-KuraTown_Dojo_EventScript_Advice_Text_4:
+KuraTown_Dojo_EventScript_Advice_Text_3:
 	.string "Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "All these trees are blocking your way,\n"

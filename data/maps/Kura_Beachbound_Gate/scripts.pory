@@ -10,7 +10,7 @@ mapscripts Kura_Beachbound_Gate_MapScripts {
 
 script Kura_Beachbound_Gate_EventScript_Guard {
 	lock
-	speakername("Samurai")
+	setspeaker(SP_NAME_SAMURAI)
 	applymovement(VAR_LAST_TALKED, moves(emote_sleep))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Zzzzzz…"

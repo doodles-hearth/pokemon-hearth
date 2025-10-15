@@ -26,9 +26,9 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 	
 	if (checkmoney(500)) {
 		createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
-		speakername("Nurse")
+		setspeaker(SP_NAME_NURSE)
 		msgbox(format(
-			"Hello! For 500¥, you and your Pokémon can spend the night here."
+			"Hello! For ¥500, you and your Pokémon can spend the night here."
 		))
 
 		showmoneybox(18, 0)
@@ -62,7 +62,7 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 			fadescreenswapbuffers(FADE_FROM_BLACK)
 
 			createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
-			speakername("Nurse")
+			setspeaker(SP_NAME_NURSE)
 			msgbox(format(
 				"Did you sleep well?\nTravel safely, now!"
 			))
@@ -70,7 +70,7 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 		} else {
 			hidemoneybox
 			createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
-			speakername("Nurse")
+			setspeaker(SP_NAME_NURSE)
 			msgbox(format(
 				"Come back anytime!"
 			))
@@ -78,9 +78,9 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 		}
 	} else {
 		createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
-		speakername("Nurse")
+		setspeaker(SP_NAME_NURSE)
 		msgbox(format(
-			"Hello! For 500¥, you and your Pokémon can spend the night here."
+			"Hello! For ¥500, you and your Pokémon can spend the night here."
 		))
 		closemessage
 	}
@@ -121,7 +121,7 @@ script Common_EventScript_PkmnCenterNurse_ChooseSleep {
 	removemoney(500)
 	updatemoneybox
 
-	speakername("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format(
 		"Thank you! May you have a restful night."
 	))
@@ -136,7 +136,7 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 	setvar(VAR_0x8004, 0)
 
 	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
-	speakername("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format("Welcome to the refuge!\pLet me heal your Pokémon."))
 	closemessage
 	
@@ -147,7 +147,7 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 	}
 	
 	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
-	speakername("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format("Your Pokémon are all healed and rested."))
 	closemessage
 
@@ -155,7 +155,7 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 	waitmovement(0)
 
 	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
-	speakername("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format("Please come again!"))
 	closemessage
 	removefieldmugshot

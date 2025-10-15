@@ -15,27 +15,24 @@ Beachbound_Maguro_Gate_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 
 Beachbound_Maguro_Gate_EventScript_Guard::
 	lock
-	speakername Beachbound_Maguro_Gate_EventScript_Guard_Text_0
+	setspeaker SP_NAME_SAMURAI
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 1
 	goto_if_eq Beachbound_Maguro_Gate_EventScript_Guard_2
-	msgbox Beachbound_Maguro_Gate_EventScript_Guard_Text_2
+	msgbox Beachbound_Maguro_Gate_EventScript_Guard_Text_1
 Beachbound_Maguro_Gate_EventScript_Guard_1:
 	closemessage
 	release
 	return
 
 Beachbound_Maguro_Gate_EventScript_Guard_2:
-	msgbox Beachbound_Maguro_Gate_EventScript_Guard_Text_1
+	msgbox Beachbound_Maguro_Gate_EventScript_Guard_Text_0
 	goto Beachbound_Maguro_Gate_EventScript_Guard_1
 
 
 Beachbound_Maguro_Gate_EventScript_Guard_Text_0:
-	.string "Samurai$"
-
-Beachbound_Maguro_Gate_EventScript_Guard_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Are you going to Beachbound Route?\n"
 	.string "Uh, be careful, kid!$"
 
-Beachbound_Maguro_Gate_EventScript_Guard_Text_2:
+Beachbound_Maguro_Gate_EventScript_Guard_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Ugh, I hate guard duty…\n"
 	.string "We're not even allowed a book…$"

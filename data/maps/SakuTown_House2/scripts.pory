@@ -13,7 +13,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 	// First time talking to him
 	if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0) {
 		setnamedmon(SPECIES_EEVEE)
-		speakername("Boy")
+		setspeaker(SP_NAME_BOY)
 		msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}I hope Eevee comes home soon…"
 		))
@@ -22,7 +22,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 		setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 2)
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
 		setnamedmon(SPECIES_EEVEE)
-		speakername("Boy")
+		setspeaker(SP_NAME_BOY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}I hope Eevee comes home soon…"
 		))
@@ -41,7 +41,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 		// Bring him back!
 		setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 3)
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
-		speakername("Boy")
+		setspeaker(SP_NAME_BOY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}… …"
 		))
@@ -49,7 +49,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 
 		// Waiting for Espeon
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 3) {
-		speakername("Boy")
+		setspeaker(SP_NAME_BOY)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Where's my Eevee?"
 		))
@@ -62,7 +62,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 		// Talked to Espeon's master once are reunited
 	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 5) {
 		if (flag(FLAG_TEMP_1)) {
-			speakername("Boy")
+			setspeaker(SP_NAME_BOY)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Thanks again!"
 			))
@@ -70,7 +70,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 		} else {
 			if (flag(FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE)) {
 				setnamedmon(SPECIES_ESPEON)
-				speakername("Boy")
+				setspeaker(SP_NAME_BOY)
 				msgbox(format(
 					"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}How are you doing? Espeon looks happy to see you!"
 				))
@@ -88,7 +88,7 @@ script SakuTown_House2_EventScript_Reunited {
 	// Reunited at last
 	setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 5)
 	clearflag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)
-	speakername("Boy")
+	setspeaker(SP_NAME_BOY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Where's my Eevee?"
 	))
@@ -139,7 +139,7 @@ script SakuTown_House2_EventScript_Reunited {
 	waitmoncry
 
 	applymovement(LOCALID_ESPEONS_MASTER, moves(emote_crying))
-	speakername("Boy")
+	setspeaker(SP_NAME_BOY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}It's you! It's really you!\nOh, Eevee, I've missed you so much!\p"
 		"… …\p"
@@ -160,7 +160,7 @@ script SakuTown_House2_EventScript_Reunited {
 	}
 	delay(30)
 	
-	speakername("Boy")
+	setspeaker(SP_NAME_BOY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}You say it was a woman from Kura Village that found him?\p"
 		"She took such good care of him!\p"
@@ -171,7 +171,7 @@ script SakuTown_House2_EventScript_Reunited {
 	applymovement(LOCALID_ESPEONS_MASTER, moves(face_down, emote_pensive, delay_16 * 6))
 	waitmovement(0)
 
-	speakername("Boy")
+	setspeaker(SP_NAME_BOY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Looks like there are actually some nice people too in Kura Village…"
 	))
@@ -179,7 +179,7 @@ script SakuTown_House2_EventScript_Reunited {
 	applymovement(LOCALID_ESPEONS_MASTER, moves(emote_pensive, delay_16 * 6, face_right))
 	waitmovement(0)
 
-	speakername("Boy")
+	setspeaker(SP_NAME_BOY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Anyway, thank you so much for helping me out. I'm so grateful.\p"
 		"As a thanks, you can have your pick from my cool rock collection!"
@@ -203,7 +203,7 @@ script SakuTown_House2_EventScript_GiveEvoStone {
 	)
 	closemessage
 
-	speakername("Boy")
+	setspeaker(SP_NAME_BOY)
 	switch (var(VAR_RESULT)) {
 		case 0:
 			giveitem(ITEM_FIRE_STONE)
@@ -239,7 +239,7 @@ script SakuTown_House2_EventScript_Espeon {
 script SakuTown_House2_EventScript_Sister {
 	lock
 	faceplayer
-	speakername("Girl")
+	setspeaker(SP_NAME_GIRL)
 	if (flag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}My brother's been feeling really down lately.\p"

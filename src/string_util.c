@@ -13,7 +13,6 @@ EWRAM_DATA u8 gStringVar2[0x100] = {0};
 EWRAM_DATA u8 gStringVar3[0x100] = {0};
 EWRAM_DATA u8 gStringVar4[0x3E8] = {0};
 EWRAM_DATA static u8 sUnknownStringVar[16] = {0};
-EWRAM_DATA u8 gNamePlateBuffer[0x20] = {0};
 
 static const u8 sDigits[] = __("0123456789ABCDEF");
 
@@ -739,6 +738,7 @@ u8 GetExtCtrlCodeLength(u8 code)
         [EXT_CTRL_CODE_RESUME_MUSIC]           = 1,
         [EXT_CTRL_CODE_CREATE_MUGSHOT]         = 3,
         [EXT_CTRL_CODE_DESTROY_MUGSHOT]        = 1,
+        [EXT_CTRL_CODE_SPEAKER]                = 1,
     };
 
     u8 length = 0;

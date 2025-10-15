@@ -18,8 +18,8 @@ SunriseVillage_Beach_EventScript_RivalSpeech::
 	waitmovement 0
 	delay 48
 	faceplayer
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_1
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
 	closemessage
 	switch VAR_FACING
 	case DIR_SOUTH, SunriseVillage_Beach_EventScript_RivalSpeech_3
@@ -30,19 +30,20 @@ SunriseVillage_Beach_EventScript_RivalSpeech_1:
 	waitmovement 0
 	applymovement 1, SunriseVillage_Beach_Movement_RivalSitsOnBench
 	waitmovement 0
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_2
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_1
+	playse SE_PIN
 	applymovement 1, SunriseVillage_Beach_EventScript_RivalSpeech_Movement_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_3
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_Beach_EventScript_RivalSpeech_Text_4, SunriseVillage_Beach_EventScript_RivalSpeech_Text_5
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_2
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_Beach_EventScript_RivalSpeech_Text_3, SunriseVillage_Beach_EventScript_RivalSpeech_Text_4
 	closemessage
 	switch VAR_RESULT
 	case 0, SunriseVillage_Beach_EventScript_RivalSpeech_9
 	case 1, SunriseVillage_Beach_EventScript_RivalSpeech_10
 SunriseVillage_Beach_EventScript_RivalSpeech_7:
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_Beach_EventScript_RivalSpeech_Text_13, SunriseVillage_Beach_EventScript_RivalSpeech_Text_14, SunriseVillage_Beach_EventScript_RivalSpeech_Text_15
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_Beach_EventScript_RivalSpeech_Text_12, SunriseVillage_Beach_EventScript_RivalSpeech_Text_13, SunriseVillage_Beach_EventScript_RivalSpeech_Text_14
 	closemessage
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
+	setspeaker SP_NAME_NATSUKI
 	switch VAR_RESULT
 	case 0, SunriseVillage_Beach_EventScript_RivalSpeech_13
 	case 1, SunriseVillage_Beach_EventScript_RivalSpeech_14
@@ -50,10 +51,10 @@ SunriseVillage_Beach_EventScript_RivalSpeech_7:
 SunriseVillage_Beach_EventScript_RivalSpeech_11:
 	closemessage
 	delay 48
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 1
+	setvar VAR_0x8004, 3
+	setvar VAR_0x8005, 0
 	setvar VAR_0x8006, 20
-	setvar VAR_0x8007, 5
+	setvar VAR_0x8007, 3
 	special ShakeCamera
 	delay 16
 	playse SE_PIN
@@ -68,8 +69,8 @@ SunriseVillage_Beach_EventScript_RivalSpeech_11:
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	applymovement 1, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_19
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_18
 	closemessage
 	playse SE_PIN
 	applymovement 1, Common_Movement_ExclamationMark
@@ -77,8 +78,8 @@ SunriseVillage_Beach_EventScript_RivalSpeech_11:
 	delay 48
 	applymovement 1, SunriseVillage_Beach_Movement_RivalSeesDistribution
 	waitmovement 0
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_20
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_19
 	closemessage
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	applymovement 1, SunriseVillage_Beach_Movement_RivalRaces
@@ -108,49 +109,50 @@ SunriseVillage_Beach_EventScript_RivalSpeech_6:
 	goto SunriseVillage_Beach_EventScript_RivalSpeech_1
 
 SunriseVillage_Beach_EventScript_RivalSpeech_9:
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_6
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_5
 	closemessage
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_7
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_6
+	playse SE_PIN
 	applymovement 1, SunriseVillage_Beach_EventScript_RivalSpeech_Movement_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_8
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_7
 	closemessage
 	delay 48
 	applymovement 1, Common_Movement_WalkInPlaceFasterUp
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_9
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_8
 	goto SunriseVillage_Beach_EventScript_RivalSpeech_7
 
 SunriseVillage_Beach_EventScript_RivalSpeech_10:
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_10
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_9
 	closemessage
 	applymovement 1, Common_Movement_Delay48
 	waitmovement 0
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_11
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_10
 	closemessage
 	delay 48
 	applymovement 1, Common_Movement_WalkInPlaceFasterUp
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
-	speakername SunriseVillage_Beach_EventScript_RivalSpeech_Text_0
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_12
+	setspeaker SP_NAME_NATSUKI
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_11
 	goto SunriseVillage_Beach_EventScript_RivalSpeech_7
 
 SunriseVillage_Beach_EventScript_RivalSpeech_13:
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_16
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_15
 	goto SunriseVillage_Beach_EventScript_RivalSpeech_11
 
 SunriseVillage_Beach_EventScript_RivalSpeech_14:
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_17
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_16
 	goto SunriseVillage_Beach_EventScript_RivalSpeech_11
 
 SunriseVillage_Beach_EventScript_RivalSpeech_15:
-	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_18
+	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_17
 	goto SunriseVillage_Beach_EventScript_RivalSpeech_11
 
 
@@ -190,6 +192,7 @@ SunriseVillage_Beach_EventScript_Corsola::
 	lock
 	faceplayer
 	setseenmon SPECIES_CORSOLA
+	setspeakertomonname SPECIES_CORSOLA
 	playmoncry SPECIES_CORSOLA, CRY_MODE_NORMAL
 	msgbox SunriseVillage_Beach_EventScript_Corsola_Text_0
 	waitmoncry
@@ -201,6 +204,7 @@ SunriseVillage_Beach_EventScript_Corsola2::
 	lock
 	faceplayer
 	setseenmon SPECIES_CORSOLA
+	setspeakertomonname SPECIES_CORSOLA
 	playmoncry SPECIES_CORSOLA, CRY_MODE_WEAK
 	msgbox SunriseVillage_Beach_EventScript_Corsola2_Text_0
 	waitmoncry
@@ -211,8 +215,8 @@ SunriseVillage_Beach_EventScript_Corsola2::
 SunriseVillage_Event_LookingAtYifu::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_LookingAtYifu_Text_0
-	msgbox SunriseVillage_Event_LookingAtYifu_Text_1
+	setspeaker SP_NAME_LITTLE_BOY
+	msgbox SunriseVillage_Event_LookingAtYifu_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_LookingAtYifu_Movement_0
 	waitmovement 0
@@ -223,12 +227,12 @@ SunriseVillage_Event_LookingAtYifu::
 SunriseVillage_Event_PokemonWontComeOut::
 	lock
 	faceplayer
-	speakername SunriseVillage_Event_LookingAtYifu_Text_0
+	setspeaker SP_NAME_LITTLE_BOY
 	msgbox SunriseVillage_Event_PokemonWontComeOut_Text_0
 	closemessage
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_LookingAtYifu_Movement_0
 	waitmovement 0
-	speakername SunriseVillage_Event_LookingAtYifu_Text_0
+	setspeaker SP_NAME_LITTLE_BOY
 	msgbox SunriseVillage_Event_PokemonWontComeOut_Text_1
 	closemessage
 	release
@@ -239,6 +243,7 @@ SunriseVillage_Event_ChildsMon::
 	lock
 	faceplayer
 	setseenmon SPECIES_DWEBBLE
+	setspeakertomonname SPECIES_DWEBBLE
 	playmoncry SPECIES_DWEBBLE, CRY_MODE_NORMAL
 	msgbox SunriseVillage_Event_ChildsMon_Text_0
 	waitmoncry
@@ -306,13 +311,10 @@ SunriseVillage_Event_LookingAtYifu_Movement_0:
 	step_end
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_0:
-	.string "Natsuki$"
-
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, {PLAYER}! Come on, sit down\n"
 	.string "next to me.$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_2:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}It's been crazy lately, huh?\p"
 	.string "With the Pokémon in Ginko Woods,\n"
 	.string "and the volcano…\p"
@@ -320,94 +322,94 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_2:
 	.string "about to change.\p"
 	.string "Everyone is so anxious.$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_3:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_2:
 	.string "… … … … … …\n"
 	.string "… … … … … …$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_4:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_3:
 	.string "Are you worried?$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_5:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_4:
 	.string "What are you thinking about?$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_6:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Nah, you know me.\n"
 	.string "We'll figure it out when we get there.\p"
 	.string "That's what I've always done,\n"
 	.string "everything turns out fine eventually.$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_7:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_6:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, look.\p"
 	.string "You can see Yifu City very clearly\n"
 	.string "today, it's gorgeous!$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_8:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_7:
 	.string "…$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_9:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_8:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}You okay there, {PLAYER}?\n"
 	.string "You look troubled.\p"
 	.string "Aren't you excited to become\n"
 	.string "a Pokémon Wielder?$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_10:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_9:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Huh?…\p"
 	.string "…Oh, sorry, I was just wondering\n"
 	.string "which Pokémon I'm gonna be getting.$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_11:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_10:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, look.\p"
 	.string "You can see Yifu City very clearly\n"
 	.string "today, it's gorgeous!\p"
 	.string "…$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_12:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_11:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What about you, {PLAYER}?\n"
 	.string "You excited about getting\l"
 	.string "your own Pokémon?$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_13:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_12:
 	.string "I'm thrilled!$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_14:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_13:
 	.string "I'm terrified!$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_15:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_14:
 	.string "It's whatever.$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_16:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_15:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hell yeah!\p"
 	.string "We're going to make awesome Wielders,\n"
 	.string "I can already tell.\p"
 	.string "Maybe you'll even be second best\n"
-	.string "one day…\p"
+	.string "one day…\l"
 	.string "Behind me, of course!$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_17:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_16:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Uh, you're kidding, right?\p"
 	.string "It's going to be awesome.\n"
 	.string "Just chill.\p"
 	.string "Once we get our Pokémon, we'll do\n"
 	.string "whatever we want!$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_18:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_17:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh c'mon, you're just pretending\n"
 	.string "not to be excited.\p"
 	.string "Look at you, acting all tough\n"
 	.string "and silent…\l"
 	.string "But I see right through you!\p"
 	.string "I bet you'll be a great Wielder.\n"
-	.string "Maybe even as good as me…\p"
+	.string "Maybe even as good as me…\l"
 	.string "Probably not though!$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_19:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_18:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah, there it goes again!\n"
 	.string "You good, {PLAYER}?\p"
 	.string "Whew! Those quakes are no joke, huh?\p"
 	.string "Maybe the volcano's telling us\n"
 	.string "to get to Elder Kaba's house already.$"
 
-SunriseVillage_Beach_EventScript_RivalSpeech_Text_20:
+SunriseVillage_Beach_EventScript_RivalSpeech_Text_19:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Aw Shuckles, the distribution's\n"
 	.string "already started!\p"
 	.string "Let's go, {PLAYER}!!$"
@@ -419,9 +421,6 @@ SunriseVillage_Beach_EventScript_Corsola2_Text_0:
 	.string "Laaa!$"
 
 SunriseVillage_Event_LookingAtYifu_Text_0:
-	.string "Little Boy$"
-
-SunriseVillage_Event_LookingAtYifu_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}My best friend lives all the way over\n"
 	.string "there in Yifu City!\p"
 	.string "I don't get to see her often. I miss\n"

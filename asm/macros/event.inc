@@ -1167,6 +1167,8 @@
 		.byte 1
 	.elseif \id == STR_VAR_3
 		.byte 2
+	.elseif \id == STR_VAR_4
+		.byte 3
 	.else
 		.byte \id
 	.endif
@@ -1899,17 +1901,6 @@
 	.2byte \quantity
 	.endm
 
-	@ Sets the text of the name box in the next-shown message box.
-	.macro speakername text:req
-	.byte SCR_OP_SET_SPEAKER
-	.4byte \text
-	.endm
-
-	@ Removes the current text of the name box.
-	.macro removespeakername
-	.byte SCR_OP_REMOVE_SPEAKER
-	.endm
-
     .macro setspeakertomonname species:req
     callnative SetSpeakerToMonName
     .2byte \species
@@ -1933,6 +1924,7 @@
 	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made.
 	@ Lists of options are provided in argv.
 	@ If ignoreBPress is set to a non-zero value, then the user will not be allowed to back out of the multichoice with the B button.
+	@ For a simple menu supply DYN_MULTICHOICE_CB_NONE in callbacks.
 	.macro dynmultichoice left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, initialSelected:req, callbacks:req argv:vararg
 	_dynmultichoice \left, \top, \ignoreBPress, \maxBeforeScroll, FALSE, \initialSelected, \callbacks, \argv
 	.endm
@@ -2249,7 +2241,7 @@
 	setvar VAR_0x8000, \evoMethod
 	setvar VAR_0x8001, \canStopEvo
 	setvar VAR_0x8002, \tryMultiple
-	special TrySpecialOverworldEvo
+	special TrySpecialScriptEvolution
 	.endm
 
 	.macro ai_vs_ai_battle trainer1:req, trainer2:req
@@ -2976,6 +2968,18 @@
 	.2byte \battlePartner
 	.endm
 
+	@ Manually buffer a string as the speaker's name for namebox.
+	@ The next shown message/msgbox will include a namebox, if the provided string is not NULL.
+	@ An SP_NAME_* constant can also be used, it'll take the name from gSpeakerNamesTable instead.
+	.macro setspeaker name:req
+	callnative SetSpeaker
+	.4byte \name
+	.endm
+
+	.macro clearspeaker
+	callnative ClearSpeaker
+	.endm
+
 	.macro getroutechallengestate routeChallenge:req
 	callnative Native_GetRouteChallengeState, requests_effects = 1
 	.2byte \routeChallenge
@@ -2986,3 +2990,19 @@
 	.2byte \routeChallenge
 	.2byte \newState
 	.endm
+
+    .macro setchatotlastspeaker
+    callnative Native_SetChatotLastSpeaker, requests_effects=1
+    .endm
+
+    .macro checkchatotpost
+    callnative Native_CheckChatotPost, requests_effects=1
+    .endm
+
+    .macro checkchatotpostnumber
+    callnative Native_CheckChatotPostNumber, requests_effects=1
+    .endm
+
+    .macro readchatotpost
+    callnative Native_ReadChatotPost, requests_effects=1
+    .endm

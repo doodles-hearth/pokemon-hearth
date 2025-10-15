@@ -145,6 +145,7 @@ const u32 gObjectEventPic_Uume_Boy2[] = INCBIN_U32("graphics/object_events/pics/
 const u32 gObjectEventPic_Uume_Nurse[] = INCBIN_U32("graphics/object_events/pics/people/uume/nurse.4bpp");
 const u32 gObjectEventPic_Uume_Valet[] = INCBIN_U32("graphics/object_events/pics/people/uume/valet.4bpp");
 const u32 gObjectEventPic_Uume_FatGuy[] = INCBIN_U32("graphics/object_events/pics/people/uume/fat_guy.4bpp");
+const u32 gObjectEventPic_Uume_OldWomanSwimming[] = INCBIN_U32("graphics/object_events/pics/people/uume/old_woman_swimming.4bpp");
 
 // Hot area NPCs
 const u32 gObjectEventPic_Hot_Woman1[] = INCBIN_U32("graphics/object_events/pics/people/hot/woman_1.4bpp");
@@ -213,6 +214,8 @@ const u32 gObjectEventPic_ShamisenGreen[] = INCBIN_U32("graphics/object_events/p
 const u32 gObjectEventPic_ShamisenRed[] = INCBIN_U32("graphics/object_events/pics/people/greenish/shamisen_red.4bpp");
 const u32 gObjectEventPic_TwinF[] = INCBIN_U32("graphics/object_events/pics/people/greenish/twin_f.4bpp");
 const u32 gObjectEventPic_TwinM[] = INCBIN_U32("graphics/object_events/pics/people/greenish/twin_m.4bpp");
+const u32 gObjectEventPic_OnsenFSwimming[] = INCBIN_U32("graphics/object_events/pics/people/greenish/hotspring_f_swimming.4bpp");
+const u32 gObjectEventPic_OnsenMSwimming[] = INCBIN_U32("graphics/object_events/pics/people/greenish/hotspring_m_swimming.4bpp");
 
 // Purplish pal
 const u32 gObjectEventPic_Artist[] = INCBIN_U32("graphics/object_events/pics/people/purplish/artist.4bpp");
@@ -384,8 +387,8 @@ const u32 gObjectEventPic_Lunchbox[] = INCBIN_U32("graphics/object_events/pics/m
 // 3-4: greys
 // 5-11: foliage
 // 12: bark grey
-// 13: darkest green
-// 14: decay
+// 13: decay
+// 14: hot springs water
 // 15: free real estate
 const u16 gObjectEventPal_HearthOwFoliage[] = INCBIN_U16("graphics/object_events/palettes/hearth_ow_foliage.gbapal");
 // 0: Transparency
@@ -468,6 +471,8 @@ const u32 gObjectEventPic_CustapBerryTree[] = INCBIN_U32("graphics/object_events
 const u32 gObjectEventPic_JabocaBerryTree[] = INCBIN_U32("graphics/object_events/pics/berry_trees/jaboca.4bpp");
 const u32 gObjectEventPic_RowapBerryTree[] = INCBIN_U32("graphics/object_events/pics/berry_trees/rowap.4bpp");
 const u32 gFieldEffectObjectPic_SurfBlob[] = INCBIN_U32("graphics/field_effects/pics/surf_blob.4bpp");
+const u32 gFieldEffectObjectPic_RockClimbBlob[] = INCBIN_U32("graphics/field_effects/pics/rock_climb_blob.4bpp");
+const u32 gFieldEffectObjectPic_RockClimbDust[] = INCBIN_U32("graphics/field_effects/pics/rock_climb_dust.4bpp");
 const u32 gObjectEventPic_QuintyPlump[] = INCBIN_U32("graphics/object_events/pics/people/quinty_plump.4bpp");
 const u16 gObjectEventPal_QuintyPlump[] = INCBIN_U16("graphics/object_events/palettes/quinty_plump.gbapal");
 const u16 gObjectEventPal_QuintyPlumpReflection[] = INCBIN_U16("graphics/object_events/palettes/quinty_plump_reflection.gbapal");
@@ -520,6 +525,7 @@ const u32 gFieldEffectObjectPic_SandDisguisePlaceholder[] = INCBIN_U32("graphics
 const u32 gFieldEffectObjectPic_HotSpringsWater[] = INCBIN_U32("graphics/field_effects/pics/hot_springs_water.4bpp");
 const u16 gFieldEffectPal_Ash[] = INCBIN_U16("graphics/field_effects/palettes/ash.gbapal");
 const u16 gFieldEffectPal_TallGrass[] = INCBIN_U16("graphics/field_effects/palettes/tall_grass.gbapal");
+const u16 gFieldEffectPal_DustCloud[] = INCBIN_U16("graphics/field_effects/palettes/big_dust.gbapal");
 const u32 gFieldEffectObjectPic_AshPuff[] = INCBIN_U32("graphics/field_effects/pics/ash_puff.4bpp");
 const u32 gFieldEffectObjectPic_AshLaunch[] = INCBIN_U32("graphics/field_effects/pics/ash_launch.4bpp");
 const u32 gFieldEffectObjectPic_Bubbles[] = INCBIN_U32("graphics/field_effects/pics/bubbles.4bpp");

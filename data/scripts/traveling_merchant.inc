@@ -18,30 +18,27 @@ TravelingMerchant_EventScript_Keke_5:
 	return
 
 TravelingMerchant_EventScript_Keke_2:
-	speakername TravelingMerchant_EventScript_Keke_Text_0
+	setspeaker SP_NAME_OKADAS_KECLEON
 	goto TravelingMerchant_EventScript_Keke_1
 
 TravelingMerchant_EventScript_Keke_7:
-	msgbox TravelingMerchant_EventScript_Keke_Text_1
+	msgbox TravelingMerchant_EventScript_Keke_Text_0
 	goto TravelingMerchant_EventScript_Keke_5
 
 TravelingMerchant_EventScript_Keke_8:
-	msgbox TravelingMerchant_EventScript_Keke_Text_2
+	msgbox TravelingMerchant_EventScript_Keke_Text_1
 	goto TravelingMerchant_EventScript_Keke_5
 
 TravelingMerchant_EventScript_Keke_9:
-	msgbox TravelingMerchant_EventScript_Keke_Text_3
+	msgbox TravelingMerchant_EventScript_Keke_Text_2
 	goto TravelingMerchant_EventScript_Keke_5
 
 
 TravelingMerchant_EventScript_Keke_Text_0:
-	.string "Keke$"
-
-TravelingMerchant_EventScript_Keke_Text_1:
 	.string "Keckecke!$"
 
-TravelingMerchant_EventScript_Keke_Text_2:
+TravelingMerchant_EventScript_Keke_Text_1:
 	.string "Klehhh!$"
 
-TravelingMerchant_EventScript_Keke_Text_3:
+TravelingMerchant_EventScript_Keke_Text_2:
 	.string "…$"

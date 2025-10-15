@@ -118,13 +118,13 @@ Music: Male
 Battle Type: Singles
 AI: Basic Trainer
 
-Nacli
+Nacli (F)
 Level: 3
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - Harden
 
-Kotora
+Kotora (M)
 Level: 4
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
@@ -290,7 +290,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tail Whip
 - Ember
 
-=== TRAINER_KIN_1 ===
+=== TRAINER_KIN ===
 Name: Kin
 Class: Battle Girl
 Pic: Battle Girl
@@ -354,7 +354,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 15 SpA / 0 SpD / 15 Spe
 - Thunder Shock
 - Cotton Spore
 
-=== TRAINER_MASATO ===
+=== TRAINER_MASATO_1 ===
 Name: Masato
 Class: Bug Catcher
 Pic: Bug Catcher
@@ -1041,22 +1041,35 @@ Level: 19
 - Sand Attack
 - Leer
 
-=== TRAINER_ROSE_2 ===
-Name: ROSE
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
+=== TRAINER_MASATO_2 ===
+Name: Masato
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Prefer Status Moves / Try To Faint / Check Bad Move
 
-Shroomish
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Kricketune (M)
+Level: 25
+- Screech
+- Struggle Bug
+- Slash
+- Sing
 
-Roselia
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Kricketune (M)
+Level: 24
+- Fury Cutter
+- Facade
+- Sing
+- Snore
+
+Nincada (F)
+Level: 24
+- Fury Cutter
+- Facade
+- Sing
+- Snore
 
 === TRAINER_ROSE_3 ===
 Name: ROSE
@@ -6440,77 +6453,122 @@ Aron
 Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CALVIN_2 ===
-Name: CALVIN
+=== TRAINER_TOSHIO_2 ===
+Name: Toshio
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Mightyena
+Naclstack (F)
+Level: 26
+- Rock Throw
+- Smack Down
+- Iron Defense
+
+Raitora (M)
+Level: 25
+- Nuzzle
+- Bite
+- Roar
+- Volt Switch
+
+Nidoran (M)
+Level: 25
+- Focus Energy
+- Poison Sting
+- Fury Attack
+
+=== TRAINER_TOSHIO_3 ===
+Name: Toshio
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer
+
+Raitora (M)
 Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+- Nuzzle
+- Bite
+- Roar
+- Volt Switch
 
-=== TRAINER_CALVIN_3 ===
-Name: CALVIN
-Class: Youngster
-Pic: Youngster
-Gender: Male
-Music: Male
-Battle Type: Singles
-AI: Check Bad Move
+Nidorino (M)
+Level: 27
+- Focus Energy
+- Poison Sting
+- Double Kick
+- Horn Attack
 
-Swellow
-Level: 28
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-
-Mightyena
+Naclstack (F)
 Level: 30
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+- Mud Shot
+- Smack Down
+- Rock Polish
+- Iron Defense
 
-=== TRAINER_CALVIN_4 ===
-Name: CALVIN
+=== TRAINER_TOSHIO_4 ===
+Name: Toshio
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Smartish Trainer
 
-Swellow
-Level: 31
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Nidorino (M)
+Level: 30
+- Focus Energy
+- Toxic Spikes
+- Double Kick
+- Fury Attack
 
-Linoone
+Raitora (M)
 Level: 29
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Thunder Fang
+- Bite
+- Volt Switch
 
-Mightyena
+Naclstack (F)
 Level: 33
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Rock Slide
+- Smack Down
+- Rock Polish
+- Recover
 
-=== TRAINER_CALVIN_5 ===
-Name: CALVIN
+=== TRAINER_TOSHIO_5 ===
+Name: Toshio
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Smartish Trainer
 
-Swellow
-Level: 34
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Garganacl (F)
+Level: 38
+- Rock Slide
+- Salt Cure
+- Stealth Rock
+- Recover
 
-Linoone
-Level: 32
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Nidorino (M)
+Level: 35
+- Thrash
+- Toxic Spikes
+- Fury Attack
+- Focus Energy
 
-Mightyena
-Level: 36
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Raitora (M)
+Level: 35
+- Thunder Fang
+- Electrify
+- Crunch
+- Volt Switch
 
 === TRAINER_EDDIE ===
 Name: EDDIE
@@ -9784,7 +9842,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Future Sight
 
 === TRAINER_BRENDAN_ROUTE_103_MUDKIP ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9797,7 +9855,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_ROUTE_110_MUDKIP ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9818,7 +9876,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_BRENDAN_ROUTE_119_MUDKIP ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9839,7 +9897,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_BRENDAN_ROUTE_103_TREECKO ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9852,7 +9910,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_ROUTE_110_TREECKO ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9873,7 +9931,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_BRENDAN_ROUTE_119_TREECKO ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9894,7 +9952,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_BRENDAN_ROUTE_103_TORCHIC ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9907,7 +9965,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_ROUTE_110_TORCHIC ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9928,7 +9986,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_BRENDAN_ROUTE_119_TORCHIC ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -9994,7 +10052,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Leer
 
 === TRAINER_MAY_ROUTE_110_MUDKIP ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: May
 Gender: Female
@@ -10015,7 +10073,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_MAY_ROUTE_119_MUDKIP ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: May
 Gender: Female
@@ -10036,7 +10094,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_110_TREECKO ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: May
 Gender: Female
@@ -10057,7 +10115,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_MAY_ROUTE_119_TREECKO ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: May
 Gender: Female
@@ -10078,7 +10136,7 @@ Level: 31
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MAY_ROUTE_110_TORCHIC ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: May
 Gender: Female
@@ -10099,7 +10157,7 @@ Level: 20
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_MAY_ROUTE_119_TORCHIC ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: May
 Gender: Female
@@ -10844,7 +10902,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_MIZU ===
 Name: Mizu
-Class: Beauty
+Class: Onsen F
 Pic: Onsen F
 Gender: Female
 Music: Female
@@ -11156,7 +11214,7 @@ Level: 36
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_RUSTBORO_TREECKO ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -11173,7 +11231,7 @@ Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 === TRAINER_BRENDAN_RUSTBORO_MUDKIP ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -11280,7 +11338,7 @@ Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_RUSTBORO_TORCHIC ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -12523,7 +12581,7 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Future Sight
 
 === TRAINER_BRENDAN_LILYCOVE_MUDKIP ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -12548,7 +12606,7 @@ Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_BRENDAN_LILYCOVE_TREECKO ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -12573,7 +12631,7 @@ Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_BRENDAN_LILYCOVE_TORCHIC ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: Brendan
 Gender: Male
@@ -12598,7 +12656,7 @@ Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_MAY_LILYCOVE_MUDKIP ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: May
 Gender: Female
@@ -12623,7 +12681,7 @@ Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_MAY_LILYCOVE_TREECKO ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: May
 Gender: Female
@@ -12648,7 +12706,7 @@ Level: 34
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_MAY_LILYCOVE_TORCHIC ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: Rival
 Pic: May
 Gender: Female
@@ -16292,85 +16350,110 @@ Beldum
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_ANDRES_2 ===
-Name: ANDRES
-Class: Ruin Maniac
-Pic: Ruin Maniac
+=== TRAINER_WAKAE ===
+Name: Wakae
+Class: Onsen F
+Pic: Onsen F
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer
+
+Torkoal
+Level: 22
+- Rapid Spin
+- Smokescreen
+- Flame Wheel
+- Curse
+
+Wailmer
+Level: 22
+- Rollout
+- Whirlpool
+- Mist
+
+Slowpoke
+Level: 21
+- Yawn
+- Disable
+- Headbutt
+- Growl
+
+=== TRAINER_FUTOSHI ===
+Name: Futoshi
+Class: Onsen M
+Pic: Onsen M
+Gender: Male
+Music: Intense
+Battle Type: Singles
+AI: Basic Trainer
+
+Vigoroth
+Level: 23
+- Focus Energy
+- Uproar
+- Encore
+- Endure
+
+Barboach
+Level: 22
+- Magnitude
+- Rest
+- Snore
+
+=== TRAINER_LIHUO ===
+Name: Lihuo
+Class: Firebringer
+Pic: Firebringer
 Gender: Male
 Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Smartish Trainer
 
-Sandshrew
-Level: 31
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Darumaka
+Level: 23
+- Incinerate
+- Rage
+- Facade
 
-Sandshrew
-Level: 31
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Slugma
+Level: 24
+- Smog
+- Rock Throw
+- Ancient Power
 
-=== TRAINER_ANDRES_3 ===
-Name: ANDRES
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
+Slugma
+Level: 23
+- Harden
+- CLear Smog
+- Flame Burst
+
+=== TRAINER_SACHIKO ===
+Name: Sachiko
+Class: Old Lady
+Pic: Old Lady
+Gender: Female
+Music: Rich
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Nosepass
-Level: 33
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Shuckle
+Level: 24
+- Sticky Web
+- Wrap
+- Safeguard
+- Struggle Bug
 
-Sandshrew
-Level: 33
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+Poltchageist
+Level: 23
+- Stun Spore
+- Withdraw
+- Mega Drain
 
-Sandshrew
-Level: 33
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-
-=== TRAINER_ANDRES_4 ===
-Name: ANDRES
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
-Battle Type: Singles
-AI: Check Bad Move
-
-Nosepass
-Level: 35
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-Sandshrew
-Level: 35
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-Sandshrew
-Level: 35
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-
-=== TRAINER_ANDRES_5 ===
-Name: ANDRES
-Class: Ruin Maniac
-Pic: Ruin Maniac
-Gender: Male
-Music: Hiker
-Battle Type: Singles
-AI: Check Bad Move
-
-Nosepass
-Level: 37
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-
-Sandslash
-Level: 37
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-
-Sandslash
-Level: 37
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Braixen
+- Howl
+- Psybeam
+- Flame Charge
 
 === TRAINER_CORY_2 ===
 Name: CORY
@@ -17141,7 +17224,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_BRENDAN_PLACEHOLDER ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: RS Protag
 Pic: RS Brendan
 Gender: Male
@@ -17153,7 +17236,7 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_MAY_PLACEHOLDER ===
-Name: {B_RIVAL_NAME}
+Name: Brendan
 Class: RS Protag
 Pic: RS May
 Gender: Female

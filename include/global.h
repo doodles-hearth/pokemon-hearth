@@ -14,6 +14,7 @@
 #include "constants/species.h"
 #include "constants/pokedex.h"
 #include "constants/berry.h"
+#include "constants/chatot_post.h"
 #include "constants/maps.h"
 #include "constants/pokemon.h"
 #include "constants/route_challenge.h"
@@ -109,6 +110,9 @@
 #define T2_READ_32(ptr) ((ptr)[0] + ((ptr)[1] << 8) + ((ptr)[2] << 16) + ((ptr)[3] << 24))
 #define T2_READ_PTR(ptr) (void *) T2_READ_32(ptr)
 
+#define PACK(data, shift, mask)   ( ((data) << (shift)) & (mask) )
+#define UNPACK(data, shift, mask) ( ((data) & (mask)) >> (shift) )
+
 // Macros for checking the joypad
 #define TEST_BUTTON(field, button) ((field) & (button))
 #define JOY_NEW(button) TEST_BUTTON(gMain.newKeys,  button)
@@ -130,6 +134,7 @@
 
 #define NUM_DEX_FLAG_BYTES ROUND_BITS_TO_BYTES(POKEMON_SLOTS_NUMBER)
 #define NUM_FLAG_BYTES ROUND_BITS_TO_BYTES(FLAGS_COUNT)
+#define NUM_MAIL_FLAG_BYTES ROUND_BITS_TO_BYTES(NUM_CHATOT_POST)
 #define NUM_TRENDY_SAYING_BYTES ROUND_BITS_TO_BYTES(NUM_TRENDY_SAYINGS)
 
 #define LIMITED_SHOP_BITS (LIMITED_SHOP_COUNT * LIMITED_SHOP_MAX_ITEMS * BITS_PER_ITEM)
@@ -223,7 +228,8 @@ struct NPCFollower
     u8 inProgress:1;
     u8 warpEnd:1;
     u8 createSurfBlob:3;
-    u8 comeOutDoorStairs:3;
+    u8 comeOutDoorStairs:2;
+    u8 forcedMovement:1;
     u8 objId;
     u8 currentSprite;
     u8 delayedState;
@@ -1098,7 +1104,7 @@ struct SaveBlock1
     /*0x238*/ struct Pokemon playerParty[PARTY_SIZE];
     /*0x490*/ u32 money;
     /*0x494*/ u16 coins;
-    /*0x496*/ u16 registeredItemSelect; // registered for use with SELECT button
+    /*0x496*/ u16 registeredItem; // registered for use with SELECT button
     /*0x498*/ struct ItemSlot pcItems[PC_ITEMS_COUNT];
     /*0x560 -> 0x848 is bag storage*/
     /*0x560*/ struct Bag bag;
@@ -1190,12 +1196,12 @@ struct SaveBlock1
 #endif //FREE_TRAINER_HILL
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
     // sizeof: 0x3???
-               u8 registeredItemLastSelected:4; //max 16 items
-               u8 registeredItemListCount:4;
-               struct RegisteredItemSlot registeredItems[REGISTERED_ITEMS_MAX];
-               enum RouteChallengeState routeChallengeStates[ROUTE_CHALLENGE_COUNT];
-               u16 remainingShinyVialMinutes;
-               bool8 isShinyVialActive;
+    enum RouteChallengeState routeChallengeStates[ROUTE_CHALLENGE_COUNT];
+    u16 remainingShinyVialMinutes;
+    bool8 isShinyVialActive;
+    u8 activePost[NUM_ACTIVE_POST_SLOTS];
+    u8 postFlags[NUM_MAIL_FLAG_BYTES];
+    u16 chatotPostRematchTrainerId;
 };
 
 extern struct SaveBlock1 *gSaveBlock1Ptr;

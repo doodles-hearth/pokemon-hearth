@@ -4,16 +4,16 @@ SilverTunnel_2F_MapScripts::
 
 SilverTunnel_2F_EventScript_Tama::
 	trainerbattle_double TRAINER_TAMA, SilverTunnel_2F_EventScript_Tama_Text_0, SilverTunnel_2F_EventScript_Tama_Text_1, SilverTunnel_2F_EventScript_Tama_Text_2
-	speakername SilverTunnel_2F_EventScript_Tama_Text_3
-	msgbox SilverTunnel_2F_EventScript_Tama_Text_4, MSGBOX_AUTOCLOSE
+	setspeaker SP_NAME_GEM_MANIAC
+	msgbox SilverTunnel_2F_EventScript_Tama_Text_3, MSGBOX_AUTOCLOSE
 	end
 
 
 SilverTunnel_2F_EventScript_Kansaku::
 	trainerbattle_single TRAINER_IKUTO, SilverTunnel_2F_EventScript_Kansaku_Text_0, SilverTunnel_2F_EventScript_Kansaku_Text_1
-	speakername SilverTunnel_2F_EventScript_Kansaku_Text_2
+	setspeaker SP_NAME_MINER
 	setnamedmon SPECIES_ONIX
-	msgbox SilverTunnel_2F_EventScript_Kansaku_Text_3, MSGBOX_AUTOCLOSE
+	msgbox SilverTunnel_2F_EventScript_Kansaku_Text_2, MSGBOX_AUTOCLOSE
 	end
 
 
@@ -22,8 +22,8 @@ SilverTunnel_2F_EventScript_Sandslash::
 	faceplayer
 	setseenmon SPECIES_SANDSLASH
 	playmoncry SPECIES_SANDSLASH, CRY_MODE_NORMAL
-	speakername SilverTunnel_2F_EventScript_Sandslash_Text_0
-	msgbox SilverTunnel_2F_EventScript_Sandslash_Text_1
+	setspeakertomonname SPECIES_SANDSLASH
+	msgbox SilverTunnel_2F_EventScript_Sandslash_Text_0
 	waitmoncry
 	closemessage
 	release
@@ -33,8 +33,8 @@ SilverTunnel_2F_EventScript_Sandslash::
 SilverTunnel_2F_EventScript_Miner::
 	lock
 	faceplayer
-	speakername SilverTunnel_2F_EventScript_Miner_Text_0
-	msgbox SilverTunnel_2F_EventScript_Miner_Text_1
+	setspeaker SP_NAME_MINER
+	msgbox SilverTunnel_2F_EventScript_Miner_Text_0
 	closemessage
 	turnobject VAR_LAST_TALKED, DIR_WEST
 	setseenmon SPECIES_SANDSLASH
@@ -63,9 +63,6 @@ SilverTunnel_2F_EventScript_Tama_Text_2:
 	.string "Pokémon.$"
 
 SilverTunnel_2F_EventScript_Tama_Text_3:
-	.string "Tama$"
-
-SilverTunnel_2F_EventScript_Tama_Text_4:
 	.string "I came here all the way from Saberside\n"
 	.string "Town looking for precious gemstones.\p"
 	.string "But there's only sad, grey rocks here…$"
@@ -77,22 +74,13 @@ SilverTunnel_2F_EventScript_Kansaku_Text_1:
 	.string "What a headache!$"
 
 SilverTunnel_2F_EventScript_Kansaku_Text_2:
-	.string "Ikuto$"
-
-SilverTunnel_2F_EventScript_Kansaku_Text_3:
 	.string "Onix is the best! Sure, she causes\n"
 	.string "cave-ins sometimes, but that's not\l"
 	.string "important!$"
 
 SilverTunnel_2F_EventScript_Sandslash_Text_0:
-	.string "Sandslash$"
-
-SilverTunnel_2F_EventScript_Sandslash_Text_1:
 	.string "Sahaaah!$"
 
 SilverTunnel_2F_EventScript_Miner_Text_0:
-	.string "Miner$"
-
-SilverTunnel_2F_EventScript_Miner_Text_1:
 	.string "We're here mining all day, everyday!\n"
 	.string "Ain't that right, Sandy?$"

@@ -21,6 +21,7 @@
 #include "constants/daycare.h"
 #include "constants/decorations.h"
 #include "constants/difficulty.h"
+#include "constants/chatot_post.h"
 #include "constants/easy_chat.h"
 #include "constants/event_objects.h"
 #include "constants/event_object_movement.h"
@@ -64,9 +65,9 @@
 #include "constants/union_room.h"
 #include "constants/vars.h"
 #include "constants/weather.h"
-#include "constants/rtc.h"
 #include "constants/quests.h"
 #include "constants/field_mugshots.h"
+#include "constants/speaker_names.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "constants/constants.inc"
@@ -978,8 +979,7 @@ gText_MomExplainHPGetPotions::
 	.string "Take care!$"
 
 gText_RegisteredTrainerinPokeNav::
-	.string "Registered {STR_VAR_1} {STR_VAR_2}\n"
-	.string "in the POKéNAV.$"
+	.string "{PLAYER} and {STR_VAR_1}\n{STR_VAR_2} became pen pals!$"
 
 gText_ComeBackWithSecretPower::
 	.string "Do you know the TM SECRET POWER?\p"
@@ -1390,3 +1390,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SunriseCave/scripts.inc"
 
 	.include "data/maps/WindsweptRouteBottom/scripts.inc"
+
+	.include "data/maps/YifuCity_HotSprings/scripts.inc"

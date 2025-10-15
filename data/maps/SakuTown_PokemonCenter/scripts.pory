@@ -58,7 +58,7 @@ script SakuTown_PokemonCenter_EventScript_Nurse {
 	lock
 
 	faceplayer
-	speakername("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}Hello! Apologies for the mess, we're not fully set up yet!\p"
 		"Let me heal your Pokémon!"
@@ -71,7 +71,7 @@ script SakuTown_PokemonCenter_EventScript_Nurse {
 	callnative(UpdateFollowingPokemon)
 	fadescreenswapbuffers(FADE_FROM_BLACK)
 
-	speakername("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}Come back soon!"
 	))
@@ -85,11 +85,29 @@ script SakuTown_PokemonCenter_EventScript_Nurse {
 script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
 	lock
 	faceplayer
-	speakername("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}This Pokémon refuge is brand new, courtesy of the Toku Council!\p"
 		"As you can see, it's still being built.\NWatch out for the falling bricks,\lha ha, just kidding!\p"
 		"Seriously though, do watch out.\nWe're held responsible if anything happens to you."
+	))
+	closemessage
+	release
+	end
+}
+
+script SakuTown_PokemonCenter_EventScript_ChatotPost {
+	lock
+	faceplayer
+	setspeaker(SP_NAME_GUY)
+	playse(SE_PIN)
+	setnamedmon(SPECIES_CHATOT)
+	applymovement(VAR_LAST_TALKED, moves(emote_music, lock_facing_direction, walk_in_place_down * 4, unlock_facing_direction))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}If you're waiting for Chatot post~\nHang out by the Chatot Post~!\p"
+		"If a Chatot is perched on a Chatot Post, that means you've got mail!\p"
+		"Chatot will repeat the message it's been told for you to enjoy!\p"
+		"SQWAK SQWAK!\nHe he."
 	))
 	closemessage
 	release
@@ -101,7 +119,7 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 	setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2)
 	applymovement(LOCALID_NURSE, moves(face_right))
 	waitmovement(0)
-	speakername("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}I'm sorry, but there's nothing I can do yet.\p"
 		"We haven't tools that allow us to heal a Pokémon in this dire a state."
@@ -110,14 +128,14 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5))
 
-	speakername("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("Y'have to do som'thin', miss!\nCantcha see she's in pain?!"))
 	closemessage
 
 	applymovement(LOCALID_NURSE, moves(walk_in_place_fast_down))
 	waitmovement(0)
 
-	speakername("Nurse")
+	setspeaker(SP_NAME_NURSE)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}She can stay here for as long as she needs.\p"
 		"I'll keep her in as good a shape as I can."
@@ -131,7 +149,7 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 script SakuTown_PokemonCenter_EventScript_Farmer1 {
 	lock
 	faceplayer
-	speakername("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	returnqueststate(QUEST_SAKURASCYTHER)
 	switch(var(VAR_RESULT))
 	{
@@ -179,7 +197,7 @@ script(local) HealedScytherScript{
 	waitmovement(0)
 	waitse
 
-	speakername("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("That's it!\nPlease, Wielder, quickly!"))
 	closemessage
 
@@ -192,7 +210,7 @@ script(local) HealedScytherScript{
 	applymovement(LOCALID_BED_FARMER_1, moves(walk_in_place_fast_right))
 	waitmovement(0)
 
-	speakername("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("Here, girl…\nThis'll make ye feel better…"))
 	closemessage
 
@@ -226,7 +244,7 @@ script(local) HealedScytherScript{
 	waitmovement(LOCALID_BED_FARMER_1)
 	waitmovement(LOCALID_BED_FARMER_2)
 
-	speakername("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
 		"Wielder… I don't know how to thank ya.\NWe were so worried…\p"
 		"Where did you get this medicine?"
@@ -235,7 +253,7 @@ script(local) HealedScytherScript{
 
 	mcdialogue("The healer in Kura Village!")
 
-	speakername("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("Kura Village, eh…"))
 
 	applymovement(LOCALID_BED_FARMER_1, moves(face_up))
@@ -258,14 +276,14 @@ script(local) HealedScytherScript{
 	waitmoncry
 	closemessage
 
-	speakername("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("{FONT_SMALL} Maybe they ain't s'bad afta' all…"))
 	closemessage
 
 	applymovement(LOCALID_BED_FARMER_1, moves(face_player))
 	waitmovement(0)
 
-	speakername("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("Thank you, Wielder. I can give ye a reward for your effors. Just meet us in the fields outside."))
 	closemessage
 
@@ -287,7 +305,7 @@ script(local) HealedScytherScript{
 
 script SakuTown_PokemonCenter_EventScript_Farmer2 {
 	lock
-	speakername("Farmer")
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format("There, there, girl…\nIt'll be okay…"))
 	closemessage
 
@@ -304,7 +322,7 @@ script SakuTown_PokemonCenter_EventScript_Pushing {
 	delay(30)
 
 	faceplayer
-	speakername("Shady man")
+	setspeaker("Shady man")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Watchu lookin' at? Scram!"
 	))
@@ -325,7 +343,7 @@ script SakuTown_PokemonCenter_EventScript_Pushing {
 
 script SakuTown_PokemonCenter_EventScript_Grunt1 {
 	lock
-	speakername("Shady man")
+	setspeaker("Shady man")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Great plan…"
 	))
@@ -339,7 +357,7 @@ script SakuTown_PokemonCenter_EventScript_Grunt1 {
 
 script SakuTown_PokemonCenter_EventScript_Grunt2 {
 	lock
-	speakername("Shady man")
+	setspeaker("Shady man")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We should do this next…"
 	))
@@ -353,7 +371,7 @@ script SakuTown_PokemonCenter_EventScript_Grunt2 {
 
 script SakuTown_PokemonCenter_EventScript_Grunt3 {
 	lock
-	speakername("Shady man")
+	setspeaker("Shady man")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}On Beachbound Route…"
 	))

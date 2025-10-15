@@ -44,6 +44,42 @@ static const u8 sRoundedDownGrayscaleMap[] = {
     31, 31
 };
 
+u16 ConvertColorToDesaturatedNaive(u16 input)
+{
+    u32 setting = 3;
+    u16 output = 0;
+    s32 rVal = input & 0x1F;
+    s32 gVal = (input >> 5) & 0x1f;
+    s32 bVal = (input >> 10) & 0x1f;
+    s32 i = (rVal + gVal + bVal) / 3;
+    s32 rD = i - rVal;
+    s32 gD = i - gVal;
+    s32 bD = i - bVal;
+    rD *= setting;
+    gD *= setting;
+    bD *= setting;
+    rD = rD >> 2;
+    gD = gD >> 2;
+    bD = bD >> 2;
+    s32 rValNew = rVal + rD;
+    s32 gValNew = gVal + gD;
+    s32 bValNew = bVal + bD;
+    if (rValNew < 0)
+        rValNew = 0;
+    else if (rValNew > 31)
+        rValNew = 31;
+    if (gValNew < 0)
+        gValNew = 0;
+    else if (gValNew > 31)
+        gValNew = 31;
+    if (bValNew < 0)
+        bValNew = 0;
+    else if (bValNew > 31)
+        bValNew = 31;
+    output = (bValNew << 10) | (gValNew << 5) | rValNew;
+    return output;
+}
+
 void LoadPalette(const void *src, u32 offset, u32 size)
 {
     CpuCopy16(src, &gPlttBufferUnfaded[offset], size);
@@ -720,36 +756,52 @@ static void UpdateBlendRegisters(void)
 {
     SetGpuReg(REG_OFFSET_BLDCNT, (u16)gPaletteFadeBlendCnt);
     SetGpuReg(REG_OFFSET_BLDY, gPaletteFade.y);
-    // If fade-out, also adjust BLDALPHA and DISPCNT
-    if (!gPaletteFade.yDec)
+    // if TGT2 enabled, also adjust BLDALPHA and DISPCNT
+    if (((u16)gPaletteFadeBlendCnt) & BLDCNT_TGT2_ALL)
     {
         u16 bldAlpha = GetGpuReg(REG_OFFSET_BLDALPHA);
         u8 tgt1 = BLDALPHA_TGT1(bldAlpha);
         u8 tgt2 = BLDALPHA_TGT2(bldAlpha);
-        u8 bldFade;
+        u8 mode = (gPaletteFadeBlendCnt & BLDCNT_EFFECT_EFF_MASK) == BLDCNT_EFFECT_LIGHTEN ? FADE_FROM_WHITE : FADE_FROM_BLACK;
+        if (!gPaletteFade.yDec)
+            mode++;
 
-        switch (gPaletteFadeBlendCnt & BLDCNT_EFFECT_EFF_MASK)
+        ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_FORCED_BLANK);
+
+        switch (mode)
         {
-        // FADE_TO_BLACK
-        case BLDCNT_EFFECT_DARKEN:
-            bldFade = BLDALPHA_TGT1(max(0, 16 - gPaletteFade.y));
-            SetGpuReg(REG_OFFSET_BLDALPHA,
-                      BLDALPHA_BLEND(min(tgt1, bldFade), min(tgt2, bldFade)));
+        case FADE_FROM_BLACK:
+            // increment each target until reaching weather's values
+            SetGpuReg(
+                REG_OFFSET_BLDALPHA,
+                BLDALPHA_BLEND(
+                    min(++tgt1, gWeatherPtr->currBlendEVA),
+                    min(++tgt2, gWeatherPtr->currBlendEVB)
+                )
+            );
             break;
-        // FADE_TO_WHITE
-        case BLDCNT_EFFECT_LIGHTEN:
-            SetGpuReg(REG_OFFSET_BLDALPHA,
-                      BLDALPHA_BLEND(min(++tgt1, 31), min(++tgt2, 31)));
+        case FADE_TO_BLACK:
+            bldAlpha = BLDALPHA_TGT1(max(0, 16 - gPaletteFade.y));
+            SetGpuReg(
+                REG_OFFSET_BLDALPHA,
+                BLDALPHA_BLEND(min(tgt1, bldAlpha), min(tgt2, bldAlpha))
+            );
+            break;
+        // Not handled; blend sprites will pop in,
+        // but the effect coming from white looks okay
+        // case FADE_FROM_WHITE:
+        //     break;
+        case FADE_TO_WHITE:
+            SetGpuReg(
+                REG_OFFSET_BLDALPHA,
+                BLDALPHA_BLEND(min(++tgt1, 31), min(++tgt2, 31))
+            );
             // cause display to show white when finished
             // (otherwise blend-mode sprites will still be visible)
             if (gPaletteFade.hardwareFadeFinishing && gPaletteFade.y >= 16)
                 SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_FORCED_BLANK);
             break;
         }
-    }
-    else
-    {
-        ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_FORCED_BLANK);
     }
 
     if (gPaletteFade.hardwareFadeFinishing)

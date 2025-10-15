@@ -10,7 +10,7 @@ script GinkoWoods_EventScript_Toshiki {
 		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}These bugs are electrifying!"),
 		format("Ouch! How did you do that?")
 	)
-	speakername("Toshiki")
+	setspeaker(SP_NAME_BUGCATCHER)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}Isn't Sewaddle cute, all wrapped up in its leaf?"))
 	closemessage
 	setnamedmon(SPECIES_SEWADDLE_TOKUAN)
@@ -19,21 +19,34 @@ script GinkoWoods_EventScript_Toshiki {
 }
 
 script GinkoWoods_EventScript_Toshio {
-	// TODO rematch
 	trainerbattle_single(
 		TRAINER_TOSHIO_1,
 		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Our eyes met! Therefore we must battle!"),
-		format("Should have kept my mouth shut…")
+		format("Should have kept my mouth shut…"),
+		GinkoWoods_EventScript_Toshio_Register
 	)
-	// specialvar VAR_RESULT, ShouldTryRematchBattle
-	// goto_if_eq VAR_RESULT, TRUE, Route102_EventScript_CalvinRematch
-	// setvar VAR_0x8004, TRAINER_CALVIN_1
-	// specialvar VAR_RESULT, IsTrainerRegistered
-	// goto_if_eq VAR_RESULT, FALSE, Route102_EventScript_CalvinTryRegister
-	speakername("Toshio")
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Real Wielders fight when they spot each other!\pAt least that's what my dad told me…"))
+
+	specialvar(VAR_RESULT, ShouldTryRematchBattle)
+	if (var(VAR_RESULT)) {
+		trainerbattle_rematch(TRAINER_TOSHIO_1, format("Let's fight again!"), format("I lost again?!"))
+	}
+	
+	msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}{SPEAKER NAME_YOUNGSTER}Real Wielders fight when they spot each other!\p"
+			"At least that's what my dad told me…"
+		))
+	closemessage
 	release
-	end
+	return
+}
+
+script(local) GinkoWoods_EventScript_Toshio_Register {
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}{SPEAKER NAME_YOUNGSTER}"
+		"Hey, let's be friends!\nWe'll send each other Chatot mail,\land battle again sometime!"
+	))
+	closemessage
+	register_matchcall(TRAINER_TOSHIO_1)
 }
 
 script GinkoWoods_EventScript_Eiji {
@@ -42,7 +55,7 @@ script GinkoWoods_EventScript_Eiji {
 		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}With the help of my brand new Pokémon, I'm catching all sort of bugs!"),
 		format("My bugs!")
 	)
-	speakername("Eiji")
+	setspeaker(SP_NAME_BUGCATCHER)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I asked Elder Kaba for a bird Pokémon, because they're strong against bugs!"))
 	release
 	end
@@ -52,7 +65,7 @@ script GinkoWoods_EventScript_OldMan {
 	lock
 	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
-	speakername("Old Man")
+	setspeaker(SP_NAME_OLD_MAN)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}These woods are fascinating.\pThere seem to be a lot of yellow Pokémon here."))
 	release
 	end
@@ -61,12 +74,13 @@ script GinkoWoods_EventScript_OldMan {
 script GinkoWoods_EventScript_Bean {
 	lock
 
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_music, delay_16 * 6))
 	waitmovement(VAR_LAST_TALKED)
 
 	faceplayer
 
-	speakername("Odd Girl")
+	setspeaker("Odd Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello!"
 	))
@@ -76,7 +90,7 @@ script GinkoWoods_EventScript_Bean {
 
 	turnobject(LOCALID_BEAN, DIR_EAST)
 
-	speakername("Odd Girl")
+	setspeaker("Odd Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just noticed there are some neat tracks in the dirt here."
 	))
@@ -86,7 +100,7 @@ script GinkoWoods_EventScript_Bean {
 	
 	delay(48)
 
-	speakername("Odd Girl")
+	setspeaker("Odd Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}It looks like a small mammal's footprints, see?\p"
 		"Studying Pokémon tracks is so fascinating. One can find out about a Pokémon's nesting place, their hunting habits, at what time they sleep, what they eat… Interesting, isn't it?\p"
@@ -106,7 +120,7 @@ script GinkoWoods_EventScript_Bean {
 
 	delay(48)
 
-	speakername("Odd Girl")
+	setspeaker("Odd Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…And that's all that is currently known about Joltik's habitat during the winter.\p"
 		"Neat, isn't it?"
@@ -124,7 +138,7 @@ script GinkoWoods_EventScript_Bean {
 		"I was just passing through…"
 	)
 	closemessage
-	speakername("Hariko")
+	setspeaker(SP_NAME_HARIKO)
 
 	switch(var(VAR_RESULT)) {
 		case 0:
@@ -142,14 +156,14 @@ script GinkoWoods_EventScript_Bean {
 				"Okay. Bye!"
 			))
 		case 2:
+			playse(SE_PIN)
 			applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…Oh. I am blocking your path. I see.\p"
 				"I got carried away, have I not?\nThat… tends to happen.\p"
 				"I am Hariko. And what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\NI am moving now, so that you can go through.\p"
-				"I will see you around, then.\p"
-				"Okay. Bye!"
+				"I will see you around.{PAUSE 8}\nOkay. Bye!"
 			))
 	}
 	closemessage
@@ -178,7 +192,7 @@ script GinkoWoods_EventScript_Tracks {
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 
 	applymovement(VAR_LAST_TALKED, moves(emote_upset))
-	speakername("Odd Girl")
+	setspeaker("Odd Girl")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}THE TRACKS!!\nYOU'RE STEPPING ON THEM!!!"
 	))
