@@ -58,6 +58,9 @@ static const u32 sHearthTitleScreenSkyTilemap[] = INCBIN_U32("graphics/title_scr
 static const u32 sHearthTitleScreenLandscapeGfx[] = INCBIN_U32("graphics/title_screen/hearth/landscape-tiles.4bpp.smol");
 static const u32 sHearthTitleScreenLandscapeTilemap[] = INCBIN_U32("graphics/title_screen/hearth/landscape-tiles.bin.smolTM");
 
+static const u32 sHearthTitleScreenChimechoGfx[] = INCBIN_U32("graphics/title_screen/hearth/chimecho-tiles.4bpp.smol");
+static const u32 sHearthTitleScreenChimechoTilemap[] = INCBIN_U32("graphics/title_screen/hearth/chimecho-tiles.bin.smolTM");
+
 static const struct OamData sVersionBannerLeftOamData =
 {
     .y = DISPLAY_HEIGHT,
@@ -153,10 +156,10 @@ static const struct OamData sOamData_CopyrightBanner =
     .objMode = ST_OAM_OBJ_NORMAL,
     .mosaic = FALSE,
     .bpp = ST_OAM_4BPP,
-    .shape = SPRITE_SHAPE(32x8),
+    .shape = SPRITE_SHAPE(16x16),
     .x = 0,
     .matrixNum = 0,
-    .size = SPRITE_SIZE(32x8),
+    .size = SPRITE_SIZE(16x16),
     .tileNum = 0,
     .priority = 0,
     .paletteNum = 0,
@@ -165,72 +168,70 @@ static const struct OamData sOamData_CopyrightBanner =
 
 static const union AnimCmd sAnim_PressStart_0[] =
 {
-    ANIMCMD_FRAME(1, 4),
+    ANIMCMD_FRAME(0, 4),
     ANIMCMD_END,
 };
+
 static const union AnimCmd sAnim_PressStart_1[] =
 {
-    ANIMCMD_FRAME(5, 4),
+    ANIMCMD_FRAME(4, 4),
     ANIMCMD_END,
 };
+
 static const union AnimCmd sAnim_PressStart_2[] =
 {
-    ANIMCMD_FRAME(9, 4),
+    ANIMCMD_FRAME(8, 4),
     ANIMCMD_END,
 };
-static const union AnimCmd sAnim_PressStart_3[] =
-{
-    ANIMCMD_FRAME(13, 4),
-    ANIMCMD_END,
-};
-static const union AnimCmd sAnim_PressStart_4[] =
-{
-    ANIMCMD_FRAME(17, 4),
-    ANIMCMD_END,
-};
+
 static const union AnimCmd sAnim_Copyright_0[] =
 {
-    ANIMCMD_FRAME(21, 4),
+    ANIMCMD_FRAME(32, 4),
     ANIMCMD_END,
 };
 static const union AnimCmd sAnim_Copyright_1[] =
 {
-    ANIMCMD_FRAME(25, 4),
+    ANIMCMD_FRAME(36, 4),
     ANIMCMD_END,
 };
 static const union AnimCmd sAnim_Copyright_2[] =
 {
-    ANIMCMD_FRAME(29, 4),
+    ANIMCMD_FRAME(40, 4),
     ANIMCMD_END,
 };
 static const union AnimCmd sAnim_Copyright_3[] =
 {
-    ANIMCMD_FRAME(33, 4),
+    ANIMCMD_FRAME(44, 4),
     ANIMCMD_END,
 };
 static const union AnimCmd sAnim_Copyright_4[] =
 {
-    ANIMCMD_FRAME(37, 4),
+    ANIMCMD_FRAME(48, 4),
+    ANIMCMD_END,
+};
+static const union AnimCmd sAnim_Copyright_5[] =
+{
+    ANIMCMD_FRAME(52, 4),
     ANIMCMD_END,
 };
 
-// The "Press Start" and copyright graphics are each 5 32x8 segments long
-#define NUM_PRESS_START_FRAMES 5
-#define NUM_COPYRIGHT_FRAMES 5
+// 3 16x16 segments
+#define NUM_PRESS_START_FRAMES 3
+// 6 16x16 segments
+#define NUM_COPYRIGHT_FRAMES 6
 
 static const union AnimCmd *const sStartCopyrightBannerAnimTable[NUM_PRESS_START_FRAMES + NUM_COPYRIGHT_FRAMES] =
 {
     sAnim_PressStart_0,
     sAnim_PressStart_1,
     sAnim_PressStart_2,
-    sAnim_PressStart_3,
-    sAnim_PressStart_4,
     [NUM_PRESS_START_FRAMES] =
     sAnim_Copyright_0,
     sAnim_Copyright_1,
     sAnim_Copyright_2,
     sAnim_Copyright_3,
     sAnim_Copyright_4,
+    sAnim_Copyright_5,
 };
 
 static const struct SpriteTemplate sStartCopyrightBannerSpriteTemplate =
@@ -247,8 +248,8 @@ static const struct SpriteTemplate sStartCopyrightBannerSpriteTemplate =
 static const struct CompressedSpriteSheet sSpriteSheet_PressStart[] =
 {
     {
-        .data = gTitleScreenPressStartGfx,
-        .size = 0x520,
+        .data = gHearthTitleScreenPressStartGfx,
+        .size = 0x720,
         .tag = TAG_PRESS_START_COPYRIGHT
     },
     {},
@@ -257,7 +258,7 @@ static const struct CompressedSpriteSheet sSpriteSheet_PressStart[] =
 static const struct SpritePalette sSpritePalette_PressStart[] =
 {
     {
-        .data = gTitleScreenPressStartPal,
+        .data = gHearthTitleScreenPressStartPal,
         .tag = TAG_PRESS_START_COPYRIGHT
     },
     {},
@@ -330,8 +331,8 @@ static void CreatePressStartBanner(s16 x, s16 y)
     u8 i;
     u8 spriteId;
 
-    x -= 64;
-    for (i = 0; i < NUM_PRESS_START_FRAMES; i++, x += 32)
+    x -= 24;
+    for (i = 0; i < NUM_PRESS_START_FRAMES; i++, x += 16)
     {
         spriteId = CreateSprite(&sStartCopyrightBannerSpriteTemplate, x, y, 0);
         StartSpriteAnim(&gSprites[spriteId], i);
@@ -344,8 +345,8 @@ static void CreateCopyrightBanner(s16 x, s16 y)
     u8 i;
     u8 spriteId;
 
-    x -= 64;
-    for (i = 0; i < NUM_COPYRIGHT_FRAMES; i++, x += 32)
+    x -= 48;
+    for (i = 0; i < NUM_COPYRIGHT_FRAMES; i++, x += 16)
     {
         spriteId = CreateSprite(&sStartCopyrightBannerSpriteTemplate, x, y, 0);
         StartSpriteAnim(&gSprites[spriteId], i + NUM_PRESS_START_FRAMES);
@@ -394,25 +395,26 @@ void CB2_InitHearthTitleScreen(void)
 
     case 1:
         // bg0 = Sky
-        /* DecompressDataWithHeaderVram(sHearthTitleScreenSkyGfx, (void *)(BG_CHAR_ADDR(0)));
-        DecompressDataWithHeaderVram(sHearthTitleScreenSkyTilemap, (void *)(BG_SCREEN_ADDR(6))); */
+        DecompressDataWithHeaderVram(sHearthTitleScreenSkyGfx, (void *)(BG_CHAR_ADDR(0)));
+        DecompressDataWithHeaderVram(sHearthTitleScreenSkyTilemap, (void *)(BG_SCREEN_ADDR(6)));
         
         // bg1 = Landscape
-        /* DecompressDataWithHeaderVram(sHearthTitleScreenLandscapeGfx, (void *)(BG_CHAR_ADDR(1)));
-        DecompressDataWithHeaderVram(sHearthTitleScreenLandscapeTilemap, (void *)(BG_SCREEN_ADDR(14))); */
+        DecompressDataWithHeaderVram(sHearthTitleScreenLandscapeGfx, (void *)(BG_CHAR_ADDR(1)));
+        DecompressDataWithHeaderVram(sHearthTitleScreenLandscapeTilemap, (void *)(BG_SCREEN_ADDR(14)));
 
         // bg2 = Chimecho
-        /* DecompressDataWithHeaderVram(sHearthTitleScreenChimechoGfx, (void *)(BG_CHAR_ADDR(2)));
-        DecompressDataWithHeaderVram(sHearthTitleScreenChimechoTilemap, (void *)(BG_SCREEN_ADDR(30))); */
+        DecompressDataWithHeaderVram(sHearthTitleScreenChimechoGfx, (void *)(BG_CHAR_ADDR(2)));
+        DecompressDataWithHeaderVram(sHearthTitleScreenChimechoTilemap, (void *)(BG_SCREEN_ADDR(23)));
 
         // bg3 = Pokémon
-        DecompressDataWithHeaderVram(sHearthTitleScreenSkyGfx, (void *)(BG_CHAR_ADDR(3)));
-        DecompressDataWithHeaderVram(sHearthTitleScreenSkyTilemap, (void *)(BG_SCREEN_ADDR(30)));
+        DecompressDataWithHeaderVram(gHearthTitleScreenPokemonLogoGfx, (void *)(BG_CHAR_ADDR(3)));
+        DecompressDataWithHeaderVram(gHearthTitleScreenPokemonLogoTilemap, (void *)(BG_SCREEN_ADDR(30)));
 
         // Palettes
         LoadPalette(gHearthTitleScreenBgPokemonLogoPalette, BG_PLTT_ID(0), 1 * PLTT_SIZE_4BPP);
         LoadPalette(gHearthTitleScreenBgSkyPalette, BG_PLTT_ID(1), 1 * PLTT_SIZE_4BPP);
         LoadPalette(gHearthTitleScreenBgLandscapePalette, BG_PLTT_ID(2), 1 * PLTT_SIZE_4BPP);
+        LoadPalette(gHearthTitleScreenBgChimechoPalette, BG_PLTT_ID(3), 1 * PLTT_SIZE_4BPP);
 
         ResetTasks();
         ResetSpriteData();
@@ -458,12 +460,12 @@ void CB2_InitHearthTitleScreen(void)
         /* SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG2 | BLDCNT_EFFECT_LIGHTEN); */
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 12);
-        /* SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(3) | BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(6) | BGCNT_16COLOR | BGCNT_TXT256x256); */
-        /* SetGpuReg(REG_OFFSET_BG1CNT, BGCNT_PRIORITY(2) | BGCNT_CHARBASE(1) | BGCNT_SCREENBASE(14) | BGCNT_16COLOR | BGCNT_TXT256x256); */
-        /* SetGpuReg(REG_OFFSET_BG1CNT, BGCNT_PRIORITY(1) | BGCNT_CHARBASE(2) | BGCNT_SCREENBASE(30) | BGCNT_16COLOR | BGCNT_TXT256x256); */
+        SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(3) | BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(6) | BGCNT_16COLOR | BGCNT_TXT256x256);
+        SetGpuReg(REG_OFFSET_BG1CNT, BGCNT_PRIORITY(2) | BGCNT_CHARBASE(1) | BGCNT_SCREENBASE(14) | BGCNT_16COLOR | BGCNT_TXT256x256);
+        SetGpuReg(REG_OFFSET_BG2CNT, BGCNT_PRIORITY(1) | BGCNT_CHARBASE(2) | BGCNT_SCREENBASE(23) | BGCNT_16COLOR | BGCNT_TXT256x256);
         SetGpuReg(REG_OFFSET_BG3CNT, BGCNT_PRIORITY(0) | BGCNT_CHARBASE(3) | BGCNT_SCREENBASE(30) | BGCNT_16COLOR | BGCNT_TXT256x256);
         EnableInterrupts(INTR_FLAG_VBLANK);
-        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_1
+        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0
                                     | DISPCNT_OBJ_1D_MAP
                                     | DISPCNT_BG_ALL_ON
                                     | DISPCNT_OBJ_ON
@@ -503,12 +505,12 @@ static void Task_HearthTitleScreenPhase1(u8 taskId)
 
     u8 spriteId;
 
-    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_1 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG2_ON | DISPCNT_OBJ_ON);
+    /* SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | DISPCNT_BG2_ON | DISPCNT_OBJ_ON);
     SetGpuReg(REG_OFFSET_WININ, 0);
     SetGpuReg(REG_OFFSET_WINOUT, 0);
     SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_OBJ | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_ALL);
     SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(16, 0));
-    SetGpuReg(REG_OFFSET_BLDY, 0);
+    SetGpuReg(REG_OFFSET_BLDY, 0); */
 
     // Create left side of version banner
     spriteId = CreateSprite(&sVersionBannerLeftSpriteTemplate, VERSION_BANNER_LEFT_X, VERSION_BANNER_Y, 0);
@@ -547,13 +549,14 @@ static void Task_HearthTitleScreenPhase2(u8 taskId)
         gTasks[taskId].tSkipToNext = TRUE;
         /* SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BD); */
         /* SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(6, 15)); */
-        SetGpuReg(REG_OFFSET_BLDY, 0);
-        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_1
+        /* SetGpuReg(REG_OFFSET_BLDY, 0);
+        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0
                                     | DISPCNT_OBJ_1D_MAP
                                     | DISPCNT_BG0_ON
                                     | DISPCNT_BG1_ON
                                     | DISPCNT_BG2_ON
-                                    | DISPCNT_OBJ_ON);
+                                    | DISPCNT_BG3_ON
+                                    | DISPCNT_OBJ_ON); */
         CreatePressStartBanner(START_BANNER_X, 108);
         CreateCopyrightBanner(START_BANNER_X, 148);
         gTasks[taskId].tBg1Y = 0;

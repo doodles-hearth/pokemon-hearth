@@ -2122,6 +2122,8 @@ extern const u16 gHearthTitleScreenHearthPal[];
 extern const u32 gHearthTitleScreenPokemonLogoGfx[];
 extern const u32 gHearthTitleScreenPokemonLogoTilemap[];
 extern const u32 gHearthTitleScreenHearthGfx[];
+extern const u32 gHearthTitleScreenPressStartGfx[];
+extern const u16 gHearthTitleScreenPressStartPal[];
 
 extern const u32 gTitleScreenEmeraldVersionGfx[];
 extern const u32 gTitleScreenPressStartGfx[];
