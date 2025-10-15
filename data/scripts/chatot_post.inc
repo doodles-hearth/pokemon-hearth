@@ -181,7 +181,7 @@ ChatotPost_EventScript_FromHariko_Text_1:
 
 ChatotPost_EventScript_FromBigSis_Text_0:
 	.string "“Chatot, are you listening to me?\n"
-	.string "Hey, look this way-{PAUSE 8}pspsps!\p"
+	.string "Hey, look this way-{PAUSE 8} pspsps!\p"
 	.string "Ahem, hey little {STR_VAR_1}!\n"
 	.string "Hope you're missing me already!\p"
 	.string "You forgot your lucky Entei\n"

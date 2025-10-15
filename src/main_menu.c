@@ -36,6 +36,7 @@
 #include "text.h"
 #include "text_window.h"
 #include "title_screen.h"
+#include "title_screen_hearth.h"
 #include "window.h"
 #include "mystery_gift_menu.h"
 #include "kaba_speech.h"
@@ -1107,7 +1108,7 @@ static void Task_HandleMainMenuBPressed(u8 taskId)
             RemoveScrollIndicatorArrowPair(gTasks[taskId].tScrollArrowTaskId);
         sCurrItemAndOptionMenuCheck = 0;
         FreeAllWindowBuffers();
-        SetMainCallback2(CB2_InitTitleScreen);
+        SetMainCallback2(CB2_InitHearthTitleScreen);
         DestroyTask(taskId);
     }
 }

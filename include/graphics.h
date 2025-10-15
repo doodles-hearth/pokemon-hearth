@@ -2113,6 +2113,18 @@ extern const u16 gBattlePyramidFloor_Pal[][16];
 
 extern const u16 gStandardMenuPalette[];
 
+// Hearth title screen
+extern const u16 gHearthTitleScreenBgPokemonLogoPalette[];
+extern const u16 gHearthTitleScreenBgSkyPalette[];
+extern const u16 gHearthTitleScreenBgLandscapePalette[];
+extern const u16 gHearthTitleScreenBgChimechoPalette[];
+extern const u16 gHearthTitleScreenHearthPal[];
+extern const u32 gHearthTitleScreenPokemonLogoGfx[];
+extern const u32 gHearthTitleScreenPokemonLogoTilemap[];
+extern const u32 gHearthTitleScreenHearthGfx[];
+extern const u32 gHearthTitleScreenPressStartGfx[];
+extern const u16 gHearthTitleScreenPressStartPal[];
+
 extern const u32 gTitleScreenEmeraldVersionGfx[];
 extern const u32 gTitleScreenPressStartGfx[];
 extern const u32 gTitleScreenPokemonLogoGfx[];
