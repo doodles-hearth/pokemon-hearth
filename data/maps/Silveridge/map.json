@@ -254,6 +254,13 @@
       "elevation": 0,
       "dest_map": "MAP_SILVERIDGE_HOUSE2",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 34,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_SILVERIDGE_HOUSE3",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

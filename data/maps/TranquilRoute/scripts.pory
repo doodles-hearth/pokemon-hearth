@@ -552,6 +552,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 script TranquilRoute_EventScript_WaitingForChatot {
 	lock
 	faceplayer
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_GIRL)
 	msgbox(format(

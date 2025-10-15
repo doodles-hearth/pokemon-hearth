@@ -8162,10 +8162,11 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 195,
         .description = COMPOUND_STRING(
-            "Deerling have different scents\n"
-            "depending on the season. In this form,\n"
-            "Deerling have a softly sweet scent\n"
-            "that lingers in the nose."),
+            "Its fur color and scent vary depending\n"
+            "on where it is from. Uume Forest\n"
+            "Deerling are a deep orange, and give off\n"
+            "a scent of ripe fruit."
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,

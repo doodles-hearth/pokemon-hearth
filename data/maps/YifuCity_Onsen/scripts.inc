@@ -74,6 +74,15 @@ YifuCity_Onsen_EventScript_Owner_12:
 	goto YifuCity_Onsen_EventScript_Owner_11
 
 
+YifuCity_Onsen_EventScript_Man::
+	lock
+	faceplayer
+	msgbox YifuCity_Onsen_EventScript_Man_Text_0
+	closemessage
+	release
+	return
+
+
 YifuCity_Onsen_EventScript_Owner_Movement_0:
 	walk_slow_left
 	face_down
@@ -108,3 +117,7 @@ YifuCity_Onsen_EventScript_Owner_Text_5:
 YifuCity_Onsen_EventScript_Owner_Text_6:
 	.string "{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Sorry but I run a business, not a\n"
 	.string "charity.$"
+
+YifuCity_Onsen_EventScript_Man_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_1 EMOTE_NORMAL}{SPEAKER NAME_MAN}Whew…\n"
+	.string "The hot spring regulars are tireless!\lThey battle visitors every single day!$"

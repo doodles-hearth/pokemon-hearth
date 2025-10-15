@@ -452,11 +452,11 @@ script MaguroHarbor_EventScript_Man {
 		
     	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}T-This was the biggest quake we've felt yet!"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_1 EMOTE_NORMAL}T-This was the biggest quake we've felt yet!"
 		), MSGBOX_AUTOCLOSE)
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}I wish I swam as gracefully as the Dojo's Magikarp…"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_1 EMOTE_NORMAL}I wish I swam as gracefully as the Dojo's Magikarp…"
 		))
 	}
 	
@@ -543,4 +543,60 @@ mart MaguroHarbor_Mart {
 	ITEM_AWAKENING
 	ITEM_BURN_HEAL
 	ITEM_ESCAPE_ROPE
+}
+
+script MaguroHarbor_EventScript_WindycapeLegend {
+	lock
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_2 EMOTE_NORMAL}{SPEAKER NAME_WOMAN}If you're ever in Windycape up north, be sure to visit its famous statue!\p"
+		"Legend has it that a woman waited for her lover to return from the seas…\l"
+		"For so long, she turned to stone!\p"
+		"Such a sad story.\nI wonder if it really happened."
+	))
+	closemessage
+
+	release
+}
+
+script MaguroHarbor_EventScript_MarketChild {
+	lock
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_music))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL EMOTE_NORMAL}{SPEAKER NAME_LITTLE_GIRL}I love the market! It smells of fish kinda, but my mum buys me fishcakes!"
+	))
+	closemessage
+
+	release
+}
+
+script MaguroHarbor_EventScript_MarketChildOnBeach {
+	lock
+
+	applymovement(LOCALID_MAGURO_WINGULL, moves(jump_in_place_left))
+	playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_WINGULL)
+	setseenmon(SPECIES_WINGULL)
+	msgbox(format(
+		"Heehee!"
+	))
+	waitmoncry
+	waitmovement(0)
+	closemessage
+
+	applymovement(LOCALID_MAGURO_LITTLE_GIRL, moves(jump_in_place_right))
+	playmoncry(SPECIES_WINGULL, CRY_MODE_HIGH_PITCH)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL EMOTE_NORMAL}{SPEAKER NAME_LITTLE_GIRL}Heeheehee!"
+	))
+	waitmoncry
+	waitmovement(0)
+	closemessage
+
+	playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+	applymovement(LOCALID_MAGURO_WINGULL, moves(emote_question_mark))
+	waitmoncry
+	waitmovement(0)
+
+	release
 }

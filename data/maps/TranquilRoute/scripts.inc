@@ -458,6 +458,7 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_2:
 TranquilRoute_EventScript_WaitingForChatot::
 	lock
 	faceplayer
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_0
 	setspeaker SP_NAME_GIRL
 	msgbox TranquilRoute_EventScript_WaitingForChatot_Text_0

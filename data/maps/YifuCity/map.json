@@ -795,7 +795,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "YifuCity_EventScript_Pidgey",
       "flag": "0",
       "afternoon": true,
       "deadnight": false,
@@ -868,7 +868,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
+      "graphics_id": "OBJ_EVENT_GFX_UUME_GIRL_1",
       "x": 11,
       "y": 52,
       "elevation": 0,
@@ -877,7 +877,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "YifuCity_EventScript_Zubat1",
+      "script": "YifuCity_EventScript_ClothingShopClosed",
       "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
       "afternoon": false,
       "deadnight": false,
@@ -1146,6 +1146,46 @@
       "lunchtime": false,
       "morning": false,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_UUME_BOY_2",
+      "x": 8,
+      "y": 44,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "YifuCity_EventScript_UumeForestIllusions",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": true,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ARTIST",
+      "x": 60,
+      "y": 46,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "YifuCity_EventScript_UumeForestTrees",
+      "flag": "FLAG_TEMP_4",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
@@ -1175,13 +1215,6 @@
       "y": 50,
       "elevation": 0,
       "dest_map": "MAP_YIFU_CITY_DOJO",
-      "dest_warp_id": "0"
-    },
-    {
-      "x": 11,
-      "y": 51,
-      "elevation": 0,
-      "dest_map": "MAP_YIFU_CITY_CLOTHING_SHOP",
       "dest_warp_id": "0"
     },
     {
@@ -1245,6 +1278,13 @@
       "y": 29,
       "elevation": 0,
       "dest_map": "MAP_YIFU_CITY_RESTAURANT",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 11,
+      "y": 50,
+      "elevation": 0,
+      "dest_map": "MAP_YIFU_CITY_CLOTHING_SHOP",
       "dest_warp_id": "0"
     }
   ],

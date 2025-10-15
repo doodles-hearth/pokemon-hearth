@@ -612,12 +612,10 @@ YifuCity_EventScript_TouristGirl::
 	return
 
 
-YifuCity_EventScript_Zubat1::
+YifuCity_EventScript_ClothingShopClosed::
 	lock
 	faceplayer
-	setspeaker SP_NAME_ZUBAT_GRUNT
-	applymovement VAR_LAST_TALKED, YifuCity_ShinySellerChoice_Movement_2
-	msgbox YifuCity_EventScript_Zubat1_Text_0
+	msgbox YifuCity_EventScript_ClothingShopClosed_Text_0
 	closemessage
 	release
 	end
@@ -1600,6 +1598,7 @@ YifuCity_EventScript_Nurse_2:
 	closemessage
 	giveitem ITEM_HEAL_BALL, 2
 	setflag FLAG_ITEM_YIFU_CITY_HEAL_BALL
+	setnamedmon SPECIES_CHANSEY
 	setdescribedmon SPECIES_CHANSEY
 	goto YifuCity_EventScript_Nurse_1
 
@@ -1631,6 +1630,42 @@ YifuCity_EventScript_Chansey2::
 	setspeakertomonname SPECIES_CHANSEY
 	msgbox YifuCity_EventScript_Chansey2_Text_0
 	waitmoncry
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_UumeForestIllusions::
+	lock
+	faceplayer
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, YifuCity_EventScript_UumeForestIllusions_Movement_0
+	msgbox YifuCity_EventScript_UumeForestIllusions_Text_0
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_Pidgey::
+	lock
+	faceplayer
+	setseenmon SPECIES_PIDGEY
+	applymovement VAR_LAST_TALKED, YifuCity_EventScript_Zubat3_Movement_0
+	playmoncry SPECIES_PIDGEY, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_PIDGEY
+	msgbox YifuCity_EventScript_Pidgey_Text_0
+	waitmoncry
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_UumeForestTrees::
+	lock
+	faceplayer
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, YifuCity_EventScript_UumeForestTrees_Movement_0
+	msgbox YifuCity_EventScript_UumeForestTrees_Text_0
 	closemessage
 	release
 	return
@@ -1957,6 +1992,14 @@ HarikoTurnsToPlayer_Movement_3:
 	face_right
 	step_end
 
+YifuCity_EventScript_UumeForestIllusions_Movement_0:
+	emote_sweat
+	step_end
+
+YifuCity_EventScript_UumeForestTrees_Movement_0:
+	emote_heart
+	step_end
+
 YifuCity_EscapedCrobatHideoutWithSamurai_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Well, well…\n"
 	.string "They slipped through our fingers,\l"
@@ -2222,8 +2265,9 @@ YifuCity_EventScript_TouristGirl_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I'm tired… I wish mom'd take us to the\n"
 	.string "hot springs…$"
 
-YifuCity_EventScript_Zubat1_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Whatchu lookin' at?$"
+YifuCity_EventScript_ClothingShopClosed_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}{SPEAKER NAME_GIRL}Can't wait for the clothing shop to\n"
+	.string "reopen!$"
 
 YifuCity_EventScript_Zubat2_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Scram, kid, I got no time for the likes\n"
@@ -2563,3 +2607,20 @@ YifuCity_EventScript_Chansey1_Text_0:
 
 YifuCity_EventScript_Chansey2_Text_0:
 	.string "Eyyyy!$"
+
+YifuCity_EventScript_UumeForestIllusions_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_BOY_2 EMOTE_NORMAL}{SPEAKER NAME_BOY}Uume Forest gives me the heebie\n"
+	.string "jeebies, man…\p"
+	.string "I went for Lum Berries, but I kept\n"
+	.string "getting lost and confused!\p"
+	.string "It's like the trees rearrange\n"
+	.string "themselves just to mess with you!$"
+
+YifuCity_EventScript_Pidgey_Text_0:
+	.string "Coo!$"
+
+YifuCity_EventScript_UumeForestTrees_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}{SPEAKER NAME_ARTIST}I came to Yifu City to see the trees\n"
+	.string "of Uume Forest for myself!\p"
+	.string "I've heard wonders about their\n"
+	.string "foliage's shades of purple!$"

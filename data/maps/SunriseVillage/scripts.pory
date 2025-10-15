@@ -38,6 +38,7 @@ script SunriseVillage_Event_FatGuy {
     setspeaker(SP_NAME_NEIGHBOR)
     if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 4) {
         applymovement(VAR_LAST_TALKED, moves(emote_heart))
+        playse(SE_PIN)
         msgbox(format(
             "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY EMOTE_NORMAL}My new Pokémon is so cute, I don't feel like leaving it in its Pokéball!"
         ))

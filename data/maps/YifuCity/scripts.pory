@@ -762,13 +762,11 @@ script YifuCity_EventScript_TouristGirl {
 	release
 }
 
-script YifuCity_EventScript_Zubat1 {
+script YifuCity_EventScript_ClothingShopClosed {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_ZUBAT_GRUNT)
-	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Whatchu lookin' at?"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}{SPEAKER NAME_GIRL}Can't wait for the clothing shop to reopen!"
 	))
 	closemessage
 
@@ -1770,6 +1768,7 @@ script YifuCity_EventScript_Nurse {
 			giveitem(ITEM_HEAL_BALL, 2)
 			setflag(FLAG_ITEM_YIFU_CITY_HEAL_BALL)
 
+			setnamedmon(SPECIES_CHANSEY)
 			setdescribedmon(SPECIES_CHANSEY)
 		}
 	} else {
@@ -1808,6 +1807,48 @@ script YifuCity_EventScript_Chansey2 {
 		"Eyyyy!"
 	))
 	waitmoncry
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_UumeForestIllusions {
+	lock
+	faceplayer
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_BOY_2 EMOTE_NORMAL}{SPEAKER NAME_BOY}Uume Forest gives me the heebie jeebies, man…\p"
+		"I went for Lum Berries, but I kept getting lost and confused!\p"
+		"It's like the trees rearrange themselves just to mess with you!"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_Pidgey {
+	lock
+	faceplayer
+	setseenmon(SPECIES_PIDGEY)
+	applymovement(VAR_LAST_TALKED, moves(emote_music))
+	playmoncry(SPECIES_PIDGEY, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_PIDGEY)
+	msgbox(format(
+		"Coo!"
+	))
+	waitmoncry
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_UumeForestTrees {
+	lock
+	faceplayer
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_heart))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}{SPEAKER NAME_ARTIST}I came to Yifu City to see the trees of Uume Forest for myself!\p"
+		"I've heard wonders about their foliage's shades of purple!"
+	))
 	closemessage
 	release
 }
