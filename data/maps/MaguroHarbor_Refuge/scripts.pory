@@ -167,13 +167,13 @@ script MaguroHarbor_Refuge_EventScript_DescribedMons {
 		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_happy))
 		msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
-		"I bet you're wondering how to fill up the description of every Pokémon.\l"
-		"Well, asking around definitely helps!\p"
-		"For instance, Krabby sleeps burrowed inside holes in the sand, and did you know it can grow its pincers back if they fall during battle?\p"
-		"Go ahead, you can write that down about it!"
-	))
-	closemessage
+			"{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
+			"I bet you're wondering how to fill up the description of every Pokémon.\l"
+			"Well, asking around definitely helps!\p"
+			"For instance, Krabby sleeps burrowed inside holes in the sand, and did you know it can grow its pincers back if they fall during battle?\p"
+			"Go ahead, you can write that down about it!"
+		))
+		closemessage
 	}
 
 	setnamedmon(SPECIES_KRABBY)
