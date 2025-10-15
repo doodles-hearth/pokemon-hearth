@@ -164,6 +164,7 @@ script MaguroHarbor_Refuge_EventScript_DescribedMons {
 		))
 		closemessage
 	} else {
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_happy))
 		msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
