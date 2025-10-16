@@ -108,6 +108,7 @@ script ChiiTown_EventScript_Kecleon {
 
 script ChiiTown_EventScript_PlantingFlowers {
 	lock
+	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	setspeaker(SP_NAME_LITTLE_GIRL)
 	msgbox(format(

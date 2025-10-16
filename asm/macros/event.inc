@@ -2723,36 +2723,36 @@
     @ Starts the specified quest.
 	.macro startquest quest:req
 	closemessage
-	delay 30
+	@ delay 30
 	questmenu QUEST_MENU_SET_ACTIVE, \quest
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-    bufferstring 1 gText_QuestActive
-	playfanfare MUS_LEVEL_UP 
-	msgbox gText_QuestAnnounce, MSGBOX_SIGN
-	waitfanfare
+    @ bufferstring 1 gText_QuestActive
+	@ playfanfare MUS_LEVEL_UP 
+	@ msgbox gText_QuestAnnounce, MSGBOX_SIGN
+	@ waitfanfare
 	.endm
 
     @ Completes the specified quest.
 	.macro completequest quest:req
 	closemessage
-	delay 30
+	@ delay 30
 	questmenu QUEST_MENU_COMPLETE_QUEST, \quest
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-    bufferstring 1 gText_QuestComplete
-	playfanfare MUS_LEVEL_UP 
-	msgbox gText_QuestAnnounce, MSGBOX_SIGN
-	waitfanfare
+    @ bufferstring 1 gText_QuestComplete
+	@ playfanfare MUS_LEVEL_UP 
+	@ msgbox gText_QuestAnnounce, MSGBOX_SIGN
+	@ waitfanfare
 	.endm
 
 	@ Updates the complex quest's variable to give it its next state.
 	.macro updatequest quest:req, questvar:req
 	addvar \questvar, 1
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-	bufferstring 1 gText_QuestUpdate
-	playse SE_PIN
-	msgbox gText_QuestUpdate, MSGBOX_SIGN
-	waitse
-	openquestmenu
+	@ bufferstring 1 gText_QuestUpdate
+	@ playse SE_PIN
+	@ msgbox gText_QuestUpdate, MSGBOX_SIGN
+	@ waitse
+	@ openquestmenu
 	.endm
 
 	.macro goto_if_quest_inactive quest:req, dest:req

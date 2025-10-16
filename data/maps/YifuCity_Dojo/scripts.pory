@@ -694,38 +694,38 @@ script YifuCity_Dojo_Dance1 {
 script YifuCity_Dojo_Dance2 {
     // TODO EVA dance
 
-    // applymovement(
-    //     LOCALID_GEISHA_4,
-    //     moves(
-    //         walk_right,
+    applymovement(
+        LOCALID_GEISHA_4,
+        moves(
+            walk_right,
 
-    //         jump_right,
-    //         jump_left,
-    //         jump_right,
-    //         jump_left
-    //     )
-    // )
-    // applymovement(
-    //     LOCALID_GEISHA_5,
-    //     moves(
-    //         delay_16,
+            jump_right,
+            jump_left,
+            jump_right,
+            jump_left
+        )
+    )
+    applymovement(
+        LOCALID_GEISHA_5,
+        moves(
+            delay_16,
 
-    //         jump_left,
-    //         jump_right,
-    //         jump_left,
-    //         jump_right
-    //     )
-    // )
-    // applymovement(
-    //     LOCALID_GEISHA_6,
-    //     moves(
-    //         walk_left
-    //     )
-    // )
+            jump_left,
+            jump_right,
+            jump_left,
+            jump_right
+        )
+    )
+    applymovement(
+        LOCALID_GEISHA_6,
+        moves(
+            walk_left
+        )
+    )
 
-    // waitmovement(LOCALID_GEISHA_4)
-    // waitmovement(LOCALID_GEISHA_5)
-    // waitmovement(LOCALID_GEISHA_6)
+    waitmovement(LOCALID_GEISHA_4)
+    waitmovement(LOCALID_GEISHA_5)
+    waitmovement(LOCALID_GEISHA_6)
 }
 
 script YifuCity_Dojo_Dance3 {

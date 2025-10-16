@@ -126,7 +126,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0:
 	.string "I have to head out! Don't be late, I\n"
 	.string "know you, little {STR_VAR_1}!\p"
 	.string "By the way, your friend Natsuki left\n"
-	.string "you a note.\p"
+	.string "you a note.\l"
 	.string "Make sure you read it!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_0:

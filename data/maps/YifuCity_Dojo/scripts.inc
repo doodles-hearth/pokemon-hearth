@@ -483,6 +483,12 @@ YifuCity_Dojo_Dance1::
 
 
 YifuCity_Dojo_Dance2::
+	applymovement 4, YifuCity_Dojo_Dance2_Movement_0
+	applymovement 5, YifuCity_Dojo_Dance2_Movement_1
+	applymovement 6, YifuCity_Dojo_Dance2_Movement_2
+	waitmovement 4
+	waitmovement 5
+	waitmovement 6
 	return
 
 
@@ -871,6 +877,26 @@ YifuCity_Dojo_Dance1_Movement_2:
 	walk_right
 	walk_up
 	face_down
+	step_end
+
+YifuCity_Dojo_Dance2_Movement_0:
+	walk_right
+	jump_right
+	jump_left
+	jump_right
+	jump_left
+	step_end
+
+YifuCity_Dojo_Dance2_Movement_1:
+	delay_16
+	jump_left
+	jump_right
+	jump_left
+	jump_right
+	step_end
+
+YifuCity_Dojo_Dance2_Movement_2:
+	walk_left
 	step_end
 
 YifuCity_Dojo_EventScript_Dance1_Text_0:

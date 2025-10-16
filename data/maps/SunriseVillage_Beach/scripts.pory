@@ -12,6 +12,7 @@ const LOCALID_RIVAL = 1
 
 script SunriseVillage_Beach_EventScript_RivalSpeech {
     lock
+	waitse
 	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
 	waitmovement(0)

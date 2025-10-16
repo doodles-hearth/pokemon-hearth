@@ -64,6 +64,7 @@ script GinkoWoods_EventScript_Eiji {
 script GinkoWoods_EventScript_OldMan {
 	lock
 	faceplayer
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_OLD_MAN)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}These woods are fascinating.\pThere seem to be a lot of yellow Pokémon here."))
@@ -74,6 +75,7 @@ script GinkoWoods_EventScript_OldMan {
 script GinkoWoods_EventScript_Bean {
 	lock
 
+	waitse
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_music, delay_16 * 6))
 	waitmovement(VAR_LAST_TALKED)
