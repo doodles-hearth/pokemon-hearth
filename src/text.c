@@ -142,7 +142,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_NORMAL] = {
@@ -152,7 +152,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_SHORT] = {
@@ -162,7 +162,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_SHORT_COPY_1] = {
@@ -172,7 +172,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_SHORT_COPY_2] = {
@@ -182,7 +182,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_SHORT_COPY_3] = {
@@ -192,7 +192,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_BRAILLE] = {
@@ -202,7 +202,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 8,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_NARROW] = {
@@ -212,7 +212,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_SMALL_NARROW] = {
@@ -222,7 +222,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_BOLD] = {
@@ -242,7 +242,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_SMALL_NARROWER] = {
@@ -252,7 +252,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_SHORT_NARROW] = {
@@ -262,7 +262,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
         [FONT_SHORT_NARROWER] = {
@@ -272,7 +272,7 @@ static const struct FontInfo sFontInfos[] =
             .letterSpacing = 0,
             .lineSpacing = 0,
             .fgColor = 2,
-            .bgColor = 0,
+            .bgColor = 1,
             .shadowColor = 3,
         },
 };
