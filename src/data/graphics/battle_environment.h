@@ -25,6 +25,9 @@ const u32 gBattleEnvironmentAnimTilemap_TallGrass[] = INCBIN_U32("graphics/battl
 const u32 gBattleEnvironmentAnimTiles_GinkoWoods[] = INCBIN_U32("graphics/battle_environment/ginko_forest/anim_tiles.4bpp.smol");
 const u32 gBattleEnvironmentAnimTilemap_GinkoWoods[] = INCBIN_U32("graphics/battle_environment/ginko_forest/anim_map.bin.smolTM");
 
+const u32 gBattleEnvironmentAnimTiles_Plains[] = INCBIN_U32("graphics/battle_environment/plains/anim_tiles.4bpp.smol");
+const u32 gBattleEnvironmentAnimTilemap_Plains[] = INCBIN_U32("graphics/battle_environment/plains/anim_map.bin.smolTM");
+
 const u32 gBattleEnvironmentAnimTiles_LongGrass[] = INCBIN_U32("graphics/battle_environment/long_grass/anim_tiles.4bpp.smol");
 const u32 gBattleEnvironmentAnimTilemap_LongGrass[] = INCBIN_U32("graphics/battle_environment/long_grass/anim_map.bin.smolTM");
 
@@ -52,5 +55,3 @@ const u32 gBattleEnvironmentAnimTilemap_Building[] = INCBIN_U32("graphics/battle
 const u32 gBattleEnvironmentAnimTiles_Rayquaza[] = INCBIN_U32("graphics/battle_environment/sky/anim_tiles.4bpp.smol");
 const u32 gBattleEnvironmentAnimTilemap_Rayquaza[] = INCBIN_U32("graphics/battle_environment/sky/anim_map.bin.smolTM");
 
-const u32 gBattleEnvironmentTiles_Plain[] = INCBIN_U32("graphics/battle_environment/plain/tiles.4bpp.smol");
-const u32 gBattleEnvironmentTilemap_Plain[] = INCBIN_U32("graphics/battle_environment/plain/map.bin.smolTM");

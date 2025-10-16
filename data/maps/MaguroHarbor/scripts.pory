@@ -355,7 +355,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp {
 	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(
 		"Ah! You're a bit too late {STR_VAR_2}. We're\nclosed for th' day.\p"
-		"We'll be open again\l{STR_VAR_1}."
+		"We'll be open again {STR_VAR_1}."
 	)
 
 	closemessage

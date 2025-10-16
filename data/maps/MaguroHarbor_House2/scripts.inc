@@ -34,6 +34,7 @@ MaguroHarbor_House2_MyBrother_2:
 
 MaguroHarbor_House2_Fisherman::
 	lock
+	faceplayer
 	msgbox MaguroHarbor_House2_Fisherman_Text_0
 	closemessage
 	release

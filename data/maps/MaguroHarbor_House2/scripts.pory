@@ -37,6 +37,7 @@ script MaguroHarbor_House2_MyBrother {
 
 script MaguroHarbor_House2_Fisherman {
 	lock
+	faceplayer
 	msgbox(format(
 		"{SPEAKER NAME_FISHERMAN}A divinity watches over the people of each trade.\p"
         "The great Bronzong near Kura Village grants farmers good harvests…\p"

@@ -759,7 +759,7 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_14:
 
 MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp_Text_0:
 	.string "Ah! You're a bit too late {STR_VAR_2}. We're\nclosed for th' day.\p"
-	.string "We'll be open again\l{STR_VAR_1}.$"
+	.string "We'll be open again {STR_VAR_1}.$"
 
 MaguroHarbor_EventScript_FishermanInBoat_Text_0:
 	.string "I'm letting my fishing partner\n"
