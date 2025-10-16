@@ -382,6 +382,20 @@ WhiteslateRoute_Trigger_SecretBase_20:
 	goto WhiteslateRoute_Trigger_SecretBase_16
 
 
+WhiteslateRoute_EventScript_MetHariko::
+	lock
+	faceplayer
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, WhiteslateRoute_EventScript_MetHariko_Movement_0
+	msgbox WhiteslateRoute_EventScript_MetHariko_Text_0
+	closemessage
+	setnamedmon SPECIES_SLOWPOKE
+	setnamedmon SPECIES_DEERLING_AUTUMN
+	setdescribedmon SPECIES_DEERLING_AUTUMN
+	release
+	return
+
+
 WhiteslateRoute_Trigger_ShamisenPlayerTop_Movement_0:
 	walk_in_place_fast_up
 	delay_16
@@ -557,6 +571,10 @@ WhiteslateRoute_Trigger_SecretBase_Movement_14:
 	walk_down
 	walk_down
 	walk_down
+	step_end
+
+WhiteslateRoute_EventScript_MetHariko_Movement_0:
+	emote_sweat
 	step_end
 
 WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0:
@@ -770,3 +788,14 @@ WhiteslateRoute_Trigger_SecretBase_Text_9:
 	.string "I'll keep looking for the perfect\n"
 	.string "secret base spot!\l"
 	.string "Maybe I'll see you around!$"
+
+WhiteslateRoute_EventScript_MetHariko_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}{SPEAKER NAME_MAN}Some girl with a Slowpoke just talked\n"
+	.string "my head off about Deerling…\l"
+	.string "I'm still dizzy!\p"
+	.string "Did you know its location determines\n"
+	.string "its fur color?\p"
+	.string "Did you know Uume Forest Deerling are\n"
+	.string "orange and smell like ripe fruit?\p"
+	.string "Most importantly, do you care?\n"
+	.string "Yeah, I'm not sure I do either…$"

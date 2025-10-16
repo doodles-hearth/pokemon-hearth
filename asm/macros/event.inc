@@ -2556,11 +2556,16 @@
 
     @ Sets the Pokedex Described Flag for the Pokemon, displaying a notification
     .macro setdescribedmon species:req
-	callnative ScriptShowMonDescribedNotification, requests_effects=1
-	.2byte \species
-	waitbuttonpress
-	callnative ScriptHideMonDescribed, requests_effects=1
-	.2byte \species
+    callnative ScriptShowMonDescribedNotification, requests_effects=1
+    .2byte \species
+    goto_if_eq VAR_RESULT, 1, 1f
+    goto 2f
+    1:
+        waitbuttonpress
+        callnative ScriptHideMonDescribed, requests_effects=1
+        .2byte \species
+    2:
+    closemessage
     .endm
 
 	@ Sets the Pokedex Caught Flag for the Pokemon with speciesId

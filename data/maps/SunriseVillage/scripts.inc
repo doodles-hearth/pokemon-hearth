@@ -63,6 +63,7 @@ SunriseVillage_Event_FatGuy_1:
 
 SunriseVillage_Event_FatGuy_2:
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_FatGuy_Movement_0
+	playse SE_PIN
 	msgbox SunriseVillage_Event_FatGuy_Text_0
 	closemessage
 	waitmovement VAR_LAST_TALKED

@@ -55,6 +55,16 @@ YifuCity_BigHouse_3F_EventScript_Snom::
 	end
 
 
+YifuCity_BigHouse_3F_EventScript_BadLuckShamisen::
+	lock
+	faceplayer
+	setspeaker SP_NAME_OLD_MAN
+	msgbox YifuCity_BigHouse_3F_EventScript_BadLuckShamisen_Text_0
+	closemessage
+	release
+	return
+
+
 YifuCity_BigHouse_3F_EventScript_HarikosGrandma_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_COLD_OLD_WOMAN EMOTE_NORMAL}I'm so proud of my grandchildren!\p"
 	.string "My eldest is always out and about\n"
@@ -79,3 +89,7 @@ YifuCity_BigHouse_3F_EventScript_HarikosBrother_Text_0:
 
 YifuCity_BigHouse_3F_EventScript_Snom_Text_0:
 	.string "Mrmr…$"
+
+YifuCity_BigHouse_3F_EventScript_BadLuckShamisen_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}It's bad luck not to help out a\n"
+	.string "Shamisen Player asking for help!$"

@@ -2,6 +2,14 @@ const u32 gBattleEnvironmentTiles_TallGrass[] = INCBIN_U32("graphics/battle_envi
 const u16 gBattleEnvironmentPalette_TallGrass[] = INCBIN_U16("graphics/battle_environment/tall_grass/palette.gbapal");
 const u32 gBattleEnvironmentTilemap_TallGrass[] = INCBIN_U32("graphics/battle_environment/tall_grass/map.bin.smolTM");
 
+const u32 gBattleEnvironmentTiles_GinkoWoods[] = INCBIN_U32("graphics/battle_environment/ginko_forest/tiles.4bpp.smol");
+const u16 gBattleEnvironmentPalette_GinkoWoods[] = INCBIN_U16("graphics/battle_environment/ginko_forest/palette.gbapal");
+const u32 gBattleEnvironmentTilemap_GinkoWoods[] = INCBIN_U32("graphics/battle_environment/ginko_forest/map.bin.smolTM");
+
+const u32 gBattleEnvironmentTiles_Plains[] = INCBIN_U32("graphics/battle_environment/plains/tiles.4bpp.smol");
+const u16 gBattleEnvironmentPalette_Plains[] = INCBIN_U16("graphics/battle_environment/plains/palette.gbapal");
+const u32 gBattleEnvironmentTilemap_Plains[] = INCBIN_U32("graphics/battle_environment/plains/map.bin.smolTM");
+
 const u32 gBattleEnvironmentTiles_LongGrass[] = INCBIN_U32("graphics/battle_environment/long_grass/tiles.4bpp.smol");
 const u16 gBattleEnvironmentPalette_LongGrass[] = INCBIN_U16("graphics/battle_environment/long_grass/palette.gbapal");
 const u32 gBattleEnvironmentTilemap_LongGrass[] = INCBIN_U32("graphics/battle_environment/long_grass/map.bin.smolTM");
@@ -170,6 +178,24 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
             .entryTilemap = gBattleEnvironmentAnimTilemap_Building,
             .palette = gBattleEnvironmentPalette_Plain,
         },
+    },
+
+    // Custom
+    
+    [BATTLE_ENVIRONMENT_GINKO_WOODS] =
+    {
+        .naturePower = MOVE_STUN_SPORE,
+        .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
+        .camouflageType = TYPE_ELECTRIC,
+        .background = ENVIRONMENT_BACKGROUND(GinkoWoods),
+    },
+    
+    [BATTLE_ENVIRONMENT_PLAINS] =
+    {
+        .naturePower = MOVE_SWIFT,
+        .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
+        .camouflageType = TYPE_NORMAL,
+        .background = ENVIRONMENT_BACKGROUND(Plains),
     },
 
     [BATTLE_ENVIRONMENT_FRONTIER] =
@@ -423,6 +449,7 @@ static const struct {
     u8 mapScene;
     u8 battleEnvironment;
 } sMapBattleSceneMapping[] = {
+    {MAP_BATTLE_SCENE_PLAINS,   BATTLE_ENVIRONMENT_PLAINS},
     {MAP_BATTLE_SCENE_GYM,      BATTLE_ENVIRONMENT_GYM},
     {MAP_BATTLE_SCENE_MAGMA,    BATTLE_ENVIRONMENT_MAGMA},
     {MAP_BATTLE_SCENE_AQUA,     BATTLE_ENVIRONMENT_AQUA},

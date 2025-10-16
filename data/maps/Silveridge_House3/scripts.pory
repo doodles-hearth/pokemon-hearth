@@ -1,0 +1,29 @@
+mapscripts Silveridge_House3_MapScripts {
+	
+}
+
+script Silveridge_House3_EventScript_DreamingPokemon {
+	lock
+	faceplayer
+	setspeaker(SP_NAME_GIRL)
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}My Pokémon fell asleep during a battle,\nand it started dreaming!\l"
+		"It was so cute!"
+	))
+	closemessage
+	release	
+}
+
+
+script Silveridge_House3_EventScript_SleepingMon {
+	lock
+	playse(SE_M_SNORE)
+	setseenmon(SPECIES_SEEDOT)
+	setspeakertomonname(SPECIES_SEEDOT)
+	applymovement(VAR_LAST_TALKED, moves(emote_sleep))
+	msgbox((
+		"Zzzzz…"
+	))
+	closemessage
+	release	
+}

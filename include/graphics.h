@@ -290,6 +290,11 @@ extern const u32 gBattleEnvironmentTilemap_GinkoWoods[];
 extern const u32 gBattleEnvironmentAnimTiles_GinkoWoods[];
 extern const u32 gBattleEnvironmentAnimTilemap_GinkoWoods[];
 extern const u16 gBattleEnvironmentPalette_GinkoWoods[];
+extern const u32 gBattleEnvironmentTiles_Plains[];
+extern const u32 gBattleEnvironmentTilemap_Plains[];
+extern const u32 gBattleEnvironmentAnimTiles_Plains[];
+extern const u32 gBattleEnvironmentAnimTilemap_Plains[];
+extern const u16 gBattleEnvironmentPalette_Plains[];
 
 // Pokédex
 extern const u32 gPokedexInterface_Gfx[];

@@ -3815,6 +3815,12 @@ void ScriptShowMonDescribedNotification(struct ScriptContext *ctx)
 
         ShowMonIconSprite(species, handleFlash);
         AddTextPrinterParameterized(sHeaderBoxWindowId, 0, dst, ITEM_ICON_X + 2, 0, 0, NULL);
+
+        gSpecialVar_Result = TRUE;
+    }
+    else
+    {
+        gSpecialVar_Result = FALSE;
     }
 }
 

@@ -85,3 +85,16 @@ script YifuCity_Onsen_EventScript_Owner {
 
 	release
 }
+
+script YifuCity_Onsen_EventScript_Man {
+	lock
+	faceplayer
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_1 EMOTE_NORMAL}{SPEAKER NAME_MAN}Whew…\n"
+		"The hot spring regulars are tireless!\lThey battle visitors every single day!"
+	))
+	closemessage
+
+	release
+}
+
