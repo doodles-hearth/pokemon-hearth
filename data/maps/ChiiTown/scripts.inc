@@ -122,6 +122,7 @@ ChiiTown_EventScript_Kecleon::
 
 ChiiTown_EventScript_PlantingFlowers::
 	lock
+	faceplayer
 	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_PlantingFlowers_Movement_0
 	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox ChiiTown_EventScript_PlantingFlowers_Text_0

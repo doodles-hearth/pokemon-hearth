@@ -206,8 +206,7 @@ ChiiTown_School_EventScript_ChildImBored_Text_0:
 
 ChiiTown_School_EventScript_ChildAlreadyKnowLegend_Text_0:
 	.string "I already knew all of this! My gramma\n"
-	.string "told me about the legend a bajillion\l"
-	.string "times!$"
+	.string "told me the legend a bajillion times!$"
 
 ChiiTown_School_EventScript_ChildPokemonInsideVolcano_Text_0:
 	.string "There's a Pokémon inside the\n"

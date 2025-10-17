@@ -151,7 +151,7 @@ KuraTown_Dojo_EventScript_DojoStatue_2:
 
 KuraTown_Dojo_EventScript_KuraDojoTree_CanCut::
 	lock
-	checkfieldmove FIELD_MOVE_CUT
+	checkfieldmove FIELD_MOVE_CUT, TRUE
 	compare VAR_RESULT, PARTY_SIZE
 	goto_if_ne KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_2
 	call KuraTown_Dojo_EventScript_KuraDojoTree_CantCut

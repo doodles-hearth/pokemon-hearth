@@ -119,7 +119,7 @@ SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_1:
 
 SunriseVillage_RivalsHouse_EventScript_Natsuki_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh, hey, {PLAYER}. I'm just sorting\n"
-	.string "out my stuff for the journey.\p"
+	.string "out my stuff for the journey.\l"
 	.string "I'm traveling as light as possible!\p"
 	.string "See you around, yeah?$"
 

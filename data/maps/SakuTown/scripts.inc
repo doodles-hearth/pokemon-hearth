@@ -86,10 +86,8 @@ SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_3:
 	end
 
 SakuTown_MapScripts_MAP_SCRIPT_ON_LOAD_2:
-	setmetatile 22, 17, METATILE_SakuKura_ClosedDoorTop, TRUE
-	setmetatile 22, 18, METATILE_SakuKura_ClosedDoorBottom, TRUE
-	setmetatile 18, 32, METATILE_SakuKura_ClosedDoorTop, TRUE
-	setmetatile 18, 33, METATILE_SakuKura_ClosedDoorBottom, TRUE
+	setmetatile 16, 19, METATILE_SakuKura_ClosedDoorTop, TRUE
+	setmetatile 16, 20, METATILE_SakuKura_ClosedDoorBottom, TRUE
 	return
 
 
@@ -1105,9 +1103,9 @@ SakuTown_EventScript_RivalAtSakuWall_Text_2:
 SakuTown_EventScript_RivalAtSakuWall_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah! I… I didn't think you'd go that\n"
 	.string "hard, honestly!\p"
-	.string "Clearly I underestimated you. That's\n"
-	.string "alright. I won't make that mistake\l"
-	.string "next time!\p"
+	.string "Clearly I underestimated you.\n"
+	.string "That's alright.\l"
+	.string "I won't make that mistake next time!\p"
 	.string "I can see your Pokémon are really\n"
 	.string "growing to like you, it's great!\p"
 	.string "Are you doing the Dojo challenge?\n"
@@ -1118,7 +1116,7 @@ SakuTown_EventScript_RivalAtSakuWall_Text_3:
 	.string "You'll have to hurry if you wanna\n"
 	.string "catch up!\p"
 	.string "It's fun to run into each other like\n"
-	.string "this. Until next time then.\p"
+	.string "this. Until next time then.\l"
 	.string "I bet you I'll get to Silveridge first!\p"
 	.string "See you later, Feraligatr!$"
 

@@ -30,7 +30,7 @@ Common_EventScript_PkmnCenterNurse_Sleep::
 	goto_if_ne Common_EventScript_PkmnCenterNurse_Sleep_2
 	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	setspeaker SP_NAME_NURSE
-	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_0
+	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_6
 	closemessage
 Common_EventScript_PkmnCenterNurse_Sleep_1:
 	hidemoneybox
@@ -326,6 +326,10 @@ Common_EventScript_PkmnCenterNurse_Sleep_Text_4:
 
 Common_EventScript_PkmnCenterNurse_Sleep_Text_5:
 	.string "Come back anytime!$"
+
+Common_EventScript_PkmnCenterNurse_Sleep_Text_6:
+	.string "Hello! For ¥500, your Pokémon and you\n"
+	.string "can spend the night here.$"
 
 Common_EventScript_PkmnCenterNurse_ChooseSleep_Text_0:
 	.string "Thank you! May you have a restful\n"

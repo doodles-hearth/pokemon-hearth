@@ -46,6 +46,7 @@ GinkoWoods_EventScript_Eiji::
 GinkoWoods_EventScript_OldMan::
 	lock
 	faceplayer
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_OldMan_Movement_0
 	setspeaker SP_NAME_OLD_MAN
 	msgbox GinkoWoods_EventScript_OldMan_Text_0
@@ -55,6 +56,7 @@ GinkoWoods_EventScript_OldMan::
 
 GinkoWoods_EventScript_Bean::
 	lock
+	waitse
 	playse SE_PIN
 	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_Bean_Movement_0
 	waitmovement VAR_LAST_TALKED

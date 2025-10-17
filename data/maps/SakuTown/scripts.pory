@@ -61,10 +61,8 @@ mapscripts SakuTown_MapScripts {
 		gettimeofday
 		switch(var(VAR_0x8000)){
 			case TIME_DEAD_NIGHT:
-				setmetatile(22, 17, METATILE_SakuKura_ClosedDoorTop, TRUE)
-				setmetatile(22, 18, METATILE_SakuKura_ClosedDoorBottom, TRUE)
-				setmetatile(18, 32, METATILE_SakuKura_ClosedDoorTop, TRUE)
-				setmetatile(18, 33, METATILE_SakuKura_ClosedDoorBottom, TRUE)
+				setmetatile(16, 19, METATILE_SakuKura_ClosedDoorTop, TRUE)
+				setmetatile(16, 20, METATILE_SakuKura_ClosedDoorBottom, TRUE)
 			case TIME_EARLY_MORNING:
 			case TIME_MORNING:
 			case TIME_LUNCHTIME:
@@ -128,12 +126,12 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah! I… I didn't think you'd go that hard, honestly!\p"
-		"Clearly I underestimated you. That's alright. I won't make that mistake next time!\p"
+		"Clearly I underestimated you.\nThat's alright.\lI won't make that mistake next time!\p"
 		"I can see your Pokémon are really growing to like you, it's great!\p"
 		"Are you doing the Dojo challenge?\nYou might just stand a chance against the next village's Dojo!\p"
 		"Me? Actually, I just got my first official Token!\p"
 		"You'll have to hurry if you wanna catch up!\p"
-		"It's fun to run into each other like this. Until next time then.\p"
+		"It's fun to run into each other like this. Until next time then.\l"
 		"I bet you I'll get to Silveridge first!\p"
 		"See you later, Feraligatr!"
 	))

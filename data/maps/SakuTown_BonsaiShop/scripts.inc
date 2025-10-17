@@ -35,11 +35,18 @@ SakuTown_BonsaiShop_EventScript_FlowerBasket::
 
 SakuTown_BonsaiShop_EventScript_WateringCan::
 	goto_if_set FLAG_RECEIVED_WAILMER_PAIL, SakuTown_BonsaiShop_EventScript_WateringCan_1
-	msgbox SakuTown_BonsaiShop_EventScript_WateringCan_Text_1, MSGBOX_AUTOCLOSE
+	getseenmon SPECIES_WAILMER
+	compare VAR_RESULT, 0
+	goto_if_ne SakuTown_BonsaiShop_EventScript_WateringCan_4
+	msgbox SakuTown_BonsaiShop_EventScript_WateringCan_Text_2, MSGBOX_AUTOCLOSE
 	return
 
 SakuTown_BonsaiShop_EventScript_WateringCan_1:
 	msgbox SakuTown_BonsaiShop_EventScript_WateringCan_Text_0, MSGBOX_AUTOCLOSE
+	return
+
+SakuTown_BonsaiShop_EventScript_WateringCan_4:
+	msgbox SakuTown_BonsaiShop_EventScript_WateringCan_Text_1, MSGBOX_AUTOCLOSE
 	return
 
 
@@ -272,8 +279,7 @@ SakuTown_BonsaiShop_EventScript_Water_Text_0:
 	.string "It's filled to the brim with rainwater.$"
 
 SakuTown_BonsaiShop_EventScript_FlowerBasket_Text_0:
-	.string "A small basket of freshly picked\n"
-	.string "flowers.$"
+	.string "A basket of freshly picked flowers.$"
 
 SakuTown_BonsaiShop_EventScript_WateringCan_Text_0:
 	.string "A cute Wailmer-shaped watering can.\n"
@@ -281,6 +287,10 @@ SakuTown_BonsaiShop_EventScript_WateringCan_Text_0:
 
 SakuTown_BonsaiShop_EventScript_WateringCan_Text_1:
 	.string "A cute Wailmer-shaped watering can.$"
+
+SakuTown_BonsaiShop_EventScript_WateringCan_Text_2:
+	.string "A cute watering can shaped like a\n"
+	.string "Pokémon.$"
 
 SakuTown_BonsaiShop_EventScript_Painting_Text_0:
 	.string "A dainty painting of a flower.$"

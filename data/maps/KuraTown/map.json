@@ -563,6 +563,14 @@
       "elevation": 0,
       "item": "ITEM_REVIVAL_HERB",
       "flag": "FLAG_HIDDEN_ITEM_KURA_VILLAGE_REVIVAL_HERB"
+    },
+    {
+      "type": "hidden_item",
+      "x": 26,
+      "y": 14,
+      "elevation": 0,
+      "item": "ITEM_CHERI_BERRY",
+      "flag": "FLAG_HIDDEN_ITEM_KURA_VILLAGE_CHERI_BERRY"
     }
   ]
 }

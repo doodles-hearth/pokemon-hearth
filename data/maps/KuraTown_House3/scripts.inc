@@ -168,9 +168,9 @@ KuraTown_House3_EventScript_Lady_Text_1:
 	.string "looked scared and lost.\p"
 	.string "I've been taking care of it while\n"
 	.string "waiting for its master to show up!\p"
-	.string "It's feeling a lot better now. Look\n"
-	.string "how shiny his fur is! Such a pretty\l"
-	.string "color, too!$"
+	.string "It's feeling a lot better now.\n"
+	.string "Look how shiny his fur is!\l"
+	.string "Such a pretty color, too!$"
 
 KuraTown_House3_EventScript_Lady_Text_2:
 	.string "Don't worry, kitten, we'll find your\n"

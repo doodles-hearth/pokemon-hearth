@@ -197,9 +197,9 @@ BeachboundRoute_EventScript_Mugging::
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_13
 BeachboundRoute_EventScript_Mugging_1:
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_1
-	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_2
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_2
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_2
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_3
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_3
 	waitmovement 19
 	waitmovement 18
 	waitmovement 21
@@ -216,28 +216,29 @@ BeachboundRoute_EventScript_Mugging_1:
 	msgbox BeachboundRoute_EventScript_Mugging_Text_17
 	closemessage
 	delay 24
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_0
+	playse SE_PIN
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_4
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_18
 	closemessage
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_3
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_5
 	waitmovement 19
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_19
 	closemessage
-	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_3
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_5
 	waitmovement 0
 	setspeaker SP_NAME_ZUBAT_GRUNT
 	msgbox BeachboundRoute_EventScript_Mugging_Text_20
 	closemessage
 	delay 24
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_4
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_6
 	waitmovement 0
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_21
 	closemessage
 	delay 48
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_3
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_5
 	waitmovement 0
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_22
@@ -246,20 +247,20 @@ BeachboundRoute_EventScript_Mugging_1:
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_23
 	closemessage
-	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_5
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_5
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_7
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_7
 	waitmovement 18
 	waitmovement 21
-	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_6
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_6
-	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_6
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_8
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_8
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_8
 	waitmovement 18
 	waitmovement 21
 	waitmovement 20
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_7
-	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_8
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_9
-	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_10
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_9
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_10
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_11
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_12
 	waitmovement 19
 	waitmovement 18
 	waitmovement 21
@@ -270,7 +271,7 @@ BeachboundRoute_EventScript_Mugging_1:
 	removeobject 20
 	setflag FLAG_HIDE_CROBAT_SHADOWS_BEACHBOUND_RT
 	delay 60
-	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_11
+	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_13
 	waitmovement 17
 	setspeaker SP_NAME_WOMAN
 	msgbox BeachboundRoute_EventScript_Mugging_Text_24
@@ -280,21 +281,19 @@ BeachboundRoute_EventScript_Mugging_1:
 	msgbox BeachboundRoute_EventScript_Mugging_Text_25
 	closemessage
 	addvar VAR_PLAYER_REPUTATION, 1
-	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_12
+	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_14
 	waitmovement 17
 	waitmovement 0
 	return
 
 BeachboundRoute_EventScript_Mugging_2:
 	setvar VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 3
-	applymovement 18, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_0
 	setspeaker BeachboundRoute_EventScript_Mugging_Text_0
 	msgbox BeachboundRoute_EventScript_Mugging_Text_1
 	closemessage
-	applymovement 21, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_0
+	playse SE_PIN
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_1
 	setspeaker BeachboundRoute_EventScript_Mugging_Text_0
 	msgbox BeachboundRoute_EventScript_Mugging_Text_2
 	closemessage
@@ -417,81 +416,51 @@ BeachboundRoute_EventScript_WhereAreYouGoing_Movement_2:
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_0:
-	emote_angry
+	walk_in_place_fast_up
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_1:
+	walk_in_place_fast_up
+	emote_angry
+	step_end
+
+BeachboundRoute_EventScript_Mugging_Movement_2:
 	walk_right
 	face_left
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_2:
+BeachboundRoute_EventScript_Mugging_Movement_3:
 	walk_down
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_3:
+BeachboundRoute_EventScript_Mugging_Movement_4:
+	emote_angry
+	step_end
+
+BeachboundRoute_EventScript_Mugging_Movement_5:
 	walk_in_place_fast_down
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_4:
+BeachboundRoute_EventScript_Mugging_Movement_6:
 	face_up
 	delay_16
 	delay_16
 	delay_16
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_5:
+BeachboundRoute_EventScript_Mugging_Movement_7:
 	walk_up
 	face_down
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_6:
+BeachboundRoute_EventScript_Mugging_Movement_8:
 	face_down
 	zubats_align
 	delay_16
 	delay_16
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_7:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-BeachboundRoute_EventScript_Mugging_Movement_8:
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
 BeachboundRoute_EventScript_Mugging_Movement_9:
-	walk_right
-	walk_down
 	walk_down
 	walk_down
 	walk_down
@@ -509,6 +478,8 @@ BeachboundRoute_EventScript_Mugging_Movement_9:
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_10:
+	walk_right
+	walk_right
 	walk_down
 	walk_down
 	walk_down
@@ -527,11 +498,48 @@ BeachboundRoute_EventScript_Mugging_Movement_10:
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_11:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+BeachboundRoute_EventScript_Mugging_Movement_12:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+BeachboundRoute_EventScript_Mugging_Movement_13:
 	walk_down
 	walk_down
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_12:
+BeachboundRoute_EventScript_Mugging_Movement_14:
 	walk_left
 	walk_down
 	walk_down
