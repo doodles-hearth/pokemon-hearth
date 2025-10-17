@@ -61,6 +61,9 @@ SINGLE_BATTLE_TEST("Primordial Sea does not block a move if Pokémon is asleep a
         TURN { MOVE(opponent, MOVE_EMBER); }
     } SCENE {
         NOT MESSAGE("The Fire-type attack fizzled out in the heavy rain!");
-        MESSAGE("The opposing Wobbuffet is fast asleep.");
+        ONE_OF {
+            MESSAGE("The opposing Wobbuffet is fast asleep.");
+            MESSAGE("The opposing Wobbuffet is deep in a dream.");
+        }
     }
 }

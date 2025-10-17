@@ -1378,6 +1378,7 @@ static bool32 HandleEndTurnThirdEventBlock(u32 battler)
                 {
                     gBattleMons[gEffectBattler].status1 &= ~STATUS1_SLEEP;
                     gBattleMons[gEffectBattler].volatiles.nightmare = FALSE;
+                    gBattleMons[gEffectBattler].volatiles.dreamSleep = FALSE;
                     gBattleCommunication[MULTISTRING_CHOOSER] = 1;
                     BattleScriptExecute(BattleScript_MonWokeUpInUproar);
                     BtlController_EmitSetMonData(gEffectBattler, B_COMM_TO_CONTROLLER, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[gBattlerAttacker].status1);

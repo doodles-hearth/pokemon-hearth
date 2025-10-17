@@ -72,7 +72,10 @@ DOUBLE_BATTLE_TEST("Instruct doesn't bypass sleep")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPORE, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_INSTRUCT, playerLeft);
-        MESSAGE("Wobbuffet is fast asleep.");
+        ONE_OF {
+            MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Wobbuffet is deep in a dream.");
+        }
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
     }
 }
