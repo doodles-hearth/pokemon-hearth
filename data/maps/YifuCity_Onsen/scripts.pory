@@ -1,6 +1,5 @@
 mapscripts YifuCity_Onsen_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-	// MAP_SCRIPT_ON_LOAD {
 		if (flag(FLAG_PAID_HOT_SPRINGS)) {
 			setobjectxyperm(LOCALID_HOT_SPRINGS_OWNER, 2, 2)
 		}

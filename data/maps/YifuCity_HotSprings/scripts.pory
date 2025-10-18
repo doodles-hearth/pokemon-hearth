@@ -75,6 +75,23 @@ script YifuCity_HotSprings_EventScript_Torkoal {
         "Pschhhhhh…"
     ))
     waitmoncry
+	closemessage
+	if (!flag(FLAG_GOT_CHARCOAL)) {
+		playse(SE_PIN)
+		applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark, delay_16 * 6))
+		waitmovement(0)
+
+		msgbox(format(
+			"… …Oh?\p"
+			"A black bit of something peeled off the Pokémon's shell!"
+		))
+
+		giveitem(ITEM_CHARCOAL)
+
+		setflag(FLAG_GOT_CHARCOAL)
+
+		closemessage
+	}
     release
 }
 

@@ -72,6 +72,13 @@ SakuTown_PokemonCenter_EventScript_Nurse::
 	end
 
 
+SakuTown_PokemonCenter_EventScript_Pasture::
+	setvar VAR_0x8009, MUGSHOT_SAKURA_MAN_2
+	call Common_EventScript_PcGuy
+	release
+	end
+
+
 SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks::
 	lock
 	faceplayer
@@ -363,11 +370,12 @@ SakuTown_Refuge_EventScript_MakuhitaWork::
 SakuTown_PokemonCenter_EventScript_ChatotPost_Movement_0:
 	emote_music
 	lock_facing_direction
-	walk_in_place_down
-	walk_in_place_down
-	walk_in_place_down
-	walk_in_place_down
+	walk_in_place_slow_down
+	walk_in_place_slow_down
+	walk_in_place_slow_down
+	walk_in_place_slow_down
 	unlock_facing_direction
+	face_player
 	step_end
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_0:

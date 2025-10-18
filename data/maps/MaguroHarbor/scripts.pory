@@ -294,6 +294,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 
 							switch (var(VAR_RESULT)) {
 								case 0:
+									incrementgamestat(GAME_STAT_SOLD_FISH)
 									addmoney(VAR_0x8000)
 									special(DestroySelectedPartyMon)
 
@@ -412,9 +413,10 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 
 	setspeaker(SP_NAME_FISHERMAN)
 	msgbox(format(
-		"Shush, ye fool child! You're scarin' tha wee fishes!\p"
+		"Shush, ye fool child!\nYou be scarin' tha wee fishes!\p"
 		"… … … …\p"
-		"Yer eyes… They be sparklin' with passion… Are ye by any chance an aspirin' fisherm'n?\p"
+		"Yer eyes…\nThey be sparklin' with passion…\p"
+		"Are ye by any chance an aspirin' fisherm'n?\p"
 		"Ye are! I can feel it! I can see ye be dyin' to try it fer yerself!\p"
 		"Now, I can't be givin' ye me loyal Cramorant here…\p"
 		"But I can give ye this ol' rud o' mine!"
@@ -547,6 +549,7 @@ mart MaguroHarbor_Mart {
 
 script MaguroHarbor_EventScript_WindycapeLegend {
 	lock
+	faceplayer
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_2 EMOTE_NORMAL}{SPEAKER NAME_WOMAN}If you're ever in Windycape up north, be sure to visit its famous statue!\p"
 		"Legend has it that a woman waited for her lover to return from the seas…\l"
@@ -560,6 +563,8 @@ script MaguroHarbor_EventScript_WindycapeLegend {
 
 script MaguroHarbor_EventScript_MarketChild {
 	lock
+	faceplayer
+	waitse
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_music))
 	msgbox(format(

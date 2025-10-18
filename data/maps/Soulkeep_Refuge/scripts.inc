@@ -27,6 +27,13 @@ Soulkeep_Refuge_EventScript_Nurse::
 	end
 
 
+Soulkeep_Refuge_EventScript_Pasture::
+	setvar VAR_0x8009, MUGSHOT_UUME_MAN_2
+	call Common_EventScript_PcGuy
+	release
+	end
+
+
 Soulkeep_Refuge_EventScript_Man::
 	lock
 	faceplayer

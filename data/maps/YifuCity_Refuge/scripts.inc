@@ -8,17 +8,23 @@ YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	getroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU
 	compare VAR_RESULT, ROUTE_CHALLENGE_STATE_SUCCESS_CONFIRMED
-	goto_if_eq YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	goto_if_eq YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
 	compare VAR_RESULT, ROUTE_CHALLENGE_STATE_FAILURE_CONFIRMED
-	goto_if_eq YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+	goto_if_eq YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	goto_if_set FLAG_DAILY_YIFU_HOTEL_ROOM, YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_9
 	return
 
 YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
 	setflag FLAG_TEMP_1
 	goto YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 
-YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
 	setflag FLAG_TEMP_2
+	goto YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
+
+YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
+	setobjectxyperm LOCALID_YIFU_REFUGE_VALET, 3, 2
 	return
 
 
@@ -29,6 +35,13 @@ YifuCity_Refuge_EventScript_Nurse::
 	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
 	waitmessage
 	waitbuttonpress
+	release
+	end
+
+
+YifuCity_Refuge_EventScript_Pasture::
+	setvar VAR_0x8009, MUGSHOT_UUME_MAN_2
+	call Common_EventScript_PcGuy
 	release
 	end
 
@@ -156,50 +169,77 @@ YifuCity_Refuge_EventScript_HotelValet::
 	lock
 	faceplayer
 	special GetPlayerSirMissString
+	goto_if_set FLAG_DAILY_YIFU_HOTEL_ROOM, YifuCity_Refuge_EventScript_HotelValet_2
 	setspeaker SP_NAME_VALET
-	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_0
+	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_1
 	showmoneybox 18, 0
 	checkmoney 500
 	compare VAR_RESULT, 0
-	goto_if_ne YifuCity_Refuge_EventScript_HotelValet_2
-	mcdialogue YifuCity_Refuge_EventScript_HotelValet_Text_6
+	goto_if_ne YifuCity_Refuge_EventScript_HotelValet_5
+	mcdialogue YifuCity_Refuge_EventScript_HotelValet_Text_7
 	closemessage
 	hidemoneybox
 	setspeaker SP_NAME_VALET
-	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_7
+	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_8
 	closemessage
 YifuCity_Refuge_EventScript_HotelValet_1:
 	release
 	return
 
 YifuCity_Refuge_EventScript_HotelValet_2:
-	mcdialogue YifuCity_Refuge_EventScript_HotelValet_Text_1, YifuCity_Refuge_EventScript_HotelValet_Text_2
+	setspeaker SP_NAME_VALET
+	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_0
 	closemessage
-	switch VAR_RESULT
-	case 0, YifuCity_Refuge_EventScript_HotelValet_6
-	case 1, YifuCity_Refuge_EventScript_HotelValet_7
 	goto YifuCity_Refuge_EventScript_HotelValet_1
 
-YifuCity_Refuge_EventScript_HotelValet_6:
+YifuCity_Refuge_EventScript_HotelValet_5:
+	mcdialogue YifuCity_Refuge_EventScript_HotelValet_Text_2, YifuCity_Refuge_EventScript_HotelValet_Text_3
+	closemessage
+	switch VAR_RESULT
+	case 0, YifuCity_Refuge_EventScript_HotelValet_9
+	case 1, YifuCity_Refuge_EventScript_HotelValet_10
+	goto YifuCity_Refuge_EventScript_HotelValet_1
+
+YifuCity_Refuge_EventScript_HotelValet_9:
 	setspeaker SP_NAME_VALET
-	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_3
+	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_4
 	playse SE_SHOP
 	removemoney 500
 	updatemoneybox
-	closemessage
-	giveitem ITEM_REFUGE_ROOM_KEY
-	hidemoneybox
-	setspeaker SP_NAME_VALET
-	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_4
-	closemessage
-	goto YifuCity_Refuge_EventScript_HotelValet_1
-
-YifuCity_Refuge_EventScript_HotelValet_7:
 	hidemoneybox
 	setspeaker SP_NAME_VALET
 	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_5
 	closemessage
+	compare VAR_FACING, DIR_WEST
+	goto_if_eq YifuCity_Refuge_EventScript_HotelValet_12
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_HotelValet_Movement_1
+YifuCity_Refuge_EventScript_HotelValet_11:
+	waitmovement 0
+	setflag FLAG_DAILY_YIFU_HOTEL_ROOM
 	goto YifuCity_Refuge_EventScript_HotelValet_1
+
+YifuCity_Refuge_EventScript_HotelValet_10:
+	hidemoneybox
+	setspeaker SP_NAME_VALET
+	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_6
+	closemessage
+	goto YifuCity_Refuge_EventScript_HotelValet_1
+
+YifuCity_Refuge_EventScript_HotelValet_12:
+	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_HotelValet_Movement_0
+	goto YifuCity_Refuge_EventScript_HotelValet_11
+
+
+YifuCity_Refuge_EventScript_FakeValet::
+	lock
+	faceplayer
+	setspeaker SP_NAME_ZUBAT_GRUNT
+	msgbox YifuCity_Refuge_EventScript_FakeValet_Text_0
+	closemessage
+	setnamedmon SPECIES_PAWNIARD
+	setdescribedmon SPECIES_PAWNIARD
+	release
+	end
 
 
 YifuCity_Refuge_EventScript_ListenToShamisen::
@@ -433,6 +473,16 @@ YifuCity_Refuge_EventScript_FakeNurse_Movement_0:
 	emote_angry
 	step_end
 
+YifuCity_Refuge_EventScript_HotelValet_Movement_0:
+	walk_down
+	face_right
+	step_end
+
+YifuCity_Refuge_EventScript_HotelValet_Movement_1:
+	walk_right
+	face_down
+	step_end
+
 YifuCity_Refuge_EventScript_ListenToShamisen_Movement_0:
 	emote_sweat
 	step_end
@@ -562,34 +612,42 @@ YifuCity_Refuge_EventScript_ShamisensPokemon_Text_0:
 	.string "Mrrrp…$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_0:
-	.string "Good day, {STR_VAR_1}!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_VALET} Enjoy your stay, {STR_VAR_1}!\n"
+	.string "Room one is yours for the day!$"
+
+YifuCity_Refuge_EventScript_HotelValet_Text_1:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_VALET} Good day, {STR_VAR_1}!\n"
 	.string "A room is available for ¥500, if you\l"
 	.string "need a place to spend the night!$"
 
-YifuCity_Refuge_EventScript_HotelValet_Text_1:
+YifuCity_Refuge_EventScript_HotelValet_Text_2:
 	.string "One room, please.$"
 
-YifuCity_Refuge_EventScript_HotelValet_Text_2:
+YifuCity_Refuge_EventScript_HotelValet_Text_3:
 	.string "No, thanks.$"
 
-YifuCity_Refuge_EventScript_HotelValet_Text_3:
-	.string "For sure. That'll be ¥500!$"
-
 YifuCity_Refuge_EventScript_HotelValet_Text_4:
-	.string "Your room is the first one down the\n"
-	.string "corridor! We hope you have a pleasant\l"
-	.string "stay!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_VALET} For sure. That'll be ¥500!$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_5:
-	.string "Have a nice day!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_VALET} Your room is the first one down the\n"
+	.string "corridor!\l"
+	.string "We hope you have a pleasant stay!$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_6:
-	.string "I'm poor…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_VALET} Have a nice day!$"
 
 YifuCity_Refuge_EventScript_HotelValet_Text_7:
-	.string "Oh my, it appears you don't have\n"
-	.string "enough money…\p"
+	.string "I'm poor…$"
+
+YifuCity_Refuge_EventScript_HotelValet_Text_8:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_VALET} Goodness, it appears you don't have\n"
+	.string "enough money…\l"
 	.string "I'm sorry!$"
+
+YifuCity_Refuge_EventScript_FakeValet_Text_0:
+	.string "Would you be so kind as to piss right\n"
+	.string "off, please?$"
 
 YifuCity_Refuge_EventScript_ListenToShamisen_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Whew… I've walked all day…\n"

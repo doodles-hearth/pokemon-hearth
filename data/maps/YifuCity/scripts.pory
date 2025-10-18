@@ -1003,8 +1003,9 @@ script YifuCity_EventScript_ChimechoLady {
 	setspeaker(SP_NAME_OLD_LADY)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}I love listening to Chimecho's songs.\p"
-		"They echo in its hollow body and produce the most wonderful harmonics.\p"
-		"You should always be kind to Chimecho! They are sacred, and mistreating one\lwould surely bring you bad luck."
+		"They echo in its hollow body and produce wonderful harmonics.\p"
+		"You should always be kind to Chimecho!\p"
+		"They are sacred, and mistreating one would surely bring you bad luck."
 	))
 	closemessage
 

@@ -374,7 +374,7 @@ const u32 gObjectEventPic_BigRegirockDoll[] = INCBIN_U32("graphics/object_events
 const u32 gObjectEventPic_BigRegiceDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_regice_doll.4bpp");
 const u32 gObjectEventPic_BigRegisteelDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/big_registeel_doll.4bpp");
 const u32 gObjectEventPic_MareepDoll[] = INCBIN_U32("graphics/object_events/pics/dolls/mareep_doll.4bpp");
-const u16 gObjectEventPal_MareepDoll[] = INCBIN_U16("graphics/object_events/pics/dolls/mareep_doll.4bpp");
+const u16 gObjectEventPal_MareepDoll[] = INCBIN_U16("graphics/object_events/pics/dolls/mareep_doll.gbapal");
 const u32 gObjectEventPic_CuttableTree[] = INCBIN_U32("graphics/object_events/pics/misc/cuttable_tree.4bpp");
 const u32 gObjectEventPic_CuttableTreeKuraDojo[] = INCBIN_U32("graphics/object_events/pics/misc/cuttable_tree_kura_dojo.4bpp");
 const u16 gObjectEventPal_CuttableTreeKuraDojo[] = INCBIN_U16("graphics/object_events/palettes/cuttable_tree_kura_dojo.gbapal");
@@ -655,3 +655,5 @@ const u16 gObjectEventPal_StrangeBall[] = INCBIN_U16("graphics/object_events/pic
 
 const u32 gFieldEffectObjectPic_CaveDust[] = INCBIN_U32("graphics/field_effects/pics/cave_dust.4bpp");
 const u16 gFieldEffectObjectPalette_CaveDust[] = INCBIN_U16("graphics/field_effects/palettes/cave_dust.gbapal");
+
+const u32 gObjectEventPic_WingullGrounded[] = INCBIN_U32("graphics/object_events/pics/pokemon_special/wingull.4bpp");

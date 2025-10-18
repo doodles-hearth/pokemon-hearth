@@ -223,8 +223,7 @@ script BeachboundRoute_EventScript_Mugging {
 	// Lost to them once
 	if (var(VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE) < 3) {
 		setvar(VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 3)
-		applymovement(LOCALID_GRUNT_1, Common_Movement_WalkInPlaceFasterUp)
-		waitmovement(0)
+		applymovement(LOCALID_GRUNT_1, moves(walk_in_place_fast_up))
 
 		setspeaker("Shady Man")
 		msgbox(format(
@@ -232,9 +231,8 @@ script BeachboundRoute_EventScript_Mugging {
 		))
 		closemessage
 
-		applymovement(LOCALID_GRUNT_2, Common_Movement_WalkInPlaceFasterUp)
-		waitmovement(0)
-		applymovement(LOCALID_GRUNT_2, moves(emote_angry))
+		playse(SE_PIN)
+		applymovement(LOCALID_GRUNT_2, moves(walk_in_place_fast_up, emote_angry))
 
 		setspeaker("Shady Man")
 		msgbox(format(
@@ -376,6 +374,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	delay(24)
 
+	playse(SE_PIN)
 	applymovement(LOCALID_GRUNT_BOSS, moves(emote_angry))
 	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox(format(

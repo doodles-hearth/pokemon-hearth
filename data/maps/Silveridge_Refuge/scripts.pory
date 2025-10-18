@@ -108,6 +108,13 @@ script Silveridge_Refuge_EventScript_Nurse {
 	end
 }
 
+script Silveridge_Refuge_EventScript_Pasture {
+	setvar(VAR_0x8009, MUGSHOT_MOUNTAIN_MAN_2)
+	call(Common_EventScript_PcGuy)
+	release
+	end
+}
+
 script Silveridge_Refuge_EventScript_Shamisen {
 	lock
 	faceplayer

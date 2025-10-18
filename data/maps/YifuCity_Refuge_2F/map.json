@@ -25,13 +25,13 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_Refuge_2F_EventScript_NumelTrade",
-      "flag": "0",
+      "flag": "FLAG_TEMP_4",
       "afternoon": false,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -45,7 +45,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_Refuge_2F_EventScript_TravelingMerchant",
-      "flag": "0",
+      "flag": "FLAG_TEMP_2",
       "afternoon": false,
       "deadnight": true,
       "earlymorning": false,
@@ -65,7 +65,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TravelingMerchant_EventScript_Keke",
-      "flag": "0",
+      "flag": "FLAG_TEMP_2",
       "afternoon": false,
       "deadnight": true,
       "earlymorning": false,
@@ -146,13 +146,13 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_Refuge_2F_EventScript_Numel",
-      "flag": "FLAG_TRADE_NUMEL_COMPLETED",
+      "flag": "FLAG_TEMP_3",
       "afternoon": false,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -166,7 +166,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_Refuge_2F_EventScript_Castform",
-      "flag": "0",
+      "flag": "FLAG_TEMP_4",
       "afternoon": false,
       "deadnight": true,
       "earlymorning": true,
@@ -178,8 +178,8 @@
     {
       "local_id": "LOCALID_TRADE_HERACROSS",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(HERACROSS)",
-      "x": 25,
-      "y": 4,
+      "x": 24,
+      "y": 5,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -190,10 +190,10 @@
       "flag": "FLAG_TEMP_1",
       "afternoon": false,
       "deadnight": false,
-      "earlymorning": false,
+      "earlymorning": true,
       "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     }
   ],
@@ -304,11 +304,11 @@
   "bg_events": [
     {
       "type": "hidden_item",
-      "x": 6,
+      "x": 30,
       "y": 7,
       "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
+      "item": "ITEM_LAVA_COOKIE",
+      "flag": "FLAG_ITEM_YIFU_REFUGE_LAVA_COOKIE"
     },
     {
       "type": "hidden_item",
@@ -323,8 +323,8 @@
       "x": 22,
       "y": 7,
       "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
+      "item": "ITEM_SITRUS_BERRY",
+      "flag": "FLAG_ITEM_YIFU_REFUGE_SITRUS_BERRY"
     }
   ]
 }

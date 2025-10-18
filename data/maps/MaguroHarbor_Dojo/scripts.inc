@@ -188,9 +188,9 @@ MaguroHarbor_Dojo_EventScript_Koishi_Text_0:
 	.string "graceful Pokémon when I was even\l"
 	.string "younger than you are now.\p"
 	.string "I may behave and speak in a soft\n"
-	.string "manner, but do not for one second\l"
-	.string "mistake soft-spokenness for\l"
-	.string "weakness.\p"
+	.string "manner…\p"
+	.string "But do not for one second mistake\n"
+	.string "soft-spokenness for weakness.\p"
 	.string "Now… Shall we battle?$"
 
 MaguroHarbor_Dojo_EventScript_Koishi_Text_1:
@@ -276,16 +276,16 @@ MaguroHarbor_Dojo_EventScript_Advice_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}You swept me away with that battle!$"
 
 MaguroHarbor_Dojo_EventScript_Advice_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}Hello, young challenger! Are you going\n"
-	.string "to be fighting for your first Token?\p"
-	.string "Welcome to the Koi Pond Dojo!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}Hello, young challenger!\n"
+	.string "Welcome to the Koi Pond Dojo!\l"
+	.string "Fighting for your first Token?\p"
 	.string "Koishi, the Master of this place,\n"
-	.string "favors water-type moves. Her\l"
-	.string "battling style is strong, yet\l"
-	.string "graceful… Sigh…\p"
-	.string "I am her biggest fan! It's true! Maybe\n"
+	.string "favors water-type moves.\p"
+	.string "Her battling style is strong, yet\n"
+	.string "graceful… Sigh…\l"
+	.string "I am her biggest fan! It's true! Maybe\l"
 	.string "one day, I'll become your biggest fan,\l"
-	.string "who knows?\p"
+	.string "who knows?\l"
 	.string "Go get 'em!$"
 
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_0:

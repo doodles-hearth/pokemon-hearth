@@ -321,6 +321,7 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21:
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_23:
+	incrementgamestat GAME_STAT_SOLD_FISH
 	addmoney VAR_0x8000
 	special DestroySelectedPartyMon
 	compare VAR_0x8001, ITEM_NONE
@@ -538,6 +539,7 @@ MaguroHarbor_Mart:
 
 MaguroHarbor_EventScript_WindycapeLegend::
 	lock
+	faceplayer
 	msgbox MaguroHarbor_EventScript_WindycapeLegend_Text_0
 	closemessage
 	release
@@ -546,6 +548,8 @@ MaguroHarbor_EventScript_WindycapeLegend::
 
 MaguroHarbor_EventScript_MarketChild::
 	lock
+	faceplayer
+	waitse
 	playse SE_PIN
 	applymovement VAR_LAST_TALKED, MaguroHarbor_EventScript_MarketChild_Movement_0
 	msgbox MaguroHarbor_EventScript_MarketChild_Text_0
@@ -777,12 +781,13 @@ MaguroHarbor_EventScript_FishermanOldRod_Text_1:
 	.string "enjoyin' yer fishing rod!$"
 
 MaguroHarbor_EventScript_FishermanOldRod_Text_2:
-	.string "Shush, ye fool child! You're scarin'\n"
-	.string "tha wee fishes!\p"
+	.string "Shush, ye fool child!\n"
+	.string "You be scarin' tha wee fishes!\p"
 	.string "… … … …\p"
-	.string "Yer eyes… They be sparklin' with\n"
-	.string "passion… Are ye by any chance an\l"
-	.string "aspirin' fisherm'n?\p"
+	.string "Yer eyes…\n"
+	.string "They be sparklin' with passion…\p"
+	.string "Are ye by any chance an aspirin'\n"
+	.string "fisherm'n?\p"
 	.string "Ye are! I can feel it! I can see ye be\n"
 	.string "dyin' to try it fer yerself!\p"
 	.string "Now, I can't be givin' ye me loyal\n"

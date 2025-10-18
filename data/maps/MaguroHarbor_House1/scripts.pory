@@ -54,6 +54,8 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 		))
 		closemessage
 
+		incrementgamestat(GAME_STAT_SOLVED_RIDDLE_DEX_DESC)
+
 		setflag(FLAG_DAILY_MON_DEX_RIDDLE_WON)
 	}
 	else

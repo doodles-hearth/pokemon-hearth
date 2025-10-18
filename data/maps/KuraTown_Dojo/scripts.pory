@@ -265,7 +265,7 @@ script KuraTown_Dojo_EventScript_DojoStatue {
 
 script KuraTown_Dojo_EventScript_KuraDojoTree_CanCut {
 	lock
-	if (checkfieldmove(FIELD_MOVE_CUT) != PARTY_SIZE) {
+	if (checkfieldmove(FIELD_MOVE_CUT, TRUE) != PARTY_SIZE) {
 		msgbox("…Oh? This tree can be cut down!", MSGBOX_DEFAULT)
 		closemessage
 		playse(SE_M_CUT)

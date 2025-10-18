@@ -192,6 +192,7 @@ SunriseVillage_Event_Woman::
 SunriseVillage_Event_Farmer::
 	lock
 	faceplayer
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_Farmer_Movement_0
 	setspeaker SP_NAME_NEIGHBOR
 	msgbox SunriseVillage_Event_Farmer_Text_0
@@ -211,6 +212,7 @@ SunriseVillage_Event_OldMan::
 SunriseVillage_Event_OldWoman::
 	lock
 	faceplayer
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, SunriseVillage_Event_GuardForest_Movement_0
 	setspeaker SP_NAME_NEIGHBOR
 	msgbox SunriseVillage_Event_OldWoman_Text_0
@@ -357,9 +359,8 @@ SunriseVillage_Event_Boy_Text_0:
 	.string "See how fierce it looks?$"
 
 SunriseVillage_Event_Boy_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}Hey {PLAYER}!\p"
-	.string "So, d'you think we'll get to choose the\n"
-	.string "one we want?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL} Hey {PLAYER}!\n"
+	.string "You think we'll get to choose?$"
 
 SunriseVillage_Event_Woman_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 EMOTE_NORMAL}I can see the Poké Balls from here…\n"

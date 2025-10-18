@@ -18,6 +18,13 @@ MaguroHarbor_Refuge_EventScript_Nurse::
 	end
 
 
+MaguroHarbor_Refuge_EventScript_Pasture::
+	setvar VAR_0x8009, MUGSHOT_SEASIDE_MAN_2
+	call Common_EventScript_PcGuy
+	release
+	end
+
+
 MaguroHarbor_Refuge_EventScript_Hariko::
 	lock
 	faceplayer
@@ -231,8 +238,7 @@ MaguroHarbor_Refuge_BattleHariko_Text_3:
 
 MaguroHarbor_Refuge_BattleHariko_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}These can be fed to your Pokémon\n"
-	.string "during battle to save you from a\l"
-	.string "pickle.\p"
+	.string "during battle when in a pickle.\p"
 	.string "Farewell, {PLAYER}.$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_5:

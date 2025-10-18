@@ -253,12 +253,12 @@ static const u8 gText_PokedexQuestMap[] = _("Toku Region");
 //Declaration of subquest structures. Edits to subquests are made here.
 #define sub_quest(i, n, d, m, s, st, t) {.id = i, .name = n, .desc = d, .map = m, .sprite = s, .spritetype = st, .type = t}
 
-static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
+static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 {
 	sub_quest(
 	      0,
 	      COMPOUND_STRING("See all Pokémon"),
-	      COMPOUND_STRING("Description 1"),
+	      COMPOUND_STRING("Sketch all Pokémon on your Pokédex!"),
 	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
@@ -268,7 +268,7 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	sub_quest(
 	      1,
 	      COMPOUND_STRING("Name all Pokémon"),
-	      COMPOUND_STRING("Description 2"),
+	      COMPOUND_STRING("Find out their names!"),
 	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
@@ -278,7 +278,7 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	sub_quest(
 	      2,
 	      COMPOUND_STRING("Catch all Pokémon"),
-	      COMPOUND_STRING("Description 3"),
+	      COMPOUND_STRING("Catch 'em all!"),
 	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
@@ -288,7 +288,7 @@ static const struct SubQuest sSubQuests2[QUEST_2_SUB_COUNT] =
 	sub_quest(
 	      3,
 	      COMPOUND_STRING("Describe all Pokémon"),
-	      COMPOUND_STRING("Description 3"),
+	      COMPOUND_STRING("Write down information about them!"),
 	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
@@ -324,7 +324,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		gText_PokedexQuestMap,
 		ITEM_POKE_BALL,
 		ITEM,
-		sSubQuests2,
+		sPokedexSubQuests,
 		QUEST_2_SUB_COUNT
 	),
 	side_quest(

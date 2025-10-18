@@ -61,6 +61,13 @@ ChiiTown_PokemonCenter_EventScript_NurseSleep::
 	end
 
 
+ChiiTown_PokemonCenter_EventScript_Pasture::
+	setvar VAR_0x8009, MUGSHOT_SUNRISE_MAN_2
+	call Common_EventScript_PcGuy
+	release
+	end
+
+
 ChiiTown_PokemonCenter_EventScript_Shamisen::
 	lock
 	faceplayer

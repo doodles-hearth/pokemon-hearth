@@ -32,19 +32,25 @@ script SakuTown_BonsaiShop_EventScript_Water {
 
 script SakuTown_BonsaiShop_EventScript_FlowerBasket {
 	msgbox(format(
-		"A small basket of freshly picked flowers."
+		"A basket of freshly picked flowers."
 	), MSGBOX_AUTOCLOSE)
 }
 
 script SakuTown_BonsaiShop_EventScript_WateringCan {
 	if (flag(FLAG_RECEIVED_WAILMER_PAIL)) {
 		msgbox(format(
-			"A cute Wailmer-shaped watering can. You have one exactly like it!"
+			"A cute Wailmer-shaped watering can.\nYou have one exactly like it!"
 		), MSGBOX_AUTOCLOSE)
 	} else {
-		msgbox(format(
-			"A cute Wailmer-shaped watering can."
-		), MSGBOX_AUTOCLOSE)
+		if (getseenmon(SPECIES_WAILMER)) {
+			msgbox(format(
+				"A cute Wailmer-shaped watering can."
+			), MSGBOX_AUTOCLOSE)
+		} else {
+			msgbox(format(
+				"A cute watering can shaped like a Pokémon."
+			), MSGBOX_AUTOCLOSE)
+		}
 	}
 }
 

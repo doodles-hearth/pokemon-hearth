@@ -13,6 +13,7 @@ SunriseVillage_Beach_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 
 SunriseVillage_Beach_EventScript_RivalSpeech::
 	lock
+	waitse
 	playse SE_PIN
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0

@@ -185,8 +185,8 @@ script SunriseVillage_Event_Boy {
     }
     else {
         msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}Hey {PLAYER}!\p"
-            "So, d'you think we'll get to choose the one we want?"
+            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}"
+            "Hey {PLAYER}!\nYou think we'll get to choose?"
         ))
         closemessage
     }
@@ -210,6 +210,7 @@ script SunriseVillage_Event_Woman {
 script SunriseVillage_Event_Farmer {
     lock
     faceplayer
+    playse(SE_PIN)
     applymovement(VAR_LAST_TALKED, moves(emote_upset))
     setspeaker(SP_NAME_NEIGHBOR)
     msgbox(format(
@@ -234,6 +235,7 @@ script SunriseVillage_Event_OldMan {
 script SunriseVillage_Event_OldWoman {
     lock
     faceplayer
+    playse(SE_PIN)
     applymovement(VAR_LAST_TALKED, moves(emote_angry))
     setspeaker(SP_NAME_NEIGHBOR)
     msgbox(format(

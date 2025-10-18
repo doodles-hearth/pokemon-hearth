@@ -72,6 +72,8 @@
 #include "wild_encounter.h"
 #include "vs_seeker.h"
 #include "frontier_util.h"
+#include "field_mugshot.h"
+#include "field_name_box.h"
 #include "constants/abilities.h"
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
@@ -381,6 +383,12 @@ static void (*const sMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
 void DoWhiteOut(void)
 {
     RunScriptImmediately(EventScript_WhiteOut);
+    gSpeakerName = NULL;
+    if (IsFieldMugshotActive())
+    {
+        gSprites[GetFieldMugshotSpriteId()].data[0] = FALSE;
+        RemoveFieldMugshot();
+    }
     HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
     SetWarpDestinationToLastHealLocation();

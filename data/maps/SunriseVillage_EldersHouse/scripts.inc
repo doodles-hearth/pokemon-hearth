@@ -452,6 +452,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_46:
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_42
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_48:
+	playse SE_LEDGE
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_18
 	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15
 	closemessage
@@ -479,6 +480,7 @@ SunriseVillage_EldersHouse_EventScript_Natsuki::
 
 SunriseVillage_EldersHouse_EventScript_PostBattle::
 	special HealPlayerParty
+	playse SE_LEDGE
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_18
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_WON

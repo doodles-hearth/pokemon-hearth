@@ -24,7 +24,7 @@ script KuraTown_House3_EventScript_Lady {
 			"Sorry, I thought you were someone else.\p"
 			"See, this little one came to me a while ago. There was a thunderstorm and it looked scared and lost.\p"
 			"I've been taking care of it while waiting for its master to show up!\p"
-			"It's feeling a lot better now. Look how shiny his fur is! Such a pretty color, too!"
+			"It's feeling a lot better now.\nLook how shiny his fur is!\lSuch a pretty color, too!"
 		))
 		closemessage
 

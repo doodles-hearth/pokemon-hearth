@@ -1643,6 +1643,7 @@ extern const u16 gItemIconPalette_AuroraTicket[];
 extern const u32 gItemIcon_OldSeaMap[];
 extern const u16 gItemIconPalette_OldSeaMap[];
 extern const u32 gItemIcon_Letter[];
+extern const u16 gItemIconPalette_Letter[];
 extern const u32 gItemIcon_DevonParts[];
 extern const u16 gItemIconPalette_DevonParts[];
 extern const u32 gItemIcon_GoGoggles[];

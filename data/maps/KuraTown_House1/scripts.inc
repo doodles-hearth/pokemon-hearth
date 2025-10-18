@@ -258,11 +258,11 @@ OldWomanQuest2Script_Text_2:
 
 KuraTown_House1_OldWomansSon_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}The Pokémon Council didn't see fit to\n"
-	.string "build a Refuge in our town. But those\l"
-	.string "jerks over at Saku Village won't let\l"
-	.string "us use theirs!\p"
+	.string "build a Refuge in our town.\p"
+	.string "But those jerks over at Saku Village\n"
+	.string "won't let us use theirs!\p"
 	.string "So my mother has to work hard to heal\n"
-	.string "all the villager's Pokémon.\p"
+	.string "all the villager's Pokémon.\l"
 	.string "It's not fair!$"
 
 KuraTown_House1_Growlithe_Text_0:

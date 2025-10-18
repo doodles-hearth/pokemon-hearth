@@ -49,7 +49,7 @@
 #define FLAG_SAKU_KURA_HIDE_ESPEON_LADYS_HOUSE 0x21
 // True if the Espeon from Saku village has left its master's house
 #define FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME 0x22
-#define FLAG_UNUSED_0x23 0x23 // UNUSED
+#define FLAG_GOT_CHARCOAL 0x23
 // True if the owner of the bonsai shop is not at the shop
 #define FLAG_HIDE_BONSAI_SHOP_OWNER 0x24
 #define FLAG_HIDE_LOST_MAREEP_1 0x25
@@ -84,7 +84,7 @@
 #define FLAG_HIDE_DEADNIGHT_TAMA    0x40 // Hides Tama in deadnight
 #define FLAG_HIDE_TAMASDAD    0x41 // Hides tama's dad in Saku
 #define FLAG_LIED_TO_SHAMISEN_PLAYER 0x42
-#define FLAG_UNUSED_0x043    0x43 // Unused Flag
+#define FLAG_PICKED_UP_BAG   0x43
 #define FLAG_UNUSED_0x044    0x44 // Unused Flag
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
@@ -562,7 +562,7 @@
 #define FLAG_HIDDEN_ITEM_YIFU_CITY_POKE_DOLL                 (FLAG_HIDDEN_ITEMS_START + 0x0B)
 #define FLAG_HIDDEN_ITEM_CROBAT_HIDEOUT_SUPERGIRI            (FLAG_HIDDEN_ITEMS_START + 0x0C)
 #define FLAG_HIDDEN_ITEM_CROBAT_HIDEOUT_ULTRO_BALL           (FLAG_HIDDEN_ITEMS_START + 0x0D)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_126_HEART_SCALE          (FLAG_HIDDEN_ITEMS_START + 0x0E)
+#define FLAG_HIDDEN_ITEM_KURA_VILLAGE_CHERI_BERRY            (FLAG_HIDDEN_ITEMS_START + 0x0E)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_126_ULTRA_BALL           (FLAG_HIDDEN_ITEMS_START + 0x0F)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_126_STARDUST             (FLAG_HIDDEN_ITEMS_START + 0x10)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_126_PEARL                (FLAG_HIDDEN_ITEMS_START + 0x11)
@@ -1074,10 +1074,10 @@
 #define FLAG_CROBAT_HIDEOUT_PEARL                                   0x3F7
 #define FLAG_ITEM_SUNRISE_CAVE_HEART_SCALE                          0x3F8
 #define FLAG_ITEM_SILVER_TUNNEL_SUPER_OINTMENT                      0x3F9
-#define FLAG_ITEM_ROUTE_115_IRON                                    0x3FA
-#define FLAG_ITEM_ROUTE_116_ETHER                                   0x3FB
-#define FLAG_ITEM_ROUTE_116_REPEL                                   0x3FC
-#define FLAG_ITEM_ROUTE_116_HP_UP                                   0x3FD
+#define FLAG_ITEM_YIFU_REFUGE_SITRUS_BERRY                          0x3FA
+#define FLAG_ITEM_YIFU_REFUGE_LAVA_COOKIE                           0x3FB
+#define FLAG_HIDDEN_ITEM_YIFU_CITY_ESCAPE_ROPE                      0x3FC
+#define FLAG_HIDDEN_ITEM_YIFU_CITY_RARE_CANDY                       0x3FD
 #define FLAG_ITEM_ROUTE_117_GREAT_BALL                              0x3FE
 #define FLAG_ITEM_ROUTE_117_REVIVE                                  0x3FF
 #define FLAG_ITEM_ROUTE_119_SUPER_REPEL                             0x400
@@ -1591,7 +1591,7 @@
 #define FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER    (DAILY_FLAGS_START + 0x8)
 #define FLAG_DAILY_MON_DEX_RIDDLE_WON               (DAILY_FLAGS_START + 0x9)
 #define FLAG_DAILY_PICKED_LOTO_TICKET               (DAILY_FLAGS_START + 0xA)
-#define FLAG_DAILY_FISH_SELLER_UNUSED               (DAILY_FLAGS_START + 0xB) // Unused Flag
+#define FLAG_DAILY_YIFU_HOTEL_ROOM                  (DAILY_FLAGS_START + 0xB)
 #define FLAG_DAILY_ROUTE_111_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xC)
 #define FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY      (DAILY_FLAGS_START + 0xD)
 #define FLAG_DAILY_ROUTE_120_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xE)

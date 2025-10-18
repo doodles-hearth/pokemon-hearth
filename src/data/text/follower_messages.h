@@ -181,7 +181,7 @@ const struct FollowerMsgInfo gFollowerPensiveMessages[] = {
 
 // All 'love' messages are unconditional
 static const u8 sLoveMsg00[] = _("{STR_VAR_1} suddenly started walking\ncloser!");
-static const u8 sLoveMsg01[] = _("{STR_VAR_1} cheeks are becoming\nrosy!");
+static const u8 sLoveMsg01[] = _("{STR_VAR_1}'s cheeks are becoming\nrosy!");
 static const u8 sLoveMsg02[] = _("Woah! {STR_VAR_1} suddenly hugged\nyou!");
 static const u8 sLoveMsg03[] = _("Woah! {STR_VAR_1} is suddenly\nplayful!");
 static const u8 sLoveMsg04[] = _("{STR_VAR_1} is rubbing against your\nlegs!");

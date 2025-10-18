@@ -457,6 +457,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	)
 
 	if (var(VAR_RESULT) == 0) {
+		playse(SE_LEDGE)
 		applymovement(LOCALID_RIVAL, moves(jump_in_place_left))
 		msgbox(format(
 				"That's what I'm talking about!"
@@ -512,6 +513,7 @@ script SunriseVillage_EldersHouse_EventScript_Natsuki {
 script SunriseVillage_EldersHouse_EventScript_PostBattle {
 	special(HealPlayerParty)
 
+	playse(SE_LEDGE)
 	applymovement(LOCALID_RIVAL, moves(jump_in_place_left))
 
 	specialvar(VAR_RESULT, GetBattleOutcome)

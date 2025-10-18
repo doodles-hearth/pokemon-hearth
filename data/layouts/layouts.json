@@ -5455,7 +5455,7 @@
       "width": 8,
       "height": 8,
       "primary_tileset": "gTileset_Building_Generic",
-      "secondary_tileset": "gTileset_HouseHardwood2",
+      "secondary_tileset": "gTileset_HouseBeige",
       "border_filepath": "data/layouts/SunriseVillage_EldersHouse_PrivateQuarters/border.bin",
       "blockdata_filepath": "data/layouts/SunriseVillage_EldersHouse_PrivateQuarters/map.bin",
       "border_height": 2,
