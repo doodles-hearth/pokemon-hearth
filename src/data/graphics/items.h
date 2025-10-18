@@ -1857,7 +1857,7 @@ const u32 gItemIcon_PowderJar[] = INCBIN_U32("graphics/items/icons/powder_jar.4b
 const u16 gItemIconPalette_PowderJar[] = INCBIN_U16("graphics/items/icon_palettes/powder_jar.gbapal");
 
 const u32 gItemIcon_WailmerPail[] = INCBIN_U32("graphics/items/icons/wailmer_pail.4bpp.smol");
-const u16 gItemIconPalette_WailmerPail[] = INCBIN_U16("graphics/items/icon_palettes/wailmer_pail.gbapal");
+const u16 gItemIconPalette_WailmerPail[] = INCBIN_U16("graphics/items/icons/wailmer_pail.gbapal");
 
 const u32 gItemIcon_PokeRadar[] = INCBIN_U32("graphics/items/icons/poke_radar.4bpp.smol");
 const u16 gItemIconPalette_PokeRadar[] = INCBIN_U16("graphics/items/icon_palettes/poke_radar.gbapal");
@@ -1895,6 +1895,7 @@ const u32 gItemIcon_OldSeaMap[] = INCBIN_U32("graphics/items/icons/old_sea_map.4
 const u16 gItemIconPalette_OldSeaMap[] = INCBIN_U16("graphics/items/icon_palettes/old_sea_map.gbapal");
 
 const u32 gItemIcon_Letter[] = INCBIN_U32("graphics/items/icons/letter.4bpp.smol");
+const u16 gItemIconPalette_Letter[] = INCBIN_U16("graphics/items/icons/letter.gbapal");
 
 const u32 gItemIcon_DevonParts[] = INCBIN_U32("graphics/items/icons/devon_parts.4bpp.smol");
 const u16 gItemIconPalette_DevonParts[] = INCBIN_U16("graphics/items/icon_palettes/devon_parts.gbapal");

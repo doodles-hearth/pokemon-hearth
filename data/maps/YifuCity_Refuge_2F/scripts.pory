@@ -1,9 +1,19 @@
 const FLAG_HIDE_HERACROSS = FLAG_TEMP_1
+const FLAG_HIDE_OKADA = FLAG_TEMP_2
+const FLAG_HIDE_CITIZENS_UNSAFE_CITY = FLAG_TEMP_4
 
 mapscripts YifuCity_Refuge_2F_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		if (!flag(FLAG_TRADE_NUMEL_COMPLETED)) {
 			setflag(FLAG_HIDE_HERACROSS)
+		}
+
+		if (!flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+			setflag(FLAG_HIDE_CITIZENS_UNSAFE_CITY)
+		}
+
+		if (!flag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)) {
+			setflag(FLAG_HIDE_OKADA)
 		}
 	}
 }
@@ -64,35 +74,44 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
         specialvar(VAR_RESULT, GetInGameTradeSpeciesInfo)
         copyvar(VAR_0x8009, VAR_RESULT)
 
-        setspeaker(SP_NAME_GIRL)
         msgbox(
             format(
+				"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL}"
                 "A visitor, hi, pleased to meet you!!\p"
-				"You have such pretty Pokémon!\nI brought a Numel from my home, hoping to trade it for a local Heracross.\p"
+				"You have such pretty Pokémon!\nI brought Numel from my home, hoping to trade it for a local Heracross.\p"
 				"What do you say? Want to trade a Heracross for my Numel?"
             ), MSGBOX_YESNO
         )
 
 	    if (var(VAR_RESULT) == NO || var(VAR_RESULT) == MULTI_B_PRESSED) {
+			playse(SE_PIN)
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
-            setspeaker(SP_NAME_GIRL)
-            msgbox(format("It's okay. I'll hang out with my Numel for a while!"))
+            msgbox(format(
+				
+				"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL}"
+				"It's okay. I'll hang out with Numel for a while!"
+			))
             closemessage
         } else {
 	        special(ChoosePartyMon)
             waitstate
             copyvar(VAR_0x800A, VAR_0x8004)
             if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+				playse(SE_PIN)
 				applymovement(VAR_LAST_TALKED, moves(emote_happy))
-                setspeaker(SP_NAME_GIRL)
-                msgbox(format("It's okay. I'll hang out with my Numel for a while!"))
+                msgbox(format(
+					"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL}"
+					"It's okay. I'll hang out with Numel for a while!"
+				))
                 closemessage
             } else {
                 copyvar(VAR_0x8005, VAR_0x800A)
                 specialvar(VAR_RESULT, GetTradeSpecies)
                 if (var(VAR_RESULT) != VAR_0x8009) {
-                    setspeaker(SP_NAME_GIRL)
-                    msgbox(format("I'm sure your Pokémon is very nice, but I'm looking for a Heracross!"))
+                    msgbox(format(
+						"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL}"
+						"I'm sure your Pokémon is very nice, but I'm looking for a Heracross!"
+					))
                     closemessage
                 } else {
                     copyvar(VAR_0x8004, VAR_0x8008)
@@ -108,8 +127,10 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
 
                     addobject(LOCALID_TRADE_HERACROSS)
 
+					playse(SE_PIN)
 					applymovement(VAR_LAST_TALKED, moves(emote_happy))
                     msgbox(format(
+						"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL}"
 						"Woah!\nIt's bigger than I thought! Amazing!!\p"
 						"Please, take good care of my girl Luo Luo, okay?"
                     ), MSGBOX_DEFAULT)
@@ -184,6 +205,8 @@ script YifuCity_Refuge_2F_EventScript_TouristKid {
 script YifuCity_Refuge_2F_EventScript_TouristGirl {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	setspeaker(SP_NAME_GIRL)
 	msgbox(format(

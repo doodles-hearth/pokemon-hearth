@@ -54,6 +54,10 @@
 #define GAME_STAT_NUM_UNION_ROOM_BATTLES      50
 #define GAME_STAT_PLAYED_BERRY_CRUSH          51
 #define GAME_STAT_DEXNAV_SCANNED              52
+#define GAME_STAT_SOLD_FISH                   53
+#define GAME_STAT_SOLVED_RIDDLE_DEX_DESC      54
+#define GAME_STAT_SOLVED_RIDDLE_CRY           55
+#define GAME_STAT_SOLVED_RIDDLE_SHAPE         56
 
 #define NUM_USED_GAME_STATS                   53
 #define NUM_GAME_STATS                        64

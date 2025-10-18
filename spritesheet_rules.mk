@@ -799,6 +799,9 @@ $(OBJEVENTGFXDIR)/people/crobat_shadows/zubat_m_align.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/samurai/samurai.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(OBJEVENTGFXDIR)/pokemon_special/wingull.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(OBJEVENTGFXDIR)/pokemon_old/azumarill.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 

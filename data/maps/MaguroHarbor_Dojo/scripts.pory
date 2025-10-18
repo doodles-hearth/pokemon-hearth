@@ -13,7 +13,8 @@ script MaguroHarbor_Dojo_EventScript_Koishi {
 			"We Dojo Masters fight Wielders that have taken on the Toku Council's challenge.\p"
 			"We each give out a different Token to anyone who succeeds in defeating us.\p"
 			"I am Koishi. I began raising elegant, graceful Pokémon when I was even younger than you are now.\p"
-			"I may behave and speak in a soft manner, but do not for one second mistake soft-spokenness for weakness.\p"
+			"I may behave and speak in a soft manner…\p"
+			"But do not for one second mistake soft-spokenness for weakness.\p"
 			"Now… Shall we battle?"
 		),
 		format("I see…"),
@@ -193,10 +194,11 @@ script MaguroHarbor_Dojo_EventScript_Advice {
 		}
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}Hello, young challenger! Are you going to be fighting for your first Token?\p"
-			"Welcome to the Koi Pond Dojo!\p"
-			"Koishi, the Master of this place, favors water-type moves. Her battling style is strong, yet graceful… Sigh…\p"
-			"I am her biggest fan! It's true! Maybe one day, I'll become your biggest fan, who knows?\p"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}Hello, young challenger!\nWelcome to the Koi Pond Dojo!\l"
+			"Fighting for your first Token?\p"
+			"Koishi, the Master of this place, favors water-type moves.\p"
+			"Her battling style is strong, yet graceful… Sigh…\lI am her biggest fan! It's true!"
+			"Maybe one day, I'll become your biggest fan, who knows?\l"
 			"Go get 'em!"
 		))
 	}

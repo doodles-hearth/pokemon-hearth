@@ -18,6 +18,10 @@ mapscripts YifuCity_Refuge_MapScripts {
 		) {
 			setflag(FLAG_HIDE_ROUTE_SHAMISEN)
 		}
+
+		if (flag(FLAG_DAILY_YIFU_HOTEL_ROOM)) {
+			setobjectxyperm(LOCALID_YIFU_REFUGE_VALET, 3, 2)
+		}
 	}
 }
 
@@ -28,6 +32,13 @@ script YifuCity_Refuge_EventScript_Nurse {
 	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
 	waitmessage
 	waitbuttonpress
+	release
+	end
+}
+
+script YifuCity_Refuge_EventScript_Pasture {
+	setvar(VAR_0x8009, MUGSHOT_UUME_MAN_2)
+	call(Common_EventScript_PcGuy)
 	release
 	end
 }
@@ -199,68 +210,85 @@ script YifuCity_Refuge_EventScript_HotelValet {
 
 	special(GetPlayerSirMissString)
 
-	setspeaker(SP_NAME_VALET)
-	msgbox(format(
-		// TODO EVA time of day
-		"Good day, {STR_VAR_1}!\nA room is available for ¥500, if you need a place to spend the night!"
-	))
-
-	showmoneybox(18, 0)
-
-	if (checkmoney(500)) {
-		mcdialogue(
-			"One room, please.",
-			"No, thanks."
-		)
-		closemessage
-
-		switch(var(VAR_RESULT)) {
-			case 0:
-				setspeaker(SP_NAME_VALET)
-				msgbox(format(
-					"For sure. That'll be ¥500!"
-				))
-				playse(SE_SHOP)
-				removemoney(500)
-				updatemoneybox
-
-				closemessage
-
-				giveitem(ITEM_REFUGE_ROOM_KEY)
-
-				hidemoneybox
-
-				setspeaker(SP_NAME_VALET)
-				msgbox(format(
-					"Your room is the first one down the corridor! We hope you have a pleasant stay!"
-				))
-				closemessage
-
-
-			case 1:
-				hidemoneybox
-
-				setspeaker(SP_NAME_VALET)
-				msgbox(format(
-					"Have a nice day!"
-				))
-				closemessage
-		}
-
-	} else {
-		mcdialogue(
-			"I'm poor…"
-		)
-		closemessage
-
-		hidemoneybox
-
+	if (flag(FLAG_DAILY_YIFU_HOTEL_ROOM)) {
 		setspeaker(SP_NAME_VALET)
 		msgbox(format(
-			"Oh my, it appears you don't have enough money…\p"
-			"I'm sorry!"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_VALET}"
+			"Enjoy your stay, {STR_VAR_1}!\nRoom one is yours for the day!"
 		))
 		closemessage
+	} else {
+		setspeaker(SP_NAME_VALET)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_UUME_VALET}"
+			"Good day, {STR_VAR_1}!\nA room is available for ¥500, if you need a place to spend the night!"
+		))
+
+		showmoneybox(18, 0)
+
+		if (checkmoney(500)) {
+			mcdialogue(
+				"One room, please.",
+				"No, thanks."
+			)
+			closemessage
+
+			switch(var(VAR_RESULT)) {
+				case 0:
+					setspeaker(SP_NAME_VALET)
+					msgbox(format(
+						"{CREATE_MUGSHOT MUGSHOT_UUME_VALET}"
+						"For sure. That'll be ¥500!"
+					))
+					playse(SE_SHOP)
+					removemoney(500)
+					updatemoneybox
+
+					hidemoneybox
+
+					setspeaker(SP_NAME_VALET)
+					msgbox(format(
+						"{CREATE_MUGSHOT MUGSHOT_UUME_VALET}"
+						"Your room is the first one down the corridor!\lWe hope you have a pleasant stay!"
+					))
+					closemessage
+
+					if (var(VAR_FACING) == DIR_WEST) {
+						applymovement(VAR_LAST_TALKED, moves(walk_down, face_right))
+					} else {
+						applymovement(VAR_LAST_TALKED, moves(walk_right, face_down))
+					}
+					waitmovement(0)
+
+					setflag(FLAG_DAILY_YIFU_HOTEL_ROOM)
+
+				case 1:
+					hidemoneybox
+
+					setspeaker(SP_NAME_VALET)
+					msgbox(format(
+						"{CREATE_MUGSHOT MUGSHOT_UUME_VALET}"
+						"Have a nice day!"
+					))
+					closemessage
+			}
+
+		} else {
+			mcdialogue(
+				"I'm poor…"
+			)
+			closemessage
+
+			hidemoneybox
+
+			setspeaker(SP_NAME_VALET)
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_UUME_VALET}"
+				"Goodness, it appears you don't have enough money…\l"
+				"I'm sorry!"
+			))
+			closemessage
+		}
 	}
 
 	release

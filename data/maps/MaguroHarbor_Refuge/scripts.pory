@@ -15,6 +15,13 @@ script MaguroHarbor_Refuge_EventScript_Nurse {
 	end
 }
 
+script MaguroHarbor_Refuge_EventScript_Pasture {
+	setvar(VAR_0x8009, MUGSHOT_SEASIDE_MAN_2)
+	call(Common_EventScript_PcGuy)
+	release
+	end
+}
+
 script MaguroHarbor_Refuge_EventScript_Hariko {
 	lock
 	faceplayer
@@ -113,7 +120,7 @@ script MaguroHarbor_Refuge_BattleHariko {
 
 			setspeaker(SP_NAME_HARIKO)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}These can be fed to your Pokémon during battle to save you from a pickle.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}These can be fed to your Pokémon during battle when in a pickle.\p"
 				"Farewell, {PLAYER}."
 			))
 			closemessage

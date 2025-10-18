@@ -13301,7 +13301,7 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_Letter,
-        .iconPalette = gItemIconPalette_LavaCookieAndLetter,
+        .iconPalette = gItemIconPalette_Letter,
     },
 
     [ITEM_DEVON_PARTS] =

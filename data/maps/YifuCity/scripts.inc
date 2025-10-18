@@ -2349,11 +2349,10 @@ YifuCity_EventScript_Chimecho_Text_0:
 YifuCity_EventScript_ChimechoLady_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}I love listening to Chimecho's songs.\p"
 	.string "They echo in its hollow body and\n"
-	.string "produce the most wonderful\l"
-	.string "harmonics.\p"
+	.string "produce wonderful harmonics.\p"
 	.string "You should always be kind to\n"
-	.string "Chimecho! They are sacred, and\l"
-	.string "mistreating one\l"
+	.string "Chimecho!\p"
+	.string "They are sacred, and mistreating one\n"
 	.string "would surely bring you bad luck.$"
 
 YifuCity_EventScript_ChefOnBreak_Text_0:

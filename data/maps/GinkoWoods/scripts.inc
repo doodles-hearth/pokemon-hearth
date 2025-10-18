@@ -94,6 +94,9 @@ GinkoWoods_EventScript_Bean_1:
 	waitmovement 0
 	removeobject 7
 	setflag FLAG_HIDE_BEAN_GINKO_WOODS
+	setnamedmon SPECIES_JOLTIK
+	setnamedmon SPECIES_SEWADDLE
+	setdescribedmon SPECIES_SEWADDLE
 	release
 	return
 

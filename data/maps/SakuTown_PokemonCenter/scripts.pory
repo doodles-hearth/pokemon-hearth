@@ -82,6 +82,13 @@ script SakuTown_PokemonCenter_EventScript_Nurse {
 	end
 }
 
+script SakuTown_PokemonCenter_EventScript_Pasture {
+	setvar(VAR_0x8009, MUGSHOT_SAKURA_MAN_2)
+	call(Common_EventScript_PcGuy)
+	release
+	end
+}
+
 script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
 	lock
 	faceplayer
@@ -102,7 +109,7 @@ script SakuTown_PokemonCenter_EventScript_ChatotPost {
 	setspeaker(SP_NAME_GUY)
 	playse(SE_PIN)
 	setnamedmon(SPECIES_CHATOT)
-	applymovement(VAR_LAST_TALKED, moves(emote_music, lock_facing_direction, walk_in_place_down * 4, unlock_facing_direction))
+	applymovement(VAR_LAST_TALKED, moves(emote_music, lock_facing_direction, walk_in_place_slow_down * 4, unlock_facing_direction, face_player))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}If you're waiting for Chatot post~\nHang out by the Chatot Post~!\p"
 		"If a Chatot is perched on a Chatot Post, that means you've got mail!\p"

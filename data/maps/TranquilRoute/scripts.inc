@@ -309,6 +309,7 @@ TranquilRoute_EventScript_BerryWoman::
 	setspeaker SP_NAME_WOMAN
 	msgbox TranquilRoute_EventScript_BerryWoman_Text_3
 	closemessage
+	setnamedmon SPECIES_WAILMER
 	giveitem ITEM_WAILMER_PAIL
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setspeaker SP_NAME_WOMAN

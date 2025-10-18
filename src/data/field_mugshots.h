@@ -183,6 +183,7 @@ static const u32 sFieldMugshotGfx_SeasideValetNormal[] = INCBIN_U32("graphics/fi
 // Hot
 static const u32 sFieldMugshotGfx_HotMan1Normal[] = INCBIN_U32("graphics/field_mugshots/hot/man_1/normal.4bpp.smol");
 static const u32 sFieldMugshotGfx_HotOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/hot/old_woman/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_HotGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/hot/girl_2/normal.4bpp.smol");
 
 struct MugshotGfx
 {
@@ -883,6 +884,15 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_HotOldWomanNormal,
+            .pal = gObjectEventPal_Npc_Hot,
+        }
+    },
+
+    [MUGSHOT_HOT_GIRL_2] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_HotGirl2Normal,
             .pal = gObjectEventPal_Npc_Hot,
         }
     },

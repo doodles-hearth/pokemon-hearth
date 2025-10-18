@@ -6073,20 +6073,20 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Azumarill = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wingull = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_1,
+    .paletteTag = OBJ_EVENT_PAL_TAG_SUNRISE,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
-    .size = 128,
-    .width = 16,
-    .height = 16,
+    .size = 512,
+    .width = 32,
+    .height = 32,
     .paletteSlot = PALSLOT_NPC_1,
     .shadowSize = SHADOW_SIZE_M,
     .inanimate = FALSE,
     .compressed = FALSE,
     .tracks = TRACKS_FOOT,
-    .oam = &gObjectEventBaseOam_16x16,
-    .subspriteTables = sOamTables_16x16,
+    .oam = &gObjectEventBaseOam_32x32,
+    .subspriteTables = sOamTables_32x32,
     .anims = sAnimTable_Standard,
-    .images = sPicTable_WingullOld,
+    .images = sPicTable_WingullGrounded,
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 

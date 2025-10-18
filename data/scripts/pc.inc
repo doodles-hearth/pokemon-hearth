@@ -1,11 +1,14 @@
 Common_EventScript_PcGuy::
 	lock
 	faceplayer
+	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	goto_if_set FLAG_PC_EXPLAINED, Common_EventScript_PcGuy_2
 	msgbox Common_EventScript_PcGuy_Text_1
 Common_EventScript_PcGuy_1:
+	closemessage
 	special ShowPokemonStorageSystemPC
 	waitstate
+	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	goto_if_set FLAG_PC_EXPLAINED, Common_EventScript_PcGuy_6
 	setflag FLAG_PC_EXPLAINED
 	msgbox Common_EventScript_PcGuy_Text_3
@@ -13,6 +16,7 @@ Common_EventScript_PcGuy_1:
 	fadescreenswapbuffers FADE_TO_BLACK
 	delay 120
 	fadescreenswapbuffers FADE_FROM_BLACK
+	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	msgbox Common_EventScript_PcGuy_Text_4
 	closemessage
 Common_EventScript_PcGuy_5:
@@ -106,11 +110,11 @@ EventScript_AccessPokemonBoxLink::
 	end
 
 Common_EventScript_PcGuy_Text_0:
-	.string "Need me to carry some Pokémon around\n"
+	.string "{SPEAKER NAME_MAN}Need me to carry some Pokémon around\n"
 	.string "for you? Sure thing!$"
 
 Common_EventScript_PcGuy_Text_1:
-	.string "Hey there, Pokémon Wielder!\p"
+	.string "{SPEAKER NAME_MAN}Hey there, Pokémon Wielder!\p"
 	.string "Have you ever thought, “Darn, I wish I\n"
 	.string "could catch this seventh Pokémon,\l"
 	.string "but I only have room for six?”\p"
@@ -121,23 +125,22 @@ Common_EventScript_PcGuy_Text_1:
 	.string "We bring your Pokémon to a pasture\n"
 	.string "where they live happily while waiting\l"
 	.string "for you to get them back!\p"
-	.string "So if you ever want to send or\n"
-	.string "retrieve your Pokémon, come talk to\l"
-	.string "me!$"
+	.string "Talk to me if you ever want to send or\n"
+	.string "retrieve your Pokémon!$"
 
 Common_EventScript_PcGuy_Text_2:
-	.string "Pant… pant… Thanks for using our\n"
+	.string "{SPEAKER NAME_MAN}Pant… pant… Thanks for using our\n"
 	.string "Pokémon pasture service!$"
 
 Common_EventScript_PcGuy_Text_3:
-	.string "Alrighty, I'll just do a quick trip to\n"
+	.string "{SPEAKER NAME_MAN}Alrighty, I'll just do a quick trip to\n"
 	.string "the pasture!\p"
 	.string "Just a minute!$"
 
 Common_EventScript_PcGuy_Text_4:
-	.string "PANT… PANT…\p"
-	.string "Your… pant… Pokémon… pant… are all\n"
+	.string "{SPEAKER NAME_MAN}PANT…{PAUSE 8} PANT…\p"
+	.string "Your…{PAUSE 8} pant…{PAUSE 8} Pokémon…{PAUSE 8} pant…{PAUSE 8} are all\n"
 	.string "set!\p"
 	.string "Whew, the pasture is a liiiittle far\n"
-	.string "from here! Pant…\p"
-	.string "Come… pant… Come again!$"
+	.string "from here!{PAUSE 8} Pant…\p"
+	.string "Come…{PAUSE 8} pant…{PAUSE 8} Come again!$"
