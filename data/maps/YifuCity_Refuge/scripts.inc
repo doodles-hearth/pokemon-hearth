@@ -24,7 +24,7 @@ YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
 	goto YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 
 YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
-	setobjectxyperm LOCALID_YIFU_REFUGE_VALET, 3, 1
+	setobjectxyperm LOCALID_YIFU_REFUGE_VALET, 3, 2
 	return
 
 
@@ -228,6 +228,18 @@ YifuCity_Refuge_EventScript_HotelValet_10:
 YifuCity_Refuge_EventScript_HotelValet_12:
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_EventScript_HotelValet_Movement_0
 	goto YifuCity_Refuge_EventScript_HotelValet_11
+
+
+YifuCity_Refuge_EventScript_FakeValet::
+	lock
+	faceplayer
+	setspeaker SP_NAME_ZUBAT_GRUNT
+	msgbox YifuCity_Refuge_EventScript_FakeValet_Text_0
+	closemessage
+	setnamedmon SPECIES_PAWNIARD
+	setdescribedmon SPECIES_PAWNIARD
+	release
+	end
 
 
 YifuCity_Refuge_EventScript_ListenToShamisen::
@@ -632,6 +644,10 @@ YifuCity_Refuge_EventScript_HotelValet_Text_8:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_VALET} Goodness, it appears you don't have\n"
 	.string "enough money…\l"
 	.string "I'm sorry!$"
+
+YifuCity_Refuge_EventScript_FakeValet_Text_0:
+	.string "Would you be so kind as to piss right\n"
+	.string "off, please?$"
 
 YifuCity_Refuge_EventScript_ListenToShamisen_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Whew… I've walked all day…\n"

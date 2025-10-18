@@ -1,15 +1,19 @@
 const FLAG_HIDE_HERACROSS = FLAG_TEMP_1
 const FLAG_HIDE_OKADA = FLAG_TEMP_2
 const FLAG_HIDE_CITIZENS_UNSAFE_CITY = FLAG_TEMP_4
+const FLAG_HIDE_NUMEL = FLAG_TEMP_3
 
 mapscripts YifuCity_Refuge_2F_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		if (!flag(FLAG_TRADE_NUMEL_COMPLETED)) {
+		if (flag(FLAG_TRADE_NUMEL_COMPLETED)) {
+			setflag(FLAG_HIDE_NUMEL)
+		} else {
 			setflag(FLAG_HIDE_HERACROSS)
 		}
 
 		if (!flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 			setflag(FLAG_HIDE_CITIZENS_UNSAFE_CITY)
+			setflag(FLAG_HIDE_NUMEL)
 		}
 
 		if (!flag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)) {
@@ -77,13 +81,18 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
         msgbox(
             format(
 				"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL}"
-                "A visitor, hi, pleased to meet you!!\p"
-				"You have such pretty Pokémon!\nI brought Numel from my home, hoping to trade it for a local Heracross.\p"
+                "A visitor, hi, pleased to meet you!!\nYou have such pretty Pokémon!\p"
+				"I brought Numel from my home, hoping to trade it for a local Heracross.\p"
 				"What do you say? Want to trade a Heracross for my Numel?"
-            ), MSGBOX_YESNO
+            )
         )
 
-	    if (var(VAR_RESULT) == NO || var(VAR_RESULT) == MULTI_B_PRESSED) {
+		mcdialogue(
+			"With pleasure!",
+			"Not interested."
+		)
+
+	    if (var(VAR_RESULT) != 0) {
 			playse(SE_PIN)
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
             msgbox(format(

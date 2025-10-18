@@ -294,6 +294,21 @@ script YifuCity_Refuge_EventScript_HotelValet {
 	release
 }
 
+script YifuCity_Refuge_EventScript_FakeValet {
+	lock
+	faceplayer
+	setspeaker(SP_NAME_ZUBAT_GRUNT)
+	msgbox(format(
+		"Would you be so kind as to piss right off, please?"
+	))
+	closemessage
+
+	setnamedmon(SPECIES_PAWNIARD)
+	setdescribedmon(SPECIES_PAWNIARD)
+	release
+	end
+}
+
 script YifuCity_Refuge_EventScript_ListenToShamisen {
 	lock
 	faceplayer

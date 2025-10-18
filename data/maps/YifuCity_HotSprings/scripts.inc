@@ -59,8 +59,21 @@ YifuCity_HotSprings_EventScript_Torkoal::
 	playmoncry SPECIES_TORKOAL, CRY_MODE_NORMAL
 	msgbox YifuCity_HotSprings_EventScript_Torkoal_Text_0
 	waitmoncry
+	closemessage
+	goto_if_unset FLAG_GOT_CHARCOAL, YifuCity_HotSprings_EventScript_Torkoal_2
+YifuCity_HotSprings_EventScript_Torkoal_1:
 	release
 	return
+
+YifuCity_HotSprings_EventScript_Torkoal_2:
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_HotSprings_EventScript_Torkoal_Movement_0
+	waitmovement 0
+	msgbox YifuCity_HotSprings_EventScript_Torkoal_Text_1
+	giveitem ITEM_CHARCOAL
+	setflag FLAG_GOT_CHARCOAL
+	closemessage
+	goto YifuCity_HotSprings_EventScript_Torkoal_1
 
 
 YifuCity_HotSprings_EventScript_Slowpoke::
@@ -82,6 +95,16 @@ YifuCity_HotSprings_EventScript_OldWoman2_Movement_0:
 
 YifuCity_HotSprings_EventScript_HotSpringF_Movement_0:
 	emote_sweat
+	step_end
+
+YifuCity_HotSprings_EventScript_Torkoal_Movement_0:
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 YifuCity_HotSprings_EventScript_Slowpoke_Movement_0:
@@ -137,6 +160,11 @@ YifuCity_HotSprings_EventScript_Firebringer_Text_2:
 
 YifuCity_HotSprings_EventScript_Torkoal_Text_0:
 	.string "Pschhhhhh…$"
+
+YifuCity_HotSprings_EventScript_Torkoal_Text_1:
+	.string "… …Oh?\p"
+	.string "A black bit of something peeled off\n"
+	.string "the Pokémon's shell!$"
 
 YifuCity_HotSprings_EventScript_Slowpoke_Text_0:
 	.string "Sloooo…$"

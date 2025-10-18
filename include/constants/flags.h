@@ -49,7 +49,7 @@
 #define FLAG_SAKU_KURA_HIDE_ESPEON_LADYS_HOUSE 0x21
 // True if the Espeon from Saku village has left its master's house
 #define FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME 0x22
-#define FLAG_UNUSED_0x23 0x23 // UNUSED
+#define FLAG_GOT_CHARCOAL 0x23
 // True if the owner of the bonsai shop is not at the shop
 #define FLAG_HIDE_BONSAI_SHOP_OWNER 0x24
 #define FLAG_HIDE_LOST_MAREEP_1 0x25
@@ -1074,10 +1074,10 @@
 #define FLAG_CROBAT_HIDEOUT_PEARL                                   0x3F7
 #define FLAG_ITEM_SUNRISE_CAVE_HEART_SCALE                          0x3F8
 #define FLAG_ITEM_SILVER_TUNNEL_SUPER_OINTMENT                      0x3F9
-#define FLAG_ITEM_ROUTE_115_IRON                                    0x3FA
-#define FLAG_ITEM_ROUTE_116_ETHER                                   0x3FB
-#define FLAG_ITEM_ROUTE_116_REPEL                                   0x3FC
-#define FLAG_ITEM_ROUTE_116_HP_UP                                   0x3FD
+#define FLAG_ITEM_YIFU_REFUGE_SITRUS_BERRY                          0x3FA
+#define FLAG_ITEM_YIFU_REFUGE_LAVA_COOKIE                           0x3FB
+#define FLAG_HIDDEN_ITEM_YIFU_CITY_ESCAPE_ROPE                      0x3FC
+#define FLAG_HIDDEN_ITEM_YIFU_CITY_RARE_CANDY                       0x3FD
 #define FLAG_ITEM_ROUTE_117_GREAT_BALL                              0x3FE
 #define FLAG_ITEM_ROUTE_117_REVIVE                                  0x3FF
 #define FLAG_ITEM_ROUTE_119_SUPER_REPEL                             0x400
