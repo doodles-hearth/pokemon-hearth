@@ -6408,6 +6408,18 @@
       "blockdata_filepath": "data/layouts/YifuCity_HotSprings/map.bin",
       "border_height": 2,
       "border_width": 2
+    },
+    {
+      "id": "LAYOUT_SAKU_TOWN_BUFFER_AREA",
+      "name": "SakuTown_BufferArea_Layout",
+      "width": 10,
+      "height": 14,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_SakuKura",
+      "border_filepath": "data/layouts/SakuTown_BufferArea/border.bin",
+      "blockdata_filepath": "data/layouts/SakuTown_BufferArea/map.bin",
+      "border_height": 2,
+      "border_width": 2
     }
   ]
 }

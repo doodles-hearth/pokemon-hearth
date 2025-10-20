@@ -203,6 +203,9 @@ const u16 gTrainerPalette_NinjaBoy[] = INCBIN_U16("graphics/trainers/front_pics/
 const u32 gTrainerFrontPic_BattleGirl[] = INCBIN_U32("graphics/trainers/front_pics/kungfu_gal.4bpp.smol");
 const u16 gTrainerPalette_BattleGirl[] = INCBIN_U16("graphics/trainers/front_pics/kungfu_gal.gbapal");
 
+const u32 gTrainerFrontPic_BattleGuy[] = INCBIN_U32("graphics/trainers/front_pics/kungfu_guy.4bpp.smol");
+const u16 gTrainerPalette_BattleGuy[] = INCBIN_U16("graphics/trainers/front_pics/kungfu_guy.gbapal");
+
 const u32 gTrainerFrontPic_ParasolLady[] = INCBIN_U32("graphics/trainers/front_pics/parasol_lady.4bpp.smol");
 const u16 gTrainerPalette_ParasolLady[] = INCBIN_U16("graphics/trainers/front_pics/parasol_lady.gbapal");
 
@@ -449,6 +452,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_DRAGON_TAMER, gTrainerFrontPic_DragonTamer, gTrainerPalette_DragonTamer),
     TRAINER_SPRITE(TRAINER_PIC_NINJA_BOY, gTrainerFrontPic_NinjaBoy, gTrainerPalette_NinjaBoy),
     TRAINER_SPRITE(TRAINER_PIC_BATTLE_GIRL, gTrainerFrontPic_BattleGirl, gTrainerPalette_BattleGirl),
+    TRAINER_SPRITE(TRAINER_PIC_BATTLE_GUY, gTrainerFrontPic_BattleGuy, gTrainerPalette_BattleGuy),
     TRAINER_SPRITE(TRAINER_PIC_PARASOL_LADY, gTrainerFrontPic_ParasolLady, gTrainerPalette_ParasolLady),
     TRAINER_SPRITE(TRAINER_PIC_SWIMMER_F, gTrainerFrontPic_SwimmerF, gTrainerPalette_SwimmerF),
     TRAINER_SPRITE(TRAINER_PIC_TWINS, gTrainerFrontPic_Twins, gTrainerPalette_Twins),

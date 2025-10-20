@@ -4178,17 +4178,17 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .abilities = { ABILITY_SAND_VEIL, ABILITY_NONE, ABILITY_SAND_RUSH },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Sandslash"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Pointy Mole"),
         .cryId = CRY_SANDSLASH,
         .natDexNum = NATIONAL_DEX_SANDSLASH,
         .categoryName = _("Mouse"),
         .height = 10,
         .weight = 295,
         .description = COMPOUND_STRING(
-            "It curls up in a ball to protect itself from\n"
-            "enemy attacks. It also curls up to prevent\n"
-            "heatstroke during the daytime when\n"
-            "temperatures rise sharply."),
+            "It curls up in a ball and rolls into things\n"
+            "to make great damage. Its claws are perfect\n"
+            "for digging into the ground and softening it.\n"
+            "It is a precious assistant to Miners."),
         .pokemonScale = 341,
         .pokemonOffset = 11,
         .trainerScale = 256,

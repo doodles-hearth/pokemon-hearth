@@ -19,7 +19,7 @@ WindsweptRoute_EventScript_OvergrownTrees_2:
 
 WindsweptRoute_EventScript_Trainer1::
 	trainerbattle_single TRAINER_MUSASHI_1, WindsweptRoute_EventScript_Trainer1_Text_0, WindsweptRoute_EventScript_Trainer1_Text_1
-	setspeaker SP_NAME_BATTLE_GIRL
+	setspeaker SP_NAME_BATTLE_GUY
 	msgbox WindsweptRoute_EventScript_Trainer1_Text_2, MSGBOX_AUTOCLOSE
 	end
 
@@ -145,14 +145,14 @@ WindsweptRoute_EventScript_OvergrownTrees_Text_1:
 	.string "master on Tranquil route for help…$"
 
 WindsweptRoute_EventScript_Trainer1_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}These winds blow as strong as my will\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY EMOTE_NORMAL}These winds blow as strong as my will\n"
 	.string "to win!$"
 
 WindsweptRoute_EventScript_Trainer1_Text_1:
 	.string "You blew us away!$"
 
 WindsweptRoute_EventScript_Trainer1_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I come here to train my Pokémon. The\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY EMOTE_NORMAL}I come here to train my Pokémon. The\n"
 	.string "harsh weather helps us give the best\l"
 	.string "of ourselves.$"
 

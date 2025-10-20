@@ -64,11 +64,13 @@ script Silveridge_House1_EventScript_Man {
     setspeaker(SP_NAME_MINER)
     if (flag(FLAG_OBTAINED_EVERSTONE)) {
         msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}"
             "You think some Pokémon prefer to remain small forever?"
         ))
         closemessage
     } else {
         msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}"
             "My job is to mine ore in Silver Tunnel, all day long.\p"
             "I love it! I wouldn't trade it for the world. I'm fine with being a simple miner forever.\p"
             "Speaking of… I often find interesting rocks in there. Look at this!"
@@ -80,12 +82,11 @@ script Silveridge_House1_EventScript_Man {
 
         setspeaker(SP_NAME_MINER)
         msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}"
             "Apparently as long as a Pokémon holds on to this stone, it'll stop growing.\p"
-            "My helper Sandslash is already fully grown, so I don't need it."
+            "Sandy here is already fully grown, so I don't need it."
         ))
         closemessage
-
-        setnamedmon(SPECIES_SANDSLASH)
     }
     release
 }

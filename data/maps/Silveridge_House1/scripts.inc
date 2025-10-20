@@ -64,7 +64,6 @@ Silveridge_House1_EventScript_Man::
 	setspeaker SP_NAME_MINER
 	msgbox Silveridge_House1_EventScript_Man_Text_2
 	closemessage
-	setnamedmon SPECIES_SANDSLASH
 Silveridge_House1_EventScript_Man_1:
 	release
 	return
@@ -98,11 +97,11 @@ Silveridge_House1_EventScript_Sandslash_Text_0:
 	.string "Sahaaah!$"
 
 Silveridge_House1_EventScript_Man_Text_0:
-	.string "You think some Pokémon prefer to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL} You think some Pokémon prefer to\n"
 	.string "remain small forever?$"
 
 Silveridge_House1_EventScript_Man_Text_1:
-	.string "My job is to mine ore in Silver Tunnel,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL} My job is to mine ore in Silver Tunnel,\n"
 	.string "all day long.\p"
 	.string "I love it! I wouldn't trade it for the\n"
 	.string "world. I'm fine with being a simple\l"
@@ -111,7 +110,8 @@ Silveridge_House1_EventScript_Man_Text_1:
 	.string "rocks in there. Look at this!$"
 
 Silveridge_House1_EventScript_Man_Text_2:
-	.string "Apparently as long as a Pokémon holds\n"
-	.string "on to this stone, it'll stop growing.\p"
-	.string "My helper Sandslash is already fully\n"
-	.string "grown, so I don't need it.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL} Apparently as long as a Pokémon\n"
+	.string "holds on to this stone, it'll stop\l"
+	.string "growing.\p"
+	.string "Sandy here is already fully grown, so\n"
+	.string "I don't need it.$"

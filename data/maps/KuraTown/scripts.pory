@@ -96,10 +96,13 @@ script KuraTown_EventScript_DojoChallenger {
 	lock
 	faceplayer
 	if (flag(FLAG_KURA_DOJO_CLOSED)) {
+		waitse
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_upset))
 		setspeaker("Bold Man")
 		msgbox(
 			format(
+				"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
 				"Looks like the Dojo is closed again…\p"
 				"Gah, when will I get a chance to crush Hana in a fiery battle?\p"
 				"Could it be that she is scared of me?"
@@ -108,10 +111,12 @@ script KuraTown_EventScript_DojoChallenger {
 	} else {
 		setspeaker("Cowardly Man")
 		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
 			"The Dojo is open! I can finally defeat its leader in a fiery battle!\p"
 			"…Hm? When, you ask?\p"
 			"In… In a minute…"
 		))
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
 			"No, go right ahead, I'm just… preparing…"
@@ -244,9 +249,9 @@ script KuraTown_EventScript_PokemonCouncil {
 	lock
 	faceplayer	
 	setspeaker(SP_NAME_WOMAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 EMOTE_NORMAL}The Elders of the Toku Council may look like a bunch of frail old people, but each of them was once a formidable Wielder!\p"
-		"They paved the way for what Pokémon Wielding is today, and will be tomorrow."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 EMOTE_NORMAL}The Elders of the Toku Council may\nlook like a bunch of frail old people,\lbut they were once formidable Wielders!\p"
+		"They paved the way for what Pokémon\nWielding is today, and will be tomorrow."
 	))
 	closemessage
 	release
@@ -285,10 +290,11 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 
 	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Did you hear? They said this Decay\nhas started less than a week ago.\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Did you hear? They said this Decay\nstarted less than a week ago.\p"
 		"That coincides with the beginning of\nthe Volcano's rumbling spells,\lso there probably is a correlation.\p"
 		"We need to get to the bottom of this."
 	))
+	playse(SE_PIN)
 	applymovement(LOCALID_KURA_HARIKO, moves(emote_angry))
 	msgbox(format(
 		"But how are we supposed to if the grownups don't let us?"
@@ -321,14 +327,15 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 	waitmovement(0)
 
-	// TODO emote_sweat
+	playse(SE_PIN)
+	applymovement(LOCALID_KURA_NATSUKI, moves(emote_sweat))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Boy, your friend sure talks a lot, huh?\p"
 		"D'you think this whole Decay business\nis linked to the wild Pokémon attacks\lElder Kaba told us about?\p"
 		"I'm glad the Samurai are on it.\nI'm sure they'll fix whatever this is.\p"
 		"You're going up to Silveridge to deliver that letter, huh, {PLAYER}?\p"
-		"Me? I'm heading to Yifu City.\nThere's a Dojo there, and I'll need\lto collect a heckload of Tokens\lif I ever want to join the New Moon order.\p"
+		"Me? I'm heading to Yifu City.\nThere's a Dojo there, and I'll need\lto collect a heckload of Tokens\lif I wanna join the New Moon order.\p"
 		"When I'm a Samurai, I'll be able to\nprotect everyone from danger!\p"
 		"Don't worry, I'll protect you, too!{PAUSE_UNTIL_PRESS}\n…Mostly from yourself, though!"
 	))
@@ -363,6 +370,7 @@ script KuraTown_EventScript_AnxiousAshii {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}My heart is racing… Where is he?\nI hope he's alright…"
 	))
+	playse(SE_PIN)
 	applymovement(LOCALID_ASHII, moves(emote_sad))
 	msgbox(format(
 		"I'm worried…\nCan you check down south for me?"
@@ -377,6 +385,8 @@ script KuraTown_EventScript_AnxiousAshii {
 script KuraTown_EventScript_AnxiousAshiiWaiting {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(LOCALID_ASHII, moves(emote_sad))
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
@@ -393,6 +403,7 @@ script KuraTown_EventScript_PreventEscape {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
 	waitmovement(LOCALID_ASHII)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
+	playse(SE_PIN)
 	applymovement(LOCALID_ASHII, moves(emote_sad))
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Where on earth are you going, {PLAYER}?!\p{FONT_SMALL_NARROW}Please don't leave me here alone…"))

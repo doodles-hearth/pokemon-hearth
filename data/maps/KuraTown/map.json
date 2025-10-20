@@ -27,6 +27,11 @@
       "map": "MAP_WINDSWEPT_ROUTE_BOTTOM",
       "offset": 16,
       "direction": "up"
+    },
+    {
+      "map": "MAP_SAKU_TOWN_BUFFER_AREA",
+      "offset": 50,
+      "direction": "down"
     }
   ],
   "object_events": [

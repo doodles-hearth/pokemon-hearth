@@ -609,6 +609,9 @@ MUGSHOT_SHAMISEN_RED        = 8A
 MUGSHOT_SHAMISEN_BLUE       = 8B
 MUGSHOT_COOK                = 8C
 MUGSHOT_IWA                 = 8D
+MUGSHOT_GEM_MANIAC          = 8E
+MUGSHOT_MINER               = 8F
+MUGSHOT_GARDENER            = 90
 
 EMOTE_NORMAL = 00
 EMOTE_SEXY = 01

@@ -102,8 +102,9 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}I was wondering if you'd reached Saku Village by now. Looks like we almost missed each other!\p"
-		"I saw several patrolling Samurai on my way here."
+		"I saw several New Moon Samurai patrolling on my way here."
 	))
+	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, moves(emote_heart))
 	msgbox(format(
 		"They look so cool, no wonder they're so admired!\p"
@@ -251,6 +252,7 @@ script SakuTown_EventScript_Karateka {
 	faceplayer
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
 		"I let the Toku Council borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
 	))
 	closemessage
@@ -260,10 +262,12 @@ script SakuTown_EventScript_Karateka {
 	waitmovement(0)
 	waitse
 
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_heart))
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"Come on, Mama, Kuku! Daddy loves you!!"
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+		"Mama, Kuku! Daddy loves you!!"
 	))
 	closemessage
 

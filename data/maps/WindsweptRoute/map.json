@@ -217,8 +217,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
-      "x": 28,
-      "y": 15,
+      "x": 49,
+      "y": 21,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 7,
@@ -337,8 +337,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_F",
-      "x": 25,
-      "y": 15,
+      "x": 46,
+      "y": 21,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 7,
@@ -357,8 +357,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(NUZLEAF)",
-      "x": 27,
-      "y": 15,
+      "x": 48,
+      "y": 21,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 7,
@@ -377,8 +377,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(BRELOOM)",
-      "x": 26,
-      "y": 15,
+      "x": 47,
+      "y": 21,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 7,

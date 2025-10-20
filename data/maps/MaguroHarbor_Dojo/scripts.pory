@@ -39,8 +39,8 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	setspeaker(SP_NAME_KOISHI)
 	msgbox(
 		format(
-			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}I applaud your skill. You are still a child, yet you obviously have a natural aptitude for battle.\p"
-			"With the Token I just gave you, your Pokémon will obey you without question, even those you trade with others.\p"
+			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}I applaud your skill.\nYou are still a child, yet you clearly have a natural aptitude for battle.\p"
+			"The Token I just gave you will boost your companions' Special Attack.\p"
 			"I am also supposed to give you this."
 		),
 		MSGBOX_DEFAULT
@@ -52,7 +52,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	msgbox(
 		format(
 			"{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}This scroll contains Nature Power, a move that changes depending on the terrain your Pokémon is standing on.\p"
-			"Going through the Toku Council's challenge is no easy undertaking, but I can feel your spirit overflowing with determination.\p"
+			"The Toku Council's challenge is no easy undertaking, but your spirit overflows with determination.\p"
 			"Good luck, {PLAYER}."
 		),
 		MSGBOX_DEFAULT
@@ -80,10 +80,10 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	delay(48)
 
 	// Volcano quake!
-	setvar(VAR_0x8004, 1)  // vertical pan
-	setvar(VAR_0x8005, 2)  // horizontal pan
+	setvar(VAR_0x8004, 3)  // vertical pan
+	setvar(VAR_0x8005, 0)  // horizontal pan
 	setvar(VAR_0x8006, 40) // num shakes
-	setvar(VAR_0x8007, 4)  // shake delay
+	setvar(VAR_0x8007, 2)  // shake delay
 	special(ShakeCamera)
 	delay(16)
 	playse(SE_PIN)

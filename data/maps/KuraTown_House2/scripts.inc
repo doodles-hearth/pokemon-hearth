@@ -321,22 +321,22 @@ AshiiScript_ReportBackAfterGivingScarf_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm sorry. You've been an incredible\n"
 	.string "help, and I don't even know your name!\p"
 	.string "… … …{PLAYER}. I see…\p"
-	.string "{PLAYER}, look, There are rocks\n"
+	.string "{PLAYER}, look, There are treelings\n"
 	.string "blocking the entrance of the vale.\p"
 	.string "Tama can't get to me!\n"
-	.string "Could you destroy them for me?\p"
+	.string "Could you cut them for me?\p"
 	.string "I'd do it myself, but I can't get into\n"
 	.string "Saku Village.$"
 
 AshiiScript_Rocks_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Could you please destroy those rocky\n"
-	.string "obstacles in the vale?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Could you please cut those treelings\n"
+	.string "in the vale?\p"
 	.string "I'd do it myself, but I can't get into\n"
 	.string "Saku Village.$"
 
 AshiiScript_EscortAshii_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you for clearing the way of\n"
-	.string "those rocks!\p"
+	.string "those trees!\p"
 	.string "{PLAYER}… I know this is a big thing\n"
 	.string "to ask, but…\p"
 	.string "I want to be sure that my meeting\n"

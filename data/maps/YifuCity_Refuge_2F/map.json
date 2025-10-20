@@ -312,14 +312,6 @@
     },
     {
       "type": "hidden_item",
-      "x": 29,
-      "y": 16,
-      "elevation": 0,
-      "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
-    },
-    {
-      "type": "hidden_item",
       "x": 22,
       "y": 7,
       "elevation": 0,
