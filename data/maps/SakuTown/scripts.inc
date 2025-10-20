@@ -1167,7 +1167,7 @@ SakuTown_EventScript_Woman_Text_0:
 	.string "refuge!$"
 
 SakuTown_EventScript_Karateka_Text_0:
-	.string "I let the Toku Council borrow my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY} I let the Toku Council borrow my\n"
 	.string "super-strong Pokémon to help build\l"
 	.string "the new Pokémon refuges throughout\l"
 	.string "the region.$"
