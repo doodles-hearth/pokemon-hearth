@@ -4187,8 +4187,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .description = COMPOUND_STRING(
             "It curls up in a ball and rolls into things\n"
             "to make great damage. Its claws are perfect\n"
-            "for digging into the ground and softening
-            it. It is a precious assistant to Miners."),
+            "for digging into the ground and softening"
+            "it. It is a precious assistant to Miners."),
         .pokemonScale = 341,
         .pokemonOffset = 11,
         .trainerScale = 256,
