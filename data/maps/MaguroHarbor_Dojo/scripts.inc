@@ -27,10 +27,10 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated::
 	setflag FLAG_KURA_DOJO_CLOSED
 	clearflag FLAG_HIDE_BONSAI_SHOP_OWNER
 	delay 48
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 2
+	setvar VAR_0x8004, 3
+	setvar VAR_0x8005, 0
 	setvar VAR_0x8006, 40
-	setvar VAR_0x8007, 4
+	setvar VAR_0x8007, 2
 	special ShakeCamera
 	delay 16
 	playse SE_PIN
@@ -205,23 +205,20 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_0:
 	.string "Token from Koishi.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}I applaud your skill. You are still a\n"
-	.string "child, yet you obviously have a\l"
-	.string "natural aptitude for battle.\p"
-	.string "With the Token I just gave you, your\n"
-	.string "Pokémon will obey you without\l"
-	.string "question, even those you trade with\l"
-	.string "others.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}I applaud your skill.\n"
+	.string "You are still a child, yet you clearly\l"
+	.string "have a natural aptitude for battle.\p"
+	.string "The Token I just gave you will boost\n"
+	.string "your companions' Special Attack.\p"
 	.string "I am also supposed to give you this.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_KOISHI EMOTE_NORMAL}This scroll contains Nature Power, a\n"
 	.string "move that changes depending on the\l"
 	.string "terrain your Pokémon is standing on.\p"
-	.string "Going through the Toku Council's\n"
-	.string "challenge is no easy undertaking, but\l"
-	.string "I can feel your spirit overflowing\l"
-	.string "with determination.\p"
+	.string "The Toku Council's challenge is no\n"
+	.string "easy undertaking, but your spirit\l"
+	.string "overflows with determination.\p"
 	.string "Good luck, {PLAYER}.$"
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_3:

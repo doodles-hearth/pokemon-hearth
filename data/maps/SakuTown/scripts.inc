@@ -110,6 +110,7 @@ SakuTown_EventScript_RivalAtSakuWall_1:
 	waitmovement 0
 	setspeaker SP_NAME_NATSUKI
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_1
+	playse SE_PIN
 	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_2
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_2
 	switch VAR_STARTER_MON
@@ -238,6 +239,7 @@ SakuTown_EventScript_Karateka::
 	applymovement 6, SakuTown_EventScript_Karateka_Movement_0
 	waitmovement 0
 	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, SakuTown_EventScript_RivalAtSakuWall_Movement_2
 	setspeaker SP_NAME_MAN
 	msgbox SakuTown_EventScript_Karateka_Text_1
@@ -1088,8 +1090,8 @@ SakuTown_EventScript_RivalAtSakuWall_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}I was wondering if you'd reached Saku\n"
 	.string "Village by now. Looks like we almost\l"
 	.string "missed each other!\p"
-	.string "I saw several patrolling Samurai on my\n"
-	.string "way here.$"
+	.string "I saw several New Moon Samurai\n"
+	.string "patrolling on my way here.$"
 
 SakuTown_EventScript_RivalAtSakuWall_Text_2:
 	.string "They look so cool, no wonder they're\n"
@@ -1165,13 +1167,13 @@ SakuTown_EventScript_Woman_Text_0:
 	.string "refuge!$"
 
 SakuTown_EventScript_Karateka_Text_0:
-	.string "I let the Toku Council borrow my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY} I let the Toku Council borrow my\n"
 	.string "super-strong Pokémon to help build\l"
 	.string "the new Pokémon refuges throughout\l"
 	.string "the region.$"
 
 SakuTown_EventScript_Karateka_Text_1:
-	.string "Come on, Mama, Kuku! Daddy loves you!!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY} Mama, Kuku! Daddy loves you!!$"
 
 SakuTown_EventScript_Guard_Text_0:
 	.string "Damn, where did that Mareep come\n"

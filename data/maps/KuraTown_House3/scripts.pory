@@ -14,13 +14,16 @@ script KuraTown_House3_EventScript_Lady {
 		faceplayer
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}"
 			"Hello! Ah, you came for your Pokémon!"
 		))
 		closemessage
+
 		delay(60)
 
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}"
 			"Sorry, I thought you were someone else.\p"
 			"See, this little one came to me a while ago. There was a thunderstorm and it looked scared and lost.\p"
 			"I've been taking care of it while waiting for its master to show up!\p"
@@ -44,6 +47,7 @@ script KuraTown_House3_EventScript_Lady {
 		faceplayer
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}"
 			"Don't worry, kitten, we'll find your master eventually!"
 		))
 		closemessage
@@ -59,6 +63,7 @@ script KuraTown_House3_EventScript_Lady {
 		faceplayer
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}"
 			"Sniffle… I'm going to miss him…"
 		))
 		closemessage
@@ -68,6 +73,7 @@ script KuraTown_House3_EventScript_Lady {
 		faceplayer
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}"
 			"That little lost kitten is reunited with its master?\p"
 			"Do they look happy together?\nOh, how delightful!"
 		))
@@ -85,6 +91,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 		delay(48)
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}"
 			"What? You're saying its master is waiting for him in Saku Village?"
 		))
 		closemessage
@@ -94,6 +101,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}"
 			"I'd rather not try going over there, folks over at Saku Village are notoriously mean…\p"
 			"But I guess… I can make an effort for this kitten here."
 		))
@@ -106,6 +114,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 		applymovement(LOCALID_LADY, moves(emote_heart))
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}"
 			"Good news, sweetie! You're going home!"
 		))
 		closemessage
@@ -125,6 +134,7 @@ script KuraTown_House3_EventScript_EspeonGoesHome {
 		applymovement(LOCALID_LADY, moves(emote_sad))
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}"
 			"Sniffle… I'm going to miss that little kitten…"
 		))
 		closemessage

@@ -78,6 +78,7 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_1:
 	applymovement OBJ_EVENT_ID_PLAYER, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_2
 	setspeaker SP_NAME_NATSUKI
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5
+	playse SE_PIN
 	applymovement LOCALID_BEACHBOUND_DECAY_NATSUKI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_3
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_6
 	closemessage
@@ -104,6 +105,7 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_5:
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_12
 	applymovement LOCALID_BEACHBOUND_DECAY_NATSUKI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_8
 	waitmovement LOCALID_BEACHBOUND_DECAY_NATSUKI
+	playse SE_PIN
 	applymovement LOCALID_BEACHBOUND_DECAY_NATSUKI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_9
 	setspeaker SP_NAME_NATSUKI
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_13
@@ -137,10 +139,13 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_8:
 	applymovement LOCALID_BEACHBOUND_DECAY_NATSUKI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_5
 	applymovement OBJ_EVENT_ID_PLAYER, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_17
 	waitmovement OBJ_EVENT_ID_PLAYER
-	delay 48
+	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_18
-	applymovement LOCALID_BEACHBOUND_DECAY_HARIKO, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_19
-	applymovement LOCALID_BEACHBOUND_DECAY_NATSUKI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_20
+	waitmovement OBJ_EVENT_ID_PLAYER
+	delay 48
+	applymovement OBJ_EVENT_ID_PLAYER, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_19
+	applymovement LOCALID_BEACHBOUND_DECAY_HARIKO, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_20
+	applymovement LOCALID_BEACHBOUND_DECAY_NATSUKI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_21
 	setspeaker SP_NAME_SAMURAI
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_22
 	waitmovement 0
@@ -148,7 +153,7 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_8:
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_23
 	closemessage
 	playse SE_PIN
-	applymovement LOCALID_BEACHBOUND_DECAY_SAMURAI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_21
+	applymovement LOCALID_BEACHBOUND_DECAY_SAMURAI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_22
 	waitmovement LOCALID_BEACHBOUND_DECAY_SAMURAI
 	setspeaker SP_NAME_SAMURAI
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_24
@@ -157,13 +162,14 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_8:
 	applymovement LOCALID_BEACHBOUND_DECAY_NATSUKI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_7
 	waitmovement 0
 	delay 32
-	applymovement LOCALID_BEACHBOUND_DECAY_SAMURAI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_22
+	playse SE_PIN
+	applymovement LOCALID_BEACHBOUND_DECAY_SAMURAI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_23
 	setspeaker SP_NAME_SAMURAI
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_25
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_23
-	applymovement LOCALID_BEACHBOUND_DECAY_HARIKO, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_23
-	applymovement LOCALID_BEACHBOUND_DECAY_NATSUKI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_23
+	applymovement OBJ_EVENT_ID_PLAYER, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_24
+	applymovement LOCALID_BEACHBOUND_DECAY_HARIKO, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_24
+	applymovement LOCALID_BEACHBOUND_DECAY_NATSUKI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_24
 	delay 48
 	warpsilent MAP_KURA_TOWN, 52, 14
 	release
@@ -183,6 +189,8 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_7:
 BeachboundRoute_Decay_EventScript_BeanDialogue_10:
 	applymovement LOCALID_BEACHBOUND_DECAY_SAMURAI, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_14
 	setspeaker SP_NAME_SAMURAI
+	waitse
+	playse SE_PIN
 	msgbox BeachboundRoute_Decay_EventScript_BeanDialogue_Text_17
 	closemessage
 	goto BeachboundRoute_Decay_EventScript_BeanDialogue_8
@@ -249,6 +257,8 @@ BeachboundRoute_Decay_EventScript_BeanTrigger::
 
 BeachboundRoute_Decay_EventScript_Bean::
 	lock
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, BeachboundRoute_Decay_EventScript_Bean_Movement_0
 	setspeaker SP_NAME_HARIKO
 	msgbox BeachboundRoute_Decay_EventScript_Bean_Text_0
@@ -260,6 +270,8 @@ BeachboundRoute_Decay_EventScript_Bean::
 BeachboundRoute_Decay_EventScript_Koishi::
 	lock
 	faceplayer
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_3
 	setspeaker SP_NAME_KOISHI
 	msgbox BeachboundRoute_Decay_EventScript_Koishi_Text_0
@@ -291,6 +303,8 @@ BeachboundRoute_Decay_EventScript_SamuraiBeCareful::
 BeachboundRoute_Decay_EventScript_Samurai::
 	lock
 	faceplayer
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_3
 	setspeaker SP_NAME_SAMURAI
 	msgbox BeachboundRoute_Decay_EventScript_Samurai_Text_0
@@ -302,6 +316,8 @@ BeachboundRoute_Decay_EventScript_Samurai::
 BeachboundRoute_Decay_EventScript_SamuraiWhatCouldBe::
 	lock
 	faceplayer
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_14
 	setspeaker SP_NAME_SAMURAI
 	msgbox BeachboundRoute_Decay_EventScript_SamuraiWhatCouldBe_Text_0
@@ -441,20 +457,13 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_17:
 	walk_in_place_fast_right
 	delay_16
 	delay_16
-	emote_music
 	step_end
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_18:
-	lock_facing_direction
-	walk_up
-	delay_16
-	delay_16
-	walk_up
-	unlock_facing_direction
+	emote_music
 	step_end
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_19:
-	delay_16
 	lock_facing_direction
 	walk_up
 	delay_16
@@ -464,7 +473,7 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_19:
 	step_end
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_20:
-	delay_8
+	delay_16
 	lock_facing_direction
 	walk_up
 	delay_16
@@ -474,6 +483,16 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_20:
 	step_end
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_21:
+	delay_8
+	lock_facing_direction
+	walk_up
+	delay_16
+	delay_16
+	walk_up
+	unlock_facing_direction
+	step_end
+
+BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_22:
 	emote_exclamation_mark
 	delay_16
 	delay_16
@@ -484,11 +503,11 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_21:
 	face_down
 	step_end
 
-BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_22:
+BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_23:
 	emote_angry
 	step_end
 
-BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_23:
+BeachboundRoute_Decay_EventScript_BeanDialogue_Movement_24:
 	walk_fast_left
 	walk_fast_left
 	walk_fast_left
@@ -554,11 +573,11 @@ BeachboundRoute_Decay_EventScript_BeanDialogue_Text_3:
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Well, look around you! This whole area\n"
 	.string "is decaying.\p"
-	.string "Whatever this is, it is not good.\n"
-	.string "I want to learn as much as I can about\l"
-	.string "this decay.\p"
+	.string "Whatever this is, it is bad.\n"
+	.string "I need to learn more about this.\p"
 	.string "Did you also come here to investigate,\n"
-	.string "{PLAYER}? We should team up!$"
+	.string "{PLAYER}?\l"
+	.string "We should team up!$"
 
 BeachboundRoute_Decay_EventScript_BeanDialogue_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}!\n"

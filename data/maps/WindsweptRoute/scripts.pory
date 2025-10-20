@@ -28,11 +28,11 @@ script WindsweptRoute_EventScript_OvergrownTrees {
 script WindsweptRoute_EventScript_Trainer1 {
 	trainerbattle_single(
 		TRAINER_MUSASHI_1,
-		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}These winds blow as strong as my will to win!"),
+		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY EMOTE_NORMAL}These winds blow as strong as my will to win!"),
 		format("You blew us away!")
 	)
-	setspeaker(SP_NAME_BATTLE_GIRL)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
+	setspeaker(SP_NAME_BATTLE_GUY)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY EMOTE_NORMAL}I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
 	end
 }
 

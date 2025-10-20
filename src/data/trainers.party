@@ -11425,12 +11425,12 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MUSASHI_1 ===
 Name: Musashi
-Class: Battle Girl
-Pic: Battle Girl
-Gender: Female
+Class: Battle Guy
+Pic: Battle Guy
+Gender: Male
 Music: Intense
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
 Makuhita
 Level: 16

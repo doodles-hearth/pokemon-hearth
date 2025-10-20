@@ -674,7 +674,7 @@ YifuCity_Refuge_EventScript_Samurai_Text_0:
 	.string "from somewhere… But where?$"
 
 YifuCity_Refuge_EventScript_GotTrashedByDojo_Text_0:
-	.string "Arrgh… this city's Dojo is all girls, so\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY} Arrgh… this city's Dojo is all girls, so\n"
 	.string "I thought it was going to be super\l"
 	.string "easy…\p"
 	.string "I got obliterated…$"

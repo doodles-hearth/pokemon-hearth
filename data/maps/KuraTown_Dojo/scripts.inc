@@ -116,7 +116,6 @@ KuraTown_Dojo_EventScript_Advice::
 	goto_if_ne KuraTown_Dojo_EventScript_Advice_5
 	setspeaker SP_NAME_MAN
 	goto_if_set FLAG_BADGE01_GET, KuraTown_Dojo_EventScript_Advice_8
-	setspeaker SP_NAME_MAN
 	msgbox KuraTown_Dojo_EventScript_Advice_Text_3
 KuraTown_Dojo_EventScript_Advice_1:
 	release
@@ -198,14 +197,14 @@ KuraTown_Dojo_EventScript_Kiku_Text_2:
 	.string "Uhhh… It's a secret!$"
 
 KuraTown_Dojo_EventScript_Laura_Text_0:
-	.string "No! Don't cut down that tree! It's my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}No! Don't cut down that tree! It's my\n"
 	.string "favorite tree!$"
 
 KuraTown_Dojo_EventScript_Laura_Text_1:
 	.string "Sniffle…$"
 
 KuraTown_Dojo_EventScript_Laura_Text_2:
-	.string "It's okay, go ahead. They're all my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}It's okay, go ahead. They're all my\n"
 	.string "favorite tree anyway.$"
 
 KuraTown_Dojo_EventScript_Brenden_Text_0:
@@ -216,7 +215,7 @@ KuraTown_Dojo_EventScript_Brenden_Text_1:
 	.string "A-tchoo!$"
 
 KuraTown_Dojo_EventScript_Brenden_Text_2:
-	.string "Sniff… By zeazonal allergiez are\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}Sniff… By zeazonal allergiez are\n"
 	.string "agdig up agaid…$"
 
 KuraTown_Dojo_EventScript_Cristian_Text_0:
@@ -234,20 +233,20 @@ KuraTown_Dojo_EventScript_Cristian_Text_2:
 	.string "tree grow the way it wants.$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_0:
-	.string "Hana may look frail, but she's\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}Hana may look frail, but she's\n"
 	.string "actually way tougher than you!$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_1:
 	.string "Stop it! I'm a delicate flower!$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_2:
-	.string "I saw your fight peeking through the\n"
-	.string "leaves! That was amazing!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}I saw your fight peeking through the\n"
+	.string "leaves! That was amazing!\l"
 	.string "I'm officially a fan!$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_3:
-	.string "I wish I could see you two fight! Good\n"
-	.string "luck!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}I wish I could see you two fight!\n"
+	.string "Good luck!$"
 
 KuraTown_Dojo_EventScript_Hana_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\n"
@@ -293,17 +292,13 @@ KuraTown_Dojo_EventScript_HanaDefeated_Text_0:
 	.string "from Hana.$"
 
 KuraTown_Dojo_EventScript_HanaDefeated_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Thanks to this Token, your Pokémon\n"
-	.string "will obey you without question, even\l"
-	.string "those you trade with others.\p"
-	.string "If you are interested in submitting\n"
-	.string "to the Toku Council challenge, you\l"
-	.string "will need to collect a Token from each\l"
-	.string "of the eight Dojos scattered\l"
-	.string "throughout the region.\p"
-	.string "It is not an easy task, but I can feel\n"
-	.string "determination taking root in your\l"
-	.string "heart.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\n"
+	.string "Council challenge, you will need a\l"
+	.string "Token\l"
+	.string "from the region's eight Dojos.\p"
+	.string "Arduous task! But I feel\n"
+	.string "determination\n"
+	.string "taking root in your heart.\p"
 	.string "Here, let me also give you this.$"
 
 KuraTown_Dojo_EventScript_GiveTm_Text_0:
@@ -312,12 +307,12 @@ KuraTown_Dojo_EventScript_GiveTm_Text_0:
 	.string "strong as it is weather-dependent.$"
 
 KuraTown_Dojo_EventScript_Advice_Text_0:
-	.string "That was a beautiful fight!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} That was a beautiful fight!\n"
 	.string "You'll blossom into an excellent\l"
 	.string "Pokémon Wielder, I can just feel it!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_1:
-	.string "Hello, young challenger, and welcome\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "Lady Hana, the Dojo Master, is an\n"
 	.string "expert in all things bonsai.\p"
@@ -333,7 +328,7 @@ KuraTown_Dojo_EventScript_Advice_Text_1:
 	.string "Maybe get an umbrella, I don't know!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_2:
-	.string "Hello, young challenger, and welcome\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "All these trees are blocking your way,\n"
 	.string "aren't they?\p"
@@ -341,7 +336,7 @@ KuraTown_Dojo_EventScript_Advice_Text_2:
 	.string "figured out a way to cut them!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_3:
-	.string "Hello, young challenger, and welcome\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "All these trees are blocking your way,\n"
 	.string "aren't they?\p"
