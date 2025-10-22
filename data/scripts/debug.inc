@@ -177,7 +177,6 @@ Debug_EventScript_Script_7::
 
 Debug_EventScript_Script_8::
 	release
-    msgbox Debug_Text_AddedPostFromHaru, MSGBOX_SIGN
 	end
 
 Debug_Text_AddedPostFromHaru::

@@ -6289,10 +6289,10 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .height = 7,
         .weight = 350,
         .description = COMPOUND_STRING(
-            "It is a species of Pokémon that lives in\n"
-            "volcanic areas. If its body cools, its skin\n"
-            "hardens and immobilizes it. To avoid that,\n"
-            "it sleeps near magma."),
+            "It hardens and immobilizes when its skin\n"
+            "cools down. Slugma is loved by the people\n"
+            "of Toku, who use it as a live heater:\n"
+            "A Slugma slumbers in every home."),
         .pokemonScale = 329,
         .pokemonOffset = 15,
         .trainerScale = 256,

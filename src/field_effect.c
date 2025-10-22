@@ -4527,7 +4527,7 @@ void FieldEffectScript_LoadFadedPalette_Footprints(u8 **script)
     int palId = 0;
     struct SpritePalette *palettes = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
     // Dynamically change footprint subsprites based on tileset
-    DebugPrintf("FOOT pals - current map secondary tileset = %d", GetSecondaryTilesetIdCurrentMap());
+    /* DebugPrintf("FOOT pals - current map secondary tileset = %d", GetSecondaryTilesetIdCurrentMap()); */
     switch (GetSecondaryTilesetIdCurrentMap())
     {
         case TILESET_SILVER_TUNNEL:
@@ -4537,7 +4537,7 @@ void FieldEffectScript_LoadFadedPalette_Footprints(u8 **script)
             palId = REGULAR_SAND;
             break;
     }
-    DebugPrintf("FOOT palId = %d", palId);
+    /* DebugPrintf("FOOT palId = %d", palId); */
     LoadSpritePalette(&palettes[palId]);
     UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palettes[palId].tag), FALSE);
     (*script) += 4;

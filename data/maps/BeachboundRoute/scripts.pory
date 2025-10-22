@@ -113,7 +113,6 @@ script BeachboundRoute_EventScript_Karu_PostBattle {
 }
 
 script BeachboundRoute_EventScript_Kin {
-	// TODO EVA rematch
 	trainerbattle_single(
 		TRAINER_KIN,
 		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I run several hours everyday! You literally cannot defeat me!"),
@@ -141,13 +140,32 @@ script BeachboundRoute_EventScript_Masato {
 	trainerbattle_single(
 		TRAINER_MASATO_1,
 		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}Let my Pokémon sing for you!"),
-		format("Okay, rude.")
+		format("Okay, rude."),
+		BeachboundRoute_EventScript_Masato_Register
 	)
+
+	specialvar(VAR_RESULT, ShouldTryRematchBattle)
+	if (var(VAR_RESULT)) {
+		trainerbattle_rematch(TRAINER_MASATO_1, format("Let's fight again!"), format("I lost again?!"))
+	}
+
 	setnamedmon(SPECIES_KRICKETOT)
 	setspeaker(SP_NAME_BUGCATCHER)
+	// TODO "kricketot" -> "kricketune"
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I hope one day my Kricketot evolves! I wonder what delightful melody he'll be able to sing then…"))
+	closemessage
 	release
 	end
+}
+
+script(local) BeachboundRoute_EventScript_Masato_Register {
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}{SPEAKER NAME_BUGCATCHER}"
+		"Are you a fan of singing bugs too?\nLet's stay in touch!\p"
+		"I'll have Chatot sing their songs for you!"
+	))
+	closemessage
+	register_matchcall(TRAINER_MASATO_1)
 }
 
 script BeachboundRoute_EventScript_SomeoneCallingForHelp {

@@ -589,3 +589,58 @@ script SunriseVillage_EldersHouse_EventScript_Joltik {
     release
     end	
 }
+
+script SunriseVillage_EldersHouse_EventScript_Assistant {
+	lock
+	faceplayer
+
+	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
+		setspeaker(SP_NAME_VALET)
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
+			"Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?"
+		))
+
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"PokéDex?",
+			"I'm good."
+		)
+
+		switch (var(VAR_RESULT)) {
+			case 0:
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
+					"To complete a page of the PokéDex,\nyou need a Pokémon's name,\lappearance and description.\p"
+					"Its name can be written down if\nsomeone speaks it out loud, or if you\lcatch the Pokémon.\p"
+					"Draw a sketch of the Pokémon when\nyou encounter it.\p"
+					"And write notes about it whenever you\nhear or witness something interesting!"
+				))
+			case 1:
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
+					"I see, you're all set then!\nCan't wait to read your findings!"
+				))
+		}
+	} else {
+		waitse
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, moves(emote_happy))
+
+		setspeaker(SP_NAME_VALET)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
+			"Don't mind me! I hope you're excited about the distribution!"
+		))
+		closemessage
+	}
+
+	
+
+	release
+}

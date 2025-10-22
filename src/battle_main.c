@@ -534,6 +534,7 @@ static void CB2_InitBattleInternal(void)
     if (!DEBUG_OVERWORLD_MENU || (DEBUG_OVERWORLD_MENU && !gIsDebugBattle))
     {
         gBattleEnvironment = BattleSetup_GetEnvironmentId();
+        DebugPrintf("ENV=%d", gBattleEnvironment);
     }
     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
         gBattleEnvironment = BATTLE_ENVIRONMENT_BUILDING;

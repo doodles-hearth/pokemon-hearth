@@ -112,12 +112,28 @@ BeachboundRoute_EventScript_Kouta::
 
 
 BeachboundRoute_EventScript_Masato::
-	trainerbattle_single TRAINER_MASATO_1, BeachboundRoute_EventScript_Masato_Text_0, BeachboundRoute_EventScript_Masato_Text_1
+	trainerbattle_single TRAINER_MASATO_1, BeachboundRoute_EventScript_Masato_Text_0, BeachboundRoute_EventScript_Masato_Text_1, BeachboundRoute_EventScript_Masato_Register
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	compare VAR_RESULT, 0
+	goto_if_ne BeachboundRoute_EventScript_Masato_2
+BeachboundRoute_EventScript_Masato_1:
 	setnamedmon SPECIES_KRICKETOT
 	setspeaker SP_NAME_BUGCATCHER
-	msgbox BeachboundRoute_EventScript_Masato_Text_2
+	msgbox BeachboundRoute_EventScript_Masato_Text_4
+	closemessage
 	release
 	end
+
+BeachboundRoute_EventScript_Masato_2:
+	trainerbattle_rematch TRAINER_MASATO_1, BeachboundRoute_EventScript_Masato_Text_2, BeachboundRoute_EventScript_Masato_Text_3
+	goto BeachboundRoute_EventScript_Masato_1
+
+
+BeachboundRoute_EventScript_Masato_Register:
+	msgbox BeachboundRoute_EventScript_Masato_Register_Text_0
+	closemessage
+	register_matchcall TRAINER_MASATO_1
+	return
 
 
 BeachboundRoute_EventScript_SomeoneCallingForHelp::
@@ -630,9 +646,21 @@ BeachboundRoute_EventScript_Masato_Text_1:
 	.string "Okay, rude.$"
 
 BeachboundRoute_EventScript_Masato_Text_2:
+	.string "Let's fight again!$"
+
+BeachboundRoute_EventScript_Masato_Text_3:
+	.string "I lost again?!$"
+
+BeachboundRoute_EventScript_Masato_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I hope one day my Kricketot evolves!\n"
 	.string "I wonder what delightful melody he'll\l"
 	.string "be able to sing then…$"
+
+BeachboundRoute_EventScript_Masato_Register_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}{SPEAKER NAME_BUGCATCHER} Are you a fan of singing bugs too?\n"
+	.string "Let's stay in touch!\p"
+	.string "I'll have Chatot sing their songs for\n"
+	.string "you!$"
 
 BeachboundRoute_EventScript_SomeoneCallingForHelp_Text_0:
 	.string "Help! Someone help me!$"
