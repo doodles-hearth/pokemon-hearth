@@ -69,7 +69,7 @@ KuraTown_Dojo_EventScript_Lilith_2:
 
 KuraTown_Dojo_EventScript_Hana::
 	setflag FLAG_MET_HANA_GYM
-	setchatotpostactive POST_NATSUKI_RARE_CANDY
+	trysetchatotpostactive POST_NATSUKI_RARE_CANDY
 	goto_if_set FLAG_MET_HANA_BONSAI_SHOP, KuraTown_Dojo_EventScript_Hana_2
 	setspeaker SP_NAME_HANA
 	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_Hana_Text_1, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
@@ -284,13 +284,8 @@ KuraTown_Dojo_EventScript_HanaDefeated_Text_0:
 	.string "from Hana.$"
 
 KuraTown_Dojo_EventScript_HanaDefeated_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\n"
-	.string "Council challenge, you will need a\l"
-	.string "Token\l"
-	.string "from the region's eight Dojos.\p"
-	.string "Arduous task! But I feel\n"
-	.string "determination\n"
-	.string "taking root in your heart.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\nCouncil challenge, you will need a Token\lfrom the region's eight Dojos.\p"
+	.string "Arduous task! But I feel determination\ntaking root in your heart.\p"
 	.string "Here, let me also give you this.$"
 
 KuraTown_Dojo_EventScript_GiveTm_Text_0:
