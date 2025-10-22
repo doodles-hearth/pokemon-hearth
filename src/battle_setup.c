@@ -641,10 +641,16 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
     PlayerGetDestCoords(&x, &y);
     
     tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
-    DebugPrintf("BattleSetup_GetEnvironmentId; %d", tileBehavior);
 
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_GINKO_WOODS) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_GINKO_WOODS))
         return BATTLE_ENVIRONMENT_GINKO_WOODS;
+
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_WINDSWEPT_ROUTE) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_WINDSWEPT_ROUTE))
+    {
+        if (MetatileBehavior_IsTallGrass(tileBehavior))
+            return BATTLE_ENVIRONMENT_GRASS_BLUE;
+        return BATTLE_ENVIRONMENT_ROCK;
+    }
     
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_MAGURO_HARBOR_DOJO) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_MAGURO_HARBOR_DOJO))
         return BATTLE_ENVIRONMENT_POND;
@@ -666,13 +672,12 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
     case MAP_TYPE_ROUTE:
         break;
     case MAP_TYPE_UNDERGROUND:
-        DebugPrintf("MAP_TYPE_UNDERGROUND");
         if (MetatileBehavior_IsIndoorEncounter(tileBehavior))
-        return BATTLE_ENVIRONMENT_BUILDING;
-        if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior)) {
-            DebugPrintf("   WATER");
+            return BATTLE_ENVIRONMENT_BUILDING;
+        if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
             return BATTLE_ENVIRONMENT_WATER;
-        }
+        if (MetatileBehavior_IsCave(tileBehavior))
+            return BATTLE_ENVIRONMENT_SAND;
         return BATTLE_ENVIRONMENT_CAVE;
     case MAP_TYPE_INDOOR:
     case MAP_TYPE_SECRET_BASE:
@@ -680,11 +685,8 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
     case MAP_TYPE_UNDERWATER:
         return BATTLE_ENVIRONMENT_UNDERWATER;
     case MAP_TYPE_OCEAN_ROUTE:
-        DebugPrintf("MAP_TYPE_OCEAN_ROUTE");
-        if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior)) {
-            DebugPrintf("   WATER");
+        if (MetatileBehavior_IsSurfableWaterOrUnderwater(tileBehavior))
             return BATTLE_ENVIRONMENT_WATER;
-        }
         return BATTLE_ENVIRONMENT_PLAINS;
     }
     if (MetatileBehavior_IsDeepOrOceanWater(tileBehavior))
@@ -707,7 +709,7 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
     if (GetSavedWeather() == WEATHER_SANDSTORM)
         return BATTLE_ENVIRONMENT_SAND;
 
-    return BATTLE_ENVIRONMENT_PLAIN;
+    return BATTLE_ENVIRONMENT_PLAINS;
 }
 
 static u8 GetBattleTransitionTypeByMap(void)

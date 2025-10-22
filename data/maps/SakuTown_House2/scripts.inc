@@ -329,7 +329,7 @@ SakuTown_House2_EventScript_Reunited_Text_4:
 	.string "from my cool rock collection!$"
 
 SakuTown_House2_EventScript_GiveEvoStone_Text_0:
-	.string "Which rock would you like?$"
+	.string "{DESTROY_MUGSHOT}{SPEAKER NAME_NONE}Which rock would you like?$"
 
 SakuTown_House2_EventScript_GiveEvoStone_Text_1:
 	.string "The red rock$"
