@@ -558,6 +558,39 @@ SunriseVillage_EldersHouse_EventScript_Joltik::
 	end
 
 
+SunriseVillage_EldersHouse_EventScript_Assistant::
+	lock
+	faceplayer
+	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
+	goto_if_ge SunriseVillage_EldersHouse_EventScript_Assistant_2
+	waitse
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, SunriseVillage_EldersHouse_EventScript_Assistant_Movement_0
+	setspeaker SP_NAME_VALET
+	msgbox SunriseVillage_EldersHouse_EventScript_Assistant_Text_5
+	closemessage
+SunriseVillage_EldersHouse_EventScript_Assistant_1:
+	release
+	return
+
+SunriseVillage_EldersHouse_EventScript_Assistant_2:
+	setspeaker SP_NAME_VALET
+	msgbox SunriseVillage_EldersHouse_EventScript_Assistant_Text_0
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_EldersHouse_EventScript_Assistant_Text_1, SunriseVillage_EldersHouse_EventScript_Assistant_Text_2
+	switch VAR_RESULT
+	case 0, SunriseVillage_EldersHouse_EventScript_Assistant_6
+	case 1, SunriseVillage_EldersHouse_EventScript_Assistant_7
+	goto SunriseVillage_EldersHouse_EventScript_Assistant_1
+
+SunriseVillage_EldersHouse_EventScript_Assistant_6:
+	msgbox SunriseVillage_EldersHouse_EventScript_Assistant_Text_3
+	goto SunriseVillage_EldersHouse_EventScript_Assistant_1
+
+SunriseVillage_EldersHouse_EventScript_Assistant_7:
+	msgbox SunriseVillage_EldersHouse_EventScript_Assistant_Text_4
+	goto SunriseVillage_EldersHouse_EventScript_Assistant_1
+
+
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Movement_0:
 	walk_up
 	walk_left
@@ -766,6 +799,10 @@ SunriseVillage_EldersHouse_EventScript_PostBattle_Movement_1:
 	walk_down
 	step_end
 
+SunriseVillage_EldersHouse_EventScript_Assistant_Movement_0:
+	emote_happy
+	step_end
+
 SunriseVillage_EldersHouse_EventScript_DistributionCutscene_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}PAH!$"
 
@@ -943,3 +980,28 @@ SunriseVillage_EldersHouse_EventScript_RivalBattle_Text_0:
 
 SunriseVillage_EldersHouse_EventScript_Joltik_Text_0:
 	.string "Fss!$"
+
+SunriseVillage_EldersHouse_EventScript_Assistant_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
+	.string "Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?$"
+
+SunriseVillage_EldersHouse_EventScript_Assistant_Text_1:
+	.string "PokéDex?$"
+
+SunriseVillage_EldersHouse_EventScript_Assistant_Text_2:
+	.string "I'm good.$"
+
+SunriseVillage_EldersHouse_EventScript_Assistant_Text_3:
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
+	.string "To complete a page of the PokéDex,\nyou need a Pokémon's name,\lappearance and description.\p"
+	.string "Its name can be written down if\nsomeone speaks it out loud, or if you\lcatch the Pokémon.\p"
+	.string "Draw a sketch of the Pokémon when\nyou encounter it.\p"
+	.string "And write notes about it whenever you\nhear or witness something interesting!$"
+
+SunriseVillage_EldersHouse_EventScript_Assistant_Text_4:
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
+	.string "I see, you're all set then!\nCan't wait to read your findings!$"
+
+SunriseVillage_EldersHouse_EventScript_Assistant_Text_5:
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL} Don't mind me! I hope you're excited\n"
+	.string "about the distribution!$"

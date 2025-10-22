@@ -78,44 +78,49 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	removeitem ITEM_LETTER
 	setspeaker SP_NAME_ELDER_IWA
 	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_6
+	playse SE_PIN
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_6
 	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_7
 	closemessage
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_7
+	waitmovement 0
+	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_8
 	waitmovement 0
 	playse SE_EXIT
 	clearflag FLAG_TEMP_1
 	addobject 4
 	waitse
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_8
-	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_9
+	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_9
+	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_10
 	waitmovement 1
 	waitse
-	applymovement 4, Silveridge_EldersHouse_EventScript_Conversation_Movement_10
+	playse SE_PIN
+	applymovement 4, Silveridge_EldersHouse_EventScript_Conversation_Movement_11
 	setspeaker SP_NAME_GIRL
 	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_8
 	closemessage
-	applymovement 4, Silveridge_EldersHouse_EventScript_Conversation_Movement_11
+	applymovement 4, Silveridge_EldersHouse_EventScript_Conversation_Movement_12
 	waitmovement 4
 	playse SE_EXIT
 	waitse
 	removeobject 4
 	delay 48
-	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_12
+	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_13
 	waitmovement 1
-	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_13
+	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_14
 	setspeaker SP_NAME_ELDER_IWA
 	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_9
+	playse SE_PIN
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_6
 	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_10
 	closemessage
-	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_14
+	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_15
 	waitmovement 1
-	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_15
+	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_16
 	waitmovement OBJ_EVENT_ID_PLAYER
 	giveitem ITEM_EXP_SHARE
-	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_12
+	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_13
 	waitmovement 1
 	setspeaker SP_NAME_ELDER_IWA
 	msgbox Silveridge_EldersHouse_EventScript_Conversation_Text_11
@@ -188,6 +193,9 @@ Silveridge_EldersHouse_EventScript_Conversation_Movement_7:
 	walk_slow_right
 	walk_slow_left
 	delay_16
+	step_end
+
+Silveridge_EldersHouse_EventScript_Conversation_Movement_8:
 	emote_pensive
 	delay_16
 	delay_16
@@ -197,11 +205,11 @@ Silveridge_EldersHouse_EventScript_Conversation_Movement_7:
 	delay_16
 	step_end
 
-Silveridge_EldersHouse_EventScript_Conversation_Movement_8:
+Silveridge_EldersHouse_EventScript_Conversation_Movement_9:
 	face_down
 	step_end
 
-Silveridge_EldersHouse_EventScript_Conversation_Movement_9:
+Silveridge_EldersHouse_EventScript_Conversation_Movement_10:
 	face_down
 	emote_exclamation_mark
 	delay_16
@@ -209,24 +217,24 @@ Silveridge_EldersHouse_EventScript_Conversation_Movement_9:
 	delay_16
 	step_end
 
-Silveridge_EldersHouse_EventScript_Conversation_Movement_10:
+Silveridge_EldersHouse_EventScript_Conversation_Movement_11:
 	emote_sad
 	step_end
 
-Silveridge_EldersHouse_EventScript_Conversation_Movement_11:
-	delay_16
-	walk_in_place_fast_down
-	step_end
-
 Silveridge_EldersHouse_EventScript_Conversation_Movement_12:
+	delay_16
 	walk_in_place_fast_down
 	step_end
 
 Silveridge_EldersHouse_EventScript_Conversation_Movement_13:
-	walk_in_place_fast_up
+	walk_in_place_fast_down
 	step_end
 
 Silveridge_EldersHouse_EventScript_Conversation_Movement_14:
+	walk_in_place_fast_up
+	step_end
+
+Silveridge_EldersHouse_EventScript_Conversation_Movement_15:
 	walk_slow_right
 	walk_slow_right
 	walk_in_place_fast_up
@@ -238,7 +246,7 @@ Silveridge_EldersHouse_EventScript_Conversation_Movement_14:
 	delay_16
 	step_end
 
-Silveridge_EldersHouse_EventScript_Conversation_Movement_15:
+Silveridge_EldersHouse_EventScript_Conversation_Movement_16:
 	walk_up
 	step_end
 
@@ -303,9 +311,8 @@ Silveridge_EldersHouse_EventScript_Conversation_Text_10:
 	.string "on foot…\l"
 	.string "You have a team of capable Pokémon…\l"
 	.string "Kaba seems to trust you…\p"
-	.string "It is decided! You shall travel to\n"
-	.string "Uume Forest, southeast of Tranquil\l"
-	.string "Route!\p"
+	.string "It is decided! Travel to Uume Forest,\n"
+	.string "southeast of Tranquil Route!\p"
 	.string "Our fate may well be in your hands,\n"
 	.string "{PLAYER}.\p"
 	.string "Before you leave, I have something\n"

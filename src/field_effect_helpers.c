@@ -717,7 +717,7 @@ u32 FldEff_SandFootprints(void)
     s16 subpriority = gFieldEffectArguments[2];
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
 
-    DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap());
+    /* DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap()); */
     switch (GetSecondaryTilesetIdCurrentMap())
     {
         case TILESET_SILVER_TUNNEL:
@@ -766,7 +766,7 @@ u32 FldEff_TracksBug(void)
     s16 subpriority = gFieldEffectArguments[2];
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
 
-    DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap());
+    /* DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap()); */
     switch (GetSecondaryTilesetIdCurrentMap())
     {
         case TILESET_SILVER_TUNNEL:
@@ -797,7 +797,7 @@ u32 FldEff_TracksSpot(void)
     s16 subpriority = gFieldEffectArguments[2];
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
 
-    DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap());
+    /* DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap()); */
     switch (GetSecondaryTilesetIdCurrentMap())
     {
         case TILESET_SILVER_TUNNEL:
@@ -828,7 +828,7 @@ u32 FldEff_BikeTireTracks(void)
     s16 subpriority = gFieldEffectArguments[2];
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
 
-    DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap());
+    /* DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap()); */
     switch (GetSecondaryTilesetIdCurrentMap())
     {
         case TILESET_SILVER_TUNNEL:
@@ -860,7 +860,7 @@ u32 FldEff_TracksSlither(void)
     s16 subpriority = gFieldEffectArguments[2];
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 8);
 
-    DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap());
+    /* DebugPrintf("sprites - current map = %d", GetSecondaryTilesetIdCurrentMap()); */
     switch (GetSecondaryTilesetIdCurrentMap())
     {
         case TILESET_SILVER_TUNNEL:

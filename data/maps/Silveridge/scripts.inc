@@ -27,12 +27,7 @@ Silveridge_DrawMetatiles_3:
 
 Silveridge_DrawMetatiles_2:
 	setmetatile 12, 10, METATILE_Silveridge_SilveridgeDoor, TRUE
-	setmetatile 18, 18, METATILE_Silveridge_SilveridgeDoor, TRUE
-	setmetatile 23, 6, METATILE_Silveridge_SilveridgeDoor, TRUE
-	setmetatile 24, 6, METATILE_Silveridge_SilveridgeDoor, TRUE
-	setmetatile 34, 6, METATILE_Silveridge_SilveridgeDoor, TRUE
 	setmetatile 20, 26, METATILE_Silveridge_SilveridgeDoor, TRUE
-	setmetatile 28, 26, METATILE_Silveridge_SilveridgeDoor, TRUE
 	return
 
 

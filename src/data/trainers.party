@@ -3498,8 +3498,8 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_MATSU ===
 Name: Matsu
-Class: Gentleman
-Pic: Gentleman
+Class: Old Man
+Pic: Old Man
 Gender: Male
 Music: Rich
 Battle Type: Singles

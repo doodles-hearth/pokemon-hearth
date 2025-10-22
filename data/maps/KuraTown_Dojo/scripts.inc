@@ -3,7 +3,7 @@ KuraTown_Dojo_MapScripts::
 	.byte 0
 
 KuraTown_Dojo_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto_if_set FLAG_BADGE02_GET, KuraTown_Dojo_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	goto_if_set FLAG_MET_HANA_GYM, KuraTown_Dojo_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	return
 
 KuraTown_Dojo_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
@@ -69,6 +69,7 @@ KuraTown_Dojo_EventScript_Lilith_2:
 
 KuraTown_Dojo_EventScript_Hana::
 	setflag FLAG_MET_HANA_GYM
+	setchatotpostactive POST_NATSUKI_RARE_CANDY
 	goto_if_set FLAG_MET_HANA_BONSAI_SHOP, KuraTown_Dojo_EventScript_Hana_2
 	setspeaker SP_NAME_HANA
 	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_Hana_Text_1, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
@@ -175,14 +176,14 @@ KuraTown_Dojo_EventScript_KuraDojoTree_CantCut::
 
 
 KuraTown_Dojo_EventScript_Matsu_Text_0:
-	.string "Ho ho ho… It seems you have taken a\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Ho ho ho… It seems you have taken a\n"
 	.string "wrong turn…$"
 
 KuraTown_Dojo_EventScript_Matsu_Text_1:
 	.string "Very impressive skills!$"
 
 KuraTown_Dojo_EventScript_Matsu_Text_2:
-	.string "Not all paths lead to the master.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Not all paths lead to the master.$"
 
 KuraTown_Dojo_EventScript_Kiku_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Is the maze giving you trouble?$"
@@ -193,7 +194,7 @@ KuraTown_Dojo_EventScript_Kiku_Text_1:
 
 KuraTown_Dojo_EventScript_Kiku_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}You're wondering why you can't just\n"
-	.string "cut down all the trees?\p"
+	.string "cut down all the trees?\l"
 	.string "Uhhh… It's a secret!$"
 
 KuraTown_Dojo_EventScript_Laura_Text_0:
@@ -219,17 +220,16 @@ KuraTown_Dojo_EventScript_Brenden_Text_2:
 	.string "agdig up agaid…$"
 
 KuraTown_Dojo_EventScript_Cristian_Text_0:
-	.string "Did you know any tree can be\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Did you know any tree can be\n"
 	.string "bonsaified by pruning its leaves\l"
 	.string "regularly?$"
 
 KuraTown_Dojo_EventScript_Cristian_Text_1:
 	.string "You're not here because you're\n"
-	.string "particularly interested in bonsai, are\l"
-	.string "you?$"
+	.string "interested in bonsai, are you?$"
 
 KuraTown_Dojo_EventScript_Cristian_Text_2:
-	.string "I feel bad sometimes, not letting the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL} I feel bad sometimes, not letting the\n"
 	.string "tree grow the way it wants.$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_0:
@@ -268,18 +268,10 @@ KuraTown_Dojo_EventScript_Hana_Text_1:
 	.string "Ho ho ho…$"
 
 KuraTown_Dojo_EventScript_Hana_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\n"
-	.string "Did you enjoy my little maze?\p"
-	.string "Tending to my bonsai and fighting\n"
-	.string "alongside my Pokémon are my favorite\l"
-	.string "pastimes. With this Dojo, I can do\l"
-	.string "both!\p"
-	.string "A Pokémon battle can be graceful like\n"
-	.string "a budding flower, strong like the\l"
-	.string "deepest roots, powerful like a\l"
-	.string "windswept pine tree, all at once.\p"
-	.string "Show me all the grace, strength and\n"
-	.string "power you are capable of!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
+	.string "Growing bonsai and battling with my\nPokémon are my favorite pastimes.\lWith this Dojo, I can do both!\p"
+	.string "A Pokémon battle can be graceful like a\nbudding flower, strong like the deepest\lroots, powerful like a windswept\lpine tree, all at once.\p"
+	.string "Show me all the grace, strength and\npower you are capable of!$"
 
 KuraTown_Dojo_EventScript_Hana_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}The slow-growing tree becomes the\n"

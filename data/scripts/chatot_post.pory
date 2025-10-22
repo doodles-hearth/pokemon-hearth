@@ -159,6 +159,34 @@ script ChatotPost_EventScript_FromBigSis {
     return
 }
 
+script ChatotPost_EventScript_Post_NatsukiRareCandy {
+    closemessage
+    setspeakertomonname(SPECIES_CHATOT)
+    if (flag(FLAG_BADGE02_GET)) {
+        msgbox(format(
+            "“What's up, {PLAYER}?\nIt's your bestie Natsuki.\p"
+            "I heard you did well in your battle against Hana.\lTwo tokens already, huh?\p"
+            "You might be a stronger rival than I anticipated! I gotta work harder!\p"
+            "Here's a little gift from me to you, I think your Pokémon will like it.\p"
+            "See you around, {PLAYER}.”"
+        ))
+    } else {
+        msgbox((
+            "“What's up, {PLAYER}?\nIt's your bestie Natsuki.\p"
+            "Have you beaten that Hana lady\nalready?\lI bet you got your butt handed to ya!\p"
+            "Here's a little something to help you\nout! I think your Pokémon will like it!\p"
+            "See you around, {PLAYER}.”"
+        ))
+    }
+    closemessage
+
+    giveitem(ITEM_RARE_CANDY)
+
+    setnamedmon(SPECIES_CHATOT)
+    return
+}
+
+// Serves as a template for match call messages
 script ChatotPost_EventScript_TrainerMessage {
     setspeakertomonname(SPECIES_CHATOT)
     msgbox(gStringVar4)

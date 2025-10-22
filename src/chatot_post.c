@@ -180,7 +180,6 @@ bool32 TryGetNonTrainerPost(u32 postType)
         u8 postIdx = indices[j];
         const struct ChatotPost *post = &gChatotPost[postIdx];
 
-        DebugPrintf("  -");
         // Skip none-type posts for now & skip the null value post
         if (post->type == POST_TYPE_NONE || postIdx == 0)
         {
@@ -202,17 +201,13 @@ bool32 TryGetNonTrainerPost(u32 postType)
 
         if (postType == post->type && !IsPostInQueue(postIdx))
         {
+            DebugPrintf("   Post idx %d is active", postIdx);
             SetChatotPostActive(postIdx);
             return TRUE;
         }
     }
 
     return FALSE;
-}
-
-void Debug_PutPostFromHaruInQueue(void)
-{
-    SetChatotPostActive(POST_FROM_HARIKO);
 }
 
 bool8 Native_SetChatotLastSpeaker(struct ScriptContext *ctx)
@@ -255,22 +250,23 @@ bool8 Native_CheckChatotPost(struct ScriptContext *ctx)
             StringCopy(gStringVar1, gChatotPost[activePostId].senderName);
         }
     }
-    
+
     return FALSE;
 }
 
 bool8 Native_CheckChatotPostNumber(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1);
-    
-    gSpecialVar_Result = 0;
 
+    gSpecialVar_Result = 0;
+    
     u32 i = 0;
     while (i < NUM_ACTIVE_POST_SLOTS)
     {
         if (gSaveBlock1Ptr->activePost[i])
+        {
             gSpecialVar_Result += 1;
-
+        }
         i += 1;
     }
 
@@ -287,16 +283,16 @@ bool8 Native_ReadChatotPost(struct ScriptContext *ctx)
     {
         if (storedPost == POST_TRAINER_TEMPLATE)
         {
-            DebugPrintf("  trainer");
+            /* DebugPrintf("  trainer"); */
             SelectMatchCallMessage(gSaveBlock1Ptr->chatotPostRematchTrainerId, gStringVar4);
-            DebugPrintf("  msg selected");
+            /* DebugPrintf("  msg selected"); */
             script = ChatotPost_EventScript_TrainerMessage;
-            DebugPrintf("  script selected");
+            /* DebugPrintf("  script selected"); */
             gSaveBlock1Ptr->chatotPostRematchTrainerId = 0;
         }
         else
         {
-            DebugPrintf("  non trainer");
+            /* DebugPrintf("  non trainer"); */
             script = gChatotPost[storedPost].script;
         }
     }
@@ -304,6 +300,26 @@ bool8 Native_ReadChatotPost(struct ScriptContext *ctx)
     SetChatotPostFlag(storedPost);
     ClearFirstPostSlotAndCompressPostQueue();
     ScriptCall(ctx, script);
+    return FALSE;
+}
+
+bool8 Native_SetChatotPostActive(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1);
+    
+    u32 idPost = ScriptReadHalfword(ctx);
+
+    SetChatotPostActive(idPost);
+
+    return FALSE;
+}
+
+bool8 Native_ResetChatotPost(struct ScriptContext *ctx) {
+    Script_RequestEffects(SCREFF_V1);
+    
+    memset(gSaveBlock1Ptr->postFlags, 0, sizeof(gSaveBlock1Ptr->postFlags));
+    memset(gSaveBlock1Ptr->activePost, 0, sizeof(gSaveBlock1Ptr->activePost));
+
     return FALSE;
 }
 

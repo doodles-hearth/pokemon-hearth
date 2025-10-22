@@ -3011,3 +3011,13 @@
     .macro readchatotpost
     callnative Native_ReadChatotPost, requests_effects=1
     .endm
+
+	.macro setchatotpostactive idPost:req
+	callnative Native_SetChatotPostActive, requests_effects=1
+	.2byte \idPost
+	.endm
+
+	@ Used for debug
+	.macro debug_resetchatotpost
+	callnative Native_ResetChatotPost, requests_effects=1
+	.endm

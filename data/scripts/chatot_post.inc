@@ -131,6 +131,22 @@ ChatotPost_EventScript_FromBigSis::
 	return
 
 
+ChatotPost_EventScript_Post_NatsukiRareCandy::
+	closemessage
+	setspeakertomonname SPECIES_CHATOT
+	goto_if_set FLAG_BADGE02_GET, ChatotPost_EventScript_Post_NatsukiRareCandy_2
+	msgbox ChatotPost_EventScript_Post_NatsukiRareCandy_Text_1
+ChatotPost_EventScript_Post_NatsukiRareCandy_1:
+	closemessage
+	giveitem ITEM_RARE_CANDY
+	setnamedmon SPECIES_CHATOT
+	return
+
+ChatotPost_EventScript_Post_NatsukiRareCandy_2:
+	msgbox ChatotPost_EventScript_Post_NatsukiRareCandy_Text_0
+	goto ChatotPost_EventScript_Post_NatsukiRareCandy_1
+
+
 ChatotPost_EventScript_TrainerMessage::
 	setspeakertomonname SPECIES_CHATOT
 	msgbox gStringVar4
@@ -189,6 +205,24 @@ ChatotPost_EventScript_FromBigSis_Text_0:
 	.string "I like the tradition, so indulge me,\n"
 	.string "okay? Please? Everyone carries one!\p"
 	.string "See you soon {PLAYER}, love you.”$"
+
+ChatotPost_EventScript_Post_NatsukiRareCandy_Text_0:
+	.string "“What's up, {PLAYER}?\n"
+	.string "It's your bestie Natsuki.\p"
+	.string "I heard you did well in your battle\n"
+	.string "against Hana.\l"
+	.string "Two tokens already, huh?\p"
+	.string "You might be a stronger rival than I\n"
+	.string "anticipated! I gotta work harder!\p"
+	.string "Here's a little gift from me to you, I\n"
+	.string "think your Pokémon will like it.\p"
+	.string "See you around, {PLAYER}.”$"
+
+ChatotPost_EventScript_Post_NatsukiRareCandy_Text_1:
+	.string "“What's up, {PLAYER}?\nIt's your bestie Natsuki.\p"
+	.string "Have you beaten that Hana lady\nalready?\lI bet you got your butt handed to ya!\p"
+	.string "Here's a little something to help you\nout! I think your Pokémon will like it!\p"
+	.string "See you around, {PLAYER}.”$"
 
 Text_Chatot_Next1:
 	.string "HERE'S ANOTHER FROM\n"

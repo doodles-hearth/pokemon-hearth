@@ -2,9 +2,8 @@
 #define GUARD_CHATOT_POST_CONSTANTS_H
 
 #define POST_NONE 0
-#define POST_FROM_HARIKO 1
-#define POST_FROM_BIG_SIS 2
-
+#define POST_FROM_BIG_SIS 1
+#define POST_NATSUKI_RARE_CANDY 2
 // Must always be equal to the last mail value + 1
 #define NUM_CHATOT_POST 3
 

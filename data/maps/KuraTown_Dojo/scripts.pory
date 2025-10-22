@@ -1,7 +1,7 @@
 mapscripts KuraTown_Dojo_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		// All the trees are cut from the start if the player has already beaten the dojo
-		if (flag(FLAG_BADGE02_GET)) {
+		// All the trees are cut from the start if the player has reached Hana
+		if (flag(FLAG_MET_HANA_GYM)) {
 			setflag(FLAG_TEMP_1)
 			setflag(FLAG_TEMP_2)
 			setflag(FLAG_TEMP_3)
@@ -16,13 +16,13 @@ mapscripts KuraTown_Dojo_MapScripts {
 script KuraTown_Dojo_EventScript_Matsu {
 	trainerbattle_single(
 		TRAINER_MATSU,
-		format("Ho ho ho… It seems you have taken a wrong turn…"),
+		format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Ho ho ho… It seems you have taken a wrong turn…"),
 		format("Very impressive skills!")
 	)
 
 	setspeaker(SP_NAME_OLD_MAN)
 	msgbox(
-		format("Not all paths lead to the master."),
+		format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Not all paths lead to the master."),
 		MSGBOX_AUTOCLOSE
 	)
 	end
@@ -37,7 +37,7 @@ script KuraTown_Dojo_EventScript_Kiku {
 
 	setspeaker(SP_NAME_AROMA_LADY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}You're wondering why you can't just cut down all the trees?\p"
+		"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}You're wondering why you can't just cut down all the trees?\l"
 		"Uhhh… It's a secret!"
 	), MSGBOX_AUTOCLOSE)
 	end
@@ -70,12 +70,15 @@ script KuraTown_Dojo_EventScript_Brenden {
 script KuraTown_Dojo_EventScript_Cristian {
 	trainerbattle_single(
 		TRAINER_AJISAI,
-		format("Did you know any tree can be bonsaified by pruning its leaves regularly?"),
-		format("You're not here because you're particularly interested in bonsai, are you?")
+		format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Did you know any tree can be bonsaified by pruning its leaves regularly?"),
+		format("You're not here because you're interested in bonsai, are you?")
 	)
 
 	setspeaker(SP_NAME_OLD_LADY)
-	msgbox(format("I feel bad sometimes, not letting the tree grow the way it wants."), MSGBOX_AUTOCLOSE)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}"
+		"I feel bad sometimes, not letting the tree grow the way it wants."
+	), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -102,6 +105,7 @@ script KuraTown_Dojo_EventScript_Lilith {
 
 script KuraTown_Dojo_EventScript_Hana {
 	setflag(FLAG_MET_HANA_GYM)
+	setchatotpostactive(POST_NATSUKI_RARE_CANDY)
 
 	// Zomg, the bonsai shop owner is ALSO the dojo master?!
 	if (flag(FLAG_MET_HANA_BONSAI_SHOP)) {
@@ -124,11 +128,11 @@ script KuraTown_Dojo_EventScript_Hana {
 		setspeaker(SP_NAME_HANA)
 		trainerbattle_single(
 			TRAINER_HANA_1,
-			format(
+			(
 				"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
-				"Tending to my bonsai and fighting alongside my Pokémon are my favorite pastimes. With this Dojo, I can do both!\p"
-				"A Pokémon battle can be graceful like a budding flower, strong like the deepest roots, powerful like a windswept pine tree, all at once.\p"
-				"Show me all the grace, strength and power you are capable of!"
+				"Growing bonsai and battling with my\nPokémon are my favorite pastimes.\lWith this Dojo, I can do both!\p"
+				"A Pokémon battle can be graceful like a\nbudding flower, strong like the deepest\lroots, powerful like a windswept\lpine tree, all at once.\p"
+				"Show me all the grace, strength and\npower you are capable of!"
 			),
 			format("Ho ho ho…"),
 			KuraTown_Dojo_EventScript_HanaDefeated,

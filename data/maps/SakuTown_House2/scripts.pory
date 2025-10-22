@@ -188,7 +188,7 @@ script SakuTown_House2_EventScript_Reunited {
 }
 
 script SakuTown_House2_EventScript_GiveEvoStone {
-	msgbox(format("Which rock would you like?"))
+	msgbox(format("{DESTROY_MUGSHOT}{SPEAKER NAME_NONE}Which rock would you like?"))
 
 	dynmultichoice(
 		0,
