@@ -53,7 +53,7 @@
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
-#include "wild_encounter.h"
+#include "fishing.h"
 
 enum {
     TRANSITION_TYPE_NORMAL,
@@ -634,9 +634,9 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
 {
     u16 tileBehavior;
     s16 x, y;
-    
-    if (I_FISHING_ENVIRONMENT >= GEN_4 && gIsFishingEncounter)
-    GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+
+    if (ShouldUseFishingEnvironmentInBattle())
+        GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
     else
     PlayerGetDestCoords(&x, &y);
     
@@ -1031,7 +1031,7 @@ void TrainerBattleLoadArgsSecondTrainer(const u8 *data)
 
 void SetMapVarsToTrainerA(void)
 {
-    if (TRAINER_BATTLE_PARAM.objEventLocalIdA != 0)
+    if (TRAINER_BATTLE_PARAM.objEventLocalIdA != LOCALID_NONE)
     {
         gSpecialVar_LastTalked = TRAINER_BATTLE_PARAM.objEventLocalIdA;
         gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(TRAINER_BATTLE_PARAM.objEventLocalIdA, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);

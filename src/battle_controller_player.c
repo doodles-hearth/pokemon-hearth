@@ -35,7 +35,6 @@
 #include "constants/battle_anim.h"
 #include "constants/battle_move_effects.h"
 #include "constants/battle_partner.h"
-#include "constants/hold_effects.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
@@ -1247,8 +1246,7 @@ static void Intro_WaitForShinyAnimAndHealthbox(u32 battler)
         gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim = FALSE;
         gBattleSpritesDataPtr->healthBoxesData[BATTLE_PARTNER(battler)].triedShinyMonAnim = FALSE;
         gBattleSpritesDataPtr->healthBoxesData[BATTLE_PARTNER(battler)].finishedShinyMonAnim = FALSE;
-        FreeSpriteTilesByTag(ANIM_TAG_GOLD_STARS);
-        FreeSpritePaletteByTag(ANIM_TAG_GOLD_STARS);
+        FreeShinyStars();
 
         HandleLowHpMusicChange(GetBattlerMon(battler), battler);
 
@@ -1990,7 +1988,7 @@ static void PlayerHandleChooseAction(u32 battler)
     if (B_SHOW_PARTNER_TARGET && gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && IsBattlerAlive(B_POSITION_PLAYER_RIGHT))
     {
         StringCopy(gStringVar1, COMPOUND_STRING("Partner will use:\n"));
-        u32 move = gBattleMons[B_POSITION_PLAYER_RIGHT].moves[gBattleStruct->chosenMovePositions[B_POSITION_PLAYER_RIGHT]];
+        u32 move = GetChosenMoveFromPosition(B_POSITION_PLAYER_RIGHT);
         StringAppend(gStringVar1, GetMoveName(move));
         u32 moveTarget = GetBattlerMoveTargetType(B_POSITION_PLAYER_RIGHT, move);
         if (moveTarget == MOVE_TARGET_SELECTED)
@@ -2002,7 +2000,7 @@ static void PlayerHandleChooseAction(u32 battler)
             else if (gAiBattleData->chosenTarget[B_POSITION_PLAYER_RIGHT] == B_POSITION_PLAYER_LEFT)
                 StringAppend(gStringVar1, COMPOUND_STRING(" {DOWN_ARROW}-"));
             else if (gAiBattleData->chosenTarget[B_POSITION_PLAYER_RIGHT] == B_POSITION_PLAYER_RIGHT)
-                StringAppend(gStringVar1, COMPOUND_STRING(" {DOWN_ARROW}-"));
+                StringAppend(gStringVar1, COMPOUND_STRING(" -{DOWN_ARROW}"));
         }
         else if (moveTarget == MOVE_TARGET_BOTH)
         {
@@ -2356,8 +2354,8 @@ static u32 CheckTypeEffectiveness(u32 battlerAtk, u32 battlerDef)
     ctx.updateFlags = FALSE;
     ctx.abilityAtk = GetBattlerAbility(battlerAtk);
     ctx.abilityDef = GetBattlerAbility(battlerDef);
-    ctx.holdEffectAtk = GetBattlerHoldEffect(battlerAtk, TRUE);
-    ctx.holdEffectDef = GetBattlerHoldEffect(battlerDef, TRUE);
+    ctx.holdEffectAtk = GetBattlerHoldEffect(battlerAtk);
+    ctx.holdEffectDef = GetBattlerHoldEffect(battlerDef);
 
     uq4_12_t modifier = CalcTypeEffectivenessMultiplier(&ctx);
 

@@ -1038,7 +1038,7 @@ DOUBLE_BATTLE_TEST("Sleep Clause: Sleep clause is deactivated when a sleeping mo
 
 SINGLE_BATTLE_TEST("Sleep Clause: Sleep clause is deactivated when a sleeping mon is woken up by gaining the ability Insomnia / Vital Spirit")
 {
-    u32 ability;
+    enum Ability ability;
     PARAMETRIZE { ability = ABILITY_VITAL_SPIRIT; }
     PARAMETRIZE { ability = ABILITY_INSOMNIA; }
     GIVEN {
@@ -1075,9 +1075,10 @@ SINGLE_BATTLE_TEST("Sleep Clause: Sleep clause is deactivated when a sleeping mo
 
 SINGLE_BATTLE_TEST("Sleep Clause: Sleep clause is deactivated when a sleeping mon is sent out, has Trace, and Traces Insomnia / Vital spirit")
 {
-    u32 ability;
+    enum Ability ability;
     PARAMETRIZE { ability = ABILITY_VITAL_SPIRIT; }
     PARAMETRIZE { ability = ABILITY_INSOMNIA; }
+
     GIVEN {
         FLAG_SET(B_FLAG_SLEEP_CLAUSE);
         ASSUME(GetMoveEffect(MOVE_SPORE) == EFFECT_NON_VOLATILE_STATUS);
@@ -1112,7 +1113,7 @@ SINGLE_BATTLE_TEST("Sleep Clause: Sleep clause is deactivated when a sleeping mo
 
 SINGLE_BATTLE_TEST("Sleep Clause: Sleep clause is deactivated when a sleeping mon is sent out and transforms into a mon with Insomnia / Vital spirit")
 {
-    u32 ability;
+    enum Ability ability;
     PARAMETRIZE { ability = ABILITY_VITAL_SPIRIT; }
     PARAMETRIZE { ability = ABILITY_INSOMNIA; }
     KNOWN_FAILING; // Sleep Clause parts work, but Imposter seems broken with battle messages / targeting. Issue #5565 https://github.com/rh-hideout/pokeemerald-expansion/issues/5565
@@ -1406,7 +1407,7 @@ DOUBLE_BATTLE_TEST("Sleep Clause: Waking up after Rest doesn't deactivate sleep 
 
 SINGLE_BATTLE_TEST("Sleep Clause: Suppressing and then sleeping Vital Spirit / Insomnia and switching back in deactivates sleep clause")
 {
-    u32 ability;
+    enum Ability ability;
     PARAMETRIZE { ability = ABILITY_VITAL_SPIRIT; }
     PARAMETRIZE { ability = ABILITY_INSOMNIA; }
     GIVEN {
@@ -1437,7 +1438,7 @@ SINGLE_BATTLE_TEST("Sleep Clause: Suppressing and then sleeping Vital Spirit / I
 
 SINGLE_BATTLE_TEST("Sleep Clause: Mold Breaker Pokémon sleeping Vital Spirit / Insomnia activates sleep clause")
 {
-    u32 ability;
+    enum Ability ability;
     PARAMETRIZE { ability = ABILITY_VITAL_SPIRIT; }
     PARAMETRIZE { ability = ABILITY_INSOMNIA; }
     GIVEN {

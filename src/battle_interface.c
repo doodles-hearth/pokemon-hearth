@@ -2616,7 +2616,7 @@ static void PrintBattlerOnAbilityPopUp(u8 battler, u8 spriteId1, u8 spriteId2)
                         TRUE, gSprites[spriteId1].sBattlerId);
 }
 
-static void PrintAbilityOnAbilityPopUp(u32 ability, u8 spriteId1, u8 spriteId2)
+static void PrintAbilityOnAbilityPopUp(enum Ability ability, u8 spriteId1, u8 spriteId2)
 {
     PrintOnAbilityPopUp(COMPOUND_STRING("                    "),
                         (void *)(OBJ_VRAM0) + TILE_OFFSET_4BPP(gSprites[spriteId1].oam.tileNum) + TILE_OFFSET_4BPP(8),
@@ -2644,7 +2644,7 @@ static inline bool32 IsAnyAbilityPopUpActive(void)
     return activeAbilityPopUps;
 }
 
-void CreateAbilityPopUp(u8 battler, u32 ability, bool32 isDoubleBattle)
+void CreateAbilityPopUp(u8 battler, enum Ability ability, bool32 isDoubleBattle)
 {
     u8 *spriteIds;
     u32 xSlide, tileTag, battlerPosition = GetBattlerPosition(battler);
@@ -2709,7 +2709,7 @@ void CreateAbilityPopUp(u8 battler, u32 ability, bool32 isDoubleBattle)
 void UpdateAbilityPopup(u8 battler)
 {
     u8 *spriteIds = gBattleStruct->abilityPopUpSpriteIds[battler];
-    u16 ability = (gBattleScripting.abilityPopupOverwrite) ? gBattleScripting.abilityPopupOverwrite
+    enum Ability ability = (gBattleScripting.abilityPopupOverwrite) ? gBattleScripting.abilityPopupOverwrite
                                                            : gBattleMons[battler].ability;
     PrintAbilityOnAbilityPopUp(ability, spriteIds[0], spriteIds[1]);
 }
@@ -2980,7 +2980,8 @@ void TryAddLastUsedBallItemSprites(void)
 static void DestroyLastUsedBallWinGfx(struct Sprite *sprite)
 {
     FreeSpriteTilesByTag(TAG_LAST_BALL_WINDOW);
-    FreeSpritePaletteByTag(TAG_ABILITY_POP_UP);
+    if (GetSpriteTileStartByTag(MOVE_INFO_WINDOW_TAG) == 0xFFFF)
+        FreeSpritePaletteByTag(TAG_ABILITY_POP_UP);
     DestroySprite(sprite);
     gBattleStruct->ballSpriteIds[1] = MAX_SPRITES;
 }
@@ -3017,7 +3018,8 @@ void TryToHideMoveInfoWindow(void)
 static void DestroyMoveInfoWinGfx(struct Sprite *sprite)
 {
     FreeSpriteTilesByTag(MOVE_INFO_WINDOW_TAG);
-    FreeSpritePaletteByTag(TAG_ABILITY_POP_UP);
+    if (GetSpriteTileStartByTag(TAG_LAST_BALL_WINDOW) == 0xFFFF)
+        FreeSpritePaletteByTag(TAG_ABILITY_POP_UP);
     DestroySprite(sprite);
     gBattleStruct->moveInfoSpriteId = MAX_SPRITES;
 }

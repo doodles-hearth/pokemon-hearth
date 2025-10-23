@@ -159,8 +159,7 @@ static void Intro_WaitForShinyAnimAndHealthbox(u32 battler)
                 gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim = FALSE;
                 gBattleSpritesDataPtr->healthBoxesData[BATTLE_PARTNER(battler)].triedShinyMonAnim = FALSE;
                 gBattleSpritesDataPtr->healthBoxesData[BATTLE_PARTNER(battler)].finishedShinyMonAnim = FALSE;
-                FreeSpriteTilesByTag(ANIM_TAG_GOLD_STARS);
-                FreeSpritePaletteByTag(ANIM_TAG_GOLD_STARS);
+                FreeShinyStars();
             }
             else
             {
@@ -174,8 +173,7 @@ static void Intro_WaitForShinyAnimAndHealthbox(u32 battler)
                 if (!gBattleSpritesDataPtr->healthBoxesData[BATTLE_PARTNER(battler)].triedShinyMonAnim
                  && !gBattleSpritesDataPtr->healthBoxesData[BATTLE_PARTNER(battler)].finishedShinyMonAnim)
                 {
-                    FreeSpriteTilesByTag(ANIM_TAG_GOLD_STARS);
-                    FreeSpritePaletteByTag(ANIM_TAG_GOLD_STARS);
+                    FreeShinyStars();
                 }
                 else
                 {
@@ -537,6 +535,12 @@ static void OpponentHandleChoosePokemon(u32 battler)
     {
         if (IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) || gAiLogicData->ejectButtonSwitch || gAiLogicData->ejectPackSwitch)
             switchType = SWITCH_MID_BATTLE;
+
+        // reset the AI data to consider the correct on-field state at time of switch
+        SetBattlerAiData(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT), gAiLogicData);
+        if (IsDoubleBattle())
+            SetBattlerAiData(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT), gAiLogicData);
+
         chosenMonId = GetMostSuitableMonToSwitchInto(battler, switchType);
         if (chosenMonId == PARTY_SIZE)
         {

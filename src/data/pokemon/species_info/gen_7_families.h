@@ -139,8 +139,8 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         )
         .levelUpLearnset = sDartrixLevelUpLearnset,
         .teachableLearnset = sDartrixTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_DECIDUEYE},
-                                {EVO_NONE, 0, SPECIES_DECIDUEYE_HISUI}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_DECIDUEYE, CONDITIONS({IF_NOT_REGION, REGION_HISUI})},
+                                {EVO_LEVEL, 36, SPECIES_DECIDUEYE_HISUI, CONDITIONS({IF_REGION, REGION_HISUI})}),
     },
 
     [SPECIES_DECIDUEYE] =
@@ -4357,6 +4357,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_Pyukumuku,
             gShinyOverworldPalette_Pyukumuku
         )
+        .teachingType = TM_ILLITERATE,
         .levelUpLearnset = sPyukumukuLevelUpLearnset,
         .teachableLearnset = sPyukumukuTeachableLearnset,
         .eggMoveLearnset = sPyukumukuEggMoveLearnset,
@@ -5989,7 +5990,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gShinyOverworldPalette_Cosmog
         )
         .isLegendary = TRUE,
-        .tmIlliterate = TRUE,
+        .teachingType = TM_ILLITERATE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sCosmogLevelUpLearnset,
@@ -6060,7 +6061,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gShinyOverworldPalette_Cosmoem
         )
         .isLegendary = TRUE,
-        .tmIlliterate = TRUE,
+        .teachingType = TM_ILLITERATE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sCosmoemLevelUpLearnset,

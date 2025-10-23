@@ -501,7 +501,7 @@ TEST("Ability names fit on Pokemon Summary Screen")
 {
     u32 i;
     const u32 fontId = FONT_NORMAL, widthPx = 144;
-    u32 ability = ABILITY_NONE;
+    enum Ability ability = ABILITY_NONE;
     for (i = 1; i < ABILITIES_COUNT; i++)
     {
         PARAMETRIZE_LABEL("%S", gAbilitiesInfo[i].name) { ability = i; }
@@ -513,7 +513,7 @@ TEST("Ability names fit on Ability Pop-Up")
 {
     u32 i;
     const u32 fontId = FONT_SMALL_NARROWER, widthPx = 76;
-    u32 ability = ABILITY_NONE;
+    enum Ability ability = ABILITY_NONE;
     for (i = 1; i < ABILITIES_COUNT; i++)
     {
         PARAMETRIZE_LABEL("%S", gAbilitiesInfo[i].name) { ability = i; }
@@ -525,7 +525,7 @@ TEST("Ability descriptions fit on Pokemon Summary Screen")
 {
     u32 i;
     const u32 fontId = FONT_NORMAL, widthPx = 146;
-    u32 ability = ABILITY_NONE;
+    enum Ability ability = ABILITY_NONE;
     for (i = 1; i < ABILITIES_COUNT; i++)
     {
         PARAMETRIZE_LABEL("%S", gAbilitiesInfo[i].description) { ability = i; }
@@ -572,7 +572,7 @@ TEST("Battle strings fit on the battle message window")
     s32 sixDigitNines = 999999;                                 // 36 pixels.
     u8 nickname[POKEMON_NAME_LENGTH + 1] = _("MMMMMMMMMMMM");   // 72 pixels.
     u32 longMoveID = MOVE_NATURES_MADNESS;                      // 89 pixels.
-    u32 longAbilityID = ABILITY_SUPERSWEET_SYRUP;               // 91 pixels.
+    enum Ability longAbilityID = ABILITY_SUPERSWEET_SYRUP;    // 91 pixels.
     u32 longStatName = STAT_EVASION;                            // 40 pixels.
     u32 longTypeName = TYPE_ELECTRIC;                           // 43 pixels.
     u32 longSpeciesName = SPECIES_SANDY_SHOCKS;                 // 47 pixels.
