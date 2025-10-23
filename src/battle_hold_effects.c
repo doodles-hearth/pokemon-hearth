@@ -769,6 +769,7 @@ static enum ItemEffect TryCureSleep(u32 battler, ActivationTiming timing)
     {
         gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
         gBattleMons[battler].volatiles.nightmare = FALSE;
+        gBattleMons[battler].volatiles.dreamSleep = FALSE;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_SLEEP;
         TryDeactivateSleepClause(GetBattlerSide(battler), gBattlerPartyIndexes[battler]);
         if (timing == IsOnSwitchInFirstTurnActivation)
@@ -813,6 +814,7 @@ static enum ItemEffect TryCureAnyStatus(u32 battler, ActivationTiming timing)
         if (gBattleMons[battler].status1 & STATUS1_SLEEP)
         {
             gBattleMons[battler].volatiles.nightmare = FALSE;
+            gBattleMons[battler].volatiles.dreamSleep = FALSE;
             StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
             TryDeactivateSleepClause(GetBattlerSide(battler), gBattlerPartyIndexes[battler]);
             string++;

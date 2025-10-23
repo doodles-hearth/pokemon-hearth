@@ -11695,6 +11695,7 @@ static void Cmd_healpartystatus(void)
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SOOTHING_AROMA;
         gBattleMons[gBattlerAttacker].status1 = 0;
         gBattleMons[gBattlerAttacker].volatiles.nightmare = FALSE;
+        gBattleMons[gBattlerAttacker].volatiles.dreamSleep = FALSE;
     }
     else
     {
@@ -11711,6 +11712,7 @@ static void Cmd_healpartystatus(void)
         {
             gBattleMons[partner].status1 = 0;
             gBattleMons[partner].volatiles.nightmare = FALSE;
+            gBattleMons[partner].volatiles.dreamSleep = FALSE;
         }
         else
         {
@@ -13648,7 +13650,7 @@ static void Cmd_handleballthrow(void)
                 break;
             case BALL_DREAM:
                 if (B_DREAM_BALL_MODIFIER >= GEN_8 && (gBattleMons[gBattlerTarget].status1 & STATUS1_SLEEP || GetBattlerAbility(gBattlerTarget) == ABILITY_COMATOSE))
-                    ballMultiplier = 400;
+                    ballMultiplier = 300;
                 break;
             // case BALL_BEAST:
             //     ballMultiplier = 10;
@@ -13719,9 +13721,10 @@ static void Cmd_handleballthrow(void)
                 maxShakes = BALL_3_SHAKES_SUCCESS;
             }
 
-            if (ballId == BALL_MASTER)
+            if (ballId == BALL_MASTER || (ballId == BALL_DREAM && gBattleMons[gBattlerTarget].volatiles.dreamSleep))
             {
-                shakes = maxShakes;
+                shakes = maxShakes = BALL_1_SHAKE;
+                gBattleSpritesDataPtr->animationData->isCriticalCapture = TRUE;
             }
             else
             {
@@ -14868,7 +14871,10 @@ void BS_ItemCureStatus(void)
     {
         statusChanged = TRUE;
         if (GetItemStatus1Mask(gLastUsedItem) & STATUS1_SLEEP)
+        {
             gBattleMons[battler].volatiles.nightmare = FALSE;
+            gBattleMons[battler].volatiles.dreamSleep = FALSE;
+        }
         if (ItemHasVolatileFlag(gLastUsedItem, VOLATILE_CONFUSION))
             gBattleMons[battler].volatiles.infiniteConfusion = FALSE;
     }
@@ -15900,6 +15906,7 @@ void BS_CheckPokeFlute(void)
         {
             gBattleMons[i].status1 &= ~STATUS1_SLEEP;
             gBattleMons[i].volatiles.nightmare = FALSE;
+            gBattleMons[i].volatiles.dreamSleep = FALSE;
         }
     }
 

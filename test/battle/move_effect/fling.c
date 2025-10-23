@@ -188,7 +188,10 @@ SINGLE_BATTLE_TEST("Fling doesn't consume the item if Pokémon is asleep/frozen/
             MESSAGE("Wobbuffet couldn't move because it's paralyzed!");
         }
         else {
-            MESSAGE("Wobbuffet is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wobbuffet is fast asleep.");
+                MESSAGE("Wobbuffet is deep in a dream.");
+            }
             MESSAGE("Wobbuffet woke up!");
         }
         MESSAGE("Wobbuffet used Fling!");

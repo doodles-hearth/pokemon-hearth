@@ -29,7 +29,10 @@ SINGLE_BATTLE_TEST("Dark Void inflicts 1-3 turns of sleep")
         for (count = 0; count < turns; ++count)
         {
             if (count < turns - 1)
-                MESSAGE("The opposing Wobbuffet is fast asleep.");
+                ONE_OF {
+                    MESSAGE("The opposing Wobbuffet is fast asleep.");
+                    MESSAGE("The opposing Wobbuffet is deep in a dream.");
+                }
             ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, opponent);
         }
         MESSAGE("The opposing Wobbuffet woke up!");

@@ -2561,7 +2561,6 @@ void UseItem(u32 sourceLine, struct BattlePokemon *battler, struct ItemContext c
     {
         i = 0;
     }
-
     if (ctx.explicitRNG)
         DATA.battleRecordTurns[DATA.turns][battlerId].rng = ctx.rng;
     PushBattlerAction(sourceLine, battlerId, RECORDED_ACTION_TYPE, B_ACTION_USE_ITEM);

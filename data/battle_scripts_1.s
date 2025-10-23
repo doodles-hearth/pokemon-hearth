@@ -3234,7 +3234,12 @@ BattleScript_EffectPainSplit::
 BattleScript_EffectSnore::
 	attackcanceler
 	jumpifhalfword CMP_EQUAL, gChosenMove, MOVE_SLEEP_TALK, BattleScript_DoSnore
+	jumpifvolatile BS_ATTACKER, VOLATILE_DREAM_SLEEP, BattleScript_EffectSnoreDreaming
 	printstring STRINGID_PKMNFASTASLEEP
+	goto BattleScript_EffectSnoreContinue
+BattleScript_EffectSnoreDreaming:
+	printstring STRINGID_PKMNISDREAMING
+BattleScript_EffectSnoreContinue:
 	waitmessage B_WAIT_TIME_LONG
 	statusanimation BS_ATTACKER
 BattleScript_DoSnore::
@@ -6051,7 +6056,12 @@ BattleScript_DampPreventsAftermath::
 	return
 
 BattleScript_MoveUsedIsAsleep::
+	jumpifvolatile BS_ATTACKER, VOLATILE_DREAM_SLEEP, BattleScript_MoveUsedIsAsleepDreaming
 	printstring STRINGID_PKMNFASTASLEEP
+	goto BattleScript_MoveUsedIsAsleepContinue
+BattleScript_MoveUsedIsAsleepDreaming:
+	printstring STRINGID_PKMNISDREAMING
+BattleScript_MoveUsedIsAsleepContinue:
 	waitmessage B_WAIT_TIME_LONG
 	statusanimation BS_ATTACKER
 	goto BattleScript_MoveEnd
@@ -8851,7 +8861,12 @@ BattleScript_SubmoveAttackstring::
 BattleScript_SleepTalkAttackstring::
 	printattackstring
 	pause B_WAIT_TIME_LONG
+	jumpifvolatile BS_ATTACKER, VOLATILE_DREAM_SLEEP, BattleScript_SleepTalkAttackstringDreaming
 	printstring STRINGID_PKMNFASTASLEEP
+	goto BattleScript_SleepTalkAttackstringContinue
+BattleScript_SleepTalkAttackstringDreaming:
+	printstring STRINGID_PKMNISDREAMING
+BattleScript_SleepTalkAttackstringContinue:
 	waitmessage B_WAIT_TIME_LONG
 	statusanimation BS_ATTACKER
 	attackanimation
