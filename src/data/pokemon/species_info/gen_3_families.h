@@ -1521,7 +1521,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gOverworldPalette_Wurmple,
             gShinyOverworldPalette_Wurmple
         )
-        .teachingType = TM_ILLITERATE,
+        .tmIlliterate = TRUE,
         .levelUpLearnset = sWurmpleLevelUpLearnset,
         .teachableLearnset = sWurmpleTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 7, SPECIES_SILCOON, CONDITIONS({IF_PID_UPPER_MODULO_10_GT, 4})},
@@ -1592,7 +1592,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gOverworldPalette_Silcoon,
             gShinyOverworldPalette_Silcoon
         )
-        .teachingType = TM_ILLITERATE,
+        .tmIlliterate = TRUE,
         .levelUpLearnset = sSilcoonLevelUpLearnset,
         .teachableLearnset = sSilcoonTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 10, SPECIES_BEAUTIFLY}),
@@ -1767,7 +1767,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gOverworldPalette_Cascoon,
             gShinyOverworldPalette_Cascoon
         )
-        .teachingType = TM_ILLITERATE,
+        .tmIlliterate = TRUE,
         .levelUpLearnset = sCascoonLevelUpLearnset,
         .teachableLearnset = sCascoonTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 10, SPECIES_DUSTOX}),
@@ -11821,7 +11821,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
             gOverworldPalette_Beldum,
             gShinyOverworldPalette_Beldum
         )
-        .teachingType = TM_ILLITERATE,
+        .tmIlliterate = TRUE,
         .levelUpLearnset = sBeldumLevelUpLearnset,
         .teachableLearnset = sBeldumTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_METANG}),
