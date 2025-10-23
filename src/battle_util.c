@@ -1958,6 +1958,26 @@ static enum MoveCanceller CancellerRecharge(struct BattleContext *ctx)
     return MOVE_STEP_SUCCESS;
 }
 
+static u32 GetSpeciesDreamType(u16 species)
+{
+    u32 dreamType = gSpeciesInfo[SanitizeSpeciesId(species)].dreamType;
+    if (dreamType == 0)
+        dreamType = DEFAULT_DREAM_CHANCE;
+    return dreamType;
+}
+
+static void TryDreaming(struct BattlePokemon *mon)
+{
+    if (mon->volatiles.dreamSleep)
+        return;
+
+    u32 dreamOdds = GetSpeciesDreamType(mon->species);
+    dreamOdds =  dreamOdds * (gBattleMons[gBattlerTarget].maxHP * 3 - gBattleMons[gBattlerTarget].hp * 2)
+            / (3 * gBattleMons[gBattlerTarget].maxHP - 2);
+    if (RandomChance(RNG_DREAM_SLEEP, dreamOdds, 256))
+        mon->volatiles.dreamSleep = TRUE;
+}
+
 static enum MoveCanceller CancellerAsleepOrFrozen(struct BattleContext *ctx)
 {
     if (gBattleMons[ctx->battlerAtk].status1 & STATUS1_SLEEP)
@@ -1967,6 +1987,7 @@ static enum MoveCanceller CancellerAsleepOrFrozen(struct BattleContext *ctx)
             TryDeactivateSleepClause(GetBattlerSide(ctx->battlerAtk), gBattlerPartyIndexes[ctx->battlerAtk]);
             gBattleMons[ctx->battlerAtk].status1 &= ~STATUS1_SLEEP;
             gBattleMons[ctx->battlerAtk].volatiles.nightmare = FALSE;
+            gBattleMons[ctx->battlerAtk].volatiles.dreamSleep = FALSE;
             gEffectBattler = ctx->battlerAtk;
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP_UPROAR;
             BattleScriptCall(BattleScript_MoveUsedWokeUp);
@@ -1985,6 +2006,7 @@ static enum MoveCanceller CancellerAsleepOrFrozen(struct BattleContext *ctx)
                 gBattleMons[ctx->battlerAtk].status1 -= toSub;
             if (gBattleMons[ctx->battlerAtk].status1 & STATUS1_SLEEP)
             {
+                TryDreaming(&gBattleMons[ctx->battlerAtk]);
                 if (ctx->moveEffect != EFFECT_SNORE && ctx->moveEffect != EFFECT_SLEEP_TALK)
                 {
                     gProtectStructs[ctx->battlerAtk].nonVolatileStatusImmobility = TRUE;
@@ -1997,6 +2019,7 @@ static enum MoveCanceller CancellerAsleepOrFrozen(struct BattleContext *ctx)
             {
                 TryDeactivateSleepClause(GetBattlerSide(ctx->battlerAtk), gBattlerPartyIndexes[ctx->battlerAtk]);
                 gBattleMons[ctx->battlerAtk].volatiles.nightmare = FALSE;
+                gBattleMons[ctx->battlerAtk].volatiles.dreamSleep = FALSE;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP;
                 BattleScriptCall(BattleScript_MoveUsedWokeUp);
                 return MOVE_STEP_REMOVES_STATUS;
@@ -4581,6 +4604,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
 
                     gBattleMons[battler].status1 = 0;
                     gBattleMons[battler].volatiles.nightmare = FALSE;
+                    gBattleMons[battler].volatiles.dreamSleep = FALSE;
                     gBattleScripting.battler = battler;
                     BattleScriptExecute(BattleScript_ShedSkinActivates);
                     BtlController_EmitSetMonData(battler, B_COMM_TO_CONTROLLER, REQUEST_STATUS_BATTLE, 0, 4, &gBattleMons[battler].status1);
@@ -5410,6 +5434,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 {
                     TryDeactivateSleepClause(GetBattlerSide(battler), gBattlerPartyIndexes[battler]);
                     gBattleMons[battler].volatiles.nightmare = FALSE;
+                    gBattleMons[battler].volatiles.dreamSleep = FALSE;
                     StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
                     effect = 1;
                 }
@@ -6698,6 +6723,7 @@ static u8 ItemEffectMoveEnd(u32 battler, enum ItemHoldEffect holdEffect)
         {
             gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
             gBattleMons[battler].volatiles.nightmare = FALSE;
+            gBattleMons[battler].volatiles.dreamSleep = FALSE;
             BattleScriptCall(BattleScript_BerryCureSlpRet);
             effect = ITEM_STATUS_CHANGE;
             TryDeactivateSleepClause(GetBattlerSide(battler), gBattlerPartyIndexes[battler]);
@@ -6729,6 +6755,7 @@ static u8 ItemEffectMoveEnd(u32 battler, enum ItemHoldEffect holdEffect)
             if (gBattleMons[battler].status1 & STATUS1_SLEEP)
             {
                 gBattleMons[battler].volatiles.nightmare = FALSE;
+                gBattleMons[battler].volatiles.dreamSleep = FALSE;
                 StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
                 TryDeactivateSleepClause(GetBattlerSide(battler), gBattlerPartyIndexes[battler]);
             }
@@ -6792,6 +6819,7 @@ static inline bool32 TryCureStatus(u32 battler, enum ItemCaseId caseId)
         if (gBattleMons[battler].status1 & STATUS1_SLEEP)
         {
             gBattleMons[battler].volatiles.nightmare = FALSE;
+            gBattleMons[battler].volatiles.dreamSleep = FALSE;
             StringCopy(gBattleTextBuff1, gStatusConditionString_SleepJpn);
             string++;
             TryDeactivateSleepClause(GetBattlerSide(battler), gBattlerPartyIndexes[battler]);
@@ -6987,6 +7015,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler)
                 {
                     gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
                     gBattleMons[battler].volatiles.nightmare = FALSE;
+                    gBattleMons[battler].volatiles.dreamSleep = FALSE;
                     BattleScriptExecute(BattleScript_BerryCureSlpEnd2);
                     effect = ITEM_STATUS_CHANGE;
                     TryDeactivateSleepClause(GetBattlerSide(battler), gBattlerPartyIndexes[battler]);
@@ -7189,6 +7218,7 @@ u32 ItemBattleEffects(enum ItemCaseId caseID, u32 battler)
                 {
                     gBattleMons[battler].status1 &= ~STATUS1_SLEEP;
                     gBattleMons[battler].volatiles.nightmare = FALSE;
+                    gBattleMons[battler].volatiles.dreamSleep = FALSE;
                     BattleScriptExecute(BattleScript_BerryCureSlpEnd2);
                     effect = ITEM_STATUS_CHANGE;
                     TryDeactivateSleepClause(GetBattlerSide(battler), gBattlerPartyIndexes[battler]);
@@ -9744,6 +9774,12 @@ s32 DoFixedDamageMoveCalc(struct DamageContext *ctx)
         break;
     case EFFECT_FINAL_GAMBIT:
         dmg = GetNonDynamaxHP(ctx->battlerAtk);
+        break;
+    case EFFECT_DREAM_EATER:
+        if (gBattleMons[ctx->battlerDef].volatiles.dreamSleep)
+            dmg = GetNonDynamaxHP(ctx->battlerDef);
+        else
+            dmg = INT32_MAX;
         break;
     default:
         return INT32_MAX;

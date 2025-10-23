@@ -378,4 +378,5 @@
 #define B_POOL_RULE_MEGA_STONE_CLAUSE       FALSE    // Pick only 1 mon with mega stone
 #define B_POOL_RULE_Z_CRYSTAL_CLAUSE        FALSE    // Pick only 1 mon with Z-crystal
 
+#define DEFAULT_DREAM_CHANCE                45       //Odds are out of 256 possibilities at 1HP scaling linearly to 1/3 of that at max HP
 #endif // GUARD_CONFIG_BATTLE_H

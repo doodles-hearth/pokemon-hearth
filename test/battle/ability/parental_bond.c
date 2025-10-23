@@ -285,7 +285,10 @@ SINGLE_BATTLE_TEST("Parental Bond Snore strikes twice while asleep")
     } WHEN {
         TURN { MOVE(player, MOVE_SNORE); }
     } SCENE {
-        MESSAGE("Kangaskhan is fast asleep.");
+        ONE_OF {
+            MESSAGE("Kangaskhan is fast asleep.");
+            MESSAGE("Kangaskhan is deep in a dream.");
+        }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SNORE, player);
         HP_BAR(opponent, captureDamage: &damage[0]);
         HP_BAR(opponent, captureDamage: &damage[1]);
