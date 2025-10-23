@@ -270,7 +270,7 @@ YifuCity_ShinySellerChoice_6:
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_ShinySellerChoice_Text_3
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CATERPIE
-	givemon SPECIES_CATERPIE, 5, isShiny = FALSE
+	givemon SPECIES_CATERPIE, 5, shinyMode = SHINY_MODE_NEVER
 	compare VAR_RESULT, MON_CANT_GIVE
 	goto_if_eq YifuCity_ShinySellerChoice_10
 YifuCity_ShinySellerChoice_9:

@@ -3,11 +3,11 @@
     "LevelMoves": [
       {
         "Level": 1,
-        "Move": "MOVE_TACKLE"
+        "Move": "MOVE_TAIL_WHIP"
       },
       {
         "Level": 1,
-        "Move": "MOVE_TAIL_WHIP"
+        "Move": "MOVE_TACKLE"
       },
       {
         "Level": 4,
@@ -88,7 +88,34 @@
       "MOVE_THUNDER_WAVE"
     ],
     "EggMoves": [],
-    "TutorMoves": []
+    "TutorMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_FACADE",
+      "MOVE_FLASH",
+      "MOVE_IRON_TAIL",
+      "MOVE_LIGHT_SCREEN",
+      "MOVE_PROTECT",
+      "MOVE_RAIN_DANCE",
+      "MOVE_REST",
+      "MOVE_ROAR",
+      "MOVE_SHOCK_WAVE",
+      "MOVE_STRENGTH",
+      "MOVE_SUNNY_DAY",
+      "MOVE_THIEF",
+      "MOVE_THUNDER",
+      "MOVE_THUNDERBOLT",
+      "MOVE_TOXIC",
+      "MOVE_DOUBLE_EDGE",
+      "MOVE_ENDURE",
+      "MOVE_FURY_CUTTER",
+      "MOVE_MUD_SLAP",
+      "MOVE_SLEEP_TALK",
+      "MOVE_SNORE",
+      "MOVE_SWAGGER",
+      "MOVE_SWIFT",
+      "MOVE_THUNDER_WAVE"
+    ]
   },
   "RAITORA": {
     "LevelMoves": [
@@ -179,7 +206,34 @@
       "MOVE_THUNDER_WAVE"
     ],
     "EggMoves": [],
-    "TutorMoves": []
+    "TutorMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_DOUBLE_TEAM",
+      "MOVE_FACADE",
+      "MOVE_FLASH",
+      "MOVE_IRON_TAIL",
+      "MOVE_LIGHT_SCREEN",
+      "MOVE_PROTECT",
+      "MOVE_RAIN_DANCE",
+      "MOVE_REST",
+      "MOVE_ROAR",
+      "MOVE_SHOCK_WAVE",
+      "MOVE_STRENGTH",
+      "MOVE_SUNNY_DAY",
+      "MOVE_THIEF",
+      "MOVE_THUNDER",
+      "MOVE_THUNDERBOLT",
+      "MOVE_TOXIC",
+      "MOVE_DOUBLE_EDGE",
+      "MOVE_ENDURE",
+      "MOVE_FURY_CUTTER",
+      "MOVE_MUD_SLAP",
+      "MOVE_SLEEP_TALK",
+      "MOVE_SNORE",
+      "MOVE_SWAGGER",
+      "MOVE_SWIFT",
+      "MOVE_THUNDER_WAVE"
+    ]
   },
   "PSYDUCK_TOKUAN": {
     "LevelMoves": [

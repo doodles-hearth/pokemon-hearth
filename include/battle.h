@@ -779,9 +779,8 @@ struct BattleStruct
     u8 numHazards[NUM_BATTLE_SIDES];
     u8 hazardsCounter:4; // Counter for applying hazard on switch in
     enum SubmoveState submoveAnnouncement:2;
-    u8 padding2:2;
     u8 shouldPrintFullName:1;
-    u8 padding1:1;
+    u8 padding2:1;
     u16 flingItem;
 };
 

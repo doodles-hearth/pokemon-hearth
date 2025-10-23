@@ -5850,7 +5850,7 @@ static const u16 sActuallyUniversalMoves[] =
 u8 CanLearnTeachableMove(u16 species, u16 move)
 {
     // Universal shitty field moves
-    for (i = 0; i < ARRAY_COUNT(sActuallyUniversalMoves); i++)
+    for (u32 i = 0; i < ARRAY_COUNT(sActuallyUniversalMoves); i++)
     {
         if (sActuallyUniversalMoves[i] == move)
         {
