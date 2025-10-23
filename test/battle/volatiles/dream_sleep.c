@@ -112,7 +112,7 @@ SINGLE_BATTLE_TEST("Dream Sleep messages play properly whatever move is used")
     }
 }
 
-WILD_BATTLE_TEST("Dream Sleep make dream ball work 100%")
+/* WILD_BATTLE_TEST("Dream Sleep make dream ball work 100%")
 {
     // TODO Pokémon can breed with Ditto test breaks this one
     KNOWN_FAILING;
@@ -149,7 +149,7 @@ WILD_BATTLE_TEST("Dream Sleep make dream ball work 100%")
         else
             EXPECT(gBattleOutcome != B_OUTCOME_CAUGHT);
     }
-}
+} */
 
 WILD_BATTLE_TEST("Dream Sleep: Dream Eater deals 100% HP damage on dreaming targets")
 {

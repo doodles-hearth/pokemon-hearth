@@ -8,7 +8,7 @@ ASSUMPTIONS
 
 SINGLE_BATTLE_TEST("Contrary raises Attack when Intimidated in a single battle", s16 damage)
 {
-    u32 ability;
+    enum Ability ability;
     PARAMETRIZE { ability = ABILITY_CONTRARY; }
     PARAMETRIZE { ability = ABILITY_TANGLED_FEET; }
     GIVEN {
@@ -38,7 +38,7 @@ SINGLE_BATTLE_TEST("Contrary raises Attack when Intimidated in a single battle",
 
 DOUBLE_BATTLE_TEST("Contrary raises Attack when Intimidated in a double battle", s16 damageLeft, s16 damageRight)
 {
-    u32 abilityLeft, abilityRight;
+    enum Ability abilityLeft, abilityRight;
 
     PARAMETRIZE { abilityLeft = ABILITY_CONTRARY; abilityRight = ABILITY_CONTRARY; }
     PARAMETRIZE { abilityLeft = ABILITY_TANGLED_FEET; abilityRight = ABILITY_TANGLED_FEET; }
@@ -84,7 +84,7 @@ DOUBLE_BATTLE_TEST("Contrary raises Attack when Intimidated in a double battle",
 
 SINGLE_BATTLE_TEST("Contrary raises stats after using a move which would normally lower them: Overheat", s16 damageBefore, s16 damageAfter)
 {
-    u32 ability;
+    enum Ability ability;
     PARAMETRIZE { ability = ABILITY_CONTRARY; }
     PARAMETRIZE { ability = ABILITY_TANGLED_FEET; }
     GIVEN {
@@ -128,7 +128,7 @@ SINGLE_BATTLE_TEST("Contrary raises stats after using a move which would normall
 
 SINGLE_BATTLE_TEST("Contrary lowers a stat after using a move which would normally raise it: Swords Dance", s16 damageBefore, s16 damageAfter)
 {
-    u32 ability;
+    enum Ability ability;
     PARAMETRIZE { ability = ABILITY_CONTRARY; }
     PARAMETRIZE { ability = ABILITY_TANGLED_FEET; }
     GIVEN {
@@ -165,7 +165,7 @@ SINGLE_BATTLE_TEST("Contrary lowers a stat after using a move which would normal
 
 SINGLE_BATTLE_TEST("Contrary raises a stat after using a move which would normally lower it: Growl", s16 damage)
 {
-    u32 ability;
+    enum Ability ability;
     PARAMETRIZE { ability = ABILITY_CONTRARY; }
     PARAMETRIZE { ability = ABILITY_TANGLED_FEET; }
     GIVEN {
@@ -199,7 +199,7 @@ SINGLE_BATTLE_TEST("Contrary raises a stat after using a move which would normal
 
 SINGLE_BATTLE_TEST("Contrary lowers a stat after using a move which would normally raise it: Belly Drum", s16 damageBefore, s16 damageAfter)
 {
-    u32 ability;
+    enum Ability ability;
     PARAMETRIZE { ability = ABILITY_CONTRARY; }
     PARAMETRIZE { ability = ABILITY_TANGLED_FEET; }
     GIVEN {

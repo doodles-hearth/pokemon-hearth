@@ -53,9 +53,10 @@
 #include "constants/trainers.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
-#include "wild_encounter.h"
+#include "fishing.h"
 
-enum {
+enum TransitionType
+{
     TRANSITION_TYPE_NORMAL,
     TRANSITION_TYPE_CAVE,
     TRANSITION_TYPE_FLASH,
@@ -264,7 +265,7 @@ static void Task_BattleStart(u8 taskId)
     }
 }
 
-static void CreateBattleStartTask(u8 transition, u16 song)
+static void CreateBattleStartTask(enum BattleTransition transition, u16 song)
 {
     u8 taskId = CreateTask(Task_BattleStart, 1);
 
@@ -537,7 +538,7 @@ void StartGroudonKyogreBattle(void)
 
 void StartRegiBattle(void)
 {
-    u8 transitionId;
+    enum BattleTransition transitionId;
     u16 species;
 
     LockPlayerFieldControls();
@@ -634,9 +635,9 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
 {
     u16 tileBehavior;
     s16 x, y;
-    
-    if (I_FISHING_ENVIRONMENT >= GEN_4 && gIsFishingEncounter)
-    GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+
+    if (ShouldUseFishingEnvironmentInBattle())
+        GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
     else
     PlayerGetDestCoords(&x, &y);
     
@@ -712,7 +713,7 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
     return BATTLE_ENVIRONMENT_PLAINS;
 }
 
-static u8 GetBattleTransitionTypeByMap(void)
+static enum TransitionType GetBattleTransitionTypeByMap(void)
 {
     u16 tileBehavior;
     s16 x, y;
@@ -775,7 +776,7 @@ static u8 GetSumOfEnemyPartyLevel(u16 opponentId, u8 numMons)
     return sum;
 }
 
-u8 GetWildBattleTransition(void)
+enum BattleTransition GetWildBattleTransition(void)
 {
     u8 transitionType = GetBattleTransitionTypeByMap();
     u8 enemyLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
@@ -797,7 +798,7 @@ u8 GetWildBattleTransition(void)
     }
 }
 
-u8 GetTrainerBattleTransition(void)
+enum BattleTransition GetTrainerBattleTransition(void)
 {
     u8 minPartyCount = 1;
     u8 transitionType;
@@ -840,7 +841,7 @@ u8 GetTrainerBattleTransition(void)
 }
 
 #define RANDOM_TRANSITION(table) (table[Random() % ARRAY_COUNT(table)])
-u8 GetSpecialBattleTransition(s32 id)
+enum BattleTransition GetSpecialBattleTransition(enum BattleTransitionGroup id)
 {
     u16 var;
     u8 enemyLevel = GetMonData(&gEnemyParty[0], MON_DATA_LEVEL);
@@ -858,6 +859,8 @@ u8 GetSpecialBattleTransition(s32 id)
             return RANDOM_TRANSITION(sBattleTransitionTable_BattlePyramid);
         case B_TRANSITION_GROUP_B_DOME:
             return RANDOM_TRANSITION(sBattleTransitionTable_BattleDome);
+        default:
+            break;
         }
 
         if (VarGet(VAR_FRONTIER_BATTLE_MODE) != FRONTIER_MODE_LINK_MULTIS)
@@ -875,6 +878,8 @@ u8 GetSpecialBattleTransition(s32 id)
             return RANDOM_TRANSITION(sBattleTransitionTable_BattlePyramid);
         case B_TRANSITION_GROUP_B_DOME:
             return RANDOM_TRANSITION(sBattleTransitionTable_BattleDome);
+        default:
+            break;
         }
 
         if (VarGet(VAR_FRONTIER_BATTLE_MODE) != FRONTIER_MODE_LINK_MULTIS)
@@ -1031,7 +1036,7 @@ void TrainerBattleLoadArgsSecondTrainer(const u8 *data)
 
 void SetMapVarsToTrainerA(void)
 {
-    if (TRAINER_BATTLE_PARAM.objEventLocalIdA != 0)
+    if (TRAINER_BATTLE_PARAM.objEventLocalIdA != LOCALID_NONE)
     {
         gSpecialVar_LastTalked = TRAINER_BATTLE_PARAM.objEventLocalIdA;
         gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(TRAINER_BATTLE_PARAM.objEventLocalIdA, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);

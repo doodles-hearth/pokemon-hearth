@@ -313,7 +313,7 @@ script YifuCity_ShinySellerChoice {
 				))
 
 				setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CATERPIE)
-				givemon(SPECIES_CATERPIE, 5, isShiny=FALSE)
+				givemon(SPECIES_CATERPIE, 5, shinyMode=SHINY_MODE_NEVER)
 
 				if (var(VAR_RESULT) == MON_CANT_GIVE) {
 					goto(Common_EventScript_NoMoreRoomForPokemon)
