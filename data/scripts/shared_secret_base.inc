@@ -8,7 +8,6 @@ SecretBase_MapScripts::
 
 SecretBase_EventScript_Chest::
 	lockall
-	playse SE_PC_LOGIN
 	message SecretBase_EventScript_Chest_Text_0
 	waitmessage
 	waitbuttonpress
