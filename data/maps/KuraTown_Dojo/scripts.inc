@@ -270,7 +270,7 @@ KuraTown_Dojo_EventScript_Hana_Text_1:
 KuraTown_Dojo_EventScript_Hana_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
 	.string "Growing bonsai and battling with my\nPokémon are my favorite pastimes.\lWith this Dojo, I can do both!\p"
-	.string "A Pokémon battle can be graceful like a\nbudding flower, strong like the deepest\lroots, powerful like a windswept\lpine tree, all at once.\p"
+	.string "A Pokémon battle can be graceful like a\nbudding flower, strong like the\ldeepest roots, powerful like a\lwindswept pine tree, all at once.\p"
 	.string "Show me all the grace, strength and\npower you are capable of!$"
 
 KuraTown_Dojo_EventScript_Hana_Text_3:

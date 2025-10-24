@@ -103,7 +103,9 @@ static const struct SecretBaseEntranceMetatiles sSecretBaseEntranceMetatiles[] =
     {.closedMetatileId = METATILE_General_BlueCaveIndent,       .openMetatileId = METATILE_General_BlueCaveOpen},
     {.closedMetatileId = METATILE_Fallarbor_BrownCaveIndent,    .openMetatileId = METATILE_Fallarbor_BrownCaveOpen},
     {.closedMetatileId = METATILE_Fortree_SecretBase_Shrub,     .openMetatileId = METATILE_Fortree_SecretBase_ShrubOpen},
-    {.closedMetatileId = METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntrance, .openMetatileId = METATILE_PorytilesPrimaryTutorial_CaveEntrance},
+    {.closedMetatileId = METATILE_PorytilesPrimaryTutorial_SecretBaseCaveIndentBrown, .openMetatileId = METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntranceBrown},
+    {.closedMetatileId = METATILE_PorytilesPrimaryTutorial_SecretBaseCaveIndentBlue, .openMetatileId = METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntranceBlue},
+    {.closedMetatileId = METATILE_PorytilesPrimaryTutorial_SecretBaseCaveIndentRed, .openMetatileId = METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntranceRed},
 };
 
 // mapNum, warpId, x, y
@@ -470,14 +472,14 @@ static void EnterNewlyCreatedSecretBase_WaitFadeIn(u8 taskId)
 
 static void EnterNewlyCreatedSecretBase_StartFadeIn(void)
 {
-    s16 x = 0, y = 0;
+    s16 x = 5, y = 4;
 
     LockPlayerFieldControls();
     HideMapNamePopUpWindow();
-    FindMetatileIdMapCoords(&x, &y, METATILE_SecretBase_PC);
+    FindMetatileIdMapCoords(&x, &y, METATILE_SecretBaseHearth_PC);
     x += MAP_OFFSET;
     y += MAP_OFFSET;
-    MapGridSetMetatileIdAt(x, y, METATILE_SecretBase_PC | MAPGRID_IMPASSABLE);
+    MapGridSetMetatileIdAt(x, y, METATILE_SecretBaseHearth_PC | MAPGRID_IMPASSABLE);
     CurrentMapDrawMetatileAt(x, y);
     FadeInFromBlack();
     CreateTask(EnterNewlyCreatedSecretBase_WaitFadeIn, 0);
@@ -537,13 +539,13 @@ void InitSecretBaseAppearance(bool8 hidePC)
         if (secretBaseIdx != 0)
         {
             // Another player's secret base. Change PC type to the "Register" PC.
-            FindMetatileIdMapCoords(&x, &y, METATILE_SecretBase_PC);
+            FindMetatileIdMapCoords(&x, &y, METATILE_SecretBaseHearth_PC);
             MapGridSetMetatileIdAt(x + MAP_OFFSET, y + MAP_OFFSET, METATILE_SecretBase_RegisterPC | MAPGRID_IMPASSABLE);
         }
         else if (hidePC == TRUE && VarGet(VAR_SECRET_BASE_INITIALIZED) == 1)
         {
             // Change PC to regular ground tile.
-            FindMetatileIdMapCoords(&x, &y, METATILE_SecretBase_PC);
+            FindMetatileIdMapCoords(&x, &y, METATILE_SecretBaseHearth_PC);
             MapGridSetMetatileIdAt(x + MAP_OFFSET, y + MAP_OFFSET, METATILE_SecretBase_Ground | MAPGRID_IMPASSABLE);
         }
     }

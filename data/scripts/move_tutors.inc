@@ -16,7 +16,6 @@ YifuCity_EventScript_WhirlpoolTutor::
 YifuCity_EventScript_WhirlpoolTutor_1:
 	setspeaker SP_NAME_FISHERMAN
 	msgbox YifuCity_EventScript_WhirlpoolTutor_Text_0
-	closemessage
 	checkitem ITEM_HEART_SCALE
 	compare VAR_RESULT, 0
 	goto_if_ne YifuCity_EventScript_WhirlpoolTutor_4
@@ -68,32 +67,75 @@ YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_5:
 	goto YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_1
 
 
-
-SlateportCity_PokemonFanClub_EventScript_SwaggerTutor::
+Saku_EventScript_ForcePalmTutor::
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_SWAGGER, MoveTutor_EventScript_SwaggerTaught
-	msgbox MoveTutor_Text_SwaggerTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_SwaggerDeclined
-	call MoveTutor_EventScript_CanOnlyBeLearnedOnce
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_SwaggerDeclined
-	msgbox MoveTutor_Text_SwaggerWhichMon, MSGBOX_DEFAULT
-	setvar VAR_0x8005, MOVE_SWAGGER
+	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_FORCE_PALM, Saku_EventScript_ForcePalmTutor_1
+	setspeaker SP_NAME_MAN
+	msgbox Saku_EventScript_ForcePalmTutor_Text_1
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, Saku_EventScript_ForcePalmTutor_Text_2, YifuCity_EventScript_WhirlpoolTutor_Text_5
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq Saku_EventScript_ForcePalmTutor_6
+	setspeaker SP_NAME_MAN
+	msgbox Saku_EventScript_ForcePalmTutor_Text_3
+	closemessage
+	return
+
+Saku_EventScript_ForcePalmTutor_1:
+	setspeaker SP_NAME_MAN
+	msgbox Saku_EventScript_ForcePalmTutor_Text_0
+	checkitem ITEM_HEART_SCALE
+	compare VAR_RESULT, 0
+	goto_if_ne Saku_EventScript_ForcePalmTutor_4
+	return
+
+Saku_EventScript_ForcePalmTutor_4:
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, YifuCity_EventScript_WhirlpoolTutor_Text_1, YifuCity_EventScript_WhirlpoolTutor_Text_2
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq Saku_EventScript_ForcePalmTutor_9
+	return
+
+Saku_EventScript_ForcePalmTutor_6:
+	call YifuCity_EventScript_ForcePalmTutorTeachForcePalm
+	return
+
+Saku_EventScript_ForcePalmTutor_9:
+	call YifuCity_EventScript_ForcePalmTutorTeachForcePalm
+	return
+
+
+YifuCity_EventScript_ForcePalmTutorTeachForcePalm::
+	setspeaker SP_NAME_MAN
+	msgbox YifuCity_EventScript_ForcePalmTutorTeachForcePalm_Text_0
+	setvar VAR_0x8005, MOVE_FORCE_PALM
 	call MoveTutor_EventScript_OpenPartyMenu
-	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_SwaggerDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_SWAGGER
-	goto MoveTutor_EventScript_SwaggerTaught
-	end
-
-MoveTutor_EventScript_SwaggerDeclined::
-	msgbox MoveTutor_Text_SwaggerDeclined, MSGBOX_DEFAULT
+	compare VAR_RESULT, 0
+	goto_if_eq YifuCity_EventScript_ForcePalmTutorTeachForcePalm_2
+	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_FORCE_PALM, YifuCity_EventScript_ForcePalmTutorTeachForcePalm_5
+	setflag FLAG_MOVE_TUTOR_TAUGHT_FORCE_PALM
+	setspeaker SP_NAME_MAN
+	msgbox YifuCity_EventScript_ForcePalmTutorTeachForcePalm_Text_2
+	closemessage
+YifuCity_EventScript_ForcePalmTutorTeachForcePalm_1:
 	release
-	end
+	return
 
-MoveTutor_EventScript_SwaggerTaught::
-	msgbox MoveTutor_Text_SwaggerTaught, MSGBOX_DEFAULT
-	release
-	end
+YifuCity_EventScript_ForcePalmTutorTeachForcePalm_2:
+	setspeaker SP_NAME_MAN
+	msgbox Saku_EventScript_ForcePalmTutor_Text_3
+	closemessage
+	goto YifuCity_EventScript_ForcePalmTutorTeachForcePalm_1
+
+YifuCity_EventScript_ForcePalmTutorTeachForcePalm_5:
+	setspeaker SP_NAME_MAN
+	msgbox YifuCity_EventScript_ForcePalmTutorTeachForcePalm_Text_1
+	closemessage
+	removeitem ITEM_HEART_SCALE
+	goto YifuCity_EventScript_ForcePalmTutorTeachForcePalm_1
+
+
 
 MauvilleCity_EventScript_RolloutTutor::
 	lock
@@ -341,12 +383,8 @@ MoveTutor_EventScript_CanOnlyBeLearnedOnce::
 	return
 
 YifuCity_EventScript_WhirlpoolTutor_Text_0:
-	.string "Hm? I can teach Whirlpool to your\n"
-	.string "Pokémon again, but you have to make\l"
-	.string "it worth my while, alright?\p"
-	.string "I'm very fond of Heart Scales. They\n"
-	.string "remind me of the sea. I'll do it in\l"
-	.string "exchange for one!$"
+	.string "I can teach Whirlpool to your Pokémon\nagain, but make it worth my while, OK?\p"
+	.string "I'm very fond of Heart Scales.\nThey remind me of the sea.\lI'll do it in exchange for one!$"
 
 YifuCity_EventScript_WhirlpoolTutor_Text_1:
 	.string "Give Heart Scale$"
@@ -356,13 +394,9 @@ YifuCity_EventScript_WhirlpoolTutor_Text_2:
 
 YifuCity_EventScript_WhirlpoolTutor_Text_3:
 	.string "Hm? No, I'm not fishing.\p"
-	.string "I'm just watching the tiny whirlpools\n"
-	.string "that Pokémon make in the shallow\l"
-	.string "water.\p"
-	.string "Would you like your Pokémon to make\n"
-	.string "whirlpools too?\p"
-	.string "I could teach them the way of the\n"
-	.string "Whirlpool!$"
+	.string "I'm just watching the tiny whirlpools\nPokémon make in the shallow water.\p"
+	.string "Would you like your Pokémon to make whirlpools too?\p"
+	.string "I could teach them the way of the Whirlpool!$"
 
 YifuCity_EventScript_WhirlpoolTutor_Text_4:
 	.string "Teach me the way!$"
@@ -391,3 +425,37 @@ YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_2:
 	.string "You can now watch your Pokémon make\n"
 	.string "tiny whirlpools!\p"
 	.string "You'll see, it's very relaxing.$"
+
+Saku_EventScript_ForcePalmTutor_Text_0:
+	.string "You want more Pokémon to develop\n"
+	.string "strong hands, huh?\p"
+	.string "I can teach them too, if you just\n"
+	.string "bring me a Heart Scale!$"
+
+Saku_EventScript_ForcePalmTutor_Text_1:
+	.string "Want your Pokémon to have strong and\n"
+	.string "forceful hands, too?\p"
+	.string "I can teach them my Force Palm\n"
+	.string "technique! What do you say?$"
+
+Saku_EventScript_ForcePalmTutor_Text_2:
+	.string "I need a hand!$"
+
+Saku_EventScript_ForcePalmTutor_Text_3:
+	.string "You're intimidated by Mama and Kuku's\n"
+	.string "display of awesomeness, I get it.$"
+
+YifuCity_EventScript_ForcePalmTutorTeachForcePalm_Text_0:
+	.string "Heck yes!\nWhich Pokémon will receive this gift?$"
+
+YifuCity_EventScript_ForcePalmTutorTeachForcePalm_Text_1:
+	.string "Your Pokémon's hands are now almost\n"
+	.string "as strong as Mama's and Kuku's!\p"
+	.string "Now, we'd settled on a Heart Scale,\n"
+	.string "right?$"
+
+YifuCity_EventScript_ForcePalmTutorTeachForcePalm_Text_2:
+	.string "Your Pokémon's hands are now almost\n"
+	.string "as strong as Mama's and Kuku's!\p"
+	.string "You'll join the Refuge building effort\n"
+	.string "someday, right?$"

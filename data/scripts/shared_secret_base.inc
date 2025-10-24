@@ -10,7 +10,6 @@ SecretBase_EventScript_Chest::
 	lockall
 	playse SE_PC_LOGIN
 	message SecretBase_EventScript_Chest_Text_0
-	waitstate
 	waitmessage
 	waitbuttonpress
 	playse SE_SELECT
@@ -42,8 +41,8 @@ SecretBase_EventScript_PC::
 	lockall
 	playse SE_PC_LOGIN
 	message SecretBase_Text_BootUpPC
-	dofieldeffect FLDEFF_PCTURN_ON
-	waitstate
+	@ dofieldeffect FLDEFF_PCTURN_ON
+	@ waitstate
 	waitmessage
 	waitbuttonpress
 	playse SE_SELECT
@@ -101,8 +100,8 @@ SecretBase_EventScript_RecordMixingPC::
 	lockall
 	message SecretBase_Text_BootUpPC
 	playse SE_PC_LOGIN
-	dofieldeffect FLDEFF_PCTURN_ON
-	waitstate
+	@ dofieldeffect FLDEFF_PCTURN_ON
+	@ waitstate
 	waitmessage
 	waitbuttonpress
 	playse SE_SELECT
@@ -161,7 +160,7 @@ SecretBase_EventScript_PCRegistryInfo::
 	end
 
 SecretBase_EventScript_PCTurnOff::
-	special DoSecretBasePCTurnOffEffect
+	@ special DoSecretBasePCTurnOffEffect
 	closemessage
 	releaseall
 	end
@@ -221,13 +220,13 @@ SecretBase_Text_SmallIndentInWall::
 
 SecretBase_Text_IndentUseSecretPower::
 	.string "There's a small indent in the wall.\p"
-	.string "Use the SECRET POWER?$"
+	.string "Use the Secret Power?$"
 
 SecretBase_Text_DiscoveredSmallCavern::
 	.string "Discovered a small cavern!$"
 
 SecretBase_Text_WantToMakeYourSecretBaseHere:
-	.string "Want to make your SECRET BASE here?$"
+	.string "Want to make your Secret Base here?$"
 
 SecretBase_EventScript_Chest_Text_0:
 	.string "{PLAYER} opened the decoration\n"

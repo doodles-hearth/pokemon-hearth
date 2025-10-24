@@ -131,7 +131,7 @@ script KuraTown_Dojo_EventScript_Hana {
 			(
 				"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
 				"Growing bonsai and battling with my\nPokémon are my favorite pastimes.\lWith this Dojo, I can do both!\p"
-				"A Pokémon battle can be graceful like a\nbudding flower, strong like the deepest\lroots, powerful like a windswept\lpine tree, all at once.\p"
+				"A Pokémon battle can be graceful like a\nbudding flower, strong like the\ldeepest roots, powerful like a\lwindswept pine tree, all at once.\p"
 				"Show me all the grace, strength and\npower you are capable of!"
 			),
 			format("Ho ho ho…"),

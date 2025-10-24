@@ -5,6 +5,10 @@ mapscripts SakuTown_BonsaiShop_MapScripts {
 }
 
 script SakuTown_EventScript_SetupNpcs {
+	if (flag(FLAG_BADGE02_GET)) {
+		setflag(FLAG_KURA_DOJO_CLOSED)
+		clearflag(FLAG_HIDE_BONSAI_SHOP_OWNER)
+	}
 	// When the owner is behind the counter, her assistant wanders around
 	if (!flag(FLAG_HIDE_BONSAI_SHOP_OWNER)) {
 		setobjectmovementtype(LOCALID_ASSISTANT, MOVEMENT_TYPE_WANDER_AROUND)
@@ -289,7 +293,7 @@ script(local) SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader {
 	setflag(FLAG_MET_HANA_BONSAI_SHOP)
 	setspeaker(SP_NAME_HANA)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I interest you in a little greenery?"
+		"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, child. Can I interest you in a little greenery?"
 	))
 
 	mcdialogue(
@@ -321,7 +325,7 @@ script SakuTown_BonsaiShop_EventScript_Owner {
 		special(GetPlayerBoyGirlString)
 		setspeaker(SP_NAME_SHOP_OWNER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I interest you in a little greenery?\p"
+			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, child. Can I interest you in a little greenery?\p"
 			"Hmm… It looks like you wouldn't have anywhere to put bonsai. Come back when you do."
 		))
 		closemessage

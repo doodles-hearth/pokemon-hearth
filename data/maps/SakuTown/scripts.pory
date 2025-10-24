@@ -289,6 +289,32 @@ script SakuTown_EventScript_Karateka {
 
 	setseenmon(SPECIES_MAKUHITA)
 
+	if (flag(FLAG_BADGE01_GET)) {
+		faceplayer
+		setspeaker(SP_NAME_MAN)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+			"Their hands are strong and forceful…"
+		))
+		closemessage
+
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, moves(emote_heart, delay_16 * 6))
+		waitmovement(VAR_LAST_TALKED)
+
+		call(Saku_EventScript_ForcePalmTutor)
+	} else {
+		faceplayer
+		setspeaker(SP_NAME_MAN)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+			"Their hands are strong and forceful…\p"
+			"I bet you want your Pokémon to have strong and forceful hands, too.\p"
+			"Come back when you're stronger.\nOnce you getyour first Token!"
+		))
+		closemessage
+	}
+
 	release
 }
 
@@ -450,7 +476,7 @@ script SakuTown_EventScript_MonHues {
 	))
 	applymovement(VAR_LAST_TALKED, moves(emote_music))
 	msgbox(format(
-		"Doesn't noticing that make your heart sing?"
+		"Doesn't it make your heart sing?"
 	))
 	closemessage
 	release

@@ -5176,7 +5176,7 @@ Class: Dojo Master
 Pic: Leader Hana
 Gender: Female
 Music: Female
-Items: Super Potion / Super Potion
+Items: Supergiri
 Battle Type: Singles
 AI: Smartish Trainer / Ace Pokemon
 
@@ -5196,9 +5196,9 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Bubble Beam
 - Bite
 
-Sudowoodo @ Soft Sand
+Sudowoodo
 Level: 19
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 15 HP / 12 Atk / 15 Def / 12 SpA / 15 SpD / 15 Spe
 - Feint Attack
 - Low Kick
 - Rock Tomb

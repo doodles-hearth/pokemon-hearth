@@ -4,10 +4,17 @@ SakuTown_BonsaiShop_MapScripts::
 
 
 SakuTown_EventScript_SetupNpcs::
-	goto_if_unset FLAG_HIDE_BONSAI_SHOP_OWNER, SakuTown_EventScript_SetupNpcs_1
+	goto_if_set FLAG_BADGE02_GET, SakuTown_EventScript_SetupNpcs_2
+SakuTown_EventScript_SetupNpcs_1:
+	goto_if_unset FLAG_HIDE_BONSAI_SHOP_OWNER, SakuTown_EventScript_SetupNpcs_4
 	return
 
-SakuTown_EventScript_SetupNpcs_1:
+SakuTown_EventScript_SetupNpcs_2:
+	setflag FLAG_KURA_DOJO_CLOSED
+	clearflag FLAG_HIDE_BONSAI_SHOP_OWNER
+	goto SakuTown_EventScript_SetupNpcs_1
+
+SakuTown_EventScript_SetupNpcs_4:
 	setobjectmovementtype 1, MOVEMENT_TYPE_WANDER_AROUND
 	setobjectxyperm 1, 9, 3
 	return
@@ -435,8 +442,8 @@ SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_2:
 	.string "when you do.$"
 
 SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I\n"
-	.string "interest you in a little greenery?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, child. Can I interest you in a\n"
+	.string "little greenery?$"
 
 SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_1:
 	.string "Hana?"
@@ -456,8 +463,8 @@ SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_2:
 	.string "more similar than they are different…$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I\n"
-	.string "interest you in a little greenery?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, child. Can I interest you in a\n"
+	.string "little greenery?\p"
 	.string "Hmm… It looks like you wouldn't have\n"
 	.string "anywhere to put bonsai. Come back\l"
 	.string "when you do.$"

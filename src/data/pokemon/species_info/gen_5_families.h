@@ -3816,8 +3816,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sAnimTable_Following,
             gFollowerPalette_SewaddleTokuan,
             gShinyFollowerPalette_SewaddleTokuan)
-        .levelUpLearnset = sSewaddleLevelUpLearnset,
-        .teachableLearnset = sSewaddleTeachableLearnset,
+        .levelUpLearnset = sSewaddleTokuanLevelUpLearnset,
+        .teachableLearnset = sSewaddleTokuanTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_SWADLOON_TOKUAN}),
     },
 
@@ -3885,8 +3885,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sAnimTable_Following,
             gFollowerPalette_SwadloonTokuan,
             gShinyFollowerPalette_SwadloonTokuan)
-        .levelUpLearnset = sSwadloonLevelUpLearnset,
-        .teachableLearnset = sSwadloonTeachableLearnset,
+        .levelUpLearnset = sSwadloonTokuanLevelUpLearnset,
+        .teachableLearnset = sSwadloonTokuanTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_LEAVANNY_TOKUAN, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD})}),
     },
 
@@ -3961,8 +3961,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sAnimTable_Following,
             gFollowerPalette_LeavannyTokuan,
             gShinyFollowerPalette_LeavannyTokuan)
-        .levelUpLearnset = sLeavannyLevelUpLearnset,
-        .teachableLearnset = sLeavannyTeachableLearnset
+        .levelUpLearnset = sLeavannyTokuanLevelUpLearnset,
+        .teachableLearnset = sLeavannyTokuanTeachableLearnset
     },
 #endif //P_TOKUAN_FORMS
 #endif //P_FAMILY_SEWADDLE
