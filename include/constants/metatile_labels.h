@@ -857,9 +857,9 @@
 #define METATILE_SecretBaseHearth_FireBlastMat_TopLeft       0x84A
 #define METATILE_SecretBaseHearth_FireBlastMat_TopMid        0x84B
 #define METATILE_SecretBaseHearth_FireBlastMat_TopRight      0x84C
-#define METATILE_SecretBaseHearth_FissureMat_BottomLeft      0x87A
-#define METATILE_SecretBaseHearth_FissureMat_BottomMid       0x87B
-#define METATILE_SecretBaseHearth_FissureMat_BottomRight     0x87C
+#define METATILE_SecretBaseHearth_FissureMat_BottomLeft      0x88A
+#define METATILE_SecretBaseHearth_FissureMat_BottomMid       0x88B
+#define METATILE_SecretBaseHearth_FissureMat_BottomRight     0x88C
 #define METATILE_SecretBaseHearth_FissureMat_Center          0x883
 #define METATILE_SecretBaseHearth_FissureMat_MidLeft         0x882
 #define METATILE_SecretBaseHearth_FissureMat_MidRight        0x884
@@ -910,6 +910,10 @@
 #define METATILE_SecretBaseHearth_SurfMat_TopLeft            0x832
 #define METATILE_SecretBaseHearth_SurfMat_TopMid             0x833
 #define METATILE_SecretBaseHearth_SurfMat_TopRight           0x834
+#define METATILE_SecretBaseHearth_BigPlant_BottomLeft        0x8D8
+#define METATILE_SecretBaseHearth_BigPlant_BottomRight       0x8D9
+#define METATILE_SecretBaseHearth_BigPlant_TopLeft           0x8D0
+#define METATILE_SecretBaseHearth_BigPlant_TopRight          0x8D1
 
 // gTileset_Shop
 #define METATILE_Shop_Door_Elevator   0x885
