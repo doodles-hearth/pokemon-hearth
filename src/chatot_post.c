@@ -292,24 +292,28 @@ bool8 Native_ReadChatotPost(struct ScriptContext *ctx)
         }
         else
         {
-            /* DebugPrintf("  non trainer"); */
+            DebugPrintf("  non trainer");
             script = gChatotPost[storedPost].script;
         }
     }
-
+    
+    DebugPrintf("flag=%d", CheckChatotPostFlag(storedPost));
     SetChatotPostFlag(storedPost);
+    DebugPrintf("flag=%d", CheckChatotPostFlag(storedPost));
     ClearFirstPostSlotAndCompressPostQueue();
     ScriptCall(ctx, script);
     return FALSE;
 }
 
-bool8 Native_SetChatotPostActive(struct ScriptContext *ctx)
+bool8 Native_TrySetChatotPostActive(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1);
     
     u32 idPost = ScriptReadHalfword(ctx);
 
-    SetChatotPostActive(idPost);
+    if (!CheckChatotPostFlag(idPost)) {
+        SetChatotPostActive(idPost);
+    }
 
     return FALSE;
 }

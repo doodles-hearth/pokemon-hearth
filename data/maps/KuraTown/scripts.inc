@@ -656,10 +656,8 @@ KuraTown_EventScript_LovestruckGuy_Text_0:
 	.string "Lovestruck Boy$"
 
 KuraTown_EventScript_LovestruckGuy_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 EMOTE_NORMAL}I just got back home after spending\n"
-	.string "time with my love, and yet I already\l"
-	.string "want the day to pass by and let me\l"
-	.string "see her again…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 EMOTE_NORMAL}"
+	.string "I just spent the day with my girlfriend\nfrom Maguro Harbor, but I already want\ltomorrow to come to see her again!$"
 
 KuraTown_EventScript_PokemonCouncil_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 EMOTE_NORMAL}The Elders of the Toku Council may\nlook like a bunch of frail old people,\lbut they were once formidable Wielders!\p"

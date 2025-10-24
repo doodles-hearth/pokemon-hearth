@@ -237,8 +237,9 @@ script KuraTown_EventScript_LovestruckGuy{
 	faceplayer
 	setspeaker("Lovestruck Boy")
 	msgbox(
-		format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 EMOTE_NORMAL}I just got back home after spending time with my love, and yet I already want the day to pass by and let me see her again…"
+		(
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 EMOTE_NORMAL}"
+			"I just spent the day with my girlfriend\nfrom Maguro Harbor, but I already want\ltomorrow to come to see her again!"
 		),
 		MSGBOX_DEFAULT
 	)

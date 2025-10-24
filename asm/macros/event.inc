@@ -3012,8 +3012,8 @@
     callnative Native_ReadChatotPost, requests_effects=1
     .endm
 
-	.macro setchatotpostactive idPost:req
-	callnative Native_SetChatotPostActive, requests_effects=1
+	.macro trysetchatotpostactive idPost:req
+	callnative Native_TrySetChatotPostActive, requests_effects=1
 	.2byte \idPost
 	.endm
 
