@@ -85,7 +85,7 @@
 #define FLAG_HIDE_TAMASDAD    0x41 // Hides tama's dad in Saku
 #define FLAG_LIED_TO_SHAMISEN_PLAYER 0x42
 #define FLAG_PICKED_UP_BAG   0x43
-#define FLAG_UNUSED_0x044    0x44 // Unused Flag
+#define FLAG_PAID_HOT_SPRINGS 0x44
 #define FLAG_UNUSED_0x045    0x45 // Unused Flag
 #define FLAG_UNUSED_0x046    0x46 // Unused Flag
 #define FLAG_UNUSED_0x047    0x47 // Unused Flag
@@ -1078,7 +1078,7 @@
 #define FLAG_ITEM_YIFU_REFUGE_LAVA_COOKIE                           0x3FB
 #define FLAG_HIDDEN_ITEM_YIFU_CITY_ESCAPE_ROPE                      0x3FC
 #define FLAG_HIDDEN_ITEM_YIFU_CITY_RARE_CANDY                       0x3FD
-#define FLAG_ITEM_ROUTE_117_GREAT_BALL                              0x3FE
+#define FLAG_HIDDEN_ITEM_YIFU_CITY_DUSK_BALL                        0x3FE
 #define FLAG_ITEM_ROUTE_117_REVIVE                                  0x3FF
 #define FLAG_ITEM_ROUTE_119_SUPER_REPEL                             0x400
 #define FLAG_ITEM_ROUTE_119_ZINC                                    0x401
@@ -1599,7 +1599,7 @@
 #define FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY       (DAILY_FLAGS_START + 0x10)
 #define FLAG_DAILY_BERRY_MASTERS_WIFE               (DAILY_FLAGS_START + 0x11)
 #define FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY        (DAILY_FLAGS_START + 0x12)
-#define FLAG_PAID_HOT_SPRINGS                       (DAILY_FLAGS_START + 0x13)
+#define FLAG_UNUSED_0x933                           (DAILY_FLAGS_START + 0x13)
 #define FLAG_DAILY_APPRENTICE_LEAVES                (DAILY_FLAGS_START + 0x14)
 
 #define FLAG_UNUSED_0x935                           (DAILY_FLAGS_START + 0x15) // Unused Flag

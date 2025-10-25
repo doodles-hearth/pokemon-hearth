@@ -22,6 +22,7 @@ script YifuCity_House1_2F_EventScript_ChildGiveDoll {
 			
 			// TODO EVA change the type of doll
 			givedecoration(DECOR_LOTAD_DOLL)
+			setflag(FLAG_RECEIVED_DOLL_FROM_CHILD)
 
 			setspeaker(SP_NAME_LITTLE_BOY)
 			msgbox(format(
@@ -29,6 +30,8 @@ script YifuCity_House1_2F_EventScript_ChildGiveDoll {
 			))
 			closemessage
 		} else {
+			waitse
+			playse(SE_PIN)
 			applymovement(VAR_LAST_TALKED, moves(emote_upset))
 			setspeaker(SP_NAME_LITTLE_BOY)
 			msgbox(format(
@@ -45,6 +48,8 @@ script YifuCity_House1_2F_EventScript_ChildGiveDoll {
 script YifuCity_House1_2F_EventScript_ChildStolenDoll {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_upset))
 	setspeaker(SP_NAME_LITTLE_GIRL)
 	msgbox(format(

@@ -628,8 +628,7 @@ MaguroHarbor_EventScript_LovestruckGirl_Text_1:
 	.string "Lovestruck Girl$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}"
-	.string "I just spent the day with my boyfriend\nfrom Kura Village, but I already want\ltonight to end to see him again!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I just spent the day with my boyfriend\nfrom Kura Village, but I already want\ltonight to end to see him again!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm so sorry, dearie.\n"

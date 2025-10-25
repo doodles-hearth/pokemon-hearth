@@ -395,8 +395,8 @@ YifuCity_EventScript_WhirlpoolTutor_Text_2:
 YifuCity_EventScript_WhirlpoolTutor_Text_3:
 	.string "Hm? No, I'm not fishing.\p"
 	.string "I'm just watching the tiny whirlpools\nPokémon make in the shallow water.\p"
-	.string "Would you like your Pokémon to make whirlpools too?\p"
-	.string "I could teach them the way of the Whirlpool!$"
+	.string "Would you like your Pokémon to make\nwhirlpools too?\p"
+	.string "I could teach them the way of the\nWhirlpool!$"
 
 YifuCity_EventScript_WhirlpoolTutor_Text_4:
 	.string "Teach me the way!$"
@@ -406,7 +406,7 @@ YifuCity_EventScript_WhirlpoolTutor_Text_5:
 
 YifuCity_EventScript_WhirlpoolTutor_Text_6:
 	.string "I see. The way of the Whirlpool hasn't\n"
-	.string "made it into your heart yet.\p"
+	.string "made it into your heart yet.\l"
 	.string "That's okay!$"
 
 YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool_Text_0:

@@ -597,8 +597,7 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
 		setspeaker(SP_NAME_VALET)
 		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
-			"Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?"
+			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?"
 		))
 
 		dynmultichoice(
@@ -615,16 +614,14 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 		switch (var(VAR_RESULT)) {
 			case 0:
 				msgbox((
-					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
-					"To complete a page of the PokéDex,\nyou need a Pokémon's name,\lappearance and description.\p"
+					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}To complete a page of the PokéDex,\nyou need a Pokémon's name,\lappearance and description.\p"
 					"Its name can be written down if\nsomeone speaks it out loud, or if you\lcatch the Pokémon.\p"
 					"Draw a sketch of the Pokémon when\nyou encounter it.\p"
 					"And write notes about it whenever you\nhear or witness something interesting!"
 				))
 			case 1:
 				msgbox((
-					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
-					"I see, you're all set then!\nCan't wait to read your findings!"
+					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}I see, you're all set then!\nCan't wait to read your findings!"
 				))
 		}
 	} else {
@@ -634,8 +631,7 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 
 		setspeaker(SP_NAME_VALET)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
-			"Don't mind me! I hope you're excited about the distribution!"
+			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}Don't mind me! I hope you're excited about the distribution!"
 		))
 		closemessage
 	}

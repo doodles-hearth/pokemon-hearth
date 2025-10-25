@@ -587,18 +587,20 @@ Level: 16
 - Odor Sleuth
 - Bite
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
-Gender: Female
-Music: Aqua
+=== TRAINER_YAMATO ===
+Name: Yamato
+Class: Old Man
+Pic: Old Man
+Gender: Male
+Music: Rich
 Battle Type: Singles
 AI: Check Bad Move
 
-Carvanha
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Bayleef
+Level: 20
+- Poison Powder
+- Magical Leaf
+- Growl
 
 === TRAINER_ROCK_SMASH_GUY ===
 Name: Smasher
@@ -16441,7 +16443,6 @@ Shuckle
 Level: 24
 - Sticky Web
 - Wrap
-- Safeguard
 - Struggle Bug
 
 Poltchageist
@@ -16451,6 +16452,7 @@ Level: 23
 - Mega Drain
 
 Braixen
+Level: 23
 - Howl
 - Psybeam
 - Flame Charge

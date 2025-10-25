@@ -384,8 +384,7 @@ script ChiiTown_EventScript_SetTrespassVar {
 script ChiiTown_EventScript_HexManiac {
 	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}"
-		"I hate people.\p"
+		"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I hate people.\p"
 		"There are fewer people outdoors after dark, so I only hang out at night."
 	), MSGBOX_NPC)
 }

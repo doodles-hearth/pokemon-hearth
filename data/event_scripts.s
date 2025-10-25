@@ -1396,3 +1396,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Silveridge_House3/scripts.inc"
 
 	.include "data/maps/SakuTown_BufferArea/scripts.inc"
+
+	.include "data/maps/YifuCity_BufferArea/scripts.inc"

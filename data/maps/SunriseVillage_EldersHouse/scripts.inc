@@ -982,8 +982,7 @@ SunriseVillage_EldersHouse_EventScript_Joltik_Text_0:
 	.string "Fss!$"
 
 SunriseVillage_EldersHouse_EventScript_Assistant_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
-	.string "Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?$"
 
 SunriseVillage_EldersHouse_EventScript_Assistant_Text_1:
 	.string "PokéDex?$"
@@ -992,16 +991,14 @@ SunriseVillage_EldersHouse_EventScript_Assistant_Text_2:
 	.string "I'm good.$"
 
 SunriseVillage_EldersHouse_EventScript_Assistant_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
-	.string "To complete a page of the PokéDex,\nyou need a Pokémon's name,\lappearance and description.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}To complete a page of the PokéDex,\nyou need a Pokémon's name,\lappearance and description.\p"
 	.string "Its name can be written down if\nsomeone speaks it out loud, or if you\lcatch the Pokémon.\p"
 	.string "Draw a sketch of the Pokémon when\nyou encounter it.\p"
 	.string "And write notes about it whenever you\nhear or witness something interesting!$"
 
 SunriseVillage_EldersHouse_EventScript_Assistant_Text_4:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}"
-	.string "I see, you're all set then!\nCan't wait to read your findings!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}I see, you're all set then!\nCan't wait to read your findings!$"
 
 SunriseVillage_EldersHouse_EventScript_Assistant_Text_5:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL} Don't mind me! I hope you're excited\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}Don't mind me! I hope you're excited\n"
 	.string "about the distribution!$"

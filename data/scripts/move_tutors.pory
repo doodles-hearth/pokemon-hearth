@@ -30,8 +30,8 @@ script YifuCity_EventScript_WhirlpoolTutor {
 		msgbox((
 			"Hm? No, I'm not fishing.\p"
 			"I'm just watching the tiny whirlpools\nPokémon make in the shallow water.\p"
-			"Would you like your Pokémon to make whirlpools too?\p"
-			"I could teach them the way of the Whirlpool!"
+			"Would you like your Pokémon to make\nwhirlpools too?\p"
+			"I could teach them the way of the\nWhirlpool!"
 		))
 		dynmultichoice(
 			0,
@@ -50,7 +50,7 @@ script YifuCity_EventScript_WhirlpoolTutor {
 		} else {
 			setspeaker(SP_NAME_FISHERMAN)
 			msgbox(format(
-				"I see. The way of the Whirlpool hasn't made it into your heart yet.\p"
+				"I see. The way of the Whirlpool hasn't made it into your heart yet.\l"
 				"That's okay!"
 			))
 			closemessage
@@ -70,7 +70,7 @@ script YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool {
 	if (var(VAR_RESULT) == 0) {
 		setspeaker(SP_NAME_FISHERMAN)
 		msgbox(format(
-			"I see. The way of the Whirlpool hasn't made it into your heart yet.\p"
+			"I see. The way of the Whirlpool hasn't made it into your heart yet.\l"
 			"That's okay!"
 		))
 		closemessage

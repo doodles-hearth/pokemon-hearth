@@ -27,6 +27,11 @@
       "map": "MAP_WHITESLATE_ROUTE",
       "offset": 16,
       "direction": "up"
+    },
+    {
+      "map": "MAP_YIFU_CITY_BUFFER_AREA",
+      "offset": 59,
+      "direction": "left"
     }
   ],
   "object_events": [
@@ -191,6 +196,7 @@
       "night": true
     },
     {
+      "local_id": "LOCALID_GRUNT_PASSWORD_TOP",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 60,
       "y": 13,
@@ -211,6 +217,7 @@
       "night": true
     },
     {
+      "local_id": "LOCALID_GRUNT_PASSWORD_BOTTOM",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 60,
       "y": 14,
@@ -231,6 +238,7 @@
       "night": true
     },
     {
+      "local_id": "LOCALID_GRUNT_PASSWORD_ZUBAT",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZUBAT)",
       "x": 59,
       "y": 13,
@@ -281,7 +289,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_EventScript_HearEcho",
-      "flag": "0",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -499,6 +507,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_LOCKDOWN_SAMURAI",
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 3,
       "y": 39,
@@ -519,6 +528,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_LOCKDOWN_SAMURAI_NORTH",
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 39,
       "y": 5,
@@ -740,7 +750,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TATSUGIRI)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NACLI)",
       "x": 34,
       "y": 30,
       "elevation": 0,
@@ -1200,7 +1210,7 @@
     },
     {
       "x": 51,
-      "y": 54,
+      "y": 53,
       "elevation": 0,
       "dest_map": "MAP_YIFU_CITY_DECO_SHOP",
       "dest_warp_id": "0"
@@ -1364,7 +1374,7 @@
       "x": 51,
       "y": 20,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "FLAG_TEMP_6",
       "var_value": "0",
       "script": "YifuCity_Trigger_CrobatGruntStuckInHole"
     },
@@ -1373,7 +1383,7 @@
       "x": 52,
       "y": 20,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "FLAG_TEMP_6",
       "var_value": "0",
       "script": "YifuCity_Trigger_CrobatGruntStuckInHole"
     },
@@ -1600,6 +1610,14 @@
       "elevation": 0,
       "item": "ITEM_RARE_CANDY",
       "flag": "FLAG_HIDDEN_ITEM_YIFU_CITY_RARE_CANDY"
+    },
+    {
+      "type": "hidden_item",
+      "x": 1,
+      "y": 62,
+      "elevation": 0,
+      "item": "ITEM_DUSK_BALL",
+      "flag": "FLAG_HIDDEN_ITEM_YIFU_CITY_DUSK_BALL"
     }
   ]
 }

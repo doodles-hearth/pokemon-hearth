@@ -23,8 +23,14 @@ script YifuCity_House2_Seamstress {
 	))
 	closemessage
 
-	applymovement(LOCALID_TAROUNTULA, moves(jump_in_place_right, walk_right * 2, walk_up, walk_right * 2, face_up, delay_16, jump_in_place_up, delay_16, walk_left * 2, walk_down, walk_left * 2))
+	playse(SE_PIN)
+	applymovement(LOCALID_TAROUNTULA, moves(jump_in_place_right, walk_right * 2, walk_up, walk_right * 2, face_up, delay_16))
 	waitmovement(0)
+	playse(SE_PIN)
+	applymovement(LOCALID_TAROUNTULA, moves(jump_in_place_up, delay_16, walk_left * 2, walk_down, walk_left * 2))
+	waitmovement(0)
+
+	setnamedmon(SPECIES_TAROUNTULA)
 
 	release
 }
@@ -38,6 +44,7 @@ script YifuCity_House2_Model {
 			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}That Tarountula creeps me out…\nIt has so many legs…"
 		))
 		closemessage
+		setnamedmon(SPECIES_TAROUNTULA)
 	} else {
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		setspeaker(SP_NAME_MODEL)

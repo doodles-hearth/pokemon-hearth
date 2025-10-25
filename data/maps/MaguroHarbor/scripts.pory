@@ -68,8 +68,7 @@ script MaguroHarbor_EventScript_LovestruckGirl {
 	} else {
 		setspeaker("Lovestruck Girl")
 		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}"
-			"I just spent the day with my boyfriend\nfrom Kura Village, but I already want\ltonight to end to see him again!"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I just spent the day with my boyfriend\nfrom Kura Village, but I already want\ltonight to end to see him again!"
 		), MSGBOX_DEFAULT)
 	}
 	release

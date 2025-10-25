@@ -652,6 +652,13 @@ enum BattleEnvironments BattleSetup_GetEnvironmentId(void)
             return BATTLE_ENVIRONMENT_GRASS_BLUE;
         return BATTLE_ENVIRONMENT_ROCK;
     }
+
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_YIFU_CITY_HOT_SPRINGS) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_YIFU_CITY_HOT_SPRINGS))
+    {
+        if (MetatileBehavior_IsHotSprings(tileBehavior))
+            return BATTLE_ENVIRONMENT_WATER;
+        return BATTLE_ENVIRONMENT_PLAIN;
+    }
     
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_MAGURO_HARBOR_DOJO) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_MAGURO_HARBOR_DOJO))
         return BATTLE_ENVIRONMENT_POND;

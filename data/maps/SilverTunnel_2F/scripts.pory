@@ -13,8 +13,7 @@ script SilverTunnel_2F_EventScript_Tama {
 	)
 	setspeaker(SP_NAME_GEM_MANIAC)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC EMOTE_NORMAL}"
-		"I came all the way from Saberside Town looking for precious gemstones.\l"
+		"{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC EMOTE_NORMAL}I came all the way from Saberside Town looking for precious gemstones.\l"
 		"But there's only sad, grey rocks here…"
 	), MSGBOX_AUTOCLOSE)
 	end
@@ -51,8 +50,7 @@ script SilverTunnel_2F_EventScript_Miner {
     faceplayer
     setspeaker(SP_NAME_MINER)
     msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}"
-        "Sandslash is such a good partner for Miners!\p"
+		"{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}Sandslash is such a good partner for Miners!\p"
 		"It curls into a ball and rolls into walls to break 'em, then it burrows in there with its claws.\p"
 		"Ain't that right, Sandy?"
     ))

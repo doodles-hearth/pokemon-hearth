@@ -158,10 +158,10 @@ KuraTown_House3_EventScript_Espeon_Movement_0:
 	step_end
 
 KuraTown_House3_EventScript_Lady_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL} Hello! Ah, you came for your Pokémon!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}Hello! Ah, you came for your Pokémon!$"
 
 KuraTown_House3_EventScript_Lady_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL} Sorry, I thought you were someone\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}Sorry, I thought you were someone\n"
 	.string "else.\p"
 	.string "See, this little one came to me a while\n"
 	.string "ago. There was a thunderstorm and it\l"
@@ -173,35 +173,34 @@ KuraTown_House3_EventScript_Lady_Text_1:
 	.string "Such a pretty color, too!$"
 
 KuraTown_House3_EventScript_Lady_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL} Don't worry, kitten, we'll find your\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}Don't worry, kitten, we'll find your\n"
 	.string "master eventually!$"
 
 KuraTown_House3_EventScript_Lady_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL} Sniffle… I'm going to miss him…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}Sniffle… I'm going to miss him…$"
 
 KuraTown_House3_EventScript_Lady_Text_4:
-	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL} That little lost kitten is reunited\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}That little lost kitten is reunited\n"
 	.string "with its master?\p"
 	.string "Do they look happy together?\n"
 	.string "Oh, how delightful!$"
 
 KuraTown_House3_EventScript_EspeonGoesHome_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL} What? You're saying its master is\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}What? You're saying its master is\n"
 	.string "waiting for him in Saku Village?$"
 
 KuraTown_House3_EventScript_EspeonGoesHome_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL} I'd rather not try going over there,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}I'd rather not try going over there,\n"
 	.string "folks over at Saku Village are\l"
 	.string "notoriously mean…\p"
 	.string "But I guess… I can make an effort for\n"
 	.string "this kitten here.$"
 
 KuraTown_House3_EventScript_EspeonGoesHome_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL} Good news, sweetie! You're going\n"
-	.string "home!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}Good news, sweetie! You're going home!$"
 
 KuraTown_House3_EventScript_EspeonGoesHome_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL} Sniffle… I'm going to miss that little\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_GARDENER EMOTE_NORMAL}Sniffle… I'm going to miss that little\n"
 	.string "kitten…$"
 
 KuraTown_House3_EventScript_Espeon_Text_0:

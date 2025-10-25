@@ -65,7 +65,7 @@ SilverTunnel_2F_EventScript_Tama_Text_2:
 	.string "Pokémon.$"
 
 SilverTunnel_2F_EventScript_Tama_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC EMOTE_NORMAL} I came all the way from Saberside\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC EMOTE_NORMAL}I came all the way from Saberside\n"
 	.string "Town looking for precious gemstones.\l"
 	.string "But there's only sad, grey rocks here…$"
 
@@ -84,7 +84,7 @@ SilverTunnel_2F_EventScript_Sandslash_Text_0:
 	.string "Sahaaah!$"
 
 SilverTunnel_2F_EventScript_Miner_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL} Sandslash is such a good partner for\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}Sandslash is such a good partner for\n"
 	.string "Miners!\p"
 	.string "It curls into a ball and rolls into\n"
 	.string "walls to break 'em, then it burrows in\l"

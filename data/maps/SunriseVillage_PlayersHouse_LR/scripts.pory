@@ -116,6 +116,8 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}See you around, little {STR_VAR_1}."
 		))
 		closemessage
+
+		givedecoration(DECOR_SPIKES_MAT)
 	}
 	release
 }

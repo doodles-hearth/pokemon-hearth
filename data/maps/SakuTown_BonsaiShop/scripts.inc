@@ -423,11 +423,10 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_6:
 	.string "Have fun gardening!$"
 
 SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}"
-	.string "Hello, {PLAYER}.\nThere's nothing for sale at the moment.\lGrowing bonsai takes time!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}.\nI have nothing for sale at the moment.\lGrowing bonsai takes time!$"
 
 SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL} Hello, child.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, child.\n"
 	.string "I grow and sell decorative bonsai.$"
 
 SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_1:
@@ -448,9 +447,8 @@ SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_2:
 	.string "more similar than they are different…$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}"
-	.string "Hello, child.\nI grow and sell decorative bonsai.\p"
-	.string "There's nothing for sale at the moment.\nGrowing bonsai takes time!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, child.\nI grow and sell decorative bonsai.\p"
+	.string "I have nothing for sale at the moment.\nGrowing bonsai takes time!$"
 
 SakuTown_EventScript_Man_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}I'm choosing flowers for my wife.\p"

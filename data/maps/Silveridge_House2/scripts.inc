@@ -61,13 +61,13 @@ Silveridge_House2_EventScript_Woman_Text_0:
 	.string "about rocks…$"
 
 Silveridge_House2_EventScript_Woman_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL} But honey, steel isn't a rock!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}But honey, steel isn't a rock!$"
 
 Silveridge_House2_EventScript_Woman_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}… …{FONT_SMALL}Sigh{FONT_NORMAL}…$"
 
 Silveridge_House2_EventScript_Miner_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL} The region's finest steel is found in\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}The region's finest steel is found in\n"
 	.string "the quarry near Saberside Town.\p"
 	.string "When my Makuhita is strong enough,\n"
 	.string "we'll go see it for ourselves!$"

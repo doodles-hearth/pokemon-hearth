@@ -6,6 +6,8 @@ YifuCity_House1_2F_EventScript_ChildGiveDoll::
 	lock
 	goto_if_set FLAG_RECEIVED_DOLL_FROM_CHILD, YifuCity_House1_2F_EventScript_ChildGiveDoll_2
 	goto_if_set FLAG_RECEIVED_SECRET_POWER, YifuCity_House1_2F_EventScript_ChildGiveDoll_5
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_House1_2F_EventScript_ChildGiveDoll_Movement_0
 	setspeaker SP_NAME_LITTLE_BOY
 	msgbox YifuCity_House1_2F_EventScript_ChildGiveDoll_Text_3
@@ -27,6 +29,7 @@ YifuCity_House1_2F_EventScript_ChildGiveDoll_5:
 	msgbox YifuCity_House1_2F_EventScript_ChildGiveDoll_Text_1
 	closemessage
 	givedecoration DECOR_LOTAD_DOLL
+	setflag FLAG_RECEIVED_DOLL_FROM_CHILD
 	setspeaker SP_NAME_LITTLE_BOY
 	msgbox YifuCity_House1_2F_EventScript_ChildGiveDoll_Text_2
 	closemessage
@@ -36,6 +39,8 @@ YifuCity_House1_2F_EventScript_ChildGiveDoll_5:
 YifuCity_House1_2F_EventScript_ChildStolenDoll::
 	lock
 	faceplayer
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_House1_2F_EventScript_ChildGiveDoll_Movement_0
 	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox YifuCity_House1_2F_EventScript_ChildStolenDoll_Text_0

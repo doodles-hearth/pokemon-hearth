@@ -30,6 +30,8 @@ script YifuCity_BigHouse_2F_EventScript_TradingActOfLove {
 script YifuCity_BigHouse_2F_EventScript_RunningBoy {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	setspeaker(SP_NAME_BOY)
 	msgbox(format(

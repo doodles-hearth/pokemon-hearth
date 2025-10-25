@@ -229,7 +229,7 @@ KuraTown_Dojo_EventScript_Cristian_Text_1:
 	.string "interested in bonsai, are you?$"
 
 KuraTown_Dojo_EventScript_Cristian_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL} I feel bad sometimes, not letting the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}I feel bad sometimes, not letting the\n"
 	.string "tree grow the way it wants.$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_0:
@@ -294,12 +294,12 @@ KuraTown_Dojo_EventScript_GiveTm_Text_0:
 	.string "strong as it is weather-dependent.$"
 
 KuraTown_Dojo_EventScript_Advice_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} That was a beautiful fight!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}That was a beautiful fight!\n"
 	.string "You'll blossom into an excellent\l"
 	.string "Pokémon Wielder, I can just feel it!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} Hello, young challenger, and welcome\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "Lady Hana, the Dojo Master, is an\n"
 	.string "expert in all things bonsai.\p"
@@ -315,7 +315,7 @@ KuraTown_Dojo_EventScript_Advice_Text_1:
 	.string "Maybe get an umbrella, I don't know!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} Hello, young challenger, and welcome\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "All these trees are blocking your way,\n"
 	.string "aren't they?\p"
@@ -323,7 +323,7 @@ KuraTown_Dojo_EventScript_Advice_Text_2:
 	.string "figured out a way to cut them!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} Hello, young challenger, and welcome\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "All these trees are blocking your way,\n"
 	.string "aren't they?\p"

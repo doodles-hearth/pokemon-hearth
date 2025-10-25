@@ -13,8 +13,13 @@ YifuCity_House2_Seamstress::
 	setspeaker SP_NAME_SEAMSTRESS
 	msgbox YifuCity_House2_Seamstress_Text_1
 	closemessage
+	playse SE_PIN
 	applymovement 3, YifuCity_House2_Seamstress_Movement_0
 	waitmovement 0
+	playse SE_PIN
+	applymovement 3, YifuCity_House2_Seamstress_Movement_1
+	waitmovement 0
+	setnamedmon SPECIES_TAROUNTULA
 	release
 	return
 
@@ -36,6 +41,7 @@ YifuCity_House2_Model_1:
 YifuCity_House2_Model_2:
 	msgbox YifuCity_House2_Model_Text_0
 	closemessage
+	setnamedmon SPECIES_TAROUNTULA
 	goto YifuCity_House2_Model_1
 
 
@@ -70,6 +76,9 @@ YifuCity_House2_Seamstress_Movement_0:
 	walk_right
 	face_up
 	delay_16
+	step_end
+
+YifuCity_House2_Seamstress_Movement_1:
 	jump_in_place_up
 	delay_16
 	walk_left

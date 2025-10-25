@@ -195,10 +195,18 @@ CrobatHideout_1F_EventScript_Plan::
 
 CrobatHideout_1F_EventScript_Nickit::
 	lock
-	playmoncry SPECIES_NICKIT, CRY_MODE_NORMAL
+	setseenmon SPECIES_HAPPINY
+	setspeakertomonname SPECIES_HAPPINY
+	playmoncry SPECIES_HAPPINY, CRY_MODE_NORMAL
 	msgbox CrobatHideout_1F_EventScript_Nickit_Text_0
 	waitmoncry
 	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	callnative UpdateFollowingPokemon
+	fadescreenswapbuffers FADE_FROM_BLACK
 	release
 	return
 
@@ -1307,7 +1315,7 @@ CrobatHideout_1F_EventScript_Plan_Text_0:
 	.string "“How to steal more efficiently”…$"
 
 CrobatHideout_1F_EventScript_Nickit_Text_0:
-	.string "Whewrr…$"
+	.string "Yap!$"
 
 CrobatHideout_1F_Trigger_4V1_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Dontcha take another step!$"

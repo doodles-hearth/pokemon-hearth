@@ -142,6 +142,7 @@ script YifuCity_CrobatShop_Guard {
 
 		delay(24)
 
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_angry))
 		setspeaker("Shady man")
 		msgbox(format(
@@ -150,6 +151,7 @@ script YifuCity_CrobatShop_Guard {
 		waitmovement(0)
 		closemessage
 
+		playse(SE_NOT_EFFECTIVE)
 		if (var(VAR_FACING) == DIR_NORTH) {
 			applymovement(VAR_LAST_TALKED, moves(walk_down, lock_facing_direction, walk_up, unlock_facing_direction))
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, lock_anim, jump_2_down, unlock_facing_direction, unlock_anim))
@@ -202,6 +204,7 @@ script YifuCity_CrobatShop_Guard {
 			delay(24)
 
 			if (flag(FLAG_CROBAT_PASSWORD_FIRST_HALF_CORRECT) && flag(FLAG_CROBAT_PASSWORD_SECOND_HALF_CORRECT)) {
+				playse(SE_PIN)
 				applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 				setspeaker("Shady man")
 				msgbox(format(
@@ -223,6 +226,7 @@ script YifuCity_CrobatShop_Guard {
 			} else {
 				delay(24)
 
+				playse(SE_PIN)
 				applymovement(VAR_LAST_TALKED, moves(emote_angry))
 				setspeaker("Shady man")
 				msgbox(format(
@@ -231,6 +235,7 @@ script YifuCity_CrobatShop_Guard {
 				waitmovement(0)
 				closemessage
 
+				playse(SE_NOT_EFFECTIVE)
 				if (var(VAR_FACING) == DIR_NORTH) {
 					applymovement(VAR_LAST_TALKED, moves(walk_down, lock_facing_direction, walk_up, unlock_facing_direction))
 					applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, lock_anim, jump_2_down, unlock_facing_direction, unlock_anim))
