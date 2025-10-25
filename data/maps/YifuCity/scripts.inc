@@ -13,9 +13,12 @@ YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 	goto_if_unset FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
 	compare VAR_CROBAT_HIDEOUT_STATE, 3
-	goto_if_lt YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_10
+	goto_if_lt YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_11
 	compare VAR_HOTPOT_SCENE_STATE, 2
-	goto_if_ge YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_10
+	goto_if_ge YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_11
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_10:
+	setflag FLAG_TEMP_7
+	goto_if_set FLAG_BADGE03_GET, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_16
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
@@ -30,26 +33,62 @@ YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
 	setflag FLAG_TEMP_4
 	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
 
-YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_10:
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_11:
 	setflag FLAG_TEMP_5
+	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_10
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_15:
+	setvar VAR_TEMP_0, 1
+	return
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_16:
+	goto_if_unset FLAG_DEMO_END, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_15
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_CROBAT_HIDEOUT_STATE, 3, YifuCity_EscapedCrobatHideoutWithSamurai
+	map_script_2 VAR_TEMP_0, 1, YifuCity_EventScript_DemoEnd
 	.2byte 0
+
+
+YifuCity_EventScript_DemoEnd::
+	lockall
+	setflag FLAG_DEMO_END
+	setvar VAR_TEMP_0, 0
+	applymovement LOCALID_PLAYER, YifuCity_EventScript_DemoEnd_Movement_0
+	waitmovement 0
+	playse SE_RG_BAG_POCKET
+	addobject LOCALID_DOODLE
+	clearflag FLAG_TEMP_7
+	waitse
+	delay 48
+	playse SE_PIN
+	applymovement LOCALID_PLAYER, YifuCity_EventScript_DemoEnd_Movement_1
+	applymovement LOCALID_DOODLE, YifuCity_EventScript_DemoEnd_Movement_2
+	waitmovement LOCALID_PLAYER
+	setspeaker YifuCity_EventScript_DemoEnd_Text_0
+	msgbox YifuCity_EventScript_DemoEnd_Text_1
+	closemessage
+	delay 24
+	playse SE_RG_BAG_POCKET
+	removeobject LOCALID_DOODLE
+	setflag FLAG_TEMP_7
+	waitse
+	releaseall
+	return
 
 
 YifuCity_EscapedCrobatHideoutWithSamurai::
 	lockall
 	setvar VAR_CROBAT_HIDEOUT_STATE, 4
-	applymovement 38, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	applymovement LOCALID_SAMURAI_HIDEOUT, YifuCity_EventScript_DemoEnd_Movement_2
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	setspeaker SP_NAME_SAMURAI
 	msgbox YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	closemessage
-	applymovement 38, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_2
-	waitmovement 38
-	removeobject 38
+	applymovement LOCALID_SAMURAI_HIDEOUT, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	waitmovement LOCALID_SAMURAI_HIDEOUT
+	removeobject LOCALID_SAMURAI_HIDEOUT
 	setflag FLAG_HIDE_LOCKDOWN_SAMURAI
 	releaseall
 	return
@@ -145,7 +184,7 @@ YifuCity_EventScript_Samurai2::
 
 YifuCity_EventScript_SamuraiTalkToRobberyVictim::
 	lock
-	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement 0
 	setspeaker SP_NAME_SAMURAI
 	msgbox YifuCity_EventScript_SamuraiTalkToRobberyVictim_Text_0
@@ -160,7 +199,7 @@ YifuCity_EventScript_RobberyVictim::
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_RobberyVictim_2
 	waitse
 	playse SE_PIN
-	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	applymovement VAR_LAST_TALKED, YifuCity_EventScript_DemoEnd_Movement_2
 	waitmovement 0
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
 	msgbox YifuCity_EventScript_RobberyVictim_Text_7
@@ -679,7 +718,7 @@ YifuCity_EventScript_Zubat4::
 YifuCity_Trigger_Lockdown::
 	lockall
 	goto_if_unset FLAG_TRIGGERED_LOCKDOWN, YifuCity_Trigger_Lockdown_2
-	applymovement LOCALID_LOCKDOWN_SAMURAI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	applymovement LOCALID_LOCKDOWN_SAMURAI, YifuCity_EventScript_DemoEnd_Movement_2
 	waitmovement 0
 	special GetPlayerSirMissString
 	setspeaker SP_NAME_SAMURAI
@@ -765,7 +804,7 @@ YifuCity_Trigger_CantGoThruNorth::
 	setspeaker SP_NAME_SAMURAI
 	msgbox YifuCity_Trigger_Lockdown_Text_5
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_CantGoThruNorth_Movement_1
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_EventScript_DemoEnd_Movement_0
 	waitmovement OBJ_EVENT_ID_PLAYER
 	releaseall
 	return
@@ -1486,12 +1525,12 @@ HarikoFacesPlayer_3:
 	return
 
 HarikoFacesPlayer_4:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
 	return
 
 HarikoFacesPlayer_5:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EventScript_DemoEnd_Movement_2
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
 	return
 
@@ -1515,12 +1554,12 @@ NatsukiFacesPlayer_3:
 	return
 
 NatsukiFacesPlayer_4:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
 	return
 
 NatsukiFacesPlayer_5:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EventScript_DemoEnd_Movement_2
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
 	return
 
@@ -1584,13 +1623,13 @@ NatsukiTurnsToPlayer_5:
 
 
 NatsukiFacesHariko:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
 	return
 
 
 HarikoFacesNatsuki:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EventScript_DemoEnd_Movement_2
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
 	return
 
@@ -1703,15 +1742,30 @@ YifuCity_EventScript_UumeForestTrees::
 	return
 
 
-YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0:
+YifuCity_EventScript_DemoEnd_Movement_0:
+	walk_down
+	step_end
+
+YifuCity_EventScript_DemoEnd_Movement_1:
+	emote_question_mark
+	face_left
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
+YifuCity_EventScript_DemoEnd_Movement_2:
 	walk_in_place_fast_right
 	step_end
 
-YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1:
+YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0:
 	walk_in_place_fast_left
 	step_end
 
-YifuCity_EscapedCrobatHideoutWithSamurai_Movement_2:
+YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1:
 	walk_down
 	walk_left
 	walk_left
@@ -1964,10 +2018,6 @@ YifuCity_Trigger_CantGoThruNorth_Movement_0:
 	walk_in_place_fast_down
 	step_end
 
-YifuCity_Trigger_CantGoThruNorth_Movement_1:
-	walk_down
-	step_end
-
 YifuCity_Trigger_HarikoCriminals_Movement_0:
 	face_right
 	emote_exclamation_mark
@@ -2031,6 +2081,15 @@ YifuCity_EventScript_UumeForestIllusions_Movement_0:
 YifuCity_EventScript_UumeForestTrees_Movement_0:
 	emote_heart
 	step_end
+
+YifuCity_EventScript_DemoEnd_Text_0:
+	.string "Doodle$"
+
+YifuCity_EventScript_DemoEnd_Text_1:
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_2 EMOTE_NORMAL}Well, hello, there!\nI'm Doodle.\lI'm the maker of this game!\p"
+	.string "You've reached the end of this demo,\ncongrats!!\p"
+	.string "Feel free to stroll around, but you've\nseen almost all the content by now.\p"
+	.string "I hope you liked it, and hope you'll play\nthe finished version too!\lSee ya!$"
 
 YifuCity_EscapedCrobatHideoutWithSamurai_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Well, well…\n"
@@ -2621,12 +2680,8 @@ YifuCity_EventScript_Nurse_Text_0:
 	.string "stronger its healing power becomes!$"
 
 YifuCity_EventScript_Nurse_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}I'm taking care of these Chansey\n"
-	.string "while they're not on shift.\p"
-	.string "Their body has amazing healing\n"
-	.string "virtues!\l"
-	.string "Poké Balls lined with their eggshells\l"
-	.string "heal the Pokémon they catch!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}I'm taking care of these Chansey while\nthey're not on shift.\p"
+	.string "Their body has amazing healing virtues!\nPoké Balls lined with their eggshells\lheal the Pokémon they catch!\p"
 	.string "Don't believe me? Try for yourself!$"
 
 YifuCity_EventScript_Nurse_Text_2:

@@ -384,6 +384,7 @@ const struct TrainerClass gTrainerClasses[TRAINER_CLASS_COUNT] =
     [TRAINER_CLASS_ONSEN_M] = { _("Baths Guy") },
     [TRAINER_CLASS_SHAMISEN] = { _("Blind Singer") },
     [TRAINER_CLASS_FIREBRINGER] = { _("Firebringer") },
+    [TRAINER_CLASS_SAMURAI] = { _("Samurai") },
 };
 
 static void (*const sTurnActionsFuncsTable[])(void) =

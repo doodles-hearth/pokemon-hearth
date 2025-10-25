@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_YIFU_GEISHA_1",
       "graphics_id": "OBJ_EVENT_GFX_YUTAKA",
       "x": 7,
       "y": 30,
@@ -35,6 +36,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_GEISHA_2",
       "graphics_id": "OBJ_EVENT_GFX_YUTAKA",
       "x": 9,
       "y": 30,
@@ -55,6 +57,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_GEISHA_3",
       "graphics_id": "OBJ_EVENT_GFX_YUTAKA",
       "x": 11,
       "y": 30,
@@ -75,6 +78,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_GEISHA_4",
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 34,
       "y": 30,
@@ -95,6 +99,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_GEISHA_5",
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 36,
       "y": 30,
@@ -115,6 +120,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_GEISHA_6",
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 38,
       "y": 30,
@@ -135,6 +141,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_GEISHA_7",
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 20,
       "y": 16,
@@ -155,6 +162,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_GEISHA_8",
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 22,
       "y": 16,
@@ -175,6 +183,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_GEISHA_9",
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 25,
       "y": 16,
@@ -195,6 +204,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_GEISHA_10",
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 27,
       "y": 16,

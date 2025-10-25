@@ -325,6 +325,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_ORCHARD_SCHOOLKID",
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_F",
       "x": 50,
       "y": 21,
@@ -334,7 +335,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "5",
-      "script": "WindsweptRoute_EventScript_TrainerBattleRoadblock",
+      "script": "OrchardPath_EventScript_TrainerBattleRoadblock",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,
@@ -345,6 +346,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_ORCHARD_BRELOOM",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(BRELOOM)",
       "x": 51,
       "y": 21,
@@ -354,7 +356,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "5",
-      "script": "WindsweptRoute_EventScript_TrainerBattleRoadblock",
+      "script": "OrchardPath_EventScript_TrainerBattleRoadblock",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,
@@ -365,6 +367,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_ORCHARD_NUZLEAF",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(NUZLEAF)",
       "x": 52,
       "y": 21,
@@ -374,7 +377,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "5",
-      "script": "WindsweptRoute_EventScript_TrainerBattleRoadblock",
+      "script": "OrchardPath_EventScript_TrainerBattleRoadblock",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,
@@ -385,6 +388,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_ORCHARD_NINJA_BOY",
       "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
       "x": 53,
       "y": 21,
@@ -394,7 +398,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "5",
-      "script": "WindsweptRoute_EventScript_TrainerBattleRoadblock",
+      "script": "OrchardPath_EventScript_TrainerBattleRoadblock",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,

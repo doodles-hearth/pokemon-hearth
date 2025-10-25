@@ -4,8 +4,7 @@ const FLAG_HIDE_ROBBERY_VICTIM = FLAG_TEMP_3
 const FLAG_HIDE_CITIZENS_UNSAFE_CITY = FLAG_TEMP_4
 const FLAG_HIDE_HARIKO_NATSUKI_HOTPOT = FLAG_TEMP_5
 const FLAG_HIDE_SEWERS_GRUNT = FLAG_TEMP_6
-
-const LOCALID_SAMURAI_HIDEOUT = 38
+const FLAG_HIDE_DOODLE = FLAG_TEMP_7
 
 const VAR_HOUR_OF_DAY = VAR_0x8000
 
@@ -28,10 +27,56 @@ mapscripts YifuCity_MapScripts {
 		if (var(VAR_CROBAT_HIDEOUT_STATE) < 3 || var(VAR_HOTPOT_SCENE_STATE) >= 2) {
 			setflag(FLAG_HIDE_HARIKO_NATSUKI_HOTPOT)
 		}
+
+		setflag(FLAG_HIDE_DOODLE)
+		if (flag(FLAG_BADGE03_GET) && !flag(FLAG_DEMO_END)) {
+			setvar(VAR_TEMP_0, 1)
+		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CROBAT_HIDEOUT_STATE, 3: YifuCity_EscapedCrobatHideoutWithSamurai
+        VAR_TEMP_0, 1: YifuCity_EventScript_DemoEnd
     ]
+}
+
+// TODO EVA never triggers! why?
+script YifuCity_EventScript_DemoEnd {
+	lockall
+	setflag(FLAG_DEMO_END)
+	setvar(VAR_TEMP_0, 0)
+
+	applymovement(LOCALID_PLAYER, moves(walk_down))
+	waitmovement(0)
+
+	playse(SE_RG_BAG_POCKET)
+	addobject(LOCALID_DOODLE)
+	clearflag(FLAG_HIDE_DOODLE)
+	waitse
+
+	delay(48)
+
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_question_mark, face_left, delay_16 * 6))
+	applymovement(LOCALID_DOODLE, moves(walk_in_place_fast_right))
+	waitmovement(LOCALID_PLAYER)
+
+	setspeaker("Doodle")
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_2 EMOTE_NORMAL}Well, hello, there!\nI'm Doodle.\lI'm the maker of this game!\p"
+		"You've reached the end of this demo,\ncongrats!!\p"
+		"Feel free to stroll around, but you've\nseen almost all the content by now.\p"
+		"I hope you liked it, and hope you'll play\nthe finished version too!\lSee ya!"
+	))
+	closemessage
+
+	delay(24)
+
+	playse(SE_RG_BAG_POCKET)
+	removeobject(LOCALID_DOODLE)
+	setflag(FLAG_HIDE_DOODLE)
+	waitse
+
+	releaseall	
 }
 
 script YifuCity_EscapedCrobatHideoutWithSamurai {
@@ -1784,9 +1829,9 @@ script YifuCity_EventScript_Nurse {
 			closemessage
 		} else {
 			setspeaker(SP_NAME_NURSE)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}I'm taking care of these Chansey while they're not on shift.\p"
-				"Their body has amazing healing virtues!\NPoké Balls lined with their eggshells heal the Pokémon they catch!\p"
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}I'm taking care of these Chansey while\nthey're not on shift.\p"
+				"Their body has amazing healing virtues!\nPoké Balls lined with their eggshells\lheal the Pokémon they catch!\p"
 				"Don't believe me? Try for yourself!"
 			))
 			closemessage
