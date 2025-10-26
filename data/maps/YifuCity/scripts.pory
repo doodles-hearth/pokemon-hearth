@@ -39,13 +39,12 @@ mapscripts YifuCity_MapScripts {
     ]
 }
 
-// TODO EVA never triggers! why?
 script YifuCity_EventScript_DemoEnd {
 	lockall
 	setflag(FLAG_DEMO_END)
 	setvar(VAR_TEMP_0, 0)
 
-	applymovement(LOCALID_PLAYER, moves(walk_down))
+	applymovement(LOCALID_PLAYER, moves(walk_down * 2, delay_16 * 3))
 	waitmovement(0)
 
 	playse(SE_RG_BAG_POCKET)
@@ -59,6 +58,9 @@ script YifuCity_EventScript_DemoEnd {
 	applymovement(LOCALID_PLAYER, moves(emote_question_mark, face_left, delay_16 * 6))
 	applymovement(LOCALID_DOODLE, moves(walk_in_place_fast_right))
 	waitmovement(LOCALID_PLAYER)
+
+	playbgm(MUS_VICTORY_LEAGUE, FALSE)
+	special(DoDomeConfetti)
 
 	setspeaker("Doodle")
 	msgbox((
@@ -75,6 +77,8 @@ script YifuCity_EventScript_DemoEnd {
 	removeobject(LOCALID_DOODLE)
 	setflag(FLAG_HIDE_DOODLE)
 	waitse
+
+	fadedefaultbgm
 
 	releaseall	
 }

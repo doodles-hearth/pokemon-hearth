@@ -66,6 +66,8 @@ YifuCity_EventScript_DemoEnd::
 	applymovement LOCALID_PLAYER, YifuCity_EventScript_DemoEnd_Movement_1
 	applymovement LOCALID_DOODLE, YifuCity_EventScript_DemoEnd_Movement_2
 	waitmovement LOCALID_PLAYER
+	playbgm MUS_VICTORY_LEAGUE, FALSE
+	special DoDomeConfetti
 	setspeaker YifuCity_EventScript_DemoEnd_Text_0
 	msgbox YifuCity_EventScript_DemoEnd_Text_1
 	closemessage
@@ -74,6 +76,7 @@ YifuCity_EventScript_DemoEnd::
 	removeobject LOCALID_DOODLE
 	setflag FLAG_TEMP_7
 	waitse
+	fadedefaultbgm
 	releaseall
 	return
 
@@ -804,7 +807,7 @@ YifuCity_Trigger_CantGoThruNorth::
 	setspeaker SP_NAME_SAMURAI
 	msgbox YifuCity_Trigger_Lockdown_Text_5
 	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_EventScript_DemoEnd_Movement_0
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_CantGoThruNorth_Movement_1
 	waitmovement OBJ_EVENT_ID_PLAYER
 	releaseall
 	return
@@ -1744,6 +1747,10 @@ YifuCity_EventScript_UumeForestTrees::
 
 YifuCity_EventScript_DemoEnd_Movement_0:
 	walk_down
+	walk_down
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 YifuCity_EventScript_DemoEnd_Movement_1:
@@ -2016,6 +2023,10 @@ YifuCity_Trigger_Lockdown_Movement_8:
 
 YifuCity_Trigger_CantGoThruNorth_Movement_0:
 	walk_in_place_fast_down
+	step_end
+
+YifuCity_Trigger_CantGoThruNorth_Movement_1:
+	walk_down
 	step_end
 
 YifuCity_Trigger_HarikoCriminals_Movement_0:
