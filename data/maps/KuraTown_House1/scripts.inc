@@ -192,7 +192,7 @@ KuraTown_House1_OldWoman_Text_1:
 	.string "should feel good as new.$"
 
 KuraTown_House1_OldWoman_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL} Once the ill Pokémon drinks that\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Once the ill Pokémon drinks that\n"
 	.string "medicine, it should feel right as rain.$"
 
 OldWomanRegularScript_Text_0:
@@ -222,7 +222,7 @@ OldWomanQuestScript_Text_4:
 	.string "guard.$"
 
 OldWomanQuestScript_Text_5:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL} While I can't go to Saku village\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}While I can't go to Saku village\n"
 	.string "myself, I can create an healing elixir.\p"
 	.string "I'll need an Oran Berry, a fishcake\n"
 	.string "from Maguro Harbor, and a Revival\l"

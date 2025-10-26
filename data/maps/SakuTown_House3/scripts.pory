@@ -60,6 +60,8 @@ script SakuTown_House3_EventScript_TradeMe {
                 "I'll trade you a super dope Psyduck for it!"
             )
         )
+        setnamedmon(SPECIES_PSYDUCK)
+        setnamedmon(SPECIES_HOOTHOOT)
 
         mcdialogue("Yes!", "No thanks.")
 

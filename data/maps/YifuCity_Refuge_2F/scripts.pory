@@ -238,3 +238,34 @@ script YifuCity_Refuge_2F_EventScript_Castform {
     waitmoncry
     release
 }
+
+script YifuCity_Refuge_2F_EventScript_SameRoom {
+	trainerbattle_single(
+		TRAINER_YAMATO,
+		format("{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}Hey! What are you doing in my room?"),
+		format("This is outrageous!"),
+		YifuCity_Refuge_2F_EventScript_SameRoomPostBattle
+	)
+	setspeaker(SP_NAME_OLD_MAN)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I'd complain at the lobby, but that valet seems like a bad type."
+	), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script YifuCity_Refuge_2F_EventScript_SameRoomPostBattle {
+	lockall
+
+	applymovement(LOCALID_YIFU_REFUGE_SAME_ROOM, moves(emote_pensive, delay_16 * 6))
+	waitmovement(LOCALID_YIFU_REFUGE_SAME_ROOM)
+
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}"
+		"You're saying we both got the same room?\p"
+		"Bah… I guess we're going to have to share…\p"
+		"The service here used to be cheaper and a whole lot better."
+	))
+	closemessage
+
+	releaseall
+}

@@ -359,7 +359,7 @@ SunriseVillage_Event_Boy_Text_0:
 	.string "See how fierce it looks?$"
 
 SunriseVillage_Event_Boy_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL} Hey {PLAYER}!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}Hey {PLAYER}!\n"
 	.string "You think we'll get to choose?$"
 
 SunriseVillage_Event_Woman_Text_0:

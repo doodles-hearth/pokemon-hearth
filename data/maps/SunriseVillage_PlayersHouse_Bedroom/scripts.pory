@@ -1,5 +1,4 @@
 const LOCALID_BAG = 13
-const VAR_PICKED_UP_BAG = VAR_TEMP_0
 
 mapscripts SunriseVillage_PlayersHouse_Bedroom_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
@@ -11,10 +10,11 @@ mapscripts SunriseVillage_PlayersHouse_Bedroom_MapScripts {
 		}
 	}
 	MAP_SCRIPT_ON_TRANSITION {
-		// if (flag(FLAG_SYS_QUEST_MENU_GET)) {
-		// 	setvar(VAR_PICKED_UP_BAG, 1)
-		// }
 		call(SecretBase_EventScript_SetDecorationFlags)
+		setvar(VAR_SECRET_BASE_INITIALIZED, 0)
+	}
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE {
+		map_script_2(VAR_SECRET_BASE_INITIALIZED, 0, SecretBase_EventScript_InitDecorations)
 	}
 }
 

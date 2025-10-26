@@ -258,8 +258,25 @@ SakuTown_EventScript_Karateka::
 	waitmovement 2
 	waitmoncry
 	setseenmon SPECIES_MAKUHITA
+	goto_if_set FLAG_BADGE01_GET, SakuTown_EventScript_Karateka_2
+	faceplayer
+	setspeaker SP_NAME_MAN
+	msgbox SakuTown_EventScript_Karateka_Text_3
+	closemessage
+SakuTown_EventScript_Karateka_1:
 	release
 	return
+
+SakuTown_EventScript_Karateka_2:
+	faceplayer
+	setspeaker SP_NAME_MAN
+	msgbox SakuTown_EventScript_Karateka_Text_2
+	closemessage
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, SakuTown_EventScript_Karateka_Movement_2
+	waitmovement VAR_LAST_TALKED
+	call Saku_EventScript_ForcePalmTutor
+	goto SakuTown_EventScript_Karateka_1
 
 
 SakuTown_EventScript_Guard::
@@ -656,8 +673,8 @@ SakuTown_EventScript_LoversReunite_1:
 	waitmessage
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_3
-	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_3
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_Karateka_Movement_2
+	applymovement 22, SakuTown_EventScript_Karateka_Movement_2
 	waitmovement OBJ_EVENT_ID_NPC_FOLLOWER
 	waitmovement 22
 	waitse
@@ -678,7 +695,7 @@ SakuTown_EventScript_LoversReunite_1:
 	msgbox SakuTown_EventScript_LoversReunite_Text_9
 	closemessage
 	delay 60
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_4
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_3
 	setspeaker SP_NAME_TAMA
 	msgbox SakuTown_EventScript_LoversReunite_Text_10
 	closemessage
@@ -687,19 +704,19 @@ SakuTown_EventScript_LoversReunite_1:
 	msgbox SakuTown_EventScript_LoversReunite_Text_11
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_5
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_4
 	waitmovement 0
 	waitse
 	setspeaker SP_NAME_TAMA
 	msgbox SakuTown_EventScript_LoversReunite_Text_12
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_3
-	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_3
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_Karateka_Movement_2
+	applymovement 22, SakuTown_EventScript_Karateka_Movement_2
 	waitmovement OBJ_EVENT_ID_NPC_FOLLOWER
 	waitmovement 22
 	waitse
-	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_6
+	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_5
 	waitmovement 0
 	removeobject 22
 	setflag FLAG_HIDE_DEADNIGHT_ASHII
@@ -829,6 +846,16 @@ SakuTown_EventScript_Karateka_Movement_0:
 
 SakuTown_EventScript_Karateka_Movement_1:
 	jump_in_place_down
+	step_end
+
+SakuTown_EventScript_Karateka_Movement_2:
+	emote_heart
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 SakuTown_EventScript_MonHues_Movement_0:
@@ -1036,16 +1063,6 @@ SakuTown_EventScript_LoversReunite_Movement_2:
 	step_end
 
 SakuTown_EventScript_LoversReunite_Movement_3:
-	emote_heart
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	step_end
-
-SakuTown_EventScript_LoversReunite_Movement_4:
 	face_down
 	delay_16
 	delay_16
@@ -1053,14 +1070,14 @@ SakuTown_EventScript_LoversReunite_Movement_4:
 	face_right
 	step_end
 
-SakuTown_EventScript_LoversReunite_Movement_5:
+SakuTown_EventScript_LoversReunite_Movement_4:
 	emote_exclamation_mark
 	delay_16
 	delay_16
 	delay_16
 	step_end
 
-SakuTown_EventScript_LoversReunite_Movement_6:
+SakuTown_EventScript_LoversReunite_Movement_5:
 	walk_slow_up
 	walk_slow_right
 	walk_slow_right
@@ -1175,6 +1192,16 @@ SakuTown_EventScript_Karateka_Text_0:
 SakuTown_EventScript_Karateka_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY} Mama, Kuku! Daddy loves you!!$"
 
+SakuTown_EventScript_Karateka_Text_2:
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY} Their hands are strong and forceful…$"
+
+SakuTown_EventScript_Karateka_Text_3:
+	.string "{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY} Their hands are strong and forceful…\p"
+	.string "I bet you want your Pokémon to have\n"
+	.string "strong and forceful hands, too.\p"
+	.string "Come back when you're stronger.\n"
+	.string "Once you getyour first Token!$"
+
 SakuTown_EventScript_Guard_Text_0:
 	.string "Damn, where did that Mareep come\n"
 	.string "from?!$"
@@ -1248,8 +1275,7 @@ SakuTown_EventScript_MonHues_Text_0:
 	.string "unique colors!$"
 
 SakuTown_EventScript_MonHues_Text_1:
-	.string "Doesn't noticing that make your heart\n"
-	.string "sing?$"
+	.string "Doesn't it make your heart sing?$"
 
 SakuTown_EventScript_Cherrim_Text_0:
 	.string "Weee!$"

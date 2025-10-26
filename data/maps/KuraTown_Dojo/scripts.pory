@@ -76,8 +76,7 @@ script KuraTown_Dojo_EventScript_Cristian {
 
 	setspeaker(SP_NAME_OLD_LADY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}"
-		"I feel bad sometimes, not letting the tree grow the way it wants."
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}I feel bad sometimes, not letting the tree grow the way it wants."
 	), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -105,7 +104,7 @@ script KuraTown_Dojo_EventScript_Lilith {
 
 script KuraTown_Dojo_EventScript_Hana {
 	setflag(FLAG_MET_HANA_GYM)
-	setchatotpostactive(POST_NATSUKI_RARE_CANDY)
+	trysetchatotpostactive(POST_NATSUKI_RARE_CANDY)
 
 	// Zomg, the bonsai shop owner is ALSO the dojo master?!
 	if (flag(FLAG_MET_HANA_BONSAI_SHOP)) {
@@ -131,7 +130,7 @@ script KuraTown_Dojo_EventScript_Hana {
 			(
 				"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
 				"Growing bonsai and battling with my\nPokémon are my favorite pastimes.\lWith this Dojo, I can do both!\p"
-				"A Pokémon battle can be graceful like a\nbudding flower, strong like the deepest\lroots, powerful like a windswept\lpine tree, all at once.\p"
+				"A Pokémon battle can be graceful like a\nbudding flower, strong like the\ldeepest roots, powerful like a\lwindswept pine tree, all at once.\p"
 				"Show me all the grace, strength and\npower you are capable of!"
 			),
 			format("Ho ho ho…"),
@@ -166,7 +165,7 @@ script KuraTown_Dojo_EventScript_HanaDefeated {
 	call(Common_EventScript_PlayGymBadgeFanfare)
 	setspeaker(SP_NAME_HANA)
 	msgbox(
-		format(
+		(
 			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\nCouncil challenge, you will need a Token\lfrom the region's eight Dojos.\p"
 			"Arduous task! But I feel determination\ntaking root in your heart.\p"
 			"Here, let me also give you this."
@@ -207,15 +206,13 @@ script KuraTown_Dojo_EventScript_Advice {
 	if (flag(FLAG_BADGE02_GET)) {
 		setspeaker(SP_NAME_MAN)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}"
-			"That was a beautiful fight!\nYou'll blossom into an excellent Pokémon Wielder, I can just feel it!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}That was a beautiful fight!\nYou'll blossom into an excellent Pokémon Wielder, I can just feel it!"
 		))
 	} else {
 		setspeaker(SP_NAME_MAN)
 		if (isfieldmoveunlocked(FIELD_MOVE_CUT)) {
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}"
-				"Hello, young challenger, and welcome to the Kura Village Dojo!\p"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome to the Kura Village Dojo!\p"
 				"Lady Hana, the Dojo Master, is an expert in all things bonsai.\p"
 				"She designed this place and, of course, grew these trees herself!\p"
 				"Now, pay attention: only some of these noble trees can be cut down.\p"
@@ -227,15 +224,13 @@ script KuraTown_Dojo_EventScript_Advice {
 			setspeaker(SP_NAME_MAN)
 			if (flag(FLAG_BADGE01_GET)) {
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}"
-					"Hello, young challenger, and welcome to the Kura Village Dojo!\p"
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome to the Kura Village Dojo!\p"
 					"All these trees are blocking your way, aren't they?\p"
 					"You should come back once you've figured out a way to cut them!"
 				))
 			} else {
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}"
-					"Hello, young challenger, and welcome to the Kura Village Dojo!\p"
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome to the Kura Village Dojo!\p"
 					"All these trees are blocking your way, aren't they?\p"
 					"You should come back once you've figured out a way to cut them!\p"
 					"If you're itching for a challenge, why not try your skills at the Dojo in Maguro Harbor first?\p"

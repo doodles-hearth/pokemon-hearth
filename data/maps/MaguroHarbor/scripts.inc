@@ -621,29 +621,28 @@ MaguroHarbor_EventScript_PokemonNerdSign_Text_0:
 	.string "Pokémon Nerd$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}What was that? Oh, I hope my\n"
-	.string "boyfriend's okay…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}What was that?\n"
+	.string "Oh, I hope my boyfriend's okay…$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_1:
 	.string "Lovestruck Girl$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}It's only been an hour since I saw my\n"
-	.string "love, and yet I already want tomorrow\l"
-	.string "to come just so I can see him again…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I just spent the day with my boyfriend\nfrom Kura Village, but I already want\ltonight to end to see him again!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh I'm so sorry, dearie. We haven't\n"
-	.string "opened yet. Come back later!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm so sorry, dearie.\n"
+	.string "We haven't opened yet.\l"
+	.string "Come back in a while!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Come back tomorrow if you'd like\n"
 	.string "another fishcake!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\p"
-	.string "They're the town's specialty! Only\n"
-	.string "¥500!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\n"
+	.string "They're the town's specialty!\l"
+	.string "Only ¥500!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2:
 	.string "One please!$"
@@ -658,8 +657,8 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}One fishcake, coming right up!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_6:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh dear! It appears you're a little\n"
-	.string "short on pocket money.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh dear!\n"
+	.string "You're a bit short on pocket money.$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}What's in the Fishcakes, you ask?\p"
@@ -671,8 +670,8 @@ MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0:
 	.string "Come back tomorrow!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh my! I'm sorry but we've closed shop\n"
-	.string "now, dearie.\l"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm sorry but we've closed shop now,\n"
+	.string "dearie.\l"
 	.string "Come back tomorrow!\p"
 	.string "Did you want to buy one of my\n"
 	.string "Fishcakes?\p"
@@ -692,8 +691,9 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0:
 	.string "the village!$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1:
-	.string "Aye! We're not open yet. Come back\n"
-	.string "later for the fresh catch of the day.$"
+	.string "Aye! We're not open yet.\p"
+	.string "Come back later for the fresh catch\n"
+	.string "of the day.$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0:
 	.string "Fresh fish! Come get yer fish!\p"

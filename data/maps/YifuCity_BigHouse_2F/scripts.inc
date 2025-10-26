@@ -24,6 +24,8 @@ YifuCity_BigHouse_2F_EventScript_TradingActOfLove::
 YifuCity_BigHouse_2F_EventScript_RunningBoy::
 	lock
 	faceplayer
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_BigHouse_2F_EventScript_RunningBoy_Movement_0
 	setspeaker SP_NAME_BOY
 	msgbox YifuCity_BigHouse_2F_EventScript_RunningBoy_Text_0

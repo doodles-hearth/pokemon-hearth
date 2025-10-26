@@ -408,28 +408,30 @@ script WhiteslateRoute_Trigger_SecretBase {
 			setspeaker(SP_NAME_MAN)
 			msgbox(format(
 				"Alright, you seem interested, so I'll let you in on the secret!\p"
-				"I taught my Grovyle a secret technique to open passages to hidden natural caves!\p"
-				"Not only that! Trees with low-hanging vines, bushes…"
+				"My Grovyle knows a technique to open passages to hidden natural caves!\p"
+				"Not only that! Trees with low-hanging vines, bushes…\p"
 				"Those kinds of places are perfect to build a secret base!\p"
-				"I wrote this technique down just in case. Here, now you can teach your Pokémon too!"
+				"I wrote the technique down just in case. Here, teach your Pokémon too!"
 			))
 		case 1:
 			setspeaker(SP_NAME_MAN)
 			msgbox(format(
-				"Ah, it's alright. You seem like a good kid. I'm sure you have what it takes to become a secret base master. I'll let you in on the secret!\p"
-				"I taught my Grovyle a secret technique to open passages to hidden natural caves!\p"
-				"Not only that! Trees with low-hanging vines, bushes…"
+				"Ah, it's alright.\nYou seem like a good kid.\p"
+				"I'm sure you have what it takes to become a secret base master.\p"
+				"I'll let you in on the secret!\p"
+				"My Grovyle knows a technique to open passages to hidden natural caves!\p"
+				"Not only that! Trees with low-hanging vines, bushes…\p"
 				"That kind of place is perfect to build a secret base!\p"
-				"I wrote this technique down just in case. Here, now you can teach your Pokémon too!"
+				"I wrote the technique down just in case. Here, teach your Pokémon too!"
 			))
 		case 2:
 			setspeaker(SP_NAME_MAN)
 			msgbox(format(
-				"Of course not, this is perfectly legal! You know what? I'll let you in on the secret!\p"
-				"I taught my Grovyle a secret technique to open passages to hidden natural caves!\p"
-				"Not only that! Trees with low-hanging vines, bushes…"
+				"Of course not, this is perfectly legal! You know what?\lI'll let you in on the secret!\p"
+				"My Grovyle knows a technique to open passages to hidden natural caves!\p"
+				"Not only that! Trees with low-hanging vines, bushes…\p"
 				"That kind of place is perfect to build a secret base!\p"
-				"I wrote this technique down just in case. Here, now you can teach your Pokémon too!"
+				"I wrote the technique down just in case. Here, teach your Pokémon too!"
 			))
 	}
 	closemessage
@@ -457,7 +459,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 	}
 
 	playse(SE_M_ROCK_THROW)
-	setmetatile(26, 34, METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntrance, TRUE)
+	setmetatile(26, 34, METATILE_PorytilesPrimaryTutorial_SecretBaseCaveIndentBrown, TRUE)
 	special(DrawWholeMapView)
 	waitse
 

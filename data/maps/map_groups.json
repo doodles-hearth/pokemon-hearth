@@ -67,7 +67,8 @@
     "YifuCity",
     "FlowergrassPlateau",
     "WindsweptRouteBottom",
-    "SakuTown_BufferArea"
+    "SakuTown_BufferArea",
+    "YifuCity_BufferArea"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "SunriseVillage_PlayersHouse_LR",

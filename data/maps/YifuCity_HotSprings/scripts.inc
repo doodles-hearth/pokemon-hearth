@@ -60,20 +60,8 @@ YifuCity_HotSprings_EventScript_Torkoal::
 	msgbox YifuCity_HotSprings_EventScript_Torkoal_Text_0
 	waitmoncry
 	closemessage
-	goto_if_unset FLAG_GOT_CHARCOAL, YifuCity_HotSprings_EventScript_Torkoal_2
-YifuCity_HotSprings_EventScript_Torkoal_1:
 	release
 	return
-
-YifuCity_HotSprings_EventScript_Torkoal_2:
-	playse SE_PIN
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_HotSprings_EventScript_Torkoal_Movement_0
-	waitmovement 0
-	msgbox YifuCity_HotSprings_EventScript_Torkoal_Text_1
-	giveitem ITEM_CHARCOAL
-	setflag FLAG_GOT_CHARCOAL
-	closemessage
-	goto YifuCity_HotSprings_EventScript_Torkoal_1
 
 
 YifuCity_HotSprings_EventScript_Slowpoke::
@@ -89,22 +77,28 @@ YifuCity_HotSprings_EventScript_Slowpoke::
 	return
 
 
+YifuCity_Onsen_EventScript_Leave::
+	lock
+	setspeaker SP_NAME_OWNER
+	msgbox YifuCity_Onsen_EventScript_Leave_Text_0
+	mcdialogue YifuCity_Onsen_EventScript_Leave_Text_1, YifuCity_Onsen_EventScript_Leave_Text_2
+	compare VAR_RESULT, 0
+	goto_if_eq YifuCity_Onsen_EventScript_Leave_2
+YifuCity_Onsen_EventScript_Leave_1:
+	release
+	return
+
+YifuCity_Onsen_EventScript_Leave_2:
+	warp MAP_YIFU_CITY_ONSEN, 1
+	goto YifuCity_Onsen_EventScript_Leave_1
+
+
 YifuCity_HotSprings_EventScript_OldWoman2_Movement_0:
 	emote_music
 	step_end
 
 YifuCity_HotSprings_EventScript_HotSpringF_Movement_0:
 	emote_sweat
-	step_end
-
-YifuCity_HotSprings_EventScript_Torkoal_Movement_0:
-	emote_exclamation_mark
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
-	delay_16
 	step_end
 
 YifuCity_HotSprings_EventScript_Slowpoke_Movement_0:
@@ -126,14 +120,14 @@ YifuCity_HotSprings_EventScript_OldWoman2_Text_0:
 	.string "this old skin…$"
 
 YifuCity_HotSprings_EventScript_HotSpringM_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}I come here to relax and show off my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_M EMOTE_NORMAL}I come here to relax and show off my\n"
 	.string "hot bod!$"
 
 YifuCity_HotSprings_EventScript_HotSpringM_Text_1:
 	.string "I take it you're not impressed?$"
 
 YifuCity_HotSprings_EventScript_HotSpringM_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}I wonder why girls never want to talk\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_M EMOTE_NORMAL}I wonder why girls never want to talk\n"
 	.string "to me…$"
 
 YifuCity_HotSprings_EventScript_HotSpringF_Text_0:
@@ -161,10 +155,15 @@ YifuCity_HotSprings_EventScript_Firebringer_Text_2:
 YifuCity_HotSprings_EventScript_Torkoal_Text_0:
 	.string "Pschhhhhh…$"
 
-YifuCity_HotSprings_EventScript_Torkoal_Text_1:
-	.string "… …Oh?\p"
-	.string "A black bit of something peeled off\n"
-	.string "the Pokémon's shell!$"
-
 YifuCity_HotSprings_EventScript_Slowpoke_Text_0:
 	.string "Sloooo…$"
+
+YifuCity_Onsen_EventScript_Leave_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Feeling relaxed enough?\n"
+	.string "Any exit is permanent!$"
+
+YifuCity_Onsen_EventScript_Leave_Text_1:
+	.string "I want to leave!$"
+
+YifuCity_Onsen_EventScript_Leave_Text_2:
+	.string "I'm staying.$"

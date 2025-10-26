@@ -185,8 +185,7 @@ script SunriseVillage_Event_Boy {
     }
     else {
         msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}"
-            "Hey {PLAYER}!\nYou think we'll get to choose?"
+            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}Hey {PLAYER}!\nYou think we'll get to choose?"
         ))
         closemessage
     }

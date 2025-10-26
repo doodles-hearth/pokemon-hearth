@@ -305,7 +305,7 @@ WhiteslateRoute_Trigger_SecretBase_6:
 	case 27, WhiteslateRoute_Trigger_SecretBase_15
 WhiteslateRoute_Trigger_SecretBase_11:
 	playse SE_M_ROCK_THROW
-	setmetatile 26, 34, METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntrance, TRUE
+	setmetatile 26, 34, METATILE_PorytilesPrimaryTutorial_SecretBaseCaveIndentBrown, TRUE
 	special DrawWholeMapView
 	waitse
 	switch VAR_TEMP_0
@@ -745,44 +745,42 @@ WhiteslateRoute_Trigger_SecretBase_Text_5:
 WhiteslateRoute_Trigger_SecretBase_Text_6:
 	.string "Alright, you seem interested, so I'll\n"
 	.string "let you in on the secret!\p"
-	.string "I taught my Grovyle a secret\n"
-	.string "technique to open passages to hidden\l"
-	.string "natural caves!\p"
+	.string "My Grovyle knows a technique to open\n"
+	.string "passages to hidden natural caves!\p"
 	.string "Not only that! Trees with low-hanging\n"
-	.string "vines, bushes… Those kinds of places\l"
-	.string "are perfect to build a secret base!\p"
-	.string "I wrote this technique down just in\n"
-	.string "case. Here, now you can teach your\l"
-	.string "Pokémon too!$"
+	.string "vines, bushes…\p"
+	.string "Those kinds of places are perfect to\n"
+	.string "build a secret base!\p"
+	.string "I wrote the technique down just in\n"
+	.string "case. Here, teach your Pokémon too!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_7:
-	.string "Ah, it's alright. You seem like a good\n"
-	.string "kid. I'm sure you have what it takes\l"
-	.string "to become a secret base master. I'll\l"
-	.string "let you in on the secret!\p"
-	.string "I taught my Grovyle a secret\n"
-	.string "technique to open passages to hidden\l"
-	.string "natural caves!\p"
+	.string "Ah, it's alright.\n"
+	.string "You seem like a good kid.\p"
+	.string "I'm sure you have what it takes to\n"
+	.string "become a secret base master.\p"
+	.string "I'll let you in on the secret!\p"
+	.string "My Grovyle knows a technique to open\n"
+	.string "passages to hidden natural caves!\p"
 	.string "Not only that! Trees with low-hanging\n"
-	.string "vines, bushes… That kind of place is\l"
-	.string "perfect to build a secret base!\p"
-	.string "I wrote this technique down just in\n"
-	.string "case. Here, now you can teach your\l"
-	.string "Pokémon too!$"
+	.string "vines, bushes…\p"
+	.string "That kind of place is perfect to build\n"
+	.string "a secret base!\p"
+	.string "I wrote the technique down just in\n"
+	.string "case. Here, teach your Pokémon too!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_8:
 	.string "Of course not, this is perfectly\n"
-	.string "legal! You know what? I'll let you in\l"
-	.string "on the secret!\p"
-	.string "I taught my Grovyle a secret\n"
-	.string "technique to open passages to hidden\l"
-	.string "natural caves!\p"
+	.string "legal! You know what?\l"
+	.string "I'll let you in on the secret!\p"
+	.string "My Grovyle knows a technique to open\n"
+	.string "passages to hidden natural caves!\p"
 	.string "Not only that! Trees with low-hanging\n"
-	.string "vines, bushes… That kind of place is\l"
-	.string "perfect to build a secret base!\p"
-	.string "I wrote this technique down just in\n"
-	.string "case. Here, now you can teach your\l"
-	.string "Pokémon too!$"
+	.string "vines, bushes…\p"
+	.string "That kind of place is perfect to build\n"
+	.string "a secret base!\p"
+	.string "I wrote the technique down just in\n"
+	.string "case. Here, teach your Pokémon too!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_9:
 	.string "I'll keep looking for the perfect\n"

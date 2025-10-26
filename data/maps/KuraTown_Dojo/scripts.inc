@@ -69,7 +69,7 @@ KuraTown_Dojo_EventScript_Lilith_2:
 
 KuraTown_Dojo_EventScript_Hana::
 	setflag FLAG_MET_HANA_GYM
-	setchatotpostactive POST_NATSUKI_RARE_CANDY
+	trysetchatotpostactive POST_NATSUKI_RARE_CANDY
 	goto_if_set FLAG_MET_HANA_BONSAI_SHOP, KuraTown_Dojo_EventScript_Hana_2
 	setspeaker SP_NAME_HANA
 	trainerbattle_single TRAINER_HANA_1, KuraTown_Dojo_EventScript_Hana_Text_2, KuraTown_Dojo_EventScript_Hana_Text_1, KuraTown_Dojo_EventScript_HanaDefeated, NO_MUSIC
@@ -229,7 +229,7 @@ KuraTown_Dojo_EventScript_Cristian_Text_1:
 	.string "interested in bonsai, are you?$"
 
 KuraTown_Dojo_EventScript_Cristian_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL} I feel bad sometimes, not letting the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}I feel bad sometimes, not letting the\n"
 	.string "tree grow the way it wants.$"
 
 KuraTown_Dojo_EventScript_Lilith_Text_0:
@@ -270,7 +270,7 @@ KuraTown_Dojo_EventScript_Hana_Text_1:
 KuraTown_Dojo_EventScript_Hana_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
 	.string "Growing bonsai and battling with my\nPokémon are my favorite pastimes.\lWith this Dojo, I can do both!\p"
-	.string "A Pokémon battle can be graceful like a\nbudding flower, strong like the deepest\lroots, powerful like a windswept\lpine tree, all at once.\p"
+	.string "A Pokémon battle can be graceful like a\nbudding flower, strong like the\ldeepest roots, powerful like a\lwindswept pine tree, all at once.\p"
 	.string "Show me all the grace, strength and\npower you are capable of!$"
 
 KuraTown_Dojo_EventScript_Hana_Text_3:
@@ -284,13 +284,8 @@ KuraTown_Dojo_EventScript_HanaDefeated_Text_0:
 	.string "from Hana.$"
 
 KuraTown_Dojo_EventScript_HanaDefeated_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\n"
-	.string "Council challenge, you will need a\l"
-	.string "Token\l"
-	.string "from the region's eight Dojos.\p"
-	.string "Arduous task! But I feel\n"
-	.string "determination\n"
-	.string "taking root in your heart.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\nCouncil challenge, you will need a Token\lfrom the region's eight Dojos.\p"
+	.string "Arduous task! But I feel determination\ntaking root in your heart.\p"
 	.string "Here, let me also give you this.$"
 
 KuraTown_Dojo_EventScript_GiveTm_Text_0:
@@ -299,12 +294,12 @@ KuraTown_Dojo_EventScript_GiveTm_Text_0:
 	.string "strong as it is weather-dependent.$"
 
 KuraTown_Dojo_EventScript_Advice_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} That was a beautiful fight!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}That was a beautiful fight!\n"
 	.string "You'll blossom into an excellent\l"
 	.string "Pokémon Wielder, I can just feel it!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} Hello, young challenger, and welcome\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "Lady Hana, the Dojo Master, is an\n"
 	.string "expert in all things bonsai.\p"
@@ -320,7 +315,7 @@ KuraTown_Dojo_EventScript_Advice_Text_1:
 	.string "Maybe get an umbrella, I don't know!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} Hello, young challenger, and welcome\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "All these trees are blocking your way,\n"
 	.string "aren't they?\p"
@@ -328,7 +323,7 @@ KuraTown_Dojo_EventScript_Advice_Text_2:
 	.string "figured out a way to cut them!$"
 
 KuraTown_Dojo_EventScript_Advice_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL} Hello, young challenger, and welcome\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\n"
 	.string "to the Kura Village Dojo!\p"
 	.string "All these trees are blocking your way,\n"
 	.string "aren't they?\p"

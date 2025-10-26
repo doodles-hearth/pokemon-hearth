@@ -81,15 +81,14 @@ Silveridge_House1_EventScript_Man_2:
 
 
 Silveridge_House1_EventScript_Woman_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL} I wonder where my daughter is at.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}I wonder where my daughter is at.\n"
 	.string "I bet the Firebringers are in town.$"
 
 Silveridge_House1_EventScript_Woman_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}You came all the way from Kura Village?\nYou have good legs!$"
 
 Silveridge_House1_EventScript_FirebringerFangirl_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}"
-	.string "It gets pretty cold here when the\nwind blows strong into the valley.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}It gets pretty cold here when the\nwind blows strong into the valley.\p"
 	.string "I don't know what we would do\nwithout those brave Firebringers.\p"
 	.string "They carry live Slugma on their back all\nthe way down from Mt Kazan to here!\p"
 	.string "Slugma cools and hardens up fast, so\nthey basically run the whole way down!\lI could never!\p"
@@ -99,16 +98,14 @@ Silveridge_House1_EventScript_Sandslash_Text_0:
 	.string "Sahaaah!$"
 
 Silveridge_House1_EventScript_Man_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL} You think some Pokémon prefer to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}You think some Pokémon prefer to\n"
 	.string "remain small forever?$"
 
 Silveridge_House1_EventScript_Man_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}"
-	.string "My job is to mine ore in Silver Tunnel,\nall day long.\lI love it!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}My job is to mine ore in Silver Tunnel,\nall day long.\lI love it!\p"
 	.string "Wouldn't trade it for the world.\nI'm fine being a simple miner forever.\p"
 	.string "Speaking of… I often find interesting\nrocks in there.\lLook at this!$"
 
 Silveridge_House1_EventScript_Man_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}"
-	.string "Apparently as long as a Pokémon holds\non to this stone, it'll stop growing.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}Apparently as long as a Pokémon holds\non to this stone, it'll stop growing.\p"
 	.string "Sandy here is already fully grown,\nso I don't need it.$"

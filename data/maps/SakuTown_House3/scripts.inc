@@ -45,6 +45,8 @@ SakuTown_House3_EventScript_TradeMe::
 	copyvar VAR_0x8009, VAR_RESULT
 	setspeaker SP_NAME_LITTLE_BOY
 	msgbox SakuTown_House3_EventScript_TradeMe_Text_1
+	setnamedmon SPECIES_PSYDUCK
+	setnamedmon SPECIES_HOOTHOOT
 	mcdialogue SakuTown_House3_EventScript_TradeMe_Text_2, SakuTown_House3_EventScript_TradeMe_Text_3
 	compare VAR_RESULT, 0
 	goto_if_ne SakuTown_House3_EventScript_TradeMe_5

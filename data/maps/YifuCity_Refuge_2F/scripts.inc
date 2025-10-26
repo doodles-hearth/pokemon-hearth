@@ -201,12 +201,39 @@ YifuCity_Refuge_2F_EventScript_Castform::
 	return
 
 
+YifuCity_Refuge_2F_EventScript_SameRoom::
+	trainerbattle_single TRAINER_YAMATO, YifuCity_Refuge_2F_EventScript_SameRoom_Text_0, YifuCity_Refuge_2F_EventScript_SameRoom_Text_1, YifuCity_Refuge_2F_EventScript_SameRoomPostBattle
+	setspeaker SP_NAME_OLD_MAN
+	msgbox YifuCity_Refuge_2F_EventScript_SameRoom_Text_2, MSGBOX_AUTOCLOSE
+	end
+
+
+YifuCity_Refuge_2F_EventScript_SameRoomPostBattle::
+	lockall
+	applymovement LOCALID_YIFU_REFUGE_SAME_ROOM, YifuCity_Refuge_2F_EventScript_SameRoomPostBattle_Movement_0
+	waitmovement LOCALID_YIFU_REFUGE_SAME_ROOM
+	msgbox YifuCity_Refuge_2F_EventScript_SameRoomPostBattle_Text_0
+	closemessage
+	releaseall
+	return
+
+
 YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0:
 	emote_happy
 	step_end
 
 YifuCity_Refuge_2F_EventScript_TouristGirl_Movement_0:
 	emote_angry
+	step_end
+
+YifuCity_Refuge_2F_EventScript_SameRoomPostBattle_Movement_0:
+	emote_pensive
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 YifuCity_Refuge_2F_EventScript_Sleep_Text_0:
@@ -281,3 +308,21 @@ YifuCity_Refuge_2F_EventScript_TouristGirl_Text_0:
 
 YifuCity_Refuge_2F_EventScript_Castform_Text_0:
 	.string "Blrblblbl…$"
+
+YifuCity_Refuge_2F_EventScript_SameRoom_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}Hey! What are you doing in my room?$"
+
+YifuCity_Refuge_2F_EventScript_SameRoom_Text_1:
+	.string "This is outrageous!$"
+
+YifuCity_Refuge_2F_EventScript_SameRoom_Text_2:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I'd complain at the lobby, but that\n"
+	.string "valet seems like a bad type.$"
+
+YifuCity_Refuge_2F_EventScript_SameRoomPostBattle_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN} You're saying we both got the same\n"
+	.string "room?\p"
+	.string "Bah… I guess we're going to have to\n"
+	.string "share…\p"
+	.string "The service here used to be cheaper\n"
+	.string "and a whole lot better.$"

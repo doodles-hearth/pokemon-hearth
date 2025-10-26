@@ -11,15 +11,20 @@ script YifuCity_House4_EventScript_NameRater {
 		"{FONT_SMALL}Or was that the eyes? Bah…{FONT_NORMAL}\p"
 		"I have been told I have a way\nwith names.\p"
 		"Young Wielder… Would you like me to counsel you on the naming of your Pokémon?"
-	), MSGBOX_YESNO)
-	if (var(VAR_RESULT) == YES) {
+	))
+	mcdialogue(
+		"Counsel me!",
+		"No thanks."
+	)
+
+	if (var(VAR_RESULT) == 0) {
 		setspeaker(SP_NAME_NAME_RATER)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Which Pokémon should receive my attention?"
 		))
 		special(ChoosePartyMon)
 		waitstate
-		if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+		if (var(VAR_0x8004) != PARTY_NOTHING_CHOSEN) {
 			specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
 			if (var(VAR_RESULT) == SPECIES_EGG) {
 				setspeaker(SP_NAME_NAME_RATER)
@@ -48,9 +53,9 @@ script YifuCity_House4_EventScript_NameRater {
 						setspeaker(SP_NAME_NAME_RATER)
 						msgbox(format(
 							"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}{STR_VAR_1}…\nI see what you were going for…\p"
-							"{FONT_SMALL}Yikes…{FONT_NORMAL}"
+							"{FONT_SMALL}Yikes…{FONT_NORMAL}\p"
 							"But I don't see this Pokémon's soul in this name…\p"
-							"Are you inspired to bestow a new name on it?\p"
+							"Are you inspired to bestow a new name on it?\l"
 							"Go ahead! Speak from your heart!"
 						))
 						call(Common_EventScript_NameReceivedPartyMon)
@@ -61,7 +66,7 @@ script YifuCity_House4_EventScript_NameRater {
 							msgbox(format(
 								"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}{STR_VAR_1}… I see…\nThis name rings with truth!\p"
 								"Look… Your Pokémon seems happy about its new name!\p"
-								"Goodbye! May wisdom guide your steps!\p"
+								"Goodbye!\nMay wisdom guide your steps!\l"
 								"{FONT_SMALL}Bah! I should charge for this…{FONT_NORMAL}"
 							))
 						} else {

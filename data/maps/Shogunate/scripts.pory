@@ -37,6 +37,13 @@ script Shogunate_EventScript_Shuppet {
 
 	fadescreenswapbuffers(FADE_TO_BLACK)
 	setflag(FLAG_HIDE_SHUPPET)
+	removeobject(LOCALID_PALACE_SHUPPET_1)
+	removeobject(LOCALID_PALACE_SHUPPET_2)
+	removeobject(LOCALID_PALACE_SHUPPET_3)
+	removeobject(LOCALID_PALACE_SHUPPET_4)
+	removeobject(LOCALID_PALACE_SHUPPET_5)
+	removeobject(LOCALID_PALACE_SHUPPET_6)
+	removeobject(LOCALID_PALACE_SHUPPET_7)
 	fadescreenswapbuffers(FADE_FROM_BLACK)
 
 	release

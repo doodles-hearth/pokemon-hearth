@@ -399,6 +399,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_REFUGE_FAKE_VALET",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 2,
       "y": 2,

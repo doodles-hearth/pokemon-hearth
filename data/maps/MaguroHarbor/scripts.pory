@@ -63,12 +63,12 @@ script MaguroHarbor_EventScript_LovestruckGirl {
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		setspeaker(SP_NAME_GIRL)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}What was that? Oh, I hope my boyfriend's okay…"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}What was that?\nOh, I hope my boyfriend's okay…"
 		), MSGBOX_DEFAULT)
 	} else {
 		setspeaker("Lovestruck Girl")
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}It's only been an hour since I saw my love, and yet I already want tomorrow to come just so I can see him again…"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I just spent the day with my boyfriend\nfrom Kura Village, but I already want\ltonight to end to see him again!"
 		), MSGBOX_DEFAULT)
 	}
 	release
@@ -95,7 +95,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSettingUp {
 	
 	setspeaker(SP_NAME_OLD_LADY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh I'm so sorry, dearie. We haven't opened yet. Come back later!"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm so sorry, dearie.\nWe haven't opened yet.\lCome back in a while!"
 	), MSGBOX_DEFAULT)
 
 	closemessage
@@ -113,8 +113,8 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 	} else {
 		setspeaker(SP_NAME_OLD_LADY)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\p"
-			"They're the town's specialty! Only ¥500!"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\n"
+			"They're the town's specialty!\lOnly ¥500!"
 		), MSGBOX_DEFAULT)
 
 		showmoneybox(18, 0)
@@ -143,7 +143,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 				} else {
 					setspeaker(SP_NAME_OLD_LADY)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh dear! It appears you're a little short on pocket money."
+						"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh dear!\nYou're a bit short on pocket money."
 					))
 					closemessage
 					hidemoneybox
@@ -177,7 +177,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanClosingUp {
 	} else {
 		setspeaker(SP_NAME_OLD_LADY)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh my! I'm sorry but we've closed shop now, dearie.\l"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm sorry but we've closed shop now, dearie.\l"
 			"Come back tomorrow!\p"
 			"Did you want to buy one of my Fishcakes?\p"
 			"Here, you can have the leftovers from today!"
@@ -227,7 +227,8 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp {
 		), MSGBOX_DEFAULT)
 	} else {
 		msgbox(format(
-			"Aye! We're not open yet. Come back later for the fresh catch of the day."
+			"Aye! We're not open yet.\p"
+			"Come back later for the fresh catch of the day."
 		), MSGBOX_DEFAULT)
 	}
 

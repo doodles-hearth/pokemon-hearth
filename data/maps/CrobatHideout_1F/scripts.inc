@@ -195,10 +195,18 @@ CrobatHideout_1F_EventScript_Plan::
 
 CrobatHideout_1F_EventScript_Nickit::
 	lock
-	playmoncry SPECIES_NICKIT, CRY_MODE_NORMAL
+	setseenmon SPECIES_HAPPINY
+	setspeakertomonname SPECIES_HAPPINY
+	playmoncry SPECIES_HAPPINY, CRY_MODE_NORMAL
 	msgbox CrobatHideout_1F_EventScript_Nickit_Text_0
 	waitmoncry
 	closemessage
+	fadescreenswapbuffers FADE_TO_BLACK
+	playfanfare MUS_HEAL
+	waitfanfare
+	special HealPlayerParty
+	callnative UpdateFollowingPokemon
+	fadescreenswapbuffers FADE_FROM_BLACK
 	release
 	return
 
@@ -259,6 +267,7 @@ CrobatHideout_1F_Trigger_4V1::
 	waitmovement 16
 	setspeaker SP_NAME_ZUBAT_GRUNT
 	msgbox CrobatHideout_1F_Trigger_4V1_Text_1
+	closemessage
 	addobject 14
 	applymovement 14, CrobatHideout_1F_Trigger_4V1_Movement_3
 	waitmovement 14
@@ -364,13 +373,15 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	applymovement 9, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 9
+	playse SE_PIN
+	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_3
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_1
 	closemessage
 	delay 48
 	playse SE_LEDGE
-	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_3
-	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
+	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
+	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_2
 	closemessage
@@ -380,17 +391,19 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	applymovement 8, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	applymovement 6, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	applymovement 17, CrobatHideout_1F_Trigger_4V1_Movement_4
-	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
+	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_6
+	playse SE_PIN
+	applymovement 14, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_3
 	setspeaker SP_NAME_SAMURAI
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_3
 	closemessage
 	applymovement 9, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 9
-	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
+	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
 	applymovement 8, CrobatHideout_1F_Trigger_4V1_Movement_4
 	applymovement 6, CrobatHideout_1F_Trigger_4V1_Movement_4
-	applymovement 17, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
-	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
+	applymovement 17, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
+	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_4
 	closemessage
@@ -403,45 +416,47 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_5
 	closemessage
 	playse SE_PIN
-	applymovement 8, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_6
-	applymovement 6, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_7
+	applymovement 8, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_7
+	applymovement 6, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_8
 	waitmovement 0
+	playse SE_PIN
+	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_3
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_6
 	closemessage
 	playse SE_LEDGE
-	applymovement 14, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_8
+	applymovement 14, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_9
 	waitmovement 14
 	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	applymovement 8, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	applymovement 6, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	applymovement 17, CrobatHideout_1F_Trigger_4V1_Movement_4
-	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
+	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_6
 	setspeaker SP_NAME_SAMURAI
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_7
 	closemessage
 	playse SE_LEDGE
-	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_3
-	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
+	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
+	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
 	applymovement 8, CrobatHideout_1F_Trigger_4V1_Movement_4
 	applymovement 6, CrobatHideout_1F_Trigger_4V1_Movement_4
-	applymovement 17, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
-	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
+	applymovement 17, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
+	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_8
 	closemessage
 	addobject 13
 	addobject 19
-	applymovement 13, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_9
-	applymovement 19, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_9
+	applymovement 13, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_10
+	applymovement 19, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_10
 	waitmovement 0
 	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	applymovement 8, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	applymovement 6, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	applymovement 17, CrobatHideout_1F_Trigger_4V1_Movement_4
-	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
+	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_6
 	playse SE_PIN
-	applymovement 14, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_10
+	applymovement 14, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_11
 	applymovement OBJ_EVENT_ID_PLAYER, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	waitmovement 14
 	applymovement 9, CrobatHideout_1F_SamuraiOffersHelp_Movement_2
@@ -450,14 +465,14 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_9
 	closemessage
 	playse SE_LEDGE
-	applymovement 13, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_8
-	applymovement 19, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_8
+	applymovement 13, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_9
+	applymovement 19, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_9
 	waitmovement 0
 	setspeaker CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_10
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_11
 	closemessage
-	applymovement 14, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
-	applymovement OBJ_EVENT_ID_PLAYER, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
+	applymovement 14, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
+	applymovement OBJ_EVENT_ID_PLAYER, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5
 	waitmovement 0
 	applymovement 9, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 9
@@ -465,14 +480,14 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_12
 	closemessage
 	playse SE_LEDGE
-	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_3
+	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_13
 	closemessage
-	applymovement 6, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_11
-	applymovement 8, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_11
-	applymovement 17, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_12
-	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_13
+	applymovement 6, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_12
+	applymovement 8, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_12
+	applymovement 17, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_13
+	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_14
 	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2
 	waitmovement 6
 	waitmovement 8
@@ -480,15 +495,15 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai::
 	waitmovement 18
 	delay 48
 	playse SE_PIN
-	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_14
-	waitmovement 0
-	applymovement 6, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_15
-	applymovement 8, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_15
-	applymovement 17, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_15
-	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_15
 	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_15
 	waitmovement 0
-	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_16
+	applymovement 6, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_16
+	applymovement 8, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_16
+	applymovement 17, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_16
+	applymovement 18, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_16
+	applymovement 7, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_16
+	waitmovement 0
+	applymovement 9, CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_17
 	playse SE_M_DIVE
 	fadescreenswapbuffers FADE_TO_WHITE
 	setweather WEATHER_FOG_HORIZONTAL
@@ -919,35 +934,26 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_2:
 	step_end
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_3:
-	jump_in_place_down
+	emote_angry
 	step_end
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_4:
-	face_up
+	jump_in_place_down
 	step_end
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_5:
-	face_left
+	face_up
 	step_end
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_6:
-	emote_exclamation_mark
-	delay_16
-	delay_16
-	face_right
-	delay_16
-	delay_16
-	face_right
-	delay_16
-	delay_16
-	delay_16
+	face_left
 	step_end
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_7:
 	emote_exclamation_mark
 	delay_16
 	delay_16
-	face_left
+	face_right
 	delay_16
 	delay_16
 	face_right
@@ -957,15 +963,28 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_7:
 	step_end
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_8:
-	jump_in_place_up
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	face_left
+	delay_16
+	delay_16
+	face_right
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_9:
+	jump_in_place_up
+	step_end
+
+CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_10:
 	walk_up
 	walk_up
 	step_end
 
-CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_10:
+CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_11:
 	emote_exclamation_mark
 	face_down
 	delay_16
@@ -973,22 +992,22 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_10:
 	delay_16
 	step_end
 
-CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_11:
-	walk_right
-	walk_right
-	face_down
-	step_end
-
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_12:
-	walk_up
-	walk_up
-	walk_up
 	walk_right
 	walk_right
 	face_down
 	step_end
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_13:
+	walk_up
+	walk_up
+	walk_up
+	walk_right
+	walk_right
+	face_down
+	step_end
+
+CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_14:
 	walk_right
 	walk_right
 	walk_up
@@ -997,7 +1016,7 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_13:
 	face_down
 	step_end
 
-CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_14:
+CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_15:
 	face_up
 	emote_exclamation_mark
 	delay_16
@@ -1013,13 +1032,13 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_14:
 	delay_16
 	step_end
 
-CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_15:
+CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_16:
 	zubats_align
 	delay_16
 	delay_16
 	step_end
 
-CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_16:
+CrobatHideout_1F_EnteredBossRoomWithSamurai_Movement_17:
 	crobat_cape
 	step_end
 
@@ -1307,7 +1326,7 @@ CrobatHideout_1F_EventScript_Plan_Text_0:
 	.string "“How to steal more efficiently”…$"
 
 CrobatHideout_1F_EventScript_Nickit_Text_0:
-	.string "Whewrr…$"
+	.string "Yap!$"
 
 CrobatHideout_1F_Trigger_4V1_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Dontcha take another step!$"
@@ -1321,9 +1340,8 @@ CrobatHideout_1F_Trigger_4V1_Text_2:
 CrobatHideout_1F_SamuraiOffersHelp_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}You sure are elusive! I finally caught\n"
 	.string "up with your trail!\p"
-	.string "Good work finding the Crobat Shadows'\n"
-	.string "lair, we'd been on the lookout for a\l"
-	.string "while!$"
+	.string "Good work finding their lair, we'd been\n"
+	.string "on the lookout for a while!$"
 
 CrobatHideout_1F_SamuraiOffersHelp_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Oh, you were in the midst of getting\n"
@@ -1362,21 +1380,14 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Boss, uh, the intruder's 'ere!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_1:
-	.string "Yeah - I can see that, Kevin…\p"
-	.string "As always, thank you for your\n"
-	.string "precious input!\p"
-	.string "Did one man and a puny lil' brat jus'\n"
-	.string "wipe through our whole squad like it\l"
-	.string "was nothin'? Is that what happened?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Yeah -{PAUSE 8} I can see that, Kevin…\p"
+	.string "As always, thank you for your\nprecious input!\p"
+	.string "Did one man and a puny lil' brat jus'\nwipe through our whole squad like it\lwas nothin'? Is that what happened?$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_2:
-	.string "Wait a second… I know this kid!\p"
-	.string "Yer the annoyin' brat that ruined us a\n"
-	.string "good muggin' back in Beachbound\l"
-	.string "Route!\p"
-	.string "What the hell, kid? Why're ya always\n"
-	.string "all up in our business? D'ya think yer\l"
-	.string "the law or somethin'?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Wait a second… I know this kid!\p"
+	.string "Yer the annoyin' brat that ruined us\na good muggin' in Beachbound Route!\p"
+	.string "What the hell, kid?\nWhy're y'always all up in our business?\lD'ya think yer the law or somethin'?$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}I make the law here!\n"
@@ -1385,15 +1396,15 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_3:
 	.string "Refuge robbery!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_4:
-	.string "Bahaha! Don't make me laugh! Ya'll\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Bahaha! Don't make me laugh! Ya'll\n"
 	.string "never get m-$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_5:
-	.string "Wait, a robbery? Which one of ya goons\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Wait, a robbery? Which one of ya goons\n"
 	.string "did this?$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_6:
-	.string "Well bravaw! You've jus' blown our\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Well bravaw! You've jus' blown our\n"
 	.string "cover, ya bumblin' idjets!\p"
 	.string "A robbery right here in Yifu City?\n"
 	.string "Jus' what were ya thinkin'?\p"
@@ -1407,12 +1418,12 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_7:
 	.string "You are under arrest, I said!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_8:
-	.string "Nope, ya ain't arrestin' me, nor my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Nope, ya ain't arrestin' me, nor my\n"
 	.string "gang!\p"
 	.string "Golbat, to me!!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_9:
-	.string "I trust ya two to cover our backs,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}I trust ya two to cover our backs,\n"
 	.string "yeah?$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_10:
@@ -1422,14 +1433,14 @@ CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_11:
 	.string "Yes boss!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_12:
-	.string "No fancy Samurai and no lil' privileged\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}No fancy Samurai and no lil' privileged\n"
 	.string "scrub are ever gonna stop us!\p"
 	.string "We're the Crobat Shadows, and we're\n"
 	.string "always one step ahead of ya!\p"
 	.string "Kid… Careful who ya team up with.$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_13:
-	.string "Zubat! Align!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_CROBAT EMOTE_NORMAL}Zubat! Align!$"
 
 CrobatHideout_1F_EnteredBossRoomWithSamurai_Text_14:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Cough… cough…\n"

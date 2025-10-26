@@ -1,8 +1,40 @@
+const VAR_EXITED_HOT_SPRINGS = VAR_TEMP_0
+
 mapscripts YifuCity_Onsen_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
+		// Exiting hot springs
 		if (flag(FLAG_PAID_HOT_SPRINGS)) {
 			setobjectxyperm(LOCALID_HOT_SPRINGS_OWNER, 2, 2)
+			setvar(VAR_EXITED_HOT_SPRINGS, 1)
 		}
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_EXITED_HOT_SPRINGS, 1: YifuCity_Onsen_EventScript_ExitHotSprings
+	]
+}
+
+script YifuCity_Onsen_EventScript_ExitHotSprings {
+	getplayerxy(VAR_TEMP_1, VAR_TEMP_2)
+	if (var(VAR_TEMP_1) == 1 && var(VAR_TEMP_2) == 2) {
+		lockall
+		applymovement(LOCALID_PLAYER, moves(walk_down, face_up))
+		waitmovement(0)
+		applymovement(LOCALID_HOT_SPRINGS_OWNER, moves(walk_left, face_down))
+		waitmovement(0)
+
+		setspeaker(SP_NAME_OWNER)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}I hope you feel mellow and relaxed."
+		))
+		closemessage
+
+		clearflag(FLAG_PAID_HOT_SPRINGS)
+		setvar(VAR_EXITED_HOT_SPRINGS, 0)
+
+		releaseall
+	} else {
+		clearflag(FLAG_PAID_HOT_SPRINGS)
+		setvar(VAR_EXITED_HOT_SPRINGS, 0)
 	}
 }
 
@@ -12,13 +44,13 @@ script YifuCity_Onsen_EventScript_Owner {
 	if (flag(FLAG_PAID_HOT_SPRINGS)) {
 		setspeaker(SP_NAME_OWNER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Enjoy the hot springs!"
+			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Enjoy the hot springs!\nI'll be right behind you now."
 		))
 		closemessage
 	} else {
 		setspeaker(SP_NAME_OWNER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}You can access the hot springs for the day for ¥500.\p"
+			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}You can access the hot springs for ¥500.\p"
 			"Be careful though, some bathers are there to relax, some to battle!"
 		))
 
@@ -36,6 +68,7 @@ script YifuCity_Onsen_EventScript_Owner {
 					playse(SE_SHOP)
 					removemoney(500)
 					updatemoneybox
+					waitse
 
 					closemessage
 
@@ -52,7 +85,7 @@ script YifuCity_Onsen_EventScript_Owner {
 
 					setspeaker(SP_NAME_OWNER)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Enjoy the hot springs!"
+						"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Enjoy the hot springs!\nI'll be right behind you now."
 					))
 					closemessage
 

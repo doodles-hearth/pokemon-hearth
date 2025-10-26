@@ -498,6 +498,8 @@ extern const u8 gText_Lass[];
 extern const u8 gText_Sir[];
 extern const u8 gText_Miss[];
 extern const u8 gText_Daughter[];
+extern const u8 gText_Guy[];
+extern const u8 gText_Gal[];
 
 // Multichoice strings
 extern const u8 gText_Exit[];

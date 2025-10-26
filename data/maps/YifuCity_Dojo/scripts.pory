@@ -1,17 +1,3 @@
-const LOCALID_GEISHA_1 = 1
-const LOCALID_GEISHA_2 = 2
-const LOCALID_GEISHA_3 = 3
-
-const LOCALID_GEISHA_4 = 4
-const LOCALID_GEISHA_5 = 5
-const LOCALID_GEISHA_6 = 6
-
-const LOCALID_GEISHA_7 = 7
-const LOCALID_GEISHA_8 = 8
-const LOCALID_GEISHA_9 = 9
-const LOCALID_GEISHA_10 = 10
-
-
 mapscripts YifuCity_Dojo_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		if (var(VAR_YIFU_DOJO_STATE) >= 1) {
@@ -29,17 +15,17 @@ mapscripts YifuCity_Dojo_MapScripts {
 
 script YifuCity_Dojo_SetupNpcs {
     if (var(VAR_YIFU_DOJO_STATE) >= 1) {
-        setobjectxyperm(LOCALID_GEISHA_2, 15, 33)
-        setobjectxyperm(LOCALID_GEISHA_3, 18, 33)
-        removeobject(LOCALID_GEISHA_1)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_2, 15, 33)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_3, 18, 33)
+        removeobject(LOCALID_YIFU_GEISHA_1)
     }
     if (var(VAR_YIFU_DOJO_STATE) >= 2) {
-        setobjectxyperm(LOCALID_GEISHA_4, 42, 33)
-        setobjectxyperm(LOCALID_GEISHA_6, 45, 33)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_4, 42, 33)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_6, 45, 33)
     }
     if (var(VAR_YIFU_DOJO_STATE) >= 3) {
-        setobjectxyperm(LOCALID_GEISHA_4, 42, 33)
-        setobjectxyperm(LOCALID_GEISHA_6, 45, 33)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_4, 42, 33)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_6, 45, 33)
     }
 }
 
@@ -166,13 +152,13 @@ script YifuCity_Dojo_EventScript_Dance1 {
         closemessage
 
         // They walk up to the door
-        applymovement(LOCALID_GEISHA_2, moves(
+        applymovement(LOCALID_YIFU_GEISHA_2, moves(
             walk_down
             walk_right * 7
             walk_up
             face_right
         ))
-        applymovement(LOCALID_GEISHA_3, moves(
+        applymovement(LOCALID_YIFU_GEISHA_3, moves(
             walk_right * 8
             face_left
         ))
@@ -181,8 +167,8 @@ script YifuCity_Dojo_EventScript_Dance1 {
         special(SpawnCameraObject)
         applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
 
-        waitmovement(LOCALID_GEISHA_2)
-        waitmovement(LOCALID_GEISHA_3)
+        waitmovement(LOCALID_YIFU_GEISHA_2)
+        waitmovement(LOCALID_YIFU_GEISHA_3)
 	    waitmovement(OBJ_EVENT_ID_CAMERA)
     }
 
@@ -193,10 +179,10 @@ script YifuCity_Dojo_EventScript_Dance1 {
 
     call(YifuCity_Dojo_DoorAppears_Screenshake)
 
-    applymovement(LOCALID_GEISHA_2, Common_Movement_WalkInPlaceFasterDown)
-    applymovement(LOCALID_GEISHA_3, Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_2, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(LOCALID_YIFU_GEISHA_3, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
     waitse
 
     delay(32)
@@ -285,13 +271,13 @@ script YifuCity_Dojo_EventScript_Dance2 {
         closemessage
 
         // They walk up to the door
-        applymovement(LOCALID_GEISHA_4, moves(
+        applymovement(LOCALID_YIFU_GEISHA_4, moves(
             walk_down
             walk_right * 7
             walk_up
             face_right
         ))
-        applymovement(LOCALID_GEISHA_6, moves(
+        applymovement(LOCALID_YIFU_GEISHA_6, moves(
             walk_right * 8
             face_left
         ))
@@ -300,8 +286,8 @@ script YifuCity_Dojo_EventScript_Dance2 {
         special(SpawnCameraObject)
         applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
 
-        waitmovement(LOCALID_GEISHA_4)
-        waitmovement(LOCALID_GEISHA_6)
+        waitmovement(LOCALID_YIFU_GEISHA_4)
+        waitmovement(LOCALID_YIFU_GEISHA_6)
 	    waitmovement(OBJ_EVENT_ID_CAMERA)
     }
 
@@ -312,10 +298,10 @@ script YifuCity_Dojo_EventScript_Dance2 {
 
     call(YifuCity_Dojo_DoorAppears_Screenshake)
 
-    applymovement(LOCALID_GEISHA_4, Common_Movement_WalkInPlaceFasterDown)
-    applymovement(LOCALID_GEISHA_6, Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_4, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(LOCALID_YIFU_GEISHA_6, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(LOCALID_YIFU_GEISHA_4)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
     waitse
 
     delay(32)
@@ -402,17 +388,17 @@ script YifuCity_Dojo_EventScript_Dance3 {
         closemessage
 
         // They walk up to the door
-        applymovement(LOCALID_GEISHA_7, moves(walk_up, face_right))
-        applymovement(LOCALID_GEISHA_9, moves(walk_up, face_left))
+        applymovement(LOCALID_YIFU_GEISHA_7, moves(walk_up, face_right))
+        applymovement(LOCALID_YIFU_GEISHA_9, moves(walk_up, face_left))
         playse(SE_LEDGE)
-        applymovement(LOCALID_GEISHA_8, moves(
+        applymovement(LOCALID_YIFU_GEISHA_8, moves(
             jump_2_up,
             delay_16,
             walk_right,
             walk_up,
             face_left
         ))
-        applymovement(LOCALID_GEISHA_10, moves(
+        applymovement(LOCALID_YIFU_GEISHA_10, moves(
             jump_2_up,
             delay_16,
             walk_up,
@@ -423,7 +409,7 @@ script YifuCity_Dojo_EventScript_Dance3 {
         special(SpawnCameraObject)
         applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
 
-        waitmovement(LOCALID_GEISHA_10)
+        waitmovement(LOCALID_YIFU_GEISHA_10)
 	    waitmovement(OBJ_EVENT_ID_CAMERA)
     }
 
@@ -434,10 +420,10 @@ script YifuCity_Dojo_EventScript_Dance3 {
 
     call(YifuCity_Dojo_DoorAppears_Screenshake)
 
-    applymovement(LOCALID_GEISHA_4, Common_Movement_WalkInPlaceFasterDown)
-    applymovement(LOCALID_GEISHA_6, Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_4, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(LOCALID_YIFU_GEISHA_6, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(LOCALID_YIFU_GEISHA_4)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
     waitse
 
     delay(32)
@@ -450,98 +436,98 @@ script YifuCity_Dojo_EventScript_Dance3 {
 }
 
 script YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle {
-    applymovement(LOCALID_GEISHA_1, Common_Movement_TeleportAway)
-    applymovement(LOCALID_GEISHA_2, moves(walk_down))
-    applymovement(LOCALID_GEISHA_3, moves(walk_down))
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_1, Common_Movement_TeleportAway)
+    applymovement(LOCALID_YIFU_GEISHA_2, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_3, moves(walk_down))
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
 
     playse(SE_LEDGE)
 
-    applymovement(LOCALID_GEISHA_2, moves(jump_2_down, delay_16, walk_right))
-    applymovement(LOCALID_GEISHA_3, moves(jump_2_down, delay_16, walk_left))
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_2, moves(jump_2_down, delay_16, walk_right))
+    applymovement(LOCALID_YIFU_GEISHA_3, moves(jump_2_down, delay_16, walk_left))
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
 }
 
 script YifuCity_Dojo_Dance2_GeishasSurroundPlayerToBattle {
-    applymovement(LOCALID_GEISHA_4, moves(walk_down))
-    applymovement(LOCALID_GEISHA_6, moves(walk_down))
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_4, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_6, moves(walk_down))
+    waitmovement(LOCALID_YIFU_GEISHA_4)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
 
     playse(SE_LEDGE)
 
-    applymovement(LOCALID_GEISHA_4, moves(jump_2_down, delay_16, walk_right))
-    applymovement(LOCALID_GEISHA_6, moves(jump_2_down, delay_16, walk_left))
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_4, moves(jump_2_down, delay_16, walk_right))
+    applymovement(LOCALID_YIFU_GEISHA_6, moves(jump_2_down, delay_16, walk_left))
+    waitmovement(LOCALID_YIFU_GEISHA_4)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
 }
 
 script YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle {
-    applymovement(LOCALID_GEISHA_7, moves(walk_right * 2, face_down))
-    applymovement(LOCALID_GEISHA_8, moves(walk_down))
-    applymovement(LOCALID_GEISHA_9, moves(walk_down))
-    applymovement(LOCALID_GEISHA_10, moves(walk_left * 2, face_down))
-    waitmovement(LOCALID_GEISHA_7)
-    waitmovement(LOCALID_GEISHA_8)
-    waitmovement(LOCALID_GEISHA_9)
-    waitmovement(LOCALID_GEISHA_10)
+    applymovement(LOCALID_YIFU_GEISHA_7, moves(walk_right * 2, face_down))
+    applymovement(LOCALID_YIFU_GEISHA_8, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_9, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_10, moves(walk_left * 2, face_down))
+    waitmovement(LOCALID_YIFU_GEISHA_7)
+    waitmovement(LOCALID_YIFU_GEISHA_8)
+    waitmovement(LOCALID_YIFU_GEISHA_9)
+    waitmovement(LOCALID_YIFU_GEISHA_10)
 
     playse(SE_LEDGE)
 
-    applymovement(LOCALID_GEISHA_8, moves(jump_2_down, delay_16, face_right))
-    applymovement(LOCALID_GEISHA_9, moves(jump_2_down, delay_16, walk_left))
-    waitmovement(LOCALID_GEISHA_8)
-    waitmovement(LOCALID_GEISHA_9)
+    applymovement(LOCALID_YIFU_GEISHA_8, moves(jump_2_down, delay_16, face_right))
+    applymovement(LOCALID_YIFU_GEISHA_9, moves(jump_2_down, delay_16, walk_left))
+    waitmovement(LOCALID_YIFU_GEISHA_8)
+    waitmovement(LOCALID_YIFU_GEISHA_9)
 }
 
 script YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor {
-    applymovement(LOCALID_GEISHA_1, Common_Movement_TeleportAway)
-    applymovement(LOCALID_GEISHA_2, moves(walk_down))
-    applymovement(LOCALID_GEISHA_3, moves(walk_down))
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_1, Common_Movement_TeleportAway)
+    applymovement(LOCALID_YIFU_GEISHA_2, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_3, moves(walk_down))
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
 
     special(SpawnCameraObject)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
 
     playse(SE_LEDGE)
-    applymovement(LOCALID_GEISHA_2, moves(jump_2_down, delay_16, walk_down, walk_right * 8, walk_up, face_right))
-    applymovement(LOCALID_GEISHA_3, moves(jump_2_down, delay_16, walk_right * 7, face_left))
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_2, moves(jump_2_down, delay_16, walk_down, walk_right * 8, walk_up, face_right))
+    applymovement(LOCALID_YIFU_GEISHA_3, moves(jump_2_down, delay_16, walk_right * 7, face_left))
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
     waitmovement(OBJ_EVENT_ID_CAMERA)
     waitse
 }
 
 script YifuCity_Dojo_Dance2_GeishasGoDirectlyToDoor {
-    applymovement(LOCALID_GEISHA_4, moves(walk_down))
-    applymovement(LOCALID_GEISHA_6, moves(walk_down))
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_4, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_6, moves(walk_down))
+    waitmovement(LOCALID_YIFU_GEISHA_4)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
 
     special(SpawnCameraObject)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
 
     playse(SE_LEDGE)
-    applymovement(LOCALID_GEISHA_4, moves(jump_2_down, delay_16, walk_down, walk_right * 8, walk_up, face_right))
-    applymovement(LOCALID_GEISHA_6, moves(jump_2_down, delay_16, walk_right * 7, face_left))
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_4, moves(jump_2_down, delay_16, walk_down, walk_right * 8, walk_up, face_right))
+    applymovement(LOCALID_YIFU_GEISHA_6, moves(jump_2_down, delay_16, walk_right * 7, face_left))
+    waitmovement(LOCALID_YIFU_GEISHA_4)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
     waitmovement(OBJ_EVENT_ID_CAMERA)
     waitse
 }
 
 script YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor {
-    applymovement(LOCALID_GEISHA_8, moves(walk_up, face_right))
-    applymovement(LOCALID_GEISHA_9, moves(walk_up, face_left))
-    applymovement(LOCALID_GEISHA_7, moves(walk_right * 2))
-    applymovement(LOCALID_GEISHA_10, moves(walk_left * 2))
-    waitmovement(LOCALID_GEISHA_7)
-    waitmovement(LOCALID_GEISHA_8)
-    waitmovement(LOCALID_GEISHA_9)
-    waitmovement(LOCALID_GEISHA_10)
+    applymovement(LOCALID_YIFU_GEISHA_8, moves(walk_up, face_right))
+    applymovement(LOCALID_YIFU_GEISHA_9, moves(walk_up, face_left))
+    applymovement(LOCALID_YIFU_GEISHA_7, moves(walk_right * 2))
+    applymovement(LOCALID_YIFU_GEISHA_10, moves(walk_left * 2))
+    waitmovement(LOCALID_YIFU_GEISHA_7)
+    waitmovement(LOCALID_YIFU_GEISHA_8)
+    waitmovement(LOCALID_YIFU_GEISHA_9)
+    waitmovement(LOCALID_YIFU_GEISHA_10)
 
     special(SpawnCameraObject)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
@@ -600,12 +586,12 @@ script YifuCity_Dojo_SetDoor3Metatiles {
 
 script YifuCity_Dojo_Dance1_Jump {
     playse(SE_BANG)
-    applymovement(LOCALID_GEISHA_1, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_2, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_3, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    waitmovement(LOCALID_GEISHA_1)
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_1, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_2, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_3, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    waitmovement(LOCALID_YIFU_GEISHA_1)
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
     waitse
 
     delay(16)
@@ -613,12 +599,12 @@ script YifuCity_Dojo_Dance1_Jump {
 
 script YifuCity_Dojo_Dance2_Jump {
     playse(SE_BANG)
-    applymovement(LOCALID_GEISHA_4, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_5, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_6, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_5)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_4, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_5, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_6, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    waitmovement(LOCALID_YIFU_GEISHA_4)
+    waitmovement(LOCALID_YIFU_GEISHA_5)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
     waitse
 
     delay(16)
@@ -626,14 +612,14 @@ script YifuCity_Dojo_Dance2_Jump {
 
 script YifuCity_Dojo_Dance3_Jump {
     playse(SE_BANG)
-    applymovement(LOCALID_GEISHA_7, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_8, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_9, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_10, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    waitmovement(LOCALID_GEISHA_7)
-    waitmovement(LOCALID_GEISHA_8)
-    waitmovement(LOCALID_GEISHA_9)
-    waitmovement(LOCALID_GEISHA_10)
+    applymovement(LOCALID_YIFU_GEISHA_7, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_8, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_9, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_10, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    waitmovement(LOCALID_YIFU_GEISHA_7)
+    waitmovement(LOCALID_YIFU_GEISHA_8)
+    waitmovement(LOCALID_YIFU_GEISHA_9)
+    waitmovement(LOCALID_YIFU_GEISHA_10)
     waitse
 
     delay(16)
@@ -645,7 +631,7 @@ movement YifuCity_Dojo_Movement_JumpInPlaceDown {
 
 script YifuCity_Dojo_Dance1 {
     applymovement(
-        LOCALID_GEISHA_1,
+        LOCALID_YIFU_GEISHA_1,
         // Start left, end mid
         moves( // 13
             walk_down,
@@ -661,7 +647,7 @@ script YifuCity_Dojo_Dance1 {
         )
     )
     applymovement(
-        LOCALID_GEISHA_2,
+        LOCALID_YIFU_GEISHA_2,
         // Start mid, end left
         moves(
             walk_left * 2,
@@ -673,7 +659,7 @@ script YifuCity_Dojo_Dance1 {
         ) // 12
     )
     applymovement(
-        LOCALID_GEISHA_3,
+        LOCALID_YIFU_GEISHA_3,
         moves( // 13
             walk_up,
             walk_left * 4
@@ -686,16 +672,16 @@ script YifuCity_Dojo_Dance1 {
         )
     )
 
-    waitmovement(LOCALID_GEISHA_1)
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    waitmovement(LOCALID_YIFU_GEISHA_1)
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
 }
 
 script YifuCity_Dojo_Dance2 {
     // TODO EVA dance
 
     applymovement(
-        LOCALID_GEISHA_4,
+        LOCALID_YIFU_GEISHA_4,
         moves(
             walk_right,
 
@@ -706,7 +692,7 @@ script YifuCity_Dojo_Dance2 {
         )
     )
     applymovement(
-        LOCALID_GEISHA_5,
+        LOCALID_YIFU_GEISHA_5,
         moves(
             delay_16,
 
@@ -717,15 +703,15 @@ script YifuCity_Dojo_Dance2 {
         )
     )
     applymovement(
-        LOCALID_GEISHA_6,
+        LOCALID_YIFU_GEISHA_6,
         moves(
             walk_left
         )
     )
 
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_5)
-    waitmovement(LOCALID_GEISHA_6)
+    waitmovement(LOCALID_YIFU_GEISHA_4)
+    waitmovement(LOCALID_YIFU_GEISHA_5)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
 }
 
 script YifuCity_Dojo_Dance3 {

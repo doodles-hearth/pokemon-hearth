@@ -58,6 +58,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis::
 	setspeaker SP_NAME_BIG_SIS
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5
 	closemessage
+	givedecoration DECOR_SPIKES_MAT
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_1:
 	release
 	return

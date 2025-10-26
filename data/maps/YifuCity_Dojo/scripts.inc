@@ -39,19 +39,19 @@ YifuCity_Dojo_SetupNpcs_4:
 	return
 
 YifuCity_Dojo_SetupNpcs_2:
-	setobjectxyperm 2, 15, 33
-	setobjectxyperm 3, 18, 33
-	removeobject 1
+	setobjectxyperm LOCALID_YIFU_GEISHA_2, 15, 33
+	setobjectxyperm LOCALID_YIFU_GEISHA_3, 18, 33
+	removeobject LOCALID_YIFU_GEISHA_1
 	goto YifuCity_Dojo_SetupNpcs_1
 
 YifuCity_Dojo_SetupNpcs_5:
-	setobjectxyperm 4, 42, 33
-	setobjectxyperm 6, 45, 33
+	setobjectxyperm LOCALID_YIFU_GEISHA_4, 42, 33
+	setobjectxyperm LOCALID_YIFU_GEISHA_6, 45, 33
 	goto YifuCity_Dojo_SetupNpcs_4
 
 YifuCity_Dojo_SetupNpcs_7:
-	setobjectxyperm 4, 42, 33
-	setobjectxyperm 6, 45, 33
+	setobjectxyperm LOCALID_YIFU_GEISHA_4, 42, 33
+	setobjectxyperm LOCALID_YIFU_GEISHA_6, 45, 33
 	return
 
 
@@ -130,21 +130,21 @@ YifuCity_Dojo_EventScript_Dance1::
 	setspeaker SP_NAME_KIMONO_GIRLS
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_9
 	closemessage
-	applymovement 2, YifuCity_Dojo_EventScript_Dance1_Movement_2
-	applymovement 3, YifuCity_Dojo_EventScript_Dance1_Movement_3
+	applymovement LOCALID_YIFU_GEISHA_2, YifuCity_Dojo_EventScript_Dance1_Movement_2
+	applymovement LOCALID_YIFU_GEISHA_3, YifuCity_Dojo_EventScript_Dance1_Movement_3
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_EventScript_Dance1_Movement_4
-	waitmovement 2
-	waitmovement 3
+	waitmovement LOCALID_YIFU_GEISHA_2
+	waitmovement LOCALID_YIFU_GEISHA_3
 	waitmovement OBJ_EVENT_ID_CAMERA
 YifuCity_Dojo_EventScript_Dance1_1:
 	delay 32
 	call YifuCity_Dojo_SetDoor1Metatiles
 	call YifuCity_Dojo_DoorAppears_Screenshake
-	applymovement 2, Common_Movement_WalkInPlaceFasterDown
-	applymovement 3, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 2
-	waitmovement 3
+	applymovement LOCALID_YIFU_GEISHA_2, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_YIFU_GEISHA_3, Common_Movement_WalkInPlaceFasterDown
+	waitmovement LOCALID_YIFU_GEISHA_2
+	waitmovement LOCALID_YIFU_GEISHA_3
 	waitse
 	delay 32
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_EventScript_Dance1_Movement_5
@@ -189,21 +189,21 @@ YifuCity_Dojo_EventScript_Dance2::
 	setspeaker SP_NAME_KIMONO_GIRLS
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_9
 	closemessage
-	applymovement 4, YifuCity_Dojo_EventScript_Dance1_Movement_2
-	applymovement 6, YifuCity_Dojo_EventScript_Dance1_Movement_3
+	applymovement LOCALID_YIFU_GEISHA_4, YifuCity_Dojo_EventScript_Dance1_Movement_2
+	applymovement LOCALID_YIFU_GEISHA_6, YifuCity_Dojo_EventScript_Dance1_Movement_3
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_EventScript_Dance1_Movement_4
-	waitmovement 4
-	waitmovement 6
+	waitmovement LOCALID_YIFU_GEISHA_4
+	waitmovement LOCALID_YIFU_GEISHA_6
 	waitmovement OBJ_EVENT_ID_CAMERA
 YifuCity_Dojo_EventScript_Dance2_1:
 	delay 32
 	call YifuCity_Dojo_SetDoor2Metatiles
 	call YifuCity_Dojo_DoorAppears_Screenshake
-	applymovement 4, Common_Movement_WalkInPlaceFasterDown
-	applymovement 6, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 4
-	waitmovement 6
+	applymovement LOCALID_YIFU_GEISHA_4, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_YIFU_GEISHA_6, Common_Movement_WalkInPlaceFasterDown
+	waitmovement LOCALID_YIFU_GEISHA_4
+	waitmovement LOCALID_YIFU_GEISHA_6
 	waitse
 	delay 32
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_EventScript_Dance1_Movement_5
@@ -248,23 +248,23 @@ YifuCity_Dojo_EventScript_Dance3::
 	setspeaker SP_NAME_KIMONO_GIRLS
 	msgbox YifuCity_Dojo_EventScript_Dance1_Text_9
 	closemessage
-	applymovement 7, YifuCity_Dojo_EventScript_Dance3_Movement_0
-	applymovement 9, YifuCity_Dojo_EventScript_Dance3_Movement_1
+	applymovement LOCALID_YIFU_GEISHA_7, YifuCity_Dojo_EventScript_Dance3_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_9, YifuCity_Dojo_EventScript_Dance3_Movement_1
 	playse SE_LEDGE
-	applymovement 8, YifuCity_Dojo_EventScript_Dance3_Movement_2
-	applymovement 10, YifuCity_Dojo_EventScript_Dance3_Movement_3
+	applymovement LOCALID_YIFU_GEISHA_8, YifuCity_Dojo_EventScript_Dance3_Movement_2
+	applymovement LOCALID_YIFU_GEISHA_10, YifuCity_Dojo_EventScript_Dance3_Movement_3
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_EventScript_Dance1_Movement_4
-	waitmovement 10
+	waitmovement LOCALID_YIFU_GEISHA_10
 	waitmovement OBJ_EVENT_ID_CAMERA
 YifuCity_Dojo_EventScript_Dance3_1:
 	delay 32
 	call YifuCity_Dojo_SetDoor3Metatiles
 	call YifuCity_Dojo_DoorAppears_Screenshake
-	applymovement 4, Common_Movement_WalkInPlaceFasterDown
-	applymovement 6, Common_Movement_WalkInPlaceFasterDown
-	waitmovement 4
-	waitmovement 6
+	applymovement LOCALID_YIFU_GEISHA_4, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_YIFU_GEISHA_6, Common_Movement_WalkInPlaceFasterDown
+	waitmovement LOCALID_YIFU_GEISHA_4
+	waitmovement LOCALID_YIFU_GEISHA_6
 	waitse
 	delay 32
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_EventScript_Dance3_Movement_4
@@ -283,93 +283,93 @@ YifuCity_Dojo_EventScript_Dance3_2:
 
 
 YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle::
-	applymovement 1, Common_Movement_TeleportAway
-	applymovement 2, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
-	applymovement 3, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
-	waitmovement 2
-	waitmovement 3
+	applymovement LOCALID_YIFU_GEISHA_1, Common_Movement_TeleportAway
+	applymovement LOCALID_YIFU_GEISHA_2, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_3, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
+	waitmovement LOCALID_YIFU_GEISHA_2
+	waitmovement LOCALID_YIFU_GEISHA_3
 	playse SE_LEDGE
-	applymovement 2, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_1
-	applymovement 3, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_2
-	waitmovement 2
-	waitmovement 3
+	applymovement LOCALID_YIFU_GEISHA_2, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_1
+	applymovement LOCALID_YIFU_GEISHA_3, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_2
+	waitmovement LOCALID_YIFU_GEISHA_2
+	waitmovement LOCALID_YIFU_GEISHA_3
 	return
 
 
 YifuCity_Dojo_Dance2_GeishasSurroundPlayerToBattle::
-	applymovement 4, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
-	applymovement 6, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
-	waitmovement 4
-	waitmovement 6
+	applymovement LOCALID_YIFU_GEISHA_4, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_6, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
+	waitmovement LOCALID_YIFU_GEISHA_4
+	waitmovement LOCALID_YIFU_GEISHA_6
 	playse SE_LEDGE
-	applymovement 4, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_1
-	applymovement 6, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_2
-	waitmovement 4
-	waitmovement 6
+	applymovement LOCALID_YIFU_GEISHA_4, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_1
+	applymovement LOCALID_YIFU_GEISHA_6, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_2
+	waitmovement LOCALID_YIFU_GEISHA_4
+	waitmovement LOCALID_YIFU_GEISHA_6
 	return
 
 
 YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle::
-	applymovement 7, YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle_Movement_0
-	applymovement 8, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
-	applymovement 9, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
-	applymovement 10, YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle_Movement_1
-	waitmovement 7
-	waitmovement 8
-	waitmovement 9
-	waitmovement 10
+	applymovement LOCALID_YIFU_GEISHA_7, YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_8, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_9, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_10, YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle_Movement_1
+	waitmovement LOCALID_YIFU_GEISHA_7
+	waitmovement LOCALID_YIFU_GEISHA_8
+	waitmovement LOCALID_YIFU_GEISHA_9
+	waitmovement LOCALID_YIFU_GEISHA_10
 	playse SE_LEDGE
-	applymovement 8, YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle_Movement_2
-	applymovement 9, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_2
-	waitmovement 8
-	waitmovement 9
+	applymovement LOCALID_YIFU_GEISHA_8, YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle_Movement_2
+	applymovement LOCALID_YIFU_GEISHA_9, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_2
+	waitmovement LOCALID_YIFU_GEISHA_8
+	waitmovement LOCALID_YIFU_GEISHA_9
 	return
 
 
 YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor::
-	applymovement 1, Common_Movement_TeleportAway
-	applymovement 2, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
-	applymovement 3, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
-	waitmovement 2
-	waitmovement 3
+	applymovement LOCALID_YIFU_GEISHA_1, Common_Movement_TeleportAway
+	applymovement LOCALID_YIFU_GEISHA_2, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_3, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
+	waitmovement LOCALID_YIFU_GEISHA_2
+	waitmovement LOCALID_YIFU_GEISHA_3
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_EventScript_Dance1_Movement_4
 	playse SE_LEDGE
-	applymovement 2, YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor_Movement_0
-	applymovement 3, YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor_Movement_1
-	waitmovement 2
-	waitmovement 3
+	applymovement LOCALID_YIFU_GEISHA_2, YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_3, YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor_Movement_1
+	waitmovement LOCALID_YIFU_GEISHA_2
+	waitmovement LOCALID_YIFU_GEISHA_3
 	waitmovement OBJ_EVENT_ID_CAMERA
 	waitse
 	return
 
 
 YifuCity_Dojo_Dance2_GeishasGoDirectlyToDoor::
-	applymovement 4, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
-	applymovement 6, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
-	waitmovement 4
-	waitmovement 6
+	applymovement LOCALID_YIFU_GEISHA_4, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_6, YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle_Movement_0
+	waitmovement LOCALID_YIFU_GEISHA_4
+	waitmovement LOCALID_YIFU_GEISHA_6
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_EventScript_Dance1_Movement_4
 	playse SE_LEDGE
-	applymovement 4, YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor_Movement_0
-	applymovement 6, YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor_Movement_1
-	waitmovement 4
-	waitmovement 6
+	applymovement LOCALID_YIFU_GEISHA_4, YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_6, YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor_Movement_1
+	waitmovement LOCALID_YIFU_GEISHA_4
+	waitmovement LOCALID_YIFU_GEISHA_6
 	waitmovement OBJ_EVENT_ID_CAMERA
 	waitse
 	return
 
 
 YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor::
-	applymovement 8, YifuCity_Dojo_EventScript_Dance3_Movement_0
-	applymovement 9, YifuCity_Dojo_EventScript_Dance3_Movement_1
-	applymovement 7, YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor_Movement_0
-	applymovement 10, YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor_Movement_1
-	waitmovement 7
-	waitmovement 8
-	waitmovement 9
-	waitmovement 10
+	applymovement LOCALID_YIFU_GEISHA_8, YifuCity_Dojo_EventScript_Dance3_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_9, YifuCity_Dojo_EventScript_Dance3_Movement_1
+	applymovement LOCALID_YIFU_GEISHA_7, YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_10, YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor_Movement_1
+	waitmovement LOCALID_YIFU_GEISHA_7
+	waitmovement LOCALID_YIFU_GEISHA_8
+	waitmovement LOCALID_YIFU_GEISHA_9
+	waitmovement LOCALID_YIFU_GEISHA_10
 	special SpawnCameraObject
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor_Movement_2
 	waitmovement OBJ_EVENT_ID_CAMERA
@@ -429,12 +429,12 @@ YifuCity_Dojo_SetDoor3Metatiles::
 
 YifuCity_Dojo_Dance1_Jump::
 	playse SE_BANG
-	applymovement 1, YifuCity_Dojo_Movement_JumpInPlaceDown
-	applymovement 2, YifuCity_Dojo_Movement_JumpInPlaceDown
-	applymovement 3, YifuCity_Dojo_Movement_JumpInPlaceDown
-	waitmovement 1
-	waitmovement 2
-	waitmovement 3
+	applymovement LOCALID_YIFU_GEISHA_1, YifuCity_Dojo_Movement_JumpInPlaceDown
+	applymovement LOCALID_YIFU_GEISHA_2, YifuCity_Dojo_Movement_JumpInPlaceDown
+	applymovement LOCALID_YIFU_GEISHA_3, YifuCity_Dojo_Movement_JumpInPlaceDown
+	waitmovement LOCALID_YIFU_GEISHA_1
+	waitmovement LOCALID_YIFU_GEISHA_2
+	waitmovement LOCALID_YIFU_GEISHA_3
 	waitse
 	delay 16
 	return
@@ -442,12 +442,12 @@ YifuCity_Dojo_Dance1_Jump::
 
 YifuCity_Dojo_Dance2_Jump::
 	playse SE_BANG
-	applymovement 4, YifuCity_Dojo_Movement_JumpInPlaceDown
-	applymovement 5, YifuCity_Dojo_Movement_JumpInPlaceDown
-	applymovement 6, YifuCity_Dojo_Movement_JumpInPlaceDown
-	waitmovement 4
-	waitmovement 5
-	waitmovement 6
+	applymovement LOCALID_YIFU_GEISHA_4, YifuCity_Dojo_Movement_JumpInPlaceDown
+	applymovement LOCALID_YIFU_GEISHA_5, YifuCity_Dojo_Movement_JumpInPlaceDown
+	applymovement LOCALID_YIFU_GEISHA_6, YifuCity_Dojo_Movement_JumpInPlaceDown
+	waitmovement LOCALID_YIFU_GEISHA_4
+	waitmovement LOCALID_YIFU_GEISHA_5
+	waitmovement LOCALID_YIFU_GEISHA_6
 	waitse
 	delay 16
 	return
@@ -455,14 +455,14 @@ YifuCity_Dojo_Dance2_Jump::
 
 YifuCity_Dojo_Dance3_Jump::
 	playse SE_BANG
-	applymovement 7, YifuCity_Dojo_Movement_JumpInPlaceDown
-	applymovement 8, YifuCity_Dojo_Movement_JumpInPlaceDown
-	applymovement 9, YifuCity_Dojo_Movement_JumpInPlaceDown
-	applymovement 10, YifuCity_Dojo_Movement_JumpInPlaceDown
-	waitmovement 7
-	waitmovement 8
-	waitmovement 9
-	waitmovement 10
+	applymovement LOCALID_YIFU_GEISHA_7, YifuCity_Dojo_Movement_JumpInPlaceDown
+	applymovement LOCALID_YIFU_GEISHA_8, YifuCity_Dojo_Movement_JumpInPlaceDown
+	applymovement LOCALID_YIFU_GEISHA_9, YifuCity_Dojo_Movement_JumpInPlaceDown
+	applymovement LOCALID_YIFU_GEISHA_10, YifuCity_Dojo_Movement_JumpInPlaceDown
+	waitmovement LOCALID_YIFU_GEISHA_7
+	waitmovement LOCALID_YIFU_GEISHA_8
+	waitmovement LOCALID_YIFU_GEISHA_9
+	waitmovement LOCALID_YIFU_GEISHA_10
 	waitse
 	delay 16
 	return
@@ -473,22 +473,22 @@ YifuCity_Dojo_Movement_JumpInPlaceDown:
 	step_end
 
 YifuCity_Dojo_Dance1::
-	applymovement 1, YifuCity_Dojo_Dance1_Movement_0
-	applymovement 2, YifuCity_Dojo_Dance1_Movement_1
-	applymovement 3, YifuCity_Dojo_Dance1_Movement_2
-	waitmovement 1
-	waitmovement 2
-	waitmovement 3
+	applymovement LOCALID_YIFU_GEISHA_1, YifuCity_Dojo_Dance1_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_2, YifuCity_Dojo_Dance1_Movement_1
+	applymovement LOCALID_YIFU_GEISHA_3, YifuCity_Dojo_Dance1_Movement_2
+	waitmovement LOCALID_YIFU_GEISHA_1
+	waitmovement LOCALID_YIFU_GEISHA_2
+	waitmovement LOCALID_YIFU_GEISHA_3
 	return
 
 
 YifuCity_Dojo_Dance2::
-	applymovement 4, YifuCity_Dojo_Dance2_Movement_0
-	applymovement 5, YifuCity_Dojo_Dance2_Movement_1
-	applymovement 6, YifuCity_Dojo_Dance2_Movement_2
-	waitmovement 4
-	waitmovement 5
-	waitmovement 6
+	applymovement LOCALID_YIFU_GEISHA_4, YifuCity_Dojo_Dance2_Movement_0
+	applymovement LOCALID_YIFU_GEISHA_5, YifuCity_Dojo_Dance2_Movement_1
+	applymovement LOCALID_YIFU_GEISHA_6, YifuCity_Dojo_Dance2_Movement_2
+	waitmovement LOCALID_YIFU_GEISHA_4
+	waitmovement LOCALID_YIFU_GEISHA_5
+	waitmovement LOCALID_YIFU_GEISHA_6
 	return
 
 

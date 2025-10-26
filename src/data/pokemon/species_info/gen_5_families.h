@@ -3816,8 +3816,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sAnimTable_Following,
             gFollowerPalette_SewaddleTokuan,
             gShinyFollowerPalette_SewaddleTokuan)
-        .levelUpLearnset = sSewaddleLevelUpLearnset,
-        .teachableLearnset = sSewaddleTeachableLearnset,
+        .levelUpLearnset = sSewaddleTokuanLevelUpLearnset,
+        .teachableLearnset = sSewaddleTokuanTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_SWADLOON_TOKUAN}),
     },
 
@@ -3885,8 +3885,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sAnimTable_Following,
             gFollowerPalette_SwadloonTokuan,
             gShinyFollowerPalette_SwadloonTokuan)
-        .levelUpLearnset = sSwadloonLevelUpLearnset,
-        .teachableLearnset = sSwadloonTeachableLearnset,
+        .levelUpLearnset = sSwadloonTokuanLevelUpLearnset,
+        .teachableLearnset = sSwadloonTokuanTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_LEAVANNY_TOKUAN, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD})}),
     },
 
@@ -3961,8 +3961,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sAnimTable_Following,
             gFollowerPalette_LeavannyTokuan,
             gShinyFollowerPalette_LeavannyTokuan)
-        .levelUpLearnset = sLeavannyLevelUpLearnset,
-        .teachableLearnset = sLeavannyTeachableLearnset
+        .levelUpLearnset = sLeavannyTokuanLevelUpLearnset,
+        .teachableLearnset = sLeavannyTokuanTeachableLearnset
     },
 #endif //P_TOKUAN_FORMS
 #endif //P_FAMILY_SEWADDLE
@@ -5157,7 +5157,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .abilities = { ABILITY_HUSTLE, ABILITY_NONE, ABILITY_INNER_FOCUS },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Darumaka"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Hot Charm"),
         .cryId = CRY_DARUMAKA,
         .natDexNum = NATIONAL_DEX_DARUMAKA,
         .categoryName = _("Zen Charm"),
@@ -5228,7 +5228,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .abilities = { ABILITY_SHEER_FORCE, ABILITY_NONE, ABILITY_ZEN_MODE },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Darmanitan"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Hot Monkey"),
         .cryId = CRY_DARMANITAN,
         .natDexNum = NATIONAL_DEX_DARMANITAN,
         .categoryName = _("Blazing"),
