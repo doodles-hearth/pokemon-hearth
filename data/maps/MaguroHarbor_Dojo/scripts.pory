@@ -209,7 +209,7 @@ script MaguroHarbor_Dojo_EventScript_Advice {
 
 script MaguroHarbor_Dojo_EventScript_DojoStatue {
 	lockall
-	if (flag(FLAG_BADGE01_GET)) {
+	if (flag(FLAG_BADGE01_GET) && flag(FLAG_BADGE02_GET) && flag(FLAG_BADGE03_GET)) {
 		msgbox(
 			"Dojo of Maguro Harbor\p"
 			"certified Wielders:\n"
@@ -217,11 +217,18 @@ script MaguroHarbor_Dojo_EventScript_DojoStatue {
 			"{PLAYER}",
 			MSGBOX_SIGN
 		)
+	} elif (flag(FLAG_BADGE01_GET)) {
+		msgbox(
+			"Dojo of Maguro Harbor\p"
+			"certified Wielders:\n"
+			"{PLAYER}",
+			MSGBOX_SIGN
+		)
 	} else {
 		msgbox(
 			"Dojo of Maguro Harbor\p"
 			"certified Wielders:\n"
-			"Natsuki",
+			"-",
 			MSGBOX_SIGN
 		)
 	}

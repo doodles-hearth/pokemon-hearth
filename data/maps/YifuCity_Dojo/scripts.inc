@@ -1172,7 +1172,7 @@ YifuCity_Dojo_EventScript_Advice_Text_0:
 YifuCity_Dojo_EventScript_Advice_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\nto the Dance Hall Dojo!\p"
 	.string "Got what it takes to see through the\ndancers' intoxicating moves?\p"
-	.string "Master Yutaka favors Dance Moves.\nA battle with her is like partaking in\la dizzying dancing showdown!"
+	.string "Master Yutaka favors Dance Moves.\nA battle with her is like partaking in\la dizzying dancing showdown!\p"
 	.string "Watch out though, she can be as\nabrasive as she is beautiful.\p"
 	.string "She probably won't appreciate you\nwalking around her Dojo with your\nclothes looking like… this…\p"
 	.string "Uh, nevermind my babbling!\nGo get 'em, champ!$"

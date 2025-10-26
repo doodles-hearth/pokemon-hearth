@@ -1831,6 +1831,7 @@ static void PopulateSpeciesFromTrainerLocation(int matchCallId, u8 *destStr)
 
             if (numSpecies)
             {
+                // TODO EVA set named mon
                 StringCopy(destStr, GetSpeciesName(species[Random() % numSpecies], SKIP_NAME_CHECK));
                 return;
             }
