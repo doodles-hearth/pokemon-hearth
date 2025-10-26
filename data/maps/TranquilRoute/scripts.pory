@@ -365,7 +365,7 @@ script TranquilRoute_EventScript_BerryWoman {
 
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I was almost forgetting!\p"
+			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I almost forgot!\p"
 			"You must remember to water them regularly, or they won't grow!\p"
 			"I like you. Take this!"
 		))

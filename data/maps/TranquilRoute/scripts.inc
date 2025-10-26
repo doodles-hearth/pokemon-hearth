@@ -751,7 +751,7 @@ TranquilRoute_EventScript_BerryWoman_Text_2:
 	.string "Here, try planting a few!$"
 
 TranquilRoute_EventScript_BerryWoman_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I was almost forgetting!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I almost forgot!\p"
 	.string "You must remember to water them\n"
 	.string "regularly, or they won't grow!\p"
 	.string "I like you. Take this!$"

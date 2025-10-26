@@ -42,9 +42,9 @@ YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}I'm happy Yifu City is safe again!$"
 
 YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}I stopped going out at night.\n"
-	.string "Those fishy Crobat people roam the\l"
-	.string "streets, loiter at the docks,\l"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}I stopped going out at night.\p"
+	.string "Those fishy Crobat people loiter at\n"
+	.string "the docks right next to our building,\l"
 	.string "speaking in hush tones…$"
 
 YifuCity_BigHouse_1F_EventScript_Man_Text_0:

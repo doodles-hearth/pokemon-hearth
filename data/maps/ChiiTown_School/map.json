@@ -191,7 +191,7 @@
       "x": 9,
       "y": 2,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "ChiiTown_School_EventScript_Board"
     },
     {
@@ -199,7 +199,7 @@
       "x": 10,
       "y": 2,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "ChiiTown_School_EventScript_Board"
     },
     {
@@ -207,7 +207,7 @@
       "x": 5,
       "y": 2,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "ChiiTown_School_EventScript_BoardLegend"
     },
     {
@@ -215,7 +215,7 @@
       "x": 6,
       "y": 2,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "ChiiTown_School_EventScript_BoardLegend"
     },
     {
@@ -223,7 +223,7 @@
       "x": 7,
       "y": 2,
       "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
       "script": "ChiiTown_School_EventScript_BoardLegend"
     }
   ]
