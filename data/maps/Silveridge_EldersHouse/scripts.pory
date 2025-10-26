@@ -136,9 +136,9 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	applymovement(LOCALID_ELDER, moves(emote_pensive, delay_16 * 6))
 	waitmovement(0)
 
-	playse(SE_EXIT)
 	clearflag(FLAG_HIDE_MESSENGER)
 	addobject(LOCALID_MESSENGER)
+	playse(SE_EXIT)
 	waitse
 
 	playse(SE_PIN)
@@ -158,9 +158,9 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	applymovement(LOCALID_MESSENGER, moves(delay_16, walk_in_place_fast_down))
 	waitmovement(LOCALID_MESSENGER)
+	removeobject(LOCALID_MESSENGER)
 	playse(SE_EXIT)
 	waitse
-	removeobject(LOCALID_MESSENGER)
 
 	delay(48)
 

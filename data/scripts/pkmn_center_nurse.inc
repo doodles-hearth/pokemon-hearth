@@ -39,7 +39,6 @@ Common_EventScript_PkmnCenterNurse_Sleep_1:
 	end
 
 Common_EventScript_PkmnCenterNurse_Sleep_2:
-	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	setspeaker SP_NAME_NURSE
 	msgbox Common_EventScript_PkmnCenterNurse_Sleep_Text_0
 	showmoneybox 18, 0
@@ -147,7 +146,6 @@ Common_EventScript_PkmnCenterNurse_CutTheBullshit_2:
 
 EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit::
 	specialvar VAR_RESULT, IsPokerusInParty
-	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	compare VAR_RESULT, TRUE
 	goto_if_eq EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit_1
 	return

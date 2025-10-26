@@ -8,6 +8,7 @@ MaguroHarbor_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 MaguroHarbor_Refuge_EventScript_Nurse::
+	createfieldmugshot MUGSHOT_SEASIDE_NURSE
 	setvar VAR_0x800A, LOCALID_CHANSEY_MAGURO
 	setvar VAR_0x800B, LOCALID_NURSE_MAGURO
 	setvar VAR_0x8009, MUGSHOT_SEASIDE_NURSE
@@ -19,6 +20,7 @@ MaguroHarbor_Refuge_EventScript_Nurse::
 
 
 MaguroHarbor_Refuge_EventScript_Pasture::
+	createfieldmugshot MUGSHOT_SEASIDE_MAN_2
 	setvar VAR_0x8009, MUGSHOT_SEASIDE_MAN_2
 	call Common_EventScript_PcGuy
 	release
@@ -97,6 +99,7 @@ MaguroHarbor_Refuge_BattleHariko_4:
 
 
 MaguroHarbor_Refuge_EventScript_NurseSleep::
+	createfieldmugshot MUGSHOT_SEASIDE_NURSE
 	setvar VAR_0x8009, MUGSHOT_SEASIDE_NURSE
 	call Common_EventScript_PkmnCenterNurse_Sleep
 	waitmessage

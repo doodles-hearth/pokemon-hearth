@@ -715,6 +715,7 @@ script SakuTown_BottomTamaTrigger {
 }
 
 script SakuTown_EventScript_LoversSeeEachOther {
+	turnobject(LOCALID_PLAYER, DIR_EAST)
 	playse(SE_PIN)
 	applymovement(LOCALID_TAMA2, moves(face_right, emote_exclamation_mark))
 	applymovement(LOCALID_ASHII, moves(emote_exclamation_mark))

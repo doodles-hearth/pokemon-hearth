@@ -73,6 +73,7 @@ SakuTown_PokemonCenter_EventScript_Nurse::
 
 
 SakuTown_PokemonCenter_EventScript_Pasture::
+	createfieldmugshot MUGSHOT_SAKURA_MAN_2
 	setvar VAR_0x8009, MUGSHOT_SAKURA_MAN_2
 	call Common_EventScript_PcGuy
 	release

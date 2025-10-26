@@ -264,9 +264,9 @@ script WhiteslateRoute_EventScript_ShuckleGirl {
 script WhiteslateRoute_EventScript_Deerling {
 	lock
 	faceplayer
-	setseenmon(SPECIES_DEERLING)
-	setspeakertomonname(SPECIES_DEERLING)
-	playmoncry(SPECIES_DEERLING, CRY_MODE_NORMAL)
+	setseenmon(SPECIES_DEERLING_AUTUMN)
+	setspeakertomonname(SPECIES_DEERLING_AUTUMN)
+	playmoncry(SPECIES_DEERLING_AUTUMN, CRY_MODE_NORMAL)
 	msgbox(format(
 		"Uhnn!"
 	))
@@ -329,6 +329,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 	waitmovement(LOCALID_SECRET_BASE_POKEMON)
 
 	setseenmon(SPECIES_GROVYLE)
+	setnamedmon(SPECIES_GROVYLE)
 
 	playse(SE_M_ROCK_THROW)
 	

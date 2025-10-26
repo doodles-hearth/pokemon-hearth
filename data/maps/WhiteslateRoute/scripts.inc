@@ -205,9 +205,9 @@ WhiteslateRoute_EventScript_ShuckleGirl::
 WhiteslateRoute_EventScript_Deerling::
 	lock
 	faceplayer
-	setseenmon SPECIES_DEERLING
-	setspeakertomonname SPECIES_DEERLING
-	playmoncry SPECIES_DEERLING, CRY_MODE_NORMAL
+	setseenmon SPECIES_DEERLING_AUTUMN
+	setspeakertomonname SPECIES_DEERLING_AUTUMN
+	playmoncry SPECIES_DEERLING_AUTUMN, CRY_MODE_NORMAL
 	msgbox WhiteslateRoute_EventScript_Deerling_Text_0
 	waitmoncry
 	closemessage
@@ -256,6 +256,7 @@ WhiteslateRoute_Trigger_SecretBase::
 	applymovement 8, WhiteslateRoute_Trigger_SecretBase_Movement_2
 	waitmovement 8
 	setseenmon SPECIES_GROVYLE
+	setnamedmon SPECIES_GROVYLE
 	playse SE_M_ROCK_THROW
 	applymovement 8, WhiteslateRoute_Trigger_SecretBase_Movement_3
 	waitmovement 8

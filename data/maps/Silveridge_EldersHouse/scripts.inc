@@ -86,9 +86,9 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	waitmovement 0
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_8
 	waitmovement 0
-	playse SE_EXIT
 	clearflag FLAG_TEMP_1
 	addobject 4
+	playse SE_EXIT
 	waitse
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_PLAYER, Silveridge_EldersHouse_EventScript_Conversation_Movement_9
@@ -102,9 +102,9 @@ Silveridge_EldersHouse_EventScript_Conversation::
 	closemessage
 	applymovement 4, Silveridge_EldersHouse_EventScript_Conversation_Movement_12
 	waitmovement 4
+	removeobject 4
 	playse SE_EXIT
 	waitse
-	removeobject 4
 	delay 48
 	applymovement 1, Silveridge_EldersHouse_EventScript_Conversation_Movement_13
 	waitmovement 1

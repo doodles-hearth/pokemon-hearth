@@ -41,6 +41,7 @@ ChiiTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
 
 
 ChiiTown_PokemonCenter_EventScript_Nurse::
+	createfieldmugshot MUGSHOT_SUNRISE_NURSE
 	setvar VAR_0x800B, LOCALID_NURSE_CHII
 	setvar VAR_0x800A, LOCALID_CHANSEY_CHII
 	setvar VAR_0x8009, MUGSHOT_SUNRISE_NURSE
@@ -53,6 +54,7 @@ ChiiTown_PokemonCenter_EventScript_Nurse::
 
 
 ChiiTown_PokemonCenter_EventScript_NurseSleep::
+	createfieldmugshot MUGSHOT_SUNRISE_NURSE
 	setvar VAR_0x8009, MUGSHOT_SUNRISE_NURSE
 	call Common_EventScript_PkmnCenterNurse_Sleep
 	waitmessage
@@ -62,6 +64,7 @@ ChiiTown_PokemonCenter_EventScript_NurseSleep::
 
 
 ChiiTown_PokemonCenter_EventScript_Pasture::
+	createfieldmugshot MUGSHOT_SUNRISE_MAN_2
 	setvar VAR_0x8009, MUGSHOT_SUNRISE_MAN_2
 	call Common_EventScript_PcGuy
 	release

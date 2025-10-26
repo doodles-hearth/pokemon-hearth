@@ -624,6 +624,7 @@ SakuTown_BottomTamaTrigger::
 
 
 SakuTown_EventScript_LoversSeeEachOther::
+	turnobject LOCALID_PLAYER, DIR_EAST
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversSeeEachOther_Movement_0
 	applymovement 22, SakuTown_EventScript_RivalAtSakuWall_Movement_0

@@ -43,8 +43,8 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	waitmovement(0)
 	playse(SE_EXIT)
-	waitse
 	removeobject(LOCALID_BIGSIS)
+	waitse
 	
 	setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 3)
 	setflag(FLAG_HIDE_BIGSIS_HOME)
@@ -89,11 +89,11 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 
 		special(GetPlayerBrotherSisterString)
 		setspeaker(SP_NAME_BIG_SIS)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Alrighty! You all set? Have a safe journey, little {STR_VAR_1}.\p"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Alrighty! You all set? Have a safe\njourney, little {STR_VAR_1}.\p"
 			"Maybe I'll see you around!\p"
-			"Come home sometimes though, will you?\N"
-			"I'll send you Chatot messages!"
+			"Come home sometimes though, will you?\nYou and your Pokémon can rest here!\p"
+			"See you soon!\nI'll send you Chatot messages!"
 		))
 		closemessage
 
@@ -116,8 +116,6 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}See you around, little {STR_VAR_1}."
 		))
 		closemessage
-
-		givedecoration(DECOR_SPIKES_MAT)
 	}
 	release
 }
@@ -125,10 +123,10 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 script SunriseVillage_PlayersHouse_LR_EventScript_Eevee {
 	lock
 	faceplayer
-	setspeakertomonname(SPECIES_EEVEE)
-	msgbox(format("Eee!"))
-	playmoncry(SPECIES_EEVEE, CRY_MODE_NORMAL)
 	setseenmon(SPECIES_EEVEE)
+	setspeakertomonname(SPECIES_EEVEE)
+	playmoncry(SPECIES_EEVEE, CRY_MODE_NORMAL)
+	msgbox(format("Eee!"))
 	waitmoncry
 	release
 }
@@ -143,4 +141,14 @@ script SunriseVillage_PlayersHouse_LR_EventScript_RivalsNote {
 	closemessage
     release
     end
+}
+
+script SunriseVillage_PlayersHouse_LR_EventScript_Gong {
+	lock
+	msgbox(format(
+		"It's a gong.\nGONG!… … …\p"
+		"Let's not annoy Big Sis too much."
+	))
+	closemessage
+	release
 }

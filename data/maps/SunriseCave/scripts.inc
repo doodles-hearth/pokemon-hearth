@@ -14,6 +14,7 @@ SunriseCave_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 
 SunriseCave_Trigger_ScaringKrabby::
 	lockall
+	setseenmon SPECIES_KRABBY
 	setvar VAR_TEMP_0, 1
 	playmoncry SPECIES_KRABBY, CRY_MODE_NORMAL
 	applymovement 5, SunriseCave_Trigger_ScaringKrabby_Movement_0
