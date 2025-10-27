@@ -863,14 +863,14 @@ Pic: Gem Maniac
 Gender: Male
 Music: Rich
 Battle Type: Doubles
-AI: Smartish Trainer
+AI: Basic Trainer
 
 Carbink
 Level: 17
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sharpen
 - Rock Throw
-- Smack Down
+- Harden
 
 Sableye @ Stardust
 Level: 16
