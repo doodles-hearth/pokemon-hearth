@@ -481,6 +481,7 @@ SunriseVillage_EldersHouse_EventScript_Natsuki::
 
 SunriseVillage_EldersHouse_EventScript_PostBattle::
 	special HealPlayerParty
+	updatefollowingmon
 	playse SE_LEDGE
 	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_19
 	specialvar VAR_RESULT, GetBattleOutcome
@@ -567,7 +568,7 @@ SunriseVillage_EldersHouse_EventScript_Assistant::
 	waitse
 	playse SE_PIN
 	applymovement VAR_LAST_TALKED, SunriseVillage_EldersHouse_EventScript_Assistant_Movement_0
-	setspeaker SP_NAME_VALET
+	setspeaker SP_NAME_ASSISTANT
 	msgbox SunriseVillage_EldersHouse_EventScript_Assistant_Text_5
 	closemessage
 SunriseVillage_EldersHouse_EventScript_Assistant_1:
@@ -575,7 +576,7 @@ SunriseVillage_EldersHouse_EventScript_Assistant_1:
 	return
 
 SunriseVillage_EldersHouse_EventScript_Assistant_2:
-	setspeaker SP_NAME_VALET
+	setspeaker SP_NAME_ASSISTANT
 	msgbox SunriseVillage_EldersHouse_EventScript_Assistant_Text_0
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_EldersHouse_EventScript_Assistant_Text_1, SunriseVillage_EldersHouse_EventScript_Assistant_Text_2
 	switch VAR_RESULT
@@ -996,10 +997,10 @@ SunriseVillage_EldersHouse_EventScript_Assistant_Text_2:
 	.string "I'm good.$"
 
 SunriseVillage_EldersHouse_EventScript_Assistant_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}To complete a page of the PokéDex,\nyou need a Pokémon's name,\lappearance and description.\p"
-	.string "Its name can be written down if\nsomeone speaks it out loud, or if you\lcatch the Pokémon.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}To complete a page of the PokéDex,\nyou need a Pokémon's real name,\lappearance and description.\p"
+	.string "Write down its name if you hear it\nsomewhere, or if you catch it.\p"
 	.string "Draw a sketch of the Pokémon when\nyou encounter it.\p"
-	.string "And write notes about it whenever you\nhear or witness something interesting!$"
+	.string "And write field notes about it when you\nhear or see something interesting!$"
 
 SunriseVillage_EldersHouse_EventScript_Assistant_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}I see, you're all set then!\nCan't wait to read your findings!$"

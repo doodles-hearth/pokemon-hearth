@@ -513,6 +513,7 @@ script SunriseVillage_EldersHouse_EventScript_Natsuki {
 
 script SunriseVillage_EldersHouse_EventScript_PostBattle {
 	special(HealPlayerParty)
+	updatefollowingmon
 
 	playse(SE_LEDGE)
 	applymovement(LOCALID_RIVAL, moves(jump_in_place_left))
@@ -596,7 +597,7 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 	faceplayer
 
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
-		setspeaker(SP_NAME_VALET)
+		setspeaker(SP_NAME_ASSISTANT)
 		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?"
 		))
@@ -615,10 +616,10 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 		switch (var(VAR_RESULT)) {
 			case 0:
 				msgbox((
-					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}To complete a page of the PokéDex,\nyou need a Pokémon's name,\lappearance and description.\p"
-					"Its name can be written down if\nsomeone speaks it out loud, or if you\lcatch the Pokémon.\p"
+					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}To complete a page of the PokéDex,\nyou need a Pokémon's real name,\lappearance and description.\p"
+					"Write down its name if you hear it\nsomewhere, or if you catch it.\p"
 					"Draw a sketch of the Pokémon when\nyou encounter it.\p"
-					"And write notes about it whenever you\nhear or witness something interesting!"
+					"And write field notes about it when you\nhear or see something interesting!"
 				))
 			case 1:
 				msgbox((
@@ -630,7 +631,7 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_happy))
 
-		setspeaker(SP_NAME_VALET)
+		setspeaker(SP_NAME_ASSISTANT)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}Don't mind me! I hope you're excited about the distribution!"
 		))

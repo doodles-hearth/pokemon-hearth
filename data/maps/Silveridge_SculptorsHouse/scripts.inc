@@ -254,4 +254,4 @@ Silveridge_House1_EventScript_Sculptor_FirstTime_Text_1:
 	.string "my magnum opus.$"
 
 Silveridge_House1_EventScript_Aron_Text_0:
-	.string "Keee!$"
+	.string "Skeea!$"

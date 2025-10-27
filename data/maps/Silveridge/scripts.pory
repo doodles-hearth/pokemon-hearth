@@ -115,3 +115,27 @@ script Silveridge_EventScript_SculptorsHouseSign {
 script Silveridge_EventScript_EldersHouseSign {
 	msgbox(format("{UP_ARROW} Elder Iwa's house"), MSGBOX_SIGN)
 }
+
+script Silveridge_EventScript_AronGuy {
+	lock
+	faceplayer
+	setnamedmon(SPECIES_ARON)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_1 EMOTE_NORMAL}{SPEAKER NAME_MAN}Found this little guy in Silver Tunnel.\nHe's been munching on rocks ever since!"
+	))
+	closemessage
+	release
+}
+
+script Silveridge_EventScript_Aron {
+	lock
+	playmoncry(SPECIES_ARON, CRY_MODE_NORMAL)
+	setseenmon(SPECIES_ARON)
+	setspeakertomonname(SPECIES_ARON)
+	msgbox(format(
+		"Chomp, chomp…"
+	))
+	waitmoncry
+	closemessage
+	release
+}
