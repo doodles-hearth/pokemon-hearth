@@ -1673,8 +1673,6 @@ void ItemUseOutOfBattle_TownMap(u8 taskId)
     else
     {
         gTasks[taskId].func = ItemUseOnFieldCB_TownMap;
-        // TODO EVA this was my addition: should I keep it?
-        SetUpItemUseOnFieldCallback(taskId);
     }
 }
 
