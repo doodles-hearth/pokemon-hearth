@@ -57,7 +57,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	// Elder speaks
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}{PLAYER}, Natsuki.\nYou are late. Why am I surprised?\p"
+		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}{PLAYER}, Natsuki.\nYou are late. Why am I not surprised?\p"
 		"I always have to run after you two!\nNow stay still and listen closely!\p"
 		"As you have heard, the woods, and even\nthe roads, are no longer safe.\p"
 		"We don't yet know why, but the wild\nPokémon that hide in the tall grass\land live peacefully alongside men\lhave started behaving aggressively.\p"
@@ -266,6 +266,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	}
 	if (var(VAR_RESULT) == NO || var(VAR_RESULT) == MULTI_B_PRESSED) {
 		hidemonpic
+		applymovement(LOCALID_ELDER, moves(face_right))
 		setspeaker(SP_NAME_ELDER_KABA)
 		msgbox(format("{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Take the time you need."))
 		closemessage
@@ -512,6 +513,7 @@ script SunriseVillage_EldersHouse_EventScript_Natsuki {
 
 script SunriseVillage_EldersHouse_EventScript_PostBattle {
 	special(HealPlayerParty)
+	updatefollowingmon
 
 	playse(SE_LEDGE)
 	applymovement(LOCALID_RIVAL, moves(jump_in_place_left))
@@ -595,7 +597,7 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 	faceplayer
 
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
-		setspeaker(SP_NAME_VALET)
+		setspeaker(SP_NAME_ASSISTANT)
 		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?"
 		))
@@ -614,10 +616,10 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 		switch (var(VAR_RESULT)) {
 			case 0:
 				msgbox((
-					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}To complete a page of the PokéDex,\nyou need a Pokémon's name,\lappearance and description.\p"
-					"Its name can be written down if\nsomeone speaks it out loud, or if you\lcatch the Pokémon.\p"
+					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}To complete a page of the PokéDex,\nyou need a Pokémon's real name,\lappearance and description.\p"
+					"Write down its name if you hear it\nsomewhere, or if you catch it.\p"
 					"Draw a sketch of the Pokémon when\nyou encounter it.\p"
-					"And write notes about it whenever you\nhear or witness something interesting!"
+					"And write field notes about it when you\nhear or see something interesting!"
 				))
 			case 1:
 				msgbox((
@@ -629,7 +631,7 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_happy))
 
-		setspeaker(SP_NAME_VALET)
+		setspeaker(SP_NAME_ASSISTANT)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}Don't mind me! I hope you're excited about the distribution!"
 		))

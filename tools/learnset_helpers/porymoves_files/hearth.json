@@ -1963,5 +1963,209 @@
       "MOVE_WORRY_SEED"
     ],
     "TutorMoves": []
+  },
+  "NICKIT": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_QUICK_ATTACK"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_TAIL_WHIP"
+      },
+      {
+        "Level": 4,
+        "Move": "MOVE_BEAT_UP"
+      },
+      {
+        "Level": 7,
+        "Move": "MOVE_HONE_CLAWS"
+      },
+      {
+        "Level": 13,
+        "Move": "MOVE_SWIFT"
+      },
+      {
+        "Level": 15,
+        "Move": "MOVE_SNARL"
+      },
+      {
+        "Level": 18,
+        "Move": "MOVE_ASSURANCE"
+      },
+      {
+        "Level": 20,
+        "Move": "MOVE_NASTY_PLOT"
+      },
+      {
+        "Level": 24,
+        "Move": "MOVE_SUCKER_PUNCH"
+      },
+      {
+        "Level": 28,
+        "Move": "MOVE_NIGHT_SLASH"
+      },
+      {
+        "Level": 32,
+        "Move": "MOVE_TAIL_SLAP"
+      },
+      {
+        "Level": 36,
+        "Move": "MOVE_FOUL_PLAY"
+      }
+    ],
+    "PreEvoMoves": [],
+    "TMMoves": [
+      "MOVE_DIG",
+      "MOVE_SCREECH",
+      "MOVE_REST",
+      "MOVE_THIEF",
+      "MOVE_SNORE",
+      "MOVE_PROTECT",
+      "MOVE_ATTRACT",
+      "MOVE_BEAT_UP",
+      "MOVE_FACADE",
+      "MOVE_SWIFT",
+      "MOVE_FAKE_TEARS",
+      "MOVE_MUD_SHOT",
+      "MOVE_ASSURANCE",
+      "MOVE_ROUND",
+      "MOVE_TAIL_SLAP",
+      "MOVE_SNARL",
+      "MOVE_AGILITY",
+      "MOVE_SUBSTITUTE",
+      "MOVE_ENDURE",
+      "MOVE_SLEEP_TALK",
+      "MOVE_BATON_PASS",
+      "MOVE_TAUNT",
+      "MOVE_NASTY_PLOT",
+      "MOVE_FOUL_PLAY",
+      "MOVE_PLAY_ROUGH"
+    ],
+    "EggMoves": [
+      "MOVE_HOWL",
+      "MOVE_KNOCK_OFF",
+      "MOVE_QUICK_GUARD",
+      "MOVE_TORMENT"
+    ],
+    "TutorMoves": [
+      "MOVE_LASH_OUT"
+    ]
+  },
+  "THIEVUL": {
+    "LevelMoves": [
+      {
+        "Level": 0,
+        "Move": "MOVE_THIEF"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_THIEF"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_QUICK_ATTACK"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_TAIL_WHIP"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_BEAT_UP"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_HONE_CLAWS"
+      },
+      {
+        "Level": 1,
+        "Move": "MOVE_SWIFT"
+      },
+      {
+        "Level": 12,
+        "Move": "MOVE_SNARL"
+      },
+      {
+        "Level": 16,
+        "Move": "MOVE_ASSURANCE"
+      },
+      {
+        "Level": 22,
+        "Move": "MOVE_NASTY_PLOT"
+      },
+      {
+        "Level": 28,
+        "Move": "MOVE_SUCKER_PUNCH"
+      },
+      {
+        "Level": 34,
+        "Move": "MOVE_NIGHT_SLASH"
+      },
+      {
+        "Level": 40,
+        "Move": "MOVE_TAIL_SLAP"
+      },
+      {
+        "Level": 46,
+        "Move": "MOVE_FOUL_PLAY"
+      },
+      {
+        "Level": 52,
+        "Move": "MOVE_PARTING_SHOT"
+      }
+    ],
+    "PreEvoMoves": [],
+    "TMMoves": [
+      "MOVE_HYPER_BEAM",
+      "MOVE_GIGA_IMPACT",
+      "MOVE_DIG",
+      "MOVE_SCREECH",
+      "MOVE_REST",
+      "MOVE_THIEF",
+      "MOVE_SNORE",
+      "MOVE_PROTECT",
+      "MOVE_ATTRACT",
+      "MOVE_BEAT_UP",
+      "MOVE_FACADE",
+      "MOVE_SWIFT",
+      "MOVE_FAKE_TEARS",
+      "MOVE_MUD_SHOT",
+      "MOVE_U_TURN",
+      "MOVE_ASSURANCE",
+      "MOVE_SHADOW_CLAW",
+      "MOVE_THUNDER_FANG",
+      "MOVE_ICE_FANG",
+      "MOVE_FIRE_FANG",
+      "MOVE_ROUND",
+      "MOVE_ACROBATICS",
+      "MOVE_TAIL_SLAP",
+      "MOVE_SNARL",
+      "MOVE_PSYCHIC",
+      "MOVE_AGILITY",
+      "MOVE_SUBSTITUTE",
+      "MOVE_ENDURE",
+      "MOVE_SLEEP_TALK",
+      "MOVE_BATON_PASS",
+      "MOVE_CRUNCH",
+      "MOVE_SHADOW_BALL",
+      "MOVE_TAUNT",
+      "MOVE_DARK_PULSE",
+      "MOVE_NASTY_PLOT",
+      "MOVE_GRASS_KNOT",
+      "MOVE_FOUL_PLAY",
+      "MOVE_PLAY_ROUGH"
+    ],
+    "EggMoves": [
+      "MOVE_HOWL",
+      "MOVE_KNOCK_OFF",
+      "MOVE_QUICK_GUARD",
+      "MOVE_TORMENT"
+    ],
+    "TutorMoves": [
+      "MOVE_BURNING_JEALOUSY",
+      "MOVE_LASH_OUT"
+    ]
   }
 }

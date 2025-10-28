@@ -12,6 +12,8 @@ mapscripts SunriseCave_MapScripts {
 
 script SunriseCave_Trigger_ScaringKrabby {
 	lockall
+
+	setseenmon(SPECIES_KRABBY)
 	
 	setvar(VAR_TEMP_0, 1)
 

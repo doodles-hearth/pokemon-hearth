@@ -124,8 +124,10 @@ MaguroHarbor_Dojo_EventScript_Advice_5:
 
 MaguroHarbor_Dojo_EventScript_DojoStatue::
 	lockall
-	goto_if_set FLAG_BADGE01_GET, MaguroHarbor_Dojo_EventScript_DojoStatue_2
-	msgbox MaguroHarbor_Dojo_EventScript_DojoStatue_Text_1, MSGBOX_SIGN
+	goto_if_set FLAG_BADGE01_GET, MaguroHarbor_Dojo_EventScript_DojoStatue_7
+MaguroHarbor_Dojo_EventScript_DojoStatue_5:
+	goto_if_set FLAG_BADGE01_GET, MaguroHarbor_Dojo_EventScript_DojoStatue_3
+	msgbox MaguroHarbor_Dojo_EventScript_DojoStatue_Text_2, MSGBOX_SIGN
 MaguroHarbor_Dojo_EventScript_DojoStatue_1:
 	releaseall
 	return
@@ -133,6 +135,18 @@ MaguroHarbor_Dojo_EventScript_DojoStatue_1:
 MaguroHarbor_Dojo_EventScript_DojoStatue_2:
 	msgbox MaguroHarbor_Dojo_EventScript_DojoStatue_Text_0, MSGBOX_SIGN
 	goto MaguroHarbor_Dojo_EventScript_DojoStatue_1
+
+MaguroHarbor_Dojo_EventScript_DojoStatue_3:
+	msgbox MaguroHarbor_Dojo_EventScript_DojoStatue_Text_1, MSGBOX_SIGN
+	goto MaguroHarbor_Dojo_EventScript_DojoStatue_1
+
+MaguroHarbor_Dojo_EventScript_DojoStatue_6:
+	goto_if_set FLAG_BADGE03_GET, MaguroHarbor_Dojo_EventScript_DojoStatue_2
+	goto MaguroHarbor_Dojo_EventScript_DojoStatue_5
+
+MaguroHarbor_Dojo_EventScript_DojoStatue_7:
+	goto_if_set FLAG_BADGE02_GET, MaguroHarbor_Dojo_EventScript_DojoStatue_6
+	goto MaguroHarbor_Dojo_EventScript_DojoStatue_5
 
 
 MaguroHarbor_Dojo_EventScript_KoishiDefeated_Movement_0:
@@ -294,4 +308,9 @@ MaguroHarbor_Dojo_EventScript_DojoStatue_Text_0:
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_1:
 	.string "Dojo of Maguro Harbor\p"
 	.string "certified Wielders:\n"
-	.string "Natsuki$"
+	.string "{PLAYER}$"
+
+MaguroHarbor_Dojo_EventScript_DojoStatue_Text_2:
+	.string "Dojo of Maguro Harbor\p"
+	.string "certified Wielders:\n"
+	.string "-$"

@@ -624,6 +624,7 @@ SakuTown_BottomTamaTrigger::
 
 
 SakuTown_EventScript_LoversSeeEachOther::
+	turnobject LOCALID_PLAYER, DIR_EAST
 	playse SE_PIN
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversSeeEachOther_Movement_0
 	applymovement 22, SakuTown_EventScript_RivalAtSakuWall_Movement_0
@@ -1361,7 +1362,7 @@ SakuTown_EventScript_LoversReunite_Text_3:
 
 SakuTown_EventScript_LoversReunite_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}So do I.\n"
-	.string "I felt as an insect that could do\l"
+	.string "I felt like an insect that could do\l"
 	.string "nothing but stare at the impossibly\l"
 	.string "tall barricade between us.\p"
 	.string "And yet… Even fierce separatism can't\n"

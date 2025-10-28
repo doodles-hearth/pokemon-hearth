@@ -900,7 +900,7 @@ script YifuCity_Dojo_EventScript_Advice {
 		msgbox((
             "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\nto the Dance Hall Dojo!\p"
             "Got what it takes to see through the\ndancers' intoxicating moves?\p"
-            "Master Yutaka favors Dance Moves.\nA battle with her is like partaking in\la dizzying dancing showdown!"
+            "Master Yutaka favors Dance Moves.\nA battle with her is like partaking in\la dizzying dancing showdown!\p"
             "Watch out though, she can be as\nabrasive as she is beautiful.\p"
             "She probably won't appreciate you\nwalking around her Dojo with your\nclothes looking like… this…\p"
             "Uh, nevermind my babbling!\nGo get 'em, champ!"

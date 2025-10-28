@@ -863,14 +863,14 @@ Pic: Gem Maniac
 Gender: Male
 Music: Rich
 Battle Type: Doubles
-AI: Smartish Trainer
+AI: Basic Trainer
 
 Carbink
 Level: 17
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sharpen
 - Rock Throw
-- Smack Down
+- Harden
 
 Sableye @ Stardust
 Level: 16
@@ -3760,7 +3760,7 @@ Skiploom
 Level: 26
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Mega Drain
-- Acrobatics
+- Aerial Ace
 - Stun Spore
 - Fairy Wind
 
@@ -5149,7 +5149,7 @@ Gender: Female
 Music: Female
 Items: Uumegiri
 Battle Type: Singles
-AI: Smartish Trainer / Ace Pokemon
+AI: Smartish Trainer
 
 Surskit @ Oran Berry
 Level: 13
@@ -5221,7 +5221,7 @@ Gender: Female
 Music: Female
 Items: Supergiri
 Battle Type: Doubles
-AI: Basic Trainer / Ace Pokemon
+AI: Smartish Trainer
 
 Oricorio Sensu
 Level: 23
@@ -6328,8 +6328,8 @@ Level: 12
 
 === TRAINER_REN ===
 Name: Ren
-Class: Swimmer F
-Pic: Beauty
+Class: Beauty
+Pic: Masquerain Woman
 Gender: Female
 Music: Female
 Battle Type: Singles

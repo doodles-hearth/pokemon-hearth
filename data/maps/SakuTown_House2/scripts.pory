@@ -96,11 +96,11 @@ script SakuTown_House2_EventScript_Reunited {
 
 	delay(30)
 	// Espeon appears
-	playse(SE_EXIT)
-	waitse
 	addobject(LOCALID_ESPEON)
 	setobjectxy(LOCALID_ESPEON, 4, 7)
 	turnobject(LOCALID_ESPEON, DIR_NORTH)
+	playse(SE_EXIT)
+	waitse
 
 	// Everyone faces down and is surprised
 	applymovement(LOCALID_ESPEONS_MASTER, Common_Movement_FaceDown)
@@ -184,11 +184,12 @@ script SakuTown_House2_EventScript_Reunited {
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Anyway, thank you so much for helping me out. I'm so grateful.\p"
 		"As a thanks, you can have your pick from my cool rock collection!"
 	))
+	closemessage
 	call(SakuTown_House2_EventScript_GiveEvoStone)
 }
 
 script SakuTown_House2_EventScript_GiveEvoStone {
-	msgbox(format("{DESTROY_MUGSHOT}{SPEAKER NAME_NONE}Which rock would you like?"))
+	msgbox(format("Which rock would you like?"))
 
 	dynmultichoice(
 		0,
@@ -203,7 +204,6 @@ script SakuTown_House2_EventScript_GiveEvoStone {
 	)
 	closemessage
 
-	setspeaker(SP_NAME_BOY)
 	switch (var(VAR_RESULT)) {
 		case 0:
 			giveitem(ITEM_FIRE_STONE)

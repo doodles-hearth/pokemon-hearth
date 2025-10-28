@@ -85,11 +85,11 @@ SakuTown_House2_EventScript_Reunited::
 	msgbox SakuTown_House2_EventScript_EspeonsMaster_Text_3
 	closemessage
 	delay 30
-	playse SE_EXIT
-	waitse
 	addobject 2
 	setobjectxy 2, 4, 7
 	turnobject 2, DIR_NORTH
+	playse SE_EXIT
+	waitse
 	applymovement 1, Common_Movement_FaceDown
 	applymovement 3, Common_Movement_FaceDown
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
@@ -128,6 +128,7 @@ SakuTown_House2_EventScript_Reunited_6:
 	waitmovement 0
 	setspeaker SP_NAME_BOY
 	msgbox SakuTown_House2_EventScript_Reunited_Text_4
+	closemessage
 	call SakuTown_House2_EventScript_GiveEvoStone
 	return
 
@@ -169,7 +170,6 @@ SakuTown_House2_EventScript_GiveEvoStone::
 	msgbox SakuTown_House2_EventScript_GiveEvoStone_Text_0
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SakuTown_House2_EventScript_GiveEvoStone_Text_1, SakuTown_House2_EventScript_GiveEvoStone_Text_2, SakuTown_House2_EventScript_GiveEvoStone_Text_3
 	closemessage
-	setspeaker SP_NAME_BOY
 	switch VAR_RESULT
 	case 0, SakuTown_House2_EventScript_GiveEvoStone_3
 	case 1, SakuTown_House2_EventScript_GiveEvoStone_4
@@ -329,7 +329,7 @@ SakuTown_House2_EventScript_Reunited_Text_4:
 	.string "from my cool rock collection!$"
 
 SakuTown_House2_EventScript_GiveEvoStone_Text_0:
-	.string "{DESTROY_MUGSHOT}{SPEAKER NAME_NONE}Which rock would you like?$"
+	.string "Which rock would you like?$"
 
 SakuTown_House2_EventScript_GiveEvoStone_Text_1:
 	.string "The red rock$"

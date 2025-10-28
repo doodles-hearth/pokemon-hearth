@@ -30,6 +30,7 @@ YifuCity_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
 
 
 YifuCity_Refuge_EventScript_Nurse::
+	createfieldmugshot MUGSHOT_UUME_NURSE
 	setvar VAR_0x800B, LOCALID_NURSE_YIFU
 	setvar VAR_0x800A, LOCALID_CHANSEY_YIFU
 	setvar VAR_0x8009, MUGSHOT_UUME_NURSE
@@ -41,6 +42,7 @@ YifuCity_Refuge_EventScript_Nurse::
 
 
 YifuCity_Refuge_EventScript_Pasture::
+	createfieldmugshot MUGSHOT_UUME_MAN_2
 	setvar VAR_0x8009, MUGSHOT_UUME_MAN_2
 	call Common_EventScript_PcGuy
 	release

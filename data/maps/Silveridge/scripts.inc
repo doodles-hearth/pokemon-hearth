@@ -111,6 +111,28 @@ Silveridge_EventScript_EldersHouseSign::
 	return
 
 
+Silveridge_EventScript_AronGuy::
+	lock
+	faceplayer
+	setnamedmon SPECIES_ARON
+	msgbox Silveridge_EventScript_AronGuy_Text_0
+	closemessage
+	release
+	return
+
+
+Silveridge_EventScript_Aron::
+	lock
+	playmoncry SPECIES_ARON, CRY_MODE_NORMAL
+	setseenmon SPECIES_ARON
+	setspeakertomonname SPECIES_ARON
+	msgbox Silveridge_EventScript_Aron_Text_0
+	waitmoncry
+	closemessage
+	release
+	return
+
+
 Silveridge_EventScript_LotOfRocks_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_FAT_GUY EMOTE_NORMAL}We don't have a lot of natural\n"
 	.string "resources here in Silveridge.\p"
@@ -177,3 +199,11 @@ Silveridge_EventScript_SculptorsHouseSign_Text_0:
 
 Silveridge_EventScript_EldersHouseSign_Text_0:
 	.string "{UP_ARROW} Elder Iwa's house$"
+
+Silveridge_EventScript_AronGuy_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_1 EMOTE_NORMAL}{SPEAKER NAME_MAN}Found this little guy in Silver Tunnel.\n"
+	.string "He's been munching on rocks ever\l"
+	.string "since!$"
+
+Silveridge_EventScript_Aron_Text_0:
+	.string "Chomp, chomp…$"

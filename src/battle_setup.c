@@ -54,6 +54,7 @@
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
 #include "fishing.h"
+#include "field_mugshot.h"
 
 enum TransitionType
 {
@@ -336,6 +337,7 @@ static void DoStandardWildBattle(bool32 isDouble)
     StopPlayerAvatar();
     gMain.savedCallback = CB2_EndWildBattle;
     gBattleTypeFlags = 0;
+    RemoveFieldMugshot();
     if (IsNPCFollowerWildBattle())
     {
         gBattleTypeFlags |= BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_DOUBLE;
@@ -361,6 +363,7 @@ void DoStandardWildBattle_Debug(void)
     StopPlayerAvatar();
     gMain.savedCallback = CB2_EndWildBattle;
     gBattleTypeFlags = 0;
+    RemoveFieldMugshot();
     if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {
         VarSet(VAR_TEMP_PLAYING_PYRAMID_MUSIC, 0);
@@ -378,6 +381,7 @@ void BattleSetup_StartRoamerBattle(void)
     LockPlayerFieldControls();
     FreezeObjectEvents();
     StopPlayerAvatar();
+    RemoveFieldMugshot();
     gMain.savedCallback = CB2_EndWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_ROAMER;
     CreateBattleStartTask(GetWildBattleTransition(), 0);
@@ -392,6 +396,7 @@ static void DoSafariBattle(void)
     LockPlayerFieldControls();
     FreezeObjectEvents();
     StopPlayerAvatar();
+    RemoveFieldMugshot();
     gMain.savedCallback = CB2_EndSafariBattle;
     gBattleTypeFlags = BATTLE_TYPE_SAFARI;
     CreateBattleStartTask(GetWildBattleTransition(), 0);
@@ -402,6 +407,7 @@ static void DoBattlePikeWildBattle(void)
     LockPlayerFieldControls();
     FreezeObjectEvents();
     StopPlayerAvatar();
+    RemoveFieldMugshot();
     gMain.savedCallback = CB2_EndWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_PIKE;
     CreateBattleStartTask(GetWildBattleTransition(), 0);
@@ -413,6 +419,7 @@ static void DoBattlePikeWildBattle(void)
 
 static void DoTrainerBattle(void)
 {
+    RemoveFieldMugshot();
     CreateBattleStartTask(GetTrainerBattleTransition(), 0);
     IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
     IncrementGameStat(GAME_STAT_TRAINER_BATTLES);
@@ -444,6 +451,7 @@ void StartWallyTutorialBattle(void)
 void BattleSetup_StartScriptedWildBattle(void)
 {
     LockPlayerFieldControls();
+    RemoveFieldMugshot();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = 0;
     CreateBattleStartTask(GetWildBattleTransition(), 0);
@@ -456,6 +464,7 @@ void BattleSetup_StartScriptedWildBattle(void)
 void BattleSetup_StartScriptedDoubleWildBattle(void)
 {
     LockPlayerFieldControls();
+    RemoveFieldMugshot();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_DOUBLE;
     CreateBattleStartTask(GetWildBattleTransition(), 0);
@@ -468,6 +477,7 @@ void BattleSetup_StartScriptedDoubleWildBattle(void)
 void BattleSetup_StartLatiBattle(void)
 {
     LockPlayerFieldControls();
+    RemoveFieldMugshot();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
     gBattleTypeFlags = BATTLE_TYPE_LEGENDARY;
     CreateBattleStartTask(GetWildBattleTransition(), 0);

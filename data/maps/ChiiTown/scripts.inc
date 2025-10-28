@@ -356,6 +356,18 @@ ChiiTown_EventScript_HexManiac::
 	return
 
 
+ChiiTown_EventScript_Deerling::
+	lock
+	setseenmon SPECIES_DEERLING_SPRING
+	playmoncry SPECIES_DEERLING_SPRING, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_DEERLING_SPRING
+	msgbox ChiiTown_EventScript_Deerling_Text_0
+	waitmoncry
+	closemessage
+	release
+	return
+
+
 ChiiTown_EventScript_Kecleon_Movement_0:
 	emote_music
 	step_end
@@ -518,3 +530,6 @@ ChiiTown_EventScript_HexManiac_Text_0:
 	.string "There are fewer people outdoors\n"
 	.string "after dark, so I only hang out at\l"
 	.string "night.$"
+
+ChiiTown_EventScript_Deerling_Text_0:
+	.string "Hun!$"

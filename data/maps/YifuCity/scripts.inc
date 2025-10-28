@@ -18,7 +18,7 @@ YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
 	goto_if_ge YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_11
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_10:
 	setflag FLAG_TEMP_7
-	goto_if_set FLAG_BADGE03_GET, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_16
+	goto_if_set FLAG_BADGE03_GET, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_17
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
@@ -43,6 +43,10 @@ YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_15:
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_16:
 	goto_if_unset FLAG_DEMO_END, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_15
+	return
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_17:
+	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_16
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:

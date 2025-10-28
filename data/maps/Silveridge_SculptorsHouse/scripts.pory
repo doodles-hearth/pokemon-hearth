@@ -208,7 +208,7 @@ script Silveridge_House1_EventScript_Aron {
 	setspeakertomonname(SPECIES_ARON)
 	playmoncry(SPECIES_ARON, CRY_MODE_NORMAL)
     msgbox(format(
-        "Keee!"
+        "Skeea!"
     ))
     waitmoncry
     release

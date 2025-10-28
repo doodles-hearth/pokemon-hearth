@@ -80,6 +80,7 @@ Silveridge_Refuge_EventScript_Kricketune::
 
 
 Silveridge_Refuge_EventScript_NurseSleep::
+	createfieldmugshot MUGSHOT_MOUNTAIN_NURSE
 	setvar VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE
 	call Common_EventScript_PkmnCenterNurse_Sleep
 	waitmessage
@@ -89,6 +90,7 @@ Silveridge_Refuge_EventScript_NurseSleep::
 
 
 Silveridge_Refuge_EventScript_Nurse::
+	createfieldmugshot MUGSHOT_MOUNTAIN_NURSE
 	setvar VAR_0x800B, LOCALID_NURSE_SILVERIDGE
 	setvar VAR_0x800A, LOCALID_CHANSEY_SILVERIDGE
 	setvar VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE
@@ -101,6 +103,7 @@ Silveridge_Refuge_EventScript_Nurse::
 
 
 Silveridge_Refuge_EventScript_Pasture::
+	createfieldmugshot MUGSHOT_MOUNTAIN_MAN_2
 	setvar VAR_0x8009, MUGSHOT_MOUNTAIN_MAN_2
 	call Common_EventScript_PcGuy
 	release

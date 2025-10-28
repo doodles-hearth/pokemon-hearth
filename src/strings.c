@@ -214,7 +214,7 @@ const u8 gText_TheField[] = _("the field");
 const u8 gText_TheBattle[] = _("the battle");
 const u8 gText_ThePokemonList[] = _("the POKéMON LIST");
 const u8 gText_TheShop[] = _("the shop");
-const u8 gText_ThePC[] = _("the PC");
+const u8 gText_ThePC[] = _("the chest");
 
 const u8 *const gBagMenu_ReturnToStrings[] =
 {

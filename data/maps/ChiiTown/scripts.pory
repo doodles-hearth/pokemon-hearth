@@ -388,3 +388,14 @@ script ChiiTown_EventScript_HexManiac {
 		"There are fewer people outdoors after dark, so I only hang out at night."
 	), MSGBOX_NPC)
 }
+
+script ChiiTown_EventScript_Deerling {
+	lock
+	setseenmon(SPECIES_DEERLING_SPRING)
+	playmoncry(SPECIES_DEERLING_SPRING, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_DEERLING_SPRING)
+	msgbox(format("Hun!"))
+	waitmoncry
+	closemessage
+	release
+}

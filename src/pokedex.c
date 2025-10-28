@@ -3479,10 +3479,11 @@ static void Task_HandleInfoScreenInput(u8 taskId)
         switch (sPokedexView->selectedScreen)
         {
         case AREA_SCREEN:
-            BeginNormalPaletteFade(PALETTES_ALL & ~(0x14), 0, 0, 16, RGB_BLACK);
+            /* BeginNormalPaletteFade(PALETTES_ALL & ~(0x14), 0, 0, 16, RGB_BLACK);
             sPokedexView->screenSwitchState = 1;
             gTasks[taskId].func = Task_SwitchScreensFromInfoScreen;
-            PlaySE(SE_PIN);
+            PlaySE(SE_PIN); */
+            PlaySE(SE_FAILURE);
             break;
         case CRY_SCREEN:
             BeginNormalPaletteFade(PALETTES_ALL & ~(0x14), 0, 0, 0x10, RGB_BLACK);
@@ -3491,7 +3492,8 @@ static void Task_HandleInfoScreenInput(u8 taskId)
             PlaySE(SE_PIN);
             break;
         case SIZE_SCREEN:
-            if (!sPokedexListItem->owned)
+            PlaySE(SE_FAILURE);
+            /* if (!sPokedexListItem->owned)
             {
                 PlaySE(SE_FAILURE);
             }
@@ -3501,7 +3503,7 @@ static void Task_HandleInfoScreenInput(u8 taskId)
                 sPokedexView->screenSwitchState = 3;
                 gTasks[taskId].func = Task_SwitchScreensFromInfoScreen;
                 PlaySE(SE_PIN);
-            }
+            } */
             break;
         case CANCEL_SCREEN:
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
@@ -4275,9 +4277,16 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
     PrintInfoScreenText(category, 0x64, 0x29);
     PrintMonMeasurements(species,owned);
 
-    description = GetSpeciesPokedexDescription(species, DO_NAME_CHECK);
-
-    PrintInfoScreenText(description, GetStringCenterAlignXOffset(FONT_NORMAL, description, DISPLAY_WIDTH), 95);
+    u8 desc[] = _("No information yet!");
+    if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_DESCRIBED) == FALSE)
+    {
+        PrintInfoScreenText(desc, GetStringCenterAlignXOffset(FONT_NORMAL, desc, DISPLAY_WIDTH), 95);
+    }
+    else
+    {
+        description = GetSpeciesPokedexDescription(species, DO_NAME_CHECK);
+        PrintInfoScreenText(description, GetStringCenterAlignXOffset(FONT_NORMAL, description, DISPLAY_WIDTH), 95);
+    }
 }
 
 void PrintMonMeasurements(u16 species, u32 owned)

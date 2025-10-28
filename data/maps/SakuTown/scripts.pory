@@ -715,6 +715,7 @@ script SakuTown_BottomTamaTrigger {
 }
 
 script SakuTown_EventScript_LoversSeeEachOther {
+	turnobject(LOCALID_PLAYER, DIR_EAST)
 	playse(SE_PIN)
 	applymovement(LOCALID_TAMA2, moves(face_right, emote_exclamation_mark))
 	applymovement(LOCALID_ASHII, moves(emote_exclamation_mark))
@@ -783,7 +784,7 @@ script SakuTown_EventScript_LoversReunite {
 
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}So do I.\nI felt as an insect that could do nothing but stare at the impossibly tall barricade between us.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}So do I.\nI felt like an insect that could do nothing but stare at the impossibly tall barricade between us.\p"
 		"And yet… Even fierce separatism can't keep us apart.\p"
 		"Tonight, we can have a midsummer dream of joy and mirth."
 	))
