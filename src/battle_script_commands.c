@@ -71,6 +71,14 @@
 #include "follower_npc.h"
 #include "load_save.h"
 
+// Acts essentially like a percentage multiplier
+// for the exp catch up feature
+static const u8 sCatchUpExpFactors[] =
+{
+    100, 110, 125, 140, 160, 175, 190, 200, 210, 220,
+    225, 230, 235, 240, 245, 250,
+};
+
 // table to avoid ugly powing on gba (courtesy of doesnt)
 // this returns (i^2.5)/4
 // the quarters cancel so no need to re-quadruple them in actual calculation
@@ -14748,6 +14756,24 @@ u8 GetFirstFaintedPartyIndex(u8 battler)
     return PARTY_SIZE;
 }
 
+static inline u8 GetHighestMonLevel(void)
+{
+    u32 i, level;
+    u8 highestLevel = 0;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
+        {
+            level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+            if(level > highestLevel)
+                highestLevel = level;
+        }
+    }
+
+    return highestLevel;
+}
+
 void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBattler)
 {
     enum HoldEffect holdEffect = GetMonHoldEffect(&gPlayerParty[expGetterMonId]);
@@ -14764,6 +14790,19 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
         *expAmount = (*expAmount * 150) / 100;
     if (FlagGet(FLAG_DAILY_MON_DEX_RIDDLE_WON))
         *expAmount = (*expAmount * 110) / 100;
+
+    if (B_CATCH_UP_EXP == TRUE)
+    {
+        s8 levelDiff = GetHighestMonLevel() - GetMonData(&gPlayerParty[expGetterMonId], MON_DATA_LEVEL);
+
+        if (levelDiff < 0)
+            levelDiff = 0;
+
+        if (levelDiff > 15)
+            levelDiff = 15;
+
+        *expAmount = (*expAmount * sCatchUpExpFactors[levelDiff]) / 100;
+    }
 
     if (B_SCALED_EXP >= GEN_5 && B_SCALED_EXP != GEN_6)
     {
