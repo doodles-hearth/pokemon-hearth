@@ -10,6 +10,8 @@ mapscripts Kura_Beachbound_Gate_MapScripts {
 
 script Kura_Beachbound_Gate_EventScript_Guard {
 	lock
+	waitse
+	playse(SE_M_SNORE)
 	setspeaker(SP_NAME_SAMURAI)
 	applymovement(VAR_LAST_TALKED, moves(emote_sleep))
 	msgbox(format(

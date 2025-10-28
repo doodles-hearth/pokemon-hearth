@@ -5147,26 +5147,26 @@ Class: Dojo Master
 Pic: Leader Koishi
 Gender: Female
 Music: Female
-Items: Uumegiri
+Items: Supergiri
 Battle Type: Singles
 AI: Smartish Trainer
 
 Surskit @ Oran Berry
-Level: 13
+Level: 14
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Nature Power
 - String Shot
 - Pounce
 
 Barboach
-Level: 12
+Level: 13
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Mud Bomb
 - Nature Power
 - Flail
 
 Lombre
-Level: 14
+Level: 15
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Nature Power
 - Mega Drain
@@ -5198,12 +5198,13 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Bubble Beam
 - Bite
 
-Sudowoodo
-Level: 19
-IVs: 15 HP / 12 Atk / 15 Def / 12 SpA / 15 SpD / 15 Spe
-- Feint Attack
+Bonsly
+Level: 18
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+- Mimic
 - Low Kick
 - Rock Tomb
+- Flail
 
 Grotle @ Sitrus Berry
 Level: 18
@@ -10932,20 +10933,19 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Cherrim
-Level: 18
+Level: 17
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Sunny Day
 - Magical Leaf
 - Morning Sun
 
 Skiploom
-Level: 19
+Level: 17
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Chlorophyll
-- Synthesis
 - Poison Powder
-- Bullet Seed
-- Headbutt
+- Synthesis
+- Tackle
 
 === TRAINER_SUMIRE ===
 Name: Sumire
@@ -10973,7 +10973,7 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Castform
-Level: 19
+Level: 17
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Rain Dance
 - Headbutt

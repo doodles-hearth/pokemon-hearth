@@ -15,6 +15,8 @@ Kura_Beachbound_Gate_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 
 Kura_Beachbound_Gate_EventScript_Guard::
 	lock
+	waitse
+	playse SE_M_SNORE
 	setspeaker SP_NAME_SAMURAI
 	applymovement VAR_LAST_TALKED, Kura_Beachbound_Gate_EventScript_Guard_Movement_0
 	msgbox Kura_Beachbound_Gate_EventScript_Guard_Text_0

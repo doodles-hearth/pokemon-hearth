@@ -299,6 +299,7 @@ BeachboundRoute_EventScript_Mugging_1:
 	addvar VAR_PLAYER_REPUTATION, 1
 	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_14
 	waitmovement 17
+	removeobject 17
 	waitmovement 0
 	return
 
@@ -404,6 +405,11 @@ BeachboundRoute_EventScript_SeeDecay::
 	setflag FLAG_SPAWN_INVISIBLE
 	warpsilent MAP_BEACHBOUND_ROUTE_DECAY, 43, 17
 	releaseall
+	return
+
+
+BeachboundRoute_Sign_TrainerTips_XP::
+	msgbox BeachboundRoute_Sign_TrainerTips_XP_Text_0, MSGBOX_SIGN
 	return
 
 
@@ -827,10 +833,10 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2:
 	.string "If you're a traveler, you're definitely\n"
 	.string "going to see me around!\p"
 	.string "What's your name? {PLAYER}? It's\n"
-	.string "nice to meet you, {PLAYER}! I see\l"
-	.string "you're a young Wielder, eh? Maybe we\l"
-	.string "can even have a friendly battle\l"
-	.string "sometime!\p"
+	.string "nice to meet you, {PLAYER}!\p"
+	.string "I see you're a young Wielder, eh?\n"
+	.string "Maybe we can even have a friendly\l"
+	.string "battle sometime!\p"
 	.string "I'm in the area for a while to gather\n"
 	.string "some resources.\p"
 	.string "Can I interest you in some handpicked\n"
@@ -839,3 +845,8 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2:
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Thanks for your business! Now where\n"
 	.string "did I put that scroll again…$"
+
+BeachboundRoute_Sign_TrainerTips_XP_Text_0:
+	.string "Did you know?\p"
+	.string "Weaker Pokémon will grow faster to\n"
+	.string "catch up with your stronger ones!$"

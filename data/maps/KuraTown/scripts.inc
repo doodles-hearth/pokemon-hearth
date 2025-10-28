@@ -152,6 +152,7 @@ KuraTown_EventScript_SilkScarf::
 	goto_if_set FLAG_RECEIVED_SILK_SCARF, KuraTown_EventScript_SilkScarf_2
 	setspeaker SP_NAME_GIRL
 	msgbox KuraTown_EventScript_SilkScarf_Text_1
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_DojoChallenger_Movement_1
 	msgbox KuraTown_EventScript_SilkScarf_Text_2
 	closemessage

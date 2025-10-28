@@ -132,6 +132,8 @@ OldWomanQuest2Script_4:
 
 KuraTown_House1_OldWomansSon::
 	lock
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, KuraTown_House1_OldWomansSon_Movement_0
 	faceplayer
 	setspeaker SP_NAME_GUY

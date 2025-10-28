@@ -118,6 +118,7 @@ SakuTown_EventScript_RivalAtSakuWall_1:
 	case SPECIES_FROAKIE, SakuTown_EventScript_RivalAtSakuWall_8
 	case SPECIES_CYNDAQUIL, SakuTown_EventScript_RivalAtSakuWall_9
 SakuTown_EventScript_RivalAtSakuWall_5:
+	playse SE_PIN
 	applymovement LOCALID_NATSUKI_SAKU, SakuTown_EventScript_RivalAtSakuWall_Movement_3
 	setspeaker SP_NAME_NATSUKI
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_3
@@ -155,6 +156,7 @@ SakuTown_EventScript_RivalAtSakuWall_9:
 	goto SakuTown_EventScript_RivalAtSakuWall_5
 
 SakuTown_EventScript_RivalAtSakuWall_12:
+	playse SE_PIN
 	applymovement LOCALID_NATSUKI_SAKU, SakuTown_EventScript_RivalAtSakuWall_Movement_4
 	setspeaker SP_NAME_NATSUKI
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_6
@@ -166,6 +168,7 @@ SakuTown_EventScript_RivalAtSakuWall_13:
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_RivalAtSakuWall_Movement_5
 	waitmovement 0
+	playse SE_PIN
 	applymovement LOCALID_NATSUKI_SAKU, SakuTown_EventScript_RivalAtSakuWall_Movement_4
 	setspeaker SP_NAME_NATSUKI
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_8
@@ -1307,7 +1310,7 @@ SakuTown_EventScript_TamaArgument_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}{FONT_SMALL_NARROW}Huff… wheeze…$"
 
 SakuTown_EventScript_TamaArgument_Text_6:
-	.string "Dangnabit!$"
+	.string "Dagnabbit!$"
 
 SakuTown_EventScript_TamaArgument_Text_7:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}That'll teach you!!$"

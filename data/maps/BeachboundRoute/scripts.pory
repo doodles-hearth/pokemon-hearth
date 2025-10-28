@@ -504,6 +504,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	applymovement(LOCALID_MUGGED_WOMAN, moves(walk_left, walk_down * 5, walk_left * 9))
 	waitmovement(LOCALID_MUGGED_WOMAN)
+	removeobject(LOCALID_MUGGED_WOMAN)
 	waitmovement(0)
 }
 
@@ -532,7 +533,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 			"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
 			"I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
 			"If you're a traveler, you're definitely going to see me around!\p"
-			"What's your name? {PLAYER}? It's nice to meet you, {PLAYER}!"
+			"What's your name? {PLAYER}? It's nice to meet you, {PLAYER}!\p"
 			"I see you're a young Wielder, eh? Maybe we can even have a friendly battle sometime!\p"
 			"I'm in the area for a while to gather some resources.\p"
 			"Can I interest you in some handpicked goods?"
@@ -564,4 +565,11 @@ script BeachboundRoute_EventScript_SeeDecay {
 	warpsilent(MAP_BEACHBOUND_ROUTE_DECAY, 43, 17)
 
 	releaseall
+}
+
+script BeachboundRoute_Sign_TrainerTips_XP {
+	msgbox(format(
+		"Did you know?\p"
+		"Weaker Pokémon will grow faster to catch up with your stronger ones!"
+	), MSGBOX_SIGN)
 }

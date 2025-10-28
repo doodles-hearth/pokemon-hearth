@@ -385,8 +385,8 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Now that you have your own Pokémon,\nyou two are budding Pokémon Wielders!\p"
-		"The more Wielders there are,\nthe deeper our understanding\lof Pokémon will be.\p"
-		"Studying these creatures from up\nclose will get us to the bottom of this.\p"
+		"The more Wielders there are,\nthe deeper our understanding\lof these creatures will be.\p"
+		"Studying Pokémon from up close will\nget us to the bottom of this.\p"
 		"Actually, there's something\nI wanted to ask you."
 	)
 	closemessage

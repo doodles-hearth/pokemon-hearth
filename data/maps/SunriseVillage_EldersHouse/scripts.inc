@@ -904,8 +904,8 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7:
 	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Now that you have your own Pokémon,\nyou two are budding Pokémon Wielders!\p"
-	.string "The more Wielders there are,\nthe deeper our understanding\lof Pokémon will be.\p"
-	.string "Studying these creatures from up\nclose will get us to the bottom of this.\p"
+	.string "The more Wielders there are,\nthe deeper our understanding\lof these creatures will be.\p"
+	.string "Studying Pokémon from up close will\nget us to the bottom of this.\p"
 	.string "Actually, there's something\nI wanted to ask you.$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_8:

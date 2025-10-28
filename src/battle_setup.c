@@ -1359,11 +1359,13 @@ static void CB2_EndTrainerBattle(void)
 
     if (TRAINER_BATTLE_PARAM.opponentA == TRAINER_SECRET_BASE)
     {
+        FlagClear(B_FLAG_NO_WHITEOUT);
         DowngradeBadPoison();
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
     }
     else if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
+        DebugPrintf("defeated. Flag=%d", FlagGet(B_FLAG_NO_WHITEOUT));
         if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InTrainerHillChallenge() || (!NoAliveMonsForPlayer()) || FlagGet(B_FLAG_NO_WHITEOUT))
             SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         else
@@ -1375,6 +1377,7 @@ static void CB2_EndTrainerBattle(void)
     }
     else
     {
+        FlagClear(B_FLAG_NO_WHITEOUT);
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         DowngradeBadPoison();
         if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE && !InTrainerHillChallenge())
@@ -1398,6 +1401,7 @@ static void CB2_EndRematchBattle(void)
     }
     else
     {
+        FlagClear(B_FLAG_NO_WHITEOUT);
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
         RegisterTrainerInMatchCall();
         SetBattledTrainersFlags();

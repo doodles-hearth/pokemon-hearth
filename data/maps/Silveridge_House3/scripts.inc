@@ -14,6 +14,7 @@ Silveridge_House3_EventScript_DreamingPokemon::
 
 Silveridge_House3_EventScript_SleepingMon::
 	lock
+	waitse
 	playse SE_M_SNORE
 	setseenmon SPECIES_SEEDOT
 	setspeakertomonname SPECIES_SEEDOT

@@ -211,9 +211,8 @@ GinkoWoods_EventScript_Toshio_Register_Text_0:
 	.string "and battle again sometime!$"
 
 GinkoWoods_EventScript_Eiji_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}With the help of my brand new\n"
-	.string "Pokémon, I'm catching all sort of\l"
-	.string "bugs!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}With my brand new Pokémon, I'm\n"
+	.string "catching all sorts of bugs!$"
 
 GinkoWoods_EventScript_Eiji_Text_1:
 	.string "My bugs!$"
