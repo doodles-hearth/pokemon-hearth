@@ -71,6 +71,8 @@
 #include "follower_npc.h"
 #include "load_save.h"
 
+#include "tarc_speedup.h"
+
 // Acts essentially like a percentage multiplier
 // for the exp catch up feature
 static const u8 sCatchUpExpFactors[] =
@@ -4224,6 +4226,9 @@ static void Cmd_tryfaintmon(void)
         if (!(gAbsentBattlerFlags & (1u << battler))
          && !IsBattlerAlive(battler))
         {
+            if (battler == 1)
+                StopSpeedup();
+
             gHitMarker |= HITMARKER_FAINTED(battler);
             BattleScriptPush(cmd->nextInstr);
             gBattlescriptCurrInstr = faintScript;
@@ -4903,10 +4908,16 @@ static void Cmd_checkteamslost(void)
         return;
 
     if (NoAliveMonsForPlayer())
+    {
+        StopSpeedup();
         gBattleOutcome |= B_OUTCOME_LOST;
+    }
 
     if (NoAliveMonsForOpponent())
+    {
+        StopSpeedup();
         gBattleOutcome |= B_OUTCOME_WON;
+    }
 
     // Fair switching - everyone has to switch in most at the same time, without knowing which pokemon the other trainer selected.
     // In vanilla Emerald this was only used for link battles, in expansion it's also used for regular trainer battles.
