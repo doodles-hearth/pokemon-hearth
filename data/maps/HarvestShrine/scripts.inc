@@ -125,8 +125,8 @@ HarvestShrine_EventScript_MonkRain_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}You prayed to the venerable Bronzong\n"
 	.string "for rain, and He heeded your prayer!\p"
 	.string "He doesn't listen to just anyone,\n"
-	.string "you know?\l"
-	.string "There's something about you, kid…\l"
+	.string "you know?\p"
+	.string "There's something about you, kid…\n"
 	.string "Take this! I insist!$"
 
 HarvestShrine_EventScript_MonkRain_Text_2:

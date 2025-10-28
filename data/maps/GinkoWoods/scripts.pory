@@ -52,7 +52,7 @@ script(local) GinkoWoods_EventScript_Toshio_Register {
 script GinkoWoods_EventScript_Eiji {
 	trainerbattle_single(
 		TRAINER_EIJI,
-		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}With the help of my brand new Pokémon, I'm catching all sort of bugs!"),
+		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}With my brand new Pokémon, I'm catching all sorts of bugs!"),
 		format("My bugs!")
 	)
 	setspeaker(SP_NAME_BUGCATCHER)

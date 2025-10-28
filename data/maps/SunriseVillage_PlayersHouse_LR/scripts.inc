@@ -111,10 +111,16 @@ SunriseVillage_PlayersHouse_LR_EventScript_RivalsNote::
 
 SunriseVillage_PlayersHouse_LR_EventScript_Gong::
 	lock
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Gong_Text_0
+	goto_if_set FLAG_HIDE_BIGSIS_HOME, SunriseVillage_PlayersHouse_LR_EventScript_Gong_2
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Gong_Text_1
+SunriseVillage_PlayersHouse_LR_EventScript_Gong_1:
 	closemessage
 	release
 	return
+
+SunriseVillage_PlayersHouse_LR_EventScript_Gong_2:
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Gong_Text_0
+	goto SunriseVillage_PlayersHouse_LR_EventScript_Gong_1
 
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Movement_0:
@@ -190,6 +196,10 @@ SunriseVillage_PlayersHouse_LR_EventScript_RivalsNote_Text_0:
 	.string "-Natsuki”$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_Gong_Text_0:
+	.string "It's a gong.\n"
+	.string "GONG!… … …$"
+
+SunriseVillage_PlayersHouse_LR_EventScript_Gong_Text_1:
 	.string "It's a gong.\n"
 	.string "GONG!… … …\p"
 	.string "Let's not annoy Big Sis too much.$"

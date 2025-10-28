@@ -3805,7 +3805,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .backAnimId = BACK_ANIM_H_SLIDE,
         .palette = gMonPalette_SewaddleTokuan,
         .shinyPalette = gMonShinyPalette_SewaddleTokuan,
-        .iconPalIndex = 1,
+        .iconPalIndex = 2,
         .iconSprite = gMonIcon_SewaddleTokuan,
         FOOTPRINT(Sewaddle)
         OVERWORLD(
@@ -3874,7 +3874,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .backAnimId = BACK_ANIM_H_VIBRATE,
         .palette = gMonPalette_SwadloonTokuan,
         .shinyPalette = gMonShinyPalette_SwadloonTokuan,
-        .iconPalIndex = 1,
+        .iconPalIndex = 2,
         .iconSprite = gMonIcon_SwadloonTokuan,
         FOOTPRINT(Swadloon)
         OVERWORLD(
@@ -3949,7 +3949,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .backAnimId = BACK_ANIM_GROW_STUTTER,
         .palette = gMonPalette_LeavannyTokuan,
         .shinyPalette = gMonShinyPalette_LeavannyTokuan,
-        .iconPalIndex = 1,
+        .iconPalIndex = 2,
         .iconSprite = gMonIcon_LeavannyTokuan,
         FOOTPRINT(Leavanny)
         SHADOW(2, 14, SHADOW_SIZE_S)

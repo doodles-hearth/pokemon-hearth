@@ -135,6 +135,7 @@ MaguroHarbor_Refuge_EventScript_DescribedMons::
 	getdescribedmon SPECIES_KRABBY
 	compare VAR_RESULT, 0
 	goto_if_ne MaguroHarbor_Refuge_EventScript_DescribedMons_2
+	waitse
 	playse SE_PIN
 	applymovement VAR_LAST_TALKED, MaguroHarbor_Refuge_EventScript_DescribedMons_Movement_0
 	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1

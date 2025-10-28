@@ -132,6 +132,8 @@ script OldWomanQuest2Script {
 
 script KuraTown_House1_OldWomansSon {
 	lock
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	faceplayer
 	setspeaker(SP_NAME_GUY)

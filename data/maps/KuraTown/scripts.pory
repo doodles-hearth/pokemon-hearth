@@ -166,6 +166,7 @@ script KuraTown_EventScript_SilkScarf {
 				"Is it awful?\nDoes it make my skin look grey?"
 			)
 		)
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
 			"Oh gosh, it does, doesn't it? I knew it! I have to get rid of it right this moment!\p"

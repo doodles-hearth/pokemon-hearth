@@ -145,10 +145,16 @@ script SunriseVillage_PlayersHouse_LR_EventScript_RivalsNote {
 
 script SunriseVillage_PlayersHouse_LR_EventScript_Gong {
 	lock
-	msgbox(format(
-		"It's a gong.\nGONG!… … …\p"
-		"Let's not annoy Big Sis too much."
-	))
+	if (flag(FLAG_HIDE_BIGSIS_HOME)) {
+		msgbox(format(
+			"It's a gong.\nGONG!… … …"
+		))
+	} else {
+		msgbox(format(
+			"It's a gong.\nGONG!… … …\p"
+			"Let's not annoy Big Sis too much."
+		))
+	}
 	closemessage
 	release
 }

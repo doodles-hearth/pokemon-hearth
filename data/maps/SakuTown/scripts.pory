@@ -123,6 +123,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_CYNDAQUIL, SakuTown_Text_RivalDefeat)
 	}
 
+	playse(SE_PIN)
 	applymovement(LOCALID_NATSUKI_SAKU, moves(emote_pensive))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
@@ -146,6 +147,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	switch(var(VAR_RESULT)) {
 		case 0:
+			playse(SE_PIN)
 			applymovement(LOCALID_NATSUKI_SAKU, moves(emote_happy))
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
@@ -161,6 +163,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(face_up, delay_16 * 3, face_down, emote_question_mark, delay_16 * 6))
 			waitmovement(0)
 
+			playse(SE_PIN)
 			applymovement(LOCALID_NATSUKI_SAKU, moves(emote_happy))
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
@@ -572,7 +575,7 @@ script SakuTown_EventScript_TamaArgument {
 	waitmovement(OBJ_EVENT_ID_CAMERA)
 	special(RemoveCameraObject)
 
-	trainerbattle_no_intro_no_whiteout(TRAINER_TAMAS_DAD, "Dangnabit!")
+	trainerbattle_no_intro_no_whiteout(TRAINER_TAMAS_DAD, "Dagnabbit!")
 
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) != B_OUTCOME_WON) {

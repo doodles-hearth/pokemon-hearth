@@ -122,7 +122,7 @@ Silveridge_Refuge_EventScript_Shamisen::
 	setspeaker SP_NAME_SHAMISEN_PLAYER
 	msgbox Silveridge_Refuge_EventScript_Shamisen_Text_3
 	closemessage
-	giveitem ITEM_UUMEGIRI, 3
+	giveitem ITEM_SUPERGIRI, 2
 	setflag FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER
 Silveridge_Refuge_EventScript_Shamisen_1:
 	release
@@ -174,7 +174,7 @@ Silveridge_Refuge_EventScript_FirebringerFangirl_Text_1:
 	.string "He's so…\n"
 	.string "Rough-looking…\l"
 	.string "And handsome…\l"
-	.string "And he smells like smoke… Sigh…$"
+	.string "And smoke-smelling… Sigh…$"
 
 Silveridge_Refuge_EventScript_Artist_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Listening to the musician's sweet\n"
