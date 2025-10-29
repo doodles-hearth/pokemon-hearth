@@ -625,7 +625,6 @@ static void Task_OptionMenuFadeIn(u8 taskId)
 
 static void Task_OptionMenuProcessInput(u8 taskId)
 {
-    int i = 0;
     u8 optionsToDraw = min(OPTIONS_ON_SCREEN, MenuItemCount());
     if (JOY_NEW(A_BUTTON))
     {
@@ -870,18 +869,18 @@ static int ProcessInput_Options_Three(int selection)
     return XOptions_ProcessInput(3, selection);
 }
 
-static int ProcessInput_Options_Four(int selection)
+UNUSED static int ProcessInput_Options_Four(int selection)
 {
     return XOptions_ProcessInput(4, selection);
 }
 
-static int ProcessInput_Options_Eleven(int selection)
+UNUSED static int ProcessInput_Options_Eleven(int selection)
 {
     return XOptions_ProcessInput(11, selection);
 }
 
 // Process Input functions ****SPECIFIC****
-static int ProcessInput_Sound(int selection)
+UNUSED static int ProcessInput_Sound(int selection)
 {
     if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
     {
@@ -923,7 +922,7 @@ static void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style, bool8 act
     DrawRightSideChoiceText(text, x, y + 1, style != 0, active);
 }
 
-static void DrawChoices_Options_Four(const u8 *const *const strings, int selection, int y, bool8 active)
+UNUSED static void DrawChoices_Options_Four(const u8 *const *const strings, int selection, int y, bool8 active)
 {
     static const u8 choiceOrders[][3] =
         {
