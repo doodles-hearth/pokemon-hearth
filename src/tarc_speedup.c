@@ -12,10 +12,20 @@ EWRAM_DATA bool32 sPause = FALSE;
 
 void StartSpeedup(void)
 {
-    if (VarGet(VAR_TARC_SPEEDUP) && !sDoSpeedup)
+    DebugPrintf("Speed=%d", gSaveBlock2Ptr->optionsBattleSpeed);
+    if (gSaveBlock2Ptr->optionsBattleSpeed != BATTLE_SPEED_NORMAL && !sDoSpeedup)
     {
         sDoSpeedup = TRUE;
-        sNumSkips = VarGet(VAR_TARC_SPEEDUP);
+        switch(gSaveBlock2Ptr->optionsBattleSpeed)
+        {
+            case BATTLE_SPEED_MID:
+                sNumSkips = 2;
+                break;
+            case BATTLE_SPEED_FAST:
+            default:
+                sNumSkips = 6;
+                break;
+        }
     }
 }
 

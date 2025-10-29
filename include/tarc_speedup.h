@@ -5,6 +5,9 @@
 #include "gba/types.h"
 
 #define MAX_SPEEDUP 10
+#define BATTLE_SPEED_NORMAL 0
+#define BATTLE_SPEED_MID    1
+#define BATTLE_SPEED_FAST   2
 
 void StartSpeedup(void);
 void StopSpeedup(void);
