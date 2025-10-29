@@ -248,6 +248,8 @@ extern const u8 gText_BattlePyramidConfirmRetire[];
 
 // option menu texts
 extern const u8 gText_BattleSpeedNormal[];
+extern const u8 gText_BattleSpeedFast[];
+extern const u8 gText_BattleSpeedFaster[];
 extern const u8 gText_TextSpeedSlow[];
 extern const u8 gText_TextSpeedMid[];
 extern const u8 gText_TextSpeedFast[];

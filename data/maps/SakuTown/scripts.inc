@@ -1204,7 +1204,7 @@ SakuTown_EventScript_Karateka_Text_3:
 	.string "I bet you want your Pokémon to have\n"
 	.string "strong and forceful hands, too.\p"
 	.string "Come back when you're stronger.\n"
-	.string "Once you getyour first Token!$"
+	.string "Once you get your first Token!$"
 
 SakuTown_EventScript_Guard_Text_0:
 	.string "Damn, where did that Mareep come\n"

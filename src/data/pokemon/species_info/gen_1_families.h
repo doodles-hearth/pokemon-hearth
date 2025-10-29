@@ -7116,7 +7116,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #endif
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Meowth"),
-        .unknownName = _("Scratch Cat"),
+        .unknownName = _("Money Cat"),
         .cryId = CRY_MEOWTH,
         .natDexNum = NATIONAL_DEX_MEOWTH,
         .categoryName = _("Scratch Cat"),

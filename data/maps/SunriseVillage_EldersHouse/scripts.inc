@@ -228,7 +228,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16:
 	turnobject 1, DIR_SOUTH
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
 	setspeaker SP_NAME_NATSUKI
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_5
 	closemessage
 	switch VAR_STARTER_MON
 	case SPECIES_FROAKIE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_28
@@ -236,12 +236,12 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16:
 	case SPECIES_CYNDAQUIL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_30
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	setspeaker SP_NAME_ELDER_KABA
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6
 	closemessage
-	applymovement 1, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15
+	applymovement 1, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_14
 	waitmovement 0
 	playfanfare MUS_OBTAIN_ITEM
-	message SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_8
+	message SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7
 	waitfanfare
 	setflag FLAG_SYS_POKEDEX_GET
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
@@ -249,29 +249,29 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	delay 20
 	setspeaker SP_NAME_NATSUKI
 	playse SE_PIN
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_16
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_8
 	closemessage
 	delay 20
-	applymovement 1, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_17
+	applymovement 1, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_16
 	waitmovement 0
 	setspeaker SP_NAME_ELDER_KABA
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9
 	closemessage
 	giveitem ITEM_LETTER
 	waitfanfare
 	closemessage
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_18
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_17
 	waitmovement 0
 	setspeaker SP_NAME_NATSUKI
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10
 	closemessage
 	applymovement 2, Common_Movement_WalkInPlaceFasterLeft
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	waitmovement 2
 	setspeaker SP_NAME_NATSUKI
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_12
-	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11
+	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_12, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13
 	compare VAR_RESULT, 0
 	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_48
 	applymovement 2, Common_Movement_WalkInPlaceFasterUp
@@ -279,15 +279,15 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26:
 	checkplayergender
 	compare VAR_RESULT, MALE
 	goto_if_eq SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_55
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_17
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_16
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_54:
 	closemessage
 	applymovement 2, Common_Movement_WalkInPlaceFasterLeft
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_47:
 	setspeaker SP_NAME_NATSUKI
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_17
 	closemessage
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_20
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_19
 	waitmovement 0
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 6
 	goto SunriseVillage_EldersHouse_EventScript_RivalBattle
@@ -312,10 +312,6 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_8:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_10:
 	hidemonpic
-	applymovement 1, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_0
-	setspeaker SP_NAME_ELDER_KABA
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_4
-	closemessage
 	return
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_11:
@@ -325,7 +321,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_11:
 	case SPECIES_CYNDAQUIL, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_25
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21:
 	playfanfare MUS_OBTAIN_ITEM
-	message SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_5
+	message SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_4
 	waitmessage
 	waitfanfare
 	switch VAR_TEMP_1
@@ -373,65 +369,65 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_25:
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_21
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_28:
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_9
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_8
 	waitmovement 0
 	playmoncry SPECIES_SNIVY, CRY_MODE_NORMAL
 	removeobject 6
 	removeobject 3
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_10
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_9
 	waitmovement 0
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_29:
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_11
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_10
 	waitmovement 0
 	playmoncry SPECIES_CYNDAQUIL, CRY_MODE_NORMAL
 	removeobject 8
 	removeobject 5
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_12
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_11
 	waitmovement 0
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_30:
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_13
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_12
 	waitmovement 0
 	playmoncry SPECIES_FROAKIE, CRY_MODE_NORMAL
 	removeobject 7
 	removeobject 4
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_14
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_13
 	waitmovement 0
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_26
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_32:
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_1
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_0
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_33:
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_2
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_1
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_35:
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_3
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_2
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_36:
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_4
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_3
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_37:
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_5
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_4
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_39:
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_6
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_5
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_40:
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_7
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_6
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_41:
-	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_8
+	applymovement OBJ_EVENT_ID_PLAYER, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_7
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_16
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_44:
@@ -454,8 +450,8 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_46:
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_48:
 	playse SE_LEDGE
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_19
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_18
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14
 	closemessage
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_47
 
@@ -465,7 +461,7 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_52:
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_51
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_55:
-	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_16
+	msgbox SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15
 	goto SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_54
 
 
@@ -483,7 +479,7 @@ SunriseVillage_EldersHouse_EventScript_PostBattle::
 	special HealPlayerParty
 	updatefollowingmon
 	playse SE_LEDGE
-	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_19
+	applymovement 2, SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_18
 	specialvar VAR_RESULT, GetBattleOutcome
 	compare VAR_RESULT, B_OUTCOME_WON
 	goto_if_eq SunriseVillage_EldersHouse_EventScript_PostBattle_2
@@ -551,13 +547,32 @@ SunriseVillage_EldersHouse_EventScript_RivalBattle_5:
 SunriseVillage_EldersHouse_EventScript_Joltik::
 	lock
 	faceplayer
+	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
+	goto_if_ge SunriseVillage_EldersHouse_EventScript_Joltik_2
+	playmoncry SPECIES_JOLTIK, CRY_MODE_NORMAL
+	showmonpic SPECIES_JOLTIK, 10, 3
+	setnamedmon SPECIES_JOLTIK
+	msgbox SunriseVillage_EldersHouse_EventScript_Joltik_Text_1, MSGBOX_YESNO
+	closemessage
+	hidemonpic
+	waitse
+	playse SE_PIN
+	applymovement 1, SunriseVillage_EldersHouse_EventScript_Joltik_Movement_0
+	msgbox SunriseVillage_EldersHouse_EventScript_Joltik_Text_2
+	waitmovement 0
+	applymovement 1, SunriseVillage_EldersHouse_EventScript_Joltik_Movement_1
+	closemessage
+SunriseVillage_EldersHouse_EventScript_Joltik_1:
+	release
+	end
+
+SunriseVillage_EldersHouse_EventScript_Joltik_2:
 	setseenmon SPECIES_JOLTIK
 	playmoncry SPECIES_JOLTIK, CRY_MODE_NORMAL
 	setspeakertomonname SPECIES_JOLTIK
 	msgbox SunriseVillage_EldersHouse_EventScript_Joltik_Text_0
 	waitmoncry
-	release
-	end
+	goto SunriseVillage_EldersHouse_EventScript_Joltik_1
 
 
 SunriseVillage_EldersHouse_EventScript_Assistant::
@@ -664,45 +679,48 @@ SunriseVillage_EldersHouse_EventScript_TryToEnterOtherRoom_Movement_0:
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_0:
-	face_right
+	walk_down
+	walk_down
+	walk_left
+	walk_down
+	walk_in_place_faster_up
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_1:
-	walk_down
-	walk_down
 	walk_left
 	walk_down
 	walk_in_place_faster_up
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_2:
-	walk_left
+	walk_down
+	walk_down
 	walk_down
 	walk_in_place_faster_up
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_3:
 	walk_down
-	walk_down
-	walk_down
 	walk_in_place_faster_up
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_4:
-	walk_down
-	walk_in_place_faster_up
-	step_end
-
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_5:
 	walk_right
 	walk_down
 	walk_down
 	walk_in_place_faster_up
 	step_end
 
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_5:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_down
+	walk_in_place_faster_up
+	step_end
+
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_6:
-	walk_down
-	walk_down
 	walk_left
 	walk_left
 	walk_down
@@ -710,6 +728,8 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_6:
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_7:
+	walk_down
+	walk_left
 	walk_left
 	walk_left
 	walk_down
@@ -717,54 +737,45 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_7:
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_8:
-	walk_down
+	walk_up
 	walk_left
-	walk_left
-	walk_left
-	walk_down
 	walk_in_place_faster_up
+	delay_16
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_9:
-	walk_up
-	walk_left
+	walk_right
+	walk_down
 	walk_in_place_faster_up
 	delay_16
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_10:
+	walk_up
 	walk_right
-	walk_down
 	walk_in_place_faster_up
 	delay_16
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_11:
-	walk_up
-	walk_right
+	walk_left
+	walk_down
 	walk_in_place_faster_up
 	delay_16
 	step_end
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_12:
-	walk_left
-	walk_down
-	walk_in_place_faster_up
-	delay_16
-	step_end
-
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_13:
 	walk_up
 	delay_16
 	step_end
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_14:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_13:
 	walk_down
 	walk_in_place_faster_up
 	delay_16
 	step_end
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_14:
 	walk_right
 	walk_right
 	walk_in_place_faster_down
@@ -774,23 +785,23 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15:
 	delay_16
 	step_end
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_16:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_15:
 	emote_question_mark
 	step_end
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_17:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_16:
 	walk_in_place_fast_down
 	step_end
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_18:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_17:
 	walk_in_place_fast_up
 	step_end
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_19:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_18:
 	jump_in_place_left
 	step_end
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_20:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Movement_19:
 	face_player
 	step_end
 
@@ -803,6 +814,15 @@ SunriseVillage_EldersHouse_EventScript_PostBattle_Movement_0:
 SunriseVillage_EldersHouse_EventScript_PostBattle_Movement_1:
 	walk_down
 	walk_down
+	step_end
+
+SunriseVillage_EldersHouse_EventScript_Joltik_Movement_0:
+	face_up
+	emote_angry
+	step_end
+
+SunriseVillage_EldersHouse_EventScript_Joltik_Movement_1:
+	face_right
 	step_end
 
 SunriseVillage_EldersHouse_EventScript_Assistant_Movement_0:
@@ -893,28 +913,25 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_3:
 	.string "tender heart of the hearth?$"
 
 SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_4:
-	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Take the time you need.$"
-
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_5:
 	.string "{PLAYER} received the Pokémon\n"
 	.string "{STR_VAR_1}!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Alright. I'm taking this one!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_6:
 	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Now that you have your own Pokémon,\nyou two are budding Pokémon Wielders!\p"
 	.string "The more Wielders there are,\nthe deeper our understanding\lof these creatures will be.\p"
 	.string "Studying Pokémon from up close will\nget us to the bottom of this.\p"
 	.string "Actually, there's something\nI wanted to ask you.$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_8:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_7:
 	.string "{PLAYER} received the PokéDex!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_8:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What's this? A book?$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_9:
 	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}I call this the “PokéDex”.\n"
 	.string "It is an encyclopedia containing all\l"
 	.string "we know about the region's Pokémon!\p"
@@ -931,29 +948,29 @@ SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10:
 	.string "I could send him a Chatot, but I need\l"
 	.string "to make sure it gets to him.$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_10:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Understood, Grandma Kaba.\n"
 	.string "We're going adventuring!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_12:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_11:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}… Are you ready?$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_12:
 	.string "Totally!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_13:
 	.string "Absolutely not!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_14:
 	.string "That's what I'm talking about!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_16:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_15:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't listen to him! He's so ready!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_17:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_16:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't listen to her! She's so ready!$"
 
-SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_18:
+SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter_Text_17:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}{PLAYER}!\n"
 	.string "Let's see what our Pokémon can do!\p"
 	.string "I request an official Pokémon\n"
@@ -986,6 +1003,13 @@ SunriseVillage_EldersHouse_EventScript_RivalBattle_Text_0:
 
 SunriseVillage_EldersHouse_EventScript_Joltik_Text_0:
 	.string "Fss!$"
+
+SunriseVillage_EldersHouse_EventScript_Joltik_Text_1:
+	.string "Do you choose Joltik,\n"
+	.string "tiny spark of the woods?$"
+
+SunriseVillage_EldersHouse_EventScript_Joltik_Text_2:
+	.string "Hands off my Joltik!!$"
 
 SunriseVillage_EldersHouse_EventScript_Assistant_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?$"

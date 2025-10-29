@@ -313,7 +313,7 @@ script SakuTown_EventScript_Karateka {
 			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
 			"Their hands are strong and forceful…\p"
 			"I bet you want your Pokémon to have strong and forceful hands, too.\p"
-			"Come back when you're stronger.\nOnce you getyour first Token!"
+			"Come back when you're stronger.\nOnce you get your first Token!"
 		))
 		closemessage
 	}
