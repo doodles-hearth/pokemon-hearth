@@ -623,6 +623,8 @@ struct SaveBlock2
     u8 limitedShopVars[LIMITED_SHOP_VAR_COUNT];
     u8 questData[QUEST_FLAGS_COUNT * QUEST_STATES];
     u8 subQuests[SUB_FLAGS_COUNT];
+
+    u16 optionsBattleSpeed:3;
 }; 
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
