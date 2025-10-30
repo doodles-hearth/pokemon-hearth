@@ -596,12 +596,13 @@ script SunriseVillage_EldersHouse_EventScript_Joltik {
 		waitse
 		playse(SE_PIN)
 		applymovement(LOCALID_ELDER, moves(face_up, emote_angry))
+		setspeaker(SP_NAME_ELDER_KABA)
 		msgbox(format(
-			"Hands off my Joltik!!"
+			"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Hands off my Joltik!!"
 		))
 		waitmovement(0)
-		applymovement(LOCALID_ELDER, moves(face_right))
 		closemessage
+		applymovement(LOCALID_ELDER, moves(face_right))
 	}
     release
     end	

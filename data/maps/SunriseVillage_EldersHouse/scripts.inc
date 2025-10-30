@@ -558,10 +558,11 @@ SunriseVillage_EldersHouse_EventScript_Joltik::
 	waitse
 	playse SE_PIN
 	applymovement 1, SunriseVillage_EldersHouse_EventScript_Joltik_Movement_0
+	setspeaker SP_NAME_ELDER_KABA
 	msgbox SunriseVillage_EldersHouse_EventScript_Joltik_Text_2
 	waitmovement 0
-	applymovement 1, SunriseVillage_EldersHouse_EventScript_Joltik_Movement_1
 	closemessage
+	applymovement 1, SunriseVillage_EldersHouse_EventScript_Joltik_Movement_1
 SunriseVillage_EldersHouse_EventScript_Joltik_1:
 	release
 	end
@@ -1009,7 +1010,7 @@ SunriseVillage_EldersHouse_EventScript_Joltik_Text_1:
 	.string "tiny spark of the woods?$"
 
 SunriseVillage_EldersHouse_EventScript_Joltik_Text_2:
-	.string "Hands off my Joltik!!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Hands off my Joltik!!$"
 
 SunriseVillage_EldersHouse_EventScript_Assistant_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET EMOTE_NORMAL}Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?$"
