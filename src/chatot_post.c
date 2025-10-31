@@ -187,7 +187,7 @@ bool32 TryGetNonTrainerPost(u32 postType)
             continue;
         }
 
-        // Already used msg
+        // Already read msg
         if (CheckChatotPostFlag(postIdx))
         {
             DebugPrintf("  Skipping already used");
@@ -311,7 +311,7 @@ bool8 Native_TrySetChatotPostActive(struct ScriptContext *ctx)
     
     u32 idPost = ScriptReadHalfword(ctx);
 
-    if (!CheckChatotPostFlag(idPost)) {
+    if (!IsPostInQueue(idPost) && !CheckChatotPostFlag(idPost)) {
         SetChatotPostActive(idPost);
     }
 
