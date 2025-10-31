@@ -50,6 +50,21 @@ mapscripts SakuTown_PokemonCenter_MapScripts {
 	]
 }
 
+script Saku_PokemonCenter_EventScript_NurseSleep {
+	if (flag(FLAG_HIDE_SAKU_REFUGE_FARMERS_2)) {
+		createfieldmugshot(MUGSHOT_SAKURA_NURSE)
+		setvar(VAR_0x8009, MUGSHOT_SAKURA_NURSE)
+		call(Common_EventScript_PkmnCenterNurse_Sleep)
+		waitmessage
+		waitbuttonpress
+	} else {
+		lock
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}{SPEAKER NAME_NURSE}I'm sorry, we don't have enough room for you to sleep here…"))
+		closemessage
+	}
+	release
+}
+
 script SakuTown_PokemonCenter_EventScript_Nurse {
 	// setvar(VAR_0x800B, LOCALID_NURSE)
 	// call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)

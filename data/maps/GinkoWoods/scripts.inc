@@ -282,7 +282,7 @@ GinkoWoods_EventScript_Bean_Text_7:
 
 GinkoWoods_EventScript_Bean_Text_8:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right! I am glad you share my interest\n"
-	.string "in Pokémon habitat.\p"
+	.string "in Pokémon habitats.\p"
 	.string "I am Hariko. And what is your name?\p"
 	.string "{PLAYER}.\n"
 	.string "It has been nice chatting with you.\l"

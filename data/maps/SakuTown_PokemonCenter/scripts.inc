@@ -54,6 +54,24 @@ SakuTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	.2byte 0
 
 
+Saku_PokemonCenter_EventScript_NurseSleep::
+	goto_if_set FLAG_HIDE_SAKU_REFUGE_FARMERS_2, Saku_PokemonCenter_EventScript_NurseSleep_2
+	lock
+	msgbox Saku_PokemonCenter_EventScript_NurseSleep_Text_0
+	closemessage
+Saku_PokemonCenter_EventScript_NurseSleep_1:
+	release
+	return
+
+Saku_PokemonCenter_EventScript_NurseSleep_2:
+	createfieldmugshot MUGSHOT_SAKURA_NURSE
+	setvar VAR_0x8009, MUGSHOT_SAKURA_NURSE
+	call Common_EventScript_PkmnCenterNurse_Sleep
+	waitmessage
+	waitbuttonpress
+	goto Saku_PokemonCenter_EventScript_NurseSleep_1
+
+
 SakuTown_PokemonCenter_EventScript_Nurse::
 	lock
 	faceplayer
@@ -523,6 +541,10 @@ SakuTown_Refuge_EventScript_MakuhitaRest_Movement_0:
 SakuTown_Refuge_EventScript_MakuhitaWork_Movement_0:
 	emote_happy
 	step_end
+
+Saku_PokemonCenter_EventScript_NurseSleep_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}{SPEAKER NAME_NURSE}I'm sorry, we don't have enough room\n"
+	.string "for you to sleep here…$"
 
 SakuTown_PokemonCenter_EventScript_Nurse_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}Hello! Apologies for the mess, we're\n"

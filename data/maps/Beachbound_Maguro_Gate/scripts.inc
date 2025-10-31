@@ -29,6 +29,18 @@ Beachbound_Maguro_Gate_EventScript_Guard_2:
 	goto Beachbound_Maguro_Gate_EventScript_Guard_1
 
 
+Beachbound_Maguro_Gate_EventScript_Umbreon::
+	lock
+	faceplayer
+	setseenmon SPECIES_UMBREON
+	setspeakertomonname SPECIES_UMBREON
+	playmoncry SPECIES_UMBREON, CRY_MODE_NORMAL
+	msgbox Beachbound_Maguro_Gate_EventScript_Umbreon_Text_0
+	waitmoncry
+	release
+	end
+
+
 Beachbound_Maguro_Gate_EventScript_Guard_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Are you going to Beachbound Route?\n"
 	.string "Uh, be careful, kid!$"
@@ -36,3 +48,6 @@ Beachbound_Maguro_Gate_EventScript_Guard_Text_0:
 Beachbound_Maguro_Gate_EventScript_Guard_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Ugh, I hate guard duty…\n"
 	.string "We're not even allowed a book…$"
+
+Beachbound_Maguro_Gate_EventScript_Umbreon_Text_0:
+	.string "Whew…$"

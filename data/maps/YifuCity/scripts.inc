@@ -1749,6 +1749,15 @@ YifuCity_EventScript_UumeForestTrees::
 	return
 
 
+YifuCity_EventScript_WhereRefuge::
+	lock
+	faceplayer
+	msgbox YifuCity_EventScript_WhereRefuge_Text_0
+	closemessage
+	release
+	return
+
+
 YifuCity_EventScript_DemoEnd_Movement_0:
 	walk_down
 	walk_down
@@ -2725,3 +2734,7 @@ YifuCity_EventScript_UumeForestTrees_Text_0:
 	.string "of Uume Forest for myself!\p"
 	.string "I've heard wonders about their\n"
 	.string "foliage's shades of purple!$"
+
+YifuCity_EventScript_WhereRefuge_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}Looking for the Pokémon Refuge?\n"
+	.string "Just follow this path.$"

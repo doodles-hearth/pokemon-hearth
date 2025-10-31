@@ -1931,3 +1931,13 @@ script YifuCity_EventScript_UumeForestTrees {
 	closemessage
 	release
 }
+
+script YifuCity_EventScript_WhereRefuge {
+	lock
+	faceplayer
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}Looking for the Pokémon Refuge?\nJust follow this path."
+	))
+	closemessage
+	release
+}

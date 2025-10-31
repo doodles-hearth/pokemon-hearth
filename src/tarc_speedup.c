@@ -12,7 +12,6 @@ EWRAM_DATA bool32 sPause = FALSE;
 
 void StartSpeedup(void)
 {
-    DebugPrintf("Speed=%d", gSaveBlock2Ptr->optionsBattleSpeed);
     if (gSaveBlock2Ptr->optionsBattleSpeed != BATTLE_SPEED_NORMAL && !sDoSpeedup)
     {
         sDoSpeedup = TRUE;

@@ -364,6 +364,20 @@
       "lunchtime": false,
       "morning": false,
       "night": false
+    },
+    {
+      "local_id": "LOCALID_BIGSIS_MAP",
+      "graphics_id": "OBJ_EVENT_GFX_BIG_SISTER",
+      "x": 17,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_5"
     }
   ],
   "warp_events": [
@@ -493,20 +507,29 @@
     {
       "type": "trigger",
       "x": 17,
-      "y": 7,
+      "y": 6,
       "elevation": 0,
       "var": "VAR_SUNRISE_VILLAGE_INTRO_STATE",
       "var_value": "7",
-      "script": "SunriseVillage_Event_GuardForest"
+      "script": "SunriseVillage_Event_BigSisMap_Left"
     },
     {
       "type": "trigger",
       "x": 18,
-      "y": 7,
+      "y": 6,
       "elevation": 0,
       "var": "VAR_SUNRISE_VILLAGE_INTRO_STATE",
       "var_value": "7",
-      "script": "SunriseVillage_Event_GuardForest"
+      "script": "SunriseVillage_Event_BigSisMap_Middle"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_SUNRISE_VILLAGE_INTRO_STATE",
+      "var_value": "7",
+      "script": "SunriseVillage_Event_BigSisMap_Right"
     }
   ],
   "bg_events": [

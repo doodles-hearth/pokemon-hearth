@@ -12977,7 +12977,7 @@ const struct Item gItemsInfo[] =
 
     [ITEM_TOWN_MAP] =
     {
-        .name = ITEM_NAME("Town Map"),
+        .name = ITEM_NAME("Toku Map"),
         .price = 0,
         .description = COMPOUND_STRING(
             "Can be viewed\n"

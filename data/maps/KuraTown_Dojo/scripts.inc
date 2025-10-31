@@ -91,6 +91,7 @@ KuraTown_Dojo_EventScript_HanaDefeated::
 	call Common_EventScript_PlayGymBadgeFanfare
 	setspeaker SP_NAME_HANA
 	msgbox KuraTown_Dojo_EventScript_HanaDefeated_Text_1, MSGBOX_DEFAULT
+	closemessage
 	setflag FLAG_BADGE02_GET
 	setvar VAR_0x8008, 2
 	call Common_EventScript_SetGymTrainers

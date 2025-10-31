@@ -172,6 +172,7 @@ script KuraTown_Dojo_EventScript_HanaDefeated {
 		),
 		MSGBOX_DEFAULT
 	)
+	closemessage
 	setflag(FLAG_BADGE02_GET)
 	setvar(VAR_0x8008, 2)
 	call(Common_EventScript_SetGymTrainers)

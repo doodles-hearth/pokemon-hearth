@@ -615,18 +615,26 @@ Makuhita
 Level: 10
 - Rock Smash
 
-=== TRAINER_GRUNT_RUSTURF_TUNNEL ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+=== TRAINER_ASAGAO ===
+Name: Asagao
+Class: Aroma Lady
+Pic: Aroma Lady
+Gender: Female
+Music: Female
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Poochyena
-Level: 11
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Cherrim
+Level: 19
+- Magical Leaf
+- Growth
+- Tackle
+
+Deerling Autumn
+Level: 17
+- Double Kick
+- Feint Attack
+- Leech Seed
 
 === TRAINER_GRUNT_WEATHER_INST_1 ===
 Name: GRUNT
@@ -865,14 +873,14 @@ Music: Rich
 Battle Type: Doubles
 AI: Basic Trainer
 
-Carbink
+Carbink @ Stardust
 Level: 17
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sharpen
 - Rock Throw
 - Harden
 
-Sableye @ Stardust
+Sableye @ Star Piece
 Level: 16
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Night Shade
@@ -890,16 +898,16 @@ AI: Check Bad Move
 
 Shuppet
 Level: 15
-- Will O Wisp
+- Screech
 - Shadow Sneak
 - Spite
 
-Misdreavus
+Gastly
 Level: 15
-- Growl
-- Astonish
+- Hypnosis
+- Night Shade
 - Mean Look
-- Confusion
+- Curse
 
 === TRAINER_ROKU ===
 Name: Roku
@@ -997,10 +1005,10 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Poochyena
-Level: 19
+Level: 18
 - Odor Sleuth
-- Swagger
 - Howl
+- Bite
 
 Nickit
 Level: 17
@@ -1010,9 +1018,9 @@ Level: 17
 
 Thievul
 Level: 20
-- Thief
+- Quick Attack
 - Hone Claws
-- Snarl
+- Assurance
 
 === TRAINER_TOMOMI ===
 Name: Tomomi
@@ -1402,14 +1410,13 @@ Battle Type: Singles
 AI: Check Bad Move
 
 Drowzee
-Level: 21
+Level: 18
 - Poison Gas
-- Meditate
 - Confusion
 - Disable
 
 Spinda
-Level: 22
+Level: 17
 - Feint Attack
 - Psybeam
 - Copycat
@@ -1424,13 +1431,13 @@ Battle Type: Singles
 AI: Check Bad Move
 
 Zangoose
-Level: 20
+Level: 17
 - Pursuit
 - Fury Cutter
-- Hone Claws
+- Leer
 
 Seviper
-Level: 19
+Level: 17
 - Bite
 - Poison Tail
 - Wrap
@@ -16390,18 +16397,17 @@ Music: Intense
 Battle Type: Singles
 AI: Basic Trainer
 
-Vigoroth
-Level: 23
-- Focus Energy
-- Uproar
+Slakoth
+Level: 22
+- Yawn
+- Feint Attack
 - Encore
-- Endure
 
 Barboach
-Level: 22
+Level: 21
 - Magnitude
-- Rest
-- Snore
+- Amnesia
+- Water Gun
 
 === TRAINER_LIHUO ===
 Name: Lihuo
@@ -16413,21 +16419,21 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Darumaka
-Level: 23
+Level: 20
 - Incinerate
 - Rage
 - Facade
 
 Slugma
-Level: 24
+Level: 23
 - Smog
 - Rock Throw
-- Ancient Power
+- Incinerate
 
 Slugma
 Level: 23
 - Harden
-- CLear Smog
+- Clear Smog
 - Flame Burst
 
 === TRAINER_SACHIKO ===
@@ -16440,19 +16446,19 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Shuckle
-Level: 24
+Level: 19
 - Sticky Web
 - Wrap
 - Struggle Bug
 
 Poltchageist
-Level: 23
+Level: 21
 - Stun Spore
 - Withdraw
 - Mega Drain
 
 Braixen
-Level: 23
+Level: 22
 - Howl
 - Psybeam
 - Flame Charge

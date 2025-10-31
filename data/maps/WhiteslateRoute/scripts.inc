@@ -195,6 +195,13 @@ WhiteslateRoute_EventScript_Utaro::
 	end
 
 
+WhiteslateRoute_EventScript_Asagao::
+	trainerbattle_single TRAINER_UTARO, WhiteslateRoute_EventScript_Asagao_Text_0, WhiteslateRoute_EventScript_Asagao_Text_1
+	setspeaker SP_NAME_AROMA_LADY
+	msgbox WhiteslateRoute_EventScript_Asagao_Text_2, MSGBOX_AUTOCLOSE
+	end
+
+
 WhiteslateRoute_EventScript_ShuckleGirl::
 	setnamedmon SPECIES_SHUCKLE
 	setspeaker SP_NAME_WOMAN
@@ -708,6 +715,18 @@ WhiteslateRoute_EventScript_Utaro_Text_1:
 WhiteslateRoute_EventScript_Utaro_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Seviper is so darn cool! I mean, it's\n"
 	.string "got a sword on its tail!$"
+
+WhiteslateRoute_EventScript_Asagao_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Can you smell the perfume of Uume\n"
+	.string "Berries?$"
+
+WhiteslateRoute_EventScript_Asagao_Text_1:
+	.string "You're a brute!$"
+
+WhiteslateRoute_EventScript_Asagao_Text_2:
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}With Uume Forest right west of here,\n"
+	.string "the ripe Berry smell is so strong it's\l"
+	.string "almost pungent!$"
 
 WhiteslateRoute_EventScript_ShuckleGirl_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}This Shuckle lives around here. I feed\n"

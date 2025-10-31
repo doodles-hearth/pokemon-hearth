@@ -487,6 +487,8 @@ SunriseVillage_EldersHouse_EventScript_PostBattle::
 	msgbox SunriseVillage_EldersHouse_EventScript_PostBattle_Text_1
 	closemessage
 SunriseVillage_EldersHouse_EventScript_PostBattle_1:
+	setnamedmon SPECIES_FERALIGATR
+	setflag FLAG_HIDE_GUARD_SUNRISE_VILLAGE
 	getplayerxy VAR_TEMP_0, VAR_TEMP_1
 	compare VAR_TEMP_0, 6
 	goto_if_eq SunriseVillage_EldersHouse_EventScript_PostBattle_8
@@ -552,7 +554,7 @@ SunriseVillage_EldersHouse_EventScript_Joltik::
 	playmoncry SPECIES_JOLTIK, CRY_MODE_NORMAL
 	showmonpic SPECIES_JOLTIK, 10, 3
 	setnamedmon SPECIES_JOLTIK
-	msgbox SunriseVillage_EldersHouse_EventScript_Joltik_Text_1, MSGBOX_YESNO
+	msgbox SunriseVillage_EldersHouse_EventScript_Joltik_Text_1
 	closemessage
 	hidemonpic
 	waitse

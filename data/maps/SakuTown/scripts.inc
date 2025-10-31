@@ -1141,7 +1141,7 @@ SakuTown_EventScript_RivalAtSakuWall_Text_3:
 	.string "It's fun to run into each other like\n"
 	.string "this. Until next time then.\l"
 	.string "I bet you I'll get to Silveridge first!\p"
-	.string "See you later, Feraligatr!$"
+	.string "See ya later, Feraligatr!$"
 
 SakuTown_EventScript_RivalAtSakuWall_Text_4:
 	.string "In a while, Totodile?$"
