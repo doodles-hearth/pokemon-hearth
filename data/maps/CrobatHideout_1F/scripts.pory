@@ -843,7 +843,8 @@ script CrobatHideout_1F_LetsFight2v2 {
 			format("Ugh, that's humiliatin'…"),
 			PARTNER_SAMURAI
 		)
-		if (var(VAR_RESULT)) {
+
+		if (var(VAR_RESULT) == 1) {
 			playse(SE_LEDGE)
 			applymovement(LOCALID_GOLBAT_RIGHT, moves(jump_in_place_left))
 			waitmovement(0)

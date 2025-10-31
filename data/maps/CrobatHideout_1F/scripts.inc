@@ -550,8 +550,10 @@ CrobatHideout_1F_LetsFight2v2::
 	applymovement 14, CrobatHideout_1F_SamuraiOffersHelp_Movement_2
 	applymovement OBJ_EVENT_ID_PLAYER, CrobatHideout_1F_SamuraiOffersHelp_Movement_2
 	multi_2_vs_2 TRAINER_GOLBAT_ADMIN_1, CrobatHideout_1F_LetsFight2v2_Text_1, TRAINER_GOLBAT_ADMIN_2, CrobatHideout_1F_LetsFight2v2_Text_2, PARTNER_SAMURAI
-	compare VAR_RESULT, 0
-	goto_if_ne CrobatHideout_1F_LetsFight2v2_5
+	buffernumberstring STR_VAR_1, VAR_RESULT
+	msgbox CrobatHideout_1F_LetsFight2v2_Text_3
+	compare VAR_RESULT, 1
+	goto_if_eq CrobatHideout_1F_LetsFight2v2_5
 	fadescreenswapbuffers FADE_TO_BLACK
 	special SetCB2WhiteOut
 	waitstate
@@ -570,19 +572,19 @@ CrobatHideout_1F_LetsFight2v2_5:
 	applymovement 19, CrobatHideout_1F_LetsFight2v2_Movement_0
 	waitmovement 0
 	setspeaker SP_NAME_GOLBAT_ADMIN
-	msgbox CrobatHideout_1F_LetsFight2v2_Text_3
+	msgbox CrobatHideout_1F_LetsFight2v2_Text_4
 	closemessage
 	playse SE_LEDGE
 	applymovement 13, CrobatHideout_1F_LetsFight2v2_Movement_1
 	waitmovement 0
 	setspeaker SP_NAME_GOLBAT_ADMIN
-	msgbox CrobatHideout_1F_LetsFight2v2_Text_4
+	msgbox CrobatHideout_1F_LetsFight2v2_Text_5
 	closemessage
 	applymovement 19, CrobatHideout_1F_LetsFight2v2_Movement_2
 	applymovement 13, CrobatHideout_1F_LetsFight2v2_Movement_3
 	waitmovement 0
 	setspeaker SP_NAME_GOLBAT_ADMIN
-	msgbox CrobatHideout_1F_LetsFight2v2_Text_5
+	msgbox CrobatHideout_1F_LetsFight2v2_Text_6
 	closemessage
 	playse SE_M_DIVE
 	fadescreenswapbuffers FADE_TO_WHITE
@@ -597,7 +599,7 @@ CrobatHideout_1F_LetsFight2v2_5:
 	applymovement OBJ_EVENT_ID_PLAYER, CrobatHideout_1F_Trigger_4V1_Movement_1
 	waitmovement 0
 	setspeaker SP_NAME_SAMURAI
-	msgbox CrobatHideout_1F_LetsFight2v2_Text_6
+	msgbox CrobatHideout_1F_LetsFight2v2_Text_7
 	closemessage
 	setvar VAR_CROBAT_HIDEOUT_STATE, 3
 	setflag FLAG_CLEARED_CROBAT_HIDEOUT
@@ -1459,13 +1461,16 @@ CrobatHideout_1F_LetsFight2v2_Text_2:
 	.string "Ugh, that's humiliatin'…$"
 
 CrobatHideout_1F_LetsFight2v2_Text_3:
-	.string "Ya dumball, ya made us lose!$"
+	.string "{STR_VAR_1}$"
 
 CrobatHideout_1F_LetsFight2v2_Text_4:
-	.string "Naw I didn't! 'Twas yer fault!$"
+	.string "Ya dumball, ya made us lose!$"
 
 CrobatHideout_1F_LetsFight2v2_Text_5:
-	.string "Nevermind that! Let's scram!$"
+	.string "Naw I didn't! 'Twas yer fault!$"
 
 CrobatHideout_1F_LetsFight2v2_Text_6:
+	.string "Nevermind that! Let's scram!$"
+
+CrobatHideout_1F_LetsFight2v2_Text_7:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Cough… Let's get out of here!$"
