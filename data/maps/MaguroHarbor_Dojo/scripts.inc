@@ -15,6 +15,8 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated::
 	call Common_EventScript_PlayGymBadgeFanfare
 	setspeaker SP_NAME_KOISHI
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1, MSGBOX_DEFAULT
+	clearspeaker
+	removefieldmugshot
 	giveitem ITEM_TM_NATURE_POWER
 	setspeaker SP_NAME_KOISHI
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2, MSGBOX_DEFAULT

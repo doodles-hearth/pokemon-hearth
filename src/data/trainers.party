@@ -10953,6 +10953,7 @@ Ability: Chlorophyll
 - Poison Powder
 - Synthesis
 - Tackle
+- Rain Dance
 
 === TRAINER_SUMIRE ===
 Name: Sumire
@@ -16369,20 +16370,20 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Torkoal
-Level: 22
+Level: 19
 - Rapid Spin
 - Smokescreen
 - Flame Wheel
 - Curse
 
 Wailmer
-Level: 22
+Level: 18
 - Rollout
 - Whirlpool
 - Mist
 
 Slowpoke
-Level: 21
+Level: 20
 - Yawn
 - Disable
 - Headbutt
@@ -16398,7 +16399,7 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Slakoth
-Level: 22
+Level: 21
 - Yawn
 - Feint Attack
 - Encore
@@ -16458,7 +16459,7 @@ Level: 21
 - Mega Drain
 
 Braixen
-Level: 22
+Level: 20
 - Howl
 - Psybeam
 - Flame Charge

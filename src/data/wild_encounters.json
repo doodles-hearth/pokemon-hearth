@@ -13259,9 +13259,9 @@
                 "species": "SPECIES_PIDGEOTTO"
               },
               {
-                "min_level": 19,
-                "max_level": 21,
-                "species": "SPECIES_LINOONE"
+                "min_level": 13,
+                "max_level": 16,
+                "species": "SPECIES_ZIGZAGOON"
               },
               {
                 "min_level": 12,

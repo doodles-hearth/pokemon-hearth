@@ -1753,6 +1753,8 @@ YifuCity_EventScript_WhereRefuge::
 	lock
 	faceplayer
 	msgbox YifuCity_EventScript_WhereRefuge_Text_0
+	applymovement VAR_LAST_TALKED, YifuCity_Trigger_CantGoThruNorth_Movement_0
+	msgbox YifuCity_EventScript_WhereRefuge_Text_1
 	closemessage
 	release
 	return
@@ -2349,13 +2351,13 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Text_4:
 	.string "Heyyy!! Help!$"
 
 YifuCity_Trigger_CrobatGruntStuckInHole_Text_5:
-	.string "I fell down the canal! I'm stuck down\n"
-	.string "'ere!\p"
+	.string "I fell down the canal!\n"
+	.string "I'm stuck down 'ere!\p"
 	.string "Damn me, couldn't remember the first\n"
 	.string "half of the damn password…\l"
 	.string "“Something something… {COLOR RED}is awesome{COLOR DARK_GRAY}”!\l"
-	.string "But what?!\l"
-	.string "And why'd I think it was a good idea to\l"
+	.string "But what?!\p"
+	.string "And why'd I think it was a good idea to\n"
 	.string "try gettin' in through the canal?\l"
 	.string "I can't swim! It's a dead end!$"
 
@@ -2736,5 +2738,7 @@ YifuCity_EventScript_UumeForestTrees_Text_0:
 	.string "foliage's shades of purple!$"
 
 YifuCity_EventScript_WhereRefuge_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}Looking for the Pokémon Refuge?\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}Looking for the Pokémon Refuge?$"
+
+YifuCity_EventScript_WhereRefuge_Text_1:
 	.string "Just follow this path.$"

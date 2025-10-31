@@ -291,6 +291,7 @@ WhiteslateRoute_Trigger_SecretBase::
 	case 26, WhiteslateRoute_Trigger_SecretBase_4
 	case 27, WhiteslateRoute_Trigger_SecretBase_5
 WhiteslateRoute_Trigger_SecretBase_1:
+	playse SE_PIN
 	applymovement 7, WhiteslateRoute_Trigger_SecretBase_Movement_9
 	setspeaker SP_NAME_MAN
 	msgbox WhiteslateRoute_Trigger_SecretBase_Text_2

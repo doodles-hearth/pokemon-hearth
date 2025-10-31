@@ -45,6 +45,9 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 		),
 		MSGBOX_DEFAULT
 	)
+
+	clearspeaker
+	removefieldmugshot
 	
 	giveitem(ITEM_TM_NATURE_POWER)
 

@@ -738,9 +738,9 @@ script YifuCity_Trigger_CrobatGruntStuckInHole {
 		applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark, face_down))
 		setspeaker(SP_NAME_UNKNOWN)
 		msgbox(format(
-			"I fell down the canal! I'm stuck down 'ere!\p"
+			"I fell down the canal!\nI'm stuck down 'ere!\p"
 			"Damn me, couldn't remember the first half of the damn password…\l"
-			"“Something something… {COLOR RED}is awesome{COLOR DARK_GRAY}”! But what?!\l"
+			"“Something something… {COLOR RED}is awesome{COLOR DARK_GRAY}”! But what?!\p"
 			"And why'd I think it was a good idea to try gettin' in through the canal?\l"
 			"I can't swim! It's a dead end!"
 		))
@@ -1936,7 +1936,11 @@ script YifuCity_EventScript_WhereRefuge {
 	lock
 	faceplayer
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}Looking for the Pokémon Refuge?\nJust follow this path."
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}Looking for the Pokémon Refuge?"
+	))
+	applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_down))
+	msgbox(format(
+		"Just follow this path."
 	))
 	closemessage
 	release

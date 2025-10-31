@@ -360,7 +360,7 @@ script SakuTown_PokemonCenter_EventScript_Pushing {
 			applymovement(OBJ_EVENT_ID_PLAYER, SakuTown_PokemonCenter_Movement_PlayerPushedUp)
 	}
 
-	playse(SE_LEDGE)
+	playse(SE_NOT_EFFECTIVE)
 
 	waitmovement(VAR_LAST_TALKED)
 	waitmovement(OBJ_EVENT_ID_PLAYER)

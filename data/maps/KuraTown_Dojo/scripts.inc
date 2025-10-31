@@ -285,7 +285,7 @@ KuraTown_Dojo_EventScript_HanaDefeated_Text_0:
 	.string "from Hana.$"
 
 KuraTown_Dojo_EventScript_HanaDefeated_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\nCouncil challenge, you will need a Token\lfrom the region's eight Dojos.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\nCouncil challenge, you will need a\lToken from the region's eight Dojos.\p"
 	.string "Arduous task! But I feel determination\ntaking root in your heart.\p"
 	.string "Here, let me also give you this.$"
 

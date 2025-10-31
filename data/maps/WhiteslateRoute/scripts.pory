@@ -396,6 +396,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 			waitmovement(LOCALID_SECRET_BASE_MAN)
 	}
 
+	playse(SE_PIN)
 	applymovement(LOCALID_SECRET_BASE_MAN, moves(emote_sad))
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(

@@ -745,6 +745,7 @@ const struct Item gItemsInfo[] =
     [ITEM_UUMEGIRI] =
     {
         .name = ITEM_NAME("Uumegiri"),
+        .pluralName = ITEM_NAME("Uumegiri"),
         .price = 500,
         .holdEffectParam = 20,
         .description = COMPOUND_STRING(
@@ -765,6 +766,7 @@ const struct Item gItemsInfo[] =
     [ITEM_SUPERGIRI] =
     {
         .name = ITEM_NAME("Supergiri"),
+        .pluralName = ITEM_NAME("Supergiri"),
         .price = 800,
         .holdEffectParam = 60,
         .description = COMPOUND_STRING(
@@ -785,6 +787,7 @@ const struct Item gItemsInfo[] =
     [ITEM_HYPERGIRI] =
     {
         .name = ITEM_NAME("Hypergiri"),
+        .pluralName = ITEM_NAME("Hypergiri"),
         .price = 1500,
         .holdEffectParam = 120,
         .description = COMPOUND_STRING(
@@ -805,6 +808,7 @@ const struct Item gItemsInfo[] =
     [ITEM_MAXGIRI] =
     {
         .name = ITEM_NAME("Maxgiri"),
+        .pluralName = ITEM_NAME("Maxgiri"),
         .price = 2500,
         .holdEffectParam = 255,
         .description = COMPOUND_STRING(
@@ -825,6 +829,7 @@ const struct Item gItemsInfo[] =
     [ITEM_SACREDGIRI] =
     {
         .name = ITEM_NAME("Sacredgiri"),
+        .pluralName = ITEM_NAME("Sacredgiri"),
         .price = 3500,
         .holdEffectParam = 255,
         .description = COMPOUND_STRING(
