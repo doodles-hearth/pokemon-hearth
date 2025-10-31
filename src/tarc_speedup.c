@@ -35,7 +35,8 @@ void StopSpeedup(void)
     sNumSkips = 0;
 }
 
-void CheckSpeedupControls(void)
+// TODO: controls are disabled for now, will need to add HUD icon later
+UNUSED void CheckSpeedupControls(void)
 {
     if (sDoSpeedup)
     {
