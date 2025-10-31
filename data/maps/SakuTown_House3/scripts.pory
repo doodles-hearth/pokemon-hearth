@@ -30,10 +30,10 @@ script SakuTown_House3_EventScript_Hoothoot {
     lock
     faceplayer
     setspeakertomonname(SPECIES_HOOTHOOT)
+    playmoncry(SPECIES_HOOTHOOT, CRY_MODE_NORMAL)
     msgbox(format(
         "Hooo…"
     ))
-    playmoncry(SPECIES_HOOTHOOT, CRY_MODE_NORMAL)
     waitmoncry
     release
     end

@@ -283,6 +283,7 @@ SakuTown_PokemonCenter_EventScript_Pushing::
 	case DIR_EAST, SakuTown_PokemonCenter_EventScript_Pushing_3
 	case DIR_SOUTH, SakuTown_PokemonCenter_EventScript_Pushing_4
 SakuTown_PokemonCenter_EventScript_Pushing_1:
+	playse SE_LEDGE
 	waitmovement VAR_LAST_TALKED
 	waitmovement OBJ_EVENT_ID_PLAYER
 	return

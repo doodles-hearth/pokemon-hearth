@@ -13065,8 +13065,8 @@ static const struct LevelUpMove sMaractusLevelUpLearnset[] = {
 #if P_FAMILY_DWEBBLE
 static const struct LevelUpMove sDwebbleLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_FURY_CUTTER),
-    LEVEL_UP_MOVE( 5, MOVE_ROCK_BLAST),
-    LEVEL_UP_MOVE( 7, MOVE_WITHDRAW),
+    LEVEL_UP_MOVE( 5, MOVE_WITHDRAW),
+    LEVEL_UP_MOVE( 7, MOVE_ROCK_BLAST),
     LEVEL_UP_MOVE(11, MOVE_SAND_ATTACK),
     LEVEL_UP_MOVE(13, MOVE_FEINT_ATTACK),
     LEVEL_UP_MOVE(17, MOVE_SMACK_DOWN),
