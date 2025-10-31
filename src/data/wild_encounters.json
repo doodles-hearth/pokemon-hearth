@@ -12299,12 +12299,12 @@
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_DIGLETT"
+                "species": "SPECIES_MAKUHITA"
               },
               {
                 "min_level": 8,
                 "max_level": 12,
-                "species": "SPECIES_MAKUHITA"
+                "species": "SPECIES_WOOBAT"
               },
               {
                 "min_level": 11,
@@ -12319,7 +12319,7 @@
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_WOOBAT"
+                "species": "SPECIES_ARON"
               },
               {
                 "min_level": 8,
@@ -12398,12 +12398,12 @@
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_DIGLETT"
+                "species": "SPECIES_MAKUHITA"
               },
               {
                 "min_level": 8,
                 "max_level": 12,
-                "species": "SPECIES_MAKUHITA"
+                "species": "SPECIES_WOOBAT"
               },
               {
                 "min_level": 11,
@@ -12418,7 +12418,7 @@
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_WOOBAT"
+                "species": "SPECIES_ARON"
               },
               {
                 "min_level": 8,
@@ -14157,17 +14157,17 @@
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_ARON"
+                "species": "SPECIES_ZUBAT"
               },
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_ONIX"
+                "species": "SPECIES_MAKUHITA"
               },
               {
                 "min_level": 8,
                 "max_level": 12,
-                "species": "SPECIES_MAKUHITA"
+                "species": "SPECIES_WOOBAT"
               },
               {
                 "min_level": 11,
@@ -14182,7 +14182,7 @@
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_WOOBAT"
+                "species": "SPECIES_ARON"
               },
               {
                 "min_level": 8,

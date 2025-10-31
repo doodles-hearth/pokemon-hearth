@@ -68,6 +68,7 @@ ChiiTown_House1_EventScript_GrowlitheBarks::
 	waitmovement 0
 	applymovement 2, Common_Movement_FaceRight
 	waitmovement 0
+	setnamedmon SPECIES_GROWLITHE
 	setspeaker ChiiTown_House1_EventScript_GrowlitheBarks_Text_1
 	msgbox ChiiTown_House1_EventScript_GrowlitheBarks_Text_2
 	closemessage
