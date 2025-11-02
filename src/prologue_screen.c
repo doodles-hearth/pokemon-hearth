@@ -72,11 +72,13 @@ static const struct WindowTemplate sWindowTemplate_PrologueText =
 static const u8 sPrologueTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
 
 const u8 sText_Prologue[] = _(
-    "This is a demo for Pokémon Hearth!{PAUSE 16}\n"
-    "This game is FREE.{PAUSE 16}\nYou should not have paid for it.{PAUSE 48}\n\n"
+    "This is a demo for {COLOR LIGHT_RED}{SHADOW RED}Pokémon Hearth{COLOR WHITE}{SHADOW DARK_GRAY}!{PAUSE 16}\n"
+    "This game is FREE.{PAUSE 16}\nIf you paid for it, you got scammed.{PAUSE 48}\n\n"
     "To avoid playing an outdated version\n"
     "of the game,{PAUSE 16} make sure you got the hack\n"
-    "from the {COLOR LIGHT_RED}{SHADOW RED}Team Aqua Patch Cove{COLOR WHITE}{SHADOW DARK_GRAY}!\p"
+    "from the {COLOR LIGHT_RED}{SHADOW RED}Team Aqua Patch Cove{COLOR WHITE}{SHADOW DARK_GRAY}\n"
+    "(teamaquashideout.github.io).{PAUSE 48}\n"
+    "Fake website impersonators are a thing!\p"
     "We hope you have as much fun\n"
     "playing this game as we did making it!{PAUSE 16}\n\n"
     "   - Doodle's Hearth Team\p"
