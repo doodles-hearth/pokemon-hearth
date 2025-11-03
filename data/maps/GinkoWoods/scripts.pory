@@ -42,8 +42,7 @@ script GinkoWoods_EventScript_Toshio {
 
 script(local) GinkoWoods_EventScript_Toshio_Register {
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}{SPEAKER NAME_YOUNGSTER}"
-		"Hey, let's be friends!\nWe'll send each other Chatot mail,\land battle again sometime!"
+		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}{SPEAKER NAME_YOUNGSTER}Hey, let's be friends!\nWe'll send each other Chatot mail,\land battle again sometime!"
 	))
 	closemessage
 	register_matchcall(TRAINER_TOSHIO_1)

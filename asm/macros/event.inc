@@ -1322,6 +1322,14 @@
 	.byte \disable
 	.endm
 
+	@ Adds value to the player's money. If adding 'value' money would exceed MAX_MONEY, the player's money is set to MAX_MONEY.
+	@ If 'disable' is set to anything but 0 then this command does nothing.
+	.macro addmoneyvar value:req, disable=0
+	.byte SCR_OP_ADDMONEY_VAR
+	.4byte \value
+	.byte \disable
+	.endm
+
 	@ Subtracts value from the player's money. If the player has less than 'value' money, their money is set to 0.
 	@ If 'disable' is set to anything but 0 then this command does nothing.
 	.macro removemoney value:req, disable=0

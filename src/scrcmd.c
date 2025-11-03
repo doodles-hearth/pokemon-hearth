@@ -2455,6 +2455,20 @@ bool8 ScrCmd_addmoney(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_addmoneyvar(struct ScriptContext *ctx)
+{
+    u32 variable = ScriptReadWord(ctx);
+    u8 ignore = ScriptReadByte(ctx);
+
+    if (!ignore)
+    {
+        Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+
+        AddMoney(&gSaveBlock1Ptr->money, VarGet(variable));
+    }
+    return FALSE;
+}
+
 bool8 ScrCmd_removemoney(struct ScriptContext *ctx)
 {
     u32 amount = ScriptReadWord(ctx);

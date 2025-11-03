@@ -296,7 +296,9 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 							switch (var(VAR_RESULT)) {
 								case 0:
 									incrementgamestat(GAME_STAT_SOLD_FISH)
-									addmoney(VAR_0x8000)
+									// TODO if i don't do this, VAR_0x8000 = 0 for some reason
+									callnative(Native_GiveFish)
+									addmoneyvar(VAR_0x8000)
 									special(DestroySelectedPartyMon)
 
 									if (var(VAR_0x8001) != ITEM_NONE) {
