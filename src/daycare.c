@@ -1097,7 +1097,7 @@ static void _GiveEggFromDaycare(struct DayCare *daycare)
     RemoveEggFromDayCare(daycare);
 }
 
-void CreateEgg(struct Pokemon *mon, u16 species, bool8 setHotSpringsLocation)
+void CreateEgg(struct Pokemon *mon, u16 species, u8 specialLocation)
 {
     u8 metLevel;
     enum PokeBall ball;
@@ -1115,16 +1115,8 @@ void CreateEgg(struct Pokemon *mon, u16 species, bool8 setHotSpringsLocation)
     SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
     SetMonData(mon, MON_DATA_LANGUAGE, &language);
 
-    // Special cases!
-    // Shamisen player
-    if (
-        gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_YIFU_CITY_REFUGE)
-        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_YIFU_CITY_REFUGE)
-    )
-    {
-        metLocation = METLOC_EGG_SHAMISEN;
-        SetMonData(mon, MON_DATA_MET_LOCATION, &metLocation);
-    }
+    if (specialLocation)
+        SetMonData(mon, MON_DATA_MET_LOCATION, &specialLocation);
 
     isEgg = TRUE;
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);

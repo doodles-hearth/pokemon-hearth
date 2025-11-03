@@ -64,12 +64,12 @@ static void HealPlayerBoxes(void)
     }
 }
 
-u8 ScriptGiveEgg(u16 species)
+u8 ScriptGiveEgg(u16 species, u8 specialLoc)
 {
     struct Pokemon mon;
     u8 isEgg;
 
-    CreateEgg(&mon, species, TRUE);
+    CreateEgg(&mon, species, specialLoc);
     isEgg = TRUE;
     SetMonData(&mon, MON_DATA_IS_EGG, &isEgg);
 

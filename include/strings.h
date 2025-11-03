@@ -2659,4 +2659,6 @@ extern const u8 gText_MonDescribedNotification[];
 extern const u8 gText_EggFromShamisenPlayer[];
 extern const u8 gText_ShinyVialEffectsLingered[];
 
+extern const u8 gText_EggFromDaycareAdoption[];
+
 #endif // GUARD_STRINGS_H

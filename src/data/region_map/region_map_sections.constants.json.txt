@@ -11,6 +11,7 @@ enum {
 };
 
 // Special location IDs that use the same value space as MAPSECs.
+#define METLOC_DAYCARE_ADOPTION    0xFC
 #define METLOC_EGG_SHAMISEN        0xFD
 #define METLOC_IN_GAME_TRADE       0xFE
 #define METLOC_FATEFUL_ENCOUNTER   0xFF
