@@ -73,11 +73,16 @@ static void FaintFromDecay(u8 partyIdx)
     SetMonData(pokemon, MON_DATA_STATUS, &status);
     GetMonData(pokemon, MON_DATA_NICKNAME, gStringVar1);
     StringGet_Nickname(gStringVar1);
+    sFaintedFromDecayMask &= ~(1 << partyIdx);
 }
 
 static bool32 MonFaintedFromPoison(u8 partyIdx)
 {
+    if(sFaintedFromDecayMask & (1 <<partyIdx))
+        return FALSE;
+
     struct Pokemon *pokemon = &gPlayerParty[partyIdx];
+
     if (IsMonValidSpecies(pokemon) && GetMonData(pokemon, MON_DATA_HP) == ((OW_POISON_DAMAGE < GEN_4) ? 0 : 1) && GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN)
         return TRUE;
 
@@ -94,7 +99,6 @@ static bool32 MonFaintedFromDecay(u8 partyIdx)
         (sFaintedFromDecayMask & (1 << partyIdx))
     )
         {
-        sFaintedFromDecayMask &= ~(1 << partyIdx);
         return TRUE;
         }
     return FALSE;
