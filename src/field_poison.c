@@ -168,7 +168,6 @@ void TryFieldPoisonWhiteOut(void)
 
 s32 DoPoisonDecayFieldEffect(void)
 {
-    int i;
     u32 hp;
     struct Pokemon *pokemon = gPlayerParty;
     u32 numPoisoned = 0;
@@ -177,64 +176,65 @@ s32 DoPoisonDecayFieldEffect(void)
     bool32 isWalkingOnDecay = IsWalkingOnDecay();
     sFaintedFromDecayMask = 0; //Reset the bitmask so we can track which pokemon are going to faint when the effect is activated
 
-
-    for (i = 0; i < PARTY_SIZE; i++)
+    for (u32 i = 0; i < PARTY_SIZE; i++)
     {
-        bool32 isPoisoned = GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES) && GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN;
+        bool32 isPoisoned = GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES) && 
+                            GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN;
 
-        if(GetMonAbility(pokemon) == ABILITY_MAGIC_GUARD)
-            {
-                pokemon++;
-                continue;
-            }
+        u32 maxhp = GetMonData(pokemon, MON_DATA_MAX_HP); // For Poison Heal
+        u32 initialhp = GetMonData(pokemon, MON_DATA_HP);
+        u32 ability = GetMonAbility(pokemon);
 
-        if (
-            isPoisoned || isWalkingOnDecay
-        )
+        if (ability == ABILITY_MAGIC_GUARD) // Magic Guard mons take damage from neither poison nor decay
+        {
+            pokemon++;
+            continue;
+        }
+
+        hp = initialhp;
+
+        if (isPoisoned)
         {
             // Apply poison damage
-            hp = GetMonData(pokemon, MON_DATA_HP);
-            u32 maxhp = GetMonData(pokemon, MON_DATA_MAX_HP);
-            u32 ability = GetMonAbility(pokemon);
-            if (ability == ABILITY_POISON_HEAL && isPoisoned)
-            {
-                if (hp < maxhp)
-                {
-                    hp++;
-                    SetMonData(pokemon, MON_DATA_HP, &hp);
 
-                }
-                pokemon++;
-                continue;
-            }
+            if (ability == ABILITY_POISON_HEAL) // Heal and skip the rest
+                hp++;
 
-            else if (OW_POISON_DAMAGE < GEN_4)
+            else if (OW_POISON_DAMAGE < GEN_4 && (hp == 0 || --hp == 0))
+                TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_FAINT);
+
+            else if (OW_POISON_DAMAGE >= GEN_4 && (hp > 1))
+                hp--;
+        }
+
+        if (isWalkingOnDecay)
+        {
+            if (OW_POISON_DAMAGE < GEN_4)
             {
-                if (hp > 1)
-                {
+
+                if(hp > 1)
                     hp--;
-                }
                 else if (hp == 1)
                 {
                     hp--;
-                    if (isWalkingOnDecay)
-                        sFaintedFromDecayMask |= (1 << i);
-                }
-                if (hp == 0)
-                {
-
                     TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_FAINT);
-                    numFainted++;
+                    sFaintedFromDecayMask |= (1 << i);
                 }
             }
-            else if (OW_POISON_DAMAGE >= GEN_4 && (hp == 1 || --hp == 1))
+            else if (OW_POISON_DAMAGE >= GEN_4 && (hp > 1))
             {
-                numFainted++;
+                hp--;
             }
+        }
 
-
+        if(hp != GetMonData(pokemon, MON_DATA_HP)) //Apply the damage/healing
+        {
+            hp = (hp > maxhp) ? maxhp : hp; //clamp hp to the pokemon's max hp
             SetMonData(pokemon, MON_DATA_HP, &hp);
-            numPoisoned++;
+            if(hp < initialhp)
+                numPoisoned++;
+            if(hp == 0)
+                numFainted++;
         }
         pokemon++;
     }
