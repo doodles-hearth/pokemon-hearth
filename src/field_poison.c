@@ -21,6 +21,13 @@
 #include "constants/metatile_behaviors.h"
 #include "constants/party_menu.h"
 
+static u32 sFaintedFromDecayMask; // bitmask to determine if the pokemon just fainted from decay
+
+static bool32 IsWalkingOnDecay() // helper function to check if the player is on a decayed metatile
+{
+    return MapGridGetMetatileBehaviorAt(gSaveBlock1Ptr->pos.x + MAP_OFFSET, gSaveBlock1Ptr->pos.y + MAP_OFFSET) == MB_DECAY;
+}
+
 static bool32 IsMonValidSpecies(struct Pokemon *pokemon)
 {
     u16 species = GetMonData(pokemon, MON_DATA_SPECIES_OR_EGG);
@@ -56,12 +63,40 @@ static void FaintFromFieldPoison(u8 partyIdx)
     StringGet_Nickname(gStringVar1);
 }
 
+static void FaintFromDecay(u8 partyIdx) 
+{
+    struct Pokemon *pokemon = &gPlayerParty[partyIdx];
+    u32 status = STATUS1_NONE;
+
+    AdjustFriendship(pokemon, FRIENDSHIP_EVENT_FAINT_FIELD_PSN);
+
+    SetMonData(pokemon, MON_DATA_STATUS, &status);
+    GetMonData(pokemon, MON_DATA_NICKNAME, gStringVar1);
+    StringGet_Nickname(gStringVar1);
+}
+
 static bool32 MonFaintedFromPoison(u8 partyIdx)
 {
     struct Pokemon *pokemon = &gPlayerParty[partyIdx];
     if (IsMonValidSpecies(pokemon) && GetMonData(pokemon, MON_DATA_HP) == ((OW_POISON_DAMAGE < GEN_4) ? 0 : 1) && GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN)
         return TRUE;
 
+    return FALSE;
+}
+
+static bool32 MonFaintedFromDecay(u8 partyIdx)
+{
+    struct Pokemon *pokemon = &gPlayerParty[partyIdx];
+
+    if (
+        IsMonValidSpecies(pokemon) &&
+        GetMonData(pokemon, MON_DATA_HP) == 0 &&
+        (sFaintedFromDecayMask & (1 << partyIdx))
+    )
+        {
+        sFaintedFromDecayMask &= ~(1 << partyIdx);
+        return TRUE;
+        }
     return FALSE;
 }
 
@@ -79,6 +114,13 @@ static void Task_TryFieldPoisonWhiteOut(u8 taskId)
             if (MonFaintedFromPoison(tPartyIdx))
             {
                 FaintFromFieldPoison(tPartyIdx);
+                ShowFieldMessage(gText_PkmnFainted_FldPsn);
+                tState++;
+                return;
+            }
+            else if (MonFaintedFromDecay(tPartyIdx))
+            {
+                FaintFromDecay(tPartyIdx);
                 ShowFieldMessage(gText_PkmnFainted_FldPsn);
                 tState++;
                 return;
@@ -132,27 +174,64 @@ s32 DoPoisonFieldEffect(void)
     u32 numPoisoned = 0;
     u32 numFainted = 0;
 
-    bool32 isWalkingOnDecay = MapGridGetMetatileBehaviorAt(gSaveBlock1Ptr->pos.x + MAP_OFFSET, gSaveBlock1Ptr->pos.y + MAP_OFFSET) == MB_DECAY;
+    bool32 isWalkingOnDecay = IsWalkingOnDecay();
+    sFaintedFromDecayMask = 0; //Reset the bitmask so we can track which pokemon are going to faint when the effect is activated
+
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
+        bool32 isPoisoned = GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES) && GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN;
+
+        if(GetMonAbility(pokemon) == ABILITY_MAGIC_GUARD)
+            {
+                pokemon++;
+                continue;
+            }
+
         if (
-            GetMonData(pokemon, MON_DATA_SANITY_HAS_SPECIES)
-            && (
-                GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN
-                || isWalkingOnDecay
-            )
+            isPoisoned || isWalkingOnDecay
         )
         {
             // Apply poison damage
             hp = GetMonData(pokemon, MON_DATA_HP);
-            if (OW_POISON_DAMAGE < GEN_4 && (hp == 0 || --hp == 0))
+            u32 maxhp = GetMonData(pokemon, MON_DATA_MAX_HP);
+            u32 ability = GetMonAbility(pokemon);
+            if (ability == ABILITY_POISON_HEAL && isPoisoned)
             {
-                TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_FAINT);
-                numFainted++;
+                if (hp < maxhp)
+                {
+                    hp++;
+                    SetMonData(pokemon, MON_DATA_HP, &hp);
+
+                }
+                pokemon++;
+                continue;
+            }
+
+            else if (OW_POISON_DAMAGE < GEN_4)
+            {
+                if (hp > 1)
+                {
+                    hp--;
+                }
+                else if (hp == 1)
+                {
+                    hp--;
+                    if (isWalkingOnDecay)
+                        sFaintedFromDecayMask |= (1 << i);
+                }
+                if (hp == 0)
+                {
+
+                    TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_FAINT);
+                    numFainted++;
+                }
             }
             else if (OW_POISON_DAMAGE >= GEN_4 && (hp == 1 || --hp == 1))
+            {
                 numFainted++;
+            }
+
 
             SetMonData(pokemon, MON_DATA_HP, &hp);
             numPoisoned++;
