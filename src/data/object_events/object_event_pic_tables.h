@@ -1033,7 +1033,6 @@ static const struct SpriteFrameImage sPicTable_CrobatShadowsBoss[] = {
 
 static const struct SpriteFrameImage sPicTable_CrobatShadowsKevin[] = {
     overworld_frame(gObjectEventPic_CrobatShadowsKevin, 4, 4, 0),
-    overworld_frame(gObjectEventPic_CrobatShadowsKevin, 4, 4, 0),
     overworld_frame(gObjectEventPic_CrobatShadowsKevin, 4, 4, 1),
     overworld_frame(gObjectEventPic_CrobatShadowsKevin, 4, 4, 2),
     overworld_frame(gObjectEventPic_CrobatShadowsKevin, 4, 4, 3),
@@ -1789,7 +1788,7 @@ static const struct SpriteFrameImage sPicTable_KecleonOld[] = {
     overworld_frame(gObjectEventPic_KecleonOld, 2, 2, 2),
 };
 
-static const struct SpriteFrameImage sPicTable_WingullOld[] = {
+UNUSED static const struct SpriteFrameImage sPicTable_WingullOld[] = {
     overworld_frame(gObjectEventPic_WingullOld, 2, 2, 0),
     overworld_frame(gObjectEventPic_WingullOld, 2, 2, 2),
     overworld_frame(gObjectEventPic_WingullOld, 2, 2, 4),
@@ -1896,4 +1895,16 @@ static const struct SpriteFrameImage sPicTable_Campfire[] = {
     overworld_frame(gObjectEventPic_Campfire, 4, 4, 1),
     overworld_frame(gObjectEventPic_Campfire, 4, 4, 0),
     overworld_frame(gObjectEventPic_Campfire, 4, 4, 1),
+};
+
+static const struct SpriteFrameImage sPicTable_WingullGrounded[] = {
+    overworld_frame(gObjectEventPic_WingullGrounded, 4, 4, 0),
+    overworld_frame(gObjectEventPic_WingullGrounded, 4, 4, 1),
+    overworld_frame(gObjectEventPic_WingullGrounded, 4, 4, 2),
+    overworld_frame(gObjectEventPic_WingullGrounded, 4, 4, 0),
+    overworld_frame(gObjectEventPic_WingullGrounded, 4, 4, 0),
+    overworld_frame(gObjectEventPic_WingullGrounded, 4, 4, 1),
+    overworld_frame(gObjectEventPic_WingullGrounded, 4, 4, 1),
+    overworld_frame(gObjectEventPic_WingullGrounded, 4, 4, 2),
+    overworld_frame(gObjectEventPic_WingullGrounded, 4, 4, 2),
 };

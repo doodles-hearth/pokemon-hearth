@@ -12,6 +12,7 @@ const LOCALID_RIVAL = 1
 
 script SunriseVillage_Beach_EventScript_RivalSpeech {
     lock
+	waitse
 	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
 	waitmovement(0)
@@ -45,6 +46,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 		"It feels like everything's\nabout to change.\p"
 		"Everyone is so anxious."
 	))
+	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, moves(emote_pensive))
 	msgbox(format(
 		"… … … … … …\n… … … … … …"
@@ -80,7 +82,10 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, look.\p"
 				"You can see Yifu City very clearly\ntoday, it's gorgeous!"
 			))
+
+			playse(SE_PIN)
 			applymovement(LOCALID_RIVAL, moves(emote_pensive))
+
 			msgbox(format(
 				"…"
 			))
@@ -145,7 +150,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hell yeah!\p"
 				"We're going to make awesome Wielders,\nI can already tell.\p"
-				"Maybe you'll even be second best\none day…\p"
+				"Maybe you'll even be second best\none day…\l"
 				"Behind me, of course!"
 			))
 		case 1:
@@ -158,7 +163,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh c'mon, you're just pretending\nnot to be excited.\p"
 				"Look at you, acting all tough\nand silent…\lBut I see right through you!\p"
-				"I bet you'll be a great Wielder.\nMaybe even as good as me…\p"
+				"I bet you'll be a great Wielder.\nMaybe even as good as me…\l"
 				"Probably not though!"
 			))
 	}
@@ -167,10 +172,10 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	delay(48)
 
 	// Volcano quake!
-	setvar(VAR_0x8004, 1)  // vertical pan
-	setvar(VAR_0x8005, 1)  // horizontal pan
+	setvar(VAR_0x8004, 3)  // vertical pan
+	setvar(VAR_0x8005, 0)  // horizontal pan
 	setvar(VAR_0x8006, 20)  // num shakes
-	setvar(VAR_0x8007, 5)  // shake delay
+	setvar(VAR_0x8007, 3)  // shake delay
 	special(ShakeCamera)
 	delay(16)
 	playse(SE_PIN)

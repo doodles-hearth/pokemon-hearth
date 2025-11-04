@@ -143,10 +143,10 @@ const u16 DecorGfx_COLORFUL_PLANT[] = {
 };
 
 const u16 DecorGfx_BIG_PLANT[] = {
-    DECOR_TILE(BigPlant_TopLeft),
-    DECOR_TILE(BigPlant_TopRight),
-    DECOR_TILE(BigPlant_BaseLeft1),
-    DECOR_TILE(BigPlant_BaseRight1)
+    DECOR_TILE_HEARTH(BigPlant_TopLeft),
+    DECOR_TILE_HEARTH(BigPlant_TopRight),
+    DECOR_TILE_HEARTH(BigPlant_BottomLeft),
+    DECOR_TILE_HEARTH(BigPlant_BottomRight)
 };
 
 const u16 DecorGfx_GORGEOUS_PLANT[] = {

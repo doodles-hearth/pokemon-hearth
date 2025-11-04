@@ -291,7 +291,7 @@ static const struct MatchCallTrainerTextInfo sMatchCallTrainers[] =
         .differentRouteMatchCallTextId = TEXT_ID(REQ_TOPIC_DIFF_ROUTE, 10),
     },
     {
-        .trainerId = TRAINER_KIN_1,
+        .trainerId = TRAINER_MASATO_1,
         .unused = 0,
         .battleTopicTextIds = BATTLE_TEXT_IDS(4),
         .generalTextId = TEXT_ID(GEN_TOPIC_PERSONAL, 12),
@@ -1040,12 +1040,12 @@ static u32 GetCurrentTotalMinutes(struct Time *time)
     return time->days * 24 * 60 + time->hours * 60 + time->minutes;
 }
 
-static bool32 UpdateMatchCallMinutesCounter(void)
+bool32 UpdateMatchCallMinutesCounter(void)
 {
     int curMinutes;
     RtcCalcLocalTime();
     curMinutes = GetCurrentTotalMinutes(&gLocalTime);
-    if (sMatchCallState.minutes > curMinutes || curMinutes - sMatchCallState.minutes > 9)
+    if (sMatchCallState.minutes > curMinutes || curMinutes - sMatchCallState.minutes > 120)
     {
         sMatchCallState.minutes = curMinutes;
         return TRUE;
@@ -1054,11 +1054,12 @@ static bool32 UpdateMatchCallMinutesCounter(void)
     return FALSE;
 }
 
-static bool32 CheckMatchCallChance(void)
+bool32 CheckMatchCallChance(void)
 {
     int callChance = 1;
-    if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG) && GetMonAbility(&gPlayerParty[0]) == ABILITY_LIGHTNING_ROD)
-        callChance = 2;
+    // No reception needed for CHATOT MAIL!!
+    /* if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG) && GetMonAbility(&gPlayerParty[0]) == ABILITY_LIGHTNING_ROD)
+        callChance = 2; */
 
     if (Random() % 10 < callChance * 3)
         return TRUE;
@@ -1087,7 +1088,7 @@ static bool32 MapAllowsMatchCall(void)
     return TRUE;
 }
 
-static bool32 UpdateMatchCallStepCounter(void)
+bool32 UpdateMatchCallStepCounter(void)
 {
     if (++sMatchCallState.stepCounter >= 10)
     {
@@ -1102,7 +1103,7 @@ static bool32 UpdateMatchCallStepCounter(void)
 
 static bool32 SelectMatchCallTrainer(void)
 {
-    u32 matchCallId;
+    /* u32 matchCallId; */
     u32 numRegistered = GetNumRegisteredTrainers();
     if (numRegistered == 0)
         return FALSE;
@@ -1112,11 +1113,24 @@ static bool32 SelectMatchCallTrainer(void)
     if (sMatchCallState.trainerId == REMATCH_TABLE_ENTRIES)
         return FALSE;
 
-    matchCallId = GetTrainerMatchCallId(sMatchCallState.trainerId);
+    /* matchCallId = GetTrainerMatchCallId(sMatchCallState.trainerId);
     if (GetRematchTrainerLocation(matchCallId) == gMapHeader.regionMapSectionId && !TrainerIsEligibleForRematch(matchCallId))
-        return FALSE;
+        return FALSE; */
 
     return TRUE;
+}
+
+u32 SelectMatchCallTrainerId(void)
+{
+    u32 numRegistered = GetNumRegisteredTrainers();
+    if (numRegistered == 0)
+        return 0;
+
+    u32 trainerId = GetActiveMatchCallTrainerId(Random() % numRegistered);
+    if (trainerId == REMATCH_TABLE_ENTRIES)
+        return 0;
+
+    return trainerId;
 }
 
 // Ignores registrable non-trainer NPCs, and special trainers like Wally and the gym leaders.
@@ -1158,7 +1172,7 @@ static u32 GetActiveMatchCallTrainerId(u32 activeMatchCallId)
     - If in a valid outdoor map (not Safari Zone, not underwater, not Mt Chimney with Team Magma, not Sootopolis with legendaries)
     - If an eligible trainer to call the player is selected
 */
-bool32 TryStartMatchCall(void)
+UNUSED bool32 TryStartMatchCall(void)
 {
     if (FlagGet(FLAG_HAS_MATCH_CALL)
         && UpdateMatchCallStepCounter()
@@ -1490,7 +1504,7 @@ static void Task_SpinPokenavIcon(u8 taskId)
 #undef tSpinStage
 #undef tTileNum
 
-static bool32 TrainerIsEligibleForRematch(int matchCallId)
+UNUSED static bool32 TrainerIsEligibleForRematch(int matchCallId)
 {
 #if FREE_MATCH_CALL == FALSE
     return gSaveBlock1Ptr->trainerRematches[matchCallId] > 0;
@@ -1549,15 +1563,15 @@ bool32 SelectMatchCallMessage(int trainerId, u8 *str)
 
     // If the player is on the same route as the trainer
     // and they can be rematched, they will always request a battle
-    if (TrainerIsEligibleForRematch(matchCallId)
+    /* if (TrainerIsEligibleForRematch(matchCallId)
      && GetRematchTrainerLocation(matchCallId) == gMapHeader.regionMapSectionId)
     {
         matchCallText = GetSameRouteMatchCallText(matchCallId, str);
-    }
+    } */
     // If the player is not on the same route as the trainer
     // and they can be rematched, there is a random chance for
     // the trainer to request a battle
-    else if (ShouldTrainerRequestBattle(matchCallId))
+    if (ShouldTrainerRequestBattle(matchCallId))
     {
         matchCallText = GetDifferentRouteMatchCallText(matchCallId, str);
         newRematchRequest = TRUE;
@@ -1590,7 +1604,7 @@ static int GetTrainerMatchCallId(int trainerId)
     }
 }
 
-static const struct MatchCallText *GetSameRouteMatchCallText(int matchCallId, u8 *str)
+UNUSED static const struct MatchCallText *GetSameRouteMatchCallText(int matchCallId, u8 *str)
 {
     u16 textId = sMatchCallTrainers[matchCallId].sameRouteMatchCallTextId;
     int mask = 0xFF;
@@ -1817,6 +1831,7 @@ static void PopulateSpeciesFromTrainerLocation(int matchCallId, u8 *destStr)
 
             if (numSpecies)
             {
+                // TODO EVA set named mon
                 StringCopy(destStr, GetSpeciesName(species[Random() % numSpecies], SKIP_NAME_CHECK));
                 return;
             }

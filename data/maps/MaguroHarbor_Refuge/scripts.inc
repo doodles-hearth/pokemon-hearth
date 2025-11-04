@@ -8,12 +8,21 @@ MaguroHarbor_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 
 
 MaguroHarbor_Refuge_EventScript_Nurse::
+	createfieldmugshot MUGSHOT_SEASIDE_NURSE
 	setvar VAR_0x800A, LOCALID_CHANSEY_MAGURO
 	setvar VAR_0x800B, LOCALID_NURSE_MAGURO
 	setvar VAR_0x8009, MUGSHOT_SEASIDE_NURSE
 	call Common_EventScript_PkmnCenterNurse_CutTheBullshit
 	waitmessage
 	waitbuttonpress
+	release
+	end
+
+
+MaguroHarbor_Refuge_EventScript_Pasture::
+	createfieldmugshot MUGSHOT_SEASIDE_MAN_2
+	setvar VAR_0x8009, MUGSHOT_SEASIDE_MAN_2
+	call Common_EventScript_PcGuy
 	release
 	end
 
@@ -90,6 +99,7 @@ MaguroHarbor_Refuge_BattleHariko_4:
 
 
 MaguroHarbor_Refuge_EventScript_NurseSleep::
+	createfieldmugshot MUGSHOT_SEASIDE_NURSE
 	setvar VAR_0x8009, MUGSHOT_SEASIDE_NURSE
 	call Common_EventScript_PkmnCenterNurse_Sleep
 	waitmessage
@@ -125,6 +135,8 @@ MaguroHarbor_Refuge_EventScript_DescribedMons::
 	getdescribedmon SPECIES_KRABBY
 	compare VAR_RESULT, 0
 	goto_if_ne MaguroHarbor_Refuge_EventScript_DescribedMons_2
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, MaguroHarbor_Refuge_EventScript_DescribedMons_Movement_0
 	msgbox MaguroHarbor_Refuge_EventScript_DescribedMons_Text_1
 	closemessage
@@ -230,8 +242,7 @@ MaguroHarbor_Refuge_BattleHariko_Text_3:
 
 MaguroHarbor_Refuge_BattleHariko_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}These can be fed to your Pokémon\n"
-	.string "during battle to save you from a\l"
-	.string "pickle.\p"
+	.string "during battle when in a pickle.\p"
 	.string "Farewell, {PLAYER}.$"
 
 MaguroHarbor_Refuge_BattleHariko_Text_5:

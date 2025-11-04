@@ -72,7 +72,10 @@ DOUBLE_BATTLE_TEST("Instruct doesn't bypass sleep")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPORE, opponentLeft);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_INSTRUCT, playerLeft);
-        MESSAGE("Wobbuffet is fast asleep.");
+        ONE_OF {
+            MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Wobbuffet is deep in a dream.");
+        }
         NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerRight);
     }
 }
@@ -280,6 +283,7 @@ DOUBLE_BATTLE_TEST("Instructed move will be redirected by Rage Powder after inst
     PARAMETRIZE { moveTarget = opponentLeft; }
     PARAMETRIZE { moveTarget = opponentRight; }
     GIVEN {
+        WITH_CONFIG(GEN_CONFIG_POWDER_GRASS, GEN_6);
         ASSUME(GetMoveEffect(MOVE_RAGE_POWDER) == EFFECT_FOLLOW_ME);
         ASSUME(IsPowderMove(MOVE_RAGE_POWDER) == TRUE);
         ASSUME(GetMoveEffect(MOVE_SOAK) == EFFECT_SOAK);

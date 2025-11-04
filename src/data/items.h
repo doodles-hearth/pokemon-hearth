@@ -661,6 +661,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_Ointment,
         .iconPalette = gItemIconPalette_Ointment,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
     },
 
     [ITEM_SUPER_OINTMENT] =
@@ -679,6 +680,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_Ointment,
         .iconPalette = gItemIconPalette_SuperOintment,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
     },
 
     [ITEM_HYPER_OINTMENT] =
@@ -697,6 +699,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_Ointment,
         .iconPalette = gItemIconPalette_HyperOintment,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
     },
 
     [ITEM_MAX_OINTMENT] =
@@ -715,6 +718,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_MaxOintment,
         .iconPalette = gItemIconPalette_MaxOintment,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
     },
 
     [ITEM_SACRED_OINTMENT] =
@@ -734,6 +738,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_MaxOintment,
         .iconPalette = gItemIconPalette_SacredOintment,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
     },
 
     // Off and in battle heal
@@ -754,6 +759,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_Uumegiri,
         .iconPalette = gItemIconPalette_Uumegiri,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
     },
 
     [ITEM_SUPERGIRI] =
@@ -773,6 +779,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_SuperGiri,
         .iconPalette = gItemIconPalette_SuperGiri,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
     },
 
     [ITEM_HYPERGIRI] =
@@ -792,6 +799,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_HyperGiri,
         .iconPalette = gItemIconPalette_HyperGiri,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
     },
 
     [ITEM_MAXGIRI] =
@@ -811,6 +819,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_MaxGiri,
         .iconPalette = gItemIconPalette_MaxGiri,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
     },
 
     [ITEM_SACREDGIRI] =
@@ -830,6 +839,7 @@ const struct Item gItemsInfo[] =
         .flingPower = 30,
         .iconPic = gItemIcon_SacredGiri,
         .iconPalette = gItemIconPalette_SacredGiri,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
     },
     
     [ITEM_POTION] =
@@ -1166,6 +1176,7 @@ const struct Item gItemsInfo[] =
             "outside of battle."
         ),
         .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
         .effect = gItemEffect_RevivalBalm,
@@ -1184,6 +1195,7 @@ const struct Item gItemsInfo[] =
             "outside of battle."
         ),
         .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HEALTH_RECOVERY,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_Medicine,
         .effect = gItemEffect_RevivalPowder,
@@ -8792,7 +8804,7 @@ const struct Item gItemsInfo[] =
     {
         .name = ITEM_NAME("Electric Seed"),
         .price = (I_PRICE >= GEN_9) ? 20000 : 4000,
-        .holdEffect = HOLD_EFFECT_SEEDS,
+        .holdEffect = HOLD_EFFECT_TERRAIN_SEED,
         .holdEffectParam = HOLD_EFFECT_PARAM_ELECTRIC_TERRAIN,
         .description = COMPOUND_STRING(
             "Boosts Defense on\n"
@@ -8811,7 +8823,7 @@ const struct Item gItemsInfo[] =
     {
         .name = ITEM_NAME("Psychic Seed"),
         .price = (I_PRICE >= GEN_9) ? 20000 : 4000,
-        .holdEffect = HOLD_EFFECT_SEEDS,
+        .holdEffect = HOLD_EFFECT_TERRAIN_SEED,
         .holdEffectParam = HOLD_EFFECT_PARAM_PSYCHIC_TERRAIN,
         .description = COMPOUND_STRING(
             "Boosts Sp. Def. on\n"
@@ -8830,7 +8842,7 @@ const struct Item gItemsInfo[] =
     {
         .name = ITEM_NAME("Misty Seed"),
         .price = (I_PRICE >= GEN_9) ? 20000 : 4000,
-        .holdEffect = HOLD_EFFECT_SEEDS,
+        .holdEffect = HOLD_EFFECT_TERRAIN_SEED,
         .holdEffectParam = HOLD_EFFECT_PARAM_MISTY_TERRAIN,
         .description = COMPOUND_STRING(
             "Boosts Sp. Def. on\n"
@@ -8849,7 +8861,7 @@ const struct Item gItemsInfo[] =
     {
         .name = ITEM_NAME("Grassy Seed"),
         .price = (I_PRICE >= GEN_9) ? 20000 : 4000,
-        .holdEffect = HOLD_EFFECT_SEEDS,
+        .holdEffect = HOLD_EFFECT_TERRAIN_SEED,
         .holdEffectParam = HOLD_EFFECT_PARAM_GRASSY_TERRAIN,
         .description = COMPOUND_STRING(
             "Boosts Defense on\n"
@@ -13289,7 +13301,7 @@ const struct Item gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_Letter,
-        .iconPalette = gItemIconPalette_LavaCookieAndLetter,
+        .iconPalette = gItemIconPalette_Letter,
     },
 
     [ITEM_DEVON_PARTS] =

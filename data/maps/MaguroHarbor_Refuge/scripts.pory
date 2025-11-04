@@ -5,12 +5,21 @@ mapscripts MaguroHarbor_Refuge_MapScripts {
 }
 
 script MaguroHarbor_Refuge_EventScript_Nurse {
+	createfieldmugshot(MUGSHOT_SEASIDE_NURSE)
 	setvar(VAR_0x800A, LOCALID_CHANSEY_MAGURO)
 	setvar(VAR_0x800B, LOCALID_NURSE_MAGURO)
 	setvar(VAR_0x8009, MUGSHOT_SEASIDE_NURSE)
 	call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
 	waitmessage
 	waitbuttonpress
+	release
+	end
+}
+
+script MaguroHarbor_Refuge_EventScript_Pasture {
+	createfieldmugshot(MUGSHOT_SEASIDE_MAN_2)
+	setvar(VAR_0x8009, MUGSHOT_SEASIDE_MAN_2)
+	call(Common_EventScript_PcGuy)
 	release
 	end
 }
@@ -113,7 +122,7 @@ script MaguroHarbor_Refuge_BattleHariko {
 
 			setspeaker(SP_NAME_HARIKO)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}These can be fed to your Pokémon during battle to save you from a pickle.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}These can be fed to your Pokémon during battle when in a pickle.\p"
 				"Farewell, {PLAYER}."
 			))
 			closemessage
@@ -129,6 +138,7 @@ script MaguroHarbor_Refuge_BattleHariko {
 }
 
 script MaguroHarbor_Refuge_EventScript_NurseSleep {
+	createfieldmugshot(MUGSHOT_SEASIDE_NURSE)
 	setvar(VAR_0x8009, MUGSHOT_SEASIDE_NURSE)
 	call(Common_EventScript_PkmnCenterNurse_Sleep)
 	waitmessage
@@ -164,15 +174,17 @@ script MaguroHarbor_Refuge_EventScript_DescribedMons {
 		))
 		closemessage
 	} else {
+		waitse
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_happy))
 		msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
-		"I bet you're wondering how to fill up the description of every Pokémon.\l"
-		"Well, asking around definitely helps!\p"
-		"For instance, Krabby sleeps burrowed inside holes in the sand, and did you know it can grow its pincers back if they fall during battle?\p"
-		"Go ahead, you can write that down about it!"
-	))
-	closemessage
+			"{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
+			"I bet you're wondering how to fill up the description of every Pokémon.\l"
+			"Well, asking around definitely helps!\p"
+			"For instance, Krabby sleeps burrowed inside holes in the sand, and did you know it can grow its pincers back if they fall during battle?\p"
+			"Go ahead, you can write that down about it!"
+		))
+		closemessage
 	}
 
 	setnamedmon(SPECIES_KRABBY)

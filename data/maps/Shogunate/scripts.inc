@@ -29,6 +29,13 @@ Shogunate_EventScript_Shuppet::
 	waitmoncry
 	fadescreenswapbuffers FADE_TO_BLACK
 	setflag FLAG_TEMP_1
+	removeobject LOCALID_PALACE_SHUPPET_1
+	removeobject LOCALID_PALACE_SHUPPET_2
+	removeobject LOCALID_PALACE_SHUPPET_3
+	removeobject LOCALID_PALACE_SHUPPET_4
+	removeobject LOCALID_PALACE_SHUPPET_5
+	removeobject LOCALID_PALACE_SHUPPET_6
+	removeobject LOCALID_PALACE_SHUPPET_7
 	fadescreenswapbuffers FADE_FROM_BLACK
 	release
 	return

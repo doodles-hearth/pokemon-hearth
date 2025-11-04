@@ -53,6 +53,8 @@
 #include "fake_rtc.h"
 #include "difficulty.h"
 #include "follower_npc.h"
+#include "chatot_post.h"
+#include "constants/decorations.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
 
@@ -181,6 +183,7 @@ void NewGameInitData(void)
     PlayTimeCounter_Reset();
     ClearPokedexFlags();
     InitEventData();
+    ResetChatotPost();
     ClearTVShowData();
     ResetGabbyAndTy();
     ClearSecretBases();
@@ -231,6 +234,8 @@ void NewGameInitData(void)
     QuestMenu_GetSetQuestState(QUEST_HEARTH_MAIN_CAMPAIGN, FLAG_SET_UNLOCKED);
     QuestMenu_GetSetQuestState(QUEST_HEARTH_MAIN_CAMPAIGN, FLAG_SET_ACTIVE);
     ResetLimitedShops();
+    DecorationAdd(DECOR_MAREEP_DOLL);
+    GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_JOLTIK), FLAG_SET_SEEN);
 }
 
 static void ResetMiniGamesRecords(void)

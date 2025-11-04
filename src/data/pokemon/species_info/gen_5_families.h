@@ -665,8 +665,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sDewottLevelUpLearnset,
         .teachableLearnset = sDewottTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_SAMUROTT},
-                                {EVO_NONE, 0, SPECIES_SAMUROTT_HISUI}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_SAMUROTT, CONDITIONS({IF_NOT_REGION, REGION_HISUI})},
+                                {EVO_LEVEL, 36, SPECIES_SAMUROTT_HISUI, CONDITIONS({IF_REGION, REGION_HISUI})}),
     },
 
     [SPECIES_SAMUROTT] =
@@ -3805,7 +3805,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .backAnimId = BACK_ANIM_H_SLIDE,
         .palette = gMonPalette_SewaddleTokuan,
         .shinyPalette = gMonShinyPalette_SewaddleTokuan,
-        .iconPalIndex = 1,
+        .iconPalIndex = 2,
         .iconSprite = gMonIcon_SewaddleTokuan,
         FOOTPRINT(Sewaddle)
         OVERWORLD(
@@ -3816,8 +3816,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sAnimTable_Following,
             gFollowerPalette_SewaddleTokuan,
             gShinyFollowerPalette_SewaddleTokuan)
-        .levelUpLearnset = sSewaddleLevelUpLearnset,
-        .teachableLearnset = sSewaddleTeachableLearnset,
+        .levelUpLearnset = sSewaddleTokuanLevelUpLearnset,
+        .teachableLearnset = sSewaddleTokuanTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 18, SPECIES_SWADLOON_TOKUAN}),
     },
 
@@ -3874,7 +3874,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .backAnimId = BACK_ANIM_H_VIBRATE,
         .palette = gMonPalette_SwadloonTokuan,
         .shinyPalette = gMonShinyPalette_SwadloonTokuan,
-        .iconPalIndex = 1,
+        .iconPalIndex = 2,
         .iconSprite = gMonIcon_SwadloonTokuan,
         FOOTPRINT(Swadloon)
         OVERWORLD(
@@ -3885,8 +3885,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sAnimTable_Following,
             gFollowerPalette_SwadloonTokuan,
             gShinyFollowerPalette_SwadloonTokuan)
-        .levelUpLearnset = sSwadloonLevelUpLearnset,
-        .teachableLearnset = sSwadloonTeachableLearnset,
+        .levelUpLearnset = sSwadloonTokuanLevelUpLearnset,
+        .teachableLearnset = sSwadloonTokuanTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_LEAVANNY_TOKUAN, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD})}),
     },
 
@@ -3949,7 +3949,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .backAnimId = BACK_ANIM_GROW_STUTTER,
         .palette = gMonPalette_LeavannyTokuan,
         .shinyPalette = gMonShinyPalette_LeavannyTokuan,
-        .iconPalIndex = 1,
+        .iconPalIndex = 2,
         .iconSprite = gMonIcon_LeavannyTokuan,
         FOOTPRINT(Leavanny)
         SHADOW(2, 14, SHADOW_SIZE_S)
@@ -3961,8 +3961,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sAnimTable_Following,
             gFollowerPalette_LeavannyTokuan,
             gShinyFollowerPalette_LeavannyTokuan)
-        .levelUpLearnset = sLeavannyLevelUpLearnset,
-        .teachableLearnset = sLeavannyTeachableLearnset
+        .levelUpLearnset = sLeavannyTokuanLevelUpLearnset,
+        .teachableLearnset = sLeavannyTokuanTeachableLearnset
     },
 #endif //P_TOKUAN_FORMS
 #endif //P_FAMILY_SEWADDLE
@@ -4429,8 +4429,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sPetililLevelUpLearnset,
         .teachableLearnset = sPetililTeachableLearnset,
         .eggMoveLearnset = sPetililEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_ITEM, ITEM_SUN_STONE, SPECIES_LILLIGANT},
-                                {EVO_NONE, 0, SPECIES_LILLIGANT_HISUI}),
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_SUN_STONE, SPECIES_LILLIGANT, CONDITIONS({IF_NOT_REGION, REGION_HISUI})},
+                                {EVO_ITEM, ITEM_SUN_STONE, SPECIES_LILLIGANT_HISUI, CONDITIONS({IF_REGION, REGION_HISUI})}),
     },
 
     [SPECIES_LILLIGANT] =
@@ -5157,7 +5157,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .abilities = { ABILITY_HUSTLE, ABILITY_NONE, ABILITY_INNER_FOCUS },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Darumaka"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Hot Charm"),
         .cryId = CRY_DARUMAKA,
         .natDexNum = NATIONAL_DEX_DARUMAKA,
         .categoryName = _("Zen Charm"),
@@ -5228,7 +5228,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .abilities = { ABILITY_SHEER_FORCE, ABILITY_NONE, ABILITY_ZEN_MODE },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Darmanitan"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Hot Monkey"),
         .cryId = CRY_DARMANITAN,
         .natDexNum = NATIONAL_DEX_DARMANITAN,
         .categoryName = _("Blazing"),
@@ -8162,10 +8162,11 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .height = 6,
         .weight = 195,
         .description = COMPOUND_STRING(
-            "Deerling have different scents\n"
-            "depending on the season. In this form,\n"
-            "Deerling have a softly sweet scent\n"
-            "that lingers in the nose."),
+            "Its fur color and scent vary depending\n"
+            "on where it is from. Uume Forest\n"
+            "Deerling are a deep orange, and give off\n"
+            "a scent of ripe fruit."
+        ),
         .pokemonScale = 422,
         .pokemonOffset = 14,
         .trainerScale = 256,
@@ -11688,8 +11689,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sRuffletLevelUpLearnset,
         .teachableLearnset = sRuffletTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 54, SPECIES_BRAVIARY},
-                                {EVO_NONE, 0, SPECIES_BRAVIARY_HISUI}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 54, SPECIES_BRAVIARY, CONDITIONS({IF_NOT_REGION, REGION_HISUI})},
+                                {EVO_LEVEL, 54, SPECIES_BRAVIARY_HISUI, CONDITIONS({IF_REGION, REGION_HISUI})}),
     },
 
     [SPECIES_BRAVIARY] =

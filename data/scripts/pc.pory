@@ -1,35 +1,38 @@
 script Common_EventScript_PcGuy {
 	lock
 	faceplayer
+	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 	if (flag(FLAG_PC_EXPLAINED)) {
 		msgbox(format(
-			"Need me to carry some Pokémon around for you? Sure thing!"
+			"{SPEAKER NAME_MAN}Need me to carry some Pokémon around for you? Sure thing!"
 		))
 	} else {
 		msgbox(format(
-			"Hey there, Pokémon Wielder!\p"
+			"{SPEAKER NAME_MAN}Hey there, Pokémon Wielder!\p"
 			"Have you ever thought, “Darn, I wish I could catch this seventh Pokémon, but I only have room for six?”\p"
 			"Today's your lucky day!\p"
 			"I've been appointed by the Toku council to store Wielders' Pokémon for them while they travel around.\p"
 			"We bring your Pokémon to a pasture where they live happily while waiting for you to get them back!\p"
-			"So if you ever want to send or retrieve your Pokémon, come talk to me!"
+			"Talk to me if you ever want to send or retrieve your Pokémon!"
 		))
 	}
+	closemessage
 
 	// call(EventScript_AccessPokemonStorage)
 	special(ShowPokemonStorageSystemPC)
 	waitstate
 
+	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 	if (flag(FLAG_PC_EXPLAINED)) {
 		msgbox(format(
-			"Pant… pant… Thanks for using our Pokémon pasture service!"
+			"{SPEAKER NAME_MAN}Pant… pant… Thanks for using our Pokémon pasture service!"
 		))
 		closemessage
 	} else {
 		setflag(FLAG_PC_EXPLAINED)
 		// TODO EVA do this only if we actually stored mons
 		msgbox(format(
-			"Alrighty, I'll just do a quick trip to the pasture!\p"
+			"{SPEAKER NAME_MAN}Alrighty, I'll just do a quick trip to the pasture!\p"
 			"Just a minute!"
 		))
 		closemessage
@@ -38,11 +41,12 @@ script Common_EventScript_PcGuy {
 		delay(120)
 		fadescreenswapbuffers(FADE_FROM_BLACK)
 
+		createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 		msgbox(format(
-			"PANT… PANT…\p"
-			"Your… pant… Pokémon… pant… are all set!\p"
-			"Whew, the pasture is a liiiittle far from here! Pant…\p"
-			"Come… pant… Come again!"
+			"{SPEAKER NAME_MAN}PANT…{PAUSE 8} PANT…\p"
+			"Your…{PAUSE 8} pant…{PAUSE 8} Pokémon…{PAUSE 8} pant…{PAUSE 8} are all set!\p"
+			"Whew, the pasture is a liiiittle far from here!{PAUSE 8} Pant…\p"
+			"Come…{PAUSE 8} pant…{PAUSE 8} Come again!"
 		))
 		closemessage
 	}

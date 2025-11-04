@@ -1002,7 +1002,7 @@
 
 	@ Gives the player a Pokémon of the specified species and level, and allows to customize extra parameters.
 	@ VAR_RESULT will be set to MON_GIVEN_TO_PARTY, MON_GIVEN_TO_PC, or MON_CANT_GIVE depending on the outcome.
-	.macro givemon species:req, level:req, item, ball, nature, abilityNum, gender, hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv, hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv, move1, move2, move3, move4, isShiny, gmaxFactor, teraType, dmaxLevel
+	.macro givemon species:req, level:req, item, ball, nature, abilityNum, gender, hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv, hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv, move1, move2, move3, move4, shinyMode, gmaxFactor, teraType, dmaxLevel
 	callnative ScrCmd_createmon, requests_effects=1
 	.byte 0
 	.byte PARTY_SIZE @ assign to first empty slot
@@ -1030,7 +1030,7 @@
 	.ifnb \move2; .set givemon_flags, givemon_flags | (1 << 18); .endif
 	.ifnb \move3; .set givemon_flags, givemon_flags | (1 << 19); .endif
 	.ifnb \move4; .set givemon_flags, givemon_flags | (1 << 20); .endif
-	.ifnb \isShiny; .set givemon_flags, givemon_flags | (1 << 21); .endif
+	.ifnb \shinyMode; .set givemon_flags, givemon_flags | (1 << 21); .endif
 	.ifnb \gmaxFactor; .set givemon_flags, givemon_flags | (1 << 22); .endif
 	.ifnb \teraType; .set givemon_flags, givemon_flags | (1 << 23); .endif
 	.ifnb \dmaxLevel; .set givemon_flags, givemon_flags | (1 << 24); .endif
@@ -1056,7 +1056,7 @@
 	.ifnb \move2; .2byte \move2; .endif
 	.ifnb \move3; .2byte \move3; .endif
 	.ifnb \move4; .2byte \move4; .endif
-	.ifnb \isShiny; .2byte \isShiny; .endif
+	.ifnb \shinyMode; .2byte \shinyMode; .endif
 	.ifnb \gmaxFactor; .2byte \gmaxFactor; .endif
 	.ifnb \teraType; .2byte \teraType; .endif
 	.ifnb \dmaxLevel; .2byte \dmaxLevel; .endif
@@ -1064,7 +1064,7 @@
 
 	@ creates a mon for a given party and slot
 	@ otherwise
-	.macro createmon side:req, slot:req, species:req, level:req, item, ball, nature, abilityNum, gender, hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv, hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv, move1, move2, move3, move4, isShiny, gmaxFactor, teraType, dmaxLevel
+	.macro createmon side:req, slot:req, species:req, level:req, item, ball, nature, abilityNum, gender, hpEv, atkEv, defEv, speedEv, spAtkEv, spDefEv, hpIv, atkIv, defIv, speedIv, spAtkIv, spDefIv, move1, move2, move3, move4, shinyMode, gmaxFactor, teraType, dmaxLevel
 	callnative ScrCmd_createmon, requests_effects=1
 	.byte \side	 @ 0 - player, 1 - opponent
 	.byte \slot	 @ 0-5
@@ -1092,7 +1092,7 @@
 	.ifnb \move2; .set givemon_flags, givemon_flags | (1 << 18); .endif
 	.ifnb \move3; .set givemon_flags, givemon_flags | (1 << 19); .endif
 	.ifnb \move4; .set givemon_flags, givemon_flags | (1 << 20); .endif
-	.ifnb \isShiny; .set givemon_flags, givemon_flags | (1 << 21); .endif
+	.ifnb \shinyMode; .set givemon_flags, givemon_flags | (1 << 21); .endif
 	.ifnb \gmaxFactor; .set givemon_flags, givemon_flags | (1 << 22); .endif
 	.ifnb \teraType; .set givemon_flags, givemon_flags | (1 << 23); .endif
 	.ifnb \dmaxLevel; .set givemon_flags, givemon_flags | (1 << 24); .endif
@@ -1118,7 +1118,7 @@
 	.ifnb \move2; .2byte \move2; .endif
 	.ifnb \move3; .2byte \move3; .endif
 	.ifnb \move4; .2byte \move4; .endif
-	.ifnb \isShiny; .2byte \isShiny; .endif
+	.ifnb \shinyMode; .2byte \shinyMode; .endif
 	.ifnb \gmaxFactor; .2byte \gmaxFactor; .endif
 	.ifnb \teraType; .2byte \teraType; .endif
 	.ifnb \dmaxLevel; .2byte \dmaxLevel; .endif
@@ -1167,6 +1167,8 @@
 		.byte 1
 	.elseif \id == STR_VAR_3
 		.byte 2
+	.elseif \id == STR_VAR_4
+		.byte 3
 	.else
 		.byte \id
 	.endif
@@ -2568,11 +2570,16 @@
 
     @ Sets the Pokedex Described Flag for the Pokemon, displaying a notification
     .macro setdescribedmon species:req
-	callnative ScriptShowMonDescribedNotification, requests_effects=1
-	.2byte \species
-	waitbuttonpress
-	callnative ScriptHideMonDescribed, requests_effects=1
-	.2byte \species
+    callnative ScriptShowMonDescribedNotification, requests_effects=1
+    .2byte \species
+    goto_if_eq VAR_RESULT, 1, 1f
+    goto 2f
+    1:
+        waitbuttonpress
+        callnative ScriptHideMonDescribed, requests_effects=1
+        .2byte \species
+    2:
+    closemessage
     .endm
 
 	@ Sets the Pokedex Caught Flag for the Pokemon with speciesId
@@ -2730,36 +2737,36 @@
     @ Starts the specified quest.
 	.macro startquest quest:req
 	closemessage
-	delay 30
+	@ delay 30
 	questmenu QUEST_MENU_SET_ACTIVE, \quest
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-    bufferstring 1 gText_QuestActive
-	playfanfare MUS_LEVEL_UP 
-	msgbox gText_QuestAnnounce, MSGBOX_SIGN
-	waitfanfare
+    @ bufferstring 1 gText_QuestActive
+	@ playfanfare MUS_LEVEL_UP 
+	@ msgbox gText_QuestAnnounce, MSGBOX_SIGN
+	@ waitfanfare
 	.endm
 
     @ Completes the specified quest.
 	.macro completequest quest:req
 	closemessage
-	delay 30
+	@ delay 30
 	questmenu QUEST_MENU_COMPLETE_QUEST, \quest
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-    bufferstring 1 gText_QuestComplete
-	playfanfare MUS_LEVEL_UP 
-	msgbox gText_QuestAnnounce, MSGBOX_SIGN
-	waitfanfare
+    @ bufferstring 1 gText_QuestComplete
+	@ playfanfare MUS_LEVEL_UP 
+	@ msgbox gText_QuestAnnounce, MSGBOX_SIGN
+	@ waitfanfare
 	.endm
 
 	@ Updates the complex quest's variable to give it its next state.
 	.macro updatequest quest:req, questvar:req
 	addvar \questvar, 1
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-	bufferstring 1 gText_QuestUpdate
-	playse SE_PIN
-	msgbox gText_QuestUpdate, MSGBOX_SIGN
-	waitse
-	openquestmenu
+	@ bufferstring 1 gText_QuestUpdate
+	@ playse SE_PIN
+	@ msgbox gText_QuestUpdate, MSGBOX_SIGN
+	@ waitse
+	@ openquestmenu
 	.endm
 
 	.macro goto_if_quest_inactive quest:req, dest:req
@@ -2988,6 +2995,10 @@
 	.4byte \name
 	.endm
 
+	.macro clearspeaker
+	callnative ClearSpeaker
+	.endm
+
 	.macro getroutechallengestate routeChallenge:req
 	callnative Native_GetRouteChallengeState, requests_effects = 1
 	.2byte \routeChallenge
@@ -2999,3 +3010,28 @@
 	.2byte \newState
 	.endm
 
+    .macro setchatotlastspeaker
+    callnative Native_SetChatotLastSpeaker, requests_effects=1
+    .endm
+
+    .macro checkchatotpost
+    callnative Native_CheckChatotPost, requests_effects=1
+    .endm
+
+    .macro checkchatotpostnumber
+    callnative Native_CheckChatotPostNumber, requests_effects=1
+    .endm
+
+    .macro readchatotpost
+    callnative Native_ReadChatotPost, requests_effects=1
+    .endm
+
+	.macro trysetchatotpostactive idPost:req
+	callnative Native_TrySetChatotPostActive, requests_effects=1
+	.2byte \idPost
+	.endm
+
+	@ Used for debug
+	.macro debug_resetchatotpost
+	callnative Native_ResetChatotPost, requests_effects=1
+	.endm

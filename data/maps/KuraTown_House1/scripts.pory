@@ -42,8 +42,7 @@ script KuraTown_House1_OldWoman {
 			break
 		case 6:
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}"
-				"Once the ill Pokémon drinks that medicine, it should feel right as rain."
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Once the ill Pokémon drinks that medicine, it should feel right as rain."
 			))
 			waitmessage
 			closemessage
@@ -84,8 +83,7 @@ script(local) OldWomanQuestScript {
 	waitmovement(0)
 	setspeaker(SP_NAME_OLD_LADY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}"
-		"While I can't go to Saku village myself, I can create an healing elixir.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}While I can't go to Saku village myself, I can create an healing elixir.\p"
 		"I'll need an Oran Berry, a fishcake from Maguro Harbor, and a Revival Powder.\p"
 		"Be a dear and fetch these things for me!"
 	))
@@ -134,13 +132,15 @@ script OldWomanQuest2Script {
 
 script KuraTown_House1_OldWomansSon {
 	lock
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	faceplayer
 	setspeaker(SP_NAME_GUY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}The Pokémon Council didn't see fit to build a Refuge in our town."
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}The Pokémon Council didn't see fit to build a Refuge in our town.\p"
 		"But those jerks over at Saku Village won't let us use theirs!\p"
-		"So my mother has to work hard to heal all the villager's Pokémon.\p"
+		"So my mother has to work hard to heal all the villager's Pokémon.\l"
 		"It's not fair!"
 	))
 	closemessage

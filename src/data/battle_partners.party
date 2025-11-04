@@ -47,8 +47,9 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 
 === PARTNER_SAMURAI ===
 Name: Samurai
-Class: Rival
+Class: Samurai
 Pic: Samurai
+Back Pic: Samurai
 Gender: Male
 Music: Aqua
 

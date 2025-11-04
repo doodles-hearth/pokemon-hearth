@@ -15,18 +15,35 @@ SINGLE_BATTLE_TEST("Sleep prevents the battler from using a move")
             TURN { MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
         for (j = 0; j < turns - 1; j++)
-            MESSAGE("Wobbuffet is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wobbuffet is fast asleep.");
+                MESSAGE("Wobbuffet is deep in a dream.");
+            }
         MESSAGE("Wobbuffet woke up!");
         STATUS_ICON(player, none: TRUE);
         MESSAGE("Wobbuffet used Celebrate!");
     }
 }
 
-SINGLE_BATTLE_TEST("Sleep: Spore doesn't affect grass types (Gen 6+)")
+SINGLE_BATTLE_TEST("Sleep: Spore affects grass types (Gen1-5)")
 {
     GIVEN {
+        WITH_CONFIG(GEN_CONFIG_POWDER_GRASS, GEN_5);
         ASSUME(IsPowderMove(MOVE_SPORE));
-        ASSUME(B_POWDER_GRASS >= GEN_6);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_CHIKORITA);
+    } WHEN {
+        TURN { MOVE(player, MOVE_SPORE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SPORE, player);
+    }
+}
+
+SINGLE_BATTLE_TEST("Sleep: Spore doesn't affect grass types (Gen6+)")
+{
+    GIVEN {
+        WITH_CONFIG(GEN_CONFIG_POWDER_GRASS, GEN_6);
+        ASSUME(IsPowderMove(MOVE_SPORE));
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_CHIKORITA);
     } WHEN {
@@ -38,7 +55,8 @@ SINGLE_BATTLE_TEST("Sleep: Spore doesn't affect grass types (Gen 6+)")
 
 AI_SINGLE_BATTLE_TEST("AI avoids hypnosis when it can not put target to sleep")
 {
-    u32 species, ability;
+    u32 species;
+    enum Ability ability;
 
     PARAMETRIZE { species = SPECIES_HOOTHOOT; ability = ABILITY_INSOMNIA; }
     PARAMETRIZE { species = SPECIES_MANKEY; ability = ABILITY_VITAL_SPIRIT; }

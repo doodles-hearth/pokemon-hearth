@@ -96,7 +96,7 @@ BeachboundRoute_EventScript_Karu_PostBattle::
 
 
 BeachboundRoute_EventScript_Kin::
-	trainerbattle_single TRAINER_KIN_1, BeachboundRoute_EventScript_Kin_Text_0, BeachboundRoute_EventScript_Kin_Text_1
+	trainerbattle_single TRAINER_KIN, BeachboundRoute_EventScript_Kin_Text_0, BeachboundRoute_EventScript_Kin_Text_1
 	setspeaker SP_NAME_BATTLE_GIRL
 	msgbox BeachboundRoute_EventScript_Kin_Text_2, MSGBOX_AUTOCLOSE
 	end
@@ -112,12 +112,28 @@ BeachboundRoute_EventScript_Kouta::
 
 
 BeachboundRoute_EventScript_Masato::
-	trainerbattle_single TRAINER_MASATO, BeachboundRoute_EventScript_Masato_Text_0, BeachboundRoute_EventScript_Masato_Text_1
+	trainerbattle_single TRAINER_MASATO_1, BeachboundRoute_EventScript_Masato_Text_0, BeachboundRoute_EventScript_Masato_Text_1, BeachboundRoute_EventScript_Masato_Register
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	compare VAR_RESULT, 0
+	goto_if_ne BeachboundRoute_EventScript_Masato_2
+BeachboundRoute_EventScript_Masato_1:
 	setnamedmon SPECIES_KRICKETOT
 	setspeaker SP_NAME_BUGCATCHER
-	msgbox BeachboundRoute_EventScript_Masato_Text_2
+	msgbox BeachboundRoute_EventScript_Masato_Text_4
+	closemessage
 	release
 	end
+
+BeachboundRoute_EventScript_Masato_2:
+	trainerbattle_rematch TRAINER_MASATO_1, BeachboundRoute_EventScript_Masato_Text_2, BeachboundRoute_EventScript_Masato_Text_3
+	goto BeachboundRoute_EventScript_Masato_1
+
+
+BeachboundRoute_EventScript_Masato_Register:
+	msgbox BeachboundRoute_EventScript_Masato_Register_Text_0
+	closemessage
+	register_matchcall TRAINER_MASATO_1
+	return
 
 
 BeachboundRoute_EventScript_SomeoneCallingForHelp::
@@ -197,9 +213,9 @@ BeachboundRoute_EventScript_Mugging::
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_13
 BeachboundRoute_EventScript_Mugging_1:
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_1
-	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_2
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_2
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_2
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_3
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_3
 	waitmovement 19
 	waitmovement 18
 	waitmovement 21
@@ -216,28 +232,29 @@ BeachboundRoute_EventScript_Mugging_1:
 	msgbox BeachboundRoute_EventScript_Mugging_Text_17
 	closemessage
 	delay 24
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_0
+	playse SE_PIN
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_4
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_18
 	closemessage
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_3
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_5
 	waitmovement 19
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_19
 	closemessage
-	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_3
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_5
 	waitmovement 0
 	setspeaker SP_NAME_ZUBAT_GRUNT
 	msgbox BeachboundRoute_EventScript_Mugging_Text_20
 	closemessage
 	delay 24
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_4
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_6
 	waitmovement 0
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_21
 	closemessage
 	delay 48
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_3
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_5
 	waitmovement 0
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_22
@@ -246,20 +263,20 @@ BeachboundRoute_EventScript_Mugging_1:
 	setspeaker SP_NAME_CROBAT_BOSS
 	msgbox BeachboundRoute_EventScript_Mugging_Text_23
 	closemessage
-	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_5
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_5
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_7
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_7
 	waitmovement 18
 	waitmovement 21
-	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_6
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_6
-	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_6
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_8
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_8
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_8
 	waitmovement 18
 	waitmovement 21
 	waitmovement 20
-	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_7
-	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_8
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_9
-	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_10
+	applymovement 19, BeachboundRoute_EventScript_Mugging_Movement_9
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_10
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_11
+	applymovement 20, BeachboundRoute_EventScript_Mugging_Movement_12
 	waitmovement 19
 	waitmovement 18
 	waitmovement 21
@@ -270,7 +287,7 @@ BeachboundRoute_EventScript_Mugging_1:
 	removeobject 20
 	setflag FLAG_HIDE_CROBAT_SHADOWS_BEACHBOUND_RT
 	delay 60
-	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_11
+	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_13
 	waitmovement 17
 	setspeaker SP_NAME_WOMAN
 	msgbox BeachboundRoute_EventScript_Mugging_Text_24
@@ -280,21 +297,20 @@ BeachboundRoute_EventScript_Mugging_1:
 	msgbox BeachboundRoute_EventScript_Mugging_Text_25
 	closemessage
 	addvar VAR_PLAYER_REPUTATION, 1
-	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_12
+	applymovement 17, BeachboundRoute_EventScript_Mugging_Movement_14
 	waitmovement 17
+	removeobject 17
 	waitmovement 0
 	return
 
 BeachboundRoute_EventScript_Mugging_2:
 	setvar VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 3
-	applymovement 18, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
+	applymovement 18, BeachboundRoute_EventScript_Mugging_Movement_0
 	setspeaker BeachboundRoute_EventScript_Mugging_Text_0
 	msgbox BeachboundRoute_EventScript_Mugging_Text_1
 	closemessage
-	applymovement 21, Common_Movement_WalkInPlaceFasterUp
-	waitmovement 0
-	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_0
+	playse SE_PIN
+	applymovement 21, BeachboundRoute_EventScript_Mugging_Movement_1
 	setspeaker BeachboundRoute_EventScript_Mugging_Text_0
 	msgbox BeachboundRoute_EventScript_Mugging_Text_2
 	closemessage
@@ -392,6 +408,11 @@ BeachboundRoute_EventScript_SeeDecay::
 	return
 
 
+BeachboundRoute_Sign_TrainerTips_XP::
+	msgbox BeachboundRoute_Sign_TrainerTips_XP_Text_0, MSGBOX_SIGN
+	return
+
+
 BeachboundRoute_EventScript_RunningBoy_Movement_0:
 	emote_happy
 	step_end
@@ -417,81 +438,51 @@ BeachboundRoute_EventScript_WhereAreYouGoing_Movement_2:
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_0:
-	emote_angry
+	walk_in_place_fast_up
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_1:
+	walk_in_place_fast_up
+	emote_angry
+	step_end
+
+BeachboundRoute_EventScript_Mugging_Movement_2:
 	walk_right
 	face_left
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_2:
+BeachboundRoute_EventScript_Mugging_Movement_3:
 	walk_down
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_3:
+BeachboundRoute_EventScript_Mugging_Movement_4:
+	emote_angry
+	step_end
+
+BeachboundRoute_EventScript_Mugging_Movement_5:
 	walk_in_place_fast_down
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_4:
+BeachboundRoute_EventScript_Mugging_Movement_6:
 	face_up
 	delay_16
 	delay_16
 	delay_16
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_5:
+BeachboundRoute_EventScript_Mugging_Movement_7:
 	walk_up
 	face_down
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_6:
+BeachboundRoute_EventScript_Mugging_Movement_8:
 	face_down
 	zubats_align
 	delay_16
 	delay_16
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_7:
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
-BeachboundRoute_EventScript_Mugging_Movement_8:
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	walk_left
-	step_end
-
 BeachboundRoute_EventScript_Mugging_Movement_9:
-	walk_right
-	walk_down
 	walk_down
 	walk_down
 	walk_down
@@ -509,6 +500,8 @@ BeachboundRoute_EventScript_Mugging_Movement_9:
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_10:
+	walk_right
+	walk_right
 	walk_down
 	walk_down
 	walk_down
@@ -527,11 +520,48 @@ BeachboundRoute_EventScript_Mugging_Movement_10:
 	step_end
 
 BeachboundRoute_EventScript_Mugging_Movement_11:
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+BeachboundRoute_EventScript_Mugging_Movement_12:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+
+BeachboundRoute_EventScript_Mugging_Movement_13:
 	walk_down
 	walk_down
 	step_end
 
-BeachboundRoute_EventScript_Mugging_Movement_12:
+BeachboundRoute_EventScript_Mugging_Movement_14:
 	walk_left
 	walk_down
 	walk_down
@@ -622,9 +652,21 @@ BeachboundRoute_EventScript_Masato_Text_1:
 	.string "Okay, rude.$"
 
 BeachboundRoute_EventScript_Masato_Text_2:
+	.string "Let's fight again!$"
+
+BeachboundRoute_EventScript_Masato_Text_3:
+	.string "I lost again?!$"
+
+BeachboundRoute_EventScript_Masato_Text_4:
 	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I hope one day my Kricketot evolves!\n"
 	.string "I wonder what delightful melody he'll\l"
 	.string "be able to sing then…$"
+
+BeachboundRoute_EventScript_Masato_Register_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}{SPEAKER NAME_BUGCATCHER} Are you a fan of singing bugs too?\n"
+	.string "Let's stay in touch!\p"
+	.string "I'll have Chatot sing their songs for\n"
+	.string "you!$"
 
 BeachboundRoute_EventScript_SomeoneCallingForHelp_Text_0:
 	.string "Help! Someone help me!$"
@@ -791,10 +833,10 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2:
 	.string "If you're a traveler, you're definitely\n"
 	.string "going to see me around!\p"
 	.string "What's your name? {PLAYER}? It's\n"
-	.string "nice to meet you, {PLAYER}! I see\l"
-	.string "you're a young Wielder, eh? Maybe we\l"
-	.string "can even have a friendly battle\l"
-	.string "sometime!\p"
+	.string "nice to meet you, {PLAYER}!\p"
+	.string "I see you're a young Wielder, eh?\n"
+	.string "Maybe we can even have a friendly\l"
+	.string "battle sometime!\p"
 	.string "I'm in the area for a while to gather\n"
 	.string "some resources.\p"
 	.string "Can I interest you in some handpicked\n"
@@ -803,3 +845,8 @@ BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_2:
 BeachboundRoute_EventScript_TravelingMerchantSecondTime_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Thanks for your business! Now where\n"
 	.string "did I put that scroll again…$"
+
+BeachboundRoute_Sign_TrainerTips_XP_Text_0:
+	.string "Did you know?\p"
+	.string "Weaker Pokémon will grow faster to\n"
+	.string "catch up with your stronger ones!$"

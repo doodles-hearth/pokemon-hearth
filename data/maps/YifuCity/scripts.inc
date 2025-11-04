@@ -5,45 +5,97 @@ YifuCity_MapScripts::
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION:
 	setflag FLAG_VISITED_YIFU_CITY
-	compare VAR_CROBAT_HIDEOUT_STATE, 3
-	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	goto_if_unset FLAG_TRIGGERED_LOCKDOWN, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	goto_if_unset FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
-YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
 	compare VAR_CROBAT_HIDEOUT_STATE, 3
-	goto_if_lt YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+	goto_if_ne YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4:
+	goto_if_unset FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
+	compare VAR_CROBAT_HIDEOUT_STATE, 3
+	goto_if_lt YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_11
 	compare VAR_HOTPOT_SCENE_STATE, 2
-	goto_if_ge YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+	goto_if_ge YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_11
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_10:
+	setflag FLAG_TEMP_7
+	goto_if_set FLAG_BADGE03_GET, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_17
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
-	setflag FLAG_TEMP_2
+	setflag FLAG_TEMP_6
 	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
-	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_2
 	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_4
 
-YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_7:
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
+	setflag FLAG_TEMP_4
+	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_7
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_11:
 	setflag FLAG_TEMP_5
+	goto YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_10
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_15:
+	setvar VAR_TEMP_0, 1
+	return
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_16:
+	goto_if_unset FLAG_DEMO_END, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_15
+	return
+
+YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_17:
+	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_MapScripts_MAP_SCRIPT_ON_TRANSITION_16
 	return
 
 YifuCity_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_CROBAT_HIDEOUT_STATE, 3, YifuCity_EscapedCrobatHideoutWithSamurai
+	map_script_2 VAR_TEMP_0, 1, YifuCity_EventScript_DemoEnd
 	.2byte 0
+
+
+YifuCity_EventScript_DemoEnd::
+	lockall
+	setflag FLAG_DEMO_END
+	setvar VAR_TEMP_0, 0
+	applymovement LOCALID_PLAYER, YifuCity_EventScript_DemoEnd_Movement_0
+	waitmovement 0
+	playse SE_RG_BAG_POCKET
+	addobject LOCALID_DOODLE
+	clearflag FLAG_TEMP_7
+	waitse
+	delay 48
+	playse SE_PIN
+	applymovement LOCALID_PLAYER, YifuCity_EventScript_DemoEnd_Movement_1
+	applymovement LOCALID_DOODLE, YifuCity_EventScript_DemoEnd_Movement_2
+	waitmovement LOCALID_PLAYER
+	playbgm MUS_VICTORY_LEAGUE, FALSE
+	special DoDomeConfetti
+	setspeaker YifuCity_EventScript_DemoEnd_Text_0
+	msgbox YifuCity_EventScript_DemoEnd_Text_1
+	closemessage
+	delay 24
+	playse SE_RG_BAG_POCKET
+	removeobject LOCALID_DOODLE
+	setflag FLAG_TEMP_7
+	waitse
+	fadedefaultbgm
+	releaseall
+	return
 
 
 YifuCity_EscapedCrobatHideoutWithSamurai::
 	lockall
 	setvar VAR_CROBAT_HIDEOUT_STATE, 4
-	applymovement 38, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
-	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	applymovement LOCALID_SAMURAI_HIDEOUT, YifuCity_EventScript_DemoEnd_Movement_2
+	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	setspeaker SP_NAME_SAMURAI
 	msgbox YifuCity_EscapedCrobatHideoutWithSamurai_Text_0
 	closemessage
-	applymovement 38, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_2
-	waitmovement 38
-	removeobject 38
+	applymovement LOCALID_SAMURAI_HIDEOUT, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	waitmovement LOCALID_SAMURAI_HIDEOUT
+	removeobject LOCALID_SAMURAI_HIDEOUT
 	setflag FLAG_HIDE_LOCKDOWN_SAMURAI
 	releaseall
 	return
@@ -139,7 +191,7 @@ YifuCity_EventScript_Samurai2::
 
 YifuCity_EventScript_SamuraiTalkToRobberyVictim::
 	lock
-	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement 0
 	setspeaker SP_NAME_SAMURAI
 	msgbox YifuCity_EventScript_SamuraiTalkToRobberyVictim_Text_0
@@ -152,7 +204,9 @@ YifuCity_EventScript_RobberyVictim::
 	lock
 	setspeaker SP_NAME_WOMAN
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_RobberyVictim_2
-	applymovement VAR_LAST_TALKED, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	waitse
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, YifuCity_EventScript_DemoEnd_Movement_2
 	waitmovement 0
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
 	msgbox YifuCity_EventScript_RobberyVictim_Text_7
@@ -203,6 +257,7 @@ YifuCity_EventScript_RobberyVictim_8:
 	goto YifuCity_EventScript_RobberyVictim_1
 
 YifuCity_EventScript_RobberyVictim_9:
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
 	setspeaker SP_NAME_WOMAN
 	msgbox YifuCity_EventScript_RobberyVictim_Text_6
@@ -252,6 +307,7 @@ YifuCity_ShinySellerChoice_3:
 
 YifuCity_ShinySellerChoice_4:
 	hidemoneybox
+	playse SE_PIN
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	applymovement VAR_LAST_TALKED, YifuCity_ShinySellerChoice_Movement_2
 	msgbox YifuCity_ShinySellerChoice_Text_9
@@ -260,6 +316,7 @@ YifuCity_ShinySellerChoice_4:
 
 YifuCity_ShinySellerChoice_5:
 	hidemoneybox
+	playse SE_PIN
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	applymovement VAR_LAST_TALKED, YifuCity_ShinySellerChoice_Movement_2
 	msgbox YifuCity_ShinySellerChoice_Text_10
@@ -270,7 +327,7 @@ YifuCity_ShinySellerChoice_6:
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_ShinySellerChoice_Text_3
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CATERPIE
-	givemon SPECIES_CATERPIE, 5, isShiny = FALSE
+	givemon SPECIES_CATERPIE, 5, shinyMode = SHINY_MODE_NEVER
 	compare VAR_RESULT, MON_CANT_GIVE
 	goto_if_eq YifuCity_ShinySellerChoice_10
 YifuCity_ShinySellerChoice_9:
@@ -364,6 +421,7 @@ YifuCity_ShinySellerChoice_27:
 
 YifuCity_Trigger_CrobatGruntsScram::
 	lockall
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	gettimeofday
 	compare VAR_0x8000, TIME_NIGHT
 	goto_if_eq YifuCity_Trigger_CrobatGruntsScram_2
@@ -374,49 +432,50 @@ YifuCity_Trigger_CrobatGruntsScram_1:
 	return
 
 YifuCity_Trigger_CrobatGruntsScram_2:
-	applymovement 9, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsScram_Text_0
 	closemessage
 	playse SE_PIN
-	applymovement 9, Common_Movement_ExclamationMark
+	applymovement LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_ExclamationMark
 	delay 16
 	playse SE_PIN
-	applymovement 10, Common_Movement_ExclamationMark
+	applymovement LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_ExclamationMark
 	waitmovement 0
 	waitse
 	delay 48
-	turnobject 9, DIR_WEST
-	turnobject 10, DIR_WEST
+	turnobject LOCALID_GRUNT_PASSWORD_TOP, DIR_WEST
+	turnobject LOCALID_GRUNT_PASSWORD_BOTTOM, DIR_WEST
 	delay 48
 	playse SE_LEDGE
-	applymovement 9, YifuCity_Trigger_CrobatGruntsScram_Movement_0
+	applymovement LOCALID_GRUNT_PASSWORD_TOP, YifuCity_Trigger_CrobatGruntsScram_Movement_0
 	waitmovement 0
 	waitse
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsScram_Text_1
 	closemessage
 	playse SE_BALL_OPEN
-	addobject 11
+	addobject LOCALID_GRUNT_PASSWORD_ZUBAT
 	playmoncry SPECIES_ZUBAT, CRY_MODE_NORMAL
 	setseenmon SPECIES_ZUBAT
-	applymovement 11, YifuCity_Trigger_CrobatGruntsScram_Movement_1
+	applymovement LOCALID_GRUNT_PASSWORD_ZUBAT, YifuCity_Trigger_CrobatGruntsScram_Movement_1
 	waitmoncry
 	waitse
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, YifuCity_Trigger_CrobatGruntsScram_Movement_2
 	waitmovement 0
-	applymovement 9, YifuCity_ShinySellerChoice_Movement_2
+	playse SE_PIN
+	applymovement LOCALID_GRUNT_PASSWORD_TOP, YifuCity_ShinySellerChoice_Movement_2
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsScram_Text_2
 	closemessage
 	delay 24
-	addobject 11
-	applymovement 11, YifuCity_Trigger_CrobatGruntsScram_Movement_3
+	addobject LOCALID_GRUNT_PASSWORD_ZUBAT
+	applymovement LOCALID_GRUNT_PASSWORD_ZUBAT, YifuCity_Trigger_CrobatGruntsScram_Movement_3
 	waitmovement 0
-	turnobject 9, DIR_SOUTH
-	turnobject 10, DIR_NORTH
+	turnobject LOCALID_GRUNT_PASSWORD_TOP, DIR_SOUTH
+	turnobject LOCALID_GRUNT_PASSWORD_BOTTOM, DIR_NORTH
 	goto YifuCity_Trigger_CrobatGruntsScram_1
 
 
@@ -441,49 +500,52 @@ YifuCity_Trigger_CrobatGruntsEavesdropPassword_2:
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_1
 	waitmovement 0
 	delay 48
-	applymovement 9, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_1
-	applymovement 9, YifuCity_ShinySellerChoice_Movement_2
+	playse SE_PIN
+	applymovement LOCALID_GRUNT_PASSWORD_TOP, YifuCity_ShinySellerChoice_Movement_2
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_2
 	closemessage
-	applymovement 10, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	applymovement 10, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_2
+	playse SE_PIN
+	applymovement LOCALID_GRUNT_PASSWORD_BOTTOM, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_2
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_3
 	closemessage
-	applymovement 9, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	applymovement 9, YifuCity_ShinySellerChoice_Movement_2
+	playse SE_PIN
+	applymovement LOCALID_GRUNT_PASSWORD_TOP, YifuCity_ShinySellerChoice_Movement_2
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_4
 	closemessage
-	applymovement 10, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_5
 	playse SE_LEDGE
-	applymovement 10, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_3
+	applymovement LOCALID_GRUNT_PASSWORD_BOTTOM, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_3
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_6
 	waitmovement 0
 	waitse
 	closemessage
 	playse SE_LEDGE
-	applymovement 9, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_4
+	applymovement LOCALID_GRUNT_PASSWORD_TOP, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_4
 	setspeaker YifuCity_EventScript_ShinySeller_Text_0
 	msgbox YifuCity_Trigger_CrobatGruntsEavesdropPassword_Text_7
 	waitmovement 0
 	waitse
 	closemessage
-	applymovement 9, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_5
-	applymovement 10, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_6
+	applymovement LOCALID_GRUNT_PASSWORD_TOP, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_5
+	applymovement LOCALID_GRUNT_PASSWORD_BOTTOM, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_6
 	waitmovement 0
-	removeobject 9
-	removeobject 10
-	removeobject 11
+	removeobject LOCALID_GRUNT_PASSWORD_TOP
+	removeobject LOCALID_GRUNT_PASSWORD_BOTTOM
+	removeobject LOCALID_GRUNT_PASSWORD_ZUBAT
 	setflag FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF
 	applymovement OBJ_EVENT_ID_CAMERA, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_7
 	waitmovement 0
@@ -495,6 +557,8 @@ YifuCity_EventScript_HearEcho::
 	lock
 	faceplayer
 	setspeaker SP_NAME_BOY
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
 	msgbox YifuCity_EventScript_HearEcho_Text_0
 	closemessage
@@ -571,6 +635,8 @@ YifuCity_EventScript_SafeCity::
 	lock
 	faceplayer
 	setspeaker SP_NAME_GIRL
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_SafeCity_Movement_0
 	msgbox YifuCity_EventScript_SafeCity_Text_0
 	closemessage
@@ -591,6 +657,7 @@ YifuCity_EventScript_Tourist::
 YifuCity_EventScript_TouristKid::
 	lock
 	faceplayer
+	waitse
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_SafeCity_Movement_0
 	setspeaker SP_NAME_LITTLE_BOY
 	msgbox YifuCity_EventScript_TouristKid_Text_0
@@ -604,6 +671,7 @@ YifuCity_EventScript_TouristGirl::
 	lock
 	faceplayer
 	setspeaker SP_NAME_GIRL
+	waitse
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
 	msgbox YifuCity_EventScript_TouristGirl_Text_0
 	closemessage
@@ -612,12 +680,10 @@ YifuCity_EventScript_TouristGirl::
 	return
 
 
-YifuCity_EventScript_Zubat1::
+YifuCity_EventScript_ClothingShopClosed::
 	lock
 	faceplayer
-	setspeaker SP_NAME_ZUBAT_GRUNT
-	applymovement VAR_LAST_TALKED, YifuCity_ShinySellerChoice_Movement_2
-	msgbox YifuCity_EventScript_Zubat1_Text_0
+	msgbox YifuCity_EventScript_ClothingShopClosed_Text_0
 	closemessage
 	release
 	end
@@ -636,6 +702,8 @@ YifuCity_EventScript_Zubat2::
 YifuCity_EventScript_Zubat3::
 	lock
 	faceplayer
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_Zubat3_Movement_0
 	setspeaker SP_NAME_ZUBAT_GRUNT
 	msgbox YifuCity_EventScript_Zubat3_Text_0
@@ -657,7 +725,7 @@ YifuCity_EventScript_Zubat4::
 YifuCity_Trigger_Lockdown::
 	lockall
 	goto_if_unset FLAG_TRIGGERED_LOCKDOWN, YifuCity_Trigger_Lockdown_2
-	applymovement 33, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	applymovement LOCALID_LOCKDOWN_SAMURAI, YifuCity_EventScript_DemoEnd_Movement_2
 	waitmovement 0
 	special GetPlayerSirMissString
 	setspeaker SP_NAME_SAMURAI
@@ -680,9 +748,9 @@ YifuCity_Trigger_Lockdown_2:
 	waitse
 	getplayerxy VAR_TEMP_2, VAR_TEMP_3
 	clearflag FLAG_HIDE_LOCKDOWN_SAMURAI
-	setobjectxyperm 33, 13, 39
-	addobject 33
-	applymovement 33, YifuCity_Trigger_Lockdown_Movement_0
+	setobjectxyperm LOCALID_LOCKDOWN_SAMURAI, 13, 39
+	addobject LOCALID_LOCKDOWN_SAMURAI
+	applymovement LOCALID_LOCKDOWN_SAMURAI, YifuCity_Trigger_Lockdown_Movement_0
 	switch VAR_TEMP_3
 	case 36, YifuCity_Trigger_Lockdown_7
 	case 37, YifuCity_Trigger_Lockdown_8
@@ -692,7 +760,7 @@ YifuCity_Trigger_Lockdown_2:
 	case 42, YifuCity_Trigger_Lockdown_12
 	case 43, YifuCity_Trigger_Lockdown_13
 YifuCity_Trigger_Lockdown_5:
-	waitmovement 33
+	waitmovement LOCALID_LOCKDOWN_SAMURAI
 	waitmovement OBJ_EVENT_ID_PLAYER
 	special GetPlayerSirMissString
 	setspeaker SP_NAME_SAMURAI
@@ -737,7 +805,7 @@ YifuCity_Trigger_Lockdown_13:
 
 YifuCity_Trigger_CantGoThruNorth::
 	lockall
-	applymovement 34, YifuCity_Trigger_CantGoThruNorth_Movement_0
+	applymovement LOCALID_LOCKDOWN_SAMURAI_NORTH, YifuCity_Trigger_CantGoThruNorth_Movement_0
 	waitmovement 0
 	special GetPlayerSirMissString
 	setspeaker SP_NAME_SAMURAI
@@ -956,6 +1024,8 @@ YifuCity_EventScript_NastukiPostHideout_20:
 SpeakToNatsukiMorning:
 	call NatsukiCanIComeToo
 	call HarikoFacesPlayer
+	waitse
+	playse SE_PIN
 	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EventScript_IDontFeelSafe_Movement_0
 	setspeaker SP_NAME_HARIKO
 	msgbox SpeakToNatsukiMorning_Text_0
@@ -991,6 +1061,8 @@ SpeakToNatsukiLunchOrDinner_3:
 SpeakToNatsukiAfternoon:
 	call NatsukiCanIComeToo
 	call HarikoFacesNatsuki
+	waitse
+	playse SE_PIN
 	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EventScript_IDontFeelSafe_Movement_0
 	setspeaker SP_NAME_HARIKO
 	msgbox SpeakToNatsukiAfternoon_Text_0
@@ -1460,12 +1532,12 @@ HarikoFacesPlayer_3:
 	return
 
 HarikoFacesPlayer_4:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
 	return
 
 HarikoFacesPlayer_5:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EventScript_DemoEnd_Movement_2
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
 	return
 
@@ -1489,12 +1561,12 @@ NatsukiFacesPlayer_3:
 	return
 
 NatsukiFacesPlayer_4:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
 	return
 
 NatsukiFacesPlayer_5:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EventScript_DemoEnd_Movement_2
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
 	return
 
@@ -1558,13 +1630,13 @@ NatsukiTurnsToPlayer_5:
 
 
 NatsukiFacesHariko:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1
+	applymovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_NATSUKI
 	return
 
 
 HarikoFacesNatsuki:
-	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0
+	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_EventScript_DemoEnd_Movement_2
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
 	return
 
@@ -1585,6 +1657,8 @@ YifuCity_EventScript_Nurse::
 	lock
 	faceplayer
 	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_EventScript_Nurse_2
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_EventScript_IDontFeelSafe_Movement_0
 	setspeaker SP_NAME_NURSE
 	msgbox YifuCity_EventScript_Nurse_Text_2
@@ -1600,6 +1674,7 @@ YifuCity_EventScript_Nurse_2:
 	closemessage
 	giveitem ITEM_HEAL_BALL, 2
 	setflag FLAG_ITEM_YIFU_CITY_HEAL_BALL
+	setnamedmon SPECIES_CHANSEY
 	setdescribedmon SPECIES_CHANSEY
 	goto YifuCity_EventScript_Nurse_1
 
@@ -1636,15 +1711,72 @@ YifuCity_EventScript_Chansey2::
 	return
 
 
-YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0:
+YifuCity_EventScript_UumeForestIllusions::
+	lock
+	faceplayer
+	waitse
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, YifuCity_EventScript_UumeForestIllusions_Movement_0
+	msgbox YifuCity_EventScript_UumeForestIllusions_Text_0
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_Pidgey::
+	lock
+	faceplayer
+	setseenmon SPECIES_PIDGEY
+	applymovement VAR_LAST_TALKED, YifuCity_EventScript_Zubat3_Movement_0
+	playmoncry SPECIES_PIDGEY, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_PIDGEY
+	msgbox YifuCity_EventScript_Pidgey_Text_0
+	waitmoncry
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_UumeForestTrees::
+	lock
+	faceplayer
+	waitse
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, YifuCity_EventScript_UumeForestTrees_Movement_0
+	msgbox YifuCity_EventScript_UumeForestTrees_Text_0
+	closemessage
+	release
+	return
+
+
+YifuCity_EventScript_DemoEnd_Movement_0:
+	walk_down
+	walk_down
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
+YifuCity_EventScript_DemoEnd_Movement_1:
+	emote_question_mark
+	face_left
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
+YifuCity_EventScript_DemoEnd_Movement_2:
 	walk_in_place_fast_right
 	step_end
 
-YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1:
+YifuCity_EscapedCrobatHideoutWithSamurai_Movement_0:
 	walk_in_place_fast_left
 	step_end
 
-YifuCity_EscapedCrobatHideoutWithSamurai_Movement_2:
+YifuCity_EscapedCrobatHideoutWithSamurai_Movement_1:
 	walk_down
 	walk_left
 	walk_left
@@ -1957,6 +2089,23 @@ HarikoTurnsToPlayer_Movement_3:
 	face_right
 	step_end
 
+YifuCity_EventScript_UumeForestIllusions_Movement_0:
+	emote_sweat
+	step_end
+
+YifuCity_EventScript_UumeForestTrees_Movement_0:
+	emote_heart
+	step_end
+
+YifuCity_EventScript_DemoEnd_Text_0:
+	.string "Doodle$"
+
+YifuCity_EventScript_DemoEnd_Text_1:
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_2 EMOTE_NORMAL}Well, hello, there!\nI'm Doodle.\lI'm the maker of this game!\p"
+	.string "You've reached the end of this demo,\ncongrats!!\p"
+	.string "Feel free to stroll around, but you've\nseen almost all the content by now.\p"
+	.string "I hope you liked it, and hope you'll play\nthe finished version too!\lSee ya!$"
+
 YifuCity_EscapedCrobatHideoutWithSamurai_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Well, well…\n"
 	.string "They slipped through our fingers,\l"
@@ -2211,8 +2360,8 @@ YifuCity_EventScript_SafeCity_Text_0:
 YifuCity_EventScript_Tourist_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 EMOTE_NORMAL}We came all the way from Windycape to\n"
 	.string "see the great capital.\p"
-	.string "The city's beautiful!\n"
-	.string "So many tourists, though…$"
+	.string "The city's beautiful, and we got a\n"
+	.string "nice cosy room at the Refuge!$"
 
 YifuCity_EventScript_TouristKid_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY EMOTE_NORMAL}We're on vacation!\n"
@@ -2222,8 +2371,9 @@ YifuCity_EventScript_TouristGirl_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I'm tired… I wish mom'd take us to the\n"
 	.string "hot springs…$"
 
-YifuCity_EventScript_Zubat1_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Whatchu lookin' at?$"
+YifuCity_EventScript_ClothingShopClosed_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}{SPEAKER NAME_GIRL}Can't wait for the clothing shop to\n"
+	.string "reopen!$"
 
 YifuCity_EventScript_Zubat2_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Scram, kid, I got no time for the likes\n"
@@ -2246,9 +2396,9 @@ YifuCity_Trigger_Lockdown_Text_0:
 
 YifuCity_Trigger_Lockdown_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}I'm sorry, {STR_VAR_1}, all exits\n"
-	.string "are temporarily blocked. You are\l"
-	.string "asked to remain inside the city until\l"
-	.string "further notice.$"
+	.string "are temporarily blocked.\p"
+	.string "You are asked to remain inside the\n"
+	.string "city until further notice.$"
 
 YifuCity_Trigger_Lockdown_Text_2:
 	.string "Why?$"
@@ -2305,11 +2455,10 @@ YifuCity_EventScript_Chimecho_Text_0:
 YifuCity_EventScript_ChimechoLady_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}I love listening to Chimecho's songs.\p"
 	.string "They echo in its hollow body and\n"
-	.string "produce the most wonderful\l"
-	.string "harmonics.\p"
+	.string "produce wonderful harmonics.\p"
 	.string "You should always be kind to\n"
-	.string "Chimecho! They are sacred, and\l"
-	.string "mistreating one\l"
+	.string "Chimecho!\p"
+	.string "They are sacred, and mistreating one\n"
 	.string "would surely bring you bad luck.$"
 
 YifuCity_EventScript_ChefOnBreak_Text_0:
@@ -2546,12 +2695,8 @@ YifuCity_EventScript_Nurse_Text_0:
 	.string "stronger its healing power becomes!$"
 
 YifuCity_EventScript_Nurse_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}I'm taking care of these Chansey\n"
-	.string "while they're not on shift.\p"
-	.string "Their body has amazing healing\n"
-	.string "virtues!\l"
-	.string "Poké Balls lined with their eggshells\l"
-	.string "heal the Pokémon they catch!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_NURSE EMOTE_NORMAL}I'm taking care of these Chansey while\nthey're not on shift.\p"
+	.string "Their body has amazing healing virtues!\nPoké Balls lined with their eggshells\lheal the Pokémon they catch!\p"
 	.string "Don't believe me? Try for yourself!$"
 
 YifuCity_EventScript_Nurse_Text_2:
@@ -2563,3 +2708,20 @@ YifuCity_EventScript_Chansey1_Text_0:
 
 YifuCity_EventScript_Chansey2_Text_0:
 	.string "Eyyyy!$"
+
+YifuCity_EventScript_UumeForestIllusions_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_BOY_2 EMOTE_NORMAL}{SPEAKER NAME_BOY}Uume Forest gives me the heebie\n"
+	.string "jeebies, man…\p"
+	.string "I went for Lum Berries, but I kept\n"
+	.string "getting lost and confused!\p"
+	.string "It's like the trees rearrange\n"
+	.string "themselves just to mess with you!$"
+
+YifuCity_EventScript_Pidgey_Text_0:
+	.string "Coo!$"
+
+YifuCity_EventScript_UumeForestTrees_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}{SPEAKER NAME_ARTIST}I came to Yifu City to see the trees\n"
+	.string "of Uume Forest for myself!\p"
+	.string "I've heard wonders about their\n"
+	.string "foliage's shades of purple!$"

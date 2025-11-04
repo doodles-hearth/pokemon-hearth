@@ -64,3 +64,14 @@ script YifuCity_BigHouse_3F_EventScript_Snom {
     release
     end
 }
+
+script YifuCity_BigHouse_3F_EventScript_BadLuckShamisen {
+	lock
+	faceplayer
+	setspeaker(SP_NAME_OLD_MAN)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}It's bad luck not to help out a Shamisen Player asking for help!"
+	))
+	closemessage
+	release
+}

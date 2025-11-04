@@ -63,12 +63,12 @@ script MaguroHarbor_EventScript_LovestruckGirl {
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		setspeaker(SP_NAME_GIRL)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}What was that? Oh, I hope my boyfriend's okay…"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}What was that?\nOh, I hope my boyfriend's okay…"
 		), MSGBOX_DEFAULT)
 	} else {
 		setspeaker("Lovestruck Girl")
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}It's only been an hour since I saw my love, and yet I already want tomorrow to come just so I can see him again…"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I just spent the day with my boyfriend\nfrom Kura Village, but I already want\ltonight to end to see him again!"
 		), MSGBOX_DEFAULT)
 	}
 	release
@@ -95,7 +95,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSettingUp {
 	
 	setspeaker(SP_NAME_OLD_LADY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh I'm so sorry, dearie. We haven't opened yet. Come back later!"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm so sorry, dearie.\nWe haven't opened yet.\lCome back in a while!"
 	), MSGBOX_DEFAULT)
 
 	closemessage
@@ -113,8 +113,8 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 	} else {
 		setspeaker(SP_NAME_OLD_LADY)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\p"
-			"They're the town's specialty! Only ¥500!"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\n"
+			"They're the town's specialty!\lOnly ¥500!"
 		), MSGBOX_DEFAULT)
 
 		showmoneybox(18, 0)
@@ -143,7 +143,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 				} else {
 					setspeaker(SP_NAME_OLD_LADY)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh dear! It appears you're a little short on pocket money."
+						"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh dear!\nYou're a bit short on pocket money."
 					))
 					closemessage
 					hidemoneybox
@@ -177,7 +177,7 @@ script MaguroHarbor_EventScript_FishcakeSalesmanClosingUp {
 	} else {
 		setspeaker(SP_NAME_OLD_LADY)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh my! I'm sorry but we've closed shop now, dearie.\l"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm sorry but we've closed shop now, dearie.\l"
 			"Come back tomorrow!\p"
 			"Did you want to buy one of my Fishcakes?\p"
 			"Here, you can have the leftovers from today!"
@@ -227,7 +227,8 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp {
 		), MSGBOX_DEFAULT)
 	} else {
 		msgbox(format(
-			"Aye! We're not open yet. Come back later for the fresh catch of the day."
+			"Aye! We're not open yet.\p"
+			"Come back later for the fresh catch of the day."
 		), MSGBOX_DEFAULT)
 	}
 
@@ -294,6 +295,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 
 							switch (var(VAR_RESULT)) {
 								case 0:
+									incrementgamestat(GAME_STAT_SOLD_FISH)
 									addmoney(VAR_0x8000)
 									special(DestroySelectedPartyMon)
 
@@ -355,7 +357,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp {
 	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(
 		"Ah! You're a bit too late {STR_VAR_2}. We're\nclosed for th' day.\p"
-		"We'll be open again\l{STR_VAR_1}."
+		"We'll be open again {STR_VAR_1}."
 	)
 
 	closemessage
@@ -412,9 +414,10 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 
 	setspeaker(SP_NAME_FISHERMAN)
 	msgbox(format(
-		"Shush, ye fool child! You're scarin' tha wee fishes!\p"
+		"Shush, ye fool child!\nYou be scarin' tha wee fishes!\p"
 		"… … … …\p"
-		"Yer eyes… They be sparklin' with passion… Are ye by any chance an aspirin' fisherm'n?\p"
+		"Yer eyes…\nThey be sparklin' with passion…\p"
+		"Are ye by any chance an aspirin' fisherm'n?\p"
 		"Ye are! I can feel it! I can see ye be dyin' to try it fer yerself!\p"
 		"Now, I can't be givin' ye me loyal Cramorant here…\p"
 		"But I can give ye this ol' rud o' mine!"
@@ -452,11 +455,11 @@ script MaguroHarbor_EventScript_Man {
 		
     	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}T-This was the biggest quake we've felt yet!"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_1 EMOTE_NORMAL}T-This was the biggest quake we've felt yet!"
 		), MSGBOX_AUTOCLOSE)
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}I wish I swam as gracefully as the Dojo's Magikarp…"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_1 EMOTE_NORMAL}I wish I swam as gracefully as the Dojo's Magikarp…"
 		))
 	}
 	
@@ -543,4 +546,63 @@ mart MaguroHarbor_Mart {
 	ITEM_AWAKENING
 	ITEM_BURN_HEAL
 	ITEM_ESCAPE_ROPE
+}
+
+script MaguroHarbor_EventScript_WindycapeLegend {
+	lock
+	faceplayer
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_2 EMOTE_NORMAL}{SPEAKER NAME_WOMAN}If you're ever in Windycape up north, be sure to visit its famous statue!\p"
+		"Legend has it that a woman waited for her lover to return from the seas…\l"
+		"For so long, she turned to stone!\p"
+		"Such a sad story.\nI wonder if it really happened."
+	))
+	closemessage
+
+	release
+}
+
+script MaguroHarbor_EventScript_MarketChild {
+	lock
+	faceplayer
+	waitse
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_music))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL EMOTE_NORMAL}{SPEAKER NAME_LITTLE_GIRL}I love the market! It smells of fish kinda, but my mum buys me fishcakes!"
+	))
+	closemessage
+
+	release
+}
+
+script MaguroHarbor_EventScript_MarketChildOnBeach {
+	lock
+
+	applymovement(LOCALID_MAGURO_WINGULL, moves(jump_in_place_left))
+	playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_WINGULL)
+	setseenmon(SPECIES_WINGULL)
+	msgbox(format(
+		"Heehee!"
+	))
+	waitmoncry
+	waitmovement(0)
+	closemessage
+
+	applymovement(LOCALID_MAGURO_LITTLE_GIRL, moves(jump_in_place_right))
+	playmoncry(SPECIES_WINGULL, CRY_MODE_HIGH_PITCH)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL EMOTE_NORMAL}{SPEAKER NAME_LITTLE_GIRL}Heeheehee!"
+	))
+	waitmoncry
+	waitmovement(0)
+	closemessage
+
+	playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+	applymovement(LOCALID_MAGURO_WINGULL, moves(emote_question_mark))
+	waitmoncry
+	waitmovement(0)
+
+	release
 }

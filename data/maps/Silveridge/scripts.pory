@@ -12,12 +12,7 @@ script Silveridge_DrawMetatiles{
 	switch(var(VAR_0x8000)){
         case TIME_DEAD_NIGHT:
             setmetatile(12, 10, METATILE_Silveridge_SilveridgeDoor, TRUE)
-			setmetatile(18, 18, METATILE_Silveridge_SilveridgeDoor, TRUE)
-			setmetatile(23, 6, METATILE_Silveridge_SilveridgeDoor, TRUE)
-			setmetatile(24, 6, METATILE_Silveridge_SilveridgeDoor, TRUE)
-			setmetatile(34, 6, METATILE_Silveridge_SilveridgeDoor, TRUE)
 			setmetatile(20, 26, METATILE_Silveridge_SilveridgeDoor, TRUE)
-			setmetatile(28, 26, METATILE_Silveridge_SilveridgeDoor, TRUE)
         case TIME_EARLY_MORNING:
         case TIME_MORNING:
         case TIME_LUNCHTIME:
@@ -119,4 +114,28 @@ script Silveridge_EventScript_SculptorsHouseSign {
 
 script Silveridge_EventScript_EldersHouseSign {
 	msgbox(format("{UP_ARROW} Elder Iwa's house"), MSGBOX_SIGN)
+}
+
+script Silveridge_EventScript_AronGuy {
+	lock
+	faceplayer
+	setnamedmon(SPECIES_ARON)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_1 EMOTE_NORMAL}{SPEAKER NAME_MAN}Found this little guy in Silver Tunnel.\nHe's been munching on rocks ever since!"
+	))
+	closemessage
+	release
+}
+
+script Silveridge_EventScript_Aron {
+	lock
+	playmoncry(SPECIES_ARON, CRY_MODE_NORMAL)
+	setseenmon(SPECIES_ARON)
+	setspeakertomonname(SPECIES_ARON)
+	msgbox(format(
+		"Chomp, chomp…"
+	))
+	waitmoncry
+	closemessage
+	release
 }

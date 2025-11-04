@@ -29,11 +29,11 @@ script YifuCity_HotSprings_EventScript_HotSpringM {
 	lock
 	trainerbattle_single(
 		TRAINER_FUTOSHI,
-		format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}I come here to relax and show off my hot bod!"),
+		format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_M EMOTE_NORMAL}I come here to relax and show off my hot bod!"),
 		format("I take it you're not impressed?")
 	)
 	setspeaker(SP_NAME_HOT_SPRING_GUY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}I wonder why girls never want to talk to me…"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_M EMOTE_NORMAL}I wonder why girls never want to talk to me…"), MSGBOX_AUTOCLOSE)
 	release
 }
 
@@ -75,6 +75,7 @@ script YifuCity_HotSprings_EventScript_Torkoal {
         "Pschhhhhh…"
     ))
     waitmoncry
+	closemessage
     release
 }
 
@@ -90,4 +91,24 @@ script YifuCity_HotSprings_EventScript_Slowpoke {
     ))
     waitmoncry
     release
+}
+
+script YifuCity_Onsen_EventScript_Leave {
+	lock
+
+	setspeaker(SP_NAME_OWNER)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Feeling relaxed enough?\nAny exit is permanent!"
+	))
+
+	mcdialogue(
+		"I want to leave!",
+		"I'm staying."
+	)
+
+	if (var(VAR_RESULT) == 0) {
+		warp(MAP_YIFU_CITY_ONSEN, 1)
+	}
+
+	release
 }

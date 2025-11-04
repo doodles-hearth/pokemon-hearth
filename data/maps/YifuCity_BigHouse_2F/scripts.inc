@@ -24,6 +24,8 @@ YifuCity_BigHouse_2F_EventScript_TradingActOfLove::
 YifuCity_BigHouse_2F_EventScript_RunningBoy::
 	lock
 	faceplayer
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_BigHouse_2F_EventScript_RunningBoy_Movement_0
 	setspeaker SP_NAME_BOY
 	msgbox YifuCity_BigHouse_2F_EventScript_RunningBoy_Text_0
@@ -36,22 +38,16 @@ YifuCity_BigHouse_2F_EventScript_RunningBoy_Movement_0:
 	step_end
 
 YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I was told I needed to raise a\n"
-	.string "Pokémon of my own. No sir!\p"
-	.string "Back in my day, we didn't need no\n"
-	.string "Pokémon!\l"
-	.string "A fire Pokémon burned my hand, a good\l"
-	.string "many years ago…\l"
-	.string "Now I'm scared! I don't want anything\l"
-	.string "to do with them!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I was told I needed to raise a Pokémon\nof my own. No sir!\p"
+	.string "Didn't need no Pokémon back in my day!\nA fire Pokémon burned my hand, a good\lmany years ago…\p"
+	.string "Now I'm scared!\nI don't want nothing to do with them!$"
 
 YifuCity_BigHouse_2F_EventScript_TradingActOfLove_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Trading Pokémon has long been seen\n"
-	.string "as an act of true love and trust\l"
-	.string "between Wielders.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Trading Pokémon is an act of true\n"
+	.string "love and trust between Wielders.\p"
 	.string "Now that I've become a Wielder, I\n"
-	.string "can't wait to find my soulmate so she\l"
-	.string "can trade me all her rare Pokémon!$"
+	.string "can't wait to find my soulmate!\l"
+	.string "She'll trade me all her rare Pokémon!$"
 
 YifuCity_BigHouse_2F_EventScript_RunningBoy_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_BOY_1 EMOTE_NORMAL}My grandpa won't let me have a\n"

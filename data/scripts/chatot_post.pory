@@ -1,3 +1,195 @@
-script ChatotPost_EventScript_Post {
-	msgbox(format("It's a Chatot Post."), MSGBOX_SIGN)
+script ChatotPost_EventScript_Chatot {
+    lockall
+
+    setseenmon(SPECIES_CHATOT)
+    setchatotlastspeaker
+
+    waitse
+    playse(SE_LEDGE)
+    applymovement(VAR_LAST_TALKED, moves(jump_in_place_down))
+    waitmovement(VAR_LAST_TALKED)
+    waitse
+
+    playmoncry(SPECIES_CHATOT, CRY_MODE_NORMAL)
+    applymovement(VAR_LAST_TALKED, moves(emote_music))
+
+    delay(16)
+    if (checkchatotpost)
+    {
+        setspeakertomonname(SPECIES_CHATOT)
+
+        checkchatotpostnumber
+        if (var(VAR_RESULT) == 1) {
+            msgbox(format(
+                "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!{PAUSE 8}\n"
+                "THIS IS FROM “{STR_VAR_1}”…"
+            ))
+        } else {
+            buffernumberstring(STR_VAR_2, VAR_RESULT)
+            msgbox(format(
+                "SQWAK!{PAUSE 8} POST FOR YOU!{PAUSE 8} SQWAK!{PAUSE 8}\n"
+                "{STR_VAR_2} NEW MESSAGES!{PAUSE 8} SQWAK!\p"
+                "FIRST MESSAGE FROM “{STR_VAR_1}”…"
+            ))
+        }
+        closemessage
+        delay(24)
+
+        readchatotpost
+
+        if (checkchatotpost)
+        {
+            call(ChatotPost_EventScript_NextMessage)
+        }
+
+        if (checkchatotpost)
+        {
+            call(ChatotPost_EventScript_NextMessage)
+        }
+    }
+    else
+    {
+        setspeakertomonname(SPECIES_CHATOT)
+        msgbox(format("SQWAK!{PAUSE 8} NO MORE POST!"))
+        closemessage
+        releaseall
+        end
+    }
+
+    playse(SE_LEDGE)
+    applymovement(VAR_LAST_TALKED, moves(jump_in_place_down))
+    waitse
+
+    playmoncry(SPECIES_CHATOT, CRY_MODE_NORMAL)
+
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox(format("SQWAK!"), MSGBOX_DEFAULT)
+    releaseall
+    end
+}
+
+script(local) ChatotPost_EventScript_NextMessage {
+    playmoncry(SPECIES_CHATOT, CRY_MODE_NORMAL)
+    applymovement(VAR_LAST_TALKED, moves(emote_music))
+
+    setspeakertomonname(SPECIES_CHATOT)
+
+    random(4)
+    switch(var(VAR_RESULT)) {
+        case 0:
+            msgbox(Text_Chatot_Next1)
+        case 1:
+            msgbox(Text_Chatot_Next2)
+        case 2:
+            msgbox(Text_Chatot_Next3)
+        case 3:
+            msgbox(Text_Chatot_Next4)
+    }
+
+    readchatotpost
+}
+
+script ChatotPost_EventScript_EmptyPost {
+    lock
+    setnamedmon(SPECIES_CHATOT)
+    msgbox(format("It reads: “Chatot Post”.\n… …No Chatot in sight!"))
+    closemessage
+    release
+}
+
+// Default no script behavior
+script ChatotPost_EventScript_None {
+    return
+}
+
+text(local) Text_Chatot_Next1 {
+    format("HERE'S ANOTHER FROM “{STR_VAR_1}”!{PAUSE 8}\nSQWAK!")
+}
+
+text(local) Text_Chatot_Next2 {
+    format("SQWAK!{PAUSE 8}\nNEXT MESSAGE, FROM “{STR_VAR_1}”!")
+}
+
+text(local) Text_Chatot_Next3 {
+    format("SQWAK!{PAUSE 8} ANOTHER MESSAGE!{PAUSE 8}\nFROM “{STR_VAR_1}”!{PAUSE 8} SQWAK!")
+}
+
+text(local) Text_Chatot_Next4 {
+    format("SQWAK SQWAK!{PAUSE 8} ONE MORE!\nFROM “{STR_VAR_1}”!")
+}
+
+//
+// Chatot Post Scripts - Make more below and add to /src/data/chatot_post.h
+//
+script ChatotPost_EventScript_FromHariko {
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox(format(
+        "“Hello {PLAYER}!\nDo you want to hear a fun fact?\p"
+        "Did you know that Wailord aren't actually the biggest living things?\p"
+        "The biggest living things are actually mushrooms, because…"
+    ))
+    fadescreen(FADE_TO_BLACK)
+	delay(48)
+    closemessage
+	fadescreen(FADE_FROM_BLACK)
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox(format("…also did you know…\pWait… Chatot!\pCome back, Chatot!”"))
+    closemessage
+
+    setnamedmon(SPECIES_CHATOT)
+    setnamedmon(SPECIES_WAILORD)
+    return
+}
+
+script ChatotPost_EventScript_FromBigSis {
+    special(GetPlayerBrotherSisterString)
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox(format(
+        "“Chatot, are you listening to me?\nHey, look this way-{PAUSE 8} pspsps!\p"
+        "Ahem, hey little {STR_VAR_1}!\nHope you're missing me already!\p"
+        "You forgot your lucky Entei Statuette when you left.\p"
+        "I like the tradition, so indulge me, okay? Please? Everyone carries one!\p"
+        "See you soon {PLAYER}, love you.”"
+    ))
+    closemessage
+
+    giveitem(ITEM_ENTEI_STATUETTE)
+
+    setnamedmon(SPECIES_CHATOT)
+    return
+}
+
+script ChatotPost_EventScript_Post_NatsukiRareCandy {
+    closemessage
+    setspeakertomonname(SPECIES_CHATOT)
+    if (flag(FLAG_BADGE02_GET)) {
+        msgbox(format(
+            "“What's up, {PLAYER}?\nIt's your bestie Natsuki.\p"
+            "I heard you did well in your battle against Hana.\lTwo tokens already, huh?\p"
+            "You might be a stronger rival than I anticipated! I gotta work harder!\p"
+            "Here's a little gift from me to you, I think your Pokémon will like it.\p"
+            "See you around, {PLAYER}.”"
+        ))
+    } else {
+        msgbox((
+            "“What's up, {PLAYER}?\nIt's your bestie Natsuki.\p"
+            "Have you beaten that Hana lady\nalready?\lI bet you got your butt handed to ya!\p"
+            "Here's a little something to help you\nout! I think your Pokémon will like it!\p"
+            "See you around, {PLAYER}.”"
+        ))
+    }
+    closemessage
+
+    giveitem(ITEM_RARE_CANDY)
+
+    setnamedmon(SPECIES_CHATOT)
+    return
+}
+
+// Serves as a template for match call messages
+script ChatotPost_EventScript_TrainerMessage {
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox(gStringVar4)
+    closemessage
+    return
 }

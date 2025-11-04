@@ -106,7 +106,7 @@ script ChiiTown_School_EventScript_ChildAlreadyKnowLegend {
 
 	setspeaker(SP_NAME_SCHOOL_KID)
 	msgbox(format(
-		"I already knew all of this! My gramma told me about the legend a bajillion times!"
+		"I already knew all of this! My gramma told me the legend a bajillion times!"
 	))
 	closemessage
 

@@ -1207,7 +1207,7 @@ static void PokeballGlowEffect_PlaceBalls(struct Sprite *sprite)
     u8 spriteId;
     if (sprite->sTimer == 0 || (--sprite->sTimer) == 0)
     {
-        sprite->sTimer = 25;
+        sprite->sTimer = 16;
         spriteId = CreateSpriteAtEnd(&sSpriteTemplate_PokeballGlow, sPokeballCoordOffsets[sprite->sCounter].x + sprite->x2, sPokeballCoordOffsets[sprite->sCounter].y + sprite->y2, 0);
         gSprites[spriteId].oam.priority = 2;
         gSprites[spriteId].sEffectSpriteId = sprite->sSpriteId;
@@ -4527,7 +4527,7 @@ void FieldEffectScript_LoadFadedPalette_Footprints(u8 **script)
     int palId = 0;
     struct SpritePalette *palettes = (struct SpritePalette *)FieldEffectScript_ReadWord(script);
     // Dynamically change footprint subsprites based on tileset
-    DebugPrintf("FOOT pals - current map secondary tileset = %d", GetSecondaryTilesetIdCurrentMap());
+    /* DebugPrintf("FOOT pals - current map secondary tileset = %d", GetSecondaryTilesetIdCurrentMap()); */
     switch (GetSecondaryTilesetIdCurrentMap())
     {
         case TILESET_SILVER_TUNNEL:
@@ -4537,7 +4537,7 @@ void FieldEffectScript_LoadFadedPalette_Footprints(u8 **script)
             palId = REGULAR_SAND;
             break;
     }
-    DebugPrintf("FOOT palId = %d", palId);
+    /* DebugPrintf("FOOT palId = %d", palId); */
     LoadSpritePalette(&palettes[palId]);
     UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palettes[palId].tag), FALSE);
     (*script) += 4;

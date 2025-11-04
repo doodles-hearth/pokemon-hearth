@@ -289,6 +289,7 @@ TranquilRoute_EventScript_Shellos::
 TranquilRoute_EventScript_BerryWoman::
 	lock
 	goto_if_set FLAG_RECEIVED_WAILMER_PAIL, TranquilRoute_EventScript_BerryWoman_2
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_BerryWoman_Movement_0
 	waitmovement 0
 	faceplayer
@@ -308,6 +309,7 @@ TranquilRoute_EventScript_BerryWoman::
 	setspeaker SP_NAME_WOMAN
 	msgbox TranquilRoute_EventScript_BerryWoman_Text_3
 	closemessage
+	setnamedmon SPECIES_WAILMER
 	giveitem ITEM_WAILMER_PAIL
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setspeaker SP_NAME_WOMAN
@@ -457,6 +459,7 @@ TranquilRoute_EventScript_TravelingMerchantFirstTime_2:
 TranquilRoute_EventScript_WaitingForChatot::
 	lock
 	faceplayer
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_0
 	setspeaker SP_NAME_GIRL
 	msgbox TranquilRoute_EventScript_WaitingForChatot_Text_0
@@ -748,7 +751,7 @@ TranquilRoute_EventScript_BerryWoman_Text_2:
 	.string "Here, try planting a few!$"
 
 TranquilRoute_EventScript_BerryWoman_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I was almost forgetting!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I almost forgot!\p"
 	.string "You must remember to water them\n"
 	.string "regularly, or they won't grow!\p"
 	.string "I like you. Take this!$"

@@ -59,6 +59,7 @@ YifuCity_HotSprings_EventScript_Torkoal::
 	playmoncry SPECIES_TORKOAL, CRY_MODE_NORMAL
 	msgbox YifuCity_HotSprings_EventScript_Torkoal_Text_0
 	waitmoncry
+	closemessage
 	release
 	return
 
@@ -74,6 +75,22 @@ YifuCity_HotSprings_EventScript_Slowpoke::
 	waitmoncry
 	release
 	return
+
+
+YifuCity_Onsen_EventScript_Leave::
+	lock
+	setspeaker SP_NAME_OWNER
+	msgbox YifuCity_Onsen_EventScript_Leave_Text_0
+	mcdialogue YifuCity_Onsen_EventScript_Leave_Text_1, YifuCity_Onsen_EventScript_Leave_Text_2
+	compare VAR_RESULT, 0
+	goto_if_eq YifuCity_Onsen_EventScript_Leave_2
+YifuCity_Onsen_EventScript_Leave_1:
+	release
+	return
+
+YifuCity_Onsen_EventScript_Leave_2:
+	warp MAP_YIFU_CITY_ONSEN, 1
+	goto YifuCity_Onsen_EventScript_Leave_1
 
 
 YifuCity_HotSprings_EventScript_OldWoman2_Movement_0:
@@ -103,14 +120,14 @@ YifuCity_HotSprings_EventScript_OldWoman2_Text_0:
 	.string "this old skin…$"
 
 YifuCity_HotSprings_EventScript_HotSpringM_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}I come here to relax and show off my\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_M EMOTE_NORMAL}I come here to relax and show off my\n"
 	.string "hot bod!$"
 
 YifuCity_HotSprings_EventScript_HotSpringM_Text_1:
 	.string "I take it you're not impressed?$"
 
 YifuCity_HotSprings_EventScript_HotSpringM_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}I wonder why girls never want to talk\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_M EMOTE_NORMAL}I wonder why girls never want to talk\n"
 	.string "to me…$"
 
 YifuCity_HotSprings_EventScript_HotSpringF_Text_0:
@@ -140,3 +157,13 @@ YifuCity_HotSprings_EventScript_Torkoal_Text_0:
 
 YifuCity_HotSprings_EventScript_Slowpoke_Text_0:
 	.string "Sloooo…$"
+
+YifuCity_Onsen_EventScript_Leave_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Feeling relaxed enough?\n"
+	.string "Any exit is permanent!$"
+
+YifuCity_Onsen_EventScript_Leave_Text_1:
+	.string "I want to leave!$"
+
+YifuCity_Onsen_EventScript_Leave_Text_2:
+	.string "I'm staying.$"

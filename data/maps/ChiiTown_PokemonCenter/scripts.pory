@@ -30,6 +30,7 @@ mapscripts ChiiTown_PokemonCenter_MapScripts {
 }
 
 script ChiiTown_PokemonCenter_EventScript_Nurse {
+	createfieldmugshot(MUGSHOT_SUNRISE_NURSE)
 	setvar(VAR_0x800B, LOCALID_NURSE_CHII)
 	setvar(VAR_0x800A, LOCALID_CHANSEY_CHII)
 	setvar(VAR_0x8009, MUGSHOT_SUNRISE_NURSE)
@@ -42,10 +43,19 @@ script ChiiTown_PokemonCenter_EventScript_Nurse {
 }
 
 script ChiiTown_PokemonCenter_EventScript_NurseSleep {
+	createfieldmugshot(MUGSHOT_SUNRISE_NURSE)
 	setvar(VAR_0x8009, MUGSHOT_SUNRISE_NURSE)
 	call(Common_EventScript_PkmnCenterNurse_Sleep)
 	waitmessage
 	waitbuttonpress
+	release
+	end
+}
+
+script ChiiTown_PokemonCenter_EventScript_Pasture {
+	createfieldmugshot(MUGSHOT_SUNRISE_MAN_2)
+	setvar(VAR_0x8009, MUGSHOT_SUNRISE_MAN_2)
+	call(Common_EventScript_PcGuy)
 	release
 	end
 }
@@ -164,11 +174,11 @@ script ChiiTown_PokemonCenter_EventScript_RefugePresentation {
 	setspeaker("Talkative man")
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_1 EMOTE_NORMAL}Isn't it amazing?\p"
-		"This is one of the many brand new Pokémon refuges that the Pokémon Council has built in towns across all Toku!\p"
-		"With traveling alone becoming more dangerous, many people are now training a Pokémon of their own for protection.\p"
-		"Towns were starting to be in dire need of proper healing and rest spots for Pokémon.\p"
+		"This is one of the many brand new Pokémon refuges that the Pokémon Council has built across all Toku!\p"
+		"With traveling alone becoming more dangerous, many people are now training a Pokémon for protection.\p"
+		"Towns were in dire need of proper healing and rest spots for Pokémon.\p"
 		"Sorry, I'll get out of your hair now.\n"
-		"Talk to the nurse and her Chansey\nif you want her to heal your Pokémon!"
+		"Talk to the nurse and her Chansey\lif you want her to heal your Pokémon!"
 	))
 	closemessage
 

@@ -3,11 +3,10 @@ script YifuCity_EventScript_WhirlpoolTutor {
 	faceplayer
 	if (flag(FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL)) {
 		setspeaker(SP_NAME_FISHERMAN)
-		msgbox(format(
-			"Hm? I can teach Whirlpool to your Pokémon again, but you have to make it worth my while, alright?\p"
-			"I'm very fond of Heart Scales. They remind me of the sea. I'll do it in exchange for one!"
+		msgbox((
+			"I can teach Whirlpool to your Pokémon\nagain, but make it worth my while, OK?\p"
+			"I'm very fond of Heart Scales.\nThey remind me of the sea.\lI'll do it in exchange for one!"
 		))
-		closemessage
 
 		if (checkitem(ITEM_HEART_SCALE)) {
 			dynmultichoice(
@@ -28,11 +27,11 @@ script YifuCity_EventScript_WhirlpoolTutor {
 		}
 	} else {
 		setspeaker(SP_NAME_FISHERMAN)
-		msgbox(format(
+		msgbox((
 			"Hm? No, I'm not fishing.\p"
-			"I'm just watching the tiny whirlpools that Pokémon make in the shallow water.\p"
-			"Would you like your Pokémon to make whirlpools too?\p"
-			"I could teach them the way of the Whirlpool!"
+			"I'm just watching the tiny whirlpools\nPokémon make in the shallow water.\p"
+			"Would you like your Pokémon to make\nwhirlpools too?\p"
+			"I could teach them the way of the\nWhirlpool!"
 		))
 		dynmultichoice(
 			0,
@@ -51,7 +50,7 @@ script YifuCity_EventScript_WhirlpoolTutor {
 		} else {
 			setspeaker(SP_NAME_FISHERMAN)
 			msgbox(format(
-				"I see. The way of the Whirlpool hasn't made it into your heart yet.\p"
+				"I see. The way of the Whirlpool hasn't made it into your heart yet.\l"
 				"That's okay!"
 			))
 			closemessage
@@ -71,7 +70,7 @@ script YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool {
 	if (var(VAR_RESULT) == 0) {
 		setspeaker(SP_NAME_FISHERMAN)
 		msgbox(format(
-			"I see. The way of the Whirlpool hasn't made it into your heart yet.\p"
+			"I see. The way of the Whirlpool hasn't made it into your heart yet.\l"
 			"That's okay!"
 		))
 		closemessage
@@ -100,33 +99,102 @@ script YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool {
 	release
 }
 
-raw `
-SlateportCity_PokemonFanClub_EventScript_SwaggerTutor::
+script Saku_EventScript_ForcePalmTutor {
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_SWAGGER, MoveTutor_EventScript_SwaggerTaught
-	msgbox MoveTutor_Text_SwaggerTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_SwaggerDeclined
-	call MoveTutor_EventScript_CanOnlyBeLearnedOnce
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_SwaggerDeclined
-	msgbox MoveTutor_Text_SwaggerWhichMon, MSGBOX_DEFAULT
-	setvar VAR_0x8005, MOVE_SWAGGER
-	call MoveTutor_EventScript_OpenPartyMenu
-	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_SwaggerDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_SWAGGER
-	goto MoveTutor_EventScript_SwaggerTaught
-	end
+	if (flag(FLAG_MOVE_TUTOR_TAUGHT_FORCE_PALM)) {
+		setspeaker(SP_NAME_MAN)
+		msgbox(format(
+			"You want more Pokémon to develop strong hands, huh?\p"
+			"I can teach them too, if you just bring me a Heart Scale!"
+		))
 
-MoveTutor_EventScript_SwaggerDeclined::
-	msgbox MoveTutor_Text_SwaggerDeclined, MSGBOX_DEFAULT
+		if (checkitem(ITEM_HEART_SCALE)) {
+			dynmultichoice(
+				0,
+				0,
+				TRUE,
+				10,
+				0,
+				DYN_MULTICHOICE_CB_NONE,
+				"Give Heart Scale",
+				"Don't give"
+			)
+			closemessage
+
+			if (var(VAR_RESULT) == 0) {
+				call(YifuCity_EventScript_ForcePalmTutorTeachForcePalm)
+			}
+		}
+	} else {
+		setspeaker(SP_NAME_MAN)
+		msgbox(format(
+			"Want your Pokémon to have strong and forceful hands, too?\p"
+			"I can teach them my Force Palm technique! What do you say?"
+		))
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"I need a hand!",
+			"Maybe later."
+		)
+		closemessage
+
+		if (var(VAR_RESULT) == 0) {
+			call(YifuCity_EventScript_ForcePalmTutorTeachForcePalm)
+		} else {
+			setspeaker(SP_NAME_MAN)
+			msgbox(format(
+				"You're intimidated by Mama and Kuku's display of awesomeness, I get it."
+			))
+			closemessage
+		}
+	}
+}
+
+script YifuCity_EventScript_ForcePalmTutorTeachForcePalm {
+	setspeaker(SP_NAME_MAN)
+	msgbox((
+		"Heck yes!\nWhich Pokémon will receive this gift?"
+	))
+
+	setvar(VAR_0x8005, MOVE_FORCE_PALM)
+	call(MoveTutor_EventScript_OpenPartyMenu)
+	if (var(VAR_RESULT) == 0) {
+		setspeaker(SP_NAME_MAN)
+		msgbox(format(
+			"You're intimidated by Mama and Kuku's display of awesomeness, I get it."
+		))
+		closemessage
+	} else {
+		if (flag(FLAG_MOVE_TUTOR_TAUGHT_FORCE_PALM)) {
+			setspeaker(SP_NAME_MAN)
+			msgbox(format(
+				"Your Pokémon's hands are now almost as strong as Mama's and Kuku's!\p"
+				"Now, we'd settled on a Heart Scale, right?"
+			))
+			closemessage
+
+			removeitem(ITEM_HEART_SCALE)
+		} else {
+			setflag(FLAG_MOVE_TUTOR_TAUGHT_FORCE_PALM)
+
+			setspeaker(SP_NAME_MAN)
+			msgbox(format(
+				"Your Pokémon's hands are now almost as strong as Mama's and Kuku's!\p"
+				"You'll join the Refuge building effort someday, right?"
+			))
+			closemessage
+		}
+	}
 	release
-	end
+}
 
-MoveTutor_EventScript_SwaggerTaught::
-	msgbox MoveTutor_Text_SwaggerTaught, MSGBOX_DEFAULT
-	release
-	end
-
+raw `
 MauvilleCity_EventScript_RolloutTutor::
 	lock
 	faceplayer

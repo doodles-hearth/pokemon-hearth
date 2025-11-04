@@ -58,7 +58,7 @@ SINGLE_BATTLE_TEST("Fling fails if Pokémon is under the effects of Embargo or M
 
 SINGLE_BATTLE_TEST("Fling fails for Pokémon with Klutz ability")
 {
-    u16 ability;
+    enum Ability ability;
 
     PARAMETRIZE {ability = ABILITY_KLUTZ; }
     PARAMETRIZE {ability = ABILITY_RUN_AWAY; }
@@ -188,7 +188,10 @@ SINGLE_BATTLE_TEST("Fling doesn't consume the item if Pokémon is asleep/frozen/
             MESSAGE("Wobbuffet couldn't move because it's paralyzed!");
         }
         else {
-            MESSAGE("Wobbuffet is fast asleep.");
+            ONE_OF {
+                MESSAGE("Wobbuffet is fast asleep.");
+                MESSAGE("Wobbuffet is deep in a dream.");
+            }
             MESSAGE("Wobbuffet woke up!");
         }
         MESSAGE("Wobbuffet used Fling!");
@@ -458,6 +461,27 @@ SINGLE_BATTLE_TEST("Fling deals damage based on items fling power")
         HP_BAR(opponent, captureDamage: &damage[1]);
     } THEN {
         EXPECT_EQ(damage[0], damage[1]);
+    }
+}
+
+SINGLE_BATTLE_TEST("Flinging a Mental Herb does not trigger the item if the target doesn't have anything that's cured by Mental Herb")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_MENTAL_HERB); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_FLING); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FLING, player);
+        NONE_OF {
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
+            MESSAGE("The opposing Wobbuffet got over its infatuation!");
+            MESSAGE("The opposing Wobbuffet's Taunt wore off!");
+            MESSAGE("The opposing Wobbuffet ended its encore!");
+            MESSAGE("The opposing Wobbuffet is no longer tormented!");
+            MESSAGE("The opposing Wobbuffet's move is no longer disabled!");
+            MESSAGE("The opposing Wobbuffet is cured of its heal block!");
+        }
     }
 }
 

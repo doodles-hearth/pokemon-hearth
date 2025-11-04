@@ -112,11 +112,13 @@ YifuCity_CrobatShop_Guard_9:
 	mcdialogue YifuCity_CrobatShop_Guard_Text_3, YifuCity_CrobatShop_Guard_Text_4, YifuCity_CrobatShop_Guard_Text_5
 	closemessage
 	delay 24
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_3
 	setspeaker YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_6
 	waitmovement 0
 	closemessage
+	playse SE_NOT_EFFECTIVE
 	compare VAR_FACING, DIR_NORTH
 	goto_if_eq YifuCity_CrobatShop_Guard_15
 	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_6
@@ -148,11 +150,13 @@ YifuCity_CrobatShop_Guard_23:
 	goto_if_set FLAG_TEMP_1, YifuCity_CrobatShop_Guard_28
 YifuCity_CrobatShop_Guard_27:
 	delay 24
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_3
 	setspeaker YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_6
 	waitmovement 0
 	closemessage
+	playse SE_NOT_EFFECTIVE
 	compare VAR_FACING, DIR_NORTH
 	goto_if_eq YifuCity_CrobatShop_Guard_35
 	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_6
@@ -173,6 +177,7 @@ YifuCity_CrobatShop_Guard_24:
 	goto YifuCity_CrobatShop_Guard_23
 
 YifuCity_CrobatShop_Guard_26:
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_CrobatShop_Guard_Movement_8
 	setspeaker YifuCity_CrobatShop_Guard_Text_0
 	msgbox YifuCity_CrobatShop_Guard_Text_13

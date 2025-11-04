@@ -6,11 +6,10 @@ script YifuCity_BigHouse_2F_EventScript_OldManScaredOfPokemon {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_OLD_MAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I was told I needed to raise a Pokémon of my own. No sir!\p"
-		"Back in my day, we didn't need no Pokémon!\l"
-		"A fire Pokémon burned my hand, a good many years ago…\l"
-		"Now I'm scared! I don't want anything to do with them!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I was told I needed to raise a Pokémon\nof my own. No sir!\p"
+		"Didn't need no Pokémon back in my day!\nA fire Pokémon burned my hand, a good\lmany years ago…\p"
+		"Now I'm scared!\nI don't want nothing to do with them!"
 	))
 	// TODO EVA givemon quest
 	release
@@ -21,8 +20,8 @@ script YifuCity_BigHouse_2F_EventScript_TradingActOfLove {
 	faceplayer
 	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Trading Pokémon has long been seen as an act of true love and trust between Wielders.\p"
-		"Now that I've become a Wielder, I can't wait to find my soulmate so she can trade me all her rare Pokémon!"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Trading Pokémon is an act of true love and trust between Wielders.\p"
+		"Now that I've become a Wielder, I can't wait to find my soulmate!\lShe'll trade me all her rare Pokémon!"
 	))
 	closemessage
 	release
@@ -31,6 +30,8 @@ script YifuCity_BigHouse_2F_EventScript_TradingActOfLove {
 script YifuCity_BigHouse_2F_EventScript_RunningBoy {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	setspeaker(SP_NAME_BOY)
 	msgbox(format(

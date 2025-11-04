@@ -279,8 +279,8 @@ static const struct DoorGraphics sDoorAnimGraphicsTable[] =
     {METATILE_BattleTent_Door,                              DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_BattleTentInterior, sDoorAnimPalettes_BattleTentInterior},
     {METATILE_TrainerHill_Door_Elevator_Lobby,              DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_TrainerHillLobbyElevator, sDoorAnimPalettes_TrainerHillLobbyElevator},
     {METATILE_TrainerHill_Door_Elevator_Roof,               DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_TrainerHillRoofElevator, sDoorAnimPalettes_TrainerHillRoofElevator},
-    {METATILE_House_Door_IndoorSlidingLeft,                 DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_SlidingLeft, sDoorAnimPalettes_IndoorSliding},
-    {METATILE_House_Door_IndoorSlidingRight,                DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_SlidingRight, sDoorAnimPalettes_IndoorSliding},
+    /* {METATILE_House_Door_IndoorSlidingLeft,                 DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_SlidingLeft, sDoorAnimPalettes_IndoorSliding}, */
+    /* {METATILE_House_Door_IndoorSlidingRight,                DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_SlidingRight, sDoorAnimPalettes_IndoorSliding}, */
     {},
 };
 

@@ -222,6 +222,11 @@ extern const u32 gBattleEnvironmentTilemap_TallGrass[];
 extern const u32 gBattleEnvironmentAnimTiles_TallGrass[];
 extern const u32 gBattleEnvironmentAnimTilemap_TallGrass[];
 extern const u16 gBattleEnvironmentPalette_TallGrass[];
+extern const u32 gBattleEnvironmentTiles_TallGrassBlue[];
+extern const u32 gBattleEnvironmentTilemap_TallGrassBlue[];
+extern const u32 gBattleEnvironmentAnimTiles_TallGrassBlue[];
+extern const u32 gBattleEnvironmentAnimTilemap_TallGrassBlue[];
+extern const u16 gBattleEnvironmentPalette_TallGrassBlue[];
 extern const u32 gBattleEnvironmentTiles_LongGrass[];
 extern const u32 gBattleEnvironmentTilemap_LongGrass[];
 extern const u32 gBattleEnvironmentAnimTiles_LongGrass[];
@@ -290,6 +295,11 @@ extern const u32 gBattleEnvironmentTilemap_GinkoWoods[];
 extern const u32 gBattleEnvironmentAnimTiles_GinkoWoods[];
 extern const u32 gBattleEnvironmentAnimTilemap_GinkoWoods[];
 extern const u16 gBattleEnvironmentPalette_GinkoWoods[];
+extern const u32 gBattleEnvironmentTiles_Plains[];
+extern const u32 gBattleEnvironmentTilemap_Plains[];
+extern const u32 gBattleEnvironmentAnimTiles_Plains[];
+extern const u32 gBattleEnvironmentAnimTilemap_Plains[];
+extern const u16 gBattleEnvironmentPalette_Plains[];
 
 // Pokédex
 extern const u32 gPokedexInterface_Gfx[];
@@ -1638,6 +1648,7 @@ extern const u16 gItemIconPalette_AuroraTicket[];
 extern const u32 gItemIcon_OldSeaMap[];
 extern const u16 gItemIconPalette_OldSeaMap[];
 extern const u32 gItemIcon_Letter[];
+extern const u16 gItemIconPalette_Letter[];
 extern const u32 gItemIcon_DevonParts[];
 extern const u16 gItemIconPalette_DevonParts[];
 extern const u32 gItemIcon_GoGoggles[];
@@ -2112,6 +2123,18 @@ extern const u16 gBattlePyramidBagInterface_Pal[];
 extern const u16 gBattlePyramidFloor_Pal[][16];
 
 extern const u16 gStandardMenuPalette[];
+
+// Hearth title screen
+extern const u16 gHearthTitleScreenBgPokemonLogoPalette[];
+extern const u16 gHearthTitleScreenBgSkyPalette[];
+extern const u16 gHearthTitleScreenBgLandscapePalette[];
+extern const u16 gHearthTitleScreenBgChimechoPalette[];
+extern const u16 gHearthTitleScreenHearthPal[];
+extern const u32 gHearthTitleScreenPokemonLogoGfx[];
+extern const u32 gHearthTitleScreenPokemonLogoTilemap[];
+extern const u32 gHearthTitleScreenHearthGfx[];
+extern const u32 gHearthTitleScreenPressStartGfx[];
+extern const u16 gHearthTitleScreenPressStartPal[];
 
 extern const u32 gTitleScreenEmeraldVersionGfx[];
 extern const u32 gTitleScreenPressStartGfx[];

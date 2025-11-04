@@ -10,7 +10,7 @@ SakuTown_House1_EventScript_Tama::
 	goto_if_eq SakuTown_House1_EventScript_Tama_3
 	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 2
 	goto_if_ge SakuTown_House1_EventScript_Tama_4
-	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 9
+	compare VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 8
 	goto_if_lt SakuTown_House1_EventScript_Tama_4
 	faceplayer
 	setspeaker SP_NAME_TAMA

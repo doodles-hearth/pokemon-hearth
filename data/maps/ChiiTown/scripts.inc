@@ -122,6 +122,9 @@ ChiiTown_EventScript_Kecleon::
 
 ChiiTown_EventScript_PlantingFlowers::
 	lock
+	faceplayer
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, ChiiTown_EventScript_PlantingFlowers_Movement_0
 	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox ChiiTown_EventScript_PlantingFlowers_Text_0
@@ -349,6 +352,24 @@ ChiiTown_EventScript_SetTrespassVar::
 	return
 
 
+ChiiTown_EventScript_HexManiac::
+	setspeaker SP_NAME_GIRL
+	msgbox ChiiTown_EventScript_HexManiac_Text_0, MSGBOX_NPC
+	return
+
+
+ChiiTown_EventScript_Deerling::
+	lock
+	setseenmon SPECIES_DEERLING_SPRING
+	playmoncry SPECIES_DEERLING_SPRING, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_DEERLING_SPRING
+	msgbox ChiiTown_EventScript_Deerling_Text_0
+	waitmoncry
+	closemessage
+	release
+	return
+
+
 ChiiTown_EventScript_Kecleon_Movement_0:
 	emote_music
 	step_end
@@ -505,3 +526,12 @@ ChiiTown_EventScript_TownSign_Text_0:
 
 ChiiTown_EventScript_SchoolSign_Text_0:
 	.string "Little Deerling elementary school$"
+
+ChiiTown_EventScript_HexManiac_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I hate people.\p"
+	.string "There are fewer people outdoors\n"
+	.string "after dark, so I only hang out at\l"
+	.string "night.$"
+
+ChiiTown_EventScript_Deerling_Text_0:
+	.string "Hun!$"

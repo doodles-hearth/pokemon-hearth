@@ -80,6 +80,7 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 		))
 		closemessage
 
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_question_mark, delay_16 * 6))
 		waitmovement(VAR_LAST_TALKED)
 

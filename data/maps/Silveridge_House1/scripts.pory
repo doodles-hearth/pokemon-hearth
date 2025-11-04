@@ -16,9 +16,15 @@ script Silveridge_House1_EventScript_Woman {
     lock
     faceplayer
     setspeaker(SP_NAME_WOMAN)
-    msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}Oh, you came all the way from Kura Village? You have good legs!"
-    ))
+    if (flag(FLAG_HIDE_FIREBRINGER_FANGIRL)) {
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}I wonder where my daughter is at.\nI bet the Firebringers are in town."
+        ))
+    } else {
+        msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}You came all the way from Kura Village?\nYou have good legs!"
+        ))
+    }
     closemessage
     release
 }
@@ -27,12 +33,12 @@ script Silveridge_House1_EventScript_FirebringerFangirl {
     lock
     faceplayer
     setspeaker(SP_NAME_GIRL)
-    msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}This place gets pretty cold, especially when the winds blow strong into the valley.\p"
-        "I don't know what we would do without those brave Firebringers.\p"
-        "They bring us live Slugma, carrying them on their back all the way down Mt Kazan!\p"
-        "Slugma cools and hardens up pretty fast, so they basically run the whole way down! I could never!\p"
-        "Sigh… I hope a handsome Firebringer notices me one day…"
+    msgbox((
+        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}It gets pretty cold here when the\nwind blows strong into the valley.\p"
+        "I don't know what we would do\nwithout those brave Firebringers.\p"
+        "They carry live Slugma on their back all\nthe way down from Mt Kazan to here!\p"
+        "Slugma cools and hardens up fast, so\nthey basically run the whole way down!\lI could never!\p"
+        "Sigh… I hope a handsome Firebringer\nnotices me one day…"
     ))
     closemessage
     applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
@@ -64,14 +70,14 @@ script Silveridge_House1_EventScript_Man {
     setspeaker(SP_NAME_MINER)
     if (flag(FLAG_OBTAINED_EVERSTONE)) {
         msgbox(format(
-            "You think some Pokémon prefer to remain small forever?"
+            "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}You think some Pokémon prefer to remain small forever?"
         ))
         closemessage
     } else {
-        msgbox(format(
-            "My job is to mine ore in Silver Tunnel, all day long.\p"
-            "I love it! I wouldn't trade it for the world. I'm fine with being a simple miner forever.\p"
-            "Speaking of… I often find interesting rocks in there. Look at this!"
+        msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}My job is to mine ore in Silver Tunnel,\nall day long.\lI love it!\p"
+            "Wouldn't trade it for the world.\nI'm fine being a simple miner forever.\p"
+            "Speaking of… I often find interesting\nrocks in there.\lLook at this!"
         ))
         closemessage
 
@@ -79,13 +85,11 @@ script Silveridge_House1_EventScript_Man {
         setflag(FLAG_OBTAINED_EVERSTONE)
 
         setspeaker(SP_NAME_MINER)
-        msgbox(format(
-            "Apparently as long as a Pokémon holds on to this stone, it'll stop growing.\p"
-            "My helper Sandslash is already fully grown, so I don't need it."
+        msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}Apparently as long as a Pokémon holds\non to this stone, it'll stop growing.\p"
+            "Sandy here is already fully grown,\nso I don't need it."
         ))
         closemessage
-
-        setnamedmon(SPECIES_SANDSLASH)
     }
     release
 }

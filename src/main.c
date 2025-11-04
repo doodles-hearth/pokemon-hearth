@@ -26,6 +26,8 @@
 #include "test_runner.h"
 #include "constants/rgb.h"
 
+#include "tarc_speedup.h"
+
 static void VBlankIntr(void);
 static void HBlankIntr(void);
 static void VCountIntr(void);
@@ -116,7 +118,7 @@ void AgbMain(void)
     gSoftResetDisabled = FALSE;
 
     if (gFlashMemoryPresent != TRUE)
-        SetMainCallback2((SAVE_TYPE_ERROR_SCREEN) ? CB2_FlashNotDetectedScreen : NULL);
+        SetMainCallback2(CB2_FlashNotDetectedScreen);
 
     gLinkTransferringData = FALSE;
 
@@ -146,30 +148,18 @@ void AgbMainLoop(void)
             DoSoftReset();
         }
 
-        if (Overworld_SendKeysToLinkIsRunning() == TRUE)
-        {
-            gLinkTransferringData = TRUE;
-            UpdateLinkAndCallCallbacks();
-            gLinkTransferringData = FALSE;
-        }
-        else
+        if (!SpeedupIsPaused())
         {
             gLinkTransferringData = FALSE;
             UpdateLinkAndCallCallbacks();
-
-            if (Overworld_RecvKeysFromLinkIsRunning() == TRUE)
-            {
-                gMain.newKeys = 0;
-                ClearSpriteCopyRequests();
-                gLinkTransferringData = TRUE;
-                UpdateLinkAndCallCallbacks();
-                gLinkTransferringData = FALSE;
-            }
         }
 
         PlayTimeCounter_Update();
         MapMusicMain();
-        WaitForVBlank();
+        CheckSpeedupControls();
+
+        if (!SpeedupShouldSkip())
+            WaitForVBlank();
     }
 }
 

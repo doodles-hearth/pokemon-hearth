@@ -118,13 +118,13 @@ Music: Male
 Battle Type: Singles
 AI: Basic Trainer
 
-Nacli
+Nacli (F)
 Level: 3
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - Harden
 
-Kotora
+Kotora (M)
 Level: 4
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
@@ -290,7 +290,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tail Whip
 - Ember
 
-=== TRAINER_KIN_1 ===
+=== TRAINER_KIN ===
 Name: Kin
 Class: Battle Girl
 Pic: Battle Girl
@@ -354,7 +354,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 15 SpA / 0 SpD / 15 Spe
 - Thunder Shock
 - Cotton Spore
 
-=== TRAINER_MASATO ===
+=== TRAINER_MASATO_1 ===
 Name: Masato
 Class: Bug Catcher
 Pic: Bug Catcher
@@ -587,18 +587,20 @@ Level: 16
 - Odor Sleuth
 - Bite
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
-Gender: Female
-Music: Aqua
+=== TRAINER_YAMATO ===
+Name: Yamato
+Class: Old Man
+Pic: Old Man
+Gender: Male
+Music: Rich
 Battle Type: Singles
 AI: Check Bad Move
 
-Carvanha
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Bayleef
+Level: 20
+- Poison Powder
+- Magical Leaf
+- Growl
 
 === TRAINER_ROCK_SMASH_GUY ===
 Name: Smasher
@@ -861,14 +863,14 @@ Pic: Gem Maniac
 Gender: Male
 Music: Rich
 Battle Type: Doubles
-AI: Smartish Trainer
+AI: Basic Trainer
 
 Carbink
 Level: 17
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sharpen
 - Rock Throw
-- Smack Down
+- Harden
 
 Sableye @ Stardust
 Level: 16
@@ -1041,22 +1043,35 @@ Level: 19
 - Sand Attack
 - Leer
 
-=== TRAINER_ROSE_2 ===
-Name: ROSE
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
+=== TRAINER_MASATO_2 ===
+Name: Masato
+Class: Bug Catcher
+Pic: Bug Catcher
+Gender: Male
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Prefer Status Moves / Try To Faint / Check Bad Move
 
-Shroomish
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Kricketune (M)
+Level: 25
+- Screech
+- Struggle Bug
+- Slash
+- Sing
 
-Roselia
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Kricketune (M)
+Level: 24
+- Fury Cutter
+- Facade
+- Sing
+- Snore
+
+Nincada (F)
+Level: 24
+- Fury Cutter
+- Facade
+- Sing
+- Snore
 
 === TRAINER_ROSE_3 ===
 Name: ROSE
@@ -3485,8 +3500,8 @@ IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
 === TRAINER_MATSU ===
 Name: Matsu
-Class: Gentleman
-Pic: Gentleman
+Class: Old Man
+Pic: Old Man
 Gender: Male
 Music: Rich
 Battle Type: Singles
@@ -3745,7 +3760,7 @@ Skiploom
 Level: 26
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Mega Drain
-- Acrobatics
+- Aerial Ace
 - Stun Spore
 - Fairy Wind
 
@@ -5132,26 +5147,26 @@ Class: Dojo Master
 Pic: Leader Koishi
 Gender: Female
 Music: Female
-Items: Uumegiri
+Items: Supergiri
 Battle Type: Singles
-AI: Smartish Trainer / Ace Pokemon
+AI: Smartish Trainer
 
 Surskit @ Oran Berry
-Level: 13
+Level: 14
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Nature Power
 - String Shot
 - Pounce
 
 Barboach
-Level: 12
+Level: 13
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Mud Bomb
 - Nature Power
 - Flail
 
 Lombre
-Level: 14
+Level: 15
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Nature Power
 - Mega Drain
@@ -5163,7 +5178,7 @@ Class: Dojo Master
 Pic: Leader Hana
 Gender: Female
 Music: Female
-Items: Super Potion / Super Potion
+Items: Supergiri
 Battle Type: Singles
 AI: Smartish Trainer / Ace Pokemon
 
@@ -5183,12 +5198,13 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Bubble Beam
 - Bite
 
-Sudowoodo @ Soft Sand
-Level: 19
+Bonsly
+Level: 18
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-- Feint Attack
+- Mimic
 - Low Kick
 - Rock Tomb
+- Flail
 
 Grotle @ Sitrus Berry
 Level: 18
@@ -5206,7 +5222,7 @@ Gender: Female
 Music: Female
 Items: Supergiri
 Battle Type: Doubles
-AI: Basic Trainer / Ace Pokemon
+AI: Smartish Trainer
 
 Oricorio Sensu
 Level: 23
@@ -5217,15 +5233,15 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Twister
 
 Leavanny Tokuan
-Level: 24
+Level: 23
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - String Shot
 - Shock Wave
 - X-Scissor
-- Fury Cutter
+- Swords Dance
 
 Kirlia
-Level: 23
+Level: 24
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Disarming Voice
 - Double Team
@@ -6313,8 +6329,8 @@ Level: 12
 
 === TRAINER_REN ===
 Name: Ren
-Class: Swimmer F
-Pic: Beauty
+Class: Beauty
+Pic: Masquerain Woman
 Gender: Female
 Music: Female
 Battle Type: Singles
@@ -6440,77 +6456,122 @@ Aron
 Level: 19
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_CALVIN_2 ===
-Name: CALVIN
+=== TRAINER_TOSHIO_2 ===
+Name: Toshio
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Mightyena
+Naclstack (F)
+Level: 26
+- Rock Throw
+- Smack Down
+- Iron Defense
+
+Raitora (M)
+Level: 25
+- Nuzzle
+- Bite
+- Roar
+- Volt Switch
+
+Nidoran (M)
+Level: 25
+- Focus Energy
+- Poison Sting
+- Fury Attack
+
+=== TRAINER_TOSHIO_3 ===
+Name: Toshio
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Battle Type: Singles
+AI: Basic Trainer
+
+Raitora (M)
 Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+- Nuzzle
+- Bite
+- Roar
+- Volt Switch
 
-=== TRAINER_CALVIN_3 ===
-Name: CALVIN
-Class: Youngster
-Pic: Youngster
-Gender: Male
-Music: Male
-Battle Type: Singles
-AI: Check Bad Move
+Nidorino (M)
+Level: 27
+- Focus Energy
+- Poison Sting
+- Double Kick
+- Horn Attack
 
-Swellow
-Level: 28
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-
-Mightyena
+Naclstack (F)
 Level: 30
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
+- Mud Shot
+- Smack Down
+- Rock Polish
+- Iron Defense
 
-=== TRAINER_CALVIN_4 ===
-Name: CALVIN
+=== TRAINER_TOSHIO_4 ===
+Name: Toshio
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Smartish Trainer
 
-Swellow
-Level: 31
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+Nidorino (M)
+Level: 30
+- Focus Energy
+- Toxic Spikes
+- Double Kick
+- Fury Attack
 
-Linoone
+Raitora (M)
 Level: 29
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Thunder Fang
+- Bite
+- Volt Switch
 
-Mightyena
+Naclstack (F)
 Level: 33
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Rock Slide
+- Smack Down
+- Rock Polish
+- Recover
 
-=== TRAINER_CALVIN_5 ===
-Name: CALVIN
+=== TRAINER_TOSHIO_5 ===
+Name: Toshio
 Class: Youngster
 Pic: Youngster
 Gender: Male
 Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Smartish Trainer
 
-Swellow
-Level: 34
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Garganacl (F)
+Level: 38
+- Rock Slide
+- Salt Cure
+- Stealth Rock
+- Recover
 
-Linoone
-Level: 32
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Nidorino (M)
+Level: 35
+- Thrash
+- Toxic Spikes
+- Fury Attack
+- Focus Energy
 
-Mightyena
-Level: 36
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+Raitora (M)
+Level: 35
+- Thunder Fang
+- Electrify
+- Crunch
+- Volt Switch
 
 === TRAINER_EDDIE ===
 Name: EDDIE
@@ -10872,20 +10933,19 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Cherrim
-Level: 18
+Level: 17
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Sunny Day
 - Magical Leaf
 - Morning Sun
 
 Skiploom
-Level: 19
+Level: 17
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Ability: Chlorophyll
-- Synthesis
 - Poison Powder
-- Bullet Seed
-- Headbutt
+- Synthesis
+- Tackle
 
 === TRAINER_SUMIRE ===
 Name: Sumire
@@ -10913,7 +10973,7 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Castform
-Level: 19
+Level: 17
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Rain Dance
 - Headbutt
@@ -11367,12 +11427,12 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_MUSASHI_1 ===
 Name: Musashi
-Class: Battle Girl
-Pic: Battle Girl
-Gender: Female
+Class: Battle Guy
+Pic: Battle Guy
+Gender: Male
 Music: Intense
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
 Makuhita
 Level: 16
@@ -16383,7 +16443,6 @@ Shuckle
 Level: 24
 - Sticky Web
 - Wrap
-- Safeguard
 - Struggle Bug
 
 Poltchageist
@@ -16393,6 +16452,7 @@ Level: 23
 - Mega Drain
 
 Braixen
+Level: 23
 - Howl
 - Psybeam
 - Flame Charge

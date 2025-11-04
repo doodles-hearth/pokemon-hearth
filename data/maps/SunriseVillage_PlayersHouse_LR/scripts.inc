@@ -33,8 +33,8 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi::
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
 	waitmovement 0
 	playse SE_EXIT
-	waitse
 	removeobject 1
+	waitse
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 3
 	setflag FLAG_HIDE_BIGSIS_HOME
 	release
@@ -52,11 +52,11 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis::
 	compare VAR_SUNRISE_VILLAGE_INTRO_STATE, 7
 	goto_if_eq SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4
 	special GetPlayerBroSisString
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_4
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
 	setspeaker SP_NAME_BIG_SIS
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_6
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5
 	closemessage
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_1:
 	release
@@ -79,14 +79,11 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2
 	closemessage
 	giveitem ITEM_TOWN_MAP
+	special GetPlayerBrotherSisterString
 	setspeaker SP_NAME_BIG_SIS
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3
 	closemessage
-	giveitem ITEM_ENTEI_STATUETTE
-	special GetPlayerBrotherSisterString
-	setspeaker SP_NAME_BIG_SIS
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_4
-	closemessage
+	setnamedmon SPECIES_CHATOT
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
 	setflag FLAG_HIDE_GUARD_SUNRISE_VILLAGE
 	goto SunriseVillage_PlayersHouse_LR_EventScript_BigSis_1
@@ -95,10 +92,10 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 SunriseVillage_PlayersHouse_LR_EventScript_Eevee::
 	lock
 	faceplayer
-	setspeakertomonname SPECIES_EEVEE
-	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_0
-	playmoncry SPECIES_EEVEE, CRY_MODE_NORMAL
 	setseenmon SPECIES_EEVEE
+	setspeakertomonname SPECIES_EEVEE
+	playmoncry SPECIES_EEVEE, CRY_MODE_NORMAL
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_0
 	waitmoncry
 	release
 	return
@@ -110,6 +107,20 @@ SunriseVillage_PlayersHouse_LR_EventScript_RivalsNote::
 	closemessage
 	release
 	end
+
+
+SunriseVillage_PlayersHouse_LR_EventScript_Gong::
+	lock
+	goto_if_set FLAG_HIDE_BIGSIS_HOME, SunriseVillage_PlayersHouse_LR_EventScript_Gong_2
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Gong_Text_1
+SunriseVillage_PlayersHouse_LR_EventScript_Gong_1:
+	closemessage
+	release
+	return
+
+SunriseVillage_PlayersHouse_LR_EventScript_Gong_2:
+	msgbox SunriseVillage_PlayersHouse_LR_EventScript_Gong_Text_0
+	goto SunriseVillage_PlayersHouse_LR_EventScript_Gong_1
 
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Movement_0:
@@ -128,10 +139,8 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi_Text_0:
 	.string "because I'm VERY EXCITED!\p"
 	.string "I have to head out! Don't be late, I\n"
 	.string "know you, little {STR_VAR_1}!\p"
-	.string "And don't forget to pick up the bag I\n"
-	.string "made for you before you leave!\p"
 	.string "By the way, your friend Natsuki left\n"
-	.string "you a note.\p"
+	.string "you a note.\l"
 	.string "Make sure you read it!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_0:
@@ -153,36 +162,27 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2:
 	.string "with you?\p"
 	.string "{STR_VAR_2}, huh?\p"
 	.string "Looks like it already likes you a lot!\n"
-	.string "You're going to make a great Wielder, I\l"
-	.string "know it!\p"
+	.string "You're going to make a great Wielder,\l"
+	.string "I know it!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "So you're going on a journey…\p"
 	.string "That's great! I'm proud of you,\n"
 	.string "{PLAYER}.\p"
-	.string "I'm sure you're going to get lost\n"
-	.string "though, so I'll lend you my map of\l"
-	.string "Toku!$"
+	.string "I know you'll get lost though, so I'll\n"
+	.string "lend you my map of Toku!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3:
-	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Ah, one last thing! Take my good luck\n"
-	.string "statuette with you.\p"
-	.string "I like the tradition, so indulge me,\n"
-	.string "alright? Please? Everyone carries\l"
-	.string "one!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Alrighty! You all set? Have a safe\njourney, little {STR_VAR_1}.\p"
+	.string "Maybe I'll see you around!\p"
+	.string "Come home sometimes though, will you?\nYou and your Pokémon can rest here!\p"
+	.string "See you soon!\nI'll send you Chatot messages!$"
 
 SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_4:
-	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Alrighty! You all set? Have a safe\n"
-	.string "journey, little {STR_VAR_1}.\p"
-	.string "Maybe I'll see you around!\p"
-	.string "Come back home sometimes though, will\n"
-	.string "you?$"
-
-SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Hey {PLAYER}! How's it going?\p"
 	.string "Here, rest for a bit.$"
 
-SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_6:
+SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}See you around, little\n"
 	.string "{STR_VAR_1}.$"
 
@@ -191,7 +191,15 @@ SunriseVillage_PlayersHouse_LR_EventScript_Eevee_Text_0:
 
 SunriseVillage_PlayersHouse_LR_EventScript_RivalsNote_Text_0:
 	.string "“Hey {PLAYER},\n"
-	.string "I'm going down to the beach before\l"
-	.string "the giveaway, meet me there if you\l"
-	.string "wanna hang out.\p"
+	.string "Going down to the beach before the\l"
+	.string "giveaway, if you wanna hang out.\l"
 	.string "-Natsuki”$"
+
+SunriseVillage_PlayersHouse_LR_EventScript_Gong_Text_0:
+	.string "It's a gong.\n"
+	.string "GONG!… … …$"
+
+SunriseVillage_PlayersHouse_LR_EventScript_Gong_Text_1:
+	.string "It's a gong.\n"
+	.string "GONG!… … …\p"
+	.string "Let's not annoy Big Sis too much.$"

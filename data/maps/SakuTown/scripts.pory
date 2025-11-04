@@ -61,10 +61,8 @@ mapscripts SakuTown_MapScripts {
 		gettimeofday
 		switch(var(VAR_0x8000)){
 			case TIME_DEAD_NIGHT:
-				setmetatile(22, 17, METATILE_SakuKura_ClosedDoorTop, TRUE)
-				setmetatile(22, 18, METATILE_SakuKura_ClosedDoorBottom, TRUE)
-				setmetatile(18, 32, METATILE_SakuKura_ClosedDoorTop, TRUE)
-				setmetatile(18, 33, METATILE_SakuKura_ClosedDoorBottom, TRUE)
+				setmetatile(16, 19, METATILE_SakuKura_ClosedDoorTop, TRUE)
+				setmetatile(16, 20, METATILE_SakuKura_ClosedDoorBottom, TRUE)
 			case TIME_EARLY_MORNING:
 			case TIME_MORNING:
 			case TIME_LUNCHTIME:
@@ -104,8 +102,9 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}I was wondering if you'd reached Saku Village by now. Looks like we almost missed each other!\p"
-		"I saw several patrolling Samurai on my way here."
+		"I saw several New Moon Samurai patrolling on my way here."
 	))
+	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, moves(emote_heart))
 	msgbox(format(
 		"They look so cool, no wonder they're so admired!\p"
@@ -124,16 +123,17 @@ script SakuTown_EventScript_RivalAtSakuWall {
 			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_CYNDAQUIL, SakuTown_Text_RivalDefeat)
 	}
 
+	playse(SE_PIN)
 	applymovement(LOCALID_NATSUKI_SAKU, moves(emote_pensive))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah! I… I didn't think you'd go that hard, honestly!\p"
-		"Clearly I underestimated you. That's alright. I won't make that mistake next time!\p"
+		"Clearly I underestimated you.\nThat's alright.\lI won't make that mistake next time!\p"
 		"I can see your Pokémon are really growing to like you, it's great!\p"
 		"Are you doing the Dojo challenge?\nYou might just stand a chance against the next village's Dojo!\p"
 		"Me? Actually, I just got my first official Token!\p"
 		"You'll have to hurry if you wanna catch up!\p"
-		"It's fun to run into each other like this. Until next time then.\p"
+		"It's fun to run into each other like this. Until next time then.\l"
 		"I bet you I'll get to Silveridge first!\p"
 		"See you later, Feraligatr!"
 	))
@@ -147,6 +147,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	switch(var(VAR_RESULT)) {
 		case 0:
+			playse(SE_PIN)
 			applymovement(LOCALID_NATSUKI_SAKU, moves(emote_happy))
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
@@ -162,6 +163,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(face_up, delay_16 * 3, face_down, emote_question_mark, delay_16 * 6))
 			waitmovement(0)
 
+			playse(SE_PIN)
 			applymovement(LOCALID_NATSUKI_SAKU, moves(emote_happy))
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
@@ -253,6 +255,7 @@ script SakuTown_EventScript_Karateka {
 	faceplayer
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
 		"I let the Toku Council borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
 	))
 	closemessage
@@ -262,10 +265,12 @@ script SakuTown_EventScript_Karateka {
 	waitmovement(0)
 	waitse
 
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_heart))
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"Come on, Mama, Kuku! Daddy loves you!!"
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+		"Mama, Kuku! Daddy loves you!!"
 	))
 	closemessage
 
@@ -286,6 +291,32 @@ script SakuTown_EventScript_Karateka {
 	waitmoncry
 
 	setseenmon(SPECIES_MAKUHITA)
+
+	if (flag(FLAG_BADGE01_GET)) {
+		faceplayer
+		setspeaker(SP_NAME_MAN)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+			"Their hands are strong and forceful…"
+		))
+		closemessage
+
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, moves(emote_heart, delay_16 * 6))
+		waitmovement(VAR_LAST_TALKED)
+
+		call(Saku_EventScript_ForcePalmTutor)
+	} else {
+		faceplayer
+		setspeaker(SP_NAME_MAN)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+			"Their hands are strong and forceful…\p"
+			"I bet you want your Pokémon to have strong and forceful hands, too.\p"
+			"Come back when you're stronger.\nOnce you getyour first Token!"
+		))
+		closemessage
+	}
 
 	release
 }
@@ -448,7 +479,7 @@ script SakuTown_EventScript_MonHues {
 	))
 	applymovement(VAR_LAST_TALKED, moves(emote_music))
 	msgbox(format(
-		"Doesn't noticing that make your heart sing?"
+		"Doesn't it make your heart sing?"
 	))
 	closemessage
 	release
@@ -544,7 +575,7 @@ script SakuTown_EventScript_TamaArgument {
 	waitmovement(OBJ_EVENT_ID_CAMERA)
 	special(RemoveCameraObject)
 
-	trainerbattle_no_intro_no_whiteout(TRAINER_TAMAS_DAD, "Dangnabit!")
+	trainerbattle_no_intro_no_whiteout(TRAINER_TAMAS_DAD, "Dagnabbit!")
 
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) != B_OUTCOME_WON) {
@@ -687,6 +718,7 @@ script SakuTown_BottomTamaTrigger {
 }
 
 script SakuTown_EventScript_LoversSeeEachOther {
+	turnobject(LOCALID_PLAYER, DIR_EAST)
 	playse(SE_PIN)
 	applymovement(LOCALID_TAMA2, moves(face_right, emote_exclamation_mark))
 	applymovement(LOCALID_ASHII, moves(emote_exclamation_mark))
@@ -755,7 +787,7 @@ script SakuTown_EventScript_LoversReunite {
 
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}So do I.\nI felt as an insect that could do nothing but stare at the impossibly tall barricade between us.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}So do I.\nI felt like an insect that could do nothing but stare at the impossibly tall barricade between us.\p"
 		"And yet… Even fierce separatism can't keep us apart.\p"
 		"Tonight, we can have a midsummer dream of joy and mirth."
 	))

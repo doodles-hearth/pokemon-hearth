@@ -1,6 +1,7 @@
 SunriseVillage_PlayersHouse_Bedroom_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_LOAD
 	map_script MAP_SCRIPT_ON_TRANSITION, SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_TRANSITION
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE
 	.byte 0
 
 SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_LOAD:
@@ -15,14 +16,13 @@ SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_LOAD_1:
 	return
 
 SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto_if_set FLAG_SYS_QUEST_MENU_GET, SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
-SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	call SecretBase_EventScript_SetDecorationFlags
+	setvar VAR_SECRET_BASE_INITIALIZED, 0
 	return
 
-SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
-	setvar VAR_TEMP_0, 1
-	goto SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+SunriseVillage_PlayersHouse_Bedroom_MapScripts_MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE:
+	map_script_2 VAR_SECRET_BASE_INITIALIZED, 0, SecretBase_EventScript_InitDecorations
+	return
 
 
 SunriseVillage_PlayersHouse_Bedroom_EventScript_Doll::
@@ -68,10 +68,8 @@ SunriseVillage_PlayersHouse_Bedroom_Stuff::
 	waitmessage
 	giveitem ITEM_OINTMENT, 5
 	giveitem ITEM_POKE_BALL, 5
-	msgbox SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_1, MSGBOX_DEFAULT
 	closemessage
-	setflag FLAG_SYS_QUEST_MENU_GET
-	setvar VAR_TEMP_0, 1
+	setflag FLAG_PICKED_UP_BAG
 	removeobject 13
 	return
 
@@ -149,11 +147,7 @@ SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling_Text_8:
 
 SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_0:
 	.string "It's the medicine and Pokéballs your\n"
-	.string "sister got for you.$"
-
-SunriseVillage_PlayersHouse_Bedroom_Stuff_Text_1:
-	.string "There is also your journal inside! It\n"
-	.string "might come in handy.$"
+	.string "sister got for you!$"
 
 SunriseVillage_PlayersHouse_Bedroom_Trigger_ForgotBag_Text_0:
 	.string "…You almost forgot to pick up your\n"

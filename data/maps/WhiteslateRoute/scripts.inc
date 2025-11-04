@@ -205,9 +205,9 @@ WhiteslateRoute_EventScript_ShuckleGirl::
 WhiteslateRoute_EventScript_Deerling::
 	lock
 	faceplayer
-	setseenmon SPECIES_DEERLING
-	setspeakertomonname SPECIES_DEERLING
-	playmoncry SPECIES_DEERLING, CRY_MODE_NORMAL
+	setseenmon SPECIES_DEERLING_AUTUMN
+	setspeakertomonname SPECIES_DEERLING_AUTUMN
+	playmoncry SPECIES_DEERLING_AUTUMN, CRY_MODE_NORMAL
 	msgbox WhiteslateRoute_EventScript_Deerling_Text_0
 	waitmoncry
 	closemessage
@@ -256,6 +256,7 @@ WhiteslateRoute_Trigger_SecretBase::
 	applymovement 8, WhiteslateRoute_Trigger_SecretBase_Movement_2
 	waitmovement 8
 	setseenmon SPECIES_GROVYLE
+	setnamedmon SPECIES_GROVYLE
 	playse SE_M_ROCK_THROW
 	applymovement 8, WhiteslateRoute_Trigger_SecretBase_Movement_3
 	waitmovement 8
@@ -305,7 +306,7 @@ WhiteslateRoute_Trigger_SecretBase_6:
 	case 27, WhiteslateRoute_Trigger_SecretBase_15
 WhiteslateRoute_Trigger_SecretBase_11:
 	playse SE_M_ROCK_THROW
-	setmetatile 26, 34, METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntrance, TRUE
+	setmetatile 26, 34, METATILE_PorytilesPrimaryTutorial_SecretBaseCaveIndentBrown, TRUE
 	special DrawWholeMapView
 	waitse
 	switch VAR_TEMP_0
@@ -380,6 +381,20 @@ WhiteslateRoute_Trigger_SecretBase_20:
 	applymovement 7, WhiteslateRoute_Trigger_SecretBase_Movement_13
 	waitmovement 7
 	goto WhiteslateRoute_Trigger_SecretBase_16
+
+
+WhiteslateRoute_EventScript_MetHariko::
+	lock
+	faceplayer
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, WhiteslateRoute_EventScript_MetHariko_Movement_0
+	msgbox WhiteslateRoute_EventScript_MetHariko_Text_0
+	closemessage
+	setnamedmon SPECIES_SLOWPOKE
+	setnamedmon SPECIES_DEERLING_AUTUMN
+	setdescribedmon SPECIES_DEERLING_AUTUMN
+	release
+	return
 
 
 WhiteslateRoute_Trigger_ShamisenPlayerTop_Movement_0:
@@ -559,6 +574,10 @@ WhiteslateRoute_Trigger_SecretBase_Movement_14:
 	walk_down
 	step_end
 
+WhiteslateRoute_EventScript_MetHariko_Movement_0:
+	emote_sweat
+	step_end
+
 WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}So, are you ready?$"
 
@@ -727,46 +746,55 @@ WhiteslateRoute_Trigger_SecretBase_Text_5:
 WhiteslateRoute_Trigger_SecretBase_Text_6:
 	.string "Alright, you seem interested, so I'll\n"
 	.string "let you in on the secret!\p"
-	.string "I taught my Grovyle a secret\n"
-	.string "technique to open passages to hidden\l"
-	.string "natural caves!\p"
+	.string "My Grovyle knows a technique to open\n"
+	.string "passages to hidden natural caves!\p"
 	.string "Not only that! Trees with low-hanging\n"
-	.string "vines, bushes… Those kinds of places\l"
-	.string "are perfect to build a secret base!\p"
-	.string "I wrote this technique down just in\n"
-	.string "case. Here, now you can teach your\l"
-	.string "Pokémon too!$"
+	.string "vines, bushes…\p"
+	.string "Those kinds of places are perfect to\n"
+	.string "build a secret base!\p"
+	.string "I wrote the technique down just in\n"
+	.string "case. Here, teach your Pokémon too!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_7:
-	.string "Ah, it's alright. You seem like a good\n"
-	.string "kid. I'm sure you have what it takes\l"
-	.string "to become a secret base master. I'll\l"
-	.string "let you in on the secret!\p"
-	.string "I taught my Grovyle a secret\n"
-	.string "technique to open passages to hidden\l"
-	.string "natural caves!\p"
+	.string "Ah, it's alright.\n"
+	.string "You seem like a good kid.\p"
+	.string "I'm sure you have what it takes to\n"
+	.string "become a secret base master.\p"
+	.string "I'll let you in on the secret!\p"
+	.string "My Grovyle knows a technique to open\n"
+	.string "passages to hidden natural caves!\p"
 	.string "Not only that! Trees with low-hanging\n"
-	.string "vines, bushes… That kind of place is\l"
-	.string "perfect to build a secret base!\p"
-	.string "I wrote this technique down just in\n"
-	.string "case. Here, now you can teach your\l"
-	.string "Pokémon too!$"
+	.string "vines, bushes…\p"
+	.string "That kind of place is perfect to build\n"
+	.string "a secret base!\p"
+	.string "I wrote the technique down just in\n"
+	.string "case. Here, teach your Pokémon too!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_8:
 	.string "Of course not, this is perfectly\n"
-	.string "legal! You know what? I'll let you in\l"
-	.string "on the secret!\p"
-	.string "I taught my Grovyle a secret\n"
-	.string "technique to open passages to hidden\l"
-	.string "natural caves!\p"
+	.string "legal! You know what?\l"
+	.string "I'll let you in on the secret!\p"
+	.string "My Grovyle knows a technique to open\n"
+	.string "passages to hidden natural caves!\p"
 	.string "Not only that! Trees with low-hanging\n"
-	.string "vines, bushes… That kind of place is\l"
-	.string "perfect to build a secret base!\p"
-	.string "I wrote this technique down just in\n"
-	.string "case. Here, now you can teach your\l"
-	.string "Pokémon too!$"
+	.string "vines, bushes…\p"
+	.string "That kind of place is perfect to build\n"
+	.string "a secret base!\p"
+	.string "I wrote the technique down just in\n"
+	.string "case. Here, teach your Pokémon too!$"
 
 WhiteslateRoute_Trigger_SecretBase_Text_9:
 	.string "I'll keep looking for the perfect\n"
 	.string "secret base spot!\l"
 	.string "Maybe I'll see you around!$"
+
+WhiteslateRoute_EventScript_MetHariko_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}{SPEAKER NAME_MAN}Some girl with a Slowpoke just talked\n"
+	.string "my head off about Deerling…\l"
+	.string "I'm still dizzy!\p"
+	.string "Did you know its location determines\n"
+	.string "its fur color?\p"
+	.string "Did you know Uume Forest Deerling are\n"
+	.string "orange and smell like ripe fruit?\p"
+	.string "Most importantly, do you care?\n"
+	.string "Yeah, I'm not sure I do either…$"

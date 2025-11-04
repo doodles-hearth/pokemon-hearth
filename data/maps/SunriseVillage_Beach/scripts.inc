@@ -13,6 +13,7 @@ SunriseVillage_Beach_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 
 SunriseVillage_Beach_EventScript_RivalSpeech::
 	lock
+	waitse
 	playse SE_PIN
 	applymovement 1, Common_Movement_ExclamationMark
 	waitmovement 0
@@ -32,6 +33,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_1:
 	waitmovement 0
 	setspeaker SP_NAME_NATSUKI
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_1
+	playse SE_PIN
 	applymovement 1, SunriseVillage_Beach_EventScript_RivalSpeech_Movement_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_2
 	dynmultichoice 0, 0, TRUE, 10, 0, DYN_MULTICHOICE_CB_NONE, SunriseVillage_Beach_EventScript_RivalSpeech_Text_3, SunriseVillage_Beach_EventScript_RivalSpeech_Text_4
@@ -50,10 +52,10 @@ SunriseVillage_Beach_EventScript_RivalSpeech_7:
 SunriseVillage_Beach_EventScript_RivalSpeech_11:
 	closemessage
 	delay 48
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 1
+	setvar VAR_0x8004, 3
+	setvar VAR_0x8005, 0
 	setvar VAR_0x8006, 20
-	setvar VAR_0x8007, 5
+	setvar VAR_0x8007, 3
 	special ShakeCamera
 	delay 16
 	playse SE_PIN
@@ -115,6 +117,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_9:
 	waitmovement 0
 	setspeaker SP_NAME_NATSUKI
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_6
+	playse SE_PIN
 	applymovement 1, SunriseVillage_Beach_EventScript_RivalSpeech_Movement_0
 	msgbox SunriseVillage_Beach_EventScript_RivalSpeech_Text_7
 	closemessage
@@ -380,7 +383,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_15:
 	.string "We're going to make awesome Wielders,\n"
 	.string "I can already tell.\p"
 	.string "Maybe you'll even be second best\n"
-	.string "one day…\p"
+	.string "one day…\l"
 	.string "Behind me, of course!$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_16:
@@ -397,7 +400,7 @@ SunriseVillage_Beach_EventScript_RivalSpeech_Text_17:
 	.string "and silent…\l"
 	.string "But I see right through you!\p"
 	.string "I bet you'll be a great Wielder.\n"
-	.string "Maybe even as good as me…\p"
+	.string "Maybe even as good as me…\l"
 	.string "Probably not though!$"
 
 SunriseVillage_Beach_EventScript_RivalSpeech_Text_18:

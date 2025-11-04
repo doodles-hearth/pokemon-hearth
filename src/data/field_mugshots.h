@@ -52,7 +52,11 @@ static const u32 sFieldMugshotGfx_ArtistNormal[] = INCBIN_U32("graphics/field_mu
 
 static const u32 sFieldMugshotGfx_BattleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/battle_girl/normal.4bpp.smol");
 
+static const u32 sFieldMugshotGfx_BattleGuyNormal[] = INCBIN_U32("graphics/field_mugshots/battle_guy/normal.4bpp.smol");
+
 static const u32 sFieldMugshotGfx_HotSpringFNormal[] = INCBIN_U32("graphics/field_mugshots/hot_spring_f/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_HotSpringMNormal[] = INCBIN_U32("graphics/field_mugshots/hot_spring_m/normal.4bpp.smol");
 
 static const u32 sFieldMugshotGfx_BreederMNormal[] = INCBIN_U32("graphics/field_mugshots/breeder_m/normal.4bpp.smol");
 
@@ -69,6 +73,12 @@ static const u32 sFieldMugshotGfx_ShamisenBlueNormal[] = INCBIN_U32("graphics/fi
 static const u32 sFieldMugshotGfx_CookNormal[] = INCBIN_U32("graphics/field_mugshots/cook/normal.4bpp.smol");
 
 static const u32 sFieldMugshotGfx_IwaNormal[] = INCBIN_U32("graphics/field_mugshots/elder_iwa/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_GemManiacNormal[] = INCBIN_U32("graphics/field_mugshots/gem_maniac/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_MinerNormal[] = INCBIN_U32("graphics/field_mugshots/miner/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_GardenerNormal[] = INCBIN_U32("graphics/field_mugshots/gardener/normal.4bpp.smol");
 
 // Sunrise
 
@@ -183,6 +193,7 @@ static const u32 sFieldMugshotGfx_SeasideValetNormal[] = INCBIN_U32("graphics/fi
 // Hot
 static const u32 sFieldMugshotGfx_HotMan1Normal[] = INCBIN_U32("graphics/field_mugshots/hot/man_1/normal.4bpp.smol");
 static const u32 sFieldMugshotGfx_HotOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/hot/old_woman/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_HotGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/hot/girl_2/normal.4bpp.smol");
 
 struct MugshotGfx
 {
@@ -389,12 +400,29 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
             .pal = gObjectEventPal_Npc_Purplish,
         },
     },
+    [MUGSHOT_BATTLE_GUY] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_BattleGuyNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
 
     [MUGSHOT_HOT_SPRING_F] =
     {
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_HotSpringFNormal,
+            .pal = gObjectEventPal_Npc_Greenish,
+        },
+    },
+
+    [MUGSHOT_HOT_SPRING_M] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_HotSpringMNormal,
             .pal = gObjectEventPal_Npc_Greenish,
         },
     },
@@ -467,6 +495,33 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_IwaNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+
+    [MUGSHOT_GEM_MANIAC] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_GemManiacNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+
+    [MUGSHOT_MINER] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_MinerNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+
+    [MUGSHOT_GARDENER] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_GardenerNormal,
             .pal = gObjectEventPal_Npc_Purplish,
         },
     },
@@ -883,6 +938,15 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_HotOldWomanNormal,
+            .pal = gObjectEventPal_Npc_Hot,
+        }
+    },
+
+    [MUGSHOT_HOT_GIRL_2] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_HotGirl2Normal,
             .pal = gObjectEventPal_Npc_Hot,
         }
     },

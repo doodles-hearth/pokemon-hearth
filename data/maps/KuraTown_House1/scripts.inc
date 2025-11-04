@@ -132,6 +132,8 @@ OldWomanQuest2Script_4:
 
 KuraTown_House1_OldWomansSon::
 	lock
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, KuraTown_House1_OldWomansSon_Movement_0
 	faceplayer
 	setspeaker SP_NAME_GUY
@@ -192,7 +194,7 @@ KuraTown_House1_OldWoman_Text_1:
 	.string "should feel good as new.$"
 
 KuraTown_House1_OldWoman_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL} Once the ill Pokémon drinks that\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Once the ill Pokémon drinks that\n"
 	.string "medicine, it should feel right as rain.$"
 
 OldWomanRegularScript_Text_0:
@@ -222,7 +224,7 @@ OldWomanQuestScript_Text_4:
 	.string "guard.$"
 
 OldWomanQuestScript_Text_5:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL} While I can't go to Saku village\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}While I can't go to Saku village\n"
 	.string "myself, I can create an healing elixir.\p"
 	.string "I'll need an Oran Berry, a fishcake\n"
 	.string "from Maguro Harbor, and a Revival\l"
@@ -258,11 +260,11 @@ OldWomanQuest2Script_Text_2:
 
 KuraTown_House1_OldWomansSon_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}The Pokémon Council didn't see fit to\n"
-	.string "build a Refuge in our town. But those\l"
-	.string "jerks over at Saku Village won't let\l"
-	.string "us use theirs!\p"
+	.string "build a Refuge in our town.\p"
+	.string "But those jerks over at Saku Village\n"
+	.string "won't let us use theirs!\p"
 	.string "So my mother has to work hard to heal\n"
-	.string "all the villager's Pokémon.\p"
+	.string "all the villager's Pokémon.\l"
 	.string "It's not fair!$"
 
 KuraTown_House1_Growlithe_Text_0:

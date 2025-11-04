@@ -2,6 +2,7 @@ const FLAG_HIDE_FIREBRINGER = FLAG_TEMP_1
 
 mapscripts Silveridge_Refuge_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
+		setrespawn(HEAL_LOCATION_SILVERIDGE)
 		setflag(FLAG_HIDE_FIREBRINGER)
 		getweekday
 		switch(var(VAR_RESULT)) {
@@ -60,7 +61,8 @@ script Silveridge_Refuge_EventScript_FirebringerFangirl {
 	} else {
 		setspeaker(SP_NAME_GIRL)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}Oh gosh, look at him…\nHe's so…\lRough-looking…\lAnd handsome…And he smells like smoke…\p"
+			"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}Oh gosh, look at him…\p"
+			"He's so…\nRough-looking…\lAnd handsome…\lAnd smoke-smelling…"
 			"Sigh…"
 		), MSGBOX_NPC)
 	}
@@ -88,6 +90,7 @@ script Silveridge_Refuge_EventScript_Kricketune {
 }
 
 script Silveridge_Refuge_EventScript_NurseSleep {
+	createfieldmugshot(MUGSHOT_MOUNTAIN_NURSE)
 	setvar(VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE)
 	call(Common_EventScript_PkmnCenterNurse_Sleep)
 	waitmessage
@@ -97,6 +100,7 @@ script Silveridge_Refuge_EventScript_NurseSleep {
 }
 
 script Silveridge_Refuge_EventScript_Nurse {
+	createfieldmugshot(MUGSHOT_MOUNTAIN_NURSE)
 	setvar(VAR_0x800B, LOCALID_NURSE_SILVERIDGE)
 	setvar(VAR_0x800A, LOCALID_CHANSEY_SILVERIDGE)
 	setvar(VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE)
@@ -104,6 +108,14 @@ script Silveridge_Refuge_EventScript_Nurse {
 	waitmessage
 	waitbuttonpress
 	removefieldmugshot
+	release
+	end
+}
+
+script Silveridge_Refuge_EventScript_Pasture {
+	createfieldmugshot(MUGSHOT_MOUNTAIN_MAN_2)
+	setvar(VAR_0x8009, MUGSHOT_MOUNTAIN_MAN_2)
+	call(Common_EventScript_PcGuy)
 	release
 	end
 }
@@ -122,9 +134,7 @@ script Silveridge_Refuge_EventScript_Shamisen {
 		special(GetPlayerBoyGirlString)
 		setspeaker(SP_NAME_SHAMISEN_PLAYER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Good evening to you, {STR_VAR_1}.\p"
-			"Are you here to listen to my music?\p"
-			"Or are you here to battle?"
+			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Good evening to you, {STR_VAR_1}.\nAre you here to listen to my music?\lOr are you here to battle?"
 		))
 		closemessage
 
@@ -137,7 +147,7 @@ script Silveridge_Refuge_EventScript_Shamisen {
 		))
 		closemessage
 
-		giveitem(ITEM_UUMEGIRI, 3)
+		giveitem(ITEM_SUPERGIRI, 2)
 
 		setflag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)
 	}

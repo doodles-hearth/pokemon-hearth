@@ -3,11 +3,25 @@ YifuCity_Refuge_2F_MapScripts::
 	.byte 0
 
 YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto_if_unset FLAG_TRADE_NUMEL_COMPLETED, YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	goto_if_set FLAG_TRADE_NUMEL_COMPLETED, YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
+	setflag FLAG_TEMP_1
+YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	goto_if_unset FLAG_CLEARED_CROBAT_HIDEOUT, YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_6
+YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_5:
+	goto_if_unset FLAG_MET_TRAVELING_MERCHANT_2ND_TIME, YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_8
 	return
 
-YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
-	setflag FLAG_TEMP_1
+YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
+	setflag FLAG_TEMP_3
+	goto YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+
+YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_6:
+	setflag FLAG_TEMP_4
+	setflag FLAG_TEMP_3
+	goto YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_5
+
+YifuCity_Refuge_2F_MapScripts_MAP_SCRIPT_ON_TRANSITION_8:
+	setflag FLAG_TEMP_2
 	return
 
 
@@ -52,21 +66,19 @@ YifuCity_Refuge_2F_EventScript_NumelTrade::
 	copyvar VAR_0x8004, VAR_0x8008
 	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
 	copyvar VAR_0x8009, VAR_RESULT
-	setspeaker SP_NAME_GIRL
-	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_1, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq YifuCity_Refuge_2F_EventScript_NumelTrade_5
-	compare VAR_RESULT, MULTI_B_PRESSED
-	goto_if_eq YifuCity_Refuge_2F_EventScript_NumelTrade_5
+	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_1
+	mcdialogue YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2, YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3
+	compare VAR_RESULT, 0
+	goto_if_ne YifuCity_Refuge_2F_EventScript_NumelTrade_5
 	special ChoosePartyMon
 	waitstate
 	copyvar VAR_0x800A, VAR_0x8004
 	compare VAR_0x8004, PARTY_NOTHING_CHOSEN
-	goto_if_eq YifuCity_Refuge_2F_EventScript_NumelTrade_10
+	goto_if_eq YifuCity_Refuge_2F_EventScript_NumelTrade_8
 	copyvar VAR_0x8005, VAR_0x800A
 	specialvar VAR_RESULT, GetTradeSpecies
 	compare VAR_RESULT, VAR_0x8009
-	goto_if_ne YifuCity_Refuge_2F_EventScript_NumelTrade_13
+	goto_if_ne YifuCity_Refuge_2F_EventScript_NumelTrade_11
 	copyvar VAR_0x8004, VAR_0x8008
 	copyvar VAR_0x8005, VAR_0x800A
 	special CreateInGameTradePokemon
@@ -76,8 +88,9 @@ YifuCity_Refuge_2F_EventScript_NumelTrade::
 	removeobject LOCALID_TRADE_NUMEL
 	waitstate
 	addobject LOCALID_TRADE_HERACROSS
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0
-	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_4, MSGBOX_DEFAULT
+	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_6, MSGBOX_DEFAULT
 	closemessage
 YifuCity_Refuge_2F_EventScript_NumelTrade_1:
 	release
@@ -90,22 +103,21 @@ YifuCity_Refuge_2F_EventScript_NumelTrade_2:
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_5:
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0
-	setspeaker SP_NAME_GIRL
-	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2
+	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_4
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
-YifuCity_Refuge_2F_EventScript_NumelTrade_10:
+YifuCity_Refuge_2F_EventScript_NumelTrade_8:
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0
-	setspeaker SP_NAME_GIRL
-	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2
+	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_4
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
-YifuCity_Refuge_2F_EventScript_NumelTrade_13:
-	setspeaker SP_NAME_GIRL
-	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3
+YifuCity_Refuge_2F_EventScript_NumelTrade_11:
+	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_5
 	closemessage
 	goto YifuCity_Refuge_2F_EventScript_NumelTrade_1
 
@@ -167,6 +179,8 @@ YifuCity_Refuge_2F_EventScript_TouristKid::
 YifuCity_Refuge_2F_EventScript_TouristGirl::
 	lock
 	faceplayer
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, YifuCity_Refuge_2F_EventScript_TouristGirl_Movement_0
 	setspeaker SP_NAME_GIRL
 	msgbox YifuCity_Refuge_2F_EventScript_TouristGirl_Text_0
@@ -187,12 +201,39 @@ YifuCity_Refuge_2F_EventScript_Castform::
 	return
 
 
+YifuCity_Refuge_2F_EventScript_SameRoom::
+	trainerbattle_single TRAINER_YAMATO, YifuCity_Refuge_2F_EventScript_SameRoom_Text_0, YifuCity_Refuge_2F_EventScript_SameRoom_Text_1, YifuCity_Refuge_2F_EventScript_SameRoomPostBattle
+	setspeaker SP_NAME_OLD_MAN
+	msgbox YifuCity_Refuge_2F_EventScript_SameRoom_Text_2, MSGBOX_AUTOCLOSE
+	end
+
+
+YifuCity_Refuge_2F_EventScript_SameRoomPostBattle::
+	lockall
+	applymovement LOCALID_YIFU_REFUGE_SAME_ROOM, YifuCity_Refuge_2F_EventScript_SameRoomPostBattle_Movement_0
+	waitmovement LOCALID_YIFU_REFUGE_SAME_ROOM
+	msgbox YifuCity_Refuge_2F_EventScript_SameRoomPostBattle_Text_0
+	closemessage
+	releaseall
+	return
+
+
 YifuCity_Refuge_2F_EventScript_NumelTrade_Movement_0:
 	emote_happy
 	step_end
 
 YifuCity_Refuge_2F_EventScript_TouristGirl_Movement_0:
 	emote_angry
+	step_end
+
+YifuCity_Refuge_2F_EventScript_SameRoomPostBattle_Movement_0:
+	emote_pensive
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
 	step_end
 
 YifuCity_Refuge_2F_EventScript_Sleep_Text_0:
@@ -212,23 +253,29 @@ YifuCity_Refuge_2F_EventScript_NumelTrade_Text_0:
 	.string "Heracross is so fascinating!$"
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_Text_1:
-	.string "A visitor, hi, pleased to meet you!!\p"
-	.string "You have such pretty Pokémon!\n"
-	.string "I brought a Numel from my home, hoping\l"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL} A visitor, hi, pleased to meet you!!\n"
+	.string "You have such pretty Pokémon!\p"
+	.string "I brought Numel from my home, hoping\n"
 	.string "to trade it for a local Heracross.\p"
 	.string "What do you say? Want to trade a\n"
 	.string "Heracross for my Numel?$"
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2:
-	.string "It's okay. I'll hang out with my Numel\n"
-	.string "for a while!$"
+	.string "With pleasure!$"
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3:
-	.string "I'm sure your Pokémon is very nice,\n"
-	.string "but I'm looking for a Heracross!$"
+	.string "Not interested.$"
 
 YifuCity_Refuge_2F_EventScript_NumelTrade_Text_4:
-	.string "Woah!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL} It's okay. I'll hang out with Numel for\n"
+	.string "a while!$"
+
+YifuCity_Refuge_2F_EventScript_NumelTrade_Text_5:
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL} I'm sure your Pokémon is very nice,\n"
+	.string "but I'm looking for a Heracross!$"
+
+YifuCity_Refuge_2F_EventScript_NumelTrade_Text_6:
+	.string "{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL} Woah!\n"
 	.string "It's bigger than I thought! Amazing!!\p"
 	.string "Please, take good care of my girl Luo\n"
 	.string "Luo, okay?$"
@@ -261,3 +308,21 @@ YifuCity_Refuge_2F_EventScript_TouristGirl_Text_0:
 
 YifuCity_Refuge_2F_EventScript_Castform_Text_0:
 	.string "Blrblblbl…$"
+
+YifuCity_Refuge_2F_EventScript_SameRoom_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}Hey! What are you doing in my room?$"
+
+YifuCity_Refuge_2F_EventScript_SameRoom_Text_1:
+	.string "This is outrageous!$"
+
+YifuCity_Refuge_2F_EventScript_SameRoom_Text_2:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I'd complain at the lobby, but that\n"
+	.string "valet seems like a bad type.$"
+
+YifuCity_Refuge_2F_EventScript_SameRoomPostBattle_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN} You're saying we both got the same\n"
+	.string "room?\p"
+	.string "Bah… I guess we're going to have to\n"
+	.string "share…\p"
+	.string "The service here used to be cheaper\n"
+	.string "and a whole lot better.$"

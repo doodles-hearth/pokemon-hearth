@@ -12,7 +12,7 @@ script YifuCity_BigHouse_1F_EventScript_GirlCrobatAtNight {
 		))
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}I stopped going out at night.\nThose fishy Crobat people roam the streets, loiter at the docks, speaking in hush tones…"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}I stopped going out at night.\pThose fishy Crobat people loiter at the docks right next to our building, speaking in hush tones…"
 		))
 	}
 	release

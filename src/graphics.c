@@ -1716,7 +1716,7 @@ const u32 gSummaryPage_InfoEgg_Tilemap[]      = INCBIN_U32("graphics/summary_scr
 
 const u32 gBagMaleTiles[] = INCBIN_U32("graphics/bag/bag_male.4bpp.smol");
 const u32 gBagFemaleTiles[] = INCBIN_U32("graphics/bag/bag_female.4bpp.smol");
-const u16 gBagPalette[] = INCBIN_U16("graphics/bag/bag.gbapal");
+const u16 gBagPalette[] = INCBIN_U16("graphics/bag/bag_female.gbapal");
 
 const u16 gBagScreenMale_Pal[] = INCBIN_U16("graphics/bag/menu_male.gbapal");
 const u16 gBagScreenFemale_Pal[] = INCBIN_U16("graphics/bag/menu_female.gbapal");
@@ -2089,6 +2089,19 @@ const u16 gMonIconPalettes[][16] =
     INCBIN_U16("graphics/pokemon/icon_palettes/pal4.gbapal"),
     INCBIN_U16("graphics/pokemon/icon_palettes/pal5.gbapal"),
 };
+
+// Hearth title screen
+const u32 gHearthTitleScreenPokemonLogoGfx[]     = INCBIN_U32("graphics/title_screen/hearth/pokemon_logo-tiles.4bpp.smol");
+const u32 gHearthTitleScreenPokemonLogoTilemap[] = INCBIN_U32("graphics/title_screen/hearth/pokemon_logo-tiles.bin.smolTM");
+const u32 gHearthTitleScreenHearthGfx[]  = INCBIN_U32("graphics/title_screen/hearth/hearth.8bpp.smol");
+const u32 gHearthTitleScreenPressStartGfx[]      = INCBIN_U32("graphics/title_screen/hearth/press_start.4bpp.smol");
+const u16 gHearthTitleScreenPressStartPal[]      = INCBIN_U16("graphics/title_screen/hearth/press_start.gbapal");
+const u16 gHearthTitleScreenBgPokemonLogoPalette[] = INCBIN_U16("graphics/title_screen/hearth/pokemon_logo-tiles.gbapal");
+const u16 gHearthTitleScreenBgSkyPalette[]  = INCBIN_U16("graphics/title_screen/hearth/sky-tiles.gbapal");
+const u16 gHearthTitleScreenBgLandscapePalette[]  = INCBIN_U16("graphics/title_screen/hearth/landscape-tiles.gbapal");
+const u16 gHearthTitleScreenBgChimechoPalette[]  = INCBIN_U16("graphics/title_screen/hearth/chimecho-tiles.gbapal");
+const u16 gHearthTitleScreenHearthPal[]  = INCBIN_U16("graphics/title_screen/hearth/hearth.gbapal");
+
 
 const u16 gTitleScreenBgPalettes[]         = INCBIN_U16("graphics/title_screen/pokemon_logo.gbapal",
                                                         "graphics/title_screen/rayquaza_and_clouds.gbapal");

@@ -16,7 +16,7 @@ script Silveridge_House2_EventScript_Woman {
 
     setspeaker(SP_NAME_MINER)
     msgbox(format(
-        "But honey, steel isn't a rock!"
+        "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}But honey, steel isn't a rock!"
     ))
     closemessage
 
@@ -37,10 +37,11 @@ script Silveridge_House2_EventScript_Miner {
     faceplayer
     setspeaker(SP_NAME_MINER)
     msgbox(format(
-        "The region's finest steel is found in the quarry near Saberside Town.\p"
+        "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}The region's finest steel is found in the quarry near Saberside Town.\p"
         "When my Makuhita is strong enough, we'll go see it for ourselves!"
     ))
     closemessage
+    setnamedmon(SPECIES_MAKUHITA)
     release
 }
 

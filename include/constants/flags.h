@@ -49,7 +49,7 @@
 #define FLAG_SAKU_KURA_HIDE_ESPEON_LADYS_HOUSE 0x21
 // True if the Espeon from Saku village has left its master's house
 #define FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME 0x22
-#define FLAG_UNUSED_0x23 0x23 // UNUSED
+#define FLAG_GOT_CHARCOAL 0x23
 // True if the owner of the bonsai shop is not at the shop
 #define FLAG_HIDE_BONSAI_SHOP_OWNER 0x24
 #define FLAG_HIDE_LOST_MAREEP_1 0x25
@@ -75,23 +75,23 @@
 #define FLAG_PAUSE_FAKERTC   0x37 // Pause Fake RTC
 #define FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE 0x38
 #define FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE      0x39
-#define FLAG_NO_COLLISION    0x3A
-#define FLAG_BEAT_ROCK_SMASHER    0x3B
-#define FLAG_HIDE_SAKU_FARMERS    0x3C // Set when Scyther Quest conditions are met
-#define FLAG_HIDE_SAKU_REFUGE_FARMERS_1    0x3D // Set when Scyther Quest is not started
-#define FLAG_HIDE_SAKU_REFUGE_FARMERS_2    0x3E // Set when Scyther Quest is started
-#define FLAG_HIDE_DEADNIGHT_ASHII    0x3F // Hides Ashii in deadnight
-#define FLAG_HIDE_DEADNIGHT_TAMA    0x40 // Hides Tama in deadnight
-#define FLAG_HIDE_TAMASDAD    0x41 // Hides tama's dad in Saku
-#define FLAG_LIED_TO_SHAMISEN_PLAYER 0x42
+#define FLAG_NO_COLLISION               0x3A
+#define FLAG_BEAT_ROCK_SMASHER          0x3B
+#define FLAG_HIDE_SAKU_FARMERS          0x3C // Set when Scyther Quest conditions are met
+#define FLAG_HIDE_SAKU_REFUGE_FARMERS_1 0x3D // Set when Scyther Quest is not started
+#define FLAG_HIDE_SAKU_REFUGE_FARMERS_2 0x3E // Set when Scyther Quest is started
+#define FLAG_HIDE_DEADNIGHT_ASHII       0x3F // Hides Ashii in deadnight
+#define FLAG_HIDE_DEADNIGHT_TAMA        0x40 // Hides Tama in deadnight
+#define FLAG_HIDE_TAMASDAD              0x41 // Hides tama's dad in Saku
+#define FLAG_LIED_TO_SHAMISEN_PLAYER    0x42
 #define FLAG_HIDE_CAMPFIRE_PARTY_MON_1  0x43
 #define FLAG_HIDE_CAMPFIRE_PARTY_MON_2  0x44
 #define FLAG_HIDE_CAMPFIRE_PARTY_MON_3  0x45
 #define FLAG_HIDE_CAMPFIRE_PARTY_MON_4  0x46
 #define FLAG_HIDE_CAMPFIRE_PARTY_MON_5  0x47
 #define FLAG_HIDE_CAMPFIRE_PARTY_MON_6  0x48
-#define FLAG_UNUSED_0x049    0x49 // Unused Flag
-#define FLAG_UNUSED_0x04A    0x4A // Unused Flag
+#define FLAG_PICKED_UP_BAG              0x49
+#define FLAG_PAID_HOT_SPRINGS           0x4A
 #define FLAG_UNUSED_0x04B    0x4B // Unused Flag
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
@@ -386,7 +386,7 @@
 // Some Match Call entries (like those for gym leaders, Wally, and all non-trainer NPCs like Prof. Birch)
 // have their own separate flag that needs to be set to be enabled; see src/pokenav_match_call_data.c
 #define TRAINER_REGISTERED_FLAGS_START       0x15C
-#define FLAG_REGISTERED_ROSE                 (TRAINER_REGISTERED_FLAGS_START + REMATCH_ROSE)
+#define FLAG_REGISTERED_ROSE                 (TRAINER_REGISTERED_FLAGS_START + REMATCH_MASATO)
 #define FLAG_REGISTERED_ANDRES               (TRAINER_REGISTERED_FLAGS_START + REMATCH_ANDRES)
 #define FLAG_REGISTERED_DUSTY                (TRAINER_REGISTERED_FLAGS_START + REMATCH_DUSTY)
 #define FLAG_REGISTERED_LOLA                 (TRAINER_REGISTERED_FLAGS_START + REMATCH_LOLA)
@@ -420,7 +420,7 @@
 #define FLAG_REGISTERED_MIGUEL               (TRAINER_REGISTERED_FLAGS_START + REMATCH_MIGUEL)
 #define FLAG_REGISTERED_TIMOTHY              (TRAINER_REGISTERED_FLAGS_START + REMATCH_TIMOTHY)
 #define FLAG_REGISTERED_SHELBY               (TRAINER_REGISTERED_FLAGS_START + REMATCH_SHELBY)
-#define FLAG_REGISTERED_CALVIN               (TRAINER_REGISTERED_FLAGS_START + REMATCH_CALVIN)
+#define FLAG_REGISTERED_CALVIN               (TRAINER_REGISTERED_FLAGS_START + REMATCH_TOSHIO)
 #define FLAG_REGISTERED_ELLIOT               (TRAINER_REGISTERED_FLAGS_START + REMATCH_ELLIOT)
 #define FLAG_REGISTERED_ISAIAH               (TRAINER_REGISTERED_FLAGS_START + REMATCH_ISAIAH)
 #define FLAG_REGISTERED_MARIA                (TRAINER_REGISTERED_FLAGS_START + REMATCH_MARIA)
@@ -473,8 +473,8 @@
 #define FLAG_SHOWN_EON_TICKET                0x1AE
 #define FLAG_SHOWN_AURORA_TICKET             0x1AF
 #define FLAG_SHOWN_OLD_SEA_MAP               0x1B0
-#define FLAG_MOVE_TUTOR_TAUGHT_SWAGGER       0x1B1
-#define FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL       0x1B2
+#define FLAG_MOVE_TUTOR_TAUGHT_FORCE_PALM    0x1B1
+#define FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL     0x1B2
 #define FLAG_MOVE_TUTOR_TAUGHT_FURY_CUTTER   0x1B3
 #define FLAG_MOVE_TUTOR_TAUGHT_MIMIC         0x1B4
 #define FLAG_MOVE_TUTOR_TAUGHT_METRONOME     0x1B5
@@ -562,7 +562,7 @@
 #define FLAG_HIDDEN_ITEM_YIFU_CITY_POKE_DOLL                 (FLAG_HIDDEN_ITEMS_START + 0x0B)
 #define FLAG_HIDDEN_ITEM_CROBAT_HIDEOUT_SUPERGIRI            (FLAG_HIDDEN_ITEMS_START + 0x0C)
 #define FLAG_HIDDEN_ITEM_CROBAT_HIDEOUT_ULTRO_BALL           (FLAG_HIDDEN_ITEMS_START + 0x0D)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_126_HEART_SCALE          (FLAG_HIDDEN_ITEMS_START + 0x0E)
+#define FLAG_HIDDEN_ITEM_KURA_VILLAGE_SITRUS_BERRY            (FLAG_HIDDEN_ITEMS_START + 0x0E)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_126_ULTRA_BALL           (FLAG_HIDDEN_ITEMS_START + 0x0F)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_126_STARDUST             (FLAG_HIDDEN_ITEMS_START + 0x10)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_126_PEARL                (FLAG_HIDDEN_ITEMS_START + 0x11)
@@ -681,7 +681,7 @@
 #define FLAG_GOT_SCAMMED_YIFU_REFUGE 0x274
 #define FLAG_TALKED_TO_INCENSE_SHOP_KEEPER 0x275
 #define FLAG_TRIGGERED_LOCKDOWN 0x276
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
+#define FLAG_DEMO_END      0x277
 #define FLAG_UNUSED_0x278  0x278 // Unused Flag
 #define FLAG_UNUSED_0x279  0x279 // Unused Flag
 #define FLAG_UNUSED_0x27A  0x27A // Unused Flag
@@ -1074,11 +1074,11 @@
 #define FLAG_CROBAT_HIDEOUT_PEARL                                   0x3F7
 #define FLAG_ITEM_SUNRISE_CAVE_HEART_SCALE                          0x3F8
 #define FLAG_ITEM_SILVER_TUNNEL_SUPER_OINTMENT                      0x3F9
-#define FLAG_ITEM_ROUTE_115_IRON                                    0x3FA
-#define FLAG_ITEM_ROUTE_116_ETHER                                   0x3FB
-#define FLAG_ITEM_ROUTE_116_REPEL                                   0x3FC
-#define FLAG_ITEM_ROUTE_116_HP_UP                                   0x3FD
-#define FLAG_ITEM_ROUTE_117_GREAT_BALL                              0x3FE
+#define FLAG_ITEM_YIFU_REFUGE_SITRUS_BERRY                          0x3FA
+#define FLAG_ITEM_YIFU_REFUGE_LAVA_COOKIE                           0x3FB
+#define FLAG_HIDDEN_ITEM_YIFU_CITY_ESCAPE_ROPE                      0x3FC
+#define FLAG_HIDDEN_ITEM_YIFU_CITY_RARE_CANDY                       0x3FD
+#define FLAG_HIDDEN_ITEM_YIFU_CITY_DUSK_BALL                        0x3FE
 #define FLAG_ITEM_ROUTE_117_REVIVE                                  0x3FF
 #define FLAG_ITEM_ROUTE_119_SUPER_REPEL                             0x400
 #define FLAG_ITEM_ROUTE_119_ZINC                                    0x401
@@ -1399,7 +1399,7 @@
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 
 #define FLAG_SUPPRESS_SPEAKER_NAME                  (SYSTEM_FLAGS + 0x21) // Suppresses speaker name
-#define FLAG_UNUSED_0x882                           (SYSTEM_FLAGS + 0x22) // Unused Flag
+#define FLAG_NO_WHITEOUT                            (SYSTEM_FLAGS + 0x22)
 #define FLAG_UNUSED_0x883                           (SYSTEM_FLAGS + 0x23) // Unused Flag
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
@@ -1513,9 +1513,7 @@
 #define FLAG_ENABLE_SHIP_NAVEL_ROCK                 (SYSTEM_FLAGS + 0x80)
 #define FLAG_ARRIVED_AT_NAVEL_ROCK                  (SYSTEM_FLAGS + 0x81)
 #define FLAG_LANDMARK_TRAINER_HILL                  (SYSTEM_FLAGS + 0x82)
-
-#define FLAG_UNUSED_0x8E3                           (SYSTEM_FLAGS + 0x83) // Unused Flag
-
+#define FLAG_POST_CHATOT                            (SYSTEM_FLAGS + 0x83)
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
 #define FLAG_UNUSED_0x8E5                           (SYSTEM_FLAGS + 0x85) // Unused Flag
@@ -1593,7 +1591,7 @@
 #define FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER    (DAILY_FLAGS_START + 0x8)
 #define FLAG_DAILY_MON_DEX_RIDDLE_WON               (DAILY_FLAGS_START + 0x9)
 #define FLAG_DAILY_PICKED_LOTO_TICKET               (DAILY_FLAGS_START + 0xA)
-#define FLAG_DAILY_FISH_SELLER_UNUSED               (DAILY_FLAGS_START + 0xB) // Unused Flag
+#define FLAG_DAILY_YIFU_HOTEL_ROOM                  (DAILY_FLAGS_START + 0xB)
 #define FLAG_DAILY_ROUTE_111_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xC)
 #define FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY      (DAILY_FLAGS_START + 0xD)
 #define FLAG_DAILY_ROUTE_120_RECEIVED_BERRY         (DAILY_FLAGS_START + 0xE)
@@ -1601,7 +1599,7 @@
 #define FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY       (DAILY_FLAGS_START + 0x10)
 #define FLAG_DAILY_BERRY_MASTERS_WIFE               (DAILY_FLAGS_START + 0x11)
 #define FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY        (DAILY_FLAGS_START + 0x12)
-#define FLAG_PAID_HOT_SPRINGS                       (DAILY_FLAGS_START + 0x13)
+#define FLAG_UNUSED_0x933                           (DAILY_FLAGS_START + 0x13)
 #define FLAG_DAILY_APPRENTICE_LEAVES                (DAILY_FLAGS_START + 0x14)
 
 #define FLAG_UNUSED_0x935                           (DAILY_FLAGS_START + 0x15) // Unused Flag

@@ -38,6 +38,7 @@ script SunriseVillage_Event_FatGuy {
     setspeaker(SP_NAME_NEIGHBOR)
     if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 4) {
         applymovement(VAR_LAST_TALKED, moves(emote_heart))
+        playse(SE_PIN)
         msgbox(format(
             "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY EMOTE_NORMAL}My new Pokémon is so cute, I don't feel like leaving it in its Pokéball!"
         ))
@@ -184,8 +185,7 @@ script SunriseVillage_Event_Boy {
     }
     else {
         msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}Hey {PLAYER}!\p"
-            "So, d'you think we'll get to choose the one we want?"
+            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_BOY_1 EMOTE_NORMAL}Hey {PLAYER}!\nYou think we'll get to choose?"
         ))
         closemessage
     }
@@ -209,6 +209,7 @@ script SunriseVillage_Event_Woman {
 script SunriseVillage_Event_Farmer {
     lock
     faceplayer
+    playse(SE_PIN)
     applymovement(VAR_LAST_TALKED, moves(emote_upset))
     setspeaker(SP_NAME_NEIGHBOR)
     msgbox(format(
@@ -233,6 +234,7 @@ script SunriseVillage_Event_OldMan {
 script SunriseVillage_Event_OldWoman {
     lock
     faceplayer
+    playse(SE_PIN)
     applymovement(VAR_LAST_TALKED, moves(emote_angry))
     setspeaker(SP_NAME_NEIGHBOR)
     msgbox(format(

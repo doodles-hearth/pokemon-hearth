@@ -113,9 +113,8 @@ script BeachboundRoute_EventScript_Karu_PostBattle {
 }
 
 script BeachboundRoute_EventScript_Kin {
-	// TODO EVA rematch
 	trainerbattle_single(
-		TRAINER_KIN_1,
+		TRAINER_KIN,
 		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL EMOTE_NORMAL}I run several hours everyday! You literally cannot defeat me!"),
 		format("Ow! I pulled a muscle!")
 	)
@@ -139,15 +138,34 @@ script BeachboundRoute_EventScript_Kouta {
 
 script BeachboundRoute_EventScript_Masato {
 	trainerbattle_single(
-		TRAINER_MASATO ,
+		TRAINER_MASATO_1,
 		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}Let my Pokémon sing for you!"),
-		format("Okay, rude.")
+		format("Okay, rude."),
+		BeachboundRoute_EventScript_Masato_Register
 	)
+
+	specialvar(VAR_RESULT, ShouldTryRematchBattle)
+	if (var(VAR_RESULT)) {
+		trainerbattle_rematch(TRAINER_MASATO_1, format("Let's fight again!"), format("I lost again?!"))
+	}
+
 	setnamedmon(SPECIES_KRICKETOT)
 	setspeaker(SP_NAME_BUGCATCHER)
+	// TODO "kricketot" -> "kricketune"
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I hope one day my Kricketot evolves! I wonder what delightful melody he'll be able to sing then…"))
+	closemessage
 	release
 	end
+}
+
+script(local) BeachboundRoute_EventScript_Masato_Register {
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}{SPEAKER NAME_BUGCATCHER}"
+		"Are you a fan of singing bugs too?\nLet's stay in touch!\p"
+		"I'll have Chatot sing their songs for you!"
+	))
+	closemessage
+	register_matchcall(TRAINER_MASATO_1)
 }
 
 script BeachboundRoute_EventScript_SomeoneCallingForHelp {
@@ -223,8 +241,7 @@ script BeachboundRoute_EventScript_Mugging {
 	// Lost to them once
 	if (var(VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE) < 3) {
 		setvar(VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 3)
-		applymovement(LOCALID_GRUNT_1, Common_Movement_WalkInPlaceFasterUp)
-		waitmovement(0)
+		applymovement(LOCALID_GRUNT_1, moves(walk_in_place_fast_up))
 
 		setspeaker("Shady Man")
 		msgbox(format(
@@ -232,9 +249,8 @@ script BeachboundRoute_EventScript_Mugging {
 		))
 		closemessage
 
-		applymovement(LOCALID_GRUNT_2, Common_Movement_WalkInPlaceFasterUp)
-		waitmovement(0)
-		applymovement(LOCALID_GRUNT_2, moves(emote_angry))
+		playse(SE_PIN)
+		applymovement(LOCALID_GRUNT_2, moves(walk_in_place_fast_up, emote_angry))
 
 		setspeaker("Shady Man")
 		msgbox(format(
@@ -376,6 +392,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	delay(24)
 
+	playse(SE_PIN)
 	applymovement(LOCALID_GRUNT_BOSS, moves(emote_angry))
 	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox(format(
@@ -487,6 +504,7 @@ script BeachboundRoute_EventScript_Mugging {
 
 	applymovement(LOCALID_MUGGED_WOMAN, moves(walk_left, walk_down * 5, walk_left * 9))
 	waitmovement(LOCALID_MUGGED_WOMAN)
+	removeobject(LOCALID_MUGGED_WOMAN)
 	waitmovement(0)
 }
 
@@ -515,7 +533,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 			"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
 			"I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
 			"If you're a traveler, you're definitely going to see me around!\p"
-			"What's your name? {PLAYER}? It's nice to meet you, {PLAYER}!"
+			"What's your name? {PLAYER}? It's nice to meet you, {PLAYER}!\p"
 			"I see you're a young Wielder, eh? Maybe we can even have a friendly battle sometime!\p"
 			"I'm in the area for a while to gather some resources.\p"
 			"Can I interest you in some handpicked goods?"
@@ -547,4 +565,11 @@ script BeachboundRoute_EventScript_SeeDecay {
 	warpsilent(MAP_BEACHBOUND_ROUTE_DECAY, 43, 17)
 
 	releaseall
+}
+
+script BeachboundRoute_Sign_TrainerTips_XP {
+	msgbox(format(
+		"Did you know?\p"
+		"Weaker Pokémon will grow faster to catch up with your stronger ones!"
+	), MSGBOX_SIGN)
 }

@@ -463,3 +463,51 @@ script(local) Hotpot_End {
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}This was very fun.\nI am glad to have you two as friends."
 	))
 }
+
+script YifuCity_Restaurant_EventScript_LittleBoy {
+	lock
+	faceplayer
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}{SPEAKER NAME_LITTLE_BOY}I saw it! I saw that black oozing stuff in the Forest!\p"
+		"What is that thing?!"
+	))
+	closemessage
+
+	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
+	waitmovement(0)
+
+	release
+	end
+}
+
+script YifuCity_Restaurant_EventScript_LittleBoy2 {
+	lock
+	faceplayer
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}{SPEAKER NAME_LITTLE_BOY}"
+		"My brother dared me to go into the Forest alone!\p"
+		"Huh? Yeah, of COURSE I did!\nI'm not a wimp!\l"
+		"{FONT_SMALL}(Shiver shiver…){FONT_NORMAL}"
+	))
+	closemessage
+
+	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
+	waitmovement(0)
+
+	release
+	end
+}
+
+script YifuCity_Restaurant_EventScript_OldMan {
+	lock
+	applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_left))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}"
+		"Stop telling your brother these\nsilly stories!\p"
+		"If he has nightmares and wets the bed, I'll make you clean up!"
+	))
+	closemessage
+
+	release
+	end
+}

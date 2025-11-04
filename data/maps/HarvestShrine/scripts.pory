@@ -55,7 +55,8 @@ script HarvestShrine_EventScript_MonkRain {
 
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}You prayed to the venerable Bronzong for rain, and He heeded your prayer!\p"
-			"He doesn't listen to just anyone,\nyou know?\lThere's something about you, kid…\lTake this! I insist!"
+			"He doesn't listen to just anyone,\nyou know?\p"
+			"There's something about you, kid…\nTake this! I insist!"
 		))
 		closemessage
 

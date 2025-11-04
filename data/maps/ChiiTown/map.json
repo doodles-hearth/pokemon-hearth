@@ -163,7 +163,7 @@
       "evening": true,
       "lunchtime": true,
       "morning": true,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(KECLEON)",
@@ -354,8 +354,8 @@
       "movement_range_x": 2,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "BERRY_TREE_CHII_TOWN_SOIL_2",
-      "script": "BerryTreeScript",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ChiiTown_EventScript_Deerling",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,
@@ -390,6 +390,26 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
+      "x": 18,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "ChiiTown_EventScript_HexManiac",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": true,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": true
     }
   ],
   "warp_events": [

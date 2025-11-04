@@ -118,6 +118,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Ah! The letter I was expecting from Kaba…!"
 	))
+	playse(SE_PIN)
 	applymovement(LOCALID_ELDER, moves(emote_pensive))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}… … … … … …\n… … … … … …\p"
@@ -130,12 +131,14 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	))
 	closemessage
 
-	applymovement(LOCALID_ELDER, moves(walk_slow_left, walk_slow_right * 2, walk_slow_left, delay_16, emote_pensive, delay_16 * 6))
+	applymovement(LOCALID_ELDER, moves(walk_slow_left, walk_slow_right * 2, walk_slow_left, delay_16))
+	waitmovement(0)
+	applymovement(LOCALID_ELDER, moves(emote_pensive, delay_16 * 6))
 	waitmovement(0)
 
-	playse(SE_EXIT)
 	clearflag(FLAG_HIDE_MESSENGER)
 	addobject(LOCALID_MESSENGER)
+	playse(SE_EXIT)
 	waitse
 
 	playse(SE_PIN)
@@ -144,6 +147,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	waitmovement(LOCALID_ELDER)
 	waitse
 
+	playse(SE_PIN)
 	applymovement(LOCALID_MESSENGER, moves(emote_sad))
 	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
@@ -154,9 +158,9 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	applymovement(LOCALID_MESSENGER, moves(delay_16, walk_in_place_fast_down))
 	waitmovement(LOCALID_MESSENGER)
+	removeobject(LOCALID_MESSENGER)
 	playse(SE_EXIT)
 	waitse
-	removeobject(LOCALID_MESSENGER)
 
 	delay(48)
 
@@ -168,12 +172,13 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}We cannot lose a second! We need to investigate Uume Forest right now!"
 	))
+	playse(SE_PIN)
 	applymovement(LOCALID_ELDER, moves(emote_pensive))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}… … … … … …\n… … … … … …\p"
 		"Young one from Sunrise Village.\nWhat is your name? {PLAYER}?\p"
 		"You came all the way up here\non foot…\lYou have a team of capable Pokémon…\lKaba seems to trust you…\p"
-		"It is decided! You shall travel to Uume Forest, southeast of Tranquil Route!\p"
+		"It is decided! Travel to Uume Forest, southeast of Tranquil Route!\p"
 		"Our fate may well be in your hands, {PLAYER}.\p"
 		"Before you leave, I have something that will make your journey easier."
 	))

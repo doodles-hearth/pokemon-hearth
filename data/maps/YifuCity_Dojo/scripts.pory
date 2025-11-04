@@ -1,17 +1,3 @@
-const LOCALID_GEISHA_1 = 1
-const LOCALID_GEISHA_2 = 2
-const LOCALID_GEISHA_3 = 3
-
-const LOCALID_GEISHA_4 = 4
-const LOCALID_GEISHA_5 = 5
-const LOCALID_GEISHA_6 = 6
-
-const LOCALID_GEISHA_7 = 7
-const LOCALID_GEISHA_8 = 8
-const LOCALID_GEISHA_9 = 9
-const LOCALID_GEISHA_10 = 10
-
-
 mapscripts YifuCity_Dojo_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		if (var(VAR_YIFU_DOJO_STATE) >= 1) {
@@ -23,23 +9,26 @@ mapscripts YifuCity_Dojo_MapScripts {
 		if (var(VAR_YIFU_DOJO_STATE) >= 3) {
 			call(YifuCity_Dojo_SetDoor3Metatiles)
 		}
+		if (flag(FLAG_BADGE03_GET)) {
+			call(YifuCity_Dojo_SetShortcutMetatiles)
+		}
 	}
     MAP_SCRIPT_ON_TRANSITION: YifuCity_Dojo_SetupNpcs
 }
 
 script YifuCity_Dojo_SetupNpcs {
     if (var(VAR_YIFU_DOJO_STATE) >= 1) {
-        setobjectxyperm(LOCALID_GEISHA_2, 15, 33)
-        setobjectxyperm(LOCALID_GEISHA_3, 18, 33)
-        removeobject(LOCALID_GEISHA_1)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_2, 15, 33)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_3, 18, 33)
+        removeobject(LOCALID_YIFU_GEISHA_1)
     }
     if (var(VAR_YIFU_DOJO_STATE) >= 2) {
-        setobjectxyperm(LOCALID_GEISHA_4, 42, 33)
-        setobjectxyperm(LOCALID_GEISHA_6, 45, 33)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_4, 42, 33)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_6, 45, 33)
     }
     if (var(VAR_YIFU_DOJO_STATE) >= 3) {
-        setobjectxyperm(LOCALID_GEISHA_4, 42, 33)
-        setobjectxyperm(LOCALID_GEISHA_6, 45, 33)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_4, 42, 33)
+        setobjectxyperm(LOCALID_YIFU_GEISHA_6, 45, 33)
     }
 }
 
@@ -87,12 +76,12 @@ script YifuCity_Dojo_EventScript_Dance1_FromDown {
 
 script YifuCity_Dojo_EventScript_Dance1 {
     setspeaker(SP_NAME_KIMONO_GIRLS)
-    msgbox(format(
-        "Welcome to the Yifu City Dojo. Here you will have the pleasure to watch three different dances, at the end of which you will be asked a different question.\p"
-        "The first dance will soon commence! The real Miss Yutaka, the Dojo Master, is among us.\p"
-        "She is the one on the left.\nIf you haven't lost track of her by the end of our dance, we shall let you through.\p"
-        "If you guess wrong, you shall have to battle us.\p"
-        "Are you ready?"
+    msgbox((
+        "Welcome to the Yifu City Dojo.\p"
+        "You will have the pleasure to watch\nthree different dances, at the end of\lwhich you will be asked a question.\p"
+        "The first dance will soon commence!\nSee the dancer on the left.\lKeep your eyes on her!\p"
+        "If you know where she is by the end of\nour dance, we shall let you through.\p"
+        "If you guess wrong, you will have to\nbattle us.\lAre you ready? One, two…"
     ))
     closemessage
 
@@ -108,7 +97,7 @@ script YifuCity_Dojo_EventScript_Dance1 {
 
     setspeaker(SP_NAME_KIMONO_GIRLS)
     msgbox(format(
-        "Well? Can you remember which one is the real Yutaka?"
+        "Well? Which dancer is the one who was originally on the left?"
     ))
 
     dynmultichoice(
@@ -124,16 +113,15 @@ script YifuCity_Dojo_EventScript_Dance1 {
     )
     closemessage
 
-    // TODO EVA the dancers' real appearance is revealed
-
     call(YifuCity_Dojo_Dance1_Jump)
 
     if (var(VAR_RESULT) == 1) {
+        playse(SE_SUCCESS)
 
         setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are correct!\p"
-            "Very well. You may proceed to the next room."
+            "Very well.\nYou may proceed to the next room."
         ))
         closemessage
 
@@ -141,6 +129,8 @@ script YifuCity_Dojo_EventScript_Dance1 {
 
         call(YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor)
     } else {
+        playse(SE_FAILURE)
+
         setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are incorrect!\p"
@@ -166,13 +156,13 @@ script YifuCity_Dojo_EventScript_Dance1 {
         closemessage
 
         // They walk up to the door
-        applymovement(LOCALID_GEISHA_2, moves(
+        applymovement(LOCALID_YIFU_GEISHA_2, moves(
             walk_down
             walk_right * 7
             walk_up
             face_right
         ))
-        applymovement(LOCALID_GEISHA_3, moves(
+        applymovement(LOCALID_YIFU_GEISHA_3, moves(
             walk_right * 8
             face_left
         ))
@@ -181,8 +171,8 @@ script YifuCity_Dojo_EventScript_Dance1 {
         special(SpawnCameraObject)
         applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
 
-        waitmovement(LOCALID_GEISHA_2)
-        waitmovement(LOCALID_GEISHA_3)
+        waitmovement(LOCALID_YIFU_GEISHA_2)
+        waitmovement(LOCALID_YIFU_GEISHA_3)
 	    waitmovement(OBJ_EVENT_ID_CAMERA)
     }
 
@@ -193,10 +183,10 @@ script YifuCity_Dojo_EventScript_Dance1 {
 
     call(YifuCity_Dojo_DoorAppears_Screenshake)
 
-    applymovement(LOCALID_GEISHA_2, Common_Movement_WalkInPlaceFasterDown)
-    applymovement(LOCALID_GEISHA_3, Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_2, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(LOCALID_YIFU_GEISHA_3, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
     waitse
 
     delay(32)
@@ -210,8 +200,9 @@ script YifuCity_Dojo_EventScript_Dance1 {
 
 script YifuCity_Dojo_EventScript_Dance2 {
     setspeaker(SP_NAME_KIMONO_GIRLS)
-    msgbox(format(
-        "Are you ready for a second dance? Follow each of our moves…"
+    msgbox((
+        "This time, we won't tell you which\ndancer you need to keep track of.\p"
+        "Are you ready for the second dance?\nFollow each of our moves…\lOne, two, three!"
     ))
     closemessage
 
@@ -221,38 +212,33 @@ script YifuCity_Dojo_EventScript_Dance2 {
 
     call(YifuCity_Dojo_Dance2)
 
+    delay(48)
+
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2, delay_16 * 2))
 	waitmovement(0)
     special(RemoveCameraObject)
 
     setspeaker(SP_NAME_KIMONO_GIRLS)
     msgbox(format(
-        "Do you remember where the dancer on the right was placed originally?"
+        "The dancer on the right…\nWhere was she originally?"
     ))
 
-    dynmultichoice(
-        0,
-        0,
-        TRUE,
-        10,
-        0,
-        DYN_MULTICHOICE_CB_NONE,
+    mcdialogue(
         "She was on the left.",
         "She was in the middle.",
         "She was on the right."
     )
     closemessage
 
-    // TODO EVA the dancers' real appearance is revealed
-
     call(YifuCity_Dojo_Dance2_Jump)
 
-    if (var(VAR_RESULT) == 0) {
+    if (var(VAR_RESULT) == 2) {
+        playse(SE_SUCCESS)
 
         setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are correct!\p"
-            "Very well. You may proceed to the next room."
+            "Very well.\nYou may proceed to the next room."
         ))
         closemessage
 
@@ -260,6 +246,8 @@ script YifuCity_Dojo_EventScript_Dance2 {
 
         call(YifuCity_Dojo_Dance2_GeishasGoDirectlyToDoor)
     } else {
+        playse(SE_FAILURE)
+
         setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are incorrect!\p"
@@ -285,13 +273,13 @@ script YifuCity_Dojo_EventScript_Dance2 {
         closemessage
 
         // They walk up to the door
-        applymovement(LOCALID_GEISHA_4, moves(
+        applymovement(LOCALID_YIFU_GEISHA_5, moves(
             walk_down
             walk_right * 7
             walk_up
             face_right
         ))
-        applymovement(LOCALID_GEISHA_6, moves(
+        applymovement(LOCALID_YIFU_GEISHA_6, moves(
             walk_right * 8
             face_left
         ))
@@ -300,8 +288,8 @@ script YifuCity_Dojo_EventScript_Dance2 {
         special(SpawnCameraObject)
         applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
 
-        waitmovement(LOCALID_GEISHA_4)
-        waitmovement(LOCALID_GEISHA_6)
+        waitmovement(LOCALID_YIFU_GEISHA_5)
+        waitmovement(LOCALID_YIFU_GEISHA_6)
 	    waitmovement(OBJ_EVENT_ID_CAMERA)
     }
 
@@ -312,10 +300,10 @@ script YifuCity_Dojo_EventScript_Dance2 {
 
     call(YifuCity_Dojo_DoorAppears_Screenshake)
 
-    applymovement(LOCALID_GEISHA_4, Common_Movement_WalkInPlaceFasterDown)
-    applymovement(LOCALID_GEISHA_6, Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_5, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(LOCALID_YIFU_GEISHA_6, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(LOCALID_YIFU_GEISHA_5)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
     waitse
 
     delay(32)
@@ -329,8 +317,10 @@ script YifuCity_Dojo_EventScript_Dance2 {
 
 script YifuCity_Dojo_EventScript_Dance3 {
     setspeaker(SP_NAME_KIMONO_GIRLS)
-    msgbox(format(
-        "Let the third dance begin! Pay close attention…"
+    msgbox((
+        "For the third and final dance, we won't\nask you about a dancer's position.\l"
+        "Just pay attention to our actions!\p"
+        "One, two, three, four."
     ))
     closemessage
 
@@ -356,20 +346,21 @@ script YifuCity_Dojo_EventScript_Dance3 {
         10,
         0,
         DYN_MULTICHOICE_CB_NONE,
-        "Eight.",
-        "Ten.",
-        "Twelve."
+        "Five.",
+        "Six.",
+        "Seven."
     )
     closemessage
 
     call(YifuCity_Dojo_Dance3_Jump)
 
     if (var(VAR_RESULT) == 0) {
+        playse(SE_SUCCESS)
 
         setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are correct!\p"
-            "Very well. You may proceed to the last room."
+            "Very well.\nYou may proceed to the last room."
         ))
         closemessage
 
@@ -377,6 +368,8 @@ script YifuCity_Dojo_EventScript_Dance3 {
 
         call(YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor)
     } else {
+        playse(SE_FAILURE)
+
         setspeaker(SP_NAME_KIMONO_GIRLS)
         msgbox(format(
             "You are incorrect!\p"
@@ -402,28 +395,27 @@ script YifuCity_Dojo_EventScript_Dance3 {
         closemessage
 
         // They walk up to the door
-        applymovement(LOCALID_GEISHA_7, moves(walk_up, face_right))
-        applymovement(LOCALID_GEISHA_9, moves(walk_up, face_left))
+        applymovement(LOCALID_YIFU_GEISHA_7, moves(walk_up, face_left))
+        applymovement(LOCALID_YIFU_GEISHA_10, moves(walk_up, face_right))
         playse(SE_LEDGE)
-        applymovement(LOCALID_GEISHA_8, moves(
+        applymovement(LOCALID_YIFU_GEISHA_9, moves(
             jump_2_up,
-            delay_16,
+            walk_up,
+            face_right
+        ))
+        applymovement(LOCALID_YIFU_GEISHA_8, moves(
+            jump_2_up,
             walk_right,
             walk_up,
             face_left
         ))
-        applymovement(LOCALID_GEISHA_10, moves(
-            jump_2_up,
-            delay_16,
-            walk_up,
-            face_right
-        ))
 
         // Camera follows
         special(SpawnCameraObject)
-        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
+        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
 
-        waitmovement(LOCALID_GEISHA_10)
+        waitmovement(LOCALID_YIFU_GEISHA_10)
+        applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_down * 2))
 	    waitmovement(OBJ_EVENT_ID_CAMERA)
     }
 
@@ -434,10 +426,10 @@ script YifuCity_Dojo_EventScript_Dance3 {
 
     call(YifuCity_Dojo_DoorAppears_Screenshake)
 
-    applymovement(LOCALID_GEISHA_4, Common_Movement_WalkInPlaceFasterDown)
-    applymovement(LOCALID_GEISHA_6, Common_Movement_WalkInPlaceFasterDown)
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_4, Common_Movement_WalkInPlaceFasterDown)
+    applymovement(LOCALID_YIFU_GEISHA_6, Common_Movement_WalkInPlaceFasterDown)
+    waitmovement(LOCALID_YIFU_GEISHA_4)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
     waitse
 
     delay(32)
@@ -450,98 +442,98 @@ script YifuCity_Dojo_EventScript_Dance3 {
 }
 
 script YifuCity_Dojo_Dance1_GeishasSurroundPlayerToBattle {
-    applymovement(LOCALID_GEISHA_1, Common_Movement_TeleportAway)
-    applymovement(LOCALID_GEISHA_2, moves(walk_down))
-    applymovement(LOCALID_GEISHA_3, moves(walk_down))
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_1, Common_Movement_TeleportAway)
+    applymovement(LOCALID_YIFU_GEISHA_2, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_3, moves(walk_down))
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
 
     playse(SE_LEDGE)
 
-    applymovement(LOCALID_GEISHA_2, moves(jump_2_down, delay_16, walk_right))
-    applymovement(LOCALID_GEISHA_3, moves(jump_2_down, delay_16, walk_left))
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_2, moves(jump_2_down, delay_16, walk_right))
+    applymovement(LOCALID_YIFU_GEISHA_3, moves(jump_2_down, delay_16, walk_left))
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
 }
 
 script YifuCity_Dojo_Dance2_GeishasSurroundPlayerToBattle {
-    applymovement(LOCALID_GEISHA_4, moves(walk_down))
-    applymovement(LOCALID_GEISHA_6, moves(walk_down))
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_5, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_6, moves(walk_down))
+    waitmovement(LOCALID_YIFU_GEISHA_5)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
 
     playse(SE_LEDGE)
 
-    applymovement(LOCALID_GEISHA_4, moves(jump_2_down, delay_16, walk_right))
-    applymovement(LOCALID_GEISHA_6, moves(jump_2_down, delay_16, walk_left))
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_5, moves(jump_2_down, delay_16, walk_right))
+    applymovement(LOCALID_YIFU_GEISHA_6, moves(jump_2_down, delay_16, walk_left))
+    waitmovement(LOCALID_YIFU_GEISHA_5)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
 }
 
 script YifuCity_Dojo_Dance3_GeishasSurroundPlayerToBattle {
-    applymovement(LOCALID_GEISHA_7, moves(walk_right * 2, face_down))
-    applymovement(LOCALID_GEISHA_8, moves(walk_down))
-    applymovement(LOCALID_GEISHA_9, moves(walk_down))
-    applymovement(LOCALID_GEISHA_10, moves(walk_left * 2, face_down))
-    waitmovement(LOCALID_GEISHA_7)
-    waitmovement(LOCALID_GEISHA_8)
-    waitmovement(LOCALID_GEISHA_9)
-    waitmovement(LOCALID_GEISHA_10)
+    applymovement(LOCALID_YIFU_GEISHA_7, moves(walk_left * 2, face_down))
+    applymovement(LOCALID_YIFU_GEISHA_8, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_9, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_10, moves(walk_right * 2, face_down))
+    waitmovement(LOCALID_YIFU_GEISHA_7)
+    waitmovement(LOCALID_YIFU_GEISHA_8)
+    waitmovement(LOCALID_YIFU_GEISHA_9)
+    waitmovement(LOCALID_YIFU_GEISHA_10)
 
     playse(SE_LEDGE)
 
-    applymovement(LOCALID_GEISHA_8, moves(jump_2_down, delay_16, face_right))
-    applymovement(LOCALID_GEISHA_9, moves(jump_2_down, delay_16, walk_left))
-    waitmovement(LOCALID_GEISHA_8)
-    waitmovement(LOCALID_GEISHA_9)
+    applymovement(LOCALID_YIFU_GEISHA_8, moves(jump_2_down, delay_16, walk_left))
+    applymovement(LOCALID_YIFU_GEISHA_9, moves(jump_2_down, delay_16, face_right))
+    waitmovement(LOCALID_YIFU_GEISHA_8)
+    waitmovement(LOCALID_YIFU_GEISHA_9)
 }
 
 script YifuCity_Dojo_Dance1_GeishasGoDirectlyToDoor {
-    applymovement(LOCALID_GEISHA_1, Common_Movement_TeleportAway)
-    applymovement(LOCALID_GEISHA_2, moves(walk_down))
-    applymovement(LOCALID_GEISHA_3, moves(walk_down))
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_1, Common_Movement_TeleportAway)
+    applymovement(LOCALID_YIFU_GEISHA_2, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_3, moves(walk_down))
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
 
     special(SpawnCameraObject)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
 
     playse(SE_LEDGE)
-    applymovement(LOCALID_GEISHA_2, moves(jump_2_down, delay_16, walk_down, walk_right * 8, walk_up, face_right))
-    applymovement(LOCALID_GEISHA_3, moves(jump_2_down, delay_16, walk_right * 7, face_left))
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_2, moves(jump_2_down, delay_16, walk_down, walk_right * 8, walk_up, face_right))
+    applymovement(LOCALID_YIFU_GEISHA_3, moves(jump_2_down, delay_16, walk_right * 7, face_left))
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
     waitmovement(OBJ_EVENT_ID_CAMERA)
     waitse
 }
 
 script YifuCity_Dojo_Dance2_GeishasGoDirectlyToDoor {
-    applymovement(LOCALID_GEISHA_4, moves(walk_down))
-    applymovement(LOCALID_GEISHA_6, moves(walk_down))
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_5, moves(walk_down))
+    applymovement(LOCALID_YIFU_GEISHA_6, moves(walk_down))
+    waitmovement(LOCALID_YIFU_GEISHA_5)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
 
     special(SpawnCameraObject)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_right * 4))
 
     playse(SE_LEDGE)
-    applymovement(LOCALID_GEISHA_4, moves(jump_2_down, delay_16, walk_down, walk_right * 8, walk_up, face_right))
-    applymovement(LOCALID_GEISHA_6, moves(jump_2_down, delay_16, walk_right * 7, face_left))
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_5, moves(jump_2_down, delay_16, walk_down, walk_right * 8, walk_up, face_right))
+    applymovement(LOCALID_YIFU_GEISHA_6, moves(jump_2_down, delay_16, walk_right * 7, face_left))
+    waitmovement(LOCALID_YIFU_GEISHA_5)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
     waitmovement(OBJ_EVENT_ID_CAMERA)
     waitse
 }
 
 script YifuCity_Dojo_Dance3_GeishasGoDirectlyToDoor {
-    applymovement(LOCALID_GEISHA_8, moves(walk_up, face_right))
-    applymovement(LOCALID_GEISHA_9, moves(walk_up, face_left))
-    applymovement(LOCALID_GEISHA_7, moves(walk_right * 2))
-    applymovement(LOCALID_GEISHA_10, moves(walk_left * 2))
-    waitmovement(LOCALID_GEISHA_7)
-    waitmovement(LOCALID_GEISHA_8)
-    waitmovement(LOCALID_GEISHA_9)
-    waitmovement(LOCALID_GEISHA_10)
+    applymovement(LOCALID_YIFU_GEISHA_8, moves(walk_up, face_left))
+    applymovement(LOCALID_YIFU_GEISHA_9, moves(walk_up, face_right))
+    applymovement(LOCALID_YIFU_GEISHA_7, moves(walk_left * 2))
+    applymovement(LOCALID_YIFU_GEISHA_10, moves(walk_right * 2))
+    waitmovement(LOCALID_YIFU_GEISHA_7)
+    waitmovement(LOCALID_YIFU_GEISHA_8)
+    waitmovement(LOCALID_YIFU_GEISHA_9)
+    waitmovement(LOCALID_YIFU_GEISHA_10)
 
     special(SpawnCameraObject)
     applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_up * 2))
@@ -598,14 +590,22 @@ script YifuCity_Dojo_SetDoor3Metatiles {
     special(DrawWholeMapView)
 }
 
+script YifuCity_Dojo_SetShortcutMetatiles {
+    setmetatile(23, 0, METATILE_DojoYifu_DoorTopLeft, TRUE)
+    setmetatile(24, 0, METATILE_DojoYifu_DoorTopRight, TRUE)
+    setmetatile(23, 1, METATILE_DojoYifu_DoorBottomLeft, TRUE)
+    setmetatile(24, 1, METATILE_DojoYifu_DoorBottomRight, TRUE)
+    special(DrawWholeMapView)
+}
+
 script YifuCity_Dojo_Dance1_Jump {
     playse(SE_BANG)
-    applymovement(LOCALID_GEISHA_1, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_2, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_3, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    waitmovement(LOCALID_GEISHA_1)
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    applymovement(LOCALID_YIFU_GEISHA_1, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_2, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_3, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    waitmovement(LOCALID_YIFU_GEISHA_1)
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
     waitse
 
     delay(16)
@@ -613,12 +613,12 @@ script YifuCity_Dojo_Dance1_Jump {
 
 script YifuCity_Dojo_Dance2_Jump {
     playse(SE_BANG)
-    applymovement(LOCALID_GEISHA_4, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_5, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_6, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    waitmovement(LOCALID_GEISHA_4)
-    waitmovement(LOCALID_GEISHA_5)
-    waitmovement(LOCALID_GEISHA_6)
+    applymovement(LOCALID_YIFU_GEISHA_4, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_5, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_6, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    waitmovement(LOCALID_YIFU_GEISHA_4)
+    waitmovement(LOCALID_YIFU_GEISHA_5)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
     waitse
 
     delay(16)
@@ -626,14 +626,14 @@ script YifuCity_Dojo_Dance2_Jump {
 
 script YifuCity_Dojo_Dance3_Jump {
     playse(SE_BANG)
-    applymovement(LOCALID_GEISHA_7, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_8, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_9, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    applymovement(LOCALID_GEISHA_10, YifuCity_Dojo_Movement_JumpInPlaceDown)
-    waitmovement(LOCALID_GEISHA_7)
-    waitmovement(LOCALID_GEISHA_8)
-    waitmovement(LOCALID_GEISHA_9)
-    waitmovement(LOCALID_GEISHA_10)
+    applymovement(LOCALID_YIFU_GEISHA_7, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_8, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_9, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    applymovement(LOCALID_YIFU_GEISHA_10, YifuCity_Dojo_Movement_JumpInPlaceDown)
+    waitmovement(LOCALID_YIFU_GEISHA_7)
+    waitmovement(LOCALID_YIFU_GEISHA_8)
+    waitmovement(LOCALID_YIFU_GEISHA_9)
+    waitmovement(LOCALID_YIFU_GEISHA_10)
     waitse
 
     delay(16)
@@ -644,8 +644,10 @@ movement YifuCity_Dojo_Movement_JumpInPlaceDown {
 }
 
 script YifuCity_Dojo_Dance1 {
+    playbgm(MUS_LILYCOVE, FALSE)
+
     applymovement(
-        LOCALID_GEISHA_1,
+        LOCALID_YIFU_GEISHA_1,
         // Start left, end mid
         moves( // 13
             walk_down,
@@ -661,7 +663,7 @@ script YifuCity_Dojo_Dance1 {
         )
     )
     applymovement(
-        LOCALID_GEISHA_2,
+        LOCALID_YIFU_GEISHA_2,
         // Start mid, end left
         moves(
             walk_left * 2,
@@ -673,7 +675,7 @@ script YifuCity_Dojo_Dance1 {
         ) // 12
     )
     applymovement(
-        LOCALID_GEISHA_3,
+        LOCALID_YIFU_GEISHA_3,
         moves( // 13
             walk_up,
             walk_left * 4
@@ -686,50 +688,204 @@ script YifuCity_Dojo_Dance1 {
         )
     )
 
-    waitmovement(LOCALID_GEISHA_1)
-    waitmovement(LOCALID_GEISHA_2)
-    waitmovement(LOCALID_GEISHA_3)
+    // 7 * 16
+    delay(112)
+    playse(SE_LEDGE)
+
+    waitmovement(LOCALID_YIFU_GEISHA_1)
+    waitmovement(LOCALID_YIFU_GEISHA_2)
+    waitmovement(LOCALID_YIFU_GEISHA_3)
+
+    fadedefaultbgm
 }
 
 script YifuCity_Dojo_Dance2 {
-    // TODO EVA dance
+    playbgm(MUS_LILYCOVE, FALSE)
 
-    // applymovement(
-    //     LOCALID_GEISHA_4,
-    //     moves(
-    //         walk_right,
+    applymovement(
+        LOCALID_YIFU_GEISHA_4,
+        moves(
+            walk_right,   // 1
+            jump_2_right, // 2, 3
+            jump_2_left,  // 4, 5
+            jump_2_right, // 6, 7
+            walk_right,   // 8
+            walk_left,    // 9
+            walk_left,    // 10
 
-    //         jump_right,
-    //         jump_left,
-    //         jump_right,
-    //         jump_left
-    //     )
-    // )
-    // applymovement(
-    //     LOCALID_GEISHA_5,
-    //     moves(
-    //         delay_16,
+            face_down
+        )
+    )
+    applymovement(
+        LOCALID_YIFU_GEISHA_5,
+        moves(
+            face_left,  // 1
+            delay_16,   // 1
 
-    //         jump_left,
-    //         jump_right,
-    //         jump_left,
-    //         jump_right
-    //     )
-    // )
-    // applymovement(
-    //     LOCALID_GEISHA_6,
-    //     moves(
-    //         walk_left
-    //     )
-    // )
+            jump_2_left,  // 2, 3
+            jump_2_right, // 4, 5
+            jump_2_left,  // 6, 7
 
-    // waitmovement(LOCALID_GEISHA_4)
-    // waitmovement(LOCALID_GEISHA_5)
-    // waitmovement(LOCALID_GEISHA_6)
+            face_down
+        )
+    )
+    applymovement(
+        LOCALID_YIFU_GEISHA_6,
+        moves(
+            walk_down,  // 1
+            walk_left,  // 2
+            walk_left,  // 3
+            walk_left,  // 4
+            walk_left,  // 5
+            walk_up,    // 6
+            jump_2_right, // 7, 8
+            jump_2_right, // 9, 10
+
+            face_down
+        )
+    )
+
+    delay(16)
+    playse(SE_LEDGE)
+    delay(32)
+    playse(SE_LEDGE)
+    delay(32)
+    playse(SE_LEDGE)
+    delay(32)
+    playse(SE_LEDGE)
+
+    waitmovement(LOCALID_YIFU_GEISHA_4)
+    waitmovement(LOCALID_YIFU_GEISHA_5)
+    waitmovement(LOCALID_YIFU_GEISHA_6)
+
+    fadedefaultbgm
 }
 
 script YifuCity_Dojo_Dance3 {
-    // TODO EVA dance
+    playbgm(MUS_LILYCOVE, FALSE)
+
+    applymovement(LOCALID_YIFU_GEISHA_7, moves(
+        face_left,
+        delay_16,
+        face_up,
+        delay_16,
+        face_right,
+        delay_16,
+        face_down,
+        delay_16,
+
+        jump_2_right, // 1, 2
+        walk_right,   // 3
+        jump_2_right, // 4, 5
+        walk_right,   // 6
+        walk_right,   // 7
+        
+        face_left,
+        delay_16,
+        face_up,
+        delay_16,
+        face_right,
+        delay_16,
+        face_down,
+        delay_16,
+    ))
+    
+    applymovement(LOCALID_YIFU_GEISHA_8, moves(
+        face_left,
+        delay_16,
+        face_up,
+        delay_16,
+        face_right,
+        delay_16,
+        face_down,
+        delay_16,
+
+        walk_left,    // 1
+        walk_down,    // 2
+        walk_right,   // 3
+        walk_right,   // 4
+        walk_up,      // 5
+        jump_2_right, // 6, 7
+        
+        face_left,
+        delay_16,
+        face_up,
+        delay_16,
+        face_right,
+        delay_16,
+        face_down,
+        delay_16,
+    ))
+    
+    applymovement(LOCALID_YIFU_GEISHA_9, moves(
+        face_left,
+        delay_16,
+        face_up,
+        delay_16,
+        face_right,
+        delay_16,
+        face_down,
+        delay_16,
+
+        walk_right,  // 1
+        walk_up,     // 2
+        walk_left,   // 3
+        walk_left,   // 4
+        walk_down,   // 5
+        walk_left,   // 6
+        walk_left,   // 7
+        
+        face_left,
+        delay_16,
+        face_up,
+        delay_16,
+        face_right,
+        delay_16,
+        face_down,
+        delay_16,
+    ))
+    
+    applymovement(LOCALID_YIFU_GEISHA_10, moves(
+        face_left,
+        delay_16,
+        face_up,
+        delay_16,
+        face_right,
+        delay_16,
+        face_down,
+        delay_16,
+
+        jump_2_left, // 1, 2
+        walk_left,   // 3
+        jump_2_left, // 4, 5
+        walk_left,   // 6
+        walk_left,   // 7
+        
+        face_left,
+        delay_16,
+        face_up,
+        delay_16,
+        face_right,
+        delay_16,
+        face_down,
+        delay_16,
+    ))
+
+    // 4 * 16
+    delay(64)
+    playse(SE_LEDGE)
+    // 3 * 16
+    delay(48)
+    playse(SE_LEDGE)
+    delay(32)
+    playse(SE_LEDGE)
+
+    waitmovement(LOCALID_YIFU_GEISHA_7)
+    waitmovement(LOCALID_YIFU_GEISHA_8)
+    waitmovement(LOCALID_YIFU_GEISHA_9)
+    waitmovement(LOCALID_YIFU_GEISHA_10)
+
+    fadedefaultbgm
 }
 
 script YifuCity_Dojo_EventScript_Advice {
@@ -741,11 +897,12 @@ script YifuCity_Dojo_EventScript_Advice {
             "{PLAYER}…\nThat's a name to be remembered!"
 		))
 	} else {
-		msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome to the Dance Hall Dojo!\p"
-            "Think you've got what it takes to see through the dancer's intoxicating moves?\p"
-            "Watch out though, Master Yutaka can be as abrasive as she is beautiful.\p"
-            "She probably won't appreciate you walking around her Dojo with your clothes looking like… this…\p"
+		msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\nto the Dance Hall Dojo!\p"
+            "Got what it takes to see through the\ndancers' intoxicating moves?\p"
+            "Master Yutaka favors Dance Moves.\nA battle with her is like partaking in\la dizzying dancing showdown!\p"
+            "Watch out though, she can be as\nabrasive as she is beautiful.\p"
+            "She probably won't appreciate you\nwalking around her Dojo with your\nclothes looking like… this…\p"
             "Uh, nevermind my babbling!\nGo get 'em, champ!"
 		))
 	}
@@ -824,7 +981,7 @@ script YifuCity_Dojo_EventScript_Karin {
         format("I am regretting this…")
 	)
 	setspeaker(SP_NAME_KIMONO_GIRL)
-	msgbox(format("Miss Yutaka holds us to the highest standards, both in battle and onstage!"), MSGBOX_AUTOCLOSE)
+	msgbox(("Miss Yutaka holds us to high standards\nboth in battle and onstage!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -835,7 +992,7 @@ script YifuCity_Dojo_EventScript_Miika {
         format("You don't look impressed at all!")
 	)
 	setspeaker(SP_NAME_KIMONO_GIRL)
-	msgbox(format("Working here has its perks.\nWe get the finest silk clothes for free!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("Working here has its perks.\nWe get fine silk clothes for free!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -872,16 +1029,18 @@ script YifuCity_Dojo_EventScript_ImpossibleDancer {
 script YifuCity_Dojo_EventScript_Yutaka {
     lock
     faceplayer
-    setspeaker(SP_NAME_YUTAKA)
-    msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}Well done! Welcome to Yifu City's Doj-"
-    ))
+    if (!flag(FLAG_BADGE03_GET)) {
+        setspeaker(SP_NAME_YUTAKA)
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}Well done! Welcome to Yifu City's Doj-"
+        ))
 
-    applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
-    playse(SE_PIN)
-    waitmovement(0)
-    waitse
-    delay(48)
+        applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
+        playse(SE_PIN)
+        waitmovement(0)
+        waitse
+        delay(48)
+    }
 
 	trainerbattle_single(
 		TRAINER_YUTAKA_1,
@@ -907,10 +1066,10 @@ script YifuCity_Dojo_EventScript_Yutaka {
 		YifuCity_Dojo_EventScript_YutakaDefeated,
 		NO_MUSIC
 	)
-	// specialvar(VAR_RESULT, ShouldTryRematchBattle)
-	// goto_if_eq(VAR_RESULT, TRUE, MaguroHarbor_Dojo_EventScript_KoishiRematch)
-	msgbox(format(
-		"You shall achieve great things,\ndespite your fashion faux-pas.\p"
+    
+	setspeaker(SP_NAME_YUTAKA)
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}You shall achieve great things,\ndespite your fashion faux-pas.\p"
         "I hope to battle you again."
 	))
 
@@ -936,6 +1095,7 @@ script YifuCity_Dojo_EventScript_YutakaDefeated {
 		),
 		MSGBOX_DEFAULT
 	)
+    closemessage
 	
 	giveitem(ITEM_TM_X_SCISSOR)
 
@@ -955,7 +1115,12 @@ script YifuCity_Dojo_EventScript_YutakaDefeated {
 	call(Common_EventScript_SetGymTrainers)
 	addvar(VAR_PLAYER_REPUTATION, 5)
 
-	// TODO rematch
+    // Door appears
+    call(YifuCity_Dojo_SetShortcutMetatiles)
+
+    call(YifuCity_Dojo_DoorAppears_Screenshake)
+
+    delay(48)
 
 	release
 	end

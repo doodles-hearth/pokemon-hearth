@@ -41,6 +41,7 @@ MaguroHarbor_House1_EventScript_PokedexRiddler_5:
 	setspeaker SP_NAME_PKMN_NERD
 	msgbox MaguroHarbor_House1_EventScript_PokedexRiddler_Text_3
 	closemessage
+	incrementgamestat GAME_STAT_SOLVED_RIDDLE_DEX_DESC
 	setflag FLAG_DAILY_MON_DEX_RIDDLE_WON
 	goto MaguroHarbor_House1_EventScript_PokedexRiddler_4
 

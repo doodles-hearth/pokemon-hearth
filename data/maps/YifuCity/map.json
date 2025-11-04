@@ -27,6 +27,11 @@
       "map": "MAP_WHITESLATE_ROUTE",
       "offset": 16,
       "direction": "up"
+    },
+    {
+      "map": "MAP_YIFU_CITY_BUFFER_AREA",
+      "offset": 59,
+      "direction": "left"
     }
   ],
   "object_events": [
@@ -191,6 +196,7 @@
       "night": true
     },
     {
+      "local_id": "LOCALID_GRUNT_PASSWORD_TOP",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 60,
       "y": 13,
@@ -211,6 +217,7 @@
       "night": true
     },
     {
+      "local_id": "LOCALID_GRUNT_PASSWORD_BOTTOM",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 60,
       "y": 14,
@@ -231,6 +238,7 @@
       "night": true
     },
     {
+      "local_id": "LOCALID_GRUNT_PASSWORD_ZUBAT",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ZUBAT)",
       "x": 59,
       "y": 13,
@@ -281,7 +289,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_EventScript_HearEcho",
-      "flag": "0",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -333,32 +341,6 @@
       "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
       "x": 39,
       "y": 35,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
-      "x": 42,
-      "y": 42,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
-      "x": 46,
-      "y": 42,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -525,6 +507,7 @@
       "flag": "0"
     },
     {
+      "local_id": "LOCALID_LOCKDOWN_SAMURAI",
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 3,
       "y": 39,
@@ -545,6 +528,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_LOCKDOWN_SAMURAI_NORTH",
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 39,
       "y": 5,
@@ -626,6 +610,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_SAMURAI_HIDEOUT",
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 32,
       "y": 13,
@@ -766,7 +751,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(TATSUGIRI)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(NACLI)",
       "x": 34,
       "y": 30,
       "elevation": 0,
@@ -795,7 +780,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "YifuCity_EventScript_Pidgey",
       "flag": "0",
       "afternoon": true,
       "deadnight": false,
@@ -868,7 +853,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
+      "graphics_id": "OBJ_EVENT_GFX_UUME_GIRL_1",
       "x": 11,
       "y": 52,
       "elevation": 0,
@@ -877,7 +862,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "YifuCity_EventScript_Zubat1",
+      "script": "YifuCity_EventScript_ClothingShopClosed",
       "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
       "afternoon": false,
       "deadnight": false,
@@ -1146,6 +1131,87 @@
       "lunchtime": false,
       "morning": false,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_UUME_BOY_2",
+      "x": 8,
+      "y": 44,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "YifuCity_EventScript_UumeForestIllusions",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": true,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ARTIST",
+      "x": 60,
+      "y": 46,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "YifuCity_EventScript_UumeForestTrees",
+      "flag": "FLAG_TEMP_4",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "local_id": "LOCALID_DOODLE",
+      "graphics_id": "OBJ_EVENT_GFX_SUNRISE_GIRL_2",
+      "x": 25,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_7",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
+      "x": 26,
+      "y": 51,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "YifuCity_EventScript_Zubat2",
+      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
@@ -1178,13 +1244,6 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 11,
-      "y": 51,
-      "elevation": 0,
-      "dest_map": "MAP_YIFU_CITY_CLOTHING_SHOP",
-      "dest_warp_id": "0"
-    },
-    {
       "x": 33,
       "y": 12,
       "elevation": 0,
@@ -1193,7 +1252,7 @@
     },
     {
       "x": 51,
-      "y": 54,
+      "y": 53,
       "elevation": 0,
       "dest_map": "MAP_YIFU_CITY_DECO_SHOP",
       "dest_warp_id": "0"
@@ -1245,6 +1304,13 @@
       "y": 29,
       "elevation": 0,
       "dest_map": "MAP_YIFU_CITY_RESTAURANT",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 11,
+      "y": 50,
+      "elevation": 0,
+      "dest_map": "MAP_YIFU_CITY_CLOTHING_SHOP",
       "dest_warp_id": "0"
     }
   ],
@@ -1350,7 +1416,7 @@
       "x": 51,
       "y": 20,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "FLAG_TEMP_6",
       "var_value": "0",
       "script": "YifuCity_Trigger_CrobatGruntStuckInHole"
     },
@@ -1359,7 +1425,7 @@
       "x": 52,
       "y": 20,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "FLAG_TEMP_6",
       "var_value": "0",
       "script": "YifuCity_Trigger_CrobatGruntStuckInHole"
     },
@@ -1570,6 +1636,30 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "YifuCity_EventScript_DecorationShopSign"
+    },
+    {
+      "type": "hidden_item",
+      "x": 64,
+      "y": 45,
+      "elevation": 0,
+      "item": "ITEM_ESCAPE_ROPE",
+      "flag": "FLAG_HIDDEN_ITEM_YIFU_CITY_ESCAPE_ROPE"
+    },
+    {
+      "type": "hidden_item",
+      "x": 33,
+      "y": 62,
+      "elevation": 0,
+      "item": "ITEM_RARE_CANDY",
+      "flag": "FLAG_HIDDEN_ITEM_YIFU_CITY_RARE_CANDY"
+    },
+    {
+      "type": "hidden_item",
+      "x": 1,
+      "y": 62,
+      "elevation": 0,
+      "item": "ITEM_DUSK_BALL",
+      "flag": "FLAG_HIDDEN_ITEM_YIFU_CITY_DUSK_BALL"
     }
   ]
 }

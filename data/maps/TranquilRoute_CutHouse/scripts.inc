@@ -73,6 +73,7 @@ TranquilRoute_CutHouse_EventScript_CutMaster::
 	setspeaker SP_NAME_OLD_MAN
 	msgbox TranquilRoute_CutHouse_EventScript_CutMaster_Text_2
 	closemessage
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, TranquilRoute_CutHouse_EventScript_CutMaster_Movement_0
 	waitmovement VAR_LAST_TALKED
 	setspeaker SP_NAME_OLD_MAN

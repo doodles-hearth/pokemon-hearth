@@ -7,7 +7,7 @@
 #define TRAINER_SAWYER_1                      1
 #define TRAINER_TOSHIKI                       2
 #define TRAINER_KOUTA                         3
-#define TRAINER_MASATO          4
+#define TRAINER_MASATO_1          4
 #define TRAINER_KOUGA          5
 #define TRAINER_KENTO       6
 #define TRAINER_SHUYA       7
@@ -17,7 +17,7 @@
 #define TRAINER_IKUTO                        11
 #define TRAINER_GRUNT_CROBAT_HIDEOUT_8       12
 #define TRAINER_SHAMISEN                     13
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_4      14
+#define TRAINER_YAMATO                       14
 #define TRAINER_ROCK_SMASH_GUY               15
 #define TRAINER_GRUNT_RUSTURF_TUNNEL         16
 #define TRAINER_GRUNT_WEATHER_INST_1         17
@@ -43,7 +43,7 @@
 #define TRAINER_ROSE_1                       37
 #define TRAINER_RIKU                         38
 #define TRAINER_TOMOMI                       39
-#define TRAINER_ROSE_2                       40
+#define TRAINER_MASATO_2                       40
 #define TRAINER_ROSE_3                       41
 #define TRAINER_ROSE_4                       42
 #define TRAINER_ROSE_5                       43
@@ -139,7 +139,7 @@
 #define TRAINER_JESSICA_3                   133
 #define TRAINER_JESSICA_4                   134
 #define TRAINER_JESSICA_5                   135
-#define TRAINER_KIN_1                       136
+#define TRAINER_KIN                         136
 #define TRAINER_MOLLIE                      137
 #define TRAINER_GARRET                      138
 #define TRAINER_WINSTON_2                   139
@@ -331,10 +331,10 @@
 #define TRAINER_KATELYNN                    325
 #define TRAINER_JAYLEN                      326
 #define TRAINER_DILLON                      327
-#define TRAINER_CALVIN_2                    328
-#define TRAINER_CALVIN_3                    329
-#define TRAINER_CALVIN_4                    330
-#define TRAINER_CALVIN_5                    331
+#define TRAINER_TOSHIO_2                    328
+#define TRAINER_TOSHIO_3                    329
+#define TRAINER_TOSHIO_4                    330
+#define TRAINER_TOSHIO_5                    331
 #define TRAINER_EDDIE                       332
 #define TRAINER_KARU                        333
 #define TRAINER_TIMMY                       334

@@ -568,6 +568,8 @@ extern const u8 EventScript_AccessPokemonBoxLink[];
 extern const u8 EventScript_TestSignpostMsg[];
 extern const u8 EventScript_HiddenItemScript[];
 extern const u8 EventScript_TV[];
+extern const u8 ChatotPost_EventScript_Chatot[];
+extern const u8 ChatotPost_EventScript_EmptyPost[];
 extern const u8 EventScript_ClosedSootopolisDoor[];
 extern const u8 SkyPillar_Outside_EventScript_ClosedDoor[];
 extern const u8 EventScript_CableBoxResults[];
@@ -707,7 +709,6 @@ extern const u8 EventScript_PokemonGotAway[];
 extern const u8 EventScript_LostSignal[];
 extern const u8 EventScript_TooDark[];
 extern const u8 EventScript_MovedTooFast[];
-
 
 // Custom scripts
 extern const u8 EventScript_WalkAwayFromCampfire[];

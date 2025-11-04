@@ -581,3 +581,4 @@ gSpecials::
 	def_special TeleportCamera
 	def_special ReturnCameraToPlayer
 	def_special SetHiddenNature
+	def_special SetAbility

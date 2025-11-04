@@ -37,7 +37,7 @@
   ],
   "warp_events": [
     {
-      "x": 2,
+      "x": 3,
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_SUNRISE_VILLAGE_ELDERS_HOUSE",

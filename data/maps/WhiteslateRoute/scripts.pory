@@ -264,9 +264,9 @@ script WhiteslateRoute_EventScript_ShuckleGirl {
 script WhiteslateRoute_EventScript_Deerling {
 	lock
 	faceplayer
-	setseenmon(SPECIES_DEERLING)
-	setspeakertomonname(SPECIES_DEERLING)
-	playmoncry(SPECIES_DEERLING, CRY_MODE_NORMAL)
+	setseenmon(SPECIES_DEERLING_AUTUMN)
+	setspeakertomonname(SPECIES_DEERLING_AUTUMN)
+	playmoncry(SPECIES_DEERLING_AUTUMN, CRY_MODE_NORMAL)
 	msgbox(format(
 		"Uhnn!"
 	))
@@ -329,6 +329,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 	waitmovement(LOCALID_SECRET_BASE_POKEMON)
 
 	setseenmon(SPECIES_GROVYLE)
+	setnamedmon(SPECIES_GROVYLE)
 
 	playse(SE_M_ROCK_THROW)
 	
@@ -408,28 +409,30 @@ script WhiteslateRoute_Trigger_SecretBase {
 			setspeaker(SP_NAME_MAN)
 			msgbox(format(
 				"Alright, you seem interested, so I'll let you in on the secret!\p"
-				"I taught my Grovyle a secret technique to open passages to hidden natural caves!\p"
-				"Not only that! Trees with low-hanging vines, bushes…"
+				"My Grovyle knows a technique to open passages to hidden natural caves!\p"
+				"Not only that! Trees with low-hanging vines, bushes…\p"
 				"Those kinds of places are perfect to build a secret base!\p"
-				"I wrote this technique down just in case. Here, now you can teach your Pokémon too!"
+				"I wrote the technique down just in case. Here, teach your Pokémon too!"
 			))
 		case 1:
 			setspeaker(SP_NAME_MAN)
 			msgbox(format(
-				"Ah, it's alright. You seem like a good kid. I'm sure you have what it takes to become a secret base master. I'll let you in on the secret!\p"
-				"I taught my Grovyle a secret technique to open passages to hidden natural caves!\p"
-				"Not only that! Trees with low-hanging vines, bushes…"
+				"Ah, it's alright.\nYou seem like a good kid.\p"
+				"I'm sure you have what it takes to become a secret base master.\p"
+				"I'll let you in on the secret!\p"
+				"My Grovyle knows a technique to open passages to hidden natural caves!\p"
+				"Not only that! Trees with low-hanging vines, bushes…\p"
 				"That kind of place is perfect to build a secret base!\p"
-				"I wrote this technique down just in case. Here, now you can teach your Pokémon too!"
+				"I wrote the technique down just in case. Here, teach your Pokémon too!"
 			))
 		case 2:
 			setspeaker(SP_NAME_MAN)
 			msgbox(format(
-				"Of course not, this is perfectly legal! You know what? I'll let you in on the secret!\p"
-				"I taught my Grovyle a secret technique to open passages to hidden natural caves!\p"
-				"Not only that! Trees with low-hanging vines, bushes…"
+				"Of course not, this is perfectly legal! You know what?\lI'll let you in on the secret!\p"
+				"My Grovyle knows a technique to open passages to hidden natural caves!\p"
+				"Not only that! Trees with low-hanging vines, bushes…\p"
 				"That kind of place is perfect to build a secret base!\p"
-				"I wrote this technique down just in case. Here, now you can teach your Pokémon too!"
+				"I wrote the technique down just in case. Here, teach your Pokémon too!"
 			))
 	}
 	closemessage
@@ -457,7 +460,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 	}
 
 	playse(SE_M_ROCK_THROW)
-	setmetatile(26, 34, METATILE_PorytilesPrimaryTutorial_SecretBaseCaveEntrance, TRUE)
+	setmetatile(26, 34, METATILE_PorytilesPrimaryTutorial_SecretBaseCaveIndentBrown, TRUE)
 	special(DrawWholeMapView)
 	waitse
 
@@ -479,4 +482,23 @@ script WhiteslateRoute_Trigger_SecretBase {
 	setflag(FLAG_RECEIVED_SECRET_POWER)
 
 	releaseall
+}
+
+script WhiteslateRoute_EventScript_MetHariko {
+	lock
+	faceplayer
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}{SPEAKER NAME_MAN}Some girl with a Slowpoke just talked my head off about Deerling…\l"
+		"I'm still dizzy!\p"
+		"Did you know its location determines its fur color?\p"
+		"Did you know Uume Forest Deerling are orange and smell like ripe fruit?\p"
+		"Most importantly, do you care?\nYeah, I'm not sure I do either…"
+	))
+	closemessage
+	setnamedmon(SPECIES_SLOWPOKE)
+	setnamedmon(SPECIES_DEERLING_AUTUMN)
+	setdescribedmon(SPECIES_DEERLING_AUTUMN)
+	release
 }

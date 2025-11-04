@@ -25,7 +25,6 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 	faceplayer
 	
 	if (checkmoney(500)) {
-		createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 		setspeaker(SP_NAME_NURSE)
 		msgbox(format(
 			"Hello! For ¥500, you and your Pokémon can spend the night here."
@@ -80,7 +79,7 @@ script Common_EventScript_PkmnCenterNurse_Sleep {
 		createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 		setspeaker(SP_NAME_NURSE)
 		msgbox(format(
-			"Hello! For ¥500, you and your Pokémon can spend the night here."
+			"Hello! For ¥500, your Pokémon and you can spend the night here."
 		))
 		closemessage
 	}
@@ -166,7 +165,6 @@ script Common_EventScript_PkmnCenterNurse_CutTheBullshit {
 
 script EventScript_PkmnCenterNurse_CheckPokerus_CutTheBullshit {
 	specialvar(VAR_RESULT, IsPokerusInParty)
-	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 	if (var(VAR_RESULT) == TRUE) {
 		message(format(
 			"Um, excuse me…\p"

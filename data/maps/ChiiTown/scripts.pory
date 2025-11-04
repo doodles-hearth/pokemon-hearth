@@ -108,6 +108,9 @@ script ChiiTown_EventScript_Kecleon {
 
 script ChiiTown_EventScript_PlantingFlowers {
 	lock
+	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	setspeaker(SP_NAME_LITTLE_GIRL)
 	msgbox(format(
@@ -378,4 +381,23 @@ script ChiiTown_EventScript_SchoolSign {
 
 script ChiiTown_EventScript_SetTrespassVar {
 	setvar(VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 1)
+}
+
+script ChiiTown_EventScript_HexManiac {
+	setspeaker(SP_NAME_GIRL)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I hate people.\p"
+		"There are fewer people outdoors after dark, so I only hang out at night."
+	), MSGBOX_NPC)
+}
+
+script ChiiTown_EventScript_Deerling {
+	lock
+	setseenmon(SPECIES_DEERLING_SPRING)
+	playmoncry(SPECIES_DEERLING_SPRING, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_DEERLING_SPRING)
+	msgbox(format("Hun!"))
+	waitmoncry
+	closemessage
+	release
 }

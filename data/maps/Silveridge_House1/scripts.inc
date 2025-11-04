@@ -19,10 +19,16 @@ Silveridge_House1_EventScript_Woman::
 	lock
 	faceplayer
 	setspeaker SP_NAME_WOMAN
-	msgbox Silveridge_House1_EventScript_Woman_Text_0
+	goto_if_set FLAG_TEMP_1, Silveridge_House1_EventScript_Woman_2
+	msgbox Silveridge_House1_EventScript_Woman_Text_1
+Silveridge_House1_EventScript_Woman_1:
 	closemessage
 	release
 	return
+
+Silveridge_House1_EventScript_Woman_2:
+	msgbox Silveridge_House1_EventScript_Woman_Text_0
+	goto Silveridge_House1_EventScript_Woman_1
 
 
 Silveridge_House1_EventScript_FirebringerFangirl::
@@ -64,7 +70,6 @@ Silveridge_House1_EventScript_Man::
 	setspeaker SP_NAME_MINER
 	msgbox Silveridge_House1_EventScript_Man_Text_2
 	closemessage
-	setnamedmon SPECIES_SANDSLASH
 Silveridge_House1_EventScript_Man_1:
 	release
 	return
@@ -76,42 +81,31 @@ Silveridge_House1_EventScript_Man_2:
 
 
 Silveridge_House1_EventScript_Woman_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}Oh, you came all the way from Kura\n"
-	.string "Village? You have good legs!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}I wonder where my daughter is at.\n"
+	.string "I bet the Firebringers are in town.$"
+
+Silveridge_House1_EventScript_Woman_Text_1:
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}You came all the way from Kura Village?\nYou have good legs!$"
 
 Silveridge_House1_EventScript_FirebringerFangirl_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}This place gets pretty cold,\n"
-	.string "especially when the winds blow strong\l"
-	.string "into the valley.\p"
-	.string "I don't know what we would do without\n"
-	.string "those brave Firebringers.\p"
-	.string "They bring us live Slugma, carrying\n"
-	.string "them on their back all the way down Mt\l"
-	.string "Kazan!\p"
-	.string "Slugma cools and hardens up pretty\n"
-	.string "fast, so they basically run the whole\l"
-	.string "way down! I could never!\p"
-	.string "Sigh… I hope a handsome Firebringer\n"
-	.string "notices me one day…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}It gets pretty cold here when the\nwind blows strong into the valley.\p"
+	.string "I don't know what we would do\nwithout those brave Firebringers.\p"
+	.string "They carry live Slugma on their back all\nthe way down from Mt Kazan to here!\p"
+	.string "Slugma cools and hardens up fast, so\nthey basically run the whole way down!\lI could never!\p"
+	.string "Sigh… I hope a handsome Firebringer\nnotices me one day…$"
 
 Silveridge_House1_EventScript_Sandslash_Text_0:
 	.string "Sahaaah!$"
 
 Silveridge_House1_EventScript_Man_Text_0:
-	.string "You think some Pokémon prefer to\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}You think some Pokémon prefer to\n"
 	.string "remain small forever?$"
 
 Silveridge_House1_EventScript_Man_Text_1:
-	.string "My job is to mine ore in Silver Tunnel,\n"
-	.string "all day long.\p"
-	.string "I love it! I wouldn't trade it for the\n"
-	.string "world. I'm fine with being a simple\l"
-	.string "miner forever.\p"
-	.string "Speaking of… I often find interesting\n"
-	.string "rocks in there. Look at this!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}My job is to mine ore in Silver Tunnel,\nall day long.\lI love it!\p"
+	.string "Wouldn't trade it for the world.\nI'm fine being a simple miner forever.\p"
+	.string "Speaking of… I often find interesting\nrocks in there.\lLook at this!$"
 
 Silveridge_House1_EventScript_Man_Text_2:
-	.string "Apparently as long as a Pokémon holds\n"
-	.string "on to this stone, it'll stop growing.\p"
-	.string "My helper Sandslash is already fully\n"
-	.string "grown, so I don't need it.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}Apparently as long as a Pokémon holds\non to this stone, it'll stop growing.\p"
+	.string "Sandy here is already fully grown,\nso I don't need it.$"

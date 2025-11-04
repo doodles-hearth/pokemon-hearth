@@ -72,11 +72,32 @@ SakuTown_PokemonCenter_EventScript_Nurse::
 	end
 
 
+SakuTown_PokemonCenter_EventScript_Pasture::
+	createfieldmugshot MUGSHOT_SAKURA_MAN_2
+	setvar VAR_0x8009, MUGSHOT_SAKURA_MAN_2
+	call Common_EventScript_PcGuy
+	release
+	end
+
+
 SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks::
 	lock
 	faceplayer
 	setspeaker SP_NAME_NURSE
 	msgbox SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0
+	closemessage
+	release
+	end
+
+
+SakuTown_PokemonCenter_EventScript_ChatotPost::
+	lock
+	faceplayer
+	setspeaker SP_NAME_GUY
+	playse SE_PIN
+	setnamedmon SPECIES_CHATOT
+	applymovement VAR_LAST_TALKED, SakuTown_PokemonCenter_EventScript_ChatotPost_Movement_0
+	msgbox SakuTown_PokemonCenter_EventScript_ChatotPost_Text_0
 	closemessage
 	release
 	end
@@ -347,6 +368,17 @@ SakuTown_Refuge_EventScript_MakuhitaWork::
 	return
 
 
+SakuTown_PokemonCenter_EventScript_ChatotPost_Movement_0:
+	emote_music
+	lock_facing_direction
+	walk_in_place_slow_down
+	walk_in_place_slow_down
+	walk_in_place_slow_down
+	walk_in_place_slow_down
+	unlock_facing_direction
+	face_player
+	step_end
+
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Movement_0:
 	face_right
 	step_end
@@ -509,6 +541,16 @@ SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks_Text_0:
 	.string "Seriously though, do watch out.\n"
 	.string "We're held responsible if anything\l"
 	.string "happens to you.$"
+
+SakuTown_PokemonCenter_EventScript_ChatotPost_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}If you're waiting for Chatot post~\n"
+	.string "Hang out by the Chatot Post~!\p"
+	.string "If a Chatot is perched on a Chatot\n"
+	.string "Post, that means you've got mail!\p"
+	.string "Chatot will repeat the message it's\n"
+	.string "been told for you to enjoy!\p"
+	.string "SQWAK SQWAK!\n"
+	.string "He he.$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_NURSE EMOTE_NORMAL}I'm sorry, but there's nothing I can\n"

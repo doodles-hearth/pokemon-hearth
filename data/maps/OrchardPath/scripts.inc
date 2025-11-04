@@ -273,6 +273,38 @@ OrchardPath_EventScript_Samurai2::
 	return
 
 
+OrchardPath_EventScript_TrainerBattleRoadblock::
+	lock
+	playbgm MUS_VS_TRAINER, FALSE
+	applymovement LOCALID_ORCHARD_NINJA_BOY, OrchardPath_EventScript_TrainerBattleRoadblock_Movement_0
+	waitmovement 0
+	setspeaker SP_NAME_NINJA_BOY
+	msgbox OrchardPath_EventScript_TrainerBattleRoadblock_Text_0
+	closemessage
+	playmoncry SPECIES_NUZLEAF, CRY_MODE_ENCOUNTER
+	waitmoncry
+	applymovement LOCALID_ORCHARD_NUZLEAF, OrchardPath_EventScript_TrainerBattleRoadblock_Movement_1
+	playse SE_EFFECTIVE
+	waitmovement 0
+	waitse
+	applymovement LOCALID_ORCHARD_SCHOOLKID, OrchardPath_EventScript_RockSmashRegular_Movement_1
+	waitmovement 0
+	setspeaker SP_NAME_SCHOOL_KID
+	msgbox OrchardPath_EventScript_TrainerBattleRoadblock_Text_1
+	closemessage
+	applymovement LOCALID_ORCHARD_BRELOOM, OrchardPath_EventScript_TrainerBattleRoadblock_Movement_2
+	playmoncry SPECIES_BRELOOM, CRY_MODE_ENCOUNTER
+	waitmoncry
+	waitmovement 0
+	applymovement LOCALID_ORCHARD_BRELOOM, OrchardPath_EventScript_TrainerBattleRoadblock_Movement_3
+	playse SE_M_HEADBUTT
+	waitmovement 0
+	waitse
+	fadedefaultbgm
+	release
+	return
+
+
 OrchardPath_Samurai_KnowAboutDecay_Movement_0:
 	emote_exclamation_mark
 	delay_16
@@ -313,6 +345,28 @@ OrchardPath_EventScript_RockSmashRegular_Movement_2:
 
 OrchardPath_EventScript_RockSmashRegular_Movement_3:
 	walk_in_place_fast_down
+	step_end
+
+OrchardPath_EventScript_TrainerBattleRoadblock_Movement_0:
+	walk_in_place_fast_left
+	step_end
+
+OrchardPath_EventScript_TrainerBattleRoadblock_Movement_1:
+	lock_facing_direction
+	walk_fast_left
+	walk_fast_right
+	unlock_facing_direction
+	step_end
+
+OrchardPath_EventScript_TrainerBattleRoadblock_Movement_2:
+	jump_in_place_right
+	step_end
+
+OrchardPath_EventScript_TrainerBattleRoadblock_Movement_3:
+	lock_facing_direction
+	walk_fast_right
+	walk_fast_left
+	unlock_facing_direction
 	step_end
 
 OrchardPath_EventScript_UumeForestSoulkeepSign_Text_0:
@@ -516,3 +570,13 @@ OrchardPath_EventScript_SignRockSmash_Text_0:
 OrchardPath_EventScript_Samurai2_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Move along, please, nothing to see\n"
 	.string "here!$"
+
+OrchardPath_EventScript_TrainerBattleRoadblock_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}You shall know defeat at the hand of\n"
+	.string "my ninja Pokémon!\p"
+	.string "Nuzleaf, use Feint Attack!$"
+
+OrchardPath_EventScript_TrainerBattleRoadblock_Text_1:
+	.string "{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Your pathetic ninja costume can't\n"
+	.string "beat the sheer power of knowledge!\p"
+	.string "Breloom! Headbutt!$"

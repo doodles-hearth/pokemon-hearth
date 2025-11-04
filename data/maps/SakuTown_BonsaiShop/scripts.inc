@@ -4,10 +4,17 @@ SakuTown_BonsaiShop_MapScripts::
 
 
 SakuTown_EventScript_SetupNpcs::
-	goto_if_unset FLAG_HIDE_BONSAI_SHOP_OWNER, SakuTown_EventScript_SetupNpcs_1
+	goto_if_set FLAG_BADGE02_GET, SakuTown_EventScript_SetupNpcs_2
+SakuTown_EventScript_SetupNpcs_1:
+	goto_if_unset FLAG_HIDE_BONSAI_SHOP_OWNER, SakuTown_EventScript_SetupNpcs_4
 	return
 
-SakuTown_EventScript_SetupNpcs_1:
+SakuTown_EventScript_SetupNpcs_2:
+	setflag FLAG_KURA_DOJO_CLOSED
+	clearflag FLAG_HIDE_BONSAI_SHOP_OWNER
+	goto SakuTown_EventScript_SetupNpcs_1
+
+SakuTown_EventScript_SetupNpcs_4:
 	setobjectmovementtype 1, MOVEMENT_TYPE_WANDER_AROUND
 	setobjectxyperm 1, 9, 3
 	return
@@ -35,11 +42,18 @@ SakuTown_BonsaiShop_EventScript_FlowerBasket::
 
 SakuTown_BonsaiShop_EventScript_WateringCan::
 	goto_if_set FLAG_RECEIVED_WAILMER_PAIL, SakuTown_BonsaiShop_EventScript_WateringCan_1
-	msgbox SakuTown_BonsaiShop_EventScript_WateringCan_Text_1, MSGBOX_AUTOCLOSE
+	getseenmon SPECIES_WAILMER
+	compare VAR_RESULT, 0
+	goto_if_ne SakuTown_BonsaiShop_EventScript_WateringCan_4
+	msgbox SakuTown_BonsaiShop_EventScript_WateringCan_Text_2, MSGBOX_AUTOCLOSE
 	return
 
 SakuTown_BonsaiShop_EventScript_WateringCan_1:
 	msgbox SakuTown_BonsaiShop_EventScript_WateringCan_Text_0, MSGBOX_AUTOCLOSE
+	return
+
+SakuTown_BonsaiShop_EventScript_WateringCan_4:
+	msgbox SakuTown_BonsaiShop_EventScript_WateringCan_Text_1, MSGBOX_AUTOCLOSE
 	return
 
 
@@ -194,17 +208,13 @@ SakuTown_BonsaiShop_EventScript_Assistant_9:
 SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue:
 	goto_if_set FLAG_RECEIVED_SECRET_POWER, SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_1
 	setspeaker SP_NAME_HANA
-	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_2
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
 	closemessage
 	return
 
 SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_1:
 	setspeaker SP_NAME_HANA
 	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0
-	closemessage
-	pokemartdecoration BonsaiShop
-	setspeaker SP_NAME_HANA
-	msgbox SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_1, MSGBOX_DEFAULT
 	closemessage
 	return
 
@@ -246,7 +256,6 @@ SakuTown_BonsaiShop_EventScript_Owner_5:
 
 	.align 2
 BonsaiShop:
-	.2byte DECOR_RED_PLANT
 	.2byte DECOR_BIG_PLANT
 	.2byte DECOR_GORGEOUS_PLANT
 	.2byte ITEM_NONE
@@ -272,8 +281,7 @@ SakuTown_BonsaiShop_EventScript_Water_Text_0:
 	.string "It's filled to the brim with rainwater.$"
 
 SakuTown_BonsaiShop_EventScript_FlowerBasket_Text_0:
-	.string "A small basket of freshly picked\n"
-	.string "flowers.$"
+	.string "A basket of freshly picked flowers.$"
 
 SakuTown_BonsaiShop_EventScript_WateringCan_Text_0:
 	.string "A cute Wailmer-shaped watering can.\n"
@@ -281,6 +289,10 @@ SakuTown_BonsaiShop_EventScript_WateringCan_Text_0:
 
 SakuTown_BonsaiShop_EventScript_WateringCan_Text_1:
 	.string "A cute Wailmer-shaped watering can.$"
+
+SakuTown_BonsaiShop_EventScript_WateringCan_Text_2:
+	.string "A cute watering can shaped like a\n"
+	.string "Pokémon.$"
 
 SakuTown_BonsaiShop_EventScript_Painting_Text_0:
 	.string "A dainty painting of a flower.$"
@@ -411,22 +423,11 @@ SakuTown_BonsaiShop_EventScript_Assistant_Text_6:
 	.string "Have fun gardening!$"
 
 SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you\n"
-	.string "in a little greenery?$"
-
-SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Thank you for your business!$"
-
-SakuTown_BonsaiShop_EventScript_Owner_RegularDialogue_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}. Can I interest you\n"
-	.string "in a little greenery?\p"
-	.string "Hmm… It looks like you wouldn't have\n"
-	.string "anywhere to put bonsai. Come back\l"
-	.string "when you do.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, {PLAYER}.\nI have nothing for sale at the moment.\lGrowing bonsai takes time!$"
 
 SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I\n"
-	.string "interest you in a little greenery?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, child.\n"
+	.string "I grow and sell decorative bonsai.$"
 
 SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_1:
 	.string "Hana?"
@@ -446,11 +447,8 @@ SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_2:
 	.string "more similar than they are different…$"
 
 SakuTown_BonsaiShop_EventScript_Owner_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, young {STR_VAR_1}. Can I\n"
-	.string "interest you in a little greenery?\p"
-	.string "Hmm… It looks like you wouldn't have\n"
-	.string "anywhere to put bonsai. Come back\l"
-	.string "when you do.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Hello, child.\nI grow and sell decorative bonsai.\p"
+	.string "I have nothing for sale at the moment.\nGrowing bonsai takes time!$"
 
 SakuTown_EventScript_Man_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 EMOTE_NORMAL}I'm choosing flowers for my wife.\p"

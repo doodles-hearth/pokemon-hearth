@@ -14,6 +14,7 @@
 #include "constants/species.h"
 #include "constants/pokedex.h"
 #include "constants/berry.h"
+#include "constants/chatot_post.h"
 #include "constants/maps.h"
 #include "constants/pokemon.h"
 #include "constants/route_challenge.h"
@@ -133,6 +134,7 @@
 
 #define NUM_DEX_FLAG_BYTES ROUND_BITS_TO_BYTES(POKEMON_SLOTS_NUMBER)
 #define NUM_FLAG_BYTES ROUND_BITS_TO_BYTES(FLAGS_COUNT)
+#define NUM_MAIL_FLAG_BYTES ROUND_BITS_TO_BYTES(NUM_CHATOT_POST)
 #define NUM_TRENDY_SAYING_BYTES ROUND_BITS_TO_BYTES(NUM_TRENDY_SAYINGS)
 
 #define LIMITED_SHOP_BITS (LIMITED_SHOP_COUNT * LIMITED_SHOP_MAX_ITEMS * BITS_PER_ITEM)
@@ -621,6 +623,8 @@ struct SaveBlock2
     u8 limitedShopVars[LIMITED_SHOP_VAR_COUNT];
     u8 questData[QUEST_FLAGS_COUNT * QUEST_STATES];
     u8 subQuests[SUB_FLAGS_COUNT];
+
+    u16 optionsBattleSpeed:3;
 }; 
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;
@@ -1205,6 +1209,9 @@ struct SaveBlock1
     u16 remainingShinyVialMinutes;
     bool8 isShinyVialActive;
     struct Campfire campfire;
+    u8 activePost[NUM_ACTIVE_POST_SLOTS];
+    u8 postFlags[NUM_MAIL_FLAG_BYTES];
+    u16 chatotPostRematchTrainerId;
 };
 
 extern struct SaveBlock1 *gSaveBlock1Ptr;

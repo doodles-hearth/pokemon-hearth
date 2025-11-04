@@ -133,7 +133,8 @@
 #define TRAINER_PIC_GEM_MANIAC            115
 #define TRAINER_PIC_OLD_MAN               116
 #define TRAINER_PIC_SAMURAI               117
-#define TRAINER_PIC_COUNT                 118
+#define TRAINER_PIC_BATTLE_GUY            118
+#define TRAINER_PIC_COUNT                 119
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -357,6 +358,7 @@ enum TrainerClassID
     TRAINER_CLASS_DRAGON_TAMER,
     TRAINER_CLASS_NINJA_BOY,
     TRAINER_CLASS_BATTLE_GIRL,
+    TRAINER_CLASS_BATTLE_GUY,
     TRAINER_CLASS_PARASOL_LADY,
     TRAINER_CLASS_SWIMMER_F,
     TRAINER_CLASS_TWINS,
@@ -396,6 +398,7 @@ enum TrainerClassID
     TRAINER_CLASS_GEM_MANIAC,
     TRAINER_CLASS_OLD_MAN,
     TRAINER_CLASS_FIREBRINGER,
+    TRAINER_CLASS_SAMURAI,
     TRAINER_CLASS_COUNT
 };
 

@@ -321,6 +321,7 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21:
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_23:
+	incrementgamestat GAME_STAT_SOLD_FISH
 	addmoney VAR_0x8000
 	special DestroySelectedPartyMon
 	compare VAR_0x8001, ITEM_NONE
@@ -536,12 +537,73 @@ MaguroHarbor_Mart:
 	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_NONE
 
+MaguroHarbor_EventScript_WindycapeLegend::
+	lock
+	faceplayer
+	msgbox MaguroHarbor_EventScript_WindycapeLegend_Text_0
+	closemessage
+	release
+	return
+
+
+MaguroHarbor_EventScript_MarketChild::
+	lock
+	faceplayer
+	waitse
+	playse SE_PIN
+	applymovement VAR_LAST_TALKED, MaguroHarbor_EventScript_MarketChild_Movement_0
+	msgbox MaguroHarbor_EventScript_MarketChild_Text_0
+	closemessage
+	release
+	return
+
+
+MaguroHarbor_EventScript_MarketChildOnBeach::
+	lock
+	applymovement LOCALID_MAGURO_WINGULL, MaguroHarbor_EventScript_MarketChildOnBeach_Movement_0
+	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
+	setspeakertomonname SPECIES_WINGULL
+	setseenmon SPECIES_WINGULL
+	msgbox MaguroHarbor_EventScript_MarketChildOnBeach_Text_0
+	waitmoncry
+	waitmovement 0
+	closemessage
+	applymovement LOCALID_MAGURO_LITTLE_GIRL, MaguroHarbor_EventScript_MarketChildOnBeach_Movement_1
+	playmoncry SPECIES_WINGULL, CRY_MODE_HIGH_PITCH
+	msgbox MaguroHarbor_EventScript_MarketChildOnBeach_Text_1
+	waitmoncry
+	waitmovement 0
+	closemessage
+	playmoncry SPECIES_WINGULL, CRY_MODE_NORMAL
+	applymovement LOCALID_MAGURO_WINGULL, MaguroHarbor_EventScript_MarketChildOnBeach_Movement_2
+	waitmoncry
+	waitmovement 0
+	release
+	return
+
+
 MaguroHarbor_EventScript_Man_Movement_0:
 	emote_sad
 	step_end
 
 MaguroHarbor_EventScript_MartSelling_Movement_0:
 	emote_happy
+	step_end
+
+MaguroHarbor_EventScript_MarketChild_Movement_0:
+	emote_music
+	step_end
+
+MaguroHarbor_EventScript_MarketChildOnBeach_Movement_0:
+	jump_in_place_left
+	step_end
+
+MaguroHarbor_EventScript_MarketChildOnBeach_Movement_1:
+	jump_in_place_right
+	step_end
+
+MaguroHarbor_EventScript_MarketChildOnBeach_Movement_2:
+	emote_question_mark
 	step_end
 
 MaguroHarbor_EventScript_TownSign_Text_0:
@@ -559,29 +621,28 @@ MaguroHarbor_EventScript_PokemonNerdSign_Text_0:
 	.string "Pokémon Nerd$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}What was that? Oh, I hope my\n"
-	.string "boyfriend's okay…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}What was that?\n"
+	.string "Oh, I hope my boyfriend's okay…$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_1:
 	.string "Lovestruck Girl$"
 
 MaguroHarbor_EventScript_LovestruckGirl_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}It's only been an hour since I saw my\n"
-	.string "love, and yet I already want tomorrow\l"
-	.string "to come just so I can see him again…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}I just spent the day with my boyfriend\nfrom Kura Village, but I already want\ltonight to end to see him again!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSettingUp_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh I'm so sorry, dearie. We haven't\n"
-	.string "opened yet. Come back later!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm so sorry, dearie.\n"
+	.string "We haven't opened yet.\l"
+	.string "Come back in a while!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Come back tomorrow if you'd like\n"
 	.string "another fishcake!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\p"
-	.string "They're the town's specialty! Only\n"
-	.string "¥500!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Hello dear, want to try a fishcake?\n"
+	.string "They're the town's specialty!\l"
+	.string "Only ¥500!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2:
 	.string "One please!$"
@@ -596,8 +657,8 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}One fishcake, coming right up!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_6:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh dear! It appears you're a little\n"
-	.string "short on pocket money.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh dear!\n"
+	.string "You're a bit short on pocket money.$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}What's in the Fishcakes, you ask?\p"
@@ -609,8 +670,8 @@ MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_0:
 	.string "Come back tomorrow!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanClosingUp_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}Oh my! I'm sorry but we've closed shop\n"
-	.string "now, dearie.\l"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}I'm sorry but we've closed shop now,\n"
+	.string "dearie.\l"
 	.string "Come back tomorrow!\p"
 	.string "Did you want to buy one of my\n"
 	.string "Fishcakes?\p"
@@ -630,8 +691,9 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_0:
 	.string "the village!$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSettingUp_Text_1:
-	.string "Aye! We're not open yet. Come back\n"
-	.string "later for the fresh catch of the day.$"
+	.string "Aye! We're not open yet.\p"
+	.string "Come back later for the fresh catch\n"
+	.string "of the day.$"
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_0:
 	.string "Fresh fish! Come get yer fish!\p"
@@ -701,7 +763,7 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_14:
 
 MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp_Text_0:
 	.string "Ah! You're a bit too late {STR_VAR_2}. We're\nclosed for th' day.\p"
-	.string "We'll be open again\l{STR_VAR_1}.$"
+	.string "We'll be open again {STR_VAR_1}.$"
 
 MaguroHarbor_EventScript_FishermanInBoat_Text_0:
 	.string "I'm letting my fishing partner\n"
@@ -719,12 +781,13 @@ MaguroHarbor_EventScript_FishermanOldRod_Text_1:
 	.string "enjoyin' yer fishing rod!$"
 
 MaguroHarbor_EventScript_FishermanOldRod_Text_2:
-	.string "Shush, ye fool child! You're scarin'\n"
-	.string "tha wee fishes!\p"
+	.string "Shush, ye fool child!\n"
+	.string "You be scarin' tha wee fishes!\p"
 	.string "… … … …\p"
-	.string "Yer eyes… They be sparklin' with\n"
-	.string "passion… Are ye by any chance an\l"
-	.string "aspirin' fisherm'n?\p"
+	.string "Yer eyes…\n"
+	.string "They be sparklin' with passion…\p"
+	.string "Are ye by any chance an aspirin'\n"
+	.string "fisherm'n?\p"
 	.string "Ye are! I can feel it! I can see ye be\n"
 	.string "dyin' to try it fer yerself!\p"
 	.string "Now, I can't be givin' ye me loyal\n"
@@ -744,11 +807,11 @@ MaguroHarbor_EventScript_FishermanOldRod_Text_4:
 	.string "fisherm'n!$"
 
 MaguroHarbor_EventScript_Man_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}T-This was the biggest quake we've\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_1 EMOTE_NORMAL}T-This was the biggest quake we've\n"
 	.string "felt yet!$"
 
 MaguroHarbor_EventScript_Man_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 EMOTE_NORMAL}I wish I swam as gracefully as the\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_1 EMOTE_NORMAL}I wish I swam as gracefully as the\n"
 	.string "Dojo's Magikarp…$"
 
 MaguroHarbor_EventScript_MartSelling_Text_0:
@@ -782,3 +845,22 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSign_Text_0:
 	.string "We buy Fish Pokémon!\n"
 	.string "Monday, Wednesday, Friday, Sunday\n"
 	.string "$"
+
+MaguroHarbor_EventScript_WindycapeLegend_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_2 EMOTE_NORMAL}{SPEAKER NAME_WOMAN}If you're ever in Windycape up north,\n"
+	.string "be sure to visit its famous statue!\p"
+	.string "Legend has it that a woman waited for\n"
+	.string "her lover to return from the seas…\l"
+	.string "For so long, she turned to stone!\p"
+	.string "Such a sad story.\n"
+	.string "I wonder if it really happened.$"
+
+MaguroHarbor_EventScript_MarketChild_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL EMOTE_NORMAL}{SPEAKER NAME_LITTLE_GIRL}I love the market! It smells of fish\n"
+	.string "kinda, but my mum buys me fishcakes!$"
+
+MaguroHarbor_EventScript_MarketChildOnBeach_Text_0:
+	.string "Heehee!$"
+
+MaguroHarbor_EventScript_MarketChildOnBeach_Text_1:
+	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL EMOTE_NORMAL}{SPEAKER NAME_LITTLE_GIRL}Heeheehee!$"

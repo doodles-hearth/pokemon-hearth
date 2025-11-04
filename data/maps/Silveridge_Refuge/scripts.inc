@@ -3,6 +3,7 @@ Silveridge_Refuge_MapScripts::
 	.byte 0
 
 Silveridge_Refuge_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	setrespawn HEAL_LOCATION_SILVERIDGE
 	setflag FLAG_TEMP_1
 	getweekday
 	switch VAR_RESULT
@@ -79,6 +80,7 @@ Silveridge_Refuge_EventScript_Kricketune::
 
 
 Silveridge_Refuge_EventScript_NurseSleep::
+	createfieldmugshot MUGSHOT_MOUNTAIN_NURSE
 	setvar VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE
 	call Common_EventScript_PkmnCenterNurse_Sleep
 	waitmessage
@@ -88,6 +90,7 @@ Silveridge_Refuge_EventScript_NurseSleep::
 
 
 Silveridge_Refuge_EventScript_Nurse::
+	createfieldmugshot MUGSHOT_MOUNTAIN_NURSE
 	setvar VAR_0x800B, LOCALID_NURSE_SILVERIDGE
 	setvar VAR_0x800A, LOCALID_CHANSEY_SILVERIDGE
 	setvar VAR_0x8009, MUGSHOT_MOUNTAIN_NURSE
@@ -95,6 +98,14 @@ Silveridge_Refuge_EventScript_Nurse::
 	waitmessage
 	waitbuttonpress
 	removefieldmugshot
+	release
+	end
+
+
+Silveridge_Refuge_EventScript_Pasture::
+	createfieldmugshot MUGSHOT_MOUNTAIN_MAN_2
+	setvar VAR_0x8009, MUGSHOT_MOUNTAIN_MAN_2
+	call Common_EventScript_PcGuy
 	release
 	end
 
@@ -111,7 +122,7 @@ Silveridge_Refuge_EventScript_Shamisen::
 	setspeaker SP_NAME_SHAMISEN_PLAYER
 	msgbox Silveridge_Refuge_EventScript_Shamisen_Text_3
 	closemessage
-	giveitem ITEM_UUMEGIRI, 3
+	giveitem ITEM_SUPERGIRI, 2
 	setflag FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER
 Silveridge_Refuge_EventScript_Shamisen_1:
 	release
@@ -159,12 +170,11 @@ Silveridge_Refuge_EventScript_FirebringerFangirl_Text_0:
 	.string "Silveridge today! Gosh, I can't wait!$"
 
 Silveridge_Refuge_EventScript_FirebringerFangirl_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}Oh gosh, look at him…\n"
-	.string "He's so…\l"
+	.string "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}Oh gosh, look at him…\p"
+	.string "He's so…\n"
 	.string "Rough-looking…\l"
-	.string "And handsome…And he smells like\l"
-	.string "smoke…\p"
-	.string "Sigh…$"
+	.string "And handsome…\l"
+	.string "And smoke-smelling… Sigh…$"
 
 Silveridge_Refuge_EventScript_Artist_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Listening to the musician's sweet\n"
@@ -178,8 +188,8 @@ Silveridge_Refuge_EventScript_Shamisen_Text_0:
 	.string "well?$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Good evening to you, {STR_VAR_1}.\p"
-	.string "Are you here to listen to my music?\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Good evening to you, {STR_VAR_1}.\n"
+	.string "Are you here to listen to my music?\l"
 	.string "Or are you here to battle?$"
 
 Silveridge_Refuge_EventScript_Shamisen_Text_2:

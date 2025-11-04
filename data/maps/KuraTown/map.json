@@ -27,6 +27,11 @@
       "map": "MAP_WINDSWEPT_ROUTE_BOTTOM",
       "offset": 16,
       "direction": "up"
+    },
+    {
+      "map": "MAP_SAKU_TOWN_BUFFER_AREA",
+      "offset": 50,
+      "direction": "down"
     }
   ],
   "object_events": [
@@ -563,6 +568,14 @@
       "elevation": 0,
       "item": "ITEM_REVIVAL_HERB",
       "flag": "FLAG_HIDDEN_ITEM_KURA_VILLAGE_REVIVAL_HERB"
+    },
+    {
+      "type": "hidden_item",
+      "x": 26,
+      "y": 14,
+      "elevation": 0,
+      "item": "ITEM_SITRUS_BERRY",
+      "flag": "FLAG_HIDDEN_ITEM_KURA_VILLAGE_SITRUS_BERRY"
     }
   ]
 }

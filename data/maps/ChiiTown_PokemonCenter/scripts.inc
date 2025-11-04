@@ -41,6 +41,7 @@ ChiiTown_PokemonCenter_MapScripts_MAP_SCRIPT_ON_TRANSITION_9:
 
 
 ChiiTown_PokemonCenter_EventScript_Nurse::
+	createfieldmugshot MUGSHOT_SUNRISE_NURSE
 	setvar VAR_0x800B, LOCALID_NURSE_CHII
 	setvar VAR_0x800A, LOCALID_CHANSEY_CHII
 	setvar VAR_0x8009, MUGSHOT_SUNRISE_NURSE
@@ -53,10 +54,19 @@ ChiiTown_PokemonCenter_EventScript_Nurse::
 
 
 ChiiTown_PokemonCenter_EventScript_NurseSleep::
+	createfieldmugshot MUGSHOT_SUNRISE_NURSE
 	setvar VAR_0x8009, MUGSHOT_SUNRISE_NURSE
 	call Common_EventScript_PkmnCenterNurse_Sleep
 	waitmessage
 	waitbuttonpress
+	release
+	end
+
+
+ChiiTown_PokemonCenter_EventScript_Pasture::
+	createfieldmugshot MUGSHOT_SUNRISE_MAN_2
+	setvar VAR_0x8009, MUGSHOT_SUNRISE_MAN_2
+	call Common_EventScript_PcGuy
 	release
 	end
 
@@ -283,17 +293,14 @@ ChiiTown_PokemonCenter_EventScript_RefugePresentation_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_1 EMOTE_NORMAL}Isn't it amazing?\p"
 	.string "This is one of the many brand new\n"
 	.string "Pokémon refuges that the Pokémon\l"
-	.string "Council has built in towns across all\l"
-	.string "Toku!\p"
+	.string "Council has built across all Toku!\p"
 	.string "With traveling alone becoming more\n"
 	.string "dangerous, many people are now\l"
-	.string "training a Pokémon of their own for\l"
-	.string "protection.\p"
-	.string "Towns were starting to be in dire need\n"
-	.string "of proper healing and rest spots for\l"
-	.string "Pokémon.\p"
+	.string "training a Pokémon for protection.\p"
+	.string "Towns were in dire need of proper\n"
+	.string "healing and rest spots for Pokémon.\p"
 	.string "Sorry, I'll get out of your hair now.\n"
-	.string "Talk to the nurse and her Chansey\n"
+	.string "Talk to the nurse and her Chansey\l"
 	.string "if you want her to heal your Pokémon!$"
 
 ChiiTown_PokemonCenter_EventScript_MakeNamesUp_Text_0:
