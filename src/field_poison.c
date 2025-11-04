@@ -166,7 +166,7 @@ void TryFieldPoisonWhiteOut(void)
     ScriptContext_Stop();
 }
 
-s32 DoPoisonFieldEffect(void)
+s32 DoPoisonDecayFieldEffect(void)
 {
     int i;
     u32 hp;
