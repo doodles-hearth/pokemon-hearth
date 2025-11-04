@@ -64,6 +64,42 @@ const struct CampfirePartyMonEvent sCampfirePartyMonEvents[CAMPFIRE_EVENT_COUNT]
     }
 };
 
+struct CampfireEncounterEvent
+{
+    const u8 *script;
+    u16 graphicsId;
+};
+
+const struct CampfireEncounterEvent sCampfireFriendlyEncounter[CAMPFIRE_EVENT_COUNT] =
+{
+    [CAMPFIRE_EVENT_1] = 
+    {
+        .script = EventScript_PokemonHandsYouAPecha,
+        .graphicsId = OBJ_EVENT_GFX_SPECIES(PIKACHU),
+    },
+    [CAMPFIRE_EVENT_2] = 
+    {
+        .script = EventScript_PokemonHandsYouAnOran,
+        .graphicsId = OBJ_EVENT_GFX_SPECIES(PIKACHU),
+    }
+};
+
+const struct CampfireEncounterEvent sCampfireOpponentEncounter[CAMPFIRE_EVENT_COUNT] =
+{
+    [CAMPFIRE_EVENT_1] = 
+    {
+        .script = EventScript_PokemonWantsToBattle,
+        .graphicsId = OBJ_EVENT_GFX_SPECIES(PIKACHU),
+    },
+    [CAMPFIRE_EVENT_2] = 
+    {
+        .script = EventScript_TrainerWantsToBattle,
+        .graphicsId = OBJ_EVENT_GFX_HIKER,
+    }
+};
+
+static void ShowMonAndStartCampfire(void);
+static void DoPreCampfireEvent(u8 eventGroup, u8 eventNum);
 static void TryShowPlayerPokemonAtCampfire(void);
 static void GetLocationCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, u8 mapGroup, u8 mapNum);
 static void GetDailyCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, s32 friendship);
@@ -92,12 +128,15 @@ void RollDailyCampfireEvents(u16 days)
     }
 }
 
+#define gMapGroup   gSaveBlock1Ptr->location.mapGroup
+#define gMapNum     gSaveBlock1Ptr->location.mapNum
+
 u16 GetDailyCampfireEvent(u8 mapGroup, u8 mapNum)
 {
     for (u32 i = 0; i < CAMPFIRE_COUNT; i++)
     {
-        if (gSaveBlock1Ptr->location.mapGroup == sCampfireDailyEvents[i].mapGroup
-           && gSaveBlock1Ptr->location.mapNum == sCampfireDailyEvents[i].mapNum)
+        if (gMapGroup == sCampfireDailyEvents[i].mapGroup
+           && gMapNum == sCampfireDailyEvents[i].mapNum)
            return VarGet(sCampfireDailyEvents[i].campfireVar);
     }
     return 0;
@@ -107,32 +146,47 @@ static void SetDailyCampfireEventDone(u8 mapGroup, u8 mapNum)
 {
     for (u32 i = 0; i < CAMPFIRE_COUNT; i++)
     {
-        if (gSaveBlock1Ptr->location.mapGroup == sCampfireDailyEvents[i].mapGroup
-           && gSaveBlock1Ptr->location.mapNum == sCampfireDailyEvents[i].mapNum)
+        if (gMapGroup == sCampfireDailyEvents[i].mapGroup
+           && gMapNum == sCampfireDailyEvents[i].mapNum)
             VarSet(sCampfireDailyEvents[i].campfireVar, 0);
     }
+}
+
+void RestAtCampfire(void)
+{
+    u16 campfireEvent;
+    u8 group, event;
+
+    FlagSet(OW_FLAG_PAUSE_TIME);
+
+    campfireEvent = GetDailyCampfireEvent(gMapGroup, gMapNum);
+    group = (campfireEvent >> 8) & 0xFF;
+    event = campfireEvent & 0xFF;
+
+    if (group == CAMPFIRE_EVENT_GROUP_FRIENDLY
+     || group == CAMPFIRE_EVENT_GROUP_OPPONENT)
+        return DoPreCampfireEvent(group, event);
+
+    gSaveBlock1Ptr->campfire.scriptTargetMon = -1;
+    if (group == CAMPFIRE_EVENT_GROUP_PARTYMON)
+        gSaveBlock1Ptr->campfire.scriptTargetMon = Random() % gPlayerPartyCount;
+
+    ShowMonAndStartCampfire();
 }
 
 /**
  * Heals and places the player's party around the campfire.
  */
-void RestAtCampfire(void)
+static void ShowMonAndStartCampfire(void)
 {
-    FlagSet(OW_FLAG_PAUSE_TIME);
     HealPlayerParty();
     TryShowPlayerPokemonAtCampfire();
     DrawWholeMapView();
 
-    // Moving player north of the campfire, facing down
-    u8 mapGroup = gSaveBlock1Ptr->location.mapGroup;
-    u8 mapNum = gSaveBlock1Ptr->location.mapNum;
-    u8 warpId = WARP_ID_NONE;
-
     u32 pX = gSaveBlock1Ptr->pos.x;
     u32 pY = gSaveBlock1Ptr->pos.y;
-
-    u16 campfireEvent;
-    u8 group, event;
+    gSaveBlock1Ptr->campfire.x = pX;
+    gSaveBlock1Ptr->campfire.y = pY + 1;
 
     switch (gSpecialVar_Facing)
     {
@@ -149,24 +203,11 @@ void RestAtCampfire(void)
         break;
     }
 
-    campfireEvent = GetDailyCampfireEvent(mapGroup, mapNum);
-    group = (campfireEvent >> 8) & 0xFF;
-    event = campfireEvent & 0xFF;
-
-    gSaveBlock1Ptr->campfire.scriptTargetMon = -1;
-    if (group == CAMPFIRE_EVENT_GROUP_PARTYMON)
-        gSaveBlock1Ptr->campfire.scriptTargetMon = Random() % gPlayerPartyCount;
-
-    SetWarpDestination(mapGroup, mapNum, warpId, pX, pY);
+    SetWarpDestination(gMapGroup, gMapNum, WARP_ID_NONE, pX, pY);
     DoDiveWarp();
     ResetInitialPlayerAvatarState();
-
-    // Hide follower
     FlagSet(FLAG_TEMP_HIDE_FOLLOWER);
     UpdateFollowingPokemon();
-
-    gSaveBlock1Ptr->campfire.x = pX;
-    gSaveBlock1Ptr->campfire.y = pY + 1;
 
     // TODO EVA: slightly increase the friendship of the whole party? Or create another function that increases
     //  the friendship of one Pokémon when given some item like a marshmallow?
@@ -200,17 +241,38 @@ static void TryShowPlayerPokemonAtCampfire(void)
     }
 }
 
+static void DoPreCampfireEvent(u8 eventGroup, u8 eventNum)
+{
+    /*
+    const u8 *script;
+    u16 graphicsId;
+    if (eventGroup == CAMPFIRE_EVENT_GROUP_FRIENDLY)
+    {
+        script = sCampfireFriendlyEncounter[eventNum].script;
+        graphicsId = sCampfireFriendlyEncounter[eventNum].graphicsId;
+    }
+    else if (eventGroup == CAMPFIRE_EVENT_GROUP_OPPONENT)
+    {
+        script = sCampfireOpponentEncounter[eventNum].script;
+        graphicsId = sCampfireOpponentEncounter[eventNum].graphicsId;
+    }
+    */
+    // TODO Zatsu: Add the shit that makes the NPC show up and run the script
+    ShowMonAndStartCampfire();
+}
+
 void GetCampfireAction(struct ScriptContext *ctx)
 {
     u8 partyIndex = ScriptReadByte(ctx);
     struct Pokemon *mon = &gPlayerParty[partyIndex];
-    struct ObjectEvent *objEvent = &gObjectEvents[GetObjectEventIdByLocalIdAndMap(gSpecialVar_LastTalked, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup)];
+    struct ObjectEvent *objEvent = &gObjectEvents[GetObjectEventIdByLocalIdAndMap(gSpecialVar_LastTalked, gMapNum, gMapGroup)];
     struct SpecialEmote condEmotes[16] = {0};
     u32 i, j, emotion, condCount = 0;
     bool32 pickedCondition = FALSE;
 
     u32 species = GetMonData(mon, MON_DATA_SPECIES);
     s32 multi = GetMonData(mon, MON_DATA_FRIENDSHIP);
+    GetMonData(mon, MON_DATA_NICKNAME, gStringVar1);
     u8 emotion_weight[FOLLOWER_EMOTION_LENGTH] =
     {
         [FOLLOWER_EMOTION_HAPPY] = 10,
@@ -226,7 +288,7 @@ void GetCampfireAction(struct ScriptContext *ctx)
         [FOLLOWER_EMOTION_POISONED] = 0,
     };
 
-    GetMonData(mon, MON_DATA_NICKNAME, gStringVar1);
+    // This mon was selected as the Daily event mon, go there instead
     if (partyIndex == gSaveBlock1Ptr->campfire.scriptTargetMon)
         GetDailyCampfireAction(ctx, objEvent, multi);
 
@@ -279,7 +341,7 @@ void GetCampfireAction(struct ScriptContext *ctx)
     // (20% chance) Select a location-based message
     if (!(Random() % 4))
     {
-        GetLocationCampfireAction(ctx, objEvent, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+        GetLocationCampfireAction(ctx, objEvent, gMapGroup, gMapNum);
     }
 
     // (50% chance) Select special condition using reservoir sampling
@@ -339,13 +401,16 @@ static void GetLocationCampfireAction(struct ScriptContext *ctx, struct ObjectEv
 
 static void GetDailyCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, s32 friendship)
 {
-    u8 random = Random() % CAMPFIRE_EVENT_COUNT;
+    u8 random = Random() % CAMPFIRE_EVENT_COUNT; 
+    // ^ Currently this just rolls at random but I'd like to add logic that makes the script it gets be highly custom to your Pokémon's current mood
+    // Event from the Campfire's rolled daily variable is not honoured in PartyMon events because of this
+    // It would be impossible to predict the Pokémon's campfire mood at the time it was rolled
     const u8 *script = sCampfirePartyMonEvents[random].script;
     u8 emotion = sCampfirePartyMonEvents[random].emotion;
     u16 item = sCampfirePartyMonEvents[random].item;
 
     gSaveBlock1Ptr->campfire.scriptTargetMon = -1;
-    SetDailyCampfireEventDone(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+    SetDailyCampfireEventDone(gMapGroup, gMapNum);
 
     ObjectEventEmote(objEvent, emotion);
     ctx->data[1] = (u32)item;
@@ -395,11 +460,14 @@ static void TryRemoveCampfireObjects(void)
             template = &gSaveBlock1Ptr->objectEventTemplates[i];
             if (FlagGet(template->flagId))
             {
-                RemoveObjectEventByLocalIdAndMap(template->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+                RemoveObjectEventByLocalIdAndMap(template->localId, gMapNum, gMapGroup);
             }
         }
     }
 }
+
+#undef gMapGroup
+#undef gMapNum 
 
 void Native_Campfire(void)
 {

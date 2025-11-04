@@ -95,6 +95,32 @@ EventScript_PokemonGaveYouAnItem::
 	end
 
 
+EventScript_PokemonHandsYouAPecha::
+	msgbox EventScript_PokemonHandsYouAPecha_Text_0, MSGBOX_DEFAULT
+	giveitem ITEM_PECHA_BERRY
+	release
+	end
+
+
+EventScript_PokemonHandsYouAnOran::
+	msgbox EventScript_PokemonHandsYouAPecha_Text_0, MSGBOX_DEFAULT
+	giveitem ITEM_ORAN_BERRY
+	release
+	end
+
+
+EventScript_PokemonWantsToBattle::
+	msgbox EventScript_PokemonWantsToBattle_Text_0, MSGBOX_YESNO
+	release
+	end
+
+
+EventScript_TrainerWantsToBattle::
+	msgbox EventScript_TrainerWantsToBattle_Text_0, MSGBOX_YESNO
+	release
+	end
+
+
 
 EventScript_CampfirePokemon1::
     getcampfireaction 0
@@ -251,3 +277,14 @@ EventScript_LeaveCampfire_Text_0:
 
 EventScript_PokemonGaveYouAnItem_Text_0:
 	.string "{STR_VAR_1} handed you an item!$"
+
+EventScript_PokemonHandsYouAPecha_Text_0:
+	.string "{STR_VAR_1} scurried up to you\n"
+	.string "and handed you an item!$"
+
+EventScript_PokemonWantsToBattle_Text_0:
+	.string "{STR_VAR_1} wants to battle!$"
+
+EventScript_TrainerWantsToBattle_Text_0:
+	.string "Hey this is my campfire. Battle me for\n"
+	.string "it?$"

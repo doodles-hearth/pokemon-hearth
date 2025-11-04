@@ -94,6 +94,40 @@ script EventScript_PokemonGaveYouAnItem {
     end
 }
 
+script EventScript_PokemonHandsYouAPecha {
+    msgbox(format(
+        "{STR_VAR_1} scurried up to you and handed you an item!"
+    ), MSGBOX_DEFAULT)
+    giveitem(ITEM_PECHA_BERRY)
+    release
+    end
+}
+
+script EventScript_PokemonHandsYouAnOran {
+    msgbox(format(
+        "{STR_VAR_1} scurried up to you and handed you an item!"
+    ), MSGBOX_DEFAULT)
+    giveitem(ITEM_ORAN_BERRY)
+    release
+    end
+}
+
+script EventScript_PokemonWantsToBattle {
+    msgbox(format(
+        "{STR_VAR_1} wants to battle!"
+    ), MSGBOX_YESNO)
+    release
+    end
+}
+
+script EventScript_TrainerWantsToBattle {
+    msgbox(format(
+        "Hey this is my campfire. Battle me for it?"
+    ), MSGBOX_YESNO)
+    release
+    end
+}
+
 raw `
 EventScript_CampfirePokemon1::
     getcampfireaction 0

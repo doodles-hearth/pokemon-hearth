@@ -714,4 +714,10 @@ extern const u8 EventScript_MovedTooFast[];
 extern const u8 EventScript_WalkAwayFromCampfire[];
 extern const u8 EventScript_PokemonGaveYouAnItem[];
 
+extern const u8 EventScript_PokemonHandsYouAPecha[];
+extern const u8 EventScript_PokemonHandsYouAnOran[];
+
+extern const u8 EventScript_PokemonWantsToBattle[];
+extern const u8 EventScript_TrainerWantsToBattle[];
+
 #endif // GUARD_EVENT_SCRIPTS_H
