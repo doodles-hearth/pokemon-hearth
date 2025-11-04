@@ -3710,6 +3710,8 @@ static void PrintEggMemo(void)
             text = gText_PeculiarEggTrade;
         else if (sum->metLocation == METLOC_EGG_SHAMISEN)
             text = gText_EggFromShamisenPlayer;
+        else if (sum->metLocation == METLOC_DAYCARE_ADOPTION)
+            text = gText_EggFromDaycareAdoption;
         else
             text = gText_OddEggFoundByCouple;
     }

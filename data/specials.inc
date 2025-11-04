@@ -582,3 +582,5 @@ gSpecials::
 	def_special ReturnCameraToPlayer
 	def_special SetHiddenNature
 	def_special SetAbility
+	def_special GetRandomAdoptionSpecies
+	def_special GetRandomSpecialAdoptionSpecies

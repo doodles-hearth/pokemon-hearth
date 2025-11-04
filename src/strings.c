@@ -1395,3 +1395,4 @@ const u8 gText_MonDescribedNotification[] = _("You wrote down notes about {STR_V
 const u8 gText_EggFromShamisenPlayer[] = _("A mystery Egg given by\na Shamisen Player.");
 const u8 gText_LureEffectsLingered[] = _("But the effects of a Lure\nlingered from earlier.{PAUSE_UNTIL_PRESS}");
 
+const u8 gText_EggFromDaycareAdoption[] = _("Adopted from the\nPokémon Daycare");
