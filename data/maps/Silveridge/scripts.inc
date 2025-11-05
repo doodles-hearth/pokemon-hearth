@@ -168,15 +168,8 @@ Silveridge_EventScript_Wildflowers_Text_0:
 	.string "Havenisle.\p"
 	.string "When I first moved here, the barren\n"
 	.string "landscape made me very homesick.\p"
-	.string "So I started planting little patches\n"
-	.string "of these native wildflowers around\l"
-	.string "the town.\p"
-	.string "I was told they symbolize eternal\n"
-	.string "love. I don't know about that, but\l"
-	.string "they make me happy!\p"
-	.string "I wish I had brought some seeds with\n"
-	.string "me when I left Havenisle, though. The\l"
-	.string "flowers there are so colorful!$"
+	.string "So I started planting these native\n"
+	.string "wildflowers around the town!$"
 
 Silveridge_EventScript_Mart_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Welcome to Silveridge's market!\n"

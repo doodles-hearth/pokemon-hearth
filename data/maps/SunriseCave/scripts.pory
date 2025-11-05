@@ -1,5 +1,3 @@
-const LOCALID_KRABBY_LEFT = 5
-const LOCALID_KRABBY_RIGHT = 6
 const FLAG_HIDE_KRABBY = FLAG_TEMP_1
 
 mapscripts SunriseCave_MapScripts {
@@ -18,29 +16,29 @@ script SunriseCave_Trigger_ScaringKrabby {
 	setvar(VAR_TEMP_0, 1)
 
 	playmoncry(SPECIES_KRABBY, CRY_MODE_NORMAL)
-	applymovement(LOCALID_KRABBY_LEFT, moves(emote_exclamation_mark, delay_16 * 3, walk_fast_up))
+	applymovement(LOCALID_SUNRISE_KRABBY_1, moves(emote_exclamation_mark, delay_16 * 3, walk_fast_up))
 	delay(16)
 	playmoncry(SPECIES_KRABBY, CRY_MODE_NORMAL)
-	applymovement(LOCALID_KRABBY_RIGHT, moves(emote_exclamation_mark, delay_16 * 3, walk_fast_up * 2))
+	applymovement(LOCALID_SUNRISE_KRABBY_2, moves(emote_exclamation_mark, delay_16 * 3, walk_fast_up * 2))
 	// SE_BALL? SE_M_DIVE?
 
-	waitmovement(LOCALID_KRABBY_LEFT)
+	waitmovement(LOCALID_SUNRISE_KRABBY_1)
 	playse(SE_LEDGE)
-	applymovement(LOCALID_KRABBY_LEFT, moves(jump_up, set_invisible))
+	applymovement(LOCALID_SUNRISE_KRABBY_1, moves(jump_up, set_invisible))
 	waitse
 	playse(SE_BALL)
 	
-	waitmovement(LOCALID_KRABBY_RIGHT)
+	waitmovement(LOCALID_SUNRISE_KRABBY_2)
 	playse(SE_LEDGE)
-	applymovement(LOCALID_KRABBY_RIGHT, moves(jump_up, set_invisible))
+	applymovement(LOCALID_SUNRISE_KRABBY_2, moves(jump_up, set_invisible))
 	waitse
 	playse(SE_BALL)
 
-	waitmovement(LOCALID_KRABBY_LEFT)
-	waitmovement(LOCALID_KRABBY_RIGHT)
+	waitmovement(LOCALID_SUNRISE_KRABBY_1)
+	waitmovement(LOCALID_SUNRISE_KRABBY_2)
 
-	removeobject(LOCALID_KRABBY_LEFT)
-	removeobject(LOCALID_KRABBY_RIGHT)
+	removeobject(LOCALID_SUNRISE_KRABBY_1)
+	removeobject(LOCALID_SUNRISE_KRABBY_2)
 	setflag(FLAG_HIDE_KRABBY)
 
 	releaseall

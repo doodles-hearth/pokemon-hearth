@@ -75,7 +75,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		bufferspeciesname(STR_VAR_2, VAR_STARTER_MON)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Hey little {STR_VAR_1}! See how cute my new Pokémon is?\p"
-			"Oh, who is that lovely little thing with you?\p"
+			"Oh, who is that lovely little thing with you?\N"
 			"{STR_VAR_2}, huh?\p"
 			"Looks like it already likes you a lot! You're going to make a great Wielder,\lI know it!\p"
 			"… … … … … …\n… … … … … …\p"
@@ -100,7 +100,6 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		setnamedmon(SPECIES_CHATOT)
 
 		setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 8)
-		setflag(FLAG_HIDE_GUARD_SUNRISE_VILLAGE)
 
 		// Default
 	} else {

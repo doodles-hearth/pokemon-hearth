@@ -502,6 +502,7 @@ script KuraTown_EventScript_TeachingScrolls {
 		waitmovement(LOCALID_SAKU_ABRA)
 		waitse
 
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 		setspeaker(SP_NAME_GUY)
 		msgbox(format(

@@ -117,6 +117,7 @@ Common_EventScript_PkmnCenterNurse_CutTheBullshit::
 	lock
 	faceplayer
 	setvar VAR_0x8004, 0
+	setseenmon SPECIES_CHANSEY
 	createfieldmugshot VAR_0x8009, EMOTE_NORMAL
 	setspeaker SP_NAME_NURSE
 	msgbox Common_EventScript_PkmnCenterNurse_CutTheBullshit_Text_0

@@ -198,7 +198,7 @@ ChiiTown_School_EventScript_BoardLegend_Text_0:
 
 ChiiTown_School_EventScript_Board_Text_0:
 	.string "A wide sheet of paper with lots of\n"
-	.string "tiny squiggles on it.$"
+	.string "tiny scribbles on it.$"
 
 ChiiTown_School_EventScript_ChildImBored_Text_0:
 	.string "I'm bored! Why won't recess start\n"

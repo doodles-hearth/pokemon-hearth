@@ -255,6 +255,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_NUFFER_SPECIES_DEX_DESC       ScrCmd_bufferspeciesdexdesc,        requests_effects=1  @ 0xe6
 	script_cmd_table_entry SCR_OP_GET_TIME_OF_DAY               ScrCmd_gettimeofday,                requests_effects=1  @ 0xe7
     script_cmd_table_entry SCR_OP_ISFIELDMOVEUNLOCKED           ScrCmd_isfieldmoveunlocked          requests_effects=1  @ 0xe8
+    script_cmd_table_entry SCR_OP_ADDMONEY_VAR		            ScrCmd_addmoneyvar			        requests_effects=1  @ 0xe9
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::

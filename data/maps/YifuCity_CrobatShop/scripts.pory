@@ -209,7 +209,7 @@ script YifuCity_CrobatShop_Guard {
 				setspeaker("Shady man")
 				msgbox(format(
 					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hmmm… Ya don't look like the typical Zubat…\p"
-					"… … … …\n… …Alright, ya can go through.\l"
+					"… … … …\n… …Alright, ya can go through.\p"
 					"Next time wear the damn uniform though, will ya?"
 				))
 				closemessage

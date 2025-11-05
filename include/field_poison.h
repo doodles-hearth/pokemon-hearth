@@ -8,6 +8,6 @@
 // Exported ROM declarations
 
 void TryFieldPoisonWhiteOut(void);
-s32 DoPoisonFieldEffect(void);
+s32 DoPoisonDecayFieldEffect(void);
 
 #endif //GUARD_FIELD_POISON_H

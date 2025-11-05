@@ -91,6 +91,7 @@ KuraTown_Dojo_EventScript_HanaDefeated::
 	call Common_EventScript_PlayGymBadgeFanfare
 	setspeaker SP_NAME_HANA
 	msgbox KuraTown_Dojo_EventScript_HanaDefeated_Text_1, MSGBOX_DEFAULT
+	closemessage
 	setflag FLAG_BADGE02_GET
 	setvar VAR_0x8008, 2
 	call Common_EventScript_SetGymTrainers
@@ -284,7 +285,7 @@ KuraTown_Dojo_EventScript_HanaDefeated_Text_0:
 	.string "from Hana.$"
 
 KuraTown_Dojo_EventScript_HanaDefeated_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\nCouncil challenge, you will need a Token\lfrom the region's eight Dojos.\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\nCouncil challenge, you will need a\lToken from the region's eight Dojos.\p"
 	.string "Arduous task! But I feel determination\ntaking root in your heart.\p"
 	.string "Here, let me also give you this.$"
 
@@ -336,13 +337,13 @@ KuraTown_Dojo_EventScript_Advice_Text_3:
 
 KuraTown_Dojo_EventScript_DojoStatue_Text_0:
 	.string "Kura Village Dojo\p"
-	.string "certified Wielders:\n"
+	.string "Certified Wielders:\n"
 	.string "Natsuki,\l"
 	.string "{PLAYER}$"
 
 KuraTown_Dojo_EventScript_DojoStatue_Text_1:
 	.string "Kura Village Dojo\p"
-	.string "certified Wielders:\n"
+	.string "Certified Wielders:\n"
 	.string "Natsuki$"
 
 KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_Text_0:

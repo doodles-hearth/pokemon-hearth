@@ -77,8 +77,13 @@ BeachboundRoute_EventScript_Wooloo::
 
 
 BeachboundRoute_EventScript_Shepherd::
+	lock
+	faceplayer
+	setnamedmon SPECIES_WOOLOO
 	setspeaker SP_NAME_SHEPHERD
-	msgbox BeachboundRoute_EventScript_Shepherd_Text_0, MSGBOX_NPC
+	msgbox BeachboundRoute_EventScript_Shepherd_Text_0
+	closemessage
+	release
 	return
 
 

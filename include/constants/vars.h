@@ -171,7 +171,8 @@
 #define VAR_ROUTE130_STATE                               0x407D // Unused Var
 #define VAR_ROUTE131_STATE                               0x407E // Unused Var
 #define VAR_ROUTE132_STATE                               0x407F // Unused Var
-#define VAR_ROUTE133_STATE                               0x4080 // Unused Var
+#define VAR_DAYCARE_ADOPTION_SPECIALS                    0x4080
+
 /*
     VAR_RIVAL_ENCOUNTER_STATEs
 
@@ -350,7 +351,7 @@
 #define VAR_PLAYER_REPUTATION                            0x40DB
 #define VAR_STATE_SCULPTOR                               0x40DC
 #define VAR_GIFT_PICHU_SLOT                              0x40DD
-#define VAR_TARC_SPEEDUP                                 0x40DE // Courtesy of Hedara
+#define VAR_TARC_SPEEDUP                                 0x40DE // Unused
 #define VAR_GIFT_UNUSED_2                                0x40DF // Var is written to, but never read
 #define VAR_GIFT_UNUSED_3                                0x40E0 // Var is written to, but never read
 #define VAR_GIFT_UNUSED_4                                0x40E1 // Var is written to, but never read

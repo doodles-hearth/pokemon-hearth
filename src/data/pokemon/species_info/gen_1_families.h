@@ -4104,7 +4104,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .abilities = { ABILITY_SAND_VEIL, ABILITY_NONE, ABILITY_SAND_RUSH },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Sandshrew"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Roll Mole"),
         .cryId = CRY_SANDSHREW,
         .natDexNum = NATIONAL_DEX_SANDSHREW,
         .categoryName = _("Mouse"),
@@ -7116,7 +7116,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
     #endif
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Meowth"),
-        .unknownName = _("Scratch Cat"),
+        .unknownName = _("Money Cat"),
         .cryId = CRY_MEOWTH,
         .natDexNum = NATIONAL_DEX_MEOWTH,
         .categoryName = _("Scratch Cat"),

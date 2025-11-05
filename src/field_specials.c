@@ -4531,3 +4531,23 @@ void SetAbility(void)
     u32 ability = gSpecialVar_Result;
     SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ABILITY_NUM, &ability);
 }
+
+static const u16 sRandomAdoptionSpecies[] =
+{
+    SPECIES_EKANS, SPECIES_VULPIX, SPECIES_GROWLITHE,
+};
+
+static const u16 sRandomSpecialAdoptionSpecies[] =
+{
+    SPECIES_BULBASAUR, SPECIES_CHARMANDER, SPECIES_SQUIRTLE,
+};
+
+u16 GetRandomAdoptionSpecies(void)
+{
+    return sRandomAdoptionSpecies[Random() % ARRAY_COUNT(sRandomAdoptionSpecies)];
+}
+
+u16 GetRandomSpecialAdoptionSpecies(void)
+{
+    return sRandomSpecialAdoptionSpecies[Random() % ARRAY_COUNT(sRandomSpecialAdoptionSpecies)];
+}

@@ -485,7 +485,7 @@ YifuCity_Refuge_EventScript_RouteShamisen_18:
 	playfanfare MUS_OBTAIN_ITEM
 	message YifuCity_Refuge_EventScript_RouteShamisen_Text_5
 	waitfanfare
-	giveegg VAR_TEMP_0
+	giveegg VAR_TEMP_0, METLOC_EGG_SHAMISEN
 	setspeaker SP_NAME_SHAMISEN_PLAYER
 	msgbox YifuCity_Refuge_EventScript_RouteShamisen_Text_6
 	closemessage

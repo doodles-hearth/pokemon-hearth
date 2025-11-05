@@ -64,7 +64,7 @@ script YifuCity_EventScript_DemoEnd {
 
 	setspeaker("Doodle")
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_2 EMOTE_NORMAL}Well, hello, there!\nI'm Doodle.\lI'm the maker of this game!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_2 EMOTE_NORMAL}Well, hello there, {PLAYER}!\nI'm Doodle.\lI'm the maker of this game!\p"
 		"You've reached the end of this demo,\ncongrats!!\p"
 		"Feel free to stroll around, but you've\nseen almost all the content by now.\p"
 		"I hope you liked it, and hope you'll play\nthe finished version too!\lSee ya!"
@@ -738,9 +738,9 @@ script YifuCity_Trigger_CrobatGruntStuckInHole {
 		applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark, face_down))
 		setspeaker(SP_NAME_UNKNOWN)
 		msgbox(format(
-			"I fell down the canal! I'm stuck down 'ere!\p"
+			"I fell down the canal!\nI'm stuck down 'ere!\p"
 			"Damn me, couldn't remember the first half of the damn password…\l"
-			"“Something something… {COLOR RED}is awesome{COLOR DARK_GRAY}”! But what?!\l"
+			"“Something something… {COLOR RED}is awesome{COLOR DARK_GRAY}”! But what?!\p"
 			"And why'd I think it was a good idea to try gettin' in through the canal?\l"
 			"I can't swim! It's a dead end!"
 		))
@@ -1927,6 +1927,20 @@ script YifuCity_EventScript_UumeForestTrees {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}{SPEAKER NAME_ARTIST}I came to Yifu City to see the trees of Uume Forest for myself!\p"
 		"I've heard wonders about their foliage's shades of purple!"
+	))
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_WhereRefuge {
+	lock
+	faceplayer
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}Looking for the Pokémon Refuge?"
+	))
+	applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_down))
+	msgbox(format(
+		"Just follow this path."
 	))
 	closemessage
 	release

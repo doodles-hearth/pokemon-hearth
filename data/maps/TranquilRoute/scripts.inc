@@ -310,6 +310,7 @@ TranquilRoute_EventScript_BerryWoman::
 	msgbox TranquilRoute_EventScript_BerryWoman_Text_3
 	closemessage
 	setnamedmon SPECIES_WAILMER
+	setseenmon SPECIES_WAILMER
 	giveitem ITEM_WAILMER_PAIL
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setspeaker SP_NAME_WOMAN
@@ -415,6 +416,8 @@ TranquilRoute_EventScript_CrobatShadows_Cutscene::
 
 TranquilRoute_EventScript_TravelingMerchantFirstTime::
 	lock
+	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, TranquilRoute_EventScript_TravelingMerchantFirstTime_Movement_0
 	setspeaker SP_NAME_MAN
 	msgbox TranquilRoute_EventScript_TravelingMerchantFirstTime_Text_0

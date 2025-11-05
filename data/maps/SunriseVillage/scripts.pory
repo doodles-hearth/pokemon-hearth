@@ -1,6 +1,8 @@
 const LOCALID_FATGUY = 3
 const LOCALID_GUARD = 6
 
+const FLAG_HIDE_BIGSIS_MAP = FLAG_TEMP_5
+
 mapscripts SunriseVillage_MapScripts {
     MAP_SCRIPT_ON_LOAD {
         // Random birds on roofs
@@ -27,6 +29,7 @@ mapscripts SunriseVillage_MapScripts {
     }
     MAP_SCRIPT_ON_TRANSITION {
         setflag(FLAG_VISITED_SUNRISE_VILLAGE)
+        setflag(FLAG_HIDE_BIGSIS_MAP)
     }
 }
 
@@ -58,6 +61,112 @@ script SunriseVillage_Event_FatGuy {
     end
 }
 
+script SunriseVillage_Event_BigSisMap_Wait {
+    setspeaker("???")
+    msgbox(format(
+        "{PLAYER}, wait!"
+    ))
+    closemessage
+
+    applymovement(LOCALID_PLAYER, moves(walk_in_place_fast_down))
+    waitmovement(0)
+
+    clearflag(FLAG_HIDE_BIGSIS_MAP)
+    addobject(LOCALID_BIGSIS_MAP)
+}
+
+script SunriseVillage_Event_BigSisMap_Left {
+    lockall
+
+    call(SunriseVillage_Event_BigSisMap_Wait)
+
+    applymovement(LOCALID_BIGSIS_MAP, moves(walk_up * 6))
+    waitmovement(0)
+
+    call(SunriseVillage_Event_BigSisMap_GiveMap)
+
+    applymovement(LOCALID_BIGSIS_MAP, moves(walk_down * 6))
+    waitmovement(0)
+
+    removeobject(LOCALID_BIGSIS_MAP)
+    setflag(FLAG_HIDE_BIGSIS_MAP)
+
+    releaseall
+}
+
+script SunriseVillage_Event_BigSisMap_Middle {
+    lockall
+
+    call(SunriseVillage_Event_BigSisMap_Wait)
+
+    applymovement(LOCALID_BIGSIS_MAP, moves(walk_up * 4, walk_right, walk_up * 2))
+    waitmovement(0)
+
+    call(SunriseVillage_Event_BigSisMap_GiveMap)
+
+    applymovement(LOCALID_BIGSIS_MAP, moves(walk_down * 2, walk_left, walk_down * 4))
+    waitmovement(0)
+
+    removeobject(LOCALID_BIGSIS_MAP)
+    setflag(FLAG_HIDE_BIGSIS_MAP)
+
+    releaseall
+}
+
+script SunriseVillage_Event_BigSisMap_Right {
+    lockall
+
+    call(SunriseVillage_Event_BigSisMap_Wait)
+
+    applymovement(LOCALID_BIGSIS_MAP, moves(walk_up * 7, walk_right))
+    applymovement(LOCALID_PLAYER, moves(delay_16 * 6, face_left))
+    waitmovement(LOCALID_BIGSIS_MAP)
+
+    call(SunriseVillage_Event_BigSisMap_GiveMap)
+
+    applymovement(LOCALID_BIGSIS_MAP, moves(walk_left, walk_down * 7))
+    applymovement(LOCALID_PLAYER, moves(delay_16 * 2, face_down))
+    waitmovement(LOCALID_BIGSIS_MAP)
+
+    removeobject(LOCALID_BIGSIS_MAP)
+    setflag(FLAG_HIDE_BIGSIS_MAP)
+
+    releaseall
+}
+
+script SunriseVillage_Event_BigSisMap_GiveMap {
+    bufferspeciesname(STR_VAR_2, VAR_STARTER_MON)
+
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}{SPEAKER NAME_BIG_SIS}Were you trying to leave without saying goodbye? Shame on you!\p"
+        "Oh, who is that lovely little thing with you?\N"
+        "{STR_VAR_2}, huh?\p"
+        "Looks like it already likes you a lot! You're going to make a great Wielder,\lI know it!\p"
+        "… … … … … …\n… … … … … …\p"
+        "So you're going on a journey…\p"
+        "That's great! I'm proud of you, {PLAYER}.\p"
+        "I know you'll get lost though, so I'll lend you my map of Toku!"
+    ))
+    closemessage
+    
+    giveitem(ITEM_TOWN_MAP)
+
+    special(GetPlayerBrotherSisterString)
+    setspeaker(SP_NAME_BIG_SIS)
+    msgbox((
+        "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Alrighty! You all set? Have a safe\njourney, little {STR_VAR_1}.\p"
+        "Maybe I'll see you around!\p"
+        "Come home sometimes though, will you?\p"
+        "See you soon!\nI'll send you Chatot messages!"
+    ))
+    closemessage
+
+    setnamedmon(SPECIES_CHATOT)
+
+    setflag(FLAG_HIDE_BIGSIS_MAP)
+    setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 8)
+}
+
 // Man guarding the forest while you have no Pokémon
 script SunriseVillage_Event_GuardForest {
     lockall
@@ -71,19 +180,6 @@ script SunriseVillage_Event_GuardForest {
                 "Be careful!"
             ))
             closemessage
-        } elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
-            turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-            msgbox(format(
-                "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}Hey, kid, heard you were going off on an adventure!\p"
-                "Did you say bye to your sister?"
-            ))
-            applymovement(LOCALID_GUARD, moves(emote_angry))
-            msgbox(format(
-                "No? Thought so. Go see her before you run off, you ungrateful sibling!"
-            ))
-            closemessage
-            applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
-            waitmovement(0)
         } else {
             turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
             msgbox(format(

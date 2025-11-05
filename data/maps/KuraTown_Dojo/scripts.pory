@@ -166,12 +166,13 @@ script KuraTown_Dojo_EventScript_HanaDefeated {
 	setspeaker(SP_NAME_HANA)
 	msgbox(
 		(
-			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\nCouncil challenge, you will need a Token\lfrom the region's eight Dojos.\p"
+			"{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}If you want to submit to the Toku\nCouncil challenge, you will need a\lToken from the region's eight Dojos.\p"
 			"Arduous task! But I feel determination\ntaking root in your heart.\p"
 			"Here, let me also give you this."
 		),
 		MSGBOX_DEFAULT
 	)
+	closemessage
 	setflag(FLAG_BADGE02_GET)
 	setvar(VAR_0x8008, 2)
 	call(Common_EventScript_SetGymTrainers)
@@ -247,7 +248,7 @@ script KuraTown_Dojo_EventScript_DojoStatue {
 	if (flag(FLAG_BADGE02_GET)) {
 		msgbox(
 			"Kura Village Dojo\p"
-			"certified Wielders:\n"
+			"Certified Wielders:\n"
 			"Natsuki,\l"
 			"{PLAYER}",
 			MSGBOX_SIGN
@@ -255,7 +256,7 @@ script KuraTown_Dojo_EventScript_DojoStatue {
 	} else {
 		msgbox(
 			"Kura Village Dojo\p"
-			"certified Wielders:\n"
+			"Certified Wielders:\n"
 			"Natsuki",
 			MSGBOX_SIGN
 		)

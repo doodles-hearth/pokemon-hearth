@@ -85,7 +85,6 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 	closemessage
 	setnamedmon SPECIES_CHATOT
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
-	setflag FLAG_HIDE_GUARD_SUNRISE_VILLAGE
 	goto SunriseVillage_PlayersHouse_LR_EventScript_BigSis_1
 
 
@@ -159,7 +158,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_BIG_SIS EMOTE_NORMAL}Hey little {STR_VAR_1}! See how\n"
 	.string "cute my new Pokémon is?\p"
 	.string "Oh, who is that lovely little thing\n"
-	.string "with you?\p"
+	.string "with you?\l"
 	.string "{STR_VAR_2}, huh?\p"
 	.string "Looks like it already likes you a lot!\n"
 	.string "You're going to make a great Wielder,\l"

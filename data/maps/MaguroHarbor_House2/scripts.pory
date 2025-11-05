@@ -46,6 +46,8 @@ script MaguroHarbor_House2_Fisherman {
 	))
 	closemessage
 
+	setnamedmon(SPECIES_GYARADOS)
+
 	release
 }
 

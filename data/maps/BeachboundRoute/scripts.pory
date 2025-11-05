@@ -89,10 +89,15 @@ script BeachboundRoute_EventScript_Wooloo {
 }
 
 script BeachboundRoute_EventScript_Shepherd {
+	lock
+	faceplayer
+	setnamedmon(SPECIES_WOOLOO)
 	setspeaker(SP_NAME_SHEPHERD)
 	msgbox(format(
 		"I bring my Wooloo here to graze everyday."
-	), MSGBOX_NPC)
+	))
+	closemessage
+	release
 }
 
 script BeachboundRoute_EventScript_Karu {

@@ -28,8 +28,8 @@ SakuTown_House3_EventScript_Hoothoot::
 	lock
 	faceplayer
 	setspeakertomonname SPECIES_HOOTHOOT
-	msgbox SakuTown_House3_EventScript_Hoothoot_Text_0
 	playmoncry SPECIES_HOOTHOOT, CRY_MODE_NORMAL
+	msgbox SakuTown_House3_EventScript_Hoothoot_Text_0
 	waitmoncry
 	release
 	end

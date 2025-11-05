@@ -549,7 +549,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				playfanfare(MUS_OBTAIN_ITEM)
 				message(format("{PLAYER} received the mysterious Egg."))
 				waitfanfare
-				giveegg(VAR_TEMP_0)
+				giveegg(VAR_TEMP_0, METLOC_EGG_SHAMISEN)
 
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
 				msgbox(format(

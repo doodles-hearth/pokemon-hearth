@@ -412,6 +412,7 @@ KuraTown_EventScript_TeachingScrolls_3:
 	applymovement LOCALID_SAKU_ABRA, KuraTown_EventScript_Abra_Movement_0
 	waitmovement LOCALID_SAKU_ABRA
 	waitse
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_PostDecayNatsukiHariko_Movement_6
 	setspeaker SP_NAME_GUY
 	msgbox KuraTown_EventScript_TeachingScrolls_Text_3
