@@ -28,7 +28,7 @@
     {
       "local_id": "LOCALID_PALACE_SHUPPET_5",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SHUPPET)",
-      "x": 18,
+      "x": 19,
       "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP_LEFT_AND_RIGHT",
@@ -49,7 +49,7 @@
     {
       "local_id": "LOCALID_PALACE_SHUPPET_4",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SHUPPET)",
-      "x": 17,
+      "x": 18,
       "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -112,7 +112,7 @@
     {
       "local_id": "LOCALID_PALACE_SHUPPET_3",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SHUPPET)",
-      "x": 13,
+      "x": 12,
       "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
@@ -133,7 +133,7 @@
     {
       "local_id": "LOCALID_PALACE_SHUPPET_2",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SHUPPET)",
-      "x": 12,
+      "x": 11,
       "y": 13,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -154,8 +154,8 @@
     {
       "local_id": "LOCALID_PALACE_SHUPPET_1",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SHUPPET)",
-      "x": 10,
-      "y": 13,
+      "x": 9,
+      "y": 11,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
       "movement_range_x": 3,

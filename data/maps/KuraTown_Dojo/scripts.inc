@@ -337,13 +337,13 @@ KuraTown_Dojo_EventScript_Advice_Text_3:
 
 KuraTown_Dojo_EventScript_DojoStatue_Text_0:
 	.string "Kura Village Dojo\p"
-	.string "certified Wielders:\n"
+	.string "Certified Wielders:\n"
 	.string "Natsuki,\l"
 	.string "{PLAYER}$"
 
 KuraTown_Dojo_EventScript_DojoStatue_Text_1:
 	.string "Kura Village Dojo\p"
-	.string "certified Wielders:\n"
+	.string "Certified Wielders:\n"
 	.string "Natsuki$"
 
 KuraTown_Dojo_EventScript_KuraDojoTree_CanCut_Text_0:

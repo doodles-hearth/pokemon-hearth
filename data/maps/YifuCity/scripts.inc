@@ -2112,7 +2112,7 @@ YifuCity_EventScript_DemoEnd_Text_0:
 	.string "Doodle$"
 
 YifuCity_EventScript_DemoEnd_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_2 EMOTE_NORMAL}Well, hello, there!\nI'm Doodle.\lI'm the maker of this game!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_2 EMOTE_NORMAL}Well, hello there, {PLAYER}!\nI'm Doodle.\lI'm the maker of this game!\p"
 	.string "You've reached the end of this demo,\ncongrats!!\p"
 	.string "Feel free to stroll around, but you've\nseen almost all the content by now.\p"
 	.string "I hope you liked it, and hope you'll play\nthe finished version too!\lSee ya!$"

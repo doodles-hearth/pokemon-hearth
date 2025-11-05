@@ -303,16 +303,16 @@ MaguroHarbor_Dojo_EventScript_Advice_Text_2:
 
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_0:
 	.string "Dojo of Maguro Harbor\p"
-	.string "certified Wielders:\n"
+	.string "Certified Wielders:\n"
 	.string "Natsuki,\l"
 	.string "{PLAYER}$"
 
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_1:
 	.string "Dojo of Maguro Harbor\p"
-	.string "certified Wielders:\n"
+	.string "Certified Wielders:\n"
 	.string "{PLAYER}$"
 
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_2:
 	.string "Dojo of Maguro Harbor\p"
-	.string "certified Wielders:\n"
+	.string "Certified Wielders:\n"
 	.string "-$"

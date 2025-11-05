@@ -64,7 +64,7 @@ script YifuCity_EventScript_DemoEnd {
 
 	setspeaker("Doodle")
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_2 EMOTE_NORMAL}Well, hello, there!\nI'm Doodle.\lI'm the maker of this game!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_2 EMOTE_NORMAL}Well, hello there, {PLAYER}!\nI'm Doodle.\lI'm the maker of this game!\p"
 		"You've reached the end of this demo,\ncongrats!!\p"
 		"Feel free to stroll around, but you've\nseen almost all the content by now.\p"
 		"I hope you liked it, and hope you'll play\nthe finished version too!\lSee ya!"

@@ -12173,63 +12173,63 @@
             "encounter_rate": 20,
             "mons": [
               {
-                "min_level": 3,
-                "max_level": 6,
+                "min_level": 7,
+                "max_level": 10,
                 "species": "SPECIES_HOOTHOOT"
               },
               {
-                "min_level": 4,
-                "max_level": 5,
+                "min_level": 8,
+                "max_level": 10,
                 "species": "SPECIES_NICKIT"
               },
               {
-                "min_level": 3,
-                "max_level": 5,
+                "min_level": 8,
+                "max_level": 10,
                 "species": "SPECIES_POOCHYENA"
               },
               {
-                "min_level": 3,
-                "max_level": 3,
+                "min_level": 7,
+                "max_level": 10,
                 "species": "SPECIES_NIDORAN"
               },
               {
-                "min_level": 3,
-                "max_level": 3,
+                "min_level": 7,
+                "max_level": 10,
                 "species": "SPECIES_KRICKETOT"
               },
               {
-                "min_level": 3,
-                "max_level": 3,
+                "min_level": 7,
+                "max_level": 10,
                 "species": "SPECIES_POOCHYENA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 7,
+                "max_level": 10,
                 "species": "SPECIES_POOCHYENA"
               },
               {
-                "min_level": 4,
-                "max_level": 5,
+                "min_level": 7,
+                "max_level": 10,
                 "species": "SPECIES_HOOTHOOT"
               },
               {
-                "min_level": 3,
-                "max_level": 5,
+                "min_level": 7,
+                "max_level": 10,
                 "species": "SPECIES_KRICKETOT"
               },
               {
-                "min_level": 4,
-                "max_level": 4,
+                "min_level": 7,
+                "max_level": 10,
                 "species": "SPECIES_POOCHYENA"
               },
               {
-                "min_level": 3,
-                "max_level": 5,
+                "min_level": 7,
+                "max_level": 10,
                 "species": "SPECIES_ABRA"
               },
               {
-                "min_level": 3,
-                "max_level": 5,
+                "min_level": 7,
+                "max_level": 10,
                 "species": "SPECIES_ABRA"
               }
             ]
