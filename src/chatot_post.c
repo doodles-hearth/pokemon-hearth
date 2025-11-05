@@ -242,7 +242,9 @@ bool8 Native_CheckChatotPost(struct ScriptContext *ctx)
         {
             u16 trainerId = gSaveBlock1Ptr->chatotPostRematchTrainerId;
             DebugPrintf("SENDER=%S", GetTrainerNameFromId(trainerId));
-            StringCopy(gStringVar1, GetTrainerNameFromId(trainerId));
+            StringCopy(gStringVar1, GetTrainerClassNameFromId(trainerId));
+            StringAppend(gStringVar1, COMPOUND_STRING(" "));
+            StringAppend(gStringVar1, GetTrainerNameFromId(trainerId));
         }
         else
         {

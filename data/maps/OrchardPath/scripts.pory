@@ -401,47 +401,16 @@ script OrchardPath_EventScript_Samurai2 {
 	release
 }
 
-script OrchardPath_EventScript_TrainerBattleRoadblock {
-	lock
-	playbgm(MUS_VS_TRAINER, FALSE)
-
-	applymovement(LOCALID_ORCHARD_NINJA_BOY, moves(walk_in_place_fast_left))
-	waitmovement(0)
-
-	setspeaker(SP_NAME_NINJA_BOY)
+script OrchardPath_EventScript_Daichi {
+	trainerbattle_single(
+		TRAINER_DAICHI,
+		format("I'm doin' research on local berries!"),
+		format("This battle made me hungry.")
+	)
+	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}You shall know defeat at the hand of my ninja Pokémon!\p"
-		"Nuzleaf, use Feint Attack!"
+		"Lemme bring these juicy Lum Berries back home…"
 	))
 	closemessage
-
-	playmoncry(SPECIES_NUZLEAF, CRY_MODE_ENCOUNTER)
-	waitmoncry
-	applymovement(LOCALID_ORCHARD_NUZLEAF, moves(lock_facing_direction, walk_fast_left, walk_fast_right, unlock_facing_direction))
-	playse(SE_EFFECTIVE)
-	waitmovement(0)
-	waitse
-
-	applymovement(LOCALID_ORCHARD_SCHOOLKID, moves(walk_in_place_fast_right))
-	waitmovement(0)
-
-	setspeaker(SP_NAME_SCHOOL_KID)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Your pathetic ninja costume can't beat the sheer power of knowledge!\p"
-		"Breloom! Headbutt!"
-	))
-	closemessage
-
-
-	applymovement(LOCALID_ORCHARD_BRELOOM, moves(jump_in_place_right))
-	playmoncry(SPECIES_BRELOOM, CRY_MODE_ENCOUNTER)
-	waitmoncry
-	waitmovement(0)
-	applymovement(LOCALID_ORCHARD_BRELOOM, moves(lock_facing_direction, walk_fast_right, walk_fast_left, unlock_facing_direction))
-	playse(SE_M_HEADBUTT)
-	waitmovement(0)
-	waitse
-
-	fadedefaultbgm
-	release
+	end
 }

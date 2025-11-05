@@ -12650,7 +12650,7 @@
               {
                 "min_level": 20,
                 "max_level": 23,
-                "species": "SPECIES_MUNCHLAX"
+                "species": "SPECIES_HERACROSS"
               },
               {
                 "min_level": 20,
@@ -12665,7 +12665,7 @@
               {
                 "min_level": 20,
                 "max_level": 23,
-                "species": "SPECIES_MUNCHLAX"
+                "species": "SPECIES_DEERLING_AUTUMN"
               }
             ]
           },
@@ -14152,7 +14152,7 @@
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_ZUBAT"
+                "species": "SPECIES_SANDSHREW"
               },
               {
                 "min_level": 8,
@@ -14162,12 +14162,12 @@
               {
                 "min_level": 8,
                 "max_level": 11,
-                "species": "SPECIES_MAKUHITA"
+                "species": "SPECIES_SANDSHREW"
               },
               {
                 "min_level": 8,
                 "max_level": 12,
-                "species": "SPECIES_WOOBAT"
+                "species": "SPECIES_SANDSHREW"
               },
               {
                 "min_level": 11,
