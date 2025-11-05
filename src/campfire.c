@@ -14,6 +14,7 @@
 #include "field_weather.h"
 #include "script_pokemon_util.h"
 #include "string_util.h"
+#include "task.h"
 #include "constants/event_objects.h"
 #include "constants/abilities.h"
 #include "constants/flags.h"
@@ -98,8 +99,8 @@ const struct CampfireEncounterEvent sCampfireOpponentEncounter[CAMPFIRE_EVENT_CO
     }
 };
 
-static void ShowMonAndStartCampfire(void);
-static void DoPreCampfireEvent(u8 eventGroup, u8 eventNum);
+static void Task_ShowMonAndStartCampfire(u8 taskId);
+static void Task_DoPreCampfireEvent(u8 taskId);
 static void TryShowPlayerPokemonAtCampfire(void);
 static void GetLocationCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, u8 mapGroup, u8 mapNum);
 static void GetDailyCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, s32 friendship);
@@ -130,6 +131,8 @@ void RollDailyCampfireEvents(u16 days)
 
 #define gMapGroup   gSaveBlock1Ptr->location.mapGroup
 #define gMapNum     gSaveBlock1Ptr->location.mapNum
+#define tEventGroup data[0]
+#define tEventNum   data[1]
 
 u16 GetDailyCampfireEvent(u8 mapGroup, u8 mapNum)
 {
@@ -152,32 +155,55 @@ static void SetDailyCampfireEventDone(u8 mapGroup, u8 mapNum)
     }
 }
 
-void RestAtCampfire(void)
+void Task_RestAtCampfire(u8 taskId)
 {
-    u16 campfireEvent;
-    u8 group, event;
-
     FlagSet(OW_FLAG_PAUSE_TIME);
 
-    campfireEvent = GetDailyCampfireEvent(gMapGroup, gMapNum);
-    group = (campfireEvent >> 8) & 0xFF;
-    event = campfireEvent & 0xFF;
+    u16 campfireEvent = GetDailyCampfireEvent(gMapGroup, gMapNum);
+    gTasks[taskId].tEventGroup = (campfireEvent >> 8) & 0xFF;
+    gTasks[taskId].tEventNum = campfireEvent & 0xFF;
 
-    if (group == CAMPFIRE_EVENT_GROUP_FRIENDLY
-     || group == CAMPFIRE_EVENT_GROUP_OPPONENT)
-        return DoPreCampfireEvent(group, event);
+    if (gTasks[taskId].tEventGroup == CAMPFIRE_EVENT_GROUP_FRIENDLY
+     || gTasks[taskId].tEventGroup == CAMPFIRE_EVENT_GROUP_OPPONENT)
+    {
+        gTasks[taskId].func = Task_DoPreCampfireEvent;
+        return;
+    }
 
     gSaveBlock1Ptr->campfire.scriptTargetMon = -1;
-    if (group == CAMPFIRE_EVENT_GROUP_PARTYMON)
+    if (gTasks[taskId].tEventGroup == CAMPFIRE_EVENT_GROUP_PARTYMON)
         gSaveBlock1Ptr->campfire.scriptTargetMon = Random() % gPlayerPartyCount;
 
-    ShowMonAndStartCampfire();
+    gTasks[taskId].func = Task_ShowMonAndStartCampfire;
+}
+
+static void Task_DoPreCampfireEvent(u8 taskId)
+{
+    /*
+    const u8 *script;
+    u16 graphicsId;
+    u8 eventGroup = gTasks[taskId].tEventGroup
+    u8 eventNum = gTasks[taskId].tEventNum
+
+    if (eventGroup == CAMPFIRE_EVENT_GROUP_FRIENDLY)
+    {
+        script = sCampfireFriendlyEncounter[eventNum].script;
+        graphicsId = sCampfireFriendlyEncounter[eventNum].graphicsId;
+    }
+    else if (eventGroup == CAMPFIRE_EVENT_GROUP_OPPONENT)
+    {
+        script = sCampfireOpponentEncounter[eventNum].script;
+        graphicsId = sCampfireOpponentEncounter[eventNum].graphicsId;
+    }
+    */
+    // TODO Zatsu: Add the shit that makes the NPC show up and run the script
+    gTasks[taskId].func = Task_ShowMonAndStartCampfire;
 }
 
 /**
  * Heals and places the player's party around the campfire.
  */
-static void ShowMonAndStartCampfire(void)
+static void Task_ShowMonAndStartCampfire(u8 taskId)
 {
     HealPlayerParty();
     TryShowPlayerPokemonAtCampfire();
@@ -211,7 +237,8 @@ static void ShowMonAndStartCampfire(void)
 
     // TODO EVA: slightly increase the friendship of the whole party? Or create another function that increases
     //  the friendship of one Pokémon when given some item like a marshmallow?
-    return;
+
+    DestroyTask(taskId);
 }
 
 static void TryShowPlayerPokemonAtCampfire(void)
@@ -239,26 +266,6 @@ static void TryShowPlayerPokemonAtCampfire(void)
         VarSet((VAR_OBJ_GFX_ID_A + i), (u16)specGfx);
         DebugPrintfLevel(MGBA_LOG_WARN, "loading Pokémon %d: %d", i, specGfx);
     }
-}
-
-static void DoPreCampfireEvent(u8 eventGroup, u8 eventNum)
-{
-    /*
-    const u8 *script;
-    u16 graphicsId;
-    if (eventGroup == CAMPFIRE_EVENT_GROUP_FRIENDLY)
-    {
-        script = sCampfireFriendlyEncounter[eventNum].script;
-        graphicsId = sCampfireFriendlyEncounter[eventNum].graphicsId;
-    }
-    else if (eventGroup == CAMPFIRE_EVENT_GROUP_OPPONENT)
-    {
-        script = sCampfireOpponentEncounter[eventNum].script;
-        graphicsId = sCampfireOpponentEncounter[eventNum].graphicsId;
-    }
-    */
-    // TODO Zatsu: Add the shit that makes the NPC show up and run the script
-    ShowMonAndStartCampfire();
 }
 
 void GetCampfireAction(struct ScriptContext *ctx)
@@ -424,7 +431,7 @@ bool8 MovedTooFarFromCampfire(u16 x, u16 y)
     return x > campX + 3 || x < campX - 3 || y > campY + 3 || y < campY - 3;
 }
 
-void LeaveCampfire(void)
+void Task_LeaveCampfire(u8 taskId)
 {
     // Resume RTC
     FlagClear(OW_FLAG_PAUSE_TIME);
@@ -447,6 +454,7 @@ void LeaveCampfire(void)
     gSaveBlock1Ptr->campfire.scriptTargetMon = -1;
     
     TryRemoveCampfireObjects();
+    DestroyTask(taskId);
 }
 
 static void TryRemoveCampfireObjects(void)
@@ -471,10 +479,10 @@ static void TryRemoveCampfireObjects(void)
 
 void Native_Campfire(void)
 {
-    RestAtCampfire();
+    CreateTask(Task_RestAtCampfire, 5);
 }
 
 void Native_LeaveCampfire(void)
 {
-    LeaveCampfire();
+    CreateTask(Task_LeaveCampfire, 5);
 }
