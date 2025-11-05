@@ -853,7 +853,7 @@ static bool8 UpdatePoisonStepCounter(void)
         (*ptr) %= 4;
         if (*ptr == 0)
         {
-            switch (DoPoisonFieldEffect())
+            switch (DoPoisonDecayFieldEffect())
             {
             case FLDPSN_NONE:
                 return FALSE;
