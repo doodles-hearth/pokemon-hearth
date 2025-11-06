@@ -94,13 +94,14 @@ script EventScript_PokemonGaveYouAnItem {
     end
 }
 
-script EventScript_PokemonHandsYouAPecha {
+script EventScript_OldForagingBloke {
     msgbox(format(
-        "{STR_VAR_1} scurried up to you and handed you an item!"
+        "I was foraging in the area when I noticed you setting up! Please take this."
     ), MSGBOX_DEFAULT)
     giveitem(ITEM_PECHA_BERRY)
-    release
-    end
+    clearCampfireEventHere
+    delay(20)
+    campfire
 }
 
 script EventScript_PokemonHandsYouAnOran {
@@ -108,24 +109,27 @@ script EventScript_PokemonHandsYouAnOran {
         "{STR_VAR_1} scurried up to you and handed you an item!"
     ), MSGBOX_DEFAULT)
     giveitem(ITEM_ORAN_BERRY)
-    release
-    end
+    clearCampfireEventHere
+    delay(20)
+    campfire
+}
+
+script EventScript_CamperWantsToBattle {
+    msgbox(format(
+        "Hey this is my campfire. Battle me for it?"
+    ), MSGBOX_YESNO)
+    clearCampfireEventHere
+    delay(20)
+    campfire
 }
 
 script EventScript_PokemonWantsToBattle {
     msgbox(format(
         "{STR_VAR_1} wants to battle!"
     ), MSGBOX_YESNO)
-    release
-    end
-}
-
-script EventScript_TrainerWantsToBattle {
-    msgbox(format(
-        "Hey this is my campfire. Battle me for it?"
-    ), MSGBOX_YESNO)
-    release
-    end
+    clearCampfireEventHere
+    delay(20)
+    campfire
 }
 
 raw `

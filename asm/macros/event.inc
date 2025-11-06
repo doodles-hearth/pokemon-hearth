@@ -2470,6 +2470,10 @@
 	callnative Native_LeaveCampfire
 	.endm
 
+    .macro clearCampfireEventHere
+    callnative Native_CampfireEventDoneAtPlayerLoc
+    .endm
+
 	@ ============================ @
 	@ ITEM DESCRIPTION HEADER MACROS
 	@ Used with OW_SHOW_ITEM_DESCRIPTIONS config

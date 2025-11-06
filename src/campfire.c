@@ -7,23 +7,35 @@
 #include "field_screen_effect.h"
 #include "global.fieldmap.h"
 #include "overworld.h"
+#include "palette.h"
 #include "pokemon.h"
 #include "random.h"
 #include "follower_helper.h"
 #include "field_camera.h"
 #include "field_weather.h"
+#include "fieldmap.h"
 #include "script_pokemon_util.h"
 #include "string_util.h"
+#include "sound.h"
 #include "task.h"
 #include "constants/event_objects.h"
 #include "constants/abilities.h"
 #include "constants/flags.h"
 #include "constants/maps.h"
 #include "constants/species.h"
+#include "constants/songs.h"
 #include "constants/vars.h"
 
 EWRAM_DATA const u8 *gSavedFollowerMessagePtr = NULL;
-const u8 EventScript_CampfireMessageNone[] = _("");
+static const u8 EventScript_CampfireMessageNone[] = _("");
+static const s8 sFacingOffset[5][2] =
+{
+    [DIR_NONE]  = { 0,  0 },
+    [DIR_SOUTH] = { 0,  1 },
+    [DIR_NORTH] = { 0, -1 },
+    [DIR_WEST]  = { 1,  0 },
+    [DIR_EAST]  = { -1, 0 },
+};
 
 struct CampfireDailyEvents
 {
@@ -75,8 +87,8 @@ const struct CampfireEncounterEvent sCampfireFriendlyEncounter[CAMPFIRE_EVENT_CO
 {
     [CAMPFIRE_EVENT_1] = 
     {
-        .script = EventScript_PokemonHandsYouAPecha,
-        .graphicsId = OBJ_EVENT_GFX_SPECIES(PIKACHU),
+        .script = EventScript_OldForagingBloke,
+        .graphicsId = OBJ_EVENT_GFX_MOUNTAIN_OLD_MAN,
     },
     [CAMPFIRE_EVENT_2] = 
     {
@@ -89,20 +101,22 @@ const struct CampfireEncounterEvent sCampfireOpponentEncounter[CAMPFIRE_EVENT_CO
 {
     [CAMPFIRE_EVENT_1] = 
     {
-        .script = EventScript_PokemonWantsToBattle,
-        .graphicsId = OBJ_EVENT_GFX_SPECIES(PIKACHU),
+        .script = EventScript_CamperWantsToBattle,
+        .graphicsId = OBJ_EVENT_GFX_HIKER,
     },
     [CAMPFIRE_EVENT_2] = 
     {
-        .script = EventScript_TrainerWantsToBattle,
-        .graphicsId = OBJ_EVENT_GFX_HIKER,
+        .script = EventScript_PokemonWantsToBattle,
+        .graphicsId = OBJ_EVENT_GFX_SPECIES(PIKACHU),
     }
 };
 
 static void Task_ShowMonAndStartCampfire(u8 taskId);
+static void Task_SetUpPreCampfireEvent(u8 taskId);
+static void Task_WaitShortTimeForFade(u8 taskId);
 static void Task_DoPreCampfireEvent(u8 taskId);
 static void TryShowPlayerPokemonAtCampfire(void);
-static void GetLocationCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, u8 mapGroup, u8 mapNum);
+static UNUSED void GetLocationCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, u8 mapGroup, u8 mapNum);
 static void GetDailyCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, s32 friendship);
 static void TryRemoveCampfireObjects(void);
 
@@ -121,7 +135,8 @@ void RollDailyCampfireEvents(u16 days)
 
     for (u32 i = 0; i < CAMPFIRE_COUNT; i++)
     {
-        group = CAMPFIRE_EVENT_GROUP_PARTYMON;
+        // Zatsu TODO: make this roll an actual random event instead of fudging it for testing
+        group = CAMPFIRE_EVENT_GROUP_FRIENDLY;
         event = 0;
 
         var = (group << 8) | event;
@@ -133,19 +148,34 @@ void RollDailyCampfireEvents(u16 days)
 #define gMapNum     gSaveBlock1Ptr->location.mapNum
 #define tEventGroup data[0]
 #define tEventNum   data[1]
+#define tTurnPlayer data[2]
+#define tVObjectId  data[3]
+#define tTimer      data[4]
+#define tFuncHi     data[5]
+#define tFuncLo     data[6]
 
 u16 GetDailyCampfireEvent(u8 mapGroup, u8 mapNum)
 {
     for (u32 i = 0; i < CAMPFIRE_COUNT; i++)
     {
-        if (gMapGroup == sCampfireDailyEvents[i].mapGroup
-           && gMapNum == sCampfireDailyEvents[i].mapNum)
+        if (mapGroup == sCampfireDailyEvents[i].mapGroup
+           && mapNum == sCampfireDailyEvents[i].mapNum)
            return VarGet(sCampfireDailyEvents[i].campfireVar);
     }
     return 0;
 }
 
 static void SetDailyCampfireEventDone(u8 mapGroup, u8 mapNum)
+{
+    for (u32 i = 0; i < CAMPFIRE_COUNT; i++)
+    {
+        if (mapGroup == sCampfireDailyEvents[i].mapGroup
+           && mapNum == sCampfireDailyEvents[i].mapNum)
+            VarSet(sCampfireDailyEvents[i].campfireVar, 0);
+    }
+}
+
+void Native_CampfireEventDoneAtPlayerLoc(void)
 {
     for (u32 i = 0; i < CAMPFIRE_COUNT; i++)
     {
@@ -158,15 +188,19 @@ static void SetDailyCampfireEventDone(u8 mapGroup, u8 mapNum)
 void Task_RestAtCampfire(u8 taskId)
 {
     FlagSet(OW_FLAG_PAUSE_TIME);
+    LockPlayerFieldControls();
+    FreezeObjectEvents();
 
     u16 campfireEvent = GetDailyCampfireEvent(gMapGroup, gMapNum);
     gTasks[taskId].tEventGroup = (campfireEvent >> 8) & 0xFF;
     gTasks[taskId].tEventNum = campfireEvent & 0xFF;
+    gTasks[taskId].tTurnPlayer = -1;
 
     if (gTasks[taskId].tEventGroup == CAMPFIRE_EVENT_GROUP_FRIENDLY
      || gTasks[taskId].tEventGroup == CAMPFIRE_EVENT_GROUP_OPPONENT)
     {
-        gTasks[taskId].func = Task_DoPreCampfireEvent;
+        FadeScreen(FADE_TO_BLACK, 0);
+        gTasks[taskId].func = Task_SetUpPreCampfireEvent;
         return;
     }
 
@@ -177,27 +211,112 @@ void Task_RestAtCampfire(u8 taskId)
     gTasks[taskId].func = Task_ShowMonAndStartCampfire;
 }
 
+static void Task_SetUpPreCampfireEvent(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        const u8 *script = 0;
+        u16 graphicsId = 0;
+        u8 eventGroup = gTasks[taskId].tEventGroup;
+        u8 eventNum = gTasks[taskId].tEventNum;
+        u8 elevation = 0, direction = 0;
+        s16 x = 0, y = 0;
+
+        u8 directions[4] =
+        {
+            DIR_SOUTH,
+            DIR_NORTH,
+            DIR_WEST,
+            DIR_EAST,
+        };
+
+        if (eventGroup == CAMPFIRE_EVENT_GROUP_FRIENDLY)
+        {
+            script = sCampfireFriendlyEncounter[eventNum].script;
+            graphicsId = sCampfireFriendlyEncounter[eventNum].graphicsId;
+        }
+        else if (eventGroup == CAMPFIRE_EVENT_GROUP_OPPONENT)
+        {
+            script = sCampfireOpponentEncounter[eventNum].script;
+            graphicsId = sCampfireOpponentEncounter[eventNum].graphicsId;
+        }
+
+        if (script == 0 || graphicsId == 0) // Something went wrong just do the campfire
+        {
+            gTasks[taskId].func = Task_ShowMonAndStartCampfire;
+            return;
+        }
+
+        Shuffle(directions, 4, sizeof(directions[0]));
+
+        for (u32 i = 0; i < 4; i++)
+        {
+            direction = directions[i];
+            if (direction == gSpecialVar_Facing)
+                continue;
+
+            x = gSaveBlock1Ptr->pos.x + sFacingOffset[direction][0];
+            y = gSaveBlock1Ptr->pos.y + sFacingOffset[direction][1];
+
+            if (MapGridGetCollisionAt(x, y) || GetMapBorderIdAt(x, y) == -1
+            || IsElevationMismatchAt(gObjectEvents[gPlayerAvatar.spriteId].currentElevation, x, y))
+                continue;
+
+            break;
+        }
+
+        gTasks[taskId].tVObjectId = CreateVirtualObject(graphicsId, MAX_SPRITES - 1, x, y, elevation, GetOppositeDirection(direction));
+        gTasks[taskId].tTurnPlayer = direction;
+        gTasks[taskId].tFuncHi = (uintptr_t)script >> 16;
+        gTasks[taskId].tFuncLo = (uintptr_t)script;
+
+        gTasks[taskId].func = Task_WaitShortTimeForFade;
+    }
+}
+
+static void Task_WaitShortTimeForFade(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        gTasks[taskId].tTimer++;
+        if (gTasks[taskId].tTimer > 40)
+        {
+            FadeScreen(FADE_FROM_BLACK, 0);
+            gTasks[taskId].func = Task_DoPreCampfireEvent;
+            gTasks[taskId].tTimer = 0;
+        }
+    }
+}
+
 static void Task_DoPreCampfireEvent(u8 taskId)
 {
-    /*
-    const u8 *script;
-    u16 graphicsId;
-    u8 eventGroup = gTasks[taskId].tEventGroup
-    u8 eventNum = gTasks[taskId].tEventNum
+    if (!gPaletteFade.active)
+    {
+        struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
+        const u8 *script = (const u8 *)(
+            ((uintptr_t)(gTasks[taskId].tFuncHi & 0xFFFF) << 16) |
+            (uintptr_t)(gTasks[taskId].tFuncLo & 0xFFFF)
+        );
 
-    if (eventGroup == CAMPFIRE_EVENT_GROUP_FRIENDLY)
-    {
-        script = sCampfireFriendlyEncounter[eventNum].script;
-        graphicsId = sCampfireFriendlyEncounter[eventNum].graphicsId;
+        gTasks[taskId].tTimer++;
+        if (gTasks[taskId].tTimer == 30)
+        {
+            ObjectEventEmote(playerObjEvent, FOLLOWER_EMOTION_SURPRISE);
+            PlaySE(SE_PIN);
+        }
+        else if (gTasks[taskId].tTimer == 60)
+        {
+            if (gTasks[taskId].tTurnPlayer != -1)
+                ObjectEventTurn(playerObjEvent, gTasks[taskId].tTurnPlayer);
+        }
+        else if (gTasks[taskId].tTimer > 100)
+        {
+            ScriptContext_SetupScript(script);
+            UnfreezeObjectEvents();
+            UnlockPlayerFieldControls();
+            DestroyTask(taskId);
+        }
     }
-    else if (eventGroup == CAMPFIRE_EVENT_GROUP_OPPONENT)
-    {
-        script = sCampfireOpponentEncounter[eventNum].script;
-        graphicsId = sCampfireOpponentEncounter[eventNum].graphicsId;
-    }
-    */
-    // TODO Zatsu: Add the shit that makes the NPC show up and run the script
-    gTasks[taskId].func = Task_ShowMonAndStartCampfire;
 }
 
 /**
@@ -238,6 +357,8 @@ static void Task_ShowMonAndStartCampfire(u8 taskId)
     // TODO EVA: slightly increase the friendship of the whole party? Or create another function that increases
     //  the friendship of one Pokémon when given some item like a marshmallow?
 
+    UnfreezeObjectEvents();
+    UnlockPlayerFieldControls();
     DestroyTask(taskId);
 }
 
@@ -346,10 +467,12 @@ void GetCampfireAction(struct ScriptContext *ctx)
     multi = Random() % gFollowerBasicMessages[emotion].length;
 
     // (20% chance) Select a location-based message
+    /*
     if (!(Random() % 4))
     {
         GetLocationCampfireAction(ctx, objEvent, gMapGroup, gMapNum);
     }
+    */
 
     // (50% chance) Select special condition using reservoir sampling
     for (i = (Random() & 1) ? condCount : 0, j = 1; i < condCount; i++)
@@ -401,9 +524,10 @@ void GetCampfireAction(struct ScriptContext *ctx)
                         gFollowerBasicMessages[emotion].campfireScript);
 }
 
-static void GetLocationCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, u8 mapGroup, u8 mapNum)
+static UNUSED void GetLocationCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, u8 mapGroup, u8 mapNum)
 {
-
+    // This will get actions based on the specific location of the campfire
+    // Needs to be populated with some code that gets a random script from an array
 }
 
 static void GetDailyCampfireAction(struct ScriptContext *ctx, struct ObjectEvent *objEvent, s32 friendship)
@@ -475,7 +599,15 @@ static void TryRemoveCampfireObjects(void)
 }
 
 #undef gMapGroup
-#undef gMapNum 
+#undef gMapNum
+#undef tEventGroup
+#undef tEventNum
+#undef tTurnPlayer
+#undef tEvntScript
+#undef tVObjectId
+#undef tTimer
+#undef tFuncHi
+#undef tFuncLo
 
 void Native_Campfire(void)
 {
