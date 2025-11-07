@@ -330,8 +330,6 @@ static void Task_ShowMonAndStartCampfire(u8 taskId)
 
     u32 pX = gSaveBlock1Ptr->pos.x;
     u32 pY = gSaveBlock1Ptr->pos.y;
-    gSaveBlock1Ptr->campfire.x = pX;
-    gSaveBlock1Ptr->campfire.y = pY + 1;
 
     switch (gSpecialVar_Facing)
     {
@@ -347,6 +345,9 @@ static void Task_ShowMonAndStartCampfire(u8 taskId)
         pY -= 1;
         break;
     }
+
+    gSaveBlock1Ptr->campfire.x = pX;
+    gSaveBlock1Ptr->campfire.y = pY + 1;
 
     SetWarpDestination(gMapGroup, gMapNum, WARP_ID_NONE, pX, pY);
     DoDiveWarp();
@@ -466,8 +467,9 @@ void GetCampfireAction(struct ScriptContext *ctx)
     // roll for basic/unconditional message
     multi = Random() % gFollowerBasicMessages[emotion].length;
 
-    // (20% chance) Select a location-based message
-    /*
+    /* (20% chance) Select a location-based message
+    /  I never ended up creating this as it seemed unecessary
+    /  But if you would like, here's where you'd put this
     if (!(Random() % 4))
     {
         GetLocationCampfireAction(ctx, objEvent, gMapGroup, gMapNum);
@@ -534,8 +536,7 @@ static void GetDailyCampfireAction(struct ScriptContext *ctx, struct ObjectEvent
 {
     u8 random = Random() % CAMPFIRE_EVENT_COUNT; 
     // ^ Currently this just rolls at random but I'd like to add logic that makes the script it gets be highly custom to your Pokémon's current mood
-    // Event from the Campfire's rolled daily variable is not honoured in PartyMon events because of this
-    // It would be impossible to predict the Pokémon's campfire mood at the time it was rolled
+    // Event from the Campfire's rolled daily variable is not honoured in PartyMon events because of this it would be impossible to predict the Pokémon's campfire mood at the time it was rolled
     const u8 *script = sCampfirePartyMonEvents[random].script;
     u8 emotion = sCampfirePartyMonEvents[random].emotion;
     u16 item = sCampfirePartyMonEvents[random].item;

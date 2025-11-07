@@ -712,6 +712,7 @@ extern const u8 EventScript_MovedTooFast[];
 
 // Custom scripts
 extern const u8 EventScript_WalkAwayFromCampfire[];
+
 extern const u8 EventScript_PokemonGaveYouAnItem[];
 
 extern const u8 EventScript_OldForagingBloke[];
