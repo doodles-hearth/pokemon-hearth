@@ -42,8 +42,7 @@ script GinkoWoods_EventScript_Toshio {
 
 script(local) GinkoWoods_EventScript_Toshio_Register {
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}{SPEAKER NAME_YOUNGSTER}"
-		"Hey, let's be friends!\nWe'll send each other Chatot mail,\land battle again sometime!"
+		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}{SPEAKER NAME_YOUNGSTER}Hey, let's be friends!\nWe'll send each other Chatot mail,\land battle again sometime!"
 	))
 	closemessage
 	register_matchcall(TRAINER_TOSHIO_1)
@@ -145,7 +144,7 @@ script GinkoWoods_EventScript_Bean {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right! I am glad you share my interest in Pokémon habitat.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right! I am glad you share my interest in Pokémon habitats.\p"
 				"I am Hariko. And what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\NI will see you around, then.\p"
 				"Okay. Bye!"

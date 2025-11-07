@@ -1126,9 +1126,10 @@
 
 	@ Gives the player an Egg of the specified species.
 	@ VAR_RESULT will be set to MON_GIVEN_TO_PARTY, MON_GIVEN_TO_PC, or MON_CANT_GIVE depending on the outcome.
-	.macro giveegg species:req
+	.macro giveegg species:req, specialLoc=0
 	.byte SCR_OP_GIVEEGG
 	.2byte \species
+	.byte \specialLoc
 	.endm
 
 	@ Replaces the move at 'slot' of the Pokémon in the player's party at 'partyIndex' with the specified move.
@@ -1318,6 +1319,14 @@
 	@ If 'disable' is set to anything but 0 then this command does nothing.
 	.macro addmoney value:req, disable=0
 	.byte SCR_OP_ADDMONEY
+	.4byte \value
+	.byte \disable
+	.endm
+
+	@ Adds value to the player's money. If adding 'value' money would exceed MAX_MONEY, the player's money is set to MAX_MONEY.
+	@ If 'disable' is set to anything but 0 then this command does nothing.
+	.macro addmoneyvar value:req, disable=0
+	.byte SCR_OP_ADDMONEY_VAR
 	.4byte \value
 	.byte \disable
 	.endm

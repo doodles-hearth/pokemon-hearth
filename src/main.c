@@ -156,7 +156,7 @@ void AgbMainLoop(void)
 
         PlayTimeCounter_Update();
         MapMusicMain();
-        CheckSpeedupControls();
+        // CheckSpeedupControls();
 
         if (!SpeedupShouldSkip())
             WaitForVBlank();

@@ -15,6 +15,8 @@ MaguroHarbor_Dojo_EventScript_KoishiDefeated::
 	call Common_EventScript_PlayGymBadgeFanfare
 	setspeaker SP_NAME_KOISHI
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_1, MSGBOX_DEFAULT
+	clearspeaker
+	removefieldmugshot
 	giveitem ITEM_TM_NATURE_POWER
 	setspeaker SP_NAME_KOISHI
 	msgbox MaguroHarbor_Dojo_EventScript_KoishiDefeated_Text_2, MSGBOX_DEFAULT
@@ -301,16 +303,16 @@ MaguroHarbor_Dojo_EventScript_Advice_Text_2:
 
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_0:
 	.string "Dojo of Maguro Harbor\p"
-	.string "certified Wielders:\n"
+	.string "Certified Wielders:\n"
 	.string "Natsuki,\l"
 	.string "{PLAYER}$"
 
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_1:
 	.string "Dojo of Maguro Harbor\p"
-	.string "certified Wielders:\n"
+	.string "Certified Wielders:\n"
 	.string "{PLAYER}$"
 
 MaguroHarbor_Dojo_EventScript_DojoStatue_Text_2:
 	.string "Dojo of Maguro Harbor\p"
-	.string "certified Wielders:\n"
+	.string "Certified Wielders:\n"
 	.string "-$"

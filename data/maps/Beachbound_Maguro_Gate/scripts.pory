@@ -24,3 +24,17 @@ script Beachbound_Maguro_Gate_EventScript_Guard {
 	closemessage
 	release
 }
+
+script Beachbound_Maguro_Gate_EventScript_Umbreon {
+	lock
+    faceplayer
+	setseenmon(SPECIES_UMBREON)
+	setspeakertomonname(SPECIES_UMBREON)
+	playmoncry(SPECIES_UMBREON, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Whew…"
+    ))
+    waitmoncry
+    release
+    end
+}

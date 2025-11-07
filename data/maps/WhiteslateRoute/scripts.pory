@@ -254,6 +254,17 @@ script WhiteslateRoute_EventScript_Utaro {
 	end
 }
 
+script WhiteslateRoute_EventScript_Asagao {
+	trainerbattle_single(
+		TRAINER_UTARO,
+		format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Can you smell the perfume of Uume Berries?"),
+		format("You're a brute!")
+	)
+	setspeaker(SP_NAME_AROMA_LADY)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}With Uume Forest right west of here, the ripe Berry smell is so strong it's almost pungent!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
 script WhiteslateRoute_EventScript_ShuckleGirl {
 	setnamedmon(SPECIES_SHUCKLE)
 	setspeaker(SP_NAME_WOMAN)
@@ -385,6 +396,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 			waitmovement(LOCALID_SECRET_BASE_MAN)
 	}
 
+	playse(SE_PIN)
 	applymovement(LOCALID_SECRET_BASE_MAN, moves(emote_sad))
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(

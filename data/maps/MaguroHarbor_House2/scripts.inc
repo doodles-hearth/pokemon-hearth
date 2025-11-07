@@ -37,6 +37,7 @@ MaguroHarbor_House2_Fisherman::
 	faceplayer
 	msgbox MaguroHarbor_House2_Fisherman_Text_0
 	closemessage
+	setnamedmon SPECIES_GYARADOS
 	release
 	return
 

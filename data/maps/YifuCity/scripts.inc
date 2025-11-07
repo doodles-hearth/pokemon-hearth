@@ -1749,6 +1749,17 @@ YifuCity_EventScript_UumeForestTrees::
 	return
 
 
+YifuCity_EventScript_WhereRefuge::
+	lock
+	faceplayer
+	msgbox YifuCity_EventScript_WhereRefuge_Text_0
+	applymovement VAR_LAST_TALKED, YifuCity_Trigger_CantGoThruNorth_Movement_0
+	msgbox YifuCity_EventScript_WhereRefuge_Text_1
+	closemessage
+	release
+	return
+
+
 YifuCity_EventScript_DemoEnd_Movement_0:
 	walk_down
 	walk_down
@@ -2101,7 +2112,7 @@ YifuCity_EventScript_DemoEnd_Text_0:
 	.string "Doodle$"
 
 YifuCity_EventScript_DemoEnd_Text_1:
-	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_2 EMOTE_NORMAL}Well, hello, there!\nI'm Doodle.\lI'm the maker of this game!\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_2 EMOTE_NORMAL}Well, hello there, {PLAYER}!\nI'm Doodle.\lI'm the maker of this game!\p"
 	.string "You've reached the end of this demo,\ncongrats!!\p"
 	.string "Feel free to stroll around, but you've\nseen almost all the content by now.\p"
 	.string "I hope you liked it, and hope you'll play\nthe finished version too!\lSee ya!$"
@@ -2340,13 +2351,13 @@ YifuCity_Trigger_CrobatGruntStuckInHole_Text_4:
 	.string "Heyyy!! Help!$"
 
 YifuCity_Trigger_CrobatGruntStuckInHole_Text_5:
-	.string "I fell down the canal! I'm stuck down\n"
-	.string "'ere!\p"
+	.string "I fell down the canal!\n"
+	.string "I'm stuck down 'ere!\p"
 	.string "Damn me, couldn't remember the first\n"
 	.string "half of the damn password…\l"
 	.string "“Something something… {COLOR RED}is awesome{COLOR DARK_GRAY}”!\l"
-	.string "But what?!\l"
-	.string "And why'd I think it was a good idea to\l"
+	.string "But what?!\p"
+	.string "And why'd I think it was a good idea to\n"
 	.string "try gettin' in through the canal?\l"
 	.string "I can't swim! It's a dead end!$"
 
@@ -2725,3 +2736,9 @@ YifuCity_EventScript_UumeForestTrees_Text_0:
 	.string "of Uume Forest for myself!\p"
 	.string "I've heard wonders about their\n"
 	.string "foliage's shades of purple!$"
+
+YifuCity_EventScript_WhereRefuge_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}Looking for the Pokémon Refuge?$"
+
+YifuCity_EventScript_WhereRefuge_Text_1:
+	.string "Just follow this path.$"

@@ -1339,6 +1339,13 @@ static void CB2_EndTrainerBattle(void)
     HandleBattleVariantEndParty();
     FakeRtc_AdvanceTimeBy(0, 0, DURATION_TRAINER_BATTLE_MINUTES, 0, FALSE);
 
+    gSpeakerName = NULL;
+    if (IsFieldMugshotActive())
+    {
+        gSprites[GetFieldMugshotSpriteId()].data[0] = FALSE;
+        RemoveFieldMugshot();
+    }
+
     if (FollowerNPCIsBattlePartner())
     {
         RestorePartyAfterFollowerNPCBattle();
@@ -1365,15 +1372,20 @@ static void CB2_EndTrainerBattle(void)
     }
     else if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
-        DebugPrintf("defeated. Flag=%d", FlagGet(B_FLAG_NO_WHITEOUT));
         if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InTrainerHillChallenge() || (!NoAliveMonsForPlayer()) || FlagGet(B_FLAG_NO_WHITEOUT))
+        {
+            FlagClear(B_FLAG_NO_WHITEOUT);
             SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
-        else
+        }
+        else {
+            FlagClear(B_FLAG_NO_WHITEOUT);
             SetMainCallback2(CB2_WhiteOut);
+        }
     }
     else if (DidPlayerForfeitNormalTrainerBattle())
     {
-            SetMainCallback2(CB2_WhiteOut);
+        FlagClear(B_FLAG_NO_WHITEOUT);
+        SetMainCallback2(CB2_WhiteOut);
     }
     else
     {

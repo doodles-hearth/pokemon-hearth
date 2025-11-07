@@ -72,6 +72,8 @@ script ChiiTown_House1_EventScript_GrowlitheBarks {
 	waitmovement(0)
 	applymovement(LOCALID_GROWLITHE, Common_Movement_FaceRight)
 	waitmovement(0)
+
+	setnamedmon(SPECIES_GROWLITHE)
 	setspeaker("Mean Old Man")
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}Good girl, Growlithe, good girl."))
 	closemessage

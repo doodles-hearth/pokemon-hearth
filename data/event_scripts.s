@@ -65,6 +65,7 @@
 #include "constants/union_room.h"
 #include "constants/vars.h"
 #include "constants/weather.h"
+#include "constants/region_map_sections.h"
 #include "constants/quests.h"
 #include "constants/field_mugshots.h"
 #include "constants/speaker_names.h"
@@ -1369,6 +1370,8 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/YifuCity_Restaurant/scripts.inc"
 
 	.include "data/maps/CrobatHideout_1F/scripts.inc"
+
+	.include "data/scripts/daycare_adoption.inc"
 	
 	.include "data/scripts/dexnav.inc"
 

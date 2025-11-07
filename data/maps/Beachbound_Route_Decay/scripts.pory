@@ -212,10 +212,10 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	switch (var(VAR_RESULT)) {
 		case 0:
-			applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_upset))
-			setspeaker(SP_NAME_SAMURAI)
 			waitse
 			playse(SE_PIN)
+			applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_upset))
+			setspeaker(SP_NAME_SAMURAI)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Nothing that concerns you!\n"
 				"Let the grownups handle this!\p"

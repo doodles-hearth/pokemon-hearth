@@ -79,7 +79,7 @@ script ChiiTown_School_EventScript_BoardLegend {
 script ChiiTown_School_EventScript_Board {
 	lock
 	msgbox(format(
-		"A wide sheet of paper with lots of tiny squiggles on it."
+		"A wide sheet of paper with lots of tiny scribbles on it."
 	))
 	closemessage
 	release

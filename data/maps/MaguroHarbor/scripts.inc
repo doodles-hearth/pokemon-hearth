@@ -322,7 +322,8 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_21:
 
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_23:
 	incrementgamestat GAME_STAT_SOLD_FISH
-	addmoney VAR_0x8000
+	callnative Native_GiveFish
+	addmoneyvar VAR_0x8000
 	special DestroySelectedPartyMon
 	compare VAR_0x8001, ITEM_NONE
 	goto_if_ne MaguroHarbor_EventScript_FishPokemonSalesmanSelling_25

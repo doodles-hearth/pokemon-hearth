@@ -371,6 +371,7 @@ script TranquilRoute_EventScript_BerryWoman {
 		))
 		closemessage
 		setnamedmon(SPECIES_WAILMER)
+		setseenmon(SPECIES_WAILMER)
 		giveitem(ITEM_WAILMER_PAIL)
 		goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
 
@@ -492,6 +493,8 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 
 script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	lock
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(

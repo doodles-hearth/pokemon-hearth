@@ -17,24 +17,24 @@ SunriseCave_Trigger_ScaringKrabby::
 	setseenmon SPECIES_KRABBY
 	setvar VAR_TEMP_0, 1
 	playmoncry SPECIES_KRABBY, CRY_MODE_NORMAL
-	applymovement 5, SunriseCave_Trigger_ScaringKrabby_Movement_0
+	applymovement LOCALID_SUNRISE_KRABBY_1, SunriseCave_Trigger_ScaringKrabby_Movement_0
 	delay 16
 	playmoncry SPECIES_KRABBY, CRY_MODE_NORMAL
-	applymovement 6, SunriseCave_Trigger_ScaringKrabby_Movement_1
-	waitmovement 5
+	applymovement LOCALID_SUNRISE_KRABBY_2, SunriseCave_Trigger_ScaringKrabby_Movement_1
+	waitmovement LOCALID_SUNRISE_KRABBY_1
 	playse SE_LEDGE
-	applymovement 5, SunriseCave_Trigger_ScaringKrabby_Movement_2
+	applymovement LOCALID_SUNRISE_KRABBY_1, SunriseCave_Trigger_ScaringKrabby_Movement_2
 	waitse
 	playse SE_BALL
-	waitmovement 6
+	waitmovement LOCALID_SUNRISE_KRABBY_2
 	playse SE_LEDGE
-	applymovement 6, SunriseCave_Trigger_ScaringKrabby_Movement_2
+	applymovement LOCALID_SUNRISE_KRABBY_2, SunriseCave_Trigger_ScaringKrabby_Movement_2
 	waitse
 	playse SE_BALL
-	waitmovement 5
-	waitmovement 6
-	removeobject 5
-	removeobject 6
+	waitmovement LOCALID_SUNRISE_KRABBY_1
+	waitmovement LOCALID_SUNRISE_KRABBY_2
+	removeobject LOCALID_SUNRISE_KRABBY_1
+	removeobject LOCALID_SUNRISE_KRABBY_2
 	setflag FLAG_TEMP_1
 	releaseall
 	return

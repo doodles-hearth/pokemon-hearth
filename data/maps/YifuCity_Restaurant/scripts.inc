@@ -145,7 +145,7 @@ HotpotWithFriends:
 	fadescreen FADE_FROM_BLACK
 	call Hotpot_End
 	setvar VAR_HOTPOT_SCENE_STATE, 3
-	warpsilent MAP_YIFU_CITY, 13
+	warpsilent MAP_YIFU_CITY, 12
 	releaseall
 	return
 

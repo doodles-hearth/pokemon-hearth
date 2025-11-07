@@ -130,7 +130,7 @@ SakuTown_EventScript_RivalAtSakuWall_5:
 SakuTown_EventScript_RivalAtSakuWall_10:
 	compare VAR_TEMP_2, 16
 	goto_if_eq SakuTown_EventScript_RivalAtSakuWall_15
-	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_7
+	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_8
 SakuTown_EventScript_RivalAtSakuWall_14:
 	waitmovement 0
 	removeobject 10
@@ -156,6 +156,7 @@ SakuTown_EventScript_RivalAtSakuWall_9:
 	goto SakuTown_EventScript_RivalAtSakuWall_5
 
 SakuTown_EventScript_RivalAtSakuWall_12:
+	setnamedmon SPECIES_TOTODILE
 	playse SE_PIN
 	applymovement LOCALID_NATSUKI_SAKU, SakuTown_EventScript_RivalAtSakuWall_Movement_4
 	setspeaker SP_NAME_NATSUKI
@@ -169,6 +170,10 @@ SakuTown_EventScript_RivalAtSakuWall_13:
 	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_RivalAtSakuWall_Movement_5
 	waitmovement 0
 	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, SakuTown_EventScript_RivalAtSakuWall_Movement_6
+	waitmovement 0
+	waitse
+	playse SE_PIN
 	applymovement LOCALID_NATSUKI_SAKU, SakuTown_EventScript_RivalAtSakuWall_Movement_4
 	setspeaker SP_NAME_NATSUKI
 	msgbox SakuTown_EventScript_RivalAtSakuWall_Text_8
@@ -176,7 +181,7 @@ SakuTown_EventScript_RivalAtSakuWall_13:
 	goto SakuTown_EventScript_RivalAtSakuWall_10
 
 SakuTown_EventScript_RivalAtSakuWall_15:
-	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_6
+	applymovement 10, SakuTown_EventScript_RivalAtSakuWall_Movement_7
 	goto SakuTown_EventScript_RivalAtSakuWall_14
 
 
@@ -809,6 +814,9 @@ SakuTown_EventScript_RivalAtSakuWall_Movement_5:
 	delay_16
 	delay_16
 	face_down
+	step_end
+
+SakuTown_EventScript_RivalAtSakuWall_Movement_6:
 	emote_question_mark
 	delay_16
 	delay_16
@@ -818,7 +826,7 @@ SakuTown_EventScript_RivalAtSakuWall_Movement_5:
 	delay_16
 	step_end
 
-SakuTown_EventScript_RivalAtSakuWall_Movement_6:
+SakuTown_EventScript_RivalAtSakuWall_Movement_7:
 	walk_right
 	walk_up
 	walk_up
@@ -827,7 +835,7 @@ SakuTown_EventScript_RivalAtSakuWall_Movement_6:
 	walk_up
 	step_end
 
-SakuTown_EventScript_RivalAtSakuWall_Movement_7:
+SakuTown_EventScript_RivalAtSakuWall_Movement_8:
 	walk_left
 	walk_up
 	walk_up
@@ -1141,7 +1149,7 @@ SakuTown_EventScript_RivalAtSakuWall_Text_3:
 	.string "It's fun to run into each other like\n"
 	.string "this. Until next time then.\l"
 	.string "I bet you I'll get to Silveridge first!\p"
-	.string "See you later, Feraligatr!$"
+	.string "See ya later, Feraligatr!$"
 
 SakuTown_EventScript_RivalAtSakuWall_Text_4:
 	.string "In a while, Totodile?$"
@@ -1204,7 +1212,7 @@ SakuTown_EventScript_Karateka_Text_3:
 	.string "I bet you want your Pokémon to have\n"
 	.string "strong and forceful hands, too.\p"
 	.string "Come back when you're stronger.\n"
-	.string "Once you getyour first Token!$"
+	.string "Once you get your first Token!$"
 
 SakuTown_EventScript_Guard_Text_0:
 	.string "Damn, where did that Mareep come\n"

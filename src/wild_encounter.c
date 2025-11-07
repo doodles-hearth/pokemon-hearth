@@ -1001,7 +1001,6 @@ void FishingWildEncounter(u8 rod)
 
 u16 GetLocalWildMon(bool8 *isWaterMon)
 {
-    DebugPrintf("GetLocalWildMon");
     u32 headerId;
     enum TimeOfDay timeOfDay;
     const struct WildPokemonInfo *landMonsInfo;
@@ -1010,7 +1009,6 @@ u16 GetLocalWildMon(bool8 *isWaterMon)
     *isWaterMon = FALSE;
     headerId = GetCurrentMapWildMonHeaderId();
 
-    DebugPrintf("headerId=%d", headerId);
     if (headerId == HEADER_NONE)
         return SPECIES_NONE;
 

@@ -377,8 +377,8 @@ YifuCity_CrobatShop_Guard_Text_13:
 	.string "{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hmmm… Ya don't look like the typical\n"
 	.string "Zubat…\p"
 	.string "… … … …\n"
-	.string "… …Alright, ya can go through.\l"
-	.string "Next time wear the damn uniform\l"
+	.string "… …Alright, ya can go through.\p"
+	.string "Next time wear the damn uniform\n"
 	.string "though, will ya?$"
 
 YifuCity_CrobatShop_Customer1_Text_0:

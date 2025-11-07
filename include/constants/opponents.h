@@ -19,7 +19,7 @@
 #define TRAINER_SHAMISEN                     13
 #define TRAINER_YAMATO                       14
 #define TRAINER_ROCK_SMASH_GUY               15
-#define TRAINER_GRUNT_RUSTURF_TUNNEL         16
+#define TRAINER_ASAGAO                       16
 #define TRAINER_GRUNT_WEATHER_INST_1         17
 #define TRAINER_GRUNT_WEATHER_INST_2         18
 #define TRAINER_GRUNT_WEATHER_INST_3         19

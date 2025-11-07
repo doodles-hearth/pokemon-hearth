@@ -990,12 +990,12 @@ static void DrawChoices_BattleSpeed(int selection, int y)
 {
     bool8 active = CheckConditions(MENUITEM_MAIN_BATTLESPEED);
     u8 styles[3] = {0};
-    int xMid = GetMiddleX(gText_BattleSpeedNormal, gText_TextSpeedMid, gText_TextSpeedFast);
+    int xMid = GetMiddleX(gText_BattleSpeedNormal, gText_BattleSpeedFast, gText_BattleSpeedFaster);
     styles[selection] = 1;
 
     DrawOptionMenuChoice(gText_BattleSpeedNormal, 104, y, styles[0], active);
-    DrawOptionMenuChoice(gText_TextSpeedMid, xMid, y, styles[1], active);
-    DrawOptionMenuChoice(gText_TextSpeedFast, GetStringRightAlignXOffset(1, gText_TextSpeedFast, 198), y, styles[2], active);
+    DrawOptionMenuChoice(gText_BattleSpeedFast, xMid, y, styles[1], active);
+    DrawOptionMenuChoice(gText_BattleSpeedFaster, GetStringRightAlignXOffset(1, gText_BattleSpeedFaster, 198), y, styles[2], active);
 }
 
 static void DrawChoices_BattleScene(int selection, int y)

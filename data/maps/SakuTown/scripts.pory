@@ -135,7 +135,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 		"You'll have to hurry if you wanna catch up!\p"
 		"It's fun to run into each other like this. Until next time then.\l"
 		"I bet you I'll get to Silveridge first!\p"
-		"See you later, Feraligatr!"
+		"See ya later, Feraligatr!"
 	))
 
 	mcdialogue(
@@ -147,6 +147,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	switch(var(VAR_RESULT)) {
 		case 0:
+			setnamedmon(SPECIES_TOTODILE)
 			playse(SE_PIN)
 			applymovement(LOCALID_NATSUKI_SAKU, moves(emote_happy))
 			setspeaker(SP_NAME_NATSUKI)
@@ -160,8 +161,12 @@ script SakuTown_EventScript_RivalAtSakuWall {
 			))
 			closemessage
 
-			applymovement(OBJ_EVENT_ID_PLAYER, moves(face_up, delay_16 * 3, face_down, emote_question_mark, delay_16 * 6))
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(face_up, delay_16 * 3, face_down))
 			waitmovement(0)
+			playse(SE_PIN)
+			applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_question_mark, delay_16 * 6))
+			waitmovement(0)
+			waitse
 
 			playse(SE_PIN)
 			applymovement(LOCALID_NATSUKI_SAKU, moves(emote_happy))
@@ -313,7 +318,7 @@ script SakuTown_EventScript_Karateka {
 			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
 			"Their hands are strong and forceful…\p"
 			"I bet you want your Pokémon to have strong and forceful hands, too.\p"
-			"Come back when you're stronger.\nOnce you getyour first Token!"
+			"Come back when you're stronger.\nOnce you get your first Token!"
 		))
 		closemessage
 	}

@@ -266,10 +266,6 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	}
 	if (var(VAR_RESULT) == NO || var(VAR_RESULT) == MULTI_B_PRESSED) {
 		hidemonpic
-		applymovement(LOCALID_ELDER, moves(face_right))
-		setspeaker(SP_NAME_ELDER_KABA)
-		msgbox(format("{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Take the time you need."))
-		closemessage
 		return
 	} elif (var(VAR_RESULT) == YES) {
 		switch(var(VAR_TEMP_1)) {
@@ -541,6 +537,10 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 		closemessage
 	}
 
+	setnamedmon(SPECIES_FERALIGATR)
+
+	setflag(FLAG_HIDE_GUARD_SUNRISE_VILLAGE)
+
 	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 	if (var(VAR_TEMP_0) == 6 && var(VAR_TEMP_1) == 7) {
 		applymovement(LOCALID_RIVAL, moves(walk_left, walk_down * 2))
@@ -581,13 +581,33 @@ script SunriseVillage_EldersHouse_EventScript_RivalBattle {
 script SunriseVillage_EldersHouse_EventScript_Joltik {
 	lock
     faceplayer
-	setseenmon(SPECIES_JOLTIK)
-    playmoncry(SPECIES_JOLTIK, CRY_MODE_NORMAL)
-	setspeakertomonname(SPECIES_JOLTIK)
-    msgbox(format(
-        "Fss!"
-    ))
-    waitmoncry
+	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
+		setseenmon(SPECIES_JOLTIK)
+		playmoncry(SPECIES_JOLTIK, CRY_MODE_NORMAL)
+		setspeakertomonname(SPECIES_JOLTIK)
+		msgbox(format(
+			"Fss!"
+		))
+		waitmoncry
+	} else {
+		playmoncry(SPECIES_JOLTIK, CRY_MODE_NORMAL)
+		showmonpic(SPECIES_JOLTIK, 10, 3)
+		setnamedmon(SPECIES_JOLTIK)
+		msgbox(format("Do you choose Joltik,\ntiny spark of the woods?"))
+		closemessage
+		hidemonpic
+
+		waitse
+		playse(SE_PIN)
+		applymovement(LOCALID_ELDER, moves(face_up, emote_angry))
+		setspeaker(SP_NAME_ELDER_KABA)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Hands off my Joltik!!"
+		))
+		waitmovement(0)
+		closemessage
+		applymovement(LOCALID_ELDER, moves(face_right))
+	}
     release
     end	
 }
@@ -637,8 +657,6 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 		))
 		closemessage
 	}
-
-	
 
 	release
 }
