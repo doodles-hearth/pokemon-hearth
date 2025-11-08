@@ -4,8 +4,9 @@
 #define POST_NONE 0
 #define POST_FROM_BIG_SIS 1
 #define POST_NATSUKI_RARE_CANDY 2
+#define POST_FROM_BIG_SIS_LEFTOVERS 3
 // Must always be equal to the last mail value + 1
-#define NUM_CHATOT_POST 3
+#define NUM_CHATOT_POST 4
 
 #define POST_TRAINER_TEMPLATE (NUM_CHATOT_POST + 1)
 

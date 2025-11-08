@@ -1,6 +1,7 @@
 extern const u8 ChatotPost_EventScript_None[];
 extern const u8 ChatotPost_EventScript_FromHariko[];
 extern const u8 ChatotPost_EventScript_FromBigSis[];
+extern const u8 ChatotPost_EventScript_BigSisLeftovers[];
 extern const u8 ChatotPost_EventScript_Post_NatsukiRareCandy[];
 
 extern const u8 ChatotPost_EventScript_TrainerMessage[];
@@ -30,5 +31,13 @@ const struct ChatotPost gChatotPost[] =
         .type = POST_TYPE_IMMEDIATE,
         .senderName = gText_ChatotPostSender_Natsuki,
         .condition = FLAG_MET_HANA_GYM,
+    },
+    [POST_FROM_BIG_SIS_LEFTOVERS] =
+    {
+        .script = ChatotPost_EventScript_BigSisLeftovers,
+        .importance = 0,
+        .type = POST_TYPE_IMMEDIATE,
+        .senderName = gText_ChatotPostSender_BigSis,
+        .condition = FLAG_HIDE_GUARD_SUNRISE_VILLAGE,
     },
 };

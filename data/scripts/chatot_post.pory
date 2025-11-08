@@ -186,6 +186,73 @@ script ChatotPost_EventScript_Post_NatsukiRareCandy {
     return
 }
 
+script ChatotPost_EventScript_MichaelIrvin { // add to /src/data/chatot_post.h - or don't, actually
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox((
+        "Listen to everybody - nobody,\l"
+        "NOBODY believes in you!\p"
+        "WHAT! ARE YOU PREPARED!\lTO DO ABOUT IT?!!\p"
+        "DON'T LET THEM COME INTO -\n"
+        "YOUR HOUSE!\n"
+        "TAKE -\n"
+        "YOUR MEAL!\n"
+        "DO WHAT YOU NEED TO DO, TO-DAY!!!"
+        ))
+    closemessage 
+    return
+}
+
+script ChatotPost_EventScript_PechaOvergrown {
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox(format("
+                I don't know who you are. I don't know what you want. 
+                But I grew too many Pecha berries, so...I hope you have a sweet tooth!"
+                ))
+    closemessage
+    
+    giveitem(ITEM_RARE_CANDY) // change to ten Pecha berries, please!
+
+   
+    return
+}
+
+script ChatotPost_EventScript_DessertCatastrophe { // take one of leftovers gift
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox(format(
+                "Listen to me very carefully.\p
+                I have made a fresh batch of cherry cookies to be delivered at random 
+                to a trainer of pure heart.\p
+                If you have grown tired on your journey, one bite of these sweets 
+                will fill you with renewed resolve!\p
+                I hope you enjoy eating these as much as I did making them! 
+                And please, keep them away from your Pokemon. Wait a minute..."
+            ))
+    closemessage
+    
+    giveitem(ITEM_LEFTOVERS)
+
+   
+    return
+}
+
+script ChatotPost_EventScript_BigSisLeftovers { // take two of leftovers gift
+    setspeakertomonname(SPECIES_CHATOT)
+        msgbox(format("Hey little {STR_VAR_1}!\l
+                You must be homesick on your big journey, huh?\p
+                Well I went ahead and made a batch of your favorite dish! I bet
+                you were salivating soon as you saw Chatot on the perch, huh?\p
+                I really hope you enjoy it. If anybody else gets their hands on 
+                this dish... I'll cry!"))
+    closemessage // What should the protagonist's favorite dish be?
+    
+    giveitem(ITEM_LEFTOVERS)
+   
+    return
+}
+
+// idea: use playsewithpan(SE_M_EXPLOSION, SOUND_PAN_ATTACKER) aka Boomburst
+
+
 // Serves as a template for match call messages
 script ChatotPost_EventScript_TrainerMessage {
     setspeakertomonname(SPECIES_CHATOT)
