@@ -2949,7 +2949,11 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_GRASS),
+    #if HEARTH_BALANCE_TWEAKS
+        .abilities = { ABILITY_LEAF_GUARD, ABILITY_CHLOROPHYLL, ABILITY_CONTRARY },
+    #elif
         .abilities = { ABILITY_LEAF_GUARD, ABILITY_NONE, ABILITY_CONTRARY },
+    #endif
         .bodyColor = BODY_COLOR_PINK,
         .speciesName = _("Fomantis"),
         .unknownName = _("Tiny Sickle"),
@@ -3002,9 +3006,15 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
     [SPECIES_LURANTIS] =
     {
         .baseHP        = 70,
+    #if HEARTH_BALANCE_TWEAKS
+        .baseAttack    = 110,
+        .baseDefense   = 95,
+        .baseSpeed     = 55,
+    #elif
         .baseAttack    = 105,
         .baseDefense   = 90,
         .baseSpeed     = 45,
+    #endif
         .baseSpAttack  = 80,
         .baseSpDefense = 90,
         .types = MON_TYPES(TYPE_GRASS),
@@ -3017,7 +3027,11 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_GRASS),
+    #if HEARTH_BALANCE_TWEAKS
+        .abilities = { ABILITY_LEAF_GUARD, ABILITY_CHLOROPHYLL, ABILITY_CONTRARY },
+    #elif
         .abilities = { ABILITY_LEAF_GUARD, ABILITY_NONE, ABILITY_CONTRARY },
+    #endif
         .bodyColor = BODY_COLOR_PINK,
         .speciesName = _("Lurantis"),
         .unknownName = _("Bloom Sickle"),
