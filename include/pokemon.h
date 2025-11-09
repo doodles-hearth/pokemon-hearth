@@ -30,7 +30,6 @@ enum MonData {
     MON_DATA_SANITY_IS_EGG,
     MON_DATA_OT_NAME,
     MON_DATA_MARKINGS,
-    MON_DATA_CHECKSUM,
     MON_DATA_HP,
     MON_DATA_IS_SHINY,
     MON_DATA_HIDDEN_NATURE,
@@ -275,7 +274,7 @@ struct BoxPokemon
     u8 otName[PLAYER_NAME_LENGTH];
     u8 markings:4;
     u8 compressedStatus:4;
-    u16 checksum;
+    u16 unused_checksum;
     u16 hpLost:14; // 16383 HP.
     u16 shinyModifier:1;
     u16 unused_1E:1;
