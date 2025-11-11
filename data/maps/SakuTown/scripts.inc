@@ -1167,7 +1167,7 @@ SakuTown_EventScript_RivalAtSakuWall_Text_8:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Bahaha! Got you!$"
 
 SakuTown_EventScript_Farmer_Text_0:
-	.string "Wielder! It's you!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Wielder! It's you!\n"
 	.string "I can't thank ya enough for helping\l"
 	.string "us heal our girl.\p"
 	.string "Been doin' some thinkin' too, after\n"
@@ -1177,12 +1177,12 @@ SakuTown_EventScript_Farmer_Text_0:
 	.string "As thanks, ya can have these.$"
 
 SakuTown_EventScript_Farmer_Text_1:
-	.string "We're growin' Cheri berries.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}We're growin' Cheri berries.\n"
 	.string "Saku Village exports its berries to\l"
 	.string "many towns.$"
 
 SakuTown_EventScript_Farmer2_Text_0:
-	.string "Whew…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Whew…\n"
 	.string "Working in the fields sure is tirin'…$"
 
 SakuTown_EventScript_Scyther_Text_0:

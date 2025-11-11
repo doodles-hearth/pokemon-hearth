@@ -58,13 +58,13 @@ Soulkeep_Refuge_EventScript_NewDojo::
 
 
 Soulkeep_Refuge_EventScript_Man_Text_0:
-	.string "We sure don't see a lot of trav'lers\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}We sure don't see a lot of trav'lers\n"
 	.string "'round these parts…\p"
 	.string "You here for the Dojo challenge?\n"
 	.string "Dojo's closed, unfortunately.$"
 
 Soulkeep_Refuge_EventScript_NewDojo_Text_0:
-	.string "Some of the town's farmers got\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Some of the town's farmers got\n"
 	.string "together with Guang and said they\l"
 	.string "were going to open the old Dojo.\p"
 	.string "Guang says he's tired of us “living in\n"

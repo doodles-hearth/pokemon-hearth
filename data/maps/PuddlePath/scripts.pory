@@ -7,7 +7,7 @@ script PuddlePath_EventScript_Farmer {
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"You're in what's probably the most fertile stretch of land in all of Toku.\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}You're in what's probably the most fertile stretch of land in all of Toku.\p"
 		"The nearby forest enriches the soil,\nand the water stream is rich with volcanic ashes.\p"
 		"Farmers from both Soulkeep and Hanabi City share the land."
 	))

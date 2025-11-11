@@ -64,17 +64,17 @@ Soulkeep_House1_EventScript_Girl_Text_0:
 	.string "people…$"
 
 Soulkeep_House1_EventScript_EnGarde_Text_0:
-	.string "En garde, puny ghosts!!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}En garde, puny ghosts!!\n"
 	.string "… … … …\p"
 	.string "What? I'm practicing!$"
 
 Soulkeep_House1_EventScript_Farmer_Text_0:
-	.string "Our crops are being neglected…\p"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Our crops are being neglected…\p"
 	.string "None dare till the field and turn their\n"
 	.string "back on the ghosts!$"
 
 Soulkeep_House1_EventScript_LittleGirl_Text_0:
-	.string "Nothing bad can happen to us so long\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Nothing bad can happen to us so long\n"
 	.string "as Fennekin keeps us safe!\p"
 	.string "I feed him lots of twigs for him to\n"
 	.string "keep us warm!$"

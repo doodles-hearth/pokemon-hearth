@@ -582,7 +582,7 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_0:
 	.string "a Pokémon in this dire a state.$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_1:
-	.string "Y'have to do som'thin', miss!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Y'have to do som'thin', miss!\n"
 	.string "Cantcha see she's in pain?!$"
 
 SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2:
@@ -592,7 +592,7 @@ SakuTown_PokemonCenter_EventScript_ScytherQuest_Text_2:
 	.string "can.$"
 
 FarmerGivesQuest_Text_0:
-	.string "The nurse here said the newfangled\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}The nurse here said the newfangled\n"
 	.string "medical technology from the Toku\l"
 	.string "Council isn't here yet.\p"
 	.string "Scyther can't be cured of whatever's\n"
@@ -602,7 +602,7 @@ FarmerGivesQuest_Text_0:
 	.string "cure our girl!$"
 
 FarmerWaitsMedicine_Text_0:
-	.string "So? Have ye found anythin' yet?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}So? Have ye found anythin' yet?$"
 
 HealedScytherScript_Text_0:
 	.string "Right here.$"
@@ -611,21 +611,21 @@ HealedScytherScript_Text_1:
 	.string "I have this medicine.$"
 
 HealedScytherScript_Text_2:
-	.string "That's it!\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}That's it!\n"
 	.string "Please, Wielder, quickly!$"
 
 HealedScytherScript_Text_3:
 	.string "{PLAYER} gave the Special Medicine.$"
 
 HealedScytherScript_Text_4:
-	.string "Here, girl…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Here, girl…\n"
 	.string "This'll make ye feel better…$"
 
 HealedScytherScript_Text_5:
 	.string "{FONT_SMALL} Gyooo…$"
 
 HealedScytherScript_Text_6:
-	.string "Wielder… I don't know how to thank ya.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Wielder… I don't know how to thank ya.\n"
 	.string "We were so worried…\p"
 	.string "Where did you get this medicine?$"
 
@@ -633,21 +633,21 @@ HealedScytherScript_Text_7:
 	.string "The healer in Kura Village!$"
 
 HealedScytherScript_Text_8:
-	.string "Kura Village, eh…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Kura Village, eh…$"
 
 HealedScytherScript_Text_9:
 	.string "Gyaaa!$"
 
 HealedScytherScript_Text_10:
-	.string "{FONT_SMALL} Maybe they ain't s'bad afta' all…$"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}{FONT_SMALL} Maybe they ain't s'bad after all…$"
 
 HealedScytherScript_Text_11:
-	.string "Thank you, Wielder. I can give ye a\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Thank you, Wielder. I can give ye a\n"
 	.string "reward for your effors. Just meet us\l"
 	.string "in the fields outside.$"
 
 SakuTown_PokemonCenter_EventScript_Farmer2_Text_0:
-	.string "There, there, girl…\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}There, there, girl…\n"
 	.string "It'll be okay…$"
 
 SakuTown_PokemonCenter_EventScript_Pushing_Text_0:

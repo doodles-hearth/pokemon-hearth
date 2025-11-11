@@ -526,11 +526,11 @@ OrchardPath_EventScript_Samurai2_Text_0:
 	.string "here!$"
 
 OrchardPath_EventScript_Daichi_Text_0:
-	.string "I'm doin' research on local berries!$"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}I'm doin' research on local berries!$"
 
 OrchardPath_EventScript_Daichi_Text_1:
 	.string "This battle made me hungry.$"
 
 OrchardPath_EventScript_Daichi_Text_2:
-	.string "Lemme bring these juicy Lum Berries\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Lemme bring these juicy Lum Berries\n"
 	.string "back home…$"

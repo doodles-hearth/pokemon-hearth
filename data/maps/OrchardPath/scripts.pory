@@ -404,12 +404,12 @@ script OrchardPath_EventScript_Samurai2 {
 script OrchardPath_EventScript_Daichi {
 	trainerbattle_single(
 		TRAINER_DAICHI,
-		format("I'm doin' research on local berries!"),
+		format("{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}I'm doin' research on local berries!"),
 		format("This battle made me hungry.")
 	)
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"Lemme bring these juicy Lum Berries back home…"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Lemme bring these juicy Lum Berries back home…"
 	))
 	closemessage
 	end

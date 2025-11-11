@@ -138,8 +138,10 @@ KuraTown_EventScript_Farmer::
 	setspeaker SP_NAME_FARMER
 	msgbox KuraTown_EventScript_Farmer_Text_0
 	closemessage
+	playse SE_PIN
 	applymovement VAR_LAST_TALKED, KuraTown_EventScript_Farmer_Movement_0
 	waitmovement 0
+	waitse
 	setspeaker SP_NAME_FARMER
 	msgbox KuraTown_EventScript_Farmer_Text_1
 	release
@@ -605,11 +607,11 @@ KuraTown_EventScript_DojoChallenger_Text_4:
 	.string "preparing…$"
 
 KuraTown_EventScript_Farmer_Text_0:
-	.string "Why do we hate the Saku Village folks,\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Why do we hate the Saku Village folks,\n"
 	.string "y'ask?$"
 
 KuraTown_EventScript_Farmer_Text_1:
-	.string "To be honest, I don't quite rememb'r.\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}To be honest, I don't quite rememb'r.\n"
 	.string "But who needs a reas'n, right?$"
 
 KuraTown_EventScript_SilkScarf_Text_0:
@@ -634,7 +636,7 @@ KuraTown_EventScript_SilkScarf_Text_2:
 	.string "it!$"
 
 KuraTown_EventScript_FarmerScyther_Text_0:
-	.string "We started taming Scyther recently\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}We started taming Scyther recently\n"
 	.string "to help with harvestin' the crops.\l"
 	.string "They've been a tremendous help!$"
 
