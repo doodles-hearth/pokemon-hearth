@@ -388,6 +388,14 @@
       "elevation": 0,
       "dest_map": "MAP_SOULKEEP_HOUSE1",
       "dest_warp_id": "0"
+    },
+    {
+      "warp_id": "WARP_SOULKEEP_LIBRARY_EXT",
+      "x": 33,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_SOULKEEP_HOUSE_DOLL",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

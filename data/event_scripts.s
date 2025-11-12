@@ -1401,3 +1401,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SakuTown_BufferArea/scripts.inc"
 
 	.include "data/maps/YifuCity_BufferArea/scripts.inc"
+
+	.include "data/maps/Soulkeep_Library_1F/scripts.inc"
+
+	.include "data/maps/Soulkeep_Library_2F/scripts.inc"

@@ -1,0 +1,129 @@
+mapscripts Soulkeep_Library_1F_MapScripts {
+	
+}
+
+// FOOD
+
+script Soulkeep_Library_1F_EventScript_Book_Recipe {
+	lock
+	msgbox((
+		"“Traditional Recipes”.\nRead this?"
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		FALSE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Read",
+		"Put back"
+	)
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		msgbox((
+			"“Shiftry Leaf-wrapped Uume Berry\n"
+			"1. Rub Uume Berries with a Salt Cube.\p"
+			"2. Sun-dry for two to three days.\n"
+			"3. Carefully wrap in Shiftry Leaves.\p"
+			"4. Steam for ten minutes.\n"
+			"5. Serve warm or room-temperature.”\p"
+			"{PLAYER} is getting hungry…"
+		))
+		closemessage
+
+		setnamedmon(SPECIES_SHIFTRY)
+	}
+	
+	release
+}
+
+// MYTHS & LEGENDS
+
+script Soulkeep_Library_1F_EventScript_Book_CameruptsBack {
+	lock
+	msgbox((
+		"“The Unstable World”.\nRead this?"
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		FALSE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Read",
+		"Put back"
+	)
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		msgbox((
+			"“Our world rests precariously onto a\nCamerupt's back.\p"
+			"That Camerupt rests on another\n"
+			"Camerupt, which rests on another\l"
+			"Camerupt, which rests on another\l"
+			"Camerupt, which rests on another\l"
+			"Camerupt, which rests on another\l"
+			"Camerupt, which rests on another…”\p"
+			"… … …{PLAYER} is getting sleepy.\nBetter put the book back."
+		))
+		closemessage
+	}
+
+	setnamedmon(SPECIES_CAMERUPT)
+	
+	release
+}
+
+// POKEMON
+
+// KIDLIT
+
+script Soulkeep_Library_1F_EventScript_Book_Ditto {
+	lock
+	setnamedmon(SPECIES_DITTO)
+	msgbox((
+		"“The Lonely Ditto”.\nRead this?"
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		FALSE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Read",
+		"Put back"
+	)
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		msgbox((
+			"“There once was a lonely Ditto, who\ndesperatly seeked a friend.\p"
+			"It met a Joltik and became tiny and\n"
+			"yellow, but the Joltik got spooked\l"
+			"and scurried away.\p"
+			"It met a Nidorina and became spiky\n"
+			"and blue, but the Nidorina got angry\l"
+			"and rammed it with its horn.\p"
+			"Finally it met a little girl, who said:\n"
+			"You need not change to look like me,\l"
+			"for I like you just the way you are!\p"
+			"The Ditto's heart overflowed with\n"
+			"happiness, and they remained together\lforever.”"
+		))
+		closemessage
+
+		setnamedmon(SPECIES_JOLTIK)
+		setnamedmon(SPECIES_NIDORINA)
+	}
+	
+	release
+}
+
+// NOVELS

@@ -730,7 +730,7 @@ MatchCall_PersonalizedText12::
 	.string "I lay down in the tall grass at dusk,\n"
 	.string "in the warm, lazy summer evenings,\n"
 	.string "listening to the Kricketot's song…\p"
-	.string "It's totally worth getting\noccasionally jumped by wild Pokémon!"
+	.string "It's totally worth getting\noccasionally jumped by wild Pokémon!\p"
 	.string "Hope you're well. Talk to you soon!$"
 
 MatchCall_PersonalizedText13::

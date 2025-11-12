@@ -1,0 +1,29 @@
+{
+  "id": "MAP_SOULKEEP_LIBRARY_2F",
+  "name": "Soulkeep_Library_2F",
+  "layout": "LAYOUT_SOULKEEP_LIBRARY_2F",
+  "music": "MUS_RG_SEVII_67",
+  "region_map_section": "MAPSEC_BEACHBOUND_ROUTE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_SOULKEEP_LIBRARY_2F_STAIRS_DOWN",
+      "x": 2,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_SOULKEEP_LIBRARY_1F",
+      "dest_warp_id": "WARP_ID_SOULKEEP_LIBRARY_1F_STAIRS_UP"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}
