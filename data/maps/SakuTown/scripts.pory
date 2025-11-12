@@ -205,7 +205,7 @@ script SakuTown_EventScript_Farmer {
 	returnqueststate(QUEST_SAKURASCYTHER)
 	if(var(VAR_RESULT) == 3){
 		msgbox(format(
-			"Wielder! It's you!\nI can't thank ya enough for helping us heal our girl.\p"
+			"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Wielder! It's you!\nI can't thank ya enough for helping us heal our girl.\p"
 			"Been doin' some thinkin' too, after you told us the one who helped 'er was from Kura.\p"
 			"That ain't here nor there though.\nAs thanks, ya can have these."
 		))
@@ -213,7 +213,7 @@ script SakuTown_EventScript_Farmer {
 		completequest(QUEST_SAKURASCYTHER)
 	} else {
 		msgbox(format(
-			"We're growin' Cheri berries.\nSaku Village exports its berries to many towns."
+			"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}We're growin' Cheri berries.\nSaku Village exports its berries to many towns."
 		))
 	}
 	release
@@ -225,7 +225,7 @@ script SakuTown_EventScript_Farmer2 {
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"Whew…\n"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Whew…\n"
 		"Working in the fields sure is tirin'…"
 	))
 	release

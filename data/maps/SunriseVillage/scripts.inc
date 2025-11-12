@@ -131,7 +131,7 @@ SunriseVillage_Event_BigSisMap_GiveMap::
 	bufferspeciesname STR_VAR_2, VAR_STARTER_MON
 	msgbox SunriseVillage_Event_BigSisMap_GiveMap_Text_0
 	closemessage
-	giveitem ITEM_TOWN_MAP
+	giveitem ITEM_TOKU_MAP
 	special GetPlayerBrotherSisterString
 	setspeaker SP_NAME_BIG_SIS
 	msgbox SunriseVillage_Event_BigSisMap_GiveMap_Text_1

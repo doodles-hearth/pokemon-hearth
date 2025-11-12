@@ -80,6 +80,8 @@ static const u32 sFieldMugshotGfx_MinerNormal[] = INCBIN_U32("graphics/field_mug
 
 static const u32 sFieldMugshotGfx_GardenerNormal[] = INCBIN_U32("graphics/field_mugshots/gardener/normal.4bpp.smol");
 
+static const u32 sFieldMugshotGfx_FarmerNormal[] = INCBIN_U32("graphics/field_mugshots/farmer/normal.4bpp.smol");
+
 // Sunrise
 
 static const u32 sFieldMugshotGfx_BigSisNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/big_sis/normal.4bpp.smol");
@@ -523,6 +525,15 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_GardenerNormal,
             .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+    
+    [MUGSHOT_FARMER] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_FarmerNormal,
+            .pal = gObjectEventPal_Npc_Woody,
         },
     },
 

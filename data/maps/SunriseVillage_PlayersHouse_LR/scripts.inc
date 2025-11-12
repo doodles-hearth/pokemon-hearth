@@ -78,7 +78,7 @@ SunriseVillage_PlayersHouse_LR_EventScript_BigSis_4:
 	bufferspeciesname STR_VAR_2, VAR_STARTER_MON
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_2
 	closemessage
-	giveitem ITEM_TOWN_MAP
+	giveitem ITEM_TOKU_MAP
 	special GetPlayerBrotherSisterString
 	setspeaker SP_NAME_BIG_SIS
 	msgbox SunriseVillage_PlayersHouse_LR_EventScript_BigSis_Text_3

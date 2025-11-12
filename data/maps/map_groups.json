@@ -146,7 +146,9 @@
     "Soulkeep_HouseDoll",
     "Soulkeep_Refuge",
     "Soulkeep_HouseDollBedroom",
-    "Soulkeep_House1"
+    "Soulkeep_House1",
+    "Soulkeep_Library_1F",
+    "Soulkeep_Library_2F"
   ],
   "gMapGroup_Dungeons": [
     "GinkoWoods",
