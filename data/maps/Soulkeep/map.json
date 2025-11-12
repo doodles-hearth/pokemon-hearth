@@ -390,12 +390,12 @@
       "dest_warp_id": "0"
     },
     {
-      "warp_id": "WARP_SOULKEEP_LIBRARY_EXT",
+      "warp_id": "WARP_ID_SOULKEEP_DOOR_LIBRARY",
       "x": 33,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_SOULKEEP_HOUSE_DOLL",
-      "dest_warp_id": "0"
+      "dest_map": "MAP_SOULKEEP_LIBRARY_1F",
+      "dest_warp_id": "WARP_ID_SOULKEEP_LIBRARY_EXIT"
     }
   ],
   "coord_events": [],

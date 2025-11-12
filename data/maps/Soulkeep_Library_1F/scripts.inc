@@ -2,6 +2,25 @@ Soulkeep_Library_1F_MapScripts::
 	.byte 0
 
 
+Soulkeep_Library_1F_EventScript_Employee::
+	lock
+	faceplayer
+	setspeaker Soulkeep_Library_1F_EventScript_Employee_Text_0
+	msgbox Soulkeep_Library_1F_EventScript_Employee_Text_1
+	closemessage
+	release
+	return
+
+
+Soulkeep_Library_1F_EventScript_Man::
+	lock
+	faceplayer
+	msgbox Soulkeep_Library_1F_EventScript_Man_Text_0
+	closemessage
+	release
+	return
+
+
 Soulkeep_Library_1F_EventScript_Book_Recipe::
 	lock
 	msgbox Soulkeep_Library_1F_EventScript_Book_Recipe_Text_0
@@ -58,8 +77,37 @@ Soulkeep_Library_1F_EventScript_Book_Ditto_2:
 	goto Soulkeep_Library_1F_EventScript_Book_Ditto_1
 
 
+Soulkeep_Library_1F_EventScript_Book_Dragonite::
+	lock
+	setnamedmon SPECIES_DRAGONITE
+	msgbox Soulkeep_Library_1F_EventScript_Book_Dragonite_Text_0
+	dynmultichoice 0, 0, FALSE, 10, 0, DYN_MULTICHOICE_CB_NONE, Soulkeep_Library_1F_EventScript_Book_Recipe_Text_1, Soulkeep_Library_1F_EventScript_Book_Recipe_Text_2
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq Soulkeep_Library_1F_EventScript_Book_Dragonite_2
+Soulkeep_Library_1F_EventScript_Book_Dragonite_1:
+	release
+	return
+
+Soulkeep_Library_1F_EventScript_Book_Dragonite_2:
+	msgbox Soulkeep_Library_1F_EventScript_Book_Dragonite_Text_1
+	closemessage
+	setnamedmon SPECIES_NUZLEAF
+	goto Soulkeep_Library_1F_EventScript_Book_Dragonite_1
+
+
+Soulkeep_Library_1F_EventScript_Employee_Text_0:
+	.string "Librarian$"
+
+Soulkeep_Library_1F_EventScript_Employee_Text_1:
+	.string "{CREATE_MUGSHOT MUGSHOT_UUME_VALET EMOTE_NORMAL}{FONT_SMALL}Hello, welcome to the library.\n"
+	.string "Please don't speak too loud.{FONT_NORMAL}$"
+
+Soulkeep_Library_1F_EventScript_Man_Text_0:
+	.string "{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}{SPEAKER NAME_COOK}{FONT_SMALL}There are tons of good recipes here!{FONT_NORMAL}$"
+
 Soulkeep_Library_1F_EventScript_Book_Recipe_Text_0:
-	.string "“Traditional Recipes”.\nRead this?$"
+	.string "“Traditional Berry Recipes”.\nRead this?$"
 
 Soulkeep_Library_1F_EventScript_Book_Recipe_Text_1:
 	.string "Read$"
@@ -93,7 +141,7 @@ Soulkeep_Library_1F_EventScript_Book_Ditto_Text_0:
 	.string "“The Lonely Ditto”.\nRead this?$"
 
 Soulkeep_Library_1F_EventScript_Book_Ditto_Text_1:
-	.string "“There once was a lonely Ditto, who\ndesperatly seeked a friend.\p"
+	.string "“There once was a lonely Ditto, who\ndesperately seeked a friend.\p"
 	.string "It met a Joltik and became tiny and\n"
 	.string "yellow, but the Joltik got spooked\l"
 	.string "and scurried away.\p"
@@ -105,3 +153,15 @@ Soulkeep_Library_1F_EventScript_Book_Ditto_Text_1:
 	.string "for I like you just the way you are!\p"
 	.string "The Ditto's heart overflowed with\n"
 	.string "happiness, and they remained together\lforever.”$"
+
+Soulkeep_Library_1F_EventScript_Book_Dragonite_Text_0:
+	.string "“The Boy And The Dragonite”.\nRead this?$"
+
+Soulkeep_Library_1F_EventScript_Book_Dragonite_Text_1:
+	.string "“There once was a free-spirited boy,\n"
+	.string "who loved to play in the woods.\p"
+	.string "The woods were fraught with peril,\nand one day, a band of Nuzleaf\lambushed the boy.\p"
+	.string "Yet there be Dragonite there, and as\nthey flew through the woods, one\lcame swooping down.\p"
+	.string "The Dragon spit forth a burst of\nflames, saving the boy's life.\p"
+	.string "With what half seemed a smile, the\nDragon approached the wounded child\land gently raised him upon his back.\p"
+	.string "And the two flew off, to gods know\nwhere.”$"
