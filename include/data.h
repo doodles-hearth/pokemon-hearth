@@ -144,12 +144,14 @@ struct FollowerMsgInfo
 {
     const u8 *text;
     const u8 *script;
+    const u8 *campfireScript;
 };
 
 struct FollowerMessagePool
 {
     const struct FollowerMsgInfo *messages;
     const u8 *script;
+    const u8 *campfireScript;
     u16 length;
 };
 

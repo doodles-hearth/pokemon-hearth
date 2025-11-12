@@ -101,6 +101,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .text = (u8*)sCelebiTexts,
         .textSpread = 1,
         .script = EventScript_FollowerDance,
+        .campfireScript = EventScript_CampfireDance,
         .emotion = FOLLOWER_EMOTION_NEUTRAL,
         .conditions =
         {
@@ -121,6 +122,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
     {
         .text = sCondMsg06,
         .script = EventScript_FollowerFaceUp,
+        .campfireScript = EventScript_CampfireFaceUp,
         .emotion = FOLLOWER_EMOTION_HAPPY,
         .conditions =
         {
@@ -140,6 +142,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
     {
         .text = sCondMsg08,
         .script = EventScript_FollowerNostalgia,
+        .campfireScript = EventScript_CampfireNostalgia,
         .emotion = FOLLOWER_EMOTION_NEUTRAL,
         .conditions =
         {
@@ -151,6 +154,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .text = (u8*)sShopTexts,
         .textSpread = 1,
         .script = EventScript_FollowerLookAround,
+        .campfireScript = EventScript_CampfireLookAround,
         .emotion = FOLLOWER_EMOTION_NEUTRAL,
         .conditions =
         {
@@ -194,6 +198,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .textSpread = 1,
         .emotion = FOLLOWER_EMOTION_MUSIC,
         .script = EventScript_FollowerLookAround,
+        .campfireScript = EventScript_CampfireLookAround,
         .conditions =
         {
             MATCH_MAPSEC(MAPSEC_DUMMY),
@@ -203,6 +208,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
     {
         .text = sCondMsg18,
         .script = EventScript_FollowerHopping,
+        .campfireScript = EventScript_CampfireHopping,
         .emotion = FOLLOWER_EMOTION_MUSIC,
         .conditions =
         {
@@ -311,6 +317,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .text = (u8*)sSeaTexts,
         .textSpread = 1,
         .script = EventScript_FollowerFaceResult,
+        .campfireScript = EventScript_CampfireFaceResult,
         .emotion = FOLLOWER_EMOTION_MUSIC,
         .conditions =
         {
@@ -321,6 +328,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
     {
         .text = sCondMsg36,
         .script = EventScript_FollowerFaceResult,
+        .campfireScript = EventScript_CampfireFaceResult,
         .emotion = FOLLOWER_EMOTION_MUSIC,
         .conditions =
         {
@@ -341,6 +349,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
     {
         .text = sCondMsg38,
         .script = EventScript_FollowerFaceResult,
+        .campfireScript = EventScript_CampfireFaceResult,
         .emotion = FOLLOWER_EMOTION_PENSIVE,
         .conditions =
         {
@@ -361,6 +370,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .text = (u8*)sIceTexts,
         .textSpread = 1,
         .script = EventScript_FollowerFaceResult,
+        .campfireScript = EventScript_CampfireFaceResult,
         .emotion = FOLLOWER_EMOTION_PENSIVE,
         .conditions =
         {
@@ -464,15 +474,15 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
 // Pool of "unconditional" follower messages
 const struct FollowerMessagePool gFollowerBasicMessages[FOLLOWER_EMOTION_LENGTH] =
 {
-    [FOLLOWER_EMOTION_HAPPY]    = {gFollowerHappyMessages,    EventScript_FollowerGeneric, FOLLOWER_HAPPY_MESSAGE_COUNT},
-    [FOLLOWER_EMOTION_NEUTRAL]  = {gFollowerNeutralMessages,  EventScript_FollowerGeneric, FOLLOWER_NEUTRAL_MESSAGE_COUNT},
-    [FOLLOWER_EMOTION_SAD]      = {gFollowerSadMessages,      EventScript_FollowerGeneric, FOLLOWER_SAD_MESSAGE_COUNT},
-    [FOLLOWER_EMOTION_UPSET]    = {gFollowerUpsetMessages,    EventScript_FollowerGeneric, FOLLOWER_UPSET_MESSAGE_COUNT},
-    [FOLLOWER_EMOTION_ANGRY]    = {gFollowerAngryMessages,    EventScript_FollowerGeneric, FOLLOWER_ANGRY_MESSAGE_COUNT},
-    [FOLLOWER_EMOTION_PENSIVE]  = {gFollowerPensiveMessages,  EventScript_FollowerGeneric, FOLLOWER_PENSIVE_MESSAGE_COUNT},
-    [FOLLOWER_EMOTION_LOVE]     = {gFollowerLoveMessages,     EventScript_FollowerGeneric, FOLLOWER_LOVE_MESSAGE_COUNT},
-    [FOLLOWER_EMOTION_SURPRISE] = {gFollowerSurpriseMessages, EventScript_FollowerGeneric, FOLLOWER_SURPRISE_MESSAGE_COUNT},
-    [FOLLOWER_EMOTION_CURIOUS]  = {gFollowerCuriousMessages,  EventScript_FollowerGeneric, FOLLOWER_CURIOUS_MESSAGE_COUNT},
-    [FOLLOWER_EMOTION_MUSIC]    = {gFollowerMusicMessages,    EventScript_FollowerGeneric, FOLLOWER_MUSIC_MESSAGE_COUNT},
-    [FOLLOWER_EMOTION_POISONED] = {gFollowerPoisonedMessages, EventScript_FollowerGeneric, FOLLOWER_POISONED_MESSAGE_COUNT},
+    [FOLLOWER_EMOTION_HAPPY]    = {gFollowerHappyMessages,    EventScript_FollowerGeneric, EventScript_CampfireGeneric, FOLLOWER_HAPPY_MESSAGE_COUNT},
+    [FOLLOWER_EMOTION_NEUTRAL]  = {gFollowerNeutralMessages,  EventScript_FollowerGeneric, EventScript_CampfireGeneric, FOLLOWER_NEUTRAL_MESSAGE_COUNT},
+    [FOLLOWER_EMOTION_SAD]      = {gFollowerSadMessages,      EventScript_FollowerGeneric, EventScript_CampfireGeneric, FOLLOWER_SAD_MESSAGE_COUNT},
+    [FOLLOWER_EMOTION_UPSET]    = {gFollowerUpsetMessages,    EventScript_FollowerGeneric, EventScript_CampfireGeneric, FOLLOWER_UPSET_MESSAGE_COUNT},
+    [FOLLOWER_EMOTION_ANGRY]    = {gFollowerAngryMessages,    EventScript_FollowerGeneric, EventScript_CampfireGeneric, FOLLOWER_ANGRY_MESSAGE_COUNT},
+    [FOLLOWER_EMOTION_PENSIVE]  = {gFollowerPensiveMessages,  EventScript_FollowerGeneric, EventScript_CampfireGeneric, FOLLOWER_PENSIVE_MESSAGE_COUNT},
+    [FOLLOWER_EMOTION_LOVE]     = {gFollowerLoveMessages,     EventScript_FollowerGeneric, EventScript_CampfireGeneric, FOLLOWER_LOVE_MESSAGE_COUNT},
+    [FOLLOWER_EMOTION_SURPRISE] = {gFollowerSurpriseMessages, EventScript_FollowerGeneric, EventScript_CampfireGeneric, FOLLOWER_SURPRISE_MESSAGE_COUNT},
+    [FOLLOWER_EMOTION_CURIOUS]  = {gFollowerCuriousMessages,  EventScript_FollowerGeneric, EventScript_CampfireGeneric, FOLLOWER_CURIOUS_MESSAGE_COUNT},
+    [FOLLOWER_EMOTION_MUSIC]    = {gFollowerMusicMessages,    EventScript_FollowerGeneric, EventScript_CampfireGeneric, FOLLOWER_MUSIC_MESSAGE_COUNT},
+    [FOLLOWER_EMOTION_POISONED] = {gFollowerPoisonedMessages, EventScript_FollowerGeneric, EventScript_CampfireGeneric, FOLLOWER_POISONED_MESSAGE_COUNT},
 };

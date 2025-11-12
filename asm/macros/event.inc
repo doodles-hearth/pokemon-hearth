@@ -2386,6 +2386,12 @@
 	callnative GetFollowerAction
 	.endm
 
+    @ Executes Campfire actions
+    .macro getcampfireaction partyIndex:req
+    callnative GetCampfireAction
+    .byte \partyIndex
+    .endm
+
 	@ Checks if Field move is being used by the current follower.
 	.macro isfollowerfieldmoveuser var:req
 	callnative IsFollowerFieldMoveUser, requests_effects=1
@@ -2464,6 +2470,18 @@
 	callnative ScrCmd_fwdweekday, requests_effects=1
 	.4byte \weekday
 	.endm
+
+	.macro campfire
+	callnative Native_Campfire
+	.endm
+
+	.macro leaveCampfire
+	callnative Native_LeaveCampfire
+	.endm
+
+    .macro clearCampfireEventHere
+    callnative Native_CampfireEventDoneAtPlayerLoc
+    .endm
 
 	@ ============================ @
 	@ ITEM DESCRIPTION HEADER MACROS

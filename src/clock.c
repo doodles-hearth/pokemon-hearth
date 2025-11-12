@@ -1,6 +1,7 @@
 #include "global.h"
 #include "berry.h"
 #include "clock.h"
+#include "campfire.h"
 #include "dewford_trend.h"
 #include "event_data.h"
 #include "field_specials.h"
@@ -57,6 +58,7 @@ static void UpdatePerDay(struct Time *localTime)
         SetShoalItemFlag(daysSince);
         SetRandomLotteryNumber(daysSince);
         UpdateDaysPassedSinceFormChange(daysSince);
+        RollDailyCampfireEvents(daysSince);
         *days = localTime->days;
     }
 }

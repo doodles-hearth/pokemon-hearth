@@ -1,6 +1,7 @@
 #include "global.h"
 #include "battle_setup.h"
 #include "bike.h"
+#include "campfire.h"
 #include "chatot_post.h"
 #include "coord_event_weather.h"
 #include "daycare.h"
@@ -686,6 +687,11 @@ static bool8 TryStartStepBasedScript(struct MapPosition *position, u16 metatileB
 static bool8 TryStartCoordEventScript(struct MapPosition *position)
 {
     const u8 *script = GetCoordEventScriptAtPosition(&gMapHeader, position->x - MAP_OFFSET, position->y - MAP_OFFSET, position->elevation);
+
+    if (CampfireIsActive() && MovedTooFarFromCampfire(position->x - MAP_OFFSET, position->y - MAP_OFFSET))
+    {
+        script = EventScript_WalkAwayFromCampfire;
+    }
 
     if (script == NULL)
         return FALSE;

@@ -951,6 +951,13 @@ struct WaldaPhrase
     //u8 padding;
 };
 
+struct Campfire
+{
+    u8 x;
+    u8 y;
+    s8 scriptTargetMon;
+};
+
 struct TrainerNameRecord
 {
     u32 trainerId;
@@ -1201,6 +1208,7 @@ struct SaveBlock1
     enum RouteChallengeState routeChallengeStates[ROUTE_CHALLENGE_COUNT];
     u16 remainingShinyVialMinutes;
     bool8 isShinyVialActive;
+    struct Campfire campfire;
     u8 activePost[NUM_ACTIVE_POST_SLOTS];
     u8 postFlags[NUM_MAIL_FLAG_BYTES];
     u16 chatotPostRematchTrainerId;

@@ -86,13 +86,6 @@ enum {
     JUMP_DISTANCE_FAR,
 };
 
-// Used for storing conditional emotes
-struct SpecialEmote
-{
-    u16 index;
-    u8 emotion;
-};
-
 // Sprite data used throughout
 #define sObjEventId   data[0]
 #define sTypeFuncId   data[1] // Index into corresponding gMovementTypeFuncs_* table
@@ -596,6 +589,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPaletteLight2,             OBJ_EVENT_PAL_TAG_LIGHT_2},
     {gObjectEventPaletteEmotes,             OBJ_EVENT_PAL_TAG_EMOTES},
     {gObjectEventPaletteNeonLight,          OBJ_EVENT_PAL_TAG_NEON_LIGHT},
+    {gObjectEventPal_Campfire,              OBJ_EVENT_PAL_TAG_CAMPFIRE},
 #ifdef BUGFIX
     {NULL,                                  OBJ_EVENT_PAL_TAG_NONE},
 #else
@@ -2238,7 +2232,7 @@ u16 GetOverworldWeatherSpecies(u16 species)
     return species;
 }
 
-static bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32 *female)
+bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32 *female)
 {
     if (!mon)
     {
@@ -2288,6 +2282,7 @@ void UpdateFollowingPokemon(void)
      || SpeciesToGraphicsInfo(species, shiny, female) == NULL
      || (gMapHeader.mapType == MAP_TYPE_INDOOR && SpeciesToGraphicsInfo(species, shiny, female)->oam->size > ST_OAM_SIZE_2)
      || FlagGet(FLAG_TEMP_HIDE_FOLLOWER)
+     || !FlagGet(FLAG_HIDE_CAMPFIRE_PARTY_MON_1)
      || PlayerHasFollowerNPC()
      )
     {
@@ -2354,7 +2349,7 @@ static bool8 SpeciesHasType(u16 species, u8 type)
 
 // Display an emote above an object event
 // Note that this is not a movement action
-static void ObjectEventEmote(struct ObjectEvent *objEvent, u8 emotion)
+void ObjectEventEmote(struct ObjectEvent *objEvent, u8 emotion)
 {
     emotion %= FOLLOWER_EMOTION_LENGTH;
     ObjectEventGetLocalIdAndMap(objEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
@@ -3737,7 +3732,7 @@ void OverrideTemplateCoordsForObjectEvent(const struct ObjectEvent *objectEvent)
     }
 }
 
-static void OverrideObjectEventTemplateScript(const struct ObjectEvent *objectEvent, const u8 *script)
+void OverrideObjectEventTemplateScript(const struct ObjectEvent *objectEvent, const u8 *script)
 {
     struct ObjectEventTemplate *objectEventTemplate;
 
