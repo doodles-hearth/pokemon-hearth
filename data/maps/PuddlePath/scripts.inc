@@ -12,7 +12,7 @@ PuddlePath_EventScript_Farmer::
 
 
 PuddlePath_EventScript_Farmer_Text_0:
-	.string "You're in what's probably the most\n"
+	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}You're in what's probably the most\n"
 	.string "fertile stretch of land in all of Toku.\p"
 	.string "The nearby forest enriches the soil,\n"
 	.string "and the water stream is rich with\l"

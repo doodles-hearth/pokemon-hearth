@@ -65,7 +65,7 @@ Debug_CheatStart::
 	setflag FLAG_VISITED_SAKU_TOWN
 	setflag FLAG_VISITED_KURA_TOWN
 
-	giveitem ITEM_TOWN_MAP
+	giveitem ITEM_TOKU_MAP
 	giveitem ITEM_POKE_BALL, 20
 	giveitem ITEM_TM_SPLASH
 

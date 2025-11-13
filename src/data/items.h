@@ -12980,7 +12980,7 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_DowsingMachine,
     },
 
-    [ITEM_TOWN_MAP] =
+    [ITEM_TOKU_MAP] =
     {
         .name = ITEM_NAME("Toku Map"),
         .price = 0,
@@ -12992,8 +12992,8 @@ const struct Item gItemsInfo[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TownMap,
-        .iconPic = gItemIcon_TownMap,
-        .iconPalette = gItemIconPalette_TownMap,
+        .iconPic = gItemIcon_TokuMap,
+        .iconPalette = gItemIconPalette_TokuMap,
     },
 
     [ITEM_VS_SEEKER] =

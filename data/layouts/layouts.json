@@ -6432,6 +6432,30 @@
       "secondary_tileset": "gTileset_Yifu",
       "border_filepath": "data/layouts/YifuCity_BufferArea/border.bin",
       "blockdata_filepath": "data/layouts/YifuCity_BufferArea/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOULKEEP_LIBRARY_1F",
+      "name": "Soulkeep_Library_1F_Layout",
+      "width": 13,
+      "height": 10,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseSoulkeep",
+      "border_filepath": "data/layouts/Soulkeep_Library_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Soulkeep_Library_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOULKEEP_LIBRARY_2F",
+      "name": "Soulkeep_Library_2F_Layout",
+      "width": 13,
+      "height": 10,
+      "border_width": 6,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseSoulkeep",
+      "border_filepath": "data/layouts/Soulkeep_Library_2F/border.bin",
+      "blockdata_filepath": "data/layouts/Soulkeep_Library_2F/map.bin"
     }
   ]
 }

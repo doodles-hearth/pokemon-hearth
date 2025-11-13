@@ -3858,7 +3858,7 @@ static const u8 *GetLetterGrade(u32 stat)
         return gText_GradeD;
     else if (stat > 15 && stat <= 25)
         return gText_GradeC;
-    else if (stat > 26 && stat <= 29)
+    else if (stat > 25 && stat <= 29)
         return gText_GradeB;
     else if (stat == 30)
         return gText_GradeA;
