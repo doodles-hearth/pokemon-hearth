@@ -386,7 +386,6 @@ static void TryShowPlayerPokemonAtCampfire(void)
         if (female)
             specGfx += OBJ_EVENT_MON_FEMALE;
         VarSet((VAR_OBJ_GFX_ID_A + i), (u16)specGfx);
-        DebugPrintfLevel(MGBA_LOG_WARN, "loading Pokémon %d: %d", i, specGfx);
     }
 }
 
