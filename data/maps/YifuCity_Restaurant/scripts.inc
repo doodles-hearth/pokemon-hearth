@@ -631,7 +631,7 @@ Hotpot_Decay_Text_14:
 	.string "Mt Kazan has been grumbling, after\n"
 	.string "all.\p"
 	.string "Let us hope it doesn't erupt like in\n"
-	.string "the old legend...$"
+	.string "the old legend…$"
 
 Hotpot_End_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Man, I think I ate too much…$"
@@ -649,7 +649,7 @@ YifuCity_Restaurant_EventScript_LittleBoy2_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}{SPEAKER NAME_LITTLE_BOY} My brother dared me to go into the\n"
 	.string "Forest alone!\p"
 	.string "Huh? Yeah, of COURSE I did!\n"
-	.string "I'm not a wimp!\l"
+	.string "I'm not a wimp!\p"
 	.string "{FONT_SMALL}(Shiver shiver…){FONT_NORMAL}$"
 
 YifuCity_Restaurant_EventScript_OldMan_Text_0:

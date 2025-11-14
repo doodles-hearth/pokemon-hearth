@@ -123,7 +123,7 @@ AshiiScript_EscortAshii:
 	faceplayer
 	setspeaker SP_NAME_ASHII
 	msgbox AshiiScript_EscortAshii_Text_0
-	mcdialogue AshiiScript_EscortAshii_Text_1, AshiiScript_EscortAshii_Text_2
+	mcdialogueB AshiiScript_EscortAshii_Text_1, AshiiScript_EscortAshii_Text_2
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq AshiiScript_EscortAshii_1

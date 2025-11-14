@@ -168,7 +168,7 @@ script SunriseVillage_EldersHouse_Event_Elder {
 				"Well then, what are you still doing here? Off you go!"
 			))
 
-			mcdialogue(
+			mcdialogueB(
 				"Evaluate my PokéDex!",
 				"See you!"
 			)
@@ -182,7 +182,7 @@ script SunriseVillage_EldersHouse_Event_Elder {
 					))
 
 					call(ProfBirch_EventScript_RatePokedex)
-				case 1:
+				default:
 					setspeaker(SP_NAME_ELDER_KABA)
 					msgbox(format(
 						"{CREATE_MUGSHOT MUGSHOT_KABA EMOTE_NORMAL}Alright, alright.\n"

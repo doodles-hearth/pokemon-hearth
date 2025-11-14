@@ -73,11 +73,14 @@ YifuCity_Onsen_EventScript_Owner_2:
 	goto YifuCity_Onsen_EventScript_Owner_1
 
 YifuCity_Onsen_EventScript_Owner_5:
-	mcdialogue YifuCity_Onsen_EventScript_Owner_Text_2, YifuCity_Onsen_EventScript_Owner_Text_3
+	mcdialogueB YifuCity_Onsen_EventScript_Owner_Text_2, YifuCity_Onsen_EventScript_Owner_Text_3
 	closemessage
 	switch VAR_RESULT
 	case 0, YifuCity_Onsen_EventScript_Owner_9
-	case 1, YifuCity_Onsen_EventScript_Owner_10
+	hidemoneybox
+	setspeaker SP_NAME_OWNER
+	msgbox YifuCity_Onsen_EventScript_Owner_Text_4
+	closemessage
 	goto YifuCity_Onsen_EventScript_Owner_1
 
 YifuCity_Onsen_EventScript_Owner_9:
@@ -95,13 +98,6 @@ YifuCity_Onsen_EventScript_Owner_11:
 	waitmovement 0
 	setspeaker SP_NAME_OWNER
 	msgbox YifuCity_Onsen_EventScript_Owner_Text_0
-	closemessage
-	goto YifuCity_Onsen_EventScript_Owner_1
-
-YifuCity_Onsen_EventScript_Owner_10:
-	hidemoneybox
-	setspeaker SP_NAME_OWNER
-	msgbox YifuCity_Onsen_EventScript_Owner_Text_4
 	closemessage
 	goto YifuCity_Onsen_EventScript_Owner_1
 

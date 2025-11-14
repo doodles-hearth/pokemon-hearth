@@ -70,9 +70,12 @@ script(local) OldWomanRegularScript {
 
 script(local) OldWomanQuestScript {
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Hello, dearie. Do you need to rest yourself and your Pokémon?"))
-	mcdialogue("A Pokémon needs your help.")
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Oh my. Take me, please. Where is it?"))
-	mcdialogue("In the Saku village Refuge.")
+	mcdialogue("A Pokémon needs help!")
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Oh my. Take me, please.\nWhere is it?"))
+	mcdialogue(
+		"Actually…",
+		"About that…"
+	)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Saku village…? Oh dear…\p"
 		"As much as I'd like to help, I won't be allowed to go through the gate by the guard."

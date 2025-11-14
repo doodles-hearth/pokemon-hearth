@@ -199,11 +199,14 @@ YifuCity_Refuge_EventScript_HotelValet_2:
 	goto YifuCity_Refuge_EventScript_HotelValet_1
 
 YifuCity_Refuge_EventScript_HotelValet_5:
-	mcdialogue YifuCity_Refuge_EventScript_HotelValet_Text_2, YifuCity_Refuge_EventScript_HotelValet_Text_3
+	mcdialogueB YifuCity_Refuge_EventScript_HotelValet_Text_2, YifuCity_Refuge_EventScript_HotelValet_Text_3
 	closemessage
 	switch VAR_RESULT
 	case 0, YifuCity_Refuge_EventScript_HotelValet_9
-	case 1, YifuCity_Refuge_EventScript_HotelValet_10
+	hidemoneybox
+	setspeaker SP_NAME_VALET
+	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_6
+	closemessage
 	goto YifuCity_Refuge_EventScript_HotelValet_1
 
 YifuCity_Refuge_EventScript_HotelValet_9:
@@ -223,13 +226,6 @@ YifuCity_Refuge_EventScript_HotelValet_9:
 YifuCity_Refuge_EventScript_HotelValet_11:
 	waitmovement 0
 	setflag FLAG_DAILY_YIFU_HOTEL_ROOM
-	goto YifuCity_Refuge_EventScript_HotelValet_1
-
-YifuCity_Refuge_EventScript_HotelValet_10:
-	hidemoneybox
-	setspeaker SP_NAME_VALET
-	msgbox YifuCity_Refuge_EventScript_HotelValet_Text_6
-	closemessage
 	goto YifuCity_Refuge_EventScript_HotelValet_1
 
 YifuCity_Refuge_EventScript_HotelValet_12:
@@ -274,11 +270,14 @@ YifuCity_Refuge_EventScript_FakeValet_2:
 	goto YifuCity_Refuge_EventScript_FakeValet_1
 
 YifuCity_Refuge_EventScript_FakeValet_5:
-	mcdialogue YifuCity_Refuge_EventScript_HotelValet_Text_2, YifuCity_Refuge_EventScript_HotelValet_Text_3
+	mcdialogueB YifuCity_Refuge_EventScript_HotelValet_Text_2, YifuCity_Refuge_EventScript_HotelValet_Text_3
 	closemessage
 	switch VAR_RESULT
 	case 0, YifuCity_Refuge_EventScript_FakeValet_9
-	case 1, YifuCity_Refuge_EventScript_FakeValet_10
+	hidemoneybox
+	setspeaker SP_NAME_VALET
+	msgbox YifuCity_Refuge_EventScript_FakeValet_Text_4
+	closemessage
 	goto YifuCity_Refuge_EventScript_FakeValet_1
 
 YifuCity_Refuge_EventScript_FakeValet_9:
@@ -298,13 +297,6 @@ YifuCity_Refuge_EventScript_FakeValet_9:
 YifuCity_Refuge_EventScript_FakeValet_11:
 	waitmovement 0
 	setflag FLAG_DAILY_YIFU_HOTEL_ROOM
-	goto YifuCity_Refuge_EventScript_FakeValet_1
-
-YifuCity_Refuge_EventScript_FakeValet_10:
-	hidemoneybox
-	setspeaker SP_NAME_VALET
-	msgbox YifuCity_Refuge_EventScript_FakeValet_Text_4
-	closemessage
 	goto YifuCity_Refuge_EventScript_FakeValet_1
 
 YifuCity_Refuge_EventScript_FakeValet_12:

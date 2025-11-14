@@ -90,11 +90,16 @@ WhiteslateRoute_EventScript_ShamisenPlayer::
 
 
 WhiteslateRoute_EventScript_ShamisenPlayerChoice::
-	mcdialogue WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_0, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_1
+	mcdialogueB WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_0, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_1
 	closemessage
 	switch VAR_RESULT
 	case 0, WhiteslateRoute_EventScript_ShamisenPlayerChoice_2
-	case 1, WhiteslateRoute_EventScript_ShamisenPlayerChoice_3
+	setspeaker SP_NAME_SHAMISEN_PLAYER
+	msgbox WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_3
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_3
+	waitmovement OBJ_EVENT_ID_PLAYER
+	setroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_EXPLAINED
 	return
 
 WhiteslateRoute_EventScript_ShamisenPlayerChoice_2:
@@ -112,15 +117,6 @@ WhiteslateRoute_EventScript_ShamisenPlayerChoice_2:
 	setroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_STARTED
 	setvar VAR_TEMP_2, 1
 	setflag FLAG_TEMP_1
-	return
-
-WhiteslateRoute_EventScript_ShamisenPlayerChoice_3:
-	setspeaker SP_NAME_SHAMISEN_PLAYER
-	msgbox WhiteslateRoute_EventScript_ShamisenPlayerChoice_Text_3
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, WhiteslateRoute_EventScript_ShamisenPlayerChoice_Movement_3
-	waitmovement OBJ_EVENT_ID_PLAYER
-	setroutechallengestate ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_EXPLAINED
 	return
 
 

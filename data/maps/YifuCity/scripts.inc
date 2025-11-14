@@ -1043,18 +1043,14 @@ SpeakToNatsukiLunchOrDinner:
 	msgbox SpeakToNatsukiLunchOrDinner_Text_1
 	call HarikoFacesPlayer
 	msgbox SpeakToNatsukiLunchOrDinner_Text_2
-	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	mcdialogueB SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	switch VAR_RESULT
 	case 0, SpeakToNatsukiLunchOrDinner_2
-	case 1, SpeakToNatsukiLunchOrDinner_3
+	call NotRightNow
 	return
 
 SpeakToNatsukiLunchOrDinner_2:
 	call EnterRestaurant
-	return
-
-SpeakToNatsukiLunchOrDinner_3:
-	call NotRightNow
 	return
 
 
@@ -1072,19 +1068,15 @@ SpeakToNatsukiAfternoon:
 	msgbox SpeakToNatsukiAfternoon_Text_1
 	call NatsukiFacesPlayer
 	msgbox SpeakToNatsukiAfternoon_Text_2
-	mcdialogue SpeakToNatsukiAfternoon_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	mcdialogueB SpeakToNatsukiAfternoon_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
 	switch VAR_RESULT
 	case 0, SpeakToNatsukiAfternoon_2
-	case 1, SpeakToNatsukiAfternoon_3
+	call NotRightNow
 	return
 
 SpeakToNatsukiAfternoon_2:
 	call EnterRestaurant
-	return
-
-SpeakToNatsukiAfternoon_3:
-	call NotRightNow
 	return
 
 
@@ -1193,19 +1185,15 @@ HarikoNotABreakfastPlace:
 	call NatsukiFacesPlayer
 	setspeaker SP_NAME_NATSUKI
 	msgbox HarikoNotABreakfastPlace_Text_3
-	mcdialogue HarikoNotABreakfastPlace_Text_4, SpeakToNatsukiLunchOrDinner_Text_4
+	mcdialogueB HarikoNotABreakfastPlace_Text_4, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
 	switch VAR_RESULT
 	case 0, HarikoNotABreakfastPlace_2
-	case 1, HarikoNotABreakfastPlace_3
+	call NotRightNow
 	return
 
 HarikoNotABreakfastPlace_2:
 	call EnterRestaurant
-	return
-
-HarikoNotABreakfastPlace_3:
-	call NotRightNow
 	return
 
 
@@ -1219,19 +1207,15 @@ HarikoTooLateForDinner:
 	call HarikoTurnsToNatsuki
 	setspeaker SP_NAME_NATSUKI
 	msgbox HarikoTooLateForDinner_Text_1
-	mcdialogue HarikoTooLateForDinner_Text_2, SpeakToNatsukiLunchOrDinner_Text_4
+	mcdialogueB HarikoTooLateForDinner_Text_2, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
 	switch VAR_RESULT
 	case 0, HarikoTooLateForDinner_2
-	case 1, HarikoTooLateForDinner_3
+	call NotRightNow
 	return
 
 HarikoTooLateForDinner_2:
 	call EnterRestaurant
-	return
-
-HarikoTooLateForDinner_3:
-	call NotRightNow
 	return
 
 
@@ -1251,10 +1235,10 @@ SpeakToHarikoLunchOrDinner_1:
 	faceplayer
 	setspeaker SP_NAME_NATSUKI
 	msgbox SpeakToHarikoLunchOrDinner_Text_4
-	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	mcdialogueB SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	switch VAR_RESULT
 	case 0, SpeakToHarikoLunchOrDinner_8
-	case 1, SpeakToHarikoLunchOrDinner_9
+	call NotRightNow
 	return
 
 SpeakToHarikoLunchOrDinner_2:
@@ -1268,10 +1252,6 @@ SpeakToHarikoLunchOrDinner_4:
 
 SpeakToHarikoLunchOrDinner_8:
 	call EnterRestaurant
-	return
-
-SpeakToHarikoLunchOrDinner_9:
-	call NotRightNow
 	return
 
 
@@ -1314,11 +1294,11 @@ SpeakToHarikoAfternoon_1:
 	msgbox SpeakToNatsukiAfternoon_Text_1
 	call NatsukiFacesPlayer
 	msgbox SpeakToNatsukiAfternoon_Text_2
-	mcdialogue SpeakToNatsukiAfternoon_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	mcdialogueB SpeakToNatsukiAfternoon_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
 	switch VAR_RESULT
 	case 0, SpeakToHarikoAfternoon_6
-	case 1, SpeakToHarikoAfternoon_7
+	call NotRightNow
 	return
 
 SpeakToHarikoAfternoon_3:
@@ -1331,10 +1311,6 @@ SpeakToHarikoAfternoon_4:
 
 SpeakToHarikoAfternoon_6:
 	call EnterRestaurant
-	return
-
-SpeakToHarikoAfternoon_7:
-	call NotRightNow
 	return
 
 
@@ -1357,11 +1333,11 @@ SpeakToHarikoAgain_7:
 SpeakToHarikoAgain_5:
 	msgbox SpeakToHarikoAgain_Text_3
 SpeakToHarikoAgain_1:
-	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	mcdialogueB SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
 	switch VAR_RESULT
 	case 0, SpeakToHarikoAgain_20
-	case 1, SpeakToHarikoAgain_21
+	call NotRightNow
 	return
 
 SpeakToHarikoAgain_2:
@@ -1400,10 +1376,6 @@ SpeakToHarikoAgain_20:
 	call EnterRestaurant
 	return
 
-SpeakToHarikoAgain_21:
-	call NotRightNow
-	return
-
 
 SpeakToNatsukiAgain:
 	gettime
@@ -1426,11 +1398,11 @@ SpeakToNatsukiAgain_7:
 SpeakToNatsukiAgain_5:
 	msgbox SpeakToNatsukiAgain_Text_4
 SpeakToNatsukiAgain_1:
-	mcdialogue SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
+	mcdialogueB SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
 	switch VAR_RESULT
 	case 0, SpeakToNatsukiAgain_20
-	case 1, SpeakToNatsukiAgain_21
+	call NotRightNow
 	return
 
 SpeakToNatsukiAgain_2:
@@ -1467,10 +1439,6 @@ SpeakToNatsukiAgain_16:
 
 SpeakToNatsukiAgain_20:
 	call EnterRestaurant
-	return
-
-SpeakToNatsukiAgain_21:
-	call NotRightNow
 	return
 
 

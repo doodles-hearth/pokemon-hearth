@@ -81,7 +81,7 @@ YifuCity_Onsen_EventScript_Leave::
 	lock
 	setspeaker SP_NAME_OWNER
 	msgbox YifuCity_Onsen_EventScript_Leave_Text_0
-	mcdialogue YifuCity_Onsen_EventScript_Leave_Text_1, YifuCity_Onsen_EventScript_Leave_Text_2
+	mcdialogueB YifuCity_Onsen_EventScript_Leave_Text_1, YifuCity_Onsen_EventScript_Leave_Text_2
 	compare VAR_RESULT, 0
 	goto_if_eq YifuCity_Onsen_EventScript_Leave_2
 YifuCity_Onsen_EventScript_Leave_1:

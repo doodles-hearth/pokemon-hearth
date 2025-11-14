@@ -127,11 +127,12 @@ SunriseVillage_EldersHouse_Event_Elder_2:
 	compare VAR_DECAY_BEACHBOUND_ROUTE, 5
 	goto_if_lt SunriseVillage_EldersHouse_Event_Elder_5
 	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_1
-	mcdialogue SunriseVillage_EldersHouse_Event_Elder_Text_2, SunriseVillage_EldersHouse_Event_Elder_Text_3
+	mcdialogueB SunriseVillage_EldersHouse_Event_Elder_Text_2, SunriseVillage_EldersHouse_Event_Elder_Text_3
 	closemessage
 	switch VAR_RESULT
 	case 0, SunriseVillage_EldersHouse_Event_Elder_9
-	case 1, SunriseVillage_EldersHouse_Event_Elder_10
+	setspeaker SP_NAME_ELDER_KABA
+	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_5
 	goto SunriseVillage_EldersHouse_Event_Elder_1
 
 SunriseVillage_EldersHouse_Event_Elder_5:
@@ -142,11 +143,6 @@ SunriseVillage_EldersHouse_Event_Elder_9:
 	setspeaker SP_NAME_ELDER_KABA
 	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_4
 	call ProfBirch_EventScript_RatePokedex
-	goto SunriseVillage_EldersHouse_Event_Elder_1
-
-SunriseVillage_EldersHouse_Event_Elder_10:
-	setspeaker SP_NAME_ELDER_KABA
-	msgbox SunriseVillage_EldersHouse_Event_Elder_Text_5
 	goto SunriseVillage_EldersHouse_Event_Elder_1
 
 

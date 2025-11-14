@@ -169,7 +169,7 @@ ChiiTown_EventScript_EatingBerries_1:
 
 ChiiTown_EventScript_EatingBerries_2:
 	msgbox ChiiTown_EventScript_EatingBerries_Text_1
-	mcdialogue ChiiTown_EventScript_EatingBerries_Text_2, ChiiTown_EventScript_EatingBerries_Text_3
+	mcdialogueB ChiiTown_EventScript_EatingBerries_Text_2, ChiiTown_EventScript_EatingBerries_Text_3
 	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_EatingBerries_4
 	goto ChiiTown_EventScript_EatingBerries_1
@@ -208,7 +208,7 @@ ChiiTown_EventScript_BattlingGirl_5:
 	special GetPlayerMrMrsString
 	setspeaker SP_NAME_LITTLE_GIRL
 	msgbox ChiiTown_EventScript_BattlingGirl_Text_1
-	mcdialogue ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
+	mcdialogueB ChiiTown_EventScript_BattlingGirl_Text_2, ChiiTown_EventScript_BattlingGirl_Text_3
 	closemessage
 	compare VAR_RESULT, 0
 	goto_if_eq ChiiTown_EventScript_BattlingGirl_10

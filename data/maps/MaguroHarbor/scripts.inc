@@ -127,12 +127,12 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling::
 	setspeaker SP_NAME_OLD_LADY
 	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_1, MSGBOX_DEFAULT
 	showmoneybox 18, 0
-	mcdialogue MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_3, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_4
+	mcdialogueB MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_3, MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_4
 	closemessage
 	switch VAR_RESULT
 	case 0, MaguroHarbor_EventScript_FishcakeSalesmanSelling_6
 	case 1, MaguroHarbor_EventScript_FishcakeSalesmanSelling_7
-	case 2, MaguroHarbor_EventScript_FishcakeSalesmanSelling_8
+	hidemoneybox
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_1:
 	release
 	return
@@ -153,10 +153,6 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_6:
 	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_7:
-	hidemoneybox
-	goto MaguroHarbor_EventScript_FishcakeSalesmanSelling_1
-
-MaguroHarbor_EventScript_FishcakeSalesmanSelling_8:
 	hidemoneybox
 	setspeaker SP_NAME_OLD_LADY
 	msgbox MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_7
@@ -254,11 +250,13 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling::
 	goto_if_set FLAG_TEMP_2, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_6
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_1
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_5:
-	mcdialogue MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_2, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_3
+	mcdialogueB MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_2, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_3
 	closemessage
 	switch VAR_RESULT
 	case 0, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_10
-	case 1, MaguroHarbor_EventScript_FishPokemonSalesmanSelling_11
+	setspeaker SP_NAME_SHOPKEEPER
+	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_14
+	closemessage
 MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1:
 	setflag FLAG_TEMP_2
 	release
@@ -287,12 +285,6 @@ MaguroHarbor_EventScript_FishPokemonSalesmanSelling_10:
 	goto_if_gt MaguroHarbor_EventScript_FishPokemonSalesmanSelling_18
 	setspeaker SP_NAME_SHOPKEEPER
 	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_13
-	closemessage
-	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
-
-MaguroHarbor_EventScript_FishPokemonSalesmanSelling_11:
-	setspeaker SP_NAME_SHOPKEEPER
-	msgbox MaguroHarbor_EventScript_FishPokemonSalesmanSelling_Text_14
 	closemessage
 	goto MaguroHarbor_EventScript_FishPokemonSalesmanSelling_1
 
@@ -649,10 +641,10 @@ MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_2:
 	.string "One please!$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_3:
-	.string "No, thanks.$"
+	.string "Fishcakes?$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_4:
-	.string "Fishcakes?$"
+	.string "No, thanks.$"
 
 MaguroHarbor_EventScript_FishcakeSalesmanSelling_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}One fishcake, coming right up!$"

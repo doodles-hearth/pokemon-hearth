@@ -1953,6 +1953,11 @@
 	_dynmultichoice 0, 0, TRUE, 10, FALSE, 0, DYN_MULTICHOICE_CB_NONE, \argv
 	.endm
 
+	@ mcdialogue but with B = leave
+	.macro mcdialogueB argv:vararg
+	_dynmultichoice 0, 0, FALSE, 10, FALSE, 0, DYN_MULTICHOICE_CB_NONE, \argv
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
