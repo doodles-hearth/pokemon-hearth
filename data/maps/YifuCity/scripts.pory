@@ -1646,7 +1646,7 @@ script(local) SpeakToNatsukiAgain {
 	buffernumberstring(STR_VAR_2, VAR_HOUR_OF_DAY)
 
 	// TODO EVA
-	msgbox("hour of day = {STR_VAR_2}")
+	// msgbox("hour of day = {STR_VAR_2}")
 
 	gettime
 

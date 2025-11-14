@@ -1382,7 +1382,6 @@ SpeakToNatsukiAgain:
 	call HarikoTurnsToPlayer
 	setspeaker SP_NAME_NATSUKI
 	buffernumberstring STR_VAR_2, VAR_0x8000
-	msgbox SpeakToNatsukiAgain_Text_0
 	gettime
 	compare VAR_0x8000, 5
 	goto_if_ge SpeakToNatsukiAgain_16
@@ -1396,7 +1395,7 @@ SpeakToNatsukiAgain_7:
 	compare VAR_0x8000, 15
 	goto_if_gt SpeakToNatsukiAgain_6
 SpeakToNatsukiAgain_5:
-	msgbox SpeakToNatsukiAgain_Text_4
+	msgbox SpeakToNatsukiAgain_Text_3
 SpeakToNatsukiAgain_1:
 	mcdialogueB SpeakToNatsukiLunchOrDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
@@ -1406,15 +1405,15 @@ SpeakToNatsukiAgain_1:
 	return
 
 SpeakToNatsukiAgain_2:
-	msgbox SpeakToNatsukiAgain_Text_1
+	msgbox SpeakToNatsukiAgain_Text_0
 	goto SpeakToNatsukiAgain_1
 
 SpeakToNatsukiAgain_3:
-	msgbox SpeakToNatsukiAgain_Text_2
+	msgbox SpeakToNatsukiAgain_Text_1
 	goto SpeakToNatsukiAgain_1
 
 SpeakToNatsukiAgain_4:
-	msgbox SpeakToNatsukiAgain_Text_3
+	msgbox SpeakToNatsukiAgain_Text_2
 	goto SpeakToNatsukiAgain_1
 
 SpeakToNatsukiAgain_6:
@@ -2633,21 +2632,18 @@ SpeakToHarikoAgain_Text_3:
 	.string "Late night hotpot?$"
 
 SpeakToNatsukiAgain_Text_0:
-	.string "hour of day = {STR_VAR_2}$"
-
-SpeakToNatsukiAgain_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot breakfast,\n"
 	.string "{PLAYER}?$"
 
-SpeakToNatsukiAgain_Text_2:
+SpeakToNatsukiAgain_Text_1:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot meal,\n"
 	.string "{PLAYER}?$"
 
-SpeakToNatsukiAgain_Text_3:
+SpeakToNatsukiAgain_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick hotpot snack,\n"
 	.string "{PLAYER}?$"
 
-SpeakToNatsukiAgain_Text_4:
+SpeakToNatsukiAgain_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Ready for a sick late night hotpot,\n"
 	.string "{PLAYER}?$"
 

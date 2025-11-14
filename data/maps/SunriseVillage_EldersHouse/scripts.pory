@@ -151,7 +151,6 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	release
 }
 
-// TODO EVA dex evaluation, letter delivery, etc
 script SunriseVillage_EldersHouse_Event_Elder {
 	lock
 	faceplayer

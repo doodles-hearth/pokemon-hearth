@@ -322,6 +322,9 @@ YifuCity_Restaurant_EventScript_LittleBoy2::
 	lock
 	faceplayer
 	msgbox YifuCity_Restaurant_EventScript_LittleBoy2_Text_0
+	applymovement VAR_LAST_TALKED, YifuCity_Restaurant_EventScript_LittleBoy2_Movement_0
+	msgbox YifuCity_Restaurant_EventScript_LittleBoy2_Text_1
+	waitmovement VAR_LAST_TALKED
 	closemessage
 	applymovement VAR_LAST_TALKED, YifuCity_Restaurant_EventScript_LittleBoy_Movement_0
 	waitmovement 0
@@ -453,6 +456,10 @@ Hotpot_End_Movement_0:
 
 YifuCity_Restaurant_EventScript_LittleBoy_Movement_0:
 	face_original_direction
+	step_end
+
+YifuCity_Restaurant_EventScript_LittleBoy2_Movement_0:
+	shake_horizontal
 	step_end
 
 YifuCity_Restaurant_EventScript_UninspiredChef_Text_0:
@@ -649,7 +656,9 @@ YifuCity_Restaurant_EventScript_LittleBoy2_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}{SPEAKER NAME_LITTLE_BOY} My brother dared me to go into the\n"
 	.string "Forest alone!\p"
 	.string "Huh? Yeah, of COURSE I did!\n"
-	.string "I'm not a wimp!\p"
+	.string "I'm not a wimp!$"
+
+YifuCity_Restaurant_EventScript_LittleBoy2_Text_1:
 	.string "{FONT_SMALL}(Shiver shiver…){FONT_NORMAL}$"
 
 YifuCity_Restaurant_EventScript_OldMan_Text_0:

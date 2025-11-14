@@ -748,6 +748,7 @@ script SakuTown_EventScript_LoversReunite {
 
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}… … … … … …\n… … … … … …"))
+	closemessage
 
 	special(SpawnCameraObject)	
 	switch(var(VAR_TEMP_0))
@@ -759,7 +760,25 @@ script SakuTown_EventScript_LoversReunite {
 			applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_slow_right * 3, walk_slow_up * 2))
 			waitmovement(0)
 	}
-	delay(60)
+
+	applymovement(LOCALID_ASHII, moves(
+		walk_fast_left,
+		quarter_step_left,
+	))
+	waitmovement(LOCALID_ASHII)
+
+	playse(SE_PIN)
+	applymovement(LOCALID_TAMA2, moves(
+		emote_heart
+	))
+
+	applymovement(LOCALID_ASHII, moves(
+		delay_16 * 6,
+		lock_facing_direction,
+		quarter_step_right,
+		delay_16 * 6
+	))
+	waitmovement(LOCALID_ASHII)
 
 	applymovement(LOCALID_TAMA2, moves(walk_in_place_fast_right))
 
@@ -874,7 +893,7 @@ script SakuTown_EventScript_LoversReunite {
 	waitmovement(LOCALID_ASHII)
 	waitse
 
-	applymovement(LOCALID_ASHII, moves(walk_slow_up, walk_slow_right * 2, walk_slow_up * 5))
+	applymovement(LOCALID_ASHII, moves(walk_slow_up, walk_slow_right * 3, walk_slow_up * 5))
 	waitmovement(0)
 	removeobject(LOCALID_ASHII)
 	setflag(FLAG_HIDE_DEADNIGHT_ASHII)

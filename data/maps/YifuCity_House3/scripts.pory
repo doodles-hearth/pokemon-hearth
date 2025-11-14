@@ -1,12 +1,18 @@
+const FLAG_HIDE_MOM = FLAG_TEMP_1
+
 mapscripts YifuCity_House3_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION {
+		getweekday
+		if (var(VAR_RESULT) == WEEKDAY_TUE) {
+			setflag(FLAG_HIDE_MOM)
+		}
+	}
 }
 
 script YifuCity_House3_EggGirlsMom {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_WOMAN)
-	// TODO EVA: tuesday -> daycare
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}I help out at the Pokémon daycare west of Windycape on tuesdays. Sometimes they'll let me bring back an egg for my daughter!"
 	))
