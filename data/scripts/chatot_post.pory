@@ -237,16 +237,21 @@ script ChatotPost_EventScript_DessertCatastrophe { // take one of leftovers gift
 
 script ChatotPost_EventScript_BigSisLeftovers { // take two of leftovers gift
     setspeakertomonname(SPECIES_CHATOT)
-        msgbox(format("Hey little {STR_VAR_1}!\l
-                You must be homesick on your big journey, huh?\p
-                Well I went ahead and made a batch of your favorite dish! I bet
-                you were salivating soon as you saw Chatot on the perch, huh?\p
-                I really hope you enjoy it. If anybody else gets their hands on 
-                this dish... I'll cry!"))
+        msgbox(format("Hey little {STR_VAR_1}!\p
+                I know you've been homesick on your big journey,\n
+                So I went ahead and made a batch of your favorite dish!\p
+                I bet you were salivating soon as you saw Chatot on the perch, huh?\p
+                I wrapped it up real nice so make sure your Pokemon don't get
+                their hands on this! They might not be able to resist!"))
     closemessage // What should the protagonist's favorite dish be?
     
     giveitem(ITEM_LEFTOVERS)
+    
+    // stretch goal/scope creep: sound plays for obtained item (the dish), but then
+    // the first pokemon in your party steals and eats nearly all of it
    
+    // could make the punchline...punchier, in general
+
     return
 }
 

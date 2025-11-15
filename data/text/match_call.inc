@@ -727,10 +727,11 @@ MatchCall_PersonalizedText11::
 MatchCall_PersonalizedText12::
 	.string "Dear {PLAYER},\n"
 	.string "What's a relaxing moment for you?\p"
-	.string "I lay down in the tall grass at dusk,\n"
+	.string "Me, I lay down in the tall grass\n"
 	.string "in the warm, lazy summer evenings,\n"
 	.string "listening to the Kricketot's song…\p"
-	.string "It's totally worth getting\noccasionally jumped by wild Pokémon!"
+	.string "Okay, sometimes I get jumped by wild\n"
+	.string "{STR_VAR_2} but it's totally worth it!\p"
 	.string "Hope you're well. Talk to you soon!$"
 
 MatchCall_PersonalizedText13::
