@@ -636,14 +636,11 @@ static void PlayerNotOnBikeNotMoving(u8 direction, u16 heldKeys)
 {
     u8 faceDirection = GetPlayerFacingDirection();
 
-    if (isPlayerTransformed()) //Follower sprites look weird when still
-    {
+    if (IsPlayerTransformed()) //Follower sprites look weird when still
         PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(faceDirection), COPY_MOVE_FACE);
-    }
     else
-    {
+ 
         PlayerFaceDirection(faceDirection);
-    }
 }
 
 void UpdateSpinData(void)
@@ -838,7 +835,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
      && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 && !FollowerNPCComingThroughDoor())
     {
-        if(isPlayerTransformed()) //Run causes graphical issues with the follower sprites
+        if(IsPlayerTransformed()) //Run causes graphical issues with the follower sprites
         {
             PlayerWalkFast(direction);
         }
@@ -1489,11 +1486,9 @@ u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 
 u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 {
-    if(isPlayerTransformed()) //Ensures the pokemon gfx is loaded when transformed
-    {
+    if(IsPlayerTransformed()) //Ensures the pokemon gfx is loaded when transformed
         return GetPlayerTransformGfxFromSaveblock();
-    }
- 
+
     return sPlayerAvatarGfxIds[state][gender];
 }
 
