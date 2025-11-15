@@ -34,6 +34,7 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
+#include "player_transform.h"
 
 #define NUM_FORCED_MOVEMENTS 18
 #define NUM_ACRO_BIKE_COLLISIONS 5
@@ -633,7 +634,13 @@ static u8 CheckMovementInputNotOnBike(u8 direction)
 
 static void PlayerNotOnBikeNotMoving(u8 direction, u16 heldKeys)
 {
-    PlayerFaceDirection(GetPlayerFacingDirection());
+    u8 faceDirection = GetPlayerFacingDirection();
+
+    if (IsPlayerTransformed()) //Follower sprites look weird when still
+        PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(faceDirection), COPY_MOVE_FACE);
+    else
+ 
+        PlayerFaceDirection(faceDirection);
 }
 
 void UpdateSpinData(void)
@@ -828,6 +835,10 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
      && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 && !FollowerNPCComingThroughDoor())
     {
+        if(IsPlayerTransformed()) //Run causes graphical issues with the follower sprites
+        {
+            PlayerWalkFast(direction);
+        }
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction)) {
             PlayerRunSlow(direction);
         }
@@ -1475,6 +1486,9 @@ u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 
 u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 {
+    if(IsPlayerTransformed()) //Ensures the pokemon gfx is loaded when transformed
+        return GetPlayerTransformGfxFromSaveblock();
+
     return sPlayerAvatarGfxIds[state][gender];
 }
 
@@ -1490,7 +1504,7 @@ u16 GetRSAvatarGraphicsIdByGender(u8 gender)
 
 u16 GetPlayerAvatarGraphicsIdByStateId(u8 state)
 {
-    return GetPlayerAvatarGraphicsIdByStateIdAndGender(state, gPlayerAvatar.gender);
+    return GetPlayerAvatarGraphicsIdByStateIdAndGender(state, gSaveBlock2Ptr->playerGender); // changed from gPlayerAvatar.gender since that won't work if the player is transformed
 }
 
 u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
