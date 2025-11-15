@@ -205,18 +205,19 @@ script ChatotPost_EventScript_MichaelIrvin { // add to /src/data/chatot_post.h -
 script ChatotPost_EventScript_PechaOvergrown {
     setspeakertomonname(SPECIES_CHATOT)
     msgbox(format("
-                I don't know who you are. I don't know what you want. 
+                I don't know who you are.\nI don't know what you want.\p
                 But I grew too many Pecha berries, so...I hope you have a sweet tooth!"
                 ))
     closemessage
     
-    giveitem(ITEM_RARE_CANDY) // change to ten Pecha berries, please!
+    giveitem(ITEM_PECHA_BERRY, 10)
+    
 
    
     return
 }
 
-script ChatotPost_EventScript_DessertCatastrophe { // take one of leftovers gift
+script ChatotPost_EventScript_DessertCatastrophe { // take one of leftovers gift - meh
     setspeakertomonname(SPECIES_CHATOT)
     msgbox(format(
                 "Listen to me very carefully.\p
@@ -236,13 +237,14 @@ script ChatotPost_EventScript_DessertCatastrophe { // take one of leftovers gift
 }
 
 script ChatotPost_EventScript_BigSisLeftovers { // take two of leftovers gift
+    special(GetPlayerBrotherSisterString)
     setspeakertomonname(SPECIES_CHATOT)
         msgbox(format("Hey little {STR_VAR_1}!\p
-                I know you've been homesick on your big journey,\n
+                I know, I know... you've been homesick on your big journey…\l
                 So I went ahead and made a batch of your favorite dish!\p
                 I bet you were salivating soon as you saw Chatot on the perch, huh?\p
-                I wrapped it up real nice so make sure your Pokemon don't get
-                their hands on this! They might not be able to resist!"))
+                I wrapped it up real nice, so make sure your Pokemon don't get
+                their hands on this!\l They might not be able to resist!"))
     closemessage // What should the protagonist's favorite dish be?
     
     giveitem(ITEM_LEFTOVERS)

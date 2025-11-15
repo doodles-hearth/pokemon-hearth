@@ -16,6 +16,7 @@ extern const u8 gText_ChatotPostSender_Hariko[];
 extern const u8 gText_ChatotPostSender_Natsuki[];
 extern const u8 gText_ChatotPostSender_Okada[];
 extern const u8 gText_ChatotPostSender_Kaba[];
+extern const u8 gText_ChatotPostSender_Anon[];
 
 struct ChatotPost
 {

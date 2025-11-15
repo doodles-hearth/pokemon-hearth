@@ -158,7 +158,7 @@ ChatotPost_EventScript_PechaOvergrown::
 	setspeakertomonname SPECIES_CHATOT
 	msgbox ChatotPost_EventScript_PechaOvergrown_Text_0
 	closemessage
-	giveitem ITEM_RARE_CANDY
+	giveitem ITEM_PECHA_BERRY, 10
 	return
 
 
@@ -171,6 +171,7 @@ ChatotPost_EventScript_DessertCatastrophe::
 
 
 ChatotPost_EventScript_BigSisLeftovers::
+	special GetPlayerBrotherSisterString
 	setspeakertomonname SPECIES_CHATOT
 	msgbox ChatotPost_EventScript_BigSisLeftovers_Text_0
 	closemessage
@@ -266,10 +267,10 @@ ChatotPost_EventScript_MichaelIrvin_Text_0:
 	.string "DO WHAT YOU NEED TO DO, TO-DAY!!!$"
 
 ChatotPost_EventScript_PechaOvergrown_Text_0:
-	.string "I don't know who you are. I don't know\n"
-	.string "what you want. But I grew too many\l"
-	.string "Pecha berries, so...I hope you have a\l"
-	.string "sweet tooth!$"
+	.string "I don't know who you are.\n"
+	.string "I don't know what you want.\p"
+	.string "But I grew too many Pecha berries,\n"
+	.string "so...I hope you have a sweet tooth!$"
 
 ChatotPost_EventScript_DessertCatastrophe_Text_0:
 	.string "Listen to me very carefully.\p"
@@ -286,16 +287,16 @@ ChatotPost_EventScript_DessertCatastrophe_Text_0:
 
 ChatotPost_EventScript_BigSisLeftovers_Text_0:
 	.string "Hey little {STR_VAR_1}!\p"
-	.string "I know you've been homesick on your\n"
-	.string "big journey,\n"
+	.string "I know, I know... you've been homesick\n"
+	.string "on your big journey…\l"
 	.string "So I went ahead and made a batch of\l"
 	.string "your favorite dish!\p"
 	.string "I bet you were salivating soon as you\n"
 	.string "saw Chatot on the perch, huh?\p"
-	.string "I wrapped it up real nice so make sure\n"
+	.string "I wrapped it up real nice, so make sure\n"
 	.string "your Pokemon don't get their hands on\l"
-	.string "this! They might not be able to\l"
-	.string "resist!$"
+	.string "this!\l"
+	.string "They might not be able to resist!$"
 
 Text_Chatot_Next1:
 	.string "HERE'S ANOTHER FROM\n"
