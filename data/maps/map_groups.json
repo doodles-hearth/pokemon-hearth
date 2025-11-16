@@ -683,5 +683,8 @@
     "LittlerootTown_MaysHouse_1F",
     "LittlerootTown_MaysHouse_2F",
     "LittlerootTown_ProfessorBirchsLab"
+  ],
+  "gMapGroup_IndoorRoute124": [
+    "Route124_DivingTreasureHuntersHouse"
   ]
 }

@@ -1,0 +1,13 @@
+tools/scaninc/scaninc -M build/emerald/src/strings.d -I include -I tools/agbcc/include src/strings.c
+python3 tools/learnset_helpers/make_teachables.py tools/learnset_helpers/build/all_learnables.json
+tools/scaninc/scaninc -M build/emerald/src/pokemon.d -I include -I tools/agbcc/include src/pokemon.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/emerald/src/pokemon.o src/pokemon.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/emerald/src/strings.o src/strings.c
+Memory region         Used Size  Region Size  %age Used
+           EWRAM:      222508 B       256 KB     84.88%
+           IWRAM:       28692 B        32 KB     87.56%
+             ROM:    26524836 B        32 MB     79.05%
+cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald-hearth.map --print-memory-usage --gc-sections -T ../../ld_script_modern.ld -o ../../pokeemerald-hearth.elf <objs> <libs> | cat
+tools/gbafix/gbafix pokeemerald-hearth.elf -t"POKEMON EMER" -cBPEE -m01 -r0 --silent
+arm-none-eabi-objcopy -O binary pokeemerald-hearth.elf pokeemerald-hearth.gba
+tools/gbafix/gbafix pokeemerald-hearth.gba -p --silent

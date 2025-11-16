@@ -529,4 +529,6 @@ bool8 PlayerIsUnderWaterfall(struct ObjectEvent *objectEvent);
 
 bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32 *female);
 
+u8 GetObjectEventApricornTreeId(u8 objectEventId);
+
 #endif //GUARD_EVENT_OBJECT_MOVEMENT_H

@@ -1908,3 +1908,7 @@ static const struct SpriteFrameImage sPicTable_WingullGrounded[] = {
     overworld_frame(gObjectEventPic_WingullGrounded, 4, 4, 2),
     overworld_frame(gObjectEventPic_WingullGrounded, 4, 4, 2),
 };
+
+static const struct SpriteFrameImage sPicTable_ApricornTree[] = {
+    overworld_frame(gObjectEventPic_ApricornTree, 2, 2, 0),
+};
