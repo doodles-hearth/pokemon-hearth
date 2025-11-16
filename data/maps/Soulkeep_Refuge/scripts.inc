@@ -66,6 +66,6 @@ Soulkeep_Refuge_EventScript_Man_Text_0:
 Soulkeep_Refuge_EventScript_NewDojo_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Some of the town's farmers got\n"
 	.string "together with Guang and said they\l"
-	.string "were going to open the old Dojo.\p"
-	.string "Guang says he's tired of us “living in\n"
-	.string "the shadows”, whatever that means.$"
+	.string "were going to reopen the old Dojo.\p"
+	.string "Guang says he's tired o “living in the\n"
+	.string "shadows”, whatever that means.$"

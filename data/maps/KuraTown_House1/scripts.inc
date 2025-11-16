@@ -73,20 +73,20 @@ OldWomanQuestScript:
 	msgbox OldWomanQuestScript_Text_0
 	mcdialogue OldWomanQuestScript_Text_1
 	msgbox OldWomanQuestScript_Text_2
-	mcdialogue OldWomanQuestScript_Text_3
-	msgbox OldWomanQuestScript_Text_4
+	mcdialogue OldWomanQuestScript_Text_3, OldWomanQuestScript_Text_4
+	msgbox OldWomanQuestScript_Text_5
 	waitmessage
 	closemessage
 	applymovement 1, OldWomanQuestScript_Movement_0
 	waitmovement 0
 	setspeaker SP_NAME_OLD_LADY
-	msgbox OldWomanQuestScript_Text_5
+	msgbox OldWomanQuestScript_Text_6
 	waitmessage
 	closemessage
-	mcdialogue OldWomanQuestScript_Text_6, OldWomanQuestScript_Text_7, OldWomanQuestScript_Text_8
+	mcdialogue OldWomanQuestScript_Text_7, OldWomanQuestScript_Text_8, OldWomanQuestScript_Text_9
 	setspeaker SP_NAME_OLD_LADY
 	applymovement VAR_LAST_TALKED, OldWomanQuestScript_Movement_1
-	msgbox OldWomanQuestScript_Text_9
+	msgbox OldWomanQuestScript_Text_10
 	waitmessage
 	closemessage
 	setvar VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 3
@@ -209,21 +209,25 @@ OldWomanQuestScript_Text_0:
 	.string "yourself and your Pokémon?$"
 
 OldWomanQuestScript_Text_1:
-	.string "A Pokémon needs your help.$"
+	.string "A Pokémon needs help!$"
 
 OldWomanQuestScript_Text_2:
-	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Oh my. Take me, please. Where is it?$"
+	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Oh my. Take me, please.\n"
+	.string "Where is it?$"
 
 OldWomanQuestScript_Text_3:
-	.string "In the Saku village Refuge.$"
+	.string "Actually…$"
 
 OldWomanQuestScript_Text_4:
+	.string "About that…$"
+
+OldWomanQuestScript_Text_5:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Saku village…? Oh dear…\p"
 	.string "As much as I'd like to help, I won't be\n"
 	.string "allowed to go through the gate by the\l"
 	.string "guard.$"
 
-OldWomanQuestScript_Text_5:
+OldWomanQuestScript_Text_6:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}While I can't go to Saku village\n"
 	.string "myself, I can create an healing elixir.\p"
 	.string "I'll need an Oran Berry, a fishcake\n"
@@ -232,16 +236,16 @@ OldWomanQuestScript_Text_5:
 	.string "Be a dear and fetch these things for\n"
 	.string "me!$"
 
-OldWomanQuestScript_Text_6:
+OldWomanQuestScript_Text_7:
 	.string "Of course!$"
 
-OldWomanQuestScript_Text_7:
+OldWomanQuestScript_Text_8:
 	.string "I'll try…$"
 
-OldWomanQuestScript_Text_8:
+OldWomanQuestScript_Text_9:
 	.string "Sure.$"
 
-OldWomanQuestScript_Text_9:
+OldWomanQuestScript_Text_10:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN EMOTE_NORMAL}Such a wonderful child. I'll wait here\n"
 	.string "for the ingredients.$"
 

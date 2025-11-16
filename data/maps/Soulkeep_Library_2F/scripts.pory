@@ -13,6 +13,19 @@ script Soulkeep_Library_2F_EventScript_Employee {
 	release
 }
 
+script Soulkeep_Library_2F_EventScript_EmployeeBlocksVIPArea {
+	lock
+	faceplayer
+	setspeaker("Librarian")
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_VALET EMOTE_NORMAL}The upper floor holds very old and rare books and scrolls.\p"
+		"We can't let just any child get their dirty little paws all over the pages.\p"
+		"As such, only holders of at least X official Tokens have access.{FONT_NORMAL}"
+	))
+	closemessage
+	release
+}
+
 script Soulkeep_Library_2F_EventScript_Hariko {
 	// TODO
 }

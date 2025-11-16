@@ -67,7 +67,7 @@ YifuCity_Refuge_2F_EventScript_NumelTrade::
 	specialvar VAR_RESULT, GetInGameTradeSpeciesInfo
 	copyvar VAR_0x8009, VAR_RESULT
 	msgbox YifuCity_Refuge_2F_EventScript_NumelTrade_Text_1
-	mcdialogue YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2, YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3
+	mcdialogueB YifuCity_Refuge_2F_EventScript_NumelTrade_Text_2, YifuCity_Refuge_2F_EventScript_NumelTrade_Text_3
 	compare VAR_RESULT, 0
 	goto_if_ne YifuCity_Refuge_2F_EventScript_NumelTrade_5
 	special ChoosePartyMon

@@ -52,6 +52,24 @@ enum
     WIN_DESCRIPTION
 };
 
+static const u8 gText_TextSpeedSlow[]      = _("Slow");
+static const u8 gText_TextSpeedMid[]       = _("Mid");
+static const u8 gText_TextSpeedFast[]      = _("Fast");
+static const u8 gText_BattleSpeedNormal[]  = _("Normal");
+static const u8 gText_BattleSpeedFast[]    = _("+");
+static const u8 gText_BattleSpeedFaster[]  = _("++");
+static const u8 gText_BattleSceneOn[]      = _("On");
+static const u8 gText_BattleSceneOff[]     = _("Off");
+static const u8 gText_BattleStyleShift[]   = _("Shift");
+static const u8 gText_BattleStyleSet[]     = _("Set");
+static const u8 gText_SoundMono[]          = _("Mono");
+static const u8 gText_SoundStereo[]        = _("Stereo");
+static const u8 gText_FrameType[]          = _("Type ");
+static const u8 gText_FrameTypeNumber[]    = _("");
+static const u8 gText_ButtonTypeNormal[]   = _("Normal");
+static const u8 gText_ButtonTypeLR[]       = _("LR");
+static const u8 gText_ButtonTypeLEqualsA[] = _("L=A");
+
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
     {
         {// WIN_TOPBAR

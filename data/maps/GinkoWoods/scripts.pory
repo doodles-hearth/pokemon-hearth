@@ -71,7 +71,7 @@ script GinkoWoods_EventScript_OldMan {
 	end
 }
 
-script GinkoWoods_EventScript_Bean {
+script GinkoWoods_EventScript_Hariko {
 	lock
 
 	waitse
@@ -186,14 +186,15 @@ movement GinkoWoods_Movement_BeanWalksAway {
 	walk_up * 7
 }
 
-script GinkoWoods_EventScript_Tracks {
+script(local) GinkoWoods_EventScript_HarikoSpotsYou {
 	lock
-	
+
 	playse(SE_PIN)
 	applymovement(LOCALID_BEAN, Common_Movement_ExclamationMark)
 	waitse
 	waitmovement(0)
 	delay(48)
+
 	applymovement(LOCALID_BEAN, Common_Movement_WalkInPlaceFasterRight)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 
@@ -203,15 +204,32 @@ script GinkoWoods_EventScript_Tracks {
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}THE TRACKS!!\nYOU'RE STEPPING ON THEM!!!"
 	))
 	closemessage
+}
 
-	applymovement(OBJ_EVENT_ID_PLAYER, GinkoWoods_Movement_PlayerWalkDown)
+script GinkoWoods_EventScript_TracksLeft {
+	lock
+	
+	call(GinkoWoods_EventScript_HarikoSpotsYou)
+
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down, walk_left, face_up))
 	waitmovement(0)
+
+	call(GinkoWoods_EventScript_Hariko)
 
 	release
 }
 
-movement GinkoWoods_Movement_PlayerWalkDown {
-	walk_down
+script GinkoWoods_EventScript_TracksRight {
+	lock
+	
+	call(GinkoWoods_EventScript_HarikoSpotsYou)
+
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down, walk_left * 2, face_up))
+	waitmovement(0)
+
+	call(GinkoWoods_EventScript_Hariko)
+
+	release
 }
 
 script GinkoWoods_EventScript_TrainerTips1 {

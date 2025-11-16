@@ -13,6 +13,7 @@
 #include "follower_npc.h"
 #include "menu.h"
 #include "metatile_behavior.h"
+#include "oras_dowse.h"
 #include "overworld.h"
 #include "party_menu.h"
 #include "random.h"
@@ -364,6 +365,8 @@ void PlayerStep(u8 direction, u16 newKeys, u16 heldKeys)
     }
 }
 
+#define sCounter        data[3]
+
 static bool8 TryInterruptObjectEventSpecialAnim(struct ObjectEvent *playerObjEvent, u8 direction)
 {
     if (ObjectEventIsMovementOverridden(playerObjEvent)
@@ -372,6 +375,8 @@ static bool8 TryInterruptObjectEventSpecialAnim(struct ObjectEvent *playerObjEve
         u8 heldMovementActionId = ObjectEventGetHeldMovementActionId(playerObjEvent);
         if (heldMovementActionId > MOVEMENT_ACTION_WALK_FAST_RIGHT && heldMovementActionId < MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_DOWN)
         {
+            struct ObjectEvent *playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
+
             if (direction == DIR_NONE)
             {
                 return TRUE;
@@ -379,12 +384,21 @@ static bool8 TryInterruptObjectEventSpecialAnim(struct ObjectEvent *playerObjEve
 
             if (playerObjEvent->movementDirection != direction)
             {
+                if (I_ORAS_DOWSING_FLAG != 0 && FlagGet(I_ORAS_DOWSING_FLAG))
+                    gSprites[playerObj->fieldEffectSpriteId].sCounter = 0;
+
                 ObjectEventClearHeldMovement(playerObjEvent);
                 return FALSE;
             }
 
             if (CheckForPlayerAvatarStaticCollision(direction) == COLLISION_NONE)
             {
+                if (I_ORAS_DOWSING_FLAG != 0 && FlagGet(I_ORAS_DOWSING_FLAG))
+                {
+                    gSprites[playerObj->fieldEffectSpriteId].sCounter = 0;
+                    gSprites[playerObj->fieldEffectSpriteId].y2 = 0;
+                }
+
                 ObjectEventClearHeldMovement(playerObjEvent);
                 return FALSE;
             }
@@ -395,6 +409,8 @@ static bool8 TryInterruptObjectEventSpecialAnim(struct ObjectEvent *playerObjEve
 
     return FALSE;
 }
+
+#undef sCounter
 
 static void npc_clear_strange_bits(struct ObjectEvent *objEvent)
 {
@@ -825,8 +841,12 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         return;
     }
 
-    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER) && (heldKeys & B_BUTTON) && FlagGet(FLAG_SYS_B_DASH)
-     && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 && !FollowerNPCComingThroughDoor())
+    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+     && (heldKeys & B_BUTTON) 
+     && FlagGet(FLAG_SYS_B_DASH)
+     && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 
+     && !FollowerNPCComingThroughDoor() 
+     && (I_ORAS_DOWSING_FLAG == 0 || (I_ORAS_DOWSING_FLAG != 0 && !FlagGet(I_ORAS_DOWSING_FLAG))))
     {
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction)) {
             PlayerRunSlow(direction);
@@ -1637,12 +1657,14 @@ void SetPlayerInvisibility(bool8 invisible)
 
 void SetPlayerAvatarFieldMove(void)
 {
+    EndORASDowsing();
     ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_FIELD_MOVE));
     StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], ANIM_FIELD_MOVE);
 }
 
 void SetPlayerAvatarFishing(u8 direction)
 {
+    EndORASDowsing();
     ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_FISHING));
     StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], GetFishingDirectionAnimNum(direction));
 }
@@ -1656,6 +1678,7 @@ void PlayerUseAcroBikeOnBumpySlope(u8 direction)
 
 void SetPlayerAvatarWatering(u8 direction)
 {
+    EndORASDowsing();
     ObjectEventSetGraphicsId(&gObjectEvents[gPlayerAvatar.objectEventId], GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_WATERING));
     StartSpriteAnim(&gSprites[gPlayerAvatar.spriteId], GetFaceDirectionAnimNum(direction));
 }

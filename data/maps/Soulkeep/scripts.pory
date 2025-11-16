@@ -106,7 +106,7 @@ script Soulkeep_EventScript_Mart {
 	waitmessage
 	pokemart(Soulkeep_Mart)
 	setspeaker(SP_NAME_SHOPKEEPER)
-	msgbox(format("Do come again!"), MSGBOX_DEFAULT)
+	msgbox(format("Do come again!\pCareful though, I'm only here until nightfall!"), MSGBOX_DEFAULT)
 	release
 }
 

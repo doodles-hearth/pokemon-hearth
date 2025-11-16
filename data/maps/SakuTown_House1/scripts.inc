@@ -163,7 +163,7 @@ SakuTown_House1_EventScript_Tama_Text_7:
 	.string "… … … … … …$"
 
 SakuTown_House1_EventScript_Tama_Text_8:
-	.string "It's from Ashii.$"
+	.string "It's from Ashii!$"
 
 SakuTown_House1_EventScript_Tama_Text_9:
 	.string "{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 EMOTE_NORMAL}WHAT?! Let me see!$"

@@ -119,10 +119,10 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 
 		showmoneybox(18, 0)
 
-		mcdialogue(
+		mcdialogueB(
 			"One please!",
-			"No, thanks.",
-			"Fishcakes?"
+			"Fishcakes?",
+			"No, thanks."
 		)
 		closemessage
 
@@ -150,14 +150,14 @@ script MaguroHarbor_EventScript_FishcakeSalesmanSelling {
 				}
 			case 1:
 				hidemoneybox
-			case 2:
-				hidemoneybox
 				setspeaker(SP_NAME_OLD_LADY)
 				msgbox(format(
 					"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN EMOTE_NORMAL}What's in the Fishcakes, you ask?\p"
 					"Uhh… Cake!"
 				))
 				closemessage
+			default:
+				hidemoneybox
 		}
 	}
 	release
@@ -264,7 +264,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 			))
 		}
 
-		mcdialogue(
+		mcdialogueB(
 			"Here's a fish!",
 			"Sorry, no fish."
 		)
@@ -339,7 +339,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 						}
 					}
 				}
-			case 1:
+			default:
 				setspeaker(SP_NAME_SHOPKEEPER)
 				msgbox(format(
 					"If you find any good fish, you know where to find me!"

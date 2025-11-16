@@ -101,7 +101,7 @@ script YifuCity_Onsen_EventScript_Leave {
 		"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Feeling relaxed enough?\nAny exit is permanent!"
 	))
 
-	mcdialogue(
+	mcdialogueB(
 		"I want to leave!",
 		"I'm staying."
 	)

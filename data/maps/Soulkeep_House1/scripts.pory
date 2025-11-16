@@ -44,7 +44,8 @@ script Soulkeep_House1_EventScript_LittleGirl {
 	setspeaker(SP_NAME_LITTLE_GIRL)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Nothing bad can happen to us so long as Fennekin keeps us safe!\p"
-		"I feed him lots of twigs for him to keep us warm!"
+		"I feed him lots of twigs so that he keeps us warm!\p"
+		"He'll blow hot air from his ears to keep away the ghosts!"
 	))
 	closemessage
 

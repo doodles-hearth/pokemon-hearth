@@ -155,7 +155,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GinkoWoods_EventScript_Bean",
+      "script": "GinkoWoods_EventScript_Hariko",
       "flag": "FLAG_HIDE_BEAN_GINKO_WOODS",
       "afternoon": false,
       "deadnight": false,
@@ -187,8 +187,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CAMPFIRE",
-      "x": 35,
-      "y": 22,
+      "x": 61,
+      "y": -2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -200,8 +200,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_A",
-      "x": 32,
-      "y": 21,
+      "x": 58,
+      "y": -3,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 1,
@@ -213,8 +213,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_B",
-      "x": 38,
-      "y": 20,
+      "x": 64,
+      "y": -4,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
       "movement_range_x": 1,
@@ -226,8 +226,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_C",
-      "x": 37,
-      "y": 24,
+      "x": 63,
+      "y": 0,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 2,
@@ -239,8 +239,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_D",
-      "x": 35,
-      "y": 19,
+      "x": 61,
+      "y": -5,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -252,8 +252,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_E",
-      "x": 33,
-      "y": 24,
+      "x": 59,
+      "y": 0,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
       "movement_range_x": 1,
@@ -265,8 +265,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_F",
-      "x": 39,
-      "y": 22,
+      "x": 65,
+      "y": -2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
       "movement_range_x": 1,
@@ -329,7 +329,7 @@
       "elevation": 0,
       "var": "FLAG_HIDE_BEAN_GINKO_WOODS",
       "var_value": "0",
-      "script": "GinkoWoods_EventScript_Tracks"
+      "script": "GinkoWoods_EventScript_TracksLeft"
     },
     {
       "type": "trigger",
@@ -338,7 +338,7 @@
       "elevation": 0,
       "var": "FLAG_HIDE_BEAN_GINKO_WOODS",
       "var_value": "0",
-      "script": "GinkoWoods_EventScript_Tracks"
+      "script": "GinkoWoods_EventScript_TracksRight"
     }
   ],
   "bg_events": [

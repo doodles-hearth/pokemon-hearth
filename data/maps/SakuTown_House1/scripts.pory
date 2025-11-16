@@ -40,7 +40,7 @@ script SakuTown_House1_EventScript_Tama {
 
 		delay(32)
 
-		mcdialogue("It's from Ashii.")
+		mcdialogue("It's from Ashii!")
 		closemessage
 		delay(24)
 

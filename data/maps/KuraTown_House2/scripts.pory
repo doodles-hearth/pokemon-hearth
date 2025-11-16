@@ -146,7 +146,7 @@ script(local) AshiiScript_EscortAshii {
 		"Could you please escort me?"
 	))
 
-	mcdialogue("Let's go!", "Not right now.")
+	mcdialogueB("Let's go!", "Not right now.")
 	closemessage
 
 	if (var(VAR_RESULT) == 0) {

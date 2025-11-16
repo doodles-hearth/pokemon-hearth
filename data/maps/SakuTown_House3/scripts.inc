@@ -47,7 +47,7 @@ SakuTown_House3_EventScript_TradeMe::
 	msgbox SakuTown_House3_EventScript_TradeMe_Text_1
 	setnamedmon SPECIES_PSYDUCK
 	setnamedmon SPECIES_HOOTHOOT
-	mcdialogue SakuTown_House3_EventScript_TradeMe_Text_2, SakuTown_House3_EventScript_TradeMe_Text_3
+	mcdialogueB SakuTown_House3_EventScript_TradeMe_Text_2, SakuTown_House3_EventScript_TradeMe_Text_3
 	compare VAR_RESULT, 0
 	goto_if_ne SakuTown_House3_EventScript_TradeMe_5
 	special ChoosePartyMon

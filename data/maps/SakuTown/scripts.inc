@@ -652,12 +652,18 @@ SakuTown_EventScript_LoversReunite::
 	waitmovement 0
 	setspeaker SP_NAME_ASHII
 	msgbox SakuTown_EventScript_LoversReunite_Text_0
+	closemessage
 	special SpawnCameraObject
 	switch VAR_TEMP_0
 	case 1, SakuTown_EventScript_LoversReunite_3
 	case 2, SakuTown_EventScript_LoversReunite_4
 SakuTown_EventScript_LoversReunite_1:
-	delay 60
+	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_3
+	waitmovement 22
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_RivalAtSakuWall_Movement_2
+	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_4
+	waitmovement 22
 	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_TamaArgument_Movement_5
 	setspeaker SP_NAME_TAMA
 	msgbox SakuTown_EventScript_LoversReunite_Text_1
@@ -704,7 +710,7 @@ SakuTown_EventScript_LoversReunite_1:
 	msgbox SakuTown_EventScript_LoversReunite_Text_9
 	closemessage
 	delay 60
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_3
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_5
 	setspeaker SP_NAME_TAMA
 	msgbox SakuTown_EventScript_LoversReunite_Text_10
 	closemessage
@@ -713,7 +719,7 @@ SakuTown_EventScript_LoversReunite_1:
 	msgbox SakuTown_EventScript_LoversReunite_Text_11
 	closemessage
 	playse SE_PIN
-	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_4
+	applymovement OBJ_EVENT_ID_NPC_FOLLOWER, SakuTown_EventScript_LoversReunite_Movement_6
 	waitmovement 0
 	waitse
 	setspeaker SP_NAME_TAMA
@@ -725,7 +731,7 @@ SakuTown_EventScript_LoversReunite_1:
 	waitmovement OBJ_EVENT_ID_NPC_FOLLOWER
 	waitmovement 22
 	waitse
-	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_5
+	applymovement 22, SakuTown_EventScript_LoversReunite_Movement_7
 	waitmovement 0
 	removeobject 22
 	setflag FLAG_HIDE_DEADNIGHT_ASHII
@@ -1075,6 +1081,28 @@ SakuTown_EventScript_LoversReunite_Movement_2:
 	step_end
 
 SakuTown_EventScript_LoversReunite_Movement_3:
+	walk_fast_left
+	quarter_step_left
+	step_end
+
+SakuTown_EventScript_LoversReunite_Movement_4:
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	lock_facing_direction
+	quarter_step_right
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	delay_16
+	step_end
+
+SakuTown_EventScript_LoversReunite_Movement_5:
 	face_down
 	delay_16
 	delay_16
@@ -1082,15 +1110,16 @@ SakuTown_EventScript_LoversReunite_Movement_3:
 	face_right
 	step_end
 
-SakuTown_EventScript_LoversReunite_Movement_4:
+SakuTown_EventScript_LoversReunite_Movement_6:
 	emote_exclamation_mark
 	delay_16
 	delay_16
 	delay_16
 	step_end
 
-SakuTown_EventScript_LoversReunite_Movement_5:
+SakuTown_EventScript_LoversReunite_Movement_7:
 	walk_slow_up
+	walk_slow_right
 	walk_slow_right
 	walk_slow_right
 	walk_slow_up

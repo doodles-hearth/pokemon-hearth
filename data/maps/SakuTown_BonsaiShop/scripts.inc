@@ -223,10 +223,10 @@ SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader:
 	setflag FLAG_MET_HANA_BONSAI_SHOP
 	setspeaker SP_NAME_HANA
 	msgbox SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_0
-	mcdialogue SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_1
+	mcdialogue SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_1, SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_2
 	closemessage
 	setspeaker SP_NAME_HANA
-	msgbox SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_2
+	msgbox SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_3
 	closemessage
 	return
 
@@ -430,10 +430,12 @@ SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_0:
 	.string "I grow and sell decorative bonsai.$"
 
 SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_1:
-	.string "Hana?"
-	.string "Have we met?$"
+	.string "Hana?$"
 
 SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_2:
+	.string "Have we met?$"
+
+SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader_Text_3:
 	.string "{CREATE_MUGSHOT MUGSHOT_HANA EMOTE_NORMAL}Ho ho, I have been discovered…\p"
 	.string "You must be wondering what the Kura\n"
 	.string "Village Dojo Master is doing in a\l"

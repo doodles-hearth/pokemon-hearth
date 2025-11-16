@@ -1,5 +1,16 @@
 YifuCity_House3_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, YifuCity_House3_MapScripts_MAP_SCRIPT_ON_TRANSITION
 	.byte 0
+
+YifuCity_House3_MapScripts_MAP_SCRIPT_ON_TRANSITION:
+	getweekday
+	compare VAR_RESULT, WEEKDAY_TUE
+	goto_if_eq YifuCity_House3_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+	return
+
+YifuCity_House3_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setflag FLAG_TEMP_1
+	return
 
 
 YifuCity_House3_EggGirlsMom::
