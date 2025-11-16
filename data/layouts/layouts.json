@@ -6436,8 +6436,8 @@
     {
       "id": "LAYOUT_SOULKEEP_LIBRARY_1F",
       "name": "Soulkeep_Library_1F_Layout",
-      "width": 13,
-      "height": 10,
+      "width": 15,
+      "height": 13,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",
@@ -6448,14 +6448,26 @@
     {
       "id": "LAYOUT_SOULKEEP_LIBRARY_2F",
       "name": "Soulkeep_Library_2F_Layout",
-      "width": 13,
-      "height": 10,
+      "width": 15,
+      "height": 13,
       "border_width": 6,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",
       "secondary_tileset": "gTileset_HouseSoulkeep",
       "border_filepath": "data/layouts/Soulkeep_Library_2F/border.bin",
       "blockdata_filepath": "data/layouts/Soulkeep_Library_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOULKEEP_DOJO",
+      "name": "Soulkeep_Dojo_Layout",
+      "width": 11,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Soulkeep_Dojo/border.bin",
+      "blockdata_filepath": "data/layouts/Soulkeep_Dojo/map.bin"
     }
   ]
 }

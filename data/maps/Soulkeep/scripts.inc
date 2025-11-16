@@ -154,4 +154,6 @@ Soulkeep_EventScript_Mart_Text_0:
 	.string "Are you looking to buy?$"
 
 Soulkeep_EventScript_Mart_Text_1:
-	.string "Do come again!$"
+	.string "Do come again!\p"
+	.string "Careful though, I'm only here until\n"
+	.string "nightfall!$"

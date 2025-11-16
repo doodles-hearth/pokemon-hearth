@@ -22971,9 +22971,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .fieldMove = FIELD_MOVE_DIVE,
     },
 
-    [MOVE_WATER_FLAIL] =
+    [MOVE_WATER_FAIL] =
     {
-        .name = COMPOUND_STRING("Water Flail"),
+        .name = COMPOUND_STRING("Water Fail"),
         .description = COMPOUND_STRING(
             "Flails up a current.\n"
             "Has no effect."

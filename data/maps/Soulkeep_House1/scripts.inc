@@ -76,8 +76,10 @@ Soulkeep_House1_EventScript_Farmer_Text_0:
 Soulkeep_House1_EventScript_LittleGirl_Text_0:
 	.string "{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Nothing bad can happen to us so long\n"
 	.string "as Fennekin keeps us safe!\p"
-	.string "I feed him lots of twigs for him to\n"
-	.string "keep us warm!$"
+	.string "I feed him lots of twigs so that he\n"
+	.string "keeps us warm!\p"
+	.string "He'll blow hot air from his ears to\n"
+	.string "keep away the ghosts!$"
 
 Soulkeep_House1_EventScript_Fennekin_Text_0:
 	.string "Growr…$"

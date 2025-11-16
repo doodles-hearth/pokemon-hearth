@@ -57,6 +57,35 @@ Soulkeep_Library_1F_EventScript_Book_CameruptsBack_2:
 	goto Soulkeep_Library_1F_EventScript_Book_CameruptsBack_1
 
 
+Soulkeep_Library_1F_EventScript_Book_SpinHaiku::
+	lock
+	msgbox Soulkeep_Library_1F_EventScript_Book_SpinHaiku_Text_0
+	dynmultichoice 0, 0, FALSE, 10, 0, DYN_MULTICHOICE_CB_NONE, Soulkeep_Library_1F_EventScript_Book_Recipe_Text_1, Soulkeep_Library_1F_EventScript_Book_Recipe_Text_2
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq Soulkeep_Library_1F_EventScript_Book_SpinHaiku_2
+Soulkeep_Library_1F_EventScript_Book_SpinHaiku_1:
+	release
+	return
+
+Soulkeep_Library_1F_EventScript_Book_SpinHaiku_2:
+	random 2
+	switch VAR_RESULT
+	case 0, Soulkeep_Library_1F_EventScript_Book_SpinHaiku_6
+	case 1, Soulkeep_Library_1F_EventScript_Book_SpinHaiku_7
+Soulkeep_Library_1F_EventScript_Book_SpinHaiku_4:
+	closemessage
+	goto Soulkeep_Library_1F_EventScript_Book_SpinHaiku_1
+
+Soulkeep_Library_1F_EventScript_Book_SpinHaiku_6:
+	msgbox Soulkeep_Library_1F_EventScript_Book_SpinHaiku_Text_1
+	goto Soulkeep_Library_1F_EventScript_Book_SpinHaiku_4
+
+Soulkeep_Library_1F_EventScript_Book_SpinHaiku_7:
+	msgbox Soulkeep_Library_1F_EventScript_Book_SpinHaiku_Text_2
+	goto Soulkeep_Library_1F_EventScript_Book_SpinHaiku_4
+
+
 Soulkeep_Library_1F_EventScript_Book_Ditto::
 	lock
 	setnamedmon SPECIES_DITTO
@@ -94,6 +123,44 @@ Soulkeep_Library_1F_EventScript_Book_Dragonite_2:
 	closemessage
 	setnamedmon SPECIES_NUZLEAF
 	goto Soulkeep_Library_1F_EventScript_Book_Dragonite_1
+
+
+Soulkeep_Library_1F_EventScript_Book_SpicyNovel::
+	lock
+	msgbox Soulkeep_Library_1F_EventScript_Book_SpicyNovel_Text_0
+	closemessage
+	release
+	return
+
+
+Soulkeep_Library_1F_EventScript_SignNovels::
+	msgbox Soulkeep_Library_1F_EventScript_SignNovels_Text_0, MSGBOX_SIGN
+	return
+
+
+Soulkeep_Library_1F_EventScript_SignKidlit::
+	msgbox Soulkeep_Library_1F_EventScript_SignKidlit_Text_0, MSGBOX_SIGN
+	return
+
+
+Soulkeep_Library_1F_EventScript_SignRecipes::
+	msgbox Soulkeep_Library_1F_EventScript_SignRecipes_Text_0, MSGBOX_SIGN
+	return
+
+
+Soulkeep_Library_1F_EventScript_SignPokemon::
+	msgbox Soulkeep_Library_1F_EventScript_SignPokemon_Text_0, MSGBOX_SIGN
+	return
+
+
+Soulkeep_Library_1F_EventScript_SignMyths::
+	msgbox Soulkeep_Library_1F_EventScript_SignMyths_Text_0, MSGBOX_SIGN
+	return
+
+
+Soulkeep_Library_1F_EventScript_SignPoetry::
+	msgbox Soulkeep_Library_1F_EventScript_SignPoetry_Text_0, MSGBOX_SIGN
+	return
 
 
 Soulkeep_Library_1F_EventScript_Employee_Text_0:
@@ -137,6 +204,19 @@ Soulkeep_Library_1F_EventScript_Book_CameruptsBack_Text_1:
 	.string "Camerupt, which rests on another…”\p"
 	.string "… … …{PLAYER} is getting sleepy.\nBetter put the book back.$"
 
+Soulkeep_Library_1F_EventScript_Book_SpinHaiku_Text_0:
+	.string "“Spiraling Haiku”.\nRead a haiku?$"
+
+Soulkeep_Library_1F_EventScript_Book_SpinHaiku_Text_1:
+	.string "“Ocean waves swimming{PAUSE_UNTIL_PRESS}\n"
+	.string "From the center of the sea\l"
+	.string "With faith to reach land.”$"
+
+Soulkeep_Library_1F_EventScript_Book_SpinHaiku_Text_2:
+	.string "“The rustling leaves{PAUSE_UNTIL_PRESS}\n"
+	.string "They are calling to my heart\l"
+	.string "Yearning for a touch.”$"
+
 Soulkeep_Library_1F_EventScript_Book_Ditto_Text_0:
 	.string "“The Lonely Ditto”.\nRead this?$"
 
@@ -155,7 +235,7 @@ Soulkeep_Library_1F_EventScript_Book_Ditto_Text_1:
 	.string "happiness, and they remained together\lforever.”$"
 
 Soulkeep_Library_1F_EventScript_Book_Dragonite_Text_0:
-	.string "“The Boy And The Dragonite”.\nRead this?$"
+	.string "“The Boy And The Dragonite Gay”.\nRead this?$"
 
 Soulkeep_Library_1F_EventScript_Book_Dragonite_Text_1:
 	.string "“There once was a free-spirited boy,\n"
@@ -165,3 +245,24 @@ Soulkeep_Library_1F_EventScript_Book_Dragonite_Text_1:
 	.string "The Dragon spit forth a burst of\nflames, saving the boy's life.\p"
 	.string "With what half seemed a smile, the\nDragon approached the wounded child\land gently raised him upon his back.\p"
 	.string "And the two flew off, to gods know\nwhere.”$"
+
+Soulkeep_Library_1F_EventScript_Book_SpicyNovel_Text_0:
+	.string "“The Lusty Dryuugonian Maiden”.\n… … …Better put this back.$"
+
+Soulkeep_Library_1F_EventScript_SignNovels_Text_0:
+	.string "“Novels”$"
+
+Soulkeep_Library_1F_EventScript_SignKidlit_Text_0:
+	.string "“Children's books & Fairytales”$"
+
+Soulkeep_Library_1F_EventScript_SignRecipes_Text_0:
+	.string "“Food & Recipes”$"
+
+Soulkeep_Library_1F_EventScript_SignPokemon_Text_0:
+	.string "“Pokémon”$"
+
+Soulkeep_Library_1F_EventScript_SignMyths_Text_0:
+	.string "“Myths & Legends”$"
+
+Soulkeep_Library_1F_EventScript_SignPoetry_Text_0:
+	.string "“Poetry”$"

@@ -12219,7 +12219,7 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM_WATER_FLAIL] =
+    [ITEM_TM_WATER_FAIL] =
     {
         .name = ITEM_NAME("TM68"),
         .price = 3000,

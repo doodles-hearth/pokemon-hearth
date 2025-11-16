@@ -1406,3 +1406,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Soulkeep_Library_1F/scripts.inc"
 
 	.include "data/maps/Soulkeep_Library_2F/scripts.inc"
+
+	.include "data/maps/Soulkeep_Dojo/scripts.inc"

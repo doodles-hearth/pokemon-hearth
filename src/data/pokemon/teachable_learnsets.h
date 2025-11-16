@@ -71,7 +71,7 @@
 // - MOVE_NICK                                         //
 // - MOVE_PEBBLE_CRUSH                                 //
 // - MOVE_PUSH                                         //
-// - MOVE_WATER_FLAIL                                  //
+// - MOVE_WATER_FAIL                                   //
 // - MOVE_SINK                                         //
 // - MOVE_SPLASH                                       //
 // - MOVE_PSYBEAM                                      //
@@ -8763,7 +8763,7 @@ static const u16 sMewTeachableLearnset[] = {
     MOVE_TORMENT,
     MOVE_TOXIC,
     MOVE_WATERFALL,
-    MOVE_WATER_FLAIL,
+    MOVE_WATER_FAIL,
     MOVE_WATER_PULSE,
     MOVE_WEATHER_BALL,
     MOVE_X_SCISSOR,

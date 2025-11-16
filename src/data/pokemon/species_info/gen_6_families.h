@@ -244,10 +244,11 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .height = 4,
         .weight = 94,
         .description = COMPOUND_STRING(
-            "As it walks, it munches on a twig to fill\n"
-            "itself with energy in place of a snack.\n"
-            "It intimidates opponents by puffing hot\n"
-            "air out of its roomy ears."),
+            "It munches on twigs to fill itself with\n"
+            "energy and produce heat. Soft and warm to\n"
+            "the touch, it intimidates opponents by\n"
+            "puffing hot air out of its roomy ears."
+        ),
         .pokemonScale = 491,
         .pokemonOffset = 12,
         .trainerScale = 256,

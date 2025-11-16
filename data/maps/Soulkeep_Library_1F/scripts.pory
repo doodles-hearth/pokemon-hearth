@@ -102,6 +102,49 @@ script Soulkeep_Library_1F_EventScript_Book_CameruptsBack {
 
 // POKEMON
 
+// POETRY
+
+script Soulkeep_Library_1F_EventScript_Book_SpinHaiku {
+	lock
+	msgbox((
+		"“Spiraling Haiku”.\nRead a haiku?"
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		FALSE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Read",
+		"Put back"
+	)
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		random(2)
+
+		switch (var(VAR_RESULT)) {
+			case 0:
+				msgbox((
+					"“Ocean waves swimming{PAUSE_UNTIL_PRESS}\n"
+					"From the center of the sea\l"
+					"With faith to reach land.”"
+				))
+			case 1:
+				msgbox((
+					"“The rustling leaves{PAUSE_UNTIL_PRESS}\n"
+					"They are calling to my heart\l"
+					"Yearning for a touch.”"
+				))
+		}
+		closemessage
+	}
+	
+	release
+}
+
 // KIDLIT
 
 script Soulkeep_Library_1F_EventScript_Book_Ditto {
@@ -151,7 +194,7 @@ script Soulkeep_Library_1F_EventScript_Book_Dragonite {
 	lock
 	setnamedmon(SPECIES_DRAGONITE)
 	msgbox((
-		"“The Boy And The Dragonite”.\nRead this?"
+		"“The Boy And The Dragonite Gay”.\nRead this?"
 	))
 
 	dynmultichoice(
@@ -185,3 +228,51 @@ script Soulkeep_Library_1F_EventScript_Book_Dragonite {
 }
 
 // NOVELS
+
+script Soulkeep_Library_1F_EventScript_Book_SpicyNovel {
+	lock
+	msgbox((
+		"“The Lusty Dryuugonian Maiden”.\n… … …Better put this back."
+	))
+	closemessage
+	
+	release
+}
+
+// Signs
+
+script Soulkeep_Library_1F_EventScript_SignNovels {
+	msgbox(format(
+		"“Novels”"
+	), MSGBOX_SIGN)
+}
+
+script Soulkeep_Library_1F_EventScript_SignKidlit {
+	msgbox(format(
+		"“Children's books & Fairytales”"
+	), MSGBOX_SIGN)
+}
+
+script Soulkeep_Library_1F_EventScript_SignRecipes {
+	msgbox(format(
+		"“Food & Recipes”"
+	), MSGBOX_SIGN)
+}
+
+script Soulkeep_Library_1F_EventScript_SignPokemon {
+	msgbox(format(
+		"“Pokémon”"
+	), MSGBOX_SIGN)
+}
+
+script Soulkeep_Library_1F_EventScript_SignMyths {
+	msgbox(format(
+		"“Myths & Legends”"
+	), MSGBOX_SIGN)
+}
+
+script Soulkeep_Library_1F_EventScript_SignPoetry {
+	msgbox(format(
+		"“Poetry”"
+	), MSGBOX_SIGN)
+}

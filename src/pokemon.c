@@ -5846,7 +5846,7 @@ static const u16 sActuallyUniversalMoves[] =
     MOVE_PEBBLE_CRUSH,
     MOVE_PUSH,
     MOVE_SPLASH,
-    MOVE_WATER_FLAIL,
+    MOVE_WATER_FAIL,
     MOVE_SINK,
 };
 
