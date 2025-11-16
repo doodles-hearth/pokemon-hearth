@@ -240,7 +240,7 @@ script ChatotPost_EventScript_BigSisLeftovers { // take two of leftovers gift
     special(GetPlayerBrotherSisterString)
     setspeakertomonname(SPECIES_CHATOT)
         msgbox(format("Hey little {STR_VAR_1}!\p
-                I know, I know... you've been homesick on your big journey…\l
+                I know, I know… you've been homesick on your big journey…\l
                 So I went ahead and made a batch of your favorite dish!\p
                 I bet you were salivating soon as you saw Chatot on the perch, huh?\p
                 I wrapped it up real nice, so make sure your Pokemon don't get
