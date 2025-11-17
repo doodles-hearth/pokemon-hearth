@@ -5,7 +5,7 @@
 
 extern struct Pokemon *gPlayerTransformPokemon;
 
-bool32 isPlayerTransformed(void);
+bool32 IsPlayerTransformed(void);
 void BeginPlayerTransform(void);
 void TransformPlayerToPokemon(void);
 void TransformPlayerToDefault(void);

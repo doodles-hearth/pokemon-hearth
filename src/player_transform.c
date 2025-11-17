@@ -10,7 +10,7 @@
 #include "overworld.h"
 
 /*STATIC FUNCTIONS*/
-static void setPlayerTransformState(bool32 state);
+static void SetPlayerTransformState(bool32 state);
 
 struct Pokemon *gPlayerTransformPokemon; // This points to the pokemon the player is currently transformed intos
 
@@ -19,7 +19,9 @@ void CB2_TransformPlayerFromParty(void) // Callback passed to the ChooseMonForTr
     u8 index;
     index = GetCursorSelectionMonId();
     if (index >= PARTY_SIZE)
+    {
         index = PARTY_NOTHING_CHOSEN;
+    }
     else
     {
         gSaveBlock1Ptr->playerTransformData.slot = index;
@@ -31,14 +33,17 @@ void CB2_TransformPlayerFromParty(void) // Callback passed to the ChooseMonForTr
     UnfreezeObjectEvents();
 }
 
-bool32 isPlayerTransformed()
+bool32 IsPlayerTransformed()
 {
     if (gSaveBlock1Ptr->playerTransformData.isPokemon)
+    {
         return TRUE;
+    }
+        
     return FALSE;
 }
 
-static void setPlayerTransformState(bool32 state)
+static void SetPlayerTransformState(bool32 state)
 {
     gSaveBlock1Ptr->playerTransformData.isPokemon = state;
 }
@@ -71,11 +76,16 @@ u16 GetPlayerTransformGfxFromSaveblock()
 
 void BeginPlayerTransform(void)
 {
-
-    if (isPlayerTransformed())
+    if (IsPlayerTransformed())
+    {
         TransformPlayerToDefault();
+    }
+        
     else
+    {
         ChooseMonForTransform();
+    }
+        
         
 }
 
@@ -94,7 +104,7 @@ void TransformPlayerToPokemon()
 {
     struct ObjectEvent *playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
     FlagSet(FLAG_DISABLE_FOLLOWERS);
-    setPlayerTransformState(TRUE);
+    SetPlayerTransformState(TRUE);
     ObjectEventSetGraphicsId(playerObj, SpeciesToGraphicsId(gPlayerTransformPokemon));
     UpdateTransformedPlayerPalette(playerObj);
     ResetInitialPlayerAvatarState();
@@ -105,7 +115,7 @@ void TransformPlayerToPokemon()
 void TransformPlayerToDefault()
 {
     struct ObjectEvent *playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
-    setPlayerTransformState(FALSE);
+    SetPlayerTransformState(FALSE);
     ResetInitialPlayerAvatarState();
     ObjectEventSetGraphicsId(playerObj, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
     PlayerFaceDirection(GetPlayerFacingDirection());
