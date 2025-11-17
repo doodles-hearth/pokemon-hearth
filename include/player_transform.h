@@ -1,16 +1,7 @@
 #ifndef GUARD_PLAYER_TRANSFORM_H
 #define GUARD_PLAYER_TRANSFORM_H
 
-#include "gba/gba.h"
-
-struct PlayerTransformData // This stores the entire player transform data into a single u16
-{
-    u16 isPokemon : 1;
-    u16 inBox : 1;
-    u16 boxId : 4;    // 0–13 (14 Boxes)
-    u16 slot : 5;     // 0–29 if in box, else 0–5 if party
-    u16 padding : 5; // padding
-};
+#include "global.h"
 
 extern struct Pokemon *gPlayerTransformPokemon;
 

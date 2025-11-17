@@ -25,7 +25,6 @@
 #include "constants/items.h"
 #include "config/save.h"
 #include "config/limited_shop.h"
-#include "player_transform.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -244,6 +243,15 @@ struct NPCFollower
     u16 graphicsId;
     u16 flags;
     u8 battlePartner; // If you have more than 255 total battle partners defined, change this to a u16
+};
+
+struct PlayerTransformData // This stores the entire player transform data into a single u16
+{
+    u16 isPokemon : 1;
+    u16 inBox : 1;
+    u16 boxId : 4;    // 0–13 (14 Boxes)
+    u16 slot : 5;     // 0–29 if in box, else 0–5 if party
+    u16 padding : 5; // padding
 };
 
 #include "constants/items.h"
