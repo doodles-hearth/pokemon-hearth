@@ -8,8 +8,53 @@ script LongTideChannelSoulkeep_RouteSign {
 
 script LongTideChannelSoulkeep_EventScripts_BoatGuy {
 	lock
+	faceplayer
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}I'm prepping my boat."
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}I'm on my way to Saberside Town.\n"
+		"Want to hop along?"
 	))
+
+	mcdialogueB(
+		"All aboard!",
+		"No need."
+	)
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		playse(SE_LEDGE)
+		applymovement(VAR_LAST_TALKED, moves(jump_2_left, delay_16 * 2))
+		waitmovement(VAR_LAST_TALKED)
+		waitse
+
+		playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+		applymovement(LOCALID_LONGTIDE_WINGULL, moves(walk_up, walk_left * 2, walk_in_place_left * 5))
+
+		applymovement(LOCALID_PLAYER, moves(walk_up, jump_2_left, delay_16, face_down, delay_16))
+		waitmovement(LOCALID_PLAYER)
+
+		playse(SE_MUGSHOT)
+		warpsilent(MAP_SABERSIDE_TOWN)
+	}
+
+	release
+}
+
+script LongTideChannelSoulkeep_EventScripts_WhereChatot {
+	lock
+	faceplayer
+	setnamedmon(SPECIES_CHATOT)
+	if (flag(FLAG_POST_CHATOT)) {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}{SPEAKER NAME_LITTLE_BOY}Where's Chatot? I wanna see Chatot!"
+		))
+	} else {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}{SPEAKER NAME_LITTLE_BOY}Oooh, Chatot's here!!\nI love Chatot!\p"
+			"How would I talk to my friends in Yifu City without Chatot? We'd have to WRITE stuff to each other, YUCK!\p"
+			"I love how it flicks its tail to keep a rhythm while it speaks!\lAnd it imitates any voice perfectly!"
+		))
+		setdescribedmon(SPECIES_CHATOT)
+	}
+	closemessage
 	release
 }

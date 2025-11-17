@@ -25,7 +25,16 @@
     }
   ],
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_SABERSIDE_BOAT",
+      "x": 10,
+      "y": 39,
+      "elevation": 0,
+      "dest_map": "MAP_LONG_TIDE_CHANNEL_SOULKEEP",
+      "dest_warp_id": "WARP_ID_SOULKEEP_BOAT"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

@@ -396,8 +396,8 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 29,
-      "y": 13,
+      "x": 16,
+      "y": 34,
       "elevation": 0,
       "dest_map": "MAP_SOULKEEP_HOUSE_DOLL",
       "dest_warp_id": "0"
@@ -427,8 +427,8 @@
     },
     {
       "warp_id": "WARP_ID_SOULKEEP_HOUSE_MEDIUM",
-      "x": 16,
-      "y": 34,
+      "x": 29,
+      "y": 13,
       "elevation": 0,
       "dest_map": "MAP_SOULKEEP_HOUSE_MEDIUM",
       "dest_warp_id": "WARP_ID_SOULKEEP_HOUSE_MEDIUM_EXIT"
@@ -438,7 +438,7 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 36,
+      "x": 35,
       "y": 25,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
