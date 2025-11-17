@@ -1411,3 +1411,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Soulkeep_Dojo/scripts.inc"
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
+
+	.include "data/maps/Soulkeep_HouseMedium/scripts.inc"
+
+	.include "data/maps/Soulkeep_Crypt/scripts.inc"

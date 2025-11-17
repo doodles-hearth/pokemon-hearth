@@ -5,3 +5,11 @@ mapscripts LongTideChannelSoulkeep_MapScripts {
 script LongTideChannelSoulkeep_RouteSign {
 	msgbox(format("{LEFT_ARROW} Havenisle"), MSGBOX_SIGN)
 }
+
+script LongTideChannelSoulkeep_EventScripts_BoatGuy {
+	lock
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}I'm prepping my boat."
+	))
+	release
+}

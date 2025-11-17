@@ -92,8 +92,8 @@
 #define FLAG_HIDE_CAMPFIRE_PARTY_MON_6  0x48
 #define FLAG_PICKED_UP_BAG              0x49
 #define FLAG_PAID_HOT_SPRINGS           0x4A
-#define FLAG_UNUSED_0x04B    0x4B // Unused Flag
-#define FLAG_UNUSED_0x04C    0x4C // Unused Flag
+#define FLAG_ENCOUNTERED_INVISIBLE_CRYPT_WALLS 0x4B
+#define FLAG_ASKED_SABLEYE_RUBY         0x4C
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_UNUSED_0x04E    0x4E // Unused Flag
 // True if the tree blocking the path to Silver Tunnel has been cut

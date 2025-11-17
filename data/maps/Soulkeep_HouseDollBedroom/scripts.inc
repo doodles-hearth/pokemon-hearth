@@ -36,5 +36,5 @@ Soulkeep_HouseDollBedroom_EventScript_Girl_Text_0:
 
 Soulkeep_HouseDollBedroom_EventScript_Doll_Text_0:
 	.string "A rather uncanny doll.\p"
-	.string "…The way it seems to look at you\n"
+	.string "…The way it seems to be looking at you\n"
 	.string "creeps you out.$"

@@ -338,7 +338,7 @@ script OrchardPath_EventScript_RockSmashRegular {
 				"Tadaaah!\p"
 				"I do hope you're thoroughly impressed!\p"
 				"Thanks for stopping by. Truth be told, I rarely have an audience these days…\p"
-				"You're so young and scrawny, yet…\nI can feel a ROCK SMASHING PASSION burning behind those eyes!\p"
+				"You're so young and scrawny, yet…\nI can feel a ROCK-SMASHING PASSION burning behind those eyes!\p"
 				"Would you… ahem… Become my rock smashing disciple?"
 			))
 			closemessage

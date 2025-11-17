@@ -109,6 +109,15 @@ Soulkeep_EventScript_Mart::
 	return
 
 
+Soulkeep_EventScript_WhereGuang::
+	lock
+	faceplayer
+	message Soulkeep_EventScript_WhereGuang_Text_0
+	closemessage
+	release
+	return
+
+
 	.align 2
 Soulkeep_Mart:
 	.2byte ITEM_POKE_BALL
@@ -157,3 +166,9 @@ Soulkeep_EventScript_Mart_Text_1:
 	.string "Do come again!\p"
 	.string "Careful though, I'm only here until\n"
 	.string "nightfall!$"
+
+Soulkeep_EventScript_WhereGuang_Text_0:
+	.string "{SPEAKER NAME_FARMER}{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Guang has been missing for days now…\n"
+	.string "Always sneaking around the crypt…\p"
+	.string "I hope he's not lost in there\n"
+	.string "somewhere…$"

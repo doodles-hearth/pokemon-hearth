@@ -1248,3 +1248,14 @@ const struct Tileset gTileset_HotSprings =
     .metatileAttributes = gMetatileAttributes_HotSprings,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Crypt =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Crypt,
+    .palettes = gTilesetPalettes_Crypt,
+    .metatiles = gMetatiles_Crypt,
+    .metatileAttributes = gMetatileAttributes_Crypt,
+    .callback = NULL,
+};

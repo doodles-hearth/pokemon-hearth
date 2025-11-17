@@ -329,4 +329,5 @@ Silveridge_EldersHouse_EventScript_Conversation_Text_11:
 	.string "Now go, and be swift!$"
 
 Silveridge_EldersHouse_EventScript_Elder_Text_0:
-	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Go forth, young one.$"
+	.string "{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Go forth, young one. To Uume Forest,\n"
+	.string "southeast of Tranquil Route!$"

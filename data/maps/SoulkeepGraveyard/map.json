@@ -152,7 +152,16 @@
       "night": true
     }
   ],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_SOULKEEP_CRYPT",
+      "x": 22,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_SOULKEEP_GRAVEYARD",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

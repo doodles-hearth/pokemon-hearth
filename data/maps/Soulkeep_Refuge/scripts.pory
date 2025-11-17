@@ -52,7 +52,7 @@ script Soulkeep_Refuge_EventScript_NewDojo {
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Some of the town's farmers got together with Guang and said they were going to reopen the old Dojo.\p"
-		"Guang says he's tired o “living in the shadows”, whatever that means."
+		"Guang says he's tired of “living in the shadows”, whatever that means."
 	))
 	closemessage
 	release

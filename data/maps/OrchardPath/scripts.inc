@@ -481,7 +481,7 @@ OrchardPath_EventScript_RockSmashRegular_Text_7:
 	.string "Thanks for stopping by. Truth be told,\n"
 	.string "I rarely have an audience these days…\p"
 	.string "You're so young and scrawny, yet…\n"
-	.string "I can feel a ROCK SMASHING PASSION\l"
+	.string "I can feel a ROCK-SMASHING PASSION\l"
 	.string "burning behind those eyes!\p"
 	.string "Would you… ahem… Become my rock\n"
 	.string "smashing disciple?$"

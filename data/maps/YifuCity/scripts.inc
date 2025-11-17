@@ -623,9 +623,9 @@ YifuCity_EventScript_Surskit::
 	lock
 	faceplayer
 	setspeakertomonname SPECIES_SURSKIT
-	msgbox YifuCity_EventScript_Surskit_Text_0
 	setseenmon SPECIES_SURSKIT
 	playmoncry SPECIES_SURSKIT, CRY_MODE_NORMAL
+	msgbox YifuCity_EventScript_Surskit_Text_0
 	waitmoncry
 	release
 	end
@@ -1200,14 +1200,14 @@ HarikoNotABreakfastPlace_2:
 HarikoTooLateForDinner:
 	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
-	msgbox HarikoNotABreakfastPlace_Text_0
-	faceplayer
 	msgbox HarikoTooLateForDinner_Text_0
+	faceplayer
+	msgbox HarikoTooLateForDinner_Text_1
 	call NatsukiFacesHariko
 	call HarikoTurnsToNatsuki
 	setspeaker SP_NAME_NATSUKI
-	msgbox HarikoTooLateForDinner_Text_1
-	mcdialogueB HarikoTooLateForDinner_Text_2, SpeakToNatsukiLunchOrDinner_Text_4
+	msgbox HarikoTooLateForDinner_Text_2
+	mcdialogueB HarikoTooLateForDinner_Text_3, SpeakToNatsukiLunchOrDinner_Text_4
 	closemessage
 	switch VAR_RESULT
 	case 0, HarikoTooLateForDinner_2
@@ -1285,7 +1285,7 @@ SpeakToHarikoAfternoon:
 SpeakToHarikoAfternoon_1:
 	applymovement LOCALID_FRONT_OF_RESTAURANT_HARIKO, YifuCity_Trigger_CrobatGruntsEavesdropPassword_Movement_0
 	waitmovement LOCALID_FRONT_OF_RESTAURANT_HARIKO
-	msgbox HarikoNotABreakfastPlace_Text_0
+	msgbox HarikoTooLateForDinner_Text_0
 	faceplayer
 	msgbox SpeakToHarikoAfternoon_Text_1
 	call NatsukiFacesHariko
@@ -2540,11 +2540,11 @@ SpeakToHarikoMorning_Text_4:
 	.string "that meant lunch, or dinner.$"
 
 HarikoNotABreakfastPlace_Text_0:
-	.string "I had selected the Golden Drampa for\n"
+	.string "{SPEAKER NAME_HARIKO}I had selected the Golden Drampa for\n"
 	.string "our outing…$"
 
 HarikoNotABreakfastPlace_Text_1:
-	.string "But it isn't a breakfast place.\n"
+	.string "{SPEAKER NAME_HARIKO}But it isn't a breakfast place.\n"
 	.string "It is a lunch or dinner place.\p"
 	.string "You should have told me you wanted to\n"
 	.string "have breakfast!$"
@@ -2564,10 +2564,14 @@ HarikoNotABreakfastPlace_Text_4:
 	.string "Heck yeah!$"
 
 HarikoTooLateForDinner_Text_0:
+	.string "I had selected the Golden Drampa for\n"
+	.string "our outing…$"
+
+HarikoTooLateForDinner_Text_1:
 	.string "But it is too late for dinner, and\n"
 	.string "definitely too early for lunch!$"
 
-HarikoTooLateForDinner_Text_1:
+HarikoTooLateForDinner_Text_2:
 	.string "{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, you should chill.\n"
 	.string "The Golden Drampa's open all night!\p"
 	.string "I haven't eaten much today.\n"
@@ -2575,7 +2579,7 @@ HarikoTooLateForDinner_Text_1:
 	.string "What d'you say, {PLAYER}?\n"
 	.string "You in or what?$"
 
-HarikoTooLateForDinner_Text_2:
+HarikoTooLateForDinner_Text_3:
 	.string "Late night hotpot!$"
 
 SpeakToHarikoLunchOrDinner_Text_0:

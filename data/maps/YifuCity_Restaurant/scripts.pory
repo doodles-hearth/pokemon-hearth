@@ -156,6 +156,8 @@ script(local) HotpotWithFriends {
 	waitmessage
 	closemessage
 
+	delay(60)
+
 	fadescreen(FADE_FROM_BLACK)
 
 	call(Hotpot_Slowpoke)
@@ -170,19 +172,13 @@ script(local) HotpotWithFriends {
 	waitmessage
 	closemessage
 
+	delay(60)
+
 	fadescreen(FADE_FROM_BLACK)
 
 	call(Hotpot_Decay)
 
 	fadescreen(FADE_TO_BLACK)
-
-	removeobject(LOCALID_HOTPOT_PLAYERS_MON)
-	removeobject(LOCALID_HOTPOT_NATSUKIS_MON)
-	removeobject(LOCALID_HOTPOT_SLOWPOKE)
-
-	setobjectxyperm(OBJ_EVENT_ID_PLAYER, 7, 9)
-	setobjectxyperm(LOCALID_HOTPOT_NATSUKI, 6, 10)
-	setobjectxyperm(LOCALID_HOTPOT_HARIKO, 8, 10)
 
 	playse(SE_M_ACID_ARMOR)
 	message(format(
@@ -191,6 +187,8 @@ script(local) HotpotWithFriends {
 	waitse
 	waitmessage
 	closemessage
+
+	delay(60)
 
 	fadescreen(FADE_FROM_BLACK)
 
@@ -225,13 +223,18 @@ script(local) Hotpot_OrderedEverythingOnMenu {
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Ah, yes. You did say you were going to have “some of everything”, correct?"
 	))
 
-	applymovement(LOCALID_HOTPOT_NATSUKI, moves(jump_in_place_right, emote_sweat))
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(jump_in_place_right))
 	playse(SE_LEDGE)
+	waitse
+	waitmovement(LOCALID_HOTPOT_NATSUKI)
+	playse(SE_PIN)
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(emote_sweat))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}That- That's not a thing normal people do, Hariko!"
 	))
 
+	playse(SE_PIN)
 	applymovement(LOCALID_HOTPOT_HARIKO, moves(face_right, emote_pensive, delay_16 * 6, face_left))
 	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
@@ -287,7 +290,9 @@ script(local) Hotpot_Slowpoke {
 		"Filling my PokéDex!",
 		"Writing about Slowpoke!"		
 	)
+	closemessage
 
+	waitse
 	playse(SE_PIN)
 	applymovement(LOCALID_HOTPOT_HARIKO, moves(face_left, emote_question_mark, delay_16 * 6))
 	applymovement(LOCALID_HOTPOT_NATSUKI, moves(face_right))
@@ -299,7 +304,7 @@ script(local) Hotpot_Slowpoke {
 	playse(SE_LEDGE)
 	applymovement(LOCALID_HOTPOT_HARIKO, moves(jump_in_place_left))
 	msgbox(format(
-		"You two are writing a Pokémon encyclopedia?!"
+		"{SPEAKER NAME_HARIKO}You two are writing a Pokémon encyclopedia?!"
 	))
 
 	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
@@ -331,7 +336,8 @@ script(local) Hotpot_Decay {
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}I heard rumors the Decay' spreading again in Uume Forest, west of here."
 	))
 
-	applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left, emote_pensive))
+	playse(SE_PIN)
+	applymovement(LOCALID_HOTPOT_HARIKO, moves(emote_pensive))
 	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I wonder what it is.\nIt feels unnatural…"
@@ -378,7 +384,8 @@ script(local) Hotpot_Decay {
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just- I hope Entei is alright…"
 			))
 
-			applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+			playse(SE_PIN)
+			applymovement(LOCALID_HOTPOT_NATSUKI, moves(emote_question_mark))
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What do you mean?"
@@ -417,6 +424,7 @@ script(local) Hotpot_Decay {
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just- I hope Entei is alright…"
 			))
 
+			playse(SE_PIN)
 			applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
@@ -451,7 +459,9 @@ script(local) Hotpot_Decay {
 script(local) Hotpot_End {
 	delay(24)
 
-	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right, emote_sweat))
+	waitse
+	playse(SE_PIN)
+	applymovement(LOCALID_HOTPOT_NATSUKI, moves(emote_sweat))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Man, I think I ate too much…"

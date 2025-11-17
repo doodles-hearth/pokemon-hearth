@@ -102,6 +102,94 @@ script Soulkeep_Library_1F_EventScript_Book_CameruptsBack {
 
 // POKEMON
 
+script Soulkeep_Library_1F_EventScript_Book_CaveHabitats {
+	lock
+	msgbox((
+		"“Caves and grottoes of Toku: Fauna”.\nRead this?"
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		FALSE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Read",
+		"Put back"
+	)
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		msgbox((
+			"“Each cave system in Toku has a unique ecosystem!\p"
+			"Silver Tunnel is populated by rock-\neating creatures, like Onix and Aron.\p"
+			"Saberside Quarry hosts gem-hungry\nPokémon, like Sableye and Carbink.\p"
+			"In Mt Kazan, fire Pokémon such as\nDarumaka and Slugma thrive.”"
+		))
+		closemessage
+
+		setnamedmon(SPECIES_ONIX)
+		setnamedmon(SPECIES_ARON)
+		setnamedmon(SPECIES_SABLEYE)
+		setnamedmon(SPECIES_CARBINK)
+		setnamedmon(SPECIES_DARUMAKA)
+		setnamedmon(SPECIES_SLUGMA)
+	}
+	
+	release
+}
+
+script Soulkeep_Library_1F_EventScript_Book_Pokemon {
+	lock
+	msgbox((
+		"“Field Notes On Various Pokémon”.\nRead this?"
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		FALSE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Read",
+		"Put back"
+	)
+	closemessage
+
+		if (var(VAR_RESULT) == 0) {
+			dynmultichoice(
+				0,
+				0,
+				FALSE,
+				10,
+				0,
+				DYN_MULTICHOICE_CB_NONE,
+				"Birds",
+				"Insects",
+				"Mammals",
+				"Ghosts",
+				"Minerals"
+			)
+			closemessage
+			
+			switch(var(VAR_RESULT)) {
+				case 0:
+				// TODO EVA
+					msgbox(
+						""
+					)
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+			}
+	}
+	
+	release
+}
+
 // POETRY
 
 script Soulkeep_Library_1F_EventScript_Book_SpinHaiku {

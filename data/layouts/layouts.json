@@ -5594,6 +5594,18 @@
       "blockdata_filepath": "data/layouts/Soulkeep/map.bin"
     },
     {
+      "id": "LAYOUT_SOULKEEP_CRYPT",
+      "name": "Soulkeep_Crypt_Layout",
+      "width": 42,
+      "height": 44,
+      "border_width": 1,
+      "border_height": 1,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Crypt",
+      "border_filepath": "data/layouts/Soulkeep_Crypt/border.bin",
+      "blockdata_filepath": "data/layouts/Soulkeep_Crypt/map.bin"
+    },
+    {
       "id": "LAYOUT_MAGURO_HARBOR_DOJO",
       "name": "MaguroHarbor_Dojo_Layout",
       "width": 12,
@@ -6360,6 +6372,18 @@
       "secondary_tileset": "gTileset_HouseSoulkeep",
       "border_filepath": "data/layouts/Soulkeep_House1/border.bin",
       "blockdata_filepath": "data/layouts/Soulkeep_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SOULKEEP_HOUSE_MEDIUM",
+      "name": "Soulkeep_HouseMedium_Layout",
+      "width": 9,
+      "height": 10,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseSoulkeep",
+      "border_filepath": "data/layouts/Soulkeep_HouseMedium/border.bin",
+      "blockdata_filepath": "data/layouts/Soulkeep_HouseMedium/map.bin"
     },
     {
       "id": "LAYOUT_ORCHARD_PATH_GUARD_HOUSE",

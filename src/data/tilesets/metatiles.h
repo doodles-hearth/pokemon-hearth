@@ -322,3 +322,6 @@ const u16 gMetatileAttributes_ScenicRoute[] = INCBIN_U16("data/tilesets/secondar
 
 const u16 gMetatiles_HotSprings[] = INCBIN_U16("data/tilesets/secondary/hot_springs/metatiles.bin");
 const u16 gMetatileAttributes_HotSprings[] = INCBIN_U16("data/tilesets/secondary/hot_springs/metatile_attributes.bin");
+
+const u16 gMetatiles_Crypt[] = INCBIN_U16("data/tilesets/secondary/crypt/metatiles.bin");
+const u16 gMetatileAttributes_Crypt[] = INCBIN_U16("data/tilesets/secondary/crypt/metatile_attributes.bin");

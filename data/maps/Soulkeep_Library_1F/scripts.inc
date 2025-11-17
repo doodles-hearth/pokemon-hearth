@@ -57,6 +57,52 @@ Soulkeep_Library_1F_EventScript_Book_CameruptsBack_2:
 	goto Soulkeep_Library_1F_EventScript_Book_CameruptsBack_1
 
 
+Soulkeep_Library_1F_EventScript_Book_CaveHabitats::
+	lock
+	msgbox Soulkeep_Library_1F_EventScript_Book_CaveHabitats_Text_0
+	dynmultichoice 0, 0, FALSE, 10, 0, DYN_MULTICHOICE_CB_NONE, Soulkeep_Library_1F_EventScript_Book_Recipe_Text_1, Soulkeep_Library_1F_EventScript_Book_Recipe_Text_2
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq Soulkeep_Library_1F_EventScript_Book_CaveHabitats_2
+Soulkeep_Library_1F_EventScript_Book_CaveHabitats_1:
+	release
+	return
+
+Soulkeep_Library_1F_EventScript_Book_CaveHabitats_2:
+	msgbox Soulkeep_Library_1F_EventScript_Book_CaveHabitats_Text_1
+	closemessage
+	setnamedmon SPECIES_ONIX
+	setnamedmon SPECIES_ARON
+	setnamedmon SPECIES_SABLEYE
+	setnamedmon SPECIES_CARBINK
+	setnamedmon SPECIES_DARUMAKA
+	setnamedmon SPECIES_SLUGMA
+	goto Soulkeep_Library_1F_EventScript_Book_CaveHabitats_1
+
+
+Soulkeep_Library_1F_EventScript_Book_Pokemon::
+	lock
+	msgbox Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_0
+	dynmultichoice 0, 0, FALSE, 10, 0, DYN_MULTICHOICE_CB_NONE, Soulkeep_Library_1F_EventScript_Book_Recipe_Text_1, Soulkeep_Library_1F_EventScript_Book_Recipe_Text_2
+	closemessage
+	compare VAR_RESULT, 0
+	goto_if_eq Soulkeep_Library_1F_EventScript_Book_Pokemon_2
+Soulkeep_Library_1F_EventScript_Book_Pokemon_1:
+	release
+	return
+
+Soulkeep_Library_1F_EventScript_Book_Pokemon_2:
+	dynmultichoice 0, 0, FALSE, 10, 0, DYN_MULTICHOICE_CB_NONE, Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_1, Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_2, Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_3, Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_4, Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_5
+	closemessage
+	switch VAR_RESULT
+	case 0, Soulkeep_Library_1F_EventScript_Book_Pokemon_5
+	goto Soulkeep_Library_1F_EventScript_Book_Pokemon_1
+
+Soulkeep_Library_1F_EventScript_Book_Pokemon_5:
+	msgbox Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_6
+	goto Soulkeep_Library_1F_EventScript_Book_Pokemon_1
+
+
 Soulkeep_Library_1F_EventScript_Book_SpinHaiku::
 	lock
 	msgbox Soulkeep_Library_1F_EventScript_Book_SpinHaiku_Text_0
@@ -203,6 +249,36 @@ Soulkeep_Library_1F_EventScript_Book_CameruptsBack_Text_1:
 	.string "Camerupt, which rests on another\l"
 	.string "Camerupt, which rests on another…”\p"
 	.string "… … …{PLAYER} is getting sleepy.\nBetter put the book back.$"
+
+Soulkeep_Library_1F_EventScript_Book_CaveHabitats_Text_0:
+	.string "“Caves and grottoes of Toku: Fauna”.\nRead this?$"
+
+Soulkeep_Library_1F_EventScript_Book_CaveHabitats_Text_1:
+	.string "“Each cave system in Toku has a unique ecosystem!\p"
+	.string "Silver Tunnel is populated by rock-\neating creatures, like Onix and Aron.\p"
+	.string "Saberside Quarry hosts gem-hungry\nPokémon, like Sableye and Carbink.\p"
+	.string "In Mt Kazan, fire Pokémon such as\nDarumaka and Slugma thrive.”$"
+
+Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_0:
+	.string "“Field Notes On Various Pokémon”.\nRead this?$"
+
+Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_1:
+	.string "Birds$"
+
+Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_2:
+	.string "Insects$"
+
+Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_3:
+	.string "Mammals$"
+
+Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_4:
+	.string "Ghosts$"
+
+Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_5:
+	.string "Minerals$"
+
+Soulkeep_Library_1F_EventScript_Book_Pokemon_Text_6:
+	.string "$"
 
 Soulkeep_Library_1F_EventScript_Book_SpinHaiku_Text_0:
 	.string "“Spiraling Haiku”.\nRead a haiku?$"
