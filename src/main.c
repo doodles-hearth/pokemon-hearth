@@ -462,3 +462,8 @@ bool32 InBattle(void)
 {
     return gMain.inBattle;
 }
+
+bool32 InOverworld(void)
+{
+    return gMain.callback2 == CB2_Overworld;
+}

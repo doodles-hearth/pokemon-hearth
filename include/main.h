@@ -73,5 +73,6 @@ void StartTimer1(void);
 void SeedRngAndSetTrainerId(void);
 u16 GetGeneratedTrainerIdLower(void);
 bool32 InBattle(void);
+bool32 InOverworld(void);
 
 #endif // GUARD_MAIN_H

@@ -7,6 +7,8 @@
 #include "fake_rtc.h"
 #include "event_data.h"
 #include "script.h"
+#include "main.h"
+#include "menu.h"
 
 extern bool32 InBattle(void);
 
@@ -44,7 +46,7 @@ void FakeRtc_TickTimeForward(void)
     if (!OW_USE_FAKE_RTC)
         return;
 
-    if (FlagGet(FLAG_PAUSE_FAKERTC) || InBattle())
+    if (FlagGet(FLAG_PAUSE_FAKERTC) || InBattle() || !InOverworld() || GetStartMenuWindowId() != WINDOW_NONE)
         return;
 
     FakeRtc_AdvanceTimeBy(0, 0, 0, FakeRtc_GetSecondsRatio(), TRUE);
