@@ -191,6 +191,8 @@ static void CallCallbacks(void)
 
 void SetMainCallback2(MainCallback callback)
 {
+    if (callback != CB2_Overworld)
+        gMain.isDialogActiveInOverworld = FALSE;
     gMain.callback2 = callback;
     gMain.state = 0;
 }

@@ -12,6 +12,7 @@
 
 extern bool32 InBattle(void);
 
+static bool32 FakeRtc_IsTimeFrozen();
 static void FakeRtc_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2);
 
 void FakeRtc_Reset(void)
@@ -34,6 +35,15 @@ struct SiiRtcInfo *FakeRtc_GetCurrentTime(void)
 #endif
 }
 
+static bool32 FakeRtc_IsTimeFrozen()
+{
+return  FlagGet(FLAG_PAUSE_FAKERTC)
+     || InBattle()
+     || !InOverworld()
+     || (GetStartMenuWindowId() != WINDOW_NONE)
+     || IsOverworldDialogActive();
+}
+
 void FakeRtc_GetRawInfo(struct SiiRtcInfo *rtc)
 {
     struct SiiRtcInfo *fakeRtc = FakeRtc_GetCurrentTime();
@@ -46,7 +56,7 @@ void FakeRtc_TickTimeForward(void)
     if (!OW_USE_FAKE_RTC)
         return;
 
-    if (FlagGet(FLAG_PAUSE_FAKERTC) || InBattle() || !InOverworld() || GetStartMenuWindowId() != WINDOW_NONE)
+    if (FakeRtc_IsTimeFrozen())
         return;
 
     FakeRtc_AdvanceTimeBy(0, 0, 0, FakeRtc_GetSecondsRatio(), TRUE);
