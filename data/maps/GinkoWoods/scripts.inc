@@ -58,18 +58,17 @@ GinkoWoods_EventScript_Hariko::
 	lock
 	waitse
 	playse SE_PIN
-	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_Hariko_Movement_0
-	waitmovement VAR_LAST_TALKED
-	faceplayer
+	applymovement LOCALID_GINKO_HARIKO, GinkoWoods_EventScript_Hariko_Movement_0
+	waitmovement LOCALID_GINKO_HARIKO
 	setspeaker GinkoWoods_EventScript_Hariko_Text_0
 	msgbox GinkoWoods_EventScript_Hariko_Text_1
 	closemessage
 	delay 48
-	turnobject 7, DIR_EAST
+	turnobject LOCALID_GINKO_HARIKO, DIR_EAST
 	setspeaker GinkoWoods_EventScript_Hariko_Text_0
 	msgbox GinkoWoods_EventScript_Hariko_Text_2
 	closemessage
-	turnobject 7, DIR_SOUTH
+	turnobject LOCALID_GINKO_HARIKO, DIR_SOUTH
 	delay 48
 	setspeaker GinkoWoods_EventScript_Hariko_Text_0
 	msgbox GinkoWoods_EventScript_Hariko_Text_3
@@ -90,9 +89,9 @@ GinkoWoods_EventScript_Hariko::
 	case 2, GinkoWoods_EventScript_Hariko_5
 GinkoWoods_EventScript_Hariko_1:
 	closemessage
-	applymovement 7, GinkoWoods_Movement_BeanWalksAway
+	applymovement LOCALID_GINKO_HARIKO, GinkoWoods_Movement_BeanWalksAway
 	waitmovement 0
-	removeobject 7
+	removeobject LOCALID_GINKO_HARIKO
 	setflag FLAG_HIDE_BEAN_GINKO_WOODS
 	setnamedmon SPECIES_JOLTIK
 	setnamedmon SPECIES_KOTORA
@@ -111,7 +110,7 @@ GinkoWoods_EventScript_Hariko_4:
 
 GinkoWoods_EventScript_Hariko_5:
 	playse SE_PIN
-	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_OldMan_Movement_0
+	applymovement LOCALID_GINKO_HARIKO, GinkoWoods_EventScript_OldMan_Movement_0
 	msgbox GinkoWoods_EventScript_Hariko_Text_10
 	goto GinkoWoods_EventScript_Hariko_1
 
@@ -129,13 +128,13 @@ GinkoWoods_Movement_BeanWalksAway:
 GinkoWoods_EventScript_HarikoSpotsYou:
 	lock
 	playse SE_PIN
-	applymovement 7, Common_Movement_ExclamationMark
+	applymovement LOCALID_GINKO_HARIKO, Common_Movement_ExclamationMark
 	waitse
 	waitmovement 0
 	delay 48
-	applymovement 7, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_GINKO_HARIKO, Common_Movement_WalkInPlaceFasterRight
 	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
-	applymovement VAR_LAST_TALKED, GinkoWoods_EventScript_HarikoSpotsYou_Movement_0
+	applymovement LOCALID_GINKO_HARIKO, GinkoWoods_EventScript_HarikoSpotsYou_Movement_0
 	setspeaker GinkoWoods_EventScript_Hariko_Text_0
 	msgbox GinkoWoods_EventScript_HarikoSpotsYou_Text_0
 	closemessage
@@ -184,6 +183,7 @@ GinkoWoods_EventScript_Hariko_Movement_0:
 	delay_16
 	delay_16
 	delay_16
+	face_down
 	step_end
 
 GinkoWoods_EventScript_HarikoSpotsYou_Movement_0:
