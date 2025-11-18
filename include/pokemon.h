@@ -263,7 +263,7 @@ struct BoxPokemon
     u32 personality;
     u32 otId;
     u8 nickname[min(10, POKEMON_NAME_LENGTH)];
-    u8 language:3;
+    u8 daysSinceFormChange:3; // 7 days.
     u8 hiddenNatureModifier:5; // 31 natures.
     u8 ppBonuses;
     //  Word
@@ -272,94 +272,75 @@ struct BoxPokemon
     u8 compressedStatus:4;
     //  Word
     u32 experience:21;
-    u32 nickname11:8; // 11th character of nickname.
-    u32 unused_04:3;
     u32 hpIV:5;
     u32 attackIV:5;
+    u32 worldRibbon:1;    // Distributed during Pokémon Festa '04 and '05 to tournament winners.
+    //  Word
+    u32 nickname11:8; // 11th character of nickname.
+    u32 toughRibbon:3;    // Stores the highest contest rank achieved in the Tough category.
+    u32 championRibbon:1; // Given when defeating the Champion. Because both RSE and FRLG use it, later generations don't specify from which region it comes from.
     u32 defenseIV:5;
     u32 speedIV:5;
     u32 spAttackIV:5;
     u32 spDefenseIV:5;
-    u32 unused_34:1;
-    u32 gigantamaxFactor:1;
+    //  Word
     u32 coolRibbon:3;     // Stores the highest contest rank achieved in the Cool category.
     u32 beautyRibbon:3;   // Stores the highest contest rank achieved in the Beauty category.
     u32 cuteRibbon:3;     // Stores the highest contest rank achieved in the Cute category.
     u32 smartRibbon:3;    // Stores the highest contest rank achieved in the Smart category.
-    u32 toughRibbon:3;    // Stores the highest contest rank achieved in the Tough category.
-    u32 championRibbon:1; // Given when defeating the Champion. Because both RSE and FRLG use it, later generations don't specify from which region it comes from.
     u32 winningRibbon:1;  // Given at the Battle Tower's Level 50 challenge by winning a set of seven battles that extends the current streak to 56 or more.
-    u32 victoryRibbon:1;  // Given at the Battle Tower's Level 100 challenge by winning a set of seven battles that extends the current streak to 56 or more.
-    u32 artistRibbon:1;   // Given at the Contest Hall by winning a Master Rank contest with at least 800 points, and agreeing to have the Pokémon's portrait placed in the museum after being offered.
-    u32 effortRibbon:1;   // Given at Slateport's market to Pokémon with maximum EVs.
-    u32 marineRibbon:1;   // Never distributed.
-    u32 landRibbon:1;     // Never distributed.
-    u32 skyRibbon:1;      // Never distributed.
-    u32 countryRibbon:1;  // Distributed during Pokémon Festa '04 and '05 to tournament winners.
-    u32 nationalRibbon:1; // Given to purified Shadow Pokémon in Colosseum/XD.
-    u32 earthRibbon:1;    // Given to teams that have beaten Mt. Battle's 100-battle challenge in Colosseum/XD.
-    u32 worldRibbon:1;    // Distributed during Pokémon Festa '04 and '05 to tournament winners.
-    u32 isShadow:1;
-    u32 unused_0B:1;
-    u32 abilityNum:2;
-    u32 modernFatefulEncounter:1;
+    u32 species:11; // 2047 species.
+    u32 metLocation:8;
 
     //  Word
-    u16 unused_checksum;
     u16 hpLost:14; // 16383 HP.
     u16 shinyModifier:1;
-    u16 unused_1E:1;
+    u16 otGender:1;
+    u8 sheen;
+    u8 pokerus;
     //  Word
     u16 move1:11; // 2047 moves.
     u16 evolutionTracker1:5;
     u16 move2:11; // 2047 moves.
     u16 evolutionTracker2:5;
     //  Word
-    u16 move3:11; // 2047 moves.
-    u16 unused_05:5;
-    u16 move4:11; // 2047 moves.
-    u16 unused_06:3;
+    u32 move3:11; // 2047 moves.
+    u32 move4:11; // 2047 moves.
+    u32 heldItem:10; // 1023 items.
+    //  Word
+
+    //  Word
+    u16 nickname12:8; // 12th character of nickname.
+    u16 tough:8;
+    u16 pokeball:6; // 63 balls.
     u16 hyperTrainedHP:1;
     u16 hyperTrainedAttack:1;
-    //  Word
-
-    //  Word
-    u16 species:11; // 2047 species.
-    enum Type teraType:5; // 30 types.
-    u16 heldItem:10; // 1023 items.
-    u16 unused_02:6;
-    //  Word
-    u16 pokeball:6; // 63 balls.
-    u16 nickname12:8; // 12th character of nickname.
-    u16 unused_0A:2;
-    //  Word
     u16 metLevel:7;
-    u16 metGame:4;
-    u16 dynamaxLevel:4;
-    u16 otGender:1;
+    u16 skyRibbon:1;      // Never distributed.
     //  Word
 
     //  Word
+    u8 friendship;
+    u8 hpEV;
+    u8 attackEV;
     u8 isBadEgg:1;
     u8 hasSpecies:1;
     u8 isEgg:1;
-    u8 blockBoxRS:1; // Unused, but Pokémon Box Ruby & Sapphire will refuse to deposit a Pokémon with this flag set.
-    u8 daysSinceFormChange:3; // 7 days.
-    u8 unused_13:1;
-    u8 friendship;
-
+    u8 victoryRibbon:1;  // Given at the Battle Tower's Level 100 challenge by winning a set of seven battles that extends the current streak to 56 or more.
+    u8 artistRibbon:1;   // Given at the Contest Hall by winning a Master Rank contest with at least 800 points, and agreeing to have the Pokémon's portrait placed in the museum after being offered.
+    u8 effortRibbon:1;   // Given at Slateport's market to Pokémon with maximum EVs.
+    u8 marineRibbon:1;   // Never distributed.
+    u8 landRibbon:1;     // Never distributed.
+    //  Word
     u8 pp1:7; // 127 PP.
     u8 hyperTrainedDefense:1;
     u8 pp2:7; // 127 PP.
     u8 hyperTrainedSpeed:1;
-    //  Word
     u8 pp3:7; // 127 PP.
     u8 hyperTrainedSpAttack:1;
     u8 pp4:7; // 127 PP.
     u8 hyperTrainedSpDefense:1;
 
-    u8 hpEV;
-    u8 attackEV;
     //  Word
     u8 defenseEV;
     u8 speedEV;
@@ -371,26 +352,15 @@ struct BoxPokemon
     u8 cute;
     u8 smart;
     //  Word
-    u8 tough;
-    u8 sheen;
+    u32 countryRibbon:1;  // Distributed during Pokémon Festa '04 and '05 to tournament winners.
+    u32 earthRibbon:1;    // Given to teams that have beaten Mt. Battle's 100-battle challenge in Colosseum/XD.
+    u32 abilityNum:2;
 
-    u8 pokerus;
-    u8 metLocation;
+    u32 colorIndexData:15;
+    u32 hueData1:13;
     //  Word
-
-    // The functionality of this bit changed in FRLG:
-    // In RS, this bit does nothing, is never set, & is accidentally unset when hatching Eggs.
-    // In FRLG & Emerald, this controls Mew & Deoxys obedience and whether they can be traded.
-    // If set, a Pokémon is a fateful encounter in FRLG's summary screen if hatched & for all Pokémon in Gen 4+ summary screens.
-    // Set for in-game event island legendaries, events distributed after a certain date, & Pokémon from XD: Gale of Darkness.
-    // Not to be confused with METLOC_FATEFUL_ENCOUNTER.
-    /*
-    union
-    {
-        u32 raw[(NUM_SUBSTRUCT_BYTES * 4) / 4]; // *4 because there are 4 substructs, /4 because it's u32, not u8
-        union PokemonSubstruct substructs[4];
-    } secure;
-    */
+    u32 hueData2;
+    //  Word
 };
 
 struct Pokemon

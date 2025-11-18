@@ -1115,7 +1115,7 @@ STATIC_ASSERT(POKEBALL_COUNT <= (1 << 6), PokemonSubstruct0_pokeball_TooSmall);
 STATIC_ASSERT(MOVES_COUNT_ALL < (1 << 11), PokemonSubstruct1_moves_TooSmall);
 STATIC_ASSERT(ARRAY_COUNT(sCompressedStatuses) <= (1 << 4), PokemonSubstruct3_compressedStatus_TooSmall);
 STATIC_ASSERT(MAX_LEVEL < (1 << 7), PokemonSubstruct3_metLevel_TooSmall);
-STATIC_ASSERT(NUM_VERSIONS < (1 << 4), PokemonSubstruct3_metGame_TooSmall);
+//STATIC_ASSERT(NUM_VERSIONS < (1 << 4), PokemonSubstruct3_metGame_TooSmall);
 STATIC_ASSERT(MAX_DYNAMAX_LEVEL < (1 << 4), PokemonSubstruct3_dynamaxLevel_TooSmall);
 STATIC_ASSERT(MAX_PER_STAT_IVS < (1 << 5), PokemonSubstruct3_ivs_TooSmall);
 STATIC_ASSERT(NUM_NATURES <= (1 << 5), BoxPokemon_hiddenNatureModifier_TooSmall);
@@ -2463,7 +2463,6 @@ static ALWAYS_INLINE bool32 IsEggOrBadEgg(struct BoxPokemon *boxMon)
  * number of arguments. */
 u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
 {
-    s32 i;
     u32 retVal = 0;
 
     // Any field greater than MON_DATA_ENCRYPT_SEPARATOR is encrypted and must be treated as such
@@ -2486,19 +2485,6 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             {
                 StringCopy(data, gText_EggNickname);
                 retVal = StringLength(data);
-            }
-            else if (boxMon->language == LANGUAGE_JAPANESE)
-            {
-                data[0] = EXT_CTRL_CODE_BEGIN;
-                data[1] = EXT_CTRL_CODE_JPN;
-
-                for (retVal = 2, i = 0;
-                    i < 5 && boxMon->nickname[i] != EOS;
-                    data[retVal] = boxMon->nickname[i], retVal++, i++) {}
-
-                data[retVal++] = EXT_CTRL_CODE_BEGIN;
-                data[retVal++] = EXT_CTRL_CODE_ENG;
-                data[retVal] = EOS;
             }
             else
             {
@@ -2628,7 +2614,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = boxMon->metLevel;
             break;
         case MON_DATA_MET_GAME:
-            retVal = boxMon->metGame;
+            retVal = gGameVersion;
             break;
         case MON_DATA_POKEBALL:
             retVal = boxMon->pokeball;
@@ -2703,7 +2689,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = boxMon->countryRibbon;
             break;
         case MON_DATA_NATIONAL_RIBBON:
-            retVal = boxMon->nationalRibbon;
+            retVal = 0;
             break;
         case MON_DATA_EARTH_RIBBON:
             retVal = boxMon->earthRibbon;
@@ -2712,7 +2698,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = boxMon->worldRibbon;
             break;
         case MON_DATA_MODERN_FATEFUL_ENCOUNTER:
-            retVal = boxMon->modernFatefulEncounter;
+            retVal = 0;
             break;
         case MON_DATA_SPECIES_OR_EGG:
             retVal = boxMon->species;
@@ -2765,7 +2751,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 retVal += boxMon->landRibbon;
                 retVal += boxMon->skyRibbon;
                 retVal += boxMon->countryRibbon;
-                retVal += boxMon->nationalRibbon;
+                //retVal += boxMon->nationalRibbon;
                 retVal += boxMon->earthRibbon;
                 retVal += boxMon->worldRibbon;
             }
@@ -2787,7 +2773,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                        | (boxMon->landRibbon << 21)
                        | (boxMon->skyRibbon << 22)
                        | (boxMon->countryRibbon << 23)
-                       | (boxMon->nationalRibbon << 24)
+                       //| (boxMon->nationalRibbon << 24)
                        | (boxMon->earthRibbon << 25)
                        | (boxMon->worldRibbon << 26);
             }
@@ -2811,13 +2797,13 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = boxMon->hyperTrainedSpDefense;
             break;
         case MON_DATA_IS_SHADOW:
-            retVal = boxMon->isShadow;
+            retVal = 0;
             break;
         case MON_DATA_DYNAMAX_LEVEL:
-            retVal = boxMon->dynamaxLevel;
+            retVal = 0;
             break;
         case MON_DATA_GIGANTAMAX_FACTOR:
-            retVal = boxMon->gigantamaxFactor;
+            retVal = 0;
             break;
         case MON_DATA_TERA_TYPE:
             {
@@ -2826,14 +2812,10 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 {
                     retVal = gSpeciesInfo[boxMon->species].forceTeraType;
                 }
-                else if (boxMon->teraType == TYPE_NONE) // Tera Type hasn't been modified so we can just use the personality
+                else
                 {
                     const enum Type *types = gSpeciesInfo[boxMon->species].types;
                     retVal = (boxMon->personality & 0x1) == 0 ? types[0] : types[1];
-                }
-                else
-                {
-                    retVal = boxMon->teraType;
                 }
             }
             break;
@@ -2867,7 +2849,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = boxMon->otId;
             break;
         case MON_DATA_LANGUAGE:
-            retVal = boxMon->language;
+            retVal = gGameLanguage;
             break;
         case MON_DATA_SANITY_IS_BAD_EGG:
             retVal = boxMon->isBadEgg;
@@ -3027,7 +3009,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         }
         case MON_DATA_SPECIES:
         {
-            SET16(boxMon->species);
+            SET32(boxMon->species);
             if (boxMon->species)
                 boxMon->hasSpecies = TRUE;
             else
@@ -3035,7 +3017,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             break;
         }
         case MON_DATA_HELD_ITEM:
-            SET16(boxMon->heldItem);
+            SET32(boxMon->heldItem);
             break;
         case MON_DATA_EXP:
             SET32(boxMon->experience);
@@ -3053,10 +3035,10 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET16(boxMon->move2);
             break;
         case MON_DATA_MOVE3:
-            SET16(boxMon->move3);
+            SET32(boxMon->move3);
             break;
         case MON_DATA_MOVE4:
-            SET16(boxMon->move4);
+            SET32(boxMon->move4);
             break;
         case MON_DATA_PP1:
             SET8(boxMon->pp1);
@@ -3101,7 +3083,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET8(boxMon->smart);
             break;
         case MON_DATA_TOUGH:
-            SET8(boxMon->tough);
+            SET16(boxMon->tough);
             break;
         case MON_DATA_SHEEN:
             SET8(boxMon->sheen);
@@ -3110,13 +3092,12 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET8(boxMon->pokerus);
             break;
         case MON_DATA_MET_LOCATION:
-            SET8(boxMon->metLocation);
+            SET32(boxMon->metLocation);
             break;
         case MON_DATA_MET_LEVEL:
             SET8(boxMon->metLevel);
             break;
         case MON_DATA_MET_GAME:
-            SET8(boxMon->metGame);
             break;
         case MON_DATA_POKEBALL:
             SET8(boxMon->pokeball);
@@ -3191,7 +3172,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET8(boxMon->countryRibbon);
             break;
         case MON_DATA_NATIONAL_RIBBON:
-            SET8(boxMon->nationalRibbon);
+            //SET8(boxMon->nationalRibbon);
             break;
         case MON_DATA_EARTH_RIBBON:
             SET8(boxMon->earthRibbon);
@@ -3200,7 +3181,7 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET8(boxMon->worldRibbon);
             break;
         case MON_DATA_MODERN_FATEFUL_ENCOUNTER:
-            SET8(boxMon->modernFatefulEncounter);
+            //SET8(boxMon->modernFatefulEncounter);
             break;
         case MON_DATA_IVS:
         {
@@ -3233,16 +3214,16 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET8(boxMon->hyperTrainedSpDefense);
             break;
         case MON_DATA_IS_SHADOW:
-            SET8(boxMon->isShadow);
+            //SET8(boxMon->isShadow);
             break;
         case MON_DATA_DYNAMAX_LEVEL:
-            SET8(boxMon->dynamaxLevel);
+            //SET8(boxMon->dynamaxLevel);
             break;
         case MON_DATA_GIGANTAMAX_FACTOR:
-            SET8(boxMon->gigantamaxFactor);
+            //SET8(boxMon->gigantamaxFactor);
             break;
         case MON_DATA_TERA_TYPE:
-            SET8(boxMon->teraType);
+            //SET8(boxMon->teraType);
             break;
         case MON_DATA_EVOLUTION_TRACKER:
         {
@@ -3277,7 +3258,6 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             SET32(boxMon->otId);
             break;
         case MON_DATA_LANGUAGE:
-            SET8(boxMon->language);
             break;
         case MON_DATA_SANITY_IS_BAD_EGG:
             SET8(boxMon->isBadEgg);
