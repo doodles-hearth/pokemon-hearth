@@ -189,6 +189,8 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
 
     if (forcedMove == FALSE)
     {
+        if(newKeys & B_BUTTON)
+                input->pressedBButton = TRUE;
         if (tileTransitionState == T_TILE_CENTER && runningState == MOVING)
             input->tookStep = TRUE;
         if (forcedMove == FALSE && tileTransitionState == T_TILE_CENTER)
@@ -230,6 +232,19 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
         return TRUE;
+
+    if (input->pressedBButton && (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_ON_FOOT))
+    {
+        if (gSaveBlock2Ptr->optionsAutorun == AUTORUN_TOGGLE)
+        {
+            if (FlagGet(FLAG_AUTORUN_TOGGLE))
+                PlaySE(SE_POKENAV_OFF);
+            else
+                PlaySE(SE_POKENAV_ON);
+            FlagToggle(FLAG_AUTORUN_TOGGLE);
+        }
+    }
+    
     if (input->tookStep)
     {
         IncrementGameStat(GAME_STAT_STEPS);
