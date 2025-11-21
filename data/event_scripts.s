@@ -1415,3 +1415,9 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Soulkeep_HouseMedium/scripts.inc"
 
 	.include "data/maps/Soulkeep_Crypt/scripts.inc"
+
+	.include "data/maps/SabersideTown_Refuge/scripts.inc"
+
+	.include "data/maps/SabersideQuarry_Exterior/scripts.inc"
+
+	.include "data/maps/SabersideQuarry/scripts.inc"

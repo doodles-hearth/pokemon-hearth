@@ -279,6 +279,7 @@ SakuTown_PokemonCenter_EventScript_Pushing::
 	setspeaker SakuTown_PokemonCenter_EventScript_Pushing_Text_0
 	msgbox SakuTown_PokemonCenter_EventScript_Pushing_Text_1
 	closemessage
+	hidefollower
 	switch VAR_FACING
 	case DIR_EAST, SakuTown_PokemonCenter_EventScript_Pushing_3
 	case DIR_SOUTH, SakuTown_PokemonCenter_EventScript_Pushing_4

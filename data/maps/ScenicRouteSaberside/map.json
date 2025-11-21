@@ -27,7 +27,7 @@
   "object_events": [],
   "warp_events": [
     {
-      "x": 31,
+      "x": 36,
       "y": 13,
       "elevation": 0,
       "dest_map": "MAP_ROUTE120",
@@ -37,7 +37,7 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 26,
+      "x": 31,
       "y": 18,
       "elevation": 0,
       "var": "VAR_TEMP_0",
@@ -46,7 +46,7 @@
     },
     {
       "type": "trigger",
-      "x": 27,
+      "x": 32,
       "y": 18,
       "elevation": 0,
       "var": "VAR_TEMP_0",
@@ -55,7 +55,7 @@
     },
     {
       "type": "trigger",
-      "x": 28,
+      "x": 33,
       "y": 18,
       "elevation": 0,
       "var": "VAR_TEMP_0",
@@ -64,7 +64,7 @@
     },
     {
       "type": "trigger",
-      "x": 27,
+      "x": 32,
       "y": 9,
       "elevation": 0,
       "var": "VAR_TEMP_0",
@@ -73,7 +73,7 @@
     },
     {
       "type": "trigger",
-      "x": 26,
+      "x": 31,
       "y": 10,
       "elevation": 0,
       "var": "VAR_TEMP_0",
@@ -82,7 +82,7 @@
     },
     {
       "type": "trigger",
-      "x": 25,
+      "x": 30,
       "y": 11,
       "elevation": 0,
       "var": "VAR_TEMP_0",
@@ -91,7 +91,7 @@
     },
     {
       "type": "trigger",
-      "x": 26,
+      "x": 31,
       "y": 9,
       "elevation": 0,
       "var": "VAR_TEMP_0",
@@ -100,7 +100,7 @@
     },
     {
       "type": "trigger",
-      "x": 25,
+      "x": 30,
       "y": 10,
       "elevation": 0,
       "var": "VAR_TEMP_0",
@@ -109,7 +109,7 @@
     },
     {
       "type": "trigger",
-      "x": 24,
+      "x": 29,
       "y": 11,
       "elevation": 0,
       "var": "VAR_TEMP_0",
@@ -118,7 +118,7 @@
     },
     {
       "type": "trigger",
-      "x": 26,
+      "x": 31,
       "y": 19,
       "elevation": 0,
       "var": "VAR_TEMP_0",
@@ -127,7 +127,7 @@
     },
     {
       "type": "trigger",
-      "x": 27,
+      "x": 32,
       "y": 19,
       "elevation": 0,
       "var": "VAR_TEMP_0",
@@ -136,7 +136,7 @@
     },
     {
       "type": "trigger",
-      "x": 28,
+      "x": 33,
       "y": 19,
       "elevation": 0,
       "var": "VAR_TEMP_0",

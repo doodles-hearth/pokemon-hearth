@@ -5681,7 +5681,7 @@
       "id": "LAYOUT_SABERSIDE_TOWN",
       "name": "SabersideTown_Layout",
       "width": 60,
-      "height": 48,
+      "height": 49,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
@@ -6492,6 +6492,30 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Soulkeep_Dojo/border.bin",
       "blockdata_filepath": "data/layouts/Soulkeep_Dojo/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_QUARRY_EXTERIOR",
+      "name": "SabersideQuarry_Exterior_Layout",
+      "width": 41,
+      "height": 21,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Saberside",
+      "border_filepath": "data/layouts/SabersideQuarry_Exterior/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideQuarry_Exterior/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_QUARRY",
+      "name": "SabersideQuarry_Layout",
+      "width": 29,
+      "height": 18,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_SilverTunnel",
+      "border_filepath": "data/layouts/SabersideQuarry/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideQuarry/map.bin"
     }
   ]
 }
