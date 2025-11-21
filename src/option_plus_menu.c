@@ -31,6 +31,7 @@ enum
     MENUITEM_MAIN_BATTLESPEED,
     MENUITEM_MAIN_BATTLESCENE,
     MENUITEM_MAIN_BATTLESTYLE,
+    MENUITEM_MAIN_AUTORUN,
     MENUITEM_MAIN_SOUND,
     MENUITEM_MAIN_BUTTONMODE,
     MENUITEM_MAIN_FRAMETYPE,
@@ -69,6 +70,7 @@ static const u8 gText_FrameTypeNumber[]    = _("");
 static const u8 gText_ButtonTypeNormal[]   = _("Normal");
 static const u8 gText_ButtonTypeLR[]       = _("LR");
 static const u8 gText_ButtonTypeLEqualsA[] = _("L=A");
+static const u8 gText_Toggle[]             = _("Toggle");
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
     {
@@ -165,6 +167,7 @@ static void DrawChoices_TextSpeed(int selection, int y);
 static void DrawChoices_BattleSpeed(int selection, int y);
 static void DrawChoices_BattleScene(int selection, int y);
 static void DrawChoices_BattleStyle(int selection, int y);
+static void DrawChoices_AutoRun(int selection, int y);
 static void DrawChoices_Sound(int selection, int y);
 static void DrawChoices_ButtonMode(int selection, int y);
 static void DrawChoices_FrameType(int selection, int y);
@@ -204,6 +207,7 @@ struct // MENU_MAIN
         [MENUITEM_MAIN_BATTLESPEED] = {DrawChoices_BattleSpeed, ProcessInput_Options_Three},
         [MENUITEM_MAIN_BATTLESCENE] = {DrawChoices_BattleScene, ProcessInput_Options_Two},
         [MENUITEM_MAIN_BATTLESTYLE] = {DrawChoices_BattleStyle, ProcessInput_Options_Two},
+        [MENUITEM_MAIN_AUTORUN]     = {DrawChoices_AutoRun    , ProcessInput_Options_Three},
         [MENUITEM_MAIN_SOUND] = {DrawChoices_Sound, ProcessInput_Options_Two},
         [MENUITEM_MAIN_BUTTONMODE] = {DrawChoices_ButtonMode, ProcessInput_Options_Three},
         [MENUITEM_MAIN_FRAMETYPE] = {DrawChoices_FrameType, ProcessInput_FrameType},
@@ -226,6 +230,7 @@ static const u8 *const sOptionMenuItemsNamesMain[MENUITEM_MAIN_COUNT] =
         [MENUITEM_MAIN_BATTLESPEED] = COMPOUND_STRING("Battle speed"),
         [MENUITEM_MAIN_BATTLESCENE] = COMPOUND_STRING("Battle scene"),
         [MENUITEM_MAIN_BATTLESTYLE] = COMPOUND_STRING("Battle style"),
+        [MENUITEM_MAIN_AUTORUN]     = COMPOUND_STRING("Autorun"),
         [MENUITEM_MAIN_SOUND] = COMPOUND_STRING("Sound"),
         [MENUITEM_MAIN_BUTTONMODE] = COMPOUND_STRING("Button mode"),
         [MENUITEM_MAIN_FRAMETYPE] = COMPOUND_STRING("Frame"),
@@ -272,6 +277,8 @@ static bool8 CheckConditions(int selection)
             return TRUE;
         case MENUITEM_MAIN_BATTLESTYLE:
             return TRUE;
+        case MENUITEM_MAIN_AUTORUN:
+            return TRUE;
         case MENUITEM_MAIN_SOUND:
             return TRUE;
         case MENUITEM_MAIN_BUTTONMODE:
@@ -296,6 +303,9 @@ static const u8 sText_Desc_BattleScene_On[] = _("Show the Pokémon battle animat
 static const u8 sText_Desc_BattleScene_Off[] = _("Skip the Pokémon battle animations.");
 static const u8 sText_Desc_BattleStyle_Shift[] = _("Get the option to switch your\nPokémon after the opponent faints.");
 static const u8 sText_Desc_BattleStyle_Set[] = _("No free switch after fainting the\nopponent.");
+static const u8 sText_Desc_AutorunOn[] = _("Autorun is on. You will automatically\nrun. Hold B to walk");
+static const u8 sText_Desc_AutorunOff[] = _("Autorun is off. Hold B to run.");
+static const u8 sText_Desc_AutorunToggle[] = _("Autorun is set to toggle. Press B to\nswitch between walking and running.");
 static const u8 sText_Desc_SoundMono[] = _("Sound is the same in all speakers.\nRecommended for original hardware.");
 static const u8 sText_Desc_SoundStereo[] = _("Play the left and right audio channel\nseperatly. Great with headphones.");
 static const u8 sText_Desc_ButtonMode[] = _("All buttons work as normal.");
@@ -308,6 +318,7 @@ static const u8 *const sOptionMenuItemDescriptionsMain[MENUITEM_MAIN_COUNT][3] =
         [MENUITEM_MAIN_BATTLESPEED] = {sText_Desc_BattleSpeed, sText_Empty, sText_Empty},
         [MENUITEM_MAIN_BATTLESCENE] = {sText_Desc_BattleScene_On, sText_Desc_BattleScene_Off, sText_Empty},
         [MENUITEM_MAIN_BATTLESTYLE] = {sText_Desc_BattleStyle_Shift, sText_Desc_BattleStyle_Set, sText_Empty},
+        [MENUITEM_MAIN_AUTORUN]     = {sText_Desc_AutorunOff, sText_Desc_AutorunOn, sText_Desc_AutorunToggle},
         [MENUITEM_MAIN_SOUND] = {sText_Desc_SoundMono, sText_Desc_SoundStereo, sText_Empty},
         [MENUITEM_MAIN_BUTTONMODE] = {sText_Desc_ButtonMode, sText_Desc_ButtonMode_LR, sText_Desc_ButtonMode_LA},
         [MENUITEM_MAIN_FRAMETYPE] = {sText_Desc_FrameType, sText_Empty, sText_Empty},
@@ -587,6 +598,7 @@ void CB2_InitOptionPlusMenu(void)
         sOptions->sel[MENUITEM_MAIN_BATTLESPEED] = gSaveBlock2Ptr->optionsBattleSpeed;
         sOptions->sel[MENUITEM_MAIN_BATTLESCENE] = gSaveBlock2Ptr->optionsBattleSceneOff;
         sOptions->sel[MENUITEM_MAIN_BATTLESTYLE] = gSaveBlock2Ptr->optionsBattleStyle;
+        sOptions->sel[MENUITEM_MAIN_AUTORUN] = gSaveBlock2Ptr->optionsAutorun;
         sOptions->sel[MENUITEM_MAIN_SOUND] = gSaveBlock2Ptr->optionsSound;
         sOptions->sel[MENUITEM_MAIN_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
         sOptions->sel[MENUITEM_MAIN_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
@@ -770,6 +782,7 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsBattleSpeed = sOptions->sel[MENUITEM_MAIN_BATTLESPEED];
     gSaveBlock2Ptr->optionsBattleSceneOff = sOptions->sel[MENUITEM_MAIN_BATTLESCENE];
     gSaveBlock2Ptr->optionsBattleStyle = sOptions->sel[MENUITEM_MAIN_BATTLESTYLE];
+    gSaveBlock2Ptr->optionsAutorun = sOptions->sel[MENUITEM_MAIN_AUTORUN];
     gSaveBlock2Ptr->optionsSound = sOptions->sel[MENUITEM_MAIN_SOUND];
     gSaveBlock2Ptr->optionsButtonMode = sOptions->sel[MENUITEM_MAIN_BUTTONMODE];
     gSaveBlock2Ptr->optionsWindowFrameType = sOptions->sel[MENUITEM_MAIN_FRAMETYPE];
@@ -1014,6 +1027,17 @@ static void DrawChoices_BattleSpeed(int selection, int y)
     DrawOptionMenuChoice(gText_BattleSpeedNormal, 104, y, styles[0], active);
     DrawOptionMenuChoice(gText_BattleSpeedFast, xMid, y, styles[1], active);
     DrawOptionMenuChoice(gText_BattleSpeedFaster, GetStringRightAlignXOffset(1, gText_BattleSpeedFaster, 198), y, styles[2], active);
+}
+
+static void DrawChoices_AutoRun(int selection, int y)
+{
+    bool8 active = CheckConditions(MENUITEM_MAIN_AUTORUN);
+    u8 styles[3] = {0};
+    int xMid = GetMiddleX(gText_BattleSceneOn, gText_BattleSceneOff, gText_Toggle);
+    styles[selection] =1;
+    DrawOptionMenuChoice(gText_BattleSceneOff, 104, y, styles[0], active);
+    DrawOptionMenuChoice(gText_BattleSceneOn, xMid, y, styles[1], active);
+    DrawOptionMenuChoice(gText_Toggle, GetStringRightAlignXOffset(1, gText_Toggle, 198), y, styles[2], active);
 }
 
 static void DrawChoices_BattleScene(int selection, int y)
