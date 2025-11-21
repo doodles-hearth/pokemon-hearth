@@ -6509,11 +6509,11 @@
       "id": "LAYOUT_SABERSIDE_QUARRY",
       "name": "SabersideQuarry_Layout",
       "width": 29,
-      "height": 18,
+      "height": 40,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_SilverTunnel",
+      "secondary_tileset": "gTileset_Quarry",
       "border_filepath": "data/layouts/SabersideQuarry/border.bin",
       "blockdata_filepath": "data/layouts/SabersideQuarry/map.bin"
     }

@@ -325,3 +325,6 @@ const u16 gMetatileAttributes_HotSprings[] = INCBIN_U16("data/tilesets/secondary
 
 const u16 gMetatiles_Crypt[] = INCBIN_U16("data/tilesets/secondary/crypt/metatiles.bin");
 const u16 gMetatileAttributes_Crypt[] = INCBIN_U16("data/tilesets/secondary/crypt/metatile_attributes.bin");
+
+const u16 gMetatiles_Quarry[] = INCBIN_U16("data/tilesets/secondary/quarry/metatiles.bin");
+const u16 gMetatileAttributes_Quarry[] = INCBIN_U16("data/tilesets/secondary/quarry/metatile_attributes.bin");

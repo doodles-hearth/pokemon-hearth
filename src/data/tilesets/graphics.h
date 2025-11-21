@@ -2375,3 +2375,22 @@ const u16 gTilesetPalettes_Crypt[][16] =
 };
 
 const u32 gTilesetTiles_Crypt[] = INCBIN_U32("data/tilesets/secondary/crypt/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Quarry[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/quarry/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Quarry[] = INCBIN_U32("data/tilesets/secondary/quarry/tiles.4bpp.lz");

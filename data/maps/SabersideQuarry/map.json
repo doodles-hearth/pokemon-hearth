@@ -18,7 +18,7 @@
     {
       "warp_id": "WARP_ID_SABERSIDE_QUARRY_EXIT",
       "x": 13,
-      "y": 17,
+      "y": 39,
       "elevation": 0,
       "dest_map": "MAP_SABERSIDE_QUARRY_EXTERIOR",
       "dest_warp_id": "WARP_ID_SABERSIDE_QUARRY_ENTRANCE"

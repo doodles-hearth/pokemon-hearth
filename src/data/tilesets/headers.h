@@ -1259,3 +1259,14 @@ const struct Tileset gTileset_Crypt =
     .metatileAttributes = gMetatileAttributes_Crypt,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Quarry =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Quarry,
+    .palettes = gTilesetPalettes_Quarry,
+    .metatiles = gMetatiles_Quarry,
+    .metatileAttributes = gMetatileAttributes_Quarry,
+    .callback = NULL,
+};
