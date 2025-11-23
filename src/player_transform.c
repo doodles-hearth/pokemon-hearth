@@ -20,13 +20,16 @@ void CB2_TransformPlayerFromParty(void) // Callback passed to the ChooseMonForTr
     index = GetCursorSelectionMonId();
     if (index >= PARTY_SIZE)
         index = PARTY_NOTHING_CHOSEN;
-    gSaveBlock1Ptr->playerTransformData.slot = index;
-    gPlayerTransformPokemon = &gPlayerParty[index];
-    TransformPlayerToPokemon();
+    else
+    {
+        gSaveBlock1Ptr->playerTransformData.slot = index;
+        gPlayerTransformPokemon = &gPlayerParty[index];
+        TransformPlayerToPokemon();
+    }
     gFieldCallback2 = CB2_FadeFromPartyMenu;
     SetMainCallback2(CB2_ReturnToField);
+    UnfreezeObjectEvents();
 }
-
 
 bool32 isPlayerTransformed()
 {
