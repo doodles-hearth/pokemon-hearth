@@ -245,15 +245,6 @@ struct NPCFollower
     u8 battlePartner; // If you have more than 255 total battle partners defined, change this to a u16
 };
 
-struct PlayerTransformData // This stores the entire player transform data into a single u16
-{
-    u16 isPokemon : 1;
-    u16 inBox : 1;
-    u16 boxId : 4;    // 0–13 (14 Boxes)
-    u16 slot : 5;     // 0–29 if in box, else 0–5 if party
-    u16 padding : 5; // padding
-};
-
 #include "constants/items.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
 
@@ -1139,7 +1130,7 @@ struct SaveBlock1
 #endif //FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1
     /*0x9BC*/ u16 berryBlenderRecords[3];
     /*0x9C2*/ struct Coords16 savedPos;
-    /*0x9C3*/ struct PlayerTransformData playerTransformData; //To Store player transform data
+    /*0x9C3*/ u16 playerTransformData; //To Store player transform data
 #if FREE_MATCH_CALL == FALSE
     /*0x9C8*/ u16 trainerRematchStepCounter;
     /*0x9CA*/ u8 trainerRematches[MAX_REMATCH_ENTRIES];
