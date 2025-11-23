@@ -412,6 +412,17 @@ const u8 *GetInteractedLinkPlayerScript(struct MapPosition *position, u8 metatil
     return GetObjectEventScriptPointerByObjectEventId(objectEventId);
 }
 
+static bool32 CanInteractWithWaterObjects(struct MapPosition *position, u8 metatileBehavior)
+{
+    if (PlayerGetElevation() != 3)
+        return FALSE;
+    if (MetatileBehavior_IsSurfableWaterOrUnderwater(metatileBehavior))
+        return FALSE;
+    if (!(MetatileBehavior_IsSurfableWaterOrUnderwater(MapGridGetMetatileBehaviorAt(position->x, position->y))))
+        return FALSE;
+    return TRUE;
+}
+
 static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8 metatileBehavior, u8 direction)
 {
     u8 objectEventId;
@@ -429,8 +440,9 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
         else if (MetatileBehavior_IsSidewaysStairsRightSideAny(currBehavior))
             // on top of right-side stairs -> check southeast
             objectEventId = GetObjectEventIdByPosition(currX + 1, currY + 1, position->elevation);
+        else if (CanInteractWithWaterObjects(position, currBehavior))
+            objectEventId = GetObjectEventIdByPosition(position->x, position->y, 0);
         else
-            // check in front of player
             objectEventId = GetObjectEventIdByPosition(position->x, position->y, position->elevation);
         break;
     case DIR_WEST:
@@ -440,12 +452,16 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
         else if (MetatileBehavior_IsSidewaysStairsLeftSideAny(currBehavior))
             // on top of left-side stairs -> check southwest
             objectEventId = GetObjectEventIdByPosition(currX - 1, currY + 1, position->elevation);
+        else if (CanInteractWithWaterObjects(position, currBehavior))
+            objectEventId = GetObjectEventIdByPosition(position->x, position->y, 0);
         else
-            // check in front of player
             objectEventId = GetObjectEventIdByPosition(position->x, position->y, position->elevation);
         break;
     default:
-        objectEventId = GetObjectEventIdByPosition(position->x, position->y, position->elevation);
+        if (CanInteractWithWaterObjects(position, currBehavior))
+            objectEventId = GetObjectEventIdByPosition(position->x, position->y, 0);
+        else
+            objectEventId = GetObjectEventIdByPosition(position->x, position->y, position->elevation);
         break;
     }
 
