@@ -445,7 +445,7 @@ clean-generated:
 	@echo "rm -f <AUTO_GEN_TARGETS>"
 	@rm -f $(ALL_LEARNABLES_JSON)
 	@echo "rm -f <ALL_LEARNABLES_JSON>"
-	@rm -r build/inc-to-scr
+	@rm -r inc-to-scr
 
 $(C_BUILDDIR)/librfu_intr.o: CFLAGS := -mthumb-interwork -O2 -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -fno-toplevel-reorder -Wno-pointer-to-int-cast
 $(C_BUILDDIR)/berry_crush.o: override CFLAGS += -Wno-address-of-packed-member
@@ -575,7 +575,7 @@ endif
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 	$(FIX) $@ -p --silent
-	@rm -r build/inc-to-scr
+	@rm -r inc-to-scr
 
 emerald: all
 firered: all

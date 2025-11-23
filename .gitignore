@@ -61,4 +61,4 @@ tools/compresSmol/compresSmolTilemap
 *.smolTM
 __pycache__
 *.scr
-
+inc-to-scr
