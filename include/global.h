@@ -25,6 +25,7 @@
 #include "constants/items.h"
 #include "config/save.h"
 #include "config/limited_shop.h"
+#include "player_transform.h"
 
 // Prevent cross-jump optimization.
 #define BLOCK_CROSS_JUMP asm("");
@@ -1130,7 +1131,7 @@ struct SaveBlock1
 #endif //FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1
     /*0x9BC*/ u16 berryBlenderRecords[3];
     /*0x9C2*/ struct Coords16 savedPos;
-    /*whatever*/ u8 unused_9C2[2];
+    /*0x9C3*/ struct PlayerTransformData playerTransformData; //To Store player transform data
 #if FREE_MATCH_CALL == FALSE
     /*0x9C8*/ u16 trainerRematchStepCounter;
     /*0x9CA*/ u8 trainerRematches[MAX_REMATCH_ENTRIES];

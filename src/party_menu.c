@@ -68,6 +68,7 @@
 #include "trade.h"
 #include "union_room.h"
 #include "window.h"
+#include "player_transform.h"
 #include "constants/battle.h"
 #include "constants/battle_frontier.h"
 #include "constants/field_effects.h"
@@ -7486,6 +7487,11 @@ static const u8 *GetFacilityCancelString(void)
 void ChooseMonForTradingBoard(u8 menuType, MainCallback callback)
 {
     InitPartyMenu(menuType, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, callback);
+}
+
+void ChooseMonForTransform() //Used to transform the player in to a pokemon
+{
+    InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_MON, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_AND_CLOSE, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_TransformPlayerFromParty);
 }
 
 void ChooseMonForMoveTutor(void)
