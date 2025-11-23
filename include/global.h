@@ -1130,7 +1130,11 @@ struct SaveBlock1
 #endif //FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1
     /*0x9BC*/ u16 berryBlenderRecords[3];
     /*0x9C2*/ struct Coords16 savedPos;
-    /*0x9C3*/ u16 playerTransformData; //To Store player transform data
+    /*0x9C6*/ u16 isPlayerTransformed :1; // To Store player transform data
+              u16 isTransformMonInBox :1; // Tracks if player is transformed into a boxmon
+              u16 transformBoxNum :4;     // Box Number
+              u16 transformMonIndex :5;    // 0-5 for party 0-29 for boxes
+    //        u16 padding :5;
 #if FREE_MATCH_CALL == FALSE
     /*0x9C8*/ u16 trainerRematchStepCounter;
     /*0x9CA*/ u8 trainerRematches[MAX_REMATCH_ENTRIES];
