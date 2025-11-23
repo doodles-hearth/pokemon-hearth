@@ -1,6 +1,7 @@
 #include "global.h"
 #include "battle_setup.h"
 #include "bike.h"
+#include "campfire.h"
 #include "chatot_post.h"
 #include "coord_event_weather.h"
 #include "daycare.h"
@@ -188,6 +189,8 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
 
     if (forcedMove == FALSE)
     {
+        if(newKeys & B_BUTTON)
+                input->pressedBButton = TRUE;
         if (tileTransitionState == T_TILE_CENTER && runningState == MOVING)
             input->tookStep = TRUE;
         if (forcedMove == FALSE && tileTransitionState == T_TILE_CENTER)
@@ -229,6 +232,19 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
         return TRUE;
+
+    if (input->pressedBButton && (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_ON_FOOT))
+    {
+        if (gSaveBlock2Ptr->optionsAutorun == AUTORUN_TOGGLE)
+        {
+            if (FlagGet(FLAG_AUTORUN_TOGGLE))
+                PlaySE(SE_POKENAV_OFF);
+            else
+                PlaySE(SE_POKENAV_ON);
+            FlagToggle(FLAG_AUTORUN_TOGGLE);
+        }
+    }
+    
     if (input->tookStep)
     {
         IncrementGameStat(GAME_STAT_STEPS);
@@ -702,6 +718,11 @@ static bool8 TryStartStepBasedScript(struct MapPosition *position, u16 metatileB
 static bool8 TryStartCoordEventScript(struct MapPosition *position)
 {
     const u8 *script = GetCoordEventScriptAtPosition(&gMapHeader, position->x - MAP_OFFSET, position->y - MAP_OFFSET, position->elevation);
+
+    if (CampfireIsActive() && MovedTooFarFromCampfire(position->x - MAP_OFFSET, position->y - MAP_OFFSET))
+    {
+        script = EventScript_WalkAwayFromCampfire;
+    }
 
     if (script == NULL)
         return FALSE;

@@ -87,7 +87,7 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
             )
         )
 
-		mcdialogue(
+		mcdialogueB(
 			"With pleasure!",
 			"Not interested."
 		)

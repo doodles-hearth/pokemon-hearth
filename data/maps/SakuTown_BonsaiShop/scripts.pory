@@ -296,7 +296,7 @@ script(local) SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader {
 	))
 
 	mcdialogue(
-		"Hana?"
+		"Hana?",
 		"Have we met?"
 	)
 	closemessage

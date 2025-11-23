@@ -131,16 +131,18 @@ script KuraTown_EventScript_Farmer {
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"Why do we hate the Saku Village folks, y'ask?"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Why do we hate the Saku Village folks, y'ask?"
 	))
 	closemessage
 
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive, delay_16 * 6))
 	waitmovement(0)
+	waitse
 
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"To be honest, I don't quite rememb'r.\nBut who needs a reas'n, right?"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}To be honest, I don't quite rememb'r.\nBut who needs a reas'n, right?"
 	))
 	release
 }
@@ -189,7 +191,8 @@ script KuraTown_EventScript_FarmerScyther {
 	setspeaker(SP_NAME_FARMER)
 	msgbox(
 		format(
-			"We started taming Scyther recently to help with harvestin' the crops. They've been a tremendous help!"
+			"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}We started taming Scyther recently\nto help with harvestin' the crops.\l"
+			"They've been a tremendous help!"
 		),
 		MSGBOX_DEFAULT
 	)

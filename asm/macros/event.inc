@@ -169,7 +169,10 @@
 	.endm
 
 	@ Copies the value of source into destination.
-	.macro copyvar destination:req, source:req
+	.macro copyvar destination:req, source:req, warn=TRUE
+	.if \warn && !((\source >= VARS_START && \source <= VARS_END) || (\source >= SPECIAL_VARS_START && \source <= SPECIAL_VARS_END))
+	.warning "copyvar with a value that is not a VAR_ constant; did you mean setvar instead?"
+	.endif
 	.byte SCR_OP_COPYVAR
 	.2byte \destination
 	.2byte \source
@@ -688,11 +691,27 @@
 	map \map
 	.endm
 
+	@ Set the player object's invisibility to FALSE.
+	.macro showplayer
+	.byte SCR_OP_SHOWOBJECTAT
+	.2byte LOCALID_PLAYER
+	.byte 0 @ map group
+	.byte 0 @ map num
+	.endm
+
 	@ Sets the specified object's invisibility to TRUE.
 	.macro hideobjectat localId:req, map:req
 	.byte SCR_OP_HIDEOBJECTAT
 	.2byte \localId
 	map \map
+	.endm
+
+	@ Set the player object's invisibility to TRUE.
+	.macro hideplayer
+	.byte SCR_OP_HIDEOBJECTAT
+	.2byte LOCALID_PLAYER
+	.byte 0 @ map group
+	.byte 0 @ map num
 	.endm
 
 	@ Turns the currently selected object (if there is one) to face the player.
@@ -1953,6 +1972,11 @@
 	_dynmultichoice 0, 0, TRUE, 10, FALSE, 0, DYN_MULTICHOICE_CB_NONE, \argv
 	.endm
 
+	@ mcdialogue but with B = leave
+	.macro mcdialogueB argv:vararg
+	_dynmultichoice 0, 0, FALSE, 10, FALSE, 0, DYN_MULTICHOICE_CB_NONE, \argv
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
@@ -2386,6 +2410,12 @@
 	callnative GetFollowerAction
 	.endm
 
+    @ Executes Campfire actions
+    .macro getcampfireaction partyIndex:req
+    callnative GetCampfireAction
+    .byte \partyIndex
+    .endm
+
 	@ Checks if Field move is being used by the current follower.
 	.macro isfollowerfieldmoveuser var:req
 	callnative IsFollowerFieldMoveUser, requests_effects=1
@@ -2404,6 +2434,11 @@
 	@ can be used in conjunection with createmon to set up a wild battle with 2 player mons vs. 1 enemy mon
 	.macro setwilddoubleflag
 	callnative ScriptSetDoubleBattleFlag, requests_effects=1
+	.endm
+
+	@ Stop using the ORAS dowsing machine.
+	.macro stoporasdowsing
+	callnative EndORASDowsing
 	.endm
 
 	@ ============================ @
@@ -2464,6 +2499,18 @@
 	callnative ScrCmd_fwdweekday, requests_effects=1
 	.4byte \weekday
 	.endm
+
+	.macro campfire
+	callnative Native_Campfire
+	.endm
+
+	.macro leaveCampfire
+	callnative Native_LeaveCampfire
+	.endm
+
+    .macro clearCampfireEventHere
+    callnative Native_CampfireEventDoneAtPlayerLoc
+    .endm
 
 	@ ============================ @
 	@ ITEM DESCRIPTION HEADER MACROS
@@ -2610,7 +2657,7 @@
 
 	@ Hides any follower Pokémon if present, putting them into their Poké Ball; by default waits for their movement to finish.
 	.macro hidefollower wait=1
-	callnative ScrFunc_hidefollower
+	.byte SCR_OP_HIDEFOLLOWER
 	.2byte \wait
 	.endm
 
@@ -3029,4 +3076,28 @@
 	@ Used for debug
 	.macro debug_resetchatotpost
 	callnative Native_ResetChatotPost, requests_effects=1
+	.endm
+
+@ VS Seeker
+	.macro vsseeker_rematchid rematchId:req
+	callnative NativeVsSeekerRematchId, requests_effects=1
+	.2byte \rematchId
+	.endm
+
+	@ Sets the move relearner state
+	.macro setmoverelearnerstate state:req
+	callnative ScrCmd_setmoverelearnerstate, requests_effects=1
+	.2byte \state
+	.endm
+
+	@ Retrieves the move relearner state and stores it in the specified var
+	.macro getmoverelearnerstate varId:req
+	callnative ScrCmd_getmoverelearnerstate, requests_effects=1
+	.4byte \varId
+	.endm
+
+	@ Execute script if bag has TMs and/or HMs
+	.macro istmrelearneractive destination:req
+	callnative ScrCmd_istmrelearneractive, requests_effects=1
+	.4byte \destination
 	.endm

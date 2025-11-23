@@ -102,7 +102,6 @@ script MaguroHarbor_Refuge_BattleHariko {
 
 	switch(var(VAR_RESULT)) {
 		case 0:
-			// TODO EVA do something like ChooseHalfPartyForBattle but for 1 mon
 			trainerbattle_no_intro(
 				TRAINER_HARIKO_MAGURO,
 				format("Very interesting.")

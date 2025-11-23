@@ -63,7 +63,7 @@ script SakuTown_House3_EventScript_TradeMe {
         setnamedmon(SPECIES_PSYDUCK)
         setnamedmon(SPECIES_HOOTHOOT)
 
-        mcdialogue("Yes!", "No thanks.")
+        mcdialogueB("Yes!", "No thanks.")
 
 	    if (var(VAR_RESULT) != 0) {
             setspeaker(SP_NAME_LITTLE_BOY)

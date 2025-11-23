@@ -214,7 +214,7 @@
       "afternoon": true,
       "deadnight": false,
       "earlymorning": true,
-      "evening": true,
+      "evening": false,
       "lunchtime": true,
       "morning": true,
       "night": false
@@ -388,6 +388,22 @@
       "elevation": 0,
       "dest_map": "MAP_SOULKEEP_HOUSE1",
       "dest_warp_id": "0"
+    },
+    {
+      "warp_id": "WARP_ID_SOULKEEP_DOOR_LIBRARY",
+      "x": 33,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_SOULKEEP_LIBRARY_1F",
+      "dest_warp_id": "WARP_ID_SOULKEEP_LIBRARY_EXIT"
+    },
+    {
+      "warp_id": "WARP_ID_SOULKEEP_DOJO",
+      "x": 18,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_SOULKEEP_DOJO",
+      "dest_warp_id": "WARP_ID_SOULKEEP_DOJO_EXIT"
     }
   ],
   "coord_events": [],

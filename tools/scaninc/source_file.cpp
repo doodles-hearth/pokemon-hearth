@@ -39,6 +39,8 @@ SourceFileType GetFileType(std::string& path)
         return SourceFileType::Header;
     else if (extension == "inc")
         return SourceFileType::Inc;
+    else if (extension == "scr")
+        return SourceFileType::Inc;
     else
         FATAL_ERROR("Unrecognized extension \"%s\"\n", extension.c_str());
 

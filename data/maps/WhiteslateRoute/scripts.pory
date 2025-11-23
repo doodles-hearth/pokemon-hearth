@@ -108,7 +108,7 @@ script WhiteslateRoute_EventScript_ShamisenPlayer {
 }
 
 script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
-	mcdialogue(
+	mcdialogueB(
 		"I'm ready!",
 		"I need to prepare first."
 	)
@@ -134,7 +134,7 @@ script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
 			setroutechallengestate(ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_STARTED)
 			setvar(VAR_TEMP_SHAMISEN_TRIGGER, 1)
 			setflag(FLAG_HIDE_SHAMISEN)
-		case 1:
+		default:
 			setspeaker(SP_NAME_SHAMISEN_PLAYER)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Understood. Come back when you are done preparing."

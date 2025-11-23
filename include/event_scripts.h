@@ -28,6 +28,23 @@ extern const u8 EventScript_FollowerFaceUp[];
 extern const u8 EventScript_FollowerFaceResult[];
 extern const u8 EnterPokeballMovement[];
 
+extern const u8 EventScript_CampfireGeneric[];
+extern const u8 EventScript_CampfireDance[];
+extern const u8 EventScript_CampfireFaceUp[];
+extern const u8 EventScript_CampfireNostalgia[];
+extern const u8 EventScript_CampfireLookAround[];
+extern const u8 EventScript_CampfireHopping[];
+extern const u8 EventScript_CampfireFaceResult[];
+extern const u8 EventScript_CampfirePokingPlayer[];
+extern const u8 EventScript_CampfireCuddling[];
+extern const u8 EventScript_CampfireFastHopping[];
+extern const u8 EventScript_CampfirePokeGround[];
+extern const u8 EventScript_CampfireLookAway[];
+extern const u8 EventScript_CampfireLookAwayBark[];
+extern const u8 EventScript_CampfireDizzy[];
+extern const u8 EventScript_CampfireIsShivering[];
+extern const u8 EventScript_CampfireGetCloser[];
+
 extern const u8 EventScript_TestSignpostMsg[];
 extern const u8 EventScript_TryGetTrainerScript[];
 extern const u8 EventScript_StartTrainerApproach[];
@@ -591,6 +608,7 @@ extern const u8 RustboroCity_Gym_EventScript_RegisterRoxanne[];
 extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall[];
 extern const u8 SSTidalCorridor_EventScript_ReachedStepCount[];
 extern const u8 EventScript_FallDownHoleMtPyre[];
+extern const u8 EventScript_Campfire[];
 
 // Secret Base
 extern const u8 SecretBase_EventScript_PC[];
@@ -691,5 +709,16 @@ extern const u8 EventScript_PokemonGotAway[];
 extern const u8 EventScript_LostSignal[];
 extern const u8 EventScript_TooDark[];
 extern const u8 EventScript_MovedTooFast[];
+
+// Custom scripts
+extern const u8 EventScript_WalkAwayFromCampfire[];
+
+extern const u8 EventScript_PokemonGaveYouAnItem[];
+
+extern const u8 EventScript_OldForagingBloke[];
+extern const u8 EventScript_PokemonHandsYouAnOran[];
+
+extern const u8 EventScript_CamperWantsToBattle[];
+extern const u8 EventScript_PokemonWantsToBattle[];
 
 #endif // GUARD_EVENT_SCRIPTS_H

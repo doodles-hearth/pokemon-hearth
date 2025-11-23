@@ -1234,7 +1234,7 @@ script(local) SpeakToNatsukiLunchOrDinner {
 		"Shall we go in?"
 	))
 
-	mcdialogue(
+	mcdialogueB(
 		"Let's go!",
 		"Not right now…"
 	)
@@ -1242,7 +1242,7 @@ script(local) SpeakToNatsukiLunchOrDinner {
 	switch (var(VAR_RESULT)) {
 		case 0:
 			call(EnterRestaurant)
-		case 1:
+		default:
 			call(NotRightNow)
 	}
 }
@@ -1275,7 +1275,7 @@ script(local) SpeakToNatsukiAfternoon {
 		"What d'you say, {PLAYER}?\nYou in or what?"
 	))
 
-	mcdialogue(
+	mcdialogueB(
 		"Afternoon hotpot!",
 		"Not right now…"
 	)
@@ -1285,7 +1285,7 @@ script(local) SpeakToNatsukiAfternoon {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			call(EnterRestaurant)
-		case 1:
+		default:
 			call(NotRightNow)
 	}
 }
@@ -1395,7 +1395,7 @@ script(local) HarikoNotABreakfastPlace {
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What d'you say, {PLAYER}?\nYou in or what?"
 	))
 
-	mcdialogue(
+	mcdialogueB(
 		"Heck yeah!",
 		"Not right now…"
 	)
@@ -1405,7 +1405,7 @@ script(local) HarikoNotABreakfastPlace {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			call(EnterRestaurant)
-		case 1:
+		default:
 			call(NotRightNow)
 	}
 }
@@ -1434,7 +1434,7 @@ script(local) HarikoTooLateForDinner {
 		"What d'you say, {PLAYER}?\nYou in or what?"
 	))
 
-	mcdialogue(
+	mcdialogueB(
 		"Late night hotpot!",
 		"Not right now…"
 	)
@@ -1444,7 +1444,7 @@ script(local) HarikoTooLateForDinner {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			call(EnterRestaurant)
-		case 1:
+		default:
 			call(NotRightNow)
 	}
 }
@@ -1478,7 +1478,7 @@ script(local) SpeakToHarikoLunchOrDinner {
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, {PLAYER}!\nSounds like fun, I'm in!"
 	))
 
-	mcdialogue(
+	mcdialogueB(
 		"Let's go!",
 		"Not right now…"
 	)
@@ -1486,7 +1486,7 @@ script(local) SpeakToHarikoLunchOrDinner {
 	switch (var(VAR_RESULT)) {
 		case 0:
 			call(EnterRestaurant)
-		case 1:
+		default:
 			call(NotRightNow)
 	}
 }
@@ -1570,7 +1570,7 @@ script(local) SpeakToHarikoAfternoon {
 		"What d'you say, {PLAYER}?\nYou in or what?"
 	))
 
-	mcdialogue(
+	mcdialogueB(
 		"Afternoon hotpot!",
 		"Not right now…"
 	)
@@ -1580,7 +1580,7 @@ script(local) SpeakToHarikoAfternoon {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			call(EnterRestaurant)
-		case 1:
+		default:
 			call(NotRightNow)
 	}
 }
@@ -1621,7 +1621,7 @@ script(local) SpeakToHarikoAgain {
 		))
 	}
 
-	mcdialogue(
+	mcdialogueB(
 		"Let's go!",
 		"Not right now…"
 	)
@@ -1631,7 +1631,7 @@ script(local) SpeakToHarikoAgain {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			call(EnterRestaurant)
-		case 1:
+		default:
 			call(NotRightNow)
 	}
 }
@@ -1646,7 +1646,7 @@ script(local) SpeakToNatsukiAgain {
 	buffernumberstring(STR_VAR_2, VAR_HOUR_OF_DAY)
 
 	// TODO EVA
-	msgbox("hour of day = {STR_VAR_2}")
+	// msgbox("hour of day = {STR_VAR_2}")
 
 	gettime
 
@@ -1675,7 +1675,7 @@ script(local) SpeakToNatsukiAgain {
 		))
 	}
 
-	mcdialogue(
+	mcdialogueB(
 		"Let's go!",
 		"Not right now…"
 	)
@@ -1685,7 +1685,7 @@ script(local) SpeakToNatsukiAgain {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			call(EnterRestaurant)
-		case 1:
+		default:
 			call(NotRightNow)
 	}
 }

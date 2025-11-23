@@ -146,7 +146,10 @@
     "Soulkeep_HouseDoll",
     "Soulkeep_Refuge",
     "Soulkeep_HouseDollBedroom",
-    "Soulkeep_House1"
+    "Soulkeep_House1",
+    "Soulkeep_Library_1F",
+    "Soulkeep_Library_2F",
+    "Soulkeep_Dojo"
   ],
   "gMapGroup_Dungeons": [
     "GinkoWoods",
@@ -680,5 +683,8 @@
     "LittlerootTown_MaysHouse_1F",
     "LittlerootTown_MaysHouse_2F",
     "LittlerootTown_ProfessorBirchsLab"
+  ],
+  "gMapGroup_IndoorRoute124": [
+    "Route124_DivingTreasureHuntersHouse"
   ]
 }

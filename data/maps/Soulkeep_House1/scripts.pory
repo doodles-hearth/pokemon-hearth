@@ -19,7 +19,7 @@ script Soulkeep_House1_EventScript_EnGarde {
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"En garde, puny ghosts!!\n… … … …\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}En garde, puny ghosts!!\n… … … …\p"
 		"What? I'm practicing!"
 	))
 	closemessage
@@ -31,7 +31,7 @@ script Soulkeep_House1_EventScript_Farmer {
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"Our crops are being neglected…\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Our crops are being neglected…\p"
 		"None dare till the field and turn their back on the ghosts!"
 	))
 	closemessage
@@ -43,8 +43,9 @@ script Soulkeep_House1_EventScript_LittleGirl {
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_GIRL)
 	msgbox(format(
-		"Nothing bad can happen to us so long as Fennekin keeps us safe!\p"
-		"I feed him lots of twigs for him to keep us warm!"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Nothing bad can happen to us so long as Fennekin keeps us safe!\p"
+		"I feed him lots of twigs so that he keeps us warm!\p"
+		"He'll blow hot air from his ears to keep away the ghosts!"
 	))
 	closemessage
 

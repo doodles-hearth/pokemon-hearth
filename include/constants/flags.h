@@ -75,23 +75,23 @@
 #define FLAG_PAUSE_FAKERTC   0x37 // Pause Fake RTC
 #define FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE 0x38
 #define FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE      0x39
-#define FLAG_NO_COLLISION    0x3A
-#define FLAG_BEAT_ROCK_SMASHER    0x3B
-#define FLAG_HIDE_SAKU_FARMERS    0x3C // Set when Scyther Quest conditions are met
-#define FLAG_HIDE_SAKU_REFUGE_FARMERS_1    0x3D // Set when Scyther Quest is not started
-#define FLAG_HIDE_SAKU_REFUGE_FARMERS_2    0x3E // Set when Scyther Quest is started
-#define FLAG_HIDE_DEADNIGHT_ASHII    0x3F // Hides Ashii in deadnight
-#define FLAG_HIDE_DEADNIGHT_TAMA    0x40 // Hides Tama in deadnight
-#define FLAG_HIDE_TAMASDAD    0x41 // Hides tama's dad in Saku
-#define FLAG_LIED_TO_SHAMISEN_PLAYER 0x42
-#define FLAG_PICKED_UP_BAG   0x43
-#define FLAG_PAID_HOT_SPRINGS 0x44
-#define FLAG_UNUSED_0x045    0x45 // Unused Flag
-#define FLAG_UNUSED_0x046    0x46 // Unused Flag
-#define FLAG_UNUSED_0x047    0x47 // Unused Flag
-#define FLAG_UNUSED_0x048    0x48 // Unused Flag
-#define FLAG_UNUSED_0x049    0x49 // Unused Flag
-#define FLAG_UNUSED_0x04A    0x4A // Unused Flag
+#define FLAG_NO_COLLISION               0x3A
+#define FLAG_BEAT_ROCK_SMASHER          0x3B
+#define FLAG_HIDE_SAKU_FARMERS          0x3C // Set when Scyther Quest conditions are met
+#define FLAG_HIDE_SAKU_REFUGE_FARMERS_1 0x3D // Set when Scyther Quest is not started
+#define FLAG_HIDE_SAKU_REFUGE_FARMERS_2 0x3E // Set when Scyther Quest is started
+#define FLAG_HIDE_DEADNIGHT_ASHII       0x3F // Hides Ashii in deadnight
+#define FLAG_HIDE_DEADNIGHT_TAMA        0x40 // Hides Tama in deadnight
+#define FLAG_HIDE_TAMASDAD              0x41 // Hides tama's dad in Saku
+#define FLAG_LIED_TO_SHAMISEN_PLAYER    0x42
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_1  0x43
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_2  0x44
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_3  0x45
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_4  0x46
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_5  0x47
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_6  0x48
+#define FLAG_PICKED_UP_BAG              0x49
+#define FLAG_PAID_HOT_SPRINGS           0x4A
 #define FLAG_UNUSED_0x04B    0x4B // Unused Flag
 #define FLAG_UNUSED_0x04C    0x4C // Unused Flag
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
@@ -161,7 +161,7 @@
 #define FLAG_PENDING_DAYCARE_EGG             0x86
 #define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87
 #define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 // Set after defeating Wally outside Mauville Gym. Will activate a call later to register Wally.
-#define FLAG_UNUSED_0x89                     0x89 // Unused
+#define FLAG_AUTORUN_TOGGLE                  0x89 // Autorun state if set to TOGGLE
 #define FLAG_SCOTT_CALL_FORTREE_GYM          0x8A // Triggers call from Scott after defeating Winona
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
 #define FLAG_RECEIVED_6_SODA_POP             0x8C
@@ -564,9 +564,9 @@
 #define FLAG_HIDDEN_ITEM_CROBAT_HIDEOUT_ULTRO_BALL           (FLAG_HIDDEN_ITEMS_START + 0x0D)
 #define FLAG_HIDDEN_ITEM_KURA_VILLAGE_SITRUS_BERRY           (FLAG_HIDDEN_ITEMS_START + 0x0E)
 #define FLAG_HIDDEN_ITEM_SAKU_CHERI_BERRY                    (FLAG_HIDDEN_ITEMS_START + 0x0F)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_126_STARDUST             (FLAG_HIDDEN_ITEMS_START + 0x10)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_126_PEARL                (FLAG_HIDDEN_ITEMS_START + 0x11)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_126_YELLOW_SHARD         (FLAG_HIDDEN_ITEMS_START + 0x12)
+#define FLAG_HIDDEN_ITEM_ORCHARD_PATH_SUPERGIRI              (FLAG_HIDDEN_ITEMS_START + 0x10)
+#define FLAG_HIDDEN_ITEM_ORCHARD_PATH_NUGGET                 (FLAG_HIDDEN_ITEMS_START + 0x11)
+#define FLAG_HIDDEN_ITEM_SHOGUNATE_MOON_STONE                (FLAG_HIDDEN_ITEMS_START + 0x12)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_126_IRON                 (FLAG_HIDDEN_ITEMS_START + 0x13)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_126_BIG_PEARL            (FLAG_HIDDEN_ITEMS_START + 0x14)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_127_STAR_PIECE           (FLAG_HIDDEN_ITEMS_START + 0x15)

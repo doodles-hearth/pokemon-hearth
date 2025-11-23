@@ -39,7 +39,7 @@ script Soulkeep_Refuge_EventScript_Man {
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"We sure don't see a lot of trav'lers 'round these parts…\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}We sure don't see a lot of trav'lers 'round these parts…\p"
 		"You here for the Dojo challenge? Dojo's closed, unfortunately."
 	))
 	closemessage
@@ -51,8 +51,8 @@ script Soulkeep_Refuge_EventScript_NewDojo {
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"Some of the town's farmers got together with Guang and said they were going to open the old Dojo.\p"
-		"Guang says he's tired of us “living in the shadows”, whatever that means."
+		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Some of the town's farmers got together with Guang and said they were going to reopen the old Dojo.\p"
+		"Guang says he's tired o “living in the shadows”, whatever that means."
 	))
 	closemessage
 	release

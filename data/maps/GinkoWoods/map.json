@@ -28,7 +28,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
       "x": 32,
-      "y": 17,
+      "y": 16,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -155,7 +155,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GinkoWoods_EventScript_Bean",
+      "script": "GinkoWoods_EventScript_Hariko",
       "flag": "FLAG_HIDE_BEAN_GINKO_WOODS",
       "afternoon": false,
       "deadnight": false,
@@ -184,6 +184,97 @@
       "lunchtime": false,
       "morning": false,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CAMPFIRE",
+      "x": 61,
+      "y": -2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_Campfire",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VAR_A",
+      "x": 58,
+      "y": -3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_CampfirePokemon1",
+      "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VAR_B",
+      "x": 64,
+      "y": -4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_CampfirePokemon2",
+      "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_2"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VAR_C",
+      "x": 63,
+      "y": 0,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_CampfirePokemon3",
+      "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_3"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VAR_D",
+      "x": 61,
+      "y": -5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_CampfirePokemon4",
+      "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_4"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VAR_E",
+      "x": 59,
+      "y": 0,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_UP_AND_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_CampfirePokemon5",
+      "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_5"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VAR_F",
+      "x": 65,
+      "y": -2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_CampfirePokemon6",
+      "flag": "FLAG_HIDE_CAMPFIRE_PARTY_MON_6"
     }
   ],
   "warp_events": [
@@ -238,7 +329,7 @@
       "elevation": 0,
       "var": "FLAG_HIDE_BEAN_GINKO_WOODS",
       "var_value": "0",
-      "script": "GinkoWoods_EventScript_Tracks"
+      "script": "GinkoWoods_EventScript_TracksLeft"
     },
     {
       "type": "trigger",
@@ -247,7 +338,7 @@
       "elevation": 0,
       "var": "FLAG_HIDE_BEAN_GINKO_WOODS",
       "var_value": "0",
-      "script": "GinkoWoods_EventScript_Tracks"
+      "script": "GinkoWoods_EventScript_TracksRight"
     }
   ],
   "bg_events": [

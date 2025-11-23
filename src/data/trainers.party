@@ -636,22 +636,27 @@ Level: 17
 - Feint Attack
 - Leech Seed
 
-=== TRAINER_GRUNT_WEATHER_INST_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_DAICHI ===
+Name: Daichi
+Class: Farmer
+Pic: Hiker
 Gender: Male
-Music: Aqua
+Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zubat
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Shuckle @ Oran Berry
+Level: 20
+Ability: Gluttony
+- Constrict
+- Bide
+- Encore
 
-Poochyena
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Cherrim @ Coba Berry
+Level: 22
+- Natural Gift
+- Magical Leaf
+- Sunny Day
 
 === TRAINER_GRUNT_WEATHER_INST_2 ===
 Name: GRUNT

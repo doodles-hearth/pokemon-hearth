@@ -442,7 +442,7 @@ script(local) Hotpot_Decay {
 			setspeaker(SP_NAME_HARIKO)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Maybe Entei is mad, or hurt…\pMt Kazan has been grumbling, after all.\p"
-				"Let us hope it doesn't erupt like in the old legend..."
+				"Let us hope it doesn't erupt like in the old legend…"
 			))
 	}
 	closemessage
@@ -486,9 +486,15 @@ script YifuCity_Restaurant_EventScript_LittleBoy2 {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}{SPEAKER NAME_LITTLE_BOY}"
 		"My brother dared me to go into the Forest alone!\p"
-		"Huh? Yeah, of COURSE I did!\nI'm not a wimp!\l"
+		"Huh? Yeah, of COURSE I did!\nI'm not a wimp!"
+	))
+
+	applymovement(VAR_LAST_TALKED, moves(shake_horizontal))
+
+	msgbox(format(
 		"{FONT_SMALL}(Shiver shiver…){FONT_NORMAL}"
 	))
+	waitmovement(VAR_LAST_TALKED)
 	closemessage
 
 	applymovement(VAR_LAST_TALKED, moves(face_original_direction))

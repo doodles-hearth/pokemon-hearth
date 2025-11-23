@@ -5,6 +5,7 @@
 #include <limits.h>
 #include "config/general.h" // we need to define config before gba headers as print stuff needs the functions nulled before defines.
 #include "gba/gba.h"
+#include "gametypes.h"
 #include "siirtc.h"
 #include "fpmath.h"
 #include "metaprogram.h"
@@ -13,6 +14,7 @@
 #include "constants/vars.h"
 #include "constants/species.h"
 #include "constants/pokedex.h"
+#include "constants/apricorn_tree.h"
 #include "constants/berry.h"
 #include "constants/chatot_post.h"
 #include "constants/maps.h"
@@ -139,8 +141,9 @@
 
 #define LIMITED_SHOP_BITS (LIMITED_SHOP_COUNT * LIMITED_SHOP_MAX_ITEMS * BITS_PER_ITEM)
 #define LIMITED_SHOP_VAR_COUNT ROUND_BITS_TO_BYTES(LIMITED_SHOP_BITS)
-
 #define LIMITED_SHOP_MAX_ITEM_QUANTITY ((1 << BITS_PER_ITEM) - 1)
+
+#define NUM_APRICORN_TREE_BYTES ROUND_BITS_TO_BYTES(APRICORN_TREE_COUNT)
 
 // This produces an error at compile-time if expr is zero.
 // It looks like file.c:line: size of array `id' is negative
@@ -227,9 +230,9 @@ struct NPCFollower
 {
     u8 inProgress:1;
     u8 warpEnd:1;
-    u8 createSurfBlob:3;
+    u8 createSurfBlob:2;
     u8 comeOutDoorStairs:2;
-    u8 forcedMovement:1;
+    u8 forcedMovement:2;
     u8 objId;
     u8 currentSprite;
     u8 delayedState;
@@ -260,6 +263,9 @@ struct SaveBlock3
     u8 dexNavSearchLevels[NUM_SPECIES];
 #endif
     u8 dexNavChain;
+#if APRICORN_TREE_COUNT > 0
+    u8 apricornTrees[NUM_APRICORN_TREE_BYTES];
+#endif
 }; /* max size 1624 bytes */
 
 extern struct SaveBlock3 *gSaveBlock3Ptr;
@@ -593,7 +599,8 @@ struct SaveBlock2
              u16 optionsBattleStyle:1; // OPTIONS_BATTLE_STYLE_[SHIFT/SET]
              u16 optionsBattleSceneOff:1; // whether battle animations are disabled
              u16 regionMapZoom:1; // whether the map is zoomed in
-             //u16 padding1:4;
+             u16 optionsAutorun:2; //Autorun toggle
+             //u16 padding1:2;
              //u16 padding2;
     /*0x18*/ struct Pokedex pokedex;
     /*0x90*/ u8 filler_90[0x8];
@@ -951,6 +958,13 @@ struct WaldaPhrase
     //u8 padding;
 };
 
+struct Campfire
+{
+    u8 x;
+    u8 y;
+    s8 scriptTargetMon;
+};
+
 struct TrainerNameRecord
 {
     u32 trainerId;
@@ -1201,6 +1215,7 @@ struct SaveBlock1
     enum RouteChallengeState routeChallengeStates[ROUTE_CHALLENGE_COUNT];
     u16 remainingShinyVialMinutes;
     bool8 isShinyVialActive;
+    struct Campfire campfire;
     u8 activePost[NUM_ACTIVE_POST_SLOTS];
     u8 postFlags[NUM_MAIL_FLAG_BYTES];
     u16 chatotPostRematchTrainerId;
