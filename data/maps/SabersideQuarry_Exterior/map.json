@@ -107,7 +107,7 @@
       "x": 30,
       "y": 3,
       "elevation": 0,
-      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_map": "MAP_SABERSIDE_QUARRY_ANTECHAMBER",
       "dest_warp_id": "WARP_ID_SABERSIDE_QUARRY_EXIT"
     }
   ],

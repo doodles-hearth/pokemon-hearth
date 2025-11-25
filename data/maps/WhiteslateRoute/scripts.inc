@@ -199,9 +199,13 @@ WhiteslateRoute_EventScript_Asagao::
 
 
 WhiteslateRoute_EventScript_ShuckleGirl::
+	lock
+	faceplayer
 	setnamedmon SPECIES_SHUCKLE
 	setspeaker SP_NAME_WOMAN
-	msgbox WhiteslateRoute_EventScript_ShuckleGirl_Text_0, MSGBOX_AUTOCLOSE
+	msgbox WhiteslateRoute_EventScript_ShuckleGirl_Text_0
+	closemessage
+	release
 	end
 
 

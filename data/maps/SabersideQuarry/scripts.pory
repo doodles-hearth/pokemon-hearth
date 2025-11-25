@@ -1,0 +1,96 @@
+const FLAG_HIDE_SHADOW_CLAW = FLAG_TEMP_1
+
+mapscripts SabersideQuarry_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		if (flag(FLAG_SPOOKED_SABLEYE)) {
+			call(SabersideQuarry_DrawSableyePrints)
+		} else {
+			// Erase some of the pawprints if you haven't spooked Sableye yet!
+			setmetatile(61, 48, METATILE_Quarry_Sand, FALSE)
+			setmetatile(63, 50, METATILE_Quarry_Sand, FALSE)
+			setmetatile(63, 51, METATILE_Quarry_Sand, FALSE)
+			setmetatile(63, 52, METATILE_Quarry_Sand, FALSE)
+			setmetatile(64, 52, METATILE_Quarry_Sand, FALSE)
+			setmetatile(65, 52, METATILE_Quarry_Sand, FALSE)
+			setmetatile(66, 51, METATILE_Quarry_Sand, FALSE)
+			setmetatile(67, 51, METATILE_Quarry_SandRightEdge, FALSE)
+			special(DrawWholeMapView)
+		}
+	}
+	MAP_SCRIPT_ON_TRANSITION {
+		if (flag(FLAG_ITEM_QUARRY_SHADOW_CLAW) || !flag(FLAG_SPOOKED_SABLEYE)) {
+			setflag(FLAG_HIDE_SHADOW_CLAW)
+		}
+	}
+}
+
+script SabersideQuarry_DrawSableyePrints {
+	setmetatile(64, 34, METATILE_Quarry_PawprintLeftDown, FALSE)
+	setmetatile(63, 34, METATILE_Quarry_PawprintLeftUp, FALSE)
+	setmetatile(62, 34, METATILE_Quarry_PawprintLeftDown, FALSE)
+	setmetatile(61, 34, METATILE_Quarry_PawprintLeftUp, FALSE)
+}
+
+script SabersideQuarry_EventScript_ShadowClaw {
+	lock
+	finditem(ITEM_TM_SHADOW_CLAW)
+	release
+}
+
+script SabersideQuarry_EventScript_SpookSableye {
+	lockall
+	setflag(FLAG_SPOOKED_SABLEYE)
+	setseenmon(SPECIES_SABLEYE)
+
+	playmoncry(SPECIES_SABLEYE, CRY_MODE_NORMAL)
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(face_down, emote_exclamation_mark, delay_16 * 6))
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+	waitmoncry
+
+	playse(SE_FLEE)
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(walk_fast_left))
+	setmetatile(64, 34, METATILE_Quarry_PawprintLeftDownNotSand, FALSE)
+	special(DrawWholeMapView)
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(walk_fast_left))
+	setmetatile(63, 34, METATILE_Quarry_PawprintLeftUpNotSand, FALSE)
+	special(DrawWholeMapView)
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(walk_fast_left))
+	setmetatile(62, 34, METATILE_Quarry_PawprintLeftDownNotSand, FALSE)
+	special(DrawWholeMapView)
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+
+	applymovement(LOCALID_PLAYER, moves(face_left))
+
+	waitse
+	playse(SE_LEDGE)
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(
+		jump_2_left
+		walk_fast_down * 5
+	))
+	setmetatile(61, 34, METATILE_Quarry_PawprintLeftUpNotSand, FALSE)
+	special(DrawWholeMapView)
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+
+	applymovement(LOCALID_PLAYER, moves(face_down))
+
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(
+		jump_down
+		jump_down
+		walk_fast_down * 2
+	))
+	playse(SE_LEDGE)
+	delay(16)
+	playse(SE_LEDGE)
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+
+	removeobject(LOCALID_QUARRY_SABLEYE)
+
+	call(SabersideQuarry_DrawSableyePrints)
+	special(DrawWholeMapView)
+
+	releaseall
+}

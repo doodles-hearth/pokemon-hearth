@@ -1421,3 +1421,11 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SabersideQuarry_Exterior/scripts.inc"
 
 	.include "data/maps/SabersideQuarry/scripts.inc"
+
+	.include "data/maps/SabersideQuarry_Part2/scripts.inc"
+
+	.include "data/maps/SabersideQuarry_B1F/scripts.inc"
+
+	.include "data/maps/SabersideQuarry_B1F_Part2/scripts.inc"
+
+	.include "data/maps/SabersideQuarry_Antechamber/scripts.inc"

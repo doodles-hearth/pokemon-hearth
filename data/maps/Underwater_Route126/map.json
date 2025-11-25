@@ -83,7 +83,7 @@
       "y": 39,
       "elevation": 3,
       "item": "ITEM_IRON",
-      "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_IRON"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",
@@ -99,7 +99,7 @@
       "y": 60,
       "elevation": 3,
       "item": "ITEM_BIG_PEARL",
-      "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_BIG_PEARL"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",

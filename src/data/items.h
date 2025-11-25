@@ -3165,6 +3165,24 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_CometShard,
     },
 
+    [ITEM_SABLEYE_GEM] =
+    {
+        .name = ITEM_NAME("Sableye Gem"),
+        .price = 6000,
+        .description = COMPOUND_STRING(
+            "A gem shed by a\n"
+            "Sableye. Can fetch\n"
+            "a good price."
+        ),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_SELLABLE,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 30,
+        .iconPic = gItemIcon_SableyeGem,
+        .iconPalette = gItemIconPalette_SableyeGem,
+    },
+
     [ITEM_SHOAL_SALT] =
     {
         .name = ITEM_NAME("Shoal Salt"),
@@ -12746,11 +12764,15 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM72] =
+    [ITEM_TM_SHADOW_CLAW] =
     {
         .name = ITEM_NAME("TM72"),
         .price = 3000,
-        .description = sQuestionMarksDesc, // Todo
+        .description = COMPOUND_STRING(
+            "Strikes with a\n"
+            "shadow claw. High\n"
+            "critical hits."
+        ),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
