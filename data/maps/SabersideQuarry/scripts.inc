@@ -13,7 +13,6 @@ SabersideQuarry_MapScripts_MAP_SCRIPT_ON_LOAD:
 	setmetatile 65, 52, METATILE_Quarry_Sand, FALSE
 	setmetatile 66, 51, METATILE_Quarry_Sand, FALSE
 	setmetatile 67, 51, METATILE_Quarry_SandRightEdge, FALSE
-	special DrawWholeMapView
 	return
 
 SabersideQuarry_MapScripts_MAP_SCRIPT_ON_LOAD_1:

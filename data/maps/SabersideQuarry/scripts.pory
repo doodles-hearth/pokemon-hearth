@@ -14,7 +14,6 @@ mapscripts SabersideQuarry_MapScripts {
 			setmetatile(65, 52, METATILE_Quarry_Sand, FALSE)
 			setmetatile(66, 51, METATILE_Quarry_Sand, FALSE)
 			setmetatile(67, 51, METATILE_Quarry_SandRightEdge, FALSE)
-			special(DrawWholeMapView)
 		}
 	}
 	MAP_SCRIPT_ON_TRANSITION {

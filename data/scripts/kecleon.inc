@@ -47,6 +47,15 @@ Route119_EventScript_Kecleon2::
 	goto EventScript_Kecleon
 	end
 
+@@ HEARTH @@
+
+ScenicRouteSaberside_EventScript_Kecleon::
+	lock
+	faceplayer
+	setvar VAR_0x8009, LOCALID_KECLEON_SCENIC
+	goto EventScript_Kecleon
+	end
+
 EventScript_Kecleon::
 	checkitem ITEM_DEVON_SCOPE
 	goto_if_eq VAR_RESULT, TRUE, EventScript_AskUseDevonScope
@@ -60,8 +69,21 @@ EventScript_AskUseDevonScope::
 	release
 	end
 
+EventScript_KecleonHearth::
+	checkitem ITEM_SABLEYE_GEM @ todo eva replace with ITEM_LENS_OF_TRUTH
+	goto_if_eq VAR_RESULT, TRUE, EventScript_AskUseLensOfTruth
+	msgbox Kecleon_Text_SomethingUnseeable, MSGBOX_DEFAULT
+	release
+	end
+
+EventScript_AskUseLensOfTruth::
+	msgbox Kecleon_Text_WantToUseLensOfTruth, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, EventScript_BattleKecleon
+	release
+	end
+
 EventScript_BattleKecleon::
-	msgbox Kecleon_Text_UseDevonScopeMonAttacked, MSGBOX_DEFAULT
+	msgbox Kecleon_Text_UseLensOfTruthMonAttacked, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
 	waitmovement 0

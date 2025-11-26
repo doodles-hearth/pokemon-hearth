@@ -117,6 +117,14 @@
       "elevation": 0,
       "dest_map": "MAP_SABERSIDE_QUARRY_B1F_PART2",
       "dest_warp_id": "WARP_ID_QUARRY_B1F_R1_STAIRS_2"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R7_STAIRS",
+      "x": 43,
+      "y": 44,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY_B1F_PART2",
+      "dest_warp_id": "WARP_ID_QUARRY_B1F_R3"
     }
   ],
   "coord_events": [],

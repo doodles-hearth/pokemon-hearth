@@ -420,6 +420,15 @@ Kecleon_Text_UseDevonScopeMonAttacked:
 	.string "visible!\p"
 	.string "The startled POKéMON attacked!$"
 
+Kecleon_Text_WantToUseLensOfTruth:
+	.string "Something unseeable is in the way.\p"
+	.string "Use the Lens of Truth?$"
+	
+Kecleon_Text_UseLensOfTruthMonAttacked:
+	.string "{PLAYER} used the Lens of Truth.\p"
+	.string "An invisible Pokémon was revealed!\p"
+	.string "The startled Pokémon attacks!$"
+
 Route120_Text_RouteSignFortree:
 	.string "ROUTE 120\n"
 	.string "{LEFT_ARROW} FORTREE CITY$"

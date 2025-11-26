@@ -8,6 +8,7 @@ SabersideQuarry_Antechamber_EventScript_FlashSign::
 
 
 SabersideQuarry_Antechamber_EventScript_FlashSign_Text_0:
-	.string "Don't forget your torch or lantern!\p"
+	.string "Don't forget your torch, lantern or\n"
+	.string "Pokémon!\p"
 	.string "Getting lost in the galleries is no\n"
 	.string "joke.$"

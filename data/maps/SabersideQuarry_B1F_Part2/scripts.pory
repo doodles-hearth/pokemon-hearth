@@ -1,1 +1,14 @@
-mapscripts SabersideQuarry_B1F_Part2_MapScripts {}
+mapscripts SabersideQuarry_B1F_Part2_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		if (!flag(FLAG_SPOOKED_SABLEYE)) {
+			// Erase some of the pawprints if you haven't spooked Sableye yet!
+			setmetatile(23, 26, METATILE_Quarry_SandTopEdge, FALSE)
+			setmetatile(23, 27, METATILE_Quarry_Sand, FALSE)
+			setmetatile(22, 28, METATILE_Quarry_Sand, FALSE)
+			setmetatile(21, 28, METATILE_Quarry_Sand, FALSE)
+			setmetatile(20, 28, METATILE_Quarry_Sand, FALSE)
+			setmetatile(19, 28, METATILE_Quarry_Sand, FALSE)
+			setmetatile(18, 28, METATILE_Quarry_SandLeftEdge, FALSE)
+		}
+	}
+}

@@ -2,7 +2,7 @@ mapscripts SabersideQuarry_Antechamber_MapScripts {}
 
 script SabersideQuarry_Antechamber_EventScript_FlashSign {
     msgbox(format(
-        "Don't forget your torch or lantern!\p"
+        "Don't forget your torch, lantern or Pokémon!\p"
         "Getting lost in the galleries is no joke."
     ), MSGBOX_SIGN)
 }

@@ -1036,7 +1036,7 @@
 #define FLAG_HIDE_OLDALE_TOWN_RIVAL                                 0x3D3
 #define FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE      0x3D4
 #define FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_SHADOW                   0x3D5
-#define FLAG_HIDE_ROUTE_120_KECLEON_1                               0x3D6
+#define FLAG_HIDE_SCENIC_KECLEON_1                                  0x3D6
 #define FLAG_HIDE_RUSTURF_TUNNEL_WANDA                              0x3D7
 #define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA                0x3D8
 #define FLAG_HIDE_ROUTE_120_KECLEON_2                               0x3D9
@@ -1080,7 +1080,7 @@
 #define FLAG_ITEM_QUARRY_HP_UP                                      0x3FD
 #define FLAG_ITEM_QUARRY_MAX_REPEL                                  0x3FE
 #define FLAG_ITEM_QUARRY_TM_SHADOW_BALL                             0x3FF
-#define FLAG_ITEM_ROUTE_119_SUPER_REPEL                             0x400
+#define FLAG_ITEM_QUARRY_DUSK_BALL                                  0x400
 #define FLAG_ITEM_ROUTE_119_ZINC                                    0x401
 #define FLAG_ITEM_ROUTE_119_ELIXIR_1                                0x402
 #define FLAG_ITEM_ROUTE_119_LEAF_STONE                              0x403
