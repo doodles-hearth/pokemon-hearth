@@ -355,11 +355,13 @@ struct BoxPokemon
     u32 countryRibbon:1;  // Distributed during Pokémon Festa '04 and '05 to tournament winners.
     u32 earthRibbon:1;    // Given to teams that have beaten Mt. Battle's 100-battle challenge in Colosseum/XD.
     u32 abilityNum:2;
+    u32 teraType:5;
+    u32 dynamaxLevel:4;
+    u32 gigantamaxFactor:1;
 
-    u32 colorIndexData:15;
-    u32 hueData1:13;
+    u32 unused1:18;
     //  Word
-    u32 hueData2;
+    u32 unused2;
     //  Word
 };
 

@@ -2800,28 +2800,30 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = 0;
             break;
         case MON_DATA_DYNAMAX_LEVEL:
-            retVal = 0;
+            retVal = boxMon->dynamaxLevel;
             break;
         case MON_DATA_GIGANTAMAX_FACTOR:
-            retVal = 0;
+            retVal = boxMon->gigantamaxFactor;
             break;
         case MON_DATA_TERA_TYPE:
             {
-                //struct PokemonSubstruct0 *substruct0 = GetSubstruct0(boxMon);
                 if (gSpeciesInfo[boxMon->species].forceTeraType)
                 {
                     retVal = gSpeciesInfo[boxMon->species].forceTeraType;
                 }
-                else
+                else if (boxMon->teraType == TYPE_NONE)
                 {
                     const enum Type *types = gSpeciesInfo[boxMon->species].types;
                     retVal = (boxMon->personality & 0x1) == 0 ? types[0] : types[1];
+                }
+                else
+                {
+                    retVal = boxMon->teraType;
                 }
             }
             break;
         case MON_DATA_EVOLUTION_TRACKER:
             {
-                //struct PokemonSubstruct1 *substruct1 = GetSubstruct1(boxMon);
                 retVal = (union EvolutionTracker) {
                     .tracker1 = boxMon->evolutionTracker1,
                     .tracker2 = boxMon->evolutionTracker2,
@@ -3217,13 +3219,13 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             //SET8(boxMon->isShadow);
             break;
         case MON_DATA_DYNAMAX_LEVEL:
-            //SET8(boxMon->dynamaxLevel);
+            SET8(boxMon->dynamaxLevel);
             break;
         case MON_DATA_GIGANTAMAX_FACTOR:
-            //SET8(boxMon->gigantamaxFactor);
+            SET8(boxMon->gigantamaxFactor);
             break;
         case MON_DATA_TERA_TYPE:
-            //SET8(boxMon->teraType);
+            SET8(boxMon->teraType);
             break;
         case MON_DATA_EVOLUTION_TRACKER:
         {
