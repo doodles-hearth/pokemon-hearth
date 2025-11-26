@@ -876,6 +876,7 @@ static void Debug_ShowMenu(DebugFunc HandleInput, const struct DebugMenuOption *
 
     // draw everything
     CopyWindowToVram(windowId, COPYWIN_FULL);
+    gMain.isDialogActiveInOverworld = TRUE;
 }
 
 static void Debug_DestroyMenu(u8 taskId)
@@ -898,6 +899,7 @@ static void Debug_DestroyMenu_Full(u8 taskId)
     DestroyTask(taskId);
     UnfreezeObjectEvents();
     Free(sDebugMenuListData);
+    gMain.isDialogActiveInOverworld = FALSE;
 }
 
 static void Debug_DestroyMenu_Full_Script(u8 taskId, const u8 *script)

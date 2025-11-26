@@ -191,6 +191,8 @@ static void CallCallbacks(void)
 
 void SetMainCallback2(MainCallback callback)
 {
+    if (callback != CB2_Overworld)
+        gMain.isDialogActiveInOverworld = FALSE;
     gMain.callback2 = callback;
     gMain.state = 0;
 }
@@ -461,4 +463,9 @@ void ClearPokemonCrySongs(void)
 bool32 InBattle(void)
 {
     return gMain.inBattle;
+}
+
+bool32 InOverworld(void)
+{
+    return gMain.callback2 == CB2_Overworld;
 }

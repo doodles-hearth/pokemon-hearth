@@ -189,6 +189,8 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
 
     if (forcedMove == FALSE)
     {
+        if(newKeys & B_BUTTON)
+                input->pressedBButton = TRUE;
         if (tileTransitionState == T_TILE_CENTER && runningState == MOVING)
             input->tookStep = TRUE;
         if (forcedMove == FALSE && tileTransitionState == T_TILE_CENTER)
@@ -230,6 +232,19 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
 
     if (input->pressedBButton && TrySetupDiveEmergeScript() == TRUE)
         return TRUE;
+
+    if (input->pressedBButton && (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_ON_FOOT))
+    {
+        if (gSaveBlock2Ptr->optionsAutorun == AUTORUN_TOGGLE)
+        {
+            if (FlagGet(FLAG_AUTORUN_TOGGLE))
+                PlaySE(SE_POKENAV_OFF);
+            else
+                PlaySE(SE_POKENAV_ON);
+            FlagToggle(FLAG_AUTORUN_TOGGLE);
+        }
+    }
+    
     if (input->tookStep)
     {
         IncrementGameStat(GAME_STAT_STEPS);
@@ -397,6 +412,17 @@ const u8 *GetInteractedLinkPlayerScript(struct MapPosition *position, u8 metatil
     return GetObjectEventScriptPointerByObjectEventId(objectEventId);
 }
 
+static bool32 CanInteractWithWaterObjects(struct MapPosition *position, u8 metatileBehavior)
+{
+    if (PlayerGetElevation() != 3)
+        return FALSE;
+    if (MetatileBehavior_IsSurfableWaterOrUnderwater(metatileBehavior))
+        return FALSE;
+    if (!(MetatileBehavior_IsSurfableWaterOrUnderwater(MapGridGetMetatileBehaviorAt(position->x, position->y))))
+        return FALSE;
+    return TRUE;
+}
+
 static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8 metatileBehavior, u8 direction)
 {
     u8 objectEventId;
@@ -414,8 +440,9 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
         else if (MetatileBehavior_IsSidewaysStairsRightSideAny(currBehavior))
             // on top of right-side stairs -> check southeast
             objectEventId = GetObjectEventIdByPosition(currX + 1, currY + 1, position->elevation);
+        else if (CanInteractWithWaterObjects(position, currBehavior))
+            objectEventId = GetObjectEventIdByPosition(position->x, position->y, 0);
         else
-            // check in front of player
             objectEventId = GetObjectEventIdByPosition(position->x, position->y, position->elevation);
         break;
     case DIR_WEST:
@@ -425,12 +452,16 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
         else if (MetatileBehavior_IsSidewaysStairsLeftSideAny(currBehavior))
             // on top of left-side stairs -> check southwest
             objectEventId = GetObjectEventIdByPosition(currX - 1, currY + 1, position->elevation);
+        else if (CanInteractWithWaterObjects(position, currBehavior))
+            objectEventId = GetObjectEventIdByPosition(position->x, position->y, 0);
         else
-            // check in front of player
             objectEventId = GetObjectEventIdByPosition(position->x, position->y, position->elevation);
         break;
     default:
-        objectEventId = GetObjectEventIdByPosition(position->x, position->y, position->elevation);
+        if (CanInteractWithWaterObjects(position, currBehavior))
+            objectEventId = GetObjectEventIdByPosition(position->x, position->y, 0);
+        else
+            objectEventId = GetObjectEventIdByPosition(position->x, position->y, position->elevation);
         break;
     }
 
