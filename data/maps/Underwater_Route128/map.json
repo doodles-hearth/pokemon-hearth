@@ -42,7 +42,7 @@
       "y": 19,
       "elevation": 3,
       "item": "ITEM_PROTEIN",
-      "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_128_PROTEIN"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",
@@ -50,7 +50,7 @@
       "y": 18,
       "elevation": 3,
       "item": "ITEM_PEARL",
-      "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_128_PEARL"
+      "flag": "FLAG_DUMMY"
     }
   ]
 }

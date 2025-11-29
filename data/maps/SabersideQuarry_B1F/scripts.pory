@@ -1,0 +1,9 @@
+mapscripts SabersideQuarry_B1F_MapScripts {
+    MAP_SCRIPT_ON_LOAD {
+		if (!flag(FLAG_SPOOKED_SABLEYE)) {
+			// Erase some of the pawprints if you haven't spooked Sableye yet!
+			setmetatile(71, 15, METATILE_Quarry_Sand, FALSE)
+			setmetatile(71, 16, METATILE_Quarry_SandBottomEdge, FALSE)
+		}
+	}
+}

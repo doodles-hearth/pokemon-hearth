@@ -351,6 +351,8 @@ script SakuTown_PokemonCenter_EventScript_Pushing {
 	))
 	closemessage
 
+	hidefollower
+
 	switch(var(VAR_FACING)) {
 		case DIR_EAST:
 			applymovement(VAR_LAST_TALKED, SakuTown_PokemonCenter_Movement_PushesPlayer)

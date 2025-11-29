@@ -266,9 +266,13 @@ script WhiteslateRoute_EventScript_Asagao {
 }
 
 script WhiteslateRoute_EventScript_ShuckleGirl {
+	lock
+	faceplayer
 	setnamedmon(SPECIES_SHUCKLE)
 	setspeaker(SP_NAME_WOMAN)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}This Shuckle lives around here. I feed him fresh berries every morning!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}This Shuckle lives around here. I feed him fresh berries every morning!"))
+	closemessage
+	release
 	end
 }
 

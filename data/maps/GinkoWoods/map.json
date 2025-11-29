@@ -146,6 +146,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_GINKO_HARIKO",
       "graphics_id": "OBJ_EVENT_GFX_BEAN",
       "x": 13,
       "y": 7,

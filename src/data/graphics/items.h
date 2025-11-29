@@ -377,6 +377,9 @@ const u32 gItemIcon_StarPiece[] = INCBIN_U32("graphics/items/icons/star_piece.4b
 const u32 gItemIcon_CometShard[] = INCBIN_U32("graphics/items/icons/comet_shard.4bpp.smol");
 const u16 gItemIconPalette_CometShard[] = INCBIN_U16("graphics/items/icon_palettes/comet_shard.gbapal");
 
+const u32 gItemIcon_SableyeGem[] = INCBIN_U32("graphics/items/icons/sableye_gem.4bpp.smol");
+const u16 gItemIconPalette_SableyeGem[] = INCBIN_U16("graphics/items/icons/sableye_gem.gbapal");
+
 const u16 gItemIconPalette_ShoalSalt[] = INCBIN_U16("graphics/items/icon_palettes/shoal_salt.gbapal");
 
 const u32 gItemIcon_ShoalShell[] = INCBIN_U32("graphics/items/icons/shoal_shell.4bpp.smol");

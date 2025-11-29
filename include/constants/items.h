@@ -1054,8 +1054,9 @@
 #define ITEM_SPECIAL_MEDICINE     883
 #define ITEM_SHINY_VIAL           884
 #define ITEM_BEAST_BALL           885
+#define ITEM_SABLEYE_GEM          886
 
-#define ITEMS_COUNT 886
+#define ITEMS_COUNT 887
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

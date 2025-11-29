@@ -5594,6 +5594,18 @@
       "blockdata_filepath": "data/layouts/Soulkeep/map.bin"
     },
     {
+      "id": "LAYOUT_SOULKEEP_CRYPT",
+      "name": "Soulkeep_Crypt_Layout",
+      "width": 42,
+      "height": 44,
+      "border_width": 1,
+      "border_height": 1,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Crypt",
+      "border_filepath": "data/layouts/Soulkeep_Crypt/border.bin",
+      "blockdata_filepath": "data/layouts/Soulkeep_Crypt/map.bin"
+    },
+    {
       "id": "LAYOUT_MAGURO_HARBOR_DOJO",
       "name": "MaguroHarbor_Dojo_Layout",
       "width": 12,
@@ -5669,7 +5681,7 @@
       "id": "LAYOUT_SABERSIDE_TOWN",
       "name": "SabersideTown_Layout",
       "width": 60,
-      "height": 48,
+      "height": 49,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
@@ -6362,6 +6374,18 @@
       "blockdata_filepath": "data/layouts/Soulkeep_House1/map.bin"
     },
     {
+      "id": "LAYOUT_SOULKEEP_HOUSE_MEDIUM",
+      "name": "Soulkeep_HouseMedium_Layout",
+      "width": 9,
+      "height": 10,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseSoulkeep",
+      "border_filepath": "data/layouts/Soulkeep_HouseMedium/border.bin",
+      "blockdata_filepath": "data/layouts/Soulkeep_HouseMedium/map.bin"
+    },
+    {
       "id": "LAYOUT_ORCHARD_PATH_GUARD_HOUSE",
       "name": "OrchardPath_GuardHouse_Layout",
       "width": 9,
@@ -6376,8 +6400,8 @@
     {
       "id": "LAYOUT_SUNRISE_CAVE",
       "name": "SunriseCave_Layout",
-      "width": 12,
-      "height": 25,
+      "width": 16,
+      "height": 29,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
@@ -6468,6 +6492,78 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Soulkeep_Dojo/border.bin",
       "blockdata_filepath": "data/layouts/Soulkeep_Dojo/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_QUARRY_EXTERIOR",
+      "name": "SabersideQuarry_Exterior_Layout",
+      "width": 41,
+      "height": 21,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Saberside",
+      "border_filepath": "data/layouts/SabersideQuarry_Exterior/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideQuarry_Exterior/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_QUARRY",
+      "name": "SabersideQuarry_Layout",
+      "width": 78,
+      "height": 75,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Quarry",
+      "border_filepath": "data/layouts/SabersideQuarry/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideQuarry/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_QUARRY_PART2",
+      "name": "SabersideQuarry_Part2_Layout",
+      "width": 78,
+      "height": 75,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Quarry",
+      "border_filepath": "data/layouts/SabersideQuarry_Part2/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideQuarry_Part2/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_QUARRY_B1F",
+      "name": "SabersideQuarry_B1F_Layout",
+      "width": 78,
+      "height": 75,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Quarry",
+      "border_filepath": "data/layouts/SabersideQuarry_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideQuarry_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_QUARRY_B1F_PART2",
+      "name": "SabersideQuarry_B1F_Part2_Layout",
+      "width": 78,
+      "height": 75,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Quarry",
+      "border_filepath": "data/layouts/SabersideQuarry_B1F_Part2/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideQuarry_B1F_Part2/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_QUARRY_ANTECHAMBER",
+      "name": "SabersideQuarry_Antechamber_Layout",
+      "width": 27,
+      "height": 17,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Quarry",
+      "border_filepath": "data/layouts/SabersideQuarry_Antechamber/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideQuarry_Antechamber/map.bin"
     }
   ]
 }

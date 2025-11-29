@@ -358,6 +358,26 @@
       "lunchtime": false,
       "morning": false,
       "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FARMER",
+      "x": 17,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Soulkeep_EventScript_WhereGuang",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
     }
   ],
   "warp_events": [
@@ -376,8 +396,8 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 29,
-      "y": 13,
+      "x": 16,
+      "y": 34,
       "elevation": 0,
       "dest_map": "MAP_SOULKEEP_HOUSE_DOLL",
       "dest_warp_id": "0"
@@ -404,6 +424,14 @@
       "elevation": 0,
       "dest_map": "MAP_SOULKEEP_DOJO",
       "dest_warp_id": "WARP_ID_SOULKEEP_DOJO_EXIT"
+    },
+    {
+      "warp_id": "WARP_ID_SOULKEEP_HOUSE_MEDIUM",
+      "x": 29,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_SOULKEEP_HOUSE_MEDIUM",
+      "dest_warp_id": "WARP_ID_SOULKEEP_HOUSE_MEDIUM_EXIT"
     }
   ],
   "coord_events": [],

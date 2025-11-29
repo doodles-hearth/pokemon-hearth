@@ -637,6 +637,8 @@ extern const u16 gItemIconPalette_Star[];
 extern const u32 gItemIcon_StarPiece[];
 extern const u32 gItemIcon_CometShard[];
 extern const u16 gItemIconPalette_CometShard[];
+extern const u32 gItemIcon_SableyeGem[];
+extern const u16 gItemIconPalette_SableyeGem[];
 extern const u16 gItemIconPalette_ShoalSalt[];
 extern const u32 gItemIcon_ShoalShell[];
 extern const u16 gItemIconPalette_Shell[];

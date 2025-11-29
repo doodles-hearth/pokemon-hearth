@@ -26,6 +26,7 @@
 #include "expansion_intro.h"
 #include "constants/rgb.h"
 #include "constants/battle_anim.h"
+#include "title_screen_hearth.h"
 
 /*
     The intro is grouped into the following scenes
@@ -1127,7 +1128,8 @@ static u8 SetUpCopyrightScreen(void)
         CreateTask(Task_HandleExpansionIntro, 0);
 #else
         CreateTask(Task_Scene1_Load, 0);
-        SetMainCallback2(MainCB2_Intro);
+        SetMainCallback2(CB2_InitHearthTitleScreen);
+        /* SetMainCallback2(MainCB2_Intro); */
 #endif
         if (gMultibootProgramStruct.gcmb_field_2 != 0)
         {

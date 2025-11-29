@@ -15,7 +15,8 @@
     "gMapGroup_Dungeons",
     "gMapGroup_VanillaMaps1",
     "gMapGroup_VanillaMaps2",
-    "gMapGroup_VanillaMaps3"
+    "gMapGroup_VanillaMaps3",
+    "gMapGroup_IndoorSaberside"
   ],
   "gMapGroup_TownsAndRoutes": [
     "SunriseVillage",
@@ -68,7 +69,8 @@
     "FlowergrassPlateau",
     "WindsweptRouteBottom",
     "SakuTown_BufferArea",
-    "YifuCity_BufferArea"
+    "YifuCity_BufferArea",
+    "SabersideQuarry_Exterior"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "SunriseVillage_PlayersHouse_LR",
@@ -149,7 +151,9 @@
     "Soulkeep_House1",
     "Soulkeep_Library_1F",
     "Soulkeep_Library_2F",
-    "Soulkeep_Dojo"
+    "Soulkeep_Dojo",
+    "Soulkeep_HouseMedium",
+    "Soulkeep_Crypt"
   ],
   "gMapGroup_Dungeons": [
     "GinkoWoods",
@@ -158,7 +162,12 @@
     "UumeForest",
     "CrobatHideout_1F",
     "SilverTunnel_3F",
-    "SunriseCave"
+    "SunriseCave",
+    "SabersideQuarry",
+    "SabersideQuarry_Part2",
+    "SabersideQuarry_B1F",
+    "SabersideQuarry_B1F_Part2",
+    "SabersideQuarry_Antechamber"
   ],
   "gMapGroup_VanillaMaps1": [
     "PetalburgCity",
@@ -683,6 +692,9 @@
     "LittlerootTown_MaysHouse_1F",
     "LittlerootTown_MaysHouse_2F",
     "LittlerootTown_ProfessorBirchsLab"
+  ],
+  "gMapGroup_IndoorSaberside": [
+    "SabersideTown_Refuge"
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"

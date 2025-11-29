@@ -1,0 +1,322 @@
+{
+  "id": "MAP_SABERSIDE_QUARRY",
+  "name": "SabersideQuarry",
+  "layout": "LAYOUT_SABERSIDE_QUARRY",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_SABERSIDE_QUARRY",
+  "requires_flash": true,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_SABERSIDE_QUARRY_PART2",
+      "offset": 0,
+      "direction": "right"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 12,
+      "y": 48,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_HP_UP",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_QUARRY_HP_UP",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 11,
+      "y": 28,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_MAX_REPEL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_QUARRY_MAX_REPEL",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 70,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_TM_SHADOW_CLAW",
+      "script": "SabersideQuarry_EventScript_ShadowClaw",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "local_id": "LOCALID_QUARRY_SABLEYE",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SABLEYE)",
+      "x": 64,
+      "y": 34,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_SPOOKED_SABLEYE",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    }
+  ],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_QUARRY_R2",
+      "x": 28,
+      "y": 53,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY_ANTECHAMBER",
+      "dest_warp_id": "WARP_ID_QUARRY_R1_MIDDLE"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R2_LEFT",
+      "x": 27,
+      "y": 42,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R3"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R3",
+      "x": 24,
+      "y": 33,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R2_LEFT"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R4",
+      "x": 7,
+      "y": 54,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY_ANTECHAMBER",
+      "dest_warp_id": "WARP_ID_QUARRY_R1_LEFT"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R5",
+      "x": 49,
+      "y": 55,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY_ANTECHAMBER",
+      "dest_warp_id": "WARP_ID_QUARRY_R1_RIGHT"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R5_LEFT",
+      "x": 56,
+      "y": 46,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R6"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R6",
+      "x": 64,
+      "y": 38,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R5_LEFT"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R5_RIGHT",
+      "x": 68,
+      "y": 50,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY_PART2",
+      "dest_warp_id": "WARP_ID_QUARRY_R7"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R6_LEFT",
+      "x": 52,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R8"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R8",
+      "x": 34,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R6_LEFT"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R8_BOTTOM",
+      "x": 10,
+      "y": 15,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R3_LEFT"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R3_LEFT",
+      "x": 7,
+      "y": 25,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R8_BOTTOM"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R2_RIGHT",
+      "x": 33,
+      "y": 45,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R9"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R9",
+      "x": 43,
+      "y": 37,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R2_RIGHT"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R6_RIGHT",
+      "x": 69,
+      "y": 25,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R12"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R12",
+      "x": 70,
+      "y": 10,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY",
+      "dest_warp_id": "WARP_ID_QUARRY_R6_RIGHT"
+    },
+    {
+      "warp_id": "WARP_ID_QUARRY_R12_STAIRS",
+      "x": 70,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_QUARRY_B1F",
+      "dest_warp_id": "WARP_ID_QUARRY_B1F_R2_STAIRS"
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 64,
+      "y": 37,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    },
+    {
+      "type": "trigger",
+      "x": 63,
+      "y": 37,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    },
+    {
+      "type": "trigger",
+      "x": 65,
+      "y": 37,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 43,
+      "y": 29,
+      "elevation": 0,
+      "item": "ITEM_METAL_COAT",
+      "flag": "FLAG_HIDDEN_ITEM_QUARRY_METAL_COAT"
+    },
+    {
+      "type": "hidden_item",
+      "x": 71,
+      "y": 52,
+      "elevation": 0,
+      "item": "ITEM_HYPERGIRI",
+      "flag": "FLAG_HIDDEN_ITEM_QUARRY_HYPERGIRI"
+    },
+    {
+      "type": "hidden_item",
+      "x": 57,
+      "y": 20,
+      "elevation": 0,
+      "item": "ITEM_METAL_POWDER",
+      "flag": "FLAG_HIDDEN_ITEM_QUARRY_METAL_POWDER"
+    },
+    {
+      "type": "hidden_item",
+      "x": 20,
+      "y": 7,
+      "elevation": 0,
+      "item": "ITEM_PROTEIN",
+      "flag": "FLAG_HIDDEN_ITEM_QUARRY_PROTEIN"
+    },
+    {
+      "type": "hidden_item",
+      "x": 12,
+      "y": 22,
+      "elevation": 0,
+      "item": "ITEM_NUGGET",
+      "flag": "FLAG_HIDDEN_ITEM_QUARRY_NUGGET"
+    },
+    {
+      "type": "hidden_item",
+      "x": 72,
+      "y": 2,
+      "elevation": 0,
+      "item": "ITEM_SABLEYE_GEM",
+      "flag": "FLAG_HIDDEN_ITEM_QUARRY_SABLEYE_GEM"
+    }
+  ]
+}

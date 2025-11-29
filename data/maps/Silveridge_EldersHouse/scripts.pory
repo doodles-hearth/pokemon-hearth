@@ -214,7 +214,7 @@ script Silveridge_EldersHouse_EventScript_Elder {
 	faceplayer
 	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Go forth, young one."
+		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Go forth, young one. To Uume Forest, southeast of Tranquil Route!"
 	))
 	closemessage
 	release

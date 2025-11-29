@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_SABERSIDE_TOWN",
-      "offset": -18,
+      "offset": -10,
       "direction": "right"
     },
     {

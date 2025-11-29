@@ -758,11 +758,11 @@ script YifuCity_EventScript_Surskit {
 	lock
     faceplayer
 	setspeakertomonname(SPECIES_SURSKIT)
+	setseenmon(SPECIES_SURSKIT)
+    playmoncry(SPECIES_SURSKIT, CRY_MODE_NORMAL)
     msgbox(format(
         "Sksksksk…"
     ))
-	setseenmon(SPECIES_SURSKIT)
-    playmoncry(SPECIES_SURSKIT, CRY_MODE_NORMAL)
     waitmoncry
     release
     end
@@ -1370,13 +1370,13 @@ script(local) HarikoNotABreakfastPlace {
 	waitmovement(LOCALID_FRONT_OF_RESTAURANT_HARIKO)
 
 	msgbox(format(
-		"I had selected the Golden Drampa for our outing…"
+		"{SPEAKER NAME_HARIKO}I had selected the Golden Drampa for our outing…"
 	))
 
 	call(HarikoFacesPlayer)
 
 	msgbox(format(
-		"But it isn't a breakfast place.\nIt is a lunch or dinner place.\p"
+		"{SPEAKER NAME_HARIKO}But it isn't a breakfast place.\nIt is a lunch or dinner place.\p"
 		"You should have told me you wanted to have breakfast!"
 	))
 

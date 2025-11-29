@@ -96,7 +96,7 @@
 #define OW_TIME_OF_DAY_ENCOUNTERS       TRUE         // If TRUE, will allow the user to define and use different encounter tables based on the time of day.
 #define OW_TIME_OF_DAY_DISABLE_FALLBACK FALSE        // If TRUE, if the encounter table for a specific map and time is empty, the area will have no encounters instead of falling back to the vanilla map and time.
 #define OW_TIME_OF_DAY_DEFAULT          TIME_EARLY_MORNING // Should be set to whatever is the first value in the TimeOfDay enum in rtc.h
-#define OW_TIME_OF_DAY_FALLBACK         OW_TIME_OF_DAY_DEFAULT // The time of day that encounter tables fall back to. Defaults to whatever OW_TIME_OF_DAY_FALLBACK is set to.
+#define OW_TIME_OF_DAY_FALLBACK         TIME_EARLY_MORNING // The time of day that encounter tables fall back to. Defaults to whatever OW_TIME_OF_DAY_FALLBACK is set to.
                                                    //RTC_CUSTOM's default value is 1, making it a 1:1 ratio. You can edit this in fake_rtc.c
 // Lighting
 #define OW_SHADOW_INTENSITY             4       // Ranges from 0 to 16, where 0 is fully transparent and 16 is black.
