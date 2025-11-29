@@ -186,22 +186,6 @@ script ChatotPost_EventScript_Post_NatsukiRareCandy {
     return
 }
 
-script ChatotPost_EventScript_MichaelIrvin { // add to /src/data/chatot_post.h - or don't, actually
-    setspeakertomonname(SPECIES_CHATOT)
-    msgbox((
-        "Listen to everybody - nobody,\l"
-        "NOBODY believes in you!\p"
-        "WHAT! ARE YOU PREPARED!\lTO DO ABOUT IT?!!\p"
-        "DON'T LET THEM COME INTO -\n"
-        "YOUR HOUSE!\n"
-        "TAKE -\n"
-        "YOUR MEAL!\n"
-        "DO WHAT YOU NEED TO DO, TO-DAY!!!"
-        ))
-    closemessage 
-    return
-}
-
 script ChatotPost_EventScript_PechaOvergrown {
     setspeakertomonname(SPECIES_CHATOT)
     msgbox(format("

@@ -147,13 +147,6 @@ ChatotPost_EventScript_Post_NatsukiRareCandy_2:
 	goto ChatotPost_EventScript_Post_NatsukiRareCandy_1
 
 
-ChatotPost_EventScript_MichaelIrvin::
-	setspeakertomonname SPECIES_CHATOT
-	msgbox ChatotPost_EventScript_MichaelIrvin_Text_0
-	closemessage
-	return
-
-
 ChatotPost_EventScript_PechaOvergrown::
 	setspeakertomonname SPECIES_CHATOT
 	msgbox ChatotPost_EventScript_PechaOvergrown_Text_0
@@ -256,16 +249,6 @@ ChatotPost_EventScript_Post_NatsukiRareCandy_Text_1:
 	.string "Here's a little something to help you\nout! I think your Pokémon will like it!\p"
 	.string "See you around, {PLAYER}.”$"
 
-ChatotPost_EventScript_MichaelIrvin_Text_0:
-	.string "Listen to everybody - nobody,\l"
-	.string "NOBODY believes in you!\p"
-	.string "WHAT! ARE YOU PREPARED!\lTO DO ABOUT IT?!!\p"
-	.string "DON'T LET THEM COME INTO -\n"
-	.string "YOUR HOUSE!\n"
-	.string "TAKE -\n"
-	.string "YOUR MEAL!\n"
-	.string "DO WHAT YOU NEED TO DO, TO-DAY!!!$"
-
 ChatotPost_EventScript_PechaOvergrown_Text_0:
 	.string "I don't know who you are.\n"
 	.string "I don't know what you want.\p"
@@ -287,7 +270,7 @@ ChatotPost_EventScript_DessertCatastrophe_Text_0:
 
 ChatotPost_EventScript_BigSisLeftovers_Text_0:
 	.string "Hey little {STR_VAR_1}!\p"
-	.string "I know, I know... you've been homesick\n"
+	.string "I know, I know… you've been homesick\n"
 	.string "on your big journey…\l"
 	.string "So I went ahead and made a batch of\l"
 	.string "your favorite dish!\p"
