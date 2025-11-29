@@ -1,0 +1,70 @@
+{
+  "id": "MAP_SOULKEEP_HOUSE_MEDIUM",
+  "name": "Soulkeep_HouseMedium",
+  "layout": "LAYOUT_SOULKEEP_HOUSE_MEDIUM",
+  "music": "MUS_RG_SEVII_67",
+  "region_map_section": "MAPSEC_SOULKEEP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MEDIUM",
+      "x": 2,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Soulkeep_EventScript_Medium",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_UUME_BOY_1",
+      "x": 6,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Soulkeep_EventScript_MediumApprentice",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    }
+  ],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_SOULKEEP_HOUSE_MEDIUM_EXIT",
+      "x": 4,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_SOULKEEP",
+      "dest_warp_id": "WARP_ID_SOULKEEP_HOUSE_MEDIUM"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

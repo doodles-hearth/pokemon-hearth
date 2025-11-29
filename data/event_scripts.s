@@ -3,6 +3,7 @@
 #include "config/item.h"
 #include "constants/global.h"
 #include "constants/apprentice.h"
+#include "constants/apricorn_tree.h"
 #include "constants/battle.h"
 #include "constants/battle_arena.h"
 #include "constants/battle_dome.h"
@@ -45,6 +46,7 @@
 #include "constants/maps.h"
 #include "constants/mauville_old_man.h"
 #include "constants/metatile_labels.h"
+#include "constants/move_relearner.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
 #include "constants/pokedex.h"
@@ -464,7 +466,6 @@ gStdScripts_End::
 	.include "data/maps/TerraCave_End/scripts.inc"
 	.include "data/maps/AlteringCave/scripts.inc"
 	.include "data/maps/MeteorFalls_StevensCave/scripts.inc"
-	.include "data/scripts/shared_secret_base.inc"
 	.include "data/maps/BattleColosseum_2P/scripts.inc"
 	.include "data/maps/TradeCenter/scripts.inc"
 	.include "data/maps/RecordCorner/scripts.inc"
@@ -698,10 +699,9 @@ EventScript_SetBrineyLocation_Route109::
 	setvar VAR_BRINEY_LOCATION, 3
 	return
 
-	.include "data/scripts/pkmn_center_nurse.inc"
 	.include "data/scripts/obtain_item.inc"
 	.include "data/scripts/record_mix.inc"
-	.include "data/scripts/pc.inc"
+	.include "data/scripts/move_relearner.inc"
 
 @ scripts/notices.inc? signs.inc? See comment about text/notices.inc
 Common_EventScript_ShowPokemartSign::
@@ -736,7 +736,6 @@ EventScript_BackupMrBrineyLocation::
 
 	.include "data/scripts/surf.inc"
 	.include "data/scripts/rival_graphics.inc"
-	.include "data/scripts/set_gym_trainers.inc"
 
 EventScript_CancelMessageBox::
 	special UseBlankMessageToCancelPokemonPic
@@ -842,7 +841,7 @@ EventScript_UnusedBoardFerry::
 	delay 30
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
-	showobjectat LOCALID_PLAYER, 0
+	showplayer
 	delay 30
 	applymovement LOCALID_PLAYER, Movement_UnusedBoardFerry
 	waitmovement 0
@@ -857,7 +856,7 @@ Common_EventScript_FerryDepartIsland::
 	call_if_eq VAR_FACING, DIR_SOUTH, Ferry_EventScript_DepartIslandSouth
 	call_if_eq VAR_FACING, DIR_WEST, Ferry_EventScript_DepartIslandWest
 	delay 30
-	hideobjectat LOCALID_PLAYER, 0
+	hideplayer
 	call Common_EventScript_FerryDepart
 	return
 
@@ -881,12 +880,12 @@ Common_EventScript_PlayerHandedOverTheItem::
 
 	.include "data/scripts/elite_four.inc"
 	.include "data/scripts/movement.inc"
-	.include "data/scripts/check_furniture.inc"
 	.include "data/text/record_mix.inc"
 	.include "data/text/pc.inc"
 	.include "data/text/pkmn_center_nurse.inc"
 	.include "data/text/mart_clerk.inc"
 	.include "data/text/obtain_item.inc"
+	.include "data/text/move_relearner.inc"
 
 @ The below and surf.inc could be split into some text/notices.inc
 gText_PokemartSign::
@@ -1116,14 +1115,10 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"
 	.include "data/scripts/trainer_script.inc"
-	.include "data/scripts/berry_tree.inc"
 	.include "data/scripts/secret_base.inc"
 	.include "data/scripts/cable_club.inc"
 	.include "data/text/cable_club.inc"
 	.include "data/scripts/contest_hall.inc"
-	.include "data/text/contest_strings.inc"
-	.include "data/text/contest_link.inc"
-	.include "data/text/contest_painting.inc"
 	.include "data/scripts/tv.inc"
 	.include "data/text/tv.inc"
 	.include "data/scripts/interview.inc"
@@ -1140,10 +1135,8 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/mauville_man.inc"
 	.include "data/text/trainers.inc"
 	.include "data/scripts/repel.inc"
-	.include "data/scripts/shiny_vial.inc"
 	.include "data/scripts/safari_zone.inc"
 	.include "data/scripts/roulette.inc"
-	.include "data/text/pokedex_rating.inc"
 	.include "data/text/lottery_corner.inc"
 	.include "data/text/event_ticket_1.inc"
 	.include "data/text/braille.inc"
@@ -1152,8 +1145,6 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/check_furniture.inc"
 	.include "data/scripts/cave_hole.inc"
 	.include "data/scripts/lilycove_lady.inc"
-	.include "data/scripts/traveling_merchant.inc"
-	.include "data/scripts/chatot_post.inc"
 	.include "data/text/match_call.inc"
 	.include "data/scripts/apprentice.inc"
 	.include "data/text/apprentice.inc"
@@ -1163,241 +1154,282 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/battle_tent.inc"
 	.include "data/text/event_ticket_2.inc"
 	.include "data/text/move_tutors.inc"
-	.include "data/scripts/move_tutors.inc"
 	.include "data/scripts/trainer_hill.inc"
 	.include "data/scripts/test_signpost.inc"
 	.include "data/scripts/follower.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+	.include "data/scripts/battle_frontier.inc"
+	.include "data/scripts/apricorn_tree.inc"
 
-	.include "data/maps/SunriseVillage/scripts.inc"
+	.include "data/maps/Soulkeep_HouseMedium/scripts.inc"
 
-	.include "data/maps/SunriseVillage_Beach/scripts.inc"
+	.include "data/maps/Soulkeep_Crypt/scripts.inc"
 
-	.include "data/maps/GinkoWoods/scripts.inc"
+	.include "data/maps/SabersideTown_Refuge/scripts.inc"
 
-	.include "data/maps/ChiiTown/scripts.inc"
+	.include "data/maps/SabersideQuarry_Exterior/scripts.inc"
 
-	.include "data/maps/TranquilRoute/scripts.inc"
+	.include "data/maps/SabersideQuarry/scripts.inc"
 
-	.include "data/maps/SunriseVillage_PlayersHouse_LR/scripts.inc"
+	.include "data/maps/SabersideQuarry_Part2/scripts.inc"
 
-	.include "data/maps/SakuTown/scripts.inc"
+	.include "data/maps/SabersideQuarry_B1F/scripts.inc"
 
-	.include "data/maps/KuraTown/scripts.inc"
+	.include "data/maps/SabersideQuarry_B1F_Part2/scripts.inc"
 
-	.include "data/maps/BeachboundRoute/scripts.inc"
-
-	.include "data/maps/MaguroHarbor/scripts.inc"
-
-	.include "data/maps/WindsweptRoute/scripts.inc"
-
-	.include "data/maps/SunriseVillage_PlayersHouse_Bedroom/scripts.inc"
-
-	.include "data/maps/SakuTown_House1/scripts.inc"
-
-	.include "data/maps/SunriseVillage_EldersHouse/scripts.inc"
-
-	.include "data/maps/SunriseVillage_EldersHouse_PrivateQuarters/scripts.inc"
-
-	.include "data/maps/SunriseVillage_RivalsHouse/scripts.inc"
-
-	.include "data/maps/SunriseVillage_House1/scripts.inc"
-
-	.include "data/maps/TranquilRoute_CutHouse/scripts.inc"
-
-	.include "data/maps/SakuTown_PokemonCenter/scripts.inc"
-
-	.include "data/maps/SakuTown_BonsaiShop/scripts.inc"
-
-	.include "data/maps/KuraTown_House1/scripts.inc"
-
-	.include "data/maps/ChiiTown_House1/scripts.inc"
-
-	.include "data/maps/Silveridge/scripts.inc"
-
-	.include "data/maps/Silveridge_House1/scripts.inc"
-
-	.include "data/maps/ChiiTown_PokemonCenter/scripts.inc"
-
-	.include "data/maps/KuraTown_House2/scripts.inc"
-
-	.include "data/maps/WindyCape/scripts.inc"
-
-	.include "data/maps/Silveridge_SculptorsHouse/scripts.inc"
-
-	.include "data/maps/Silveridge_EldersHouse/scripts.inc"
-
-	.include "data/maps/WhiteslateRoute/scripts.inc"
-
-	.include "data/maps/KuraTown_Dojo/scripts.inc"
-
-	.include "data/maps/KuraTown_House3/scripts.inc"
-
-	.include "data/maps/SakuTown_House2/scripts.inc"
-
-	.include "data/maps/MaguroHarbor_House1/scripts.inc"
-
-	.include "data/maps/BelvedereRoute/scripts.inc"
-
-	.include "data/maps/Soulkeep/scripts.inc"
-
-	.include "data/maps/ChiiTown_House2/scripts.inc"
-
-	.include "data/maps/MaguroHarbor_Dojo/scripts.inc"
-
-	.include "data/maps/SakuTown_House3/scripts.inc"
-
-	.include "data/maps/OrchardPath/scripts.inc"
-
-	.include "data/maps/SilverTunnel_1F/scripts.inc"
-
-	.include "data/maps/SilverTunnel_2F/scripts.inc"
-
-	.include "data/maps/SeastrollChannel/scripts.inc"
-
-	.include "data/maps/ScenicRoute/scripts.inc"
-
-	.include "data/maps/SabersideTown/scripts.inc"
-
-	.include "data/maps/HarvestShrine/scripts.inc"
-
-	.include "data/maps/SoulkeepGraveyard/scripts.inc"
-
-	.include "data/maps/ChiiTown_School/scripts.inc"
-
-	.include "data/maps/Beachbound_Route_Decay/scripts.inc"
-
-	.include "data/maps/SabersideChannel/scripts.inc"
-
-	.include "data/maps/CoreefIsle/scripts.inc"
-
-	.include "data/maps/OpenSeaCoral/scripts.inc"
-
-	.include "data/maps/OpenSeaHaven/scripts.inc"
-
-	.include "data/maps/OpenSeaIcy/scripts.inc"
-
-	.include "data/maps/OpenSeaLeague/scripts.inc"
-
-	.include "data/maps/HavenIsle/scripts.inc"
-
-	.include "data/maps/MiddleIsle/scripts.inc"
-
-	.include "data/maps/TopIsle/scripts.inc"
-
-	.include "data/maps/LongtideChannel/scripts.inc"
-
-	.include "data/maps/LongTideChannelSoulkeep/scripts.inc"
-
-	.include "data/maps/SeaTurfRoute/scripts.inc"
-
-	.include "data/maps/HanabiCity/scripts.inc"
-
-	.include "data/maps/PuddlePath/scripts.inc"
-
-	.include "data/maps/DragonsPass/scripts.inc"
-
-	.include "data/maps/Dryugon/scripts.inc"
-
-	.include "data/maps/SteepstonePass/scripts.inc"
-
-	.include "data/maps/SteepstonePassBottom/scripts.inc"
-
-	.include "data/maps/BurnfootPass/scripts.inc"
-
-	.include "data/maps/MtKazanExterior/scripts.inc"
-
-	.include "data/maps/BurnfootPassBottom/scripts.inc"
-
-	.include "data/maps/Shogunate/scripts.inc"
-
-	.include "data/maps/ScenicRouteSaberside/scripts.inc"
-
-	.include "data/maps/UumeForest/scripts.inc"
-
-	.include "data/maps/Beachbound_Maguro_Gate/scripts.inc"
-
-	.include "data/maps/Kura_Beachbound_Gate/scripts.inc"
-
-	.include "data/maps/MaguroHarbor_House2/scripts.inc"
-
-	.include "data/maps/MaguroHarbor_Refuge/scripts.inc"
-
-	.include "data/maps/Silveridge_Refuge/scripts.inc"
-
-	.include "data/maps/WindyCape2/scripts.inc"
-
-	.include "data/maps/Silveridge_House2/scripts.inc"
-
-	.include "data/maps/YifuCity/scripts.inc"
-
-	.include "data/maps/YifuCity_Refuge/scripts.inc"
-
-	.include "data/maps/YifuCity_Onsen/scripts.inc"
-
-	.include "data/maps/YifuCity_Dojo/scripts.inc"
-
-	.include "data/maps/YifuCity_ClothingShop/scripts.inc"
-
-	.include "data/maps/YifuCity_CrobatShop/scripts.inc"
-
-	.include "data/maps/YifuCity_DecoShop/scripts.inc"
-
-	.include "data/maps/YifuCity_House1_1F/scripts.inc"
-
-	.include "data/maps/YifuCity_House1_2F/scripts.inc"
-
-	.include "data/maps/YifuCity_BigHouse_1F/scripts.inc"
-
-	.include "data/maps/YifuCity_BigHouse_2F/scripts.inc"
-
-	.include "data/maps/YifuCity_BigHouse_3F/scripts.inc"
-
-	.include "data/maps/YifuCity_BigHouse_4F/scripts.inc"
-
-	.include "data/maps/YifuCity_House2/scripts.inc"
-
-	.include "data/maps/YifuCity_House3/scripts.inc"
-
-	.include "data/maps/YifuCity_House4/scripts.inc"
-
-	.include "data/maps/YifuCity_Refuge_2F/scripts.inc"
-
-	.include "data/maps/YifuCity_Refuge_2F_Rooms/scripts.inc"
-
-	.include "data/maps/YifuCity_Restaurant/scripts.inc"
-
-	.include "data/maps/CrobatHideout_1F/scripts.inc"
-
+	.include "data/maps/SabersideQuarry_Antechamber/scripts.inc"
 	.include "data/scripts/daycare_adoption.inc"
-	
 	.include "data/scripts/dexnav.inc"
 
-	.include "data/maps/FlowergrassPlateau/scripts.inc"
+	@ please include poryscript-generated scripts here!!
+	@ ---------------------------------------------
+	@ hearth (autogenerated)
 
-	.include "data/maps/SilverTunnel_3F/scripts.inc"
+	.include "data/scripts/berry_tree.scr"
+	.include "data/scripts/campfire.scr"
+	.include "data/scripts/chatot_post.scr"
+	.include "data/scripts/check_furniture.scr"
+	.include "data/scripts/move_tutors.scr"
+	.include "data/scripts/pc.scr"
+	.include "data/scripts/pkmn_center_nurse.scr"
+	.include "data/scripts/set_gym_trainers.scr"
+	.include "data/scripts/shared_secret_base.scr"
+	.include "data/scripts/shiny_vial.scr"
+	.include "data/scripts/traveling_merchant.scr"
 
-	.include "data/maps/IncenseShop/scripts.inc"
+	.include "data/text/pokedex_rating.scr"
 
-	.include "data/maps/Soulkeep_HouseDoll/scripts.inc"
+	.include "data/maps/SunriseVillage/scripts.scr"
 
-	.include "data/maps/Soulkeep_Refuge/scripts.inc"
+	.include "data/maps/SunriseVillage_Beach/scripts.scr"
 
-	.include "data/maps/Soulkeep_HouseDollBedroom/scripts.inc"
+	.include "data/maps/GinkoWoods/scripts.scr"
 
-	.include "data/maps/Soulkeep_House1/scripts.inc"
+	.include "data/maps/ChiiTown/scripts.scr"
 
-	.include "data/maps/OrchardPath_GuardHouse/scripts.inc"
+	.include "data/maps/TranquilRoute/scripts.scr"
 
-	.include "data/maps/SunriseCave/scripts.inc"
+	.include "data/maps/SunriseVillage_PlayersHouse_LR/scripts.scr"
 
-	.include "data/maps/WindsweptRouteBottom/scripts.inc"
+	.include "data/maps/SakuTown/scripts.scr"
 
-	.include "data/maps/YifuCity_HotSprings/scripts.inc"
+	.include "data/maps/KuraTown/scripts.scr"
 
-	.include "data/maps/Silveridge_House3/scripts.inc"
+	.include "data/maps/BeachboundRoute/scripts.scr"
 
-	.include "data/maps/SakuTown_BufferArea/scripts.inc"
+	.include "data/maps/MaguroHarbor/scripts.scr"
 
-	.include "data/maps/YifuCity_BufferArea/scripts.inc"
+	.include "data/maps/WindsweptRoute/scripts.scr"
+
+	.include "data/maps/SunriseVillage_PlayersHouse_Bedroom/scripts.scr"
+
+	.include "data/maps/SakuTown_House1/scripts.scr"
+
+	.include "data/maps/SunriseVillage_EldersHouse/scripts.scr"
+
+	.include "data/maps/SunriseVillage_EldersHouse_PrivateQuarters/scripts.scr"
+
+	.include "data/maps/SunriseVillage_RivalsHouse/scripts.scr"
+
+	.include "data/maps/SunriseVillage_House1/scripts.scr"
+
+	.include "data/maps/TranquilRoute_CutHouse/scripts.scr"
+
+	.include "data/maps/SakuTown_PokemonCenter/scripts.scr"
+
+	.include "data/maps/SakuTown_BonsaiShop/scripts.scr"
+
+	.include "data/maps/KuraTown_House1/scripts.scr"
+
+	.include "data/maps/ChiiTown_House1/scripts.scr"
+
+	.include "data/maps/Silveridge/scripts.scr"
+
+	.include "data/maps/Silveridge_House1/scripts.scr"
+
+	.include "data/maps/ChiiTown_PokemonCenter/scripts.scr"
+
+	.include "data/maps/KuraTown_House2/scripts.scr"
+
+	.include "data/maps/WindyCape/scripts.scr"
+
+	.include "data/maps/Silveridge_SculptorsHouse/scripts.scr"
+
+	.include "data/maps/Silveridge_EldersHouse/scripts.scr"
+
+	.include "data/maps/WhiteslateRoute/scripts.scr"
+
+	.include "data/maps/KuraTown_Dojo/scripts.scr"
+
+	.include "data/maps/KuraTown_House3/scripts.scr"
+
+	.include "data/maps/SakuTown_House2/scripts.scr"
+
+	.include "data/maps/MaguroHarbor_House1/scripts.scr"
+
+	.include "data/maps/BelvedereRoute/scripts.scr"
+
+	.include "data/maps/Soulkeep/scripts.scr"
+
+	.include "data/maps/ChiiTown_House2/scripts.scr"
+
+	.include "data/maps/MaguroHarbor_Dojo/scripts.scr"
+
+	.include "data/maps/SakuTown_House3/scripts.scr"
+
+	.include "data/maps/OrchardPath/scripts.scr"
+
+	.include "data/maps/SilverTunnel_1F/scripts.scr"
+
+	.include "data/maps/SilverTunnel_2F/scripts.scr"
+
+	.include "data/maps/SeastrollChannel/scripts.scr"
+
+	.include "data/maps/ScenicRoute/scripts.scr"
+
+	.include "data/maps/SabersideTown/scripts.scr"
+
+	.include "data/maps/HarvestShrine/scripts.scr"
+
+	.include "data/maps/SoulkeepGraveyard/scripts.scr"
+
+	.include "data/maps/ChiiTown_School/scripts.scr"
+
+	.include "data/maps/Beachbound_Route_Decay/scripts.scr"
+
+	.include "data/maps/SabersideChannel/scripts.scr"
+
+	.include "data/maps/CoreefIsle/scripts.scr"
+
+	.include "data/maps/OpenSeaCoral/scripts.scr"
+
+	.include "data/maps/OpenSeaHaven/scripts.scr"
+
+	.include "data/maps/OpenSeaIcy/scripts.scr"
+
+	.include "data/maps/OpenSeaLeague/scripts.scr"
+
+	.include "data/maps/HavenIsle/scripts.scr"
+
+	.include "data/maps/MiddleIsle/scripts.scr"
+
+	.include "data/maps/TopIsle/scripts.scr"
+
+	.include "data/maps/LongtideChannel/scripts.scr"
+
+	.include "data/maps/LongTideChannelSoulkeep/scripts.scr"
+
+	.include "data/maps/SeaTurfRoute/scripts.scr"
+
+	.include "data/maps/HanabiCity/scripts.scr"
+
+	.include "data/maps/PuddlePath/scripts.scr"
+
+	.include "data/maps/DragonsPass/scripts.scr"
+
+	.include "data/maps/Dryugon/scripts.scr"
+
+	.include "data/maps/SteepstonePass/scripts.scr"
+
+	.include "data/maps/SteepstonePassBottom/scripts.scr"
+
+	.include "data/maps/BurnfootPass/scripts.scr"
+
+	.include "data/maps/MtKazanExterior/scripts.scr"
+
+	.include "data/maps/BurnfootPassBottom/scripts.scr"
+
+	.include "data/maps/Shogunate/scripts.scr"
+
+	.include "data/maps/ScenicRouteSaberside/scripts.scr"
+
+	.include "data/maps/UumeForest/scripts.scr"
+
+	.include "data/maps/Beachbound_Maguro_Gate/scripts.scr"
+
+	.include "data/maps/Kura_Beachbound_Gate/scripts.scr"
+
+	.include "data/maps/MaguroHarbor_House2/scripts.scr"
+
+	.include "data/maps/MaguroHarbor_Refuge/scripts.scr"
+
+	.include "data/maps/Silveridge_Refuge/scripts.scr"
+
+	.include "data/maps/WindyCape2/scripts.scr"
+
+	.include "data/maps/Silveridge_House2/scripts.scr"
+
+	.include "data/maps/YifuCity/scripts.scr"
+
+	.include "data/maps/YifuCity_Refuge/scripts.scr"
+
+	.include "data/maps/YifuCity_Onsen/scripts.scr"
+
+	.include "data/maps/YifuCity_Dojo/scripts.scr"
+
+	.include "data/maps/YifuCity_ClothingShop/scripts.scr"
+
+	.include "data/maps/YifuCity_CrobatShop/scripts.scr"
+
+	.include "data/maps/YifuCity_DecoShop/scripts.scr"
+
+	.include "data/maps/YifuCity_House1_1F/scripts.scr"
+
+	.include "data/maps/YifuCity_House1_2F/scripts.scr"
+
+	.include "data/maps/YifuCity_BigHouse_1F/scripts.scr"
+
+	.include "data/maps/YifuCity_BigHouse_2F/scripts.scr"
+
+	.include "data/maps/YifuCity_BigHouse_3F/scripts.scr"
+
+	.include "data/maps/YifuCity_BigHouse_4F/scripts.scr"
+
+	.include "data/maps/YifuCity_House2/scripts.scr"
+
+	.include "data/maps/YifuCity_House3/scripts.scr"
+
+	.include "data/maps/YifuCity_House4/scripts.scr"
+
+	.include "data/maps/YifuCity_Refuge_2F/scripts.scr"
+
+	.include "data/maps/YifuCity_Refuge_2F_Rooms/scripts.scr"
+
+	.include "data/maps/YifuCity_Restaurant/scripts.scr"
+
+	.include "data/maps/CrobatHideout_1F/scripts.scr"
+
+	.include "data/maps/FlowergrassPlateau/scripts.scr"
+
+	.include "data/maps/SilverTunnel_3F/scripts.scr"
+
+	.include "data/maps/IncenseShop/scripts.scr"
+
+	.include "data/maps/Soulkeep_HouseDoll/scripts.scr"
+
+	.include "data/maps/Soulkeep_Refuge/scripts.scr"
+
+	.include "data/maps/Soulkeep_HouseDollBedroom/scripts.scr"
+
+	.include "data/maps/Soulkeep_House1/scripts.scr"
+
+	.include "data/maps/OrchardPath_GuardHouse/scripts.scr"
+
+	.include "data/maps/SunriseCave/scripts.scr"
+
+	.include "data/maps/WindsweptRouteBottom/scripts.scr"
+
+	.include "data/maps/YifuCity_HotSprings/scripts.scr"
+
+	.include "data/maps/Silveridge_House3/scripts.scr"
+
+	.include "data/maps/SakuTown_BufferArea/scripts.scr"
+
+	.include "data/maps/YifuCity_BufferArea/scripts.scr"
+
+	.include "data/maps/Soulkeep_Library_1F/scripts.scr"
+
+	.include "data/maps/Soulkeep_Library_2F/scripts.scr"
+
+	.include "data/maps/Soulkeep_Dojo/scripts.scr"

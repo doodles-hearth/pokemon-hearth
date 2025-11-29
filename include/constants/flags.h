@@ -75,25 +75,25 @@
 #define FLAG_PAUSE_FAKERTC   0x37 // Pause Fake RTC
 #define FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE 0x38
 #define FLAG_BEAT_HARIKO_IN_MAGURO_REFUGE      0x39
-#define FLAG_NO_COLLISION    0x3A
-#define FLAG_BEAT_ROCK_SMASHER    0x3B
-#define FLAG_HIDE_SAKU_FARMERS    0x3C // Set when Scyther Quest conditions are met
-#define FLAG_HIDE_SAKU_REFUGE_FARMERS_1    0x3D // Set when Scyther Quest is not started
-#define FLAG_HIDE_SAKU_REFUGE_FARMERS_2    0x3E // Set when Scyther Quest is started
-#define FLAG_HIDE_DEADNIGHT_ASHII    0x3F // Hides Ashii in deadnight
-#define FLAG_HIDE_DEADNIGHT_TAMA    0x40 // Hides Tama in deadnight
-#define FLAG_HIDE_TAMASDAD    0x41 // Hides tama's dad in Saku
-#define FLAG_LIED_TO_SHAMISEN_PLAYER 0x42
-#define FLAG_PICKED_UP_BAG   0x43
-#define FLAG_PAID_HOT_SPRINGS 0x44
-#define FLAG_UNUSED_0x045    0x45 // Unused Flag
-#define FLAG_UNUSED_0x046    0x46 // Unused Flag
-#define FLAG_UNUSED_0x047    0x47 // Unused Flag
-#define FLAG_UNUSED_0x048    0x48 // Unused Flag
-#define FLAG_UNUSED_0x049    0x49 // Unused Flag
-#define FLAG_UNUSED_0x04A    0x4A // Unused Flag
-#define FLAG_UNUSED_0x04B    0x4B // Unused Flag
-#define FLAG_UNUSED_0x04C    0x4C // Unused Flag
+#define FLAG_NO_COLLISION               0x3A
+#define FLAG_BEAT_ROCK_SMASHER          0x3B
+#define FLAG_HIDE_SAKU_FARMERS          0x3C // Set when Scyther Quest conditions are met
+#define FLAG_HIDE_SAKU_REFUGE_FARMERS_1 0x3D // Set when Scyther Quest is not started
+#define FLAG_HIDE_SAKU_REFUGE_FARMERS_2 0x3E // Set when Scyther Quest is started
+#define FLAG_HIDE_DEADNIGHT_ASHII       0x3F // Hides Ashii in deadnight
+#define FLAG_HIDE_DEADNIGHT_TAMA        0x40 // Hides Tama in deadnight
+#define FLAG_HIDE_TAMASDAD              0x41 // Hides tama's dad in Saku
+#define FLAG_LIED_TO_SHAMISEN_PLAYER    0x42
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_1  0x43
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_2  0x44
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_3  0x45
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_4  0x46
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_5  0x47
+#define FLAG_HIDE_CAMPFIRE_PARTY_MON_6  0x48
+#define FLAG_PICKED_UP_BAG              0x49
+#define FLAG_PAID_HOT_SPRINGS           0x4A
+#define FLAG_ENCOUNTERED_INVISIBLE_CRYPT_WALLS 0x4B
+#define FLAG_ASKED_SABLEYE_RUBY         0x4C
 #define FLAG_UNUSED_0x04D    0x4D // Unused Flag
 #define FLAG_UNUSED_0x04E    0x4E // Unused Flag
 // True if the tree blocking the path to Silver Tunnel has been cut
@@ -135,7 +135,7 @@
 #define FLAG_BROKE_SAKU_ROCK_2               0x6E
 #define FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT  0x6F
 #define FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE  0x70
-#define FLAG_UNUSED_RS_LEGENDARY_BATTLE_DONE 0x71 // Unused Flag. Used in R/S to indicate whether player defeated or caught Groudon/Kyogre in Cave of Origin.
+#define FLAG_SPOOKED_SABLEYE                 0x71
 #define FLAG_SCOTT_CALL_BATTLE_FRONTIER      0x72 // Used in order to activate a phone call from Scott, inviting the player to the SS Tidal.
 #define FLAG_RECEIVED_METEORITE              0x73
 #define FLAG_ADVENTURE_STARTED               0x74 // RECEIVED Pokédex.
@@ -161,7 +161,7 @@
 #define FLAG_PENDING_DAYCARE_EGG             0x86
 #define FLAG_THANKED_FOR_PLAYING_WITH_WALLY  0x87
 #define FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL 0x88 // Set after defeating Wally outside Mauville Gym. Will activate a call later to register Wally.
-#define FLAG_UNUSED_0x89                     0x89 // Unused
+#define FLAG_AUTORUN_TOGGLE                  0x89 // Autorun state if set to TOGGLE
 #define FLAG_SCOTT_CALL_FORTREE_GYM          0x8A // Triggers call from Scott after defeating Winona
 #define FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY   0x8B
 #define FLAG_RECEIVED_6_SODA_POP             0x8C
@@ -564,21 +564,21 @@
 #define FLAG_HIDDEN_ITEM_CROBAT_HIDEOUT_ULTRO_BALL           (FLAG_HIDDEN_ITEMS_START + 0x0D)
 #define FLAG_HIDDEN_ITEM_KURA_VILLAGE_SITRUS_BERRY           (FLAG_HIDDEN_ITEMS_START + 0x0E)
 #define FLAG_HIDDEN_ITEM_SAKU_CHERI_BERRY                    (FLAG_HIDDEN_ITEMS_START + 0x0F)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_126_STARDUST             (FLAG_HIDDEN_ITEMS_START + 0x10)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_126_PEARL                (FLAG_HIDDEN_ITEMS_START + 0x11)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_126_YELLOW_SHARD         (FLAG_HIDDEN_ITEMS_START + 0x12)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_126_IRON                 (FLAG_HIDDEN_ITEMS_START + 0x13)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_126_BIG_PEARL            (FLAG_HIDDEN_ITEMS_START + 0x14)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_127_STAR_PIECE           (FLAG_HIDDEN_ITEMS_START + 0x15)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_127_HP_UP                (FLAG_HIDDEN_ITEMS_START + 0x16)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_127_HEART_SCALE          (FLAG_HIDDEN_ITEMS_START + 0x17)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_127_RED_SHARD            (FLAG_HIDDEN_ITEMS_START + 0x18)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_128_PROTEIN              (FLAG_HIDDEN_ITEMS_START + 0x19)
-#define FLAG_HIDDEN_ITEM_UNDERWATER_128_PEARL                (FLAG_HIDDEN_ITEMS_START + 0x1A)
-#define FLAG_HIDDEN_ITEM_LILYCOVE_CITY_HEART_SCALE           (FLAG_HIDDEN_ITEMS_START + 0x1B)
-#define FLAG_HIDDEN_ITEM_FALLARBOR_TOWN_NUGGET               (FLAG_HIDDEN_ITEMS_START + 0x1C)
-#define FLAG_HIDDEN_ITEM_MT_PYRE_EXTERIOR_ULTRA_BALL         (FLAG_HIDDEN_ITEMS_START + 0x1D)
-#define FLAG_HIDDEN_ITEM_ROUTE_113_TM_DOUBLE_TEAM            (FLAG_HIDDEN_ITEMS_START + 0x1E)
+#define FLAG_HIDDEN_ITEM_ORCHARD_PATH_SUPERGIRI              (FLAG_HIDDEN_ITEMS_START + 0x10)
+#define FLAG_HIDDEN_ITEM_ORCHARD_PATH_NUGGET                 (FLAG_HIDDEN_ITEMS_START + 0x11)
+#define FLAG_HIDDEN_ITEM_SHOGUNATE_MOON_STONE                (FLAG_HIDDEN_ITEMS_START + 0x12)
+#define FLAG_HIDDEN_ITEM_YIFU_CITY_ESCAPE_ROPE               (FLAG_HIDDEN_ITEMS_START + 0x13)
+#define FLAG_HIDDEN_ITEM_YIFU_CITY_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x14)
+#define FLAG_HIDDEN_ITEM_YIFU_CITY_DUSK_BALL                 (FLAG_HIDDEN_ITEMS_START + 0x15)
+#define FLAG_HIDDEN_ITEM_QUARRY_METAL_COAT                   (FLAG_HIDDEN_ITEMS_START + 0x16)
+#define FLAG_HIDDEN_ITEM_QUARRY_HYPERGIRI                    (FLAG_HIDDEN_ITEMS_START + 0x17)
+#define FLAG_HIDDEN_ITEM_QUARRY_METAL_POWDER                 (FLAG_HIDDEN_ITEMS_START + 0x18)
+#define FLAG_HIDDEN_ITEM_QUARRY_PROTEIN                      (FLAG_HIDDEN_ITEMS_START + 0x19)
+#define FLAG_HIDDEN_ITEM_QUARRY_NUGGET                       (FLAG_HIDDEN_ITEMS_START + 0x1A)
+#define FLAG_HIDDEN_ITEM_QUARRY_STAR_PIECE                   (FLAG_HIDDEN_ITEMS_START + 0x1B)
+#define FLAG_HIDDEN_ITEM_QUARRY_STARDUST                     (FLAG_HIDDEN_ITEMS_START + 0x1C)
+#define FLAG_HIDDEN_ITEM_QUARRY_SABLEYE_GEM                  (FLAG_HIDDEN_ITEMS_START + 0x1D)
+#define FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_MAX_ETHER          (FLAG_HIDDEN_ITEMS_START + 0x1E)
 #define FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_1_KEY             (FLAG_HIDDEN_ITEMS_START + 0x1F)
 #define FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_2_KEY             (FLAG_HIDDEN_ITEMS_START + 0x20)
 #define FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_4_KEY             (FLAG_HIDDEN_ITEMS_START + 0x21)
@@ -1036,7 +1036,7 @@
 #define FLAG_HIDE_OLDALE_TOWN_RIVAL                                 0x3D3
 #define FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE      0x3D4
 #define FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_SHADOW                   0x3D5
-#define FLAG_HIDE_ROUTE_120_KECLEON_1                               0x3D6
+#define FLAG_HIDE_SCENIC_KECLEON_1                                  0x3D6
 #define FLAG_HIDE_RUSTURF_TUNNEL_WANDA                              0x3D7
 #define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA                0x3D8
 #define FLAG_HIDE_ROUTE_120_KECLEON_2                               0x3D9
@@ -1068,7 +1068,7 @@
 #define FLAG_ITEM_STOLEN_MONS                                       0x3F1
 #define FLAG_ITEM_GRASSFLOWER_PLATEAU_MAX_OINTMENT                  0x3F2
 #define FLAG_ITEM_WHITESLATE_ROUTE_CARBOS                           0x3F3
-#define FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_MAX_ETHER                 0x3F4
+#define FLAG_ITEM_QUARRY_SHADOW_CLAW                                0x3F4
 #define FLAG_ITEM_CROBAT_HIDEOUT_NUGGET                             0x3F5
 #define FLAG_ITEM_CROBAT_HIDEOUT_RARE_CANDY                         0x3F6
 #define FLAG_CROBAT_HIDEOUT_PEARL                                   0x3F7
@@ -1076,11 +1076,11 @@
 #define FLAG_ITEM_SILVER_TUNNEL_SUPER_OINTMENT                      0x3F9
 #define FLAG_ITEM_YIFU_REFUGE_SITRUS_BERRY                          0x3FA
 #define FLAG_ITEM_YIFU_REFUGE_LAVA_COOKIE                           0x3FB
-#define FLAG_HIDDEN_ITEM_YIFU_CITY_ESCAPE_ROPE                      0x3FC
-#define FLAG_HIDDEN_ITEM_YIFU_CITY_RARE_CANDY                       0x3FD
-#define FLAG_HIDDEN_ITEM_YIFU_CITY_DUSK_BALL                        0x3FE
-#define FLAG_ITEM_ROUTE_117_REVIVE                                  0x3FF
-#define FLAG_ITEM_ROUTE_119_SUPER_REPEL                             0x400
+#define FLAG_ITEM_QUARRY_SABLEYE_GEM                                0x3FC
+#define FLAG_ITEM_QUARRY_HP_UP                                      0x3FD
+#define FLAG_ITEM_QUARRY_MAX_REPEL                                  0x3FE
+#define FLAG_ITEM_QUARRY_TM_SHADOW_BALL                             0x3FF
+#define FLAG_ITEM_QUARRY_DUSK_BALL                                  0x400
 #define FLAG_ITEM_ROUTE_119_ZINC                                    0x401
 #define FLAG_ITEM_ROUTE_119_ELIXIR_1                                0x402
 #define FLAG_ITEM_ROUTE_119_LEAF_STONE                              0x403

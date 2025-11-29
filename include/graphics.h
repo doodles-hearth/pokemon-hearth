@@ -637,6 +637,8 @@ extern const u16 gItemIconPalette_Star[];
 extern const u32 gItemIcon_StarPiece[];
 extern const u32 gItemIcon_CometShard[];
 extern const u16 gItemIconPalette_CometShard[];
+extern const u32 gItemIcon_SableyeGem[];
+extern const u16 gItemIconPalette_SableyeGem[];
 extern const u16 gItemIconPalette_ShoalSalt[];
 extern const u32 gItemIcon_ShoalShell[];
 extern const u16 gItemIconPalette_Shell[];
@@ -1608,8 +1610,8 @@ extern const u32 gItemIcon_SuperRod[];
 extern const u16 gItemIconPalette_SuperRod[];
 extern const u32 gItemIcon_DowsingMachine[];
 extern const u16 gItemIconPalette_DowsingMachine[];
-extern const u32 gItemIcon_TownMap[];
-extern const u16 gItemIconPalette_TownMap[];
+extern const u32 gItemIcon_TokuMap[];
+extern const u16 gItemIconPalette_TokuMap[];
 extern const u32 gItemIcon_VsSeeker[];
 extern const u16 gItemIconPalette_VsSeeker[];
 extern const u32 gItemIcon_TMCase[];
@@ -3282,9 +3284,11 @@ extern const u32 gBattleAnimBgTilemap_Sandstorm[];
 extern const u32 gBattleAnimBgImage_Sandstorm[];
 
 // Pledge Effect field status - Rainbow
-extern const u32 gBattleAnimBgImage_Rainbow[];
+extern const u32 gBattleAnimBgImage_RainbowPlayer[];
+extern const u32 gBattleAnimBgImage_RainbowOpponent[];
 extern const u16 gBattleAnimBGPalette_Rainbow[];
-extern const u32 gBattleAnimBgTilemap_Rainbow[];
+extern const u32 gBattleAnimBgTilemap_RainbowPlayer[];
+extern const u32 gBattleAnimBgTilemap_RainbowOpponent[];
 
 // Pledge Effect field status - Swamp
 extern const u32 gBattleAnimBgImage_Swamp[];

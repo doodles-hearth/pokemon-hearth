@@ -612,6 +612,7 @@ MUGSHOT_IWA                 = 8D
 MUGSHOT_GEM_MANIAC          = 8E
 MUGSHOT_MINER               = 8F
 MUGSHOT_GARDENER            = 90
+MUGSHOT_FARMER              = 91
 
 EMOTE_NORMAL = 00
 EMOTE_SEXY = 01

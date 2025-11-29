@@ -377,6 +377,9 @@ const u32 gItemIcon_StarPiece[] = INCBIN_U32("graphics/items/icons/star_piece.4b
 const u32 gItemIcon_CometShard[] = INCBIN_U32("graphics/items/icons/comet_shard.4bpp.smol");
 const u16 gItemIconPalette_CometShard[] = INCBIN_U16("graphics/items/icon_palettes/comet_shard.gbapal");
 
+const u32 gItemIcon_SableyeGem[] = INCBIN_U32("graphics/items/icons/sableye_gem.4bpp.smol");
+const u16 gItemIconPalette_SableyeGem[] = INCBIN_U16("graphics/items/icons/sableye_gem.gbapal");
+
 const u16 gItemIconPalette_ShoalSalt[] = INCBIN_U16("graphics/items/icon_palettes/shoal_salt.gbapal");
 
 const u32 gItemIcon_ShoalShell[] = INCBIN_U32("graphics/items/icons/shoal_shell.4bpp.smol");
@@ -1835,8 +1838,8 @@ const u16 gItemIconPalette_SuperRod[] = INCBIN_U16("graphics/items/icon_palettes
 const u32 gItemIcon_DowsingMachine[] = INCBIN_U32("graphics/items/icons/dowsing_machine.4bpp.smol");
 const u16 gItemIconPalette_DowsingMachine[] = INCBIN_U16("graphics/items/icon_palettes/dowsing_machine.gbapal");
 
-const u32 gItemIcon_TownMap[] = INCBIN_U32("graphics/items/icons/town_map.4bpp.smol");
-const u16 gItemIconPalette_TownMap[] = INCBIN_U16("graphics/items/icons/town_map.gbapal");
+const u32 gItemIcon_TokuMap[] = INCBIN_U32("graphics/items/icons/toku_map.4bpp.smol");
+const u16 gItemIconPalette_TokuMap[] = INCBIN_U16("graphics/items/icons/toku_map.gbapal");
 
 const u32 gItemIcon_VsSeeker[] = INCBIN_U32("graphics/items/icons/vs_seeker.4bpp.smol");
 const u16 gItemIconPalette_VsSeeker[] = INCBIN_U16("graphics/items/icon_palettes/vs_seeker.gbapal");

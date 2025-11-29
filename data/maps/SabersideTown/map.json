@@ -2,7 +2,7 @@
   "id": "MAP_SABERSIDE_TOWN",
   "name": "SabersideTown",
   "layout": "LAYOUT_SABERSIDE_TOWN",
-  "music": "MUS_DUMMY",
+  "music": "MUS_RG_CINNABAR",
   "region_map_section": "MAPSEC_SABERSIDE_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -15,17 +15,151 @@
   "connections": [
     {
       "map": "MAP_SABERSIDE_CHANNEL",
-      "offset": 18,
+      "offset": 10,
       "direction": "left"
     },
     {
       "map": "MAP_SCENIC_ROUTE_SABERSIDE",
       "offset": 3,
       "direction": "right"
+    },
+    {
+      "map": "MAP_SABERSIDE_QUARRY_EXTERIOR",
+      "offset": 13,
+      "direction": "down"
     }
   ],
-  "object_events": [],
-  "warp_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(COALOSSAL)",
+      "x": 22,
+      "y": 39,
+      "elevation": 2,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_LEFT_DOWN",
+      "movement_range_x": 9,
+      "movement_range_y": 15,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "local_id": "LOCALID_SABERSIDE_WINGULL",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WINGULL)",
+      "x": 11,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SabersideTown_EventScript_Wingull",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "local_id": "LOCALID_SABERSIDE_BOAT_GUY",
+      "graphics_id": "OBJ_EVENT_GFX_SEASIDE_OLD_MAN",
+      "x": 10,
+      "y": 27,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SabersideTown_EventScript_BoatGuy",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(COALOSSAL)",
+      "x": 47,
+      "y": 17,
+      "elevation": 2,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_LEFT_RIGHT_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 4,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRAVELER",
+      "x": 46,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SabersideTown_EventScript_LoveSwords",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    }
+  ],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_SABERSIDE_BOAT",
+      "x": 9,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_LONG_TIDE_CHANNEL_SOULKEEP",
+      "dest_warp_id": "WARP_ID_SOULKEEP_BOAT"
+    },
+    {
+      "warp_id": "WARP_ID_SABERSIDE_REFUGE",
+      "x": 48,
+      "y": 24,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_TOWN_REFUGE",
+      "dest_warp_id": "WARP_ID_SABERSIDE_REFUGE_EXIT"
+    }
+  ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 38,
+      "y": 26,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "SabersideTown_EventScript_TownSign"
+    }
+  ]
 }

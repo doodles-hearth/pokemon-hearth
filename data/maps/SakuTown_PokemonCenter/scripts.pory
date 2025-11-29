@@ -152,7 +152,7 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up * 5))
 
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format("Y'have to do som'thin', miss!\nCantcha see she's in pain?!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Y'have to do som'thin', miss!\nCantcha see she's in pain?!"))
 	closemessage
 
 	applymovement(LOCALID_NURSE, moves(walk_in_place_fast_down))
@@ -189,7 +189,7 @@ script SakuTown_PokemonCenter_EventScript_Farmer1 {
 
 script(local) FarmerGivesQuest {
 	msgbox(format(
-		"The nurse here said the newfangled medical technology from the Toku Council isn't here yet.\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}The nurse here said the newfangled medical technology from the Toku Council isn't here yet.\p"
 		"Scyther can't be cured of whatever's ailin' her.\p"
 		"Please! If you can spare some time, help us find someone or something to cure our girl!"))
 	startquest(QUEST_SAKURASCYTHER)
@@ -198,7 +198,7 @@ script(local) FarmerGivesQuest {
 }
 
 script(local) FarmerWaitsMedicine {
-	msgbox(format("So? Have ye found anythin' yet?"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}So? Have ye found anythin' yet?"))
 	checkitem(ITEM_SPECIAL_MEDICINE, 1)
 	if(var(VAR_SAKU_KURA_QUEST_SCYTHER_STATE) == 6 && var(VAR_RESULT) == TRUE){
 		call(HealedScytherScript)
@@ -221,7 +221,7 @@ script(local) HealedScytherScript{
 	waitse
 
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format("That's it!\nPlease, Wielder, quickly!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}That's it!\nPlease, Wielder, quickly!"))
 	closemessage
 
 	playfanfare(MUS_OBTAIN_ITEM)
@@ -234,7 +234,7 @@ script(local) HealedScytherScript{
 	waitmovement(0)
 
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format("Here, girl…\nThis'll make ye feel better…"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Here, girl…\nThis'll make ye feel better…"))
 	closemessage
 
 	applymovement(LOCALID_BED_SCYTHER, moves(face_left))
@@ -269,7 +269,7 @@ script(local) HealedScytherScript{
 
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"Wielder… I don't know how to thank ya.\NWe were so worried…\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Wielder… I don't know how to thank ya.\NWe were so worried…\p"
 		"Where did you get this medicine?"
 	))
 	closemessage
@@ -277,7 +277,7 @@ script(local) HealedScytherScript{
 	mcdialogue("The healer in Kura Village!")
 
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format("Kura Village, eh…"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Kura Village, eh…"))
 
 	applymovement(LOCALID_BED_FARMER_1, moves(face_up))
 	waitmovement(0)
@@ -300,14 +300,14 @@ script(local) HealedScytherScript{
 	closemessage
 
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format("{FONT_SMALL} Maybe they ain't s'bad afta' all…"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}{FONT_SMALL} Maybe they ain't s'bad after all…"))
 	closemessage
 
 	applymovement(LOCALID_BED_FARMER_1, moves(face_player))
 	waitmovement(0)
 
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format("Thank you, Wielder. I can give ye a reward for your effors. Just meet us in the fields outside."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Thank you, Wielder. I can give ye a reward for your effors. Just meet us in the fields outside."))
 	closemessage
 
 	applymovement(LOCALID_BED_FARMER_2, moves(walk_right * 6, walk_down * 2, walk_right * 2))
@@ -329,7 +329,7 @@ script(local) HealedScytherScript{
 script SakuTown_PokemonCenter_EventScript_Farmer2 {
 	lock
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format("There, there, girl…\nIt'll be okay…"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}There, there, girl…\nIt'll be okay…"))
 	closemessage
 
 	playmoncry(SPECIES_SCYTHER, CRY_MODE_WEAK)
@@ -350,6 +350,8 @@ script SakuTown_PokemonCenter_EventScript_Pushing {
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Watchu lookin' at? Scram!"
 	))
 	closemessage
+
+	hidefollower
 
 	switch(var(VAR_FACING)) {
 		case DIR_EAST:
