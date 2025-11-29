@@ -350,6 +350,8 @@ void DrawDialogueFrame(u8 windowId, bool8 copyToVram)
     PutWindowTilemap(windowId);
     if (copyToVram == TRUE)
         CopyWindowToVram(windowId, COPYWIN_FULL);
+    if(InOverworld())
+        gMain.isDialogActiveInOverworld = TRUE;
 }
 
 static void WindowFunc_RedrawDialogueFrame(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
@@ -415,6 +417,7 @@ void ClearDialogWindowAndFrame(u8 windowId, bool8 copyToVram)
     ClearWindowTilemap(windowId);
     if (copyToVram == TRUE)
         CopyWindowToVram(windowId, COPYWIN_FULL);
+    gMain.isDialogActiveInOverworld = FALSE;
 }
 
 void ClearStdWindowAndFrame(u8 windowId, bool8 copyToVram)
@@ -756,6 +759,7 @@ void ClearDialogWindowAndFrameToTransparent(u8 windowId, bool8 copyToVram)
     ClearWindowTilemap(windowId);
     if (copyToVram == TRUE)
         CopyWindowToVram(windowId, COPYWIN_FULL);
+    gMain.isDialogActiveInOverworld = FALSE;
 }
 
 static void WindowFunc_ClearDialogWindowAndFrameNullPalette(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
@@ -2268,4 +2272,13 @@ void HBlankCB_DoublePopupWindow(void)
     {
         REG_BG0VOFS = 512 - offset;
     }
+}
+
+bool32 IsOverworldDialogActive(void)
+{
+    if(gMain.isDialogActiveInOverworld && !gMain.inBattle)
+    {
+        return TRUE;
+    }
+    return FALSE;
 }

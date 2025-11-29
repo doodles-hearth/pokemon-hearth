@@ -150,6 +150,8 @@ static void Task_WaitStopSurfing(u8);
 
 static u8 TrySpinPlayerForWarp(struct ObjectEvent *, s16 *);
 
+static bool8 ShouldPlayerRun(u16 heldKeys);
+
 static bool8 (*const sForcedMovementTestFuncs[NUM_FORCED_MOVEMENTS])(u8) =
 {
     MetatileBehavior_IsTrickHouseSlipperyFloor,
@@ -350,7 +352,7 @@ void PlayerStep(u8 direction, u16 newKeys, u16 heldKeys)
             DoPlayerAvatarTransition();
             if (TryDoMetatileBehaviorForcedMovement() == 0)
             {
-                if (GetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT) != FALSE)
+                if (GetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT) != FNPC_FORCED_NONE)
                 {
                     gPlayerAvatar.preventStep = TRUE;
                     CreateTask(Task_MoveNPCFollowerAfterForcedMovement, 1);
@@ -502,7 +504,7 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
         {
             if (collision == COLLISION_LEDGE_JUMP)
             {
-                SetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT, FALSE);
+                SetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT, FNPC_FORCED_NONE);
                 PlayerJumpLedge(direction);
             }
 
@@ -513,8 +515,8 @@ static bool8 DoForcedMovement(u8 direction, void (*moveFunc)(u8))
     }
     else
     {
-        if (PlayerHasFollowerNPC())
-            SetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT, TRUE);
+        if (PlayerHasFollowerNPC() && GetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT) != FNPC_FORCED_STAY)
+            SetFollowerNPCData(FNPC_DATA_FORCED_MOVEMENT, FNPC_FORCED_FOLLOW);
 
         playerAvatar->runningState = MOVING;
         moveFunc(direction);
@@ -777,6 +779,17 @@ static void PlayerNotOnBikeTurningInPlace(u8 direction, u16 heldKeys)
     PlayerTurnInPlace(direction);
 }
 
+static bool8 ShouldPlayerRun(u16 heldKeys)
+{
+    u8 autorun = gSaveBlock2Ptr->optionsAutorun;
+    bool8 isHoldingB = (heldKeys & B_BUTTON);
+
+    return (autorun == AUTORUN_OFF && isHoldingB)
+        || (autorun == AUTORUN_ON && !isHoldingB)
+        || (autorun == AUTORUN_TOGGLE && FlagGet(FLAG_AUTORUN_TOGGLE));
+    
+}
+
 static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
 {
     u8 collision = CheckForPlayerAvatarCollision(direction);
@@ -842,7 +855,7 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
     }
 
     if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER)
-     && (heldKeys & B_BUTTON) 
+     && ShouldPlayerRun(heldKeys)
      && FlagGet(FLAG_SYS_B_DASH)
      && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0 
      && !FollowerNPCComingThroughDoor() 
@@ -2136,14 +2149,8 @@ bool8 ObjectMovingOnRockStairs(struct ObjectEvent *objectEvent, u8 direction)
         s16 x = objectEvent->currentCoords.x;
         s16 y = objectEvent->currentCoords.y;
 
-        // TODO Commenting this code to make rock stair running work, idk why tf this is here
-        // TODO followers on sideways stairs
-        /* if (
-            IsFollowerVisible()
-            && GetFollowerObject() != NULL
-            && (objectEvent->isPlayer || objectEvent->localId == OBJ_EVENT_ID_FOLLOWER)
-        )
-            return FALSE; */
+        if (IsFollowerVisible() && GetFollowerObject() != NULL && (objectEvent->isPlayer || objectEvent->localId == OBJ_EVENT_ID_FOLLOWER))
+            return FALSE;
 
         switch (direction)
         {

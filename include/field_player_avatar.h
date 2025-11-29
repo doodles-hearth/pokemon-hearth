@@ -74,4 +74,11 @@ void UpdateSpinData(void);
 void ResetSpinTimer(void);
 bool32 CanTriggerSpinEvolution();
 
+enum AutorunSetting
+{
+    AUTORUN_OFF,
+    AUTORUN_ON,
+    AUTORUN_TOGGLE
+};
+
 #endif // GUARD_FIELD_PLAYER_AVATAR_H
