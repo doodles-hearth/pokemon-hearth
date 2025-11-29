@@ -28,6 +28,16 @@ EVs: 252 Atk / 252 Def / 6 SpA
 - Celebrate
 - Celebrate
 
+Lura (Lurantis)
+Docile Nature
+Level: 100
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+EVs: 252 HP / 252 Atk / 6 SpD
+- Leaf Blade
+- Superpower
+- Celebrate
+- Celebrate
+
 === DEBUG_TRAINER_AI ===
 Name: Debugger
 AI: Basic Trainer

@@ -57,7 +57,7 @@ script YifuCity_Onsen_EventScript_Owner {
 		showmoneybox(18, 0)
 
 		if (checkmoney(500)) {
-			mcdialogue(
+			mcdialogueB(
 				"One entry!",
 				"No, thanks."
 			)
@@ -89,7 +89,7 @@ script YifuCity_Onsen_EventScript_Owner {
 					))
 					closemessage
 
-				case 1:
+				default:
 					hidemoneybox
 
 					setspeaker(SP_NAME_OWNER)

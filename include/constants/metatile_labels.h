@@ -518,6 +518,25 @@
 #define METATILE_PorytilesPrimaryTutorial_TallGrass_TreeTopLeft        0x18E
 #define METATILE_PorytilesPrimaryTutorial_TallGrass_TreeTopRight       0x18F
 
+// gTileset_Quarry
+#define METATILE_Quarry_PawprintDown             0x875
+#define METATILE_Quarry_PawprintLeftDown         0x873
+#define METATILE_Quarry_PawprintLeftDownNotSand  0x8B7
+#define METATILE_Quarry_PawprintLeftUp           0x871
+#define METATILE_Quarry_PawprintLeftUpNotSand    0x8B6
+#define METATILE_Quarry_PawprintRightDown        0x872
+#define METATILE_Quarry_PawprintRightUp          0x870
+#define METATILE_Quarry_PawprintUp               0x874
+#define METATILE_Quarry_Sand                     0x80E
+#define METATILE_Quarry_SandBottomEdge           0x816
+#define METATILE_Quarry_SandBottomLeftEdge       0x815
+#define METATILE_Quarry_SandBottomRightEdge      0x817
+#define METATILE_Quarry_SandLeftEdge             0x80D
+#define METATILE_Quarry_SandRightEdge            0x80F
+#define METATILE_Quarry_SandTopEdge              0x806
+#define METATILE_Quarry_SandTopLeftEdge          0x805
+#define METATILE_Quarry_SandTopRightEdge         0x807
+
 // gTileset_Rustboro
 #define METATILE_Rustboro_Door_Gray  0x81F
 #define METATILE_Rustboro_Door_Tan   0x82F
@@ -831,6 +850,10 @@
 #define METATILE_SecretBaseHearth_AttractMat_TopLeft         0x865
 #define METATILE_SecretBaseHearth_AttractMat_TopMid          0x866
 #define METATILE_SecretBaseHearth_AttractMat_TopRight        0x867
+#define METATILE_SecretBaseHearth_BigPlant_BottomLeft        0x8D8
+#define METATILE_SecretBaseHearth_BigPlant_BottomRight       0x8D9
+#define METATILE_SecretBaseHearth_BigPlant_TopLeft           0x8D0
+#define METATILE_SecretBaseHearth_BigPlant_TopRight          0x8D1
 #define METATILE_SecretBaseHearth_CampChair                  0x888
 #define METATILE_SecretBaseHearth_CampDesk_BottomLeft        0x8A5
 #define METATILE_SecretBaseHearth_CampDesk_BottomMid         0x8A6
@@ -910,10 +933,6 @@
 #define METATILE_SecretBaseHearth_SurfMat_TopLeft            0x832
 #define METATILE_SecretBaseHearth_SurfMat_TopMid             0x833
 #define METATILE_SecretBaseHearth_SurfMat_TopRight           0x834
-#define METATILE_SecretBaseHearth_BigPlant_BottomLeft        0x8D8
-#define METATILE_SecretBaseHearth_BigPlant_BottomRight       0x8D9
-#define METATILE_SecretBaseHearth_BigPlant_TopLeft           0x8D0
-#define METATILE_SecretBaseHearth_BigPlant_TopRight          0x8D1
 
 // gTileset_Shop
 #define METATILE_Shop_Door_Elevator   0x885

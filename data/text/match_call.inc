@@ -728,7 +728,7 @@ MatchCall_PersonalizedText12::
 	.string "Dear {PLAYER},\n"
 	.string "What's a relaxing moment for you?\p"
 	.string "Me, I lay down in the tall grass\n"
-	.string "in the warm, lazy summer evenings,\n"
+	.string "in the warm, lazy summer evenings,\l"
 	.string "listening to the Kricketot's song…\p"
 	.string "Okay, sometimes I get jumped by wild\n"
 	.string "{STR_VAR_2} but it's totally worth it!\p"

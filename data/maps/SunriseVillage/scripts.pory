@@ -149,7 +149,7 @@ script SunriseVillage_Event_BigSisMap_GiveMap {
     ))
     closemessage
     
-    giveitem(ITEM_TOWN_MAP)
+    giveitem(ITEM_TOKU_MAP)
 
     special(GetPlayerBrotherSisterString)
     setspeaker(SP_NAME_BIG_SIS)

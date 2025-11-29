@@ -27,7 +27,7 @@ enum {
 };
 
 struct RegionMap {
-    /*0x000*/ u16 mapSecId;
+    /*0x000*/ mapsec_u16_t mapSecId;
     /*0x002*/ u8 mapSecType;
     /*0x003*/ u8 posWithinMapSec;
     /*0x004*/ u8 mapSecName[20];
@@ -100,14 +100,14 @@ void InitRegionMap(struct RegionMap *regionMap, bool8 zoomed);
 u8 DoRegionMapInputCallback(void);
 bool8 UpdateRegionMapZoom(void);
 void FreeRegionMapIconResources(void);
-u16 GetRegionMapSecIdAt(u16 x, u16 y);
+mapsec_u16_t GetRegionMapSecIdAt(u16 x, u16 y);
 void CreateRegionMapPlayerIcon(u16 tileTag, u16 paletteTag);
 void CreateRegionMapCursor(u16 tileTag, u16 paletteTag);
-bool32 IsEventIslandMapSecId(u8 mapSecId);
-u8 *GetMapName(u8 *dest, u16 regionMapId, u16 padLength);
-u8 *GetMapNameGeneric(u8 *dest, u16 mapSecId);
-u8 *GetMapNameHandleAquaHideout(u8 *dest, u16 mapSecId);
-u16 CorrectSpecialMapSecId(u16 mapSecId);
+bool32 IsEventIslandMapSecId(mapsec_u8_t mapSecId);
+u8 *GetMapName(u8 *dest, mapsec_u16_t regionMapId, u16 padLength);
+u8 *GetMapNameGeneric(u8 *dest, mapsec_u16_t mapSecId);
+u8 *GetMapNameHandleAquaHideout(u8 *dest, mapsec_u16_t mapSecId);
+mapsec_u16_t CorrectSpecialMapSecId(mapsec_u16_t mapSecId);
 void ShowRegionMapForPokedexAreaScreen(struct RegionMap *regionMap);
 void PokedexAreaScreen_UpdateRegionMapVariablesAndVideoRegs(s16 x, s16 y);
 void CB2_OpenFlyMap(void);
@@ -115,7 +115,7 @@ bool8 IsRegionMapZoomed(void);
 void TrySetPlayerIconBlink(void);
 void BlendRegionMap(u16 color, u32 coeff);
 void SetRegionMapDataForZoom(void);
-u8 GetMapsecType(u16 mapSecId);
+u8 GetMapsecType(mapsec_u16_t mapSecId);
 
 //Pokenav Fly funcs
 u32 FilterFlyDestination(struct RegionMap* regionMap);

@@ -1,0 +1,83 @@
+mapscripts Soulkeep_HouseMedium_MapScripts {
+	
+}
+
+script Soulkeep_EventScript_Medium {
+	lock
+
+	if (flag(FLAG_ASKED_SABLEYE_RUBY)) {
+		faceplayer
+		msgbox((
+			// "{CREATE_MUGSHOT MUGSHOT_MEDIUM EMOTE_NORMAL}{SPEAKER NAME_MEDIUM}"
+			"{SPEAKER NAME_MEDIUM}Please, child. Bring me a Sableye Ruby,\nso that I can finish this lens."
+		))
+		closemessage
+	} else {
+		msgbox((
+			// "{CREATE_MUGSHOT MUGSHOT_MEDIUM EMOTE_NORMAL}{SPEAKER NAME_MEDIUM}"
+			"{SPEAKER NAME_MEDIUM}{FONT_SMALL}The power to see the truth unmasked…\n"
+			"The power to reveal the invisible…\l"
+			"I'm almost there, I can feel it…{FONT_NORMAL}"
+		))
+		closemessage
+
+		if (flag(FLAG_ENCOUNTERED_INVISIBLE_CRYPT_WALLS)) {
+			playse(SE_PIN)
+			applymovement(VAR_LAST_TALKED, moves(face_player, emote_exclamation_mark, delay_16 * 6))
+			waitmovement(VAR_LAST_TALKED)
+			waitse
+
+			msgbox((
+				// "{CREATE_MUGSHOT MUGSHOT_MEDIUM EMOTE_NORMAL}{SPEAKER NAME_MEDIUM}"
+				"{SPEAKER NAME_MEDIUM}I'm sure an unruly-looking child such\n"
+				"as yourself has had the guts to visit\l"
+				"the crypt in Soulkeep graveyard…\p"
+				"Tell me, child…\p"
+				"In the crypt, have you struggled in\nvain against invisible walls?\p"
+				"Do you also seek to see the unseen,\nand find your way through the maze?"
+			))
+
+			mcdialogueB(
+				"I do!",
+				"I'm good…"
+			)
+			closemessage
+
+			if (var(VAR_RESULT) == 0) {
+				playse(SE_PIN)
+				applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
+				waitmovement(VAR_LAST_TALKED)
+				waitse
+
+				msgbox((
+					// "{CREATE_MUGSHOT MUGSHOT_MEDIUM EMOTE_NORMAL}{SPEAKER NAME_MEDIUM}"
+					"{SPEAKER NAME_MEDIUM}So you saw it too!\nI knew it! I knew I wasn't mad!\p"
+					"Child… I am crafting a lens that\nwould allow one to see the truth.\p"
+					"But alas…\nI am missing a key component!\p"
+					"I need a Sableye Ruby.\p"
+					"But with all the ghosts haunting this\nsad town, I've not seen one Sableye!\p"
+					"Please, please child.\nBring me a Sableye Ruby."
+				))
+				closemessage
+
+				setflag(FLAG_ASKED_SABLEYE_RUBY)
+			}
+		}
+	}
+	
+
+	release
+}
+
+script Soulkeep_EventScript_MediumApprentice {
+	lock
+	faceplayer
+	msgbox(format(
+		// "{CREATE_MUGSHOT MUGSHOT_MEDIUM EMOTE_NORMAL}{SPEAKER NAME_MEDIUM}"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_BOY_1 EMOTE_NORMAL}{SPEAKER NAME_BOY}I'm training to become a Medium!\p"
+		"But my master is busy with the ghost infestation and whatever's happening in the crypt, so…\p"
+		"She really doesn't teach me much…"
+	))
+	closemessage
+	release
+}

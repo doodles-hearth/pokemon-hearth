@@ -69,10 +69,11 @@
     F(NICK) \
     F(PEBBLE_CRUSH) \
     F(PUSH) \
-    F(WATER_FLAIL) \
+    F(WATER_FAIL) \
     F(SINK) \
     F(SPLASH) \
-    F(PSYBEAM)
+    F(PSYBEAM) \
+    F(SHADOW_CLAW)
 
 /* #define FOREACH_HM(F) \
     F(FLY) \

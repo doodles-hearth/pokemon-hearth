@@ -13,13 +13,13 @@
 #define I_GEM_BOOST_POWER               GEN_LATEST  // In Gen6+, the Gem boost power was reduced from 50% to 30%.
 #define I_USE_EVO_HELD_ITEMS_FROM_BAG   TRUE        // If TRUE, items such as Razor Claw or Electirizer will be usable from the bag to evolve a Pokémon just like in LA.
 #define I_TYPE_BOOST_POWER              GEN_LATEST  // In Gen4+, all regular type boosting held items had their power increased from 10% to 20%. eg. Charcoal
-#define I_SELL_VALUE_FRACTION           GEN_LATEST  // In Gen9+, items sell for 1/4 of their value instead of 1/2.
-#define I_PRICE                         GEN_LATEST  // Some items have varied in value across generations.
-#define I_BERRY_PRICE                   GEN_7       // Since Berries have become unplantable (Gen8+), their price has gone up.
+#define I_SELL_VALUE_FRACTION           GEN_3       // In Gen9+, items sell for 1/4 of their value instead of 1/2.
+#define I_PRICE                         GEN_3       // Some items have varied in value across generations.
+#define I_BERRY_PRICE                   GEN_3       // Since Berries have become unplantable (Gen8+), their price has gone up.
 #define I_POWER_ITEM_BOOST              GEN_LATEST  // In Gen7+, Power Items grant 8 EVs instead of 4 EVs.
 #define I_PREMIER_BALL_BONUS            GEN_LATEST  // In LGPE onwards (Gen8+ here), you are given a Premier Ball for every 10 Poké Balls of any type and in the same purchase. Previously, it only applied to regular Poké Balls and only 1 could be obtained per purchase.
 #define I_ROTOM_CATALOG_THUNDER_SHOCK   GEN_LATEST  // In Gen9+, reverting Rotom to its base form will teach it Thunder Shock even if it knows another move.
-#define I_REPEL_INCLUDE_FAINTED         GEN_LATEST  // In Gen1 and Gen6+, Repels always use the level of the first member of the party to check which wild Pokémon to prevent encounters with, even if that member is fainted. In Gen2-5, it only uses the level of the first non-fainted Pokémon.
+#define I_REPEL_INCLUDE_FAINTED         GEN_3       // In Gen1 and Gen6+, Repels always use the level of the first member of the party to check which wild Pokémon to prevent encounters with, even if that member is fainted. In Gen2-5, it only uses the level of the first non-fainted Pokémon.
 #define I_ITEM_PRICES_HEARTH            TRUE
 
 // TM config
@@ -37,6 +37,17 @@
 #define I_REPEL_LURE_MENU           TRUE    // If TRUE, the player is able to choose which Repel/Lure to use once the previous one runs out. Cursor position is saved by VAR_LAST_REPEL_LURE_USED if not 0.
 
 // Vs. Seeker
-#define I_VS_SEEKER_CHARGING        0     // If this flag is assigned, the Vs Seeker functionality will be enabled. When the player has the Vs. Seeker, Match Call rematch functions will stop working.
+#define I_VS_SEEKER_CHARGING        0     // If this flag is assigned, the Vs Seeker functionality will be enabled. When the player has the Vs. Seeker, Match Call rematch functions will stop working. Documentation for the Vs. Seeker can be found in docs/tutorials/vs_seeker.md.
+
+// ORAS Dowsing Machine
+#define I_ORAS_DOWSING_FLAG         0           // Replace 0 with an unused flag to enable the Dowsing Machine mechanic from ORAS.
+#define I_ORAS_DOWSING_SOUNDS       TRUE        // If TRUE, the Dowsing Machine will make sounds based on how far away the hidden item is.
+#define I_ORAS_DOWSING_COLOR_PAL    15          // The color within the palette that will change based on proximity to the item.
+// Color values for the ORAS dowsing distances/anims
+#define I_ORAS_DOWSING_COLOR_NONE   RGB_GRAY
+#define I_ORAS_DOWSING_COLOR_SLOW   RGB2GBA(56, 120, 255)
+#define I_ORAS_DOWSING_COLOR_NORMAL RGB2GBA(24, 216, 24)
+#define I_ORAS_DOWSING_COLOR_FAST   RGB2GBA(255, 255, 40)
+#define I_ORAS_DOWSING_COLOR_FASTER RGB_RED
 
 #endif // GUARD_CONFIG_ITEM_H

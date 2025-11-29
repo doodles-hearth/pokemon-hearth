@@ -39,6 +39,7 @@
 #define VAR_OBJ_GFX_ID_7           0x4017
 #define VAR_OBJ_GFX_ID_8           0x4018
 #define VAR_OBJ_GFX_ID_9           0x4019
+// These are used for displaying the 6 party mons at campfires!
 #define VAR_OBJ_GFX_ID_A           0x401A
 #define VAR_OBJ_GFX_ID_B           0x401B
 #define VAR_OBJ_GFX_ID_C           0x401C
@@ -351,7 +352,10 @@
 #define VAR_PLAYER_REPUTATION                            0x40DB
 #define VAR_STATE_SCULPTOR                               0x40DC
 #define VAR_GIFT_PICHU_SLOT                              0x40DD
-#define VAR_TARC_SPEEDUP                                 0x40DE // Unused
+// 0: is sailing
+// 1: is in Soulkeep
+// 2: is in Saberside
+#define VAR_SHIP_SABERSIDE_SOULKEEP                      0x40DE
 #define VAR_GIFT_UNUSED_2                                0x40DF // Var is written to, but never read
 #define VAR_GIFT_UNUSED_3                                0x40E0 // Var is written to, but never read
 #define VAR_GIFT_UNUSED_4                                0x40E1 // Var is written to, but never read
@@ -383,8 +387,8 @@
 #define VAR_ROXANNE_CALL_STEP_COUNTER                    0x40F4
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
-#define VAR_UNUSED_0x40F7                                0x40F7 // Unused Var
-#define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
+#define VAR_GINKO_WOODS_CAMPFIRE                         0x40F7
+#define VAR_UNUSED_0x40F8                                0x40F8
 #define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
 #define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
 #define VAR_UNUSED_0x40FB                                0x40FB // Unused Var

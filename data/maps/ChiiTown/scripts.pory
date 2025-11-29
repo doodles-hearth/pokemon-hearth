@@ -156,7 +156,7 @@ script ChiiTown_EventScript_EatingBerries {
 			"Give the girl an Oran Berry?"
 		))
 
-		mcdialogue(
+		mcdialogueB(
 			"Give",
 			"Don't give"
 		)
@@ -221,7 +221,7 @@ script ChiiTown_EventScript_BattlingGirl {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F EMOTE_NORMAL}Hey {STR_VAR_1}! We've been studying Pokémon battles in class. Wanna fight with us?"
 		))
-		mcdialogue(
+		mcdialogueB(
 			"Sure!",
 			"I don't want to."
 		)

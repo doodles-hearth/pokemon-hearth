@@ -307,5 +307,14 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 19,
+      "y": 35,
+      "elevation": 0,
+      "item": "ITEM_MOON_STONE",
+      "flag": "FLAG_HIDDEN_ITEM_SHOGUNATE_MOON_STONE"
+    }
+  ]
 }

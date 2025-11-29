@@ -107,6 +107,12 @@ struct LockedAnimObjectEvents
     u8 count;
 };
 
+struct SpecialEmote
+{
+    u16 index;
+    u8 emotion;
+};
+
 extern const struct OamData gObjectEventBaseOam_32x8;
 extern const struct OamData gObjectEventBaseOam_32x32;
 extern const struct OamData gObjectEventBaseOam_64x64;
@@ -222,6 +228,7 @@ u8 ObjectEventGetHeldMovementActionId(struct ObjectEvent *objectEvent);
 const struct ObjectEventTemplate *FindObjectEventTemplateByLocalId(u8, const struct ObjectEventTemplate *, u8);
 void TryOverrideTemplateCoordsForObjectEvent(const struct ObjectEvent *objectEvent, u8 movementType);
 void OverrideTemplateCoordsForObjectEvent(const struct ObjectEvent *objectEvent);
+void OverrideObjectEventTemplateScript(const struct ObjectEvent *objectEvent, const u8 *script);
 void ShiftStillObjectEventCoords(struct ObjectEvent *objEvent);
 void ObjectEventMoveDestCoords(struct ObjectEvent *objEvent, u32 direction, s16 *x, s16 *y);
 u8 AddCameraObject(u8 linkedSpriteId);
@@ -505,6 +512,10 @@ bool32 IsVirtualObjectAnimating(u8 virtualObjId);
 u8 GetObjectEventIdByLocalId(u8 localId);
 bool32 IsFollowerVisible(void);
 
+struct FollowerMsgInfoExtended;
+void ObjectEventEmote(struct ObjectEvent *objEvent, u8 emotion);
+bool32 CheckMsgInfo(const struct FollowerMsgInfoExtended *info, struct Pokemon *mon, u32 species, struct ObjectEvent *obj);
+
 // run slow
 u8 GetPlayerRunSlowMovementAction(u32);
 //sideways stairs
@@ -515,5 +526,9 @@ u8 GetSidewaysStairsCollision(struct ObjectEvent *objectEvent, u8 dir, u8 curren
 bool8 MovementAction_EmoteX_Step0(struct ObjectEvent *, struct Sprite *);
 bool8 MovementAction_EmoteDoubleExclamationMark_Step0(struct ObjectEvent *, struct Sprite *);
 bool8 PlayerIsUnderWaterfall(struct ObjectEvent *objectEvent);
+
+bool8 GetMonInfo(struct Pokemon *mon, u32 *species, bool32 *shiny, bool32 *female);
+
+u8 GetObjectEventApricornTreeId(u8 objectEventId);
 
 #endif //GUARD_EVENT_OBJECT_MOVEMENT_H

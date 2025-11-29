@@ -1,0 +1,29 @@
+{
+  "id": "MAP_SOULKEEP_DOJO",
+  "name": "Soulkeep_Dojo",
+  "layout": "LAYOUT_SOULKEEP_DOJO",
+  "music": "MUS_B_PALACE",
+  "region_map_section": "MAPSEC_SOULKEEP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_SOULKEEP_DOJO_EXIT",
+      "x": 5,
+      "y": 18,
+      "elevation": 0,
+      "dest_map": "MAP_SOULKEEP_DOJO",
+      "dest_warp_id": "WARP_ID_SOULKEEP_DOJO"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

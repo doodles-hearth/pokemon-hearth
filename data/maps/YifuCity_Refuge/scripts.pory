@@ -231,7 +231,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 		showmoneybox(18, 0)
 
 		if (checkmoney(500)) {
-			mcdialogue(
+			mcdialogueB(
 				"One room, please.",
 				"No, thanks."
 			)
@@ -265,7 +265,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 
 					setflag(FLAG_DAILY_YIFU_HOTEL_ROOM)
 
-				case 1:
+				default:
 					hidemoneybox
 
 					setspeaker(SP_NAME_VALET)
@@ -328,7 +328,7 @@ script YifuCity_Refuge_EventScript_FakeValet {
 		showmoneybox(18, 0)
 
 		if (checkmoney(2500)) {
-			mcdialogue(
+			mcdialogueB(
 				"One room, please.",
 				"No, thanks."
 			)
@@ -362,7 +362,7 @@ script YifuCity_Refuge_EventScript_FakeValet {
 
 					setflag(FLAG_DAILY_YIFU_HOTEL_ROOM)
 
-				case 1:
+				default:
 					hidemoneybox
 
 					setspeaker(SP_NAME_VALET)
