@@ -6564,6 +6564,18 @@
       "secondary_tileset": "gTileset_Quarry",
       "border_filepath": "data/layouts/SabersideQuarry_Antechamber/border.bin",
       "blockdata_filepath": "data/layouts/SabersideQuarry_Antechamber/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_KAZAN_ANTECHAMBER",
+      "name": "MtKazan_Antechamber_Layout",
+      "width": 20,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_CaveVolcano",
+      "border_filepath": "data/layouts/MtKazan_Antechamber/border.bin",
+      "blockdata_filepath": "data/layouts/MtKazan_Antechamber/map.bin"
     }
   ]
 }
