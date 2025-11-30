@@ -1270,3 +1270,25 @@ const struct Tileset gTileset_Quarry =
     .metatileAttributes = gMetatileAttributes_Quarry,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_CaveVolcano =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_CaveVolcano,
+    .palettes = gTilesetPalettes_CaveVolcano,
+    .metatiles = gMetatiles_CaveVolcano,
+    .metatileAttributes = gMetatileAttributes_CaveVolcano,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Volcano =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Volcano,
+    .palettes = gTilesetPalettes_Volcano,
+    .metatiles = gMetatiles_Volcano,
+    .metatileAttributes = gMetatileAttributes_Volcano,
+    .callback = NULL,
+};

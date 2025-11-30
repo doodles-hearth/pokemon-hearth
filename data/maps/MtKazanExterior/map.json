@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_STEEPSTONE_PASS",
-      "offset": 65,
+      "offset": 40,
       "direction": "down"
     },
     {
@@ -24,16 +24,17 @@
       "direction": "down"
     }
   ],
-  "object_events": [
-
-  ],
+  "object_events": [],
   "warp_events": [
-
+    {
+      "warp_id": "WARP_ID_KAZAN_ANTECHAMBER",
+      "x": 15,
+      "y": 49,
+      "elevation": 0,
+      "dest_map": "MAP_MT_KAZAN_ANTECHAMBER",
+      "dest_warp_id": "WARP_ID_KAZAN_ANTECHAMBER_EXIT"
+    }
   ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "coord_events": [],
+  "bg_events": []
 }

@@ -2394,3 +2394,41 @@ const u16 gTilesetPalettes_Quarry[][16] =
 };
 
 const u32 gTilesetTiles_Quarry[] = INCBIN_U32("data/tilesets/secondary/quarry/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_CaveVolcano[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/cave_volcano/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_CaveVolcano[] = INCBIN_U32("data/tilesets/secondary/cave_volcano/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Volcano[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/volcano/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Volcano[] = INCBIN_U32("data/tilesets/secondary/volcano/tiles.4bpp.lz");

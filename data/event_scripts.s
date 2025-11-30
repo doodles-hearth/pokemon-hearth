@@ -1433,3 +1433,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Soulkeep_Library_2F/scripts.scr"
 
 	.include "data/maps/Soulkeep_Dojo/scripts.scr"
+
+	.include "data/maps/MtKazan_Antechamber/scripts.scr"
