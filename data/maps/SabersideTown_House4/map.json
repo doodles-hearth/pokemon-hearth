@@ -1,0 +1,29 @@
+{
+  "id": "MAP_SABERSIDE_TOWN_HOUSE4",
+  "name": "SabersideTown_House4",
+  "layout": "LAYOUT_SABERSIDE_TOWN_HOUSE1",
+  "music": "MUS_RG_CINNABAR",
+  "region_map_section": "MAPSEC_SABERSIDE_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_SABERSIDE_HOUSE_QUARRY_BOT_LEFT_EXIT",
+      "x": 4,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_TOWN",
+      "dest_warp_id": "WARP_ID_SABERSIDE_HOUSE_QUARRY_BOT_LEFT"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

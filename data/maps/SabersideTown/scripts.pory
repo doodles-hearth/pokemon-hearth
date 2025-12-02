@@ -97,9 +97,40 @@ script SabersideTown_EventScript_BoatGuy {
 script SabersideTown_EventScript_LoveSwords {
 	lock
 	msgbox(format(
-		"{SPEAKER NAME_TRAVELER}People come from the whole region to get their hands on a Saberside blade.\p"
+		"{SPEAKER NAME_TRAVELER}People come from the whole region to get their hands on a Saberside-made blade."
 	))
 	closemessage
+	release
+}
+
+script SabersideTown_EventScript_Carkol {
+	lock
+	faceplayer
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1}{SPEAKER NAME_GIRL}Carkol transports ore from the quarry and the forge.\p"
+		"Its inner fire keeps it energized.\nLook at its little legs rolling!\p"
+	))
+	closemessage
+	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
+	waitmovement(0)
+
+	setnamedmon(SPECIES_CARKOL)
+	setdescribedmon(SPECIES_CARKOL)
+
+	release
+}
+
+script SabersideTown_EventScript_Sableye {
+	lock
+	faceplayer
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_MINER}{SPEAKER NAME_MINER}Saberside Quarry is gem-rich, but…\nIt's filled with Sableye!\p"
+		"Ghosts terrify me… I can't do it…\p"
+	))
+	closemessage
+
+	setnamedmon(SPECIES_SABLEYE)
+
 	release
 }
 

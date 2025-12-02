@@ -2201,7 +2201,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .abilities = { ABILITY_STEAM_ENGINE, ABILITY_HEATPROOF, ABILITY_FLASH_FIRE },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Rolycoly"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Coal Bit"),
         .cryId = CRY_ROLYCOLY,
         .natDexNum = NATIONAL_DEX_ROLYCOLY,
         .categoryName = _("Coal"),
@@ -2267,16 +2267,17 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .abilities = { ABILITY_STEAM_ENGINE, ABILITY_FLAME_BODY, ABILITY_FLASH_FIRE },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Carkol"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Coal Chariot"),
         .cryId = CRY_CARKOL,
         .natDexNum = NATIONAL_DEX_CARKOL,
         .categoryName = _("Coal"),
         .height = 11,
         .weight = 780,
         .description = COMPOUND_STRING(
-            "It forms coal inside its body. Coal\n"
-            "dropped by this Pokémon once helped fuel\n"
-            "the lives of people in the Galar region."),
+            "Miners use it to carry ore around.\n"
+            "It rolls its tiny legs to gain speed,\n"
+            "and never tires thanks to its\n"
+            "inner fire keeping it warm."),
         .pokemonScale = 320,
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -2331,7 +2332,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .abilities = { ABILITY_STEAM_ENGINE, ABILITY_FLAME_BODY, ABILITY_FLASH_FIRE },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Coalossal"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Coal Pile"),
         .cryId = CRY_COALOSSAL,
         .natDexNum = NATIONAL_DEX_COALOSSAL,
         .categoryName = _("Coal"),

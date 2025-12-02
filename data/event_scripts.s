@@ -1435,3 +1435,21 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Soulkeep_Dojo/scripts.scr"
 
 	.include "data/maps/MtKazan_Antechamber/scripts.scr"
+
+	.include "data/maps/SabersideTown_House1/scripts.scr"
+
+	.include "data/maps/SabersideTown_House3/scripts.scr"
+
+	.include "data/maps/SabersideTown_House2/scripts.scr"
+
+	.include "data/maps/SabersideTown_House4/scripts.scr"
+
+	.include "data/maps/SabersideTown_House5/scripts.scr"
+
+	.include "data/maps/SabersideTown_House6/scripts.scr"
+
+	.include "data/maps/SabersideTown_Forge_1F/scripts.scr"
+
+	.include "data/maps/SabersideTown_Forge_2F/scripts.scr"
+
+	.include "data/maps/ScenicHotSprings/scripts.scr"

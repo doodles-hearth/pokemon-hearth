@@ -3809,7 +3809,7 @@
       "id": "LAYOUT_HOUSE_WHITE_STONE_HEARTH",
       "name": "House_WhiteStoneHearth_Layout",
       "width": 10,
-      "height": 8,
+      "height": 9,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",
@@ -5525,7 +5525,7 @@
       "id": "LAYOUT_SILVERIDGE_SCULPTORS_HOUSE",
       "name": "Silveridge_SculptorsHouse_Layout",
       "width": 15,
-      "height": 8,
+      "height": 9,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",
@@ -6004,7 +6004,7 @@
     {
       "id": "LAYOUT_SCENIC_ROUTE_SABERSIDE",
       "name": "ScenicRouteSaberside_Layout",
-      "width": 72,
+      "width": 80,
       "height": 35,
       "border_width": 2,
       "border_height": 2,
@@ -6576,6 +6576,54 @@
       "secondary_tileset": "gTileset_CaveVolcano",
       "border_filepath": "data/layouts/MtKazan_Antechamber/border.bin",
       "blockdata_filepath": "data/layouts/MtKazan_Antechamber/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_TOWN_HOUSE1",
+      "name": "SabersideTown_House1_Layout",
+      "width": 10,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseStone",
+      "border_filepath": "data/layouts/SabersideTown_House1/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideTown_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_TOWN_FORGE_1F",
+      "name": "SabersideTown_Forge_1F_Layout",
+      "width": 10,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseStone",
+      "border_filepath": "data/layouts/SabersideTown_Forge_1F/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideTown_Forge_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_TOWN_FORGE_2F",
+      "name": "SabersideTown_Forge_2F_Layout",
+      "width": 10,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseStone",
+      "border_filepath": "data/layouts/SabersideTown_Forge_2F/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideTown_Forge_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCENIC_HOT_SPRINGS",
+      "name": "ScenicHotSprings_Layout",
+      "width": 80,
+      "height": 24,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_ScenicRoute",
+      "border_filepath": "data/layouts/ScenicHotSprings/border.bin",
+      "blockdata_filepath": "data/layouts/ScenicHotSprings/map.bin"
     }
   ]
 }

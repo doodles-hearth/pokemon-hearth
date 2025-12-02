@@ -70,7 +70,8 @@
     "WindsweptRouteBottom",
     "SakuTown_BufferArea",
     "YifuCity_BufferArea",
-    "SabersideQuarry_Exterior"
+    "SabersideQuarry_Exterior",
+    "ScenicHotSprings"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "SunriseVillage_PlayersHouse_LR",
@@ -695,7 +696,15 @@
     "LittlerootTown_ProfessorBirchsLab"
   ],
   "gMapGroup_IndoorSaberside": [
-    "SabersideTown_Refuge"
+    "SabersideTown_Refuge",
+    "SabersideTown_House1",
+    "SabersideTown_House2",
+    "SabersideTown_House3",
+    "SabersideTown_House4",
+    "SabersideTown_House5",
+    "SabersideTown_House6",
+    "SabersideTown_Forge_1F",
+    "SabersideTown_Forge_2F"
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"
