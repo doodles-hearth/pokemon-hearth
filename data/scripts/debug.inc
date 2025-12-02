@@ -68,7 +68,9 @@ Debug_CheatStart::
 	giveitem ITEM_TOKU_MAP
 	giveitem ITEM_POKE_BALL, 20
 	giveitem ITEM_TM_SPLASH
+	giveitem ITEM_TM_EARTHQUAKE
 	giveitem ITEM_SECRET_SURF
+	giveitem ITEM_SECRET_CLIMB
 
 	resumefakertc
 
