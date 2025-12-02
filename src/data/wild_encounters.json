@@ -12615,7 +12615,7 @@
               {
                 "min_level": 20,
                 "max_level": 23,
-                "species": "SPECIES_PIDGEOTTO"
+                "species": "SPECIES_DEERLING_AUTUMN"
               },
               {
                 "min_level": 20,
@@ -12630,7 +12630,7 @@
               {
                 "min_level": 20,
                 "max_level": 23,
-                "species": "SPECIES_DEERLING_AUTUMN"
+                "species": "SPECIES_PIDGEOTTO"
               },
               {
                 "min_level": 20,
@@ -13454,16 +13454,16 @@
               {
                 "min_level": 5,
                 "max_level": 5,
+                "species": "SPECIES_NONE"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
                 "species": "SPECIES_CHIMECHO"
               },
               {
                 "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_DROWZEE"
-              },
-              {
-                "min_level": 5,
-                "max_level": 5,
                 "species": "SPECIES_NONE"
               },
               {
@@ -13505,6 +13505,75 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_NONE"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_SOULKEEP_GRAVEYARD",
+          "base_label": "gSoulkeepGraveyard_Night",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_MISDREAVUS"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_LITWICK"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_LITWICK"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_LITWICK"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_GASTLY"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_HAUNTER"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_MISDREAVUS"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_MISDREAVUS"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_GASTLY"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_GASTLY"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_GASTLY"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_GASTLY"
               }
             ]
           }

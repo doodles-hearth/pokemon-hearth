@@ -60,10 +60,10 @@ script Soulkeep_House1_EventScript_Fennekin {
     faceplayer
 	setseenmon(SPECIES_FENNEKIN)
 	setspeakertomonname(SPECIES_FENNEKIN)
+	playmoncry(SPECIES_FENNEKIN, CRY_MODE_NORMAL)
     msgbox(format(
         "Growr…"
     ))
-	playmoncry(SPECIES_FENNEKIN, CRY_MODE_NORMAL)
     waitmoncry
 	closemessage
     release

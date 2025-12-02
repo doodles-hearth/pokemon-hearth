@@ -400,6 +400,16 @@ u16 GetCurrentMapWildMonHeaderId(void)
 
                 i += alteringCaveId;
             }
+            // No wild Pokémon during the day in Soulkeep Graveyard if the town is still haunted!
+            else if (
+                gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SOULKEEP_GRAVEYARD) &&
+                gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SOULKEEP_GRAVEYARD) &&
+                !FlagGet(FLAG_DEFEATED_SOULKEEP_HAUNTING) &&
+                IsBetweenHours(gLocalTime.hours, EARLY_MORNING_HOUR_BEGIN, AFTERNOON_HOUR_END)
+            )
+            {
+                return HEADER_NONE;
+            }
 
             return i;
         }

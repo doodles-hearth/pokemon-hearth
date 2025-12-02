@@ -134,6 +134,47 @@ script SabersideTown_EventScript_Sableye {
 	release
 }
 
+script SabersideTown_EventScript_ShowMeSkarmory {
+	lock
+	faceplayer
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL}{SPEAKER NAME_LITTLE_GIRL}Ya see this super cool fountain?\nThat's my faaaavorite Pokémon!"
+	))
+	closemessage
+
+	if (checkspecies(SPECIES_SKARMORY)) {
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
+		waitmovement(VAR_LAST_TALKED)
+
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL}{SPEAKER NAME_LITTLE_GIRL}Oh! Oh! Oh! You have a Skramory?\nShow it! Show me the Skramory!!"
+		))
+		closemessage
+
+		checkspecies_choose(SPECIES_SKARMORY)
+
+		if (var(VAR_RESULT)) {
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL}{SPEAKER NAME_LITTLE_GIRL}I love it! I love it soooo much!\p"
+				"He's even more metal-y than the fountain!"
+			))
+			closemessage
+
+			// TODO EVA reward: Skarmory Feather?
+
+			setflag(FLAG_SHOWED_SKARMORY_TO_LITTLE_GIRL)
+		} else {
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL}{SPEAKER NAME_LITTLE_GIRL}Awww, nevermind…"
+			))
+			closemessage
+		}
+	}
+
+	release
+}
+
 script SabersideTown_EventScript_TownSign {
 	msgbox(format("Saberside Town\n“A town where folks are strong as steel!”"), MSGBOX_SIGN)
 }
