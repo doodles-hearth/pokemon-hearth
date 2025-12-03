@@ -1,1 +1,27 @@
 mapscripts SabersideTown_House5_MapScripts {}
+
+script SabersideTown_House5_EventScript_Miner {
+    lock
+    faceplayer
+    msgbox(format(
+        "The quarry's really dark. You gotta have some kind of light in there!\p"
+        "That's why I caught a Ponyta on the route east from here!"
+    ))
+    closemessage
+    setnamedmon(SPECIES_PONYTA)
+    release
+}
+
+script SabersideTown_House5_EventScript_Ponyta {
+    lock
+    faceplayer
+	setseenmon(SPECIES_PONYTA)
+	setspeakertomonname(SPECIES_PONYTA)
+	playmoncry(SPECIES_PONYTA, CRY_MODE_NORMAL)
+    msgbox(format(
+        "He-e-e-e!"
+    ))
+    waitmoncry
+    release
+    end
+}

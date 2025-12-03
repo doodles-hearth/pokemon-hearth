@@ -1453,3 +1453,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SabersideTown_Forge_2F/scripts.scr"
 
 	.include "data/maps/ScenicHotSprings/scripts.scr"
+
+	.include "data/maps/Windycape_House1/scripts.scr"
+
+	.include "data/maps/Windycape_House2/scripts.scr"

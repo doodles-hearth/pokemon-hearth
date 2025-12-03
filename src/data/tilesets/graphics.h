@@ -2432,3 +2432,22 @@ const u16 gTilesetPalettes_Volcano[][16] =
 };
 
 const u32 gTilesetTiles_Volcano[] = INCBIN_U32("data/tilesets/secondary/volcano/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_HouseWindycape[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_windycape/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_HouseWindycape[] = INCBIN_U32("data/tilesets/secondary/house_windycape/tiles.4bpp.lz");
