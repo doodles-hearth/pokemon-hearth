@@ -13,7 +13,7 @@
 #define RGB_ALPHA       (1 << 15)
 #define IS_ALPHA(color) ((color) & RGB_ALPHA)
 
-#define RGB_BLACK      RGB2GBA(41, 49, 41)
+#define RGB_BLACK      RGB(0, 0, 0)
 #define RGB_WHITE      RGB(31, 31, 31)
 #define RGB_OFF_WHITE  RGB2GBA(247, 239, 231)
 #define RGB_OFF_WHITE_SHADOW RGB2GBA(196, 191, 177)
