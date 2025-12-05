@@ -1054,12 +1054,70 @@ void AnimateFlash(u8 newFlashLevel)
     LockPlayerFieldControls();
 }
 
-void WriteFlashScanlineEffectBuffer(u8 flashLevel)
+void WriteFlashScanlineEffectBuffer(u8 flashRadius)
 {
-    if (flashLevel)
+    if (flashRadius)
     {
-        SetFlashScanlineEffectWindowBoundaries(&gScanlineEffectRegBuffers[0][0], DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2, sFlashLevelToRadius[flashLevel]);
-        CpuFastSet(&gScanlineEffectRegBuffers[0], &gScanlineEffectRegBuffers[1], 480);
+        u32 followSpriteId = GetFollowerObject()->spriteId;
+        u32 playerSpriteId= gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)].spriteId;
+
+        u32 species = OW_SPECIES(GetFollowerObject());
+
+        u32 speciesFlash = gSpeciesInfo[species].flashRadius;
+        if (gSprites[followSpriteId].invisible)
+            speciesFlash = 20;
+
+        s32 followX = gSprites[followSpriteId].x;
+        s32 followY = gSprites[followSpriteId].y;
+
+        s32 playerX = gSprites[playerSpriteId].x;
+        s32 playerY = gSprites[playerSpriteId].y;
+
+        s8 diffX = playerX - followX;
+        s8 diffY = playerY - followY;
+
+        if (speciesFlash == 0)
+        {
+            speciesFlash = 20;
+            diffX = 0;
+            diffY = 0;
+        }
+
+        if (gFlashX != diffX || gFlashY != diffY || flashRadius != speciesFlash || gDrawFlash)
+        {
+            gDrawFlash = FALSE;
+
+            if (speciesFlash == 20)
+            {
+                if (gFlashX > 0)
+                    gFlashY--;
+                else if (gFlashX < 0)
+                    gFlashX++;
+
+                if (gFlashY > 0)
+                    gFlashY--;
+                else if (gFlashY < 0)
+                    gFlashY++;
+            }
+            else
+            {
+                gFlashX = diffX;
+                gFlashY = diffY;
+            }
+
+            if (flashRadius != speciesFlash)
+            {
+                if (flashRadius < speciesFlash)
+                    flashRadius++;
+                else
+                    flashRadius--;
+                gSaveBlock1Ptr->flashLevel = flashRadius;
+            }
+
+            CpuFill16(0, &gScanlineEffectRegBuffers[0], sizeof(gScanlineEffectRegBuffers) / 2);
+            SetFlashScanlineEffectWindowBoundaries(&gScanlineEffectRegBuffers[0][0], DISPLAY_WIDTH / 2 - gFlashX, DISPLAY_HEIGHT / 2 - gFlashY, flashRadius);
+            CpuFastSet(&gScanlineEffectRegBuffers[0], &gScanlineEffectRegBuffers[1], 480);
+        }
     }
 }
 

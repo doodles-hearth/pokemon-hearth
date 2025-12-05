@@ -64,6 +64,10 @@ extern bool8 gSkipShowMonAnim;
 extern u8 gTimeOfDay;
 extern s16 gTimeUpdateCounter;
 
+extern s8 gFlashX;
+extern s8 gFlashY;
+extern bool8 gDrawFlash;
+
 extern struct TimeBlendSettings gTimeBlend;
 
 extern const struct UCoords32 gDirectionToVectors[];
