@@ -59,14 +59,14 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 			if(flag(FLAG_CUT_QUEST_CUT_ALL_GRASS)){
 				setspeaker(SP_NAME_OLD_MAN)
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}The sun is setting on another day.\p"
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}The sun is setting on another day.\p"
 					"Life is good."
 				))
 				closemessage
 			} else {
 				setspeaker(SP_NAME_OLD_MAN)
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Are you finding the Secret of Blade useful?\p"
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}Are you finding the Secret of Blade useful?\p"
 					"No, I still haven't trimmed my garden. I really should get to it…"
 				))
 				closemessage
@@ -76,7 +76,7 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 	else {
 		setspeaker(SP_NAME_OLD_MAN)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Hello, there. I don't get many visitors, so sit down, have some tea!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}Hello, there. I don't get many visitors, so sit down, have some tea!"
 		))
 		closemessage
 
@@ -86,7 +86,7 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 
 		setspeaker(SP_NAME_OLD_MAN)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}What? My garden is overrun by weeds?\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}What? My garden is overrun by weeds?\p"
 			"Ho ho ho…\p"
 			"You're right, I have been neglecting it lately. You see, my old back isn't as strong as it used to be.\p"
 			"I'm going to let you in on a secret…\p"
@@ -100,7 +100,7 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 
 		setspeaker(SP_NAME_OLD_MAN)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}There is a variety of slicing moves that your Pokémon can use.\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}There is a variety of slicing moves that your Pokémon can use.\p"
 			"They will now be able to use those moves to cut tall grass and little trees that block your path.\p"
 			"You will need at least one official Dojo Token for that, though.\p"
 			"We can't be going around cutting trees irresponsibly, now can we?\p"
@@ -113,7 +113,7 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 
 		setspeaker(SP_NAME_OLD_MAN)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN EMOTE_NORMAL}Want to know another secret?\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}Want to know another secret?\p"
 			"That powerful swordmaster I mentioned…\p"
 			"That was me in my youthful days,\nho ho ho…"
 		))

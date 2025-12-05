@@ -80,7 +80,7 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
 
         msgbox(
             format(
-				"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL}"
+				"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 0}{SPEAKER NAME_GIRL}"
                 "A visitor, hi, pleased to meet you!!\nYou have such pretty Pokémon!\p"
 				"I brought Numel from my home, hoping to trade it for a local Heracross.\p"
 				"What do you say? Want to trade a Heracross for my Numel?"
@@ -97,7 +97,7 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
             msgbox(format(
 				
-				"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL}"
+				"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 0}{SPEAKER NAME_GIRL}"
 				"It's okay. I'll hang out with Numel for a while!"
 			))
             closemessage
@@ -109,7 +109,7 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
 				playse(SE_PIN)
 				applymovement(VAR_LAST_TALKED, moves(emote_happy))
                 msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL}"
+					"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 0}{SPEAKER NAME_GIRL}"
 					"It's okay. I'll hang out with Numel for a while!"
 				))
                 closemessage
@@ -118,7 +118,7 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
                 specialvar(VAR_RESULT, GetTradeSpecies)
                 if (var(VAR_RESULT) != VAR_0x8009) {
                     msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL}"
+						"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 0}{SPEAKER NAME_GIRL}"
 						"I'm sure your Pokémon is very nice, but I'm looking for a Heracross!"
 					))
                     closemessage
@@ -139,7 +139,7 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
 					playse(SE_PIN)
 					applymovement(VAR_LAST_TALKED, moves(emote_happy))
                     msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 EMOTE_NORMAL}{SPEAKER NAME_GIRL}"
+						"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 0}{SPEAKER NAME_GIRL}"
 						"Woah!\nIt's bigger than I thought! Amazing!!\p"
 						"Please, take good care of my girl Luo Luo, okay?"
                     ), MSGBOX_DEFAULT)
@@ -182,7 +182,7 @@ script YifuCity_Refuge_2F_EventScript_TravelingMerchant {
 	faceplayer
 	setspeaker(SP_NAME_OKADA)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Oh, good evening, {PLAYER}! I'm exhausted! I've been walking since morning, I'm calling it a day.\p"
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Oh, good evening, {PLAYER}! I'm exhausted! I've been walking since morning, I'm calling it a day.\p"
 		"Never underestimate a good night's sleep!"
 	))
 	closemessage
@@ -194,7 +194,7 @@ script YifuCity_Refuge_2F_EventScript_Tourist {
 	faceplayer
 	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 EMOTE_NORMAL}I'm so glad we're able to spend our vacation here."
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}I'm so glad we're able to spend our vacation here."
 	))
 	closemessage
 	release
@@ -205,7 +205,7 @@ script YifuCity_Refuge_2F_EventScript_TouristKid {
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY EMOTE_NORMAL}We went to see the Dojo's dancers today!"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY 0}We went to see the Dojo's dancers today!"
 	))
 	closemessage
 	release
@@ -219,7 +219,7 @@ script YifuCity_Refuge_2F_EventScript_TouristGirl {
 	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 EMOTE_NORMAL}Ughh, I have to share the bed with my baby brother…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 0}Ughh, I have to share the bed with my baby brother…\p"
 		"Life is SO unfair!"
 	))
 	closemessage
@@ -242,13 +242,13 @@ script YifuCity_Refuge_2F_EventScript_Castform {
 script YifuCity_Refuge_2F_EventScript_SameRoom {
 	trainerbattle_single(
 		TRAINER_YAMATO,
-		format("{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}Hey! What are you doing in my room?"),
+		format("{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN 0}Hey! What are you doing in my room?"),
 		format("This is outrageous!"),
 		YifuCity_Refuge_2F_EventScript_SameRoomPostBattle
 	)
 	setspeaker(SP_NAME_OLD_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I'd complain at the lobby, but that valet seems like a bad type."
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN 0}I'd complain at the lobby, but that valet seems like a bad type."
 	), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -260,7 +260,7 @@ script YifuCity_Refuge_2F_EventScript_SameRoomPostBattle {
 	waitmovement(LOCALID_YIFU_REFUGE_SAME_ROOM)
 
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}"
 		"You're saying we both got the same room?\p"
 		"Bah… I guess we're going to have to share…\p"
 		"The service here used to be cheaper and a whole lot better."

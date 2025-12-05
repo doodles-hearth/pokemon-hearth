@@ -37,7 +37,7 @@ script Soulkeep_EventScript_WhereGuang {
 	lock
 	faceplayer
 	msgbox(format(
-		"{SPEAKER NAME_FARMER}{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Guang has been missing for days now…\n"
+		"{SPEAKER NAME_FARMER}{CREATE_MUGSHOT MUGSHOT_FARMER 0}Guang has been missing for days now…\n"
 		"Always sneaking around the crypt…\p"
 		"I hope he's not lost in there somewhere…"
 	))

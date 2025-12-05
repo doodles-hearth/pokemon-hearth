@@ -5,11 +5,11 @@ mapscripts YifuCity_HotSprings_MapScripts {
 script YifuCity_HotSprings_EventScript_OldWoman {
 	trainerbattle_single(
 		TRAINER_SACHIKO,
-		format("{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}What do you mean, it burns?\nThe water's barely warm!"),
+		format("{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}What do you mean, it burns?\nThe water's barely warm!"),
 		format("Ayo, what a burning defeat…")
 	)
 	setspeaker(SP_NAME_OLD_LADY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}My Pokémon need to relax a little."), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}My Pokémon need to relax a little."), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -19,7 +19,7 @@ script YifuCity_HotSprings_EventScript_OldWoman2 {
 	playse(SE_PIN)
 	applymovement(LOCALID_HOT_SPRINGS_OLD_WOMAN_2, moves(emote_music))
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}The scorching water is heaven for this old skin…"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}The scorching water is heaven for this old skin…"
 	))
 	closemessage
 	release
@@ -29,11 +29,11 @@ script YifuCity_HotSprings_EventScript_HotSpringM {
 	lock
 	trainerbattle_single(
 		TRAINER_FUTOSHI,
-		format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_M EMOTE_NORMAL}I come here to relax and show off my hot bod!"),
+		format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_M 0}I come here to relax and show off my hot bod!"),
 		format("I take it you're not impressed?")
 	)
 	setspeaker(SP_NAME_HOT_SPRING_GUY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_M EMOTE_NORMAL}I wonder why girls never want to talk to me…"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_M 0}I wonder why girls never want to talk to me…"), MSGBOX_AUTOCLOSE)
 	release
 }
 
@@ -41,14 +41,14 @@ script YifuCity_HotSprings_EventScript_HotSpringF {
 	lock
 	trainerbattle_single(
 		TRAINER_WAKAE,
-		format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}Don't talk to me! I forgot my towel!"),
+		format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F 0}Don't talk to me! I forgot my towel!"),
 		format("Will you leave now?")
 	)
 	setspeaker(SP_NAME_HOT_SPRING_GAL)
 	setnamedmon(SPECIES_TORKOAL)
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F EMOTE_NORMAL}Maybe I can get that Torkoal to bring me a towel…"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F 0}Maybe I can get that Torkoal to bring me a towel…"), MSGBOX_AUTOCLOSE)
 	release
 }
 
@@ -98,7 +98,7 @@ script YifuCity_Onsen_EventScript_Leave {
 
 	setspeaker(SP_NAME_OWNER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Feeling relaxed enough?\nAny exit is permanent!"
+		"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN 0}Feeling relaxed enough?\nAny exit is permanent!"
 	))
 
 	mcdialogueB(

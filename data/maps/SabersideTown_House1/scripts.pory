@@ -8,12 +8,12 @@ script SabersideTown_House1_EventScript_Nerd {
 	if(flag(FLAG_DAILY_MON_CRY_RIDDLE))
 	{
 		msgbox(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}{SPEAKER NAME_PKMN_NERD}My th-throat needs r-r-rest!\nC-come back tomorrow!"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}My th-throat needs r-r-rest!\nC-come back tomorrow!"
 		)
 	} else {
 		special(AssignRandomMonCryVars)
 		msgbox(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}{SPEAKER NAME_PKMN_NERD}Well h-hello, k-k-kuh-kid…\nThey c-c-call me the Pokémon Nerd!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}Well h-hello, k-k-kuh-kid…\nThey c-c-call me the Pokémon Nerd!\p"
 			"I've buh-been practicing P-Pokémon\nimituh-tations for a luh-long time!\p"
 			"As you can s-s-see I have a s-slight\nst-t-t-tuh-tuh-STUTTER…\l"
 			"Except when I imuh-mitate Pokémon!\p"
@@ -26,7 +26,7 @@ script SabersideTown_House1_EventScript_Nerd {
 		playmoncry(VAR_0x8008, CRY_MODE_NORMAL)
 		waitmoncry
 
-		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}{SPEAKER NAME_PKMN_NERD}COUGH! COUGH! Ugh, my th-throat…\pW-w-well? C-can you guh-guess which\nP-Pokémon I was d-d-doing?")
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}COUGH! COUGH! Ugh, my th-throat…\pW-w-well? C-can you guh-guess which\nP-Pokémon I was d-d-doing?")
 
 		bufferspeciesname(STR_VAR_1, VAR_0x8004)
 		dynmultipush("{STR_VAR_1}", VAR_0x8004)
@@ -44,17 +44,17 @@ script SabersideTown_House1_EventScript_Nerd {
 
 		if (var(VAR_RESULT) == VAR_0x8008) 
 		{
-			msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}{SPEAKER NAME_PKMN_NERD}Y-yuh… Yep!! That was it!\nC-c-cuh-congrats, kuh-kid!")
+			msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}Y-yuh… Yep!! That was it!\nC-c-cuh-congrats, kuh-kid!")
 
 			// TODO EVA reward
 
 			setflag(FLAG_DAILY_MON_CRY_RIDDLE_WON)
-			msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}{SPEAKER NAME_PKMN_NERD}My th-throat needs r-r-rest!\nC-come back tomorrow!")
+			msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}My th-throat needs r-r-rest!\nC-come back tomorrow!")
 		}
 		else
 		{
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}{SPEAKER NAME_PKMN_NERD}N-n-nuh-nuh-NO, DINGUS!\nS-such a r-r-rookie mistake!"
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}N-n-nuh-nuh-NO, DINGUS!\nS-such a r-r-rookie mistake!"
 				"T-to think I s-strained my voice\nf-f-f-for this!\lG-g-get out of muh-my sight!"
 			)
 		}

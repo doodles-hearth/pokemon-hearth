@@ -20,11 +20,11 @@ script WindyCape_EventScript_Mart {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_SHOPKEEPER)
-	message(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Good day, welcome to Windycape's market!"))
+	message(format("{CREATE_MUGSHOT MUGSHOT_CLERK 0}Good day, welcome to Windycape's market!"))
 	waitmessage
 	pokemart(Soulkeep_Mart)
 	setspeaker(SP_NAME_SHOPKEEPER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Thank you for your business!"), MSGBOX_DEFAULT)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_CLERK 0}Thank you for your business!"), MSGBOX_DEFAULT)
 	release
 }
 

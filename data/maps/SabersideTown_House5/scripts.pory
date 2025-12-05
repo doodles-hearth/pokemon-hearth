@@ -4,8 +4,8 @@ script SabersideTown_House5_EventScript_Miner {
     lock
     faceplayer
     msgbox(format(
-        "The quarry's really dark. You gotta have some kind of light in there!\p"
-        "That's why I caught a Ponyta on the route east from here!"
+        "{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}The quarry's really dark. You gotta have some kind of light in there!\p"
+        "That's why we caught a Ponyta on the route east from here!"
     ))
     closemessage
     setnamedmon(SPECIES_PONYTA)
@@ -24,4 +24,16 @@ script SabersideTown_House5_EventScript_Ponyta {
     waitmoncry
     release
     end
+}
+
+script SabersideTown_House5_EventScript_Miner2 {
+    lock
+    faceplayer
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}I remember how fickle Ponyta's light used to be.\p"
+        "But the more we train her, the more her light grows with her!"
+    ))
+    closemessage
+    setnamedmon(SPECIES_PONYTA)
+    release
 }
