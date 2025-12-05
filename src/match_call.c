@@ -856,7 +856,7 @@ static const struct MatchCallText sMatchCallPersonalizedTexts[] =
     { .text = MatchCall_PersonalizedText9,  .stringVarFuncIds = STRS_NORMAL_MSG },
     { .text = MatchCall_PersonalizedText10, .stringVarFuncIds = STRS_NORMAL_MSG },
     { .text = MatchCall_PersonalizedText11, .stringVarFuncIds = STRS_NORMAL_MSG },
-    { .text = MatchCall_PersonalizedText12, .stringVarFuncIds = STRS_NORMAL_MSG },
+    { .text = MatchCall_PersonalizedText12, .stringVarFuncIds = { STR_TRAINER_NAME, STR_SPECIES_IN_ROUTE, STR_NONE } },
     { .text = MatchCall_PersonalizedText13, .stringVarFuncIds = { STR_TRAINER_NAME, STR_SPECIES_IN_ROUTE, STR_NONE } },
     { .text = MatchCall_PersonalizedText14, .stringVarFuncIds = STRS_NORMAL_MSG },
     { .text = MatchCall_PersonalizedText15, .stringVarFuncIds = STRS_NORMAL_MSG },

@@ -22,6 +22,7 @@ const u8 gText_ChatotPostSender_Hariko[] = _("Hariko");
 const u8 gText_ChatotPostSender_Natsuki[] = _("Natsuki");
 const u8 gText_ChatotPostSender_Okada[] = _("Okada");
 const u8 gText_ChatotPostSender_Kaba[] = _("Elder Kaba");
+const u8 gText_ChatotPostSender_Anon[] = _("Anonymous");
 
 // Makes Chatot appear
 void SpawnPostChatot(void)
