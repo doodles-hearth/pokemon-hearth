@@ -3786,7 +3786,9 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .evolutions = EVOLUTION(
             {EVO_LEVEL, 30, SPECIES_TOXIKYU_AMPED, CONDITIONS({IF_AMPED_NATURE})},
             {EVO_LEVEL, 30, SPECIES_TOXIKYU_LOW_KEY, CONDITIONS({IF_LOW_KEY_NATURE})}
-        )
+        ),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_PURPLE,
     },
 
 [SPECIES_TOXIKYU_LOW_KEY] =
@@ -3855,6 +3857,8 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .levelUpLearnset = sToxikyuLowKeyLevelUpLearnset,
         .teachableLearnset = sToxikyuLowKeyTeachableLearnset,
         .formSpeciesIdTable = sToxikyuFormSpeciesIdTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_PURPLE,
     },
 
     [SPECIES_TOXIKYU_AMPED] =
@@ -3923,6 +3927,8 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .levelUpLearnset = sToxikyuAmpedLevelUpLearnset,
         .teachableLearnset = sToxikyuAmpedTeachableLearnset,
         .formSpeciesIdTable = sToxikyuFormSpeciesIdTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_YELLOW,
     },
 
 #endif

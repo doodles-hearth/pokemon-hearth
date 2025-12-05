@@ -5445,6 +5445,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggMoveLearnset = sDarumakaEggMoveLearnset,
         .formSpeciesIdTable = sDarumakaFormSpeciesIdTable,
         .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_DARMANITAN_STANDARD}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
     [SPECIES_DARMANITAN_STANDARD] =
@@ -5516,6 +5518,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sDarmanitanTeachableLearnset,
         .formSpeciesIdTable = sDarmanitanFormSpeciesIdTable,
         .formChangeTable = sDarmanitanFormChangeTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
     [SPECIES_DARMANITAN_ZEN] =
@@ -5538,7 +5542,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .abilities = { ABILITY_SHEER_FORCE, ABILITY_NONE, ABILITY_ZEN_MODE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Darmanitan"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Hot Statue"),
         .cryId = CRY_DARMANITAN,
         .natDexNum = NATIONAL_DEX_DARMANITAN,
         .categoryName = _("Blazing"),
@@ -5575,6 +5579,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sDarmanitanTeachableLearnset,
         .formSpeciesIdTable = sDarmanitanFormSpeciesIdTable,
         .formChangeTable = sDarmanitanFormChangeTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
 #if P_GALARIAN_FORMS
@@ -10505,6 +10511,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sLitwickTeachableLearnset,
         .eggMoveLearnset = sLitwickEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 41, SPECIES_LAMPENT}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_PURPLE,
     },
 
     [SPECIES_LAMPENT] =
@@ -10580,6 +10588,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .levelUpLearnset = sLampentLevelUpLearnset,
         .teachableLearnset = sLampentTeachableLearnset,
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_DUSK_STONE, SPECIES_CHANDELURE}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_PURPLE,
     },
 
     [SPECIES_CHANDELURE] =
@@ -10655,6 +10665,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sChandelureTeachableLearnset,
         .formSpeciesIdTable = sChandelureFormSpeciesIdTable,
         .formChangeTable = sChandelureFormChangeTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_PURPLE,
     },
 
 #if P_GEN_9_MEGA_EVOLUTIONS
