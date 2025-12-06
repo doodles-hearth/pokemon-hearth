@@ -1303,3 +1303,14 @@ const struct Tileset gTileset_HouseWindycape =
     .metatileAttributes = gMetatileAttributes_HouseWindycape,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Forge =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Forge,
+    .palettes = gTilesetPalettes_Forge,
+    .metatiles = gMetatiles_Forge,
+    .metatileAttributes = gMetatileAttributes_Forge,
+    .callback = NULL,
+};
