@@ -1369,6 +1369,9 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         SetBoxMonData(boxMon, MON_DATA_ABILITY_NUM, &value);
     }
 
+    value = CreateNewColoration(species, isShiny);
+    SetBoxMonData(boxMon, MON_DATA_COLORATION, &value);
+
     GiveBoxMonInitialMoveset(boxMon);
 }
 
@@ -2830,6 +2833,9 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 }.combinedValue;
             }
             break;
+        case MON_DATA_COLORATION:
+            retVal = boxMon->coloration;
+            break;
         default:
             break;
         }
@@ -3235,6 +3241,8 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
             boxMon->evolutionTracker2 = evoTracker.tracker2;
             break;
         }
+        case MON_DATA_COLORATION:
+            SET8(boxMon->coloration);
         default:
             break;
         }
