@@ -395,7 +395,7 @@ u32 GetMaxColorationRange(u16 species, bool8 isShiny)
 u32 CreateNewColoration(u16 species, bool8 isShiny)
 {
     u32 range = GetMaxColorationRange(species, isShiny);
-    return RandomUniform(RNG_NONE, 0, range);
+    return (Random32() % (range + 1));
 }
 
 void MakePaletteUnique(u16 palOffset, u16 species, u32 value, bool8 isShiny)
