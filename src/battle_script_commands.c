@@ -11196,6 +11196,7 @@ static void Cmd_transformdataexecution(void)
         gDisableStructs[gBattlerAttacker].disabledMove = MOVE_NONE;
         gDisableStructs[gBattlerAttacker].disableTimer = 0;
         gDisableStructs[gBattlerAttacker].transformedMonPersonality = gBattleMons[gBattlerTarget].personality;
+        gDisableStructs[gBattlerAttacker].transformedMonColoration = gBattleMons[gBattlerTarget].coloration;
         if (B_TRANSFORM_SHINY >= GEN_4)
             gDisableStructs[gBattlerAttacker].transformedMonShininess = gBattleMons[gBattlerTarget].isShiny;
         else

@@ -81,6 +81,7 @@ struct DisableStruct
 {
     u32 transformedMonPersonality;
     bool8 transformedMonShininess;
+    u8 transformedMonColoration;
     u16 disabledMove;
     u16 encoredMove;
     u8 protectUses:4;
@@ -1113,6 +1114,7 @@ extern u8 gBattlerInMenuId;
 extern bool8 gDoingBattleAnim;
 extern u32 gTransformedPersonalities[MAX_BATTLERS_COUNT];
 extern bool8 gTransformedShininess[MAX_BATTLERS_COUNT];
+extern u8 gTransformedColorations[MAX_BATTLERS_COUNT];
 extern u8 gPlayerDpadHoldFrames;
 extern struct BattleSpriteData *gBattleSpritesDataPtr;
 extern struct MonSpritesGfx *gMonSpritesGfxPtr;

@@ -77,6 +77,9 @@ struct Pokemon
     bool shiny;
     int shiny_line;
 
+    int coloration;
+    int coloration_line;
+
     int dynamax_level;
     int dynamax_level_line;
 
@@ -1460,6 +1463,14 @@ static bool parse_trainer(struct Parser *p, const struct Parsed *parsed, struct 
                 if (!token_bool(p, &value, &pokemon->shiny))
                     any_error = !show_parse_error(p);
             }
+            else if (is_literal_token(&key, "Coloration"))
+            {
+                if (pokemon->coloration_line)
+                    any_error = !set_show_parse_error(p, key.location, "duplicate 'Coloration'");
+                pokemon->coloration_line = value.location.line;
+                if (!token_int(p, &value, &pokemon->coloration))
+                    any_error = !show_parse_error(p);
+            }
             else if (is_literal_token(&key, "Dynamax Level"))
             {
                 if (pokemon->dynamax_level_line)
@@ -2034,6 +2045,16 @@ static void fprint_trainers(const char *output_path, FILE *f, struct Parsed *par
                 fprintf(f, "            .isShiny = ");
                 fprint_bool(f, pokemon->shiny);
                 fprintf(f, ",\n");
+            }
+
+            if (pokemon->coloration_line)
+            {
+                fprintf(f, "#line %d\n", pokemon->coloration_line);
+                fprintf(f, "            .coloration = %d,\n", pokemon->coloration);
+            }
+            else
+            {
+                fprintf(f, "            .coloration = TRAINER_MON_UNKNOWN_COLOR,\n");
             }
 
             if (pokemon->dynamax_level_line)

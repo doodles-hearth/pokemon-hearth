@@ -71,6 +71,7 @@ struct TrainerMon
     u8 nature:5;
     bool8 gender:2;
     bool8 isShiny:1;
+    u8 coloration;
     enum Type teraType:5;
     bool8 gigantamaxFactor:1;
     u8 shouldUseDynamax:1;

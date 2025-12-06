@@ -612,7 +612,7 @@ bool8 IsBattleSEPlaying(u8 battler)
 
 void BattleLoadMonSpriteGfx(struct Pokemon *mon, u32 battler)
 {
-    u32 personalityValue, isShiny, species, paletteOffset, position;
+    u32 personalityValue, colorationValue, isShiny, species, paletteOffset, position;
     const u16 *paletteData;
     struct Pokemon *illusionMon = GetIllusionMonPtr(battler);
     if (illusionMon != NULL)
@@ -627,6 +627,7 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, u32 battler)
     {
         species = GetMonData(mon, MON_DATA_SPECIES);
         personalityValue = GetMonData(mon, MON_DATA_PERSONALITY);
+        colorationValue = GetMonData(mon, MON_DATA_COLORATION);
     }
     else
     {
@@ -637,6 +638,7 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, u32 battler)
 
         personalityValue = gTransformedPersonalities[battler];
         isShiny = gTransformedShininess[battler];
+        colorationValue = gTransformedColorations[battler];
     }
 
     position = GetBattlerPosition(battler);
@@ -654,9 +656,9 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, u32 battler)
     LoadPalette(paletteData, paletteOffset, PLTT_SIZE_4BPP);
     LoadPalette(paletteData, BG_PLTT_ID(8) + BG_PLTT_ID(battler), PLTT_SIZE_4BPP);
 
-    MakePaletteUnique(paletteOffset, species, personalityValue, IsMonShiny(mon));
+    MakePaletteUnique(paletteOffset, species, colorationValue, IsMonShiny(mon));
     CpuCopy32(gPlttBufferFaded + paletteOffset, gPlttBufferUnfaded + paletteOffset, 32);
-    MakePaletteUnique(0x80 + battler * 16, species, personalityValue, IsMonShiny(mon));
+    MakePaletteUnique(0x80 + battler * 16, species, colorationValue, IsMonShiny(mon));
     CpuCopy32(gPlttBufferFaded + 0x80 + battler * 16, gPlttBufferUnfaded + 0x80 + battler * 16, 32);
     
     // transform's pink color
@@ -915,7 +917,7 @@ void CopyBattleSpriteInvisibility(u8 battler)
 
 void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, u8 changeType)
 {
-    u32 personalityValue, position, paletteOffset, targetSpecies;
+    u32 personalityValue, colorationValue, position, paletteOffset, targetSpecies;
     bool32 isShiny;
     const void *src;
     const u16 *paletteData;
@@ -929,6 +931,7 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, u8 changeType)
         targetSpecies = gContestResources->moveAnim->targetSpecies;
         personalityValue = gContestResources->moveAnim->personality;
         isShiny = gContestResources->moveAnim->isShiny;
+        colorationValue = 0;
 
         HandleLoadSpecialPokePic(FALSE,
                                  gMonSpritesGfxPtr->spritesGfx[position],
@@ -958,11 +961,13 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, u8 changeType)
         {
             personalityValue = gDisableStructs[battlerAtk].transformedMonPersonality;
             isShiny = gDisableStructs[battlerAtk].transformedMonShininess;
+            colorationValue = gDisableStructs[battlerAtk].transformedMonColoration;
         }
         else
         {
             personalityValue = GetMonData(monAtk, MON_DATA_PERSONALITY);
             isShiny = GetMonData(monAtk, MON_DATA_IS_SHINY);
+            colorationValue = GetMonData(monAtk, MON_DATA_COLORATION);
         }
         HandleLoadSpecialPokePic(!IsOnPlayerSide(battlerAtk),
                                  gMonSpritesGfxPtr->spritesGfx[position],
@@ -977,7 +982,7 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, u8 changeType)
     LoadPalette(paletteData, paletteOffset, PLTT_SIZE_4BPP);
 
     // Unique personality-based hue
-    MakePaletteUnique(paletteOffset, targetSpecies, personalityValue, isShiny);
+    MakePaletteUnique(paletteOffset, targetSpecies, colorationValue, isShiny);
     CpuCopy32(gPlttBufferFaded + paletteOffset, gPlttBufferUnfaded + paletteOffset, 32);
 
     if (changeType == SPECIES_GFX_CHANGE_TRANSFORM)
