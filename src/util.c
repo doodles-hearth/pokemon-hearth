@@ -246,7 +246,7 @@ void BlendPalette(u16 palOffset, u16 numEntries, u8 coeff, u32 blendColor)
 
 #define HUE_SHIFT_NORMAL_RANGE 40
 #define HUE_SHIFT_SHINY_RANGE  30
-#define RGB_ADJUST_RANGE       125
+#define RGB_ADJUST_RANGE       124
 
 #define LIMITMODE_NORMAL_HUE_POS_SHINY_HUE_NEG       1
 #define LIMITMODE_NORMAL_HUE_NEG_SHINY_HUE_POS      -1
