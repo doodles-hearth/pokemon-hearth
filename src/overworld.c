@@ -1066,6 +1066,14 @@ bool32 Overworld_IsBikingAllowed(void)
         return TRUE;
 }
 
+bool8 IsFollowerSpawned(void)
+{
+    struct ObjectEvent *obj = GetFollowerObject();
+    if (!obj)
+        return FALSE;
+    return !obj->invisible;
+}
+
 // Flash level of 0 is fully bright
 // Flash level of 1 is the largest flash radius
 // Flash level of 7 is the smallest flash radius
@@ -1463,6 +1471,15 @@ bool8 IsMapTypeOutdoors(enum MapType mapType)
         return FALSE;
 }
 
+bool8 IsMapTypeFlash(enum MapType mapType)
+{
+    if (mapType == MAP_TYPE_UNDERGROUND
+     || mapType == MAP_TYPE_UNDERWATER)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 Overworld_MapTypeAllowsTeleportAndFly(enum MapType mapType)
 {
     if (mapType == MAP_TYPE_ROUTE
@@ -1568,6 +1585,29 @@ void CB1_Overworld(void)
 
 #define TINT_NIGHT Q_8_8(0.456) | Q_8_8(0.456) << 8 | Q_8_8(0.615) << 16
 
+#define DNS_TINTCOLOUR_CAVE_STANDARD     Q_8_8(0.456) | Q_8_8(0.456) << 8 | Q_8_8(0.615) << 16    // 0x9D7474
+#define DNS_TINTCOLOUR_CAVE_DARK         Q_8_8(0.30)  | Q_8_8(0.30)  << 8 | Q_8_8(0.40)  << 16    // 0x664D4D
+#define DNS_TINTCOLOUR_FLASH_YELLOW      Q_8_8(0.568) | Q_8_8(0.510) << 8 | Q_8_8(0.397) << 16    // 0x448291
+#define DNS_TINTCOLOUR_FLASH_ORANGE      Q_8_8(0.568) | Q_8_8(0.431) << 8 | Q_8_8(0.297) << 16    // 0x446E91
+#define DNS_TINTCOLOUR_FLASH_RED         Q_8_8(0.568) | Q_8_8(0.365) << 8 | Q_8_8(0.337) << 16    // 0x445391
+#define DNS_TINTCOLOUR_FLASH_PINK        Q_8_8(0.58)  | Q_8_8(0.43)  << 8 | Q_8_8(0.56)  << 16    // 0x8F5994
+#define DNS_TINTCOLOUR_FLASH_PURPLE      Q_8_8(0.368) | Q_8_8(0.297) << 8 | Q_8_8(0.568) << 16    // 0x91445E
+#define DNS_TINTCOLOUR_FLASH_BLUE        Q_8_8(0.297) | Q_8_8(0.459) << 8 | Q_8_8(0.568) << 16    // 0x917544
+#define DNS_TINTCOLOUR_FLASH_GREEN       Q_8_8(0.337) | Q_8_8(0.568) << 8 | Q_8_8(0.451) << 16    // 0x734591
+
+const struct BlendSettings gCustomDNSTintBlend[DNS_BLEND_COUNT] = 
+{
+    [DNS_BLEND_CAVE_DARK]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_CAVE_DARK, .isTint = TRUE},
+    [DNS_BLEND_CAVE_STANDARD]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_CAVE_STANDARD, .isTint = TRUE},
+    [DNS_BLEND_FLASH_YELLOW]    = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_YELLOW, .isTint = TRUE},
+    [DNS_BLEND_FLASH_ORANGE]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_ORANGE, .isTint = TRUE},
+    [DNS_BLEND_FLASH_RED]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_RED, .isTint = TRUE},
+    [DNS_BLEND_FLASH_PINK]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_PINK, .isTint = TRUE},
+    [DNS_BLEND_FLASH_PURPLE]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_PURPLE, .isTint = TRUE},
+    [DNS_BLEND_FLASH_BLUE]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_BLUE, .isTint = TRUE},
+    [DNS_BLEND_FLASH_GREEN]    = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_GREEN, .isTint = TRUE},
+};
+
 const struct BlendSettings gTimeOfDayBlend[] =
 {
     [TIME_MORNING]   = {.coeff = 4,  .blendColor = 0xA8B0E0,   .isTint = TRUE},
@@ -1647,7 +1687,9 @@ bool32 MapHasNaturalLight(enum MapType mapType)
          && (mapType == MAP_TYPE_TOWN
           || mapType == MAP_TYPE_CITY
           || mapType == MAP_TYPE_ROUTE
-          || mapType == MAP_TYPE_OCEAN_ROUTE));
+          || mapType == MAP_TYPE_OCEAN_ROUTE
+          || mapType == MAP_TYPE_UNDERGROUND
+          || mapType == MAP_TYPE_UNDERWATER));
 }
 
 bool32 CurrentMapHasShadows(void)
@@ -1685,31 +1727,78 @@ void UpdateAltBgPalettes(u16 palettes)
     }
 }
 
+u32 FilterTimeBlendPalettes(u32 palettes)
+{
+    u32 i;
+    u32 mask = 1 << 16;
+
+    if (palettes >= (1 << 16))
+    {
+        for (i = 0; i < 16; i++, mask <<= 1)
+        {
+            if (IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(i)))
+                palettes &= ~mask;
+        }
+    }
+
+    palettes &= PALETTES_MAP | PALETTES_OBJECTS; // Don't blend UI
+    return palettes;
+}
+
 void UpdatePalettesWithTime(u32 palettes)
 {
     if (!MapHasNaturalLight(gMapHeader.mapType))
         return;
-    u32 i;
-    u32 mask = 1 << 16;
-    if (palettes >= (1 << 16))
-        for (i = 0; i < 16; i++, mask <<= 1)
-        {
-            if (IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(i)))
-                palettes &= ~(mask);
-        }
-
-    palettes &= PALETTES_MAP | PALETTES_OBJECTS; // Don't blend UI pals
+    palettes = FilterTimeBlendPalettes(palettes);
     if (!palettes)
         return;
-    TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
+    
+    if (IsMapTypeFlash(gMapHeader.mapType)) // Is in a cave or underwater
+    {
+        DoCustomDNSBlend();
+        return;
+    }
+    else // Is not in a cave or underwater — do normal DNS blend
+        TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
 }
 
 u8 UpdateSpritePaletteWithTime(u8 paletteNum)
 {
-    if (MapHasNaturalLight(gMapHeader.mapType)
-     && !IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(paletteNum)))
-        TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
-    return paletteNum;
+    if (!IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(paletteNum)))
+    {
+        if (!gMapHeader.cave) // Ignore maps that require flash, that is handled on step
+        {
+            if (IsMapTypeFlash(gMapHeader.mapType))   //ZETA- Set DNS tint to default Cave
+                TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], (struct BlendSettings *)&gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], (struct BlendSettings *)&gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], 256);
+            else                                                                                           //Do normal DNS blending
+                TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
+        }
+        else 
+        {
+            // Get blend index from upper byte of blend var
+            u16 flashTrackerPacked = VarGet(VAR_FLASH_TRACKER_PACKED);
+            u16 blendVar = GET_FOLLOWER_TINT(flashTrackerPacked);
+            const struct BlendSettings *blend = &gCustomDNSTintBlend[blendVar];
+            TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
+        }
+    }
+        return paletteNum;
+}
+
+void DoCustomDNSBlend(void)
+{
+    if (!IsMapTypeFlash(gMapHeader.mapType))
+        return;
+    
+    u32 palettes = FilterTimeBlendPalettes(PALETTES_ALL);
+    if (!gMapHeader.cave)                                                                            // In cave or underwater but does not require flash = do normal cave blend
+    {
+        const struct BlendSettings *blend = &gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD];
+        TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
+        return;
+    }
+   UpdateFlashTint();
+    return;
 }
 
 static void OverworldBasic(void)
@@ -1752,10 +1841,16 @@ void CB2_Overworld(void)
     bool32 fading = (gPaletteFade.active != 0);
     if (fading)
         SetVBlankCallback(NULL);
+
     OverworldBasic();
+
     if (fading)
     {
         SetFieldVBlankCallback();
+        if (IsMapTypeFlash(gMapHeader.mapType))
+        {
+            DoCustomDNSBlend();
+        }
         return;
     }
 }

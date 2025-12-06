@@ -264,8 +264,6 @@ static void CreateUnvisitedTownIcons(void)
             x = (x + MAPCURSOR_X_MIN) * 8 + 4;
             y = (y + MAPCURSOR_Y_MIN) * 8 + 4;
 
-            DebugPrintf("mapsec %d (%d,%d)", mapSecId, width, height);
-
             if (width == 2 && height == 2)
                 shape = MAP_SPRITE_16X16;
             else if (width == 2)
