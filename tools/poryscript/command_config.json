@@ -113,6 +113,9 @@
     },
     "checkchatotpost": {
         "var_name": "VAR_RESULT"
+    },
+    "checkspecies": {
+        "var_name": "VAR_RESULT"
     }
   }
 }

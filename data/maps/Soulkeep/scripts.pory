@@ -33,6 +33,18 @@ script Soulkeep_EventScript_Man {
 	release
 }
 
+script Soulkeep_EventScript_WhereGuang {
+	lock
+	faceplayer
+	msgbox(format(
+		"{SPEAKER NAME_FARMER}{CREATE_MUGSHOT MUGSHOT_FARMER 0}Guang has been missing for days now…\n"
+		"Always sneaking around the crypt…\p"
+		"I hope he's not lost in there somewhere…"
+	))
+	closemessage
+	release
+}
+
 script Soulkeep_EventScript_Misdreavus {
 	lock
 	faceplayer
@@ -107,18 +119,6 @@ script Soulkeep_EventScript_Mart {
 	pokemart(Soulkeep_Mart)
 	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(format("Do come again!\pCareful though, I'm only here until nightfall!"), MSGBOX_DEFAULT)
-	release
-}
-
-script Soulkeep_EventScript_WhereGuang {
-	lock
-	faceplayer
-	message(format(
-		"{SPEAKER NAME_FARMER}{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Guang has been missing for days now…\n"
-		"Always sneaking around the crypt…\p"
-		"I hope he's not lost in there somewhere…"
-	))
-	closemessage
 	release
 }
 

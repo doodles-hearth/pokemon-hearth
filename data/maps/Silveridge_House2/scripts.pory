@@ -7,7 +7,7 @@ script Silveridge_House2_EventScript_Woman {
     faceplayer
     setspeaker(SP_NAME_WOMAN)
     msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}I wish my husband would stop talking about rocks…"
+        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 0}I wish my husband would stop talking about rocks…"
     ))
     closemessage
 
@@ -16,7 +16,7 @@ script Silveridge_House2_EventScript_Woman {
 
     setspeaker(SP_NAME_MINER)
     msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}But honey, steel isn't a rock!"
+        "{CREATE_MUGSHOT MUGSHOT_MINER 0}But honey, steel isn't a rock!"
     ))
     closemessage
 
@@ -24,7 +24,7 @@ script Silveridge_House2_EventScript_Woman {
 
     setspeaker(SP_NAME_WOMAN)
     msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}… …{FONT_SMALL}Sigh{FONT_NORMAL}…"
+        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 0}… …{FONT_SMALL}Sigh{FONT_NORMAL}…"
     ))
     closemessage
 
@@ -37,7 +37,7 @@ script Silveridge_House2_EventScript_Miner {
     faceplayer
     setspeaker(SP_NAME_MINER)
     msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}The region's finest steel is found in the quarry near Saberside Town.\p"
+        "{CREATE_MUGSHOT MUGSHOT_MINER 0}The region's finest steel is found in the quarry near Saberside Town.\p"
         "When my Makuhita is strong enough, we'll go see it for ourselves!"
     ))
     closemessage

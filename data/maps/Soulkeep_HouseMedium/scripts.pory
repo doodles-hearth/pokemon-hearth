@@ -8,13 +8,13 @@ script Soulkeep_EventScript_Medium {
 	if (flag(FLAG_ASKED_SABLEYE_RUBY)) {
 		faceplayer
 		msgbox((
-			// "{CREATE_MUGSHOT MUGSHOT_MEDIUM EMOTE_NORMAL}{SPEAKER NAME_MEDIUM}"
+			// "{CREATE_MUGSHOT MUGSHOT_MEDIUM 0}{SPEAKER NAME_MEDIUM}"
 			"{SPEAKER NAME_MEDIUM}Please, child. Bring me a Sableye Ruby,\nso that I can finish this lens."
 		))
 		closemessage
 	} else {
 		msgbox((
-			// "{CREATE_MUGSHOT MUGSHOT_MEDIUM EMOTE_NORMAL}{SPEAKER NAME_MEDIUM}"
+			// "{CREATE_MUGSHOT MUGSHOT_MEDIUM 0}{SPEAKER NAME_MEDIUM}"
 			"{SPEAKER NAME_MEDIUM}{FONT_SMALL}The power to see the truth unmasked…\n"
 			"The power to reveal the invisible…\l"
 			"I'm almost there, I can feel it…{FONT_NORMAL}"
@@ -28,7 +28,7 @@ script Soulkeep_EventScript_Medium {
 			waitse
 
 			msgbox((
-				// "{CREATE_MUGSHOT MUGSHOT_MEDIUM EMOTE_NORMAL}{SPEAKER NAME_MEDIUM}"
+				// "{CREATE_MUGSHOT MUGSHOT_MEDIUM 0}{SPEAKER NAME_MEDIUM}"
 				"{SPEAKER NAME_MEDIUM}I'm sure an unruly-looking child such\n"
 				"as yourself has had the guts to visit\l"
 				"the crypt in Soulkeep graveyard…\p"
@@ -50,7 +50,7 @@ script Soulkeep_EventScript_Medium {
 				waitse
 
 				msgbox((
-					// "{CREATE_MUGSHOT MUGSHOT_MEDIUM EMOTE_NORMAL}{SPEAKER NAME_MEDIUM}"
+					// "{CREATE_MUGSHOT MUGSHOT_MEDIUM 0}{SPEAKER NAME_MEDIUM}"
 					"{SPEAKER NAME_MEDIUM}So you saw it too!\nI knew it! I knew I wasn't mad!\p"
 					"Child… I am crafting a lens that\nwould allow one to see the truth.\p"
 					"But alas…\nI am missing a key component!\p"
@@ -73,8 +73,8 @@ script Soulkeep_EventScript_MediumApprentice {
 	lock
 	faceplayer
 	msgbox(format(
-		// "{CREATE_MUGSHOT MUGSHOT_MEDIUM EMOTE_NORMAL}{SPEAKER NAME_MEDIUM}"
-		"{CREATE_MUGSHOT MUGSHOT_UUME_BOY_1 EMOTE_NORMAL}{SPEAKER NAME_BOY}I'm training to become a Medium!\p"
+		// "{CREATE_MUGSHOT MUGSHOT_MEDIUM 0}{SPEAKER NAME_MEDIUM}"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_BOY_1 0}{SPEAKER NAME_BOY}I'm training to become a Medium!\p"
 		"But my master is busy with the ghost infestation and whatever's happening in the crypt, so…\p"
 		"She really doesn't teach me much…"
 	))

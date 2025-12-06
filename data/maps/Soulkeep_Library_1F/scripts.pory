@@ -7,7 +7,7 @@ script Soulkeep_Library_1F_EventScript_Employee {
 	faceplayer
 	setspeaker("Librarian")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_VALET EMOTE_NORMAL}{FONT_SMALL}Hello, welcome to the library.\nPlease don't speak too loud.{FONT_NORMAL}"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}{FONT_SMALL}Hello, welcome to the library.\nPlease don't speak too loud.{FONT_NORMAL}"
 	))
 	closemessage
 	release
@@ -17,7 +17,7 @@ script Soulkeep_Library_1F_EventScript_Man {
 	lock
 	faceplayer
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_COOK EMOTE_NORMAL}{SPEAKER NAME_COOK}{FONT_SMALL}There are tons of good recipes here!{FONT_NORMAL}"
+		"{CREATE_MUGSHOT MUGSHOT_COOK 0}{SPEAKER NAME_COOK}{FONT_SMALL}There are tons of good recipes here!{FONT_NORMAL}"
 	))
 	closemessage
 	release
@@ -100,6 +100,37 @@ script Soulkeep_Library_1F_EventScript_Book_CameruptsBack {
 	release
 }
 
+script Soulkeep_Library_1F_EventScript_Book_SacredItems {
+	lock
+	msgbox((
+		"“The Three Sacred Objects”.\nRead this?"
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		FALSE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Read",
+		"Put back"
+	)
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		msgbox((
+			"“Three sacred objects have lain in\nToku for millennia.\p"
+			"A mirror whose holder reflects and\ngrows.\p"
+			"A sword that reveals one's talents.\p"
+			"A jewel that shows others' true\ncolors.”"
+		))
+		closemessage
+	}
+
+	release
+}
+
 // POKEMON
 
 script Soulkeep_Library_1F_EventScript_Book_CaveHabitats {
@@ -122,7 +153,7 @@ script Soulkeep_Library_1F_EventScript_Book_CaveHabitats {
 
 	if (var(VAR_RESULT) == 0) {
 		msgbox((
-			"“Each cave system in Toku has a unique ecosystem!\p"
+			"“Each cave system in Toku has a unique ecosystem.\p"
 			"Silver Tunnel is populated by rock-\neating creatures, like Onix and Aron.\p"
 			"Saberside Quarry hosts gem-hungry\nPokémon, like Sableye and Carbink.\p"
 			"In Mt Kazan, fire Pokémon such as\nDarumaka and Slugma thrive.”"
@@ -320,7 +351,7 @@ script Soulkeep_Library_1F_EventScript_Book_Dragonite {
 script Soulkeep_Library_1F_EventScript_Book_SpicyNovel {
 	lock
 	msgbox((
-		"“The Lusty Dryuugonian Maiden”.\n… … …Better put this back."
+		"“The Lusty Dryugonian Maiden”.\n… … …Better put this back."
 	))
 	closemessage
 	

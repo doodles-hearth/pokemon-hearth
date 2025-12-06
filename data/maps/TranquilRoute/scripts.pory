@@ -229,12 +229,12 @@ script TranquilRoute_EventScript_CutGrass {
 script TranquilRoute_EventScript_Chikao {
 	trainerbattle_single(
 		TRAINER_CHIKAO,
-		format("{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}I've been studying Pokémon at school! I can't lose!"),
+		format("{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}I've been studying Pokémon at school! I can't lose!"),
 		format("I should have listened in class…")
 	)
 	setspeaker(SP_NAME_YOUNGSTER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M EMOTE_NORMAL}Some Pokémon have more attack, and some have more special attack!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}Some Pokémon have more attack, and some have more special attack!\p"
 		"What's the difference? Uhh… It's too complicated to explain."
 	))
 	closemessage
@@ -244,12 +244,12 @@ script TranquilRoute_EventScript_Chikao {
 script TranquilRoute_EventScript_Kodomo {
 	trainerbattle_single(
 		TRAINER_KODOMO,
-		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Ha! Are you trying to avoid the tall grass?"),
+		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}Ha! Are you trying to avoid the tall grass?"),
 		format("Go back to the grass, you animal!")
 	)
 	setspeaker(SP_NAME_YOUNGSTER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}I should look for stronger Pokémon in the tall grass, but I'm a little scared of getting jumped by surprise!"
+		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}I should look for stronger Pokémon in the tall grass, but I'm a little scared of getting jumped by surprise!"
 	))
 	closemessage
 	end
@@ -258,34 +258,34 @@ script TranquilRoute_EventScript_Kodomo {
 script TranquilRoute_EventScript_Takeshi {
 	trainerbattle_single(
 		TRAINER_TAKESHI,
-		format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}Stay right there! I'll defeat you with my ninja skills!"),
+		format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}Stay right there! I'll defeat you with my ninja skills!"),
 		format("I had the sun in my eyes!")
 	)
 	setspeaker(SP_NAME_NINJA_BOY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}I must hone my ninja skills!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}I must hone my ninja skills!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script TranquilRoute_EventScript_Hana {
 	trainerbattle_single(
 		TRAINER_HIINA,
-		format("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Ugh, how can Kenji paint a portrait of me if people keep walking between us?"),
+		format("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Ugh, how can Kenji paint a portrait of me if people keep walking between us?"),
 		format("Great, now my hair is all messed up.")
 	)
 	setspeaker(SP_NAME_BEAUTY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Kenji really is an amazing artist. I feel very lucky."), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Kenji really is an amazing artist. I feel very lucky."), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script TranquilRoute_EventScript_Kenji {
 	trainerbattle_single(
 		TRAINER_KENJI,
-		format("{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}You're interrupting my creative flow!!"),
+		format("{CREATE_MUGSHOT MUGSHOT_ARTIST 0}You're interrupting my creative flow!!"),
 		format("Such beauty! What an artistic fight this was!")
 	)
 	setspeaker(SP_NAME_ARTIST)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Hiina is the best subject I could dream of.\p"
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Hiina is the best subject I could dream of.\p"
 		"…Hey, uh, please don't tell her I said that."
 	), MSGBOX_AUTOCLOSE)
 	end
@@ -297,7 +297,7 @@ movement TranquilRoute_Movement_MysteriousSamuraiWalksAway {
 
 script TranquilRoute_EventScript_Girl {
 	setspeaker(SP_NAME_GIRL)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 EMOTE_NORMAL}What? Oh, I don't fight.\pMy Pokémon and I are just strolling."), MSGBOX_NPC)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 0}What? Oh, I don't fight.\pMy Pokémon and I are just strolling."), MSGBOX_NPC)
 }
 
 script TranquilRoute_EventScript_WhiteslateRoadblock {
@@ -306,7 +306,7 @@ script TranquilRoute_EventScript_WhiteslateRoadblock {
 	waitmovement(0)
 
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Sorry, you can't go through. The road ahead is blocked."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Sorry, you can't go through. The road ahead is blocked."))
 	closemessage
 
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right))
@@ -335,7 +335,7 @@ script TranquilRoute_EventScript_BerryWoman {
 	if (flag(FLAG_RECEIVED_WAILMER_PAIL)) {
 		faceplayer
 		setspeaker(SP_NAME_WOMAN)
-		msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Enjoy gardening!"))
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Enjoy gardening!"))
 		closemessage
 	}
 	else {
@@ -344,7 +344,7 @@ script TranquilRoute_EventScript_BerryWoman {
 		waitmovement(0)
 		faceplayer
 		setspeaker(SP_NAME_WOMAN)
-		msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Hi, young one! See this?"))
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Hi, young one! See this?"))
 		closemessage
 		applymovement(LOCALID_BERRYWOMAN, Common_Movement_FaceRight)
 		waitmovement(0)
@@ -353,7 +353,7 @@ script TranquilRoute_EventScript_BerryWoman {
 		waitmovement(0)
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}You can plant berries in the ground in fertile spots like this.\p"
+			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}You can plant berries in the ground in fertile spots like this.\p"
 			"The seeds will eventually grow into a healthy berry tree, ready to be harvested!\p"
 			"I see you're a Wielder. Well, different berries have different effects when they're fed to Pokémon.\p"
 			"I love berries, hopefully you'll soon learn to love them too!\p"
@@ -365,7 +365,7 @@ script TranquilRoute_EventScript_BerryWoman {
 
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Oh, right, I almost forgot!\p"
+			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Oh, right, I almost forgot!\p"
 			"You must remember to water them regularly, or they won't grow!\p"
 			"I like you. Take this!"
 		))
@@ -377,7 +377,7 @@ script TranquilRoute_EventScript_BerryWoman {
 
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Isn't it cute? It's friend-shaped!\p"
+			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Isn't it cute? It's friend-shaped!\p"
 			"Don't worry about it, I have a spare one.\p"
 			"Have fun gardening!"
 		))
@@ -440,7 +440,7 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 
 	setspeaker("Shady men")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Excellent idea…\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}…Excellent idea…\p"
 		"…Yeah, and then…\p"
 		"… … …"
 	))
@@ -453,7 +453,7 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 
 	setspeaker("Shady man")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Alright boys, let's move."
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Alright boys, let's move."
 	))
 	closemessage
 
@@ -498,7 +498,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Mumble mumble… Should restock on ointment… Damn, where did I put my purse?…"
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Mumble mumble… Should restock on ointment… Damn, where did I put my purse?…"
 	))
 	closemessage
 
@@ -513,7 +513,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Oh, hello! Sorry, shop's closed at the moment!\p"
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Oh, hello! Sorry, shop's closed at the moment!\p"
 		"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
 		"I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
 		"I'm sold out on, well, pretty much everything right now… But you're definitely going to see me around!\p"
@@ -527,7 +527,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}Come on, Keke."
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Come on, Keke."
 	))
 	closemessage
 
@@ -560,7 +560,7 @@ script TranquilRoute_EventScript_WaitingForChatot {
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}Sigh… Maybe if I hang around the Chatot Post, my boyfriend's message will arrive sooner…"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 0}Sigh… Maybe if I hang around the Chatot Post, my boyfriend's message will arrive sooner…"
 	))
 	closemessage
 	release
