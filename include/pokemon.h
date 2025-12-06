@@ -487,10 +487,10 @@ struct SpeciesInfo /*0xC4*/
     u16 enemyShadowSize:3; // This determines the size of the shadow sprite used for an enemy Pokémon's front sprite during battle.
     u16 suppressEnemyShadow:1; // If set to true, then a shadow will not be drawn beneath an enemy Pokémon's front sprite during battle.
     u16 dreamType:2;
-    u32 glows:1;
+    u16 glows:1;
+    u16 padding5:9;
     u8 flashTint;
     u8 flashTintShiny;
-    u16 padding5:9;
     // Move Data
     const struct LevelUpMove *levelUpLearnset;
     const u16 *teachableLearnset;
