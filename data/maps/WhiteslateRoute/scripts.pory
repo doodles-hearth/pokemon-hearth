@@ -52,7 +52,7 @@ script WhiteslateRoute_Trigger_ShamisenPlayerBottom {
 script WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady {
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}So, are you ready?"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}So, are you ready?"
 	))
 
 	call(WhiteslateRoute_EventScript_ShamisenPlayerChoice)
@@ -61,7 +61,7 @@ script WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady {
 script WhiteslateRoute_EventScript_ShamisenChallenge {
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\p"
 		"Are you them? Why, you must be!\nThere's no other explanation!\p"
 		"We Shamisen Players sing songs about brave souls we meet on our travels.\p"
 		"To test your worth, how about I submit you to a little challenge?\p"
@@ -79,7 +79,7 @@ script WhiteslateRoute_EventScript_ShamisenCallsOut {
 
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}… … …!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}… … …!\p"
 		"Excuse me! Yes, you!"
 	))
 	closemessage
@@ -93,7 +93,7 @@ script WhiteslateRoute_EventScript_ShamisenPlayer {
 
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\p"
 		"Are you them? Why, you must be!\nThere's no other explanation!\p"
 		"We Shamisen Players sing songs about brave souls we meet on our travels.\p"
 		"To test your worth, how about I submit you to a little challenge?\p"
@@ -118,7 +118,7 @@ script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
 		case 0:
 			setspeaker(SP_NAME_SHAMISEN_PLAYER)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Go forth, bold young soul!\nMay luck echo your steps!"
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Go forth, bold young soul!\nMay luck echo your steps!"
 			))
 			closemessage
 
@@ -137,7 +137,7 @@ script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
 		default:
 			setspeaker(SP_NAME_SHAMISEN_PLAYER)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Understood. Come back when you are done preparing."
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Understood. Come back when you are done preparing."
 			))
 			closemessage
 
@@ -164,34 +164,34 @@ script WhiteslateRoute_EventScript_ShamisenPlayerPokemon {
 script WhiteslateRoute_EventScript_Itsumi {
 	trainerbattle_single(
 		TRAINER_ITSUMI,
-		format("{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}Do you nurture your Pokémon with love?"),
+		format("{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}Do you nurture your Pokémon with love?"),
 		format("Oh, you do!")
 	)
 	setspeaker(SP_NAME_BREEDER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BREEDER_F EMOTE_NORMAL}I am glad we met! Your Pokémon seem so happy."), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}I am glad we met! Your Pokémon seem so happy."), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WhiteslateRoute_EventScript_Ryosuke {
 	trainerbattle_single(
 		TRAINER_RYOSUKE,
-		format("{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}I massage my Pokémon after each battle!"),
+		format("{CREATE_MUGSHOT MUGSHOT_BREEDER_M 0}I massage my Pokémon after each battle!"),
 		format("Can somebody give me a massage?")
 	)
 	setspeaker(SP_NAME_BREEDER)
 	// TODO EVA
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BREEDER_M EMOTE_NORMAL}I heard there was a very talented masseur in Saberside Town.\pI want to see for myself!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BREEDER_M 0}I heard there was a very talented masseur in Saberside Town.\pI want to see for myself!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WhiteslateRoute_EventScript_Riku {
 	trainerbattle_single(
 		TRAINER_RIKU,
-		format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}BOO!!\p… … …Are you surprised?"),
+		format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}BOO!!\p… … …Are you surprised?"),
 		format("My loyal Pokémon!")
 	)
 	setspeaker(SP_NAME_NINJA_BOY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY EMOTE_NORMAL}I have to work on my element of surprise."), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}I have to work on my element of surprise."), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -220,48 +220,48 @@ script WhiteslateRoute_EventScript_Yono {
 script WhiteslateRoute_EventScript_Sumi {
 	trainerbattle_single(
 		TRAINER_SUMI,
-		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}Excuse me… What's with that white hand on your shoulder?"),
+		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}Excuse me… What's with that white hand on your shoulder?"),
 		format("Heeeeeee!")
 	)
 	setspeaker(SP_NAME_HEX_MANIAC)
 	applymovement(VAR_LAST_TALKED, moves(emote_angry))
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}You don't scare easily, do you?"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}You don't scare easily, do you?"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WhiteslateRoute_EventScript_Tomiko {
 	trainerbattle_single(
 		TRAINER_TOMIKO,
-		format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}Weird Pokémon are my favorite!"),
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Weird Pokémon are my favorite!"),
 		format("I don't care if they're not the strongest!")
 	)
 
 	setspeakertomonname(SPECIES_SPINDA)
 	setspeaker(SP_NAME_LASS)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}I love Spinda. Doesn't it look silly and adorable?"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS 0}I love Spinda. Doesn't it look silly and adorable?"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WhiteslateRoute_EventScript_Utaro {
 	trainerbattle_single(
 		TRAINER_UTARO,
-		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}I love cool Pokémon!"),
+		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}I love cool Pokémon!"),
 		format("At least I lost with style!")
 	)
 	setspeakertomonname(SPECIES_SEVIPER)
 	setspeaker(SP_NAME_YOUNGSTER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Seviper is so darn cool! I mean, it's got a sword on its tail!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}Seviper is so darn cool! I mean, it's got a sword on its tail!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WhiteslateRoute_EventScript_Asagao {
 	trainerbattle_single(
 		TRAINER_UTARO,
-		format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}Can you smell the perfume of Uume Berries?"),
+		format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Can you smell the perfume of Uume Berries?"),
 		format("You're a brute!")
 	)
 	setspeaker(SP_NAME_AROMA_LADY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY EMOTE_NORMAL}With Uume Forest right west of here, the ripe Berry smell is so strong it's almost pungent!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}With Uume Forest right west of here, the ripe Berry smell is so strong it's almost pungent!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -270,7 +270,7 @@ script WhiteslateRoute_EventScript_ShuckleGirl {
 	faceplayer
 	setnamedmon(SPECIES_SHUCKLE)
 	setspeaker(SP_NAME_WOMAN)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}This Shuckle lives around here. I feed him fresh berries every morning!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 0}This Shuckle lives around here. I feed him fresh berries every morning!"))
 	closemessage
 	release
 	end
@@ -506,7 +506,7 @@ script WhiteslateRoute_EventScript_MetHariko {
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 EMOTE_NORMAL}{SPEAKER NAME_MAN}Some girl with a Slowpoke just talked my head off about Deerling…\l"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 0}{SPEAKER NAME_MAN}Some girl with a Slowpoke just talked my head off about Deerling…\l"
 		"I'm still dizzy!\p"
 		"Did you know its location determines its fur color?\p"
 		"Did you know Uume Forest Deerling are orange and smell like ripe fruit?\p"

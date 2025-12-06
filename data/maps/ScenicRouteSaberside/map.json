@@ -22,6 +22,11 @@
       "map": "MAP_SCENIC_ROUTE",
       "offset": 49,
       "direction": "up"
+    },
+    {
+      "map": "MAP_SCENIC_HOT_SPRINGS",
+      "offset": 0,
+      "direction": "down"
     }
   ],
   "object_events": [

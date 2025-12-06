@@ -4690,6 +4690,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .eggMoveLearnset = sSableyeEggMoveLearnset,
         .formSpeciesIdTable = sSableyeFormSpeciesIdTable,
         .formChangeTable = sSableyeFormChangeTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_BLUE,
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -8222,6 +8224,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         )
         .levelUpLearnset = sLunatoneLevelUpLearnset,
         .teachableLearnset = sLunatoneTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_YELLOW,
     },
 #endif //P_FAMILY_LUNATONE
 
@@ -8303,6 +8307,8 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         )
         .levelUpLearnset = sSolrockLevelUpLearnset,
         .teachableLearnset = sSolrockTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 #endif //P_FAMILY_SOLROCK
 
@@ -10688,6 +10694,9 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .teachableLearnset = sGlalieTeachableLearnset,
         .formSpeciesIdTable = sGlalieFormSpeciesIdTable,
         .formChangeTable = sGlalieFormChangeTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_BLUE,
+        .flashTintShiny = DNS_BLEND_FLASH_RED,
     },
 
 #if P_MEGA_EVOLUTIONS

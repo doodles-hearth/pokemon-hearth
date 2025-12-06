@@ -8,7 +8,7 @@ script WindyCape_EventScript_WindThroughHoles {
 	lock
 	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(format(
-		"When the wind blows through the holes in the rock, it makes strange noises.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY}When the wind blows through the holes in the rock, it makes strange noises.\p"
 		"It's like it's singing a song!"
 	))
 	closemessage
@@ -20,11 +20,11 @@ script WindyCape_EventScript_Mart {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_SHOPKEEPER)
-	message(format("Good day, welcome to Windycape's market!"))
+	message(format("{CREATE_MUGSHOT MUGSHOT_CLERK 0}Good day, welcome to Windycape's market!"))
 	waitmessage
 	pokemart(Soulkeep_Mart)
 	setspeaker(SP_NAME_SHOPKEEPER)
-	msgbox(format("Thank you for your business!"), MSGBOX_DEFAULT)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_CLERK 0}Thank you for your business!"), MSGBOX_DEFAULT)
 	release
 }
 

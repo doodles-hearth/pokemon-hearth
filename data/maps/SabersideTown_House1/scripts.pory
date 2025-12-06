@@ -1,0 +1,78 @@
+mapscripts SabersideTown_House1_MapScripts {
+	
+}
+
+script SabersideTown_House1_EventScript_Nerd {
+	lock
+	faceplayer
+	if(flag(FLAG_DAILY_MON_CRY_RIDDLE))
+	{
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}My th-throat needs r-r-rest!\nC-come back tomorrow!"
+		)
+	} else {
+		special(AssignRandomMonCryVars)
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}Well h-hello, k-k-kuh-kid…\nThey c-c-call me the Pokémon Nerd!\p"
+			"I've buh-been practicing P-Pokémon\nimituh-tations for a luh-long time!\p"
+			"As you can s-s-see I have a s-slight\nst-t-t-tuh-tuh-STUTTER…\l"
+			"Except when I imuh-mitate Pokémon!\p"
+			"If you g-guess what I'm imitating,\nI'll guh-give you something n-nice!\l"
+			"Ahem…"
+		)
+		waitse
+		delay(48)
+		applymovement(VAR_LAST_TALKED, moves(shake_vertical))
+		playmoncry(VAR_0x8008, CRY_MODE_NORMAL)
+		waitmoncry
+
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}COUGH! COUGH! Ugh, my th-throat…\pW-w-well? C-can you guh-guess which\nP-Pokémon I was d-d-doing?")
+
+		bufferspeciesname(STR_VAR_1, VAR_0x8004)
+		dynmultipush("{STR_VAR_1}", VAR_0x8004)
+
+		bufferspeciesname(STR_VAR_1, VAR_0x8005)
+		dynmultipush("{STR_VAR_1}", VAR_0x8005)
+		
+		bufferspeciesname(STR_VAR_1, VAR_0x8006)
+		dynmultipush("{STR_VAR_1}", VAR_0x8006)
+
+		bufferspeciesname(STR_VAR_1, VAR_0x8007)
+		dynmultipush("{STR_VAR_1}", VAR_0x8007)
+
+		dynmultistack(0, 0, TRUE, 6, TRUE, 1, DYN_MULTICHOICE_CB_NONE)
+
+		if (var(VAR_RESULT) == VAR_0x8008) 
+		{
+			msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}Y-yuh… Yep!! That was it!\nC-c-cuh-congrats, kuh-kid!")
+
+			// TODO EVA reward
+
+			setflag(FLAG_DAILY_MON_CRY_RIDDLE_WON)
+			msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}My th-throat needs r-r-rest!\nC-come back tomorrow!")
+		}
+		else
+		{
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}N-n-nuh-nuh-NO, DINGUS!\nS-such a r-r-rookie mistake!"
+				"T-to think I s-strained my voice\nf-f-f-for this!\lG-g-get out of muh-my sight!"
+			)
+		}
+		setflag(FLAG_DAILY_MON_CRY_RIDDLE)
+	}
+	release
+}
+
+script SabersideTown_House1_EventScript_Clefairy {
+	lock
+	faceplayer
+	setseenmon(SPECIES_CLEFAIRY)
+	playmoncry(SPECIES_CLEFAIRY, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_CLEFAIRY)
+	applymovement(VAR_LAST_TALKED, moves(emote_music))
+	msgbox(format(
+		"Clee!"
+	))
+	waitmoncry
+	release
+}

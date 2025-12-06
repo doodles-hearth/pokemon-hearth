@@ -49,6 +49,13 @@ Route119_EventScript_Kecleon2::
 
 @@ HEARTH @@
 
+ScenicRoute_EventScript_Kecleon::
+	lock
+	faceplayer
+	setvar VAR_0x8009, LOCALID_KECLEON_SCENIC_2
+	goto EventScript_Kecleon
+	end
+
 ScenicRouteSaberside_EventScript_Kecleon::
 	lock
 	faceplayer

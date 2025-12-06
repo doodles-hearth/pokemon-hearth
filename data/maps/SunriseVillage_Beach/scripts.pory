@@ -20,7 +20,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	faceplayer
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, {PLAYER}! Come on, sit down next to me."
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, {PLAYER}! Come on, sit down next to me."
 	))
 	closemessage
 
@@ -41,7 +41,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}It's been crazy lately, huh?\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}It's been crazy lately, huh?\p"
 		"With the Pokémon in Ginko Woods,\nand the volcano…\p"
 		"It feels like everything's\nabout to change.\p"
 		"Everyone is so anxious."
@@ -69,7 +69,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 		case 0:
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Nah, you know me.\nWe'll figure it out when we get there.\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Nah, you know me.\nWe'll figure it out when we get there.\p"
 				"That's what I've always done,\neverything turns out fine eventually."
 			))
 			closemessage
@@ -79,7 +79,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, look.\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, look.\p"
 				"You can see Yifu City very clearly\ntoday, it's gorgeous!"
 			))
 
@@ -98,13 +98,13 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}You okay there, {PLAYER}?\nYou look troubled.\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}You okay there, {PLAYER}?\nYou look troubled.\p"
 				"Aren't you excited to become\na Pokémon Wielder?"
 			))
 		case 1:
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Huh?…\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Huh?…\p"
 				"…Oh, sorry, I was just wondering\nwhich Pokémon I'm gonna be getting."
 			))
 			closemessage
@@ -114,7 +114,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hey, look.\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, look.\p"
 				"You can see Yifu City very clearly\ntoday, it's gorgeous!\p"
 				"…"
 			))
@@ -127,7 +127,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}What about you, {PLAYER}?\nYou excited about getting\lyour own Pokémon?"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}What about you, {PLAYER}?\nYou excited about getting\lyour own Pokémon?"
 			))
 	}
 
@@ -148,20 +148,20 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	switch (var(VAR_RESULT)) {
 		case 0:
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Hell yeah!\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hell yeah!\p"
 				"We're going to make awesome Wielders,\nI can already tell.\p"
 				"Maybe you'll even be second best\none day…\l"
 				"Behind me, of course!"
 			))
 		case 1:
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Uh, you're kidding, right?\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Uh, you're kidding, right?\p"
 				"It's going to be awesome.\nJust chill.\p"
 				"Once we get our Pokémon, we'll do\nwhatever we want!"
 			))
 		case 2:
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Oh c'mon, you're just pretending\nnot to be excited.\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Oh c'mon, you're just pretending\nnot to be excited.\p"
 				"Look at you, acting all tough\nand silent…\lBut I see right through you!\p"
 				"I bet you'll be a great Wielder.\nMaybe even as good as me…\l"
 				"Probably not though!"
@@ -195,7 +195,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Woah, there it goes again!\n"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Woah, there it goes again!\n"
 		"You good, {PLAYER}?\p"
 		"Whew! Those quakes are no joke, huh?\p"
 		"Maybe the volcano's telling us\nto get to Elder Kaba's house already."
@@ -212,7 +212,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Aw Shuckles, the distribution's\nalready started!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Aw Shuckles, the distribution's\nalready started!\p"
 		"Let's go, {PLAYER}!!"
 	))
 	closemessage
@@ -298,7 +298,7 @@ script SunriseVillage_Event_LookingAtYifu {
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}My best friend lives all the way over there in Yifu City!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}My best friend lives all the way over there in Yifu City!\p"
 		"I don't get to see her often. I miss her…"
 	))
 	closemessage
@@ -313,7 +313,7 @@ script SunriseVillage_Event_PokemonWontComeOut {
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}I'm going to catch my first Pokémon myself, all on my own!"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}I'm going to catch my first Pokémon myself, all on my own!"
 	))
 	closemessage
 	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
@@ -321,7 +321,7 @@ script SunriseVillage_Event_PokemonWontComeOut {
 
 	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY EMOTE_NORMAL}Pspspsps… Come on out, Pokémon… Pspsps…"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}Pspspsps… Come on out, Pokémon… Pspsps…"
 	))
 	closemessage
 

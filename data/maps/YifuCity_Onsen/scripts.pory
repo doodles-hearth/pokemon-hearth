@@ -24,7 +24,7 @@ script YifuCity_Onsen_EventScript_ExitHotSprings {
 
 		setspeaker(SP_NAME_OWNER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}I hope you feel mellow and relaxed."
+			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN 0}I hope you feel mellow and relaxed."
 		))
 		closemessage
 
@@ -44,13 +44,13 @@ script YifuCity_Onsen_EventScript_Owner {
 	if (flag(FLAG_PAID_HOT_SPRINGS)) {
 		setspeaker(SP_NAME_OWNER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Enjoy the hot springs!\nI'll be right behind you now."
+			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN 0}Enjoy the hot springs!\nI'll be right behind you now."
 		))
 		closemessage
 	} else {
 		setspeaker(SP_NAME_OWNER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}You can access the hot springs for ¥500.\p"
+			"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN 0}You can access the hot springs for ¥500.\p"
 			"Be careful though, some bathers are there to relax, some to battle!"
 		))
 
@@ -85,7 +85,7 @@ script YifuCity_Onsen_EventScript_Owner {
 
 					setspeaker(SP_NAME_OWNER)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Enjoy the hot springs!\nI'll be right behind you now."
+						"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN 0}Enjoy the hot springs!\nI'll be right behind you now."
 					))
 					closemessage
 
@@ -94,7 +94,7 @@ script YifuCity_Onsen_EventScript_Owner {
 
 					setspeaker(SP_NAME_OWNER)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Sure, sure."
+						"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN 0}Sure, sure."
 					))
 					closemessage
 			}
@@ -109,7 +109,7 @@ script YifuCity_Onsen_EventScript_Owner {
 
 			setspeaker(SP_NAME_OWNER)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN EMOTE_NORMAL}Sorry but I run a business, not a charity."
+				"{CREATE_MUGSHOT MUGSHOT_HOT_OLD_WOMAN 0}Sorry but I run a business, not a charity."
 			))
 			closemessage
 		}
@@ -122,7 +122,7 @@ script YifuCity_Onsen_EventScript_Man {
 	lock
 	faceplayer
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_1 EMOTE_NORMAL}{SPEAKER NAME_MAN}Whew…\n"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_1 0}{SPEAKER NAME_MAN}Whew…\n"
 		"The hot spring regulars are tireless!\lThey battle visitors every single day!"
 	))
 	closemessage

@@ -53,7 +53,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 	faceplayer
 	setvar(VAR_0x8004, 0)
 	setspeaker(SP_NAME_NURSE)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Gimme yer Pokémon, I'mma heal 'em good."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Gimme yer Pokémon, I'mma heal 'em good."))
 	closemessage
 
 	incrementgamestat(GAME_STAT_USED_POKECENTER)
@@ -65,7 +65,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 		if (checkmoney(500)) {
 			setspeaker(SP_NAME_NURSE)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Yep, uh, good as new, probably!\p"
 				"Ya know the drill, ¥500 please!"
 			))
 			playse(SE_SHOP)
@@ -75,12 +75,12 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 
 			setspeaker(SP_NAME_NURSE)
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever."
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}C'magain, or whatever."
 				))
 		} else {
 			setspeaker(SP_NAME_NURSE)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Yep, uh, good as new, probably!\p"
 				"Ya know the drill, ¥500 please!\p"
 				"… … …\n… … …What? Yer THAT poor?\p"
 				"I feel almost bad for ya, buddy…\p"
@@ -93,7 +93,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 		setflag(FLAG_GOT_SCAMMED_YIFU_REFUGE)
 		setspeaker(SP_NAME_NURSE)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Yep, uh, good as new, probably!\p"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Yep, uh, good as new, probably!\p"
 			"By the way, that'll be ¥500, wow, so cheap!"
 		))
 
@@ -112,7 +112,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 				if (checkmoney(500)) {
 					setspeaker(SP_NAME_NURSE)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}No whinin'! Fork over the cash before I call security!"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}No whinin'! Fork over the cash before I call security!"
 					))
 					playse(SE_SHOP)
 					removemoney(500)
@@ -121,12 +121,12 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 
 					setspeaker(SP_NAME_NURSE)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever."
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}C'magain, or whatever."
 					))
 				} else {
 					setspeaker(SP_NAME_NURSE)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}No whinin'! Fork over the cash before I call security!\p"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}No whinin'! Fork over the cash before I call security!\p"
 						"… … …\n… … …What? Yer THAT poor?\p"
 						"I feel almost bad for ya, buddy…\p"
 						"I guess, uh… I guess we're good then, don' worry 'bout it.\p"
@@ -138,7 +138,7 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 				if (checkmoney(500)) {
 					setspeaker(SP_NAME_NURSE)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Really? Jus' like that?\p"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}…Really? Jus' like that?\p"
 						"(Wow, this one's really dumb, huh?)\p"
 						"I mean, yeah, you better!"
 					))
@@ -150,12 +150,12 @@ script YifuCity_Refuge_EventScript_FakeNurse {
 
 					setspeaker(SP_NAME_NURSE)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}C'magain, or whatever."
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}C'magain, or whatever."
 					))
 				} else {
 					setspeaker(SP_NAME_NURSE)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}…Really? Jus' like that?\p"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}…Really? Jus' like that?\p"
 						"(Wow, this one's really dumb, huh?)\p"
 						"… … …\n… … …What? Ya don't have 'nuff cash?!\p"
 						"I can't believe it! I've been had!"
@@ -188,7 +188,7 @@ script YifuCity_Refuge_EventScript_Shamisen {
 	// TODO EVA battle shamisen player!
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE EMOTE_NORMAL}Good evening, traveler.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}Good evening, traveler.\p"
 		"I hope my song will soothe your spirit, should it be troubled."
 	))
 	closemessage
@@ -219,13 +219,13 @@ script YifuCity_Refuge_EventScript_HotelValet {
 	if (flag(FLAG_DAILY_YIFU_HOTEL_ROOM)) {
 		setspeaker(SP_NAME_VALET)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_VALET EMOTE_NORMAL}Enjoy your stay, {STR_VAR_1}!\nRoom one is yours for the day!"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}Enjoy your stay, {STR_VAR_1}!\nRoom one is yours for the day!"
 		))
 		closemessage
 	} else {
 		setspeaker(SP_NAME_VALET)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_VALET EMOTE_NORMAL}Good day, {STR_VAR_1}!\nA room is available for ¥500, if you need a place to spend the night!"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}Good day, {STR_VAR_1}!\nA room is available for ¥500, if you need a place to spend the night!"
 		))
 
 		showmoneybox(18, 0)
@@ -241,7 +241,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 				case 0:
 					setspeaker(SP_NAME_VALET)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_UUME_VALET EMOTE_NORMAL}For sure. That'll be ¥500!"
+						"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}For sure. That'll be ¥500!"
 					))
 					playse(SE_SHOP)
 					removemoney(500)
@@ -252,7 +252,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 
 					setspeaker(SP_NAME_VALET)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_UUME_VALET EMOTE_NORMAL}Your room is the first one down the corridor!\lWe hope you have a pleasant stay!"
+						"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}Your room is the first one down the corridor!\lWe hope you have a pleasant stay!"
 					))
 					closemessage
 
@@ -270,7 +270,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 
 					setspeaker(SP_NAME_VALET)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_UUME_VALET EMOTE_NORMAL}Have a nice day!"
+						"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}Have a nice day!"
 					))
 					closemessage
 			}
@@ -285,7 +285,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 
 			setspeaker(SP_NAME_VALET)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_VALET EMOTE_NORMAL}Goodness, it appears you don't have enough money…\l"
+				"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}Goodness, it appears you don't have enough money…\l"
 				"I'm sorry!"
 			))
 			closemessage
@@ -298,7 +298,7 @@ script YifuCity_Refuge_EventScript_HotelValet {
 script YifuCity_Refuge_EventScript_FakeValetRoomNotEmpty {
 	setspeaker(SP_NAME_VALET)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hm? Someone was already in the room?\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Hm? Someone was already in the room?\p"
 		"I never said the room'd be empty,\nnow did I?"
 	))
 	closemessage
@@ -316,13 +316,13 @@ script YifuCity_Refuge_EventScript_FakeValet {
 
 		setspeaker(SP_NAME_VALET)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Ya get room one for the day!\nNow get off my face."
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Ya get room one for the day!\nNow get off my face."
 		))
 		closemessage
 	} else {
 		setspeaker(SP_NAME_VALET)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}G'day brat, I mean loyal customer!\nWanna book a room?\lOnly ¥2500 for one day!"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}G'day brat, I mean loyal customer!\nWanna book a room?\lOnly ¥2500 for one day!"
 		))
 
 		showmoneybox(18, 0)
@@ -338,7 +338,7 @@ script YifuCity_Refuge_EventScript_FakeValet {
 				case 0:
 					setspeaker(SP_NAME_VALET)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Don't just stand there then, gimme the money!"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Don't just stand there then, gimme the money!"
 					))
 					playse(SE_SHOP)
 					removemoney(2500)
@@ -349,7 +349,7 @@ script YifuCity_Refuge_EventScript_FakeValet {
 
 					setspeaker(SP_NAME_VALET)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}First room down the corridor!\nHave a nice stay, or whatever."
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}First room down the corridor!\nHave a nice stay, or whatever."
 					))
 					closemessage
 
@@ -367,7 +367,7 @@ script YifuCity_Refuge_EventScript_FakeValet {
 
 					setspeaker(SP_NAME_VALET)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}What d'ya want? Just go!"
+						"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}What d'ya want? Just go!"
 					))
 					closemessage
 			}
@@ -384,7 +384,7 @@ script YifuCity_Refuge_EventScript_FakeValet {
 
 			setspeaker(SP_NAME_VALET)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Get a load of this {STR_VAR_1}!\nYer even poorer than I am!\p"
+				"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Get a load of this {STR_VAR_1}!\nYer even poorer than I am!\p"
 				"Scram, kid, this ain't a charity."
 			))
 			closemessage
@@ -400,7 +400,7 @@ script YifuCity_Refuge_EventScript_ListenToShamisen {
 	setspeaker(SP_NAME_BOY)
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 EMOTE_NORMAL}Whew… I've walked all day…\nI am spent!"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Whew… I've walked all day…\nI am spent!"
 	))
 	closemessage
 	release
@@ -412,7 +412,7 @@ script YifuCity_Refuge_EventScript_OldMan {
 	faceplayer
 	setspeaker(SP_NAME_OLD_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN EMOTE_NORMAL}I'm just resting my old bones by the fire.\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN 0}I'm just resting my old bones by the fire.\p"
 		"How the years go by swiftly…\nDo treasure each passing day…"
 	))
 	closemessage
@@ -454,7 +454,7 @@ script YifuCity_Refuge_EventScript_Samurai {
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}The Crobat Shadows must be operating from somewhere… But where?"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}The Crobat Shadows must be operating from somewhere… But where?"
 	))
 	closemessage
 	release
@@ -467,7 +467,7 @@ script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY EMOTE_NORMAL}Arrgh… this city's Dojo is all girls, so I thought it was going to be super easy…\p"
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Arrgh… this city's Dojo is all girls, so I thought it was going to be super easy…\p"
 		"I got obliterated…"
 	))
 	closemessage
@@ -496,14 +496,14 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 			if (flag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)) {
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Ah, so have you made space in your party for the Egg I wanted to give you?\p"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Ah, so have you made space in your party for the Egg I wanted to give you?\p"
 					"Which of these Eggs do you favor?"
 				))
 			} else {
 				setflag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hello, traveler.\n… … …\l"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\l"
 					"… … …!\p"
 					"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
 					"… …Yes, I feel it…\p"
@@ -553,7 +553,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Please take good care of this Egg.\p"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Please take good care of this Egg.\p"
 					"May destiny cross our paths again!"
 				))
 				closemessage
@@ -564,7 +564,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 			} else {
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Oh, but wait, you don't have enough room for the Egg!\p"
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Oh, but wait, you don't have enough room for the Egg!\p"
 					"I'll wait for you to make some."
 				))
 				closemessage
@@ -574,7 +574,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 			applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 			setspeaker(SP_NAME_SHAMISEN_PLAYER)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hello, traveler.\n… … …\l"
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\l"
 				"… … …!\p"
 				"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
 				"{PLAYER}? It's nice to meet you again.\p"
@@ -591,7 +591,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 					applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 					setspeaker(SP_NAME_SHAMISEN_PLAYER)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Hmmmm… … …\n… … …\p"
+						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hmmmm… … …\n… … …\p"
 						"You aren't telling the truth, are you?\n"
 						"You're deceiving yourself, do you not feel it in your heart?\p"
 						"Don't be too sad about not succeeding. Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
@@ -603,7 +603,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 					applymovement(VAR_LAST_TALKED, moves(emote_happy))
 					setspeaker(SP_NAME_SHAMISEN_PLAYER)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}Oh, that's alright! Don't beat yourself up. I see in your heart that you have a bright future ahead of you.\p"
+						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Oh, that's alright! Don't beat yourself up. I see in your heart that you have a bright future ahead of you.\p"
 						"Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
 						"Rest here a while, and use these to prepare for your next journey!"
 					))
@@ -612,7 +612,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 
 					setspeaker(SP_NAME_SHAMISEN_PLAYER)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED EMOTE_NORMAL}May destiny cross our paths again!"
+						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}May destiny cross our paths again!"
 					))
 					closemessage
 			}

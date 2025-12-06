@@ -1,0 +1,70 @@
+{
+  "id": "MAP_SABERSIDE_TOWN_HOUSE1",
+  "name": "SabersideTown_House1",
+  "layout": "LAYOUT_SABERSIDE_TOWN_HOUSE1",
+  "music": "MUS_RG_CINNABAR",
+  "region_map_section": "MAPSEC_SABERSIDE_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CLEFAIRY)",
+      "x": 9,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MaguroHarbor_House1_EventScript_Clefairy",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SEASIDE_FAT_GUY",
+      "x": 6,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SabersideTown_House1_EventScript_Nerd",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    }
+  ],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_SABERSIDE_HOUSE_NERD_EXIT",
+      "x": 4,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_SABERSIDE_TOWN",
+      "dest_warp_id": "WARP_ID_SABERSIDE_HOUSE_NERD"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

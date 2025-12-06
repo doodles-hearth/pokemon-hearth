@@ -458,6 +458,10 @@
       "y": 6,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_SCENIC_HOT_SPRINGS",
+      "name": "Hot Springs"
     }
   ]
 }

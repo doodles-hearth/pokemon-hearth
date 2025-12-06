@@ -14,11 +14,11 @@ script Beachbound_Maguro_Gate_EventScript_Guard {
 	setspeaker(SP_NAME_SAMURAI)
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Are you going to Beachbound Route? Uh, be careful, kid!"
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Are you going to Beachbound Route? Uh, be careful, kid!"
 		))
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Ugh, I hate guard duty…\nWe're not even allowed a book…"
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Ugh, I hate guard duty…\nWe're not even allowed a book…"
 		))
 	}
 	closemessage

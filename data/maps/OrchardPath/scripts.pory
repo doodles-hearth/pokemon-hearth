@@ -25,28 +25,28 @@ script OrchardPath_EventScript_GuardHouseSign {
 script OrchardPath_EventScript_Junko {
 	trainerbattle_single(
 		TRAINER_JUNKO,
-		format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}I'm gathering ripe Berries to feed my Pokémon!"),
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}I'm gathering ripe Berries to feed my Pokémon!"),
 		format("He ought to eat more Berries…")
 	)
 	setspeaker(SP_NAME_LASS)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS EMOTE_NORMAL}My Pokémon is insatiable!\nI need to scour my local Library for more Berry recipes!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS 0}My Pokémon is insatiable!\nI need to scour my local Library for more Berry recipes!"), MSGBOX_AUTOCLOSE)
 }
 
 script OrchardPath_EventScript_Mami {
 	trainerbattle_single(
 		TRAINER_MAMI,
-		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}Hehehehe… This place is haunted at night! Are you scared?"),
+		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}Hehehehe… This place is haunted at night! Are you scared?"),
 		format("H-how could my ghosts lose to a mere mortal?")
 	)
 	setspeaker(SP_NAME_HEX_MANIAC)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I wanted to catch some more ghosts at the Graveyard, but…\lIt's a little TOO scary…"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}I wanted to catch some more ghosts at the Graveyard, but…\lIt's a little TOO scary…"), MSGBOX_AUTOCLOSE)
 }
 
 script OrchardPath_EventScript_Samurai {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Please stand back. Everything is under control."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Please stand back. Everything is under control."))
 
 	dynmultichoice(
 		0,
@@ -77,7 +77,7 @@ script OrchardPath_Samurai_WhatIsHappening {
 	special(GetPlayerSirMissString)
 	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Nothing that concerns you, {STR_VAR_1}.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Nothing that concerns you, {STR_VAR_1}.\p"
 		"This is just your regular, run-of-the-mill, top secret yet unimportant stuff."
 	))
 
@@ -105,7 +105,7 @@ script OrchardPath_Samurai_WhatIsHappening {
 script OrchardPath_Samurai_LetMeThrough {
 	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}We cannot let you through, so please be on your way."
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}We cannot let you through, so please be on your way."
 	))
 
 	dynmultichoice(
@@ -130,7 +130,7 @@ script OrchardPath_Samurai_KnowAboutDecay {
 
 	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}You- what-\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}You- what-\p"
 		"Ahem! I do not know of this Decay you speak of.\p"
 		"We cannot let you through though, so please be on your way.\p"
 		"Now now, move along!"
@@ -396,7 +396,7 @@ script OrchardPath_EventScript_Samurai2 {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Move along, please, nothing to see here!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Move along, please, nothing to see here!"))
 	closemessage
 	release
 }
@@ -404,12 +404,12 @@ script OrchardPath_EventScript_Samurai2 {
 script OrchardPath_EventScript_Daichi {
 	trainerbattle_single(
 		TRAINER_DAICHI,
-		format("{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}I'm doin' research on local berries!"),
+		format("{CREATE_MUGSHOT MUGSHOT_FARMER 0}I'm doin' research on local berries!"),
 		format("This battle made me hungry.")
 	)
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Lemme bring these juicy Lum Berries back home…"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Lemme bring these juicy Lum Berries back home…"
 	))
 	closemessage
 	end

@@ -1,0 +1,39 @@
+mapscripts SabersideTown_House5_MapScripts {}
+
+script SabersideTown_House5_EventScript_Miner {
+    lock
+    faceplayer
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}The quarry's really dark. You gotta have some kind of light in there!\p"
+        "That's why we caught a Ponyta on the route east from here!"
+    ))
+    closemessage
+    setnamedmon(SPECIES_PONYTA)
+    release
+}
+
+script SabersideTown_House5_EventScript_Ponyta {
+    lock
+    faceplayer
+	setseenmon(SPECIES_PONYTA)
+	setspeakertomonname(SPECIES_PONYTA)
+	playmoncry(SPECIES_PONYTA, CRY_MODE_NORMAL)
+    msgbox(format(
+        "He-e-e-e!"
+    ))
+    waitmoncry
+    release
+    end
+}
+
+script SabersideTown_House5_EventScript_Miner2 {
+    lock
+    faceplayer
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}I remember how fickle Ponyta's light used to be.\p"
+        "But the more we train her, the more her light grows with her!"
+    ))
+    closemessage
+    setnamedmon(SPECIES_PONYTA)
+    release
+}

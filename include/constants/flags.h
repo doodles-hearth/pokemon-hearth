@@ -145,9 +145,9 @@
 #define FLAG_CANCEL_BATTLE_ROOM_CHALLENGE    0x77
 
 #define FLAG_LANDMARK_MIRAGE_TOWER           0x78
-#define FLAG_RECEIVED_TM_BRICK_BREAK         0x79
-#define FLAG_UNUSED_0x7A                     0x7A // Unused
-#define FLAG_UNUSED_0x7B                     0x7B // Unused
+#define FLAG_SHOWED_SKARMORY_TO_LITTLE_GIRL  0x79
+#define FLAG_RECEIVED_HEX_MANIAC_GHOST_BALL  0x7A
+#define FLAG_DEFEATED_SOULKEEP_HAUNTING      0x7B
 #define FLAG_REGISTER_RIVAL_POKENAV          0x7C
 #define FLAG_DEFEATED_RIVAL_ROUTE_104        0x7D
 #define FLAG_DEFEATED_WALLY_VICTORY_ROAD     0x7E
@@ -1038,8 +1038,8 @@
 #define FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_SHADOW                   0x3D5
 #define FLAG_HIDE_SCENIC_KECLEON_1                                  0x3D6
 #define FLAG_HIDE_RUSTURF_TUNNEL_WANDA                              0x3D7
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA                0x3D8
-#define FLAG_HIDE_ROUTE_120_KECLEON_2                               0x3D9
+#define FLAG_HIDE_SCENIC_KECLEON_2                                  0x3D8
+#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA                0x3D9
 #define FLAG_HIDE_ROUTE_120_KECLEON_3                               0x3DA
 #define FLAG_HIDE_ROUTE_120_KECLEON_4                               0x3DB
 #define FLAG_HIDE_ROUTE_120_KECLEON_5                               0x3DC
@@ -1580,7 +1580,7 @@
 // These flags are cleared once per day
 // The start and end are byte-aligned because the flags are cleared in byte increments
 #define DAILY_FLAGS_START                           (FLAG_UNUSED_0x91F + (8 - FLAG_UNUSED_0x91F % 8))
-#define FLAG_MON_CRY_NPC                            (DAILY_FLAGS_START + 0x0)
+#define FLAG_DAILY_MON_CRY_RIDDLE_WON               (DAILY_FLAGS_START + 0x0)
 #define FLAG_DAILY_CONTEST_LOBBY_RECEIVED_BERRY     (DAILY_FLAGS_START + 0x1)
 #define FLAG_DAILY_SECRET_BASE                      (DAILY_FLAGS_START + 0x2)
 #define FLAG_DAILY_SHUCKLE_BERRY_JUICE              (DAILY_FLAGS_START + 0x3)

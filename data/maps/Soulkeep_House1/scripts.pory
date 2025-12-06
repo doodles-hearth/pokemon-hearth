@@ -19,7 +19,7 @@ script Soulkeep_House1_EventScript_EnGarde {
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}En garde, puny ghosts!!\n… … … …\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}En garde, puny ghosts!!\n… … … …\p"
 		"What? I'm practicing!"
 	))
 	closemessage
@@ -31,7 +31,7 @@ script Soulkeep_House1_EventScript_Farmer {
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Our crops are being neglected…\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Our crops are being neglected…\p"
 		"None dare till the field and turn their back on the ghosts!"
 	))
 	closemessage
@@ -43,7 +43,7 @@ script Soulkeep_House1_EventScript_LittleGirl {
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_GIRL)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Nothing bad can happen to us so long as Fennekin keeps us safe!\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Nothing bad can happen to us so long as Fennekin keeps us safe!\p"
 		"I feed him lots of twigs so that he keeps us warm!\p"
 		"He'll blow hot air from his ears to keep away the ghosts!"
 	))
@@ -60,10 +60,10 @@ script Soulkeep_House1_EventScript_Fennekin {
     faceplayer
 	setseenmon(SPECIES_FENNEKIN)
 	setspeakertomonname(SPECIES_FENNEKIN)
+	playmoncry(SPECIES_FENNEKIN, CRY_MODE_NORMAL)
     msgbox(format(
         "Growr…"
     ))
-	playmoncry(SPECIES_FENNEKIN, CRY_MODE_NORMAL)
     waitmoncry
 	closemessage
     release

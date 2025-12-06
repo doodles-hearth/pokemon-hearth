@@ -1,2 +1,40 @@
 mapscripts ScenicRoute_MapScripts {}
 
+script ScenicRoute_EventScript_Invisible {
+    lock
+    faceplayer
+    if (flag(FLAG_HIDE_SCENIC_KECLEON_2)) {
+        if (flag(FLAG_RECEIVED_HEX_MANIAC_GHOST_BALL)) {
+            msgbox(format(
+                "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC}{SPEAKER NAME_HEX_MANIAC}{FONT_SMALL}Kecleon's like, such a dumb Pokémon…{FONT_NORMAL}"
+            ))
+            closemessage
+        } else {
+            setnamedmon(SPECIES_KECLEON)
+
+            msgbox((
+                "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC}{SPEAKER NAME_HEX_MANIAC}The invisible Pokémon was not a\nGhost, but a Kecleon?!\l"
+                "I'm like so disappointed…\p"
+                "I'd brought a special Poké Ball just\nto catch it and all…\p"
+                "Well, I guess I don't need it anymore.\nI guess you can like, take it."
+            ))
+            closemessage
+
+            giveitem(ITEM_DUSK_BALL)
+
+            msgbox(format(
+                "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC}{SPEAKER NAME_HEX_MANIAC}Can you also, like, take my bitter disappointment, or whatever?"
+            ))
+            closemessage
+
+            setflag(FLAG_RECEIVED_HEX_MANIAC_GHOST_BALL)
+        }
+    } else {
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC}{SPEAKER NAME_HEX_MANIAC}There's something invisible in the way right there…\p"
+            "Gosh, I'm sure it's a cool Ghost Pokémon…"
+        ))
+        closemessage
+    }
+    release
+}

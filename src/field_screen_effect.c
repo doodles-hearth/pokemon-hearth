@@ -1054,6 +1054,8 @@ void AnimateFlash(u8 newFlashLevel)
     LockPlayerFieldControls();
 }
 
+#define SMALLEST_FLASH_RADIUS 20
+
 void WriteFlashScanlineEffectBuffer(u8 flashRadius)
 {
     if (flashRadius)
@@ -1062,10 +1064,42 @@ void WriteFlashScanlineEffectBuffer(u8 flashRadius)
         u32 playerSpriteId= gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)].spriteId;
 
         u32 species = OW_SPECIES(GetFollowerObject());
+        u32 level = GetMonData(GetFirstLiveMon(), MON_DATA_LEVEL, NULL);
 
-        u32 speciesFlash = gSpeciesInfo[species].flashRadius;
+        u32 followerFlashRadius = 0;
+
         if (gSprites[followSpriteId].invisible)
-            speciesFlash = 20;
+        {
+            followerFlashRadius = SMALLEST_FLASH_RADIUS;
+        }
+        else if (gSpeciesInfo[species].glows)
+        {
+            /*
+                1-10 : 6 (barely bigger than no flash at all)
+                10-20: 5
+                20-30: 4
+                30-40: 3
+                40-50: 2
+                50-60: 1
+                60+  : 0 (room is fully lit)
+
+                sFlashLevelToRadius[] = { 200, 72, 64, 56, 48, 40, 32, 24, 0 };
+            */
+            if (level >= 1 && level < 10) // Barely better than no flash
+                followerFlashRadius = 28;
+            else if (level >= 10 && level < 20)
+                followerFlashRadius = 38;
+            else if (level >= 20 && level < 30)
+                followerFlashRadius = 50;
+            else if (level >= 30 && level < 40)
+                followerFlashRadius = 65;
+            else if (level >= 40 && level < 50)
+                followerFlashRadius = 85;
+            else if (level >= 50 && level < 60)
+                followerFlashRadius = 95;
+            else if (level >= 60) // Room is fully lit
+                followerFlashRadius = 200;
+        }
 
         s32 followX = gSprites[followSpriteId].x;
         s32 followY = gSprites[followSpriteId].y;
@@ -1076,18 +1110,18 @@ void WriteFlashScanlineEffectBuffer(u8 flashRadius)
         s8 diffX = playerX - followX;
         s8 diffY = playerY - followY;
 
-        if (speciesFlash == 0)
+        if (followerFlashRadius == 0)
         {
-            speciesFlash = 20;
+            followerFlashRadius = SMALLEST_FLASH_RADIUS;
             diffX = 0;
             diffY = 0;
         }
 
-        if (gFlashX != diffX || gFlashY != diffY || flashRadius != speciesFlash || gDrawFlash)
+        if (gFlashX != diffX || gFlashY != diffY || flashRadius != followerFlashRadius || gDrawFlash)
         {
             gDrawFlash = FALSE;
 
-            if (speciesFlash == 20)
+            if (followerFlashRadius == SMALLEST_FLASH_RADIUS)
             {
                 if (gFlashX > 0)
                     gFlashY--;
@@ -1105,9 +1139,9 @@ void WriteFlashScanlineEffectBuffer(u8 flashRadius)
                 gFlashY = diffY;
             }
 
-            if (flashRadius != speciesFlash)
+            if (flashRadius != followerFlashRadius)
             {
-                if (flashRadius < speciesFlash)
+                if (flashRadius < followerFlashRadius)
                     flashRadius++;
                 else
                     flashRadius--;

@@ -35,7 +35,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	setspeaker(SP_NAME_OLD_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_MAN EMOTE_NORMAL}Yet another area is decaying on Beachbound Route…"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_MAN 0}Yet another area is decaying on Beachbound Route…"
 	))
 	closemessage
 
@@ -44,7 +44,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	setspeaker(SP_NAME_OLD_LADY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_WOMAN EMOTE_NORMAL}We have yet to receive tidings from the Elder in Sunrise Village…"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_OLD_WOMAN 0}We have yet to receive tidings from the Elder in Sunrise Village…"
 	))
 	closemessage
 
@@ -53,7 +53,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Let us not surrender to panic."
+		"{CREATE_MUGSHOT MUGSHOT_IWA 0}Let us not surrender to panic."
 	))
 	closemessage
 
@@ -64,7 +64,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Excuse me… Can I help you?"
+		"{CREATE_MUGSHOT MUGSHOT_IWA 0}Excuse me… Can I help you?"
 	))
 	closemessage
 
@@ -95,7 +95,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Yes? I am Iwa, the Elder of Silveridge. What brings you to me?"
+		"{CREATE_MUGSHOT MUGSHOT_IWA 0}Yes? I am Iwa, the Elder of Silveridge. What brings you to me?"
 	))
 
 	dynmultichoice(
@@ -116,12 +116,12 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Ah! The letter I was expecting from Kaba…!"
+		"{CREATE_MUGSHOT MUGSHOT_IWA 0}Ah! The letter I was expecting from Kaba…!"
 	))
 	playse(SE_PIN)
 	applymovement(LOCALID_ELDER, moves(emote_pensive))
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}… … … … … …\n… … … … … …\p"
+		"{CREATE_MUGSHOT MUGSHOT_IWA 0}… … … … … …\n… … … … … …\p"
 		"I see…\p"
 		"Wild Pokémon are in a frenzy all the way down to Ginko Woods as well…\p"
 		"So the phenomenon is happening across the whole Toku region!\p"
@@ -151,7 +151,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	applymovement(LOCALID_MESSENGER, moves(emote_sad))
 	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_2 EMOTE_NORMAL}Elder Iwa! Elder Iwa!\p"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_2 0}Elder Iwa! Elder Iwa!\p"
 		"A Chatot just got in! Some Decay was discovered in Uume Forest!"
 	))
 	closemessage
@@ -170,12 +170,12 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}We cannot lose a second! We need to investigate Uume Forest right now!"
+		"{CREATE_MUGSHOT MUGSHOT_IWA 0}We cannot lose a second! We need to investigate Uume Forest right now!"
 	))
 	playse(SE_PIN)
 	applymovement(LOCALID_ELDER, moves(emote_pensive))
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}… … … … … …\n… … … … … …\p"
+		"{CREATE_MUGSHOT MUGSHOT_IWA 0}… … … … … …\n… … … … … …\p"
 		"Young one from Sunrise Village.\nWhat is your name? {PLAYER}?\p"
 		"You came all the way up here\non foot…\lYou have a team of capable Pokémon…\lKaba seems to trust you…\p"
 		"It is decided! Travel to Uume Forest, southeast of Tranquil Route!\p"
@@ -196,7 +196,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}I have been keeping this mysterious ancient relic for years.\p"
+		"{CREATE_MUGSHOT MUGSHOT_IWA 0}I have been keeping this mysterious ancient relic for years.\p"
 		"We aren't sure where nor when it originated, but it lets one Pokémon mirror the experience of another.\p"
 		"It should be useful in the hands of such a promising young Wielder.\p"
 		"Now go, and be swift!"
@@ -214,7 +214,7 @@ script Silveridge_EldersHouse_EventScript_Elder {
 	faceplayer
 	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA EMOTE_NORMAL}Go forth, young one. To Uume Forest, southeast of Tranquil Route!"
+		"{CREATE_MUGSHOT MUGSHOT_IWA 0}Go forth, young one. To Uume Forest, southeast of Tranquil Route!"
 	))
 	closemessage
 	release

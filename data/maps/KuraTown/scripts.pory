@@ -131,7 +131,7 @@ script KuraTown_EventScript_Farmer {
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}Why do we hate the Saku Village folks, y'ask?"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Why do we hate the Saku Village folks, y'ask?"
 	))
 	closemessage
 
@@ -142,7 +142,7 @@ script KuraTown_EventScript_Farmer {
 
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}To be honest, I don't quite rememb'r.\nBut who needs a reas'n, right?"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}To be honest, I don't quite rememb'r.\nBut who needs a reas'n, right?"
 	))
 	release
 }
@@ -154,7 +154,7 @@ script KuraTown_EventScript_SilkScarf {
 		setspeaker(SP_NAME_GIRL)
 		msgbox(
 			format(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Sigh… Now I'm scarfless…\p"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 0}Sigh… Now I'm scarfless…\p"
 				"At least I'm not committing any more crimes against fashion…"
 			)
 		)
@@ -163,7 +163,7 @@ script KuraTown_EventScript_SilkScarf {
 		setspeaker(SP_NAME_GIRL)
 		msgbox(
 			format(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 EMOTE_NORMAL}Hey, you! Yes, you! I need some super-urgent fashion advice!\p"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 0}Hey, you! Yes, you! I need some super-urgent fashion advice!\p"
 				"I bought myself this scarf in Yifu City… But now I'm worried the white clashes with my complexion!\p"
 				"Is it awful?\nDoes it make my skin look grey?"
 			)
@@ -191,7 +191,7 @@ script KuraTown_EventScript_FarmerScyther {
 	setspeaker(SP_NAME_FARMER)
 	msgbox(
 		format(
-			"{CREATE_MUGSHOT MUGSHOT_FARMER EMOTE_NORMAL}We started taming Scyther recently\nto help with harvestin' the crops.\l"
+			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}We started taming Scyther recently\nto help with harvestin' the crops.\l"
 			"They've been a tremendous help!"
 		),
 		MSGBOX_DEFAULT
@@ -242,7 +242,7 @@ script KuraTown_EventScript_LovestruckGuy{
 	setspeaker("Lovestruck Boy")
 	msgbox(
 		(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 EMOTE_NORMAL}I just spent the day with my girlfriend\nfrom Maguro Harbor, but I already want\ltomorrow to come to see her again!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 0}I just spent the day with my girlfriend\nfrom Maguro Harbor, but I already want\ltomorrow to come to see her again!"
 		),
 		MSGBOX_DEFAULT
 	)
@@ -254,7 +254,7 @@ script KuraTown_EventScript_PokemonCouncil {
 	faceplayer	
 	setspeaker(SP_NAME_WOMAN)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 EMOTE_NORMAL}The Elders of the Toku Council may\nlook like a bunch of frail old people,\lbut they were once formidable Wielders!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 0}The Elders of the Toku Council may\nlook like a bunch of frail old people,\lbut they were once formidable Wielders!\p"
 		"They paved the way for what Pokémon\nWielding is today, and will be tomorrow."
 	))
 	closemessage
@@ -294,7 +294,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 
 	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Did you hear? They said this Decay\nstarted less than a week ago.\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Did you hear? They said this Decay\nstarted less than a week ago.\p"
 		"That coincides with the beginning of\nthe Volcano's rumbling spells,\lso there probably is a correlation.\p"
 		"We need to get to the bottom of this."
 	))
@@ -311,7 +311,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 
 	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}… …{PLAYER}, Natsuki.\nI am heading home, in Yifu City.\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}… …{PLAYER}, Natsuki.\nI am heading home, in Yifu City.\p"
 		"We should meet up later to talk about this some more.\p"
 		"Well, I am leaving now.\p"
 		"Goodbye!"
@@ -335,7 +335,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 	applymovement(LOCALID_KURA_NATSUKI, moves(emote_sweat))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Boy, your friend sure talks a lot, huh?\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Boy, your friend sure talks a lot, huh?\p"
 		"D'you think this whole Decay business\nis linked to the wild Pokémon attacks\lElder Kaba told us about?\p"
 		"I'm glad the Samurai are on it.\nI'm sure they'll fix whatever this is.\p"
 		"You're going up to Silveridge to deliver that letter, huh, {PLAYER}?\p"
@@ -348,7 +348,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI EMOTE_NORMAL}Don't hit me! Don't hit me!\nI'm gone!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Don't hit me! Don't hit me!\nI'm gone!\p"
 		"See ya later, Feraligatr!"
 	))
 
@@ -372,7 +372,7 @@ script KuraTown_EventScript_AnxiousAshii {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}My heart is racing… Where is he?\nI hope he's alright…"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}My heart is racing… Where is he?\nI hope he's alright…"
 	))
 	playse(SE_PIN)
 	applymovement(LOCALID_ASHII, moves(emote_sad))
@@ -394,7 +394,7 @@ script KuraTown_EventScript_AnxiousAshiiWaiting {
 	applymovement(LOCALID_ASHII, moves(emote_sad))
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm worried…\nCan you check down south for me?"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}I'm worried…\nCan you check down south for me?"
 	))
 	closemessage
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_down))
@@ -410,7 +410,7 @@ script KuraTown_EventScript_PreventEscape {
 	playse(SE_PIN)
 	applymovement(LOCALID_ASHII, moves(emote_sad))
 	setspeaker(SP_NAME_ASHII)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Where on earth are you going, {PLAYER}?!\p{FONT_SMALL_NARROW}Please don't leave me here alone…"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Where on earth are you going, {PLAYER}?!\p{FONT_SMALL_NARROW}Please don't leave me here alone…"))
 	waitmessage
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down * 2))
@@ -442,7 +442,7 @@ script KuraTown_EventScript_TeachingScrolls {
 		faceplayer
 		setspeaker(SP_NAME_GUY)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Abra is the best!\nHe can use attacks in his sleep!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY 0}Abra is the best!\nHe can use attacks in his sleep!"
 		))
 		closemessage
 
@@ -452,7 +452,7 @@ script KuraTown_EventScript_TeachingScrolls {
 	} elif (checkitem(ITEM_TM_PSYBEAM)) {
 		setspeaker(SP_NAME_GUY)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}C'mon Abra, wakey wakey…"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY 0}C'mon Abra, wakey wakey…"
 		))
 		closemessage
 
@@ -492,7 +492,7 @@ script KuraTown_EventScript_TeachingScrolls {
 		faceplayer
 		setspeaker(SP_NAME_GUY)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Did… Did you see that?!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY 0}Did… Did you see that?!\p"
 			"Abra made me float in the air with his Psybeam!!"
 		))
 		closemessage
@@ -509,7 +509,7 @@ script KuraTown_EventScript_TeachingScrolls {
 		applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 		setspeaker(SP_NAME_GUY)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}He didn't even wake up…"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY 0}He didn't even wake up…"
 		))
 		closemessage
 
@@ -519,7 +519,7 @@ script KuraTown_EventScript_TeachingScrolls {
 		faceplayer
 		setspeaker(SP_NAME_GUY)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}I taught Abra a sick Psychic move using a Technique Scroll, but…\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY 0}I taught Abra a sick Psychic move using a Technique Scroll, but…\p"
 			"Guess even the sickest move is useless if all he does is sleep, huh…\p"
 			"You can have my Scroll.\nUse it as many times as you want."
 		))
