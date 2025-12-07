@@ -20,6 +20,7 @@
 #include "constants/form_change_types.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/party_menu.h"
+#include "fldeff.h"
 
 static u32 sFaintedFromDecayMask; // bitmask to determine if the pokemon just fainted from decay
 
@@ -154,7 +155,7 @@ static void Task_TryFieldPoisonWhiteOut(u8 taskId)
         {
             gSpecialVar_Result = FLDPSN_NO_WHITEOUT;
             UpdateFollowingPokemon();
-            
+            UpdateFlashTint();
         }
         ScriptContext_Enable();
         DestroyTask(taskId);

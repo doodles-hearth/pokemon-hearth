@@ -70,6 +70,8 @@ static const u16 sCaveTransitionPalette_Enter[] = INCBIN_U16("graphics/cave_tran
 static const u32 sCaveTransitionTilemap[] = INCBIN_U32("graphics/cave_transition/tilemap.bin.smolTM");
 static const u32 sCaveTransitionTiles[] = INCBIN_U32("graphics/cave_transition/tiles.4bpp.smol");
 
+EWRAM_DATA u8 currentCaveTint;
+
 bool32 SetUpFieldMove_Flash(void)
 {
     // In Ruby and Sapphire, Registeel's tomb is opened by using Fly. In Emerald,
@@ -388,34 +390,26 @@ void UpdateFlashTint(void)
     //Get Flash DNS Tint
     if (GetMonData(&gPlayerParty[followerIndex], MON_DATA_IS_SHINY) && (IsFollowerSpawned()) && followerFlashTintShiny > 0)
     {
-        DebugPrintf("   A");
         newFlashTint = followerFlashTintShiny;
         currentFlashTint = followerFlashTintShiny;
     }
     else if (followerFlashTint > 0)
-    /* else if ((IsFollowerSpawned()) && followerFlashTint > 0) */
     {
-        DebugPrintf("   B");
         newFlashTint = followerFlashTint;
         currentFlashTint = followerFlashTint;
     }
     else if (moveTint > 0)
     {
-        DebugPrintf("   C");
         newFlashTint = moveTint;
     }
     else
     {
-        DebugPrintf("   D");
         newFlashTint = DNS_BLEND_CAVE_STANDARD;
     }
     
-    /* DebugPrintf("ID=%d, old=%d, new=%d. Spawned=%d, hasTint=%d", speciesId, currentFlashTint, newFlashTint, IsFollowerSpawned(), followerFlashTint > 0); */
-    
-    //Do Custom DNS Blend
+    // Do Custom DNS Blend
     if ((currentFlashTint != followerFlashTintShiny) || (currentFlashTint != followerFlashTint))
     {
-        DebugPrintf("   E");
         SET_FOLLOWER_TINT(flashTrackerPacked, currentFlashTint);
         VarSet(VAR_FLASH_TRACKER_PACKED, flashTrackerPacked);
     }
@@ -423,4 +417,6 @@ void UpdateFlashTint(void)
     u32 palettes = FilterTimeBlendPalettes(PALETTES_ALL);
     const struct BlendSettings *blend = &gCustomDNSTintBlend[newFlashTint];
     TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
+    
+    currentCaveTint = newFlashTint;
 }
