@@ -4215,6 +4215,7 @@ static void DebugNativeStep_Party_SetColorMain(u8 taskId)
     gTasks[taskId].tSubWindowId = windowId;
     gTasks[taskId].tColoration = coloration;
     gTasks[taskId].tShinyness = isShiny;
+    gTasks[taskId].tSpecies = species;
     gTasks[taskId].tInput = coloration;
     gTasks[taskId].tDigit = 0;
     gTasks[taskId].tPartyId = 0;
