@@ -22,6 +22,7 @@ const u8 gText_ChatotPostSender_Hariko[] = _("Hariko");
 const u8 gText_ChatotPostSender_Natsuki[] = _("Natsuki");
 const u8 gText_ChatotPostSender_Okada[] = _("Okada");
 const u8 gText_ChatotPostSender_Kaba[] = _("Elder Kaba");
+const u8 gText_ChatotPostSender_Anon[] = _("Anonymous");
 
 // Makes Chatot appear
 void SpawnPostChatot(void)
@@ -162,7 +163,7 @@ bool32 TryGetRandomTrainerPost()
 
 bool32 TryGetNonTrainerPost(u32 postType)
 {
-    DebugPrintf("TryGetNonTrainerPost");
+    // DebugPrintf("TryGetNonTrainerPost");
     const u8 postCount = ARRAY_COUNT(gChatotPost);
     if (postCount == 0)
         return FALSE;
@@ -173,35 +174,35 @@ bool32 TryGetNonTrainerPost(u32 postType)
         indices[i] = i;
     Shuffle(indices, postCount, sizeof(indices[0]));
 
-    DebugPrintf("Looping %dx", postCount);
+    // DebugPrintf("Looping %dx", postCount);
     for (u8 j = 0; j < postCount; ++j)
     {
-        DebugPrintf("  %d", j);
+        // DebugPrintf("  %d", j);
         u8 postIdx = indices[j];
         const struct ChatotPost *post = &gChatotPost[postIdx];
 
         // Skip none-type posts for now & skip the null value post
         if (post->type == POST_TYPE_NONE || postIdx == 0)
         {
-            DebugPrintf("  Skipping post NONE");
+            // DebugPrintf("  Skipping post NONE");
             continue;
         }
 
         // Already read msg
         if (CheckChatotPostFlag(postIdx))
         {
-            DebugPrintf("  Skipping already used");
+            // DebugPrintf("  Skipping already used");
             continue;
         }
 
         bool8 condSatisfied = (post->condition == 0) ? TRUE : FlagGet(post->condition);
-        DebugPrintf("  Cond satisfied? %d", condSatisfied);
+        // DebugPrintf("  Cond satisfied? %d", condSatisfied);
         if (!condSatisfied)
             continue;
 
         if (postType == post->type && !IsPostInQueue(postIdx))
         {
-            DebugPrintf("   Post idx %d is active", postIdx);
+            // DebugPrintf("   Post idx %d is active", postIdx);
             SetChatotPostActive(postIdx);
             return TRUE;
         }
@@ -241,14 +242,14 @@ bool8 Native_CheckChatotPost(struct ScriptContext *ctx)
         if (activePostId == POST_TRAINER_TEMPLATE)
         {
             u16 trainerId = gSaveBlock1Ptr->chatotPostRematchTrainerId;
-            DebugPrintf("SENDER=%S", GetTrainerNameFromId(trainerId));
+            // DebugPrintf("SENDER=%S", GetTrainerNameFromId(trainerId));
             StringCopy(gStringVar1, GetTrainerClassNameFromId(trainerId));
             StringAppend(gStringVar1, COMPOUND_STRING(" "));
             StringAppend(gStringVar1, GetTrainerNameFromId(trainerId));
         }
         else
         {
-            DebugPrintf("SENDER=%S", gChatotPost[activePostId].senderName);
+            // DebugPrintf("SENDER=%S", gChatotPost[activePostId].senderName);
             StringCopy(gStringVar1, gChatotPost[activePostId].senderName);
         }
     }
@@ -285,23 +286,23 @@ bool8 Native_ReadChatotPost(struct ScriptContext *ctx)
     {
         if (storedPost == POST_TRAINER_TEMPLATE)
         {
-            /* DebugPrintf("  trainer"); */
+            /* // DebugPrintf("  trainer"); */
             SelectMatchCallMessage(gSaveBlock1Ptr->chatotPostRematchTrainerId, gStringVar4);
-            /* DebugPrintf("  msg selected"); */
+            /* // DebugPrintf("  msg selected"); */
             script = ChatotPost_EventScript_TrainerMessage;
-            /* DebugPrintf("  script selected"); */
+            /* // DebugPrintf("  script selected"); */
             gSaveBlock1Ptr->chatotPostRematchTrainerId = 0;
         }
         else
         {
-            DebugPrintf("  non trainer");
+            // DebugPrintf("  non trainer");
             script = gChatotPost[storedPost].script;
         }
     }
     
-    DebugPrintf("flag=%d", CheckChatotPostFlag(storedPost));
+    // DebugPrintf("flag=%d", CheckChatotPostFlag(storedPost));
     SetChatotPostFlag(storedPost);
-    DebugPrintf("flag=%d", CheckChatotPostFlag(storedPost));
+    // DebugPrintf("flag=%d", CheckChatotPostFlag(storedPost));
     ClearFirstPostSlotAndCompressPostQueue();
     ScriptCall(ctx, script);
     return FALSE;
@@ -347,10 +348,10 @@ bool32 TryGetChatotPost(void)
 {
     if (UpdateMatchCallStepCounter() && UpdateMatchCallMinutesCounter())
     {
-        DebugPrintf("I'm in");
+        // DebugPrintf("I'm in");
         if (TryGetNonTrainerPost(POST_TYPE_IMMEDIATE))
         {
-            DebugPrintf("Immediate NPC");
+            // DebugPrintf("Immediate NPC");
             return TRUE;
         }
         else
@@ -359,12 +360,12 @@ bool32 TryGetChatotPost(void)
             {
                 if (gSaveBlock1Ptr->chatotPostRematchTrainerId == 0 && Random() % 2 != 0)
                 {
-                    DebugPrintf("Random trainer");
+                    // DebugPrintf("Random trainer");
                     return TryGetRandomTrainerPost();
                 }
                 else
                 {
-                    DebugPrintf("Random NPC");
+                    // DebugPrintf("Random NPC");
                     return TryGetNonTrainerPost(POST_TYPE_RANDOM);
                 }
             }

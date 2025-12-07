@@ -61,26 +61,6 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 70,
-      "y": 4,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_TM_SHADOW_CLAW",
-      "script": "SabersideQuarry_EventScript_ShadowClaw",
-      "flag": "FLAG_TEMP_1",
-      "afternoon": false,
-      "deadnight": false,
-      "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
-    },
-    {
       "local_id": "LOCALID_QUARRY_SABLEYE",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SABLEYE)",
       "x": 64,
@@ -91,8 +71,48 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "SabersideQuarry_EventScript_SableyeIgnore",
       "flag": "FLAG_SPOOKED_SABLEYE",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
+      "x": 52,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SabersideTown_EventScript_LookingForSableye",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MINER",
+      "x": 43,
+      "y": 34,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "SabersideTown_EventScript_Hagane",
+      "flag": "0",
       "afternoon": true,
       "deadnight": true,
       "earlymorning": true,
@@ -220,24 +240,8 @@
       "x": 69,
       "y": 25,
       "elevation": 0,
-      "dest_map": "MAP_SABERSIDE_QUARRY",
-      "dest_warp_id": "WARP_ID_QUARRY_R12"
-    },
-    {
-      "warp_id": "WARP_ID_QUARRY_R12",
-      "x": 70,
-      "y": 10,
-      "elevation": 0,
-      "dest_map": "MAP_SABERSIDE_QUARRY",
-      "dest_warp_id": "WARP_ID_QUARRY_R6_RIGHT"
-    },
-    {
-      "warp_id": "WARP_ID_QUARRY_R12_STAIRS",
-      "x": 70,
-      "y": 6,
-      "elevation": 0,
-      "dest_map": "MAP_SABERSIDE_QUARRY_B1F",
-      "dest_warp_id": "WARP_ID_QUARRY_B1F_R2_STAIRS"
+      "dest_map": "MAP_SABERSIDE_QUARRY_SABLEYE_SPOT",
+      "dest_warp_id": "WARP_ID_QUARRY_SABLEYE_SPOT"
     }
   ],
   "coord_events": [
@@ -309,14 +313,6 @@
       "elevation": 0,
       "item": "ITEM_NUGGET",
       "flag": "FLAG_HIDDEN_ITEM_QUARRY_NUGGET"
-    },
-    {
-      "type": "hidden_item",
-      "x": 72,
-      "y": 2,
-      "elevation": 0,
-      "item": "ITEM_SABLEYE_GEM",
-      "flag": "FLAG_HIDDEN_ITEM_QUARRY_SABLEYE_GEM"
     }
   ]
 }

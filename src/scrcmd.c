@@ -805,6 +805,15 @@ bool8 ScrCmd_setflashlevel(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_getflashlevel(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE);
+
+    gSpecialVar_Result = GetFlashLevel();
+
+    return FALSE;
+}
+
 static bool8 IsPaletteNotActive(void)
 {
     if (!gPaletteFade.active)

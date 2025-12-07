@@ -48,7 +48,7 @@
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_SABERSIDE_QUARRY",
-      "dest_warp_id": "WARP_ID_QUARRY_R12_STAIRS"
+      "dest_warp_id": "WARP_ID_QUARRY_SABLEYE_SPOT_STAIRS"
     },
     {
       "warp_id": "WARP_ID_QUARRY_B1F_R2",

@@ -1,5 +1,3 @@
-const FLAG_HIDE_SHADOW_CLAW = FLAG_TEMP_1
-
 mapscripts SabersideQuarry_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		if (flag(FLAG_SPOOKED_SABLEYE)) {
@@ -16,11 +14,6 @@ mapscripts SabersideQuarry_MapScripts {
 			setmetatile(67, 51, METATILE_Quarry_SandRightEdge, FALSE)
 		}
 	}
-	MAP_SCRIPT_ON_TRANSITION {
-		if (flag(FLAG_ITEM_QUARRY_SHADOW_CLAW) || !flag(FLAG_SPOOKED_SABLEYE)) {
-			setflag(FLAG_HIDE_SHADOW_CLAW)
-		}
-	}
 }
 
 script SabersideQuarry_DrawSableyePrints {
@@ -30,13 +23,28 @@ script SabersideQuarry_DrawSableyePrints {
 	setmetatile(61, 34, METATILE_Quarry_PawprintLeftUp, FALSE)
 }
 
-script SabersideQuarry_EventScript_ShadowClaw {
+script SabersideQuarry_EventScript_SableyeIgnore {
 	lock
-	finditem(ITEM_TM_SHADOW_CLAW)
+	playmoncry(SPECIES_SABLEYE, CRY_MODE_NORMAL)
+	applymovement(VAR_LAST_TALKED, moves(emote_music, delay_16 * 6))
+	waitmovement(0)
+	waitmoncry
+
+	msgbox(format(
+		"The Pokémon seems to be ignoring you."
+	))
+	closemessage
+
+	setseenmon(SPECIES_SABLEYE)
 	release
 }
 
 script SabersideQuarry_EventScript_SpookSableye {
+	if (getflashlevel < 50) {
+		release
+		return
+	}
+
 	lockall
 	setflag(FLAG_SPOOKED_SABLEYE)
 	setseenmon(SPECIES_SABLEYE)
@@ -91,5 +99,71 @@ script SabersideQuarry_EventScript_SpookSableye {
 	call(SabersideQuarry_DrawSableyePrints)
 	special(DrawWholeMapView)
 
+	msgbox(format(
+		"…The Pokémon seems to have been spooked by the light."
+	))
+	closemessage
+
 	releaseall
+}
+
+script SabersideTown_EventScript_LookingForSableye {
+	lock
+	faceplayer
+	if (getflashlevel < 50) {
+		msgbox(format(
+			"Get away with that light!\nI'm trying to catch a Sableye.\p"
+			"I saw one earlier, but I spooked it\nand it scuttled back to its lair."
+		))
+	} else {
+		msgbox(format(
+			"Shush now! I'm trying to catch a Sableye.\p"
+			"I saw one earlier, but I spooked it\nand it scuttled back to its lair."
+		))
+	}
+
+	setnamedmon(SPECIES_SABLEYE)
+
+	closemessage
+	release
+}
+
+script SabersideTown_EventScript_Hagane {
+	trainerbattle_single(
+		TRAINER_HAGANE,
+		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Uh, go away!\nNothing precious to be found here!"),
+		format("Fine, I'm a terrible liar!")
+	)
+	setspeaker(SP_NAME_MINER)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}I struck a lode of premium steel here.\nI guess we can share."))
+	release
+	end
+}
+
+script SabersideTown_EventScript_Haruki {
+	trainerbattle_single(
+		TRAINER_HARUKI,
+		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}My Sandy could tear right through you!"),
+		format("You tore right through me…")
+	)
+	setspeaker(SP_NAME_MINER)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Sandy is used to digging through softer minerals.\lHer poor claws are all tender!"))
+	release
+	end
+}
+
+script SabersideTown_EventScript_Ryoui {
+	trainerbattle_single(
+		TRAINER_RYOUI,
+		format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}I collect stupendously-colored Carbink!"),
+		format("I take it you're not impressed by my collection?"),
+		SabersideTown_EventScript_HarukiPostBattle
+	)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}{SPEAKER NAME_GEM_MANIAC}I'm almost done with my Carbink collection.\lI'll start a Sableye collection next!"))
+	release
+	end
+}
+
+script SabersideTown_EventScript_HarukiPostBattle {
+	setnamedmon(SPECIES_CARBINK)
 }

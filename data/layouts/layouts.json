@@ -6648,6 +6648,18 @@
       "secondary_tileset": "gTileset_HouseWindycape",
       "border_filepath": "data/layouts/Windycape_House2_Layout/border.bin",
       "blockdata_filepath": "data/layouts/Windycape_House2_Layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_SABERSIDE_QUARRY_SABLEYE_SPOT",
+      "name": "SabersideQuarry_SableyeSpot_Layout",
+      "width": 14,
+      "height": 13,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Quarry",
+      "border_filepath": "data/layouts/SabersideQuarry_SableyeSpot/border.bin",
+      "blockdata_filepath": "data/layouts/SabersideQuarry_SableyeSpot/map.bin"
     }
   ]
 }

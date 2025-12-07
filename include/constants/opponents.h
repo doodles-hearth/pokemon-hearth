@@ -21,9 +21,9 @@
 #define TRAINER_ROCK_SMASH_GUY               15
 #define TRAINER_ASAGAO                       16
 #define TRAINER_DAICHI                       17
-#define TRAINER_GRUNT_WEATHER_INST_2         18
-#define TRAINER_GRUNT_WEATHER_INST_3         19
-#define TRAINER_GRUNT_MUSEUM_1               20
+#define TRAINER_HAGANE                       18
+#define TRAINER_HARUKI                       19
+#define TRAINER_RYOUI                        20
 #define TRAINER_GRUNT_MUSEUM_2               21
 #define TRAINER_GRUNT_SPACE_CENTER_1         22
 #define TRAINER_GRUNT_MT_PYRE_1              23

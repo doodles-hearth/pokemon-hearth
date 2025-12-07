@@ -116,6 +116,9 @@
     },
     "checkspecies": {
         "var_name": "VAR_RESULT"
+    },
+    "getflashlevel": {
+        "var_name": "VAR_RESULT"
     }
   }
 }
