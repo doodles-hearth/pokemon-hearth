@@ -5,11 +5,11 @@ mapscripts GinkoWoods_MapScripts {
 script GinkoWoods_EventScript_Toshiki {
 	trainerbattle_single(
 		TRAINER_TOSHIKI ,
-		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}These bugs are electrifying!"),
+		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER 0}These bugs are electrifying!"),
 		format("Ouch! How did you do that?")
 	)
 	setspeaker(SP_NAME_BUGCATCHER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}Isn't Sewaddle cute, all wrapped up in its leaf?"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER 0}Isn't Sewaddle cute, all wrapped up in its leaf?"))
 	closemessage
 	setnamedmon(SPECIES_SEWADDLE_TOKUAN)
 	release
@@ -19,7 +19,7 @@ script GinkoWoods_EventScript_Toshiki {
 script GinkoWoods_EventScript_Toshio {
 	trainerbattle_single(
 		TRAINER_TOSHIO_1,
-		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}Our eyes met! Therefore we must battle!"),
+		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}Our eyes met! Therefore we must battle!"),
 		format("Should have kept my mouth shut…"),
 		GinkoWoods_EventScript_Toshio_Register
 	)
@@ -30,7 +30,7 @@ script GinkoWoods_EventScript_Toshio {
 	}
 	
 	msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}{SPEAKER NAME_YOUNGSTER}Real Wielders fight when they spot each other!\p"
+			"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}{SPEAKER NAME_YOUNGSTER}Real Wielders fight when they spot each other!\p"
 			"At least that's what my dad told me…"
 		))
 	closemessage
@@ -40,7 +40,7 @@ script GinkoWoods_EventScript_Toshio {
 
 script(local) GinkoWoods_EventScript_Toshio_Register {
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER EMOTE_NORMAL}{SPEAKER NAME_YOUNGSTER}Hey, let's be friends!\nWe'll send each other Chatot mail,\land battle again sometime!"
+		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}{SPEAKER NAME_YOUNGSTER}Hey, let's be friends!\nWe'll send each other Chatot mail,\land battle again sometime!"
 	))
 	closemessage
 	register_matchcall(TRAINER_TOSHIO_1)
@@ -49,11 +49,11 @@ script(local) GinkoWoods_EventScript_Toshio_Register {
 script GinkoWoods_EventScript_Eiji {
 	trainerbattle_single(
 		TRAINER_EIJI,
-		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}With my brand new Pokémon, I'm catching all sorts of bugs!"),
+		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER 0}With my brand new Pokémon, I'm catching all sorts of bugs!"),
 		format("My bugs!")
 	)
 	setspeaker(SP_NAME_BUGCATCHER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER EMOTE_NORMAL}I asked Elder Kaba for a bird Pokémon, because they're strong against bugs!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER 0}I asked Elder Kaba for a bird Pokémon, because they're strong against bugs!"))
 	release
 	end
 }
@@ -64,7 +64,7 @@ script GinkoWoods_EventScript_OldMan {
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_OLD_MAN)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN EMOTE_NORMAL}These woods are fascinating.\pThere seem to be a lot of yellow Pokémon here."))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_OLD_MAN 0}These woods are fascinating.\pThere seem to be a lot of yellow Pokémon here."))
 	release
 	end
 }
@@ -79,7 +79,7 @@ script GinkoWoods_EventScript_Hariko {
 
 	setspeaker("Odd Girl")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Hello!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Hello!"
 	))
 	closemessage
 
@@ -89,7 +89,7 @@ script GinkoWoods_EventScript_Hariko {
 
 	setspeaker("Odd Girl")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}I just noticed there are some neat tracks in the dirt here."
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}I just noticed there are some neat tracks in the dirt here."
 	))
 	closemessage
 
@@ -99,7 +99,7 @@ script GinkoWoods_EventScript_Hariko {
 
 	setspeaker("Odd Girl")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}It looks like a small mammal's footprints, see?\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}It looks like a small mammal's footprints, see?\p"
 		"Studying Pokémon tracks is so fascinating. One can find out about a Pokémon's nesting place, their hunting habits, at what time they sleep, what they eat… Interesting, isn't it?\p"
 		"These woods host a lot of yellow Pokémon, so I'd bet these are a Kotora's."
 		"Do you know why there's a lot of yellow Pokémon here? Well, that's because smaller Pokémon can easily hide from predators in the foliage, and said predators can stalk their prey without being seen."
@@ -119,7 +119,7 @@ script GinkoWoods_EventScript_Hariko {
 
 	setspeaker("Odd Girl")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…And that's all that is currently known about Joltik's habitat during the winter.\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}…And that's all that is currently known about Joltik's habitat during the winter.\p"
 		"Neat, isn't it?"
 	))
 
@@ -140,14 +140,14 @@ script GinkoWoods_EventScript_Hariko {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right! I am glad you share my interest in Pokémon habitats.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Right! I am glad you share my interest in Pokémon habitats.\p"
 				"I am Hariko. And what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\NI will see you around, then.\p"
 				"Okay. Bye!"
 			))
 		case 1:
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}Right!\nI haven't introduced myself yet.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Right!\nI haven't introduced myself yet.\p"
 				"I am Hariko. And what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\NI will see you around, then.\p"
 				"Okay. Bye!"
@@ -156,7 +156,7 @@ script GinkoWoods_EventScript_Hariko {
 			playse(SE_PIN)
 			applymovement(LOCALID_GINKO_HARIKO, moves(emote_pensive))
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}…Oh. I am blocking your path. I see.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}…Oh. I am blocking your path. I see.\p"
 				"I got carried away, have I not?\nThat… tends to happen.\p"
 				"I am Hariko. And what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\NI am moving now, so that you can go through.\p"
@@ -197,7 +197,7 @@ script(local) GinkoWoods_EventScript_HarikoSpotsYou {
 	applymovement(LOCALID_GINKO_HARIKO, moves(emote_upset))
 	setspeaker("Odd Girl")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO EMOTE_NORMAL}THE TRACKS!!\nYOU'RE STEPPING ON THEM!!!"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}THE TRACKS!!\nYOU'RE STEPPING ON THEM!!!"
 	))
 	closemessage
 }

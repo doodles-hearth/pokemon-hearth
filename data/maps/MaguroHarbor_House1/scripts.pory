@@ -10,7 +10,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	{
 		setspeaker(SP_NAME_PKMN_NERD)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Come back tomorrow for more Pokémon riddles… Hehe…"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Come back tomorrow for more Pokémon riddles… Hehe…"
 		))
 		closemessage
 		release
@@ -19,7 +19,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 	setspeaker(SP_NAME_PKMN_NERD)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Hehe… Hullo, kid…\nThey call me the Pokémon Nerd.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Hehe… Hullo, kid…\nThey call me the Pokémon Nerd.\p"
 		"(They're just jealous…)\p"
 		"I know a whole lot about Pokémon… Wanna play a game?\p"
 		"Guess what Pokémon I'm describing,\nand I'll share my knowledge with you.\p"
@@ -30,7 +30,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	randomdexmsgbox
 
 	setspeaker(SP_NAME_PKMN_NERD)
-	msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Well? What Pokémon am I talking about?")
+	msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Well? What Pokémon am I talking about?")
 	closemessage
 
 	special(EnterDexRiddleGuess)
@@ -45,7 +45,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 		waitmovement(0)
 		setspeaker(SP_NAME_PKMN_NERD)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Woah, you… You solved my riddle!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Woah, you… You solved my riddle!\p"
 			"Could you… be a true Pokémon Nerd?\p"
 			"You have bested me today. Feel the rush of pure knowledge coursing through your veins?\p"
 			"Your Pokémon… They will gain more experience today.\p"
@@ -63,7 +63,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 		applymovement(VAR_LAST_TALKED, moves(emote_upset))
 		setspeaker(SP_NAME_PKMN_NERD)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY EMOTE_NORMAL}Wrong, wrong, WRONG!\nYou are wrong!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Wrong, wrong, WRONG!\nYou are wrong!\p"
 			"I'm honestly disappointed.\p"
 			"Come back tomorrow, or when you've accumulated more Pokémon knowledge."
 		))

@@ -9,7 +9,7 @@ script YifuCity_House2_Seamstress {
 	faceplayer
 	setspeaker(SP_NAME_SEAMSTRESS)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}I've been working day and night on a dress for the Samurai Chief's daugther.\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}I've been working day and night on a dress for the Samurai Chief's daugther.\p"
 		"This will be my greatest work!"
 	))
 	closemessage
@@ -19,7 +19,7 @@ script YifuCity_House2_Seamstress {
 
 	setspeaker(SP_NAME_SEAMSTRESS)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Tarountula, could you bring me some more of that red thread?"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}Tarountula, could you bring me some more of that red thread?"
 	))
 	closemessage
 
@@ -41,7 +41,7 @@ script YifuCity_House2_Model {
 	
 	if(flag(FLAG_OBTAINED_CHOICE_SCARF)) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}That Tarountula creeps me out…\nIt has so many legs…"
+			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}That Tarountula creeps me out…\nIt has so many legs…"
 		))
 		closemessage
 		setnamedmon(SPECIES_TAROUNTULA)
@@ -49,7 +49,7 @@ script YifuCity_House2_Model {
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		setspeaker(SP_NAME_MODEL)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL EMOTE_NORMAL}Yawn… Being a model is so tiring! My feet hurt from standing here for hours…\p"
+			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Yawn… Being a model is so tiring! My feet hurt from standing here for hours…\p"
 			"I do get some sweet free stuff though! Here, you can have this, I already have this color!"
 		))
 		closemessage

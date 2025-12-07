@@ -32,3 +32,13 @@ script SabersideTown_Refuge_EventScript_Pasture {
 	release
 	end
 }
+
+script SabersideTown_Refuge_EventScript_GemManiac {
+	lock
+	faceplayer
+	msgbox(format(
+		"Mine! Mine!\nThe gems will all be mine!"
+	))
+	closemessage
+	release
+}

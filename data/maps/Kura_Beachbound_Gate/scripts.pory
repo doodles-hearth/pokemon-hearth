@@ -15,7 +15,7 @@ script Kura_Beachbound_Gate_EventScript_Guard {
 	setspeaker(SP_NAME_SAMURAI)
 	applymovement(VAR_LAST_TALKED, moves(emote_sleep))
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Zzzzzz…"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Zzzzzz…"
 	))
 	release
 }

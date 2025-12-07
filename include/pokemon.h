@@ -19,6 +19,20 @@
 #define GET_BASE_SPECIES_ID(speciesId) (GetFormSpeciesId(speciesId, 0))
 #define FORM_SPECIES_END (0xffff)
 
+enum CustomDNSTint
+{
+    DNS_BLEND_CAVE_STANDARD,
+    DNS_BLEND_CAVE_DARK,
+    DNS_BLEND_FLASH_YELLOW,
+    DNS_BLEND_FLASH_ORANGE,
+    DNS_BLEND_FLASH_RED,
+    DNS_BLEND_FLASH_PINK,
+    DNS_BLEND_FLASH_PURPLE,
+    DNS_BLEND_FLASH_BLUE,
+    DNS_BLEND_FLASH_GREEN,
+    DNS_BLEND_COUNT,
+};
+
 // Property labels for Get(Box)MonData / Set(Box)MonData
 enum MonData {
     MON_DATA_PERSONALITY,
@@ -476,8 +490,10 @@ struct SpeciesInfo /*0xC4*/
     u16 enemyShadowSize:3; // This determines the size of the shadow sprite used for an enemy Pokémon's front sprite during battle.
     u16 suppressEnemyShadow:1; // If set to true, then a shadow will not be drawn beneath an enemy Pokémon's front sprite during battle.
     u16 dreamType:2;
-    u16 flashRadius:8;
-    u16 padding5:2;
+    u16 glows:1;
+    u16 padding5:9;
+    u8 flashTint;
+    u8 flashTintShiny;
     // Move Data
     const struct LevelUpMove *levelUpLearnset;
     const u16 *teachableLearnset;

@@ -7,7 +7,7 @@ script YifuCity_House4_EventScript_NameRater {
 	faceplayer
 	setspeaker(SP_NAME_NAME_RATER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Names are the mirror of the soul!\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}Names are the mirror of the soul!\p"
 		"{FONT_SMALL}Or was that the eyes? Bah…{FONT_NORMAL}\p"
 		"I have been told I have a way\nwith names.\p"
 		"Young Wielder… Would you like me to counsel you on the naming of your Pokémon?"
@@ -20,7 +20,7 @@ script YifuCity_House4_EventScript_NameRater {
 	if (var(VAR_RESULT) == 0) {
 		setspeaker(SP_NAME_NAME_RATER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Which Pokémon should receive my attention?"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}Which Pokémon should receive my attention?"
 		))
 		special(ChoosePartyMon)
 		waitstate
@@ -29,7 +29,7 @@ script YifuCity_House4_EventScript_NameRater {
 			if (var(VAR_RESULT) == SPECIES_EGG) {
 				setspeaker(SP_NAME_NAME_RATER)
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Bah! An Egg is yet unborn…\nIts name yet unchosen!"
+					"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}Bah! An Egg is yet unborn…\nIts name yet unchosen!"
 				))
 			} else {
 				special(BufferMonNickname)
@@ -37,7 +37,7 @@ script YifuCity_House4_EventScript_NameRater {
 				if (var(VAR_RESULT)) {
 					setspeaker(SP_NAME_NAME_RATER)
 					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}This creature… It was named by someone else, was it not?\p"
+						"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}This creature… It was named by someone else, was it not?\p"
 						"I couldn't ever strip this Pokémon from its original name, no no!"
 					))
 				} else {
@@ -46,13 +46,13 @@ script YifuCity_House4_EventScript_NameRater {
 					if (var(VAR_RESULT)) {
 						setspeaker(SP_NAME_NAME_RATER)
 						msgbox(format(
-							"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}This creature… It was named by someone else, was it not?\p"
+							"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}This creature… It was named by someone else, was it not?\p"
 							"I couldn't ever strip this Pokémon from its original name, no no!"
 						))
 					} else {
 						setspeaker(SP_NAME_NAME_RATER)
 						msgbox(format(
-							"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}{STR_VAR_1}…\nI see what you were going for…\p"
+							"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}{STR_VAR_1}…\nI see what you were going for…\p"
 							"{FONT_SMALL}Yikes…{FONT_NORMAL}\p"
 							"But I don't see this Pokémon's soul in this name…\p"
 							"Are you inspired to bestow a new name on it?\l"
@@ -64,7 +64,7 @@ script YifuCity_House4_EventScript_NameRater {
 						if (var(VAR_RESULT)) {
 							setspeaker(SP_NAME_NAME_RATER)
 							msgbox(format(
-								"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}{STR_VAR_1}… I see…\nThis name rings with truth!\p"
+								"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}{STR_VAR_1}… I see…\nThis name rings with truth!\p"
 								"Look… Your Pokémon seems happy about its new name!\p"
 								"Goodbye!\nMay wisdom guide your steps!\l"
 								"{FONT_SMALL}Bah! I should charge for this…{FONT_NORMAL}"
@@ -72,7 +72,7 @@ script YifuCity_House4_EventScript_NameRater {
 						} else {
 							setspeaker(SP_NAME_NAME_RATER)
 							msgbox(format(
-								"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}This new name… It sounds a little like its old name…\p"
+								"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}This new name… It sounds a little like its old name…\p"
 								"{FONT_SMALL}Wait, what was the old name again?{FONT_NORMAL}\p"
 								"Bah… You're confusing me!"
 							))
@@ -84,7 +84,7 @@ script YifuCity_House4_EventScript_NameRater {
 	} else {
 		setspeaker(SP_NAME_NAME_RATER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN EMOTE_NORMAL}Nevermind, then."
+			"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}Nevermind, then."
 		))
 	}
 	release

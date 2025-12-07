@@ -9,7 +9,7 @@ script HarvestShrine_EventScript_MonkBronzong {
 	faceplayer
 	setspeaker(SP_NAME_MONK)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}The Bronzong you have before your eyes is a thousand years old.\p"
+		"{CREATE_MUGSHOT MUGSHOT_MONK 0}The Bronzong you have before your eyes is a thousand years old.\p"
 		"It has been bringing us rain and plentiful harvests for generations.\p"
 		"Can you believe this magnificent statue is a living, breathing Pokémon?\p"
 		"Actually, I'm not sure Bronzong breathe, but you get the idea."
@@ -26,13 +26,13 @@ script HarvestShrine_EventScript_MonkBronzong {
 script HarvestShrine_EventScript_Kouga {
 	trainerbattle_single(
 		TRAINER_KOUGA,
-		format("{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Have you come here to honor the venerable Bronzong?\NOr are you here to stir trouble?"),
+		format("{CREATE_MUGSHOT MUGSHOT_MONK 0}Have you come here to honor the venerable Bronzong?\NOr are you here to stir trouble?"),
 		format("By a thousand gods!"),
 		HarvestShrine_EventScript_SetMonFlags
 	)
 	setspeaker(SP_NAME_MONK)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Fine, you may approach the ancient Bronzong. Please be respectful."
+		"{CREATE_MUGSHOT MUGSHOT_MONK 0}Fine, you may approach the ancient Bronzong. Please be respectful."
 	))
 	closemessage
 	end
@@ -48,13 +48,13 @@ script HarvestShrine_EventScript_MonkRain {
 	setspeaker(SP_NAME_MONK)
 	if (checkitem(ITEM_TM_RAIN_DANCE)) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}I do enjoy the sounds of the rain…"
+			"{CREATE_MUGSHOT MUGSHOT_MONK 0}I do enjoy the sounds of the rain…"
 		))
 	} elif (flag(FLAG_SET_RAIN)) {
 		setnamedmon(SPECIES_BRONZONG)
 
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}You prayed to the venerable Bronzong for rain, and He heeded your prayer!\p"
+			"{CREATE_MUGSHOT MUGSHOT_MONK 0}You prayed to the venerable Bronzong for rain, and He heeded your prayer!\p"
 			"He doesn't listen to just anyone,\nyou know?\p"
 			"There's something about you, kid…\nTake this! I insist!"
 		))
@@ -63,7 +63,7 @@ script HarvestShrine_EventScript_MonkRain {
 		giveitem(ITEM_TM_RAIN_DANCE)
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_MONK EMOTE_NORMAL}Impressive, isn't He?"
+			"{CREATE_MUGSHOT MUGSHOT_MONK 0}Impressive, isn't He?"
 		))
 	}
 	closemessage

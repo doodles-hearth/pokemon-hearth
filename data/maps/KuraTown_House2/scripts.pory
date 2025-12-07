@@ -37,7 +37,7 @@ script(local) AshiiScript_FirstEncounter {
 	applymovement(LOCALID_ASHII, moves(emote_pensive))
 	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Sigh… Oh, Tama…\nWhy must life be so complicated?"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Sigh… Oh, Tama…\nWhy must life be so complicated?"
 	))
 	closemessage
 	delay(30)
@@ -52,7 +52,7 @@ script(local) AshiiScript_FirstEncounter {
 
 	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Hey, what are you doing in my house?\nWere you eavesdropping?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Hey, what are you doing in my house?\nWere you eavesdropping?\p"
 		"…It doesn't matter anyway.\nThe boy who stole my heart lives in\lSaku Village, but our two villages hate each other, so I can't see him anymore.\p"
 		"If only there was a way for him\nto know my feelings…"
 	))
@@ -65,7 +65,7 @@ script(local) AshiiScript_FirstEncounter {
 
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Wait, you're not from here, are you?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Wait, you're not from here, are you?\p"
 		"My name is Ashii. I need your help.\p"
 		"The guard won't let anyone from\nKura Village enter Saku Village.\lBut you should be fine!\p"
 		"Please, go to Saku Village and\ngive him this.\p"
@@ -82,7 +82,7 @@ script(local) AshiiScript_DidYouGiveTamaScarf {
 	faceplayer
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Please, give Tama my silk scarf.\nHe'll know it's from me…"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Please, give Tama my silk scarf.\nHe'll know it's from me…"
 	))
 	closemessage
 }
@@ -92,7 +92,7 @@ script(local) AshiiScript_ReportBackAfterGivingScarf {
 	faceplayer
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Were you able to give Tama my gift?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Were you able to give Tama my gift?\p"
 		"Did…\nDid he get my letter?"
 	))
 
@@ -119,7 +119,7 @@ script(local) AshiiScript_ReportBackAfterGivingScarf {
 
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}I'm sorry. You've been an incredible help, and I don't even know your name!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}I'm sorry. You've been an incredible help, and I don't even know your name!\p"
 		"… … …{PLAYER}. I see…\p"
 		"{PLAYER}, look, There are treelings blocking the entrance of the vale.\p"
 		"Tama can't get to me!\nCould you cut them for me?\p"
@@ -131,7 +131,7 @@ script(local) AshiiScript_Rocks {
 	faceplayer
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Could you please cut those treelings in the vale?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Could you please cut those treelings in the vale?\p"
 		"I'd do it myself, but I can't get into Saku Village."
 	))
 }
@@ -140,7 +140,7 @@ script(local) AshiiScript_EscortAshii {
 	faceplayer
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you for clearing the way of those trees!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Thank you for clearing the way of those trees!\p"
 		"{PLAYER}… I know this is a big thing to ask, but…\p"
 		"I want to be sure that my meeting with Tama is safe.\NWho knows? It might be our last.\p"
 		"Could you please escort me?"
@@ -156,7 +156,7 @@ script(local) AshiiScript_EscortAshii {
 		applymovement(LOCALID_ASHII, moves(emote_sad))
 		setspeaker(SP_NAME_ASHII)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Please come back…\nDon't toy with a girl's heart…"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Please come back…\nDon't toy with a girl's heart…"
 		))
 		closemessage
 	}
@@ -200,7 +200,7 @@ script(local) AshiiScript_PlayerAcceptsEscort {
 		applymovement(LOCALID_ASHII, moves(emote_heart))
 		setspeaker(SP_NAME_ASHII)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Thank you! Thank you! Thank you!\p"
 			"Let's make haste, then.\nBefore the moon takes her slumber!"
 		))
 
@@ -215,7 +215,7 @@ script(local) AshiiScript_PlayerAcceptsEscort {
 		applymovement(LOCALID_ASHII, moves(emote_heart))
 		setspeaker(SP_NAME_ASHII)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}Thank you! Thank you! Thank you!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Thank you! Thank you! Thank you!\p"
 			"Meet me here later tonight."
 		))
 		closemessage
@@ -241,7 +241,7 @@ script(local) AshiiScript_Reward {
 	applymovement(LOCALID_ASHII, moves(emote_happy))
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}{PLAYER}! It's you!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}{PLAYER}! It's you!\p"
 		"I can't thank you enough for the night you've given us.\p"
 		"Even if we must meet under cover of darkness, I would risk it all for Tama, again and again and again…\NAnd again… And again…\NAnd again…\p"
 		"Here, you can have this…\nFor all the trouble."
@@ -253,7 +253,7 @@ script(local) AshiiScript_Reward {
 	applymovement(LOCALID_ASHII, moves(emote_sweat))
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}It was supposed to conceal me so I could sneak into Saku Village, but…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}It was supposed to conceal me so I could sneak into Saku Village, but…\p"
 		"When the guards made fun of me, I realized it's meant for Pokémon."
 	))
 	closemessage
@@ -266,7 +266,7 @@ script(local) AshiiScript_QuestOver {
 	faceplayer
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 EMOTE_NORMAL}If only Saku and Kura Village stopped this nonsensical rivalry…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}If only Saku and Kura Village stopped this nonsensical rivalry…\p"
 		"I'm sure nobody even remembers the reason!"
 	))
 	closemessage

@@ -385,6 +385,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sCyndaquilTeachableLearnset,
         .eggMoveLearnset = sCyndaquilEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 14, SPECIES_QUILAVA}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
     [SPECIES_QUILAVA] =
@@ -455,6 +457,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sQuilavaTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_TYPHLOSION, CONDITIONS({IF_NOT_REGION, REGION_HISUI})},
                                 {EVO_LEVEL, 36, SPECIES_TYPHLOSION_HISUI, CONDITIONS({IF_REGION, REGION_HISUI})}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
 #if P_UPDATED_EXP_YIELDS >= GEN_8
@@ -532,6 +536,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sTyphlosionLevelUpLearnset,
         .teachableLearnset = sTyphlosionTeachableLearnset,
         .formSpeciesIdTable = sTyphlosionFormSpeciesIdTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
 #if P_HISUIAN_FORMS
@@ -1127,6 +1133,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sHoothootTeachableLearnset,
         .eggMoveLearnset = sHoothootEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_NOCTOWL}, {EVO_ITEM, ITEM_DUSK_STONE, SPECIES_SHADOWL}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
     },
 
     [SPECIES_NOCTOWL] =
@@ -1200,6 +1208,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sNoctowlLevelUpLearnset,
         .teachableLearnset = sNoctowlTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
     },
 
     [SPECIES_SHADOWL] =
@@ -1269,6 +1279,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         // TODO EVA
         .levelUpLearnset = sNoctowlLevelUpLearnset,
         .teachableLearnset = sNoctowlTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
     },
 #endif //P_FAMILY_HOOTHOOT
 
@@ -1665,6 +1677,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sChinchouTeachableLearnset,
         .eggMoveLearnset = sChinchouEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_LANTURN}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_YELLOW,
     },
 
     [SPECIES_LANTURN] =
@@ -1736,6 +1750,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sLanturnLevelUpLearnset,
         .teachableLearnset = sLanturnTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_YELLOW,
     },
 #endif //P_FAMILY_CHINCHOU
 
@@ -2199,6 +2215,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sMareepTeachableLearnset,
         .eggMoveLearnset = sMareepEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 15, SPECIES_FLAAFFY}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
     [SPECIES_FLAAFFY] =
@@ -2270,6 +2288,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sFlaaffyLevelUpLearnset,
         .teachableLearnset = sFlaaffyTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_AMPHAROS}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_BLUE,
     },
 
 #define AMPHAROS_DEFENSE (P_UPDATED_STATS >= GEN_6 ? 85 : 75)
@@ -2351,6 +2371,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sAmpharosTeachableLearnset,
         .formSpeciesIdTable = sAmpharosFormSpeciesIdTable,
         .formChangeTable = sAmpharosFormChangeTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -6216,6 +6238,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sTeddiursaTeachableLearnset,
         .eggMoveLearnset = sTeddiursaEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_URSARING}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_YELLOW,
     },
 
     [SPECIES_URSARING] =
@@ -6304,6 +6328,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_PEAT_BLOCK, SPECIES_URSALUNA, CONDITIONS({IF_REGION, REGION_HISUI}, {IF_TIME, TIME_NIGHT})},
                                 {EVO_NONE, 0, SPECIES_URSALUNA_BLOODMOON}),
     #endif
+        .flashTint = DNS_BLEND_FLASH_YELLOW,
     },
 
 #if P_GEN_8_CROSS_EVOS
@@ -6500,6 +6525,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sSlugmaTeachableLearnset,
         .eggMoveLearnset = sSlugmaEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_MAGCARGO}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
     },
 
     [SPECIES_MAGCARGO] =
@@ -6577,6 +6604,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sMagcargoLevelUpLearnset,
         .teachableLearnset = sMagcargoTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
     },
 #endif //P_FAMILY_SLUGMA
 
@@ -8044,6 +8073,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     #if P_GEN_8_CROSS_EVOS
         .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_WYRDEER, CONDITIONS({IF_USED_MOVE_X_TIMES, MOVE_PSYSHIELD_BASH, 20})}),
     #endif
+        .flashTint = DNS_BLEND_FLASH_YELLOW,
     },
 
 #if P_GEN_8_CROSS_EVOS
@@ -8110,6 +8140,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         )
         .levelUpLearnset = sWyrdeerLevelUpLearnset,
         .teachableLearnset = sWyrdeerTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_YELLOW,
     },
 #endif //P_GEN_8_CROSS_EVOS
 #endif //P_FAMILY_STANTLER

@@ -14,7 +14,7 @@ script YifuCity_House3_EggGirlsMom {
 	faceplayer
 	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 EMOTE_NORMAL}I help out at the Pokémon daycare west of Windycape on tuesdays. Sometimes they'll let me bring back an egg for my daughter!"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 0}I help out at the Pokémon daycare west of Windycape on tuesdays. Sometimes they'll let me bring back an egg for my daughter!"
 	))
 	release
 }
@@ -44,7 +44,7 @@ script YifuCity_House3_EventScript_EggGirl {
 		applymovement(VAR_LAST_TALKED, moves(emote_happy))
 		setspeaker(SP_NAME_LITTLE_GIRL)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Can't wait for my egg to hatch!"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Can't wait for my egg to hatch!"
 		))
 	}
 	release
@@ -55,7 +55,7 @@ script YifuCity_House3_NotTradedYet {
 	special(GetPlayerSirMissString)
 	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Hello {STR_VAR_1}! Do you like eggs?"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Hello {STR_VAR_1}! Do you like eggs?"
 	))
 
 	dynmultichoice(
@@ -77,7 +77,7 @@ script YifuCity_House3_NotTradedYet {
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
 			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Really?! Me too!! Pokémon eggs are so cool!\l"
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Really?! Me too!! Pokémon eggs are so cool!\l"
 				"I love not knowing what will jump out of the egg!\p"
 				"Wanna trade me a mystery egg for a mystery egg?\l"
 				"That way we'll both have a surprise!"
@@ -85,7 +85,7 @@ script YifuCity_House3_NotTradedYet {
 		case 1:
 			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}WHAT? Ewww, gross! I don't mean EATING them!\p"
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}WHAT? Ewww, gross! I don't mean EATING them!\p"
 				"I just love waiting for a Pokémon to jump of of its egg, especially when I have no idea what it's gonna be!\p"
 				"Wanna trade me a mystery egg for a mystery egg?\l"
 				"That way we'll both have a surprise!"
@@ -93,14 +93,14 @@ script YifuCity_House3_NotTradedYet {
 		case 2:
 			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Oh… Alright…"
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Oh… Alright…"
 			))
 			release
 			end
 		case 3:
 			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Eggs! Pokémon eggs!"
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Eggs! Pokémon eggs!"
 				"I just love waiting for a Pokémon to jump of of its egg, especially when I have no idea what it's gonna be!\p"
 				"Wanna trade me a mystery egg for a mystery egg?\l"
 				"That way we'll both have a surprise!"
@@ -126,7 +126,7 @@ script YifuCity_House3_NotTradedYet {
 			applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Oh… Alright…"
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Oh… Alright…"
 			))
 	}
 
@@ -138,7 +138,7 @@ script YifuCity_House3_TradeEgg {
 	waitstate
 	if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
 		setspeaker(SP_NAME_LITTLE_GIRL)
-		msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Have you changed your mind?"))
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Have you changed your mind?"))
 		closemessage
 	} else {
 		special(IsSelectedMonEgg)
@@ -157,14 +157,14 @@ script YifuCity_House3_TradeEgg {
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
 			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}Yay!!! I can't wait for my egg to hatch!\p"
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Yay!!! I can't wait for my egg to hatch!\p"
 				"Aren't you wondering what you're gonna get?"
 			))
 			closemessage
 		} else {
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
 			setspeaker(SP_NAME_LITTLE_GIRL)
-			msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL EMOTE_NORMAL}That's not an egg, you silly!"))
+			msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}That's not an egg, you silly!"))
 			closemessage
 		}
 	}

@@ -893,12 +893,12 @@ script YifuCity_Dojo_EventScript_Advice {
 	faceplayer
 	if (flag(FLAG_BADGE03_GET)) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Such grace! Such swiftness!\nI am wowed!\p"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 0}Such grace! Such swiftness!\nI am wowed!\p"
             "{PLAYER}…\nThat's a name to be remembered!"
 		))
 	} else {
 		msgbox((
-            "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Hello, young challenger, and welcome\nto the Dance Hall Dojo!\p"
+            "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 0}Hello, young challenger, and welcome\nto the Dance Hall Dojo!\p"
             "Got what it takes to see through the\ndancers' intoxicating moves?\p"
             "Master Yutaka favors Dance Moves.\nA battle with her is like partaking in\la dizzying dancing showdown!\p"
             "Watch out though, she can be as\nabrasive as she is beautiful.\p"
@@ -1032,7 +1032,7 @@ script YifuCity_Dojo_EventScript_Yutaka {
     if (!flag(FLAG_BADGE03_GET)) {
         setspeaker(SP_NAME_YUTAKA)
         msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}Well done! Welcome to Yifu City's Doj-"
+            "{CREATE_MUGSHOT MUGSHOT_YUTAKA 0}Well done! Welcome to Yifu City's Doj-"
         ))
 
         applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
@@ -1069,7 +1069,7 @@ script YifuCity_Dojo_EventScript_Yutaka {
     
 	setspeaker(SP_NAME_YUTAKA)
     msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}You shall achieve great things,\ndespite your fashion faux-pas.\p"
+        "{CREATE_MUGSHOT MUGSHOT_YUTAKA 0}You shall achieve great things,\ndespite your fashion faux-pas.\p"
         "I hope to battle you again."
 	))
 
@@ -1088,7 +1088,7 @@ script YifuCity_Dojo_EventScript_YutakaDefeated {
     setspeaker(SP_NAME_YUTAKA)
 	msgbox(
 		format(
-            "{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}I am outrée! Your techniques are rough and vulgar, yet…\p"
+            "{CREATE_MUGSHOT MUGSHOT_YUTAKA 0}I am outrée! Your techniques are rough and vulgar, yet…\p"
             "Victory is yours…\nThat is undeniable.\p"
 			"I guess what you lack in aesthetic values, you compensate in strength.\p"
 			"Do accept this, as well."
@@ -1102,7 +1102,7 @@ script YifuCity_Dojo_EventScript_YutakaDefeated {
     setspeaker(SP_NAME_YUTAKA)
 	msgbox(
 		format(
-			"{CREATE_MUGSHOT MUGSHOT_YUTAKA EMOTE_NORMAL}This scroll contains my famous X-Scissor technique.\p"
+			"{CREATE_MUGSHOT MUGSHOT_YUTAKA 0}This scroll contains my famous X-Scissor technique.\p"
             "I perfected it back when I worked as a seamstress.\p"
 			"About that, uh… We should go clothes-shopping together sometime.\p"
             "I cannot bear to see your image suffer so."
