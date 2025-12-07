@@ -138,6 +138,7 @@ enum MonData {
     MON_DATA_GIGANTAMAX_FACTOR,
     MON_DATA_TERA_TYPE,
     MON_DATA_EVOLUTION_TRACKER,
+    MON_DATA_COLORATION,
 };
 
 enum SpeciesNameCheck
@@ -246,8 +247,9 @@ struct BoxPokemon
     u32 teraType:5;
     u32 dynamaxLevel:4;
     u32 gigantamaxFactor:1;
+    u32 coloration:7;
 
-    u32 unused1:18;
+    u32 unused1:11;
     //  Word
     u32 unused2;
     //  Word
@@ -361,6 +363,7 @@ struct BattlePokemon
     /*0x5D*/ u32 otId;
     /*0x61*/ u8 metLevel;
     /*0x62*/ bool8 isShiny;
+    /*0x63*/ u8 coloration;
 };
 
 struct EvolutionParam

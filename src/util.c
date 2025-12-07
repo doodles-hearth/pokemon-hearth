@@ -2,6 +2,7 @@
 #include "util.h"
 #include "sprite.h"
 #include "palette.h"
+#include "random.h"
 #include "constants/rgb.h"
 
 static const struct SpriteTemplate sInvisibleSpriteTemplate =
@@ -245,6 +246,7 @@ void BlendPalette(u16 palOffset, u16 numEntries, u8 coeff, u32 blendColor)
 
 #define HUE_SHIFT_NORMAL_RANGE 40
 #define HUE_SHIFT_SHINY_RANGE  30
+#define RGB_ADJUST_RANGE       124
 
 #define LIMITMODE_NORMAL_HUE_POS_SHINY_HUE_NEG       1
 #define LIMITMODE_NORMAL_HUE_NEG_SHINY_HUE_POS      -1
@@ -361,38 +363,67 @@ static const s8 sHueShiftSpeciesLimit[NUM_SPECIES] =
     // todo - add limits for any mons after gen3 that need them
 };
 
-void MakePaletteUnique(u16 palOffset, u16 species, u32 personality, bool8 isShiny)
+u32 GetMaxColorationRange(u16 species, bool8 isShiny)
+{
+    s8 limitMode = sHueShiftSpeciesLimit[species];
+    u32 range;
+    if (isShiny)
+    {
+        if (limitMode == LIMITMODE_NORMAL_HUE_BOTH_SHINY_RGB_ADJSUT
+         || limitMode == LIMITMODE_NORMAL_RGB_ADJSUT_SHINY_RGB_ADJSUT)
+            range = RGB_ADJUST_RANGE;
+        else if (limitMode == LIMITMODE_NORMAL_HUE_POS_SHINY_HUE_NEG
+              || limitMode == LIMITMODE_NORMAL_HUE_NEG_SHINY_HUE_POS)
+            range = HUE_SHIFT_SHINY_RANGE;
+        else
+            range = 2 * HUE_SHIFT_SHINY_RANGE;
+    }
+    else
+    {
+        if (limitMode == LIMITMODE_NORMAL_RGB_ADJSUT_SHINY_HUE_BOTH
+         || limitMode == LIMITMODE_NORMAL_RGB_ADJSUT_SHINY_RGB_ADJSUT)
+            range = RGB_ADJUST_RANGE;
+        else if (limitMode == LIMITMODE_NORMAL_HUE_POS_SHINY_HUE_NEG
+              || limitMode == LIMITMODE_NORMAL_HUE_NEG_SHINY_HUE_POS)
+            range = HUE_SHIFT_NORMAL_RANGE;
+        else
+            range = 2 * HUE_SHIFT_NORMAL_RANGE;
+    }
+    return range;
+}
+
+u32 CreateNewColoration(u16 species, bool8 isShiny)
+{
+    u32 range = GetMaxColorationRange(species, isShiny);
+    return (Random32() % (range + 1));
+}
+
+void MakePaletteUnique(u16 palOffset, u16 species, u32 value, bool8 isShiny)
 {
     // System made by Citrus Bolt :')
     u16 i, range;
-    u32 value;
     s32 shift;
     s8 limitMode = sHueShiftSpeciesLimit[species];
 
-    value = (personality >> 8) & 0xFFFF;
-
     if (isShiny)
-    {
-        limitMode *= -1;
         range = HUE_SHIFT_SHINY_RANGE;
-    }
     else
-    {
         range = HUE_SHIFT_NORMAL_RANGE;
-    }
 
     if (limitMode == -1)
-        shift = (value % (range + 1)) - range;
+        shift = value - range;
     else if (limitMode == 1)
-        shift = value % (range + 1);
+        shift = value;
     else
-        shift = (value % (range * 2 + 1)) - range;
+        shift = value - range;
 
-    if (limitMode == 2 || limitMode == -3 || limitMode == 4 || limitMode == -4)
+    if ((limitMode == LIMITMODE_NORMAL_RGB_ADJSUT_SHINY_HUE_BOTH && !isShiny)
+    || (limitMode == LIMITMODE_NORMAL_HUE_BOTH_SHINY_RGB_ADJSUT && isShiny)
+    || limitMode == LIMITMODE_NORMAL_RGB_ADJSUT_SHINY_RGB_ADJSUT)
     {
-        s8 dr = ((value >> 8) & 0xF) % 5;
-        s8 dg = ((value >> 4) & 0xF) % 5;
-        s8 db = (value & 0xF) % 5;
+        s8 dr = (value / 25) % 5;
+        s8 dg = (value / 5) % 5;
+        s8 db = value % 5;
 
         for (i = 0; i < 16; i++)
         {
