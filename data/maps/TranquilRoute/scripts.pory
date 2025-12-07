@@ -511,11 +511,10 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 
 	faceplayer
 
-	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Oh, hello! Sorry, shop's closed at the moment!\p"
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_MAN}Oh, hello! Sorry, shop's closed at the moment!\p"
 		"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
-		"I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
+		"{SPEAKER NAME_OKADA}I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
 		"I'm sold out on, well, pretty much everything right now… But you're definitely going to see me around!\p"
 		"What's your name? {PLAYER}?\nNice to meet you, {PLAYER}!\p"
 		"I see you're a young Wielder, eh?\NMaybe we can even have a friendly battle sometime!\p"

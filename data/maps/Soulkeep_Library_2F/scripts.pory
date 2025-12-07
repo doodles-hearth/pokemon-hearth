@@ -30,7 +30,7 @@ script Soulkeep_Library_2F_EventScript_Hariko {
 	lock
 	faceplayer
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}{CREATE_MUGSHOT MUGSHOT_HARIKO}{FONT_SMALL}Hello, {PLAYER}.\n\p"
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}{FONT_SMALL}Hello, {PLAYER}.\n\p"
 		"I am looking for information on the Decay.\p"
 		"Did it happen before?\nIs there a way to fix it?\l"
 		"I am not finding anything…\p"

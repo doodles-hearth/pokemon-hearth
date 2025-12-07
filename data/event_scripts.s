@@ -1161,24 +1161,6 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/birch_speech.inc"
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
-
-	.include "data/maps/Soulkeep_HouseMedium/scripts.inc"
-
-	.include "data/maps/Soulkeep_Crypt/scripts.inc"
-
-	.include "data/maps/SabersideTown_Refuge/scripts.inc"
-
-	.include "data/maps/SabersideQuarry_Exterior/scripts.inc"
-
-	.include "data/maps/SabersideQuarry/scripts.inc"
-
-	.include "data/maps/SabersideQuarry_Part2/scripts.inc"
-
-	.include "data/maps/SabersideQuarry_B1F/scripts.inc"
-
-	.include "data/maps/SabersideQuarry_B1F_Part2/scripts.inc"
-
-	.include "data/maps/SabersideQuarry_Antechamber/scripts.inc"
 	.include "data/scripts/daycare_adoption.inc"
 	.include "data/scripts/dexnav.inc"
 
@@ -1457,3 +1439,23 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Windycape_House1/scripts.scr"
 
 	.include "data/maps/Windycape_House2/scripts.scr"
+
+	.include "data/maps/SabersideQuarry_SableyeSpot/scripts.scr"
+
+	.include "data/maps/Soulkeep_HouseMedium/scripts.scr"
+
+	.include "data/maps/Soulkeep_Crypt/scripts.scr"
+
+	.include "data/maps/SabersideTown_Refuge/scripts.scr"
+
+	.include "data/maps/SabersideQuarry_Exterior/scripts.scr"
+
+	.include "data/maps/SabersideQuarry/scripts.scr"
+
+	.include "data/maps/SabersideQuarry_Part2/scripts.scr"
+
+	.include "data/maps/SabersideQuarry_B1F/scripts.scr"
+
+	.include "data/maps/SabersideQuarry_B1F_Part2/scripts.scr"
+
+	.include "data/maps/SabersideQuarry_Antechamber/scripts.scr"

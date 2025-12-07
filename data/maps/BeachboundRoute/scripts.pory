@@ -532,11 +532,10 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 			"Can I interest you in some handpicked goods?"
 		))
 	} else {
-		setspeaker(SP_NAME_OKADA)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Hello, hello again!\p"
+			"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_MAN}Hello, hello again!\p"
 			"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
-			"I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
+			"{SPEAKER NAME_OKADA}I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
 			"If you're a traveler, you're definitely going to see me around!\p"
 			"What's your name? {PLAYER}? It's nice to meet you, {PLAYER}!\p"
 			"I see you're a young Wielder, eh? Maybe we can even have a friendly battle sometime!\p"

@@ -375,12 +375,9 @@ void UpdateFlashTint(void)
 		return;
     
     u16 flashTrackerPacked = VarGet(VAR_FLASH_TRACKER_PACKED);
-    u8 followerTint = GET_FOLLOWER_TINT(flashTrackerPacked);
     u8 moveTint = GET_MOVE_TINT(flashTrackerPacked);
 
 	u8 followerIndex = GetFollowerMonIndex();
-    u32 speciesId = GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES);
-
     u8 followerFlashTint = gSpeciesInfo[GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES)].flashTint;
     u8 followerFlashTintShiny = gSpeciesInfo[GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES)].flashTintShiny;
     u8 currentFlashTint = 0;

@@ -1074,10 +1074,8 @@ bool8 IsFollowerSpawned(void)
     return !obj->invisible;
 }
 
-// Flash level of 0 is fully bright
-// Flash level of 1 is the largest flash radius
-// Flash level of 7 is the smallest flash radius
-// Flash level of 8 is fully black
+// Flash level (=radius) of 0 is fully bright
+// 20 means no flash in a dark cave
 void SetDefaultFlashLevel(void)
 {
     if (!gMapHeader.cave)
