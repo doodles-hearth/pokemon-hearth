@@ -29,7 +29,7 @@ script Silveridge_EventScript_LotOfRocks {
 	faceplayer
 	setspeaker(SP_NAME_GUY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_FAT_GUY EMOTE_NORMAL}We don't have a lot of natural resources here in Silveridge.\p"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_FAT_GUY 0}We don't have a lot of natural resources here in Silveridge.\p"
 		"We don't have a lot of wood…\p"
 		"Or steel…\p"
 		"Or freshwater…\p"
@@ -44,7 +44,7 @@ script Silveridge_EventScript_HousesMadeOfSilverTunnelStone {
 	faceplayer
 	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}See the houses around here? They were all built using the stones leftover from digging the Silver tunnel."
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 0}See the houses around here? They were all built using the stones leftover from digging the Silver tunnel."
 	))
 	release
 }
@@ -54,7 +54,7 @@ script Silveridge_EventScript_MissingStatue {
 	faceplayer
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_2 EMOTE_NORMAL}Hello, traveler. Have you looked at this stunning statue that makes the pride of our town?\p"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_2 0}Hello, traveler. Have you looked at this stunning statue that makes the pride of our town?\p"
 		"…Is what I would say if we had one.\p"
 		"There used to be a statue, but a quake destroyed it long ago, so now we're left with this empty pedestal.\p"
 		"An excentric man lives nearby, calls himself “The Sculptor”.\p"
@@ -69,7 +69,7 @@ script Silveridge_EventScript_Wildflowers {
 	faceplayer
 	setspeaker(SP_NAME_BOY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_BOY_2 EMOTE_NORMAL}I loved gardening back when I lived on Havenisle.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_BOY_2 0}I loved gardening back when I lived on Havenisle.\p"
 		"When I first moved here, the barren landscape made me very homesick.\p"
 		"So I started planting these native wildflowers around the town!"
 		// "I was told they symbolize eternal love. I don't know about that, but they make me happy!\p"
@@ -82,11 +82,11 @@ script Silveridge_EventScript_Mart {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_SHOPKEEPER)
-	message(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Welcome to Silveridge's market!\nSorry, we're fresh out of rocks!"))
+	message(format("{CREATE_MUGSHOT MUGSHOT_CLERK 0}Welcome to Silveridge's market!\nSorry, we're fresh out of rocks!"))
 	waitmessage
 	pokemart(Silveridge_Mart)
 	setspeaker(SP_NAME_SHOPKEEPER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}I hope you found what you were looking for!"), MSGBOX_DEFAULT)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_CLERK 0}I hope you found what you were looking for!"), MSGBOX_DEFAULT)
 	release
 }
 
@@ -121,7 +121,7 @@ script Silveridge_EventScript_AronGuy {
 	faceplayer
 	setnamedmon(SPECIES_ARON)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_1 EMOTE_NORMAL}{SPEAKER NAME_MAN}Found this little guy in Silver Tunnel.\nHe's been munching on rocks ever since!"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_1 0}{SPEAKER NAME_MAN}Found this little guy in Silver Tunnel.\nHe's been munching on rocks ever since!"
 	))
 	closemessage
 	release

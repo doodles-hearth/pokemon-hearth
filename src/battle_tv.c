@@ -1279,6 +1279,7 @@ static void TrySetBattleSeminarShow(void)
             ctx.isCrit = FALSE;
             ctx.randomFactor = FALSE;
             ctx.updateFlags = FALSE;
+            ctx.isSelfInflicted = FALSE;
             ctx.fixedBasePower = powerOverride;
             gBattleStruct->moveDamage[gBattlerTarget] = CalculateMoveDamage(&ctx);
             dmgByMove[i] = gBattleStruct->moveDamage[gBattlerTarget];

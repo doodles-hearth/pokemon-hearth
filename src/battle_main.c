@@ -228,6 +228,7 @@ EWRAM_DATA u8 gBattlerInMenuId = 0;
 EWRAM_DATA bool8 gDoingBattleAnim = FALSE;
 EWRAM_DATA u32 gTransformedPersonalities[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA bool8 gTransformedShininess[MAX_BATTLERS_COUNT] = {0};
+EWRAM_DATA u8 gTransformedColorations[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA u8 gPlayerDpadHoldFrames = 0;
 EWRAM_DATA struct BattleSpriteData *gBattleSpritesDataPtr = NULL;
 EWRAM_DATA struct MonSpritesGfx *gMonSpritesGfxPtr = NULL;
@@ -1964,6 +1965,18 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             CreateMon(&party[i], partyData[monIndex].species, partyData[monIndex].lvl, 0, TRUE, personalityValue, otIdType, fixedOtId);
             SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[monIndex].heldItem);
 
+            u32 coloration = partyData[monIndex].coloration;
+            u32 colorationMaxRange = GetMaxColorationRange(partyData[monIndex].species, partyData[monIndex].isShiny);
+            if (coloration == TRAINER_MON_UNKNOWN_COLOR)
+            {
+                coloration = (personalityValue & 0xFF000000) >> 24;
+                coloration = coloration % (colorationMaxRange + 1);
+            }
+            else if (coloration > colorationMaxRange)
+            {
+                coloration = colorationMaxRange;
+            }
+            SetMonData(&party[i], MON_DATA_COLORATION, &coloration);
             CustomTrainerPartyAssignMoves(&party[i], &partyData[monIndex]);
             SetMonData(&party[i], MON_DATA_IVS, &(partyData[monIndex].iv));
             if (partyData[monIndex].ev != NULL)
@@ -5184,7 +5197,7 @@ static void TurnValuesCleanUp(bool8 var0)
     gSideTimers[B_SIDE_PLAYER].followmeTimer = 0;
     gSideTimers[B_SIDE_OPPONENT].followmeTimer = 0;
 
-    gBattleStruct->pledgeMove = FALSE; // combined pledge move may not have been used due to a canceller
+    gBattleStruct->pledgeMove = FALSE; // combined pledge move may not have been used due to a canceler
     gBattleStruct->tryDestinyBond = FALSE;
     gBattleStruct->tryGrudge = FALSE;
     ClearPursuitValues();

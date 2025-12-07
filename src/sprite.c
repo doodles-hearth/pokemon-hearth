@@ -1632,7 +1632,7 @@ void DoLoadSpritePalette(const u16 *src, u16 paletteOffset)
 
 #define PAL_TAG_UNIQUE_PAL 0xFFFF
 
-u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny)
+u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, u16 species, u32 coloration, bool8 isShiny)
 {
     u8 index = IndexOfSpritePaletteTag(PAL_TAG_UNIQUE_PAL);
 
@@ -1644,7 +1644,7 @@ u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, u16 specie
     {
         sSpritePaletteTags[index] = palette->tag;
         DoLoadSpritePalette(palette->data, PLTT_ID(index));
-        MakePaletteUnique(OBJ_PLTT_ID(index), species, personality, isShiny);
+        MakePaletteUnique(OBJ_PLTT_ID(index), species, coloration, isShiny);
         CpuCopy32(gPlttBufferFaded + OBJ_PLTT_ID(index), gPlttBufferUnfaded + OBJ_PLTT_ID(index), 32);
         return index;
     }

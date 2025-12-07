@@ -24,7 +24,7 @@ script YifuCity_CrobatShop_Cashier {
 	faceplayer
 	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}G'day uh, welcome to the ye olde Crobat Shoppe!\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}G'day uh, welcome to the ye olde Crobat Shoppe!\p"
 		"Have a lookee at our totally legal tchotchquees and memoralibia!"
 	))
 	waitmessage
@@ -33,7 +33,7 @@ script YifuCity_CrobatShop_Cashier {
 
 	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}We thank thee fer yer business! Tell yer friends!\p"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}We thank thee fer yer business! Tell yer friends!\p"
 		"{FONT_SMALL}Unless yer friends are the police!{FONT_NORMAL}\p"
 		"Wussthat? I said nothin', ya must be hearin' things!"
 	))
@@ -46,7 +46,7 @@ script YifuCity_CrobatShop_CashierLegit {
 	faceplayer
 	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Hello there! Welcome to the Yifu City shop!"
+		"{CREATE_MUGSHOT MUGSHOT_CLERK 0}Hello there! Welcome to the Yifu City shop!"
 	))
 	waitmessage
 
@@ -54,7 +54,7 @@ script YifuCity_CrobatShop_CashierLegit {
 
 	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}We hope you'll come again! Have a good day!"
+		"{CREATE_MUGSHOT MUGSHOT_CLERK 0}We hope you'll come again! Have a good day!"
 	))
 	closemessage
 	release
@@ -65,7 +65,7 @@ script YifuCity_CrobatShop_CashierLegitTM {
 	faceplayer
 	setspeaker(SP_NAME_SHOPKEEPER)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_CLERK EMOTE_NORMAL}Hi! I'm prepping up here, but come back soon for some excusive new items!"
+		"{CREATE_MUGSHOT MUGSHOT_CLERK 0}Hi! I'm prepping up here, but come back soon for some excusive new items!"
 	))
 	// waitmessage
 
@@ -114,7 +114,7 @@ script YifuCity_CrobatShop_Guard {
 	if (flag(FLAG_CROBAT_PASSWORD_CORRECT)) {
 		setspeaker("Shady man")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Standin' guard is boring… Yawn…"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Standin' guard is boring… Yawn…"
 		))
 		release
 		end
@@ -129,7 +129,7 @@ script YifuCity_CrobatShop_Guard {
 	applymovement(VAR_LAST_TALKED, moves(lock_facing_direction, walk_in_place_faster_left, unlock_facing_direction))
 	setspeaker("Shady man")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Password?"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Password?"
 	))
 
 	if (!flag(FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF) || !flag(FLAG_GOT_CROBAT_PASSWORD_SECOND_HALF)) {
@@ -146,7 +146,7 @@ script YifuCity_CrobatShop_Guard {
 		applymovement(VAR_LAST_TALKED, moves(emote_angry))
 		setspeaker("Shady man")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}That ain't the password! Scram!"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}That ain't the password! Scram!"
 		))
 		waitmovement(0)
 		closemessage
@@ -208,7 +208,7 @@ script YifuCity_CrobatShop_Guard {
 				applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 				setspeaker("Shady man")
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}Hmmm… Ya don't look like the typical Zubat…\p"
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Hmmm… Ya don't look like the typical Zubat…\p"
 					"… … … …\n… …Alright, ya can go through.\p"
 					"Next time wear the damn uniform though, will ya?"
 				))
@@ -230,7 +230,7 @@ script YifuCity_CrobatShop_Guard {
 				applymovement(VAR_LAST_TALKED, moves(emote_angry))
 				setspeaker("Shady man")
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_ZUBAT EMOTE_NORMAL}That ain't the password! Scram!"
+					"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}That ain't the password! Scram!"
 				))
 				waitmovement(0)
 				closemessage
@@ -262,11 +262,11 @@ script YifuCity_CrobatShop_Customer1 {
 	setspeaker(SP_NAME_MAN)
 	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}Woah! So I was buying illegal items? That's wild!"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 0}Woah! So I was buying illegal items? That's wild!"
 		))
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 EMOTE_NORMAL}This place is amazing!\nHow is everything so cheap?!"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 0}This place is amazing!\nHow is everything so cheap?!"
 		))
 	}
 	
@@ -280,11 +280,11 @@ script YifuCity_CrobatShop_Customer2 {
 	setspeaker(SP_NAME_GIRL)
 	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}I knew it! I knew this shop was shady!"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 0}I knew it! I knew this shop was shady!"
 		))
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 EMOTE_NORMAL}These Ultra Balls look… different, somehow…"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 0}These Ultra Balls look… different, somehow…"
 		))
 	}
 	closemessage
@@ -296,7 +296,7 @@ script YifuCity_CrobatShop_EventScript_Samurai {
 	faceplayer
 	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Shhh, don't look at me!\nSomeone tipped me off that the Crobat Shadows' band of misfits has a secret hideout right under the city!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Shhh, don't look at me!\nSomeone tipped me off that the Crobat Shadows' band of misfits has a secret hideout right under the city!\p"
 		"I'm trying to know more by standing around and listening!"
 	))
 	closemessage

@@ -18,11 +18,11 @@ script Silveridge_House1_EventScript_Woman {
     setspeaker(SP_NAME_WOMAN)
     if (flag(FLAG_HIDE_FIREBRINGER_FANGIRL)) {
         msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}I wonder where my daughter is at.\nI bet the Firebringers are in town."
+            "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 0}I wonder where my daughter is at.\nI bet the Firebringers are in town."
         ))
     } else {
         msgbox((
-            "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 EMOTE_NORMAL}You came all the way from Kura Village?\nYou have good legs!"
+            "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_1 0}You came all the way from Kura Village?\nYou have good legs!"
         ))
     }
     closemessage
@@ -34,7 +34,7 @@ script Silveridge_House1_EventScript_FirebringerFangirl {
     faceplayer
     setspeaker(SP_NAME_GIRL)
     msgbox((
-        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}It gets pretty cold here when the\nwind blows strong into the valley.\p"
+        "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 0}It gets pretty cold here when the\nwind blows strong into the valley.\p"
         "I don't know what we would do\nwithout those brave Firebringers.\p"
         "They carry live Slugma on their back all\nthe way down from Mt Kazan to here!\p"
         "Slugma cools and hardens up fast, so\nthey basically run the whole way down!\lI could never!\p"
@@ -70,12 +70,12 @@ script Silveridge_House1_EventScript_Man {
     setspeaker(SP_NAME_MINER)
     if (flag(FLAG_OBTAINED_EVERSTONE)) {
         msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}You think some Pokémon prefer to remain small forever?"
+            "{CREATE_MUGSHOT MUGSHOT_MINER 0}You think some Pokémon prefer to remain small forever?"
         ))
         closemessage
     } else {
         msgbox((
-            "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}My job is to mine ore in Silver Tunnel,\nall day long.\lI love it!\p"
+            "{CREATE_MUGSHOT MUGSHOT_MINER 0}My job is to mine ore in Silver Tunnel,\nall day long.\lI love it!\p"
             "Wouldn't trade it for the world.\nI'm fine being a simple miner forever.\p"
             "Speaking of… I often find interesting\nrocks in there.\lLook at this!"
         ))
@@ -86,7 +86,7 @@ script Silveridge_House1_EventScript_Man {
 
         setspeaker(SP_NAME_MINER)
         msgbox((
-            "{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}Apparently as long as a Pokémon holds\non to this stone, it'll stop growing.\p"
+            "{CREATE_MUGSHOT MUGSHOT_MINER 0}Apparently as long as a Pokémon holds\non to this stone, it'll stop growing.\p"
             "Sandy here is already fully grown,\nso I don't need it."
         ))
         closemessage

@@ -78,6 +78,8 @@
 #include "rtc.h"
 #include "fake_rtc.h"
 #include "save.h"
+#include "util.h"
+#include "field_effect.h"
 
 enum FollowerNPCCreateDebugMenu
 {
@@ -355,6 +357,7 @@ extern const u8 Debug_EventScript_InflictStatus1[];
 extern const u8 Debug_EventScript_SetHiddenNature[];
 extern const u8 Debug_EventScript_SetAbility[];
 extern const u8 Debug_EventScript_SetFriendship[];
+extern const u8 Debug_EventScript_SetColor[];
 extern const u8 Debug_EventScript_Script_1[];
 extern const u8 Debug_EventScript_Script_2[];
 extern const u8 Debug_EventScript_Script_3[];
@@ -617,6 +620,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Player[] =
     { COMPOUND_STRING("Player name"),    DebugAction_Player_Name },
     { COMPOUND_STRING("Toggle gender"),  DebugAction_Player_Gender },
     { COMPOUND_STRING("New Trainer ID"), DebugAction_Player_Id },
+    { COMPOUND_STRING("Choose color"),   DebugAction_ExecuteScript, Debug_EventScript_SetColor},
     { NULL }
 };
 
@@ -876,6 +880,7 @@ static void Debug_ShowMenu(DebugFunc HandleInput, const struct DebugMenuOption *
 
     // draw everything
     CopyWindowToVram(windowId, COPYWIN_FULL);
+    gMain.isDialogActiveInOverworld = TRUE;
 }
 
 static void Debug_DestroyMenu(u8 taskId)
@@ -898,6 +903,7 @@ static void Debug_DestroyMenu_Full(u8 taskId)
     DestroyTask(taskId);
     UnfreezeObjectEvents();
     Free(sDebugMenuListData);
+    gMain.isDialogActiveInOverworld = FALSE;
 }
 
 static void Debug_DestroyMenu_Full_Script(u8 taskId, const u8 *script)
@@ -4154,6 +4160,80 @@ void DebugNative_Party_SetFriendship(void)
 
 #undef tPartyId
 #undef tFriendship
+
+#define tPartyId               data[5]
+#define tColoration            data[6]
+#define tShinyness             data[7]
+#define tSpecies               data[8]
+#define tSpriteId              data[9]
+#define tMaxRange              data[10]
+
+static void Debug_Display_ColorInfo(s32 oldColoration, s32 newColoration, u32 digit, u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+    ConvertIntToDecimalStringN(gStringVar1, oldColoration, STR_CONV_MODE_LEADING_ZEROS, 3);
+    ConvertIntToDecimalStringN(gStringVar2, newColoration, STR_CONV_MODE_LEADING_ZEROS, 3);
+    StringCopy(gStringVar3, gText_DigitIndicator[digit]);
+    StringExpandPlaceholders(gStringVar4, COMPOUND_STRING("Color:\n{STR_VAR_1} {RIGHT_ARROW} {STR_VAR_2}\n\n{STR_VAR_3}"));
+    u32 windowId = task->tSubWindowId;
+    AddTextPrinterParameterized(windowId, DEBUG_MENU_FONT, gStringVar4, 0, 0, 0, NULL);
+    u32 paletteSlot = gSprites[task->tSpriteId].oam.paletteNum;
+    MakePaletteUnique(OBJ_PLTT_ID(paletteSlot), task->tSpecies, newColoration, task->tShinyness);
+}
+
+static void DebugNativeStep_Party_SetColorSelect(u8 taskId)
+{
+    if (JOY_NEW(A_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        gTasks[taskId].tColoration = gTasks[taskId].tInput;
+        SetMonData(&gPlayerParty[gTasks[taskId].tPartyId], MON_DATA_COLORATION, &gTasks[taskId].tInput);
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        struct Task *task = &gTasks[taskId];
+        PlaySE(SE_SELECT);
+        FreeResourcesAndDestroySprite(&gSprites[task->tSpriteId], task->tSpriteId);
+        DebugNativeStep_CloseDebugWindow(taskId);
+        return;
+    }
+
+    Debug_HandleInput_Numeric(taskId, 0, gTasks[taskId].tMaxRange, 3);
+
+    if (JOY_NEW(DPAD_ANY) || JOY_NEW(A_BUTTON))
+        Debug_Display_ColorInfo(gTasks[taskId].tColoration, gTasks[taskId].tInput, gTasks[taskId].tDigit, taskId);
+}
+
+static void DebugNativeStep_Party_SetColorMain(u8 taskId)
+{
+    u8 windowId = DebugNativeStep_CreateDebugWindow();
+    u32 coloration = GetMonData(&gPlayerParty[gTasks[taskId].tPartyId], MON_DATA_COLORATION);
+    u32 species = GetMonData(&gPlayerParty[gTasks[taskId].tPartyId], MON_DATA_SPECIES);
+    u32 isShiny = GetMonData(&gPlayerParty[gTasks[taskId].tPartyId], MON_DATA_IS_SHINY);
+
+    gTasks[taskId].func = DebugNativeStep_Party_SetColorSelect;
+    gTasks[taskId].tSubWindowId = windowId;
+    gTasks[taskId].tColoration = coloration;
+    gTasks[taskId].tShinyness = isShiny;
+    gTasks[taskId].tInput = coloration;
+    gTasks[taskId].tDigit = 0;
+    gTasks[taskId].tPartyId = 0;
+    gTasks[taskId].tMaxRange = GetMaxColorationRange(species, isShiny);
+    s32 x = 10;
+    s32 y = 3;
+    gTasks[taskId].tSpriteId = CreateMonSprite_PicBox(species, x * 8 + 40, y * 8 + 40, 0, isShiny);
+
+    Debug_Display_ColorInfo(coloration, coloration, 0, taskId);
+}
+
+void DebugNative_Party_SetColor(void)
+{
+    if (gSpecialVar_0x8004 < PARTY_SIZE)
+    {
+        u32 taskId = CreateTask(DebugNativeStep_Party_SetColorMain, 1);
+        gTasks[taskId].tPartyId = gSpecialVar_0x8004;
+    }
+}
 
 #undef tMenuTaskId
 #undef tWindowId

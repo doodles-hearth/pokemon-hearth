@@ -226,6 +226,10 @@ EWRAM_DATA static u8 sHoursOverride = 0; // used to override apparent time of da
 EWRAM_DATA struct LinkPlayerObjectEvent gLinkPlayerObjectEvents[4] = {0};
 EWRAM_DATA bool8 gExitStairsMovementDisabled = FALSE;
 
+EWRAM_DATA s8 gFlashX = 0;
+EWRAM_DATA s8 gFlashY = 0;
+EWRAM_DATA bool8 gDrawFlash = FALSE;
+
 static const struct WarpData sDummyWarpData =
 {
     .mapGroup = MAP_GROUP(MAP_UNDEFINED),
@@ -1070,10 +1074,8 @@ void SetDefaultFlashLevel(void)
 {
     if (!gMapHeader.cave)
         gSaveBlock1Ptr->flashLevel = 0;
-    else if (FlagGet(FLAG_SYS_USE_FLASH))
-        gSaveBlock1Ptr->flashLevel = 1;
-    else
-        gSaveBlock1Ptr->flashLevel = gMaxFlashLevel - 1;
+    else // In a cave, set up the flash handling
+        gSaveBlock1Ptr->flashLevel = 20;
 }
 
 void SetFlashLevel(s32 flashLevel)
@@ -2056,8 +2058,17 @@ static void SetFieldVBlankCallback(void)
     SetVBlankCallback(VBlankCB_Field);
 }
 
+static void TryFlashEffect(void)
+{
+    if (GetFlashLevel())
+    {
+        WriteFlashScanlineEffectBuffer(GetFlashLevel());
+    }
+}
+
 static void VBlankCB_Field(void)
 {
+    TryFlashEffect();
     LoadOam();
     ProcessSpriteCopyRequests();
     ScanlineEffect_InitHBlankDmaTransfer();
@@ -2070,13 +2081,11 @@ static void InitCurrentFlashLevelScanlineEffect(void)
 {
     u8 flashLevel;
 
-    if (InBattlePyramid_())
+    if ((flashLevel = GetFlashLevel()))
     {
-        WriteBattlePyramidViewScanlineEffectBuffer();
-        ScanlineEffect_SetParams(sFlashEffectParams);
-    }
-    else if ((flashLevel = GetFlashLevel()))
-    {
+        gFlashX = 0;
+        gFlashY = 0;
+        gDrawFlash = TRUE;
         WriteFlashScanlineEffectBuffer(flashLevel);
         ScanlineEffect_SetParams(sFlashEffectParams);
     }

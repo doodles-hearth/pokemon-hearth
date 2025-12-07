@@ -17,7 +17,7 @@ mapscripts Silveridge_Refuge_MapScripts {
 script Silveridge_Refuge_EventScript_ImWorried {
 	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 EMOTE_NORMAL}The whole town trembles from the Volcano's quakes…\p"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 0}The whole town trembles from the Volcano's quakes…\p"
 		"I'm so worried…"
 	), MSGBOX_NPC)
 }
@@ -56,12 +56,12 @@ script Silveridge_Refuge_EventScript_FirebringerFangirl {
 	if (var(VAR_0x8000) == TIME_EARLY_MORNING || var(VAR_0x8000) == TIME_MORNING) {
 		setspeaker(SP_NAME_GIRL)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}The Firebringer is coming to Silveridge today! Gosh, I can't wait!"
+			"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 0}The Firebringer is coming to Silveridge today! Gosh, I can't wait!"
 		), MSGBOX_NPC)
 	} else {
 		setspeaker(SP_NAME_GIRL)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}Oh gosh, look at him…\p"
+			"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 0}Oh gosh, look at him…\p"
 			"He's so…\nRough-looking…\lAnd handsome…\lAnd smoke-smelling…"
 			"Sigh…"
 		), MSGBOX_NPC)
@@ -71,7 +71,7 @@ script Silveridge_Refuge_EventScript_FirebringerFangirl {
 script Silveridge_Refuge_EventScript_Artist {
 	setspeaker(SP_NAME_ARTIST)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Listening to the musician's sweet song inspires me so!"
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Listening to the musician's sweet song inspires me so!"
 	), MSGBOX_NPC)
 }
 
@@ -127,14 +127,14 @@ script Silveridge_Refuge_EventScript_Shamisen {
 	if (flag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)) {
 		setspeaker(SP_NAME_SHAMISEN_PLAYER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Are you resting here for the night as well?"
+			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN 0}Are you resting here for the night as well?"
 		))
 		closemessage
 	} else {
 		special(GetPlayerBoyGirlString)
 		setspeaker(SP_NAME_SHAMISEN_PLAYER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}Good evening to you, {STR_VAR_1}.\nAre you here to listen to my music?\lOr are you here to battle?"
+			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN 0}Good evening to you, {STR_VAR_1}.\nAre you here to listen to my music?\lOr are you here to battle?"
 		))
 		closemessage
 
@@ -142,7 +142,7 @@ script Silveridge_Refuge_EventScript_Shamisen {
 
 		setspeaker(SP_NAME_SHAMISEN_PLAYER)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN EMOTE_NORMAL}That was just the thing I needed to pass the time.\p"
+			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN 0}That was just the thing I needed to pass the time.\p"
 			"I'll share my meal with you as a thanks."
 		))
 		closemessage

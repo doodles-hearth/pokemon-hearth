@@ -4640,7 +4640,7 @@ static u8 LoadMonGfxAndSprite(struct Pokemon *mon, s16 *state)
             GetMonSpritePalFromSpeciesAndPersonality(summary->species2, summary->isShiny, summary->pid),
             summary->species2,
             summary->species2,
-            summary->pid,
+            GetMonData(mon, MON_DATA_COLORATION),
             IsMonShiny(mon)
         );
         SetMultiuseSpriteTemplateToPokemon(summary->species2, B_POSITION_OPPONENT_LEFT);

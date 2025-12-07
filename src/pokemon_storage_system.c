@@ -474,6 +474,7 @@ struct PokemonStorageSystemData
     u8 cursorPalNums[2];
     const u16 *displayMonPalette;
     u32 displayMonPersonality;
+    u8  displayMonColoration;
     u16 displayMonSpecies;
     u16 displayMonItemId;
     u16 displayUnusedVar;
@@ -3978,7 +3979,7 @@ static void LoadDisplayMonGfx(u16 species, u32 pid)
         LoadSpecialPokePic(sStorage->tileBuffer, species, pid, TRUE);
         CpuCopy32(sStorage->tileBuffer, sStorage->displayMonTilePtr, MON_PIC_SIZE);
         LoadPalette(sStorage->displayMonPalette, sStorage->displayMonPalOffset, PLTT_SIZE_4BPP);
-        MakePaletteUnique(sStorage->displayMonPalOffset, species, pid, sStorage->displayMonIsShiny);
+        MakePaletteUnique(sStorage->displayMonPalOffset, species, sStorage->displayMonColoration, sStorage->displayMonIsShiny);
         sStorage->displayMonSprite->invisible = FALSE;
     }
     else
@@ -6945,6 +6946,7 @@ static void SetDisplayMonData(void *pokemon, u8 mode)
             sStorage->displayMonLevel = GetMonData(mon, MON_DATA_LEVEL);
             sStorage->displayMonMarkings = GetMonData(mon, MON_DATA_MARKINGS);
             sStorage->displayMonPersonality = GetMonData(mon, MON_DATA_PERSONALITY);
+            sStorage->displayMonColoration = GetMonData(mon, MON_DATA_COLORATION);
             sStorage->displayMonPalette = GetMonFrontSpritePal(mon);
             gender = GetMonGender(mon);
             sStorage->displayMonItemId = GetMonData(mon, MON_DATA_HELD_ITEM);
@@ -6971,6 +6973,7 @@ static void SetDisplayMonData(void *pokemon, u8 mode)
             sStorage->displayMonLevel = GetLevelFromBoxMonExp(boxMon);
             sStorage->displayMonMarkings = GetBoxMonData(boxMon, MON_DATA_MARKINGS);
             sStorage->displayMonPersonality = GetBoxMonData(boxMon, MON_DATA_PERSONALITY);
+            sStorage->displayMonColoration = GetBoxMonData(boxMon, MON_DATA_COLORATION);
             sStorage->displayMonPalette = GetMonSpritePalFromSpeciesAndPersonality(sStorage->displayMonSpecies, isShiny, sStorage->displayMonPersonality);
             gender = GetGenderFromSpeciesAndPersonality(sStorage->displayMonSpecies, sStorage->displayMonPersonality);
             sStorage->displayMonItemId = GetBoxMonData(boxMon, MON_DATA_HELD_ITEM);

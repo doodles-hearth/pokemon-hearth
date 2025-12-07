@@ -135,5 +135,6 @@ u8 GetSecondaryPopUpWindowId(void);
 void RemoveSecondaryPopUpWindow(void);
 void HBlankCB_DoublePopupWindow(void);
 void RedrawDialogueFrame(void);
+bool32 IsOverworldDialogActive(void);
 
 #endif // GUARD_MENU_H

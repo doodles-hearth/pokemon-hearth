@@ -5189,7 +5189,7 @@ void AnimNeedleArmSpike(struct Sprite *sprite)
     {
         if (gBattleAnimArgs[0] == 0)
         {
-            if (gMovesInfo[gAnimMoveIndex].target == MOVE_TARGET_BOTH)
+            if (GetMoveTarget(gAnimMoveIndex) == MOVE_TARGET_BOTH)
             {
                 SetAverageBattlerPositions(gBattleAnimAttacker, TRUE, &a, &b);
             }
@@ -5201,7 +5201,7 @@ void AnimNeedleArmSpike(struct Sprite *sprite)
         }
         else
         {
-            if (gMovesInfo[gAnimMoveIndex].target == MOVE_TARGET_BOTH)
+            if (GetMoveTarget(gAnimMoveIndex) == MOVE_TARGET_BOTH)
             {
                 SetAverageBattlerPositions(gBattleAnimTarget, TRUE, &a, &b);
             }
@@ -6932,6 +6932,7 @@ static void AnimTask_AllySwitchDataSwap(u8 taskId)
     SWAP(gBattleSpritesDataPtr->battlerData[battlerAtk].invisible, gBattleSpritesDataPtr->battlerData[battlerPartner].invisible, temp);
     SWAP(gTransformedPersonalities[battlerAtk], gTransformedPersonalities[battlerPartner], temp);
     SWAP(gTransformedShininess[battlerAtk], gTransformedShininess[battlerPartner], temp);
+    SWAP(gTransformedColorations[battlerAtk], gTransformedColorations[battlerPartner], temp);
 
     SwapBattlerMoveData(battlerAtk, battlerPartner);
 

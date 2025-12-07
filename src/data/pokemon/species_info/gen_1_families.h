@@ -436,6 +436,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .teachableLearnset = sCharmanderTeachableLearnset,
         .eggMoveLearnset = sCharmanderEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 16, SPECIES_CHARMELEON}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
     [SPECIES_CHARMELEON] =
@@ -506,6 +508,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sCharmeleonLevelUpLearnset,
         .teachableLearnset = sCharmeleonTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_CHARIZARD}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
     [SPECIES_CHARIZARD] =
@@ -581,6 +585,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .teachableLearnset = sCharizardTeachableLearnset,
         .formSpeciesIdTable = sCharizardFormSpeciesIdTable,
         .formChangeTable = sCharizardFormChangeTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
 #if P_MEGA_EVOLUTIONS
@@ -9824,6 +9830,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .teachableLearnset = sTentacoolTeachableLearnset,
         .eggMoveLearnset = sTentacoolEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 30, SPECIES_TENTACRUEL}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
     },
 
     [SPECIES_TENTACRUEL] =
@@ -9895,6 +9903,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sTentacruelLevelUpLearnset,
         .teachableLearnset = sTentacruelTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
     },
 #endif //P_FAMILY_TENTACOOL
 
@@ -10418,6 +10428,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .eggMoveLearnset = sPonytaEggMoveLearnset,
         .formSpeciesIdTable = sPonytaFormSpeciesIdTable,
         .evolutions = EVOLUTION({EVO_LEVEL, 40, SPECIES_RAPIDASH}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
     [SPECIES_RAPIDASH] =
@@ -10487,6 +10499,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sRapidashLevelUpLearnset,
         .teachableLearnset = sRapidashTeachableLearnset,
         .formSpeciesIdTable = sRapidashFormSpeciesIdTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
 #if P_GALARIAN_FORMS
@@ -10843,6 +10857,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sSlowkingLevelUpLearnset,
         .teachableLearnset = sSlowkingTeachableLearnset,
         .formSpeciesIdTable = sSlowkingFormSpeciesIdTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
     },
 #endif //P_GEN_2_CROSS_EVOS
 
@@ -17373,7 +17389,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .abilities = { ABILITY_FLAME_BODY, ABILITY_NONE, ABILITY_VITAL_SPIRIT },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Magmar"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Face Butt"),
         .cryId = CRY_MAGMAR,
         .natDexNum = NATIONAL_DEX_MAGMAR,
         .categoryName = _("Spitfire"),
@@ -17422,6 +17438,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_MAGMORTAR, CONDITIONS({IF_HOLD_ITEM, ITEM_MAGMARIZER})},
                                 {EVO_ITEM, ITEM_MAGMARIZER, SPECIES_MAGMORTAR}),
     #endif
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
 #if P_GEN_4_CROSS_EVOS
@@ -17453,7 +17470,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .bodyColor = BODY_COLOR_RED,
         .noFlip = TRUE,
         .speciesName = _("Magmortar"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Fire Cannon"),
         .cryId = CRY_MAGMORTAR,
         .natDexNum = NATIONAL_DEX_MAGMORTAR,
         .categoryName = _("Blast"),
@@ -17498,6 +17515,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sMagmortarLevelUpLearnset,
         .teachableLearnset = sMagmortarTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 #endif //P_GEN_4_CROSS_EVOS
 #endif //P_FAMILY_MAGMAR
@@ -18899,6 +18918,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sEspeonLevelUpLearnset,
         .teachableLearnset = sEspeonTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
     },
 
     [SPECIES_UMBREON] =
@@ -18966,6 +18987,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sUmbreonLevelUpLearnset,
         .teachableLearnset = sUmbreonTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_YELLOW,
     },
 #endif //P_GEN_2_CROSS_EVOS
 

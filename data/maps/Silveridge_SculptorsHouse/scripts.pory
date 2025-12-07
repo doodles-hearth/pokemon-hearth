@@ -97,7 +97,7 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 	bufferspeciesname(STR_VAR_1, VAR_TEMP_1)
 	setspeaker(SP_NAME_SCULPTOR)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Please show me {STR_VAR_1}. My soul aches for it!"
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Please show me {STR_VAR_1}. My soul aches for it!"
 	))
 	
 	checkspecies_choose(VAR_TEMP_1)
@@ -111,7 +111,7 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 		bufferspeciesname(STR_VAR_1, VAR_TEMP_1)
 		setspeaker(SP_NAME_SCULPTOR)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Oh… … … …\n"
+			"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Oh… … … …\n"
 			"… … …Oh!!\p"
 			"This is is… I can feel the raw inspiration coursing through my veins!\p"
 			"Hello, {STR_VAR_1}!\nStand still just a moment…"
@@ -137,7 +137,7 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 		bufferspeciesname(STR_VAR_2, VAR_TEMP_2)
 		setspeaker(SP_NAME_SCULPTOR)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}There it is! My best work yet!\p"
+			"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}There it is! My best work yet!\p"
 			"… … …And yet…\p"
 			"It still feels like something is missing.\p"
 			"I think… I think…\n"
@@ -155,7 +155,7 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 	} else {
 		setspeaker(SP_NAME_SCULPTOR)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Why must you toy with me so?"
+			"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Why must you toy with me so?"
 		))
 	}
 
@@ -170,7 +170,7 @@ script Silveridge_House1_EventScript_Sculptor_FirstTime {
 	faceplayer
 	setspeaker(SP_NAME_SCULPTOR)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}Please do not talk to me. I am creating."
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Please do not talk to me. I am creating."
 	))
 	closemessage
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
@@ -186,7 +186,7 @@ script Silveridge_House1_EventScript_Sculptor_FirstTime {
 
 	setspeaker(SP_NAME_SCULPTOR)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ARTIST EMOTE_NORMAL}…Oh? Could it be? Another noble soul moved by the ancestral art of sculpture?\p"
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}…Oh? Could it be? Another noble soul moved by the ancestral art of sculpture?\p"
 		"Am I no longer utterly alone? Oh, my heart swells up at the idea!\p"
 		"As a fellow connoisseur of sculpture, you must know how difficult it is to find a proper model, one that will stir in its beholder the most violent passions.\p"
 		"To transform a raw slab of stone into the pinnacle of beauty… That is my aspiration.\p"

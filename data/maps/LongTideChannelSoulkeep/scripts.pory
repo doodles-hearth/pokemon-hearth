@@ -61,7 +61,7 @@ script LongTideChannelSoulkeep_EventScript_BoatGuy {
 	lock
 	faceplayer
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}I'm on my way to Saberside Town.\n"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}I'm on my way to Saberside Town.\n"
 		"Want to hop along?"
 	))
 
@@ -104,12 +104,12 @@ script LongTideChannelSoulkeep_EventScripts_WhereChatot {
 	setnamedmon(SPECIES_CHATOT)
 	if (flag(FLAG_POST_CHATOT)) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}{SPEAKER NAME_LITTLE_BOY}Where's Chatot? I wanna see Chatot!"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}Where's Chatot? I wanna see Chatot!"
 		))
 		closemessage
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY EMOTE_NORMAL}{SPEAKER NAME_LITTLE_BOY}Oooh, Chatot's here!!\nI love Chatot!\p"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}Oooh, Chatot's here!!\nI love Chatot!\p"
 			"How would I talk to my friends in Yifu City without Chatot? We'd have to WRITE stuff to each other, YUCK!\p"
 			"I love how it flicks its tail to keep a rhythm while it speaks!\lAnd it imitates any voice perfectly!"
 		))

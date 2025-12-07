@@ -1399,6 +1399,7 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
         battleMon.otId = GetMonData(&party[monId], MON_DATA_OT_ID);
         battleMon.metLevel = GetMonData(&party[monId], MON_DATA_MET_LEVEL);
         battleMon.isShiny = GetMonData(&party[monId], MON_DATA_IS_SHINY);
+        battleMon.coloration = GetMonData(&party[monId], MON_DATA_COLORATION);
         GetMonData(&party[monId], MON_DATA_NICKNAME, nickname);
         StringCopy_Nickname(battleMon.nickname, nickname);
         GetMonData(&party[monId], MON_DATA_OT_NAME, battleMon.otName);
@@ -1562,12 +1563,6 @@ static u32 GetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId, u8 *
         dst[2] = (data32 & 0x00FF0000) >> 16;
         dst[3] = (data32 & 0xFF000000) >> 24;
         size = 4;
-        break;
-    case REQUEST_CHECKSUM_BATTLE:
-        data16 = GetMonData(&party[monId], MON_DATA_CHECKSUM);
-        dst[0] = data16;
-        dst[1] = data16 >> 8;
-        size = 2;
         break;
     case REQUEST_STATUS_BATTLE:
         data32 = GetMonData(&party[monId], MON_DATA_STATUS);
@@ -1821,9 +1816,6 @@ static void SetBattlerMonData(u32 battler, struct Pokemon *party, u32 monId)
         break;
     case REQUEST_PERSONALITY_BATTLE:
         SetMonData(&party[monId], MON_DATA_PERSONALITY, &gBattleResources->bufferA[battler][3]);
-        break;
-    case REQUEST_CHECKSUM_BATTLE:
-        SetMonData(&party[monId], MON_DATA_CHECKSUM, &gBattleResources->bufferA[battler][3]);
         break;
     case REQUEST_STATUS_BATTLE:
         SetMonData(&party[monId], MON_DATA_STATUS, &gBattleResources->bufferA[battler][3]);
@@ -2505,6 +2497,7 @@ void BtlController_HandleMoveAnimation(u32 battler)
         gAnimDisableStructPtr = (struct DisableStruct *)&gBattleResources->bufferA[battler][16];
         gTransformedPersonalities[battler] = gAnimDisableStructPtr->transformedMonPersonality;
         gTransformedShininess[battler] = gAnimDisableStructPtr->transformedMonShininess;
+        gTransformedColorations[battler] = gAnimDisableStructPtr->transformedMonColoration;
         gBattleSpritesDataPtr->healthBoxesData[battler].animationState = 0;
         gBattlerControllerFuncs[battler] = Controller_DoMoveAnimation;
         if (ShouldUpdateTvData(battler))

@@ -328,3 +328,15 @@ const u16 gMetatileAttributes_Crypt[] = INCBIN_U16("data/tilesets/secondary/cryp
 
 const u16 gMetatiles_Quarry[] = INCBIN_U16("data/tilesets/secondary/quarry/metatiles.bin");
 const u16 gMetatileAttributes_Quarry[] = INCBIN_U16("data/tilesets/secondary/quarry/metatile_attributes.bin");
+
+const u16 gMetatiles_CaveVolcano[] = INCBIN_U16("data/tilesets/secondary/cave_volcano/metatiles.bin");
+const u16 gMetatileAttributes_CaveVolcano[] = INCBIN_U16("data/tilesets/secondary/cave_volcano/metatile_attributes.bin");
+
+const u16 gMetatiles_Volcano[] = INCBIN_U16("data/tilesets/secondary/volcano/metatiles.bin");
+const u16 gMetatileAttributes_Volcano[] = INCBIN_U16("data/tilesets/secondary/volcano/metatile_attributes.bin");
+
+const u16 gMetatiles_HouseWindycape[] = INCBIN_U16("data/tilesets/secondary/house_windycape/metatiles.bin");
+const u16 gMetatileAttributes_HouseWindycape[] = INCBIN_U16("data/tilesets/secondary/house_windycape/metatile_attributes.bin");
+
+const u16 gMetatiles_Forge[] = INCBIN_U16("data/tilesets/secondary/forge/metatiles.bin");
+const u16 gMetatileAttributes_Forge[] = INCBIN_U16("data/tilesets/secondary/forge/metatile_attributes.bin");

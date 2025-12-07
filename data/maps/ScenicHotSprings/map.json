@@ -1,0 +1,31 @@
+{
+  "id": "MAP_SCENIC_HOT_SPRINGS",
+  "name": "ScenicHotSprings",
+  "layout": "LAYOUT_SCENIC_HOT_SPRINGS",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_SCENIC_HOT_SPRINGS",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_SCENIC_ROUTE_SABERSIDE",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_SABERSIDE_TOWN",
+      "offset": -38,
+      "direction": "left"
+    }
+  ],
+  "object_events": [],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
+}
