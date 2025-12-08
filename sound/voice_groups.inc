@@ -7,6 +7,7 @@
 .include "sound/voicegroups/drumsets/emerald_2.inc"
 .include "sound/voicegroups/drumsets/dd.inc"
 
+
 @ key splits
 .include "sound/voicegroups/keysplits/piano.inc"
 .include "sound/voicegroups/keysplits/strings.inc"
@@ -205,3 +206,5 @@
 .include "sound/voicegroups/voicegroup_c_vs_legend_beast.inc"
 .include "sound/voicegroups/drumsets/mudstep.inc"
 .include "sound/voicegroups/voicegroup_hh_sunrise.inc"
+.include "sound/voicegroups/hh_chii_town.inc"
+.include "sound/voicegroups/voicegroup192.inc"
