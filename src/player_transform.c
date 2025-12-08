@@ -21,6 +21,14 @@ struct Pokemon* gPlayerTransformPokemon;
 
 static void UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj);
 
+struct Pokemon* GetCurrentlyTransformedPokemon()
+{
+    bool32 isPlayerTransformed = FlagGet(FLAG_PLAYER_IS_POKEMON);
+    if (isPlayerTransformed && !gPlayerTransformPokemon)
+        gPlayerTransformPokemon = &gPlayerParty[gSaveBlock1Ptr->playerTransformPokemonIndex];
+    return gPlayerTransformPokemon;
+}
+
 void CB2_TransformPlayerToPokemonFromParty()
 {
     u8 index;
@@ -29,6 +37,7 @@ void CB2_TransformPlayerToPokemonFromParty()
         index = PARTY_NOTHING_CHOSEN;
     }
     else {
+        gSaveBlock1Ptr->playerTransformPokemonIndex = index;
         gPlayerTransformPokemon = &gPlayerParty[index];
         TransformPlayerToPokemon();
     }
@@ -67,7 +76,7 @@ void TransformPlayerToPokemon()
     FlagSet(FLAG_PLAYER_IS_POKEMON);
     FlagSet(FLAG_DISABLE_FOLLOWERS);
     struct ObjectEvent* playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
-    ObjectEventSetGraphicsId(playerObj, PokemonToGraphicsId(gPlayerTransformPokemon));
+    ObjectEventSetGraphicsId(playerObj, PokemonToGraphicsId(GetCurrentlyTransformedPokemon()));
     UpdateTransformedPlayerPalette(playerObj);
     UpdateFollowingPokemon();
 }

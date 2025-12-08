@@ -3,7 +3,7 @@
 
 extern struct Pokemon *gPlayerTransformPokemon;
 
-void GetCurrentPlayerTransformPokemon();
+struct Pokemon* GetCurrentlyTransformedPokemon();
 u16 PokemonToGraphicsId(struct Pokemon *pokemon);
 void TransformPlayerToPokemon();
 void TransformPlayerToHumasn();

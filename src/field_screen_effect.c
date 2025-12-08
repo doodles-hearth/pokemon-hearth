@@ -1072,7 +1072,7 @@ void WriteFlashScanlineEffectBuffer(u8 flashRadius)
       u32 species;
 
       if (FlagGet(FLAG_PLAYER_IS_POKEMON))
-        species = GetMonData(gPlayerTransformPokemon, MON_DATA_SPECIES);
+        species = GetMonData(GetCurrentlyTransformedPokemon(), MON_DATA_SPECIES);
       else
         species = OW_SPECIES(GetFollowerObject());
 

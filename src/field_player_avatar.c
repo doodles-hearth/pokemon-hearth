@@ -654,7 +654,10 @@ static u8 CheckMovementInputNotOnBike(u8 direction)
 
 static void PlayerNotOnBikeNotMoving(u8 direction, u16 heldKeys)
 {
-    PlayerFaceDirection(GetPlayerFacingDirection());
+    if (FlagGet(FLAG_PLAYER_IS_POKEMON))
+        PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(GetPlayerFacingDirection()), COPY_MOVE_FACE);
+    else
+        PlayerFaceDirection(GetPlayerFacingDirection());
 }
 
 void UpdateSpinData(void)
@@ -1516,7 +1519,7 @@ u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 {
     if(FlagGet(FLAG_PLAYER_IS_POKEMON))
-      return PokemonToGraphicsId(gPlayerTransformPokemon);
+      return PokemonToGraphicsId(GetCurrentlyTransformedPokemon());
     return sPlayerAvatarGfxIds[state][gender];
 }
 
