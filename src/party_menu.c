@@ -48,6 +48,7 @@
 #include "palette.h"
 #include "party_menu.h"
 #include "player_pc.h"
+#include "player_transform.h"
 #include "pokemon.h"
 #include "pokemon_icon.h"
 #include "pokemon_jump.h"
@@ -7486,6 +7487,11 @@ static const u8 *GetFacilityCancelString(void)
 void ChooseMonForTradingBoard(u8 menuType, MainCallback callback)
 {
     InitPartyMenu(menuType, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, callback);
+}
+
+void ChooseMonForTransform()
+{
+    InitPartyMenu(PARTY_MENU_TYPE_CHOOSE_MON, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_AND_CLOSE, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_TransformPlayerToPokemonFromParty);
 }
 
 void ChooseMonForMoveTutor(void)

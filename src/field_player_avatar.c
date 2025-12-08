@@ -16,6 +16,8 @@
 #include "oras_dowse.h"
 #include "overworld.h"
 #include "party_menu.h"
+#include "player_transform.h"
+#include "pokemon.h"
 #include "random.h"
 #include "rotating_gate.h"
 #include "rtc.h"
@@ -35,6 +37,7 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
+#include "constants/flags.h"
 
 #define NUM_FORCED_MOVEMENTS 18
 #define NUM_ACRO_BIKE_COLLISIONS 5
@@ -1236,7 +1239,11 @@ void PlayerWalkFaster(u8 direction)
 
 static void PlayerRun(u8 direction)
 {
+  if(FlagGet(FLAG_PLAYER_IS_POKEMON))
+    PlayerSetAnimId(GetWalkFastMovementAction(direction), COPY_MOVE_WALK);
+  else
     PlayerSetAnimId(GetPlayerRunMovementAction(direction), COPY_MOVE_WALK);
+
 }
 
 void PlayerOnBikeCollide(u8 direction)
@@ -1508,6 +1515,8 @@ u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 
 u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 {
+    if(FlagGet(FLAG_PLAYER_IS_POKEMON))
+      return PokemonToGraphicsId(gPlayerTransformPokemon);
     return sPlayerAvatarGfxIds[state][gender];
 }
 
