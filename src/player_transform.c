@@ -23,7 +23,7 @@
 struct Pokemon* gPlayerTransformPokemon;
 EWRAM_DATA struct PlayerAvatarBobState gPlayerAvatarBobState = {0};
 
-static void UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj);
+static void UNUSED UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj);
 static void ResetPlayerAvatar();
 
 struct Pokemon* GetCurrentlyTransformedPokemon()
@@ -66,7 +66,7 @@ u16 PokemonToGraphicsId(struct Pokemon* pokemon)
     return graphicsId;
 }
 
-static void UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj)
+static void UNUSED UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj)
 {
     u32 species = GetMonData(gPlayerTransformPokemon, MON_DATA_SPECIES);
     struct SpritePalette spritePalette;
