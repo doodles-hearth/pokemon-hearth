@@ -698,7 +698,7 @@ Music: Rich
 Battle Type: Singles
 AI: Basic Trainer
 
-Carbink
+Carbink @ Star Piece
 Level: 25
 Coloration: 0
 - Guard Split
@@ -718,22 +718,25 @@ Shiny: Yes
 - Sharpen
 - Smack Down
 
-=== TRAINER_GRUNT_MUSEUM_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_HARUTO ===
+Name: Haruto
+Class: Gem Maniac
+Pic: Gem Maniac
 Gender: Male
-Music: Aqua
+Music: Rich
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zubat
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lunatone @ Moon Stone
+Level: 25
+- Cosmic Power
+- Psywave
 
-Carvanha
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Clefairy @ Moon Stone
+Level: 25
+- Wake Up Slap
+- Metronome
+- Encore
 
 === TRAINER_GRUNT_SPACE_CENTER_1 ===
 Name: GRUNT

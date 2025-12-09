@@ -167,3 +167,19 @@ script SabersideTown_EventScript_Ryoui {
 script SabersideTown_EventScript_HarukiPostBattle {
 	setnamedmon(SPECIES_CARBINK)
 }
+
+script SabersideTown_EventScript_Haruto {
+	trainerbattle_single(
+		TRAINER_HARUTO,
+		("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}I can smell rare gems in the next room,\nbut it's teeming with Sableye!"),
+		format("So close, yet so far!"),
+		SabersideTown_EventScript_HarutoPostBattle
+	)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}{SPEAKER NAME_GEM_MANIAC}The Sableye ganged up on me and chased me from their lair…"))
+	release
+	end
+}
+
+script SabersideTown_EventScript_HarutoPostBattle {
+	setnamedmon(SPECIES_SABLEYE)
+}
