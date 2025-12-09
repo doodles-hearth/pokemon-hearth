@@ -3,6 +3,7 @@
 #include "battle_pyramid.h"
 #include "battle_pyramid_bag.h"
 #include "bg.h"
+#include "constants/flags.h"
 #include "debug.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -55,7 +56,7 @@
 #include "constants/songs.h"
 
 // Menu actions
-enum
+enum StartMenuActions
 {
     MENU_ACTION_POKEDEX,
     MENU_ACTION_POKEMON,
@@ -150,6 +151,10 @@ static void SaveGameTask(u8 taskId);
 static void Task_SaveAfterLinkBattle(u8 taskId);
 static void Task_WaitForBattleTowerLinkSave(u8 taskId);
 static bool8 FieldCB_ReturnToFieldStartMenu(void);
+
+// Helper functions
+static bool32 ShouldDisplayStartMenuEntry(enum StartMenuActions action);
+
 
 static const struct WindowTemplate sWindowTemplate_SafariBalls = {
     .bg = 0,
@@ -348,27 +353,55 @@ static void AddStartMenuAction(u8 action)
     AppendToList(sCurrentStartMenuActions, &sNumStartMenuActions, action);
 }
 
+static bool32 ShouldDisplayStartMenuEntry(enum StartMenuActions action)
+{
+    switch (action) {
+        case MENU_ACTION_POKEMON:
+            return FlagGet(FLAG_SYS_POKEMON_GET) &&
+                   !FlagGet(FLAG_PLAYER_IS_POKEMON);
+            break;
+        case MENU_ACTION_POKEDEX:
+            return FlagGet(FLAG_SYS_POKEDEX_GET) &&
+                   !FlagGet(FLAG_PLAYER_IS_POKEMON);
+            break;
+        case MENU_ACTION_BAG:
+            return !FlagGet(FLAG_PLAYER_IS_POKEMON);
+            break;
+        case MENU_ACTION_POKENAV:
+            return FlagGet(FLAG_SYS_POKENAV_GET) &&
+                   !FlagGet(FLAG_PLAYER_IS_POKEMON);
+            break;
+        case MENU_ACTION_PLAYER:
+            return !FlagGet(FLAG_PLAYER_IS_POKEMON);
+            break;
+        default:
+            return TRUE;
+    }
+}
+
 static void BuildNormalStartMenu(void)
 {
-    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_POKEDEX))
         AddStartMenuAction(MENU_ACTION_POKEDEX);
 
     if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET))
         AddStartMenuAction(MENU_ACTION_DEXNAV);
 
-    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_POKEMON))
         AddStartMenuAction(MENU_ACTION_POKEMON);
 
-    AddStartMenuAction(MENU_ACTION_BAG);
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_BAG))
+        AddStartMenuAction(MENU_ACTION_BAG);
 
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
 
-    AddStartMenuAction(MENU_ACTION_PLAYER);
-    
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_PLAYER))
+        AddStartMenuAction(MENU_ACTION_PLAYER);
+
     if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_QUEST_MENU);
-    
+
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
@@ -377,16 +410,28 @@ static void BuildNormalStartMenu(void)
 static void BuildDebugStartMenu(void)
 {
     AddStartMenuAction(MENU_ACTION_DEBUG);
-    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_POKEDEX))
         AddStartMenuAction(MENU_ACTION_POKEDEX);
-    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
+
+    if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET))
+        AddStartMenuAction(MENU_ACTION_DEXNAV);
+
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_POKEMON))
         AddStartMenuAction(MENU_ACTION_POKEMON);
-    AddStartMenuAction(MENU_ACTION_BAG);
+
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_BAG))
+        AddStartMenuAction(MENU_ACTION_BAG);
+
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
+
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_PLAYER))
+        AddStartMenuAction(MENU_ACTION_PLAYER);
+
     if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_QUEST_MENU);
-    AddStartMenuAction(MENU_ACTION_PLAYER);
+
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
 }
