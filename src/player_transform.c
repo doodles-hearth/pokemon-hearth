@@ -7,6 +7,7 @@
 #include "constants/flags.h"
 #include "constants/species.h"
 #include "event_object_movement.h"
+#include "fieldmap.h"
 #include "constants/event_objects.h"
 #include "main.h"
 #include "overworld.h"
@@ -20,6 +21,7 @@
 struct Pokemon* gPlayerTransformPokemon;
 
 static void UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj);
+static void ResetPlayerAvatar();
 
 struct Pokemon* GetCurrentlyTransformedPokemon()
 {
@@ -71,21 +73,29 @@ static void UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj)
     sprite->oam.paletteNum = LoadSpritePalette(&spritePalette);
 }
 
+void ResetPlayerAvatar()
+{
+    u16 x, y;
+    GetCameraFocusCoords(&x, &y);
+    u8 direction = GetPlayerFacingDirection();
+    struct ObjectEvent* playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
+    RemoveObjectEvent(playerObj);
+    ClearPlayerAvatarInfo();
+    InitPlayerAvatar(x, y, direction, gSaveBlock2Ptr->playerGender);
+}
+
 void TransformPlayerToPokemon()
 {
     FlagSet(FLAG_PLAYER_IS_POKEMON);
     FlagSet(FLAG_DISABLE_FOLLOWERS);
-    struct ObjectEvent* playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
-    ObjectEventSetGraphicsId(playerObj, PokemonToGraphicsId(GetCurrentlyTransformedPokemon()));
-    UpdateTransformedPlayerPalette(playerObj);
-    UpdateFollowingPokemon();
+    ResetPlayerAvatar();
 }
 
 void TransformPlayerToHuman()
 {
     FlagClear(FLAG_PLAYER_IS_POKEMON);
     FlagClear(FLAG_DISABLE_FOLLOWERS);
-    SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ON_FOOT);
+    ResetPlayerAvatar();
     UpdateFollowingPokemon();
 }
 
