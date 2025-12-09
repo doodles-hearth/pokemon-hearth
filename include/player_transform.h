@@ -2,6 +2,12 @@
 #define GUARD_PLAYER_TRANSFORM_H
 
 extern struct Pokemon *gPlayerTransformPokemon;
+extern struct PlayerAvatarBobState gPlayerAvatarBobState;
+
+struct PlayerAvatarBobState {
+    u16 frameCounter;
+    u16 spriteOffset;
+};
 
 struct Pokemon* GetCurrentlyTransformedPokemon();
 u16 PokemonToGraphicsId(struct Pokemon *pokemon);
@@ -9,5 +15,6 @@ void TransformPlayerToPokemon();
 void TransformPlayerToHumasn();
 void TransformPlayerToPokemonFromParty();
 void CB2_TransformPlayerToPokemonFromParty();
+void PlayerAvatarHandleBob();
 
 #endif //GUARD_PLAYER_TRANSFORM_H

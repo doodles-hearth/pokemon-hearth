@@ -18,10 +18,14 @@
 #include "player_transform.h"
 #include "field_player_avatar.h"
 
+#define STEP_FRAME_DURATION 8
+
 struct Pokemon* gPlayerTransformPokemon;
+EWRAM_DATA struct PlayerAvatarBobState gPlayerAvatarBobState = {0};
 
 static void UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj);
 static void ResetPlayerAvatar();
+static void Task_HandleTransformedPlayerBob(u8 taskId);
 
 struct Pokemon* GetCurrentlyTransformedPokemon()
 {
@@ -102,4 +106,26 @@ void TransformPlayerToHuman()
 void TransformPlayerToPokemonFromParty()
 {
     ChooseMonForTransform();
+}
+
+void PlayerAvatarHandleBob()
+{
+    if (FlagGet(FLAG_PLAYER_IS_POKEMON)) {
+        struct Sprite* playerSprite = &gSprites[gPlayerAvatar.spriteId];
+
+        if (gPlayerAvatarBobState.frameCounter == 0)
+            gPlayerAvatarBobState.spriteOffset = Q_4_12(1.0);
+
+        if (gPlayerAvatarBobState.frameCounter == STEP_FRAME_DURATION)
+            gPlayerAvatarBobState.spriteOffset -= Q_4_12(0.5);
+
+        if (gPlayerAvatarBobState.frameCounter == STEP_FRAME_DURATION * 2) {
+            gPlayerAvatarBobState.spriteOffset += Q_4_12(0.5);
+            gPlayerAvatarBobState.frameCounter = 0;
+            return;
+        }
+
+        playerSprite->y2 = Q_4_12_TO_INT(gPlayerAvatarBobState.spriteOffset);
+        gPlayerAvatarBobState.frameCounter++;
+    }
 }
