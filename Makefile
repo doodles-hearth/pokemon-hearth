@@ -264,7 +264,7 @@ MAKEFLAGS += --no-print-directory
 .DELETE_ON_ERROR:
 
 RULES_NO_SCAN += libagbsyscall clean clean-assets tidy tidymodern tidycheck tidyrelease generated clean-generated
-.PHONY: all rom agbcc modern compare check debug release
+.PHONY: all rom agbcc modern compare check debug release inc-to-scr
 .PHONY: $(RULES_NO_SCAN)
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
@@ -314,7 +314,7 @@ ASM_SRCS := $(wildcard $(ASM_SUBDIR)/*.s)
 ASM_OBJS := $(patsubst $(ASM_SUBDIR)/%.s,$(ASM_BUILDDIR)/%.o,$(ASM_SRCS))
 
 # get all the data/*.s files EXCEPT the ones with specific rules
-REGULAR_DATA_ASM_SRCS := $(filter-out $(DATA_ASM_SUBDIR)/maps.s $(DATA_ASM_SUBDIR)/map_events.s $(DATA_ASM_SUBDIR)/event_scripts.s, $(wildcard $(DATA_ASM_SUBDIR)/*.s))
+REGULAR_DATA_ASM_SRCS := $(filter-out $(DATA_ASM_SUBDIR)/maps.s $(DATA_ASM_SUBDIR)/map_events.s, $(wildcard $(DATA_ASM_SUBDIR)/*.s))
 
 DATA_ASM_SRCS := $(wildcard $(DATA_ASM_SUBDIR)/*.s)
 DATA_ASM_OBJS := $(patsubst $(DATA_ASM_SUBDIR)/%.s,$(DATA_ASM_BUILDDIR)/%.o,$(DATA_ASM_SRCS))
@@ -515,14 +515,10 @@ ifneq ($(NODEP),1)
 -include $(addprefix $(OBJ_DIR)/,$(C_ASM_SRCS:.s=.d))
 endif
 
-# explicit rules as otherwise the file won't get updated when it needs to.
-$(DATA_ASM_BUILDDIR)/event_scripts.o: $(DATA_ASM_SUBDIR)/event_scripts.s
+inc-to-scr:
 	@$(SHELL) ./inc_to_scr.sh
-	$(PREPROC) $< charmap.txt | $(CPP) $(CPPFLAGS) $(INCLUDE_SCANINC_ARGS) - | $(PREPROC) -ie $< charmap.txt | $(AS) $(ASFLAGS) -o $@
 
-$(DATA_ASM_BUILDDIR)/event_scripts.d: $(DATA_ASM_SUBDIR)/event_scripts.s
-	@$(SHELL) ./inc_to_scr.sh
-	$(SCANINC) -M $@ $(INCLUDE_SCANINC_ARGS) -I "" $<
+$(DATA_ASM_SUBDIR)/event_scripts.s: inc-to-scr
 
 $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s
 	$(PREPROC) $< charmap.txt | $(CPP) $(CPPFLAGS) $(INCLUDE_SCANINC_ARGS) - | $(PREPROC) -ie $< charmap.txt | $(AS) $(ASFLAGS) -o $@
