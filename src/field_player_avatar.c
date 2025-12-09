@@ -1535,6 +1535,8 @@ u16 GetRSAvatarGraphicsIdByGender(u8 gender)
 
 u16 GetPlayerAvatarGraphicsIdByStateId(u8 state)
 {
+    if (FlagGet(FLAG_PLAYER_IS_POKEMON))
+        return GetPlayerAvatarGraphicsIdByStateIdAndGender(state, gSaveBlock2Ptr->playerGender);
     return GetPlayerAvatarGraphicsIdByStateIdAndGender(state, gPlayerAvatar.gender);
 }
 
