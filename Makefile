@@ -264,7 +264,7 @@ MAKEFLAGS += --no-print-directory
 .DELETE_ON_ERROR:
 
 RULES_NO_SCAN += libagbsyscall clean clean-assets tidy tidymodern tidycheck tidyrelease generated clean-generated
-.PHONY: all rom agbcc modern compare check debug release
+.PHONY: all rom agbcc modern compare check debug release inc-to-scr
 .PHONY: $(RULES_NO_SCAN)
 
 infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
@@ -445,7 +445,6 @@ clean-generated:
 	@echo "rm -f <AUTO_GEN_TARGETS>"
 	@rm -f $(ALL_LEARNABLES_JSON)
 	@echo "rm -f <ALL_LEARNABLES_JSON>"
-	@rm -r inc-to-scr
 
 $(C_BUILDDIR)/librfu_intr.o: CFLAGS := -mthumb-interwork -O2 -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -fno-toplevel-reorder -Wno-pointer-to-int-cast
 $(C_BUILDDIR)/berry_crush.o: override CFLAGS += -Wno-address-of-packed-member
@@ -516,6 +515,11 @@ ifneq ($(NODEP),1)
 -include $(addprefix $(OBJ_DIR)/,$(C_ASM_SRCS:.s=.d))
 endif
 
+inc-to-scr:
+	@$(SHELL) ./inc_to_scr.sh
+
+$(DATA_ASM_SUBDIR)/event_scripts.s: inc-to-scr
+
 $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s
 	$(PREPROC) $< charmap.txt | $(CPP) $(CPPFLAGS) $(INCLUDE_SCANINC_ARGS) - | $(PREPROC) -ie $< charmap.txt | $(AS) $(ASFLAGS) -o $@
 
@@ -575,7 +579,6 @@ endif
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 	$(FIX) $@ -p --silent
-	@rm -r inc-to-scr
 
 emerald: all
 firered: all

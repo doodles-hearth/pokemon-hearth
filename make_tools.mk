@@ -15,7 +15,7 @@ CHECKTOOLDIRS := $(CHECK_TOOL_NAMES:%=$(TOOLS_DIR)/%)
 RULES_NO_SCAN += tools check-tools clean-tools clean-check-tools history $(TOOLDIRS) $(CHECKTOOLDIRS)
 .PHONY: $(RULES_NO_SCAN)
 
-tools: inc-to-scr history $(TOOLDIRS)
+tools: history $(TOOLDIRS)
 
 check-tools: $(CHECKTOOLDIRS)
 
@@ -33,7 +33,3 @@ clean-check-tools:
 
 history:
 	@$(SHELL) ./check_history.sh
-
-inc-to-scr:
-	@touch $@ # without this guy, we'll keep compiling event_scripts.s forever
-	@$(SHELL) ./inc_to_scr.sh
