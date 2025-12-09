@@ -25,7 +25,6 @@ EWRAM_DATA struct PlayerAvatarBobState gPlayerAvatarBobState = {0};
 
 static void UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj);
 static void ResetPlayerAvatar();
-static void Task_HandleTransformedPlayerBob(u8 taskId);
 
 struct Pokemon* GetCurrentlyTransformedPokemon()
 {
