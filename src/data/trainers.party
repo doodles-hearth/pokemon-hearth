@@ -658,56 +658,65 @@ Level: 22
 - Magical Leaf
 - Sunny Day
 
-=== TRAINER_GRUNT_WEATHER_INST_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_HAGANE ===
+Name: Hagane
+Class: Miner
+Pic: Miner
 Gender: Male
-Music: Aqua
+Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Poochyena
+Onix
 Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Dragon Breath
+- Stealth Rock
+- Smack Down
 
-Carvanha
+=== TRAINER_HARUKI ===
+Name: Haruki
+Class: Miner
+Pic: Miner
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Basic Trainer
+
+Sandy (Sandslash) (F)
 Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Rapid Spin
+- Rollout
+- Magnitude
+- Sand Attack
 
-=== TRAINER_GRUNT_WEATHER_INST_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_RYOUI ===
+Name: Ryoui
+Class: Gem Maniac
+Pic: Gem Maniac
 Gender: Male
-Music: Aqua
+Music: Rich
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Poochyena
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Carbink
+Level: 25
+Coloration: 0
+- Guard Split
+- Stealth Rock
+- Smack Down
 
-Zubat
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Carbink
+Level: 25
+Coloration: 80
+- Reflect
+- Rock Throw
 
-Carvanha
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_MUSEUM_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Carvanha
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Carbink
+Level: 25
+Coloration: 40
+Shiny: Yes
+- Sharpen
+- Smack Down
 
 === TRAINER_GRUNT_MUSEUM_2 ===
 Name: GRUNT

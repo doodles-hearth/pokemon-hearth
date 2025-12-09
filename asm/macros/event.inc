@@ -1417,6 +1417,10 @@
 	.2byte \level
 	.endm
 
+	.macro getflashlevel
+	.byte SCR_OP_GETFLASHLEVEL
+	.endm
+
 	@ Animates the flash radius from its current size to the size it would be at the specified level.
 	@ Note that this does not actually change the current flash level. It's typically used just before a setflashlevel.
 	.macro animateflash level:req

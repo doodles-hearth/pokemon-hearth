@@ -102,7 +102,7 @@ script KuraTown_EventScript_DojoChallenger {
 		setspeaker("Bold Man")
 		msgbox(
 			format(
-				"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+				"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}"
 				"Looks like the Dojo is closed again…\p"
 				"Gah, when will I get a chance to crush Hana in a fiery battle?\p"
 				"Could it be that she is scared of me?"
@@ -111,7 +111,7 @@ script KuraTown_EventScript_DojoChallenger {
 	} else {
 		setspeaker("Cowardly Man")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}"
 			"The Dojo is open! I can finally defeat its leader in a fiery battle!\p"
 			"…Hm? When, you ask?\p"
 			"In… In a minute…"

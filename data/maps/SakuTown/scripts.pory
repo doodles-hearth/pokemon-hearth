@@ -260,7 +260,7 @@ script SakuTown_EventScript_Karateka {
 	faceplayer
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}"
 		"I let the Toku Council borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
 	))
 	closemessage
@@ -274,7 +274,7 @@ script SakuTown_EventScript_Karateka {
 	applymovement(VAR_LAST_TALKED, moves(emote_heart))
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}"
 		"Mama, Kuku! Daddy loves you!!"
 	))
 	closemessage
@@ -301,7 +301,7 @@ script SakuTown_EventScript_Karateka {
 		faceplayer
 		setspeaker(SP_NAME_MAN)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}"
 			"Their hands are strong and forceful…"
 		))
 		closemessage
@@ -315,7 +315,7 @@ script SakuTown_EventScript_Karateka {
 		faceplayer
 		setspeaker(SP_NAME_MAN)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY}"
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}"
 			"Their hands are strong and forceful…\p"
 			"I bet you want your Pokémon to have strong and forceful hands, too.\p"
 			"Come back when you're stronger.\nOnce you get your first Token!"

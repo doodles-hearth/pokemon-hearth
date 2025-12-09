@@ -24,6 +24,8 @@ script YifuCity_EventScript_WhirlpoolTutor {
 			if (var(VAR_RESULT) == 0) {
 				call(YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool)
 			}
+		} else {
+			closemessage
 		}
 	} else {
 		setspeaker(SP_NAME_FISHERMAN)

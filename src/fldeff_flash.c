@@ -15,6 +15,7 @@
 #include "sprite.h"
 #include "task.h"
 #include "constants/songs.h"
+#include "field_specials.h"
 
 struct FlashStruct
 {
@@ -68,6 +69,8 @@ static const u16 sCaveTransitionPalette_Enter[] = INCBIN_U16("graphics/cave_tran
 
 static const u32 sCaveTransitionTilemap[] = INCBIN_U32("graphics/cave_transition/tilemap.bin.smolTM");
 static const u32 sCaveTransitionTiles[] = INCBIN_U32("graphics/cave_transition/tiles.4bpp.smol");
+
+EWRAM_DATA u8 currentCaveTint;
 
 bool32 SetUpFieldMove_Flash(void)
 {
@@ -362,4 +365,55 @@ static void Task_EnterCaveTransition4(u8 taskId)
         LoadPalette(sCaveTransitionPalette_Black, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
         SetMainCallback2(gMain.savedCallback);
     }
+}
+
+extern const struct BlendSettings gCustomDNSTintBlend[];
+
+void UpdateFlashTint(void)
+{
+    if (!gMapHeader.cave)
+		return;
+    
+    u16 flashTrackerPacked = VarGet(VAR_FLASH_TRACKER_PACKED);
+    u8 moveTint = GET_MOVE_TINT(flashTrackerPacked);
+
+	u8 followerIndex = GetFollowerMonIndex();
+    u8 followerFlashTint = gSpeciesInfo[GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES)].flashTint;
+    u8 followerFlashTintShiny = gSpeciesInfo[GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES)].flashTintShiny;
+    u8 currentFlashTint = 0;
+    u8 newFlashTint = 1;
+    
+
+    //Get Flash DNS Tint
+    if (GetMonData(&gPlayerParty[followerIndex], MON_DATA_IS_SHINY) && (IsFollowerSpawned()) && followerFlashTintShiny > 0)
+    {
+        newFlashTint = followerFlashTintShiny;
+        currentFlashTint = followerFlashTintShiny;
+    }
+    else if (followerFlashTint > 0)
+    {
+        newFlashTint = followerFlashTint;
+        currentFlashTint = followerFlashTint;
+    }
+    else if (moveTint > 0)
+    {
+        newFlashTint = moveTint;
+    }
+    else
+    {
+        newFlashTint = DNS_BLEND_CAVE_STANDARD;
+    }
+    
+    // Do Custom DNS Blend
+    if ((currentFlashTint != followerFlashTintShiny) || (currentFlashTint != followerFlashTint))
+    {
+        SET_FOLLOWER_TINT(flashTrackerPacked, currentFlashTint);
+        VarSet(VAR_FLASH_TRACKER_PACKED, flashTrackerPacked);
+    }
+
+    u32 palettes = FilterTimeBlendPalettes(PALETTES_ALL);
+    const struct BlendSettings *blend = &gCustomDNSTintBlend[newFlashTint];
+    TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
+    
+    currentCaveTint = newFlashTint;
 }

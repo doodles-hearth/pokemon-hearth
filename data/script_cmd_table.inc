@@ -257,6 +257,7 @@ gScriptCmdTable::
     script_cmd_table_entry SCR_OP_ISFIELDMOVEUNLOCKED           ScrCmd_isfieldmoveunlocked          requests_effects=1  @ 0xe8
     script_cmd_table_entry SCR_OP_ADDMONEY_VAR		            ScrCmd_addmoneyvar			        requests_effects=1  @ 0xe9
 	script_cmd_table_entry SCR_OP_HIDEFOLLOWER                  ScrCmd_hidefollower,                requests_effects=1  @ 0xea
+	script_cmd_table_entry SCR_OP_GETFLASHLEVEL                 ScrCmd_getflashlevel,               requests_effects=1  @ 0xeb
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::

@@ -1,0 +1,17 @@
+const FLAG_HIDE_SHADOW_CLAW = FLAG_TEMP_1
+
+mapscripts SabersideQuarry_SableyeSpot_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+		if (flag(FLAG_ITEM_QUARRY_SHADOW_CLAW) || !flag(FLAG_SPOOKED_SABLEYE)) {
+			setflag(FLAG_HIDE_SHADOW_CLAW)
+		}
+	}
+}
+
+script SabersideQuarry_SableyeSpot_EventScript_ShadowClaw {
+	lock
+	finditem(ITEM_TM_SHADOW_CLAW)
+    setflag(FLAG_ITEM_QUARRY_SHADOW_CLAW)
+    removeitem(VAR_LAST_TALKED)
+	release
+}

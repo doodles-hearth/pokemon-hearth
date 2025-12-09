@@ -8,7 +8,7 @@ script WindyCape_EventScript_WindThroughHoles {
 	lock
 	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY}When the wind blows through the holes in the rock, it makes strange noises.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY 0}When the wind blows through the holes in the rock, it makes strange noises.\p"
 		"It's like it's singing a song!"
 	))
 	closemessage
