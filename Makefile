@@ -445,7 +445,6 @@ clean-generated:
 	@echo "rm -f <AUTO_GEN_TARGETS>"
 	@rm -f $(ALL_LEARNABLES_JSON)
 	@echo "rm -f <ALL_LEARNABLES_JSON>"
-	@rm -r inc-to-scr
 
 $(C_BUILDDIR)/librfu_intr.o: CFLAGS := -mthumb-interwork -O2 -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -fno-toplevel-reorder -Wno-pointer-to-int-cast
 $(C_BUILDDIR)/berry_crush.o: override CFLAGS += -Wno-address-of-packed-member
@@ -516,6 +515,10 @@ ifneq ($(NODEP),1)
 -include $(addprefix $(OBJ_DIR)/,$(C_ASM_SRCS:.s=.d))
 endif
 
+# explicit rule as otherwise the file won't get updated when it needs to.
+$(DATA_ASM_BUILDDIR)/event_scripts.o: $(DATA_ASM_SUBDIR)/event_scripts.s
+	@$(SHELL) ./inc_to_scr.sh
+
 $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s
 	$(PREPROC) $< charmap.txt | $(CPP) $(CPPFLAGS) $(INCLUDE_SCANINC_ARGS) - | $(PREPROC) -ie $< charmap.txt | $(AS) $(ASFLAGS) -o $@
 
@@ -575,7 +578,6 @@ endif
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 	$(FIX) $@ -p --silent
-	@rm -r inc-to-scr
 
 emerald: all
 firered: all
