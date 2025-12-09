@@ -524,17 +524,13 @@ static void ShowTimeWindow(void)
 
     if (rtc->hour < 12)
     {
-        if (rtc->hour == 0)
-            convertedHours = 12;
-        else
-            convertedHours = rtc->hour;
+        convertedHours = rtc->hour;
         suffix = gText_AM;
     }
     else if (rtc->hour == 12)
     {
         convertedHours = 12;
-        if (suffix == gText_AM);
-            suffix = gText_PM;
+        suffix = gText_PM;
     }
     else
     {
