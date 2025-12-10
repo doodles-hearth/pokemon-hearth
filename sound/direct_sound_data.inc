@@ -6634,3 +6634,17 @@ DirectSoundWaveData_dp_whistle_c5_16::
 	.align 2
 DirectSoundWaveData_dp_woodblock_16::
 	.incbin "sound/direct_sound_samples/drums/dp_woodblock_16.bin"
+
+	.align 2
+DirectSoundWaveData_dp_flute_c4_16::
+	.incbin "sound/direct_sound_samples/dp_flute_c4_16.bin"
+
+	.align 2
+DirectSoundWaveData_dp_flute_c5_16::
+	.incbin "sound/direct_sound_samples/dp_flute_c5_16.bin"
+
+	.align 2
+DirectSoundWaveData_dp_flute_c6_16::
+	.incbin "sound/direct_sound_samples/dp_flute_c6_16.bin"
+
+	.align 2

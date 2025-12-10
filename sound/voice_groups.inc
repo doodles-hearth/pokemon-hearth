@@ -15,6 +15,7 @@
 .include "sound/voicegroups/unused.inc"
 .include "sound/voicegroups/keysplits/tuba.inc"
 .include "sound/voicegroups/keysplits/french_horn.inc"
+.include "sound/voicegroups/keysplits/flute.inc"
 
 .include "sound/voicegroups/route110.inc"
 .include "sound/voicegroups/route101.inc"
