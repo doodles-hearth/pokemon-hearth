@@ -1070,13 +1070,16 @@ void WriteFlashScanlineEffectBuffer(u8 flashRadius)
       DebugPrintf("FollowerSpriteId: %u", followSpriteId);
 
       u32 species;
+      u32 level;
 
-      if (FlagGet(FLAG_PLAYER_IS_POKEMON))
-        species = GetMonData(GetCurrentlyTransformedPokemon(), MON_DATA_SPECIES);
-      else
-        species = OW_SPECIES(GetFollowerObject());
-
-      u32 level = GetMonData(GetFirstLiveMon(), MON_DATA_LEVEL, NULL);
+      if (FlagGet(FLAG_PLAYER_IS_POKEMON)) {
+          species = GetMonData(GetCurrentlyTransformedPokemon(), MON_DATA_SPECIES);
+          level = GetMonData(GetCurrentlyTransformedPokemon(), MON_DATA_LEVEL, NULL);
+      }
+      else {
+          species = OW_SPECIES(GetFollowerObject());
+          level = GetMonData(GetFirstLiveMon(), MON_DATA_LEVEL, NULL);
+      }
 
       u32 followerFlashRadius = 0;
 
