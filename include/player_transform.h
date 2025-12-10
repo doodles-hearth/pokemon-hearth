@@ -13,7 +13,7 @@ struct PlayerAvatarBobState {
 struct Pokemon* GetCurrentlyTransformedPokemon();
 u16 PokemonToGraphicsId(struct Pokemon *pokemon);
 void TransformPlayerToPokemon();
-void TransformPlayerToHumasn();
+void TransformPlayerToHuman();
 void TransformPlayer(struct ScriptContext *ctx);
 void CB2_TransformPlayerToPokemonFromParty();
 void PlayerAvatarHandleBob();
