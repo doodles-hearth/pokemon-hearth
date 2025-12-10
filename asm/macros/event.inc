@@ -3109,7 +3109,10 @@
   @ Player Transform
   .set human, 6
   .set TRANSFORM_SENTINEL, 0xFF
-  .macro transformplayer partyIndex=TRANSFORM_SENTINEL
+  .set readfromvar, 1
+  .macro transformplayer partyIndex=TRANSFORM_SENTINEL, readvar=0, defer=0
   callnative TransformPlayer, requests_effects=1
-  .byte \partyIndex
+  .2byte \partyIndex
+  .byte \readvar
+  .byte \defer
   .endm

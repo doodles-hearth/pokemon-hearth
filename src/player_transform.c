@@ -27,6 +27,8 @@ EWRAM_DATA struct PlayerAvatarBobState gPlayerAvatarBobState = {0};
 static void UNUSED UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj);
 static void ResetPlayerAvatar();
 static void TransformPlayerToPokemonByIndex(u8 index);
+static void SetPlayerTransformFlags();
+static void ClearPlayerTransformFlags();
 
 struct Pokemon* GetCurrentlyTransformedPokemon()
 {
@@ -89,31 +91,57 @@ void ResetPlayerAvatar()
     InitPlayerAvatar(x, y, direction, gSaveBlock2Ptr->playerGender);
 }
 
-void TransformPlayerToPokemon()
+static void SetPlayerTransformFlags()
 {
     FlagSet(FLAG_PLAYER_IS_POKEMON);
     FlagSet(FLAG_DISABLE_FOLLOWERS);
+}
+
+static void ClearPlayerTransformFlags()
+{
+    FlagClear(FLAG_PLAYER_IS_POKEMON);
+    FlagClear(FLAG_DISABLE_FOLLOWERS);
+}
+
+void TransformPlayerToPokemon()
+{
+    SetPlayerTransformFlags();
     ResetPlayerAvatar();
 }
 
 void TransformPlayerToHuman()
 {
-    FlagClear(FLAG_PLAYER_IS_POKEMON);
-    FlagClear(FLAG_DISABLE_FOLLOWERS);
+    ClearPlayerTransformFlags();
     ResetPlayerAvatar();
     UpdateFollowingPokemon();
 }
 
 void TransformPlayer(struct ScriptContext* ctx)
 {
-    u8 index = ScriptReadByte(ctx);
+    u16 index = ScriptReadHalfword(ctx);
+    bool32 readvar = ScriptReadByte(ctx);
+    bool32 defer = ScriptReadByte(ctx);
 
-    if (index == 0xFF)
+    if (readvar)
+        index = VarGet(gSpecialVar_0x8004);
+
+    if (index == 0xFF) {
         ChooseMonForTransform();
+        return;
+    }
 
-    else if (index == PARTY_SIZE)
-        TransformPlayerToHuman();
+    if (index == PARTY_SIZE) {
+        if (defer)
+            ClearPlayerTransformFlags();
+        else
+            TransformPlayerToHuman();
+        return;
+    }
 
+    if (defer) {
+        gPlayerTransformPokemon = &gPlayerParty[index];
+        SetPlayerTransformFlags();
+    }
     else
         TransformPlayerToPokemonByIndex(index);
 }
