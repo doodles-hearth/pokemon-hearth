@@ -14,6 +14,7 @@
 #include "palette.h"
 #include "pokemon.h"
 #include "party_menu.h"
+#include "script.h"
 #include "sprite.h"
 #include "player_transform.h"
 #include "field_player_avatar.h"
@@ -25,6 +26,7 @@ EWRAM_DATA struct PlayerAvatarBobState gPlayerAvatarBobState = {0};
 
 static void UNUSED UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj);
 static void ResetPlayerAvatar();
+static void TransformPlayerToPokemonByIndex(u8 index);
 
 struct Pokemon* GetCurrentlyTransformedPokemon()
 {
@@ -102,9 +104,26 @@ void TransformPlayerToHuman()
     UpdateFollowingPokemon();
 }
 
-void TransformPlayerToPokemonFromParty()
+void TransformPlayer(struct ScriptContext* ctx)
 {
-    ChooseMonForTransform();
+    u8 index = ScriptReadByte(ctx);
+
+    if (index == 0xFF)
+        ChooseMonForTransform();
+
+    else if (index == PARTY_SIZE)
+        TransformPlayerToHuman();
+
+    else
+        TransformPlayerToPokemonByIndex(index);
+}
+
+static void TransformPlayerToPokemonByIndex(u8 index)
+{
+    gSaveBlock1Ptr->playerTransformPokemonIndex = index;
+    gPlayerTransformPokemon = &gPlayerParty[index];
+    TransformPlayerToPokemon();
+    UpdateFollowingPokemon();
 }
 
 void PlayerAvatarHandleBob()
@@ -128,3 +147,4 @@ void PlayerAvatarHandleBob()
         gPlayerAvatarBobState.frameCounter++;
     }
 }
+

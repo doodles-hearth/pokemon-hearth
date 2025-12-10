@@ -3105,3 +3105,11 @@
 	callnative ScrCmd_istmrelearneractive, requests_effects=1
 	.4byte \destination
 	.endm
+
+  @ Player Transform
+  .set human, 6
+  .set TRANSFORM_SENTINEL, 0xFF
+  .macro transformplayer partyIndex=TRANSFORM_SENTINEL
+  callnative TransformPlayer, requests_effects=1
+  .byte \partyIndex
+  .endm
