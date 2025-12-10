@@ -118,33 +118,47 @@ void TransformPlayerToHuman()
 
 void TransformPlayer(struct ScriptContext* ctx)
 {
-    u16 index = ScriptReadHalfword(ctx);
-    bool32 readvar = ScriptReadByte(ctx);
+    bool32 defer = ScriptReadByte(ctx);
+    u16 value = VarGet(gSpecialVar_0x8004);
+    if (value != PARTY_NOTHING_CHOSEN) {
+        if (defer) {
+            gPlayerTransformPokemon = &gPlayerParty[value];
+            SetPlayerTransformFlags();
+        }
+        else
+            TransformPlayerToPokemonByIndex(value);
+    }
+}
+
+void TransformPlayerFromScriptByIndex(struct ScriptContext* ctx)
+{
+    u8 slot = ScriptReadByte(ctx);
     bool32 defer = ScriptReadByte(ctx);
 
-    if (readvar)
-        index = VarGet(gSpecialVar_0x8004);
-
-    if (index == 0xFF) {
-        ChooseMonForTransform();
-        return;
-    }
-
-    if (index == PARTY_SIZE) {
-        if (defer)
-            ClearPlayerTransformFlags();
-        else
-            TransformPlayerToHuman();
-        return;
-    }
+    slot--;
 
     if (defer) {
-        gPlayerTransformPokemon = &gPlayerParty[index];
+        gPlayerTransformPokemon = &gPlayerParty[slot];
         SetPlayerTransformFlags();
     }
     else
-        TransformPlayerToPokemonByIndex(index);
+        TransformPlayerToPokemonByIndex(slot);
 }
+
+void DetransformPlayer(struct ScriptContext *ctx)
+{
+    bool32 defer = ScriptReadByte(ctx);
+    if(defer)
+        ClearPlayerTransformFlags();
+    else
+        TransformPlayerToHuman();
+}
+
+void TransformPlayerFromParty()
+{
+    ChooseMonForTransform();
+}
+
 
 static void TransformPlayerToPokemonByIndex(u8 index)
 {

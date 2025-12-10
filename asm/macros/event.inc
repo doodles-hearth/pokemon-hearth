@@ -3106,13 +3106,23 @@
 	.4byte \destination
 	.endm
 
-  @ Player Transform
-  .set human, 6
-  .set TRANSFORM_SENTINEL, 0xFF
-  .set readfromvar, 1
-  .macro transformplayer partyIndex=TRANSFORM_SENTINEL, readvar=0, defer=0
+@ Player Transform
+  .macro transformplayer defer=0
   callnative TransformPlayer, requests_effects=1
-  .2byte \partyIndex
-  .byte \readvar
+  .byte \defer
+  .endm
+
+  .macro autotransformplayer
+  callnative TransformPlayerFromParty, requests_effects=1
+  .endm
+
+  .macro transformplayerto slot:req defer=0
+  callnative TransformPlayerFromScriptByIndex requests_effects=1
+  .byte \slot
+  .byte \defer
+  .endm
+
+  .macro detransformplayer defer=0
+  callnative DetransformPlayer, requests_effects=1
   .byte \defer
   .endm
