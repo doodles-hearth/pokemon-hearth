@@ -132,10 +132,15 @@ EventScript_PickUpItem::
 	showitemdescription
 	waitfanfare
 	waitmessage
+	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_FinishPickupItemAsTransformMon
 	bufferitemnameplural STR_VAR_2, VAR_0x8004, VAR_0x8005
 	pyramid_getlocation
 	goto_if_eq VAR_RESULT, PYRAMID_LOCATION_FLOOR, EventScript_PutBattlePyramidItemInBag
 	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	hideitemdescription
+	return
+
+EventScript_FinishPickupItemAsTransformMon::
 	hideitemdescription
 	return
 
@@ -160,10 +165,22 @@ EventScript_FoundItem::
 	compare VAR_0x8001, TRUE
 	goto_if_eq EventScript_FoundItemMessage
 	buffernumberstring 0, VAR_0x8001
+	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_FoundItemPokemonMessagePlural
 	message gText_PlayerFoundItems
 	return
 EventScript_FoundItemMessage::
+	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_FoundItemPokemonMessage
 	message gText_PlayerFoundOneItem
+	return
+
+EventScript_FoundItemPokemonMessagePlural::
+	buffertransformmonnick STR_VAR_3
+	message gText_TransformMonFoundItems
+	return
+	
+EventScript_FoundItemPokemonMessage::
+	buffertransformmonnick STR_VAR_1
+	message gText_TransformMonFoundOneItem
 	return
 
 EventScript_NoRoomToPickUpItem::

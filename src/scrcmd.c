@@ -64,6 +64,7 @@
 #include "new_shop.h"
 #include "constants/event_objects.h"
 #include "constants/map_types.h"
+#include "player_transform.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *);
@@ -2217,6 +2218,16 @@ bool8 ScrCmd_bufferspeciesdexdesc(struct ScriptContext *ctx)
 
 // TODO EVA doesn't work pointer bullshit
     StringCopy(sScriptStringVars[stringVarIndex], GetSpeciesPokedexDescription(species, SKIP_NAME_CHECK));
+    return FALSE;
+}
+
+bool32 ScrCmd_BufferTransformMonNick(struct ScriptContext *ctx)
+{
+    u32 stringVarIndex = ScriptReadByte(ctx);
+    
+    Script_RequestEffects(SCREFF_V1);
+
+    GetMonData(gPlayerTransformPokemon, MON_DATA_NICKNAME, sScriptStringVars[stringVarIndex]);
     return FALSE;
 }
 
