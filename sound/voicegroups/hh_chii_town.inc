@@ -7,4 +7,3 @@ voice_group hh_chii_town
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_nylon_str_guitar, 255, 249, 25, 76
 	voice_directsound 60, 0, DirectSoundWaveData_dp_whistle_c5_16, 255, 247, 160, 200
 	voice_programmable_wave_alt 64, 0, ProgrammableWaveData_3, 0, 7, 15, 1
-	voice_noise 60, 0, 0, 250, 150, 1, 1

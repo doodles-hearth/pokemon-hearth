@@ -67,7 +67,7 @@ voice_directsound_no_resample 60, 20, DirectSoundWaveData_dp_mute_conga_16, 255,
 	voice_directsound_no_resample 57, 26, DirectSoundWaveData_dp_060conga, 255, 0, 255, 176
 	voice_directsound_no_resample 60, 26, DirectSoundWaveData_dp_africa_dr_16, 255, 0, 255, 176
 	voice_directsound_no_resample 60, 101, DirectSoundWaveData_dp_africa_dr_16, 255, 0, 255, 176
-	voice_directsound_no_resample 60, 26, DirectSoundWaveData_dp_cabassa_16, 255, 243, 127, 176
+	voice_directsound 60, 46, DirectSoundWaveData_dp_cabassa_16, 255, 243, 0, 140
 	voice_directsound_no_resample 60, 100, DirectSoundWaveData_dp_mute_conga_16, 255, 0, 255, 176
 	voice_directsound_no_resample 60, 98, DirectSoundWaveData_dp_060conga, 255, 0, 255, 176
 	voice_directsound_no_resample 63, 102, DirectSoundWaveData_dp_060conga, 255, 0, 255, 176
@@ -82,7 +82,7 @@ voice_directsound_no_resample 60, 20, DirectSoundWaveData_dp_mute_conga_16, 255,
 	voice_directsound_no_resample 60, 107, DirectSoundWaveData_dp_woodblock_16, 255, 0, 255, 0
 	voice_directsound 64, 44, DirectSoundWaveData_sd90_open_triangle, 255, 130, 150, 50
 	voice_directsound 61, 44, DirectSoundWaveData_dp_triangle_16, 255, 200, 130, 0
-	voice_directsound_no_resample 60, 90, DirectSoundWaveData_dp_sheiker, 255, 243, 111, 64
+	voice_directsound 60, 46, DirectSoundWaveData_dp_sheiker, 255, 243, 111, 64
 	voice_directsound_no_resample 60, 94, DirectSoundWaveData_dp_062sleigh, 255, 0, 255, 226
 	voice_directsound_no_resample 70, 26, DirectSoundWaveData_dp_africa_dr_16, 255, 0, 255, 176
 	voice_directsound_no_resample 54, 101, DirectSoundWaveData_dp_africa_dr_16, 255, 0, 255, 176
