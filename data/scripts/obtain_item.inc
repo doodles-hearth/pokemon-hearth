@@ -158,7 +158,13 @@ EventScript_FoundTMHM::
 	goto EventScript_BufferTMHMsPocket
 	return
 EventScript_FoundTMHMMessage::
+	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_TransformMonFoundOneTMHM
 	message gText_PlayerFoundOneTMHM
+	return
+
+EventScript_TransformMonFoundOneTMHM::
+	buffertransformmonnick STR_VAR_3
+	message gText_TransformMonFoundOneTMHM
 	return
 
 EventScript_FoundItem::
