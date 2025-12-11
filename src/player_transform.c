@@ -95,12 +95,14 @@ static void SetPlayerTransformFlags()
 {
     FlagSet(FLAG_PLAYER_IS_POKEMON);
     FlagSet(FLAG_DISABLE_FOLLOWERS);
+    FlagSet(FLAG_DEFER_TRANSFORM);
 }
 
 static void ClearPlayerTransformFlags()
 {
     FlagClear(FLAG_PLAYER_IS_POKEMON);
     FlagClear(FLAG_DISABLE_FOLLOWERS);
+    FlagClear(FLAG_DEFER_TRANSFORM);
 }
 
 void TransformPlayerToPokemon()
@@ -170,7 +172,7 @@ static void TransformPlayerToPokemonByIndex(u8 index)
 
 void PlayerAvatarHandleBob()
 {
-    if (FlagGet(FLAG_PLAYER_IS_POKEMON)) {
+    if (FlagGet(FLAG_PLAYER_IS_POKEMON) && !FlagGet(FLAG_DEFER_TRANSFORM)) {
         struct Sprite* playerSprite = &gSprites[gPlayerAvatar.spriteId];
 
         if (gPlayerAvatarBobState.frameCounter == 0)
