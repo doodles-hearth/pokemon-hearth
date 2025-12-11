@@ -161,7 +161,6 @@ void TransformPlayerFromParty()
     ChooseMonForTransform();
 }
 
-
 static void TransformPlayerToPokemonByIndex(u8 index)
 {
     gSaveBlock1Ptr->playerTransformPokemonIndex = index;

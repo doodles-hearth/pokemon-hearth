@@ -3137,3 +3137,8 @@
 	callnative ScrCmd_BufferTransformMonNick, requests_effects=1
 	stringvar \stringVarId
 	.endm
+
+	@ Sets VAR_RESULT to the currently transformed Pokémon's species ID
+	.macro gettransformmonspecies
+	callnative ScrCmd_GetTransformMonSpecies, requests_effects=1
+	.endm

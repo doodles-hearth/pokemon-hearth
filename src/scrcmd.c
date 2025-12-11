@@ -2231,6 +2231,14 @@ bool32 ScrCmd_BufferTransformMonNick(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool32 ScrCmd_GetTransformMonSpecies(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1);
+
+    gSpecialVar_Result = GetMonData(gPlayerTransformPokemon, MON_DATA_SPECIES);
+    return FALSE;
+}
+
 bool8 ScrCmd_bufferleadmonspeciesname(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);

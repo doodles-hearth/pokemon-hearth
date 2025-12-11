@@ -4,6 +4,7 @@ EventScript_CutTree::
 	goto_if_unset FLAG_BADGE01_GET, EventScript_CheckTreeCantCut
 	checkfieldmove FIELD_MOVE_CUT, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckTreeCantCut
+	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_TransformMonCutTree
 	setfieldeffectargument 0, VAR_RESULT
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	buffermovename STR_VAR_2, VAR_0x8005
@@ -19,6 +20,19 @@ EventScript_CutTreeCommon:
 EventScript_CutTreeDown:: @ fallthrough
 	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	call_if_eq VAR_0x8004, TRUE, EventScript_FollowerFieldMove
+	applymovement VAR_LAST_TALKED, Movement_CutTreeDown
+	waitmovement 0
+	removeobject VAR_LAST_TALKED
+	releaseall
+	end
+
+EventScript_TransformMonCutTree::
+	waitse
+	gettransformmonspecies
+	playmoncry VAR_RESULT, CRY_MODE_NORMAL
+	call EventScript_TransformMonFieldMove
+	waitmoncry
+	playse SE_M_CUT
 	applymovement VAR_LAST_TALKED, Movement_CutTreeDown
 	waitmovement 0
 	removeobject VAR_LAST_TALKED
@@ -109,6 +123,15 @@ EventScript_FollowerFieldMove:
 EventScript_FollowerFieldMoveEnd:
 	return
 
+EventScript_TransformMonFieldMove:
+	specialvar VAR_0x8006, GetPlayerFacingDirection
+	switch VAR_0x8006
+	case DIR_NORTH, EventScript_TransformMonJumpNorth
+	case DIR_EAST, EventScript_TransformMonJumpEast
+	case DIR_SOUTH, EventScript_TransformMonJumpSouth
+	case DIR_WEST, EventScript_TransformMonJumpWest
+	return
+
 EventScript_FollowerSwap:
 	switch VAR_0x8005
 	case DIR_NORTH, EventScript_FollowerMoveNorth
@@ -164,6 +187,33 @@ EventScript_FollowerJumpWest:
 	applymovement OBJ_EVENT_ID_FOLLOWER, Movement_JumpLeft
 	waitmovement 0
 	return
+
+EventScript_TransformMonJumpNorth:
+	applymovement LOCALID_PLAYER, Movement_JumpUp
+	waitmovement 0
+	return
+
+EventScript_TransformMonJumpEast:
+	applymovement LOCALID_PLAYER, Movement_JumpRight
+	waitmovement 0
+	return
+
+EventScript_TransformMonJumpSouth:
+	applymovement LOCALID_PLAYER, Movement_JumpDown
+	waitmovement 0
+	return
+
+EventScript_TransformMonJumpWest:
+	applymovement LOCALID_PLAYER, Movement_JumpForwardLeft
+	waitmovement 0
+	return
+
+Movement_JumpForwardLeft:
+	jump_left
+	lock_facing_direction
+	walk_right
+	unlock_facing_direction
+	step_end
 
 EventScript_EndSmash::
 	releaseall
