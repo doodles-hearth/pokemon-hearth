@@ -434,6 +434,9 @@ $(OBJEVENTGFXDIR)/people/woody/traveler.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/woody/valet.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(OBJEVENTGFXDIR)/people/woody/burglar.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(OBJEVENTGFXDIR)/people/sunrise/boy_1.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 

@@ -134,7 +134,8 @@
 #define TRAINER_PIC_OLD_MAN               116
 #define TRAINER_PIC_SAMURAI               117
 #define TRAINER_PIC_BATTLE_GUY            118
-#define TRAINER_PIC_COUNT                 119
+#define TRAINER_PIC_BURGLAR               119
+#define TRAINER_PIC_COUNT                 120
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -400,6 +401,7 @@ enum TrainerClassID
     TRAINER_CLASS_FIREBRINGER,
     TRAINER_CLASS_SAMURAI,
     TRAINER_CLASS_FARMER,
+    TRAINER_CLASS_BURGLAR,
     TRAINER_CLASS_COUNT
 };
 
