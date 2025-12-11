@@ -107,7 +107,7 @@ script SabersideQuarry_EventScript_SpookSableye {
 	releaseall
 }
 
-script SabersideTown_EventScript_LookingForSableye {
+script SabersideQuarry_EventScript_LookingForSableye {
 	lock
 	faceplayer
 	if (getflashlevel < 50) {
@@ -128,7 +128,7 @@ script SabersideTown_EventScript_LookingForSableye {
 	release
 }
 
-script SabersideTown_EventScript_Hagane {
+script SabersideQuarry_EventScript_Hagane {
 	trainerbattle_single(
 		TRAINER_HAGANE,
 		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Uh, go away!\nNothing precious to be found here!"),
@@ -140,7 +140,7 @@ script SabersideTown_EventScript_Hagane {
 	end
 }
 
-script SabersideTown_EventScript_Haruki {
+script SabersideQuarry_EventScript_Haruki {
 	trainerbattle_single(
 		TRAINER_HARUKI,
 		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}My Sandy could tear right through you!"),
@@ -150,36 +150,4 @@ script SabersideTown_EventScript_Haruki {
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Sandy is used to digging through softer minerals.\lHer poor claws are all tender!"))
 	release
 	end
-}
-
-script SabersideTown_EventScript_Ryoui {
-	trainerbattle_single(
-		TRAINER_RYOUI,
-		format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}I collect stupendously-colored Carbink!"),
-		format("I take it you're not impressed by my collection?"),
-		SabersideTown_EventScript_HarukiPostBattle
-	)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}{SPEAKER NAME_GEM_MANIAC}I'm almost done with my Carbink collection.\lI'll start a Sableye collection next!"))
-	release
-	end
-}
-
-script SabersideTown_EventScript_HarukiPostBattle {
-	setnamedmon(SPECIES_CARBINK)
-}
-
-script SabersideTown_EventScript_Haruto {
-	trainerbattle_single(
-		TRAINER_HARUTO,
-		("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}I can smell rare gems in the next room,\nbut it's teeming with Sableye!"),
-		format("So close, yet so far!"),
-		SabersideTown_EventScript_HarutoPostBattle
-	)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}{SPEAKER NAME_GEM_MANIAC}The Sableye ganged up on me and chased me from their lair…"))
-	release
-	end
-}
-
-script SabersideTown_EventScript_HarutoPostBattle {
-	setnamedmon(SPECIES_SABLEYE)
 }

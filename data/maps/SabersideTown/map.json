@@ -216,6 +216,46 @@
       "lunchtime": true,
       "morning": true,
       "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SEASIDE_LITTLE_GIRL",
+      "x": 46,
+      "y": 39,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
+      "movement_range_x": 4,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SabersideTown_EventScript_LostGirl",
+      "flag": "FLAG_TEMP_2",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CARBINK)",
+      "x": 47,
+      "y": 39,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
+      "movement_range_x": 4,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SabersideTown_EventScript_Carbink",
+      "flag": "FLAG_TEMP_2",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     }
   ],
   "warp_events": [
@@ -256,7 +296,7 @@
       "x": 45,
       "y": 37,
       "elevation": 0,
-      "dest_map": "MAP_SABERSIDE_TOWN_HOUSE3",
+      "dest_map": "MAP_SABERSIDE_TOWN_HOUSE6",
       "dest_warp_id": "WARP_ID_SABERSIDE_HOUSE_QUARRY_TOP_RIGHT_EXIT"
     },
     {
@@ -280,7 +320,7 @@
       "x": 34,
       "y": 8,
       "elevation": 0,
-      "dest_map": "MAP_SABERSIDE_TOWN_HOUSE6",
+      "dest_map": "MAP_SABERSIDE_TOWN_HOUSE3",
       "dest_warp_id": "WARP_ID_SABERSIDE_HOUSE_PLATFORM_EXIT"
     },
     {

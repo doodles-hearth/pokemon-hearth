@@ -1,3 +1,5 @@
+const FLAG_HIDE_LOST_GIRL = FLAG_TEMP_1
+
 mapscripts SabersideQuarry_B1F_Part2_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		if (!flag(FLAG_SPOOKED_SABLEYE)) {
@@ -11,4 +13,179 @@ mapscripts SabersideQuarry_B1F_Part2_MapScripts {
 			setmetatile(18, 28, METATILE_Quarry_SandLeftEdge, FALSE)
 		}
 	}
+	MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE) != 1) {
+			setflag(FLAG_HIDE_LOST_GIRL)
+		}
+	}
+}
+
+script SabersideQuarry_EventScript_Haruto {
+	trainerbattle_single(
+		TRAINER_HARUTO,
+		("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}I can smell rare gems in the next room,\nbut it's teeming with Sableye!"),
+		format("So close, yet so far!"),
+		SabersideQuarry_EventScript_HarutoPostBattle
+	)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}{SPEAKER NAME_GEM_MANIAC}The Sableye ganged up on me and chased me from their lair…"))
+	release
+	end
+}
+
+script SabersideQuarry_EventScript_HarutoPostBattle {
+	setnamedmon(SPECIES_SABLEYE)
+}
+
+script SabersideQuarry_EventScript_TriggerLostGirl {
+	lockall
+
+	setseenmon(SPECIES_CARBINK)
+	setnamedmon(SPECIES_CARBINK)
+
+	waitse
+	playse(SE_PIN)
+	applymovement(LOCALID_QUARRY_CARBINK_RIGHT, moves(face_right, emote_exclamation_mark, delay_16 * 6, walk_fast_up, walk_fast_left, face_right))
+	applymovement(LOCALID_QUARRY_CARBINK_BOTTOM, moves(delay_8 * 2, face_right, emote_exclamation_mark, delay_16 * 6, walk_fast_left * 2, face_right))
+	delay(16)
+	waitse
+	playse(SE_PIN)
+	applymovement(LOCALID_QUARRY_LOST_GIRL, moves(face_right))
+	waitmovement(LOCALID_QUARRY_CARBINK_RIGHT)
+	waitmovement(LOCALID_QUARRY_CARBINK_BOTTOM)
+	waitmovement(LOCALID_QUARRY_LOST_GIRL)
+	
+	delay(48)
+
+	applymovement(LOCALID_PLAYER, moves(walk_left * 2))
+	waitmovement(LOCALID_PLAYER)
+
+	special(GetPlayerMrMrsString)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Hi, {STR_VAR_1}I made some friends!\nLook how glittery they are!"
+	))
+	closemessage
+
+	playse(SE_LEDGE)
+	applymovement(LOCALID_QUARRY_CARBINK_RIGHT, moves(jump_in_place_right))
+	waitse
+	playmoncry(SPECIES_CARBINK, CRY_MODE_NORMAL)
+
+	waitse
+	waitmoncry
+
+	playse(SE_LEDGE)
+	applymovement(LOCALID_QUARRY_CARBINK_LEFT, moves(jump_in_place_right))
+	waitse
+	playmoncry(SPECIES_CARBINK, CRY_MODE_NORMAL)
+
+	delay(24)
+
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Huh? No, I'm not lost.\nI'm just playing with the Carbink!"
+	))
+	closemessage
+
+	playse(SE_PIN)
+	applymovement(LOCALID_QUARRY_LOST_GIRL, moves(emote_pensive, delay_16 * 6))
+	waitmovement(LOCALID_QUARRY_LOST_GIRL)
+
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}… … …Mom's looking for me? I see…\nAlright, I'll come back home, then…\p"
+		"But only if you catch a Carbink for me to bring back home!"
+	))
+	closemessage
+
+	setnamedmon(SPECIES_CARBINK)
+	setvar(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE, 2)
+
+	releaseall
+}
+
+script SabersideQuarry_EventScript_LostGirl {
+	lock
+	faceplayer
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Have you caught a Carbink for me?"
+	))
+	closemessage
+
+	special(ChoosePartyMon)
+	waitstate
+
+	if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}I won't go back without a friend to accompany me."
+		))
+		closemessage
+	} else {
+		specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+		if (var(VAR_RESULT) == SPECIES_CARBINK) {
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}I recognize one of my friends!\nOkay, I'll come back home with you…"
+			))
+			closemessage
+
+			special(DestroySelectedPartyMon)
+
+			msgbox(format(
+				"{PLAYER} helps the little girl out of the cave."
+			))
+			closemessage
+
+			setvar(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE, 3)
+			warp(MAP_SABERSIDE_TOWN_HOUSE3, WARP_ID_SABERSIDE_HOUSE_QUARRY_TOP_RIGHT_EXIT)
+
+		} else {
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}No, I want one of these Carbink!"
+			))
+			closemessage
+		}
+	}
+
+	closemessage
+	setnamedmon(SPECIES_CARBINK)
+	release
+}
+
+script SabersideQuarry_EventScript_Carbink {
+	lock
+    faceplayer
+	setseenmon(SPECIES_CARBINK)
+	setspeakertomonname(SPECIES_CARBINK)
+	playmoncry(SPECIES_CARBINK, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Clink!"
+    ))
+    waitmoncry
+	closemessage
+    release
+}
+
+script SabersideQuarry_EventScript_Carbink2 {
+	lock
+    faceplayer
+	setseenmon(SPECIES_CARBINK)
+	setspeakertomonname(SPECIES_CARBINK)
+	playmoncry(SPECIES_CARBINK, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Chink…"
+    ))
+    waitmoncry
+	closemessage
+    release
+}
+
+script SabersideQuarry_EventScript_Carbink3 {
+	lock
+    faceplayer
+	setseenmon(SPECIES_CARBINK)
+	setspeakertomonname(SPECIES_CARBINK)
+	playmoncry(SPECIES_CARBINK, CRY_MODE_WEAK)
+    msgbox(format(
+        "Tink…"
+    ))
+    waitmoncry
+	closemessage
+    release
 }

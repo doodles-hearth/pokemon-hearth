@@ -738,18 +738,20 @@ Level: 25
 - Metronome
 - Encore
 
-=== TRAINER_GRUNT_SPACE_CENTER_1 ===
-Name: GRUNT
-Class: Team Magma
-Pic: Magma Grunt M
+=== TRAINER_KOTARO ===
+Name: Kotaro
+Class: Burglar
+Pic: Burglar
 Gender: Male
-Music: Magma
+Music: Suspicious
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Numel
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Thievul
+Level: 25
+- Sucker Punch
+- Assurance
+- Tail Whip
 
 === TRAINER_GRUNT_MT_PYRE_1 ===
 Name: GRUNT
