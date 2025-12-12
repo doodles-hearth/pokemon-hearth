@@ -248,6 +248,7 @@ const u32 gObjectEventPic_OldWoman[] = INCBIN_U32("graphics/object_events/pics/p
 const u32 gObjectEventPic_SwimmerF[] = INCBIN_U32("graphics/object_events/pics/people/woody/swimmer_swimming_f.4bpp");
 const u32 gObjectEventPic_Traveler[] = INCBIN_U32("graphics/object_events/pics/people/woody/traveler.4bpp");
 const u32 gObjectEventPic_Valet[] = INCBIN_U32("graphics/object_events/pics/people/woody/valet.4bpp");
+const u32 gObjectEventPic_Burglar[] = INCBIN_U32("graphics/object_events/pics/people/woody/burglar.4bpp");
 
 const u32 gObjectEventPic_RichBoy[] = INCBIN_U32("graphics/object_events/pics/people/rich_boy.4bpp");
 const u32 gObjectEventPic_FatMan[] = INCBIN_U32("graphics/object_events/pics/people/fat_man.4bpp");

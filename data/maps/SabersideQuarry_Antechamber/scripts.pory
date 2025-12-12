@@ -40,3 +40,17 @@ script SabersideTown_EventScript_GlowingMon2 {
 
     release
 }
+
+script SabersideTown_EventScript_Litwick {
+    lock
+    faceplayer
+	setseenmon(SPECIES_LITWICK)
+	setspeakertomonname(SPECIES_LITWICK)
+	playmoncry(SPECIES_LITWICK, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Whoosh!"
+    ))
+    waitmoncry
+    release
+    end
+}

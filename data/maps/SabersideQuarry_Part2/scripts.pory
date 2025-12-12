@@ -14,3 +14,30 @@ mapscripts SabersideQuarry_Part2_MapScripts {
 		}
 	}
 }
+
+script SabersideQuarry_EventScript_Kotaro {
+	trainerbattle_single(
+		TRAINER_KOTARO,
+		format("{CREATE_MUGSHOT MUGSHOT_BURGLAR 0}Hahahaha! Your gems are mine!"),
+		format("Oh…\nYou're not a Gem Maniac, are you?")
+	)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_BURGLAR 0}{SPEAKER NAME_BURGLAR}I wait for Gem Maniacs to come by with\narmfuls of gems, then I use Thief on\ntheir Pokémon and steal them all!"))
+	release
+	end
+}
+
+script SabersideQuarry_EventScript_Ryoui {
+	trainerbattle_single(
+		TRAINER_RYOUI,
+		format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}I collect stupendously-colored Carbink!"),
+		format("I take it you're not impressed by my collection?"),
+		SabersideQuarry_EventScript_RyouiPostBattle
+	)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}{SPEAKER NAME_GEM_MANIAC}I'm almost done with my Carbink collection.\lI'll start a Sableye collection next!"))
+	release
+	end
+}
+
+script SabersideQuarry_EventScript_RyouiPostBattle {
+	setnamedmon(SPECIES_CARBINK)
+}

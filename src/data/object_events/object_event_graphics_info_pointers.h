@@ -175,6 +175,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_IncenseSell
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedSquirtleDoll;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CuttableTreeKuraDojo;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Traveler;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Burglar;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedPorygon2Doll;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CuttableTree;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MartEmployee;
@@ -546,6 +547,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_ONSEN_M_SWIMMING] =         &gObjectEventGraphicsInfo_OnsenMSwimming,
     [OBJ_EVENT_GFX_CUTTABLE_TREE_KURA_DOJO] =  &gObjectEventGraphicsInfo_CuttableTreeKuraDojo,
     [OBJ_EVENT_GFX_TRAVELER] =                 &gObjectEventGraphicsInfo_Traveler,
+    [OBJ_EVENT_GFX_BURGLAR] =                  &gObjectEventGraphicsInfo_Burglar,
     [OBJ_EVENT_GFX_UNUSED_PORYGON2_DOLL] =     &gObjectEventGraphicsInfo_UnusedPorygon2Doll,
     [OBJ_EVENT_GFX_CUTTABLE_TREE] =            &gObjectEventGraphicsInfo_CuttableTree,
     [OBJ_EVENT_GFX_MART_EMPLOYEE] =            &gObjectEventGraphicsInfo_MartEmployee,

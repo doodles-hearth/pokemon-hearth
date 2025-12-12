@@ -87,6 +87,7 @@ enum SpeakerNames {
     SP_NAME_SCHOOL_KID,
     SP_NAME_ASSISTANT,
     SP_NAME_MEDIUM,
+    SP_NAME_BURGLAR,
     SP_NAME_COUNT,
 };
 
