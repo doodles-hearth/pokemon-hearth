@@ -126,10 +126,10 @@ EventScript_FollowerFieldMoveEnd:
 EventScript_TransformMonFieldMove:
 	specialvar VAR_0x8006, GetPlayerFacingDirection
 	switch VAR_0x8006
-	case DIR_NORTH, EventScript_TransformMonJumpNorth
-	case DIR_EAST, EventScript_TransformMonJumpEast
-	case DIR_SOUTH, EventScript_TransformMonJumpSouth
-	case DIR_WEST, EventScript_TransformMonJumpWest
+	case DIR_NORTH, EventScript_TransformMonJumpForwardNorth
+	case DIR_EAST, EventScript_TransformMonJumpForwardEast
+	case DIR_SOUTH, EventScript_TransformMonJumpForwardSouth
+	case DIR_WEST, EventScript_TransformMonJumpForwardWest
 	return
 
 EventScript_FollowerSwap:
@@ -188,25 +188,46 @@ EventScript_FollowerJumpWest:
 	waitmovement 0
 	return
 
-EventScript_TransformMonJumpNorth:
-	applymovement LOCALID_PLAYER, Movement_JumpUp
+EventScript_TransformMonJumpForwardNorth:
+	applymovement LOCALID_PLAYER, Movement_JumpForwardUp
 	waitmovement 0
 	return
 
-EventScript_TransformMonJumpEast:
-	applymovement LOCALID_PLAYER, Movement_JumpRight
+EventScript_TransformMonJumpForwardEast:
+	applymovement LOCALID_PLAYER, Movement_JumpForwardRight
 	waitmovement 0
 	return
 
-EventScript_TransformMonJumpSouth:
-	applymovement LOCALID_PLAYER, Movement_JumpDown
+EventScript_TransformMonJumpForwardSouth:
+	applymovement LOCALID_PLAYER, Movement_JumpForwardDown
 	waitmovement 0
 	return
 
-EventScript_TransformMonJumpWest:
+EventScript_TransformMonJumpForwardWest:
 	applymovement LOCALID_PLAYER, Movement_JumpForwardLeft
 	waitmovement 0
 	return
+
+Movement_JumpForwardUp:
+	jump_up
+	lock_facing_direction
+	walk_down
+	unlock_facing_direction
+	step_end
+
+Movement_JumpForwardRight:
+	jump_right
+	lock_facing_direction
+	walk_left
+	unlock_facing_direction
+	step_end
+
+Movement_JumpForwardDown:
+	jump_down
+	lock_facing_direction
+	walk_up
+	unlock_facing_direction
+	step_end
 
 Movement_JumpForwardLeft:
 	jump_left
