@@ -655,7 +655,7 @@ static u8 CheckMovementInputNotOnBike(u8 direction)
 static void PlayerNotOnBikeNotMoving(u8 direction, u16 heldKeys)
 {
     if (FlagGet(FLAG_PLAYER_IS_POKEMON) && !FlagGet(FLAG_DEFER_TRANSFORM))
-        PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(GetPlayerFacingDirection()), COPY_MOVE_FACE);
+        PlayerSetAnimId(GetIdleMovementAction(GetPlayerFacingDirection()), COPY_MOVE_FACE);
     else
         PlayerFaceDirection(GetPlayerFacingDirection());
 }
@@ -1154,7 +1154,8 @@ static bool8 PlayerAnimIsMultiFrameStationary(void)
      || (movementActionId >= MOVEMENT_ACTION_DELAY_1 && movementActionId <= MOVEMENT_ACTION_DELAY_16)
      || (movementActionId >= MOVEMENT_ACTION_WALK_IN_PLACE_SLOW_DOWN && movementActionId <= MOVEMENT_ACTION_WALK_IN_PLACE_FASTER_RIGHT)
      || (movementActionId >= MOVEMENT_ACTION_ACRO_WHEELIE_FACE_DOWN && movementActionId <= MOVEMENT_ACTION_ACRO_END_WHEELIE_FACE_RIGHT)
-     || (movementActionId >= MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_DOWN && movementActionId <= MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_RIGHT))
+     || (movementActionId >= MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_DOWN && movementActionId <= MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_RIGHT)
+     || (movementActionId >= MOVEMENT_ACTION_IDLE_LEFT && movementActionId <= MOVEMENT_ACTION_IDLE_DOWN ))
         return TRUE;
     else
         return FALSE;

@@ -296,6 +296,12 @@
 #define MOVEMENT_ACTION_QUARTER_STEP_UP                 0xC7
 #define MOVEMENT_ACTION_QUARTER_STEP_DOWN               0xC8
 
+//Idling movement action for transform
+#define MOVEMENT_ACTION_IDLE_LEFT                       0xC9
+#define MOVEMENT_ACTION_IDLE_RIGHT                      0xCA
+#define MOVEMENT_ACTION_IDLE_UP                         0xCB
+#define MOVEMENT_ACTION_IDLE_DOWN                       0xCC
+
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF
 
