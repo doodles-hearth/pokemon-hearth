@@ -2465,11 +2465,11 @@ bool32 CheckMsgCondition(const struct MsgCondition *cond, struct Pokemon *mon, u
         return (cond->data.raw == GetCurrentMapMusic());
     case MSG_COND_TIME_OF_DAY:
     {
-        // Must match time of day, have natural light on the map,
+        // Must match time of day, have outdoor natural light on the map,
         // and not have weather that obscures the sky
         u32 weather = GetCurrentWeather();
         return (cond->data.raw == gTimeOfDay
-            && MapHasNaturalLight(gMapHeader.mapType)
+            && MapHasOutdoorNaturalLight(gMapHeader.mapType)
             && (weather == WEATHER_NONE || weather == WEATHER_SUNNY_CLOUDS || weather == WEATHER_SUNNY));
     }
     case MSG_COND_NEAR_MB:

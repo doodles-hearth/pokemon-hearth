@@ -150,6 +150,7 @@ void CB1_Overworld(void);
 void CB2_OverworldBasic(void);
 void UpdateTimeOfDay(void);
 bool32 MapHasNaturalLight(enum MapType mapType);
+bool32 MapHasOutdoorNaturalLight(enum MapType mapType);
 bool32 CurrentMapHasShadows(void);
 void UpdateAltBgPalettes(u16 palettes);
 u32 FilterTimeBlendPalettes(u32 palettes);
