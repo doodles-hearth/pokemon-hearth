@@ -554,9 +554,38 @@
       "lunchtime": false,
       "morning": false,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "x": 31,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "WhiteslateRoute_EventScript_TinyPassage",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     }
   ],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_WHITESLATE_SECRET_CAVE",
+      "x": 31,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_WHITESLATE_ROUTE_SECRET_CAVE",
+      "dest_warp_id": "WARP_ID_WHITESLATE_SECRET_CAVE_EXIT"
+    }
+  ],
   "coord_events": [
     {
       "type": "trigger",

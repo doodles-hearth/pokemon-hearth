@@ -1036,8 +1036,12 @@ gText_ThankYouForAccessingMysteryGift::
 	.string "MYSTERY GIFT System.$"
 
 gText_PlayerFoundOneTMHM::
-	.string "{PLAYER} found one {STR_VAR_1}\n"
-	.string "{STR_VAR_2}!$"
+	.string "{PLAYER} found the\n"
+	.string "{STR_VAR_1}!$"
+
+gText_TransformMonFoundOneTMHM::
+	.string "{STR_VAR_3} found the\n"
+	.string "{STR_VAR_1}!$"
 
 gText_PlayerFoundTMHMs::
 	.string "{PLAYER} found {STR_VAR_3} {STR_VAR_1}\n"
@@ -1459,3 +1463,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SabersideQuarry_B1F_Part2/scripts.scr"
 
 	.include "data/maps/SabersideQuarry_Antechamber/scripts.scr"
+
+	.include "data/maps/WhiteslateRoute_SecretCave/scripts.scr"

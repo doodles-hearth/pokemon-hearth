@@ -2101,8 +2101,9 @@ static void Debug_Display_ItemInfo(u32 itemId, u32 digit, u8 windowId)
     u16 moveId = ItemIdToBattleMoveId(itemId);
     if (moveId != MOVE_NONE)
     {
-        end = StringCopy(end, gText_Space);
-        end = StringCopy(end, GetMoveName(moveId));
+        // Our implem already features the move name
+        /* end = StringCopy(end, gText_Space);
+        end = StringCopy(end, GetMoveName(moveId)); */
     }
     else if (CheckIfItemIsTMHMOrEvolutionStone(itemId) == 1)
     {
@@ -4215,6 +4216,7 @@ static void DebugNativeStep_Party_SetColorMain(u8 taskId)
     gTasks[taskId].tSubWindowId = windowId;
     gTasks[taskId].tColoration = coloration;
     gTasks[taskId].tShinyness = isShiny;
+    gTasks[taskId].tSpecies = species;
     gTasks[taskId].tInput = coloration;
     gTasks[taskId].tDigit = 0;
     gTasks[taskId].tPartyId = 0;

@@ -325,6 +325,14 @@ u8 MovementAction_QuarterStepUp_Step0(struct ObjectEvent *objectEvent, struct Sp
 u8 MovementAction_QuarterStepDown_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
 u8 MovementAction_QuarterStep_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
 
+// Idling movement action for transform
+u8 MovementAction_IdleLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_IdleRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_IdleUp_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_IdleDown_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+u8 MovementAction_Idle_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite);
+
+
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FaceUp[])(struct ObjectEvent *, struct Sprite *);
@@ -529,6 +537,12 @@ u8 (*const gMovementActionFuncs_QuarterStepDown[])(struct ObjectEvent *, struct 
 u8 (*const gMovementActionFuncs_QuarterStepLeft[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_QuarterStepRight[])(struct ObjectEvent *, struct Sprite *);
 
+u8 (*const gMovementActionFuncs_IdleUp[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_IdleDown[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_IdleLeft[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_IdleRight[])(struct ObjectEvent *, struct Sprite *);
+
+
 u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *) = {
     [MOVEMENT_ACTION_FACE_DOWN] = gMovementActionFuncs_FaceDown,
     [MOVEMENT_ACTION_FACE_UP] = gMovementActionFuncs_FaceUp,
@@ -732,6 +746,12 @@ u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *)
     [MOVEMENT_ACTION_QUARTER_STEP_RIGHT] = gMovementActionFuncs_QuarterStepRight,
     [MOVEMENT_ACTION_QUARTER_STEP_UP] = gMovementActionFuncs_QuarterStepUp,
     [MOVEMENT_ACTION_QUARTER_STEP_DOWN] = gMovementActionFuncs_QuarterStepDown,
+
+    // Idling movement action for transform
+    [MOVEMENT_ACTION_IDLE_LEFT] = gMovementActionFuncs_IdleLeft,
+    [MOVEMENT_ACTION_IDLE_RIGHT] = gMovementActionFuncs_IdleRight,
+    [MOVEMENT_ACTION_IDLE_UP] = gMovementActionFuncs_IdleUp,
+    [MOVEMENT_ACTION_IDLE_DOWN] = gMovementActionFuncs_IdleDown,
 };
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *) = {
@@ -1917,4 +1937,31 @@ u8 (*const gMovementActionFuncs_QuarterStepDown[])(struct ObjectEvent *, struct 
     MovementAction_QuarterStep_Step1,
     MovementAction_Finish,
 };
+
+// Idling movement action for transform
+u8 (*const gMovementActionFuncs_IdleLeft[])(struct ObjectEvent*, struct Sprite*) = {
+    [0] = MovementAction_IdleLeft_Step0,
+    [1] = MovementAction_Idle_Step1,
+    [2] = MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_IdleRight[])(struct ObjectEvent*, struct Sprite*) = {
+    [0] = MovementAction_IdleRight_Step0,
+    [1] = MovementAction_Idle_Step1,
+    [2] = MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_IdleDown[])(struct ObjectEvent*, struct Sprite*) = {
+    [0] = MovementAction_IdleDown_Step0,
+    [1] = MovementAction_Idle_Step1,
+    [2] = MovementAction_PauseSpriteAnim,
+};
+
+u8 (*const gMovementActionFuncs_IdleUp[])(struct ObjectEvent*, struct Sprite*) = {
+    [0] = MovementAction_IdleUp_Step0,
+    [1] = MovementAction_Idle_Step1,
+    [2] = MovementAction_PauseSpriteAnim,
+};
+
+
 

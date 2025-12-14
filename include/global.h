@@ -1130,7 +1130,8 @@ struct SaveBlock1
 #endif //FREE_EXTRA_SEEN_FLAGS_SAVEBLOCK1
     /*0x9BC*/ u16 berryBlenderRecords[3];
     /*0x9C2*/ struct Coords16 savedPos;
-    /*whatever*/ u8 unused_9C2[2];
+              u8 playerTransformPokemonIndex:3;
+    /*whatever*/ u8 unused_9C2[1];
 #if FREE_MATCH_CALL == FALSE
     /*0x9C8*/ u16 trainerRematchStepCounter;
     /*0x9CA*/ u8 trainerRematches[MAX_REMATCH_ENTRIES];

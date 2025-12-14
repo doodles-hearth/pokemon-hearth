@@ -46,6 +46,7 @@
 #include "oras_dowse.h"
 #include "palette.h"
 #include "play_time.h"
+#include "player_transform.h"
 #include "pokedex.h"
 #include "pokemon_icon.h"
 #include "random.h"
@@ -1826,6 +1827,7 @@ static void OverworldBasic(void)
            ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
         }
     }
+    PlayerAvatarHandleBob();
 }
 
 // This CB2 is used when starting
