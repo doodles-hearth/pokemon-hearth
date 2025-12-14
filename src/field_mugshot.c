@@ -9,6 +9,8 @@
 #include "constants/field_mugshots.h"
 #include "data/field_mugshots.h"
 #include "palette.h"
+#include "gpu_regs.h"
+#include "overworld.h"
 
 static EWRAM_DATA u8 sFieldMugshotSpriteIds[2] = {};
 static EWRAM_DATA u8 sIsFieldMugshotActive = 0;
@@ -99,6 +101,11 @@ void _RemoveFieldMugshot(u8 slot)
 
 void _CreateFieldMugshot(u32 id, u32 emote)
 {
+    if (GetFlashLevel()) {
+        SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+        SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
+    }
+
     u32 slot = sFieldMugshotSlot;
     struct SpriteTemplate temp = sFieldMugshot_SpriteTemplate;
     struct CompressedSpriteSheet sheet = { .size=0x1000, .tag=slot+TAG_MUGSHOT };
@@ -128,6 +135,20 @@ void _CreateFieldMugshot(u32 id, u32 emote)
     {
         return;
     }
+
+    if (GetFlashLevel()) {
+        u8 spriteMaskId = CreateSprite(&temp, MUGSHOT_X, MUGSHOT_Y, 0);
+
+        if (spriteMaskId != MAX_SPRITES) {
+            gSprites[spriteMaskId].oam.objMode = ST_OAM_OBJ_WINDOW;
+            gSprites[spriteMaskId].callback = SpriteCallbackDummy;
+        }
+        else {
+            ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+            ClearGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
+        }
+    }
+
     PreservePaletteInWeather(gSprites[sFieldMugshotSpriteIds[slot]].oam.paletteNum + 0x10);
     gSprites[sFieldMugshotSpriteIds[slot]].data[0] = FALSE;
     sIsFieldMugshotActive = TRUE;
