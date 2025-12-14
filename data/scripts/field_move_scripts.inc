@@ -81,6 +81,7 @@ EventScript_RockSmash::
 	goto_if_unset FLAG_BADGE03_GET, EventScript_CantSmashRock
 	checkfieldmove FIELD_MOVE_ROCK_SMASH, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
+	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_TransformMonSmashRock
 	setfieldeffectargument 0, VAR_RESULT
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	buffermovename STR_VAR_2, VAR_0x8005
@@ -106,6 +107,20 @@ EventScript_SmashRock:: @ fallthrough
 	goto_if_eq VAR_RESULT, FALSE, EventScript_EndSmash
 	waitstate
 	releaseall
+	end
+
+EventScript_TransformMonSmashRock::
+	waitse
+	gettransformmonspecies
+	playmoncry VAR_RESULT, CRY_MODE_NORMAL
+	call EventScript_TransformMonFieldMove
+	waitmoncry
+	playse SE_M_ROCK_THROW
+	applymovement VAR_LAST_TALKED, Movement_SmashRock
+	waitmovement 0
+	removeobject VAR_LAST_TALKED
+	releaseall
+	@ todo eva: add possible wild encounter
 	end
 
 EventScript_FollowerFieldMove:
@@ -296,9 +311,10 @@ Text_CantSmash:
 
 EventScript_StrengthBoulder::
 	lockall
-	goto_if_set FLAG_SYS_USE_STRENGTH, EventScript_CheckActivatedBoulder
+	goto_if_set FLAG_SYS_USE_STRENGTH, EventScript_CheckActivatedBoulder @ todo eva
 	checkfieldmove FIELD_MOVE_STRENGTH, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantStrength
+	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_TransformMonSmashRock
 	setfieldeffectargument 0, VAR_RESULT
 	msgbox Text_WantToStrength, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelStrength
