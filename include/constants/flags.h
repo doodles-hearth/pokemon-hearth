@@ -1081,7 +1081,7 @@
 #define FLAG_ITEM_QUARRY_MAX_REPEL                                  0x3FE
 #define FLAG_ITEM_QUARRY_TM_SHADOW_BALL                             0x3FF
 #define FLAG_ITEM_QUARRY_DUSK_BALL                                  0x400
-#define FLAG_ITEM_ROUTE_119_ZINC                                    0x401
+#define FLAG_ITEM_WHITESLATE_SECRET_CAVE_DREAM_BALL                 0x401
 #define FLAG_ITEM_ROUTE_119_ELIXIR_1                                0x402
 #define FLAG_ITEM_ROUTE_119_LEAF_STONE                              0x403
 #define FLAG_ITEM_ROUTE_119_RARE_CANDY                              0x404
