@@ -314,7 +314,7 @@ EventScript_StrengthBoulder::
 	goto_if_set FLAG_SYS_USE_STRENGTH, EventScript_CheckActivatedBoulder @ todo eva
 	checkfieldmove FIELD_MOVE_STRENGTH, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantStrength
-	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_TransformMonSmashRock
+	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_TransformMonUseStrength
 	setfieldeffectargument 0, VAR_RESULT
 	msgbox Text_WantToStrength, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelStrength
@@ -330,6 +330,10 @@ EventScript_UseStrength::
 	waitstate
 	goto EventScript_ActivateStrength
 	end
+
+EventScript_TransformMonUseStrength::
+	buffertransformmonnick STR_VAR_1
+	goto EventScript_ActivateStrength
 
 EventScript_ActivateStrength::
 	setflag FLAG_SYS_USE_STRENGTH
