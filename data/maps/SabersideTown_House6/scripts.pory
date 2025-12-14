@@ -76,7 +76,10 @@ script SabersideTown_House6_EventScript_BroughtLittleGirlBack {
     waitse
 
     playse(SE_PIN)
-    applymovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK, moves(face_down, emote_exclamation_mark, delay_16 * 6, walk_fast_down * 2, walk_fast_left * 3, face_down))
+    applymovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK, moves(face_down, emote_exclamation_mark, delay_16 * 6))
+    waitmovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK)
+    playmoncry(SPECIES_CARBINK, CRY_MODE_ROAR_1)
+    applymovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK, moves(walk_fast_down * 2, walk_fast_left * 3, face_down))
     waitmovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK)
     removeobject(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK)
     playse(SE_EXIT)
@@ -101,6 +104,8 @@ script SabersideTown_House6_EventScript_BroughtLittleGirlBack {
     closemessage
 
     giveitem(ITEM_DUSK_STONE)
+
+    applymovement(LOCALID_SABERSIDE_LOST_GIRL_MOM, moves(walk_right, walk_up * 2, walk_in_place_fast_left))
 
     setvar(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE, 4)
 
@@ -156,12 +161,6 @@ script SabersideTown_EventScript_LostGirlMom {
             closemessage
         case 4:
             faceplayer
-
-            waitse
-            playse(SE_PIN)
-            applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
-            waitmovement(0)
-            waitse
 
             msgbox((
                 "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}{SPEAKER NAME_WOMAN}It's reassuring to know my daughter\nhas a tamed Pokémon to protect her."

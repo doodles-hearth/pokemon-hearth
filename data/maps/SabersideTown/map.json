@@ -219,7 +219,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SEASIDE_LITTLE_GIRL",
-      "x": 46,
+      "x": 45,
       "y": 39,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",

@@ -14,7 +14,7 @@ mapscripts SabersideQuarry_B1F_Part2_MapScripts {
 		}
 	}
 	MAP_SCRIPT_ON_TRANSITION {
-		if (var(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE) != 1) {
+		if (var(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE) < 1 || var(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE) > 2) {
 			setflag(FLAG_HIDE_LOST_GIRL)
 		}
 	}
@@ -39,6 +39,8 @@ script SabersideQuarry_EventScript_HarutoPostBattle {
 script SabersideQuarry_EventScript_TriggerLostGirl {
 	lockall
 
+	setflag(FLAG_SAFE_FOLLOWER_MOVEMENT)
+
 	setseenmon(SPECIES_CARBINK)
 	setnamedmon(SPECIES_CARBINK)
 
@@ -61,7 +63,7 @@ script SabersideQuarry_EventScript_TriggerLostGirl {
 
 	special(GetPlayerMrMrsString)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Hi, {STR_VAR_1}I made some friends!\nLook how glittery they are!"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Hi, {STR_VAR_1}!\nI made some friends!\lLook how glittery they are!"
 	))
 	closemessage
 
@@ -98,6 +100,8 @@ script SabersideQuarry_EventScript_TriggerLostGirl {
 	setnamedmon(SPECIES_CARBINK)
 	setvar(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE, 2)
 
+	clearflag(FLAG_SAFE_FOLLOWER_MOVEMENT)
+
 	releaseall
 }
 
@@ -120,6 +124,7 @@ script SabersideQuarry_EventScript_LostGirl {
 	} else {
 		specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
 		if (var(VAR_RESULT) == SPECIES_CARBINK) {
+			playmoncry(SPECIES_CARBINK, CRY_MODE_NORMAL)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}I recognize one of my friends!\nOkay, I'll come back home with you…"
 			))
@@ -133,7 +138,7 @@ script SabersideQuarry_EventScript_LostGirl {
 			closemessage
 
 			setvar(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE, 3)
-			warp(MAP_SABERSIDE_TOWN_HOUSE3, WARP_ID_SABERSIDE_HOUSE_QUARRY_TOP_RIGHT_EXIT)
+			warp(MAP_SABERSIDE_TOWN_HOUSE6, WARP_ID_SABERSIDE_HOUSE_QUARRY_TOP_RIGHT_EXIT)
 
 		} else {
 			msgbox(format(

@@ -71,7 +71,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SabersideQuarry_EventScript_SableyeIgnore",
+      "script": "SabersideQuarry_EventScript_Sableye",
       "flag": "FLAG_SPOOKED_SABLEYE",
       "afternoon": true,
       "deadnight": true,
@@ -268,7 +268,7 @@
     {
       "type": "trigger",
       "x": 64,
-      "y": 37,
+      "y": 36,
       "elevation": 0,
       "var": "FLAG_SPOOKED_SABLEYE",
       "var_value": "0",
@@ -277,7 +277,7 @@
     {
       "type": "trigger",
       "x": 63,
-      "y": 37,
+      "y": 36,
       "elevation": 0,
       "var": "FLAG_SPOOKED_SABLEYE",
       "var_value": "0",
@@ -286,7 +286,88 @@
     {
       "type": "trigger",
       "x": 65,
-      "y": 37,
+      "y": 36,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    },
+    {
+      "type": "trigger",
+      "x": 62,
+      "y": 35,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    },
+    {
+      "type": "trigger",
+      "x": 66,
+      "y": 35,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    },
+    {
+      "type": "trigger",
+      "x": 66,
+      "y": 33,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    },
+    {
+      "type": "trigger",
+      "x": 66,
+      "y": 34,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    },
+    {
+      "type": "trigger",
+      "x": 65,
+      "y": 32,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    },
+    {
+      "type": "trigger",
+      "x": 64,
+      "y": 32,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    },
+    {
+      "type": "trigger",
+      "x": 63,
+      "y": 32,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    },
+    {
+      "type": "trigger",
+      "x": 62,
+      "y": 33,
+      "elevation": 0,
+      "var": "FLAG_SPOOKED_SABLEYE",
+      "var_value": "0",
+      "script": "SabersideQuarry_EventScript_SpookSableye"
+    },
+    {
+      "type": "trigger",
+      "x": 62,
+      "y": 34,
       "elevation": 0,
       "var": "FLAG_SPOOKED_SABLEYE",
       "var_value": "0",
