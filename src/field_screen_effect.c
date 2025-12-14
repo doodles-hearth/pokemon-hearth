@@ -1066,8 +1066,6 @@ void WriteFlashScanlineEffectBuffer(u8 flashRadius)
     {
       u32 followSpriteId = GetFollowerObject()->spriteId;
       u32 playerSpriteId = gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)].spriteId;
-      /* DebugPrintf("PlayerSpriteId: %u", playerSpriteId); */
-      /* DebugPrintf("FollowerSpriteId: %u", followSpriteId); */
 
       u32 species;
       u32 level;
