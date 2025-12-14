@@ -9,10 +9,12 @@
 #include "constants/field_mugshots.h"
 #include "data/field_mugshots.h"
 #include "palette.h"
+#include "gpu_regs.h"
 
 static EWRAM_DATA u8 sFieldMugshotSpriteIds[2] = {};
 static EWRAM_DATA u8 sIsFieldMugshotActive = 0;
 static EWRAM_DATA u8 sFieldMugshotSlot = 0;
+static EWRAM_DATA u8 sFieldMugshotFlashMask = 0;
 
 #define TAG_MUGSHOT (0x9000 | BLEND_IMMUNE_FLAG)
 #define TAG_MUGSHOT2 (0x9001 | BLEND_IMMUNE_FLAG)
@@ -128,6 +130,36 @@ void _CreateFieldMugshot(u32 id, u32 emote)
     {
         return;
     }
+
+    // Flash-related second sprite handling
+    if (gSaveBlock1Ptr->flashLevel > 0)
+    {
+        DebugPrintf("Flash");
+        // Enable flash effects if needed
+        SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+        SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
+        // Create second sprite
+        u8 spriteId2 = CreateSprite(&temp, MUGSHOT_X, MUGSHOT_Y, 0);
+
+        // Only proceed if sprite creation succeeded
+        if (spriteId2 != MAX_SPRITES)
+        {
+            gSprites[spriteId2].x2 = MUGSHOT_X;
+            gSprites[spriteId2].y2 = MUGSHOT_Y;
+            gSprites[spriteId2].oam.priority = 0;
+            gSprites[spriteId2].oam.objMode = ST_OAM_OBJ_WINDOW;
+            sFieldMugshotFlashMask = spriteId2;
+        }
+        else
+        {
+            // Handle the failure case where the second sprite couldn't be created (prevent softlock)
+            ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+            ClearGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
+            // Reset to prevent invalid accesses
+            sFieldMugshotFlashMask = MAX_SPRITES;
+        }
+    }
+
     PreservePaletteInWeather(gSprites[sFieldMugshotSpriteIds[slot]].oam.paletteNum + 0x10);
     gSprites[sFieldMugshotSpriteIds[slot]].data[0] = FALSE;
     sIsFieldMugshotActive = TRUE;
