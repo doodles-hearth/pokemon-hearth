@@ -120,12 +120,12 @@ script SabersideQuarry_EventScript_LookingForSableye {
 	faceplayer
 	if (getflashlevel < 50) {
 		msgbox(format(
-			"Shush now! I'm trying to catch a Sableye.\p"
+			"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_HEX_MANIAC}Shush now! I'm trying to catch a Sableye.\p"
 			"I saw one earlier, but I spooked it\nand it scuttled back to its lair."
 		))
 	} else {
 		msgbox(format(
-			"Get away with that light!\nI'm trying to catch a Sableye.\p"
+			"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_HEX_MANIAC}Get away with that light!\nI'm trying to catch a Sableye.\p"
 			"I saw one earlier, but I spooked it\nand it scuttled back to its lair."
 		))
 	}
