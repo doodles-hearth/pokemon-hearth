@@ -6660,6 +6660,18 @@
       "secondary_tileset": "gTileset_Quarry",
       "border_filepath": "data/layouts/SabersideQuarry_SableyeSpot/border.bin",
       "blockdata_filepath": "data/layouts/SabersideQuarry_SableyeSpot/map.bin"
+    },
+    {
+      "id": "LAYOUT_WHITESLATE_ROUTE_SECRET_CAVE",
+      "name": "WhiteslateRoute_SecretCave_Layout",
+      "width": 13,
+      "height": 14,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_BrownCave",
+      "border_filepath": "data/layouts/WhiteslateRoute_SecretCave/border.bin",
+      "blockdata_filepath": "data/layouts/WhiteslateRoute_SecretCave/map.bin"
     }
   ]
 }

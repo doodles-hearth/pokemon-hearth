@@ -518,3 +518,38 @@ script WhiteslateRoute_EventScript_MetHariko {
 	setdescribedmon(SPECIES_DEERLING_AUTUMN)
 	release
 }
+
+script WhiteslateRoute_EventScript_TinyPassage {
+	lock
+	msgbox(format(
+		"There's a tiny passage…\nSend a small Pokémon inside?"
+	))
+
+	mcdialogueB(
+		"Yes",
+		"No"
+	)
+
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		special(ChoosePartyMonForSmallPassage)
+		waitstate
+
+		if (var(VAR_0x8004) != PARTY_NOTHING_CHOSEN) {
+			specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+			bufferpartymonnick(STR_VAR_1, VAR_0x8004)
+			// bufferspeciesname(STR_VAR_1, VAR_RESULT)
+			msgbox(format(
+				"{PLAYER} sends {STR_VAR_1} through the tiny passage!"
+			))
+			closemessage
+
+			transformplayer(defer=1)
+
+			warp(MAP_WHITESLATE_ROUTE_SECRET_CAVE, WARP_ID_WHITESLATE_SECRET_CAVE_EXIT)
+		}
+	}
+
+	release
+}

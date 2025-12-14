@@ -4,6 +4,7 @@ EventScript_CutTree::
 	goto_if_unset FLAG_BADGE01_GET, EventScript_CheckTreeCantCut
 	checkfieldmove FIELD_MOVE_CUT, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckTreeCantCut
+	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_TransformMonCutTree
 	setfieldeffectargument 0, VAR_RESULT
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	buffermovename STR_VAR_2, VAR_0x8005
@@ -19,6 +20,19 @@ EventScript_CutTreeCommon:
 EventScript_CutTreeDown:: @ fallthrough
 	setflag FLAG_SAFE_FOLLOWER_MOVEMENT
 	call_if_eq VAR_0x8004, TRUE, EventScript_FollowerFieldMove
+	applymovement VAR_LAST_TALKED, Movement_CutTreeDown
+	waitmovement 0
+	removeobject VAR_LAST_TALKED
+	releaseall
+	end
+
+EventScript_TransformMonCutTree::
+	waitse
+	gettransformmonspecies
+	playmoncry VAR_RESULT, CRY_MODE_NORMAL
+	call EventScript_TransformMonFieldMove
+	waitmoncry
+	playse SE_M_CUT
 	applymovement VAR_LAST_TALKED, Movement_CutTreeDown
 	waitmovement 0
 	removeobject VAR_LAST_TALKED
@@ -67,6 +81,7 @@ EventScript_RockSmash::
 	goto_if_unset FLAG_BADGE03_GET, EventScript_CantSmashRock
 	checkfieldmove FIELD_MOVE_ROCK_SMASH, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
+	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_TransformMonSmashRock
 	setfieldeffectargument 0, VAR_RESULT
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	buffermovename STR_VAR_2, VAR_0x8005
@@ -94,6 +109,20 @@ EventScript_SmashRock:: @ fallthrough
 	releaseall
 	end
 
+EventScript_TransformMonSmashRock::
+	waitse
+	gettransformmonspecies
+	playmoncry VAR_RESULT, CRY_MODE_NORMAL
+	call EventScript_TransformMonFieldMove
+	waitmoncry
+	playse SE_M_ROCK_THROW
+	applymovement VAR_LAST_TALKED, Movement_SmashRock
+	waitmovement 0
+	removeobject VAR_LAST_TALKED
+	releaseall
+	@ todo eva: add possible wild encounter
+	end
+
 EventScript_FollowerFieldMove:
 	getdirectiontoface VAR_0x8005, OBJ_EVENT_ID_FOLLOWER, OBJ_EVENT_ID_PLAYER
 	specialvar VAR_0x8006, GetPlayerFacingDirection
@@ -107,6 +136,15 @@ EventScript_FollowerFieldMove:
 	case DIR_SOUTH, EventScript_FollowerJumpSouth
 	case DIR_WEST, EventScript_FollowerJumpWest
 EventScript_FollowerFieldMoveEnd:
+	return
+
+EventScript_TransformMonFieldMove:
+	specialvar VAR_0x8006, GetPlayerFacingDirection
+	switch VAR_0x8006
+	case DIR_NORTH, EventScript_TransformMonJumpForwardNorth
+	case DIR_EAST, EventScript_TransformMonJumpForwardEast
+	case DIR_SOUTH, EventScript_TransformMonJumpForwardSouth
+	case DIR_WEST, EventScript_TransformMonJumpForwardWest
 	return
 
 EventScript_FollowerSwap:
@@ -164,6 +202,54 @@ EventScript_FollowerJumpWest:
 	applymovement OBJ_EVENT_ID_FOLLOWER, Movement_JumpLeft
 	waitmovement 0
 	return
+
+EventScript_TransformMonJumpForwardNorth:
+	applymovement LOCALID_PLAYER, Movement_JumpForwardUp
+	waitmovement 0
+	return
+
+EventScript_TransformMonJumpForwardEast:
+	applymovement LOCALID_PLAYER, Movement_JumpForwardRight
+	waitmovement 0
+	return
+
+EventScript_TransformMonJumpForwardSouth:
+	applymovement LOCALID_PLAYER, Movement_JumpForwardDown
+	waitmovement 0
+	return
+
+EventScript_TransformMonJumpForwardWest:
+	applymovement LOCALID_PLAYER, Movement_JumpForwardLeft
+	waitmovement 0
+	return
+
+Movement_JumpForwardUp:
+	jump_up
+	lock_facing_direction
+	walk_down
+	unlock_facing_direction
+	step_end
+
+Movement_JumpForwardRight:
+	jump_right
+	lock_facing_direction
+	walk_left
+	unlock_facing_direction
+	step_end
+
+Movement_JumpForwardDown:
+	jump_down
+	lock_facing_direction
+	walk_up
+	unlock_facing_direction
+	step_end
+
+Movement_JumpForwardLeft:
+	jump_left
+	lock_facing_direction
+	walk_right
+	unlock_facing_direction
+	step_end
 
 EventScript_EndSmash::
 	releaseall
@@ -225,9 +311,10 @@ Text_CantSmash:
 
 EventScript_StrengthBoulder::
 	lockall
-	goto_if_set FLAG_SYS_USE_STRENGTH, EventScript_CheckActivatedBoulder
+	goto_if_set FLAG_SYS_USE_STRENGTH, EventScript_CheckActivatedBoulder @ todo eva
 	checkfieldmove FIELD_MOVE_STRENGTH, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantStrength
+	goto_if_set FLAG_PLAYER_IS_POKEMON, EventScript_TransformMonSmashRock
 	setfieldeffectargument 0, VAR_RESULT
 	msgbox Text_WantToStrength, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelStrength
