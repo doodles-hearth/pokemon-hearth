@@ -2371,7 +2371,7 @@ bool32 IsFollowerVisible(void)
 static bool32 ShouldStopIdling(struct Sprite* sprite)
 {
     bool32 dpadPressed = gMain.newKeys & DPAD_ANY;
-    bool32 animCounter = sprite->data[3];
+    bool32 animCounter = --sprite->data[3];
     return dpadPressed || animCounter == 0;
 }
 
