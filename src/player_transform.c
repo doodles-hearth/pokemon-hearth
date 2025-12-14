@@ -169,7 +169,7 @@ static void TransformPlayerToPokemonByIndex(u8 index)
     UpdateFollowingPokemon();
 }
 
-void PlayerAvatarHandleBob(void)
+void PlayerAvatarHandleBob()
 {
     if (FlagGet(FLAG_PLAYER_IS_POKEMON) && !FlagGet(FLAG_DEFER_TRANSFORM)) {
         struct Sprite* playerSprite = &gSprites[gPlayerAvatar.spriteId];
@@ -191,27 +191,3 @@ void PlayerAvatarHandleBob(void)
     }
 }
 
-void PlayerAvatarForceIdleAnim(void) {
-    // FIXME idle movement is too fast
-    if (!FlagGet(FLAG_PLAYER_IS_POKEMON) || FlagGet(FLAG_DEFER_TRANSFORM))
-    {
-        return;
-    }
-
-    struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
-    if(!playerObjEvent->enableAnim)
-    {
-        playerObjEvent->enableAnim = TRUE;
-    }
-
-    if(gSprites[playerObjEvent->spriteId].animPaused)
-    {
-        gSprites[playerObjEvent->spriteId].animPaused = FALSE;
-    }
-
-    if (playerObjEvent->disableAnim)
-    {
-        playerObjEvent->disableAnim = FALSE;
-    }
-    return;
-}

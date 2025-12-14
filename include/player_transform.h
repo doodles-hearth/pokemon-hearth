@@ -20,7 +20,6 @@ void DetransformPlayer(struct ScriptContext *ctx);
 void TransformPlayerFromParty();
 
 void CB2_TransformPlayerToPokemonFromParty();
-void PlayerAvatarHandleBob(void);
-void PlayerAvatarForceIdleAnim(void);
+void PlayerAvatarHandleBob();
 
 #endif //GUARD_PLAYER_TRANSFORM_H

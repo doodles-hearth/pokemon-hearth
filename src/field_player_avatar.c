@@ -654,7 +654,10 @@ static u8 CheckMovementInputNotOnBike(u8 direction)
 
 static void PlayerNotOnBikeNotMoving(u8 direction, u16 heldKeys)
 {
-    PlayerFaceDirection(GetPlayerFacingDirection());
+    if (FlagGet(FLAG_PLAYER_IS_POKEMON) && !FlagGet(FLAG_DEFER_TRANSFORM))
+        PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(GetPlayerFacingDirection()), COPY_MOVE_FACE);
+    else
+        PlayerFaceDirection(GetPlayerFacingDirection());
 }
 
 void UpdateSpinData(void)
@@ -1286,8 +1289,7 @@ static void PlayerNotOnBikeCollideWithFarawayIslandMew(u8 direction)
 
 void PlayerFaceDirection(u8 direction)
 {
-    if(!FlagGet(FLAG_PLAYER_IS_POKEMON) || FlagGet(FLAG_DEFER_TRANSFORM))
-        PlayerSetAnimId(GetFaceDirectionMovementAction(direction), COPY_MOVE_FACE);
+    PlayerSetAnimId(GetFaceDirectionMovementAction(direction), COPY_MOVE_FACE);
 }
 
 void PlayerTurnInPlace(u8 direction)

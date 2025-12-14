@@ -1828,7 +1828,6 @@ static void OverworldBasic(void)
         }
     }
     PlayerAvatarHandleBob();
-    PlayerAvatarForceIdleAnim();
 }
 
 // This CB2 is used when starting
