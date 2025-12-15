@@ -73,7 +73,7 @@ void RemoveFieldMugshot(void)
     }
     sIsFieldMugshotActive = FALSE;
 
-    if (sFieldMugshotObjWindowMaskId != SPRITE_NONE) {
+    if (sFieldMugshotObjWindowMaskId != 0) {
         DestroySprite(&gSprites[sFieldMugshotObjWindowMaskId]);
         sFieldMugshotObjWindowMaskId = 0;
     }
@@ -145,7 +145,7 @@ void _CreateFieldMugshot(u32 id, u32 emote)
         return;
     }
 
-    if (GetFlashLevel()) {
+    if (GetFlashLevel() > 0) {
         SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
         SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
 
