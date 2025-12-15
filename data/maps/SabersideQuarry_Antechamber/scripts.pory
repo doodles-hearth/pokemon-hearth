@@ -10,21 +10,31 @@ script SabersideQuarry_Antechamber_EventScript_FlashSign {
 script SabersideTown_EventScript_GlowingMon {
     lock
     faceplayer
-    msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}Hunting for treasure, are you?\nI see you're a Wielder.\p"
-        "I assume you brought a Pokémon that glows in the dark?\p"
-        "Here, take this, in case it faints."
-    ))
-    closemessage
 
-    giveitem(ITEM_REVIVAL_BALM)
+    if (flag(FLAG_RECEIVED_QUARRY_SURVIVAL_KIT)) {
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}Don't get lost now!"
+        ))
+        closemessage
+    } else {
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}Hunting for treasure, are you?\nI see you're a Wielder.\p"
+            "I assume you brought a Pokémon that glows in the dark?\p"
+            "Here, take this, in case it faints."
+        ))
+        closemessage
 
-    msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}And take this, in case it faints twice!"
-    ))
-    closemessage
+        giveitem(ITEM_REVIVAL_BALM)
 
-    giveitem(ITEM_ESCAPE_ROPE)
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}And take this, in case it faints twice!"
+        ))
+        closemessage
+
+        giveitem(ITEM_ESCAPE_ROPE)
+
+        setflag(FLAG_RECEIVED_QUARRY_SURVIVAL_KIT)
+    }
 
     release
 }
@@ -39,4 +49,18 @@ script SabersideTown_EventScript_GlowingMon2 {
     closemessage
 
     release
+}
+
+script SabersideTown_EventScript_Litwick {
+    lock
+    faceplayer
+	setseenmon(SPECIES_LITWICK)
+	setspeakertomonname(SPECIES_LITWICK)
+	playmoncry(SPECIES_LITWICK, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Whoosh!"
+    ))
+    waitmoncry
+    release
+    end
 }

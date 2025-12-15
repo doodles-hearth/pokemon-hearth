@@ -698,7 +698,7 @@ Music: Rich
 Battle Type: Singles
 AI: Basic Trainer
 
-Carbink
+Carbink @ Star Piece
 Level: 25
 Coloration: 0
 - Guard Split
@@ -718,35 +718,40 @@ Shiny: Yes
 - Sharpen
 - Smack Down
 
-=== TRAINER_GRUNT_MUSEUM_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_HARUTO ===
+Name: Haruto
+Class: Gem Maniac
+Pic: Gem Maniac
 Gender: Male
-Music: Aqua
+Music: Rich
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zubat
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lunatone @ Moon Stone
+Level: 25
+- Cosmic Power
+- Psywave
 
-Carvanha
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Clefairy @ Moon Stone
+Level: 25
+- Wake Up Slap
+- Metronome
+- Encore
 
-=== TRAINER_GRUNT_SPACE_CENTER_1 ===
-Name: GRUNT
-Class: Team Magma
-Pic: Magma Grunt M
+=== TRAINER_KOTARO ===
+Name: Kotaro
+Class: Burglar
+Pic: Burglar
 Gender: Male
-Music: Magma
+Music: Suspicious
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Numel
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Thievul
+Level: 25
+- Sucker Punch
+- Assurance
+- Tail Whip
 
 === TRAINER_GRUNT_MT_PYRE_1 ===
 Name: GRUNT

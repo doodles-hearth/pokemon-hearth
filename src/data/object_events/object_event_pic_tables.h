@@ -649,6 +649,10 @@ static const struct SpriteFrameImage sPicTable_Valet[] = {
     overworld_ascending_frames(gObjectEventPic_Valet, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Burglar[] = {
+    overworld_ascending_frames(gObjectEventPic_Burglar, 4, 4),
+};
+
 // Special characters
 static const struct SpriteFrameImage sPicTable_Bean[] = {
     overworld_ascending_frames(gObjectEventPic_Bean, 4, 4),
