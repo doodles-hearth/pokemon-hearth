@@ -9,10 +9,13 @@
 #include "constants/field_mugshots.h"
 #include "data/field_mugshots.h"
 #include "palette.h"
+#include "gpu_regs.h"
+#include "overworld.h"
 
 static EWRAM_DATA u8 sFieldMugshotSpriteIds[2] = {};
 static EWRAM_DATA u8 sIsFieldMugshotActive = 0;
 static EWRAM_DATA u8 sFieldMugshotSlot = 0;
+static EWRAM_DATA u8 sFieldMugshotObjWindowMaskId = 0;
 
 #define TAG_MUGSHOT (0x9000 | BLEND_IMMUNE_FLAG)
 #define TAG_MUGSHOT2 (0x9001 | BLEND_IMMUNE_FLAG)
@@ -69,6 +72,11 @@ void RemoveFieldMugshot(void)
         sFieldMugshotSpriteIds[1] = SPRITE_NONE;
     }
     sIsFieldMugshotActive = FALSE;
+
+    if (sFieldMugshotObjWindowMaskId != SPRITE_NONE) {
+        DestroySprite(&gSprites[sFieldMugshotObjWindowMaskId]);
+        sFieldMugshotObjWindowMaskId = 0;
+    }
 }
 
 void CreateFieldMugshot(struct ScriptContext *ctx)
@@ -95,10 +103,18 @@ void _RemoveFieldMugshot(u8 slot)
         DestroySprite(&gSprites[sFieldMugshotSpriteIds[slot]]);
         sFieldMugshotSpriteIds[slot] = SPRITE_NONE;
     }
+    
+    if (sFieldMugshotObjWindowMaskId != SPRITE_NONE) {
+        DestroySprite(&gSprites[sFieldMugshotObjWindowMaskId]);
+        sFieldMugshotObjWindowMaskId = 0;
+    }
+    SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+    SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
 }
 
 void _CreateFieldMugshot(u32 id, u32 emote)
 {
+
     u32 slot = sFieldMugshotSlot;
     struct SpriteTemplate temp = sFieldMugshot_SpriteTemplate;
     struct CompressedSpriteSheet sheet = { .size=0x1000, .tag=slot+TAG_MUGSHOT };
@@ -128,6 +144,23 @@ void _CreateFieldMugshot(u32 id, u32 emote)
     {
         return;
     }
+
+    if (GetFlashLevel()) {
+        SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+        SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
+
+        sFieldMugshotObjWindowMaskId = CreateSprite(&temp, MUGSHOT_X, MUGSHOT_Y, 0);
+
+        if (sFieldMugshotObjWindowMaskId != MAX_SPRITES) {
+            gSprites[sFieldMugshotObjWindowMaskId].oam.objMode = ST_OAM_OBJ_WINDOW;
+            gSprites[sFieldMugshotObjWindowMaskId].data[0] = TRUE;
+        }
+        else {
+            ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+            ClearGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
+        }
+    }
+
     PreservePaletteInWeather(gSprites[sFieldMugshotSpriteIds[slot]].oam.paletteNum + 0x10);
     gSprites[sFieldMugshotSpriteIds[slot]].data[0] = FALSE;
     sIsFieldMugshotActive = TRUE;
