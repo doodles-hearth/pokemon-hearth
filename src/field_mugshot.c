@@ -153,7 +153,7 @@ void _CreateFieldMugshot(u32 id, u32 emote)
 
         if (sFieldMugshotObjWindowMaskId != MAX_SPRITES) {
             gSprites[sFieldMugshotObjWindowMaskId].oam.objMode = ST_OAM_OBJ_WINDOW;
-            gSprites[sFieldMugshotObjWindowMaskId].callback = SpriteCallbackDummy;
+            gSprites[sFieldMugshotObjWindowMaskId].data[0] = TRUE;
         }
         else {
             ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
