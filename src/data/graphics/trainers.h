@@ -324,6 +324,9 @@ const u16 gTrainerPalette_Samurai[] = INCBIN_U16("graphics/trainers/front_pics/s
 const u32 gTrainerFrontPic_Burglar[] = INCBIN_U32("graphics/trainers/front_pics/burglar.4bpp.smol");
 const u16 gTrainerPalette_Burglar[] = INCBIN_U16("graphics/trainers/front_pics/burglar.gbapal");
 
+const u32 gTrainerFrontPic_Farmer[] = INCBIN_U32("graphics/trainers/front_pics/farmer.4bpp.smol");
+const u16 gTrainerPalette_Farmer[] = INCBIN_U16("graphics/trainers/front_pics/farmer.gbapal");
+
 const u32 gTrainerFrontPic_SalonMaidenAnabel[] = INCBIN_U32("graphics/trainers/front_pics/salon_maiden_anabel.4bpp.smol");
 const u16 gTrainerPalette_SalonMaidenAnabel[] = INCBIN_U16("graphics/trainers/front_pics/salon_maiden_anabel.gbapal");
 
@@ -507,6 +510,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_MINER, gTrainerFrontPic_Miner, gTrainerPalette_Miner),
     TRAINER_SPRITE(TRAINER_PIC_SAMURAI, gTrainerFrontPic_Samurai, gTrainerPalette_Samurai),
     TRAINER_SPRITE(TRAINER_PIC_BURGLAR, gTrainerFrontPic_Burglar, gTrainerPalette_Burglar),
+    TRAINER_SPRITE(TRAINER_PIC_FARMER, gTrainerFrontPic_Farmer, gTrainerPalette_Farmer),
 };
 
 static const union AnimCmd sAnimCmd_Hoenn[] =
