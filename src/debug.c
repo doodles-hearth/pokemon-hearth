@@ -2101,8 +2101,9 @@ static void Debug_Display_ItemInfo(u32 itemId, u32 digit, u8 windowId)
     u16 moveId = ItemIdToBattleMoveId(itemId);
     if (moveId != MOVE_NONE)
     {
-        end = StringCopy(end, gText_Space);
-        end = StringCopy(end, GetMoveName(moveId));
+        // Our implem already features the move name
+        /* end = StringCopy(end, gText_Space);
+        end = StringCopy(end, GetMoveName(moveId)); */
     }
     else if (CheckIfItemIsTMHMOrEvolutionStone(itemId) == 1)
     {

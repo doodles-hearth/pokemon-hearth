@@ -216,6 +216,7 @@ static void CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(u16 graphics
 
 static u16 GetGraphicsIdForMon(u32 species, bool32 shiny, bool32 female);
 static u16 GetUnownSpecies(struct Pokemon *mon);
+static bool32 ShouldStopIdling(struct Sprite* sprite);
 
 static const struct SpriteFrameImage sPicTable_PechaBerryTree[];
 
@@ -995,6 +996,19 @@ static const struct Coords16 sDirectionToVectors[] = {
     { 2,  1},
     {-2, -1},
     { 2, -1}
+};
+
+
+const u8 gIdleMovementActions[] = {
+    [DIR_NONE]       = MOVEMENT_ACTION_IDLE_DOWN,
+    [DIR_SOUTH]      = MOVEMENT_ACTION_IDLE_DOWN,
+    [DIR_NORTH]      = MOVEMENT_ACTION_IDLE_UP,
+    [DIR_WEST]       = MOVEMENT_ACTION_IDLE_LEFT,
+    [DIR_EAST]       = MOVEMENT_ACTION_IDLE_RIGHT,
+    [DIR_SOUTHWEST]  = MOVEMENT_ACTION_IDLE_LEFT,
+    [DIR_SOUTHEAST]  = MOVEMENT_ACTION_IDLE_RIGHT,
+    [DIR_NORTHWEST]  = MOVEMENT_ACTION_IDLE_LEFT,
+    [DIR_NORTHEAST]  = MOVEMENT_ACTION_IDLE_RIGHT
 };
 
 const u8 gFaceDirectionMovementActions[] = {
@@ -2353,6 +2367,14 @@ bool32 IsFollowerVisible(void)
             || MetatileBehavior_IsForcedMovementTile(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior));
 }
 
+
+static bool32 ShouldStopIdling(struct Sprite* sprite)
+{
+    bool32 dpadPressed = gMain.newKeys & DPAD_ANY;
+    bool32 animCounter = --sprite->data[3];
+    return dpadPressed || animCounter == 0;
+}
+
 static bool8 SpeciesHasType(u16 species, u8 type)
 {
     return GetSpeciesType(species, 0) == type || GetSpeciesType(species, 1) == type;
@@ -2443,11 +2465,11 @@ bool32 CheckMsgCondition(const struct MsgCondition *cond, struct Pokemon *mon, u
         return (cond->data.raw == GetCurrentMapMusic());
     case MSG_COND_TIME_OF_DAY:
     {
-        // Must match time of day, have natural light on the map,
+        // Must match time of day, have outdoor natural light on the map,
         // and not have weather that obscures the sky
         u32 weather = GetCurrentWeather();
         return (cond->data.raw == gTimeOfDay
-            && MapHasNaturalLight(gMapHeader.mapType)
+            && MapHasOutdoorNaturalLight(gMapHeader.mapType)
             && (weather == WEATHER_NONE || weather == WEATHER_SUNNY_CLOUDS || weather == WEATHER_SUNNY));
     }
     case MSG_COND_NEAR_MB:
@@ -6838,6 +6860,7 @@ u8 name(u32 idx)\
     return animIds[direction];\
 }
 
+dirn_to_anim(GetIdleMovementAction, gIdleMovementActions);
 dirn_to_anim(GetFaceDirectionMovementAction, gFaceDirectionMovementActions);
 dirn_to_anim(GetWalkSlowStairsMovementAction, gWalkSlowStairsMovementActions);
 dirn_to_anim(GetWalkSlowMovementAction, gWalkSlowMovementActions);
@@ -6941,6 +6964,16 @@ static void FaceDirection(struct ObjectEvent *objectEvent, struct Sprite *sprite
     SetStepAnim(objectEvent, sprite, GetMoveDirectionAnimNum(objectEvent->facingDirection));
     sprite->animPaused = TRUE;
     sprite->sActionFuncId = 1;
+}
+
+static void InitIdleMovement(struct ObjectEvent* objectEvent, struct Sprite* sprite, u8 direction, u16 duration)
+{
+    SetObjectEventDirection(objectEvent, direction);
+    ShiftStillObjectEventCoords(objectEvent);
+    SetStepAnim(objectEvent, sprite, GetMoveDirectionAnimNum(objectEvent->facingDirection));
+    sprite->animPaused = FALSE;
+    sprite->sActionFuncId = 1;
+    sprite->data[3] = duration;
 }
 
 bool8 MovementAction_FaceDown_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
@@ -12077,6 +12110,39 @@ bool8 MovementAction_QuarterStep_Step1(struct ObjectEvent *objectEvent, struct S
     if (UpdateMovementQuarterStep(objectEvent, sprite))
     {
         sprite->sActionFuncId = 2;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 MovementAction_IdleLeft_Step0(struct ObjectEvent* objectEvent, struct Sprite* sprite)
+{
+    InitIdleMovement(objectEvent, sprite, DIR_WEST, 16);
+    return MovementAction_Idle_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_IdleUp_Step0(struct ObjectEvent* objectEvent, struct Sprite* sprite)
+{
+    InitIdleMovement(objectEvent, sprite, DIR_NORTH, 16);
+    return MovementAction_Idle_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_IdleDown_Step0(struct ObjectEvent* objectEvent, struct Sprite* sprite)
+{
+    InitIdleMovement(objectEvent, sprite, DIR_SOUTH, 16);
+    return MovementAction_Idle_Step1(objectEvent, sprite);
+}
+
+bool8 MovementAction_IdleRight_Step0(struct ObjectEvent* objectEvent, struct Sprite* sprite)
+{
+    InitIdleMovement(objectEvent, sprite, DIR_EAST, 16);
+    return MovementAction_Idle_Step1(objectEvent, sprite);}
+
+bool8 MovementAction_Idle_Step1(struct ObjectEvent* objectEvent, struct Sprite* sprite)
+{
+    if (ShouldStopIdling(sprite)) {
+        sprite->sActionFuncId = 2;
+        sprite->animPaused = TRUE;
         return TRUE;
     }
     return FALSE;

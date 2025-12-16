@@ -1,4 +1,5 @@
 const FLAG_HIDE_BOAT_GUY = FLAG_TEMP_1
+const FLAG_HIDE_LOST_GIRL_AND_CARBINK = FLAG_TEMP_2
 
 mapscripts SabersideTown_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
@@ -11,6 +12,10 @@ mapscripts SabersideTown_MapScripts {
 
 		} elif (var(VAR_SHIP_SABERSIDE_SOULKEEP) != 2) {
 			setflag(FLAG_HIDE_BOAT_GUY)
+		}
+
+		if (var(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE) != 4) {
+			setflag(FLAG_HIDE_LOST_GIRL_AND_CARBINK)
 		}
 	}
 }
@@ -173,6 +178,37 @@ script SabersideTown_EventScript_ShowMeSkarmory {
 	}
 
 	release
+}
+
+script SabersideTown_EventScript_LostGirl {
+	lock
+	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_happy))
+	
+	special(GetPlayerMrMrsString)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Heeheehee! Oh, hi, {STR_VAR_1}!\nCarbink is great!\p"
+		"Dad often brings us along to see the\nother Carbink in the Quarry!"
+	))
+	waitmovement(0)
+	closemessage
+	release
+}
+
+script SabersideTown_EventScript_Carbink {
+	lock
+    faceplayer
+	setseenmon(SPECIES_CARBINK)
+	setspeakertomonname(SPECIES_CARBINK)
+	applymovement(VAR_LAST_TALKED, moves(emote_music))
+	playmoncry(SPECIES_CARBINK, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Chinkitink!"
+    ))
+    waitmoncry
+	waitmovement(0)
+	closemessage
+    release
 }
 
 script SabersideTown_EventScript_TownSign {

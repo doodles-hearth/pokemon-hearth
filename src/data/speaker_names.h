@@ -86,4 +86,5 @@ const u8 *const gSpeakerNamesTable[SP_NAME_COUNT] =
     [SP_NAME_SCHOOL_KID] = COMPOUND_STRING("School Kid"),
     [SP_NAME_ASSISTANT] = COMPOUND_STRING("Assistant"),
     [SP_NAME_MEDIUM] = COMPOUND_STRING("Medium"),
+    [SP_NAME_BURGLAR] = COMPOUND_STRING("Burglar"),
 };

@@ -119,6 +119,9 @@
     },
     "getflashlevel": {
         "var_name": "VAR_RESULT"
+    },
+    "gettransformmonspecies": {
+        "var_name": "VAR_RESULT"
     }
   }
 }

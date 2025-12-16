@@ -11,6 +11,9 @@ gText_PutItemInPocket::
 gText_PlayerFoundOneItem::
 	.string "{PLAYER} found one {STR_VAR_2}!$"
 
+gText_TransformMonFoundOneItem::
+	.string "{STR_VAR_1} found one {STR_VAR_2}!$"
+
 gText_TooBadBagIsFull::
 	.string "Too bad!\n"
 	.string "The Bag is full…$"
@@ -35,3 +38,6 @@ gText_ObtainedTheItems::
 
 gText_PlayerFoundItems::
 	.string "{PLAYER} found {STR_VAR_1} {STR_VAR_2}!$"
+
+gText_TransformMonFoundItems::
+	.string "{STR_VAR_3} found {STR_VAR_1} {STR_VAR_2}!$"

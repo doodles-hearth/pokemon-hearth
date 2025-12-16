@@ -16,12 +16,12 @@
   "object_events": [],
   "warp_events": [
     {
-      "warp_id": "WARP_ID_SABERSIDE_HOUSE_QUARRY_TOP_RIGHT_EXIT",
+      "warp_id": "WARP_ID_SABERSIDE_HOUSE_PLATFORM_EXIT",
       "x": 4,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_SABERSIDE_TOWN",
-      "dest_warp_id": "WARP_ID_SABERSIDE_HOUSE_QUARRY_TOP_RIGHT"
+      "dest_warp_id": "WARP_ID_SABERSIDE_HOUSE_PLATFORM"
     }
   ],
   "coord_events": [],

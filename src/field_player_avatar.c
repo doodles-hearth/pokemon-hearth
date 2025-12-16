@@ -16,6 +16,8 @@
 #include "oras_dowse.h"
 #include "overworld.h"
 #include "party_menu.h"
+#include "player_transform.h"
+#include "pokemon.h"
 #include "random.h"
 #include "rotating_gate.h"
 #include "rtc.h"
@@ -35,6 +37,7 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/trainer_types.h"
+#include "constants/flags.h"
 
 #define NUM_FORCED_MOVEMENTS 18
 #define NUM_ACRO_BIKE_COLLISIONS 5
@@ -651,7 +654,10 @@ static u8 CheckMovementInputNotOnBike(u8 direction)
 
 static void PlayerNotOnBikeNotMoving(u8 direction, u16 heldKeys)
 {
-    PlayerFaceDirection(GetPlayerFacingDirection());
+    if (FlagGet(FLAG_PLAYER_IS_POKEMON) && !FlagGet(FLAG_DEFER_TRANSFORM))
+        PlayerSetAnimId(GetIdleMovementAction(GetPlayerFacingDirection()), COPY_MOVE_FACE);
+    else
+        PlayerFaceDirection(GetPlayerFacingDirection());
 }
 
 void UpdateSpinData(void)
@@ -1148,7 +1154,8 @@ static bool8 PlayerAnimIsMultiFrameStationary(void)
      || (movementActionId >= MOVEMENT_ACTION_DELAY_1 && movementActionId <= MOVEMENT_ACTION_DELAY_16)
      || (movementActionId >= MOVEMENT_ACTION_WALK_IN_PLACE_SLOW_DOWN && movementActionId <= MOVEMENT_ACTION_WALK_IN_PLACE_FASTER_RIGHT)
      || (movementActionId >= MOVEMENT_ACTION_ACRO_WHEELIE_FACE_DOWN && movementActionId <= MOVEMENT_ACTION_ACRO_END_WHEELIE_FACE_RIGHT)
-     || (movementActionId >= MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_DOWN && movementActionId <= MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_RIGHT))
+     || (movementActionId >= MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_DOWN && movementActionId <= MOVEMENT_ACTION_ACRO_WHEELIE_IN_PLACE_RIGHT)
+     || (movementActionId >= MOVEMENT_ACTION_IDLE_LEFT && movementActionId <= MOVEMENT_ACTION_IDLE_DOWN ))
         return TRUE;
     else
         return FALSE;
@@ -1236,7 +1243,11 @@ void PlayerWalkFaster(u8 direction)
 
 static void PlayerRun(u8 direction)
 {
+  if(FlagGet(FLAG_PLAYER_IS_POKEMON))
+    PlayerSetAnimId(GetWalkFastMovementAction(direction), COPY_MOVE_WALK);
+  else
     PlayerSetAnimId(GetPlayerRunMovementAction(direction), COPY_MOVE_WALK);
+
 }
 
 void PlayerOnBikeCollide(u8 direction)
@@ -1508,6 +1519,8 @@ u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 
 u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 {
+    if(FlagGet(FLAG_PLAYER_IS_POKEMON))
+      return PokemonToGraphicsId(GetCurrentlyTransformedPokemon());
     return sPlayerAvatarGfxIds[state][gender];
 }
 
@@ -1523,6 +1536,8 @@ u16 GetRSAvatarGraphicsIdByGender(u8 gender)
 
 u16 GetPlayerAvatarGraphicsIdByStateId(u8 state)
 {
+    if (FlagGet(FLAG_PLAYER_IS_POKEMON))
+        return GetPlayerAvatarGraphicsIdByStateIdAndGender(state, gSaveBlock2Ptr->playerGender);
     return GetPlayerAvatarGraphicsIdByStateIdAndGender(state, gPlayerAvatar.gender);
 }
 
@@ -1659,6 +1674,7 @@ void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender)
     gPlayerAvatar.gender = gender;
     SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_CONTROLLABLE | PLAYER_AVATAR_FLAG_ON_FOOT);
     CreateFollowerNPCAvatar();
+    FlagClear(FLAG_DEFER_TRANSFORM);
 }
 
 void SetPlayerInvisibility(bool8 invisible)

@@ -46,6 +46,7 @@
 #include "oras_dowse.h"
 #include "palette.h"
 #include "play_time.h"
+#include "player_transform.h"
 #include "pokedex.h"
 #include "pokemon_icon.h"
 #include "random.h"
@@ -1679,13 +1680,20 @@ void UpdateTimeOfDay(void)
 #undef DEFAULT_WEIGHT
 
 // Whether a map type is naturally lit/outside
-bool32 MapHasNaturalLight(enum MapType mapType)
+bool32 MapHasOutdoorNaturalLight(enum MapType mapType)
 {
     return (OW_ENABLE_DNS
          && (mapType == MAP_TYPE_TOWN
           || mapType == MAP_TYPE_CITY
           || mapType == MAP_TYPE_ROUTE
-          || mapType == MAP_TYPE_OCEAN_ROUTE
+          || mapType == MAP_TYPE_OCEAN_ROUTE));
+}
+
+// Whether a map type is naturally lit/outside (includes caves for applying DNS tinting)
+bool32 MapHasNaturalLight(enum MapType mapType)
+{
+    return (OW_ENABLE_DNS
+         && (MapHasOutdoorNaturalLight(mapType)
           || mapType == MAP_TYPE_UNDERGROUND
           || mapType == MAP_TYPE_UNDERWATER));
 }
@@ -1826,6 +1834,7 @@ static void OverworldBasic(void)
            ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
         }
     }
+    PlayerAvatarHandleBob();
 }
 
 // This CB2 is used when starting

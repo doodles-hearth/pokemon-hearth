@@ -1,1 +1,171 @@
-mapscripts SabersideTown_House6_MapScripts {}
+const FLAG_HIDE_LOST_GIRL = FLAG_TEMP_1
+const FLAG_HIDE_CARBINK = FLAG_TEMP_2
+
+mapscripts SabersideTown_House6_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION{
+        setflag(FLAG_HIDE_LOST_GIRL)
+        setflag(FLAG_HIDE_CARBINK)
+    }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_SABERSIDE_LOST_GIRL_QUEST_STATE, 3: SabersideTown_House6_EventScript_BroughtLittleGirlBack
+    ]
+}
+
+script SabersideTown_House6_EventScript_BroughtLittleGirlBack {
+    lockall
+    waitse
+    playse(SE_PIN)
+    applymovement(LOCALID_SABERSIDE_LOST_GIRL_MOM, moves(face_down, emote_exclamation_mark, delay_16 * 6))
+    waitmovement(LOCALID_SABERSIDE_LOST_GIRL_MOM)
+
+    applymovement(LOCALID_PLAYER, moves(walk_up))
+    waitmovement(LOCALID_PLAYER)
+
+    playse(SE_EXIT)
+    clearflag(FLAG_HIDE_LOST_GIRL)
+    addobject(LOCALID_SABERSIDE_HOUSE_LOST_GIRL)
+    waitse
+    
+    applymovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL, moves(walk_right * 2, walk_up * 2))
+
+    delay(16)
+
+    clearflag(FLAG_HIDE_CARBINK)
+    addobject(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK)
+
+    applymovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK, moves(walk_right * 2, walk_up, walk_right, walk_up))
+    waitmovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK)
+
+    applymovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL, moves(walk_in_place_fast_up))
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Look mom, I have a Carbink now!\nThis nice Wielder caught it for me!"
+    ))
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(LOCALID_SABERSIDE_LOST_GIRL_MOM, moves(emote_sad))
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}{SPEAKER NAME_WOMAN}Baby girl, don't go off like that, I was so worried!"
+    ))
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL, moves(emote_sad))
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Sorry, mom… But the Carbink are my friends, I wanna see them again!"
+    ))
+    closemessage
+    
+    applymovement(LOCALID_SABERSIDE_LOST_GIRL_MOM, moves(walk_in_place_fast_down))
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}{SPEAKER NAME_WOMAN}Well, you could tag along with your father sometimes?"
+    ))
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL, moves(emote_happy))
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}YAY!! Okay Carbink and I are gonna play outside see ya!"
+    ))
+    closemessage
+
+    applymovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL, moves(walk_fast_down * 2, walk_fast_left * 2, face_down))
+    waitmovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL)
+    removeobject(LOCALID_SABERSIDE_HOUSE_LOST_GIRL)
+	playse(SE_EXIT)
+    waitse
+
+    playse(SE_PIN)
+    applymovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK, moves(face_down, emote_exclamation_mark, delay_16 * 6))
+    waitmovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK)
+    playmoncry(SPECIES_CARBINK, CRY_MODE_ROAR_1)
+    applymovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK, moves(walk_fast_down * 2, walk_fast_left * 3, face_down))
+    waitmovement(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK)
+    removeobject(LOCALID_SABERSIDE_HOUSE_LOST_GIRL_CARBINK)
+    playse(SE_EXIT)
+    waitse
+
+    playse(SE_PIN)
+    applymovement(LOCALID_SABERSIDE_LOST_GIRL_MOM, moves(emote_sweat))
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}{SPEAKER NAME_WOMAN}Sigh…"
+    ))
+    closemessage
+    waitmovement(LOCALID_SABERSIDE_LOST_GIRL_MOM)
+    applymovement(LOCALID_SABERSIDE_LOST_GIRL_MOM, moves(walk_down * 2, walk_left))
+    waitmovement(LOCALID_SABERSIDE_LOST_GIRL_MOM)
+    applymovement(LOCALID_PLAYER, moves(face_right))
+    
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}{SPEAKER NAME_WOMAN}Thank you for bringing her back safely, truly.\p"
+        "So she has a Pokémon now, huh…\nI suppose that'll be good for her.\p"
+        "Take this, for your trouble.\nMy husband found it in the Quarry."
+    ))
+    closemessage
+
+    giveitem(ITEM_DUSK_STONE)
+
+    applymovement(LOCALID_SABERSIDE_LOST_GIRL_MOM, moves(walk_right, walk_up * 2, walk_in_place_fast_left))
+
+    setvar(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE, 4)
+
+    releaseall
+}
+
+script SabersideTown_EventScript_LostGirlMom {
+    lock
+    switch(var(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE))
+    {
+        case 0:
+            faceplayer
+
+            waitse
+            playse(SE_PIN)
+            applymovement(VAR_LAST_TALKED, moves(emote_sad))
+
+            msgbox((
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}{SPEAKER NAME_WOMAN}You haven't seen a little girl, have\nyou?\p"
+                "My daughter was “playing Carbink” near\nthe Quarry, but she never came home…\l"
+                "I'm so terribly worried!\p"
+                "I can't leave my house in case she\ncomes back…\l"
+                "Could you please look for her?"
+            ))
+            closemessage
+
+            setvar(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE, 1)
+        case 1:
+            faceplayer
+
+            waitse
+            playse(SE_PIN)
+            applymovement(VAR_LAST_TALKED, moves(emote_sad))
+
+            msgbox((
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}{SPEAKER NAME_WOMAN}All on her own in the dark Quarry…\nShe must be so frightened…"
+            ))
+            closemessage
+        case 2:
+            faceplayer
+
+            waitse
+            playse(SE_PIN)
+            applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
+            waitmovement(0)
+            waitse
+
+            msgbox(format(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}{SPEAKER NAME_WOMAN}You found her?! Well, why didn't you bring her back, then?\p"
+                "What? She wants a Carbink? I…\nJust…\p"
+                "Bring my daughter back, please!"
+            ))
+            closemessage
+        case 4:
+            faceplayer
+
+            msgbox((
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}{SPEAKER NAME_WOMAN}It's reassuring to know my daughter\nhas a tamed Pokémon to protect her."
+            ))
+            closemessage
+    }
+    release
+}

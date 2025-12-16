@@ -24,8 +24,8 @@
 #define TRAINER_HAGANE                       18
 #define TRAINER_HARUKI                       19
 #define TRAINER_RYOUI                        20
-#define TRAINER_GRUNT_MUSEUM_2               21
-#define TRAINER_GRUNT_SPACE_CENTER_1         22
+#define TRAINER_HARUTO                       21
+#define TRAINER_KOTARO                       22
 #define TRAINER_GRUNT_MT_PYRE_1              23
 #define TRAINER_GRUNT_MT_PYRE_2              24
 #define TRAINER_GRUNT_MT_PYRE_3              25
