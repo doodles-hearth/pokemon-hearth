@@ -24213,6 +24213,32 @@ gBattleAnimMove_HeatWave::
 	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 60, 2560, 96, 1
 	end
 
+gBattleAnimMove_SmokeBomb::
+	loadspritegfx ANIM_TAG_FLYING_DIRT
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_FLYING_DIRT, 0, 6, 6, RGB_BLACK
+	createvisualtask AnimTask_HazeScrollingFog, 5
+	createvisualtask AnimTask_BlendBackground, 6, 6, RGB_BLACK
+  delay 90
+	panse SE_M_HEAT_WAVE, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, +2, 0
+	delay 8
+	createvisualtask AnimTask_MoveHeatWaveTargets, 5
+	delay 24
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 10, 2304, 96, 1
+	delay 20
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 90, 2048, 96, 1
+	delay 20
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 50, 2560, 96, 1
+	delay 20
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 20, 2304, 96, 1
+	delay 20
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 70, 1984, 96, 1
+	delay 20
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 0, 2816, 96, 1
+	delay 20
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 60, 2560, 96, 1
+	end
+
+
 @ Also used by Hail weather
 gBattleAnimMove_Hail::
 	loadspritegfx ANIM_TAG_HAIL
@@ -31355,6 +31381,9 @@ gBattleAnimGeneral_Snow::
 
 gBattleAnimGeneral_Fog::
 	goto gBattleAnimMove_Haze
+
+gBattleAnimGeneral_Smoke::
+  goto gBattleAnimMove_SmokeBomb
 
 gBattleAnimGeneral_LeechSeedDrain::
 	createvisualtask AnimTask_GetBattlersFromArg, 5
