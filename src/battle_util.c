@@ -202,6 +202,15 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
         .animation = B_ANIM_FOG_CONTINUES,
     },
 
+    [BATTLE_WEATHER_SMOKE] =
+    {
+        .flag = B_WEATHER_SMOKE,
+        .rock = HOLD_EFFECT_NONE,
+        .endMessage = B_MSG_WEATHER_END_SMOKE,
+        .continuesMessage = B_MSG_WEATHER_TURN_SMOKE,
+        .animation = B_ANIM_SMOKE_CONTINUES,
+    },
+
     [BATTLE_WEATHER_STRONG_WINDS] =
     {
         .flag = B_WEATHER_STRONG_WINDS,
