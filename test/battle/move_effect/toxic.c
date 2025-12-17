@@ -52,8 +52,13 @@ SINGLE_BATTLE_TEST("Toxic cannot miss if used by a Poison-type (Gen6+)")
     PARAMETRIZE { species = SPECIES_WOBBUFFET; hit = FALSE; gen = GEN_6; }
     PARAMETRIZE { species = SPECIES_NIDORAN; hit = TRUE;  gen = GEN_6; }
     GIVEN {
+<<<<<<< HEAD
         WITH_CONFIG(GEN_CONFIG_TOXIC_NEVER_MISS, gen);
         ASSUME(GetSpeciesType(SPECIES_NIDORAN, 0) == TYPE_POISON);
+=======
+        WITH_CONFIG(CONFIG_TOXIC_NEVER_MISS, gen);
+        ASSUME(GetSpeciesType(SPECIES_NIDORAN_M, 0) == TYPE_POISON);
+>>>>>>> bf0e1b1a8627b0855796b707aaf7d461d9e761e9
         PLAYER(species);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
