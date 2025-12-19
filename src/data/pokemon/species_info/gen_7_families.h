@@ -3302,7 +3302,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .abilities = { ABILITY_CORROSION, ABILITY_NONE, ABILITY_OBLIVIOUS },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Salandit"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Toxic Lizard"),
         .cryId = CRY_SALANDIT,
         .natDexNum = NATIONAL_DEX_SALANDIT,
         .categoryName = _("Toxic Lizard"),
@@ -3351,6 +3351,8 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .eggMoveLearnset = sSalanditEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 33, SPECIES_SALAZZLE, CONDITIONS({IF_GENDER, MON_FEMALE})},
                                 {EVO_NONE, 0, SPECIES_SALAZZLE_TOTEM}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
     [SPECIES_SALAZZLE] =
@@ -3413,6 +3415,8 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sSalazzleLevelUpLearnset,
         .teachableLearnset = sSalazzleTeachableLearnset,
         .formSpeciesIdTable = sSalanditFormSpeciesIdTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_PINK,
     },
 
     [SPECIES_SALAZZLE_TOTEM] =

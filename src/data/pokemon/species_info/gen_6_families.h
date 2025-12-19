@@ -5627,6 +5627,9 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .eggMoveLearnset = sPhantumpEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_TREVENANT},
                                 {EVO_ITEM, ITEM_LINKING_CORD, SPECIES_TREVENANT}),
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
+        .flashTintShiny = DNS_BLEND_FLASH_WHITE,
     },
 
     [SPECIES_TREVENANT] =
@@ -5698,6 +5701,9 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         )
         .levelUpLearnset = sTrevenantLevelUpLearnset,
         .teachableLearnset = sTrevenantTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_RED,
+        .flashTintShiny = DNS_BLEND_FLASH_PURPLE,
     },
 #endif //P_FAMILY_PHANTUMP
 
