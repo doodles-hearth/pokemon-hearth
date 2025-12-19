@@ -17438,6 +17438,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_MAGMORTAR, CONDITIONS({IF_HOLD_ITEM, ITEM_MAGMARIZER})},
                                 {EVO_ITEM, ITEM_MAGMARIZER, SPECIES_MAGMORTAR}),
     #endif
+        .glows = 1,
         .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
@@ -18782,6 +18783,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         )
         .levelUpLearnset = sJolteonLevelUpLearnset,
         .teachableLearnset = sJolteonTeachableLearnset,
+        .glows = 1,
     },
 
     [SPECIES_FLAREON] =
@@ -18989,6 +18991,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .teachableLearnset = sUmbreonTeachableLearnset,
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_YELLOW,
+        .flashTintShiny = DNS_BLEND_FLASH_BLUE,
     },
 #endif //P_GEN_2_CROSS_EVOS
 
