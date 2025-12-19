@@ -5445,8 +5445,6 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .eggMoveLearnset = sDarumakaEggMoveLearnset,
         .formSpeciesIdTable = sDarumakaFormSpeciesIdTable,
         .evolutions = EVOLUTION({EVO_LEVEL, 35, SPECIES_DARMANITAN_STANDARD}),
-        .glows = 1,
-        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
     [SPECIES_DARMANITAN_STANDARD] =

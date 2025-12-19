@@ -4692,6 +4692,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .formChangeTable = sSableyeFormChangeTable,
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_BLUE,
+        .flashTintShiny = DNS_BLEND_FLASH_RED,
     },
 
 #if P_MEGA_EVOLUTIONS

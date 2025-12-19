@@ -435,8 +435,6 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .levelUpLearnset = sBraixenLevelUpLearnset,
         .teachableLearnset = sBraixenTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 36, SPECIES_DELPHOX}),
-        .glows = 1,
-        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 
     [SPECIES_DELPHOX] =

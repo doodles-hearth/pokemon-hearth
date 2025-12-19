@@ -4015,6 +4015,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .teachableLearnset = sBronzongTeachableLearnset,
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_RED,
+        .flashTintShiny = DNS_BLEND_FLASH_GREEN,
     },
 #endif //P_FAMILY_BRONZOR
 
@@ -4172,7 +4173,8 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .teachableLearnset = sSpiritombTeachableLearnset,
         .eggMoveLearnset = sSpiritombEggMoveLearnset,
         .glows = 1,
-        .flashTint = DNS_BLEND_FLASH_PURPLE,
+        .flashTint = DNS_BLEND_FLASH_PINK,
+        .flashTintShiny = DNS_BLEND_FLASH_BLUE,
     },
 #endif //P_FAMILY_SPIRITOMB
 
