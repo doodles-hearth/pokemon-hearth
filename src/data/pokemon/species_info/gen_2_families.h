@@ -1627,7 +1627,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .abilities = { ABILITY_VOLT_ABSORB, ABILITY_ILLUMINATE, ABILITY_WATER_ABSORB },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Chinchou"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Lamp Fish"),
         .cryId = CRY_CHINCHOU,
         .natDexNum = NATIONAL_DEX_CHINCHOU,
         .categoryName = _("Angler"),
@@ -1679,6 +1679,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_LANTURN}),
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_YELLOW,
+        .flashTintShiny = DNS_BLEND_FLASH_WHITE,
     },
 
     [SPECIES_LANTURN] =
@@ -1702,7 +1703,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .abilities = { ABILITY_VOLT_ABSORB, ABILITY_ILLUMINATE, ABILITY_WATER_ABSORB },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Lanturn"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Lantern Fish"),
         .cryId = CRY_LANTURN,
         .natDexNum = NATIONAL_DEX_LANTURN,
         .categoryName = _("Light"),
@@ -1752,6 +1753,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sLanturnTeachableLearnset,
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_YELLOW,
+        .flashTintShiny = DNS_BLEND_FLASH_WHITE,
     },
 #endif //P_FAMILY_CHINCHOU
 
@@ -6527,6 +6529,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_MAGCARGO}),
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_RED,
+        .flashTintShiny = DNS_BLEND_FLASH_WHITE,
     },
 
     [SPECIES_MAGCARGO] =
@@ -6606,6 +6609,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sMagcargoTeachableLearnset,
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_RED,
+        .flashTintShiny = DNS_BLEND_FLASH_WHITE,
     },
 #endif //P_FAMILY_SLUGMA
 
