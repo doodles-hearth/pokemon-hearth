@@ -31385,6 +31385,9 @@ gBattleAnimGeneral_Fog::
 gBattleAnimGeneral_Smoke::
   goto gBattleAnimMove_SmokeBomb
 
+gBattleAnimGeneral_Explosion::
+  goto gBattleAnimMove_Explosion
+
 gBattleAnimGeneral_LeechSeedDrain::
 	createvisualtask AnimTask_GetBattlersFromArg, 5
 	delay 0

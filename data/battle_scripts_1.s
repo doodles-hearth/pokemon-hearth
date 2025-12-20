@@ -2566,6 +2566,7 @@ BattleScript_FaintAttackerForExplosion::
 BattleScript_SmokeExplosion::
   printstring STRINGID_SMOKEEXPLOSION
   waitmessage B_WAIT_TIME_LONG
+  playanimation BS_BATTLER_0, B_ANIM_EXPLOSION
   setbyte gBattlerTarget, 0
 
 BattleScript_SmokeExplosionLoop::

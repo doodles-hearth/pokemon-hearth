@@ -256,6 +256,7 @@ static const u8* const sBattleAnims_General[NUM_B_ANIMS_GENERAL] =
     [B_ANIM_SIMPLE_HEAL]            = gBattleAnimGeneral_SimpleHeal,
     [B_ANIM_POWER_CONSTRUCT]        = gBattleAnimGeneral_PowerConstruct,
     [B_ANIM_SMOKE_CONTINUES]        = gBattleAnimGeneral_Smoke,
+    [B_ANIM_EXPLOSION]              = gBattleAnimGeneral_Explosion,
 };
 
 static const u8* const sBattleAnims_Special[NUM_B_ANIMS_SPECIAL] =
