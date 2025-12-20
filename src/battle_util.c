@@ -2762,7 +2762,21 @@ static enum MoveCanceler CancelerPowderStatus(struct BattleContext *ctx)
         gHitMarker |= HITMARKER_UNABLE_TO_USE_MOVE;
         return MOVE_STEP_BREAK;
     }
+
+    if (ShouldSmokeExplode())
+        gBattleStruct->trySmokeExplosion = TRUE;
+
     return MOVE_STEP_SUCCESS;
+}
+
+bool32 ShouldSmokeExplode()
+{
+    bool32 isFireMove = GetMoveType(gCurrentMove) == TYPE_FIRE;
+    bool32 isSmokeWeather = GetCurrentBattleWeather() == BATTLE_WEATHER_SMOKE;
+
+    if (isFireMove && isSmokeWeather && HasWeatherEffect())
+        return TRUE;
+    return FALSE;
 }
 
 bool32 IsDazzlingAbility(enum Ability ability)

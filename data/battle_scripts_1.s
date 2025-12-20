@@ -2563,6 +2563,22 @@ BattleScript_FaintAttackerForExplosion::
 	tryfaintmon BS_ATTACKER
 	return
 
+BattleScript_SmokeExplosion::
+  printstring STRINGID_SMOKEEXPLOSION
+  waitmessage B_WAIT_TIME_LONG
+  setbyte gBattlerTarget, 0
+
+BattleScript_SmokeExplosionLoop::
+  jumpifabsent BS_TARGET, BattleScript_SmokeExplosionLoopIncrement
+  healthbarupdate BS_TARGET, PASSIVE_HP_UPDATE
+  datahpupdate BS_TARGET, PASSIVE_HP_UPDATE
+  tryfaintmon BS_TARGET
+
+BattleScript_SmokeExplosionLoopIncrement::
+  addbyte gBattlerTarget, 1
+  jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SmokeExplosionLoop
+  end2
+
 BattleScript_MaxHp50Recoil::
 	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
 	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE

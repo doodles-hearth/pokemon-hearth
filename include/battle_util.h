@@ -431,6 +431,7 @@ bool32 IsAffectedByPowderMove(u32 battler, u32 ability, enum HoldEffect holdEffe
 u32 GetNaturePowerMove(u32 battler);
 u32 GetNaturePowerMove(u32 battler);
 void RemoveAbilityFlags(u32 battler);
+bool32 ShouldSmokeExplode();
 bool32 IsDazzlingAbility(enum Ability ability);
 bool32 IsAllowedToUseBag(void);
 bool32 IsAnyTargetTurnDamaged(u32 battlerAtk);
