@@ -6747,6 +6747,25 @@ static void Cmd_moveend(void)
                 effect = TRUE;
             gBattleScripting.moveendState++;
             break;
+
+        case MOVEEND_SMOKE_EXPLOSION:
+            if (gBattleStruct->trySmokeExplosion) {
+                gBattleStruct->trySmokeExplosion = FALSE;
+                for (u32 i = 0; i < gBattlersCount; i++) {
+                    if (!(gAbsentBattlerFlags & (1u << i)) && gBattleMons[i].hp != 0) {
+                        gBattleStruct->passiveHpUpdate[i] = (GetNonDynamaxMaxHP(i) / 2) + 1;
+                        // if (gBattleMons[i].hp <= gBattleStruct->passiveHpUpdate[i])
+                        //     gHitMarker |= HITMARKER_FAINTED(i);
+                    }
+                    else {
+                        gBattleStruct->passiveHpUpdate[i] = 0;
+                    }
+                }
+                BattleScriptCall(BattleScript_SmokeExplosion);
+                return;
+            }
+            gBattleScripting.moveendState++;
+            break;
         case MOVEEND_FORM_CHANGE:
             if (TryBattleFormChange(gBattlerAttacker, FORM_CHANGE_BATTLE_AFTER_MOVE))
             {
