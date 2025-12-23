@@ -25,7 +25,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "CrobatHideout_1F_EventScript_Grunt1",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -35,6 +35,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_HIDEOUT_FIRST_GRUNT",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 3,
       "y": 7,
@@ -45,7 +46,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_TEMP_5",
+      "flag": "FLAG_CROBAT_HIDEOUT_SEEN_BY_GRUNT",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -65,7 +66,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrobatHideout_1F_EventScript_GruntPaintingPokeballs",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -85,7 +86,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "CrobatHideout_1F_EventScript_GruntDoubleGirl",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -125,7 +126,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -145,7 +146,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -165,7 +166,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -185,7 +186,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrobatHideout_1F_EventScript_Grunt1",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -205,7 +206,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "5",
       "script": "CrobatHideout_1F_EventScript_GruntLaundryRoom",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -225,7 +226,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
       "script": "CrobatHideout_1F_EventScript_GruntDoubleGuy",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -245,7 +246,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
       "script": "CrobatHideout_1F_EventScript_GruntNearReunionRoom",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT",
+      "flag": "FLAG_TEMP_6",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -483,7 +484,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT"
+      "flag": "FLAG_TEMP_6"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(POOCHYENA)",
@@ -496,7 +497,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT"
+      "flag": "FLAG_TEMP_6"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(POOCHYENA)",
@@ -509,7 +510,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT"
+      "flag": "FLAG_TEMP_6"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -548,7 +549,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrobatHideout_1F_EventScript_Nickit",
-      "flag": "FLAG_CLEARED_CROBAT_HIDEOUT"
+      "flag": "FLAG_TEMP_6"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
