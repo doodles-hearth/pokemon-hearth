@@ -1,7 +1,5 @@
 const LOCALID_SAMURAI = 14
 
-const LOCALID_FIRST_GRUNT = 2
-
 const LOCALID_4V1_GRUNT_1 = 15
 const LOCALID_4V1_GRUNT_2 = 16
 const LOCALID_4V1_GRUNT_3 = 17
@@ -23,16 +21,17 @@ const FLAG_HIDE_GOLBAT_ADMINS = FLAG_TEMP_1
 const FLAG_HIDE_SAMURAI = FLAG_TEMP_2
 const FLAG_TALKED_TO_SAMURAI_BEFORE_ENTERING_BOSS_ROOM = FLAG_TEMP_3
 const FLAG_HIDE_4V1_GRUNTS = FLAG_TEMP_4
-const FLAG_HIDE_FIRST_GRUNT = FLAG_TEMP_5
+const FLAG_HIDE_ALL_OTHER_GRUNTS = FLAG_TEMP_6
 
 mapscripts CrobatHideout_1F_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		if (flag(FLAG_CROBAT_HIDEOUT_SEEN_BY_GRUNT)) {
-			setflag(FLAG_HIDE_FIRST_GRUNT)
-		}
 		setflag(FLAG_HIDE_GOLBAT_ADMINS)
 		setflag(FLAG_HIDE_SAMURAI)
 		setflag(FLAG_HIDE_4V1_GRUNTS)
+
+		if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
+			setflag(FLAG_HIDE_ALL_OTHER_GRUNTS)
+		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_CROBAT_HIDEOUT_STATE, 0: CrobatHideout_1F_SeenByGrunt
@@ -47,8 +46,8 @@ script CrobatHideout_1F_SeenByGrunt {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	playse(SE_PIN)
-	applymovement(LOCALID_FIRST_GRUNT, moves(face_up, emote_exclamation_mark, delay_16 * 3))
-	waitmovement(LOCALID_FIRST_GRUNT)
+	applymovement(LOCALID_YIFU_HIDEOUT_FIRST_GRUNT, moves(face_up, emote_exclamation_mark, delay_16 * 3))
+	waitmovement(LOCALID_YIFU_HIDEOUT_FIRST_GRUNT)
 	waitse
 
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
@@ -93,7 +92,7 @@ script CrobatHideout_1F_SeenByGrunt {
 	closemessage
 
 	playse(SE_PIN)
-	applymovement(LOCALID_FIRST_GRUNT, moves(emote_exclamation_mark, delay_16 * 3, lock_facing_direction, walk_down, unlock_facing_direction))
+	applymovement(LOCALID_YIFU_HIDEOUT_FIRST_GRUNT, moves(emote_exclamation_mark, delay_16 * 3, lock_facing_direction, walk_down, unlock_facing_direction))
 	waitmovement(0)
 	waitse
 
@@ -104,10 +103,9 @@ script CrobatHideout_1F_SeenByGrunt {
 	))
 	closemessage
 
-	applymovement(LOCALID_FIRST_GRUNT, moves(walk_fast_down * 4, delay_16 * 3))
-	waitmovement(LOCALID_FIRST_GRUNT)
-	removeobject(LOCALID_FIRST_GRUNT)
-
+	applymovement(LOCALID_YIFU_HIDEOUT_FIRST_GRUNT, moves(walk_fast_down * 4, delay_16 * 3))
+	waitmovement(LOCALID_YIFU_HIDEOUT_FIRST_GRUNT)
+	removeobject(LOCALID_YIFU_HIDEOUT_FIRST_GRUNT)
 	setflag(FLAG_CROBAT_HIDEOUT_SEEN_BY_GRUNT)
 	setvar(VAR_CROBAT_HIDEOUT_STATE, 1)
 	releaseall
@@ -541,8 +539,6 @@ script CrobatHideout_1F_BattleSamuraiBackToBack {
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI EMOTE_NORMAL}Right! Follow me, {PLAYER}!"
 	))
 	closemessage
-
-	setvar(VAR_CROBAT_HIDEOUT_STATE, 2)
 }
 
 script CrobatHideout_1F_EnteredBossRoomWithSamurai {

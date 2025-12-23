@@ -4,16 +4,15 @@ CrobatHideout_1F_MapScripts::
 	.byte 0
 
 CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION:
-	goto_if_set FLAG_CROBAT_HIDEOUT_SEEN_BY_GRUNT, CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2
-CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
 	setflag FLAG_TEMP_1
 	setflag FLAG_TEMP_2
 	setflag FLAG_TEMP_4
+	goto_if_set FLAG_CLEARED_CROBAT_HIDEOUT, CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
 	return
 
-CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_2:
-	setflag FLAG_TEMP_5
-	goto CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_1
+CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_TRANSITION_1:
+	setflag FLAG_TEMP_6
+	return
 
 CrobatHideout_1F_MapScripts_MAP_SCRIPT_ON_FRAME_TABLE:
 	map_script_2 VAR_CROBAT_HIDEOUT_STATE, 0, CrobatHideout_1F_SeenByGrunt
@@ -26,8 +25,8 @@ CrobatHideout_1F_SeenByGrunt::
 	applymovement OBJ_EVENT_ID_PLAYER, CrobatHideout_1F_SeenByGrunt_Movement_0
 	waitmovement OBJ_EVENT_ID_PLAYER
 	playse SE_PIN
-	applymovement 2, CrobatHideout_1F_SeenByGrunt_Movement_1
-	waitmovement 2
+	applymovement LOCALID_YIFU_HIDEOUT_FIRST_GRUNT, CrobatHideout_1F_SeenByGrunt_Movement_1
+	waitmovement LOCALID_YIFU_HIDEOUT_FIRST_GRUNT
 	waitse
 	setspeaker SP_NAME_ZUBAT_GRUNT
 	msgbox CrobatHideout_1F_SeenByGrunt_Text_0
@@ -40,15 +39,15 @@ CrobatHideout_1F_SeenByGrunt::
 CrobatHideout_1F_SeenByGrunt_1:
 	closemessage
 	playse SE_PIN
-	applymovement 2, CrobatHideout_1F_SeenByGrunt_Movement_2
+	applymovement LOCALID_YIFU_HIDEOUT_FIRST_GRUNT, CrobatHideout_1F_SeenByGrunt_Movement_2
 	waitmovement 0
 	waitse
 	setspeaker SP_NAME_ZUBAT_GRUNT
 	msgbox CrobatHideout_1F_SeenByGrunt_Text_7
 	closemessage
-	applymovement 2, CrobatHideout_1F_SeenByGrunt_Movement_3
-	waitmovement 2
-	removeobject 2
+	applymovement LOCALID_YIFU_HIDEOUT_FIRST_GRUNT, CrobatHideout_1F_SeenByGrunt_Movement_3
+	waitmovement LOCALID_YIFU_HIDEOUT_FIRST_GRUNT
+	removeobject LOCALID_YIFU_HIDEOUT_FIRST_GRUNT
 	setflag FLAG_CROBAT_HIDEOUT_SEEN_BY_GRUNT
 	setvar VAR_CROBAT_HIDEOUT_STATE, 1
 	releaseall
@@ -347,7 +346,6 @@ CrobatHideout_1F_BattleSamuraiBackToBack::
 	setspeaker SP_NAME_SAMURAI
 	msgbox CrobatHideout_1F_BattleSamuraiBackToBack_Text_4
 	closemessage
-	setvar VAR_CROBAT_HIDEOUT_STATE, 2
 	return
 
 
