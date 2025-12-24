@@ -1627,7 +1627,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .abilities = { ABILITY_VOLT_ABSORB, ABILITY_ILLUMINATE, ABILITY_WATER_ABSORB },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Chinchou"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Lamp Fish"),
         .cryId = CRY_CHINCHOU,
         .natDexNum = NATIONAL_DEX_CHINCHOU,
         .categoryName = _("Angler"),
@@ -1679,6 +1679,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .evolutions = EVOLUTION({EVO_LEVEL, 27, SPECIES_LANTURN}),
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_YELLOW,
+        .flashTintShiny = DNS_BLEND_FLASH_WHITE,
     },
 
     [SPECIES_LANTURN] =
@@ -1702,7 +1703,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .abilities = { ABILITY_VOLT_ABSORB, ABILITY_ILLUMINATE, ABILITY_WATER_ABSORB },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Lanturn"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Lantern Fish"),
         .cryId = CRY_LANTURN,
         .natDexNum = NATIONAL_DEX_LANTURN,
         .categoryName = _("Light"),
@@ -1752,6 +1753,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sLanturnTeachableLearnset,
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_YELLOW,
+        .flashTintShiny = DNS_BLEND_FLASH_WHITE,
     },
 #endif //P_FAMILY_CHINCHOU
 
@@ -6191,7 +6193,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = TRUE,
         .speciesName = _("Teddiursa"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Little Bear"),
         .cryId = CRY_TEDDIURSA,
         .natDexNum = NATIONAL_DEX_TEDDIURSA,
         .categoryName = _("Little Bear"),
@@ -6328,6 +6330,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_PEAT_BLOCK, SPECIES_URSALUNA, CONDITIONS({IF_REGION, REGION_HISUI}, {IF_TIME, TIME_NIGHT})},
                                 {EVO_NONE, 0, SPECIES_URSALUNA_BLOODMOON}),
     #endif
+        .glows = 1,
         .flashTint = DNS_BLEND_FLASH_YELLOW,
     },
 
@@ -6394,6 +6397,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sUrsalunaLevelUpLearnset,
         .teachableLearnset = sUrsalunaTeachableLearnset,
         .formSpeciesIdTable = sUrsalunaFormSpeciesIdTable,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_YELLOW,
     },
 
     [SPECIES_URSALUNA_BLOODMOON] =
@@ -6527,6 +6532,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_MAGCARGO}),
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_RED,
+        .flashTintShiny = DNS_BLEND_FLASH_WHITE,
     },
 
     [SPECIES_MAGCARGO] =
@@ -6606,6 +6612,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sMagcargoTeachableLearnset,
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_RED,
+        .flashTintShiny = DNS_BLEND_FLASH_WHITE,
     },
 #endif //P_FAMILY_SLUGMA
 
@@ -8953,7 +8960,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_REGENERATOR },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Ho-Oh"),
-        .unknownName = _("??????????"),
+        .unknownName = _("Holy Bird"),
         .cryId = CRY_HO_OH,
         .natDexNum = NATIONAL_DEX_HO_OH,
         .categoryName = _("Rainbow"),
@@ -9002,6 +9009,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sHoOhLevelUpLearnset,
         .teachableLearnset = sHoOhTeachableLearnset,
+        .glows = 1,
+        .flashTint = DNS_BLEND_FLASH_ORANGE,
     },
 #endif //P_FAMILY_HO_OH
 

@@ -566,6 +566,7 @@ gSongTable::
 	song mus_rg_slow_pallet, MUSIC_PLAYER_BGM, 0
 	song mus_rg_teachy_tv_menu, MUSIC_PLAYER_BGM, 0
 	song mus_hh_sunrise, MUSIC_PLAYER_BGM, 0
+	song mus_hh_chii_town, MUSIC_PLAYER_BGM, 0
 	song ph_trap_blend, MUSIC_PLAYER_SE2, 2
 	song ph_trap_held, MUSIC_PLAYER_SE2, 2
 	song ph_trap_solo, MUSIC_PLAYER_SE2, 2
