@@ -614,6 +614,7 @@ MUGSHOT_MINER               = 8F
 MUGSHOT_GARDENER            = 90
 MUGSHOT_FARMER              = 91
 MUGSHOT_BURGLAR             = 92
+MUGSHOT_MASAMUNE            = 93
 
 EMOTE_NORMAL = 00
 EMOTE_SEXY = 01

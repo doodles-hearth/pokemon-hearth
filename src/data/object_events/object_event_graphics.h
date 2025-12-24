@@ -301,6 +301,7 @@ const u32 gObjectEventPic_Hana[] = INCBIN_U32("graphics/object_events/pics/peopl
 const u16 gObjectEventPal_Hana[] = INCBIN_U16("graphics/trainers/palettes/leader_hana.gbapal");
 const u32 gObjectEventPic_Yutaka[] = INCBIN_U32("graphics/object_events/pics/people/gym_leaders/yutaka.4bpp");
 const u16 gObjectEventPal_Yutaka[] = INCBIN_U16("graphics/trainers/front_pics/leader_yutaka.gbapal");
+const u32 gObjectEventPic_Masamune[] = INCBIN_U32("graphics/object_events/pics/people/gym_leaders/masamune.4bpp");
 const u32 gObjectEventPic_Flannery[] = INCBIN_U32("graphics/object_events/pics/people/gym_leaders/flannery.4bpp");
 const u32 gObjectEventPic_Norman[] = INCBIN_U32("graphics/object_events/pics/people/gym_leaders/norman.4bpp");
 const u32 gObjectEventPic_Winona[] = INCBIN_U32("graphics/object_events/pics/people/gym_leaders/winona.4bpp");

@@ -17,6 +17,8 @@ static const u32 sFieldMugshotGfx_HanaNormal[] = INCBIN_U32("graphics/field_mugs
 
 static const u32 sFieldMugshotGfx_YutakaNormal[] = INCBIN_U32("graphics/field_mugshots/leader_yutaka/normal.4bpp.smol");
 
+static const u32 sFieldMugshotGfx_MasamuneNormal[] = INCBIN_U32("graphics/field_mugshots/leader_masamune/normal.4bpp.smol");
+
 static const u32 sFieldMugshotGfx_CrobatNormal[] = INCBIN_U32("graphics/field_mugshots/crobat/normal.4bpp.smol");
 
 static const u32 sFieldMugshotGfx_ZubatNormal[] = INCBIN_U32("graphics/field_mugshots/zubat/normal.4bpp.smol");
@@ -292,6 +294,14 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_YutakaNormal,
+            .pal = gObjectEventPal_Npc_Woody,
+        },
+    },
+    [MUGSHOT_MASAMUNE] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_MasamuneNormal,
             .pal = gObjectEventPal_Npc_Woody,
         },
     },

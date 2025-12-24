@@ -1112,6 +1112,10 @@ static const struct SpriteFrameImage sPicTable_Yutaka[] = {
     overworld_ascending_frames(gObjectEventPic_Yutaka, 4, 4)
 };
 
+static const struct SpriteFrameImage sPicTable_Masamune[] = {
+    overworld_ascending_frames(gObjectEventPic_Masamune, 4, 4)
+};
+
 static const struct SpriteFrameImage sPicTable_Flannery[] = {
     overworld_frame(gObjectEventPic_Flannery, 2, 4, 0),
     overworld_frame(gObjectEventPic_Flannery, 2, 4, 1),
