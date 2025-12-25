@@ -6751,14 +6751,12 @@ static void Cmd_moveend(void)
         case MOVEEND_SMOKE_EXPLOSION:
             if (gBattleStruct->trySmokeExplosion) {
                 gBattleStruct->trySmokeExplosion = FALSE;
-                for (u32 i = 0; i < gBattlersCount; i++) {
-                    if (!(gAbsentBattlerFlags & (1u << i)) && gBattleMons[i].hp != 0) {
-                        gBattleStruct->passiveHpUpdate[i] = (GetNonDynamaxMaxHP(i) / 2) + 1;
-                        // if (gBattleMons[i].hp <= gBattleStruct->passiveHpUpdate[i])
-                        //     gHitMarker |= HITMARKER_FAINTED(i);
+                for (u32 battler = 0; battler < gBattlersCount; battler++) {
+                    if (!(gAbsentBattlerFlags & (1u << battler)) && gBattleMons[battler].hp != 0) {
+                        gBattleStruct->passiveHpUpdate[battler] = CalcSmokeExplosionDamage(battler);
                     }
                     else {
-                        gBattleStruct->passiveHpUpdate[i] = 0;
+                        gBattleStruct->passiveHpUpdate[battler] = 0;
                     }
                 }
                 BattleScriptCall(BattleScript_SmokeExplosion);
