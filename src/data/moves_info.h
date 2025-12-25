@@ -23068,5 +23068,31 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_Splash,
         .fieldMove = FIELD_MOVE_WATERFALL,
+    },  
+
+    [MOVE_SMOKE_BOMB] =
+    {
+        .name = COMPOUND_STRING("Smoke Bomb"),
+        .description = COMPOUND_STRING(
+            "Releases volcanic ash\n"
+            "Fills the air with smoke"
+        ),
+        .effect = EFFECT_SMOKE_BOMB,
+        .power = 0,
+        .type = TYPE_FIRE,
+        .accuracy = 0,
+        .pp = 10,
+        .target = MOVE_TARGET_ALL_BATTLERS,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_ATK_UP_3 },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .gravityBanned = FALSE,
+        .contestEffect = CONTEST_EFFECT_BETTER_IF_LAST,
+        .contestCategory = CONTEST_CATEGORY_CUTE,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_SmokeBomb,
     },
 };

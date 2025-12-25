@@ -775,6 +775,7 @@ enum MoveWeatherChangeStringID
     B_MSG_STARTED_HAIL,
     B_MSG_STARTED_SNOW,
     B_MSG_STARTED_FOG,
+    B_MSG_STARTED_SMOKE,
 };
 
 // gWeatherEndsStringIds

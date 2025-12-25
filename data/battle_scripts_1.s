@@ -3638,6 +3638,12 @@ BattleScript_EffectSunnyDay::
 	setfieldweather BATTLE_WEATHER_SUN
 	goto BattleScript_MoveWeatherChange
 
+BattleScript_EffectSmokeBomb::
+  attackcanceler
+  call BattleScript_CheckPrimalWeather
+  setfieldweather BATTLE_WEATHER_SMOKE
+  goto BattleScript_MoveWeatherChange
+
 BattleScript_ExtremelyHarshSunlightWasNotLessened:
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_EXTREMELYHARSHSUNLIGHTWASNOTLESSENED

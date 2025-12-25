@@ -1004,6 +1004,7 @@ const u16 gMoveWeatherChangeStringIds[] =
     [B_MSG_STARTED_HAIL]      = STRINGID_STARTEDHAIL,
     [B_MSG_STARTED_SNOW]      = STRINGID_STARTEDSNOW,
     [B_MSG_STARTED_FOG]       = STRINGID_FOGCREPTUP, // Unused, can use for custom moves that set fog
+    [B_MSG_STARTED_SMOKE]     = STRINGID_SMOKEFILLSTHEAIR,
 };
 
 const u16 gWeatherEndsStringIds[B_MSG_WEATHER_END_COUNT] =
