@@ -31385,8 +31385,47 @@ gBattleAnimGeneral_Fog::
 gBattleAnimGeneral_Smoke::
   goto gBattleAnimMove_SmokeBomb
 
-gBattleAnimGeneral_Explosion::
-  goto gBattleAnimMove_Explosion
+gBattleAnimGeneral_SmokeExplosion::
+	loadspritegfx ANIM_TAG_EXPLOSION
+	createsprite gComplexPaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 8, 9, RGB(26, 8, 8), 8, RGB_BLACK, 8
+	createvisualtask AnimTask_ShakeMon2, 5, ANIM_PLAYER_LEFT, 8, 0, 40, 1
+	createvisualtask AnimTask_ShakeMon2, 5, ANIM_PLAYER_RIGHT, 8, 0, 40, 1
+	createvisualtask AnimTask_ShakeMon2, 5, ANIM_OPPONENT_LEFT, 8, 0, 40, 1
+	createvisualtask AnimTask_ShakeMon2, 5, ANIM_OPPONENT_RIGHT, 8, 0, 40, 1
+	call SmokeExplosion1
+	call SmokeExplosion1
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 1, 16, 16, RGB_WHITE
+	delay 50
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 3, 16, 0, RGB_WHITE
+	end
+
+SmokeExplosion1:
+	playsewithpan SE_M_EXPLOSION, SOUND_PAN_ATTACKER
+	createsprite gSmokeExplosionSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 3, 1
+  createsprite gSmokeExplosionSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 4, 1
+	delay 6
+
+	playsewithpan SE_M_EXPLOSION, SOUND_PAN_ATTACKER
+	createsprite gSmokeExplosionSpriteTemplate, ANIM_ATTACKER, 3, 24, -24, 3, 1
+	createsprite gSmokeExplosionSpriteTemplate, ANIM_ATTACKER, 3, 24, -24, 4, 1
+	delay 6
+
+	playsewithpan SE_M_EXPLOSION, SOUND_PAN_ATTACKER
+	createsprite gSmokeExplosionSpriteTemplate, ANIM_ATTACKER, 3, -16, 16, 3, 1
+	createsprite gSmokeExplosionSpriteTemplate, ANIM_ATTACKER, 3, -16, 16, 4, 1
+	delay 6
+
+	playsewithpan SE_M_EXPLOSION, SOUND_PAN_ATTACKER
+	createsprite gSmokeExplosionSpriteTemplate, ANIM_ATTACKER, 3, -24, -12, 3, 1
+	createsprite gSmokeExplosionSpriteTemplate, ANIM_ATTACKER, 3, -24, -12, 4, 1
+	delay 6
+
+	playsewithpan SE_M_EXPLOSION, SOUND_PAN_ATTACKER
+	createsprite gSmokeExplosionSpriteTemplate, ANIM_ATTACKER, 3, 16, 16, 3, 1
+	createsprite gSmokeExplosionSpriteTemplate, ANIM_ATTACKER, 3, 16, 16, 4, 1
+	delay 6
+	return
 
 gBattleAnimGeneral_LeechSeedDrain::
 	createvisualtask AnimTask_GetBattlersFromArg, 5
