@@ -68,6 +68,7 @@ static bool32 IsNonVolatileStatusBlocked(u32 battlerDef, enum Ability abilityDef
 static bool32 CanSleepDueToSleepClause(u32 battlerAtk, u32 battlerDef, enum FunctionCallOption option);
 static bool32 IsOpposingSideEmpty(u32 battler);
 static bool32 CanBattlerFormChange(u32 battler, enum FormChanges method);
+static inline void MulByTypeEffectiveness(struct DamageContext *ctx, uq4_12_t *modifier, enum Type defType);
 
 // Submoves
 static u32 GetMirrorMoveMove(void);
@@ -286,6 +287,58 @@ static u32 CalcBeatUpPower(void)
 {
     u32 species = gBattleStruct->beatUpSpecies[gBattleStruct->beatUpSlot++];
     return (GetSpeciesBaseAttack(species) / 10) + 5;
+}
+
+static uq4_12_t GetTypeEffectivenessForSmokeExplosion(u32 battler)
+{
+    uq4_12_t modifier = UQ_4_12(1.0);
+    struct DamageContext ctx = {0};
+
+    enum Type types[3];
+    enum Ability ability = gBattleMons[battler].ability;
+
+    GetBattlerTypes(battler, TRUE, types);
+
+    ctx.moveType = TYPE_FIRE;
+    ctx.updateFlags = FALSE;
+
+    MulByTypeEffectiveness(&ctx, &modifier, types[0]);
+    if (types[1] != types[0])
+        MulByTypeEffectiveness(&ctx, &modifier, types[1]);
+    if (types[2] != TYPE_MYSTERY && types[2] != types[1] && types[2] != types[0])
+        MulByTypeEffectiveness(&ctx, &modifier, types[2]);
+
+    if (ctx.moveType == TYPE_FIRE) {
+        switch (ability) {
+            case ABILITY_THICK_FAT:
+            case ABILITY_HEATPROOF:
+                modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
+            case ABILITY_FLASH_FIRE:
+            case ABILITY_OVERCOAT:
+            case ABILITY_MAGIC_GUARD:
+                modifier = UQ_4_12(0);
+            case ABILITY_WONDER_GUARD:
+                if (modifier <= UQ_4_12(1.0))
+                    modifier = UQ_4_12(0);
+            default:
+                break;
+        }
+    }
+
+    return modifier;
+}
+
+s32 CalcSmokeExplosionDamage(u32 battler)
+{
+    const u32 maxhp = GetNonDynamaxMaxHP(battler);
+    s32 dmg = ((maxhp) / 4) + 1;
+
+    uq4_12_t modifier = GetTypeEffectivenessForSmokeExplosion(battler);
+
+    dmg = uq4_12_multiply_by_int_half_up(modifier, dmg);
+
+    return dmg;
+
 }
 
 static bool32 ShouldTeraShellDistortTypeMatchups(u32 move, u32 battlerDef, enum Ability abilityDef)
@@ -2774,7 +2827,7 @@ bool32 ShouldSmokeExplode()
     bool32 isFireMove = GetMoveType(gCurrentMove) == TYPE_FIRE;
     bool32 isSmokeWeather = GetCurrentBattleWeather() == BATTLE_WEATHER_SMOKE;
 
-    if (isFireMove && isSmokeWeather && HasWeatherEffect())
+    if (isFireMove && isSmokeWeather && HasWeatherEffect() && !IsAbilityOnField(ABILITY_DAMP))
         return TRUE;
     return FALSE;
 }
@@ -3873,10 +3926,10 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                 break;
             case WEATHER_FOG_DIAGONAL:
             case WEATHER_FOG_HORIZONTAL:
-                if (B_OVERWORLD_FOG == GEN_4 && !(gBattleWeather & B_WEATHER_FOG))
+                if (B_OVERWORLD_FOG == GEN_4 && !(gBattleWeather & B_WEATHER_SMOKE))
                 {
-                    gBattleWeather = B_WEATHER_FOG;
-                    gBattleScripting.animArg1 = B_ANIM_FOG_CONTINUES;
+                    gBattleWeather = B_WEATHER_SMOKE;
+                    gBattleScripting.animArg1 = B_ANIM_SMOKE_CONTINUES;
                     effect = TRUE;
                 }
                 break;
