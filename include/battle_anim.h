@@ -153,6 +153,7 @@ void InitAndRunAnimFastLinearTranslation(struct Sprite *sprite);
 void TranslateSpriteLinearById(struct Sprite *sprite);
 void TranslateSpriteLinear(struct Sprite *sprite);
 void AnimSpriteOnMonPos(struct Sprite *sprite);
+void AnimSpriteOnBattlerPos(struct Sprite* sprite);
 void InitAnimLinearTranslationWithSpeedAndPos(struct Sprite *sprite);
 void TranslateSpriteInCircle(struct Sprite *sprite);
 void SetGrayscaleOrOriginalPalette(u16 paletteNum, bool8 restoreOriginalColor);
