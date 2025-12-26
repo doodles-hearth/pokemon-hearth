@@ -26,3 +26,24 @@ SINGLE_BATTLE_TEST("Flash Fire boosts fire type moves by 50% but no subsequent i
         EXPECT_EQ(damage[1], damage[2]);
     }
 }
+
+SINGLE_BATTLE_TEST("Flash Fire prevents damage from smoke explosion")
+{
+    GIVEN
+    {
+        PLAYER(SPECIES_VULPIX);
+        OPPONENT(SPECIES_FLAREON) { Ability(ABILITY_FLASH_FIRE); }
+    }
+    WHEN
+    {
+        TURN { MOVE(player, MOVE_SMOKE_BOMB); }
+        TURN { MOVE(opponent, MOVE_EMBER); }
+    }
+    SCENE
+    {
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_EXPLOSION);
+        s16 damage;
+        HP_BAR(opponent, captureDamage : &damage);
+        EXPECT_EQ(damage, 0);
+    }
+}
