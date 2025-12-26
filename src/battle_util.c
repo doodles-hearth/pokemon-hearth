@@ -313,6 +313,7 @@ static uq4_12_t GetTypeEffectivenessForSmokeExplosion(u32 battler)
             case ABILITY_THICK_FAT:
             case ABILITY_HEATPROOF:
                 modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
+                break;
             case ABILITY_FLASH_FIRE:
             case ABILITY_OVERCOAT:
             case ABILITY_MAGIC_GUARD:
