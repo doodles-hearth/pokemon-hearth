@@ -677,6 +677,7 @@ AI_DOUBLE_BATTLE_TEST("AI can use all moves, 801-900")
 
         // tests exist elsewhere
         case EFFECT_SNOWSCAPE:
+        case EFFECT_SMOKE_BOMB:
         case EFFECT_DRAGON_CHEER:
 
         // Skipped on purpose.
