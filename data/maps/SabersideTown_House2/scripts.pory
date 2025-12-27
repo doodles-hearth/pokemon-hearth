@@ -4,7 +4,7 @@ script SabersideTown_House2_EventScript_Miner {
     lock
     faceplayer
     msgbox(format(
-        "Saberside Town is a dream to live in for any miner.\p"
+        "{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}Saberside Town is a dream to live in for any miner.\p"
         "The quarry brims with not only the finest steel one can find, but also with precious gemstones!"
     ))
     release
@@ -14,7 +14,7 @@ script SabersideTown_House2_EventScript_Boy {
     lock
     faceplayer
     msgbox((
-        "Thanks to the commerce of ore and\nsteel, our town is very preposterous!\lThat's what daddy always says!"
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}Thanks to the commerce of ore and\nsteel, our town is very preposterous!\lThat's what daddy always says!"
     ))
     release
 }

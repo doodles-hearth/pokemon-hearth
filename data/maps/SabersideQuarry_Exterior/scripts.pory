@@ -48,7 +48,7 @@ script SabersideQuarry_Exterior_EventScript_ExitQuarry {
     playse(SE_LEDGE)
     waitmovement(LOCALID_PLAYER)
 
-    setobjectxyperm(LOCALID_SABERSIDE_MINE_CART_PLAYER, 13, 7)
+    setobjectxyperm(LOCALID_SABERSIDE_MINE_CART_PLAYER, 13, 9)
 
     resetobjectsubpriority(LOCALID_PLAYER, MAP_SABERSIDE_QUARRY_EXTERIOR)
     resetobjectsubpriority(LOCALID_SABERSIDE_MINE_CART_PLAYER, MAP_SABERSIDE_QUARRY_EXTERIOR)
