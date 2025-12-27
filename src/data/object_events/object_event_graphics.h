@@ -22,6 +22,7 @@ const u16 gObjectEventPal_BrendanReflection[] = INCBIN_U16("graphics/object_even
 const u16 gObjectEventPal_BridgeReflection[] = INCBIN_U16("graphics/object_events/palettes/bridge_reflection.gbapal");
 const u32 gObjectEventPic_BrendanFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/brendan/field_move.4bpp");
 const u32 gObjectEventPic_BrendanSurfing[] = INCBIN_U32("graphics/object_events/pics/people/brendan/surfing.4bpp");
+const u32 gObjectEventPic_BrendanMineCart[] = INCBIN_U32("graphics/object_events/pics/people/brendan/mine_cart.4bpp");
 const u32 gObjectEventPic_BrendanMachBike[] = INCBIN_U32("graphics/object_events/pics/people/brendan/mach_bike.4bpp");
 const u32 gObjectEventPic_BrendanAcroBike[] = INCBIN_U32("graphics/object_events/pics/people/brendan/acro_bike.4bpp");
 const u32 gObjectEventPic_BrendanFishing[] = INCBIN_U32("graphics/object_events/pics/people/brendan/fishing.4bpp");
@@ -55,6 +56,7 @@ const u16 gObjectEventPal_Null29[16] = {};
 const u32 gObjectEventPic_MayMachBike[] = INCBIN_U32("graphics/object_events/pics/people/may/mach_bike.4bpp");
 const u32 gObjectEventPic_MayAcroBike[] = INCBIN_U32("graphics/object_events/pics/people/may/acro_bike.4bpp");
 const u32 gObjectEventPic_MaySurfing[] = INCBIN_U32("graphics/object_events/pics/people/may/surfing.4bpp");
+const u32 gObjectEventPic_MayMineCart[] = INCBIN_U32("graphics/object_events/pics/people/may/mine_cart.4bpp");
 const u32 gObjectEventPic_MayFieldMove[] = INCBIN_U32("graphics/object_events/pics/people/may/field_move.4bpp");
 const u32 gObjectEventPic_MayFishing[] = INCBIN_U32("graphics/object_events/pics/people/may/fishing.4bpp");
 const u32 gObjectEventPic_MayWatering[] = INCBIN_U32("graphics/object_events/pics/people/may/watering.4bpp");
@@ -384,6 +386,7 @@ const u32 gObjectEventPic_BreakableRock[] = INCBIN_U32("graphics/object_events/p
 const u32 gObjectEventPic_PushableBoulder[] = INCBIN_U32("graphics/object_events/pics/misc/pushable_boulder.4bpp");
 const u32 gObjectEventPic_ItemBall[] = INCBIN_U32("graphics/object_events/pics/misc/item_ball.4bpp");
 const u32 gObjectEventPic_Lunchbox[] = INCBIN_U32("graphics/object_events/pics/misc/lunchbox.4bpp");
+const u32 gObjectEventPic_MineCart[] = INCBIN_U32("graphics/object_events/pics/misc/mine_cart.4bpp");
 // 0: Transparency
 // 1-2: sand
 // 3-4: greys

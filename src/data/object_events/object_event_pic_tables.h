@@ -1199,6 +1199,42 @@ static const struct SpriteFrameImage sPicTable_HotSpringsOldWoman[] = {
     overworld_ascending_frames(gObjectEventPic_HotSpringsOldWoman, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_MineCart[] = {
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_MayMineCart[] = {
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_BrendanMineCart[] = {
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 2),
+};
+
 static const struct SpriteFrameImage sPicTable_SSTidal[] = {
     obj_frame_tiles(gObjectEventPic_SSTidal),
     obj_frame_tiles(gObjectEventPic_SSTidal),

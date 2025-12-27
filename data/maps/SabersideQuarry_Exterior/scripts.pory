@@ -1,3 +1,128 @@
+const FLAG_HIDE_PLAYER_IN_MINE_CART = FLAG_TEMP_1
+const FLAG_HIDE_EMPTY_MINE_CART = FLAG_TEMP_2
+const VAR_EXITING_QUARRY = VAR_TEMP_0
+
 mapscripts SabersideQuarry_Exterior_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION {
+        if (flag(FLAG_RIDING_MINECART)) {
+            setflag(FLAG_HIDE_EMPTY_MINE_CART)
+            setobjectxyperm(LOCALID_SABERSIDE_MINE_CART_PLAYER, 30, 4)
+            setvar(VAR_EXITING_QUARRY, 1)
+        } else {
+            setflag(FLAG_HIDE_PLAYER_IN_MINE_CART)
+        }
+
+        if (checkplayergender == MALE) {
+            setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_BRENDAN_MINE_CART)
+        } else {
+            setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAY_MINE_CART)
+        }
+    }
+
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_EXITING_QUARRY, 1 {
+            hideobjectat(LOCALID_PLAYER, MAP_SABERSIDE_QUARRY_EXTERIOR)
+		}
+	]
+
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_EXITING_QUARRY, 1: SabersideQuarry_Exterior_EventScript_ExitQuarry
+    ]
+}
+
+script SabersideQuarry_Exterior_EventScript_ExitQuarry {
+    lockall
+    setvar(VAR_EXITING_QUARRY, 0)
+    clearflag(FLAG_RIDING_MINECART)
+    
+    setobjectsubpriority(LOCALID_PLAYER, MAP_SABERSIDE_QUARRY_EXTERIOR, 0)
+    setobjectsubpriority(LOCALID_SABERSIDE_MINE_CART_PLAYER, MAP_SABERSIDE_QUARRY_EXTERIOR, 1)
+    setobjectsubpriority(LOCALID_SABERSIDE_MINE_CART_EMPTY, MAP_SABERSIDE_QUARRY_EXTERIOR, 1)
+
+    applymovement(LOCALID_PLAYER, SabersideQuarry_Exterior_MineCartExit)
+    applymovement(LOCALID_SABERSIDE_MINE_CART_PLAYER, SabersideQuarry_Exterior_MineCartExit)
+    waitmovement(LOCALID_PLAYER)
+    removeobject(LOCALID_SABERSIDE_MINE_CART_PLAYER)
+    addobject(LOCALID_SABERSIDE_MINE_CART_EMPTY)
+    applymovement(LOCALID_PLAYER, moves(set_visible, jump_2_up))
+    playse(SE_LEDGE)
+    waitmovement(LOCALID_PLAYER)
+
+    setobjectxyperm(LOCALID_SABERSIDE_MINE_CART_PLAYER, 13, 7)
+
+    resetobjectsubpriority(LOCALID_PLAYER, MAP_SABERSIDE_QUARRY_EXTERIOR)
+    resetobjectsubpriority(LOCALID_SABERSIDE_MINE_CART_PLAYER, MAP_SABERSIDE_QUARRY_EXTERIOR)
+    resetobjectsubpriority(LOCALID_SABERSIDE_MINE_CART_EMPTY, MAP_SABERSIDE_QUARRY_EXTERIOR)
+
+    releaseall
+}
+
+movement SabersideQuarry_Exterior_MineCartExit {
+    walk_fast_down * 3,
+    walk_faster_down * 7,
+    walk_faster_left * 7,
+    walk_faster_up * 4,
+    walk_faster_left * 4,
+    walk_faster_up,
+    walk_faster_left * 2,
+    walk_fast_left,
+    walk_diag_northwest,
+    walk_fast_left * 2,
+    walk_up
+}
+
+script SabersideQuarry_Exterior_EventScript_UseMineCart {
+    lockall
+
+	msgbox(format("Jump on the mine cart?"))
+
+	mcdialogueB("Yes", "No")
+
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+        setobjectsubpriority(LOCALID_PLAYER, MAP_SABERSIDE_QUARRY_EXTERIOR, 0)
+        setobjectsubpriority(LOCALID_SABERSIDE_MINE_CART_PLAYER, MAP_SABERSIDE_QUARRY_EXTERIOR, 1)
+        setobjectsubpriority(LOCALID_SABERSIDE_MINE_CART_EMPTY, MAP_SABERSIDE_QUARRY_EXTERIOR, 1)
+
+        waitse
+        applymovement(LOCALID_PLAYER, moves(jump_down, set_invisible))
+        playse(SE_LEDGE)
+        waitmovement(LOCALID_PLAYER)
+
+        removeobject(LOCALID_SABERSIDE_MINE_CART_EMPTY)
+        clearflag(FLAG_HIDE_PLAYER_IN_MINE_CART)
+        addobject(LOCALID_SABERSIDE_MINE_CART_PLAYER)
+
+        waitse
+        playbgm(MUS_CYCLING, FALSE)
+        playse(SE_TRUCK_MOVE)
+
+        applymovement(LOCALID_PLAYER, SabersideQuarry_Exterior_MineCart)
+        applymovement(LOCALID_SABERSIDE_MINE_CART_PLAYER, SabersideQuarry_Exterior_MineCart)
+        waitmovement(LOCALID_PLAYER)
+
+        setflag(FLAG_RIDING_MINECART)
+
+        resetobjectsubpriority(LOCALID_PLAYER, MAP_SABERSIDE_QUARRY_EXTERIOR)
+        resetobjectsubpriority(LOCALID_SABERSIDE_MINE_CART_PLAYER, MAP_SABERSIDE_QUARRY_EXTERIOR)
+        resetobjectsubpriority(LOCALID_SABERSIDE_MINE_CART_EMPTY, MAP_SABERSIDE_QUARRY_EXTERIOR)
+        
+        warp(MAP_SABERSIDE_QUARRY_ANTECHAMBER, WARP_ID_SABERSIDE_QUARRY_EXIT)
+	}
+
+	releaseall
+}
+
+movement SabersideQuarry_Exterior_MineCart {
+    walk_fast_down,
+    walk_fast_right * 2,
+    walk_diag_southeast,
+    walk_fast_right,
+    walk_faster_right * 2,
+    walk_faster_down,
+    walk_faster_right * 4,
+    walk_faster_down * 4,
+    walk_faster_right * 7,
+    walk_faster_up * 10
 }
