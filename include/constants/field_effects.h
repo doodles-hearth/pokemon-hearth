@@ -90,7 +90,7 @@
 #define FLDEFF_SLEEP_ICON                85
 #define FLDEFF_USE_ROCK_CLIMB            86
 #define FLDEFF_ROCK_CLIMB_DUST           87
-#define FLDEFF_ORAS_DOWSE                78
+#define FLDEFF_ORAS_DOWSE                88
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1

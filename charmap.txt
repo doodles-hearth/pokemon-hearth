@@ -614,6 +614,7 @@ MUGSHOT_MINER               = 8F
 MUGSHOT_GARDENER            = 90
 MUGSHOT_FARMER              = 91
 MUGSHOT_BURGLAR             = 92
+MUGSHOT_MASAMUNE            = 93
 
 EMOTE_NORMAL = 00
 EMOTE_SEXY = 01
@@ -708,6 +709,8 @@ NAME_SCHOOL_KID      = 52
 NAME_ASSISTANT       = 53
 NAME_MEDIUM          = 54
 NAME_BURGLAR         = 55
+NAME_SMITH           = 56
+NAME_SWORDSMAN       = 57
 
 @ fonts
 

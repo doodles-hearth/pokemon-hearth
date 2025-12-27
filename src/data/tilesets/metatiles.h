@@ -340,3 +340,6 @@ const u16 gMetatileAttributes_HouseWindycape[] = INCBIN_U16("data/tilesets/secon
 
 const u16 gMetatiles_Forge[] = INCBIN_U16("data/tilesets/secondary/forge/metatiles.bin");
 const u16 gMetatileAttributes_Forge[] = INCBIN_U16("data/tilesets/secondary/forge/metatile_attributes.bin");
+
+const u16 gMetatiles_SabersideDojo[] = INCBIN_U16("data/tilesets/secondary/saberside_dojo/metatiles.bin");
+const u16 gMetatileAttributes_SabersideDojo[] = INCBIN_U16("data/tilesets/secondary/saberside_dojo/metatile_attributes.bin");

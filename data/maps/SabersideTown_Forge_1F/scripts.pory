@@ -1,1 +1,21 @@
 mapscripts SabersideTown_Forge_1F_MapScripts {}
+
+script SabersideTown_EventScript_Smith {
+    lock
+    faceplayer
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_SMITH}"
+    ))
+    closemessage
+    release
+}
+
+script SabersideTown_EventScript_Swordsman {
+    lock
+    faceplayer
+    msgbox(format(
+        "{SPEAKER NAME_SWORDSMAN}Oh dude oh man look at all these lit swords, oh man oh dude!"
+    ))
+    closemessage
+    release
+}

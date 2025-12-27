@@ -19,11 +19,6 @@
       "direction": "left"
     },
     {
-      "map": "MAP_SEASTROLL_CHANNEL",
-      "offset": 21,
-      "direction": "right"
-    },
-    {
       "map": "MAP_WHITESLATE_ROUTE",
       "offset": 16,
       "direction": "up"
@@ -32,6 +27,11 @@
       "map": "MAP_YIFU_CITY_BUFFER_AREA",
       "offset": 59,
       "direction": "left"
+    },
+    {
+      "map": "MAP_SEASTROLL_CHANNEL",
+      "offset": 21,
+      "direction": "right"
     }
   ],
   "object_events": [
@@ -315,32 +315,6 @@
       "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
       "x": 49,
       "y": 29,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
-      "x": 39,
-      "y": 30,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
-      "x": 39,
-      "y": 35,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,

@@ -101,6 +101,7 @@ script SabersideTown_EventScript_BoatGuy {
 
 script SabersideTown_EventScript_LoveSwords {
 	lock
+	faceplayer
 	msgbox(format(
 		"{SPEAKER NAME_TRAVELER}People come from the whole region to get their hands on a Saberside-made blade."
 	))
@@ -130,7 +131,7 @@ script SabersideTown_EventScript_Sableye {
 	faceplayer
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}Saberside Quarry is gem-rich, but…\nIt's filled with Sableye!\p"
-		"Ghosts terrify me… I can't do it…\p"
+		"Ghosts terrify me… I can't do it…"
 	))
 	closemessage
 

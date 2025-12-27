@@ -20,6 +20,7 @@ script SabersideTown_House1_EventScript_Nerd {
 			"If you g-guess what I'm imitating,\nI'll guh-give you something n-nice!\l"
 			"Ahem…"
 		)
+		closemessage
 		waitse
 		delay(48)
 		applymovement(VAR_LAST_TALKED, moves(shake_vertical))
@@ -41,9 +42,13 @@ script SabersideTown_House1_EventScript_Nerd {
 		dynmultipush("{STR_VAR_1}", VAR_0x8007)
 
 		dynmultistack(0, 0, TRUE, 6, TRUE, 1, DYN_MULTICHOICE_CB_NONE)
+		
+		closemessage
 
 		if (var(VAR_RESULT) == VAR_0x8008) 
 		{
+			waitse
+			playse(SE_SUCCESS)
 			msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}Y-yuh… Yep!! That was it!\nC-c-cuh-congrats, kuh-kid!")
 
 			// TODO EVA reward
@@ -53,8 +58,10 @@ script SabersideTown_House1_EventScript_Nerd {
 		}
 		else
 		{
+			waitse
+			playse(SE_FAILURE)
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}N-n-nuh-nuh-NO, DINGUS!\nS-such a r-r-rookie mistake!"
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}{SPEAKER NAME_PKMN_NERD}N-n-nuh-nuh-NO, DINGUS!\nS-such a r-r-rookie mistake!\p"
 				"T-to think I s-strained my voice\nf-f-f-for this!\lG-g-get out of muh-my sight!"
 			)
 		}
