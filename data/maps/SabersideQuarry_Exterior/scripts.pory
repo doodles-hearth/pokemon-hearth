@@ -6,7 +6,7 @@ mapscripts SabersideQuarry_Exterior_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
         if (flag(FLAG_RIDING_MINECART)) {
             setflag(FLAG_HIDE_EMPTY_MINE_CART)
-            setobjectxyperm(LOCALID_SABERSIDE_MINE_CART_PLAYER, 30, 4)
+            setobjectxyperm(LOCALID_SABERSIDE_MINE_CART_PLAYER, 30, 6)
             setvar(VAR_EXITING_QUARRY, 1)
         } else {
             setflag(FLAG_HIDE_PLAYER_IN_MINE_CART)
