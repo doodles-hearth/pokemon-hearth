@@ -795,6 +795,25 @@ void InitSpritePosToAnimBothTargets(struct Sprite *sprite, bool8 respectMonPicOf
     sprite->y += gBattleAnimArgs[1];
 }
 
+void InitSpritePosToAnimBothAttackers(struct Sprite *sprite, bool8 respectMonPicOffsets)
+{
+    if (!respectMonPicOffsets)
+    {
+        sprite->x = GetBattlerSpriteCoord2(gBattleAnimAttacker, BATTLER_COORD_X) + GetBattlerSpriteCoord2(BATTLE_PARTNER(gBattleAnimAttacker), BATTLER_COORD_X);
+        sprite->y = GetBattlerSpriteCoord2(gBattleAnimAttacker, BATTLER_COORD_Y) + GetBattlerSpriteCoord2(BATTLE_PARTNER(gBattleAnimAttacker), BATTLER_COORD_Y);
+    }
+    else
+    {
+        sprite->x = GetBattlerSpriteCoord2(gBattleAnimAttacker, BATTLER_COORD_X_2) + GetBattlerSpriteCoord2(BATTLE_PARTNER(gBattleAnimAttacker), BATTLER_COORD_X_2);
+        sprite->y = GetBattlerSpriteCoord2(gBattleAnimAttacker, BATTLER_COORD_Y_PIC_OFFSET) + GetBattlerSpriteCoord2(BATTLE_PARTNER(gBattleAnimAttacker), BATTLER_COORD_Y_PIC_OFFSET);
+    }
+    sprite->x = sprite->x / 2;
+    sprite->y = sprite->y / 2;
+    SetAnimSpriteInitialXOffset(sprite, gBattleAnimArgs[0]);
+    sprite->y += gBattleAnimArgs[1];
+}
+
+
 bool32 InitSpritePosToAnimBattler(u32 animBattlerId, struct Sprite *sprite, bool8 respectMonPicOffsets)
 {
     u32 battler = GetAnimBattlerId(animBattlerId);
@@ -1480,6 +1499,11 @@ void AnimSpriteOnMonPos(struct Sprite *sprite)
                 else
                     InitSpritePosToAnimTarget(sprite, respectMonPicOffsets);
                 break;
+            case 4:
+                if(IsDoubleBattle())
+                    InitSpritePosToAnimBothAttackers(sprite, respectMonPicOffsets);
+                else
+                    InitSpritePosToAnimAttacker(sprite, respectMonPicOffsets);
         }
 
         sprite->data[0]++;
@@ -1489,6 +1513,13 @@ void AnimSpriteOnMonPos(struct Sprite *sprite)
     {
         DestroySpriteAndMatrix(sprite);
     }
+}
+
+void AnimSpriteOnBattlerPos(struct Sprite* sprite)
+{
+    gBattleAnimAttacker = gBattlerAttacker;
+    gBattleAnimTarget = gBattlerTarget;
+    AnimSpriteOnMonPos(sprite);
 }
 
 // Linearly translates a sprite to a target position on the

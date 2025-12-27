@@ -790,7 +790,8 @@ struct BattleStruct
     u8 incrementEchoedVoice:1;
     u8 echoedVoiceCounter:3;
     u8 shouldPrintFullName:1;
-    u8 padding3:3;
+    u8 trySmokeExplosion:1;
+    u8 padding3:2;
 };
 
 struct AiBattleData

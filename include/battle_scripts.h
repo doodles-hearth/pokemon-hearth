@@ -846,4 +846,10 @@ extern const u8 BattleScript_SleepTalkAttackstring[];
 extern const u8 BattleScript_NaturePowerAttackstring[];
 extern const u8 BattleScript_PokemonCantUseTheMove[];
 
+
+extern const u8 BattleScript_EffectSmokeBomb[];
+extern const u8 BattleScript_SmokeExplosion[];
+extern const u8 BattleScript_SmokeExplosionLoop[];
+extern const u8 BattleScript_SmokeExplosionLoopIncrement[];
+
 #endif // GUARD_BATTLE_SCRIPTS_H
