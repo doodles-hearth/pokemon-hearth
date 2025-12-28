@@ -18125,7 +18125,7 @@ void BS_SmokeExplosionEndAbilities(void)
     NATIVE_ARGS(u8 battler);
     u32 battler = GetBattlerForBattleScript(cmd->battler);
     const u8* battleScript;
-    enum Ability ability = gBattleMons[battler].ability;
+    enum Ability ability = GetBattlerAbility(battler);
 
     if (gDisableStructs[battler].smokeExplosionEnd)
         goto early_exit;
