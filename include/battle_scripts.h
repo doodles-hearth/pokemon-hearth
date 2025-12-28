@@ -182,7 +182,7 @@ extern const u8 BattleScript_DampStopsExplosion[];
 extern const u8 BattleScript_MoveHPDrain[];
 extern const u8 BattleScript_MonMadeMoveUseless[];
 extern const u8 BattleScript_FlashFireBoost[];
-extern const u8 BattleScript_FlashFireBoostMoveEnd[];
+extern const u8 BattleScript_FlashFireBoostReturn[];
 extern const u8 BattleScript_AbilityNoStatLoss[];
 extern const u8 BattleScript_ItemNoStatLoss[];
 extern const u8 BattleScript_ItemNoStatLossSpicyExtract[];

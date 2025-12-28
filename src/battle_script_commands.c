@@ -18124,11 +18124,11 @@ void BS_SmokeExplosionEndAbilities(void)
 {
     NATIVE_ARGS(u8 battler);
     u32 battler = GetBattlerForBattleScript(cmd->battler);
-    const u8* battleScript;
-    enum Ability ability = GetBattlerAbility(battler);
+    enum Ability ability = gBattleMons[battler].ability;
+    gBattlescriptCurrInstr = cmd->nextInstr; // set the next instruction
 
     if (gDisableStructs[battler].smokeExplosionEnd)
-        goto early_exit;
+        return;
 
     gDisableStructs[battler].smokeExplosionEnd = TRUE;
 
@@ -18139,17 +18139,11 @@ void BS_SmokeExplosionEndAbilities(void)
                 gDisableStructs[battler].flashFireBoosted = TRUE;
             }
             else {
-                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_FLASH_FIRE_NO_BOOST_SMOKE;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_FLASH_FIRE_NO_BOOST;
             }
-            battleScript = BattleScript_FlashFireBoostMoveEnd;
+            BattleScriptCall(BattleScript_FlashFireBoostReturn); // push the next instruction and run flash fire script
             break;
         default:
-            goto early_exit;
+            break;
     }
-    BattleScriptCall(battleScript);
-    return;
-
-early_exit:
-    gBattlescriptCurrInstr = cmd->nextInstr;
-    return;
 }
