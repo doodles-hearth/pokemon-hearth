@@ -31,7 +31,7 @@ SINGLE_BATTLE_TEST("Flash Fire prevents damage from smoke explosion")
 {
     GIVEN
     {
-        PLAYER(SPECIES_VULPIX);
+        PLAYER(SPECIES_WOBBUFFET)
         OPPONENT(SPECIES_FLAREON) { Ability(ABILITY_FLASH_FIRE); }
     }
     WHEN
@@ -42,6 +42,7 @@ SINGLE_BATTLE_TEST("Flash Fire prevents damage from smoke explosion")
     SCENE
     {
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_EXPLOSION);
+        ABILITY_POPUP(opponent, ABILITY_FLASH_FIRE);
         s16 damage;
         HP_BAR(opponent, captureDamage : &damage);
         EXPECT_EQ(damage, 0);
