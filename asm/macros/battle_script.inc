@@ -2467,3 +2467,8 @@
 	.byte \gen
 	.4byte \jumpInstr
 	.endm
+
+ .macro trysmokeexplosionendabilities battler:req
+	callnative BS_SmokeExplosionEndAbilities
+	.byte \battler
+  .endm

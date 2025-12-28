@@ -18119,3 +18119,37 @@ void BS_JumpIfGenConfigLowerThan(void)
     else
         gBattlescriptCurrInstr = cmd->nextInstr;
 }
+
+void BS_SmokeExplosionEndAbilities(void)
+{
+    NATIVE_ARGS(u8 battler);
+    u32 battler = GetBattlerForBattleScript(cmd->battler);
+    const u8* battleScript;
+    enum Ability ability = gBattleMons[battler].ability;
+
+    if (gDisableStructs[battler].smokeExplosionEnd)
+        goto early_exit;
+
+    gDisableStructs[battler].smokeExplosionEnd = TRUE;
+
+    switch (ability) {
+        case ABILITY_FLASH_FIRE:
+            if (!gDisableStructs[battler].flashFireBoosted) {
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_FLASH_FIRE_BOOST;
+                gDisableStructs[battler].flashFireBoosted = TRUE;
+            }
+            else {
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_FLASH_FIRE_NO_BOOST_SMOKE;
+            }
+            battleScript = BattleScript_FlashFireBoostMoveEnd;
+            break;
+        default:
+            goto early_exit;
+    }
+    BattleScriptCall(battleScript);
+    return;
+
+early_exit:
+    gBattlescriptCurrInstr = cmd->nextInstr;
+    return;
+}

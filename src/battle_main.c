@@ -5193,6 +5193,7 @@ static void TurnValuesCleanUp(bool8 var0)
         gBattleStruct->battlerState[i].usedEjectItem = FALSE;
         gProtectStructs[i].lashOutAffected = FALSE;
         gDisableStructs[i].endured = FALSE;
+        gDisableStructs[i].smokeExplosionEnd = FALSE;
     }
 
     gSideTimers[B_SIDE_PLAYER].followmeTimer = 0;

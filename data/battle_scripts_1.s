@@ -2571,6 +2571,7 @@ BattleScript_SmokeExplosion::
 
 BattleScript_SmokeExplosionLoop::
   jumpifabsent BS_TARGET, BattleScript_SmokeExplosionLoopIncrement
+  trysmokeexplosionendabilities BS_TARGET
   healthbarupdate BS_TARGET, PASSIVE_HP_UPDATE
   datahpupdate BS_TARGET, PASSIVE_HP_UPDATE
   tryfaintmon BS_TARGET
@@ -7100,6 +7101,13 @@ BattleScript_FlashFireBoost::
 	printfromtable gFlashFireStringIds
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
+
+BattleScript_FlashFireBoostMoveEnd::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUpTarget
+	printfromtable gFlashFireStringIds
+	waitmessage B_WAIT_TIME_SHORT
+  return
 
 BattleScript_AbilityPreventsPhasingOut::
 	call BattleScript_AbilityPreventsPhasingOutRet

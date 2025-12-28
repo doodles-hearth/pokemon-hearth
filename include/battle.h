@@ -139,7 +139,8 @@ struct DisableStruct
     u8 endured:1;
     u8 tryEjectPack:1;
     u8 octolockedBy:3;
-    u8 padding:5;
+    u8 smokeExplosionEnd:1;
+    u8 padding:4;
 };
 
 // Fully Cleared each turn after end turn effects are done. A few things are cleared before end turn effects
