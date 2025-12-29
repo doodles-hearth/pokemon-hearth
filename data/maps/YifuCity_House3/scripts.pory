@@ -9,28 +9,28 @@ mapscripts YifuCity_House3_MapScripts {
 	}
 }
 
-script YifuCity_House3_EggGirlsMom {
+script YifuCity_House3_DaycareEggGirl {
 	lock
 	faceplayer
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}My grandparents have a daycare for Pokémon on Winswept Route.\p"
-		"I help them out on tuesdays and fridays."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}My grandparents have a daycare for\nPokémon on Scenic Route.\p"
+		"It's gotten much busier since more\npeople have become Wielders, so\l"
+		"I help out on tuesdays and fridays."
 	))
 	release
 }
 
-script YifuCity_House3_EventScript_Togepi {
+script YifuCity_House3_EventScript_Nidoran {
 	lock
 	faceplayer
-	setseenmon(SPECIES_TOGEPI)
-	setspeakertomonname(SPECIES_TOGEPI)
+	setseenmon(SPECIES_NIDORAN)
+	setspeakertomonname(SPECIES_NIDORAN)
 	msgbox(format(
-        "Preee!"
+        "Snort!"
     ))
-    playmoncry(SPECIES_TOGEPI, CRY_MODE_NORMAL)
+    playmoncry(SPECIES_NIDORAN, CRY_MODE_NORMAL)
     waitmoncry
     release
-    end
 }
 
 script YifuCity_House3_EventScript_EggGirl {
