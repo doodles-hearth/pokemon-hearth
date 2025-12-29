@@ -45,7 +45,7 @@ EWRAM_DATA static u16 sHatchedEggMotherMoves[MAX_MON_MOVES] = {0};
 static const struct WindowTemplate sDaycareLevelMenuWindowTemplate =
 {
     .bg = 0,
-    .tilemapLeft = 15,
+    .tilemapLeft = 1,
     .tilemapTop = 1,
     .width = 14,
     .height = 6,
@@ -1093,9 +1093,15 @@ static void _GiveEggFromDaycare(struct DayCare *daycare)
 
     isEgg = TRUE;
     SetMonData(&egg, MON_DATA_IS_EGG, &isEgg);
-    gPlayerParty[PARTY_SIZE - 1] = egg;
-    CompactPartySlots();
-    CalculatePlayerPartyCount();
+
+    // Party is full, send to PC
+    if (CalculatePlayerPartyCount() == PARTY_SIZE) {
+        CopyMonToPC(&egg);
+    } else {
+        gPlayerParty[PARTY_SIZE - 1] = egg;
+        CompactPartySlots();        
+    }
+
     RemoveEggFromDayCare(daycare);
 }
 
@@ -1250,6 +1256,7 @@ u8 GetDaycareState(void)
     u8 numMons;
     if (IsEggPending(&gSaveBlock1Ptr->daycare))
     {
+        DebugPrintf("Egg waiting");
         return DAYCARE_EGG_WAITING;
     }
 

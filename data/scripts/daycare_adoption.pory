@@ -1,0 +1,194 @@
+script ScenicRoute_Daycare_EventScript_EggWoman {
+	lock
+	faceplayer
+	getgamestat(GAME_STAT_HATCHED_UNWANTED_EGG)
+	if (var(VAR_DAYCARE_ADOPTION_SPECIALS) == 0) {
+		call(ScenicRoute_DayCare_EventScript_IntroduceAdoption)
+	} elif (var(VAR_RESULT) == 7) {
+		call(ScenicRoute_DayCare_EventScript_AdoptedSixPokemon)
+	} elif (var(VAR_RESULT) == 10) {
+		call(ScenicRoute_DayCare_EventScript_AdoptedNinePokemon)
+	} elif (flag(FLAG_DAILY_ADOPT_EGG)) {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}Thank you for helping give these\n"
+			"Pokémon a good home!\p"
+			"There aren't any more eggs that need\n"
+			"rehomed right now.\p"
+			"But please come back soon!"
+		)
+		closemessage
+	} elif (var(VAR_DAYCARE_ADOPTION_SPECIALS) > 7) {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}Hey! It's so nice to see you, {PLAYER}!\p"
+			"Would you like to adopt a\n"
+			"Pokémon Egg today?"
+		)
+		mcdialogueB("Yes!", "Not now.")
+		closemessage
+
+		if (var(VAR_RESULT) == 0) {
+			call(ScenicRoute_DayCare_EventScript_TryGiveEgg)
+		} else {
+			call(ScenicRoute_DayCare_EventScript_DeclineEgg)
+		}
+	} else {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}Hey, welcome back!\p"
+			"Would you like to adopt a\n"
+			"Pokémon Egg today?"
+		)
+		mcdialogueB("Yes!", "Not now.")
+		closemessage
+
+		if (var(VAR_RESULT) == 0) {
+			call(ScenicRoute_DayCare_EventScript_TryGiveEgg)
+		} else {
+			call(ScenicRoute_DayCare_EventScript_DeclineEgg)
+		}
+	}
+
+	release
+}
+
+script ScenicRoute_DayCare_EventScript_AdoptedSixPokemon {
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}Oh! Welcome back {PLAYER}!\p"
+		"I was hoping to see you today!\p"
+		"So you've hatched six of our\nrehomed Eggs so far, huh?\l"
+		"You're just incredible!\p"
+		"… … …\p"
+		"I'm actually working on something\n"
+		"as a thanks from the Pokémon…\l"
+		"B-but it's not ready yet!\p"
+		"Ahem! So, would you like to adopt a\n"
+		"Pokémon Egg in the meantime?"
+	)
+
+	mcdialogueB("Yes!", "Not today.")
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		call(ScenicRoute_DayCare_EventScript_TryGiveEgg)
+	} else {
+		call(ScenicRoute_DayCare_EventScript_DeclineEgg)
+	}
+}
+
+script ScenicRoute_DayCare_EventScript_AdoptedNinePokemon {
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}Oh, um, hi {PLAYER}!\p"
+		"You're exactly who I was hoping\n"
+		"to see today!\p"
+		"You've hatched nine of our unwanted\nEggs in total!\lYou're amazing!\p"
+		"Well…\p"
+		"I hope you didn't forget about\n"
+		"the gift I was working on with\l"
+		"the Pokémon here…\p"
+		"We finally finished it!\p"
+		"Hold out your hands!"
+	)
+	closemessage
+
+	giveitem(ITEM_OVAL_CHARM)
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}I-I know it's not much, but\n"
+		"I hope you like it!\p"
+		"Just a little something to\n"
+		"remind you of your good deeds!\p"
+		"With that said…\p"
+		"Would you like to adopt a\n"
+		"Pokémon Egg now?"
+	)
+
+	mcdialogueB("Yes!", "No.")
+
+	if (var(VAR_RESULT) == 0) {
+		call(ScenicRoute_DayCare_EventScript_TryGiveEgg)
+	} else {
+		call(ScenicRoute_DayCare_EventScript_DeclineEgg)
+	}
+}
+
+script ScenicRoute_DayCare_EventScript_IntroduceAdoption {
+	setvar(VAR_DAYCARE_ADOPTION_SPECIALS, 1)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}Welcome to the Pokémon Daycare!\p"
+		"If you want to leave a Pokémon\n"
+		"in our care, you'll want to speak\l"
+		"to my Grandma!\p"
+		"I just help look after the\n"
+		"Pokémon.\p"
+		"Some people never come back to pick up\n"
+		"the Eggs their Pokémon laid, so\l"
+		"those end up in our care."
+	)
+	closemessage
+
+	waitse
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive, delay_16 * 6))
+	waitmovement(0)
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}Say. You're a Pokémon Wielder,\naren't you?\p"
+		"Would you consider…{PAUSE 15} adopting one of\nthe Eggs left here?"
+	)
+	mcdialogueB("Of course!", "Another time.")
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		call(ScenicRoute_DayCare_EventScript_TryGiveEgg)
+	} else {
+		call(ScenicRoute_DayCare_EventScript_DeclineEgg)
+	}
+}
+
+script ScenicRoute_DayCare_EventScript_DeclineEgg {
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}That's…{PAUSE 15} That's okay! I understand.\nLife as a Wielder gets busy."
+	)
+	closemessage
+}
+
+script ScenicRoute_DayCare_EventScript_TryGiveEgg {
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}Thank you so much!\p"
+		"I can tell this little one will\n"
+		"be very happy travelling with you."
+	)
+	closemessage
+	setflag(FLAG_DAILY_ADOPT_EGG)
+	playfanfare(MUS_OBTAIN_ITEM)
+	message(
+		"{PLAYER} received the Egg."
+	)
+	waitfanfare
+
+	if (
+		var(VAR_0x8004)
+		|| var(VAR_DAYCARE_ADOPTION_SPECIALS) == 13
+		|| var(VAR_DAYCARE_ADOPTION_SPECIALS) == 16
+		|| var(VAR_DAYCARE_ADOPTION_SPECIALS) == 19
+		|| var(VAR_DAYCARE_ADOPTION_SPECIALS) == 22
+		|| var(VAR_DAYCARE_ADOPTION_SPECIALS) == 25
+		|| var(VAR_DAYCARE_ADOPTION_SPECIALS) == 28
+		|| var(VAR_DAYCARE_ADOPTION_SPECIALS) == 31
+	) {
+		specialvar(VAR_RESULT, GetRandomSpecialAdoptionSpecies)
+	} else {
+		specialvar(VAR_RESULT, GetRandomAdoptionSpecies)
+	}
+	giveegg(VAR_RESULT, METLOC_DAYCARE_ADOPTION)
+	call(ScenicRoute_DayCare_EventScript_IncrementAdoptionSpecials)
+	
+	release
+}
+
+script ScenicRoute_DayCare_EventScript_IncrementAdoptionSpecials {
+    addvar(VAR_DAYCARE_ADOPTION_SPECIALS, 1)
+	// Wrap
+	if (var(VAR_DAYCARE_ADOPTION_SPECIALS) == 32) {
+		setvar(VAR_DAYCARE_ADOPTION_SPECIALS, 11)
+	}
+}

@@ -3,34 +3,34 @@ const FLAG_HIDE_MOM = FLAG_TEMP_1
 mapscripts YifuCity_House3_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		getweekday
-		if (var(VAR_RESULT) == WEEKDAY_TUE) {
+		if (var(VAR_RESULT) == WEEKDAY_TUE || var(VAR_RESULT) == WEEKDAY_FRI) {
 			setflag(FLAG_HIDE_MOM)
 		}
 	}
 }
 
-script YifuCity_House3_EggGirlsMom {
+script YifuCity_House3_DaycareEggGirl {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_WOMAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 0}I help out at the Pokémon daycare west of Windycape on tuesdays. Sometimes they'll let me bring back an egg for my daughter!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}My grandparents have a daycare for\nPokémon on Scenic Route.\p"
+		"It's gotten much busier since more\npeople have become Wielders, so\l"
+		"I help out on tuesdays and fridays."
 	))
 	release
 }
 
-script YifuCity_House3_EventScript_Togepi {
+script YifuCity_House3_EventScript_Nidoran {
 	lock
 	faceplayer
-	setseenmon(SPECIES_TOGEPI)
-	setspeakertomonname(SPECIES_TOGEPI)
+	setseenmon(SPECIES_NIDORAN)
+	setspeakertomonname(SPECIES_NIDORAN)
 	msgbox(format(
-        "Preee!"
+        "Snort!"
     ))
-    playmoncry(SPECIES_TOGEPI, CRY_MODE_NORMAL)
+    playmoncry(SPECIES_NIDORAN, CRY_MODE_NORMAL)
     waitmoncry
     release
-    end
 }
 
 script YifuCity_House3_EventScript_EggGirl {

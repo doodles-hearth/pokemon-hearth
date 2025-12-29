@@ -17,6 +17,11 @@
       "map": "MAP_SUNRISE_VILLAGE_BEACH",
       "offset": -2,
       "direction": "right"
+    },
+    {
+      "map": "MAP_YIFU_CITY",
+      "offset": -21,
+      "direction": "left"
     }
   ],
   "object_events": [],
