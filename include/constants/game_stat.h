@@ -58,8 +58,9 @@
 #define GAME_STAT_SOLVED_RIDDLE_DEX_DESC      54
 #define GAME_STAT_SOLVED_RIDDLE_CRY           55
 #define GAME_STAT_SOLVED_RIDDLE_SHAPE         56
+#define GAME_STAT_HATCHED_UNWANTED_EGG        57
 
-#define NUM_USED_GAME_STATS                   53
-#define NUM_GAME_STATS                        64
+#define NUM_USED_GAME_STATS                   54
+#define NUM_GAME_STATS                        65
 
 #endif // GUARD_CONSTANTS_GAME_STAT_H

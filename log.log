@@ -1,11 +1,14 @@
+tools/poryscript/poryscript -i data/maps/ScenicRoute/scripts.pory -o data/maps/ScenicRoute/scripts.scr -fc tools/poryscript/font_config.json -l 198 -cc tools/poryscript/command_config.json -lm=false
+tools/poryscript/poryscript -i data/maps/ScenicRoute_Daycare/scripts.pory -o data/maps/ScenicRoute_Daycare/scripts.scr -fc tools/poryscript/font_config.json -l 198 -cc tools/poryscript/command_config.json -lm=false
+python3 tools/learnset_helpers/make_teachables.py tools/learnset_helpers/build/all_learnables.json
 tools/scaninc/scaninc -M build/emerald/data/event_scripts.d -I include -I "" data/event_scripts.s
-tools/scaninc/scaninc -M build/emerald/src/fldeff_flash.d -I include -I tools/agbcc/include src/fldeff_flash.c
-/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/emerald/src/fldeff_flash.o src/fldeff_flash.c
+tools/scaninc/scaninc -M build/emerald/src/pokemon.d -I include -I tools/agbcc/include src/pokemon.c
+/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/emerald/src/pokemon.o src/pokemon.c
 tools/preproc/preproc data/event_scripts.s charmap.txt | arm-none-eabi-cpp -iquote include -Wno-trigraphs -DMODERN=1 -DTESTING=0 -DEMERALD -std=gnu17 -I include - | tools/preproc/preproc -ie data/event_scripts.s charmap.txt | arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 --defsym EMERALD=1 -o build/emerald/data/event_scripts.o
 Memory region         Used Size  Region Size  %age Used
-           EWRAM:      222508 B       256 KB     84.88%
-           IWRAM:       28692 B        32 KB     87.56%
-             ROM:    26642676 B        32 MB     79.40%
+           EWRAM:      222524 B       256 KB     84.89%
+           IWRAM:       28696 B        32 KB     87.57%
+             ROM:    26890584 B        32 MB     80.14%
 cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald-hearth.map --print-memory-usage --gc-sections -T ../../ld_script_modern.ld -o ../../pokeemerald-hearth.elf <objs> <libs> | cat
 tools/gbafix/gbafix pokeemerald-hearth.elf -t"POKEMON EMER" -cBPEE -m01 -r0 --silent
 arm-none-eabi-objcopy -O binary pokeemerald-hearth.elf pokeemerald-hearth.gba

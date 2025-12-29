@@ -3,7 +3,7 @@ const FLAG_HIDE_MOM = FLAG_TEMP_1
 mapscripts YifuCity_House3_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		getweekday
-		if (var(VAR_RESULT) == WEEKDAY_TUE) {
+		if (var(VAR_RESULT) == WEEKDAY_TUE || var(VAR_RESULT) == WEEKDAY_FRI) {
 			setflag(FLAG_HIDE_MOM)
 		}
 	}
@@ -12,9 +12,9 @@ mapscripts YifuCity_House3_MapScripts {
 script YifuCity_House3_EggGirlsMom {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 0}I help out at the Pokémon daycare west of Windycape on tuesdays. Sometimes they'll let me bring back an egg for my daughter!"
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}{SPEAKER NAME_GIRL}My grandparents have a daycare for Pokémon on Winswept Route.\p"
+		"I help them out on tuesdays and fridays."
 	))
 	release
 }

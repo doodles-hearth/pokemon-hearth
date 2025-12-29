@@ -6672,6 +6672,18 @@
       "secondary_tileset": "gTileset_BrownCave",
       "border_filepath": "data/layouts/WhiteslateRoute_SecretCave/border.bin",
       "blockdata_filepath": "data/layouts/WhiteslateRoute_SecretCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCENIC_ROUTE_DAYCARE",
+      "name": "ScenicRoute_Daycare_Layout",
+      "width": 11,
+      "height": 13,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_Daycare",
+      "border_filepath": "data/layouts/ScenicRoute_Daycare/border.bin",
+      "blockdata_filepath": "data/layouts/ScenicRoute_Daycare/map.bin"
     }
   ]
 }
