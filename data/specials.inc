@@ -587,3 +587,4 @@ gSpecials::
 	def_special GetRandomSpecialAdoptionSpecies
 	def_special ObjectEventInteractionGetApricornTreeData
 	def_special ObjectEventInteractionPickApricornTree
+	def_special InitEggGirlStepCounterFromSelectedPartyEgg

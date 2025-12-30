@@ -1,10 +1,17 @@
 const FLAG_HIDE_MOM = FLAG_TEMP_1
+const FLAG_HIDE_HATCHED_MON = FLAG_TEMP_2
 
 mapscripts YifuCity_House3_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		getweekday
 		if (var(VAR_RESULT) == WEEKDAY_TUE || var(VAR_RESULT) == WEEKDAY_FRI) {
 			setflag(FLAG_HIDE_MOM)
+		}
+
+		if (var(VAR_EGG_GIRL_STEP_COUNTER) == 0 && var(VAR_EGG_GIRL_SPECIES) != 0) {
+			getspeciesgfx(VAR_EGG_GIRL_SPECIES, VAR_OBJ_GFX_ID_0)
+        } else {
+			setflag(FLAG_HIDE_HATCHED_MON)
 		}
 	}
 }
@@ -37,17 +44,45 @@ script YifuCity_House3_EventScript_EggGirl {
 	lock
 	faceplayer
 
-	if (var(VAR_EGG_SPECIES_GIVEN_TO_EGG_GIRL) == SPECIES_NONE) {
+	if (var(VAR_EGG_GIRL_SPECIES) == SPECIES_NONE) {
 		call(YifuCity_House3_NotTradedYet)
+	} elif (flag(FLAG_HIDE_HATCHED_MON)) {
+		call(YifuCity_House3_CantWaitToHatch)
 	} else {
-		// TODO Make egg hatch after a while (nb steps? badge?)
+		waitse
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_happy))
 		setspeaker(SP_NAME_LITTLE_GIRL)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Can't wait for my egg to hatch!"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}It's you!! The egg you gave me finally\nhatched, see?\p"
+			"Now I have a friend staying with me\neven when my sister is working!\lI'm so happy!"
 		))
 	}
 	release
+}
+
+script YifuCity_House3_CantWaitToHatch {
+	// GetEggCycleLength() * eggCycles
+	if (var(VAR_EGG_GIRL_STEP_COUNTER) <= 1280) {
+		waitse
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark))
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Oh! Oh! The Egg you gave me is moving!\n"
+			"I'm so excited!!"
+		))
+		waitmovement(0)
+	} elif (var(VAR_EGG_GIRL_STEP_COUNTER) <= 2560) {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}I can hear some knocking on the Egg you gave me.\l"
+			"Does that mean it'll hatch soon?"
+		))
+	} else {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Can't wait for my Egg to hatch!\nUGHHH it's going to take so looong!"
+		))
+	}
+	closemessage
 }
 
 script YifuCity_House3_NotTradedYet {
@@ -77,17 +112,17 @@ script YifuCity_House3_NotTradedYet {
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
 			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Really?! Me too!! Pokémon eggs are so cool!\l"
-				"I love not knowing what will jump out of the egg!\p"
-				"Wanna trade me a mystery egg for a mystery egg?\l"
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Really?! Me too!!\nPokémon eggs are so cool!\p"
+				"I love not knowing what will jump out of the Egg!\p"
+				"Wanna trade me a mystery Egg for a mystery Egg?\l"
 				"That way we'll both have a surprise!"
 			))
 		case 1:
 			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}WHAT? Ewww, gross! I don't mean EATING them!\p"
-				"I just love waiting for a Pokémon to jump of of its egg, especially when I have no idea what it's gonna be!\p"
-				"Wanna trade me a mystery egg for a mystery egg?\l"
+				"WHAT? Ewww, gross!\nI don't mean EATING them!\p"
+				"I love waiting for a Pokémon to jump out of its Egg, especially when I have no idea what it's gonna be!\p"
+				"Wanna trade me a mystery Egg for a mystery Egg?\l"
 				"That way we'll both have a surprise!"
 			))
 		case 2:
@@ -100,9 +135,9 @@ script YifuCity_House3_NotTradedYet {
 		case 3:
 			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Eggs! Pokémon eggs!"
-				"I just love waiting for a Pokémon to jump of of its egg, especially when I have no idea what it's gonna be!\p"
-				"Wanna trade me a mystery egg for a mystery egg?\l"
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Eggs! Pokémon eggs!\p"
+				"I just love waiting for a Pokémon to jump out of its Egg, especially when I have no idea what it's gonna be!\p"
+				"Wanna trade me a mystery Egg for a mystery Egg?\l"
 				"That way we'll both have a surprise!"
 			))
 	}
@@ -143,29 +178,38 @@ script YifuCity_House3_TradeEgg {
 	} else {
 		special(IsSelectedMonEgg)
 		if (var(VAR_RESULT)) {
-			specialvar(VAR_EGG_SPECIES_GIVEN_TO_EGG_GIRL, ScriptGetPartyMonSpeciesEvenIfEgg)
-			special(DestroySelectedPartyMon)
-			// TODO EVA random egg from pool
-			// randomelement(SPECIES_TREECKO, SPECIES_TORCHIC, SPECIES_MUDKIP)
-			// giveegg(VAR_RESULT)
-			giveegg(SPECIES_WYNAUT)
+			special(InitEggGirlStepCounterFromSelectedPartyEgg)
+			giveegg(SPECIES_TOXEL_TOKUAN)
 			playfanfare(MUS_OBTAIN_ITEM)
-			message(format("{PLAYER} received the mysterious egg!"))
+			message(format("{PLAYER} received the mysterious Egg!"))
 			waitmessage
 			waitfanfare
 
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
 			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Yay!!! I can't wait for my egg to hatch!\p"
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Yay!!! I can't wait for my Egg to hatch!\p"
 				"Aren't you wondering what you're gonna get?"
 			))
 			closemessage
 		} else {
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
 			setspeaker(SP_NAME_LITTLE_GIRL)
-			msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}That's not an egg, you silly!"))
+			msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}That's not an Egg, you silly!"))
 			closemessage
 		}
 	}
+}
+
+script YifuCity_House3_EventScript_Pokemon {
+	lock
+	faceplayer
+	setseenmon(VAR_EGG_GIRL_SPECIES)
+    playmoncry(VAR_EGG_GIRL_SPECIES, CRY_MODE_NORMAL)
+	setspeakertomonname(VAR_EGG_GIRL_SPECIES)
+	msgbox(format(
+        "Gyoo!"
+    ))
+    waitmoncry
+    release
 }

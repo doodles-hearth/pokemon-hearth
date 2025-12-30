@@ -952,3 +952,11 @@ u16 CountPartyAliveNonEggMons(void)
     aliveNonEggMonsCount += CountPartyAliveNonEggMonsExcept(PARTY_SIZE);
     return aliveNonEggMonsCount;
 }
+
+u32 GetEggCycleLength(void)
+{
+    if (P_EGG_CYCLE_LENGTH <= GEN_3 || P_EGG_CYCLE_LENGTH == GEN_7) return 256;
+    if (P_EGG_CYCLE_LENGTH == GEN_4) return 255;
+    if (P_EGG_CYCLE_LENGTH == GEN_5 || P_EGG_CYCLE_LENGTH == GEN_6) return 257;
+    if (P_EGG_CYCLE_LENGTH >= GEN_8) return 128;
+}
