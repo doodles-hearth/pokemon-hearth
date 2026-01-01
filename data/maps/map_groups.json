@@ -17,6 +17,7 @@
     "gMapGroup_VanillaMaps2",
     "gMapGroup_VanillaMaps3",
     "gMapGroup_IndoorSaberside",
+    "gMapGroup_IndoorScenic",
     "gMapGroup_IndoorWindycape"
   ],
   "gMapGroup_TownsAndRoutes": [
@@ -708,6 +709,9 @@
     "SabersideTown_House6",
     "SabersideTown_Forge_1F",
     "SabersideTown_Forge_2F"
+  ],
+  "gMapGroup_IndoorScenic": [
+    "ScenicRoute_Daycare"
   ],
   "gMapGroup_IndoorWindycape": [
     "Windycape_House1",

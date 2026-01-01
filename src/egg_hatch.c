@@ -38,6 +38,7 @@
 #include "battle.h" // to get rid of later
 #include "constants/rgb.h"
 #include "party_menu.h"
+#include "overworld.h"
 
 #define GFXTAG_EGG       12345
 #define GFXTAG_EGG_SHARD 23456
@@ -382,6 +383,10 @@ static void AddHatchedMonToParty(u8 id)
 
     metLocation = GetCurrentRegionMapSectionId();
     SetMonData(mon, MON_DATA_MET_LOCATION, &metLocation);
+
+    if (metLocation == METLOC_DAYCARE_ADOPTION) {
+        IncrementGameStat(GAME_STAT_HATCHED_UNWANTED_EGG);
+    }
 
     MonRestorePP(mon);
     CalculateMonStats(mon);
@@ -941,4 +946,12 @@ u16 CountPartyAliveNonEggMons(void)
     u16 aliveNonEggMonsCount = CountStorageNonEggMons();
     aliveNonEggMonsCount += CountPartyAliveNonEggMonsExcept(PARTY_SIZE);
     return aliveNonEggMonsCount;
+}
+
+u32 GetEggCycleLength(void)
+{
+    if (P_EGG_CYCLE_LENGTH <= GEN_3 || P_EGG_CYCLE_LENGTH == GEN_7) return 256;
+    if (P_EGG_CYCLE_LENGTH == GEN_4) return 255;
+    if (P_EGG_CYCLE_LENGTH == GEN_5 || P_EGG_CYCLE_LENGTH == GEN_6) return 257;
+    if (P_EGG_CYCLE_LENGTH >= GEN_8) return 128;
 }

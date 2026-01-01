@@ -1112,6 +1112,10 @@ static const struct SpriteFrameImage sPicTable_Yutaka[] = {
     overworld_ascending_frames(gObjectEventPic_Yutaka, 4, 4)
 };
 
+static const struct SpriteFrameImage sPicTable_Masamune[] = {
+    overworld_ascending_frames(gObjectEventPic_Masamune, 4, 4)
+};
+
 static const struct SpriteFrameImage sPicTable_Flannery[] = {
     overworld_frame(gObjectEventPic_Flannery, 2, 4, 0),
     overworld_frame(gObjectEventPic_Flannery, 2, 4, 1),
@@ -1193,6 +1197,42 @@ static const struct SpriteFrameImage sPicTable_MayFishing[] = {
 
 static const struct SpriteFrameImage sPicTable_HotSpringsOldWoman[] = {
     overworld_ascending_frames(gObjectEventPic_HotSpringsOldWoman, 2, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_MineCart[] = {
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_MineCart, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_MayMineCart[] = {
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_MayMineCart, 4, 4, 2),
+};
+
+static const struct SpriteFrameImage sPicTable_BrendanMineCart[] = {
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 0),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 1),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 2),
+    overworld_frame(gObjectEventPic_BrendanMineCart, 4, 4, 2),
 };
 
 static const struct SpriteFrameImage sPicTable_SSTidal[] = {

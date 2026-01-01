@@ -1587,6 +1587,7 @@ void CB1_Overworld(void)
 #define DNS_TINTCOLOUR_FLASH_PURPLE      Q_8_8(0.368) | Q_8_8(0.297) << 8 | Q_8_8(0.568) << 16    // 0x91445E
 #define DNS_TINTCOLOUR_FLASH_BLUE        Q_8_8(0.297) | Q_8_8(0.459) << 8 | Q_8_8(0.568) << 16    // 0x917544
 #define DNS_TINTCOLOUR_FLASH_GREEN       Q_8_8(0.337) | Q_8_8(0.568) << 8 | Q_8_8(0.451) << 16    // 0x734591
+#define DNS_TINTCOLOUR_FLASH_WHITE       Q_8_8(0.500) | Q_8_8(0.500) << 8 | Q_8_8(0.500) << 16    // 0xFFFFFF
 
 const struct BlendSettings gCustomDNSTintBlend[DNS_BLEND_COUNT] = 
 {
@@ -1599,6 +1600,7 @@ const struct BlendSettings gCustomDNSTintBlend[DNS_BLEND_COUNT] =
     [DNS_BLEND_FLASH_PURPLE]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_PURPLE, .isTint = TRUE},
     [DNS_BLEND_FLASH_BLUE]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_BLUE, .isTint = TRUE},
     [DNS_BLEND_FLASH_GREEN]    = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_GREEN, .isTint = TRUE},
+    [DNS_BLEND_FLASH_WHITE]    = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_WHITE, .isTint = TRUE},
 };
 
 const struct BlendSettings gTimeOfDayBlend[] =

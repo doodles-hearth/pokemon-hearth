@@ -77,6 +77,7 @@
 #include "battle_util.h"
 #include "naming_screen.h"
 #include "field_name_box.h"
+#include "egg_hatch.h"
 
 #define TAG_ITEM_ICON 5500
 
@@ -4539,7 +4540,7 @@ void DestroySelectedPartyMon(void) {
 
 void SetSpeakerToMonName(struct ScriptContext *ctx)
 {
-    u16 species = gSpecialVar_0x8004 = ScriptReadHalfword(ctx);
+    u16 species = VarGet(ScriptReadHalfword(ctx));
     bool8 isNamed = GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_NAMED);
     const u8 *name;
 
@@ -4831,12 +4832,12 @@ void SetAbility(void)
 
 static const u16 sRandomAdoptionSpecies[] =
 {
-    SPECIES_EKANS, SPECIES_VULPIX, SPECIES_GROWLITHE,
+    SPECIES_GROWLITHE, SPECIES_VULPIX, SPECIES_SHROOMISH, SPECIES_CLEFFA, SPECIES_SLAKOTH, SPECIES_CHINGLING, SPECIES_SPHEAL, SPECIES_MUNCHLAX, SPECIES_CHINCHOU, SPECIES_MAGBY, SPECIES_NATU, SPECIES_BUDEW, SPECIES_TOXEL_TOKUAN,
 };
 
 static const u16 sRandomSpecialAdoptionSpecies[] =
 {
-    SPECIES_BULBASAUR, SPECIES_CHARMANDER, SPECIES_SQUIRTLE,
+    SPECIES_BULBASAUR, SPECIES_TORCHIC, SPECIES_PIPLUP
 };
 
 u16 GetRandomAdoptionSpecies(void)
@@ -4847,4 +4848,31 @@ u16 GetRandomAdoptionSpecies(void)
 u16 GetRandomSpecialAdoptionSpecies(void)
 {
     return sRandomSpecialAdoptionSpecies[Random() % ARRAY_COUNT(sRandomSpecialAdoptionSpecies)];
+}
+
+u32 GetNumberOfBadges(void)
+{
+    u32 nbBadges = 0;
+    if (FlagGet(FLAG_BADGE01_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE02_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE03_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE04_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE05_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE06_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE07_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE08_GET)) nbBadges += 1;
+
+    return nbBadges;
+}
+
+/**
+ * Stores the egg species and remaining number of steps to reach before the
+ * Yifu City little girl's egg hatches, then destroys the egg from your party.
+ */
+void InitEggGirlStepCounterFromSelectedPartyEgg(void) {
+    u8 monId = GetCursorSelectionMonId();
+    VarSet(VAR_EGG_GIRL_SPECIES, GetMonData(&gPlayerParty[monId], MON_DATA_SPECIES, NULL));
+    VarSet(VAR_EGG_GIRL_STEP_COUNTER, GetMonData(&gPlayerParty[monId], MON_DATA_FRIENDSHIP, NULL) * GetEggCycleLength());
+    ZeroMonData(&gPlayerParty[monId]);
+    CompactPartySlots();
 }

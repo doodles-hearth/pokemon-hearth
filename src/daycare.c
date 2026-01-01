@@ -45,7 +45,7 @@ EWRAM_DATA static u16 sHatchedEggMotherMoves[MAX_MON_MOVES] = {0};
 static const struct WindowTemplate sDaycareLevelMenuWindowTemplate =
 {
     .bg = 0,
-    .tilemapLeft = 15,
+    .tilemapLeft = 1,
     .tilemapTop = 1,
     .width = 14,
     .height = 6,
@@ -1112,9 +1112,15 @@ static void _GiveEggFromDaycare(struct DayCare *daycare)
 
     isEgg = TRUE;
     SetMonData(&egg, MON_DATA_IS_EGG, &isEgg);
-    gPlayerParty[PARTY_SIZE - 1] = egg;
-    CompactPartySlots();
-    CalculatePlayerPartyCount();
+
+    // Party is full, send to PC
+    if (CalculatePlayerPartyCount() == PARTY_SIZE) {
+        CopyMonToPC(&egg);
+    } else {
+        gPlayerParty[PARTY_SIZE - 1] = egg;
+        CompactPartySlots();        
+    }
+
     RemoveEggFromDayCare(daycare);
 }
 
@@ -1186,10 +1192,13 @@ static bool8 TryProduceOrHatchEgg(struct DayCare *daycare)
 
     // Try to hatch Egg
     daycare->stepCounter++;
-    if (((P_EGG_CYCLE_LENGTH <= GEN_3 || P_EGG_CYCLE_LENGTH == GEN_7) && daycare->stepCounter >= 256)
-     || (P_EGG_CYCLE_LENGTH == GEN_4 && daycare->stepCounter >= 255)
-     || ((P_EGG_CYCLE_LENGTH == GEN_5 || P_EGG_CYCLE_LENGTH == GEN_6) && daycare->stepCounter >= 257)
-     || (P_EGG_CYCLE_LENGTH >= GEN_8 && daycare->stepCounter >= 128))
+
+    if (VarGet(VAR_EGG_GIRL_STEP_COUNTER) > 0)
+    {
+        VarSet(VAR_EGG_GIRL_STEP_COUNTER, VarGet(VAR_EGG_GIRL_STEP_COUNTER) -1);
+    }
+
+    if (daycare->stepCounter >= GetEggCycleLength())
     {
         u32 eggCycles;
         u8 toSub = GetEggCyclesToSubtract();
@@ -1278,6 +1287,7 @@ u8 GetDaycareState(void)
     u8 numMons;
     if (IsEggPending(&gSaveBlock1Ptr->daycare))
     {
+        DebugPrintf("Egg waiting");
         return DAYCARE_EGG_WAITING;
     }
 

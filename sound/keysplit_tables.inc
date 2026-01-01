@@ -33,3 +33,10 @@ keysplit tuba, 24
 keysplit french_horn, 36
 	split 0, 66
 	split 1, 108
+
+keysplit flute, 36
+	split 0, 71
+	split 1, 96
+	split 2, 108
+
+

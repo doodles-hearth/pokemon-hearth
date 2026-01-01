@@ -1,1 +1,138 @@
 mapscripts SabersideTown_Forge_2F_MapScripts {}
+
+script SabersideDojo_EventScript_Masamune {
+    lock
+    faceplayer
+
+	trainerbattle_single(
+		TRAINER_MASAMUNE_1,
+		format(
+            "{CREATE_MUGSHOT MUGSHOT_MASAMUNE 0}{SPEAKER NAME_MASAMUNE}Battle me bitch"
+		),
+		format("I lost"),
+		SabersideTown_Dojo_EventScript_MasamuneDefeated,
+		NO_MUSIC
+	)
+    
+	setspeaker(SP_NAME_MASAMUNE)
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_MASAMUNE 0}{SPEAKER NAME_MASAMUNE}Now piss off"
+	))
+
+    release
+	end
+}
+
+script SabersideTown_Dojo_EventScript_MasamuneDefeated {
+    // removespeakername
+	message(format(
+		"{PLAYER} received the Iron Token from Masamune."
+	))
+	waitmessage
+	call(Common_EventScript_PlayGymBadgeFanfare)
+
+	msgbox(
+		format(
+            "{CREATE_MUGSHOT MUGSHOT_MASAMUNE 0}{SPEAKER NAME_MASAMUNE}Take this as well"
+		),
+		MSGBOX_DEFAULT
+	)
+    closemessage
+	
+	giveitem(ITEM_TM_X_SCISSOR)
+
+	msgbox(
+		format(
+			"{CREATE_MUGSHOT MUGSHOT_MASAMUNE 0}{SPEAKER NAME_MASAMUNE}This scroll contains XXX"
+		)
+	)
+	closemessage
+
+	setflag(FLAG_BADGE04_GET)
+	setvar(VAR_0x8008, 4)
+	call(Common_EventScript_SetGymTrainers)
+	addvar(VAR_PLAYER_REPUTATION, 5)
+
+	release
+	end
+}
+
+script SabersideDojo_EventScript_Tetsuhiro {
+    trainerbattle_single(
+        TRAINER_TETSUHIRO,
+        format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Battle me"),
+        format("I lost")
+    )
+    setspeaker(SP_NAME_SMITH)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}I suck"), MSGBOX_AUTOCLOSE)
+}
+
+script SabersideDojo_EventScript_Kotetsu {
+    trainerbattle_single(
+        TRAINER_KOTETSU,
+        format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Battle me"),
+        format("I lost")
+    )
+    setspeaker(SP_NAME_SMITH)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}I suck"), MSGBOX_AUTOCLOSE)
+}
+
+script SabersideDojo_EventScript_Tetsuko {
+    trainerbattle_single(
+        TRAINER_TETSUKO,
+        format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Battle me"),
+        format("I lost")
+    )
+    setspeaker(SP_NAME_SMITH)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}I suck"), MSGBOX_AUTOCLOSE)
+}
+
+script SabersideDojo_EventScript_Tetsuya {
+    trainerbattle_single(
+        TRAINER_TETSUYA,
+        format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Battle me"),
+        format("I lost")
+    )
+    setspeaker(SP_NAME_SMITH)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}I suck"), MSGBOX_AUTOCLOSE)
+}
+
+script SabersideDojo_EventScript_Yutetsu {
+    trainerbattle_single(
+        TRAINER_YUTETSU,
+        format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Battle me"),
+        format("I lost")
+    )
+    setspeaker(SP_NAME_SMITH)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}I suck"), MSGBOX_AUTOCLOSE)
+}
+
+script SabersideDojo_EventScript_Gotetsu {
+    trainerbattle_single(
+        TRAINER_GOTETSU,
+        format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Battle me"),
+        format("I lost")
+    )
+    setspeaker(SP_NAME_SMITH)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}I suck"), MSGBOX_AUTOCLOSE)
+}
+
+script SabersideDojo_EventScript_Tetsuo {
+    trainerbattle_single(
+        TRAINER_TETSUO,
+        format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Battle me"),
+        format("I lost")
+    )
+    setspeaker(SP_NAME_SMITH)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}I suck"), MSGBOX_AUTOCLOSE)
+}
+
+script SabersideDojo_EventScript_Tetsu {
+    trainerbattle_single(
+        TRAINER_TETSU,
+        format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Battle me"),
+        format("I lost")
+    )
+    setspeaker(SP_NAME_SMITH)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}I suck"), MSGBOX_AUTOCLOSE)
+}

@@ -44,6 +44,8 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 		waitse
 		waitmovement(0)
 		setspeaker(SP_NAME_PKMN_NERD)
+		waitse
+		playse(SE_SUCCESS)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Woah, you… You solved my riddle!\p"
 			"Could you… be a true Pokémon Nerd?\p"
@@ -60,6 +62,8 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	}
 	else
 	{
+		waitse
+		playse(SE_FAILURE)
 		applymovement(VAR_LAST_TALKED, moves(emote_upset))
 		setspeaker(SP_NAME_PKMN_NERD)
 		msgbox(format(
@@ -77,11 +81,10 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 
 script MaguroHarbor_House1_EventScript_Clefairy {
 	lock
-	faceplayer
 	setseenmon(SPECIES_CLEFAIRY)
 	playmoncry(SPECIES_CLEFAIRY, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_CLEFAIRY)
-	applymovement(VAR_LAST_TALKED, moves(emote_music))
+	applymovement(VAR_LAST_TALKED, moves(face_player, emote_music))
 	msgbox(format(
 		"Teehee!"
 	))

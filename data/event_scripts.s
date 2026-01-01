@@ -1166,7 +1166,6 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/birch_speech.inc"
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
-	.include "data/scripts/daycare_adoption.inc"
 	.include "data/scripts/dexnav.inc"
 
 	@ please include poryscript-generated scripts here!!
@@ -1184,6 +1183,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/shared_secret_base.scr"
 	.include "data/scripts/shiny_vial.scr"
 	.include "data/scripts/traveling_merchant.scr"
+	.include "data/scripts/daycare_adoption.scr"
 
 	.include "data/text/pokedex_rating.scr"
 
@@ -1466,3 +1466,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SabersideQuarry_Antechamber/scripts.scr"
 
 	.include "data/maps/WhiteslateRoute_SecretCave/scripts.scr"
+
+	.include "data/maps/ScenicRoute_Daycare/scripts.scr"
