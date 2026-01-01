@@ -1,19 +1,51 @@
 script YifuCity_EventScript_WhirlpoolTutor {
 	lock
 	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_SWAGGER, MoveTutor_EventScript_SwaggerTaught
-	msgbox MoveTutor_Text_SwaggerTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_SwaggerDeclined
-	call MoveTutor_EventScript_CanOnlyBeLearnedOnce
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_SwaggerDeclined
-	msgbox MoveTutor_Text_SwaggerWhichMon, MSGBOX_DEFAULT
-	setvar VAR_ITEM_ID, MOVE_SWAGGER
-	buffermovename STR_VAR_1, MOVE_SWAGGER
-	call MoveTutor_EventScript_OpenBox
-	goto_if_eq VAR_RESULT, 4, MoveTutor_EventScript_SwaggerDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_SWAGGER
-	goto MoveTutor_EventScript_SwaggerTaught
-	end
+	if (flag(FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL)) {
+		setspeaker(SP_NAME_FISHERMAN)
+		msgbox((
+			"I can teach Whirlpool to your Pokémon\nagain, but make it worth my while, OK?\p"
+			"I'm very fond of Heart Scales.\nThey remind me of the sea.\lI'll do it in exchange for one!"
+		))
+
+		if (checkitem(ITEM_HEART_SCALE)) {
+			dynmultichoice(
+				0,
+				0,
+				TRUE,
+				10,
+				0,
+				DYN_MULTICHOICE_CB_NONE,
+				"Give Heart Scale",
+				"Don't give"
+			)
+			closemessage
+
+			if (var(VAR_RESULT) == 0) {
+				call(YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool)
+			}
+		} else {
+			closemessage
+		}
+	} else {
+		setspeaker(SP_NAME_FISHERMAN)
+		msgbox((
+			"Hm? No, I'm not fishing.\p"
+			"I'm just watching the tiny whirlpools\nPokémon make in the shallow water.\p"
+			"Would you like your Pokémon to make\nwhirlpools too?\p"
+			"I could teach them the way of the\nWhirlpool!"
+		))
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"Teach me the way!",
+			"Maybe later."
+		)
+		closemessage
 
 		if (var(VAR_RESULT) == 0) {
 			call(YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool)
@@ -178,7 +210,7 @@ MauvilleCity_EventScript_RolloutTutor::
 	buffermovename STR_VAR_1, MOVE_ROLLOUT
 	call MoveTutor_EventScript_OpenBox
 	goto_if_eq VAR_RESULT, 4, MoveTutor_EventScript_RolloutDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_ROLLOUT
+	setflag FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL
 	goto MoveTutor_EventScript_RolloutTaught
 	end
 

@@ -4479,6 +4479,75 @@ void UseBlankMessageToCancelPokemonPic(void)
     ScriptMenu_HidePokemonPic();
 }
 
+void AssignRandomMonCryVars(void)
+{
+    gSpecialVar_0x8004 = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
+    gSpecialVar_0x8005 = gSpecialVar_0x8004;
+    gSpecialVar_0x8006 = gSpecialVar_0x8004;
+    gSpecialVar_0x8007 = gSpecialVar_0x8004;
+
+    do
+    {
+        gSpecialVar_0x8005 = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
+        
+    } while (gSpecialVar_0x8005 == gSpecialVar_0x8004);
+
+    do
+    {
+        gSpecialVar_0x8006 = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
+        
+    } while (gSpecialVar_0x8006 == gSpecialVar_0x8004 || gSpecialVar_0x8006 == gSpecialVar_0x8005);
+
+    do
+    {
+        gSpecialVar_0x8007 = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
+        
+    } while (gSpecialVar_0x8007 == gSpecialVar_0x8004 || gSpecialVar_0x8007 == gSpecialVar_0x8005 || gSpecialVar_0x8007 == gSpecialVar_0x8006);
+
+    u16 answersArray[] = { gSpecialVar_0x8004, gSpecialVar_0x8005, gSpecialVar_0x8006, gSpecialVar_0x8007 };
+    gSpecialVar_0x8008 = answersArray[Random() % 4];
+}
+
+void EnterDexRiddleGuess(void)
+{
+    DoNamingScreen(NAMING_SCREEN_DEX_RIDDLE, gStringVar2, 0, 0, 0, CB2_ReturnToFieldContinueScript);
+}
+
+void GetDexRiddleFeedback(void)
+{
+    ToLowerCase(gStringVar1);
+    ToLowerCase(gStringVar2);
+
+    if (!StringCompare(gStringVar1, gStringVar2))
+    {
+        gSpecialVar_Result = 1;
+    }
+    else
+    {
+        gSpecialVar_Result = 0;
+    }
+}
+
+/**
+ * Obliterates from existence the Pokémon the player previously selected via the select screen.
+ */
+void DestroySelectedPartyMon(void) {
+    u8 monId = GetCursorSelectionMonId();
+    ZeroMonData(&gPlayerParty[monId]);
+    CompactPartySlots();
+}
+
+void SetSpeakerToMonName(struct ScriptContext *ctx)
+{
+    u16 species = gSpecialVar_0x8004 = ScriptReadHalfword(ctx);
+    bool8 isNamed = GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_NAMED);
+    const u8 *name;
+
+    name = isNamed ? gSpeciesInfo[species].speciesName : gSpeciesInfo[species].unknownName;
+
+    gSpeakerName = name;
+}
+
 void CanTeachMoveBoxMon(void)
 {
     ScriptContext_Stop();

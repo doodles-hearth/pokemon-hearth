@@ -61,6 +61,8 @@
 #include "window.h"
 #include "list_menu.h"
 #include "malloc.h"
+#include "quests.h"
+#include "new_shop.h"
 #include "battle.h"
 #include "constants/event_objects.h"
 #include "constants/map_types.h"

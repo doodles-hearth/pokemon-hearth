@@ -2052,6 +2052,7 @@ static enum MoveCanceler CancelerAsleepOrFrozen(struct BattleContext *ctx)
             enum BattleMoveEffects moveEffect = GetMoveEffect(ctx->move);
             if (gBattleMons[ctx->battlerAtk].status1 & STATUS1_SLEEP)
             {
+                TryDreaming(&gBattleMons[ctx->battlerAtk]);
                 if (!IsUsableWhileAsleepEffect(moveEffect))
                 {
                     gBattlescriptCurrInstr = BattleScript_MoveUsedIsAsleep;
@@ -8704,6 +8705,12 @@ s32 DoFixedDamageMoveCalc(struct BattleContext *ctx)
         break;
     case EFFECT_FINAL_GAMBIT:
         dmg = GetNonDynamaxHP(ctx->battlerAtk);
+        break;
+    case EFFECT_DREAM_EATER:
+        if (gBattleMons[ctx->battlerDef].volatiles.dreamSleep)
+            dmg = GetNonDynamaxHP(ctx->battlerDef);
+        else
+            dmg = INT32_MAX;
         break;
     case EFFECT_BEAT_UP:
         if (GetConfig(CONFIG_BEAT_UP) < GEN_5)

@@ -1357,7 +1357,6 @@ bool32 CannotUseItemsInBattle(u16 itemId, struct Pokemon *mon)
         else if (CompareStat(battlerTarget, GetItemEffect(itemId)[1], MAX_STAT_STAGE, CMP_EQUAL, GetBattlerAbility(battlerTarget)))
             cannotUse = TRUE;
         break;
-    }
     case EFFECT_ITEM_SET_FOCUS_ENERGY:
         if (hp == 0 ||gPartyMenu.slotId > 1)
             cannotUse = TRUE;

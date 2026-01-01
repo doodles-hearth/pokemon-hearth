@@ -2413,7 +2413,7 @@ static void DebugAction_Give_Pokemon_SelectId(u8 taskId)
             return;
         }
 
-        ScriptGiveEgg(sDebugMonData->species);
+        ScriptGiveEgg(sDebugMonData->species, 0);
         PlaySE(SE_SELECT);
         Free(sDebugMonData);
         FreeMonIconPalettes();

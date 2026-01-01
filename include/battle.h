@@ -713,7 +713,8 @@ struct BattleStruct
     u16 flingItem;
     u8 incrementEchoedVoice:1;
     u8 echoedVoiceCounter:3;
-    u8 padding4:4;
+    u8 shouldPrintFullName:1;
+    u8 padding3:3;
 };
 
 struct AiBattleData

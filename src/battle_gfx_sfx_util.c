@@ -961,11 +961,13 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, u8 changeType)
         {
             personalityValue = gBattleMons[battlerAtk].volatiles.transformedMonPID;
             isShiny = gBattleMons[battlerAtk].volatiles.isTransformedMonShiny;
+            colorationValue = gBattleMons[gBattlerAttacker].volatiles.transformedMonColoration;
         }
         else
         {
             personalityValue = gBattleMons[battlerAtk].personality;
             isShiny = gBattleMons[battlerAtk].isShiny;
+            colorationValue = gBattleMons[gBattlerAttacker].volatiles.transformedMonColoration;
         }
         HandleLoadSpecialPokePic(!IsOnPlayerSide(battlerAtk),
                                  gMonSpritesGfxPtr->spritesGfx[position],
