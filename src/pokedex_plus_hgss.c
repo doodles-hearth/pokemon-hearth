@@ -629,9 +629,6 @@ static const struct SpriteTemplate sStatBarSpriteTemplate =
     .tileTag = TAG_STAT_BAR,
     .paletteTag = TAG_STAT_BAR,
     .oam = &sOamData_StatBar,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_StatBars,
 };
 static const struct SpriteTemplate sStatBarBgSpriteTemplate =
@@ -639,9 +636,6 @@ static const struct SpriteTemplate sStatBarBgSpriteTemplate =
     .tileTag = TAG_STAT_BAR_BG,
     .paletteTag = TAG_STAT_BAR_BG,
     .oam = &sOamData_StatBarBg,
-    .anims = gDummySpriteAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_StatBarsBg,
 };
 enum
@@ -1066,8 +1060,6 @@ static const struct SpriteTemplate sScrollBarSpriteTemplate =
     .paletteTag = TAG_DEX_INTERFACE,
     .oam = &sOamData_ScrollBar,
     .anims = sSpriteAnimTable_ScrollBar,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Scrollbar,
 };
 
@@ -1077,8 +1069,6 @@ static const struct SpriteTemplate sScrollArrowSpriteTemplate =
     .paletteTag = TAG_DEX_INTERFACE,
     .oam = &sOamData_ScrollArrow,
     .anims = sSpriteAnimTable_ScrollArrow,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_ScrollArrow,
 };
 
@@ -1088,8 +1078,6 @@ static const struct SpriteTemplate sInterfaceTextSpriteTemplate =
     .paletteTag = TAG_DEX_INTERFACE,
     .oam = &sOamData_InterfaceText,
     .anims = sSpriteAnimTable_InterfaceText,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_DexListInterfaceText,
 };
 
@@ -1099,8 +1087,6 @@ static const struct SpriteTemplate sRotatingPokeBallSpriteTemplate =
     .paletteTag = TAG_DEX_INTERFACE,
     .oam = &sOamData_RotatingPokeBall,
     .anims = sSpriteAnimTable_RotatingPokeBall,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_RotatingPokeBall,
 };
 
@@ -1110,8 +1096,6 @@ static const struct SpriteTemplate sSeenOwnTextSpriteTemplate =
     .paletteTag = TAG_DEX_INTERFACE,
     .oam = &sOamData_SeenOwnText,
     .anims = sSpriteAnimTable_SeenOwnText,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_SeenOwnInfo,
 };
 
@@ -1121,8 +1105,6 @@ static const struct SpriteTemplate sHoennNationalTextSpriteTemplate =
     .paletteTag = TAG_DEX_INTERFACE,
     .oam = &sOamData_InterfaceText,
     .anims = sSpriteAnimTable_HoennNationalText,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_SeenOwnInfo,
 };
 
@@ -1132,8 +1114,6 @@ static const struct SpriteTemplate sHoennDexSeenOwnNumberSpriteTemplate =
     .paletteTag = TAG_DEX_INTERFACE,
     .oam = &sOamData_Dex8x16,
     .anims = sSpriteAnimTable_HoennSeenOwnNumber,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_SeenOwnInfo,
 };
 
@@ -1143,8 +1123,6 @@ static const struct SpriteTemplate sNationalDexSeenOwnNumberSpriteTemplate =
     .paletteTag = TAG_DEX_INTERFACE,
     .oam = &sOamData_Dex8x16,
     .anims = sSpriteAnimTable_NationalSeenOwnNumber,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_SeenOwnInfo,
 };
 
@@ -1154,8 +1132,6 @@ static const struct SpriteTemplate sDexListStartMenuCursorSpriteTemplate =
     .paletteTag = TAG_DEX_INTERFACE,
     .oam = &sOamData_Dex8x16,
     .anims = sSpriteAnimTable_DexListStartMenuCursor,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_DexListStartMenuCursor,
 };
 
@@ -4362,7 +4338,7 @@ static void SetTypeIconPosAndPal(u8 typeId, u8 x, u8 y, u8 spriteArrayId)
     if (typeId < NUMBER_OF_MON_TYPES)
         sprite->oam.paletteNum = gTypesInfo[typeId].palette + TYPE_INFO_PALETTE_NUM_OFFSET;
     else
-        sprite->oam.paletteNum = gContestCategoryInfo[typeId - NUMBER_OF_MON_TYPES].palette;
+        sprite->oam.paletteNum = gContestCategoryInfo[typeId - NUMBER_OF_MON_TYPES].palette  + TYPE_INFO_PALETTE_NUM_OFFSET;
     sprite->x = x + 16;
     sprite->y = y + 8;
     SetSpriteInvisibility(spriteArrayId, FALSE);
@@ -4872,7 +4848,6 @@ static void Task_LoadStatsScreen(u8 taskId)
         sPokedexView->typeIconSpriteIds[1] = 0xFF;
         CreateTypeIconSprites();
         sPokedexView->categoryIconSpriteId = 0xFF;
-        LoadPalette(gMoveTypes_Pal, 0x1D0, 0x60);
         LoadCompressedSpriteSheet(&gSpriteSheet_CategoryIcons);
         LoadSpritePalette(&gSpritePal_CategoryIcons);
         gMain.state++;

@@ -2,7 +2,11 @@
 #define GUARD_TEST_RUNNER_H
 
 extern const bool8 gTestRunnerEnabled;
+#if TESTING
 extern const bool8 gTestRunnerHeadless;
+#else
+#define gTestRunnerHeadless FALSE
+#endif
 extern const bool8 gTestRunnerSkipIsFail;
 
 #if TESTING
@@ -21,7 +25,6 @@ void TestRunner_Battle_CheckSwitch(u32 battlerId, u32 partyIndex);
 void TestRunner_Battle_CheckAiMoveScores(u32 battlerId);
 void TestRunner_Battle_AISetScore(const char *file, u32 line, u32 battlerId, u32 moveIndex, s32 score);
 void TestRunner_Battle_AIAdjustScore(const char *file, u32 line, u32 battlerId, u32 moveIndex, s32 score);
-void TestRunner_Battle_InvalidNoHPMon(u32 battlerId, u32 partyIndex);
 void TestRunner_CheckMemory(void);
 
 void TestRunner_Battle_CheckBattleRecordActionType(u32 battlerId, u32 recordIndex, u32 actionType);
@@ -44,7 +47,6 @@ u32 TestRunner_Battle_GetForcedEnvironment(void);
 #define TestRunner_Battle_CheckAiMoveScores(...) (void)0
 #define TestRunner_Battle_AISetScore(...) (void)0
 #define TestRunner_Battle_AIAdjustScore(...) (void)0
-#define TestRunner_Battle_InvalidNoHPMon(...) (void)0
 
 #define TestRunner_Battle_CheckBattleRecordActionType(...) (void)0
 

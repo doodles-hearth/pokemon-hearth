@@ -648,6 +648,10 @@
 		.endif
 	.endm
 
+	.macro waitmovementall
+	callnative Script_waitmovementall, requests_effects=1
+	.endm
+
 	@ Attempts to despawn the specified (localId) object on the specified map.
 	@ It also sets the object's visibility flag if it has one.
 	@ If no map is specified, then the current map is used.
@@ -2357,6 +2361,12 @@
 	.2byte \slot
 	.endm
 
+	@ Sets the hp to 0 for the Pokémon in \slot.
+	.macro setko slot:req
+	callnative Script_SetKO, requests_effects=1
+	.2byte \slot
+	.endm
+
 	@ Sets VAR_RESULT to the Pokémon in \slot's Tera Type
 	.macro checkteratype slot:req
 	callnative CheckTeraType, requests_effects=1
@@ -2448,7 +2458,7 @@
 	@ ============================ @
 	@ FAKE RTC MACROS
 	@ Will only function if OW_USE_FAKE_RTC is true. If it has any additional requirements, it will be listed accordingly.
-	
+
 	@ When OW_USE_FAKE_RTC is true and OW_FLAG_PAUSE_TIME is assigned, this macro will stop the flow of time.
 	.macro pausefakertc
 	callnative Script_PauseFakeRtc, requests_effects=1
@@ -2472,26 +2482,26 @@
 	.4byte \minutes
 	.endm
 
-	@ When OW_USE_FAKE_RTC is true, adds a specified number of days to the time. 
+	@ When OW_USE_FAKE_RTC is true, adds a specified number of days to the time.
 	.macro adddays days:req
 	callnative ScrCmd_adddays, requests_effects=1
 	.4byte \days
 	.endm
 
-	@ When OW_USE_FAKE_RTC is true, adds a specified number of days, hours, and minutes to the time. 
+	@ When OW_USE_FAKE_RTC is true, adds a specified number of days, hours, and minutes to the time.
 	.macro addhours hours:req
 	callnative ScrCmd_addhours, requests_effects=1
 	.4byte \hours
 	.endm
 
-	@ When OW_USE_FAKE_RTC is true, adds a specified number of days, hours, and minutes to the time. 
+	@ When OW_USE_FAKE_RTC is true, adds a specified number of days, hours, and minutes to the time.
 	.macro addminutes minutes:req
 	callnative ScrCmd_addminutes, requests_effects=1
 	.4byte \minutes
 	.endm
 
-	@ Forwards the time to a specified hour and minute. 
-	@ This causes the time to go to the next day if the time has already been past. 
+	@ Forwards the time to a specified hour and minute.
+	@ This causes the time to go to the next day if the time has already been past.
 	.macro fwdtime hours:req, minutes:req
 	callnative ScrCmd_fwdtime, requests_effects=1
 	.4byte \hours
@@ -2748,204 +2758,26 @@
 	cant_see_if 5
 	.endm
 
-	.macro travellingmerchant
-	callnative ScrCmd_travellingmerchant
-	waitstate
+	.macro setmultitrainerbattle trainer_a:req, lose_text_a:req, trainer_b:req, lose_text_b:req, partnerId:req
+	callnative SetMultiTrainerBattle
+	.2byte \trainer_a
+	.4byte \lose_text_a
+	.2byte \trainer_b
+	.4byte \lose_text_b
+	.2byte \partnerId
 	.endm
 
-	@==================@
-	@ QUEST MENU @
-
-
-	.macro questmenu case:req, questId:req
-    callnative ScrCmd_questmenu
-    .byte \case
-    .byte \questId
-    .endm
-
-    .macro subquestmenu case:req, parentId:req, childId:req
-    callnative ScrCmd_subquestmenu
-    .byte \case
-    .2byte \parentId
-    .2byte \childId
-    .endm
-
-    @ Check the quest state and return a number associated with quest state
-    .macro returnqueststate questId:req
-    callnative ScrCmd_returnqueststate
-    .byte \questId
-    .endm
-    
-    .macro openquestmenu
-    questmenu 0 0
-    .endm
-
-    @ Starts the specified quest.
-	.macro startquest quest:req
-	closemessage
-	@ delay 30
-	questmenu QUEST_MENU_SET_ACTIVE, \quest
-	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-    @ bufferstring 1 gText_QuestActive
-	@ playfanfare MUS_LEVEL_UP 
-	@ msgbox gText_QuestAnnounce, MSGBOX_SIGN
-	@ waitfanfare
+	@ facility version of `trainerbattle` macro. Used in Battle Pyramid and Trainer Hill
+	.macro facilitytrainerbattle facility:req
+	callnative FacilityTrainerBattle
+	.byte \facility
 	.endm
 
-    @ Completes the specified quest.
-	.macro completequest quest:req
-	closemessage
-	@ delay 30
-	questmenu QUEST_MENU_COMPLETE_QUEST, \quest
-	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-    @ bufferstring 1 gText_QuestComplete
-	@ playfanfare MUS_LEVEL_UP 
-	@ msgbox gText_QuestAnnounce, MSGBOX_SIGN
-	@ waitfanfare
+	@ immediately starts a battle of the given facility
+	.macro dofacilitytrainerbattle facility:req
+	callnative DoFacilityTrainerBattle
+	.byte \facility
 	.endm
-
-	@ Updates the complex quest's variable to give it its next state.
-	.macro updatequest quest:req, questvar:req
-	addvar \questvar, 1
-	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-	@ bufferstring 1 gText_QuestUpdate
-	@ playse SE_PIN
-	@ msgbox gText_QuestUpdate, MSGBOX_SIGN
-	@ waitse
-	@ openquestmenu
-	.endm
-
-	.macro goto_if_quest_inactive quest:req, dest:req
-	questmenu QUEST_MENU_CHECK_INACTIVE \quest
-	goto_if_eq VAR_RESULT, TRUE, \dest
-	.endm
-
-	.macro goto_if_quest_active quest:req, dest:req
-	questmenu QUEST_MENU_CHECK_ACTIVE \quest
-	goto_if_eq VAR_RESULT, TRUE, \dest
-	.endm
-
-	.macro goto_if_quest_reward quest:req, dest:req
-	questmenu QUEST_MENU_CHECK_REWARD \quest
-	goto_if_eq VAR_RESULT, TRUE, \dest
-	.endm
-
-	.macro goto_if_quest_complete quest:req, dest:req
-	questmenu QUEST_MENU_CHECK_COMPLETE \quest
-	goto_if_eq VAR_RESULT, TRUE, \dest
-	.endm
-
-    .macro goto_if_quest_not_inactive quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_INACTIVE \quest
-    goto_if_eq VAR_RESULT, FALSE, \dest
-    .endm
-
-    .macro goto_if_quest_not_active quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_ACTIVE \quest
-    goto_if_eq VAR_RESULT, FALSE, \dest
-    .endm
-
-    .macro goto_if_quest_not_reward quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_REWARD \quest
-    goto_if_eq VAR_RESULT, FALSE, \dest
-    .endm
-
-    .macro goto_if_quest_not_complete quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_COMPLETE \quest
-    goto_if_eq VAR_RESULT, FALSE, \dest
-    .endm
-
-    .macro call_if_quest_inactive quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_INACTIVE \quest
-    call_if_eq VAR_RESULT, TRUE, \dest
-    .endm
-
-    .macro call_if_quest_active quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_ACTIVE \quest
-    call_if_eq VAR_RESULT, TRUE, \dest
-    .endm
-
-    .macro call_if_quest_reward quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_REWARD \quest
-    call_if_eq VAR_RESULT, TRUE, \dest
-    .endm
-
-    .macro call_if_quest_complete quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_COMPLETE \quest
-    call_if_eq VAR_RESULT, TRUE, \dest
-    .endm
-
-    .macro call_if_quest_not_inactive quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_INACTIVE \quest
-    call_if_eq VAR_RESULT, FALSE, \dest
-    .endm
-
-    .macro call_if_quest_not_active quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_ACTIVE \quest
-    call_if_eq VAR_RESULT, FALSE, \dest
-    .endm
-
-    .macro call_if_quest_not_reward quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_REWARD \quest
-    call_if_eq VAR_RESULT, FALSE, \dest
-    .endm
-
-    .macro call_if_quest_not_complete quest:req, dest:req
-    questmenu QUEST_MENU_CHECK_COMPLETE \quest
-    call_if_eq VAR_RESULT, FALSE, \dest
-    .endm
-
-	.macro completesubquest quest:req, subquest:req
-	closemessage
-	subquestmenu QUEST_MENU_COMPLETE_QUEST, \quest, \subquest
-	.endm
-
-    .macro goto_if_subquest_complete parent:req,child:req, dest:req
-    subquestmenu QUEST_MENU_CHECK_COMPLETE \parent \child
-    goto_if_eq VAR_RESULT, TRUE, \dest
-    .endm
-
-    .macro call_if_subquest_complete parent:req,child:req, dest:req
-    subquestmenu QUEST_MENU_CHECK_COMPLETE \parent \child
-    call_if_eq VAR_RESULT, TRUE, \dest
-    .endm
-
-    .macro goto_if_subquest_not_complete parent:req,child:req, dest:req
-    subquestmenu QUEST_MENU_CHECK_COMPLETE \parent \child
-    goto_if_eq VAR_RESULT, FALSE, \dest
-    .endm
-
-    .macro call_if_subquest_not_complete parent:req,child:req, dest:req
-    subquestmenu QUEST_MENU_CHECK_COMPLETE \parent \child
-    call_if_eq VAR_RESULT, FALSE, \dest
-    .endm
-
-	@ example_usage:
-	@ 	createfieldmugshot MUGSHOT_TEST, EMOTE_NORMAL
-	@ 	msgbox test
-	@ 	removefieldmugshot
-	@ 	createfieldmugshot MUGSHOT_TEST, EMOTE_ALT
-	@ 	msgbox test2
-	@ 	removefieldmugshot
-
-	@ spawn a mugshot in the overworld at a specific coordinate
-	.macro createfieldmugshot id:req, emote=0
-	callnative CreateFieldMugshot
-	.2byte \id
-	.2byte \emote
-	.endm
-
-	@ destroys a mugshot in the overworld, if there is one
-	.macro removefieldmugshot
-	callnative RemoveFieldMugshot
-	.endm
-
-	@DebugPrintF macro
-    .macro debugprint str:req, numOrVar=65535
-    callnative ScrCmd_debugprint
-    .4byte \str
-    .2byte \numOrVar
-    .endm
 
 @ Follower NPCs
 
@@ -3106,39 +2938,8 @@
 	.4byte \destination
 	.endm
 
-	@ Player Transform
-	@ Transforms the player into VAR_0x8004
-	.macro transformplayer defer=0
-	callnative TransformPlayer, requests_effects=1
-	.byte \defer
-	.endm
-
-	@ Opens party menu for picking a Pokémon, then immediately
-	@ transforms into the chosen Pokémon
-	.macro autotransformplayer
-	callnative TransformPlayerFromParty, requests_effects=1
-	.endm
-
-	@ Transforms the player into the Pokémon that's at the given 1-indexed party slot
-	.macro transformplayerto slot:req defer=0
-	callnative TransformPlayerFromScriptByIndex requests_effects=1
-	.byte \slot
-	.byte \defer
-	.endm
-
-	@ Turns the player back into a human
-	.macro detransformplayer defer=0
-	callnative DetransformPlayer, requests_effects=1
-	.byte \defer
-	.endm
-
-	@ Buffers the currently transformed Pokémon's name or nickname
-	.macro buffertransformmonnick stringVarId:req
-	callnative ScrCmd_BufferTransformMonNick, requests_effects=1
-	stringvar \stringVarId
-	.endm
-
-	@ Sets VAR_RESULT to the currently transformed Pokémon's species ID
-	.macro gettransformmonspecies
-	callnative ScrCmd_GetTransformMonSpecies, requests_effects=1
+	@ Sets a starting status for the next battle. Can be stacked.
+	.macro setstartingstatus status:req
+	callnative ScrCmd_setstartingstatus
+	.byte \status
 	.endm

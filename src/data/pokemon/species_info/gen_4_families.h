@@ -6256,7 +6256,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Uxie,
             gShinyOverworldPalette_Uxie
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sUxieLevelUpLearnset,
         .teachableLearnset = sUxieTeachableLearnset,
@@ -6342,7 +6342,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Mesprit,
             gShinyOverworldPalette_Mesprit
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sMespritLevelUpLearnset,
         .teachableLearnset = sMespritTeachableLearnset,
@@ -6422,7 +6422,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Azelf,
             gShinyOverworldPalette_Azelf
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sAzelfLevelUpLearnset,
         .teachableLearnset = sAzelfTeachableLearnset,
@@ -6501,7 +6501,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Dialga,
             gShinyOverworldPalette_Dialga
         )
-        .isLegendary = TRUE,
+        .isRestrictedLegendary = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sDialgaLevelUpLearnset,
@@ -6570,7 +6570,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_DialgaOrigin,
             gShinyOverworldPalette_DialgaOrigin
         )
-        .isLegendary = TRUE,
+        .isRestrictedLegendary = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sDialgaLevelUpLearnset,
@@ -6652,7 +6652,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Palkia,
             gShinyOverworldPalette_Palkia
         )
-        .isLegendary = TRUE,
+        .isRestrictedLegendary = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sPalkiaLevelUpLearnset,
@@ -6721,7 +6721,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_PalkiaOrigin,
             gShinyOverworldPalette_PalkiaOrigin
         )
-        .isLegendary = TRUE,
+        .isRestrictedLegendary = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sPalkiaLevelUpLearnset,
@@ -6802,7 +6802,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Heatran,
             gShinyOverworldPalette_Heatran
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sHeatranLevelUpLearnset,
         .teachableLearnset = sHeatranTeachableLearnset,
@@ -6879,7 +6879,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Regigigas,
             gShinyOverworldPalette_Regigigas
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sRegigigasLevelUpLearnset,
         .teachableLearnset = sRegigigasTeachableLearnset,
@@ -6959,7 +6959,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_GiratinaAltered,
             gShinyOverworldPalette_GiratinaAltered
         )
-        .isLegendary = TRUE,
+        .isRestrictedLegendary = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sGiratinaLevelUpLearnset,
@@ -7035,7 +7035,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_GiratinaOrigin,
             gShinyOverworldPalette_GiratinaOrigin
         )
-        .isLegendary = TRUE,
+        .isRestrictedLegendary = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sGiratinaLevelUpLearnset,
@@ -7120,7 +7120,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Cresselia,
             gShinyOverworldPalette_Cresselia
         )
-        .isLegendary = TRUE,
+        .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sCresseliaLevelUpLearnset,
         .teachableLearnset = sCresseliaTeachableLearnset,
@@ -7282,6 +7282,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sManaphyLevelUpLearnset,
         .teachableLearnset = sManaphyTeachableLearnset,
+        .eggId = EGG_ID_MANAPHY,
     },
 #endif //P_FAMILY_MANAPHY
 
