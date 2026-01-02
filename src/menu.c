@@ -340,50 +340,50 @@ static void WindowFunc_DrawDialogueFrame(u8 bg, u8 left, u8 top, u8 width, u8 he
 {
     // TODO EVA try removing the DLG_WINDOW_BASE_TILE_NUM + 
     //! Top Left
-    FillBgTilemapBufferRect(bg, 0x08, left - 2, top - 1, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x09, left - 1, top - 1, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x0A, left, top - 1, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x0B, left + 1, top - 1, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x08, left - 2, top - 1, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x09, left - 1, top - 1, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x0A, left, top - 1, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x0B, left + 1, top - 1, 1, 1);
     //! Top
-    FillBgTilemapBufferRect(bg, 0x0C, left + 2, top - 1, 24, 1);
+    FillMenuTilemapBufferRect(bg, 0x0C, left + 2, top - 1, 24, 1);
     //! Top Right
-    FillBgTilemapBufferRect(bg, 0x0D, left + width, top - 1, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x0E, left + width + 1, top - 1, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x0D, left + width, top - 1, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x0E, left + width + 1, top - 1, 1, 1);
     //! Middle Left
-    FillBgTilemapBufferRect(bg, 0x0F, left - 2, top, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x10, left - 1, top, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x13, left - 2, top + 1, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x14, left - 1, top + 1, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x17, left - 2, top + 2, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x02, left - 1, top + 2, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x1A, left - 2, top + 3, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x1B, left - 1, top + 3, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x0F, left - 2, top, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x10, left - 1, top, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x13, left - 2, top + 1, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x14, left - 1, top + 1, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x17, left - 2, top + 2, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x02, left - 1, top + 2, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x1A, left - 2, top + 3, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x1B, left - 1, top + 3, 1, 1);
     //! Middle
-    FillBgTilemapBufferRect(bg, 0x02, left, top, width, 4);
+    FillMenuTilemapBufferRect(bg, 0x02, left, top, width, 4);
     //! Middle Left
-    FillBgTilemapBufferRect(bg, 0x11, left + width, top, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x12, left + width + 1, top, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x15, left + width, top + 1, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x16, left + width + 1, top + 1, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x18, left + width, top + 2, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x19, left + width + 1, top + 2, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x1C, left + width, top + 3, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x1D, left + width + 1, top + 3, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x11, left + width, top, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x12, left + width + 1, top, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x15, left + width, top + 1, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x16, left + width + 1, top + 1, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x18, left + width, top + 2, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x19, left + width + 1, top + 2, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x1C, left + width, top + 3, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x1D, left + width + 1, top + 3, 1, 1);
     //! Bottom Left
-    FillBgTilemapBufferRect(bg, 0x1E, left - 2, top + height, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x1F, left - 1, top + height, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x20, left, top + height, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x21, left + 1, top + height, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x22, left + 2, top + height, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x1E, left - 2, top + height, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x1F, left - 1, top + height, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x20, left, top + height, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x21, left + 1, top + height, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x22, left + 2, top + height, 1, 1);
     //! Bottom
-    FillBgTilemapBufferRect(bg, 0x23, left + 3, top + height, 19, 1);
+    FillMenuTilemapBufferRect(bg, 0x23, left + 3, top + height, 19, 1);
     //! Bottom Right
-    FillBgTilemapBufferRect(bg, 0x24, left + width - 4, top + height, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x25, left + width - 3, top + height, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x26, left + width - 2, top + height, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x27, left + width - 1, top + height, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x28, left + width, top + height, 1, 1);
-    FillBgTilemapBufferRect(bg, 0x29, left + width + 1, top + height, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x24, left + width - 4, top + height, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x25, left + width - 3, top + height, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x26, left + width - 2, top + height, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x27, left + width - 1, top + height, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x28, left + width, top + height, 1, 1);
+    FillMenuTilemapBufferRect(bg, 0x29, left + width + 1, top + height, 1, 1);
 }
 
 int GetDialogFramePlateWidth(void)

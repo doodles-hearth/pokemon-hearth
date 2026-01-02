@@ -179,7 +179,7 @@ static inline enum TMHMItemId GetTMHMItemIdFromMoveId(u16 move)
          *      return ITEM_TM_DRAGON_CLAW;
          * etc */
         FOREACH_TM(UNPACK_TM_MOVE_TO_ITEM_ID)
-        FOREACH_HM(UNPACK_HM_MOVE_TO_ITEM_ID)
+        /* FOREACH_HM(UNPACK_HM_MOVE_TO_ITEM_ID) */
         default:
             return ITEM_NONE;
     }

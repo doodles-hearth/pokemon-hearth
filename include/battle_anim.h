@@ -52,6 +52,7 @@ struct LinkBattleAnim
     u8 syrupBombIsShiny:1;
     u8 isTransformedMonShiny:1;
     u8 padding:4;
+    u8 transformedMonColoration;
 };
 
 #define ANIM_ARGS_COUNT 8

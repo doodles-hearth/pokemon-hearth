@@ -1343,6 +1343,7 @@ static bool32 MatchCall_PrintIntro(u8 taskId)
         if (!sMatchCallState.triggeredFromScript)
             SelectMatchCallMessage(sMatchCallState.trainerId, gStringVar4);
 
+        DebugPrintf("match call");
         TrySpawnAndShowNamebox(gSpeakerName, NAME_BOX_BASE_TILE_NUM);
         InitMatchCallTextPrinter(tWindowId, gStringVar4);
         return TRUE;

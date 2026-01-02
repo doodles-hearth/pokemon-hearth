@@ -2210,6 +2210,7 @@
 	.macro ismonseen species:req
 	setvar VAR_0x8004, \species
 	special IsMonSeen
+	.endm
 
 	.macro setdynamicswitchaifunc func:req
 	callnative ScriptSetDynamicAiSwitchFunc, requests_effects=1
@@ -3176,6 +3177,7 @@
 	@ Sets VAR_RESULT to the currently transformed Pokémon's species ID
 	.macro gettransformmonspecies
 	callnative ScrCmd_GetTransformMonSpecies, requests_effects=1
+	.endm
 	
 	@ Sets a starting status for the next battle. Can be stacked.
 	.macro setstartingstatus status:req

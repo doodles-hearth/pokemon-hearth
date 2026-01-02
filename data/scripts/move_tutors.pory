@@ -212,7 +212,7 @@ MauvilleCity_EventScript_RolloutTutor::
 	buffermovename STR_VAR_1, MOVE_ROLLOUT
 	call MoveTutor_EventScript_OpenBox
 	goto_if_eq VAR_RESULT, 4, MoveTutor_EventScript_RolloutDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_ROLLOUT
+	setflag FLAG_DUMMY
 	goto MoveTutor_EventScript_RolloutTaught
 	end
 

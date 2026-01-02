@@ -2966,7 +2966,7 @@ static void DebugAction_Give_Pokemon_SelectId(u8 taskId)
             return;
         }
 
-        ScriptGiveEgg(sDebugMonData->species);
+        ScriptGiveEgg(sDebugMonData->species, METLOC_FATEFUL_ENCOUNTER);
         PlaySE(SE_SELECT);
         Free(sDebugMonData);
         FreeMonIconPalettes();

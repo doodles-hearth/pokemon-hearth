@@ -965,7 +965,7 @@ void HandleSpeciesGfxDataChange(u8 battlerAtk, u8 battlerDef, u8 changeType)
         {
             personalityValue = gTransformedPersonalities[battlerAtk];
             isShiny = gTransformedShininess[battlerAtk];
-            colorationValue = gTransformedColorations[battlerAtk].transformedMonColoration;
+            colorationValue = gTransformedColorations[battlerAtk];
         }
         else
         {

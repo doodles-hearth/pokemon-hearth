@@ -223,6 +223,7 @@ enum VolatileFlags
     F(VOLATILE_DREAM_SLEEP,                 dreamSleep,                    (u32, 1)) \
     F(VOLATILE_IS_TRANSFORMED_MON_SHINY,    isTransformedMonShiny,         (u32, 1)) \
     F(VOLATILE_TRANSFORMED_MON_PID,         transformedMonPID,             (u32, UINT32_MAX)) \
+    F(VOLATILE_TRANSFORMED_MON_COLORATION,  transformedMonColoration,      (u32, UINT32_MAX)) \
     F(VOLATILE_DISABLED_MOVE,               disabledMove,                  (u32, MOVES_COUNT_ALL)) \
     F(VOLATILE_ENCORED_MOVE,                encoredMove,                   (u32, MOVES_COUNT_ALL)) \
     F(VOLATILE_PROTECT_USES,                protectUses,                   (u32, UINT8_MAX)) \

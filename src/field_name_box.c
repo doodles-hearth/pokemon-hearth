@@ -40,6 +40,8 @@ void TrySpawnNamebox(u32 tileNum)
         return;
     }
 
+    DebugPrintf("spawn: %S", gSpeakerName);
+
     StringExpandPlaceholders(strbuf, gSpeakerName);
 
     u32 fontId = FONT_SMALL;
@@ -183,11 +185,13 @@ void SetSpeaker(struct ScriptContext *ctx)
     u32 arg = ScriptReadWord(ctx);
     const u8 *speaker = NULL;
 
+    DebugPrintf("SP = %d", arg);
     if (arg < SP_NAME_COUNT)
         speaker = gSpeakerNamesTable[arg];
     else if (arg >= ROM_START && arg < ROM_END)
         speaker = (const u8 *)arg;
-
+    
+    DebugPrintf("SP? = %S", speaker);
     gSpeakerName = speaker;
 }
 
@@ -199,6 +203,7 @@ void ClearSpeaker(struct ScriptContext *ctx)
 // useful for other context e.g. match call
 void TrySpawnAndShowNamebox(const u8 *speaker, u32 tileNum)
 {
+    DebugPrintf("TrySpawnAndShowNamebox: %S", speaker);
     gSpeakerName = speaker;
     TrySpawnNamebox(tileNum);
     if (sNameboxWindowId != WINDOW_NONE)
