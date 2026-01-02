@@ -260,6 +260,7 @@ extern const u8 gBattleAnimMove_Stockpile[];
 extern const u8 gBattleAnimMove_SpitUp[];
 extern const u8 gBattleAnimMove_Swallow[];
 extern const u8 gBattleAnimMove_HeatWave[];
+extern const u8 gBattleAnimMove_SmokeBomb[];
 extern const u8 gBattleAnimMove_Hail[];
 extern const u8 gBattleAnimMove_Torment[];
 extern const u8 gBattleAnimMove_Flatter[];
@@ -1001,10 +1002,13 @@ extern const u8 gBattleAnimGeneral_WonderRoom[];
 extern const u8 gBattleAnimGeneral_MagicRoom[];
 extern const u8 gBattleAnimGeneral_Tailwind[];
 extern const u8 gBattleAnimGeneral_Fog[];
+extern const u8 gBattleAnimGeneral_Smoke[];
 extern const u8 gBattleAnimGeneral_TeraCharge[];
 extern const u8 gBattleAnimGeneral_TeraActivate[];
 extern const u8 gBattleAnimGeneral_SimpleHeal[];
 extern const u8 gBattleAnimGeneral_PowerConstruct[];
+extern const u8 gBattleAnimGeneral_SmokeExplosion[];
+
 
 // special animations
 extern const u8 gBattleAnimSpecial_LevelUp[];

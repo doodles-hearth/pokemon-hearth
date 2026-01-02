@@ -5452,7 +5452,8 @@ static void PlayAnimation(u32 battler, u8 animId, const u16 *argPtr, const u8 *n
           || animId == B_ANIM_SANDSTORM_CONTINUES
           || animId == B_ANIM_HAIL_CONTINUES
           || animId == B_ANIM_SNOW_CONTINUES
-          || animId == B_ANIM_FOG_CONTINUES)
+          || animId == B_ANIM_FOG_CONTINUES
+          || animId == B_ANIM_SMOKE_CONTINUES)
     {
         BtlController_EmitBattleAnimation(battler, B_COMM_TO_CONTROLLER, animId, &gDisableStructs[battler], *argPtr);
         MarkBattlerForControllerExec(battler);
@@ -6744,6 +6745,23 @@ static void Cmd_moveend(void)
         case MOVEEND_LIFE_ORB_SHELL_BELL:
             if (ItemBattleEffects(gBattlerAttacker, 0, GetBattlerHoldEffect(gBattlerAttacker), IsLifeOrbShellBellActivation))
                 effect = TRUE;
+            gBattleScripting.moveendState++;
+            break;
+
+        case MOVEEND_SMOKE_EXPLOSION:
+            if (gBattleStruct->trySmokeExplosion) {
+                gBattleStruct->trySmokeExplosion = FALSE;
+                for (u32 battler = 0; battler < gBattlersCount; battler++) {
+                    if (!(gAbsentBattlerFlags & (1u << battler)) && gBattleMons[battler].hp != 0) {
+                        gBattleStruct->passiveHpUpdate[battler] = CalcSmokeExplosionDamage(battler);
+                    }
+                    else {
+                        gBattleStruct->passiveHpUpdate[battler] = 0;
+                    }
+                }
+                BattleScriptCall(BattleScript_SmokeExplosion);
+                return;
+            }
             gBattleScripting.moveendState++;
             break;
         case MOVEEND_FORM_CHANGE:
@@ -9820,6 +9838,9 @@ static void Cmd_setfieldweather(void)
         break;
     case BATTLE_WEATHER_SNOW:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_SNOW;
+        break;
+    case BATTLE_WEATHER_SMOKE:
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_SMOKE;
         break;
     }
 
@@ -18097,4 +18118,32 @@ void BS_JumpIfGenConfigLowerThan(void)
         gBattlescriptCurrInstr = cmd->jumpInstr;
     else
         gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_SmokeExplosionEndAbilities(void)
+{
+    NATIVE_ARGS(u8 battler);
+    u32 battler = GetBattlerForBattleScript(cmd->battler);
+    enum Ability ability = gBattleMons[battler].ability;
+    gBattlescriptCurrInstr = cmd->nextInstr; // set the next instruction
+
+    if (gDisableStructs[battler].smokeExplosionEnd)
+        return;
+
+    gDisableStructs[battler].smokeExplosionEnd = TRUE;
+
+    switch (ability) {
+        case ABILITY_FLASH_FIRE:
+            if (!gDisableStructs[battler].flashFireBoosted) {
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_FLASH_FIRE_BOOST;
+                gDisableStructs[battler].flashFireBoosted = TRUE;
+            }
+            else {
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_FLASH_FIRE_NO_BOOST;
+            }
+            BattleScriptCall(BattleScript_FlashFireBoostReturn); // push the next instruction and run flash fire script
+            break;
+        default:
+            break;
+    }
 }

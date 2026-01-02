@@ -1306,6 +1306,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         switch (moveEffect)
         {
             case EFFECT_SUNNY_DAY:
+            case EFFECT_SMOKE_BOMB:
             case EFFECT_RAIN_DANCE:
             case EFFECT_HAIL:
             case EFFECT_SNOWSCAPE:
@@ -1934,6 +1935,11 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_SUNNY_DAY:
             if (weather & (B_WEATHER_SUN | B_WEATHER_PRIMAL_ANY)
+             || (HasPartner(battlerAtk) && AreMovesEquivalent(battlerAtk, BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove)))
+                ADJUST_SCORE(-8);
+            break;
+        case EFFECT_SMOKE_BOMB:
+            if (weather & (B_WEATHER_SMOKE | B_WEATHER_PRIMAL_ANY)
              || (HasPartner(battlerAtk) && AreMovesEquivalent(battlerAtk, BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove)))
                 ADJUST_SCORE(-8);
             break;
@@ -4788,6 +4794,14 @@ static s32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move, stru
                 ADJUST_SCORE(WEAK_EFFECT);
         }
         break;
+    case EFFECT_SMOKE_BOMB:
+        if (ShouldSetWeather(battlerAtk, B_WEATHER_SMOKE)) {
+            ADJUST_SCORE(DECENT_EFFECT);
+
+            if (HasBattlerSideMoveWithEffect(battlerAtk, EFFECT_WEATHER_BALL))
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
+        break;
     case EFFECT_FELL_STINGER:
         if (gBattleMons[battlerAtk].statStages[STAT_ATK] < MAX_STAT_STAGE
         && aiData->abilities[battlerAtk] != ABILITY_CONTRARY
@@ -6102,6 +6116,7 @@ static s32 AI_ForceSetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 
     case EFFECT_SUNNY_DAY:
     case EFFECT_SANDSTORM:
     case EFFECT_HAIL:
+    case EFFECT_SMOKE_BOMB:
     case EFFECT_SNOWSCAPE:
     case EFFECT_CHILLY_RECEPTION:
     case EFFECT_GEOMANCY:
@@ -6393,6 +6408,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_SANDSTORM:
             case EFFECT_HAIL:
             case EFFECT_SNOWSCAPE:
+            case EFFECT_SMOKE_BOMB:
             case EFFECT_RAIN_DANCE:
             case EFFECT_FILLET_AWAY:
                 ADJUST_SCORE(-2);
@@ -6568,6 +6584,10 @@ static s32 AI_PowerfulStatus(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         if (IsWeatherActive(B_WEATHER_ICY_ANY | B_WEATHER_PRIMAL_ANY) == WEATHER_INACTIVE)
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
         break;
+    case EFFECT_SMOKE_BOMB:
+        if (IsWeatherActive(B_WEATHER_SMOKE | B_WEATHER_PRIMAL_ANY) == WEATHER_INACTIVE)
+            ADJUST_SCORE(POWERFUL_STATUS_MOVE);
+        break;
     default:
         break;
     }
@@ -6654,6 +6674,7 @@ static s32 AI_PredictSwitch(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     case EFFECT_SNOWSCAPE:
     case EFFECT_HAIL:
     case EFFECT_SUNNY_DAY:
+    case EFFECT_SMOKE_BOMB:
     case EFFECT_AQUA_RING:
     case EFFECT_ELECTRIC_TERRAIN:
     case EFFECT_PSYCHIC_TERRAIN:
