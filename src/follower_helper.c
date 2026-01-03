@@ -262,7 +262,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
             MATCH_MAP(MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM),
         },
     },
-    [COND_MSG_PETALS] =
+    [COND_MSG_ROUTE_117] =
     {
         .text = sCondMsg27,
         .emotion = FOLLOWER_EMOTION_SURPRISE,
