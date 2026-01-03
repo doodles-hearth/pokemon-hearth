@@ -142,7 +142,10 @@ SINGLE_BATTLE_TEST("Grudge's effect disappears if the user takes a new turn - Sl
         ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, player);
         MESSAGE("Wobbuffet fell asleep!");
         STATUS_ICON(player, sleep: TRUE);
-        MESSAGE("Wobbuffet is fast asleep.");
+        ONE_OF {
+            MESSAGE("Wobbuffet is fast asleep.");
+            MESSAGE("Wobbuffet is deep in a dream.");
+        }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_VITAL_THROW, opponent);
         MESSAGE("Wobbuffet fainted!");
         NOT MESSAGE("The opposing Wobbuffet's Scratch lost all its PP due to the grudge!");
