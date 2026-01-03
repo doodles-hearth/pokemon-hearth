@@ -915,12 +915,10 @@ static bool8 UNUSED IsFirstFrameOfWeatherFadeIn(void)
 
 void LoadCustomWeatherSpritePalette(const u16 *palette)
 {
-    DebugPrintf("LoadCustomWeatherSpritePalette");
     if (gWeatherPtr->weatherPicSpritePalIndex > 16 // haven't allocated palette yet
     && (gWeatherPtr->weatherPicSpritePalIndex = AllocSpritePalette(PALTAG_WEATHER_2)) > 16)
         return;
     LoadPalette(palette, OBJ_PLTT_ID(gWeatherPtr->weatherPicSpritePalIndex), PLTT_SIZE_4BPP);
-    DebugPrintf("  at index: %d", gWeatherPtr->weatherPicSpritePalIndex);
     UpdateSpritePaletteWithWeather(gWeatherPtr->weatherPicSpritePalIndex, TRUE);
 }
 

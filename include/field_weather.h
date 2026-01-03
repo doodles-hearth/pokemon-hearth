@@ -132,6 +132,7 @@ struct Weather
     s16 droughtState;
     u8 loadDroughtPalsIndex;
     u8 loadDroughtPalsOffset;
+    // Pink leaves
     u8 targetPinkLeafSpriteCount;
     u8 pinkLeafVisibleCounter;
     u8 pinkLeafSpriteCount;

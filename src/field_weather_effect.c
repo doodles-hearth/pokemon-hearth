@@ -2674,8 +2674,6 @@ void PinkLeaves_InitAll(void)
 
     PinkLeaves_InitVars();
     LoadSpriteSheet(&sPinkLeavesSpriteSheet);
-    LoadCustomWeatherSpritePalette(gPinkLeavesWeatherPalette);
-    DebugPrintf("Init Pink Leaves");
 
     while (gWeatherPtr->weatherGfxLoaded == FALSE)
     {
@@ -2702,7 +2700,6 @@ bool8 PinkLeaves_Finish(void)
         gWeatherPtr->targetPinkLeafSpriteCount = 0;
         gWeatherPtr->pinkLeafVisibleCounter = 0;
         gWeatherPtr->finishStep++;
-        DebugPrintf("Finishing Pink Leaves");
         // fall through
     case 1:
         if (!UpdateVisiblePinkLeafSprites())
@@ -2710,7 +2707,6 @@ bool8 PinkLeaves_Finish(void)
             gWeatherPtr->finishStep++;
             return FALSE;
         }
-        DebugPrintf("Pink Leaves Finished");
         return TRUE;
     }
 
@@ -2719,6 +2715,8 @@ bool8 PinkLeaves_Finish(void)
 
 static bool8 UpdateVisiblePinkLeafSprites(void)
 {
+    LoadCustomWeatherSpritePalette(gPinkLeavesWeatherPalette);
+
     if (gWeatherPtr->pinkLeafSpriteCount == gWeatherPtr->targetPinkLeafSpriteCount)
         return FALSE;
 
@@ -2804,7 +2802,7 @@ static const union AnimCmd *const sPinkLeafAnimCmds[] =
 static const struct SpriteTemplate sPinkLeafSpriteTemplate =
 {
     .tileTag = GFXTAG_PINK_LEAVES,
-    .paletteTag = GFXTAG_PINK_LEAVES,
+    .paletteTag = PALTAG_WEATHER_2,
     .oam = &sPinkLeafSpriteOamData,
     .anims = sPinkLeafAnimCmds,
     .images = NULL,
