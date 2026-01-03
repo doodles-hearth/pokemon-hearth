@@ -1212,7 +1212,6 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             }
             case EXT_CTRL_CODE_CREATE_MUGSHOT:
             {
-                DebugPrintf("EXT_CTRL_CODE_CREATE_MUGSHOT");
                 u32 id, emote;
                 id = *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;

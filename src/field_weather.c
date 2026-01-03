@@ -452,8 +452,6 @@ static void ApplyColorMap(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex)
     const u8 *colorMap;
     u32 i;
 
-    /* DebugPrintf("ApplyColorMap: i=%d, natLight=%d", colorMapIndex, MapHasNaturalLight(gMapHeader.mapType));      */
-
     if (colorMapIndex > 0)
     {
         // Create the palette mask

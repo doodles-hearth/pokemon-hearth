@@ -936,7 +936,6 @@ static void Task_ShowTMHMContainedMessage(u8 taskId)
 {
     u32 moveId = ItemIdToBattleMoveId(gSpecialVar_ItemId);
     StringCopy(gStringVar1, GetMoveName(moveId));
-    DebugPrintf("Move ID = %d, fieldMove = %d", moveId, gMovesInfo[moveId].fieldMove);
     if (gMovesInfo[moveId].fieldMove)
     {
         StringExpandPlaceholders(gStringVar4, sText_TMHMContainedVarFieldMove);

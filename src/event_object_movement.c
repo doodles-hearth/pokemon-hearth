@@ -11697,8 +11697,6 @@ void GetSpeciesGraphics(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1);
     Script_RequestWriteVar(varGfx);
 
-    DebugPrintf("Species=%d (or %d), GFX=%d", species, VarGet(species), varGfx);
-
     VarSet(varGfx, (u16) (VarGet(species) + OBJ_EVENT_MON));
 }
 

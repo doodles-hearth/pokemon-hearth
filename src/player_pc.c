@@ -501,7 +501,6 @@ static void PlayerPC_Decoration(u8 taskId)
 
 static void PlayerPC_TurnOff(u8 taskId)
 {
-    DebugPrintf("Closing");
     if (sTopMenuNumOptions == NUM_BEDROOM_PC_OPTIONS) // Flimsy way to determine if Bedroom PC is in use
     {
         ScriptContext_SetupScript(SunriseVillage_TurnOffPlayerPC);

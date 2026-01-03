@@ -1199,7 +1199,6 @@ u8 FldEff_HappyIcon(void)
 
 u8 FldEff_DoubleExclMarkIcon(void)
 {
-    DebugPrintf("FldEff_DoubleExclMarkIcon");
     u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
@@ -1215,7 +1214,6 @@ u8 FldEff_DoubleExclMarkIcon(void)
 
 u8 FldEff_XIcon(void)
 {
-    DebugPrintf("FldEff_XIcon");
     u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)

@@ -118,7 +118,6 @@ void RemoveFieldMugshot(void)
 
 void CreateFieldMugshot(struct ScriptContext *ctx)
 {
-    DebugPrintf("CreateFieldMugshot");
     u16 id = VarGet(ScriptReadHalfword(ctx));
     u16 emote = VarGet(ScriptReadHalfword(ctx));
 
@@ -145,13 +144,11 @@ void _RemoveFieldMugshot(u8 slot)
 
 void _CreateFieldMugshot(u32 id, u32 emote)
 {
-    DebugPrintf("_CreateFieldMugshot");
     u32 slot = sFieldMugshotSlot;
     struct SpriteTemplate temp = sFieldMugshot_SpriteTemplate;
     struct CompressedSpriteSheet sheet = { .size=0x1000, .tag=slot+TAG_MUGSHOT };
     struct SpritePalette pal = { .tag = sheet.tag };
 
-    /* DebugPrintf("id: %u, emote: %u, sFieldMugshotSlot: %u, NULL: %d", id, emote, slot, sFieldMugshots[id][emote].gfx == NULL); */
     if (sIsFieldMugshotActive)
     {
         _RemoveFieldMugshot(slot);

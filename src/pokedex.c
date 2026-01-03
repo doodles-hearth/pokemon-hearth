@@ -2497,7 +2497,6 @@ static u8 CreateMonName(u16 num, u8 left, u8 top)
 
     
     num = NationalPokedexNumToSpecies(num);
-    DebugPrintf("species = %d (Krabby = %d)", num, SPECIES_KRABBY);
     if (num)
         str = GetSpeciesName(num, DO_NAME_CHECK);
     else

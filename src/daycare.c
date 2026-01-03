@@ -1287,7 +1287,6 @@ u8 GetDaycareState(void)
     u8 numMons;
     if (IsEggPending(&gSaveBlock1Ptr->daycare))
     {
-        DebugPrintf("Egg waiting");
         return DAYCARE_EGG_WAITING;
     }
 
