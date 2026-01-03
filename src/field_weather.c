@@ -131,7 +131,8 @@ static const struct WeatherCallbacks sWeatherFuncs[] =
     [WEATHER_SUNNY]              = {Sunny_InitVars,         Sunny_Main,         Sunny_InitAll,         Sunny_Finish},
     [WEATHER_RAIN]               = {Rain_InitVars,          Rain_Main,          Rain_InitAll,          Rain_Finish},
     [WEATHER_SNOW]               = {Snow_InitVars,          Snow_Main,          Snow_InitAll,          Snow_Finish},
-    [WEATHER_PINK_LEAVES]        = {PinkLeaves_InitVars,    PinkLeaves_Main,    PinkLeaves_InitAll,    PinkLeaves_Finish},
+    [WEATHER_PINK_LEAVES]        = {CommonLeaves_InitVars,  PinkLeaves_Main,    PinkLeaves_InitAll,    PinkLeaves_Finish},
+    [WEATHER_AUTUMN_LEAVES]      = {CommonLeaves_InitVars,  AutumnLeaves_Main,  AutumnLeaves_InitAll,  AutumnLeaves_Finish},
     [WEATHER_RAIN_THUNDERSTORM]  = {Thunderstorm_InitVars,  Thunderstorm_Main,  Thunderstorm_InitAll,  Thunderstorm_Finish},
     [WEATHER_FOG_HORIZONTAL]     = {FogHorizontal_InitVars, FogHorizontal_Main, FogHorizontal_InitAll, FogHorizontal_Finish},
     [WEATHER_VOLCANIC_ASH]       = {Ash_InitVars,           Ash_Main,           Ash_InitAll,           Ash_Finish},
@@ -216,8 +217,8 @@ void StartWeather(void)
         gWeatherPtr->sandstormSwirlSpritesCreated = 0;
         gWeatherPtr->bubblesSpritesCreated = 0;
         gWeatherPtr->lightenedFogSpritePalsCount = 0;
-        gWeatherPtr->pinkLeafVisibleCounter = 0;
-        gWeatherPtr->pinkLeafSpriteCount = 0;
+        gWeatherPtr->leafVisibleCounter = 0;
+        gWeatherPtr->leafSpriteCount = 0;
         Weather_SetBlendCoeffs(16, 0);
         gWeatherPtr->currWeather = 0;
         gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
@@ -394,6 +395,7 @@ static void FadeInScreenWithWeather(void)
     case WEATHER_FOG_DIAGONAL:
     case WEATHER_UNDERWATER:
     case WEATHER_PINK_LEAVES:
+    case WEATHER_AUTUMN_LEAVES:
     default:
         if (!gPaletteFade.active)
         {
@@ -1198,6 +1200,7 @@ static const u8 sWeatherNames[WEATHER_COUNT][24] = {
     [WEATHER_RAIN]               = _("RAIN"),
     [WEATHER_SNOW]               = _("SNOW"),
     [WEATHER_PINK_LEAVES]        = _("PINK LEAVES"),
+    [WEATHER_AUTUMN_LEAVES]      = _("AUTUMN LEAVES"),
     [WEATHER_RAIN_THUNDERSTORM]  = _("RAIN THUNDERSTORM"),
     [WEATHER_FOG_HORIZONTAL]     = _("FOG HORIZONTAL"),
     [WEATHER_VOLCANIC_ASH]       = _("VOLCANIC ASH"),

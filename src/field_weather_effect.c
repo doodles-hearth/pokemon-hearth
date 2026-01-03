@@ -21,6 +21,7 @@ EWRAM_DATA static u8 sCurrentAbnormalWeather = 0;
 const u16 gCloudsWeatherPalette[] = INCBIN_U16("graphics/weather/cloud.gbapal");
 const u16 gSandstormWeatherPalette[] = INCBIN_U16("graphics/weather/sandstorm.gbapal");
 const u16 gPinkLeavesWeatherPalette[] = INCBIN_U16("graphics/weather/pink_leaves.gbapal");
+const u16 gAutumnLeavesWeatherPalette[] = INCBIN_U16("graphics/weather/autumn_leaves.gbapal");
 const u8 gWeatherFogDiagonalTiles[] = INCBIN_U8("graphics/weather/fog_diagonal.4bpp");
 const u8 gWeatherFogHorizontalTiles[] = INCBIN_U8("graphics/weather/fog_horizontal.4bpp");
 const u8 gWeatherCloudTiles[] = INCBIN_U8("graphics/weather/cloud.4bpp");
@@ -30,7 +31,7 @@ const u8 gWeatherBubbleTiles[] = INCBIN_U8("graphics/weather/bubble.4bpp");
 const u8 gWeatherAshTiles[] = INCBIN_U8("graphics/weather/ash.4bpp");
 const u8 gWeatherRainTiles[] = INCBIN_U8("graphics/weather/rain.4bpp");
 const u8 gWeatherSandstormTiles[] = INCBIN_U8("graphics/weather/sandstorm.4bpp");
-const u8 gWeatherPinkLeafTiles[] = INCBIN_U8("graphics/weather/pink_leaves.4bpp");
+const u8 gWeatherLeafTiles[] = INCBIN_U8("graphics/weather/pink_leaves.4bpp");
 
 //------------------------------------------------------------------------------
 // WEATHER_SUNNY_CLOUDS
@@ -2608,6 +2609,7 @@ static u8 TranslateWeatherNum(u8 weather)
     case WEATHER_RAIN:               return WEATHER_RAIN;
     case WEATHER_SNOW:               return WEATHER_SNOW;
     case WEATHER_PINK_LEAVES:        return WEATHER_PINK_LEAVES;
+    case WEATHER_AUTUMN_LEAVES:      return WEATHER_AUTUMN_LEAVES;
     case WEATHER_RAIN_THUNDERSTORM:  return WEATHER_RAIN_THUNDERSTORM;
     case WEATHER_FOG_HORIZONTAL:     return WEATHER_FOG_HORIZONTAL;
     case WEATHER_VOLCANIC_ASH:       return WEATHER_VOLCANIC_ASH;
@@ -2643,28 +2645,27 @@ static void UpdateRainCounter(u8 newWeather, u8 oldWeather)
 // Pink Leaves
 //------------------------------------------------------------------------------
 
-static void UpdatePinkLeafSprite(struct Sprite *);
-static bool8 UpdateVisiblePinkLeafSprites(void);
-static bool8 CreatePinkLeafSprite(void);
-static bool8 DestroyPinkLeafSprite(void);
-static void InitPinkLeafSpriteMovement(struct Sprite *);
+static void UpdateLeafSprite(struct Sprite *);
+static bool8 UpdateVisibleLeafSprites(const u16 *palette);
+static bool8 CreateLeafSprite(void);
+static bool8 DestroyLeafSprite(void);
+static void InitLeafSpriteMovement(struct Sprite *);
 
-static const struct SpriteSheet sPinkLeavesSpriteSheet =
+static const struct SpriteSheet sLeafSpriteSheet =
 {
-    .data = gWeatherPinkLeafTiles,
-    .size = sizeof(gWeatherPinkLeafTiles),
-    .tag = GFXTAG_PINK_LEAVES,
+    .data = gWeatherLeafTiles,
+    .size = sizeof(gWeatherLeafTiles),
+    .tag = GFXTAG_LEAVES,
 };
 
-void PinkLeaves_InitVars(void)
+void CommonLeaves_InitVars(void)
 {
     gWeatherPtr->initStep = 0;
     gWeatherPtr->weatherGfxLoaded = FALSE;
     gWeatherPtr->targetColorMapIndex = 0;
     gWeatherPtr->colorMapStepDelay = 20;
-    gWeatherPtr->targetPinkLeafSpriteCount = NUM_SNOWFLAKE_SPRITES;
-    gWeatherPtr->pinkLeafVisibleCounter = 0;
-    //Weather_SetBlendCoeffs(8, BASE_SHADOW_INTENSITY); // preserve shadow darkness
+    gWeatherPtr->targetLeafSpriteCount = NUM_SNOWFLAKE_SPRITES;
+    gWeatherPtr->leafVisibleCounter = 0;
     gWeatherPtr->noShadows = FALSE;
 }
 
@@ -2672,20 +2673,20 @@ void PinkLeaves_InitAll(void)
 {
     u16 i;
 
-    PinkLeaves_InitVars();
-    LoadSpriteSheet(&sPinkLeavesSpriteSheet);
+    CommonLeaves_InitVars();
+    LoadSpriteSheet(&sLeafSpriteSheet);
 
     while (gWeatherPtr->weatherGfxLoaded == FALSE)
     {
         PinkLeaves_Main();
-        for (i = 0; i < gWeatherPtr->pinkLeafSpriteCount; i++)
-            UpdatePinkLeafSprite(gWeatherPtr->sprites.s1.rainSprites[i]);
+        for (i = 0; i < gWeatherPtr->leafSpriteCount; i++)
+            UpdateLeafSprite(gWeatherPtr->sprites.s1.rainSprites[i]);
     }
 }
 
 void PinkLeaves_Main(void)
 {
-    if (gWeatherPtr->initStep == 0 && !UpdateVisiblePinkLeafSprites())
+    if (gWeatherPtr->initStep == 0 && !UpdateVisibleLeafSprites(gPinkLeavesWeatherPalette))
     {
         gWeatherPtr->weatherGfxLoaded = TRUE;
         gWeatherPtr->initStep++;
@@ -2697,12 +2698,12 @@ bool8 PinkLeaves_Finish(void)
     switch (gWeatherPtr->finishStep)
     {
     case 0:
-        gWeatherPtr->targetPinkLeafSpriteCount = 0;
-        gWeatherPtr->pinkLeafVisibleCounter = 0;
+        gWeatherPtr->targetLeafSpriteCount = 0;
+        gWeatherPtr->leafVisibleCounter = 0;
         gWeatherPtr->finishStep++;
         // fall through
     case 1:
-        if (!UpdateVisiblePinkLeafSprites())
+        if (!UpdateVisibleLeafSprites(gPinkLeavesWeatherPalette))
         {
             gWeatherPtr->finishStep++;
             return FALSE;
@@ -2713,26 +2714,26 @@ bool8 PinkLeaves_Finish(void)
     return FALSE;
 }
 
-static bool8 UpdateVisiblePinkLeafSprites(void)
+static bool8 UpdateVisibleLeafSprites(const u16 *palette)
 {
-    LoadCustomWeatherSpritePalette(gPinkLeavesWeatherPalette);
+    LoadCustomWeatherSpritePalette(palette);
 
-    if (gWeatherPtr->pinkLeafSpriteCount == gWeatherPtr->targetPinkLeafSpriteCount)
+    if (gWeatherPtr->leafSpriteCount == gWeatherPtr->targetLeafSpriteCount)
         return FALSE;
 
-    if (++gWeatherPtr->pinkLeafVisibleCounter > 36)
+    if (++gWeatherPtr->leafVisibleCounter > 36)
     {
-        gWeatherPtr->pinkLeafVisibleCounter = 0;
-        if (gWeatherPtr->pinkLeafSpriteCount < gWeatherPtr->targetPinkLeafSpriteCount)
-            CreatePinkLeafSprite();
+        gWeatherPtr->leafVisibleCounter = 0;
+        if (gWeatherPtr->leafSpriteCount < gWeatherPtr->targetLeafSpriteCount)
+            CreateLeafSprite();
         else
-            DestroyPinkLeafSprite();
+            DestroyLeafSprite();
     }
 
-    return gWeatherPtr->pinkLeafSpriteCount != gWeatherPtr->targetPinkLeafSpriteCount;
+    return gWeatherPtr->leafSpriteCount != gWeatherPtr->targetLeafSpriteCount;
 }
 
-static const struct OamData sPinkLeafSpriteOamData =
+static const struct OamData sCommonLeafSpriteOamData =
 {
     .y = 0,
     .affineMode = ST_OAM_AFFINE_OFF,
@@ -2749,7 +2750,7 @@ static const struct OamData sPinkLeafSpriteOamData =
     .affineParam = 0,
 };
 
-static const union AnimCmd sPinkLeafAnimCmd0[] =
+static const union AnimCmd sCommonLeafAnimCmd0[] =
 {
     ANIMCMD_FRAME(0, 16),
     ANIMCMD_FRAME(4, 16),
@@ -2760,7 +2761,7 @@ static const union AnimCmd sPinkLeafAnimCmd0[] =
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sPinkLeafAnimCmd1[] =
+static const union AnimCmd sCommonLeafAnimCmd1[] =
 {
     ANIMCMD_FRAME(8, 16),
     ANIMCMD_FRAME(12, 16),
@@ -2776,7 +2777,7 @@ static const union AnimCmd sPinkLeafAnimCmd1[] =
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd sPinkLeafAnimCmd3[] =
+static const union AnimCmd sCommonLeafAnimCmd3[] =
 {
     ANIMCMD_FRAME(4, 16),
     ANIMCMD_FRAME(8, 16),
@@ -2792,22 +2793,22 @@ static const union AnimCmd sPinkLeafAnimCmd3[] =
     ANIMCMD_JUMP(0),
 };
 
-static const union AnimCmd *const sPinkLeafAnimCmds[] =
+static const union AnimCmd *const sCommonLeafAnimCmds[] =
 {
-    sPinkLeafAnimCmd0,
-    sPinkLeafAnimCmd1,
-    sPinkLeafAnimCmd3,
+    sCommonLeafAnimCmd0,
+    sCommonLeafAnimCmd1,
+    sCommonLeafAnimCmd3,
 };
 
-static const struct SpriteTemplate sPinkLeafSpriteTemplate =
+static const struct SpriteTemplate sLeafSpriteTemplate =
 {
-    .tileTag = GFXTAG_PINK_LEAVES,
+    .tileTag = GFXTAG_LEAVES,
     .paletteTag = PALTAG_WEATHER_2,
-    .oam = &sPinkLeafSpriteOamData,
-    .anims = sPinkLeafAnimCmds,
+    .oam = &sCommonLeafSpriteOamData,
+    .anims = sCommonLeafAnimCmds,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = UpdatePinkLeafSprite,
+    .callback = UpdateLeafSprite,
 };
 
 #define tPosY         data[0]
@@ -2819,32 +2820,32 @@ static const struct SpriteTemplate sPinkLeafSpriteTemplate =
 #define tFallDuration data[6]
 #define tDeltaX      data[7]
 
-static bool8 CreatePinkLeafSprite(void)
+static bool8 CreateLeafSprite(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sPinkLeafSpriteTemplate, 0, 0, 78);
+    u8 spriteId = CreateSpriteAtEnd(&sLeafSpriteTemplate, 0, 0, 78);
     if (spriteId == MAX_SPRITES)
         return FALSE;
 
-    gSprites[spriteId].tPinkLeafId = gWeatherPtr->pinkLeafSpriteCount;
-    InitPinkLeafSpriteMovement(&gSprites[spriteId]);
+    gSprites[spriteId].tPinkLeafId = gWeatherPtr->leafSpriteCount;
+    InitLeafSpriteMovement(&gSprites[spriteId]);
     gSprites[spriteId].coordOffsetEnabled = TRUE;
-    gWeatherPtr->sprites.s1.rainSprites[gWeatherPtr->pinkLeafSpriteCount++] = &gSprites[spriteId];
+    gWeatherPtr->sprites.s1.rainSprites[gWeatherPtr->leafSpriteCount++] = &gSprites[spriteId];
     return TRUE;
 }
 
-static bool8 DestroyPinkLeafSprite(void)
+static bool8 DestroyLeafSprite(void)
 {
-    if (gWeatherPtr->pinkLeafSpriteCount)
+    if (gWeatherPtr->leafSpriteCount)
     {
-        DestroySprite(gWeatherPtr->sprites.s1.rainSprites[--gWeatherPtr->pinkLeafSpriteCount]);
+        DestroySprite(gWeatherPtr->sprites.s1.rainSprites[--gWeatherPtr->leafSpriteCount]);
         return TRUE;
     }
 
-    FreeSpriteTilesByTag(GFXTAG_PINK_LEAVES);
+    FreeSpriteTilesByTag(GFXTAG_LEAVES);
     return FALSE;
 }
 
-static void InitPinkLeafSpriteMovement(struct Sprite *sprite)
+static void InitLeafSpriteMovement(struct Sprite *sprite)
 {
     u16 rand;
     u16 x = ((sprite->tPinkLeafId * 5) & 7) * 30 + (Random() % 30);
@@ -2863,7 +2864,7 @@ static void InitPinkLeafSpriteMovement(struct Sprite *sprite)
     sprite->tCounter = 0;
 }
 
-static void UpdatePinkLeafSprite(struct Sprite *sprite)
+static void UpdateLeafSprite(struct Sprite *sprite)
 {
     s16 x;
 
@@ -2917,3 +2918,52 @@ static void UpdatePinkLeafSprite(struct Sprite *sprite)
 #undef tFallCounter
 #undef tFallDuration
 #undef tDeltaY2
+
+//------------------------------------------------------------------------------
+// Autums Leaves
+//------------------------------------------------------------------------------
+
+void AutumnLeaves_InitAll(void)
+{
+    u16 i;
+
+    CommonLeaves_InitVars();
+    LoadSpriteSheet(&sLeafSpriteSheet);
+
+    while (gWeatherPtr->weatherGfxLoaded == FALSE)
+    {
+        AutumnLeaves_Main();
+        for (i = 0; i < gWeatherPtr->leafSpriteCount; i++)
+            UpdateLeafSprite(gWeatherPtr->sprites.s1.rainSprites[i]);
+    }
+}
+
+void AutumnLeaves_Main(void)
+{
+    if (gWeatherPtr->initStep == 0 && !UpdateVisibleLeafSprites(gAutumnLeavesWeatherPalette))
+    {
+        gWeatherPtr->weatherGfxLoaded = TRUE;
+        gWeatherPtr->initStep++;
+    }
+}
+
+bool8 AutumnLeaves_Finish(void)
+{
+    switch (gWeatherPtr->finishStep)
+    {
+    case 0:
+        gWeatherPtr->targetLeafSpriteCount = 0;
+        gWeatherPtr->leafVisibleCounter = 0;
+        gWeatherPtr->finishStep++;
+        // fall through
+    case 1:
+        if (!UpdateVisibleLeafSprites(gAutumnLeavesWeatherPalette))
+        {
+            gWeatherPtr->finishStep++;
+            return FALSE;
+        }
+        return TRUE;
+    }
+
+    return FALSE;
+}
