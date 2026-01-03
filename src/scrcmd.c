@@ -3575,7 +3575,7 @@ bool8 ScrCmd_debugprint(struct ScriptContext *ctx)
     {
         if (numOrVar != 65535)
         {
-            DebugPrintfLevel(MGBA_LOG_WARN, "%S, %u", str, num);
+            DebugPrintfLevel(MGBA_LOG_WARN, "%S, %u", str, VarGet(numOrVar));
         }
         else
         {
