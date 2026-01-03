@@ -2,6 +2,7 @@
 #include "overworld.h"
 #include "battle_pyramid.h"
 #include "battle_setup.h"
+#include "battle_util.h"
 #include "berry.h"
 #include "bg.h"
 #include "cable_club.h"
@@ -432,17 +433,10 @@ void Overworld_ResetStateAfterDigEscRope(void)
     FlagClear(FLAG_SYS_USE_FLASH);
 }
 
-#if B_RESET_FLAGS_VARS_AFTER_WHITEOUT  == TRUE
+#if B_RESET_FLAGS_VARS_AFTER_WHITEOUT == TRUE
 void Overworld_ResetBattleFlagsAndVars(void)
 {
-    DebugPrintf("Overworld_ResetBattleFlagsAndVars");
-    #if B_VAR_STARTING_STATUS != 0
-        VarSet(B_VAR_STARTING_STATUS, 0);
-    #endif
-
-    #if B_VAR_STARTING_STATUS_TIMER != 0
-        VarSet(B_VAR_STARTING_STATUS_TIMER, 0);
-    #endif
+    ResetStartingStatuses();
 
     #if B_VAR_WILD_AI_FLAGS != 0
         VarSet(B_VAR_WILD_AI_FLAGS,0);
@@ -557,37 +551,33 @@ void LoadSaveblockObjEventScripts(void)
         savObjTemplates[i].script = mapHeaderObjTemplates[i].script;
 }
 
+static struct ObjectEventTemplate *GetObjectEventTemplate(u8 localId)
+{
+    for (u32 i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    {
+        if (gSaveBlock1Ptr->objectEventTemplates[i].localId == localId)
+            return &gSaveBlock1Ptr->objectEventTemplates[i];
+    }
+
+    errorf("no object event template for localId %d", localId);
+    return NULL;
+}
+
 void SetObjEventTemplateCoords(u8 localId, s16 x, s16 y)
 {
-    s32 i;
-    struct ObjectEventTemplate *savObjTemplates = gSaveBlock1Ptr->objectEventTemplates;
-
-    for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    struct ObjectEventTemplate *objectEventTemplate = GetObjectEventTemplate(localId);
+    if (objectEventTemplate)
     {
-        struct ObjectEventTemplate *objectEventTemplate = &savObjTemplates[i];
-        if (objectEventTemplate->localId == localId)
-        {
-            objectEventTemplate->x = x;
-            objectEventTemplate->y = y;
-            return;
-        }
+        objectEventTemplate->x = x;
+        objectEventTemplate->y = y;
     }
 }
 
 void SetObjEventTemplateMovementType(u8 localId, u8 movementType)
 {
-    s32 i;
-
-    struct ObjectEventTemplate *savObjTemplates = gSaveBlock1Ptr->objectEventTemplates;
-    for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
-    {
-        struct ObjectEventTemplate *objectEventTemplate = &savObjTemplates[i];
-        if (objectEventTemplate->localId == localId)
-        {
-            objectEventTemplate->movementType = movementType;
-            return;
-        }
-    }
+    struct ObjectEventTemplate *objectEventTemplate = GetObjectEventTemplate(localId);
+    if (objectEventTemplate)
+        objectEventTemplate->movementType = movementType;
 }
 
 static void InitMapView(void)
@@ -878,8 +868,8 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     TryUpdateRandomTrainerRematches(mapGroup, mapNum);
 #endif //FREE_MATCH_CALL
 
-if (I_VS_SEEKER_CHARGING != 0)
-    MapResetTrainerRematches(mapGroup, mapNum);
+    if (I_VS_SEEKER_CHARGING != 0)
+        MapResetTrainerRematches(mapGroup, mapNum);
 
     DoTimeBasedEvents();
     SetSavedWeatherFromCurrMapHeader();
@@ -944,8 +934,8 @@ static void LoadMapFromWarp(bool32 a1)
     TryUpdateRandomTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
 #endif //FREE_MATCH_CALL
 
-if (I_VS_SEEKER_CHARGING != 0)
-     MapResetTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+    if (I_VS_SEEKER_CHARGING != 0)
+         MapResetTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
 
     if (a1 != TRUE)
         DoTimeBasedEvents();
@@ -1829,11 +1819,12 @@ static void OverworldBasic(void)
         gTimeUpdateCounter = (SECONDS_PER_MINUTE * 60 / FakeRtc_GetSecondsRatio());
         UpdateTimeOfDay();
         FormChangeTimeUpdate();
-        if (bld0[0] != bld1[0]
+        if (MapHasNaturalLight(gMapHeader.mapType) &&
+           (bld0[0] != bld1[0]
          || bld0[1] != bld1[1]
-         || bld0[2] != bld1[2])
+         || bld0[2] != bld1[2]))
         {
-           ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
+            ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
         }
     }
     PlayerAvatarHandleBob();
