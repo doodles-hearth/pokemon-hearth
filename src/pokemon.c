@@ -2648,11 +2648,11 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
         case MON_DATA_MARINE_RIBBON:
             retVal = boxMon->marineRibbon;
             break;
-        case MON_DATA_LAND_RIBBON:
-            retVal = boxMon->landRibbon;
+        case MON_DATA_TRAVELLER_RIBBON:
+            retVal = boxMon->travellerRibbon;
             break;
-        case MON_DATA_SKY_RIBBON:
-            retVal = boxMon->skyRibbon;
+        case MON_DATA_HISTORIC_RIBBON:
+            retVal = boxMon->travellerRibbon;
             break;
         case MON_DATA_COUNTRY_RIBBON:
             retVal = boxMon->countryRibbon;
@@ -2717,8 +2717,8 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                 retVal += boxMon->artistRibbon;
                 retVal += boxMon->effortRibbon;
                 retVal += boxMon->marineRibbon;
-                retVal += boxMon->landRibbon;
-                retVal += boxMon->skyRibbon;
+                retVal += boxMon->travellerRibbon;
+                retVal += boxMon->historicRibbon;
                 retVal += boxMon->countryRibbon;
                 //retVal += boxMon->nationalRibbon;
                 retVal += boxMon->earthRibbon;
@@ -2739,8 +2739,8 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
                        | (boxMon->artistRibbon << 18)
                        | (boxMon->effortRibbon << 19)
                        | (boxMon->marineRibbon << 20)
-                       | (boxMon->landRibbon << 21)
-                       | (boxMon->skyRibbon << 22)
+                       | (boxMon->travellerRibbon << 21)
+                       | (boxMon->historicRibbon << 22)
                        | (boxMon->countryRibbon << 23)
                        //| (boxMon->nationalRibbon << 24)
                        | (boxMon->earthRibbon << 25)
@@ -2801,6 +2801,12 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             break;
         case MON_DATA_COLORATION:
             retVal = boxMon->coloration;
+            break;
+        case MON_DATA_MEMORY_OLD:
+            retVal = boxMon->memoryOld;
+            break;
+        case MON_DATA_MEMORY_NEW:
+            retVal = boxMon->memoryNew;
             break;
         default:
             break;
@@ -3136,11 +3142,11 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         case MON_DATA_MARINE_RIBBON:
             SET8(boxMon->marineRibbon);
             break;
-        case MON_DATA_LAND_RIBBON:
-            SET8(boxMon->landRibbon);
+        case MON_DATA_TRAVELLER_RIBBON:
+            SET8(boxMon->travellerRibbon);
             break;
-        case MON_DATA_SKY_RIBBON:
-            SET8(boxMon->skyRibbon);
+        case MON_DATA_HISTORIC_RIBBON:
+            SET8(boxMon->historicRibbon);
             break;
         case MON_DATA_COUNTRY_RIBBON:
             SET8(boxMon->countryRibbon);
@@ -3209,6 +3215,12 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         }
         case MON_DATA_COLORATION:
             SET8(boxMon->coloration);
+        case MON_DATA_MEMORY_OLD:
+            SET8(boxMon->memoryOld);
+            break;
+        case MON_DATA_MEMORY_NEW:
+            SET8(boxMon->memoryNew);
+            break;
         default:
             break;
         }

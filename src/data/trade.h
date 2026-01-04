@@ -966,6 +966,8 @@ static const union AffineAnimCmd *const sAffineAnims_CrossingMonPics[] =
     sAffineAnim_CrossingMonPic
 };
 
+#include "constants/pokemon_memories.h"
+
 static const struct InGameTrade sIngameTrades[] =
 {
     [INGAME_TRADE_NUMEL] =
@@ -982,6 +984,7 @@ static const struct InGameTrade sIngameTrades[] =
         .otName = _("Xiang Li"),
         .otGender = FEMALE,
         .sheen = 10,
+        .memory = MEMORY_NONE, // Nothing yet
         .requestedSpecies = SPECIES_HERACROSS
     },
     [INGAME_TRADE_PSYDUCK] =
@@ -998,6 +1001,7 @@ static const struct InGameTrade sIngameTrades[] =
         .otName = _("Kodomo"),
         .otGender = MALE,
         .sheen = 10,
+        .memory = MEMORY_WENT_CAMPING, // Has a special string that overrides this, just needs to be non-zero
         .requestedSpecies = SPECIES_HOOTHOOT
     },
     [INGAME_TRADE_HORSEA] =
@@ -1014,6 +1018,7 @@ static const struct InGameTrade sIngameTrades[] =
         .otName = _("SKYLAR"),
         .otGender = MALE,
         .sheen = 10,
+        .memory = MEMORY_NONE,
         .requestedSpecies = SPECIES_BAGON
     },
     [INGAME_TRADE_MEOWTH] =
@@ -1030,6 +1035,7 @@ static const struct InGameTrade sIngameTrades[] =
         .otName = _("ISIS"),
         .otGender = FEMALE,
         .sheen = 10,
+        .memory = MEMORY_NONE,
         .requestedSpecies = SPECIES_SKITTY
     }
 };
