@@ -6497,7 +6497,7 @@
       "id": "LAYOUT_SABERSIDE_QUARRY_EXTERIOR",
       "name": "SabersideQuarry_Exterior_Layout",
       "width": 41,
-      "height": 21,
+      "height": 23,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
@@ -6592,24 +6592,24 @@
     {
       "id": "LAYOUT_SABERSIDE_TOWN_FORGE_1F",
       "name": "SabersideTown_Forge_1F_Layout",
-      "width": 10,
+      "width": 14,
       "height": 9,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",
-      "secondary_tileset": "gTileset_HouseStone",
+      "secondary_tileset": "gTileset_Forge",
       "border_filepath": "data/layouts/SabersideTown_Forge_1F/border.bin",
       "blockdata_filepath": "data/layouts/SabersideTown_Forge_1F/map.bin"
     },
     {
       "id": "LAYOUT_SABERSIDE_TOWN_FORGE_2F",
       "name": "SabersideTown_Forge_2F_Layout",
-      "width": 10,
-      "height": 9,
+      "width": 40,
+      "height": 35,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",
-      "secondary_tileset": "gTileset_HouseStone",
+      "secondary_tileset": "gTileset_SabersideDojo",
       "border_filepath": "data/layouts/SabersideTown_Forge_2F/border.bin",
       "blockdata_filepath": "data/layouts/SabersideTown_Forge_2F/map.bin"
     },
@@ -6672,6 +6672,18 @@
       "secondary_tileset": "gTileset_BrownCave",
       "border_filepath": "data/layouts/WhiteslateRoute_SecretCave/border.bin",
       "blockdata_filepath": "data/layouts/WhiteslateRoute_SecretCave/map.bin"
+    },
+    {
+      "id": "LAYOUT_SCENIC_ROUTE_DAYCARE",
+      "name": "ScenicRoute_Daycare_Layout",
+      "width": 11,
+      "height": 13,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_Daycare",
+      "border_filepath": "data/layouts/ScenicRoute_Daycare/border.bin",
+      "blockdata_filepath": "data/layouts/ScenicRoute_Daycare/map.bin"
     }
   ]
 }

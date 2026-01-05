@@ -509,8 +509,6 @@ static void DrawRightSideChoiceText(const u8 *text, int x, int y, bool8 selected
         color_gray[2] = TEXT_COLOR_OPTIONS_GRAY_SHADOW;
     }
     
-    DebugPrintf("DrawRightSideChoiceText %d (%d)", selected, active);
-
     if (selected)
         AddTextPrinterParameterized4(WIN_OPTIONS, FONT_NORMAL, x, y, 0, 0, color_red, TEXT_SKIP_DRAW, text);
     else
@@ -1011,7 +1009,6 @@ static void DrawChoices_TextSpeed(int selection, int y)
     int xMid = GetMiddleX(gText_TextSpeedSlow, gText_TextSpeedMid, gText_TextSpeedFast);
     styles[selection] = 1;
 
-    DebugPrintf("DrawChoices_TextSpeed sel=%d", selection);
     DrawOptionMenuChoice(gText_TextSpeedSlow, 104, y, styles[0], active);
     DrawOptionMenuChoice(gText_TextSpeedMid, xMid, y, styles[1], active);
     DrawOptionMenuChoice(gText_TextSpeedFast, GetStringRightAlignXOffset(1, gText_TextSpeedFast, 198), y, styles[2], active);

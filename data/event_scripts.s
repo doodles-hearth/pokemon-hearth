@@ -13,6 +13,7 @@
 #include "constants/battle_pike.h"
 #include "constants/battle_pyramid.h"
 #include "constants/battle_setup.h"
+#include "constants/battle_special.h"
 #include "constants/battle_tent.h"
 #include "constants/battle_tower.h"
 #include "constants/berry.h"
@@ -80,6 +81,7 @@
 	.set ALLOCATE_SCRIPT_CMD_TABLE, 1
 	.include "data/script_cmd_table.inc"
 
+.align 2
 gSpecialVars::
 	.4byte gSpecialVar_0x8000
 	.4byte gSpecialVar_0x8001
@@ -1165,7 +1167,6 @@ EventScript_VsSeekerChargingDone::
 	.include "data/text/birch_speech.inc"
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
-	.include "data/scripts/daycare_adoption.inc"
 	.include "data/scripts/dexnav.inc"
 
 	@ please include poryscript-generated scripts here!!
@@ -1183,6 +1184,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/scripts/shared_secret_base.scr"
 	.include "data/scripts/shiny_vial.scr"
 	.include "data/scripts/traveling_merchant.scr"
+	.include "data/scripts/daycare_adoption.scr"
 
 	.include "data/text/pokedex_rating.scr"
 
@@ -1465,3 +1467,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/SabersideQuarry_Antechamber/scripts.scr"
 
 	.include "data/maps/WhiteslateRoute_SecretCave/scripts.scr"
+
+	.include "data/maps/ScenicRoute_Daycare/scripts.scr"

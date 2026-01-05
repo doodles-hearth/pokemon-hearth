@@ -1314,3 +1314,25 @@ const struct Tileset gTileset_Forge =
     .metatileAttributes = gMetatileAttributes_Forge,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_SabersideDojo =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_SabersideDojo,
+    .palettes = gTilesetPalettes_SabersideDojo,
+    .metatiles = gMetatiles_SabersideDojo,
+    .metatileAttributes = gMetatileAttributes_SabersideDojo,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Daycare =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Daycare,
+    .palettes = gTilesetPalettes_Daycare,
+    .metatiles = gMetatiles_Daycare,
+    .metatileAttributes = gMetatileAttributes_Daycare,
+    .callback = NULL,
+};

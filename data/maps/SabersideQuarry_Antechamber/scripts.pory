@@ -1,4 +1,124 @@
-mapscripts SabersideQuarry_Antechamber_MapScripts {}
+const FLAG_HIDE_PLAYER_IN_MINE_CART = FLAG_TEMP_1
+const FLAG_HIDE_EMPTY_MINE_CART = FLAG_TEMP_2
+const VAR_ENTERING_QUARRY = VAR_TEMP_0
+
+mapscripts SabersideQuarry_Antechamber_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if (flag(FLAG_RIDING_MINECART)) {
+            setflag(FLAG_HIDE_EMPTY_MINE_CART)
+            setobjectxyperm(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER, 13, 14)
+            setobjectmovementtype(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER, MOVEMENT_TYPE_FACE_UP)
+            setvar(VAR_ENTERING_QUARRY, 1)
+        } else {
+            setflag(FLAG_HIDE_PLAYER_IN_MINE_CART)
+            setobjectmovementtype(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER, MOVEMENT_TYPE_FACE_DOWN)
+        }
+
+        if (checkplayergender == MALE) {
+            setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_BRENDAN_MINE_CART)
+        } else {
+            setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAY_MINE_CART)
+        }
+    }
+	
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_ENTERING_QUARRY, 1 {
+            hideobjectat(LOCALID_PLAYER, MAP_SABERSIDE_QUARRY_ANTECHAMBER)
+		}
+	]
+
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_ENTERING_QUARRY, 1: SabersideQuarry_Antechamber_EventScript_EnterQuarry
+    ]
+}
+
+script SabersideQuarry_Antechamber_EventScript_EnterQuarry {
+    lockall
+    setvar(VAR_ENTERING_QUARRY, 0)
+    clearflag(FLAG_RIDING_MINECART)
+
+    applymovement(LOCALID_PLAYER, SabersideQuarry_Antechamber_Movement_EnterQuarry)
+    applymovement(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER, SabersideQuarry_Antechamber_Movement_EnterQuarry)
+    waitmovement(LOCALID_PLAYER)
+
+    setobjectsubpriority(LOCALID_PLAYER, MAP_SABERSIDE_QUARRY_ANTECHAMBER, 0)
+    setobjectsubpriority(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER, MAP_SABERSIDE_QUARRY_ANTECHAMBER, 1)
+    setobjectsubpriority(LOCALID_QUARRY_INTERIOR_MINE_CART_EMPTY, MAP_SABERSIDE_QUARRY_ANTECHAMBER, 1)
+
+    removeobject(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER)
+    addobject(LOCALID_QUARRY_INTERIOR_MINE_CART_EMPTY)
+
+    applymovement(LOCALID_PLAYER, moves(set_visible, jump_up))
+    playse(SE_LEDGE)
+    waitmovement(LOCALID_PLAYER)
+
+    setobjectxyperm(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER, 13, 9)
+
+    
+    resetobjectsubpriority(LOCALID_PLAYER, MAP_SABERSIDE_QUARRY_ANTECHAMBER)
+    resetobjectsubpriority(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER, MAP_SABERSIDE_QUARRY_ANTECHAMBER)
+    resetobjectsubpriority(LOCALID_QUARRY_INTERIOR_MINE_CART_EMPTY, MAP_SABERSIDE_QUARRY_ANTECHAMBER)
+
+    releaseall
+}
+
+movement SabersideQuarry_Antechamber_Movement_EnterQuarry {
+    walk_faster_up * 2,
+    walk_fast_up * 2,
+    walk_up
+}
+
+script SabersideQuarry_Antechamber_EventScript_RideMineCart {
+    lockall
+
+	msgbox(format("Jump on the mine cart?"))
+
+	mcdialogueB("Yes", "No")
+
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+        setobjectsubpriority(LOCALID_PLAYER, MAP_SABERSIDE_QUARRY_ANTECHAMBER, 0)
+        setobjectsubpriority(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER, MAP_SABERSIDE_QUARRY_ANTECHAMBER, 1)
+        setobjectsubpriority(LOCALID_QUARRY_INTERIOR_MINE_CART_EMPTY, MAP_SABERSIDE_QUARRY_ANTECHAMBER, 1)
+        
+        switch (var(VAR_FACING)) {
+            case DIR_SOUTH:
+                applymovement(LOCALID_PLAYER, moves(jump_down, set_invisible))
+            case DIR_WEST:
+                applymovement(LOCALID_PLAYER, moves(jump_left, set_invisible))
+            case DIR_EAST:
+                applymovement(LOCALID_PLAYER, moves(jump_right, set_invisible))
+        }
+        waitse
+        playse(SE_LEDGE)
+        waitmovement(LOCALID_PLAYER)
+        removeobject(LOCALID_QUARRY_INTERIOR_MINE_CART_EMPTY)
+        addobject(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER)
+
+        waitse
+        playbgm(MUS_CYCLING, FALSE)
+        playse(SE_TRUCK_MOVE)
+
+        applymovement(LOCALID_PLAYER, SabersideQuarry_Antechamber_Movement_RideMineCart)
+        applymovement(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER, SabersideQuarry_Antechamber_Movement_RideMineCart)
+        waitmovement(LOCALID_PLAYER)
+
+        
+        resetobjectsubpriority(LOCALID_PLAYER, MAP_SABERSIDE_QUARRY_ANTECHAMBER)
+        resetobjectsubpriority(LOCALID_QUARRY_INTERIOR_MINE_CART_PLAYER, MAP_SABERSIDE_QUARRY_ANTECHAMBER)
+        resetobjectsubpriority(LOCALID_QUARRY_INTERIOR_MINE_CART_EMPTY, MAP_SABERSIDE_QUARRY_ANTECHAMBER)
+
+        setflag(FLAG_RIDING_MINECART)
+        warp(MAP_SABERSIDE_QUARRY_EXTERIOR, WARP_ID_SABERSIDE_QUARRY_ENTRANCE)
+	}
+
+	releaseall
+}
+
+movement SabersideQuarry_Antechamber_Movement_RideMineCart {
+    walk_fast_down * 5
+}
 
 script SabersideQuarry_Antechamber_EventScript_FlashSign {
     msgbox(format(

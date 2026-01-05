@@ -1,4 +1,118 @@
-mapscripts ScenicRoute_MapScripts {}
+mapscripts ScenicRoute_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if (flag(FLAG_PENDING_DAYCARE_EGG)) {
+	        setobjectxyperm(LOCALID_SCENIC_DAYCARE_MAN, 10, 20)
+        }
+        setflag(FLAG_TEMP_1)
+        setflag(FLAG_TEMP_2)
+        getdaycaregfx(VAR_OBJ_GFX_ID_0, VAR_OBJ_GFX_ID_1, VAR_TEMP_0, VAR_TEMP_1)
+        switch(var(VAR_RESULT)) {
+            case 2:
+                call(ScenicRoute_EventScript_ShowDaycareMon1)
+                call(ScenicRoute_EventScript_ShowDaycareMon0)
+            case 1:
+                call(ScenicRoute_EventScript_ShowDaycareMon0)
+        }
+    }
+}
+
+script ScenicRoute_EventScript_ShowDaycareMon1 {
+    // set pokemon movement type based on compatibility
+	special(SetDaycareCompatibilityString)
+    switch(var(VAR_RESULT)) {
+        case PARENTS_INCOMPATIBLE:
+            setobjectmovementtype(LOCALID_SCENIC_DAYCARE_MON_0, MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT)
+            setobjectmovementtype(LOCALID_SCENIC_DAYCARE_MON_1, MOVEMENT_TYPE_FACE_DOWN_UP_AND_RIGHT)
+        case PARENTS_MED_COMPATIBILITY:
+            setobjectmovementtype(LOCALID_SCENIC_DAYCARE_MON_0, MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT)
+            setobjectmovementtype(LOCALID_SCENIC_DAYCARE_MON_1, MOVEMENT_TYPE_FACE_DOWN_AND_LEFT)
+        case PARENTS_MAX_COMPATIBILITY:
+            setobjectmovementtype(LOCALID_SCENIC_DAYCARE_MON_0, MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT)
+            setobjectmovementtype(LOCALID_SCENIC_DAYCARE_MON_1, MOVEMENT_TYPE_WALK_IN_PLACE_LEFT)
+    }
+    clearflag(FLAG_TEMP_2)
+}
+
+script ScenicRoute_EventScript_ShowDaycareMon0 {
+    clearflag(FLAG_TEMP_1)
+}
+
+script ScenicRoute_EventScript_DaycareMan {
+    lock
+	faceplayer
+	special(GetDaycareMonNicknames)
+	specialvar(VAR_RESULT, GetDaycareState)
+    switch(var(VAR_RESULT)) {
+        case DAYCARE_EGG_WAITING:
+            call(ScenicRoute_EventScript_DaycareEggWaiting)
+        case DAYCARE_ONE_MON:
+            special(GetDaycareMonNicknames)
+            msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Ah, it's you.\n{STR_VAR_1} is doing just fine!"))
+        case DAYCARE_TWO_MONS:
+            special(GetDaycareMonNicknames)
+            msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}{STR_VAR_1} and {STR_VAR_2} are doing fine."))
+            special(SetDaycareCompatibilityString)
+            special(ShowFieldMessageStringVar4)
+            waitmessage
+            waitbuttonpress
+            closemessage
+        default:
+            msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Talk to my wife if you want us to raise your Pokémon for you!"))
+            closemessage
+    }
+	
+	release
+	end
+}
+
+script ScenicRoute_EventScript_DaycareEggWaiting {
+	msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Ah, it's you!\p"
+        "We were raising your Pokémon,\n"
+        "and my goodness, were we surprised!\p"
+        "Your Pokémon had an Egg!\p"
+        "We don't know how it got there,\n"
+        "but your Pokémon had it.\p"
+        "You do want it, yes?"
+    )
+    mcdialogueB("I'll keep it!", "I don't want it.")
+    closemessage
+
+    if (var(VAR_RESULT) == 0) {
+        call(ScenicRoute_EventScript_DaycareAcceptEgg)
+    } else {
+        msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Are… Are you sure?\nShould we keep it?"))
+        mcdialogueB("Yes.", "No, I want it!")
+        closemessage
+
+        if (var(VAR_RESULT) == 0) {
+            msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Fine, we'll keep this one."))
+            closemessage
+            clearflag(FLAG_PENDING_DAYCARE_EGG)
+            special(RejectEggFromDayCare)
+        } else {
+            call(ScenicRoute_EventScript_DaycareAcceptEgg)
+        }
+    }
+}
+
+script ScenicRoute_EventScript_DaycareAcceptEgg {
+    message(format("{PLAYER} received the Egg!"))
+    playfanfare(MUS_LEVEL_UP)
+    waitfanfare
+    waitbuttonpress
+    closemessage
+
+    specialvar(VAR_RESULT, CalculatePlayerPartyCount)
+    if (var(VAR_RESULT) == PARTY_SIZE) {
+        message(format("The Egg was sent to the pasture."))
+        closemessage
+    }
+
+    msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Take good care of it!\nDon't drop it or anything!"))
+    clearflag(FLAG_PENDING_DAYCARE_EGG)
+    special(GiveEggFromDaycare)
+}
 
 script ScenicRoute_EventScript_Invisible {
     lock

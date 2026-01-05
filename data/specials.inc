@@ -585,5 +585,8 @@ gSpecials::
 	def_special SetAbility
 	def_special GetRandomAdoptionSpecies
 	def_special GetRandomSpecialAdoptionSpecies
+	def_special ChooseBoxMon
+	def_special CanTeachMoveBoxMon
 	def_special ObjectEventInteractionGetApricornTreeData
 	def_special ObjectEventInteractionPickApricornTree
+	def_special InitEggGirlStepCounterFromSelectedPartyEgg

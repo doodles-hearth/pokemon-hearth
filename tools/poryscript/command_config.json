@@ -122,6 +122,9 @@
     },
     "gettransformmonspecies": {
         "var_name": "VAR_RESULT"
+    },
+    "getgamestat": {
+        "var_name": "VAR_RESULT"
     }
   }
 }

@@ -2,9 +2,10 @@
 #include "debug.h"
 #include "malloc.h"
 #include "battle.h"
-#include "battle_tower.h"
+#include "battle_special.h"
 #include "cable_club.h"
 #include "data.h"
+#include "daycare.h"
 #include "decoration.h"
 #include "diploma.h"
 #include "event_data.h"
@@ -21,6 +22,7 @@
 #include "international_string_util.h"
 #include "item.h"
 #include "item_icon.h"
+#include "item_menu.h"
 #include "link.h"
 #include "list_menu.h"
 #include "load_save.h"
@@ -35,6 +37,7 @@
 #include "pokedex.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
+#include "pokemon_summary_screen.h"
 #include "random.h"
 #include "rayquaza_scene.h"
 #include "region_map.h"
@@ -74,6 +77,7 @@
 #include "battle_util.h"
 #include "naming_screen.h"
 #include "field_name_box.h"
+#include "egg_hatch.h"
 
 #define TAG_ITEM_ICON 5500
 
@@ -83,6 +87,14 @@
 #define ELEVATOR_WINDOW_WIDTH  3
 #define ELEVATOR_WINDOW_HEIGHT 3
 #define ELEVATOR_LIGHT_STAGES  3
+
+enum 
+{
+    CAN_LEARN_MOVE,
+    CANNOT_LEARN_MOVE,
+    ALREADY_KNOWS_MOVE,
+    CANNOT_LEARN_MOVE_IS_EGG
+};
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
@@ -146,6 +158,18 @@ static void Task_CloseBattlePikeCurtain(u8);
 static u8 DidPlayerGetFirstFans(void);
 static void SetInitialFansOfPlayer(void);
 static u16 PlayerGainRandomTrainerFan(void);
+static void Task_LearnedMoveBoxMon(u8);
+static void Task_ReplaceBoxMonMoveYesNo(u8);
+static void Task_DoLearnedBoxMonMoveFanfareAfterText(u8);
+static void Task_HandleReplaceBoxMonMoveYesNoInput(u8);
+static void Task_ShowSummaryScreenToForgetBoxMonMove(u8);
+static void StopLearningBoxMonMovePrompt(u8);
+static void CB2_ReturnToFieldWhileLearningMove(void);
+static void Task_ReturnToFieldWhileLearningMove(void);
+static void Task_BoxMonReplaceMove(u8);
+static void Task_StopLearningBoxMonMoveYesNo(u8);
+static void Task_HandleStopLearningBoxMonMoveYesNoInput(u8);
+static void Task_DidntLearnMove(u8);
 #if FREE_LINK_BATTLE_RECORDS == FALSE
 static void BufferFanClubTrainerName_(struct LinkBattleRecords *, u8, u8);
 #else
@@ -1645,7 +1669,10 @@ u8 GetLeadMonIndex(void)
 
 u16 ScriptGetPartyMonSpecies(void)
 {
-    return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES_OR_EGG, NULL);
+    if(gSpecialVar_MonBoxId == 0xFF)
+        return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES_OR_EGG);
+    else
+        return GetBoxMonDataAt(gSpecialVar_MonBoxId,gSpecialVar_MonBoxPos, MON_DATA_SPECIES_OR_EGG);
 }
 
 u16 ScriptGetPartyMonSpeciesEvenIfEgg(void)
@@ -2091,12 +2118,24 @@ void BufferVarsForIVRater(void)
     u8 i;
     u32 ivStorage[NUM_STATS];
 
-    ivStorage[STAT_HP] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HP_IV);
-    ivStorage[STAT_ATK] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ATK_IV);
-    ivStorage[STAT_DEF] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_DEF_IV);
-    ivStorage[STAT_SPEED] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPEED_IV);
-    ivStorage[STAT_SPATK] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPATK_IV);
-    ivStorage[STAT_SPDEF] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPDEF_IV);
+    if(gSpecialVar_MonBoxId == 0xFF)
+    {
+        ivStorage[STAT_HP] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HP_IV);
+        ivStorage[STAT_ATK] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_ATK_IV);
+        ivStorage[STAT_DEF] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_DEF_IV);
+        ivStorage[STAT_SPEED] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPEED_IV);
+        ivStorage[STAT_SPATK] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPATK_IV);
+        ivStorage[STAT_SPDEF] = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPDEF_IV);
+    }
+    else
+    {
+        ivStorage[STAT_HP] = GetBoxMonDataAt(gSpecialVar_MonBoxId,gSpecialVar_MonBoxPos, MON_DATA_HP_IV);
+        ivStorage[STAT_ATK] = GetBoxMonDataAt(gSpecialVar_MonBoxId,gSpecialVar_MonBoxPos, MON_DATA_ATK_IV);
+        ivStorage[STAT_DEF] = GetBoxMonDataAt(gSpecialVar_MonBoxId,gSpecialVar_MonBoxPos, MON_DATA_DEF_IV);
+        ivStorage[STAT_SPEED] = GetBoxMonDataAt(gSpecialVar_MonBoxId,gSpecialVar_MonBoxPos, MON_DATA_SPEED_IV);
+        ivStorage[STAT_SPATK] = GetBoxMonDataAt(gSpecialVar_MonBoxId,gSpecialVar_MonBoxPos, MON_DATA_SPATK_IV);
+        ivStorage[STAT_SPDEF] = GetBoxMonDataAt(gSpecialVar_MonBoxId,gSpecialVar_MonBoxPos, MON_DATA_SPDEF_IV);
+    }
 
     gSpecialVar_0x8005 = 0;
 
@@ -2906,7 +2945,11 @@ void ShowNatureGirlMessage(void)
     if (gSpecialVar_0x8004 >= PARTY_SIZE)
         gSpecialVar_0x8004 = 0;
 
-    nature = GetNature(&gPlayerParty[gSpecialVar_0x8004]);
+    if(gSpecialVar_MonBoxId == 0xFF)
+        nature = GetNature(&gPlayerParty[gSpecialVar_0x8004]);
+    else
+        nature = GetBoxMonDataAt(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos, MON_DATA_PERSONALITY) % NUM_NATURES;
+    
     ShowFieldMessage(gNaturesInfo[nature].natureGirlMessage);
 }
 
@@ -3159,7 +3202,7 @@ static void HideFrontierExchangeCornerItemIcon(enum ScrollMulti menu, u16 unused
 
 void BufferBattleFrontierTutorMoveName(void)
 {
-    StringCopy(gStringVar1, GetMoveName(gSpecialVar_0x8005));
+    StringCopy(gStringVar1, GetMoveName(gSpecialVar_ItemId));
 }
 
 static void ShowBattleFrontierTutorWindow(enum ScrollMulti menu, u16 selection)
@@ -4396,8 +4439,8 @@ void GetObjectPosition(u16* xPointer, u16* yPointer, u32 localId, u32 useTemplat
 
     objectId = GetObjectEventIdByLocalId(localId);
     objEvent = &gObjectEvents[objectId];
-    *xPointer = objEvent->currentCoords.x - 7;
-    *yPointer = objEvent->currentCoords.y - 7;
+    *xPointer = objEvent->currentCoords.x - MAP_OFFSET;
+    *yPointer = objEvent->currentCoords.y - MAP_OFFSET;
 }
 
 bool32 CheckObjectAtXY(u32 x, u32 y)
@@ -4497,7 +4540,7 @@ void DestroySelectedPartyMon(void) {
 
 void SetSpeakerToMonName(struct ScriptContext *ctx)
 {
-    u16 species = gSpecialVar_0x8004 = ScriptReadHalfword(ctx);
+    u16 species = VarGet(ScriptReadHalfword(ctx));
     bool8 isNamed = GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_NAMED);
     const u8 *name;
 
@@ -4505,9 +4548,248 @@ void SetSpeakerToMonName(struct ScriptContext *ctx)
 
     gSpeakerName = name;
 }
+void CanTeachMoveBoxMon(void)
+{
+    ScriptContext_Stop();
+    if(gSpecialVar_MonBoxId == 0xFF)
+    {
+        if (GetMonData(&gPlayerParty[gSpecialVar_MonBoxPos], MON_DATA_IS_EGG))
+        {
+            gSpecialVar_Result = CANNOT_LEARN_MOVE_IS_EGG;
+            ScriptContext_Enable();
+        }
+        else if (MonKnowsMove(&gPlayerParty[gSpecialVar_MonBoxPos], gSpecialVar_ItemId) == TRUE)
+        {
+            gSpecialVar_Result = ALREADY_KNOWS_MOVE;
+            ScriptContext_Enable();
+        }
+        else if (CanLearnTeachableMove(GetMonData(&gPlayerParty[gSpecialVar_MonBoxPos], MON_DATA_SPECIES_OR_EGG), gSpecialVar_ItemId) == FALSE)
+        {
+            gSpecialVar_Result = CANNOT_LEARN_MOVE;
+            ScriptContext_Enable();
+        }
+        else
+        {
+            if (GiveMoveToMon(&gPlayerParty[gSpecialVar_MonBoxPos], gSpecialVar_ItemId) != MON_HAS_MAX_MOVES)
+            {
+                CreateTask(Task_LearnedMoveBoxMon, 1);
+            }
+            else
+            {
+                GetMonNickname(&gPlayerParty[gSpecialVar_MonBoxPos], gStringVar1);
+                StringCopy(gStringVar2, GetMoveName(gSpecialVar_ItemId));
+                ShowFieldMessage(gText_PkmnNeedsToReplaceMove);
+                CreateTask(Task_ReplaceBoxMonMoveYesNo, 1);
+            }
+        }
+    }
+    else
+    {
+        if (GetBoxMonDataAt(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos, MON_DATA_IS_EGG))
+        {
+            gSpecialVar_Result = CANNOT_LEARN_MOVE_IS_EGG;
+            ScriptContext_Enable();
+        }
+        else if (BoxMonKnowsMove(GetBoxedMonPtr(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos), gSpecialVar_ItemId) == TRUE)
+        {
+            gSpecialVar_Result = ALREADY_KNOWS_MOVE;
+            ScriptContext_Enable();
+        }
+        else if (CanLearnTeachableMove(GetBoxMonDataAt(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos, MON_DATA_SPECIES_OR_EGG), gSpecialVar_ItemId) == FALSE)
+        {
+            gSpecialVar_Result = CANNOT_LEARN_MOVE;
+            ScriptContext_Enable();
+        }
+        else
+        {
+            if (GiveMoveToBoxMon(GetBoxedMonPtr(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos), gSpecialVar_ItemId) != MON_HAS_MAX_MOVES)
+                CreateTask(Task_LearnedMoveBoxMon, 1);
+            else
+            {
+                GetBoxMonNickname(GetBoxedMonPtr(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos), gStringVar1);
+                StringCopy(gStringVar2, GetMoveName(gSpecialVar_ItemId));
+                ShowFieldMessage(gText_PkmnNeedsToReplaceMove);
+                CreateTask(Task_ReplaceBoxMonMoveYesNo, 1);
+            }
+        }
+        
+    }
+}
+
+static void Task_LearnedMoveBoxMon(u8 taskId)
+{
+    s16 move = gSpecialVar_ItemId;
+
+    if(gSpecialVar_MonBoxId == 0xFF)
+        GetMonNickname(&gPlayerParty[gSpecialVar_MonBoxPos], gStringVar1);
+    else
+        GetBoxMonNickname(GetBoxedMonPtr(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos), gStringVar1);
+    StringCopy(gStringVar2, GetMoveName(move));
+    ShowFieldMessage(gText_PkmnLearnedMove4);
+    gTasks[taskId].func = Task_DoLearnedBoxMonMoveFanfareAfterText;
+}
+
+static void Task_DoLearnedBoxMonMoveFanfareAfterText(u8 taskId)
+{
+    if (IsTextPrinterActive(0) != TRUE)
+    {
+        PlayFanfare(MUS_LEVEL_UP);
+        gSpecialVar_Result = CAN_LEARN_MOVE;
+        DestroyTask(taskId);
+        ScriptContext_Enable();
+    }
+}
+
+static void Task_ReplaceBoxMonMoveYesNo(u8 taskId)
+{
+    if (IsTextPrinterActive(0) != TRUE)
+    {
+        DisplayYesNoMenuDefaultYes();
+        gTasks[taskId].func = Task_HandleReplaceBoxMonMoveYesNoInput;
+    }
+}
+
+static void Task_HandleReplaceBoxMonMoveYesNoInput(u8 taskId)
+{
+    switch (Menu_ProcessInputNoWrapClearOnChoose())
+    {
+    case 0:
+        ShowFieldMessage(gText_WhichMoveToForget);
+        gTasks[taskId].func = Task_ShowSummaryScreenToForgetBoxMonMove;
+        break;
+    case MENU_B_PRESSED:
+        PlaySE(SE_SELECT);
+        // fallthrough
+    case 1:
+        StopLearningBoxMonMovePrompt(taskId);
+        break;
+    }
+}
+
+static void Task_ShowSummaryScreenToForgetBoxMonMove(u8 taskId)
+{
+    if (IsTextPrinterActive(0) != TRUE)
+    {
+        DestroyTask(taskId);
+        if(gSpecialVar_MonBoxId == 0xFF)
+            ShowSelectMovePokemonSummaryScreen(gPlayerParty, gSpecialVar_MonBoxPos, gPlayerPartyCount - 1, CB2_ReturnToFieldWhileLearningMove, gSpecialVar_ItemId);
+        else
+            ShowSelectMoveBoxPokemonSummaryScreen(GetBoxedMonPtr(StorageGetCurrentBox(), 0), gSpecialVar_MonBoxPos, IN_BOX_COUNT - 1, CB2_ReturnToFieldWhileLearningMove, gSpecialVar_ItemId);
+    }
+}
+
+static void CB2_ReturnToFieldWhileLearningMove(void)
+{
+    if (!gPaletteFade.active)
+    {
+        gFieldCallback = Task_ReturnToFieldWhileLearningMove;
+        SetMainCallback2(CB2_ReturnToField);
+    }
+}
+
+static void Task_ReturnToFieldWhileLearningMove(void)
+{
+    if (GetMoveSlotToReplace() < MAX_MON_MOVES)
+    {
+        if(gSpecialVar_MonBoxId == 0xFF)
+        {
+            GetMonNickname(&gPlayerParty[gSpecialVar_MonBoxPos], gStringVar1);
+            StringCopy(gStringVar2, GetMoveName(GetMonData(&gPlayerParty[gSpecialVar_MonBoxPos], MON_DATA_MOVE1 + GetMoveSlotToReplace())));
+        }
+        else
+        {
+            GetBoxMonNickAt(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos, gStringVar1);
+            StringCopy(gStringVar2, GetMoveName(GetBoxMonDataAt(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos, MON_DATA_MOVE1 + GetMoveSlotToReplace())));
+        }
+        ShowFieldMessage(gText_12PoofForgotMove);
+        CreateTask(Task_BoxMonReplaceMove,1);
+    }
+    else
+        CreateTask(StopLearningBoxMonMovePrompt,1);
+}
+
+static void Task_BoxMonReplaceMove(u8 taskId)
+{
+
+    if (IsTextPrinterActive(0) != TRUE)
+    {
+        u16 move = gSpecialVar_ItemId;
+        if(gSpecialVar_MonBoxId == 0xFF)
+        {
+            RemoveMonPPBonus(&gPlayerParty[gSpecialVar_MonBoxPos], GetMoveSlotToReplace());
+            SetMonMoveSlot(&gPlayerParty[gSpecialVar_MonBoxPos], move, GetMoveSlotToReplace()); 
+        }
+        else
+        {
+            struct BoxPokemon *mon = GetBoxedMonPtr(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos);
+
+            u8 ppBonuses = GetBoxMonData(mon, MON_DATA_PP_BONUSES);
+            ppBonuses &= gPPUpClearMask[GetMoveSlotToReplace()];
+            SetBoxMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
+
+            SetBoxMonData(mon, MON_DATA_MOVE1 + GetMoveSlotToReplace(), &move);
+            SetBoxMonData(mon, MON_DATA_PP1 + GetMoveSlotToReplace(), &gMovesInfo[move].pp);
+        }
+     
+        Task_LearnedMoveBoxMon(taskId);
+    }
+}
+
+static void StopLearningBoxMonMovePrompt(u8 taskId)
+{
+    StringCopy(gStringVar2, GetMoveName(gSpecialVar_ItemId));
+    ShowFieldMessage(gText_StopLearningMove2);
+    gTasks[taskId].func = Task_StopLearningBoxMonMoveYesNo;
+}
+
+static void Task_StopLearningBoxMonMoveYesNo(u8 taskId)
+{
+    if (IsTextPrinterActive(0) != TRUE)
+    {
+        DisplayYesNoMenuDefaultYes();
+        gTasks[taskId].func = Task_HandleStopLearningBoxMonMoveYesNoInput;
+    }
+}
+
+static void Task_HandleStopLearningBoxMonMoveYesNoInput(u8 taskId)
+{
+    switch (Menu_ProcessInputNoWrapClearOnChoose())
+    {
+    case 0:
+        if(gSpecialVar_MonBoxId == 0xFF)
+            GetMonNickname(&gPlayerParty[gSpecialVar_MonBoxPos], gStringVar1);
+        else
+            GetBoxMonNickAt(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos, gStringVar1);
+        ShowFieldMessage(gText_MoveNotLearned);
+        gSpecialVar_Result = 4;
+        gTasks[taskId].func = Task_DidntLearnMove;
+        break;
+    case MENU_B_PRESSED:
+        PlaySE(SE_SELECT);
+        // fallthrough
+    case 1:
+        if(gSpecialVar_MonBoxId == 0xFF)
+            GetMonNickname(&gPlayerParty[gSpecialVar_MonBoxPos], gStringVar1);
+        else
+            GetBoxMonNickAt(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos, gStringVar1);
+        ShowFieldMessage(gText_PkmnNeedsToReplaceMove);
+        gTasks[taskId].func = Task_ReplaceBoxMonMoveYesNo;
+        break;
+    }
+}
+
+static void Task_DidntLearnMove(u8 taskId)
+{
+    if (IsTextPrinterActive(0) != TRUE)
+    {
+        DestroyTask(taskId);
+        ScriptContext_Enable();
+    }
+}
 
 void EnterCode(void)
 {
+    StringCopy(gStringVar2, COMPOUND_STRING(""));
     DoNamingScreen(NAMING_SCREEN_CODE, gStringVar2, 0, 0, 0, CB2_ReturnToFieldContinueScript);
 }
 
@@ -4549,12 +4831,12 @@ void SetAbility(void)
 
 static const u16 sRandomAdoptionSpecies[] =
 {
-    SPECIES_EKANS, SPECIES_VULPIX, SPECIES_GROWLITHE,
+    SPECIES_GROWLITHE, SPECIES_VULPIX, SPECIES_SHROOMISH, SPECIES_CLEFFA, SPECIES_SLAKOTH, SPECIES_CHINGLING, SPECIES_SPHEAL, SPECIES_MUNCHLAX, SPECIES_CHINCHOU, SPECIES_MAGBY, SPECIES_NATU, SPECIES_BUDEW, SPECIES_TOXEL_TOKUAN,
 };
 
 static const u16 sRandomSpecialAdoptionSpecies[] =
 {
-    SPECIES_BULBASAUR, SPECIES_CHARMANDER, SPECIES_SQUIRTLE,
+    SPECIES_BULBASAUR, SPECIES_TORCHIC, SPECIES_PIPLUP
 };
 
 u16 GetRandomAdoptionSpecies(void)
@@ -4565,4 +4847,31 @@ u16 GetRandomAdoptionSpecies(void)
 u16 GetRandomSpecialAdoptionSpecies(void)
 {
     return sRandomSpecialAdoptionSpecies[Random() % ARRAY_COUNT(sRandomSpecialAdoptionSpecies)];
+}
+
+u32 GetNumberOfBadges(void)
+{
+    u32 nbBadges = 0;
+    if (FlagGet(FLAG_BADGE01_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE02_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE03_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE04_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE05_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE06_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE07_GET)) nbBadges += 1;
+    if (FlagGet(FLAG_BADGE08_GET)) nbBadges += 1;
+
+    return nbBadges;
+}
+
+/**
+ * Stores the egg species and remaining number of steps to reach before the
+ * Yifu City little girl's egg hatches, then destroys the egg from your party.
+ */
+void InitEggGirlStepCounterFromSelectedPartyEgg(void) {
+    u8 monId = GetCursorSelectionMonId();
+    VarSet(VAR_EGG_GIRL_SPECIES, GetMonData(&gPlayerParty[monId], MON_DATA_SPECIES, NULL));
+    VarSet(VAR_EGG_GIRL_STEP_COUNTER, GetMonData(&gPlayerParty[monId], MON_DATA_FRIENDSHIP, NULL) * GetEggCycleLength());
+    ZeroMonData(&gPlayerParty[monId]);
+    CompactPartySlots();
 }

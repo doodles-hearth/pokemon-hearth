@@ -231,8 +231,6 @@ static const struct SpriteTemplate sRegionMapCursorSpriteTemplate =
     .paletteTag = TAG_CURSOR,
     .oam = &sRegionMapCursorOam,
     .anims = sRegionMapCursorAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_CursorMapFull
 };
 
@@ -503,9 +501,6 @@ static const struct SpriteTemplate sFlyDestIconSpriteTemplate =
     .paletteTag = TAG_FLY_ICON,
     .oam = &sFlyDestIcon_OamData,
     .anims = sFlyDestIcon_Anims,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
 };
 
 void InitRegionMap(struct RegionMap *regionMap, bool8 zoomed)
@@ -1864,8 +1859,6 @@ static void CreateFlyDestIcons(void)
         x = (x + MAPCURSOR_X_MIN) * 8 + 4;
         y = (y + MAPCURSOR_Y_MIN) * 8 + 4;
 
-        DebugPrintf("Yifu ? %d (%dx%d)", MAPSEC_YIFU_CITY == mapSecId, width, height);
-
         if (width == 2 && height == 2)
             shape = MAP_SPRITE_16X16;
         else if (width == 2)
@@ -1882,7 +1875,6 @@ static void CreateFlyDestIcons(void)
 
             if (shape == MAP_SPRITE_16X16)
             {
-                DebugPrintf("Yifu found!");
                 gSprites[spriteId].oam.size = SPRITE_SIZE(16x16);
             }
 

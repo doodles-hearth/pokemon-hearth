@@ -1,12 +1,47 @@
-tools/scaninc/scaninc -M build/emerald/data/event_scripts.d -I include -I "" data/event_scripts.s
-tools/scaninc/scaninc -M build/emerald/src/fldeff_flash.d -I include -I tools/agbcc/include src/fldeff_flash.c
-/usr/lib/gcc/arm-none-eabi/10.3.1/cc1 -quiet <flags> -o build/emerald/src/fldeff_flash.o src/fldeff_flash.c
-tools/preproc/preproc data/event_scripts.s charmap.txt | arm-none-eabi-cpp -iquote include -Wno-trigraphs -DMODERN=1 -DTESTING=0 -DEMERALD -std=gnu17 -I include - | tools/preproc/preproc -ie data/event_scripts.s charmap.txt | arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 --defsym EMERALD=1 -o build/emerald/data/event_scripts.o
-Memory region         Used Size  Region Size  %age Used
-           EWRAM:      222508 B       256 KB     84.88%
-           IWRAM:       28692 B        32 KB     87.56%
-             ROM:    26642676 B        32 MB     79.40%
-cd build/emerald && arm-none-eabi-ld -Map ../../pokeemerald-hearth.map --print-memory-usage --gc-sections -T ../../ld_script_modern.ld -o ../../pokeemerald-hearth.elf <objs> <libs> | cat
-tools/gbafix/gbafix pokeemerald-hearth.elf -t"POKEMON EMER" -cBPEE -m01 -r0 --silent
-arm-none-eabi-objcopy -O binary pokeemerald-hearth.elf pokeemerald-hearth.gba
-tools/gbafix/gbafix pokeemerald-hearth.gba -p --silent
+make[1]: Nothing to be done for 'all'.
+python3 tools/learnset_helpers/make_learnables.py tools/learnset_helpers/porymoves_files src/data/pokemon/all_learnables.json
+tools/compresSmol/compresSmol -w graphics/pokemon/anorith/anim_front.4bpp graphics/pokemon/anorith/anim_front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/anorith/anim_front_gba.4bpp graphics/pokemon/anorith/anim_front_gba.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/anorith/back.4bpp graphics/pokemon/anorith/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/anorith/back_gba.4bpp graphics/pokemon/anorith/back_gba.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/anorith/overworld.4bpp graphics/pokemon/anorith/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/appletun/anim_front.4bpp graphics/pokemon/appletun/anim_front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/appletun/back.4bpp graphics/pokemon/appletun/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/appletun/gmax/back.4bpp graphics/pokemon/appletun/gmax/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/appletun/gmax/front.4bpp graphics/pokemon/appletun/gmax/front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/appletun/overworld.4bpp graphics/pokemon/appletun/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/applin/anim_front.4bpp graphics/pokemon/applin/anim_front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/applin/back.4bpp graphics/pokemon/applin/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/applin/overworld.4bpp graphics/pokemon/applin/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/araquanid/anim_front.4bpp graphics/pokemon/araquanid/anim_front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/araquanid/back.4bpp graphics/pokemon/araquanid/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/araquanid/overworld.4bpp graphics/pokemon/araquanid/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arbok/anim_front.4bpp graphics/pokemon/arbok/anim_front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arbok/anim_front_gba.4bpp graphics/pokemon/arbok/anim_front_gba.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arbok/back.4bpp graphics/pokemon/arbok/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arbok/back_gba.4bpp graphics/pokemon/arbok/back_gba.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arbok/overworld.4bpp graphics/pokemon/arbok/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arboliva/back.4bpp graphics/pokemon/arboliva/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arboliva/front.4bpp graphics/pokemon/arboliva/front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arboliva/overworld.4bpp graphics/pokemon/arboliva/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arcanine/anim_front.4bpp graphics/pokemon/arcanine/anim_front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arcanine/anim_front_gba.4bpp graphics/pokemon/arcanine/anim_front_gba.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arcanine/back.4bpp graphics/pokemon/arcanine/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arcanine/back_gba.4bpp graphics/pokemon/arcanine/back_gba.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arcanine/hisui/back.4bpp graphics/pokemon/arcanine/hisui/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arcanine/hisui/front.4bpp graphics/pokemon/arcanine/hisui/front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arcanine/hisui/overworld.4bpp graphics/pokemon/arcanine/hisui/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arcanine/overworld.4bpp graphics/pokemon/arcanine/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arceus/anim_front.4bpp graphics/pokemon/arceus/anim_front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arceus/back.4bpp graphics/pokemon/arceus/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arceus/overworld.4bpp graphics/pokemon/arceus/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/archaludon/back.4bpp graphics/pokemon/archaludon/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/archaludon/front.4bpp graphics/pokemon/archaludon/front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/archaludon/overworld.4bpp graphics/pokemon/archaludon/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/archen/anim_front.4bpp graphics/pokemon/archen/anim_front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/archen/back.4bpp graphics/pokemon/archen/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/archen/overworld.4bpp graphics/pokemon/archen/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/archeops/anim_front.4bpp graphics/pokemon/archeops/anim_front.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/archeops/back.4bpp graphics/pokemon/archeops/back.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/archeops/overworld.4bpp graphics/pokemon/archeops/overworld.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/pokemon/arctibax/back.4bpp graphics/pokemon/arctibax/back.4bpp.smol
