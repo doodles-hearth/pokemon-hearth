@@ -72,3 +72,28 @@ SINGLE_BATTLE_TEST("Smoke explosion damage depends on target type")
         HP_BAR(opponent, damage : dmg);
     }
 }
+
+DOUBLE_BATTLE_TEST("Smoke explosion hits all targets in a double battle")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    }
+    WHEN {
+        TURN { MOVE(playerLeft, MOVE_SMOKE_BOMB); }
+        TURN { MOVE(playerLeft, MOVE_EMBER, target:opponentRight); }
+    }
+    SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SMOKE_BOMB, playerLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, playerLeft);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_EXPLOSION);
+
+        HP_BAR(playerLeft);
+        HP_BAR(opponentLeft);
+        HP_BAR(playerRight);
+        HP_BAR(opponentRight);
+    }
+}
+
