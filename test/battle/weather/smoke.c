@@ -16,18 +16,15 @@ ASSUMPTIONS
 
 SINGLE_BATTLE_TEST("Smoke explodes when a fire type move is used")
 {
-    GIVEN
-    {
+    GIVEN {
         PLAYER(SPECIES_VULPIX);
         OPPONENT(SPECIES_WOBBUFFET);
     }
-    WHEN
-    {
+    WHEN {
         TURN { MOVE(player, MOVE_SMOKE_BOMB); }
         TURN { MOVE(player, MOVE_EMBER); }
     }
-    SCENE
-    {
+    SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_EXPLOSION);
     }
@@ -42,18 +39,15 @@ SINGLE_BATTLE_TEST("Smoke explosion damage depends on target type")
     PARAMETRIZE { species = SPECIES_TANGELA; }
     PARAMETRIZE { species = SPECIES_PARASECT; }
 
-    GIVEN
-    {
+    GIVEN {
         PLAYER(SPECIES_CHARMANDER);
         OPPONENT(species);
     }
-    WHEN
-    {
+    WHEN {
         TURN { MOVE(opponent, MOVE_SMOKE_BOMB); }
         TURN { MOVE(opponent, MOVE_EMBER); }
     }
-    SCENE
-    {
+    SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_EXPLOSION);
         s32 maxHP = GetMonData(&OPPONENT_PARTY[0], MON_DATA_MAX_HP);
