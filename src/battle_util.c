@@ -297,7 +297,7 @@ static uq4_12_t GetTypeEffectivenessForSmokeExplosion(u32 battler)
     struct BattleContext ctx = {0};
 
     enum Type types[3];
-    enum Ability ability = gBattleMons[battler].ability;
+    enum Ability ability = GetBattlerAbility(battler);
 
     GetBattlerTypes(battler, TRUE, types);
 

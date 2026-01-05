@@ -1273,7 +1273,7 @@ static enum MoveEndResult MoveEnd_SmokeExplosion(void)
     if (gBattleStruct->trySmokeExplosion) {
         gBattleStruct->trySmokeExplosion = FALSE;
         for (u32 battler = 0; battler < gBattlersCount; battler++) {
-            if (!(gAbsentBattlerFlags & (1u << battler)) && gBattleMons[battler].hp != 0) {
+            if (IsBattlerAlive(battler)) {
                 gBattleStruct->passiveHpUpdate[battler] = CalcSmokeExplosionDamage(battler);
             }
             else {
