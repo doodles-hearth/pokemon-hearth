@@ -1266,6 +1266,28 @@ static enum MoveEndResult MoveEnd_EjectButton(void)
     return result;
 }
 
+static enum MoveEndResult MoveEnd_SmokeExplosion(void)
+{
+    enum MoveEndResult result = MOVEEND_STEP_CONTINUE;
+
+    if (gBattleStruct->trySmokeExplosion) {
+        gBattleStruct->trySmokeExplosion = FALSE;
+        for (u32 battler = 0; battler < gBattlersCount; battler++) {
+            if (IsBattlerAlive(battler)) {
+                gBattleStruct->passiveHpUpdate[battler] = CalcSmokeExplosionDamage(battler);
+            }
+            else {
+                gBattleStruct->passiveHpUpdate[battler] = 0;
+            }
+        }
+        result = MOVEEND_STEP_RUN_SCRIPT;
+        BattleScriptCall(BattleScript_SmokeExplosion);
+        return result;
+    }
+    gBattleScripting.moveendState++;
+    return result;
+}
+
 static enum MoveEndResult MoveEnd_LifeOrbShellBell(void)
 {
     enum MoveEndResult result = MOVEEND_STEP_CONTINUE;
@@ -1779,6 +1801,7 @@ static enum MoveEndResult (*const sMoveEndHandlers[])(void) =
     [MOVEEND_KEE_MARANGA_HP_THRESHOLD_ITEM_TARGET] = MoveEnd_KeeMarangaHpThresholdItemTarget,
     [MOVEEND_RED_CARD] = MoveEnd_RedCard,
     [MOVEEND_EJECT_BUTTON] = MoveEnd_EjectButton,
+    [MOVEEND_SMOKE_EXPLOSION] = MoveEnd_SmokeExplosion,
     [MOVEEND_LIFE_ORB_SHELL_BELL] = MoveEnd_LifeOrbShellBell,
     [MOVEEND_FORM_CHANGE] = MoveEnd_FormChange,
     [MOVEEND_EMERGENCY_EXIT] = MoveEnd_EmergencyExit,
