@@ -13,6 +13,7 @@ enum {
     GFXTAG_SANDSTORM,
     GFXTAG_BUBBLE,
     GFXTAG_RAIN,
+    GFXTAG_LEAVES,
 };
 enum {
     PALTAG_WEATHER = TAG_WEATHER_START,
@@ -131,6 +132,10 @@ struct Weather
     s16 droughtState;
     u8 loadDroughtPalsIndex;
     u8 loadDroughtPalsOffset;
+    // Leaves
+    u8 targetLeafSpriteCount;
+    u8 leafVisibleCounter;
+    u8 leafSpriteCount;
 };
 
 // field_weather.c
@@ -189,6 +194,13 @@ void Snow_InitVars(void);
 void Snow_Main(void);
 void Snow_InitAll(void);
 bool8 Snow_Finish(void);
+void CommonLeaves_InitVars(void);
+void PinkLeaves_Main(void);
+void PinkLeaves_InitAll(void);
+bool8 PinkLeaves_Finish(void);
+void AutumnLeaves_Main(void);
+void AutumnLeaves_InitAll(void);
+bool8 AutumnLeaves_Finish(void);
 void Thunderstorm_InitVars(void);
 void Thunderstorm_Main(void);
 void Thunderstorm_InitAll(void);
