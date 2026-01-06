@@ -1,3 +1,4 @@
+#include "pokemon_spots.h"
 #ifdef __INTELLISENSE__
 const struct SpeciesInfo gSpeciesInfoGen1[] =
 {
@@ -18066,6 +18067,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .teachableLearnset = sGyaradosTeachableLearnset,
         .formSpeciesIdTable = sGyaradosFormSpeciesIdTable,
         .formChangeTable = sGyaradosFormChangeTable,
+        .monSpotTemplate = &gGyaradosSpotTemplate,
     },
 
 #if P_MEGA_EVOLUTIONS

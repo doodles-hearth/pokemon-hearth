@@ -17,6 +17,9 @@
 #include "constants/abilities.h"
 #include "contest_effect.h"
 #include "constants/trainers.h"
+#include "pokemon_spots.h"
+#include "pokemon_spot_templates.h"
+
 
 #define GET_BASE_SPECIES_ID(speciesId) (GetFormSpeciesId(speciesId, 0))
 #define FORM_SPECIES_END (0xffff)
@@ -482,6 +485,7 @@ struct SpeciesInfo /*0xC4*/
     const struct Evolution *evolutions;
     const u16 *formSpeciesIdTable;
     const struct FormChange *formChangeTable;
+    const struct MonSpotTemplate *monSpotTemplate;
 #if OW_POKEMON_OBJECT_EVENTS
     struct ObjectEventGraphicsInfo overworldData;
 #if P_GENDER_DIFFERENCES
@@ -582,6 +586,7 @@ struct NatureInfo
     u8 battlePalaceSmokescreen;
     const u8 *natureGirlMessage;
 };
+
 
 #define SPINDA_SPOT_WIDTH 16
 #define SPINDA_SPOT_HEIGHT 16
