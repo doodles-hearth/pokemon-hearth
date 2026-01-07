@@ -1,4 +1,3 @@
-#include "pokemon_spots.h"
 #ifdef __INTELLISENSE__
 const struct SpeciesInfo gSpeciesInfoGen1[] =
 {

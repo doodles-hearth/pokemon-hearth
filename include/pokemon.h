@@ -17,8 +17,6 @@
 #include "constants/abilities.h"
 #include "contest_effect.h"
 #include "constants/trainers.h"
-#include "pokemon_spots.h"
-#include "pokemon_spot_templates.h"
 
 
 #define GET_BASE_SPECIES_ID(speciesId) (GetFormSpeciesId(speciesId, 0))

@@ -13,8 +13,6 @@ union MonSpotImage {
 
 struct MonSpot {
     u8 x, y;
-    u8 width;
-    u8 height;
     union MonSpotImage image;
 };
 
@@ -22,8 +20,8 @@ struct MonSpotTemplate {
     const struct MonSpot* spots;
     u8 count;
     u8 scale;
-    s8 xOffset;
-    s8 yOffset;
+    s8 xOffsetFrame2;
+    s8 yOffsetFrame2;
     u8 firstColor;
     u8 lastColor;
     u8 colorAdjust;
