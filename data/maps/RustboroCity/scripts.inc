@@ -888,7 +888,7 @@ RustboroCity_EventScript_BattleMayTorchic::
 	end
 
 RustboroCity_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_RIVAL_SAKU_FROAKIE, RustboroCity_Text_MayDefeat
+	trainerbattle_no_intro TRAINER_RIVAL_SAKU_SQUIRTLE, RustboroCity_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_RUSTBORO
 	goto RustboroCity_EventScript_MayBrineyHint
 	end
