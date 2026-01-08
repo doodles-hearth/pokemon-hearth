@@ -7,19 +7,19 @@
 #include "repeat_macros.h"
 
 #define GEN_SPOT_IMAGES(tag, idx, size)                                                            \
-    INCBIN_U##size(TO_LOWER("graphics/pokemon/" STR(tag) "/spots/spot_" STR(idx) ".1bpp")),
+    INCBIN_U##size("graphics/pokemon/" STR(tag) "/spots/spot_" STR(idx) ".1bpp"),
 
 #define GEN_SPOT_IMAGES_16(tag, idx) GEN_SPOT_IMAGES(tag, idx, 16)
 #define GEN_SPOT_IMAGES_32(tag, idx) GEN_SPOT_IMAGES(tag, idx, 32)
 
-#define SPOT_ARRAY_16(name,  count) \
+#define SPOT_ARRAY_16(name, tag,  count) \
     static const SpotRow16 s##name##SpotImages[count] = { \
-    RECURSIVELY(R_ZIP(GEN_SPOT_IMAGES_16, REPEAT_N(count, name), NUMBERS_16)) \
+    RECURSIVELY(R_ZIP(GEN_SPOT_IMAGES_16, REPEAT_N(count, tag), NUMBERS_16)) \
     }
 
-#define SPOT_ARRAY_32(name,  count) \
+#define SPOT_ARRAY_32(name, tag,  count) \
     static const SpotRow32 s##name##SpotImages[count] = { \
-    RECURSIVELY(R_ZIP(GEN_SPOT_IMAGES_32, REPEAT_N(count, name), NUMBERS_16)) \
+    RECURSIVELY(R_ZIP(GEN_SPOT_IMAGES_32, REPEAT_N(count, tag), NUMBERS_16)) \
     }
 
 #define MON_SPOT_16(name, idx, _x, _y) \
@@ -45,7 +45,8 @@ typedef u32 SpotRow32[32];
 
 /* Define Spots Below*/
 
-SPOT_ARRAY_16(Spinda, 4);
+SPOT_ARRAY_16(Spinda, spinda, 4);
+
 static const struct MonSpot sSpindaSpots[] = {
 MON_SPOT_16(Spinda, 0, 16, 7)
 MON_SPOT_16(Spinda, 1, 40, 8)
@@ -55,7 +56,7 @@ MON_SPOT_16(Spinda, 3, 34, 26)
 MON_SPOT_TEMPLATE(Spinda, 1, -4, 0, 1, 3, 4)
 
 
-SPOT_ARRAY_32(Gyarados, 4);
+SPOT_ARRAY_32(Gyarados, gyarados, 4);
 static const struct MonSpot sGyaradosSpots[] = {
     MON_SPOT_32(Gyarados, 0, 16, 32)
     MON_SPOT_32(Gyarados, 1, 32, 8)
