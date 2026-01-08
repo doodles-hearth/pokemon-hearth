@@ -92,6 +92,7 @@ void CFile::Preproc()
         }
         else
         {
+            TryConvertToLower();
             TryConvertString();
             TryConvertIncbin();
 
@@ -288,11 +289,17 @@ int ExtractData(const std::unique_ptr<unsigned char[]>& buffer, int offset, int 
     }
 }
 
+
 void CFile::TryConvertIncbin()
 {
-    std::string idents[8] = { "INCBIN_S8", "INCBIN_U8", "INCBIN_S16", "INCBIN_U16", "INCBIN_S32", "INCBIN_U32", "DUMMY", "INCBIN_COMP"};
-    int incbinType = -1;
+    static const std::string idents[8] = {
+        "INCBIN_S8", "INCBIN_U8",
+        "INCBIN_S16", "INCBIN_U16",
+        "INCBIN_S32", "INCBIN_U32",
+        "DUMMY", "INCBIN_COMP"
+    };
 
+    int incbinType = -1;
     for (int i = 0; i < 8; i++)
     {
         if (CheckIdentifier(idents[i]))
@@ -308,13 +315,13 @@ void CFile::TryConvertIncbin()
     int size = 1 << (incbinType / 2);
     if (size > 4)
         size = 4;
+
     bool isSigned = ((incbinType % 2) == 0);
 
     long oldPos = m_pos;
     long oldLineNum = m_lineNum;
 
     m_pos += idents[incbinType].length();
-
     SkipWhitespace();
 
     if (m_buffer[m_pos] != '(')
@@ -324,8 +331,7 @@ void CFile::TryConvertIncbin()
         return;
     }
 
-    m_pos++;
-
+    m_pos++; // '('
     std::printf("{");
 
     while (true)
@@ -333,14 +339,29 @@ void CFile::TryConvertIncbin()
         SkipWhitespace();
 
         std::string path;
+        bool lowercase = false;
 
-        // Concatenate space-separated string literals
-        while (true) {
+        // Optional TO_LOWER(...)
+        if (CheckIdentifier("TO_LOWER"))
+        {
+            lowercase = true;
+            m_pos += strlen("TO_LOWER");
+            SkipWhitespace();
 
+            if (m_buffer[m_pos] != '(')
+                RaiseError("expected '(' after TO_LOWER");
+
+            m_pos++; // '('
+            SkipWhitespace();
+        }
+
+        // Parse raw, concatenated string literals (original INCBIN behavior)
+        while (true)
+        {
             if (m_buffer[m_pos] != '"')
                 RaiseError("expected double quote");
-            m_pos++;
 
+            m_pos++; // opening quote
             int startPos = m_pos;
 
             while (m_buffer[m_pos] != '"')
@@ -363,17 +384,27 @@ void CFile::TryConvertIncbin()
             }
 
             path.append(&m_buffer[startPos], m_pos - startPos);
-
-            m_pos++;
+            m_pos++; // closing quote
             SkipWhitespace();
 
             if (m_buffer[m_pos] != '"')
                 break;
         }
 
-        // INCBIN_COMP; include *compressed* version of file
-        if (incbinType == 7)
-            path = path.append(".smol");
+        if (lowercase)
+        {
+            SkipWhitespace();
+            if (m_buffer[m_pos] != ')')
+                RaiseError("expected ')' after TO_LOWER");
+
+            m_pos++; // ')'
+
+            for (char& c : path)
+                c = (char)std::tolower((unsigned char)c);
+        }
+
+        if (incbinType == 7) // INCBIN_COMP
+            path.append(".smol");
 
         int fileSize;
         std::unique_ptr<unsigned char[]> buffer = ReadWholeFile(path, fileSize);
@@ -396,20 +427,97 @@ void CFile::TryConvertIncbin()
         }
 
         SkipWhitespace();
-
         if (m_buffer[m_pos] != ',')
             break;
 
-        m_pos++;
+        m_pos++; // ','
     }
 
     if (m_buffer[m_pos] != ')')
         RaiseError("expected ')'");
 
-    m_pos++;
-
+    m_pos++; // ')'
     std::printf("}");
 }
+
+
+
+
+void CFile::TryConvertToLower()
+{
+    static const std::string ident = "TO_LOWER";
+
+    long oldPos = m_pos;
+    long oldLineNum = m_lineNum;
+
+    if (!CheckIdentifier(ident))
+        return;
+
+    if (m_pos > 0 && IsIdentifierChar(m_buffer[m_pos - 1]))
+        return;
+
+    m_pos += ident.length();
+    SkipWhitespace();
+
+    if (m_buffer[m_pos] != '(')
+    {
+        m_pos = oldPos;
+        m_lineNum = oldLineNum;
+        return;
+    }
+
+    m_pos++;
+    SkipWhitespace();
+
+    if (m_buffer[m_pos] != '"')
+        RaiseError("TO_LOWER expects string literal");
+
+    unsigned char s[kMaxStringLength];
+    int length = 0;
+    StringParser stringParser(m_buffer, m_size);
+
+    try
+    {
+        while (true)
+        {
+            int partLength;
+            m_pos += stringParser.ParseString(m_pos, s + length, partLength);
+            length += partLength;
+
+            SkipWhitespace();
+            if (m_buffer[m_pos] != '"')
+                break;
+        }
+    }
+    catch (std::runtime_error& e)
+    {
+        RaiseError(e.what());
+    }
+
+    SkipWhitespace();
+
+    if (m_buffer[m_pos] != ')')
+        RaiseError("expected ')' after TO_LOWER argument");
+
+    m_pos++;
+
+    for (int i = 0; i < length; i++)
+        s[i] = (unsigned char)std::tolower(s[i]);
+
+    std::putchar('"');
+    for (int i = 0; i < length; i++)
+    {
+        unsigned char c = s[i];
+        if (c == '"' || c == '\\')
+            std::putchar('\\');
+        std::putchar(c);
+    }
+    std::putchar('"');
+
+    return;
+}
+
+
 
 // Reports a diagnostic message.
 void CFile::ReportDiagnostic(const char* type, const char* format, std::va_list args)
