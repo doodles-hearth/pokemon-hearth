@@ -189,12 +189,21 @@ void CFile::TryConvertString()
         if (m_buffer[m_pos] == '"')
         {
             unsigned char s[kMaxStringLength];
-            int length;
+            int length = 0;
             StringParser stringParser(m_buffer, m_size);
 
             try
             {
-                m_pos += stringParser.ParseString(m_pos, s, length);
+                while (true)
+                {
+                    int partLength;
+                    m_pos += stringParser.ParseString(m_pos, s + length, partLength);
+                    length += partLength;
+                    SkipWhitespace();
+
+                    if(m_buffer[m_pos] != '"')
+                        break;
+                }
             }
             catch (std::runtime_error& e)
             {
@@ -360,13 +369,11 @@ void CFile::TryConvertIncbin()
 
             if (m_buffer[m_pos] != '"')
                 break;
-
         }
+
         // INCBIN_COMP; include *compressed* version of file
         if (incbinType == 7)
             path = path.append(".smol");
-
-        m_pos++;
 
         int fileSize;
         std::unique_ptr<unsigned char[]> buffer = ReadWholeFile(path, fileSize);
