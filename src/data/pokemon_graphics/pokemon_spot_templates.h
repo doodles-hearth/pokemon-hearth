@@ -46,7 +46,6 @@ typedef u32 SpotRow32[32];
 /* Define Spots Below*/
 
 SPOT_ARRAY_16(Spinda, spinda, 4);
-
 static const struct MonSpot sSpindaSpots[] = {
 MON_SPOT_16(Spinda, 0, 16, 7)
 MON_SPOT_16(Spinda, 1, 40, 8)
