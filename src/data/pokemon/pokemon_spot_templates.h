@@ -3,7 +3,7 @@
 
 #include "global.h"
 #include "pokemon_spots.h"
- 
+
 #define MON_SPOT(name, idx, _x, _y, size) \
     {.x = _x, .y =_y, .image.rows##size = s##name##SpotImages[idx]},
 
