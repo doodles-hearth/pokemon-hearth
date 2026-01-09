@@ -1,23 +1,17 @@
 #ifndef GUARD_POKEMON_SPOTS_H
 #define GUARD_POKEMON_SPOTS_H
 
-
 typedef u32 SpotRow32[32];
-typedef u16 SpotRow16[16];
+typedef u32 SpotRow16[16];
 
 enum SpotAnimFrame {
     FRAME_1,
     FRAME_2
 };
 
-union MonSpotImage {
-    const u16* rows16;
-    const u32* rows32;
-};
-
 struct MonSpot {
     u8 x, y;
-    union MonSpotImage image;
+    const u32* image;
 };
 
 struct MonSpotTemplate {
@@ -30,7 +24,6 @@ struct MonSpotTemplate {
     u8 lastColor;
     u8 colorAdjust;
 };
-
 
 bool32 ShouldDrawSpotsOnSpecies(u16 species);
 void DrawPokemonSpots(u32 personality, const struct MonSpotTemplate* spotTemplate, u8 *dest, enum SpotAnimFrame SpotAnimFrame);

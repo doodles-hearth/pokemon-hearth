@@ -21,6 +21,15 @@ bool32 ShouldDrawSpotsOnSpecies(u16 species)
         return FALSE;
 }
 
+static inline u32 GetSpotRow(const u32* image, u32 row, u32 size)
+{
+    u32 numRows = 32 >> __builtin_ctz(size);
+    u32 packedRow = row >> __builtin_ctz(numRows);
+    u32 idx = row & (numRows - 1);
+
+    return (image[packedRow] >> (idx * size)) & ((size == 32) ? 0xFFFFFFFFu : ((1u << size) - 1));
+}
+
 void DrawPokemonSpots(u32 personality, const struct MonSpotTemplate* spotTemplate, u8* dest,
                       enum SpotAnimFrame spotAnimFrame)
 {
@@ -28,8 +37,9 @@ void DrawPokemonSpots(u32 personality, const struct MonSpotTemplate* spotTemplat
     u32 i;
     for (i = 0; i < spotTemplate->count; i++) {
         const struct MonSpot* spot = &spotTemplate->spots[i];
+        u32 row;
         u16 x = spot->x + (personality & 0x0F) * spotTemplate->scale;
-        u16 y = spot->y + ((personality & 0xF0) >> 4) * spotTemplate->scale;
+        u8 y = spot->y + ((personality & 0xF0) >> 4) * spotTemplate->scale;
 
         switch (spotAnimFrame) {
             case FRAME_1:
@@ -46,10 +56,10 @@ void DrawPokemonSpots(u32 personality, const struct MonSpotTemplate* spotTemplat
                 break;
         }
 
-        for (u32 row = 0; row < size; row++) {
-            u32 spotPixelRow = size == 16 ? spot->image.rows16[row] : spot->image.rows32[row];
-
-            for (u32 column = x; column < x + size; column++) {
+        for (row = 0; row < size; row++) {
+            u32 column;
+            u32 spotPixelRow = GetSpotRow(spot->image, row, size);
+            for (column = x; column < x + size; column++) {
                 u8* destPixels = dest + ((column / 8) * TILE_SIZE_4BPP) + ((column % 8) / 2) +
                                  ((y / 8) * TILE_SIZE_4BPP * 8) + ((y % 8) * 4);
 
