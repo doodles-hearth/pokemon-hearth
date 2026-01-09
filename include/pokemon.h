@@ -585,25 +585,6 @@ struct NatureInfo
     const u8 *natureGirlMessage;
 };
 
-
-#define SPINDA_SPOT_WIDTH 16
-#define SPINDA_SPOT_HEIGHT 16
-
-struct SpindaSpot
-{
-    u8 x, y;
-    u16 image[SPINDA_SPOT_HEIGHT];
-};
-
-#define GYARADOS_SPOT_WIDTH 32
-#define GYARADOS_SPOT_HEIGHT 32
-
-struct GyaradosSpot
-{
-    u8 x, y;
-    u32 image[GYARADOS_SPOT_HEIGHT];
-};
-
 struct LevelUpMove
 {
     u16 move;
@@ -802,8 +783,6 @@ enum HoennDexOrder NationalToHoennOrder(enum NationalDexOrder nationalNum);
 enum NationalDexOrder SpeciesToNationalPokedexNum(u16 species);
 enum HoennDexOrder SpeciesToHoennPokedexNum(u16 species);
 enum NationalDexOrder HoennToNationalOrder(enum HoennDexOrder hoennNum);
-void DrawSpindaSpots(u32 personality, u8 *dest, bool32 isSecondFrame);
-void DrawKoiGyaradosSpots(u32 personality, u8 *dest, bool32 isSecondFrame);
 void EvolutionRenameMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies);
 u8 GetPlayerFlankId(void);
 u16 GetLinkTrainerFlankId(u8 linkPlayerId);
