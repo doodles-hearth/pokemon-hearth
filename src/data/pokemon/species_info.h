@@ -2,7 +2,7 @@
 #include "constants/teaching_types.h"
 #include "species_info/shared_dex_text.h"
 #include "species_info/shared_front_pic_anims.h"
-#include "../pokemon_graphics/pokemon_spot_templates.h"
+#include "pokemon_spot_templates.h"
 
 // Macros for ease of use.
 
