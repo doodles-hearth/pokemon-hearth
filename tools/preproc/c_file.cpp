@@ -323,45 +323,34 @@ void CFile::TryConvertIncbin()
     {
         SkipWhitespace();
 
-        std::string path;
+        if (m_buffer[m_pos] != '"')
+            RaiseError("expected double quote");
 
-        // Concatenate space-separated string literals
-        while (true) {
+        m_pos++;
 
-            if (m_buffer[m_pos] != '"')
-                RaiseError("expected double quote");
-            m_pos++;
+        int startPos = m_pos;
 
-            int startPos = m_pos;
-
-            while (m_buffer[m_pos] != '"')
+        while (m_buffer[m_pos] != '"')
+        {
+            if (m_buffer[m_pos] == 0)
             {
-                if (m_buffer[m_pos] == 0)
-                {
-                    if (m_pos >= m_size)
-                        RaiseError("unexpected EOF in path string");
-                    else
-                        RaiseError("unexpected null character in path string");
-                }
-
-                if (m_buffer[m_pos] == '\r' || m_buffer[m_pos] == '\n')
-                    RaiseError("unexpected end of line character in path string");
-
-                if (m_buffer[m_pos] == '\\')
-                    RaiseError("unexpected escape in path string");
-
-                m_pos++;
+                if (m_pos >= m_size)
+                    RaiseError("unexpected EOF in path string");
+                else
+                    RaiseError("unexpected null character in path string");
             }
 
-            path.append(&m_buffer[startPos], m_pos - startPos);
+            if (m_buffer[m_pos] == '\r' || m_buffer[m_pos] == '\n')
+                RaiseError("unexpected end of line character in path string");
+
+            if (m_buffer[m_pos] == '\\')
+                RaiseError("unexpected escape in path string");
 
             m_pos++;
-            SkipWhitespace();
-
-            if (m_buffer[m_pos] != '"')
-                break;
-
         }
+
+        std::string path(&m_buffer[startPos], m_pos - startPos);
+
         // INCBIN_COMP; include *compressed* version of file
         if (incbinType == 7)
             path = path.append(".smol");
