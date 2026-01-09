@@ -13,8 +13,6 @@ static inline void TryDrawSpotPixel(u8* pixels, u8 pixelShift, u8 firstColor, u8
         *pixels += (spotColorAdjust << pixelShift);
 }
 
-static inline u32 GetColumnPixelShift(u32 column) { return (column & 1) ? 4 : 0; }
-
 bool32 ShouldDrawSpotsOnSpecies(u16 species)
 {
     if (gSpeciesInfo[SanitizeSpeciesId(species)].monSpotTemplate)
