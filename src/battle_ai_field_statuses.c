@@ -33,6 +33,7 @@ static bool32 HasLightSensitiveMove(u32 battler);
 // ShouldSetWeather and ShouldClearWeather are looking for a positive or negative result respectively, and check the entire side.
 // If one pokemon has a positive result and the other has a negative result, it defaults to the opinion of the battler that may change the weather or field status.
 static enum FieldEffectOutcome BenefitsFromSun(u32 battler);
+static enum FieldEffectOutcome BenefitsFromSmoke(u32 battler);
 static enum FieldEffectOutcome BenefitsFromSandstorm(u32 battler);
 static enum FieldEffectOutcome BenefitsFromHailOrSnow(u32 battler, u32 weather);
 static enum FieldEffectOutcome BenefitsFromRain(u32 battler);
@@ -81,6 +82,8 @@ bool32 WeatherChecker(u32 battler, u32 weather, enum FieldEffectOutcome desiredR
             result = BenefitsFromRain(battler);
         else if (weather & B_WEATHER_SUN)
             result = BenefitsFromSun(battler);
+        else if (weather & B_WEATHER_SMOKE)
+            result = BenefitsFromSmoke(battler);
         else if (weather & B_WEATHER_SANDSTORM)
             result = BenefitsFromSandstorm(battler);
         else if (weather & B_WEATHER_ICY_ANY)
@@ -251,6 +254,20 @@ static enum FieldEffectOutcome BenefitsFromSun(u32 battler)
     if (HasMoveWithFlag(battler, MoveHas50AccuracyInSun) || HasDamagingMoveOfType(battler, TYPE_WATER) || gAiLogicData->abilities[battler] == ABILITY_DRY_SKIN)
         return FIELD_EFFECT_NEGATIVE;
 
+    return FIELD_EFFECT_NEUTRAL;
+}
+
+static enum FieldEffectOutcome BenefitsFromSmoke(u32 battler)
+{
+    enum Ability ability = gAiLogicData->abilities[battler];
+
+    if (gAiLogicData->holdEffects[battler] == HOLD_EFFECT_UTILITY_UMBRELLA)
+        return FIELD_EFFECT_NEGATIVE;
+
+    if (DoesAbilityBenefitFromWeather(ability, B_WEATHER_SMOKE)
+    || HasDamagingMoveOfType(battler, TYPE_FIRE))
+        return FIELD_EFFECT_POSITIVE;
+    
     return FIELD_EFFECT_NEUTRAL;
 }
 

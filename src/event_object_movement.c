@@ -11712,11 +11712,11 @@ void GetNatsukiStarter(struct ScriptContext *ctx)
         case SPECIES_SNIVY:
             specGfx = SPECIES_CYNDAQUIL;
             break;
-        case SPECIES_FROAKIE:
+        case SPECIES_SQUIRTLE:
             specGfx = SPECIES_SNIVY;
             break;
         case SPECIES_CYNDAQUIL:
-            specGfx = SPECIES_FROAKIE;
+            specGfx = SPECIES_SQUIRTLE;
             break;
     }
 

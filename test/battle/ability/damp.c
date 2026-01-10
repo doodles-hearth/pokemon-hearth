@@ -19,6 +19,25 @@ SINGLE_BATTLE_TEST("Damp prevents Explosion-like moves from enemies")
     }
 }
 
+SINGLE_BATTLE_TEST("Damp prevents smoke explosion")
+{
+    GIVEN
+    {
+        PLAYER(SPECIES_VULPIX);
+        OPPONENT(SPECIES_POLIWAG) { Ability(ABILITY_DAMP); }
+    }
+    WHEN
+    {
+        TURN { MOVE(player, MOVE_SMOKE_BOMB); }
+        TURN { MOVE(player, MOVE_EMBER); }
+    }
+    SCENE
+    {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EMBER, player);
+        NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_EXPLOSION);
+    }
+}
+
 DOUBLE_BATTLE_TEST("Damp prevents Explosion-like moves from enemies in a double battle")
 {
     u32 move;

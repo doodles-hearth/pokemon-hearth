@@ -458,12 +458,14 @@ bool32 IsAffectedByPowderMove(u32 battler, u32 ability, enum HoldEffect holdEffe
 u32 GetNaturePowerMove(u32 battler);
 u32 GetNaturePowerMove(u32 battler);
 void RemoveAbilityFlags(u32 battler);
+bool32 ShouldSmokeExplode();
 void CheckSetUnburden(u32 battler);
 bool32 IsDazzlingAbility(enum Ability ability);
 bool32 IsAllowedToUseBag(void);
 bool32 IsAnyTargetTurnDamaged(u32 battlerAtk);
 bool32 IsAnyTargetAffected(void);
 bool32 IsMimikyuDisguised(u32 battler);
+s32 CalcSmokeExplosionDamage(u32 battler);
 void SetStartingStatus(enum StartingStatus status);
 void ResetStartingStatuses(void);
 bool32 IsUsableWhileAsleepEffect(enum BattleMoveEffects effect);
