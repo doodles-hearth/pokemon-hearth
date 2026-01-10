@@ -23,8 +23,8 @@ bool32 ShouldDrawSpotsOnSpecies(u16 species)
 
 static inline u32 GetSpotRow(const u32* image, u32 row, u32 size)
 {
-    u32 numRows = 32 >> __builtin_ctz(size);
-    u32 packedRow = row >> __builtin_ctz(numRows);
+    u32 numRows = 32 / size;
+    u32 packedRow = row / numRows;
     u32 idx = row & (numRows - 1);
 
     return (image[packedRow] >> (idx * size)) & ((size == 32) ? 0xFFFFFFFFu : ((1u << size) - 1));
