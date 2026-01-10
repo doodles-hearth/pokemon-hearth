@@ -18066,8 +18066,80 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .teachableLearnset = sGyaradosTeachableLearnset,
         .formSpeciesIdTable = sGyaradosFormSpeciesIdTable,
         .formChangeTable = sGyaradosFormChangeTable,
+    },
+
+#if P_TOKUAN_FORMS
+[SPECIES_GYARADOS_TOKUAN] =
+    {
+        .baseHP        = 95,
+        .baseAttack    = 125,
+        .baseDefense   = 79,
+        .baseSpeed     = 81,
+        .baseSpAttack  = P_UPDATED_STATS >= GEN_2 ? 60 : 100,
+        .baseSpDefense = 100,
+        .types = MON_TYPES(TYPE_WATER, TYPE_FLYING),
+        .catchRate = 45,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 189 : 214,
+        .evYield_Attack = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 5,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_2, EGG_GROUP_DRAGON),
+        .abilities = { ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_MOXIE },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Gyarados"),
+        .unknownName = _("Titan Shrimp"),
+        .cryId = CRY_GYARADOS,
+        .natDexNum = NATIONAL_DEX_GYARADOS,
+        .categoryName = _("Atrocious"),
+        .height = 65,
+        .weight = 2350,
+        .description = COMPOUND_STRING(
+            "It is an extremely vicious and violent\n"
+            "Pokémon. When humans begin to fight,\n"
+            "it will appear and burn everything to the\n"
+            "ground with intensely hot flames."),
+        .pokemonScale = 256,
+        .pokemonOffset = 6,
+        .trainerScale = 481,
+        .trainerOffset = 13,
+        .frontPic = gMonFrontPic_GyaradosTokuan,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 8),
+            ANIMCMD_FRAME(1, 32),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL,
+        .backPic = gMonBackPic_GyaradosTokuan,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 5,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        .palette = gMonPalette_GyaradosTokuan,
+        .shinyPalette = gMonShinyPalette_GyaradosTokuan,
+        .iconSprite = gMonIcon_GyaradosTokuan,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(5, 9, SHADOW_SIZE_XL_BATTLE_ONLY)
+        FOOTPRINT(Gyarados)
+        OVERWORLD(
+            sPicTable_GyaradosTokuan,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SLITHER,
+            sAnimTable_Following,
+            gMonPalette_GyaradosTokuan,
+            gMonShinyPalette_GyaradosTokuan
+        )
+        .levelUpLearnset = sGyaradosLevelUpLearnset,
+        .teachableLearnset = sGyaradosTeachableLearnset,
+        .formSpeciesIdTable = sGyaradosFormSpeciesIdTable,
+        .formChangeTable = sGyaradosFormChangeTable,
         .monSpotTemplate = &gGyaradosSpotTemplate,
     },
+#endif // P_TOKUAN_FORMS
 
 #if P_MEGA_EVOLUTIONS
     [SPECIES_GYARADOS_MEGA] =

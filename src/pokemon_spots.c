@@ -35,7 +35,8 @@ void DrawPokemonSpots(u32 personality, const struct MonSpotTemplate* spotTemplat
 {
     u8 size = 16 * spotTemplate->scale;  // We only expect square spots
     u32 i;
-    for (i = 0; i < spotTemplate->count; i++) {
+    for (i = 0; i < spotTemplate->count; i++)
+    {
         const struct MonSpot* spot = &spotTemplate->spots[i];
         u16 x = spot->x + (personality & 0x0F) * spotTemplate->scale;
         u8 y = spot->y + ((personality & 0xF0) >> 4) * spotTemplate->scale;

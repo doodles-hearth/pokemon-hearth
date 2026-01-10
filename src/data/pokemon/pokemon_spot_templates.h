@@ -35,10 +35,10 @@ const struct MonSpotTemplate gSpindaSpotTemplate = {
 
 //SPECIES_GYARADOS
 static const u32 sGyaradosSpotImages[4][32] = {
-    INCBIN_U32("graphics/pokemon/gyarados/spots/spot_0.1bpp"),
-    INCBIN_U32("graphics/pokemon/gyarados/spots/spot_1.1bpp"),
-    INCBIN_U32("graphics/pokemon/gyarados/spots/spot_2.1bpp"),
-    INCBIN_U32("graphics/pokemon/gyarados/spots/spot_3.1bpp"),
+    INCBIN_U32("graphics/pokemon/gyarados/tokuan/spots/spot_0.1bpp"),
+    INCBIN_U32("graphics/pokemon/gyarados/tokuan/spots/spot_1.1bpp"),
+    INCBIN_U32("graphics/pokemon/gyarados/tokuan/spots/spot_2.1bpp"),
+    INCBIN_U32("graphics/pokemon/gyarados/tokuan/spots/spot_3.1bpp"),
 };
 static const struct MonSpot sGyaradosSpots[] = {
     MON_SPOT(Gyarados, 0, 16, 32)
@@ -52,9 +52,9 @@ const struct MonSpotTemplate gGyaradosSpotTemplate = {
     .scale = 2,
     .xOffsetFrame2 = 4,
     .yOffsetFrame2 = 8,
-    .firstColor = 8,
-    .lastColor = 9,
-    .colorAdjust = 2,
+    .firstColor = 1,
+    .lastColor = 4,
+    .colorAdjust = 4,
 };
 
 #endif /* end of include guard: GUARD_POKEMON_SPOT_TEMPLATES_H */

@@ -3802,7 +3802,7 @@ static void DebugAction_PCBag_Fill_PCBoxes_Slow(u8 taskId)
 {
     int boxId, boxPosition;
     struct BoxPokemon boxMon;
-    u32 species = SPECIES_BULBASAUR;
+    u32 species = SPECIES_GYARADOS_TOKUAN;
     bool8 spaceAvailable = FALSE;
 
     for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
@@ -3815,7 +3815,11 @@ static void DebugAction_PCBag_Fill_PCBoxes_Slow(u8 taskId)
                     PlayBGM(MUS_RG_MYSTERY_GIFT);
                 CreateBoxMon(&boxMon, species, 100, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
                 gPokemonStoragePtr->boxes[boxId][boxPosition] = boxMon;
-                species = (species < NUM_SPECIES - 1) ? species + 1 : 1;
+                // species = (species < NUM_SPECIES - 1) ? species + 1 : 1;
+                if(species == SPECIES_GYARADOS_TOKUAN)
+                    species = SPECIES_SPINDA;
+                else
+                    species = SPECIES_GYARADOS_TOKUAN;
                 spaceAvailable = TRUE;
             }
         }
