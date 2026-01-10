@@ -10,7 +10,7 @@
 /* Define Spots Below */
 
 // SPECIES_SPINDA
-static const SpotRow16 sSpindaSpotImages[4] = {
+static const u32 sSpindaSpotImages[4][8] = {
     INCBIN_U32("graphics/pokemon/spinda/spots/spot_0.1bpp"),
     INCBIN_U32("graphics/pokemon/spinda/spots/spot_1.1bpp"),
     INCBIN_U32("graphics/pokemon/spinda/spots/spot_2.1bpp"),
@@ -34,7 +34,7 @@ const struct MonSpotTemplate gSpindaSpotTemplate = {
 };
 
 //SPECIES_GYARADOS
-static const SpotRow32 sGyaradosSpotImages[4] = {
+static const u32 sGyaradosSpotImages[4][32] = {
     INCBIN_U32("graphics/pokemon/gyarados/spots/spot_0.1bpp"),
     INCBIN_U32("graphics/pokemon/gyarados/spots/spot_1.1bpp"),
     INCBIN_U32("graphics/pokemon/gyarados/spots/spot_2.1bpp"),

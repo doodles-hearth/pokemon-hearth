@@ -1,9 +1,6 @@
 #ifndef GUARD_POKEMON_SPOTS_H
 #define GUARD_POKEMON_SPOTS_H
 
-typedef u32 SpotRow32[32];
-typedef u32 SpotRow16[16];
-
 enum SpotAnimFrame {
     FRAME_1,
     FRAME_2
