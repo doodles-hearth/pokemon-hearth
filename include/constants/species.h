@@ -1681,8 +1681,10 @@
 #define SPECIES_TOXIKYU_AMPED                           1561
 #define SPECIES_VENONAT_TOKUAN                          1562
 #define SPECIES_VENOMOTH_TOKUAN                         1563
+#define SPECIES_MAGIKARP_TOKUAN                         1564
+#define SPECIES_GYARADOS_TOKUAN                         1565
 
-#define SPECIES_EGG (SPECIES_VENOMOTH_TOKUAN + 1)
+#define SPECIES_EGG (SPECIES_GYARADOS_TOKUAN + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

@@ -21,7 +21,7 @@ POKEDEXGFXDIR := graphics/pokedex
 STARTERGFXDIR := graphics/starter_choose
 NAMINGGFXDIR := graphics/naming_screen
 SPINDAGFXDIR := graphics/pokemon/spinda/spots
-GYARADOSGFXDIR := graphics/pokemon/gyarados/spots
+GYARADOSGFXDIR := graphics/pokemon/gyarados/tokuan/spots
 TITLESCREENGFXDIR := graphics/title_screen
 
 types := none normal fight flying poison ground rock bug ghost steel mystery fire water grass electric psychic ice dragon dark fairy stellar
@@ -682,4 +682,7 @@ $(GYARADOSGFXDIR)/spot_1.1bpp: %.1bpp: %.png
 	$(GFX) $< $@ -plain -data_width 4
 
 $(GYARADOSGFXDIR)/spot_2.1bpp: %.1bpp: %.png
+	$(GFX) $< $@ -plain -data_width 4
+
+$(GYARADOSGFXDIR)/spot_3.1bpp: %.1bpp: %.png
 	$(GFX) $< $@ -plain -data_width 4

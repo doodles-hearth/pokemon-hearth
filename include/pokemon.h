@@ -18,6 +18,7 @@
 #include "contest_effect.h"
 #include "constants/trainers.h"
 
+
 #define GET_BASE_SPECIES_ID(speciesId) (GetFormSpeciesId(speciesId, 0))
 #define FORM_SPECIES_END (0xffff)
 
@@ -482,6 +483,7 @@ struct SpeciesInfo /*0xC4*/
     const struct Evolution *evolutions;
     const u16 *formSpeciesIdTable;
     const struct FormChange *formChangeTable;
+    const struct MonSpotTemplate *monSpotTemplate;
 #if OW_POKEMON_OBJECT_EVENTS
     struct ObjectEventGraphicsInfo overworldData;
 #if P_GENDER_DIFFERENCES
@@ -581,24 +583,6 @@ struct NatureInfo
     u8 battlePalaceFlavorText;
     u8 battlePalaceSmokescreen;
     const u8 *natureGirlMessage;
-};
-
-#define SPINDA_SPOT_WIDTH 16
-#define SPINDA_SPOT_HEIGHT 16
-
-struct SpindaSpot
-{
-    u8 x, y;
-    u16 image[SPINDA_SPOT_HEIGHT];
-};
-
-#define GYARADOS_SPOT_WIDTH 32
-#define GYARADOS_SPOT_HEIGHT 32
-
-struct GyaradosSpot
-{
-    u8 x, y;
-    u32 image[GYARADOS_SPOT_HEIGHT];
 };
 
 struct LevelUpMove
@@ -799,8 +783,6 @@ enum HoennDexOrder NationalToHoennOrder(enum NationalDexOrder nationalNum);
 enum NationalDexOrder SpeciesToNationalPokedexNum(u16 species);
 enum HoennDexOrder SpeciesToHoennPokedexNum(u16 species);
 enum NationalDexOrder HoennToNationalOrder(enum HoennDexOrder hoennNum);
-void DrawSpindaSpots(u32 personality, u8 *dest, bool32 isSecondFrame);
-void DrawKoiGyaradosSpots(u32 personality, u8 *dest, bool32 isSecondFrame);
 void EvolutionRenameMon(struct Pokemon *mon, u16 oldSpecies, u16 newSpecies);
 u8 GetPlayerFlankId(void);
 u16 GetLinkTrainerFlankId(u8 linkPlayerId);

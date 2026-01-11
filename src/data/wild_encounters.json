@@ -14063,7 +14063,7 @@
               {
                 "min_level": 25,
                 "max_level": 35,
-                "species": "SPECIES_GYARADOS"
+                "species": "SPECIES_GYARADOS_TOKUAN"
               },
               {
                 "min_level": 25,
@@ -14583,12 +14583,12 @@
               {
                 "min_level": 30,
                 "max_level": 35,
-                "species": "SPECIES_GYARADOS"
+                "species": "SPECIES_GYARADOS_TOKUAN"
               },
               {
                 "min_level": 25,
                 "max_level": 35,
-                "species": "SPECIES_GYARADOS"
+                "species": "SPECIES_GYARADOS_TOKUAN"
               },
               {
                 "min_level": 5,
@@ -14737,12 +14737,12 @@
               {
                 "min_level": 30,
                 "max_level": 35,
-                "species": "SPECIES_GYARADOS"
+                "species": "SPECIES_GYARADOS_TOKUAN"
               },
               {
                 "min_level": 25,
                 "max_level": 35,
-                "species": "SPECIES_GYARADOS"
+                "species": "SPECIES_GYARADOS_TOKUAN"
               },
               {
                 "min_level": 5,

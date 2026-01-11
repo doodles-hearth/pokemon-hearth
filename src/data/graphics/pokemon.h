@@ -5479,6 +5479,13 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gMonBackPic_Magikarp[] = INCBIN_U32("graphics/pokemon/magikarp/back_gba.4bpp.smol");
     const u16 gMonShinyPalette_Magikarp[] = INCBIN_U16("graphics/pokemon/magikarp/shiny_gba.gbapal");
 #endif //P_GBA_STYLE_SPECIES_GFX
+#if P_TOKUAN_FORMS
+    const u32 gMonFrontPic_MagikarpTokuan[] = INCBIN_U32("graphics/pokemon/magikarp/tokuan/anim_front.4bpp.smol");
+    const u16 gMonPalette_MagikarpTokuan[] = INCBIN_U16("graphics/pokemon/magikarp/tokuan/anim_front.gbapal");
+    const u32 gMonBackPic_MagikarpTokuan[] = INCBIN_U32("graphics/pokemon/magikarp/tokuan/back.4bpp.smol");
+    const u16 gMonShinyPalette_MagikarpTokuan[] = INCBIN_U16("graphics/pokemon/magikarp/tokuan/anim_front.gbapal");
+    const u8 gMonIcon_MagikarpTokuan[] = INCBIN_U8("graphics/pokemon/magikarp/tokuan/icon.4bpp");
+#endif // P_TOKUAN_FORMS
 #if !P_GBA_STYLE_SPECIES_ICONS
     const u8 gMonIcon_Magikarp[] = INCBIN_U8("graphics/pokemon/magikarp/icon.4bpp");
 #else
@@ -5500,6 +5507,9 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gMonBackPic_MagikarpF[] = INCBIN_U32("graphics/pokemon/magikarp/backf.4bpp.smol");
 #if OW_POKEMON_OBJECT_EVENTS
     const u32 gObjectEventPic_MagikarpF[] = INCBIN_COMP("graphics/pokemon/magikarp/overworldf.4bpp");
+#if P_TOKUAN_FORMS
+    const u32 gObjectEventPic_MagikarpTokuan[] = INCBIN_COMP("graphics/pokemon/magikarp/tokuan/overworld.4bpp");
+#endif // P_TOKUAN_FORMS
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_GENDER_DIFFERENCES
 
@@ -5514,6 +5524,13 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gMonBackPic_Gyarados[] = INCBIN_U32("graphics/pokemon/gyarados/back_gba.4bpp.smol");
     const u16 gMonShinyPalette_Gyarados[] = INCBIN_U16("graphics/pokemon/gyarados/shiny_gba.gbapal");
 #endif //P_GBA_STYLE_SPECIES_GFX
+#if P_TOKUAN_FORMS
+    const u32 gMonFrontPic_GyaradosTokuan[] = INCBIN_U32("graphics/pokemon/gyarados/tokuan/anim_front.4bpp.smol");
+    const u16 gMonPalette_GyaradosTokuan[] = INCBIN_U16("graphics/pokemon/gyarados/tokuan/anim_front.gbapal");
+    const u32 gMonBackPic_GyaradosTokuan[] = INCBIN_U32("graphics/pokemon/gyarados/tokuan/back.4bpp.smol");
+    const u16 gMonShinyPalette_GyaradosTokuan[] = INCBIN_U16("graphics/pokemon/gyarados/tokuan/anim_front.gbapal");
+    const u8 gMonIcon_GyaradosTokuan[] = INCBIN_U8("graphics/pokemon/gyarados/tokuan/icon.4bpp");
+#endif // P_TOKUAN_FORMS
 #if !P_GBA_STYLE_SPECIES_ICONS
     const u8 gMonIcon_Gyarados[] = INCBIN_U8("graphics/pokemon/gyarados/icon.4bpp");
 #else
@@ -5524,6 +5541,9 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
 #endif //P_FOOTPRINTS
 #if OW_POKEMON_OBJECT_EVENTS
     const u32 gObjectEventPic_Gyarados[] = INCBIN_COMP("graphics/pokemon/gyarados/overworld.4bpp");
+#if P_TOKUAN_FORMS
+    const u32 gObjectEventPic_GyaradosTokuan[] = INCBIN_COMP("graphics/pokemon/gyarados/tokuan/overworld.4bpp");
+#endif // P_TOKUAN_FORMS
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
     const u16 gOverworldPalette_Gyarados[] = INCBIN_U16("graphics/pokemon/gyarados/overworld_normal.gbapal");
     const u16 gShinyOverworldPalette_Gyarados[] = INCBIN_U16("graphics/pokemon/gyarados/overworld_shiny.gbapal");
