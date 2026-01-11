@@ -3184,3 +3184,39 @@
 	callnative ScrCmd_setstartingstatus
 	.byte \status
 	.endm
+
+	@ Gets the \memorySlot for the Pokémon at \slot
+	@ If \memorySlot is not provided, gets the newest memory
+	.macro getmemory slot:req, memorySlot=0
+	callnative GetMemory
+	.2byte \slot
+	.byte \memorySlot
+	.endm
+
+	@ Buffers the message for the memory in \memorySlot for the Pokémon at \slot
+	@ Message is buffered into gStringVar4 due to limitations with other strings
+	.macro buffermemorymessage slot:req, memorySlot=0
+	callnative BufferMemoryMessage
+	.2byte \slot
+	.byte \memorySlot
+	.endm
+
+	@ Sets the \memory for the Pokémon at \slot
+	.macro setmemory memory:req, partySlot:req
+	callnative SetMemory
+	.byte \memory
+	.2byte \partySlot
+	.endm
+
+	@ Sets the \memory for all Pokémon
+	.macro setmemoryall memory:req
+	callnative SetMemoryAll
+	.byte \memory
+	.endm
+
+	@ Buffers the OT name for the Pokémon at \slot
+	.macro bufferoriginaltrainername stringVarId:req, partySlot:req
+	callnative BufferOriginalTrainerName
+	stringvar \stringVarId
+	.2byte \partySlot
+	.endm

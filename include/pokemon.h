@@ -116,8 +116,8 @@ enum MonData {
     MON_DATA_ARTIST_RIBBON,
     MON_DATA_EFFORT_RIBBON,
     MON_DATA_MARINE_RIBBON,
-    MON_DATA_LAND_RIBBON,
-    MON_DATA_SKY_RIBBON,
+    MON_DATA_TRAVELLER_RIBBON,
+    MON_DATA_HISTORIC_RIBBON,
     MON_DATA_COUNTRY_RIBBON,
     MON_DATA_NATIONAL_RIBBON,
     MON_DATA_EARTH_RIBBON,
@@ -138,6 +138,8 @@ enum MonData {
     MON_DATA_TERA_TYPE,
     MON_DATA_EVOLUTION_TRACKER,
     MON_DATA_COLORATION,
+    MON_DATA_MEMORY_OLD,
+    MON_DATA_MEMORY_NEW,
 };
 
 enum SpeciesNameCheck
@@ -204,7 +206,7 @@ struct BoxPokemon
     u16 hyperTrainedHP:1;
     u16 hyperTrainedAttack:1;
     u16 metLevel:7;
-    u16 skyRibbon:1;      // Never distributed.
+    u16 historicRibbon:1;      // Never distributed.
     //  Word
 
     //  Word
@@ -218,7 +220,7 @@ struct BoxPokemon
     u8 artistRibbon:1;   // Given at the Contest Hall by winning a Master Rank contest with at least 800 points, and agreeing to have the Pokémon's portrait placed in the museum after being offered.
     u8 effortRibbon:1;   // Given at Slateport's market to Pokémon with maximum EVs.
     u8 marineRibbon:1;   // Never distributed.
-    u8 landRibbon:1;     // Never distributed.
+    u8 travellerRibbon:1;     // Never distributed.
     //  Word
     u8 pp1:7; // 127 PP.
     u8 hyperTrainedDefense:1;
@@ -247,8 +249,9 @@ struct BoxPokemon
     u32 dynamaxLevel:4;
     u32 gigantamaxFactor:1;
     u32 coloration:7;
-
-    u32 unused1:11;
+    u32 memoryOld:5;
+    u32 memoryNew:5;
+    u32 unused1:1;
     //  Word
     u32 unused2;
     //  Word

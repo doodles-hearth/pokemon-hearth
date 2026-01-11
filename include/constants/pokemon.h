@@ -127,8 +127,8 @@ enum __attribute__((packed)) Stat
 #define ARTIST_RIBBON        23
 #define EFFORT_RIBBON        24
 #define MARINE_RIBBON        25
-#define LAND_RIBBON          26
-#define SKY_RIBBON           27
+#define TRAVELLER_RIBBON     26
+#define HISTORIC_RIBBON      27
 #define COUNTRY_RIBBON       28
 #define NATIONAL_RIBBON      29
 #define EARTH_RIBBON         30

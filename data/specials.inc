@@ -590,3 +590,5 @@ gSpecials::
 	def_special ObjectEventInteractionGetApricornTreeData
 	def_special ObjectEventInteractionPickApricornTree
 	def_special InitEggGirlStepCounterFromSelectedPartyEgg
+	def_special GiveMonTravellerRibbon
+	def_special GiveMonHistoricRibbon
