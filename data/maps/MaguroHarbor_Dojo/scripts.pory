@@ -237,3 +237,15 @@ script MaguroHarbor_Dojo_EventScript_DojoStatue {
 	}
 	releaseall
 }
+
+script MaguroHarbor_Dojo_EventScript_Magikarp {
+	lock
+	setseenmon(SPECIES_MAGIKARP_TOKUAN)
+	setspeakertomonname(SPECIES_MAGIKARP_TOKUAN)
+	playmoncry(SPECIES_MAGIKARP_TOKUAN, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Buhhh…"
+    ))
+    waitmoncry
+    release
+}

@@ -665,5 +665,6 @@ const u32 gObjectEventPic_Campfire[] = INCBIN_U32("graphics/object_events/pics/m
 const u16 gObjectEventPal_Campfire[] = INCBIN_U16("graphics/object_events/pics/misc/campfire.gbapal");
 
 const u32 gObjectEventPic_WingullGrounded[] = INCBIN_U32("graphics/object_events/pics/pokemon_special/wingull.4bpp");
+const u32 gObjectEventPic_MagikarpSwimming[] = INCBIN_U32("graphics/object_events/pics/pokemon_special/magikarp.4bpp");
 
 const u32 gObjectEventPic_ApricornTree[] = INCBIN_U32("graphics/object_events/pics/misc/apricorn_tree.4bpp");
