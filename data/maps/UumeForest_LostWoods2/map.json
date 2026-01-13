@@ -1,0 +1,205 @@
+{
+  "id": "MAP_UUME_FOREST_LOST_WOODS2",
+  "name": "UumeForest_LostWoods2",
+  "layout": "LAYOUT_UUME_FOREST_LOST_WOODS2",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_UUME_FOREST",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 7,
+      "y": 99,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST_LOST_WOODS2",
+      "dest_warp_id": "WARP_ID_UUME_J_LEFT_TOP"
+    },
+    {
+      "x": 7,
+      "y": 98,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST_LOST_WOODS2",
+      "dest_warp_id": "WARP_ID_UUME_J_LEFT_TOP"
+    },
+    {
+      "warp_id": "WARP_ID_UUME_K_TOP_LEFT",
+      "x": 13,
+      "y": 93,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_B_RIGHT_TOP"
+    },
+    {
+      "warp_id": "WARP_ID_UUME_K_TOP_MIDDLE",
+      "x": 14,
+      "y": 93,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_B_RIGHT_TOP"
+    },
+    {
+      "warp_id": "WARP_ID_UUME_K_TOP_RIGHT",
+      "x": 15,
+      "y": 93,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_B_RIGHT_TOP"
+    },
+    {
+      "x": 13,
+      "y": 104,
+      "elevation": 0,
+      "dest_map": "MAP_ORCHARD_PATH",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_LEFT"
+    },
+    {
+      "x": 14,
+      "y": 104,
+      "elevation": 0,
+      "dest_map": "MAP_ORCHARD_PATH",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_MIDDLE"
+    },
+    {
+      "x": 15,
+      "y": 104,
+      "elevation": 0,
+      "dest_map": "MAP_ORCHARD_PATH",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_RIGHT"
+    },
+    {
+      "warp_id": "WARP_ID_UUME_J_LEFT_TOP",
+      "x": 51,
+      "y": 98,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_A_RIGHT_TOP"
+    },
+    {
+      "x": 51,
+      "y": 99,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_A_RIGHT_TOP"
+    },
+    {
+      "x": 43,
+      "y": 93,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_TOP_MIDDLE"
+    },
+    {
+      "warp_id": "WARP_ID_UUME_J_TOP_MIDDLE",
+      "x": 44,
+      "y": 93,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_TOP_MIDDLE"
+    },
+    {
+      "x": 45,
+      "y": 93,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_TOP_MIDDLE"
+    },
+    {
+      "x": 37,
+      "y": 98,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_L_LEFT_TOP"
+    },
+    {
+      "x": 37,
+      "y": 99,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_L_LEFT_TOP"
+    },
+    {
+      "warp_id": "WARP_ID_UUME_L_LEFT_TOP",
+      "x": 7,
+      "y": 76,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_RIGHT"
+    },
+    {
+      "x": 7,
+      "y": 77,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_RIGHT"
+    },
+    {
+      "warp_id": "WARP_ID_UUME_M_RIGHT_TOP",
+      "x": 51,
+      "y": 76,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_TOP_MIDDLE"
+    },
+    {
+      "x": 51,
+      "y": 77,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_TOP_MIDDLE"
+    },
+    {
+      "warp_id": "WARP_ID_UUME_N_TOP_MIDDLE",
+      "x": 14,
+      "y": 49,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_TOP_MIDDLE"
+    },
+    {
+      "x": 13,
+      "y": 49,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_TOP_MIDDLE"
+    },
+    {
+      "x": 15,
+      "y": 49,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_TOP_MIDDLE"
+    },
+    {
+      "warp_id": "WARP_ID_UUME_O_TOP_MIDDLE",
+      "x": 44,
+      "y": 49,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_TOP_MIDDLE"
+    },
+    {
+      "x": 43,
+      "y": 49,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_TOP_MIDDLE"
+    },
+    {
+      "x": 45,
+      "y": 49,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_TOP_MIDDLE"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

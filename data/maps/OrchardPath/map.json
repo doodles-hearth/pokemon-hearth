@@ -347,25 +347,28 @@
   ],
   "warp_events": [
     {
+      "warp_id": "WARP_ID_UUME_ENTRANCE_LEFT",
       "x": 58,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
-      "dest_warp_id": "0"
+      "dest_warp_id": "WARP_ID_UUME_EXIT_MIDDLE"
     },
     {
+      "warp_id": "WARP_ID_UUME_ENTRANCE_MIDDLE",
       "x": 59,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
-      "dest_warp_id": "1"
+      "dest_warp_id": "WARP_ID_UUME_EXIT_MIDDLE"
     },
     {
+      "warp_id": "WARP_ID_UUME_ENTRANCE_RIGHT",
       "x": 60,
       "y": 5,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
-      "dest_warp_id": "1"
+      "dest_warp_id": "WARP_ID_UUME_EXIT_MIDDLE"
     },
     {
       "x": 82,

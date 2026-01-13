@@ -1469,3 +1469,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/WhiteslateRoute_SecretCave/scripts.scr"
 
 	.include "data/maps/ScenicRoute_Daycare/scripts.scr"
+
+	.include "data/maps/UumeForest_LostWoods2/scripts.scr"

@@ -6017,7 +6017,7 @@
       "id": "LAYOUT_UUME_FOREST",
       "name": "UumeForest_Layout",
       "width": 59,
-      "height": 88,
+      "height": 110,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
@@ -6684,6 +6684,18 @@
       "secondary_tileset": "gTileset_Daycare",
       "border_filepath": "data/layouts/ScenicRoute_Daycare/border.bin",
       "blockdata_filepath": "data/layouts/ScenicRoute_Daycare/map.bin"
+    },
+    {
+      "id": "LAYOUT_UUME_FOREST_LOST_WOODS2",
+      "name": "UumeForest_LostWoods2_Layout",
+      "width": 59,
+      "height": 110,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_UumeForest",
+      "border_filepath": "data/layouts/UumeForest_LostWoods2/border.bin",
+      "blockdata_filepath": "data/layouts/UumeForest_LostWoods2/map.bin"
     }
   ]
 }
