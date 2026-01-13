@@ -2122,3 +2122,7 @@ const u16 gItemIconPalette_SlowpokeTail[] = INCBIN_U16("graphics/items/icons/slo
 
 const u32 gItemIcon_SpecialMedicine[] = INCBIN_U32("graphics/items/icons/special_medicine.4bpp.smol");
 const u16 gItemIconPalette_SpecialMedicine[] = INCBIN_U16("graphics/items/icons/special_medicine.gbapal");
+
+const u32 gItemIcon_RaikouBalm[] = INCBIN_U32("graphics/items/icons/raikou_balm.4bpp.smol");
+const u16 gItemIconPalette_RaikouBalm[] = INCBIN_U16("graphics/items/icons/raikou_balm.gbapal");
+

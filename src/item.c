@@ -921,6 +921,8 @@ u8 GetItemBattleUsage(u16 itemId)
                 return EFFECT_ITEM_CURE_STATUS;
             case ITEM_EFFECT_HEAL_PP:
                 return EFFECT_ITEM_RESTORE_PP;
+            case ITEM_EFFECT_RAIKOU_BALM:
+                return EFFECT_ITEM_RAIKOU_BALM;
             default:
                 return 0;
         }
