@@ -1,3 +1,4 @@
+#include "constants/items.h"
 #if I_USE_EVO_HELD_ITEMS_FROM_BAG == TRUE
     #define EVO_HELD_ITEM_TYPE ITEM_USE_PARTY_MENU
     #define EVO_HELD_ITEM_FIELD_FUNC ItemUseOutOfBattle_EvolutionStone
@@ -15718,6 +15719,26 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
         .iconPic = gItemIcon_SpecialMedicine,
         .iconPalette = gItemIconPalette_SpecialMedicine,
+    },
+
+    [ITEM_RAIKOU_BALM] =
+    {
+        .name = ITEM_NAME("Raikou Balm"),
+        .price = 3000,
+        .holdEffectParam = 1,
+        .description = COMPOUND_STRING(
+                "Its scent jolts\n"
+                "a Pokémon awake,\n"
+                "and boosts Atk."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_STATUS_RECOVERY,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = EFFECT_ITEM_RAIKOU_BALM,
+        .effect = gItemEffect_RaikouBalm,
+        .flingPower = 30,
+        .iconPic = gItemIcon_BattleStatItem,
+        .iconPalette = gItemIconPalette_XAttack,
     },
 };
 

@@ -12587,7 +12587,8 @@ void BS_ItemIncreaseStat(void)
 {
     NATIVE_ARGS();
 
-    if (GetItemBattleUsage(gLastUsedItem) == EFFECT_ITEM_INCREASE_STAT)
+    if (GetItemBattleUsage(gLastUsedItem) == EFFECT_ITEM_INCREASE_STAT ||
+        GetItemBattleUsage(gLastUsedItem) == EFFECT_ITEM_RAIKOU_BALM)
     {
         u16 statId = GetItemEffect(gLastUsedItem)[1];
         u16 stages = GetItemHoldEffectParam(gLastUsedItem);

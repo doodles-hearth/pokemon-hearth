@@ -14,18 +14,19 @@
 
 	.align 2
 gBattlescriptsForUsingItem::
-	.4byte BattleScript_ItemRestoreHP                @ EFFECT_ITEM_RESTORE_HP
-	.4byte BattleScript_ItemCureStatus               @ EFFECT_ITEM_CURE_STATUS
-	.4byte BattleScript_ItemHealAndCureStatus        @ EFFECT_ITEM_HEAL_AND_CURE_STATUS
-	.4byte BattleScript_ItemIncreaseStat             @ EFFECT_ITEM_INCREASE_STAT
-	.4byte BattleScript_ItemSetMist                  @ EFFECT_ITEM_SET_MIST
-	.4byte BattleScript_ItemSetFocusEnergy           @ EFFECT_ITEM_SET_FOCUS_ENERGY
-	.4byte BattleScript_RunByUsingItem               @ EFFECT_ITEM_ESCAPE
-	.4byte BattleScript_BallThrow                    @ EFFECT_ITEM_THROW_BALL
-	.4byte BattleScript_ItemRestoreHP                @ EFFECT_ITEM_REVIVE
-	.4byte BattleScript_ItemRestorePP                @ EFFECT_ITEM_RESTORE_PP
-	.4byte BattleScript_ItemIncreaseAllStats         @ EFFECT_ITEM_INCREASE_ALL_STATS
-	.4byte BattleScript_UsePokeFlute                 @ EFFECT_ITEM_USE_POKE_FLUTE
+	.4byte BattleScript_ItemRestoreHP                    @ EFFECT_ITEM_RESTORE_HP
+	.4byte BattleScript_ItemCureStatus                   @ EFFECT_ITEM_CURE_STATUS
+	.4byte BattleScript_ItemHealAndCureStatus            @ EFFECT_ITEM_HEAL_AND_CURE_STATUS
+	.4byte BattleScript_ItemIncreaseStat                 @ EFFECT_ITEM_INCREASE_STAT
+	.4byte BattleScript_ItemSetMist                      @ EFFECT_ITEM_SET_MIST
+	.4byte BattleScript_ItemSetFocusEnergy               @ EFFECT_ITEM_SET_FOCUS_ENERGY
+	.4byte BattleScript_RunByUsingItem                   @ EFFECT_ITEM_ESCAPE
+	.4byte BattleScript_BallThrow                        @ EFFECT_ITEM_THROW_BALL
+	.4byte BattleScript_ItemRestoreHP                    @ EFFECT_ITEM_REVIVE
+	.4byte BattleScript_ItemRestorePP                    @ EFFECT_ITEM_RESTORE_PP
+	.4byte BattleScript_ItemIncreaseAllStats             @ EFFECT_ITEM_INCREASE_ALL_STATS
+	.4byte BattleScript_UsePokeFlute                     @ EFFECT_ITEM_USE_POKE_FLUTE
+	.4byte BattleScript_ItemRaikouBalm                   @ EFFECT_ITEM_RAIKOU_BALM
 
 	.align 2
 gBattlescriptsForSafariActions::
@@ -115,6 +116,24 @@ BattleScript_ItemIncreaseStat::
 	itemincreasestat
 	statbuffchange BS_ATTACKER, STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_ItemEnd
 	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+	end
+
+BattleScript_ItemRaikouBalm::
+	call BattleScript_UseItemMessage
+BattleScript_ItemRaikouBalmCureStatusAfterMsg:
+	itemincreasestat
+	statbuffchange BS_ATTACKER, STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_ItemEnd
+	printfromtable gStatUpStringIds
+	itemcurestatus BattleScript_RaikouBalmEnd, BattleScript_ItemRaikouBalm_Battler
+	printstring STRINGID_PKMNWOKEUP
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_RaikouBalmEnd:
+	end
+
+BattleScript_ItemRaikouBalm_Battler::
+	updatestatusicon BS_SCRIPTING
+	printstring STRINGID_PKMNWOKEUP
 	waitmessage B_WAIT_TIME_LONG
 	end
 
