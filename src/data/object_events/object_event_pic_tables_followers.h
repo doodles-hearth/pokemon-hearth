@@ -1201,6 +1201,14 @@ static const struct SpriteFrameImage sPicTable_GyaradosF[] = {
     overworld_ascending_frames(gObjectEventPic_GyaradosF, 4, 4),
 };
 #endif //P_GENDER_DIFFERENCES
+#if P_TOKUAN_FORMS
+static const struct SpriteFrameImage sPicTable_MagikarpTokuan[] = {
+    overworld_ascending_frames(gObjectEventPic_MagikarpTokuan, 4, 4),
+};
+static const struct SpriteFrameImage sPicTable_GyaradosTokuan[] = {
+    overworld_ascending_frames(gObjectEventPic_GyaradosTokuan, 4, 4),
+};
+#endif // P_TOKUAN_FORMS
 #if OW_BATTLE_ONLY_FORMS
 #if P_MEGA_EVOLUTIONS
 static const struct SpriteFrameImage sPicTable_GyaradosMega[] = {

@@ -18068,6 +18068,156 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .formChangeTable = sGyaradosFormChangeTable,
     },
 
+#if P_TOKUAN_FORMS
+[SPECIES_GYARADOS_TOKUAN] =
+    {
+        .baseHP        = 95,
+        .baseAttack    = 125,
+        .baseDefense   = 79,
+        .baseSpeed     = 81,
+        .baseSpAttack  = P_UPDATED_STATS >= GEN_2 ? 60 : 100,
+        .baseSpDefense = 100,
+        .types = MON_TYPES(TYPE_WATER, TYPE_FLYING),
+        .catchRate = 45,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 189 : 214,
+        .evYield_Attack = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 5,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_2, EGG_GROUP_DRAGON),
+        .abilities = { ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_MOXIE },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Gyarados"),
+        .unknownName = _("Titan Shrimp"),
+        .cryId = CRY_GYARADOS,
+        .natDexNum = NATIONAL_DEX_GYARADOS,
+        .categoryName = _("Atrocious"),
+        .height = 65,
+        .weight = 2350,
+        .description = COMPOUND_STRING(
+            "It is an extremely vicious and violent\n"
+            "Pokémon. When humans begin to fight,\n"
+            "it will appear and burn everything to the\n"
+            "ground with intensely hot flames."),
+        .pokemonScale = 256,
+        .pokemonOffset = 6,
+        .trainerScale = 481,
+        .trainerOffset = 13,
+        .frontPic = gMonFrontPic_GyaradosTokuan,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 8),
+            ANIMCMD_FRAME(1, 32),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES_SMALL,
+        .backPic = gMonBackPic_GyaradosTokuan,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 5,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        .palette = gMonPalette_GyaradosTokuan,
+        .shinyPalette = gMonShinyPalette_GyaradosTokuan,
+        .iconSprite = gMonIcon_GyaradosTokuan,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(5, 9, SHADOW_SIZE_XL_BATTLE_ONLY)
+        FOOTPRINT(Gyarados)
+        OVERWORLD(
+            sPicTable_GyaradosTokuan,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SLITHER,
+            sAnimTable_Following,
+            gMonPalette_GyaradosTokuan,
+            gMonShinyPalette_GyaradosTokuan
+        )
+        .levelUpLearnset = sGyaradosLevelUpLearnset,
+        .teachableLearnset = sGyaradosTeachableLearnset,
+        .formSpeciesIdTable = sGyaradosFormSpeciesIdTable,
+        .formChangeTable = sGyaradosFormChangeTable,
+        .monSpotTemplate = &gGyaradosSpotTemplate,
+    },
+
+    [SPECIES_MAGIKARP_TOKUAN] =
+    {
+        .baseHP        = 20,
+        .baseAttack    = 10,
+        .baseDefense   = 55,
+        .baseSpeed     = 80,
+        .baseSpAttack  = P_UPDATED_STATS >= GEN_2 ? 15 : 20,
+        .baseSpDefense = 20,
+        .types = MON_TYPES(TYPE_WATER),
+        .catchRate = 255,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 40 : 20,
+        .evYield_Speed = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 5,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_2, EGG_GROUP_DRAGON),
+        .abilities = { ABILITY_SWIFT_SWIM, ABILITY_NONE, ABILITY_RATTLED },
+        .bodyColor = BODY_COLOR_RED,
+        .speciesName = _("Magikarp"),
+        .unknownName = _("Dumb Fish"),
+        .cryId = CRY_MAGIKARP,
+        .natDexNum = NATIONAL_DEX_MAGIKARP,
+        .categoryName = _("Fish"),
+        .height = 9,
+        .weight = 100,
+        .description = COMPOUND_STRING(
+            "Its swimming muscles are weak, so it is\n"
+            "easily washed away by currents. In places\n"
+            "where water pools, you can see many\n"
+            "Magikarp deposited there by the flow."),
+        .pokemonScale = 310,
+        .pokemonOffset = 4,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_MagikarpTokuan,
+        .frontPicSize = MON_COORDS_SIZE(48, 56),
+        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 6 : 4,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 8),
+            ANIMCMD_FRAME(1, 8),
+            ANIMCMD_FRAME(0, 8),
+            ANIMCMD_FRAME(1, 8),
+            ANIMCMD_FRAME(0, 8),
+            ANIMCMD_FRAME(1, 8),
+            ANIMCMD_FRAME(0, 8),
+            ANIMCMD_FRAME(1, 8),
+            ANIMCMD_FRAME(0, 8),
+        ),
+        .frontAnimId = ANIM_BOUNCE_ROTATE_TO_SIDES,
+        .backPic = gMonBackPic_MagikarpTokuan,
+        .backPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(56, 48) : MON_COORDS_SIZE(64, 56),
+        .backPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 9 : 6,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_LARGE,
+        .palette = gMonPalette_MagikarpTokuan,
+        .shinyPalette = gMonShinyPalette_MagikarpTokuan,
+        .iconSprite = gMonIcon_MagikarpTokuan,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(1, 7, SHADOW_SIZE_M)
+        FOOTPRINT(Magikarp)
+        OVERWORLD(
+            sPicTable_MagikarpTokuan,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            sAnimTable_Following,
+            gMonPalette_MagikarpTokuan,
+            gMonShinyPalette_MagikarpTokuan
+        )
+        .teachingType = TM_ILLITERATE,
+        .levelUpLearnset = sMagikarpLevelUpLearnset,
+        .teachableLearnset = sMagikarpTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_GYARADOS_TOKUAN}),
+        .monSpotTemplate = &gGyaradosSpotTemplate,
+    },
+#endif // P_TOKUAN_FORMS
+
 #if P_MEGA_EVOLUTIONS
     [SPECIES_GYARADOS_MEGA] =
     {

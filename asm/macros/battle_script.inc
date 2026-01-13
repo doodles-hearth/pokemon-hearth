@@ -2452,6 +2452,11 @@
 	.4byte \jumpInstr
 	.endm
 
+ .macro trysmokeexplosionendabilities battler:req
+	callnative BS_SmokeExplosionEndAbilities
+	.byte \battler
+  .endm
+
 	@ Absorbs Toxic Spikes when a grounded Poison-type faints to entry hazards.
 	.macro tryabsorbtoxicspikesonfaint
 	callnative BS_TryAbsorbToxicSpikesOnFaint

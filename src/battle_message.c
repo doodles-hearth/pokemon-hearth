@@ -270,6 +270,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PKMNPROTECTEDBYMIST]                  = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} is protected by the mist!"),
     [STRINGID_PKMNGETTINGPUMPED]                    = gText_PkmnGettingPumped,
     [STRINGID_PKMNHITWITHRECOIL]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} was damaged by the recoil!"),
+    [STRINGID_SMOKEEXPLOSION]                       = COMPOUND_STRING("The smoke explodes!"), 
     [STRINGID_PKMNPROTECTEDITSELF2]                 = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} protected itself!"),
     [STRINGID_PKMNBUFFETEDBYSANDSTORM]              = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is buffeted by the sandstorm!"),
     [STRINGID_PKMNPELTEDBYHAIL]                     = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is buffeted by the hail!"),
@@ -859,6 +860,8 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_FOGCREPTUP]                           = COMPOUND_STRING("Fog crept up as thick as soup!"),
     [STRINGID_FOGISDEEP]                            = COMPOUND_STRING("The fog is deep…"),
     [STRINGID_FOGLIFTED]                            = COMPOUND_STRING("The fog lifted."),
+    [STRINGID_SMOKEFILLSTHEAIR]                     = COMPOUND_STRING("Thick smoke filks the air."),
+    [STRINGID_SMOKEDISSIPTED]                       = COMPOUND_STRING("The smoke dissipated."),
     [STRINGID_PKMNMADESHELLGLEAM]                   = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} made its shell gleam! It's distorting type matchups!"),
     [STRINGID_FICKLEBEAMDOUBLED]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is going all out for this attack!"),
     [STRINGID_COMMANDERACTIVATES]                   = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} was swallowed by Dondozo and became Dondozo's commander!"),
@@ -887,6 +890,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_POWERCONSTRUCTPRESENCEOFMANY]         = COMPOUND_STRING("You sense the presence of many!"),
     [STRINGID_POWERCONSTRUCTTRANSFORM]              = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} transformed into its Complete Forme!"),
     [STRINGID_ABILITYSHIELDPROTECTS]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s Ability is protected by the effects of its {B_LAST_ITEM}!"),
+    [STRINGID_SMOKEEXPLOSIONINEFFECTIVE]            = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} made the explosion ineffective!"), //not in gen 5+, ability popup
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1019,6 +1023,7 @@ const u16 gMoveWeatherChangeStringIds[] =
     [B_MSG_STARTED_HAIL]      = STRINGID_STARTEDHAIL,
     [B_MSG_STARTED_SNOW]      = STRINGID_STARTEDSNOW,
     [B_MSG_STARTED_FOG]       = STRINGID_FOGCREPTUP, // Unused, can use for custom moves that set fog
+    [B_MSG_STARTED_SMOKE]     = STRINGID_SMOKEFILLSTHEAIR,
 };
 
 const u16 gWeatherEndsStringIds[B_MSG_WEATHER_END_COUNT] =
@@ -1029,6 +1034,7 @@ const u16 gWeatherEndsStringIds[B_MSG_WEATHER_END_COUNT] =
     [B_MSG_WEATHER_END_HAIL]         = STRINGID_HAILSTOPPED,
     [B_MSG_WEATHER_END_SNOW]         = STRINGID_SNOWSTOPPED,
     [B_MSG_WEATHER_END_FOG]          = STRINGID_FOGLIFTED,
+    [B_MSG_WEATHER_END_SMOKE]        = STRINGID_SMOKEDISSIPTED,
     [B_MSG_WEATHER_END_STRONG_WINDS] = STRINGID_STRONGWINDSDISSIPATED,
 };
 
@@ -1041,6 +1047,7 @@ const u16 gWeatherTurnStringIds[] =
     [B_MSG_WEATHER_TURN_HAIL]         = STRINGID_HAILCONTINUES,
     [B_MSG_WEATHER_TURN_SNOW]         = STRINGID_SNOWCONTINUES,
     [B_MSG_WEATHER_TURN_FOG]          = STRINGID_FOGISDEEP,
+    [B_MSG_WEATHER_TURN_SMOKE]        = STRINGID_SMOKEFILLSTHEAIR,
     [B_MSG_WEATHER_TURN_STRONG_WINDS] = STRINGID_MYSTERIOUSAIRCURRENTBLOWSON,
 };
 
@@ -1272,7 +1279,9 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_DROUGHT]            = STRINGID_SUNLIGHTISHARSH,
     [WEATHER_DOWNPOUR]           = STRINGID_ITISRAINING,
     [WEATHER_UNDERWATER_BUBBLES] = STRINGID_ITISRAINING,
-    [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING
+    [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING,
+    [WEATHER_PINK_LEAVES]        = STRINGID_ITISRAINING,
+    [WEATHER_AUTUMN_LEAVES]      = STRINGID_ITISRAINING
 };
 
 const u16 gTerrainStartsStringIds[] =
@@ -1333,7 +1342,8 @@ const u16 gItemSwapStringIds[] =
 const u16 gFlashFireStringIds[] =
 {
     [B_MSG_FLASH_FIRE_BOOST]    = STRINGID_PKMNRAISEDFIREPOWERWITH,
-    [B_MSG_FLASH_FIRE_NO_BOOST] = STRINGID_PKMNSXMADEYINEFFECTIVE
+    [B_MSG_FLASH_FIRE_NO_BOOST] = STRINGID_PKMNSXMADEYINEFFECTIVE,
+    [B_MSG_FLASH_FIRE_NO_BOOST_SMOKE] = STRINGID_SMOKEEXPLOSIONINEFFECTIVE,
 };
 
 const u16 gCaughtMonStringIds[] =

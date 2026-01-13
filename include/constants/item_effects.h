@@ -91,7 +91,8 @@
 #define ITEM_EFFECT_PP_UP 19
 #define ITEM_EFFECT_PP_MAX 20
 #define ITEM_EFFECT_HEAL_PP 21
-#define ITEM_EFFECT_NONE 22
+#define ITEM_EFFECT_RAIKOU_BALM 22
+#define ITEM_EFFECT_NONE 23
 
 #define ITEM_FRIENDSHIP_MAPSEC_BONUS  1   // The amount of bonus friendship gained when an item is used on a Pokémon whose met location matches the current map section.
 #define ITEM_FRIENDSHIP_LUXURY_BONUS  1   // The amount of bonus friendship gained when a Pokémon is in the Luxury Ball.

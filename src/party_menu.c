@@ -4771,6 +4771,7 @@ static void GetMedicineItemEffectMessage(u16 item, u32 statusCured)
         StringExpandPlaceholders(gStringVar4, gText_PkmnCuredOfPoison);
         break;
     case ITEM_EFFECT_CURE_SLEEP:
+    case ITEM_EFFECT_RAIKOU_BALM:
         StringExpandPlaceholders(gStringVar4, gText_PkmnWokeUp2);
         break;
     case ITEM_EFFECT_CURE_BURN:
@@ -7043,6 +7044,8 @@ u8 GetItemEffectType(u16 item)
     if (itemEffect == NULL)
         return ITEM_EFFECT_NONE;
 
+    if (itemEffect[1] && itemEffect[3] & ITEM3_SLEEP)
+        return ITEM_EFFECT_RAIKOU_BALM;
     if ((itemEffect[0] & ITEM0_DIRE_HIT) || itemEffect[1] || (itemEffect[3] & ITEM3_GUARD_SPEC))
         return ITEM_EFFECT_X_ITEM;
     else if (itemEffect[0] & ITEM0_SACRED_ASH)

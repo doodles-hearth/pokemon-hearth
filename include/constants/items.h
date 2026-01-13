@@ -1055,8 +1055,9 @@
 #define ITEM_SHINY_VIAL           884
 #define ITEM_BEAST_BALL           885
 #define ITEM_SABLEYE_GEM          886
+#define ITEM_RAIKOU_BALM          887
 
-#define ITEMS_COUNT 887
+#define ITEMS_COUNT 888
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations
@@ -1121,6 +1122,7 @@
 #define ITEM_USE_BATTLER          6 // Auto-select in Singles but lets you choose from party menu in Doubles
 
 // Item battle script IDs (need to be non-zero)
+
 #define EFFECT_ITEM_RESTORE_HP              1
 #define EFFECT_ITEM_CURE_STATUS             2
 #define EFFECT_ITEM_HEAL_AND_CURE_STATUS    3
@@ -1133,6 +1135,7 @@
 #define EFFECT_ITEM_RESTORE_PP              10
 #define EFFECT_ITEM_INCREASE_ALL_STATS      11
 #define EFFECT_ITEM_USE_POKE_FLUTE          12
+#define EFFECT_ITEM_RAIKOU_BALM             13
 
 // Enigma Berry dummy constant
 #define EFFECT_ITEM_ENIGMA_BERRY_EREADER    1

@@ -26,6 +26,7 @@ gBattlescriptsForUsingItem::
 	.4byte BattleScript_ItemRestorePP                @ EFFECT_ITEM_RESTORE_PP
 	.4byte BattleScript_ItemIncreaseAllStats         @ EFFECT_ITEM_INCREASE_ALL_STATS
 	.4byte BattleScript_UsePokeFlute                 @ EFFECT_ITEM_USE_POKE_FLUTE
+	.4byte BattleScript_ItemRaikouBalm               @ EFFECT_ITEM_RAIKOU_BALM
 
 	.align 2
 gBattlescriptsForSafariActions::
@@ -115,6 +116,24 @@ BattleScript_ItemIncreaseStat::
 	itemincreasestat
 	statbuffchange BS_ATTACKER, STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_ItemEnd
 	printfromtable gStatUpStringIds
+	waitmessage B_WAIT_TIME_LONG
+	end
+
+BattleScript_ItemRaikouBalm::
+	call BattleScript_UseItemMessage
+BattleScript_ItemRaikouBalmCureStatusAfterMsg:
+	itemincreasestat
+	statbuffchange BS_ATTACKER, STAT_CHANGE_NOT_PROTECT_AFFECTED | STAT_CHANGE_ALLOW_PTR, BattleScript_ItemEnd
+	printfromtable gStatUpStringIds
+	itemcurestatus BattleScript_RaikouBalmEnd, BattleScript_ItemRaikouBalm_Battler
+	printstring STRINGID_PKMNWOKEUP
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_RaikouBalmEnd:
+	end
+
+BattleScript_ItemRaikouBalm_Battler::
+	updatestatusicon BS_SCRIPTING
+	printstring STRINGID_PKMNWOKEUP
 	waitmessage B_WAIT_TIME_LONG
 	end
 

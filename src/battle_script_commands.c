@@ -5211,7 +5211,8 @@ static void PlayAnimation(u32 battler, u8 animId, const u16 *argPtr, const u8 *n
           || animId == B_ANIM_SANDSTORM_CONTINUES
           || animId == B_ANIM_HAIL_CONTINUES
           || animId == B_ANIM_SNOW_CONTINUES
-          || animId == B_ANIM_FOG_CONTINUES)
+          || animId == B_ANIM_FOG_CONTINUES
+          || animId == B_ANIM_SMOKE_CONTINUES)
     {
         BtlController_EmitBattleAnimation(battler, B_COMM_TO_CONTROLLER, animId, *argPtr);
         MarkBattlerForControllerExec(battler);
@@ -7588,6 +7589,9 @@ static void Cmd_setfieldweather(void)
         break;
     case BATTLE_WEATHER_SNOW:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_SNOW;
+        break;
+    case BATTLE_WEATHER_SMOKE:
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_SMOKE;
         break;
     }
 
@@ -12583,7 +12587,8 @@ void BS_ItemIncreaseStat(void)
 {
     NATIVE_ARGS();
 
-    if (GetItemBattleUsage(gLastUsedItem) == EFFECT_ITEM_INCREASE_STAT)
+    if (GetItemBattleUsage(gLastUsedItem) == EFFECT_ITEM_INCREASE_STAT ||
+        GetItemBattleUsage(gLastUsedItem) == EFFECT_ITEM_RAIKOU_BALM)
     {
         u16 statId = GetItemEffect(gLastUsedItem)[1];
         u16 stages = GetItemHoldEffectParam(gLastUsedItem);
@@ -15670,6 +15675,33 @@ void BS_JumpIfGenConfigLowerThan(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
+void BS_SmokeExplosionEndAbilities(void)
+{
+    NATIVE_ARGS(u8 battler);
+    u32 battler = GetBattlerForBattleScript(cmd->battler);
+    enum Ability ability = gBattleMons[battler].ability;
+    gBattlescriptCurrInstr = cmd->nextInstr; // set the next instruction
+
+    if (gBattleMons[battler].volatiles.smokeExplosionEnd)
+        return;
+
+    gBattleMons[battler].volatiles.smokeExplosionEnd = TRUE;
+
+    switch (ability) {
+        case ABILITY_FLASH_FIRE:
+            if (!gBattleMons[battler].volatiles.flashFireBoosted) {
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_FLASH_FIRE_BOOST;
+                gBattleMons[battler].volatiles.flashFireBoosted = TRUE;
+            }
+            else {
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_FLASH_FIRE_NO_BOOST;
+            }
+            BattleScriptCall(BattleScript_FlashFireBoostReturn); // push the next instruction and run flash fire script
+            break;
+        default:
+            break;
+    }
+}
 // Used when the Pokemon faints before Toxic Spikes would normally be processed in the hazards queue.
 void BS_TryAbsorbToxicSpikesOnFaint(void)
 {

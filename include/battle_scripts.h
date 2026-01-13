@@ -181,6 +181,7 @@ extern const u8 BattleScript_DampStopsExplosion[];
 extern const u8 BattleScript_MoveHPDrain[];
 extern const u8 BattleScript_MonMadeMoveUseless[];
 extern const u8 BattleScript_FlashFireBoost[];
+extern const u8 BattleScript_FlashFireBoostReturn[];
 extern const u8 BattleScript_AbilityNoStatLoss[];
 extern const u8 BattleScript_ItemNoStatLoss[];
 extern const u8 BattleScript_ItemNoStatLossSpicyExtract[];
@@ -819,5 +820,13 @@ extern const u8 BattleScript_MetronomeAttackstring[];
 extern const u8 BattleScript_SleepTalkAttackstring[];
 extern const u8 BattleScript_NaturePowerAttackstring[];
 extern const u8 BattleScript_PokemonCantUseTheMove[];
+
+
+extern const u8 BattleScript_EffectSmokeBomb[];
+extern const u8 BattleScript_SmokeExplosion[];
+extern const u8 BattleScript_SmokeExplosionLoop[];
+extern const u8 BattleScript_SmokeExplosionLoopIncrement[];
+
+extern const u8 BattleScript_AbilityPopUpTarget[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

@@ -1414,6 +1414,7 @@ bool32 CannotUseItemsInBattle(u16 itemId, struct Pokemon *mon)
             cannotUse = TRUE;
         break;
     case EFFECT_ITEM_CURE_STATUS:
+    case EFFECT_ITEM_RAIKOU_BALM:
         if (!((GetMonData(mon, MON_DATA_STATUS) & GetItemStatus1Mask(itemId))
             || SelectedMonHasVolatile(itemId)))
             cannotUse = TRUE;
