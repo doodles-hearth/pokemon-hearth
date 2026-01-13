@@ -50,9 +50,6 @@ SINGLE_BATTLE_TEST("Raikou Balm will wake up a sleeping battler and raise its At
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
             MESSAGE("Wobbuffet woke up!");
         }
-        else {
-            NOT MESSAGE("Wobbuffet woke up!");
-        }
 
         HP_BAR(opponent, captureDamage: &results[i].damage);
     }
@@ -96,9 +93,6 @@ SINGLE_BATTLE_TEST("Raikou Balm will not increase the attack of a sleeping battl
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
             MESSAGE("Wobbuffet's Attack won't go any higher!");
             MESSAGE("Wobbuffet woke up!");
-        }
-        else {
-            NOT MESSAGE("Wobbuffet woke up!");
         }
 
         HP_BAR(opponent, captureDamage: &results[i].damage);
