@@ -15737,8 +15737,8 @@ const struct Item gItemsInfo[] =
         .battleUsage = EFFECT_ITEM_RAIKOU_BALM,
         .effect = gItemEffect_RaikouBalm,
         .flingPower = 30,
-        .iconPic = gItemIcon_BattleStatItem,
-        .iconPalette = gItemIconPalette_XAttack,
+        .iconPic = gItemIcon_RaikouBalm,
+        .iconPalette = gItemIconPalette_RaikouBalm,
     },
 };
 

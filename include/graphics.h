@@ -1814,6 +1814,8 @@ extern const u32 gItemIcon_SlowpokeTail[];
 extern const u16 gItemIconPalette_SlowpokeTail[];
 extern const u32 gItemIcon_SpecialMedicine[];
 extern const u16 gItemIconPalette_SpecialMedicine[];
+extern const u32 gItemIcon_RaikouBalm[];
+extern const u16 gItemIconPalette_RaikouBalm[];
 
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u16 gItemIconPalette_ReturnToFieldArrow[];
