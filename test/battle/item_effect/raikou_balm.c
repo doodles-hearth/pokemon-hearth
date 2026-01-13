@@ -57,11 +57,9 @@ SINGLE_BATTLE_TEST("Raikou Balm will wake up a sleeping battler and raise its At
         HP_BAR(opponent, captureDamage: &results[i].damage);
     }
     THEN {
-        if (raikouBalm)
             EXPECT_EQ(player->status1, STATUS1_NONE);
     }
     FINALLY {
             EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.5), results[1].damage);
     }
-    
 }
