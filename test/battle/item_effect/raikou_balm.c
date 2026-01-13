@@ -63,3 +63,51 @@ SINGLE_BATTLE_TEST("Raikou Balm will wake up a sleeping battler and raise its At
             EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.5), results[1].damage);
     }
 }
+
+SINGLE_BATTLE_TEST("Raikou Balm will not increase the attack of a sleeping battler whose attack is already at +6", s16 damage)
+{
+    ASSUME(GetMoveNonVolatileStatus(MOVE_HYPNOSIS) == MOVE_EFFECT_SLEEP);
+
+    bool32 raikouBalm;
+
+    PARAMETRIZE { raikouBalm = FALSE; }
+    PARAMETRIZE { raikouBalm = TRUE; }
+
+    GIVEN {
+        ASSUME(GetMoveCategory(MOVE_SCRATCH) == DAMAGE_CATEGORY_PHYSICAL);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    }
+    WHEN {
+        TURN {MOVE(player, MOVE_SWORDS_DANCE); MOVE(opponent, MOVE_CELEBRATE);}
+        TURN {MOVE(player, MOVE_SWORDS_DANCE); MOVE(opponent, MOVE_CELEBRATE);}
+        TURN {MOVE(player, MOVE_SWORDS_DANCE); MOVE(opponent, MOVE_HYPNOSIS);}
+
+        if (raikouBalm) {
+            TURN { USE_ITEM(player, ITEM_RAIKOU_BALM, partyIndex : 0); }
+        }
+        else {
+            TURN { USE_ITEM(player, ITEM_CHESTO_BERRY, partyIndex : 0); }
+        }
+        TURN { MOVE(player, MOVE_SCRATCH); }
+    }
+    SCENE {
+        if (raikouBalm) {
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+            MESSAGE("Wobbuffet's Attack won't go any higher!");
+            MESSAGE("Wobbuffet woke up!");
+        }
+        else {
+            NOT MESSAGE("Wobbuffet woke up!");
+        }
+
+        HP_BAR(opponent, captureDamage: &results[i].damage);
+    }
+    THEN {
+            EXPECT_EQ(player->status1, STATUS1_NONE);
+    }
+    FINALLY {
+            EXPECT_EQ(results[0].damage, results[1].damage);
+    }
+}
+
