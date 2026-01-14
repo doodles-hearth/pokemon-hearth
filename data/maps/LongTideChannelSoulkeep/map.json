@@ -115,8 +115,8 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 69,
-      "y": 22,
+      "x": 71,
+      "y": 20,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "LongTideChannelSoulkeep_RouteSign"

@@ -1,1 +1,36 @@
 mapscripts Windycape_House1_MapScripts {}
+
+script WindyCape_House1_EventScript_EnteiStatuette {
+    lock
+    faceplayer
+    special(GetPlayerMrMrsString)
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Say, {STR_VAR_1}, do you have an Entei Statuette too?\p"
+        "My ma says it's a little piece of Entei that protects me from trouble!"
+    ))
+    release
+}
+
+script WindyCape_House1_EventScript_Holes {
+    lock
+    faceplayer
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Can you hear the wind blowing through these holes?\p"
+        "These are the Windycape “singing hollows”, famous all across Toku!\p"
+        "{FONT_SMALL}Someday I'll just tape over them…{FONT_NORMAL}"
+    ))
+    release
+}
+
+script WindyCape_House1_EventScript_Wattrel {
+   lock
+    faceplayer
+	setseenmon(SPECIES_WATTREL)
+	setspeakertomonname(SPECIES_WATTREL)
+	playmoncry(SPECIES_WATTREL, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Heeah!"
+    ))
+    waitmoncry
+    release 
+}

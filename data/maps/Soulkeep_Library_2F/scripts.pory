@@ -5,9 +5,8 @@ mapscripts Soulkeep_Library_2F_MapScripts {
 script Soulkeep_Library_2F_EventScript_Employee {
 	lock
 	faceplayer
-	setspeaker("Librarian")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}{FONT_SMALL}Shhhhhh, keep it down!{FONT_NORMAL}"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}{SPEAKER NAME_LIBRARIAN}{FONT_SMALL}Shhhhhh, keep it down!{FONT_NORMAL}"
 	))
 	closemessage
 	release
@@ -18,8 +17,8 @@ script Soulkeep_Library_2F_EventScript_EmployeeBlocksVIPArea {
 	faceplayer
 	setspeaker("Librarian")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}{FONT_SMALL}The upper floor holds very old and rare books and scrolls.\p"
-		"We can't let just any child get their dirty little paws all over the pages.\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}{SPEAKER NAME_LIBRARIAN}{FONT_SMALL}The upper floor holds very old and rare books and scrolls.\p"
+		"We can't let just any child get their grubby little paws all over the pages.\p"
 		"As such, only holders of at least four official Tokens have access.{FONT_NORMAL}"
 	))
 	closemessage
@@ -29,13 +28,124 @@ script Soulkeep_Library_2F_EventScript_EmployeeBlocksVIPArea {
 script Soulkeep_Library_2F_EventScript_Hariko {
 	lock
 	faceplayer
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}{FONT_SMALL}Hello, {PLAYER}.\n\p"
-		"I am looking for information on the Decay.\p"
-		"Did it happen before?\nIs there a way to fix it?\l"
-		"I am not finding anything…\p"
-		"I wonder if the old books on the third floor would be more useful.{FONT_NORMAL}"
-	))
+	if (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}{FONT_SMALL}Wielder Jomon of Coreef Isle…\p"
+			"I wonder if his descendants still live there…{FONT_NORMAL}"
+		))
+	} else {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}{FONT_SMALL}Hello, {PLAYER}.\n\p"
+			"I am looking for information on the Decay.\p"
+			"Has it happened before?\nIs there a way to fix it?\l"
+			"I am not finding anything…{FONT_NORMAL}"
+		))
+	}
 	closemessage
+	release
+}
+
+script Soulkeep_Library_1F_EventScript_Book_ShrineDecay_Left {
+	setvar(VAR_TEMP_0, 1)
+	call(Soulkeep_Library_1F_EventScript_Book_ShrineDecay)
+}
+
+script Soulkeep_Library_1F_EventScript_Book_ShrineDecay_Right {
+	setvar(VAR_TEMP_0, 2)
+	call(Soulkeep_Library_1F_EventScript_Book_ShrineDecay)
+}
+
+script Soulkeep_Library_1F_EventScript_Book_ShrineDecay {
+	lock
+	msgbox((
+		"“Tales Of An Era Of Fear”.\nThe pages are marred by time…\lRead it anyway?"
+	))
+
+	dynmultichoice(
+		0,
+		0,
+		FALSE,
+		10,
+		0,
+		DYN_MULTICHOICE_CB_NONE,
+		"Read",
+		"Put back"
+	)
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		msgbox((
+			"“My grand-… …her re…lls… …dark era … …\nf… …r …nd Decay.\p"
+			"Sh… … oth… …r Monks, … …d by …e\nalm… …hty sp…r… v… …no, aw…k… …d …\l"
+			"… five holy Shrines …f … …ku an…\l"
+			"healed the land.\p"
+			"-Wield… Jomon of Coreef Isle”"
+		))
+		closemessage
+
+		if (!flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
+			playse(SE_PIN)
+			applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, delay_16 * 6, face_right, delay_16 * 2))
+			waitse
+			waitmovement(LOCALID_PLAYER)
+
+			playse(SE_PIN)
+			applymovement(LOCALID_LIBRARY_HARIKO, moves(face_left, emote_question_mark, delay_16 * 6))
+			waitse
+			waitmovement(LOCALID_LIBRARY_HARIKO)
+
+			if (var(VAR_TEMP_0) == 1) {
+				applymovement(LOCALID_LIBRARY_HARIKO, moves(walk_left * 3))
+			} else {
+				applymovement(LOCALID_LIBRARY_HARIKO, moves(walk_left * 2))
+			}
+			waitmovement(LOCALID_LIBRARY_HARIKO)
+
+			delay(32)
+
+			playse(SE_PIN)
+			applymovement(LOCALID_LIBRARY_HARIKO, moves(emote_exclamation_mark, delay_16 * 6))
+			waitse
+			waitmovement(LOCALID_LIBRARY_HARIKO)
+
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}Holy Shiftry!!"
+			))
+			closemessage
+
+			waitse
+			playse(SE_LEDGE)
+			applymovement(LOCALID_LIBRARY_EMPLOYEE, moves(jump_in_place_right))
+			waitmovement(LOCALID_LIBRARY_EMPLOYEE)
+			waitse
+			playse(SE_PIN)
+			applymovement(LOCALID_LIBRARY_EMPLOYEE, moves(emote_upset))
+			waitmovement(LOCALID_LIBRARY_EMPLOYEE)
+
+			applymovement(LOCALID_PLAYER, moves(face_right))
+			applymovement(LOCALID_LIBRARY_HARIKO, moves(face_right))
+
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}{SPEAKER NAME_LIBRARIAN}{FONT_SMALL}QUIET! THIS IS A LIBRARY!{FONT_NORMAL}"
+			))
+			closemessage
+
+			applymovement(LOCALID_LIBRARY_EMPLOYEE, moves(face_down))
+			applymovement(LOCALID_LIBRARY_HARIKO, moves(face_left, delay_16 * 2))
+			waitmovement(LOCALID_LIBRARY_HARIKO)
+
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}{FONT_SMALL}Oops. Holy Shiftry.\p"
+				"The text is faded, but it mentions a link between the Toku Shrines and the Decay!\p"
+				"The Shrines seem to be the stemming points of the Decay…\lCould they also be used to cure it?\p"
+				"Wielder Jomon of Coreef Isle…\p"
+				"I wonder if he has descendants that still live there…{FONT_NORMAL}"
+			))
+			closemessage
+
+			setflag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)
+		}
+	}
+
 	release
 }

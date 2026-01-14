@@ -6329,7 +6329,7 @@
       "id": "LAYOUT_INCENSE_SHOP",
       "name": "IncenseShop_Layout",
       "width": 9,
-      "height": 11,
+      "height": 12,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",
