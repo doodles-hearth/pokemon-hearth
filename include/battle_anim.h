@@ -591,6 +591,9 @@ void InitSpritePosToAnimTargetsCentre(struct Sprite *sprite, bool32 respectMonPi
 extern const union AffineAnimCmd *const gSpriteAffineAnimTable_PrimalSymbol[];
 extern const union AffineAnimCmd *const gSpriteAffineAnimTable_MegaSymbol[];
 
+// battle_anim_hearth.c
+void AnimFlyingLeaves(struct Sprite *sprite);
+
 // battle_anim_ice.c
 void AnimIceBeamParticle(struct Sprite *sprite);
 

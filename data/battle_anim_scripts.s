@@ -24192,6 +24192,34 @@ gBattleAnimMove_HeatWave::
 	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 60, 2560, 96, 1
 	end
 
+gBattleAnimMove_Blossom::
+	loadspritegfx ANIM_TAG_LEAF
+	setalpha 12, 8
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 0, 12, RGB(13, 31, 12)
+	waitforvisualfinish
+	splitbgprio ANIM_TARGET
+	setalpha 12, 8
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_LEAF, 0, 6, 6, RGB_GREEN
+	createvisualtask AnimTask_BlendBackground, 6, 6, RGB_GREEN
+	delay 12
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 10, 600, 96, 1
+	delay 10
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 20, 408, 96, 1
+	delay 10
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 30, 560, 96, 1
+	delay 10
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 20, 304, 96, 1
+	delay 10
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 10, 984, 96, 1
+	delay 10
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 2, 816, 96, 1
+	delay 10
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 60, 560, 96, 1
+	waitforvisualfinish
+  blendoff
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 12, 0, RGB(13, 31, 12)
+	end
+
 gBattleAnimMove_SmokeBomb::
 	loadspritegfx ANIM_TAG_FLYING_DIRT
 	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_FLYING_DIRT, 0, 6, 6, RGB_BLACK
@@ -31298,6 +31326,9 @@ gBattleAnimGeneral_Fog::
 
 gBattleAnimGeneral_Smoke::
   goto gBattleAnimMove_SmokeBomb
+
+gBattleAnimGeneral_FallingLeaves::
+  goto gBattleAnimMove_Blossom
 
 gBattleAnimGeneral_SmokeExplosion::
 	loadspritegfx ANIM_TAG_EXPLOSION

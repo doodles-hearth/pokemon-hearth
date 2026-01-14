@@ -234,6 +234,14 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
         .continuesMessage = B_MSG_WEATHER_TURN_STRONG_WINDS,
         .animation = B_ANIM_STRONG_WINDS,
     },
+    [BATTLE_WEATHER_LEAVES] =
+    {
+        .flag = B_WEATHER_LEAVES,
+        .rock = HOLD_EFFECT_NONE,
+        .endMessage = B_MSG_WEATHER_END_LEAVES,
+        .continuesMessage = B_MSG_WEATHER_TURN_LEAVES,
+        .animation = B_ANIM_FALLING_LEAVES,
+    }
 };
 
 u32 GetCurrentBattleWeather(void)
@@ -3263,6 +3271,13 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                     effect = TRUE;
                 }
                 break;
+            case WEATHER_PINK_LEAVES:
+            case WEATHER_AUTUMN_LEAVES:
+                if (!(gBattleWeather & B_WEATHER_LEAVES)) {
+                    gBattleWeather = B_WEATHER_LEAVES;
+                    gBattleScripting.animArg1 = B_ANIM_FALLING_LEAVES;
+                    effect = TRUE;
+                }
             }
         }
         if (effect)
