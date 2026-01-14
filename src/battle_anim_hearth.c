@@ -33,7 +33,6 @@ const struct SpriteTemplate gFallingLeavesSpriteTemplate =
 #define sVelocityY   data[2] // 256ths of a pixel // init'd from gBattleAnimArgs[2]
 #define sFractionalX data[3] // 256ths of a pixel
 #define sFractionalY data[4] // 256ths of a pixel
-#define sMirroredX   data[5] // init'd from gBattleAnimArgs[3]
 
 // The fields named "velocity" are arguably more like "acceleration,"
 // and the fields named "fractional" are arguably more like "velocity."

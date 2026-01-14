@@ -24195,30 +24195,57 @@ gBattleAnimMove_HeatWave::
 gBattleAnimMove_Blossom::
 	loadspritegfx ANIM_TAG_LEAF
 	setalpha 12, 8
-	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 0, 12, RGB(13, 31, 12)
-	waitforvisualfinish
-	splitbgprio ANIM_TARGET
-	setalpha 12, 8
-	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_LEAF, 0, 6, 6, RGB_GREEN
-	createvisualtask AnimTask_BlendBackground, 6, 6, RGB_GREEN
-	delay 12
-	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 10, 600, 96, 1
-	delay 10
-	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 20, 408, 96, 1
-	delay 10
-	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 30, 560, 96, 1
-	delay 10
-	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 20, 304, 96, 1
-	delay 10
-	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 10, 984, 96, 1
-	delay 10
-	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 2, 816, 96, 1
-	delay 10
-	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 60, 560, 96, 1
-	waitforvisualfinish
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 4, 0, 4, RGB(31, 4, 26)
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_LEAF, 0, 6, 6, RGB(31, 4, 26)
+  playse SE_M_GUST
+  call FallingLeaves_Dense
+  call FallingLeaves
+  waitforvisualfinish
+  stopsound
   blendoff
-	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 12, 0, RGB(13, 31, 12)
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 2, 4, 0, RGB(31, 4, 26)
 	end
+
+FallingLeaves:
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 60, 860, 96
+	delay 5
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 10, 900, 96
+	delay 5
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 20, 808, 96
+	delay 5
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 30, 1060, 96
+	delay 5
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 10, 1284, 96
+	delay 5
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 2, 816, 96
+	delay 5
+  return
+
+FallingLeaves_Dense:
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40,  2,  900,  80
+	delay 3
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 14, 1100, 96
+	delay 3
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 28,  760,  80
+	delay 3
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 42, 1300, 96
+	delay 3
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 56,  640,  80
+	delay 3
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 18, 1000, 96
+	delay 3
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 34,  820,  80
+	delay 3
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 50, 1200, 96
+	delay 3
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 10,  720,  80
+	delay 3
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 26, 1080, 96
+	delay 3
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 44,  900,  80
+	delay 3
+	createsprite gFallingLeavesSpriteTemplate, ANIM_ATTACKER, 40, 60, 1360, 96
+	return
 
 gBattleAnimMove_SmokeBomb::
 	loadspritegfx ANIM_TAG_FLYING_DIRT
