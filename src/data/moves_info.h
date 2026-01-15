@@ -23308,4 +23308,30 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_SmokeBomb,
     },
+
+    [MOVE_BLOSSOM] =
+    {
+        .name = COMPOUND_STRING("Blossom"),
+        .description = COMPOUND_STRING(
+            "Summons a flurry of cherry\n"
+            "leaves that fill the air"
+        ),
+        .effect = EFFECT_BLOSSOM,
+        .power = 0,
+        .type = TYPE_GRASS,
+        .accuracy = 0,
+        .pp = 10,
+        .target = TARGET_ALL_BATTLERS,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_ATK_UP_3 },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .gravityBanned = FALSE,
+        .contestEffect = CONTEST_EFFECT_BETTER_IF_LAST,
+        .contestCategory = CONTEST_CATEGORY_CUTE,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_Blossom,
+    },
 };
