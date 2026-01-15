@@ -7655,6 +7655,17 @@ static uq4_12_t GetWeatherDamageModifier(struct BattleContext *ctx)
             return UQ_4_12(1.0);
         return (ctx->moveType == TYPE_WATER) ? UQ_4_12(0.5) : UQ_4_12(1.5);
     }
+    if (ctx->weather & B_WEATHER_LEAVES) {
+        switch (ctx->moveType) {
+            case TYPE_GRASS:
+            case TYPE_FAIRY:
+                return UQ_4_12(1.5);
+            case TYPE_POISON:
+                return UQ_4_12(0.5);
+            default:
+                return UQ_4_12(1.0);
+        }
+    }
     return UQ_4_12(1.0);
 }
 
