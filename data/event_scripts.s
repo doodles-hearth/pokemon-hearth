@@ -1472,4 +1472,4 @@ EventScript_VsSeekerChargingDone::
 
 	.include "data/maps/UumeForest_LostWoods2/scripts.scr"
 
-	.include "data/maps/Coreef_House1/scripts.inc"
+	.include "data/maps/Coreef_House1/scripts.scr"
