@@ -6696,6 +6696,18 @@
       "secondary_tileset": "gTileset_UumeForest",
       "border_filepath": "data/layouts/UumeForest_LostWoods2/border.bin",
       "blockdata_filepath": "data/layouts/UumeForest_LostWoods2/map.bin"
+    },
+    {
+      "id": "LAYOUT_COREEF_HOUSE1",
+      "name": "Coreef_House1_Layout",
+      "width": 10,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseWindycape",
+      "border_filepath": "data/layouts/Coreef_House1/border.bin",
+      "blockdata_filepath": "data/layouts/Coreef_House1/map.bin"
     }
   ]
 }

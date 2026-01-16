@@ -1,0 +1,32 @@
+mapscripts Coreef_House1_MapScripts {}
+
+script Coreef_House1_Pupil {
+    lock
+    faceplayer
+    msgbox(format(
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Hello! We don't get a lot of visitors.\n"
+        "Are you looking for something?"
+    ))
+
+    mcdialogueB(
+        "Wielder Jomon?",
+        "Nothing really…"
+    )
+
+    if (var(VAR_RESULT) == 0) {
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Jomon is my father! He was a Wielder\nin his youth, almost a century back!\p"
+            "He was the oldest member of the Toku Council… well, until he was too old.\l"
+            "What do you need him for?"
+        ))
+    }
+
+    mcdialogueB(
+        "The Shrines…",
+        "Nothing really…"
+    )
+
+    // TODO
+
+    release
+}

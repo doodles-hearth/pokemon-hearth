@@ -18,7 +18,8 @@
     "gMapGroup_VanillaMaps3",
     "gMapGroup_IndoorSaberside",
     "gMapGroup_IndoorScenic",
-    "gMapGroup_IndoorWindycape"
+    "gMapGroup_IndoorWindycape",
+    "gMapGroup_IndoorCoreef"
   ],
   "gMapGroup_TownsAndRoutes": [
     "SunriseVillage",
@@ -717,6 +718,9 @@
   "gMapGroup_IndoorWindycape": [
     "Windycape_House1",
     "Windycape_House2"
+  ],
+  "gMapGroup_IndoorCoreef": [
+    "Coreef_House1"
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"
