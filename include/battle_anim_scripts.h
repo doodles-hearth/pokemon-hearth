@@ -78,6 +78,7 @@ extern const u8 gBattleAnimMove_MegaDrain[];
 extern const u8 gBattleAnimMove_LeechSeed[];
 extern const u8 gBattleAnimMove_Growth[];
 extern const u8 gBattleAnimMove_RazorLeaf[];
+extern const u8 gBattleAnimMove_SakuraDance[];
 extern const u8 gBattleAnimMove_SolarBeam[];
 extern const u8 gBattleAnimMove_PoisonPowder[];
 extern const u8 gBattleAnimMove_StunSpore[];

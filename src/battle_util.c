@@ -6832,6 +6832,11 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct BattleContext *ctx)
             && CanBattlerGetOrLoseItem(battlerDef, battlerAtk, gBattleMons[battlerDef].item))
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
+    case EFFECT_SAKURA_DANCE:
+        if ((gBattleWeather & B_WEATHER_LEAVES) && HasWeatherEffect())
+            DebugPrintfLevel(MGBA_LOG_DEBUG, "Sakura Dance Boosted");
+            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+        break;
     default:
         break;
     }

@@ -23334,4 +23334,27 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_Blossom,
     },
+    [MOVE_SAKURA_DANCE] =
+    {
+        .name = COMPOUND_STRING("Sakura Dance"),
+        .description = COMPOUND_STRING(
+            "Sharp pink petals slice the foe.\n"
+            "Fairy-type when leaves fall."),
+        .effect = EFFECT_SAKURA_DANCE,
+        .power = 70,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 15,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .slicingMove = TRUE,
+        .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_HIGHLY_APPEALING : CONTEST_EFFECT_AFFECTED_BY_PREV_APPEAL,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_GROWTH},
+        .battleAnimScript = gBattleAnimMove_SakuraDance,
+        .validApprenticeMove = TRUE,
+        .fieldMove = FIELD_MOVE_CUT,
+    },
 };
