@@ -30,7 +30,16 @@
     }
   ],
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_COREEF_HOUSE1",
+      "x": 25,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_COREEF_HOUSE1",
+      "dest_warp_id": "WARP_ID_COREEF_HOUSE1_EXIT"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

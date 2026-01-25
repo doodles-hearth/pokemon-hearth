@@ -91,6 +91,7 @@ enum SpeakerNames {
     SP_NAME_SMITH,
     SP_NAME_SWORDSMAN,
     SP_NAME_LIBRARIAN,
+    SP_NAME_ELDER_JOMON,
     SP_NAME_COUNT,
 };
 

@@ -6705,7 +6705,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",
-      "secondary_tileset": "gTileset_HouseWindycape",
+      "secondary_tileset": "gTileset_HouseCoreef",
       "border_filepath": "data/layouts/Coreef_House1/border.bin",
       "blockdata_filepath": "data/layouts/Coreef_House1/map.bin"
     }

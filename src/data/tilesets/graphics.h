@@ -2508,3 +2508,22 @@ const u16 gTilesetPalettes_Daycare[][16] =
 };
 
 const u32 gTilesetTiles_Daycare[] = INCBIN_U32("data/tilesets/secondary/daycare/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_HouseCoreef[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/house_coreef/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_HouseCoreef[] = INCBIN_U32("data/tilesets/secondary/house_coreef/tiles.4bpp.lz");

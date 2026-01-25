@@ -715,6 +715,7 @@ NAME_BURGLAR         = 55
 NAME_SMITH           = 56
 NAME_SWORDSMAN       = 57
 NAME_LIBRARIAN       = 58
+NAME_ELDER_JOMON     = 59
 
 @ fonts
 

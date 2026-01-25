@@ -1,70 +1,104 @@
 const FLAG_TALKED_TO_GIRL = FLAG_TEMP_1
+const FLAG_HIDE_GENGAR = FLAG_TEMP_2
 
-mapscripts Coreef_House1_MapScripts {}
+mapscripts Coreef_House1_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        setflag(FLAG_HIDE_GENGAR)
+    }
+}
 
 script Coreef_House1_Pupil {
     lock
     faceplayer
 
-    if (flag(FLAG_TALKED_TO_GIRL)) {
-        msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Go ahead, talk to him, don't be shy.\nRemember to speak loud!"
-        ))
+    if (flag(FLAG_JOMON_NEEDS_WAKING_UP)) {
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Nothing you'll do will wake him up!\p"
+            "You'd need something strong-smelling\nenough to wake up the dead!"
+        )
         closemessage
     } else {
-        msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Hello! We don't get a lot of visitors.\n"
-            "Are you looking for something?"
-        ))
-
-        mcdialogueB(
-            "Wielder Jomon?",
-            "Nothing really…"
-        )
-
-        closemessage
-
-        if (var(VAR_RESULT) == 0) {
-            waitse
-            playse(SE_PIN)
-            applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
-            waitmovement(0)
-
+        if (flag(FLAG_TALKED_TO_GIRL)) {
             msgbox(format(
-                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Jomon is my father! He was a Wielder\nin his youth, almost a century back!\p"
-                "He was the oldest member of the Toku Council… well, until he was too old.\l"
-                "What do you need him for?"
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Go ahead, talk to him, don't be shy.\nRemember to speak loud!"
+            ))
+            closemessage
+        } else {
+            msgbox(format(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Hello! We don't get a lot of visitors.\n"
+                "Are you looking for something?"
             ))
 
             mcdialogueB(
-                "The Shrines…",
-                "The Decay…",
+                "Wielder Jomon?",
                 "Nothing really…"
             )
 
-            if (var(VAR_RESULT) == 0) {
-                msgbox((
-                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Shrines? I don't know much about them…\n"
-                    "Father used to pray at Shrines.\p"
-                    "You can try asking him about it, though\nI'm not sure you'll get an answer."
-                ))
-                setflag(FLAG_TALKED_TO_GIRL)
-
-            } elif (var(VAR_RESULT) == 1) {
-                msgbox((
-                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}I've been hearing about the whole\nDecay situation…\l"
-                    "Scary stuff…\p"
-                    "You want to ask Father about that?\nI mean, you can try…\l"
-                    "But I'm not sure you'll get an answer."
-                ))
-                setflag(FLAG_TALKED_TO_GIRL)
-
-            } else {
-                msgbox((
-                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Oh, alright then."
-                ))
-            }
             closemessage
+
+            if (var(VAR_RESULT) == 0) {
+                waitse
+                playse(SE_PIN)
+                applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
+                waitmovement(0)
+
+                msgbox(format(
+                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Jomon is my father! He was a Wielder\nin his youth, almost a century back!\p"
+                    "He was the oldest member of the Toku Council… well, until he was too old.\l"
+                    "What do you need him for?"
+                ))
+
+                mcdialogueB(
+                    "The Shrines…",
+                    "The Decay…",
+                    "Nothing really…"
+                )
+                closemessage
+
+                if (var(VAR_RESULT) == 0) {
+                    msgbox((
+                        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Shrines? I don't know much about them…\n"
+                        "Father used to pray at Shrines.\p"
+                        "You can try asking him about it, though\nI'm not sure you'll get an answer."
+                    ))
+                    setflag(FLAG_TALKED_TO_GIRL)
+
+                    closemessage
+
+                    applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right, delay_16))
+                    waitmovement(VAR_LAST_TALKED)
+                    msgbox(
+                        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}He's right over there!"
+                    )
+                    closemessage
+
+                    applymovement(VAR_LAST_TALKED, moves(face_left))
+                } elif (var(VAR_RESULT) == 1) {
+                    msgbox((
+                        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}I've been hearing about the whole\nDecay situation…\l"
+                        "Scary stuff…\p"
+                        "You want to ask Father about that?\nI mean, you can try…\l"
+                        "But I'm not sure you'll get an answer."
+                    ))
+                    setflag(FLAG_TALKED_TO_GIRL)
+
+                    closemessage
+
+                    applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right, delay_16))
+                    waitmovement(VAR_LAST_TALKED)
+                    msgbox(
+                        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}He's right over there!"
+                    )
+                    closemessage
+
+                    applymovement(VAR_LAST_TALKED, moves(face_left))
+                } else {
+                    msgbox((
+                        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Oh, alright then."
+                    ))
+                }
+                closemessage
+            }
         }
     }
     
@@ -73,9 +107,87 @@ script Coreef_House1_Pupil {
 
 script Coreef_House1_Jomon {
     lock
-    msgbox((
-        // TODO EVA
-        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}"
-    ))
+
+    if (flag(FLAG_JOMON_NEEDS_WAKING_UP)) {
+        waitse
+        playse(SE_M_SNORE)
+        applymovement(VAR_LAST_TALKED, moves(emote_sleep))
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}Zzzzzzz…"
+        )
+        closemessage
+
+        delay(24)
+
+        applymovement(LOCALID_JOMON_GIRL, moves(walk_in_place_fast_right))
+        applymovement(LOCALID_PLAYER, moves(face_left))
+        waitmovement(LOCALID_JOMON_GIRL)
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Nothing you'll do will wake him up!\p"
+            "You'd need something strong-smelling\nenough to wake up the dead!"
+        )
+        closemessage
+    } else {
+        msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Youngling… What do you want?"
+        ))
+
+        mcdialogueB(
+            "Wielder Jomon?",
+            "Nothing really…"
+        )
+        closemessage
+
+        if (var(VAR_RESULT) == 0) {
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Hmm? XXXXX?"
+            )
+
+            mcdialogueB(
+                "WIELDER JOMON!!!"
+            )
+            closemessage
+
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}…Jomon?…{PAUSE 8} Oh, that's right, that's me!\n"
+                "I'm Jomon, the eldest of the Elders…"
+            )
+
+            playse(SE_PIN)
+            applymovement(VAR_LAST_TALKED, moves(emote_question_mark, delay_16 * 6))
+            waitmovement(VAR_LAST_TALKED)
+
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}Wait, Elder?{PAUSE 8} Wasn't I a Monk?\p"
+                "I…{PAUSE 8} I have no time for this!\p"
+                "The Winter Shrine awaits, I must\nget back!\p"
+                "I must…{PAUSE 8} yawn…{PAUSE 8}\nOh boy, isn't it terribly late?\p"
+                "Time…{PAUSE 8} yawn…{PAUSE 8} to nap…\p"
+                "Zzzzzzz…"
+            )
+
+            addobject(LOCALID_JOMON_GENGAR)
+            delay(1)
+            removeobject(LOCALID_JOMON_GENGAR)
+
+            closemessage
+
+            delay(24)
+
+            playse(SE_PIN)
+            applymovement(LOCALID_JOMON_GIRL, moves(face_right, emote_sweat))
+            applymovement(LOCALID_PLAYER, moves(face_left))
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Oh my, he's napping again…\p"
+                "Nothing you'll do will wake him up!\p"
+                "You'd need something strong-smelling\nenough to wake up the dead!"
+            )
+            closemessage
+
+            setflag(FLAG_JOMON_NEEDS_WAKING_UP)
+        }
+    }
+    
+
     release
 }
