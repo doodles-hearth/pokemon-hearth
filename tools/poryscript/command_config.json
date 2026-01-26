@@ -125,6 +125,9 @@
     },
     "getgamestat": {
         "var_name": "VAR_RESULT"
+    },
+    "chooseitem": {
+        "var_name": "VAR_ITEM_ID"
     }
   }
 }

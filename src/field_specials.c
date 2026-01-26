@@ -4875,3 +4875,18 @@ void InitEggGirlStepCounterFromSelectedPartyEgg(void) {
     ZeroMonData(&gPlayerParty[monId]);
     CompactPartySlots();
 }
+
+void ChooseItemFromBag(void)
+{
+    switch (VarGet(VAR_TEMP_1))
+    {
+    case POCKET_ITEMS:
+    case POCKET_POKE_BALLS:
+    case POCKET_TM_HM:
+    case POCKET_BERRIES:
+    case POCKET_KEY_ITEMS:
+        GoToBagMenu(ITEMMENULOCATION_CHOOSE_ITEM, VarGet(VAR_TEMP_1), CB2_ReturnToFieldContinueScript);
+    default:
+        break;
+    }
+}
