@@ -11,19 +11,134 @@ mapscripts SunriseVillage_Beach_MapScripts {
 const LOCALID_RIVAL = 1
 
 script SunriseVillage_Beach_EventScript_RivalSpeech {
-    lock
-	waitse
+	lock
+	setvar(VAR_TEMP_0, 0) //VAR_TEMP_0 used as a way to effectively make a for loop out of a while loop
+	if (var(VAR_FACING) == DIR_EAST){
+		waitse
+		playse(SE_PIN)
+		applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
+		waitmovement(0)
+		delay(48)
+		setspeaker(SP_NAME_NATSUKI)
+		msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Oy, {PLAYER}!\nOut of the way!\p"
+				"I've got three reps left!")
+		closemessage
+		applymovement(LOCALID_PLAYER, moves(walk_up, face_down))
+		waitmovement(0)
+		delay(60)
+		setspeaker(SP_NAME_NATSUKI)
+		while(var(VAR_TEMP_0) != 3){ call(SunriseVillage_Beach_EventScript_NatsukiTraining) }
+		closemessage
+		delay(48)
+		applymovement(LOCALID_PLAYER, moves(walk_down, face_right))
+		waitmovement(0)
+		setspeaker(SP_NAME_NATSUKI)
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hoo boy, there's nothing like workin' up a sweat on a bright, sunny morning!\pNow, what did you wanna-"))
+		closemessage
+	}
+	else {
+		delay(40)
+		setspeaker(SP_NAME_NATSUKI)
+		while(var(VAR_TEMP_0) != 2){ call(SunriseVillage_Beach_EventScript_NatsukiTraining) }
+		setspeaker(SP_NAME_NATSUKI)
+		message("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}One… {PAUSE 40}Two…{PAUSE 40}") //Neutral face mugshot
+		waitmessage
+		dynmultichoice(
+			0,
+			0,
+			TRUE,
+			10,
+			0,
+			DYN_MULTICHOICE_CB_NONE,
+			"HEY!",
+			"NATSUKI!",
+			"BOO!"
+		)
+		closemessage
+		waitse
+		switch(var(VAR_FACING)){
+			case DIR_SOUTH:
+				turnobject(LOCALID_RIVAL, DIR_NORTH)
+			case DIR_NORTH:
+				turnobject(LOCALID_RIVAL, DIR_SOUTH)
+			case DIR_WEST:
+				turnobject(LOCALID_RIVAL, DIR_EAST)
+		}
+		waitmovement(LOCALID_RIVAL)
+		//playse(SE_PIN)
+		//applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
+		//waitse
+		setspeaker(SP_NAME_NATSUKI)
+		message("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}AAAAAAAH!")
+		waitmovement(0)
+		playse(SE_LEDGE)
+		switch(var(VAR_FACING)){
+			case DIR_SOUTH:
+				applymovement(LOCALID_RIVAL, moves(face_up, lock_facing_direction, jump_2_down, unlock_facing_direction))
+			case DIR_NORTH:
+				applymovement(LOCALID_RIVAL, moves(face_down, lock_facing_direction, jump_2_up, unlock_facing_direction))
+			case DIR_WEST:
+				applymovement(LOCALID_RIVAL, moves(face_right, lock_facing_direction, jump_2_left, unlock_facing_direction))
+		}
+		waitse
+		waitmovement(0)
+		delay(20)
+		closemessage
+		delay(40)
+		switch(var(VAR_FACING))
+		{
+			case DIR_SOUTH:
+				applymovement(LOCALID_RIVAL, moves(walk_up * 2))
+			case DIR_NORTH:
+				applymovement(LOCALID_RIVAL, moves(walk_down * 2))
+			case DIR_WEST:
+				applymovement(LOCALID_RIVAL, moves(walk_right * 2))
+		}
+		waitmovement(0)
+		setspeaker(SP_NAME_NATSUKI)
+		msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{PLAYER}!\pI've told you dozens of times\nNOT to sneak up on me during training!\p"
+				"I almost whacked you upside the head!\p"
+				"…{PAUSE 30} …{PAUSE 30} …{PAUSE 30}\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}(You shoulda seen your face though…!)") //Smiling mugshot. Doing the mugshot call a second time right now to indicate a facial expression change once there's more than just the one mugshot
+		closemessage
+		delay(48)
+	}
+	fadeoutbgm(0)
+	// Volcano quake!
+	setvar(VAR_0x8004, 3)  // vertical pan
+	setvar(VAR_0x8005, 0)  // horizontal pan
+	setvar(VAR_0x8006, 20)  // num shakes
+	setvar(VAR_0x8007, 5)  // shake delay
+	special(ShakeCamera)
+	delay(16)
 	playse(SE_PIN)
-	applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
-	waitmovement(0)
+	applymovement(LOCALID_RIVAL, SunriseVillage_Beach_Movement_RivalSurprisedByQuake)
+	delay(16)
+	playse(SE_PIN)
+	applymovement(OBJ_EVENT_ID_PLAYER, SunriseVillage_Beach_Movement_PlayerSurprisedByQuake)
+	waitstate
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	waitmovement(LOCALID_RIVAL)
 	delay(48)
-	faceplayer
+	fadeinbgm(0)
+	switch(var(VAR_FACING)) {
+		case DIR_SOUTH:
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+			applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp)
+		case DIR_NORTH:
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
+			applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterDown)
+		case DIR_WEST:
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
+			applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterRight)
+		case DIR_EAST:
+			turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
+			applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterLeft)
+	}
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, {PLAYER}! Come on, sit down next to me."
-	))
+	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0} Oh jeez, the quakes are\nstarting up again…\pI'm feeling really off-balance…\pLet's sit down…") //Feeling bad Mugshot
 	closemessage
-
+	applymovement(LOCALID_RIVAL, SunriseVillage_Beach_Movement_RivalSitsOnBench)
 	// Player sits next to rival
 	switch(var(VAR_FACING)) {
 		case DIR_SOUTH:
@@ -35,17 +150,17 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 		case DIR_EAST:
 			applymovement(OBJ_EVENT_ID_PLAYER, SunriseVillage_Beach_Movement_GoNextToRivalFromLeft)
 	}
-	waitmovement(0)
-	applymovement(LOCALID_RIVAL, SunriseVillage_Beach_Movement_RivalSitsOnBench)
-	waitmovement(0)
+	waitmovement(LOCALID_RIVAL)
+	waitmovement(LOCALID_PLAYER)
 
+	delay(72)
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}It's been crazy lately, huh?\p"
-		"With the Pokémon in Ginko Woods,\nand the volcano…\p"
-		"It feels like everything's\nabout to change.\p"
-		"Everyone is so anxious."
-	))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Life's been crazy lately, huh…\p"
+		"Between the Pokémon in Ginko Woods\ngoing rabid…\pAnd the volcano rumbling after being\ndormant all our lives…\p"
+		"All the adults are so anxious.\p"
+		"We haven't been allowed to leave the\nvillage for weeks now…!"
+	)
 	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, moves(emote_pensive))
 	msgbox(format(
@@ -64,71 +179,80 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	)
 	closemessage
 
-
 	switch(var(VAR_RESULT)) {
 		case 0:
 			setspeaker(SP_NAME_NATSUKI)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Nah, you know me.\nWe'll figure it out when we get there.\p"
-				"That's what I've always done,\neverything turns out fine eventually."
-			))
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Me? {PAUSE 20}Worried!?\nNo WAY!\p"
+				"Theres no point to worrying.{PAUSE 20}\nEverything turns out fine eventually.\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Just… {PAUSE 20}don't think too much about\nhow things are now."
+			)
 			closemessage
 
-			applymovement(LOCALID_RIVAL, Common_Movement_Delay48)
-			waitmovement(0)
+			delay(72)
 
 			setspeaker(SP_NAME_NATSUKI)
-			msgbox(format(
+			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, look.\p"
-				"You can see Yifu City very clearly\ntoday, it's gorgeous!"
-			))
-
+				"You can see Yifu City and the Shogunate\nover the horizon today.\pIsn't it incredible?"
+			)
+			closemessage
 			playse(SE_PIN)
 			applymovement(LOCALID_RIVAL, moves(emote_pensive))
 
-			msgbox(format(
-				"…"
-			))
-			closemessage
-
-			delay(48)
+			delay(60)
 			// They face each other
 			applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp)
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 
 			setspeaker(SP_NAME_NATSUKI)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}You okay there, {PLAYER}?\nYou look troubled.\p"
-				"Aren't you excited to become\na Pokémon Wielder?"
-			))
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Don't worry about me, {PLAYER}.\nWhat about you?\p"
+				"You've got anxiety written all\nover your face!\p"
+				"Like, aren't you at least excited\nto become a Pokémon Wielder?"
+			)
 		case 1:
 			setspeaker(SP_NAME_NATSUKI)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Huh?…\p"
-				"…Oh, sorry, I was just wondering\nwhich Pokémon I'm gonna be getting."
-			))
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}…{PAUSE 30}Huh?…\p"
+				"…Oh, it's nothing…"
+			)
 			closemessage
-
+			turnobject(LOCALID_PLAYER, DIR_SOUTH)
+			delay(72)
+			turnobject(LOCALID_RIVAL, DIR_NORTH)
+			delay(90)
+			turnobject(LOCALID_RIVAL, DIR_SOUTH)
+			setspeaker(SP_NAME_NATSUKI)
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, don't go looking all worried\nabout me like that!\p"
+				"I'm NOT nervous, if that's what\nyou're thinking!"
+			)
+			closemessage
+			turnobject(LOCALID_RIVAL, DIR_WEST)
 			applymovement(LOCALID_RIVAL, Common_Movement_Delay48)
 			waitmovement(0)
 
 			setspeaker(SP_NAME_NATSUKI)
-			msgbox(format(
+			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, look.\p"
-				"You can see Yifu City very clearly\ntoday, it's gorgeous!\p"
-				"…"
-			))
+				"You can see Yifu City and the Shogunate\nover the horizon today."
+			)
+			turnobject(LOCALID_PLAYER, DIR_WEST)
+			msgbox("Isn't it incredible?") //Not sure why nametag is redrawn here, would be nice if it wasnt
 			closemessage
-
-			delay(48)
+			playse(SE_PIN)
+			applymovement(LOCALID_RIVAL, moves(emote_pensive))
+			delay(60)
 			// They face each other
 			applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp)
 			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 
 			setspeaker(SP_NAME_NATSUKI)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}What about you, {PLAYER}?\nYou excited about getting\lyour own Pokémon?"
-			))
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}ANYWAYS…\p"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}You excited about finally\nbecoming a Pokémon Wielder?"
+			)
 	}
 
 	dynmultichoice(
@@ -147,28 +271,36 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	setspeaker(SP_NAME_NATSUKI)
 	switch (var(VAR_RESULT)) {
 		case 0:
-			msgbox(format(
+			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hell yeah!\p"
-				"We're going to make awesome Wielders,\nI can already tell.\p"
-				"Maybe you'll even be second best\none day…\l"
-				"Behind me, of course!"
-			))
+				"After we get our new buds,\nyou GOTTA train with me!\p"
+				"I don't want you falling\nTOO far behind, now!"
+			)
 		case 1:
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Uh, you're kidding, right?\p"
-				"It's going to be awesome.\nJust chill.\p"
-				"Once we get our Pokémon, we'll do\nwhatever we want!"
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Heh, getting cold feet right as your\ndream is coming true?\p"
+				"It's gonna be awesome!\p"
+				"We'll finally get to go out into the\nworld and blaze our own trails!\p"
+				"I can even become a sa-"
+				
+			)
+			closemessage
+			waitse
+			playse(SE_PIN)
+			applymovement(LOCALID_RIVAL, Common_Movement_ExclamationMark)
+			waitmovement(0)
+			delay(48)
+			setspeaker(SP_NAME_NATSUKI)
+			msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Ahhhh, I've already rattled your ear off about that enough this past week!\p"
+			"I'm getting ahead of myself now."
 			))
 		case 2:
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Oh c'mon, you're just pretending\nnot to be excited.\p"
-				"Look at you, acting all tough\nand silent…\lBut I see right through you!\p"
-				"I bet you'll be a great Wielder.\nMaybe even as good as me…\l"
-				"Probably not though!"
-			))
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Oh c'mon, {PLAYER}!\nYou've raved about wanting your\lown Pokémon for HOW many years now!?\p"
+				"Don't give me that Trubbish now!"
+			)
 	}
 	closemessage
-
 	delay(48)
 
 	// Volcano quake!
@@ -197,8 +329,8 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Woah, there it goes again!\n"
 		"You good, {PLAYER}?\p"
-		"Whew! Those quakes are no joke, huh?\p"
-		"Maybe the volcano's telling us\nto get to Elder Kaba's house already."
+		"Those quakes are no joke, huh.\p"
+		"Maybe the volcano's telling us\nto get to Elder Kaba's house already…?"
 	))
 	closemessage
 
@@ -212,7 +344,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Aw Shuckles, the distribution's\nalready started!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}MUK! The distribution's already started!\p"
 		"Let's go, {PLAYER}!!"
 	))
 	closemessage
@@ -221,7 +353,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	// Rival runs towards the village
 	applymovement(LOCALID_RIVAL, SunriseVillage_Beach_Movement_RivalRaces)
 	waitmovement(0)
-
+	delay(60)
 	setflag(FLAG_HIDE_SUNRISE_BEACH_RIVAL)
 	clearflag(FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS)
 	clearflag(FLAG_HIDE_BIGSIS_HOME)
@@ -230,6 +362,20 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	removeobject(LOCALID_RIVAL)
     release
     end
+}
+
+script SunriseVillage_Beach_EventScript_NatsukiTraining {
+	setspeaker(SP_NAME_NATSUKI)
+	message("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}One… {PAUSE 40}Two… {PAUSE 40}THREE!")
+	waitmessage
+	//closemessage
+	playse(SE_M_CUT)
+	applymovement(LOCALID_RIVAL, moves(walk_fast_left, delay_16 * 3, lock_facing_direction, walk_slow_right, unlock_facing_direction))
+	waitmovement(0)
+	waitse
+	delay(48)
+	addvar(VAR_TEMP_0, 1)
+	return
 }
 
 movement SunriseVillage_Beach_Movement_PlayerSurprisedByQuake {
@@ -344,33 +490,47 @@ script SunriseVillage_Event_ChildsMon {
 }
 
 movement SunriseVillage_Beach_Movement_RivalSitsOnBench {
+	walk_left * 4
 	walk_in_place_faster_left
-	delay_16 * 5
+	delay_16 * 3
 	step_end
 }
 
 movement SunriseVillage_Beach_Movement_GoNextToRivalFromLeft {
 	walk_up
-	walk_right
+	face_down
+	delay_8
+	face_left
+	delay_16
+	delay_8
+	walk_left * 3
 	walk_in_place_faster_left
 	step_end
 }
 
 movement SunriseVillage_Beach_Movement_GoNextToRivalFromTop {
+	face_left
+	delay_16 * 2
+	walk_left * 4
 	walk_in_place_faster_left
 	step_end
 }
 
 movement SunriseVillage_Beach_Movement_GoNextToRivalFromRight {
+	walk_left * 4
 	walk_up
 	walk_left
+	walk_in_place_faster_left
 	step_end
 }
 
 movement SunriseVillage_Beach_Movement_GoNextToRivalFromBottom {
-	walk_right
-	walk_up * 2
+	delay_16
+	walk_up
+	walk_left * 3
+	walk_up
 	walk_left
+	walk_in_place_faster_left
 	step_end
 }
 
@@ -384,6 +544,6 @@ movement SunriseVillage_Beach_Movement_RivalSeesDistribution {
 }
 
 movement SunriseVillage_Beach_Movement_RivalRaces {
-	walk_fast_right * 9
+	walk_faster_right * 9
 	step_end
 }
