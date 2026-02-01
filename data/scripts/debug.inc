@@ -65,12 +65,12 @@ Debug_CheatStart::
 	setflag FLAG_VISITED_SAKU_TOWN
 	setflag FLAG_VISITED_KURA_TOWN
 
-	giveitem ITEM_TOKU_MAP
-	giveitem ITEM_POKE_BALL, 20
-	giveitem ITEM_TM_SPLASH
-	giveitem ITEM_TM_EARTHQUAKE
-	giveitem ITEM_SECRET_SURF
-	giveitem ITEM_SECRET_CLIMB
+	additem ITEM_TOKU_MAP
+	additem ITEM_POKE_BALL, 20
+	additem ITEM_TM_SPLASH
+	additem ITEM_TM_EARTHQUAKE
+	additem ITEM_SECRET_SURF
+	additem ITEM_SECRET_CLIMB
 
 	resumefakertc
 

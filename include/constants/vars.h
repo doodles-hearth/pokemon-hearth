@@ -355,6 +355,7 @@
 // 0: is sailing
 // 1: is in Soulkeep
 // 2: is in Saberside
+// 3: is in Coreef
 #define VAR_SHIP_SABERSIDE_SOULKEEP                      0x40DE
 #define VAR_GIFT_UNUSED_2                                0x40DF // Var is written to, but never read
 #define VAR_GIFT_UNUSED_3                                0x40E0 // Var is written to, but never read

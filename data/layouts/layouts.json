@@ -6708,6 +6708,18 @@
       "secondary_tileset": "gTileset_HouseCoreef",
       "border_filepath": "data/layouts/Coreef_House1/border.bin",
       "blockdata_filepath": "data/layouts/Coreef_House1/map.bin"
+    },
+    {
+      "id": "LAYOUT_COREEF_HOUSE2",
+      "name": "Coreef_House2_Layout",
+      "width": 10,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseCoreef",
+      "border_filepath": "data/layouts/Coreef_House2/border.bin",
+      "blockdata_filepath": "data/layouts/Coreef_House2/map.bin"
     }
   ]
 }

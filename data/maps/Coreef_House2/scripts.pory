@@ -1,0 +1,88 @@
+mapscripts Coreef_House2_MapScripts {}
+
+script Coreef_House2_LittleGirl {
+    lock
+    faceplayer
+
+    msgbox((
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Hello!"
+    ))
+
+	if (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
+		mcdialogueB(
+			"Wielder Jomon?",
+			"Nothing really…"
+		)
+
+		closemessage
+
+		if(var(VAR_RESULT) == 0) {
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Elder Jomon? He's weird.\nHe's like, suuuuper old or something.\p"
+                "He's in bed all day, and all he says\nis silly nonense."
+			))
+		}
+	}
+
+	closemessage
+
+    release
+}
+
+script Coreef_House2_LittleBoy {
+    lock
+    faceplayer
+
+    msgbox((
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}Wanna play with us?"
+    ))
+
+	if (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
+		mcdialogueB(
+			"Wielder Jomon?",
+			"Nothing really…"
+		)
+
+		closemessage
+
+		if(var(VAR_RESULT) == 0) {
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}Ah, he lives in the house after\nthe cave.\p"
+                "Mama says he used to be a Priest and\nstuff. He makes me uncomfortable."
+			))
+		}
+	}
+
+	closemessage
+
+    release
+}
+
+script Coreef_House2_Woman {
+    lock
+    faceplayer
+
+    msgbox((
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_2 0}{SPEAKER NAME_WOMAN}What am I going to make for dinner…"
+    ))
+
+	if (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
+		mcdialogueB(
+			"Wielder Jomon?",
+			"Nothing really…"
+		)
+
+		closemessage
+
+		if(var(VAR_RESULT) == 0) {
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_2 0}{SPEAKER NAME_WOMAN}A Jomon lives on this island, but he\nhasn't been a Wielder for decades!\p"
+                "He hasn't been…{PAUSE 8} much for a while now.\nMakes me a little sad for him."
+			))
+		}
+	}
+
+	closemessage
+
+    release
+}

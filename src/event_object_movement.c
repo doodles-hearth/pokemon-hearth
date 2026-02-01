@@ -515,6 +515,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Npc_Cold,              OBJ_EVENT_PAL_TAG_COLD},
     {gObjectEventPal_Npc_Sakura,            OBJ_EVENT_PAL_TAG_SAKURA},
     {gObjectEventPal_Npc_Mountain,          OBJ_EVENT_PAL_TAG_MOUNTAIN},
+    {gObjectEventPal_CorsolaPolluted,       OBJ_EVENT_PAL_TAG_CORSOLA_POLLUTED},
     {gObjectEventPal_CrobatShadowsGolbat,   OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS},
     {gObjectEventPal_CrobatShadowsCrobat,   OBJ_EVENT_PAL_TAG_CROBAT_SHADOWS_BOSS},
     {gObjectEventPal_Samurai,               OBJ_EVENT_PAL_TAG_SAMURAI},

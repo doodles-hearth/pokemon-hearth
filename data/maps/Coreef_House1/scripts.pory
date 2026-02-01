@@ -17,90 +17,94 @@ script Coreef_House1_Pupil {
             "You'd need something strong-smelling\nenough to wake the dead!"
         )
         closemessage
-    } else {
-        if (flag(FLAG_TALKED_TO_GIRL)) {
+    } elif (flag(FLAG_TALKED_TO_GIRL)) {
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Go ahead, talk to him, don't be shy.\nRemember to speak loud!"
+        ))
+        closemessage
+    } elif (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Hello! We don't get a lot of visitors.\n"
+            "Are you looking for something?"
+        ))
+
+        mcdialogueB(
+            "Wielder Jomon?",
+            "Nothing really…"
+        )
+
+        closemessage
+
+        if (var(VAR_RESULT) == 0) {
+            waitse
+            playse(SE_PIN)
+            applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
+            waitmovement(0)
+
             msgbox(format(
-                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Go ahead, talk to him, don't be shy.\nRemember to speak loud!"
-            ))
-            closemessage
-        } else {
-            msgbox(format(
-                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Hello! We don't get a lot of visitors.\n"
-                "Are you looking for something?"
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Jomon is my father! He was a Wielder\nin his youth, almost a century back!\p"
+                "He was the oldest member of the Toku Council… well, until he was too old.\l"
+                "What do you need him for?"
             ))
 
             mcdialogueB(
-                "Wielder Jomon?",
+                "The Shrines…",
+                "The Decay…",
                 "Nothing really…"
             )
-
             closemessage
 
             if (var(VAR_RESULT) == 0) {
-                waitse
-                playse(SE_PIN)
-                applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
-                waitmovement(0)
-
-                msgbox(format(
-                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Jomon is my father! He was a Wielder\nin his youth, almost a century back!\p"
-                    "He was the oldest member of the Toku Council… well, until he was too old.\l"
-                    "What do you need him for?"
+                msgbox((
+                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Shrines? I don't know much about them…\n"
+                    "Father used to pray at Shrines.\p"
+                    "You can try asking him about it, though\nI'm not sure you'll get an answer."
                 ))
+                setflag(FLAG_TALKED_TO_GIRL)
 
-                mcdialogueB(
-                    "The Shrines…",
-                    "The Decay…",
-                    "Nothing really…"
+                closemessage
+
+                applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right, delay_16))
+                waitmovement(VAR_LAST_TALKED)
+                msgbox(
+                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}He's right over there!"
                 )
                 closemessage
 
-                if (var(VAR_RESULT) == 0) {
-                    msgbox((
-                        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Shrines? I don't know much about them…\n"
-                        "Father used to pray at Shrines.\p"
-                        "You can try asking him about it, though\nI'm not sure you'll get an answer."
-                    ))
-                    setflag(FLAG_TALKED_TO_GIRL)
+                applymovement(VAR_LAST_TALKED, moves(face_left))
+            } elif (var(VAR_RESULT) == 1) {
+                msgbox((
+                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}I've been hearing about the whole\nDecay situation…\l"
+                    "Scary stuff…\p"
+                    "You want to ask Father about that?\nI mean, you can try…\l"
+                    "But I'm not sure you'll get an answer."
+                ))
+                setflag(FLAG_TALKED_TO_GIRL)
 
-                    closemessage
-
-                    applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right, delay_16))
-                    waitmovement(VAR_LAST_TALKED)
-                    msgbox(
-                        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}He's right over there!"
-                    )
-                    closemessage
-
-                    applymovement(VAR_LAST_TALKED, moves(face_left))
-                } elif (var(VAR_RESULT) == 1) {
-                    msgbox((
-                        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}I've been hearing about the whole\nDecay situation…\l"
-                        "Scary stuff…\p"
-                        "You want to ask Father about that?\nI mean, you can try…\l"
-                        "But I'm not sure you'll get an answer."
-                    ))
-                    setflag(FLAG_TALKED_TO_GIRL)
-
-                    closemessage
-
-                    applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right, delay_16))
-                    waitmovement(VAR_LAST_TALKED)
-                    msgbox(
-                        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}He's right over there!"
-                    )
-                    closemessage
-
-                    applymovement(VAR_LAST_TALKED, moves(face_left))
-                } else {
-                    msgbox((
-                        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Oh, alright then."
-                    ))
-                }
                 closemessage
+
+                applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right, delay_16))
+                waitmovement(VAR_LAST_TALKED)
+                msgbox(
+                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}He's right over there!"
+                )
+                closemessage
+
+                applymovement(VAR_LAST_TALKED, moves(face_left))
+            } else {
+                msgbox((
+                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Oh, alright then."
+                ))
             }
+            closemessage
         }
+    } else {
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Hello! We don't get a lot of visitors."
+        ))
     }
+
+    closemessage
     
     release
 }
@@ -130,7 +134,7 @@ script Coreef_House1_Jomon {
         closemessage
         
         call(Coreef_House1_PickRaikouBalm)
-    } else {
+    } elif (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
         msgbox((
             "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Youngling… What do you want?"
         ))
@@ -151,10 +155,15 @@ script Coreef_House1_Jomon {
             )
             closemessage
 
+            playse(SE_PIN)
+            applymovement(VAR_LAST_TALKED, moves(emote_pensive))
+
             msgbox(
                 "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}…Jomon?…{PAUSE 8} Oh, that's right, that's me!\n"
                 "I'm Jomon, the eldest of the Elders…"
             )
+            waitse
+            waitmovement(0)
 
             playse(SE_PIN)
             applymovement(VAR_LAST_TALKED, moves(emote_question_mark, delay_16 * 6))
@@ -192,8 +201,11 @@ script Coreef_House1_Jomon {
 
             call(Coreef_House1_PickRaikouBalm)
         }
+    } else {
+        msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Youngling… What do you want?"
+        ))
     }
-    
 
     release
 }
@@ -339,6 +351,10 @@ script Coreef_House1_JomonWakesUp {
                 "THE DECAY!!!"
             )
             closemessage
+
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}The Decay…"
+            )
         case 1:
             msgbox(
                 "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}Hmm? Yes, I am fine! How about you?"
@@ -354,10 +370,4 @@ script Coreef_House1_JomonWakesUp {
             )
             closemessage
     }
-
-    msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}WOOOOOO!!!\nWhat is that SMELL?\p"
-        "It STINKS!\nBut I feel full of energy!!\p"
-        "…Who are you? What do you want?"
-    )
 }

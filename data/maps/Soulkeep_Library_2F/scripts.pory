@@ -30,7 +30,8 @@ script Soulkeep_Library_2F_EventScript_Hariko {
 	faceplayer
 	if (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}{FONT_SMALL}Wielder Jomon of Coreef Isle…\p"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}{FONT_SMALL}The Shrines seem to be the stemming points of the Decay…\lCould they also be used to cure it?\p"
+			"Wielder Jomon of Coreef Isle…\p"
 			"I wonder if his descendants still live there…{FONT_NORMAL}"
 		))
 	} else {
@@ -124,6 +125,12 @@ script Soulkeep_Library_1F_EventScript_Book_ShrineDecay {
 
 			applymovement(LOCALID_PLAYER, moves(face_right))
 			applymovement(LOCALID_LIBRARY_HARIKO, moves(face_right))
+
+			setvar(VAR_0x8004, 3) // vertical pan
+			setvar(VAR_0x8005, 0) // horizontal pan
+			setvar(VAR_0x8006, 50) // num shakes
+			setvar(VAR_0x8007, 2) // shake delay
+			special(ShakeCamera)
 
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}{SPEAKER NAME_LIBRARIAN}{FONT_SMALL}QUIET! THIS IS A LIBRARY!{FONT_NORMAL}"

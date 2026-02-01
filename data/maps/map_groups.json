@@ -720,7 +720,8 @@
     "Windycape_House2"
   ],
   "gMapGroup_IndoorCoreef": [
-    "Coreef_House1"
+    "Coreef_House1",
+    "Coreef_House2"
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"

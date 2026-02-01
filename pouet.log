@@ -1,0 +1,3 @@
+make[1]: Nothing to be done for 'all'.
+python3 tools/learnset_helpers/make_tutors.py tools/learnset_helpers/build/all_tutors.json
+tools/preproc/preproc data/event_scripts.s charmap.txt | arm-none-eabi-cpp -iquote include -Wno-trigraphs -DMODERN=1 -DTESTING=0 -DEMERALD -std=gnu17 -I include - | tools/preproc/preproc -ie data/event_scripts.s charmap.txt | arm-none-eabi-as -mcpu=arm7tdmi -march=armv4t -meabi=5 --defsym MODERN=1 --defsym EMERALD=1 -o build/emerald/data/event_scripts.o
