@@ -260,7 +260,7 @@
 #define FLAG_RECEIVED_TM_ROAR                0xE7
 #define FLAG_RECEIVED_TM_GIGA_DRAIN          0xE8
 
-#define FLAG_DUMMY                           0xE9
+#define FLAG_UNUSED_0xE9                     0xE9
 
 #define FLAG_RECEIVED_TM_REST                0xEA
 #define FLAG_RECEIVED_TM_ATTRACT             0xEB
@@ -683,7 +683,7 @@
 #define FLAG_TRIGGERED_LOCKDOWN 0x276
 #define FLAG_DEMO_END      0x277
 #define FLAG_RIDING_MINECART 0x278
-#define FLAG_UNUSED_0x279  0x279 // Unused Flag
+#define FLAG_DUMMY         0x279
 #define FLAG_UNUSED_0x27A  0x27A // Unused Flag
 #define FLAG_UNUSED_0x27B  0x27B // Unused Flag
 #define FLAG_UNUSED_0x27C  0x27C // Unused Flag

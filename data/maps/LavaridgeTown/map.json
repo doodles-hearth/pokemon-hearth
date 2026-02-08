@@ -321,7 +321,7 @@
       "y": 5,
       "elevation": 3,
       "item": "ITEM_ICE_HEAL",
-      "flag": "0"
+      "flag": "FLAG_DUMMY"
     }
   ]
 }
