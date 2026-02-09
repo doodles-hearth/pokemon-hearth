@@ -1,6 +1,7 @@
 #include "global.h"
 #include "battle.h"
 #include "battle_anim.h"
+#include "constants/items.h"
 #include "decompress.h"
 #include "graphics.h"
 #include "main.h"
@@ -78,7 +79,8 @@ static u16 GetBattlerPokeballItemId(enum BattlerId battler);
 #define GFX_TAG_BEAST_BALL   55026
 #define GFX_TAG_CHERISH_BALL 55027
 // TODO: ITEM_LIGHT_POKE_BALL (Light Ball)
-#define GFX_TAG_KABA_BALL    55030
+#define GFX_TAG_LIGHT_BALL   55028
+#define GFX_TAG_KABA_BALL    55039
 
 static const struct OamData sBallOamData =
 {
@@ -243,18 +245,21 @@ static const union AffineAnimCmd *const sAffineAnim_BallRotate[] =
 #define tBattler         data[3]
 #define tOpponentBattler data[4]
 
-#define POKE_BALL_SPRITE(Tag, Gfx, Pal)        \
-    .pic = {Gfx, 384, Tag},                    \
-    .palette = {Pal, Tag},                     \
-    .spriteTemplate =                          \
-    {                                          \
-        .tileTag = Tag,                        \
-        .paletteTag = Tag,                     \
-        .oam = &sBallOamData,                  \
-        .anims = sBallAnimSequences,           \
-        .affineAnims = sAffineAnim_BallRotate, \
-        .callback = SpriteCB_BallThrow,        \
+#define GENERIC_POKE_BALL_SPRITE(Tag, Gfx, Pal, size, _oam, _anims, _affineAnims) \
+    .pic = {Gfx, size, Tag},                                                      \
+    .palette = {Pal, Tag},                                                        \
+    .spriteTemplate =                                                             \
+        {                                                                         \
+            .tileTag = Tag,                                                       \
+            .paletteTag = Tag,                                                    \
+            .oam = _oam,                                                          \
+            .anims = _anims,                                                      \
+            .affineAnims = _affineAnims,                                          \
+            .callback = SpriteCB_BallThrow,                                       \
     }
+
+#define POKE_BALL_SPRITE(Tag, Gfx, Pal) GENERIC_POKE_BALL_SPRITE(Tag, Gfx, Pal, 384, &sBallOamData, sBallAnimSequences, sAffineAnim_BallRotate)
+#define INTRO_POKE_BALL_SPRITE(Tag, Gfx, Pal) GENERIC_POKE_BALL_SPRITE(Tag, Gfx, Pal, 1536, &sIntroBallOamData, sIntroBallAnimSequences, gDummySpriteAffineAnimTable)
 
 const struct PokeBallSprite gPokeBalls[POKEBALL_COUNT] =
 {
@@ -414,17 +419,23 @@ const struct PokeBallSprite gPokeBalls[POKEBALL_COUNT] =
         .itemId = ITEM_PARK_BALL,
     },
 
-    [BALL_LIGHT]   =
-    {
-        POKE_BALL_SPRITE(GFX_TAG_BEAST_BALL, gBallGfx_Beast, gBallPal_Beast),
-        .itemId = ITEM_LIGHT_POKE_BALL,
-    },
 
     [BALL_CHERISH] =
     {
         POKE_BALL_SPRITE(GFX_TAG_CHERISH_BALL, gBallGfx_Cherish, gBallPal_Cherish),
         .itemId = ITEM_CHERISH_BALL,
     },
+
+    [BALL_LIGHT] =
+    {
+        POKE_BALL_SPRITE(GFX_TAG_LIGHT_BALL, gBallGfx_Heavy, gBallPal_Heavy),
+        .itemId = ITEM_LIGHT_BALL,
+    },
+    [BALL_KABA] =
+    {
+        INTRO_POKE_BALL_SPRITE(GFX_TAG_KABA_BALL, gBallGfx_Kaba, gBallPal_Kaba),
+        .itemId = ITEM_NONE,
+    }
 };
 
 u8 DoPokeballSendOutAnimation(enum BattlerId battler, s16 pan, u8 kindOfThrow)
@@ -1193,9 +1204,9 @@ void CreateKababallSpriteToReleaseMon(u8 monSpriteId, u8 monPalNum, u8 x, u8 y, 
 {
     u8 spriteId;
 
-    LoadCompressedSpriteSheetUsingHeap(&gPokeBalls[BALL_POKE].pic);
-    LoadSpritePalette(&gPokeBalls[BALL_POKE].palette);
-    spriteId = CreateSprite(&gPokeBalls[BALL_POKE].spriteTemplate, x, y, subpriority);
+    LoadCompressedSpriteSheetUsingHeap(&gPokeBalls[BALL_KABA].pic);
+    LoadSpritePalette(&gPokeBalls[BALL_KABA].palette);
+    spriteId = CreateSprite(&gPokeBalls[BALL_KABA].spriteTemplate, x, y, subpriority);
 
     gSprites[spriteId].sMonSpriteId = monSpriteId;
     gSprites[spriteId].sFinalMonX = gSprites[monSpriteId].x;
