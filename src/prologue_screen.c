@@ -98,7 +98,7 @@ static bool32 PrintPrologueMessage(u8 taskId, const u8 *text, u32 x, u32 y)
         break;
     case 1:
         RunTextPrinters();
-        if (!IsTextPrinterActive(windowId))
+        if (!IsTextPrinterActiveOnWindow(windowId))
         {
             gTasks[taskId].tPrintState = 0;
             return TRUE;

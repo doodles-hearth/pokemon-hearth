@@ -700,7 +700,7 @@ static void Task_KabaSpeech_GreetingsTraveler(u8 taskId)
 
 static void Task_KabaSpeech_AndThis(u8 taskId)
 {
-    if (!IsTextPrinterActive(WIN_TEXT))
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
     {
         KabaSpeech_PrintMessageBox(sKabaSpeech_AndThis);
         sKabaSpeech->timer = 30;
@@ -711,7 +711,7 @@ static void Task_KabaSpeech_AndThis(u8 taskId)
 static void Task_KabaSpeech_ReleaseJoltikFromPokeball(u8 taskId)
 {
     u32 spriteId;
-    if (!IsTextPrinterActive(WIN_TEXT))
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
     {
         if (sKabaSpeech->timer)
         {
@@ -742,7 +742,7 @@ static void Task_KabaSpeech_JoltikAPokemon(u8 taskId)
 
 static void Task_KabaSpeech_MainTalk(u8 taskId)
 {
-    if (!IsTextPrinterActive(WIN_TEXT))
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
     {
         KabaSpeech_PrintMessageBox(sKabaSpeech_MainTalk);
         gTasks[taskId].func = Task_KabaSpeech_ReturnJoltik;
@@ -751,7 +751,7 @@ static void Task_KabaSpeech_MainTalk(u8 taskId)
 
 static void Task_KabaSpeech_ReturnJoltik(u8 taskId)
 {
-    if (!IsTextPrinterActive(WIN_TEXT))
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
     {
         u32 spriteId = sKabaSpeech->monSpriteId;
         sKabaSpeech->ballSpriteId = CreateIntroPokeballSprite(spriteId, gSprites[spriteId].oam.paletteNum, MON_POS_X, MON_POS_Y, 0, 0, 32, 0x00007FFF);
@@ -940,7 +940,7 @@ static void Task_KabaSpeech_MoveMugshotsBack(u8 taskId)
 
 static void Task_KabaSpeech_AskForName(u8 taskId)
 {
-    if (!IsTextPrinterActive(WIN_TEXT))
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
     {
         sKabaSpeech->timer = 60;
     
@@ -951,7 +951,7 @@ static void Task_KabaSpeech_AskForName(u8 taskId)
 
 static void Task_KabaSpeech_WaitBeforeNamingScreen(u8 taskId)
 {
-    if ((!IsTextPrinterActive(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
+    if ((!IsTextPrinterActiveOnWindow(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
     {
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_KabaSpeech_DoNamingScreen;
@@ -1016,7 +1016,7 @@ static void Task_KabaSpeech_HandleConfirmNameInput(u8 taskId)
 
 static void Task_KabaSpeech_ConfirmPlayerName(u8 taskId)
 {
-    if ((!IsTextPrinterActive(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
+    if ((!IsTextPrinterActiveOnWindow(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
     {
         ClearDialogWindowAndFrameToTransparent(WIN_TEXT, TRUE);
         gTasks[taskId].func = Task_KabaSpeech_YourJourneyStartsHere;
@@ -1039,7 +1039,7 @@ static void Task_KabaSpeech_YourJourneyStartsHere(u8 taskId)
 
 static void Task_KabaSpeech_CloseMsgbox(u8 taskId)
 {
-    if ((!IsTextPrinterActive(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
+    if ((!IsTextPrinterActiveOnWindow(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
     {
         ClearDialogWindowAndFrameToTransparent(WIN_TEXT, TRUE);
         gTasks[taskId].func = Task_KabaSpeech_FadeAwayEverything;

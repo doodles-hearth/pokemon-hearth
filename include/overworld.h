@@ -97,6 +97,7 @@ void SetDynamicWarpWithCoords(s32 unused, s8 mapGroup, s8 mapNum, s8 warpId, s8 
 void SetWarpDestinationToDynamicWarp(u8 unusedWarpId);
 void SetWarpDestinationToHealLocation(u8 healLocationId);
 void SetWarpDestinationToLastHealLocation(void);
+void SetWarpDestinationForTeleport(void);
 void SetLastHealLocationWarp(u8 healLocationId);
 void UpdateEscapeWarp(s16 x, s16 y);
 void SetEscapeWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y);
@@ -190,6 +191,6 @@ enum ItemObtainFlags
     FLAG_GET_ITEM_OBTAINED,
     FLAG_SET_ITEM_OBTAINED,
 };
-bool8 GetSetItemObtained(u16 item, enum ItemObtainFlags caseId);
+bool8 GetSetItemObtained(enum Item item, enum ItemObtainFlags caseId);
 
 #endif // GUARD_OVERWORLD_H

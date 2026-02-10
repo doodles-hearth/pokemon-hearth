@@ -950,6 +950,7 @@ extern const u8 gBattleAnimStatus_Freeze[];
 extern const u8 gBattleAnimStatus_Curse[];
 extern const u8 gBattleAnimStatus_Nightmare[];
 extern const u8 gBattleAnimStatus_Frostbite[];
+extern const u8 gBattleAnimMove_FlipperSplash[];
 
 // general animations
 extern const u8 gBattleAnimGeneral_StatsChange[];
@@ -1020,8 +1021,5 @@ extern const u8 gBattleAnimSpecial_BallThrowWithTrainer[];
 extern const u8 gBattleAnimSpecial_SubstituteToMon[];
 extern const u8 gBattleAnimSpecial_MonToSubstitute[];
 extern const u8 gBattleAnimSpecial_CriticalCaptureBallThrow[];
-
-// new animations
-extern const u8 gBattleAnimMove_FlipperSplash[];
 
 #endif // GUARD_BATTLE_ANIM_SCRIPTS_H

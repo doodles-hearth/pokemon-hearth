@@ -597,7 +597,7 @@ static u16 NationalPokedexNumToSpeciesHGSS(u16 nationalNum);
 u32 GetSpeciesNameFontId(u32 nameWidth);
 u32 GetSpeciesNameWidthInChars(const u8 *speciesName);
 bool32 IsSpeciesAlcremie(u32 targetSpecies);
-bool32 IsItemSweet(u32 item);
+bool32 IsItemSweet(enum Item item);
 
 //Stat bars by DizzyEgg
 #define TAG_STAT_BAR 4097
@@ -2313,7 +2313,6 @@ static void LoadPokedexBgPalette(bool8 isSearchResults)
             LoadPalette(sPokedexPlusHGSS_Default_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(6 * 16 - 1));
         else
             LoadPalette(sPokedexPlusHGSS_National_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(6 * 16 - 1));
-        LoadPalette(GetOverworldTextboxPalettePtr(), 0xF0, 32);
     }
     else
     {
@@ -2323,9 +2322,9 @@ static void LoadPokedexBgPalette(bool8 isSearchResults)
             LoadPalette(sPokedexPlusHGSS_Default_dark_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(6 * 16 - 1));
         else
             LoadPalette(sPokedexPlusHGSS_National_dark_Pal + 1, BG_PLTT_ID(0) + 1, PLTT_SIZEOF(6 * 16 - 1));
-        LoadPalette(GetOverworldTextboxPalettePtr(), 0xF0, 32);
     }
 
+    LoadPalette(GetOverworldTextboxPalettePtr(), BG_PLTT_ID(15), PLTT_SIZE_4BPP);
 }
 
 
@@ -4881,7 +4880,7 @@ static void Task_LoadStatsScreen(u8 taskId)
         PrintStatsScreen_Moves_BottomText(taskId);
         PrintStatsScreen_Moves_Bottom(taskId);
         if (!sPokedexListItem->owned)
-            LoadPalette(gPlttBufferUnfaded + 1, 0x31, 0x1E);
+            LoadPalette(gPlttBufferUnfaded + 1, BG_PLTT_ID(3) + 1, 30);
         StatsPage_PrintNavigationButtons(); //sText_Stats_Buttons
         gMain.state++;
         break;
@@ -5090,7 +5089,7 @@ static bool8 CalculateMoves(void)
     return TRUE;
 }
 
-static u16 GetSelectedMove(u32 species, u32 selected)
+static enum Move GetSelectedMove(u32 species, u32 selected)
 {
     if (selected < sPokedexView->numEggMoves)
     {
@@ -5115,10 +5114,10 @@ static void PrintStatsScreen_Moves_Top(u8 taskId)
     u8 moves_x = 5;
     u8 moves_y = 3;
 
-    u32 item = ITEM_MASTER_BALL;
+    enum Item item = ITEM_MASTER_BALL;
     u32 species = NationalPokedexNumToSpeciesHGSS(sPokedexListItem->dexNum);
     u32 selected = sPokedexView->moveSelected;
-    u32 move = GetSelectedMove(species, selected);
+    enum Move move = GetSelectedMove(species, selected);
     //Moves selected from move max
     ConvertIntToDecimalStringN(gStringVar1, (selected+1), STR_CONV_MODE_RIGHT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar2, sPokedexView->movesTotal, STR_CONV_MODE_RIGHT_ALIGN, 3);
@@ -5141,7 +5140,7 @@ static void PrintStatsScreen_Moves_Top(u8 taskId)
     }
     else if (move)
     {
-        u32 TMHMItemId = ITEM_NONE;
+        enum Item TMHMItemId = ITEM_NONE;
         for (u32 i = 0; i < NUM_ALL_MACHINES; i++)
         {
             if (move == GetTMHMMoveId(i + 1))
@@ -5195,7 +5194,7 @@ static void PrintStatsScreen_Moves_Description(u8 taskId)
     u8 moves_y = 5;
 
     u32 species = NationalPokedexNumToSpeciesHGSS(sPokedexListItem->dexNum);
-    u32 move = GetSelectedMove(species, sPokedexView->moveSelected);
+    enum Move move = GetSelectedMove(species, sPokedexView->moveSelected);
 
     //Move description
     if (gTasks[taskId].data[5] == 0)
@@ -5238,7 +5237,7 @@ static void PrintStatsScreen_Moves_Bottom(u8 taskId)
     u8 contest_jam = 0;
 
     u32 species = NationalPokedexNumToSpeciesHGSS(sPokedexListItem->dexNum);
-    u32 move = GetSelectedMove(species, sPokedexView->moveSelected);
+    enum Move move = GetSelectedMove(species, sPokedexView->moveSelected);
 
     //Power + Accuracy
     if (gTasks[taskId].data[5] == 0)
@@ -6411,7 +6410,7 @@ bool32 IsSpeciesAlcremie(u32 targetSpecies)
     return GET_BASE_SPECIES_ID(targetSpecies) == SPECIES_ALCREMIE;
 }
 
-bool32 IsItemSweet(u32 item)
+bool32 IsItemSweet(enum Item item)
 {
     return item >= ITEM_STRAWBERRY_SWEET && item <= ITEM_RIBBON_SWEET;
 }
