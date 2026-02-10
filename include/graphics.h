@@ -217,16 +217,12 @@ extern const u32 gMultiBattleIntroBg_Opponent_Tilemap[];
 extern const u32 gMultiBattleIntroBg_Player_Tilemap[];
 
 // battle environments
+
 extern const u32 gBattleEnvironmentTiles_TallGrass[];
 extern const u32 gBattleEnvironmentTilemap_TallGrass[];
 extern const u32 gBattleEnvironmentAnimTiles_TallGrass[];
 extern const u32 gBattleEnvironmentAnimTilemap_TallGrass[];
 extern const u16 gBattleEnvironmentPalette_TallGrass[];
-extern const u32 gBattleEnvironmentTiles_TallGrassBlue[];
-extern const u32 gBattleEnvironmentTilemap_TallGrassBlue[];
-extern const u32 gBattleEnvironmentAnimTiles_TallGrassBlue[];
-extern const u32 gBattleEnvironmentAnimTilemap_TallGrassBlue[];
-extern const u16 gBattleEnvironmentPalette_TallGrassBlue[];
 extern const u32 gBattleEnvironmentTiles_LongGrass[];
 extern const u32 gBattleEnvironmentTilemap_LongGrass[];
 extern const u32 gBattleEnvironmentAnimTiles_LongGrass[];
@@ -267,8 +263,6 @@ extern const u32 gBattleEnvironmentTilemap_Building[];
 extern const u32 gBattleEnvironmentAnimTiles_Building[];
 extern const u32 gBattleEnvironmentAnimTilemap_Building[];
 extern const u16 gBattleEnvironmentPalette_Building[];
-extern const u32 gBattleEnvironmentTiles_Plain[];
-extern const u32 gBattleEnvironmentTilemap_Plain[];
 extern const u16 gBattleEnvironmentPalette_Plain[];
 extern const u16 gBattleEnvironmentPalette_Frontier[];
 extern const u32 gBattleEnvironmentTiles_Stadium[];
@@ -281,9 +275,9 @@ extern const u16 gBattleEnvironmentPalette_Rayquaza[];
 extern const u16 gBattleEnvironmentPalette_Kyogre[];
 extern const u16 gBattleEnvironmentPalette_Groudon[];
 extern const u16 gBattleEnvironmentPalette_BuildingGym[];
-extern const u16 gBattleEnvironmentPalette_StadiumLeader[];
-extern const u16 gBattleEnvironmentPalette_BuildingAqua[];
-extern const u16 gBattleEnvironmentPalette_BuildingMagma[];
+extern const u16 gBattleEnvironmentPalette_BuildingLeader[];
+extern const u16 gBattleEnvironmentPalette_StadiumAqua[];
+extern const u16 gBattleEnvironmentPalette_StadiumMagma[];
 extern const u16 gBattleEnvironmentPalette_StadiumSidney[];
 extern const u16 gBattleEnvironmentPalette_StadiumPhoebe[];
 extern const u16 gBattleEnvironmentPalette_StadiumGlacia[];
@@ -291,15 +285,20 @@ extern const u16 gBattleEnvironmentPalette_StadiumDrake[];
 extern const u16 gBattleEnvironmentPalette_StadiumWallace[];
 // Custom
 extern const u32 gBattleEnvironmentTiles_GinkoWoods[];
+extern const u16 gBattleEnvironmentPalette_GinkoWoods[];
 extern const u32 gBattleEnvironmentTilemap_GinkoWoods[];
+extern const u32 gBattleEnvironmentTiles_Plains[];
+extern const u16 gBattleEnvironmentPalette_Plains[];
+extern const u32 gBattleEnvironmentTilemap_Plains[];
+extern const u32 gBattleEnvironmentTiles_TallGrassBlue[];
+extern const u16 gBattleEnvironmentPalette_TallGrassBlue[];
+extern const u32 gBattleEnvironmentTilemap_TallGrassBlue[];
+extern const u32 gBattleEnvironmentAnimTiles_TallGrassBlue[];
+extern const u32 gBattleEnvironmentAnimTilemap_TallGrassBlue[];
 extern const u32 gBattleEnvironmentAnimTiles_GinkoWoods[];
 extern const u32 gBattleEnvironmentAnimTilemap_GinkoWoods[];
-extern const u16 gBattleEnvironmentPalette_GinkoWoods[];
-extern const u32 gBattleEnvironmentTiles_Plains[];
-extern const u32 gBattleEnvironmentTilemap_Plains[];
 extern const u32 gBattleEnvironmentAnimTiles_Plains[];
 extern const u32 gBattleEnvironmentAnimTilemap_Plains[];
-extern const u16 gBattleEnvironmentPalette_Plains[];
 
 // Pokédex
 extern const u32 gPokedexInterface_Gfx[];

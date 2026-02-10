@@ -306,7 +306,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .camouflageBlend = BUILDING_CAMOUFLAGE_BLEND,
         .entry = ENVIRONMENT_ENTRY(Building),
         .background = ENVIRONMENT_BACKGROUND(Building),
-        .palette = gBattleEnvironmentPalette_StadiumLeader,
+        .palette = gBattleEnvironmentPalette_BuildingLeader,
         .battleIntroSlide = BUILDING_BATTLE_INTRO_SLIDE,
     },
 
@@ -319,7 +319,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .camouflageBlend = BUILDING_CAMOUFLAGE_BLEND,
         .entry = ENVIRONMENT_ENTRY(Building),
         .background = ENVIRONMENT_BACKGROUND(Stadium),
-        .palette = gBattleEnvironmentPalette_BuildingMagma,
+        .palette = gBattleEnvironmentPalette_StadiumMagma,
         .battleIntroSlide = BUILDING_BATTLE_INTRO_SLIDE,
     },
 
@@ -332,7 +332,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .camouflageBlend = BUILDING_CAMOUFLAGE_BLEND,
         .entry = ENVIRONMENT_ENTRY(Building),
         .background = ENVIRONMENT_BACKGROUND(Stadium),
-        .palette = gBattleEnvironmentPalette_BuildingAqua,
+        .palette = gBattleEnvironmentPalette_StadiumAqua,
         .battleIntroSlide = BUILDING_BATTLE_INTRO_SLIDE,
     },
 

@@ -1145,8 +1145,7 @@ const u16 gItemIconPalette_PoisonBarb[] = INCBIN_U16("graphics/items/icon_palett
 
 
 const u32 gItemIcon_Sand[] = INCBIN_U32("graphics/items/icons/sand.4bpp.smol");
-const u32 gItemIcon_SoftSand[] = INCBIN_U32("graphics/items/icons/soft_sand.4bpp.smol");
-const u16 gItemIconPalette_SoftSand[] = INCBIN_U16("graphics/items/icons/soft_sand.gbapal");
+const u16 gItemIconPalette_SoftSand[] = INCBIN_U16("graphics/items/icons/sand.gbapal");
 
 const u32 gItemIcon_SharpBeak[] = INCBIN_U32("graphics/items/icons/sharp_beak.4bpp.smol");
 const u16 gItemIconPalette_SharpBeak[] = INCBIN_U16("graphics/items/icon_palettes/sharp_beak.gbapal");

@@ -1,0 +1,567 @@
+tools/scaninc/scaninc -M build/emerald/src/battle_bg.d -I include -I tools/agbcc/include src/battle_bg.c
+/usr/lib/gcc/arm-none-eabi/13.2.1/cc1 -quiet <flags> -o build/emerald/src/battle_bg.o src/battle_bg.c
+tools/compresSmol/compresSmol -w graphics/items/icons/ability_capsule.4bpp graphics/items/icons/ability_capsule.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ability_patch.4bpp graphics/items/icons/ability_patch.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ability_shield.4bpp graphics/items/icons/ability_shield.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/abomasite.4bpp graphics/items/icons/abomasite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/absolite.4bpp graphics/items/icons/absolite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/absorb_bulb.4bpp graphics/items/icons/absorb_bulb.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/acro_bike.4bpp graphics/items/icons/acro_bike.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/adamant_crystal.4bpp graphics/items/icons/adamant_crystal.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/adamant_orb.4bpp graphics/items/icons/adamant_orb.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/adrenaline_orb.4bpp graphics/items/icons/adrenaline_orb.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/aerodactylite.4bpp graphics/items/icons/aerodactylite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/aggronite.4bpp graphics/items/icons/aggronite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/aguav_berry.4bpp graphics/items/icons/aguav_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/air_balloon.4bpp graphics/items/icons/air_balloon.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/alakazite.4bpp graphics/items/icons/alakazite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/aloraichium_z.4bpp graphics/items/icons/aloraichium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/altarianite.4bpp graphics/items/icons/altarianite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ampharosite.4bpp graphics/items/icons/ampharosite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/amulet_coin.4bpp graphics/items/icons/amulet_coin.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/apicot_berry.4bpp graphics/items/icons/apicot_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/apricorn.4bpp graphics/items/icons/apricorn.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/armor_fossil.4bpp graphics/items/icons/armor_fossil.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/armorite_ore.4bpp graphics/items/icons/armorite_ore.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ashiis_scarf.4bpp graphics/items/icons/ashiis_scarf.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/assault_vest.4bpp graphics/items/icons/assault_vest.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/audinite.4bpp graphics/items/icons/audinite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/aurora_ticket.4bpp graphics/items/icons/aurora_ticket.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/auspicious_armor.4bpp graphics/items/icons/auspicious_armor.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/aux_bottle.4bpp graphics/items/icons/aux_bottle.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/aux_powerguard.4bpp graphics/items/icons/aux_powerguard.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/babiri_berry.4bpp graphics/items/icons/babiri_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/balm_mushroom.4bpp graphics/items/icons/balm_mushroom.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/banettite.4bpp graphics/items/icons/banettite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/basement_key.4bpp graphics/items/icons/basement_key.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/battle_stat_item.4bpp graphics/items/icons/battle_stat_item.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/bead_mail.4bpp graphics/items/icons/bead_mail.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/beast_ball.4bpp graphics/items/icons/beast_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/beedrillite.4bpp graphics/items/icons/beedrillite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/belue_berry.4bpp graphics/items/icons/belue_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/aspear_berry.4bpp graphics/items/icons/berries/aspear_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/cheri_berry.4bpp graphics/items/icons/berries/cheri_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/chesto_berry.4bpp graphics/items/icons/berries/chesto_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/durin_berry.4bpp graphics/items/icons/berries/durin_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/iapapa_berry.4bpp graphics/items/icons/berries/iapapa_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/kelpsy_berry.4bpp graphics/items/icons/berries/kelpsy_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/leppa_berry.4bpp graphics/items/icons/berries/leppa_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/lum_berry.4bpp graphics/items/icons/berries/lum_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/oran_berry.4bpp graphics/items/icons/berries/oran_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/pecha_berry.4bpp graphics/items/icons/berries/pecha_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/persim_berry.4bpp graphics/items/icons/berries/persim_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/rawst_berry.4bpp graphics/items/icons/berries/rawst_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berries/sitrus_berry.4bpp graphics/items/icons/berries/sitrus_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berry_juice.4bpp graphics/items/icons/berry_juice.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berry_pouch.4bpp graphics/items/icons/berry_pouch.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berry_sweet.4bpp graphics/items/icons/berry_sweet.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/berserk_gene.4bpp graphics/items/icons/berserk_gene.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/bicycle.4bpp graphics/items/icons/bicycle.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/big_bamboo_shoot.4bpp graphics/items/icons/big_bamboo_shoot.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/big_malasada.4bpp graphics/items/icons/big_malasada.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/big_mushroom.4bpp graphics/items/icons/big_mushroom.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/big_nugget.4bpp graphics/items/icons/big_nugget.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/big_pearl.4bpp graphics/items/icons/big_pearl.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/big_root.4bpp graphics/items/icons/big_root.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/bike_voucher.4bpp graphics/items/icons/bike_voucher.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/binding_band.4bpp graphics/items/icons/binding_band.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/black_augurite.4bpp graphics/items/icons/black_augurite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/black_belt.4bpp graphics/items/icons/black_belt.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/black_glasses.4bpp graphics/items/icons/black_glasses.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/black_sludge.4bpp graphics/items/icons/black_sludge.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/blastoisinite.4bpp graphics/items/icons/blastoisinite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/blazikenite.4bpp graphics/items/icons/blazikenite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/blue_orb.4bpp graphics/items/icons/blue_orb.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/bluk_berry.4bpp graphics/items/icons/bluk_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/blunder_policy.4bpp graphics/items/icons/blunder_policy.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/bone.4bpp graphics/items/icons/bone.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/booster_energy.4bpp graphics/items/icons/booster_energy.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/bottle_cap.4bpp graphics/items/icons/bottle_cap.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/bright_powder.4bpp graphics/items/icons/bright_powder.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/bug_memory.4bpp graphics/items/icons/bug_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/buginium_z.4bpp graphics/items/icons/buginium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/cameruptite.4bpp graphics/items/icons/cameruptite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/card_key.4bpp graphics/items/icons/card_key.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/casteliacone.4bpp graphics/items/icons/casteliacone.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/catching_charm.4bpp graphics/items/icons/catching_charm.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/cell_battery.4bpp graphics/items/icons/cell_battery.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/charcoal.4bpp graphics/items/icons/charcoal.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/charizardite_x.4bpp graphics/items/icons/charizardite_x.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/charizardite_y.4bpp graphics/items/icons/charizardite_y.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/charti_berry.4bpp graphics/items/icons/charti_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/cherish_ball.4bpp graphics/items/icons/cherish_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/chilan_berry.4bpp graphics/items/icons/chilan_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/chipped_pot.4bpp graphics/items/icons/chipped_pot.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/choice_band.4bpp graphics/items/icons/choice_band.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/choice_dumpling.4bpp graphics/items/icons/choice_dumpling.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/choice_scarf.4bpp graphics/items/icons/choice_scarf.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/choice_specs.4bpp graphics/items/icons/choice_specs.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/chople_berry.4bpp graphics/items/icons/chople_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/claw_fossil.4bpp graphics/items/icons/claw_fossil.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/cleanse_tag.4bpp graphics/items/icons/cleanse_tag.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/clear_amulet.4bpp graphics/items/icons/clear_amulet.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/clover_sweet.4bpp graphics/items/icons/clover_sweet.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/coba_berry.4bpp graphics/items/icons/coba_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/coin_case.4bpp graphics/items/icons/coin_case.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/colbur_berry.4bpp graphics/items/icons/colbur_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/contest_pass.4bpp graphics/items/icons/contest_pass.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/cornerstone_mask.4bpp graphics/items/icons/cornerstone_mask.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/cornn_berry.4bpp graphics/items/icons/cornn_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/cover_fossil.4bpp graphics/items/icons/cover_fossil.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/covert_cloak.4bpp graphics/items/icons/covert_cloak.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/cracked_pot.4bpp graphics/items/icons/cracked_pot.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/custap_berry.4bpp graphics/items/icons/custap_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/damp_rock.4bpp graphics/items/icons/damp_rock.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dark_memory.4bpp graphics/items/icons/dark_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/darkinium_z.4bpp graphics/items/icons/darkinium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dawn_stone.4bpp graphics/items/icons/dawn_stone.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/decidium_z.4bpp graphics/items/icons/decidium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/deep_sea_scale.4bpp graphics/items/icons/deep_sea_scale.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/deep_sea_tooth.4bpp graphics/items/icons/deep_sea_tooth.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/destiny_knot.4bpp graphics/items/icons/destiny_knot.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/devon_parts.4bpp graphics/items/icons/devon_parts.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/devon_scope.4bpp graphics/items/icons/devon_scope.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/diancite.4bpp graphics/items/icons/diancite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ditto_powder.4bpp graphics/items/icons/ditto_powder.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dive_ball.4bpp graphics/items/icons/dive_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dna_splicers.4bpp graphics/items/icons/dna_splicers.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dome_fossil.4bpp graphics/items/icons/dome_fossil.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dowsing_machine.4bpp graphics/items/icons/dowsing_machine.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dragon_fang.4bpp graphics/items/icons/dragon_fang.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dragon_memory.4bpp graphics/items/icons/dragon_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dragon_scale.4bpp graphics/items/icons/dragon_scale.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dragonium_z.4bpp graphics/items/icons/dragonium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dream_ball.4bpp graphics/items/icons/dream_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dream_mail.4bpp graphics/items/icons/dream_mail.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/drive.4bpp graphics/items/icons/drive.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dubious_disc.4bpp graphics/items/icons/dubious_disc.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dusk_ball.4bpp graphics/items/icons/dusk_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dusk_stone.4bpp graphics/items/icons/dusk_stone.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dynamax_band.4bpp graphics/items/icons/dynamax_band.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dynamax_candy.4bpp graphics/items/icons/dynamax_candy.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/dynite_ore.4bpp graphics/items/icons/dynite_ore.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/eevium_z.4bpp graphics/items/icons/eevium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/eject_button.4bpp graphics/items/icons/eject_button.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/eject_pack.4bpp graphics/items/icons/eject_pack.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/electirizer.4bpp graphics/items/icons/electirizer.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/electric_memory.4bpp graphics/items/icons/electric_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/electrium_z.4bpp graphics/items/icons/electrium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/energy_root.4bpp graphics/items/icons/energy_root.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/enigma_berry.4bpp graphics/items/icons/enigma_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/entei_statuette.4bpp graphics/items/icons/entei_statuette.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/eon_ticket.4bpp graphics/items/icons/eon_ticket.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/escape_rope.4bpp graphics/items/icons/escape_rope.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/escape_rope_knockoff.4bpp graphics/items/icons/escape_rope_knockoff.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ev_feather.4bpp graphics/items/icons/ev_feather.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/everstone.4bpp graphics/items/icons/everstone.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/eviolite.4bpp graphics/items/icons/eviolite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/exp_candy_l.4bpp graphics/items/icons/exp_candy_l.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/exp_candy_m.4bpp graphics/items/icons/exp_candy_m.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/exp_candy_s.4bpp graphics/items/icons/exp_candy_s.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/exp_candy_xl.4bpp graphics/items/icons/exp_candy_xl.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/exp_candy_xs.4bpp graphics/items/icons/exp_candy_xs.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/exp_charm.4bpp graphics/items/icons/exp_charm.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/exp_share.4bpp graphics/items/icons/exp_share.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/expert_belt.4bpp graphics/items/icons/expert_belt.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fab_mail.4bpp graphics/items/icons/fab_mail.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fairium_z.4bpp graphics/items/icons/fairium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fairy_feather.4bpp graphics/items/icons/fairy_feather.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fairy_memory.4bpp graphics/items/icons/fairy_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fame_checker.4bpp graphics/items/icons/fame_checker.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fast_ball.4bpp graphics/items/icons/fast_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fighting_memory.4bpp graphics/items/icons/fighting_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fightinium_z.4bpp graphics/items/icons/fightinium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/figy_berry.4bpp graphics/items/icons/figy_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fine_remedy.4bpp graphics/items/icons/fine_remedy.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fire_memory.4bpp graphics/items/icons/fire_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fire_stone.4bpp graphics/items/icons/fire_stone.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/firium_z.4bpp graphics/items/icons/firium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fishcake.4bpp graphics/items/icons/fishcake.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/flame_orb.4bpp graphics/items/icons/flame_orb.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/float_stone.4bpp graphics/items/icons/float_stone.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/flower_sweet.4bpp graphics/items/icons/flower_sweet.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fluffy_tail.4bpp graphics/items/icons/fluffy_tail.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/flute.4bpp graphics/items/icons/flute.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/flying_memory.4bpp graphics/items/icons/flying_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/flyinium_z.4bpp graphics/items/icons/flyinium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/focus_band.4bpp graphics/items/icons/focus_band.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/focus_sash.4bpp graphics/items/icons/focus_sash.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fossilized_bird.4bpp graphics/items/icons/fossilized_bird.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fossilized_dino.4bpp graphics/items/icons/fossilized_dino.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fossilized_drake.4bpp graphics/items/icons/fossilized_drake.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fossilized_fish.4bpp graphics/items/icons/fossilized_fish.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/fresh_water.4bpp graphics/items/icons/fresh_water.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/friend_ball.4bpp graphics/items/icons/friend_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/full_heal.4bpp graphics/items/icons/full_heal.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/galarica_cuff.4bpp graphics/items/icons/galarica_cuff.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/galarica_twig.4bpp graphics/items/icons/galarica_twig.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/galarica_wreath.4bpp graphics/items/icons/galarica_wreath.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/galladite.4bpp graphics/items/icons/galladite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ganlon_berry.4bpp graphics/items/icons/ganlon_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/garchompite.4bpp graphics/items/icons/garchompite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/gardevoirite.4bpp graphics/items/icons/gardevoirite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/gem.4bpp graphics/items/icons/gem.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/gengarite.4bpp graphics/items/icons/gengarite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ghost_memory.4bpp graphics/items/icons/ghost_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ghostium_z.4bpp graphics/items/icons/ghostium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/gimmighoul_coin.4bpp graphics/items/icons/gimmighoul_coin.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/glalitite.4bpp graphics/items/icons/glalitite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/glimmering_charm.4bpp graphics/items/icons/glimmering_charm.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/glitter_mail.4bpp graphics/items/icons/glitter_mail.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/go_goggles.4bpp graphics/items/icons/go_goggles.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/gold_teeth.4bpp graphics/items/icons/gold_teeth.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/good_rod.4bpp graphics/items/icons/good_rod.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/gracidea.4bpp graphics/items/icons/gracidea.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/grass_memory.4bpp graphics/items/icons/grass_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/grassium_z.4bpp graphics/items/icons/grassium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/great_ball.4bpp graphics/items/icons/great_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/grepa_berry.4bpp graphics/items/icons/grepa_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/grip_claw.4bpp graphics/items/icons/grip_claw.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/griseous_core.4bpp graphics/items/icons/griseous_core.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/griseous_orb.4bpp graphics/items/icons/griseous_orb.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ground_memory.4bpp graphics/items/icons/ground_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/groundium_z.4bpp graphics/items/icons/groundium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/gyaradosite.4bpp graphics/items/icons/gyaradosite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/haban_berry.4bpp graphics/items/icons/haban_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/harbor_mail.4bpp graphics/items/icons/harbor_mail.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/hard_stone.4bpp graphics/items/icons/hard_stone.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/heal_ball.4bpp graphics/items/icons/heal_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/heart_scale.4bpp graphics/items/icons/heart_scale.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/hearthflame_mask.4bpp graphics/items/icons/hearthflame_mask.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/heat_rock.4bpp graphics/items/icons/heat_rock.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/heavy_ball.4bpp graphics/items/icons/heavy_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/heavy_duty_boots.4bpp graphics/items/icons/heavy_duty_boots.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/helix_fossil.4bpp graphics/items/icons/helix_fossil.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/heracronite.4bpp graphics/items/icons/heracronite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/hm.4bpp graphics/items/icons/hm.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/hondew_berry.4bpp graphics/items/icons/hondew_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/honey.4bpp graphics/items/icons/honey.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/houndoominite.4bpp graphics/items/icons/houndoominite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/hypergiri.4bpp graphics/items/icons/hypergiri.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ice_memory.4bpp graphics/items/icons/ice_memory.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/ice_stone.4bpp graphics/items/icons/ice_stone.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/icium_z.4bpp graphics/items/icons/icium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/icy_rock.4bpp graphics/items/icons/icy_rock.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/in_battle_herb.4bpp graphics/items/icons/in_battle_herb.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/incenses/full_incense.4bpp graphics/items/icons/incenses/full_incense.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/incenses/lax_incense.4bpp graphics/items/icons/incenses/lax_incense.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/incenses/luck_incense.4bpp graphics/items/icons/incenses/luck_incense.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/incenses/odd_incense.4bpp graphics/items/icons/incenses/odd_incense.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/incenses/pure_incense.4bpp graphics/items/icons/incenses/pure_incense.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/incenses/rock_incense.4bpp graphics/items/icons/incenses/rock_incense.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/incenses/rose_incense.4bpp graphics/items/icons/incenses/rose_incense.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/incenses/sea_incense.4bpp graphics/items/icons/incenses/sea_incense.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/incenses/wave_incense.4bpp graphics/items/icons/incenses/wave_incense.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/incinium_z.4bpp graphics/items/icons/incinium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/iron_ball.4bpp graphics/items/icons/iron_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/jaboca_berry.4bpp graphics/items/icons/jaboca_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/jaw_fossil.4bpp graphics/items/icons/jaw_fossil.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/jubilife_muffin.4bpp graphics/items/icons/jubilife_muffin.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/kangaskhanite.4bpp graphics/items/icons/kangaskhanite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/kasib_berry.4bpp graphics/items/icons/kasib_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/kebia_berry.4bpp graphics/items/icons/kebia_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/kee_berry.4bpp graphics/items/icons/kee_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/key_to_room_1.4bpp graphics/items/icons/key_to_room_1.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/key_to_room_2.4bpp graphics/items/icons/key_to_room_2.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/key_to_room_4.4bpp graphics/items/icons/key_to_room_4.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/key_to_room_6.4bpp graphics/items/icons/key_to_room_6.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/kings_rock.4bpp graphics/items/icons/kings_rock.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/kommonium_z.4bpp graphics/items/icons/kommonium_z.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/lagging_tail.4bpp graphics/items/icons/lagging_tail.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/lansat_berry.4bpp graphics/items/icons/lansat_berry.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/latiasite.4bpp graphics/items/icons/latiasite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/latiosite.4bpp graphics/items/icons/latiosite.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/lava_cookie.4bpp graphics/items/icons/lava_cookie.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/leaders_crest.4bpp graphics/items/icons/leaders_crest.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/leaf_stone.4bpp graphics/items/icons/leaf_stone.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/leek.4bpp graphics/items/icons/leek.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/leftovers.4bpp graphics/items/icons/leftovers.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/lemonade.4bpp graphics/items/icons/lemonade.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/letter.4bpp graphics/items/icons/letter.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/level_ball.4bpp graphics/items/icons/level_ball.4bpp.smol
+tools/compresSmol/compresSmol -w graphics/items/icons/liechi_berry.4bpp graphics/items/icons/liechi_berry.4bpp.smol
+tools/gbagfx/gbagfx graphics/items/icons/life_orb.png graphics/items/icons/life_orb.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/lift_key.png graphics/items/icons/lift_key.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/light_ball.png graphics/items/icons/light_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/light_clay.png graphics/items/icons/light_clay.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/linking_cord.png graphics/items/icons/linking_cord.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/loaded_dice.png graphics/items/icons/loaded_dice.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/lopunnite.png graphics/items/icons/lopunnite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/love_ball.png graphics/items/icons/love_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/love_ball.png graphics/items/icons/love_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/love_sweet.png graphics/items/icons/love_sweet.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/lucarionite.png graphics/items/icons/lucarionite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/lucky_egg.png graphics/items/icons/lucky_egg.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/lucky_punch.png graphics/items/icons/lucky_punch.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/luminous_moss.png graphics/items/icons/luminous_moss.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/lumiose_galette.png graphics/items/icons/lumiose_galette.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/lunalium_z.png graphics/items/icons/lunalium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/lure.png graphics/items/icons/lure.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/lure_ball.png graphics/items/icons/lure_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/lure_ball.png graphics/items/icons/lure_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/lustrous_globe.png graphics/items/icons/lustrous_globe.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/lustrous_orb.png graphics/items/icons/lustrous_orb.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/luxury_ball.png graphics/items/icons/luxury_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/luxury_ball.png graphics/items/icons/luxury_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/lycanium_z.png graphics/items/icons/lycanium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mach_bike.png graphics/items/icons/mach_bike.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/macho_brace.png graphics/items/icons/macho_brace.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/magma_emblem.png graphics/items/icons/magma_emblem.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/magmarizer.png graphics/items/icons/magmarizer.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/magnet.png graphics/items/icons/magnet.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mago_berry.png graphics/items/icons/mago_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/magost_berry.png graphics/items/icons/magost_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/malicious_armor.png graphics/items/icons/malicious_armor.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/manectite.png graphics/items/icons/manectite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/maranga_berry.png graphics/items/icons/maranga_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/marshadium_z.png graphics/items/icons/marshadium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/master_ball.png graphics/items/icons/master_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/master_ball.png graphics/items/icons/master_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/masterpiece_teacup.png graphics/items/icons/masterpiece_teacup.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mawilite.png graphics/items/icons/mawilite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/max_honey.png graphics/items/icons/max_honey.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/max_mushrooms.png graphics/items/icons/max_mushrooms.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/max_ointment.png graphics/items/icons/max_ointment.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/max_ointment.png graphics/items/icons/max_ointment.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/max_revive.png graphics/items/icons/max_revive.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/maxgiri.png graphics/items/icons/maxgiri.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/maxgiri.png graphics/items/icons/maxgiri.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/mech_mail.png graphics/items/icons/mech_mail.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/medichamite.png graphics/items/icons/medichamite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/medicine/elixir.png graphics/items/icons/medicine/elixir.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/medicine/ether.png graphics/items/icons/medicine/ether.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/medicine/ether.png graphics/items/icons/medicine/ether.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/medicine/ether_max.png graphics/items/icons/medicine/ether_max.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mega_ring.png graphics/items/icons/mega_ring.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/metagrossite.png graphics/items/icons/metagrossite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/metal_alloy.png graphics/items/icons/metal_alloy.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/metal_coat.png graphics/items/icons/metal_coat.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/meteorite.png graphics/items/icons/meteorite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/metronome.png graphics/items/icons/metronome.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mewnium_z.png graphics/items/icons/mewnium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mewtwonite_x.png graphics/items/icons/mewtwonite_x.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mewtwonite_y.png graphics/items/icons/mewtwonite_y.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/micle_berry.png graphics/items/icons/micle_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mimikium_z.png graphics/items/icons/mimikium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mint.png graphics/items/icons/mint.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/miracle_seed.png graphics/items/icons/miracle_seed.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mirror_herb.png graphics/items/icons/mirror_herb.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mochi.png graphics/items/icons/mochi.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/moomoo_milk.png graphics/items/icons/moomoo_milk.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/moon_ball.png graphics/items/icons/moon_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/moon_ball.png graphics/items/icons/moon_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/moon_stone.png graphics/items/icons/moon_stone.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/moon_stone.png graphics/items/icons/moon_stone.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/mulch.png graphics/items/icons/mulch.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/muscle_band.png graphics/items/icons/muscle_band.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mystic_ticket.png graphics/items/icons/mystic_ticket.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/mystic_water.png graphics/items/icons/mystic_water.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/nanab_berry.png graphics/items/icons/nanab_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/necrozma_fuser.png graphics/items/icons/necrozma_fuser.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/nectar.png graphics/items/icons/nectar.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/nest_ball.png graphics/items/icons/nest_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/nest_ball.png graphics/items/icons/nest_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/net_ball.png graphics/items/icons/net_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/net_ball.png graphics/items/icons/net_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/never_melt_ice.png graphics/items/icons/never_melt_ice.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/nomel_berry.png graphics/items/icons/nomel_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/normalium_z.png graphics/items/icons/normalium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/nugget.png graphics/items/icons/nugget.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/occa_berry.png graphics/items/icons/occa_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/odd_keystone.png graphics/items/icons/odd_keystone.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/ointment.png graphics/items/icons/ointment.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/ointment.png graphics/items/icons/ointment.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/old_amber.png graphics/items/icons/old_amber.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/old_gateau.png graphics/items/icons/old_gateau.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/old_rod.png graphics/items/icons/old_rod.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/old_sea_map.png graphics/items/icons/old_sea_map.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/orange_mail.png graphics/items/icons/orange_mail.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/oval_charm.png graphics/items/icons/oval_charm.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/oval_stone.png graphics/items/icons/oval_stone.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/oval_stone.png graphics/items/icons/oval_stone.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/pamtre_berry.png graphics/items/icons/pamtre_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/parcel.png graphics/items/icons/parcel.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/park_ball.png graphics/items/icons/park_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/passho_berry.png graphics/items/icons/passho_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/payapa_berry.png graphics/items/icons/payapa_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pearl.png graphics/items/icons/pearl.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pearl_string.png graphics/items/icons/pearl_string.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/peat_block.png graphics/items/icons/peat_block.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/petaya_berry.png graphics/items/icons/petaya_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pewter_crunchies.png graphics/items/icons/pewter_crunchies.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pidgeotite.png graphics/items/icons/pidgeotite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pikanium_z.png graphics/items/icons/pikanium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pikashunium_z.png graphics/items/icons/pikashunium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pinap_berry.png graphics/items/icons/pinap_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pinsirite.png graphics/items/icons/pinsirite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/plate.png graphics/items/icons/plate.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/plume_fossil.png graphics/items/icons/plume_fossil.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/poison_barb.png graphics/items/icons/poison_barb.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/poison_memory.png graphics/items/icons/poison_memory.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/poisonium_z.png graphics/items/icons/poisonium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/poke_ball.png graphics/items/icons/poke_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/poke_ball.png graphics/items/icons/poke_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/poke_doll.png graphics/items/icons/poke_doll.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/poke_flute.png graphics/items/icons/poke_flute.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/poke_radar.png graphics/items/icons/poke_radar.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/poke_toy.png graphics/items/icons/poke_toy.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pokeblock_case.png graphics/items/icons/pokeblock_case.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pokemon_box_link.png graphics/items/icons/pokemon_box_link.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pokeshi_doll.png graphics/items/icons/pokeshi_doll.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/pomeg_berry.png graphics/items/icons/pomeg_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/potion.png graphics/items/icons/potion.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/powder.png graphics/items/icons/powder.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/powder_jar.png graphics/items/icons/powder_jar.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/power_anklet.png graphics/items/icons/power_anklet.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/power_band.png graphics/items/icons/power_band.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/power_belt.png graphics/items/icons/power_belt.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/power_bracer.png graphics/items/icons/power_bracer.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/power_herb.png graphics/items/icons/power_herb.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/power_lens.png graphics/items/icons/power_lens.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/power_weight.png graphics/items/icons/power_weight.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/premier_ball.png graphics/items/icons/premier_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/premier_ball.png graphics/items/icons/premier_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/pretty_feather.png graphics/items/icons/pretty_feather.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/primarium_z.png graphics/items/icons/primarium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/prism_scale.png graphics/items/icons/prism_scale.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/prison_bottle.png graphics/items/icons/prison_bottle.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/protective_pads.png graphics/items/icons/protective_pads.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/protector.png graphics/items/icons/protector.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/psychic_memory.png graphics/items/icons/psychic_memory.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/psychium_z.png graphics/items/icons/psychium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/punching_glove.png graphics/items/icons/punching_glove.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/qualot_berry.png graphics/items/icons/qualot_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/question_mark.png graphics/items/icons/question_mark.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/quick_ball.png graphics/items/icons/quick_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/quick_ball.png graphics/items/icons/quick_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/quick_claw.png graphics/items/icons/quick_claw.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/rabuta_berry.png graphics/items/icons/rabuta_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/rage_candy_bar.png graphics/items/icons/rage_candy_bar.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/raikou_balm.png graphics/items/icons/raikou_balm.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/raikou_balm.png graphics/items/icons/raikou_balm.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/rare_candy.png graphics/items/icons/rare_candy.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/rare_candy.png graphics/items/icons/rare_candy.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/razor_claw.png graphics/items/icons/razor_claw.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/razor_fang.png graphics/items/icons/razor_fang.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/razz_berry.png graphics/items/icons/razz_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/reaper_cloth.png graphics/items/icons/reaper_cloth.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/red_card.png graphics/items/icons/red_card.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/red_orb.png graphics/items/icons/red_orb.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/reins_of_unity.png graphics/items/icons/reins_of_unity.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/relic_band.png graphics/items/icons/relic_band.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/relic_coin.png graphics/items/icons/relic_coin.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/relic_crown.png graphics/items/icons/relic_crown.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/relic_statue.png graphics/items/icons/relic_statue.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/relic_vase.png graphics/items/icons/relic_vase.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/remedy.png graphics/items/icons/remedy.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/repeat_ball.png graphics/items/icons/repeat_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/repeat_ball.png graphics/items/icons/repeat_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/repel.png graphics/items/icons/repel.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/retro_mail.png graphics/items/icons/retro_mail.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/return_to_field_arrow.png graphics/items/icons/return_to_field_arrow.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/return_to_field_arrow.png graphics/items/icons/return_to_field_arrow.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/reveal_glass.png graphics/items/icons/reveal_glass.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/revival_balm.png graphics/items/icons/revival_balm.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/revival_herb.png graphics/items/icons/revival_herb.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/revival_herb.png graphics/items/icons/revival_herb.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/revival_powder.png graphics/items/icons/revival_powder.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/revival_powder.png graphics/items/icons/revival_powder.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/revive.png graphics/items/icons/revive.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/ribbon_sweet.png graphics/items/icons/ribbon_sweet.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/rindo_berry.png graphics/items/icons/rindo_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/ring_target.png graphics/items/icons/ring_target.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/rock_memory.png graphics/items/icons/rock_memory.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/rockium_z.png graphics/items/icons/rockium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/rocky_helmet.png graphics/items/icons/rocky_helmet.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/room_service.png graphics/items/icons/room_service.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/root_fossil.png graphics/items/icons/root_fossil.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/roseli_berry.png graphics/items/icons/roseli_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/rotom_catalog.png graphics/items/icons/rotom_catalog.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/rowap_berry.png graphics/items/icons/rowap_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/rusted_shield.png graphics/items/icons/rusted_shield.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/rusted_sword.png graphics/items/icons/rusted_sword.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/sablenite.png graphics/items/icons/sablenite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/sableye_gem.png graphics/items/icons/sableye_gem.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/sableye_gem.png graphics/items/icons/sableye_gem.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/sachet.png graphics/items/icons/sachet.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/sacred_treasures/mirror.png graphics/items/icons/sacred_treasures/mirror.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/sacred_treasures/mirror.png graphics/items/icons/sacred_treasures/mirror.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/sacredgiri.png graphics/items/icons/sacredgiri.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/sacredgiri.png graphics/items/icons/sacredgiri.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/safari_ball.png graphics/items/icons/safari_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/safari_ball.png graphics/items/icons/safari_ball.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/safety_goggles.png graphics/items/icons/safety_goggles.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/sail_fossil.png graphics/items/icons/sail_fossil.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/salac_berry.png graphics/items/icons/salac_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/salamencite.png graphics/items/icons/salamencite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/sand.png graphics/items/icons/sand.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/scanner.png graphics/items/icons/scanner.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/scarf.png graphics/items/icons/scarf.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/sceptilite.png graphics/items/icons/sceptilite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/scizorite.png graphics/items/icons/scizorite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/scope_lens.png graphics/items/icons/scope_lens.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/scroll_of_darkness.png graphics/items/icons/scroll_of_darkness.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/scroll_of_waters.png graphics/items/icons/scroll_of_waters.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/bug.png graphics/items/icons/scrolls/bug.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/dark.png graphics/items/icons/scrolls/dark.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/dragon.png graphics/items/icons/scrolls/dragon.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/electric.png graphics/items/icons/scrolls/electric.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/fairy.png graphics/items/icons/scrolls/fairy.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/fighting.png graphics/items/icons/scrolls/fighting.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/fire.png graphics/items/icons/scrolls/fire.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/flying.png graphics/items/icons/scrolls/flying.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/ghost.png graphics/items/icons/scrolls/ghost.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/grass.png graphics/items/icons/scrolls/grass.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/ground.png graphics/items/icons/scrolls/ground.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/ice.png graphics/items/icons/scrolls/ice.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/normal.png graphics/items/icons/scrolls/normal.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/poison.png graphics/items/icons/scrolls/poison.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/psychic.png graphics/items/icons/scrolls/psychic.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/rock.png graphics/items/icons/scrolls/rock.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/steel.png graphics/items/icons/scrolls/steel.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/water.png graphics/items/icons/scrolls/water.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/scrolls/water.png graphics/items/icons/scrolls/water.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/secret_key.png graphics/items/icons/secret_key.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/secrets/secret_climb.png graphics/items/icons/secrets/secret_climb.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/secrets/secret_cut.png graphics/items/icons/secrets/secret_cut.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/secrets/secret_cut.png graphics/items/icons/secrets/secret_cut.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/secrets/secret_dive.png graphics/items/icons/secrets/secret_dive.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/secrets/secret_flash.png graphics/items/icons/secrets/secret_flash.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/secrets/secret_fly.png graphics/items/icons/secrets/secret_fly.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/secrets/secret_smash.png graphics/items/icons/secrets/secret_smash.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/secrets/secret_strength.png graphics/items/icons/secrets/secret_strength.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/secrets/secret_surf.png graphics/items/icons/secrets/secret_surf.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/secrets/secret_waterfall.png graphics/items/icons/secrets/secret_waterfall.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/shadow_mail.png graphics/items/icons/shadow_mail.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/shalour_sable.png graphics/items/icons/shalour_sable.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/shard.png graphics/items/icons/shard.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/sharp_beak.png graphics/items/icons/sharp_beak.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/sharpedonite.png graphics/items/icons/sharpedonite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/shed_shell.png graphics/items/icons/shed_shell.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/shell_bell.png graphics/items/icons/shell_bell.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/shiny_charm.png graphics/items/icons/shiny_charm.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/shiny_stone.png graphics/items/icons/shiny_stone.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/shiny_stone.png graphics/items/icons/shiny_stone.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/shiny_vial.png graphics/items/icons/shiny_vial.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/shiny_vial.png graphics/items/icons/shiny_vial.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/shoal_shell.png graphics/items/icons/shoal_shell.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/shuca_berry.png graphics/items/icons/shuca_berry.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/silk_scarf.png graphics/items/icons/silk_scarf.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/silk_scarf.png graphics/items/icons/silk_scarf.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/silph_scope.png graphics/items/icons/silph_scope.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/silver_powder.png graphics/items/icons/silver_powder.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/skull_fossil.png graphics/items/icons/skull_fossil.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/slowbronite.png graphics/items/icons/slowbronite.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/slowpoke_tail.png graphics/items/icons/slowpoke_tail.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/slowpoke_tail.png graphics/items/icons/slowpoke_tail.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/smoke_ball.png graphics/items/icons/smoke_ball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/smooth_rock.png graphics/items/icons/smooth_rock.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/snorlium_z.png graphics/items/icons/snorlium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/snowball.png graphics/items/icons/snowball.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/soda_pop.png graphics/items/icons/soda_pop.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/soft_sand.png graphics/items/icons/soft_sand.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/soft_sand.png graphics/items/icons/soft_sand.gbapal
+tools/gbagfx/gbagfx graphics/items/icons/solganium_z.png graphics/items/icons/solganium_z.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/soot_sack.png graphics/items/icons/soot_sack.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/soothe_bell.png graphics/items/icons/soothe_bell.4bpp
+tools/gbagfx/gbagfx graphics/items/icons/soul_dew.png graphics/items/icons/soul_dew.4bpp
