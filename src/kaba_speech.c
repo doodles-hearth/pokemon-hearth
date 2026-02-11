@@ -907,6 +907,7 @@ static void Task_KabaSpeech_HandleConfirmChosenMugshotInput(u8 taskId)
     switch(input)
     {
     case 0: // YES
+        DeactivateSingleTextPrinter(WIN_TEXT, WINDOW_TEXT_PRINTER);
         PlaySE(SE_SELECT);
         KabaSpeech_PrintMessageBox(sKabaSpeech_GenderConfirmed);
         gTasks[taskId].func = Task_KabaSpeech_AskForName;
