@@ -1,4 +1,4 @@
-PewterCity_House1_MapScripts::
+PewterCity_House1_Frlg_MapScripts::
 	.byte 0
 
 PewterCity_House1_EventScript_BaldingMan::
@@ -24,7 +24,7 @@ PewterCity_House1_EventScript_Nidoran::
 PewterCity_House1_EventScript_DoNidoranCry::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	waitse
-	playmoncry SPECIES_NIDORAN_M, CRY_MODE_NORMAL
+	playmoncry SPECIES_NIDORAN, CRY_MODE_NORMAL
 	msgbox PewterCity_House1_Text_Nidoran
 	waitmoncry
 	call EventScript_RestorePrevTextColor

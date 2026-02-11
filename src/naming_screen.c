@@ -60,6 +60,7 @@ enum {
     GFXTAG_CURSOR_FILLED,
     GFXTAG_INPUT_ARROW,
     GFXTAG_UNDERSCORE,
+    GFXTAG_RIVAL = 255,
 };
 
 enum {
@@ -71,6 +72,7 @@ enum {
     PALTAG_CURSOR,
     PALTAG_BACK_BUTTON,
     PALTAG_OK_BUTTON,
+    PALTAG_RIVAL = 255,
 };
 
 enum {
@@ -186,7 +188,8 @@ EWRAM_DATA static struct NamingScreenData *sNamingScreen = NULL;
 static const u8 sPCIconOff_Gfx[] = INCBIN_U8("graphics/naming_screen/pc_icon_off.4bpp");
 static const u8 sPCIconOn_Gfx[] = INCBIN_U8("graphics/naming_screen/pc_icon_on.4bpp");
 static const u16 sKeyboard_Pal[] = INCBIN_U16("graphics/naming_screen/keyboard.gbapal");
-static const u16 sRival_Pal[] = INCBIN_U16("graphics/naming_screen/rival.gbapal"); // Unused, leftover from FRLG rival
+static const u16 sRival_Gfx[] = INCBIN_U16("graphics/naming_screen/rival.4bpp");
+static const u16 sRival_Pal[] = INCBIN_U16("graphics/naming_screen/rival.gbapal");
 
 static const u8 *const sTransferredToPCMessages[] =
 {
@@ -195,6 +198,7 @@ static const u8 *const sTransferredToPCMessages[] =
     gText_PkmnTransferredSomeonesPCBoxFull,
     gText_PkmnTransferredLanettesPCBoxFull
 };
+
 
 static const u8 sText_AlphabetUpperLower[] = _("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!");
 
@@ -1373,6 +1377,7 @@ static void NamingScreen_CreateWaldaDadIcon(void);
 static void NamingScreen_CreateRivalIcon(void);
 static void NamingScreen_CreateQuestionMarkIcon(void);
 static void NamingScreen_CreateCodeIcon(void);
+static void NamingScreen_CreateRivalIcon(void);
 
 static void (*const sIconFunctions[])(void) =
 {
@@ -1384,6 +1389,7 @@ static void (*const sIconFunctions[])(void) =
     NamingScreen_CreateRivalIcon,
     NamingScreen_CreateQuestionMarkIcon,
     NamingScreen_CreateCodeIcon,
+    NamingScreen_CreateRivalIcon,
 };
 
 static void CreateInputTargetIcon(void)
@@ -1460,6 +1466,21 @@ static void NamingScreen_CreateCodeIcon(void)
     spriteId = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_MYSTERY_GIFT_MAN, SpriteCallbackDummy, 56, 37, 0);
     gSprites[spriteId].oam.priority = 3;
 }
+
+static const union AnimCmd sAnim_Rival[] =
+{
+    ANIMCMD_FRAME( 0, 10),
+    ANIMCMD_FRAME(24, 10),
+    ANIMCMD_FRAME( 0, 10),
+    ANIMCMD_FRAME(32, 10),
+    ANIMCMD_JUMP(0)
+};
+
+static const union AnimCmd *const sAnims_Rival[] =
+{
+    sAnim_Rival
+};
+
 
 //--------------------------------------------------
 // Keyboard handling

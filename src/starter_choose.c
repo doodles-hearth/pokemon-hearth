@@ -1,5 +1,6 @@
 #include "global.h"
 #include "bg.h"
+#include "constants/species.h"
 #include "data.h"
 #include "decompress.h"
 #include "event_data.h"
@@ -110,11 +111,15 @@ static const u8 sStarterLabelCoords[STARTER_MON_COUNT][2] =
     {8, 4},
 };
 
+#define GRASS_STARTER (IS_FRLG ? SPECIES_BULBASAUR  : SPECIES_SPRIGATITO)
+#define FIRE_STARTER  (IS_FRLG ? SPECIES_SQUIRTLE   : SPECIES_FROAKIE)
+#define WATER_STARTER (IS_FRLG ? SPECIES_CHARMANDER : SPECIES_CYNDAQUIL )
+
 static const u16 sStarterMon[STARTER_MON_COUNT] =
 {
-    SPECIES_CYNDAQUIL,
-    SPECIES_SNIVY,
-    SPECIES_SQUIRTLE,
+    GRASS_STARTER,
+    FIRE_STARTER,
+    WATER_STARTER,
 };
 
 static const struct BgTemplate sBgTemplates[3] =

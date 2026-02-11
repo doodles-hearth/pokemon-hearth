@@ -9,6 +9,7 @@
 #include "trig.h"
 #include "main.h"
 #include "intro.h"
+#include "intro_frlg.h"
 #include "m4a.h"
 #include "title_screen_hearth.h"
 #include "expansion_intro.h"
@@ -276,8 +277,15 @@ void Task_HandleExpansionIntro(u8 taskId)
             ResetSpriteData();
             FreeAllSpritePalettes();
             DestroyTask(taskId);
-            CreateTask(Task_Scene1_Load, 0);
-            SetMainCallback2(CB2_InitHearthTitleScreen);
+            if (IS_FRLG)
+            {
+                SetMainCallback2(CB2_SetUpIntroFrlg);
+            }
+            else
+            {
+                CreateTask(Task_Scene1_Load, 0);
+                SetMainCallback2(CB2_InitHearthTitleScreen);
+            }
         }
         break;
     }

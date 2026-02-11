@@ -29,6 +29,7 @@
 #include "task.h"
 #include "window.h"
 #include "menu_specialized.h"
+#include "constants/layouts.h"
 
 // Top level PC menu options
 enum {

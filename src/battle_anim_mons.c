@@ -2500,3 +2500,11 @@ void AnimWeatherBallDown(struct Sprite *sprite)
     sprite->callback = StartAnimLinearTranslation;
     StoreSpriteCallbackInData6(sprite, DestroyAnimSprite);
 }
+
+u8 GetGhostSpriteDefault_Y(enum BattlerId battler)
+{
+    if (GetBattlerSide(battler) != B_SIDE_OPPONENT)
+        return GetBattlerSpriteCoord(battler, BATTLER_COORD_Y_PIC_OFFSET_DEFAULT);
+    else
+        return GetBattlerSpriteCoord(battler, BATTLER_COORD_Y);
+}
