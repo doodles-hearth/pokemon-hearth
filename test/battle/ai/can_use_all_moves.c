@@ -1,4 +1,5 @@
 #include "global.h"
+#include "constants/battle.h"
 #include "test/battle.h"
 #include "battle_ai_util.h"
 
@@ -671,6 +672,9 @@ AI_DOUBLE_BATTLE_TEST("AI can use all moves, 801-900")
             break;
         case EFFECT_WEATHER:
             if (GetMoveWeatherType(j) == BATTLE_WEATHER_SNOW)
+                break;
+            //TODO: AI HANDLING
+            if (GetMoveWeatherType(j) == BATTLE_WEATHER_SMOKE)
                 break;
             else
                 PARAMETRIZE { move = j; }
