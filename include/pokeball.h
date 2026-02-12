@@ -33,7 +33,6 @@ enum PokeBall
     BALL_CHERISH = 27,
     BALL_LIGHT = 28,
     BALL_ULTRA_KNOCKOFF = 29,
-    BALL_KABA = 30, // Used only for the Kaba Intro Speech
     POKEBALL_COUNT,
 };
 

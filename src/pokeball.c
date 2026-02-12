@@ -239,27 +239,38 @@ static const union AffineAnimCmd *const sAffineAnim_BallRotate[] =
     [BALL_AFFINE_ANIM_4] = sAffineAnim_BallRotate_4,
 };
 
+static const struct PokeBallSprite IntroBallSprite = 
+{
+    .pic = {gBallGfx_Kaba, 1536, GFX_TAG_KABA_BALL},
+    .palette = {gBallPal_Kaba, GFX_TAG_KABA_BALL},
+    .spriteTemplate = {
+        .tileTag = GFX_TAG_KABA_BALL,
+        .paletteTag = GFX_TAG_KABA_BALL,
+        .oam = &sIntroBallOamData,
+        .anims = sIntroBallAnimSequences,
+        .affineAnims = gDummySpriteAffineAnimTable,
+        .callback = SpriteCB_BallThrow,
+    }
+};
+
 #define tFrames          data[0]
 #define tPan             data[1]
 #define tThrowId         data[2]
 #define tBattler         data[3]
 #define tOpponentBattler data[4]
 
-#define GENERIC_POKE_BALL_SPRITE(Tag, Gfx, Pal, size, _oam, _anims, _affineAnims) \
-    .pic = {Gfx, size, Tag},                                                      \
-    .palette = {Pal, Tag},                                                        \
-    .spriteTemplate =                                                             \
-        {                                                                         \
-            .tileTag = Tag,                                                       \
-            .paletteTag = Tag,                                                    \
-            .oam = _oam,                                                          \
-            .anims = _anims,                                                      \
-            .affineAnims = _affineAnims,                                          \
-            .callback = SpriteCB_BallThrow,                                       \
+#define POKE_BALL_SPRITE(Tag, Gfx, Pal)        \
+    .pic = {Gfx, 384, Tag},                    \
+    .palette = {Pal, Tag},                     \
+    .spriteTemplate =                          \
+    {                                          \
+        .tileTag = Tag,                        \
+        .paletteTag = Tag,                     \
+        .oam = &sBallOamData,                  \
+        .anims = sBallAnimSequences,           \
+        .affineAnims = sAffineAnim_BallRotate, \
+        .callback = SpriteCB_BallThrow,        \
     }
-
-#define POKE_BALL_SPRITE(Tag, Gfx, Pal) GENERIC_POKE_BALL_SPRITE(Tag, Gfx, Pal, 384, &sBallOamData, sBallAnimSequences, sAffineAnim_BallRotate)
-#define INTRO_POKE_BALL_SPRITE(Tag, Gfx, Pal) GENERIC_POKE_BALL_SPRITE(Tag, Gfx, Pal, 1536, &sIntroBallOamData, sIntroBallAnimSequences, gDummySpriteAffineAnimTable)
 
 const struct PokeBallSprite gPokeBalls[POKEBALL_COUNT] =
 {
@@ -419,6 +430,11 @@ const struct PokeBallSprite gPokeBalls[POKEBALL_COUNT] =
         .itemId = ITEM_PARK_BALL,
     },
 
+    [BALL_BEAST]   =
+    {
+        POKE_BALL_SPRITE(GFX_TAG_BEAST_BALL, gBallGfx_Beast, gBallPal_Beast),
+        .itemId = ITEM_PARK_BALL,
+    },
 
     [BALL_CHERISH] =
     {
@@ -429,14 +445,15 @@ const struct PokeBallSprite gPokeBalls[POKEBALL_COUNT] =
     [BALL_LIGHT] =
     {
         POKE_BALL_SPRITE(GFX_TAG_LIGHT_BALL, gBallGfx_Heavy, gBallPal_Heavy),
-        .itemId = ITEM_LIGHT_BALL,
+        .itemId = ITEM_LIGHT_POKE_BALL,
     },
-    [BALL_KABA] =
+    [BALL_ULTRA_KNOCKOFF] =
     {
-        INTRO_POKE_BALL_SPRITE(GFX_TAG_KABA_BALL, gBallGfx_Kaba, gBallPal_Kaba),
-        .itemId = ITEM_NONE,
-    }
+        POKE_BALL_SPRITE(GFX_TAG_ULTRA_BALL, gBallGfx_Ultra, gBallPal_Ultra),
+        .itemId = ITEM_ULTRA_BALL_KNOCKOFF,
+    },
 };
+
 
 u8 DoPokeballSendOutAnimation(enum BattlerId battler, s16 pan, u8 kindOfThrow)
 {
@@ -1200,13 +1217,14 @@ void CreatePokeballSpriteToReleaseMon(u8 monSpriteId, u8 monPalNum, u8 x, u8 y, 
     gSprites[monSpriteId].invisible = TRUE;
 }
 
+
 void CreateKababallSpriteToReleaseMon(u8 monSpriteId, u8 monPalNum, u8 x, u8 y, u8 oamPriority, u8 subpriority, u8 delay, u32 fadePalettes, u16 species)
 {
     u8 spriteId;
 
-    LoadCompressedSpriteSheetUsingHeap(&gPokeBalls[BALL_KABA].pic);
-    LoadSpritePalette(&gPokeBalls[BALL_KABA].palette);
-    spriteId = CreateSprite(&gPokeBalls[BALL_KABA].spriteTemplate, x, y, subpriority);
+    LoadCompressedSpriteSheetUsingHeap(&IntroBallSprite.pic);
+    LoadSpritePalette(&IntroBallSprite.palette);
+    spriteId = CreateSprite(&IntroBallSprite.spriteTemplate, x, y, subpriority);
 
     gSprites[spriteId].sMonSpriteId = monSpriteId;
     gSprites[spriteId].sFinalMonX = gSprites[monSpriteId].x;
