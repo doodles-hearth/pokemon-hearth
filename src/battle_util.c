@@ -11201,3 +11201,23 @@ void SetOrClearRageVolatile(void)
     else
         gBattleMons[gBattlerAttacker].volatiles.rage = FALSE;
 }
+
+// Dream Sleep
+
+u32 GetSpeciesDreamType(u16 species)
+{
+    u32 dreamType = gSpeciesInfo[SanitizeSpeciesId(species)].dreamType;
+    return dreamType == 0 ? DEFAULT_DREAM_CHANCE : dreamType;
+}
+
+void TryDreaming(struct BattlePokemon* mon)
+{
+    if (mon->volatiles.dreamSleep)
+        return;
+
+    u32 dreamOdds = GetSpeciesDreamType(mon->species);
+    dreamOdds =  dreamOdds * (gBattleMons[gBattlerTarget].maxHP * 3 - gBattleMons[gBattlerTarget].hp * 2)
+            / (3 * gBattleMons[gBattlerTarget].maxHP - 2);
+    if (RandomChance(RNG_DREAM_SLEEP, dreamOdds, 256))
+        mon->volatiles.dreamSleep = TRUE;
+}

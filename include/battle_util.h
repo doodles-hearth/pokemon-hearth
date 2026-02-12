@@ -431,5 +431,7 @@ void TryUpdateEvolutionTracker(enum EvolutionConditions evolutionCondition, u32 
 bool32 CanUseMoveConsecutively(enum BattlerId battler);
 void TryResetConsecutiveUseCounter(enum BattlerId battler);
 void SetOrClearRageVolatile(void);
+u32 GetSpeciesDreamType(u16 species);
+void TryDreaming(struct BattlePokemon* mon);
 
 #endif // GUARD_BATTLE_UTIL_H

@@ -7,10 +7,12 @@
 #include "battle_move_resolution.h"
 #include "battle_scripts.h"
 #include "battle_z_move.h"
+#include "config/battle.h"
 #include "item.h"
 #include "battle_controllers.h"
 #include "move.h"
 #include "constants/battle_move_resolution.h"
+#include "pokemon.h"
 
 static void ValidateBattlers(void);
 static enum Move GetOriginallyUsedMove(enum Move chosenMove);
@@ -31,6 +33,8 @@ static enum Move GetAssistMove(void);
 static enum Move GetSleepTalkMove(void);
 static enum Move GetCopycatMove(void);
 static enum Move GetMeFirstMove(void);
+
+
 
 // ==============
 // Attackcanceler
@@ -108,6 +112,7 @@ static enum CancelerResult CancelerAsleepOrFrozen(struct BattleContext *ctx)
             TryDeactivateSleepClause(GetBattlerSide(ctx->battlerAtk), gBattlerPartyIndexes[ctx->battlerAtk]);
             gBattleMons[ctx->battlerAtk].status1 &= ~STATUS1_SLEEP;
             gBattleMons[ctx->battlerAtk].volatiles.nightmare = FALSE;
+            gBattleMons[ctx->battlerAtk].volatiles.dreamSleep = FALSE;
             gEffectBattler = ctx->battlerAtk;
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP_UPROAR;
             result = CANCELER_RESULT_BREAK;
@@ -128,6 +133,7 @@ static enum CancelerResult CancelerAsleepOrFrozen(struct BattleContext *ctx)
 
             if (gBattleMons[ctx->battlerAtk].status1 & STATUS1_SLEEP)
             {
+                TryDreaming(&gBattleMons[ctx->battlerAtk]);
                 enum BattleMoveEffects moveEffect = GetMoveEffect(ctx->move);
                 if (moveEffect == EFFECT_SNORE)
                 {
@@ -148,6 +154,7 @@ static enum CancelerResult CancelerAsleepOrFrozen(struct BattleContext *ctx)
             {
                 TryDeactivateSleepClause(GetBattlerSide(ctx->battlerAtk), gBattlerPartyIndexes[ctx->battlerAtk]);
                 gBattleMons[ctx->battlerAtk].volatiles.nightmare = FALSE;
+                gBattleMons[ctx->battlerAtk].volatiles.dreamSleep = FALSE;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP;
                 result = CANCELER_RESULT_BREAK;
                 BattleScriptCall(BattleScript_MoveUsedWokeUp);
