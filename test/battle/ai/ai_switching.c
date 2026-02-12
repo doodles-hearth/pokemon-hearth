@@ -1,4 +1,6 @@
 #include "global.h"
+#include "config/general.h"
+#include "constants/generational_changes.h"
 #include "test/battle.h"
 
 AI_SINGLE_BATTLE_TEST("AI gets baited by Protect Switch tactics") // This behavior is to be fixed.
@@ -2179,6 +2181,7 @@ AI_SINGLE_BATTLE_TEST("AI_FLAG_RANDOMIZE_SWITCHIN: AI will consider all mons tha
 AI_MULTI_BATTLE_TEST("AI will not switch out if the opposite battler is absent and its moves can still affect the other opponent")
 {
     GIVEN {
+        WITH_CONFIG(CONFIG_MULTI_BATTLE_WHITEOUT, GEN_LATEST);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
         MULTI_PLAYER(SPECIES_WOBBUFFET) { HP(41); Speed(1); }
         MULTI_PARTNER(SPECIES_DRAKLOAK) { HP(41); MaxHP(100); Speed(4); Item(ITEM_LIFE_ORB); Moves(MOVE_DRAGON_RAGE, MOVE_SHADOW_BALL); }
