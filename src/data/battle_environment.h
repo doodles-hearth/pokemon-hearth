@@ -1,4 +1,7 @@
 #include "battle_anim_scripts.h"
+#include "constants/battle.h"
+#include "constants/moves.h"
+#include "constants/pokemon.h"
 #include "graphics.h"
 
 #define ENVIRONMENT_BACKGROUND(Background)             \
@@ -246,30 +249,6 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .battleIntroSlide = PLAIN_BATTLE_INTRO_SLIDE,
     },
 
-    // Custom
-    
-    [BATTLE_ENVIRONMENT_GINKO_WOODS] =
-    {
-        .naturePower = MOVE_STUN_SPORE,
-        .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
-        .camouflageType = TYPE_ELECTRIC,
-        .background = ENVIRONMENT_BACKGROUND(GinkoWoods),
-    },
-    
-    [BATTLE_ENVIRONMENT_ROCK] =
-    {
-        .secretPowerEffect = MOVE_EFFECT_SPD_MINUS_1,
-        .camouflageType = TYPE_ROCK,
-        .background = ENVIRONMENT_BACKGROUND(Rock),
-    },
-    
-    [BATTLE_ENVIRONMENT_PLAINS] =
-    {
-        .naturePower = MOVE_SWIFT,
-        .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
-        .camouflageType = TYPE_NORMAL,
-        .background = ENVIRONMENT_BACKGROUND(Plains),
-    },
 
     [BATTLE_ENVIRONMENT_FRONTIER] =
     {
@@ -567,6 +546,49 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .secretPowerEffect = MOVE_EFFECT_DEF_MINUS_1,
         .camouflageType = TYPE_PSYCHIC,
         .camouflageBlend = DEFAULT_CAMOUFLAGE_BLEND,
+    },
+
+    // Hearth
+    [BATTLE_ENVIRONMENT_GINKO_WOODS] =
+    {
+        .name = _("Ginko"),
+        .naturePower = MOVE_STUN_SPORE,
+        .secretPowerAnimation = gBattleAnimMove_Electroweb,
+        .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
+        .camouflageType = TYPE_ELECTRIC,
+        .camouflageBlend = DEFAULT_CAMOUFLAGE_BLEND,
+        .entry = ENVIRONMENT_ENTRY(GinkoWoods),
+        .background = ENVIRONMENT_BACKGROUND(GinkoWoods),
+        .palette = gBattleEnvironmentPalette_GinkoWoods,
+        .battleIntroSlide = BattleIntroSlide1,
+    },
+    
+    [BATTLE_ENVIRONMENT_ROCK] =
+    {
+        .name = _("Rock"),
+        .naturePower = MOVE_STONE_EDGE,
+        .secretPowerAnimation = gBattleAnimMove_SecretPower,
+        .secretPowerEffect = MOVE_EFFECT_SPD_MINUS_1,
+        .camouflageType = TYPE_ROCK,
+        .camouflageBlend = DEFAULT_CAMOUFLAGE_BLEND,
+        .entry = ENVIRONMENT_ENTRY(Rock),
+        .background = ENVIRONMENT_BACKGROUND(Rock),
+        .palette = gBattleEnvironmentPalette_Rock,
+        .battleIntroSlide = BattleIntroSlide1,
+    },
+    
+    [BATTLE_ENVIRONMENT_PLAINS] =
+    {
+        .name = _("Plains"),
+        .naturePower = MOVE_SWIFT,
+        .secretPowerAnimation = gBattleAnimMove_Swift,
+        .secretPowerEffect = MOVE_EFFECT_PARALYSIS,
+        .camouflageType = TYPE_NORMAL,
+        .camouflageBlend = DEFAULT_CAMOUFLAGE_BLEND,
+        .entry = ENVIRONMENT_ENTRY(Plains),
+        .background = ENVIRONMENT_BACKGROUND(Plains),
+        .palette = gBattleEnvironmentPalette_Plains,
+        .battleIntroSlide = BattleIntroSlide1,
     },
 };
 
