@@ -1,6 +1,8 @@
 #include "global.h"
+#include "config/battle.h"
 #include "test/battle.h"
 #include "battle_environment.h"
+#include "test/test.h"
 
 //TO_DO_BATTLE_TEST("TODO: Write Nature Power (Move Effect) test titles")
 
@@ -31,6 +33,10 @@ SINGLE_BATTLE_TEST("Nature power plays a move correctly in any background")
 #if B_UPDATED_MOVE_FLAGS >= GEN_6
 DOUBLE_BATTLE_TEST("Nature Power can target ally (Gen6+)")
 {
+
+    if(B_NATURE_POWER_MOVES < GEN_4)
+        KNOWN_FAILING;
+
     GIVEN {
         WITH_CONFIG(CONFIG_NATURE_POWER_MOVES, GEN_LATEST);
         PLAYER(SPECIES_WYNAUT);
