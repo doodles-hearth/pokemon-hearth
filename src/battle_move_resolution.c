@@ -8,6 +8,8 @@
 #include "battle_scripts.h"
 #include "battle_z_move.h"
 #include "config/battle.h"
+#include "constants/generational_changes.h"
+#include "generational_changes.h"
 #include "item.h"
 #include "battle_controllers.h"
 #include "move.h"
@@ -3746,7 +3748,7 @@ enum Move GetNaturePowerMove(void)
     else if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN)
         move = MOVE_PSYCHIC;
     else if (gBattleEnvironmentInfo[gBattleEnvironment].naturePower == MOVE_NONE)
-        move = B_NATURE_POWER_MOVES >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT;
+        move = GetConfig(CONFIG_NATURE_POWER_MOVES) >= GEN_4 ? MOVE_TRI_ATTACK : MOVE_SWIFT;
 
     return move;
 }

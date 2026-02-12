@@ -198,7 +198,7 @@
     F(TERRAIN_TYPE_BOOST,        terrainTypeBoost,        (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
     F(SECRET_POWER_EFFECT,       secretPowerEffect,       (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
     F(SECRET_POWER_ANIMATION,    secretPowerAnimation,    (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
-    F(NATURE_POWER_MOVES,        naturePowerMoves,        (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
+    F(NATURE_POWER_MOVES,        naturePower,             (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
     F(CAMOUFLAGE_TYPES,          camouflageTypes,         (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
     /* Catching settings */ \
     F(SEMI_INVULNERABLE_CATCH,   semiInvulnerableCatch,   (u32, GEN_COUNT - 1)) /* TODO: use in tests */ \
