@@ -22,8 +22,8 @@ SINGLE_BATTLE_TEST("Early Bird turns a 3-turn sleep into one missed turn")
         PLAYER(SPECIES_DODUO) { Ability(ABILITY_EARLY_BIRD); Status1(STATUS1_SLEEP_TURN(3)); Moves(MOVE_CELEBRATE); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(player, MOVE_CELEBRATE); }
-        TURN { MOVE(player, MOVE_CELEBRATE); }
+        TURN { MOVE(player, MOVE_CELEBRATE, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
+        TURN { MOVE(player, MOVE_CELEBRATE, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
     } SCENE {
         MESSAGE("Doduo is fast asleep.");
         MESSAGE("Doduo woke up!");
