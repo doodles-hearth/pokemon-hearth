@@ -217,6 +217,8 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
     {
         .flag = B_WEATHER_SMOKE,
         .rock = HOLD_EFFECT_NONE,
+        .abilityStartMessage = B_MSG_STARTED_SMOKE,
+        .moveStartMessage = B_MSG_STARTED_SMOKE,
         .endMessage = B_MSG_WEATHER_END_SMOKE,
         .continuesMessage = B_MSG_WEATHER_TURN_SMOKE,
         .animation = B_ANIM_SMOKE_CONTINUES,
@@ -11221,3 +11223,16 @@ void TryDreaming(struct BattlePokemon* mon)
     if (RandomChance(RNG_DREAM_SLEEP, dreamOdds, 256))
         mon->volatiles.dreamSleep = TRUE;
 }
+
+
+// Smoke Explosion
+bool32 ShouldSmokeExplode()
+{
+    bool32 isFireMove = GetMoveType(gCurrentMove) == TYPE_FIRE;
+    bool32 isSmokeWeather = GetCurrentBattleWeather() == BATTLE_WEATHER_SMOKE;
+
+    if (isFireMove && isSmokeWeather && HasWeatherEffect() && !IsAbilityOnField(ABILITY_DAMP))
+        return TRUE;
+    return FALSE;
+}
+

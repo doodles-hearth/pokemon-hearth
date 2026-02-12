@@ -971,6 +971,10 @@ static enum CancelerResult CancelerPowderStatus(struct BattleContext *ctx)
             gBattlescriptCurrInstr = BattleScript_MoveUsedPowder;
         return CANCELER_RESULT_FAILURE;
     }
+    if (ShouldSmokeExplode()) {
+        gBattleStruct->trySmokeExplosion = TRUE;
+    }
+
     return CANCELER_RESULT_SUCCESS;
 }
 
