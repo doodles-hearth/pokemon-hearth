@@ -9,7 +9,6 @@
 #include "battle_z_move.h"
 #include "config/battle.h"
 #include "constants/generational_changes.h"
-#include "constants/moves.h"
 #include "generational_changes.h"
 #include "item.h"
 #include "battle_controllers.h"
@@ -3737,50 +3736,9 @@ static enum Move GetAssistMove(void)
     return move;
 }
 
-static enum Move GetNaturePowerForEnvironment(u8 env)
-{
-    u8 gen = GetConfig(CONFIG_NATURE_POWER_MOVES);
-
-    switch (env)
-    {
-    case BATTLE_ENVIRONMENT_GRASS:
-    case BATTLE_ENVIRONMENT_GRASS_BLUE:
-    case BATTLE_ENVIRONMENT_LONG_GRASS:
-        if (gen >= GEN_6) return MOVE_ENERGY_BALL;
-        if (gen >= GEN_4) return MOVE_SEED_BOMB;
-        return MOVE_STUN_SPORE;
-
-    case BATTLE_ENVIRONMENT_SAND:
-        return gen >= GEN_6 ? MOVE_EARTH_POWER : MOVE_EARTHQUAKE;
-
-    case BATTLE_ENVIRONMENT_WATER:
-        return gen >= GEN_4 ? MOVE_HYDRO_PUMP : MOVE_SURF;
-
-    case BATTLE_ENVIRONMENT_CAVE:
-    case BATTLE_ENVIRONMENT_GROUDON:
-        if (gen >= GEN_6) return MOVE_POWER_GEM;
-        if (gen >= GEN_4) return MOVE_ROCK_SLIDE;
-        return MOVE_SHADOW_BALL;
-
-    case BATTLE_ENVIRONMENT_PLAIN:
-    case BATTLE_ENVIRONMENT_RAYQUAZA:
-        if (gen >= GEN_6) return MOVE_TRI_ATTACK;
-        if (gen >= GEN_4) return MOVE_EARTHQUAKE;
-        return MOVE_SWIFT;
-
-    case BATTLE_ENVIRONMENT_SNOW:
-        if (gen >= GEN_7) return MOVE_ICE_BEAM;
-        if (gen == GEN_6) return MOVE_FROST_BREATH;
-        return MOVE_BLIZZARD;
-
-    default:
-        return (gen >= GEN_4) ? MOVE_TRI_ATTACK : MOVE_SWIFT;
-    }
-}
-
 enum Move GetNaturePowerMove(void)
 {
-    enum Move move = GetNaturePowerForEnvironment(gBattleEnvironment);
+    enum Move move = gBattleEnvironmentInfo[gBattleEnvironment].naturePower;
     if (gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
         move = MOVE_MOONBLAST;
     else if (gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
