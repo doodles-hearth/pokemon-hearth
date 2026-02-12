@@ -722,7 +722,10 @@ void HandleAction_UseMove(void)
         BattleArena_AddMindPoints(gBattlerAttacker);
 
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+    {
         gBattleStruct->battlerState[i].wasAboveHalfHp = gBattleMons[i].hp > gBattleMons[i].maxHP / 2;
+        gBattleMons[i].volatiles.activateDancer = FALSE;
+    }
 
     gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
 }
@@ -4648,7 +4651,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         }
         break;
     case ABILITYEFFECT_MOVE_END_OTHER: // Abilities that activate on *another* battler's moveend: Dancer, Soul-Heart, Receiver, Symbiosis
-        switch (GetBattlerAbility(battler))
+        switch (ability)
         {
         case ABILITY_DANCER:
             if (IsBattlerAlive(battler)
@@ -4659,6 +4662,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 // Set bit and save Dancer mon's original target
                 gSpecialStatuses[battler].dancerUsedMove = TRUE;
                 gSpecialStatuses[battler].dancerOriginalTarget = gBattleStruct->moveTarget[battler] | 0x4;
+                gBattleMons[battler].volatiles.activateDancer = FALSE;
                 gBattlerAttacker = gBattlerAbility = battler;
                 gCalledMove = move;
 
@@ -10133,6 +10137,7 @@ void ClearDamageCalcResults(void)
     {
         gBattleStruct->moveDamage[battler] = 0;
         gBattleStruct->moveResultFlags[battler] = 0;
+        gBattleStruct->passiveHpUpdate[battler] = 0;
         gSpecialStatuses[battler].criticalHit = FALSE;
         gSpecialStatuses[battler].damagedByAttack = FALSE;
     }
@@ -10944,10 +10949,19 @@ bool32 IsAnyTargetTurnDamaged(enum BattlerId battlerAtk)
 
 bool32 IsAnyTargetAffected(void)
 {
+    bool32 isSpreadMove = IsSpreadMove(GetBattlerMoveTargetType(gBattlerAttacker, gCurrentMove));
     for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
     {
-        if (battler == gBattlerAttacker)
-            continue;
+        if (isSpreadMove)
+        {
+            if (battler == gBattlerAttacker)
+                continue;
+        }
+        else
+        {
+            if (battler != gBattlerTarget)
+                continue;
+        }
 
         if (!IsBattlerUnaffectedByMove(battler))
             return TRUE;

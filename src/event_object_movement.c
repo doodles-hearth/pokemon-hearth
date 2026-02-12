@@ -265,6 +265,7 @@ static void (*const sMovementTypeCallbacks[])(struct Sprite *) =
     [MOVEMENT_TYPE_NONE] = MovementType_None,
     [MOVEMENT_TYPE_LOOK_AROUND] = MovementType_LookAround,
     [MOVEMENT_TYPE_WANDER_AROUND] = MovementType_WanderAround,
+    [MOVEMENT_TYPE_WANDER_AROUND_SLOWER] = MovementType_WanderAroundSlower,
     [MOVEMENT_TYPE_WANDER_UP_AND_DOWN] = MovementType_WanderUpAndDown,
     [MOVEMENT_TYPE_WANDER_DOWN_AND_UP] = MovementType_WanderUpAndDown,
     [MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT] = MovementType_WanderLeftAndRight,

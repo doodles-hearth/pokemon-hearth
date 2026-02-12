@@ -279,6 +279,7 @@ void CopyObjectGraphicsInfoToSpriteTemplate(u16 graphicsId, void (*callback)(str
 void MovementType_None(struct Sprite *sprite);
 void MovementType_LookAround(struct Sprite *sprite);
 void MovementType_WanderAround(struct Sprite *sprite);
+void MovementType_WanderAroundSlower(struct Sprite *sprite);
 void MovementType_WanderUpAndDown(struct Sprite *sprite);
 void MovementType_WanderLeftAndRight(struct Sprite *sprite);
 void MovementType_FaceDirection(struct Sprite *sprite);
