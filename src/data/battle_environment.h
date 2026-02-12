@@ -4,6 +4,13 @@
 #include "constants/pokemon.h"
 #include "graphics.h"
 
+#ifdef __INTELLISENSE__
+#include "include/battle_anim.h"
+#include "include/battle_environment.h"
+#include "include/constants/rgb.h"
+#include "include/constants/map_types.h"
+#endif // __INTELLISENSE__
+
 #define ENVIRONMENT_BACKGROUND(Background)             \
 {                                                      \
     .tileset = gBattleEnvironmentTiles_##Background,   \
