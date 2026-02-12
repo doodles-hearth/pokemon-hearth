@@ -65,19 +65,6 @@ jobs:
         run: |
           make -j${nproc} check
 
-      - name: ROM (Firered)
-        env:
-          COMPARE: 0
-        run: |
-          make clean
-          make firered -j${nproc} -O
-
-      - name: ROM (Leafgreen)
-        env:
-          COMPARE: 0
-        run: |
-          make leafgreen -j${nproc} -O
-
   docs_validate:
     if: github.actor != 'allcontributors[bot]'
     runs-on: ubuntu-latest
