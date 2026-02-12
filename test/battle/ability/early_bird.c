@@ -1,4 +1,5 @@
 #include "global.h"
+#include "random.h"
 #include "test/battle.h"
 
 SINGLE_BATTLE_TEST("Early Bird wakes up if 1 sleep turn is preset")
@@ -38,7 +39,7 @@ SINGLE_BATTLE_TEST("Early Bird reduces Rest sleep to one turn")
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(player, MOVE_REST); }
-        TURN { MOVE(player, MOVE_CELEBRATE); }
+        TURN { MOVE(player, MOVE_CELEBRATE, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
         TURN { MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
         MESSAGE("Doduo is fast asleep.");
