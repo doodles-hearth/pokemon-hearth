@@ -10,6 +10,7 @@
 #include "fldeff_misc.h"
 #include "frontier_util.h"
 #include "party_menu.h"
+#include "pokemon.h"
 #include "pokenav.h"
 #include "script.h"
 #include "string_util.h"
@@ -207,7 +208,7 @@ s32 DoPoisonDecayFieldEffect(void)
                 hp++;
 
             else if (OW_POISON_DAMAGE < GEN_4 && (hp == 0 || --hp == 0))
-                TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_FAINT);
+                TryFormChange(&gPlayerParty[i], FORM_CHANGE_FAINT);
 
             else if (OW_POISON_DAMAGE >= GEN_4 && (hp > 1))
                 hp--;
@@ -223,7 +224,7 @@ s32 DoPoisonDecayFieldEffect(void)
                 else if (hp == 1)
                 {
                     hp--;
-                    TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_FAINT);
+                    TryFormChange(&gPlayerParty[i], FORM_CHANGE_FAINT);
                     sFaintedFromDecayMask |= (1 << i);
                 }
             }
