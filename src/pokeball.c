@@ -80,7 +80,7 @@ static u16 GetBattlerPokeballItemId(enum BattlerId battler);
 #define GFX_TAG_CHERISH_BALL 55027
 // TODO: ITEM_LIGHT_POKE_BALL (Light Ball)
 #define GFX_TAG_LIGHT_BALL   55028
-#define GFX_TAG_KABA_BALL    55039
+#define GFX_TAG_KABA_BALL    55029
 
 static const struct OamData sBallOamData =
 {
