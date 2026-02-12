@@ -905,13 +905,13 @@ enum __attribute__((packed)) Move {
     MOVES_COUNT_GEN9,
 
     // Add any custom moves here, not further down!
-    MOVE_FLIPPER_SPLASH = 849,
-    MOVE_NICK = 850,
-    MOVE_PEBBLE_CRUSH = 851,
-    MOVE_PUSH = 852,
-    MOVE_SINK = 853,
-    MOVE_WATER_FAIL = 854,
-    MOVE_SMOKE_BOMB = 855,
+    MOVE_FLIPPER_SPLASH = MOVES_COUNT_GEN9,
+    MOVE_NICK = 849,
+    MOVE_PEBBLE_CRUSH = 850,
+    MOVE_PUSH = 851,
+    MOVE_SINK = 852,
+    MOVE_WATER_FAIL = 853,
+    MOVE_SMOKE_BOMB = 854,
     MOVES_COUNT_HEARTH,
 
     MOVES_COUNT = MOVES_COUNT_HEARTH,
