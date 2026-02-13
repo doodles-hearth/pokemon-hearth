@@ -914,6 +914,7 @@ static void Task_KabaSpeech_HandleConfirmChosenMugshotInput(u8 taskId)
         break;
     case 1: // NO
     case MENU_B_PRESSED:
+        DeactivateSingleTextPrinter(WIN_TEXT, WINDOW_TEXT_PRINTER);
         PlaySE(SE_SELECT);
         KabaSpeech_PrintMessageBox(sKabaSpeech_CancelChosenGender);
         KabaSpeech_BeginFade(FALSE, 0, (sKabaSpeech->chosenMugshot == MUGSHOT_AO) ? SPRITE_TYPE_MUGSHOT_2 : SPRITE_TYPE_MUGSHOT_1);
