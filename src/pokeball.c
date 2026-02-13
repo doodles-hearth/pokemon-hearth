@@ -1351,9 +1351,9 @@ u8 CreateIntroPokeballSprite(u8 monSpriteId, u8 monPalNum, u8 x, u8 y, u8 oamPri
 {
     u8 spriteId;
 
-    LoadCompressedSpriteSheetUsingHeap(&gPokeBalls[BALL_POKE].pic);
-    LoadSpritePalette(&gPokeBalls[BALL_POKE].palette);
-    spriteId = CreateSprite(&gPokeBalls[BALL_POKE].spriteTemplate, x, y, subPriority);
+    LoadCompressedSpriteSheetUsingHeap(&IntroBallSprite.pic);
+    LoadSpritePalette(&IntroBallSprite.palette);
+    spriteId = CreateSprite(&IntroBallSprite.spriteTemplate, x, y, subPriority);
     gSprites[spriteId].sMonSpriteId = monSpriteId;
     gSprites[spriteId].sDelay = delay;
     gSprites[spriteId].sMonPalNum = monPalNum;
