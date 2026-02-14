@@ -3,7 +3,7 @@
 
 ASSUMPTIONS
 {
-    ASSUME(!IsBattleMoveStatus(MOVE_WATER_GUN));
+    ASSUME(GetMoveCategory(MOVE_WATER_GUN) != DAMAGE_CATEGORY_STATUS);
 }
 
 // Battle Bond transforms the Pokémon when fainting any battler(opposing or partner), unless it's the last Pokémon and the battle ends.
@@ -11,10 +11,10 @@ SINGLE_BATTLE_TEST("Battle Bond transforms player's Greninja - Singles")
 {
     u32 monsCountPlayer, monsCountOpponent;
 
-    PARAMETRIZE {monsCountPlayer = 1; monsCountOpponent = 1; }
-    PARAMETRIZE {monsCountPlayer = 1; monsCountOpponent = 2; }
-    PARAMETRIZE {monsCountPlayer = 2; monsCountOpponent = 1; }
-    PARAMETRIZE {monsCountPlayer = 2; monsCountOpponent = 2; }
+    PARAMETRIZE { monsCountPlayer = 1; monsCountOpponent = 1; }
+    PARAMETRIZE { monsCountPlayer = 1; monsCountOpponent = 2; }
+    PARAMETRIZE { monsCountPlayer = 2; monsCountOpponent = 1; }
+    PARAMETRIZE { monsCountPlayer = 2; monsCountOpponent = 2; }
 
     GIVEN {
         WITH_CONFIG(CONFIG_BATTLE_BOND, GEN_8);
@@ -59,10 +59,10 @@ SINGLE_BATTLE_TEST("Battle Bond transforms opponent's Greninja - Singles")
 {
     u32 monsCountPlayer, monsCountOpponent;
 
-    PARAMETRIZE {monsCountPlayer = 1; monsCountOpponent = 1; }
-    PARAMETRIZE {monsCountPlayer = 1; monsCountOpponent = 2; }
-    PARAMETRIZE {monsCountPlayer = 2; monsCountOpponent = 1; }
-    PARAMETRIZE {monsCountPlayer = 2; monsCountOpponent = 2; }
+    PARAMETRIZE { monsCountPlayer = 1; monsCountOpponent = 1; }
+    PARAMETRIZE { monsCountPlayer = 1; monsCountOpponent = 2; }
+    PARAMETRIZE { monsCountPlayer = 2; monsCountOpponent = 1; }
+    PARAMETRIZE { monsCountPlayer = 2; monsCountOpponent = 2; }
 
     GIVEN {
         WITH_CONFIG(CONFIG_BATTLE_BOND, GEN_8);
@@ -70,7 +70,7 @@ SINGLE_BATTLE_TEST("Battle Bond transforms opponent's Greninja - Singles")
         if (monsCountOpponent == 2) {
             OPPONENT(SPECIES_WOBBUFFET);
         }
-        PLAYER(SPECIES_WOBBUFFET) {HP(1); }
+        PLAYER(SPECIES_WOBBUFFET) { HP(1); }
         if (monsCountPlayer == 2) {
             PLAYER(SPECIES_WOBBUFFET);
         }
@@ -107,10 +107,10 @@ DOUBLE_BATTLE_TEST("Battle Bond transforms player's Greninja when fainting its A
 {
     u32 monsCountPlayer, monsCountOpponent;
 
-    PARAMETRIZE {monsCountPlayer = 2; monsCountOpponent = 2; }
-    PARAMETRIZE {monsCountPlayer = 2; monsCountOpponent = 3; }
-    PARAMETRIZE {monsCountPlayer = 3; monsCountOpponent = 2; }
-    PARAMETRIZE {monsCountPlayer = 3; monsCountOpponent = 3; }
+    PARAMETRIZE { monsCountPlayer = 2; monsCountOpponent = 2; }
+    PARAMETRIZE { monsCountPlayer = 2; monsCountOpponent = 3; }
+    PARAMETRIZE { monsCountPlayer = 3; monsCountOpponent = 2; }
+    PARAMETRIZE { monsCountPlayer = 3; monsCountOpponent = 3; }
 
     GIVEN {
         WITH_CONFIG(CONFIG_BATTLE_BOND, GEN_8);

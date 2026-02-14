@@ -555,7 +555,7 @@
       "y": 3,
       "elevation": 3,
       "item": "ITEM_ETHER",
-      "flag": "0"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",
