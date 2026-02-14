@@ -238,6 +238,8 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
     {
         .flag = B_WEATHER_LEAVES,
         .rock = HOLD_EFFECT_NONE,
+        .abilityStartMessage = B_MSG_STARTED_LEAVES,
+        .moveStartMessage = B_MSG_STARTED_LEAVES,
         .endMessage = B_MSG_WEATHER_END_LEAVES,
         .continuesMessage = B_MSG_WEATHER_TURN_LEAVES,
         .animation = B_ANIM_FALLING_LEAVES,

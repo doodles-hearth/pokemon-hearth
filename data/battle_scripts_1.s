@@ -3397,12 +3397,6 @@ BattleScript_FailOnPrimalWeather::
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
 	return
 
-BattleScript_EffectBlossom::
-	attackcanceler
-	call BattleScript_CheckPrimalWeather
-	setfieldweather BATTLE_WEATHER_LEAVES
-	goto BattleScript_MoveWeatherChange
-
 BattleScript_ExtremelyHarshSunlightWasNotLessened:
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_EXTREMELYHARSHSUNLIGHTWASNOTLESSENED

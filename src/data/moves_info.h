@@ -23316,7 +23316,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Summons a flurry of cherry\n"
             "leaves that fill the air"
         ),
-        .effect = EFFECT_BLOSSOM,
+        .effect = EFFECT_WEATHER,
         .power = 0,
         .type = TYPE_GRASS,
         .accuracy = 0,
@@ -23324,6 +23324,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_ALL_BATTLERS,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
+        .argument = { .weatherType = BATTLE_WEATHER_LEAVES },
         .zMove = { .effect = Z_EFFECT_ATK_UP_3 },
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
