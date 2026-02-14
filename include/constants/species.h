@@ -1664,25 +1664,50 @@
 #define SPECIES_ZYGARDE_MEGA                            1547
 #define SPECIES_DRAMPA_MEGA                             1548
 #define SPECIES_FALINKS_MEGA                            1549
+#define SPECIES_HEATRAN_MEGA                            1550
+#define SPECIES_DARKRAI_MEGA                            1551
+#define SPECIES_ZERAORA_MEGA                            1552
+#define SPECIES_RAICHU_MEGA_X                           1553
+#define SPECIES_RAICHU_MEGA_Y                           1554
+#define SPECIES_CHIMECHO_MEGA                           1555
+#define SPECIES_ABSOL_MEGA_Z                            1556
+#define SPECIES_STARAPTOR_MEGA                          1557
+#define SPECIES_GARCHOMP_MEGA_Z                         1558
+#define SPECIES_LUCARIO_MEGA_Z                          1559
+#define SPECIES_GOLURK_MEGA                             1560
+#define SPECIES_MEOWSTIC_M_MEGA                         1561
+#define SPECIES_MEOWSTIC_F_MEGA                         1562
+#define SPECIES_CRABOMINABLE_MEGA                       1563
+#define SPECIES_GOLISOPOD_MEGA                          1564
+#define SPECIES_MAGEARNA_MEGA                           1565
+#define SPECIES_MAGEARNA_ORIGINAL_MEGA                  1566
+#define SPECIES_SCOVILLAIN_MEGA                         1567
+#define SPECIES_BAXCALIBUR_MEGA                         1568
+#define SPECIES_TATSUGIRI_CURLY_MEGA                    1569
+#define SPECIES_TATSUGIRI_DROOPY_MEGA                   1570
+#define SPECIES_TATSUGIRI_STRETCHY_MEGA                 1571
+#define SPECIES_GLIMMORA_MEGA                           1572
 
 // Hearth
 
-#define SPECIES_KOTORA                                  1550
-#define SPECIES_RAITORA                                 1551
-#define SPECIES_SEWADDLE_TOKUAN                         1552
-#define SPECIES_SWADLOON_TOKUAN                         1553
-#define SPECIES_LEAVANNY_TOKUAN                         1554
-#define SPECIES_PSYDUCK_TOKUAN                          1555
-#define SPECIES_GOLDUCK_TOKUAN                          1556
-#define SPECIES_HONESTREE                               1557
-#define SPECIES_SHADOWL                                 1558
-#define SPECIES_TOXEL_TOKUAN                            1559
-#define SPECIES_TOXIKYU_LOW_KEY                         1560
-#define SPECIES_TOXIKYU_AMPED                           1561
-#define SPECIES_VENONAT_TOKUAN                          1562
-#define SPECIES_VENOMOTH_TOKUAN                         1563
+#define SPECIES_KOTORA                                  1573
+#define SPECIES_RAITORA                                 1574
+#define SPECIES_SEWADDLE_TOKUAN                         1575
+#define SPECIES_SWADLOON_TOKUAN                         1576
+#define SPECIES_LEAVANNY_TOKUAN                         1577
+#define SPECIES_PSYDUCK_TOKUAN                          1578
+#define SPECIES_GOLDUCK_TOKUAN                          1579
+#define SPECIES_HONESTREE                               1580
+#define SPECIES_SHADOWL                                 1581
+#define SPECIES_TOXEL_TOKUAN                            1582
+#define SPECIES_TOXIKYU_LOW_KEY                         1583
+#define SPECIES_TOXIKYU_AMPED                           1584
+#define SPECIES_VENONAT_TOKUAN                          1585
+#define SPECIES_VENOMOTH_TOKUAN                         1586
+#define SPECIES_MAGIKARP_TOKUAN                         1587
+#define SPECIES_GYARADOS_TOKUAN                         1588
 
-#define SPECIES_EGG (SPECIES_VENOMOTH_TOKUAN + 1)
+#define SPECIES_EGG (SPECIES_GYARADOS_TOKUAN + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

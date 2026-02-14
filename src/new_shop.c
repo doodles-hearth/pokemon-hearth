@@ -1766,7 +1766,7 @@ static void BuyMenuSubtractMoney(u8 taskId)
 
 static void Task_ReturnToItemListWaitMsg(u8 taskId)
 {
-    if (!IsTextPrinterActive(WIN_ITEM_DESCRIPTION))
+    if (!IsTextPrinterActiveOnWindow(WIN_ITEM_DESCRIPTION))
     {
         if (JOY_NEW(A_BUTTON | B_BUTTON))
         {
@@ -1785,7 +1785,7 @@ static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
 
     if (GetItemPocket(sShopData->currentItemId) == POCKET_POKE_BALLS)
     {
-        if (IsTextPrinterActive(WIN_ITEM_DESCRIPTION))
+        if (IsTextPrinterActiveOnWindow(WIN_ITEM_DESCRIPTION))
         {
             return;
         }

@@ -1390,7 +1390,7 @@
       "y": 70,
       "elevation": 0,
       "item": "ITEM_STARDUST",
-      "flag": "0"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "secret_base",

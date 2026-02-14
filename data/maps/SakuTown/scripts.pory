@@ -117,8 +117,8 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	switch(var(VAR_STARTER_MON)) {
 		case SPECIES_SNIVY:
 			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_SNIVY, SakuTown_Text_RivalDefeat)
-		case SPECIES_FROAKIE:
-			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_FROAKIE, SakuTown_Text_RivalDefeat)
+		case SPECIES_SQUIRTLE:
+			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_SQUIRTLE, SakuTown_Text_RivalDefeat)
 		case SPECIES_CYNDAQUIL:
 			trainerbattle_no_intro(TRAINER_RIVAL_SAKU_CYNDAQUIL, SakuTown_Text_RivalDefeat)
 	}

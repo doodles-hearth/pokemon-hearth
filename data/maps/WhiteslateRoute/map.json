@@ -640,7 +640,7 @@
       "y": 40,
       "elevation": 0,
       "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",

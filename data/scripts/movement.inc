@@ -73,6 +73,14 @@ Common_Movement_WalkInPlaceRight:
 
 Common_Movement_FollowerSafeEnd::
 	step_end
+	
+Common_Movement_WalkUp5::
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
 
 Common_Movement_WalkUp6:
 	walk_up

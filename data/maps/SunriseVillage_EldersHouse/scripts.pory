@@ -1,9 +1,9 @@
 const LOCALID_ELDER = 1
 const LOCALID_BALL_SNIVY = 3
-const LOCALID_BALL_FROAKIE = 4
+const LOCALID_BALL_SQUIRTLE = 4
 const LOCALID_BALL_CYNDAQUIL = 5
 const LOCALID_SNIVY = 6
-const LOCALID_FROAKIE = 7
+const LOCALID_SQUIRTLE = 7
 const LOCALID_CYNDAQUIL = 8
 const LOCALID_RIVAL = 2
 
@@ -31,8 +31,8 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	setnamedmon(SPECIES_CYNDAQUIL)
 	setseenmon(SPECIES_SNIVY)
 	setnamedmon(SPECIES_SNIVY)
-	setseenmon(SPECIES_FROAKIE)
-	setnamedmon(SPECIES_FROAKIE)
+	setseenmon(SPECIES_SQUIRTLE)
+	setnamedmon(SPECIES_SQUIRTLE)
 
 	// Walk up to elder
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up, walk_left, walk_up, delay_16 * 2))
@@ -108,10 +108,10 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	applymovement(LOCALID_ELDER, moves(walk_right, face_up, delay_16))
 	waitmovement(0)
 	playse(SE_BALL_OPEN)
-	removeobject(LOCALID_BALL_FROAKIE)
-	addobject(LOCALID_FROAKIE)
+	removeobject(LOCALID_BALL_SQUIRTLE)
+	addobject(LOCALID_SQUIRTLE)
 	waitse
-	playmoncry(SPECIES_FROAKIE, CRY_MODE_NORMAL)
+	playmoncry(SPECIES_SQUIRTLE, CRY_MODE_NORMAL)
 	delay(30)
 
 	applymovement(LOCALID_ELDER, moves(walk_right, face_up, delay_16))
@@ -237,9 +237,9 @@ script SunriseVillage_EldersHouse_Event_Pokeball_Starter_Snivy {
 	release
 }
 
-script SunriseVillage_EldersHouse_Event_Pokeball_Starter_Froakie {
+script SunriseVillage_EldersHouse_Event_Pokeball_Starter_Squirtle {
 	lock
-	setvar(VAR_TEMP_1, SPECIES_FROAKIE)
+	setvar(VAR_TEMP_1, SPECIES_SQUIRTLE)
 	call(SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter)
 	release
 }
@@ -256,7 +256,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	showmonpic(VAR_TEMP_1, 10, 3)
 	bufferspeciesname(STR_VAR_1, VAR_TEMP_1)
 	switch(var(VAR_TEMP_1)) {
-		case SPECIES_FROAKIE:
+		case SPECIES_SQUIRTLE:
 			msgbox(format("Do you choose {STR_VAR_1},\nsoul of the crashing sea waves?"), MSGBOX_YESNO)
 		case SPECIES_SNIVY:
 			msgbox(format("Do you choose {STR_VAR_1},\ngraceful storm of leaves?"), MSGBOX_YESNO)
@@ -268,8 +268,8 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		return
 	} elif (var(VAR_RESULT) == YES) {
 		switch(var(VAR_TEMP_1)) {
-			case SPECIES_FROAKIE:
-				givemon(SPECIES_FROAKIE, 5, ITEM_ORAN_BERRY, move1=MOVE_POUND, move2=MOVE_GROWL, move3=MOVE_NONE, move4=MOVE_NONE)
+			case SPECIES_SQUIRTLE:
+				givemon(SPECIES_SQUIRTLE, 5, ITEM_ORAN_BERRY, move1=MOVE_POUND, move2=MOVE_GROWL, move3=MOVE_NONE, move4=MOVE_NONE)
 			case SPECIES_SNIVY:
 				givemon(SPECIES_SNIVY, 5, ITEM_ORAN_BERRY, move1=MOVE_TACKLE, move2=MOVE_LEER, move3=MOVE_NONE, move4=MOVE_NONE)
 			case SPECIES_CYNDAQUIL:
@@ -281,10 +281,10 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		waitfanfare
 
 		switch(var(VAR_TEMP_1)) {
-			case SPECIES_FROAKIE:
-				setvar(VAR_STARTER_MON, SPECIES_FROAKIE)
-				removeobject(LOCALID_FROAKIE)
-				removeobject(LOCALID_BALL_FROAKIE)
+			case SPECIES_SQUIRTLE:
+				setvar(VAR_STARTER_MON, SPECIES_SQUIRTLE)
+				removeobject(LOCALID_SQUIRTLE)
+				removeobject(LOCALID_BALL_SQUIRTLE)
 			case SPECIES_SNIVY:
 				removeobject(LOCALID_SNIVY)
 				removeobject(LOCALID_BALL_SNIVY)
@@ -311,7 +311,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	// Put the player back in their initial spot
 	switch(var(VAR_STARTER_MON)) {
-		case SPECIES_FROAKIE:
+		case SPECIES_SQUIRTLE:
 			switch(var(VAR_FACING)) {
 				case DIR_SOUTH:
 					applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down * 2, walk_left, walk_down, walk_in_place_faster_up, step_end))
@@ -350,7 +350,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	closemessage
 
 	switch(var(VAR_STARTER_MON)) {
-		case SPECIES_FROAKIE:
+		case SPECIES_SQUIRTLE:
 			applymovement(LOCALID_RIVAL, moves(walk_up, walk_left, walk_in_place_faster_up, delay_16))
 			waitmovement(0)
 			playmoncry(SPECIES_SNIVY, CRY_MODE_NORMAL)
@@ -369,9 +369,9 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		case SPECIES_CYNDAQUIL:
 			applymovement(LOCALID_RIVAL, moves(walk_up, delay_16))
 			waitmovement(0)
-			playmoncry(SPECIES_FROAKIE, CRY_MODE_NORMAL)
-			removeobject(LOCALID_FROAKIE)
-			removeobject(LOCALID_BALL_FROAKIE)
+			playmoncry(SPECIES_SQUIRTLE, CRY_MODE_NORMAL)
+			removeobject(LOCALID_SQUIRTLE)
+			removeobject(LOCALID_BALL_SQUIRTLE)
 			applymovement(LOCALID_RIVAL, moves(walk_down, walk_in_place_faster_up, delay_16))
 			waitmovement(0)
 	}
@@ -566,8 +566,8 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 
 script SunriseVillage_EldersHouse_EventScript_RivalBattle {
 	switch(var(VAR_STARTER_MON)) {
-		case SPECIES_FROAKIE:
-			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_FROAKIE, format("What? It's over already?"))
+		case SPECIES_SQUIRTLE:
+			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_SQUIRTLE, format("What? It's over already?"))
 		case SPECIES_SNIVY:
 			trainerbattle_no_intro_no_whiteout(TRAINER_RIVAL_FIRST_BATTLE_SNIVY, format("What? It's over already?"))
 		case SPECIES_CYNDAQUIL:

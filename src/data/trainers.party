@@ -10044,7 +10044,7 @@ Music: Male
 Battle Type: Singles
 AI: Basic Trainer
 
-Froakie
+Squirtle
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Pound
@@ -10065,7 +10065,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - Leer
 
-=== TRAINER_RIVAL_FIRST_BATTLE_FROAKIE ===
+=== TRAINER_RIVAL_FIRST_BATTLE_SQUIRTLE ===
 Name: Natsuki
 Class: Rival
 Pic: Natsuki
@@ -11383,7 +11383,7 @@ Mudkip
 Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-=== TRAINER_RIVAL_SAKU_FROAKIE ===
+=== TRAINER_RIVAL_SAKU_SQUIRTLE ===
 Name: Natsuki
 Class: Rival
 Pic: Natsuki
@@ -14523,7 +14523,7 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Stun Spore
 - Tackle
 
-Froakie
+Squirtle
 Level: 13
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Bubble

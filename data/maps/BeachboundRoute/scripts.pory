@@ -258,8 +258,8 @@ script BeachboundRoute_EventScript_Mugging {
 		applymovement(LOCALID_GRUNT_2, moves(walk_in_place_fast_up, emote_angry))
 
 		setspeaker("Shady Man")
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}C'mon, don't make this difficult! Just hand it over!"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Yeah, c'mon, don't make this difficult!\nJust hand it over!"
 		))
 		closemessage
 

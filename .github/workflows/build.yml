@@ -15,7 +15,6 @@ jobs:
     if: github.actor != 'allcontributors[bot]'
     runs-on: ubuntu-latest
     env:
-      GAME_VERSION: EMERALD
       GAME_REVISION: 0
       GAME_LANGUAGE: ENGLISH
       COMPARE: 0
@@ -45,12 +44,15 @@ jobs:
           sudo mv tools/poryscript-linux/poryscript tools/poryscript
           sudo chmod +x tools/poryscript/poryscript
 
-      - name: ROM
+      - name: ROM (Emerald)
         env:
           COMPARE: 0
+          GAME_VERSION: EMERALD
         run: make -j${nproc} -O all
 
       - name: Release
+        env:
+          GAME_VERSION: EMERALD
         run: |
           make tidy
           make -j${nproc} release
@@ -58,6 +60,7 @@ jobs:
 
       - name: Test
         env:
+          GAME_VERSION: EMERALD
           TEST: 1
         run: |
           make -j${nproc} check

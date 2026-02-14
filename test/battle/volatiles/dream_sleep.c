@@ -24,7 +24,7 @@ SINGLE_BATTLE_TEST("Dream Sleep is removed when waking up")
         PLAYER(SPECIES_WOBBUFFET) { Speed(2); };
         OPPONENT(SPECIES_WOBBUFFET) { Speed(1); };
     } WHEN {
-        TURN { MOVE(player, MOVE_SPORE, WITH_RNG(RNG_SLEEP_TURNS, 1)); MOVE(opponent, MOVE_CELEBRATE); }
+        TURN { MOVE(player, MOVE_SPORE, WITH_RNG(RNG_SLEEP_TURNS, 2)); MOVE(opponent, MOVE_CELEBRATE); }
         TURN;
     } SCENE {
         NOT MESSAGE("The opposing Wobbuffet is fast asleep.");
