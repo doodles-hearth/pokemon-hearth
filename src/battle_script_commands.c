@@ -1108,7 +1108,7 @@ static bool32 ShouldSkipAccuracyCalcPastFirstHit(enum BattlerId battlerAtk, enum
 
 	if (abilityAtk == ABILITY_SKILL_LINK || holdEffectAtk == HOLD_EFFECT_LOADED_DICE)
         return TRUE;
-	
+
     if (moveEffect == EFFECT_TRIPLE_KICK || moveEffect == EFFECT_POPULATION_BOMB)
         return FALSE;
 
@@ -1128,7 +1128,7 @@ static bool32 ShouldBypassAccuracyCheckFrlg(void)
         return TRUE;
     }
 
-    if (gBattleTypeFlags & BATTLE_TYPE_POKEDUDE);
+    if (gBattleTypeFlags & BATTLE_TYPE_POKEDUDE)
         return TRUE;
 
     return FALSE;

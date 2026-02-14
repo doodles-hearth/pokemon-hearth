@@ -1333,7 +1333,6 @@ AI_SINGLE_BATTLE_TEST("Switch AI: AI will switch out if mon has Truant and oppon
     }
 }
 
-#if 0
 AI_SINGLE_BATTLE_TEST("Switch AI: AI will switch out if mon has Truant and opponent has invulnerability move and is faster")
 {
     PASSES_RANDOMLY(SHOULD_SWITCH_TRUANT_PERCENTAGE, 100, RNG_AI_SWITCH_TRUANT);
@@ -1347,7 +1346,6 @@ AI_SINGLE_BATTLE_TEST("Switch AI: AI will switch out if mon has Truant and oppon
         TURN { SKIP_TURN(player); EXPECT_SWITCH(opponent, 1); }
     }
 }
-#endif
 
 AI_SINGLE_BATTLE_TEST("AI_FLAG_SMART_SWITCHING: AI will switch out if main attacking stat lowered by 2 stages with good switchin candidate 50% of the time")
 {
