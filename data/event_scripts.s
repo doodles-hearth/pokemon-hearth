@@ -2048,3 +2048,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/WhiteslateRoute_SecretCave/scripts.scr"
 
 	.include "data/maps/ScenicRoute_Daycare/scripts.scr"
+
+	.include "data/maps/ScenicRoute_MemoryReader/scripts.scr"

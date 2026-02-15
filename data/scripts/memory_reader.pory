@@ -4,90 +4,99 @@ const SPOKE_TO_MEMORY_GIRL = FLAG_TEMP_8
 script MemoryGirl_EventScript_BeginConversation {
     lock
     faceplayer
-    createfieldmugshot(MUGSHOT_SCHOOL_KID_F)
     if (flag(SPOKE_TO_MEMORY_GIRL) == FALSE)
     {
         msgbox(
-            "Hi, hi! I'm the Memory Girl!\p"
-            "I know what you are thinking:\n"
+            "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Hi, hi! I'm the Memory Girl!\p"
+            "I know what you're thinking:\n"
             "“What does that mean?”\p"
-            "It means I can read the\n"
-            "memories of your Pokémon!\p"
-            "Cool, huh?"
+            "It means I can read the memories of\nyour Pokémon!\l"
+            "Cool, huh?\p"
+            "Well… Should I read your Pokémon's\nmemories for you?"
+        )
+
+        setflag(SPOKE_TO_MEMORY_GIRL)
+    } else {
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Hullo! Should I read your Pokémon's\nmemories for you?"
         )
     }
-    setflag(SPOKE_TO_MEMORY_GIRL)
-    msgbox(
-        "Well… Should I read your \n"
-        "Pokémon's memories for you?"
-    )
+
     mcdialogue(
-        "Yes",
-        "No"
+        "Sure!",
+        "No thanks."
 	)
+    closemessage
+
     if (var(VAR_RESULT) == 1)
     {
         msgbox(
-            "You're no fun!"
+            "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}You're no fun!"
         )
         release
         end
     }
+
     msgbox(
-        "OK! Which Pokemon should\n"
-        "I look at?"
+        "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Which Pokemon should I look at?"
     )
     waitmessage
-    removefieldmugshot
+    closemessage
+
     special(ChoosePartyMon)
     waitstate
-    createfieldmugshot(MUGSHOT_SCHOOL_KID_F)
+
     if (var(CHOSEN_SLOT) == PARTY_NOTHING_CHOSEN)
     {
         
         msgbox(
             "You're no fun!"
         )
-        removefieldmugshot
+        closemessage
         release
         end
     }
+
     bufferpartymonnick(STR_VAR_1, CHOSEN_SLOT)
     specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
     if (var(VAR_RESULT) == SPECIES_EGG)
     {
         msgbox(
-            "I know what you are thinking:\n"
-            "“This will be a funny joke.”\p"
-            "But I can't read an Egg\n"
-            "dummy!"
+            "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}I know what you are thinking:\n"
+            "“This will be a funny joke.”\l"
+            "But I can't read an Egg, dummy!"
         )
         removefieldmugshot
         release
         end
     }
     msgbox(
-        "Hm… lets see…\n"
+        "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Hm… Let's see…\n"
         "… … …"
     )
+
     special(IsMonOTIDNotPlayers)
-	if (var(VAR_RESULT) == FALSE
-     && specialvar(VAR_RESULT, MonOTNameNotPlayer) == FALSE)
+
+	if (!var(VAR_RESULT) && !specialvar(VAR_RESULT, MonOTNameNotPlayer))
     {
         buffermemorymessage(CHOSEN_SLOT, MON_MEMORY_ORIGIN)
+        createfieldmugshot(MUGSHOT_HEX_MANIAC)
+        setspeaker(SP_NAME_MEMORY_GIRL)
         msgbox(gStringVar4)
     }
-    if (getmemory(CHOSEN_SLOT, MON_MEMORY_OLD) == 0 
-     && getmemory(CHOSEN_SLOT, MON_MEMORY_NEW) == 0)
+
+    if (
+        getmemory(CHOSEN_SLOT, MON_MEMORY_OLD) == 0
+        && getmemory(CHOSEN_SLOT, MON_MEMORY_NEW) == 0
+    )
     {
         special(IsMonOTIDNotPlayers)
-        if (var(VAR_RESULT) == TRUE
-        || specialvar(VAR_RESULT, MonOTNameNotPlayer) == TRUE)
+        if (var(VAR_RESULT) || specialvar(VAR_RESULT, MonOTNameNotPlayer))
         {
             bufferoriginaltrainername(STR_VAR_3, CHOSEN_SLOT)
+            bufferpartymonnick(STR_VAR_1, CHOSEN_SLOT)
             msgbox(
-                "{STR_VAR_1} was caught by {STR_VAR_3}\n"
-                "but…\p"
+                "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}{STR_VAR_1} was caught by\n{STR_VAR_3}and…\l"
                 "That's all!\p"
                 "It looks like {STR_VAR_1}\n"
                 "hasn't done much!"
@@ -95,119 +104,130 @@ script MemoryGirl_EventScript_BeginConversation {
         }
         else
         {
+            bufferpartymonnick(STR_VAR_1, CHOSEN_SLOT)
             msgbox(
-                "That's all…\p"
+                "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}That's all…\p"
                 "It looks like {STR_VAR_1}\n"
                 "hasn't done much!"
             )
         }
-        removefieldmugshot
+        closemessage
         release
         end
     }
+
     bufferoriginaltrainername(STR_VAR_3, CHOSEN_SLOT)
     switch(random(2))
     {
     case 0:
         msgbox(
-            "{STR_VAR_1} and {STR_VAR_3} travelled\n"
-            "together until…"
+            "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}{STR_VAR_1} and {STR_VAR_3}\ntravelled together until…"
         )
     case 1:
         msgbox(
-            "{STR_VAR_1} was with {STR_VAR_3} when…"
+            "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}{STR_VAR_1} was with {STR_VAR_3}\nwhen…"
         )
     }
     if (getmemory(CHOSEN_SLOT, MON_MEMORY_OLD))
     {
         buffermemorymessage(CHOSEN_SLOT, MON_MEMORY_OLD)
+        createfieldmugshot(MUGSHOT_HEX_MANIAC)
+        setspeaker(SP_NAME_MEMORY_GIRL)
         msgbox(gStringVar4)
         switch(random(2))
         {
         case 0:
             msgbox(
-                "Sounds fun!"
+                "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Sounds fun!"
             )
         case 1:
             msgbox(
-                "Wow! I wish I could do that!"
+                "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Wow! I wish I could do that!"
             )
         }
+
         special(IsMonOTIDNotPlayers)
-        if (var(VAR_RESULT) == TRUE
-        || specialvar(VAR_RESULT, MonOTNameNotPlayer) == TRUE)
+        if (var(VAR_RESULT) || specialvar(VAR_RESULT, MonOTNameNotPlayer))
         {
             msgbox(
-                "That's when…\n"
+                "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}That's when…\n"
                 "… … …"
             )
+
             buffermemorymessage(CHOSEN_SLOT, MON_MEMORY_ORIGIN)
+            createfieldmugshot(MUGSHOT_HEX_MANIAC)
+            setspeaker(SP_NAME_MEMORY_GIRL)
             msgbox(gStringVar4)
         }
+
         if (getmemory(CHOSEN_SLOT, MON_MEMORY_NEW))
         {
             msgbox(
-                "Then…\n"
+                "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Then…\n"
                 "… … …"
             )
+
             buffermemorymessage(CHOSEN_SLOT, MON_MEMORY_NEW)
+            createfieldmugshot(MUGSHOT_HEX_MANIAC)
+            setspeaker(SP_NAME_MEMORY_GIRL)
             msgbox(gStringVar4)
+
             special(IsMonOTIDNotPlayers)
-            if (var(VAR_RESULT) == TRUE
-            || specialvar(VAR_RESULT, MonOTNameNotPlayer) == TRUE)
+
+            if (var(VAR_RESULT) || specialvar(VAR_RESULT, MonOTNameNotPlayer))
             {
                 msgbox(
-                    "Wowie! Your Pokémon has done a\n"
-                    "lot of travelling!"
+                    "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Wowie! Your Pokémon has done a lot\n"
+                    "of travelling!"
                 )
-                if (specialvar(VAR_RESULT, GiveMonHistoricRibbon))
+                if (specialvar(VAR_RESULT, GiveMonTravellerRibbon))
                 {
                     msgbox(
-                        "I'm going to give them a\n"
+                        "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}I'm going to give them a\n"
                         "super-duper badge!"
                     )
-                    removefieldmugshot
+                    closemessage
+
                     bufferpartymonnick(STR_VAR_1, CHOSEN_SLOT)
                     playfanfare(MUS_OBTAIN_ITEM)
                     message(
-                        "{STR_VAR_1} received the Traveller Ribbon."
+                        "{STR_VAR_1} received the\nTraveller Ribbon."
                     )
                     waitfanfare
-                    createfieldmugshot(MUGSHOT_SCHOOL_KID_F)
+
                     msgbox(
-                        "…now they can show off how\n"
+                        "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Now they can show off how\n"
                         "adventurous they are!"
                     )
                 }
             }
             else
             {
-                if (specialvar(VAR_RESULT, GiveMonHistoricRibbon) == TRUE)
+                if (specialvar(VAR_RESULT, GiveMonHistoricRibbon))
                 {
                     msgbox(
-                    "Wowie! Your Pokémon has a lot\n"
-                    "of great memories!\p"
-                    "I'm going to give them a\n"
-                    "super-duper badge!"
+                        "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Wowie! Your Pokémon has a lot of\n"
+                        "great memories!\p"
+                        "I'm going to give them a\nsuper-duper badge!"
                     )
-                    removefieldmugshot
+                    closemessage
+
                     bufferpartymonnick(STR_VAR_1, CHOSEN_SLOT)
                     playfanfare(MUS_OBTAIN_ITEM)
                     message(
-                        "{STR_VAR_1} received the Historic Ribbon."
+                        "{STR_VAR_1} received the\nHistoric Ribbon."
                     )
                     waitfanfare
-                    createfieldmugshot(MUGSHOT_SCHOOL_KID_F)
                     msgbox(
-                        "…now they can show off how\n"
+                        "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Now they can show off how\n"
                         "important they are!"
                     )
                 }
                 else
                 {
                     msgbox(
-                    "Wowie! Your Pokémon has a lot\n"
-                    "of good memories!"
+                        "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}Wowie! Your Pokémon has a lot\n"
+                        "of good memories!"
                     )
                 }
             }
@@ -216,14 +236,17 @@ script MemoryGirl_EventScript_BeginConversation {
     else
     {
         buffermemorymessage(CHOSEN_SLOT, MON_MEMORY_NEW)
+        createfieldmugshot(MUGSHOT_HEX_MANIAC)
+        setspeaker(SP_NAME_MEMORY_GIRL)
         msgbox(gStringVar4)
-        msgbox(format(
-            "…and… that's it!\p"
+
+        msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}…And… that's it!\p"
             "Your Pokémon has done some things,\n"
             "but not many!"
         ))
     }
-    removefieldmugshot
+    closemessage
     release
     end
 }

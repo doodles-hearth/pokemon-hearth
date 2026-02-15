@@ -39,8 +39,9 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	setspeaker(SP_NAME_KOISHI)
 	msgbox(
 		format(
-			"{CREATE_MUGSHOT MUGSHOT_KOISHI 0}I applaud your skill.\nYou are still a child, yet you clearly have a natural aptitude for battle.\p"
-			"The Token I just gave you will boost your companions' Special Attack.\p"
+			"{CREATE_MUGSHOT MUGSHOT_KOISHI 0}I applaud your skill.\nYou are still a child, yet…\p"
+			"You clearly have a natural aptitude\nfor battle.\p"
+			"The Token I just gave you will boost\nyour companions' Special Attack.\p"
 			"I am also supposed to give you this."
 		),
 		MSGBOX_DEFAULT
@@ -53,16 +54,14 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 
 	setspeaker(SP_NAME_KOISHI)
 	msgbox(
-		format(
-			"{CREATE_MUGSHOT MUGSHOT_KOISHI 0}This scroll contains Nature Power, a move that changes depending on the terrain your Pokémon is standing on.\p"
-			"The Toku Council's challenge is no easy undertaking, but your spirit overflows with determination.\p"
-			"Good luck, {PLAYER}."
-		),
-		MSGBOX_DEFAULT
+		"{CREATE_MUGSHOT MUGSHOT_KOISHI 0}This scroll contains Nature Power.\nThis move changes depending on the\lterrain your Pokémon is standing on.\p"
+		"The Toku Council's challenge is no\neasy undertaking, but your spirit\loverflows with determination.\p"
+		"Good luck, {PLAYER}."
 	)
 	closemessage
 
 	setflag(FLAG_BADGE01_GET)
+	setmemoryall(MEMORY_BEAT_DOJO)
 	setvar(VAR_0x8008, 1)
 	call(Common_EventScript_SetGymTrainers)
 	addvar(VAR_PLAYER_REPUTATION, 5)
@@ -100,9 +99,9 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	delay(60)
 
 	setspeaker(SP_NAME_KOISHI)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_KOISHI 0}That… That was a big one!…\p"
-		"I'm going outside to make sure everyone's alright."
+		"I'm going outside to make sure\neveryone's alright."
 	))
 	closemessage
 
@@ -173,9 +172,9 @@ script MaguroHarbor_Dojo_EventScript_Mizu {
 			"{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F 0}The poor fish must be all shaken!"
 		), MSGBOX_AUTOCLOSE)
 	} else {
-		msgbox(format(
+		msgbox((
 			// TODO EVA put some actual fish in the pond ffs
-			"{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F 0}These are sophisticated fish. They need peace and quiet to thrive."
+			"{CREATE_MUGSHOT MUGSHOT_HOT_SPRING_F 0}These are sophisticated fish.\nThey need peace and quiet to thrive."
 		), MSGBOX_AUTOCLOSE)
 	}
 }
@@ -186,9 +185,9 @@ script MaguroHarbor_Dojo_EventScript_Advice {
 	setspeaker(SP_NAME_MAN)
 	if (flag(FLAG_BADGE01_GET)) {
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
-			msgbox(format(
+			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 0}You swept me away with that battle!\p"
-				"That quake just now nearly literally swept me away as well!"
+				"That quake just now nearly literally\nswept me away as well!"
 			), MSGBOX_AUTOCLOSE)
 		} else {
 			msgbox(format(
@@ -196,12 +195,12 @@ script MaguroHarbor_Dojo_EventScript_Advice {
 			))
 		}
 	} else {
-		msgbox(format(
+		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 0}Hello, young challenger!\nWelcome to the Koi Pond Dojo!\l"
 			"Fighting for your first Token?\p"
-			"Koishi, the Master of this place, favors water-type moves.\p"
-			"Her battling style is strong, yet graceful… Sigh…\lI am her biggest fan! It's true!"
-			"Maybe one day, I'll become your biggest fan, who knows?\l"
+			"Koishi, the Master of this place,\nfavors water-type moves.\p"
+			"Her battling style is strong, yet\ngraceful… Sigh…\lI am her biggest fan! It's true!"
+			"Maybe one day, I'll become your\nbiggest fan, who knows?\l"
 			"Go get 'em!"
 		))
 	}

@@ -138,6 +138,14 @@
       "elevation": 0,
       "dest_map": "MAP_SCENIC_ROUTE_DAYCARE",
       "dest_warp_id": "WARP_ID_SCENIC_ROUTE_DAYCARE_EXIT"
+    },
+    {
+      "warp_id": "WARP_ID_MEMORY_READER",
+      "x": 42,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_SCENIC_ROUTE_MEMORY_READER",
+      "dest_warp_id": "WARP_ID_MEMORY_READER_EXIT"
     }
   ],
   "coord_events": [],
