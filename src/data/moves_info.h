@@ -23339,8 +23339,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Sakura Dance"),
         .description = COMPOUND_STRING(
-            "Sharp pink petals slice the foe.\n"
-            "Fairy-type when leaves fall."),
+            "Sharp petals slice the foe.\n"
+            "Fairy-type in leafy weather."),
         .effect = EFFECT_SAKURA_DANCE,
         .power = 70,
         .type = TYPE_GRASS,
