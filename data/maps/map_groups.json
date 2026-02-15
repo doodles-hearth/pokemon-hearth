@@ -752,14 +752,12 @@
     "SabersideTown_Forge_2F"
   ],
   "gMapGroup_IndoorScenic": [
-    "ScenicRoute_Daycare"
+    "ScenicRoute_Daycare",
+    "ScenicRoute_MemoryReader"
   ],
   "gMapGroup_IndoorWindycape": [
     "Windycape_House1",
     "Windycape_House2"
-  ],
-  "gMapGroup_IndoorRoute124": [
-    "Route124_DivingTreasureHuntersHouse"
   ],
   "gMapGroup_Link_Frlg": [
     "BattleColosseum_2P_Frlg",
@@ -1259,5 +1257,8 @@
   ],
   "gMapGroup_IndoorSevenIslandRoute_Frlg": [
     "SevenIsland_SevaultCanyon_House_Frlg"
+  ],
+  "gMapGroup_IndoorRoute124": [
+    "Route124_DivingTreasureHuntersHouse"
   ]
 }

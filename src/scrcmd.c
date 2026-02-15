@@ -3664,3 +3664,14 @@ bool8 ScrCmd_getbraillestringwidth(struct ScriptContext * ctx)
     gSpecialVar_0x8004 = GetStringWidth(FONT_BRAILLE, msg, -1);
     return FALSE;
 }
+
+void BufferOriginalTrainerName(struct ScriptContext *ctx)
+{
+    u8 stringVarIndex = ScriptReadByte(ctx);
+    u32 partyIndex = VarGet(ScriptReadHalfword(ctx));
+
+    u8 otName[PLAYER_NAME_LENGTH + 1];
+    GetMonData(&gPlayerParty[partyIndex], MON_DATA_OT_NAME, otName);
+
+    StringCopy(sScriptStringVars[stringVarIndex], otName);
+}
