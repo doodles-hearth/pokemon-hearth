@@ -14,10 +14,13 @@
 #include "battle_scripts.h"
 #include "battle_setup.h"
 #include "battle_tower.h"
+#include "battle_util.h"
 #include "battle_z_move.h"
 #include "battle_gimmick.h"
 #include "berry.h"
 #include "bg.h"
+#include "constants/battle.h"
+#include "constants/pokemon.h"
 #include "data.h"
 #include "debug.h"
 #include "decompress.h"
@@ -6081,6 +6084,10 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
         if (state == MON_IN_BATTLE)
             return GetMoveType(GetNaturePowerMove());
         break;
+    case EFFECT_SAKURA_DANCE:
+        return HasWeatherEffect() && (gBattleWeather & B_WEATHER_LEAVES)
+                   ? TYPE_FAIRY
+                   : TYPE_GRASS;
     default:
         break;
     }
