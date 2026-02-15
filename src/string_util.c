@@ -512,6 +512,10 @@ static const u8 *ExpandPlaceholder_KunChan(void)
 
 static const u8 *ExpandPlaceholder_RivalName(void)
 {
+#if IS_FRLG
+    if (gSaveBlock1Ptr->rivalName[0] != EOS)
+        return gSaveBlock1Ptr->rivalName;
+#endif
     return gSaveBlock2Ptr->rivalName;
 }
 
@@ -804,7 +808,7 @@ s32 StringCompareWithoutExtCtrlCodes(const u8 *str1, const u8 *str2)
     return retVal;
 }
 
-void ConvertInternationalString(u8 *s, u8 language)
+void ConvertInternationalString(u8 *s, enum Language language)
 {
     if (language == LANGUAGE_JAPANESE)
     {

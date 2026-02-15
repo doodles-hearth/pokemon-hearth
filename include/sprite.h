@@ -249,6 +249,13 @@ struct OamMatrix
     s16 d;
 };
 
+struct OamDimensions
+{
+    s8 width;
+    s8 height;
+};
+
+extern const struct OamDimensions gOamDimensions[3][4];
 extern const struct OamData gDummyOamData;
 extern const union AnimCmd *const gDummySpriteAnimTable[];
 extern const union AffineAnimCmd *const gDummySpriteAffineAnimTable[];
@@ -326,5 +333,12 @@ void RequestSpriteFrameImageCopy(u16 index, u16 tileNum, const struct SpriteFram
 void SetSpriteOamFlipBits(struct Sprite *sprite, u8 hFlip, u8 vFlip);
 u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny);
 u8 IndexOfSpriteTileTag(u16 tag);
+void FillSpriteRectColor(u32 spriteId, u32 left, u32 top, u32 width, u32 height, u32 color);
+void FillSpriteRectSprite(u32 spriteId, u32 left, u32 top, u32 width, u32 height);
+void FillSpriteRectSpriteWithSprite(u32 spriteId, u32 left, u32 top, u32 width, u32 height, u32 *sprite);
+void SetupSpritesForTextPrinting(u8 *spriteIds, const u32 **spriteSrc, u32 numSpritesX, u32 numSpritesY);
+u32 *GetSrcPtrFromSprite(struct Sprite *sprite);
+u32 GetSpriteWidth(struct Sprite *sprite);
+u32 GetSpriteHeight(struct Sprite *sprite);
 
 #endif //GUARD_SPRITE_H

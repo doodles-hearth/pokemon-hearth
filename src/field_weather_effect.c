@@ -2658,6 +2658,11 @@ static const struct SpriteSheet sLeafSpriteSheet =
     .tag = GFXTAG_LEAVES,
 };
 
+static void LoadLeafSpriteSheet(void)
+{
+    LoadSpriteSheet(&sLeafSpriteSheet);
+}
+
 void CommonLeaves_InitVars(void)
 {
     gWeatherPtr->initStep = 0;
@@ -2686,10 +2691,18 @@ void PinkLeaves_InitAll(void)
 
 void PinkLeaves_Main(void)
 {
-    if (gWeatherPtr->initStep == 0 && !UpdateVisibleLeafSprites(gPinkLeavesWeatherPalette))
-    {
-        gWeatherPtr->weatherGfxLoaded = TRUE;
-        gWeatherPtr->initStep++;
+    switch (gWeatherPtr->initStep) {
+        case 0:
+            LoadLeafSpriteSheet();
+            gWeatherPtr->initStep++;
+            break;
+
+        case 1:
+            if (!UpdateVisibleLeafSprites(gPinkLeavesWeatherPalette)) {
+                gWeatherPtr->weatherGfxLoaded = TRUE;
+                gWeatherPtr->initStep++;
+            }
+            break;
     }
 }
 
@@ -2928,7 +2941,6 @@ void AutumnLeaves_InitAll(void)
     u16 i;
 
     CommonLeaves_InitVars();
-    LoadSpriteSheet(&sLeafSpriteSheet);
 
     while (gWeatherPtr->weatherGfxLoaded == FALSE)
     {
@@ -2940,10 +2952,18 @@ void AutumnLeaves_InitAll(void)
 
 void AutumnLeaves_Main(void)
 {
-    if (gWeatherPtr->initStep == 0 && !UpdateVisibleLeafSprites(gAutumnLeavesWeatherPalette))
-    {
-        gWeatherPtr->weatherGfxLoaded = TRUE;
-        gWeatherPtr->initStep++;
+    switch (gWeatherPtr->initStep) {
+        case 0:
+            LoadLeafSpriteSheet();
+            gWeatherPtr->initStep++;
+            break;
+
+        case 1:
+            if (!UpdateVisibleLeafSprites(gAutumnLeavesWeatherPalette)) {
+                gWeatherPtr->weatherGfxLoaded = TRUE;
+                gWeatherPtr->initStep++;
+            }
+            break;
     }
 }
 
