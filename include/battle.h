@@ -1175,6 +1175,8 @@ static inline void SetHealAmount(enum BattlerId battler, s32 value)
 {
     if (value == 0)
         value = 1;
+    if (gBattleWeather & B_WEATHER_LEAVES && HasWeatherEffect())
+        value = (value * 3 + 1) / 2;
     gBattleStruct->passiveHpUpdate[battler] = -1 * value;
 }
 

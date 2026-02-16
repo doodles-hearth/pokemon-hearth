@@ -912,6 +912,8 @@ enum __attribute__((packed)) Move {
     MOVE_SINK = 852,
     MOVE_WATER_FAIL = 853,
     MOVE_SMOKE_BOMB = 854,
+    MOVE_BLOSSOM = 855,
+    MOVE_SAKURA_DANCE = 856,
     MOVES_COUNT_HEARTH,
 
     MOVES_COUNT = MOVES_COUNT_HEARTH,

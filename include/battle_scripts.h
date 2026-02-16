@@ -821,6 +821,7 @@ extern const u8 BattleScript_EffectSmokeBomb[];
 extern const u8 BattleScript_SmokeExplosion[];
 extern const u8 BattleScript_SmokeExplosionLoop[];
 extern const u8 BattleScript_SmokeExplosionLoopIncrement[];
+extern const u8 BattleScript_EffectBlossom[];
 
 extern const u8 BattleScript_AbilityPopUpTarget[];
 

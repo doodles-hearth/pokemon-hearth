@@ -234,6 +234,16 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
         .continuesMessage = B_MSG_WEATHER_TURN_STRONG_WINDS,
         .animation = B_ANIM_STRONG_WINDS,
     },
+    [BATTLE_WEATHER_LEAVES] =
+    {
+        .flag = B_WEATHER_LEAVES,
+        .rock = HOLD_EFFECT_NONE,
+        .abilityStartMessage = B_MSG_STARTED_LEAVES,
+        .moveStartMessage = B_MSG_STARTED_LEAVES,
+        .endMessage = B_MSG_WEATHER_END_LEAVES,
+        .continuesMessage = B_MSG_WEATHER_TURN_LEAVES,
+        .animation = B_ANIM_FALLING_LEAVES,
+    }
 };
 
 u32 GetCurrentBattleWeather(void)
@@ -3263,6 +3273,13 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                     effect = TRUE;
                 }
                 break;
+            case WEATHER_PINK_LEAVES:
+            case WEATHER_AUTUMN_LEAVES:
+                if (!(gBattleWeather & B_WEATHER_LEAVES)) {
+                    gBattleWeather = B_WEATHER_LEAVES;
+                    gBattleScripting.animArg1 = B_ANIM_FALLING_LEAVES;
+                    effect = TRUE;
+                }
             }
         }
         if (effect)
@@ -6817,6 +6834,11 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct BattleContext *ctx)
             && CanBattlerGetOrLoseItem(battlerDef, battlerAtk, gBattleMons[battlerDef].item))
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
+    case EFFECT_SAKURA_DANCE:
+        if ((gBattleWeather & B_WEATHER_LEAVES) && HasWeatherEffect())
+            DebugPrintfLevel(MGBA_LOG_DEBUG, "Sakura Dance Boosted");
+            modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
+        break;
     default:
         break;
     }
@@ -7639,6 +7661,17 @@ static uq4_12_t GetWeatherDamageModifier(struct BattleContext *ctx)
         if (ctx->moveType != TYPE_FIRE && ctx->moveType != TYPE_WATER)
             return UQ_4_12(1.0);
         return (ctx->moveType == TYPE_WATER) ? UQ_4_12(0.5) : UQ_4_12(1.5);
+    }
+    if (ctx->weather & B_WEATHER_LEAVES) {
+        switch (ctx->moveType) {
+            case TYPE_GRASS:
+            case TYPE_FAIRY:
+                return UQ_4_12(1.5);
+            case TYPE_POISON:
+                return UQ_4_12(0.5);
+            default:
+                return UQ_4_12(1.0);
+        }
     }
     return UQ_4_12(1.0);
 }
