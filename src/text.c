@@ -1526,6 +1526,8 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             case EXT_CTRL_CODE_SPEAKER:
                 {
                     enum SpeakerNames name = *textPrinter->printerTemplate.currentChar++;
+                    if (gSpeakerName != gSpeakerNamesTable[name])
+                        DestroyNamebox();
                     TrySpawnAndShowNamebox(gSpeakerNamesTable[name], NAME_BOX_BASE_TILE_NUM);
 
                     return RENDER_REPEAT;
