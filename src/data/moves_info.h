@@ -23286,8 +23286,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Smoke Bomb"),
         .description = COMPOUND_STRING(
-            "Releases volcanic ash\n"
-            "Fills the air with smoke"
+            "Releases volcanic ash.\n"
+            "Fills the air with\n"
+            "smoke."
         ),
         .effect = EFFECT_WEATHER,
         .power = 0,
@@ -23307,5 +23308,55 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_SmokeBomb,
+    },
+
+    [MOVE_BLOSSOM] =
+    {
+        .name = COMPOUND_STRING("Blossom"),
+        .description = COMPOUND_STRING(
+            "Summons a flurry of Cheri\n"
+            "leaves that fill the air"
+        ),
+        .effect = EFFECT_WEATHER,
+        .power = 0,
+        .type = TYPE_GRASS,
+        .accuracy = 0,
+        .pp = 10,
+        .target = TARGET_ALL_BATTLERS,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .argument = { .weatherType = BATTLE_WEATHER_LEAVES },
+        .zMove = { .effect = Z_EFFECT_ATK_UP_3 },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .gravityBanned = FALSE,
+        .contestEffect = CONTEST_EFFECT_BETTER_IF_LAST,
+        .contestCategory = CONTEST_CATEGORY_CUTE,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_Blossom,
+    },
+    [MOVE_SAKURA_DANCE] =
+    {
+        .name = COMPOUND_STRING("Sakura Dance"),
+        .description = COMPOUND_STRING(
+            "Sharp petals slice the foe.\n"
+            "Fairy-type in leafy weather."),
+        .effect = EFFECT_SAKURA_DANCE,
+        .power = 70,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 15,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .slicingMove = TRUE,
+        .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_HIGHLY_APPEALING : CONTEST_EFFECT_AFFECTED_BY_PREV_APPEAL,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_GROWTH},
+        .battleAnimScript = gBattleAnimMove_SakuraDance,
+        .validApprenticeMove = TRUE,
+        .fieldMove = FIELD_MOVE_CUT,
     },
 };

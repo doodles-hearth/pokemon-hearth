@@ -47,6 +47,7 @@
 #include "constants/map_scripts.h"
 #include "constants/maps.h"
 #include "constants/mauville_old_man.h"
+#include "constants/pokemon_memories.h"
 #include "constants/metatile_labels.h"
 #include "constants/move_relearner.h"
 #include "constants/moves.h"
@@ -1762,6 +1763,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/shiny_vial.scr"
 	.include "data/scripts/traveling_merchant.scr"
 	.include "data/scripts/daycare_adoption.scr"
+	.include "data/scripts/memory_reader.scr"
 
 	.include "data/text/pokedex_rating.scr"
 
@@ -2052,3 +2054,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/Coreef_House1/scripts.scr"
 
 	.include "data/maps/Coreef_House2/scripts.scr"
+
+	.include "data/maps/ScenicRoute_MemoryReader/scripts.scr"

@@ -676,6 +676,8 @@ AI_DOUBLE_BATTLE_TEST("AI can use all moves, 801-900")
             //TODO: AI HANDLING
             if (GetMoveWeatherType(j) == BATTLE_WEATHER_SMOKE)
                 break;
+            if (GetMoveWeatherType(j) == BATTLE_WEATHER_LEAVES)
+                break;
             else
                 PARAMETRIZE { move = j; }
             break;

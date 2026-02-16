@@ -660,4 +660,5 @@ gSpecials::
 	def_special StickerManGetBragFlags
 	def_special CheckAddCoins
 	def_special ChooseItemFromBag
-
+	def_special GiveMonTravellerRibbon
+	def_special GiveMonHistoricRibbon
