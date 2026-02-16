@@ -1339,6 +1339,17 @@ const struct Tileset gTileset_Daycare =
     .callback = NULL,
 };
 
+const struct Tileset gTileset_HouseCoreef =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_HouseCoreef,
+    .palettes = gTilesetPalettes_HouseCoreef,
+    .metatiles = gMetatiles_HouseCoreef,
+    .metatileAttributes = gMetatileAttributes_HouseCoreef,
+    .callback = NULL,
+};
+
 #else
 
 // FRLG tilesets

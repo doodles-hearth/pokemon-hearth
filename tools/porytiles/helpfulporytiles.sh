@@ -8,7 +8,7 @@
 #   *) script_path=$(pwd)/$0 ;;
 # esac
 
-dir_project="/home/purrfectdoodle/romhack/pokemon-hearth/"
+dir_project="/home/eva/romhack/pokemon-hearth/"
 porytiles_dir="${dir_project}tools/porytiles/"
 
 ## WSL PATHS
@@ -22,7 +22,7 @@ dir_aseprite_folder="/mnt/c/Program Files/"
 normalize_py="${porytiles_dir}normalize.py"
 
 ## WINDOWS PATH
-dir_aseprite_raw_tilesets="\\\\wsl.localhost\\Ubuntu\\home\\purrfectdoodle\\romhack\\pokemon-hearth\\tools\\porytiles\\_raw_tilesets\\"
+dir_aseprite_raw_tilesets="\\\\wsl.localhost\\Ubuntu\\home\\eva\\romhack\\pokemon-hearth\\tools\\porytiles\\_raw_tilesets\\"
 
 # END OF CUSTOM PATHS
 

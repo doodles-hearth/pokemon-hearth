@@ -666,6 +666,9 @@ const u16 gObjectEventPal_Campfire[] = INCBIN_U16("graphics/object_events/pics/m
 
 const u32 gObjectEventPic_WingullGrounded[] = INCBIN_U32("graphics/object_events/pics/pokemon_special/wingull.4bpp");
 
+const u32 gObjectEventPic_CorsolaPolluted[] = INCBIN_U32("graphics/object_events/pics/pokemon_special/corsola_polluted.4bpp");
+const u16 gObjectEventPal_CorsolaPolluted[] = INCBIN_U16("graphics/object_events/pics/pokemon_special/corsola_polluted.gbapal");
+
 const u32 gObjectEventPic_ApricornTree[] = INCBIN_U32("graphics/object_events/pics/misc/apricorn_tree.4bpp");
 
 #if IS_FRLG

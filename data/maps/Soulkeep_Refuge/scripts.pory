@@ -57,3 +57,37 @@ script Soulkeep_Refuge_EventScript_NewDojo {
 	closemessage
 	release
 }
+
+script Soulkeep_Refuge_EventScript_WhereCoreef {
+	lock
+	waitse
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
+	msgbox(format(
+		"{SPEAKER NAME_TRAVELER}Hmmm…"
+	))
+	closemessage
+	waitmovement(VAR_LAST_TALKED)
+	
+	delay(24)
+
+	faceplayer
+
+	if (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
+		msgbox(format(
+			"{SPEAKER NAME_TRAVELER}Hello! I am an expert in geography.\nI just LOVE maps.\p"
+			"Coreef Isle? It's a small islet off the coast of Saberside Town.\p"
+			"There isn't much there. Just a bunch of fishermen and old people."
+		))
+	} else {
+		msgbox(format(
+			"{SPEAKER NAME_TRAVELER}Hello! I am an expert in geography.\nI just LOVE maps."
+		))
+	}
+	closemessage
+
+	applymovement(VAR_LAST_TALKED, moves(face_up))
+	waitmovement(VAR_LAST_TALKED)
+
+	release
+}

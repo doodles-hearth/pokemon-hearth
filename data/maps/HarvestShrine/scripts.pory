@@ -23,6 +23,19 @@ script HarvestShrine_EventScript_MonkBronzong {
 	release
 }
 
+script HarvestShrine_EventScript_EnteiStatuette {
+	lock
+	faceplayer
+	setspeaker(SP_NAME_MONK)
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_MONK 0}I see you have an Entei Statuette too!\nThese amulets have a special power,\lyou know?"
+		"We Monks honor them in our prayers."
+	))
+	closemessage
+
+	release
+}
+
 script HarvestShrine_EventScript_Kouga {
 	trainerbattle_single(
 		TRAINER_KOUGA,

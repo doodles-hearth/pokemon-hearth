@@ -714,7 +714,9 @@ NAME_MEDIUM          = 54
 NAME_BURGLAR         = 55
 NAME_SMITH           = 56
 NAME_SWORDSMAN       = 57
-NAME_MEMORY_GIRL     = 58
+NAME_LIBRARIAN       = 58
+NAME_ELDER_JOMON     = 59
+NAME_MEMORY_GIRL     = 5A
 
 @ fonts
 

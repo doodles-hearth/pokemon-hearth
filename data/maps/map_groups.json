@@ -59,7 +59,8 @@
     "gMapGroup_IndoorFiveIslandRoute_Frlg",
     "gMapGroup_IndoorTwoIslandRoute_Frlg",
     "gMapGroup_IndoorSixIslandRoute_Frlg",
-    "gMapGroup_IndoorSevenIslandRoute_Frlg"
+    "gMapGroup_IndoorSevenIslandRoute_Frlg",
+    "gMapGroup_IndoorCoreef"
   ],
   "gMapGroup_TownsAndRoutes": [
     "SunriseVillage",
@@ -214,7 +215,8 @@
     "SabersideQuarry_Antechamber",
     "MtKazan_Antechamber",
     "SabersideQuarry_SableyeSpot",
-    "WhiteslateRoute_SecretCave"
+    "WhiteslateRoute_SecretCave",
+    "UumeForest_LostWoods2"
   ],
   "gMapGroup_VanillaMaps1": [
     "PetalburgCity",
@@ -758,6 +760,10 @@
   "gMapGroup_IndoorWindycape": [
     "Windycape_House1",
     "Windycape_House2"
+  ],
+  "gMapGroup_IndoorCoreef": [
+    "Coreef_House1",
+    "Coreef_House2"
   ],
   "gMapGroup_Link_Frlg": [
     "BattleColosseum_2P_Frlg",

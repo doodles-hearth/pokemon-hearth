@@ -348,6 +348,10 @@ const u16 gMetatileAttributes_SabersideDojo[] = INCBIN_U16("data/tilesets/second
 
 const u16 gMetatiles_Daycare[] = INCBIN_U16("data/tilesets/secondary/daycare/metatiles.bin");
 const u16 gMetatileAttributes_Daycare[] = INCBIN_U16("data/tilesets/secondary/daycare/metatile_attributes.bin");
+
+const u16 gMetatiles_HouseCoreef[] = INCBIN_U16("data/tilesets/secondary/house_coreef/metatiles.bin");
+const u16 gMetatileAttributes_HouseCoreef[] = INCBIN_U16("data/tilesets/secondary/house_coreef/metatile_attributes.bin");
+
 #else
 
 const u16 gMetatiles_Building_Frlg[] = INCBIN_U16("data/tilesets/primary/building_frlg/metatiles.bin");

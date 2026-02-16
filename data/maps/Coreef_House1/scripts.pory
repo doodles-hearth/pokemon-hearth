@@ -1,0 +1,373 @@
+const FLAG_TALKED_TO_GIRL = FLAG_TEMP_1
+const FLAG_HIDE_GENGAR = FLAG_TEMP_2
+
+mapscripts Coreef_House1_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        setflag(FLAG_HIDE_GENGAR)
+    }
+}
+
+script Coreef_House1_Pupil {
+    lock
+    faceplayer
+
+    if (flag(FLAG_JOMON_NEEDS_WAKING_UP)) {
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Nothing you'll do will wake him up!\p"
+            "You'd need something strong-smelling\nenough to wake the dead!"
+        )
+        closemessage
+    } elif (flag(FLAG_TALKED_TO_GIRL)) {
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Go ahead, talk to him, don't be shy.\nRemember to speak loud!"
+        ))
+        closemessage
+    } elif (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Hello! We don't get a lot of visitors.\n"
+            "Are you looking for something?"
+        ))
+
+        mcdialogueB(
+            "Wielder Jomon?",
+            "Nothing really…"
+        )
+
+        closemessage
+
+        if (var(VAR_RESULT) == 0) {
+            waitse
+            playse(SE_PIN)
+            applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
+            waitmovement(0)
+
+            msgbox(format(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Jomon is my father! He was a Wielder\nin his youth, almost a century back!\p"
+                "He was the oldest member of the Toku Council… well, until he was too old.\l"
+                "What do you need him for?"
+            ))
+
+            mcdialogueB(
+                "The Shrines…",
+                "The Decay…",
+                "Nothing really…"
+            )
+            closemessage
+
+            if (var(VAR_RESULT) == 0) {
+                msgbox((
+                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Shrines? I don't know much about them…\n"
+                    "Father used to pray at Shrines.\p"
+                    "You can try asking him about it, though\nI'm not sure you'll get an answer."
+                ))
+                setflag(FLAG_TALKED_TO_GIRL)
+
+                closemessage
+
+                applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right, delay_16))
+                waitmovement(VAR_LAST_TALKED)
+                msgbox(
+                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}He's right over there!"
+                )
+                closemessage
+
+                applymovement(VAR_LAST_TALKED, moves(face_left))
+            } elif (var(VAR_RESULT) == 1) {
+                msgbox((
+                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}I've been hearing about the whole\nDecay situation…\l"
+                    "Scary stuff…\p"
+                    "You want to ask Father about that?\nI mean, you can try…\l"
+                    "But I'm not sure you'll get an answer."
+                ))
+                setflag(FLAG_TALKED_TO_GIRL)
+
+                closemessage
+
+                applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_right, delay_16))
+                waitmovement(VAR_LAST_TALKED)
+                msgbox(
+                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}He's right over there!"
+                )
+                closemessage
+
+                applymovement(VAR_LAST_TALKED, moves(face_left))
+            } else {
+                msgbox((
+                    "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Oh, alright then."
+                ))
+            }
+            closemessage
+        }
+    } else {
+        msgbox(format(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Hello! We don't get a lot of visitors."
+        ))
+    }
+
+    closemessage
+    
+    release
+}
+
+script Coreef_House1_Jomon {
+    lock
+
+    if (flag(FLAG_JOMON_NEEDS_WAKING_UP)) {
+        waitse
+        playse(SE_M_SNORE)
+        applymovement(VAR_LAST_TALKED, moves(emote_sleep))
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}Zzzzzzz…"
+        )
+        closemessage
+
+        delay(24)
+
+        applymovement(LOCALID_JOMON_GIRL, moves(walk_in_place_fast_right))
+        applymovement(LOCALID_PLAYER, moves(face_left))
+        waitmovement(LOCALID_JOMON_GIRL)
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Nothing you'll do will wake him up!\p"
+            "You'd need something strong-smelling\nenough to wake the dead!\p"
+            "Do you have anything like that?"
+        )
+        closemessage
+        
+        call(Coreef_House1_PickRaikouBalm)
+    } elif (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
+        msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Youngling… What do you want?"
+        ))
+
+        mcdialogueB(
+            "Wielder Jomon?",
+            "Nothing really…"
+        )
+        closemessage
+
+        if (var(VAR_RESULT) == 0) {
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Hmm? Fill the jam on?\nI'm afraid I've misplaced the jam…"
+            )
+
+            mcdialogueB(
+                "WIELDER JOMON!!!"
+            )
+            closemessage
+
+            playse(SE_PIN)
+            applymovement(VAR_LAST_TALKED, moves(emote_pensive))
+
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}…Jomon?…{PAUSE 8} Oh, that's right, that's me!\n"
+                "I'm Jomon, the eldest of the Elders…"
+            )
+            waitse
+            waitmovement(0)
+
+            playse(SE_PIN)
+            applymovement(VAR_LAST_TALKED, moves(emote_question_mark, delay_16 * 6))
+            waitmovement(VAR_LAST_TALKED)
+
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}Wait, Elder?{PAUSE 8} Wasn't I a Monk?\p"
+                "I…{PAUSE 8} I have no time for this!\p"
+                "The Winter Shrine awaits, I must\nget back!\p"
+                "I must…{PAUSE 8} yawn…{PAUSE 8}\nOh boy, isn't it terribly late?\p"
+                "Time…{PAUSE 8} yawn…{PAUSE 8} to nap…\p"
+                "Zzzzzzz…"
+            )
+
+            addobject(LOCALID_JOMON_GENGAR)
+            delay(1)
+            removeobject(LOCALID_JOMON_GENGAR)
+
+            closemessage
+
+            delay(24)
+
+            playse(SE_PIN)
+            applymovement(LOCALID_JOMON_GIRL, moves(face_right, emote_sweat))
+            applymovement(LOCALID_PLAYER, moves(face_left))
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Oh my, he's napping again…\p"
+                "Nothing you'll do will wake him up!\p"
+                "You'd need something strong-smelling\nenough to wake the dead!\p"
+                "Do you have anything like that?"
+            )
+            closemessage
+
+            setflag(FLAG_JOMON_NEEDS_WAKING_UP)
+
+            call(Coreef_House1_PickRaikouBalm)
+        }
+    } else {
+        msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Youngling… What do you want?"
+        ))
+    }
+
+    release
+}
+
+script Coreef_House1_PickRaikouBalm {
+    chooseitem(POCKET_ITEMS)
+
+    switch(var(VAR_ITEM_ID)) {
+        case ITEM_RAIKOU_BALM:
+            call(Coreef_House1_JomonWakesUp)
+
+        case ITEM_CHESTO_BERRY:
+            applymovement(LOCALID_JOMON_GIRL, moves(face_right, emote_sad))
+            applymovement(LOCALID_PLAYER, moves(face_left))
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Uh, careful with that!\nJomon is allergic to Chesto Berries!"
+            )
+            closemessage
+        case ITEM_AWAKENING:
+            applymovement(LOCALID_JOMON_GIRL, moves(face_right, emote_sweat))
+            applymovement(LOCALID_PLAYER, moves(face_left))
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}That…{PAUSE 8} only works on Pokémon."
+            )
+            closemessage
+        case ITEM_ETHER:
+        case ITEM_MAX_ETHER:
+        case ITEM_ELIXIR:
+        case ITEM_MAX_ELIXIR:
+            applymovement(LOCALID_JOMON_GIRL, moves(face_right, emote_sweat))
+            applymovement(LOCALID_PLAYER, moves(face_left))
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_2 0}{SPEAKER NAME_GIRL}Ethers just aren't strong enough\nto wake him up!"
+            )
+            closemessage
+        case ITEM_LAX_INCENSE:
+            msgbox(
+                "A sweet fragrance fills the room!\n"
+                "… … … … … …\p"
+                "…But nothing happens!"
+            )
+            closemessage
+        case ITEM_ODD_INCENSE:
+            msgbox(
+                "A strange aroma fills the room!\n"
+                "… … … … … …\p"
+                "…But nothing happens!"
+            )
+            closemessage
+        case ITEM_SEA_INCENSE:
+            msgbox(
+                "A salty fragrance fills the room!\n"
+                "… … … … … …\p"
+                "…But nothing happens!"
+            )
+            closemessage
+        case ITEM_FULL_INCENSE:
+            msgbox(
+                "A decadent odor fills the room!\n"
+                "… … … … … …\p"
+                "…But nothing happens!"
+            )
+            closemessage
+        case ITEM_LUCK_INCENSE:
+            msgbox(
+                "A delicious fragrance fills the room!\n"
+                "… … … … … …\p"
+                "…But nothing happens!"
+            )
+            closemessage
+        case ITEM_PURE_INCENSE:
+            msgbox(
+                "A clean fragrance fills the room!\n"
+                "… … … … … …\p"
+                "…But nothing happens!"
+            )
+            closemessage
+        case ITEM_ROCK_INCENSE:
+            msgbox(
+                "A mineral odor fills the room!\n"
+                "… … … … … …\p"
+                "…But nothing happens!"
+            )
+            closemessage
+        case ITEM_ROSE_INCENSE:
+            msgbox(
+                "A flowery fragrance fills the room!\n"
+                "… … … … … …\p"
+                "…But nothing happens!"
+            )
+            closemessage
+        case ITEM_WAVE_INCENSE:
+            msgbox(
+                "A fresh aroma fills the room!\n"
+                "… … … … … …\p"
+                "…But nothing happens!"
+            )
+            closemessage
+        default:
+            msgbox(
+                "…Nothing happens!"
+            )
+            closemessage
+    }
+}
+
+script Coreef_House1_JomonWakesUp {
+    waitse
+    playse(SE_M_SNORE)
+    applymovement(LOCALID_JOMON, moves(emote_sleep, delay_16 * 6, shake_horizontal))
+    waitse
+    waitmovement(0)
+
+    playse(SE_PIN)
+    applymovement(LOCALID_JOMON, moves(emote_exclamation_mark, delay_16 * 6))
+    waitse
+    waitmovement(0)
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}WOOOOOO!!!\nWhat is that SMELL?\p"
+        "It STINKS!\nBut I feel full of energy!!\p"
+        "…Who are you? What do you want?"
+    )
+
+    mcdialogue(
+        "The Decay!"
+        "The Shrines!"
+    )
+    closemessage
+
+    switch(var(VAR_RESULT)) {
+        case 0:
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}Hmm? Yes, good day to you, too!"
+            )
+
+            waitse
+            playse(SE_PIN)
+            applymovement(LOCALID_PLAYER, moves(emote_sweat, delay_16 * 6))
+            waitmovement(0)
+            
+            mcdialogue(
+                "THE DECAY!!!"
+            )
+            closemessage
+
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}The Decay…"
+            )
+        case 1:
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_ELDER_JOMON}Hmm? Yes, I am fine! How about you?"
+            )
+
+            waitse
+            playse(SE_PIN)
+            applymovement(LOCALID_PLAYER, moves(emote_sweat, delay_16 * 6))
+            waitmovement(0)
+            
+            mcdialogue(
+                "THE SHRINES!!!"
+            )
+            closemessage
+    }
+}

@@ -1,2 +1,171 @@
-mapscripts CoreefIsle_MapScripts {}
+const FLAG_HIDE_BOAT_GUY = FLAG_TEMP_1
 
+mapscripts CoreefIsle_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_SHIP_SABERSIDE_SOULKEEP, 0: CoreefIsle_EventScript_AnchorBoat
+	]
+	MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_SHIP_SABERSIDE_SOULKEEP) == 0) {
+			setobjectxyperm(LOCALID_COREEF_BOAT_GUY, 42, 27)
+			setobjectxyperm(LOCALID_COREEF_WINGULL, 41, 26)
+
+		} elif (var(VAR_SHIP_SABERSIDE_SOULKEEP) != 1) {
+			setflag(FLAG_HIDE_BOAT_GUY)
+		}
+	}
+}
+
+script CoreefIsle_EventScript_BoatGuy {
+	lock
+	faceplayer
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}I'm about to sail!\n"
+		"Want to hop along?"
+	))
+
+	mcdialogueB(
+		"To Saberside Town!",
+		"To Soulkeep!",
+		"No need."
+	)
+	closemessage
+
+	switch (var(VAR_RESULT)) {
+		case 0:
+			call(SabersideTown_EventScript_HopOnBoat)
+			warpsilent(MAP_SABERSIDE_TOWN, WARP_ID_SABERSIDE_BOAT)
+		case 1:
+			call(SabersideTown_EventScript_HopOnBoat)
+			warpsilent(MAP_LONG_TIDE_CHANNEL_SOULKEEP, WARP_ID_SOULKEEP_BOAT)
+	}
+
+	release
+}
+
+script(local) CoreefIsle_EventScript_AnchorBoat {
+	lockall
+	
+	waitse
+	playse(SE_LEDGE)
+	applymovement(LOCALID_PLAYER, moves(jump_left, walk_down, delay_16, face_up))
+	waitse
+
+	delay(16)
+	playse(SE_LEDGE)
+	applymovement(LOCALID_LONGTIDE_BOAT_GUY, moves(jump_2_left, delay_16, face_down))
+	waitmovement(LOCALID_LONGTIDE_BOAT_GUY)
+	waitse
+
+	playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+	applymovement(LOCALID_LONGTIDE_WINGULL, moves(walk_left * 2, walk_down))
+	waitmoncry
+
+	setvar(VAR_SHIP_SABERSIDE_SOULKEEP, 2)
+
+	waitmovement(0)
+
+	releaseall
+}
+
+script CoreefIsle_EventScript_TownSign {
+   	msgbox(
+        "Coreef Isle\n“The sea's vibrant jewel!”",
+        MSGBOX_SIGN
+    )
+}
+
+script CoreefIsle_EventScript_CorsolaLore {
+    lock
+    faceplayer
+
+    msgbox((
+        "{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}For eons, Corsola's color has been an\nindication of the sea's cleanness.\p"
+        "We see a lot of pale, discolored\nCorsola lately…\lCould it be this Decay thing's fault?"
+    ))
+
+	if (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
+		mcdialogueB(
+			"Wielder Jomon?",
+			"Nothing really…"
+		)
+
+		closemessage
+
+		if(var(VAR_RESULT) == 0) {
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Old Jomon?\nWhat can you possibly need him for?\l"
+				"The man has lost his marbles!\p"
+				"He's easy enough to find, at least.\nHasn't left his home in years."
+			))
+		}
+	}
+
+	closemessage
+
+	setdescribedmon(SPECIES_CORSOLA)
+
+    release
+}
+
+script CoreefIsle_EventScript_CanHeal {
+    lock
+    faceplayer
+
+    msgbox((
+        // "{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Hello, Wielder."
+        "Hello, Wielder."
+    ))
+	applymovement(VAR_LAST_TALKED, moves(face_up, delay_16 * 4, face_player))
+    msgbox((
+		"If your Pokémon are\nwounded, a healer lives over there."
+    ))
+	waitmovement(0)
+
+	if (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
+		mcdialogueB(
+			"Wielder Jomon?",
+			"Nothing really…"
+		)
+
+		closemessage
+
+		if(var(VAR_RESULT) == 0) {
+			msgbox((
+				// "{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Been a while since I heard this name!\p"
+				"Been a while since I heard this name!\p"
+				"He lives to the east, with his caretaker."
+			))
+		}
+	}
+
+	closemessage
+
+    release
+}
+
+script CoreefIsle_EventScript_Wingull {
+	lock
+    faceplayer
+	setseenmon(SPECIES_WINGULL)
+	setspeakertomonname(SPECIES_WINGULL)
+	playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Kee!"
+    ))
+    waitmoncry
+    release
+}
+
+script CoreefIsle_EventScript_PollutedCorsola {
+	lock
+	setseenmon(SPECIES_CORSOLA)
+	setspeakertomonname(SPECIES_CORSOLA)
+	playmoncry(SPECIES_CORSOLA, CRY_MODE_FAINT)
+	applymovement(VAR_LAST_TALKED, moves(shake_horizontal))
+    msgbox(format(
+        "Aaa…"
+    ))
+	waitmovement(0)
+    waitmoncry
+    release
+}

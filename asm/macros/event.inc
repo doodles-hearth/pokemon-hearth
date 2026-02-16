@@ -3287,6 +3287,17 @@
 	call EventScript_BrailleCursorWaitButton
 	.endm
 
+@ More custom Hearth
+
+	@ Opens the bag in the specified pocket and lets the Player choose an item.
+	@ This item can be used for scripting purposes and it's stored in VAR_ITEM_ID.
+	.macro chooseitem pocket:req
+	setvar VAR_TEMP_1, \pocket
+	fadescreen FADE_TO_BLACK
+	special ChooseItemFromBag
+	waitstate
+	.endm
+
 @ ZATSU'S MEMORY READER
 
 	@ Gets the \memorySlot for the Pokémon at \slot
