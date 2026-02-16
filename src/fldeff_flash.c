@@ -385,7 +385,7 @@ void UpdateFlashTint(void)
     DebugPrintf("mon index=%d, species=%d", followerIndex, GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES));
     
     // Get Flash DNS Tint
-    if (GetMonData(&gPlayerParty[followerIndex], MON_DATA_IS_SHINY) && (IsFollowerSpawned()) && followerFlashTintShiny > 0)
+    if (GetMonData(&gPlayerParty[followerIndex], MON_DATA_IS_SHINY) && followerFlashTintShiny > 0)
     {
         DebugPrintf("   Shiny");
         newFlashTint = followerFlashTintShiny;
