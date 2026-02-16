@@ -23286,8 +23286,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Smoke Bomb"),
         .description = COMPOUND_STRING(
-            "Releases volcanic ash\n"
-            "Fills the air with smoke"
+            "Releases volcanic ash.\n"
+            "Fills the air with\n"
+            "smoke."
         ),
         .effect = EFFECT_WEATHER,
         .power = 0,
@@ -23313,7 +23314,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Blossom"),
         .description = COMPOUND_STRING(
-            "Summons a flurry of cherry\n"
+            "Summons a flurry of Cheri\n"
             "leaves that fill the air"
         ),
         .effect = EFFECT_WEATHER,
