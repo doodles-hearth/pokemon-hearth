@@ -263,6 +263,24 @@
 #define METATILE_GenericBuilding_TrickHouse_Door_Closed  0x81B
 #define METATILE_GenericBuilding_TrickHouse_Stairs_Down  0x819
 
+// gTileset_HarvestShrine
+#define METATILE_HarvestShrine_BronzongLeftEyeActive_BottomLeft    0x808
+#define METATILE_HarvestShrine_BronzongLeftEyeActive_BottomRight   0x809
+#define METATILE_HarvestShrine_BronzongLeftEyeActive_TopLeft       0x800
+#define METATILE_HarvestShrine_BronzongLeftEyeActive_TopRight      0x801
+#define METATILE_HarvestShrine_BronzongLeftEye_BottomLeft          0x8A3
+#define METATILE_HarvestShrine_BronzongLeftEye_BottomRight         0x8A4
+#define METATILE_HarvestShrine_BronzongLeftEye_TopLeft             0x89B
+#define METATILE_HarvestShrine_BronzongLeftEye_TopRight            0x89C
+#define METATILE_HarvestShrine_BronzongRightEyeActive_BottomLeft   0x80A
+#define METATILE_HarvestShrine_BronzongRightEyeActive_BottomRight  0x80B
+#define METATILE_HarvestShrine_BronzongRightEyeActive_TopLeft      0x802
+#define METATILE_HarvestShrine_BronzongRightEyeActive_TopRight     0x803
+#define METATILE_HarvestShrine_BronzongRightEye_BottomLeft         0x8A6
+#define METATILE_HarvestShrine_BronzongRightEye_BottomRight        0x8A7
+#define METATILE_HarvestShrine_BronzongRightEye_TopLeft            0x89E
+#define METATILE_HarvestShrine_BronzongRightEye_TopRight           0x89F
+
 // gTileset_House
 #define METATILE_House_Door_IndoorSlidingLeft   0x808
 #define METATILE_House_Door_IndoorSlidingRight  0x809

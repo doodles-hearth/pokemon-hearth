@@ -2056,3 +2056,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/Coreef_House2/scripts.scr"
 
 	.include "data/maps/ScenicRoute_MemoryReader/scripts.scr"
+
+	.include "data/maps/Coreef_House3/scripts.scr"

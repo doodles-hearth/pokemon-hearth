@@ -77,12 +77,12 @@
   ],
   "warp_events": [
     {
-      "warp_id": "WARP_ID_COREEF_HOUSE1_EXIT",
+      "warp_id": "WARP_ID_COREEF_HOUSE2_EXIT",
       "x": 4,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_COREEF_ISLE",
-      "dest_warp_id": "WARP_ID_COREEF_HOUSE1"
+      "dest_warp_id": "WARP_ID_COREEF_HOUSE2"
     }
   ],
   "coord_events": [],

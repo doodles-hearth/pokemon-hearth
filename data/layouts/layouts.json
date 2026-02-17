@@ -6167,7 +6167,7 @@
       "id": "LAYOUT_HARVEST_SHRINE",
       "name": "HarvestShrine_Layout",
       "width": 32,
-      "height": 26,
+      "height": 32,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
@@ -11764,6 +11764,19 @@
       "secondary_tileset": "gTileset_Daycare",
       "border_filepath": "data/layouts/ScenicRoute_MemoryReader/border.bin",
       "blockdata_filepath": "data/layouts/ScenicRoute_MemoryReader/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_COREEF_HOUSE3",
+      "name": "Coreef_House3_Layout",
+      "width": 10,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseCoreef",
+      "border_filepath": "data/layouts/Coreef_House3/border.bin",
+      "blockdata_filepath": "data/layouts/Coreef_House3/map.bin",
       "layout_version": "emerald"
     }
   ]
