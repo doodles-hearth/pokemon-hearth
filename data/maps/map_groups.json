@@ -115,7 +115,8 @@
     "SakuTown_BufferArea",
     "YifuCity_BufferArea",
     "SabersideQuarry_Exterior",
-    "ScenicHotSprings"
+    "ScenicHotSprings",
+    "HarvestShrine_Decay"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "SunriseVillage_PlayersHouse_LR",

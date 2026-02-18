@@ -2058,3 +2058,25 @@ const struct Tileset gTileset_HallOfFame =
 };
 
 #endif // IS_FRLG
+
+const struct Tileset gTileset_DecayBronzong =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_DecayBronzong,
+    .palettes = gTilesetPalettes_DecayBronzong,
+    .metatiles = gMetatiles_DecayBronzong,
+    .metatileAttributes = gMetatileAttributes_DecayBronzong,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_DecayPrimary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_DecayPrimary,
+    .palettes = gTilesetPalettes_DecayPrimary,
+    .metatiles = gMetatiles_DecayPrimary,
+    .metatileAttributes = gMetatileAttributes_DecayPrimary,
+    .callback = NULL,
+};

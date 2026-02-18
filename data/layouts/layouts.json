@@ -6209,8 +6209,8 @@
       "height": 34,
       "border_width": 2,
       "border_height": 2,
-      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_Decay",
+      "primary_tileset": "gTileset_DecayPrimary",
+      "secondary_tileset": "gTileset_DecayBronzong",
       "border_filepath": "data/layouts/Beachbound_Route_Decay/border.bin",
       "blockdata_filepath": "data/layouts/Beachbound_Route_Decay/map.bin",
       "layout_version": "emerald"
@@ -11777,6 +11777,19 @@
       "secondary_tileset": "gTileset_HouseCoreef",
       "border_filepath": "data/layouts/Coreef_House3/border.bin",
       "blockdata_filepath": "data/layouts/Coreef_House3/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_HARVEST_SHRINE_DECAY",
+      "name": "HarvestShrine_Decay_Layout",
+      "width": 32,
+      "height": 32,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_DecayPrimary",
+      "secondary_tileset": "gTileset_DecayBronzong",
+      "border_filepath": "data/layouts/HarvestShrine_Decay/border.bin",
+      "blockdata_filepath": "data/layouts/HarvestShrine_Decay/map.bin",
       "layout_version": "emerald"
     }
   ]

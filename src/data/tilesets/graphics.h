@@ -3941,3 +3941,41 @@ const u16 ALIGNED(4) gTilesetPalettes_General_Frlg[][16] =
 const u32 gTilesetTiles_General_Frlg[] = INCBIN_U32("data/tilesets/primary/general_frlg/tiles.4bpp.smol");
 
 #endif // IS_FRLG
+
+const u16 gTilesetPalettes_DecayBronzong[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/decay_bronzong/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_DecayBronzong[] = INCBIN_U32("data/tilesets/secondary/decay_bronzong/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_DecayPrimary[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/decay_primary/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_DecayPrimary[] = INCBIN_U32("data/tilesets/primary/decay_primary/tiles.4bpp.lz");
