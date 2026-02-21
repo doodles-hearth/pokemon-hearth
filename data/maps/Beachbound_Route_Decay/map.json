@@ -19,11 +19,6 @@
       "direction": "left"
     },
     {
-      "map": "MAP_HARVEST_SHRINE",
-      "offset": 34,
-      "direction": "up"
-    },
-    {
       "map": "MAP_HARVEST_SHRINE_DECAY",
       "offset": 34,
       "direction": "up"

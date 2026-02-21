@@ -1,0 +1,10 @@
+mapscripts InsideBronzong_MapScripts {}
+
+script InsideBronzong_EventScript_Heart {
+    lock
+    // TODO EVA
+    msgbox(
+        "It's a big, glowing crystal\nradiating heat."
+    )
+    release
+}

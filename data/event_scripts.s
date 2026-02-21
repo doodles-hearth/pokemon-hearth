@@ -2060,3 +2060,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/Coreef_House3/scripts.scr"
 
 	.include "data/maps/HarvestShrine_Decay/scripts.scr"
+
+	.include "data/maps/InsideBronzong/scripts.scr"

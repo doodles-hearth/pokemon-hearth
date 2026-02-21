@@ -11791,6 +11791,18 @@
       "border_filepath": "data/layouts/HarvestShrine_Decay/border.bin",
       "blockdata_filepath": "data/layouts/HarvestShrine_Decay/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_INSIDE_BRONZONG",
+      "name": "InsideBronzong_Layout",
+      "width": 15,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_InsideBronzong",
+      "border_filepath": "data/layouts/InsideBronzong/border.bin",
+      "blockdata_filepath": "data/layouts/InsideBronzong/map.bin"
     }
   ]
 }

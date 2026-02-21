@@ -2080,3 +2080,14 @@ const struct Tileset gTileset_DecayPrimary =
     .metatileAttributes = gMetatileAttributes_DecayPrimary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_InsideBronzong =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_InsideBronzong,
+    .palettes = gTilesetPalettes_InsideBronzong,
+    .metatiles = gMetatiles_InsideBronzong,
+    .metatileAttributes = gMetatileAttributes_InsideBronzong,
+    .callback = NULL,
+};

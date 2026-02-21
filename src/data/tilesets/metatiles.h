@@ -556,3 +556,6 @@ const u16 gMetatileAttributes_DecayBronzong[] = INCBIN_U16("data/tilesets/second
 
 const u16 gMetatiles_DecayPrimary[] = INCBIN_U16("data/tilesets/primary/decay_primary/metatiles.bin");
 const u16 gMetatileAttributes_DecayPrimary[] = INCBIN_U16("data/tilesets/primary/decay_primary/metatile_attributes.bin");
+
+const u16 gMetatiles_InsideBronzong[] = INCBIN_U16("data/tilesets/secondary/inside_bronzong/metatiles.bin");
+const u16 gMetatileAttributes_InsideBronzong[] = INCBIN_U16("data/tilesets/secondary/inside_bronzong/metatile_attributes.bin");
