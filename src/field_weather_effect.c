@@ -3021,7 +3021,9 @@ void Decay_InitVars(void)
     gWeatherPtr->initStep = 0;
     gWeatherPtr->weatherGfxLoaded = FALSE;
     gWeatherPtr->targetColorMapIndex = 0;
-    gWeatherPtr->colorMapStepDelay = 20;
+    gWeatherPtr->colorMapIndex = 0;
+    gWeatherPtr->desatAmt = 0;
+    gWeatherPtr->desatTarget = 14;
     gWeatherPtr->targetLeafSpriteCount = 32;
     gWeatherPtr->leafVisibleCounter = 0;
     gWeatherPtr->noShadows = FALSE;

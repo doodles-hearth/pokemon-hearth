@@ -3,6 +3,7 @@
 #include "constants/songs.h"
 #include "constants/weather.h"
 #include "constants/rgb.h"
+#include "gba/defines.h"
 #include "util.h"
 #include "decompress.h"
 #include "event_object_movement.h"
@@ -44,12 +45,14 @@ static bool8 LightenSpritePaletteInFog(u8);
 static void UpdateWeatherColorMap(void);
 static void ApplyColorMap(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex);
 static void ApplyDesaturation(u8 startPalIndex, u8 numPalettes, u8 desatIdx);
+static void ApplyDesaturationWithBlend(u8 startPalIndex, u8 numPalettes, u8 desatIdx, u8 blendCoeff, u32 blendClr);
 static void ApplyColorMapWithBlend(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex, u8 blendCoeff, u32 blendColor);
 static void ApplyDroughtColorMapWithBlend(s8 colorMapIndex, u8 blendCoeff, u32 blendColor);
 static void ApplyFogBlend(u8 blendCoeff, u32 blendColor);
 static bool8 FadeInScreen_RainShowShade(void);
 static bool8 FadeInScreen_Drought(void);
 static bool8 FadeInScreen_FogHorizontal(void);
+static bool8 FadeInScreen_Decay(void);
 static void FadeInScreenWithWeather(void);
 static void DoNothing(void);
 static void Task_WeatherInit(u8 taskId);
@@ -343,6 +346,9 @@ static void UpdateWeatherColorMap(void)
 {
     if (gWeatherPtr->palProcessingState != WEATHER_PAL_STATE_SCREEN_FADING_OUT)
     {
+        if (gWeatherPtr->colorMapIndex == 0 && gWeatherPtr->desatTarget)
+            ApplyColorMap(0, 32, gWeatherPtr->colorMapIndex);
+
         if (gWeatherPtr->colorMapIndex == gWeatherPtr->targetColorMapIndex)
         {
             gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
@@ -389,6 +395,13 @@ static void FadeInScreenWithWeather(void)
         break;
     case WEATHER_FOG_HORIZONTAL:
         if (FadeInScreen_FogHorizontal() == FALSE)
+        {
+            gWeatherPtr->colorMapIndex = 0;
+            gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
+        }
+        break;
+    case WEATHER_DECAY:
+        if (FadeInScreen_Decay() == FALSE)
         {
             gWeatherPtr->colorMapIndex = 0;
             gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
@@ -449,6 +462,24 @@ static bool8 FadeInScreen_FogHorizontal(void)
 
     gWeatherPtr->fadeScreenCounter++;
     ApplyFogBlend(16 - gWeatherPtr->fadeScreenCounter, gWeatherPtr->fadeDestColor);
+    return TRUE;
+}
+
+
+static bool8 FadeInScreen_Decay(void)
+{
+    if (gWeatherPtr->fadeScreenCounter == 16)
+        return FALSE;
+
+    if (++gWeatherPtr->fadeScreenCounter >= 16)
+    {
+        ApplyDesaturation(0, 32, 14);
+        gWeatherPtr->fadeScreenCounter = 16;
+        return FALSE;
+    }
+    gWeatherPtr->fadeScreenCounter++;
+
+    ApplyDesaturationWithBlend(0, 32, 14, 16 - gWeatherPtr->fadeScreenCounter, gWeatherPtr->fadeDestColor);
     return TRUE;
 }
 
@@ -544,7 +575,10 @@ static void ApplyColorMap(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex)
     }
     else
     {
-        if (MapHasNaturalLight(gMapHeader.mapType))
+        if (gWeatherPtr->currWeather == WEATHER_DECAY) {
+            ApplyDesaturation(startPalIndex, numPalettes, gWeatherPtr->desatTarget);
+        }
+        else if (MapHasNaturalLight(gMapHeader.mapType))
         {
             // Time-blend
             u32 palettes = ((1 << numPalettes) - 1) << startPalIndex;
@@ -580,7 +614,7 @@ static void ApplyDesaturation(u8 startPalIndex, u8 numPalettes, u8 desatIdx)
 
         curPalIndex = startPalIndex;
 
-        while (curPalIndex < numPalettes) {
+        while (curPalIndex < endPalIndex) {
             bool32 isBlendImmune =
                 sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE ||
                 (curPalIndex >= 16 && IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(curPalIndex - 16)));
@@ -649,6 +683,60 @@ static void ApplyColorMapWithBlend(u8 startPalIndex, u8 numPalettes, s8 colorMap
             }
         }
 
+        curPalIndex++;
+    }
+}
+
+static void ApplyDesaturationWithBlend(u8 startPalIndex, u8 numPalettes, u8 desatIdx, u8 blendCoeff, u32 blendClr)
+{
+    u16 curPalIndex;
+    u16 palOffset;
+    u16 endPalIndex = numPalettes + startPalIndex;
+
+    struct RGBColor color = *(struct RGBColor*)&blendClr;
+    u8 rBlend = color.r;
+    u8 gBlend = color.g;
+    u8 bBlend = color.b;
+
+    // Create the palette mask
+    u32 palettes = PALETTES_ALL;
+
+    palettes = (palettes >> startPalIndex) << startPalIndex;
+    palettes = (palettes << (32 - endPalIndex)) >> (32 - endPalIndex);
+
+    palOffset = PLTT_ID(startPalIndex);
+    curPalIndex = startPalIndex;
+
+    while (curPalIndex < numPalettes) {
+
+        UpdateAltBgPalettes((1 << (palOffset >> 4)) & PALETTES_BG);
+        UpdatePalettesWithTime(1 << (palOffset >> 4));
+
+        bool32 isUIPal = curPalIndex > 12 && curPalIndex < 16;
+        u16* src = isUIPal ? gPlttBufferUnfaded : gPlttBufferFaded;
+
+        CpuFastCopy(&src[palOffset], &gPlttBufferFaded[palOffset], PLTT_SIZE_4BPP);
+
+        bool32 isBlendImmune =
+            sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE;
+
+
+        if (isBlendImmune) {
+            BlendPalettesFine(1, &gPlttBufferFaded[palOffset], &gPlttBufferFaded[palOffset], blendCoeff, blendClr);
+            palOffset += 16;
+        }
+        else {
+            for (int i = 0; i < 16; i++) {
+                u16 base = DesaturateColor(gPlttBufferFaded[palOffset], sDesaturationSteps[desatIdx]);
+                struct RGBColor c = *(struct RGBColor*)&base;
+
+                c.r += ((rBlend - c.r) * blendCoeff) >> 4;
+                c.g += ((gBlend - c.g) * blendCoeff) >> 4;
+                c.b += ((bBlend - c.b) * blendCoeff) >> 4;
+
+                gPlttBufferFaded[palOffset++] = RGB2(c.r, c.g, c.b);
+            }
+        }
         curPalIndex++;
     }
 }
@@ -820,6 +908,7 @@ void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes)
     case WEATHER_FOG_HORIZONTAL:
     case WEATHER_SHADE:
     case WEATHER_DROUGHT:
+    case WEATHER_DECAY:
         useWeatherPal = TRUE;
         break;
     default:
@@ -924,7 +1013,7 @@ void UpdateSpritePaletteWithWeather(u8 spritePaletteIndex, bool8 allowFog)
     default:
         if (gWeatherPtr->currWeather != WEATHER_FOG_HORIZONTAL)
         {
-            if (gWeatherPtr->colorMapIndex)
+            if (!!gWeatherPtr->colorMapIndex ^ !!gWeatherPtr->desatTarget)
                 ApplyColorMap(paletteIndex, 1, gWeatherPtr->colorMapIndex);
             else
                 UpdateSpritePaletteWithTime(spritePaletteIndex);
