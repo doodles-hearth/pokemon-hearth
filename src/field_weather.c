@@ -118,6 +118,8 @@ static const u16 sDroughtWeatherColors[][0x1000] = {
     INCBIN_U16("graphics/weather/drought/colors_5.bin"),
 };
 
+static const u8 sDesaturationSteps[17] = {0, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 255};
+
 // This is a pointer to gWeather. All code in this file accesses gWeather directly,
 // while code in other field weather files accesses gWeather through this pointer.
 // This is likely the result of compiler optimization, since using the pointer in
