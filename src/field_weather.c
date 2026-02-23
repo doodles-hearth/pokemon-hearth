@@ -1,4 +1,5 @@
 #include "global.h"
+#include "constants/field_weather.h"
 #include "constants/songs.h"
 #include "constants/weather.h"
 #include "constants/rgb.h"
@@ -42,6 +43,7 @@ struct WeatherCallbacks
 static bool8 LightenSpritePaletteInFog(u8);
 static void UpdateWeatherColorMap(void);
 static void ApplyColorMap(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex);
+static void ApplyDesaturation(u8 startPalIndex, u8 numPalettes, u8 desatIdx);
 static void ApplyColorMapWithBlend(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex, u8 blendCoeff, u32 blendColor);
 static void ApplyDroughtColorMapWithBlend(s8 colorMapIndex, u8 blendCoeff, u32 blendColor);
 static void ApplyFogBlend(u8 blendCoeff, u32 blendColor);
@@ -432,7 +434,6 @@ static bool8 FadeInScreen_Drought(void)
 
     if (++gWeatherPtr->fadeScreenCounter >= 16)
     {
-        ApplyColorMap(0, 32, -6);
         gWeatherPtr->fadeScreenCounter = 16;
         return FALSE;
     }
@@ -555,6 +556,47 @@ static void ApplyColorMap(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex)
             CpuFastCopy(&gPlttBufferUnfaded[PLTT_ID(startPalIndex)], &gPlttBufferFaded[PLTT_ID(startPalIndex)], numPalettes * PLTT_SIZE_4BPP);
         }
     }
+}
+
+static void ApplyDesaturation(u8 startPalIndex, u8 numPalettes, u8 desatIdx)
+{
+        u16 curPalIndex;
+        u16 palOffset;
+        u16 endPalIndex = numPalettes + startPalIndex;
+
+        // Create the palette mask
+        u32 palettes = PALETTES_ALL;
+
+        palettes = (palettes >> startPalIndex) << startPalIndex;
+        palettes = (palettes << (32 - endPalIndex)) >> (32 - endPalIndex);
+
+        palOffset = PLTT_ID(startPalIndex);
+
+        UpdateAltBgPalettes(palettes & PALETTES_BG);
+        if (MapHasNaturalLight(gMapHeader.mapType))
+            UpdatePalettesWithTime(palettes);
+        else
+            CpuFastCopy(gPlttBufferUnfaded + palOffset, gPlttBufferFaded + palOffset, PLTT_SIZE_4BPP * numPalettes);
+
+        curPalIndex = startPalIndex;
+
+        while (curPalIndex < numPalettes) {
+            bool32 isBlendImmune =
+                sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE ||
+                (curPalIndex >= 16 && IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(curPalIndex - 16)));
+
+            if (isBlendImmune) {
+                palOffset += 16;
+            }
+            else {
+                for (u32 i = 0; i < 16; i++) {
+                    u16 base = gPlttBufferFaded[palOffset];
+                    u8 amt = sDesaturationSteps[desatIdx];
+                    gPlttBufferFaded[palOffset++] = DesaturateColor(base, amt);
+                }
+            }
+            curPalIndex++;
+        }
 }
 
 static void ApplyColorMapWithBlend(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex, u8 blendCoeff, u32 blendColor)

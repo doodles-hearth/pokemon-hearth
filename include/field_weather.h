@@ -48,6 +48,11 @@ struct Weather
     u8 colorMapStepCounter;
     u16 fadeDestColor:15;
     u16 noShadows:1; // Certain weathers require blend coeffs that do not work nice with shadows
+    // Desaturation
+    u8 desatAmt;
+    u8 desatTarget;
+    u8 desatStepDelay;
+    u8 desatStepCounter;
     u8 palProcessingState;
     u8 fadeScreenCounter;
     bool8 readyForInit;
