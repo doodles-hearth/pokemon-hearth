@@ -1,0 +1,161 @@
+mapscripts SabersideQuarry_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		if (flag(FLAG_SPOOKED_SABLEYE)) {
+			call(SabersideQuarry_DrawSableyePrints)
+		} else {
+			// Erase some of the pawprints if you haven't spooked Sableye yet!
+			setmetatile(61, 48, METATILE_Quarry_Sand, FALSE)
+			setmetatile(63, 50, METATILE_Quarry_Sand, FALSE)
+			setmetatile(63, 51, METATILE_Quarry_Sand, FALSE)
+			setmetatile(63, 52, METATILE_Quarry_Sand, FALSE)
+			setmetatile(64, 52, METATILE_Quarry_Sand, FALSE)
+			setmetatile(65, 52, METATILE_Quarry_Sand, FALSE)
+			setmetatile(66, 51, METATILE_Quarry_Sand, FALSE)
+			setmetatile(67, 51, METATILE_Quarry_SandRightEdge, FALSE)
+		}
+	}
+}
+
+script SabersideQuarry_DrawSableyePrints {
+	setmetatile(64, 34, METATILE_Quarry_PawprintLeftDown, FALSE)
+	setmetatile(63, 34, METATILE_Quarry_PawprintLeftUp, FALSE)
+	setmetatile(62, 34, METATILE_Quarry_PawprintLeftDown, FALSE)
+	setmetatile(61, 34, METATILE_Quarry_PawprintLeftUp, FALSE)
+}
+
+script SabersideQuarry_EventScript_Sableye {
+	if (getflashlevel < 50) {
+		lock
+		playmoncry(SPECIES_SABLEYE, CRY_MODE_NORMAL)
+		applymovement(VAR_LAST_TALKED, moves(emote_music, delay_16 * 6))
+		waitmovement(0)
+		waitmoncry
+
+		msgbox(format(
+			"The Pokémon seems to be ignoring you."
+		))
+		closemessage
+
+		setseenmon(SPECIES_SABLEYE)
+		release
+	} else {
+		call(SabersideQuarry_EventScript_SpookSableye)
+	}
+}
+
+script SabersideQuarry_EventScript_SpookSableye {
+	setflag(FLAG_SAFE_FOLLOWER_MOVEMENT)
+
+	if (getflashlevel < 50) {
+		release
+		return
+	}
+
+	lockall
+	setflag(FLAG_SPOOKED_SABLEYE)
+	setseenmon(SPECIES_SABLEYE)
+
+	playmoncry(SPECIES_SABLEYE, CRY_MODE_NORMAL)
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(face_player, emote_exclamation_mark, delay_16 * 6))
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+	waitmoncry
+
+	playse(SE_FLEE)
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(walk_fast_left))
+	setmetatile(64, 34, METATILE_Quarry_PawprintLeftDownNotSand, FALSE)
+	special(DrawWholeMapView)
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(walk_fast_left))
+	setmetatile(63, 34, METATILE_Quarry_PawprintLeftUpNotSand, FALSE)
+	special(DrawWholeMapView)
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(walk_fast_left))
+	setmetatile(62, 34, METATILE_Quarry_PawprintLeftDownNotSand, FALSE)
+	special(DrawWholeMapView)
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+
+	applymovement(LOCALID_PLAYER, moves(face_left))
+
+	waitse
+	playse(SE_LEDGE)
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(
+		jump_2_left
+		walk_fast_down * 5
+	))
+	setmetatile(61, 34, METATILE_Quarry_PawprintLeftUpNotSand, FALSE)
+	special(DrawWholeMapView)
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+
+	applymovement(LOCALID_PLAYER, moves(face_down))
+
+	applymovement(LOCALID_QUARRY_SABLEYE, moves(
+		jump_down
+		jump_down
+		walk_fast_down * 2
+	))
+	playse(SE_LEDGE)
+	delay(16)
+	playse(SE_LEDGE)
+	waitmovement(LOCALID_QUARRY_SABLEYE)
+
+	removeobject(LOCALID_QUARRY_SABLEYE)
+
+	call(SabersideQuarry_DrawSableyePrints)
+	special(DrawWholeMapView)
+
+	msgbox(format(
+		"…The Pokémon seems to have been spooked by the light."
+	))
+	closemessage
+
+	clearflag(FLAG_SAFE_FOLLOWER_MOVEMENT)
+
+	releaseall
+}
+
+script SabersideQuarry_EventScript_LookingForSableye {
+	lock
+	faceplayer
+	if (getflashlevel < 50) {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_HEX_MANIAC}Shush now! I'm trying to catch a Sableye.\p"
+			"I saw one earlier, but I spooked it\nand it scuttled back to its lair."
+		))
+	} else {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_HEX_MANIAC}Get away with that light!\nI'm trying to catch a Sableye.\p"
+			"I saw one earlier, but I spooked it\nand it scuttled back to its lair."
+		))
+	}
+
+	setnamedmon(SPECIES_SABLEYE)
+
+	closemessage
+	release
+}
+
+script SabersideQuarry_EventScript_Hagane {
+	trainerbattle_single(
+		TRAINER_HAGANE,
+		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Uh, go away!\nNothing precious to be found here!"),
+		format("Fine, I'm a terrible liar!")
+	)
+	setspeaker(SP_NAME_MINER)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}I struck a lode of premium steel here.\nI guess we can share."))
+	release
+	end
+}
+
+script SabersideQuarry_EventScript_Haruki {
+	trainerbattle_single(
+		TRAINER_HARUKI,
+		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}My Sandy could tear right through you!"),
+		format("You tore right through me…")
+	)
+	setspeaker(SP_NAME_MINER)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Sandy is used to digging through softer minerals.\lHer poor claws are all tender!"))
+	release
+	end
+}

@@ -1,8 +1,10 @@
 #include "global.h"
+#include "config/save.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
 #include "battle_pyramid_bag.h"
 #include "bg.h"
+#include "constants/flags.h"
 #include "debug.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -55,7 +57,7 @@
 #include "constants/songs.h"
 
 // Menu actions
-enum
+enum StartMenuActions
 {
     MENU_ACTION_POKEDEX,
     MENU_ACTION_POKEMON,
@@ -150,6 +152,10 @@ static void SaveGameTask(u8 taskId);
 static void Task_SaveAfterLinkBattle(u8 taskId);
 static void Task_WaitForBattleTowerLinkSave(u8 taskId);
 static bool8 FieldCB_ReturnToFieldStartMenu(void);
+
+// Helper functions
+static bool32 ShouldDisplayStartMenuEntry(enum StartMenuActions action);
+
 
 static const struct WindowTemplate sWindowTemplate_SafariBalls = {
     .bg = 0,
@@ -348,27 +354,55 @@ static void AddStartMenuAction(u8 action)
     AppendToList(sCurrentStartMenuActions, &sNumStartMenuActions, action);
 }
 
+static bool32 ShouldDisplayStartMenuEntry(enum StartMenuActions action)
+{
+    switch (action) {
+        case MENU_ACTION_POKEMON:
+            return FlagGet(FLAG_SYS_POKEMON_GET) &&
+                   !FlagGet(FLAG_PLAYER_IS_POKEMON);
+            break;
+        case MENU_ACTION_POKEDEX:
+            return FlagGet(FLAG_SYS_POKEDEX_GET) &&
+                   !FlagGet(FLAG_PLAYER_IS_POKEMON);
+            break;
+        case MENU_ACTION_BAG:
+            return !FlagGet(FLAG_PLAYER_IS_POKEMON);
+            break;
+        case MENU_ACTION_POKENAV:
+            return FlagGet(FLAG_SYS_POKENAV_GET) &&
+                   !FlagGet(FLAG_PLAYER_IS_POKEMON);
+            break;
+        case MENU_ACTION_PLAYER:
+            return !FlagGet(FLAG_PLAYER_IS_POKEMON);
+            break;
+        default:
+            return TRUE;
+    }
+}
+
 static void BuildNormalStartMenu(void)
 {
-    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_POKEDEX))
         AddStartMenuAction(MENU_ACTION_POKEDEX);
 
     if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET))
         AddStartMenuAction(MENU_ACTION_DEXNAV);
 
-    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_POKEMON))
         AddStartMenuAction(MENU_ACTION_POKEMON);
 
-    AddStartMenuAction(MENU_ACTION_BAG);
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_BAG))
+        AddStartMenuAction(MENU_ACTION_BAG);
 
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
 
-    AddStartMenuAction(MENU_ACTION_PLAYER);
-    
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_PLAYER))
+        AddStartMenuAction(MENU_ACTION_PLAYER);
+
     if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_QUEST_MENU);
-    
+
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
@@ -377,16 +411,28 @@ static void BuildNormalStartMenu(void)
 static void BuildDebugStartMenu(void)
 {
     AddStartMenuAction(MENU_ACTION_DEBUG);
-    if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
+
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_POKEDEX))
         AddStartMenuAction(MENU_ACTION_POKEDEX);
-    if (FlagGet(FLAG_SYS_POKEMON_GET) == TRUE)
+
+    if (DN_FLAG_DEXNAV_GET != 0 && FlagGet(DN_FLAG_DEXNAV_GET))
+        AddStartMenuAction(MENU_ACTION_DEXNAV);
+
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_POKEMON))
         AddStartMenuAction(MENU_ACTION_POKEMON);
-    AddStartMenuAction(MENU_ACTION_BAG);
+
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_BAG))
+        AddStartMenuAction(MENU_ACTION_BAG);
+
     if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKENAV);
+
+    if (ShouldDisplayStartMenuEntry(MENU_ACTION_PLAYER))
+        AddStartMenuAction(MENU_ACTION_PLAYER);
+
     if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_QUEST_MENU);
-    AddStartMenuAction(MENU_ACTION_PLAYER);
+
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
 }
@@ -524,17 +570,13 @@ static void ShowTimeWindow(void)
 
     if (rtc->hour < 12)
     {
-        if (rtc->hour == 0)
-            convertedHours = 12;
-        else
-            convertedHours = rtc->hour;
+        convertedHours = rtc->hour;
         suffix = gText_AM;
     }
     else if (rtc->hour == 12)
     {
         convertedHours = 12;
-        if (suffix == gText_AM);
-            suffix = gText_PM;
+        suffix = gText_PM;
     }
     else
     {
@@ -1066,7 +1108,7 @@ static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void))
 {
     StringExpandPlaceholders(gStringVar4, message);
     LoadMessageBoxAndFrameGfx(0, TRUE);
-    AddTextPrinterForMessage_2(TRUE);
+    AddTextPrinterForMessage(TRUE);
     sSavingComplete = TRUE;
     sSaveDialogCallback = saveCallback;
 }
@@ -1172,7 +1214,7 @@ static u8 SaveConfirmInputCallback(void)
         {
         case SAVE_STATUS_EMPTY:
         case SAVE_STATUS_CORRUPT:
-            if (gDifferentSaveFile == FALSE)
+            if (gDifferentSaveFile == FALSE && !SKIP_SAVE_CONFIRMATION)
             {
                 sSaveDialogCallback = SaveFileExistsCallback;
                 return SAVE_IN_PROGRESS;
@@ -1181,7 +1223,10 @@ static u8 SaveConfirmInputCallback(void)
             sSaveDialogCallback = SaveSavingMessageCallback;
             return SAVE_IN_PROGRESS;
         default:
-            sSaveDialogCallback = SaveFileExistsCallback;
+            if (SKIP_SAVE_CONFIRMATION)
+                sSaveDialogCallback = SaveSavingMessageCallback;
+            else
+                sSaveDialogCallback = SaveFileExistsCallback;
             return SAVE_IN_PROGRESS;
         }
     case MENU_B_PRESSED:
@@ -1274,7 +1319,7 @@ static u8 SaveDoSaveCallback(void)
 
 static u8 SaveSuccessCallback(void)
 {
-    if (!IsTextPrinterActive(0))
+    if (!IsTextPrinterActiveOnWindow(0))
     {
         PlaySE(SE_SAVE);
         sSaveDialogCallback = SaveReturnSuccessCallback;
@@ -1298,7 +1343,7 @@ static u8 SaveReturnSuccessCallback(void)
 
 static u8 SaveErrorCallback(void)
 {
-    if (!IsTextPrinterActive(0))
+    if (!IsTextPrinterActiveOnWindow(0))
     {
         PlaySE(SE_BOO);
         sSaveDialogCallback = SaveReturnErrorCallback;
@@ -1495,7 +1540,7 @@ static void Task_SaveAfterLinkBattle(u8 taskId)
 static void ShowSaveInfoWindow(void)
 {
     struct WindowTemplate saveInfoWindow = sSaveInfoWindowTemplate;
-    u8 gender;
+    enum Gender gender;
     u8 color;
     u32 xOffset;
     u32 yOffset;
@@ -1512,9 +1557,7 @@ static void ShowSaveInfoWindow(void)
     color = TEXT_COLOR_RED;  // Red when female, blue when male.
 
     if (gender == MALE)
-    {
         color = TEXT_COLOR_BLUE;
-    }
 
     // Print region name
     yOffset = 1;

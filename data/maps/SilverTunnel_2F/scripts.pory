@@ -7,13 +7,13 @@ mapscripts SilverTunnel_2F_MapScripts {
 script SilverTunnel_2F_EventScript_Tama {
 	trainerbattle_double(
 		TRAINER_TAMA,
-		format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC EMOTE_NORMAL}The lack of precious gemstones here is disappointing!"),
+		format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}The lack of precious gemstones here is disappointing!"),
 		format("You shine like a diamond!"),
-		format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC EMOTE_NORMAL}My two Pokémon like to fight side by side. Come back with at least two Pokémon.")
+		format("{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}My two Pokémon like to fight side by side. Come back with at least two Pokémon.")
 	)
 	setspeaker(SP_NAME_GEM_MANIAC)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC EMOTE_NORMAL}I came all the way from Saberside Town looking for precious gemstones.\l"
+		"{CREATE_MUGSHOT MUGSHOT_GEM_MANIAC 0}I came all the way from Saberside Town looking for precious gemstones.\l"
 		"But there's only sad, grey rocks here…"
 	), MSGBOX_AUTOCLOSE)
 	end
@@ -22,12 +22,12 @@ script SilverTunnel_2F_EventScript_Tama {
 script SilverTunnel_2F_EventScript_Kansaku {
 	trainerbattle_single(
 		TRAINER_IKUTO,
-		format("{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}You scared me! I'll break your head!"),
+		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}You scared me! I'll break your head!"),
 		format("What a headache!")
 	)
 	setspeaker(SP_NAME_MINER)
 	setnamedmon(SPECIES_ONIX)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}Onix is the best!\nSure, she causes cave-ins sometimes, but that's not important!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Onix is the best!\nSure, she causes cave-ins sometimes, but that's not important!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -50,7 +50,7 @@ script SilverTunnel_2F_EventScript_Miner {
     faceplayer
     setspeaker(SP_NAME_MINER)
     msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}Sandslash is such a good partner for Miners!\p"
+		"{CREATE_MUGSHOT MUGSHOT_MINER 0}Sandslash is such a good partner for Miners!\p"
 		"It curls into a ball and rolls into walls to break 'em, then it burrows in there with its claws.\p"
 		"Ain't that right, Sandy?"
     ))

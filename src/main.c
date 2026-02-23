@@ -38,9 +38,9 @@ static void IntrDummy(void);
 extern void gInitialMainCB2(void);
 extern void CB2_FlashNotDetectedScreen(void);
 
-const u8 gGameVersion = GAME_VERSION;
+const enum GameVersion gGameVersion = GAME_VERSION;
 
-const u8 gGameLanguage = GAME_LANGUAGE; // English
+const enum Language gGameLanguage = GAME_LANGUAGE; // English
 
 const char BuildDateTime[] = "2005 02 21 11:10";
 
@@ -191,6 +191,8 @@ static void CallCallbacks(void)
 
 void SetMainCallback2(MainCallback callback)
 {
+    if (callback != CB2_Overworld)
+        gMain.isDialogActiveInOverworld = FALSE;
     gMain.callback2 = callback;
     gMain.state = 0;
 }
@@ -461,4 +463,9 @@ void ClearPokemonCrySongs(void)
 bool32 InBattle(void)
 {
     return gMain.inBattle;
+}
+
+bool32 InOverworld(void)
+{
+    return gMain.callback2 == CB2_Overworld;
 }

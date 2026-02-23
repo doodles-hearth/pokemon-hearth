@@ -6,7 +6,7 @@ script MaguroHarbor_House2_OldMan {
 	lock
     faceplayer
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN EMOTE_NORMAL}{SPEAKER NAME_OLD_MAN}When I was a youngun like you, I used to fish in the Icy Isles.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}When I was a youngun like you, I used to fish in the Icy Isles.\p"
 		"The water was so cold, it'd freeze your beard right up!"
 	))
 	closemessage
@@ -20,12 +20,12 @@ script MaguroHarbor_House2_MyBrother {
     gettimeofday
 	if (var(VAR_0x8000) == TIME_EVENING || var(VAR_0x8000) == TIME_NIGHT || var(VAR_0x8000) == TIME_DEAD_NIGHT) {
 		msgbox(format(
-            // TODO {CREATE_MUGSHOT MUGSHOT_FISHERMAN EMOTE_NORMAL}
+            // TODO {CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}
             "{SPEAKER NAME_FISHERMAN}Another day, another safe return from the merciless ocean waves."
 	    ))
 	} else {
 		msgbox(format(
-            // TODO {CREATE_MUGSHOT MUGSHOT_FISHERMAN EMOTE_NORMAL}
+            // TODO {CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}
             "{SPEAKER NAME_FISHERMAN}My brother has gone to the Angler's Shrine.\p"
             "He makes offerings and asks for our safekeeping when we're at sea."
 	    ))

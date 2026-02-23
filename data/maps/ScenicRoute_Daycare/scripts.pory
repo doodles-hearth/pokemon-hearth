@@ -1,0 +1,288 @@
+const FLAG_HIDE_DAYCARE_EGG_GIRL = FLAG_TEMP_1
+
+mapscripts ScenicRoute_Daycare_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		getweekday
+		if (var(VAR_RESULT) != WEEKDAY_TUE && var(VAR_RESULT) != WEEKDAY_FRI) {
+			setflag(FLAG_HIDE_DAYCARE_EGG_GIRL)
+		}
+	}
+}
+
+script ScenicRoute_Daycare_EventScript_DaycareWoman {
+	lock
+	faceplayer
+	specialvar(VAR_RESULT, GetDaycareState)
+	if (var(VAR_RESULT) == DAYCARE_EGG_WAITING) {
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Ah, it's you.\nMy husband wanted to see you."
+		))
+	} elif (var(VAR_RESULT) == DAYCARE_ONE_MON) {
+		call(ScenicRoute_Daycare_EventScript_OneMonInDaycare)
+	} elif (var(VAR_RESULT) == DAYCARE_TWO_MONS) {
+		call(ScenicRoute_Daycare_EventScript_TwoMonsInDaycare)
+	} else {
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Hello, and welcome to the Pokémon\nDaycare. We raise Pokémon for you.\p"
+			"Want us to raise one of your Pokémon?"
+		))
+		mcdialogueB("Yes please!", "No need.")
+		closemessage
+
+		if (var(VAR_RESULT) == 0) {
+			call(ScenicRoute_Daycare_EventScript_GiveMonToRaise)
+		} else {
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Thank you, come again!"
+			))
+			closemessage
+		}
+	}
+	release
+}
+
+script ScenicRoute_Daycare_EventScript_OneMonInDaycare {
+	msgbox(ScenicRoute_Daycare_Text_PokemonDoingGood)
+	setvar(VAR_0x8004, 0)
+	
+	specialvar(VAR_RESULT, GetNumLevelsGainedFromDaycare)
+	if (var(VAR_RESULT) != 0) {
+		msgbox(format(
+			"Your {STR_VAR_1} has gained\n"
+			"{STR_VAR_2} levels."
+		))
+	}
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}We can raise two of your Pokémon.\n"
+		"Would you like us to raise one more?"
+	))
+	mcdialogueB("Yes!", "Nah.")
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		call(ScenicRoute_Daycare_EventScript_GiveMonToRaise)
+	} else {
+		call(ScenicRoute_Daycare_EventScript_WillYouTakeYourMonBack)
+	}
+}
+
+script ScenicRoute_Daycare_EventScript_WillYouTakeYourMonBack {
+	msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Will you take your Pokémon back?")
+	mcdialogueB("Yes please!", "Not yet.")
+
+	if (var(VAR_RESULT) == 0) {
+		call(ScenicRoute_Daycare_EventScript_TryRetrieveMon)
+	} else {
+		call(ScenicRoute_Daycare_EventScript_ComeAgain)	
+	}
+}
+
+script ScenicRoute_Daycare_EventScript_TwoMonsInDaycare {
+	msgbox(ScenicRoute_Daycare_Text_PokemonDoingGood)
+
+	setvar(VAR_0x8004, 0)
+	call(ScenicRoute_Daycare_EventScript_DisplayLevelsGained)
+
+	setvar(VAR_0x8004, 1)
+	call(ScenicRoute_Daycare_EventScript_DisplayLevelsGained)
+	
+	call(ScenicRoute_Daycare_EventScript_WillYouTakeYourMonBack)
+}
+
+script ScenicRoute_Daycare_EventScript_TryRetrieveMon {
+	specialvar(VAR_RESULT, CalculatePlayerPartyCount)
+	if (var(VAR_RESULT) == PARTY_SIZE) {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Where will you put this Pokémon?\nCome back with more room!"
+		)
+		closemessage
+	} else {
+		specialvar(VAR_RESULT, GetDaycareState)
+		setvar(VAR_0x8004, 0)
+		if (var(VAR_RESULT) == DAYCARE_ONE_MON) {
+			call(ScenicRoute_Daycare_EventScript_CostPrompt)
+		} else {
+			special(ShowDaycareLevelMenu)
+			waitstate
+			copyvar(VAR_0x8004, VAR_RESULT)
+			if (var(VAR_RESULT) == DAYCARE_EXITED_LEVEL_MENU) {
+				call(ScenicRoute_Daycare_EventScript_ComeAgain)
+			} else {
+				call(ScenicRoute_Daycare_EventScript_CostPrompt)
+			}
+		}
+	}
+}
+
+script ScenicRoute_Daycare_EventScript_GiveMonToRaise {
+	specialvar(VAR_RESULT, CountPartyNonEggMons)
+	if (var(VAR_RESULT) == 1) {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Oh? But you have just one\nPokémon.\p"
+			"Come back another time."
+		)
+		closemessage
+	} else {
+		specialvar(VAR_RESULT, CountPartyAliveNonEggMons)
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Which Pokémon should we raise for\nyou?"
+		)
+
+		fadescreen(FADE_TO_BLACK)
+		special(ChooseSendDaycareMon)
+		waitstate
+
+		if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+			call(ScenicRoute_Daycare_EventScript_ComeAgain)
+		} else {
+			specialvar(VAR_RESULT, CountPartyAliveNonEggMons_IgnoreVar0x8004Slot)
+			if (var(VAR_RESULT) == 0) {
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}That would leave you Pokémon-less!\nHow will you defend yourself?"
+				))
+				closemessage
+			} else {
+				specialvar(VAR_0x8005, GetSelectedMonNicknameAndSpecies)
+				waitse
+				playmoncry(VAR_0x8005, CRY_MODE_NORMAL)
+				msgbox(
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Fine, we'll raise your {STR_VAR_1}\n"
+					"for a while.\p"
+					"Come back for it later."
+				)
+				waitmoncry
+				closemessage
+				
+				special(StoreSelectedPokemonInDaycare)
+				callnative(UpdateFollowingPokemon)
+				incrementgamestat(GAME_STAT_USED_DAYCARE)
+				specialvar(VAR_RESULT, GetDaycareState)
+				if (var(VAR_RESULT) == DAYCARE_ONE_MON) {
+					msgbox(
+						"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}We can raise two of your Pokémon.\n"
+						"Would you like us to raise one more?"
+					)
+					mcdialogueB("Yes.", "No.")
+					closemessage
+					
+					if (var(VAR_RESULT) == 0) {
+						goto(ScenicRoute_Daycare_EventScript_GiveMonToRaise)
+					}
+
+					call(ScenicRoute_Daycare_EventScript_ComeAgain)
+				}
+			}
+		}
+	}
+}
+
+script ScenicRoute_Daycare_EventScript_ComeAgain {
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Alright, you take care now."
+	))
+	closemessage
+}
+
+script ScenicRoute_Daycare_EventScript_DisplayLevelsGained {
+	specialvar(VAR_RESULT, GetNumLevelsGainedFromDaycare)
+	if (var(VAR_RESULT) != 0) {
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Your {STR_VAR_1} has gained\n"
+			"{STR_VAR_2} levels."
+		))
+	}
+}
+
+script ScenicRoute_Daycare_EventScript_CostPrompt {
+	special(GetDaycareCost)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}If you want your {STR_VAR_1} back,\n"
+		"it will cost ¥{STR_VAR_2}."
+	)
+	mcdialogueB("Here!", "Changed my mind.")
+	closemessage
+
+	if (var(VAR_RESULT) == 0) {
+		specialvar(VAR_RESULT, IsEnoughForCostInVar0x8005)
+		if (var(VAR_RESULT)) {
+			applymovement(LOCALID_SCENIC_DAYCARE_LADY, moves(
+					delay_16 * 2,
+					face_left,
+					delay_16,
+					face_left,
+					delay_16 * 2,
+					face_right,
+					delay_16 * 2,
+					walk_in_place_fast_up,
+					set_invisible,
+					delay_16 * 5,
+					face_down,
+					set_visible,
+					delay_16
+			))
+			waitmovement(0)
+
+			specialvar(VAR_RESULT, TakePokemonFromDaycare)
+			special(SubtractMoneyFromVar0x8005)
+			playse(SE_SHOP)
+			msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Perfect! Here's your Pokémon.")
+			waitse
+			closemessage
+			playmoncry(VAR_RESULT, CRY_MODE_NORMAL)
+			msgbox(
+				"{PLAYER} took back {STR_VAR_1} from\n"
+				"the daycare lady."
+			)
+			waitmoncry
+			closemessage
+			specialvar(VAR_RESULT, GetDaycareState)
+			if (var(VAR_RESULT) == DAYCARE_ONE_MON) {
+				msgbox(
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Will you take back the other one,\n"
+					"too?"
+				)
+				mcdialogueB("Yes!", "No need!")
+
+				if (var(VAR_RESULT) == 0) {
+					goto(ScenicRoute_Daycare_EventScript_TryRetrieveMon)
+				} else {
+					call(ScenicRoute_Daycare_EventScript_ComeAgain)
+				}
+			}
+		} else {
+			msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}You don't have enough money…")
+			closemessage
+		}
+	}
+}
+
+script ScenicRoute_Daycare_EventScript_Nidoran {
+	lock
+    faceplayer
+	setseenmon(SPECIES_NIDORAN)
+	setspeakertomonname(SPECIES_NIDORAN)
+	playmoncry(SPECIES_NIDORAN, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Snort!"
+    ))
+    waitmoncry
+    release
+}
+
+script ScenicRoute_Daycare_EventScript_NidoranF {
+	lock
+    faceplayer
+	setseenmon(SPECIES_NIDORAN)
+	setspeakertomonname(SPECIES_NIDORAN)
+	playmoncry(SPECIES_NIDORAN_F, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Snff!"
+    ))
+    waitmoncry
+    release
+}
+
+text ScenicRoute_Daycare_Text_PokemonDoingGood {
+	"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}Ah, it's you! Good to see you.\nYour Pokémon can only be doing good!"
+}

@@ -171,7 +171,7 @@ Route104_EventScript_BattleMayTorchic::
 	end
 
 Route104_EventScript_BattleMayMudkip::
-	trainerbattle_no_intro TRAINER_RIVAL_SAKU_FROAKIE, Route104_Text_MayDefeat
+	trainerbattle_no_intro TRAINER_RIVAL_SAKU_SQUIRTLE, Route104_Text_MayDefeat
 	setflag FLAG_DEFEATED_RIVAL_ROUTE_104
 	goto Route104_EventScript_MayDefeated
 	end

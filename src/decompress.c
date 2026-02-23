@@ -4,6 +4,7 @@
 #include "decompress.h"
 #include "decompress_error_handler.h"
 #include "pokemon.h"
+#include "pokemon_spots.h"
 #include "pokemon_sprite_visualizer.h"
 #include "text.h"
 #include "menu.h"
@@ -251,7 +252,12 @@ void DecompressPicFromTable(const struct CompressedSpriteSheet *src, void *buffe
 
 void HandleLoadSpecialPokePic(bool32 isFrontPic, void *dest, s32 species, u32 personality)
 {
-    LoadSpecialPokePic(dest, species, personality, isFrontPic);
+    LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, FALSE);
+}
+
+void HandleLoadSpecialPokePicIsEgg(bool32 isFrontPic, void *dest, s32 species, u32 personality, bool32 isEgg)
+{
+    LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, isEgg);
 }
 
 //  Wrapper function for all decompression calls using formats with headers
@@ -1126,11 +1132,23 @@ static bool32 isModeSymDelta(enum CompressionMode mode)
 
 void LoadSpecialPokePic(void *dest, s32 species, u32 personality, bool8 isFrontPic)
 {
+    LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, FALSE);
+}
+
+void LoadSpecialPokePicIsEgg(void *dest, s32 species, u32 personality, bool8 isFrontPic, bool32 isEgg)
+{
     species = SanitizeSpeciesId(species);
     if (species == SPECIES_UNOWN)
         species = GetUnownSpeciesId(personality);
 
-    if (isFrontPic)
+    if (isEgg)
+    {
+        if (gSpeciesInfo[species].eggId != EGG_ID_NONE)
+            DecompressDataWithHeaderWram(gEggDatas[gSpeciesInfo[species].eggId].eggSprite, dest);
+        else
+            DecompressDataWithHeaderWram(gSpeciesInfo[SPECIES_EGG].frontPic, dest);
+    }
+    else if (isFrontPic)
     {
     #if P_GENDER_DIFFERENCES
         if (gSpeciesInfo[species].frontPicFemale != NULL && IsPersonalityFemale(species, personality))
@@ -1155,15 +1173,8 @@ void LoadSpecialPokePic(void *dest, s32 species, u32 personality, bool8 isFrontP
             DecompressDataWithHeaderWram(gSpeciesInfo[SPECIES_NONE].backPic, dest);
     }
 
-    if (species == SPECIES_SPINDA && isFrontPic)
-    {
-        DrawSpindaSpots(personality, dest, FALSE);
-        DrawSpindaSpots(personality, dest, TRUE);
-    }
-    else if (species == SPECIES_GYARADOS && isFrontPic) {
-        DrawKoiGyaradosSpots(personality, dest, FALSE);
-        DrawKoiGyaradosSpots(personality, dest, TRUE);
-    }
+    if (ShouldDrawSpotsOnSpecies(species) && isFrontPic)
+        DrawPokemonSpotsBothFrames(personality, gSpeciesInfo[species].monSpotTemplate, dest);
 }
 
 void Unused_DecompressDataWithHeaderWramIndirect(const void **src, void *dest)
@@ -1380,19 +1391,19 @@ bool8 LoadCompressedSpriteSheetUsingHeap(const struct CompressedSpriteSheet *src
     return FALSE;
 }
 
-u32 LoadUniqueSpritePalette(const struct SpritePalette *src, u16 species, u32 personality, bool8 isShiny)
+u32 LoadUniqueSpritePalette(const struct SpritePalette *src, u16 species, u32 coloration, bool8 isShiny)
 {
-    return LoadUniqueSpritePaletteWithTag(src->data, src->tag, species, personality, isShiny);
+    return LoadUniqueSpritePaletteWithTag(src->data, src->tag, species, coloration, isShiny);
 }
 
-u32 LoadUniqueSpritePaletteWithTag(const u16 *pal, u16 tag, u16 species, u32 personality, bool8 isShiny)
+u32 LoadUniqueSpritePaletteWithTag(const u16 *pal, u16 tag, u16 species, u32 coloration, bool8 isShiny)
 {
     u32 index;
     struct SpritePalette dest;
 
     dest.data = pal;
     dest.tag = tag;
-    index = LoadUniqueSpritePaletteSprite(&dest, species, personality, isShiny);
+    index = LoadUniqueSpritePaletteSprite(&dest, species, coloration, isShiny);
     return index;
 }
 

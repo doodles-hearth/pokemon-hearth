@@ -2,6 +2,7 @@
 #define GUARD_CONSTANTS_OPPONENTS_H
 
 #include "constants/battle_partner.h"
+#include "constants/opponents_frlg.h"
 
 #define TRAINER_NONE                          0
 #define TRAINER_SAWYER_1                      1
@@ -20,12 +21,12 @@
 #define TRAINER_YAMATO                       14
 #define TRAINER_ROCK_SMASH_GUY               15
 #define TRAINER_ASAGAO                       16
-#define TRAINER_GRUNT_WEATHER_INST_1         17
-#define TRAINER_GRUNT_WEATHER_INST_2         18
-#define TRAINER_GRUNT_WEATHER_INST_3         19
-#define TRAINER_GRUNT_MUSEUM_1               20
-#define TRAINER_GRUNT_MUSEUM_2               21
-#define TRAINER_GRUNT_SPACE_CENTER_1         22
+#define TRAINER_DAICHI                       17
+#define TRAINER_HAGANE                       18
+#define TRAINER_HARUKI                       19
+#define TRAINER_RYOUI                        20
+#define TRAINER_HARUTO                       21
+#define TRAINER_KOTARO                       22
 #define TRAINER_GRUNT_MT_PYRE_1              23
 #define TRAINER_GRUNT_MT_PYRE_2              24
 #define TRAINER_GRUNT_MT_PYRE_3              25
@@ -43,21 +44,21 @@
 #define TRAINER_ROSE_1                       37
 #define TRAINER_RIKU                         38
 #define TRAINER_TOMOMI                       39
-#define TRAINER_MASATO_2                       40
+#define TRAINER_MASATO_2                     40
 #define TRAINER_ROSE_3                       41
 #define TRAINER_ROSE_4                       42
 #define TRAINER_ROSE_5                       43
 #define TRAINER_DUSTY_1                      44
 #define TRAINER_YONO                         45
 #define TRAINER_SUMI                         46
-#define TRAINER_DUSTY_2                      47
-#define TRAINER_DUSTY_3                      48
-#define TRAINER_DUSTY_4                      49
-#define TRAINER_DUSTY_5                      50
-#define TRAINER_GABBY_AND_TY_1               51
-#define TRAINER_GABBY_AND_TY_2               52
-#define TRAINER_GABBY_AND_TY_3               53
-#define TRAINER_GABBY_AND_TY_4               54
+#define TRAINER_TETSUHIRO                    47
+#define TRAINER_KOTETSU                      48
+#define TRAINER_TETSUKO                      49
+#define TRAINER_TETSUYA                      50
+#define TRAINER_YUTETSU                      51
+#define TRAINER_GOTETSU                      52
+#define TRAINER_TETSUO                       53
+#define TRAINER_TETSU                        54
 #define TRAINER_GABBY_AND_TY_5               55
 #define TRAINER_GABBY_AND_TY_6               56
 #define TRAINER_LOLA_1                       57
@@ -271,7 +272,7 @@
 #define TRAINER_KOISHI_1                    265
 #define TRAINER_HANA_1                      266
 #define TRAINER_YUTAKA_1                   267
-#define TRAINER_FLANNERY_1                  268
+#define TRAINER_MASAMUNE_1                  268
 #define TRAINER_NORMAN_1                    269
 #define TRAINER_WINONA_1                    270
 #define TRAINER_TATE_AND_LIZA_1             271
@@ -535,7 +536,7 @@
 #define TRAINER_RIVAL_FIRST_BATTLE_SNIVY        529
 #define TRAINER_MAY_ROUTE_110_MUDKIP        530
 #define TRAINER_MAY_ROUTE_119_MUDKIP        531
-#define TRAINER_RIVAL_FIRST_BATTLE_FROAKIE       532
+#define TRAINER_RIVAL_FIRST_BATTLE_SQUIRTLE 532
 #define TRAINER_MAY_ROUTE_110_TREECKO       533
 #define TRAINER_MAY_ROUTE_119_TREECKO       534
 #define TRAINER_RIVAL_FIRST_BATTLE_CYNDAQUIL      535
@@ -603,7 +604,7 @@
 #define TRAINER_TABITHA_MT_CHIMNEY          597
 #define TRAINER_JONATHAN                    598
 #define TRAINER_BRENDAN_RUSTBORO_TORCHIC    599
-#define TRAINER_RIVAL_SAKU_FROAKIE         600
+#define TRAINER_RIVAL_SAKU_SQUIRTLE         600
 #define TRAINER_MAXIE_MAGMA_HIDEOUT         601
 #define TRAINER_MAXIE_MT_CHIMNEY            602
 #define TRAINER_CHIKAO                       603
@@ -785,10 +786,10 @@
 #define TRAINER_YUTAKA_3                   779
 #define TRAINER_YUTAKA_4                   780
 #define TRAINER_YUTAKA_5                   781
-#define TRAINER_FLANNERY_2                  782
-#define TRAINER_FLANNERY_3                  783
-#define TRAINER_FLANNERY_4                  784
-#define TRAINER_FLANNERY_5                  785
+#define TRAINER_MASAMUNE_2                  782
+#define TRAINER_MASAMUNE_3                  783
+#define TRAINER_MASAMUNE_4                  784
+#define TRAINER_MASAMUNE_5                  785
 #define TRAINER_NORMAN_2                    786
 #define TRAINER_NORMAN_3                    787
 #define TRAINER_NORMAN_4                    788
@@ -871,8 +872,16 @@
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      856
-#define MAX_TRAINERS_COUNT                  864
+#define TRAINERS_COUNT_EMERALD     856
+#define MAX_TRAINERS_COUNT_EMERALD 864
+
+#if IS_FRLG
+#define TRAINERS_COUNT                      TRAINERS_COUNT_FRLG
+#define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_FRLG
+#else
+#define TRAINERS_COUNT                      TRAINERS_COUNT_EMERALD
+#define MAX_TRAINERS_COUNT                  MAX_TRAINERS_COUNT_EMERALD
+#endif
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

@@ -1,7 +1,6 @@
 #include "global.h"
 #include "mail.h"
 #include "constants/items.h"
-#include "main.h"
 #include "overworld.h"
 #include "task.h"
 #include "scanline_effect.h"
@@ -86,6 +85,8 @@ static void CB2_MailRead(void);
 static void CB2_WaitForPaletteExitOnKeyPress(void);
 static void CB2_ExitOnKeyPress(void);
 static void CB2_ExitMailReadFreeVars(void);
+
+static const u8 sText_FromSpace[] = _("From ");
 
 static const struct BgTemplate sBgTemplates[] = {
     {
@@ -443,7 +444,7 @@ static const struct MailLayout sMailLayouts_Tall[] = {
     },
 };
 
-void ReadMail(struct Mail *mail, void (*exitCallback)(void), bool8 hasText)
+void ReadMail(struct Mail *mail, MainCallback exitCallback, bool8 hasText)
 {
     u16 buffer[2];
     u16 species;
@@ -656,7 +657,7 @@ static void BufferMailText(void)
     if (!sMailRead->international)
     {
         // Never reached
-        StringCopy(ptr, gText_FromSpace); // Odd, "From" text is already printed in PrintMailText
+        StringCopy(ptr, sText_FromSpace); // Odd, "From" text is already printed in PrintMailText
         sMailRead->signatureWidth = sMailRead->layout->signatureWidth - (StringLength(sMailRead->playerName) * 8 - 96);
     }
     else
@@ -688,7 +689,7 @@ static void PrintMailText(void)
         AddTextPrinterParameterized3(0, FONT_NORMAL, sMailRead->layout->lines[i].xOffset + sMailRead->layout->wordsXPos, y + sMailRead->layout->wordsYPos, sTextColors, 0, sMailRead->message[i]);
         y += sMailRead->layout->lines[i].height;
     }
-    bufptr = StringCopy(signature, gText_FromSpace);
+    bufptr = StringCopy(signature, sText_FromSpace);
     StringCopy(bufptr, sMailRead->playerName);
     box_x = GetStringCenterAlignXOffset(FONT_NORMAL, signature, sMailRead->signatureWidth) + 104;
     box_y = sMailRead->layout->signatureYPos + 88;

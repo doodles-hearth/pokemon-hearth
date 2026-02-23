@@ -17,6 +17,8 @@ static const u32 sFieldMugshotGfx_HanaNormal[] = INCBIN_U32("graphics/field_mugs
 
 static const u32 sFieldMugshotGfx_YutakaNormal[] = INCBIN_U32("graphics/field_mugshots/leader_yutaka/normal.4bpp.smol");
 
+static const u32 sFieldMugshotGfx_MasamuneNormal[] = INCBIN_U32("graphics/field_mugshots/leader_masamune/normal.4bpp.smol");
+
 static const u32 sFieldMugshotGfx_CrobatNormal[] = INCBIN_U32("graphics/field_mugshots/crobat/normal.4bpp.smol");
 
 static const u32 sFieldMugshotGfx_ZubatNormal[] = INCBIN_U32("graphics/field_mugshots/zubat/normal.4bpp.smol");
@@ -79,6 +81,10 @@ static const u32 sFieldMugshotGfx_GemManiacNormal[] = INCBIN_U32("graphics/field
 static const u32 sFieldMugshotGfx_MinerNormal[] = INCBIN_U32("graphics/field_mugshots/miner/normal.4bpp.smol");
 
 static const u32 sFieldMugshotGfx_GardenerNormal[] = INCBIN_U32("graphics/field_mugshots/gardener/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_FarmerNormal[] = INCBIN_U32("graphics/field_mugshots/farmer/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_BurglarNormal[] = INCBIN_U32("graphics/field_mugshots/burglar/normal.4bpp.smol");
 
 // Sunrise
 
@@ -288,6 +294,14 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_YutakaNormal,
+            .pal = gObjectEventPal_Npc_Woody,
+        },
+    },
+    [MUGSHOT_MASAMUNE] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_MasamuneNormal,
             .pal = gObjectEventPal_Npc_Woody,
         },
     },
@@ -523,6 +537,24 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_GardenerNormal,
             .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+    
+    [MUGSHOT_FARMER] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_FarmerNormal,
+            .pal = gObjectEventPal_Npc_Woody,
+        },
+    },
+    
+    [MUGSHOT_BURGLAR] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_BurglarNormal,
+            .pal = gObjectEventPal_Npc_Woody,
         },
     },
 

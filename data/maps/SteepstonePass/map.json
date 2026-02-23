@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_MT_KAZAN_EXTERIOR",
-      "offset": -65,
+      "offset": -40,
       "direction": "up"
     },
     {
@@ -24,16 +24,8 @@
       "direction": "down"
     }
   ],
-  "object_events": [
-
-  ],
-  "warp_events": [
-
-  ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "object_events": [],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
 }

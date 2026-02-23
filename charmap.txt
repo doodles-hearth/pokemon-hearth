@@ -436,10 +436,10 @@ DYNAMIC  =   F7
 
 @ more text functions
 
-COLOR = FC 01 @ use a color listed below right after
-HIGHLIGHT = FC 02 @ same as fc 01
-SHADOW = FC 03 @ same as fc 01
-COLOR_HIGHLIGHT_SHADOW = FC 04 @ takes 3 bytes
+COLOR = FC 01 @ use a color listed below right after. sets base text color
+HIGHLIGHT = FC 02 @ same as fc 01. sets background and accent color
+SHADOW = FC 03 @ same as fc 01. sets shadow color
+COLOR_HIGHLIGHT_SHADOW = FC 04 @ takes 3 colors
 PALETTE = FC 05 @ used in credits
 FONT = FC 06 @ Given a font id, or use font constants below instead
 RESET_FONT = FC 07
@@ -460,8 +460,12 @@ JPN = FC 15
 ENG = FC 16
 PAUSE_MUSIC = FC 17
 RESUME_MUSIC = FC 18
-CREATE_MUGSHOT = FC 19
-DESTROY_MUGSHOT = FC 1A
+SPEAKER = FC 19
+ACCENT = FC 1A @ same as FC 01. sets accent color
+BACKGROUND = FC 1B @ same as FC 01. sets background color
+TEXT_COLORS = FC 1C @ takes 3 colors: text base color, shadow and accent
+CREATE_MUGSHOT = FC 1D
+DESTROY_MUGSHOT = FC 1E
 
 @ these are basically what include/constants/field_mugshots.h have
 @ but without the x_COUNT and x_NONE ones for strings
@@ -612,12 +616,14 @@ MUGSHOT_IWA                 = 8D
 MUGSHOT_GEM_MANIAC          = 8E
 MUGSHOT_MINER               = 8F
 MUGSHOT_GARDENER            = 90
+MUGSHOT_FARMER              = 91
+MUGSHOT_BURGLAR             = 92
+MUGSHOT_MASAMUNE            = 93
 
 EMOTE_NORMAL = 00
 EMOTE_SEXY = 01
 
 @ mugshot stuff ends
-SPEAKER = FC 1B
 
 @ Speaker names, the order must be matching with include/constants/speaker_names.h
 NAME_NONE            = 00
@@ -692,16 +698,25 @@ NAME_YOUNGSTER       = 44
 NAME_BEAUTY          = 45
 NAME_NINJA_BOY       = 46
 NAME_HEX_MANIAC      = 47
-NAME_BUGCATCHER      = 48
-NAME_AROMA_LADY      = 49
-NAME_GARDENER        = 4A
-NAME_BREEDER         = 4B
-NAME_SWIMMER         = 4C
-NAME_HOT_SPRING_GAL  = 4D
-NAME_HOT_SPRING_GUY  = 4E
-NAME_GEM_MANIAC      = 4F
-NAME_SCHOOL_KID      = 50
-NAME_ASSISTANT    = 51
+NAME_BATTLE_GIRL     = 48
+NAME_BATTLE_GUY      = 49
+NAME_BUGCATCHER      = 4A
+NAME_AROMA_LADY      = 4B
+NAME_GARDENER        = 4C
+NAME_BREEDER         = 4D
+NAME_SWIMMER         = 4E
+NAME_HOT_SPRING_GAL  = 4F
+NAME_HOT_SPRING_GUY  = 50
+NAME_GEM_MANIAC      = 51
+NAME_SCHOOL_KID      = 52
+NAME_ASSISTANT       = 53
+NAME_MEDIUM          = 54
+NAME_BURGLAR         = 55
+NAME_SMITH           = 56
+NAME_SWORDSMAN       = 57
+NAME_LIBRARIAN       = 58
+NAME_ELDER_JOMON     = 59
+NAME_MEMORY_GIRL     = 5A
 
 @ fonts
 
@@ -714,6 +729,9 @@ FONT_NARROWER = FC 06 0A
 FONT_SMALL_NARROWER = FC 06 0B
 FONT_SHORT_NARROW = FC 06 0C
 FONT_SHORT_NARROWER = FC 06 0D
+
+FONT_MALE = FC 06 01
+FONT_FEMALE = FC 06 01
 
 @ colors
 

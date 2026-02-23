@@ -38,6 +38,7 @@
 #include "battle.h" // to get rid of later
 #include "constants/rgb.h"
 #include "party_menu.h"
+#include "overworld.h"
 
 #define GFXTAG_EGG       12345
 #define GFXTAG_EGG_SHARD 23456
@@ -169,9 +170,6 @@ static const struct SpriteTemplate sSpriteTemplate_Egg =
     .paletteTag = PALTAG_EGG,
     .oam = &sOamData_Egg,
     .anims = sSpriteAnimTable_Egg,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
 };
 
 static const struct OamData sOamData_EggShard =
@@ -229,8 +227,6 @@ static const struct SpriteTemplate sSpriteTemplate_EggShard =
     .paletteTag = PALTAG_EGG,
     .oam = &sOamData_EggShard,
     .anims = sSpriteAnimTable_EggShard,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_EggShard
 };
 
@@ -316,7 +312,7 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
     u32 personality, pokerus;
     enum PokeBall ball;
     u8 i, friendship, language, gameMet, markings, isModernFatefulEncounter;
-    u16 moves[MAX_MON_MOVES];
+    enum Move moves[MAX_MON_MOVES];
     u32 ivs[NUM_STATS];
 
     species = GetMonData(egg, MON_DATA_SPECIES);
@@ -337,8 +333,7 @@ static void CreateHatchedMon(struct Pokemon *egg, struct Pokemon *temp)
     isModernFatefulEncounter = GetMonData(egg, MON_DATA_MODERN_FATEFUL_ENCOUNTER);
     ball = GetMonData(egg, MON_DATA_POKEBALL);
 
-    CreateMon(temp, species, EGG_HATCH_LEVEL, USE_RANDOM_IVS, TRUE, personality, OT_ID_PLAYER_ID, 0);
-
+    CreateMonWithIVs(temp, species, EGG_HATCH_LEVEL, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
     for (i = 0; i < MAX_MON_MOVES; i++)
         SetMonData(temp, MON_DATA_MOVE1 + i,  &moves[i]);
 
@@ -365,7 +360,7 @@ static void AddHatchedMonToParty(u8 id)
     enum NationalDexOrder species;
     u8 name[POKEMON_NAME_LENGTH + 1];
     u16 metLevel;
-    u8 metLocation;
+    metloc_u8_t metLocation;
     struct Pokemon *mon = &gPlayerParty[id];
 
     CreateHatchedMon(mon, &gEnemyParty[0]);
@@ -387,6 +382,10 @@ static void AddHatchedMonToParty(u8 id)
 
     metLocation = GetCurrentRegionMapSectionId();
     SetMonData(mon, MON_DATA_MET_LOCATION, &metLocation);
+
+    if (metLocation == METLOC_DAYCARE_ADOPTION) {
+        IncrementGameStat(GAME_STAT_HATCHED_UNWANTED_EGG);
+    }
 
     MonRestorePP(mon);
     CalculateMonStats(mon);
@@ -445,10 +444,10 @@ static u8 EggHatchCreateMonSprite(u8 useAlt, u8 state, u8 partyId, u16 *speciesL
         // Load mon sprite gfx
         {
             u32 pid = GetMonData(mon, MON_DATA_PERSONALITY);
-            HandleLoadSpecialPokePic(TRUE,
+            HandleLoadSpecialPokePicIsEgg(TRUE,
                                      gMonSpritesGfxPtr->spritesGfx[(useAlt * 2) + B_POSITION_OPPONENT_LEFT],
-                                     species, pid);
-            LoadUniqueSpritePaletteWithTag(GetMonFrontSpritePal(mon), species, species, pid, IsMonShiny(mon));
+                                     species, pid, FALSE);
+            LoadUniqueSpritePaletteWithTag(GetMonFrontSpritePal(mon), species, species, GetMonData(mon, MON_DATA_COLORATION), IsMonShiny(mon));
             *speciesLoc = species;
         }
         break;
@@ -537,11 +536,43 @@ static void CB2_LoadEggHatch(void)
         gMain.state++;
         break;
     case 3:
-        LoadSpriteSheet(&sEggHatch_Sheet);
-        LoadSpriteSheet(&sEggShards_Sheet);
-        LoadSpritePalette(&sEgg_SpritePalette);
+    {
+        u32 species = GetMonData(&gPlayerParty[sEggHatchData->eggPartyId], MON_DATA_SPECIES);
+        if (gSpeciesInfo[species].eggId != EGG_ID_NONE)
+        {
+            u32 *tempSprite = malloc_and_decompress(gEggDatas[gSpeciesInfo[species].eggId].eggHatchGfx, NULL);
+            struct SpriteSheet tempSheet;
+            tempSheet.data = tempSprite;
+            tempSheet.size = 2048;
+            tempSheet.tag = GFXTAG_EGG;
+            LoadSpriteSheet(&tempSheet);
+            Free(tempSprite);
+
+            struct SpritePalette tempPal;
+            tempPal.data = gEggDatas[gSpeciesInfo[species].eggId].eggHatchPal;
+            tempPal.tag = PALTAG_EGG;
+            LoadSpritePalette(&tempPal);
+            if (gEggDatas[gSpeciesInfo[species].eggId].eggShardsGfx != NULL)
+            {
+                tempSheet.data = gEggDatas[gSpeciesInfo[species].eggId].eggShardsGfx;
+                tempSheet.size = 128;
+                tempSheet.tag = GFXTAG_EGG_SHARD;
+                LoadSpriteSheet(&tempSheet);
+            }
+            else
+            {
+                LoadSpriteSheet(&sEggShards_Sheet);
+            }
+        }
+        else
+        {
+            LoadSpriteSheet(&sEggHatch_Sheet);
+            LoadSpriteSheet(&sEggShards_Sheet);
+            LoadSpritePalette(&sEgg_SpritePalette);
+        }
         gMain.state++;
         break;
+    }
     case 4:
         CopyBgTilemapBufferToVram(0);
         AddHatchedMonToParty(sEggHatchData->eggPartyId);
@@ -677,7 +708,7 @@ static void CB2_EggHatch(void)
         break;
     case 9:
         // Print the nickname prompt
-        if (!IsTextPrinterActive(sEggHatchData->windowId))
+        if (!IsTextPrinterActiveOnWindow(sEggHatchData->windowId))
         {
             LoadUserWindowBorderGfx(sEggHatchData->windowId, 0x140, BG_PLTT_ID(14));
             CreateYesNoMenu(&sYesNoWinTemplate, 0x140, 0xE, 0);
@@ -946,4 +977,12 @@ u16 CountPartyAliveNonEggMons(void)
     u16 aliveNonEggMonsCount = CountStorageNonEggMons();
     aliveNonEggMonsCount += CountPartyAliveNonEggMonsExcept(PARTY_SIZE);
     return aliveNonEggMonsCount;
+}
+
+u32 GetEggCycleLength(void)
+{
+    if (P_EGG_CYCLE_LENGTH <= GEN_3 || P_EGG_CYCLE_LENGTH == GEN_7) return 256;
+    if (P_EGG_CYCLE_LENGTH == GEN_4) return 255;
+    if (P_EGG_CYCLE_LENGTH == GEN_5 || P_EGG_CYCLE_LENGTH == GEN_6) return 257;
+    if (P_EGG_CYCLE_LENGTH >= GEN_8) return 128;
 }

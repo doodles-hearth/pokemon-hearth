@@ -18,6 +18,20 @@ extern const u8 EventScript_FollowerLookAroundScared[];
 extern const u8 EventScript_FollowerDance[];
 extern const u8 EventScript_FollowerLookUp[];
 
+extern const u8 EventScript_CampfirePokingPlayer[];
+extern const u8 EventScript_CampfireLookAround[];
+extern const u8 EventScript_CampfireHopping[];
+extern const u8 EventScript_CampfireCuddling[];
+extern const u8 EventScript_CampfireFastHopping[];
+extern const u8 EventScript_CampfirePokeGround[];
+extern const u8 EventScript_CampfireLookAway[];
+extern const u8 EventScript_CampfireDance[];
+extern const u8 EventScript_CampfireLookAwayBark[];
+extern const u8 EventScript_CampfireDizzy[];
+extern const u8 EventScript_CampfireIsShivering[];
+extern const u8 EventScript_CampfireGetCloser[];
+extern const u8 EventScript_CampfireNostalgia[];
+
 // 'Generic', unconditional happy messages
 static const u8 sHappyMsg00[] = _("{STR_VAR_1} began poking you in the\nstomach.");
 static const u8 sHappyMsg01[] = _("{STR_VAR_1} is happy but shy.");
@@ -55,19 +69,19 @@ static const u8 sHappyMsg31[] = _("Your POKéMON seems happy about the\ngreat we
 static const u8 sHappyMsg32[] = _("{STR_VAR_1} is very composed and\nsure of itself!");
 
 const struct FollowerMsgInfo gFollowerHappyMessages[] = {
-    {sHappyMsg00, EventScript_FollowerPokingPlayer},
+    {sHappyMsg00, EventScript_FollowerPokingPlayer, EventScript_CampfirePokingPlayer},
     {sHappyMsg01}, {sHappyMsg02}, {sHappyMsg03}, {sHappyMsg04}, {sHappyMsg05}, {sHappyMsg06}, {sHappyMsg07},
-    {sHappyMsg08, EventScript_FollowerLookAround},
-    {sHappyMsg09, EventScript_FollowerHopping},
+    {sHappyMsg08, EventScript_FollowerLookAround, EventScript_CampfireLookAround},
+    {sHappyMsg09, EventScript_FollowerHopping, EventScript_CampfireHopping},
     {sHappyMsg10}, {sHappyMsg11},
-    {sHappyMsg12, EventScript_FollowerPokingPlayer},
-    {sHappyMsg13, EventScript_FollowerLookAround},
+    {sHappyMsg12, EventScript_FollowerPokingPlayer, EventScript_CampfirePokingPlayer},
+    {sHappyMsg13, EventScript_FollowerLookAround, EventScript_CampfireLookAround},
     {sHappyMsg14}, {sHappyMsg15},
-    {sHappyMsg16, EventScript_FollowerCuddling},
+    {sHappyMsg16, EventScript_FollowerCuddling, EventScript_CampfireCuddling},
     {sHappyMsg17}, {sHappyMsg18},
-    {sHappyMsg19, EventScript_FollowerFastHopping},
+    {sHappyMsg19, EventScript_FollowerFastHopping, EventScript_CampfireFastHopping},
     {sHappyMsg20}, {sHappyMsg21}, {sHappyMsg22}, {sHappyMsg23}, {sHappyMsg24}, {sHappyMsg25}, {sHappyMsg26}, {sHappyMsg27}, {sHappyMsg28}, {sHappyMsg29},
-    {sHappyMsg30, EventScript_FollowerCuddling},
+    {sHappyMsg30, EventScript_FollowerCuddling, EventScript_CampfireCuddling},
     {sHappyMsg31}, {sHappyMsg32},
 };
 
@@ -88,18 +102,18 @@ static const u8 sNeutralMsg12[] = _("{STR_VAR_1} is on the lookout!");
 static const u8 sNeutralMsg13[] = _("{STR_VAR_1} looked off into the\ndistance and barked!");
 
 const struct FollowerMsgInfo gFollowerNeutralMessages[] = {
-    {sNeutralMsg00, EventScript_FollowerPokeGround},
+    {sNeutralMsg00, EventScript_FollowerPokeGround, EventScript_CampfirePokeGround},
     {sNeutralMsg01},
-    {sNeutralMsg02, EventScript_FollowerLookAway},
-    {sNeutralMsg03, EventScript_FollowerLookAround},
+    {sNeutralMsg02, EventScript_FollowerLookAway, EventScript_CampfireLookAway},
+    {sNeutralMsg03, EventScript_FollowerLookAround, EventScript_CampfireLookAround},
     {sNeutralMsg04},
-    {sNeutralMsg05, EventScript_FollowerLookAround},
+    {sNeutralMsg05, EventScript_FollowerLookAround, EventScript_CampfireLookAround},
     {sNeutralMsg06}, {sNeutralMsg07}, {sNeutralMsg08},
-    {sNeutralMsg09, EventScript_FollowerDance},
+    {sNeutralMsg09, EventScript_FollowerDance, EventScript_CampfireDance},
     {sNeutralMsg10},
-    {sNeutralMsg11, EventScript_FollowerLookAway},
+    {sNeutralMsg11, EventScript_FollowerLookAway, EventScript_CampfireLookAway},
     {sNeutralMsg12},
-    {sNeutralMsg13, EventScript_FollowerLookAwayBark},
+    {sNeutralMsg13, EventScript_FollowerLookAwayBark, EventScript_CampfireLookAwayBark},
 };
 
 // Unconditional sad messages
@@ -114,7 +128,7 @@ static const u8 sSadMsg06[] = _("{STR_VAR_1} is trying very hard to\nkeep up wit
 static const u8 sSadMsg07[] = _("{STR_VAR_1} is nervous.");
 
 const struct FollowerMsgInfo gFollowerSadMessages[] = {
-    {sSadMsg00, EventScript_FollowerDizzy},
+    {sSadMsg00, EventScript_FollowerDizzy, EventScript_CampfireDizzy},
     {sSadMsg01}, {sSadMsg02},
     {sSadMsg03}, {sSadMsg04}, {sSadMsg05}, {sSadMsg06}, {sSadMsg07},
 };
@@ -128,7 +142,7 @@ static const u8 sUpsetMsg03[] = _("{STR_VAR_1} is taking shelter in the\ngrass f
 
 const struct FollowerMsgInfo gFollowerUpsetMessages[] = {
     {sUpsetMsg00}, {sUpsetMsg01},
-    {sUpsetMsg02, EventScript_FollowerIsShivering},
+    {sUpsetMsg02, EventScript_FollowerIsShivering, EventScript_CampfireIsShivering},
     {sUpsetMsg03},
 };
 
@@ -141,7 +155,7 @@ static const u8 sAngryMsg04[] = _("{STR_VAR_1} cried out.");
 
 const struct FollowerMsgInfo gFollowerAngryMessages[] = {
     {sAngryMsg00}, {sAngryMsg01}, {sAngryMsg02},
-    {sAngryMsg03, EventScript_FollowerLookAway},
+    {sAngryMsg03, EventScript_FollowerLookAway, EventScript_CampfireLookAway},
     {sAngryMsg04},
 };
 
@@ -169,13 +183,13 @@ static const u8 sPensiveMsg19[] = _("{STR_VAR_1} is staring straight into\nyour 
 
 const struct FollowerMsgInfo gFollowerPensiveMessages[] = {
     {sPensiveMsg00},
-    {sPensiveMsg01, EventScript_FollowerLookAround},
+    {sPensiveMsg01, EventScript_FollowerLookAround, EventScript_CampfireLookAround},
     {sPensiveMsg02}, {sPensiveMsg03}, {sPensiveMsg04},
-    {sPensiveMsg05, EventScript_FollowerLookAround},
+    {sPensiveMsg05, EventScript_FollowerLookAround, EventScript_CampfireLookAround},
     {sPensiveMsg06}, {sPensiveMsg07}, {sPensiveMsg08}, {sPensiveMsg09}, {sPensiveMsg10},
-    {sPensiveMsg11, EventScript_FollowerLookAway},
-    {sPensiveMsg12, EventScript_FollowerPokeGround},
-    {sPensiveMsg13, EventScript_FollowerLookAway},
+    {sPensiveMsg11, EventScript_FollowerLookAway, EventScript_CampfireLookAway},
+    {sPensiveMsg12, EventScript_FollowerPokeGround, EventScript_CampfirePokeGround},
+    {sPensiveMsg13, EventScript_FollowerLookAway, EventScript_CampfireLookAway},
     {sPensiveMsg14}, {sPensiveMsg15}, {sPensiveMsg16}, {sPensiveMsg17}, {sPensiveMsg18}, {sPensiveMsg19},
 };
 
@@ -192,15 +206,15 @@ static const u8 sLoveMsg08[] = _("{STR_VAR_1} got closer to you.");
 static const u8 sLoveMsg09[] = _("{STR_VAR_1} is keeping close to your\nfeet.");
 
 const struct FollowerMsgInfo gFollowerLoveMessages[] = {
-    {sLoveMsg00, EventScript_FollowerGetCloser},
+    {sLoveMsg00, EventScript_FollowerGetCloser, EventScript_CampfireGetCloser},
     {sLoveMsg01},
-    {sLoveMsg02, EventScript_FollowerCuddling},
+    {sLoveMsg02, EventScript_FollowerCuddling, EventScript_CampfireCuddling},
     {sLoveMsg03},
-    {sLoveMsg04, EventScript_FollowerCuddling},
+    {sLoveMsg04, EventScript_FollowerCuddling, EventScript_CampfireCuddling},
     {sLoveMsg05},
-    {sLoveMsg06, EventScript_FollowerCuddling},
+    {sLoveMsg06, EventScript_FollowerCuddling, EventScript_CampfireCuddling},
     {sLoveMsg07},
-    {sLoveMsg08, EventScript_FollowerGetCloser},
+    {sLoveMsg08, EventScript_FollowerGetCloser, EventScript_CampfireGetCloser},
     {sLoveMsg09},
 };
 
@@ -230,16 +244,16 @@ static const u8 sSurpriseMsg20[] = _("{STR_VAR_1} seems to be very\nsurprised th
 
 const struct FollowerMsgInfo gFollowerSurpriseMessages[] = {
     {sSurpriseMsg00},
-    {sSurpriseMsg01, EventScript_FollowerPokingPlayer},
+    {sSurpriseMsg01, EventScript_FollowerPokingPlayer, EventScript_CampfirePokingPlayer},
     {sSurpriseMsg02}, {sSurpriseMsg03}, {sSurpriseMsg04}, {sSurpriseMsg05}, {sSurpriseMsg06},
-    {sSurpriseMsg07, EventScript_FollowerLookAwayBark},
-    {sSurpriseMsg08, EventScript_FollowerLookAway},
+    {sSurpriseMsg07, EventScript_FollowerLookAwayBark, EventScript_CampfireLookAwayBark},
+    {sSurpriseMsg08, EventScript_FollowerLookAway, EventScript_CampfireLookAway},
     {sSurpriseMsg09},
-    {sSurpriseMsg10, EventScript_FollowerLookAround},
+    {sSurpriseMsg10, EventScript_FollowerLookAround, EventScript_CampfireLookAround},
     {sSurpriseMsg11}, {sSurpriseMsg12}, {sSurpriseMsg13}, {sSurpriseMsg14}, {sSurpriseMsg15}, {sSurpriseMsg16},
-    {sSurpriseMsg17, EventScript_FollowerCuddling},
+    {sSurpriseMsg17, EventScript_FollowerCuddling, EventScript_CampfireCuddling},
     {sSurpriseMsg18},
-    {sSurpriseMsg19, EventScript_FollowerLookAround},
+    {sSurpriseMsg19, EventScript_FollowerLookAround, EventScript_CampfireLookAround},
     {sSurpriseMsg20},
 };
 
@@ -253,10 +267,10 @@ static const u8 sCuriousMsg05[] = _("{STR_VAR_1} is sniffing at you.");
 static const u8 sCuriousMsg06[] = _("{STR_VAR_1} seems to be a little\nhesitant…");
 
 const struct FollowerMsgInfo gFollowerCuriousMessages[] = {
-    {sCuriousMsg00, EventScript_FollowerLookAround},
-    {sCuriousMsg01, EventScript_FollowerPokingPlayer},
+    {sCuriousMsg00, EventScript_FollowerLookAround, EventScript_CampfireLookAround},
+    {sCuriousMsg01, EventScript_FollowerPokingPlayer, EventScript_CampfirePokingPlayer},
     {sCuriousMsg02}, {sCuriousMsg03},
-    {sCuriousMsg04, EventScript_FollowerLookAround},
+    {sCuriousMsg04, EventScript_FollowerLookAround, EventScript_CampfireLookAround},
     {sCuriousMsg05}, {sCuriousMsg06},
 };
 
@@ -279,17 +293,17 @@ static const u8 sMusicMsg13[] = _("Your POKéMON seems to be smelling a\nnostalg
 static const u8 sMusicMsg14[] = _("{STR_VAR_1} is very happy about the\nrain.");
 
 const struct FollowerMsgInfo gFollowerMusicMessages[] = {
-    {sMusicMsg00, EventScript_FollowerLookAround},
+    {sMusicMsg00, EventScript_FollowerLookAround, EventScript_CampfireLookAround},
     {sMusicMsg01},
-    {sMusicMsg02, EventScript_FollowerDance},
+    {sMusicMsg02, EventScript_FollowerDance, EventScript_CampfireDance},
     {sMusicMsg03},
-    {sMusicMsg04, EventScript_FollowerHopping},
-    {sMusicMsg05, EventScript_FollowerHopping},
+    {sMusicMsg04, EventScript_FollowerHopping, EventScript_CampfireHopping},
+    {sMusicMsg05, EventScript_FollowerHopping, EventScript_CampfireHopping},
     {sMusicMsg06}, {sMusicMsg07}, {sMusicMsg08}, {sMusicMsg09},
-    {sMusicMsg10, EventScript_FollowerDance},
+    {sMusicMsg10, EventScript_FollowerDance, EventScript_CampfireDance},
     {sMusicMsg11},
-    {sMusicMsg12, EventScript_FollowerHopping},
-    {sMusicMsg13, EventScript_FollowerNostalgia},
+    {sMusicMsg12, EventScript_FollowerHopping, EventScript_CampfireHopping},
+    {sMusicMsg13, EventScript_FollowerNostalgia, EventScript_CampfireNostalgia},
     {sMusicMsg14}
 };
 
@@ -297,5 +311,5 @@ const struct FollowerMsgInfo gFollowerMusicMessages[] = {
 static const u8 sPoisonedMsg00[] = _("{STR_VAR_1} is shivering with the\neffects of being poisoned.");
 
 const struct FollowerMsgInfo gFollowerPoisonedMessages[] = {
-    {sPoisonedMsg00, EventScript_FollowerIsShivering},
+    {sPoisonedMsg00, EventScript_FollowerIsShivering, EventScript_CampfireIsShivering},
 };

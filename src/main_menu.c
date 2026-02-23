@@ -18,6 +18,7 @@
 #include "list_menu.h"
 #include "mystery_event_menu.h"
 #include "naming_screen.h"
+#include "oak_speech.h"
 #include "option_menu.h"
 #include "overworld.h"
 #include "palette.h"
@@ -199,7 +200,6 @@ static void Task_NewGameBirchSpeech_WaitToShowBirch(u8);
 static void NewGameBirchSpeech_StartFadeInTarget1OutTarget2(u8, u8);
 static void NewGameBirchSpeech_StartFadePlatformOut(u8, u8);
 static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8);
-static void NewGameBirchSpeech_ShowDialogueWindow(u8, u8);
 static void NewGameBirchSpeech_ClearWindow(u8);
 static void Task_NewGameBirchSpeech_ThisIsAPokemon(u8);
 static void Task_NewGameBirchSpeech_MainSpeech(u8);
@@ -246,7 +246,6 @@ static void MainMenu_FormatSavegamePlayer(void);
 static void MainMenu_FormatSavegamePokedex(void);
 static void MainMenu_FormatSavegameTime(void);
 static void MainMenu_FormatSavegameBadges(void);
-static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8, u8, u8, u8, u8, u8);
 
 // .rodata
 
@@ -476,8 +475,8 @@ static const union AffineAnimCmd *const sSpriteAffineAnimTable_PlayerShrink[] =
 };
 
 static const struct MenuAction sMenuActions_Gender[] = {
-    {COMPOUND_STRING("BOY"), {NULL}},
-    {COMPOUND_STRING("GIRL"), {NULL}}
+    {gText_Boy, {NULL}},
+    {gText_Girl, {NULL}}
 };
 
 static const u8 *const sMalePresetNames[] = {
@@ -679,7 +678,7 @@ static void Task_MainMenuCheckSaveFile(u8 taskId)
 static void Task_WaitForSaveFileErrorWindow(u8 taskId)
 {
     RunTextPrinters();
-    if (!IsTextPrinterActive(7) && (JOY_NEW(A_BUTTON)))
+    if (!IsTextPrinterActiveOnWindow(7) && (JOY_NEW(A_BUTTON)))
     {
         ClearWindowTilemap(7);
         ClearMainMenuWindowTilemap(&sWindowTemplates_MainMenu[7]);
@@ -714,7 +713,7 @@ static void Task_MainMenuCheckBattery(u8 taskId)
 static void Task_WaitForBatteryDryErrorWindow(u8 taskId)
 {
     RunTextPrinters();
-    if (!IsTextPrinterActive(7) && (JOY_NEW(A_BUTTON)))
+    if (!IsTextPrinterActiveOnWindow(7) && (JOY_NEW(A_BUTTON)))
     {
         ClearWindowTilemap(7);
         ClearMainMenuWindowTilemap(&sWindowTemplates_MainMenu[7]);
@@ -1042,6 +1041,18 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
         {
             case ACTION_NEW_GAME:
             default:
+                if (IS_FRLG)
+                {
+                    DestroyTask(taskId);
+                    FreeAllWindowBuffers();
+                    if (action != ACTION_OPTION)
+                        sCurrItemAndOptionMenuCheck = 0;
+                    else
+                        sCurrItemAndOptionMenuCheck |= OPTION_MENU_FLAG;  // entering the options menu
+                    StartNewGameSceneFrlg();
+                    return;
+                }
+
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
 
@@ -1139,7 +1150,7 @@ static void Task_DisplayMainMenuInvalidActionError(u8 taskId)
             break;
         case 2:
             RunTextPrinters();
-            if (!IsTextPrinterActive(7))
+            if (!IsTextPrinterActiveOnWindow(7))
                 gTasks[taskId].tCurrItem++;
             break;
         case 3:
@@ -1326,7 +1337,7 @@ static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
             InitWindows(sNewGameBirchSpeechTextWindows);
             LoadMainMenuWindowFrameTiles(0, 0xF3);
             LoadMessageBoxGfx(0, BIRCH_DLG_BASE_TILE_NUM, BG_PLTT_ID(15));
-            DrawDialogFrameWithCustomTile(0, TRUE, 0xFC);
+            DrawDialogFrameWithCustomTile(0, TRUE, BIRCH_DLG_BASE_TILE_NUM);
             PutWindowTilemap(0);
             CopyWindowToVram(0, COPYWIN_GFX);
             NewGameBirchSpeech_ClearWindow(0);
@@ -1495,8 +1506,8 @@ static void Task_NewGameBirchSpeech_WaitToShowGenderMenu(u8 taskId)
 
 static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
 {
-    int gender = NewGameBirchSpeech_ProcessGenderMenuInput();
-    int gender2;
+    enum Gender gender = NewGameBirchSpeech_ProcessGenderMenuInput();
+    enum Gender gender2;
 
     switch (gender)
     {
@@ -1511,6 +1522,8 @@ static void Task_NewGameBirchSpeech_ChooseGender(u8 taskId)
             gSaveBlock2Ptr->playerGender = gender;
             NewGameBirchSpeech_ClearGenderWindow(1, 1);
             gTasks[taskId].func = Task_NewGameBirchSpeech_WhatsYourName;
+            break;
+        default: //repeat task if nothing is selected
             break;
     }
     gender2 = Menu_GetCursorPos();
@@ -2161,7 +2174,7 @@ static void MainMenu_FormatSavegamePokedex(void)
         if (IsNationalPokedexEnabled())
             dexCount = GetNationalPokedexCount(FLAG_GET_CAUGHT);
         else
-            dexCount = GetHoennPokedexCount(FLAG_GET_CAUGHT);
+            dexCount = GetRegionalPokedexCount(FLAG_GET_CAUGHT);
         StringExpandPlaceholders(gStringVar4, gText_ContinueMenuPokedex);
         AddTextPrinterParameterized3(2, FONT_NORMAL, 0, 33, sTextColor_MenuInfo, TEXT_SKIP_DRAW, gStringVar4);
         ConvertIntToDecimalStringN(str, dexCount, STR_CONV_MODE_LEFT_ALIGN, 4);
@@ -2262,39 +2275,11 @@ void CreateYesNoMenuParameterized(u8 x, u8 y, u16 baseTileNum, u16 baseBlock, u8
     CreateYesNoMenu(&template, baseTileNum, yesNoPalNum, 0);
 }
 
-static UNUSED void NewGameBirchSpeech_ShowDialogueWindow(u8 windowId, u8 copyToVram)
-{
-    CallWindowFunction(windowId, NewGameBirchSpeech_CreateDialogueWindowBorder);
-    FillWindowPixelBuffer(windowId, PIXEL_FILL(1));
-    PutWindowTilemap(windowId);
-    if (copyToVram == TRUE)
-        CopyWindowToVram(windowId, COPYWIN_FULL);
-}
-
-// Doesn't work with the new msgbox but is unused anyway
-static void NewGameBirchSpeech_CreateDialogueWindowBorder(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 palNum)
-{
-    FillBgTilemapBufferRect(bg, BIRCH_DLG_BASE_TILE_NUM, x-2,       y-1, 1,       1, palNum);
-    FillBgTilemapBufferRect(bg, BIRCH_DLG_BASE_TILE_NUM, x-1,       y-1, 1,       1, palNum);
-    FillBgTilemapBufferRect(bg, BIRCH_DLG_BASE_TILE_NUM, x,         y-1, width,   1, palNum);
-    FillBgTilemapBufferRect(bg, BIRCH_DLG_BASE_TILE_NUM, x+width-1, y-1, 1,       1, palNum);
-    FillBgTilemapBufferRect(bg, BIRCH_DLG_BASE_TILE_NUM, x+width,   y-1, 1,       1, palNum);
-    FillBgTilemapBufferRect(bg, BIRCH_DLG_BASE_TILE_NUM, x-2,       y,   1,       5, palNum);
-    FillBgTilemapBufferRect(bg, BIRCH_DLG_BASE_TILE_NUM, x-1,       y,   width+1, 5, palNum);
-    FillBgTilemapBufferRect(bg, BIRCH_DLG_BASE_TILE_NUM, x+width,   y,   1,       5, palNum);
-
-    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(BIRCH_DLG_BASE_TILE_NUM), x-2,       y+height, 1,       1, palNum);
-    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(BIRCH_DLG_BASE_TILE_NUM), x-1,       y+height, 1,       1, palNum);
-    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(BIRCH_DLG_BASE_TILE_NUM), x,         y+height, width-1, 1, palNum);
-    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(BIRCH_DLG_BASE_TILE_NUM), x+width-1, y+height, 1,       1, palNum);
-    FillBgTilemapBufferRect(bg, BG_TILE_V_FLIP(BIRCH_DLG_BASE_TILE_NUM), x+width,   y+height, 1,       1, palNum);
-}
-
 static void Task_NewGameBirchSpeech_ReturnFromNamingScreenShowTextbox(u8 taskId)
 {
     if (gTasks[taskId].tTimer-- <= 0)
     {
-        DrawDialogFrameWithCustomTile(0, TRUE, 0xFC);
+        DrawDialogFrameWithCustomTile(0, TRUE, BIRCH_DLG_BASE_TILE_NUM);
         gTasks[taskId].func = Task_NewGameBirchSpeech_SoItsPlayerName;
     }
 }

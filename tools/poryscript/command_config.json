@@ -113,6 +113,24 @@
     },
     "checkchatotpost": {
         "var_name": "VAR_RESULT"
+    },
+    "checkspecies": {
+        "var_name": "VAR_RESULT"
+    },
+    "getflashlevel": {
+        "var_name": "VAR_RESULT"
+    },
+    "gettransformmonspecies": {
+        "var_name": "VAR_RESULT"
+    },
+    "getgamestat": {
+        "var_name": "VAR_RESULT"
+    },
+    "chooseitem": {
+        "var_name": "VAR_ITEM_ID"
+    },
+    "getmemory": {
+        "var_name": "VAR_RESULT"
     }
   }
 }

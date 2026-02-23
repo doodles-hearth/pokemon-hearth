@@ -1,0 +1,19 @@
+mapscripts WhiteslateRoute_SecretCave_MapScripts {}
+
+script WhiteslateRoute_SecretCave_EventScript_GoBack {
+    lock
+    msgbox(format(
+        "Crawl back outside?"
+    ))
+
+    mcdialogueB("Go back", "Stay here")
+
+    closemessage
+
+    if (var(VAR_RESULT) == 0) {
+        detransformplayer(defer=1)
+        warp(MAP_WHITESLATE_ROUTE, WARP_ID_WHITESLATE_SECRET_CAVE)
+    }
+
+    release
+}

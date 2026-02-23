@@ -636,103 +636,122 @@ Level: 17
 - Feint Attack
 - Leech Seed
 
-=== TRAINER_GRUNT_WEATHER_INST_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_DAICHI ===
+Name: Daichi
+Class: Farmer
+Pic: Farmer
 Gender: Male
-Music: Aqua
+Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zubat
+Shuckle @ Oran Berry
+Level: 20
+Ability: Gluttony
+- Constrict
+- Bide
+- Encore
+
+Cherrim @ Coba Berry
+Level: 22
+- Natural Gift
+- Magical Leaf
+- Sunny Day
+
+=== TRAINER_HAGANE ===
+Name: Hagane
+Class: Miner
+Pic: Miner
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Basic Trainer
+
+Onix
 Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Dragon Breath
+- Stealth Rock
+- Smack Down
 
-Poochyena
+=== TRAINER_HARUKI ===
+Name: Haruki
+Class: Miner
+Pic: Miner
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Basic Trainer
+
+Sandy (Sandslash) (F)
 Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Rapid Spin
+- Rollout
+- Magnitude
+- Sand Attack
 
-=== TRAINER_GRUNT_WEATHER_INST_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_RYOUI ===
+Name: Ryoui
+Class: Gem Maniac
+Pic: Gem Maniac
 Gender: Male
-Music: Aqua
+Music: Rich
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Poochyena
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Carbink @ Star Piece
+Level: 25
+Coloration: 0
+- Guard Split
+- Stealth Rock
+- Smack Down
 
-Carvanha
-Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Carbink
+Level: 25
+Coloration: 80
+- Reflect
+- Rock Throw
 
-=== TRAINER_GRUNT_WEATHER_INST_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Carbink
+Level: 25
+Coloration: 40
+Shiny: Yes
+- Sharpen
+- Smack Down
+
+=== TRAINER_HARUTO ===
+Name: Haruto
+Class: Gem Maniac
+Pic: Gem Maniac
 Gender: Male
-Music: Aqua
+Music: Rich
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Poochyena
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Lunatone @ Moon Stone
+Level: 25
+- Cosmic Power
+- Psywave
 
-Zubat
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Clefairy @ Moon Stone
+Level: 25
+- Wake Up Slap
+- Metronome
+- Encore
 
-Carvanha
-Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_MUSEUM_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_KOTARO ===
+Name: Kotaro
+Class: Burglar
+Pic: Burglar
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Carvanha
-Level: 15
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_MUSEUM_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Zubat
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Carvanha
-Level: 14
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_SPACE_CENTER_1 ===
-Name: GRUNT
-Class: Team Magma
-Pic: Magma Grunt M
-Gender: Male
-Music: Magma
-Battle Type: Singles
-AI: Check Bad Move
-
-Numel
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Thievul
+Level: 25
+- Sucker Punch
+- Assurance
+- Tail Whip
 
 === TRAINER_GRUNT_MT_PYRE_1 ===
 Name: GRUNT
@@ -1205,14 +1224,14 @@ Level: 20
 - Fire Spin
 - Smog
 
-=== TRAINER_DUSTY_2 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
+=== TRAINER_TETSUHIRO ===
+Name: Tetsuhiro
+Class: Smith
+Pic: Miner
 Gender: Male
 Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
 Sandslash
 Level: 27
@@ -1222,14 +1241,14 @@ IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
 - Sand Attack
 - Poison Sting
 
-=== TRAINER_DUSTY_3 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
+=== TRAINER_KOTETSU ===
+Name: Kotetsu
+Class: Smith
+Pic: Miner
 Gender: Male
 Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
 Sandslash
 Level: 30
@@ -1239,14 +1258,14 @@ IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
 - Sand Attack
 - Poison Sting
 
-=== TRAINER_DUSTY_4 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
+=== TRAINER_TETSUKO ===
+Name: Tetsuko
+Class: Smith
+Pic: Miner
 Gender: Male
 Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
 Sandslash
 Level: 33
@@ -1256,14 +1275,14 @@ IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
 - Sand Attack
 - Poison Sting
 
-=== TRAINER_DUSTY_5 ===
-Name: DUSTY
-Class: Ruin Maniac
-Pic: Ruin Maniac
+=== TRAINER_TETSUYA ===
+Name: Tetsuya
+Class: Smith
+Pic: Miner
 Gender: Male
 Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
 Sandslash
 Level: 36
@@ -1273,14 +1292,14 @@ IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 - Sand Attack
 - Poison Sting
 
-=== TRAINER_GABBY_AND_TY_1 ===
-Name: GABBY & TY
-Class: Interviewer
-Pic: Interviewer
+=== TRAINER_YUTETSU ===
+Name: Yutetsu
+Class: Smith
+Pic: Miner
 Gender: Male
-Music: Interviewer
-Battle Type: Doubles
-AI: Check Bad Move
+Music: Hiker
+Battle Type: Singles
+AI: Basic Trainer
 
 Magnemite
 Level: 17
@@ -1290,14 +1309,14 @@ Whismur
 Level: 17
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-=== TRAINER_GABBY_AND_TY_2 ===
-Name: GABBY & TY
-Class: Interviewer
-Pic: Interviewer
+=== TRAINER_GOTETSU ===
+Name: Gotetsu
+Class: Smith
+Pic: Miner
 Gender: Male
-Music: Interviewer
-Battle Type: Doubles
-AI: Check Bad Move
+Music: Hiker
+Battle Type: Singles
+AI: Basic Trainer
 
 Magnemite
 Level: 27
@@ -1307,14 +1326,14 @@ Loudred
 Level: 27
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-=== TRAINER_GABBY_AND_TY_3 ===
-Name: GABBY & TY
-Class: Interviewer
-Pic: Interviewer
+=== TRAINER_TETSUO ===
+Name: Tetsuo
+Class: Smith
+Pic: Miner
 Gender: Male
-Music: Interviewer
-Battle Type: Doubles
-AI: Check Bad Move
+Music: Hiker
+Battle Type: Singles
+AI: Basic Trainer
 
 Magneton
 Level: 30
@@ -1324,14 +1343,14 @@ Loudred
 Level: 30
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
-=== TRAINER_GABBY_AND_TY_4 ===
-Name: GABBY & TY
-Class: Interviewer
-Pic: Interviewer
+=== TRAINER_TETSU ===
+Name: Tetsu
+Class: Smith
+Pic: Miner
 Gender: Male
-Music: Interviewer
-Battle Type: Doubles
-AI: Check Bad Move
+Music: Hiker
+Battle Type: Singles
+AI: Basic Trainer
 
 Magneton
 Level: 33
@@ -5263,15 +5282,15 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Sweet Scent
 - Magical Leaf
 
-=== TRAINER_FLANNERY_1 ===
-Name: FLANNERY
+=== TRAINER_MASAMUNE_1 ===
+Name: Masamune
 Class: Dojo Master
-Pic: Leader Flannery
-Gender: Female
-Music: Female
-Items: Hyper Potion / Hyper Potion
+Pic: Leader Masamune
+Gender: Male
+Music: Male
+Items: Hypergiri
 Battle Type: Singles
-AI: Basic Trainer
+AI: Smartish Trainer
 
 Numel
 Level: 24
@@ -10025,7 +10044,7 @@ Music: Male
 Battle Type: Singles
 AI: Basic Trainer
 
-Froakie
+Squirtle
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Pound
@@ -10046,7 +10065,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tackle
 - Leer
 
-=== TRAINER_RIVAL_FIRST_BATTLE_FROAKIE ===
+=== TRAINER_RIVAL_FIRST_BATTLE_SQUIRTLE ===
 Name: Natsuki
 Class: Rival
 Pic: Natsuki
@@ -11364,7 +11383,7 @@ Mudkip
 Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-=== TRAINER_RIVAL_SAKU_FROAKIE ===
+=== TRAINER_RIVAL_SAKU_SQUIRTLE ===
 Name: Natsuki
 Class: Rival
 Pic: Natsuki
@@ -14504,7 +14523,7 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Stun Spore
 - Tackle
 
-Froakie
+Squirtle
 Level: 13
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Bubble
@@ -15103,15 +15122,15 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Thunder
 - Protect
 
-=== TRAINER_FLANNERY_2 ===
-Name: FLANNERY
+=== TRAINER_MASAMUNE_2 ===
+Name: Masamune
 Class: Dojo Master
-Pic: Leader Flannery
-Gender: Female
-Music: Female
-Items: Full Restore / Full Restore / Full Restore
-Battle Type: Doubles
-AI: Basic Trainer
+Pic: Leader Masamune
+Gender: Male
+Music: Male
+Items: Sacredgiri
+Battle Type: Singles
+AI: Smartish Trainer
 
 Magcargo @ White Herb
 Level: 38
@@ -15145,15 +15164,15 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Explosion
 - Attract
 
-=== TRAINER_FLANNERY_3 ===
-Name: FLANNERY
+=== TRAINER_MASAMUNE_3 ===
+Name: Masamune
 Class: Dojo Master
-Pic: Leader Flannery
-Gender: Female
-Music: Female
-Items: Full Restore / Full Restore / Full Restore
-Battle Type: Doubles
-AI: Basic Trainer
+Pic: Leader Masamune
+Gender: Male
+Music: Male
+Items: Sacredgiri
+Battle Type: Singles
+AI: Smartish Trainer
 
 Growlithe
 Level: 41
@@ -15195,15 +15214,15 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Explosion
 - Attract
 
-=== TRAINER_FLANNERY_4 ===
-Name: FLANNERY
+=== TRAINER_MASAMUNE_4 ===
+Name: Masamune
 Class: Dojo Master
-Pic: Leader Flannery
-Gender: Female
-Music: Female
-Items: Full Restore / Full Restore / Full Restore
-Battle Type: Doubles
-AI: Basic Trainer
+Pic: Leader Masamune
+Gender: Male
+Music: Male
+Items: Sacredgiri
+Battle Type: Singles
+AI: Smartish Trainer
 
 Houndour
 Level: 46
@@ -15253,15 +15272,15 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Explosion
 - Attract
 
-=== TRAINER_FLANNERY_5 ===
-Name: FLANNERY
+=== TRAINER_MASAMUNE_5 ===
+Name: Masamune
 Class: Dojo Master
-Pic: Leader Flannery
-Gender: Female
-Music: Female
-Items: Full Restore / Full Restore / Full Restore
-Battle Type: Doubles
-AI: Basic Trainer
+Pic: Leader Masamune
+Gender: Male
+Music: Male
+Items: Sacredgiri
+Battle Type: Singles
+AI: Smartish Trainer
 
 Arcanine
 Level: 51

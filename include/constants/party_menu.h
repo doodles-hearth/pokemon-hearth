@@ -1,6 +1,7 @@
 #ifndef GUARD_CONSTANTS_PARTY_MENU_H
 #define GUARD_CONSTANTS_PARTY_MENU_H
 
+#define PC_MON_CHOSEN 0xFE
 #define PARTY_NOTHING_CHOSEN 0xFF
 
 #define AILMENT_NONE  0
@@ -50,6 +51,7 @@
 #define PARTY_ACTION_MINIGAME           13
 #define PARTY_ACTION_SEND_MON_TO_BOX    14
 #define PARTY_ACTION_CHOOSE_FAINTED_MON 15
+#define PARTY_ACTION_CHOOSE_SMALL_MON   16
 
 // IDs for DisplayPartyMenuStdMessage, to display the message at the bottom of the party menu
 #define PARTY_MSG_CHOOSE_MON                0
@@ -108,5 +110,23 @@
 #define SELECTWINDOW_MOVES       3
 #define SELECTWINDOW_CATALOG     4
 #define SELECTWINDOW_ZYGARDECUBE 5
+
+enum PcMonSelectionType
+{
+    SELECT_PC_MON_NORMAL,
+    SELECT_PC_MON_TRADE, // Also used for Lotad / Seedot size check
+    SELECT_PC_MON_DAYCARE,
+    SELECT_PC_MON_MOVE_TUTOR,
+    SELECT_PC_MON_MOVE_DELETER,
+    SELECT_PC_MON_MOVE_RELEARNER,
+};
+
+enum CanMoveBeLearned
+{
+    CAN_LEARN_MOVE,
+    CANNOT_LEARN_MOVE,
+    ALREADY_KNOWS_MOVE,
+    CANNOT_LEARN_MOVE_IS_EGG
+};
 
 #endif // GUARD_CONSTANTS_PARTY_MENU_H

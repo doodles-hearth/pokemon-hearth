@@ -15,8 +15,21 @@
 
 #define RTC_ERR_FLAG_MASK      0x0FF0
 
+//Evening doesn't exist in Gen 2
+#if OW_TIMES_OF_DAY == GEN_2
+    #define MORNING_HOUR_BEGIN 4
+    #define MORNING_HOUR_END   10
+
+    #define DAY_HOUR_BEGIN     10
+    #define DAY_HOUR_END       18
+
+    #define EVENING_HOUR_BEGIN 0
+    #define EVENING_HOUR_END   0
+
+    #define NIGHT_HOUR_BEGIN   18
+    #define NIGHT_HOUR_END     4
 //Morning and evening don't exist in Gen 3
-#if OW_TIMES_OF_DAY == GEN_3
+#elif OW_TIMES_OF_DAY == GEN_3
     #define MORNING_HOUR_BEGIN 0
     #define MORNING_HOUR_END   0
 
@@ -102,7 +115,7 @@
     #define NIGHTTIME_HOUR_END       0
 #endif
 
-// TIMES_OF_DAY_COUNT must be last
+// TIMES_OF_DAY_COUNT must be last or things will break
 enum TimeOfDay
 {
     TIME_EARLY_MORNING,
@@ -115,8 +128,6 @@ enum TimeOfDay
     TIMES_OF_DAY_COUNT,
 };
 
-#define TIME_OF_DAY_DEFAULT TIME_EARLY_MORNING
-
 #define TIME_NOONTIME_FLAG      (1 << 0)
 #define TIME_DEAD_NIGHT_FLAG    (1 << 1)
 #define TIME_EARLY_MORNING_FLAG (1 << 2)
@@ -124,5 +135,11 @@ enum TimeOfDay
 #define TIME_LUNCHTIME_FLAG     (1 << 4)
 #define TIME_MORNING_FLAG       (1 << 5)
 #define TIME_NIGHT_FLAG         (1 << 6)
+
+// for incrementing/decrementing
+#define TIME_FIRST 0
+#define TIME_LAST (TIMES_OF_DAY_COUNT - 1)
+
+#define TIME_OF_DAY_DEFAULT    0
 
 #endif // GUARD_CONSTANTS_RTC_H

@@ -1,3 +1,5 @@
+#include "constants/flags.h"
+#include "gba/isagbprint.h"
 #include "global.h"
 #include "cable_club.h"
 #include "event_data.h"
@@ -24,7 +26,10 @@
 #include "mirage_tower.h"
 #include "metatile_behavior.h"
 #include "palette.h"
+#include "oras_dowse.h"
 #include "overworld.h"
+#include "player_transform.h"
+#include "pokemon.h"
 #include "scanline_effect.h"
 #include "script.h"
 #include "sound.h"
@@ -58,6 +63,11 @@ static bool8 WaitStairExitMovementFinished(s16*, s16*, s16*, s16*, s16*);
 static void UpdateStairsMovement(s16, s16, s16*, s16*, s16*);
 static void Task_StairWarp(u8);
 static void ForceStairsMovement(u32, s16*, s16*);
+
+static const u8 sText_PlayerScurriedToCenter[] = _("{PLAYER} scurried to a POKéMON CENTER,\nprotecting the exhausted and fainted\nPOKéMON from further harm…\p");
+static const u8 sText_PlayerScurriedBackHome[] = _("{PLAYER} scurried back home, protecting\nthe exhausted and fainted POKéMON from\nfurther harm…\p");
+static const u8 sText_PlayerRegroupCenter[] = _("{PLAYER} scurried to a POKéMON CENTER,\nto regroup and reconsider the battle\nstrategy…\p");
+static const u8 sText_PlayerRegroupHome[] = _("{PLAYER} scurried back home, to regroup\nand reconsider the battle strategy…\p");
 
 // data[0] is used universally by tasks in this file as a state for switches
 #define tState       data[0]
@@ -684,6 +694,7 @@ void Task_WarpAndLoadMap(u8 taskId)
     case 0:
         FreezeObjectEvents();
         LockPlayerFieldControls();
+        EndORASDowsing();
         task->tState++;
         break;
     case 1:
@@ -745,6 +756,7 @@ void Task_DoDoorWarp(u8 taskId)
             ObjectEventSetHeldMovement(followerObject, MOVEMENT_ACTION_ENTER_POKEBALL);
         }
         task->tDoorTask = FieldAnimateDoorOpen(*x, *y - 1);
+        EndORASDowsing();
         task->tState = DOORWARP_START_WALK_UP;
         break;
     case DOORWARP_START_WALK_UP:
@@ -1051,12 +1063,132 @@ void AnimateFlash(u8 newFlashLevel)
     LockPlayerFieldControls();
 }
 
-void WriteFlashScanlineEffectBuffer(u8 flashLevel)
+#define SMALLEST_FLASH_RADIUS 20
+
+void WriteFlashScanlineEffectBuffer(u8 flashRadius)
 {
-    if (flashLevel)
+    if (flashRadius)
     {
-        SetFlashScanlineEffectWindowBoundaries(&gScanlineEffectRegBuffers[0][0], DISPLAY_WIDTH / 2, DISPLAY_HEIGHT / 2, sFlashLevelToRadius[flashLevel]);
-        CpuFastSet(&gScanlineEffectRegBuffers[0], &gScanlineEffectRegBuffers[1], 480);
+        u32 followSpriteId = GetFollowerObject()->spriteId;
+        u32 playerSpriteId = gObjectEvents[GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0)].spriteId;
+
+        u32 species;
+        u32 level;
+        u32 ability;
+        u32 flashBonus = 0;
+
+        if (FlagGet(FLAG_PLAYER_IS_POKEMON))
+        {
+            species = GetMonData(GetCurrentlyTransformedPokemon(), MON_DATA_SPECIES);
+            level = GetMonData(GetCurrentlyTransformedPokemon(), MON_DATA_LEVEL, NULL);
+            ability = GetMonAbility(GetCurrentlyTransformedPokemon());
+        }
+        else
+        {
+            species = OW_SPECIES(GetFollowerObject());
+            level = GetMonData(GetFirstLiveMon(), MON_DATA_LEVEL, NULL);
+            ability = GetMonAbility(GetFirstLiveMon());
+        }
+
+        if (ability == ABILITY_ILLUMINATE)
+        {
+            flashBonus += 15;
+        }
+
+        u32 followerFlashRadius = 0;
+
+        if (gSprites[followSpriteId].invisible)
+        {
+            followerFlashRadius = SMALLEST_FLASH_RADIUS;
+        }
+        else if (gSpeciesInfo[species].glows)
+        {
+            /*
+                  1-10 : 6 (barely bigger than no flash at all)
+                  10-20: 5
+                  20-30: 4
+                  30-40: 3
+                  40-50: 2
+                  50-60: 1
+                  60+  : 0 (room is fully lit)
+
+                  sFlashLevelToRadius[] = { 200, 72, 64, 56, 48, 40, 32, 24, 0 };
+              */
+            if (level >= 1 && level < 10) // Barely better than no flash
+                followerFlashRadius = 28;
+            else if (level >= 10 && level < 20)
+                followerFlashRadius = 38;
+            else if (level >= 20 && level < 30)
+                followerFlashRadius = 50;
+            else if (level >= 30 && level < 40)
+                followerFlashRadius = 65;
+            else if (level >= 40 && level < 50)
+                followerFlashRadius = 85;
+            else if (level >= 50 && level < 60)
+                followerFlashRadius = 95;
+            else if (level >= 60) // Room is fully lit
+                followerFlashRadius = 200;
+        }
+
+        // Adding flash radius increasing bonuses
+        followerFlashRadius += flashBonus;
+
+        s32 followX = gSprites[followSpriteId].x;
+        s32 followY = gSprites[followSpriteId].y;
+
+        s32 playerX = gSprites[playerSpriteId].x;
+        s32 playerY = gSprites[playerSpriteId].y;
+
+        s8 diffX = playerX - followX;
+        s8 diffY = playerY - followY;
+
+        if (followerFlashRadius == 0)
+        {
+            followerFlashRadius = SMALLEST_FLASH_RADIUS;
+            diffX = 0;
+            diffY = 0;
+        }
+
+        if (gFlashX != diffX || gFlashY != diffY || flashRadius != followerFlashRadius || gDrawFlash)
+        {
+            gDrawFlash = FALSE;
+
+            if (followerFlashRadius == SMALLEST_FLASH_RADIUS)
+            {
+                if (gFlashX > 0)
+                    gFlashY--;
+                else if (gFlashX < 0)
+                    gFlashX++;
+
+                if (gFlashY > 0)
+                    gFlashY--;
+                else if (gFlashY < 0)
+                    gFlashY++;
+            }
+            else
+            {
+                gFlashX = diffX;
+                gFlashY = diffY;
+            }
+
+            if (flashRadius != followerFlashRadius)
+            {
+                if (flashRadius < followerFlashRadius)
+                    flashRadius++;
+                else
+                    flashRadius--;
+                gSaveBlock1Ptr->flashLevel = flashRadius;
+            }
+
+            CpuFill16(0, &gScanlineEffectRegBuffers[0], sizeof(gScanlineEffectRegBuffers) / 2);
+            if (FlagGet(FLAG_PLAYER_IS_POKEMON))
+            {
+                gFlashX = 0;
+                gFlashY = 0;
+            }
+            SetFlashScanlineEffectWindowBoundaries(&gScanlineEffectRegBuffers[0][0], DISPLAY_WIDTH / 2 - gFlashX, DISPLAY_HEIGHT / 2 - gFlashY, flashRadius);
+            CpuFastSet(&gScanlineEffectRegBuffers[0], &gScanlineEffectRegBuffers[1], 480);
+        }
     }
 }
 
@@ -1373,7 +1505,7 @@ static bool32 PrintWhiteOutRecoveryMessage(u8 taskId, const u8 *text, u32 x, u32
         break;
     case 1:
         RunTextPrinters();
-        if (!IsTextPrinterActive(windowId))
+        if (!IsTextPrinterActiveOnWindow(windowId))
         {
             gTasks[taskId].tPrintState = 0;
             return TRUE;
@@ -1396,13 +1528,13 @@ static const u8 *GenerateRecoveryMessage(u8 taskId)
     bool32 destinationIsPlayersHouse = (gTasks[taskId].tIsPlayerHouse == TRUE);
 
     if (forfeitTrainer && destinationIsPlayersHouse)
-        return gText_PlayerRegroupHome;
+        return sText_PlayerRegroupHome;
     else if (forfeitTrainer && !destinationIsPlayersHouse)
-        return gText_PlayerRegroupCenter;
+        return sText_PlayerRegroupCenter;
     else if (!forfeitTrainer && destinationIsPlayersHouse)
-        return gText_PlayerScurriedBackHome;
+        return sText_PlayerScurriedBackHome;
     else
-        return gText_PlayerScurriedToCenter;
+        return sText_PlayerScurriedToCenter;
 }
 
 static void Task_RushInjuredPokemonToCenter(u8 taskId)
@@ -1682,7 +1814,7 @@ void DoStairWarp(u16 metatileBehavior, u16 delay)
 #undef tTimer
 #undef tDelay
 
-bool32 IsDirectionalStairWarpMetatileBehavior(u16 metatileBehavior, u8 playerDirection)
+bool32 IsDirectionalStairWarpMetatileBehavior(u16 metatileBehavior, enum Direction playerDirection)
 {
     if (playerDirection == DIR_WEST)
     {

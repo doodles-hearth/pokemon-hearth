@@ -23,7 +23,7 @@ script Soulkeep_HouseDollBedroom_EventScript_Doll {
 	lock
 	msgbox(format(
 		"A rather uncanny doll.\p"
-		"…The way it seems to look at you creeps you out."
+		"…The way it seems to be looking at you creeps you out."
 	))
 	closemessage
 	release

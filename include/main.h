@@ -38,11 +38,12 @@ struct Main
     /*0x439*/ u8 oamLoadDisabled:1;
     /*0x439*/ u8 inBattle:1;
     /*0x439*/ u8 anyLinkBattlerHasFrontierPass:1;
+    /*0x439*/ u8 isDialogActiveInOverworld:1;
 };
 
 #define GAME_CODE_LENGTH 4
-extern const u8 gGameVersion;
-extern const u8 gGameLanguage;
+extern const enum GameVersion gGameVersion;
+extern const enum Language gGameLanguage;
 extern const u8 RomHeaderGameCode[GAME_CODE_LENGTH];
 extern const u8 RomHeaderSoftwareVersion;
 
@@ -73,5 +74,6 @@ void StartTimer1(void);
 void SeedRngAndSetTrainerId(void);
 u16 GetGeneratedTrainerIdLower(void);
 bool32 InBattle(void);
+bool32 InOverworld(void);
 
 #endif // GUARD_MAIN_H

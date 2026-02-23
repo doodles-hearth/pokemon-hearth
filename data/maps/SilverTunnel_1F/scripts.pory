@@ -5,36 +5,36 @@ mapscripts SilverTunnel_1F_MapScripts {
 script SilverTunnel_1F_EventScript_Kento {
 	trainerbattle_single(
 		TRAINER_KENTO,
-		format("{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}You ain't no miner, are ya?"),
+		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}You ain't no miner, are ya?"),
 		format("How am I gonna get any work done now?")
 	)
 	setnamedmon(SPECIES_MAKUHITA)
 	setspeaker(SP_NAME_MINER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}My Makuhita breaks rocks for me!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}My Makuhita breaks rocks for me!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script SilverTunnel_1F_EventScript_Shuya {
 	trainerbattle_single(
 		TRAINER_SHUYA,
-		format("{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}D'ya know how tough we miners are?"),
+		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}D'ya know how tough we miners are?"),
 		format("I gotta say, yer not bad either!")
 	)
 	setnamedmon(SPECIES_MAKUHITA)
 	setspeaker(SP_NAME_MINER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER EMOTE_NORMAL}Sometimes we armwrestle with our Makuhita just for kicks!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Sometimes we armwrestle with our Makuhita just for kicks!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script SilverTunnel_1F_EventScript_Yoru {
 	trainerbattle_single(
 		TRAINER_YORU,
-		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}This place sucks!"),
+		format("{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}This place sucks!"),
 		format("This battle sucked as well!")
 	)
 	setspeaker(SP_NAME_HEX_MANIAC)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC EMOTE_NORMAL}I thought caves were spooky places with lots of Ghost Pokémon…\p"
+		"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}I thought caves were spooky places with lots of Ghost Pokémon…\p"
 		"All I see are dumb rocks and bats!"
 	), MSGBOX_AUTOCLOSE)
 	end
@@ -43,7 +43,7 @@ script SilverTunnel_1F_EventScript_Yoru {
 script SilverTunnel_1F_EventScript_Nerd {
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY EMOTE_NORMAL}Ugh…\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY 0}Ugh…\p"
 		"I forgot to bring my fighting Pokémon, so I got whooped by those miners' rock Pokémon…"
 	), MSGBOX_NPC)
 }

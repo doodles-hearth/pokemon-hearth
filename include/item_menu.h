@@ -2,6 +2,7 @@
 #define GUARD_ITEM_MENU_H
 
 #include "item.h"
+#include "main.h"
 #include "menu_helpers.h"
 
 enum {
@@ -18,6 +19,7 @@ enum {
     ITEMMENULOCATION_WALLY,
     ITEMMENULOCATION_PCBOX,
     ITEMMENULOCATION_BERRY_TREE_MULCH,
+    ITEMMENULOCATION_CHOOSE_ITEM,
     ITEMMENULOCATION_LAST,
 };
 
@@ -57,7 +59,7 @@ enum {
 
 struct BagPosition
 {
-    void (*exitCallback)(void);
+    MainCallback exitCallback;
     u8 location;
     u8 pocket;
     u16 pocketSwitchArrowPos;
@@ -69,7 +71,7 @@ extern struct BagPosition gBagPosition;
 
 struct BagMenu
 {
-    void (*newScreenCallback)(void);
+    MainCallback newScreenCallback;
     u8 tilemapBuffer[BG_SCREEN_SIZE];
     u8 spriteIds[ITEMMENUSPRITE_COUNT];
     u8 windowIds[ITEMWIN_COUNT];
@@ -106,16 +108,17 @@ void CB2_BagMenuFromStartMenu(void);
 u8 GetItemListPosition(u8 pocketId);
 bool8 UseRegisteredKeyItemOnField(void);
 void CB2_GoToSellMenu(void);
-void GoToBagMenu(u8 location, u8 pocket, void ( *exitCallback)());
+void GoToBagMenu(u8 location, u8 pocket, MainCallback exitCallback);
 void DoWallyTutorialBagMenu(void);
+void InitOldManBag(void);
 void ResetBagScrollPositions(void);
-void ChooseBerryForMachine(void (*exitCallback)(void));
+void ChooseBerryForMachine(MainCallback exitCallback);
 void CB2_ChooseBerry(void);
 void CB2_ChooseMulch(void);
 void Task_FadeAndCloseBagMenu(u8 taskId);
 void BagMenu_YesNo(u8 taskId, u8 windowType, const struct YesNoFuncTable *funcTable);
 void UpdatePocketItemList(enum Pocket pocketId);
-void DisplayItemMessage(u8 taskId, u8 fontId, const u8 *str, void (*callback)(u8 taskId));
+void DisplayItemMessage(u8 taskId, u8 fontId, const u8 *str, TaskFunc callback);
 void DisplayItemMessageOnField(u8 taskId, const u8 *string, TaskFunc callback);
 void CloseItemMessage(u8 taskId);
 void ItemMenu_RotomCatalog(u8 taskId);

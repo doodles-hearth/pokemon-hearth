@@ -1,0 +1,278 @@
+script EventScript_Campfire {
+	lock
+
+	if (flag(FLAG_HIDE_CAMPFIRE_PARTY_MON_1)) {
+		msgbox(format(
+			"Rest at the campfire?"
+		), MSGBOX_YESNO)
+
+		if (var(VAR_RESULT) == YES) {
+			campfire
+		}
+	} else {
+		msgbox(format(
+			"Leave the campfire?"
+		), MSGBOX_YESNO)
+
+		if (var(VAR_RESULT) == YES) {
+			call(EventScript_LeaveCampfire)
+		}
+	}
+
+	release
+}
+
+script EventScript_WalkAwayFromCampfire {
+	lock
+	
+	msgbox(format(
+		"Leave the campfire?"
+	), MSGBOX_YESNO)
+	closemessage
+
+	if (var(VAR_RESULT) == YES) {
+		call(EventScript_LeaveCampfire)
+	} else {
+    	specialvar(VAR_RESULT, GetPlayerFacingDirection)
+		buffernumberstring(STR_VAR_1, VAR_RESULT)
+		// msgbox("{STR_VAR_1}")
+		// closemessage
+
+		switch(var(VAR_RESULT)) {
+			case DIR_NORTH:
+				// msgbox("facing up")
+				applymovement(OBJ_EVENT_ID_PLAYER, Movement_ComeBackToCampfire_Down)
+			case DIR_SOUTH:
+				// msgbox("facing down")
+				applymovement(OBJ_EVENT_ID_PLAYER, Movement_ComeBackToCampfire_Up)
+			case DIR_EAST:
+				// msgbox("facing right")
+				applymovement(OBJ_EVENT_ID_PLAYER, Movement_ComeBackToCampfire_Left)
+			case DIR_WEST:
+				// msgbox("facing left")
+				applymovement(OBJ_EVENT_ID_PLAYER, Movement_ComeBackToCampfire_Right)
+		}
+		waitmovement(0)
+	}
+
+	release
+}
+
+movement Movement_ComeBackToCampfire_Down {
+	walk_down
+}
+
+movement Movement_ComeBackToCampfire_Up {
+	walk_up
+}
+
+movement Movement_ComeBackToCampfire_Left {
+	walk_left
+}
+
+movement Movement_ComeBackToCampfire_Right {
+	walk_right
+}
+
+script EventScript_LeaveCampfire {
+	msgbox(format(
+		"Your Pokémon are well-rested.\nTime to go!"
+	))
+	closemessage
+
+	fadescreen(FADE_TO_BLACK)
+	leaveCampfire
+	fadescreen(FADE_FROM_BLACK)
+}
+
+script EventScript_PokemonGaveYouAnItem {
+    msgbox(format(
+        "{STR_VAR_1} handed you an item!"
+    ), MSGBOX_DEFAULT)
+    giveitem(0x1)
+    release
+    end
+}
+
+script EventScript_OldForagingBloke {
+    msgbox(format(
+        "I was foraging in the area when I noticed you setting up! Please take this."
+    ), MSGBOX_DEFAULT)
+    giveitem(ITEM_PECHA_BERRY)
+    clearCampfireEventHere
+    delay(20)
+    campfire
+}
+
+script EventScript_PokemonHandsYouAnOran {
+    msgbox(format(
+        "{STR_VAR_1} scurried up to you and handed you an item!"
+    ), MSGBOX_DEFAULT)
+    giveitem(ITEM_ORAN_BERRY)
+    clearCampfireEventHere
+    delay(20)
+    campfire
+}
+
+script EventScript_CamperWantsToBattle {
+    msgbox(format(
+        "Hey this is my campfire. Battle me for it?"
+    ), MSGBOX_YESNO)
+    clearCampfireEventHere
+    delay(20)
+    campfire
+}
+
+script EventScript_PokemonWantsToBattle {
+    msgbox(format(
+        "{STR_VAR_1} wants to battle!"
+    ), MSGBOX_YESNO)
+    clearCampfireEventHere
+    delay(20)
+    campfire
+}
+
+raw `
+EventScript_CampfirePokemon1::
+    getcampfireaction 0
+    end
+
+EventScript_CampfirePokemon2::
+    getcampfireaction 1
+    end
+
+EventScript_CampfirePokemon3::
+    getcampfireaction 2
+    end
+
+EventScript_CampfirePokemon4::
+    getcampfireaction 3
+    end
+
+EventScript_CampfirePokemon5::
+    getcampfireaction 4
+    end
+
+EventScript_CampfirePokemon6::
+    getcampfireaction 5
+    end
+
+EventScript_CampfireGeneric::
+	faceplayer
+EventScript_CampfireGenericSkipFace:
+	waitfieldeffect FLDEFF_EMOTE
+	message 0x0
+	waitmessage
+	waitbuttonpress
+    closemessage
+	return 
+
+EventScript_CampfireFaceUp::
+	applymovement OBJ_EVENT_ID_FOLLOWER Common_Movement_FaceUp
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	goto EventScript_FollowerGenericSkipFace
+
+EventScript_CampfireIsShivering::
+	faceplayer
+	compare VAR_FACING, DIR_NORTH
+	call_if_eq ShiverVertical
+	compare VAR_FACING, DIR_SOUTH
+	call_if_eq ShiverVertical
+	compare VAR_FACING, DIR_WEST
+	call_if_eq ShiverHorizontal
+	compare VAR_FACING, DIR_EAST
+	call_if_eq ShiverHorizontal
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireNostalgia::
+	applymovement VAR_LAST_TALKED, FollowerNostalgiaMovement
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireHopping::
+	faceplayer
+	applymovement VAR_LAST_TALKED, FollowerSkippingMovement
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireCuddling:: @ similar to Std_MsgboxDefault
+	faceplayer
+	compare VAR_FACING, DIR_NORTH
+	call_if_eq CuddleS
+	compare VAR_FACING, DIR_SOUTH
+	call_if_eq CuddleN
+	compare VAR_FACING, DIR_WEST
+	call_if_eq CuddleE
+	compare VAR_FACING, DIR_EAST
+	call_if_eq CuddleW
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireGetCloser::
+	faceplayer
+	compare VAR_FACING, DIR_NORTH
+	call_if_eq CreepCloserS
+	compare VAR_FACING, DIR_SOUTH
+	call_if_eq CreepCloserN
+	compare VAR_FACING, DIR_WEST
+	call_if_eq CreepCloserE
+	compare VAR_FACING, DIR_EAST
+	call_if_eq CreepCloserW
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfirePokingPlayer::
+	faceplayer
+	compare VAR_FACING, DIR_NORTH
+	call_if_eq PokePlayerS
+	compare VAR_FACING, DIR_SOUTH
+	call_if_eq PokePlayerN
+	compare VAR_FACING, DIR_WEST
+	call_if_eq PokePlayerE
+	compare VAR_FACING, DIR_EAST
+	call_if_eq PokePlayerW
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireLookAround::
+	applymovement VAR_LAST_TALKED FollowerLookAround
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireLookAway::
+	applymovement OBJ_EVENT_ID_FOLLOWER FollowerLookAway
+	waitmovement OBJ_EVENT_ID_FOLLOWER
+	goto EventScript_FollowerGenericSkipFace
+
+EventScript_CampfireLookAwayBark::
+	applymovement VAR_LAST_TALKED FollowerLookAwayBark
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGenericSkipFace
+
+EventScript_CampfirePokeGround::
+	faceplayer
+	applymovement VAR_LAST_TALKED FollowerPokeGround
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGeneric
+
+EventScript_CampfireFastHopping::
+	applymovement VAR_LAST_TALKED FollowerHopFast
+	waitmovement VAR_LAST_TALKED
+	goto EventScript_CampfireGenericSkipFace
+
+EventScript_CampfireDizzy::
+	applymovement VAR_LAST_TALKED FollowerDizzy
+	waitmovement 0
+	goto EventScript_CampfireGenericSkipFace
+
+EventScript_CampfireDance::
+	faceplayer
+	applymovement VAR_LAST_TALKED FollowerDance
+	waitmovement 0
+	goto EventScript_CampfireGenericSkipFace
+
+EventScript_CampfireFaceResult:: @ Face towards direction in VAR_RESULT
+	switch VAR_RESULT
+	case DIR_SOUTH, EventScript_FollowerFaceDown
+	case DIR_NORTH, EventScript_FollowerFaceUp
+	case DIR_WEST, EventScript_FollowerFaceLeft
+	case DIR_EAST, EventScript_FollowerFaceRight
+	goto EventScript_CampfireGeneric
+`

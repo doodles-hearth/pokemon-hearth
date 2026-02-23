@@ -3,6 +3,7 @@
 #include "battle_anim.h"
 #include "battle_anim_scripts.h"
 #include "battle_controllers.h"
+#include "battle_environment.h"
 #include "battle_interface.h"
 #include "battle_util.h"
 #include "bg.h"
@@ -13,6 +14,7 @@
 #include "graphics.h"
 #include "main.h"
 #include "malloc.h"
+#include "menu.h"
 #include "m4a.h"
 #include "palette.h"
 #include "pokemon.h"
@@ -102,7 +104,7 @@ EWRAM_DATA static s8 sAnimFramesToWait = 0;
 EWRAM_DATA bool8 gAnimScriptActive = FALSE;
 EWRAM_DATA u8 gAnimVisualTaskCount = 0;
 EWRAM_DATA u8 gAnimSoundTaskCount = 0;
-EWRAM_DATA struct DisableStruct *gAnimDisableStructPtr = NULL;
+EWRAM_DATA struct LinkBattleAnim *gAnimDisableStructPtr = NULL;
 EWRAM_DATA s32 gAnimMoveDmg = 0;
 EWRAM_DATA u16 gAnimMovePower = 0;
 EWRAM_DATA static u16 sAnimSpriteIndexArray[ANIM_SPRITE_INDEX_COUNT] = {0};
@@ -114,8 +116,8 @@ EWRAM_DATA static u8 sMonAnimTaskIdArray[2] = {0};
 EWRAM_DATA u8 gAnimMoveTurn = 0;
 EWRAM_DATA static u8 sAnimBackgroundFadeState = 0;
 EWRAM_DATA u16 gAnimMoveIndex = 0;
-EWRAM_DATA u8 gBattleAnimAttacker = 0;
-EWRAM_DATA u8 gBattleAnimTarget = 0;
+EWRAM_DATA enum BattlerId gBattleAnimAttacker = 0;
+EWRAM_DATA enum BattlerId gBattleAnimTarget = 0;
 EWRAM_DATA u16 gAnimBattlerSpecies[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA u8 gAnimCustomPanning = 0;
 EWRAM_DATA static bool8 sAnimHideHpBoxes = FALSE;
@@ -225,6 +227,8 @@ static const u8* const sBattleAnims_General[NUM_B_ANIMS_GENERAL] =
     [B_ANIM_MEGA_EVOLUTION]         = gBattleAnimGeneral_MegaEvolution,
     [B_ANIM_ILLUSION_OFF]           = gBattleAnimGeneral_IllusionOff,
     [B_ANIM_FORM_CHANGE]            = gBattleAnimGeneral_FormChange,
+    [B_ANIM_FORM_CHANGE_INSTANT]    = gBattleAnimGeneral_FormChangeInstant,
+    [B_ANIM_FORM_CHANGE_DISGUISE]   = gBattleAnimGeneral_FormChangeDisguise,
     [B_ANIM_SLIDE_OFFSCREEN]        = gBattleAnimGeneral_SlideOffScreen,
     [B_ANIM_RESTORE_BG]             = gBattleAnimGeneral_RestoreBg,
     [B_ANIM_TOTEM_FLARE]            = gBattleAnimGeneral_TotemFlare,
@@ -254,6 +258,16 @@ static const u8* const sBattleAnims_General[NUM_B_ANIMS_GENERAL] =
     [B_ANIM_TERA_ACTIVATE]          = gBattleAnimGeneral_TeraActivate,
     [B_ANIM_SIMPLE_HEAL]            = gBattleAnimGeneral_SimpleHeal,
     [B_ANIM_POWER_CONSTRUCT]        = gBattleAnimGeneral_PowerConstruct,
+    [B_ANIM_SMOKE_CONTINUES]        = gBattleAnimGeneral_Smoke,
+    [B_ANIM_FALLING_LEAVES]         = gBattleAnimGeneral_FallingLeaves,
+    [B_ANIM_EXPLOSION]              = gBattleAnimGeneral_SmokeExplosion,
+    [B_ANIM_SWAP_TO_SUBSTITUTE]     = gBattleAnimGeneral_SwapToSubstitute,
+    [B_ANIM_SWAP_FROM_SUBSTITUTE]   = gBattleAnimGeneral_SwapFromSubstitute,
+    [B_ANIM_MON_SCARED]             = gBattleAnimGeneral_MonScared,
+	[B_ANIM_GHOST_GET_OUT]          = gBattleAnimGeneral_GhostGetOut,
+	[B_ANIM_SILPH_SCOPED]           = gBattleAnimGeneral_SilphScoped,
+	[B_ANIM_ROCK_THROW]             = gBattleAnimGeneral_SafariRockThrow,
+	[B_ANIM_SAFARI_REACTION]        = gBattleAnimGeneral_SafariReaction,
 };
 
 static const u8* const sBattleAnims_Special[NUM_B_ANIMS_SPECIAL] =
@@ -299,12 +313,12 @@ void ClearBattleAnimationVars(void)
     gAnimCustomPanning = 0;
 }
 
-void DoMoveAnim(u16 move)
+void DoMoveAnim(enum Move move)
 {
     gBattleAnimAttacker = gBattlerAttacker;
     gBattleAnimTarget = gBattlerTarget;
     // Make sure the anim target of moves hitting everyone is at the opposite side.
-    if (GetBattlerMoveTargetType(gBattlerAttacker, move) & MOVE_TARGET_FOES_AND_ALLY && IsDoubleBattle())
+    if (GetBattlerMoveTargetType(gBattleAnimAttacker, move) == TARGET_FOES_AND_ALLY && IsDoubleBattle())
     {
         while (IsBattlerAlly(gBattleAnimAttacker, gBattleAnimTarget))
         {
@@ -400,6 +414,32 @@ void LaunchBattleAnimation(u32 animType, u32 animId)
         break;
     case ANIM_TYPE_MOVE:
         sBattleAnimScriptPtr = GetMoveAnimationScript(animId);
+
+        if (sBattleAnimScriptPtr == gBattleAnimMove_SecretPower)
+        {
+            if (gFieldStatuses & STATUS_FIELD_TERRAIN_ANY)
+            {
+                switch (gFieldStatuses & STATUS_FIELD_TERRAIN_ANY)
+                {
+                case STATUS_FIELD_MISTY_TERRAIN:
+                    sBattleAnimScriptPtr = gBattleAnimMove_FairyWind;
+                    break;
+                case STATUS_FIELD_GRASSY_TERRAIN:
+                    sBattleAnimScriptPtr = gBattleAnimMove_NeedleArm;
+                    break;
+                case STATUS_FIELD_ELECTRIC_TERRAIN:
+                    sBattleAnimScriptPtr = gBattleAnimMove_ThunderShock;
+                    break;
+                case STATUS_FIELD_PSYCHIC_TERRAIN:
+                    sBattleAnimScriptPtr = gBattleAnimMove_Confusion;
+                    break;
+                }
+            }
+            else
+            {
+                sBattleAnimScriptPtr = gBattleEnvironmentInfo[gBattleEnvironment].secretPowerAnimation;
+            }
+        }
         break;
     case ANIM_TYPE_STATUS:
         sBattleAnimScriptPtr = sBattleAnims_StatusConditions[animId];
@@ -507,8 +547,8 @@ static void Cmd_loadspritegfx(void)
 
     sBattleAnimScriptPtr++;
     index = T1_READ_16(sBattleAnimScriptPtr);
-    LoadCompressedSpriteSheetUsingHeap(&gBattleAnimPicTable[GET_TRUE_SPRITE_INDEX(index)]);
-    LoadSpritePalette(&gBattleAnimPaletteTable[GET_TRUE_SPRITE_INDEX(index)]);
+    LoadCompressedSpriteSheetUsingHeap(&gBattleAnimTable[GET_TRUE_SPRITE_INDEX(index)].pic);
+    LoadSpritePalette(&gBattleAnimTable[GET_TRUE_SPRITE_INDEX(index)].palette);
     sBattleAnimScriptPtr += 2;
     AddSpriteIndex(GET_TRUE_SPRITE_INDEX(index));
     sAnimFramesToWait = 1;
@@ -521,19 +561,19 @@ static void Cmd_unloadspritegfx(void)
 
     sBattleAnimScriptPtr++;
     index = T1_READ_16(sBattleAnimScriptPtr);
-    FreeSpriteTilesByTag(gBattleAnimPicTable[GET_TRUE_SPRITE_INDEX(index)].tag);
-    FreeSpritePaletteByTag(gBattleAnimPicTable[GET_TRUE_SPRITE_INDEX(index)].tag);
+    FreeSpriteTilesByTag(gBattleAnimTable[GET_TRUE_SPRITE_INDEX(index)].pic.tag);
+    FreeSpritePaletteByTag(gBattleAnimTable[GET_TRUE_SPRITE_INDEX(index)].pic.tag);
     sBattleAnimScriptPtr += 2;
     ClearSpriteIndex(GET_TRUE_SPRITE_INDEX(index));
 }
 
-static u8 GetBattleAnimMoveTargets(u8 battlerArgIndex, u8 *targets)
+static u8 GetBattleAnimMoveTargets(u8 battlerArgIndex, enum BattlerId *targets)
 {
     u8 numTargets = 0;
-    u32 battlerAnimId = gBattleAnimArgs[battlerArgIndex];   // ANIM_xx input
-    u32 i;
-    u32 ignoredTgt = gBattlerAttacker;
-    u32 target = GetBattlerMoveTargetType(gBattleAnimAttacker, gAnimMoveIndex);
+    enum AnimBattler battlerAnimId = gBattleAnimArgs[battlerArgIndex];   // ANIM_xx input
+    enum BattlerId i;
+    enum BattlerId ignoredTgt;
+    enum MoveTarget target = GetBattlerMoveTargetType(gBattleAnimAttacker, gAnimMoveIndex);
 
     switch (battlerAnimId)
     {
@@ -543,13 +583,14 @@ static u8 GetBattleAnimMoveTargets(u8 battlerArgIndex, u8 *targets)
         break;
     case ANIM_TARGET:
     case ANIM_DEF_PARTNER:
+    default:
         ignoredTgt = gBattlerAttacker;
         break;
     }
 
     switch (target)
     {
-    case MOVE_TARGET_FOES_AND_ALLY:
+    case TARGET_FOES_AND_ALLY:
         if (battlerAnimId == ANIM_ATTACKER)
         {
             targets[numTargets++] = gBattleAnimAttacker;
@@ -563,7 +604,7 @@ static u8 GetBattleAnimMoveTargets(u8 battlerArgIndex, u8 *targets)
             }
         }
         break;
-    case MOVE_TARGET_BOTH: // all opponents
+    case TARGET_BOTH: // all opponents
         for (i = 0; i < gBattlersCount; i++)
         {
             if (i != ignoredTgt && !IsBattlerAlly(i, ignoredTgt) && IS_ALIVE_AND_PRESENT(i))
@@ -645,8 +686,9 @@ static void Cmd_createsprite(void)
 
 static void CreateSpriteOnTargets(const struct SpriteTemplate *template, u8 argVar, u8 battlerArgIndex, u8 argsCount, bool32 overwriteAnimTgt)
 {
-    u32 i, battler;
-    u8 targets[MAX_BATTLERS_COUNT];
+    u32 i;
+    enum BattlerId battler;
+    enum BattlerId targets[MAX_BATTLERS_COUNT];
     int ntargets;
     s16 subpriority;
 
@@ -664,7 +706,7 @@ static void CreateSpriteOnTargets(const struct SpriteTemplate *template, u8 argV
 
     for (i = 0; i < ntargets; i++)
     {
-        battler = GetAnimBattlerId(targets[i]);
+        battler = GetAnimBattlerId((enum AnimBattler)targets[i]);
         if (overwriteAnimTgt)
             gBattleAnimArgs[battlerArgIndex] = targets[i];
 
@@ -764,7 +806,7 @@ static void Cmd_createvisualtaskontargets(void)
     u8 numArgs;
     u8 battlerArgIndex; // index in gBattleAnimArgs that has the battlerId
     s32 i;
-    u8 targets[MAX_BATTLERS_COUNT] = {0};
+    enum BattlerId targets[MAX_BATTLERS_COUNT] = {0};
 
     sBattleAnimScriptPtr++;
 
@@ -869,17 +911,15 @@ static void Cmd_end(void)
     {
         if (sAnimSpriteIndexArray[i] != 0xFFFF)
         {
-            FreeSpriteTilesByTag(gBattleAnimPicTable[sAnimSpriteIndexArray[i]].tag);
-            FreeSpritePaletteByTag(gBattleAnimPicTable[sAnimSpriteIndexArray[i]].tag);
+            FreeSpriteTilesByTag(gBattleAnimTable[sAnimSpriteIndexArray[i]].pic.tag);
+            FreeSpritePaletteByTag(gBattleAnimTable[sAnimSpriteIndexArray[i]].pic.tag);
             sAnimSpriteIndexArray[i] = 0xFFFF; // set terminator.
         }
     }
 
     if (!continuousAnim) // May have been used for debug?
     {
-        // Debugging - ensure no hanging mon bg tasks
-        if (FuncIsActiveTask(Task_UpdateMonBg))
-            DebugPrintf("Move %d animation still has Task_UpdateMonBg active at the end!", gAnimMoveIndex);
+        assertf(!FuncIsActiveTask(Task_UpdateMonBg), "move %d still has Task_UpdateMonBg active at the end", gAnimMoveIndex);
 
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, TRACKS_ALL, 256);
         if (!IsContest())
@@ -957,8 +997,8 @@ static void Cmd_monbg(void)
 {
     bool8 toBG_2;
     u8 taskId;
-    u8 battler;
-    u8 animBattler;
+    enum BattlerId battler;
+    enum AnimBattler animBattler;
 
     sBattleAnimScriptPtr++;
 
@@ -971,7 +1011,7 @@ static void Cmd_monbg(void)
     // Move designated battler to background
     if (IsBattlerSpriteVisible(battler))
     {
-        u8 position = GetBattlerPosition(battler);
+        enum BattlerPosition position = GetBattlerPosition(battler);
         if (position == B_POSITION_OPPONENT_LEFT || position == B_POSITION_PLAYER_RIGHT || IsContest())
             toBG_2 = FALSE;
         else
@@ -991,7 +1031,7 @@ static void Cmd_monbg(void)
     battler ^= BIT_FLANK;
     if (IsBattlerSpriteVisible(battler))
     {
-        u8 position = GetBattlerPosition(battler);
+        enum BattlerPosition position = GetBattlerPosition(battler);
         if (position == B_POSITION_OPPONENT_LEFT || position == B_POSITION_PLAYER_RIGHT || IsContest())
             toBG_2 = FALSE;
         else
@@ -1011,7 +1051,7 @@ static void Cmd_monbg(void)
     gAnimScriptCallback = WaitAnimFrameCount;
 }
 
-u8 GetAnimBattlerId(u8 wantedBattler)
+enum BattlerId GetAnimBattlerId(enum AnimBattler wantedBattler)
 {
     switch (wantedBattler)
     {
@@ -1029,7 +1069,7 @@ u8 GetAnimBattlerId(u8 wantedBattler)
     }
 }
 
-bool8 IsBattlerSpriteVisible(u8 battler)
+bool8 IsBattlerSpriteVisible(enum BattlerId battler)
 {
     if (IsContest())
     {
@@ -1048,14 +1088,14 @@ bool8 IsBattlerSpriteVisible(u8 battler)
     return FALSE;
 }
 
-void MoveBattlerSpriteToBG(u8 battler, bool8 toBG_2, bool8 setSpriteInvisible)
+void MoveBattlerSpriteToBG(enum BattlerId battler, bool8 toBG_2, bool8 setSpriteInvisible)
 {
     struct BattleAnimBgData animBg;
     u8 battlerSpriteId;
 
     if (!toBG_2)
     {
-        u8 battlerPosition;
+        enum BattlerPosition battlerPosition;
 
         if (IsContest() == TRUE)
         {
@@ -1234,8 +1274,8 @@ static void Task_UpdateMonBg(u8 taskId)
 
 static void Cmd_clearmonbg(void)
 {
-    u8 animBattlerId;
-    u8 battler;
+    enum AnimBattler animBattlerId;
+    enum BattlerId battler;
     u8 taskId;
 
     sBattleAnimScriptPtr++;
@@ -1271,7 +1311,7 @@ static void Task_ClearMonBg(u8 taskId)
     if (gTasks[taskId].data[1] != 1)
     {
         u8 to_BG2;
-        u8 position = GetBattlerPosition(gTasks[taskId].data[2]);
+        enum BattlerPosition position = GetBattlerPosition(gTasks[taskId].data[2]);
         if (position == B_POSITION_OPPONENT_LEFT || position == B_POSITION_PLAYER_RIGHT || IsContest())
             to_BG2 = FALSE;
         else
@@ -1297,8 +1337,8 @@ static void Task_ClearMonBg(u8 taskId)
 static void Cmd_monbg_static(void)
 {
     bool8 toBG_2;
-    u8 battler;
-    u8 animBattlerId;
+    enum BattlerId battler;
+    enum AnimBattler animBattlerId;
 
     sBattleAnimScriptPtr++;
 
@@ -1316,7 +1356,7 @@ static void Cmd_monbg_static(void)
 
     if (IsBattlerSpriteVisible(battler))
     {
-        u8 position = GetBattlerPosition(battler);
+        enum BattlerPosition position = GetBattlerPosition(battler);
         if (position == B_POSITION_OPPONENT_LEFT || position == B_POSITION_PLAYER_RIGHT || IsContest())
             toBG_2 = FALSE;
         else
@@ -1328,7 +1368,7 @@ static void Cmd_monbg_static(void)
     battler ^= BIT_FLANK;
     if (animBattlerId > 1 && IsBattlerSpriteVisible(battler))
     {
-        u8 position = GetBattlerPosition(battler);
+        enum BattlerPosition position = GetBattlerPosition(battler);
         if (position == B_POSITION_OPPONENT_LEFT || position == B_POSITION_PLAYER_RIGHT || IsContest())
             toBG_2 = FALSE;
         else
@@ -1342,8 +1382,8 @@ static void Cmd_monbg_static(void)
 
 static void Cmd_clearmonbg_static(void)
 {
-    u8 animBattlerId;
-    u8 battler;
+    enum AnimBattler animBattlerId;
+    enum BattlerId battler;
     u8 taskId;
 
     sBattleAnimScriptPtr++;
@@ -1379,8 +1419,8 @@ static void Task_ClearMonBgStatic(u8 taskId)
     if (gTasks[taskId].data[1] != 1)
     {
         bool8 toBG_2;
-        u8 battler = gTasks[taskId].data[2];
-        u8 position = GetBattlerPosition(battler);
+        enum BattlerId battler = gTasks[taskId].data[2];
+        enum BattlerPosition position = GetBattlerPosition(battler);
         if (position == B_POSITION_OPPONENT_LEFT || position == B_POSITION_PLAYER_RIGHT || IsContest())
             toBG_2 = FALSE;
         else
@@ -1569,15 +1609,12 @@ void LoadMoveBg(u16 bgId)
 {
     if (IsContest())
     {
-        void *decompressionBuffer = Alloc(0x800);
-        const u32 *tilemap = gBattleAnimBackgroundTable[bgId].tilemap;
-
-        DecompressDataWithHeaderWram(tilemap, decompressionBuffer);
+        void *decompressionBuffer = malloc_and_decompress(gBattleAnimBackgroundTable[bgId].tilemap, NULL);
         RelocateBattleBgPal(GetBattleBgPaletteNum(), decompressionBuffer, 0x100, FALSE);
         DmaCopy32(3, decompressionBuffer, (void *)BG_SCREEN_ADDR(26), 0x800);
+        Free(decompressionBuffer);
         DecompressDataWithHeaderVram(gBattleAnimBackgroundTable[bgId].image, (void *)BG_SCREEN_ADDR(4));
         LoadPalette(gBattleAnimBackgroundTable[bgId].palette, BG_PLTT_ID(GetBattleBgPaletteNum()), PLTT_SIZE_4BPP);
-        Free(decompressionBuffer);
     }
     else
     {
@@ -2069,9 +2106,9 @@ static void Cmd_jumpifcontest(void)
 
 static void Cmd_splitbgprio(void)
 {
-    u8 wantedBattler;
-    u8 battler;
-    u8 battlerPosition;
+    enum AnimBattler wantedBattler;
+    enum BattlerId battler;
+    enum BattlerPosition battlerPosition;
 
     wantedBattler = sBattleAnimScriptPtr[1];
     sBattleAnimScriptPtr += 2;
@@ -2102,9 +2139,9 @@ static void Cmd_splitbgprio_all(void)
 
 static void Cmd_splitbgprio_foes(void)
 {
-    u8 wantedBattler;
-    u8 battlerPosition;
-    u8 battler;
+    enum AnimBattler wantedBattler;
+    enum BattlerPosition battlerPosition;
+    enum BattlerId battler;
 
     wantedBattler = sBattleAnimScriptPtr[1];
     sBattleAnimScriptPtr += 2;
@@ -2129,9 +2166,8 @@ static void Cmd_splitbgprio_foes(void)
 
 static void Cmd_invisible(void)
 {
-    u8 spriteId;
-
-    spriteId = GetAnimBattlerSpriteId(sBattleAnimScriptPtr[1]);
+    enum AnimBattler animBattler = sBattleAnimScriptPtr[1];
+    u8 spriteId = GetAnimBattlerSpriteId(animBattler);
     if (spriteId != SPRITE_NONE)
         gSprites[spriteId].invisible = TRUE;
 
@@ -2140,9 +2176,8 @@ static void Cmd_invisible(void)
 
 static void Cmd_visible(void)
 {
-    u8 spriteId;
-
-    spriteId = GetAnimBattlerSpriteId(sBattleAnimScriptPtr[1]);
+    enum AnimBattler animBattler = sBattleAnimScriptPtr[1];
+    u8 spriteId = GetAnimBattlerSpriteId(animBattler);
     if (spriteId != SPRITE_NONE)
         gSprites[spriteId].invisible = FALSE;
 
@@ -2224,7 +2259,7 @@ static void Cmd_stopsound(void)
 
 static void Cmd_jumpifmovetypeequal(void)
 {
-    const u8 *type = sBattleAnimScriptPtr + 1;
+    const enum Type *type = sBattleAnimScriptPtr + 1;
     sBattleAnimScriptPtr += 2;
     if (*type != GetBattleMoveType(gCurrentMove))
         sBattleAnimScriptPtr += 4;

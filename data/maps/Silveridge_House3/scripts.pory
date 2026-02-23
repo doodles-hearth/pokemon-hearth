@@ -7,7 +7,7 @@ script Silveridge_House3_EventScript_DreamingPokemon {
 	faceplayer
 	setspeaker(SP_NAME_GIRL)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 EMOTE_NORMAL}My Pokémon fell asleep during a battle,\nand it started dreaming!\l"
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 0}My Pokémon fell asleep during a battle,\nand it started dreaming!\l"
 		"It was so cute!"
 	))
 	closemessage

@@ -1,0 +1,226 @@
+const FLAG_HIDE_BOAT_GUY = FLAG_TEMP_1
+const FLAG_HIDE_LOST_GIRL_AND_CARBINK = FLAG_TEMP_2
+
+mapscripts SabersideTown_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_SHIP_SABERSIDE_SOULKEEP, 0: SabersideTown_EventScript_AnchorBoat
+	]
+	MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_SHIP_SABERSIDE_SOULKEEP) == 0) {
+			setobjectxyperm(LOCALID_SABERSIDE_BOAT_GUY, 8, 27)
+			setobjectxyperm(LOCALID_SABERSIDE_WINGULL, 9, 26)
+
+		} elif (var(VAR_SHIP_SABERSIDE_SOULKEEP) != 2) {
+			setflag(FLAG_HIDE_BOAT_GUY)
+		}
+
+		if (var(VAR_SABERSIDE_LOST_GIRL_QUEST_STATE) != 4) {
+			setflag(FLAG_HIDE_LOST_GIRL_AND_CARBINK)
+		}
+	}
+}
+
+script(local) SabersideTown_EventScript_AnchorBoat {
+	lockall
+	
+	waitse
+	playse(SE_LEDGE)
+	applymovement(LOCALID_PLAYER, moves(jump_right, walk_down, delay_16, face_up))
+	waitse
+
+	delay(16)
+	playse(SE_LEDGE)
+	applymovement(LOCALID_SABERSIDE_BOAT_GUY, moves(jump_2_right, delay_16, face_down))
+	waitmovement(LOCALID_SABERSIDE_BOAT_GUY)
+	waitse
+
+	playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+	applymovement(LOCALID_SABERSIDE_WINGULL, moves(walk_right * 2, walk_down))
+	waitmoncry
+
+	setvar(VAR_SHIP_SABERSIDE_SOULKEEP, 2)
+
+	waitmovement(0)
+
+	releaseall
+}
+
+script SabersideTown_EventScript_Wingull {
+	lock
+    faceplayer
+	setseenmon(SPECIES_WINGULL)
+	setspeakertomonname(SPECIES_WINGULL)
+	playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Eeeh!"
+    ))
+    waitmoncry
+    release
+}
+
+script SabersideTown_EventScript_BoatGuy {
+	lock
+	faceplayer
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}I'm about to sail!\n"
+		"Want to hop along?"
+	))
+
+	mcdialogueB(
+		"To Soulkeep!",
+		"To Coreef Isle!",
+		"No need."
+	)
+	closemessage
+
+	switch (var(VAR_RESULT)) {
+		case 0:
+			call(SabersideTown_EventScript_HopOnBoat)
+			warpsilent(MAP_LONG_TIDE_CHANNEL_SOULKEEP, WARP_ID_SOULKEEP_BOAT)
+		case 1:
+			call(SabersideTown_EventScript_HopOnBoat)
+			warpsilent(MAP_COREEF_ISLE, WARP_ID_COREEF_BOAT)
+	}
+
+	release
+}
+
+script(local) SabersideTown_EventScript_HopOnBoat {
+	waitse
+	playse(SE_LEDGE)
+	applymovement(VAR_LAST_TALKED, moves(jump_2_left, delay_16 * 2))
+	waitmovement(VAR_LAST_TALKED)
+	waitse
+
+	playmoncry(SPECIES_WINGULL, CRY_MODE_NORMAL)
+	applymovement(LOCALID_SABERSIDE_WINGULL, moves(walk_up, walk_left * 2, walk_in_place_left * 5))
+	waitmoncry
+
+	hidefollower
+	applymovement(LOCALID_PLAYER, moves(walk_up))
+	waitmovement(LOCALID_PLAYER)
+	playse(SE_LEDGE)
+	applymovement(LOCALID_PLAYER, moves(jump_left, delay_16, face_down, delay_16))
+	waitmovement(LOCALID_PLAYER)
+	waitse
+
+	playse(SE_MUGSHOT)
+	setvar(VAR_SHIP_SABERSIDE_SOULKEEP, 0)
+}
+
+script SabersideTown_EventScript_LoveSwords {
+	lock
+	faceplayer
+	msgbox(format(
+		"{SPEAKER NAME_TRAVELER}People come from the whole region to get their hands on a Saberside-made blade."
+	))
+	closemessage
+	release
+}
+
+script SabersideTown_EventScript_Carkol {
+	lock
+	faceplayer
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1}{SPEAKER NAME_GIRL}Carkol transports ore from the quarry and the forge.\p"
+		"Its inner fire keeps it energized.\nLook at its little legs rolling!\p"
+	))
+	closemessage
+	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
+	waitmovement(0)
+
+	setnamedmon(SPECIES_CARKOL)
+	setdescribedmon(SPECIES_CARKOL)
+
+	release
+}
+
+script SabersideTown_EventScript_Sableye {
+	lock
+	faceplayer
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}Saberside Quarry is gem-rich, but…\nIt's filled with Sableye!\p"
+		"Ghosts terrify me… I can't do it…"
+	))
+	closemessage
+
+	setnamedmon(SPECIES_SABLEYE)
+
+	release
+}
+
+script SabersideTown_EventScript_ShowMeSkarmory {
+	lock
+	faceplayer
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Ya see this super cool fountain?\nThat's my faaaavorite Pokémon!"
+	))
+	closemessage
+
+	if (checkspecies(SPECIES_SKARMORY)) {
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
+		waitmovement(VAR_LAST_TALKED)
+
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Oh! Oh! Oh! You have a Skramory?\nShow it! Show me the Skramory!!"
+		))
+		closemessage
+
+		checkspecies_choose(SPECIES_SKARMORY)
+
+		if (var(VAR_RESULT)) {
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}I love it! I love it soooo much!\p"
+				"He's even more metal-y than the fountain!"
+			))
+			closemessage
+
+			// TODO EVA reward: Skarmory Feather?
+
+			setflag(FLAG_SHOWED_SKARMORY_TO_LITTLE_GIRL)
+		} else {
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Awww, nevermind…"
+			))
+			closemessage
+		}
+	}
+
+	release
+}
+
+script SabersideTown_EventScript_LostGirl {
+	lock
+	faceplayer
+	applymovement(VAR_LAST_TALKED, moves(emote_happy))
+	
+	special(GetPlayerMrMrsString)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Heeheehee! Oh, hi, {STR_VAR_1}!\nCarbink is great!\p"
+		"Dad often brings us along to see the\nother Carbink in the Quarry!"
+	))
+	waitmovement(0)
+	closemessage
+	release
+}
+
+script SabersideTown_EventScript_Carbink {
+	lock
+    faceplayer
+	setseenmon(SPECIES_CARBINK)
+	setspeakertomonname(SPECIES_CARBINK)
+	applymovement(VAR_LAST_TALKED, moves(emote_music))
+	playmoncry(SPECIES_CARBINK, CRY_MODE_NORMAL)
+    msgbox(format(
+        "Chinkitink!"
+    ))
+    waitmoncry
+	waitmovement(0)
+	closemessage
+    release
+}
+
+script SabersideTown_EventScript_TownSign {
+	msgbox(format("Saberside Town\n“A town where folks are strong as steel!”"), MSGBOX_SIGN)
+}

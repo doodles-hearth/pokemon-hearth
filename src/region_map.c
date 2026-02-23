@@ -19,6 +19,7 @@
 #include "field_effect.h"
 #include "field_specials.h"
 #include "fldeff.h"
+#include "regions.h"
 #include "region_map.h"
 #include "decompress.h"
 #include "constants/region_map_sections.h"
@@ -64,7 +65,7 @@ enum {
 struct MultiNameFlyDest
 {
     const u8 *const *name;
-    u16 mapSecId;
+    mapsec_u16_t mapSecId;
     u16 flag;
 };
 
@@ -73,7 +74,7 @@ static EWRAM_DATA struct RegionMap *sRegionMap = NULL;
 static EWRAM_DATA struct {
     void (*callback)(void);
     u16 state;
-    u16 mapSecId;
+    mapsec_u16_t mapSecId;
     struct RegionMap regionMap;
     u8 tileBuffer[0x2c0];
     u8 nameBuffer[0x26]; // never read
@@ -87,14 +88,14 @@ static u8 MoveRegionMapCursor_Full(void);
 static u8 ProcessRegionMapInput_Zoomed(void);
 static u8 MoveRegionMapCursor_Zoomed(void);
 static void CalcZoomScrollParams(s16 scrollX, s16 scrollY, s16 c, s16 d, u16 e, u16 f, u8 rotation);
-static u16 GetMapSecIdAt(u16 x, u16 y);
+static mapsec_u16_t GetMapSecIdAt(u16 x, u16 y);
 static void RegionMap_SetBG2XAndBG2Y(s16 x, s16 y);
 static void InitMapBasedOnPlayerLocation(void);
 static void RegionMap_InitializeStateBasedOnSSTidalLocation(void);
-static u16 CorrectSpecialMapSecId_Internal(u16 mapSecId);
-static u16 GetTerraOrMarineCaveMapSecId(void);
+static mapsec_u16_t CorrectSpecialMapSecId_Internal(mapsec_u16_t mapSecId);
+static mapsec_u16_t GetTerraOrMarineCaveMapSecId(void);
 /* static void GetMarineCaveCoords(u16 *x, u16 *y); */
-static bool32 IsPlayerInAquaHideout(u8 mapSecId);
+static bool32 IsPlayerInAquaHideout(mapsec_u8_t mapSecId);
 static void GetPositionOfCursorWithinMapSec(void);
 static bool8 RegionMap_IsMapSecIdInNextRow(u16 y);
 static void SpriteCB_CursorMapFull(struct Sprite *sprite);
@@ -130,7 +131,7 @@ static const u8 sRegionMapPlayerIcon_MayGfx[] = INCBIN_U8("graphics/region_map_h
 #include "data/region_map/region_map_layout.h"
 #include "data/region_map/region_map_entries.h"
 
-static const u16 sRegionMap_SpecialPlaceLocations[][2] =
+static const mapsec_u16_t sRegionMap_SpecialPlaceLocations[][2] =
 {
     /* {MAPSEC_UNDERWATER_105,             MAPSEC_SCENIC_ROUTE},
     {MAPSEC_UNDERWATER_124,             MAPSEC_COREEF_ISLE},
@@ -142,7 +143,7 @@ static const u16 sRegionMap_SpecialPlaceLocations[][2] =
     {MAPSEC_NONE,                       MAPSEC_NONE}
 };
 
-static const u16 sMarineCaveMapSecIds[] =
+static const mapsec_u16_t sMarineCaveMapSecIds[] =
 {
     /* MAPSEC_MARINE_CAVE,
     MAPSEC_UNDERWATER_MARINE_CAVE,
@@ -150,7 +151,7 @@ static const u16 sMarineCaveMapSecIds[] =
     MAPSEC_NONE
 };
 
-static const u16 sTerraOrMarineCaveMapSecIds[ABNORMAL_WEATHER_LOCATIONS] =
+static const mapsec_u16_t sTerraOrMarineCaveMapSecIds[ABNORMAL_WEATHER_LOCATIONS] =
 {
     [ABNORMAL_WEATHER_ROUTE_114_NORTH - 1] = MAPSEC_DRYUGON,
     [ABNORMAL_WEATHER_ROUTE_114_SOUTH - 1] = MAPSEC_DRYUGON,
@@ -184,7 +185,7 @@ static const struct UCoords16 sMarineCaveLocationCoords[MARINE_CAVE_LOCATIONS] =
     [MARINE_CAVE_COORD(ROUTE_129_EAST)]  = {24, 10}
 };
 
-static const u8 sMapSecAquaHideoutOld[] =
+static const mapsec_u8_t sMapSecAquaHideoutOld[] =
 {
     MAPSEC_NONE
     /* MAPSEC_AQUA_HIDEOUT_OLD */
@@ -231,8 +232,6 @@ static const struct SpriteTemplate sRegionMapCursorSpriteTemplate =
     .paletteTag = TAG_CURSOR,
     .oam = &sRegionMapCursorOam,
     .anims = sRegionMapCursorAnimTable,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_CursorMapFull
 };
 
@@ -258,7 +257,7 @@ static const union AnimCmd *const sRegionMapPlayerIconAnimTable[] =
 /* MAPSEC_BIRTH_ISLAND,
 MAPSEC_FARAWAY_ISLAND,
 MAPSEC_NAVEL_ROCK */
-static const u8 sMapSecIdsOffMap[] =
+static const mapsec_u8_t sMapSecIdsOffMap[] =
 {
     MAPSEC_NONE,
 };
@@ -268,6 +267,92 @@ static const u32 sRegionMapFrameGfxLZ[] = INCBIN_U32("graphics/region_map_hearth
 static const u32 sRegionMapFrameTilemapLZ[] = INCBIN_U32("graphics/region_map_hearth/frame.bin.smolTM");
 static const u16 sFlyTargetIcons_Pal[] = INCBIN_U16("graphics/region_map_hearth/fly_target_icons.gbapal");
 static const u32 sFlyTargetIcons_Gfx[] = INCBIN_U32("graphics/region_map_hearth/fly_target_icons.4bpp.smol");
+
+static const u16 ALIGNED(4) sPokedexAreaMap_Pal[] = INCBIN_U16("graphics/pokedex/region_map.gbapal");
+static const u32 sPokedexAreaMap_Gfx[] = INCBIN_U32("graphics/pokedex/region_map.8bpp.smol");
+static const u32 sPokedexAreaMap_Tilemap[] = INCBIN_U32("graphics/pokedex/region_map.bin.smolTM");
+
+static const u16 ALIGNED(4) sPokedexAreaMapKanto_Pal[] = INCBIN_U16("graphics/pokedex/region_map_kanto.gbapal");
+static const u32 sPokedexAreaMapKanto_Gfx[] = INCBIN_U32("graphics/pokedex/region_map_kanto.8bpp.smol");
+static const u32 sPokedexAreaMapKanto_Tilemap[] = INCBIN_U32("graphics/pokedex/region_map_kanto.bin.smolTM");
+static const u16 ALIGNED(4) sRegionMapKanto_Pal[] = INCBIN_U16("graphics/pokenav/region_map/map_kanto.gbapal");
+static const u32 sRegionMapKanto_Gfx[] = INCBIN_U32("graphics/pokenav/region_map/map_kanto.8bpp.smol");
+static const u32 sRegionMapKanto_Tilemap[] = INCBIN_U32("graphics/pokenav/region_map/map_kanto.bin.smolTM");
+
+static const u16 ALIGNED(4) sPokedexAreaMapSevii123_Pal[] = INCBIN_U16("graphics/pokedex/region_map_sevii123.gbapal");
+static const u32 sPokedexAreaMapSevii123_Gfx[] = INCBIN_U32("graphics/pokedex/region_map_sevii123.8bpp.smol");
+static const u32 sPokedexAreaMapSevii123_Tilemap[] = INCBIN_U32("graphics/pokedex/region_map_sevii123.bin.smolTM");
+static const u16 ALIGNED(4) sRegionMapSevii123_Pal[] = INCBIN_U16("graphics/pokenav/region_map/map_sevii_123.gbapal");
+static const u32 sRegionMapSevii123_Gfx[] = INCBIN_U32("graphics/pokenav/region_map/map_sevii_123.8bpp.smol");
+static const u32 sRegionMapSevii123_Tilemap[] = INCBIN_U32("graphics/pokenav/region_map/map_sevii_123.bin.smolTM");
+
+static const u16 ALIGNED(4) sPokedexAreaMapSevii45_Pal[] = INCBIN_U16("graphics/pokedex/region_map_sevii45.gbapal");
+static const u32 sPokedexAreaMapSevii45_Gfx[] = INCBIN_U32("graphics/pokedex/region_map_sevii45.8bpp.smol");
+static const u32 sPokedexAreaMapSevii45_Tilemap[] = INCBIN_U32("graphics/pokedex/region_map_sevii45.bin.smolTM");
+static const u16 ALIGNED(4) sRegionMapSevii45_Pal[] = INCBIN_U16("graphics/pokenav/region_map/map_sevii_45.gbapal");
+static const u32 sRegionMapSevii45_Gfx[] = INCBIN_U32("graphics/pokenav/region_map/map_sevii_45.8bpp.smol");
+static const u32 sRegionMapSevii45_Tilemap[] = INCBIN_U32("graphics/pokenav/region_map/map_sevii_45.bin.smolTM");
+
+static const u16 ALIGNED(4) sPokedexAreaMapSevii67_Pal[] = INCBIN_U16("graphics/pokedex/region_map_sevii67.gbapal");
+static const u32 sPokedexAreaMapSevii67_Gfx[] = INCBIN_U32("graphics/pokedex/region_map_sevii67.8bpp.smol");
+static const u32 sPokedexAreaMapSevii67_Tilemap[] = INCBIN_U32("graphics/pokedex/region_map_sevii67.bin.smolTM");
+static const u16 ALIGNED(4) sRegionMapSevii67_Pal[] = INCBIN_U16("graphics/pokenav/region_map/map_sevii_67.gbapal");
+static const u32 sRegionMapSevii67_Gfx[] = INCBIN_U32("graphics/pokenav/region_map/map_sevii_67.8bpp.smol");
+static const u32 sRegionMapSevii67_Tilemap[] = INCBIN_U32("graphics/pokenav/region_map/map_sevii_67.bin.smolTM");
+
+const struct RegionMapInfo gRegionMapInfos[] =
+{
+    [REGION_MAP_HOENN]    =
+    {
+        .dexMapPalette = sPokedexAreaMap_Pal,
+        .dexMapGfx = sPokedexAreaMap_Gfx,
+        .dexMapTilemap = sPokedexAreaMap_Tilemap,
+        .dexMapPaletteSize = sizeof(sPokedexAreaMap_Pal),
+        .regionMapPalette = sRegionMapBg_Pal,
+        .regionMapGfx = sRegionMapBg_GfxLZ,
+        .regionMapTilemap = sRegionMapBg_TilemapLZ,
+    },
+    [REGION_MAP_KANTO]    =
+    {
+        .dexMapPalette = sPokedexAreaMapKanto_Pal,
+        .dexMapGfx = sPokedexAreaMapKanto_Gfx,
+        .dexMapTilemap = sPokedexAreaMapKanto_Tilemap,
+        .dexMapPaletteSize = sizeof(sPokedexAreaMapKanto_Pal),
+        .regionMapPalette = sRegionMapKanto_Pal,
+        .regionMapGfx = sRegionMapKanto_Gfx,
+        .regionMapTilemap = sRegionMapKanto_Tilemap,
+    },
+    [REGION_MAP_SEVII123] =
+    {
+        .dexMapPalette = sPokedexAreaMapSevii123_Pal,
+        .dexMapGfx = sPokedexAreaMapSevii123_Gfx,
+        .dexMapTilemap = sPokedexAreaMapSevii123_Tilemap,
+        .dexMapPaletteSize = sizeof(sPokedexAreaMapSevii123_Pal),
+        .regionMapPalette = sRegionMapSevii123_Pal,
+        .regionMapGfx = sRegionMapSevii123_Gfx,
+        .regionMapTilemap = sRegionMapSevii123_Tilemap,
+    },
+    [REGION_MAP_SEVII45]  =
+    {
+        .dexMapPalette = sPokedexAreaMapSevii45_Pal,
+        .dexMapGfx = sPokedexAreaMapSevii45_Gfx,
+        .dexMapTilemap = sPokedexAreaMapSevii45_Tilemap,
+        .dexMapPaletteSize = sizeof(sPokedexAreaMapSevii45_Pal),
+        .regionMapPalette = sRegionMapSevii45_Pal,
+        .regionMapGfx = sRegionMapSevii45_Gfx,
+        .regionMapTilemap = sRegionMapSevii45_Tilemap,
+    },
+    [REGION_MAP_SEVII67]  =
+    {
+        .dexMapPalette = sPokedexAreaMapSevii67_Pal,
+        .dexMapGfx = sPokedexAreaMapSevii67_Gfx,
+        .dexMapTilemap = sPokedexAreaMapSevii67_Tilemap,
+        .dexMapPaletteSize = sizeof(sPokedexAreaMapSevii67_Pal),
+        .regionMapPalette = sRegionMapSevii67_Pal,
+        .regionMapGfx = sRegionMapSevii67_Gfx,
+        .regionMapTilemap = sRegionMapSevii67_Tilemap,
+    },
+};
 
 static const u8 sMapHealLocations[][3] =
 {
@@ -324,7 +409,6 @@ static const u8 sMapHealLocations[][3] =
     [MAPSEC_SABERSIDE_TOWN] = {MAP_GROUP(MAP_SABERSIDE_TOWN), MAP_NUM(MAP_SABERSIDE_TOWN), HEAL_LOCATION_SABERSIDE_TOWN},
     [MAPSEC_HANABI_CITY] = {MAP_GROUP(MAP_HANABI_CITY), MAP_NUM(MAP_HANABI_CITY), HEAL_LOCATION_HANABI_CITY},
     [MAPSEC_LEAGUE] = {MAP_GROUP(MAP_SUNRISE_VILLAGE), MAP_NUM(MAP_SUNRISE_VILLAGE), HEAL_LOCATION_NONE},
-    
 };
 
 static const u8 *const sEverGrandeCityNames[] =
@@ -409,7 +493,7 @@ static const struct SpritePalette sFlyTargetIconsSpritePalette =
     .tag = TAG_FLY_ICON
 };
 
-static const u16 sRedOutlineFlyDestinations[][2] =
+static const mapsec_u16_t sRedOutlineFlyDestinations[][2] =
 {
     {
         FLAG_LANDMARK_BATTLE_FRONTIER,
@@ -503,9 +587,6 @@ static const struct SpriteTemplate sFlyDestIconSpriteTemplate =
     .paletteTag = TAG_FLY_ICON,
     .oam = &sFlyDestIcon_OamData,
     .anims = sFlyDestIcon_Anims,
-    .images = NULL,
-    .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCallbackDummy
 };
 
 void InitRegionMap(struct RegionMap *regionMap, bool8 zoomed)
@@ -546,28 +627,32 @@ void ShowRegionMapForPokedexAreaScreen(struct RegionMap *regionMap)
 
 bool8 LoadRegionMapGfx(void)
 {
+    enum RegionMapType regionMapType;
     switch (sRegionMap->initStep)
     {
     case 0:
+        regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);
         if (sRegionMap->bgManaged)
-            DecompressAndCopyTileDataToVram(sRegionMap->bgNum, sRegionMapBg_GfxLZ, 0, 0, 0);
+            DecompressAndCopyTileDataToVram(sRegionMap->bgNum, gRegionMapInfos[regionMapType].regionMapGfx, 0, 0, 0);
         else
-            DecompressDataWithHeaderVram(sRegionMapBg_GfxLZ, (u16 *)BG_CHAR_ADDR(2));
+            DecompressDataWithHeaderVram(gRegionMapInfos[regionMapType].regionMapGfx, (u16 *)BG_CHAR_ADDR(2));
         break;
     case 1:
+        regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);
         if (sRegionMap->bgManaged)
         {
             if (!FreeTempTileDataBuffersIfPossible())
-                DecompressAndCopyTileDataToVram(sRegionMap->bgNum, sRegionMapBg_TilemapLZ, 0, 0, 1);
+                DecompressAndCopyTileDataToVram(sRegionMap->bgNum, gRegionMapInfos[regionMapType].regionMapTilemap, 0, 0, 1);
         }
         else
         {
-            DecompressDataWithHeaderVram(sRegionMapBg_TilemapLZ, (u16 *)BG_SCREEN_ADDR(28));
+            DecompressDataWithHeaderVram(gRegionMapInfos[regionMapType].regionMapTilemap, (u16 *)BG_SCREEN_ADDR(28));
         }
         break;
     case 2:
+        regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);
         if (!FreeTempTileDataBuffersIfPossible())
-            LoadPalette(sRegionMapBg_Pal, BG_PLTT_ID(6), 3 * PLTT_SIZE_4BPP);
+            LoadPalette(gRegionMapInfos[regionMapType].regionMapPalette, BG_PLTT_ID(6), 3 * PLTT_SIZE_4BPP);
         break;
     case 3:
         DecompressDataWithHeaderWram(sRegionMapCursorSmallGfxLZ, sRegionMap->cursorSmallImage);
@@ -697,7 +782,7 @@ static u8 ProcessRegionMapInput_Full(void)
 
 static u8 MoveRegionMapCursor_Full(void)
 {
-    u16 mapSecId;
+    mapsec_u16_t mapSecId;
 
     if (sRegionMap->cursorMovementFrameCounter != 0)
         return MAP_INPUT_MOVE_CONT;
@@ -782,7 +867,7 @@ static u8 MoveRegionMapCursor_Zoomed(void)
 {
     u16 x;
     u16 y;
-    u16 mapSecId;
+    mapsec_u16_t mapSecId;
 
     sRegionMap->scrollY += sRegionMap->zoomedCursorDeltaY;
     sRegionMap->scrollX += sRegionMap->zoomedCursorDeltaX;
@@ -965,7 +1050,30 @@ void PokedexAreaScreen_UpdateRegionMapVariablesAndVideoRegs(s16 x, s16 y)
     }
 }
 
-static u16 GetMapSecIdAt(u16 x, u16 y)
+enum RegionMapType GetRegionMapType(u32 mapSecId)
+{
+    switch (GetRegionForSectionId(mapSecId))
+    {
+        case REGION_KANTO:
+            switch (GetKantoSubregion(mapSecId))
+            {
+                case KANTO_SUBREGION_SEVII123:
+                    return REGION_MAP_SEVII123;
+                case KANTO_SUBREGION_SEVII45:
+                    return REGION_MAP_SEVII45;
+                case KANTO_SUBREGION_SEVII67:
+                    return REGION_MAP_SEVII67;
+                case KANTO_SUBREGION_KANTO:
+                default:
+                    return REGION_MAP_KANTO;
+            }
+        case REGION_HOENN:
+        default:
+            return REGION_MAP_HOENN;
+    }
+}
+
+static mapsec_u16_t GetMapSecIdAt(u16 x, u16 y)
 {
     if (y < MAPCURSOR_Y_MIN || y > MAPCURSOR_Y_MAX || x < MAPCURSOR_X_MIN || x > MAPCURSOR_X_MAX)
     {
@@ -973,7 +1081,26 @@ static u16 GetMapSecIdAt(u16 x, u16 y)
     }
     y -= MAPCURSOR_Y_MIN;
     x -= MAPCURSOR_X_MIN;
-    return sRegionMap_MapSectionLayout[y][x];
+
+    switch (GetCurrentRegion())
+    {
+        case REGION_KANTO:
+            switch (GetKantoSubregion(gMapHeader.regionMapSectionId))
+            {
+                case KANTO_SUBREGION_SEVII123:
+                    return sRegionMapSections_Sevii123[y][x];
+                case KANTO_SUBREGION_SEVII45:
+                    return sRegionMapSections_Sevii45[y][x];
+                case KANTO_SUBREGION_SEVII67:
+                    return sRegionMapSections_Sevii67[y][x];
+                case KANTO_SUBREGION_KANTO:
+                default:
+                    return sRegionMapSections_Kanto[y][x];
+            }
+        case REGION_HOENN:
+        default:
+            return sRegionMap_MapSectionLayout[y][x];
+    }
 }
 
 static void InitMapBasedOnPlayerLocation(void)
@@ -1183,7 +1310,7 @@ static void RegionMap_InitializeStateBasedOnSSTidalLocation(void)
     sRegionMap->cursorPosY = gRegionMapEntries[sRegionMap->mapSecId].y + y + MAPCURSOR_Y_MIN;
 }
 
-u8 GetMapsecType(u16 mapSecId)
+u8 GetMapsecType(mapsec_u16_t mapSecId)
 {
     switch (mapSecId)
     {
@@ -1228,12 +1355,12 @@ u8 GetMapsecType(u16 mapSecId)
     }
 }
 
-u16 GetRegionMapSecIdAt(u16 x, u16 y)
+mapsec_u16_t GetRegionMapSecIdAt(u16 x, u16 y)
 {
     return GetMapSecIdAt(x, y);
 }
 
-static u16 CorrectSpecialMapSecId_Internal(u16 mapSecId)
+static mapsec_u16_t CorrectSpecialMapSecId_Internal(mapsec_u16_t mapSecId)
 {
     u32 i;
 
@@ -1254,7 +1381,7 @@ static u16 CorrectSpecialMapSecId_Internal(u16 mapSecId)
     return mapSecId;
 }
 
-static u16 GetTerraOrMarineCaveMapSecId(void)
+static mapsec_u16_t GetTerraOrMarineCaveMapSecId(void)
 {
     s16 idx;
 
@@ -1283,7 +1410,7 @@ static u16 GetTerraOrMarineCaveMapSecId(void)
 
 // Probably meant to be an "IsPlayerInIndoorDungeon" function, but in practice it only has the one mapsec
 // Additionally, because the mapsec doesnt exist in Emerald, this function always returns FALSE
-static bool32 IsPlayerInAquaHideout(u8 mapSecId)
+static bool32 IsPlayerInAquaHideout(mapsec_u8_t mapSecId)
 {
     u32 i;
 
@@ -1295,7 +1422,7 @@ static bool32 IsPlayerInAquaHideout(u8 mapSecId)
     return FALSE;
 }
 
-u16 CorrectSpecialMapSecId(u16 mapSecId)
+mapsec_u16_t CorrectSpecialMapSecId(mapsec_u16_t mapSecId)
 {
     return CorrectSpecialMapSecId_Internal(mapSecId);
 }
@@ -1574,7 +1701,7 @@ void TrySetPlayerIconBlink(void)
 #undef sVisible
 #undef sTimer
 
-u8 *GetMapName(u8 *dest, u16 regionMapId, u16 padLength)
+u8 *GetMapName(u8 *dest, mapsec_u16_t regionMapId, u16 padLength)
 {
     u8 *str;
     u16 i;
@@ -1607,7 +1734,7 @@ u8 *GetMapName(u8 *dest, u16 regionMapId, u16 padLength)
 }
 
 // TODO: probably needs a better name
-u8 *GetMapNameGeneric(u8 *dest, u16 mapSecId)
+u8 *GetMapNameGeneric(u8 *dest, mapsec_u16_t mapSecId)
 {
     switch (mapSecId)
     {
@@ -1620,7 +1747,7 @@ u8 *GetMapNameGeneric(u8 *dest, u16 mapSecId)
     }
 }
 
-u8 *GetMapNameHandleAquaHideout(u8 *dest, u16 mapSecId)
+u8 *GetMapNameHandleAquaHideout(u8 *dest, mapsec_u16_t mapSecId)
 {
     /* if (mapSecId == MAPSEC_AQUA_HIDEOUT_OLD)
         return StringCopy(dest, gText_Hideout);
@@ -1628,7 +1755,7 @@ u8 *GetMapNameHandleAquaHideout(u8 *dest, u16 mapSecId)
     return GetMapNameGeneric(dest, mapSecId);
 }
 
-static void GetMapSecDimensions(u16 mapSecId, u16 *x, u16 *y, u16 *width, u16 *height)
+static void GetMapSecDimensions(mapsec_u16_t mapSecId, u16 *x, u16 *y, u16 *width, u16 *height)
 {
     *x = gRegionMapEntries[mapSecId].x;
     *y = gRegionMapEntries[mapSecId].y;
@@ -1641,7 +1768,7 @@ bool8 IsRegionMapZoomed(void)
     return sRegionMap->zoomed;
 }
 
-bool32 IsEventIslandMapSecId(u8 mapSecId)
+bool32 IsEventIslandMapSecId(mapsec_u8_t mapSecId)
 {
     u32 i;
 
@@ -1843,13 +1970,106 @@ static void LoadFlyDestIcons(void)
     TryCreateRedOutlineFlyDestIcons();
 }
 
+struct FlyLocation
+{
+    enum RegionMapType regionMapType;
+    u16 flag;
+    u16 mapsec;
+};
+
+static const struct FlyLocation sFlyLocations[] =
+{
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_SUNRISE_VILLAGE,
+        .flag = FLAG_VISITED_SUNRISE_VILLAGE,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_CHII_TOWN,
+        .flag = FLAG_VISITED_CHII_TOWN,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_SAKU_TOWN,
+        .flag = FLAG_VISITED_SAKU_TOWN,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_KURA_TOWN,
+        .flag = FLAG_VISITED_KURA_TOWN,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_MAGURO_HARBOR,
+        .flag = FLAG_VISITED_MAGURO_HARBOR,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_SILVERIDGE,
+        .flag = FLAG_VISITED_SILVERIDGE,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_WINDYCAPE,
+        .flag = FLAG_VISITED_WINDYCAPE,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_YIFU_CITY,
+        .flag = FLAG_VISITED_YIFU_CITY,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_SOULKEEP,
+        .flag = FLAG_VISITED_SOULKEEP,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_HAVENISLE,
+        .flag = FLAG_VISITED_HAVENISLE,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_MIDDLEISLE,
+        .flag = FLAG_VISITED_MIDDLEISLE,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_TOPISLE,
+        .flag = FLAG_VISITED_TOPISLE,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_COREEF_ISLE,
+        .flag = FLAG_VISITED_COREEF_ISLE,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_DRYUGON,
+        .flag = FLAG_VISITED_DRYUGON,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_SABERSIDE_TOWN,
+        .flag = FLAG_VISITED_SABERSIDE_TOWN,
+    },
+    {
+        .regionMapType = REGION_MAP_HOENN,
+        .mapsec = MAPSEC_HANABI_CITY,
+        .flag = FLAG_VISITED_HANABI_CITY,
+    },
+};
+
+
 // Sprite data for SpriteCB_FlyDestIcon
 #define sIconMapSec   data[0]
 #define sFlickerTimer data[1]
 
 static void CreateFlyDestIcons(void)
 {
-    u16 mapSecId;
+    enum RegionMapType regionMapType = GetRegionMapType(gMapHeader.regionMapSectionId);
+    u32 i;
     u16 x;
     u16 y;
     u16 width;
@@ -1857,13 +2077,14 @@ static void CreateFlyDestIcons(void)
     u16 shape;
     u8 spriteId;
 
-    for (mapSecId = MAPSEC_TOWNS_START; mapSecId < MAPSEC_NONE; mapSecId++)
+    for (i = 0; i < ARRAY_COUNT(sFlyLocations); i++)
     {
-        GetMapSecDimensions(mapSecId, &x, &y, &width, &height);
+        if (sFlyLocations[i].regionMapType != regionMapType)
+            continue;
+
+        GetMapSecDimensions(sFlyLocations[i].mapsec, &x, &y, &width, &height);
         x = (x + MAPCURSOR_X_MIN) * 8 + 4;
         y = (y + MAPCURSOR_Y_MIN) * 8 + 4;
-
-        DebugPrintf("Yifu ? %d (%dx%d)", MAPSEC_YIFU_CITY == mapSecId, width, height);
 
         if (width == 2 && height == 2)
             shape = MAP_SPRITE_16X16;
@@ -1879,19 +2100,13 @@ static void CreateFlyDestIcons(void)
         {
             gSprites[spriteId].oam.shape = shape;
 
-            if (shape == MAP_SPRITE_16X16)
-            {
-                DebugPrintf("Yifu found!");
-                gSprites[spriteId].oam.size = SPRITE_SIZE(16x16);
-            }
-
-            if (GetMapsecType(mapSecId) == MAPSECTYPE_CITY_CANFLY)
+            if (FlagGet(sFlyLocations[i].flag))
                 gSprites[spriteId].callback = SpriteCB_FlyDestIcon;
             else
                 shape += 3;
 
             StartSpriteAnim(&gSprites[spriteId], shape);
-            gSprites[spriteId].sIconMapSec = mapSecId;
+            gSprites[spriteId].sIconMapSec = sFlyLocations[i].mapsec;
         }
     }
 }
@@ -1905,7 +2120,7 @@ static void TryCreateRedOutlineFlyDestIcons(void)
     u16 y;
     u16 width;
     u16 height;
-    u16 mapSecId;
+    mapsec_u16_t mapSecId;
     u8 spriteId;
 
     for (i = 0; sRedOutlineFlyDestinations[i][1] != MAPSEC_NONE; i++)

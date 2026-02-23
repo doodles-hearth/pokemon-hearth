@@ -244,16 +244,16 @@ struct BattleMsgData
     u8 bakScriptPartyIdx;
     u8 hpScale;
     u8 itemEffectBattler;
-    u8 moveType;
+    enum Type moveType;
     enum Ability abilities[MAX_BATTLERS_COUNT];
     u8 textBuffs[3][TEXT_BUFF_ARRAY_COUNT];
 };
 
-void BufferStringBattle(enum StringID stringID, u32 battler);
+void BufferStringBattle(enum StringID stringID, enum BattlerId battler);
 u32 BattleStringExpandPlaceholdersToDisplayedString(const u8 *src);
 u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize);
 void BattlePutTextOnWindow(const u8 *text, u8 windowId);
-void SetPpNumbersPaletteInMoveSelection(u32 battler);
+void SetPpNumbersPaletteInMoveSelection(enum BattlerId battler);
 u8 GetCurrentPpToMaxPpState(u8 currentPp, u8 maxPp);
 void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst);
 
@@ -275,6 +275,7 @@ extern const u8 gText_WhatWillWallyDo[];
 extern const u8 gText_LinkStandby[];
 extern const u8 gText_BattleMenu[];
 extern const u8 gText_SafariZoneMenu[];
+extern const u8 gText_SafariZoneMenuFrlg[];
 extern const u8 gText_MoveInterfacePP[];
 extern const u8 gText_MoveInterfaceType[];
 extern const u8 gText_MoveInterfacePpType[];

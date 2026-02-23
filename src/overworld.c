@@ -1,10 +1,13 @@
 #include "global.h"
+#include "constants/items.h"
 #include "overworld.h"
 #include "battle_pyramid.h"
 #include "battle_setup.h"
+#include "battle_util.h"
 #include "berry.h"
 #include "bg.h"
 #include "cable_club.h"
+#include "credits_frlg.h"
 #include "clock.h"
 #include "dexnav.h"
 #include "event_data.h"
@@ -43,8 +46,10 @@
 #include "mirage_tower.h"
 #include "money.h"
 #include "new_game.h"
+#include "oras_dowse.h"
 #include "palette.h"
 #include "play_time.h"
+#include "player_transform.h"
 #include "pokedex.h"
 #include "pokemon_icon.h"
 #include "random.h"
@@ -79,6 +84,7 @@
 #include "constants/event_objects.h"
 #include "constants/layouts.h"
 #include "constants/region_map_sections.h"
+#include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
@@ -146,9 +152,9 @@ static void ClearAllPlayerKeys(void);
 static void ResetAllPlayerLinkStates(void);
 static void UpdateHeldKeyCode(u16);
 static void UpdateAllLinkPlayers(u16 *, s32);
-static u8 FlipVerticalAndClearForced(u8, u8);
-static u8 LinkPlayerGetCollision(u8, u8, s16, s16);
-static void CreateLinkPlayerSprite(u8, u8);
+static enum Direction FlipVerticalAndClearForced(u8, u8);
+static u8 LinkPlayerGetCollision(u8, enum Direction, s16, s16);
+static void CreateLinkPlayerSprite(u8, enum GameVersion);
 static void GetLinkPlayerCoords(u8, s16 *, s16 *);
 static u8 GetLinkPlayerFacingDirection(u8);
 static u8 GetLinkPlayerElevation(u8);
@@ -186,8 +192,13 @@ static void SetFieldVBlankCallback(void);
 static void FieldClearVBlankHBlankCallbacks(void);
 static void TransitionMapMusic(void);
 static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *playerStruct, u16 metatileBehavior, enum MapType mapType);
-static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStruct, u8 transitionFlags, u16 metatileBehavior, enum MapType mapType);
+static enum Direction GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStruct, u8 transitionFlags, u16 metatileBehavior, enum MapType mapType);
 static u16 GetCenterScreenMetatileBehavior(void);
+static bool32 SetUpScrollSceneForCredits(u8 *state, u8 unused);
+static bool8 MapLdr_Credits(void);
+static void CameraCB_CreditsPan(struct CameraObject *camera);
+static void Task_OvwldCredits_FadeOut(u8 taskId);
+static void Task_OvwldCredits_WaitFade(u8 taskId);
 
 static void *sUnusedOverworldCallback;
 static u8 sPlayerLinkStates[MAX_LINK_PLAYERS];
@@ -217,13 +228,21 @@ EWRAM_DATA struct WarpData gLastUsedWarp = {0};
 EWRAM_DATA static struct WarpData sWarpDestination = {0};  // new warp position
 EWRAM_DATA static struct WarpData sFixedDiveWarp = {0};
 EWRAM_DATA static struct WarpData sFixedHoleWarp = {0};
-EWRAM_DATA static u16 sLastMapSectionId = 0;
+EWRAM_DATA static mapsec_u16_t sLastMapSectionId = 0;
 EWRAM_DATA static struct InitialPlayerAvatarState sInitialPlayerAvatarState = {0};
 EWRAM_DATA static u16 sAmbientCrySpecies = 0;
 EWRAM_DATA static bool8 sIsAmbientCryWaterMon = FALSE;
 EWRAM_DATA static u8 sHoursOverride = 0; // used to override apparent time of day hours
 EWRAM_DATA struct LinkPlayerObjectEvent gLinkPlayerObjectEvents[4] = {0};
 EWRAM_DATA bool8 gExitStairsMovementDisabled = FALSE;
+EWRAM_DATA bool8 gDisableMapMusicChangeOnMapLoad = MUSIC_DISABLE_OFF;
+static EWRAM_DATA const struct CreditsOverworldCmd *sCreditsOverworld_Script = NULL;
+static EWRAM_DATA s16 sCreditsOverworld_CmdLength = 0;
+static EWRAM_DATA s16 sCreditsOverworld_CmdIndex = 0;
+
+EWRAM_DATA s8 gFlashX = 0;
+EWRAM_DATA s8 gFlashY = 0;
+EWRAM_DATA bool8 gDrawFlash = FALSE;
 
 static const struct WarpData sDummyWarpData =
 {
@@ -336,23 +355,23 @@ static const struct ScanlineEffectParams sFlashEffectParams =
     0,
 };
 
-static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
-static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
-static u8 MovementEventModeCB_Scripted(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
+static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
+static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
+static u8 MovementEventModeCB_Scripted(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
 
-static u8 (*const sLinkPlayerMovementModes[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8) =
+static u8 (*const sLinkPlayerMovementModes[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction) =
 {
     [MOVEMENT_MODE_FREE]     = MovementEventModeCB_Normal,
     [MOVEMENT_MODE_FROZEN]   = MovementEventModeCB_Ignored,
     [MOVEMENT_MODE_SCRIPTED] = MovementEventModeCB_Scripted,
 };
 
-static u8 FacingHandler_DoNothing(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
-static u8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
-static u8 FacingHandler_ForcedFacingChange(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8);
+static u8 FacingHandler_DoNothing(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
+static u8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
+static u8 FacingHandler_ForcedFacingChange(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction);
 
 // These handlers return TRUE if the movement was scripted and successful, and FALSE otherwise.
-static bool8 (*const sLinkPlayerFacingHandlers[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, u8) =
+static bool8 (*const sLinkPlayerFacingHandlers[])(struct LinkPlayerObjectEvent *, struct ObjectEvent *, enum Direction) =
 {
     FacingHandler_DoNothing,
     FacingHandler_DpadMovement,
@@ -401,6 +420,7 @@ void Overworld_ResetStateAfterFly(void)
     FlagClear(FLAG_SYS_CYCLING_ROAD);
     FlagClear(FLAG_SYS_CRUISE_MODE);
     FlagClear(FLAG_SYS_SAFARI_MODE);
+    VarSet(VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 0);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
 }
@@ -411,6 +431,7 @@ void Overworld_ResetStateAfterTeleport(void)
     FlagClear(FLAG_SYS_CYCLING_ROAD);
     FlagClear(FLAG_SYS_CRUISE_MODE);
     FlagClear(FLAG_SYS_SAFARI_MODE);
+    VarSet(VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 0);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
     RunScriptImmediately(EventScript_ResetMrBriney);
@@ -422,21 +443,15 @@ void Overworld_ResetStateAfterDigEscRope(void)
     FlagClear(FLAG_SYS_CYCLING_ROAD);
     FlagClear(FLAG_SYS_CRUISE_MODE);
     FlagClear(FLAG_SYS_SAFARI_MODE);
+    VarSet(VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 0);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
 }
 
-#if B_RESET_FLAGS_VARS_AFTER_WHITEOUT  == TRUE
+#if B_RESET_FLAGS_VARS_AFTER_WHITEOUT == TRUE
 void Overworld_ResetBattleFlagsAndVars(void)
 {
-    DebugPrintf("Overworld_ResetBattleFlagsAndVars");
-    #if B_VAR_STARTING_STATUS != 0
-        VarSet(B_VAR_STARTING_STATUS, 0);
-    #endif
-
-    #if B_VAR_STARTING_STATUS_TIMER != 0
-        VarSet(B_VAR_STARTING_STATUS_TIMER, 0);
-    #endif
+    ResetStartingStatuses();
 
     #if B_VAR_WILD_AI_FLAGS != 0
         VarSet(B_VAR_WILD_AI_FLAGS,0);
@@ -463,6 +478,7 @@ static void Overworld_ResetStateAfterWhiteOut(void)
     FlagClear(FLAG_SYS_CYCLING_ROAD);
     FlagClear(FLAG_SYS_CRUISE_MODE);
     FlagClear(FLAG_SYS_SAFARI_MODE);
+    VarSet(VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 0);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
     if (B_RESET_FLAGS_VARS_AFTER_WHITEOUT == TRUE)
@@ -480,6 +496,7 @@ static void Overworld_ResetStateAfterWhiteOut(void)
 static void UpdateMiscOverworldStates(void)
 {
     FlagClear(FLAG_SYS_SAFARI_MODE);
+    VarSet(VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 0);
     ChooseAmbientCrySpecies();
     ResetCyclingRoadChallengeData();
     UpdateLocationHistoryForRoamer();
@@ -535,10 +552,30 @@ void LoadObjEventTemplatesFromHeader(void)
     // Clear map object templates
     CpuFill32(0, gSaveBlock1Ptr->objectEventTemplates, sizeof(gSaveBlock1Ptr->objectEventTemplates));
 
-    // Copy map header events to save block
-    CpuCopy32(gMapHeader.events->objectEvents,
-              gSaveBlock1Ptr->objectEventTemplates,
-              gMapHeader.events->objectEventCount * sizeof(struct ObjectEventTemplate));
+    for (u32 i = 0; i < gMapHeader.events->objectEventCount; i++)
+    {
+        if (gMapHeader.events->objectEvents[i].kind == OBJ_KIND_CLONE)
+        {
+            // load target object from the connecting map
+            u8 localId = gMapHeader.events->objectEvents[i].targetLocalId;
+            u8 mapNum = gMapHeader.events->objectEvents[i].targetMapNum;
+            u8 mapGroup = gMapHeader.events->objectEvents[i].targetMapGroup;
+            const struct MapHeader *connectionMap = Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum);
+
+            gSaveBlock1Ptr->objectEventTemplates[i] = connectionMap->events->objectEvents[localId - 1];
+            gSaveBlock1Ptr->objectEventTemplates[i].localId = gMapHeader.events->objectEvents[i].localId;
+            gSaveBlock1Ptr->objectEventTemplates[i].x = gMapHeader.events->objectEvents[i].x;
+            gSaveBlock1Ptr->objectEventTemplates[i].y = gMapHeader.events->objectEvents[i].y;
+            gSaveBlock1Ptr->objectEventTemplates[i].targetLocalId = localId;
+            gSaveBlock1Ptr->objectEventTemplates[i].targetMapNum = mapNum;
+            gSaveBlock1Ptr->objectEventTemplates[i].targetMapGroup = mapGroup;
+            gSaveBlock1Ptr->objectEventTemplates[i].kind = OBJ_KIND_CLONE;
+        }
+        else
+        {
+            gSaveBlock1Ptr->objectEventTemplates[i] = gMapHeader.events->objectEvents[i];
+        }
+    }
 }
 
 void LoadSaveblockObjEventScripts(void)
@@ -551,37 +588,33 @@ void LoadSaveblockObjEventScripts(void)
         savObjTemplates[i].script = mapHeaderObjTemplates[i].script;
 }
 
+static struct ObjectEventTemplate *GetObjectEventTemplate(u8 localId)
+{
+    for (u32 i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    {
+        if (gSaveBlock1Ptr->objectEventTemplates[i].localId == localId)
+            return &gSaveBlock1Ptr->objectEventTemplates[i];
+    }
+
+    errorf("no object event template for localId %d", localId);
+    return NULL;
+}
+
 void SetObjEventTemplateCoords(u8 localId, s16 x, s16 y)
 {
-    s32 i;
-    struct ObjectEventTemplate *savObjTemplates = gSaveBlock1Ptr->objectEventTemplates;
-
-    for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    struct ObjectEventTemplate *objectEventTemplate = GetObjectEventTemplate(localId);
+    if (objectEventTemplate)
     {
-        struct ObjectEventTemplate *objectEventTemplate = &savObjTemplates[i];
-        if (objectEventTemplate->localId == localId)
-        {
-            objectEventTemplate->x = x;
-            objectEventTemplate->y = y;
-            return;
-        }
+        objectEventTemplate->x = x;
+        objectEventTemplate->y = y;
     }
 }
 
 void SetObjEventTemplateMovementType(u8 localId, u8 movementType)
 {
-    s32 i;
-
-    struct ObjectEventTemplate *savObjTemplates = gSaveBlock1Ptr->objectEventTemplates;
-    for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
-    {
-        struct ObjectEventTemplate *objectEventTemplate = &savObjTemplates[i];
-        if (objectEventTemplate->localId == localId)
-        {
-            objectEventTemplate->movementType = movementType;
-            return;
-        }
-    }
+    struct ObjectEventTemplate *objectEventTemplate = GetObjectEventTemplate(localId);
+    if (objectEventTemplate)
+        objectEventTemplate->movementType = movementType;
 }
 
 static void InitMapView(void)
@@ -727,7 +760,7 @@ static bool32 IsWhiteoutCutscene(void)
 {
     if (OW_WHITEOUT_CUTSCENE < GEN_4)
         return FALSE;
-    return GetHealNpcLocalId(GetHealLocationIndexByWarpData(&gSaveBlock1Ptr->lastHealLocation)) > 0;
+    return GetHealNpcLocalId(GetHealLocationIndexByWarpData(&gSaveBlock1Ptr->lastHealLocation)) != LOCALID_NONE;
 }
 
 void SetWarpDestinationToLastHealLocation(void)
@@ -736,6 +769,11 @@ void SetWarpDestinationToLastHealLocation(void)
         SetWhiteoutRespawnWarpAndHealerNPC(&sWarpDestination);
     else
         sWarpDestination = gSaveBlock1Ptr->lastHealLocation;
+}
+
+void SetWarpDestinationForTeleport(void)
+{
+    sWarpDestination = gSaveBlock1Ptr->lastHealLocation;
 }
 
 void SetLastHealLocationWarp(u8 healLocationId)
@@ -824,7 +862,7 @@ const struct MapConnection *GetMapConnection(u8 dir)
     return NULL;
 }
 
-static bool8 SetDiveWarp(u8 dir, u16 x, u16 y)
+static bool8 SetDiveWarp(enum Connection dir, u16 x, u16 y)
 {
     const struct MapConnection *connection = GetMapConnection(dir);
 
@@ -872,8 +910,8 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     TryUpdateRandomTrainerRematches(mapGroup, mapNum);
 #endif //FREE_MATCH_CALL
 
-if (I_VS_SEEKER_CHARGING != 0)
-    MapResetTrainerRematches(mapGroup, mapNum);
+    if (I_VS_SEEKER_CHARGING != 0)
+        MapResetTrainerRematches(mapGroup, mapNum);
 
     DoTimeBasedEvents();
     SetSavedWeatherFromCurrMapHeader();
@@ -885,7 +923,7 @@ if (I_VS_SEEKER_CHARGING != 0)
     CopySecondaryTilesetToVramUsingHeap(gMapHeader.mapLayout);
     LoadSecondaryTilesetPalette(gMapHeader.mapLayout, TRUE); // skip copying to Faded, gamma shift will take care of it
 
-    ApplyWeatherColorMapToPals(NUM_PALS_IN_PRIMARY, NUM_PALS_TOTAL - NUM_PALS_IN_PRIMARY); // palettes [6,12]
+    ApplyWeatherColorMapToPals(GetNumPalsInPrimary(gMapHeader.mapLayout), NUM_PALS_TOTAL - GetNumPalsInPrimary(gMapHeader.mapLayout)); // palettes [6,12]
 
     InitSecondaryTilesetAnimation();
     UpdateLocationHistoryForRoamer();
@@ -938,8 +976,8 @@ static void LoadMapFromWarp(bool32 a1)
     TryUpdateRandomTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
 #endif //FREE_MATCH_CALL
 
-if (I_VS_SEEKER_CHARGING != 0)
-     MapResetTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+    if (I_VS_SEEKER_CHARGING != 0)
+         MapResetTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
 
     if (a1 != TRUE)
         DoTimeBasedEvents();
@@ -1007,6 +1045,8 @@ static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *pla
         return PLAYER_AVATAR_FLAG_ON_FOOT;
     else if (mapType == MAP_TYPE_UNDERWATER)
         return PLAYER_AVATAR_FLAG_UNDERWATER;
+    else if (MetatileBehavior_IsSurfableInSeafoamIslands(metatileBehavior) == TRUE)
+        return PLAYER_AVATAR_FLAG_ON_FOOT;
     else if (MetatileBehavior_IsSurfableWaterOrUnderwater(metatileBehavior) == TRUE)
         return PLAYER_AVATAR_FLAG_SURFING;
     else if (Overworld_IsBikingAllowed() != TRUE)
@@ -1019,7 +1059,22 @@ static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *pla
         return PLAYER_AVATAR_FLAG_ACRO_BIKE;
 }
 
-static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStruct, u8 transitionFlags, u16 metatileBehavior, enum MapType mapType)
+bool8 MetatileBehavior_IsSurfableInSeafoamIslands(u16 metatileBehavior)
+{
+    if (MetatileBehavior_IsSurfableWaterOrUnderwater(metatileBehavior) != TRUE)
+        return FALSE;
+    if ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SEAFOAM_ISLANDS_B3F)
+          && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SEAFOAM_ISLANDS_B3F))
+     || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_SEAFOAM_ISLANDS_B4F)
+          && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_SEAFOAM_ISLANDS_B4F)))
+    {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static enum Direction GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStruct, u8 transitionFlags, u16 metatileBehavior, enum MapType mapType)
 {
     if (FlagGet(FLAG_SYS_CRUISE_MODE) && mapType == MAP_TYPE_OCEAN_ROUTE)
         return DIR_EAST;
@@ -1061,18 +1116,22 @@ bool32 Overworld_IsBikingAllowed(void)
         return TRUE;
 }
 
-// Flash level of 0 is fully bright
-// Flash level of 1 is the largest flash radius
-// Flash level of 7 is the smallest flash radius
-// Flash level of 8 is fully black
+bool8 IsFollowerSpawned(void)
+{
+    struct ObjectEvent *obj = GetFollowerObject();
+    if (!obj)
+        return FALSE;
+    return !obj->invisible;
+}
+
+// Flash level (=radius) of 0 is fully bright
+// 20 means no flash in a dark cave
 void SetDefaultFlashLevel(void)
 {
     if (!gMapHeader.cave)
         gSaveBlock1Ptr->flashLevel = 0;
-    else if (FlagGet(FLAG_SYS_USE_FLASH))
-        gSaveBlock1Ptr->flashLevel = 1;
-    else
-        gSaveBlock1Ptr->flashLevel = gMaxFlashLevel - 1;
+    else // In a cave, set up the flash handling
+        gSaveBlock1Ptr->flashLevel = 20;
 }
 
 void SetFlashLevel(s32 flashLevel)
@@ -1137,7 +1196,7 @@ static bool16 ShouldLegendaryMusicPlayAtLocation(struct WarpData *warp)
     return FALSE;
 }
 
-static bool16 NoMusicInSotopolisWithLegendaries(struct WarpData *warp)
+static bool16 NoMusicInSootopolisWithLegendaries(struct WarpData *warp)
 {
     if (VarGet(VAR_SKY_PILLAR_STATE) != 1)
         return FALSE;
@@ -1162,7 +1221,7 @@ static bool16 IsInfiltratedWeatherInstitute(struct WarpData *warp)
         return FALSE;
 }
 
-static bool16 IsInflitratedSpaceCenter(struct WarpData *warp)
+static bool16 IsInfiltratedSpaceCenter(struct WarpData *warp)
 {
     if (VarGet(VAR_MOSSDEEP_CITY_STATE) == 0)
         return FALSE;
@@ -1178,11 +1237,11 @@ static bool16 IsInflitratedSpaceCenter(struct WarpData *warp)
 
 u16 GetLocationMusic(struct WarpData *warp)
 {
-    if (NoMusicInSotopolisWithLegendaries(warp) == TRUE)
+    if (NoMusicInSootopolisWithLegendaries(warp) == TRUE)
         return MUS_NONE;
     else if (ShouldLegendaryMusicPlayAtLocation(warp) == TRUE)
         return MUS_ABNORMAL_WEATHER;
-    else if (IsInflitratedSpaceCenter(warp) == TRUE)
+    else if (IsInfiltratedSpaceCenter(warp) == TRUE)
         return MUS_ENCOUNTER_MAGMA;
     else if (IsInfiltratedWeatherInstitute(warp) == TRUE)
         return MUS_MT_CHIMNEY;
@@ -1240,6 +1299,14 @@ void Overworld_PlaySpecialMapMusic(void)
 {
     u16 music = GetCurrLocationDefaultMusic();
 
+    if (gDisableMapMusicChangeOnMapLoad == MUSIC_DISABLE_STOP)
+    {
+        StopMapMusic();
+        return;
+    }
+    if (gDisableMapMusicChangeOnMapLoad == MUSIC_DISABLE_KEEP)
+        return;
+
     if (music != MUS_ABNORMAL_WEATHER && music != MUS_NONE)
     {
         if (gSaveBlock1Ptr->savedMusic)
@@ -1266,6 +1333,14 @@ void Overworld_ClearSavedMusic(void)
 
 static void TransitionMapMusic(void)
 {
+    if (gDisableMapMusicChangeOnMapLoad == MUSIC_DISABLE_STOP)
+    {
+        StopMapMusic();
+        return;
+    }
+    if (gDisableMapMusicChangeOnMapLoad == MUSIC_DISABLE_KEEP)
+        return;
+
     if (FlagGet(FLAG_DONT_TRANSITION_MUSIC) != TRUE)
     {
         u16 newMusic = GetWarpDestinationMusic();
@@ -1351,6 +1426,15 @@ static void PlayAmbientCry(void)
         return;
     pan = (Random() % 88) + 212;
     volume = (Random() % 30) + 50;
+
+    if (gDisableMapMusicChangeOnMapLoad == MUSIC_DISABLE_STOP)
+    {
+        StopMapMusic();
+        return;
+    }
+    if (gDisableMapMusicChangeOnMapLoad == MUSIC_DISABLE_KEEP)
+        return;
+
     PlayCry_NormalNoDucking(sAmbientCrySpecies, pan, volume, CRY_PRIORITY_AMBIENT);
 }
 
@@ -1460,6 +1544,15 @@ bool8 IsMapTypeOutdoors(enum MapType mapType)
         return FALSE;
 }
 
+bool8 IsMapTypeFlash(enum MapType mapType)
+{
+    if (mapType == MAP_TYPE_UNDERGROUND
+     || mapType == MAP_TYPE_UNDERWATER)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 Overworld_MapTypeAllowsTeleportAndFly(enum MapType mapType)
 {
     if (mapType == MAP_TYPE_ROUTE
@@ -1480,12 +1573,12 @@ bool8 IsMapTypeIndoors(enum MapType mapType)
         return FALSE;
 }
 
-u8 GetSavedWarpRegionMapSectionId(void)
+mapsec_u8_t GetSavedWarpRegionMapSectionId(void)
 {
     return Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->dynamicWarp.mapGroup, gSaveBlock1Ptr->dynamicWarp.mapNum)->regionMapSectionId;
 }
 
-u8 GetCurrentRegionMapSectionId(void)
+mapsec_u8_t GetCurrentRegionMapSectionId(void)
 {
     return Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum)->regionMapSectionId;
 }
@@ -1508,6 +1601,24 @@ static void InitOverworldBgs(void)
     SetBgTilemapBuffer(2, gOverworldTilemapBuffer_Bg2);
     SetBgTilemapBuffer(3, gOverworldTilemapBuffer_Bg3);
     InitStandardTextBoxWindows();
+}
+
+static void InitOverworldBgs_NoResetHeap(void)
+{
+    ResetBgsAndClearDma3BusyFlags(FALSE);
+    InitBgsFromTemplates(0, sOverworldBgTemplates, NELEMS(sOverworldBgTemplates));
+    SetBgAttribute(1, BG_ATTR_MOSAIC, TRUE);
+    SetBgAttribute(2, BG_ATTR_MOSAIC, TRUE);
+    SetBgAttribute(3, BG_ATTR_MOSAIC, TRUE);
+    gOverworldTilemapBuffer_Bg1 = AllocZeroed(BG_SCREEN_SIZE);
+    gOverworldTilemapBuffer_Bg2 = AllocZeroed(BG_SCREEN_SIZE);
+    gOverworldTilemapBuffer_Bg3 = AllocZeroed(BG_SCREEN_SIZE);
+    SetBgTilemapBuffer(1, gOverworldTilemapBuffer_Bg1);
+    SetBgTilemapBuffer(2, gOverworldTilemapBuffer_Bg2);
+    SetBgTilemapBuffer(3, gOverworldTilemapBuffer_Bg3);
+    InitStandardTextBoxWindows();
+    InitTextBoxGfxAndPrinters();
+    InitFieldMessageBox();
 }
 
 void CleanupOverworldWindowsAndTilemaps(void)
@@ -1564,6 +1675,31 @@ void CB1_Overworld(void)
 }
 
 #define TINT_NIGHT Q_8_8(0.456) | Q_8_8(0.456) << 8 | Q_8_8(0.615) << 16
+
+#define DNS_TINTCOLOUR_CAVE_STANDARD     Q_8_8(0.456) | Q_8_8(0.456) << 8 | Q_8_8(0.615) << 16    // 0x9D7474
+#define DNS_TINTCOLOUR_CAVE_DARK         Q_8_8(0.30)  | Q_8_8(0.30)  << 8 | Q_8_8(0.40)  << 16    // 0x664D4D
+#define DNS_TINTCOLOUR_FLASH_YELLOW      Q_8_8(0.568) | Q_8_8(0.510) << 8 | Q_8_8(0.397) << 16    // 0x448291
+#define DNS_TINTCOLOUR_FLASH_ORANGE      Q_8_8(0.568) | Q_8_8(0.431) << 8 | Q_8_8(0.297) << 16    // 0x446E91
+#define DNS_TINTCOLOUR_FLASH_RED         Q_8_8(0.568) | Q_8_8(0.365) << 8 | Q_8_8(0.337) << 16    // 0x445391
+#define DNS_TINTCOLOUR_FLASH_PINK        Q_8_8(0.58)  | Q_8_8(0.43)  << 8 | Q_8_8(0.56)  << 16    // 0x8F5994
+#define DNS_TINTCOLOUR_FLASH_PURPLE      Q_8_8(0.368) | Q_8_8(0.297) << 8 | Q_8_8(0.568) << 16    // 0x91445E
+#define DNS_TINTCOLOUR_FLASH_BLUE        Q_8_8(0.297) | Q_8_8(0.459) << 8 | Q_8_8(0.568) << 16    // 0x917544
+#define DNS_TINTCOLOUR_FLASH_GREEN       Q_8_8(0.337) | Q_8_8(0.568) << 8 | Q_8_8(0.451) << 16    // 0x734591
+#define DNS_TINTCOLOUR_FLASH_WHITE       Q_8_8(0.500) | Q_8_8(0.500) << 8 | Q_8_8(0.500) << 16    // 0xFFFFFF
+
+const struct BlendSettings gCustomDNSTintBlend[DNS_BLEND_COUNT] = 
+{
+    [DNS_BLEND_CAVE_DARK]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_CAVE_DARK, .isTint = TRUE},
+    [DNS_BLEND_CAVE_STANDARD]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_CAVE_STANDARD, .isTint = TRUE},
+    [DNS_BLEND_FLASH_YELLOW]    = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_YELLOW, .isTint = TRUE},
+    [DNS_BLEND_FLASH_ORANGE]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_ORANGE, .isTint = TRUE},
+    [DNS_BLEND_FLASH_RED]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_RED, .isTint = TRUE},
+    [DNS_BLEND_FLASH_PINK]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_PINK, .isTint = TRUE},
+    [DNS_BLEND_FLASH_PURPLE]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_PURPLE, .isTint = TRUE},
+    [DNS_BLEND_FLASH_BLUE]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_BLUE, .isTint = TRUE},
+    [DNS_BLEND_FLASH_GREEN]    = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_GREEN, .isTint = TRUE},
+    [DNS_BLEND_FLASH_WHITE]    = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_WHITE, .isTint = TRUE},
+};
 
 const struct BlendSettings gTimeOfDayBlend[] =
 {
@@ -1638,13 +1774,22 @@ void UpdateTimeOfDay(void)
 #undef DEFAULT_WEIGHT
 
 // Whether a map type is naturally lit/outside
-bool32 MapHasNaturalLight(u8 mapType)
+bool32 MapHasOutdoorNaturalLight(enum MapType mapType)
 {
     return (OW_ENABLE_DNS
          && (mapType == MAP_TYPE_TOWN
           || mapType == MAP_TYPE_CITY
           || mapType == MAP_TYPE_ROUTE
           || mapType == MAP_TYPE_OCEAN_ROUTE));
+}
+
+// Whether a map type is naturally lit/outside (includes caves for applying DNS tinting)
+bool32 MapHasNaturalLight(enum MapType mapType)
+{
+    return (OW_ENABLE_DNS
+         && (MapHasOutdoorNaturalLight(mapType)
+          || mapType == MAP_TYPE_UNDERGROUND
+          || mapType == MAP_TYPE_UNDERWATER));
 }
 
 bool32 CurrentMapHasShadows(void)
@@ -1662,8 +1807,8 @@ void UpdateAltBgPalettes(u16 palettes)
     u32 i = 1;
     if (!MapHasNaturalLight(gMapHeader.mapType))
         return;
-    palettes &= ~((1 << NUM_PALS_IN_PRIMARY) - 1) | primary->swapPalettes;
-    palettes &= ((1 << NUM_PALS_IN_PRIMARY) - 1) | (secondary->swapPalettes << NUM_PALS_IN_PRIMARY);
+    palettes &= ~((1 << GetNumPalsInPrimary(gMapHeader.mapLayout)) - 1) | primary->swapPalettes;
+    palettes &= ((1 << GetNumPalsInPrimary(gMapHeader.mapLayout)) - 1) | (secondary->swapPalettes << GetNumPalsInPrimary(gMapHeader.mapLayout));
     palettes &= PALETTES_MAP ^ (1 << 0); // don't blend palette 0, [13,15]
     palettes >>= 1; // start at palette 1
     if (!palettes)
@@ -1672,7 +1817,7 @@ void UpdateAltBgPalettes(u16 palettes)
     {
         if (palettes & 1)
         {
-            if (i < NUM_PALS_IN_PRIMARY)
+            if (i < GetNumPalsInPrimary(gMapHeader.mapLayout))
                 AvgPaletteWeighted(&((u16 *)primary->palettes)[i * 16], &((u16 *)primary->palettes)[((i + 9) % 16) * 16], gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
             else
                 AvgPaletteWeighted(&((u16 *)secondary->palettes)[i * 16], &((u16 *)secondary->palettes)[((i + 9) % 16) * 16], gPlttBufferUnfaded + i * 16, gTimeBlend.altWeight);
@@ -1682,31 +1827,78 @@ void UpdateAltBgPalettes(u16 palettes)
     }
 }
 
+u32 FilterTimeBlendPalettes(u32 palettes)
+{
+    u32 i;
+    u32 mask = 1 << 16;
+
+    if (palettes >= (1 << 16))
+    {
+        for (i = 0; i < 16; i++, mask <<= 1)
+        {
+            if (IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(i)))
+                palettes &= ~mask;
+        }
+    }
+
+    palettes &= PALETTES_MAP | PALETTES_OBJECTS; // Don't blend UI
+    return palettes;
+}
+
 void UpdatePalettesWithTime(u32 palettes)
 {
     if (!MapHasNaturalLight(gMapHeader.mapType))
         return;
-    u32 i;
-    u32 mask = 1 << 16;
-    if (palettes >= (1 << 16))
-        for (i = 0; i < 16; i++, mask <<= 1)
-        {
-            if (IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(i)))
-                palettes &= ~(mask);
-        }
-
-    palettes &= PALETTES_MAP | PALETTES_OBJECTS; // Don't blend UI pals
+    palettes = FilterTimeBlendPalettes(palettes);
     if (!palettes)
         return;
-    TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
+    
+    if (IsMapTypeFlash(gMapHeader.mapType)) // Is in a cave or underwater
+    {
+        DoCustomDNSBlend();
+        return;
+    }
+    else // Is not in a cave or underwater — do normal DNS blend
+        TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
 }
 
 u8 UpdateSpritePaletteWithTime(u8 paletteNum)
 {
-    if (MapHasNaturalLight(gMapHeader.mapType)
-     && !IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(paletteNum)))
-        TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
+    if (!IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(paletteNum)))
+    {
+        if (!gMapHeader.cave) // Not flash cave
+        {
+            if (IsMapTypeFlash(gMapHeader.mapType)) // ZETA- Set DNS tint to default Cave
+                TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], (struct BlendSettings *)&gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], (struct BlendSettings *)&gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], 256);
+            else if (MapHasNaturalLight(gMapHeader.mapType)) // Do normal DNS blending
+                TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
+        }
+        else // Flash cave
+        {
+            // Get blend index from upper byte of blend var
+            u16 flashTrackerPacked = VarGet(VAR_FLASH_TRACKER_PACKED);
+            u16 blendVar = GET_FOLLOWER_TINT(flashTrackerPacked);
+            const struct BlendSettings *blend = &gCustomDNSTintBlend[blendVar];
+            TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
+        }
+    }
     return paletteNum;
+}
+
+void DoCustomDNSBlend(void)
+{
+    if (!IsMapTypeFlash(gMapHeader.mapType))
+        return;
+    
+    u32 palettes = FilterTimeBlendPalettes(PALETTES_ALL);
+    if (!gMapHeader.cave)                                                                            // In cave or underwater but does not require flash = do normal cave blend
+    {
+        const struct BlendSettings *blend = &gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD];
+        TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
+        return;
+    }
+   UpdateFlashTint();
+    return;
 }
 
 static void OverworldBasic(void)
@@ -1729,14 +1921,15 @@ static void OverworldBasic(void)
         gTimeUpdateCounter = (SECONDS_PER_MINUTE * 60 / FakeRtc_GetSecondsRatio());
         UpdateTimeOfDay();
         FormChangeTimeUpdate();
-        if (bld0[0] != bld1[0]
+        if (MapHasNaturalLight(gMapHeader.mapType) &&
+           (bld0[0] != bld1[0]
          || bld0[1] != bld1[1]
-         || bld0[2] != bld1[2])
+         || bld0[2] != bld1[2]))
         {
-           UpdateAltBgPalettes(PALETTES_BG);
-           UpdatePalettesWithTime(PALETTES_ALL);
+            ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
         }
     }
+    PlayerAvatarHandleBob();
 }
 
 // This CB2 is used when starting
@@ -1750,10 +1943,16 @@ void CB2_Overworld(void)
     bool32 fading = (gPaletteFade.active != 0);
     if (fading)
         SetVBlankCallback(NULL);
+
     OverworldBasic();
+
     if (fading)
     {
         SetFieldVBlankCallback();
+        if (IsMapTypeFlash(gMapHeader.mapType))
+        {
+            DoCustomDNSBlend();
+        }
         return;
     }
 }
@@ -1806,11 +2005,17 @@ void CB2_NewGame(void)
     PlayTimeCounter_Start();
     ScriptContext_Init();
     UnlockPlayerFieldControls();
+    if (IS_FRLG)
+        gFieldCallback = FieldCB_WarpExitFadeFromBlack;
     gFieldCallback2 = NULL;
     DoMapLoadLoop(&gMain.state);
     SetFieldVBlankCallback();
     SetMainCallback1(CB1_Overworld);
     SetMainCallback2(CB2_Overworld);
+#if OW_USE_FAKE_RTC
+    // Wall clock now track local time so we set it to 10AM to match initial wall clock time
+    RtcCalcLocalTimeOffset(0, 10, 0, 0);
+#endif
 }
 
 void CB2_WhiteOut(void)
@@ -2052,8 +2257,17 @@ static void SetFieldVBlankCallback(void)
     SetVBlankCallback(VBlankCB_Field);
 }
 
+static void TryFlashEffect(void)
+{
+    if (GetFlashLevel())
+    {
+        WriteFlashScanlineEffectBuffer(GetFlashLevel());
+    }
+}
+
 static void VBlankCB_Field(void)
 {
+    TryFlashEffect();
     LoadOam();
     ProcessSpriteCopyRequests();
     ScanlineEffect_InitHBlankDmaTransfer();
@@ -2066,13 +2280,11 @@ static void InitCurrentFlashLevelScanlineEffect(void)
 {
     u8 flashLevel;
 
-    if (InBattlePyramid_())
+    if ((flashLevel = GetFlashLevel()))
     {
-        WriteBattlePyramidViewScanlineEffectBuffer();
-        ScanlineEffect_SetParams(sFlashEffectParams);
-    }
-    else if ((flashLevel = GetFlashLevel()))
-    {
+        gFlashX = 0;
+        gFlashY = 0;
+        gDrawFlash = TRUE;
         WriteFlashScanlineEffectBuffer(flashLevel);
         ScanlineEffect_SetParams(sFlashEffectParams);
     }
@@ -2250,6 +2462,7 @@ static bool32 ReturnToFieldLocal(u8 *state)
         InitViewGraphics();
         TryLoadTrainerHillEReaderPalette();
         FollowerNPC_BindToSurfBlobOnReloadScreen();
+        ResumeORASDowseFieldEffect();
         (*state)++;
         break;
     case 2:
@@ -2403,6 +2616,38 @@ static void InitOverworldGraphicsRegisters(void)
     ShowBg(2);
     ShowBg(3);
     InitFieldMessageBox();
+}
+
+static void InitOverworldGraphicsRegistersCreditsFrlg(void)
+{
+    ClearScheduledBgCopiesToVram();
+    ResetTempTileDataBuffers();
+    SetGpuReg(REG_OFFSET_MOSAIC, 0);
+    SetGpuReg(REG_OFFSET_WININ, WININ_WIN0_BG_ALL | WININ_WIN0_OBJ | WININ_WIN1_BG_ALL | WININ_WIN1_OBJ);
+    SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG0 | WINOUT_WINOBJ_BG0);
+    SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(0, 255));
+    SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(0, 255));
+    SetGpuReg(REG_OFFSET_WIN1H, WIN_RANGE(255, 255));
+    SetGpuReg(REG_OFFSET_WIN1V, WIN_RANGE(255, 255));
+    SetGpuReg(REG_OFFSET_BLDCNT, gOverworldBackgroundLayerFlags[1] | gOverworldBackgroundLayerFlags[2] | gOverworldBackgroundLayerFlags[3]
+                                 | BLDCNT_TGT2_OBJ | BLDCNT_EFFECT_BLEND);
+    SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(13, 7));
+    ScheduleBgCopyTilemapToVram(1);
+    ScheduleBgCopyTilemapToVram(2);
+    ScheduleBgCopyTilemapToVram(3);
+    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0 | DISPCNT_OBJ_1D_MAP | 0x20 | DISPCNT_OBJ_ON | DISPCNT_WIN0_ON | DISPCNT_WIN1_ON);
+    ShowBg(0);
+    ShowBg(1);
+    ShowBg(2);
+    ShowBg(3);
+    ChangeBgX(0, 0, 0);
+    ChangeBgY(0, 0, 0);
+    ChangeBgX(1, 0, 0);
+    ChangeBgY(1, 0, 0);
+    ChangeBgX(2, 0, 0);
+    ChangeBgY(2, 0, 0);
+    ChangeBgX(3, 0, 0);
+    ChangeBgY(3, 0, 0);
 }
 
 static void ResumeMap(bool32 a1)
@@ -3242,7 +3487,7 @@ static void InitLinkPlayerObjectEventPos(struct ObjectEvent *objEvent, s16 x, s1
     ObjectEventUpdateElevation(objEvent, NULL);
 }
 
-static void UNUSED SetLinkPlayerObjectRange(u8 linkPlayerId, u8 dir)
+static void UNUSED SetLinkPlayerObjectRange(u8 linkPlayerId, enum Direction dir)
 {
     if (gLinkPlayerObjectEvents[linkPlayerId].active)
     {
@@ -3343,28 +3588,28 @@ static void SetPlayerFacingDirection(u8 linkPlayerId, u8 facing)
 }
 
 
-static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     return sLinkPlayerFacingHandlers[dir](linkPlayerObjEvent, objEvent, dir);
 }
 
-static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static u8 MovementEventModeCB_Ignored(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     return FACING_UP;
 }
 
 // Identical to MovementEventModeCB_Normal
-static u8 MovementEventModeCB_Scripted(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static u8 MovementEventModeCB_Scripted(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     return sLinkPlayerFacingHandlers[dir](linkPlayerObjEvent, objEvent, dir);
 }
 
-static bool8 FacingHandler_DoNothing(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static bool8 FacingHandler_DoNothing(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     return FALSE;
 }
 
-static bool8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static bool8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     s16 x, y;
 
@@ -3384,7 +3629,7 @@ static bool8 FacingHandler_DpadMovement(struct LinkPlayerObjectEvent *linkPlayer
     }
 }
 
-static bool8 FacingHandler_ForcedFacingChange(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, u8 dir)
+static bool8 FacingHandler_ForcedFacingChange(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
     linkDirection(objEvent) = FlipVerticalAndClearForced(dir, linkDirection(objEvent));
     return FALSE;
@@ -3411,7 +3656,7 @@ static void MovementStatusHandler_TryAdvanceScript(struct LinkPlayerObjectEvent 
 // Flip Up/Down facing codes. If newFacing doesn't specify a direction, default
 // to oldFacing. Note that this clears also the "FORCED" part of the facing code,
 // even for Left/Right codes.
-static u8 FlipVerticalAndClearForced(u8 newFacing, u8 oldFacing)
+static enum Direction FlipVerticalAndClearForced(u8 newFacing, u8 oldFacing)
 {
     switch (newFacing)
     {
@@ -3431,7 +3676,7 @@ static u8 FlipVerticalAndClearForced(u8 newFacing, u8 oldFacing)
     return oldFacing;
 }
 
-static u8 LinkPlayerGetCollision(u8 selfObjEventId, u8 direction, s16 x, s16 y)
+static u8 LinkPlayerGetCollision(u8 selfObjEventId, enum Direction direction, s16 x, s16 y)
 {
     u8 i;
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
@@ -3448,7 +3693,7 @@ static u8 LinkPlayerGetCollision(u8 selfObjEventId, u8 direction, s16 x, s16 y)
     return MapGridGetCollisionAt(x, y);
 }
 
-static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
+static void CreateLinkPlayerSprite(u8 linkPlayerId, enum GameVersion gameVersion)
 {
     struct LinkPlayerObjectEvent *linkPlayerObjEvent = &gLinkPlayerObjectEvents[linkPlayerId];
     u8 objEventId = linkPlayerObjEvent->objEventId;
@@ -3469,6 +3714,8 @@ static void CreateLinkPlayerSprite(u8 linkPlayerId, u8 gameVersion)
             break;
         case VERSION_EMERALD:
             objEvent->spriteId = CreateObjectGraphicsSprite(GetRivalAvatarGraphicsIdByStateIdAndGender(PLAYER_AVATAR_STATE_NORMAL, linkGender(objEvent)), SpriteCB_LinkPlayer, 0, 0, 0);
+            break;
+        default:
             break;
         }
 
@@ -3511,7 +3758,7 @@ static void SpriteCB_LinkPlayer(struct Sprite *sprite)
 #define ITEM_ICON_Y     24
 #define ITEM_TAG        0x2722 | BLEND_IMMUNE_FLAG //same as money label
 
-bool8 GetSetItemObtained(u16 item, enum ItemObtainFlags caseId)
+bool8 GetSetItemObtained(enum Item item, enum ItemObtainFlags caseId)
 {
 #if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME
     u8 index = item / 8;
@@ -3533,7 +3780,7 @@ EWRAM_DATA static u8 sHeaderBoxWindowId = 0;
 EWRAM_DATA u8 sItemIconSpriteId = 0;
 EWRAM_DATA u8 sItemIconSpriteId2 = 0;
 
-static void ShowItemIconSprite(u16 item, bool8 firstTime, bool8 flash);
+static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash);
 static void DestroyItemIconSprite(void);
 
 static void ShowMonIconSprite(u16 species, bool8 flash);
@@ -3545,7 +3792,7 @@ enum PopupType
     POKEDEX
 };
 
-static u8 ReformatItemDescription(u16 item, u8 *dest)
+static u8 ReformatItemDescription(enum Item item, u8 *dest)
 {
     u8 count = 0;
     u8 numLines = 1;
@@ -3600,7 +3847,7 @@ void ScriptShowItemDescription(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
     struct WindowTemplate template;
-    u16 item = gSpecialVar_0x8006;
+    enum Item item = gSpecialVar_0x8006;
     u8 textY;
     u8 *dst;
     bool8 handleFlash = FALSE;
@@ -3649,7 +3896,7 @@ void ScriptHideItemDescription(struct ScriptContext *ctx)
     }
 }
 
-static void ShowItemIconSprite(u16 item, bool8 firstTime, bool8 flash)
+static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash)
 {
     s16 x = 0, y = 0;
     u8 iconSpriteId;
@@ -3813,7 +4060,7 @@ void ScriptShowMonDescribedNotification(struct ScriptContext *ctx)
         bool8 handleFlash = FALSE;
         
         if (GetFlashLevel() > 0 || InBattlePyramid_())
-        handleFlash = TRUE;
+            handleFlash = TRUE;
         
         struct WindowTemplate template;
         SetWindowTemplateFields(&template, 0, 1, 1, 28, 3, 15, 8);
@@ -3849,5 +4096,202 @@ void ScriptHideMonDescribed(struct ScriptContext *ctx)
         ClearStdWindowAndFrameToTransparent(sHeaderBoxWindowId, FALSE);
         CopyWindowToVram(sHeaderBoxWindowId, 3);
         RemoveWindow(sHeaderBoxWindowId);
+    }
+}
+
+// Credits
+
+void Overworld_CreditsMainCB(void)
+{
+    bool8 fading = !!gPaletteFade.active;
+    if (fading)
+        SetVBlankCallback(NULL);
+    RunTasks();
+    AnimateSprites();
+    CameraUpdateNoObjectRefresh();
+    UpdateCameraPanning();
+    BuildOamBuffer();
+    UpdatePaletteFade();
+    UpdateTilesetAnimations();
+    DoScheduledBgTilemapCopiesToVram();
+    if (fading)
+        SetFieldVBlankCallback();
+}
+
+static bool8 FieldCB2_Credits_WaitFade(void)
+{
+    if (gPaletteFade.active)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool32 Overworld_DoScrollSceneForCredits(u8 *state_p, const struct CreditsOverworldCmd * script)
+{
+    sCreditsOverworld_Script = script;
+    return SetUpScrollSceneForCredits(state_p, 0);
+}
+
+static bool32 SetUpScrollSceneForCredits(u8 *state, u8 unused)
+{
+    struct WarpData warp;
+    switch (*state)
+    {
+    case 0:
+        sCreditsOverworld_CmdIndex = 0;
+        sCreditsOverworld_CmdLength = 0;
+        (*state)++;
+        return FALSE;
+    case 1:
+        warp.mapGroup = sCreditsOverworld_Script[sCreditsOverworld_CmdIndex].unk_2;
+        warp.mapNum = sCreditsOverworld_Script[sCreditsOverworld_CmdIndex].unk_4;
+        warp.warpId = -1;
+        sCreditsOverworld_CmdIndex++;
+        warp.x = sCreditsOverworld_Script[sCreditsOverworld_CmdIndex].unk_0;
+        warp.y = sCreditsOverworld_Script[sCreditsOverworld_CmdIndex].unk_2;
+        sWarpDestination = warp;
+        sCreditsOverworld_CmdLength = sCreditsOverworld_Script[sCreditsOverworld_CmdIndex].unk_4;
+        WarpIntoMap();
+        gPaletteFade.bufferTransferDisabled = TRUE;
+        ScriptContext_Init();
+        UnlockPlayerFieldControls();
+        SetMainCallback1(NULL);
+        gFieldCallback2 = FieldCB2_Credits_WaitFade;
+        gMain.state = 0;
+        (*state)++;
+        return FALSE;
+    case 2:
+        if (MapLdr_Credits())
+        {
+            (*state)++;
+            return FALSE;
+        }
+        break;
+    case 3:
+        gFieldCamera.callback = CameraCB_CreditsPan;
+        SetFieldVBlankCallback();
+        *state = 0;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+static bool8 MapLdr_Credits(void)
+{
+    u8 *state = &gMain.state;
+    switch (*state)
+    {
+    case 0:
+        InitOverworldBgs_NoResetHeap();
+        LoadMapFromWarp(FALSE);
+        (*state)++;
+        break;
+    case 1:
+        ScanlineEffect_Clear();
+        ResetAllPicSprites();
+        ResetCameraUpdateInfo();
+        InstallCameraPanAheadCallback();
+        FieldEffectActiveListClear();
+        StartWeather();
+        ResumePausedWeather();
+        SetUpFieldTasks();
+        RunOnResumeMapScript();
+        (*state)++;
+        break;
+    case 2:
+        InitCurrentFlashLevelScanlineEffect();
+        InitOverworldGraphicsRegistersCreditsFrlg();
+        (*state)++;
+        break;
+    case 3:
+        ResetFieldCamera();
+        (*state)++;
+        break;
+    case 4:
+        CopyPrimaryTilesetToVram(gMapHeader.mapLayout);
+        (*state)++;
+        break;
+    case 5:
+        CopySecondaryTilesetToVram(gMapHeader.mapLayout);
+        (*state)++;
+        break;
+    case 6:
+        if (FreeTempTileDataBuffersIfPossible() != TRUE)
+        {
+            LoadMapTilesetPalettes(gMapHeader.mapLayout);
+            (*state)++;
+        }
+        break;
+    case 7:
+        DrawWholeMapView();
+        (*state)++;
+        break;
+    case 8:
+        InitTilesetAnimations();
+        gPaletteFade.bufferTransferDisabled = FALSE;
+        FadeSelectedPals(FADE_FROM_BLACK, 0, 0x3FFFFFFF);
+        (*state)++;
+        break;
+    default:
+        return TRUE;
+    }
+    return FALSE;
+}
+
+static void CameraCB_CreditsPan(struct CameraObject * camera)
+{
+    if (sCreditsOverworld_CmdLength == 0)
+    {
+        sCreditsOverworld_CmdIndex++;
+        switch (sCreditsOverworld_Script[sCreditsOverworld_CmdIndex].unk_0)
+        {
+        case CREDITSOVWLDCMD_FC:
+        case CREDITSOVWLDCMD_LOADMAP:
+            return;
+        case CREDITSOVWLDCMD_FF:
+            camera->movementSpeedX = 0;
+            camera->movementSpeedY = 0;
+            camera->callback = NULL;
+            CreateTask(Task_OvwldCredits_FadeOut, 0);
+            return;
+        case CREDITSOVWLDCMD_FB:
+            camera->movementSpeedX = 0;
+            camera->movementSpeedY = 0;
+            camera->callback = NULL;
+            break;
+        case CREDITSOVWLDCMD_END:
+            camera->movementSpeedX = 0;
+            camera->movementSpeedY = 0;
+            camera->callback = NULL;
+            return;
+        default:
+            sCreditsOverworld_CmdLength = sCreditsOverworld_Script[sCreditsOverworld_CmdIndex].unk_4;
+            camera->movementSpeedX = sCreditsOverworld_Script[sCreditsOverworld_CmdIndex].unk_0;
+            camera->movementSpeedY = sCreditsOverworld_Script[sCreditsOverworld_CmdIndex].unk_2;
+            break;
+        }
+    }
+    if (sCreditsOverworld_Script[sCreditsOverworld_CmdIndex].unk_0 == 0xFF)
+    {
+        camera->movementSpeedX = 0;
+        camera->movementSpeedY = 0;
+    }
+    else
+        sCreditsOverworld_CmdLength--;
+}
+
+static void Task_OvwldCredits_FadeOut(u8 taskId)
+{
+    BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+    gTasks[taskId].func = Task_OvwldCredits_WaitFade;
+}
+
+static void Task_OvwldCredits_WaitFade(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        CleanupOverworldWindowsAndTilemaps();
+        SetMainCallback2(CB2_LoadMap);
+        DestroyTask(taskId);
     }
 }

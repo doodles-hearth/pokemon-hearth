@@ -264,8 +264,6 @@ static void CreateUnvisitedTownIcons(void)
             x = (x + MAPCURSOR_X_MIN) * 8 + 4;
             y = (y + MAPCURSOR_Y_MIN) * 8 + 4;
 
-            DebugPrintf("mapsec %d (%d,%d)", mapSecId, width, height);
-
             if (width == 2 && height == 2)
                 shape = MAP_SPRITE_16X16;
             else if (width == 2)
@@ -336,7 +334,7 @@ static void FieldUpdateRegionMap(void)
                     sFieldRegionMapHandler->state++;
                     break;
                 case MAP_INPUT_R_BUTTON:
-                    if (sFieldRegionMapHandler->regionMap.mapSecType == MAPSECTYPE_CITY_CANFLY 
+                    if (sFieldRegionMapHandler->regionMap.mapSecType == MAPSECTYPE_CITY_CANFLY
                         && FlagGet(OW_FLAG_POKE_RIDER) && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
                     {
                         PlaySE(SE_SELECT);

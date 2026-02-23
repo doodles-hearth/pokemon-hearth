@@ -74,10 +74,9 @@ static const u8 sPrologueTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHIT
 const u8 sText_Prologue[] = _(
     "This is a demo for {COLOR LIGHT_RED}{SHADOW RED}Pokémon Hearth{COLOR WHITE}{SHADOW DARK_GRAY}!{PAUSE 16}\n"
     "This game is FREE.{PAUSE 16}\nIf you paid for it, you got scammed.{PAUSE 48}\n\n"
-    "To avoid playing an outdated version\n"
-    "of the game,{PAUSE 16} make sure you got the hack\n"
-    "from the {COLOR LIGHT_RED}{SHADOW RED}Team Aqua Patch Cove{COLOR WHITE}{SHADOW DARK_GRAY}\n"
-    "(teamaquashideout.github.io).{PAUSE 48}\n"
+    "TO AVOID PLAYING AN OUTDATED GAME,{PAUSE 16}\n"
+    "MAKE SURE YOU GOT THE HACK FROM\n"
+    "THE {COLOR LIGHT_RED}{SHADOW RED}HACKDEX{COLOR WHITE}{SHADOW DARK_GRAY} (hackdex.app)!!!{PAUSE 48}\n"
     "Fake website impersonators are a thing!\p"
     "We hope you have as much fun\n"
     "playing this game as we did making it!{PAUSE 16}\n\n"
@@ -99,7 +98,7 @@ static bool32 PrintPrologueMessage(u8 taskId, const u8 *text, u32 x, u32 y)
         break;
     case 1:
         RunTextPrinters();
-        if (!IsTextPrinterActive(windowId))
+        if (!IsTextPrinterActiveOnWindow(windowId))
         {
             gTasks[taskId].tPrintState = 0;
             return TRUE;

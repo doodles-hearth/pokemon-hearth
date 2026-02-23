@@ -136,7 +136,7 @@ static u32 GetCurrentTotalMinutes(struct Time *);
 static u32 GetNumRegisteredTrainers(void);
 static u32 GetActiveMatchCallTrainerId(u32);
 static int GetTrainerMatchCallId(int);
-static u16 GetRematchTrainerLocation(int);
+static mapsec_u16_t GetRematchTrainerLocation(int);
 static bool32 TrainerIsEligibleForRematch(int);
 static void StartMatchCall(void);
 static void ExecuteMatchCall(u8);
@@ -191,7 +191,7 @@ static const struct MatchCallTrainerTextInfo sMatchCallTrainers[] =
         .differentRouteMatchCallTextId = TEXT_ID(REQ_TOPIC_DIFF_ROUTE, 12),
     },
     {
-        .trainerId = TRAINER_DUSTY_1,
+        .trainerId = TRAINER_DUMMY,
         .unused = 0,
         .battleTopicTextIds = BATTLE_TEXT_IDS(12),
         .generalTextId = TEXT_ID(GEN_TOPIC_PERSONAL, 4),
@@ -856,7 +856,7 @@ static const struct MatchCallText sMatchCallPersonalizedTexts[] =
     { .text = MatchCall_PersonalizedText9,  .stringVarFuncIds = STRS_NORMAL_MSG },
     { .text = MatchCall_PersonalizedText10, .stringVarFuncIds = STRS_NORMAL_MSG },
     { .text = MatchCall_PersonalizedText11, .stringVarFuncIds = STRS_NORMAL_MSG },
-    { .text = MatchCall_PersonalizedText12, .stringVarFuncIds = STRS_NORMAL_MSG },
+    { .text = MatchCall_PersonalizedText12, .stringVarFuncIds = { STR_TRAINER_NAME, STR_SPECIES_IN_ROUTE, STR_NONE } },
     { .text = MatchCall_PersonalizedText13, .stringVarFuncIds = { STR_TRAINER_NAME, STR_SPECIES_IN_ROUTE, STR_NONE } },
     { .text = MatchCall_PersonalizedText14, .stringVarFuncIds = STRS_NORMAL_MSG },
     { .text = MatchCall_PersonalizedText15, .stringVarFuncIds = STRS_NORMAL_MSG },
@@ -1453,6 +1453,7 @@ static void InitMatchCallTextPrinter(int windowId, const u8 *str)
 {
     struct TextPrinterTemplate printerTemplate;
     printerTemplate.currentChar = str;
+    printerTemplate.type = WINDOW_TEXT_PRINTER;
     printerTemplate.windowId = windowId;
     printerTemplate.fontId = FONT_NORMAL;
     printerTemplate.x = 32;
@@ -1461,10 +1462,10 @@ static void InitMatchCallTextPrinter(int windowId, const u8 *str)
     printerTemplate.currentY = 1;
     printerTemplate.letterSpacing = 0;
     printerTemplate.lineSpacing = 0;
-    printerTemplate.unk = 0;
-    printerTemplate.fgColor = TEXT_DYNAMIC_COLOR_1;
-    printerTemplate.bgColor = TEXT_COLOR_BLUE;
-    printerTemplate.shadowColor = TEXT_DYNAMIC_COLOR_5;
+    printerTemplate.color.accent = TEXT_COLOR_BLUE;
+    printerTemplate.color.foreground = TEXT_DYNAMIC_COLOR_1;
+    printerTemplate.color.background = TEXT_COLOR_BLUE;
+    printerTemplate.color.shadow = TEXT_DYNAMIC_COLOR_5;
     gTextFlags.useAlternateDownArrow = FALSE;
 
     AddTextPrinter(&printerTemplate, GetPlayerTextSpeedDelay(), NULL);
@@ -1478,7 +1479,7 @@ static bool32 RunMatchCallTextPrinter(int windowId)
         gTextFlags.canABSpeedUpPrint = FALSE;
 
     RunTextPrinters();
-    return IsTextPrinterActive(windowId);
+    return IsTextPrinterActiveOnWindow(windowId);
 }
 
 #define tTimer     data[0]
@@ -1513,7 +1514,7 @@ UNUSED static bool32 TrainerIsEligibleForRematch(int matchCallId)
 #endif //FREE_MATCH_CALL
 }
 
-static u16 GetRematchTrainerLocation(int matchCallId)
+static mapsec_u16_t GetRematchTrainerLocation(int matchCallId)
 {
     const struct MapHeader *mapHeader = Overworld_GetMapHeaderByGroupAndId(gRematchTable[matchCallId].mapGroup, gRematchTable[matchCallId].mapNum);
     return mapHeader->regionMapSectionId;
@@ -1718,12 +1719,12 @@ static void PopulateMatchCallStringVar(int matchCallId, int funcId, u8 *destStr)
 
 static const struct MultiTrainerMatchCallText sMultiTrainerMatchCallTexts[] =
 {
-    { .trainerId = TRAINER_KIRA_AND_DAN_1, .text = gText_Kira },
-    { .trainerId = TRAINER_AMY_AND_LIV_1,  .text = gText_Amy },
-    { .trainerId = TRAINER_JOHN_AND_JAY_1, .text = gText_John },
-    { .trainerId = TRAINER_LILA_AND_ROY_1, .text = gText_Roy },
-    { .trainerId = TRAINER_GABBY_AND_TY_1, .text = gText_Gabby },
-    { .trainerId = TRAINER_ANNA_AND_MEG_1, .text = gText_Anna },
+    {.trainerId = TRAINER_KIRA_AND_DAN_1, .text = COMPOUND_STRING("KIRA")},
+    {.trainerId = TRAINER_AMY_AND_LIV_1, .text = COMPOUND_STRING("AMY")},
+    {.trainerId = TRAINER_JOHN_AND_JAY_1, .text = COMPOUND_STRING("JOHN")},
+    {.trainerId = TRAINER_LILA_AND_ROY_1, .text = COMPOUND_STRING("ROY")},
+    {.trainerId = TRAINER_DUMMY, .text = COMPOUND_STRING("GABBY")},
+    {.trainerId = TRAINER_ANNA_AND_MEG_1, .text = COMPOUND_STRING("ANNA")},
 };
 
 static void PopulateTrainerName(int matchCallId, u8 *destStr)
@@ -2023,8 +2024,8 @@ void BufferPokedexRatingForMatchCall(u8 *destStr)
         return;
     }
 
-    numSeen = GetHoennPokedexCount(FLAG_GET_SEEN);
-    numCaught = GetHoennPokedexCount(FLAG_GET_CAUGHT);
+    numSeen = GetRegionalPokedexCount(FLAG_GET_SEEN);
+    numCaught = GetRegionalPokedexCount(FLAG_GET_CAUGHT);
     ConvertIntToDecimalStringN(gStringVar1, numSeen, STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar2, numCaught, STR_CONV_MODE_LEFT_ALIGN, 3);
     str = StringCopy(buffer, gBirchDexRatingText_AreYouCurious);

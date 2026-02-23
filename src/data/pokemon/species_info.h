@@ -1,6 +1,8 @@
 #include "constants/abilities.h"
+#include "constants/teaching_types.h"
 #include "species_info/shared_dex_text.h"
 #include "species_info/shared_front_pic_anims.h"
+#include "pokemon_spot_templates.h"
 
 // Macros for ease of use.
 
@@ -63,7 +65,6 @@
     .subspriteTables = (_size == SIZE_32x32 ? sOamTables_32x32 : sOamTables_64x64),                                                     \
     .anims = _anims,                                                                                                                    \
     .images = picTable,                                                                                                                 \
-    .affineAnims = gDummySpriteAffineAnimTable,                                                                                         \
 }
 
 #define OVERWORLD(objEventPic, _size, shadow, _tracks, _anims, ...)                                 \
@@ -101,7 +102,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     {
         .speciesName = _("??????????"),
         .unknownName = _("??????????"),
-        .cryId = CRY_NONE,
+        .cryId = CRY_PORYGON,
         .natDexNum = NATIONAL_DEX_NONE,
         .categoryName = _("Unknown"),
         .height = 0,
@@ -144,7 +145,6 @@ const struct SpeciesInfo gSpeciesInfo[] =
             .subspriteTables = sOamTables_32x32,
             .anims = sAnimTable_Following,
             .images = sPicTable_Substitute,
-            .affineAnims = gDummySpriteAffineAnimTable,
         },
     #endif
         .levelUpLearnset = sNoneLevelUpLearnset,
@@ -205,7 +205,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 5,
         .weight = 175,
         .description = COMPOUND_STRING(
-            "His soft fur and ball-like appearance\n"
+            "Its soft fur and ball-like appearance\n"
             "makes it a children's favorite.\n"
             "When it is happy, it releases small\n"
             "electric jolts through its fur."
@@ -385,4 +385,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         //.perfectIVCount = NUM_STATS,
     },
     */
+};
+
+const struct EggData gEggDatas[EGG_ID_COUNT] =
+{
+#include "egg_data.h"
 };

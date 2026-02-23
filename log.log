@@ -1,0 +1,4 @@
+make[1]: Nothing to be done for 'all'.
+python3 tools/learnset_helpers/make_tutors.py tools/learnset_helpers/build/all_tutors.json
+python3 tools/learnset_helpers/make_teaching_types.py tools/learnset_helpers/build/all_teaching_types.json
+/usr/lib/gcc/arm-none-eabi/13.2.1/cc1 -quiet <flags> -o build/emerald/src/pokemon.o src/pokemon.c

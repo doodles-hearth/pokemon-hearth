@@ -19,7 +19,7 @@ Debug_CheatStart::
 	setvar VAR_ROUTE101_STATE, 3
 	givemon SPECIES_SNIVY, 20, ITEM_NONE
 	givemon SPECIES_CYNDAQUIL, 20, ITEM_NONE
-	givemon SPECIES_FROAKIE, 20, ITEM_NONE
+	givemon SPECIES_SQUIRTLE, 20, ITEM_NONE
 	setvar VAR_STARTER_MON, SPECIES_CYNDAQUIL
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
@@ -55,7 +55,7 @@ Debug_CheatStart::
 
 
 	@ Custom Hearth flags
-	setvar VAR_STARTER_MON, SPECIES_FROAKIE
+	setvar VAR_STARTER_MON, SPECIES_SQUIRTLE
 	setvar VAR_SUNRISE_VILLAGE_INTRO_STATE, 8
 	@ setflag FLAG_SYS_QUEST_MENU_GET
 	setflag FLAG_HIDE_SUNRISE_BEACH_RIVAL
@@ -65,12 +65,72 @@ Debug_CheatStart::
 	setflag FLAG_VISITED_SAKU_TOWN
 	setflag FLAG_VISITED_KURA_TOWN
 
-	giveitem ITEM_TOWN_MAP
-	giveitem ITEM_POKE_BALL, 20
-	giveitem ITEM_TM_SPLASH
+	additem ITEM_TOKU_MAP
+	additem ITEM_POKE_BALL, 20
+	additem ITEM_TM_SPLASH
+	additem ITEM_TM_EARTHQUAKE
+	additem ITEM_SECRET_SURF
+	additem ITEM_SECRET_CLIMB
 
 	resumefakertc
 
+	release
+	end
+
+Debug_CheatStartFrlg::
+	setflag FLAG_SYS_POKEMON_GET
+	setflag FLAG_PALLET_LADY_NOT_BLOCKING_SIGN
+	setflag FLAG_OPENED_START_MENU
+	setflag FLAG_VISITED_OAKS_LAB
+	setflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
+	givemon SPECIES_BULBASAUR, 20, ITEM_NONE
+	givemon SPECIES_CHARMANDER, 20, ITEM_NONE
+	givemon SPECIES_SQUIRTLE, 20, ITEM_NONE
+	clearflag FLAG_HIDE_OAK_IN_HIS_LAB
+	setflag FLAG_HIDE_RIVAL_IN_LAB
+	setvar VAR_MAP_SCENE_PALLET_TOWN_OAK, 1 @ prevents Oak scene when trying to enter Route 1
+	setflag FLAG_SYS_POKEDEX_GET
+	special SetUnlockedPokedexFlags
+	setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, 6 @ state after handing in parcel and getting pokedex
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART, 2
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1
+	setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE, 1
+	setvar VAR_MAP_SCENE_ROUTE22, 1
+	setvar VAR_MAP_SCENE_POKEMON_CENTER_TEALA, 1 @ end
+	setflag FLAG_SYS_NATIONAL_DEX
+	special EnableNationalPokedex
+	setflag FLAG_SYS_B_DASH
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_BADGE02_GET
+	setflag FLAG_BADGE03_GET
+	setflag FLAG_BADGE04_GET
+	setflag FLAG_BADGE05_GET
+	setflag FLAG_BADGE06_GET
+	setflag FLAG_BADGE07_GET
+	setflag FLAG_BADGE08_GET
+	setflag FLAG_GOT_BIKE_VOUCHER
+	setflag FLAG_GOT_BICYCLE
+	additem ITEM_BICYCLE
+	setflag FLAG_WORLD_MAP_PALLET_TOWN
+	setflag FLAG_WORLD_MAP_VIRIDIAN_CITY
+	setflag FLAG_WORLD_MAP_PEWTER_CITY
+	setflag FLAG_WORLD_MAP_ROUTE4_POKEMON_CENTER_1F
+	setflag FLAG_WORLD_MAP_CERULEAN_CITY
+	setflag FLAG_WORLD_MAP_VERMILION_CITY
+	setflag FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F
+	setflag FLAG_WORLD_MAP_LAVENDER_TOWN
+	setflag FLAG_WORLD_MAP_CELADON_CITY
+	setflag FLAG_WORLD_MAP_FUCHSIA_CITY
+	setflag FLAG_WORLD_MAP_SAFFRON_CITY
+	setflag FLAG_WORLD_MAP_CINNABAR_ISLAND
+	setflag FLAG_WORLD_MAP_INDIGO_PLATEAU_EXTERIOR
+	setflag FLAG_WORLD_MAP_ONE_ISLAND
+	setflag FLAG_WORLD_MAP_TWO_ISLAND
+	setflag FLAG_WORLD_MAP_THREE_ISLAND
+	setflag FLAG_WORLD_MAP_FOUR_ISLAND
+	setflag FLAG_WORLD_MAP_FIVE_ISLAND
+	setflag FLAG_WORLD_MAP_SIX_ISLAND
+	setflag FLAG_WORLD_MAP_SEVEN_ISLAND
 	release
 	end
 
@@ -316,6 +376,15 @@ Debug_EventScript_Steven_Multi::
 	release
 	end
 
+Debug_EventScript_WallyTutorial::
+	special SavePlayerParty
+	special LoadWallyZigzagoon
+	special StartWallyTutorialBattle
+	waitstate
+	special LoadPlayerParty
+	release
+	end
+
 Debug_BerryPestsDisabled::
 	msgbox DebugText_BerryPestsDisabled, MSGBOX_DEFAULT
 	release
@@ -376,6 +445,16 @@ Debug_EventScript_InflictStatus1_Single:
 	releaseall
 	end
 
+Debug_EventScript_KoPokemon::
+	special ChoosePartyMon
+	waitstate
+	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_EventScript_InflictStatus1_Close
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	goto_if_eq VAR_RESULT, SPECIES_EGG, Debug_EventScript_InflictStatus1_Close
+	setko VAR_0x8004
+	releaseall
+	end
+
 Debug_EventScript_SetHiddenNature::
 	special ChoosePartyMon
 	waitstate
@@ -433,6 +512,20 @@ Debug_EventScript_SetFriendship::
 	special ChoosePartyMon
 	waitstate
 	callnative DebugNative_Party_SetFriendship
+	releaseall
+	end
+
+Debug_EventScript_SetColor::
+	special ChoosePartyMon
+	waitstate
+	callnative DebugNative_Party_SetColor
+	releaseall
+	end
+
+Debug_EventScript_GivePokerus::
+	special ChoosePartyMon
+	waitstate
+	callnative DebugNative_Party_SetPokerus
 	releaseall
 	end
 
@@ -543,6 +636,9 @@ Debug_EventScript_InflictStatus1_Text_Freeze:
 
 Debug_EventScript_InflictStatus1_Text_Frostbite:
 	.string "Frostbite$"
+
+Debug_EventScript_InflictStatus1_Text_KO:
+	.string "KO$"
 
 Debug_EventScript_ChangeNature_Text_Hardy:
 	.string "Hardy$"

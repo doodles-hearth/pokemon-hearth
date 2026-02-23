@@ -21,7 +21,7 @@ POKEDEXGFXDIR := graphics/pokedex
 STARTERGFXDIR := graphics/starter_choose
 NAMINGGFXDIR := graphics/naming_screen
 SPINDAGFXDIR := graphics/pokemon/spinda/spots
-GYARADOSGFXDIR := graphics/pokemon/gyarados/spots
+GYARADOSGFXDIR := graphics/pokemon/gyarados/tokuan/spots
 TITLESCREENGFXDIR := graphics/title_screen
 
 types := none normal fight flying poison ground rock bug ghost steel mystery fire water grass electric psychic ice dragon dark fairy stellar
@@ -280,6 +280,9 @@ $(FONTGFXDIR)/frlg_female.fwjpnfont: $(FONTGFXDIR)/japanese_frlg_female.png
 $(TITLESCREENGFXDIR)/hearth/hearth.8bpp: %.8bpp: %.png
 	$(GFX) $< $@ -mwidth 8 -mheight 4
 
+$(MISCGFXDIR)/emoticons.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
 $(TITLESCREENGFXDIR)/pokemon_logo.gbapal: %.gbapal: %.pal
 	$(GFX) $< $@ -num_colors 224
 
@@ -407,7 +410,7 @@ $(RAYQUAZAGFXDIR)/scene_2/bg.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 313 -Wnum_tiles
 
 $(RAYQUAZAGFXDIR)/scene_3/rayquaza.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -num_tiles 124 -Wnum_tiles
+	$(GFX) $< $@ -num_tiles 128 -Wnum_tiles
 
 $(RAYQUAZAGFXDIR)/scene_4/streaks.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 19 -Wnum_tiles
@@ -682,4 +685,7 @@ $(GYARADOSGFXDIR)/spot_1.1bpp: %.1bpp: %.png
 	$(GFX) $< $@ -plain -data_width 4
 
 $(GYARADOSGFXDIR)/spot_2.1bpp: %.1bpp: %.png
+	$(GFX) $< $@ -plain -data_width 4
+
+$(GYARADOSGFXDIR)/spot_3.1bpp: %.1bpp: %.png
 	$(GFX) $< $@ -plain -data_width 4

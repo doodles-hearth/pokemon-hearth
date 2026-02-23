@@ -186,6 +186,59 @@ script ChatotPost_EventScript_Post_NatsukiRareCandy {
     return
 }
 
+script ChatotPost_EventScript_PechaOvergrown {
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox((
+        "I don't know who you are.\nI don't know what you want.\p"
+        "But I grew too many Pecha berries,\nso…\lI hope you have a sweet tooth!"
+    ))
+    closemessage
+
+    giveitem(ITEM_PECHA_BERRY, 6)
+
+    return
+}
+
+script ChatotPost_EventScript_BigSisLeftovers {
+    special(GetPlayerBrotherSisterString)
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox((
+        "Hey little {STR_VAR_1}!\p"
+        "So, I'm sure you've been homesick\non your big journey…\lSo I made you your favorite dessert!\p"
+        "DO NOT let your Pokémon get their\npaws on it!\p"
+        "Love and kisses!\nCome home soon!"
+    ))
+    closemessage
+
+    delay(48)
+
+    msgbox(format(
+        "{PLAYER} opens the parcel…"
+    ))
+    closemessage
+
+    giveitem(ITEM_LEFTOVERS)
+
+    applymovement(LOCALID_PLAYER, moves(emote_question_mark, delay_16 * 6))
+    waitmovement(0)
+
+    msgbox(format(
+        "There are only leftovers inside…"
+    ))
+    closemessage
+
+    delay(48)
+
+    setspeakertomonname(SPECIES_CHATOT)
+    msgbox(format(
+        "… … … … … …\n… … … … … …\p"
+        "{FONT_SMALL}Chomp, chomp…{FONT_NORMAL}"
+    ))
+    closemessage
+
+    return
+}
+
 // Serves as a template for match call messages
 script ChatotPost_EventScript_TrainerMessage {
     setspeakertomonname(SPECIES_CHATOT)

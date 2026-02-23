@@ -3,7 +3,7 @@ script Common_EventScript_SetGymTrainers {
 		case 1: call(KoiPond_Dojo_SetGymTrainers)
 		case 2: call(Bonsai_Dojo_SetGymTrainers)
 		case 3: call(YifuCity_Dojo_SetGymTrainers)
-		case 4: call(LavaridgeTown_Gym_SetGymTrainers)
+		case 4: call(SabersideTown_Dojo_SetGymTrainers)
 		case 5: call(PetalburgCity_Gym_SetGymTrainers)
 		case 6: call(FortreeCity_Gym_SetGymTrainers)
 		case 7: call(MossdeepCity_Gym_SetGymTrainers)
@@ -37,15 +37,8 @@ script YifuCity_Dojo_SetGymTrainers {
 	return
 }
 
-script LavaridgeTown_Gym_SetGymTrainers {
-	settrainerflag(TRAINER_COLE)
-	settrainerflag(TRAINER_AXLE)
-	settrainerflag(TRAINER_KEEGAN)
-	settrainerflag(TRAINER_GERALD)
-	settrainerflag(TRAINER_DANIELLE)
-	settrainerflag(TRAINER_JACE)
-	settrainerflag(TRAINER_JEFF)
-	settrainerflag(TRAINER_ELI)
+script SabersideTown_Dojo_SetGymTrainers {
+	// TODO EVA
 	return
 }
 

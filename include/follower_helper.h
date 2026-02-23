@@ -39,6 +39,7 @@ struct FollowerMsgInfoExtended
 {
     const u8 *text;
     const u8 *script;
+    const u8 *campfireScript;
 
     u32 emotion:4;
     u32 weight:3;

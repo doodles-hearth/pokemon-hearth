@@ -3,7 +3,7 @@
 
 SINGLE_BATTLE_TEST("Forecast transforms Castform in weather from an opponent's move")
 {
-    u32 move;
+    enum Move move;
     PARAMETRIZE { move = MOVE_SUNNY_DAY; }
     PARAMETRIZE { move = MOVE_RAIN_DANCE; }
     PARAMETRIZE { move = MOVE_HAIL; }
@@ -30,13 +30,15 @@ SINGLE_BATTLE_TEST("Forecast transforms Castform in weather from an opponent's m
         case MOVE_SNOWSCAPE:
             EXPECT_EQ(player->species, SPECIES_CASTFORM_SNOWY);
             break;
+        default:
+            break;
         }
     }
 }
 
 SINGLE_BATTLE_TEST("Forecast transforms Castform in weather from its own move")
 {
-    u32 move;
+    enum Move move;
     PARAMETRIZE { move = MOVE_SUNNY_DAY; }
     PARAMETRIZE { move = MOVE_RAIN_DANCE; }
     PARAMETRIZE { move = MOVE_HAIL; }
@@ -63,13 +65,15 @@ SINGLE_BATTLE_TEST("Forecast transforms Castform in weather from its own move")
         case MOVE_SNOWSCAPE:
             EXPECT_EQ(player->species, SPECIES_CASTFORM_SNOWY);
             break;
+        default:
+            break;
         }
     }
 }
 
 DOUBLE_BATTLE_TEST("Forecast transforms Castform in weather from a partner's move")
 {
-    u32 move;
+    enum Move move;
     PARAMETRIZE { move = MOVE_SUNNY_DAY; }
     PARAMETRIZE { move = MOVE_RAIN_DANCE; }
     PARAMETRIZE { move = MOVE_HAIL; }
@@ -98,13 +102,15 @@ DOUBLE_BATTLE_TEST("Forecast transforms Castform in weather from a partner's mov
         case MOVE_SNOWSCAPE:
             EXPECT_EQ(playerLeft->species, SPECIES_CASTFORM_SNOWY);
             break;
+        default:
+            break;
         }
     }
 }
 
 DOUBLE_BATTLE_TEST("Forecast transforms all Castforms present in weather")
 {
-    u32 move;
+    enum Move move;
     PARAMETRIZE { move = MOVE_SUNNY_DAY; }
     PARAMETRIZE { move = MOVE_RAIN_DANCE; }
     PARAMETRIZE { move = MOVE_HAIL; }
@@ -150,6 +156,8 @@ DOUBLE_BATTLE_TEST("Forecast transforms all Castforms present in weather")
             EXPECT_EQ(playerRight->species, SPECIES_CASTFORM_SNOWY);
             EXPECT_EQ(opponentLeft->species, SPECIES_CASTFORM_SNOWY);
             EXPECT_EQ(opponentRight->species, SPECIES_CASTFORM_SNOWY);
+            break;
+        default:
             break;
         }
     }
@@ -425,5 +433,24 @@ SINGLE_BATTLE_TEST("Forecast transforms Castform when Cloud Nine ability user le
         MESSAGE("2 sent out Wobbuffet!");
         ABILITY_POPUP(player, ABILITY_FORECAST);
         MESSAGE("Castform transformed!");
+    }
+}
+
+DOUBLE_BATTLE_TEST("Forecast reverts Castform back after Teraform Zero clears weather")
+{
+    GIVEN {
+        PLAYER(SPECIES_TERAPAGOS_TERASTAL);
+        PLAYER(SPECIES_CASTFORM) { Ability(ABILITY_FORECAST); }
+        OPPONENT(SPECIES_KYOGRE) { Ability(ABILITY_DRIZZLE); }
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_CELEBRATE, gimmick: GIMMICK_TERA); }
+    } SCENE {
+        ABILITY_POPUP(opponentLeft, ABILITY_DRIZZLE);
+        ABILITY_POPUP(playerRight, ABILITY_FORECAST);
+        ABILITY_POPUP(playerLeft, ABILITY_TERAFORM_ZERO);
+        ABILITY_POPUP(playerRight, ABILITY_FORECAST);
+    } THEN {
+        EXPECT_EQ(playerRight->species, SPECIES_CASTFORM_NORMAL);
     }
 }

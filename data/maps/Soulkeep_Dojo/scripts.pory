@@ -1,0 +1,15 @@
+mapscripts Soulkeep_Dojo_MapScripts {
+
+}
+
+
+// script(local) Soulkeep_Dojo_EventScript_Fall {
+// 	lockall
+// 	delay(20)
+// 	applymovement(LOCALID_PLAYER, moves(set_invisible))
+// 	waitmovement(LOCALID_PLAYER)
+// 	playse(SE_FALL)
+// 	delay(60)
+// 	warphole(MAP_SOOTOPOLIS_CITY_GYM_B1F)
+// 	waitstate
+// }

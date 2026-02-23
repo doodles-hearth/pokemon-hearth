@@ -11,7 +11,8 @@
 #define OW_HIDE_REPEAT_MAP_POPUP        TRUE       // If enabled, map popups will not appear if entering a map with the same Map Section Id as the last.
 #define OW_WHITEOUT_CUTSCENE            GEN_3      // In Gen4+, whiting out shows an additional message and post whiteout event script cutscene with a healing NPC. (While this change was also in FRLG, for the sake of simplicity, setting this to GEN_3 will result in RSE behavior.)
 #define OW_DEFOG_FIELD_MOVE             FALSE      // If enabled, Defog can be used as a Field Move as seen in DPPt.
-#define OW_ROCK_CLIMB_FIELD_MOVE        FALSE      // If enabled, Rock Climb can be used as a Field Move as seen in DPPt.
+#define OW_ROCK_CLIMB_FIELD_MOVE        TRUE      // If enabled, Rock Climb can be used as a Field Move as seen in DPPt.
+#define OW_CHOOSE_FROM_PC_AND_PARTY     TRUE       // If enabled, NPCs like move tutors or trainers asking for trade will let you pick a pokemon from your PC or party instead of just your party
 
 // Item Obtain Description Box
 #define OW_ITEM_DESCRIPTIONS_OFF        0   // never show descriptions
@@ -21,7 +22,7 @@
 
 // These generational defines only make a distinction for Berries and the OW_PC_MOVE_ORDER
 #define GEN_6_XY GEN_6
-#define GEN_6_ORAS GEN_LATEST + 1
+#define GEN_6_ORAS GEN_COUNT + 1
 
 // PC settings
 #define OW_PC_PRESS_B               GEN_LATEST // In Gen4, pressing B when holding a Pokémon is equivalent to placing it. In Gen3, it gives the "You're holding a Pokémon!" error.
@@ -42,8 +43,8 @@
 #define OW_BERRY_GROWTH_RATE           GEN_3      // Presets for how long each Berry plant takes to grow.
 #define OW_BERRY_YIELD_RATE            GEN_3      // Presets for how many Berries each plant can yield.
 #define OW_BERRY_DRAIN_RATE            GEN_6_ORAS // If OW_BERRY_MOISTURE is enabled, this setting changes how fast the soil dries out. GEN_4 uses a Berry-dependent drain rate, GEN_6_XY dries out in 24 hours (4 hours with the relevant Mulch) and GEN_6_ORAS dries out in 4 hours. Other values are illegal.
-#define OW_BERRY_IMMORTAL              TRUE       // If enabled, once a Berry tree has grown a Berry, the tree will not disappear until picked by the player.
-// i found OW_BERRY_IMMORTAL useful with fake rtc since they potentially grow faster and are easier to miss -- iriv24
+#define OW_BERRY_IMMORTAL              TRUE      // If enabled, once a Berry tree has grown a Berry, the tree will not disappear until picked by the player.
+#define OW_BERRY_COLORS                GEN_6_ORAS // If set to GEN_6_XY or GEN_6_ORAS, the Chesto, Wiki, Bluk, Cornn, Pamtre, Belue, Ganlon, Watmel, Qualot, Spelon, Kasib, Colbur, Lansat, Kee, Payapa, Roseli, Liechi, Enigma, and Maranga will use their colors from the stated game. Other values are illegal.
 
 // Overworld Pokémon
 #define OW_POKEMON_OBJECT_EVENTS       TRUE       // Adds Object Event fields for every species. Can be used for NPCs using the OBJ_EVENT_GFX_SPECIES macro (eg. OBJ_EVENT_GFX_SPECIES(BULBASAUR))
@@ -63,7 +64,7 @@
 #define OW_FOLLOWERS_WEATHER_FORMS     TRUE       // If TRUE, Castform and Cherrim gain FORM_CHANGE_OVERWORLD_WEATHER, which will make them transform in the overworld based on the weather.
 #define OW_FOLLOWERS_COPY_WILD_PKMN    TRUE       // If TRUE, follower Pokémon that know Transform or have Illusion/Imposter will copy wild Pokémon at random.
 #define OW_BATTLE_ONLY_FORMS           FALSE      // If TRUE, loads overworld sprites for battle-only forms like Mega Evos. Requires OW_POKEMON_OBJECT_EVENTS.
-#define B_FLAG_FOLLOWERS_DISABLED      0          // Enables / Disables followers by using a flag. Helpful to disable followers for a period of time.
+#define B_FLAG_FOLLOWERS_DISABLED      FLAG_DISABLE_FOLLOWERS          // Enables / Disables followers by using a flag. Helpful to disable followers for a period of time.
 #define OW_FOLLOWERS_SCRIPT_MOVEMENT   TRUE       // If TRUE, follower Pokémon only go back to their Poké Ball if a non-player collides with them by setting the FLAG_SAFE_FOLLOWER_MOVEMENT flag by default.
 // Follower Pokémon Restrictions
 // If set, the only pokemon allowed to follow you will be those matching species, met location, and/or met level; These accept vars, too: VAR_TEMP_1, etc
@@ -84,8 +85,8 @@
 #define OW_FLASH_FIRE               GEN_LATEST // In Gen8+, if a Pokémon with Flash Fire is leading the party, there is a 50% chance to encounter a Fire-type Pokémon.
 
 // These defines only make a distinction for OW_ALTERED_TIME_RATIO
-#define GEN_8_PLA                       GEN_LATEST + 2
-#define TIME_DEBUG                      GEN_LATEST + 3
+#define GEN_8_PLA                       GEN_COUNT + 2
+#define TIME_DEBUG                      GEN_COUNT + 3
 
 //Time
 #define RTC_CUSTOM                      GEN_LATEST + 60
@@ -96,7 +97,7 @@
 #define OW_TIME_OF_DAY_ENCOUNTERS       TRUE         // If TRUE, will allow the user to define and use different encounter tables based on the time of day.
 #define OW_TIME_OF_DAY_DISABLE_FALLBACK FALSE        // If TRUE, if the encounter table for a specific map and time is empty, the area will have no encounters instead of falling back to the vanilla map and time.
 #define OW_TIME_OF_DAY_DEFAULT          TIME_EARLY_MORNING // Should be set to whatever is the first value in the TimeOfDay enum in rtc.h
-#define OW_TIME_OF_DAY_FALLBACK         OW_TIME_OF_DAY_DEFAULT // The time of day that encounter tables fall back to. Defaults to whatever OW_TIME_OF_DAY_FALLBACK is set to.
+#define OW_TIME_OF_DAY_FALLBACK         TIME_EARLY_MORNING // The time of day that encounter tables fall back to. Defaults to whatever OW_TIME_OF_DAY_FALLBACK is set to.
                                                    //RTC_CUSTOM's default value is 1, making it a 1:1 ratio. You can edit this in fake_rtc.c
 // Lighting
 #define OW_SHADOW_INTENSITY             4       // Ranges from 0 to 16, where 0 is fully transparent and 16 is black.
@@ -114,7 +115,6 @@
 #define OW_FLAG_NO_TRAINER_SEE      0  // If this flag is set, trainers will not battle the player unless they're talked to.
 #define OW_FLAG_NO_COLLISION        FLAG_NO_COLLISION  // If this flag is set, the player will be able to walk over tiles with collision. Mainly intended for debugging purposes.
 #define OW_FLAG_POKE_RIDER          0  // If this flag is set, the player will be able to use fly from the Pokenav Region Map and the Town Map key item by pressing 'R' on a city/location they are able to fly to.
-#define OW_FLAG_SUPPRESS_NAME_BOX   0  // If this flag is set, any namebox (whether its from a macro or a code) will not show up until this flag is unset.
 
 #define BATTLE_PYRAMID_RANDOM_ENCOUNTERS    FALSE    // If set to TRUE, battle pyramid Pokemon will be generated randomly based on the round's challenge instead of hardcoded in src/data/battle_frontier/battle_pyramid_level_50_wild_mons.h (or open_level_wild_mons.h)
 
@@ -138,6 +138,7 @@
 #define OW_POPUP_BW_TIME_MODE      OW_POPUP_BW_TIME_NONE    // Determines what type of time is shown.
 #define OW_POPUP_BW_ALPHA_BLEND    FALSE                    // Enables alpha blending/transparency for the pop-ups. Mainly intended to be used with the black color option.
                                                             // Setting this to TRUE will cause graphical errors with the Day Night System enabled.
+                                                            // It will also cause minor visual glitches of shadow and reflection sprites adjusting their transparency when the pop-up disappear
 
 // Pokémon Center
 #define OW_IGNORE_EGGS_ON_HEAL           GEN_LATEST         // In Gen 4+, the nurse in the Pokémon Center does not heal Eggs on healing machine.
@@ -147,15 +148,7 @@
 // Berry Blender
 #define BERRY_BLENDER_THROW_ALL_BERRIES_AT_ONCE TRUE        // This is a small little addition, that basically speeds up the animation where all players' berries are thrown into the blender. Self-explanatory I hope!
 
-// Namebox Speaker configs
-#define OW_NAME_BOX_USE_DYNAMIC_WIDTH TRUE  // When TRUE, the namebox window can use different width depending on the length of the speaker's name.
-#define OW_NAME_BOX_NPC_TRAINER       TRUE  // When TRUE, any approaching NPC trainers will have a namebox shown automagically. The name will be taken from their trainer data.
-#define OW_NAME_BOX_DEFAULT_WIDTH     10     // Maximum width of what OW_NAME_BOX_USE_DYNAMIC_WIDTH can set. Also the default width when the config above is set to FALSE (or the dynamic width exceeds this value).
-#define OW_NAME_BOX_DEFAULT_HEIGHT    2     // Maximum height of the namebox window.
-
-// Text colors of Namebox. The numbers corresponds to the palette index.
-// The BG color is not provided as it always needs to be 0.
-#define OW_NAME_BOX_FOREGROUND_COLOR  11
-#define OW_NAME_BOX_SHADOW_COLOR      10
+// Trainer Rematches
+#define OW_REMATCH_BADGE_COUNT      4 // Number of badges necessary before the match call or vs seeker features allow rematches
 
 #endif // GUARD_CONFIG_OVERWORLD_H

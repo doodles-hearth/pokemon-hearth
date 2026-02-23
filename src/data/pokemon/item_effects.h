@@ -19,6 +19,11 @@ const u8 gItemEffect_Awakening[6] = {
     [3] = ITEM3_SLEEP,
 };
 
+const u8 gItemEffect_RaikouBalm[6] = {
+    [1] = ITEM1_X_ATTACK,
+    [3] = ITEM3_SLEEP,
+};
+
 const u8 gItemEffect_ParalyzeHeal[6] = {
     [3] = ITEM3_PARALYSIS,
 };

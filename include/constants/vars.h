@@ -1,6 +1,8 @@
 #ifndef GUARD_CONSTANTS_VARS_H
 #define GUARD_CONSTANTS_VARS_H
 
+#include "constants/vars_frlg.h"
+
 #define VARS_START 0x4000
 
 // temporary vars
@@ -39,6 +41,7 @@
 #define VAR_OBJ_GFX_ID_7           0x4017
 #define VAR_OBJ_GFX_ID_8           0x4018
 #define VAR_OBJ_GFX_ID_9           0x4019
+// These are used for displaying the 6 party mons at campfires!
 #define VAR_OBJ_GFX_ID_A           0x401A
 #define VAR_OBJ_GFX_ID_B           0x401B
 #define VAR_OBJ_GFX_ID_C           0x401C
@@ -129,12 +132,12 @@
     // 1: Seen dance 1
 */
 #define VAR_YIFU_DOJO_STATE                              0x4055
-#define VAR_EGG_SPECIES_GIVEN_TO_EGG_GIRL                0x4056
+#define VAR_EGG_GIRL_SPECIES                0x4056
 #define VAR_PETALBURG_CITY_STATE                         0x4057
 #define VAR_SLATEPORT_CITY_STATE                         0x4058
 #define VAR_MAIN_CAMPAIGN_QUEST                          0x4059
 #define VAR_RUSTBORO_CITY_STATE                          0x405A
-#define VAR_FORTREE_CITY_STATE                           0x405B // Unused Var
+#define VAR_EGG_GIRL_STEP_COUNTER                        0x405B
 #define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
 #define VAR_MOSSDEEP_CITY_STATE                          0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
@@ -351,7 +354,11 @@
 #define VAR_PLAYER_REPUTATION                            0x40DB
 #define VAR_STATE_SCULPTOR                               0x40DC
 #define VAR_GIFT_PICHU_SLOT                              0x40DD
-#define VAR_TARC_SPEEDUP                                 0x40DE // Unused
+// 0: is sailing
+// 1: is in Soulkeep
+// 2: is in Saberside
+// 3: is in Coreef
+#define VAR_SHIP_SABERSIDE_SOULKEEP                      0x40DE
 #define VAR_GIFT_UNUSED_2                                0x40DF // Var is written to, but never read
 #define VAR_GIFT_UNUSED_3                                0x40E0 // Var is written to, but never read
 #define VAR_GIFT_UNUSED_4                                0x40E1 // Var is written to, but never read
@@ -383,8 +390,8 @@
 #define VAR_ROXANNE_CALL_STEP_COUNTER                    0x40F4
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
-#define VAR_UNUSED_0x40F7                                0x40F7 // Unused Var
-#define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
+#define VAR_GINKO_WOODS_CAMPFIRE                         0x40F7
+#define VAR_FLASH_TRACKER                                0x40F8
 #define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
 #define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
 #define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
@@ -419,7 +426,14 @@
 #define VAR_CONTEST_CATEGORY          0x8011
 #define VAR_MON_BOX_ID                0x8012
 #define VAR_MON_BOX_POS               0x8013
-#define VAR_UNUSED_0x8014             0x8014
+/*
+    0: Not aware of lost girl
+    1: Looking for girl
+    2: Girl found, need Carbink
+    3: Gave Carbink to girl
+    4: Got reward
+*/
+#define VAR_SABERSIDE_LOST_GIRL_QUEST_STATE 0x8014
 #define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of TRAINER_BATTLE_PARAM.opponentA
 
 #define SPECIAL_VARS_END              0x8015
@@ -446,8 +460,8 @@
 #if TESTING
 #define TESTING_VARS_START                  0x9000
 #define TESTING_VAR_DIFFICULTY              (TESTING_VARS_START + 0x0)
-#define TESTING_VAR_STARTING_STATUS         (TESTING_VARS_START + 0x1)
-#define TESTING_VAR_STARTING_STATUS_TIMER   (TESTING_VARS_START + 0x2)
+#define TESTING_VAR_TRAINER_SLIDES          (TESTING_VARS_START + 0x1)
+#define TESTING_VAR_UNUSED_2                (TESTING_VARS_START + 0x2)
 #define TESTING_VAR_UNUSED_3                (TESTING_VARS_START + 0x3)
 #define TESTING_VAR_UNUSED_4                (TESTING_VARS_START + 0x4)
 #define TESTING_VAR_UNUSED_5                (TESTING_VARS_START + 0x5)
