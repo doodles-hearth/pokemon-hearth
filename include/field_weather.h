@@ -14,6 +14,7 @@ enum {
     GFXTAG_BUBBLE,
     GFXTAG_RAIN,
     GFXTAG_LEAVES,
+    GFXTAG_DECAY,
 };
 enum {
     PALTAG_WEATHER = TAG_WEATHER_START,
@@ -237,6 +238,10 @@ void Bubbles_InitVars(void);
 void Bubbles_Main(void);
 void Bubbles_InitAll(void);
 bool8 Bubbles_Finish(void);
+void Decay_InitVars(void);
+void Decay_Main(void);
+void Decay_InitAll(void);
+bool8 Decay_Finish(void);
 
 u8 GetSavedWeather(void);
 void SetSavedWeather(u32 weather);
