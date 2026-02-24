@@ -424,7 +424,8 @@
 #define ANIM_TAG_TATSUGIRI_DROOPY           (ANIM_SPRITES_START + 410)
 #define ANIM_TAG_TATSUGIRI_STRETCHY         (ANIM_SPRITES_START + 411)
 #define ANIM_TAG_SAFARI_BAIT                (ANIM_SPRITES_START + 412)
-#define ANIM_TAG_COUNT                      GET_TRUE_SPRITE_INDEX(ANIM_TAG_SAFARI_BAIT + 1)
+#define ANIM_TAG_DECAY_PARTICLES            (ANIM_SPRITES_START + 413)
+#define ANIM_TAG_COUNT                      GET_TRUE_SPRITE_INDEX(ANIM_TAG_DECAY_PARTICLES + 1)
 
 // battlers
 enum AnimBattler
@@ -608,7 +609,8 @@ enum AnimBattler
 #define B_ANIM_FORM_CHANGE_INSTANT      63
 #define B_ANIM_FORM_CHANGE_DISGUISE     64
 #define B_ANIM_FALLING_LEAVES           65
-#define NUM_B_ANIMS_GENERAL             66
+#define B_ANIM_DECAY                    66
+#define NUM_B_ANIMS_GENERAL             67
 
 // special animations table (sBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0
@@ -716,6 +718,7 @@ enum SpeciesGfxChange
 // The below are only used by AnimTask_BlendBattleAnimPal to get battler sprite palettes by position rather than by role.
 // It's redundant with F_PAL_BATTLERS, because they're only ever used together to refer to all the battlers at once.
 #define F_PAL_BATTLERS_2  (1 << 7 | 1 << 8 | 1 << 9 | 1 << 10)
+#define F_PAL_BG_BATTLERS (F_PAL_BG | F_PAL_BATTLERS_2)
 
 enum { SHAKE_BG_X, SHAKE_BG_Y, SHAKE_MON_X, SHAKE_MON_Y };
 enum { SHAKE_MON_ATTACKER, SHAKE_MON_TARGET, SHAKE_MON_BOTH };

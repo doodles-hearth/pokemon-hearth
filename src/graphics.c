@@ -475,6 +475,9 @@ const u16 gBattleAnimSpritePal_WoodHammerHammer[] = INCBIN_U16("graphics/battle_
 const u32 gBattleAnimSpriteGfx_Snowflakes[] = INCBIN_U32("graphics/battle_anims/sprites/snowflakes.4bpp.smol");
 const u16 gBattleAnimSpritePal_Snowflakes[] = INCBIN_U16("graphics/battle_anims/sprites/snowflakes.gbapal");
 
+const u32 gBattleAnimSpriteGfx_DecayParticles[] = INCBIN_U32("graphics/battle_anims/sprites/decay.4bpp.smol");
+const u16 gBattleAnimSpritePal_DecayParticles[] = INCBIN_U16("graphics/battle_anims/sprites/decay.gbapal");
+
 const u32 gBattleAnimSpriteGfx_SyrupBlob[] = INCBIN_U32("graphics/battle_anims/sprites/syrup_bomb_blob.4bpp.smol");
 const u32 gBattleAnimSpriteGfx_SyrupShell[] = INCBIN_U32("graphics/battle_anims/sprites/syrup_bomb_shell.4bpp.smol");
 const u32 gBattleAnimSpriteGfx_SyrupSplat[] = INCBIN_U32("graphics/battle_anims/sprites/syrup_bomb_splat.4bpp.smol");

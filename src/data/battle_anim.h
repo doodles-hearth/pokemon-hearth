@@ -1,3 +1,5 @@
+#include "constants/battle_anim.h"
+#include "graphics.h"
 const struct OamData gOamData_AffineOff_ObjNormal_8x8 =
 {
     .y = 0,
@@ -1408,6 +1410,7 @@ const struct BattleAnimation gBattleAnimTable[ANIM_TAG_COUNT] =
     BATTLE_ANIMATION(ANIM_TAG_TEAPOT, gBattleAnimSpriteGfx_Teapot, 0x1800, gBattleAnimSpritePal_Teapot),
     BATTLE_ANIMATION(ANIM_TAG_WOOD_HAMMER_HAMMER, gBattleAnimSpriteGfx_WoodHammerHammer, 0x800, gBattleAnimSpritePal_WoodHammerHammer),
     BATTLE_ANIMATION(ANIM_TAG_SNOWFLAKES, gBattleAnimSpriteGfx_Snowflakes, 0x0700, gBattleAnimSpritePal_RainDrops),
+    BATTLE_ANIMATION(ANIM_TAG_DECAY_PARTICLES, gBattleAnimSpriteGfx_DecayParticles, 0x0700, gBattleAnimSpritePal_DecayParticles),
     BATTLE_ANIMATION(ANIM_TAG_SYRUP_BLOB_RED, gBattleAnimSpriteGfx_SyrupBlob, 0x400, gBattleAnimSpritePal_SyrupRed),
     BATTLE_ANIMATION(ANIM_TAG_SYRUP_SHELL_RED, gBattleAnimSpriteGfx_SyrupShell, 0x2000, gBattleAnimSpritePal_SyrupRed),
     BATTLE_ANIMATION(ANIM_TAG_SYRUP_BLOB_YELLOW, gBattleAnimSpriteGfx_SyrupBlob, 0x400, gBattleAnimSpritePal_SyrupYellow),
