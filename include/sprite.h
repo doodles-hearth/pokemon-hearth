@@ -341,4 +341,24 @@ u32 *GetSrcPtrFromSprite(struct Sprite *sprite);
 u32 GetSpriteWidth(struct Sprite *sprite);
 u32 GetSpriteHeight(struct Sprite *sprite);
 
+static inline s16 WorldToScreenSpaceX(const struct Sprite *sprite)
+{
+    return sprite->x + sprite->centerToCornerVecX + gSpriteCoordOffsetX;
+}
+
+static inline s16 WorldToScreenSpaceY(const struct Sprite *sprite)
+{
+    return sprite->y + sprite->centerToCornerVecY + gSpriteCoordOffsetY;
+}
+
+static inline s16 ScreenToWorldSpaceX(const struct Sprite* sprite, s16 screenX)
+{
+    return screenX - sprite->centerToCornerVecX - gSpriteCoordOffsetX;
+}
+
+static inline s16 ScreenToWorldSpaceY(const struct Sprite* sprite, s16 screenY)
+{
+    return screenY - sprite->centerToCornerVecY - gSpriteCoordOffsetY;
+}
+
 #endif //GUARD_SPRITE_H

@@ -14,6 +14,7 @@ enum {
     GFXTAG_BUBBLE,
     GFXTAG_RAIN,
     GFXTAG_LEAVES,
+    GFXTAG_DECAY,
 };
 enum {
     PALTAG_WEATHER = TAG_WEATHER_START,
@@ -47,6 +48,11 @@ struct Weather
     u8 colorMapStepCounter;
     u16 fadeDestColor:15;
     u16 noShadows:1; // Certain weathers require blend coeffs that do not work nice with shadows
+    // Desaturation
+    u8 desatAmt;
+    u8 desatTarget;
+    u8 desatStepDelay;
+    u8 desatStepCounter;
     u8 palProcessingState;
     u8 fadeScreenCounter;
     bool8 readyForInit;
@@ -237,6 +243,10 @@ void Bubbles_InitVars(void);
 void Bubbles_Main(void);
 void Bubbles_InitAll(void);
 bool8 Bubbles_Finish(void);
+void Decay_InitVars(void);
+void Decay_Main(void);
+void Decay_InitAll(void);
+bool8 Decay_Finish(void);
 
 u8 GetSavedWeather(void);
 void SetSavedWeather(u32 weather);

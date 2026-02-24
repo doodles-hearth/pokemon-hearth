@@ -115,6 +115,7 @@ void TintPalette_SepiaTone(u16 *palette, u32 count);
 void TintPalette_CustomTone(u16 *palette, u32 count, u16 rTone, u16 gTone, u16 bTone);
 bool32 IsBlendPalettesGraduallyTaskActive(u8 id);
 void DestroyBlendPalettesGraduallyTask(void);
+u16 DesaturateColor(u16 color, u8 amount);
 
 static inline void SetBackdropFromColor(u32 color)
 {
