@@ -728,7 +728,11 @@ static void ApplyDesaturationWithBlend(u8 startPalIndex, u8 numPalettes, u8 desa
         else {
             for (int i = 0; i < 16; i++) {
                 u16 base = DesaturateColor(gPlttBufferFaded[palOffset], sDesaturationSteps[desatIdx]);
-                struct RGBColor c = *(struct RGBColor*)&base;
+
+                struct RGBColor c;
+                c.r = base & 0x1F;
+                c.g = (base >> 5) & 0x1F;
+                c.b = (base >> 10) & 0x1F;
 
                 c.r += ((rBlend - c.r) * blendCoeff) >> 4;
                 c.g += ((gBlend - c.g) * blendCoeff) >> 4;
