@@ -22478,6 +22478,21 @@ gBattleAnimMove_SmokeBomb::
 	delay 8
 	end
 
+gBattleAnimMove_Corrupt::
+	loopsewithpan SE_M_HAZE, +63, 18, 10
+  simple_palette_blend selector=F_PAL_BG_BATTLERS, delay=1, initial_blend_y=0, target_blend_y=12, color=RGB_GRAY
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG_BATTLERS, 1, 0, 10, RGB_GRAY
+	waitforvisualfinish
+  create_decay_particles spawnInterval=5, lifetime=120
+  create_decay_particles spawnInterval=5, lifetime=120
+  create_decay_particles spawnInterval=5, lifetime=120
+  delay 120
+	waitforvisualfinish
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG_BATTLERS, 1, 10, 0, RGB_GRAY
+  simple_palette_blend selector=F_PAL_BG_BATTLERS, delay=1, initial_blend_y=12, target_blend_y=0, color=RGB_GRAY
+	waitforvisualfinish
+	end
+
 
 @ Also used by Hail weather
 gBattleAnimMove_Hail::
@@ -29228,6 +29243,9 @@ gBattleAnimGeneral_Smoke::
 
 gBattleAnimGeneral_FallingLeaves::
   goto gBattleAnimMove_Blossom
+
+gBattleAnimGeneral_Decay::
+  goto gBattleAnimMove_Corrupt
 
 gBattleAnimGeneral_SmokeExplosion::
 	createsprite gComplexPaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 8, 9, RGB(26, 8, 8), 8, RGB_BLACK, 8

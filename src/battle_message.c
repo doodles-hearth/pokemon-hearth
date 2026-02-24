@@ -843,6 +843,8 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_SMOKEFILLSTHEAIR]                     = COMPOUND_STRING("Thick smoke filks the air."),
     [STRINGID_LEAVESFILLTHEAIR]                     = COMPOUND_STRING("Leaves swirl across the battlefield."),
     [STRINGID_LEAVESSCATTERED]                      = COMPOUND_STRING("The leaves scattered away."),
+    [STRINGID_DECAYSPREADS]                         = COMPOUND_STRING("Decay spreads everywhere."),
+    [STRINGID_DECAYWASCLEANSED]                     = COMPOUND_STRING("The decay was cleansed."),
     [STRINGID_SMOKEDISSIPTED]                       = COMPOUND_STRING("The smoke dissipated."),
     [STRINGID_PKMNMADESHELLGLEAM]                   = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} made its shell gleam! It's distorting type matchups!"),
     [STRINGID_FICKLEBEAMDOUBLED]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is going all out for this attack!"),
@@ -1017,6 +1019,7 @@ const u16 gMoveWeatherChangeStringIds[] =
     [B_MSG_STARTED_FOG]       = STRINGID_FOGCREPTUP, // Unused, can use for custom moves that set fog
     [B_MSG_STARTED_SMOKE]     = STRINGID_SMOKEFILLSTHEAIR,
     [B_MSG_STARTED_LEAVES]    = STRINGID_LEAVESFILLTHEAIR,
+    [B_MSG_STARTED_DECAY]     = STRINGID_DECAYSPREADS,
 };
 
 const u16 gAbilityWeatherChangeStringId[] =
@@ -1042,6 +1045,7 @@ const u16 gWeatherEndsStringIds[B_MSG_WEATHER_END_COUNT] =
     [B_MSG_WEATHER_END_SMOKE]        = STRINGID_SMOKEDISSIPTED,
     [B_MSG_WEATHER_END_STRONG_WINDS] = STRINGID_STRONGWINDSDISSIPATED,
     [B_MSG_WEATHER_END_LEAVES]       = STRINGID_LEAVESSCATTERED,
+    [B_MSG_WEATHER_END_DECAY]        = STRINGID_DECAYWASCLEANSED,
 };
 
 const u16 gWeatherTurnStringIds[] =
@@ -1056,6 +1060,7 @@ const u16 gWeatherTurnStringIds[] =
     [B_MSG_WEATHER_TURN_SMOKE]        = STRINGID_SMOKEFILLSTHEAIR,
     [B_MSG_WEATHER_TURN_STRONG_WINDS] = STRINGID_MYSTERIOUSAIRCURRENTBLOWSON,
     [B_MSG_WEATHER_TURN_LEAVES]       = STRINGID_LEAVESFILLTHEAIR,
+    [B_MSG_WEATHER_TURN_DECAY]        = STRINGID_DECAYSPREADS,
 };
 
 const u16 gSandStormHailDmgStringIds[] =
@@ -1294,7 +1299,7 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING,
     [WEATHER_PINK_LEAVES]        = STRINGID_LEAVESFILLTHEAIR,
     [WEATHER_AUTUMN_LEAVES]      = STRINGID_ITISRAINING,
-    [WEATHER_DECAY]              = STRINGID_ITISRAINING
+    [WEATHER_DECAY]              = STRINGID_DECAYSPREADS,
 };
 
 const u16 gTerrainStartsStringIds[] =
