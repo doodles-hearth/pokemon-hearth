@@ -58,5 +58,6 @@ u8 *StringCopyUppercase(u8 *dest, const u8 *src);
 s32 DoesStringContainMonName(const u8 *string, const u8 *monName);
 void ToLowerCase(u8 *string);
 u8 *StringCopyCensorWord(u8 *dest, const u8 *src, u8 wordStartIndex, u8 wordLength);
+bool32 DoesStringProperlyTerminate(const u8 *str, u32 last);
 
 #endif // GUARD_STRING_UTIL_H

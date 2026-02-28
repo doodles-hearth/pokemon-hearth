@@ -294,69 +294,69 @@ static void FieldUpdateRegionMap(void)
 {
     switch (sFieldRegionMapHandler->state)
     {
-        case 0:
-            InitRegionMap(&sFieldRegionMapHandler->regionMap, FALSE);
-            CreateRegionMapPlayerIcon(TAG_PLAYER_ICON, TAG_PLAYER_ICON);
-            CreateRegionMapCursor(TAG_CURSOR, TAG_CURSOR);
-            sFieldRegionMapHandler->state++;
-            break;
-        case 1:
-            ScheduleBgCopyTilemapToVram(0);
-            DrawStdFrameWithCustomTileAndPalette(WIN_MAPSEC_NAME, FALSE, 0x27, 0xd);
-            PrintRegionMapSecName();
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
-            sFieldRegionMapHandler->state++;
-            break;
-        case 2:
-            SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJ_1D_MAP | DISPCNT_OBJ_ON);
-            ShowBg(0);
-            ShowBg(2);
-            sFieldRegionMapHandler->state++;
-            break;
-        case 3:
-            LoadUnvisitedTownIcons();
-            sFieldRegionMapHandler->state++;
-            break;
-        case 4:
-            if (!gPaletteFade.active)
-            {
+    case 0:
+        InitRegionMap(&sFieldRegionMapHandler->regionMap, FALSE);
+        CreateRegionMapPlayerIcon(TAG_PLAYER_ICON, TAG_PLAYER_ICON);
+        CreateRegionMapCursor(TAG_CURSOR, TAG_CURSOR);
+        sFieldRegionMapHandler->state++;
+        break;
+    case 1:
+        ScheduleBgCopyTilemapToVram(0);
+        DrawStdFrameWithCustomTileAndPalette(WIN_MAPSEC_NAME, FALSE, 0x27, 0xd);
+        PrintRegionMapSecName();
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+        sFieldRegionMapHandler->state++;
+        break;
+    case 2:
+        SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJ_1D_MAP | DISPCNT_OBJ_ON);
+        ShowBg(0);
+        ShowBg(2);
+        sFieldRegionMapHandler->state++;
+        break;
+    case 3:
+        LoadUnvisitedTownIcons();
+        sFieldRegionMapHandler->state++;
+        break;
+    case 4:
+        if (!gPaletteFade.active)
+        {
                 sFieldRegionMapHandler->state++;
-            }
-            break;
-        case 5:
-            switch (DoRegionMapInputCallback())
-            {
-                case MAP_INPUT_MOVE_END:
-                    PrintRegionMapSecName();
-                    break;
-                case MAP_INPUT_A_BUTTON:
-                case MAP_INPUT_B_BUTTON:
-                    sFieldRegionMapHandler->state++;
-                    break;
-                case MAP_INPUT_R_BUTTON:
-                    if (sFieldRegionMapHandler->regionMap.mapSecType == MAPSECTYPE_CITY_CANFLY
-                        && FlagGet(OW_FLAG_POKE_RIDER) && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
-                    {
-                        PlaySE(SE_SELECT);
-                        SetFlyDestination(&sFieldRegionMapHandler->regionMap);
-                        gSkipShowMonAnim = TRUE;
-                        ReturnToFieldFromFlyMapSelect();
-                    }
-            }
-            break;
-        case 6:
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-            sFieldRegionMapHandler->state++;
-            break;
-        case 7:
-            if (!gPaletteFade.active)
-            {
-                FreeRegionMapIconResources();
-                SetMainCallback2(sFieldRegionMapHandler->callback);
-                TRY_FREE_AND_SET_NULL(sFieldRegionMapHandler);
-                FreeAllWindowBuffers();
-            }
-            break;
+        }
+        break;
+    case 5:
+        switch (DoRegionMapInputCallback())
+        {
+            case MAP_INPUT_MOVE_END:
+                PrintRegionMapSecName();
+                break;
+            case MAP_INPUT_A_BUTTON:
+            case MAP_INPUT_B_BUTTON:
+                sFieldRegionMapHandler->state++;
+                break;
+            case MAP_INPUT_R_BUTTON:
+                if (sFieldRegionMapHandler->regionMap.mapSecType == MAPSECTYPE_CITY_CANFLY
+                    && FlagGet(OW_FLAG_POKE_RIDER) && Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
+                {
+                    PlaySE(SE_SELECT);
+                    SetFlyDestination(&sFieldRegionMapHandler->regionMap);
+                    gSkipShowMonAnim = TRUE;
+                    ReturnToFieldFromFlyMapSelect();
+                }
+        }
+        break;
+    case 6:
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+        sFieldRegionMapHandler->state++;
+        break;
+    case 7:
+        if (!gPaletteFade.active)
+        {
+            FreeRegionMapIconResources();
+            SetMainCallback2(sFieldRegionMapHandler->callback);
+            TRY_FREE_AND_SET_NULL(sFieldRegionMapHandler);
+            FreeAllWindowBuffers();
+        }
+        break;
     }
 }
 
@@ -374,3 +374,4 @@ static void PrintRegionMapSecName(void)
         CopyWindowToVram(WIN_MAPSEC_NAME, COPYWIN_FULL);
     }
 }
+
