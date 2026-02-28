@@ -703,10 +703,11 @@ struct BattleStruct
     u8 shouldPrintFullName:1;
     u8 trySmokeExplosion:1;
     u8 preAttackAnimPlayed:1;
-    u8 padding4:1;
+    u8 attackAnimPlayed:1;
+    u8 preAttackEffectHappened:1;
     u8 magicCoatActive:1;
     u8 magicBounceActive:1;
-    u8 padding5:6;
+    u8 padding5:5;
     u8 moveBouncer;
 };
 
