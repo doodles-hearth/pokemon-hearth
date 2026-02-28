@@ -622,6 +622,48 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_POST_CHATOT"
+    },
+    {
+      "local_id": "LOCALID_BEACHBOUND_SAMURAI_RIGHT",
+      "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
+      "x": 52,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 3,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "local_id": "LOCALID_BEACHBOUND_SAMURAI_LEFT",
+      "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
+      "x": 51,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 3,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
     }
   ],
   "warp_events": [
@@ -644,6 +686,14 @@
       "y": 15,
       "elevation": 0,
       "dest_map": "MAP_KURA_BEACHBOUND_GATE",
+      "dest_warp_id": "0"
+    },
+    {
+      "warp_id": "WARP_ID_LEFT_HARVEST_SHRINE",
+      "x": 53,
+      "y": 0,
+      "elevation": 0,
+      "dest_map": "MAP_BEACHBOUND_ROUTE",
       "dest_warp_id": "0"
     }
   ],

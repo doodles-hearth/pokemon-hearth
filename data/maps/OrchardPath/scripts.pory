@@ -135,8 +135,6 @@ script OrchardPath_Samurai_KnowAboutDecay {
 		"We cannot let you through though, so please be on your way.\p"
 		"Now now, move along!"
 	))
-	
-	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 7)
 }
 
 script OrchardPath_EventScript_Umbreon {

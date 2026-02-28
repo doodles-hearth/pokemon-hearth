@@ -265,7 +265,16 @@
       "night": false
     }
   ],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_BRONZONG_CURED",
+      "x": 19,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_HARVEST_SHRINE",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

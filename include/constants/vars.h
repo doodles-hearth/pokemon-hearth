@@ -121,7 +121,8 @@
     // 4: Talked to Hariko about decay
     // 5: End of decay cutscene
     // 6: Delivered letter to elder in Silveridge
-    // 7: Talked to Samurai near Uume Forest
+    // 7: Cured Harvest Shrine of Decay
+    // 8: Bronzong thanked us
 */
 #define VAR_DECAY_BEACHBOUND_ROUTE                       0x4052
 #define VAR_LAVARIDGE_TOWN_STATE                         0x4053
