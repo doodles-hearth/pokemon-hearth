@@ -115,6 +115,7 @@ script MaguroHarbor_Dojo_EventScript_KoishiDefeated {
 	waitmovement(LOCALID_LEADER)
 	removeobject(LOCALID_LEADER)
 	setflag(FLAG_HIDE_KOISHI)
+	setflag(FLAG_HIDE_NATSUKI_MAGURO)
 
 	release
 	end

@@ -83,7 +83,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
 
 	setspeaker(SP_NAME_UNKNOWN)
-	msgbox(format("Wait up, {PLAYER}!"))
+	msgbox(format("Yo, {PLAYER}!"))
 	closemessage
 
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
@@ -100,17 +100,20 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	waitmovement(0)
 
 	setspeaker(SP_NAME_NATSUKI)
+	//Pokemon buddies line should be a more starry-eyed Natsuki mugshot
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I was wondering if you'd reached Saku Village by now. Looks like we almost missed each other!\p"
-		"I saw several New Moon Samurai patrolling on my way here."
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I saw several New Moon Samurai patrolling near Chii Town!\n"
+		"They look SO cool in-person!\p"
+		"Their swords… Their helmets…\p"
+		"Their armor…\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Their little Axew and Oshawott buddies…!!"
 	))
 	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, moves(emote_heart))
 	msgbox(format(
-		"They look so cool, no wonder they're so admired!\p"
-		"Oh, {PLAYER}, have you caught any Pokémon on your way here?\p"
-		"Me?\nBoy, I'm so glad you asked…\p"
-		"Let me show you!"
+		"{PLAYER}, have YOU caught any cool Pokémon yet?\p"
+		"Oh, me?\nBoy, I'm so glad you asked!\p"
+		"Check these bad babies out!"
 	))
 
 	// Fight
@@ -126,15 +129,17 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	playse(SE_PIN)
 	applymovement(LOCALID_NATSUKI_SAKU, moves(emote_pensive))
 	setspeaker(SP_NAME_NATSUKI)
+	//starry-eyed Natsuki mugshot again at the start
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Woah! I… I didn't think you'd go that hard, honestly!\p"
-		"Clearly I underestimated you.\nThat's alright.\lI won't make that mistake next time!\p"
-		"I can see your Pokémon are really growing to like you, it's great!\p"
-		"Are you doing the Dojo challenge?\nYou might just stand a chance against the next village's Dojo!\p"
-		"Me? Actually, I just got my first official Token!\p"
-		"You'll have to hurry if you wanna catch up!\p"
-		"It's fun to run into each other like this. Until next time then.\l"
-		"I bet you I'll get to Silveridge first!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}PAWNIARD'S SO COOL RIGHT!?!?!?\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I found this lil' guy in the forest\nsurrounded by a pack of Kotora.\p"
+		"Poor thing must've been separated\nfrom his brigade…\p"
+		"I was gonna release him once he\nwas back at full strength, but I\lthink he likes traveling with me too much!"
+		"Are you doing the Dojo challenge?\nI heard Kura Town's Master is on a short trip.\p"
+		"The next Dojo after hers is in Maguro Harbor.\n"
+		"That's so{PAUSE 2}o{PAUSE 2}o{PAUSE 2}o{PAUSE 2}o fa{PAUSE 2}a{PAUSE 2}a{PAUSE 2}a{PAUSE 2}ar…\p"
+		"… {PAUSE 20}… {PAUSE 20}…{PAUSE 20}\p"
+		"…{PAUSE 20}Race you to the dojo!\p"
 		"See ya later, Feraligatr!"
 	))
 
@@ -152,7 +157,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 			applymovement(LOCALID_NATSUKI_SAKU, moves(emote_happy))
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}You got it!"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Yeah. Yeah!\pYou got it!"
 			))
 		case 1:
 			setspeaker(SP_NAME_NATSUKI)

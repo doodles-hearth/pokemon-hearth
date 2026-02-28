@@ -102,8 +102,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
-      "x": 36,
-      "y": 13,
+      "x": 35,
+      "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 3,
@@ -163,7 +163,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CRAMORANT)",
       "x": 38,
-      "y": 13,
+      "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
       "movement_range_x": 0,
@@ -639,6 +639,34 @@
       "lunchtime": true,
       "morning": false,
       "night": false
+    },
+    {
+      "local_id": "LOCALID_RIVAL",
+      "graphics_id": "OBJ_EVENT_GFX_NATSUKI",
+      "x": 33,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_RIGHT_UP",
+      "movement_range_x": 3,
+      "movement_range_y": 3,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MaguroHarbor_EventScript_Natsuki",
+      "flag": "FLAG_HIDE_NATSUKI_MAGURO"
+    },
+    {
+      "local_id": "LOCALID_MAGURO_OLD_FISHERMAN",
+      "graphics_id": "OBJ_EVENT_GFX_OLD_MAN",
+      "x": 36,
+      "y": 14,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MaguroHarbor_EventScript_OldFisherman",
+      "flag": "0"
     }
   ],
   "warp_events": [

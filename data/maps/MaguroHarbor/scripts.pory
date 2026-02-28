@@ -19,6 +19,9 @@ mapscripts MaguroHarbor_MapScripts {
 		) {
 			setflag(FLAG_HIDE_FISH_SELLER)
 		}
+		if(flag(FLAG_HIDE_NATSUKI_MAGURO)) {
+			setobjectmovementtype(LOCALID_MAGURO_OLD_FISHERMAN, MOVEMENT_TYPE_FACE_RIGHT)
+		}
 	}
 }
 
@@ -575,6 +578,62 @@ script MaguroHarbor_EventScript_MarketChild {
 	))
 	closemessage
 
+	release
+}
+
+script MaguroHarbor_EventScript_Natsuki {
+	lock
+	faceplayer
+	setspeaker(SP_NAME_NATSUKI)
+	if(flag(FLAG_SPOKE_TO_NATSUKI_MAGURO)) {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}You might beat the gym first, but\nI still TOTALLY won the race!"
+		)
+	} else {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0} Bah! {PLAYER}!\n"
+			"You weren't supposed to be here yet!\p"
+			"I was all ready to challenge the dojo,\nbut this old fisherman was breaking\lhis back bringing his fish to market!\p"
+			"I couldn't just leave him to it on his own!\p"
+			"Can we agree I won the race, at least?"
+		)
+
+		mcdialogue(
+			"If you say so…",
+			"No way, Trozei!"
+		)
+
+		setspeaker(SP_NAME_NATSUKI)
+		waitse
+		playse(SE_PIN)
+		switch(var(VAR_RESULT)) {
+			case 0:
+				applymovement(LOCALID_RIVAL, moves(emote_happy))
+				msgbox("Heck yeah I did!")
+			case 1:
+				applymovement(LOCALID_RIVAL, moves(emote_question_mark))
+				msgbox("Grrr, no fair!\pAlso, what's a Trozei!?\nI'm Natsuki!")
+		}	
+		setflag(FLAG_SPOKE_TO_NATSUKI_MAGURO)
+	}
+	closemessage
+	
+	release
+}
+
+script MaguroHarbor_EventScript_OldFisherman {
+	lock
+	faceplayer
+	if(flag(FLAG_HIDE_NATSUKI_MAGURO)) {
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}That lad from before told me he\nwants to be a samurai?\p"
+				"He's too good for them, if you ask me!\p"
+				"He should be a fisherman instead!\nI'd gladly teach him all I know!")
+	} else {
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}Oohoohoo!\nDo you know this young man?\p"
+			   "What a wonderful lad! I was dreading bringing this\nhaul to the plaza myself!")
+	}
+	closemessage
+	
 	release
 }
 

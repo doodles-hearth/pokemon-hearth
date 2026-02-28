@@ -94,8 +94,8 @@
 #define FLAG_PAID_HOT_SPRINGS           0x4A
 #define FLAG_ENCOUNTERED_INVISIBLE_CRYPT_WALLS 0x4B
 #define FLAG_ASKED_SABLEYE_RUBY         0x4C
-#define FLAG_UNUSED_0x04D    0x4D // Unused Flag
-#define FLAG_UNUSED_0x04E    0x4E // Unused Flag
+#define FLAG_SPOKE_TO_NATSUKI_MAGURO    0x4D // Unused Flag
+#define FLAG_HIDE_NATSUKI_MAGURO        0x4E // Unused Flag
 // True if the tree blocking the path to Silver Tunnel has been cut
 #define FLAG_CUT_TREE_SILVER_TUNNEL 0x4F
 
