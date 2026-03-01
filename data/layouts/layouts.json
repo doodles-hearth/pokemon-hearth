@@ -11804,6 +11804,19 @@
       "border_filepath": "data/layouts/InsideBronzong/border.bin",
       "blockdata_filepath": "data/layouts/InsideBronzong/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_HUNTERS_SHRINE",
+      "name": "HuntersShrine_Layout",
+      "width": 20,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_UumeForest",
+      "border_filepath": "data/layouts/HuntersShrine/border.bin",
+      "blockdata_filepath": "data/layouts/HuntersShrine/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

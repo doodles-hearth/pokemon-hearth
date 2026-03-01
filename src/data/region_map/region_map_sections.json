@@ -1314,6 +1314,10 @@
     {
       "id": "MAPSEC_INSIDE_BRONZONG",
       "name": "INSIDE BRONZONG"
+    },
+    {
+      "id": "MAPSEC_HUNTERS_SHRINE",
+      "name": "Hunter's Shrine"
     }
   ]
 }
