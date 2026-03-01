@@ -554,6 +554,14 @@ static const u8 *ExpandPlaceholder_Groudon(void)
     return gText_ExpandedPlaceholder_Groudon;
 }
 
+static const u8 *ExpandPlaceholder_Region(void)
+{
+    if (IS_FRLG)
+        return gText_Kanto;
+    else
+        return gText_Hoenn;
+}
+
 const u8 *GetExpandedPlaceholder(u32 id)
 {
     typedef const u8 *(*ExpandPlaceholderFunc)(void);
@@ -574,6 +582,7 @@ const u8 *GetExpandedPlaceholder(u32 id)
         [PLACEHOLDER_ID_MAXIE]        = ExpandPlaceholder_Maxie,
         [PLACEHOLDER_ID_KYOGRE]       = ExpandPlaceholder_Kyogre,
         [PLACEHOLDER_ID_GROUDON]      = ExpandPlaceholder_Groudon,
+        [PLACEHOLDER_ID_REGION]       = ExpandPlaceholder_Region,
     };
 
     if (id >= ARRAY_COUNT(funcs))
@@ -967,4 +976,15 @@ u8 *StringCopyCensorWord(u8 *dest, const u8 *src, u8 wordStartIndex, u8 wordLeng
     *dest = EOS;
 
     return dest;
+}
+
+bool32 DoesStringProperlyTerminate(const u8 *str, u32 last)
+{
+    for (u32 i = 0; i < last; i++)
+    {
+        if (str[i] == EOS)
+            return TRUE;
+    }
+
+    return FALSE;
 }

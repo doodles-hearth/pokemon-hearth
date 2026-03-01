@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "config/battle.h"
 #include "load_save.h"
 #include "battle_setup.h"
 #include "battle_tower.h"
@@ -648,7 +649,7 @@ static void DowngradeBadPoison(void)
     u32 status = STATUS1_POISON;
     if (B_TOXIC_REVERSAL < GEN_5)
         return;
-    for(i = 0; i < PARTY_SIZE; i++)
+    for (i = 0; i < PARTY_SIZE; i++)
     {
         if (GetMonData(&gPlayerParty[i], MON_DATA_SANITY_HAS_SPECIES) && GetMonData(&gPlayerParty[i], MON_DATA_STATUS) == STATUS1_TOXIC_POISON)
             SetMonData(&gPlayerParty[i], MON_DATA_STATUS, &status);
@@ -1529,6 +1530,17 @@ static void CB2_EndTrainerBattle(void)
         DowngradeBadPoison();
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
     }
+    else if (DidPlayerForfeitNormalTrainerBattle())
+    {
+        if (FlagGet(B_FLAG_NO_WHITEOUT) || CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE ||
+            InTrainerHillChallenge()) {
+            SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+        }
+        else {
+            FlagClear(B_FLAG_NO_WHITEOUT);
+            SetMainCallback2(CB2_WhiteOut);
+        }
+    }
     else if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
         if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InTrainerHillChallenge() || (!NoAliveMonsForPlayer()) || FlagGet(B_FLAG_NO_WHITEOUT))
@@ -1540,11 +1552,6 @@ static void CB2_EndTrainerBattle(void)
             FlagClear(B_FLAG_NO_WHITEOUT);
             SetMainCallback2(CB2_WhiteOut);
         }
-    }
-    else if (DidPlayerForfeitNormalTrainerBattle())
-    {
-        FlagClear(B_FLAG_NO_WHITEOUT);
-        SetMainCallback2(CB2_WhiteOut);
     }
     else
     {

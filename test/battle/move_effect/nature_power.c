@@ -16,7 +16,7 @@ SINGLE_BATTLE_TEST("Nature power plays a move correctly in any background")
     }
 
     GIVEN {
-        WITH_CONFIG(CONFIG_NATURE_POWER_MOVES, GEN_LATEST);
+        WITH_CONFIG(B_NATURE_POWER_MOVES, GEN_LATEST);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
         Environment(environment);
@@ -38,7 +38,7 @@ DOUBLE_BATTLE_TEST("Nature Power can target ally (Gen6+)")
         KNOWN_FAILING;
 
     GIVEN {
-        WITH_CONFIG(CONFIG_NATURE_POWER_MOVES, GEN_LATEST);
+        WITH_CONFIG(B_NATURE_POWER_MOVES, GEN_LATEST);
         PLAYER(SPECIES_WYNAUT);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WYNAUT);

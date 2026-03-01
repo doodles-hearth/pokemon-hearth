@@ -5355,15 +5355,15 @@ static u8* PrintMonStatsToggle_EV_Arrows(u8 *dest, u8 value)
 {
     switch (value)
     {
-        case 1:
-            StringCopy(dest, sText_Stats_EV_Plus1);
-            break;
-        case 2:
-            StringCopy(dest, sText_Stats_EV_Plus2);
-            break;
-        case 3:
-            StringCopy(dest, sText_Stats_EV_Plus3);
-            break;
+    case 1:
+        StringCopy(dest, sText_Stats_EV_Plus1);
+        break;
+    case 2:
+        StringCopy(dest, sText_Stats_EV_Plus2);
+        break;
+    case 3:
+        StringCopy(dest, sText_Stats_EV_Plus3);
+        break;
     }
     return dest;
 }
@@ -6236,10 +6236,10 @@ static bool32 HasTwoPreEvolutions(u32 species)
 {
     switch (species)
     {
-        case SPECIES_GHOLDENGO:
-            return TRUE;
-        default:
-            return FALSE;
+    case SPECIES_GHOLDENGO:
+        return TRUE;
+    default:
+        return FALSE;
     }
 }
 
@@ -6557,14 +6557,14 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
                 }
 
                 enum EvolutionConditions condition = evolutions[i].params[j].condition;
-                switch(condition)
+                switch (condition)
                 {
                 // Gen 2
                 case IF_GENDER:
-                    switch(evolutions[i].params[j].arg1)
+                    switch (evolutions[i].params[j].arg1)
                     {
-                        case MON_MALE:   StringAppend(gStringVar4, COMPOUND_STRING("Male"));   break;
-                        case MON_FEMALE: StringAppend(gStringVar4, COMPOUND_STRING("Female")); break;
+                    case MON_MALE:   StringAppend(gStringVar4, COMPOUND_STRING("Male"));   break;
+                    case MON_FEMALE: StringAppend(gStringVar4, COMPOUND_STRING("Female")); break;
                     }
                     break;
                 case IF_MIN_FRIENDSHIP:
@@ -6580,7 +6580,7 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
                     StringAppend(gStringVar4, COMPOUND_STRING("Atk < Def"));
                     break;
                 case IF_TIME:
-                    switch(evolutions[i].params[j].arg1)
+                    switch (evolutions[i].params[j].arg1)
                     {
                     case TIME_EARLY_MORNING:
                     case TIME_MORNING:
@@ -6600,7 +6600,7 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 dept
                     }
                     break;
                 case IF_NOT_TIME:
-                    switch(evolutions[i].params[j].arg1)
+                    switch (evolutions[i].params[j].arg1)
                     {
                     case TIME_EARLY_MORNING:
                     case TIME_MORNING:
@@ -6854,8 +6854,8 @@ static void Task_SwitchScreensFromEvolutionScreen(u8 taskId)
             gTasks[taskId].func = Task_LoadCryScreen;
             break;
         case 3:
-                gTasks[taskId].func = Task_LoadFormsScreen;
-                break;
+            gTasks[taskId].func = Task_LoadFormsScreen;
+            break;
         default:
             gTasks[taskId].func = Task_LoadInfoScreen;
             break;

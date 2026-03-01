@@ -200,7 +200,7 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
     SetDirectionFromHeldKeys(heldKeys);
     input->dpadDirection = sCurrentDirection;
 
-    if(DEBUG_OVERWORLD_MENU && !DEBUG_OVERWORLD_IN_MENU)
+    if (DEBUG_OVERWORLD_MENU && !DEBUG_OVERWORLD_IN_MENU)
     {
         if ((heldKeys & DEBUG_OVERWORLD_HELD_KEYS) && input->DEBUG_OVERWORLD_TRIGGER_EVENT)
         {
@@ -304,7 +304,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (input->pressedRButton && TryStartDexNavSearch())
         return TRUE;
 
-    if(input->input_field_1_2 && DEBUG_OVERWORLD_MENU && !DEBUG_OVERWORLD_IN_MENU)
+    if (input->input_field_1_2 && DEBUG_OVERWORLD_MENU && !DEBUG_OVERWORLD_IN_MENU)
     {
         PlaySE(SE_WIN_OPEN);
         FreezeObjectEvents();
@@ -433,6 +433,7 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
     s16 currY = gObjectEvents[gPlayerAvatar.objectEventId].currentCoords.y;
     u8 currBehavior = MapGridGetMetatileBehaviorAt(currX, currY);
 
+    gSpecialVar_Facing = direction;
     switch (direction)
     {
     case DIR_EAST:
@@ -480,7 +481,6 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
 
     gSelectedObjectEvent = objectEventId;
     gSpecialVar_LastTalked = gObjectEvents[objectEventId].localId;
-    gSpecialVar_Facing = direction;
 
     if (InTrainerHill() == TRUE)
         script = GetTrainerHillTrainerScript();
@@ -555,7 +555,12 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
     s8 elevation;
 
     if (MetatileBehavior_IsPlayerFacingTVScreen(metatileBehavior, direction) == TRUE)
-        return EventScript_TV;
+    {
+        if (IS_FRLG)
+            return EventScript_PlayerFacingTVScreen;
+        else
+            return EventScript_TV;
+    }
     if (MetatileBehavior_IsPC(metatileBehavior) == TRUE)
         return EventScript_PC;
     if (MetatileBehavior_IsPlayerFacingChatotPerch(metatileBehavior, direction) == TRUE)
@@ -650,14 +655,14 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
             return CableClub_EventScript_ShowBattleRecords_Frlg;
         if (MetatileBehavior_IsIndigoPlateauSign1(metatileBehavior) == TRUE)
         {
-            if(direction != DIR_NORTH)
+            if (direction != DIR_NORTH)
                 return NULL;
             SetMsgSignPostAndVarFacing(direction);
             return EventScript_Indigo_UltimateGoal;
         }
         if (MetatileBehavior_IsIndigoPlateauSign2(metatileBehavior) == TRUE)
         {
-            if(direction != DIR_NORTH)
+            if (direction != DIR_NORTH)
                 return NULL;
             SetMsgSignPostAndVarFacing(direction);
             return EventScript_Indigo_HighestAuthority;
@@ -666,14 +671,14 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 
     if (MetatileBehavior_IsPokeMartSign(metatileBehavior) == TRUE)
     {
-        if(direction != DIR_NORTH)
+        if (direction != DIR_NORTH)
             return NULL;
         SetMsgSignPostAndVarFacing(direction);
         return Common_EventScript_ShowPokemartSign;
     }
     if (MetatileBehavior_IsPokemonCenterSign(metatileBehavior) == TRUE)
     {
-        if(direction != DIR_NORTH)
+        if (direction != DIR_NORTH)
             return NULL;
         SetMsgSignPostAndVarFacing(direction);
         return Common_EventScript_ShowPokemonCenterSign;
