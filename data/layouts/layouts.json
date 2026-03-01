@@ -11808,8 +11808,8 @@
     {
       "id": "LAYOUT_HUNTERS_SHRINE",
       "name": "HuntersShrine_Layout",
-      "width": 20,
-      "height": 20,
+      "width": 31,
+      "height": 26,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",

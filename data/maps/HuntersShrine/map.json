@@ -5,16 +5,45 @@
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_HUNTERS_SHRINE",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_PINK_LEAVES",
   "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": [
+    {
+      "map": "MAP_UUME_FOREST",
+      "offset": -29,
+      "direction": "down"
+    }
+  ],
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_HUNTERS_SHRINE_EXIT",
+      "x": 15,
+      "y": 20,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_I_TOP"
+    },
+    {
+      "x": 14,
+      "y": 20,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_I_TOP"
+    },
+    {
+      "x": 16,
+      "y": 20,
+      "elevation": 0,
+      "dest_map": "MAP_UUME_FOREST",
+      "dest_warp_id": "WARP_ID_UUME_I_TOP"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }
