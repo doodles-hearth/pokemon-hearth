@@ -7,7 +7,7 @@ gText_PkmnTransferredSomeonesPC::
 gText_PkmnTransferredLanettesPC::
 	.string "{STR_VAR_2} was transferred to\n"
 #if IS_FRLG
-    .string "BILL'S PC.\p"
+	.string "BILL'S PC.\p"
 #else
 	.string "the Pasture.\p"
 #endif
@@ -22,8 +22,7 @@ gText_PkmnTransferredSomeonesPCBoxFull::
 
 gText_PkmnTransferredLanettesPCBoxFull::
 #if IS_FRLG
-	  .string "BOX “{STR_VAR_3}” on\n"
-    .string "BILL'S PC was full.\p"
+	.string "BILL'S PC was full.\p"
 #else
 	.string "Pen “{STR_VAR_3}”\n"
 	.string "was full.\p"
@@ -38,8 +37,8 @@ gText_PkmnSentToPCAfterCatch::
 	.string "Pen “{STR_VAR_1}”.$"
 
 gText_PlayerObtainedTheMon::
-    .string "{PLAYER} obtained\n"
-    .string "the {STR_VAR_1}!$"
+	.string "{PLAYER} obtained\n"
+	.string "the {STR_VAR_1}!$"
 
 gText_NoMoreRoomForPokemon::
 	.string "There's no more room for POKéMON!\p"

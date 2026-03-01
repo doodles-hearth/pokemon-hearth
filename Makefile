@@ -394,7 +394,7 @@ clean-assets:
 tidy: tidymodern tidycheck tidydebug tidyrelease
 
 tidymodern:
-	rm -f $(ROM_NAME) $(ELF_NAME) $(MAP_NAME)
+	rm -f poke*.gba poke*.elf poke*.map
 	rm -rf $(OBJ_DIR_NAME)
 
 tidycheck:
