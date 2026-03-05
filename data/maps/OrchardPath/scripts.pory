@@ -5,7 +5,6 @@ const FLAG_HIDE_ROCK_RIGHT = FLAG_TEMP_3
 const FLAG_JUST_GOT_ROCK_SMASH = FLAG_TEMP_4
 
 mapscripts OrchardPath_MapScripts {
-
 }
 
 script OrchardPath_EventScript_UumeForestSoulkeepSign {

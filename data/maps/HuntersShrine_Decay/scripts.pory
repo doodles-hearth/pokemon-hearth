@@ -1,0 +1,67 @@
+const VAR_WALK_UP_TO_SAWSBUCK = VAR_TEMP_0
+
+mapscripts HuntersShrine_Decay_MapScripts {}
+
+script HuntersShrine_Decay_EventScript_WalkUpToSawsbuck_Left {
+    call(HuntersShrine_Decay_EventScript_WalkUp)
+
+    applymovement(LOCALID_PLAYER, moves(walk_left, walk_in_place_fast_up))
+    waitmovement(LOCALID_PLAYER)
+
+    call(HuntersShrine_Decay_EventScript_InteractSawsbuck)
+}
+
+script HuntersShrine_Decay_EventScript_WalkUpToSawsbuck_Middle {
+    call(HuntersShrine_Decay_EventScript_WalkUp)
+
+    applymovement(LOCALID_PLAYER, moves(walk_left, walk_in_place_fast_up))
+    waitmovement(LOCALID_PLAYER)
+
+    call(HuntersShrine_Decay_EventScript_InteractSawsbuck)
+}
+
+script HuntersShrine_Decay_EventScript_WalkUpToSawsbuck_Right {
+    call(HuntersShrine_Decay_EventScript_WalkUp)
+
+    applymovement(LOCALID_PLAYER, moves(walk_left, walk_in_place_fast_up))
+    waitmovement(LOCALID_PLAYER)
+
+    call(HuntersShrine_Decay_EventScript_InteractSawsbuck)
+}
+
+script(local) HuntersShrine_Decay_EventScript_WalkUp {
+    lockall
+    setvar(VAR_WALK_UP_TO_SAWSBUCK, 1)
+
+    applymovement(LOCALID_PLAYER, moves(walk_up * 4))
+    waitmovement
+}
+
+script(local) HuntersShrine_Decay_EventScript_InteractSawsbuck {
+    special(SpawnCameraObject)
+    applymovement(LOCALID_CAMERA, moves(walk_slow_up * 3))
+    waitmovement(LOCALID_CAMERA)
+
+    delay(64)
+
+    // TODO EVA
+    msgbox(
+        "It's a massive Sawsbuck sculpted into\na live tree.\p"
+        "Pray with the Entei Statuette?"
+    )
+
+    mcdialogueB(
+        "Pray", "Don't pray"
+    )
+    closemessage
+
+    if (var(VAR_RESULT) == 0) {
+        msgbox(
+            "The area is cured of Decay!"
+        )
+        
+        setvar(VAR_DECAY_UUME_FOREST, 1)
+
+        warpwhitefade(MAP_HUNTERS_SHRINE, WARP_ID_SAWSBUCK_CURED)
+    }
+}

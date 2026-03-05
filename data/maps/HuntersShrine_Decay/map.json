@@ -1,24 +1,18 @@
 {
-  "id": "MAP_HUNTERS_SHRINE",
-  "name": "HuntersShrine",
-  "layout": "LAYOUT_HUNTERS_SHRINE",
-  "music": "MUS_DUMMY",
+  "id": "MAP_HUNTERS_SHRINE_DECAY",
+  "name": "HuntersShrine_Decay",
+  "layout": "LAYOUT_HUNTERS_SHRINE_DECAY",
+  "music": "MUS_ABANDONED_SHIP",
   "region_map_section": "MAPSEC_HUNTERS_SHRINE",
   "requires_flash": false,
-  "weather": "WEATHER_PINK_LEAVES",
+  "weather": "WEATHER_DECAY",
   "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": [
-    {
-      "map": "MAP_UUME_FOREST",
-      "offset": -29,
-      "direction": "down"
-    }
-  ],
+  "connections": null,
   "object_events": [],
   "warp_events": [
     {
@@ -42,16 +36,36 @@
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
       "dest_warp_id": "WARP_ID_UUME_I_TOP"
-    },
-    {
-      "warp_id": "WARP_ID_SAWSBUCK_CURED",
-      "x": 15,
-      "y": 9,
-      "elevation": 0,
-      "dest_map": "MAP_HUNTERS_SHRINE_DECAY",
-      "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "HuntersShrine_Decay_EventScript_WalkUpToSawsbuck_Middle"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "HuntersShrine_Decay_EventScript_WalkUpToSawsbuck_Left"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "HuntersShrine_Decay_EventScript_WalkUpToSawsbuck_Right"
+    }
+  ],
   "bg_events": []
 }

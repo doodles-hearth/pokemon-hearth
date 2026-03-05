@@ -1,9 +1,11 @@
 const FLAG_SET_RAIN = FLAG_TEMP_1
+const FLAG_HIDE_MONKS = FLAG_TEMP_2
 
 mapscripts HarvestShrine_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		if (var(VAR_DECAY_BEACHBOUND_ROUTE)) {
+		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 7) {
 			playbgm(MUS_NONE, FALSE)
+			setflag(FLAG_HIDE_MONKS)
 		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [

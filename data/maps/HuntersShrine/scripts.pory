@@ -1,1 +1,23 @@
-mapscripts HuntersShrine_MapScripts {}
+mapscripts HuntersShrine_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_DECAY_UUME_FOREST) == 1) {
+			playbgm(MUS_NONE, FALSE)
+		}
+	}
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DECAY_UUME_FOREST, 1: HuntersShrine_EventScript_CuredDecay
+    ]
+}
+
+script(local) HuntersShrine_EventScript_CuredDecay {
+    setvar(VAR_DECAY_UUME_FOREST, 2)
+
+    lockall
+
+    special(SpawnCameraObject)
+
+    // TODO EVA
+    msgbox("You cured the decay!")
+
+    releaseall
+}

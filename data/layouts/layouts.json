@@ -11817,6 +11817,19 @@
       "border_filepath": "data/layouts/HuntersShrine/border.bin",
       "blockdata_filepath": "data/layouts/HuntersShrine/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_HUNTERS_SHRINE_DECAY",
+      "name": "HuntersShrine_Decay_Layout",
+      "width": 31,
+      "height": 26,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_UumeForest",
+      "border_filepath": "data/layouts/HuntersShrine_Decay/border.bin",
+      "blockdata_filepath": "data/layouts/HuntersShrine_Decay/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

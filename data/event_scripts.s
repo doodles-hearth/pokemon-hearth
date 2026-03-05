@@ -2059,3 +2059,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/InsideBronzong/scripts.scr"
 
 	.include "data/maps/HuntersShrine/scripts.scr"
+
+	.include "data/maps/HuntersShrine_Decay/scripts.scr"
