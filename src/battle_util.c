@@ -3769,6 +3769,21 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                     effect++;
                 }
                 break;
+            case ABILITY_BEADS_OF_RUIN:
+            case ABILITY_SWORD_OF_RUIN:
+            case ABILITY_TABLETS_OF_RUIN:
+            case ABILITY_VESSEL_OF_RUIN:
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_DECAY)
+                 && !IsBattlerAtMaxHp(battler)
+                 && gBattleMons[battler].volatiles.semiInvulnerable != STATE_UNDERGROUND
+                 && gBattleMons[battler].volatiles.semiInvulnerable != STATE_UNDERWATER
+                 && !gBattleMons[battler].volatiles.healBlock)
+                {
+                    BattleScriptExecute(BattleScript_IceBodyHeal);
+                    SetHealAmount(battler, GetNonDynamaxMaxHP(battler) / 16);
+                    effect++;
+                }
+                break;
             case ABILITY_DRY_SKIN:
                 if (IsBattlerWeatherAffected(battler, B_WEATHER_SUN))
                     goto SOLAR_POWER_HP_DROP;
@@ -11146,3 +11161,15 @@ bool32 IsNaturalEnemy(u32 speciesAttacker, u32 speciesTarget)
     return FALSE;
 }
 
+bool32 IsRuinAbility(enum Ability ability)
+{
+    switch (ability) {
+        case ABILITY_BEADS_OF_RUIN:
+        case ABILITY_SWORD_OF_RUIN:
+        case ABILITY_TABLETS_OF_RUIN:
+        case ABILITY_VESSEL_OF_RUIN:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
