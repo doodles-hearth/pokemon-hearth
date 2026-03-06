@@ -7253,6 +7253,10 @@ BattleScript_ActionSelectionItemsCantBeUsed::
 	printselectionstring STRINGID_ITEMSCANTBEUSEDNOW
 	endselectionscript
 
+BattleScript_ActionSelectionPokemonIsAlone::
+	printselectionstring STRINGID_PKMNISALONE
+	endselectionscript
+
 BattleScript_FlushMessageBox::
 	flushtextbox
 	return

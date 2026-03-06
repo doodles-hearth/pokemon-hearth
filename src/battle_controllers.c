@@ -10,6 +10,8 @@
 #include "battle_setup.h"
 #include "battle_tv.h"
 #include "cable_club.h"
+#include "constants/battle.h"
+#include "constants/flags.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "item.h"
@@ -2350,7 +2352,11 @@ void BtlController_HandleLoadMonSprite(enum BattlerId battler)
                                                y,
                                                GetBattlerSpriteSubpriority(battler));
 
-    gSprites[gBattlerSpriteIds[battler]].x2 = -DISPLAY_WIDTH;
+    if(FlagGet(FLAG_PLAYER_IS_POKEMON) && GetBattlerSide(battler) == B_SIDE_PLAYER)
+        gSprites[gBattlerSpriteIds[battler]].x2 = DISPLAY_WIDTH;
+    else
+        gSprites[gBattlerSpriteIds[battler]].x2 = -DISPLAY_WIDTH;
+
     gSprites[gBattlerSpriteIds[battler]].data[0] = battler;
     gSprites[gBattlerSpriteIds[battler]].data[2] = species;
     gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
@@ -2359,7 +2365,7 @@ void BtlController_HandleLoadMonSprite(enum BattlerId battler)
     if (!(gBattleTypeFlags & BATTLE_TYPE_GHOST))
         SetBattlerShadowSpriteCallback(battler, species);
 
-    if (IsControllerOpponent(battler) || IsControllerLinkOpponent(battler) || IsControllerRecordedOpponent(battler))
+    if (IsControllerOpponent(battler) || IsControllerLinkOpponent(battler) || IsControllerRecordedOpponent(battler) || (IsControllerPlayer(battler) && FlagGet(FLAG_PLAYER_IS_POKEMON)))
         gBattlerControllerFuncs[battler] = TryShinyAnimAfterMonAnim;
     else
         gBattlerControllerFuncs[battler] = WaitForMonAnimAfterLoad;
