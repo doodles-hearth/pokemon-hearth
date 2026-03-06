@@ -1,11 +1,13 @@
 #include "global.h"
 #include "battle.h"
 #include "config/battle.h"
+#include "constants/flags.h"
 #include "load_save.h"
 #include "battle_setup.h"
 #include "battle_tower.h"
 #include "battle_transition.h"
 #include "main.h"
+#include "pokemon.h"
 #include "task.h"
 #include "safari_zone.h"
 #include "script.h"
@@ -91,9 +93,11 @@ static void RegisterTrainerInMatchCall(void);
 static void HandleRematchVarsOnBattleEnd(void);
 static const u8 *GetIntroSpeechOfApproachingTrainer(void);
 static const u8 *GetTrainerCantBattleSpeech(void);
+static void CB2_EndSinglePokemonBattle(void);
 
 EWRAM_DATA TrainerBattleParameter gTrainerBattleParameter = {0};
 EWRAM_DATA u16 gPartnerTrainerId = 0;
+EWRAM_DATA u8 gSinglePokemonBattlerIndex = 0;
 EWRAM_DATA static u8 *sTrainerBattleEndScript = NULL;
 EWRAM_DATA static bool8 sShouldCheckTrainerBScript = FALSE;
 EWRAM_DATA static u8 sNoOfPossibleTrainerRetScripts = 0;
@@ -353,12 +357,37 @@ void BattleSetup_StartBattlePikeWildBattle(void)
     DoBattlePikeWildBattle();
 }
 
+static void ZeroPartyForSinglePokemonBattle()
+{
+    for (u32 i = 1; i < PARTY_SIZE; i++)
+        ZeroMonData(&gPlayerParty[i]);
+
+
+    u32 data;
+    gPlayerParty[0] = *GetSavedPlayerPartyMon(gSinglePokemonBattlerIndex);
+
+    data = gPlayerParty[0].maxHP - gPlayerParty[0].hp;
+    SetBoxMonData(&gPlayerParty[0].box, MON_DATA_HP_LOST, &data);
+    data = gPlayerParty[0].status;
+    SetBoxMonData(&gPlayerParty[0].box, MON_DATA_STATUS, &data);
+}
+
 static void DoStandardWildBattle(bool32 isDouble)
 {
+    if(FlagGet(FLAG_PLAYER_IS_POKEMON)) {
+        gSinglePokemonBattlerIndex = gSaveBlock1Ptr->playerTransformPokemonIndex;
+        ZeroPartyForSinglePokemonBattle();
+    }
+
     LockPlayerFieldControls();
     FreezeObjectEvents();
     StopPlayerAvatar();
-    gMain.savedCallback = CB2_EndWildBattle;
+
+    if (FlagGet(FLAG_PLAYER_IS_POKEMON))
+        gMain.savedCallback = CB2_EndSinglePokemonBattle;
+    else
+        gMain.savedCallback = CB2_EndWildBattle;
+
     gBattleTypeFlags = 0;
     RemoveFieldMugshot();
     if (IsNPCFollowerWildBattle())
@@ -1417,6 +1446,13 @@ void BattleSetup_StartTrainerBattle(void)
         DoTrainerBattle();
 
     ScriptContext_Stop();
+}
+
+static void CB2_EndSinglePokemonBattle()
+{
+    SavePlayerPartyMon(gSinglePokemonBattlerIndex, gPlayerParty);
+    LoadPlayerParty();
+    SetMainCallback2(CB2_EndWildBattle);
 }
 
 static void CB2_EndDebugBattle(void)
