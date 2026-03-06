@@ -429,5 +429,6 @@ void TryDreaming(struct BattlePokemon* mon);
 enum BattlerId GetTargetBySlot(enum BattlerId battlerAtk, enum BattlerId battlerDef);
 bool32 IsNaturalEnemy(enum Species speciesAttacker, enum Species speciesTarget);
 enum Stat GetDownloadStat(enum BattlerId battler);
+bool32 IsRuinAbility(enum Ability ability);
 
 #endif // GUARD_BATTLE_UTIL_H
