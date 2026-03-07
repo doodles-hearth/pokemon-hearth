@@ -8,6 +8,7 @@
 #include "constants/field_move.h"
 #include "constants/moves.h"
 #include "constants/contest.h"
+#include "constants/pokemon.h"
 
 // The Gen. 4+ contest data comes from urpg's contest movedex.
 
@@ -23369,5 +23370,31 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_SakuraDance,
         .validApprenticeMove = TRUE,
         .fieldMove = FIELD_MOVE_CUT,
+    },
+    [MOVE_CORRUPT] =
+    {
+        .name = COMPOUND_STRING("Blossom"),
+        .description = COMPOUND_STRING(
+            "Summons a ruinous force\n"
+            "that consumes everything"
+        ),
+        .effect = EFFECT_WEATHER,
+        .power = 0,
+        .type = TYPE_DARK,
+        .accuracy = 0,
+        .pp = 10,
+        .target = TARGET_ALL_BATTLERS,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .argument = { .weatherType = BATTLE_WEATHER_DECAY },
+        .zMove = { .effect = Z_EFFECT_ATK_UP_3 },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .gravityBanned = FALSE,
+        .contestEffect = CONTEST_EFFECT_BETTER_IF_LAST,
+        .contestCategory = CONTEST_CATEGORY_CUTE,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_Corrupt,
     },
 };

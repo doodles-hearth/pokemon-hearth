@@ -23,8 +23,11 @@ script Beachbound_Route_Decay_SeeDecay {
 	applymovement(OBJ_EVENT_ID_CAMERA, moves(walk_left * 20, delay_16 * 5))
 	waitmovement(0)
 
-	// TODO fadescreen fucks with DNS tint
 	fadescreenswapbuffers(FADE_TO_BLACK)
+
+	clearflag(FLAG_HIDE_NATSUKI_HARIKO)
+	addobject(LOCALID_BEACHBOUND_DECAY_NATSUKI)
+	addobject(LOCALID_BEACHBOUND_DECAY_HARIKO)
 
 	setvar(VAR_0x8004, 73)
     setvar(VAR_0x8005, 17)
@@ -35,10 +38,6 @@ script Beachbound_Route_Decay_SeeDecay {
 	special(DrawWholeMapView)
 
 	fadescreenswapbuffers(FADE_FROM_BLACK)
-
-	clearflag(FLAG_HIDE_NATSUKI_HARIKO)
-	addobject(LOCALID_BEACHBOUND_DECAY_NATSUKI)
-	addobject(LOCALID_BEACHBOUND_DECAY_HARIKO)
 
 	release
 }

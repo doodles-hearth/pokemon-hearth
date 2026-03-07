@@ -4468,6 +4468,16 @@ BattleScript_IceBodyHeal::
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
+
+BattleScript_RuinAbilityHeal::
+	call BattleScript_AbilityPopUp
+	playanimation BS_ATTACKER, B_ANIM_SIMPLE_HEAL
+	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	printstring STRINGID_RUINABILITYHPGAIN
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
 BattleScript_OverworldStatusStarts::
 	printfromtable gStartingStatusStringIds
 	waitmessage B_WAIT_TIME_LONG

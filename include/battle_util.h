@@ -434,5 +434,6 @@ void SetOrClearRageVolatile(void);
 u32 GetSpeciesDreamType(u16 species);
 void TryDreaming(struct BattlePokemon* mon);
 bool32 IsNaturalEnemy(u32 speciesAttacker, u32 speciesTarget);
+bool32 IsRuinAbility(enum Ability ability);
 
 #endif // GUARD_BATTLE_UTIL_H

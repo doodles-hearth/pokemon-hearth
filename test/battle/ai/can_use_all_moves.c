@@ -678,6 +678,8 @@ AI_DOUBLE_BATTLE_TEST("AI can use all moves, 801-900")
                 break;
             if (GetMoveWeatherType(j) == BATTLE_WEATHER_LEAVES)
                 break;
+            if (GetMoveWeatherType(j) == BATTLE_WEATHER_DECAY)
+                break;
             else
                 PARAMETRIZE { move = j; }
             break;

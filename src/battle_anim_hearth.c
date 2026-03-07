@@ -1,6 +1,10 @@
 #include "global.h"
 #include "battle.h"
 #include "battle_anim.h"
+#include "battle_anim_internal.h"
+#include "constants/battle_anim.h"
+#include "gba/defines.h"
+#include "random.h"
 #include "trig.h"
 
 static const union AnimCmd sLeafAnim[] =
@@ -160,3 +164,96 @@ const struct SpriteTemplate gSakuraDanceParticleSpriteTemplate =
     .anims = gRazorLeafParticleAnimTable,
     .callback = AnimSakuraDanceParticle,
 };
+
+
+// Decay Battle Weather
+
+static void AnimDecayParticles(struct Sprite *sprite);
+static void AnimDecayParticles_Step(struct Sprite *sprite);
+
+static const union AnimCmd sAnim_DecayParticles[];
+static const union AnimCmd *const sAnims_DecayParticles[];
+
+
+static const union AnimCmd sAnim_DecayParticles[] =
+{
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_FRAME(8, 4),
+    ANIMCMD_FRAME(16, 6),
+    ANIMCMD_FRAME(24, 6),
+    ANIMCMD_FRAME(32, 6),
+    ANIMCMD_FRAME(40, 5),
+    ANIMCMD_FRAME(48, 5),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sAnims_DecayParticles[] =
+{
+    sAnim_DecayParticles,
+};
+
+const struct SpriteTemplate gDecayParticleSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_DECAY_PARTICLES,
+    .paletteTag = ANIM_TAG_DECAY_PARTICLES,
+    .oam = &gOamData_AffineOff_ObjNormal_16x32,
+    .anims = sAnims_DecayParticles,
+    .callback = AnimDecayParticles,
+};
+
+#define tFrameCounter  data[0]
+#define tSpawnInterval data[1]
+#define tLifetime      data[2]
+
+void AnimTask_CreateDecayParticles(u8 taskId)
+{
+    CMD_ARGS(spawnInterval, lifetime);
+
+    u8 x, y;
+
+    if (gTasks[taskId].tFrameCounter == 0)
+    {
+        gTasks[taskId].tSpawnInterval = cmd->spawnInterval;
+        gTasks[taskId].tLifetime = cmd->lifetime;
+    }
+    gTasks[taskId].tFrameCounter++;
+    if (gTasks[taskId].tFrameCounter % gTasks[taskId].tSpawnInterval == 1)
+    {
+        x = RandomUniform(RNG_NONE, 0, DISPLAY_WIDTH - 1);
+        y = RandomUniform(RNG_NONE, DISPLAY_HEIGHT/4, DISPLAY_HEIGHT - 40);
+        CreateSprite(&gDecayParticleSpriteTemplate, x, y, 4);
+    }
+    if (gTasks[taskId].tFrameCounter == gTasks[taskId].tLifetime)
+        DestroyAnimVisualTask(taskId);
+}
+
+#undef tFrameCounter
+#undef tSpawnInterval
+#undef tLifetime
+
+static void AnimDecayParticles(struct Sprite *sprite)
+{
+    sprite->callback = AnimDecayParticles_Step;
+}
+
+#define tFrameCounter      data[0]
+#define tSinePhase         data[1]
+#define tSubpixelVelocityY data[2]
+static void AnimDecayParticles_Step(struct Sprite *sprite)
+{
+    if (++sprite->tFrameCounter <= 13)
+    {
+        sprite->tSinePhase += 4;
+        sprite->tSinePhase &= 0xFF;
+
+        sprite->x2 = gSineTable[sprite->tSinePhase] / 128;
+        sprite->tSubpixelVelocityY -= 128;
+        sprite->y2 = sprite->tSubpixelVelocityY >> 8;
+    }
+
+    if (sprite->animEnded)
+        DestroySprite(sprite);
+}
+#undef tFrameCounter
+#undef tSinePhase
+#undef tSubpixelVelocityY

@@ -242,6 +242,16 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
         .endMessage = B_MSG_WEATHER_END_LEAVES,
         .continuesMessage = B_MSG_WEATHER_TURN_LEAVES,
         .animation = B_ANIM_FALLING_LEAVES,
+    },
+    [BATTLE_WEATHER_DECAY] =
+    {
+        .flag = B_WEATHER_DECAY,
+        .rock = HOLD_EFFECT_NONE,
+        .abilityStartMessage = B_MSG_STARTED_DECAY,
+        .moveStartMessage = B_MSG_STARTED_DECAY,
+        .endMessage = B_MSG_WEATHER_END_DECAY,
+        .continuesMessage = B_MSG_WEATHER_TURN_DECAY,
+        .animation = B_ANIM_DECAY,
     }
 };
 
@@ -3111,6 +3121,14 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                     gBattleScripting.animArg1 = B_ANIM_FALLING_LEAVES;
                     effect = TRUE;
                 }
+                break;
+            case WEATHER_DECAY:
+                if (!(gBattleWeather & B_WEATHER_DECAY)) {
+                    gBattleWeather = B_WEATHER_DECAY;
+                    gBattleScripting.animArg1 = B_ANIM_DECAY;
+                    effect = TRUE;
+                }
+                break;
             }
         }
         if (effect)
@@ -3741,6 +3759,21 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 break;
             case ABILITY_ICE_BODY:
                 if (IsBattlerWeatherAffected(battler, B_WEATHER_ICY_ANY)
+                 && !IsBattlerAtMaxHp(battler)
+                 && gBattleMons[battler].volatiles.semiInvulnerable != STATE_UNDERGROUND
+                 && gBattleMons[battler].volatiles.semiInvulnerable != STATE_UNDERWATER
+                 && !gBattleMons[battler].volatiles.healBlock)
+                {
+                    BattleScriptExecute(BattleScript_IceBodyHeal);
+                    SetHealAmount(battler, GetNonDynamaxMaxHP(battler) / 16);
+                    effect++;
+                }
+                break;
+            case ABILITY_BEADS_OF_RUIN:
+            case ABILITY_SWORD_OF_RUIN:
+            case ABILITY_TABLETS_OF_RUIN:
+            case ABILITY_VESSEL_OF_RUIN:
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_DECAY)
                  && !IsBattlerAtMaxHp(battler)
                  && gBattleMons[battler].volatiles.semiInvulnerable != STATE_UNDERGROUND
                  && gBattleMons[battler].volatiles.semiInvulnerable != STATE_UNDERWATER
@@ -11128,3 +11161,15 @@ bool32 IsNaturalEnemy(u32 speciesAttacker, u32 speciesTarget)
     return FALSE;
 }
 
+bool32 IsRuinAbility(enum Ability ability)
+{
+    switch (ability) {
+        case ABILITY_BEADS_OF_RUIN:
+        case ABILITY_SWORD_OF_RUIN:
+        case ABILITY_TABLETS_OF_RUIN:
+        case ABILITY_VESSEL_OF_RUIN:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
