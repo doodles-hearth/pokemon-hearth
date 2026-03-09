@@ -11,7 +11,9 @@
 #include "battle_z_move.h"
 #include "battle_gimmick.h"
 #include "bg.h"
+#include "constants/flags.h"
 #include "data.h"
+#include "event_data.h"
 #include "item.h"
 #include "item_menu.h"
 #include "link.h"
@@ -1876,9 +1878,14 @@ static void PrintLinkStandbyMsg(void)
 
 static void PlayerHandleLoadMonSprite(enum BattlerId battler)
 {
-    BattleLoadMonSpriteGfx(GetBattlerMon(battler), battler);
-    gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
-    gBattlerControllerFuncs[battler] = CompleteOnBattlerSpritePosX_0;
+    if (FlagGet(FLAG_PLAYER_IS_POKEMON)) {
+        BtlController_HandleLoadMonSprite(battler);
+    }
+    else {
+        BattleLoadMonSpriteGfx(GetBattlerMon(battler), battler);
+        gSprites[gBattlerSpriteIds[battler]].oam.paletteNum = battler;
+        gBattlerControllerFuncs[battler] = CompleteOnBattlerSpritePosX_0;
+    }
 }
 
 enum TrainerPicID LinkPlayerGetTrainerPicId(u32 multiplayerId)

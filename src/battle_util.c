@@ -12,6 +12,7 @@
 #include "battle_gimmick.h"
 #include "battle_hold_effects.h"
 #include "constants/battle.h"
+#include "constants/flags.h"
 #include "generational_changes.h"
 #include "party_menu.h"
 #include "pokemon.h"
@@ -10816,6 +10817,9 @@ bool32 IsBattlerInvalidForSpreadMove(enum BattlerId battlerAtk, enum BattlerId b
 
 bool32 IsAllowedToUseBag(void)
 {
+    if (FlagGet(FLAG_PLAYER_IS_POKEMON)) 
+        return FALSE;
+
     switch (VarGet(B_VAR_NO_BAG_USE))
     {
     case NO_BAG_RESTRICTION:

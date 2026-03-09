@@ -20,6 +20,7 @@
 #include "berry.h"
 #include "bg.h"
 #include "constants/battle.h"
+#include "constants/flags.h"
 #include "constants/pokemon.h"
 #include "data.h"
 #include "debug.h"
@@ -2862,6 +2863,17 @@ void SpriteCB_OpponentMonFromBall(struct Sprite *sprite)
     }
 }
 
+void SpriteCB_ShowHealthbox(struct Sprite *sprite)
+{
+    if (sprite->animEnded)
+    {
+        StartHealthboxSlideIn(sprite->sBattler);
+        SetHealthboxSpriteVisible(gHealthboxSpriteIds[sprite->sBattler]);
+        sprite->callback = SpriteCB_PlayerMonFromBall;
+        StartSpriteAnim(sprite, 0);
+    }
+}
+
 // This callback is frequently overwritten by SpriteCB_TrainerSlideIn
 void SpriteCB_BattleSpriteStartSlideLeft(struct Sprite *sprite)
 {
@@ -2875,7 +2887,7 @@ static void SpriteCB_BattleSpriteSlideLeft(struct Sprite *sprite)
         sprite->x2 -= 2;
         if (sprite->x2 == 0)
         {
-            sprite->callback = SpriteCB_Idle;
+            sprite->callback = FlagGet(FLAG_PLAYER_IS_POKEMON) ? SpriteCB_ShowHealthbox : SpriteCB_Idle;
             sprite->data[1] = 0;
         }
     }
@@ -3580,7 +3592,10 @@ static void DoBattleIntro(void)
             switch (GetBattlerPosition(battler))
             {
             case B_POSITION_PLAYER_LEFT: // player sprite
-                BtlController_EmitDrawTrainerPic(battler, B_COMM_TO_CONTROLLER);
+                if (FlagGet(FLAG_PLAYER_IS_POKEMON))
+                    BtlController_EmitLoadMonSprite(battler, B_COMM_TO_CONTROLLER);
+                else
+                    BtlController_EmitDrawTrainerPic(battler, B_COMM_TO_CONTROLLER);
                 MarkBattlerForControllerExec(battler);
                 break;
             case B_POSITION_OPPONENT_LEFT:
@@ -3755,7 +3770,11 @@ static void DoBattleIntro(void)
                 gBattleScripting.battler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
                 BattleScriptExecute(BattleScript_SilphScopeUnveiled);
             }
-            gBattleStruct->eventState.battleIntro++;
+
+            if (FlagGet(FLAG_PLAYER_IS_POKEMON))
+                gBattleStruct->eventState.battleIntro = BATTLE_INTRO_STATE_SET_DEX_AND_BATTLE_VARS;
+            else
+                gBattleStruct->eventState.battleIntro++;
         }
         break;
     case BATTLE_INTRO_STATE_PRINT_PLAYER_SEND_OUT_TEXT:
@@ -4353,6 +4372,16 @@ static void HandleTurnActionSelectionState(void)
                     }
                     break;
                 case B_ACTION_SWITCH:
+                    if (ShouldBattleRestrictionsApply(battler) && FlagGet(FLAG_PLAYER_IS_POKEMON))
+                    {
+                        RecordedBattle_ClearBattlerAction(battler, 1);
+                        gSelectionBattleScripts[battler] = BattleScript_ActionSelectionPokemonIsAlone;
+                        gBattleCommunication[battler] = STATE_SELECTION_SCRIPT;
+                        gBattleStruct->battlerState[battler].selectionScriptFinished = FALSE;
+                        gBattleStruct->stateIdAfterSelScript[battler] = STATE_BEFORE_ACTION_CHOSEN;
+                        return;
+                    }
+
                     gBattleStruct->battlerPartyIndexes[battler] = gBattlerPartyIndexes[battler];
                     if (gBattleTypeFlags & BATTLE_TYPE_ARENA
                         || (!CanBattlerEscape(battler) && GetBattlerHoldEffect(battler) != HOLD_EFFECT_SHED_SHELL))

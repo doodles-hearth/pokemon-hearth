@@ -80,6 +80,7 @@ void SpriteCB_ShowAsMoveTarget(struct Sprite *sprite);
 void SpriteCB_HideAsMoveTarget(struct Sprite *sprite);
 void SpriteCB_OpponentMonFromBall(struct Sprite *sprite);
 void SpriteCB_BattleSpriteStartSlideLeft(struct Sprite *sprite);
+void SpriteCB_ShowHealthbox(struct Sprite *sprite);
 void SpriteCB_FaintSlideAnim(struct Sprite *sprite);
 void DoBounceEffect(enum BattlerId battler, u8 which, s8 delta, s8 amplitude);
 void EndBounceEffect(enum BattlerId battler, u8 which);
