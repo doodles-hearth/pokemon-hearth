@@ -5198,7 +5198,7 @@ static void TurnValuesCleanUp(bool8 var0)
     ClearDamageCalcResults();
 }
 
-static void PopulateArrayWithBattlers(u8 *battlers)
+static void PopulateArrayWithBattlers(enum BattlerId *battlers)
 {
     for (enum BattlerId i = 0; i < gBattlersCount; i++)
         battlers[i] = i;

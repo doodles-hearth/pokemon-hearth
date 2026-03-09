@@ -416,7 +416,6 @@ BattleScript_EffectTeatime::
 	checkteatimetargets BattleScript_ButItFailed
 	attackanimation
 	waitanimation
-	movevaluescleanup
 	goto BattleScript_EffectTeatimeGetTarget
 BattleScript_EffectTeatimeNextTarget:
 	jumpifnoberry BS_TARGET, BattleScript_EffectTeatimeGetTarget
@@ -1137,7 +1136,6 @@ BattleScript_FlowerShieldCheckNextTarget:
 BattleScript_FlowerShieldLoopStart:
 	selectfirstvalidtarget
 BattleScript_FlowerShieldLoop:
-	movevaluescleanup
 	jumpifvolatile BS_TARGET, VOLATILE_SEMI_INVULNERABLE, BattleScript_FlowerShieldMoveTargetEnd
 	jumpiftype BS_TARGET, TYPE_GRASS, BattleScript_FlowerShieldLoop2
 	goto BattleScript_FlowerShieldMoveTargetEnd
@@ -2120,7 +2118,6 @@ BattleScript_EffectGravitySuccess::
 	savetarget
 	selectfirstvalidtarget
 BattleScript_GravityLoop:
-	movevaluescleanup
 	jumpfifsemiinvulnerable BS_TARGET, STATE_ON_AIR, BattleScript_GravityLoopDrop
 	jumpifvolatile BS_TARGET, VOLATILE_MAGNET_RISE, BattleScript_GravityLoopDrop
 	jumpifvolatile BS_TARGET, VOLATILE_TELEKINESIS, BattleScript_GravityLoopDrop
@@ -5867,6 +5864,8 @@ BattleScript_UpdateEffectStatusIconRet::
 	updatestatusicon BS_EFFECT_BATTLER
 	waitstate
 	trytriggerstatusform
+    trysynchronize
+	tryactivateitem BS_EFFECT_BATTLER, ACTIVATION_ON_STATUS_CHANGE
 	flushtextbox
 	return
 
