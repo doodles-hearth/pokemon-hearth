@@ -1,0 +1,35 @@
+{
+  "id": "MAP_HARVEST_SHRINE_DECAY",
+  "name": "HarvestShrine_Decay",
+  "layout": "LAYOUT_HARVEST_SHRINE_DECAY",
+  "music": "MUS_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_HARVEST_SHRINE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": true,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_BEACHBOUND_ROUTE_DECAY",
+      "offset": -34,
+      "direction": "down"
+    }
+  ],
+  "object_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_BRONZONG",
+      "x": 19,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_INSIDE_BRONZONG",
+      "dest_warp_id": "WARP_ID_BRONZONG_EXIT"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

@@ -1,1 +1,44 @@
 mapscripts SabersideTown_House3_MapScripts {}
+
+script SabersideTown_House3_EventScript_FireFang {
+    lock
+    faceplayer
+    msgbox(
+        "TODO"
+        // "{CREATE_MUGSHOT MUGSHOT_ARTIST 0}{SPEAKER NAME_ARTIST}I wanted a move that was the perfect
+        // balance between the two best Pokémon:
+        // Quilava and Mawile!
+
+        // So I created a technique that
+        // perfectly encompasses them both!
+        // "
+        // TODO
+    )
+    release
+}
+
+script SabersideTown_House3_EventScript_Quilava {
+    lock
+    faceplayer
+	setseenmon(SPECIES_QUILAVA)
+	setspeakertomonname(SPECIES_QUILAVA)
+	playmoncry(SPECIES_QUILAVA, CRY_MODE_NORMAL)
+    msgbox("Hiss!")
+    waitmoncry
+    closemessage
+    release
+}
+
+script SabersideTown_House3_EventScript_Mawile {
+    lock
+    faceplayer
+	setseenmon(SPECIES_MAWILE)
+	setspeakertomonname(SPECIES_MAWILE)
+	playmoncry(SPECIES_MAWILE, CRY_MODE_NORMAL)
+    msgbox(
+        "Snarl!"
+    )
+    waitmoncry
+    closemessage
+    release
+}

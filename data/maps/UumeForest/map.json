@@ -12,7 +12,13 @@
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": [
+    {
+      "map": "MAP_HUNTERS_SHRINE",
+      "offset": 29,
+      "direction": "up"
+    }
+  ],
   "object_events": [],
   "warp_events": [
     {
@@ -570,6 +576,28 @@
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST_LOST_WOODS2",
       "dest_warp_id": "WARP_ID_UUME_A_RIGHT_TOP"
+    },
+    {
+      "warp_id": "WARP_ID_UUME_I_TOP",
+      "x": 44,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_HUNTERS_SHRINE",
+      "dest_warp_id": "WARP_ID_HUNTERS_SHRINE_EXIT"
+    },
+    {
+      "x": 43,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_HUNTERS_SHRINE",
+      "dest_warp_id": "WARP_ID_HUNTERS_SHRINE_EXIT"
+    },
+    {
+      "x": 45,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_HUNTERS_SHRINE",
+      "dest_warp_id": "WARP_ID_HUNTERS_SHRINE_EXIT"
     }
   ],
   "coord_events": [],

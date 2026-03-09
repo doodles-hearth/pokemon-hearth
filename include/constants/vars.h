@@ -121,7 +121,8 @@
     // 4: Talked to Hariko about decay
     // 5: End of decay cutscene
     // 6: Delivered letter to elder in Silveridge
-    // 7: Talked to Samurai near Uume Forest
+    // 7: Cured Harvest Shrine of Decay
+    // 8: Bronzong thanked us
 */
 #define VAR_DECAY_BEACHBOUND_ROUTE                       0x4052
 #define VAR_LAVARIDGE_TOWN_STATE                         0x4053
@@ -138,7 +139,14 @@
 #define VAR_MAIN_CAMPAIGN_QUEST                          0x4059
 #define VAR_RUSTBORO_CITY_STATE                          0x405A
 #define VAR_EGG_GIRL_STEP_COUNTER                        0x405B
-#define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
+/*
+    VAR_DECAY_UUME_FOREST States
+
+    // 0: Decay
+    // 1: Cured Harvest Shrine of Decay
+    // 2: Finished
+*/
+#define VAR_DECAY_UUME_FOREST                            0x405C
 #define VAR_MOSSDEEP_CITY_STATE                          0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
 #define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var

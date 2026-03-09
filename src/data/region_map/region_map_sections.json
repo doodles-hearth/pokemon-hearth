@@ -1310,6 +1310,14 @@
     {
       "id": "MAPSEC_SCENIC_HOT_SPRINGS",
       "name": "Hot Springs"
+    },
+    {
+      "id": "MAPSEC_INSIDE_BRONZONG",
+      "name": "INSIDE BRONZONG"
+    },
+    {
+      "id": "MAPSEC_HUNTERS_SHRINE",
+      "name": "Hunter's Shrine"
     }
   ]
 }

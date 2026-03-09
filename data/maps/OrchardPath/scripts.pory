@@ -5,7 +5,6 @@ const FLAG_HIDE_ROCK_RIGHT = FLAG_TEMP_3
 const FLAG_JUST_GOT_ROCK_SMASH = FLAG_TEMP_4
 
 mapscripts OrchardPath_MapScripts {
-
 }
 
 script OrchardPath_EventScript_UumeForestSoulkeepSign {
@@ -135,8 +134,6 @@ script OrchardPath_Samurai_KnowAboutDecay {
 		"We cannot let you through though, so please be on your way.\p"
 		"Now now, move along!"
 	))
-	
-	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 7)
 }
 
 script OrchardPath_EventScript_Umbreon {

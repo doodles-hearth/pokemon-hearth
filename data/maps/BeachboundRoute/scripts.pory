@@ -1,3 +1,4 @@
+const FLAG_HIDE_SAMURAI = FLAG_TEMP_1
 const FLAG_HIDE_HOPPIP = FLAG_TEMP_5
 const LOCALID_HOPPIP = 7
 const LOCALID_GRUNT_1 = 18
@@ -7,6 +8,43 @@ const LOCALID_GRUNT_BOSS = 19
 const LOCALID_MUGGED_WOMAN = 17
 
 mapscripts BeachboundRoute_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_DECAY_BEACHBOUND_ROUTE) != 8) {
+			setflag(FLAG_HIDE_SAMURAI)
+		}
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_DECAY_BEACHBOUND_ROUTE, 8: BeachboundRoute_EventScript_AfterCuringDecay
+	]
+}
+
+// TODO
+script(local) BeachboundRoute_EventScript_AfterCuringDecay {
+	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 9)
+	lockall
+
+	applymovement(LOCALID_PLAYER, moves(walk_down))
+
+	playse(SE_PIN)
+	applymovement(LOCALID_BEACHBOUND_SAMURAI_RIGHT, moves(emote_exclamation_mark, delay_16 * 6, walk_right, walk_up))
+	delay(16)
+	playse(SE_PIN)
+	applymovement(LOCALID_BEACHBOUND_SAMURAI_LEFT, moves(face_up, delay_16 * 6, walk_right, walk_up))
+	waitmovementall
+
+	applymovement(LOCALID_BEACHBOUND_SAMURAI_RIGHT, moves(walk_in_place_fast_up))
+	waitmovement(LOCALID_BEACHBOUND_SAMURAI_RIGHT)
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}Thank you for curing this whole area\nfrom the Decay!"
+	)
+	closemessage
+
+	applymovement(LOCALID_BEACHBOUND_SAMURAI_RIGHT, moves(walk_down, walk_left * 3, walk_down * 2, walk_left * 4, walk_down, walk_left * 3))
+	applymovement(LOCALID_BEACHBOUND_SAMURAI_LEFT, moves(walk_right, walk_down, walk_left * 3, walk_down * 2, walk_left * 4, walk_down, walk_left * 3))
+	waitmovementall
+
+	releaseall
 }
 
 script BeachboundRoute_EventScript_RunningBoy {

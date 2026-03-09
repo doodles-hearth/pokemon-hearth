@@ -256,8 +256,8 @@
   "warp_events": [
     {
       "warp_id": "WARP_ID_COREEF_HOUSE1",
-      "x": 25,
-      "y": 8,
+      "x": 16,
+      "y": 26,
       "elevation": 0,
       "dest_map": "MAP_COREEF_HOUSE1",
       "dest_warp_id": "WARP_ID_COREEF_HOUSE1_EXIT"
@@ -269,6 +269,14 @@
       "elevation": 0,
       "dest_map": "MAP_LONG_TIDE_CHANNEL_SOULKEEP",
       "dest_warp_id": "WARP_ID_SOULKEEP_BOAT"
+    },
+    {
+      "warp_id": "WARP_ID_COREEF_HOUSE2",
+      "x": 25,
+      "y": 8,
+      "elevation": 0,
+      "dest_map": "MAP_COREEF_HOUSE2",
+      "dest_warp_id": "WARP_ID_COREEF_HOUSE2_EXIT"
     }
   ],
   "coord_events": [],

@@ -1,6 +1,6 @@
 mapscripts Kura_Beachbound_Gate_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		if (var(VAR_DECAY_BEACHBOUND_ROUTE) > 0) {
+		if (var(VAR_DECAY_BEACHBOUND_ROUTE) > 0 && !flag(FLAG_CURED_DECAY_HARVEST_SHRINE)) {
 			setdynamicwarp(MAP_BEACHBOUND_ROUTE_DECAY, 1)
 		} else {
 			setdynamicwarp(MAP_BEACHBOUND_ROUTE, 1)

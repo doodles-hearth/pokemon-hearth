@@ -2051,3 +2051,13 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/Coreef_House2/scripts.scr"
 
 	.include "data/maps/ScenicRoute_MemoryReader/scripts.scr"
+
+	.include "data/maps/Coreef_House3/scripts.scr"
+
+	.include "data/maps/HarvestShrine_Decay/scripts.scr"
+
+	.include "data/maps/InsideBronzong/scripts.scr"
+
+	.include "data/maps/HuntersShrine/scripts.scr"
+
+	.include "data/maps/HuntersShrine_Decay/scripts.scr"

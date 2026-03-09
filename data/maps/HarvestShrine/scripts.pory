@@ -1,18 +1,116 @@
 const FLAG_SET_RAIN = FLAG_TEMP_1
+const FLAG_HIDE_MONKS = FLAG_TEMP_2
 
 mapscripts HarvestShrine_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 7) {
+			playbgm(MUS_NONE, FALSE)
+			setflag(FLAG_HIDE_MONKS)
+		}
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_DECAY_BEACHBOUND_ROUTE, 7: HarvestShrine_EventScript_CuredDecay
+	]
+}
+
+script HarvestShrine_EventScript_CuredDecay {
+	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 8)
+	lockall
+	delay(64)
+
+	special(SpawnCameraObject)
+
+	applymovement(LOCALID_CAMERA, moves(walk_slow_up))
+	waitmovement(0)
+
+	applymovement(LOCALID_PLAYER, moves(face_up))
+	waitmovement(0)
+
+	delay(48)
+
+	setmetatile(17, 8, METATILE_HarvestShrine_BronzongLeftEyeSquint_TopLeft, TRUE)
+	setmetatile(17, 9, METATILE_HarvestShrine_BronzongLeftEyeSquint_BottomLeft, TRUE)
+	setmetatile(18, 8, METATILE_HarvestShrine_BronzongLeftEyeSquint_TopRight, TRUE)
+	setmetatile(18, 9, METATILE_HarvestShrine_BronzongLeftEyeSquint_BottomRight, TRUE)
+
+	setmetatile(20, 8, METATILE_HarvestShrine_BronzongRightEyeSquint_TopLeft, TRUE)
+	setmetatile(20, 9, METATILE_HarvestShrine_BronzongRightEyeSquint_BottomLeft, TRUE)
+	setmetatile(21, 8, METATILE_HarvestShrine_BronzongRightEyeSquint_TopRight, TRUE)
+	setmetatile(21, 9, METATILE_HarvestShrine_BronzongRightEyeSquint_BottomRight, TRUE)
+
+	special(DrawWholeMapView)
+
+	delay(32)
+
+	setmetatile(19, 9, METATILE_HarvestShrine_BronzongMouthOpen, TRUE)
+	special(DrawWholeMapView)
+
+	delay(32)
+
+	call(HarvestShrine_EventScript_BronzongShake)
+
+	call(HarvestShrine_EventScript_BronzongEyesBackToNormal)
+
+
+	waitmoncry
+	setmetatile(19, 9, METATILE_HarvestShrine_BronzongMouthClosed, TRUE)
+	special(DrawWholeMapView)
+	delay(48)
 	
+	applymovement(LOCALID_CAMERA, moves(walk_slow_down, delay_16 * 3))
+	waitmovement(0)
+
+	msgbox(
+		"Bronzong thanks you."
+	)
+	closemessage
+
+	applymovement(LOCALID_PLAYER, moves(walk_down * 9))
+	waitmovement(0)
+
+	warpsilent(MAP_BEACHBOUND_ROUTE, WARP_ID_LEFT_HARVEST_SHRINE)
+
+	releaseall
+}
+
+script(local) HarvestShrine_EventScript_BronzongEyesBackToNormal {
+	setmetatile(17, 8, METATILE_HarvestShrine_BronzongLeftEye_TopLeft, TRUE)
+	setmetatile(17, 9, METATILE_HarvestShrine_BronzongLeftEye_BottomLeft, TRUE)
+	setmetatile(18, 8, METATILE_HarvestShrine_BronzongLeftEye_TopRight, TRUE)
+	setmetatile(18, 9, METATILE_HarvestShrine_BronzongLeftEye_BottomRight, TRUE)
+
+	setmetatile(20, 8, METATILE_HarvestShrine_BronzongRightEye_TopLeft, TRUE)
+	setmetatile(20, 9, METATILE_HarvestShrine_BronzongRightEye_BottomLeft, TRUE)
+	setmetatile(21, 8, METATILE_HarvestShrine_BronzongRightEye_TopRight, TRUE)
+	setmetatile(21, 9, METATILE_HarvestShrine_BronzongRightEye_BottomRight, TRUE)
+
+	special(DrawWholeMapView)
+}
+
+script(local) HarvestShrine_EventScript_BronzongShake {
+	setvar(VAR_0x8004, 0) // vertical pan
+	setvar(VAR_0x8005, 2) // horizontal pan
+	setvar(VAR_0x8006, 100) // num shakes
+	setvar(VAR_0x8007, 1) // shake delay
+	special(ShakeCamera)
+
+	playmoncry(SPECIES_BRONZONG, CRY_MODE_GROWL_1)
+	waitmoncry
+	playmoncry(SPECIES_BRONZONG, CRY_MODE_GROWL_2)
+	delay(16)
+	playmoncry(SPECIES_BRONZONG, CRY_MODE_GROWL_2)
+	delay(64)
 }
 
 script HarvestShrine_EventScript_MonkBronzong {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_MONK)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MONK 0}The Bronzong you have before your eyes is a thousand years old.\p"
-		"It has been bringing us rain and plentiful harvests for generations.\p"
-		"Can you believe this magnificent statue is a living, breathing Pokémon?\p"
-		"Actually, I'm not sure Bronzong breathe, but you get the idea."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_MONK 0}The Bronzong you have before your\neyes is a thousand years old.\p"
+		"It has been bringing us rain and\nplentiful harvests for generations.\p"
+		"Can you believe this sublime statue\nis a living, breathing Pokémon?\p"
+		"Actually, I'm not sure Bronzong\nbreathe, but you get the idea."
 	))
 	closemessage
 
@@ -28,7 +126,7 @@ script HarvestShrine_EventScript_EnteiStatuette {
 	faceplayer
 	setspeaker(SP_NAME_MONK)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_MONK 0}I see you have an Entei Statuette too!\nThese amulets have a special power,\lyou know?"
+		"{CREATE_MUGSHOT MUGSHOT_MONK 0}I see you have an Entei Statuette too!\nThese amulets have a power, you know?\p"
 		"We Monks honor them in our prayers."
 	))
 	closemessage
@@ -39,13 +137,13 @@ script HarvestShrine_EventScript_EnteiStatuette {
 script HarvestShrine_EventScript_Kouga {
 	trainerbattle_single(
 		TRAINER_KOUGA,
-		format("{CREATE_MUGSHOT MUGSHOT_MONK 0}Have you come here to honor the venerable Bronzong?\NOr are you here to stir trouble?"),
-		format("By a thousand gods!"),
+		"{CREATE_MUGSHOT MUGSHOT_MONK 0}Have you come here to honor the\nvenerable Bronzong?\lOr are you here to stir trouble?",
+		"By a thousand gods!",
 		HarvestShrine_EventScript_SetMonFlags
 	)
 	setspeaker(SP_NAME_MONK)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MONK 0}Fine, you may approach the ancient Bronzong. Please be respectful."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_MONK 0}Fine, you may approach the ancient\nBronzong.\lPlease be respectful."
 	))
 	closemessage
 	end
@@ -66,8 +164,8 @@ script HarvestShrine_EventScript_MonkRain {
 	} elif (flag(FLAG_SET_RAIN)) {
 		setnamedmon(SPECIES_BRONZONG)
 
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_MONK 0}You prayed to the venerable Bronzong for rain, and He heeded your prayer!\p"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_MONK 0}You prayed to the venerable Bronzong\nfor rain, and He heeded your prayer!\p"
 			"He doesn't listen to just anyone,\nyou know?\p"
 			"There's something about you, kid…\nTake this! I insist!"
 		))
@@ -96,30 +194,43 @@ script HarvestShrine_EventScript_Bronzong {
 
 		fadeoutbgm(1)
 
-		setvar(VAR_0x8004, 0) // vertical pan
-		setvar(VAR_0x8005, 2) // horizontal pan
-		setvar(VAR_0x8006, 100) // num shakes
-		setvar(VAR_0x8007, 1) // shake delay
-		special(ShakeCamera)
+		special(SpawnCameraObject)
+		applymovement(LOCALID_CAMERA, moves(walk_slow_up * 5, delay_16 * 3))
+		waitmovement(0)
 
-		playmoncry(SPECIES_BRONZONG, CRY_MODE_GROWL_1)
-		waitmoncry
-		playmoncry(SPECIES_BRONZONG, CRY_MODE_GROWL_2)
-		delay(16)
-		playmoncry(SPECIES_BRONZONG, CRY_MODE_GROWL_2)
-		waitmoncry
+		setmetatile(17, 8, METATILE_HarvestShrine_BronzongLeftEyeActive_TopLeft, TRUE)
+		setmetatile(17, 9, METATILE_HarvestShrine_BronzongLeftEyeActive_BottomLeft, TRUE)
+		setmetatile(18, 8, METATILE_HarvestShrine_BronzongLeftEyeActive_TopRight, TRUE)
+		setmetatile(18, 9, METATILE_HarvestShrine_BronzongLeftEyeActive_BottomRight, TRUE)
 
+		setmetatile(20, 8, METATILE_HarvestShrine_BronzongRightEyeActive_TopLeft, TRUE)
+		setmetatile(20, 9, METATILE_HarvestShrine_BronzongRightEyeActive_BottomLeft, TRUE)
+		setmetatile(21, 8, METATILE_HarvestShrine_BronzongRightEyeActive_TopRight, TRUE)
+		setmetatile(21, 9, METATILE_HarvestShrine_BronzongRightEyeActive_BottomRight, TRUE)
+
+		special(DrawWholeMapView)
+
+		call(HarvestShrine_EventScript_BronzongShake)
+
+		call(HarvestShrine_EventScript_BronzongEyesBackToNormal)
+
+		waitmoncry
 		delay(48)
+		
+		applymovement(LOCALID_CAMERA, moves(walk_slow_down * 5, delay_16 * 3))
+		waitmovement(0)
 
 		setweather(WEATHER_RAIN)
 		doweather
+
+		special(RemoveCameraObject)
 
 		delay(64)
 
 		applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
 		waitmovement(0)
 
-		delay(48)
+		delay(64)
 
 		msgbox(format(
 			"… … …It started to rain."

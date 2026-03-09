@@ -115,7 +115,8 @@
     "SakuTown_BufferArea",
     "YifuCity_BufferArea",
     "SabersideQuarry_Exterior",
-    "ScenicHotSprings"
+    "ScenicHotSprings",
+    "HarvestShrine_Decay"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "SunriseVillage_PlayersHouse_LR",
@@ -216,7 +217,10 @@
     "MtKazan_Antechamber",
     "SabersideQuarry_SableyeSpot",
     "WhiteslateRoute_SecretCave",
-    "UumeForest_LostWoods2"
+    "UumeForest_LostWoods2",
+    "InsideBronzong",
+    "HuntersShrine",
+    "HuntersShrine_Decay"
   ],
   "gMapGroup_VanillaMaps1": [
     "PetalburgCity",
@@ -761,10 +765,6 @@
     "Windycape_House1",
     "Windycape_House2"
   ],
-  "gMapGroup_IndoorCoreef": [
-    "Coreef_House1",
-    "Coreef_House2"
-  ],
   "gMapGroup_Link_Frlg": [
     "BattleColosseum_2P_Frlg",
     "TradeCenter_Frlg",
@@ -1263,6 +1263,11 @@
   ],
   "gMapGroup_IndoorSevenIslandRoute_Frlg": [
     "SevenIsland_SevaultCanyon_House_Frlg"
+  ],
+  "gMapGroup_IndoorCoreef": [
+    "Coreef_House1",
+    "Coreef_House2",
+    "Coreef_House3"
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"

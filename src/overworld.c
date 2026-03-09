@@ -1690,7 +1690,8 @@ void CB1_Overworld(void)
 const struct BlendSettings gCustomDNSTintBlend[DNS_BLEND_COUNT] = 
 {
     [DNS_BLEND_CAVE_DARK]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_CAVE_DARK, .isTint = TRUE},
-    [DNS_BLEND_CAVE_STANDARD]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_CAVE_STANDARD, .isTint = TRUE},
+    // TODO EVA figure out nice cave tint
+    [DNS_BLEND_CAVE_STANDARD]   = {.coeff = 4, .blendColor = 0xcfe0ff, .isTint = TRUE},
     [DNS_BLEND_FLASH_YELLOW]    = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_YELLOW, .isTint = TRUE},
     [DNS_BLEND_FLASH_ORANGE]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_ORANGE, .isTint = TRUE},
     [DNS_BLEND_FLASH_RED]   = {.coeff = 12, .blendColor = DNS_TINTCOLOUR_FLASH_RED, .isTint = TRUE},
@@ -1891,7 +1892,7 @@ void DoCustomDNSBlend(void)
         return;
     
     u32 palettes = FilterTimeBlendPalettes(PALETTES_ALL);
-    if (!gMapHeader.cave)                                                                            // In cave or underwater but does not require flash = do normal cave blend
+    if (!gMapHeader.cave) // In cave or underwater but does not require flash = do normal cave blend
     {
         const struct BlendSettings *blend = &gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD];
         TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
