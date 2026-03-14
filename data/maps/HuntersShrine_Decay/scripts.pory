@@ -60,7 +60,7 @@ script(local) HuntersShrine_Decay_EventScript_InteractSawsbuck {
             "The area is cured of Decay!"
         )
         
-        setvar(VAR_DECAY_UUME_FOREST, 1)
+        setvar(VAR_DECAY_UUME_FOREST, 2)
 
         warpwhitefade(MAP_HUNTERS_SHRINE, WARP_ID_SAWSBUCK_CURED)
     }

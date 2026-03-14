@@ -16,12 +16,12 @@
   "object_events": [],
   "warp_events": [
     {
-      "warp_id": "WARP_ID_HUNTERS_SHRINE_EXIT",
+      "warp_id": "WARP_ID_HUNTERS_SHRINE_DECAY_EXIT",
       "x": 15,
       "y": 20,
       "elevation": 0,
-      "dest_map": "MAP_UUME_FOREST",
-      "dest_warp_id": "WARP_ID_UUME_I_TOP"
+      "dest_map": "MAP_UUME_FOREST_ENTRANCE",
+      "dest_warp_id": "WARP_ID_ENTRANCE_NORTH"
     },
     {
       "x": 14,

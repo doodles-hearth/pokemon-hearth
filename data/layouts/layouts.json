@@ -11767,6 +11767,19 @@
       "layout_version": "emerald"
     },
     {
+      "id": "LAYOUT_UUME_FOREST_ENTRANCE",
+      "name": "UumeForest_Entrance_Layout",
+      "width": 29,
+      "height": 24,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_UumeForest",
+      "border_filepath": "data/layouts/UumeForest_Entrance/border.bin",
+      "blockdata_filepath": "data/layouts/UumeForest_Entrance/map.bin",
+      "layout_version": "emerald"
+    },
+    {
       "id": "LAYOUT_COREEF_HOUSE3",
       "name": "Coreef_House3_Layout",
       "width": 10,
