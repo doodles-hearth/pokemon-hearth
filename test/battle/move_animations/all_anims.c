@@ -246,7 +246,7 @@ static void WhenSingles(enum Move move, struct BattlePokemon *attacker, struct B
     else if (effect == EFFECT_DREAM_EATER
           || effect == EFFECT_NIGHTMARE)
     { // defender needs to be asleep
-        TURN { MOVE(defender, MOVE_REST); }
+        TURN { MOVE(defender, MOVE_REST, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
     }
     else if (effect == EFFECT_VENOM_DRENCH
           || effect == EFFECT_PURIFY)
@@ -313,6 +313,11 @@ static void WhenSingles(enum Move move, struct BattlePokemon *attacker, struct B
         { // defender needs to send out a different team member
             MOVE(attacker, move);
             SEND_OUT(defender, 1);
+        }
+        else if (effect == EFFECT_DREAM_EATER)
+        { // defender needs to send out a different team member
+            MOVE(attacker, move);
+            MOVE(defender, MOVE_CELEBRATE, WITH_RNG(RNG_DREAM_SLEEP, FALSE));
         }
         else if (AttackerHasToSwitch(move))
         { // attacker needs to send out a different team member
