@@ -6379,7 +6379,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_OpenSea",
+      "secondary_tileset": "gTileset_Yifu",
       "border_filepath": "data/layouts/HanabiCity/border.bin",
       "blockdata_filepath": "data/layouts/HanabiCity/map.bin",
       "layout_version": "emerald"
@@ -11843,6 +11843,18 @@
       "border_filepath": "data/layouts/HuntersShrine_Decay/border.bin",
       "blockdata_filepath": "data/layouts/HuntersShrine_Decay/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_HANABI_LAKE",
+      "name": "HanabiLake_Layout",
+      "width": 50,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/HanabiLake/border.bin",
+      "blockdata_filepath": "data/layouts/HanabiLake/map.bin"
     }
   ]
 }

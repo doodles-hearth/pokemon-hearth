@@ -1,9 +1,9 @@
 {
-  "id": "MAP_DRAGONS_PASS",
-  "name": "DragonsPass",
-  "layout": "LAYOUT_DRAGONS_PASS",
+  "id": "MAP_HANABI_LAKE",
+  "name": "HanabiLake",
+  "layout": "LAYOUT_HANABI_LAKE",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_DRAGONS_PASS",
+  "region_map_section": "MAPSEC_HANABI_LAKE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_ROUTE",
@@ -15,13 +15,8 @@
   "connections": [
     {
       "map": "MAP_HANABI_CITY",
-      "offset": -5,
+      "offset": 8,
       "direction": "down"
-    },
-    {
-      "map": "MAP_DRYUGON",
-      "offset": 0,
-      "direction": "up"
     }
   ],
   "object_events": [],

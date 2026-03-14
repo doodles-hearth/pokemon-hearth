@@ -29,14 +29,14 @@
       "direction": "up"
     },
     {
-      "map": "MAP_MT_KAZAN_EXTERIOR",
+      "map": "MAP_BURNFOOT_PASS_BOTTOM",
       "offset": 10,
       "direction": "right"
     },
     {
-      "map": "MAP_BURNFOOT_PASS_BOTTOM",
-      "offset": 10,
-      "direction": "right"
+      "map": "MAP_HANABI_LAKE",
+      "offset": -8,
+      "direction": "up"
     }
   ],
   "object_events": [],

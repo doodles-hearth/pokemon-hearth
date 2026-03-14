@@ -2063,3 +2063,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/HuntersShrine_Decay/scripts.scr"
 
 	.include "data/maps/UumeForest_Entrance/scripts.scr"
+
+	.include "data/maps/HanabiLake/scripts.scr"
