@@ -446,6 +446,8 @@ void AI_TrySwitchOrUseItem(enum BattlerId battler)
                             continue;
                         if (IsPartyMonOnFieldOrChosenToSwitch(monToSwitchId, battlerIn1, battlerIn2))
                             continue;
+                        if (IsPartyMonPlannedToBeSwitchedInByPartner(monToSwitchId, battler))
+                            continue;
                         if (IsAceMon(battler, monToSwitchId))
                             continue;
 
@@ -812,7 +814,7 @@ static u32 ChooseMoveOrAction_Singles(enum BattlerId battler)
 
     gAiThinkingStruct->aiLogicId = 0;
     gAiThinkingStruct->movesetIndex = 0;
-    gAiLogicData->partnerMove = 0;   // no ally
+    gAiLogicData->partnerMove = MOVE_NONE;   // no ally
 
     while (flags != 0)
     {

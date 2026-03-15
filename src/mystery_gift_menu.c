@@ -673,7 +673,7 @@ s8 DoMysteryGiftYesNo(u8 *textState, u16 *windowId, bool8 yesNoBoxPlacement, con
     case 0:
         // Print question message
         StringExpandPlaceholders(gStringVar4, str);
-        if (yesNoBoxPlacement == 0)
+        if (!yesNoBoxPlacement)
             *windowId = AddWindow(&sWindowTemplate_YesNoMsg_Wide);
         else
             *windowId = AddWindow(&sWindowTemplate_YesNoMsg);
@@ -687,7 +687,7 @@ s8 DoMysteryGiftYesNo(u8 *textState, u16 *windowId, bool8 yesNoBoxPlacement, con
     case 1:
         // Create Yes/No
         windowTemplate = sWindowTemplate_YesNoBox;
-        if (yesNoBoxPlacement == 0)
+        if (!yesNoBoxPlacement)
             windowTemplate.tilemapTop = 9;
         else
             windowTemplate.tilemapTop = 15;
@@ -1352,7 +1352,7 @@ static void Task_MysteryGift(u8 taskId)
         }
         break;
     case MG_STATE_CLIENT_LINK_END:
-        if (gReceivedRemoteLinkPlayers == 0)
+        if (!gReceivedRemoteLinkPlayers)
         {
             DestroyWirelessStatusIndicatorSprite();
             data->state = MG_STATE_CLIENT_COMM_COMPLETED;
@@ -1578,7 +1578,7 @@ static void Task_MysteryGift(u8 taskId)
         data->state = MG_STATE_SERVER_LINK_END_WAIT;
         break;
     case MG_STATE_SERVER_LINK_END_WAIT:
-        if (gReceivedRemoteLinkPlayers == 0)
+        if (!gReceivedRemoteLinkPlayers)
         {
             DestroyWirelessStatusIndicatorSprite();
             data->state = MG_STATE_SERVER_RESULT_MSG;
