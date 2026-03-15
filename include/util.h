@@ -21,6 +21,7 @@ void MakePaletteUnique(u16 palOffset, u16 species, u32 personality, bool8 isShin
 u32 GetMaxColorationRange(u16 species, bool8 isShiny);
 u32 CreateNewColoration(u16 species, bool8 isShiny);
 s32 SubtractClamped(s32 lowestVal, s32 highestVal, s32 currentVal, s32 delta);
+u32 Util_CountDigits(u32 value);
 
 
 #endif // GUARD_UTIL_H

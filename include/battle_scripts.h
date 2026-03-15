@@ -811,5 +811,6 @@ extern const u8 BattleScript_SmokeExplosionLoopIncrement[];
 extern const u8 BattleScript_EffectBlossom[];
 
 extern const u8 BattleScript_AbilityPopUpTarget[];
+extern const u8 BattleScript_SendMoneyToSis[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

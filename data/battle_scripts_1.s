@@ -4151,11 +4151,16 @@ BattleScript_LocalBattleWonLoseTexts::
 BattleScript_LocalBattleWonReward::
 	getmoneyreward
 	printstring STRINGID_PLAYERGOTMONEY
+  jumpifsavingmoney BattleScript_SendMoneyToSis
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_PayDayMoneyAndPickUpItems::
 	givepaydaymoney
 	pickup
 	end2
+BattleScript_SendMoneyToSis::
+  printstring STRINGID_PLAYERSENTMONEYTOSIS
+  waitmessage B_WAIT_TIME_LONG
+  goto BattleScript_PayDayMoneyAndPickUpItems
 
 BattleScript_RivalBattleLost::
 	jumpifhasnohp BS_ATTACKER, BattleScript_RivalBattleLostSkipMonRecall

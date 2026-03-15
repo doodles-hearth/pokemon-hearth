@@ -2249,3 +2249,8 @@
 	.byte \battler
 	.byte \switchedItems
 	.endm
+
+	.macro jumpifsavingmoney, ptr:req
+	callnative BS_JumpIfSavingMoney
+	.4byte \ptr
+	.endm

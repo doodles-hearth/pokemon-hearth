@@ -1,5 +1,6 @@
 #include "global.h"
 #include "debug.h"
+#include "gba/isagbprint.h"
 #include "malloc.h"
 #include "battle.h"
 #include "battle_special.h"
@@ -45,6 +46,7 @@
 #include "rtc.h"
 #include "script.h"
 #include "script_menu.h"
+#include "sister_deposit.h"
 #include "sound.h"
 #include "starter_choose.h"
 #include "string_util.h"
@@ -54,6 +56,7 @@
 #include "text_window.h"
 #include "tilesets.h"
 #include "tv.h"
+#include "util.h"
 #include "wallclock.h"
 #include "window.h"
 #include "constants/battle_frontier.h"
@@ -6008,4 +6011,12 @@ void ChooseItemFromBag(void)
     default:
         break;
     }
+}
+
+void GetSavingsString(void)
+{
+    u32 savings = GetSavings();
+    u32 digits = Util_CountDigits(savings);
+    DebugPrintf("Digits: %d", digits);
+    ConvertIntToDecimalStringN(gStringVar2, savings, STR_CONV_MODE_LEFT_ALIGN, digits);
 }
