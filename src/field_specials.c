@@ -6017,6 +6017,11 @@ void GetSavingsString(void)
 {
     u32 savings = GetSavings();
     u32 digits = Util_CountDigits(savings);
-    DebugPrintf("Digits: %d", digits);
     ConvertIntToDecimalStringN(gStringVar2, savings, STR_CONV_MODE_LEFT_ALIGN, digits);
+}
+
+void GetWithdrawalString(void)
+{
+    u32 digits = Util_CountDigits(GetWithdrawalAmount());
+    ConvertIntToDecimalStringN(gStringVar2, GetWithdrawalAmount(), STR_CONV_MODE_LEFT_ALIGN, digits);
 }

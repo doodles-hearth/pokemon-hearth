@@ -662,3 +662,5 @@ gSpecials::
 	def_special ChooseItemFromBag
 	def_special GiveMonTravellerRibbon
 	def_special GiveMonHistoricRibbon
+  def_special GetSavingsString
+  def_special GetWithdrawalString

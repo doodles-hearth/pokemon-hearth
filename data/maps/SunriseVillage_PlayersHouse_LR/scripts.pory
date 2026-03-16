@@ -104,6 +104,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		// Default
 	} else {
 		special(GetPlayerBroSisString)
+    special(GetSavingsString)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey {PLAYER}! How's it going?\p"
 			"Here, rest for a bit."
@@ -112,9 +113,26 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		call(Common_EventScript_OutOfCenterPartyHeal)
 		setspeaker(SP_NAME_BIG_SIS)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}See you around, little {STR_VAR_1}."
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}See you around, little {STR_VAR_1}.\p"
+      "I've been saving your money like you asked. I've saved up ¥{STR_VAR_2}!"
 		))
 		closemessage
+		setspeaker(SP_NAME_BIG_SIS)
+    msgbox(format("Do you want to withdraw your money?"), MSGBOX_YESNO)
+    if (var(VAR_RESULT) == NO || var(VAR_RESULT) == MULTI_B_PRESSED) {
+      msgbox(format("{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Okay, I'll keep saving your money!"))
+    } elif (var(VAR_RESULT) == YES) {
+      msgbox(format("{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Alright, how much do you want to withdraw?"))
+      callnative(WithdrawSavings)
+      waitbuttonpress
+      special(GetWithdrawalString)
+      setspeaker(SP_NAME_BIG_SIS)
+      if(var(VAR_RESULT) > 0){
+        msgbox(format("{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Here! Take ¥{STR_VAR_2}"))
+        callnative(UpdateSavingsAfterWithdrawal)
+        }
+    }
+    closemessage
 	}
 	release
 }

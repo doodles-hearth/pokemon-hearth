@@ -3,11 +3,14 @@
 #include "constants/flags.h"
 #include "event_data.h"
 #include "event_object_movement.h"
+#include "field_message_box.h"
 #include "field_player_avatar.h"
 #include "gba/defines.h"
+#include "gba/io_reg.h"
 #include "international_string_util.h"
 #include "main.h"
 #include "menu.h"
+#include "money.h"
 #include "overworld.h"
 #include "script.h"
 #include "sister_deposit.h"
@@ -23,16 +26,13 @@ u8 sWithdrawalWindowId = 0;
 // Config
 #define SISTER_DEPOSIT_SIZE 4  // Amount is 1/val
 
-// Static Functions
-static void GetSavingsString(void);
-static void GetWithdrawalString(void);
-
 // Tasks
 static void Task_ShowWithdrawalMenu(u8 taskId);
+static void Task_HandleWithdrawalInput(u8 taskId);
 
 // Windows
 static const struct WindowTemplate sSavingsWithdrawalWindowTemplate = {
-    .bg = 0, .tilemapLeft = 15, .tilemapTop = 13, .width = 13, .height = 2, .paletteNum = 15, .baseBlock = 0x30};
+    .bg = 0, .tilemapLeft = 15, .tilemapTop = 2, .width = 13, .height = 2, .paletteNum = 15, .baseBlock = 0x30};
 
 bool32 IsSavingMoney(void)
 {
@@ -54,17 +54,9 @@ u32 CalcAmountToSave(u32 money)
     return money / SISTER_DEPOSIT_SIZE;
 }
 
-static void GetSavingsString(void)
+u32 GetWithdrawalAmount(void)
 {
-    u32 savings = GetSavings();
-    u32 digits = Util_CountDigits(savings);
-    ConvertIntToDecimalStringN(gStringVar1, savings, STR_CONV_MODE_LEFT_ALIGN, digits);
-}
-
-static void GetWithdrawalString(void)
-{
-    u32 digits = Util_CountDigits(sWithdrawalAmount);
-    ConvertIntToDecimalStringN(gStringVar1, sWithdrawalAmount, STR_CONV_MODE_LEFT_ALIGN, digits);
+    return sWithdrawalAmount;
 }
 
 void CreateWithdrawalWindow(void)
@@ -166,15 +158,36 @@ static void Task_ShowWithdrawalMenu(u8 taskId)
             tState++;
             break;
         case 3:
-            if (HandleAmountInput(&sWithdrawalAmount, GetSavings(), 0)) {
-                PrintWithdrawalAmount(sWithdrawalWindowId, sWithdrawalAmount);
-            }
+            gTasks[taskId].func = Task_HandleWithdrawalInput;
             break;
     }
 }
 #undef tState
 
+static void Task_HandleWithdrawalInput(u8 taskId)
+{
+    if (HandleAmountInput(&sWithdrawalAmount, GetSavings(), 0)) {
+        PrintWithdrawalAmount(sWithdrawalWindowId, sWithdrawalAmount);
+    }
+    else if (JOY_NEW(A_BUTTON | B_BUTTON)) {
+        if (JOY_NEW(B_BUTTON))
+            sWithdrawalAmount = 0;
+        gSpecialVar_Result = sWithdrawalAmount;
+        ClearStdWindowAndFrame(sWithdrawalWindowId, TRUE);
+        UnfreezeObjectEvents();
+        ScriptContext_Enable();
+        UnlockPlayerFieldControls();
+        DestroyTask(taskId);
+    }
+}
+
 void WithdrawSavings(void)
 {
     CreateTask(Task_ShowWithdrawalMenu, 2);
+}
+
+void UpdateSavingsAfterWithdrawal(void)
+{
+    SetSavings(GetSavings() - sWithdrawalAmount);
+    AddMoney(&gSaveBlock1Ptr->money, sWithdrawalAmount);
 }
