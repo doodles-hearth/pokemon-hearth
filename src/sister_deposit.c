@@ -26,6 +26,9 @@ u8 sWithdrawalWindowId = 0;
 // Config
 #define SISTER_DEPOSIT_SIZE 4  // Amount is 1/val
 
+// Static Functions
+static u32 GetStepSize(s16 heldFrames);
+
 // Tasks
 static void Task_ShowWithdrawalMenu(u8 taskId);
 static void Task_HandleWithdrawalInput(u8 taskId);
@@ -67,63 +70,34 @@ void CreateWithdrawalWindow(void)
     CopyWindowToVram(sWithdrawalWindowId, COPYWIN_FULL);
 }
 
-static bool32 HandleAmountInput(u32* amount, s32 max, s32 min)
+static bool32 HandleAmountInput(u32* amount, s32 max, s32 min, s16* heldFrames)
 {
-    s16 original = *amount;
+    u32 original = *amount;
 
-    if (JOY_REPEAT(DPAD_ANY) == DPAD_UP) {
-        if (*amount < max)
-            (*amount)++;
+    u16 input = JOY_REPEAT(DPAD_ANY);
+    u16 held = JOY_HELD(DPAD_ANY);
 
-        if (*amount == original) {
-            return FALSE;
-        }
-        else {
-            return TRUE;
-        }
-    }
-    else if (JOY_REPEAT(DPAD_ANY) == DPAD_DOWN) {
-        if (*amount > 0)
-            (*amount)--;
-        if (*amount <= 0)
-            *amount = 0;
+    u32 step = GetStepSize(*heldFrames);
 
-        if (*amount == original) {
-            return FALSE;
-        }
-        else {
-            return TRUE;
-        }
-    }
-    else if (JOY_REPEAT(DPAD_ANY) == DPAD_RIGHT) {
-        if (*amount < max - 10)
-            *amount += 10;
-        else if (*amount > max - 10 && *amount < max)
+    if (held)
+        (*heldFrames)++;
+    else
+        *heldFrames = 0;
+
+    if (input & DPAD_UP || input & DPAD_RIGHT) {
+        if (*amount + step > max)
             *amount = max;
-
-        if (*amount == original) {
-            return FALSE;
-        }
-        else {
-            return TRUE;
-        }
+        else
+            *amount += step;
     }
-    else if (JOY_REPEAT(DPAD_ANY) == DPAD_LEFT) {
-        if (*amount >= 10)
-            *amount -= 10;
-        else if (*amount <= 10 && *amount > 0)
-            if (*amount <= 0)
-                *amount = 0;
-
-        if (*amount == original) {
-            return FALSE;
-        }
-        else {
-            return TRUE;
-        }
+    else if (input & DPAD_DOWN || input & DPAD_LEFT) {
+        if (*amount < step)
+            *amount = min;
+        else
+            *amount -= step;
     }
 
-    return FALSE;
+    return *amount != original;
 }
 
 static void PrintWithdrawalAmount(u8 windowId, s16 amount)
@@ -164,9 +138,23 @@ static void Task_ShowWithdrawalMenu(u8 taskId)
 }
 #undef tState
 
+static u32 GetStepSize(s16 heldFrames)
+{
+    if (heldFrames < 60)
+        return 1 + heldFrames / 20;
+
+    u32 step = 5 + (heldFrames - 60) / 5;
+    step = step > 500 ? 500 : step;
+
+    return step;
+}
+
+#define tHeldFrames data[0]
 static void Task_HandleWithdrawalInput(u8 taskId)
 {
-    if (HandleAmountInput(&sWithdrawalAmount, GetSavings(), 0)) {
+    s16* data = gTasks[taskId].data;
+
+    if (HandleAmountInput(&sWithdrawalAmount, GetSavings(), 0, &tHeldFrames)) {
         PrintWithdrawalAmount(sWithdrawalWindowId, sWithdrawalAmount);
     }
     else if (JOY_NEW(A_BUTTON | B_BUTTON)) {
@@ -180,6 +168,7 @@ static void Task_HandleWithdrawalInput(u8 taskId)
         DestroyTask(taskId);
     }
 }
+#undef tHeldFrames
 
 void WithdrawSavings(void)
 {
