@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_HANABI_CITY",
-      "offset": 8,
+      "offset": 0,
       "direction": "down"
     }
   ],

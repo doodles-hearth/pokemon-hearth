@@ -559,3 +559,6 @@ const u16 gMetatileAttributes_DecayPrimary[] = INCBIN_U16("data/tilesets/primary
 
 const u16 gMetatiles_InsideBronzong[] = INCBIN_U16("data/tilesets/secondary/inside_bronzong/metatiles.bin");
 const u16 gMetatileAttributes_InsideBronzong[] = INCBIN_U16("data/tilesets/secondary/inside_bronzong/metatile_attributes.bin");
+
+const u16 gMetatiles_Hanabi[] = INCBIN_U16("data/tilesets/secondary/hanabi/metatiles.bin");
+const u16 gMetatileAttributes_Hanabi[] = INCBIN_U16("data/tilesets/secondary/hanabi/metatile_attributes.bin");

@@ -20,13 +20,8 @@
     },
     {
       "map": "MAP_PUDDLE_PATH",
-      "offset": -5,
+      "offset": 3,
       "direction": "down"
-    },
-    {
-      "map": "MAP_DRAGONS_PASS",
-      "offset": 0,
-      "direction": "up"
     },
     {
       "map": "MAP_BURNFOOT_PASS_BOTTOM",
@@ -35,7 +30,7 @@
     },
     {
       "map": "MAP_HANABI_LAKE",
-      "offset": -8,
+      "offset": 0,
       "direction": "up"
     }
   ],
