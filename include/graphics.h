@@ -1574,6 +1574,7 @@ extern const u16 gItemIconPalette_GhostScroll[];
 extern const u16 gItemIconPalette_DragonScroll[];
 extern const u16 gItemIconPalette_DarkScroll[];
 extern const u16 gItemIconPalette_SteelScroll[];
+extern const u16 gItemIconPalette_MysteryScroll[];
 extern const u16 gItemIconPalette_FairyScroll[];
 
 extern const u32 gItemIcon_SecretScroll[];
