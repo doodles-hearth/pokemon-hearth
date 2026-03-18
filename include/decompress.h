@@ -76,17 +76,17 @@ bool8 LoadCompressedSpriteSheetUsingHeap(const struct CompressedSpriteSheet *src
 
 void DecompressPicFromTable(const struct CompressedSpriteSheet *src, void *buffer);
 
-void HandleLoadSpecialPokePic(bool32 isFrontPic, void *dest, s32 species, u32 personality);
-void HandleLoadSpecialPokePicIsEgg(bool32 isFrontPic, void *dest, s32 species, u32 personality, bool32 isEgg);
+void HandleLoadSpecialPokePic(bool32 isFrontPic, void *dest, enum Species species, u32 personality);
+void HandleLoadSpecialPokePicIsEgg(bool32 isFrontPic, void *dest, enum Species species, u32 personality, bool32 isEgg);
 
-void LoadSpecialPokePic(void *dest, s32 species, u32 personality, bool8 isFrontPic);
-void LoadSpecialPokePicIsEgg(void *dest, s32 species, u32 personality, bool8 isFrontPic, bool32 isEgg);
+void LoadSpecialPokePic(void *dest, enum Species species, u32 personality, bool8 isFrontPic);
+void LoadSpecialPokePicIsEgg(void *dest, enum Species species, u32 personality, bool8 isFrontPic, bool32 isEgg);
 
 u32 GetDecompressedDataSize(const u32 *ptr);
 bool32 IsCompressedData(const u32 *ptr);
 
-u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny);
-u32 LoadUniqueSpritePalette(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny);
-u32 LoadUniqueSpritePaletteWithTag(const u16 *pal, u16 tag, u16 species, u32 personality, bool8 isShiny);
+u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, enum Species species, u32 personality, bool8 isShiny);
+u32 LoadUniqueSpritePalette(const struct SpritePalette *palette, enum Species species, u32 personality, bool8 isShiny);
+u32 LoadUniqueSpritePaletteWithTag(const u16 *pal, u16 tag, enum Species species, u32 personality, bool8 isShiny);
 
 #endif // GUARD_DECOMPRESS_H

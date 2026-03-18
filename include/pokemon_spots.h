@@ -22,7 +22,7 @@ struct MonSpotTemplate {
     u8 colorAdjust;
 };
 
-bool32 ShouldDrawSpotsOnSpecies(u16 species);
+bool32 ShouldDrawSpotsOnSpecies(enum Species species);
 void DrawPokemonSpots(u32 personality, const struct MonSpotTemplate* spotTemplate, u8 *dest, enum SpotAnimFrame SpotAnimFrame);
 void DrawPokemonSpotsBothFrames(u32 personality, const struct MonSpotTemplate* spotTemplate, u8* dest);
 

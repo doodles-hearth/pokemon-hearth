@@ -359,7 +359,7 @@ static const s8 sHueShiftSpeciesLimit[NUM_SPECIES] =
     // todo - add limits for any mons after gen3 that need them
 };
 
-u32 GetMaxColorationRange(u16 species, bool8 isShiny)
+u32 GetMaxColorationRange(enum Species species, bool8 isShiny)
 {
     s8 limitMode = sHueShiftSpeciesLimit[species];
     u32 range;
@@ -388,13 +388,13 @@ u32 GetMaxColorationRange(u16 species, bool8 isShiny)
     return range;
 }
 
-u32 CreateNewColoration(u16 species, bool8 isShiny)
+u32 CreateNewColoration(enum Species species, bool8 isShiny)
 {
     u32 range = GetMaxColorationRange(species, isShiny);
     return (Random32() % (range + 1));
 }
 
-void MakePaletteUnique(u16 palOffset, u16 species, u32 value, bool8 isShiny)
+void MakePaletteUnique(u16 palOffset, enum Species species, u32 value, bool8 isShiny)
 {
     // System made by Citrus Bolt :')
     u16 i, range;

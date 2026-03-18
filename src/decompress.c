@@ -250,12 +250,12 @@ void DecompressPicFromTable(const struct CompressedSpriteSheet *src, void *buffe
     DecompressDataWithHeaderWram(src->data, buffer);
 }
 
-void HandleLoadSpecialPokePic(bool32 isFrontPic, void *dest, s32 species, u32 personality)
+void HandleLoadSpecialPokePic(bool32 isFrontPic, void *dest, enum Species species, u32 personality)
 {
     LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, FALSE);
 }
 
-void HandleLoadSpecialPokePicIsEgg(bool32 isFrontPic, void *dest, s32 species, u32 personality, bool32 isEgg)
+void HandleLoadSpecialPokePicIsEgg(bool32 isFrontPic, void *dest, enum Species species, u32 personality, bool32 isEgg)
 {
     LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, isEgg);
 }
@@ -1130,12 +1130,12 @@ static bool32 isModeSymDelta(enum CompressionMode mode)
     return FALSE;
 }
 
-void LoadSpecialPokePic(void *dest, s32 species, u32 personality, bool8 isFrontPic)
+void LoadSpecialPokePic(void *dest, enum Species species, u32 personality, bool8 isFrontPic)
 {
     LoadSpecialPokePicIsEgg(dest, species, personality, isFrontPic, FALSE);
 }
 
-void LoadSpecialPokePicIsEgg(void *dest, s32 species, u32 personality, bool8 isFrontPic, bool32 isEgg)
+void LoadSpecialPokePicIsEgg(void *dest, enum Species species, u32 personality, bool8 isFrontPic, bool32 isEgg)
 {
     species = SanitizeSpeciesId(species);
     if (species == SPECIES_UNOWN)
@@ -1391,12 +1391,12 @@ bool8 LoadCompressedSpriteSheetUsingHeap(const struct CompressedSpriteSheet *src
     return FALSE;
 }
 
-u32 LoadUniqueSpritePalette(const struct SpritePalette *src, u16 species, u32 coloration, bool8 isShiny)
+u32 LoadUniqueSpritePalette(const struct SpritePalette *src, enum Species species, u32 coloration, bool8 isShiny)
 {
     return LoadUniqueSpritePaletteWithTag(src->data, src->tag, species, coloration, isShiny);
 }
 
-u32 LoadUniqueSpritePaletteWithTag(const u16 *pal, u16 tag, u16 species, u32 coloration, bool8 isShiny)
+u32 LoadUniqueSpritePaletteWithTag(const u16 *pal, u16 tag, enum Species species, u32 coloration, bool8 isShiny)
 {
     u32 index;
     struct SpritePalette dest;

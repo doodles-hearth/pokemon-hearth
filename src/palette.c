@@ -300,7 +300,7 @@ void ResetPaletteFadeControl(void)
 static u8 UpdateTimeOfDayPaletteFade(void)
 {
     u32 timePalettes;
-    u16 copyPalettes;
+    u32 copyPalettes;
     u16 *src;
     u16 *dst;
 

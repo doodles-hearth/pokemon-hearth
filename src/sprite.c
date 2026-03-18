@@ -1644,7 +1644,7 @@ void DoLoadSpritePalette(const u16 *src, u16 paletteOffset)
 
 #define PAL_TAG_UNIQUE_PAL 0xFFFF
 
-u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, u16 species, u32 coloration, bool8 isShiny)
+u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, enum Species species, u32 coloration, bool8 isShiny)
 {
     u8 index = IndexOfSpritePaletteTag(PAL_TAG_UNIQUE_PAL);
 

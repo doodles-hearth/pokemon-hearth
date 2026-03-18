@@ -1753,6 +1753,7 @@ const u16 gItemIconPalette_GhostScroll[] = INCBIN_U16("graphics/items/icons/scro
 const u16 gItemIconPalette_DragonScroll[] = INCBIN_U16("graphics/items/icons/scrolls/dragon.gbapal");
 const u16 gItemIconPalette_DarkScroll[] = INCBIN_U16("graphics/items/icons/scrolls/dark.gbapal");
 const u16 gItemIconPalette_SteelScroll[] = INCBIN_U16("graphics/items/icons/scrolls/steel.gbapal");
+const u16 gItemIconPalette_MysteryScroll[] = INCBIN_U16("graphics/items/icons/scrolls/normal.gbapal");
 const u16 gItemIconPalette_FairyScroll[] = INCBIN_U16("graphics/items/icons/scrolls/fairy.gbapal");
 
 const u32 gItemIcon_SecretScroll[] = INCBIN_U32("graphics/items/icons/secrets/secret_cut.4bpp.smol");

@@ -4,7 +4,7 @@
 #include "random.h"
 #include "script.h"
 
-static struct FishMon GetAcceptedFish(u32 species)
+static struct FishMon GetAcceptedFish(enum Species species)
 {
     u32 nbFish = ARRAY_COUNT(sAcceptedFish);
     for (u32 i = 0; i < nbFish; i += 1)
@@ -49,7 +49,7 @@ void Native_GiveFish(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1);
 
-    u32 species = GetMonData(&gPlayerParty[VarGet(VAR_0x8004)], MON_DATA_SPECIES);
+    enum Species species = GetMonData(&gPlayerParty[VarGet(VAR_0x8004)], MON_DATA_SPECIES);
     struct FishMon acceptedFish = GetAcceptedFish(species);
     u32 price = 0;
     u32 treasure = ITEM_NONE;

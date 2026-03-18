@@ -32,7 +32,7 @@ static bool32 IsWalkingOnDecay() // helper function to check if the player is on
 
 static bool32 IsMonValidSpecies(struct Pokemon *pokemon)
 {
-    u16 species = GetMonData(pokemon, MON_DATA_SPECIES_OR_EGG);
+    enum Species species = GetMonData(pokemon, MON_DATA_SPECIES_OR_EGG);
     if (species == SPECIES_NONE || species == SPECIES_EGG)
         return FALSE;
 

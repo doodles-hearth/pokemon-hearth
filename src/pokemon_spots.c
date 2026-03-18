@@ -13,7 +13,7 @@ static inline void TryDrawSpotPixel(u8* pixels, u8 pixelShift, u8 firstColor, u8
         *pixels += (spotColorAdjust << pixelShift);
 }
 
-bool32 ShouldDrawSpotsOnSpecies(u16 species)
+bool32 ShouldDrawSpotsOnSpecies(enum Species species)
 {
     if (gSpeciesInfo[SanitizeSpeciesId(species)].monSpotTemplate)
         return TRUE;

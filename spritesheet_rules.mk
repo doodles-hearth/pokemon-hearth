@@ -3326,6 +3326,9 @@ $(POKEMONGFXDIR)/cherubi/overworld.4bpp: %.4bpp: %.png
 $(POKEMONGFXDIR)/cherrim/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
+$(POKEMONGFXDIR)/cherrim/sunshine/overworld.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 4 -mheight 4
+
 $(POKEMONGFXDIR)/shellos/overworld.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 4 -mheight 4
 
