@@ -708,6 +708,9 @@ struct BattleStruct
     u8 magicBounceActive:1;
     u8 padding5:5;
     u8 moveBouncer;
+    u8 dancerSavedAttacker:3;
+    u8 dancerSavedTarget:3;
+    u8 padding:2;
 };
 
 struct AiBattleData
@@ -1070,9 +1073,9 @@ static inline bool32 IsBattlerAlive(enum BattlerId battler)
         return TRUE;
 }
 
-static inline bool32 IsBattlerTurnDamaged(enum BattlerId battler)
+static inline bool32 IsBattlerTurnDamaged(enum BattlerId battler, enum SubCheck subCheck)
 {
-    return gSpecialStatuses[battler].damagedByAttack;
+    return gSpecialStatuses[battler].damagedByAttack || ((subCheck == INCLUDING_SUBSTITUTES) && gBattleStruct->moveDamage[battler] > 0);
 }
 
 static inline bool32 IsBattlerAtMaxHp(enum BattlerId battler)

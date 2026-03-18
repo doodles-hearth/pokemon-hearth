@@ -6,7 +6,7 @@ Gender: Male
 Music: Male
 Back Pic: Brendan
 
-=== PARTNER_STEVEN ===
+=== PARTNER_STEVEN_TEST ===
 Name: STEVEN
 Class: Rival
 Pic: Steven
@@ -45,42 +45,40 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 - Solar Beam
 - Dragon Claw
 
-=== PARTNER_SAMURAI ===
-Name: Samurai
-Class: Samurai
-Pic: Samurai
-Back Pic: Samurai
-Gender: Male
-Music: Aqua
-AI: Basic Trainer
-
-Pawniard (M)
-Brave Nature
-Level: 25
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 Def / 6 SpA
-- Metal Claw
-- Faint Attack
-- Scary Face
-
-Jangmo-o (F)
-Adamant Nature
-Level: 25
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 252 Atk / 252 SpA / 6 SpD
-- Dragon Tail
-- Headbutt
-- Work Up
-- Screech
-
-=== PARTNER_DUMMY ===
-Name:
-Class: Pkmn Trainer 1
-Pic: Brendan
+=== 2 ===
+Name: Test2
+Class: Rival
+Pic: Steven
 Gender: Male
 Music: Male
-Back Pic: Brendan
-Party Size: 0
+Back Pic: Steven
+Difficulty: Normal
 
-Wynaut
+Mewtwo
+Level: 50
 
+=== 2 ===
+Name: Test2
+Class: Rival
+Pic: Steven
+Gender: Male
+Music: Male
+Back Pic: Steven
+Battle Type: Singles
+Difficulty: Easy
+
+Metapod
+Level: 1
+
+=== 2 ===
+Name: Test2
+Class: Rival
+Pic: Steven
+Gender: Male
+Music: Male
+Back Pic: Steven
+Battle Type: Singles
+Difficulty: Hard
+
+Arceus
+Level: 99

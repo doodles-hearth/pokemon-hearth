@@ -724,6 +724,8 @@ void HandleInputChooseMove(enum BattlerId battler)
 
         if (isUserOrAlly)
             gMultiUsePlayerCursor = battler;
+        else if (moveTarget == TARGET_ALLY)
+            gMultiUsePlayerCursor = BATTLE_PARTNER(battler);
         else
             gMultiUsePlayerCursor = GetOpposingSideBattler(battler);
 
