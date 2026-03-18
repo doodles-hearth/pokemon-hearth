@@ -1,4 +1,5 @@
 #include "global.h"
+#include "pokemon.h"
 #include "string_util.h"
 #include "test/test.h"
 #include "constants/form_change_types.h"
@@ -149,7 +150,7 @@ TEST("No species has two evolutions that use the evolution tracker")
     for (i = 0; i < NUM_SPECIES; i++)
     {
         if (IsSpeciesEnabled(i) && GetSpeciesEvolutions(i) != NULL)
-            PARAMETRIZE_LABEL("ID:%d - %S", i, GetSpeciesName(i)) { species = i; }
+            PARAMETRIZE_LABEL("ID:%d - %S", i, GetSpeciesName(i, SKIP_NAME_CHECK)) { species = i; }
     }
 
     evolutionTrackerEvolutions = 0;
@@ -191,7 +192,7 @@ TEST("Every species has a description")
     for (i = 1; i < NUM_SPECIES; i++)
     {
         if (IsSpeciesEnabled(i))
-            PARAMETRIZE_LABEL("ID:%d - %S", i, GetSpeciesName(i)) { species = i; }
+            PARAMETRIZE_LABEL("ID:%d - %S", i, GetSpeciesName(i, SKIP_NAME_CHECK)) { species = i; }
     }
 
     EXPECT_NE(StringCompare(GetSpeciesPokedexDescription(species, SKIP_NAME_CHECK), gFallbackPokedexText), 0);
