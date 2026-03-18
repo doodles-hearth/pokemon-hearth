@@ -50,18 +50,6 @@ jobs:
           GAME_VERSION: EMERALD
         run: make -j${nproc} -O all
 
-      - name: ROM (Firered)
-        env:
-          COMPARE: 0
-        run: |
-          make firered -j${nproc} -O
-
-      - name: ROM (Leafgreen)
-        env:
-          COMPARE: 0
-        run: |
-          make leafgreen -j${nproc} -O
-
       - name: Release
         env:
           GAME_VERSION: EMERALD
