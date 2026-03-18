@@ -4618,7 +4618,7 @@ void DestroySelectedPartyMon(void) {
 
 void SetSpeakerToMonName(struct ScriptContext *ctx)
 {
-    u16 species = VarGet(ScriptReadHalfword(ctx));
+    enum Species species = VarGet(ScriptReadHalfword(ctx));
     bool8 isNamed = GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_NAMED);
     const u8 *name;
 

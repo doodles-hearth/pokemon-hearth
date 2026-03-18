@@ -524,7 +524,7 @@ bool32 IsFollowerVisible(void);
 
 struct FollowerMsgInfoExtended;
 void ObjectEventEmote(struct ObjectEvent *objEvent, u8 emotion);
-bool32 CheckMsgInfo(const struct FollowerMsgInfoExtended *info, struct Pokemon *mon, u32 species, struct ObjectEvent *obj);
+bool32 CheckMsgInfo(const struct FollowerMsgInfoExtended *info, struct Pokemon *mon, enum Species species, struct ObjectEvent *obj);
 
 // run slow
 u8 GetPlayerRunSlowMovementAction(u32);

@@ -2159,7 +2159,7 @@ bool8 ScrCmd_closebraillemessage(struct ScriptContext *ctx)
 
 bool8 ScrCmd_randomdexmessage(struct ScriptContext *ctx)
 {
-    u16 species = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
+    enum Species species = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
     struct WindowTemplate winTemplate;
     
     const u8 *speciesName = GetSpeciesName(species, SKIP_NAME_CHECK);
@@ -2214,7 +2214,7 @@ bool8 ScrCmd_bufferspeciesname(struct ScriptContext *ctx)
 bool8 ScrCmd_bufferspeciesdexdesc(struct ScriptContext *ctx)
 {
     u32 stringVarIndex = ScriptReadByte(ctx);
-    u16 species = VarGet(ScriptReadHalfword(ctx)) & ((1 << 10) - 1); // ignore possible shiny / form bits
+    enum Species species = VarGet(ScriptReadHalfword(ctx)) & ((1 << 10) - 1); // ignore possible shiny / form bits
     // u32 desc = GetSpeciesPokedexDescription(species);
 
 //     u32 i;

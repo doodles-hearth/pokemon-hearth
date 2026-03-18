@@ -398,7 +398,7 @@ void GetCampfireAction(struct ScriptContext *ctx)
     u32 i, j, emotion, condCount = 0;
     bool32 pickedCondition = FALSE;
 
-    u32 species = GetMonData(mon, MON_DATA_SPECIES);
+    enum Species species = GetMonData(mon, MON_DATA_SPECIES);
     s32 multi = GetMonData(mon, MON_DATA_FRIENDSHIP);
     GetMonData(mon, MON_DATA_NICKNAME, gStringVar1);
     u8 emotion_weight[FOLLOWER_EMOTION_LENGTH] =

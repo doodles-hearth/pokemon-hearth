@@ -1391,12 +1391,12 @@ bool8 LoadCompressedSpriteSheetUsingHeap(const struct CompressedSpriteSheet *src
     return FALSE;
 }
 
-u32 LoadUniqueSpritePalette(const struct SpritePalette *src, u16 species, u32 coloration, bool8 isShiny)
+u32 LoadUniqueSpritePalette(const struct SpritePalette *src, enum Species species, u32 coloration, bool8 isShiny)
 {
     return LoadUniqueSpritePaletteWithTag(src->data, src->tag, species, coloration, isShiny);
 }
 
-u32 LoadUniqueSpritePaletteWithTag(const u16 *pal, u16 tag, u16 species, u32 coloration, bool8 isShiny)
+u32 LoadUniqueSpritePaletteWithTag(const u16 *pal, u16 tag, enum Species species, u32 coloration, bool8 isShiny)
 {
     u32 index;
     struct SpritePalette dest;

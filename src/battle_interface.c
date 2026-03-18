@@ -1680,7 +1680,7 @@ void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 
     if (GetBattlerSide(gSprites[healthboxSpriteId].hMain_Battler) != B_SIDE_PLAYER)
     {
-        u16 species = GetMonData(mon, MON_DATA_SPECIES);
+        enum Species species = GetMonData(mon, MON_DATA_SPECIES);
         if (StringCompareWithoutExtCtrlCodes(nickname, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
             StringCopy(nickname, GetSpeciesName(species, DO_NAME_CHECK));
     }

@@ -5,7 +5,7 @@
 
 struct FishMon
 {
-    u16 species;
+    enum Species species;
     u16 rarity;
 };
 

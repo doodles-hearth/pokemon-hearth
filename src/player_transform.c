@@ -57,7 +57,7 @@ void CB2_TransformPlayerToPokemonFromParty()
 
 u16 PokemonToGraphicsId(struct Pokemon* pokemon)
 {
-    u32 species = GetMonData(pokemon, MON_DATA_SPECIES);
+    enum Species species = GetMonData(pokemon, MON_DATA_SPECIES);
     bool32 isShiny = GetMonData(pokemon, MON_DATA_IS_SHINY);
     bool32 isFemale = GetMonGender(pokemon) == MON_FEMALE;
 
@@ -72,7 +72,7 @@ u16 PokemonToGraphicsId(struct Pokemon* pokemon)
 
 static void UNUSED UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj)
 {
-    u32 species = GetMonData(gPlayerTransformPokemon, MON_DATA_SPECIES);
+    enum Species species = GetMonData(gPlayerTransformPokemon, MON_DATA_SPECIES);
     struct SpritePalette spritePalette;
     spritePalette.data = gSpeciesInfo[species].overworldPalette;
     spritePalette.tag = species + OBJ_EVENT_MON;

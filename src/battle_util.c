@@ -11009,7 +11009,7 @@ void SetOrClearRageVolatile(void)
 
 // Dream Sleep
 
-u32 GetSpeciesDreamType(u16 species)
+u32 GetSpeciesDreamType(enum Species species)
 {
     u32 dreamType = gSpeciesInfo[SanitizeSpeciesId(species)].dreamType;
     return dreamType == 0 ? DEFAULT_DREAM_CHANCE : dreamType;

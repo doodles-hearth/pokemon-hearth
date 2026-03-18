@@ -217,7 +217,7 @@ static bool8 AreElevationsCompatible(u8, u8);
 static void CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(u16 graphicsId, u16 movementType, struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
 
 static u16 GetGraphicsIdForMon(enum Species species, bool32 shiny, bool32 female);
-static u16 GetUnownSpecies(struct Pokemon *mon);
+static enum Species GetUnownSpecies(struct Pokemon *mon);
 static bool32 ShouldStopIdling(struct Sprite* sprite);
 
 static const struct SpriteFrameImage sPicTable_PechaBerryTree[];
@@ -2668,7 +2668,7 @@ bool32 CheckMsgInfo(const struct FollowerMsgInfoExtended *info, struct Pokemon *
 // Call an applicable follower message script
 void GetFollowerAction(struct ScriptContext *ctx) // Essentially a big switch for follower messages
 {
-    u32 species;
+    enum Species species;
     s32 multi;
     struct SpecialEmote condEmotes[16] = {0};
     u32 condCount = 0;
@@ -11864,7 +11864,7 @@ void GetDaycareGraphics(struct ScriptContext *ctx)
 // Get gfx of given species
 void GetSpeciesGraphics(struct ScriptContext *ctx)
 {
-    u32 species = ScriptReadHalfword(ctx);
+    enum Species species = ScriptReadHalfword(ctx);
     u32 varGfx = ScriptReadHalfword(ctx);
 
     Script_RequestEffects(SCREFF_V1);

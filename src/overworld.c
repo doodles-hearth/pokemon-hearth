@@ -3784,8 +3784,8 @@ EWRAM_DATA u8 sItemIconSpriteId2 = 0;
 static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash);
 static void DestroyItemIconSprite(void);
 
-static void ShowMonIconSprite(u16 species, bool8 flash);
-static void DestroyMonIconSprite(u32 species);
+static void ShowMonIconSprite(enum Species species, bool8 flash);
+static void DestroyMonIconSprite(enum Species species);
 
 enum PopupType
 {
@@ -3978,7 +3978,7 @@ bool8 ScrFunc_settimeofday(struct ScriptContext *ctx)
 // to minimize future merge conflicts with expansion
 
 // Destroys the mon icon sprite
-static void DestroyMonIconSprite(u32 species)
+static void DestroyMonIconSprite(enum Species species)
 {
     FreeMonIconPalette(species);
     FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId]);
@@ -3991,7 +3991,7 @@ static void DestroyMonIconSprite(u32 species)
     }
 }
 
-static void ShowMonIconSprite(u16 species, bool8 flash)
+static void ShowMonIconSprite(enum Species species, bool8 flash)
 {
     s16 x = 0, y = 0;
     u8 spriteId2 = MAX_SPRITES;
@@ -4048,7 +4048,7 @@ static void ShowMonIconSprite(u16 species, bool8 flash)
 
 void ScriptShowMonDescribedNotification(struct ScriptContext *ctx)
 {
-    u32 species = ScriptReadHalfword(ctx);
+    enum Species species = ScriptReadHalfword(ctx);
     
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
 
@@ -4085,7 +4085,7 @@ void ScriptShowMonDescribedNotification(struct ScriptContext *ctx)
 
 void ScriptHideMonDescribed(struct ScriptContext *ctx)
 {
-    u32 species = ScriptReadHalfword(ctx);
+    enum Species species = ScriptReadHalfword(ctx);
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE | SCREFF_HARDWARE);
 

@@ -2918,7 +2918,7 @@ static const u8 *TryGetStatusString(u8 *src)
 // Replaces the mon name with "NICKNAME the MONNAME" if nicknamed
 // In both cases, replaces the species name with the specie's unknown name
 // if name is unknown
-static void ReplaceIfUnkownFullMonName(u32 species, u8 *dst)
+static void ReplaceIfUnkownFullMonName(enum Species species, u8 *dst)
 {
     // No nickname, so we double check if we should replace with unknown name or not
     if(StringCompareWithoutExtCtrlCodes(dst, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
@@ -2946,7 +2946,7 @@ static void ReplaceIfUnkownFullMonName(u32 species, u8 *dst)
 
 // Checks if the given mon name is a nickname; if it's just the species name, replaces it
 // with the specie's unknown name if name is unknown
-static void ReplaceIfUnkownRegularMonName(u32 species, u8 *dst)
+static void ReplaceIfUnkownRegularMonName(enum Species species, u8 *dst)
 {
     if(StringCompareWithoutExtCtrlCodes(dst, GetSpeciesName(species, SKIP_NAME_CHECK)) == 0)
     {
@@ -2967,7 +2967,7 @@ static void GetBattlerNick(enum BattlerId battler, u8 *dst)
 
     if (GetBattlerSide(battler) == B_SIDE_OPPONENT)
     {
-        u32 species = GetMonData(mon, MON_DATA_SPECIES);
+        enum Species species = GetMonData(mon, MON_DATA_SPECIES);
 
         // Can display "NICKNAME the SPECIES" if mon is nicknamed
         if (gBattleStruct->shouldPrintFullName)
@@ -3928,7 +3928,7 @@ void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
                 IllusionNickHack(src[srcID + 1], src[srcID + 2], dst);
                 StringGet_Nickname(dst);
 
-                u32 species = GetSpeciesHack(src[srcID + 1], src[srcID + 2]);
+                enum Species species = GetSpeciesHack(src[srcID + 1], src[srcID + 2]);
                 ReplaceIfUnkownFullMonName(species, dst);
             }
             else
