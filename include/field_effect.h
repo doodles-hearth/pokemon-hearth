@@ -51,7 +51,7 @@ void SpriteCB_AshLaunch(struct Sprite *sprite);
 
 void MultiplyPaletteRGBComponents(u16 i, u8 r, u8 g, u8 b);
 void FreeResourcesAndDestroySprite(struct Sprite *sprite, u8 spriteId);
-u8 CreateMonSprite_PicBox(u16 species, s16 x, s16 y, u8 subpriority, bool8 shiny);
+u8 CreateMonSprite_PicBox(enum Species species , s16 x, s16 y, u8 subpriority, bool8 shiny);
 void StartEscapeRopeFieldEffect(void);
 void FieldEffectFreeGraphicsResources(struct Sprite *sprite);
 bool8 IsRockClimbActive(void);
