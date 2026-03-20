@@ -22415,7 +22415,6 @@ gBattleAnimMove_HeatWave::
 	end
 
 gBattleAnimMove_Blossom::
-	loadspritegfx ANIM_TAG_LEAF
 	setalpha 12, 8
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 4, 0, 4, RGB(31, 4, 26)
 	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_LEAF, 0, 6, 6, RGB(31, 4, 26)
@@ -22470,7 +22469,6 @@ FallingLeaves_Dense:
 	return
 
 gBattleAnimMove_SmokeBomb::
-	loadspritegfx ANIM_TAG_FLYING_DIRT
 	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_FLYING_DIRT, 0, 6, 6, RGB_BLACK
   delay 24
 	createvisualtask AnimTask_HazeScrollingFog, 5
@@ -29232,7 +29230,6 @@ gBattleAnimGeneral_FallingLeaves::
   goto gBattleAnimMove_Blossom
 
 gBattleAnimGeneral_SmokeExplosion::
-	loadspritegfx ANIM_TAG_EXPLOSION
 	createsprite gComplexPaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 8, 9, RGB(26, 8, 8), 8, RGB_BLACK, 8
 	createvisualtask AnimTask_ShakeMon2, 5, ANIM_PLAYER_LEFT, 8, 0, 40, 1
 	createvisualtask AnimTask_ShakeMon2, 5, ANIM_PLAYER_RIGHT, 8, 0, 40, 1
@@ -35710,8 +35707,6 @@ gBattleAnimGeneral_DynamaxGrowth:: @ PORTED FROM CFRU
 @ CUSTOM MOVES
 
 gBattleAnimMove_FlipperSplash::
-	loadspritegfx ANIM_TAG_IMPACT
-	loadspritegfx ANIM_TAG_SMALL_BUBBLES
 	monbg ANIM_TARGET
 	setalpha 12, 8
 
@@ -35741,9 +35736,6 @@ gBattleAnimMove_FlipperSplash::
 	end
 
 gBattleAnimMove_SakuraDance::
-	loadspritegfx ANIM_TAG_LEAF
-	loadspritegfx ANIM_TAG_RAZOR_LEAF
-	loadspritegfx ANIM_TAG_IMPACT
 	monbg ANIM_DEF_PARTNER
 	setalpha 12, 8
 	delay 1
