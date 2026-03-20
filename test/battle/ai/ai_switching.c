@@ -1,6 +1,6 @@
 #include "global.h"
 #include "config/general.h"
-#include "constants/generational_changes.h"
+#include "constants/config_changes.h"
 #include "test/battle.h"
 
 AI_SINGLE_BATTLE_TEST("AI gets baited by Protect Switch tactics") // This behavior is to be fixed.
