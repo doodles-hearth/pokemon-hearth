@@ -15,7 +15,7 @@
   "connections": [
     {
       "map": "MAP_MT_KAZAN_EXTERIOR",
-      "offset": -40,
+      "offset": -33,
       "direction": "up"
     },
     {

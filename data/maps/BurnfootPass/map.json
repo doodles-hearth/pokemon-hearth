@@ -15,12 +15,12 @@
   "connections": [
     {
       "map": "MAP_MT_KAZAN_EXTERIOR",
-      "offset": 0,
+      "offset": 5,
       "direction": "up"
     },
     {
       "map": "MAP_BURNFOOT_PASS_BOTTOM",
-      "offset": -26,
+      "offset": -21,
       "direction": "down"
     }
   ],

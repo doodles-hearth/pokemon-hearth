@@ -6374,7 +6374,7 @@
     {
       "id": "LAYOUT_HANABI_CITY",
       "name": "HanabiCity_Layout",
-      "width": 48,
+      "width": 54,
       "height": 55,
       "border_width": 2,
       "border_height": 2,
@@ -6426,12 +6426,12 @@
     {
       "id": "LAYOUT_MT_KAZAN_EXTERIOR",
       "name": "BurnfootPassBottom_Layout",
-      "width": 60,
+      "width": 51,
       "height": 30,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_OpenSea",
+      "secondary_tileset": "gTileset_Volcano",
       "border_filepath": "data/layouts/SteepstonePass/border.bin",
       "blockdata_filepath": "data/layouts/SteepstonePass/map.bin",
       "layout_version": "emerald"
@@ -6452,12 +6452,12 @@
     {
       "id": "LAYOUT_BURNFOOT_PASS",
       "name": "BurnfootPass_Layout",
-      "width": 30,
-      "height": 50,
+      "width": 38,
+      "height": 51,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_OpenSea",
+      "secondary_tileset": "gTileset_Volcano",
       "border_filepath": "data/layouts/BurnfootPass/border.bin",
       "blockdata_filepath": "data/layouts/BurnfootPass/map.bin",
       "layout_version": "emerald"
@@ -6465,8 +6465,8 @@
     {
       "id": "LAYOUT_BURNFOOT_PASS_RIGHT",
       "name": "MtKazanExterior_Layout",
-      "width": 60,
-      "height": 64,
+      "width": 50,
+      "height": 74,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
@@ -6483,7 +6483,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_OpenSea",
+      "secondary_tileset": "gTileset_Volcano",
       "border_filepath": "data/layouts/SteepstonePass/border.bin",
       "blockdata_filepath": "data/layouts/SteepstonePass/map.bin",
       "layout_version": "emerald"
