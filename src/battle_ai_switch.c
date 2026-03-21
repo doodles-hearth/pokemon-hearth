@@ -62,6 +62,8 @@ static void InitializeSwitchinCandidate(enum BattlerId switchinBattler, u32 monI
     SetBattlerVolatilesForSwitchin(switchinBattler, switchinWeather, switchinFieldStatus);
     SetBattlerStatusForSwitchin(switchinBattler);
     gBattlerPartyIndexes[switchinBattler] = monIndex;
+    gAiLogicData->switchInCalc = TRUE;
+
     for (enum BattlerId battlerIndex = 0; battlerIndex < gBattlersCount; battlerIndex++)
     {
         if (switchinBattler == battlerIndex || !IsBattlerAlive(battlerIndex))
@@ -72,6 +74,7 @@ static void InitializeSwitchinCandidate(enum BattlerId switchinBattler, u32 monI
         CalcBattlerAiMovesData(gAiLogicData, battlerIndex, switchinBattler, switchinWeather, switchinFieldStatus);
     }
 
+    gAiLogicData->switchInCalc = FALSE;
     gBattlerPartyIndexes[switchinBattler] = storeCurrBattlerPartyIndex;
     gAiThinkingStruct->saved[switchinBattler].saved = FALSE;
 }
