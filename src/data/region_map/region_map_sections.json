@@ -1318,6 +1318,10 @@
     {
       "id": "MAPSEC_HUNTERS_SHRINE",
       "name": "Hunter's Shrine"
+    },
+    {
+      "id": "MAPSEC_HANABI_LAKE",
+      "name": "Hanabi Lake"
     }
   ]
 }
