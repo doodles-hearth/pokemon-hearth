@@ -6362,7 +6362,7 @@
       "id": "LAYOUT_SEA_TURF_ROUTE",
       "name": "SeaTurfRoute_Layout",
       "width": 99,
-      "height": 52,
+      "height": 55,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
