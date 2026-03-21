@@ -6444,7 +6444,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_OpenSea",
+      "secondary_tileset": "gTileset_Volcano",
       "border_filepath": "data/layouts/SteepstonePassBottom/border.bin",
       "blockdata_filepath": "data/layouts/SteepstonePassBottom/map.bin",
       "layout_version": "emerald"

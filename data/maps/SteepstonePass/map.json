@@ -22,6 +22,11 @@
       "map": "MAP_STEEPSTONE_PASS_BOTTOM",
       "offset": -30,
       "direction": "down"
+    },
+    {
+      "map": "MAP_BURNFOOT_PASS",
+      "offset": 0,
+      "direction": "left"
     }
   ],
   "object_events": [],
