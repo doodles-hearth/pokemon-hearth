@@ -1,23 +1,82 @@
+const VAR_EXIT_FOREST = VAR_TEMP_0
+
 mapscripts HuntersShrine_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
-		if (var(VAR_DECAY_UUME_FOREST) == 1) {
+		if (var(VAR_DECAY_UUME_FOREST) == 2) {
 			playbgm(MUS_NONE, FALSE)
 		}
 	}
     MAP_SCRIPT_ON_FRAME_TABLE [
-        VAR_DECAY_UUME_FOREST, 1: HuntersShrine_EventScript_CuredDecay
+        VAR_DECAY_UUME_FOREST, 2: HuntersShrine_EventScript_CuredDecay
     ]
 }
 
+// TODO EVA
 script(local) HuntersShrine_EventScript_CuredDecay {
-    setvar(VAR_DECAY_UUME_FOREST, 2)
+    setvar(VAR_DECAY_UUME_FOREST, 3)
+    setvar(VAR_EXIT_FOREST, 1)
 
     lockall
 
     special(SpawnCameraObject)
 
-    // TODO EVA
+    applymovement(LOCALID_CAMERA, moves(walk_slow_up * 3))
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    waitmovement(LOCALID_CAMERA)
+
     msgbox("You cured the decay!")
+    closemessage
+
+    applymovement(LOCALID_CAMERA, moves(walk_slow_down * 3))
+    waitmovement(LOCALID_CAMERA)
+
+    special(RemoveCameraObject)
+
+    delay(64)
+
+    applymovement(LOCALID_HUNTERS_SHRINE_CELEBI, moves(walk_faster_left * 30))
+
+    delay(16)
+
+    playmoncry(SPECIES_CELEBI, CRY_MODE_NORMAL)
+    setseenmon(SPECIES_CELEBI)
+
+    waitmovement(LOCALID_HUNTERS_SHRINE_CELEBI)
+
+    applymovement(LOCALID_PLAYER, moves(face_down, delay_16, emote_question_mark, delay_16 * 6))
+    delay(16)
+    playse(SE_PIN)
+    waitmovement(LOCALID_PLAYER)
+    waitse
+
+    msgbox(
+        "…You could swear you heard something."
+    )
+    closemessage
+
+    // TODO EVA pick music
+    playbgm(MUS_NONE, FALSE)
+
+    releaseall
+}
+
+script HuntersShrine_EventScript_BackToEntrance {
+    lockall
+    setvar(VAR_EXIT_FOREST, 0)
+
+    msgbox(
+        "Go back to the forest's entrance?"
+    )
+
+    mcdialogueB(
+        "Yes", "No"
+    )
+
+    closemessage
+
+    if (var(VAR_RESULT) == 0) {
+        warp(MAP_UUME_FOREST_ENTRANCE, WARP_ID_ENTRANCE_NORTH)
+    }
 
     releaseall
 }

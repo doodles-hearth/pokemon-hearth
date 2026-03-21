@@ -58,7 +58,7 @@
       "y": 104,
       "elevation": 0,
       "dest_map": "MAP_ORCHARD_PATH",
-      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_LEFT"
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_MIDDLE"
     },
     {
       "x": 14,
@@ -72,7 +72,7 @@
       "y": 104,
       "elevation": 0,
       "dest_map": "MAP_ORCHARD_PATH",
-      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_RIGHT"
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_MIDDLE"
     },
     {
       "warp_id": "WARP_ID_UUME_J_LEFT_TOP",
@@ -131,14 +131,14 @@
       "y": 76,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
-      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_RIGHT"
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_MIDDLE"
     },
     {
       "x": 7,
       "y": 77,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
-      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_RIGHT"
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_MIDDLE"
     },
     {
       "warp_id": "WARP_ID_UUME_M_RIGHT_TOP",

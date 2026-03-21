@@ -142,9 +142,11 @@
 /*
     VAR_DECAY_UUME_FOREST States
 
-    // 0: Decay
-    // 1: Cured Harvest Shrine of Decay
-    // 2: Finished
+    // 0: Start
+    // 1: Witness decay
+    // 2: Cured Hunter's Shrine of Decay
+    // 3: Finished
+    // 4: Went back to entrance (cutscene)
 */
 #define VAR_DECAY_UUME_FOREST                            0x405C
 #define VAR_MOSSDEEP_CITY_STATE                          0x405D

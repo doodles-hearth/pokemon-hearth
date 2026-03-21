@@ -326,8 +326,8 @@
     {
       "id": "HEAL_LOCATION_HANABI_CITY",
       "map": "MAP_HANABI_CITY",
-      "x": 3,
-      "y": 3,
+      "x": 11,
+      "y": -4,
       "respawn_map": "MAP_HANABI_CITY",
       "respawn_x": 3,
       "respawn_y": 3

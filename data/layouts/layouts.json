@@ -6361,8 +6361,8 @@
     {
       "id": "LAYOUT_SEA_TURF_ROUTE",
       "name": "SeaTurfRoute_Layout",
-      "width": 100,
-      "height": 50,
+      "width": 99,
+      "height": 55,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
@@ -6374,12 +6374,12 @@
     {
       "id": "LAYOUT_HANABI_CITY",
       "name": "HanabiCity_Layout",
-      "width": 40,
-      "height": 50,
+      "width": 48,
+      "height": 55,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_OpenSea",
+      "secondary_tileset": "gTileset_Hanabi",
       "border_filepath": "data/layouts/HanabiCity/border.bin",
       "blockdata_filepath": "data/layouts/HanabiCity/map.bin",
       "layout_version": "emerald"
@@ -6388,7 +6388,7 @@
       "id": "LAYOUT_PUDDLE_PATH",
       "name": "PuddlePath_Layout",
       "width": 50,
-      "height": 90,
+      "height": 94,
       "border_width": 6,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
@@ -11767,6 +11767,19 @@
       "layout_version": "emerald"
     },
     {
+      "id": "LAYOUT_UUME_FOREST_ENTRANCE",
+      "name": "UumeForest_Entrance_Layout",
+      "width": 29,
+      "height": 24,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_UumeForest",
+      "border_filepath": "data/layouts/UumeForest_Entrance/border.bin",
+      "blockdata_filepath": "data/layouts/UumeForest_Entrance/map.bin",
+      "layout_version": "emerald"
+    },
+    {
       "id": "LAYOUT_COREEF_HOUSE3",
       "name": "Coreef_House3_Layout",
       "width": 10,
@@ -11830,6 +11843,18 @@
       "border_filepath": "data/layouts/HuntersShrine_Decay/border.bin",
       "blockdata_filepath": "data/layouts/HuntersShrine_Decay/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_HANABI_LAKE",
+      "name": "HanabiLake_Layout",
+      "width": 50,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Hanabi",
+      "border_filepath": "data/layouts/HanabiLake/border.bin",
+      "blockdata_filepath": "data/layouts/HanabiLake/map.bin"
     }
   ]
 }

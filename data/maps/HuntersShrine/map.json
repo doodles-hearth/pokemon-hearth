@@ -19,29 +19,51 @@
       "direction": "down"
     }
   ],
-  "object_events": [],
+  "object_events": [
+    {
+      "local_id": "LOCALID_HUNTERS_SHRINE_CELEBI",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(CELEBI)",
+      "x": 30,
+      "y": 11,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
+    }
+  ],
   "warp_events": [
     {
       "warp_id": "WARP_ID_HUNTERS_SHRINE_EXIT",
       "x": 15,
       "y": 20,
       "elevation": 0,
-      "dest_map": "MAP_UUME_FOREST",
-      "dest_warp_id": "WARP_ID_UUME_I_TOP"
+      "dest_map": "MAP_UUME_FOREST_ENTRANCE",
+      "dest_warp_id": "WARP_ID_ENTRANCE_NORTH"
     },
     {
       "x": 14,
       "y": 20,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
-      "dest_warp_id": "WARP_ID_UUME_I_TOP"
+      "dest_warp_id": "WARP_ID_ENTRANCE_NORTH"
     },
     {
       "x": 16,
       "y": 20,
       "elevation": 0,
       "dest_map": "MAP_UUME_FOREST",
-      "dest_warp_id": "WARP_ID_UUME_I_TOP"
+      "dest_warp_id": "WARP_ID_ENTRANCE_NORTH"
     },
     {
       "warp_id": "WARP_ID_SAWSBUCK_CURED",
@@ -52,6 +74,16 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "1",
+      "script": "HuntersShrine_EventScript_BackToEntrance"
+    }
+  ],
   "bg_events": []
 }

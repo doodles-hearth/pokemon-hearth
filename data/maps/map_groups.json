@@ -116,7 +116,8 @@
     "YifuCity_BufferArea",
     "SabersideQuarry_Exterior",
     "ScenicHotSprings",
-    "HarvestShrine_Decay"
+    "HarvestShrine_Decay",
+    "HanabiLake"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "SunriseVillage_PlayersHouse_LR",
@@ -220,7 +221,8 @@
     "UumeForest_LostWoods2",
     "InsideBronzong",
     "HuntersShrine",
-    "HuntersShrine_Decay"
+    "HuntersShrine_Decay",
+    "UumeForest_Entrance"
   ],
   "gMapGroup_VanillaMaps1": [
     "PetalburgCity",

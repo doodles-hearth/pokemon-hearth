@@ -2091,3 +2091,14 @@ const struct Tileset gTileset_InsideBronzong =
     .metatileAttributes = gMetatileAttributes_InsideBronzong,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Hanabi =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Hanabi,
+    .palettes = gTilesetPalettes_Hanabi,
+    .metatiles = gMetatiles_Hanabi,
+    .metatileAttributes = gMetatileAttributes_Hanabi,
+    .callback = NULL,
+};

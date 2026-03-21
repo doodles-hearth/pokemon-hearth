@@ -1,0 +1,71 @@
+const FLAG_HIDE_NATSUKI_HARIKO = FLAG_TEMP_1
+
+mapscripts UumeForest_Entrance_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+		if (var(VAR_DECAY_UUME_FOREST) < 3) {
+            setweather(WEATHER_DECAY)
+			setdynamicwarp(MAP_HUNTERS_SHRINE_DECAY, WARP_ID_HUNTERS_SHRINE_DECAY_EXIT)
+		} else {
+			setdynamicwarp(MAP_HUNTERS_SHRINE, WARP_ID_HUNTERS_SHRINE_EXIT)
+		}
+
+        if (var(VAR_DECAY_UUME_FOREST) > 3) {
+            setflag(FLAG_HIDE_NATSUKI_HARIKO)
+        }
+	}
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_DECAY_UUME_FOREST, 0: UumeForest_Entrance_EventScript_EnterDecayForest
+        VAR_DECAY_UUME_FOREST, 3: UumeForest_Entrance_EventScript_AfterCuringDecay
+    ]
+}
+
+script UumeForest_Entrance_EventScript_EnterDecayForest {
+    setvar(VAR_DECAY_UUME_FOREST, 1)
+    lockall
+    
+    applymovement(LOCALID_PLAYER, moves(walk_up * 7))
+    waitmovementall
+
+    applymovement(LOCALID_UUME_ENTRANCE_HARIKO, moves(face_down))
+    applymovement(LOCALID_UUME_ENTRANCE_NATSUKI, moves(face_down))
+    waitmovementall
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}The Decay has spread here too…"
+    )
+    closemessage
+
+    releaseall
+}
+
+script UumeForest_Entrance_EventScript_AfterCuringDecay {
+    setvar(VAR_DECAY_UUME_FOREST, 4)
+    lockall
+
+    applymovement(LOCALID_PLAYER, moves(walk_down * 3))
+    delay(32)
+
+    applymovement(LOCALID_UUME_ENTRANCE_HARIKO, moves(walk_up * 2, walk_in_place_fast_right))
+    applymovement(LOCALID_UUME_ENTRANCE_NATSUKI, moves(walk_up))
+    waitmovementall
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{SPEAKER NAME_NATSUKI}You cured the decay! Yay!"
+    )
+    closemessage
+
+    delay(32)
+
+    fadescreen(FADE_TO_BLACK)
+
+    removeobject(LOCALID_UUME_ENTRANCE_HARIKO)
+    removeobject(LOCALID_UUME_ENTRANCE_NATSUKI)
+
+    delay(48)
+
+    fadescreen(FADE_FROM_BLACK)
+
+    delay(24)
+
+    releaseall
+}

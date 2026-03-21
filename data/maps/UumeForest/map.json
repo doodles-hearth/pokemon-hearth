@@ -26,7 +26,7 @@
       "y": 104,
       "elevation": 0,
       "dest_map": "MAP_ORCHARD_PATH",
-      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_LEFT"
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_MIDDLE"
     },
     {
       "warp_id": "WARP_ID_UUME_EXIT_MIDDLE",
@@ -41,7 +41,7 @@
       "y": 104,
       "elevation": 0,
       "dest_map": "MAP_ORCHARD_PATH",
-      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_RIGHT"
+      "dest_warp_id": "WARP_ID_UUME_ENTRANCE_MIDDLE"
     },
     {
       "x": 43,

@@ -20,23 +20,18 @@
     },
     {
       "map": "MAP_PUDDLE_PATH",
-      "offset": -5,
+      "offset": 3,
       "direction": "down"
-    },
-    {
-      "map": "MAP_DRAGONS_PASS",
-      "offset": 0,
-      "direction": "up"
-    },
-    {
-      "map": "MAP_MT_KAZAN_EXTERIOR",
-      "offset": 10,
-      "direction": "right"
     },
     {
       "map": "MAP_BURNFOOT_PASS_BOTTOM",
       "offset": 10,
       "direction": "right"
+    },
+    {
+      "map": "MAP_HANABI_LAKE",
+      "offset": 0,
+      "direction": "up"
     }
   ],
   "object_events": [],
