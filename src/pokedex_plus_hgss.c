@@ -6471,10 +6471,10 @@ static void PrintEvolutionTargetSpeciesAndMethod(u8 taskId, enum Species species
 
         bool32 isAlcremie = IsSpeciesAlcremie(targetSpecies);
 
-        enum Species speciesNameWidthInChars = GetSpeciesNameWidthInChars(GetSpeciesName(targetSpecies, DO_NAME_CHECK));
-        enum Species speciesNameCharWidth = GetFontAttribute(GetSpeciesNameFontId(speciesNameWidthInChars), FONTATTR_MAX_LETTER_WIDTH);
+        u32 speciesNameWidthInChars = GetSpeciesNameWidthInChars(GetSpeciesName(targetSpecies, DO_NAME_CHECK));
+        u32 speciesNameCharWidth = GetFontAttribute(GetSpeciesNameFontId(speciesNameWidthInChars), FONTATTR_MAX_LETTER_WIDTH);
 
-        enum Species speciesNameWidth = (speciesNameWidthInChars * speciesNameCharWidth);
+        u32 speciesNameWidth = (speciesNameWidthInChars * speciesNameCharWidth);
         u32 base_x_offset = speciesNameWidth + base_x + depth_offset; // for evo method info
         u32 maxScreenWidth = 230 - base_x_offset;
 
