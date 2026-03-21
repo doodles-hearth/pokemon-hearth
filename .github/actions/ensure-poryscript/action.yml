@@ -1,0 +1,39 @@
+name: Ensure Poryscript
+description: Ensure poryscript is avaliable and install it if needed
+
+runs:
+  using: "composite"
+  steps:
+    - name: Cache Poryscript
+      uses: actions/cache@v4
+      with:
+        path: tools/poryscript/poryscript
+        key: poryscript-${{ runner.os }}
+
+    - name: Check Poryscript
+      id: check-poryscript
+      shell: bash
+      run: |
+        if [ -f tools/poryscript/poryscript ]; then
+          echo "found=true" >> $GITHUB_OUTPUT
+        else
+          echo "found=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Poryscript Download
+      if: steps.check-poryscript.outputs.found == 'false'
+      uses: robinraju/release-downloader@v1
+      with:
+        repository: 'huderlem/poryscript'
+        latest: true
+        fileName: 'poryscript-linux.zip'
+        extract: true
+        out-file-path: 'tools'
+
+    - name: Poryscript Install
+      if: steps.check-poryscript.outputs.found == 'false'
+      shell: bash
+      run: |
+        mkdir -p tools/poryscript
+        mv tools/poryscript-linux/poryscript tools/poryscript
+        chmod +x tools/poryscript/poryscript

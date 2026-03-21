@@ -48,22 +48,10 @@ jobs:
             tools/compresSmol/compresSmol
             tools/compresSmol/compresSmolTilemap
             tools/wav2agb/wav2agb
-            tools/poryscript/poryscript
           key: tools-${{ runner.os }}-${{ hashFiles('tools/*/Makefile', 'tools/**/*.c', 'tools/**/*.cpp', 'tools/**/*.h') }}
 
-      - name: Poryscript Download
-        uses: robinraju/release-downloader@v1
-        with:
-          repository: 'huderlem/poryscript'
-          latest: true
-          fileName: 'poryscript-linux.zip'
-          extract: true
-          out-file-path: 'tools'
-
-      - name: Poryscript Install
-        run: |
-          sudo mv tools/poryscript-linux/poryscript tools/poryscript
-          sudo chmod +x tools/poryscript/poryscript
+      - name: Ensure Poryscript
+        uses: ./.github/actions/ensure-poryscript
 
       - name: ROM (Emerald)
         env:
@@ -170,8 +158,10 @@ jobs:
             tools/compresSmol/compresSmol
             tools/compresSmol/compresSmolTilemap
             tools/wav2agb/wav2agb
-            tools/poryscript/poryscript
           key: tools-${{ runner.os }}-${{ hashFiles('tools/*/Makefile', 'tools/**/*.c', 'tools/**/*.cpp', 'tools/**/*.h') }}
+
+      - name: Ensure Poryscript
+        uses: ./.github/actions/ensure-poryscript
 
       - name: Release
         env:
@@ -210,8 +200,10 @@ jobs:
             tools/wav2agb/wav2agb
             tools/patchelf/patchelf
             tools/mgba-rom-test-hydra/mgba-rom-test-hydra
-            tools/poryscript/poryscript
           key: tools-check-${{ runner.os }}-${{ hashFiles('tools/*/Makefile', 'tools/**/*.c', 'tools/**/*.cpp', 'tools/**/*.h') }}
+
+      - name: Ensure Poryscript
+        uses: ./.github/actions/ensure-poryscript
 
       - name: Test
         env:
