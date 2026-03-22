@@ -6424,7 +6424,7 @@
       "layout_version": "emerald"
     },
     {
-      "id": "LAYOUT_MT_KAZAN_EXTERIOR",
+      "id": "LAYOUT_BURNFOOT_PASS_BOTTOM",
       "name": "BurnfootPassBottom_Layout",
       "width": 51,
       "height": 31,
@@ -6432,8 +6432,8 @@
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
       "secondary_tileset": "gTileset_Volcano",
-      "border_filepath": "data/layouts/SteepstonePass/border.bin",
-      "blockdata_filepath": "data/layouts/SteepstonePass/map.bin",
+      "border_filepath": "data/layouts/BurnfootPassBottom/border.bin",
+      "blockdata_filepath": "data/layouts/BurnfootPassBottom/map.bin",
       "layout_version": "emerald"
     },
     {
@@ -6463,7 +6463,7 @@
       "layout_version": "emerald"
     },
     {
-      "id": "LAYOUT_BURNFOOT_PASS_RIGHT",
+      "id": "LAYOUT_MT_KAZAN_EXTERIOR",
       "name": "MtKazanExterior_Layout",
       "width": 50,
       "height": 74,

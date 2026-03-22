@@ -1,7 +1,7 @@
 {
   "id": "MAP_BURNFOOT_PASS_BOTTOM",
   "name": "BurnfootPassBottom",
-  "layout": "LAYOUT_MT_KAZAN_EXTERIOR",
+  "layout": "LAYOUT_BURNFOOT_PASS_BOTTOM",
   "music": "MUS_DUMMY",
   "region_map_section": "MAPSEC_BURNFOOT_PASS_BOTTOM",
   "requires_flash": false,
