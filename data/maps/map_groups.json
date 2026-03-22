@@ -117,7 +117,9 @@
     "SabersideQuarry_Exterior",
     "ScenicHotSprings",
     "HarvestShrine_Decay",
-    "HanabiLake"
+    "HanabiLake",
+    "BurnfootPassBackup",
+    "MtKazanBackup"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "SunriseVillage_PlayersHouse_LR",

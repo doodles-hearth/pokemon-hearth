@@ -6427,7 +6427,7 @@
       "id": "LAYOUT_MT_KAZAN_EXTERIOR",
       "name": "BurnfootPassBottom_Layout",
       "width": 51,
-      "height": 30,
+      "height": 31,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
@@ -11855,6 +11855,30 @@
       "secondary_tileset": "gTileset_Hanabi",
       "border_filepath": "data/layouts/HanabiLake/border.bin",
       "blockdata_filepath": "data/layouts/HanabiLake/map.bin"
+    },
+    {
+      "id": "LAYOUT_BURNFOOT_PASS_BACKUP",
+      "name": "BurnfootPassBackup_Layout",
+      "width": 51,
+      "height": 31,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Volcano",
+      "border_filepath": "data/layouts/BurnfootPassBackup/border.bin",
+      "blockdata_filepath": "data/layouts/BurnfootPassBackup/map.bin"
+    },
+    {
+      "id": "LAYOUT_MT_KAZAN_BACKUP",
+      "name": "MtKazanBackup_Layout",
+      "width": 50,
+      "height": 74,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Volcano",
+      "border_filepath": "data/layouts/MtKazanBackup/border.bin",
+      "blockdata_filepath": "data/layouts/MtKazanBackup/map.bin"
     }
   ]
 }
