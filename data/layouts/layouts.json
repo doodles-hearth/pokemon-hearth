@@ -11879,6 +11879,18 @@
       "secondary_tileset": "gTileset_Volcano",
       "border_filepath": "data/layouts/MtKazanBackup/border.bin",
       "blockdata_filepath": "data/layouts/MtKazanBackup/map.bin"
+    },
+    {
+      "id": "LAYOUT_STEEPSTONE_PASS_BACKUP",
+      "name": "SteepstonePassBackup_Layout",
+      "width": 20,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Volcano",
+      "border_filepath": "data/layouts/SteepstonePassBackup/border.bin",
+      "blockdata_filepath": "data/layouts/SteepstonePassBackup/map.bin"
     }
   ]
 }

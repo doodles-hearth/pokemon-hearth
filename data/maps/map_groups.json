@@ -119,7 +119,8 @@
     "HarvestShrine_Decay",
     "HanabiLake",
     "BurnfootPassBackup",
-    "MtKazanBackup"
+    "MtKazanBackup",
+    "SteepstonePassBackup"
   ],
   "gMapGroup_IndoorSunriseVillage": [
     "SunriseVillage_PlayersHouse_LR",
