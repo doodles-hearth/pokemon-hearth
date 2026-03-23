@@ -22,6 +22,11 @@
       "map": "MAP_BURNFOOT_PASS",
       "offset": -5,
       "direction": "down"
+    },
+    {
+      "map": "MAP_DRAGONS_PASS",
+      "offset": 24,
+      "direction": "left"
     }
   ],
   "object_events": [],
