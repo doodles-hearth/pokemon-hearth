@@ -209,3 +209,4 @@
 .include "sound/voicegroups/voicegroup_hh_sunrise.inc"
 .include "sound/voicegroups/hh_chii_town.inc"
 .include "sound/voicegroups/voicegroup192.inc"
+.include "sound/voicegroups/shop.inc"
