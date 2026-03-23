@@ -30,7 +30,7 @@
     },
     {
       "map": "MAP_HANABI_LAKE",
-      "offset": 0,
+      "offset": -4,
       "direction": "up"
     }
   ],
