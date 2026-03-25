@@ -425,9 +425,6 @@ static bool32 IsUnnerveAbilityOnOpposingSide(enum BattlerId battler)
         if (battler == battlerDef || IsBattlerAlly(battler, battlerDef))
             continue;
 
-        if (!IsBattlerAlive(battlerDef))
-            continue;
-
         enum Ability ability = GetBattlerAbility(battlerDef);
         switch (ability)
         {
@@ -1189,25 +1186,25 @@ bool32 IsLastMonToMove(enum BattlerId battler)
     return TRUE;
 }
 
-static u32 GetAiTurnOrder(u8 *aiTurnOrder, enum BattlerId battler)
+static u32 GetAiTurnOrder(enum BattlerId battler)
 {
     for (u32 i = 0; i < gBattlersCount; i++)
     {
-        if (aiTurnOrder[i] == battler)
+        if (gAiLogicData->turnOrder[i] == battler)
             return i;
     }
     return 0;
 }
 
-static bool32 Ai_AttackerMovesAfterTarget(struct BattleContext *ctx)
+static bool32 Ai_AttackerMovesAfterTarget(enum BattlerId battlerAtk, enum BattlerId battlerDef)
 {
-    return GetAiTurnOrder(ctx->aiTurnOrder, ctx->battlerAtk) > GetAiTurnOrder(ctx->aiTurnOrder, ctx->battlerDef);
+    return GetAiTurnOrder(battlerAtk) > GetAiTurnOrder(battlerDef);
 }
 
-static bool32 Ai_AttackerMovesLast(struct BattleContext *ctx)
+static bool32 Ai_AttackerMovesLast(enum BattlerId battlerAtk)
 {
     u32 numAliveBattlers = 0;
-    u32 battlerTurnOrder = GetAiTurnOrder(ctx->aiTurnOrder, ctx->battlerAtk);
+    u32 battlerTurnOrder = GetAiTurnOrder(battlerAtk);
 
     for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
     {
@@ -1803,7 +1800,7 @@ u32 GetBattlerAffectionHearts(enum BattlerId battler)
     struct Pokemon *mon = GetBattlerMon(battler);
     enum Species species = GetMonData(mon, MON_DATA_SPECIES);
 
-    if (!IsOnPlayerSide(battler))
+    if (!IsOnPlayerSide(battler) || gBattleStruct->battlerState[battler].notOnField)
         return AFFECTION_NO_HEARTS;
     else if (gSpeciesInfo[species].isMegaEvolution
           || (gBattleTypeFlags & (BATTLE_TYPE_EREADER_TRAINER
@@ -3914,7 +3911,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         {
         case ABILITY_COLOR_CHANGE:
             if (IsBattlerTurnDamaged(battler, EXCLUDING_SUBSTITUTES)
-             && IsBattlerAlive(battler)
              && !IS_BATTLER_OF_TYPE(battler, moveType)
              && move != MOVE_STRUGGLE
              && moveType != TYPE_STELLAR
@@ -3929,7 +3925,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             break;
         case ABILITY_BERSERK:
             if (IsBattlerTurnDamaged(battler, EXCLUDING_SUBSTITUTES)
-             && IsBattlerAlive(battler)
              && HadMoreThanHalfHpNowDoesnt(battler)
              && CompareStat(battler, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN, gLastUsedAbility))
             {
@@ -3941,7 +3936,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             break;
         case ABILITY_ANGER_SHELL:
             if (IsBattlerTurnDamaged(battler, EXCLUDING_SUBSTITUTES)
-             && IsBattlerAlive(battler)
              && HadMoreThanHalfHpNowDoesnt(battler))
             {
                 gEffectBattler = gBattlerAbility = battler;
@@ -4519,7 +4513,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             if (GetMoveEffect(move) != EFFECT_FLING
              && GetMoveEffect(move) != EFFECT_NATURAL_GIFT
              && gBattleMons[battler].item == ITEM_NONE
-             && IsBattlerAlive(battler)
              && !gSpecialStatuses[battler].gemBoost) // In base game, gems are consumed after magician would activate.
             {
                 u32 numMagicianTargets = 0;
@@ -4533,7 +4526,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                      && CanStealItem(battler, battlerDef, gBattleMons[battlerDef].item)
                      && !GetBattlerPartyState(battlerDef)->isKnockedOff
                      && !DoesSubstituteBlockMove(battler, battlerDef, move)
-                     && (GetBattlerAbility(battlerDef) != ABILITY_STICKY_HOLD || !IsBattlerAlive(battlerDef)))
+                     && GetBattlerAbility(battlerDef) != ABILITY_STICKY_HOLD)
                     {
                         magicianTargets |= 1u << battlerDef;
                         numMagicianTargets++;
@@ -4573,7 +4566,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         case ABILITY_AS_ONE_SHADOW_RIDER:
         case ABILITY_BEAST_BOOST:
             {
-                if (!IsBattlerAlive(battler) || NoAliveMonsForEitherParty())
+                if (NoAliveMonsForEitherParty())
                     break;
 
                 enum Stat stat = STAT_ATK;
@@ -4602,8 +4595,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             break;
         case ABILITY_BATTLE_BOND:
             {
-                if (!IsBattlerAlive(battler)
-                 || NoAliveMonsForEitherParty()
+                if (NoAliveMonsForEitherParty()
                  || NumFaintedBattlersByAttacker(battler) == 0)
                     break;
 
@@ -4736,7 +4728,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         {
         case ABILITY_COMMANDER:
             if (IsBattlerAlive(partner)
-             && IsBattlerAlive(battler)
              && gBattleStruct->battlerState[partner].commanderSpecies == SPECIES_NONE
              && gBattleMons[partner].species == SPECIES_DONDOZO
              && (gChosenActionByBattler[partner] != B_ACTION_SWITCH || HasBattlerActedThisTurn(partner))
@@ -4790,8 +4781,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         }
         break;
     case ABILITYEFFECT_ON_WEATHER: // For ability effects that activate when the battle weather changes.
-        if (!IsBattlerAlive(battler))
-            return effect;
         gLastUsedAbility = GetBattlerAbility(battler);
         switch (gLastUsedAbility)
         {
@@ -4836,8 +4825,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         }
         break;
     case ABILITYEFFECT_ON_TERRAIN:  // For ability effects that activate when the field terrain changes.
-        if (!IsBattlerAlive(battler))
-            return effect;
         gLastUsedAbility = GetBattlerAbility(battler);
         switch (gLastUsedAbility)
         {
@@ -4946,6 +4933,9 @@ enum Ability GetBattlerAbilityInternal(enum BattlerId battler, bool32 ignoreMold
     bool32 hasAbilityShield = !noAbilityShield && GetBattlerHoldEffectIgnoreAbility(battler) == HOLD_EFFECT_ABILITY_SHIELD;
     bool32 abilityCantBeSuppressed = gAbilitiesInfo[gBattleMons[battler].ability].cantBeSuppressed;
 
+    if (gBattleStruct->battlerState[battler].notOnField)
+        return ABILITY_NONE;
+
     if (abilityCantBeSuppressed)
     {
         // Edge case: pokemon under the effect of gastro acid transforms into a pokemon with Comatose (Todo: verify how other unsuppressable abilities behave)
@@ -5020,9 +5010,6 @@ u32 IsAbilityPreventingEscape(enum BattlerId battler)
     for (enum BattlerId battlerDef = 0; battlerDef < gBattlersCount; battlerDef++)
     {
         if (battler == battlerDef || IsBattlerAlly(battler, battlerDef))
-            continue;
-
-        if (!IsBattlerAlive(battlerDef))
             continue;
 
         enum Ability ability = GetBattlerAbility(battlerDef);
@@ -5773,6 +5760,8 @@ enum HoldEffect GetBattlerHoldEffectIgnoreAbility(enum BattlerId battler)
 
 enum HoldEffect GetBattlerHoldEffectInternal(enum BattlerId battler, enum Ability ability)
 {
+    if (gBattleStruct->battlerState[battler].notOnField)
+        return HOLD_EFFECT_NONE;
     if (gBattleMons[battler].volatiles.embargo)
         return HOLD_EFFECT_NONE;
     if (gFieldStatuses & STATUS_FIELD_MAGIC_ROOM)
@@ -5790,6 +5779,9 @@ enum HoldEffect GetBattlerHoldEffectInternal(enum BattlerId battler, enum Abilit
 
 enum HoldEffect GetBattlerHoldEffectIgnoreNegation(enum BattlerId battler)
 {
+    if (gBattleStruct->battlerState[battler].notOnField)
+        return HOLD_EFFECT_NONE;
+
     gPotentialItemEffectBattler = battler;
     if (gBattleMons[battler].item == ITEM_ENIGMA_BERRY_E_READER)
         return gEnigmaBerries[battler].holdEffect;
@@ -6117,77 +6109,6 @@ static const u8 sSpeedDiffPowerTable[] = {40, 60, 80, 120, 150};
 static const u8 sHeatCrashPowerTable[] = {40, 40, 60, 80, 100, 120};
 static const u8 sTrumpCardPowerTable[] = {200, 80, 60, 50, 40};
 
-const struct TypePower gNaturalGiftTable[] =
-{
-    [ITEM_TO_BERRY(ITEM_CHERI_BERRY)] = {TYPE_FIRE, 80},
-    [ITEM_TO_BERRY(ITEM_CHESTO_BERRY)] = {TYPE_WATER, 80},
-    [ITEM_TO_BERRY(ITEM_PECHA_BERRY)] = {TYPE_ELECTRIC, 80},
-    [ITEM_TO_BERRY(ITEM_RAWST_BERRY)] = {TYPE_GRASS, 80},
-    [ITEM_TO_BERRY(ITEM_ASPEAR_BERRY)] = {TYPE_ICE, 80},
-    [ITEM_TO_BERRY(ITEM_LEPPA_BERRY)] = {TYPE_FIGHTING, 80},
-    [ITEM_TO_BERRY(ITEM_ORAN_BERRY)] = {TYPE_POISON, 80},
-    [ITEM_TO_BERRY(ITEM_PERSIM_BERRY)] = {TYPE_GROUND, 80},
-    [ITEM_TO_BERRY(ITEM_LUM_BERRY)] = {TYPE_FLYING, 80},
-    [ITEM_TO_BERRY(ITEM_SITRUS_BERRY)] = {TYPE_PSYCHIC, 80},
-    [ITEM_TO_BERRY(ITEM_FIGY_BERRY)] = {TYPE_BUG, 80},
-    [ITEM_TO_BERRY(ITEM_WIKI_BERRY)] = {TYPE_ROCK, 80},
-    [ITEM_TO_BERRY(ITEM_MAGO_BERRY)] = {TYPE_GHOST, 80},
-    [ITEM_TO_BERRY(ITEM_AGUAV_BERRY)] = {TYPE_DRAGON, 80},
-    [ITEM_TO_BERRY(ITEM_IAPAPA_BERRY)] = {TYPE_DARK, 80},
-    [ITEM_TO_BERRY(ITEM_RAZZ_BERRY)] = {TYPE_STEEL, 80},
-    [ITEM_TO_BERRY(ITEM_OCCA_BERRY)] = {TYPE_FIRE, 80},
-    [ITEM_TO_BERRY(ITEM_PASSHO_BERRY)] = {TYPE_WATER, 80},
-    [ITEM_TO_BERRY(ITEM_WACAN_BERRY)] = {TYPE_ELECTRIC, 80},
-    [ITEM_TO_BERRY(ITEM_RINDO_BERRY)] = {TYPE_GRASS, 80},
-    [ITEM_TO_BERRY(ITEM_YACHE_BERRY)] = {TYPE_ICE, 80},
-    [ITEM_TO_BERRY(ITEM_CHOPLE_BERRY)] = {TYPE_FIGHTING, 80},
-    [ITEM_TO_BERRY(ITEM_KEBIA_BERRY)] = {TYPE_POISON, 80},
-    [ITEM_TO_BERRY(ITEM_SHUCA_BERRY)] = {TYPE_GROUND, 80},
-    [ITEM_TO_BERRY(ITEM_COBA_BERRY)] = {TYPE_FLYING, 80},
-    [ITEM_TO_BERRY(ITEM_PAYAPA_BERRY)] = {TYPE_PSYCHIC, 80},
-    [ITEM_TO_BERRY(ITEM_TANGA_BERRY)] = {TYPE_BUG, 80},
-    [ITEM_TO_BERRY(ITEM_CHARTI_BERRY)] = {TYPE_ROCK, 80},
-    [ITEM_TO_BERRY(ITEM_KASIB_BERRY)] = {TYPE_GHOST, 80},
-    [ITEM_TO_BERRY(ITEM_HABAN_BERRY)] = {TYPE_DRAGON, 80},
-    [ITEM_TO_BERRY(ITEM_COLBUR_BERRY)] = {TYPE_DARK, 80},
-    [ITEM_TO_BERRY(ITEM_BABIRI_BERRY)] = {TYPE_STEEL, 80},
-    [ITEM_TO_BERRY(ITEM_CHILAN_BERRY)] = {TYPE_NORMAL, 80},
-    [ITEM_TO_BERRY(ITEM_ROSELI_BERRY)] = {TYPE_FAIRY, 80},
-    [ITEM_TO_BERRY(ITEM_BLUK_BERRY)] = {TYPE_FIRE, 90},
-    [ITEM_TO_BERRY(ITEM_NANAB_BERRY)] = {TYPE_WATER, 90},
-    [ITEM_TO_BERRY(ITEM_WEPEAR_BERRY)] = {TYPE_ELECTRIC, 90},
-    [ITEM_TO_BERRY(ITEM_PINAP_BERRY)] = {TYPE_GRASS, 90},
-    [ITEM_TO_BERRY(ITEM_POMEG_BERRY)] = {TYPE_ICE, 90},
-    [ITEM_TO_BERRY(ITEM_KELPSY_BERRY)] = {TYPE_FIGHTING, 90},
-    [ITEM_TO_BERRY(ITEM_QUALOT_BERRY)] = {TYPE_POISON, 90},
-    [ITEM_TO_BERRY(ITEM_HONDEW_BERRY)] = {TYPE_GROUND, 90},
-    [ITEM_TO_BERRY(ITEM_GREPA_BERRY)] = {TYPE_FLYING, 90},
-    [ITEM_TO_BERRY(ITEM_TAMATO_BERRY)] = {TYPE_PSYCHIC, 90},
-    [ITEM_TO_BERRY(ITEM_CORNN_BERRY)] = {TYPE_BUG, 90},
-    [ITEM_TO_BERRY(ITEM_MAGOST_BERRY)] = {TYPE_ROCK, 90},
-    [ITEM_TO_BERRY(ITEM_RABUTA_BERRY)] = {TYPE_GHOST, 90},
-    [ITEM_TO_BERRY(ITEM_NOMEL_BERRY)] = {TYPE_DRAGON, 90},
-    [ITEM_TO_BERRY(ITEM_SPELON_BERRY)] = {TYPE_DARK, 90},
-    [ITEM_TO_BERRY(ITEM_PAMTRE_BERRY)] = {TYPE_STEEL, 90},
-    [ITEM_TO_BERRY(ITEM_WATMEL_BERRY)] = {TYPE_FIRE, 100},
-    [ITEM_TO_BERRY(ITEM_DURIN_BERRY)] = {TYPE_WATER, 100},
-    [ITEM_TO_BERRY(ITEM_BELUE_BERRY)] = {TYPE_ELECTRIC, 100},
-    [ITEM_TO_BERRY(ITEM_LIECHI_BERRY)] = {TYPE_GRASS, 100},
-    [ITEM_TO_BERRY(ITEM_GANLON_BERRY)] = {TYPE_ICE, 100},
-    [ITEM_TO_BERRY(ITEM_SALAC_BERRY)] = {TYPE_FIGHTING, 100},
-    [ITEM_TO_BERRY(ITEM_PETAYA_BERRY)] = {TYPE_POISON, 100},
-    [ITEM_TO_BERRY(ITEM_APICOT_BERRY)] = {TYPE_GROUND, 100},
-    [ITEM_TO_BERRY(ITEM_LANSAT_BERRY)] = {TYPE_FLYING, 100},
-    [ITEM_TO_BERRY(ITEM_STARF_BERRY)] = {TYPE_PSYCHIC, 100},
-    [ITEM_TO_BERRY(ITEM_ENIGMA_BERRY)] = {TYPE_BUG, 100},
-    [ITEM_TO_BERRY(ITEM_MICLE_BERRY)] = {TYPE_ROCK, 100},
-    [ITEM_TO_BERRY(ITEM_CUSTAP_BERRY)] = {TYPE_GHOST, 100},
-    [ITEM_TO_BERRY(ITEM_JABOCA_BERRY)] = {TYPE_DRAGON, 100},
-    [ITEM_TO_BERRY(ITEM_ROWAP_BERRY)] = {TYPE_DARK, 100},
-    [ITEM_TO_BERRY(ITEM_KEE_BERRY)] = {TYPE_FAIRY, 100},
-    [ITEM_TO_BERRY(ITEM_MARANGA_BERRY)] = {TYPE_DARK, 100},
-};
-
 static inline u32 CalcRolloutBasePower(enum BattlerId battlerAtk, u32 basePower)
 {
     u32 i;
@@ -6337,7 +6258,7 @@ static inline u32 CalcMoveBasePower(struct BattleContext *ctx)
             basePower *= 2;
         break;
     case EFFECT_NATURAL_GIFT:
-        basePower = gNaturalGiftTable[ITEM_TO_BERRY(gBattleMons[battlerAtk].item)].power;
+        basePower = gBerries[ItemIdToBerryType(gBattleMons[battlerAtk].item)].naturalGiftPower;
         break;
     case EFFECT_DOUBLE_POWER_ON_ARG_STATUS:
         // Comatose targets treated as if asleep
@@ -6428,7 +6349,7 @@ static inline u32 CalcMoveBasePower(struct BattleContext *ctx)
     case EFFECT_PAYBACK:
         if (ctx->aiCalc)
         {
-            if (Ai_AttackerMovesAfterTarget(ctx))
+            if (Ai_AttackerMovesAfterTarget(battlerAtk, battlerDef))
                 basePower *= 2;
         }
         else if (HasBattlerActedThisTurn(battlerDef)
@@ -6440,7 +6361,7 @@ static inline u32 CalcMoveBasePower(struct BattleContext *ctx)
     case EFFECT_BOLT_BEAK:
         if (ctx->aiCalc)
         {
-            if (!Ai_AttackerMovesAfterTarget(ctx))
+            if (!Ai_AttackerMovesAfterTarget(battlerAtk, battlerDef))
                 basePower *= 2;
         }
         else if (!HasBattlerActedThisTurn(battlerDef)
@@ -6656,7 +6577,7 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct BattleContext *ctx)
 
         if (ctx->aiCalc)
         {
-            if (Ai_AttackerMovesLast(ctx))
+            if (Ai_AttackerMovesLast(battlerAtk))
                modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
         }
         else if (IsLastMonToMove(battlerAtk))
@@ -7862,6 +7783,9 @@ s32 DoFixedDamageMoveCalc(struct BattleContext *ctx)
         break;
     case EFFECT_OHKO:
         dmg = gBattleMons[ctx->battlerDef].hp;
+        break;
+    case EFFECT_BIDE:
+        dmg = gBideDmg[ctx->battlerAtk] * 2;
         break;
     default:
         break;
@@ -10042,9 +9966,6 @@ bool32 HasWeatherEffect(void)
 {
     for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
     {
-        if (!IsBattlerAlive(battler))
-            continue;
-
         enum Ability ability = GetBattlerAbility(battler);
         switch (ability)
         {

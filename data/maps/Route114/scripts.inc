@@ -25,10 +25,7 @@ Route114_EventScript_Man::
 	dotimebasedevents
 	goto_if_set FLAG_DUMMY, Route114_EventScript_ReceivedBerry
 	msgbox Route114_Text_LoveUsingBerryCrushShareBerry, MSGBOX_DEFAULT
-	random NUM_ROUTE_114_MAN_BERRIES
-	addvar VAR_RESULT, NUM_ROUTE_114_MAN_BERRIES_SKIPPED
-	addvar VAR_RESULT, FIRST_BERRY_INDEX
-	giveitem VAR_RESULT
+	giverandomberry BERRY_ID_RAZZ, BERRY_ID_PINAP
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_DUMMY
 	msgbox Route114_Text_TryBerryCrushWithFriends, MSGBOX_DEFAULT
