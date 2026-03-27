@@ -6309,12 +6309,12 @@
     {
       "id": "LAYOUT_MIDDLE_ISLE",
       "name": "MiddleIsle_Layout",
-      "width": 30,
+      "width": 35,
       "height": 30,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_OpenSea",
+      "secondary_tileset": "gTileset_snow",
       "border_filepath": "data/layouts/MiddleIsle/border.bin",
       "blockdata_filepath": "data/layouts/MiddleIsle/map.bin",
       "layout_version": "emerald"

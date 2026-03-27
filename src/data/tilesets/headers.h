@@ -2102,3 +2102,14 @@ const struct Tileset gTileset_Hanabi =
     .metatileAttributes = gMetatileAttributes_Hanabi,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_snow =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_snow,
+    .palettes = gTilesetPalettes_snow,
+    .metatiles = gMetatiles_snow,
+    .metatileAttributes = gMetatileAttributes_snow,
+    .callback = NULL,
+};

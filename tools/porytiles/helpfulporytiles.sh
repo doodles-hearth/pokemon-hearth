@@ -8,7 +8,7 @@
 #   *) script_path=$(pwd)/$0 ;;
 # esac
 
-home_dir="purrfectdoodle"
+home_dir="eva"
 dir_project="/home/${home_dir}/romhack/pokemon-hearth/"
 porytiles_dir="${dir_project}tools/porytiles/"
 
