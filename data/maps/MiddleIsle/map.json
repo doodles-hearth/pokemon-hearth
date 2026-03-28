@@ -2,10 +2,10 @@
   "id": "MAP_MIDDLE_ISLE",
   "name": "MiddleIsle",
   "layout": "LAYOUT_MIDDLE_ISLE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_ROUTE113",
   "region_map_section": "MAPSEC_MIDDLEISLE",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_SNOW",
   "map_type": "MAP_TYPE_TOWN",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -15,12 +15,12 @@
   "connections": [
     {
       "map": "MAP_OPEN_SEA_ICY",
-      "offset": -50,
+      "offset": -45,
       "direction": "up"
     },
     {
       "map": "MAP_OPEN_SEA_LEAGUE",
-      "offset": -40,
+      "offset": -35,
       "direction": "down"
     },
     {

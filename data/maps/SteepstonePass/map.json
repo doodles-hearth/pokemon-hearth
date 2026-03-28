@@ -15,13 +15,18 @@
   "connections": [
     {
       "map": "MAP_MT_KAZAN_EXTERIOR",
-      "offset": -40,
+      "offset": -33,
       "direction": "up"
     },
     {
       "map": "MAP_STEEPSTONE_PASS_BOTTOM",
-      "offset": -30,
+      "offset": -14,
       "direction": "down"
+    },
+    {
+      "map": "MAP_BURNFOOT_PASS",
+      "offset": 0,
+      "direction": "left"
     }
   ],
   "object_events": [],

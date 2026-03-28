@@ -15,12 +15,12 @@
   "connections": [
     {
       "map": "MAP_OPEN_SEA_ICY",
-      "offset": -40,
+      "offset": -20,
       "direction": "down"
     },
     {
       "map": "MAP_OPEN_SEA_CORAL",
-      "offset": 0,
+      "offset": 10,
       "direction": "right"
     }
   ],

@@ -20,12 +20,7 @@
     },
     {
       "map": "MAP_STEEPSTONE_PASS_BOTTOM",
-      "offset": -23,
-      "direction": "left"
-    },
-    {
-      "map": "MAP_SHOGUNATE",
-      "offset": 7,
+      "offset": -2,
       "direction": "left"
     },
     {
