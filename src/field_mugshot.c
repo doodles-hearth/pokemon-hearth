@@ -97,23 +97,25 @@ static void SpriteCB_FieldMugshot(struct Sprite *s)
 
 void RemoveFieldMugshot(void)
 {
-    ResetPreservedPalettesInWeather();
-    if (sFieldMugshotSpriteIds[0] != 0xFF)
-    {
-        FreeSpriteTilesByTag(TAG_MUGSHOT);
-        FreeSpritePaletteByTag(TAG_MUGSHOT);
-        DestroySprite(&gSprites[sFieldMugshotSpriteIds[0]]);
-        sFieldMugshotSpriteIds[0] = SPRITE_NONE;
+    if (sFieldMugshotSpriteIds[0] != 0xFF || sFieldMugshotSpriteIds[1] != 0xFF) {
+        ResetPreservedPalettesInWeather();
+        if (sFieldMugshotSpriteIds[0] != 0xFF)
+        {
+            FreeSpriteTilesByTag(TAG_MUGSHOT);
+            FreeSpritePaletteByTag(TAG_MUGSHOT);
+            DestroySprite(&gSprites[sFieldMugshotSpriteIds[0]]);
+            sFieldMugshotSpriteIds[0] = SPRITE_NONE;
+        }
+        if (sFieldMugshotSpriteIds[1] != 0xFF)
+        {
+            FreeSpriteTilesByTag(TAG_MUGSHOT2);
+            FreeSpritePaletteByTag(TAG_MUGSHOT2);
+            DestroySprite(&gSprites[sFieldMugshotSpriteIds[1]]);
+            sFieldMugshotSpriteIds[1] = SPRITE_NONE;
+        }
+        DestroyObjWinMaskSprite(&sFieldMugshotObjWindowMaskId);
+        sIsFieldMugshotActive = FALSE;
     }
-    if (sFieldMugshotSpriteIds[1] != 0xFF)
-    {
-        FreeSpriteTilesByTag(TAG_MUGSHOT2);
-        FreeSpritePaletteByTag(TAG_MUGSHOT2);
-        DestroySprite(&gSprites[sFieldMugshotSpriteIds[1]]);
-        sFieldMugshotSpriteIds[1] = SPRITE_NONE;
-    }
-    DestroyObjWinMaskSprite(&sFieldMugshotObjWindowMaskId);
-    sIsFieldMugshotActive = FALSE;
 }
 
 void CreateFieldMugshot(struct ScriptContext *ctx)
