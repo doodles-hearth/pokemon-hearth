@@ -6322,12 +6322,12 @@
     {
       "id": "LAYOUT_TOP_ISLE",
       "name": "TopIsle_Layout",
-      "width": 40,
-      "height": 40,
+      "width": 60,
+      "height": 50,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
-      "secondary_tileset": "gTileset_OpenSea",
+      "secondary_tileset": "gTileset_snow",
       "border_filepath": "data/layouts/TopIsle/border.bin",
       "blockdata_filepath": "data/layouts/TopIsle/map.bin",
       "layout_version": "emerald"
