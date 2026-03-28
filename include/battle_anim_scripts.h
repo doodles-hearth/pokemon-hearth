@@ -262,6 +262,7 @@ extern const u8 gBattleAnimMove_SpitUp[];
 extern const u8 gBattleAnimMove_Swallow[];
 extern const u8 gBattleAnimMove_HeatWave[];
 extern const u8 gBattleAnimMove_SmokeBomb[];
+extern const u8 gBattleAnimMove_Corrupt[];
 extern const u8 gBattleAnimMove_Blossom[];
 extern const u8 gBattleAnimMove_Hail[];
 extern const u8 gBattleAnimMove_Torment[];
@@ -1021,6 +1022,7 @@ extern const u8 gBattleAnimGeneral_SilphScoped[];
 extern const u8 gBattleAnimGeneral_SafariRockThrow[];
 extern const u8 gBattleAnimGeneral_SafariReaction[];
 extern const u8 gBattleAnimGeneral_SmokeExplosion[];
+extern const u8 gBattleAnimGeneral_Decay[];
 
 // special animations
 extern const u8 gBattleAnimSpecial_LevelUp[];

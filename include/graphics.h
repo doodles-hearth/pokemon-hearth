@@ -3011,6 +3011,8 @@ extern const u32 gBattleAnimSpriteGfx_WoodHammerHammer[];
 extern const u16 gBattleAnimSpritePal_WoodHammerHammer[];
 extern const u32 gBattleAnimSpriteGfx_Snowflakes[];
 extern const u16 gBattleAnimSpritePal_Snowflakes[];
+extern const u32 gBattleAnimSpriteGfx_DecayParticles[];
+extern const u16 gBattleAnimSpritePal_DecayParticles[];
 extern const u32 gBattleAnimSpriteGfx_SyrupBlob[];
 extern const u32 gBattleAnimSpriteGfx_SyrupShell[];
 extern const u32 gBattleAnimSpriteGfx_SyrupSplat[];
