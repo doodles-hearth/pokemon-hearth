@@ -1,5 +1,7 @@
 #include "global.h"
 #include "battle.h"
+#include "config/quickstart.h"
+#include "gba/io_reg.h"
 #include "sprite.h"
 #include "gba/m4a_internal.h"
 #include "clear_save_data_menu.h"
@@ -21,6 +23,7 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "title_screen_hearth.h"
+#include "quickstart.h"
 
 enum {
     TAG_VERSION = 1000,
@@ -559,6 +562,8 @@ static void Task_HearthTitleScreenPhase2(u8 taskId)
                                     | DISPCNT_OBJ_ON); */
         CreatePressStartBanner(START_BANNER_X, 108);
         CreateCopyrightBanner(START_BANNER_X, 148);
+        if (QUICKSTART && QUICKSTART_HUD)
+            CreateQuickstartHud();
         gTasks[taskId].tBg1Y = 0;
         gTasks[taskId].func = Task_HearthTitleScreenPhase3;
     }
@@ -597,6 +602,10 @@ static void Task_HearthTitleScreenPhase3(u8 taskId)
         FadeOutBGM(4);
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         SetMainCallback2(CB2_GoToResetRtcScreen);
+    }
+    else if (JOY_NEW(SELECT_BUTTON)) 
+    {
+        Quickstart();
     }
     else
     {
