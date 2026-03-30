@@ -1174,7 +1174,9 @@ void LoadSpecialPokePicIsEgg(void *dest, enum Species species, u32 personality, 
     }
 
     if (ShouldDrawSpotsOnSpecies(species) && isFrontPic)
-        DrawPokemonSpotsBothFrames(personality, gSpeciesInfo[species].monSpotTemplate, dest);
+    {
+        DrawPokemonSpotsBothFrames(personality, species, dest);
+    }
 }
 
 void Unused_DecompressDataWithHeaderWramIndirect(const void **src, void *dest)

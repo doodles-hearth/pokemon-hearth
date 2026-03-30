@@ -18348,7 +18348,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .teachableLearnset = sGyaradosTeachableLearnset,
         .formSpeciesIdTable = sGyaradosFormSpeciesIdTable,
         .formChangeTable = sGyaradosFormChangeTable,
-        .monSpotTemplate = &gGyaradosSpotTemplate,
     },
 
     [SPECIES_MAGIKARP_TOKUAN] =
@@ -18425,7 +18424,6 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sMagikarpLevelUpLearnset,
         .teachableLearnset = sMagikarpTeachableLearnset,
         .evolutions = EVOLUTION({EVO_LEVEL, 20, SPECIES_GYARADOS_TOKUAN}),
-        .monSpotTemplate = &gGyaradosSpotTemplate,
     },
 #endif // P_TOKUAN_FORMS
 
