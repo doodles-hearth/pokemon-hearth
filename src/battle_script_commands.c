@@ -1284,7 +1284,7 @@ static void Cmd_critcalc(void)
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
-static inline void CalculateAndSetMoveDamage(struct BattleContext *ctx)
+static inline void CalculateAndSetMoveDamage(struct DamageContext *ctx)
 {
     SetDynamicMoveCategory(gBattlerAttacker, ctx->battlerDef, gCurrentMove);
     ctx->isCrit = gSpecialStatuses[ctx->battlerDef].criticalHit;
@@ -1310,7 +1310,7 @@ static void Cmd_damagecalc(void)
         return;
     }
 
-    struct BattleContext ctx = {0};
+    struct DamageContext ctx = {0};
     ctx.battlerAtk = gBattlerAttacker;
     ctx.move = gCurrentMove;
     ctx.chosenMove = gChosenMove;
@@ -1353,7 +1353,7 @@ static void Cmd_typecalc(void)
 {
     CMD_ARGS();
 
-    struct BattleContext ctx = {0};
+    struct DamageContext ctx = {0};
     ctx.battlerAtk = gBattlerAttacker;
     ctx.battlerDef = gBattlerTarget;
     ctx.move = gCurrentMove;

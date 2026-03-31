@@ -490,7 +490,6 @@ struct SpeciesInfo /*0xC4*/
     const struct Evolution *evolutions;
     const u16 *formSpeciesIdTable;
     const struct FormChange *formChangeTable;
-    const struct MonSpotTemplate *monSpotTemplate;
 #if OW_POKEMON_OBJECT_EVENTS
     struct ObjectEventGraphicsInfo overworldData;
 #if P_GENDER_DIFFERENCES
