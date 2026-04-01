@@ -176,6 +176,27 @@ static bool32 HandleEndTurnWeatherDamage(enum BattlerId battler)
             }
         }
         break;
+    case BATTLE_WEATHER_DECAY:
+        if (IsRuinAbility(ability))
+        {
+            if (AbilityBattleEffects(ABILITYEFFECT_ENDTURN, battler, ability, MOVE_NONE, TRUE))
+                effect = TRUE;
+        }
+        else
+        {
+            if ( ability != ABILITY_OVERCOAT
+             && gBattleMons[battler].volatiles.semiInvulnerable != STATE_UNDERGROUND
+             && gBattleMons[battler].volatiles.semiInvulnerable != STATE_UNDERWATER
+             && GetBattlerHoldEffect(battler) != HOLD_EFFECT_SAFETY_GOGGLES
+             && !IsAbilityAndRecord(battler, ability, ABILITY_MAGIC_GUARD))
+            {
+                SetPassiveDamageAmount(battler, GetNonDynamaxMaxHP(battler) / 16);
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_DECAY;
+                BattleScriptExecute(BattleScript_DamagingWeather);
+                effect = TRUE;
+            }
+        }
+        break;
     }
 
     return effect;
@@ -207,7 +228,6 @@ static bool32 HandleEndTurnAffection(enum BattlerId battler)
     gBattleStruct->eventState.endTurnBattler++;
 
     if (!B_AFFECTION_MECHANICS
-     || !IsBattlerAlive(battler)
      || !IsOnPlayerSide(battler))
         return effect;
 

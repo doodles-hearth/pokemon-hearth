@@ -335,6 +335,13 @@ enum SemiInvulnerableExclusion
     EXCLUDE_COMMANDER,
 };
 
+enum QueuedSwitch
+{
+    NO_QUEUED_SWITCH,
+    QUEUED_SWITCH_SEND_REPLACEMENT,
+    QUEUED_SWITCH_OPEN_PARTY_SCREEN,
+};
+
 #define HITMARKER_NO_ANIMATIONS         (1 << 7)   // set from battleSceneOff. Never changed during battle
 #define HITMARKER_UNUSED_8              (1 << 8)
 #define HITMARKER_UNUSED_9              (1 << 9)
@@ -441,6 +448,7 @@ enum BattleWeather
     BATTLE_WEATHER_STRONG_WINDS,
     BATTLE_WEATHER_SMOKE,
     BATTLE_WEATHER_LEAVES,
+    BATTLE_WEATHER_DECAY,
     BATTLE_WEATHER_COUNT,
 };
 
@@ -460,6 +468,7 @@ enum BattleWeather
 #define B_WEATHER_STRONG_WINDS  (1 << BATTLE_WEATHER_STRONG_WINDS)
 #define B_WEATHER_SMOKE         (1 << BATTLE_WEATHER_SMOKE)
 #define B_WEATHER_LEAVES        (1 << BATTLE_WEATHER_LEAVES)
+#define B_WEATHER_DECAY         (1 << BATTLE_WEATHER_DECAY)
 
 #define B_WEATHER_DAMAGING_ANY  (B_WEATHER_HAIL | B_WEATHER_SANDSTORM)
 #define B_WEATHER_ICY_ANY       (B_WEATHER_HAIL | B_WEATHER_SNOW)
@@ -607,7 +616,8 @@ enum __attribute__((packed)) MoveEffect
     // Move effects that happen before the move hits. Set in SetPreAttackMoveEffect
     MOVE_EFFECT_BREAK_SCREEN,
     MOVE_EFFECT_STEAL_STATS,
-    MOVE_EFFECT_BEAT_UP_MESSAGE, // Handles the message printing for gen2,3 and 4
+    MOVE_EFFECT_BEAT_UP_MESSAGE, // Handles the message printing for gen2, 3 and 4
+    MOVE_EFFECT_ITEM_MESSAGE, // Handles the flung item and attacked by its item messages (Fling, Poltergeist)
 
     NUM_MOVE_EFFECTS
 };

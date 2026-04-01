@@ -562,3 +562,6 @@ const u16 gMetatileAttributes_InsideBronzong[] = INCBIN_U16("data/tilesets/secon
 
 const u16 gMetatiles_Hanabi[] = INCBIN_U16("data/tilesets/secondary/hanabi/metatiles.bin");
 const u16 gMetatileAttributes_Hanabi[] = INCBIN_U16("data/tilesets/secondary/hanabi/metatile_attributes.bin");
+
+const u16 gMetatiles_snow[] = INCBIN_U16("data/tilesets/secondary/snow/metatiles.bin");
+const u16 gMetatileAttributes_snow[] = INCBIN_U16("data/tilesets/secondary/snow/metatile_attributes.bin");

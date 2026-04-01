@@ -660,3 +660,8 @@
 	.macro create_surf_wave priority=2, palette:req
 	createvisualtask AnimTask_CreateSurfWave, \priority, \palette
 	.endm
+
+  @ Custom hearth macros
+  .macro create_decay_particles priority=2, spawnInterval:req, lifetime:req
+    createvisualtask AnimTask_CreateDecayParticles, \priority, \spawnInterval, \lifetime
+  .endm

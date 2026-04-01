@@ -259,7 +259,6 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PKMNWHIPPEDWHIRLWIND]                 = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} whipped up a whirlwind!"),
     [STRINGID_PKMNTOOKSUNLIGHT]                     = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} absorbed light!"),
     [STRINGID_PKMNLOWEREDHEAD]                      = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} tucked in its head!"),
-    [STRINGID_PKMNISGLOWING]                        = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} became cloaked in a harsh light!"),
     [STRINGID_PKMNFLEWHIGH]                         = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} flew up high!"),
     [STRINGID_PKMNDUGHOLE]                          = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} burrowed its way under the ground!"),
     [STRINGID_PKMNSQUEEZEDBYBIND]                   = COMPOUND_STRING("{B_EFF_NAME_WITH_PREFIX} was squeezed by {B_SCR_NAME_WITH_PREFIX2}!"),
@@ -277,6 +276,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PKMNPROTECTEDITSELF2]                 = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} protected itself!"),
     [STRINGID_PKMNBUFFETEDBYSANDSTORM]              = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is buffeted by the sandstorm!"),
     [STRINGID_PKMNPELTEDBYHAIL]                     = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is buffeted by the hail!"),
+    [STRINGID_PKMNSAPPEDBYDECAY]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s health is sapped by the Decay!"),
     [STRINGID_PKMNSEEDED]                           = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} was seeded!"),
     [STRINGID_PKMNEVADEDATTACK]                     = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} avoided the attack!"),
     [STRINGID_PKMNSAPPEDBYLEECHSEED]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s health is sapped by Leech Seed!"),
@@ -471,7 +471,6 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PKMNSXPREVENTSYLOSS]                  = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}'s {B_SCR_ABILITY} prevents {B_BUFF1} loss!"), //not in gen 5+, ability popup
     [STRINGID_PKMNSXINFATUATEDY]                    = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} infatuated {B_ATK_NAME_WITH_PREFIX2}!"), //not in gen 5+, ability popup
     [STRINGID_PKMNSXMADEYINEFFECTIVE]               = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}'s {B_SCR_ABILITY} made {B_CURRENT_MOVE} ineffective!"), //not in gen 5+, ability popup
-    [STRINGID_PKMNSXCUREDYPROBLEM]                  = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}'s {B_SCR_ABILITY} cured its {B_BUFF1} problem!"), //not in gen 5+, ability popup
     [STRINGID_ITSUCKEDLIQUIDOOZE]                   = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} sucked up the liquid ooze!"),
     [STRINGID_PKMNTRANSFORMED]                      = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} transformed!"),
     [STRINGID_ELECTRICITYWEAKENED]                  = COMPOUND_STRING("Electricity's power was weakened!"),
@@ -543,7 +542,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_TAILWINDBLEW]                         = COMPOUND_STRING("The Tailwind blew from behind {B_ATK_TEAM2} team!"),
     [STRINGID_PKMNWENTBACK]                         = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} went back to {B_ATK_TRAINER_NAME}!"),
     [STRINGID_PKMNCANTUSEITEMSANYMORE]              = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} can't use items anymore!"),
-    [STRINGID_PKMNFLUNG]                            = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} flung its {B_LAST_ITEM}!"),
+    [STRINGID_PKMNFLUNG]                            = COMPOUND_STRING("{B_EFF_NAME_WITH_PREFIX} flung its {B_LAST_ITEM}!"),
     [STRINGID_PKMNPREVENTEDFROMHEALING]             = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} was prevented from healing!"),
     [STRINGID_PKMNSWITCHEDATKANDDEF]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} switched its Attack and Defense!"),
     [STRINGID_PKMNSABILITYSUPPRESSED]               = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX}'s Ability was suppressed!"),
@@ -602,6 +601,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_ANTICIPATIONACTIVATES]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} shuddered!"),
     [STRINGID_FOREWARNACTIVATES]                    = COMPOUND_STRING("{B_SCR_ABILITY} alerted {B_SCR_NAME_WITH_PREFIX2} to {B_EFF_NAME_WITH_PREFIX2}'s {B_BUFF1}!"),
     [STRINGID_ICEBODYHPGAIN]                        = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} healed it a little bit!"), //don't think this message is displayed anymore
+    [STRINGID_RUINABILITYHPGAIN]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} healed it a little bit!"), //don't think this message is displayed anymore
     [STRINGID_SNOWWARNINGHAIL]                      = COMPOUND_STRING("It started to hail!"),
     [STRINGID_FRISKACTIVATES]                       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} frisked {B_DEF_NAME_WITH_PREFIX2} and found its {B_LAST_ITEM}!"),
     [STRINGID_UNNERVEENTERS]                        = COMPOUND_STRING("{B_EFF_TEAM1} team is too nervous to eat Berries!"),
@@ -735,7 +735,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_BOTHCANNOLONGERESCAPE]                = COMPOUND_STRING("Neither Pokémon can run away!"),
     [STRINGID_CANTESCAPEDUETOUSEDMOVE]              = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} can no longer escape because it used No Retreat!"),
     [STRINGID_PKMNBECAMEWEAKERTOFIRE]               = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} became weaker to fire!"),
-    [STRINGID_ABOUTTOUSEPOLTERGEIST]                = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} is about to be attacked by its {B_BUFF1}!"),
+    [STRINGID_ABOUTTOUSEPOLTERGEIST]                = COMPOUND_STRING("{B_EFF_NAME_WITH_PREFIX} is about to be attacked by its {B_LAST_ITEM}!"),
     [STRINGID_CANTESCAPEBECAUSEOFCURRENTMOVE]       = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} can no longer escape because of Octolock!"),
     [STRINGID_NEUTRALIZINGGASENTERS]                = COMPOUND_STRING("Neutralizing gas filled the area!"),
     [STRINGID_NEUTRALIZINGGASOVER]                  = COMPOUND_STRING("The effects of the neutralizing gas wore off!"),
@@ -843,6 +843,8 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_SMOKEFILLSTHEAIR]                     = COMPOUND_STRING("Thick smoke filks the air."),
     [STRINGID_LEAVESFILLTHEAIR]                     = COMPOUND_STRING("Leaves swirl across the battlefield."),
     [STRINGID_LEAVESSCATTERED]                      = COMPOUND_STRING("The leaves scattered away."),
+    [STRINGID_DECAYSPREADS]                         = COMPOUND_STRING("Decay spreads everywhere."),
+    [STRINGID_DECAYWASCLEANSED]                     = COMPOUND_STRING("The decay was cleansed."),
     [STRINGID_SMOKEDISSIPTED]                       = COMPOUND_STRING("The smoke dissipated."),
     [STRINGID_PKMNMADESHELLGLEAM]                   = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} made its shell gleam! It's distorting type matchups!"),
     [STRINGID_FICKLEBEAMDOUBLED]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is going all out for this attack!"),
@@ -1017,6 +1019,7 @@ const u16 gMoveWeatherChangeStringIds[] =
     [B_MSG_STARTED_FOG]       = STRINGID_FOGCREPTUP, // Unused, can use for custom moves that set fog
     [B_MSG_STARTED_SMOKE]     = STRINGID_SMOKEFILLSTHEAIR,
     [B_MSG_STARTED_LEAVES]    = STRINGID_LEAVESFILLTHEAIR,
+    [B_MSG_STARTED_DECAY]     = STRINGID_DECAYSPREADS,
 };
 
 const u16 gAbilityWeatherChangeStringId[] =
@@ -1042,6 +1045,7 @@ const u16 gWeatherEndsStringIds[B_MSG_WEATHER_END_COUNT] =
     [B_MSG_WEATHER_END_SMOKE]        = STRINGID_SMOKEDISSIPTED,
     [B_MSG_WEATHER_END_STRONG_WINDS] = STRINGID_STRONGWINDSDISSIPATED,
     [B_MSG_WEATHER_END_LEAVES]       = STRINGID_LEAVESSCATTERED,
+    [B_MSG_WEATHER_END_DECAY]        = STRINGID_DECAYWASCLEANSED,
 };
 
 const u16 gWeatherTurnStringIds[] =
@@ -1056,12 +1060,14 @@ const u16 gWeatherTurnStringIds[] =
     [B_MSG_WEATHER_TURN_SMOKE]        = STRINGID_SMOKEFILLSTHEAIR,
     [B_MSG_WEATHER_TURN_STRONG_WINDS] = STRINGID_MYSTERIOUSAIRCURRENTBLOWSON,
     [B_MSG_WEATHER_TURN_LEAVES]       = STRINGID_LEAVESFILLTHEAIR,
+    [B_MSG_WEATHER_TURN_DECAY]        = STRINGID_DECAYSPREADS,
 };
 
 const u16 gSandStormHailDmgStringIds[] =
 {
     [B_MSG_SANDSTORM] = STRINGID_PKMNBUFFETEDBYSANDSTORM,
-    [B_MSG_HAIL]      = STRINGID_PKMNPELTEDBYHAIL
+    [B_MSG_HAIL]      = STRINGID_PKMNPELTEDBYHAIL,
+    [B_MSG_DECAY]     = STRINGID_PKMNSAPPEDBYDECAY
 };
 
 const u16 gProtectLikeUsedStringIds[] =
@@ -1294,7 +1300,7 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING,
     [WEATHER_PINK_LEAVES]        = STRINGID_LEAVESFILLTHEAIR,
     [WEATHER_AUTUMN_LEAVES]      = STRINGID_ITISRAINING,
-    [WEATHER_DECAY]              = STRINGID_ITISRAINING
+    [WEATHER_DECAY]              = STRINGID_DECAYSPREADS,
 };
 
 const u16 gTerrainStartsStringIds[] =
@@ -3172,6 +3178,8 @@ static const u8 *BattleStringGetOpponentClassByTrainerId(u16 trainerId)
         toCpy = gTrainerClasses[GetTrainerHillOpponentClass(trainerId)].name;
     else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
         toCpy = gTrainerClasses[GetEreaderTrainerClassId()].name;
+    else if (trainerId == TRAINER_LINK_OPPONENT)
+        toCpy = gTrainerClasses[TRAINER_NONE].name;
     else
         toCpy = gTrainerClasses[GetTrainerClassFromId(trainerId)].name;
 

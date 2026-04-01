@@ -628,23 +628,23 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
         return;
 
     isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
+    species = GetMonData(mon, MON_DATA_SPECIES);
+    personalityValue = GetMonData(mon, MON_DATA_PERSONALITY);
+    colorationValue = GetMonData(mon, MON_DATA_COLORATION);
 
-    if (gBattleSpritesDataPtr->battlerData[battler].transformSpecies == SPECIES_NONE)
-    {
-        species = GetMonData(mon, MON_DATA_SPECIES);
-        personalityValue = GetMonData(mon, MON_DATA_PERSONALITY);
-        colorationValue = GetMonData(mon, MON_DATA_COLORATION);
-    }
-    else
+    if (gBattleSpritesDataPtr->battlerData[battler].transformSpecies != SPECIES_NONE)
     {
         species = gBattleSpritesDataPtr->battlerData[battler].transformSpecies;
         // If battler has Gigantamax factor, try convert gfx to G-Max version
         if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX && GetMonData(mon, MON_DATA_GIGANTAMAX_FACTOR))
             gBattleSpritesDataPtr->battlerData[battler].transformSpecies = species = GetGMaxTargetSpecies(species);
 
-        personalityValue = gTransformedPersonalities[battler];
-        isShiny = gTransformedShininess[battler];
-        colorationValue = gTransformedColorations[battler];
+        if (gBattleMons[battler].volatiles.transformed)
+        {
+            personalityValue = gTransformedPersonalities[battler];
+            colorationValue = gTransformedColorations[battler];
+            isShiny = gTransformedShininess[battler];
+        }
     }
 
     position = GetBattlerPosition(battler);
@@ -666,7 +666,7 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
     CpuCopy32(gPlttBufferFaded + paletteOffset, gPlttBufferUnfaded + paletteOffset, 32);
     MakePaletteUnique(0x80 + battler * 16, species, colorationValue, IsMonShiny(mon));
     CpuCopy32(gPlttBufferFaded + 0x80 + battler * 16, gPlttBufferUnfaded + 0x80 + battler * 16, 32);
-    
+
     // transform's pink color
     if (gBattleMons[battler].volatiles.transformed)
     {
@@ -703,13 +703,6 @@ void DecompressTrainerFrontPic(u16 frontPicId, enum BattlerId battler)
     DecompressPicFromTable(&gTrainerSprites[frontPicId].frontPic,
                            gMonSpritesGfxPtr->spritesGfx[position]);
     LoadSpritePalette(&gTrainerSprites[frontPicId].palette);
-}
-
-void DecompressTrainerBackPic(enum TrainerPicID backPicId, enum BattlerId battler)
-{
-    enum BattlerPosition position = GetBattlerPosition(battler);
-    CopyTrainerBackspriteFramesToDest(backPicId, gMonSpritesGfxPtr->spritesGfx[position]);
-    LoadSpritePalette(&gTrainerBacksprites[backPicId].palette);
 }
 
 void FreeTrainerFrontPicPalette(u16 frontPicId)

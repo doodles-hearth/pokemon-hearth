@@ -281,7 +281,7 @@
     {
       "id": "HEAL_LOCATION_MIDDLE_ISLE",
       "map": "MAP_MIDDLE_ISLE",
-      "x": 3,
+      "x": 6,
       "y": 3,
       "respawn_map": "MAP_MIDDLE_ISLE",
       "respawn_x": 3,
@@ -290,8 +290,8 @@
     {
       "id": "HEAL_LOCATION_TOP_ISLE",
       "map": "MAP_TOP_ISLE",
-      "x": 3,
-      "y": 3,
+      "x": 23,
+      "y": 13,
       "respawn_map": "MAP_TOP_ISLE",
       "respawn_x": 3,
       "respawn_y": 3

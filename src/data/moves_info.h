@@ -8,6 +8,7 @@
 #include "constants/field_move.h"
 #include "constants/moves.h"
 #include "constants/contest.h"
+#include "constants/pokemon.h"
 
 // The Gen. 4+ contest data comes from urpg's contest movedex.
 
@@ -471,7 +472,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .windMove = B_EXTRAPOLATED_MOVE_FLAGS,
-        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNWHIPPEDWHIRLWIND },
+        .argument.twoTurnAttack = { .stringId = STRINGID_PKMNWHIPPEDWHIRLWIND },
         .contestEffect = CONTEST_EFFECT_AFFECTED_BY_PREV_APPEAL,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -639,7 +640,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .assistBanned = B_UPDATED_MOVE_FLAGS >= GEN_6,
-        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNFLEWHIGH, .status = STATE_ON_AIR },
+        .argument.twoTurnAttack = { .stringId = STRINGID_PKMNFLEWHIGH, .status = STATE_ON_AIR },
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_AVOID_STARTLE_ONCE : CONTEST_EFFECT_AVOID_STARTLE,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -2142,7 +2143,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_SPECIAL,
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
-        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNTOOKSUNLIGHT, .weather = B_WEATHER_SUN },
+        .argument.twoTurnAttack = { .stringId = STRINGID_PKMNTOOKSUNLIGHT, .weather = B_WEATHER_SUN },
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_AFFECTED_BY_PREV_APPEAL : CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -3931,7 +3932,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .criticalHitStage = B_UPDATED_MOVE_DATA >= GEN_3,
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
-        .argument.twoTurnAttack = { .stringId = B_UPDATED_MOVE_DATA >= GEN_4 ? STRINGID_CLOAKEDINAHARSHLIGHT : STRINGID_PKMNISGLOWING },
+        .argument.twoTurnAttack = { .stringId = STRINGID_CLOAKEDINAHARSHLIGHT },
     #if B_UPDATED_MOVE_DATA >= GEN_3
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLINCH,
@@ -6552,7 +6553,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .zMove = { .effect = Z_EFFECT_SPD_UP_1 },
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
-        .argument = { .weatherType =  BATTLE_WEATHER_RAIN },
+        .argument = { .weatherType = BATTLE_WEATHER_RAIN },
         .contestEffect = CONTEST_EFFECT_BETTER_WHEN_AUDIENCE_EXCITED,
         .contestCategory = C_UPDATED_MOVE_CATEGORIES >= GEN_6 ? CONTEST_CATEGORY_BEAUTY : CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = COMBO_STARTER_RAIN_DANCE,
@@ -7927,7 +7928,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .instructBanned = TRUE,
         .assistBanned = B_UPDATED_MOVE_FLAGS >= GEN_6,
         .skyBattleBanned = TRUE,
-        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNHIDUNDERWATER, .status = STATE_UNDERWATER },
+        .argument.twoTurnAttack = { .stringId = STRINGID_PKMNHIDUNDERWATER, .status = STATE_UNDERWATER },
         .contestEffect = CONTEST_EFFECT_AVOID_STARTLE_ONCE,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = COMBO_STARTER_DIVE,
@@ -9203,7 +9204,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .assistBanned = B_UPDATED_MOVE_FLAGS >= GEN_6,
-        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNSPRANGUP, .status = STATE_ON_AIR },
+        .argument.twoTurnAttack = { .stringId = STRINGID_PKMNSPRANGUP, .status = STATE_ON_AIR },
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_PARALYSIS,
             .chance = 30,
@@ -10064,6 +10065,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .parentalBondBanned = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_ITEM_MESSAGE,
+            .preAttackEffect = TRUE,
+            .self = TRUE,
+        },
+        {
             .moveEffect = MOVE_EFFECT_FLING,
         }),
         .contestEffect = CONTEST_EFFECT_WORSEN_CONDITION_OF_PREV_MONS,
@@ -18810,6 +18816,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
+        .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .argument.twoTurnAttack = { .stringId = STRINGID_METEORBEAMCHARGING },
         .additionalEffects = ADDITIONAL_EFFECTS({
@@ -18866,7 +18873,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .explosion = TRUE,
         .dampBanned = TRUE,
         .argument.terrainBoost = {
-            .terrain =  STATUS_FIELD_MISTY_TERRAIN,
+            .terrain = STATUS_FIELD_MISTY_TERRAIN,
             .percent = 50,
             .groundCheck = GROUND_CHECK_USER,
         },
@@ -19036,6 +19043,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_ITEM_MESSAGE,
+            .preAttackEffect = TRUE,
+        }),
         .contestEffect = CONTEST_EFFECT_BETTER_IF_FIRST,
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
@@ -21231,6 +21242,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
+        .sleepTalkBanned = TRUE,
+        .instructBanned = TRUE,
         .argument.twoTurnAttack = { .stringId = STRINGID_ELECTROSHOTCHARGING, .weather = B_WEATHER_RAIN },
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SP_ATK_PLUS_1,
@@ -23391,5 +23404,31 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_SakuraDance,
         .validApprenticeMove = TRUE,
         .fieldMove = FIELD_MOVE_CUT,
+    },
+    [MOVE_CORRUPT] =
+    {
+        .name = COMPOUND_STRING("Blossom"),
+        .description = COMPOUND_STRING(
+            "Summons a ruinous force\n"
+            "that consumes everything"
+        ),
+        .effect = EFFECT_WEATHER,
+        .power = 0,
+        .type = TYPE_DARK,
+        .accuracy = 0,
+        .pp = 10,
+        .target = TARGET_ALL_BATTLERS,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .argument = { .weatherType = BATTLE_WEATHER_DECAY },
+        .zMove = { .effect = Z_EFFECT_ATK_UP_3 },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .gravityBanned = FALSE,
+        .contestEffect = CONTEST_EFFECT_BETTER_IF_LAST,
+        .contestCategory = CONTEST_CATEGORY_CUTE,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_Corrupt,
     },
 };

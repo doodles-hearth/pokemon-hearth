@@ -7416,7 +7416,6 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .levelUpLearnset = sSpindaLevelUpLearnset,
         .teachableLearnset = sSpindaTeachableLearnset,
         .eggMoveLearnset = sSpindaEggMoveLearnset,
-        .monSpotTemplate = &gSpindaSpotTemplate
     },
 #endif //P_FAMILY_SPINDA
 

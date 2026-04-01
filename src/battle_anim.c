@@ -270,6 +270,7 @@ static const u8* const sBattleAnims_General[NUM_B_ANIMS_GENERAL] =
     [B_ANIM_SILPH_SCOPED]           = gBattleAnimGeneral_SilphScoped,
     [B_ANIM_ROCK_THROW]             = gBattleAnimGeneral_SafariRockThrow,
     [B_ANIM_SAFARI_REACTION]        = gBattleAnimGeneral_SafariReaction,
+    [B_ANIM_DECAY]                  = gBattleAnimGeneral_Decay,
 };
 
 static const u8* const sBattleAnims_Special[NUM_B_ANIMS_SPECIAL] =
@@ -1003,15 +1004,6 @@ static void Cmd_waitforvisualfinish(void)
     {
         sBattleAnimScriptPtr++;
         sAnimFramesToWait = 0;
-
-        // Assets can be safely unloaded at the end of waitforvisualfinish
-        // since it's guaranteed that nothing is currently using the assets
-        // by definition here.
-        // Only palettes are unloaded since that's what's usually hitting limits
-        // and is very quick to load again if needed.
-        // Unloading tile allocation was tested, but that did measurably increase
-        // the time it took to run animation tests
-        UnloadAllSpritePalettes();
     }
     else
     {

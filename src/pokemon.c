@@ -516,14 +516,20 @@ static const enum NationalDexOrder sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(JUMPLUFF),
     HOENN_TO_NATIONAL(SUNKERN),
     HOENN_TO_NATIONAL(SUNFLORA),
+#if P_NEW_EVOS_IN_REGIONAL_DEX && P_GEN_4_CROSS_EVOS
     HOENN_TO_NATIONAL(BUDEW),
+#endif
     HOENN_TO_NATIONAL(ROSELIA),
+#if P_NEW_EVOS_IN_REGIONAL_DEX && P_GEN_4_CROSS_EVOS
     HOENN_TO_NATIONAL(ROSERADE),
+#endif
     HOENN_TO_NATIONAL(KRICKETOT),
     HOENN_TO_NATIONAL(KRICKETUNE),
     HOENN_TO_NATIONAL(RHYDON),
     HOENN_TO_NATIONAL(RHYHORN),
+#if P_NEW_EVOS_IN_REGIONAL_DEX && P_GEN_4_CROSS_EVOS
     HOENN_TO_NATIONAL(RHYPERIOR),
+#endif
     HOENN_TO_NATIONAL(TURTWIG),
     HOENN_TO_NATIONAL(GROTLE),
     HOENN_TO_NATIONAL(TORTERRA),
@@ -746,35 +752,6 @@ static const enum NationalDexOrder sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(TOXIKYU),
     HOENN_TO_NATIONAL(VENONAT_TOKUAN),
     HOENN_TO_NATIONAL(VENOMOTH_TOKUAN),
-};
-
-const u8 *const gNatureNamePointers[NUM_NATURES] =
-{
-    [NATURE_HARDY] = COMPOUND_STRING("Hardy"),
-    [NATURE_LONELY] = COMPOUND_STRING("Lonely"),
-    [NATURE_BRAVE] = COMPOUND_STRING("Brave"),
-    [NATURE_ADAMANT] = COMPOUND_STRING("Adamant"),
-    [NATURE_NAUGHTY] = COMPOUND_STRING("Naughty"),
-    [NATURE_BOLD] = COMPOUND_STRING("Bold"),
-    [NATURE_DOCILE] = COMPOUND_STRING("Docile"),
-    [NATURE_RELAXED] = COMPOUND_STRING("Relaxed"),
-    [NATURE_IMPISH] = COMPOUND_STRING("Impish"),
-    [NATURE_LAX] = COMPOUND_STRING("Lax"),
-    [NATURE_TIMID] = COMPOUND_STRING("Timid"),
-    [NATURE_HASTY] = COMPOUND_STRING("Hasty"),
-    [NATURE_SERIOUS] = COMPOUND_STRING("Serious"),
-    [NATURE_JOLLY] = COMPOUND_STRING("Jolly"),
-    [NATURE_NAIVE] = COMPOUND_STRING("Naive"),
-    [NATURE_MODEST] = COMPOUND_STRING("Modest"),
-    [NATURE_MILD] = COMPOUND_STRING("Mild"),
-    [NATURE_QUIET] = COMPOUND_STRING("Quiet"),
-    [NATURE_BASHFUL] = COMPOUND_STRING("Bashful"),
-    [NATURE_RASH] = COMPOUND_STRING("Rash"),
-    [NATURE_CALM] = COMPOUND_STRING("Calm"),
-    [NATURE_GENTLE] = COMPOUND_STRING("Gentle"),
-    [NATURE_SASSY] = COMPOUND_STRING("Sassy"),
-    [NATURE_CAREFUL] = COMPOUND_STRING("Careful"),
-    [NATURE_QUIRKY] = COMPOUND_STRING("Quirky"),
 };
 
 // In Battle Palace, moves are chosen based on the pokemons nature rather than by the player
@@ -1864,6 +1841,7 @@ static void CreateEventMon(struct Pokemon *mon, enum Species species, u8 level, 
 
     CreateMon(mon, species, level, personality, otId);
     SetMonData(mon, MON_DATA_MODERN_FATEFUL_ENCOUNTER, &isModernFatefulEncounter);
+    CalculateMonStats(mon);
 }
 
 enum TrainerPicID GetUnionRoomTrainerPic(void)
@@ -5476,7 +5454,6 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
     {
         u8 friendshipLevel = 0;
         s32 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, 0);
-        enum TrainerClassID opponentTrainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
 
         if (friendship > 99)
             friendshipLevel++;
@@ -5494,6 +5471,11 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
             // Only if it's a trainer battle with league progression significance
             if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
                 return;
+
+            if (IsSpecialTrainer(TRAINER_BATTLE_PARAM.opponentA))
+                return;
+
+            enum TrainerClassID opponentTrainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
             if (!(opponentTrainerClass == TRAINER_CLASS_DOJO_MASTER
                 || opponentTrainerClass == TRAINER_CLASS_ELITE_FOUR
                 || opponentTrainerClass == TRAINER_CLASS_CHAMPION))
@@ -5512,9 +5494,9 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
     }
 }
 
-u8 CalculateFriendshipBonuses(struct Pokemon *mon, u32 modifier, enum HoldEffect itemHoldEffect)
+s32 CalculateFriendshipBonuses(struct Pokemon *mon, s32 modifier, enum HoldEffect itemHoldEffect)
 {
-    u32 bonus = 0;
+    s32 bonus = 0;
 
     if ((modifier > 0) && (itemHoldEffect == HOLD_EFFECT_FRIENDSHIP_UP))
         bonus += 150 * modifier / 100;

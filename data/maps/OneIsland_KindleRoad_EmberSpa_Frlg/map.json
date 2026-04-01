@@ -3,7 +3,6 @@
   "name": "OneIsland_KindleRoad_EmberSpa_Frlg",
   "layout": "LAYOUT_ONE_ISLAND_KINDLE_ROAD_EMBER_SPA",
   "music": "MUS_RG_FUCHSIA",
-  "region": "REGION_KANTO",
   "region_map_section": "MAPSEC_EMBER_SPA",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -12,12 +11,10 @@
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
-  "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": null,
   "object_events": [
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN_1",
       "x": 11,
       "y": 13,
@@ -31,7 +28,6 @@
       "flag": "0"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BALDING_MAN",
       "x": 15,
       "y": 11,
@@ -46,7 +42,7 @@
     },
     {
       "type": "object",
-      "graphics_id": "OBJ_EVENT_GFX_BLACKBELT",
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT_FRLG",
       "x": 6,
       "y": 8,
       "elevation": 3,
@@ -59,7 +55,6 @@
       "flag": "FLAG_HIDE_POSTGAME_GOSSIPERS"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_OLD_WOMAN_FRLG",
       "x": 20,
       "y": 7,
@@ -73,7 +68,6 @@
       "flag": "0"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN_1",
       "x": 10,
       "y": 5,
@@ -87,7 +81,6 @@
       "flag": "0"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BALDING_MAN",
       "x": 11,
       "y": 20,
@@ -121,7 +114,7 @@
       "script": "OneIsland_KindleRoad_EmberSpa_EventScript_SpaHeal"
     }
   ],
-  "bg_events": [
-
-  ]
+  "bg_events": [],
+  "floor_number": 0,
+  "region": "REGION_KANTO"
 }
