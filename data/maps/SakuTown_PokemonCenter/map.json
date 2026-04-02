@@ -215,6 +215,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BED_FARMER_1",
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
       "x": 1,
       "y": 4,
@@ -235,6 +236,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BED_FARMER_2",
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
       "x": 3,
       "y": 4,
@@ -255,6 +257,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BED_SCYTHER",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SCYTHER)",
       "x": 2,
       "y": 4,

@@ -3,9 +3,6 @@ const LOCALID_GRUNT = 3
 const LOCALID_FRONT_SCYTHER = 8
 const LOCALID_FRONT_FARMER_1 = 9
 const LOCALID_FRONT_FARMER_2 = 10
-const LOCALID_BED_SCYTHER = 13
-const LOCALID_BED_FARMER_1 = 11
-const LOCALID_BED_FARMER_2 = 12
 
 const VAR_GET_QUEST_LOG_STATE_SAKURA_LOVERS = VAR_TEMP_0
 const VAR_GET_QUEST_LOG_STATE_SAKURA_ESPEON = VAR_TEMP_1
@@ -262,7 +259,7 @@ script(local) HealedScytherScript{
 	))
 	waitmovement(0)
 
-	applymovement(LOCALID_BED_FARMER_1, moves(walk_in_place_fast_left))
+	applymovement(LOCALID_BED_FARMER_1, moves(face_player))
 	applymovement(LOCALID_BED_FARMER_2, moves(walk_up, face_left))
 	waitmovement(LOCALID_BED_FARMER_1)
 	waitmovement(LOCALID_BED_FARMER_2)
@@ -310,9 +307,9 @@ script(local) HealedScytherScript{
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER 0}Thank you, Wielder. I can give ye a reward for your effors. Just meet us in the fields outside."))
 	closemessage
 
-	applymovement(LOCALID_BED_FARMER_2, moves(walk_right * 6, walk_down * 2, walk_right * 2))
-	applymovement(LOCALID_BED_SCYTHER, moves(walk_right * 7, walk_down * 2, walk_right * 2))
-	applymovement(LOCALID_BED_FARMER_1, moves(walk_up, walk_right * 8, walk_down * 2, walk_right * 2))
+	applymovement(LOCALID_BED_FARMER_2, moves(delay_16, walk_right * 2, walk_down * 1, walk_right * 6))
+	applymovement(LOCALID_BED_SCYTHER, moves(delay_16, walk_right * 3, walk_down * 1, walk_right * 6))
+	applymovement(LOCALID_BED_FARMER_1, moves(walk_up, walk_right * 4, walk_down * 1, walk_right * 6))
 	waitmovement(LOCALID_BED_FARMER_2)
 	waitmovement(LOCALID_BED_SCYTHER)
 	waitmovement(LOCALID_BED_FARMER_1)
