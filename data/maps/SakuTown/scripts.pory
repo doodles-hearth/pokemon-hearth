@@ -790,7 +790,7 @@ script SakuTown_EventScript_LoversReunite {
 
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Hehehe… Hi.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Hehehe… Hello.\p"
 		"It's nice seeing you."
 	))
 	closemessage
@@ -810,11 +810,11 @@ script SakuTown_EventScript_LoversReunite {
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_left))
 
 	setspeaker(SP_NAME_ASHII)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}So do I.\nI felt like an insect that could do nothing but stare at the impossibly tall barricade between us.\p"
-		"And yet… Even fierce separatism can't keep us apart.\p"
-		"Tonight, we can have a midsummer dream of joy and mirth."
-	))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}So do I…\pI felt like a trapped insect only able\nto stare up at the wall between us.\p"
+		"And yet… even the mightiest barricade\ncan ever can't keep us apart.\p"
+		"Tonight, let's let ourselves dream this\nmidsummer's night with each other."
+	)
 	closemessage
 
 	applymovement(LOCALID_TAMA2, moves(walk_in_place_fast_right))
@@ -831,13 +831,15 @@ script SakuTown_EventScript_LoversReunite {
 	waitmovement(LOCALID_ASHII)
 	waitse
 
+	delay(180)
 	applymovement(LOCALID_TAMA2, moves(walk_in_place_fast_right))
 
 	setspeaker(SP_NAME_TAMA)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}We can't stay here long, Ashii.\n"
-		"My father begrundgingly let me go, but there's no telling the wrath our villages will wreak upon us if they see us here in the morning."
-	))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}We can't stay here long, Ashii.\p"
+		"My father begrundgingly let me go, but\nI worry for you.\p"
+		"I don't want you to suffer through your\nvillage's wrath just for seeing me."
+	)
 	closemessage
 
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_left))
@@ -858,10 +860,10 @@ script SakuTown_EventScript_LoversReunite {
 	applymovement(LOCALID_ASHII, moves(walk_in_place_fast_left))
 
 	setspeaker(SP_NAME_ASHII)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}…Tomorrow and tomorrow and tomorrow…\p"
-		"It creeps in a petty pace from day to day, but I would gladly wait a thousand of them to see you again."
-	))
+		"It creeps in a petty pace from day to\nday, but I would gladly wait a thousand\ltomorrows just to see you again."
+	)
 	closemessage
 
 	delay(60)

@@ -89,9 +89,9 @@ script SakuTown_House1_EventScript_Tama {
 		setspeaker(SP_NAME_TAMA)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}Ahem…\n"
-			"“My dear Tama,\lIt pains me that you aren't by my side each night.\l"
-			"The sweet chirping of birds pales in comparison to your hearty laugh.\l"
-			"I would move Heaven and Earth for us to be together.\l"
+			"“My dear Tama,\pIt pains me that you aren't by my side each night.\p"
+			"The sweet chirping of birds pales in comparison to your hearty laugh.\p"
+			"I would move Heaven and Earth for us to be together.\p"
 			"If your heart still rings true for mine, meet me under pale moonlight, in the vale betwixt our homes.\p"
 			"Sincerely yours,\n-Ashii {EMOJI_HEART}”\p"
 			"… … … … … …\n… … … … … …"
@@ -105,7 +105,7 @@ script SakuTown_House1_EventScript_Tama {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}…Ahem. Sorry, this is a little embarrassing…\p"
 			"What does she mean with that “vale”, though?…\p"
-			"Oh!\n She must be talking about the small valley east of here!\p"
+			"Oh!\p She must be talking about the small valley east of here!\p"
 			"And “pale moonlight”…\nThat must be tonight!\p"
 			"Of course! Why else ask you to deliver this now?"
 		))

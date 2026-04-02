@@ -53,8 +53,8 @@ script(local) AshiiScript_FirstEncounter {
 	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Hey, what are you doing in my house?\nWere you eavesdropping?\p"
-		"…It doesn't matter anyway.\nThe boy who stole my heart lives in\lSaku Village, but our two villages hate each other, so I can't see him anymore.\p"
-		"If only there was a way for him\nto know my feelings…"
+		"…It doesn't matter anyway.\pThe boy who stole my heart… he lives in Saku Village.\pBut our two villages hate each other, so I can't see him anymore.\p"
+		"If only there was a way for him to know how I feel…"
 	))
 	closemessage
 	delay(30)
@@ -68,7 +68,7 @@ script(local) AshiiScript_FirstEncounter {
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Wait, you're not from here, are you?\p"
 		"My name is Ashii. I need your help.\p"
 		"The guard won't let anyone from\nKura Village enter Saku Village.\lBut you should be fine!\p"
-		"Please, go to Saku Village and\ngive him this.\p"
+		"Please, go to Saku Village and give him this.\p"
 		"He'll know it's from me…"
 	))
 	closemessage
