@@ -140,12 +140,12 @@ script KuraTown_House1_OldWomansSon {
 	applymovement(VAR_LAST_TALKED, moves(emote_angry))
 	faceplayer
 	setspeaker(SP_NAME_GUY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY 0}The Pokémon Council didn't see fit to build a Refuge in our town.\p"
-		"But those jerks over at Saku Village won't let us use theirs!\p"
-		"So my mother has to work hard to heal all the villager's Pokémon.\l"
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY 0}The Pokémon Council didn't see it fit to\nbuild a Refuge in our town.\p"
+		"But those jerks over at Saku Village\nwon't let us use theirs!\p"
+		"So my mother has to work hard to heal\nall the villager's Pokémon.\p"
 		"It's not fair!"
-	))
+	)
 	closemessage
 	release
 }
