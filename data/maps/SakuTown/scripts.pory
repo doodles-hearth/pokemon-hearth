@@ -813,7 +813,7 @@ script SakuTown_EventScript_LoversReunite {
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}So do I…\pI felt like a trapped insect only able\nto stare up at the wall between us.\p"
 		"And yet… even the mightiest barricade\ncan ever can't keep us apart.\p"
-		"Tonight, let's let ourselves dream this\nmidsummer's night with each other."
+		"Let's let ourselves dream this\nmidsummer's night, my love."
 	)
 	closemessage
 
