@@ -811,9 +811,10 @@ script SakuTown_EventScript_LoversReunite {
 
 	setspeaker(SP_NAME_ASHII)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}So do I…\pI felt like a trapped insect only able\nto stare up at the wall between us.\p"
-		"And yet… even the mightiest barricade\ncan ever can't keep us apart.\p"
-		"Let's let ourselves dream this\nmidsummer's night, my love."
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}As do I…\p"
+		"I felt like a hollowed out prisoner in my\nown town. My own home.\p"
+		"My heart, my soul—beyond the walls of\nmy containment.\p"
+		"Yet now I can see you, hear you, feel\nyou once again!\p"
 	)
 	closemessage
 
