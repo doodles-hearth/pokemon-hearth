@@ -271,6 +271,9 @@ const u16 gTrainerPalette_MagmaLeaderMaxie[] = INCBIN_U16("graphics/trainers/fro
 const u32 gTrainerFrontPic_Lass[] = INCBIN_U32("graphics/trainers/front_pics/lass.4bpp.smol");
 const u16 gTrainerPalette_Lass[] = INCBIN_U16("graphics/trainers/front_pics/lass.gbapal");
 
+const u32 gTrainerFrontPic_DisguiseKid[] = INCBIN_U32("graphics/trainers/front_pics/disguise_kid.4bpp.smol");
+const u16 gTrainerPalette_DisguiseKid[] = INCBIN_U16("graphics/trainers/front_pics/disguise_kid.gbapal");
+
 const u32 gTrainerFrontPic_GemManiac[] = INCBIN_U32("graphics/trainers/front_pics/gem_maniac.4bpp.smol");
 const u16 gTrainerPalette_GemManiac[] = INCBIN_U16("graphics/trainers/front_pics/gem_maniac.gbapal");
 
@@ -675,6 +678,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_POKEMON_RANGER_F, gTrainerFrontPic_PokemonRangerF, gTrainerPalette_PokemonRangerF),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_MAGMA_LEADER_MAXIE, gTrainerFrontPic_MagmaLeaderMaxie, gTrainerPalette_MagmaLeaderMaxie),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_LASS, gTrainerFrontPic_Lass, gTrainerPalette_Lass),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_DISGUISE_KID, gTrainerFrontPic_DisguiseKid, gTrainerPalette_DisguiseKid),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_ZUBAT_GRUNT_M, gTrainerFrontPic_ZubatGruntM, gTrainerPalette_Zubat),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_ZUBAT_GRUNT_F, gTrainerFrontPic_ZubatGruntF, gTrainerPalette_Zubat),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_CROBAT_BOSS, gTrainerFrontPic_CrobatBoss, gTrainerPalette_Crobat),

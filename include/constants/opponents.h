@@ -27,7 +27,7 @@
 #define TRAINER_RYOUI                        20
 #define TRAINER_HARUTO                       21
 #define TRAINER_KOTARO                       22
-#define TRAINER_GRUNT_MT_PYRE_1              23
+#define TRAINER_EREN                         23
 #define TRAINER_GRUNT_MT_PYRE_2              24
 #define TRAINER_GRUNT_MT_PYRE_3              25
 #define TRAINER_GRUNT_WEATHER_INST_4         26
