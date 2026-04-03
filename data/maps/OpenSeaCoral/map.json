@@ -30,7 +30,7 @@
     },
     {
       "map": "MAP_TOP_ISLE",
-      "offset": 0,
+      "offset": -15,
       "direction": "left"
     }
   ],
