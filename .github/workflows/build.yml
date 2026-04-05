@@ -22,7 +22,7 @@ jobs:
     if: github.actor != 'allcontributors[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Environment Setup
         uses: ./.github/actions/environment-setup
 
@@ -35,7 +35,7 @@ jobs:
     if: github.actor != 'allcontributors[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Environment Setup
         uses: ./.github/actions/environment-setup
 
@@ -48,7 +48,7 @@ jobs:
     if: github.actor != 'allcontributors[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Environment Setup
         uses: ./.github/actions/environment-setup
 
@@ -61,7 +61,7 @@ jobs:
     if: github.actor != 'allcontributors[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Environment Setup
         uses: ./.github/actions/environment-setup
 
