@@ -609,7 +609,7 @@ Pic: Black Belt
 Gender: Male
 Music: Intense
 Battle Type: Singles
-AI: Check Bad Move
+AI: Try To Faint
 
 Makuhita
 Level: 10
@@ -772,18 +772,27 @@ Level: 26
 - Leech Life
 - Agility
 
-=== TRAINER_GRUNT_MT_PYRE_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+=== TRAINER_UTSU ===
+Name: Utsu
+Class: Beauty
+Pic: Masquerain Woman
+Gender: Female
+Music: Female
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Carvanha
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Masquerain
+Level: 26
+- Stun Spore
+- Air Cutter
+- Quick Attack
+- Bubble Beam
+
+Ninetales
+Level: 26
+- Hex
+- Fire Spin
+- Extrasensory
 
 === TRAINER_GRUNT_MT_PYRE_3 ===
 Name: GRUNT
@@ -1239,13 +1248,11 @@ Music: Hiker
 Battle Type: Singles
 AI: Basic Trainer
 
-Sandslash
-Level: 27
-IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
+Torkoal
+Level: 28
+- Curse
+- Lava Plume
+- Body Slam
 
 === TRAINER_KOTETSU ===
 Name: Kotetsu
@@ -1553,103 +1560,112 @@ IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 - Tail Whip
 - Surf
 
-=== TRAINER_SIMON ===
-Name: SIMON
-Class: Tuber M
-Pic: Tuber M
+=== TRAINER_NII_NEE ===
+Name: Nii & Nee
+Class: Twins
+Pic: Twins
 Gender: Male
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
+Music: Twins
+Battle Type: Doubles
+AI: Basic Trainer
 
-Azurill
-Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Marill
-Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_CHARLIE ===
-Name: CHARLIE
-Class: Tuber M
-Pic: Tuber M
-Gender: Male
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Marill
+Raitora
 Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Thunder Fang
+- Bite
+- Helping Hand
 
-=== TRAINER_RICKY_2 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
+Steenee
+Level: 26
+- Double Slap
+- Play Nice
+- Magical Leaf
+- Sweet Scent
+
+=== TRAINER_MEIRU ===
+Name: Meiru
+Class: Messenger
+Pic: Hiker
 Gender: Male
-Music: Girl
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Linoone
+Pelipper
+Level: 27
+- Pursuit
+- Water Pulse
+- Tailwind
+
+=== TRAINER_MAKI ===
+Name: Maki
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer
+
+Mawile (F)
 Level: 27
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
+- Vise Grip
+- Fake Tears
+- Bite
+- Fairy Wind
 
-=== TRAINER_RICKY_3 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
+=== TRAINER_DANJO ===
+Name: Danjo
+Class: Ninja Boy
+Pic: Ninja Boy
 Gender: Male
-Music: Girl
+Music: Suspicious
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Linoone
-Level: 30
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
-
-=== TRAINER_RICKY_4 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
-Gender: Male
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Linoone
+Vigoroth
 Level: 33
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
+IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+- Counter
+- Chip Away
+- Uproar
+- Encore
 
-=== TRAINER_RICKY_5 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
-Gender: Male
-Music: Girl
+Thievul
+Level: 33
+- Sucker Punch
+- Nasty Plot
+- Quick Attack
+
+=== TRAINER_FURAWA ===
+Name: Furawa
+Class: Gardener
+Pic: Gardener
+Gender: Female
+Music: Female
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Linoone
-Level: 36
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
+Phantump
+Level: 28
+- Curse
+- Leech Seed
+- Feint Attack
+
+=== TRAINER_YUGAO ===
+Name: Yugao
+Class: Gardener
+Pic: Gardener
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer
+
+Roselia
+Level: 27
+- Leech Seed
+- Giga Drain
+- Toxic Spikes
 
 === TRAINER_RANDALL ===
 Name: RANDALL
@@ -8265,12 +8281,18 @@ Battle Type: Singles
 AI: Check Bad Move
 
 Cramorant
-Level: 18
+Level: 26
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Stockpile
+- Swallow
+- Spit Up
 
 Krabby
-Level: 18
+Level: 26
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Metal Claw
+- Leer
+- Bubble Beam
 
 === TRAINER_CORA ===
 Name: CORA
@@ -9202,15 +9224,19 @@ Pic: Cook
 Gender: Male
 Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
-
-Nacli
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+AI: Basic Trainer
 
 Dwebble
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 25
+- Bug Bite
+- Stealth Rock
+- Feint Attack
+
+Naclstack
+Level: 26
+- Salt Cure
+- Mud Shot
+- Rock Polish
 
 === TRAINER_MIU_AND_YUKI ===
 Name: MIU & YUKI
@@ -11462,18 +11488,22 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 Name: Musashi
 Class: Battle Guy
 Pic: Battle Guy
-Gender: Male
+Gender: Female
 Music: Intense
 Battle Type: Singles
 AI: Basic Trainer
 
-Makuhita
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Hariyama
+Level: 25
+- Focus Energy
+- Vital Throw
+- Fake Out
 
-Shroomish
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Breloom
+Level: 26
+- Headbutt
+- Mach Punch
+- Leech Seed
 
 === TRAINER_MINORI ===
 Name: Minori

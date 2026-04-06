@@ -1,11 +1,9 @@
 const LOCALID_BERRYWOMAN = 5
-const LOCALID_SAMURAI = 21
 const LOCALID_CUT_MASTER = 19
 const LOCALID_CROBAT_SHADOW_BOSS = 24
 const LOCALID_CROBAT_SHADOW_GRUNT_TOP = 22
 const LOCALID_CROBAT_SHADOW_GRUNT_RIGHT = 25
 const LOCALID_CROBAT_SHADOW_GRUNT_LEFT = 23
-const LOCALID_KECLEON = 27
 const FLAG_HIDE_CUT_MASTER = FLAG_TEMP_1
 const VAR_DO_CUT_MASTER_CUTSCENE = VAR_TEMP_0
 const VAR_HOUR_OF_DAY = VAR_0x8000
@@ -297,20 +295,71 @@ movement TranquilRoute_Movement_MysteriousSamuraiWalksAway {
 
 script TranquilRoute_EventScript_Girl {
 	setspeaker(SP_NAME_GIRL)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 0}What? Oh, I don't fight.\pMy Pokémon and I are just strolling."), MSGBOX_NPC)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 0}What? Oh, I don't fight.\nMy Pokémon and I are just strolling."), MSGBOX_NPC)
+}
+
+script TranquilRoute_EventScript_Fanboy {
+	lock
+	applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_down))
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}{SPEAKER NAME_NINJA_BOY}That's right, crush her!!"))
+	closemessage
+	release
+}
+
+script TranquilRoute_EventScript_Fangirl {
+	lock
+	applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_up))
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}{SPEAKER NAME_SCHOOL_KID}Hit 'em harder!!"))
+	closemessage
+	release
 }
 
 script TranquilRoute_EventScript_WhiteslateRoadblock {
 	lock
-	applymovement(LOCALID_SAMURAI, Common_Movement_WalkInPlaceFasterRight)
+	playbgm(MUS_VS_TRAINER, FALSE)
+
+	applymovement(LOCALID_TRANQUIL_RT_BLOCK_NINJA, moves(walk_in_place_fast_down))
 	waitmovement(0)
 
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Sorry, you can't go through. The road ahead is blocked."))
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}{SPEAKER NAME_NINJA_BOY}You shall know defeat at the hand\nof my ninja Pokémon!\l"
+		"Nickit, use Feint Attack!"
+	))
 	closemessage
 
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right))
+	playmoncry(SPECIES_NICKIT, CRY_MODE_ENCOUNTER)
+	waitmoncry
+	applymovement(LOCALID_TRANQUIL_RT_BLOCK_NICKIT, moves(lock_facing_direction, walk_fast_down, walk_fast_up, unlock_facing_direction))
+	playse(SE_EFFECTIVE)
 	waitmovement(0)
+	waitse
+
+	applymovement(LOCALID_TRANQUIL_RT_BLOCK_GIRL, moves(walk_in_place_fast_up))
+	waitmovement(0)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}{SPEAKER NAME_SCHOOL_KID}Your pathetic ninja costume can't\nbeat the sheer power of knowledge!\l"
+		"Shroomish! Headbutt!"
+	))
+	closemessage
+
+
+	applymovement(LOCALID_TRANQUIL_RT_BLOCK_SHROOMISH, moves(jump_in_place_up))
+	playmoncry(SPECIES_SHROOMISH, CRY_MODE_ENCOUNTER)
+	waitmoncry
+	waitmovement(0)
+	applymovement(LOCALID_TRANQUIL_RT_BLOCK_SHROOMISH, moves(lock_facing_direction, walk_fast_up, walk_fast_down, unlock_facing_direction))
+	playse(SE_M_HEADBUTT)
+	waitmovement(0)
+	waitse
+
+	fadedefaultbgm
+
+	setnamedmon(SPECIES_SHROOMISH)
+	setnamedmon(SPECIES_NICKIT)
+	setseenmon(SPECIES_SHROOMISH)
+	setseenmon(SPECIES_NICKIT)
 
 	release
 }
@@ -537,16 +586,16 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	specialvar(VAR_RESULT, GetPlayerFacingDirection)
 	if (var(VAR_RESULT) == DIR_EAST) {
 		applymovement(VAR_LAST_TALKED, moves(walk_up, walk_left * 4, walk_up * 6))
-		applymovement(LOCALID_KECLEON, moves(walk_left, walk_up, walk_left * 5, walk_up * 5))
+		applymovement(LOCALID_TRANQUIL_RT_KECLEON, moves(walk_left, walk_up, walk_left * 5, walk_up * 5))
 	} else {
 		applymovement(VAR_LAST_TALKED, moves(walk_left * 4, walk_up * 7))
-		applymovement(LOCALID_KECLEON, moves(walk_left * 5, walk_up * 6))
+		applymovement(LOCALID_TRANQUIL_RT_KECLEON, moves(walk_left * 5, walk_up * 6))
 	}
 	waitmovement(VAR_LAST_TALKED)
-	waitmovement(LOCALID_KECLEON)
+	waitmovement(LOCALID_TRANQUIL_RT_KECLEON)
 
 	removeobject(VAR_LAST_TALKED)
-	removeobject(LOCALID_KECLEON)
+	removeobject(LOCALID_TRANQUIL_RT_KECLEON)
 
 	setflag(FLAG_MET_TRAVELING_MERCHANT)
 	release

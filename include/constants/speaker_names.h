@@ -94,6 +94,8 @@ enum SpeakerNames {
     SP_NAME_ELDER_JOMON,
     SP_NAME_MEMORY_GIRL,
     SP_NAME_DISGUISE_KID,
+    SP_NAME_TWIN,
+    SP_NAME_MESSENGER,
     SP_NAME_COUNT,
 };
 

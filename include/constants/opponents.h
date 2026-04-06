@@ -28,7 +28,7 @@
 #define TRAINER_HARUTO                       21
 #define TRAINER_KOTARO                       22
 #define TRAINER_EREN                         23
-#define TRAINER_GRUNT_MT_PYRE_2              24
+#define TRAINER_UTSU                         24
 #define TRAINER_GRUNT_MT_PYRE_3              25
 #define TRAINER_GRUNT_WEATHER_INST_4         26
 #define TRAINER_GRUNT_AQUA_HIDEOUT_5         27
@@ -69,12 +69,12 @@
 #define TRAINER_LOLA_4                       62
 #define TRAINER_LOLA_5                       63
 #define TRAINER_RICKY_1                      64
-#define TRAINER_SIMON                        65
-#define TRAINER_CHARLIE                      66
-#define TRAINER_RICKY_2                      67
-#define TRAINER_RICKY_3                      68
-#define TRAINER_RICKY_4                      69
-#define TRAINER_RICKY_5                      70
+#define TRAINER_NII_NEE                      65
+#define TRAINER_MEIRU                        66
+#define TRAINER_MAKI                         67
+#define TRAINER_DANJO                        68
+#define TRAINER_FURAWA                       69
+#define TRAINER_YUGAO                        70
 #define TRAINER_RANDALL                      71
 #define TRAINER_PARKER                       72
 #define TRAINER_GEORGE                       73

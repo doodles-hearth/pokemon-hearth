@@ -1,8 +1,3 @@
-const LOCALID_ROADBLOCK_SCHOOLKID = 16
-const LOCALID_ROADBLOCK_NINJA_BOY = 10
-const LOCALID_ROADBLOCK_NUZLEAF = 17
-const LOCALID_ROADBLOCK_BRELOOM = 18
-
 mapscripts WindsweptRoute_MapScripts {
 	// MAP_SCRIPT_ON_LOAD: WillSalesmanSpawn
 	// MAP_SCRIPT_ON_TRANSITION: WillSalesmanSpawn
@@ -13,51 +8,49 @@ script WindsweptRoute_EventScript_OvergrownTrees {
 	faceplayer
 	setspeaker(SP_NAME_MAN)
 	if (flag(FLAG_CUT_TREE_SILVER_TUNNEL)) {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Someone cut down that annoying tree! We can go to Silveridge again!"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Someone cut down that annoying tree!\nWe can go to Silveridge again!"
 		))
 	} else {
-		msgbox(format(
-			"The weeds got out of control, some trees block the way to Silver Tunnel…\p"
-			"We'll eventually have to ask the Cut master on Tranquil route for help…"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}The weeds got out of control, some\ntrees block the way to Silver Tunnel…\p"
+			"We'll eventually have to ask the Cut\nmaster on Tranquil route for help…"
 		))
 	}
 	release
 }
 
-script WindsweptRoute_EventScript_Trainer1 {
+script WindsweptRoute_EventScript_Musashi {
 	trainerbattle_single(
 		TRAINER_MUSASHI_1,
-		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}These winds blow as strong as my will to win!"),
+		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL 0}These winds blow as strong as my\nwill to win!"),
 		format("You blew us away!")
 	)
-	setspeaker(SP_NAME_BATTLE_GUY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_BATTLE_GIRL 0}{SPEAKER NAME_BATTLE_GIRL}I come here to train my Pokémon.\pThe harsh weather helps us give the\nbest of ourselves."), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WindsweptRoute_EventScript_Itamae {
 	trainerbattle_single(
 		TRAINER_ITAMAE,
-		format("{CREATE_MUGSHOT MUGSHOT_COOK 0}I'm scouring this salty grass for the tastiest ingredients!"),
+		format("{CREATE_MUGSHOT MUGSHOT_COOK 0}I'm scouring this salty grass for\nthe tastiest ingredients!"),
 		format("Bitter is the taste of defeat…")
 	)
-	setspeaker(SP_NAME_COOK)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_COOK 0}This place is an inspiration for my innovative cuisine.\p"
-		"The rocks are salty, the plants are salty… To an extent, even the air is salty."
-	), MSGBOX_AUTOCLOSE)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_COOK 0}{SPEAKER NAME_COOK}This place is an inspiration for my\ninnovative cuisine.\p"
+		"The rocks are salty, the grass is salty…\nTo an extent, the air is salt!"
+	, MSGBOX_AUTOCLOSE)
 	end
 }
 
-script WindsweptRoute_EventScript_Trainer3 {
+script WindsweptRoute_EventScript_Makoto {
 	trainerbattle_single(
 		TRAINER_MAKOTO_1,
-		format("These cliffs are so damn tall! Good thing I have a damn long fishing rod."),
+		format("These cliffs are so damn tall! Good\nthing I have a damn long fishing rod."),
 		format("My rod didn't keep me from losing…")
 	)
 	setspeaker(SP_NAME_FISHERMAN)
-	msgbox(format("Look at that poor sod over there! His fishing rod's so short, I can't help but laugh!"), MSGBOX_AUTOCLOSE)
+	msgbox(format("Look at that poor sod over there!\nHis fishing rod's so short,\lI can't help but laugh!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -65,9 +58,9 @@ script WindsweptRoute_EventScript_Fisherman_ShortRod {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_FISHERMAN)
-	msgbox(format(
-		"That guy over there keeps bragging about having a long fishing rod.\p"
-		"Little does he realize that I, with my much shorter rod, catch only the highest-jumping fish!"
+	msgbox((
+		"That guy over there keeps bragging\nabout having a long fishing rod.\p"
+		"But I, with my shorter rod, catch only\nthe highest-jumping fish!"
 	))
 	closemessage
 	release
@@ -76,88 +69,92 @@ script WindsweptRoute_EventScript_Fisherman_ShortRod {
 script WindsweptRoute_EventScript_Roku {
 	trainerbattle_single(
 		TRAINER_ROKU,
-		format("Uh, I was just taking a short break, okay?"),
+		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Uh, I was just taking a short break, okay?"),
 		format("I mistook you for the boss…")
 	)
-	setspeaker(SP_NAME_MINER)
-	msgbox(format("Please don't tell my colleagues I've been slacking off…"), MSGBOX_AUTOCLOSE)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}{SPEAKER NAME_MINER}Please don't tell my colleagues I've been slacking off…"), MSGBOX_AUTOCLOSE)
 	end
 }
 
-script WindsweptRoute_EventScript_Trainer4 {
-	trainerbattle_single(
-		TRAINER_MUSASHI_1,
-		format("These winds blow as strong as my will to win!"),
-		format("You blew us away!")
+script WindsweptRoute_EventScript_Nii {
+	trainerbattle_double(
+		TRAINER_NII_NEE,
+		format("Nee and I, we do everything together!"),
+		format("Together we fall…"),
+		format("You'll need more Pokémon than that\nif you hope to beat us!")
 	)
-	setspeaker("Musashi")
-	msgbox(format("I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
+	msgbox(("{SPEAKER NAME_TWIN}Being an only child must be lonely."), MSGBOX_AUTOCLOSE)
 	end
 }
 
-script WindsweptRoute_EventScript_Trainer5 {
-	trainerbattle_single(
-		TRAINER_MUSASHI_1,
-		format("These winds blow as strong as my will to win!"),
-		format("You blew us away!")
+script WindsweptRoute_EventScript_Nee {
+	trainerbattle_double(
+		TRAINER_NII_NEE,
+		format("Nii and I, we've been through thick\nand thin!"),
+		format("We remain inseparable!"),
+		format("Where are your Pokémon?\nBring them here and we'll battle!")
 	)
-	setspeaker("Musashi")
-	msgbox(format("I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
+	msgbox(("{SPEAKER NAME_TWIN}You're journeying all on your own?\nDon't you get bored?"), MSGBOX_AUTOCLOSE)
 	end
 }
 
-script WindsweptRoute_EventScript_Trainer6 {
+script WindsweptRoute_EventScript_Meiru {
 	trainerbattle_single(
-		TRAINER_MUSASHI_1,
-		format("These winds blow as strong as my will to win!"),
-		format("You blew us away!")
+		TRAINER_MEIRU,
+		format("You're not expecting a letter,\nare you?"),
+		format("This felt like receiving a\nsternly-worded letter!")
 	)
-	setspeaker("Musashi")
-	msgbox(format("I come here to train my Pokémon. The harsh weather helps us give the best of ourselves."), MSGBOX_AUTOCLOSE)
+	msgbox(("{SPEAKER NAME_MESSENGER}I'm supposed to deliver this letter,\nbut I can't make out the address!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
-script WindsweptRoute_EventScript_TrainerBattleRoadblock {
-	lock
-	playbgm(MUS_VS_TRAINER, FALSE)
-
-	applymovement(LOCALID_ROADBLOCK_NINJA_BOY, moves(walk_in_place_fast_left))
-	waitmovement(0)
-
-	setspeaker(SP_NAME_NINJA_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}You shall know defeat at the hand of my ninja Pokémon!\p"
-		"Nuzleaf, use Feint Attack!"
-	))
+script WindsweptRoute_EventScript_Maki {
+	trainerbattle_single(
+		TRAINER_MAKI,
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Not to be dramatic, but I would die\nfor my Mawile!"),
+		format("Kn-knocked our teeth out!"),
+		WindsweptRoute_EventScript_MakiPostBattle
+	)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_LASS 0}{SPEAKER NAME_LASS}Look at her strong jawline…\nHer adorable little teeth…\p"
+		"Mawile looks cute on purpose to trick\nand hunt her prey, teehee."
+	)
 	closemessage
-
-	playmoncry(SPECIES_NUZLEAF, CRY_MODE_ENCOUNTER)
-	waitmoncry
-	applymovement(LOCALID_ROADBLOCK_NUZLEAF, moves(lock_facing_direction, walk_fast_left, walk_fast_right, unlock_facing_direction))
-	playse(SE_EFFECTIVE)
-	waitmovement(0)
-	waitse
-
-	applymovement(LOCALID_ROADBLOCK_SCHOOLKID, moves(walk_in_place_fast_right))
-	waitmovement(0)
-
-	setspeaker(SP_NAME_SCHOOL_KID)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Your pathetic ninja costume can't beat the sheer power of knowledge!\p"
-		"Breloom! Headbutt!"
-	))
-	closemessage
-
-
-	applymovement(LOCALID_ROADBLOCK_BRELOOM, moves(jump_in_place_right))
-	playmoncry(SPECIES_BRELOOM, CRY_MODE_ENCOUNTER)
-	waitmoncry
-	waitmovement(0)
-	applymovement(LOCALID_ROADBLOCK_BRELOOM, moves(lock_facing_direction, walk_fast_right, walk_fast_left, unlock_facing_direction))
-	playse(SE_M_HEADBUTT)
-	waitmovement(0)
-	waitse
-
-	fadedefaultbgm
+	setdescribedmon(SPECIES_MAWILE)
 	release
+	end
+}
+
+script WindsweptRoute_EventScript_MakiPostBattle {
+	setnamedmon(SPECIES_MAWILE)
+}
+
+script WindsweptRoute_EventScript_Furawa {
+	trainerbattle_single(
+		TRAINER_FURAWA,
+		format("{CREATE_MUGSHOT MUGSHOT_GARDENER 0}I love gardening!\nBut my plants keep dying…"),
+		format("Can't get any worse…")
+	)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}{SPEAKER NAME_GARDENER}Maybe if I water them more?\nBut I already water them so much…",
+		MSGBOX_AUTOCLOSE
+	)
+	end
+}
+
+script WindsweptRoute_EventScript_Yugao {
+	trainerbattle_single(
+		TRAINER_YUGAO,
+		format("{CREATE_MUGSHOT MUGSHOT_GARDENER 0}I kind of neglect my plants, but\nsomehow, they still thrive!"),
+		format("My beautiful roses!")
+	)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}{SPEAKER NAME_GARDENER}I just water my plants whenever\nI remember they exist, haha!",
+		MSGBOX_AUTOCLOSE
+	)
+	end
+}
+
+script WindsweptRoute_EventScript_Sign {
+	msgbox(("{UP_ARROW} Windycape\n{LEFT_ARROW}Scenic Route"), MSGBOX_SIGN)
 }

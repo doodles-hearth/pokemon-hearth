@@ -407,7 +407,7 @@ MtPyre_Summit_EventScript_Grunt1::
 	end
 
 MtPyre_Summit_EventScript_Grunt2::
-	trainerbattle_single TRAINER_GRUNT_MT_PYRE_2, MtPyre_Summit_Text_Grunt2Intro, MtPyre_Summit_Text_Grunt2Defeat
+	trainerbattle_single TRAINER_DUMMY, MtPyre_Summit_Text_Grunt2Intro, MtPyre_Summit_Text_Grunt2Defeat
 	msgbox MtPyre_Summit_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
 	end
 

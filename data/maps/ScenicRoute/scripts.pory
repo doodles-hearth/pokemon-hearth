@@ -128,7 +128,7 @@ script ScenicRoute_EventScript_Invisible {
 
             msgbox((
                 "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_HEX_MANIAC}The invisible Pokémon was not a\nGhost, but a Kecleon?!\l"
-                "I'm like so disappointed…\p"
+                "I'm like, so disappointed…\p"
                 "I'd brought a special Poké Ball just\nto catch it and all…\p"
                 "Well, I guess I don't need it anymore.\nI guess you can like, take it."
             ))
@@ -136,19 +136,29 @@ script ScenicRoute_EventScript_Invisible {
 
             giveitem(ITEM_DUSK_BALL)
 
-            msgbox(format(
-                "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_HEX_MANIAC}Can you also, like, take my bitter disappointment, or whatever?"
+            msgbox((
+                "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_HEX_MANIAC}Can you also, like, take my bitter\ndisappointment, or whatever?"
             ))
             closemessage
 
             setflag(FLAG_RECEIVED_HEX_MANIAC_GHOST_BALL)
         }
     } else {
-        msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_HEX_MANIAC}There's something invisible in the way right there…\p"
-            "Gosh, I'm sure it's a cool Ghost Pokémon…"
+        msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_HEX_MANIAC}There's something invisible in the\nway right there…\p"
+            "Gosh, I'm sure it's a cool\nGhost Pokémon…"
         ))
         closemessage
     }
     release
+}
+
+script ScenicRoute_EventScript_Danjo {
+    trainerbattle_single(
+		TRAINER_DANJO,
+		format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}Someone, finally!\nUh, I mean, aha, gotcha!"),
+		format("Looks like I was gotcha'd!")
+	)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}{SPEAKER NAME_NINJA_BOY}My fingers get so sore holding this\npiece of cardboard…"), MSGBOX_AUTOCLOSE)
+	end
 }
