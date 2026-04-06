@@ -274,11 +274,7 @@
 /*
     VAR_SAKU_KURA_QUEST_ESPEON_STATEs
     // 0: Quest hasn't started
-    // 1: Talked to lady but not to Espeon's master
-    // 2: Talked to Espeon's master but not to lady
-    // 3: Told Espeon's master where his Pokémon was
-    // 4: Told lady that Espeon's master was looking for it -> Espeon goes home
-    // 5: Talked to Espeon's master once are reunited
+    // 1: Sister tells you about missing Eevee
 */
 #define VAR_SAKU_KURA_QUEST_ESPEON_STATE                 0x409E
 /*

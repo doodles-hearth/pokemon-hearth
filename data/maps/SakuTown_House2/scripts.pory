@@ -10,76 +10,99 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 	lock
 	faceplayer
 
-	// First time talking to him
-	if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0) {
-		setnamedmon(SPECIES_EEVEE)
-		setspeaker(SP_NAME_BOY)
-		msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}I hope Eevee comes home soon…"
-		))
-		closemessage
-		// Talked to Espeon's master but not to lady
-		setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 2)
-	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
-		setnamedmon(SPECIES_EEVEE)
-		setspeaker(SP_NAME_BOY)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}I hope Eevee comes home soon…"
-		))
-
-		playse(SE_PIN)
-		applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
-		waitmovement(0)
-		waitse
-
-		msgbox(format(
-			"What? Someone found my Eevee?\n"
-			"Oh, please, tell them to bring it back!"
-		))
-		closemessage
-
-		// Bring him back!
-		setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 3)
-	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
-		setspeaker(SP_NAME_BOY)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}… …"
-		))
-		closemessage
-
-		// Waiting for Espeon
-	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 3) {
-		setspeaker(SP_NAME_BOY)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Where's my Eevee?"
-		))
-		closemessage
-
-		// Espeon goes home
-	}elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 4) {
-		call(SakuTown_House2_EventScript_Reunited)
-		
-		// Talked to Espeon's master once are reunited
-	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 5) {
-		if (flag(FLAG_TEMP_1)) {
+	switch (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE)){
+		case 0:
+		case 1:
+			msgbox(
+				"The boy's just looking at the ground…"
+			)
 			setspeaker(SP_NAME_BOY)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Thanks again!"
-			))
+			msgbox("{FONT_SMALL} Eevee… where did you go?")
 			closemessage
-		} else {
-			if (flag(FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE)) {
-				setnamedmon(SPECIES_ESPEON)
-				setspeaker(SP_NAME_BOY)
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}How are you doing? Espeon looks happy to see you!"
-				))
-				closemessage
-			} else {
-				call(SakuTown_House2_EventScript_GiveEvoStone)
-			}
-		}
+			msgbox("The boy seems to be ignoring you.")
+		case 2:
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// // First time talking to him
+	// if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0) {
+	// 	setnamedmon(SPECIES_EEVEE)
+	// 	setspeaker(SP_NAME_BOY)
+	// 	msgbox(format(
+	// 			"I hope Eevee comes home soon…"
+	// 	))
+	// 	closemessage
+	// 	// Talked to Espeon's master but not to lady
+	// 	setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 2)
+	// } elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
+	// 	msgbox(format(
+	// 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}I hope Eevee comes home soon…"
+	// 	))
+
+	// 	playse(SE_PIN)
+	// 	applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
+	// 	waitmovement(0)
+	// 	waitse
+
+	// 	msgbox(format(
+	// 		"What? Someone found my Eevee?\n"
+	// 		"Oh, please, tell them to bring it back!"
+	// 	))
+	// 	closemessage
+
+	// 	// Bring him back!
+	// 	setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 3)
+	// } elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
+	// 	setspeaker(SP_NAME_BOY)
+	// 	msgbox(format(
+	// 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}… …"
+	// 	))
+	// 	closemessage
+
+	// 	// Waiting for Espeon
+	// } elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 3) {
+	// 	setspeaker(SP_NAME_BOY)
+	// 	msgbox(format(
+	// 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Where's my Eevee?"
+	// 	))
+	// 	closemessage
+
+	// 	// Espeon goes home
+	// }elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 4) {
+	// 	call(SakuTown_House2_EventScript_Reunited)
+		
+	// 	// Talked to Espeon's master once are reunited
+	// } elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 5) {
+	// 	if (flag(FLAG_TEMP_1)) {
+	// 		setspeaker(SP_NAME_BOY)
+	// 		msgbox(format(
+	// 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Thanks again!"
+	// 		))
+	// 		closemessage
+	// 	} else {
+	// 		if (flag(FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE)) {
+	// 			setnamedmon(SPECIES_ESPEON)
+	// 			setspeaker(SP_NAME_BOY)
+	// 			msgbox(format(
+	// 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}How are you doing? Espeon looks happy to see you!"
+	// 			))
+	// 			closemessage
+	// 		} else {
+	// 			call(SakuTown_House2_EventScript_GiveEvoStone)
+	// 		}
+	// 	}
+	// }
 	
 	release
 }
@@ -240,19 +263,30 @@ script SakuTown_House2_EventScript_Sister {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_GIRL)
-	if (flag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)) {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}My brother's been feeling really down lately.\p"
-			"His precious Pokémon disappeared in a big storm a while ago."
-		))
-		closemessage
-		applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)
-	} else {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Thank you for your kindness! It's nice to see my brother smiling again.\p"
-			"I wish I could thank whoever took such good care of Eevee, too!"
-		))
-		closemessage
+	switch(var(VAR_SAKU_KURA_QUEST_ESPEON_STATE))
+	{
+		case 0:
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Forgive my brother. His mood's been\nin the pits lately.\p"
+				"His precious new Pokémon disappeared\nin a big storm a while ago.\p"
+				"Oh, hey… If it's not too much to ask…\nCan you ask around town if they saw\lit running away?"
+			)
+			closemessage
+			applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)
+			startquest(QUEST_SAKURAESPEON)
+			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 1)
+		case 1:
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Hm, it might be a good idea to ask those\nthat are always outside."
+			)
+			closemessage
+			applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)
+		case 10:
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Thank you for your kindness! It's nice to see my brother smiling again.\p"
+				"I wish I could thank whoever took such good care of Eevee, too!"
+			))
+			closemessage
 	}
 	release
 }
