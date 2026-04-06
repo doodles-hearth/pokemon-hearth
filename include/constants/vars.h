@@ -284,11 +284,13 @@
 /*
     VAR_SAKU_KURA_QUEST_SCYTHER_STATEs
     // 0: Quest hasn't started
-    // 1: Farmer has asked player for help
-    // 2:
-    // 3:
-    // 4:
-    // 5:
+    // 1: Farmers are in Refuge
+    // 2: Farmers have asked player for help
+    // 3: Player has found Kura Town Healer
+    // 4: Player has given healer ingredients
+    // 5: Medicine is ready for giving
+    // 6: Player has medicine ingredients
+    // 7: Player has given medicine to Scyther
 */
 #define VAR_SAKU_KURA_QUEST_SCYTHER_STATE                0x409F
 /*
