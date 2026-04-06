@@ -1,0 +1,37 @@
+name: Environment Setup
+description: Sets up the environment to build pokeemerald
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Install binutils
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y binutils-arm-none-eabi gcc-arm-none-eabi libnewlib-arm-none-eabi libpng-dev python3
+      shell: bash
+
+    - name: Cache build tools
+      uses: actions/cache@v5
+      with:
+        path: |
+          tools/bin2c/bin2c
+          tools/gbafix/gbafix
+          tools/gbagfx/gbagfx
+          tools/jsonproc/jsonproc
+          tools/mapjson/mapjson
+          tools/mid2agb/mid2agb
+          tools/preproc/preproc
+          tools/ramscrgen/ramscrgen
+          tools/rsfont/rsfont
+          tools/scaninc/scaninc
+          tools/trainerproc/trainerproc
+          tools/compresSmol/compresSmol
+          tools/compresSmol/compresSmolTilemap
+          tools/wav2agb/wav2agb
+        key: tools-${{ runner.os }}-${{ hashFiles('tools/*/Makefile', 'tools/**/*.c', 'tools/**/*.cpp', 'tools/**/*.h') }}
+
+    - name: Ensure Poryscript
+      uses: ./.github/actions/ensure-poryscript
