@@ -219,7 +219,7 @@ script SakuTown_EventScript_Farmer {
 	}
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
-		mcdialogue("Did you see an Eevee recently?")
+		mcdialogueB("Did you see an Eevee recently?")
 		setspeaker(SP_NAME_FARMER)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}An Eevee? I don' think I have. Sorry kid."
@@ -240,7 +240,7 @@ script SakuTown_EventScript_Farmer2 {
 	)
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
-		mcdialogue("Did you see an Eevee recently?")
+		mcdialogueB("Did you see an Eevee recently?")
 		setspeaker(SP_NAME_FARMER)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Hrm… Lemme think…\pNah, I'm sorry, kid. Nuthin' is comin' to\nmind at the moment."
@@ -261,7 +261,7 @@ script SakuTown_EventScript_Scyther {
 	closemessage
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
-		mcdialogue("Did you see an Eevee recently?")
+		mcdialogueB("Did you see an Eevee recently?")
 		setspeakertomonname(SPECIES_SCYTHER)
 		msgbox("Gyooo?")
 		waitmoncry
@@ -282,7 +282,7 @@ script SakuTown_EventScript_Woman {
 	closemessage
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
-		mcdialogue("Did you see an Eevee recently?")
+		mcdialogueB("Did you see an Eevee recently?")
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_1 0}An Eevee? Oh yes! I saw one days ago\nrunning from this house here.\p"
@@ -364,7 +364,7 @@ script SakuTown_EventScript_Karateka {
 	closemessage
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
-		mcdialogue("Did you see an Eevee recently?")
+		mcdialogueB("Did you see an Eevee recently?")
 		setspeaker(SP_NAME_MAN)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Eevee, huh? Now that I think about it…\nMama and Kuku chased something away\lduring the storm.\p"
@@ -399,7 +399,7 @@ script SakuTown_EventScript_Guard {
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
 		faceplayer
-		mcdialogue("Did you see an Eevee recently?")
+		mcdialogueB("Did you see an Eevee recently?")
 		setspeaker(SP_NAME_GUARD)
 		msgbox(
 			"No. I saw nothing of the sort."
@@ -562,7 +562,7 @@ script SakuTown_EventScript_MonHues {
 	closemessage
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
-		mcdialogue("Did you see an Eevee recently?")
+		mcdialogueB("Did you see an Eevee recently?")
 		setspeaker(SP_NAME_MAN)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_BREEDER_M 0}Huh, I don't think I've seen an Eevee at\nall, regardless of it's color. Sorry."
