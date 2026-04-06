@@ -12,7 +12,7 @@ SINGLE_BATTLE_TEST("Paralyze Heal heals a battler from being paralyzed")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_PARALYZE_HEAL, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        MESSAGE("Wobbuffet was cured of paralysis!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -27,7 +27,7 @@ SINGLE_BATTLE_TEST("Antidote heals a battler from being poisoned")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_ANTIDOTE, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        MESSAGE("Wobbuffet was cured of its poisoning!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -65,7 +65,7 @@ SINGLE_BATTLE_TEST("Antidote heals a battler from being badly poisoned")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_ANTIDOTE, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        MESSAGE("Wobbuffet was cured of its poisoning!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -83,7 +83,7 @@ SINGLE_BATTLE_TEST("Antidote resets Toxic Counter")
         TURN { USE_ITEM(player, ITEM_ANTIDOTE, partyIndex: 0); }
     } SCENE {
         MESSAGE("The opposing Wobbuffet used Toxic!");
-        MESSAGE("Wobbuffet had its status healed!");
+        MESSAGE("Wobbuffet was cured of its poisoning!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -98,7 +98,7 @@ SINGLE_BATTLE_TEST("Awakening heals a battler from being asleep")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_AWAKENING, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        MESSAGE("Wobbuffet woke up!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -113,25 +113,37 @@ SINGLE_BATTLE_TEST("Burn Heal heals a battler from being burned")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_BURN_HEAL, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        MESSAGE("Wobbuffet's burn was cured!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
 }
 
-SINGLE_BATTLE_TEST("Ice Heal heals a battler from being frozen or frostbite")
+SINGLE_BATTLE_TEST("Ice Heal heals a battler from being frozen")
 {
-    u16 status;
-    PARAMETRIZE { status = STATUS1_FREEZE; }
-    PARAMETRIZE { status = STATUS1_FROSTBITE; }
     GIVEN {
         ASSUME(gItemsInfo[ITEM_ICE_HEAL].battleUsage == EFFECT_ITEM_CURE_STATUS);
-        PLAYER(SPECIES_WOBBUFFET) { Status1(status); }
+        PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_FREEZE); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { USE_ITEM(player, ITEM_ICE_HEAL, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        MESSAGE("Wobbuffet thawed out!");
+    } THEN {
+        EXPECT_EQ(player->status1, STATUS1_NONE);
+    }
+}
+
+SINGLE_BATTLE_TEST("Ice Heal heals a battler from frostbite")
+{
+    GIVEN {
+        ASSUME(gItemsInfo[ITEM_ICE_HEAL].battleUsage == EFFECT_ITEM_CURE_STATUS);
+        PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_FROSTBITE); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { USE_ITEM(player, ITEM_ICE_HEAL, partyIndex: 0); }
+    } SCENE {
+        MESSAGE("Wobbuffet's frostbite was cured!");
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -154,7 +166,30 @@ SINGLE_BATTLE_TEST("Full Heal heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_FULL_HEAL, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        switch (status)
+        {
+            case STATUS1_SLEEP:
+                MESSAGE("Wobbuffet woke up!");
+                break;
+            case STATUS1_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_BURN:
+                MESSAGE("Wobbuffet's burn was cured!");
+                break;
+            case STATUS1_FREEZE:
+                MESSAGE("Wobbuffet thawed out!");
+                break;
+            case STATUS1_PARALYSIS:
+                MESSAGE("Wobbuffet was cured of paralysis!");
+                break;
+            case STATUS1_TOXIC_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_FROSTBITE:
+                MESSAGE("Wobbuffet's frostbite was cured!");
+                break;
+        }
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -215,7 +250,30 @@ SINGLE_BATTLE_TEST("Heal Powder heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_HEAL_POWDER, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        switch (status)
+        {
+            case STATUS1_SLEEP:
+                MESSAGE("Wobbuffet woke up!");
+                break;
+            case STATUS1_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_BURN:
+                MESSAGE("Wobbuffet's burn was cured!");
+                break;
+            case STATUS1_FREEZE:
+                MESSAGE("Wobbuffet thawed out!");
+                break;
+            case STATUS1_PARALYSIS:
+                MESSAGE("Wobbuffet was cured of paralysis!");
+                break;
+            case STATUS1_TOXIC_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_FROSTBITE:
+                MESSAGE("Wobbuffet's frostbite was cured!");
+                break;
+        }
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -275,7 +333,30 @@ SINGLE_BATTLE_TEST("Pewter Crunchies heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_PEWTER_CRUNCHIES, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        switch (status)
+        {
+            case STATUS1_SLEEP:
+                MESSAGE("Wobbuffet woke up!");
+                break;
+            case STATUS1_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_BURN:
+                MESSAGE("Wobbuffet's burn was cured!");
+                break;
+            case STATUS1_FREEZE:
+                MESSAGE("Wobbuffet thawed out!");
+                break;
+            case STATUS1_PARALYSIS:
+                MESSAGE("Wobbuffet was cured of paralysis!");
+                break;
+            case STATUS1_TOXIC_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_FROSTBITE:
+                MESSAGE("Wobbuffet's frostbite was cured!");
+                break;
+        }
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -298,7 +379,30 @@ SINGLE_BATTLE_TEST("Lava Cookies heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_LAVA_COOKIE, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        switch (status)
+        {
+            case STATUS1_SLEEP:
+                MESSAGE("Wobbuffet woke up!");
+                break;
+            case STATUS1_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_BURN:
+                MESSAGE("Wobbuffet's burn was cured!");
+                break;
+            case STATUS1_FREEZE:
+                MESSAGE("Wobbuffet thawed out!");
+                break;
+            case STATUS1_PARALYSIS:
+                MESSAGE("Wobbuffet was cured of paralysis!");
+                break;
+            case STATUS1_TOXIC_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_FROSTBITE:
+                MESSAGE("Wobbuffet's frostbite was cured!");
+                break;
+        }
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -321,13 +425,36 @@ SINGLE_BATTLE_TEST("Rage Candy Bar heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_RAGE_CANDY_BAR, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        switch (status)
+        {
+            case STATUS1_SLEEP:
+                MESSAGE("Wobbuffet woke up!");
+                break;
+            case STATUS1_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_BURN:
+                MESSAGE("Wobbuffet's burn was cured!");
+                break;
+            case STATUS1_FREEZE:
+                MESSAGE("Wobbuffet thawed out!");
+                break;
+            case STATUS1_PARALYSIS:
+                MESSAGE("Wobbuffet was cured of paralysis!");
+                break;
+            case STATUS1_TOXIC_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_FROSTBITE:
+                MESSAGE("Wobbuffet's frostbite was cured!");
+                break;
+        }
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
 }
 
-SINGLE_BATTLE_TEST("Old Gateu heals a battler from any primary status")
+SINGLE_BATTLE_TEST("Old Gateau heals a battler from any primary status")
 {
     u16 status;
     PARAMETRIZE { status = STATUS1_SLEEP; }
@@ -344,7 +471,30 @@ SINGLE_BATTLE_TEST("Old Gateu heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_OLD_GATEAU, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        switch (status)
+        {
+            case STATUS1_SLEEP:
+                MESSAGE("Wobbuffet woke up!");
+                break;
+            case STATUS1_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_BURN:
+                MESSAGE("Wobbuffet's burn was cured!");
+                break;
+            case STATUS1_FREEZE:
+                MESSAGE("Wobbuffet thawed out!");
+                break;
+            case STATUS1_PARALYSIS:
+                MESSAGE("Wobbuffet was cured of paralysis!");
+                break;
+            case STATUS1_TOXIC_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_FROSTBITE:
+                MESSAGE("Wobbuffet's frostbite was cured!");
+                break;
+        }
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -367,7 +517,30 @@ SINGLE_BATTLE_TEST("Casteliacone heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_CASTELIACONE, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        switch (status)
+        {
+            case STATUS1_SLEEP:
+                MESSAGE("Wobbuffet woke up!");
+                break;
+            case STATUS1_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_BURN:
+                MESSAGE("Wobbuffet's burn was cured!");
+                break;
+            case STATUS1_FREEZE:
+                MESSAGE("Wobbuffet thawed out!");
+                break;
+            case STATUS1_PARALYSIS:
+                MESSAGE("Wobbuffet was cured of paralysis!");
+                break;
+            case STATUS1_TOXIC_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_FROSTBITE:
+                MESSAGE("Wobbuffet's frostbite was cured!");
+                break;
+        }
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -390,7 +563,30 @@ SINGLE_BATTLE_TEST("Lumiose Galette heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_LUMIOSE_GALETTE, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        switch (status)
+        {
+            case STATUS1_SLEEP:
+                MESSAGE("Wobbuffet woke up!");
+                break;
+            case STATUS1_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_BURN:
+                MESSAGE("Wobbuffet's burn was cured!");
+                break;
+            case STATUS1_FREEZE:
+                MESSAGE("Wobbuffet thawed out!");
+                break;
+            case STATUS1_PARALYSIS:
+                MESSAGE("Wobbuffet was cured of paralysis!");
+                break;
+            case STATUS1_TOXIC_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_FROSTBITE:
+                MESSAGE("Wobbuffet's frostbite was cured!");
+                break;
+        }
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -413,7 +609,30 @@ SINGLE_BATTLE_TEST("Shalour Sable heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_SHALOUR_SABLE, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        switch (status)
+        {
+            case STATUS1_SLEEP:
+                MESSAGE("Wobbuffet woke up!");
+                break;
+            case STATUS1_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_BURN:
+                MESSAGE("Wobbuffet's burn was cured!");
+                break;
+            case STATUS1_FREEZE:
+                MESSAGE("Wobbuffet thawed out!");
+                break;
+            case STATUS1_PARALYSIS:
+                MESSAGE("Wobbuffet was cured of paralysis!");
+                break;
+            case STATUS1_TOXIC_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_FROSTBITE:
+                MESSAGE("Wobbuffet's frostbite was cured!");
+                break;
+        }
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -436,7 +655,30 @@ SINGLE_BATTLE_TEST("Big Malasada heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_BIG_MALASADA, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        switch (status)
+        {
+            case STATUS1_SLEEP:
+                MESSAGE("Wobbuffet woke up!");
+                break;
+            case STATUS1_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_BURN:
+                MESSAGE("Wobbuffet's burn was cured!");
+                break;
+            case STATUS1_FREEZE:
+                MESSAGE("Wobbuffet thawed out!");
+                break;
+            case STATUS1_PARALYSIS:
+                MESSAGE("Wobbuffet was cured of paralysis!");
+                break;
+            case STATUS1_TOXIC_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_FROSTBITE:
+                MESSAGE("Wobbuffet's frostbite was cured!");
+                break;
+        }
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -459,7 +701,30 @@ SINGLE_BATTLE_TEST("Jubilife Muffin heals a battler from any primary status")
     } WHEN {
         TURN { USE_ITEM(player, ITEM_JUBILIFE_MUFFIN, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        switch (status)
+        {
+            case STATUS1_SLEEP:
+                MESSAGE("Wobbuffet woke up!");
+                break;
+            case STATUS1_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_BURN:
+                MESSAGE("Wobbuffet's burn was cured!");
+                break;
+            case STATUS1_FREEZE:
+                MESSAGE("Wobbuffet thawed out!");
+                break;
+            case STATUS1_PARALYSIS:
+                MESSAGE("Wobbuffet was cured of paralysis!");
+                break;
+            case STATUS1_TOXIC_POISON:
+                MESSAGE("Wobbuffet was cured of its poisoning!");
+                break;
+            case STATUS1_FROSTBITE:
+                MESSAGE("Wobbuffet's frostbite was cured!");
+                break;
+        }
     } THEN {
         EXPECT_EQ(player->status1, STATUS1_NONE);
     }
@@ -489,7 +754,7 @@ SINGLE_BATTLE_TEST("Full Heal, Heal Powder and Local Specialties heal a battler 
         TURN { MOVE(opponent, MOVE_CONFUSE_RAY); }
         TURN { USE_ITEM(player, item, partyIndex: 0); }
     } SCENE {
-        MESSAGE("Wobbuffet had its status healed!");
+        MESSAGE("Wobbuffet snapped out of its confusion!");
     } THEN {
         EXPECT(player->volatiles.confusionTurns == 0);
     }
