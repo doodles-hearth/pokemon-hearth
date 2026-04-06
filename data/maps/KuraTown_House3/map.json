@@ -15,6 +15,7 @@
   "connections": null,
   "object_events": [
     {
+      "local_id": "LOCALID_OMAI_YARI",
       "graphics_id": "OBJ_EVENT_GFX_GARDENER",
       "x": 3,
       "y": 5,
@@ -35,11 +36,12 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_KURAHOUSE_ESPEON",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(ESPEON)",
       "x": 2,
       "y": 5,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_UP_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -64,6 +66,34 @@
       "dest_warp_id": "3"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "KuraTown_House3_EventScript_EspeonTriggers"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "KuraTown_House3_EventScript_EspeonTriggers"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "KuraTown_House3_EventScript_EspeonTriggers"
+    }
+  ],
   "bg_events": []
 }

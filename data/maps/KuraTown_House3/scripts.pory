@@ -1,159 +1,103 @@
 const LOCALID_LADY = 1
-const LOCALID_ESPEON = 2
 
 mapscripts KuraTown_House3_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION {
+	}
 }
 
-// Lady
+// Lady Omai Yari
 script KuraTown_House3_EventScript_Lady {
 	lock
-
-	// First time talking to her
-	if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0 || var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
-		faceplayer
-		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}Hello! Ah, you came for your Pokémon!"
-		))
-		closemessage
-
-		delay(60)
-
-		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}Sorry, I thought you were someone else.\p"
-			"See, this little one came to me a while ago. There was a thunderstorm and it looked scared and lost.\p"
-			"I've been taking care of it while waiting for its master to show up!\p"
-			"It's feeling a lot better now.\nLook how shiny his fur is!\lSuch a pretty color, too!"
-		))
-		closemessage
-
-		if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0) {
-			// Talked to lady but not to Espeon's master
-			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 1)
-			applymovement(LOCALID_LADY, Common_Movement_FaceOriginalDirection)
-		} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
-			delay(60)
-			// Espeon goes home
-			call(KuraTown_House3_EventScript_EspeonGoesHome)
-		}
-
-		applymovement(LOCALID_LADY, Common_Movement_FaceOriginalDirection)
-		// Talked to her before, but not Espeon's master
-	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
-		faceplayer
-		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}Don't worry, kitten, we'll find your master eventually!"
-		))
-		closemessage
-
-		// Told Espeon's master where his Pokémon was
-	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 3) {
-		faceplayer
-		// Espeon goes home
-		call(KuraTown_House3_EventScript_EspeonGoesHome)
-		// Espeon went home
-	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 4) {
-		applymovement(VAR_LAST_TALKED, moves(emote_sad))
-		faceplayer
-		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}Sniffle… I'm going to miss him…"
-		))
-		closemessage
-		
-		// Talked to Espeon's master once are reunited
-	} elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 5) {
-		faceplayer
-		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}That little lost kitten is reunited with its master?\p"
-			"Do they look happy together?\nOh, how delightful!"
-		))
-		closemessage
+	faceplayer
+	switch(var(VAR_SAKU_KURA_QUEST_ESPEON_STATE)){
+		case 1:
+			setspeaker("Omai Yari")
+			msgbox("{CREATE_MUGSHOT MUGSHOT_GARDENER 0}Hello there, can I help you dearie?")
+			closemessage
+			mcdialogue("I'm looking for an Eevee.")
+			mcdialogue("The farmers said it ran to you?")
+			setspeaker("Omai Yari")
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}"
+				"Ah, yes! An Eevee came rushing into my\nhome during that nasty storm.\p"
+				"This is her now; she's evolved into a big,\nhealthy Espeon!"
+			)
+			closemessage
+			mcdialogue("This Eevee belongs to someone…")
+			delay(90)
+			mcdialogue("I need to bring her back to Saku Town.")
+			setspeaker("Omai Yari")
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}"
+				"Oh dear… is that so?"
+			)
+			applymovement(LOCALID_OMAI_YARI, moves(face_left))
+			waitmovement(0)
+			msgbox(
+				"Well, Vivi, it's time we parted ways… I'd\nbe lying if I said I wouldn't miss you."
+			)
+			closemessage
+			setnamedmon(SPECIES_ESPEON)
+			setspeakertomonname(SPECIES_ESPEON)
+			applymovement(LOCALID_KURAHOUSE_ESPEON, moves(face_right))
+			waitmovement(0)
+			msgbox("Spee…")
+			closemessage
+			applymovement(LOCALID_OMAI_YARI, moves(face_player))
+			waitmovement(0)
+			setspeaker("Omai Yari")
+			msgbox(
+				"Since Espeon's true master lives in\nSaku Town, I won't be able to take her.\lThe guard wouldn't let me pass.\p"
+				"Would you be a dearie and take her home\nyourself?"
+			)
+			waitmessage
+			closemessage
+			switch(var(VAR_TEMP_0)){
+				case 1:
+					applymovement(LOCALID_KURAHOUSE_ESPEON, moves(walk_up))
+					waitmovement(0)
+				case 2:
+					applymovement(LOCALID_KURAHOUSE_ESPEON, moves(walk_down, walk_right*2))
+					waitmovement(0)
+				case 3:
+					applymovement(LOCALID_KURAHOUSE_ESPEON, moves(walk_down))
+					waitmovement(0)
+			}
+			setflag(FLAG_SAKU_KURA_HIDE_ESPEON_LADYS_HOUSE)
+			setfollowernpc(LOCALID_KURAHOUSE_ESPEON, FOLLOWER_NPC_FLAG_ALL)
+			msgbox("Espeon is now following you!")
+			waitmessage
+			closemessage
+			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 2)
+		case 2:
+			setspeaker("Omai Yari")
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}"
+				"Because of the feud between Saku and\nKura, residents from either side cannot\lgo into each other's village.\p"
+				"I wish I could meet Espeon's master\nmyself and teach him how to care for\lher better.")
+			closemessage
 	}
-	
 	release
 }
 
-script KuraTown_House3_EventScript_EspeonGoesHome {
-		faceplayer
-		playse(SE_PIN)
-		applymovement(LOCALID_LADY, Common_Movement_ExclamationMark)
-		waitmovement(0)
-		delay(48)
-		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}What? You're saying its master is waiting for him in Saku Village?"
-		))
-		closemessage
-
-		applymovement(LOCALID_LADY, moves(emote_pensive, delay_16 * 6))
-		waitmovement(0)
-
-		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}I'd rather not try going over there, folks over at Saku Village are notoriously mean…\p"
-			"But I guess… I can make an effort for this kitten here."
-		))
-		closemessage
-
-		applymovement(LOCALID_LADY, Common_Movement_FaceLeft)
-		applymovement(LOCALID_ESPEON, Common_Movement_FaceRight)
-
-		waitmovement(0)
-		applymovement(LOCALID_LADY, moves(emote_heart))
-		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}Good news, sweetie! You're going home!"
-		))
-		closemessage
-
-		applymovement(LOCALID_ESPEON, JumpInJoy)
-		setseenmon(SPECIES_ESPEON)
-		playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
-		waitmoncry
-		delay(40)
-
-		fadescreenswapbuffers(FADE_TO_BLACK)
-		removeobject(LOCALID_ESPEON)
-		delay(60)
-		fadescreenswapbuffers(FADE_FROM_BLACK)
-		delay(40)
-
-		applymovement(LOCALID_LADY, moves(emote_sad))
-		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}Sniffle… I'm going to miss that little kitten…"
-		))
-		closemessage
-		
-		setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 4)
-		setflag(FLAG_SAKU_KURA_HIDE_ESPEON_LADYS_HOUSE)
-}
-
-// Espeon
-script KuraTown_House3_EventScript_Espeon {
+script KuraTown_House3_EventScript_Espeon{
 	lock
 	faceplayer
-	setseenmon(SPECIES_ESPEON)
 	setspeakertomonname(SPECIES_ESPEON)
-	applymovement(VAR_LAST_TALKED, moves(emote_music))
-	playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
-	msgbox(format(
-		"Speeee!"
-	))
-	waitmoncry
+	msgbox("Spee!")
 	closemessage
-	delay(30)
-	msgbox(format(
-		"It looks happy and serene."
-	))
 	release
 }
 
-movement JumpInJoy {
-	jump_in_place_right
+script KuraTown_House3_EventScript_EspeonTriggers {
+	getplayerxy(VAR_TEMP_1, VAR_TEMP_2)
+	if (var(VAR_TEMP_1) == 3 && var(VAR_TEMP_2) == 3) {
+		setvar(VAR_TEMP_0, 1)
+	}
+	elif (var(VAR_TEMP_1) == 5 && var(VAR_TEMP_2) == 5) {
+		setvar(VAR_TEMP_0, 2)
+	}
+	elif (var(VAR_TEMP_1) == 3 && var(VAR_TEMP_2) == 7) {
+		setvar(VAR_TEMP_0, 3)
+	}
 }
