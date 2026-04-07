@@ -349,6 +349,7 @@ struct BattlePokemon
     /*0x61*/ u8 metLevel;
     /*0x62*/ bool8 isShiny;
     /*0x63*/ u8 coloration;
+             u8 affectionHearts;
 };
 
 struct EvolutionParam
