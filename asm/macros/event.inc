@@ -3214,19 +3214,8 @@
 	.2byte \state
 	.endm
 
-	@ Retrieves the move relearner state and stores it in the specified var
-	.macro getmoverelearnerstate varId:req
-	callnative ScrCmd_getmoverelearnerstate, requests_effects=1
-	.4byte \varId
-	.endm
+@@@ Player Transform BEGIN
 
-	@ Execute script if bag has TMs and/or HMs
-	.macro istmrelearneractive destination:req
-	callnative ScrCmd_istmrelearneractive, requests_effects=1
-	.4byte \destination
-	.endm
-
-	@ Player Transform
 	@ Transforms the player into VAR_0x8004
 	.macro transformplayer defer=0
 	callnative TransformPlayer, requests_effects=1
@@ -3262,6 +3251,8 @@
 	.macro gettransformmonspecies
 	callnative ScrCmd_GetTransformMonSpecies, requests_effects=1
 	.endm
+
+@@@ Player Transform END
 	
 	@ Sets a starting status for the next battle. Can be stacked.
 	.macro setstartingstatus status:req
