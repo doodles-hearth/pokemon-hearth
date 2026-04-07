@@ -35,7 +35,7 @@ script KuraTown_House3_EventScript_Lady {
 			waitmovement(0)
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}"
-				"Well, Vivi, it's time we parted ways… I'd\nbe lying if I said I wouldn't miss you."
+				"Well, little one, it's time we parted\nways… I'd be lying if I said I wouldn't\lmiss you dearly."
 			)
 			closemessage
 			setnamedmon(SPECIES_ESPEON)
@@ -49,7 +49,7 @@ script KuraTown_House3_EventScript_Lady {
 			setspeaker("Omai Yari")
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}"
-				"Since Espeon's true master lives in\nSaku Town, I won't be able to take her.\lThe guard wouldn't let me pass.\p"
+				"Well now, since Espeon's master lives in\nSaku Town, I won't be able to take her.\lThe guard wouldn't let me pass.\p"
 				"Would you be a dearie and take her home\nyourself?"
 			)
 			waitmessage
@@ -78,7 +78,7 @@ script KuraTown_House3_EventScript_Lady {
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}"
 				"Because of the feud between Saku and\nKura, residents from either side cannot\lgo into each other's village.\p"
-				"I wish I could meet Espeon's master\nmyself and teach him how to care for\lher better.")
+				"I wish I could meet Espeon's master\nmyself and we could bond over her.")
 			closemessage
 	}
 	release
@@ -91,8 +91,4 @@ script KuraTown_House3_EventScript_Espeon{
 	msgbox("Spee!")
 	closemessage
 	release
-}
-
-script KuraTown_House3_EventScript_EspeonTriggers {
-
 }

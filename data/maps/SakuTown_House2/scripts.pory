@@ -18,6 +18,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			waitmessage
 			setspeaker(SP_NAME_BOY)
 			msgbox("{FONT_SMALL} Eevee… where did you go?")
+			setnamedmon(SPECIES_EEVEE)
 			waitmessage
 			closemessage
 			msgbox("The boy seems to be ignoring you.")
@@ -30,7 +31,9 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			waitmessage
 			closemessage
 			setspeakertomonname(SPECIES_ESPEON)
+			playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
 			msgbox("Spee!!!")
+			waitmoncry
 			waitmessage
 			closemessage
 			facefollowernpc
@@ -52,6 +55,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			waitmovement(0)
 
 			getobjectcurrentxy(OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_0, VAR_TEMP_1)
+			playse(SE_PIN)
 			if(var(VAR_TEMP_0) == 6 && var(VAR_TEMP_1) == 5){
 				applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(face_up))
 				applymovement(LOCALID_ESPEONS_MASTER, moves(emote_exclamation_mark))
@@ -74,7 +78,9 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			waitmessage
 			closemessage
 			setspeakertomonname(SPECIES_ESPEON)
+			playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
 			msgbox("Spee!!!")
+			waitmoncry
 			waitmessage
 			closemessage
 			setspeaker(SP_NAME_BOY)
@@ -100,7 +106,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
 				"Someone from Kura Town? Wow… I didn't\nknow they could be so nice. Maybe I\lcan thank them myself someday!\p"
-				"But but but! You still deserve a gift\nfor bringing her though. Come talk to me\lwhen you want it!"
+				"But but but! You still deserve a gift\nfor bringing her back.\lCome talk to me when you want it!"
 			)
 			waitmessage
 			closemessage
@@ -113,7 +119,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			setspeaker(SP_NAME_BOY)
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
-				"When I first got Eevee, I was told\nthese cool rocks could make it even\lmore powerful!\p"
+				"When I first got Eevee, I was told\nthese cool rocks could make her even\lmore powerful!\p"
 				"But since she's already evolved, I don't\nhave much use for them.\p"
 				"You can have one, though!"
 			)
@@ -202,7 +208,7 @@ script SakuTown_House2_EventScript_Sister {
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Forgive my brother. His mood's been\nin the pits lately.\p"
 				"His precious new Pokémon disappeared\nin a big storm a while ago.\p"
-				"Oh, hey… If it's not too much to ask…\nCan you ask around town if they saw\lit running away?"
+				"Oh, hey… If it's not too much to ask…\nCan you ask around if someone saw it?"
 			)
 			closemessage
 			applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)
@@ -228,7 +234,7 @@ script SakuTown_House2_EventScript_Sister {
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}"
 				"Thank you for your kindness! It's warms\nmy heart seeing my brother smile again.\p"
-				"I wish I could thank whoever took such\ngood care of Eevee, if it weren't for\lthe guards blocking us…"
+				"I wish I could thank whoever took such\ngood care of Eevee…"
 			)
 			closemessage
 	}

@@ -206,7 +206,7 @@ script SakuTown_EventScript_Farmer {
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Ah! Wielder, it's you! I can't ever thank\nya enough for helping us heal our girl.\p"
 			"Been doin' some thinkin' too, after you\ntold us the one who helped 'er was from\lthat there Kura Town.\p"
-			"But that ain't here nor there. We want\n'cha to have these. As thanks."
+			"But that ain't here nor there. We\nwantch'a to have these. As thanks."
 		)
 		closemessage
 		giveitem(ITEM_CHERI_BERRY, 20)

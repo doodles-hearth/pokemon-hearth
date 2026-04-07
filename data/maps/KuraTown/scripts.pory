@@ -74,7 +74,7 @@ script KuraTown_EventScript_GuardStopsYou {
 
 	if (var(VAR_SAKU_KURA_VILLAGES_STATE) == 1) {
 		msgbox(
-			"You didn't think I would see you trying\nto sneak in from Saku Village?\p"
+			"You think I don't see you trying\nto sneak in from Saku Village?\p"
 			"…Wait, you're just a regular traveler,\naren't you…\p"
 			"Welcome to Kura Village then!"
 		)
@@ -110,7 +110,7 @@ script KuraTown_EventScript_DojoChallenger {
 		setspeaker("Cowardly Man")
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}"
-			"The Dojo is finally open! I can finally\ndefeat its leader in a fiery battle!\p"
+			"The Dojo is finally open! And now, I can\ndefeat its leader in a fiery battle!\p"
 			"…Hm? When, you ask?\p"
 			"In… In a minute…"
 		)
@@ -160,7 +160,7 @@ script KuraTown_EventScript_Farmer {
 	mcdialogueB("Did you see an Eevee recently?")
 	setspeaker(SP_NAME_FARMER)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}An Eevee? Sure did! I saw it with Mrs.\nYari. She's takin' good care of it.\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}An Eevee? Sure did! I saw it with Mrs\nYari. She's takin' good care of it.\p"
 		"She lives in that there house\non the hill."
 	)
 	waitmessage
@@ -175,11 +175,8 @@ script KuraTown_EventScript_SilkScarf {
 	if (flag(FLAG_RECEIVED_SILK_SCARF)) {
 		setspeaker(SP_NAME_GIRL)
 		msgbox(
-			format(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 0}Sigh… Now I'm scarfless…\p"
-				"At least I'm not committing any more crimes against fashion…"
-			)
-		)
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 0}Sigh… Now I'm scarfless…\p"
+				"At least I'm not committing any more\ncrimes against fashion…")
 		closemessage
 		returnqueststate(QUEST_SAKURAESPEON)
 		if(var(VAR_RESULT) == 2) {
@@ -187,7 +184,7 @@ script KuraTown_EventScript_SilkScarf {
 		setspeaker(SP_NAME_GIRL)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 0}Are you talking about that scruffy lil'\nPokémon from the other day?\p"
-			"That poor thing was caked in mud. Must\nbe because of the storm."
+			"Oh the poor thing was just caked in mud.\nMust be because of the storm."
 		)
 		closemessage
 	}
@@ -195,14 +192,14 @@ script KuraTown_EventScript_SilkScarf {
 	} else {
 		setspeaker(SP_NAME_GIRL)
 		msgbox(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 0}Hey, you! Yes, you! I need some super-\nurgent fashion advice!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 0}Hey, you! Yes, you! I'm in need of some\nsuper-urgent fashion advice!\p"
 			"I bought myself this scarf in Yifu City,\nbut now I'm worried the white clashes\lwith my complexion!\p"
-			"Is it awful?\nIs it dreadful?\lDoes it make my skin look grey?"
+			"Is it awful?\nDo I look ashy?\lDoes it make my butt look fat?"
 		)
 		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(
-			"Oh gosh, it does, doesn't it? I knew it!\nI have to get rid of it right this NOW!\p"
+			"Oh gosh, it does, doesn't it? I knew it!\nI have to get rid of it right NOW!\p"
 			"Take it! Take it! Take it!\nI can't even look at it!"
 		)
 
@@ -232,7 +229,7 @@ script KuraTown_EventScript_FarmerScyther {
 	mcdialogueB("Did you see an Eevee recently?")
 	setspeaker(SP_NAME_FARMER)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Are ya talkin' about Mrs. Yari's new pet?\nIt's with 'er at her house up there.\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Are ya talkin' about Mrs Yari's new pet?\nIt's with 'er at her house up there.\p"
 		"Poor thing, she said. Scared straight\nduring th' storm."
 	)
 	waitmessage
@@ -297,7 +294,7 @@ script KuraTown_EventScript_PokemonCouncil {
 	setspeaker(SP_NAME_WOMAN)
 	msgbox(
 		//DONT MIND THE PORYSCRIPT YELLOW WARNING IT LOOKS OKAY IN GAME ACTUALLY -ruby
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 0}The Elders of the Toku Council may\nlook like a bunch of frail old people, but\lthey're former formidable Wielders!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 0}The Elders of the Toku Council may\nlook like a bunch of frail old people, but\lthey were formidable Wielders!\p"
 		"They paved the way for what Pokémon\nWielding is today, and will be tomorrow."
 	)
 	closemessage
@@ -306,8 +303,8 @@ script KuraTown_EventScript_PokemonCouncil {
 		mcdialogueB("Did you see an Eevee recently?")
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 0}An Eevee? I sadly hadn't seen one.\p"
-			"Although, I did here something rushing\nout from the valley, during the storm.\lMaybe that was it?"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 0}An Eevee? Sadly haven't seen one.\p"
+			"Although, I did hear something rushing\nout from the valley, during the storm.\lMaybe that was it?"
 		)
 	}
 	closemessage
@@ -473,7 +470,8 @@ script KuraTown_EventScript_PreventEscape {
 
 script KuraTown_EventScript_PreventStealing_WindsweptRoute {
 	lock
-	applymovement(LOCALID_PLAYER, moves(delay_16*4, emote_pensive, delay_16, walk_down))
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_pensive, delay_16 * 6, walk_down))
 	waitmovement(0)
 	msgbox("You should probably bring this Espeon\nback to its owner, first.")
 	waitmessage
@@ -483,7 +481,8 @@ script KuraTown_EventScript_PreventStealing_WindsweptRoute {
 
 script KuraTown_EventScript_PreventStealing_BeachBoundRoute {
 	lock
-	applymovement(LOCALID_PLAYER, moves(delay_16*4, emote_pensive, delay_16, walk_left))
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_pensive, delay_16 * 6, walk_down))
 	waitmovement(0)
 	msgbox("You should probably bring this Espeon\nback to its owner, first.")
 	waitmessage
@@ -525,7 +524,7 @@ script KuraTown_EventScript_TeachingScrolls {
 		setspeaker(SP_NAME_MAN)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY 0}Hmm… No, Abra and I have been here the\nwhole time. I didn't see one go out.\p"
-			"Why don't you try asking the farmers?\nThey're out in the fields all day."
+			"Try asking the farmers, they're out\nworking in the fields all day."
 		)
 		closemessage
 		}
