@@ -238,6 +238,8 @@ script SakuTown_EventScript_Farmer2 {
 		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Whew…\n"
 		"Working in the fields sure is tirin'…"
 	)
+	waitmessage
+	closemessage
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
 		mcdialogueB("Did you see an Eevee recently?")

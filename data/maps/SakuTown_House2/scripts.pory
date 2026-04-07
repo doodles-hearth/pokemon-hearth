@@ -1,223 +1,148 @@
-const LOCALID_ESPEONS_MASTER = 1
-const LOCALID_ESPEON = 2
-const LOCALID_SISTER = 3
-
 mapscripts SakuTown_House2_MapScripts {
-	
+	MAP_SCRIPT_ON_TRANSITION {
+		if(var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) > 2) {
+			clearflag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)
+		}
+	}
 }
 
 script SakuTown_House2_EventScript_EspeonsMaster {
 	lock
 	faceplayer
-
 	switch (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE)){
 		case 0:
 		case 1:
 			msgbox(
 				"The boy's just looking at the ground…"
 			)
+			waitmessage
 			setspeaker(SP_NAME_BOY)
 			msgbox("{FONT_SMALL} Eevee… where did you go?")
+			waitmessage
 			closemessage
 			msgbox("The boy seems to be ignoring you.")
+			waitmessage
+			closemessage
 		case 2:
+			getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+			setspeaker(SP_NAME_BOY)
+			msgbox("{FONT_SMALL}…")
+			waitmessage
+			closemessage
+			setspeakertomonname(SPECIES_ESPEON)
+			msgbox("Spee!!!")
+			waitmessage
+			closemessage
+			facefollowernpc
+			specialvar(VAR_FACING, GetPlayerFacingDirection)
+			switch(var(VAR_FACING)){
+				case DIR_NORTH:
+					applymovement(LOCALID_PLAYER, moves(walk_up))
+					applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_down))
+				case DIR_SOUTH:
+					applymovement(LOCALID_PLAYER, moves(walk_down))
+					applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_up))
+				case DIR_EAST:
+					applymovement(LOCALID_PLAYER, moves(walk_right))
+					applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_left))
+				case DIR_WEST:
+					applymovement(LOCALID_PLAYER, moves(walk_left))
+					applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_right))
+			}
+			waitmovement(0)
+
+			getobjectcurrentxy(OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_0, VAR_TEMP_1)
+			if(var(VAR_TEMP_0) == 6 && var(VAR_TEMP_1) == 5){
+				applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(face_up))
+				applymovement(LOCALID_ESPEONS_MASTER, moves(emote_exclamation_mark))
+			}
+			elif(var(VAR_TEMP_0) == 7 && var(VAR_TEMP_1) == 4){
+				applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(face_left))
+				applymovement(LOCALID_ESPEONS_MASTER, moves(face_right, emote_exclamation_mark))
+			}
+			elif(var(VAR_TEMP_0) == 6 && var(VAR_TEMP_1) == 3){
+				applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(face_down))
+				applymovement(LOCALID_ESPEONS_MASTER, moves(face_up, emote_exclamation_mark))
+			}
+			call(PlayerFacesEspeon)
+			waitmovement(0)
+			setspeaker(SP_NAME_BOY)
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
+				"Eevee… is that you?"
+			)
+			waitmessage
+			closemessage
+			setspeakertomonname(SPECIES_ESPEON)
+			msgbox("Spee!!!")
+			waitmessage
+			closemessage
+			setspeaker(SP_NAME_BOY)
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
+				"You're alright! And you look so\ndifferent now! I'm so happy you're back!"
+			)
+			waitmessage
+			closemessage
+			call(EspeonMasterGoesToPlayer)
+			setspeaker(SP_NAME_BOY)
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
+				"Thank you, thank you, thank you!\p"
+				"I don't know how to repay you for\nbringing her home."
+			)
+			waitmessage
+			closemessage
+			mcdialogue("Don't thank just me.")
+			delay(30)
+			mcdialogue("Someone in Kura took good care of her.")
+			setspeaker(SP_NAME_BOY)
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
+				"Someone from Kura Town? Wow… I didn't\nknow they could be so nice. Maybe I\lcan thank them myself someday!\p"
+				"But but but! You still deserve a gift\nfor bringing her though. Come talk to me\lwhen you want it!"
+			)
+			waitmessage
+			closemessage
+			fadescreen(FADE_TO_BLACK)
+			warp(MAP_SAKU_TOWN, 22, 19)
+			destroyfollowernpc
+			fadescreen(FADE_FROM_BLACK)
+			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 3)
+		case 3:
+			setspeaker(SP_NAME_BOY)
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
+				"When I first got Eevee, I was told\nthese cool rocks could make it even\lmore powerful!\p"
+				"But since she's already evolved, I don't\nhave much use for them.\p"
+				"You can have one, though!"
+			)
+			waitmessage
+			closemessage
+			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 4)
+			call(SakuTown_House2_EventScript_GiveEvoStone)
+		case 4:
+			call(SakuTown_House2_EventScript_GiveEvoStone)
+		case 5:
+			setspeaker(SP_NAME_BOY)
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
+				"I look forward to thanking the nice\nlady that took care of Espeon!\p"
+				"Big sis says I can't go into Kura Town\nyet… Maybe someday!"
+			)
+			waitmessage
+			closemessage
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// // First time talking to him
-	// if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 0) {
-	// 	setnamedmon(SPECIES_EEVEE)
-	// 	setspeaker(SP_NAME_BOY)
-	// 	msgbox(format(
-	// 			"I hope Eevee comes home soon…"
-	// 	))
-	// 	closemessage
-	// 	// Talked to Espeon's master but not to lady
-	// 	setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 2)
-	// } elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
-	// 	msgbox(format(
-	// 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}I hope Eevee comes home soon…"
-	// 	))
-
-	// 	playse(SE_PIN)
-	// 	applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
-	// 	waitmovement(0)
-	// 	waitse
-
-	// 	msgbox(format(
-	// 		"What? Someone found my Eevee?\n"
-	// 		"Oh, please, tell them to bring it back!"
-	// 	))
-	// 	closemessage
-
-	// 	// Bring him back!
-	// 	setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 3)
-	// } elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
-	// 	setspeaker(SP_NAME_BOY)
-	// 	msgbox(format(
-	// 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}… …"
-	// 	))
-	// 	closemessage
-
-	// 	// Waiting for Espeon
-	// } elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 3) {
-	// 	setspeaker(SP_NAME_BOY)
-	// 	msgbox(format(
-	// 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Where's my Eevee?"
-	// 	))
-	// 	closemessage
-
-	// 	// Espeon goes home
-	// }elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 4) {
-	// 	call(SakuTown_House2_EventScript_Reunited)
-		
-	// 	// Talked to Espeon's master once are reunited
-	// } elif (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 5) {
-	// 	if (flag(FLAG_TEMP_1)) {
-	// 		setspeaker(SP_NAME_BOY)
-	// 		msgbox(format(
-	// 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Thanks again!"
-	// 		))
-	// 		closemessage
-	// 	} else {
-	// 		if (flag(FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE)) {
-	// 			setnamedmon(SPECIES_ESPEON)
-	// 			setspeaker(SP_NAME_BOY)
-	// 			msgbox(format(
-	// 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}How are you doing? Espeon looks happy to see you!"
-	// 			))
-	// 			closemessage
-	// 		} else {
-	// 			call(SakuTown_House2_EventScript_GiveEvoStone)
-	// 		}
-	// 	}
-	// }
-	
 	release
 }
 
-script SakuTown_House2_EventScript_Reunited {
-	// Reunited at last
-	setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 5)
-	clearflag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)
-	setspeaker(SP_NAME_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Where's my Eevee?"
-	))
-	closemessage
-
-	delay(30)
-	// Espeon appears
-	addobject(LOCALID_ESPEON)
-	setobjectxy(LOCALID_ESPEON, 4, 7)
-	turnobject(LOCALID_ESPEON, DIR_NORTH)
-	playse(SE_EXIT)
-	waitse
-
-	// Everyone faces down and is surprised
-	applymovement(LOCALID_ESPEONS_MASTER, Common_Movement_FaceDown)
-	applymovement(LOCALID_SISTER, Common_Movement_FaceDown)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown)
-	playse(SE_PIN)
-	applymovement(LOCALID_ESPEONS_MASTER, moves(emote_exclamation_mark, delay_16 * 6))
-	waitmovement(0)
-
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Is… Is that Eevee?"
-	))
-	closemessage
-
-	// Espeon walks up
-	switch(var(VAR_FACING)) {
-		case DIR_WEST:
-			applymovement(LOCALID_ESPEON, SakuTown_House2_Movement_EspeonWalksUpSouth)
-		case DIR_NORTH:
-			applymovement(LOCALID_ESPEON, SakuTown_House2_Movement_EspeonWalksUpEast)
-			turnobject(LOCALID_ESPEONS_MASTER, DIR_EAST)
-			turnobject(LOCALID_SISTER, DIR_WEST)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-		case DIR_SOUTH:
-			applymovement(LOCALID_ESPEON, SakuTown_House2_Movement_EspeonWalksUpEast)
-			turnobject(LOCALID_ESPEONS_MASTER, DIR_EAST)
-			turnobject(LOCALID_SISTER, DIR_WEST)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-	}
-
-	delay(40)
-
-	setseenmon(SPECIES_ESPEON)
-
-	playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
-	waitmoncry
-
-	applymovement(LOCALID_ESPEONS_MASTER, moves(emote_crying))
-	setspeaker(SP_NAME_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}It's you! It's really you!\nOh, Eevee, I've missed you so much!\p"
-		"… …\p"
-		"Wait, you look a little different…"
-	))
-	closemessage
-
-	switch(var(VAR_FACING)) {
-		case DIR_WEST:
-			turnobject(LOCALID_ESPEONS_MASTER, DIR_EAST)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
-		case DIR_NORTH:
-			turnobject(LOCALID_ESPEONS_MASTER, DIR_SOUTH)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
-		case DIR_SOUTH:
-			turnobject(LOCALID_ESPEONS_MASTER, DIR_NORTH)
-			turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
-	}
-	delay(30)
-	
-	setspeaker(SP_NAME_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}You say it was a woman from Kura Village that found him?\p"
-		"She took such good care of him!\p"
-		"His fur is so shiny and well-groomed, too…"
-	))
-	closemessage
-
-	applymovement(LOCALID_ESPEONS_MASTER, moves(face_down, emote_pensive, delay_16 * 6))
-	waitmovement(0)
-
-	setspeaker(SP_NAME_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Looks like there are actually some nice people too in Kura Village…"
-	))
-
-	applymovement(LOCALID_ESPEONS_MASTER, moves(emote_pensive, delay_16 * 6, face_right))
-	waitmovement(0)
-
-	setspeaker(SP_NAME_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Anyway, thank you so much for helping me out. I'm so grateful.\p"
-		"As a thanks, you can have your pick from my cool rock collection!"
-	))
-	closemessage
-	call(SakuTown_House2_EventScript_GiveEvoStone)
-}
-
 script SakuTown_House2_EventScript_GiveEvoStone {
-	msgbox(format("Which rock would you like?"))
-
+	setspeaker(SP_NAME_BOY)
+	msgbox("Which rock would you like?")
 	dynmultichoice(
 		0,
 		0,
-		TRUE,
+		FALSE,
 		10,
 		0,
 		DYN_MULTICHOICE_CB_NONE,
@@ -230,17 +155,25 @@ script SakuTown_House2_EventScript_GiveEvoStone {
 	switch (var(VAR_RESULT)) {
 		case 0:
 			giveitem(ITEM_FIRE_STONE)
+			setflag(FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE)
+			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 5)
+			completequest(QUEST_SAKURAESPEON)
 		case 1:
 			giveitem(ITEM_WATER_STONE)
+			setflag(FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE)
+			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 5)
+			completequest(QUEST_SAKURAESPEON)
 		case 2:
 			giveitem(ITEM_THUNDER_STONE)
+			setflag(FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE)
+			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 5)
+			completequest(QUEST_SAKURAESPEON)
 	}
 	closemessage
 
 	goto_if_eq(VAR_RESULT, 0, Common_EventScript_BagIsFull)
 
-	setflag(FLAG_SAKU_ESPEON_QUEST_RECEIVED_EVO_STONE)
-	release
+	return
 }
 
 // Espeon
@@ -281,29 +214,82 @@ script SakuTown_House2_EventScript_Sister {
 			)
 			closemessage
 			applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)
-		case 10:
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Thank you for your kindness! It's nice to see my brother smiling again.\p"
-				"I wish I could thank whoever took such good care of Eevee, too!"
-			))
+			waitmovement(0)
+		case 2:
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}"
+				"Oh, you're back! And with a curious\nlooking fox with you?\p"
+				"Ah, wait, that couldn't be…"
+			)
+			closemessage
+			applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)
+			waitmovement(0)
+		default:
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}"
+				"Thank you for your kindness! It's warms\nmy heart seeing my brother smile again.\p"
+				"I wish I could thank whoever took such\ngood care of Eevee, if it weren't for\lthe guards blocking us…"
+			)
 			closemessage
 	}
 	release
 }
 
-// Walks up to the east of its master
-movement SakuTown_House2_Movement_EspeonWalksUpEast {
-	walk_fast_up
-	walk_fast_right * 3
-	walk_fast_up * 2
-	face_left
-	jump_in_place_left * 2
+script(local) PlayerFacesEspeon{
+	specialvar(VAR_FACING, GetPlayerFacingDirection)
+	switch(var(VAR_FACING)){
+		case DIR_NORTH:
+			applymovement(LOCALID_PLAYER, moves(face_down))
+		case DIR_SOUTH:
+			applymovement(LOCALID_PLAYER, moves(face_up))
+		case DIR_EAST:
+			applymovement(LOCALID_PLAYER, moves(face_left))
+		case DIR_WEST:
+			applymovement(LOCALID_PLAYER, moves(face_right))
+	}
+	waitmovement(0)
+	return
 }
 
-// Walks up to the south of its master
-movement SakuTown_House2_Movement_EspeonWalksUpSouth {
-	walk_fast_up
-	walk_fast_right * 2
-	walk_fast_up
-	jump_in_place_up * 2
+script(local) EspeonMasterGoesToPlayer{
+	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
+	if(var(VAR_TEMP_0) == 6 && var(VAR_TEMP_1) == 2){
+		applymovement(LOCALID_ESPEONS_MASTER, moves(walk_up))
+	}
+	elif(var(VAR_TEMP_0) == 7 && var(VAR_TEMP_1) == 3){
+		applymovement(LOCALID_ESPEONS_MASTER, moves(walk_right, face_up))
+		applymovement(LOCALID_PLAYER, moves(face_down))
+	}
+	elif(var(VAR_TEMP_0) == 8 && var(VAR_TEMP_1) == 4){
+		applymovement(LOCALID_ESPEONS_MASTER, moves(walk_right))
+	}
+	elif(var(VAR_TEMP_0) == 7 && var(VAR_TEMP_1) == 5){
+		applymovement(LOCALID_ESPEONS_MASTER, moves(walk_right, face_down))
+		applymovement(LOCALID_PLAYER, moves(face_up))
+	}
+	elif(var(VAR_TEMP_0) == 6 && var(VAR_TEMP_1) == 6){
+		applymovement(LOCALID_ESPEONS_MASTER, moves(walk_down))
+	}
+	elif(var(VAR_TEMP_0) == 5 && var(VAR_TEMP_1) == 5){
+		applymovement(LOCALID_ESPEONS_MASTER, moves(walk_down, face_left))
+		applymovement(LOCALID_PLAYER, moves(face_right))
+	}
+	waitmovement(0)
+	call(EspeonMovesIntoPlace)
+	return
+}
+
+script(local) EspeonMovesIntoPlace {
+	getobjectcurrentxy(OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_2, VAR_TEMP_3)
+	if(var(VAR_TEMP_2) == 6 && var(VAR_TEMP_3) == 3){
+		applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_down))
+	}
+	elif(var(VAR_TEMP_2) == 7 && var(VAR_TEMP_3) == 4){
+		applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_left))
+	}
+	elif(var(VAR_TEMP_2) == 6 && var(VAR_TEMP_3) == 5){
+		applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_up))
+	}
+	waitmovement(0)
+	return
 }

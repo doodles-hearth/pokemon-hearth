@@ -126,7 +126,7 @@ script KuraTown_EventScript_DojoChallenger {
 		mcdialogueB("Did you see an Eevee recently?")
 		setspeaker(SP_NAME_MAN)
 		msgbox(
-			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Ah, I did see one!. It must be the small\nPokémon I scared straight while I was\lmeditating here in the rain.\p"
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Ah, I did see one! It must be the small\nPokémon I scared straight while I was\lmeditating here in the rain.\p"
 			"I believe it went to the left, into town."
 		)
 		closemessage
@@ -138,9 +138,10 @@ script KuraTown_EventScript_Farmer {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Why do we hate the Saku Village folks, y'ask?"
-	))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Why do we hate the Saku Village\nfolks, y'ask?"
+	)
+	waitmessage
 	closemessage
 
 	playse(SE_PIN)
@@ -149,9 +150,11 @@ script KuraTown_EventScript_Farmer {
 	waitse
 
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}To be honest, I don't quite rememb'r.\nBut who needs a reas'n, right?"
-	))
+	)
+	waitmessage
+	closemessage
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
 	mcdialogueB("Did you see an Eevee recently?")
@@ -160,6 +163,7 @@ script KuraTown_EventScript_Farmer {
 		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}An Eevee? Sure did! I saw it with Mrs.\nYari. She's takin' good care of it.\p"
 		"She lives in that there house\non the hill."
 	)
+	waitmessage
 	closemessage
 	}
 	release
@@ -221,6 +225,8 @@ script KuraTown_EventScript_FarmerScyther {
 		),
 		MSGBOX_DEFAULT
 	)
+	waitmessage
+	closemessage
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
 	mcdialogueB("Did you see an Eevee recently?")
@@ -229,6 +235,7 @@ script KuraTown_EventScript_FarmerScyther {
 		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Are ya talkin' about Mrs. Yari's new pet?\nIt's with 'er at her house up there.\p"
 		"Poor thing, she said. Scared straight\nduring th' storm."
 	)
+	waitmessage
 	closemessage
 	}
 	release
@@ -462,6 +469,26 @@ script KuraTown_EventScript_PreventEscape {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down * 2))
 	waitmovement(0)
 	end
+}
+
+script KuraTown_EventScript_PreventStealing_WindsweptRoute {
+	lock
+	applymovement(LOCALID_PLAYER, moves(delay_16*4, emote_pensive, delay_16, walk_down))
+	waitmovement(0)
+	msgbox("You should probably bring this Espeon\nback to its owner, first.")
+	waitmessage
+	closemessage
+	release
+}
+
+script KuraTown_EventScript_PreventStealing_BeachBoundRoute {
+	lock
+	applymovement(LOCALID_PLAYER, moves(delay_16*4, emote_pensive, delay_16, walk_left))
+	waitmovement(0)
+	msgbox("You should probably bring this Espeon\nback to its owner, first.")
+	waitmessage
+	closemessage
+	release
 }
 
 script KuraTown_EventScript_Abra {

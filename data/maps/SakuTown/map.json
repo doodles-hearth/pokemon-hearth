@@ -658,6 +658,60 @@
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
       "var_value": "7",
       "script": "SakuTown_BottomTamaTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_PreventStealing_BeachBoundRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_PreventStealing_BeachBoundRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_PreventStealing_BeachBoundRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_PreventStealing_BeachBoundRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 30,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_PreventStealing_BeachBoundRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 31,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_PreventStealing_BeachBoundRoute"
     }
   ],
   "bg_events": [
