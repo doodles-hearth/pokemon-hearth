@@ -88,6 +88,10 @@ static const u32 sFieldMugshotGfx_BurglarNormal[] = INCBIN_U32("graphics/field_m
 
 static const u32 sFieldMugshotGfx_DisguiseKidNormal[] = INCBIN_U32("graphics/field_mugshots/disguise_kid/normal.4bpp.smol");
 
+static const u32 sFieldMugshotGfx_FishermanNormal[] = INCBIN_U32("graphics/field_mugshots/fisherman/normal.4bpp.smol");
+
+static const u32 sFieldMugshotGfx_FirebringerNormal[] = INCBIN_U32("graphics/field_mugshots/firebringer/normal.4bpp.smol");
+
 // Sunrise
 
 static const u32 sFieldMugshotGfx_BigSisNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/big_sis/normal.4bpp.smol");
@@ -565,6 +569,24 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_DisguiseKidNormal,
+            .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+    
+    [MUGSHOT_FISHERMAN] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_FishermanNormal,
+            .pal = gObjectEventPal_Npc_Greenish,
+        },
+    },
+    
+    [MUGSHOT_FIREBRINGER] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_FirebringerNormal,
             .pal = gObjectEventPal_Npc_Purplish,
         },
     },

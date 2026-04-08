@@ -46,20 +46,18 @@ script WindsweptRoute_EventScript_Itamae {
 script WindsweptRoute_EventScript_Makoto {
 	trainerbattle_single(
 		TRAINER_MAKOTO_1,
-		format("These cliffs are so damn tall! Good\nthing I have a damn long fishing rod."),
+		format("{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}These cliffs are so damn tall! Good\nthing I have a damn long fishing rod."),
 		format("My rod didn't keep me from losing…")
 	)
-	setspeaker(SP_NAME_FISHERMAN)
-	msgbox(format("Look at that poor sod over there!\nHis fishing rod's so short,\lI can't help but laugh!"), MSGBOX_AUTOCLOSE)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Look at that poor sod over there!\nHis fishing rod's so short,\lI can't help but laugh!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script WindsweptRoute_EventScript_Fisherman_ShortRod {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_FISHERMAN)
 	msgbox((
-		"That guy over there keeps bragging\nabout having a long fishing rod.\p"
+		"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}That guy over there keeps bragging\nabout having a long fishing rod.\p"
 		"But I, with my shorter rod, catch only\nthe highest-jumping fish!"
 	))
 	closemessage

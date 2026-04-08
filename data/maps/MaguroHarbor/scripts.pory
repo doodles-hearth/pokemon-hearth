@@ -369,9 +369,8 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp {
 script MaguroHarbor_EventScript_FishermanInBoat {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_FISHERMAN)
 	msgbox(format(
-		"I'm letting my fishing partner Cramorant rest for a while."
+		"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}I'm letting my fishing partner Cramorant rest for a while."
 	), MSGBOX_DEFAULT)
 	closemessage
 	release
@@ -394,15 +393,13 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 	lock
 	faceplayer
 	if (flag(FLAG_RECEIVED_OLD_ROD)) {
-		setspeaker(SP_NAME_FISHERMAN)
-
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 			msgbox(format(
-				"That tremblin' nearly made me wee me pants!"
+				"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}That tremblin' nearly made me wee me pants!"
 			), MSGBOX_AUTOCLOSE)
 		} else {
 			msgbox(format(
-				"Heyo, wee fisherm'n! Hope ye be enjoyin' yer fishing rod!"
+				"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Heyo, wee fisherm'n! Hope ye be enjoyin' yer fishing rod!"
 			))
 		}
 
@@ -414,9 +411,8 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 		end
 	}
 
-	setspeaker(SP_NAME_FISHERMAN)
 	msgbox(format(
-		"Shush, ye fool child!\nYou be scarin' tha wee fishes!\p"
+		"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Shush, ye fool child!\nYou be scarin' tha wee fishes!\p"
 		"… … … …\p"
 		"Yer eyes…\nThey be sparklin' with passion…\p"
 		"Are ye by any chance an aspirin' fisherm'n?\p"
@@ -429,15 +425,14 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 	giveitem(ITEM_OLD_ROD)
 	setflag(FLAG_RECEIVED_OLD_ROD)
 
-	setspeaker(SP_NAME_FISHERMAN)
 	if (checkplayergender == MALE) {
 		msgbox(format(
-			"It be a wee bit used, but I reckon it will serve ye mighty fine!\p"
+			"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}It be a wee bit used, but I reckon it will serve ye mighty fine!\p"
 			"Farewell, lad! May ye become a great fisherm'n!"
 		))
 	} else {
 		msgbox(format(
-			"It be a wee bit used, but I reckon it will serve ye mighty fine!\p"
+			"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}It be a wee bit used, but I reckon it will serve ye mighty fine!\p"
 			"Farewell, lass! May ye become a great fisherm'n!"
 		))
 	}

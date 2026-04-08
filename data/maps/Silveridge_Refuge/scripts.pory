@@ -26,17 +26,15 @@ script Silveridge_Refuge_EventScript_Firebringer {
 	lock
 	faceplayer
 	if (flag(FLAG_RECEIVED_CHARCOAL)) {
-		setspeaker(SP_NAME_FIREBRINGER)
 		msgbox(format(
-			"I'm bringin' down some Slugma today, freshly caught on Burnfoot Pass this mornin'.\p"
+			"{CREATE_MUGSHOT MUGSHOT_FIREBRINGER 0}{SPEAKER NAME_FIREBRINGER}I'm bringin' down some Slugma today, freshly caught on Burnfoot Pass this mornin'.\p"
 			"Tomorrow I'll be back up there, catching some more of 'em."
 		))
 		closemessage
 	} else {
 		special(GetPlayerBoyLassString)
-		setspeaker(SP_NAME_FIREBRINGER)
 		msgbox(format(
-			"Hm? You askin' why I smell like smoke?\p"
+			"{CREATE_MUGSHOT MUGSHOT_FIREBRINGER 0}{SPEAKER NAME_FIREBRINGER}Hm? You askin' why I smell like smoke?\p"
 			"Prob'ly 'cause I just got down from Mt Kazan, and lemme tell ya, {STR_VAR_1}, it is no piece o' cake!\p"
 			"There's molten lava, aggressive Pokémon, chambers filled to the brim with explosive smoke!\p"
 			"Firebringers risk their life to capture fresh Slugma an' carry 'em to towns an' cities!\p"
