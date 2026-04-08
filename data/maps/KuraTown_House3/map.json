@@ -66,34 +66,6 @@
       "dest_warp_id": "3"
     }
   ],
-  "coord_events": [
-    {
-      "type": "trigger",
-      "x": 4,
-      "y": 5,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "KuraTown_House3_EventScript_EspeonTriggers"
-    },
-    {
-      "type": "trigger",
-      "x": 3,
-      "y": 6,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "KuraTown_House3_EventScript_EspeonTriggers"
-    },
-    {
-      "type": "trigger",
-      "x": 3,
-      "y": 4,
-      "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
-      "script": "KuraTown_House3_EventScript_EspeonTriggers"
-    }
-  ],
+  "coord_events": [],
   "bg_events": []
 }

@@ -110,10 +110,11 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			)
 			waitmessage
 			closemessage
-			fadescreen(FADE_TO_BLACK)
-			warp(MAP_SAKU_TOWN, 22, 19)
+			call(EspeonMasterGoesBack)
+			clearflag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)
+			addobject(LOCALID_SAKU_ESPEON)
 			destroyfollowernpc
-			fadescreen(FADE_FROM_BLACK)
+			special(DrawWholeMapView)
 			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 3)
 		case 3:
 			setspeaker(SP_NAME_BOY)
@@ -282,6 +283,22 @@ script(local) EspeonMasterGoesToPlayer{
 	}
 	waitmovement(0)
 	call(EspeonMovesIntoPlace)
+	return
+}
+
+script(local) EspeonMasterGoesBack{
+	getobjectxy(LOCALID_ESPEONS_MASTER, CURRENT_POSITION, VAR_TEMP_0, VAR_TEMP_1)
+	if(var(VAR_TEMP_0) == 6 && var(VAR_TEMP_1) == 5){
+		applymovement(LOCALID_ESPEONS_MASTER, moves(walk_up))
+	}
+	elif(var(VAR_TEMP_0) == 7 && var(VAR_TEMP_1) == 4){
+		applymovement(LOCALID_ESPEONS_MASTER, moves(walk_left))
+	}
+	elif(var(VAR_TEMP_0) == 6 && var(VAR_TEMP_1) == 3){
+		applymovement(LOCALID_ESPEONS_MASTER, moves(walk_down))
+	}
+	applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_right, face_down))
+	waitmovement(0)
 	return
 }
 
