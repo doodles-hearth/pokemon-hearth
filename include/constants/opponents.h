@@ -29,7 +29,7 @@
 #define TRAINER_KOTARO                       22
 #define TRAINER_EREN                         23
 #define TRAINER_UTSU                         24
-#define TRAINER_GRUNT_MT_PYRE_3              25
+#define TRAINER_ASUNA                        25
 #define TRAINER_GRUNT_WEATHER_INST_4         26
 #define TRAINER_GRUNT_AQUA_HIDEOUT_5         27
 #define TRAINER_GRUNT_AQUA_HIDEOUT_6         28

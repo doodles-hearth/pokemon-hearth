@@ -16234,7 +16234,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Secret of Blade"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A secret technique\n"
+            "A secret knowledge\n"
             "to cut small trees\n"
             "and grass."
         ),
@@ -16250,7 +16250,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Secret Of Smash"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A secret technique\n"
+            "A secret knowledge\n"
             "to smash rocks."
         ),
         .importance = 1,
@@ -16265,7 +16265,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Secret Of Strength"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A secret technique\n"
+            "A secret knowledge\n"
             "to push boulders."
         ),
         .importance = 1,
@@ -16280,7 +16280,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Secret Of Foam"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A secret technique\n"
+            "A secret knowledge\n"
             "to cross bodies of\n"
             "water."
         ),
@@ -16296,7 +16296,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Secret Of Depths"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A secret technique\n"
+            "A secret knowledge\n"
             "to dive in deep\n"
             "waters."
         ),
@@ -16312,7 +16312,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Secret Of Currents"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A secret technique\n"
+            "A secret knowledge\n"
             "to ride waterfalls."
         ),
         .importance = 1,
@@ -16327,7 +16327,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Secret Of Flight"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A secret technique\n"
+            "A secret knowledge\n"
             "to fly with your\n"
             "Pokémon."
         ),
@@ -16343,7 +16343,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Secret Of Heights"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A secret technique\n"
+            "A secret knowledge\n"
             "to climb\n"
             "cliffsides."
         ),
@@ -16359,7 +16359,7 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Secret Of Light"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A secret technique\n"
+            "A secret knowledge\n"
             "to light up dark\n"
             "caves."
         ),

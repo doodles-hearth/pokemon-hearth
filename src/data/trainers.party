@@ -149,8 +149,9 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Joltik
 Level: 3
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Absorb
-- Fury Cutter
+- Thunder Wave
+- Leech Life
+- Spider Web
 
 Sewaddle Tokuan
 Level: 3
@@ -794,22 +795,30 @@ Level: 26
 - Fire Spin
 - Extrasensory
 
-=== TRAINER_GRUNT_MT_PYRE_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+=== TRAINER_ASUNA ===
+Name: Asuna
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
 Battle Type: Singles
 AI: Check Bad Move
 
-Poochyena
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Hoppip
+Level: 7
+- Tail Whip
+- Tackle
 
-Carvanha
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Nidoran (M)
+Level: 6
+- Leer
+- Peck
+- Focus Energy
+
+Ralts
+Level: 6
+- Confusion
+- Double Team
 
 === TRAINER_GRUNT_WEATHER_INST_4 ===
 Name: GRUNT

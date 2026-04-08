@@ -118,8 +118,8 @@ script GinkoWoods_EventScript_Hariko {
 	delay(48)
 
 	setspeaker("Odd Girl")
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}…And that's all that is currently known about Joltik's habitat during the winter.\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}…And that's all that is currently\nknown about Joltik's winter habitat.\p"
 		"Neat, isn't it?"
 	))
 
@@ -139,28 +139,31 @@ script GinkoWoods_EventScript_Hariko {
 
 	switch(var(VAR_RESULT)) {
 		case 0:
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Right! I am glad you share my interest in Pokémon habitats.\p"
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Right! I am glad you share my interest\nin Pokémon habitats.\p"
 				"I am Hariko. And what is your name?\p"
-				"{PLAYER}.\nIt has been nice chatting with you.\NI will see you around, then.\p"
+				"{PLAYER}.\nIt has been nice chatting with you.\lI will see you around, then.\p"
 				"Okay. Bye!"
 			))
 		case 1:
-			msgbox(format(
+			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Right!\nI haven't introduced myself yet.\p"
 				"I am Hariko. And what is your name?\p"
-				"{PLAYER}.\nIt has been nice chatting with you.\NI will see you around, then.\p"
-				"Okay. Bye!"
+				"{PLAYER}.\nIt has been nice chatting with you.\lI will see you around, then.\p"
+				"Okay.{PAUSE 8}Bye!"
 			))
 		case 2:
+			delay(16)
 			playse(SE_PIN)
-			applymovement(LOCALID_GINKO_HARIKO, moves(emote_pensive))
-			msgbox(format(
+			applymovement(LOCALID_GINKO_HARIKO, moves(emote_pensive, delay_16 * 6))
+			waitmovement(LOCALID_GINKO_HARIKO)
+			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}…Oh. I am blocking your path. I see.\p"
 				"I got carried away, have I not?\nThat… tends to happen.\p"
 				"I am Hariko. And what is your name?\p"
-				"{PLAYER}.\nIt has been nice chatting with you.\NI am moving now, so that you can go through.\p"
-				"I will see you around.{PAUSE 8}\nOkay. Bye!"
+				"{PLAYER}.\nIt has been nice chatting with you.\p"
+				"I am moving now, so that you can go\nthrough.\p"
+				"I will see you around.{PAUSE 8}\nOkay.{PAUSE 8} Bye!"
 			))
 	}
 	closemessage

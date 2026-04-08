@@ -1,9 +1,3 @@
-const LOCALID_BERRYWOMAN = 5
-const LOCALID_CUT_MASTER = 19
-const LOCALID_CROBAT_SHADOW_BOSS = 24
-const LOCALID_CROBAT_SHADOW_GRUNT_TOP = 22
-const LOCALID_CROBAT_SHADOW_GRUNT_RIGHT = 25
-const LOCALID_CROBAT_SHADOW_GRUNT_LEFT = 23
 const FLAG_HIDE_CUT_MASTER = FLAG_TEMP_1
 const VAR_DO_CUT_MASTER_CUTSCENE = VAR_TEMP_0
 const VAR_HOUR_OF_DAY = VAR_0x8000
@@ -227,13 +221,12 @@ script TranquilRoute_EventScript_CutGrass {
 script TranquilRoute_EventScript_Chikao {
 	trainerbattle_single(
 		TRAINER_CHIKAO,
-		format("{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}I've been studying Pokémon at school! I can't lose!"),
+		("{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}I've been studying Pokémon at school!\nI can't lose!"),
 		format("I should have listened in class…")
 	)
-	setspeaker(SP_NAME_YOUNGSTER)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}Some Pokémon have more attack, and some have more special attack!\p"
-		"What's the difference? Uhh… It's too complicated to explain."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}{SPEAKER NAME_SCHOOL_KID}Some Pokémon have more attack, and\nsome have more special attack!\p"
+		"What's the difference?\nUhh… It's too complicated to explain."
 	))
 	closemessage
 	end
@@ -246,8 +239,8 @@ script TranquilRoute_EventScript_Kodomo {
 		format("Go back to the grass, you animal!")
 	)
 	setspeaker(SP_NAME_YOUNGSTER)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}I should look for stronger Pokémon in the tall grass, but I'm a little scared of getting jumped by surprise!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}I should look for stronger Pokémon\nin the tall grass, but…\lI'm scared of getting jumped!"
 	))
 	closemessage
 	end
@@ -256,22 +249,32 @@ script TranquilRoute_EventScript_Kodomo {
 script TranquilRoute_EventScript_Takeshi {
 	trainerbattle_single(
 		TRAINER_TAKESHI,
-		format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}Stay right there! I'll defeat you with my ninja skills!"),
-		format("I had the sun in my eyes!")
+		("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}Stay right there!\nI'll defeat you with my ninja skills!"),
+		format("I had the moon in my eyes!")
 	)
 	setspeaker(SP_NAME_NINJA_BOY)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}I must hone my ninja skills!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
+script TranquilRoute_EventScript_Asuna {
+	trainerbattle_single(
+		TRAINER_ASUNA,
+		("{CREATE_MUGSHOT MUGSHOT_LASS 0}This whole Pokémon battle business\nis kinda fun!"),
+		("What happened? Did I win?")
+	)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS 0}{SPEAKER NAME_LASS}All these types and moves are hard\nto follow…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
 script TranquilRoute_EventScript_Hana {
 	trainerbattle_single(
 		TRAINER_HIINA,
-		format("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Ugh, how can Kenji paint a portrait of me if people keep walking between us?"),
+		("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Ugh, how can Kenji paint a portrait of\nme if people keep walking between us?"),
 		format("Great, now my hair is all messed up.")
 	)
 	setspeaker(SP_NAME_BEAUTY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Kenji really is an amazing artist. I feel very lucky."), MSGBOX_AUTOCLOSE)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Kenji really is an amazing artist.\nI feel very lucky."), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -395,17 +398,17 @@ script TranquilRoute_EventScript_BerryWoman {
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Hi, young one! See this?"))
 		closemessage
-		applymovement(LOCALID_BERRYWOMAN, Common_Movement_FaceRight)
+		applymovement(LOCALID_TRANQUIL_BERRYWOMAN, Common_Movement_FaceRight)
 		waitmovement(0)
 		delay(48)
-		applymovement(LOCALID_BERRYWOMAN, Common_Movement_FacePlayer)
+		applymovement(LOCALID_TRANQUIL_BERRYWOMAN, Common_Movement_FacePlayer)
 		waitmovement(0)
 		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}You can plant berries in the ground in fertile spots like this.\p"
-			"The seeds will eventually grow into a healthy berry tree, ready to be harvested!\p"
-			"I see you're a Wielder. Well, different berries have different effects when they're fed to Pokémon.\p"
-			"I love berries, hopefully you'll soon learn to love them too!\p"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}You can plant berries in the ground\nin fertile spots like this.\p"
+			"The seeds will eventually grow into a\nberry tree, ready to be harvested!\p"
+			"I see you're a Wielder. Well,\ndifferent berries have different\neffects when they're fed to Pokémon.\p"
+			"I love berries, hopefully you'll soon\nlearn to love them too!\p"
 			"Here, try planting a few!"
 		))
 		closemessage
@@ -413,9 +416,9 @@ script TranquilRoute_EventScript_BerryWoman {
 		goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
 
 		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
+		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Oh, right, I almost forgot!\p"
-			"You must remember to water them regularly, or they won't grow!\p"
+			"You must remember to water them\nregularly, or they won't grow!\p"
 			"I like you. Take this!"
 		))
 		closemessage
@@ -459,10 +462,10 @@ script TranquilRoute_EventScript_Mareep2 {
 }
 
 script TranquilRoute_TrainerTips1 {
-	msgbox(format(
+	msgbox((
 		"Did you know?\p"
 		"Some Pokémon only come out at night.\p"
-		"Visit the same spot at different times of day to have a chance of seeing rare Pokémon!"
+		"Visit a spot at different times to\nhave a chance of seeing rare Pokémon!"
 	), MSGBOX_SIGN)
 }
 
@@ -497,7 +500,7 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 
 	delay(20)
 
-	applymovement(LOCALID_CROBAT_SHADOW_BOSS, Common_Movement_WalkInPlaceFasterUp)
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_BOSS, Common_Movement_WalkInPlaceFasterUp)
 	waitmovement(0)
 
 	setspeaker("Shady man")
@@ -506,37 +509,37 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 	))
 	closemessage
 
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT, moves(walk_up, face_down))
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_LEFT, moves(walk_up, face_down))
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_TOP)
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT)
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT, moves(walk_up, face_down))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT, moves(walk_up, face_down))
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT)
 
 	// o o o
 	//   o
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_LEFT, moves(face_down, zubats_align, delay_16, delay_16))
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_TOP, moves(face_down, zubats_align, delay_16, delay_16))
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT, moves(face_down, zubats_align, delay_16, delay_16))
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_LEFT)
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_TOP)
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT)
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT, moves(face_down, zubats_align, delay_16, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP, moves(face_down, zubats_align, delay_16, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT, moves(face_down, zubats_align, delay_16, delay_16))
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT)
 	waitse
 
 	//
 	// oooo
 	//
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_TOP, moves(walk_left * 5, delay_16))
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_LEFT, moves(walk_left * 5, delay_16))
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT, moves(walk_left * 5, delay_16))
-	applymovement(LOCALID_CROBAT_SHADOW_BOSS, moves(walk_up * 2, walk_left * 5))
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_TOP)
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_LEFT)
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT)
-	waitmovement(LOCALID_CROBAT_SHADOW_BOSS)
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP, moves(walk_left * 5, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT, moves(walk_left * 5, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT, moves(walk_left * 5, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_BOSS, moves(walk_up * 2, walk_left * 5))
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_BOSS)
 
-	removeobject(LOCALID_CROBAT_SHADOW_GRUNT_TOP)
-	removeobject(LOCALID_CROBAT_SHADOW_GRUNT_LEFT)
-	removeobject(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT)
-	removeobject(LOCALID_CROBAT_SHADOW_BOSS)
+	removeobject(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP)
+	removeobject(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT)
+	removeobject(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT)
+	removeobject(LOCALID_TRANQUIL_CROBAT_SHADOW_BOSS)
 	setflag(FLAG_HIDE_CROBAT_SHADOWS_TRANQUIL_RT)
 }
 
@@ -604,11 +607,11 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 script TranquilRoute_EventScript_WaitingForChatot {
 	lock
 	faceplayer
+	waitse
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
-	setspeaker(SP_NAME_GIRL)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 0}Sigh… Maybe if I hang around the Chatot Post, my boyfriend's message will arrive sooner…"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 0}{SPEAKER NAME_GIRL}Sigh… Maybe if I hang around the\nChatot Post, my boyfriend's message\lwill arrive sooner…"
 	))
 	closemessage
 	release

@@ -217,8 +217,7 @@ script ChatotPost_EventScript_BigSisLeftovers {
     ))
     closemessage
 
-    giveitem(ITEM_LEFTOVERS)
-
+    playse(SE_PIN)
     applymovement(LOCALID_PLAYER, moves(emote_question_mark, delay_16 * 6))
     waitmovement(0)
 
@@ -226,6 +225,8 @@ script ChatotPost_EventScript_BigSisLeftovers {
         "There are only leftovers inside…"
     ))
     closemessage
+
+    giveitem(ITEM_LEFTOVERS)
 
     delay(48)
 
