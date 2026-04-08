@@ -57,15 +57,18 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			getobjectcurrentxy(OBJ_EVENT_ID_NPC_FOLLOWER, CURRENT_POSITION, VAR_TEMP_0, VAR_TEMP_1)
 			playse(SE_PIN)
 			if(var(VAR_TEMP_0) == 6 && var(VAR_TEMP_1) == 5){
+				playse(SE_PIN)
 				applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(face_up))
 				applymovement(LOCALID_ESPEONS_MASTER, moves(emote_exclamation_mark))
 			}
 			elif(var(VAR_TEMP_0) == 7 && var(VAR_TEMP_1) == 4){
 				applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(face_left))
+				playse(SE_PIN)
 				applymovement(LOCALID_ESPEONS_MASTER, moves(face_right, emote_exclamation_mark))
 			}
 			elif(var(VAR_TEMP_0) == 6 && var(VAR_TEMP_1) == 3){
 				applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(face_down))
+				playse(SE_PIN)
 				applymovement(LOCALID_ESPEONS_MASTER, moves(face_up, emote_exclamation_mark))
 			}
 			call(PlayerFacesEspeon)

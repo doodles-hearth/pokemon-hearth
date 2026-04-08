@@ -51,9 +51,9 @@ mapscripts KuraTown_MapScripts {
 
 script KuraTown_EventScript_GuardStopsYou {
 	lockall
-
 	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 	// Player sneaks in from the left
+	setspeaker(SP_NAME_GUARD)
 	if (var(VAR_TEMP_0) <= 14) {
 		applymovement(LOCALID_GUARD, Common_Movement_WalkInPlaceFasterLeft)
 		waitmovement(0)
@@ -72,6 +72,7 @@ script KuraTown_EventScript_GuardStopsYou {
 	}
 	delay(20)
 
+	setspeaker(SP_NAME_GUARD)
 	if (var(VAR_SAKU_KURA_VILLAGES_STATE) == 1) {
 		msgbox(
 			"You think I don't see you trying\nto sneak in from Saku Village?\p"
@@ -523,7 +524,7 @@ script KuraTown_EventScript_TeachingScrolls {
 		mcdialogue("Did an Eevee pass through here?")
 		setspeaker(SP_NAME_MAN)
 		msgbox(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY 0}Hmm… No, Abra and I have been here the\nwhole time. I didn't see one go out.\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_FAT_GUY 0}Hmm… No, Abra and I have been here the\nwhole time. I didn't see one leave town.\p"
 			"Try asking the farmers, they're out\nworking in the fields all day."
 		)
 		closemessage

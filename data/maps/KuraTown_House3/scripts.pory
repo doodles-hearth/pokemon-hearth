@@ -19,11 +19,11 @@ script KuraTown_House3_EventScript_Lady {
 			setspeaker("Omai Yari")
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}"
-				"Ah, yes! An Eevee came rushing into my\nhome during that nasty storm.\p"
-				"This is her now; she's evolved into a big,\nhealthy Espeon!"
+				"Ah, yes! She came rushing into my\nhome during that nasty storm.\p"
+				"This is her now; she seems to have\ntaken on a nice shiny coat!"
 			)
 			closemessage
-			mcdialogue("This Eevee belongs to someone…")
+			mcdialogue("She belongs to someone…")
 			delay(90)
 			mcdialogue("I need to bring her back to Saku Town.")
 			setspeaker("Omai Yari")
