@@ -124,7 +124,7 @@ script KuraTown_EventScript_DojoChallenger {
 	closemessage
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
-		mcdialogueB("Did you see an Eevee recently?")
+		mcdialogueB("Has an Eevee passed by?")
 		setspeaker(SP_NAME_MAN)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Ah, I did see one! It must be the small\nPokémon I scared straight while I was\lmeditating here in the rain.\p"
@@ -158,7 +158,7 @@ script KuraTown_EventScript_Farmer {
 	closemessage
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
-	mcdialogueB("Did you see an Eevee recently?")
+	mcdialogueB("Has an Eevee passed by?")
 	setspeaker(SP_NAME_FARMER)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}An Eevee? Sure did! I saw it with Mrs\nYari. She's takin' good care of it.\p"
@@ -181,7 +181,7 @@ script KuraTown_EventScript_SilkScarf {
 		closemessage
 		returnqueststate(QUEST_SAKURAESPEON)
 		if(var(VAR_RESULT) == 2) {
-		mcdialogueB("Did you see an Eevee recently?")
+		mcdialogueB("Has an Eevee passed by?")
 		setspeaker(SP_NAME_GIRL)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_1 0}Are you talking about that scruffy lil'\nPokémon from the other day?\p"
@@ -227,7 +227,7 @@ script KuraTown_EventScript_FarmerScyther {
 	closemessage
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
-	mcdialogueB("Did you see an Eevee recently?")
+	mcdialogueB("Has an Eevee passed by?")
 	setspeaker(SP_NAME_FARMER)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Are ya talkin' about Mrs Yari's new pet?\nIt's with 'er at her house up there.\p"
@@ -301,7 +301,7 @@ script KuraTown_EventScript_PokemonCouncil {
 	closemessage
 	returnqueststate(QUEST_SAKURAESPEON)
 	if(var(VAR_RESULT) == 2) {
-		mcdialogueB("Did you see an Eevee recently?")
+		mcdialogueB("Has an Eevee passed by?")
 		setspeaker(SP_NAME_WOMAN)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 0}An Eevee? Sadly haven't seen one.\p"
