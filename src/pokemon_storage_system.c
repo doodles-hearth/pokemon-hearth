@@ -560,6 +560,7 @@ EWRAM_DATA static u8 sMovingMonOrigBoxPos = 0;
 EWRAM_DATA static bool8 sAutoActionOn = 0;
 EWRAM_DATA static bool8 sJustOpenedBag = 0;
 EWRAM_DATA static bool8 sRefreshDisplayMonGfx = FALSE;
+EWRAM_DATA static u32 sPartyChecksum = 0;
 
 // Main tasks
 static void Task_InitPokeStorage(u8);
@@ -1521,8 +1522,6 @@ enum {
 #define tSelectedOption data[1]
 #define tInput          data[2]
 #define tNextOption     data[3]
-#define tChecksumUpper  data[4]
-#define tChecksumLower  data[5]
 #define tWindowId       data[15]
 
 static void Task_PCMainMenu(u8 taskId)
@@ -2008,9 +2007,7 @@ static void EnterPokeStorage(u8 boxOption)
         sStorage->taskId = CreateTask(Task_InitPokeStorage, 3);
         sLastUsedBox = StorageGetCurrentBox();
         SetMainCallback2(CB2_PokeStorage);
-        u32 checksum = CalculatePartyChecksum(gPlayerParty);
-        gTasks[sStorage->taskId].tChecksumUpper = checksum >> 16;
-        gTasks[sStorage->taskId].tChecksumLower = checksum & 0xFFFF;
+        sPartyChecksum = CalculatePartyChecksum(gPlayerParty);
     }
 }
 
@@ -3791,8 +3788,7 @@ static void Task_ChangeScreen(u8 taskId)
             SetMainCallback2(CB2_ReturnToFieldContinueScript);
         else
             SetMainCallback2(CB2_ExitPokeStorage);
-        u32 checksum = ((u16)gTasks[taskId].tChecksumUpper << 16) | (u16)gTasks[taskId].tChecksumLower;
-        if (checksum != CalculatePartyChecksum(gPlayerParty))
+        if (sPartyChecksum != CalculatePartyChecksum(gPlayerParty))
             FlagSet(FLAG_LAYOUT_DIFFERENT_AFTER_PC);
         FreePokeStorageData();
         break;
