@@ -3732,7 +3732,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_RATTLED, ABILITY_KLUTZ },
+        .abilities = { ABILITY_RATTLED, ABILITY_KLUTZ, ABILITY_CURSED_BODY },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Toxel"),
         .unknownName = _("Hum Baby"),
@@ -3740,7 +3740,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .natDexNum = NATIONAL_DEX_TOXEL_TOKUAN,
         .categoryName = _("Baby"),
         .height = 4,
-        .weight = 110,
+        .weight = 100,
         .description = COMPOUND_STRING(
             "Despite its slightly venomous skin and its\n"
             "frequent tantrums, Toxel is loved by most\n"
@@ -3780,8 +3780,8 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
             gMonShinyPalette_ToxelTokuan
         )
         // TODO EVA give him something tantrum-related! + uproar obviously
-        .levelUpLearnset = sToxelLevelUpLearnset,
-        .teachableLearnset = sToxelTeachableLearnset,
+        .levelUpLearnset = sToxelTokuanLevelUpLearnset,
+        .teachableLearnset = sToxelTokuanTeachableLearnset,
         .eggMoveLearnset = sToxelEggMoveLearnset,
         .evolutions = EVOLUTION(
             {EVO_LEVEL, 30, SPECIES_TOXIKYU_AMPED, CONDITIONS({IF_AMPED_NATURE})},
@@ -3793,12 +3793,12 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
 
 [SPECIES_TOXIKYU_LOW_KEY] =
     {
-        .baseHP        = 75,
-        .baseAttack    = 98,
-        .baseDefense   = 70,
-        .baseSpeed     = 75,
-        .baseSpAttack  = 114,
-        .baseSpDefense = 70,
+        .baseHP        = 86,
+        .baseAttack    = 70,
+        .baseDefense   = 86,
+        .baseSpeed     = 64,
+        .baseSpAttack  = 98,
+        .baseSpDefense = 98,
         .types = MON_TYPES(TYPE_GHOST, TYPE_POISON),
         .catchRate = 45,
         .expYield = 176,
@@ -3808,7 +3808,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_HUMAN_LIKE),
-        .abilities = { ABILITY_PUNK_ROCK, ABILITY_MINUS, ABILITY_TECHNICIAN },
+        .abilities = { ABILITY_CAPRICCIO, ABILITY_SERENE_GRACE, ABILITY_CURSED_BODY },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Toxikyu"),
         .unknownName = _("Song Ghost"),
@@ -3816,7 +3816,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .natDexNum = NATIONAL_DEX_TOXIKYU,
         .categoryName = _("Shamisen"),
         .height = 16,
-        .weight = 400,
+        .weight = 350,
         .description = COMPOUND_STRING(
             "Toxikyu is a kind creature despite his\n"
             "gaunt appearance. Running a hand through\n"
@@ -3863,12 +3863,12 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
 
     [SPECIES_TOXIKYU_AMPED] =
     {
-        .baseHP        = 75,
-        .baseAttack    = 98,
-        .baseDefense   = 70,
-        .baseSpeed     = 75,
-        .baseSpAttack  = 114,
-        .baseSpDefense = 70,
+        .baseHP        = 86,
+        .baseAttack    = 70,
+        .baseDefense   = 86,
+        .baseSpeed     = 64,
+        .baseSpAttack  = 98,
+        .baseSpDefense = 98,
         .types = MON_TYPES(TYPE_GHOST, TYPE_POISON),
         .catchRate = 45,
         .expYield = 176,
@@ -3878,7 +3878,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_HUMAN_LIKE),
-        .abilities = { ABILITY_PUNK_ROCK, ABILITY_PLUS, ABILITY_TECHNICIAN },
+        .abilities = { ABILITY_CAPRICCIO, ABILITY_SCRAPPY, ABILITY_CURSED_BODY },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Toxikyu"),
         .unknownName = _("Song Ghost"),
@@ -3886,7 +3886,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         .natDexNum = NATIONAL_DEX_TOXIKYU,
         .categoryName = _("Shamisen"),
         .height = 16,
-        .weight = 400,
+        .weight = 350,
         .description = COMPOUND_STRING(
             "It claws at the string-like organs on its\n"
             "chest to produce loud, painful sounds.\n"

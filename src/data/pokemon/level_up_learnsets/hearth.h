@@ -19639,6 +19639,19 @@ static const struct LevelUpMove sToxtricityLowKeyLevelUpLearnset[] = {
 };
 
 #if P_TOKUAN_FORMS
+static const struct LevelUpMove sToxelTokuanLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 1, MOVE_BELCH),
+    LEVEL_UP_MOVE( 1, MOVE_LICK),
+    LEVEL_UP_MOVE( 1, MOVE_TEARFUL_LOOK),
+    LEVEL_UP_MOVE( 1, MOVE_GROWL),
+    LEVEL_UP_MOVE( 1, MOVE_FLAIL),
+    LEVEL_UP_MOVE( 1, MOVE_ACID),
+    LEVEL_UP_MOVE(10, MOVE_SCARY_FACE),
+    LEVEL_UP_MOVE(16, MOVE_UPROAR),
+    LEVEL_UP_MOVE(22, MOVE_SCREECH),
+    LEVEL_UP_MOVE(28, MOVE_TORMENT),
+};
+
 static const struct LevelUpMove sToxikyuAmpedLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 0, MOVE_ASTONISH),
     LEVEL_UP_MOVE( 1, MOVE_ASTONISH),
@@ -19668,6 +19681,7 @@ static const struct LevelUpMove sToxikyuAmpedLevelUpLearnset[] = {
     LEVEL_UP_MOVE(48, MOVE_HYPER_VOICE),
     LEVEL_UP_MOVE(52, MOVE_BOOMBURST),
     LEVEL_UP_MOVE(56, MOVE_GUNK_SHOT),
+    LEVEL_UP_MOVE(60, MOVE_FOCUS_BLAST),
     LEVEL_UP_END
 };
 
@@ -19701,6 +19715,7 @@ static const struct LevelUpMove sToxikyuLowKeyLevelUpLearnset[] = {
     LEVEL_UP_MOVE(48, MOVE_HYPER_VOICE),
     LEVEL_UP_MOVE(51, MOVE_GRUDGE),
     LEVEL_UP_MOVE(56, MOVE_GUNK_SHOT),
+    LEVEL_UP_MOVE(60, MOVE_MEMENTO),
     LEVEL_UP_END
 };
 #endif //P_TOKUAN_FORMS

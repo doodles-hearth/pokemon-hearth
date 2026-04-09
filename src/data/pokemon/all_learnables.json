@@ -89803,5 +89803,25 @@
     "MOVE_WEATHER_BALL",
     "MOVE_WORK_UP",
     "MOVE_WORRY_SEED"
+  ],
+  "TOXEL_TOKUAN": [
+    "MOVE_ACID",
+    "MOVE_BELCH",
+    "MOVE_CURSE",
+    "MOVE_FLAIL",
+    "MOVE_GROWL",
+    "MOVE_LICK",
+    "MOVE_PROTECT",
+    "MOVE_REST",
+    "MOVE_SCARY_FACE",
+    "MOVE_SCREECH",
+    "MOVE_SHADOW_BALL",
+    "MOVE_SING",
+    "MOVE_SLEEP_TALK",
+    "MOVE_SNORE",
+    "MOVE_SWIFT",
+    "MOVE_TEARFUL_LOOK",
+    "MOVE_UPROAR",
+    "MOVE_TORMENT"
   ]
 }
