@@ -196,7 +196,7 @@ static bool32 HandleEndTurnWeatherDamage(enum BattlerId battler)
             {
                 SetPassiveDamageAmount(battler, GetNonDynamaxMaxHP(battler) / 16);
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_DECAY;
-                BattleScriptExecute(BattleScript_DamagingWeather);
+                BattleScriptCall(BattleScript_DamagingWeather);
                 effect = TRUE;
             }
         }
