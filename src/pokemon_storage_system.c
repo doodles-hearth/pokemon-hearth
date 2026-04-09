@@ -540,11 +540,6 @@ struct PokemonStorageSystemData
     bool8 displayMonIsShiny;
 };
 
-struct PermanentStorageData // Data that persists between changing screens
-{
-    u32 partyPIDs[PARTY_SIZE];
-};
-
 static u32 sItemIconGfxBuffer[98];
 
 EWRAM_DATA static u8 sPreviousBoxOption = 0;
@@ -565,7 +560,6 @@ EWRAM_DATA static u8 sMovingMonOrigBoxPos = 0;
 EWRAM_DATA static bool8 sAutoActionOn = 0;
 EWRAM_DATA static bool8 sJustOpenedBag = 0;
 EWRAM_DATA static bool8 sRefreshDisplayMonGfx = FALSE;
-EWRAM_DATA static struct PermanentStorageData *sPermanentStorage = NULL;
 
 // Main tasks
 static void Task_InitPokeStorage(u8);
@@ -869,6 +863,20 @@ void UpdateSpeciesSpritePSS(struct BoxPokemon *boxmon);
 static const u8 gText_JustOnePkmn[] = _("There is just one Pokémon with you.");
 static const u8 gText_PartyFull[] = _("Your party is full!");
 static const u8 gText_Box[] = _("Pen");
+
+static u32 CalculatePartyChecksum(struct Pokemon* party)
+{
+    u32 hash = 0;
+    u32 sum = hash;
+    for (u32 i = 0; i < PARTY_SIZE; i++) {
+        u32 personality = GetMonData(&party[i], MON_DATA_PERSONALITY);
+        hash ^= personality;
+        sum += personality;
+    }
+    hash ^= (sum << 1);
+
+    return hash;
+}
 
 struct {
     const u8 *text;
@@ -1491,45 +1499,6 @@ static void UNUSED UnusedWriteRectDma(u16 *dest, u16 dest_left, u16 dest_top, u1
         Dma3FillLarge16_(0, dest, width);
 }
 
-static void StorePartyPIDs(void)
-{
-    u32 i;
-    struct Pokemon *pokemon;
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        pokemon = &gPlayerParty[i];
-        sPermanentStorage->partyPIDs[i] = GetMonData(pokemon, MON_DATA_PERSONALITY);
-    }
-    
-}
-
-static void CheckPartyPIDs(void)
-{
-    u32 i, j;
-    bool8 matched[PARTY_SIZE] = {0};
-    u32 count = 0;
-
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        u32 pid = GetMonData(&gPlayerParty[i], MON_DATA_PERSONALITY);
-
-        for (j = 0; j < PARTY_SIZE; j++)
-        {
-            if (!matched[j] && pid == sPermanentStorage->partyPIDs[j])
-            {
-                matched[j] = TRUE; // consume this match
-                count++;
-                break; // move to next party mon
-            }
-        }
-    }
-
-    if (count != PARTY_SIZE)
-    {
-        FlagSet(FLAG_LAYOUT_DIFFERENT_AFTER_PC);
-    }
-}
-
 
 //------------------------------------------------------------------------------
 //  SECTION: Main menu
@@ -1552,6 +1521,8 @@ enum {
 #define tSelectedOption data[1]
 #define tInput          data[2]
 #define tNextOption     data[3]
+#define tChecksumUpper  data[4]
+#define tChecksumLower  data[5]
 #define tWindowId       data[15]
 
 static void Task_PCMainMenu(u8 taskId)
@@ -2021,7 +1992,6 @@ static void EnterPokeStorage(u8 boxOption)
     ResetTasks();
     sCurrentBoxOption = boxOption;
     sStorage = Alloc(sizeof(*sStorage));
-    sPermanentStorage = Alloc(sizeof(*sPermanentStorage));
     if (sStorage == NULL)
     {
         if (boxOption == OPTION_SELECT_MON)
@@ -2038,7 +2008,9 @@ static void EnterPokeStorage(u8 boxOption)
         sStorage->taskId = CreateTask(Task_InitPokeStorage, 3);
         sLastUsedBox = StorageGetCurrentBox();
         SetMainCallback2(CB2_PokeStorage);
-        StorePartyPIDs();
+        u32 checksum = CalculatePartyChecksum(gPlayerParty);
+        gTasks[sStorage->taskId].tChecksumUpper = checksum >> 16;
+        gTasks[sStorage->taskId].tChecksumLower = checksum & 0xFFFF;
     }
 }
 
@@ -3819,9 +3791,10 @@ static void Task_ChangeScreen(u8 taskId)
             SetMainCallback2(CB2_ReturnToFieldContinueScript);
         else
             SetMainCallback2(CB2_ExitPokeStorage);
-        CheckPartyPIDs();
+        u32 checksum = ((u16)gTasks[taskId].tChecksumUpper << 16) | (u16)gTasks[taskId].tChecksumLower;
+        if (checksum != CalculatePartyChecksum(gPlayerParty))
+            FlagSet(FLAG_LAYOUT_DIFFERENT_AFTER_PC);
         FreePokeStorageData();
-        FREE_AND_SET_NULL(sPermanentStorage);
         break;
     case SCREEN_CHANGE_SUMMARY_SCREEN:
         boxMons = sStorage->summaryMon.box;
