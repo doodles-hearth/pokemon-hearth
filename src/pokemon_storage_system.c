@@ -560,6 +560,7 @@ EWRAM_DATA static u8 sMovingMonOrigBoxPos = 0;
 EWRAM_DATA static bool8 sAutoActionOn = 0;
 EWRAM_DATA static bool8 sJustOpenedBag = 0;
 EWRAM_DATA static bool8 sRefreshDisplayMonGfx = FALSE;
+EWRAM_DATA static u32 sPartyChecksum = 0;
 
 // Main tasks
 static void Task_InitPokeStorage(u8);
@@ -863,6 +864,20 @@ void UpdateSpeciesSpritePSS(struct BoxPokemon *boxmon);
 static const u8 gText_JustOnePkmn[] = _("There is just one Pokémon with you.");
 static const u8 gText_PartyFull[] = _("Your party is full!");
 static const u8 gText_Box[] = _("Pen");
+
+static u32 CalculatePartyChecksum(struct Pokemon* party)
+{
+    u32 hash = 0;
+    u32 sum = hash;
+    for (u32 i = 0; i < PARTY_SIZE; i++) {
+        u32 personality = GetMonData(&party[i], MON_DATA_PERSONALITY);
+        hash ^= personality;
+        sum += personality;
+    }
+    hash ^= (sum << 1);
+
+    return hash;
+}
 
 struct {
     const u8 *text;
@@ -1992,6 +2007,7 @@ static void EnterPokeStorage(u8 boxOption)
         sStorage->taskId = CreateTask(Task_InitPokeStorage, 3);
         sLastUsedBox = StorageGetCurrentBox();
         SetMainCallback2(CB2_PokeStorage);
+        sPartyChecksum = CalculatePartyChecksum(gPlayerParty);
     }
 }
 
@@ -3772,6 +3788,8 @@ static void Task_ChangeScreen(u8 taskId)
             SetMainCallback2(CB2_ReturnToFieldContinueScript);
         else
             SetMainCallback2(CB2_ExitPokeStorage);
+        if (sPartyChecksum != CalculatePartyChecksum(gPlayerParty))
+            FlagSet(FLAG_LAYOUT_DIFFERENT_AFTER_PC);
         FreePokeStorageData();
         break;
     case SCREEN_CHANGE_SUMMARY_SCREEN:

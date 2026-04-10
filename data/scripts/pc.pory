@@ -23,13 +23,19 @@ script Common_EventScript_PcGuy {
 	waitstate
 
 	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
-	if (flag(FLAG_PC_EXPLAINED)) {
+    if (!flag(FLAG_LAYOUT_DIFFERENT_AFTER_PC)) {
+        setflag(FLAG_PC_EXPLAINED)
+		msgbox(format(
+			"{SPEAKER NAME_MAN}Well… saves me a trip."
+		))
+		closemessage
+    } elif (flag(FLAG_PC_EXPLAINED)) {
 		msgbox(format(
 			"{SPEAKER NAME_MAN}Pant… pant… Thanks for using our Pokémon pasture service!"
 		))
 		closemessage
 	} else {
-		setflag(FLAG_PC_EXPLAINED)
+        setflag(FLAG_PC_EXPLAINED)
 		// TODO EVA do this only if we actually stored mons
 		msgbox(format(
 			"{SPEAKER NAME_MAN}Alrighty, I'll just do a quick trip to the pasture!\p"
@@ -51,6 +57,7 @@ script Common_EventScript_PcGuy {
 		closemessage
 	}
 
+    clearflag(FLAG_LAYOUT_DIFFERENT_AFTER_PC)
 	release
 	end
 }
