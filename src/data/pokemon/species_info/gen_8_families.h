@@ -3782,7 +3782,7 @@ const struct SpeciesInfo gSpeciesInfoGen8[] =
         // TODO EVA give him something tantrum-related! + uproar obviously
         .levelUpLearnset = sToxelTokuanLevelUpLearnset,
         .teachableLearnset = sToxelTokuanTeachableLearnset,
-        .eggMoveLearnset = sToxelEggMoveLearnset,
+        .eggMoveLearnset = sToxelTokuanEggMoveLearnset,
         .evolutions = EVOLUTION(
             {EVO_LEVEL, 30, SPECIES_TOXIKYU_AMPED, CONDITIONS({IF_AMPED_NATURE})},
             {EVO_LEVEL, 30, SPECIES_TOXIKYU_LOW_KEY, CONDITIONS({IF_LOW_KEY_NATURE})}
