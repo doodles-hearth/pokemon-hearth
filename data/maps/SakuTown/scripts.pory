@@ -1,5 +1,4 @@
 const LOCALID_KARATEKA = 6
-const LOCALID_GUARD = 8
 const LOCALID_RIVAL = 10
 const LOCALID_MAMA = 1
 const LOCALID_KUKU = 2
@@ -21,7 +20,7 @@ mapscripts SakuTown_MapScripts {
 		if (flag(FLAG_SAKU_KURA_REUNITED)) {
 			// Once reunited, the guards from the two villages play a board game together
 			setmetatile(19, 2, METATILE_SakuKura_BoardGame, TRUE)
-			setobjectmovementtype(LOCALID_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
+			setobjectmovementtype(LOCALID_SAKU_TOWN_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
 		}
 
 		if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) != 6) {
@@ -204,17 +203,28 @@ script SakuTown_EventScript_Farmer {
 	setspeaker(SP_NAME_FARMER)
 	returnqueststate(QUEST_SAKURASCYTHER)
 	if(var(VAR_RESULT) == 3){
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Wielder! It's you!\nI can't thank ya enough for helping us heal our girl.\p"
-			"Been doin' some thinkin' too, after you told us the one who helped 'er was from Kura.\p"
-			"That ain't here nor there though.\nAs thanks, ya can have these."
-		))
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Ah! Wielder, it's you! I can't ever thank\nya enough for helping us heal our girl.\p"
+			"Been doin' some thinkin' too, after you\ntold us the one who helped 'er was from\lthat there Kura Town.\p"
+			"But that ain't here nor there. We\nwantch'a to have these. As thanks."
+		)
+		closemessage
 		giveitem(ITEM_CHERI_BERRY, 20)
 		completequest(QUEST_SAKURASCYTHER)
 	} else {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}We're growin' Cheri berries.\nSaku Village exports its berries to many towns."
-		))
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}We're growin' Cheri berries.\nSaku Village exports 'em all over Toku."
+		)
+		closemessage
+	}
+	returnqueststate(QUEST_SAKURAESPEON)
+	if(var(VAR_RESULT) == 2) {
+		mcdialogueB("Has an Eevee passed by?")
+		setspeaker(SP_NAME_FARMER)
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}An Eevee? I don' think I have. Sorry kid."
+		)
+		closemessage
 	}
 	release
 }
@@ -224,10 +234,21 @@ script SakuTown_EventScript_Farmer2 {
 	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Whew…\n"
 		"Working in the fields sure is tirin'…"
-	))
+	)
+	waitmessage
+	closemessage
+	returnqueststate(QUEST_SAKURAESPEON)
+	if(var(VAR_RESULT) == 2) {
+		mcdialogueB("Has an Eevee passed by?")
+		setspeaker(SP_NAME_FARMER)
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Hrm… Lemme think…\pNah, I'm sorry, kid. Nuthin' is comin' to\nmind at the moment."
+		)
+		closemessage
+	}
 	release
 }
 
@@ -240,6 +261,14 @@ script SakuTown_EventScript_Scyther {
 	msgbox(format("Gyooo!"))
 	waitmoncry
 	closemessage
+	returnqueststate(QUEST_SAKURAESPEON)
+	if(var(VAR_RESULT) == 2) {
+		mcdialogueB("Has an Eevee passed by?")
+		setspeakertomonname(SPECIES_SCYTHER)
+		msgbox("Gyooo?")
+		waitmoncry
+		closemessage
+	}
 	release
 }
 
@@ -248,10 +277,21 @@ script SakuTown_EventScript_Woman {
 	faceplayer
 	applymovement(VAR_LAST_TALKED, moves(emote_upset))
 	setspeaker(SP_NAME_WOMAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_1 0}Those thugs in Kura Village may have their own Dojo, but their town is nothing but an ugly pile of rocks!\p"
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_1 0}Those thugs in Kura Village may have\ntheir own Dojo, but their dumb town is\lnothing but an ugly pile of rocks!\p"
 		"They don't even have a Pokémon refuge!"
-	))
+	)
+	closemessage
+	returnqueststate(QUEST_SAKURAESPEON)
+	if(var(VAR_RESULT) == 2) {
+		mcdialogueB("Has an Eevee passed by?")
+		setspeaker(SP_NAME_WOMAN)
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_1 0}An Eevee? Oh yes! I saw one days ago\nrunning from this house here.\p"
+			"I think I saw it go towards the valley?\nThat's all I saw, though. Sorry."
+		)
+		closemessage
+	}
 	release
 }
 
@@ -259,10 +299,10 @@ script SakuTown_EventScript_Karateka {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_MAN)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}"
-		"I let the Toku Council borrow my super-strong Pokémon to help build the new Pokémon refuges throughout the region."
-	))
+		"I'm helping the Toku Council build these\nnew Pokémon Refuges with the help of\lmy super strong Pokémon!"
+	)
 	closemessage
 
 	playse(SE_LEDGE)
@@ -323,11 +363,24 @@ script SakuTown_EventScript_Karateka {
 		closemessage
 	}
 
+	closemessage
+	returnqueststate(QUEST_SAKURAESPEON)
+	if(var(VAR_RESULT) == 2) {
+		mcdialogueB("Has an Eevee passed by?")
+		setspeaker(SP_NAME_MAN)
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Eevee, huh? Now that I think about it…\nMama and Kuku chased something away\lduring the storm.\p"
+			"I think it went north to the valley.\nCould that be what you're looking for?"
+		)
+		closemessage
+	}
+
 	release
 }
 
 script SakuTown_EventScript_Guard {
 	lock
+	faceplayer
 	if (flag(FLAG_SAKU_KURA_REUNITED)) {
 		setspeaker(SP_NAME_GUARD)
 		msgbox(format(
@@ -342,8 +395,30 @@ script SakuTown_EventScript_Guard {
 			"The safety of the whole village rests on my shoulders."
 		))
 		closemessage
-		applymovement(LOCALID_GUARD, Common_Movement_FaceOriginalDirection)
+		applymovement(LOCALID_SAKU_TOWN_GUARD, Common_Movement_FaceOriginalDirection)
 		waitmovement(0)
+	}
+	returnqueststate(QUEST_SAKURAESPEON)
+	if(var(VAR_RESULT) == 2) {
+		faceplayer
+		mcdialogueB("Has an Eevee passed by?")
+		setspeaker(SP_NAME_GUARD)
+		msgbox(
+			"No. I saw nothing of the sort."
+		)
+		mcdialogue("Are you sure?")
+		msgbox(
+			"What the--\p"
+			"Are you implying I'm bad at my job?"
+		)
+		applymovement(LOCALID_SAKU_TOWN_GUARD, moves(face_away_player))
+		waitmovement(0)
+		msgbox(
+			"Kids these days!"
+		)
+		applymovement(LOCALID_SAKU_TOWN_GUARD, Common_Movement_FaceOriginalDirection)
+		waitmovement(0)
+		closemessage
 	}
 	release
 }
@@ -376,8 +451,8 @@ script SakuTown_EventScript_GuardSeesYou {
 
 script SakuTown_EventScript_GuardStopsYou {
 	specialvar(VAR_RESULT, GetPlayerFacingDirection)
-	applymovement(LOCALID_GUARD, Common_Movement_WalkInPlaceFasterLeft)
-	waitmovement(LOCALID_GUARD)
+	applymovement(LOCALID_SAKU_TOWN_GUARD, Common_Movement_WalkInPlaceFasterLeft)
+	waitmovement(LOCALID_SAKU_TOWN_GUARD)
 	setspeaker(SP_NAME_GUARD)
 	msgbox(format("Hey!"))
 	closemessage
@@ -405,7 +480,7 @@ script SakuTown_EventScript_GuardStopsYou {
 		setvar(VAR_SAKU_KURA_VILLAGES_STATE, 1)
 	}
 
-	applymovement(LOCALID_GUARD, Common_Movement_FaceDown)
+	applymovement(LOCALID_SAKU_TOWN_GUARD, Common_Movement_FaceDown)
 
 }
 
@@ -478,15 +553,24 @@ script SakuTown_EventScript_MonHues {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_MAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BREEDER_M 0}Pay close attention to the fur and feather colors of the wild Pokémon.\p"
-		"They may all look the same at first…\nBut each one has its own totally unique colors!"
-	))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_BREEDER_M 0}Pay close attention to the fur and\nfeather colors of the wild Pokémon.\p"
+		"They may all look the same at first…\nBut no two Pokémon's colors are alike!"
+	)
 	applymovement(VAR_LAST_TALKED, moves(emote_music))
 	msgbox(format(
 		"Doesn't it make your heart sing?"
 	))
 	closemessage
+	returnqueststate(QUEST_SAKURAESPEON)
+	if(var(VAR_RESULT) == 2) {
+		mcdialogueB("Has an Eevee passed by?")
+		setspeaker(SP_NAME_MAN)
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BREEDER_M 0}Huh, I don't think I've seen an Eevee at\nall, regardless of it's color. Sorry."
+		)
+		closemessage
+	}
 	release
 }
 

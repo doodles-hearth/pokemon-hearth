@@ -274,21 +274,20 @@
 /*
     VAR_SAKU_KURA_QUEST_ESPEON_STATEs
     // 0: Quest hasn't started
-    // 1: Talked to lady but not to Espeon's master
-    // 2: Talked to Espeon's master but not to lady
-    // 3: Told Espeon's master where his Pokémon was
-    // 4: Told lady that Espeon's master was looking for it -> Espeon goes home
-    // 5: Talked to Espeon's master once are reunited
+    // 1: Sister tells you about missing Eevee
+    // 2: Eevee is found in the House
 */
 #define VAR_SAKU_KURA_QUEST_ESPEON_STATE                 0x409E
 /*
     VAR_SAKU_KURA_QUEST_SCYTHER_STATEs
     // 0: Quest hasn't started
-    // 1: Farmer has asked player for help
-    // 2:
-    // 3:
-    // 4:
-    // 5:
+    // 1: Farmers are in Refuge
+    // 2: Farmers have asked player for help
+    // 3: Player has found Kura Town Healer
+    // 4: Player has given healer ingredients
+    // 5: Medicine is ready for giving
+    // 6: Player has medicine ingredients
+    // 7: Player has given medicine to Scyther
 */
 #define VAR_SAKU_KURA_QUEST_SCYTHER_STATE                0x409F
 /*
