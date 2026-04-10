@@ -5,7 +5,7 @@
 #define AI_FRAME_CEILING_SINGLES_NO_FLAGS                       3
 #define AI_FRAME_CEILING_SINGLES_SMART_TRAINER                  7
 #define AI_FRAME_CEILING_DOUBLES_NO_FLAGS                       22
-#define AI_FRAME_CEILING_DOUBLES_SMART_TRAINER                  38
+#define AI_FRAME_CEILING_DOUBLES_SMART_TRAINER                  39
 #define AI_FRAME_CEILING_STEVEN_MULTI                           27
 #define AI_FRAME_CEILING_STEVEN_MULTI_SMART_TRAINER             33
 
