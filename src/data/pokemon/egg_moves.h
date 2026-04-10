@@ -5867,8 +5867,7 @@ static const u16 sToxelEggMoveLearnset[] = {
 #if P_TOKUAN_FORMS
 static const u16 sToxelTokuanEggMoveLearnset[] = {
     MOVE_ENDEAVOR,
-    MOVE_CLEAR_SMOG,
-    MOVE_SMOG,
+    MOVE_WISH,
     MOVE_SUCKER_PUNCH,
     MOVE_UNAVAILABLE,
 };
