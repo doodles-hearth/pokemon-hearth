@@ -1172,12 +1172,12 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 
     [SPECIES_SHADOWL] =
     {
-        .baseHP        = 100,
+        .baseHP        = 85,
         .baseAttack    = 50,
-        .baseDefense   = 50,
-        .baseSpeed     = 70,
-        .baseSpAttack  = P_UPDATED_STATS >= GEN_7 ? 86 : 76,
-        .baseSpDefense = 96,
+        .baseDefense   = 52,
+        .baseSpeed     = 101,
+        .baseSpAttack  = 96,
+        .baseSpDefense = 68,
         .types = MON_TYPES(TYPE_DARK, TYPE_FLYING),
         .catchRate = 90,
         .expYield = 158,
@@ -1187,7 +1187,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_INSOMNIA, ABILITY_KEEN_EYE, ABILITY_TINTED_LENS },
+        .abilities = { ABILITY_INSOMNIA, ABILITY_KEEN_EYE, ABILITY_HUSTLE },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Shadowl"),
         .unknownName = _("Dark Owl"),
@@ -1235,8 +1235,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
             gMonShinyPalette_Shadowl
         )
         // TODO EVA
-        .levelUpLearnset = sNoctowlLevelUpLearnset,
-        .teachableLearnset = sNoctowlTeachableLearnset,
+        .levelUpLearnset = sShadowlLevelUpLearnset,
+        .teachableLearnset = sShadowlTeachableLearnset,
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_RED,
     },
