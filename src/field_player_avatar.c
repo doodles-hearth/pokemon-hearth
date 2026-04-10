@@ -846,7 +846,7 @@ bool32 CanTriggerSpinEvolution()
     {
         for (u32 i = 0; i < PARTY_SIZE; i++)
         {
-            enum Species species = GetEvolutionTargetSpecies(&gPlayerParty[i], EVO_MODE_OVERWORLD_SPECIAL, 0, NULL, &canStopEvo, CHECK_EVO);
+            enum Species species = GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_OVERWORLD_SPECIAL, 0, NULL, &canStopEvo, CHECK_EVO);
             if (species != SPECIES_NONE)
             {
                 return TRUE;
@@ -1676,9 +1676,9 @@ bool8 PartyHasMonWithSurf(void)
     {
         for (i = 0; i < PARTY_SIZE; i++)
         {
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) == SPECIES_NONE)
+            if (GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES) == SPECIES_NONE)
                 break;
-            if (KnowsFieldMove(&gPlayerParty[i], FIELD_MOVE_SURF))
+            if (KnowsFieldMove(&gParties[B_TRAINER_0][i], FIELD_MOVE_SURF))
                 return TRUE;
         }
     }

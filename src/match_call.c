@@ -1058,8 +1058,8 @@ bool32 CheckMatchCallChance(void)
 {
     int callChance = 1;
     // No reception needed for CHATOT MAIL!!
-    /* if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG) && GetMonAbility(&gPlayerParty[0]) == ABILITY_LIGHTNING_ROD)
-        callChance = 2; */
+    /* if (!GetMonData(&gParties[B_TRAINER_0][0], MON_DATA_SANITY_IS_EGG) && GetMonAbility(&gParties[B_TRAINER_0][0]) == ABILITY_LIGHTNING_ROD) */
+    /*     callChance = 2; */
 
     if (Random() % 10 < callChance * 3)
         return TRUE;
