@@ -518,6 +518,51 @@
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
       "var_value": "6",
       "script": "KuraTown_EventScript_PreventEscape"
+    },
+    {
+      "type": "trigger",
+      "x": 55,
+      "y": 15,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_PreventStealing_BeachBoundRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 32,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_PreventStealing_WindsweptRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 33,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_PreventStealing_WindsweptRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 55,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_PreventStealing_BeachBoundRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 55,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_PreventStealing_BeachBoundRoute"
     }
   ],
   "bg_events": [

@@ -2265,7 +2265,7 @@ bool8 ScrCmd_bufferleadmonspeciesname(struct ScriptContext *ctx)
 
     u8 *dest = sScriptStringVars[stringVarIndex];
     u8 partyIndex = GetLeadMonIndex();
-    enum Species species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES);
+    enum Species species = GetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_SPECIES);
     StringCopy(dest, GetSpeciesName(species, SKIP_NAME_CHECK));
     return FALSE;
 }
@@ -2287,7 +2287,7 @@ bool8 ScrCmd_bufferpartymonnick(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1);
 
-    GetMonData(&gPlayerParty[partyIndex], MON_DATA_NICKNAME, sScriptStringVars[stringVarIndex]);
+    GetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_NICKNAME, sScriptStringVars[stringVarIndex]);
     StringGet_Nickname(sScriptStringVars[stringVarIndex]);
     return FALSE;
 }
@@ -2452,15 +2452,15 @@ bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
 
     for (u32 i = 0; i < PARTY_SIZE; i++)
     {
-        enum Species species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+        enum Species species = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_SPECIES);
         if (!species)
             break;
 
         for (u32 j = 0; j < MAX_MON_MOVES; j++)
         {
-            u16 moveId = GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j, NULL);
+            u16 moveId = GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_MOVE1 + j, NULL);
             if (
-                !GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG)
+                !GetMonData(&gParties[B_TRAINER_0][i], MON_DATA_IS_EGG)
                 && gMovesInfo[moveId].fieldMove == fieldMove
             )
             {
@@ -3132,7 +3132,7 @@ bool8 ScrCmd_setmodernfatefulencounter(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
-    SetMonData(&gPlayerParty[partyIndex], MON_DATA_MODERN_FATEFUL_ENCOUNTER, &isModernFatefulEncounter);
+    SetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_MODERN_FATEFUL_ENCOUNTER, &isModernFatefulEncounter);
     return FALSE;
 }
 
@@ -3142,7 +3142,7 @@ bool8 ScrCmd_checkmodernfatefulencounter(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1);
 
-    gSpecialVar_Result = GetMonData(&gPlayerParty[partyIndex], MON_DATA_MODERN_FATEFUL_ENCOUNTER);
+    gSpecialVar_Result = GetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_MODERN_FATEFUL_ENCOUNTER);
     return FALSE;
 }
 
@@ -3187,7 +3187,7 @@ bool8 ScrCmd_setmonmetlocation(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
     if (partyIndex < PARTY_SIZE)
-        SetMonData(&gPlayerParty[partyIndex], MON_DATA_MET_LOCATION, &location);
+        SetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_MET_LOCATION, &location);
     return FALSE;
 }
 
@@ -3335,7 +3335,7 @@ bool8 Scrcmd_checkspecies_choose(struct ScriptContext *ctx)
 
     Script_RequestEffects(SCREFF_V1);
 
-    gSpecialVar_Result = (GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES) == givenSpecies);
+    gSpecialVar_Result = (GetMonData(&gParties[B_TRAINER_0][gSpecialVar_0x8004], MON_DATA_SPECIES) == givenSpecies);
 
     return FALSE;
 }
@@ -3649,7 +3649,7 @@ void BufferOriginalTrainerName(struct ScriptContext *ctx)
     u32 partyIndex = VarGet(ScriptReadHalfword(ctx));
 
     u8 otName[PLAYER_NAME_LENGTH + 1];
-    GetMonData(&gPlayerParty[partyIndex], MON_DATA_OT_NAME, otName);
+    GetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_OT_NAME, otName);
 
     StringCopy(sScriptStringVars[stringVarIndex], otName);
 }

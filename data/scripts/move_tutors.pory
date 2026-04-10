@@ -157,6 +157,7 @@ script Saku_EventScript_ForcePalmTutor {
 			closemessage
 		}
 	}
+	return
 }
 
 script YifuCity_EventScript_ForcePalmTutorTeachForcePalm {
