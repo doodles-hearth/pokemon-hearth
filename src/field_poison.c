@@ -208,7 +208,7 @@ s32 DoPoisonDecayFieldEffect(void)
                 hp++;
 
             else if (OW_POISON_DAMAGE < GEN_4 && (hp == 0 || --hp == 0))
-                TryFormChange(&gParties[B_TRAINER_0][i], FORM_CHANGE_FAINT);
+                TryFormChange(&gParties[B_TRAINER_0][i], FORM_CHANGE_FAINT, B_TRAINER_0);
 
             else if (OW_POISON_DAMAGE >= GEN_4 && (hp > 1))
                 hp--;
@@ -224,7 +224,7 @@ s32 DoPoisonDecayFieldEffect(void)
                 else if (hp == 1)
                 {
                     hp--;
-                    TryFormChange(&gParties[B_TRAINER_0][i], FORM_CHANGE_FAINT);
+                    TryFormChange(&gParties[B_TRAINER_0][i], FORM_CHANGE_FAINT, B_TRAINER_0);
                     sFaintedFromDecayMask |= (1 << i);
                 }
             }
