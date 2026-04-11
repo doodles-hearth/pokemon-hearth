@@ -5,7 +5,9 @@ mapscripts Beachbound_Route_Decay_MapScripts {
         VAR_DECAY_BEACHBOUND_ROUTE, 1: Beachbound_Route_Decay_SeeDecay
     ]
 	MAP_SCRIPT_ON_TRANSITION {
-		setflag(FLAG_HIDE_NATSUKI_HARIKO)
+		if (var(VAR_DECAY_BEACHBOUND_ROUTE) > 4) {
+			setflag(FLAG_HIDE_NATSUKI_HARIKO)
+		}
 	}
 }
 
@@ -24,10 +26,6 @@ script Beachbound_Route_Decay_SeeDecay {
 	waitmovement(0)
 
 	fadescreenswapbuffers(FADE_TO_BLACK)
-
-	clearflag(FLAG_HIDE_NATSUKI_HARIKO)
-	addobject(LOCALID_BEACHBOUND_DECAY_NATSUKI)
-	addobject(LOCALID_BEACHBOUND_DECAY_HARIKO)
 
 	setvar(VAR_0x8004, 73)
     setvar(VAR_0x8005, 17)

@@ -20,7 +20,7 @@
 #define TRAINER_SHAMISEN                     13
 #define TRAINER_YAMATO                       14
 #define TRAINER_ROCK_SMASH_GUY               15
-#define TRAINER_ASAGAO                       16
+#define TRAINER_ASAGAO                       16 // UNUSED
 #define TRAINER_DAICHI                       17
 #define TRAINER_HAGANE                       18
 #define TRAINER_HARUKI                       19
@@ -61,7 +61,7 @@
 #define TRAINER_TETSU                        54
 #define TRAINER_GABBY_AND_TY_5               55
 #define TRAINER_GABBY_AND_TY_6               56
-#define TRAINER_LOLA_1                       57
+#define TRAINER_DEIJI                        57
 #define TRAINER_TOMIKO                       58
 #define TRAINER_UTARO                        59
 #define TRAINER_LOLA_2                       60

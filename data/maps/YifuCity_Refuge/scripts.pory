@@ -449,6 +449,8 @@ script YifuCity_Refuge_EventScript_Bisharp {
 script YifuCity_Refuge_EventScript_Samurai {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
@@ -462,10 +464,13 @@ script YifuCity_Refuge_EventScript_Samurai {
 script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Arrgh… this city's Dojo is all girls, so I thought it was going to be super easy…\p"
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Arrgh…\p"
+		"This city's Dojo is all girls, so I\nthought it was gonna be super easy…\p"
 		"I got obliterated…"
 	))
 	closemessage
@@ -474,14 +479,7 @@ script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 }
 
 script YifuCity_Refuge_EventScript_RouteShamisensPokemon {
-	lock
-	setseenmon(SPECIES_GROWLITHE)
-	playmoncry(SPECIES_GROWLITHE, CRY_MODE_NORMAL)
-	setspeakertomonname(SPECIES_GROWLITHE)
-	msgbox("Rr-ruff!")
-	waitse
-	closemessage
-	release
+	mondialogue(SPECIES_GROWLITHE, "Rr-ruff!")
 }
 
 script YifuCity_Refuge_EventScript_RouteShamisen {

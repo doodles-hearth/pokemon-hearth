@@ -170,6 +170,8 @@ script YifuCity_EventScript_IDontFeelSafe {
 			"They must be a very brave young person."
 		))
 	} else {
+		waitse
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_1 0}I don't feel safe with those Crobat weirdos creeping around the city…\p"
@@ -195,6 +197,8 @@ script YifuCity_EventScript_MissingChild {
 script YifuCity_EventScript_Samurai {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_upset))
 	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
@@ -236,6 +240,10 @@ script YifuCity_EventScript_RobberyVictim {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 0}You and the Samurai scared those crooks off? That's good…"
 		))
+
+		waitse
+		playse(SE_PIN)
+
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
 			"Although I wonder where my stolen Pokémon are…"
@@ -588,27 +596,24 @@ script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 		applymovement(LOCALID_GRUNT_PASSWORD_TOP, Common_Movement_WalkInPlaceFasterDown)
 		waitmovement(0)
 
-		setspeaker("Shady man")
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Last time, I got it wrong and he didn' let me through!"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}Last time, I got it wrong and he\ndidn' let me through!"
 		))
 		
 		playse(SE_PIN)
 		applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(emote_angry))
-		msgbox(format(
-			"Like, brother, why I gotta tell ya some password for ya to let me in, we wen' to school together!"
+		msgbox((
+			"Like, brother, why I gotta tell ya\nsome password for ya to let me in,\nwe wen' to school together!"
 		))
 		closemessage
 
 		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
 		waitmovement(0)
 
-
 		playse(SE_PIN)
 		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(emote_question_mark))
-		setspeaker("Shady man")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Wait, ya didn't go to school though, didja?"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}Wait, ya didn't go to school though, didja?"
 		))
 		closemessage
 
@@ -618,26 +623,23 @@ script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 
 		playse(SE_PIN)
 		applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(emote_angry))
-		setspeaker("Shady man")
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Who cares! It's a figger of speech! What's the newest password anyway?"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}Who cares! It's a figger of speech!\nWhat's the newest password anyway?"
 		))
 		closemessage
 
 		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, Common_Movement_WalkInPlaceFasterUp)
 		waitmovement(0)
 
-		setspeaker("Shady man")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}It's uh…\nSomethin' with Crobat…\l"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}It's uh…\nSomethin' with Crobat…\l"
 			"“{COLOR RED}Crobat is{COLOR DARK_GRAY}”… Uh…"
 		))
 
 		playse(SE_LEDGE)
 		applymovement(LOCALID_GRUNT_PASSWORD_BOTTOM, moves(jump_in_place_up))
-		setspeaker("Shady man")
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Aw man! I forgot it too!"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}Aw man! I forgot it too!"
 		))
 		waitmovement(0)
 		waitse
@@ -645,10 +647,9 @@ script YifuCity_Trigger_CrobatGruntsEavesdropPassword {
 
 		playse(SE_LEDGE)
 		applymovement(LOCALID_GRUNT_PASSWORD_TOP, moves(jump_in_place_down, emote_angry))
-		setspeaker("Shady man")
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Ya idjet! How're we gunna get back in now??\p"
-			"Now we gotta find another Zubat an' hope he's got enough brains to remember the full sent'nce!\p"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}Ya idjet!\nHow're we gunna get back in now??\p"
+			"Now we gotta find another Zubat an'\nhope he's got enough brains to\lremember the full sent'nce!\p"
 			"C'mon, lessgo!"
 		))
 		waitmovement(0)
@@ -737,11 +738,11 @@ script YifuCity_Trigger_CrobatGruntStuckInHole {
 		playse(SE_PIN)
 		applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark, face_down))
 		setspeaker(SP_NAME_UNKNOWN)
-		msgbox(format(
+		msgbox((
 			"I fell down the canal!\nI'm stuck down 'ere!\p"
-			"Damn me, couldn't remember the first half of the damn password…\l"
-			"“Something something… {COLOR RED}is awesome{COLOR DARK_GRAY}”! But what?!\p"
-			"And why'd I think it was a good idea to try gettin' in through the canal?\l"
+			"Damn me, couldn't remember the first\nhalf of the damn password…\l"
+			"“Something something… {COLOR RED}is awesome{COLOR DARK_GRAY}”!\lBut what?!\p"
+			"And why'd I think it was a good idea to\ntry gettin' in through the canal?\p"
 			"I can't swim! It's a dead end!"
 		))
 		waitmovement(0)
@@ -874,8 +875,8 @@ script YifuCity_EventScript_Zubat4 {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}I sure enjoy quaint day-to-day activities like strolling, shopping, thieving, fostering a positive environment within my community…"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}I enjoy quaint day-to-day activities\nlike strolling, shopping, thieving,\lfostering a positive environment\lwithin my community…"
 	))
 	closemessage
 
@@ -928,10 +929,9 @@ script YifuCity_Trigger_Lockdown {
 		waitmovement(OBJ_EVENT_ID_PLAYER)
 
 		special(GetPlayerSirMissString)
-		setspeaker(SP_NAME_SAMURAI)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}I'm sorry, {STR_VAR_1}, all exits are temporarily blocked.\p"
-			"You are asked to remain inside the city until further notice."
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}Sorry {STR_VAR_1}, all exits are\ntemporarily blocked.\lNobody in or out.\p"
+			"You are asked to remain inside the\ncity until further notice."
 		))
 
 		mcdialogue(
@@ -940,12 +940,11 @@ script YifuCity_Trigger_Lockdown {
 		)
 		closemessage
 
-		setspeaker(SP_NAME_SAMURAI)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}A robbery has taken place near the Pokémon Refuge!\p"
-			"We Samurai are on the cusp of cracking down on the infamous Crobat Shadows!\p"
-			"We cannot risk this operation to go awry, so we've locked down the premises for the time being!\p"
-			"Please remain calm, I'm sure everything will be over before you know it."
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}A robbery has taken place near the\nPokémon Refuge!\p"
+			"We Samurai are on the cusp of cracking\ndown on the infamous Crobat Shadows!\p"
+			"We can't risk the operation going awry,\nso we've locked down the premises.\p"
+			"Please remain calm, it'll be over\nbefore you know it."
 		))
 		closemessage
 
@@ -956,10 +955,9 @@ script YifuCity_Trigger_Lockdown {
 		applymovement(LOCALID_LOCKDOWN_SAMURAI, moves(walk_in_place_fast_right))
 		waitmovement(0)
 		special(GetPlayerSirMissString)
-		setspeaker(SP_NAME_SAMURAI)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}I'm sorry, {STR_VAR_1}, all exits are temporarily blocked. Nobody in or out.\p"
-			"You are asked to remain inside the city until further notice."
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}Sorry {STR_VAR_1}, all exits are\ntemporarily blocked.\lNobody in or out.\p"
+			"You are asked to remain inside the\ncity until further notice."
 		))
 		closemessage
 		
@@ -975,10 +973,9 @@ script YifuCity_Trigger_CantGoThruNorth {
 	applymovement(LOCALID_LOCKDOWN_SAMURAI_NORTH, moves(walk_in_place_fast_down))
 	waitmovement(0)
 	special(GetPlayerSirMissString)
-	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}I'm sorry, {STR_VAR_1}, all exits are temporarily blocked. Nobody in or out.\p"
-		"You are asked to remain inside the city until further notice."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}Sorry {STR_VAR_1}, all exits are\ntemporarily blocked.\lNobody in or out.\p"
+		"You are asked to remain inside the\ncity until further notice."
 	))
 	closemessage
 	
@@ -1851,7 +1848,7 @@ script YifuCity_EventScript_Nurse {
 		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		setspeaker(SP_NAME_NURSE)
-		msgbox(format(
+		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_UUME_NURSE 0}We got kicked out of our own Refuge…\nI'm so anguished!"
 		))
 		closemessage

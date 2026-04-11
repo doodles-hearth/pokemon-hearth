@@ -449,7 +449,8 @@ script MaguroHarbor_EventScript_Man {
 	faceplayer
 	setspeaker(SP_NAME_MAN)
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
-		
+		waitse
+		playse(SE_PIN)
     	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_1 0}T-This was the biggest quake we've felt yet!"

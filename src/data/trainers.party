@@ -1426,22 +1426,25 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Supersonic
 - Hyper Voice
 
-=== TRAINER_LOLA_1 ===
-Name: LOLA
-Class: Tuber F
-Pic: Tuber F
+=== TRAINER_DEIJI ===
+Name: Deiji
+Class: Aroma Lady
+Pic: Aroma Lady
 Gender: Female
-Music: Girl
+Music: Female
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Azurill
-Level: 12
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Bellsprout
+Level: 18
+- Stun Spore
+- Wrap
+- Vine Whip
 
-Azurill
-Level: 12
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Cherrim
+Level: 17
+- Mega Drain
+- Growth
 
 === TRAINER_TOMIKO ===
 Name: Tomiko
@@ -11542,7 +11545,7 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Munchlax (M)
-Level: 23
+Level: 20
 - Stockpile
 - Swallow
 - Body Slam
@@ -14189,20 +14192,20 @@ Class: Zubat
 Pic: Zubat Grunt M
 Gender: Male
 Music: Aqua
-Battle Type: Doubles
+Battle Type: Singles
 AI: Basic Trainer
 
 Mightyena
-Level: 22
+Level: 18
 - Bite
-- Swagger
+- Roar
 - Howl
 
 Thievul
-Level: 21
+Level: 19
 - Thief
-- Nasty Plot
 - Snarl
+- Beat Up
 
 === TRAINER_GRUNT_CROBAT_HIDEOUT_4 ===
 Name: Grunt
@@ -14250,13 +14253,13 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Zubat
-Level: 18
+Level: 17
 - Astonish
 - Wing Attack
 - Screech
 
 Golbat
-Level: 21
+Level: 18
 - Air Cutter
 - Supersonic
 - Bite
@@ -16437,7 +16440,7 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Torkoal
-Level: 19
+Level: 17
 - Rapid Spin
 - Smokescreen
 - Flame Wheel
@@ -16450,7 +16453,7 @@ Level: 18
 - Mist
 
 Slowpoke
-Level: 20
+Level: 18
 - Yawn
 - Disable
 - Headbutt
@@ -16466,13 +16469,13 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Slakoth
-Level: 21
+Level: 17
 - Yawn
 - Feint Attack
 - Encore
 
 Barboach
-Level: 21
+Level: 18
 - Magnitude
 - Amnesia
 - Water Gun
@@ -16487,19 +16490,19 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Darumaka
-Level: 20
+Level: 17
 - Incinerate
 - Rage
 - Facade
 
 Slugma
-Level: 23
+Level: 18
 - Smog
 - Rock Throw
 - Incinerate
 
 Slugma
-Level: 23
+Level: 18
 - Harden
 - Clear Smog
 - Flame Burst
@@ -16514,19 +16517,19 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Shuckle
-Level: 19
+Level: 18
 - Sticky Web
 - Wrap
 - Struggle Bug
 
 Poltchageist
-Level: 21
+Level: 17
 - Stun Spore
 - Withdraw
 - Mega Drain
 
 Braixen
-Level: 20
+Level: 17
 - Howl
 - Psybeam
 - Flame Charge

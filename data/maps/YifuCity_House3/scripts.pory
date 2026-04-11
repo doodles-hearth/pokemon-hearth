@@ -52,9 +52,8 @@ script YifuCity_House3_EventScript_EggGirl {
 		waitse
 		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_happy))
-		setspeaker(SP_NAME_LITTLE_GIRL)
 		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}It's you!! The egg you gave me finally\nhatched, see?\p"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}It's you!! The egg you gave me finally\nhatched, see?\p"
 			"Now I have a friend staying with me\neven when my sister is working!\lI'm so happy!"
 		))
 	}
@@ -86,11 +85,12 @@ script YifuCity_House3_CantWaitToHatch {
 }
 
 script YifuCity_House3_NotTradedYet {
-	setspeaker(SP_NAME_LITTLE_GIRL)
 	special(GetPlayerSirMissString)
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Hello {STR_VAR_1}! Do you like eggs?"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Hello {STR_VAR_1}!\nDo you like eggs?"
 	))
 
 	dynmultichoice(
@@ -109,35 +109,35 @@ script YifuCity_House3_NotTradedYet {
 
 	switch(var(VAR_RESULT)) {
 		case 0:
+			waitse
+			playse(SE_PIN)
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
-			setspeaker(SP_NAME_LITTLE_GIRL)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Really?! Me too!!\nPokémon eggs are so cool!\p"
-				"I love not knowing what will jump out of the Egg!\p"
-				"Wanna trade me a mystery Egg for a mystery Egg?\l"
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Really?! Me too!!\nPokémon eggs are so cool!\p"
+				"I love not knowing what will jump out\nof the Egg!\p"
+				"Wanna trade me a mystery Egg for a\nmystery Egg?\l"
 				"That way we'll both have a surprise!"
 			))
 		case 1:
-			setspeaker(SP_NAME_LITTLE_GIRL)
-			msgbox(format(
-				"WHAT? Ewww, gross!\nI don't mean EATING them!\p"
-				"I love waiting for a Pokémon to jump out of its Egg, especially when I have no idea what it's gonna be!\p"
-				"Wanna trade me a mystery Egg for a mystery Egg?\l"
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}WHAT? Ewww, gross!\nI don't mean EATING them!\p"
+				"I love waiting for a Pokémon to jump\nout of its Egg!\p"
+				"Especially when I have no idea what\nit's gonna be!\p"
+				"Wanna trade me a mystery Egg for a\nmystery Egg?\l"
 				"That way we'll both have a surprise!"
 			))
 		case 2:
-			setspeaker(SP_NAME_LITTLE_GIRL)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Oh… Alright…"
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Oh… Alright…"
 			))
 			release
 			end
 		case 3:
-			setspeaker(SP_NAME_LITTLE_GIRL)
-			msgbox(format(
+			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Eggs! Pokémon eggs!\p"
-				"I just love waiting for a Pokémon to jump out of its Egg, especially when I have no idea what it's gonna be!\p"
-				"Wanna trade me a mystery Egg for a mystery Egg?\l"
+				"I love waiting for a Pokémon to jump\nout of its Egg!\p"
+				"Especially when I have no idea what\nit's gonna be!\p"
+				"Wanna trade me a mystery Egg for a\nmystery Egg?\l"
 				"That way we'll both have a surprise!"
 			))
 	}
@@ -158,10 +158,11 @@ script YifuCity_House3_NotTradedYet {
 		case 0:
 			call(YifuCity_House3_TradeEgg)
 		case 1:
+			waitse
+			playse(SE_PIN)
 			applymovement(VAR_LAST_TALKED, moves(emote_pensive))
-			setspeaker(SP_NAME_LITTLE_GIRL)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Oh… Alright…"
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Oh… Alright…"
 			))
 	}
 
@@ -172,8 +173,7 @@ script YifuCity_House3_TradeEgg {
 	special(ChoosePartyMon)
 	waitstate
 	if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
-		setspeaker(SP_NAME_LITTLE_GIRL)
-		msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Have you changed your mind?"))
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Have you changed your mind?"))
 		closemessage
 	} else {
 		special(IsSelectedMonEgg)
@@ -185,17 +185,19 @@ script YifuCity_House3_TradeEgg {
 			waitmessage
 			waitfanfare
 
+			waitse
+			playse(SE_PIN)
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
-			setspeaker(SP_NAME_LITTLE_GIRL)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}Yay!!! I can't wait for my Egg to hatch!\p"
-				"Aren't you wondering what you're gonna get?"
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Yay!!!\nI can't wait for my Egg to hatch!\p"
+				"Aren't you wondering what you're\ngonna get?"
 			))
 			closemessage
 		} else {
+			waitse
+			playse(SE_PIN)
 			applymovement(VAR_LAST_TALKED, moves(emote_happy))
-			setspeaker(SP_NAME_LITTLE_GIRL)
-			msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}That's not an Egg, you silly!"))
+			msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}That's not an Egg, you silly!"))
 			closemessage
 		}
 	}

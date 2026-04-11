@@ -236,9 +236,8 @@ script WhiteslateRoute_EventScript_Tomiko {
 		format("I don't care if they're not the strongest!")
 	)
 
-	setspeakertomonname(SPECIES_SPINDA)
-	setspeaker(SP_NAME_LASS)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS 0}I love Spinda. Doesn't it look silly and adorable?"), MSGBOX_AUTOCLOSE)
+	setnamedmon(SPECIES_SPINDA)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}{SPEAKER NAME_LASS}I love Spinda.\nIt looks so silly and adorable!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -248,20 +247,18 @@ script WhiteslateRoute_EventScript_Utaro {
 		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}I love cool Pokémon!"),
 		format("At least I lost with style!")
 	)
-	setspeakertomonname(SPECIES_SEVIPER)
-	setspeaker(SP_NAME_YOUNGSTER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}Seviper is so darn cool! I mean, it's got a sword on its tail!"), MSGBOX_AUTOCLOSE)
+	setnamedmon(SPECIES_SEVIPER)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}{SPEAKER NAME_YOUNGSTER}Seviper is so darn cool!\nI mean, it's got a sword on its tail!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
-script WhiteslateRoute_EventScript_Asagao {
+script WhiteslateRoute_EventScript_Deiji {
 	trainerbattle_single(
-		TRAINER_UTARO,
+		TRAINER_DEIJI,
 		format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Can you smell the perfume of Uume Berries?"),
 		format("You're a brute!")
 	)
-	setspeaker(SP_NAME_AROMA_LADY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}With Uume Forest right west of here, the ripe Berry smell is so strong it's almost pungent!"), MSGBOX_AUTOCLOSE)
+	msgbox("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}{SPEAKER NAME_AROMA_LADY}The ripe Berry smell emanating from\nUume Forest is almost pungent!", MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -269,8 +266,7 @@ script WhiteslateRoute_EventScript_ShuckleGirl {
 	lock
 	faceplayer
 	setnamedmon(SPECIES_SHUCKLE)
-	setspeaker(SP_NAME_WOMAN)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 0}This Shuckle lives around here. I feed him fresh berries every morning!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 0}{SPEAKER NAME_WOMAN}This Shuckle lives around here.\nI feed it fresh Berries each morning!"))
 	closemessage
 	release
 	end
@@ -317,6 +313,15 @@ script WhiteslateRoute_EventScript_Shuckle {
 		setflag(FLAG_DAILY_SHUCKLE_BERRY_JUICE)
 	}
 	release
+}
+
+script WhiteslateRoute_EventScript_ShuckleSign {
+	msgbox(
+		“A village of tender flower petals.”
+		"“Warning: Do not feed Shuckle\nanything other than Berries!\p"
+		"The stench from its flatulences would\nbe terrible!",
+		MSGBOX_SIGN
+	)
 }
 
 script WhiteslateRoute_Trigger_SecretBase {
@@ -503,6 +508,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 script WhiteslateRoute_EventScript_MetHariko {
 	lock
 	faceplayer
+	waitse
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	msgbox(format(
