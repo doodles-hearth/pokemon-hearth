@@ -823,4 +823,7 @@ extern const u8 EventScript_PokemonHandsYouAnOran[];
 extern const u8 EventScript_CamperWantsToBattle[];
 extern const u8 EventScript_PokemonWantsToBattle[];
 
+//  Live event script prototypes
+extern const u8 WC_WoobatFlee[];
+
 #endif // GUARD_EVENT_SCRIPTS_H

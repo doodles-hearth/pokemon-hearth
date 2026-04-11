@@ -2710,6 +2710,12 @@
 	.2byte \dest
 	.endm
 
+	@ Forcibly triggers a live event for the specified object event
+	.macro triggerliveevent localid:req
+	callnative ManuallyTriggerLiveEvent
+	.byte \localid
+	.endm
+
 	@ Hides any follower Pokémon if present, putting them into their Poké Ball; by default waits for their movement to finish.
 	.macro hidefollower wait=1
 	.byte SCR_OP_HIDEFOLLOWER
