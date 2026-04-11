@@ -16493,9 +16493,9 @@ const struct ItemInfo gItemsInfo[] =
             "Kura's healer."
         ),
         .importance = 1,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_SpecialMedicine,
         .iconPalette = gItemIconPalette_SpecialMedicine,
     },

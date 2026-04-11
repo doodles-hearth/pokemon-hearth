@@ -251,7 +251,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_GRASS),
-        .abilities = { ABILITY_OVERGROW, ABILITY_NONE, ABILITY_LEAF_GUARD },
+        .abilities = { ABILITY_MEGA_SOL, ABILITY_MEGA_SOL, ABILITY_MEGA_SOL },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Meganium"),
     #if P_MODIFIED_MEGA_CRIES
@@ -830,7 +830,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_WATER_1),
-        .abilities = { ABILITY_TORRENT, ABILITY_NONE, ABILITY_SHEER_FORCE },
+        .abilities = { ABILITY_DRAGONIZE, ABILITY_DRAGONIZE, ABILITY_DRAGONIZE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Feraligatr"),
     #if P_MODIFIED_MEGA_CRIES
@@ -1172,12 +1172,12 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 
     [SPECIES_SHADOWL] =
     {
-        .baseHP        = 100,
+        .baseHP        = 85,
         .baseAttack    = 50,
-        .baseDefense   = 50,
-        .baseSpeed     = 70,
-        .baseSpAttack  = P_UPDATED_STATS >= GEN_7 ? 86 : 76,
-        .baseSpDefense = 96,
+        .baseDefense   = 52,
+        .baseSpeed     = 101,
+        .baseSpAttack  = 96,
+        .baseSpDefense = 68,
         .types = MON_TYPES(TYPE_DARK, TYPE_FLYING),
         .catchRate = 90,
         .expYield = 158,
@@ -1187,7 +1187,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_INSOMNIA, ABILITY_KEEN_EYE, ABILITY_TINTED_LENS },
+        .abilities = { ABILITY_INSOMNIA, ABILITY_KEEN_EYE, ABILITY_HUSTLE },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Shadowl"),
         .unknownName = _("Dark Owl"),
@@ -1235,8 +1235,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
             gMonShinyPalette_Shadowl
         )
         // TODO EVA
-        .levelUpLearnset = sNoctowlLevelUpLearnset,
-        .teachableLearnset = sNoctowlTeachableLearnset,
+        .levelUpLearnset = sShadowlLevelUpLearnset,
+        .teachableLearnset = sShadowlTeachableLearnset,
         .glows = 1,
         .flashTint = DNS_BLEND_FLASH_RED,
     },
@@ -7541,7 +7541,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
-        .abilities = { ABILITY_KEEN_EYE, ABILITY_STURDY, ABILITY_WEAK_ARMOR },
+        .abilities = { ABILITY_STALWART, ABILITY_STALWART, ABILITY_STALWART },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Skarmory"),
     #if P_MODIFIED_MEGA_CRIES
