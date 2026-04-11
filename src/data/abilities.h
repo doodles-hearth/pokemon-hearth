@@ -2461,4 +2461,12 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Spicy Spray"),
         .description = COMPOUND_STRING("Unimplemented."),
     },
+  
+    [ABILITY_CAPRICCIO] =
+    {
+        .name = _("Capriccio"),
+        .description = COMPOUND_STRING("Ups and resists sound."),
+        .aiRating = 2,
+        .breakable = TRUE,
+    },
 };

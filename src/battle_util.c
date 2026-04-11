@@ -6606,6 +6606,7 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageContext *ctx)
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
         break;
     case ABILITY_PUNK_ROCK:
+    case ABILITY_CAPRICCIO:
         if (IsSoundMove(move))
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.3));
         break;
@@ -7501,6 +7502,7 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(struct DamageContext *ctx)
         }
         break;
     case ABILITY_PUNK_ROCK:
+    case ABILITY_CAPRICCIO:
         if (IsSoundMove(ctx->move))
         {
             modifier = UQ_4_12(0.5);
