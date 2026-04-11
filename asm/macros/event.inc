@@ -3010,8 +3010,10 @@
 	.macro ingame_trade tradeId:req wantTradeMsg:req, declineTradeJump:req, wrongMonJump:req, tradeCompleteMsg:req
 	setvar VAR_0x8005, \tradeId
 	specialvar VAR_0x8009, GetInGameTradeSpeciesInfo
-	msgbox \wantTradeMsg, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, \declineTradeJump
+	msgbox \wantTradeMsg
+	mcdialogueB gText_Yes, gText_No
+	closemessage
+	goto_if_ne VAR_RESULT, 0, \declineTradeJump
 	chooseboxmon SELECT_PC_MON_TRADE
 	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, \declineTradeJump
