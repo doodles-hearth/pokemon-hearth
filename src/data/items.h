@@ -3199,7 +3199,7 @@ const struct ItemInfo gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 30,
         .iconPic = gItemIcon_Sand,
-        .iconPalette = gItemIconPalette_Star,
+        .iconPalette = gItemIconPalette_Stardust,
     },
 
     [ITEM_STAR_PIECE] =

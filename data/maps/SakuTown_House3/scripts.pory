@@ -13,30 +13,11 @@ script SakuTown_House3_EventScript_SetUpPokemon {
 }
 
 script SakuTown_House3_EventScript_Psyduck {
-    lock
-    faceplayer
-    setseenmon(SPECIES_PSYDUCK_TOKUAN)
-    setspeakertomonname(SPECIES_PSYDUCK)
-    playmoncry(SPECIES_PSYDUCK, CRY_MODE_NORMAL)
-    msgbox(format(
-        "Psaïaïaï…"
-    ))
-    waitmoncry
-    release
-    end
+    mondialogue(SPECIES_PSYDUCK_TOKUAN, "Psaïaïaï…")
 }
 
 script SakuTown_House3_EventScript_Hoothoot {
-    lock
-    faceplayer
-    setspeakertomonname(SPECIES_HOOTHOOT)
-    playmoncry(SPECIES_HOOTHOOT, CRY_MODE_NORMAL)
-    msgbox(format(
-        "Hooo…"
-    ))
-    waitmoncry
-    release
-    end
+    mondialogue(SPECIES_HOOTHOOT, "Hooo…")
 }
 
 script SakuTown_House3_EventScript_TradeMe {

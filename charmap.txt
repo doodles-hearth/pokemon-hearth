@@ -724,6 +724,7 @@ NAME_MEMORY_GIRL     = 5A
 NAME_DISGUISE_KID    = 5B
 NAME_TWIN            = 5C
 NAME_MESSENGER       = 5D
+NAME_MRS_YARI        = 5E
 
 @ fonts
 
