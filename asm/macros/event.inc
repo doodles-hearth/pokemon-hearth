@@ -2002,6 +2002,18 @@
 	_dynmultichoice 0, 0, FALSE, 10, FALSE, 0, DYN_MULTICHOICE_CB_NONE, \argv
 	.endm
 
+	.macro mondialogue species:req, text:req, cryMode=CRY_MODE_NORMAL
+	lock
+	setseenmon \species
+	faceplayer
+	setspeakertomonname \species
+	playmoncry \species, \cryMode
+	msgbox \text
+	waitmoncry
+	closemessage
+	release
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
