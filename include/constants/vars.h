@@ -275,7 +275,10 @@
     VAR_SAKU_KURA_QUEST_ESPEON_STATEs
     // 0: Quest hasn't started
     // 1: Sister tells you about missing Eevee
-    // 2: Eevee is found in the House
+    // 2: Espeon is found in the House
+    // 3: Gave Espeon back
+    // 4: Want a rock?
+    // 5: Given rock
 */
 #define VAR_SAKU_KURA_QUEST_ESPEON_STATE                 0x409E
 /*

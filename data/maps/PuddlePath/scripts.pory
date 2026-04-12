@@ -5,11 +5,19 @@ mapscripts PuddlePath_MapScripts {
 script PuddlePath_EventScript_Farmer {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_FARMER)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}You're in what's probably the most fertile stretch of land in all of Toku.\p"
-		"The nearby forest enriches the soil,\nand the water stream is rich with volcanic ashes.\p"
-		"Farmers from both Soulkeep and Hanabi City share the land."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}{SPEAKER NAME_FARMER}You're in what's probably the most\nfertile stretch of land in all of Toku.\p"
+		"The forest enriches the soil, and the\nwater is rich with volcanic ashes.\p"
+		"Farmers from both Soulkeep and\nHanabi City share the land."
+	))
+	release
+}
+
+script PuddlePath_EventScript_OneWayRoute {
+	lock
+	faceplayer
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY 0}{SPEAKER NAME_GUY}Yeah, you can't go up this way.\nIt's a one-way down from Hanabi City!\lJust look up and enjoy the scenery!"
 	))
 	release
 }

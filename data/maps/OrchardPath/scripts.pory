@@ -411,3 +411,16 @@ script OrchardPath_EventScript_Daichi {
 	closemessage
 	end
 }
+
+script OrchardPath_EventScript_Utsu {
+	trainerbattle_single(
+		TRAINER_UTSU,
+		"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}This is my favorite spot for a stroll!",
+		"I wasn't exactly prepared for a\nbattle!"
+	)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}{SPEAKER NAME_BEAUTY}Are you headed west?\nBe sure to find shelter before dark!"
+	))
+	closemessage
+	end
+}

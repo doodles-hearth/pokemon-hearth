@@ -18,6 +18,8 @@ mapscripts YifuCity_Restaurant_MapScripts {
 
 script YifuCity_Restaurant_EventScript_UninspiredChef {
 	lock
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_COOK)
 	msgbox(format(
@@ -34,6 +36,8 @@ script YifuCity_Restaurant_EventScript_UninspiredChef {
 		"What kids nowadays refer to as a “foodie”?\p"
 		"You see, cooking was my passion. But lately I've been… uninspired!"
 	))
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_COOK 0}It's a tragedy! I desperately seek fresh, bold new recipes!\p"
@@ -56,6 +60,8 @@ script YifuCity_Restaurant_EventScript_UninspiredChef {
 script YifuCity_Restaurant_EventScript_RunningChef {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	setspeaker(SP_NAME_COOK)
 	msgbox(format(
@@ -68,6 +74,8 @@ script YifuCity_Restaurant_EventScript_RunningChef {
 script YifuCity_Restaurant_EventScript_LonelyGirl {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
@@ -113,6 +121,8 @@ script YifuCity_Restaurant_EventScript_FatGuy {
 			"{FONT_SMALL}Burp…{FONT_NORMAL} Ahem.\nIf you'll excuse me."
 		))
 	} else {
+		waitse
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_UUME_FAT_GUY 0}UHHHHG I ate too much…"
@@ -308,6 +318,8 @@ script(local) Hotpot_Slowpoke {
 	))
 
 	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
+	waitse
+	playse(SE_PIN)
 	applymovement(LOCALID_HOTPOT_NATSUKI, moves(emote_happy))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
@@ -366,6 +378,9 @@ script(local) Hotpot_Decay {
 				"They strike me as dumb more than evil, but we ought to keep an eye on them!"
 			))
 
+
+			waitse
+			playse(SE_PIN)
 			applymovement(LOCALID_HOTPOT_HARIKO, moves(face_down, emote_pensive))
 			setspeaker(SP_NAME_HARIKO)
 			msgbox(format(
@@ -405,7 +420,9 @@ script(local) Hotpot_Decay {
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}What are you on about, {PLAYER}?\p"
 				"You know I wanna become a Samurai someday!\NThey've been protecting us forever!"
 			))
-
+			
+			waitse
+			playse(SE_PIN)
 			applymovement(LOCALID_HOTPOT_HARIKO, moves(face_down, emote_pensive))
 			setspeaker(SP_NAME_HARIKO)
 			msgbox(format(
@@ -446,6 +463,8 @@ script(local) Hotpot_Decay {
 				"Why would he do something like this?"
 			))
 
+			waitse
+			playse(SE_PIN)
 			applymovement(LOCALID_HOTPOT_HARIKO, moves(emote_pensive))
 			setspeaker(SP_NAME_HARIKO)
 			msgbox(format(

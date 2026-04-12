@@ -1489,6 +1489,11 @@ u8 GetPartyMenuType(void)
     return gPartyMenu.menuType;
 }
 
+u32 isPartyLayoutMultiFull(void)
+{
+    return gPartyMenu.layout == PARTY_LAYOUT_MULTI_FULL || gPartyMenu.layout == PARTY_LAYOUT_MULTI_FULL_PARTNER;
+}
+
 void Task_HandleChooseMonInput(u8 taskId)
 {
     if (!gPaletteFade.active && MenuHelpers_ShouldWaitForLinkRecv() != TRUE)
@@ -1518,18 +1523,28 @@ void Task_HandleChooseMonInput(u8 taskId)
             gPartyMenu.slotId2 = 0;
             gPartyMenu.action = PARTY_ACTION_SWITCH;
             HandleChooseMonSelection(taskId, slotPtr);
-        case R_BUTTON: // Only used in full-team multis to cycle player/partner parties
-            PlaySE(SE_M_HARDEN);
-            UpdatePartyToFieldOrder();
+            break;
+        case R_BUTTON:
+            // Only used in full-team multis to cycle player/partner parties
+            if (isPartyLayoutMultiFull())
+            {
+                PlaySE(SE_M_HARDEN);
+                UpdatePartyToFieldOrder();
 
-            if (gPartyMenu.layout == PARTY_LAYOUT_MULTI_FULL)
-                gPartyMenu.layout = PARTY_LAYOUT_MULTI_FULL_PARTNER;
+                if (gPartyMenu.layout == PARTY_LAYOUT_MULTI_FULL)
+                    gPartyMenu.layout = PARTY_LAYOUT_MULTI_FULL_PARTNER;
+                else
+                    gPartyMenu.layout = PARTY_LAYOUT_MULTI_FULL;
+
+                LoadBattlePartyCurrentOrderForLayout();
+                UpdatePartyToBattleOrder();
+                RefreshPartyMenu();
+            }
             else
-                gPartyMenu.layout = PARTY_LAYOUT_MULTI_FULL;
-
-            LoadBattlePartyCurrentOrderForLayout();
-            UpdatePartyToBattleOrder();
-            RefreshPartyMenu();
+            {
+                DestroyTask(taskId);
+            }
+            
             break;
         }
     }
@@ -1842,8 +1857,7 @@ static u16 PartyMenuButtonHandler(s8 *slotPtr)
         return START_BUTTON;
 
     // Cycling player and party teams for in-battle party menu in full-team multis
-    if ((gPartyMenu.layout == PARTY_LAYOUT_MULTI_FULL || gPartyMenu.layout == PARTY_LAYOUT_MULTI_FULL_PARTNER)
-     && (JOY_NEW(R_BUTTON) || JOY_NEW(L_BUTTON)))
+    if (isPartyLayoutMultiFull() && (JOY_NEW(R_BUTTON) || JOY_NEW(L_BUTTON)))
     {
         return R_BUTTON;
     }

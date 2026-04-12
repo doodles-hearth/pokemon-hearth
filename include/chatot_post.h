@@ -21,7 +21,7 @@ struct ChatotPost
 {
     const u8 *script;
     u8 importance;
-    u8 condition;
+    u16 condition;
     u8 inQueue;
     enum ChatotPostTypes type;
     const u8 *senderName;

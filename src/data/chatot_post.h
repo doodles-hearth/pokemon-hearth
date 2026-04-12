@@ -32,13 +32,14 @@ const struct ChatotPost gChatotPost[] =
         .type = POST_TYPE_IMMEDIATE,
         .senderName = gText_ChatotPostSender_Natsuki,
         .condition = FLAG_MET_HANA_GYM,
-    },[POST_FROM_BIG_SIS_LEFTOVERS] =
+    },
+    [POST_FROM_BIG_SIS_LEFTOVERS] =
     {
         .script = ChatotPost_EventScript_BigSisLeftovers,
         .importance = 0,
-        .type = POST_TYPE_IMMEDIATE,
+        .type = POST_TYPE_RANDOM,
         .senderName = gText_ChatotPostSender_BigSis,
-        .condition = FLAG_HIDE_GUARD_SUNRISE_VILLAGE, // TODO
+        .condition = FLAG_BADGE05_GET,
     },
     [POST_FROM_ANON_PECHA] =
     {
@@ -46,6 +47,6 @@ const struct ChatotPost gChatotPost[] =
         .importance = 0,
         .type = POST_TYPE_RANDOM,
         .senderName = gText_ChatotPostSender_Anon,
-        .condition = FLAG_HIDE_GUARD_SUNRISE_VILLAGE, // TODO
+        .condition = FLAG_BADGE03_GET,
     },
 };

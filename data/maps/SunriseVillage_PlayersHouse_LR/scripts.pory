@@ -90,7 +90,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		special(GetPlayerBrotherSisterString)
 		setspeaker(SP_NAME_BIG_SIS)
 		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Alrighty! You all set? Have a safe\njourney, little {STR_VAR_1}.\p"
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Alrighty! You all set? Have a safe\njourney, little {STR_VAR_1}.\l"
 			"Maybe I'll see you around!\p"
 			"Come home sometimes though, will you?\nYou and your Pokémon can rest here!\p"
 			"See you soon!\nI'll send you Chatot messages!"

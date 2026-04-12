@@ -221,6 +221,19 @@ script SabersideTown_EventScript_Carbink {
     release
 }
 
+script SabersideTown_EventScript_Wailord {
+	lock
+	faceplayer
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_BOY_1 0}{SPEAKER NAME_BOY}My friend told me about a gignormous\nWailord that has people living on it!"
+	))
+	closemessage
+
+	setnamedmon(SPECIES_WAILORD)
+
+	release
+}
+
 script SabersideTown_EventScript_TownSign {
-	msgbox(format("Saberside Town\n“A town where folks are strong as steel!”"), MSGBOX_SIGN)
+	msgbox(format("Saberside Town\n“A town as strong as steel!”"), MSGBOX_SIGN)
 }

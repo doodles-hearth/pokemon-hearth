@@ -1,5 +1,3 @@
-const LOCALID_NURSE_CROBAT = 1
-const LOCALID_GROWLITHE = 17
 const FLAG_HIDE_NURSE = FLAG_TEMP_1
 const FLAG_HIDE_ROUTE_SHAMISEN = FLAG_TEMP_2
 const FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG = FLAG_TEMP_3
@@ -451,6 +449,8 @@ script YifuCity_Refuge_EventScript_Bisharp {
 script YifuCity_Refuge_EventScript_Samurai {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
@@ -464,10 +464,13 @@ script YifuCity_Refuge_EventScript_Samurai {
 script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Arrgh… this city's Dojo is all girls, so I thought it was going to be super easy…\p"
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Arrgh…\p"
+		"This city's Dojo is all girls, so I\nthought it was gonna be super easy…\p"
 		"I got obliterated…"
 	))
 	closemessage
@@ -476,14 +479,7 @@ script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 }
 
 script YifuCity_Refuge_EventScript_RouteShamisensPokemon {
-	lock
-	setseenmon(SPECIES_GROWLITHE)
-	playmoncry(SPECIES_GROWLITHE, CRY_MODE_NORMAL)
-	setspeakertomonname(SPECIES_GROWLITHE)
-	msgbox("Rr-ruff!")
-	waitse
-	closemessage
-	release
+	mondialogue(SPECIES_GROWLITHE, "Rr-ruff!")
 }
 
 script YifuCity_Refuge_EventScript_RouteShamisen {
@@ -631,10 +627,10 @@ script YifuCity_Refuge_EventScript_RouteShamisenLeaves {
 	switch(var(VAR_FACING)) {
 		case DIR_EAST:
 			applymovement(VAR_LAST_TALKED, moves(walk_down, walk_left * 4, face_down))
-			applymovement(LOCALID_GROWLITHE, moves(walk_down * 2, walk_left * 3))
+			applymovement(LOCALID_YIFU_REFUGE_GROWLITHE, moves(walk_down * 2, walk_left * 3))
 		default:
 			applymovement(VAR_LAST_TALKED, moves(walk_left * 4, walk_down))
-			applymovement(LOCALID_GROWLITHE, moves(walk_down, walk_left * 4, face_down))
+			applymovement(LOCALID_YIFU_REFUGE_GROWLITHE, moves(walk_down, walk_left * 4, face_down))
 	}
 	delay(24)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
@@ -647,14 +643,14 @@ script YifuCity_Refuge_EventScript_RouteShamisenLeaves {
 
 	switch(var(VAR_FACING)) {
 		case DIR_EAST:
-			applymovement(LOCALID_GROWLITHE, moves(walk_left, face_down))
+			applymovement(LOCALID_YIFU_REFUGE_GROWLITHE, moves(walk_left, face_down))
 		default:
-			applymovement(LOCALID_GROWLITHE, moves(walk_down))
+			applymovement(LOCALID_YIFU_REFUGE_GROWLITHE, moves(walk_down))
 	}
-	waitmovement(LOCALID_GROWLITHE)
+	waitmovement(LOCALID_YIFU_REFUGE_GROWLITHE)
 
 	playse(SE_EXIT)
-	removeobject(LOCALID_GROWLITHE)
+	removeobject(LOCALID_YIFU_REFUGE_GROWLITHE)
 	waitse
 
 	setflag(FLAG_HIDE_ROUTE_SHAMISEN)

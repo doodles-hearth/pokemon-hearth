@@ -3,17 +3,18 @@ script Common_EventScript_PcGuy {
 	faceplayer
 	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 	if (flag(FLAG_PC_EXPLAINED)) {
-		msgbox(format(
-			"{SPEAKER NAME_MAN}Need me to carry some Pokémon around for you? Sure thing!"
+		msgbox((
+			"{SPEAKER NAME_MAN}Need me to carry some Pokémon around\nfor you? Sure thing!"
 		))
 	} else {
-		msgbox(format(
+		setflag(FLAG_PC_EXPLAINED)
+		msgbox((
 			"{SPEAKER NAME_MAN}Hey there, Pokémon Wielder!\p"
-			"Have you ever thought, “Darn, I wish I could catch this seventh Pokémon, but I only have room for six?”\p"
-			"Today's your lucky day!\p"
-			"I've been appointed by the Toku council to store Wielders' Pokémon for them while they travel around.\p"
-			"We bring your Pokémon to a pasture where they live happily while waiting for you to get them back!\p"
-			"Talk to me if you ever want to send or retrieve your Pokémon!"
+			"Have you ever thought, “Darn, I wish I\ncould catch this seventh Pokémon,\lbut I only have room for six?”\p"
+			"Well, today's your lucky day!\p"
+			"I've been appointed to store Wielders'\nPokémon for them while they travel.\p"
+			"We bring your Pokémon to a pasture\nwhere they live happily while waiting\lfor you to get them back!\p"
+			"Talk to me if you ever want to send or\nretrieve your Pokémon!"
 		))
 	}
 	closemessage
@@ -23,38 +24,42 @@ script Common_EventScript_PcGuy {
 	waitstate
 
 	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
+	// Player didn't drop or retrieve mons
     if (!flag(FLAG_LAYOUT_DIFFERENT_AFTER_PC)) {
-        setflag(FLAG_PC_EXPLAINED)
 		msgbox(format(
 			"{SPEAKER NAME_MAN}Well… saves me a trip."
 		))
 		closemessage
-    } elif (flag(FLAG_PC_EXPLAINED)) {
-		msgbox(format(
-			"{SPEAKER NAME_MAN}Pant… pant… Thanks for using our Pokémon pasture service!"
-		))
-		closemessage
-	} else {
-        setflag(FLAG_PC_EXPLAINED)
-		// TODO EVA do this only if we actually stored mons
-		msgbox(format(
-			"{SPEAKER NAME_MAN}Alrighty, I'll just do a quick trip to the pasture!\p"
-			"Just a minute!"
-		))
-		closemessage
 
-		fadescreenswapbuffers(FADE_TO_BLACK)
-		delay(120)
-		fadescreenswapbuffers(FADE_FROM_BLACK)
+		// Player dropped or retrieved mons
+    } else {
+		if (flag(FLAG_PC_GUY_DID_TRIP)) {
+			msgbox((
+				"{SPEAKER NAME_MAN}Pant… pant… Thanks for using our\nPokémon Pasture service!"
+			))
+			closemessage
+		} else {
+			setflag(FLAG_PC_GUY_DID_TRIP)
 
-		createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
-		msgbox(format(
-			"{SPEAKER NAME_MAN}PANT…{PAUSE 8} PANT…\p"
-			"Your…{PAUSE 8} pant…{PAUSE 8} Pokémon…{PAUSE 8} pant…{PAUSE 8} are all set!\p"
-			"Whew, the pasture is a liiiittle far from here!{PAUSE 8} Pant…\p"
-			"Come…{PAUSE 8} pant…{PAUSE 8} Come again!"
-		))
-		closemessage
+			msgbox((
+				"{SPEAKER NAME_MAN}Alrighty, I'll just do a quick trip\nto the Pasture!\p"
+				"Just a minute!"
+			))
+			closemessage
+
+			fadescreenswapbuffers(FADE_TO_BLACK)
+			delay(120)
+			fadescreenswapbuffers(FADE_FROM_BLACK)
+
+			createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
+			msgbox((
+				"{SPEAKER NAME_MAN}PANT…{PAUSE 8} PANT…\p"
+				"Your…{PAUSE 8} pant…{PAUSE 8} Pokémon…{PAUSE 8} pant…{PAUSE 8}\nare all set!\p"
+				"Whew, the pasture is a liiiittle far\nfrom here!{PAUSE 8} Pant…\p"
+				"Come…{PAUSE 8} pant…{PAUSE 8} Come again!"
+			))
+			closemessage
+		}
 	}
 
     clearflag(FLAG_LAYOUT_DIFFERENT_AFTER_PC)

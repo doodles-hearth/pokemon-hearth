@@ -2002,6 +2002,18 @@
 	_dynmultichoice 0, 0, FALSE, 10, FALSE, 0, DYN_MULTICHOICE_CB_NONE, \argv
 	.endm
 
+	.macro mondialogue species:req, text:req, cryMode=CRY_MODE_NORMAL
+	lock
+	setseenmon \species
+	faceplayer
+	setspeakertomonname \species
+	playmoncry \species, \cryMode
+	msgbox \text
+	waitmoncry
+	closemessage
+	release
+	.endm
+
 @ Supplementary
 
 	.macro goto_if_unset flag:req, dest:req
@@ -3010,8 +3022,10 @@
 	.macro ingame_trade tradeId:req wantTradeMsg:req, declineTradeJump:req, wrongMonJump:req, tradeCompleteMsg:req
 	setvar VAR_0x8005, \tradeId
 	specialvar VAR_0x8009, GetInGameTradeSpeciesInfo
-	msgbox \wantTradeMsg, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, \declineTradeJump
+	msgbox \wantTradeMsg
+	mcdialogueB gText_Yes, gText_No
+	closemessage
+	goto_if_ne VAR_RESULT, 0, \declineTradeJump
 	chooseboxmon SELECT_PC_MON_TRADE
 	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, \declineTradeJump

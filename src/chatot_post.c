@@ -195,7 +195,7 @@ bool32 TryGetNonTrainerPost(u32 postType)
             continue;
         }
 
-        bool8 condSatisfied = (post->condition == 0) ? TRUE : FlagGet(post->condition);
+        bool16 condSatisfied = (post->condition == 0) ? TRUE : FlagGet(post->condition);
         // DebugPrintf("  Cond satisfied? %d", condSatisfied);
         if (!condSatisfied)
             continue;

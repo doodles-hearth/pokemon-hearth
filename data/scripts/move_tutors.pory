@@ -2,9 +2,8 @@ script YifuCity_EventScript_WhirlpoolTutor {
 	lock
 	faceplayer
 	if (flag(FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL)) {
-		setspeaker(SP_NAME_FISHERMAN)
 		msgbox((
-			"I can teach Whirlpool to your Pokémon\nagain, but make it worth my while, OK?\p"
+			"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}I can teach Whirlpool to your Pokémon\nagain, but make it worth my while, OK?\p"
 			"I'm very fond of Heart Scales.\nThey remind me of the sea.\lI'll do it in exchange for one!"
 		))
 
@@ -28,9 +27,8 @@ script YifuCity_EventScript_WhirlpoolTutor {
 			closemessage
 		}
 	} else {
-		setspeaker(SP_NAME_FISHERMAN)
 		msgbox((
-			"Hm? No, I'm not fishing.\p"
+			"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Hm? No, I'm not fishing.\p"
 			"I'm just watching the tiny whirlpools\nPokémon make in the shallow water.\p"
 			"Would you like your Pokémon to make\nwhirlpools too?\p"
 			"I could teach them the way of the\nWhirlpool!"
@@ -50,9 +48,8 @@ script YifuCity_EventScript_WhirlpoolTutor {
 		if (var(VAR_RESULT) == 0) {
 			call(YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool)
 		} else {
-			setspeaker(SP_NAME_FISHERMAN)
 			msgbox(format(
-				"I see. The way of the Whirlpool hasn't made it into your heart yet.\l"
+				"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}I see. The way of the Whirlpool hasn't made it into your heart yet.\l"
 				"That's okay!"
 			))
 			closemessage
@@ -61,9 +58,8 @@ script YifuCity_EventScript_WhirlpoolTutor {
 }
 
 script YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool {
-	setspeaker(SP_NAME_FISHERMAN)
 	msgbox(format(
-		"Yes! Let's do this!\p"
+		"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Yes! Let's do this!\p"
 		"Which Pokémon wants to learn\nWhirlpool?"
 	))
 
@@ -71,17 +67,15 @@ script YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool {
 	buffermovename(STR_VAR_1, MOVE_WHIRLPOOL)
 	call(MoveTutor_EventScript_OpenBox)
 	if (var(VAR_RESULT) == 4) {
-		setspeaker(SP_NAME_FISHERMAN)
 		msgbox(format(
-			"I see. The way of the Whirlpool hasn't made it into your heart yet.\l"
+			"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}I see. The way of the Whirlpool hasn't made it into your heart yet.\l"
 			"That's okay!"
 		))
 		closemessage
 	} else {
 		if (flag(FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL)) {
-			setspeaker(SP_NAME_FISHERMAN)
 			msgbox(format(
-				"You can now watch your Pokémon make tiny whirlpools!\p"
+				"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}You can now watch your Pokémon make tiny whirlpools!\p"
 				"You'll see, it's very relaxing.\p"
 				"I'll take that Heart Scale you promised now, please and thank you!"
 			))
@@ -91,9 +85,8 @@ script YifuCity_EventScript_WhirlpoolTutorTeachWhirlpool {
 		} else {
 			setflag(FLAG_MOVE_TUTOR_TAUGHT_WHIRLPOOL)
 
-			setspeaker(SP_NAME_FISHERMAN)
 			msgbox(format(
-				"You can now watch your Pokémon make tiny whirlpools!\p"
+				"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}You can now watch your Pokémon make tiny whirlpools!\p"
 				"You'll see, it's very relaxing."
 			))
 			closemessage
@@ -106,9 +99,8 @@ script Saku_EventScript_ForcePalmTutor {
 	lock
 	faceplayer
 	if (flag(FLAG_MOVE_TUTOR_TAUGHT_FORCE_PALM)) {
-		setspeaker(SP_NAME_MAN)
 		msgbox(format(
-			"You want more Pokémon to develop strong hands, huh?\p"
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_MAN}You want more Pokémon to develop strong hands, huh?\p"
 			"I can teach them too, if you just bring me a Heart Scale!"
 		))
 
@@ -130,9 +122,8 @@ script Saku_EventScript_ForcePalmTutor {
 			}
 		}
 	} else {
-		setspeaker(SP_NAME_MAN)
 		msgbox(format(
-			"Want your Pokémon to have strong and forceful hands, too?\p"
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_MAN}Want your Pokémon to have strong and forceful hands, too?\p"
 			"I can teach them my Force Palm technique! What do you say?"
 		))
 		dynmultichoice(
@@ -150,9 +141,8 @@ script Saku_EventScript_ForcePalmTutor {
 		if (var(VAR_RESULT) == 0) {
 			call(YifuCity_EventScript_ForcePalmTutorTeachForcePalm)
 		} else {
-			setspeaker(SP_NAME_MAN)
 			msgbox(format(
-				"You're intimidated by Mama and Kuku's display of awesomeness, I get it."
+				"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_MAN}You're intimidated by Mama and Kuku's display of awesomeness, I get it."
 			))
 			closemessage
 		}
@@ -161,25 +151,22 @@ script Saku_EventScript_ForcePalmTutor {
 }
 
 script YifuCity_EventScript_ForcePalmTutorTeachForcePalm {
-	setspeaker(SP_NAME_MAN)
 	msgbox((
-		"Heck yes!\nWhich Pokémon will receive this gift?"
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_MAN}Heck yes!\nWhich Pokémon will receive this gift?"
 	))
 
 	setvar(VAR_ITEM_ID, MOVE_FORCE_PALM)
 	buffermovename(STR_VAR_1, MOVE_FORCE_PALM)
 	call(MoveTutor_EventScript_OpenBox)
 	if (var(VAR_RESULT) == 4) {
-		setspeaker(SP_NAME_MAN)
 		msgbox(format(
-			"You're intimidated by Mama and Kuku's display of awesomeness, I get it."
+			"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_MAN}You're intimidated by Mama and Kuku's display of awesomeness, I get it."
 		))
 		closemessage
 	} else {
 		if (flag(FLAG_MOVE_TUTOR_TAUGHT_FORCE_PALM)) {
-			setspeaker(SP_NAME_MAN)
 			msgbox(format(
-				"Your Pokémon's hands are now almost as strong as Mama's and Kuku's!\p"
+				"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_MAN}Your Pokémon's hands are now almost as strong as Mama's and Kuku's!\p"
 				"Now, we'd settled on a Heart Scale, right?"
 			))
 			closemessage
@@ -188,9 +175,8 @@ script YifuCity_EventScript_ForcePalmTutorTeachForcePalm {
 		} else {
 			setflag(FLAG_MOVE_TUTOR_TAUGHT_FORCE_PALM)
 
-			setspeaker(SP_NAME_MAN)
 			msgbox(format(
-				"Your Pokémon's hands are now almost as strong as Mama's and Kuku's!\p"
+				"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_MAN}Your Pokémon's hands are now almost as strong as Mama's and Kuku's!\p"
 				"You'll join the Refuge building effort someday, right?"
 			))
 			closemessage

@@ -8,34 +8,29 @@ mapscripts SakuTown_House2_MapScripts {
 
 script SakuTown_House2_EventScript_EspeonsMaster {
 	lock
-	faceplayer
 	switch (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE)){
 		case 0:
 		case 1:
 			msgbox(
-				"The boy's just looking at the ground…"
+				"The boy is just looking at the ground."
 			)
 			waitmessage
-			setspeaker(SP_NAME_BOY)
-			msgbox("{FONT_SMALL} Eevee… where did you go?")
+			msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}{FONT_SMALL}Eevee… where did you go?")
 			setnamedmon(SPECIES_EEVEE)
-			waitmessage
 			closemessage
 			msgbox("The boy seems to be ignoring you.")
-			waitmessage
 			closemessage
 		case 2:
 			getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
-			setspeaker(SP_NAME_BOY)
-			msgbox("{FONT_SMALL}…")
-			waitmessage
+			msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}{FONT_SMALL}…")
 			closemessage
+
 			setspeakertomonname(SPECIES_ESPEON)
 			playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
 			msgbox("Spee!!!")
 			waitmoncry
-			waitmessage
 			closemessage
+
 			facefollowernpc
 			specialvar(VAR_FACING, GetPlayerFacingDirection)
 			switch(var(VAR_FACING)){
@@ -73,45 +68,36 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			}
 			call(PlayerFacesEspeon)
 			waitmovement(0)
-			setspeaker(SP_NAME_BOY)
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
-				"Eevee… is that you?"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}Eevee…{PAUSE 8} Is that you?"
 			)
-			waitmessage
 			closemessage
+
 			setspeakertomonname(SPECIES_ESPEON)
 			playmoncry(SPECIES_ESPEON, CRY_MODE_NORMAL)
 			msgbox("Spee!!!")
 			waitmoncry
-			waitmessage
 			closemessage
-			setspeaker(SP_NAME_BOY)
+
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
-				"You're alright! And you look so\ndifferent now! I'm so happy you're back!"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}You're alright!\nWow, you look so different now!\p"
+				"I'm so happy you're back!"
 			)
-			waitmessage
 			closemessage
 			call(EspeonMasterGoesToPlayer)
-			setspeaker(SP_NAME_BOY)
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
-				"Thank you, thank you, thank you!\p"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}Thank you, thank you, thank you!\p"
 				"I don't know how to repay you for\nbringing her home."
 			)
-			waitmessage
 			closemessage
-			mcdialogue("Don't thank just me.")
+			mcdialogue("Don't thank just me!")
 			delay(30)
-			mcdialogue("Someone in Kura took good care of her.")
-			setspeaker(SP_NAME_BOY)
+			mcdialogue("Someone in Kura took care of her.")
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
-				"Someone from Kura Town? Wow… I didn't\nknow they could be so nice. Maybe I\lcan thank them myself someday!\p"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}Someone from Kura Village? Wow…\nI didn't know they could be so nice.\p"
+				"Maybe someday, I can thank them\nmyself!\p"
 				"But but but! You still deserve a gift\nfor bringing her back.\lCome talk to me when you want it!"
 			)
-			waitmessage
 			closemessage
 			call(EspeonMasterGoesBack)
 			clearflag(FLAG_SAKU_KURA_HIDE_ESPEON_MASTERS_HOME)
@@ -120,25 +106,23 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			special(DrawWholeMapView)
 			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 3)
 		case 3:
-			setspeaker(SP_NAME_BOY)
+			faceplayer
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
-				"When I first got Eevee, I was told\nthese cool rocks could make her even\lmore powerful!\p"
-				"But since she's already evolved, I don't\nhave much use for them.\p"
-				"You can have one, though!"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}I was told these cool rocks could\nmake Eevee even more powerful!\p"
+				"But since she's already evolved, I\ndon't have much use for them.\p"
+				"You can have one!"
 			)
-			waitmessage
 			closemessage
 			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 4)
 			call(SakuTown_House2_EventScript_GiveEvoStone)
 		case 4:
+			faceplayer
 			call(SakuTown_House2_EventScript_GiveEvoStone)
 		case 5:
-			setspeaker(SP_NAME_BOY)
+			faceplayer
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}"
-				"I look forward to thanking the nice\nlady that took care of Espeon!\p"
-				"Big sis says I can't go into Kura Town\nyet… Maybe someday!"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}I look forward to thanking the nice\nlady that took care of Espeon!\p"
+				"My sister says I can't go into\nKura Town yet… Maybe someday!"
 			)
 			waitmessage
 			closemessage
@@ -147,7 +131,6 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 }
 
 script SakuTown_House2_EventScript_GiveEvoStone {
-	setspeaker(SP_NAME_BOY)
 	msgbox("Which rock would you like?")
 	dynmultichoice(
 		0,
@@ -205,13 +188,12 @@ script SakuTown_House2_EventScript_Espeon {
 script SakuTown_House2_EventScript_Sister {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_GIRL)
 	switch(var(VAR_SAKU_KURA_QUEST_ESPEON_STATE))
 	{
 		case 0:
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Forgive my brother. His mood's been\nin the pits lately.\p"
-				"His precious new Pokémon disappeared\nin a big storm a while ago.\p"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}{SPEAKER NAME_GIRL}Forgive my brother. His mood's been\nin the pits lately.\p"
+				"His precious Pokémon disappeared\nin a big storm a while ago.\p"
 				"Oh, hey… If it's not too much to ask…\nCan you ask around if someone saw it?"
 			)
 			closemessage
@@ -220,15 +202,14 @@ script SakuTown_House2_EventScript_Sister {
 			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 1)
 		case 1:
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Hm, it might be a good idea to ask those\nthat are always outside."
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}{SPEAKER NAME_GIRL}Hm, asking the people who are always\noutdoors might be a good idea."
 			)
 			closemessage
 			applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)
 			waitmovement(0)
 		case 2:
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}"
-				"Oh, you're back! And with a curious\nlooking fox with you?\p"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}{SPEAKER NAME_GIRL}Oh, you're back!\nWhat's that curious-looking fox?\p"
 				"Ah, wait, that couldn't be…"
 			)
 			closemessage
@@ -236,9 +217,8 @@ script SakuTown_House2_EventScript_Sister {
 			waitmovement(0)
 		default:
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}"
-				"Thank you for your kindness! It's warms\nmy heart seeing my brother smile again.\p"
-				"I wish I could thank whoever took such\ngood care of Eevee…"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}{SPEAKER NAME_GIRL}You're very kind. It warms my heart\nseeing him smile again!\p"
+				"I wish I could thank whoever took such\ngood care of Eevee."
 			)
 			closemessage
 	}

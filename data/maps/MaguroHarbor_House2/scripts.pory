@@ -20,13 +20,11 @@ script MaguroHarbor_House2_MyBrother {
     gettimeofday
 	if (var(VAR_0x8000) == TIME_EVENING || var(VAR_0x8000) == TIME_NIGHT || var(VAR_0x8000) == TIME_DEAD_NIGHT) {
 		msgbox(format(
-            // TODO {CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}
-            "{SPEAKER NAME_FISHERMAN}Another day, another safe return from the merciless ocean waves."
+            "{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Another day, another safe return from the merciless ocean waves."
 	    ))
 	} else {
 		msgbox(format(
-            // TODO {CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}
-            "{SPEAKER NAME_FISHERMAN}My brother has gone to the Angler's Shrine.\p"
+            "{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}My brother has gone to the Angler's Shrine.\p"
             "He makes offerings and asks for our safekeeping when we're at sea."
 	    ))
 	}
@@ -39,7 +37,7 @@ script MaguroHarbor_House2_Fisherman {
 	lock
 	faceplayer
 	msgbox(format(
-		"{SPEAKER NAME_FISHERMAN}A divinity watches over the people of each trade.\p"
+		"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}A divinity watches over the people of each trade.\p"
         "The great Bronzong near Kura Village grants farmers good harvests…\p"
         "The old Gyarados temple out at sea guards fishermen against shipwreck…\p"
         "Uhh, the rest I can't remember!"

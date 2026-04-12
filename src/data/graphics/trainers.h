@@ -274,6 +274,9 @@ const u16 gTrainerPalette_MagmaLeaderMaxie[] = INCBIN_U16("graphics/trainers/fro
 const u32 gTrainerFrontPic_Lass[] = INCBIN_U32("graphics/trainers/front_pics/lass.4bpp.smol");
 const u16 gTrainerPalette_Lass[] = INCBIN_U16("graphics/trainers/front_pics/lass.gbapal");
 
+const u32 gTrainerFrontPic_DisguiseKid[] = INCBIN_U32("graphics/trainers/front_pics/disguise_kid.4bpp.smol");
+const u16 gTrainerPalette_DisguiseKid[] = INCBIN_U16("graphics/trainers/front_pics/disguise_kid.gbapal");
+
 const u32 gTrainerFrontPic_GemManiac[] = INCBIN_U32("graphics/trainers/front_pics/gem_maniac.4bpp.smol");
 const u16 gTrainerPalette_GemManiac[] = INCBIN_U16("graphics/trainers/front_pics/gem_maniac.gbapal");
 
@@ -1425,5 +1428,9 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
  	[TRAINER_PIC_LEADER_MASAMUNE] = 
 	{
 		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Masamune, gTrainerPalette_Masamune)
+	},
+ 	[TRAINER_PIC_DISGUISE_KID] = 
+	{
+		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_DisguiseKid, gTrainerPalette_DisguiseKid)
 	},
 };

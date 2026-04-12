@@ -103,7 +103,7 @@ script CrobatHideout_1F_SeenByGrunt {
 	))
 	closemessage
 
-	applymovement(LOCALID_YIFU_HIDEOUT_FIRST_GRUNT, moves(walk_fast_down * 4, delay_16 * 3))
+	applymovement(LOCALID_YIFU_HIDEOUT_FIRST_GRUNT, moves(walk_faster_down * 4, delay_16 * 3))
 	waitmovement(LOCALID_YIFU_HIDEOUT_FIRST_GRUNT)
 	removeobject(LOCALID_YIFU_HIDEOUT_FIRST_GRUNT)
 	setflag(FLAG_CROBAT_HIDEOUT_SEEN_BY_GRUNT)
@@ -177,11 +177,11 @@ script CrobatHideout_1F_EventScript_GruntDoubleGuy {
 		format(
 			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Trespassin's against the law, ya know?"
 			),
-		format("Kids these days, I swear!")
+		format("Yer ruinin' everythin'!")
 	)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}We ain't gon' take this invasion of our privacy lyin' down!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Our boss takes good care of us! Everythin' was fine an' dandy 'til you showed up!"
 	))
 	closemessage
 	end
@@ -193,11 +193,11 @@ script CrobatHideout_1F_EventScript_GruntNearReunionRoom {
 		format(
 			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}This is our super secret hideout! Yer not wanted 'ere!"
 			),
-		format("Yer ruinin' everythin'!")
+		format("Stop! I'll tell ya a secret!")
 	)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Our boss takes good care of us! Everythin' was fine an' dandy 'til you showed up!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Go up, left, down, left to find our\nnap room!"
 	))
 	closemessage
 	end
@@ -233,7 +233,7 @@ script CrobatHideout_1F_EventScript_LaundrySchedule {
 
 script CrobatHideout_1F_EventScript_MessPoster {
     msgbox(format(
-		"“KITCHEN RULES:\n"
+		"“KITCHEN RULES:\p"
 		"1. DO clean up after yourself!\p"
 		"2. DO NOT steal food from other grunts!\p"
 		"3. But more importantly, DO NOT let your food be stolen!\p"
@@ -295,7 +295,7 @@ script CrobatHideout_1F_EventScript_WantedPosterHanddrawn {
 script CrobatHideout_1F_EventScript_WantedPosterBoss {
     msgbox(format(
 		"“WANTED: Crobat Shadows Leader\n"
-		"¥100 000”\p"
+		"¥30 000”\p"
 		"There are various messages\nscribbled on the poster:\l"
 		"“Happy birthday boss”,\l"
 		"“U are worthe ¥999 999 in our harts”,\l"
@@ -944,4 +944,10 @@ script CrobatHideout_1F_Trigger_Poochyena {
 	delay(1)
 
 	releaseall
+}
+
+script CrobatHideout_1F_EventScript_CounterfeitItems {
+	msgbox(
+		"The shelves are brimming with\ncounterfeit items…", MSGBOX_SIGN
+	)
 }

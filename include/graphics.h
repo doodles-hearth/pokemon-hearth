@@ -1256,6 +1256,7 @@ extern const u32 gItemIcon_PoisonBarb[];
 extern const u16 gItemIconPalette_PoisonBarb[];
 extern const u32 gItemIcon_Sand[];
 extern const u16 gItemIconPalette_SoftSand[];
+extern const u16 gItemIconPalette_Stardust[];
 extern const u32 gItemIcon_SharpBeak[];
 extern const u16 gItemIconPalette_SharpBeak[];
 extern const u32 gItemIcon_TwistedSpoon[];

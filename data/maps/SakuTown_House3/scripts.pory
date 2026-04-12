@@ -13,30 +13,11 @@ script SakuTown_House3_EventScript_SetUpPokemon {
 }
 
 script SakuTown_House3_EventScript_Psyduck {
-    lock
-    faceplayer
-    setseenmon(SPECIES_PSYDUCK_TOKUAN)
-    setspeakertomonname(SPECIES_PSYDUCK)
-    playmoncry(SPECIES_PSYDUCK, CRY_MODE_NORMAL)
-    msgbox(format(
-        "Psaïaïaï…"
-    ))
-    waitmoncry
-    release
-    end
+    mondialogue(SPECIES_PSYDUCK_TOKUAN, "Psaïaïaï…")
 }
 
 script SakuTown_House3_EventScript_Hoothoot {
-    lock
-    faceplayer
-    setspeakertomonname(SPECIES_HOOTHOOT)
-    playmoncry(SPECIES_HOOTHOOT, CRY_MODE_NORMAL)
-    msgbox(format(
-        "Hooo…"
-    ))
-    waitmoncry
-    release
-    end
+    mondialogue(SPECIES_HOOTHOOT, "Hooo…")
 }
 
 script SakuTown_House3_EventScript_TradeMe {
@@ -53,8 +34,8 @@ script SakuTown_House3_EventScript_TradeMe {
                 "I want a Hoothoot, but my pa doesn't let me go out at night.\p"
                 "I'll trade you a super dope Psyduck for it!"
             ),
-            format("{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}Keep your Hoothoot, I don't want it anyway…"),
-            format("{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}I don't want your weird Pokémon! I want a Hoothoot!"),
+            SakuTown_House3_EventScript_DeclineTrade,
+            SakuTown_House3_EventScript_NotRequestedMon,
             format(
                 "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}Yeahhh!! I have a Hoothoot now!\p"
                 "Take good care of Bread for me, okay?"
@@ -65,6 +46,21 @@ script SakuTown_House3_EventScript_TradeMe {
         removeobject(LOCALID_PSYDUCK)
         addobject(LOCALID_HOOTHOOT)
     }
+	release
+}
+
+script SakuTown_House3_EventScript_DeclineTrade {
+	msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}Keep your Hoothoot, I don't want it\nanyway…"
+    )
+	release
+}
+
+script SakuTown_House3_EventScript_NotRequestedMon {
+	bufferspeciesname(STR_VAR_1, VAR_0x8009)
+	msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}I don't want your weird Pokémon!\nI want a Hoothoot!"
+    )
 	release
 }
 

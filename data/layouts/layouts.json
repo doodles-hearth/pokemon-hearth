@@ -6323,7 +6323,7 @@
       "id": "LAYOUT_TOP_ISLE",
       "name": "TopIsle_Layout",
       "width": 60,
-      "height": 50,
+      "height": 55,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",

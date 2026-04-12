@@ -151,8 +151,9 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Joltik
 Level: 3
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Absorb
-- Fury Cutter
+- Thunder Wave
+- Leech Life
+- Spider Web
 
 Sewaddle Tokuan
 Level: 3
@@ -611,7 +612,7 @@ Pic: Black Belt
 Gender: Male
 Music: Intense
 Battle Type: Singles
-AI: Check Bad Move
+AI: Try To Faint
 
 Makuhita
 Level: 10
@@ -755,48 +756,71 @@ Level: 25
 - Assurance
 - Tail Whip
 
-=== TRAINER_GRUNT_MT_PYRE_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_EREN ===
+Name: Eren
+Class: Disguise Kid
+Pic: Disguise Kid
 Gender: Male
-Music: Aqua
+Music: Girl
+Battle Type: Singles
+AI: Basic Trainer
+
+Ditto
+Level: 25
+- Transform
+
+Noibat
+Level: 26
+- Air Cutter
+- Leech Life
+- Agility
+
+=== TRAINER_UTSU ===
+Name: Utsu
+Class: Beauty
+Pic: Masquerain Woman
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer
+
+Masquerain
+Level: 26
+- Stun Spore
+- Air Cutter
+- Quick Attack
+- Bubble Beam
+
+Ninetales
+Level: 26
+- Hex
+- Fire Spin
+- Extrasensory
+
+=== TRAINER_ASUNA ===
+Name: Asuna
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
 Battle Type: Singles
 AI: Check Bad Move
 
-Zubat
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Hoppip
+Level: 7
+- Tail Whip
+- Tackle
 
-=== TRAINER_GRUNT_MT_PYRE_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
+Nidoran (M)
+Level: 6
+- Leer
+- Peck
+- Focus Energy
 
-Carvanha
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_MT_PYRE_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Poochyena
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Carvanha
-Level: 30
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Ralts
+Level: 6
+- Confusion
+- Double Team
 
 === TRAINER_GRUNT_WEATHER_INST_4 ===
 Name: GRUNT
@@ -1235,13 +1259,11 @@ Music: Hiker
 Battle Type: Singles
 AI: Basic Trainer
 
-Sandslash
-Level: 27
-IVs: 7 HP / 7 Atk / 7 Def / 7 SpA / 7 SpD / 7 Spe
-- Dig
-- Slash
-- Sand Attack
-- Poison Sting
+Torkoal
+Level: 28
+- Curse
+- Lava Plume
+- Body Slam
 
 === TRAINER_KOTETSU ===
 Name: Kotetsu
@@ -1404,22 +1426,25 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Supersonic
 - Hyper Voice
 
-=== TRAINER_LOLA_1 ===
-Name: LOLA
-Class: Tuber F
-Pic: Tuber F
+=== TRAINER_DEIJI ===
+Name: Deiji
+Class: Aroma Lady
+Pic: Aroma Lady
 Gender: Female
-Music: Girl
+Music: Female
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Azurill
-Level: 12
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Bellsprout
+Level: 18
+- Stun Spore
+- Wrap
+- Vine Whip
 
-Azurill
-Level: 12
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Cherrim
+Level: 17
+- Mega Drain
+- Growth
 
 === TRAINER_TOMIKO ===
 Name: Tomiko
@@ -1549,103 +1574,112 @@ IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 - Tail Whip
 - Surf
 
-=== TRAINER_SIMON ===
-Name: SIMON
-Class: Tuber M
-Pic: Tuber M
+=== TRAINER_NII_NEE ===
+Name: Nii & Nee
+Class: Twins
+Pic: Twins
 Gender: Male
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
+Music: Twins
+Battle Type: Doubles
+AI: Basic Trainer
 
-Azurill
-Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-Marill
-Level: 12
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_CHARLIE ===
-Name: CHARLIE
-Class: Tuber M
-Pic: Tuber M
-Gender: Male
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Marill
+Raitora
 Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Thunder Fang
+- Bite
+- Helping Hand
 
-=== TRAINER_RICKY_2 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
+Steenee
+Level: 26
+- Double Slap
+- Play Nice
+- Magical Leaf
+- Sweet Scent
+
+=== TRAINER_MEIRU ===
+Name: Meiru
+Class: Messenger
+Pic: Hiker
 Gender: Male
-Music: Girl
+Music: Male
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Linoone
+Pelipper
+Level: 27
+- Pursuit
+- Water Pulse
+- Tailwind
+
+=== TRAINER_MAKI ===
+Name: Maki
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer
+
+Mawile (F)
 Level: 27
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
+- Vise Grip
+- Fake Tears
+- Bite
+- Fairy Wind
 
-=== TRAINER_RICKY_3 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
+=== TRAINER_DANJO ===
+Name: Danjo
+Class: Ninja Boy
+Pic: Ninja Boy
 Gender: Male
-Music: Girl
+Music: Suspicious
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Linoone
-Level: 30
-IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
-
-=== TRAINER_RICKY_4 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
-Gender: Male
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Linoone
+Vigoroth
 Level: 33
-IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
+IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+- Counter
+- Chip Away
+- Uproar
+- Encore
 
-=== TRAINER_RICKY_5 ===
-Name: RICKY
-Class: Tuber M
-Pic: Tuber M
-Gender: Male
-Music: Girl
+Thievul
+Level: 33
+- Sucker Punch
+- Nasty Plot
+- Quick Attack
+
+=== TRAINER_FURAWA ===
+Name: Furawa
+Class: Gardener
+Pic: Gardener
+Gender: Female
+Music: Female
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Linoone
-Level: 36
-IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
-- Sand Attack
-- Pin Missile
-- Tail Whip
-- Surf
+Phantump
+Level: 28
+- Curse
+- Leech Seed
+- Feint Attack
+
+=== TRAINER_YUGAO ===
+Name: Yugao
+Class: Gardener
+Pic: Gardener
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer
+
+Roselia
+Level: 27
+- Leech Seed
+- Giga Drain
+- Toxic Spikes
 
 === TRAINER_RANDALL ===
 Name: RANDALL
@@ -8261,12 +8295,18 @@ Battle Type: Singles
 AI: Check Bad Move
 
 Cramorant
-Level: 18
+Level: 26
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Stockpile
+- Swallow
+- Spit Up
 
 Krabby
-Level: 18
+Level: 26
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+- Metal Claw
+- Leer
+- Bubble Beam
 
 === TRAINER_CORA ===
 Name: CORA
@@ -9198,15 +9238,19 @@ Pic: Cook
 Gender: Male
 Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
-
-Nacli
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+AI: Basic Trainer
 
 Dwebble
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Level: 25
+- Bug Bite
+- Stealth Rock
+- Feint Attack
+
+Naclstack
+Level: 26
+- Salt Cure
+- Mud Shot
+- Rock Polish
 
 === TRAINER_MIU_AND_YUKI ===
 Name: MIU & YUKI
@@ -11458,18 +11502,22 @@ IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 Name: Musashi
 Class: Battle Guy
 Pic: Battle Guy
-Gender: Male
+Gender: Female
 Music: Intense
 Battle Type: Singles
 AI: Basic Trainer
 
-Makuhita
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Hariyama
+Level: 25
+- Focus Energy
+- Vital Throw
+- Fake Out
 
-Shroomish
-Level: 16
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Breloom
+Level: 26
+- Headbutt
+- Mach Punch
+- Leech Seed
 
 === TRAINER_MINORI ===
 Name: Minori
@@ -11497,7 +11545,7 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Munchlax (M)
-Level: 23
+Level: 20
 - Stockpile
 - Swallow
 - Body Slam
@@ -14144,20 +14192,20 @@ Class: Zubat
 Pic: Zubat Grunt M
 Gender: Male
 Music: Aqua
-Battle Type: Doubles
+Battle Type: Singles
 AI: Basic Trainer
 
 Mightyena
-Level: 22
+Level: 18
 - Bite
-- Swagger
+- Roar
 - Howl
 
 Thievul
-Level: 21
+Level: 19
 - Thief
-- Nasty Plot
 - Snarl
+- Beat Up
 
 === TRAINER_GRUNT_CROBAT_HIDEOUT_4 ===
 Name: Grunt
@@ -14205,13 +14253,13 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Zubat
-Level: 18
+Level: 17
 - Astonish
 - Wing Attack
 - Screech
 
 Golbat
-Level: 21
+Level: 18
 - Air Cutter
 - Supersonic
 - Bite
@@ -16392,7 +16440,7 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Torkoal
-Level: 19
+Level: 17
 - Rapid Spin
 - Smokescreen
 - Flame Wheel
@@ -16405,7 +16453,7 @@ Level: 18
 - Mist
 
 Slowpoke
-Level: 20
+Level: 18
 - Yawn
 - Disable
 - Headbutt
@@ -16421,13 +16469,13 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Slakoth
-Level: 21
+Level: 17
 - Yawn
 - Feint Attack
 - Encore
 
 Barboach
-Level: 21
+Level: 18
 - Magnitude
 - Amnesia
 - Water Gun
@@ -16442,19 +16490,19 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Darumaka
-Level: 20
+Level: 17
 - Incinerate
 - Rage
 - Facade
 
 Slugma
-Level: 23
+Level: 18
 - Smog
 - Rock Throw
 - Incinerate
 
 Slugma
-Level: 23
+Level: 18
 - Harden
 - Clear Smog
 - Flame Burst
@@ -16469,19 +16517,19 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Shuckle
-Level: 19
+Level: 18
 - Sticky Web
 - Wrap
 - Struggle Bug
 
 Poltchageist
-Level: 21
+Level: 17
 - Stun Spore
 - Withdraw
 - Mega Drain
 
 Braixen
-Level: 20
+Level: 17
 - Howl
 - Psybeam
 - Flame Charge

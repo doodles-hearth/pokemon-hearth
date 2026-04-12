@@ -112,12 +112,11 @@ script CoreefIsle_EventScript_CanHeal {
     faceplayer
 
     msgbox((
-        // "{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Hello, Wielder."
-        "Hello, Wielder."
+        "{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Hello, Wielder."
     ))
 	applymovement(VAR_LAST_TALKED, moves(face_up, delay_16 * 4, face_player))
     msgbox((
-		"If your Pokémon are\nwounded, a healer lives over there."
+		"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}If your Pokémon are\nwounded, a healer lives over there."
     ))
 	waitmovement(0)
 
@@ -131,8 +130,7 @@ script CoreefIsle_EventScript_CanHeal {
 
 		if(var(VAR_RESULT) == 0) {
 			msgbox((
-				// "{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Been a while since I heard this name!\p"
-				"Been a while since I heard this name!\p"
+				"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Been a while since I heard this name!\p"
 				"He lives to the east, with his caretaker."
 			))
 		}

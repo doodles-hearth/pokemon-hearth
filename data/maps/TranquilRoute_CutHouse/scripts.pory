@@ -57,26 +57,25 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 	if(checkitem(ITEM_SECRET_CUT)) {
 			// Home for the night
 			if(flag(FLAG_CUT_QUEST_CUT_ALL_GRASS)){
-				setspeaker(SP_NAME_OLD_MAN)
 				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}The sun is setting on another day.\p"
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}The sun is setting on another day.\p"
 					"Life is good."
 				))
 				closemessage
 			} else {
-				setspeaker(SP_NAME_OLD_MAN)
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}Are you finding the Secret of Blade useful?\p"
-					"No, I still haven't trimmed my garden. I really should get to it…"
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Teach your Pokémon any slicing move\nto cut small trees!\p"
+					"You'll need at least one Dojo Token\nto do that, though!\p"
+					"I wrote down the slicing moves on the\nback wall.\p"
+					"No, I still haven't trimmed my garden.\nI really should get to it…"
 				))
 				closemessage
 			}
 	}
 	// First time
 	else {
-		setspeaker(SP_NAME_OLD_MAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}Hello, there. I don't get many visitors, so sit down, have some tea!"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}I don't get many visitors!\nSit down, have some tea!"
 		))
 		closemessage
 
@@ -84,41 +83,59 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 		applymovement(VAR_LAST_TALKED, moves(emote_question_mark, delay_16 * 6))
 		waitmovement(VAR_LAST_TALKED)
 
-		setspeaker(SP_NAME_OLD_MAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}What? My garden is overrun by weeds?\p"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}What? My garden is overrun by weeds?\p"
 			"Ho ho ho…\p"
-			"You're right, I have been neglecting it lately. You see, my old back isn't as strong as it used to be.\p"
+			"You're right, I have been neglecting\nit lately.\p"
+			"You see, my old back isn't as strong\nas it used to be.\p"
 			"I'm going to let you in on a secret…\p"
-			"Long ago, a powerful swordmaster came up with a secret cutting technique.\p"
-			"I just so happen to have it written down right here!\p"
-			"You don't look much like a swordmaster… But surely a Wielder like you could teach their Pokémon the Secret of Blade!"
+			"Long ago, a powerful swordmaster came\nup with a secret cutting technique.\p"
+			"I just so happen to have it written\ndown right here!\p"
+			"You don't look much like a\nswordmaster…\p"
+			"But surely a Wielder like you can teach\ntheir Pokémon the Secret of Blade!"
 		))
 		closemessage
 
 		giveitem(ITEM_SECRET_CUT)
 
-		setspeaker(SP_NAME_OLD_MAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}There is a variety of slicing moves that your Pokémon can use.\p"
-			"They will now be able to use those moves to cut tall grass and little trees that block your path.\p"
-			"You will need at least one official Dojo Token for that, though.\p"
-			"We can't be going around cutting trees irresponsibly, now can we?\p"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}There is a variety of slicing moves\nthat your Pokémon can use.\p"
+			"They'll now be able to use those moves\nto cut tall grass and little trees.\p"
+			"You will need at least one official\nDojo Token for that, though.\p"
+			"We can't be going around cutting\ntrees irresponsibly, now can we?\p"
 			"Take this as well, if your Pokémon\ndon't know any slicing moves yet.\p"
-			"A scroll can be used to teach your Pokémon a move!"
+			"Use a scroll to teach your Pokémon\na move!"
 		))
 		closemessage
 
 		giveitem(ITEM_TM_NICK)
 
-		setspeaker(SP_NAME_OLD_MAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}Want to know another secret?\p"
-			"That powerful swordmaster I mentioned…\p"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Want to know another secret?\p"
+			"That powerful swordmaster I\nmentioned…\p"
 			"That was me in my youthful days,\nho ho ho…"
 		))
 		closemessage
 	}
 
 	release
+}
+
+script TranquilRoute_CutHouse_EventScript_SlicingMoveSign {
+	msgbox(
+		"Nick{CLEAR_TO 0x4c}Cut\n"
+		"Fury Cutter{CLEAR_TO 0x4c}Air Cutter\p"
+
+		"Aerial Ace{CLEAR_TO 0x4c}Slash\n"
+		"Air Slash{CLEAR_TO 0x4c}Night Slash\p"
+
+		"Razor Leaf{CLEAR_TO 0x4c}Razor Shell\n"
+		"Leaf Blade{CLEAR_TO 0x4c}Solar Blade\p"
+
+		"Dragon Claw{CLEAR_TO 0x4c}Shadow Claw\n"
+		"Psycho Cut{CLEAR_TO 0x4c}Stone Axe\p"
+
+		"Cross Poison{CLEAR_TO 0x4c}X-Scissor"
+		MSGBOX_SIGN
+	)
 }

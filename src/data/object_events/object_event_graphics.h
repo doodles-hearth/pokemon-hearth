@@ -525,6 +525,7 @@ const u32 gFieldEffectObjectPic_Splash[] = INCBIN_U32("graphics/field_effects/pi
 const u32 gFieldEffectObjectPic_JumpSmallSplash[] = INCBIN_U32("graphics/field_effects/pics/jump_small_splash.4bpp");
 const u32 gFieldEffectObjectPic_WaterSurfacing[] = INCBIN_U32("graphics/field_effects/pics/water_surfacing.4bpp");
 const u32 gFieldEffectObjectPic_TreeDisguise[] = INCBIN_U32("graphics/field_effects/pics/tree_disguise.4bpp");
+const u16 gFieldEffectPal_TreeDisguise[] = INCBIN_U16("graphics/field_effects/pics/tree_disguise.gbapal");
 const u32 gFieldEffectObjectPic_MountainDisguise[] = INCBIN_U32("graphics/field_effects/pics/mountain_disguise.4bpp");
 const u32 gFieldEffectObjectPic_SandDisguisePlaceholder[] = INCBIN_U32("graphics/field_effects/pics/sand_disguise_placeholder.4bpp");
 const u32 gFieldEffectObjectPic_HotSpringsWater[] = INCBIN_U32("graphics/field_effects/pics/hot_springs_water.4bpp");

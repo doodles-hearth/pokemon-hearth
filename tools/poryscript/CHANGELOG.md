@@ -5,7 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-Nothing, yet.
+- Nothing, yet.
+
+## [3.6.0] - 2026-02-15
+### Added
+- Add multi-line string support.
+    - Inspired by HexManiacAdvance
+- Add text-replacement support to `font_config.json`.
+
+## [3.5.2] - 2025-02-16
+### Fixed
+- Fix bug where invalid `mapscripts` syntax wasn't raising an error.
 
 ## [3.5.1] - 2024-11-24
 ### Fixed
@@ -183,7 +193,9 @@ Nothing, yet.
 ## [1.0.0] - 2019-08-27
 Initial Release
 
-[Unreleased]: https://github.com/huderlem/poryscript/compare/3.5.1...HEAD
+[Unreleased]: https://github.com/huderlem/poryscript/compare/3.6.0...HEAD
+[3.6.0]: https://github.com/huderlem/poryscript/compare/3.5.2...3.6.0
+[3.5.1]: https://github.com/huderlem/poryscript/compare/3.5.1...3.5.2
 [3.5.0]: https://github.com/huderlem/poryscript/compare/3.5.0...3.5.1
 [3.5.0]: https://github.com/huderlem/poryscript/compare/3.4.0...3.5.0
 [3.4.0]: https://github.com/huderlem/poryscript/compare/3.3.0...3.4.0

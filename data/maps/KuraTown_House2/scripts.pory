@@ -35,9 +35,8 @@ script KuraTown_House2_EventScript_Ashii {
 
 script(local) AshiiScript_FirstEncounter {
 	applymovement(LOCALID_ASHII, moves(emote_pensive))
-	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Sigh… Oh, Tama…\nWhy must life be so complicated?"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}{SPEAKER NAME_GIRL}Sigh… Oh, Tama…\nWhy must life be so complicated?"
 	))
 	closemessage
 	delay(30)
@@ -50,9 +49,8 @@ script(local) AshiiScript_FirstEncounter {
 	applymovement(LOCALID_ASHII, Common_Movement_Delay48)
 	waitmovement(0)
 
-	setspeaker(SP_NAME_GIRL)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Hey, what are you doing in my house?\nWere you eavesdropping?\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}{SPEAKER NAME_GIRL}Hey, what are you doing in my house?\nWere you eavesdropping?\p"
 		"…It doesn't matter anyway.\pThe boy who stole my heart… he lives in Saku Village.\pBut our two villages hate each other, so I can't see him anymore.\p"
 		"If only there was a way for him to know how I feel…"
 	))
@@ -63,12 +61,11 @@ script(local) AshiiScript_FirstEncounter {
 	applymovement(LOCALID_ASHII, moves(emote_exclamation_mark, delay_16 * 3))
 	waitmovement(0)
 
-	setspeaker(SP_NAME_ASHII)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Wait, you're not from here, are you?\p"
-		"My name is Ashii. I need your help.\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}{SPEAKER NAME_GIRL}Wait, you're not from here, are you?\p"
+		"{SPEAKER NAME_ASHII}My name is Ashii. I need your help.\p"
 		"The guard won't let anyone from\nKura Village enter Saku Village.\lBut you should be fine!\p"
-		"Please, go to Saku Village and give him this.\p"
+		"Please, go to Saku Village and give\nhim this.\l"
 		"He'll know it's from me…"
 	))
 	closemessage
@@ -82,7 +79,7 @@ script(local) AshiiScript_DidYouGiveTamaScarf {
 	faceplayer
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Please, give Tama my silk scarf.\nHe'll know it's from me…"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Please, give Tama my scarf.\nHe'll know it's from me…"
 	))
 	closemessage
 }
@@ -139,26 +136,36 @@ script(local) AshiiScript_Rocks {
 script(local) AshiiScript_EscortAshii {
 	faceplayer
 	setspeaker(SP_NAME_ASHII)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Thank you for clearing the way of those trees!\p"
-		"{PLAYER}… I know this is a big thing to ask, but…\p"
-		"I want to be sure that my meeting with Tama is safe.\NWho knows? It might be our last.\p"
-		"Could you please escort me?"
-	))
-
-	mcdialogueB("Let's go!", "Not right now.")
-	closemessage
-
-	if (var(VAR_RESULT) == 0) {
-		call(AshiiScript_PlayerAcceptsEscort)
-		// Player says no
-	} else {
-		applymovement(LOCALID_ASHII, moves(emote_sad))
-		setspeaker(SP_NAME_ASHII)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Please come back…\nDon't toy with a girl's heart…"
+	if (var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 2) {
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Thank you for clearing the way of\nthose trees!\p"
+			"{PLAYER}… I know this is a big thing\nto ask, but…\p"
+			"I want to be sure that my meeting with\nTama is safe.\lWho knows? It might be our last.\p"
+			"When you're done with your current\nerrands, could you escort me?"
 		))
 		closemessage
+	} else {
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Thank you for clearing the way of\nthose trees!\p"
+			"{PLAYER}… I know this is a big thing\nto ask, but…\p"
+			"I want to be sure that my meeting with\nTama is safe.\lWho knows? It might be our last.\p"
+			"Could you please escort me?"
+		))
+
+		mcdialogueB("Let's go!", "Not right now.")
+		closemessage
+
+		if (var(VAR_RESULT) == 0) {
+			call(AshiiScript_PlayerAcceptsEscort)
+			// Player says no
+		} else {
+			applymovement(LOCALID_ASHII, moves(emote_sad))
+			setspeaker(SP_NAME_ASHII)
+			msgbox(format(
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}Please come back…\nDon't toy with a girl's heart…"
+			))
+			closemessage
+		}
 	}
 }
 
