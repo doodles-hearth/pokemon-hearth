@@ -60,7 +60,9 @@ script YifuCity_HotSprings_EventScript_Firebringer {
 		format("My Pokémon were already tired!")
 	)
 	setnamedmon(SPECIES_SLUGMA)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FIREBRINGER 0}{SPEAKER NAME_FIREBRINGER}Unlike Hanabi City's natural hot springs, this place operates on so many Slugma you wouldn't believe."), MSGBOX_AUTOCLOSE)
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_FIREBRINGER 0}{SPEAKER NAME_FIREBRINGER}Unlike Hanabi City's natural hot\nsprings, this place operates on\lso many Slugma you wouldn't believe."
+	), MSGBOX_AUTOCLOSE)
 	release
 }
 

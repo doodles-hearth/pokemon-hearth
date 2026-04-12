@@ -445,8 +445,8 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Houndour
-Level: 23
-- Beat Up
+Level: 20
+- Leer
 - Odor Sleuth
 - Bite
 
@@ -564,7 +564,7 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Mightyena
-Level: 23
+Level: 20
 - Scary Face
 - Snarl
 - Assurance
@@ -14217,13 +14217,14 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Woobat
-Level: 22
+Level: 19
 - Wing Attack
 - Assurance
 - Imprison
+- Odor Sleuth
 
 Houndour
-Level: 22
+Level: 20
 - Ember
 - Smog
 - Howl
