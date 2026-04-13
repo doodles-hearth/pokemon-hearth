@@ -4025,7 +4025,8 @@ static void LoadDisplayMonGfx(enum Species species, u32 pid, bool32 isEgg)
         LoadSpecialPokePicIsEgg(sStorage->tileBuffer, species, pid, TRUE, isEgg);
         CpuCopy32(sStorage->tileBuffer, sStorage->displayMonTilePtr, MON_PIC_SIZE);
         LoadPalette(sStorage->displayMonPalette, sStorage->displayMonPalOffset, PLTT_SIZE_4BPP);
-        MakePaletteUnique(sStorage->displayMonPalOffset, species, sStorage->displayMonColoration, sStorage->displayMonIsShiny);
+        if (!isEgg)
+            MakePaletteUnique(sStorage->displayMonPalOffset, species, sStorage->displayMonColoration, sStorage->displayMonIsShiny);
         sStorage->displayMonSprite->invisible = FALSE;
     }
     else
@@ -5137,8 +5138,12 @@ static u16 TryLoadMonIconTiles(enum Species species, u32 personality, bool32 isE
 
     // Treat eggs as a seperate species as they might have unique sprites
     if (isEgg)
-        species |= (1 << 14);
-
+    {
+        if (gSpeciesInfo[species].eggId != EGG_ID_NONE)
+            species |= (1 << 14);
+        else
+            species = SPECIES_EGG;
+    }
     // Search icon list for this species
     for (i = 0; i < MAX_MON_ICONS; i++)
     {

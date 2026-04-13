@@ -15,6 +15,7 @@
 #include "data.h"
 #include "daycare.h"
 #include "dexnav.h"
+#include "diverse_eggs.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "evolution_scene.h"
@@ -5287,6 +5288,8 @@ const u16 *GetMonSpritePalFromSpeciesIsEgg(enum Species species, bool32 isShiny,
     {
         if (gSpeciesInfo[species].eggId != EGG_ID_NONE)
             return gEggDatas[gSpeciesInfo[species].eggId].eggPalette;
+        else if (IsKnownEggGroup(species))
+            return LoadEggPalette(species);
         else
             return gSpeciesInfo[SPECIES_EGG].palette;
     }

@@ -11,6 +11,7 @@
 #include "debug.h"
 #include "decoration.h"
 #include "decoration_inventory.h"
+#include "diverse_eggs.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -280,6 +281,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId);
 
 static void DebugAction_PCBag_Fill_PCBoxes_Fast(u8 taskId);
 static void DebugAction_PCBag_Fill_PCBoxes_Slow(u8 taskId);
+static void DebugAction_PCBag_Fill_PCBoxes_Eggs(u8 taskId);
 static void DebugAction_PCBag_Fill_PCItemStorage(u8 taskId);
 static void DebugAction_PCBag_Fill_PocketItems(u8 taskId);
 static void DebugAction_PCBag_Fill_PocketPokeBalls(u8 taskId);
@@ -591,6 +593,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_PCBag_Fill[] =
 {
     { COMPOUND_STRING("Fill PC Boxes Fast"),        DebugAction_PCBag_Fill_PCBoxes_Fast },
     { COMPOUND_STRING("Fill PC Boxes Slow (LAG!)"), DebugAction_PCBag_Fill_PCBoxes_Slow },
+    { COMPOUND_STRING("Fill PC Boxes Eggs (LAG!)"), DebugAction_PCBag_Fill_PCBoxes_Eggs },
     { COMPOUND_STRING("Fill PC Items") ,            DebugAction_PCBag_Fill_PCItemStorage },
     { COMPOUND_STRING("Fill Pocket Items"),         DebugAction_PCBag_Fill_PocketItems },
     { COMPOUND_STRING("Fill Pocket Poké Balls"),    DebugAction_PCBag_Fill_PocketPokeBalls },
@@ -3812,7 +3815,7 @@ static void DebugAction_TimeMenu_ChangeWeekdays(u8 taskId)
 // *******************************
 // Actions PCBag
 
-static void DebugAction_PCBag_Fill_PCBoxes_Fast(u8 taskId) //Credit: Sierraffinity
+static void DebugAction_PCBag_Fill_PCBoxes_Fast(u8 taskId)
 {
     int boxId, boxPosition;
     struct BoxPokemon boxMon;
@@ -3874,6 +3877,43 @@ static void DebugAction_PCBag_Fill_PCBoxes_Slow(u8 taskId)
         PlayBGM(GetCurrentMapMusic());
 
     Debug_DestroyMenu_Full_Script(taskId, Debug_BoxFilledMessage);
+}
+
+static void DebugAction_PCBag_Fill_PCBoxes_Eggs(u8 taskId) //Credit: Sierraffinity
+{
+    int boxId, boxPosition;
+    struct BoxPokemon boxMon;
+    enum Species species = SPECIES_BULBASAUR;
+    u8 speciesName[POKEMON_NAME_LENGTH + 1];
+
+    CreateBoxMon(&boxMon, species, 5, Random32(), OTID_STRUCT_PLAYER_ID);
+    //mons are created with 0 IVs
+
+    for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
+    {
+        for (boxPosition = 0; boxPosition < IN_BOX_COUNT && species < NUM_SPECIES; boxPosition++)
+        {
+            while (!IsSpeciesEnabled(species) || !IsKnownEggGroup(species) || GetSpeciesPreEvolution(species))
+                species++;
+
+            if (!GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_HAS_SPECIES))
+            {
+                StringCopy(speciesName, GetSpeciesName(species, SKIP_NAME_CHECK));
+                SetBoxMonData(&boxMon, MON_DATA_NICKNAME, &speciesName);
+                SetBoxMonData(&boxMon, MON_DATA_SPECIES, &species);
+                bool32 isEgg = TRUE;
+                SetBoxMonData(&boxMon, MON_DATA_IS_EGG, &isEgg);
+                GiveBoxMonInitialMoveset(&boxMon);
+                gPokemonStoragePtr->boxes[boxId][boxPosition] = boxMon;
+                species++;
+            }
+        }
+    }
+
+    // Set flag for user convenience
+    FlagSet(FLAG_SYS_POKEMON_GET);
+    Debug_DestroyMenu_Full(taskId);
+    ScriptContext_Enable();
 }
 
 static void DebugAction_PCBag_Fill_PCItemStorage(u8 taskId)
