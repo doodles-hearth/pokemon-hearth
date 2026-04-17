@@ -883,15 +883,30 @@ void UpdateLiveEvent(u32 index)
     }
 }
 
+static inline bool32 IsIdNormalObjectEvent(u32 id)
+{
+    switch (id)
+    {
+    case LOCALID_NONE:
+    case LOCALID_CAMERA:
+    case LOCALID_BERRY_BLENDER_PLAYER_END:
+    case LOCALID_FOLLOWING_POKEMON:
+    case LOCALID_PLAYER:
+        return FALSE;
+    default:
+        return TRUE;
+    }
+}
+
 void ProcessLiveEvents(void)
 {
     //  Try to fire new events
     for (u32 i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        if (gObjectEvents[i].localId == 255)
+        if (!IsIdNormalObjectEvent(gObjectEvents[i].localId))
             continue;
         enum LiveEvent liveEvent = GetObjectEventTemplateByLocalIdAndMap(gObjectEvents[i].localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup)->liveEvent;
-        if (liveEvent != LIVE_EVENT_NONE)
+        if (liveEvent != LIVE_EVENT_NONE && liveEvent < LIVE_EVENT_COUNT)
         {
             if (EventCanTriggerForObject(gObjectEvents[i].localId) && CalcDistanceToPlayer(&gObjectEvents[i].currentCoords) <= sLiveEvents[liveEvent].triggerRange)
             {
