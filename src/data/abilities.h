@@ -2423,7 +2423,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_DRAGONIZE] =
     {
         .name = _("Dragonize"),
-        .description = COMPOUND_STRING("Unimplemented."),
+        .description = COMPOUND_STRING("Normal moves turn Dragon."),
     },
 
     [ABILITY_313] =
@@ -2441,7 +2441,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_MEGA_SOL] =
     {
         .name = _("Mega Sol"),
-        .description = COMPOUND_STRING("Unimplemented."),
+        .description = COMPOUND_STRING("Acts like under sun."),
     },
 
     [ABILITY_316] =

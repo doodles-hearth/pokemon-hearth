@@ -96,7 +96,7 @@ EWRAM_DATA u8 gPartiesCount[MAX_BATTLE_TRAINERS] = {0};
 EWRAM_DATA struct Pokemon gParties[MAX_BATTLE_TRAINERS][PARTY_SIZE] = {0};
 EWRAM_DATA struct SpriteTemplate gMultiuseSpriteTemplate = {0};
 EWRAM_DATA static struct MonSpritesGfxManager *sMonSpritesGfxManagers[MON_SPR_GFX_MANAGERS_COUNT] = {NULL};
-EWRAM_DATA static u8 sTriedEvolving = 0;
+EWRAM_DATA u8 gTriedEvolving = 0;
 EWRAM_DATA u16 gFollowerSteps = 0;
 
 #include "data/abilities.h"
@@ -134,7 +134,7 @@ static const enum NationalDexOrder sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     FOREACH_SPECIES_IN_HOENN_DEX_ORDER(HOENN_TO_NATIONAL)
 };
 
-// In Battle Palace, moves are chosen based on the pokemons nature rather than by the player
+// In Battle Palace, moves are chosen based on the Pokémon's nature rather than by the player
 // Moves are grouped into "Attack", "Defense", or "Support" (see PALACE_MOVE_GROUP_*)
 // Each nature has a certain percent chance of selecting a move from a particular group
 // and a separate percent chance for each group when at or below 50% HP
@@ -782,6 +782,7 @@ void ZeroPlayerPartyMons(void)
 {
     for (s32 i = 0; i < PARTY_SIZE; i++)
         ZeroMonData(&gParties[B_TRAINER_0][i]);
+    gPlayerPartyCount = 0;
 }
 
 void ZeroEnemyPartyMons(void)
@@ -791,6 +792,8 @@ void ZeroEnemyPartyMons(void)
         ZeroMonData(&gParties[B_TRAINER_1][i]);
         ZeroMonData(&gParties[B_TRAINER_3][i]);
     }
+    gPartiesCount[B_TRAINER_1] = 0;
+    gPartiesCount[B_TRAINER_3] = 0;
 }
 
 void CreateRandomMon(struct Pokemon *mon, enum Species species, u8 level)
@@ -1343,8 +1346,8 @@ void CalculateMonStats(struct Pokemon *mon)
         gBattleScripting.levelUpHP = 1;
     SetMonData(mon, MON_DATA_MAX_HP, &newMaxHP);
 
-    // Since a pokemon's maxHP data could either not have
-    // been initialized at this point or this pokemon is
+    // Since a Pokémon's maxHP data could either not have
+    // been initialized at this point or this Pokémon is
     // just fainted, the check for oldMaxHP is important.
     if (currentHP == 0 && oldMaxHP != 0)
         return;
@@ -3806,7 +3809,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, enum Item item, u8 partyIndex, 
 bool8 HealStatusConditions(struct Pokemon *mon, u32 healMask, enum BattlerId battler)
 {
     u32 status = GetMonData(mon, MON_DATA_STATUS, 0);
-    
+
     PREPARE_MON_NICK_BUFFER(gBattleTextBuff1, battler, gBattlerPartyIndexes[battler]);
 
     if (status & healMask)
@@ -4561,6 +4564,8 @@ enum Species GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode m
             if (SanitizeSpeciesId(evolutions[i].targetSpecies) == SPECIES_NONE)
                 continue;
             if (evolutions[i].method != EVO_SCRIPT_TRIGGER)
+                continue;
+            if (evolutions[i].param != evolutionItem)
                 continue;
             if (DoesMonMeetAdditionalConditions(mon, evolutions[i].params, NULL, PARTY_SIZE, canStopEvo, evoState))
             {
@@ -6283,66 +6288,31 @@ void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
     }
 }
 
-// Attempts to perform non-level/item related overworld evolutions; called by tryspecialevo command.
-void TryScriptEvolution(void)
-{
-    u8 i;
-    bool32 canStopEvo = gSpecialVar_0x8001;
-    u16 tryMultiple = gSpecialVar_0x8002;
-
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        enum Species targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_SCRIPT_TRIGGER, 0, NULL, &canStopEvo, CHECK_EVO);
-
-        if (targetSpecies != SPECIES_NONE && !(sTriedEvolving & (1u << i)))
-        {
-            GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_SCRIPT_TRIGGER, 0, NULL, &canStopEvo, DO_EVO);
-            sTriedEvolving |= 1u << i;
-            if (gMain.callback2 == TryScriptEvolution) // This fixes small graphics glitches.
-                EvolutionScene(&gParties[B_TRAINER_0][i], targetSpecies, canStopEvo, i);
-            else
-                BeginEvolutionScene(&gParties[B_TRAINER_0][i], targetSpecies, canStopEvo, i);
-
-            if (tryMultiple)
-                gCB2_AfterEvolution = TryScriptEvolution;
-            else
-                gCB2_AfterEvolution = CB2_ReturnToField;
-            return;
-        }
-    }
-
-    sTriedEvolving = 0;
-    SetMainCallback2(CB2_ReturnToField);
-}
-
 void TrySpecialOverworldEvo(void)
 {
     u8 i;
-    bool32 canStopEvo = gSpecialVar_0x8001;
-    u16 tryMultiple = gSpecialVar_0x8002;
+    bool32 canStopEvo = FALSE;
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
         enum Species targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_OVERWORLD_SPECIAL, 0, NULL, &canStopEvo, CHECK_EVO);
 
-        if (targetSpecies != SPECIES_NONE && !(sTriedEvolving & (1u << i)))
+        if (targetSpecies != SPECIES_NONE && !(gTriedEvolving & (1u << i)))
         {
             GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_OVERWORLD_SPECIAL, 0, NULL, &canStopEvo, DO_EVO);
-            sTriedEvolving |= 1u << i;
+            gTriedEvolving |= 1u << i;
+
             if (gMain.callback2 == TrySpecialOverworldEvo) // This fixes small graphics glitches.
                 EvolutionScene(&gParties[B_TRAINER_0][i], targetSpecies, canStopEvo, i);
             else
                 BeginEvolutionScene(&gParties[B_TRAINER_0][i], targetSpecies, canStopEvo, i);
 
-            if (tryMultiple)
-                gCB2_AfterEvolution = TrySpecialOverworldEvo;
-            else
-                gCB2_AfterEvolution = CB2_ReturnToField;
+            gCB2_AfterEvolution = TrySpecialOverworldEvo;
             return;
         }
     }
 
-    sTriedEvolving = 0;
+    gTriedEvolving = 0;
     SetMainCallback2(CB2_ReturnToField);
 }
 
@@ -6363,7 +6333,7 @@ bool32 SpeciesHasGenderDifferences(enum Species species)
 static struct PartyState *GetBattlerPartyStateByPokemon(struct Pokemon *partyMon, enum BattleTrainer trainer)
 {
     struct Pokemon *party = GetTrainerParty(trainer);
-    
+
     for (int i = 0; i < PARTY_SIZE; i++)
     {
         struct Pokemon *mon = &party[i];
@@ -6796,6 +6766,7 @@ u32 GiveScriptedMonToPlayer(struct Pokemon *mon, u8 slot)
         HandleSetPokedexFlagFromMon(mon, FLAG_SET_SEEN);
         HandleSetPokedexFlagFromMon(mon, FLAG_SET_CAUGHT);
     }
+    CalculatePlayerPartyCount();
     return sentToPc;
 }
 
