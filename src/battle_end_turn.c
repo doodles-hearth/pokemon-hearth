@@ -113,7 +113,7 @@ static bool32 HandleEndTurnWeatherDamage(enum BattlerId battler)
 
     gBattleStruct->eventState.endTurnBattler++;
 
-    if (!IsBattlerAlive(battler) || !HasWeatherEffect())
+    if (!IsBattlerPresent(battler) || !HasWeatherEffect())
         return effect;
 
 
@@ -206,23 +206,27 @@ static bool32 HandleEndTurnWeatherDamage(enum BattlerId battler)
     return effect;
 }
 
-static bool32 HandleEndTurnEmergencyExit(enum BattlerId battler)
+static bool32 HandleEndTurnSendOutReplacements(enum BattlerId battler)
 {
-    bool32 effect = FALSE;
-    enum Ability ability = GetBattlerAbility(battler);
-
     gBattleStruct->eventState.endTurnBattler++;
 
-    if (EmergencyExitCanBeTriggered(battler))
+    switch (gSpecialStatuses[battler].queuedSwitch)
     {
-        gBattlerAbility = battler;
-        gLastUsedAbility = ability;
+    case NO_QUEUED_SWITCH:
+        break;
+    case QUEUED_SWITCH_SEND_REPLACEMENT:
         gBattleScripting.battler = battler;
-        BattleScriptCall(BattleScript_EmergencyExitSendReplacement);
-        effect = TRUE;
+        BattleScriptCall(BattleScript_QueuedSwitch);
+        return TRUE;
+    case QUEUED_SWITCH_OPEN_PARTY_SCREEN:
+        gBattleScripting.battler = battler;
+        BattleScriptCall(BattleScript_QueuedSwitchOpenPartyScreen);
+        return TRUE;
+    default:
+        errorf("Invalid value - queuedSwitch");
+        break;
     }
-
-    return effect;
+    return FALSE;
 }
 
 static bool32 HandleEndTurnAffection(enum BattlerId battler)
@@ -256,7 +260,7 @@ static bool32 HandleEndTurnFutureSight(enum BattlerId battler)
     if (gBattleStruct->futureSight[battler].counter > 0
      && --gBattleStruct->futureSight[battler].counter == 0)
     {
-        if (!IsBattlerAlive(battler))
+        if (!IsBattlerPresent(battler))
             return effect;
 
         if (gBattleStruct->futureSight[battler].move == MOVE_FUTURE_SIGHT)
@@ -287,7 +291,9 @@ static bool32 HandleEndTurnWish(enum BattlerId battler)
 
     gBattleStruct->eventState.endTurnBattler++;
 
-    if (gBattleStruct->wish[battler].counter > 0 && --gBattleStruct->wish[battler].counter == 0 && IsBattlerAlive(battler))
+    if (gBattleStruct->wish[battler].counter > 0
+     && --gBattleStruct->wish[battler].counter == 0
+     && IsBattlerPresent(battler))
     {
         s32 wishHeal = 0;
         gBattlerTarget = battler;
@@ -317,7 +323,21 @@ static bool32 HandleEndTurnFirstEventBlock(enum BattlerId battler)
     bool32 effect = FALSE;
     enum BattleSide side;
 
-    if (!IsBattlerAlive(battler))
+    if (gSpecialStatuses[battler].queuedSwitch != NO_QUEUED_SWITCH)
+    {
+        // Grassy Terrain still heals when Emergency Exit/Wimp Out activate
+        if (gBattleStruct->eventState.endTurnBlock <= FIRST_EVENT_BLOCK_GRASSY_TERRAIN_HEAL)
+        {
+            gBattleStruct->eventState.endTurnBlock = FIRST_EVENT_BLOCK_GRASSY_TERRAIN_HEAL;
+        }
+        else
+        {
+            gBattleStruct->eventState.endTurnBlock = 0;
+            gBattleStruct->eventState.endTurnBattler++;
+            return effect;
+        }
+    }
+    else if (!IsBattlerAlive(battler))
     {
         gBattleStruct->eventState.endTurnBlock = 0;
         gBattleStruct->eventState.endTurnBattler++;
@@ -427,7 +447,7 @@ static bool32 HandleEndTurnAquaRing(enum BattlerId battler)
     if (gBattleMons[battler].volatiles.aquaRing
      && !gBattleMons[battler].volatiles.healBlock
      && !IsBattlerAtMaxHp(battler)
-     && IsBattlerAlive(battler))
+     && IsBattlerPresent(battler))
     {
         SetHealAmount(battler, GetDrainedBigRootHp(battler, GetNonDynamaxMaxHP(battler) / 16));
         BattleScriptCall(BattleScript_AquaRingHeal);
@@ -446,7 +466,7 @@ static bool32 HandleEndTurnIngrain(enum BattlerId battler)
     if (gBattleMons[battler].volatiles.root
      && !gBattleMons[battler].volatiles.healBlock
      && !IsBattlerAtMaxHp(battler)
-     && IsBattlerAlive(battler))
+     && IsBattlerPresent(battler))
     {
         SetHealAmount(battler, GetDrainedBigRootHp(battler, GetNonDynamaxMaxHP(battler) / 16));
         BattleScriptCall(BattleScript_IngrainTurnHeal);
@@ -459,15 +479,16 @@ static bool32 HandleEndTurnIngrain(enum BattlerId battler)
 static bool32 HandleEndTurnLeechSeed(enum BattlerId battler)
 {
     bool32 effect = FALSE;
+    enum BattlerId drainedBattler = gBattleMons[battler].volatiles.leechSeed;
 
     gBattleStruct->eventState.endTurnBattler++;
 
-    if (gBattleMons[battler].volatiles.leechSeed
-     && IsBattlerAlive(gBattleMons[battler].volatiles.leechSeed - 1)
-     && IsBattlerAlive(battler)
+    if (drainedBattler
+     && IsBattlerPresent(drainedBattler - 1)
+     && IsBattlerPresent(battler)
      && !IsAbilityAndRecord(battler, GetBattlerAbility(battler), ABILITY_MAGIC_GUARD))
     {
-        gBattlerTarget = gBattleMons[battler].volatiles.leechSeed - 1; // leech seed receiver
+        gBattlerTarget = drainedBattler - 1; // leech seed receiver
         gBattleScripting.animArg1 = gBattlerTarget;
         gBattleScripting.animArg2 = gBattlerAttacker;
         s32 drainAmount = GetNonDynamaxMaxHP(gBattlerAttacker) / 8;
@@ -505,7 +526,7 @@ static bool32 HandleEndTurnPoison(enum BattlerId battler)
     gBattleStruct->eventState.endTurnBattler++;
 
     if ((gBattleMons[battler].status1 & STATUS1_POISON || gBattleMons[battler].status1 & STATUS1_TOXIC_POISON)
-     && IsBattlerAlive(battler)
+     && IsBattlerPresent(battler)
      && !IsAbilityAndRecord(battler, ability, ABILITY_MAGIC_GUARD))
     {
         if (ability == ABILITY_POISON_HEAL)
@@ -546,7 +567,7 @@ static bool32 HandleEndTurnBurn(enum BattlerId battler)
     gBattleStruct->eventState.endTurnBattler++;
 
     if (gBattleMons[battler].status1 & STATUS1_BURN
-     && IsBattlerAlive(battler)
+     && IsBattlerPresent(battler)
      && !IsAbilityAndRecord(battler, ability, ABILITY_MAGIC_GUARD))
     {
         s32 burnDamage = GetNonDynamaxMaxHP(battler) / ((GetConfig(B_BURN_DAMAGE) >= GEN_7 || GetConfig(B_BURN_DAMAGE) == GEN_1) ? 16 : 8);
@@ -571,7 +592,7 @@ static bool32 HandleEndTurnFrostbite(enum BattlerId battler)
     gBattleStruct->eventState.endTurnBattler++;
 
     if (gBattleMons[battler].status1 & STATUS1_FROSTBITE
-     && IsBattlerAlive(battler)
+     && IsBattlerPresent(battler)
      && !IsAbilityAndRecord(battler, GetBattlerAbility(battler), ABILITY_MAGIC_GUARD))
     {
         SetPassiveDamageAmount(battler, GetNonDynamaxMaxHP(battler) / ((GetConfig(B_BURN_DAMAGE) >= GEN_7 || GetConfig(B_BURN_DAMAGE) == GEN_1) ? 16 : 8));
@@ -589,7 +610,7 @@ static bool32 HandleEndTurnNightmare(enum BattlerId battler)
     gBattleStruct->eventState.endTurnBattler++;
 
     if (gBattleMons[battler].volatiles.nightmare
-     && IsBattlerAlive(battler)
+     && IsBattlerPresent(battler)
      && !IsAbilityAndRecord(battler, GetBattlerAbility(battler), ABILITY_MAGIC_GUARD))
     {
         if (gBattleMons[battler].status1 & STATUS1_SLEEP || GetBattlerAbility(battler) == ABILITY_COMATOSE)
@@ -614,7 +635,7 @@ static bool32 HandleEndTurnCurse(enum BattlerId battler)
     gBattleStruct->eventState.endTurnBattler++;
 
     if (gBattleMons[battler].volatiles.cursed
-     && IsBattlerAlive(battler)
+     && IsBattlerPresent(battler)
      && !IsAbilityAndRecord(battler, GetBattlerAbility(battler), ABILITY_MAGIC_GUARD))
     {
         SetPassiveDamageAmount(battler, GetNonDynamaxMaxHP(battler) / 4);
@@ -631,7 +652,8 @@ static bool32 HandleEndTurnWrap(enum BattlerId battler)
 
     gBattleStruct->eventState.endTurnBattler++;
 
-    if (gBattleMons[battler].volatiles.wrapped && IsBattlerAlive(battler))
+    if (gBattleMons[battler].volatiles.wrapped
+     && IsBattlerPresent(battler))
     {
         if (gBattleMons[battler].volatiles.wrapTurns != 0)
         {
@@ -669,7 +691,7 @@ static bool32 HandleEndTurnSaltCure(enum BattlerId battler)
     gBattleStruct->eventState.endTurnBattler++;
 
     if (gBattleMons[battler].volatiles.saltCure
-     && IsBattlerAlive(battler)
+     && IsBattlerPresent(battler)
      && !IsAbilityAndRecord(battler, GetBattlerAbility(battler), ABILITY_MAGIC_GUARD))
     {
         s32 saltCureDamage = 0;
@@ -709,7 +731,8 @@ static bool32 HandleEndTurnSyrupBomb(enum BattlerId battler)
 
     gBattleStruct->eventState.endTurnBattler++;
 
-    if (gBattleMons[battler].volatiles.syrupBomb && IsBattlerAlive(battler))
+    if (gBattleMons[battler].volatiles.syrupBomb
+     && IsBattlerPresent(battler))
     {
         if (gBattleMons[battler].volatiles.syrupBombTimer > 0 && --gBattleMons[battler].volatiles.syrupBombTimer == 0)
             gBattleMons[battler].volatiles.syrupBomb = FALSE;
@@ -949,7 +972,8 @@ static bool32 HandleEndTurnPerishSong(enum BattlerId battler)
 
     gBattleStruct->eventState.endTurnBattler++;
 
-    if (IsBattlerAlive(battler) && gBattleMons[battler].volatiles.perishSong)
+    if (gBattleMons[battler].volatiles.perishSong
+     && IsBattlerPresent(battler))
     {
         PREPARE_BYTE_NUMBER_BUFFER(gBattleTextBuff1, 1, gBattleMons[battler].volatiles.perishSongTimer);
         if (gBattleMons[battler].volatiles.perishSongTimer == 0)
@@ -1235,7 +1259,7 @@ static bool32 HandleEndTurnThirdEventBlock(enum BattlerId battler)
 {
     bool32 effect = FALSE;
 
-    if (!IsBattlerAlive(battler))
+    if (!IsBattlerPresent(battler))
     {
         gBattleStruct->eventState.endTurnBattler++;
         return effect;
@@ -1513,12 +1537,12 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
     [ENDTURN_VARIOUS] = HandleEndTurnVarious,
     [ENDTURN_WEATHER] = HandleEndTurnWeather,
     [ENDTURN_WEATHER_DAMAGE] = HandleEndTurnWeatherDamage,
-    [ENDTURN_EMERGENCY_EXIT_1] = HandleEndTurnEmergencyExit,
+    [ENDTURN_SEND_OUT_REPLACEMENTS_1] = HandleEndTurnSendOutReplacements,
     [ENDTURN_AFFECTION] = HandleEndTurnAffection,
     [ENDTURN_FUTURE_SIGHT] = HandleEndTurnFutureSight,
     [ENDTURN_WISH] = HandleEndTurnWish,
     [ENDTURN_FIRST_EVENT_BLOCK] = HandleEndTurnFirstEventBlock,
-    [ENDTURN_EMERGENCY_EXIT_2] = HandleEndTurnEmergencyExit,
+    [ENDTURN_SEND_OUT_REPLACEMENTS_2] = HandleEndTurnSendOutReplacements,
     [ENDTURN_AQUA_RING] = HandleEndTurnAquaRing,
     [ENDTURN_INGRAIN] = HandleEndTurnIngrain,
     [ENDTURN_LEECH_SEED] = HandleEndTurnLeechSeed,
@@ -1542,7 +1566,7 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
     [ENDTURN_YAWN] = HandleEndTurnYawn,
     [ENDTURN_PERISH_SONG] = HandleEndTurnPerishSong,
     [ENDTURN_ROOST] = HandleEndTurnRoost,
-    [ENDTURN_EMERGENCY_EXIT_3] = HandleEndTurnEmergencyExit,
+    [ENDTURN_SEND_OUT_REPLACEMENTS_3] = HandleEndTurnSendOutReplacements,
     [ENDTURN_SECOND_EVENT_BLOCK] = HandleEndTurnSecondEventBlock,
     [ENDTURN_TRICK_ROOM] = HandleEndTurnTrickRoom,
     [ENDTURN_GRAVITY] = HandleEndTurnGravity,
@@ -1552,9 +1576,10 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
     [ENDTURN_MAGIC_ROOM] = HandleEndTurnMagicRoom,
     [ENDTURN_TERRAIN] = HandleEndTurnTerrain,
     [ENDTURN_THIRD_EVENT_BLOCK] = HandleEndTurnThirdEventBlock,
-    [ENDTURN_EMERGENCY_EXIT_4] = HandleEndTurnEmergencyExit,
+    [ENDTURN_SEND_OUT_REPLACEMENTS_4] = HandleEndTurnSendOutReplacements,
     [ENDTURN_FORM_CHANGE] = HandleEndTurnFormChange,
     [ENDTURN_EJECT_PACK] = HandleEndTurnEjectPack,
+    [ENDTURN_SEND_OUT_REPLACEMENTS_5] = HandleEndTurnSendOutReplacements,
     [ENDTURN_TRAINER_A_SLIDES] = HandleEndTurnTrainerASlides,
     [ENDTURN_TRAINER_B_SLIDES] = HandleEndTurnTrainerBSlides,
     [ENDTURN_TRAINER_PARTNER_SLIDES] = HandleEndTurnTrainerPartnerSlides,
@@ -1562,6 +1587,23 @@ static bool32 (*const sEndTurnEffectHandlers[])(enum BattlerId battler) =
     [ENDTURN_FAINTED_MON_ACTIONS] = HandleEndTurnFaintedMonActions,
     [ENDTURN_DYNAMAX] = HandleEndTurnDynamax,
 };
+
+static bool32 HandleEndTurnEmergencyExit(enum BattlerId battler)
+{
+    bool32 effect = FALSE;
+    enum Ability ability = GetBattlerAbility(battler);
+
+    if (EmergencyExitCanBeTriggered(battler))
+    {
+        gBattleScripting.battler = gBattlerAbility = battler;
+        gLastUsedAbility = ability;
+        gSpecialStatuses[battler].queuedSwitch = QUEUED_SWITCH_OPEN_PARTY_SCREEN;
+        BattleScriptCall(BattleScript_EmergencyExit);
+        effect = TRUE;
+    }
+
+    return effect;
+}
 
 bool32 DoEndTurnEffects(void)
 {
@@ -1572,6 +1614,24 @@ bool32 DoEndTurnEffects(void)
 
     for (;;)
     {
+        // Activate any battler's Emergency Exit if possible (otherwise reset wasAboveHalfHp bit)
+        if (gBattleStruct->eventState.endTurn > ENDTURN_VARIOUS)
+        {
+            for (u32 i = 0; i < gBattlersCount; i++)
+            {
+                battler = gBattlerByTurnOrder[i];
+
+                if (!IsBattlerPresent(battler))
+                    continue;
+
+                bool32 effect = HandleEndTurnEmergencyExit(battler);
+
+                gBattleStruct->battlerState[battler].wasAboveHalfHp = gBattleMons[battler].hp > gBattleMons[battler].maxHP / 2;
+
+                if (effect)
+                    return TRUE;
+            }
+        }
         // If either turnEffectsBattlerId or turnSideTracker are at max count, reset values and go to the next state
         if (gBattleStruct->eventState.endTurnBattler == gBattlersCount || gBattleStruct->eventState.battlerSide == NUM_BATTLE_SIDES)
         {
