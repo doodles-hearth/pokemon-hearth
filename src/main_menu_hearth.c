@@ -648,6 +648,11 @@ static void HearthMainMenu_VBlankCB(void)
 static void Task_HearthMainMenuWaitFadeIn(u8 taskId)
 {
     if (!gPaletteFade.active) {
+        if (sHearthMainMenuState->activeButton != HMM_BUTTON_INFOBOX) {
+            HearthMainMenu_DarkenBadges();
+            HearthMainMenu_DarkenPartyIcons();
+            HearthMainMenu_DarkenPlayerIcon();
+        }
         gTasks[taskId].func = Task_HearthMainMenuInput;
     }
 }
