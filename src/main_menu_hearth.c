@@ -174,7 +174,6 @@ static void HearthMainMenu_PrintUiWindowText(void);
 static void HearthMainMenu_FormatSavegameTime(void);
 static void HearthMainMenu_PrintUiLabelText(void);
 static void HearthMainMenu_FreeResources(void);
-static u16 GetPlayerPalTag(void);
 static void HearthMainMenu_CreatePlayerIcon(s16 x, s16 y);
 static void HearthMainMenu_DarkenPlayerIcon(void);
 static void HearthMainMenu_RestorePlayerIcon(void);
@@ -365,14 +364,6 @@ static void HearthMainMenu_CreateAllMenuButtons()
         sHearthMainMenuState->buttonSpriteId[i] =
             HearthMainMenu_CreateMenuButton(x, startY, HMM_TILETAG_BUTTON1 + i, HMM_PALTAG_BUTTON);
     }
-}
-
-static u16 GetPlayerPalTag(void)
-{
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        return OBJ_EVENT_PAL_TAG_BRENDAN;
-    else
-        return OBJ_EVENT_PAL_TAG_MAY;
 }
 
 static void HearthMainMenu_CreatePlayerIcon(s16 x, s16 y)
