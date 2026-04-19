@@ -163,40 +163,46 @@ static void Task_HearthMainMenuScrollBg(u8 taskId);
 
 // Helper Functions
 static void HearthMainMenu_Init(MainCallback callback, enum HmmButtonIds activeButton);
-static void HearthMainMenu_InitFromOptionsMenu(MainCallback callback);
 static void HearthMainMenu_ResetGpuRegsAndBgs(void);
 static bool8 HearthMainMenu_InitBgs(void);
-static void HearthMainMenu_FadeAndBail(void);
 static bool8 HearthMainMenu_LoadGraphics(void);
 static void HearthMainMenu_InitWindows(void);
-static const u8* GetInfoboxFontColor(void);
+static void HearthMainMenu_StartFade(u32 color);
+static void HearthMainMenu_FadeAndBail(void);
+static void HearthMainMenu_FreeResources(void);
+
 static void HearthMainMenu_PrintUiWindowText(void);
 static void HearthMainMenu_FormatSavegameTime(void);
 static void HearthMainMenu_PrintUiLabelText(void);
-static void HearthMainMenu_FreeResources(void);
+static const u8* GetInfoboxFontColor(void);
+static u32 GetWinWidth(enum WindowIds id);
+
 static void HearthMainMenu_CreatePlayerIcon(s16 x, s16 y);
 static void HearthMainMenu_DarkenPlayerIcon(void);
 static void HearthMainMenu_RestorePlayerIcon(void);
 static void HearthMainMenu_DrawPartyIcons(void);
 static void HearthMainMenu_DarkenPartyIcons(void);
+
 static u32 HearthMainMenu_CreateMenuButton(s16 x, s16 y, u32 tileTag, u32 palTag);
+static void HearthMainMenu_CreateAllMenuButtons();
+static void HearthMainMenu_PrintButtonLabels(void);
+
 static u32 HearthMainMenu_CreateMenuBadge(s16 x, s16 y, u8 number);
 static void HearthMainMenu_CreateAllBadges(s16 x, s16 y);
 static void HearthMainMenu_DarkenBadges(void);
 static void HearthMainMenu_RestoreBadges(void);
 static u32 GetBadgeCount(void);
-static void HearthMainMenu_CreateAllMenuButtons();
-static void HearthMainMenu_PrintButtonLabels(void);
+
 static void HearthMainMenu_SetInfoboxActive(bool32 active);
 static void SetButtonPalette(u8 buttonId, const u16* pal, u32 palTag);
 static void ActivateButton(enum HmmButtonIds buttonId);
 static void DeactivateButton(enum HmmButtonIds buttonId);
 static void SetActiveButton(enum HmmButtonIds buttonId);
 static void MoveSelection(enum HmmDirs);
-static u32 GetWinWidth(enum WindowIds id);
-static void HearthMainMenu_StartFade(u32 color);
-static void HearthMainMenu_ExitOnSelect(MainCallback callback);
+
 static void HearthMainMenu_HandleButtonPressA(void);
+static void HearthMainMenu_HandleButtonPressB(void);
+static void HearthMainMenu_ExitOnSelect(MainCallback callback);
 
 void CB2_InitMainMenuHearth(void) { HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_INFOBOX); }
 static void CB2_InitMainMenuHearthFromOptionsMenu(void) { HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_OPTIONS); }
@@ -220,21 +226,6 @@ static void HearthMainMenu_Init(MainCallback callback, enum HmmButtonIds activeB
     sHearthMainMenuState->loadState = 0;
     sHearthMainMenuState->savedCallback = callback;
     sHearthMainMenuState->activeButton = activeButton;
-
-    SetMainCallback2(HearthMainMenu_SetupCB);
-}
-
-static void HearthMainMenu_InitFromOptionsMenu(MainCallback callback)
-{
-    sHearthMainMenuState = AllocZeroed(sizeof(struct HearthMainMenuState));
-    if (sHearthMainMenuState == NULL) {
-        SetMainCallback2(callback);
-        return;
-    }
-
-    sHearthMainMenuState->loadState = 0;
-    sHearthMainMenuState->savedCallback = callback;
-    sHearthMainMenuState->activeButton = HMM_BUTTON_OPTIONS;
 
     SetMainCallback2(HearthMainMenu_SetupCB);
 }
@@ -647,9 +638,7 @@ static void HearthMainMenu_StartFade(u32 color)
 static void Task_HearthMainMenuInput(u8 taskId)
 {
     if (JOY_NEW(B_BUTTON)) {
-        PlaySE(SE_PC_OFF);
-        HearthMainMenu_StartFade(RGB_BLACK);
-        gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
+        HearthMainMenu_HandleButtonPressB();
     }
     if (JOY_NEW(A_BUTTON)) {
         HearthMainMenu_HandleButtonPressA();
@@ -674,25 +663,32 @@ static void Task_HearthMainMenuInput(u8 taskId)
 
 static void HearthMainMenu_HandleButtonPressA(void)
 {
-    switch (sHearthMainMenuState->activeButton)
-{
-    case HMM_BUTTON_INFOBOX:
-        HearthMainMenu_ExitOnSelect(CB2_ContinueSavedGame);
-        break;
+    switch (sHearthMainMenuState->activeButton) {
+        case HMM_BUTTON_INFOBOX:
+            HearthMainMenu_ExitOnSelect(CB2_ContinueSavedGame);
+            break;
 
-    case HMM_BUTTON_NEWGAME:
-        HearthMainMenu_ExitOnSelect(CB2_OpenPrologueScreen);
-        break;
+        case HMM_BUTTON_NEWGAME:
+            HearthMainMenu_ExitOnSelect(CB2_OpenPrologueScreen);
+            break;
 
-    case HMM_BUTTON_OPTIONS:
-        gMain.savedCallback = CB2_InitMainMenuHearthFromOptionsMenu;
-        HearthMainMenu_ExitOnSelect(CB2_InitOptionMenu);
-        break;
+        case HMM_BUTTON_OPTIONS:
+            gMain.savedCallback = CB2_InitMainMenuHearthFromOptionsMenu;
+            HearthMainMenu_ExitOnSelect(CB2_InitOptionMenu);
+            break;
 
-    default:
-        PlaySE(SE_FAILURE);
-        break;
+        default:
+            PlaySE(SE_FAILURE);
+            break;
+    }
 }
+
+static void HearthMainMenu_HandleButtonPressB(void)
+{
+    u8 taskId = FindTaskIdByFunc(Task_HearthMainMenuInput);
+    PlaySE(SE_PC_OFF);
+    HearthMainMenu_StartFade(RGB_BLACK);
+    gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
 }
 
 static void HearthMainMenu_ExitOnSelect(MainCallback callback)
