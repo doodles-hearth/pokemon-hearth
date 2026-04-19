@@ -52,7 +52,7 @@
 #define HMM_BUTTON_SPRITE_COUNT 3
 #define MON_ICON_PAL_COUNT 6
 
-enum WindowIds { WIN_HMM_BG, WIN_HMM_NO_SAVE = WIN_HMM_BG, WIN_HMM_LABEL };
+enum WindowIds { WIN_HMM_BG, WIN_HMM_NO_SAVE = WIN_HMM_BG, WIN_HMM_NAME };
 
 enum {
     HMM_PALTAG_BUTTON = 0x1000,
@@ -121,8 +121,8 @@ static const struct WindowTemplate sHearthMainMenuWindowTemplates[] = {
     [WIN_HMM_BG] =
         {.bg = 0, .tilemapLeft = 4, .tilemapTop = 11, .width = 22, .height = 3, .paletteNum = 15, .baseBlock = 1},
 
-    [WIN_HMM_LABEL] =
-        {.bg = 0, .tilemapLeft = 22, .tilemapTop = 1, .width = 6, .height = 2, .paletteNum = 15, .baseBlock = 1 + 78},
+    [WIN_HMM_NAME] =
+        {.bg = 0, .tilemapLeft = 2, .tilemapTop = 9, .width = 8, .height = 2, .paletteNum = 15, .baseBlock = 1 + 66},
     DUMMY_WIN_TEMPLATE};
 
 static const struct WindowTemplate sHearthMainMenuErrorWindowTemplate[] = {
@@ -159,6 +159,8 @@ static const u8 HearthMainMenuWindowFontColors[][3] = {
     [FONT_RED] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_GRAY},
 };
 
+#define HMM_FONT_COLOR(_x) HearthMainMenuWindowFontColors[_x]
+
 // Callbacks
 static void HearthMainMenu_SetupCB(void);
 static void HearthMainMenu_MainCB(void);
@@ -184,11 +186,16 @@ static void HearthMainMenu_FreeResources(void);
 static enum HmmMenuType HearthMainMenu_GetMenuType(void);
 static bool32 IsContinueMenu(void);
 
-static void HearthMainMenu_PrintUiWindowText(void);
+static void HearthMainMenu_PrintInfoboxText(void);
+static void HearthMainMenu_PrintContinueInfo(const u8 *color);
+static void HearthMainMenu_PrintNoSaveInfo(const u8 *color);
 static void HearthMainMenu_FormatSavegameTime(void);
-static void HearthMainMenu_PrintUiLabelText(void);
+static void HearthMainMenu_PrintPlayerName(void);
 static const u8* GetInfoboxFontColor(void);
-static u32 GetWinWidth(enum WindowIds id);
+static u32 GetWindowWidth(u8 windowId);
+static void PrintText(u8 windowId, u8 font, u8 x, u8 y, const u8 *color, const u8 *str);
+static inline void PrintTextNormal(u8 windowId, u8 x, u8 y, const u8 *color, const u8 *str);
+static inline void PrintTextSmall(u8 windowId, u8 x, u8 y, const u8 *color, const u8 *str);
 
 static void HearthMainMenu_CreatePlayerIcon(s16 x, s16 y);
 static void HearthMainMenu_DarkenPlayerIcon(void);
@@ -752,7 +759,8 @@ static void HearthMainMenu_SetInfoboxActive(bool32 active)
             }
         }
     }
-    HearthMainMenu_PrintUiWindowText();
+    HearthMainMenu_PrintInfoboxText();
+    HearthMainMenu_PrintPlayerName();
 }
 
 static void Task_HearthMainMenuWaitFadeAndBail(u8 taskId)
@@ -857,40 +865,69 @@ static void HearthMainMenu_InitWindows(void)
     }
 }
 
+static void PrintText(u8 windowId, u8 font, u8 x, u8 y, const u8* color, const u8* str)
+{
+    AddTextPrinterParameterized4(windowId, font, x, y, 0, 0, color, TEXT_SKIP_DRAW, str);
+}
+
+static inline void PrintTextSmall(u8 windowId, u8 x, u8 y, const u8* color, const u8* str)
+{
+    PrintText(windowId, FONT_SMALL, x, y, color, str);
+}
+
+static inline void PrintTextNormal(u8 windowId, u8 x, u8 y, const u8* color, const u8* str)
+{
+    PrintText(windowId, FONT_NORMAL, x, y, color, str);
+}
+
 static const u8 sText_PlayerName[] = _("{PLAYER}");
 static const u8 sText_Tokens[] = _("Tokens  {STR_VAR_2}");
 static const u8 sText_NoSaveData[] = _("No Save Data Found");
-static void HearthMainMenu_PrintUiWindowText(void)
+static void HearthMainMenu_PrintContinueInfo(const u8 *color)
 {
-    s16 left = 0;
-    s16 top = 0;
-    FillWindowPixelBuffer(WIN_HMM_BG, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    u8 windowId = WIN_HMM_BG;
+    u16 widthPx = GetWindowWidth(windowId) * 8;
 
-    const u8* color = GetInfoboxFontColor();
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
-    if (IsContinueMenu()) {
-        HearthMainMenu_FormatSavegameTime();
-        AddTextPrinterParameterized4(WIN_HMM_BG, FONT_SMALL, left, top, 0, 0, color, TEXT_SKIP_DRAW, gStringVar1);
+    HearthMainMenu_FormatSavegameTime();
+    PrintTextSmall(windowId, 0, 0, color, gStringVar1);
 
-        StringExpandPlaceholders(gStringVar1, sText_PlayerName);
-        u8 strXName = GetStringCenterAlignXOffset(FONT_SMALL, gStringVar1, GetWinWidth(WIN_HMM_BG) * 8);
-        AddTextPrinterParameterized4(WIN_HMM_BG, FONT_SMALL, strXName, top, 0, 0, color, TEXT_SKIP_DRAW, gStringVar1);
-        u8 strRightAlignTokens = GetStringRightAlignXOffset(FONT_SMALL, sText_Tokens, GetWinWidth(WIN_HMM_BG) * 8);
-        ConvertUIntToDecimalStringN(gStringVar2, GetBadgeCount(), STR_CONV_MODE_LEFT_ALIGN, 1);
-        StringExpandPlaceholders(gStringVar1, sText_Tokens);
-        AddTextPrinterParameterized4(WIN_HMM_BG, FONT_SMALL, strRightAlignTokens, top, 0, 0, color, TEXT_SKIP_DRAW,
-                                     gStringVar1);
-        CopyWindowToVram(WIN_HMM_BG, COPYWIN_GFX);
-    }
-    else {
-        InitWindows(sHearthMainMenuErrorWindowTemplate);
-        FillWindowPixelBuffer(WIN_HMM_NO_SAVE, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-        PutWindowTilemap(WIN_HMM_NO_SAVE);
-        u8 strXNoSave = GetStringCenterAlignXOffset(FONT_NORMAL, sText_NoSaveData, GetWindowAttribute(WIN_HMM_NO_SAVE, WINDOW_WIDTH) * 8);
-        AddTextPrinterParameterized4(WIN_HMM_NO_SAVE, FONT_NORMAL, strXNoSave, 0, 0, 0, color, TEXT_SKIP_DRAW, sText_NoSaveData);
-        CopyWindowToVram(WIN_HMM_NO_SAVE, COPYWIN_FULL);
-    }
+    StringExpandPlaceholders(gStringVar1, sText_PlayerName);
+    u8 xName = GetStringCenterAlignXOffset(FONT_SMALL, gStringVar1, widthPx);
+    PrintTextSmall(windowId, xName, 0, color, gStringVar1);
 
+    ConvertUIntToDecimalStringN(gStringVar2, GetBadgeCount(), STR_CONV_MODE_LEFT_ALIGN, 1);
+    StringExpandPlaceholders(gStringVar1, sText_Tokens);
+    u8 xTokens = GetStringRightAlignXOffset(FONT_SMALL, gStringVar1, widthPx);
+    PrintTextSmall(windowId, xTokens, 0, color, gStringVar1);
+
+    CopyWindowToVram(windowId, COPYWIN_GFX);
+}
+
+static void HearthMainMenu_PrintNoSaveInfo(const u8 *color)
+{
+    u8 windowId = WIN_HMM_NO_SAVE;
+
+    InitWindows(sHearthMainMenuErrorWindowTemplate);
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(windowId);
+
+    u16 widthPx = GetWindowAttribute(windowId, WINDOW_WIDTH) * 8;
+    u8 x = GetStringCenterAlignXOffset(FONT_NORMAL, sText_NoSaveData, widthPx);
+
+    PrintTextNormal(windowId, x, 0, color, sText_NoSaveData);
+
+    CopyWindowToVram(windowId, COPYWIN_FULL);
+}
+
+static void HearthMainMenu_PrintInfoboxText(void)
+{
+    const u8 *color = GetInfoboxFontColor();
+    if (IsContinueMenu())
+        HearthMainMenu_PrintContinueInfo(color);
+    else
+        HearthMainMenu_PrintNoSaveInfo(color);
 }
 
 static void HearthMainMenu_FormatSavegameTime(void)
@@ -900,14 +937,13 @@ static void HearthMainMenu_FormatSavegameTime(void)
     StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Time  {STR_VAR_2}:{STR_VAR_3}"));
 }
 
-static void HearthMainMenu_PrintUiLabelText(void)
+static void HearthMainMenu_PrintPlayerName(void)
 {
-    s16 left = 0;
-    s16 top = 2;
-    FillWindowPixelBuffer(WIN_HMM_LABEL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    AddTextPrinterParameterized4(WIN_HMM_LABEL, FONT_SMALL, left, top, 0, 0,
-                                 GetInfoboxFontColor(), TEXT_SKIP_DRAW, COMPOUND_STRING("Continue"));
-    CopyWindowToVram(WIN_HMM_LABEL, COPYWIN_GFX);
+    StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("{PLAYER}"));
+    FillWindowPixelBuffer(WIN_HMM_NAME, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    u8 xName = GetStringCenterAlignXOffset(FONT_SMALL, gStringVar1, GetWindowWidth(WIN_HMM_NAME)*8);
+    PrintTextSmall(WIN_HMM_NAME, xName, 1, HMM_FONT_COLOR(FONT_WHITE), gStringVar1);
+    CopyWindowToVram(WIN_HMM_NAME, COPYWIN_GFX);
 
 }
 
@@ -921,9 +957,9 @@ static const u8* GetInfoboxFontColor(void)
     }
 }
 
-static u32 GetWinWidth(enum WindowIds id)
+static u32 GetWindowWidth(u8 windowId)
 {
-    return sHearthMainMenuWindowTemplates[id].width;
+    return GetWindowAttribute(windowId, WINDOW_WIDTH);
 }
 
 static void HearthMainMenu_FreeResources(void)
