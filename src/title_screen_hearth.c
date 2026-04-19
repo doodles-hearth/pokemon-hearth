@@ -2,6 +2,7 @@
 #include "battle.h"
 #include "config/quickstart.h"
 #include "gba/io_reg.h"
+#include "main_menu_hearth.h"
 #include "sprite.h"
 #include "gba/m4a_internal.h"
 #include "clear_save_data_menu.h"
@@ -628,7 +629,7 @@ static void Task_HearthTitleScreenPhase3(u8 taskId)
 static void CB2_GoToMainMenu(void)
 {
     if (!UpdatePaletteFade())
-        SetMainCallback2(CB2_InitMainMenu);
+        SetMainCallback2(CB2_InitMainMenuHearth);
 }
 
 static void CB2_GoToCopyrightScreen(void)
