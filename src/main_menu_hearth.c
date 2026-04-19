@@ -943,7 +943,7 @@ static void HearthMainMenu_PrintPlayerName(void)
     StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("{PLAYER}"));
     FillWindowPixelBuffer(WIN_HMM_NAME, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     u8 xName = GetStringCenterAlignXOffset(FONT_SMALL, gStringVar1, GetWindowWidth(WIN_HMM_NAME)*8);
-    PrintTextSmall(WIN_HMM_NAME, xName, 1, HMM_FONT_COLOR(FONT_WHITE), gStringVar1);
+    PrintTextSmall(WIN_HMM_NAME, xName, 1, GetInfoboxFontColor(), gStringVar1);
     CopyWindowToVram(WIN_HMM_NAME, COPYWIN_GFX);
 
 }
