@@ -553,6 +553,8 @@ static void MoveSelection(enum HmmDirs direction)
             break;
 
         case HMM_DIR_LEFT:
+            if (cur == HMM_BUTTON_INFOBOX)
+                break;
             if (cur == HMM_BUTTON_NEWGAME)
                 SetActiveButton(HMM_BUTTON_MYSTERY);
             else
@@ -560,6 +562,8 @@ static void MoveSelection(enum HmmDirs direction)
             break;
 
         case HMM_DIR_RIGHT:
+            if (cur == HMM_BUTTON_INFOBOX)
+                break;
             if (cur == HMM_BUTTON_MYSTERY)
                 SetActiveButton(HMM_BUTTON_NEWGAME);
             else
