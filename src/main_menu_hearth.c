@@ -162,7 +162,7 @@ static void Task_HearthMainMenuWaitFadeAndExitGracefully(u8 taskId);
 static void Task_HearthMainMenuScrollBg(u8 taskId);
 
 // Helper Functions
-static void HearthMainMenu_Init(MainCallback callback);
+static void HearthMainMenu_Init(MainCallback callback, enum HmmButtonIds activeButton);
 static void HearthMainMenu_InitFromOptionsMenu(MainCallback callback);
 static void HearthMainMenu_ResetGpuRegsAndBgs(void);
 static bool8 HearthMainMenu_InitBgs(void);
@@ -197,18 +197,18 @@ static u32 GetWinWidth(enum WindowIds id);
 static void HearthMainMenu_StartFade(u32 color);
 static void HearthMainMenu_HandleButtonPressA(void);
 
-void CB2_InitMainMenuHearth(void) { HearthMainMenu_Init(CB2_InitHearthTitleScreen); }
-static void CB2_InitMainMenuHearthFromOptionsMenu(void) { HearthMainMenu_InitFromOptionsMenu(CB2_InitHearthTitleScreen); }
+void CB2_InitMainMenuHearth(void) { HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_INFOBOX); }
+static void CB2_InitMainMenuHearthFromOptionsMenu(void) { HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_OPTIONS); }
 
 void Task_OpenHearthMainMenu(u8 taskId)
 {
     if (!gPaletteFade.active) {
-        HearthMainMenu_Init(CB2_InitHearthTitleScreen);
+        HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_INFOBOX);
         DestroyTask(taskId);
     }
 }
 
-static void HearthMainMenu_Init(MainCallback callback)
+static void HearthMainMenu_Init(MainCallback callback, enum HmmButtonIds activeButton)
 {
     sHearthMainMenuState = AllocZeroed(sizeof(struct HearthMainMenuState));
     if (sHearthMainMenuState == NULL) {
@@ -218,7 +218,7 @@ static void HearthMainMenu_Init(MainCallback callback)
 
     sHearthMainMenuState->loadState = 0;
     sHearthMainMenuState->savedCallback = callback;
-    sHearthMainMenuState->activeButton = HMM_BUTTON_INFOBOX;
+    sHearthMainMenuState->activeButton = activeButton;
 
     SetMainCallback2(HearthMainMenu_SetupCB);
 }
