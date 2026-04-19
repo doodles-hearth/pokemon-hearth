@@ -778,10 +778,12 @@ static bool8 HearthMainMenu_InitBgs(void)
     ResetAllBgsCoordinates();
 
     sBg1TilemapBuffer = AllocZeroed(TILEMAP_BUFFER_SIZE);
-    sBg2TilemapBuffer = AllocZeroed(TILEMAP_BUFFER_SIZE);
-    if (sBg1TilemapBuffer == NULL || sBg2TilemapBuffer == NULL) {
+    if (sBg1TilemapBuffer == NULL)
         return FALSE;
-    }
+
+    sBg2TilemapBuffer = AllocZeroed(TILEMAP_BUFFER_SIZE);
+    if (sBg2TilemapBuffer == NULL)
+        return FALSE;
 
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sHearthMainMenuBgTemplates, NELEMS(sHearthMainMenuBgTemplates));
