@@ -69,6 +69,9 @@ static const struct WindowTemplate sWindowTemplate_PrologueText =
     .baseBlock = 1,
 };
 
+
+static const struct BgTemplate prologueBgTemplate = {.bg = 0, .charBaseIndex = 0, .mapBaseIndex = 30, .priority = 1};
+
 static const u8 sPrologueTextColors[] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY};
 
 const u8 sText_Prologue[] = _(
@@ -115,9 +118,34 @@ void Task_OpenPrologueScreen(u8 taskId)
     switch (gTasks[taskId].tState)
     {
     case PROLOGUE_ENTER_PREPARE:
+        SetGpuReg(REG_OFFSET_DISPCNT, 0);
+        SetGpuReg(REG_OFFSET_BG3CNT, 0);
+        SetGpuReg(REG_OFFSET_BG2CNT, 0);
+        SetGpuReg(REG_OFFSET_BG1CNT, 0);
+        SetGpuReg(REG_OFFSET_BG0CNT, 0);
+        ChangeBgX(0, 0, BG_COORD_SET);
+        ChangeBgY(0, 0, BG_COORD_SET);
+        ChangeBgX(1, 0, BG_COORD_SET);
+        ChangeBgY(1, 0, BG_COORD_SET);
+        ChangeBgX(2, 0, BG_COORD_SET);
+        ChangeBgY(2, 0, BG_COORD_SET);
+        ChangeBgX(3, 0, BG_COORD_SET);
+        ChangeBgY(3, 0, BG_COORD_SET);
         SetGpuReg(REG_OFFSET_BLDCNT, 0);
-        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 0);
+        SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+        SetGpuReg(REG_OFFSET_WIN0H, 0);
+        SetGpuReg(REG_OFFSET_WIN0V, 0);
+        SetGpuReg(REG_OFFSET_WIN1H, 0);
+        SetGpuReg(REG_OFFSET_WIN1V, 0);
+        SetGpuReg(REG_OFFSET_WININ, 0);
+        SetGpuReg(REG_OFFSET_WINOUT, 0);
+        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
+        CpuFill16(0, (void*)VRAM, VRAM_SIZE);
+        CpuFill32(0, (void*)OAM, OAM_SIZE);
+        ResetBgsAndClearDma3BusyFlags(0);
+        InitBgFromTemplate(&prologueBgTemplate);
+        ShowBg(0);
 
         gTasks[taskId].tState = PROLOGUE_ENTER_MSG_SCREEN;
         break;
