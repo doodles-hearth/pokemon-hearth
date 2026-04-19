@@ -195,6 +195,7 @@ static void SetActiveButton(enum HmmButtonIds buttonId);
 static void MoveSelection(enum HmmDirs);
 static u32 GetWinWidth(enum WindowIds id);
 static void HearthMainMenu_StartFade(u32 color);
+static void HearthMainMenu_ExitOnSelect(MainCallback callback);
 static void HearthMainMenu_HandleButtonPressA(void);
 
 void CB2_InitMainMenuHearth(void) { HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_INFOBOX); }
@@ -669,31 +670,34 @@ static void Task_HearthMainMenuInput(u8 taskId)
 
 static void HearthMainMenu_HandleButtonPressA(void)
 {
+    switch (sHearthMainMenuState->activeButton)
+{
+    case HMM_BUTTON_INFOBOX:
+        HearthMainMenu_ExitOnSelect(CB2_ContinueSavedGame);
+        break;
+
+    case HMM_BUTTON_NEWGAME:
+        HearthMainMenu_ExitOnSelect(CB2_OpenPrologueScreen);
+        break;
+
+    case HMM_BUTTON_OPTIONS:
+        gMain.savedCallback = CB2_InitMainMenuHearthFromOptionsMenu;
+        HearthMainMenu_ExitOnSelect(CB2_InitOptionMenu);
+        break;
+
+    default:
+        PlaySE(SE_FAILURE);
+        break;
+}
+}
+
+static void HearthMainMenu_ExitOnSelect(MainCallback callback)
+{
     u8 taskId = FindTaskIdByFunc(Task_HearthMainMenuInput);
-    switch(sHearthMainMenuState->activeButton)
-    {
-        case HMM_BUTTON_INFOBOX:
-            PlaySE(SE_PC_ON);
-            HearthMainMenu_StartFade(RGB_BLACK);
-            sHearthMainMenuState->savedCallback = CB2_ContinueSavedGame;
-            gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
-            break;
-        case HMM_BUTTON_NEWGAME:
-            PlaySE(SE_PC_ON);
-            HearthMainMenu_StartFade(RGB_BLACK);
-            sHearthMainMenuState->savedCallback = CB2_OpenPrologueScreen;
-            gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
-            break;
-        case HMM_BUTTON_OPTIONS:
-            PlaySE(SE_PC_ON);
-            HearthMainMenu_StartFade(RGB_BLACK);
-            sHearthMainMenuState->savedCallback = CB2_InitOptionMenu;
-            gMain.savedCallback = CB2_InitMainMenuHearthFromOptionsMenu;
-            gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
-        default:
-            PlaySE(SE_FAILURE);
-            break;
-    }
+    PlaySE(SE_PC_ON);
+    HearthMainMenu_StartFade(RGB_BLACK);
+    sHearthMainMenuState->savedCallback = callback;
+    gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
 }
 
 static void CB2_OpenPrologueScreen(void)
