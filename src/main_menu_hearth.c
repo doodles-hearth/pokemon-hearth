@@ -1,4 +1,5 @@
 #include "global.h"
+#include "assertf.h"
 #include "bg.h"
 #include "constants/characters.h"
 #include "constants/event_object_movement.h"
@@ -111,6 +112,7 @@ struct HearthMainMenuState {
 static EWRAM_DATA struct HearthMainMenuState* sHearthMainMenuState = NULL;
 static EWRAM_DATA u8* sBg1TilemapBuffer = NULL;
 static EWRAM_DATA u8* sBg2TilemapBuffer = NULL;
+static EWRAM_DATA u16* sTempPaletteBuffer = NULL;
 
 static const struct BgTemplate sHearthMainMenuBgTemplates[] = {
     {.bg = 0, .charBaseIndex = 0, .mapBaseIndex = 30, .priority = 1},
@@ -350,6 +352,14 @@ static void HearthMainMenu_SetupCB(void)
                 sHearthMainMenuState->activeButton = HMM_BUTTON_NEWGAME;
             }
             SetActiveButton(sHearthMainMenuState->activeButton);
+            sTempPaletteBuffer = AllocZeroed(sizeof(gPlttBufferFaded));
+            if (sTempPaletteBuffer == NULL) {
+                errorf("Alloc failed");
+            }
+            else {
+                CpuFastCopy(gPlttBufferUnfaded, sTempPaletteBuffer, sizeof(gPlttBufferUnfaded));
+                CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, sizeof(gPlttBufferFaded));
+            }
             BeginNormalPaletteFade(PALETTES_ALL, 1, 16, 0, RGB_BLACK);
             gMain.state++;
             break;
@@ -648,11 +658,8 @@ static void HearthMainMenu_VBlankCB(void)
 static void Task_HearthMainMenuWaitFadeIn(u8 taskId)
 {
     if (!gPaletteFade.active) {
-        if (sHearthMainMenuState->activeButton != HMM_BUTTON_INFOBOX) {
-            HearthMainMenu_DarkenBadges();
-            HearthMainMenu_DarkenPartyIcons();
-            HearthMainMenu_DarkenPlayerIcon();
-        }
+        CpuFastCopy(sTempPaletteBuffer, gPlttBufferUnfaded, sizeof(gPlttBufferUnfaded));
+        Free(sTempPaletteBuffer);
         gTasks[taskId].func = Task_HearthMainMenuInput;
     }
 }
