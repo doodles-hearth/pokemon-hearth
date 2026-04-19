@@ -36,6 +36,7 @@
 #include "pokemon_icon.h"
 #include "prologue_screen.h"
 #include "random.h"
+#include "save.h"
 #include "scanline_effect.h"
 #include "sound.h"
 #include "sprite.h"
@@ -51,7 +52,7 @@
 #define HMM_BUTTON_SPRITE_COUNT 3
 #define MON_ICON_PAL_COUNT 6
 
-enum WindowIds { WIN_HMM_BG, WIN_HMM_LABEL };
+enum WindowIds { WIN_HMM_BG, WIN_HMM_LABEL, WIN_HMM_NO_SAVE };
 
 enum {
     HMM_PALTAG_BUTTON = 0x1000,
@@ -90,8 +91,14 @@ enum HmmDirs {
     HMM_DIR_DOWN,
 };
 
+enum HmmMenuType {
+    HMM_HAS_SAVE,
+    HMM_NO_SAVE,
+};
+
 struct HearthMainMenuState {
     MainCallback savedCallback;
+    enum HmmMenuType menuType;
     u8 loadState;
     u8 partyIconId[PARTY_SIZE];
     u8 playerSpriteId;
@@ -116,6 +123,8 @@ static const struct WindowTemplate sHearthMainMenuWindowTemplates[] = {
 
     [WIN_HMM_LABEL] =
         {.bg = 0, .tilemapLeft = 22, .tilemapTop = 1, .width = 6, .height = 2, .paletteNum = 15, .baseBlock = 1 + 78},
+    [WIN_HMM_NO_SAVE] =
+        {.bg = 0, .tilemapLeft = 4, .tilemapTop = 5, .width = 22, .height = 3, .paletteNum = 15, .baseBlock = 93},
     DUMMY_WIN_TEMPLATE};
 
 static const u32 HearthMainMenuBgTiles[] = INCBIN_U32("graphics/main_menu_hearth/main_bg/tiles.4bpp.smol");
@@ -170,6 +179,7 @@ static void HearthMainMenu_InitWindows(void);
 static void HearthMainMenu_StartFade(u32 color);
 static void HearthMainMenu_FadeAndBail(void);
 static void HearthMainMenu_FreeResources(void);
+static enum HmmMenuType HearthMainMenu_GetMenuType(void);
 
 static void HearthMainMenu_PrintUiWindowText(void);
 static void HearthMainMenu_FormatSavegameTime(void);
@@ -296,23 +306,31 @@ static void HearthMainMenu_SetupCB(void)
             gMain.state++;
             break;
         case 5:
-            HearthMainMenu_CreatePlayerIcon(16, 12);
+            if (HearthMainMenu_GetMenuType() == HMM_HAS_SAVE) {
+                HearthMainMenu_CreatePlayerIcon(16, 12);
+            }
             gMain.state++;
             break;
         case 6:
-            FreeMonIconPalettes();
-            LoadMonIconPalettes();
-            HearthMainMenu_DrawPartyIcons();
+            if (HearthMainMenu_GetMenuType() == HMM_HAS_SAVE) {
+                FreeMonIconPalettes();
+                LoadMonIconPalettes();
+                HearthMainMenu_DrawPartyIcons();
+            }
             CreateTask(Task_HearthMainMenuWaitFadeIn, 0);
             gMain.state++;
             break;
         case 7:
             HearthMainMenu_CreateAllMenuButtons();
-            HearthMainMenu_CreateAllBadges(96,20);
+            if (HearthMainMenu_GetMenuType() == HMM_HAS_SAVE)
+                HearthMainMenu_CreateAllBadges(96,20);
             gMain.state++;
             break;
         case 8:
             HearthMainMenu_PrintButtonLabels();
+            if (HearthMainMenu_GetMenuType() == HMM_NO_SAVE && sHearthMainMenuState->activeButton == HMM_BUTTON_INFOBOX) {
+                sHearthMainMenuState->activeButton = HMM_BUTTON_NEWGAME;
+            }
             if (sHearthMainMenuState->activeButton == HMM_BUTTON_INFOBOX) {
                 HearthMainMenu_SetInfoboxActive(TRUE);
             }
@@ -329,6 +347,17 @@ static void HearthMainMenu_SetupCB(void)
             SetVBlankCallback(HearthMainMenu_VBlankCB);
             SetMainCallback2(HearthMainMenu_MainCB);
             break;
+    }
+}
+
+
+static enum HmmMenuType HearthMainMenu_GetMenuType(void)
+{
+    switch (gSaveFileStatus) {
+        case SAVE_STATUS_OK:
+            return HMM_HAS_SAVE;
+        default:
+            return HMM_NO_SAVE;
     }
 }
 
@@ -530,7 +559,7 @@ static void MoveSelection(enum HmmDirs direction)
 
     switch (direction) {
         case HMM_DIR_UP:
-            if (cur != HMM_BUTTON_INFOBOX)
+            if (cur != HMM_BUTTON_INFOBOX && HearthMainMenu_GetMenuType() == HMM_HAS_SAVE)
                 SetActiveButton(HMM_BUTTON_INFOBOX);
             break;
 
@@ -738,7 +767,6 @@ static void HearthMainMenu_SetInfoboxActive(bool32 active)
         }
     }
     HearthMainMenu_PrintUiWindowText();
-    /* HearthMainMenu_PrintUiLabelText(); */
 }
 
 static void Task_HearthMainMenuWaitFadeAndBail(u8 taskId)
@@ -837,10 +865,14 @@ static void HearthMainMenu_InitWindows(void)
     FillWindowPixelBuffer(WIN_HMM_LABEL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     PutWindowTilemap(WIN_HMM_LABEL);
     CopyWindowToVram(WIN_HMM_LABEL, 3);
+    FillWindowPixelBuffer(WIN_HMM_NO_SAVE, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+    PutWindowTilemap(WIN_HMM_NO_SAVE);
+    CopyWindowToVram(WIN_HMM_NO_SAVE, 3);
 }
 
 static const u8 sText_PlayerName[] = _("{PLAYER}");
 static const u8 sText_Tokens[] = _("Tokens  {STR_VAR_2}");
+static const u8 sText_NoSaveData[] = _("No Save Data Found");
 static void HearthMainMenu_PrintUiWindowText(void)
 {
     s16 left = 0;
@@ -849,19 +881,26 @@ static void HearthMainMenu_PrintUiWindowText(void)
 
     const u8* color = GetInfoboxFontColor();
 
-    HearthMainMenu_FormatSavegameTime();
-    AddTextPrinterParameterized4(WIN_HMM_BG, FONT_SMALL, left, top, 0, 0, color, TEXT_SKIP_DRAW, gStringVar1);
+    if (HearthMainMenu_GetMenuType() == HMM_HAS_SAVE) {
+        HearthMainMenu_FormatSavegameTime();
+        AddTextPrinterParameterized4(WIN_HMM_BG, FONT_SMALL, left, top, 0, 0, color, TEXT_SKIP_DRAW, gStringVar1);
 
-    StringExpandPlaceholders(gStringVar1, sText_PlayerName);
-    u8 strXName = GetStringCenterAlignXOffset(FONT_SMALL, gStringVar1, GetWinWidth(WIN_HMM_BG) * 8);
-    AddTextPrinterParameterized4(WIN_HMM_BG, FONT_SMALL, strXName, top, 0, 0, color, TEXT_SKIP_DRAW, gStringVar1);
-    u8 strRightAlignTokens = GetStringRightAlignXOffset(FONT_SMALL, sText_Tokens, GetWinWidth(WIN_HMM_BG) * 8);
-    ConvertUIntToDecimalStringN(gStringVar2, GetBadgeCount(), STR_CONV_MODE_LEFT_ALIGN, 1);
-    StringExpandPlaceholders(gStringVar1, sText_Tokens);
-    AddTextPrinterParameterized4(WIN_HMM_BG, FONT_SMALL, strRightAlignTokens, top, 0, 0, color, TEXT_SKIP_DRAW,
-                                 gStringVar1);
+        StringExpandPlaceholders(gStringVar1, sText_PlayerName);
+        u8 strXName = GetStringCenterAlignXOffset(FONT_SMALL, gStringVar1, GetWinWidth(WIN_HMM_BG) * 8);
+        AddTextPrinterParameterized4(WIN_HMM_BG, FONT_SMALL, strXName, top, 0, 0, color, TEXT_SKIP_DRAW, gStringVar1);
+        u8 strRightAlignTokens = GetStringRightAlignXOffset(FONT_SMALL, sText_Tokens, GetWinWidth(WIN_HMM_BG) * 8);
+        ConvertUIntToDecimalStringN(gStringVar2, GetBadgeCount(), STR_CONV_MODE_LEFT_ALIGN, 1);
+        StringExpandPlaceholders(gStringVar1, sText_Tokens);
+        AddTextPrinterParameterized4(WIN_HMM_BG, FONT_SMALL, strRightAlignTokens, top, 0, 0, color, TEXT_SKIP_DRAW,
+                                     gStringVar1);
+        CopyWindowToVram(WIN_HMM_BG, COPYWIN_GFX);
+    }
+    else {
+        u8 strXNoSave = GetStringCenterAlignXOffset(FONT_NORMAL, sText_NoSaveData, GetWinWidth(WIN_HMM_NO_SAVE) * 8);
+        AddTextPrinterParameterized4(WIN_HMM_NO_SAVE, FONT_NORMAL, strXNoSave, 0, 0, 0, color, TEXT_SKIP_DRAW, sText_NoSaveData);
+        CopyWindowToVram(WIN_HMM_NO_SAVE, COPYWIN_GFX);
+    }
 
-    CopyWindowToVram(WIN_HMM_BG, COPYWIN_GFX);
 }
 
 static void HearthMainMenu_FormatSavegameTime(void)
