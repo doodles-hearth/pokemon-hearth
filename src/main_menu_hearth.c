@@ -36,6 +36,7 @@
 #include "pokemon_icon.h"
 #include "prologue_screen.h"
 #include "random.h"
+#include "region_map.h"
 #include "save.h"
 #include "scanline_effect.h"
 #include "sound.h"
@@ -880,7 +881,6 @@ static inline void PrintTextNormal(u8 windowId, u8 x, u8 y, const u8* color, con
     PrintText(windowId, FONT_NORMAL, x, y, color, str);
 }
 
-static const u8 sText_PlayerName[] = _("{PLAYER}");
 static const u8 sText_Tokens[] = _("Tokens  {STR_VAR_2}");
 static const u8 sText_NoSaveData[] = _("No Save Data Found");
 static void HearthMainMenu_PrintContinueInfo(const u8 *color)
@@ -893,9 +893,10 @@ static void HearthMainMenu_PrintContinueInfo(const u8 *color)
     HearthMainMenu_FormatSavegameTime();
     PrintTextSmall(windowId, 0, 0, color, gStringVar1);
 
-    StringExpandPlaceholders(gStringVar1, sText_PlayerName);
-    u8 xName = GetStringCenterAlignXOffset(FONT_SMALL, gStringVar1, widthPx);
-    PrintTextSmall(windowId, xName, 0, color, gStringVar1);
+    GetMapName(gStringVar1, GetCurrentRegionMapSectionId(), 0);
+    u8 fontId = GetFontIdToFit(gStringVar1, FONT_SMALL, 0, widthPx/3);
+    u8 xName = GetStringCenterAlignXOffset(fontId, gStringVar1, widthPx);
+    PrintText(windowId, fontId, xName, 0, color, gStringVar1);
 
     ConvertUIntToDecimalStringN(gStringVar2, GetBadgeCount(), STR_CONV_MODE_LEFT_ALIGN, 1);
     StringExpandPlaceholders(gStringVar1, sText_Tokens);
