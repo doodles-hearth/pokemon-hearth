@@ -951,10 +951,10 @@ static void HearthMainMenu_PrintPlayerName(void)
 static const u8* GetInfoboxFontColor(void)
 {
     if (sHearthMainMenuState->activeButton == HMM_BUTTON_INFOBOX) {
-        return HearthMainMenuWindowFontColors[FONT_WHITE];
+        return HMM_FONT_COLOR(FONT_WHITE);
     }
     else {
-        return HearthMainMenuWindowFontColors[FONT_GRAY];
+        return HMM_FONT_COLOR(FONT_GRAY);
     }
 }
 
