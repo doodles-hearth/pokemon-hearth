@@ -180,6 +180,7 @@ static void HearthMainMenu_StartFade(u32 color);
 static void HearthMainMenu_FadeAndBail(void);
 static void HearthMainMenu_FreeResources(void);
 static enum HmmMenuType HearthMainMenu_GetMenuType(void);
+static bool32 IsContinueMenu(void);
 
 static void HearthMainMenu_PrintUiWindowText(void);
 static void HearthMainMenu_FormatSavegameTime(void);
@@ -236,8 +237,14 @@ static void HearthMainMenu_Init(MainCallback callback, enum HmmButtonIds activeB
     sHearthMainMenuState->loadState = 0;
     sHearthMainMenuState->savedCallback = callback;
     sHearthMainMenuState->activeButton = activeButton;
+    sHearthMainMenuState->menuType = HearthMainMenu_GetMenuType();
 
     SetMainCallback2(HearthMainMenu_SetupCB);
+}
+
+static bool32 IsContinueMenu(void)
+{
+    return sHearthMainMenuState->menuType == HMM_HAS_SAVE;
 }
 
 static void HearthMainMenu_ResetGpuRegsAndBgs(void)
@@ -306,13 +313,13 @@ static void HearthMainMenu_SetupCB(void)
             gMain.state++;
             break;
         case 5:
-            if (HearthMainMenu_GetMenuType() == HMM_HAS_SAVE) {
+            if (IsContinueMenu()) {
                 HearthMainMenu_CreatePlayerIcon(16, 12);
             }
             gMain.state++;
             break;
         case 6:
-            if (HearthMainMenu_GetMenuType() == HMM_HAS_SAVE) {
+            if (IsContinueMenu()) {
                 FreeMonIconPalettes();
                 LoadMonIconPalettes();
                 HearthMainMenu_DrawPartyIcons();
@@ -322,13 +329,13 @@ static void HearthMainMenu_SetupCB(void)
             break;
         case 7:
             HearthMainMenu_CreateAllMenuButtons();
-            if (HearthMainMenu_GetMenuType() == HMM_HAS_SAVE)
+            if (IsContinueMenu())
                 HearthMainMenu_CreateAllBadges(96,20);
             gMain.state++;
             break;
         case 8:
             HearthMainMenu_PrintButtonLabels();
-            if (HearthMainMenu_GetMenuType() == HMM_NO_SAVE && sHearthMainMenuState->activeButton == HMM_BUTTON_INFOBOX) {
+            if (!IsContinueMenu() && sHearthMainMenuState->activeButton == HMM_BUTTON_INFOBOX) {
                 sHearthMainMenuState->activeButton = HMM_BUTTON_NEWGAME;
             }
             if (sHearthMainMenuState->activeButton == HMM_BUTTON_INFOBOX) {
@@ -559,7 +566,7 @@ static void MoveSelection(enum HmmDirs direction)
 
     switch (direction) {
         case HMM_DIR_UP:
-            if (cur != HMM_BUTTON_INFOBOX && HearthMainMenu_GetMenuType() == HMM_HAS_SAVE)
+            if (cur != HMM_BUTTON_INFOBOX && IsContinueMenu())
                 SetActiveButton(HMM_BUTTON_INFOBOX);
             break;
 
@@ -881,7 +888,7 @@ static void HearthMainMenu_PrintUiWindowText(void)
 
     const u8* color = GetInfoboxFontColor();
 
-    if (HearthMainMenu_GetMenuType() == HMM_HAS_SAVE) {
+    if (IsContinueMenu()) {
         HearthMainMenu_FormatSavegameTime();
         AddTextPrinterParameterized4(WIN_HMM_BG, FONT_SMALL, left, top, 0, 0, color, TEXT_SKIP_DRAW, gStringVar1);
 
