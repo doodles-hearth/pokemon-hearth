@@ -52,7 +52,7 @@
 #define HMM_BUTTON_SPRITE_COUNT 3
 #define MON_ICON_PAL_COUNT 6
 
-enum WindowIds { WIN_HMM_BG, WIN_HMM_LABEL, WIN_HMM_NO_SAVE };
+enum WindowIds { WIN_HMM_BG, WIN_HMM_NO_SAVE = WIN_HMM_BG, WIN_HMM_LABEL };
 
 enum {
     HMM_PALTAG_BUTTON = 0x1000,
@@ -123,8 +123,10 @@ static const struct WindowTemplate sHearthMainMenuWindowTemplates[] = {
 
     [WIN_HMM_LABEL] =
         {.bg = 0, .tilemapLeft = 22, .tilemapTop = 1, .width = 6, .height = 2, .paletteNum = 15, .baseBlock = 1 + 78},
-    [WIN_HMM_NO_SAVE] =
-        {.bg = 0, .tilemapLeft = 4, .tilemapTop = 5, .width = 22, .height = 3, .paletteNum = 15, .baseBlock = 93},
+    DUMMY_WIN_TEMPLATE};
+
+static const struct WindowTemplate sHearthMainMenuErrorWindowTemplate[] = {
+    [0] = {.bg = 0, .tilemapLeft = 4, .tilemapTop = 5, .width = 22, .height = 3, .paletteNum = 15, .baseBlock = 1},
     DUMMY_WIN_TEMPLATE};
 
 static const u32 HearthMainMenuBgTiles[] = INCBIN_U32("graphics/main_menu_hearth/main_bg/tiles.4bpp.smol");
@@ -863,6 +865,9 @@ static bool8 HearthMainMenu_LoadGraphics(void)
 
 static void HearthMainMenu_InitWindows(void)
 {
+    if (!IsContinueMenu())
+        return;
+
     InitWindows(sHearthMainMenuWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
@@ -872,9 +877,6 @@ static void HearthMainMenu_InitWindows(void)
     FillWindowPixelBuffer(WIN_HMM_LABEL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     PutWindowTilemap(WIN_HMM_LABEL);
     CopyWindowToVram(WIN_HMM_LABEL, 3);
-    FillWindowPixelBuffer(WIN_HMM_NO_SAVE, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    PutWindowTilemap(WIN_HMM_NO_SAVE);
-    CopyWindowToVram(WIN_HMM_NO_SAVE, 3);
 }
 
 static const u8 sText_PlayerName[] = _("{PLAYER}");
@@ -903,9 +905,12 @@ static void HearthMainMenu_PrintUiWindowText(void)
         CopyWindowToVram(WIN_HMM_BG, COPYWIN_GFX);
     }
     else {
-        u8 strXNoSave = GetStringCenterAlignXOffset(FONT_NORMAL, sText_NoSaveData, GetWinWidth(WIN_HMM_NO_SAVE) * 8);
+        InitWindows(sHearthMainMenuErrorWindowTemplate);
+        FillWindowPixelBuffer(WIN_HMM_NO_SAVE, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        PutWindowTilemap(WIN_HMM_NO_SAVE);
+        u8 strXNoSave = GetStringCenterAlignXOffset(FONT_NORMAL, sText_NoSaveData, GetWindowAttribute(WIN_HMM_NO_SAVE, WINDOW_WIDTH) * 8);
         AddTextPrinterParameterized4(WIN_HMM_NO_SAVE, FONT_NORMAL, strXNoSave, 0, 0, 0, color, TEXT_SKIP_DRAW, sText_NoSaveData);
-        CopyWindowToVram(WIN_HMM_NO_SAVE, COPYWIN_GFX);
+        CopyWindowToVram(WIN_HMM_NO_SAVE, COPYWIN_FULL);
     }
 
 }
