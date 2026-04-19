@@ -782,7 +782,7 @@ static bool8 HearthMainMenu_InitBgs(void)
         return FALSE;
 
     sBg2TilemapBuffer = AllocZeroed(TILEMAP_BUFFER_SIZE);
-    if (sBg2TilemapBuffer == NULL)
+    if (sBg1TilemapBuffer == NULL)
         return FALSE;
 
     ResetBgsAndClearDma3BusyFlags(0);
@@ -850,12 +850,11 @@ static void HearthMainMenu_InitWindows(void)
     InitWindows(sHearthMainMenuWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
-    FillWindowPixelBuffer(WIN_HMM_BG, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    PutWindowTilemap(WIN_HMM_BG);
-    CopyWindowToVram(WIN_HMM_BG, 3);
-    FillWindowPixelBuffer(WIN_HMM_LABEL, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    PutWindowTilemap(WIN_HMM_LABEL);
-    CopyWindowToVram(WIN_HMM_LABEL, 3);
+    for (u32 i = 0; i <= NELEMS(sHearthMainMenuWindowTemplates); i++) {
+        FillWindowPixelBuffer(i, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
+        PutWindowTilemap(i);
+        CopyWindowToVram(i, 3);
+    }
 }
 
 static const u8 sText_PlayerName[] = _("{PLAYER}");
