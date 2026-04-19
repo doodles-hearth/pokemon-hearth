@@ -717,7 +717,7 @@ static void HearthMainMenu_HandleButtonPressB(void)
 static void HearthMainMenu_ExitOnSelect(MainCallback callback)
 {
     u8 taskId = FindTaskIdByFunc(Task_HearthMainMenuInput);
-    PlaySE(SE_PC_ON);
+    PlaySE(SE_PC_OFF);
     HearthMainMenu_StartFade(RGB_BLACK);
     sHearthMainMenuState->savedCallback = callback;
     gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
