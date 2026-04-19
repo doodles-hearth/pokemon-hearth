@@ -199,6 +199,7 @@ static void HearthMainMenu_DarkenPartyIcons(void);
 static u32 HearthMainMenu_CreateMenuButton(s16 x, s16 y, u32 tileTag, u32 palTag);
 static void HearthMainMenu_CreateAllMenuButtons();
 static void HearthMainMenu_PrintButtonLabels(void);
+static bool32 IsSpriteButton(enum HmmButtonIds buttonId);
 
 static u32 HearthMainMenu_CreateMenuBadge(s16 x, s16 y, u8 number);
 static void HearthMainMenu_CreateAllBadges(s16 x, s16 y);
@@ -340,14 +341,7 @@ static void HearthMainMenu_SetupCB(void)
             if (!IsContinueMenu() && sHearthMainMenuState->activeButton == HMM_BUTTON_INFOBOX) {
                 sHearthMainMenuState->activeButton = HMM_BUTTON_NEWGAME;
             }
-            if (sHearthMainMenuState->activeButton == HMM_BUTTON_INFOBOX) {
-                HearthMainMenu_SetInfoboxActive(TRUE);
-            }
-            else
-            {
-                HearthMainMenu_SetInfoboxActive(FALSE);
-                SetActiveButton(sHearthMainMenuState->activeButton);
-            }
+            SetActiveButton(sHearthMainMenuState->activeButton);
             BeginNormalPaletteFade(PALETTES_ALL, 1, 16, 0, RGB_BLACK);
             gMain.state++;
             break;
@@ -478,12 +472,18 @@ static void SetButtonPalette(u8 buttonId, const u16* pal, u32 palTag)
 
 static void ActivateButton(enum HmmButtonIds buttonId)
 {
+    if (!IsSpriteButton(buttonId))
+        return;
+
     u8 spriteId = sHearthMainMenuState->buttonSpriteId[buttonId];
     SetButtonPalette(spriteId, sMenuButtonActivePal, HMM_PALTAG_ACTIVE_BUTTON);
 }
 
 static void DeactivateButton(enum HmmButtonIds buttonId)
 {
+    if (!IsSpriteButton(buttonId))
+        return;
+
     u8 spriteId = sHearthMainMenuState->buttonSpriteId[buttonId];
     SetButtonPalette(spriteId, sMenuButtonPal, HMM_PALTAG_BUTTON);
 }
@@ -498,20 +498,21 @@ static void SetActiveButton(enum HmmButtonIds buttonId)
     sHearthMainMenuState->prevButton = sHearthMainMenuState->activeButton;
     sHearthMainMenuState->activeButton = buttonId;
 
-    if (sHearthMainMenuState->prevButton == HMM_BUTTON_INFOBOX) {
-        HearthMainMenu_SetInfoboxActive(FALSE);
-    }
-    else if (sHearthMainMenuState->prevButton < HMM_BUTTON_COUNT) {
-        DeactivateButton(sHearthMainMenuState->prevButton);
-    }
+    DeactivateButton(sHearthMainMenuState->prevButton);
 
     if (buttonId == HMM_BUTTON_INFOBOX) {
         HearthMainMenu_SetInfoboxActive(TRUE);
     }
     else {
+        HearthMainMenu_SetInfoboxActive(FALSE);
         ActivateButton(buttonId);
     }
     HearthMainMenu_PrintButtonLabels();
+}
+
+static bool32 IsSpriteButton(enum HmmButtonIds buttonId)
+{
+    return buttonId != HMM_BUTTON_INFOBOX && buttonId < HMM_BUTTON_COUNT;
 }
 
 
