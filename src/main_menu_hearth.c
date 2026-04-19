@@ -398,19 +398,11 @@ static void HearthMainMenu_CreateAllMenuButtons()
 
 static void HearthMainMenu_CreatePlayerIcon(s16 x, s16 y)
 {
-    struct Even_CreateSpriteStruct cs;
-    cs.spriteCompressed = TRUE;
-    cs.sprite = gSaveBlock2Ptr->playerGender == FEMALE ? sPlayerAoGfx : sPlayerAkaGfx;
-    cs.palette = sPlayerAoPal;
-    cs.tileTag = HMM_TILETAG_PLAYER;
-    cs.palTag = HMM_PALTAG_PLAYER;
-    cs.posX = 32 + x;
-    cs.posY = 32 + y;
-    cs.subpriority = 0;
-    cs.spriteShape = SPRITE_SHAPE(64x64);
-    cs.spriteSize = SPRITE_SIZE(64x64);
-    cs.callback = SpriteCallbackDummy;
-    Even_CreateSprite(&cs);
+    const u32* playerSprite = gSaveBlock2Ptr->playerGender == FEMALE ? sPlayerAoGfx : sPlayerAkaGfx;
+    const u16* playerPal = gSaveBlock2Ptr->playerGender == FEMALE ? sPlayerAoPal : sPlayerAkaPal;
+    x+=32;
+    y+=32;
+    Even_CreateSpriteParametrized(playerSprite, HMM_TILETAG_PLAYER, playerPal, HMM_PALTAG_PLAYER, SPRITE_SIZE(64x64), SPRITE_SHAPE(64x64), x, y, 0, SpriteCallbackDummy, TRUE);
 }
 
 static void HearthMainMenu_DarkenPlayerIcon(void)
@@ -427,19 +419,12 @@ static void HearthMainMenu_RestorePlayerIcon(void)
 
 static u32 HearthMainMenu_CreateMenuBadge(s16 x, s16 y, u8 number)
 {
-    struct Even_CreateSpritesheetStruct cs = {0};
-    cs.spriteIndex = number;
-    cs.spriteCompressed = TRUE;
-    cs.sprite = sMenuBadgeGfx;
-    cs.palette = sMenuBadgesPal;
-    cs.tileTag = HMM_TILETAG_BADGE_1 + number;
-    cs.palTag = HMM_PALTAG_BADGES;
-    cs.spriteSize = SPRITE_SIZE(16x16);
-    cs.spriteShape = SPRITE_SHAPE(16x16);
-    cs.posX = x;
-    cs.posY = y;
-    cs.subpriority = 0;
-    return Even_CreateSpriteWithTileIndex(&cs);
+    u8 tileTag = HMM_TILETAG_BADGE_1 + number;
+    u32* badgeSprite = Alloc(GetDecompressedDataSize(sMenuBadgeGfx));
+    DecompressDataWithHeaderWram(sMenuBadgeGfx, badgeSprite);
+    badgeSprite += 32 * number;
+    return Even_CreateSpriteParametrized(badgeSprite, tileTag, sMenuBadgesPal, HMM_PALTAG_BADGES, SPRITE_SIZE(16x16),
+                                         SPRITE_SHAPE(16x16), x, y, 0, SpriteCallbackDummy, FALSE);
 }
 
 static void HearthMainMenu_CreateAllBadges(s16 x, s16 y)
@@ -477,17 +462,8 @@ static u32 GetBadgeCount(void)
 
 static u32 HearthMainMenu_CreateMenuButton(s16 x, s16 y, u32 tileTag, u32 palTag)
 {
-    struct Even_CreateSpriteStruct createStruct = {0};
-    createStruct.sprite = sMenuButtonGfx;
-    createStruct.palette = sMenuButtonPal;
-    createStruct.tileTag = tileTag;
-    createStruct.palTag = HMM_PALTAG_BUTTON;
-    createStruct.spriteSize = SPRITE_SIZE(64x32);
-    createStruct.spriteShape = SPRITE_SHAPE(64x32);
-    createStruct.posX = x;
-    createStruct.posY = y;
-    createStruct.subpriority = 0;
-    return Even_CreateCompressedSprite(&createStruct);
+    return Even_CreateSpriteParametrized(sMenuButtonGfx, tileTag, sMenuButtonPal, palTag, SPRITE_SIZE(64x32),
+                                         SPRITE_SHAPE(64x32), x, y, 0, SpriteCallbackDummy, TRUE);
 }
 
 static void SetButtonPalette(u8 buttonId, const u16* pal, u32 palTag)
