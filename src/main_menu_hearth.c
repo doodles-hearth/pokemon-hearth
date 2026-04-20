@@ -450,9 +450,11 @@ static u32 HearthMainMenu_CreateMenuBadge(s16 x, s16 y, u8 number)
     u8 tileTag = HMM_TILETAG_BADGE_1 + number;
     u32* badgeSprite = Alloc(GetDecompressedDataSize(sMenuBadgeGfx));
     DecompressDataWithHeaderWram(sMenuBadgeGfx, badgeSprite);
-    badgeSprite += 32 * number;
-    return Even_CreateSpriteParametrized(badgeSprite, tileTag, sMenuBadgesPal, HMM_PALTAG_BADGES, SPRITE_SIZE(16x16),
+    u32* badgeSrc = badgeSprite + 32 * number;
+    u32 spriteId =  Even_CreateSpriteParametrized(badgeSrc, tileTag, sMenuBadgesPal, HMM_PALTAG_BADGES, SPRITE_SIZE(16x16),
                                          SPRITE_SHAPE(16x16), x, y, 0, SpriteCallbackDummy, FALSE);
+    Free(badgeSprite);
+    return spriteId;
 }
 
 static void HearthMainMenu_CreateAllBadges(s16 x, s16 y)
@@ -874,8 +876,10 @@ static bool8 HearthMainMenu_LoadGraphics(void)
 
 static void HearthMainMenu_InitWindows(void)
 {
-    if (!IsContinueMenu())
+    if (!IsContinueMenu()) {
+        InitWindows(sHearthMainMenuErrorWindowTemplate);
         return;
+    }
 
     InitWindows(sHearthMainMenuWindowTemplates);
     DeactivateAllTextPrinters();
@@ -933,7 +937,6 @@ static void HearthMainMenu_PrintNoSaveInfo(const u8 *color)
 {
     u8 windowId = WIN_HMM_NO_SAVE;
 
-    InitWindows(sHearthMainMenuErrorWindowTemplate);
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     PutWindowTilemap(windowId);
 
