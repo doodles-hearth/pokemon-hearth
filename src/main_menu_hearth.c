@@ -773,7 +773,6 @@ static void HearthMainMenu_SetInfoboxActive(bool32 active)
         }
     }
     HearthMainMenu_PrintInfoboxText();
-    HearthMainMenu_PrintPlayerName();
 }
 
 static void Task_HearthMainMenuWaitFadeAndBail(u8 taskId)
@@ -914,6 +913,8 @@ static void HearthMainMenu_PrintContinueInfo(const u8 *color)
     StringExpandPlaceholders(gStringVar1, sText_Tokens);
     u8 xTokens = GetStringRightAlignXOffset(FONT_SMALL, gStringVar1, widthPx);
     PrintTextSmall(windowId, xTokens, 0, color, gStringVar1);
+
+    HearthMainMenu_PrintPlayerName();
 
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
