@@ -182,6 +182,7 @@ static void Task_HearthMainMenuWaitFadeAndExitGracefully(u8 taskId);
 static void Task_HearthMainMenuScrollBg(u8 taskId);
 
 // Helper Functions
+static inline void HearthMainMenu_ResetForInit(void);
 static void HearthMainMenu_Init(MainCallback callback, enum HmmButtonIds activeButton);
 static void HearthMainMenu_ResetGpuRegsAndBgs(void);
 static bool8 HearthMainMenu_InitBgs(void);
@@ -191,6 +192,7 @@ static void HearthMainMenu_StartFade(u32 color);
 static void HearthMainMenu_FadeAndBail(void);
 static void HearthMainMenu_FreeResources(void);
 static enum HmmMenuType HearthMainMenu_GetMenuType(void);
+static void HearthMainMenu_DrawContinueMenuItems(void);
 static bool32 IsContinueMenu(void);
 
 static void HearthMainMenu_PrintInfoboxText(void);
@@ -300,24 +302,26 @@ static void HearthMainMenu_ResetGpuRegsAndBgs(void)
     CpuFill32(0, (void*)OAM, OAM_SIZE);
 }
 
+static inline void HearthMainMenu_ResetForInit(void)
+{
+    HearthMainMenu_ResetGpuRegsAndBgs();
+    SetVBlankHBlankCallbacksToNull();
+    ClearScheduledBgCopiesToVram();
+    ScanlineEffect_Stop();
+    FreeAllSpritePalettes();
+    ResetPaletteFade();
+    ResetSpriteData();
+    ResetTasks();
+}
+
 static void HearthMainMenu_SetupCB(void)
 {
     switch (gMain.state) {
         case 0:
-            HearthMainMenu_ResetGpuRegsAndBgs();
-            SetVBlankHBlankCallbacksToNull();
-            ClearScheduledBgCopiesToVram();
+            HearthMainMenu_ResetForInit();
             gMain.state++;
             break;
         case 1:
-            ScanlineEffect_Stop();
-            FreeAllSpritePalettes();
-            ResetPaletteFade();
-            ResetSpriteData();
-            ResetTasks();
-            gMain.state++;
-            break;
-        case 2:
             if (HearthMainMenu_InitBgs()) {
                 sHearthMainMenuState->loadState = 0;
                 gMain.state++;
@@ -327,42 +331,32 @@ static void HearthMainMenu_SetupCB(void)
                 return;
             }
             break;
-        case 3:
+        case 2:
             if (HearthMainMenu_LoadGraphics() == TRUE) {
                 gMain.state++;
             }
             break;
-        case 4:
+        case 3:
             HearthMainMenu_InitWindows();
             gMain.state++;
             break;
+        case 4:
+            HearthMainMenu_DrawContinueMenuItems();
+            gMain.state++;
+            break;
         case 5:
-            if (IsContinueMenu()) {
-                HearthMainMenu_CreatePlayerIcon(16, 12);
-            }
+            HearthMainMenu_CreateAllMenuButtons();
             gMain.state++;
             break;
         case 6:
-            if (IsContinueMenu()) {
-                FreeMonIconPalettes();
-                LoadMonIconPalettes();
-                HearthMainMenu_DrawPartyIcons();
-            }
-            CreateTask(Task_HearthMainMenuWaitFadeIn, 0);
-            gMain.state++;
-            break;
-        case 7:
-            HearthMainMenu_CreateAllMenuButtons();
-            if (IsContinueMenu())
-                HearthMainMenu_CreateAllBadges(96,20);
-            gMain.state++;
-            break;
-        case 8:
             HearthMainMenu_PrintButtonLabels();
             if (!IsContinueMenu() && sHearthMainMenuState->activeButton == HMM_BUTTON_INFOBOX) {
                 sHearthMainMenuState->activeButton = HMM_BUTTON_NEWGAME;
             }
             SetActiveButton(sHearthMainMenuState->activeButton);
+            gMain.state++;
+            break;
+        case 7:
             sTempPaletteBuffer = AllocZeroed(sizeof(gPlttBufferFaded));
             if (sTempPaletteBuffer == NULL) {
                 errorf("Alloc failed");
@@ -372,9 +366,10 @@ static void HearthMainMenu_SetupCB(void)
                 CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, sizeof(gPlttBufferFaded));
             }
             BeginNormalPaletteFade(PALETTES_ALL, 1, 16, 0, RGB_BLACK);
+            CreateTask(Task_HearthMainMenuWaitFadeIn, 0);
             gMain.state++;
             break;
-        case 9:
+        case 8:
             CreateTask(Task_HearthMainMenuScrollBg, 0);
             SetVBlankCallback(HearthMainMenu_VBlankCB);
             SetMainCallback2(HearthMainMenu_MainCB);
@@ -404,6 +399,17 @@ static void Task_HearthMainMenuScrollBg(u8 taskId)
 
     if (pixels != 0)
         ChangeBgX(2, pixels << 8, 1);
+}
+
+static void HearthMainMenu_DrawContinueMenuItems(void)
+{
+    if (!IsContinueMenu())
+        return;
+    HearthMainMenu_CreatePlayerIcon(16, 12);
+    FreeMonIconPalettes();
+    LoadMonIconPalettes();
+    HearthMainMenu_DrawPartyIcons();
+    HearthMainMenu_CreateAllBadges(96, 20);
 }
 
 static void HearthMainMenu_CreateAllMenuButtons()
