@@ -54,7 +54,11 @@
 #define HMM_BUTTON_SPRITE_COUNT 3
 #define MON_ICON_PAL_COUNT 6
 
-enum WindowIds { WIN_HMM_BG, WIN_HMM_NO_SAVE = WIN_HMM_BG, WIN_HMM_NAME };
+enum {
+    WIN_HMM_BG = 0,
+    WIN_HMM_NO_SAVE = 0,
+    WIN_HMM_NAME
+};
 
 enum {
     HMM_PALTAG_BUTTON = 0x1000,
@@ -228,8 +232,15 @@ static void HearthMainMenu_HandleButtonPressA(void);
 static void HearthMainMenu_HandleButtonPressB(void);
 static void HearthMainMenu_ExitOnSelect(MainCallback callback);
 
-void CB2_InitMainMenuHearth(void) { HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_INFOBOX); }
-static void CB2_InitMainMenuHearthFromOptionsMenu(void) { HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_OPTIONS); }
+void CB2_InitMainMenuHearth(void)
+{
+    HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_INFOBOX);
+}
+
+static void CB2_InitMainMenuHearthFromOptionsMenu(void)
+{
+    HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_OPTIONS);
+}
 
 void Task_OpenHearthMainMenu(u8 taskId)
 {
