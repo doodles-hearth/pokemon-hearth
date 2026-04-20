@@ -172,7 +172,6 @@ static const u8 HearthMainMenuWindowFontColors[][3] = {
 static void HearthMainMenu_SetupCB(void);
 static void HearthMainMenu_MainCB(void);
 static void HearthMainMenu_VBlankCB(void);
-static void CB2_OpenPrologueScreen(void);
 
 // Tasks
 static void Task_HearthMainMenuWaitFadeIn(u8 taskId);
@@ -721,7 +720,7 @@ static void HearthMainMenu_HandleButtonPressA(void)
             break;
 
         case HMM_BUTTON_NEWGAME:
-            HearthMainMenu_ExitOnSelect(CB2_OpenPrologueScreen);
+            HearthMainMenu_ExitOnSelect(CB2_InitPrologueScreen);
             break;
 
         case HMM_BUTTON_OPTIONS:
@@ -750,12 +749,6 @@ static void HearthMainMenu_ExitOnSelect(MainCallback callback)
     HearthMainMenu_StartFade(RGB_BLACK);
     sHearthMainMenuState->savedCallback = callback;
     gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
-}
-
-static void CB2_OpenPrologueScreen(void)
-{
-    CreateTask(Task_OpenPrologueScreen, 0);
-    SetMainCallback2(CB2_KabaSpeech);
 }
 
 static void HearthMainMenu_SetInfoboxActive(bool32 active)
