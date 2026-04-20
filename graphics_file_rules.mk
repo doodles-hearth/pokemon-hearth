@@ -274,6 +274,10 @@ $(FONTGFXDIR)/frlg_female.fwjpnfont: $(FONTGFXDIR)/japanese_frlg_female.png
 	$(GFX) $< $@
 
 
+### Live Font ###
+$(FONTGFXDIR)/live_font.latfont: $(FONTGFXDIR)/live_font.png
+	$(GFX) $< $@
+
 ### Miscellaneous ###
 
 # Hearth title screen #

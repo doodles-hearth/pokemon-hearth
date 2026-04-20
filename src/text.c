@@ -52,6 +52,13 @@ static u32 GetGlyphWidth_Narrower(u16, bool32);
 static u32 GetGlyphWidth_SmallNarrower(u16, bool32);
 static u32 GetGlyphWidth_ShortNarrow(u16, bool32);
 static u32 GetGlyphWidth_ShortNarrower(u16, bool32);
+
+//New font
+
+static u16 FontFunc_Live(struct TextPrinter *);
+static void DecompressGlyph_Live(u16, bool32);
+static u32 GetGlyphWidth_Live(u16, bool32);
+
 static struct TextPrinter *AllocateTextPrinter(void);
 static u32 GetNumTextPrinters(void);
 static void FreeFinishedTextPrinters(void);
@@ -88,6 +95,7 @@ static const struct GlyphWidthFunc sGlyphWidthFuncs[] =
     { FONT_SMALL_NARROWER, GetGlyphWidth_SmallNarrower },
     { FONT_SHORT_NARROW,   GetGlyphWidth_ShortNarrow },
     { FONT_SHORT_NARROWER, GetGlyphWidth_ShortNarrower },
+    { FONT_LIVE, GetGlyphWidth_Live },
 };
 
 struct
@@ -270,6 +278,16 @@ static const struct FontInfo sFontInfos[] =
         .color.accent = 1,
         .color.shadow = 3,
     },
+    [FONT_LIVE] = {
+        .fontFunction = FontFunc_Live,
+        .maxLetterWidth = 8,
+        .maxLetterHeight = 8,
+        .letterSpacing = 0,
+        .lineSpacing = 0,
+        .fgColor = 15,
+        .bgColor = 0,
+        .shadowColor = 10,
+    },
 };
 
 static const u8 sMenuCursorDimensions[][2] =
@@ -288,6 +306,7 @@ static const u8 sMenuCursorDimensions[][2] =
     [FONT_SMALL_NARROWER] = { 8,   8 },
     [FONT_SHORT_NARROW]   = { 8,  14 },
     [FONT_SHORT_NARROWER] = { 8,  14 },
+    [FONT_LIVE] = { 8,  7 },
 };
 
 // these three arrays are most for readability, ie instead of returning a magic number 8
@@ -1160,6 +1179,16 @@ static u16 FontFunc_ShortNarrower(struct TextPrinter *textPrinter)
     return RenderText(textPrinter);
 }
 
+static u16 FontFunc_Live(struct TextPrinter *textPrinter)
+{
+    if (textPrinter->hasFontIdBeenSet == FALSE)
+    {
+        textPrinter->fontId = FONT_LIVE;
+        textPrinter->hasFontIdBeenSet = TRUE;
+    }
+    return RenderText(textPrinter);
+}
+
 void TextPrinterInitDownArrowCounters(struct TextPrinter *textPrinter)
 {
     if (gTextFlags.autoScroll == 1)
@@ -1628,6 +1657,9 @@ static u16 RenderText(struct TextPrinter *textPrinter)
             DecompressGlyph_ShortNarrower(currChar, textPrinter->japanese);
             break;
         case FONT_BRAILLE:
+            break;
+        case FONT_LIVE:
+            DecompressGlyph_Live(currChar, textPrinter->japanese);
             break;
         }
 
@@ -2616,6 +2648,51 @@ static u32 GetGlyphWidth_ShortNarrower(u16 glyphId, bool32 isJapanese)
     else
         return gFontShortNarrowerLatinGlyphWidths[glyphId];
 }
+
+static void DecompressGlyph_Live(u16 glyphId, bool32 isJapanese)
+{
+    const u16 *glyphs;
+
+    if (isJapanese == TRUE)
+    {
+        glyphs = gFontShortJapaneseGlyphs + (0x100 * (glyphId >> 0x3)) + (0x10 * (glyphId & 0x7));
+        DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
+        DecompressGlyphTile(glyphs + 0x8, gCurGlyph.gfxBufferTop + 8);
+        DecompressGlyphTile(glyphs + 0x80, gCurGlyph.gfxBufferBottom);    // gCurGlyph + 0x20
+        DecompressGlyphTile(glyphs + 0x88, gCurGlyph.gfxBufferBottom + 8);    // gCurGlyph + 0x60
+        gCurGlyph.width = gFontShortJapaneseGlyphWidths[glyphId];
+        gCurGlyph.height = 15;
+    }
+    else
+    {
+        glyphs = gFontLiveGlyphs + (0x20 * glyphId);
+        gCurGlyph.width = gFontLiveGlyphWidths[glyphId];
+
+        if (gCurGlyph.width <= 8)
+        {
+            DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
+            DecompressGlyphTile(glyphs + 0x10, gCurGlyph.gfxBufferBottom);
+        }
+        else
+        {
+            DecompressGlyphTile(glyphs, gCurGlyph.gfxBufferTop);
+            DecompressGlyphTile(glyphs + 0x8, gCurGlyph.gfxBufferTop + 8);
+            DecompressGlyphTile(glyphs + 0x10, gCurGlyph.gfxBufferBottom);
+            DecompressGlyphTile(glyphs + 0x18, gCurGlyph.gfxBufferBottom + 8);
+        }
+
+        gCurGlyph.height = 8;
+    }
+}
+
+static u32 GetGlyphWidth_Live(u16 glyphId, bool32 isJapanese)
+{
+    if (isJapanese == TRUE)
+        return gFontShortJapaneseGlyphWidths[glyphId];
+    else
+        return gFontLiveGlyphWidths[glyphId];
+}
+
 
 static const s8 sNarrowerFontIds[] =
 {

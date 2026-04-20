@@ -159,7 +159,7 @@ struct __attribute__((packed, aligned(4))) ObjectEventTemplate
     };
     /*0x10*/ const u8 *script;
     /*0x14*/ u16 flagId;
-    /*0x16*/ u16 filler;
+    /*0x16*/ u16 liveEvent;
 }; // size = 0x18
 
 struct WarpEvent

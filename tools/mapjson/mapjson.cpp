@@ -275,7 +275,11 @@ string generate_map_events_text(Json map_data) {
                      << json_to_string(obj_event, "evening", false, true) << ", "
                      << json_to_string(obj_event, "lunchtime", false, true) << ", "
                      << json_to_string(obj_event, "morning", false, true) << ", "
-                     << json_to_string(obj_event, "night", false, true) << "\n";
+                     << json_to_string(obj_event, "night", false, true);
+               if (json_to_string(obj_event, "live_event", true).empty())
+                  text << "\n";
+               else
+                   text << ", " << json_to_string(obj_event, "live_event") << "\n";
             } else if (type == "clone") {
                 text << "\tclone_event " << i + 1 << ", "
                      << json_to_string(obj_event, "graphics_id") << ", "

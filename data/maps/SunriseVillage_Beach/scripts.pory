@@ -387,3 +387,8 @@ movement SunriseVillage_Beach_Movement_RivalRaces {
 	walk_fast_right * 9
 	step_end
 }
+
+script WC_WoobatFlee {
+	playmoncry(SPECIES_WOOBAT, CRY_MODE_NORMAL)
+	applymovement(LOCALID_FLEEING_WOOBAT, moves(walk_down * 6))
+}

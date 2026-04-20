@@ -29,6 +29,7 @@ enum {
     FONT_SMALL_NARROWER,
     FONT_SHORT_NARROW,
     FONT_SHORT_NARROWER,
+    FONT_LIVE, //  Font for live event speech bubbles, 7px tall glyphs, not full coverage
 };
 
 #define FONT_MALE FONT_NORMAL
