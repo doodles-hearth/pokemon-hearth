@@ -946,7 +946,7 @@ static const struct PickupItem sPickupTable[] =
 bool32 ProteanTryChangeType(enum BattlerId battler, enum Ability ability, enum Move move, enum Type moveType)
 {
       if ((ability == ABILITY_PROTEAN || ability == ABILITY_LIBERO)
-         && !gBattleMons[gBattlerAttacker].volatiles.usedProteanLibero
+         && !gBattleMons[battler].volatiles.usedProteanLibero
          && !gBattleStruct->bouncedMoveIsUsed
          && (gBattleMons[battler].types[0] != moveType || gBattleMons[battler].types[1] != moveType
              || (gBattleMons[battler].types[2] != moveType && gBattleMons[battler].types[2] != TYPE_MYSTERY))
@@ -2862,6 +2862,7 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
         break;
     case MOVE_EFFECT_CORE_ENFORCER:
         if (HasBattlerActedThisTurn(effectBattler)
+         && gBattleStruct->battlerState[effectBattler].isFirstTurn != 2
          && !NoAliveMonsForEitherParty())
         {
             BattleScriptPush(battleScript);
@@ -7933,7 +7934,7 @@ static u32 ChangeStatBuffs(enum BattlerId battler, s8 statValue, enum Stat statI
     if (gBattleMons[battler].statStages[statId] > MAX_STAT_STAGE)
         gBattleMons[battler].statStages[statId] = MAX_STAT_STAGE;
 
-    if (ShouldDefiantCompetitiveActivate(battler, battlerAbility))
+    if (statValue <= -1 && ShouldDefiantCompetitiveActivate(battler, battlerAbility))
         stats = 0; // use single stat animations when Defiant/Competitive activate
     else
         stats &= ~(1u << statId);
@@ -13585,15 +13586,6 @@ void BS_UpdateNick(void)
     enum BattlerId battler = gBattleScripting.battler;
     UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], GetBattlerMon(battler), HEALTHBOX_NICK);
     gBattlescriptCurrInstr = cmd->nextInstr;
-}
-
-void BS_JumpIfNotBerry(void)
-{
-    NATIVE_ARGS(u8 battler, const u8 *jumpInstr);
-    if (GetItemPocket(gBattleMons[GetBattlerForBattleScript(cmd->battler)].item) == POCKET_BERRIES)
-        gBattlescriptCurrInstr = cmd->nextInstr;
-    else
-        gBattlescriptCurrInstr = cmd->jumpInstr;
 }
 
 void BS_GravityOnAirborneMons(void)

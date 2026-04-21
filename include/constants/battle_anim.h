@@ -609,9 +609,10 @@ enum AnimBattler
 #define B_ANIM_EXPLOSION                62
 #define B_ANIM_FORM_CHANGE_INSTANT      63
 #define B_ANIM_FORM_CHANGE_DISGUISE     64
-#define B_ANIM_FALLING_LEAVES           65
-#define B_ANIM_DECAY                    66
-#define NUM_B_ANIMS_GENERAL             67
+#define B_ANIM_HELD_ITEM_BERRY          65
+#define B_ANIM_FALLING_LEAVES           66
+#define B_ANIM_DECAY                    67
+#define NUM_B_ANIMS_GENERAL             68
 
 // special animations table (sBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

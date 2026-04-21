@@ -416,5 +416,8 @@ enum BattlerId GetTargetBySlot(enum BattlerId battlerAtk, enum BattlerId battler
 bool32 IsNaturalEnemy(enum Species speciesAttacker, enum Species speciesTarget);
 enum Stat GetDownloadStat(enum BattlerId battler);
 bool32 IsRuinAbility(enum Ability ability);
+bool32 BattlerJustSwitchedIn(enum BattlerId battler);
+bool32 IsBattlersFirstTurn(enum BattlerId battler);
+struct PartyState *GetBattlerPartyState(enum BattlerId battler);
 
 #endif // GUARD_BATTLE_UTIL_H
