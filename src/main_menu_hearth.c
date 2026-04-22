@@ -6,6 +6,7 @@
 #include "constants/event_objects.h"
 #include "constants/flags.h"
 #include "constants/global.h"
+#include "constants/pokedex.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/species.h"
@@ -962,7 +963,7 @@ static inline void PrintTextNormal(u8 windowId, u8 x, u8 y, const u8* color, con
     PrintText(windowId, FONT_NORMAL, x, y, color, str);
 }
 
-static const u8 sText_Tokens[] = _("Tokens  {STR_VAR_2}");
+static const u8 sText_DexCount[] = _("Dex  {STR_VAR_2}");
 static const u8 sText_NoSaveData[] = _("No Save Data Found");
 static void HearthMainMenu_PrintContinueInfo(const u8 *color)
 {
@@ -979,8 +980,8 @@ static void HearthMainMenu_PrintContinueInfo(const u8 *color)
     u8 xName = GetStringCenterAlignXOffset(fontId, gStringVar1, widthPx);
     PrintText(windowId, fontId, xName, 0, color, gStringVar1);
 
-    ConvertUIntToDecimalStringN(gStringVar2, GetBadgeCount(), STR_CONV_MODE_LEFT_ALIGN, 1);
-    StringExpandPlaceholders(gStringVar1, sText_Tokens);
+    ConvertUIntToDecimalStringN(gStringVar2, GetRegionalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 1);
+    StringExpandPlaceholders(gStringVar1, sText_DexCount);
     u8 xTokens = GetStringRightAlignXOffset(FONT_SMALL, gStringVar1, widthPx);
     PrintTextSmall(windowId, xTokens, 0, color, gStringVar1);
 
