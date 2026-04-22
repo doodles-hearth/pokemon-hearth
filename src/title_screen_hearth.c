@@ -3,6 +3,8 @@
 #include "config/quickstart.h"
 #include "gba/io_reg.h"
 #include "main_menu_hearth.h"
+#include "rtc.h"
+#include "save.h"
 #include "sprite.h"
 #include "gba/m4a_internal.h"
 #include "clear_save_data_menu.h"
@@ -628,8 +630,20 @@ static void Task_HearthTitleScreenPhase3(u8 taskId)
 
 static void CB2_GoToMainMenu(void)
 {
+    MainCallback cb;
+
+    bool8 isBatteryOk = !(RtcGetErrorStatus() & RTC_ERR_FLAG_MASK);
+
+    if ((gSaveFileStatus == SAVE_STATUS_OK ||
+         gSaveFileStatus == SAVE_STATUS_EMPTY) &&
+        isBatteryOk) {
+        cb = CB2_InitMainMenuHearth;
+    }
+    else {
+        cb = CB2_InitPrecheckScreen;
+    }
     if (!UpdatePaletteFade())
-        SetMainCallback2(CB2_InitMainMenuHearth);
+        SetMainCallback2(cb);
 }
 
 static void CB2_GoToCopyrightScreen(void)

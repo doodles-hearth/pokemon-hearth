@@ -379,6 +379,7 @@ static enum HmmMenuType HearthMainMenu_GetMenuType(void)
 {
     switch (gSaveFileStatus) {
         case SAVE_STATUS_OK:
+        case SAVE_STATUS_ERROR:
             return HMM_HAS_SAVE;
         default:
             return HMM_NO_SAVE;
