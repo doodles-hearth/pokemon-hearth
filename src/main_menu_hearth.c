@@ -404,13 +404,15 @@ static void Task_HearthMainMenuScrollBg(u8 taskId)
 {
     s16* tAccumulator = &gTasks[taskId].data[0];
 
-    *tAccumulator += 8*9;
+    *tAccumulator += 104;
 
     s16 pixels = *tAccumulator >> 8;
     *tAccumulator &= 0xFF;
 
-    if (pixels != 0)
-        ChangeBgX(2, pixels << 8, 1);
+    if (pixels != 0) {
+        ChangeBgX(2, pixels << 8, BG_COORD_ADD);
+        ChangeBgY(2, pixels << 8, BG_COORD_ADD);
+    }
 }
 
 static void Hmm_DrawContinueMenuItems(void)
