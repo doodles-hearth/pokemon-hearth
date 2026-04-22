@@ -1,3 +1,4 @@
+#include "constants/cries.h"
 #ifdef __INTELLISENSE__
 const struct SpeciesInfo gSpeciesInfoGen1[] =
 {
@@ -11002,7 +11003,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .bodyColor = BODY_COLOR_PINK,
         .speciesName = _("Slowbro"),
         .unknownName = _("??????????"),
-        .cryId = CRY_SLOWBRO,
+        .cryId = CRY_SLOWBRO_MEGA,
         .natDexNum = NATIONAL_DEX_SLOWBRO,
         .categoryName = _("Hermit Crab"),
         .height = 20,

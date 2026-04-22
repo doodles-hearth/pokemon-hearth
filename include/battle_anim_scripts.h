@@ -1023,6 +1023,7 @@ extern const u8 gBattleAnimGeneral_SafariRockThrow[];
 extern const u8 gBattleAnimGeneral_SafariReaction[];
 extern const u8 gBattleAnimGeneral_SmokeExplosion[];
 extern const u8 gBattleAnimGeneral_Decay[];
+extern const u8 gBattleAnimGeneral_HeldItemBerry[];
 
 // special animations
 extern const u8 gBattleAnimSpecial_LevelUp[];

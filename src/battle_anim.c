@@ -271,6 +271,7 @@ static const u8* const sBattleAnims_General[NUM_B_ANIMS_GENERAL] =
     [B_ANIM_ROCK_THROW]             = gBattleAnimGeneral_SafariRockThrow,
     [B_ANIM_SAFARI_REACTION]        = gBattleAnimGeneral_SafariReaction,
     [B_ANIM_DECAY]                  = gBattleAnimGeneral_Decay,
+	[B_ANIM_HELD_ITEM_BERRY]        = gBattleAnimGeneral_HeldItemBerry,
 };
 
 static const u8* const sBattleAnims_Special[NUM_B_ANIMS_SPECIAL] =

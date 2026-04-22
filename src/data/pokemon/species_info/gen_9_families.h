@@ -1,3 +1,4 @@
+#include "constants/cries.h"
 #ifdef __INTELLISENSE__
 const struct SpeciesInfo gSpeciesInfoGen9[] =
 {
@@ -4242,7 +4243,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Palafin"),
         .unknownName = _("??????????"),
-        .cryId = CRY_PALAFIN_ZERO,
+        .cryId = CRY_FINIZEN,
         .natDexNum = NATIONAL_DEX_PALAFIN,
         .categoryName = _("Dolphin"),
         .height = 13,
@@ -6760,7 +6761,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Gimmighoul"),
         .unknownName = _("??????????"),
-        .cryId = CRY_GIMMIGHOUL,
+        .cryId = CRY_GIMMIGHOUL_CHEST,
         .natDexNum = NATIONAL_DEX_GIMMIGHOUL,
         .categoryName = _("Coin Chest"),
         .height = 3,
@@ -6826,7 +6827,7 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Gimmighoul"),
         .unknownName = _("??????????"),
-        .cryId = CRY_GIMMIGHOUL,
+        .cryId = CRY_GIMMIGHOUL_ROAMING,
         .natDexNum = NATIONAL_DEX_GIMMIGHOUL,
         .categoryName = _("Coin Hunter"),
         .height = 1,
