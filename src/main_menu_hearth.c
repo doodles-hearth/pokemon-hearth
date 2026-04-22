@@ -55,7 +55,7 @@
 #define HMM_BUTTON_SPRITE_COUNT 3
 #define MON_ICON_PAL_COUNT 6
 
-enum {
+enum HmmBgs {
     WIN_HMM_BG = 0,
     WIN_HMM_NO_SAVE = 0,
     WIN_HMM_NAME
@@ -69,7 +69,7 @@ enum {
     HMM_PALTAG_BADGES2 = 0x1004,
 };
 
-enum Tokens {
+enum HmmTokens {
     BOTTLED_TOKEN,
     CARVED_TOKEN,
     SEWN_TOKEN,
@@ -80,7 +80,7 @@ enum Tokens {
     CHERISHED_TOKEN,
 };
 
-enum {
+enum HmmTileTags {
     HMM_TILETAG_BUTTON1  = 0x2000,
     HMM_TILETAG_BUTTON2  = 0x2001,
     HMM_TILETAG_BUTTON3  = 0x2002,
@@ -126,10 +126,14 @@ struct HearthMainMenuState {
     enum HmmButtonIds prevButton;
 };
 
-static EWRAM_DATA struct HearthMainMenuState* sHearthMainMenuState = NULL;
-static EWRAM_DATA u8* sBg1TilemapBuffer = NULL;
-static EWRAM_DATA u8* sBg2TilemapBuffer = NULL;
-static EWRAM_DATA u16* sTempPaletteBuffer = NULL;
+struct HearthMainMenuMemory {
+    struct HearthMainMenuState state;
+    u8 sBg1TilemapBuffer[2048];
+    u8 sBg2TilemapBuffer[2048];
+    ALIGNED(4) u16 sTempPaletteBuffer[PLTT_BUFFER_SIZE];
+};
+
+static EWRAM_DATA struct HearthMainMenuMemory* sHmmMemory = NULL;
 
 static const struct BgTemplate sHearthMainMenuBgTemplates[] = {
     {.bg = 0, .charBaseIndex = 0, .mapBaseIndex = 30, .priority = 1},
@@ -188,9 +192,9 @@ static const u8 HearthMainMenuWindowFontColors[][3] = {
 #define HMM_FONT_COLOR(_x) HearthMainMenuWindowFontColors[_x]
 
 // Callbacks
-static void HearthMainMenu_SetupCB(void);
-static void HearthMainMenu_MainCB(void);
-static void HearthMainMenu_VBlankCB(void);
+static void Hmm_SetupCB(void);
+static void Hmm_MainCB(void);
+static void Hmm_VBlankCB(void);
 
 // Tasks
 static void Task_HearthMainMenuWaitFadeIn(u8 taskId);
@@ -200,101 +204,93 @@ static void Task_HearthMainMenuWaitFadeAndExitGracefully(u8 taskId);
 static void Task_HearthMainMenuScrollBg(u8 taskId);
 
 // Helper Functions
-static inline void HearthMainMenu_ResetForInit(void);
-static void HearthMainMenu_Init(MainCallback callback, enum HmmButtonIds activeButton);
-static void HearthMainMenu_ResetGpuRegsAndBgs(void);
-static bool8 HearthMainMenu_InitBgs(void);
-static bool8 HearthMainMenu_LoadGraphics(void);
-static void HearthMainMenu_InitWindows(void);
-static void HearthMainMenu_StartFade(u32 color);
-static void HearthMainMenu_FadeAndBail(void);
-static void HearthMainMenu_FreeResources(void);
-static enum HmmMenuType HearthMainMenu_GetMenuType(void);
-static void HearthMainMenu_DrawContinueMenuItems(void);
-static bool32 IsContinueMenu(void);
+static inline void Hmm_ResetForInit(void);
+static void Hmm_Init(MainCallback callback, enum HmmButtonIds activeButton);
+static void Hmm_ResetGpuRegsAndBgs(void);
+static bool8 Hmm_InitBgs(void);
+static bool8 Hmm_LoadGraphics(void);
+static void Hmm_InitWindows(void);
+static void Hmm_StartFade(u32 color);
+static void Hmm_FadeAndBail(void);
+static void Hmm_FreeResources(void);
+static enum HmmMenuType Hmm_GetMenuType(void);
+static void Hmm_DrawContinueMenuItems(void);
+static bool32 Hmm_IsContinueMenu(void);
 
-static void HearthMainMenu_PrintInfoboxText(void);
-static void HearthMainMenu_PrintContinueInfo(const u8 *color);
-static void HearthMainMenu_PrintNoSaveInfo(const u8 *color);
-static void HearthMainMenu_FormatSavegameTime(void);
-static void HearthMainMenu_PrintPlayerName(void);
-static const u8* GetInfoboxFontColor(void);
-static u32 GetWindowWidth(u8 windowId);
-static void PrintText(u8 windowId, u8 font, u8 x, u8 y, const u8 *color, const u8 *str);
-static inline void PrintTextNormal(u8 windowId, u8 x, u8 y, const u8 *color, const u8 *str);
-static inline void PrintTextSmall(u8 windowId, u8 x, u8 y, const u8 *color, const u8 *str);
+static void Hmm_PrintInfoboxText(void);
+static void Hmm_PrintContinueInfo(const u8 *color);
+static void Hmm_PrintNoSaveInfo(const u8 *color);
+static void Hmm_FormatSavegameTime(void);
+static void Hmm_PrintPlayerName(void);
+static const u8* Hmm_GetInfoboxFontColor(void);
+static u32 Hmm_GetWindowWidth(u8 windowId);
+static void Hmm_PrintText(u8 windowId, u8 font, u8 x, u8 y, const u8 *color, const u8 *str);
+static inline void Hmm_PrintTextNormal(u8 windowId, u8 x, u8 y, const u8 *color, const u8 *str);
+static inline void Hmm_PrintTextSmall(u8 windowId, u8 x, u8 y, const u8 *color, const u8 *str);
 
-static void HearthMainMenu_CreatePlayerIcon(s16 x, s16 y);
-static void HearthMainMenu_DarkenPlayerIcon(void);
-static void HearthMainMenu_RestorePlayerIcon(void);
-static void HearthMainMenu_DrawPartyIcons(void);
-static void HearthMainMenu_DarkenPartyIcons(void);
+static void Hmm_CreatePlayerIcon(s16 x, s16 y);
+static void Hmm_DarkenPlayerIcon(void);
+static void Hmm_RestorePlayerIcon(void);
+static void Hmm_DrawPartyIcons(void);
+static void Hmm_DarkenPartyIcons(void);
 
-static u32 HearthMainMenu_CreateMenuButton(s16 x, s16 y, u32 tileTag, u32 palTag);
-static void HearthMainMenu_CreateAllMenuButtons();
-static void HearthMainMenu_PrintButtonLabels(void);
-static bool32 IsSpriteButton(enum HmmButtonIds buttonId);
+static u32 Hmm_CreateMenuButton(s16 x, s16 y, u32 tileTag, u32 palTag);
+static void Hmm_CreateAllMenuButtons();
+static void Hmm_PrintButtonLabels(void);
+static bool32 Hmm_IsSpriteButton(enum HmmButtonIds buttonId);
 
-static u32 HearthMainMenu_CreateMenuBadge(s16 x, s16 y, enum Tokens token);
-static void HearthMainMenu_CreateAllBadges(s16 x, s16 y);
-static void HearthMainMenu_DarkenBadges(void);
-static void HearthMainMenu_RestoreBadges(void);
-static u32 GetBadgeCount(void);
-static u16 GetBadgePalTag(enum Tokens token);
-static const u16* GetBadgePal(enum Tokens token);
-static const u32* GetBadgeGfx(enum Tokens token);
+static u32 Hmm_CreateMenuBadge(s16 x, s16 y, enum HmmTokens token);
+static void Hmm_CreateAllBadges(s16 x, s16 y);
+static void Hmm_DarkenBadges(void);
+static void Hmm_RestoreBadges(void);
+static u32 Hmm_GetTokenCount(void);
+static u16 Hmm_GetBadgePalTag(enum HmmTokens token);
+static const u16* Hmm_GetBadgePal(enum HmmTokens token);
+static const u32* Hmm_GetBadgeGfx(enum HmmTokens token);
 
-static void HearthMainMenu_SetInfoboxActive(bool32 active);
-static void SetButtonPalette(u8 buttonId, const u16* pal, u32 palTag);
-static void ActivateButton(enum HmmButtonIds buttonId);
-static void DeactivateButton(enum HmmButtonIds buttonId);
-static void SetActiveButton(enum HmmButtonIds buttonId);
-static void MoveSelection(enum HmmDirs);
+static void Hmm_SetInfoboxActive(bool32 active);
+static void Hmm_SetButtonPalette(u8 buttonId, const u16* pal, u32 palTag);
+static void Hmm_ActivateButton(enum HmmButtonIds buttonId);
+static void Hmm_DeactivateButton(enum HmmButtonIds buttonId);
+static void Hmm_SetActiveButton(enum HmmButtonIds buttonId);
+static void Hmm_MoveSelection(enum HmmDirs);
 
-static void HearthMainMenu_HandleButtonPressA(void);
-static void HearthMainMenu_HandleButtonPressB(void);
-static void HearthMainMenu_ExitOnSelect(MainCallback callback);
+static void Hmm_HandleButtonPressA(void);
+static void Hmm_HandleButtonPressB(void);
+static void Hmm_ExitOnSelect(MainCallback callback);
 
 void CB2_InitMainMenuHearth(void)
 {
-    HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_INFOBOX);
+    Hmm_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_INFOBOX);
 }
 
 static void CB2_InitMainMenuHearthFromOptionsMenu(void)
 {
-    HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_OPTIONS);
+    Hmm_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_OPTIONS);
 }
 
-void Task_OpenHearthMainMenu(u8 taskId)
+static void Hmm_Init(MainCallback callback, enum HmmButtonIds activeButton)
 {
-    if (!gPaletteFade.active) {
-        HearthMainMenu_Init(CB2_InitHearthTitleScreen, HMM_BUTTON_INFOBOX);
-        DestroyTask(taskId);
-    }
-}
-
-static void HearthMainMenu_Init(MainCallback callback, enum HmmButtonIds activeButton)
-{
-    sHearthMainMenuState = AllocZeroed(sizeof(struct HearthMainMenuState));
-    if (sHearthMainMenuState == NULL) {
+    sHmmMemory = AllocZeroed(sizeof(struct HearthMainMenuMemory));
+    if (sHmmMemory == NULL) {
         SetMainCallback2(callback);
         return;
     }
 
-    sHearthMainMenuState->loadState = 0;
-    sHearthMainMenuState->savedCallback = callback;
-    sHearthMainMenuState->activeButton = activeButton;
-    sHearthMainMenuState->menuType = HearthMainMenu_GetMenuType();
+    sHmmMemory->state.loadState = 0;
+    sHmmMemory->state.savedCallback = callback;
+    sHmmMemory->state.activeButton = activeButton;
+    sHmmMemory->state.menuType = Hmm_GetMenuType();
 
-    SetMainCallback2(HearthMainMenu_SetupCB);
+    SetMainCallback2(Hmm_SetupCB);
 }
 
-static bool32 IsContinueMenu(void)
+static bool32 Hmm_IsContinueMenu(void)
 {
-    return sHearthMainMenuState->menuType == HMM_HAS_SAVE;
+    return sHmmMemory->state.menuType == HMM_HAS_SAVE;
 }
 
-static void HearthMainMenu_ResetGpuRegsAndBgs(void)
+static void Hmm_ResetGpuRegsAndBgs(void)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_BG3CNT, 0);
@@ -323,9 +319,9 @@ static void HearthMainMenu_ResetGpuRegsAndBgs(void)
     CpuFill32(0, (void*)OAM, OAM_SIZE);
 }
 
-static inline void HearthMainMenu_ResetForInit(void)
+static inline void Hmm_ResetForInit(void)
 {
-    HearthMainMenu_ResetGpuRegsAndBgs();
+    Hmm_ResetGpuRegsAndBgs();
     SetVBlankHBlankCallbacksToNull();
     ClearScheduledBgCopiesToVram();
     ScanlineEffect_Stop();
@@ -335,71 +331,65 @@ static inline void HearthMainMenu_ResetForInit(void)
     ResetTasks();
 }
 
-static void HearthMainMenu_SetupCB(void)
+static void Hmm_SetupCB(void)
 {
     switch (gMain.state) {
         case 0:
-            HearthMainMenu_ResetForInit();
+            Hmm_ResetForInit();
             gMain.state++;
             break;
         case 1:
-            if (HearthMainMenu_InitBgs()) {
-                sHearthMainMenuState->loadState = 0;
+            if (Hmm_InitBgs()) {
+                sHmmMemory->state.loadState = 0;
                 gMain.state++;
             }
             else {
-                HearthMainMenu_FadeAndBail();
+                Hmm_FadeAndBail();
                 return;
             }
             break;
         case 2:
-            if (HearthMainMenu_LoadGraphics() == TRUE) {
+            if (Hmm_LoadGraphics() == TRUE) {
                 gMain.state++;
             }
             break;
         case 3:
-            HearthMainMenu_InitWindows();
+            Hmm_InitWindows();
             gMain.state++;
             break;
         case 4:
-            HearthMainMenu_DrawContinueMenuItems();
+            Hmm_DrawContinueMenuItems();
             gMain.state++;
             break;
         case 5:
-            HearthMainMenu_CreateAllMenuButtons();
+            Hmm_CreateAllMenuButtons();
             gMain.state++;
             break;
         case 6:
-            HearthMainMenu_PrintButtonLabels();
-            if (!IsContinueMenu() && sHearthMainMenuState->activeButton == HMM_BUTTON_INFOBOX) {
-                sHearthMainMenuState->activeButton = HMM_BUTTON_NEWGAME;
+            Hmm_PrintButtonLabels();
+            if (!Hmm_IsContinueMenu() && sHmmMemory->state.activeButton == HMM_BUTTON_INFOBOX) {
+                sHmmMemory->state.activeButton = HMM_BUTTON_NEWGAME;
             }
-            SetActiveButton(sHearthMainMenuState->activeButton);
+            Hmm_SetActiveButton(sHmmMemory->state.activeButton);
             gMain.state++;
             break;
         case 7:
-            sTempPaletteBuffer = AllocZeroed(sizeof(gPlttBufferFaded));
-            if (sTempPaletteBuffer == NULL) {
-                errorf("Alloc failed");
-            }
-            else {
-                CpuFastCopy(gPlttBufferUnfaded, sTempPaletteBuffer, sizeof(gPlttBufferUnfaded));
+                CpuFastCopy(gPlttBufferUnfaded, sHmmMemory->sTempPaletteBuffer, sizeof(gPlttBufferUnfaded));
                 CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, sizeof(gPlttBufferFaded));
-            }
             BeginNormalPaletteFade(PALETTES_ALL, 1, 16, 0, RGB_BLACK);
             CreateTask(Task_HearthMainMenuWaitFadeIn, 0);
             gMain.state++;
             break;
         case 8:
             CreateTask(Task_HearthMainMenuScrollBg, 0);
-            SetVBlankCallback(HearthMainMenu_VBlankCB);
-            SetMainCallback2(HearthMainMenu_MainCB);
+            SetVBlankCallback(Hmm_VBlankCB);
+            SetMainCallback2(Hmm_MainCB);
             break;
     }
 }
 
 
-static enum HmmMenuType HearthMainMenu_GetMenuType(void)
+static enum HmmMenuType Hmm_GetMenuType(void)
 {
     switch (gSaveFileStatus) {
         case SAVE_STATUS_OK:
@@ -423,18 +413,18 @@ static void Task_HearthMainMenuScrollBg(u8 taskId)
         ChangeBgX(2, pixels << 8, 1);
 }
 
-static void HearthMainMenu_DrawContinueMenuItems(void)
+static void Hmm_DrawContinueMenuItems(void)
 {
-    if (!IsContinueMenu())
+    if (!Hmm_IsContinueMenu())
         return;
-    HearthMainMenu_CreatePlayerIcon(16, 12);
+    Hmm_CreatePlayerIcon(16, 12);
     FreeMonIconPalettes();
     LoadMonIconPalettes();
-    HearthMainMenu_DrawPartyIcons();
-    HearthMainMenu_CreateAllBadges(96, 20);
+    Hmm_DrawPartyIcons();
+    Hmm_CreateAllBadges(96, 20);
 }
 
-static void HearthMainMenu_CreateAllMenuButtons()
+static void Hmm_CreateAllMenuButtons()
 {
     const s16 startX = 8 + 32;
     const s16 startY = 120 + 16;
@@ -442,12 +432,12 @@ static void HearthMainMenu_CreateAllMenuButtons()
     for (u32 i = 0; i < HMM_BUTTON_SPRITE_COUNT; i++) {
         s16 x;
         x = startX + (i * 64 + i*16);
-        sHearthMainMenuState->buttonSpriteId[i] =
-            HearthMainMenu_CreateMenuButton(x, startY, HMM_TILETAG_BUTTON1 + i, HMM_PALTAG_BUTTON);
+        sHmmMemory->state.buttonSpriteId[i] =
+            Hmm_CreateMenuButton(x, startY, HMM_TILETAG_BUTTON1 + i, HMM_PALTAG_BUTTON);
     }
 }
 
-static void HearthMainMenu_CreatePlayerIcon(s16 x, s16 y)
+static void Hmm_CreatePlayerIcon(s16 x, s16 y)
 {
     const u32* playerSprite = gSaveBlock2Ptr->playerGender == FEMALE ? sPlayerAoGfx : sPlayerAkaGfx;
     const u16* playerPal = gSaveBlock2Ptr->playerGender == FEMALE ? sPlayerAoPal : sPlayerAkaPal;
@@ -456,27 +446,27 @@ static void HearthMainMenu_CreatePlayerIcon(s16 x, s16 y)
     Even_CreateSpriteParametrized(playerSprite, HMM_TILETAG_PLAYER, playerPal, HMM_PALTAG_PLAYER, SPRITE_SIZE(64x64), SPRITE_SHAPE(64x64), x, y, 0, SpriteCallbackDummy, TRUE);
 }
 
-static void HearthMainMenu_DarkenPlayerIcon(void)
+static void Hmm_DarkenPlayerIcon(void)
 {
     u16 index = IndexOfSpritePaletteTag(HMM_PALTAG_PLAYER);
     BlendPalette(OBJ_PLTT_ID(index), 16, 8, RGB_BLACK);
 }
 
-static void HearthMainMenu_RestorePlayerIcon(void)
+static void Hmm_RestorePlayerIcon(void)
 {
     FreeSpritePaletteByTag(HMM_PALTAG_PLAYER);
     LoadSpritePaletteWithTag(sPlayerAoPal, HMM_PALTAG_PLAYER);
 }
 
-static u32 HearthMainMenu_CreateMenuBadge(s16 x, s16 y, enum Tokens token)
+static u32 Hmm_CreateMenuBadge(s16 x, s16 y, enum HmmTokens token)
 {
     u8 tileTag = HMM_TILETAG_BOTTLED + token;
-    u32 spriteId =  Even_CreateSpriteParametrized(GetBadgeGfx(token), tileTag, GetBadgePal(token), GetBadgePalTag(token), SPRITE_SIZE(16x16),
+    u32 spriteId =  Even_CreateSpriteParametrized(Hmm_GetBadgeGfx(token), tileTag, Hmm_GetBadgePal(token), Hmm_GetBadgePalTag(token), SPRITE_SIZE(16x16),
                                          SPRITE_SHAPE(16x16), x, y, 0, SpriteCallbackDummy, TRUE);
     return spriteId;
 }
 
-static const u32* GetBadgeGfx(enum Tokens token)
+static const u32* Hmm_GetBadgeGfx(enum HmmTokens token)
 {
     switch (token) {
         case BOTTLED_TOKEN:   return sMenuBottledTokenGfx;
@@ -491,7 +481,7 @@ static const u32* GetBadgeGfx(enum Tokens token)
     }
 }
 
-static const u16* GetBadgePal(enum Tokens token)
+static const u16* Hmm_GetBadgePal(enum HmmTokens token)
 {
     switch (token) {
         case CARVED_TOKEN:
@@ -501,7 +491,7 @@ static const u16* GetBadgePal(enum Tokens token)
             return sMenuBadgesPal1;
     }
 }
-static u16 GetBadgePalTag(enum Tokens token)
+static u16 Hmm_GetBadgePalTag(enum HmmTokens token)
 {
     switch (token) {
         case CARVED_TOKEN:
@@ -512,16 +502,16 @@ static u16 GetBadgePalTag(enum Tokens token)
     }
 }
 
-static void HearthMainMenu_CreateAllBadges(s16 x, s16 y)
+static void Hmm_CreateAllBadges(s16 x, s16 y)
 {
-    u32 badgeCount = GetBadgeCount();
+    u32 badgeCount = Hmm_GetTokenCount();
     for (u32 i = 0; i < badgeCount; i++) {
         x+= !!i*2;
-        HearthMainMenu_CreateMenuBadge(x + i * 16, y, i);
+        Hmm_CreateMenuBadge(x + i * 16, y, i);
     }
 }
 
-static void HearthMainMenu_DarkenBadges(void)
+static void Hmm_DarkenBadges(void)
 {
     u16 index1 = IndexOfSpritePaletteTag(HMM_PALTAG_BADGES1);
     u16 index2 = IndexOfSpritePaletteTag(HMM_PALTAG_BADGES2);
@@ -530,7 +520,7 @@ static void HearthMainMenu_DarkenBadges(void)
 }
 
 
-static void HearthMainMenu_RestoreBadges(void)
+static void Hmm_RestoreBadges(void)
 {
     FreeSpritePaletteByTag(HMM_PALTAG_BADGES1);
     FreeSpritePaletteByTag(HMM_PALTAG_BADGES2);
@@ -538,7 +528,7 @@ static void HearthMainMenu_RestoreBadges(void)
     LoadSpritePaletteWithTag(sMenuBadgesPal2, HMM_PALTAG_BADGES2);
 }
 
-static u32 GetBadgeCount(void)
+static u32 Hmm_GetTokenCount(void)
 {
     u32 badgeCount = 0;
     u32 i = 0;
@@ -550,13 +540,13 @@ static u32 GetBadgeCount(void)
     return badgeCount;
 }
 
-static u32 HearthMainMenu_CreateMenuButton(s16 x, s16 y, u32 tileTag, u32 palTag)
+static u32 Hmm_CreateMenuButton(s16 x, s16 y, u32 tileTag, u32 palTag)
 {
     return Even_CreateSpriteParametrized(sMenuButtonGfx, tileTag, sMenuButtonPal, palTag, SPRITE_SIZE(64x32),
                                          SPRITE_SHAPE(64x32), x, y, 0, SpriteCallbackDummy, TRUE);
 }
 
-static void SetButtonPalette(u8 buttonId, const u16* pal, u32 palTag)
+static void Hmm_SetButtonPalette(u8 buttonId, const u16* pal, u32 palTag)
 {
     struct SpritePalette sp;
     sp.data = pal;
@@ -566,47 +556,47 @@ static void SetButtonPalette(u8 buttonId, const u16* pal, u32 palTag)
     gSprites[buttonId].oam.paletteNum = palIndex;
 }
 
-static void ActivateButton(enum HmmButtonIds buttonId)
+static void Hmm_ActivateButton(enum HmmButtonIds buttonId)
 {
-    if (!IsSpriteButton(buttonId))
+    if (!Hmm_IsSpriteButton(buttonId))
         return;
 
-    u8 spriteId = sHearthMainMenuState->buttonSpriteId[buttonId];
-    SetButtonPalette(spriteId, sMenuButtonActivePal, HMM_PALTAG_ACTIVE_BUTTON);
+    u8 spriteId = sHmmMemory->state.buttonSpriteId[buttonId];
+    Hmm_SetButtonPalette(spriteId, sMenuButtonActivePal, HMM_PALTAG_ACTIVE_BUTTON);
 }
 
-static void DeactivateButton(enum HmmButtonIds buttonId)
+static void Hmm_DeactivateButton(enum HmmButtonIds buttonId)
 {
-    if (!IsSpriteButton(buttonId))
+    if (!Hmm_IsSpriteButton(buttonId))
         return;
 
-    u8 spriteId = sHearthMainMenuState->buttonSpriteId[buttonId];
-    SetButtonPalette(spriteId, sMenuButtonPal, HMM_PALTAG_BUTTON);
+    u8 spriteId = sHmmMemory->state.buttonSpriteId[buttonId];
+    Hmm_SetButtonPalette(spriteId, sMenuButtonPal, HMM_PALTAG_BUTTON);
 }
 
-static void SetActiveButton(enum HmmButtonIds buttonId)
+static void Hmm_SetActiveButton(enum HmmButtonIds buttonId)
 {
     if (buttonId < 0)
         buttonId = HMM_BUTTON_COUNT - 1;
     else if (buttonId >= HMM_BUTTON_COUNT)
         buttonId = 0;
 
-    sHearthMainMenuState->prevButton = sHearthMainMenuState->activeButton;
-    sHearthMainMenuState->activeButton = buttonId;
+    sHmmMemory->state.prevButton = sHmmMemory->state.activeButton;
+    sHmmMemory->state.activeButton = buttonId;
 
-    DeactivateButton(sHearthMainMenuState->prevButton);
+    Hmm_DeactivateButton(sHmmMemory->state.prevButton);
 
     if (buttonId == HMM_BUTTON_INFOBOX) {
-        HearthMainMenu_SetInfoboxActive(TRUE);
+        Hmm_SetInfoboxActive(TRUE);
     }
     else {
-        HearthMainMenu_SetInfoboxActive(FALSE);
-        ActivateButton(buttonId);
+        Hmm_SetInfoboxActive(FALSE);
+        Hmm_ActivateButton(buttonId);
     }
-    HearthMainMenu_PrintButtonLabels();
+    Hmm_PrintButtonLabels();
 }
 
-static bool32 IsSpriteButton(enum HmmButtonIds buttonId)
+static bool32 Hmm_IsSpriteButton(enum HmmButtonIds buttonId)
 {
     return buttonId != HMM_BUTTON_INFOBOX && buttonId < HMM_BUTTON_COUNT;
 }
@@ -619,7 +609,7 @@ static const u8* const sButtonTexts[3] = {
     [HMM_BUTTON_NEWGAME] = COMPOUND_STRING("New Game"),   [HMM_BUTTON_OPTIONS] = COMPOUND_STRING("Options"),
     [HMM_BUTTON_MYSTERY] = COMPOUND_STRING("Mystery Gift"), };
 
-static void HearthMainMenu_PrintButtonLabels(void)
+static void Hmm_PrintButtonLabels(void)
 {
     for (u32 i = 0; i < 3; i++) {
 
@@ -628,26 +618,26 @@ static void HearthMainMenu_PrintButtonLabels(void)
         if (GetStringWidth(FONT_SMALL_NARROW, sButtonTexts[i], 0) > 50) {
             fontId = FONT_SMALL_NARROWER; 
         }
-        u8 spriteId = sHearthMainMenuState->buttonSpriteId[i];
+        u8 spriteId = sHmmMemory->state.buttonSpriteId[i];
         u32 left = GetStringCenterAlignXOffset(fontId, sButtonTexts[i], 64);
-        const union TextColor* color = (sHearthMainMenuState->activeButton == i) ? &sButtonTextColorActive : &sButtonTextColor;
+        const union TextColor* color = (sHmmMemory->state.activeButton == i) ? &sButtonTextColorActive : &sButtonTextColor;
         AddSpriteTextPrinterParameterized6(spriteId, fontId, left, 8, 0, 0, *color, 0, sButtonTexts[i]);
     }
 }
 
-static void MoveSelection(enum HmmDirs direction)
+static void Hmm_MoveSelection(enum HmmDirs direction)
 {
-    enum HmmButtonIds cur = sHearthMainMenuState->activeButton;
+    enum HmmButtonIds cur = sHmmMemory->state.activeButton;
 
     switch (direction) {
         case HMM_DIR_UP:
-            if (cur != HMM_BUTTON_INFOBOX && IsContinueMenu())
-                SetActiveButton(HMM_BUTTON_INFOBOX);
+            if (cur != HMM_BUTTON_INFOBOX && Hmm_IsContinueMenu())
+                Hmm_SetActiveButton(HMM_BUTTON_INFOBOX);
             break;
 
         case HMM_DIR_DOWN:
             if (cur == HMM_BUTTON_INFOBOX) {
-                    SetActiveButton(HMM_BUTTON_NEWGAME);
+                    Hmm_SetActiveButton(HMM_BUTTON_NEWGAME);
             }
             break;
 
@@ -655,23 +645,23 @@ static void MoveSelection(enum HmmDirs direction)
             if (cur == HMM_BUTTON_INFOBOX)
                 break;
             if (cur == HMM_BUTTON_NEWGAME)
-                SetActiveButton(HMM_BUTTON_MYSTERY);
+                Hmm_SetActiveButton(HMM_BUTTON_MYSTERY);
             else
-                SetActiveButton(cur - 1);
+                Hmm_SetActiveButton(cur - 1);
             break;
 
         case HMM_DIR_RIGHT:
             if (cur == HMM_BUTTON_INFOBOX)
                 break;
             if (cur == HMM_BUTTON_MYSTERY)
-                SetActiveButton(HMM_BUTTON_NEWGAME);
+                Hmm_SetActiveButton(HMM_BUTTON_NEWGAME);
             else
-                SetActiveButton(cur + 1);
+                Hmm_SetActiveButton(cur + 1);
             break;
     }
 }
 
-static void HearthMainMenu_DrawPartyIcons(void)
+static void Hmm_DrawPartyIcons(void)
 {
     const u16 startX = 100;
     const u16 startY = 44;
@@ -679,7 +669,7 @@ static void HearthMainMenu_DrawPartyIcons(void)
     for (u32 i = 0; i < PARTY_SIZE; i++) {
         u16 speciesId = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
         if (speciesId == SPECIES_NONE) {
-            sHearthMainMenuState->partyIconId[i] = SPRITE_NONE;
+            sHmmMemory->state.partyIconId[i] = SPRITE_NONE;
             continue;
         }
 
@@ -696,13 +686,13 @@ static void HearthMainMenu_DrawPartyIcons(void)
             y -= 8;
         }
 
-        sHearthMainMenuState->partyIconId[i] = CreateMonIcon(speciesId, SpriteCB_MonIcon, x, y, 4, personality);
+        sHmmMemory->state.partyIconId[i] = CreateMonIcon(speciesId, SpriteCB_MonIcon, x, y, 4, personality);
 
-        gSprites[sHearthMainMenuState->partyIconId[i]].oam.priority = 0;
+        gSprites[sHmmMemory->state.partyIconId[i]].oam.priority = 0;
     }
 }
 
-static void HearthMainMenu_DarkenPartyIcons(void)
+static void Hmm_DarkenPartyIcons(void)
 {
     u16 palTag;
     u16 index;
@@ -714,7 +704,7 @@ static void HearthMainMenu_DarkenPartyIcons(void)
     }
 }
 
-static void HearthMainMenu_MainCB(void)
+static void Hmm_MainCB(void)
 {
     RunTasks();
     AnimateSprites();
@@ -723,7 +713,7 @@ static void HearthMainMenu_MainCB(void)
     UpdatePaletteFade();
 }
 
-static void HearthMainMenu_VBlankCB(void)
+static void Hmm_VBlankCB(void)
 {
     LoadOam();
     ProcessSpriteCopyRequests();
@@ -733,13 +723,12 @@ static void HearthMainMenu_VBlankCB(void)
 static void Task_HearthMainMenuWaitFadeIn(u8 taskId)
 {
     if (!gPaletteFade.active) {
-        CpuFastCopy(sTempPaletteBuffer, gPlttBufferUnfaded, sizeof(gPlttBufferUnfaded));
-        Free(sTempPaletteBuffer);
+        CpuFastCopy(sHmmMemory->sTempPaletteBuffer, gPlttBufferUnfaded, sizeof(gPlttBufferUnfaded));
         gTasks[taskId].func = Task_HearthMainMenuInput;
     }
 }
 
-static void HearthMainMenu_StartFade(u32 color)
+static void Hmm_StartFade(u32 color)
 {
     CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, sizeof(gPlttBufferFaded));
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, color);
@@ -748,43 +737,43 @@ static void HearthMainMenu_StartFade(u32 color)
 static void Task_HearthMainMenuInput(u8 taskId)
 {
     if (JOY_NEW(B_BUTTON)) {
-        HearthMainMenu_HandleButtonPressB();
+        Hmm_HandleButtonPressB();
     }
     if (JOY_NEW(A_BUTTON)) {
-        HearthMainMenu_HandleButtonPressA();
+        Hmm_HandleButtonPressA();
     }
     if (JOY_NEW(DPAD_UP)) {
         PlaySE(SE_SELECT);
-        MoveSelection(HMM_DIR_UP);
+        Hmm_MoveSelection(HMM_DIR_UP);
     }
     if (JOY_NEW(DPAD_DOWN)) {
         PlaySE(SE_SELECT);
-        MoveSelection(HMM_DIR_DOWN);
+        Hmm_MoveSelection(HMM_DIR_DOWN);
     }
     if (JOY_NEW(DPAD_LEFT)) {
         PlaySE(SE_SELECT);
-        MoveSelection(HMM_DIR_LEFT);
+        Hmm_MoveSelection(HMM_DIR_LEFT);
     }
     if (JOY_NEW(DPAD_RIGHT)) {
         PlaySE(SE_SELECT);
-        MoveSelection(HMM_DIR_RIGHT);
+        Hmm_MoveSelection(HMM_DIR_RIGHT);
     }
 }
 
-static void HearthMainMenu_HandleButtonPressA(void)
+static void Hmm_HandleButtonPressA(void)
 {
-    switch (sHearthMainMenuState->activeButton) {
+    switch (sHmmMemory->state.activeButton) {
         case HMM_BUTTON_INFOBOX:
-            HearthMainMenu_ExitOnSelect(CB2_ContinueSavedGame);
+            Hmm_ExitOnSelect(CB2_ContinueSavedGame);
             break;
 
         case HMM_BUTTON_NEWGAME:
-            HearthMainMenu_ExitOnSelect(CB2_InitPrologueScreen);
+            Hmm_ExitOnSelect(CB2_InitPrologueScreen);
             break;
 
         case HMM_BUTTON_OPTIONS:
             gMain.savedCallback = CB2_InitMainMenuHearthFromOptionsMenu;
-            HearthMainMenu_ExitOnSelect(CB2_InitOptionMenu);
+            Hmm_ExitOnSelect(CB2_InitOptionMenu);
             break;
 
         default:
@@ -793,34 +782,34 @@ static void HearthMainMenu_HandleButtonPressA(void)
     }
 }
 
-static void HearthMainMenu_HandleButtonPressB(void)
+static void Hmm_HandleButtonPressB(void)
 {
     u8 taskId = FindTaskIdByFunc(Task_HearthMainMenuInput);
     PlaySE(SE_PC_OFF);
-    HearthMainMenu_StartFade(RGB_BLACK);
+    Hmm_StartFade(RGB_BLACK);
     gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
 }
 
-static void HearthMainMenu_ExitOnSelect(MainCallback callback)
+static void Hmm_ExitOnSelect(MainCallback callback)
 {
     u8 taskId = FindTaskIdByFunc(Task_HearthMainMenuInput);
     PlaySE(SE_PC_OFF);
-    HearthMainMenu_StartFade(RGB_BLACK);
-    sHearthMainMenuState->savedCallback = callback;
+    Hmm_StartFade(RGB_BLACK);
+    sHmmMemory->state.savedCallback = callback;
     gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
 }
 
-static void HearthMainMenu_SetInfoboxActive(bool32 active)
+static void Hmm_SetInfoboxActive(bool32 active)
 {
     if (active) {
         LoadPalette(HearthMainMenuBgActivePalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
-        gSprites[sHearthMainMenuState->playerSpriteId].animPaused = FALSE;
+        gSprites[sHmmMemory->state.playerSpriteId].animPaused = FALSE;
         FreeMonIconPalettes();
         LoadMonIconPalettes();
-        HearthMainMenu_RestorePlayerIcon();
-        HearthMainMenu_RestoreBadges();
+        Hmm_RestorePlayerIcon();
+        Hmm_RestoreBadges();
         for (u32 i = 0; i < PARTY_SIZE; i++) {
-            u8 id = sHearthMainMenuState->partyIconId[i];
+            u8 id = sHmmMemory->state.partyIconId[i];
             struct Sprite* sprite = &gSprites[id];
             if (sprite->inUse) {
                 sprite->callback = SpriteCB_MonIcon;
@@ -829,26 +818,26 @@ static void HearthMainMenu_SetInfoboxActive(bool32 active)
     }
     else {
         LoadPalette(HearthMainMenuBgPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
-        gSprites[sHearthMainMenuState->playerSpriteId].animPaused = TRUE;
-        HearthMainMenu_DarkenPartyIcons();
-        HearthMainMenu_DarkenPlayerIcon();
-        HearthMainMenu_DarkenBadges();
+        gSprites[sHmmMemory->state.playerSpriteId].animPaused = TRUE;
+        Hmm_DarkenPartyIcons();
+        Hmm_DarkenPlayerIcon();
+        Hmm_DarkenBadges();
         for (u32 i = 0; i < PARTY_SIZE; i++) {
-            u8 id = sHearthMainMenuState->partyIconId[i];
+            u8 id = sHmmMemory->state.partyIconId[i];
             struct Sprite* sprite = &gSprites[id];
             if (sprite->inUse) {
                 sprite->callback = SpriteCallbackDummy;
             }
         }
     }
-    HearthMainMenu_PrintInfoboxText();
+    Hmm_PrintInfoboxText();
 }
 
 static void Task_HearthMainMenuWaitFadeAndBail(u8 taskId)
 {
     if (!gPaletteFade.active) {
-        SetMainCallback2(sHearthMainMenuState->savedCallback);
-        HearthMainMenu_FreeResources();
+        SetMainCallback2(sHmmMemory->state.savedCallback);
+        Hmm_FreeResources();
         DestroyTask(taskId);
     }
 }
@@ -856,29 +845,21 @@ static void Task_HearthMainMenuWaitFadeAndBail(u8 taskId)
 static void Task_HearthMainMenuWaitFadeAndExitGracefully(u8 taskId)
 {
     if (!gPaletteFade.active) {
-        HearthMainMenu_FreeResources();
-        SetMainCallback2(sHearthMainMenuState->savedCallback);
+        SetMainCallback2(sHmmMemory->state.savedCallback);
+        Hmm_FreeResources();
         DestroyTask(taskId);
     }
 }
 #define TILEMAP_BUFFER_SIZE (1024 * 2)
-static bool8 HearthMainMenu_InitBgs(void)
+static bool8 Hmm_InitBgs(void)
 {
     ResetAllBgsCoordinates();
-
-    sBg1TilemapBuffer = AllocZeroed(TILEMAP_BUFFER_SIZE);
-    if (sBg1TilemapBuffer == NULL)
-        return FALSE;
-
-    sBg2TilemapBuffer = AllocZeroed(TILEMAP_BUFFER_SIZE);
-    if (sBg1TilemapBuffer == NULL)
-        return FALSE;
 
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sHearthMainMenuBgTemplates, NELEMS(sHearthMainMenuBgTemplates));
 
-    SetBgTilemapBuffer(1, sBg1TilemapBuffer);
-    SetBgTilemapBuffer(2, sBg2TilemapBuffer);
+    SetBgTilemapBuffer(1, sHmmMemory->sBg1TilemapBuffer);
+    SetBgTilemapBuffer(2, sHmmMemory->sBg2TilemapBuffer);
     ScheduleBgCopyTilemapToVram(1);
     ScheduleBgCopyTilemapToVram(2);
 
@@ -890,50 +871,50 @@ static bool8 HearthMainMenu_InitBgs(void)
 }
 #undef TILEMAP_BUFFER_SIZE
 
-static void HearthMainMenu_FadeAndBail(void)
+static void Hmm_FadeAndBail(void)
 {
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     CreateTask(Task_HearthMainMenuWaitFadeAndBail, 0);
-    SetVBlankCallback(HearthMainMenu_VBlankCB);
-    SetMainCallback2(HearthMainMenu_MainCB);
+    SetVBlankCallback(Hmm_VBlankCB);
+    SetMainCallback2(Hmm_MainCB);
 }
 
-static bool8 HearthMainMenu_LoadGraphics(void)
+static bool8 Hmm_LoadGraphics(void)
 {
-    switch (sHearthMainMenuState->loadState) {
+    switch (sHmmMemory->state.loadState) {
         case 0:
             ResetTempTileDataBuffers();
             DecompressAndCopyTileDataToVram(1, HearthMainMenuBgTiles, 0, 0, 0);
             DecompressAndCopyTileDataToVram(2, HearthMainMenuScrollingBgTiles, 0, 0, 0);
-            sHearthMainMenuState->loadState++;
+            sHmmMemory->state.loadState++;
             break;
         case 1:
             if (FreeTempTileDataBuffersIfPossible() != TRUE) {
-                DecompressDataWithHeaderWram(HearthMainMenuBgTilemap, sBg1TilemapBuffer);
-                sHearthMainMenuState->loadState++;
+                DecompressDataWithHeaderWram(HearthMainMenuBgTilemap, sHmmMemory->sBg1TilemapBuffer);
+                sHmmMemory->state.loadState++;
             }
             break;
         case 2:
             if (FreeTempTileDataBuffersIfPossible() != TRUE) {
-                DecompressDataWithHeaderWram(HearthMainMenuScrollingBgTilemap, sBg2TilemapBuffer);
-                sHearthMainMenuState->loadState++;
+                DecompressDataWithHeaderWram(HearthMainMenuScrollingBgTilemap, sHmmMemory->sBg2TilemapBuffer);
+                sHmmMemory->state.loadState++;
             }
             break;
         case 3:
             LoadPalette(HearthMainMenuBgPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
             LoadPalette(HearthMainMenuScrollingBgPalette, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
             LoadPalette(gMessageBox_Pal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
-            sHearthMainMenuState->loadState++;
+            sHmmMemory->state.loadState++;
         default:
-            sHearthMainMenuState->loadState = 0;
+            sHmmMemory->state.loadState = 0;
             return TRUE;
     }
     return FALSE;
 }
 
-static void HearthMainMenu_InitWindows(void)
+static void Hmm_InitWindows(void)
 {
-    if (!IsContinueMenu()) {
+    if (!Hmm_IsContinueMenu()) {
         InitWindows(sHearthMainMenuErrorWindowTemplate);
         return;
     }
@@ -948,49 +929,49 @@ static void HearthMainMenu_InitWindows(void)
     }
 }
 
-static void PrintText(u8 windowId, u8 font, u8 x, u8 y, const u8* color, const u8* str)
+static void Hmm_PrintText(u8 windowId, u8 font, u8 x, u8 y, const u8* color, const u8* str)
 {
     AddTextPrinterParameterized4(windowId, font, x, y, 0, 0, color, TEXT_SKIP_DRAW, str);
 }
 
-static inline void PrintTextSmall(u8 windowId, u8 x, u8 y, const u8* color, const u8* str)
+static inline void Hmm_PrintTextSmall(u8 windowId, u8 x, u8 y, const u8* color, const u8* str)
 {
-    PrintText(windowId, FONT_SMALL, x, y, color, str);
+    Hmm_PrintText(windowId, FONT_SMALL, x, y, color, str);
 }
 
-static inline void PrintTextNormal(u8 windowId, u8 x, u8 y, const u8* color, const u8* str)
+static inline void Hmm_PrintTextNormal(u8 windowId, u8 x, u8 y, const u8* color, const u8* str)
 {
-    PrintText(windowId, FONT_NORMAL, x, y, color, str);
+    Hmm_PrintText(windowId, FONT_NORMAL, x, y, color, str);
 }
 
 static const u8 sText_DexCount[] = _("Dex  {STR_VAR_2}");
 static const u8 sText_NoSaveData[] = _("No Save Data Found");
-static void HearthMainMenu_PrintContinueInfo(const u8 *color)
+static void Hmm_PrintContinueInfo(const u8 *color)
 {
     u8 windowId = WIN_HMM_BG;
-    u16 widthPx = GetWindowWidth(windowId) * 8;
+    u16 widthPx = Hmm_GetWindowWidth(windowId) * 8;
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
 
-    HearthMainMenu_FormatSavegameTime();
-    PrintTextSmall(windowId, 0, 0, color, gStringVar1);
+    Hmm_FormatSavegameTime();
+    Hmm_PrintTextSmall(windowId, 0, 0, color, gStringVar1);
 
     GetMapName(gStringVar1, GetCurrentRegionMapSectionId(), 0);
     u8 fontId = GetFontIdToFit(gStringVar1, FONT_SMALL, 0, widthPx/3);
     u8 xName = GetStringCenterAlignXOffset(fontId, gStringVar1, widthPx);
-    PrintText(windowId, fontId, xName, 0, color, gStringVar1);
+    Hmm_PrintText(windowId, fontId, xName, 0, color, gStringVar1);
 
     ConvertUIntToDecimalStringN(gStringVar2, GetRegionalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 1);
     StringExpandPlaceholders(gStringVar1, sText_DexCount);
     u8 xTokens = GetStringRightAlignXOffset(FONT_SMALL, gStringVar1, widthPx);
-    PrintTextSmall(windowId, xTokens, 0, color, gStringVar1);
+    Hmm_PrintTextSmall(windowId, xTokens, 0, color, gStringVar1);
 
-    HearthMainMenu_PrintPlayerName();
+    Hmm_PrintPlayerName();
 
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
 
-static void HearthMainMenu_PrintNoSaveInfo(const u8 *color)
+static void Hmm_PrintNoSaveInfo(const u8 *color)
 {
     u8 windowId = WIN_HMM_NO_SAVE;
 
@@ -1000,40 +981,40 @@ static void HearthMainMenu_PrintNoSaveInfo(const u8 *color)
     u16 widthPx = GetWindowAttribute(windowId, WINDOW_WIDTH) * 8;
     u8 x = GetStringCenterAlignXOffset(FONT_NORMAL, sText_NoSaveData, widthPx);
 
-    PrintTextNormal(windowId, x, 0, color, sText_NoSaveData);
+    Hmm_PrintTextNormal(windowId, x, 0, color, sText_NoSaveData);
 
     CopyWindowToVram(windowId, COPYWIN_FULL);
 }
 
-static void HearthMainMenu_PrintInfoboxText(void)
+static void Hmm_PrintInfoboxText(void)
 {
-    const u8 *color = GetInfoboxFontColor();
-    if (IsContinueMenu())
-        HearthMainMenu_PrintContinueInfo(color);
+    const u8 *color = Hmm_GetInfoboxFontColor();
+    if (Hmm_IsContinueMenu())
+        Hmm_PrintContinueInfo(color);
     else
-        HearthMainMenu_PrintNoSaveInfo(color);
+        Hmm_PrintNoSaveInfo(color);
 }
 
-static void HearthMainMenu_FormatSavegameTime(void)
+static void Hmm_FormatSavegameTime(void)
 {
     ConvertIntToDecimalStringN(gStringVar2, gSaveBlock2Ptr->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar3, gSaveBlock2Ptr->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
     StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Time  {STR_VAR_2}:{STR_VAR_3}"));
 }
 
-static void HearthMainMenu_PrintPlayerName(void)
+static void Hmm_PrintPlayerName(void)
 {
     StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("{PLAYER}"));
     FillWindowPixelBuffer(WIN_HMM_NAME, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
-    u8 xName = GetStringCenterAlignXOffset(FONT_SMALL, gStringVar1, GetWindowWidth(WIN_HMM_NAME)*8);
-    PrintTextSmall(WIN_HMM_NAME, xName, 1, GetInfoboxFontColor(), gStringVar1);
+    u8 xName = GetStringCenterAlignXOffset(FONT_SMALL, gStringVar1, Hmm_GetWindowWidth(WIN_HMM_NAME)*8);
+    Hmm_PrintTextSmall(WIN_HMM_NAME, xName, 1, Hmm_GetInfoboxFontColor(), gStringVar1);
     CopyWindowToVram(WIN_HMM_NAME, COPYWIN_GFX);
 
 }
 
-static const u8* GetInfoboxFontColor(void)
+static const u8* Hmm_GetInfoboxFontColor(void)
 {
-    if (sHearthMainMenuState->activeButton == HMM_BUTTON_INFOBOX) {
+    if (sHmmMemory->state.activeButton == HMM_BUTTON_INFOBOX) {
         return HMM_FONT_COLOR(FONT_WHITE);
     }
     else {
@@ -1041,23 +1022,16 @@ static const u8* GetInfoboxFontColor(void)
     }
 }
 
-static u32 GetWindowWidth(u8 windowId)
+static u32 Hmm_GetWindowWidth(u8 windowId)
 {
     return GetWindowAttribute(windowId, WINDOW_WIDTH);
 }
 
-static void HearthMainMenu_FreeResources(void)
+static void Hmm_FreeResources(void)
 {
-    if (sHearthMainMenuState != NULL) {
-        Free(sHearthMainMenuState);
-    }
-    if (sBg1TilemapBuffer != NULL) {
-        Free(sBg1TilemapBuffer);
-    }
-    if (sBg2TilemapBuffer != NULL) {
-        Free(sBg2TilemapBuffer);
-    }
+    TRY_FREE_AND_SET_NULL(sHmmMemory);
     FreeAllWindowBuffers();
+    FreeAllSpritePalettes();
     ResetSpriteData();
     ResetTasks();
 }
