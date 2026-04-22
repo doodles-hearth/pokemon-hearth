@@ -586,9 +586,6 @@ static void MoveSelection(enum HmmDirs direction)
 
         case HMM_DIR_DOWN:
             if (cur == HMM_BUTTON_INFOBOX) {
-                if (sHearthMainMenuState->prevButton != HMM_BUTTON_INFOBOX)
-                    SetActiveButton(sHearthMainMenuState->prevButton);
-                else
                     SetActiveButton(HMM_BUTTON_NEWGAME);
             }
             break;
