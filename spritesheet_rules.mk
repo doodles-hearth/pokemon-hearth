@@ -5843,9 +5843,6 @@ $(OBJEVENTGFXDIR)/misc/campfire.4bpp: %.4bpp: %.png
 graphics/title_screen/hearth/press_start.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
-graphics/main_menu_hearth/badges/badges.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -mwidth 2 -mheight 2
-
 $(BATINTGFXDIR)/healthbox_doubles_opponent.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 8 -mheight 4
 

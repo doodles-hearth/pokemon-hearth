@@ -64,22 +64,34 @@ enum {
     HMM_PALTAG_BUTTON = 0x1000,
     HMM_PALTAG_ACTIVE_BUTTON = 0x1001,
     HMM_PALTAG_PLAYER = 0x1002,
-    HMM_PALTAG_BADGES = 0x1003,
+    HMM_PALTAG_BADGES1 = 0x1003,
+    HMM_PALTAG_BADGES2 = 0x1004,
+};
+
+enum Tokens {
+    BOTTLED_TOKEN,
+    CARVED_TOKEN,
+    SEWN_TOKEN,
+    FORGED_TOKEN,
+    CAPTURED_TOKEN,
+    FOLDED_TOKEN,
+    POLISHED_TOKEN,
+    CHERISHED_TOKEN,
 };
 
 enum {
-    HMM_TILETAG_BUTTON1 = 0x2000,
-    HMM_TILETAG_BUTTON2 = 0x2001,
-    HMM_TILETAG_BUTTON3 = 0x2002,
-    HMM_TILETAG_PLAYER  = 0x2003,
-    HMM_TILETAG_BADGE_1 = 0x2004,
-    HMM_TILETAG_BADGE_2 = 0x2005,
-    HMM_TILETAG_BADGE_3 = 0x2006,
-    HMM_TILETAG_BADGE_4 = 0x2007,
-    HMM_TILETAG_BADGE_5 = 0x2008,
-    HMM_TILETAG_BADGE_6 = 0x2009,
-    HMM_TILETAG_BADGE_7 = 0x200A,
-    HMM_TILETAG_BADGE_8 = 0x200B,
+    HMM_TILETAG_BUTTON1  = 0x2000,
+    HMM_TILETAG_BUTTON2  = 0x2001,
+    HMM_TILETAG_BUTTON3  = 0x2002,
+    HMM_TILETAG_PLAYER   = 0x2003,
+    HMM_TILETAG_BOTTLED  = 0x2004,
+    HMM_TILETAG_CARVED   = 0x2005,
+    HMM_TILETAG_SEWN     = 0x2006,
+    HMM_TILETAG_FORGED   = 0x2007,
+    HMM_TILETAG_CAPTURED = 0x2008,
+    HMM_TILETAG_FOLDED   = 0x2009,
+    HMM_TILETAG_POLISHED = 0x200A,
+    HMM_TILETAG_FANG     = 0x200B,
 };
 
 enum HmmButtonIds {
@@ -149,8 +161,16 @@ static const u32 sMenuButtonGfx[] = INCBIN_U32("graphics/main_menu_hearth/button
 static const u16 sMenuButtonPal[] = INCBIN_U16("graphics/main_menu_hearth/buttons/button.gbapal");
 static const u16 sMenuButtonActivePal[] = INCBIN_U16("graphics/main_menu_hearth/buttons/active_button.gbapal");
 
-static const u32 sMenuBadgeGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/badges.4bpp.smol");
-static const u16 sMenuBadgesPal[] = INCBIN_U16("graphics/main_menu_hearth/badges/badges.gbapal");
+static const u32 sMenuBottledTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/bottled.4bpp.smol");
+static const u32 sMenuCarvedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/carved.4bpp.smol");
+static const u32 sMenuSewnTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/sewn.4bpp.smol");
+static const u32 sMenuForgedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/forged.4bpp.smol");
+static const u32 sMenuCapturedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/captured.4bpp.smol");
+static const u32 sMenuFoldedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/folded.4bpp.smol");
+static const u32 sMenuPolishedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/polished.4bpp.smol");
+static const u32 sMenuCherishedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/cherished.4bpp.smol");
+static const u16 sMenuBadgesPal1[] = INCBIN_U16("graphics/main_menu_hearth/badges/badges1.gbapal");
+static const u16 sMenuBadgesPal2[] = INCBIN_U16("graphics/main_menu_hearth/badges/badges2.gbapal");
 
 static const u32 sPlayerAoGfx[] = INCBIN_U32("graphics/main_menu_hearth/mugshots/ao.4bpp.smol");
 static const u16 sPlayerAoPal[] = INCBIN_U16("graphics/main_menu_hearth/mugshots/ao.gbapal");
@@ -214,11 +234,14 @@ static void HearthMainMenu_CreateAllMenuButtons();
 static void HearthMainMenu_PrintButtonLabels(void);
 static bool32 IsSpriteButton(enum HmmButtonIds buttonId);
 
-static u32 HearthMainMenu_CreateMenuBadge(s16 x, s16 y, u8 number);
+static u32 HearthMainMenu_CreateMenuBadge(s16 x, s16 y, enum Tokens token);
 static void HearthMainMenu_CreateAllBadges(s16 x, s16 y);
 static void HearthMainMenu_DarkenBadges(void);
 static void HearthMainMenu_RestoreBadges(void);
 static u32 GetBadgeCount(void);
+static u16 GetBadgePalTag(enum Tokens token);
+static const u16* GetBadgePal(enum Tokens token);
+static const u32* GetBadgeGfx(enum Tokens token);
 
 static void HearthMainMenu_SetInfoboxActive(bool32 active);
 static void SetButtonPalette(u8 buttonId, const u16* pal, u32 palTag);
@@ -444,37 +467,74 @@ static void HearthMainMenu_RestorePlayerIcon(void)
     LoadSpritePaletteWithTag(sPlayerAoPal, HMM_PALTAG_PLAYER);
 }
 
-static u32 HearthMainMenu_CreateMenuBadge(s16 x, s16 y, u8 number)
+static u32 HearthMainMenu_CreateMenuBadge(s16 x, s16 y, enum Tokens token)
 {
-    u8 tileTag = HMM_TILETAG_BADGE_1 + number;
-    u32* badgeSprite = Alloc(GetDecompressedDataSize(sMenuBadgeGfx));
-    DecompressDataWithHeaderWram(sMenuBadgeGfx, badgeSprite);
-    u32* badgeSrc = badgeSprite + 32 * number;
-    u32 spriteId =  Even_CreateSpriteParametrized(badgeSrc, tileTag, sMenuBadgesPal, HMM_PALTAG_BADGES, SPRITE_SIZE(16x16),
-                                         SPRITE_SHAPE(16x16), x, y, 0, SpriteCallbackDummy, FALSE);
-    Free(badgeSprite);
+    u8 tileTag = HMM_TILETAG_BOTTLED + token;
+    u32 spriteId =  Even_CreateSpriteParametrized(GetBadgeGfx(token), tileTag, GetBadgePal(token), GetBadgePalTag(token), SPRITE_SIZE(16x16),
+                                         SPRITE_SHAPE(16x16), x, y, 0, SpriteCallbackDummy, TRUE);
     return spriteId;
+}
+
+static const u32* GetBadgeGfx(enum Tokens token)
+{
+    switch (token) {
+        case BOTTLED_TOKEN:   return sMenuBottledTokenGfx;
+        case CARVED_TOKEN:    return sMenuCarvedTokenGfx;
+        case SEWN_TOKEN:      return sMenuSewnTokenGfx;
+        case FORGED_TOKEN:    return sMenuForgedTokenGfx;
+        case CAPTURED_TOKEN:  return sMenuCapturedTokenGfx;
+        case FOLDED_TOKEN:    return sMenuFoldedTokenGfx;
+        case POLISHED_TOKEN:  return sMenuPolishedTokenGfx;
+        case CHERISHED_TOKEN: return sMenuCherishedTokenGfx;
+        default:              return sMenuBottledTokenGfx;
+    }
+}
+
+static const u16* GetBadgePal(enum Tokens token)
+{
+    switch (token) {
+        case CARVED_TOKEN:
+        case SEWN_TOKEN:
+            return sMenuBadgesPal2;
+        default:
+            return sMenuBadgesPal1;
+    }
+}
+static u16 GetBadgePalTag(enum Tokens token)
+{
+    switch (token) {
+        case CARVED_TOKEN:
+        case SEWN_TOKEN:
+            return HMM_PALTAG_BADGES2;
+        default:
+            return HMM_PALTAG_BADGES1;
+    }
 }
 
 static void HearthMainMenu_CreateAllBadges(s16 x, s16 y)
 {
     u32 badgeCount = GetBadgeCount();
     for (u32 i = 0; i < badgeCount; i++) {
+        x+= !!i*2;
         HearthMainMenu_CreateMenuBadge(x + i * 16, y, i);
     }
 }
 
 static void HearthMainMenu_DarkenBadges(void)
 {
-    u16 index = IndexOfSpritePaletteTag(HMM_PALTAG_BADGES);
-    BlendPalette(OBJ_PLTT_ID(index), 16, 8, RGB_BLACK);
+    u16 index1 = IndexOfSpritePaletteTag(HMM_PALTAG_BADGES1);
+    u16 index2 = IndexOfSpritePaletteTag(HMM_PALTAG_BADGES2);
+    BlendPalette(OBJ_PLTT_ID(index1), 16, 8, RGB_BLACK);
+    BlendPalette(OBJ_PLTT_ID(index2), 16, 8, RGB_BLACK);
 }
 
 
 static void HearthMainMenu_RestoreBadges(void)
 {
-    FreeSpritePaletteByTag(HMM_PALTAG_BADGES);
-    LoadSpritePaletteWithTag(sMenuBadgesPal, HMM_PALTAG_BADGES);
+    FreeSpritePaletteByTag(HMM_PALTAG_BADGES1);
+    FreeSpritePaletteByTag(HMM_PALTAG_BADGES2);
+    LoadSpritePaletteWithTag(sMenuBadgesPal1, HMM_PALTAG_BADGES1);
+    LoadSpritePaletteWithTag(sMenuBadgesPal2, HMM_PALTAG_BADGES2);
 }
 
 static u32 GetBadgeCount(void)
