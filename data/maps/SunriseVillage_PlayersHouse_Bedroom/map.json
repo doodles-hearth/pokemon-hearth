@@ -224,9 +224,9 @@
     {
       "type": "trigger",
       "x": 6,
-      "y": 10,
+      "y": 8,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "FLAG_PICKED_UP_BAG",
       "var_value": "0",
       "script": "SunriseVillage_PlayersHouse_Bedroom_Trigger_ForgotBag"
     }

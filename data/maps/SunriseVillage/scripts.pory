@@ -136,25 +136,26 @@ script SunriseVillage_Event_BigSisMap_Right {
 
 script SunriseVillage_Event_BigSisMap_GiveMap {
     bufferspeciesname(STR_VAR_2, VAR_STARTER_MON)
-
-    msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}{SPEAKER NAME_BIG_SIS}Were you trying to leave without saying goodbye? Shame on you!\p"
-        "Oh, who is that lovely little thing with you?\N"
+    special(GetPlayerBrotherSisterString)
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}{SPEAKER NAME_BIG_SIS}"
+        "Were you seriously trying to leave\nwithout saying goodbye? Shame on you!\p"
+        "Oh? Who is this cute little thing?\p"
         "{STR_VAR_2}, huh?\p"
-        "Looks like it already likes you a lot! You're going to make a great Wielder,\lI know it!\p"
+        "Seems like you two became fast friends.\nYou're going to make a great Wielder,\lI just know it!\p"
         "… … … … … …\n… … … … … …\p"
-        "So you're going on a journey…\p"
-        "That's great! I'm proud of you, {PLAYER}.\p"
-        "I know you'll get lost though, so I'll lend you my map of Toku!"
-    ))
+        "My little {STR_VAR_1}'s is going on\na journey…\p"
+        "I can't tell you how proud I am,\n{PLAYER}.\p"
+        "It's a big world though, so I have one\nlast gift for you!"
+    )
     closemessage
     
     giveitem(ITEM_TOKU_MAP)
 
-    special(GetPlayerBrotherSisterString)
     setspeaker(SP_NAME_BIG_SIS)
     msgbox((
-        "{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Alrighty! You all set? Have a safe\njourney, little {STR_VAR_1}.\l"
+        "{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}"
+        "Alrighty! You all set? Have a safe\njourney, shorite.\l"
         "Maybe I'll see you around!\p"
         "Come home sometimes though, will you?\p"
         "See you soon!\nI'll send you Chatot messages!"
