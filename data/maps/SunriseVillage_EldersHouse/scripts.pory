@@ -558,7 +558,7 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 
 	// Time starts ticking!
 	resumefakertc //macro kept for redundancy + safeguarding + reference
-	updatequest(QUEST_HEARTH_MAIN_CAMPAIGN, VAR_MAIN_CAMPAIGN_QUEST)
+	updatequest(QUEST_HEARTH_MAIN_CAMPAIGN)
 	startquest(QUEST_POKEDEX)
 
 	release
