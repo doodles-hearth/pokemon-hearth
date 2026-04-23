@@ -34,7 +34,7 @@
 #include "event_object_movement.h"
 #include "pokemon_icon.h"
 
-#include "complex_quests.h"
+
 
 #include "random.h"
 
@@ -207,11 +207,11 @@ static void Task_QuestMenuTurnOff2(u8 taskId);
 
 // Tiles, palettes and tilemaps for the Quest Menu
 static const u32 sQuestMenuTiles[] =
-        INCBIN_U32("graphics/quest_menu/menu.4bpp.smol");
+        INCBIN_U32("graphics/quest_menu/tiles.4bpp.smol");
 static const u16 sQuestMenuBgPals[] =
-        INCBIN_U16("graphics/quest_menu/menu.gbapal");
+        INCBIN_U16("graphics/quest_menu/tiles.gbapal");
 static const u32 sQuestMenuTilemap[] =
-        INCBIN_U32("graphics/quest_menu/menu.bin.smolTM");
+        INCBIN_U32("graphics/quest_menu/tiles.bin.smolTM");
 
 //Strings used for the Quest Menu
 static const u8 sText_Empty[] = _("");
@@ -228,7 +228,7 @@ static const u8 sText_Active[] = _("Active");
 static const u8 sText_Reward[] = _("Reward");
 static const u8 sText_Complete[] = _("Done");
 static const u8 sText_ShowLocation[] =
-      _("Location: {STR_VAR_2}");
+      _("{STR_VAR_2}");
 static const u8 sText_StartForMore[] =
       _("Start for more details.");
 static const u8 sText_ReturnRecieveReward[] =
@@ -310,11 +310,27 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	[QUEST_HEARTH_MAIN_CAMPAIGN] = 
 	{
 		.name = COMPOUND_STRING("Heart of the Hearth"),
-		.desc = {COMPOUND_STRING("Vanilla Description")},
+		.desc = {
+			COMPOUND_STRING("Go see Elder Kaba and become\na Pokémon wielder!"),
+			COMPOUND_STRING("Deliver Elder Kaba's letter to\nElder Iwa in Silveridge!"),
+			COMPOUND_STRING("Investigate on the Decay in\nUume Forest!"),
+		},
 		.donedesc = COMPOUND_STRING("You've saved the Toku Region!"),
-		.map = {COMPOUND_STRING("Quest 1 Map")},
-		.sprite = {OBJ_EVENT_GFX_WALLY},
-		.spriteType = {OBJECT},
+		.map = {
+			COMPOUND_STRING("Elder Kaba's House"),
+			COMPOUND_STRING("Silveridge"),
+			COMPOUND_STRING("Uume Forest"),
+		},
+		.sprite = {
+			OBJ_EVENT_GFX_KABA,
+			OBJ_EVENT_GFX_ELDER2,
+			ITEM_LUM_BERRY,
+		},
+		.spriteType = {
+			OBJECT,
+			OBJECT,
+			ITEM,
+		},
 		.subquests = NULL,
 		.numSubquests = 0,
 		.questVariable = VAR_MAIN_CAMPAIGN_QUEST,
@@ -715,7 +731,7 @@ static const struct BgTemplate sQuestMenuBgTemplates[2] =
 static const struct WindowTemplate sQuestMenuHeaderWindowTemplates[] =
 {
 	{
-	//0: Content window
+	//0: Content window (Location, Quest Description)
 	.bg = 0,
 	.tilemapLeft = 0,
 	.tilemapTop = 2,
@@ -725,7 +741,7 @@ static const struct WindowTemplate sQuestMenuHeaderWindowTemplates[] =
 	.baseBlock = 1
 	},
 	{
-	//1: Footer window
+	//1: Footer window (Quest Names, Status)
 	.bg = 0,
 	.tilemapLeft = 0,
 	.tilemapTop = 12,
@@ -735,10 +751,10 @@ static const struct WindowTemplate sQuestMenuHeaderWindowTemplates[] =
 	.baseBlock = 361
 	},
 	{
-	// 2: Header window
+	// 2: Header window (Very Top, header)
 	.bg = 0,
 	.tilemapLeft = 0,
-	.tilemapTop = 0,
+	.tilemapTop = 18,
 	.width = 30,
 	.height = 2,
 	.paletteNum = 15,
@@ -753,31 +769,31 @@ static const u8 sQuestMenuWindowFontColors[][4] =
 {
 	//Header of Quest Menu
 	TEXT_COLOR_TRANSPARENT,
-TEXT_COLOR_DARK_GRAY,
-TEXT_COLOR_TRANSPARENT
+	TEXT_COLOR_DARK_GRAY,
+	TEXT_COLOR_TRANSPARENT
 },
 {
 	//Reward state progress indicator
 	TEXT_COLOR_TRANSPARENT,
-TEXT_COLOR_RED,
-TEXT_COLOR_TRANSPARENT
+	TEXT_COLOR_RED,
+	TEXT_COLOR_TRANSPARENT
 },
 {
 	//Done state progress indicator
 	TEXT_COLOR_TRANSPARENT,
-TEXT_COLOR_GREEN,
-TEXT_COLOR_TRANSPARENT
+	TEXT_COLOR_GREEN,
+	TEXT_COLOR_TRANSPARENT
 },
 {
 	//Active state progress indicator
 	TEXT_COLOR_TRANSPARENT,
-TEXT_COLOR_BLUE,
-TEXT_COLOR_TRANSPARENT
+	TEXT_COLOR_BLUE,
+	TEXT_COLOR_TRANSPARENT
 },
 {
 	//Footer flavor text
 	TEXT_COLOR_TRANSPARENT,
-	TEXT_COLOR_WHITE,
+	TEXT_COLOR_DARK_GRAY,
 	TEXT_COLOR_TRANSPARENT
 	},
 };
@@ -1848,8 +1864,16 @@ void GenerateQuestLocation(s32 questId)
 void PrintQuestLocation(s32 questId)
 {
 	FillWindowPixelBuffer(1, 0);
-	QuestMenu_AddTextPrinterParameterized(1, 2, gStringVar4, 2, 3, 2, 0, 0,
-	                                      4);
+	QuestMenu_AddTextPrinterParameterized(
+		1, // Window ID
+		2, // Font ID
+		gStringVar4, // const u8 *str
+		93, //x
+		0, //y
+		2, //letterSpacing
+		0, //lineSpacing
+		0, //speed
+		4); //colorIdx
 }
 void GenerateQuestFlavorText(s32 questId)
 {
@@ -1893,8 +1917,16 @@ void UpdateQuestFlavorText(s32 questId)
 }
 void PrintQuestFlavorText(s32 questId)
 {
-	QuestMenu_AddTextPrinterParameterized(1, 2, gStringVar3, 40, 19, 5, 0, 0,
-	                                      4);
+	QuestMenu_AddTextPrinterParameterized(
+		1, // Window ID
+		2, // Font ID
+		gStringVar3, // const u8 *str
+		56, //x
+		16, //y
+		5, //letterSpacing
+		0, //lineSpacing
+		0, //speed
+		4);//colorIdx
 }
 
 bool8 IsSubquestCompletedState(s32 questId)
@@ -2013,29 +2045,33 @@ static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 		switch (spriteType)
 	{
 	 		case OBJECT:
-				spriteId = CreateObjectGraphicsSprite(itemId, SpriteCallbackDummy, 20,
-				                                      132, 0);
+					spriteId = CreateObjectGraphicsSprite(
+					itemId, //graphicsId
+					SpriteCallbackDummy, //sprite callback
+					30, //x
+					116, //y
+					0); //subpriority
 				break;
 	 		case ITEM:
 				spriteId = AddItemIconSprite(102 + idx, 102 + idx, itemId);
 				break;
 	 		case PKMN:
 				LoadMonIconPalettes();
-				spriteId = CreateMonIcon(itemId, SpriteCallbackDummy, 20, 132, 0, 1);
+				spriteId = CreateMonIcon(itemId, SpriteCallbackDummy, 30, 116, 0, 1);
 				break;
 			default:
 				break;
 		}
 
 		if (spriteId < MAX_SPRITES)
-	{
+		{
 			gSprites[spriteId].oam.objMode = ST_OAM_OBJ_BLEND;
 			ptr[idx] = spriteId;
 
 			if (spriteType == ITEM)
-		{
-				gSprites[spriteId].x2 = 24;
-				gSprites[spriteId].y2 = 140;
+			{
+				gSprites[spriteId].x2 = 32;
+				gSprites[spriteId].y2 = 122;
 			}
 		}
 	}
@@ -2157,8 +2193,16 @@ u8 GenerateQuestState(u8 questId)
 
 void PrintQuestState(u8 windowId, u8 y, u8 colorIndex)
 {
-	QuestMenu_AddTextPrinterParameterized(windowId, 0, gStringVar4, 200, y, 0,
-	                                      0, 0xFF, colorIndex);
+	QuestMenu_AddTextPrinterParameterized(
+		windowId, //Window ID
+		0, //Font ID
+		gStringVar4, // const u8 *str 
+		189, //x
+		y, //y
+		0, //letterSpacing
+	    0, //lineSpacing
+		0xFF, //speed
+		colorIndex); //colorIdx
 }
 
 static void GenerateAndPrintHeader(void)
@@ -2269,18 +2313,42 @@ static void GenerateMenuContext(void)
 static void PrintNumQuests(void)
 {
 	StringExpandPlaceholders(gStringVar4, sText_QuestNumberDisplay);
-	QuestMenu_AddTextPrinterParameterized(2, 0, gStringVar4, 167, 1, 0, 1, 0,
-	                                      0);
+	QuestMenu_AddTextPrinterParameterized(
+		2, //Window ID
+		0, //Font ID
+		gStringVar4,//string pointer 
+		205, //x
+		1, //y
+		0, //letterSpacing
+		1, //lineSpacing
+		0, //speed
+		0); //colorIdx
 }
 static void PrintMenuContext(void)
 {
-	QuestMenu_AddTextPrinterParameterized(2, 0,
-	                                      questNameArray[QUEST_ARRAY_COUNT], 10, 1, 0, 1, 0, 0);
+	QuestMenu_AddTextPrinterParameterized(
+		2,
+		0,
+		questNameArray[QUEST_ARRAY_COUNT], 
+		15, //x
+		0, //y
+		0, 
+		1, 
+		0, 
+		0);
 }
 static void PrintTypeFilterButton(void)
 {
-	QuestMenu_AddTextPrinterParameterized(2, 0, sText_Type, 198, 1,
-	                                      0, 1, 0, 0);
+	QuestMenu_AddTextPrinterParameterized(
+		2,
+		0,
+		sText_Type,
+		159, //x
+		1, //y
+		0,
+		1,
+		0, 
+		0);
 
 }
 
