@@ -33,7 +33,7 @@ script SunriseVillage_PlayersHouse_Bedroom_Event_BigSisCalling {
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	setspeaker(SP_NAME_BIG_SIS)
 	msgbox(format(
-		"{PLAYER}! {PLAYER}!\nAre you still sleeping?"
+		"{PLAYER}!!! \nAre you still asleep?" //find way to have the last vowel of a player name extended
 	))
 	
 	mcdialogue(
@@ -92,9 +92,9 @@ script SunriseVillage_PlayersHouse_Bedroom_Stuff {
 	giveitem(ITEM_OINTMENT, 5)
 	giveitem(ITEM_POKE_BALL, 5)
 
-	// msgbox(format("There is also your journal inside! It might come in handy."), MSGBOX_DEFAULT)
-	// closemessage
-	// setflag(FLAG_SYS_QUEST_MENU_GET)
+	msgbox("Your journal's also inside!\nIt might come in handy.", MSGBOX_DEFAULT)
+	closemessage
+	setflag(FLAG_SYS_QUEST_MENU_GET)
 	closemessage
 
 	setflag(FLAG_PICKED_UP_BAG)
