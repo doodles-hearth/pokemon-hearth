@@ -183,12 +183,16 @@ static const u16 sPlayerAoPal[] = INCBIN_U16("graphics/main_menu_hearth/mugshots
 static const u32 sPlayerAkaGfx[] = INCBIN_U32("graphics/main_menu_hearth/mugshots/aka.4bpp.smol");
 static const u16 sPlayerAkaPal[] = INCBIN_U16("graphics/main_menu_hearth/mugshots/aka.gbapal");
 
-enum FontColor { FONT_WHITE, FONT_GRAY, FONT_RED, FONT_BLUE };
+enum FontColor { FONT_WHITE, FONT_GRAY, FONT_PLAYER };
 static const u8 HmmWindowFontColors[][3] = {
     [FONT_WHITE] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY},
     [FONT_GRAY] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GRAY, TEXT_COLOR_DARK_GRAY},
-    [FONT_RED] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_DARK_GRAY},
-    [FONT_BLUE] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR_2},
+    [FONT_PLAYER] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_DARK_GRAY, TEXT_DYNAMIC_COLOR_2},
+};
+
+static const u16 sDynamicTextColor[] = {
+    [TEXT_DYNAMIC_COLOR_1]   = 0x000035D2,
+    [TEXT_DYNAMIC_COLOR_2]   = 0x35D2,
 };
 
 #define HMM_FONT_COLOR(_x) HmmWindowFontColors[_x]
@@ -908,7 +912,7 @@ static bool8 Hmm_LoadGraphics(void)
         case 3:
             LoadPalette(HmmBgPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
             LoadPalette(HmmScrollingBgPalette, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
-            LoadPalette(gMessageBox_Pal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
+            LoadPalette(HmmMsgboxPal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
             sHmmMemory->state.loadState++;
         default:
             sHmmMemory->state.loadState = 0;
@@ -1030,9 +1034,7 @@ static const u8* Hmm_GetInfoboxFontColor(void)
 static const u8* Hmm_GetPlayerNameFontColor(void)
 {
     if (sHmmMemory->state.activeButton == HMM_BUTTON_INFOBOX) {
-        return  gSaveBlock2Ptr->playerGender == FEMALE
-                ? HMM_FONT_COLOR(FONT_BLUE)
-                : HMM_FONT_COLOR(FONT_RED);
+        return HMM_FONT_COLOR(FONT_PLAYER);
     }
     else {
         return HMM_FONT_COLOR(FONT_GRAY);
