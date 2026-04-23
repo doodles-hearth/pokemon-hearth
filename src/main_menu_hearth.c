@@ -115,7 +115,7 @@ enum HmmMenuType {
     HMM_NO_SAVE,
 };
 
-struct HearthMainMenuState {
+struct HmmState {
     MainCallback savedCallback;
     enum HmmMenuType menuType;
     u8 loadState;
@@ -126,22 +126,22 @@ struct HearthMainMenuState {
     enum HmmButtonIds prevButton;
 };
 
-struct HearthMainMenuMemory {
-    struct HearthMainMenuState state;
+struct HmmMemory {
+    struct HmmState state;
     u8 sBg1TilemapBuffer[2048];
     u8 sBg2TilemapBuffer[2048];
     ALIGNED(4) u16 sTempPaletteBuffer[PLTT_BUFFER_SIZE];
 };
 
-static EWRAM_DATA struct HearthMainMenuMemory* sHmmMemory = NULL;
+static EWRAM_DATA struct HmmMemory* sHmmMemory = NULL;
 
-static const struct BgTemplate sHearthMainMenuBgTemplates[] = {
+static const struct BgTemplate sHmmBgTemplates[] = {
     {.bg = 0, .charBaseIndex = 0, .mapBaseIndex = 30, .priority = 1},
     {.bg = 1, .charBaseIndex = 3, .mapBaseIndex = 31, .priority = 2},
     {.bg = 2, .charBaseIndex = 2, .mapBaseIndex = 29, .priority = 3},
 };
 
-static const struct WindowTemplate sHearthMainMenuWindowTemplates[] = {
+static const struct WindowTemplate sHmmWindowTemplates[] = {
     [WIN_HMM_BG] =
         {.bg = 0, .tilemapLeft = 4, .tilemapTop = 11, .width = 22, .height = 3, .paletteNum = 15, .baseBlock = 1},
 
@@ -149,18 +149,19 @@ static const struct WindowTemplate sHearthMainMenuWindowTemplates[] = {
         {.bg = 0, .tilemapLeft = 2, .tilemapTop = 9, .width = 8, .height = 2, .paletteNum = 15, .baseBlock = 1 + 66},
     DUMMY_WIN_TEMPLATE};
 
-static const struct WindowTemplate sHearthMainMenuErrorWindowTemplate[] = {
+static const struct WindowTemplate sHmmErrorWindowTemplate[] = {
     [0] = {.bg = 0, .tilemapLeft = 4, .tilemapTop = 5, .width = 22, .height = 3, .paletteNum = 15, .baseBlock = 1},
     DUMMY_WIN_TEMPLATE};
 
-static const u32 HearthMainMenuBgTiles[] = INCBIN_U32("graphics/main_menu_hearth/main_bg/tiles.4bpp.smol");
-static const u32 HearthMainMenuBgTilemap[] = INCBIN_U32("graphics/main_menu_hearth/main_bg/map.bin.smolTM");
-static const u16 HearthMainMenuBgPalette[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/inactive.gbapal");
-static const u16 HearthMainMenuBgActivePalette[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/active.gbapal");
+static const u32 HmmBgTiles[] = INCBIN_U32("graphics/main_menu_hearth/main_bg/tiles.4bpp.smol");
+static const u32 HmmBgTilemap[] = INCBIN_U32("graphics/main_menu_hearth/main_bg/map.bin.smolTM");
+static const u16 HmmBgPalette[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/inactive.gbapal");
+static const u16 HmmBgActivePalette[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/active.gbapal");
+static const u16 HmmMsgboxPal[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/msgbox.gbapal");
 
-static const u32 HearthMainMenuScrollingBgTiles[] = INCBIN_U32("graphics/main_menu_hearth/scrolling_bg/tiles.4bpp.smol");
-static const u32 HearthMainMenuScrollingBgTilemap[] = INCBIN_U32("graphics/main_menu_hearth/scrolling_bg/map.bin.smolTM");
-static const u16 HearthMainMenuScrollingBgPalette[] = INCBIN_U16("graphics/main_menu_hearth/scrolling_bg/scrolling_bg.gbapal");
+static const u32 HmmScrollingBgTiles[] = INCBIN_U32("graphics/main_menu_hearth/scrolling_bg/tiles.4bpp.smol");
+static const u32 HmmScrollingBgTilemap[] = INCBIN_U32("graphics/main_menu_hearth/scrolling_bg/map.bin.smolTM");
+static const u16 HmmScrollingBgPalette[] = INCBIN_U16("graphics/main_menu_hearth/scrolling_bg/scrolling_bg.gbapal");
 
 static const u32 sMenuButtonGfx[] = INCBIN_U32("graphics/main_menu_hearth/buttons/button.4bpp.smol");
 static const u16 sMenuButtonPal[] = INCBIN_U16("graphics/main_menu_hearth/buttons/inactive.gbapal");
@@ -183,14 +184,14 @@ static const u32 sPlayerAkaGfx[] = INCBIN_U32("graphics/main_menu_hearth/mugshot
 static const u16 sPlayerAkaPal[] = INCBIN_U16("graphics/main_menu_hearth/mugshots/aka.gbapal");
 
 enum FontColor { FONT_WHITE, FONT_GRAY, FONT_RED, FONT_BLUE };
-static const u8 HearthMainMenuWindowFontColors[][3] = {
+static const u8 HmmWindowFontColors[][3] = {
     [FONT_WHITE] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY},
     [FONT_GRAY] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GRAY, TEXT_COLOR_DARK_GRAY},
     [FONT_RED] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_DARK_GRAY},
-    [FONT_BLUE] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_DARK_GRAY},
+    [FONT_BLUE] = {TEXT_COLOR_TRANSPARENT, TEXT_DYNAMIC_COLOR_1, TEXT_DYNAMIC_COLOR_2},
 };
 
-#define HMM_FONT_COLOR(_x) HearthMainMenuWindowFontColors[_x]
+#define HMM_FONT_COLOR(_x) HmmWindowFontColors[_x]
 
 // Callbacks
 static void Hmm_SetupCB(void);
@@ -198,11 +199,11 @@ static void Hmm_MainCB(void);
 static void Hmm_VBlankCB(void);
 
 // Tasks
-static void Task_HearthMainMenuWaitFadeIn(u8 taskId);
-static void Task_HearthMainMenuInput(u8 taskId);
-static void Task_HearthMainMenuWaitFadeAndBail(u8 taskId);
-static void Task_HearthMainMenuWaitFadeAndExitGracefully(u8 taskId);
-static void Task_HearthMainMenuScrollBg(u8 taskId);
+static void Task_HmmWaitFadeIn(u8 taskId);
+static void Task_HmmInput(u8 taskId);
+static void Task_HmmWaitFadeAndBail(u8 taskId);
+static void Task_HmmWaitFadeAndExitGracefully(u8 taskId);
+static void Task_HmmScrollBg(u8 taskId);
 
 // Helper Functions
 static inline void Hmm_ResetForInit(void);
@@ -273,7 +274,7 @@ static void CB2_InitMainMenuHearthFromOptionsMenu(void)
 
 static void Hmm_Init(MainCallback callback, enum HmmButtonIds activeButton)
 {
-    sHmmMemory = AllocZeroed(sizeof(struct HearthMainMenuMemory));
+    sHmmMemory = AllocZeroed(sizeof(struct HmmMemory));
     if (sHmmMemory == NULL) {
         SetMainCallback2(callback);
         return;
@@ -379,11 +380,11 @@ static void Hmm_SetupCB(void)
                 CpuFastCopy(gPlttBufferUnfaded, sHmmMemory->sTempPaletteBuffer, sizeof(gPlttBufferUnfaded));
                 CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, sizeof(gPlttBufferFaded));
             BeginNormalPaletteFade(PALETTES_ALL, 1, 16, 0, RGB_BLACK);
-            CreateTask(Task_HearthMainMenuWaitFadeIn, 0);
+            CreateTask(Task_HmmWaitFadeIn, 0);
             gMain.state++;
             break;
         case 8:
-            CreateTask(Task_HearthMainMenuScrollBg, 0);
+            CreateTask(Task_HmmScrollBg, 0);
             SetVBlankCallback(Hmm_VBlankCB);
             SetMainCallback2(Hmm_MainCB);
             break;
@@ -402,7 +403,7 @@ static enum HmmMenuType Hmm_GetMenuType(void)
     }
 }
 
-static void Task_HearthMainMenuScrollBg(u8 taskId)
+static void Task_HmmScrollBg(u8 taskId)
 {
     s16* tAccumulator = &gTasks[taskId].data[0];
 
@@ -724,11 +725,11 @@ static void Hmm_VBlankCB(void)
     TransferPlttBuffer();
 }
 
-static void Task_HearthMainMenuWaitFadeIn(u8 taskId)
+static void Task_HmmWaitFadeIn(u8 taskId)
 {
     if (!gPaletteFade.active) {
         CpuFastCopy(sHmmMemory->sTempPaletteBuffer, gPlttBufferUnfaded, sizeof(gPlttBufferUnfaded));
-        gTasks[taskId].func = Task_HearthMainMenuInput;
+        gTasks[taskId].func = Task_HmmInput;
     }
 }
 
@@ -738,7 +739,7 @@ static void Hmm_StartFade(u32 color)
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, color);
 }
 
-static void Task_HearthMainMenuInput(u8 taskId)
+static void Task_HmmInput(u8 taskId)
 {
     if (JOY_NEW(B_BUTTON)) {
         Hmm_HandleButtonPressB();
@@ -788,25 +789,25 @@ static void Hmm_HandleButtonPressA(void)
 
 static void Hmm_HandleButtonPressB(void)
 {
-    u8 taskId = FindTaskIdByFunc(Task_HearthMainMenuInput);
+    u8 taskId = FindTaskIdByFunc(Task_HmmInput);
     PlaySE(SE_PC_OFF);
     Hmm_StartFade(RGB_BLACK);
-    gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
+    gTasks[taskId].func = Task_HmmWaitFadeAndExitGracefully;
 }
 
 static void Hmm_ExitOnSelect(MainCallback callback)
 {
-    u8 taskId = FindTaskIdByFunc(Task_HearthMainMenuInput);
+    u8 taskId = FindTaskIdByFunc(Task_HmmInput);
     PlaySE(SE_PC_OFF);
     Hmm_StartFade(RGB_BLACK);
     sHmmMemory->state.savedCallback = callback;
-    gTasks[taskId].func = Task_HearthMainMenuWaitFadeAndExitGracefully;
+    gTasks[taskId].func = Task_HmmWaitFadeAndExitGracefully;
 }
 
 static void Hmm_SetInfoboxActive(bool32 active)
 {
     if (active) {
-        LoadPalette(HearthMainMenuBgActivePalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
+        LoadPalette(HmmBgActivePalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
         gSprites[sHmmMemory->state.playerSpriteId].animPaused = FALSE;
         FreeMonIconPalettes();
         LoadMonIconPalettes();
@@ -821,7 +822,7 @@ static void Hmm_SetInfoboxActive(bool32 active)
         }
     }
     else {
-        LoadPalette(HearthMainMenuBgPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
+        LoadPalette(HmmBgPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
         gSprites[sHmmMemory->state.playerSpriteId].animPaused = TRUE;
         Hmm_DarkenPartyIcons();
         Hmm_DarkenPlayerMugshot();
@@ -837,7 +838,7 @@ static void Hmm_SetInfoboxActive(bool32 active)
     Hmm_PrintInfoboxText();
 }
 
-static void Task_HearthMainMenuWaitFadeAndBail(u8 taskId)
+static void Task_HmmWaitFadeAndBail(u8 taskId)
 {
     if (!gPaletteFade.active) {
         SetMainCallback2(sHmmMemory->state.savedCallback);
@@ -846,7 +847,7 @@ static void Task_HearthMainMenuWaitFadeAndBail(u8 taskId)
     }
 }
 
-static void Task_HearthMainMenuWaitFadeAndExitGracefully(u8 taskId)
+static void Task_HmmWaitFadeAndExitGracefully(u8 taskId)
 {
     if (!gPaletteFade.active) {
         SetMainCallback2(sHmmMemory->state.savedCallback);
@@ -860,7 +861,7 @@ static bool8 Hmm_InitBgs(void)
     ResetAllBgsCoordinates();
 
     ResetBgsAndClearDma3BusyFlags(0);
-    InitBgsFromTemplates(0, sHearthMainMenuBgTemplates, NELEMS(sHearthMainMenuBgTemplates));
+    InitBgsFromTemplates(0, sHmmBgTemplates, NELEMS(sHmmBgTemplates));
 
     SetBgTilemapBuffer(1, sHmmMemory->sBg1TilemapBuffer);
     SetBgTilemapBuffer(2, sHmmMemory->sBg2TilemapBuffer);
@@ -878,7 +879,7 @@ static bool8 Hmm_InitBgs(void)
 static void Hmm_FadeAndBail(void)
 {
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-    CreateTask(Task_HearthMainMenuWaitFadeAndBail, 0);
+    CreateTask(Task_HmmWaitFadeAndBail, 0);
     SetVBlankCallback(Hmm_VBlankCB);
     SetMainCallback2(Hmm_MainCB);
 }
@@ -888,25 +889,25 @@ static bool8 Hmm_LoadGraphics(void)
     switch (sHmmMemory->state.loadState) {
         case 0:
             ResetTempTileDataBuffers();
-            DecompressAndCopyTileDataToVram(1, HearthMainMenuBgTiles, 0, 0, 0);
-            DecompressAndCopyTileDataToVram(2, HearthMainMenuScrollingBgTiles, 0, 0, 0);
+            DecompressAndCopyTileDataToVram(1, HmmBgTiles, 0, 0, 0);
+            DecompressAndCopyTileDataToVram(2, HmmScrollingBgTiles, 0, 0, 0);
             sHmmMemory->state.loadState++;
             break;
         case 1:
             if (FreeTempTileDataBuffersIfPossible() != TRUE) {
-                DecompressDataWithHeaderWram(HearthMainMenuBgTilemap, sHmmMemory->sBg1TilemapBuffer);
+                DecompressDataWithHeaderWram(HmmBgTilemap, sHmmMemory->sBg1TilemapBuffer);
                 sHmmMemory->state.loadState++;
             }
             break;
         case 2:
             if (FreeTempTileDataBuffersIfPossible() != TRUE) {
-                DecompressDataWithHeaderWram(HearthMainMenuScrollingBgTilemap, sHmmMemory->sBg2TilemapBuffer);
+                DecompressDataWithHeaderWram(HmmScrollingBgTilemap, sHmmMemory->sBg2TilemapBuffer);
                 sHmmMemory->state.loadState++;
             }
             break;
         case 3:
-            LoadPalette(HearthMainMenuBgPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
-            LoadPalette(HearthMainMenuScrollingBgPalette, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
+            LoadPalette(HmmBgPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
+            LoadPalette(HmmScrollingBgPalette, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
             LoadPalette(gMessageBox_Pal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
             sHmmMemory->state.loadState++;
         default:
@@ -919,14 +920,14 @@ static bool8 Hmm_LoadGraphics(void)
 static void Hmm_InitWindows(void)
 {
     if (!Hmm_IsContinueMenu()) {
-        InitWindows(sHearthMainMenuErrorWindowTemplate);
+        InitWindows(sHmmErrorWindowTemplate);
         return;
     }
 
-    InitWindows(sHearthMainMenuWindowTemplates);
+    InitWindows(sHmmWindowTemplates);
     DeactivateAllTextPrinters();
     ScheduleBgCopyTilemapToVram(0);
-    for (u32 i = 0; i <= NELEMS(sHearthMainMenuWindowTemplates); i++) {
+    for (u32 i = 0; i <= NELEMS(sHmmWindowTemplates); i++) {
         FillWindowPixelBuffer(i, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
         PutWindowTilemap(i);
         CopyWindowToVram(i, 3);
