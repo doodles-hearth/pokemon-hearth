@@ -155,16 +155,16 @@ static const struct WindowTemplate sHearthMainMenuErrorWindowTemplate[] = {
 
 static const u32 HearthMainMenuBgTiles[] = INCBIN_U32("graphics/main_menu_hearth/main_bg/tiles.4bpp.smol");
 static const u32 HearthMainMenuBgTilemap[] = INCBIN_U32("graphics/main_menu_hearth/main_bg/map.bin.smolTM");
-static const u16 HearthMainMenuBgPalette[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/bg.gbapal");
-static const u16 HearthMainMenuBgActivePalette[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/active_bg.gbapal");
+static const u16 HearthMainMenuBgPalette[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/inactive.gbapal");
+static const u16 HearthMainMenuBgActivePalette[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/active.gbapal");
 
 static const u32 HearthMainMenuScrollingBgTiles[] = INCBIN_U32("graphics/main_menu_hearth/scrolling_bg/tiles.4bpp.smol");
 static const u32 HearthMainMenuScrollingBgTilemap[] = INCBIN_U32("graphics/main_menu_hearth/scrolling_bg/map.bin.smolTM");
 static const u16 HearthMainMenuScrollingBgPalette[] = INCBIN_U16("graphics/main_menu_hearth/scrolling_bg/scrolling_bg.gbapal");
 
 static const u32 sMenuButtonGfx[] = INCBIN_U32("graphics/main_menu_hearth/buttons/button.4bpp.smol");
-static const u16 sMenuButtonPal[] = INCBIN_U16("graphics/main_menu_hearth/buttons/button.gbapal");
-static const u16 sMenuButtonActivePal[] = INCBIN_U16("graphics/main_menu_hearth/buttons/active_button.gbapal");
+static const u16 sMenuButtonPal[] = INCBIN_U16("graphics/main_menu_hearth/buttons/inactive.gbapal");
+static const u16 sMenuButtonActivePal[] = INCBIN_U16("graphics/main_menu_hearth/buttons/active.gbapal");
 
 static const u32 sMenuBottledTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/bottled.4bpp.smol");
 static const u32 sMenuCarvedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/carved.4bpp.smol");
@@ -182,11 +182,12 @@ static const u16 sPlayerAoPal[] = INCBIN_U16("graphics/main_menu_hearth/mugshots
 static const u32 sPlayerAkaGfx[] = INCBIN_U32("graphics/main_menu_hearth/mugshots/aka.4bpp.smol");
 static const u16 sPlayerAkaPal[] = INCBIN_U16("graphics/main_menu_hearth/mugshots/aka.gbapal");
 
-enum FontColor { FONT_WHITE, FONT_GRAY, FONT_RED };
+enum FontColor { FONT_WHITE, FONT_GRAY, FONT_RED, FONT_BLUE };
 static const u8 HearthMainMenuWindowFontColors[][3] = {
     [FONT_WHITE] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_WHITE, TEXT_COLOR_DARK_GRAY},
     [FONT_GRAY] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_LIGHT_GRAY, TEXT_COLOR_DARK_GRAY},
-    [FONT_RED] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_LIGHT_GRAY},
+    [FONT_RED] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_RED, TEXT_COLOR_DARK_GRAY},
+    [FONT_BLUE] = {TEXT_COLOR_TRANSPARENT, TEXT_COLOR_BLUE, TEXT_COLOR_DARK_GRAY},
 };
 
 #define HMM_FONT_COLOR(_x) HearthMainMenuWindowFontColors[_x]
@@ -223,14 +224,15 @@ static void Hmm_PrintNoSaveInfo(const u8 *color);
 static void Hmm_FormatSavegameTime(void);
 static void Hmm_PrintPlayerName(void);
 static const u8* Hmm_GetInfoboxFontColor(void);
+static const u8* Hmm_GetPlayerNameFontColor(void);
 static u32 Hmm_GetWindowWidth(u8 windowId);
 static void Hmm_PrintText(u8 windowId, u8 font, u8 x, u8 y, const u8 *color, const u8 *str);
 static inline void Hmm_PrintTextNormal(u8 windowId, u8 x, u8 y, const u8 *color, const u8 *str);
 static inline void Hmm_PrintTextSmall(u8 windowId, u8 x, u8 y, const u8 *color, const u8 *str);
 
-static void Hmm_CreatePlayerIcon(s16 x, s16 y);
-static void Hmm_DarkenPlayerIcon(void);
-static void Hmm_RestorePlayerIcon(void);
+static void Hmm_CreatePlayerMugshot(s16 x, s16 y);
+static void Hmm_DarkenPlayerMugshot(void);
+static void Hmm_RestorePlayerMugshot(void);
 static void Hmm_DrawPartyIcons(void);
 static void Hmm_DarkenPartyIcons(void);
 
@@ -419,11 +421,11 @@ static void Hmm_DrawContinueMenuItems(void)
 {
     if (!Hmm_IsContinueMenu())
         return;
-    Hmm_CreatePlayerIcon(16, 12);
+    Hmm_CreatePlayerMugshot(16, 9);
     FreeMonIconPalettes();
     LoadMonIconPalettes();
     Hmm_DrawPartyIcons();
-    Hmm_CreateAllBadges(96, 20);
+    Hmm_CreateAllBadges(91, 21);
 }
 
 static void Hmm_CreateAllMenuButtons()
@@ -439,7 +441,7 @@ static void Hmm_CreateAllMenuButtons()
     }
 }
 
-static void Hmm_CreatePlayerIcon(s16 x, s16 y)
+static void Hmm_CreatePlayerMugshot(s16 x, s16 y)
 {
     const u32* playerSprite = gSaveBlock2Ptr->playerGender == FEMALE ? sPlayerAoGfx : sPlayerAkaGfx;
     const u16* playerPal = gSaveBlock2Ptr->playerGender == FEMALE ? sPlayerAoPal : sPlayerAkaPal;
@@ -448,13 +450,13 @@ static void Hmm_CreatePlayerIcon(s16 x, s16 y)
     Even_CreateSpriteParametrized(playerSprite, HMM_TILETAG_PLAYER, playerPal, HMM_PALTAG_PLAYER, SPRITE_SIZE(64x64), SPRITE_SHAPE(64x64), x, y, 0, SpriteCallbackDummy, TRUE);
 }
 
-static void Hmm_DarkenPlayerIcon(void)
+static void Hmm_DarkenPlayerMugshot(void)
 {
     u16 index = IndexOfSpritePaletteTag(HMM_PALTAG_PLAYER);
     BlendPalette(OBJ_PLTT_ID(index), 16, 8, RGB_BLACK);
 }
 
-static void Hmm_RestorePlayerIcon(void)
+static void Hmm_RestorePlayerMugshot(void)
 {
     FreeSpritePaletteByTag(HMM_PALTAG_PLAYER);
     LoadSpritePaletteWithTag(sPlayerAoPal, HMM_PALTAG_PLAYER);
@@ -604,8 +606,8 @@ static bool32 Hmm_IsSpriteButton(enum HmmButtonIds buttonId)
 }
 
 
-static const union TextColor sButtonTextColorActive = {.background = 0, .foreground = 8, .shadow = 9, .accent = 0};
-static const union TextColor sButtonTextColor = {.background = 0, .foreground = 8, .shadow = 9, .accent = 0};
+static const union TextColor sButtonTextColorActive = {.background = 0, .foreground = 9, .shadow = 10, .accent = 0};
+static const union TextColor sButtonTextColor = {.background = 0, .foreground = 9, .shadow = 10, .accent = 0};
 
 static const u8* const sButtonTexts[3] = {
     [HMM_BUTTON_NEWGAME] = COMPOUND_STRING("New Game"),   [HMM_BUTTON_OPTIONS] = COMPOUND_STRING("Options"),
@@ -808,7 +810,7 @@ static void Hmm_SetInfoboxActive(bool32 active)
         gSprites[sHmmMemory->state.playerSpriteId].animPaused = FALSE;
         FreeMonIconPalettes();
         LoadMonIconPalettes();
-        Hmm_RestorePlayerIcon();
+        Hmm_RestorePlayerMugshot();
         Hmm_RestoreBadges();
         for (u32 i = 0; i < PARTY_SIZE; i++) {
             u8 id = sHmmMemory->state.partyIconId[i];
@@ -822,7 +824,7 @@ static void Hmm_SetInfoboxActive(bool32 active)
         LoadPalette(HearthMainMenuBgPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
         gSprites[sHmmMemory->state.playerSpriteId].animPaused = TRUE;
         Hmm_DarkenPartyIcons();
-        Hmm_DarkenPlayerIcon();
+        Hmm_DarkenPlayerMugshot();
         Hmm_DarkenBadges();
         for (u32 i = 0; i < PARTY_SIZE; i++) {
             u8 id = sHmmMemory->state.partyIconId[i];
@@ -1009,7 +1011,7 @@ static void Hmm_PrintPlayerName(void)
     StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("{PLAYER}"));
     FillWindowPixelBuffer(WIN_HMM_NAME, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     u8 xName = GetStringCenterAlignXOffset(FONT_SMALL, gStringVar1, Hmm_GetWindowWidth(WIN_HMM_NAME)*8);
-    Hmm_PrintTextSmall(WIN_HMM_NAME, xName, 1, Hmm_GetInfoboxFontColor(), gStringVar1);
+    Hmm_PrintTextSmall(WIN_HMM_NAME, xName, 0, Hmm_GetPlayerNameFontColor(), gStringVar1);
     CopyWindowToVram(WIN_HMM_NAME, COPYWIN_GFX);
 
 }
@@ -1024,6 +1026,17 @@ static const u8* Hmm_GetInfoboxFontColor(void)
     }
 }
 
+static const u8* Hmm_GetPlayerNameFontColor(void)
+{
+    if (sHmmMemory->state.activeButton == HMM_BUTTON_INFOBOX) {
+        return  gSaveBlock2Ptr->playerGender == FEMALE
+                ? HMM_FONT_COLOR(FONT_BLUE)
+                : HMM_FONT_COLOR(FONT_RED);
+    }
+    else {
+        return HMM_FONT_COLOR(FONT_GRAY);
+    }
+}
 static u32 Hmm_GetWindowWidth(u8 windowId)
 {
     return GetWindowAttribute(windowId, WINDOW_WIDTH);
