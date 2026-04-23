@@ -350,14 +350,24 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	[QUEST_SAKURALOVERS] = 
 	{
 		.name = COMPOUND_STRING("Star-Crossed Lovers"),
-		.desc = {COMPOUND_STRING("Reunite the lovers separated by\nvillage rivalry!")},
+		.desc = {
+			sText_Unk, //Var at 0
+			COMPOUND_STRING("Deliver the scarf to Tama!"),
+			COMPOUND_STRING("Report back to Ashii!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			sText_Unk, //Var at 9
+		},
 		.donedesc = COMPOUND_STRING("For never was a story of more glee\nThan this of Tama and Ashii."),
 		.map = {COMPOUND_STRING("Saku & Kura Villages")},
 		.sprite = {ITEM_ASHIIS_SCARF},
 		.spriteType = {ITEM},
 		.subquests = NULL,
 		.numSubquests = 0,
-		.questVariable = 0,
+		.questVariable = VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE,
 	},
 	[QUEST_SAKURAESPEON] = 
 	{
@@ -369,7 +379,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
-		.questVariable = 0,
+		.questVariable = VAR_SAKU_KURA_QUEST_ESPEON_STATE,
 	},
 	[QUEST_SAKURASCYTHER] = 
 	{
@@ -381,7 +391,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
-		.questVariable = 0,
+		.questVariable = VAR_SAKU_KURA_QUEST_SCYTHER_STATE,
 	},
 	[QUEST_6] = 
 	{
