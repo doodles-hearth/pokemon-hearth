@@ -2,12 +2,6 @@ const LOCALID_BIGSIS = 1
 const LOCALID_RIVALS_NOTE = 2
 
 mapscripts SunriseVillage_PlayersHouse_LR_MapScripts {
-	MAP_SCRIPT_ON_LOAD {
-		// Put rival's note on the table
-		if (!flag(FLAG_RECEIVED_STARTER)) {
-			setmetatile(4, 4, METATILE_HouseBeige_Scroll, TRUE)
-		}
-	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_SUNRISE_VILLAGE_INTRO_STATE, 2: SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi
     ]	
@@ -30,9 +24,8 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 		"Oh, {PLAYER}, you're up!\nReady for the big event?\p"
 		"Are you excited? I sure hope you are,\nbecause I'm VERY EXCITED!\p"
 		"I have to head out!\nDon't be late, you little rascal!\p"
-		"By the way, Natsuki came by,\nhe said to meet him at the beach.\l"
+		"By the way, Natsuki came by, he said to\nmeet him at the beach."
 	)
-		// "And don't forget to pick up the bag I made for you before you leave!\p"
 	closemessage
 	applymovement(LOCALID_BIGSIS, moves(
 		walk_down * 2
@@ -64,19 +57,16 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		))
 		closemessage
 	} elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) <= 6) {
-		special(GetPlayerBrotherSisterString)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey shortie! See how cute my new Pokémon is?\p"
 			"By the way, I heard Natsuki was waiting for you at Elder Kaba's house. You should probably go see them."
 		))
 		closemessage
 	} elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
-		special(GetPlayerBrotherSisterString)
 		bufferspeciesname(STR_VAR_2, VAR_STARTER_MON)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey shortie! See how cute my new Pokémon is?\p"
-			"Oh, who is that lovely little thing with you?\N"
-			"{STR_VAR_2}, huh?\p"
+			"Oh, who is that lovely little thing with\nyou? {STR_VAR_2}, huh?\p"
 			"Looks like it already likes you a lot! You're going to make a great Wielder,\lI know it!\p"
 			"… … … … … …\n… … … … … …\p"
 			"So you're going on a journey…\p"
