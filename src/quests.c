@@ -159,8 +159,8 @@ static void DetermineSpriteType(s32 questId);
 static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType);
 static void ResetSpriteState(void);
 static void QuestMenu_DestroySprite(u8 idx);
-static u16 GetSpriteId_Complex(s32 questId);
-static u8 GetSpriteType_Complex(s32 questId);
+static u32 GetQuestSprite(s32 questId);
+static u32 GetQuestSpriteType(s32 questId);
 
 static void GenerateStateAndPrint(u8 windowId, u32 itemId, u8 y);
 static u8 GenerateSubquestState(u8 questId);
@@ -310,353 +310,383 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	[QUEST_HEARTH_MAIN_CAMPAIGN] = 
 	{
 		.name = COMPOUND_STRING("Heart of the Hearth"),
-		.desc = COMPOUND_STRING("Vanilla Description"),
+		.desc = {COMPOUND_STRING("Vanilla Description")},
 		.donedesc = COMPOUND_STRING("You've saved the Toku Region!"),
-		.map = COMPOUND_STRING("Quest 1 Map"),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("Quest 1 Map")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = VAR_MAIN_CAMPAIGN_QUEST,
 	},
 	[QUEST_POKEDEX] = 
 	{
 		.name = COMPOUND_STRING("The Toku Pokédex"),
-		.desc = COMPOUND_STRING("Fill the pages of the PokéDex!"),
+		.desc = {COMPOUND_STRING("Fill the pages of the PokéDex!")},
 		.donedesc = COMPOUND_STRING("You've completed the PokéDex!"),
-		.map = gText_PokedexQuestMap,
-		.sprite = ITEM_POKE_BALL,
-		.spriteType = ITEM,
+		.map = {gText_PokedexQuestMap},
+		.sprite = {ITEM_POKE_BALL},
+		.spriteType = {ITEM},
 		.subquests = sPokedexSubQuests,
 		.numSubquests = QUEST_2_SUB_COUNT,
+		.questVariable = 0,
 	},
 	[QUEST_SAKURALOVERS] = 
 	{
 		.name = COMPOUND_STRING("Star-Crossed Lovers"),
-		.desc = COMPOUND_STRING("Reunite the lovers separated by\nvillage rivalry!"),
+		.desc = {COMPOUND_STRING("Reunite the lovers separated by\nvillage rivalry!")},
 		.donedesc = COMPOUND_STRING("For never was a story of more glee\nThan this of Tama and Ashii."),
-		.map = COMPOUND_STRING("Saku & Kura Villages"),
-		.sprite = ITEM_ASHIIS_SCARF,
-		.spriteType = ITEM,
+		.map = {COMPOUND_STRING("Saku & Kura Villages")},
+		.sprite = {ITEM_ASHIIS_SCARF},
+		.spriteType = {ITEM},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 	[QUEST_SAKURAESPEON] = 
 	{
 		.name = COMPOUND_STRING("The Lost Eevee"),
-		.desc = COMPOUND_STRING("Find the Eevee missed in the thunderstorm!"),
+		.desc = {COMPOUND_STRING("Find the Eevee missed in the thunderstorm!")},
 		.donedesc = COMPOUND_STRING("Reunited Eeevee, now Espeon, with\nits Wielder!"),
-		.map = COMPOUND_STRING("Saku & Kura Villages"),
-		.sprite = OBJ_EVENT_GFX_SPECIES(EEVEE),
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("Saku & Kura Villages")},
+		.sprite = {OBJ_EVENT_GFX_SPECIES(EEVEE)},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
-		.numSubquests = 0
+		.numSubquests = 0,
+		.questVariable = 0,
 	},
 	[QUEST_SAKURASCYTHER] = 
 	{
 		.name = COMPOUND_STRING("The Wisened Healer"),
-		.desc = COMPOUND_STRING("Find a cure for the ailing Scyther!"),
+		.desc = {COMPOUND_STRING("Find a cure for the ailing Scyther!")},
 		.donedesc = COMPOUND_STRING("Cured the Scyther to full health!"),
-		.map = COMPOUND_STRING("Saku & Kura Villages"),
-		.sprite = OBJ_EVENT_GFX_SPECIES(SCYTHER),
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("Saku & Kura Villages")},
+		.sprite = {OBJ_EVENT_GFX_SPECIES(SCYTHER)},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
-		.numSubquests = 0
+		.numSubquests = 0,
+		.questVariable = 0,
 	},
 	[QUEST_6] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 	[QUEST_7] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 	[QUEST_8] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 	[QUEST_9] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_10] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_11] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_12] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_13] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_14] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_15] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_16] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_17] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_18] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_19] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_20] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_21] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_22] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_23] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_24] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_25] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_26] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_27] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_28] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_29] = 
 	{
 		.name = COMPOUND_STRING(""),
-		.desc = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
 		.donedesc = COMPOUND_STRING(""),
-		.map = COMPOUND_STRING(""),
-		.sprite = OBJ_EVENT_GFX_WALLY,
-		.spriteType = OBJECT,
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
 		.subquests = NULL,
 		.numSubquests = 0,
+		.questVariable = 0,
 	},
 
 	[QUEST_30] = 
 	{
 			.name = COMPOUND_STRING(""),
-			.desc = COMPOUND_STRING(""),
+			.desc = {COMPOUND_STRING("")},
 			.donedesc = COMPOUND_STRING(""),
-			.map = COMPOUND_STRING(""),
-			.sprite = OBJ_EVENT_GFX_WALLY,
-			.spriteType = OBJECT,
+			.map = {COMPOUND_STRING("")},
+			.sprite = {OBJ_EVENT_GFX_WALLY},
+			.spriteType = {OBJECT},
 			.subquests = NULL,
-			.numSubquests = 0
+			.numSubquests = 0,
+			.questVariable = 0,
 		}
 };
 ////////////////////////END QUEST CUSTOMIZATION////////////////////////////////
@@ -1947,8 +1977,8 @@ void DetermineSpriteType(s32 questId)
 
 	if (IsSubquestMode() == FALSE)
 	{
-		spriteId = GetSpriteId_Complex(questId);
-		spriteType = GetSpriteType_Complex(questId);
+		spriteId = GetQuestSprite(questId);
+		spriteType = GetQuestSpriteType(questId);
 
 		QuestMenu_CreateSprite(spriteId, sStateDataPtr->spriteIconSlot,
 		                       spriteType);
@@ -1969,6 +1999,7 @@ void DetermineSpriteType(s32 questId)
 	QuestMenu_DestroySprite(sStateDataPtr->spriteIconSlot ^ 1);
 	sStateDataPtr->spriteIconSlot ^= 1;
 }
+
 static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 {
 	u8 *ptr = &sItemMenuIconSpriteIds[10];
@@ -2010,10 +2041,11 @@ static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 	}
 }
 
+
 void ResetSpriteState(void)
 {
 	u16 i;
-
+	
 	for (i = 0; i < NELEMS(sItemMenuIconSpriteIds); i++)
 	{
 		sItemMenuIconSpriteIds[i] = 0xFF;
@@ -2030,17 +2062,38 @@ static void QuestMenu_DestroySprite(u8 idx)
 		                   gSprites[ptr[idx]].oam.paletteNum);
 		DestroySprite(&gSprites[ptr[idx]]);
 		ptr[idx] = 0xFF;
-
+		
 		if (sStateDataPtr->oldPaletteTag != palTag)
-	{
-			if (sStateDataPtr->oldPaletteTag != 0)
 		{
+			if (sStateDataPtr->oldPaletteTag != 0)
+			{
 				FreeSpriteTilesByTag(sStateDataPtr->oldPaletteTag);
 				sStateDataPtr->oldPaletteTag = palTag;
 			}
 		}
 	}
 }
+
+static u32 GetQuestSprite(s32 questId)
+{
+	u32 qvar = VarGet(sSideQuests[questId].questVariable);
+	
+	if (sSideQuests[questId].sprite[qvar] == 0)
+		qvar = 0;
+
+	return sSideQuests[questId].sprite[qvar];
+}
+
+static u32 GetQuestSpriteType(s32 questId)
+{
+	u32 qvar = VarGet(sSideQuests[questId].questVariable);
+	
+	if (sSideQuests[questId].spriteType[qvar] == 0)
+		qvar = 0;
+
+	return sSideQuests[questId].spriteType[qvar];
+}
+
 static void GenerateStateAndPrint(u8 windowId, u32 questId, u8 y)
 {
 	u8 colorIndex;
@@ -2609,42 +2662,30 @@ void QuestMenu_ResetMenuSaveData(void)
 
 static const u8 *GetQuestLocation(s32 questId)
 {
-    switch (questId) {
-        case QUEST_HEARTH_MAIN_CAMPAIGN:
-            return gTable_MainCampaignMaps[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
-        default:
-            return sSideQuests[questId].map;
-    }
+	u32 qvar = VarGet(sSideQuests[questId].questVariable);
+	
+	if (sSideQuests[questId].map[qvar] == NULL)
+		qvar = 0;
+
+	return sSideQuests[questId].map[qvar];
 }
 
 static const u8 *GetQuestDesc(s32 questId)
 {
-    switch (questId) {
-        case QUEST_HEARTH_MAIN_CAMPAIGN:
-            return gTable_MainCampaignDescs[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
-        default:
-            return sSideQuests[questId].desc;
-    }
+	u32 qvar = VarGet(sSideQuests[questId].questVariable);
+	
+	if (sSideQuests[questId].desc[qvar] == NULL)
+		qvar = 0;
+
+	return sSideQuests[questId].desc[qvar];
 }
 
-static u16 GetSpriteId_Complex(s32 questId)
+u32 QuestMenu_GetQuestVariableId(u8 quest)
 {
-	switch (questId)
-    {
- 		case QUEST_HEARTH_MAIN_CAMPAIGN:
-		    return MainCampaignSprites[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
-		default:
-		    return sSideQuests[questId].sprite;
-	} 
+    return sSideQuests[quest].questVariable;
 }
 
-static u8 GetSpriteType_Complex(s32 questId)
+u32 QuestMenu_GetQuestVariable(u8 quest)
 {
-	switch (questId)
-    {
- 		case QUEST_HEARTH_MAIN_CAMPAIGN:
-		    return MainCampaignSpriteTypes[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
-		default:
-		    return sSideQuests[questId].spriteType;
-	} 
+    return VarGet(QuestMenu_GetQuestVariableId(quest));
 }
