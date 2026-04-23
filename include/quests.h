@@ -32,7 +32,7 @@ struct SubQuest
 	const u8 *desc;
 	const u8 *map;
 	const u16 sprite;
-    const u8 spritetype;
+    const u8 spriteType;
     const u8 *type;
 }; 
 
@@ -43,7 +43,7 @@ struct SideQuest
 	const u8 *donedesc;
 	const u8 *map;
 	const u16 sprite;
-    const u8 spritetype;
+    const u8 spriteType;
 	const struct SubQuest *subquests;
 	const u8 numSubquests;
 }; 
