@@ -776,35 +776,35 @@ static const struct WindowTemplate sQuestMenuHeaderWindowTemplates[] =
 //Font color combinations for printed text
 static const u8 sQuestMenuWindowFontColors[][4] =
 {
-{
-	//Header of Quest Menu
-	TEXT_COLOR_TRANSPARENT,
-	TEXT_COLOR_DARK_GRAY,
-	TEXT_COLOR_TRANSPARENT
-},
-{
-	//Reward state progress indicator
-	TEXT_COLOR_TRANSPARENT,
-	TEXT_COLOR_RED,
-	TEXT_COLOR_TRANSPARENT
-},
-{
-	//Done state progress indicator
-	TEXT_COLOR_TRANSPARENT,
-	TEXT_COLOR_GREEN,
-	TEXT_COLOR_TRANSPARENT
-},
-{
-	//Active state progress indicator
-	TEXT_COLOR_TRANSPARENT,
-	TEXT_COLOR_BLUE,
-	TEXT_COLOR_TRANSPARENT
-},
-{
-	//Footer flavor text
-	TEXT_COLOR_TRANSPARENT,
-	TEXT_COLOR_DARK_GRAY,
-	TEXT_COLOR_TRANSPARENT
+	{
+		//Header of Quest Menu
+		TEXT_COLOR_TRANSPARENT,
+		TEXT_COLOR_DARK_GRAY,
+		TEXT_COLOR_LIGHT_GRAY
+	},
+	{
+		//Reward state progress indicator
+		TEXT_COLOR_TRANSPARENT,
+		TEXT_COLOR_RED,
+		TEXT_COLOR_LIGHT_RED
+	},
+	{
+		//Done state progress indicator
+		TEXT_COLOR_TRANSPARENT,
+		TEXT_COLOR_GREEN,
+		TEXT_COLOR_LIGHT_GREEN
+	},
+	{
+		//Active state progress indicator
+		TEXT_COLOR_TRANSPARENT,
+		TEXT_COLOR_BLUE,
+		TEXT_COLOR_LIGHT_BLUE
+	},
+	{
+		//Footer flavor text
+		TEXT_COLOR_TRANSPARENT,
+		TEXT_COLOR_DARK_GRAY,
+		TEXT_COLOR_LIGHT_GRAY
 	},
 };
 
@@ -1580,7 +1580,7 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
  		case FLAG_GET_ACTIVE:
 			return gSaveBlock2Ptr->questData[index] & mask;
  		case FLAG_SET_ACTIVE:
-			DebugPrintf("set active!");
+			// DebugPrintf("set active!");
 			gSaveBlock2Ptr->questData[index] |= mask;
 			return 1;
  		case FLAG_REMOVE_ACTIVE:
