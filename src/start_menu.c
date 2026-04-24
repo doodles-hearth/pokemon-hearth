@@ -382,6 +382,9 @@ static bool32 ShouldDisplayStartMenuEntry(enum StartMenuActions action)
 
 static void BuildNormalStartMenu(void)
 {
+    if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
+        AddStartMenuAction(MENU_ACTION_QUEST_MENU);
+    
     if (ShouldDisplayStartMenuEntry(MENU_ACTION_POKEDEX))
         AddStartMenuAction(MENU_ACTION_POKEDEX);
 
@@ -400,8 +403,6 @@ static void BuildNormalStartMenu(void)
     if (ShouldDisplayStartMenuEntry(MENU_ACTION_PLAYER))
         AddStartMenuAction(MENU_ACTION_PLAYER);
 
-    if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
-        AddStartMenuAction(MENU_ACTION_QUEST_MENU);
 
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
@@ -412,6 +413,9 @@ static void BuildDebugStartMenu(void)
 {
     AddStartMenuAction(MENU_ACTION_DEBUG);
 
+    if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
+        AddStartMenuAction(MENU_ACTION_QUEST_MENU);
+    
     if (ShouldDisplayStartMenuEntry(MENU_ACTION_POKEDEX))
         AddStartMenuAction(MENU_ACTION_POKEDEX);
 
@@ -429,9 +433,6 @@ static void BuildDebugStartMenu(void)
 
     if (ShouldDisplayStartMenuEntry(MENU_ACTION_PLAYER))
         AddStartMenuAction(MENU_ACTION_PLAYER);
-
-    if (FlagGet(FLAG_SYS_QUEST_MENU_GET) == TRUE)
-        AddStartMenuAction(MENU_ACTION_QUEST_MENU);
 
     AddStartMenuAction(MENU_ACTION_SAVE);
     AddStartMenuAction(MENU_ACTION_OPTION);
