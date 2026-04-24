@@ -20,11 +20,10 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 	special(GetPlayerBrotherSisterString)
 	setspeaker(SP_NAME_BIG_SIS)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}"
-		"Oh, {PLAYER}, you're up!\nReady for the big event?\p"
+		"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Oh, {PLAYER}, you're up!\nReady for the big event?\p"
 		"Are you excited? I sure hope you are,\nbecause I'm VERY EXCITED!\p"
 		"I have to head out!\nDon't be late, you little rascal!\p"
-		"By the way, Natsuki came by, he said to\nmeet him at the beach."
+		"By the way, Natsuki came by; he said to\nmeet him at the beach."
 	)
 	closemessage
 	applymovement(LOCALID_BIGSIS, moves(
@@ -51,28 +50,28 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 	faceplayer
 	setspeaker(SP_NAME_BIG_SIS)
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) <= 4) {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}What are you still doing here? You're late for the distribution!\p"
-			"Go to Kaba's house right now!"
-		))
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}What are you still doing here?\nYou're late for the distribution!\p"
+			"Go to Elder Kaba's house right now!"
+		)
 		closemessage
 	} elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) <= 6) {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey shortie! See how cute my new Pokémon is?\p"
-			"By the way, I heard Natsuki was waiting for you at Elder Kaba's house. You should probably go see them."
-		))
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey shortie! Wanna see my new friend?\nShe's really cute!\p"
+			"By the way, I heard Natsuki was waiting\nfor you at Elder Kaba's house.\lYou should probably go see them."
+		)
 		closemessage
 	} elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
 		bufferspeciesname(STR_VAR_2, VAR_STARTER_MON)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey shortie! See how cute my new Pokémon is?\p"
-			"Oh, who is that lovely little thing with\nyou? {STR_VAR_2}, huh?\p"
-			"Looks like it already likes you a lot! You're going to make a great Wielder,\lI know it!\p"
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey shortie! Wanna see my new friend?\nShe's really cute!\p"
+			"And it looks like you have a cute friend\nof your own, too!\p"
+			"You take care of each other, alright?\nYou're going to make a great Wielder,\lI just know it!\p"
 			"… … … … … …\n… … … … … …\p"
-			"So you're going on a journey…\p"
-			"That's great! I'm proud of you, {PLAYER}.\p"
-			"I know you'll get lost though, so I'll lend you my map of Toku!"
-		))
+			"My little {STR_VAR_1}'s is going on\na journey…\p"
+			"I can't tell you how proud I am,\n{PLAYER}.\p"
+			"It's a big world though, so I have one\nlast gift for you!"
+		)
 		closemessage
 
 		giveitem(ITEM_TOKU_MAP)
