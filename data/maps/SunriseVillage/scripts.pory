@@ -138,11 +138,9 @@ script SunriseVillage_Event_BigSisMap_GiveMap {
     bufferspeciesname(STR_VAR_2, VAR_STARTER_MON)
     special(GetPlayerBrotherSisterString)
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}{SPEAKER NAME_BIG_SIS}"
-        "Were you seriously trying to leave\nwithout saying goodbye? Shame on you!\p"
-        "Oh? Who is this cute little thing?\p"
-        "{STR_VAR_2}, huh?\p"
-        "Seems like you two became fast friends.\nYou're going to make a great Wielder,\lI just know it!\p"
+        "{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}{SPEAKER NAME_BIG_SIS}Were you seriously trying to leave\nwithout saying goodbye? Shame on you!\p"
+        "Hm? Oh! Why hello there, you little cutie\npatootie! Now what might your name be?\p"
+        "{STR_VAR_2}, huh?\pYou two sure became fast friends.\nYou're going to make a great Wielder,\lI just know it!\p"
         "… … … … … …\n… … … … … …\p"
         "My little {STR_VAR_1}'s is going on\na journey…\p"
         "I can't tell you how proud I am,\n{PLAYER}.\p"
@@ -259,10 +257,10 @@ script SunriseVillage_Event_LittleGirl {
     faceplayer
     applymovement(VAR_LAST_TALKED, moves(emote_happy))
     setspeaker(SP_NAME_LITTLE_GIRL)
-    msgbox(format(
-        "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL 0}I can't wait I can't wait I can't wait!!!\p"
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL 0}""I can't wait, I can't wait, I can't wait!!!\p"
         "AHHHHH I CAN'T WAIT!!!!"
-    ))
+    )
     closemessage
     release
 }

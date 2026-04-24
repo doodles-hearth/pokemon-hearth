@@ -56,14 +56,14 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	
 	// Elder speaks
 	setspeaker(SP_NAME_ELDER_KABA)
-	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_KABA 0}{PLAYER}, Natsuki.\nYou are late. Why am I not surprised?\p"
-		"I always have to run after you two!\nNow stay still and listen closely!\p"
-		"As you have heard, the woods, and even\nthe roads, are no longer safe.\p"
-		"We don't yet know why, but the wild\nPokémon that hide in the tall grass\land live peacefully alongside men\lhave started behaving aggressively.\p"
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_KABA 0}{PLAYER} and Natsuki, late as always.\nWhy am I not surprised?\p"
+		"Always causing trouble or a ruckus.\nNow stay still, and listen closely!\p"
+		"Neither the woods nor the roads we\ntravel as safe anymore.\p"
+		"Wild Pokémon that hide in the tall grass\nand live peacefully alongside us\lhave started behaving aggressively.\p"
 		"There are reports of travelers being\nattacked from several nearby villages.\p"
-		"This is all very worrying…$"
-	))
+		"Since we don't yet know the cause, this\nhas all been very worrying, so to speak…"
+	)
 	closemessage
 
 	playse(SE_PIN)
@@ -81,17 +81,17 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
 
 	setspeaker(SP_NAME_ELDER_KABA)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}WHICH IS WHY!{PAUSE 15}\p"
-		"The Toku council has decided that,\nfor the time being, the best way to\lhandle this is to use the Pokémon\lthemselves as a means of protection!\p"
+		"The Toku Council has decided that, for\nnow, the best way to protect oneself is\lto use the Pokémon themselves!\p"
 		"There were very few experienced\nPokémon Wielders in Toku until now.\l"
-		"This is about to change.\p"
+		"This is all about to change.\p"
 		"With a trained Pokémon by your side,\nyou'll be able to defend yourselves."
-	))
+	)
 	applymovement(LOCALID_ELDER, moves(walk_in_place_fast_right))
-	msgbox(format(
+	msgbox(
 		"Without further ado, please carefully\nchoose your new companion!"
-	))
+	)
 	closemessage
 
 	clearflag(FLAG_HIDE_STARTERS)
@@ -133,17 +133,17 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, moves(emote_heart))
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Woah! Cool."))
+	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Woah! Cool.")
 
 	// Rival is nice and lets you pick first
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
 	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterLeft)
 	waitmovement(0)
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{PLAYER}, choose yours first!\n"
-		"I don't mind being second pick."
-	))
+		"I don't mind picking second."
+	)
 	closemessage
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_NORTH)
 
@@ -185,7 +185,7 @@ script SunriseVillage_EldersHouse_Event_Elder {
 					setspeaker(SP_NAME_ELDER_KABA)
 					msgbox(format(
 						"{CREATE_MUGSHOT MUGSHOT_KABA 0}Alright, alright.\n"
-						"{FONT_SMALL}Damned children wasting my time.{FONT_NORMAL}"
+						"{FONT_SMALL}Sigh… Whippersnappers wasting my time.{FONT_NORMAL}"
 					))
 			}
 		}
@@ -380,9 +380,9 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}Now that you have your own Pokémon,\nyou two are budding Pokémon Wielders!\p"
-		"The more Wielders there are,\nthe deeper our understanding\lof these creatures will be.\p"
+		"The more Wielders there are, the deeper\nour understanding of these creatures.\p"
 		"Studying Pokémon from up close will\nget us to the bottom of this.\p"
-		"Actually, there's something\nI wanted to ask you."
+		"On that note, I have one last thing to\nask of you both."
 	)
 	closemessage
 
@@ -413,14 +413,15 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	waitmovement(0)
 
 	setspeaker(SP_NAME_ELDER_KABA)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_KABA 0}I call this the “PokéDex”.\nIt is an encyclopedia containing all\lwe know about the region's Pokémon!\p"
-		"Except it's, well, empty.\nThat's where you come in!\p"
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_KABA 0}I call this the “PokéDex”.\p"
+		"It is an encyclopedia containing all\nwe know about the region's Pokémon!\p"
+		"…Except, it is currently empty.\nThat is where you come in!\p"
 		"Explore Toku and fill its pages with\nyour findings!\p"
 		"Start by going all the way to rocky\nSilveridge, north of here.\p"
 		"Another Elder lives there and,\nhopefully, has more information as to\lwhy the Pokémon are lashing out.\p"
 		"Could you deliver him this letter?\nI could send him a Chatot, but I need\lto make sure it gets to him."
-	))
+	)
 	closemessage
 
 	giveitem(ITEM_LETTER)
