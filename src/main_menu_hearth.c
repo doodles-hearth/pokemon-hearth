@@ -27,6 +27,7 @@
 #include "intro.h"
 #include "kaba_speech.h"
 #include "main.h"
+#include "m4a.h"
 #include "main_menu_hearth.h"
 #include "malloc.h"
 #include "menu.h"
@@ -733,6 +734,8 @@ static void Task_HmmWaitFadeIn(u8 taskId)
 {
     if (!gPaletteFade.active) {
         CpuFastCopy(sHmmMemory->sTempPaletteBuffer, gPlttBufferUnfaded, sizeof(gPlttBufferUnfaded));
+        /* m4aSongNumStart(MUS_UNDERWATER); */
+        PlayBGM(MUS_UNDERWATER);
         gTasks[taskId].func = Task_HmmInput;
     }
 }
@@ -740,6 +743,7 @@ static void Task_HmmWaitFadeIn(u8 taskId)
 static void Hmm_StartFade(u32 color)
 {
     CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, sizeof(gPlttBufferFaded));
+    FadeOutBGM(4);
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, color);
 }
 
@@ -802,7 +806,7 @@ static void Hmm_HandleButtonPressB(void)
 static void Hmm_ExitOnSelect(MainCallback callback)
 {
     u8 taskId = FindTaskIdByFunc(Task_HmmInput);
-    PlaySE(SE_PC_OFF);
+    PlaySE(SE_SELECT);
     Hmm_StartFade(RGB_BLACK);
     sHmmMemory->state.savedCallback = callback;
     gTasks[taskId].func = Task_HmmWaitFadeAndExitGracefully;
