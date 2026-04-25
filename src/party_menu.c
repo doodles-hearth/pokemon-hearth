@@ -2033,6 +2033,7 @@ static void UpdatePartySelectionDoubleLayout(s8 *slotPtr, s8 movementDir)
         }
         break;
     case MENU_DIR_RIGHT:
+    {
         u8 menuId;
 
         if (*slotPtr == 0)
@@ -2049,6 +2050,7 @@ static void UpdatePartySelectionDoubleLayout(s8 *slotPtr, s8 movementDir)
         if (GetMonData(&party[partySlot], MON_DATA_SPECIES) != SPECIES_NONE)
             *slotPtr = menuId;
         break;
+    }
     case MENU_DIR_LEFT:
         if (*slotPtr == 2 || *slotPtr == 3)
         {
