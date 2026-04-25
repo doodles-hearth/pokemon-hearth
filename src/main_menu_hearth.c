@@ -677,7 +677,7 @@ static void Hmm_DrawPartyIcons(void)
     const u16 startY = 44;
 
     for (u32 i = 0; i < PARTY_SIZE; i++) {
-        u16 speciesId = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
+        u16 speciesId = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG);
         if (speciesId == SPECIES_NONE) {
             sHmmMemory->state.partyIconId[i] = SPRITE_NONE;
             continue;
@@ -974,7 +974,8 @@ static void Hmm_PrintContinueInfo(const u8 *color)
     u8 xName = GetStringCenterAlignXOffset(fontId, gStringVar1, widthPx);
     Hmm_PrintText(windowId, fontId, xName, 0, color, gStringVar1);
 
-    ConvertUIntToDecimalStringN(gStringVar2, GetRegionalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 1);
+    ConvertIntToDecimalStringN(gStringVar2, GetRegionalPokedexCount(FLAG_GET_CAUGHT), STR_CONV_MODE_LEFT_ALIGN, 4);
+
     StringExpandPlaceholders(gStringVar1, sText_DexCount);
     u8 xTokens = GetStringRightAlignXOffset(FONT_SMALL, gStringVar1, widthPx);
     Hmm_PrintTextSmall(windowId, xTokens, 0, color, gStringVar1);
