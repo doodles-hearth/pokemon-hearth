@@ -43,3 +43,18 @@ void LiveWoobatFlee(u32 localId, u32 eventIndex)
     }
     sActiveLiveEvents[eventIndex].duration--;
 }
+
+void LiveSigh(u32 localId, u32 eventIndex)
+{
+    u32 objectEventId = sActiveLiveEvents[eventIndex].objectEventId;
+
+    if (sActiveLiveEvents[eventIndex].duration == sLiveEvents[LIVE_EVENT_SIGH].duration)
+    {
+        u32 numSprites = CreateSpeechBubbleNormal(localId, eventIndex, AUTOMATIC_START,
+            COMPOUND_STRING("The quick brown fox jumps over the lazy dog!?"),
+            FALSE, sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids);
+        sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites = numSprites;
+    }
+
+    CheckAndTearDownSpeechBubble(eventIndex, objectEventId);
+}
