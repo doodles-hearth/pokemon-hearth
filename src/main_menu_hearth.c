@@ -734,8 +734,8 @@ static void Task_HmmWaitFadeIn(u8 taskId)
 {
     if (!gPaletteFade.active) {
         CpuFastCopy(sHmmMemory->sTempPaletteBuffer, gPlttBufferUnfaded, sizeof(gPlttBufferUnfaded));
-        /* m4aSongNumStart(MUS_UNDERWATER); */
-        PlayBGM(MUS_UNDERWATER);
+        /* m4aSongNumStart(MUS_FRIENDVENTURE); */
+        PlayBGM(MUS_FRIENDVENTURE);
         gTasks[taskId].func = Task_HmmInput;
     }
 }
