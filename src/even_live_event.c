@@ -16,7 +16,7 @@
 #include "constants/event_objects.h"
 #include "constants/eventide_gfx_tags.h"
 
-#define LIVE_TEXT_SPEED 2
+#define LIVE_TEXT_SPEED 0
 
 EWRAM_DATA u64 sHasTriggered;
 EWRAM_DATA u32 sRetriggerDelays[64];
@@ -686,7 +686,7 @@ bool32 IsSourceObjectOffscreen(u32 objectEventId)
     s16 xDiff = player->currentCoords.x - object->currentCoords.x;
     s16 yDiff = player->currentCoords.y - object->currentCoords.y;
 
-    return abs(xDiff) > 15 || abs(yDiff) > 10;
+    return abs(xDiff) > 8 || abs(yDiff) > 6;
 }
 
 const struct SpritePalette sSpritePalette_Bubble =
@@ -786,7 +786,7 @@ u32 CreateSpeechBubbleNormal(u32 localId, u32 eventIndex, enum StartingSide side
     else
     {
         SetupSpritesForTextPrinting(ids, NULL, 1, 1);
-        const u8 col[4] = {0, 15, 10, 0};
+        const u8 col[4] = {12, 1, 9, 0};
         u32 xPos = 3;
         if (side == RIGHT_START)
             xPos = 4 + (58 - width);
