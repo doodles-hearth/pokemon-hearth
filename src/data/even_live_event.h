@@ -28,4 +28,18 @@ const struct LiveEventData sLiveEvents[LIVE_EVENT_COUNT] =
         .duration = 500,
         .triggerRange = 2,
     },
+    [LIVE_EVENT_CHATOT] =
+    {
+        .func = LiveChatot,
+        .retriggerDelay = 600,
+        .duration = 200,
+        .triggerRange = 3,
+    },
+    [LIVE_EVENT_CROBAT_SHOP] =
+    {
+        .func = LiveCrobatShop,
+        .retriggerDelay = 600,
+        .duration = 200,
+        .triggerRange = 3,
+    },
 };

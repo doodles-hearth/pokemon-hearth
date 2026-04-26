@@ -573,7 +573,6 @@
       "deadnight": false,
       "earlymorning": false,
       "evening": false,
-      "live_event": "LIVE_EVENT_SIGH",
       "lunchtime": false,
       "morning": false,
       "night": false
@@ -589,7 +588,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_POST_CHATOT"
+      "flag": "FLAG_POST_CHATOT",
+      "live_event": "LIVE_EVENT_CHATOT"
     },
     {
       "local_id": "LOCALID_TRANQUIL_RT_BLOCK_GIRL",
