@@ -19,6 +19,20 @@ const u32 sAmorphousGroupEggGfx[] = INCBIN_U32("graphics/eggs/amorphous.4bpp.smo
 const u32 sDragonGroupEggGfx[] = INCBIN_U32("graphics/eggs/dragon.4bpp.smol");
 const u32 sWater2GroupEggGfx[] = INCBIN_U32("graphics/eggs/water2.4bpp.smol");
 
+const u32 sMonsterGroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/monster.4bpp.smol");
+const u32 sWater1GroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/water1.4bpp.smol");
+const u32 sBugGroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/bug.4bpp.smol");
+const u32 sFlyingGroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/flying.4bpp.smol");
+const u32 sFieldGroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/field.4bpp.smol");
+const u32 sFairyGroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/fairy.4bpp.smol");
+const u32 sGrassGroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/grass.4bpp.smol");
+const u32 sHumanLikeGroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/human_like.4bpp.smol");
+const u32 sWater3GroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/water3.4bpp.smol");
+const u32 sMineralGroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/rock.4bpp.smol");
+const u32 sAmorphousGroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/amorphous.4bpp.smol");
+const u32 sDragonGroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/dragon.4bpp.smol");
+const u32 sWater2GroupEggHatchGfx[] = INCBIN_U32("graphics/eggs/hatch/water2.4bpp.smol");
+
 const u16 sNormalTypeEggPal[] = INCBIN_U16("graphics/eggs/normal.gbapal");
 const u16 sFightingTypeEggPal[] = INCBIN_U16("graphics/eggs/fighting.gbapal");
 const u16 sFlyingTypeEggPal[] = INCBIN_U16("graphics/eggs/flying.gbapal");
