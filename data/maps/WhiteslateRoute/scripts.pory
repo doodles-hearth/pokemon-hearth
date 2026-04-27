@@ -1,7 +1,3 @@
-const LOCALID_SECRET_BASE_MAN = 7
-const LOCALID_SECRET_BASE_POKEMON = 8
-const LOCALID_SHAMISEN_PLAYER = 23
-const LOCALID_SHAMISEN_PLAYER_POKEMON = 24
 const VAR_TEMP_SHAMISEN_TRIGGER = VAR_TEMP_2
 const FLAG_HIDE_SHAMISEN = FLAG_TEMP_1
 
@@ -74,8 +70,8 @@ script WhiteslateRoute_EventScript_ShamisenChallenge {
 }
 
 script WhiteslateRoute_EventScript_ShamisenCallsOut {
-	applymovement(LOCALID_SHAMISEN_PLAYER, moves(lock_facing_direction, walk_in_place_fast_down, unlock_facing_direction))
-	waitmovement(LOCALID_SHAMISEN_PLAYER)
+	applymovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER, moves(lock_facing_direction, walk_in_place_fast_down, unlock_facing_direction))
+	waitmovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER)
 
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
 	msgbox(format(
@@ -88,8 +84,8 @@ script WhiteslateRoute_EventScript_ShamisenCallsOut {
 script WhiteslateRoute_EventScript_ShamisenPlayer {
 	lock
 
-	applymovement(LOCALID_SHAMISEN_PLAYER, moves(walk_in_place_down))
-	waitmovement(LOCALID_SHAMISEN_PLAYER)
+	applymovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER, moves(walk_in_place_down))
+	waitmovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER)
 
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
 	msgbox(format(
@@ -122,14 +118,14 @@ script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
 			))
 			closemessage
 
-			applymovement(LOCALID_SHAMISEN_PLAYER_POKEMON, moves(walk_left * 5, walk_down * 9))
-			applymovement(LOCALID_SHAMISEN_PLAYER, moves(walk_left * 4, walk_down * 10))
+			applymovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER_POKEMON, moves(walk_left * 5, walk_down * 9))
+			applymovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER, moves(walk_left * 4, walk_down * 10))
 			delay(16)
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
-			waitmovement(LOCALID_SHAMISEN_PLAYER)
-			waitmovement(LOCALID_SHAMISEN_PLAYER_POKEMON)
-			removeobject(LOCALID_SHAMISEN_PLAYER)
-			removeobject(LOCALID_SHAMISEN_PLAYER_POKEMON)
+			waitmovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER)
+			waitmovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER_POKEMON)
+			removeobject(LOCALID_WHITESLATE_SHAMISEN_PLAYER)
+			removeobject(LOCALID_WHITESLATE_SHAMISEN_PLAYER_POKEMON)
 			
 			setroutechallengestate(ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_STARTED)
 			setvar(VAR_TEMP_SHAMISEN_TRIGGER, 1)

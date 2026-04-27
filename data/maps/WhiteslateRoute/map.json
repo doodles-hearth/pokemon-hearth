@@ -151,6 +151,7 @@
       "night": true
     },
     {
+      "local_id": "LOCALID_SECRET_BASE_MAN",
       "graphics_id": "OBJ_EVENT_GFX_TRAVELER",
       "x": 26,
       "y": 35,
@@ -171,6 +172,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_SECRET_BASE_POKEMON",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(GROVYLE)",
       "x": 26,
       "y": 35,
@@ -451,6 +453,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WHITESLATE_SHAMISEN_PLAYER",
       "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_RED",
       "x": 23,
       "y": 10,
@@ -471,6 +474,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WHITESLATE_SHAMISEN_PLAYER_POKEMON",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(GROWLITHE)",
       "x": 24,
       "y": 10,
