@@ -257,8 +257,8 @@ static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 {
 	sub_quest(
 	      0,
-	      COMPOUND_STRING("See all Pokémon"),
-	      COMPOUND_STRING("Sketch all Pokémon on your Pokédex!"),
+	      COMPOUND_STRING("Seen all Pokémon"),
+	      COMPOUND_STRING("Sketched all of Toku's Pokémon in\nyour Pokédex!"),
 	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
@@ -267,8 +267,8 @@ static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 
 	sub_quest(
 	      1,
-	      COMPOUND_STRING("Name all Pokémon"),
-	      COMPOUND_STRING("Find out their names!"),
+	      COMPOUND_STRING("Named all Pokémon"),
+	      COMPOUND_STRING("Found out all the names of all\nthe Pokémon in Toku!"),
 	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
@@ -277,8 +277,8 @@ static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 
 	sub_quest(
 	      2,
-	      COMPOUND_STRING("Catch all Pokémon"),
-	      COMPOUND_STRING("Catch 'em all!"),
+	      COMPOUND_STRING("Caught all Pokémon"),
+	      COMPOUND_STRING("Caught all the Pokémon in Toku!"),
 	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
@@ -287,8 +287,8 @@ static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 
 	sub_quest(
 	      3,
-	      COMPOUND_STRING("Describe all Pokémon"),
-	      COMPOUND_STRING("Write down information about them!"),
+	      COMPOUND_STRING("Described all Pokémon"),
+	      COMPOUND_STRING("Wrote down everything to know\nabout Toku's Pokémon!"),
 	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
@@ -362,7 +362,10 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 			sText_Unk, //Var at 9
 		},
 		.donedesc = COMPOUND_STRING("For never was a story of more glee\nThan this of Tama and Ashii."),
-		.map = {COMPOUND_STRING("Saku & Kura Villages")},
+		.map = {
+			sText_Unk,
+			COMPOUND_STRING("Saku & Kura Villages")
+		},
 		.sprite = {ITEM_ASHIIS_SCARF},
 		.spriteType = {ITEM},
 		.subquests = NULL,
@@ -374,7 +377,10 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		.name = COMPOUND_STRING("The Lost Eevee"),
 		.desc = {COMPOUND_STRING("Find the Eevee missed in the thunderstorm!")},
 		.donedesc = COMPOUND_STRING("Reunited Eeevee, now Espeon, with\nits Wielder!"),
-		.map = {COMPOUND_STRING("Saku & Kura Villages")},
+		.map = {
+			sText_Unk,
+			COMPOUND_STRING("Saku & Kura Villages")
+		},
 		.sprite = {OBJ_EVENT_GFX_SPECIES(EEVEE)},
 		.spriteType = {OBJECT},
 		.subquests = NULL,
@@ -386,7 +392,10 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		.name = COMPOUND_STRING("The Wisened Healer"),
 		.desc = {COMPOUND_STRING("Find a cure for the ailing Scyther!")},
 		.donedesc = COMPOUND_STRING("Cured the Scyther to full health!"),
-		.map = {COMPOUND_STRING("Saku & Kura Villages")},
+		.map = {
+			sText_Unk,
+			COMPOUND_STRING("Saku & Kura Villages")
+		},
 		.sprite = {OBJ_EVENT_GFX_SPECIES(SCYTHER)},
 		.spriteType = {OBJECT},
 		.subquests = NULL,
