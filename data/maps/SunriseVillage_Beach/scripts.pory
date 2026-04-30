@@ -315,12 +315,12 @@ script SunriseVillage_Event_PokemonWontComeOut {
 	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}"
-		"I'm going to catch my first Pokémon\nmyself, all on my own!"
+		"I'm gonna catch my first Pokémon!\nAll on my own!"
 	)
 	closemessage
 	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
 	waitmovement(0)
-
+	delay(30)
 	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}Pspspsps… Come on out, Pokémon…\nPspsps…"

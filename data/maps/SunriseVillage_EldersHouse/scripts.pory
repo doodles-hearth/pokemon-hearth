@@ -1,12 +1,3 @@
-const LOCALID_ELDER = 1
-const LOCALID_BALL_SNIVY = 3
-const LOCALID_BALL_SQUIRTLE = 4
-const LOCALID_BALL_CYNDAQUIL = 5
-const LOCALID_SNIVY = 6
-const LOCALID_SQUIRTLE = 7
-const LOCALID_CYNDAQUIL = 8
-const LOCALID_RIVAL = 2
-
 const FLAG_HIDE_STARTERS = FLAG_TEMP_1
 const FLAG_HIDE_BALLS = FLAG_TEMP_2
 
@@ -38,31 +29,31 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up, walk_left, walk_up, delay_16 * 2))
 	waitmovement(0)
 	playse(SE_ARENA_TIMEUP2)
-	applymovement(LOCALID_ELDER, moves(jump_in_place_down))
-	delay(4)
-
-	playse(SE_PIN)
-	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark, delay_16))
-	waitmovement(LOCALID_RIVAL)
-	playse(SE_PIN)
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
-
-	applymovement(LOCALID_ELDER, moves(emote_angry))
+	applymovement(LOCALID_ELDER, moves(jump_in_place_down,delay_4,emote_angry))
 	setspeaker(SP_NAME_ELDER_KABA)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}PAH!"
-	))
+	)
 	waitse
-	
+	waitmovement(LOCALID_ELDER)
+	waitmessage
+	closemessage
+	playse(SE_PIN)
+	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(LOCALID_RIVAL)
+	waitmovement(LOCALID_PLAYER)
+	waitse
+	delay(30)
 	// Elder speaks
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}{PLAYER} and Natsuki, late as always.\nWhy am I not surprised?\p"
 		"Always causing trouble or a ruckus.\nNow stay still, and listen closely!\p"
-		"Neither the woods nor the roads we\ntravel as safe anymore.\p"
-		"Wild Pokémon that hide in the tall grass\nand live peacefully alongside us\lhave started behaving aggressively.\p"
-		"There are reports of travelers being\nattacked from several nearby villages.\p"
-		"Since we don't yet know the cause, this\nhas all been very worrying, so to speak…"
+		"The woods and roads we travel through\nare no longer safe.\p"
+		"Several villages have had travelers\nreport that they've been attacked.\p"
+		"Wild Pokémon hiding in tall grass that\nwere once peaceful no longer are.\lThey've started to be aggressive.\p"
+		"We do not yet know the cause, making\nthe Council more anxious than ever."
 	)
 	closemessage
 
@@ -71,27 +62,43 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	waitmovement(0)
 	waitse
 
+	delay(30)
+
 	playse(SE_ARENA_TIMEUP2)
 	applymovement(LOCALID_ELDER, moves(jump_in_place_down, emote_angry))
-
+	setspeaker(SP_NAME_ELDER_KABA)
+	msgbox("{CREATE_MUGSHOT MUGSHOT_KABA 0}WHICH IS WHY!")
+	waitse
+	waitmessage
+	waitmovement(0)
+	closemessage
+	
 	playse(SE_PIN)
-	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark, delay_16))
+	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark))
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
 	waitmovement(LOCALID_RIVAL)
-	playse(SE_PIN)
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_exclamation_mark))
+	waitmovement(LOCALID_PLAYER)
+	waitse
+
+	delay(30)
 
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_KABA 0}WHICH IS WHY!{PAUSE 15}\p"
-		"The Toku Council has decided that, for\nnow, the best way to protect oneself is\lto use the Pokémon themselves!\p"
-		"There were very few experienced\nPokémon Wielders in Toku until now.\l"
-		"This is all about to change.\p"
+		"{CREATE_MUGSHOT MUGSHOT_KABA 0}The Toku Council has concluded what\nthe best protection from Pokémon is…\lTo use the Pokémon themselves!\p"
+		"Experienced Pokémon Wielders are rare\nin Toku.\pThis is all about to change.\p"
 		"With a trained Pokémon by your side,\nyou'll be able to defend yourselves."
 	)
+	waitmessage
+	closemessage
+
+	delay(30)
+
 	applymovement(LOCALID_ELDER, moves(walk_in_place_fast_right))
+	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(
-		"Without further ado, please carefully\nchoose your new companion!"
+		"{CREATE_MUGSHOT MUGSHOT_KABA 0}Without further ado, please carefully\nchoose your new companion!"
 	)
+	waitmessage
 	closemessage
 
 	clearflag(FLAG_HIDE_STARTERS)
@@ -133,7 +140,10 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, moves(emote_heart))
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Woah! Cool.")
+	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Woah! Cool…")
+	waitmessage
+	closemessage
+	delay(30)
 
 	// Rival is nice and lets you pick first
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
@@ -157,15 +167,15 @@ script SunriseVillage_EldersHouse_Event_Elder {
 	setspeaker(SP_NAME_ELDER_KABA)
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) < 5) {
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_KABA 0}Don't dilly-dally on the way!\pAnd keep an eye on Natsuki, make sure he doesn't get into trouble!"
-			))
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_KABA 0}Don't dilly-dally on the way!\pAnd keep an eye on Natsuki, make sure\nhe doesn't get into trouble!"
+			)
 		} else {
-			msgbox(format(
+			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_KABA 0}Oh! You delivered my letter. Good.\p"
-				"You've been appointed to investigate Decaying areas?\p"
-				"Well then, what are you still doing here? Off you go!"
-			))
+				"You've been appointed to investigate\nDecaying areas?\p"
+				"Well then, what are you still doing\nhere? Off you go!"
+			)
 
 			mcdialogueB(
 				"Evaluate my PokéDex!",
@@ -176,17 +186,17 @@ script SunriseVillage_EldersHouse_Event_Elder {
 			switch(var(VAR_RESULT)) {
 				case 0:
 					setspeaker(SP_NAME_ELDER_KABA)
-					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_KABA 0}Well, what are you waiting for? Hand it over!"
-					))
+					msgbox(
+						"{CREATE_MUGSHOT MUGSHOT_KABA 0}Well, what are you waiting for?\nHand it over!"
+					)
 
 					call(ProfBirch_EventScript_RatePokedex)
 				default:
 					setspeaker(SP_NAME_ELDER_KABA)
-					msgbox(format(
+					msgbox(
 						"{CREATE_MUGSHOT MUGSHOT_KABA 0}Alright, alright.\n"
-						"{FONT_SMALL}Sigh… Whippersnappers wasting my time.{FONT_NORMAL}"
-					))
+						"{FONT_SMALL}Sigh… Whippersnappers wasting my time.{FONT_NORMAL}" //ignore poryscript too long; this is in small font after all
+					)
 			}
 		}
 	} else {
@@ -380,7 +390,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}Now that you have your own Pokémon,\nyou two are budding Pokémon Wielders!\p"
-		"The more Wielders there are, the deeper\nour understanding of these creatures.\p"
+		"With more Wielders, our understanding\nof these creatures deepen.\p"
 		"Studying Pokémon from up close will\nget us to the bottom of this.\p"
 		"On that note, I have one last thing to\nask of you both."
 	)
@@ -419,9 +429,10 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		"…Except, it is currently empty.\nThat is where you come in!\p"
 		"Explore Toku and fill its pages with\nyour findings!\p"
 		"Start by going all the way to rocky\nSilveridge, north of here.\p"
-		"Another Elder lives there and,\nhopefully, has more information as to\lwhy the Pokémon are lashing out.\p"
-		"Could you deliver him this letter?\nI could send him a Chatot, but I need\lto make sure it gets to him."
+		"Their Elder has been researching why\nthe Pokémon are acting like this.\lIt would benefit you to speak to him.\p"
+		"I also have a letter that I need to be\nsure gets to him. Not just by Chatot.\pCould you be a dear deliver it to him?"
 	)
+	waitmessage
 	closemessage
 
 	giveitem(ITEM_LETTER)
@@ -433,7 +444,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	waitmovement(0)
 
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Understood, Grandma Kaba.\nWe're going adventuring!"))
+	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Understood, Grandma Kaba.\nWe're going adventuring!")
 	closemessage
 
 	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterLeft)
@@ -441,7 +452,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	waitmovement(LOCALID_RIVAL)
 
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{PLAYER}… Are you ready?"))
+	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{PLAYER}… Are you ready?")
 	dynmultichoice(
 		0,
 		0,
@@ -452,13 +463,16 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		"Totally!",
 		"Absolutely not!"
 	)
-
+	waitmessage
+	closemessage
+	delay(30)
 	if (var(VAR_RESULT) == 0) {
 		playse(SE_LEDGE)
 		applymovement(LOCALID_RIVAL, moves(jump_in_place_left))
-		msgbox(format(
+		msgbox(
 				"That's what I'm talking about!"
-			))
+			)
+		waitmessage
 		closemessage
 	} else {
 		applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp)
@@ -466,24 +480,26 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		setspeaker(SP_NAME_NATSUKI)
 		checkplayergender
 		if (var(VAR_RESULT) == MALE) {
-			msgbox(format(
+			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Don't listen to him! He's so ready!"
-			))
+			)
 		} else {
-			msgbox(format(
+			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Don't listen to her! She's so ready!"
-			))
+			)
 		}
+		waitmessage
 		closemessage
 
 		applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterLeft)
 	}
 
+	delay(30)
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{PLAYER}!\nLet's see what our Pokémon can do!\p"
 		"I request an official Pokémon\nWielder battle!"
-	))
+	)
 	closemessage
 
 	// TODO EVA battle pose
@@ -559,8 +575,10 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 
 	// Time starts ticking!
 	resumefakertc //macro kept for redundancy + safeguarding + reference
+	setnamedmon(SPECIES_CHATOT)
 	updatequest(QUEST_HEARTH_MAIN_CAMPAIGN)
 	startquest(QUEST_POKEDEX)
+	openquestmenu
 
 	release
 }
@@ -622,25 +640,23 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET 0}Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?"
 		))
 
-		dynmultichoice(
-			0,
-			0,
-			TRUE,
-			10,
-			0,
-			DYN_MULTICHOICE_CB_NONE,
-			"PokéDex?",
-			"I'm good."
-		)
+		mcdialogue("PokéDex?","I'm good.")
+		waitmessage
+		closemessage
+		
+		applymovement(LOCALID_ASSISTANT, moves(emote_happy))
+		waitmovement(0)
+		delay(8)
 
+		setspeaker(SP_NAME_ASSISTANT)
 		switch (var(VAR_RESULT)) {
 			case 0:
-				msgbox((
+				msgbox(
 					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET 0}To complete a page of the PokéDex,\nyou need a Pokémon's real name,\lappearance and description.\p"
 					"Write down its name if you hear it\nsomewhere, or if you catch it.\p"
 					"Draw a sketch of the Pokémon when\nyou encounter it.\p"
-					"And write field notes about it when you\nhear or see something interesting!"
-				))
+					"And write field notes when you hear\nor see something interesting about it!" // Can ignore poryscript warning; last line, no indicator. Only 1 pixel over.
+				)
 			case 1:
 				msgbox((
 					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET 0}I see, you're all set then!\nCan't wait to read your findings!"
