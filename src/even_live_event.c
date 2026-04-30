@@ -9,14 +9,14 @@
 #include "script.h"
 #include "string_util.h"
 #include "text.h"
-
 #include "event_scripts.h"
+#include "object_event_graphics.h"
 
 #include "constants/even_live_event.h"
 #include "constants/event_objects.h"
 #include "constants/eventide_gfx_tags.h"
 
-#define LIVE_TEXT_SPEED 2
+#define LIVE_TEXT_SPEED 0
 
 EWRAM_DATA u64 sHasTriggered;
 EWRAM_DATA u32 sRetriggerDelays[64];
@@ -26,11 +26,7 @@ EWRAM_DATA bool8 sAnySpeechBubbleIsActive = FALSE;
 const u32 sSpeechBubbleTiles[] = INCBIN_U32("graphics/live_event/speech_bubble_tiles.4bpp");
 
 #include "data/even_live_event.h"
-
-static u32 GetPlayerPalTag(void)
-{
-    return gSaveBlock2Ptr->playerGender == MALE ? OBJ_EVENT_PAL_TAG_BRENDAN : OBJ_EVENT_PAL_TAG_MAY;
-}
+#include "object_event_graphics.h"
 
 static u32 GetStringLines(const u8 *str)
 {
@@ -690,8 +686,13 @@ bool32 IsSourceObjectOffscreen(u32 objectEventId)
     s16 xDiff = player->currentCoords.x - object->currentCoords.x;
     s16 yDiff = player->currentCoords.y - object->currentCoords.y;
 
-    return abs(xDiff) > 15 || abs(yDiff) > 10;
+    return abs(xDiff) > 8 || abs(yDiff) > 6;
 }
+
+const struct SpritePalette sSpritePalette_Bubble =
+{
+    gObjectEventPaletteEmotes, OBJ_EVENT_PAL_TAG_EMOTES
+};
 
 u32 CreateSpeechBubbleNormal(u32 localId, u32 eventIndex, enum StartingSide side, const u8 *inputStr, bool32 maxOneSprite, u8 ids[2])
 {
@@ -726,7 +727,8 @@ u32 CreateSpeechBubbleNormal(u32 localId, u32 eventIndex, enum StartingSide side
     struct Even_CreateSpriteStruct cs = {0};
     cs.sprite = sprite;
     cs.tileTag = LIVE_EVENT_GFX_TAG_START + 2 * localId;
-    cs.palTag = GetPlayerPalTag();
+    LoadSpritePalette(&sSpritePalette_Bubble);
+    cs.palTag = OBJ_EVENT_PAL_TAG_EMOTES;
     cs.spriteSize = SPRITE_SIZE(64x32);
     cs.spriteShape = SPRITE_SHAPE(64x32);
     cs.posX = 120;
@@ -769,7 +771,7 @@ u32 CreateSpeechBubbleNormal(u32 localId, u32 eventIndex, enum StartingSide side
         }
 
         SetupSpritesForTextPrinting(ids, NULL, 2, 1);
-        const u8 col[4] = {0, 15, 10, 0};
+        const u8 col[4] = {12, 1, 9, 0};
         u32 xPos = 3;
         if (side == RIGHT_START)
             xPos = 4 + (122 - width);
@@ -784,7 +786,7 @@ u32 CreateSpeechBubbleNormal(u32 localId, u32 eventIndex, enum StartingSide side
     else
     {
         SetupSpritesForTextPrinting(ids, NULL, 1, 1);
-        const u8 col[4] = {0, 15, 10, 0};
+        const u8 col[4] = {12, 1, 9, 0};
         u32 xPos = 3;
         if (side == RIGHT_START)
             xPos = 4 + (58 - width);

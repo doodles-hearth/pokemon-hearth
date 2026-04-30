@@ -1143,7 +1143,10 @@ static void AccuracyCheck(bool32 recalcDragonDarts, const u8 *nextInstr, const u
             gBattleCommunication[MISS_TYPE] = STRINGID_PKMNEVADEDATTACK;
             numMisses++;
 
-            if (holdEffectAtk == HOLD_EFFECT_BLUNDER_POLICY)
+            enum BattleMoveEffects moveEffect = GetMoveEffect(gCurrentMove);
+            if (holdEffectAtk == HOLD_EFFECT_BLUNDER_POLICY
+             && moveEffect != EFFECT_OHKO
+             && !gSpecialStatuses[gBattlerAttacker].multiHitOn)
                 gBattleStruct->blunderPolicy = TRUE;    // Only activates from missing through acc/evasion checks
 
             if (moveTarget == TARGET_SMART
@@ -1290,7 +1293,7 @@ static void Cmd_damagecalc(void)
         ctx.abilities[battler] = GetBattlerAbility(battler);
         ctx.holdEffects[battler] = GetBattlerHoldEffect(battler);
     }
-    
+
     if (IsSpreadMove(GetBattlerMoveTargetType(gBattlerAttacker, gCurrentMove)))
     {
         for (enum BattlerId battlerDef = 0; battlerDef < gBattlersCount; battlerDef++)
@@ -5419,9 +5422,8 @@ static void Cmd_switchinanim(void)
 
 bool32 CanBattlerSwitch(enum BattlerId battler)
 {
-    s32 i, lastMonId;
+    s32 lastMonId;
     enum BattlerId battlerIn1, battlerIn2;
-    bool32 ret = FALSE;
     struct Pokemon *party = GetBattlerParty(battler);
 
     if (BattleSideHasTwoTrainers(GetBattlerSide(battler)) && !AreMultiPartiesFullTeams())
@@ -5432,19 +5434,19 @@ bool32 CanBattlerSwitch(enum BattlerId battler)
     battlerIn1 = GetBattlerAtPosition(GetBattlerPosition(battler));
     battlerIn2 = HasPartnerIgnoreFlags(battlerIn1) ? BATTLE_PARTNER(battlerIn1) : battlerIn1;
 
-    for (i = 0; i < lastMonId; i++)
+    for (u32 mon = 0; mon < lastMonId; mon++)
     {
-        if (GetMonData(&party[i], MON_DATA_HP) != 0
-            && GetMonData(&party[i], MON_DATA_SPECIES) != SPECIES_NONE
-            && !GetMonData(&party[i], MON_DATA_IS_EGG)
-            && !(i == gBattlerPartyIndexes[battlerIn1] && BattlersShareParty(battler, battlerIn1))
-            && !(i == gBattlerPartyIndexes[battlerIn2] && BattlersShareParty(battler, battlerIn2)))
-            break;
+        if (GetMonData(&party[mon], MON_DATA_HP) == 0
+         || GetMonData(&party[mon], MON_DATA_SPECIES) == SPECIES_NONE
+         || GetMonData(&party[mon], MON_DATA_IS_EGG)
+         || (mon == gBattlerPartyIndexes[battlerIn1] && BattlersShareParty(battler, battlerIn1))
+         || (mon == gBattlerPartyIndexes[battlerIn2] && BattlersShareParty(battler, battlerIn2)))
+            continue;
+
+        return TRUE;
     }
 
-    ret = (i != lastMonId);
-
-    return ret;
+    return FALSE;
 }
 
 static void Cmd_jumpifcantswitch(void)

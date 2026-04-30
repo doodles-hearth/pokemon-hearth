@@ -2,6 +2,9 @@
 #include "battle.h"
 #include "config/quickstart.h"
 #include "gba/io_reg.h"
+#include "main_menu_hearth.h"
+#include "rtc.h"
+#include "save.h"
 #include "sprite.h"
 #include "gba/m4a_internal.h"
 #include "clear_save_data_menu.h"
@@ -378,7 +381,7 @@ void CB2_InitHearthTitleScreen(void)
         SetGpuReg(REG_OFFSET_BLDCNT, 0);
         SetGpuReg(REG_OFFSET_BLDALPHA, 0);
         SetGpuReg(REG_OFFSET_BLDY, 0);
-        *((u16 *)PLTT) = RGB_WHITE;
+        *((u16 *)PLTT) = RGB_BLACK;
         SetGpuReg(REG_OFFSET_DISPCNT, 0);
         SetGpuReg(REG_OFFSET_BG2CNT, 0);
         SetGpuReg(REG_OFFSET_BG1CNT, 0);
@@ -444,7 +447,7 @@ void CB2_InitHearthTitleScreen(void)
         break;
     }
     case 3:
-        BeginNormalPaletteFade(PALETTES_ALL, 1, 16, 0, RGB_WHITEALPHA);
+        BeginNormalPaletteFade(PALETTES_ALL, 1, 16, 0, RGB_BLACK);
         SetVBlankCallback(VBlankCB);
         gMain.state = 4;
         break;
@@ -589,7 +592,7 @@ static void Task_HearthTitleScreenPhase3(u8 taskId)
     {
         PlayCry_ByMode(SPECIES_CHIMECHO, 0, CRY_MODE_NORMAL);
         FadeOutBGM(4);
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         SetMainCallback2(CB2_GoToMainMenu);
     }
     else if (JOY_HELD(CLEAR_SAVE_BUTTON_COMBO) == CLEAR_SAVE_BUTTON_COMBO)
@@ -619,7 +622,7 @@ static void Task_HearthTitleScreenPhase3(u8 taskId)
         } */
         if ((gMPlayInfo_BGM.status & 0xFFFF) == 0)
         {
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_WHITEALPHA);
+            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
             SetMainCallback2(CB2_GoToCopyrightScreen);
         }
     }
@@ -627,8 +630,20 @@ static void Task_HearthTitleScreenPhase3(u8 taskId)
 
 static void CB2_GoToMainMenu(void)
 {
+    MainCallback cb;
+
+    bool8 isBatteryOk = !(RtcGetErrorStatus() & RTC_ERR_FLAG_MASK);
+
+    if ((gSaveFileStatus == SAVE_STATUS_OK ||
+         gSaveFileStatus == SAVE_STATUS_EMPTY) &&
+        isBatteryOk) {
+        cb = CB2_InitMainMenuHearth;
+    }
+    else {
+        cb = CB2_InitPrecheckScreen;
+    }
     if (!UpdatePaletteFade())
-        SetMainCallback2(CB2_InitMainMenu);
+        SetMainCallback2(cb);
 }
 
 static void CB2_GoToCopyrightScreen(void)

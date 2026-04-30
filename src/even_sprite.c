@@ -1,3 +1,4 @@
+#include "global.h"
 #include "even_sprite.h"
 #include "gba/types.h"
 #include "global.h"
@@ -104,8 +105,7 @@ u32 Even_CreateSprite(struct Even_CreateSpriteStruct *createStruct)
     spriteSheet.data = spriteSrc;
     spriteSheet.size = byteSize;
     spriteSheet.tag = createStruct->tileTag;
-    if (GetSpriteTileStartByTag(spriteSheet.tag) == 0xFFFF)
-        LoadSpriteSheet(&spriteSheet);
+    LoadSpriteSheet(&spriteSheet);
 
 
     spriteTemplate = Alloc(sizeof(*spriteTemplate));
@@ -126,6 +126,24 @@ u32 Even_CreateSprite(struct Even_CreateSpriteStruct *createStruct)
     if (createStruct->spriteCompressed)
         Free(spriteSrc);
     return spriteId;
+}
+
+u32 Even_CreateSpriteParametrized(const u32* sprite, u16 tileTag, const u16* palette, u16 palTag, u8 size, u8 shape,
+                                  s16 x, s16 y, u8 subpriority, SpriteCallback callback, bool32 spriteCompressed)
+{
+    struct Even_CreateSpriteStruct cs = {0};
+    cs.sprite = sprite;
+    cs.tileTag = tileTag;
+    cs.palette = palette;
+    cs.palTag = palTag;
+    cs.spriteSize = size;
+    cs.spriteShape = shape;
+    cs.posX = x;
+    cs.posY = y;
+    cs.subpriority = 0;
+    cs.callback = callback;
+    cs.spriteCompressed = spriteCompressed;
+    return Even_CreateSprite(&cs);
 }
 
 void TestDrawSprite(void)

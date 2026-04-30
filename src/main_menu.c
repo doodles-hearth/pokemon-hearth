@@ -1058,7 +1058,7 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
             gPlttBufferFaded[0] = RGB_BLACK;
 
             // To skip speech, comment these, and uncomment next lines
-            CreateTask(Task_OpenPrologueScreen, 0);
+            /* CreateTask(Task_OpenPrologueScreen, 0); */
             SetMainCallback2(CB2_KabaSpeech);
             // NewGameBirchSpeech_SetDefaultPlayerName(0);
             // gSaveBlock2Ptr->playerGender = FEMALE;
