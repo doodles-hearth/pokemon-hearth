@@ -426,31 +426,10 @@ void SetOverworldObjectSpecies(struct ScriptContext *ctx)
         speciesId = SPECIES_RAYQUAZA;
         break;
 
-    case OBJ_EVENT_GFX_UNUSED_NATU_DOLL:
-        speciesId = SPECIES_NATU;
-        break;
-
-    case OBJ_EVENT_GFX_UNUSED_SQUIRTLE_DOLL:
-        speciesId = SPECIES_SQUIRTLE;
-        break;
-
-    case OBJ_EVENT_GFX_UNUSED_WOOPER_DOLL:
-        speciesId = SPECIES_WOOPER;
-        break;
-
-    case OBJ_EVENT_GFX_UNUSED_PIKACHU_DOLL:
     case OBJ_EVENT_GFX_PIKACHU_DOLL:
     case OBJ_EVENT_GFX_PIKACHU:
     case OBJ_EVENT_GFX_PIKACHU_FRLG:
         speciesId = SPECIES_PIKACHU;
-        break;
-
-    case OBJ_EVENT_GFX_UNUSED_MAGNEMITE_DOLL:
-        speciesId = SPECIES_MAGNEMITE;
-        break;
-
-    case OBJ_EVENT_GFX_UNUSED_PORYGON2_DOLL:
-        speciesId = SPECIES_PORYGON2;
         break;
 
     case OBJ_EVENT_GFX_VIGOROTH_CARRYING_BOX:
@@ -642,22 +621,6 @@ void SetOverworldObjectSpecies(struct ScriptContext *ctx)
 
     case OBJ_EVENT_GFX_POOCHYENA:
         speciesId = SPECIES_POOCHYENA;
-        break;
-
-    case OBJ_EVENT_GFX_KIRLIA:
-        speciesId = SPECIES_KIRLIA;
-        break;
-
-    case OBJ_EVENT_GFX_DUSCLOPS:
-        speciesId = SPECIES_DUSCLOPS;
-        break;
-
-    case OBJ_EVENT_GFX_SUDOWOODO:
-        speciesId = SPECIES_SUDOWOODO;
-        break;
-
-    case OBJ_EVENT_GFX_MEW:
-        speciesId = SPECIES_MEW;
         break;
 
     case OBJ_EVENT_GFX_DEOXYS:
@@ -2107,7 +2070,7 @@ const struct ObjectEventTemplate TryGetObjectEventTemplateForOWE(const struct Ob
     {
         if (!CheckValidOWESpecies(info.speciesId))
         {
-            templateOWE.graphicsId = OBJ_EVENT_GFX_BOY_1;
+            templateOWE.graphicsId = OBJ_EVENT_GFX_BOY;
             templateOWE.trainerType = TRAINER_TYPE_NONE;
             templateOWE.sOverworldEncounterLevel = 0;
             templateOWE.movementType = MOVEMENT_TYPE_NONE;
