@@ -1456,7 +1456,7 @@
 	.endm
 
 	@ Returns printing speed to normal after harikomessage
-	.macro harikofinish text:req
+	.macro harikofinish
 	callnative ScrCmd_harikofinish
 	.endm
 
