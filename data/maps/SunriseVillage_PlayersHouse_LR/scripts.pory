@@ -1,6 +1,3 @@
-const LOCALID_BIGSIS = 1
-const LOCALID_RIVALS_NOTE = 2
-
 mapscripts SunriseVillage_PlayersHouse_LR_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_SUNRISE_VILLAGE_INTRO_STATE, 2: SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi
@@ -10,11 +7,11 @@ mapscripts SunriseVillage_PlayersHouse_LR_MapScripts {
 script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
     lock
 	playse(SE_PIN)
-	applymovement(LOCALID_BIGSIS, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_PLAYERS_HOUSE_BIGSIS, Common_Movement_ExclamationMark)
 	waitmovement(0)
-	applymovement(LOCALID_BIGSIS, Common_Movement_Delay48)
+	applymovement(LOCALID_PLAYERS_HOUSE_BIGSIS, Common_Movement_Delay48)
 	waitmovement(0)
-	turnobject(LOCALID_BIGSIS, DIR_EAST)
+	turnobject(LOCALID_PLAYERS_HOUSE_BIGSIS, DIR_EAST)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 
 	special(GetPlayerBrotherSisterString)
@@ -22,11 +19,11 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Oh, {PLAYER}, you're up!\nReady for the big event?\p"
 		"Are you excited? I sure hope you are,\nbecause I'm VERY EXCITED!\p"
-		"I have to head out!\nDon't be late, you little rascal!\p"
-		"By the way, Natsuki came by; he said to\nmeet him at the beach."
+		"I have to head out!\nDon't be late, or face Kaba's wrath!\p"
+		"By the way, shorite, Natsuki came by.\nHe said to meet him at the beach"
 	)
 	closemessage
-	applymovement(LOCALID_BIGSIS, moves(
+	applymovement(LOCALID_PLAYERS_HOUSE_BIGSIS, moves(
 		walk_down * 2
 		walk_right * 2
 		walk_down * 2
@@ -35,7 +32,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	waitmovement(0)
 	playse(SE_EXIT)
-	removeobject(LOCALID_BIGSIS)
+	removeobject(LOCALID_PLAYERS_HOUSE_BIGSIS)
 	waitse
 	
 	setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 3)
