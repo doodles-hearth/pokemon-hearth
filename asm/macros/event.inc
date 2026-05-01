@@ -1455,6 +1455,11 @@
 	.4byte \text
 	.endm
 
+	@ Returns printing speed to normal after harikomessage
+	.macro harikofinish text:req
+	callnative ScrCmd_harikofinish
+	.endm
+
 	@ Executes the specified field effect animation (FLDEFF_*).
 	.macro dofieldeffect animation:req
 	.byte SCR_OP_DOFIELDEFFECT

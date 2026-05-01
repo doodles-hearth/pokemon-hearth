@@ -1803,6 +1803,15 @@ bool8 ScrCmd_harikoautoscroll(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_harikofinish(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    gTextFlags.autoScroll = FALSE;
+    gTextFlags.forceHarikoTextSpeed = FALSE;
+    return FALSE;
+}
+
 // Prints all at once. Skips waiting for player input. Only used by link contests
 bool8 ScrCmd_messageinstant(struct ScriptContext *ctx)
 {
