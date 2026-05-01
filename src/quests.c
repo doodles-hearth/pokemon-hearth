@@ -288,7 +288,7 @@ static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 	sub_quest(
 	      3,
 	      COMPOUND_STRING("Described all Pokémon"),
-	      COMPOUND_STRING("Wrote down everything to know\nabout Toku's Pokémon!"),
+	      COMPOUND_STRING("Wrote down everything\nabout Toku's Pokémon!"),
 	      gText_PokedexQuestMap,
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,

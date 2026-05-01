@@ -29,43 +29,43 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_up, walk_left, walk_up, delay_16 * 2))
 	waitmovement(0)
 	playse(SE_ARENA_TIMEUP2)
-	applymovement(LOCALID_ELDER, moves(jump_in_place_down,delay_4,emote_angry))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(jump_in_place_down,delay_4,emote_angry))
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}PAH!"
 	)
 	waitse
-	waitmovement(LOCALID_ELDER)
+	waitmovement(LOCALID_ELDER_KABAS_HOUSE_KABA)
 	waitmessage
 	closemessage
 	playse(SE_PIN)
-	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(emote_exclamation_mark))
 	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
-	waitmovement(LOCALID_RIVAL)
+	waitmovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL)
 	waitmovement(LOCALID_PLAYER)
 	waitse
 	delay(30)
 	// Elder speaks
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_KABA 0}{PLAYER} and Natsuki, late as always.\nWhy am I not surprised?\p"
-		"Always causing trouble or a ruckus.\nNow stay still, and listen closely!\p"
-		"The woods and roads we travel through\nare no longer safe.\p"
+		"{CREATE_MUGSHOT MUGSHOT_KABA 0}{PLAYER}, Natsuki.\nYou are late. Why am I not surprised?\p"
+		"I always have to run after you two!\nNow stay still and listen closely!\p"
+		"As you have heard, the woods, and even\nthe roads, are no longer safe.\p"
+		"Wild Pokémon we lived peacefully with\nhave started to become aggressive.\lAnd we don't yet know why."
 		"Several villages have had travelers\nreport that they've been attacked.\p"
-		"Wild Pokémon hiding in tall grass that\nwere once peaceful no longer are.\lThey've started to be aggressive.\p"
-		"We do not yet know the cause, making\nthe Council more anxious than ever."
+		"This is all very worrying…"
 	)
 	closemessage
 
 	playse(SE_PIN)
-	applymovement(LOCALID_ELDER, moves(walk_in_place_faster_up, emote_pensive, delay_16 * 6))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(walk_in_place_faster_up, emote_pensive, delay_16 * 6))
 	waitmovement(0)
 	waitse
 
 	delay(30)
 
 	playse(SE_ARENA_TIMEUP2)
-	applymovement(LOCALID_ELDER, moves(jump_in_place_down, emote_angry))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(jump_in_place_down, emote_angry))
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox("{CREATE_MUGSHOT MUGSHOT_KABA 0}WHICH IS WHY!")
 	waitse
@@ -74,9 +74,9 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	closemessage
 	
 	playse(SE_PIN)
-	applymovement(LOCALID_RIVAL, moves(emote_exclamation_mark))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(emote_exclamation_mark, delay_16))
+	waitmovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL)
 	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
-	waitmovement(LOCALID_RIVAL)
 	waitmovement(LOCALID_PLAYER)
 	waitse
 
@@ -85,7 +85,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}The Toku Council has concluded what\nthe best protection from Pokémon is…\lTo use the Pokémon themselves!\p"
-		"Experienced Pokémon Wielders are rare\nin Toku.\pThis is all about to change.\p"
+		"Experienced Pokémon Wielders are rare\nin Toku.\lThis is all about to change.\p"
 		"With a trained Pokémon by your side,\nyou'll be able to defend yourselves."
 	)
 	waitmessage
@@ -93,7 +93,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 
 	delay(30)
 
-	applymovement(LOCALID_ELDER, moves(walk_in_place_fast_right))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(walk_in_place_fast_right))
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}Without further ado, please carefully\nchoose your new companion!"
@@ -103,7 +103,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 
 	clearflag(FLAG_HIDE_STARTERS)
 
-	applymovement(LOCALID_ELDER, moves(walk_right, face_up, delay_16))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(walk_right, face_up, delay_16))
 	waitmovement(0)
 	playse(SE_BALL_OPEN)
 	removeobject(LOCALID_BALL_SNIVY)
@@ -112,7 +112,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	playmoncry(SPECIES_SNIVY, CRY_MODE_NORMAL)
 	delay(30)
 
-	applymovement(LOCALID_ELDER, moves(walk_right, face_up, delay_16))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(walk_right, face_up, delay_16))
 	waitmovement(0)
 	playse(SE_BALL_OPEN)
 	removeobject(LOCALID_BALL_SQUIRTLE)
@@ -121,7 +121,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	playmoncry(SPECIES_SQUIRTLE, CRY_MODE_NORMAL)
 	delay(30)
 
-	applymovement(LOCALID_ELDER, moves(walk_right, face_up, delay_16))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(walk_right, face_up, delay_16))
 	waitmovement(0)
 	playse(SE_BALL_OPEN)
 	removeobject(LOCALID_BALL_CYNDAQUIL)
@@ -130,15 +130,15 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	playmoncry(SPECIES_CYNDAQUIL, CRY_MODE_NORMAL)
 	delay(30)
 
-	applymovement(LOCALID_ELDER, moves(walk_left * 3, face_down))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(walk_left * 3, face_down))
 	waitmovement(0)
 
 	playse(SE_LEDGE)
-	applymovement(LOCALID_RIVAL, moves(jump_in_place_up))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(jump_in_place_up))
 	waitmovement(0)
 	waitse
 	playse(SE_PIN)
-	applymovement(LOCALID_RIVAL, moves(emote_heart))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(emote_heart))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Woah! Cool…")
 	waitmessage
@@ -147,7 +147,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 
 	// Rival is nice and lets you pick first
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterLeft)
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, Common_Movement_WalkInPlaceFasterLeft)
 	waitmovement(0)
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(
@@ -168,7 +168,7 @@ script SunriseVillage_EldersHouse_Event_Elder {
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) < 5) {
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_KABA 0}Don't dilly-dally on the way!\pAnd keep an eye on Natsuki, make sure\nhe doesn't get into trouble!"
+				"{CREATE_MUGSHOT MUGSHOT_KABA 0}Don't dilly-dally on the way!\nAnd keep an eye on Natsuki.\lMake sure he doesn't get in trouble!"
 			)
 		} else {
 			msgbox(
@@ -209,7 +209,7 @@ script SunriseVillage_EldersHouse_Event_Elder {
 
 script SunriseVillage_EldersHouse_EventScript_TryToLeave {
 	lock
-	turnobject(LOCALID_ELDER, DIR_SOUTH)
+	turnobject(LOCALID_ELDER_KABAS_HOUSE_KABA, DIR_SOUTH)
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}Where do you think you're going?"
@@ -222,7 +222,7 @@ script SunriseVillage_EldersHouse_EventScript_TryToLeave {
 
 script SunriseVillage_EldersHouse_EventScript_TryToEnterOtherRoom {
 	lock
-	turnobject(LOCALID_ELDER, DIR_NORTH)
+	turnobject(LOCALID_ELDER_KABAS_HOUSE_KABA, DIR_NORTH)
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}Where do you think you're going?"
@@ -317,7 +317,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	setflag(FLAG_RECEIVED_STARTER)
 	setflag(FLAG_SYS_POKEMON_GET)
 
-	turnobject(LOCALID_RIVAL, DIR_NORTH)
+	turnobject(LOCALID_ELDER_KABAS_HOUSE_RIVAL, DIR_NORTH)
 
 	// Put the player back in their initial spot
 	switch(var(VAR_STARTER_MON)) {
@@ -350,7 +350,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 
-	turnobject(LOCALID_ELDER, DIR_SOUTH)
+	turnobject(LOCALID_ELDER_KABAS_HOUSE_KABA, DIR_SOUTH)
 
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48)
 
@@ -361,28 +361,28 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	switch(var(VAR_STARTER_MON)) {
 		case SPECIES_SQUIRTLE:
-			applymovement(LOCALID_RIVAL, moves(walk_up, walk_left, walk_in_place_faster_up, delay_16))
+			applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(walk_up, walk_left, walk_in_place_faster_up, delay_16))
 			waitmovement(0)
 			playmoncry(SPECIES_SNIVY, CRY_MODE_NORMAL)
 			removeobject(LOCALID_SNIVY)
 			removeobject(LOCALID_BALL_SNIVY)
-			applymovement(LOCALID_RIVAL, moves(walk_right, walk_down, walk_in_place_faster_up, delay_16))
+			applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(walk_right, walk_down, walk_in_place_faster_up, delay_16))
 			waitmovement(0)
 		case SPECIES_SNIVY:
-			applymovement(LOCALID_RIVAL, moves(walk_up, walk_right, walk_in_place_faster_up, delay_16))
+			applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(walk_up, walk_right, walk_in_place_faster_up, delay_16))
 			waitmovement(0)
 			playmoncry(SPECIES_CYNDAQUIL, CRY_MODE_NORMAL)
 			removeobject(LOCALID_CYNDAQUIL)
 			removeobject(LOCALID_BALL_CYNDAQUIL)
-			applymovement(LOCALID_RIVAL, moves(walk_left, walk_down, walk_in_place_faster_up, delay_16))
+			applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(walk_left, walk_down, walk_in_place_faster_up, delay_16))
 			waitmovement(0)
 		case SPECIES_CYNDAQUIL:
-			applymovement(LOCALID_RIVAL, moves(walk_up, delay_16))
+			applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(walk_up, delay_16))
 			waitmovement(0)
 			playmoncry(SPECIES_SQUIRTLE, CRY_MODE_NORMAL)
 			removeobject(LOCALID_SQUIRTLE)
 			removeobject(LOCALID_BALL_SQUIRTLE)
-			applymovement(LOCALID_RIVAL, moves(walk_down, walk_in_place_faster_up, delay_16))
+			applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(walk_down, walk_in_place_faster_up, delay_16))
 			waitmovement(0)
 	}
 
@@ -396,7 +396,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	)
 	closemessage
 
-	applymovement(LOCALID_ELDER, moves(walk_right * 2, walk_in_place_faster_down, delay_16, walk_left, walk_in_place_faster_down, delay_16))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(walk_right * 2, walk_in_place_faster_down, delay_16, walk_left, walk_in_place_faster_down, delay_16))
 	waitmovement(0)
 
 	playfanfare(MUS_OBTAIN_ITEM)
@@ -411,7 +411,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	setspeaker(SP_NAME_NATSUKI)
 	playse(SE_PIN)
-	applymovement(LOCALID_RIVAL, moves(emote_question_mark))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(emote_question_mark))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}What's this? A book?"
 	))
@@ -419,7 +419,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 	delay(20)
 
-	applymovement(LOCALID_ELDER, moves(walk_in_place_fast_down))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(walk_in_place_fast_down))
 	waitmovement(0)
 
 	setspeaker(SP_NAME_ELDER_KABA)
@@ -430,7 +430,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		"Explore Toku and fill its pages with\nyour findings!\p"
 		"Start by going all the way to rocky\nSilveridge, north of here.\p"
 		"Their Elder has been researching why\nthe Pokémon are acting like this.\lIt would benefit you to speak to him.\p"
-		"I also have a letter that I need to be\nsure gets to him. Not just by Chatot.\pCould you be a dear deliver it to him?"
+		"I also have a letter that I need to be\nsure gets to him. Not just by Chatot.\pHere; deliver this to him."
 	)
 	waitmessage
 	closemessage
@@ -440,16 +440,16 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	waitfanfare
 	closemessage
 
-	applymovement(LOCALID_RIVAL, moves(walk_in_place_fast_up))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(walk_in_place_fast_up))
 	waitmovement(0)
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Understood, Grandma Kaba.\nWe're going adventuring!")
 	closemessage
 
-	applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterLeft)
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, Common_Movement_WalkInPlaceFasterLeft)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-	waitmovement(LOCALID_RIVAL)
+	waitmovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL)
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{PLAYER}… Are you ready?")
@@ -468,14 +468,14 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	delay(30)
 	if (var(VAR_RESULT) == 0) {
 		playse(SE_LEDGE)
-		applymovement(LOCALID_RIVAL, moves(jump_in_place_left))
+		applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(jump_in_place_left))
 		msgbox(
 				"That's what I'm talking about!"
 			)
 		waitmessage
 		closemessage
 	} else {
-		applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterUp)
+		applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, Common_Movement_WalkInPlaceFasterUp)
 
 		setspeaker(SP_NAME_NATSUKI)
 		checkplayergender
@@ -491,7 +491,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		waitmessage
 		closemessage
 
-		applymovement(LOCALID_RIVAL, Common_Movement_WalkInPlaceFasterLeft)
+		applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, Common_Movement_WalkInPlaceFasterLeft)
 	}
 
 	delay(30)
@@ -503,7 +503,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	closemessage
 
 	// TODO EVA battle pose
-	applymovement(LOCALID_RIVAL, moves(face_player))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(face_player))
 	waitmovement(0)
 
 	setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 6)
@@ -528,7 +528,7 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 	updatefollowingmon
 
 	playse(SE_LEDGE)
-	applymovement(LOCALID_RIVAL, moves(jump_in_place_left))
+	applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(jump_in_place_left))
 
 	specialvar(VAR_RESULT, GetBattleOutcome)
 	if (var(VAR_RESULT) == B_OUTCOME_WON) {
@@ -559,14 +559,14 @@ script SunriseVillage_EldersHouse_EventScript_PostBattle {
 
 	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 	if (var(VAR_TEMP_0) == 6 && var(VAR_TEMP_1) == 7) {
-		applymovement(LOCALID_RIVAL, moves(walk_left, walk_down * 2))
+		applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(walk_left, walk_down * 2))
 	} else {
-		applymovement(LOCALID_RIVAL, moves(walk_down * 2))
+		applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(walk_down * 2))
 	}
 
-	waitmovement(LOCALID_RIVAL)
+	waitmovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
-	removeobject(LOCALID_RIVAL)
+	removeobject(LOCALID_ELDER_KABAS_HOUSE_RIVAL)
 	playse(SE_EXIT)
 	waitse
 	delay(16)
@@ -617,14 +617,14 @@ script SunriseVillage_EldersHouse_EventScript_Joltik {
 
 		waitse
 		playse(SE_PIN)
-		applymovement(LOCALID_ELDER, moves(face_up, emote_angry))
+		applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(face_up, emote_angry))
 		setspeaker(SP_NAME_ELDER_KABA)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_KABA 0}Hands off my Joltik!!"
 		))
 		waitmovement(0)
 		closemessage
-		applymovement(LOCALID_ELDER, moves(face_right))
+		applymovement(LOCALID_ELDER_KABAS_HOUSE_KABA, moves(face_right))
 	}
     release
     end	
@@ -633,44 +633,36 @@ script SunriseVillage_EldersHouse_EventScript_Joltik {
 script SunriseVillage_EldersHouse_EventScript_Assistant {
 	lock
 	faceplayer
-
+	setspeaker(SP_NAME_ASSISTANT)
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 7) {
-		setspeaker(SP_NAME_ASSISTANT)
-		msgbox((
+		message(
 			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET 0}Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?"
-		))
-
+		)
 		mcdialogue("PokéDex?","I'm good.")
-		waitmessage
-		closemessage
-		
-		applymovement(LOCALID_ASSISTANT, moves(emote_happy))
-		waitmovement(0)
-		delay(8)
-
-		setspeaker(SP_NAME_ASSISTANT)
 		switch (var(VAR_RESULT)) {
 			case 0:
-				msgbox(
-					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET 0}To complete a page of the PokéDex,\nyou need a Pokémon's real name,\lappearance and description.\p"
+				applymovement(LOCALID_ELDER_KABAS_HOUSE_ASSISTANT, moves(emote_happy))
+				waitmovement(0)
+				message(
+					"To complete a page of the PokéDex,\nyou need a Pokémon's real name,\lappearance and description.\p"
 					"Write down its name if you hear it\nsomewhere, or if you catch it.\p"
 					"Draw a sketch of the Pokémon when\nyou encounter it.\p"
-					"And write field notes when you hear\nor see something interesting about it!" // Can ignore poryscript warning; last line, no indicator. Only 1 pixel over.
-				)
+					"And write field notes when you hear\nor see something interesting about it!" 
+				) // Can ignore poryscript warning; last line, no indicator. Only 1 pixel over.
+				
 			case 1:
-				msgbox((
-					"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET 0}I see, you're all set then!\nCan't wait to read your findings!"
-				))
+				applymovement(LOCALID_ELDER_KABAS_HOUSE_ASSISTANT, moves(emote_happy))
+				waitmovement(0)
+				message(
+					"I see, you're all set then!\nCan't wait to read your findings!"
+				)
 		}
+		waitmessage
+		waitbuttonpress
 	} else {
-		waitse
-		playse(SE_PIN)
-		applymovement(VAR_LAST_TALKED, moves(emote_happy))
-
-		setspeaker(SP_NAME_ASSISTANT)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET 0}Don't mind me! I hope you're excited about the distribution!"
-		))
+		msgbox(
+			"Don't mind me!\nJust enjoy the distribution!"
+		)
 		closemessage
 	}
 

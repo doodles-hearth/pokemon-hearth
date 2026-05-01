@@ -136,42 +136,39 @@ script SunriseVillage_Event_BigSisMap_Right {
 
 script SunriseVillage_Event_BigSisMap_GiveMap {
     special(GetPlayerBrotherSisterString)
-    setspeaker(SP_NAME_BIG_SIS)
+    //setspeaker(SP_NAME_BIG_SIS)
     msgbox(
         "{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Were you seriously trying to leave\nwithout saying goodbye?\lShame on you!\p"
-        "Oh? Why hello, little one!\nWhat's your name you cutie patootie?"
+        "Oh? Why hello, little one!\nWhat's your name you cutie?"
     )
-    waitmessage
-    closemessage
-    
+   
     playse(SE_PIN)
     applymovement(LOCALID_PLAYER, moves(emote_pensive))
+    bufferlivemonnickname(STR_VAR_2)
+    //setspeaker(SP_NAME_BIG_SIS)
+    message(
+        "{STR_VAR_2}, huh?\p"
+        "You two sure became fast friends.\nYou're going to make a great Wielder,\lI just know it!\p")
+    waitmessage
     waitmovement(0)
     waitse
-
-    delay(15)
-
-    bufferlivemonnickname(STR_VAR_2)
-    setspeaker(SP_NAME_BIG_SIS)
-    msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}{STR_VAR_2}, huh?\p"
-        "You two sure became fast friends.\nYou're going to make a great Wielder,\lI just know it!\p"
+    message(
         "… … … … … …\n… … … … … …\p"
-        "My little {STR_VAR_1}'s going on\na journey…\p"
-        "I can't tell you how proud I am, {PLAYER}.\p"
+        "My little {STR_VAR_1}'s going on a journey…\p"
+        "I can't tell you how proud I am,\n{PLAYER}.\p" 
         "It's a big world though, so I have one\nlast gift for you!"
-    ) // pls ignore the above line's poryscript warning its fine
+    ) // pls ignore the above lines' poryscript warnings theyre fine
     waitmessage
+    waitbuttonpress
     closemessage
     
-    delay(15)
+    delay(16)
 
     giveitem(ITEM_TOKU_MAP)
 
     setspeaker(SP_NAME_BIG_SIS)
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}"
-        "Alrighty! You all set? Have a good one,\nshorite. Maybe I'll see you around!\p"
+        "{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Alrighty! You all set? Have a good one,\nshortie. Maybe I'll see you around!\p"
         "Come home sometimes though, will you?\p"
         "See you soon!\nI'll send you Chatot messages!"
     )
@@ -188,11 +185,7 @@ script SunriseVillage_Event_GuardForest {
     lockall
     applymovement(LOCALID_GUARD, Common_Movement_WalkInPlaceFasterLeft)
     if (flag(FLAG_RECEIVED_STARTER)) {
-        getobjectfacingdirection(LOCALID_PLAYER, VAR_TEMP_0)
-        if(var(VAR_TEMP_0) == DIR_EAST){
-        } else {
         turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
-        }
         setspeaker(SP_NAME_NEIGHBOR)
         if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
             msgbox(
@@ -230,7 +223,7 @@ script SunriseVillage_Event_GuardForest {
         msgbox(
             "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 0}Wild Pokémon have been lashing out\nrecently.\p"
             "I know you're used to walking around on\nyour own, but times are different now.\lThe woods have become dangerous.\p"
-            "I wouldn't go alone if I were you.\nOr, you know, if I were me."
+            "I wouldn't go alone if I were you.\nOr, you know…\lif I were me."
         )
         closemessage
         applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
@@ -276,9 +269,10 @@ script SunriseVillage_Event_LittleGirl {
     applymovement(VAR_LAST_TALKED, moves(emote_happy))
     setspeaker(SP_NAME_LITTLE_GIRL)
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL 0}""I can't wait, I can't wait, I can't wait!!!\p"
+        "{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL 0}I can't wait, I can't wait, I can't wait!!!\p"
         "AHHHHH I CAN'T WAIT!!!!"
     )
+    //ignore error; prints fine ingame
     closemessage
     release
 }

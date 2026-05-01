@@ -15,7 +15,7 @@
   "connections": null,
   "object_events": [
     {
-      "local_id": "LOCALID_ELDER",
+      "local_id": "LOCALID_ELDER_KABAS_HOUSE_KABA",
       "graphics_id": "OBJ_EVENT_GFX_KABA",
       "x": 4,
       "y": 5,
@@ -36,7 +36,7 @@
       "night": false
     },
     {
-      "local_id": "LOCALID_RIVAL",
+      "local_id": "LOCALID_ELDER_KABAS_HOUSE_RIVAL",
       "graphics_id": "OBJ_EVENT_GFX_NATSUKI",
       "x": 6,
       "y": 6,
@@ -203,7 +203,7 @@
       "night": false
     },
     {
-      "local_id": "LOCALID_ASSISTANT",
+      "local_id": "LOCALID_ELDER_KABAS_HOUSE_ASSISTANT",
       "graphics_id": "OBJ_EVENT_GFX_SUNRISE_VALET",
       "x": 10,
       "y": 3,
