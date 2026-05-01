@@ -1789,6 +1789,20 @@ bool8 ScrCmd_messageautoscroll(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_harikoautoscroll(struct ScriptContext *ctx)
+{
+    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    if (msg == NULL)
+        msg = (const u8 *)ctx->data[0];
+    gTextFlags.autoScroll = TRUE;
+    gTextFlags.forceHarikoTextSpeed = TRUE;
+    ShowFieldAutoScrollMessage(msg);
+    return FALSE;
+}
+
 // Prints all at once. Skips waiting for player input. Only used by link contests
 bool8 ScrCmd_messageinstant(struct ScriptContext *ctx)
 {
