@@ -81,24 +81,24 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_TracksSpot                @ FLDEFF_TRACKS_SPOT
 	.4byte gFieldEffectScript_CaveDust                  @ FLDEFF_CAVE_DUST
 	.4byte gFieldEffectScript_Defog                     @ FLDEFF_DEFOG
-	.4byte gFieldEffectScript_MusicIcon             	@ FLDEFF_MUSIC_ICON
-	.4byte gFieldEffectScript_SadIcon               	@ FLDEFF_SAD_ICON
-	.4byte gFieldEffectScript_UpsetIcon             	@ FLDEFF_UPSET_ICON
-	.4byte gFieldEffectScript_AngryIcon             	@ FLDEFF_ANGRY_ICON
-	.4byte gFieldEffectScript_PensiveIcon           	@ FLDEFF_PENSIVE_ICON
-	.4byte gFieldEffectScript_PoisonedIcon          	@ FLDEFF_POISONED_ICON
-	.4byte gFieldEffectScript_HappyIcon					@ FLDEFF_HAPPY_ICON
-	.4byte gFieldEffectScript_TrainerExclamation       	@ FLDEFF_TRAINER_EXCLAMATION
-	.4byte gFldEffScript_CryingIcon       				@ FLDEFF_CRYING_ICON
-	.4byte gFldEffScript_SweatIcon   					@ FLDEFF_SWEAT_ICON
-	.4byte gFldEffScript_SleepIcon   					@ FLDEFF_SLEEP_ICON
 	.4byte gFieldEffectScript_UseRockClimb              @ FLDEFF_USE_ROCK_CLIMB
 	.4byte gFieldEffectScript_RockClimbDust             @ FLDEFF_ROCK_CLIMB_DUST
 	.4byte gFieldEffectScript_ORASDowse                 @ FLDEFF_ORAS_DOWSE
-	.4byte gFldEffScript_SmileyFaceIcon    		        @ FLDEFF_SMILEY_FACE_ICON
+	.4byte gFldEffScript_SmileyFaceIcon                 @ FLDEFF_SMILEY_FACE_ICON
 	.4byte gFieldEffectScript_HallOfFameRecordFrlg      @ FLDEFF_HALL_OF_FAME_RECORD_FRLG
-	.4byte gFldEffScript_PhotoFlash      		        @ FLDEFF_PHOTO_FLASH
-	.4byte gFieldEffectScript_OWE_SpawnAnim				@ FLDEFF_OW_ENCOUNTER_SPAWN_ANIM
+	.4byte gFldEffScript_PhotoFlash                     @ FLDEFF_PHOTO_FLASH
+	.4byte gFieldEffectScript_OWE_SpawnAnim             @ FLDEFF_OW_ENCOUNTER_SPAWN_ANIM
+	.4byte gFieldEffectScript_MusicIcon                 @ FLDEFF_MUSIC_ICON
+	.4byte gFieldEffectScript_SadIcon                   @ FLDEFF_SAD_ICON
+	.4byte gFieldEffectScript_UpsetIcon                 @ FLDEFF_UPSET_ICON
+	.4byte gFieldEffectScript_AngryIcon                 @ FLDEFF_ANGRY_ICON
+	.4byte gFieldEffectScript_PensiveIcon               @ FLDEFF_PENSIVE_ICON
+	.4byte gFieldEffectScript_PoisonedIcon              @ FLDEFF_POISONED_ICON
+	.4byte gFieldEffectScript_HappyIcon                 @ FLDEFF_HAPPY_ICON
+	.4byte gFieldEffectScript_TrainerExclamation        @ FLDEFF_TRAINER_EXCLAMATION
+	.4byte gFldEffScript_CryingIcon                     @ FLDEFF_CRYING_ICON
+	.4byte gFldEffScript_SweatIcon                      @ FLDEFF_SWEAT_ICON
+	.4byte gFldEffScript_SleepIcon                      @ FLDEFF_SLEEP_ICON
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
