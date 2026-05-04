@@ -9,5 +9,7 @@ void LiveWoobatFlee(u32 localId, u32 eventIndex);
 void LiveSigh(u32 localId, u32 eventIndex);
 void LiveChatot(u32 localId, u32 eventIndex);
 void LiveCrobatShop(u32 localId, u32 eventIndex);
+void LiveDeerling1Flee(u32 localId, u32 eventIndex);
+void LiveDeerling2Flee(u32 localId, u32 eventIndex);
 
 #endif  // GUARD_EVEN_LIVE_FUNCS
