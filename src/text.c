@@ -332,7 +332,6 @@ static const u8 sTextScrollSpeeds[] =
     [OPTIONS_TEXT_SPEED_MID]     = 2,
     [OPTIONS_TEXT_SPEED_FAST]    = 4,
     [OPTIONS_TEXT_SPEED_INSTANT] = 6,
-    [OPTIONS_TEXT_SPEED_HARIKO]  = 6,
 };
 
 static const u16 sFontBoldJapaneseGlyphs[] = INCBIN_U16("graphics/fonts/bold.hwjpnfont");
